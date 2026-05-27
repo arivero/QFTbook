@@ -41,6 +41,9 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   `SL(2,R)_k` parent data.
 - `Psi^{su}_{j,m,bar m}`, `Psi^{sl}_{j,m,bar m}`: compact and cigar coset
   primaries after the Cartan vertex has been factored out.
+- `Phi_ell`: compact-coset NS chiral primary
+  `Psi^{su}_{ell/2,-ell/2}`.
+- `R_ch`: protected NS chiral-primary fusion ring.
 - `n,w`: asymptotic cigar momentum and winding labels after spectral flow.
 
 ## Claim Ledger
@@ -93,6 +96,9 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - Identifies the compact coset chiral-primary values with the protected
   `A`-series Landau--Ginzburg chiral data for `K=k-2`, while explicitly not
   claiming an RG-flow construction.
+- Derives the compact coset protected chiral ring from chiral-primary charge
+  additivity and the truncated parent `SU(2)_{k-2}` fusion rule:
+  `R_ch ~= C[x]/(x^(K+1))`, with `x^ell` mapped to `Phi_ell`.
 - Adds the noncompact supersymmetric `SL(2,R)_k/U(1)` cigar interface:
   parent `SL(2,R)_{k+2}` plus three fermions, removal of the Cartan
   `N=1` sector, `N=2` generators, central charge `3(k+2)/k`, primary
@@ -149,10 +155,14 @@ superconformal-algebra infrastructure that such constructions must satisfy.
     `q=-2(m+eta)/k+eta`.
 19. The compact chiral primaries `m=-j` have `h=q/2` and match the
     `A`-series protected values with minimal level `K=k-2`.
-20. The noncompact cigar central charge is `3(k+2)/k`, and the primary
+20. The compact coset chiral ring multiplication is
+    `Phi_a Phi_b=Phi_(a+b)` for `a+b<=K` and zero for `a+b>K`; the
+    nilpotence boundary is equivalent to exceeding the maximal chiral charge
+    `c/3`.
+21. The noncompact cigar central charge is `3(k+2)/k`, and the primary
     formulas `h=(-j(j-1)+m^2)/k`, `q=2m/k` spectral-flow to the displayed
     cigar formulas.
-21. The compact and noncompact endpoint field-identification formulas
+22. The compact and noncompact endpoint field-identification formulas
     preserve the displayed `h,q` values, and the cigar momentum/winding
     labels satisfy `n=M-Mbar`, `w=(M+Mbar)/k` for flowed Cartan labels.
 
@@ -170,8 +180,9 @@ map without turning into a supersymmetric dynamics chapter.
   spectral-flow vertex weights, charges, Heisenberg OPE exponents,
   `X^pm/Y^pm` descendant charges, protected LG central-charge arithmetic,
   elliptic-genus spectral-flow Jacobi multipliers, LG `chi_y` charge
-  polynomials and Witten-index counts, and the compact/noncompact
-  supersymmetric rank-one coset central charges,
+  polynomials and Witten-index counts, compact-coset chiral-ring
+  multiplication, associativity, nilpotence, and Ramond charge matching, and
+  the compact/noncompact supersymmetric rank-one coset central charges,
   chiral-primary identities, field-identification identities, spectral-flow
   formulas, and cigar momentum/winding bookkeeping in exact rational
   arithmetic.
@@ -207,3 +218,8 @@ map without turning into a supersymmetric dynamics chapter.
   the full spin-CFT modular theorem boundary, finite LG `chi_y` charge
   polynomials, and exact rational checks for the index, cocycle, and
   Witten-index ledgers.
+- 2026-05-27 compact chiral-ring pass: promoted the compact
+  supersymmetric `SU(2)_k/U(1)` interface from matching chiral-primary
+  weights to deriving the protected `A`-series ring
+  `C[x]/(x^(K+1))`, with exact checks of multiplication, associativity,
+  nilpotence, and Ramond charge matching.

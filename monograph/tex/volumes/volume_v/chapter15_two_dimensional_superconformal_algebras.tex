@@ -1065,6 +1065,70 @@ Example~\ref{ex:a-series-lg-algebra}, after identifying
 interface; it is not, by itself, a proof that a chosen UV
 Landau--Ginzburg regulator flows to this coset.
 
+\begin{proposition}[Compact coset chiral ring]
+\label{prop:compact-susy-coset-chiral-ring}
+Let \(K=k-2\).  For \(0\le \ell\le K\), put
+\[
+  \Phi_\ell=\Psi^{su}_{\ell/2,-\ell/2}
+\]
+for the holomorphic compact-coset chiral primary in the NS sector.  In the
+protected chiral-primary fusion ring,
+\[
+  \Phi_a\Phi_b=
+  \begin{cases}
+    \Phi_{a+b}, & a+b\le K,\\
+    0, & a+b>K,
+  \end{cases}
+  \qquad
+  0\le a,b\le K,
+  \label{eq:compact-susy-coset-chiral-ring-product}
+\]
+after normalizing \(\Phi_0=1\) and the generator \(\Phi_1\).  Hence
+\[
+  \mathcal R_{\rm ch}\bigl(SU(2)_k/U(1)\bigr)
+  \cong
+  \mathbb C[x]/(x^{K+1}),
+  \qquad
+  x^\ell\longleftrightarrow\Phi_\ell .
+  \label{eq:compact-susy-coset-chiral-ring}
+\]
+Here the \(K=0\) endpoint means \(\mathbb C[x]/(x)\cong \mathbb C\), and the
+normalization of \(\Phi_1\) applies only when \(K\ge1\).
+\end{proposition}
+
+\begin{proof}
+The fields \(\Phi_\ell\) are chiral because
+\[
+  h_\ell=\frac{\ell}{2k},
+  \qquad
+  q_\ell=\frac{\ell}{k},
+  \qquad
+  h_\ell=q_\ell/2 .
+\]
+The OPE of two NS chiral primaries has no negative powers in the chiral
+channel.  Indeed any term of \(R\)-charge \(q_a+q_b\) has, by the unitarity
+bound, weight at least \((q_a+q_b)/2=h_a+h_b\).  Thus the chiral-primary
+projection of the product has additive \(R\)-charge.
+
+When \(a+b\le K\), the parent \(\widehat{\mathfrak{su}}(2)_{k-2}\) fusion of
+spins \(a/2\) and \(b/2\) contains the top spin \((a+b)/2\) with
+multiplicity one.  The Cartan charges add from \(-a/2\) and \(-b/2\) to
+\(-(a+b)/2\), so the coset branching contains precisely the chiral primary
+\(\Phi_{a+b}\) in the BPS channel.  The one-dimensionality of this channel
+allows the displayed normalization.
+
+If \(a+b>K\), then the additive charge would be \((a+b)/k>K/k=c/3\).  The
+compact coset has no chiral primary with that charge: the complete chiral
+list is \(0\le \ell\le K\).  Equivalently, the affine fusion truncation
+removes the would-be top spin before it can appear as a chiral coset branch.
+The BPS projection of the product is therefore zero.  The resulting
+associative algebra is the truncated polynomial algebra
+\(\mathbb C[x]/(x^{K+1})\).  This proves the equality of the compact-coset
+protected chiral ring with the \(A\)-series Jacobi algebra as a chiral-data
+statement, while leaving the dynamical LG-to-coset flow theorem to
+Volume~VII.
+\end{proof}
+
 The compact coset has independent holomorphic and antiholomorphic spectral
 flow operations.  Applying \eqref{eq:n2-spectral-flow-hq} with
 \eqref{eq:compact-susy-coset-central-charge} to

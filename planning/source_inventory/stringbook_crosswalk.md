@@ -324,8 +324,9 @@ Current absorption:
   and the supersymmetric rank-one coset interfaces for
   \(SU(2)_k/U(1)\) minimal models and the
   \(SL(2,\mathbb R)_k/U(1)\) cigar, including central charges, weights,
-  \(R\)-charges, spectral-flowed labels, field identifications, compact
-  \(\mathbb Z_k\) action, and cigar momentum/winding bookkeeping.
+  \(R\)-charges, the compact \(A\)-series chiral ring, spectral-flowed
+  labels, field identifications, compact \(\mathbb Z_k\) action, and cigar
+  momentum/winding bookkeeping.
   It explicitly coordinates with the Volume VII supersymmetric-QFT lane for
   the actual LG/GLSM RG-flow, elliptic-genus realization theorem, and
   cigar/Liouville mirror-duality
