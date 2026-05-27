@@ -1770,6 +1770,85 @@ Bros--Epstein--Glaser construction, the passage to the on-shell fixed-\(t\)
 amplitude is a legitimate holomorphic and distributional operation.
 \end{proof}
 
+\begin{definition}[Admissible fixed-\(t\) two-cut exhaustion]
+\label{def:admissible-fixed-t-two-cut-exhaustion}
+Let \(b<a\) be real numbers and set
+\[
+  C_R=[a,\infty),\qquad C_L=(-\infty,b],\qquad
+  \Omega=\mathbb C\setminus(C_R\cup C_L).
+\]
+An admissible exhaustion of \(\Omega\) is a family of bounded domains
+\(\Omega_{\mathcal R,\epsilon}\Subset\Omega\), indexed by
+\(\mathcal R\to\infty\) and \(\epsilon\downarrow0\), whose positively
+oriented boundaries are piecewise \(C^1\) and have the following structure.
+For each fixed \(\epsilon>0\) and all sufficiently large
+\(\mathcal R\), the boundary decomposes as
+\[
+  \partial\Omega_{\mathcal R,\epsilon}
+  =
+  \Gamma^\infty_{\mathcal R,\epsilon}
+  \cup
+  \Gamma^{R,+}_{\mathcal R,\epsilon}
+  \cup
+  \Gamma^{R,-}_{\mathcal R,\epsilon}
+  \cup
+  \Gamma^{L,+}_{\mathcal R,\epsilon}
+  \cup
+  \Gamma^{L,-}_{\mathcal R,\epsilon}
+  \cup
+  E_{\mathcal R,\epsilon}.
+  \label{eq:fixed-t-admissible-boundary-decomposition}
+\]
+The large part \(\Gamma^\infty_{\mathcal R,\epsilon}\) lies in the annulus
+\(\mathcal R-c_\epsilon\le |w|\le \mathcal R+c_\epsilon\) and obeys
+\[
+  \operatorname{length}\Gamma^\infty_{\mathcal R,\epsilon}
+  \le c_\epsilon\mathcal R .
+  \label{eq:fixed-t-admissible-large-length}
+\]
+The right lips are parameterized, up to endpoint smoothings contained in
+\(E_{\mathcal R,\epsilon}\), by
+\[
+  w=\sigma+\ii\epsilon,\qquad
+  w=\sigma-\ii\epsilon,
+  \qquad
+  a+\epsilon\le \sigma\le \mathcal R ,
+  \label{eq:fixed-t-admissible-right-lips}
+\]
+with the induced orientation upper minus lower.  The left lips are similarly
+parameterized by
+\[
+  w=\sigma+\ii\epsilon,\qquad
+  w=\sigma-\ii\epsilon,
+  \qquad
+  -\mathcal R\le \sigma\le b-\epsilon ,
+  \label{eq:fixed-t-admissible-left-lips}
+\]
+again with upper-minus-lower orientation after writing the integral in the
+increasing real variable \(\sigma\).  The connector set
+\(E_{\mathcal R,\epsilon}\) consists of finitely many smooth arcs joining the
+lips to the large part and to small circles around the finite endpoints
+\(a\) and \(b\).  Its finite-endpoint components have length
+\(O_\epsilon(1)\) and shrink to the endpoints as \(\epsilon\downarrow0\);
+its large-end components lie in the same annulus as
+\(\Gamma^\infty_{\mathcal R,\epsilon}\) and have total length
+\(O_\epsilon(1)\).  Finally, for every compact
+\(K\Subset\Omega\), one has
+\[
+  K\subset\Omega_{\mathcal R,\epsilon}
+\]
+for all sufficiently large \(\mathcal R\) and sufficiently small
+\(\epsilon\).
+
+The definition is intentionally invariant under smoothing of the corners.
+If two admissible exhaustions have the same parameters, the difference of
+their boundaries is the boundary of a compact subset of \(\Omega\), together
+with connector arcs whose limits are either zero by the large-\(\mathcal R\)
+estimate or are included in the endpoint boundary distributions.  Therefore
+Cauchy's theorem gives the same limiting formula for every admissible
+choice.
+\end{definition}
+
 \begin{theorem}[Finite-subtraction Cauchy formula in a fixed-\(t\) cut plane]
 \label{thm:fixed-t-finite-subtraction-cauchy}
 Let \(b<a\) be real numbers and set
@@ -1795,8 +1874,9 @@ Choose temperedness data \(N_R,N_L\) for the weight orders of \(T_R\) and
 \(T_L\), in the sense of
 \eqref{eq:tempered-cut-order-data} after translating each cut coordinate to
 the real line.  Suppose also that, for some \(A\ge0\), the large circular
-parts \(\Gamma^\infty_{\mathcal R,\epsilon}\) of an admissible cut-plane exhaustion
-obey
+parts \(\Gamma^\infty_{\mathcal R,\epsilon}\) of an admissible two-cut
+exhaustion in the sense of
+Definition~\ref{def:admissible-fixed-t-two-cut-exhaustion} obey
 \[
   \sup_{w\in\Gamma^\infty_{\mathcal R,\epsilon}}
   |F(w)|\le C_\epsilon \mathcal R^A
@@ -1804,10 +1884,7 @@ obey
   \label{eq:fixed-t-large-circle-polynomial-bound}
 \]
 for every fixed slit-opening regulator \(\epsilon>0\), with constants
-independent of \(R\).  Here the regulator means that the contour runs on the
-two sides of the cuts and connects them to the large circle by small arcs
-that stay a fixed positive angle away from the cut directions before the
-boundary-value limit is taken.
+independent of \(\mathcal R\).
 Choose distinct subtraction points
 \(s_1,\ldots,s_q\in\Omega\), away from \(z\) and from the poles \(p_\nu\),
 with
@@ -1861,6 +1938,11 @@ For fixed \(z\in\Omega\), consider
   \Phi(w;z)=\frac{F(w)}{w-z}B_q(w,z).
   \label{eq:fixed-t-cauchy-integrand}
 \]
+Write
+\[
+  K_z(w)=\frac{B_q(w,z)}{w-z}.
+  \label{eq:fixed-t-cauchy-proof-kernel}
+\]
 On a large circle \(|w|=\mathcal R\), away from the slit regulators,
 \[
   |\Phi(w;z)|
@@ -1868,8 +1950,14 @@ On a large circle \(|w|=\mathcal R\), away from the slit regulators,
   C_z \mathcal R^A \mathcal R^{-1}\mathcal R^{-q}
   =C_z\mathcal R^{A-q-1}.
 \]
-The length of the large circular part is \(O(\mathcal R)\), hence its contribution is
-\(O(\mathcal R^{A-q})\), which tends to zero because \(q>A\).
+By
+\eqref{eq:fixed-t-admissible-large-length}, the large circular part has
+length \(O_\epsilon(\mathcal R)\), hence its contribution is
+\(O_\epsilon(\mathcal R^{A-q})\), which tends to zero because \(q>A\).
+The large-end connector arcs in
+Definition~\ref{def:admissible-fixed-t-two-cut-exhaustion} have
+\(O_\epsilon(1)\) total length in the same annulus, so their contribution is
+\(O_\epsilon(\mathcal R^{A-q-1})\) and also tends to zero.
 
 The residues of \(\Phi\) inside the cut-plane contour are the residue at
 \(w=z\), the residues at the subtraction points \(s_j\), and the residues at
@@ -1891,9 +1979,35 @@ and, using the pole convention
   -\,\frac{A_\nu}{p_\nu-z}B_q(p_\nu,z).
   \label{eq:fixed-t-cauchy-stable-pole-residue}
 \]
-The boundary of the cut plane has the standard upper-minus-lower orientation
-on each cut.  For contours whose lips lie a positive distance from the cuts,
-the finite part of the boundary integral is
+The admissible boundary has the standard upper-minus-lower orientation on
+each cut by
+\eqref{eq:fixed-t-admissible-right-lips} and
+\eqref{eq:fixed-t-admissible-left-lips}.  For fixed
+\((\mathcal R,\epsilon)\), before taking boundary values, the lip part is
+\begin{align}
+  I^{\rm lip}_{\mathcal R,\epsilon}(z)
+  &=
+  \frac{1}{2\pi\ii}
+  \int_{a+\epsilon}^{\mathcal R}\!\dd\sigma\,
+  \left(
+  F(\sigma+\ii\epsilon)K_z(\sigma+\ii\epsilon)
+  -
+  F(\sigma-\ii\epsilon)K_z(\sigma-\ii\epsilon)
+  \right)
+  \nonumber\\
+  &\quad+
+  \frac{1}{2\pi\ii}
+  \int_{-\mathcal R}^{b-\epsilon}\!\dd\sigma\,
+  \left(
+  F(\sigma+\ii\epsilon)K_z(\sigma+\ii\epsilon)
+  -
+  F(\sigma-\ii\epsilon)K_z(\sigma-\ii\epsilon)
+  \right)
+  \label{eq:fixed-t-cauchy-cut-lip-epsilon-integral}
+\end{align}
+up to the connector arcs already described.  After the limits
+\(\mathcal R\to\infty\) and \(\epsilon\downarrow0\), this lip contribution
+becomes
 \[
   \frac{1}{2\pi\ii}
   \left[
@@ -1905,9 +2019,16 @@ the finite part of the boundary integral is
   \right].
   \label{eq:fixed-t-cauchy-cut-boundary-integral}
 \]
-The residue theorem says that this boundary integral equals the sum of the
-residues just displayed, since the large circle has disappeared.  Solving for
-\(F(z)\) gives \eqref{eq:fixed-t-finite-subtraction-cauchy-theorem}.
+The finite-endpoint connector arcs are small circles around \(a\) and \(b\).
+They are not discarded pointwise; their limits are part of the
+distributional boundary values at threshold.  Thus any threshold-supported
+terms produced by endpoint singularities are represented inside \(T_R\) or
+\(T_L\).
+The residue theorem applied before the limits says that the finite lip
+integral plus connector and large-contour terms equals the sum of the
+residues just displayed.  Passing to the limits removes the large terms and
+absorbs the finite-endpoint limits into \(T_R,T_L\).  Solving for \(F(z)\)
+gives \eqref{eq:fixed-t-finite-subtraction-cauchy-theorem}.
 
 It remains to pass from lip integrals to distributional boundary values and
 to justify the pairings.  On \(C_R\), for large \(\sigma\),

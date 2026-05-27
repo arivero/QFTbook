@@ -203,7 +203,11 @@ hypotheses:
     large-contour bound, then for any subtraction number \(q\) larger than
     the growth and temperedness orders it obeys the explicit
     \(q\)-subtracted Cauchy formula with Lagrange interpolation polynomial,
-    stable-pole residues, and distributional cut pairings.
+    stable-pole residues, and distributional cut pairings.  The admissible
+    two-cut exhaustion used in the proof is now defined explicitly: large
+    arcs, upper/lower lips, endpoint and large-end connectors, orientations,
+    exhaustion of compact subsets, and length estimates are part of the
+    statement rather than implicit contour language.
 10f. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
     primitive tube analyticity of four-point Wightman functions; local
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
@@ -217,7 +221,8 @@ hypotheses:
     theorem, source-current coincidence-region theorem, conditional
     causal-commutator Dyson/JLD representation, and analytic LSZ-transfer
     theorem are now proved in the manuscript, and the one-variable
-    finite-subtraction Cauchy theorem is also proved.  The
+    finite-subtraction Cauchy theorem is also proved with its admissible
+    two-cut contour class specified.  The
     remaining Dyson-regularity verification for the LSZ source-current matrix
     coefficients and the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
     completion with uniform off-shell control and a pointwise large-contour

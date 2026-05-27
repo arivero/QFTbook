@@ -80,6 +80,12 @@ inside the monograph, not left as literature imports.
     finite-subtraction Cauchy formula in a fixed-\(t\) cut plane from a
     meromorphic first-sheet domain, explicit stable-particle poles, tempered
     discontinuities on the two cuts, and a polynomial large-contour bound.
+  - `def:admissible-fixed-t-two-cut-exhaustion`, defining the contour
+    exhaustions used in the finite-subtraction theorem.  The definition now
+    specifies the large circular part, right and left lips, endpoint and
+    large-end connector arcs, orientations, exhaustion property, and length
+    estimates needed to justify dropping the large arcs while keeping
+    threshold endpoint contributions inside the cut distributions.
 
 ## Planning updates
 
@@ -103,7 +109,10 @@ explicit, including the cone equation and pushforward normalization that a
 physical source-current kernel must satisfy.  The source-current differential
 pass proves that the LSZ replacement \(J=\mathcal K\Phi\) itself preserves the
 punctured wavefront and scaling inputs; the remaining regularity issue is
-therefore not a hidden derivative problem.  Remaining closure work:
+therefore not a hidden derivative problem.  The fixed-\(t\) Cauchy theorem
+now also has an explicit admissible two-cut contour class, so its
+large-contour and threshold-endpoint limits are no longer hidden in the
+word ``admissible.''  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application.  The new microlocal proposition
