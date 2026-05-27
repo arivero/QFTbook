@@ -780,6 +780,65 @@ the DHM kernel, including the failure that occurs if the contact term is
 omitted.
 \end{proof}
 
+\begin{proposition}[DHM pole lattice and admissible local continuations]
+\label{prop:planar-n4-dhm-pole-lattice}
+Let
+\[
+  \Delta(z,w)=z+z^{-1}-w-w^{-1}.
+\]
+For fixed \(g>0\), the Gamma-kernel logarithm \(\mathcal L_g(z,w)\) can
+develop singularities only on the divisors
+\begin{equation}
+  \Delta(z,w)=\frac{\ii n}{g}
+  \quad\hbox{or}\quad
+  \Delta(z,w)=-\frac{\ii n}{g},
+  \qquad n\in\mathbb Z_{\ge1}.
+  \label{eq:planar-n4-dhm-pole-lattice}
+\end{equation}
+Consequently the one-residue correction \(\Psi_x^{\epsilon_y}(x,y)\) is a
+single-valued holomorphic function on any connected region in which
+\[
+  x+x^{-1}-w-w^{-1}\notin \frac{\ii}{g}
+  \bigl(\mathbb Z\setminus\{0\}\bigr)
+\]
+for every \(w\) on the chosen \(y\)-contour, and similarly for
+\(\Psi_y^{\epsilon_x}\).  The contact term
+\(\mathcal C_g(x,y)=\ii\mathcal L_g(x,y)\) is holomorphic precisely away
+from the endpoint divisors
+\[
+  x+x^{-1}-y-y^{-1}\in
+  \frac{\ii}{g}\bigl(\mathbb Z\setminus\{0\}\bigr).
+\]
+If a crossing path for \(x_1^\pm\) satisfies these avoidance conditions for
+each of the four pairs \((x_1^\alpha,x_2^\beta)\),
+\(\alpha,\beta\in\{+,-\}\), except for the Cauchy-pole crossings already
+accounted for in
+Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}, then
+Proposition~\ref{prop:planar-n4-bes-phase-local-crossing} applies with no
+additional Gamma-pole residue terms.
+\end{proposition}
+
+\begin{proof}
+The Gamma function has poles at \(0,-1,-2,\ldots\).  The numerator in
+\(\mathcal L_g\) is singular only when
+\[
+  1+\ii g\Delta(z,w)=1-n,\qquad n\in\mathbb Z_{\ge1},
+\]
+which is equivalent to \(\Delta(z,w)=\ii n/g\).  The denominator is singular
+only when
+\[
+  1-\ii g\Delta(z,w)=1-n,\qquad n\in\mathbb Z_{\ge1},
+\]
+which is equivalent to \(\Delta(z,w)=-\ii n/g\).  This proves
+\eqref{eq:planar-n4-dhm-pole-lattice}.  The displayed conditions for
+\(\Psi_x\), \(\Psi_y\), and \(\mathcal C_g\) are the same divisors evaluated
+after setting \(z=x\), \(w=y\), or one variable on the remaining contour.
+Away from those divisors the integrands are holomorphic in the external
+variables and the contour deformations are ordinary Cauchy deformations.
+Thus a path that crosses only the specified Cauchy poles has exactly the
+residue contributions listed above, with no further Gamma-kernel terms.
+\end{proof}
+
 \begin{proposition}[Local crossing of the BES phase]
 \label{prop:planar-n4-bes-phase-local-crossing}
 Assume \(x_1^\pm\) and \(x_2^\pm\) lie in the physical DHM chamber

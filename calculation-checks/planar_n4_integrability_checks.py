@@ -969,6 +969,79 @@ def check_dhm_local_residue_continuation() -> None:
         raise AssertionError("DHM crossed BES theta signs unexpectedly worked when reversed")
 
 
+def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
+    """Check the DHM Gamma-kernel pole lattice used in crossing hypotheses."""
+
+    coupling = 0.6
+
+    for pole_level in range(1, 6):
+        delta_plus = 1j * pole_level / coupling
+        delta_minus = -1j * pole_level / coupling
+        assert_close(
+            "DHM numerator Gamma pole lattice",
+            1 + 1j * coupling * delta_plus,
+            1 - pole_level,
+        )
+        assert_close(
+            "DHM denominator regular at numerator pole",
+            1 - 1j * coupling * delta_plus,
+            1 + pole_level,
+        )
+        assert_close(
+            "DHM denominator Gamma pole lattice",
+            1 - 1j * coupling * delta_minus,
+            1 - pole_level,
+        )
+        assert_close(
+            "DHM numerator regular at denominator pole",
+            1 + 1j * coupling * delta_minus,
+            1 + pole_level,
+        )
+
+    def delta_value(x_value: complex, y_value: complex) -> complex:
+        return x_value + 1 / x_value - y_value - 1 / y_value
+
+    def zhukovsky_roots(total: complex) -> tuple[complex, complex]:
+        root = cmath.sqrt(total * total - 4)
+        return 0.5 * (total + root), 0.5 * (total - root)
+
+    y_value = 1.37 + 0.21j
+    for sign in (1, -1):
+        for pole_level in (1, 3, 5):
+            target_delta = sign * 1j * pole_level / coupling
+            target_sum = y_value + 1 / y_value + target_delta
+            x_value = zhukovsky_roots(target_sum)[0]
+            assert_close(
+                "DHM endpoint pole divisor realization",
+                delta_value(x_value, y_value),
+                target_delta,
+            )
+
+    def pole_clearance(delta: complex, max_level: int = 8) -> float:
+        return min(
+            min(
+                abs(delta - 1j * level / coupling),
+                abs(delta + 1j * level / coupling),
+            )
+            for level in range(1, max_level + 1)
+        )
+
+    safe_pairs = (
+        (2 + 0j, 5 + 0j),
+        (3 + 0j, 7 + 0j),
+        (0.5 + 0j, 5 + 0j),
+        (1 / 3 + 0j, 7 + 0j),
+        (0.72 + 0.13j, 1.31 - 0.17j),
+        (-0.61 + 0.21j, -1.44 - 0.19j),
+    )
+    for x_value, y_value in safe_pairs:
+        if pole_clearance(delta_value(x_value, y_value)) <= 1.0e-3:
+            raise AssertionError("DHM admissible sample lies on the Gamma pole lattice")
+
+    unsafe_delta = 1j * 4 / coupling
+    assert_close("DHM pole clearance vanishes on pole lattice", pole_clearance(unsafe_delta), 0)
+
+
 def check_su2c_matrix_amplitudes_and_unitarity() -> None:
     """Port finite checks from the stringbook su(2|2) S-matrix notebook."""
 
@@ -3866,6 +3939,7 @@ def main() -> None:
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
     check_dhm_local_residue_continuation()
+    check_dhm_gamma_pole_lattice_and_admissibility()
     check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()

@@ -24,6 +24,7 @@ the monograph's proof-boundary language.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
 - `mathcal L_g(z,w)`: logarithmic Gamma-function kernel inside the DHM
   double contour.
+- `Delta(z,w)=z+z^{-1}-w-w^{-1}`: DHM Gamma-kernel pole-lattice coordinate.
 - `chi_raw^{epsilon_x,epsilon_y}`: DHM unit-circle contour evaluated with
   the Cauchy kernels expanded in specified radial chambers.
 - `Psi_x`, `Psi_y`, `mathcal C_g`: one-residue and double-residue contact
@@ -100,6 +101,11 @@ the monograph's proof-boundary language.
   residue in the stringbook sign convention, and crossing both variables
   subtracts the double-residue contact term `i mathcal L_g(x,y)`, producing
   the notebook's final `-i mathcal L_g(x,y)` contribution.
+- Derives the DHM Gamma-kernel pole lattice
+  `Delta(z,w)=+/- i n/g`, `n>=1`, and states the corresponding admissibility
+  hypotheses for one-residue, contact, and four-kernel crossed-BES
+  continuations.  This makes explicit when local Cauchy residues are the only
+  residues crossed.
 - Applies the local DHM rule to the four-kernel BES phase for a crossed first
   particle, deriving the residue combination
   `-Psi(x1+,x2+)+Psi(x1+,x2-)+Psi(x1-,x2+)-Psi(x1-,x2-)` and explicitly
@@ -245,6 +251,10 @@ crossed Zhukovsky sheets.
   term.  The same check now verifies the crossed-first-particle four-kernel
   BES phase residue signs and confirms that reversing them does not restore
   the outside branch.
+- It checks the DHM Gamma-kernel pole lattice: numerator and denominator
+  Gamma singularities occur at `Delta=+/- i n/g`, explicit endpoint pole
+  divisors can be realized by solving `x+1/x`, and representative admissible
+  samples stay away from the finite pole lattice.
 - It ports the local finite checks from the stringbook `su(2|2) spin
   chain.nb` notebook: the ten-amplitude formulas satisfy the
   highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed

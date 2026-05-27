@@ -1635,3 +1635,35 @@ Calculation checks added:
   stringbook multiplier `Xi_12` makes the channel ratio one, that the
   reciprocal multiplier fails, and that the positive real chamber fixes the
   unsquared square-root branch.
+
+## Continuation LII: DHM Gamma-Pole Admissibility
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a DHM pole-lattice proposition immediately after the local
+  residue-continuation rule.
+- The text defines `Delta(z,w)=z+z^{-1}-w-w^{-1}` and derives the
+  Gamma-kernel singular divisors `Delta=+/- i n/g`, `n>=1`, from the poles
+  of the numerator and denominator Gamma functions.
+- It states admissibility conditions for one-residue corrections, the
+  double-residue contact term, and the four-kernel crossed-BES phase: the
+  crossing path may cross the named Cauchy poles, but the Gamma-pole divisors
+  must be avoided unless an additional residue contribution is being
+  explicitly tracked.
+- The crosswalk now records the Gamma-pole lattice and local admissibility
+  hypotheses as incorporated, leaving the genuinely global scalar-branch
+  monodromy and homotopy dependence as remaining work.
+
+Calculation checks added:
+
+- Added `check_dhm_gamma_pole_lattice_and_admissibility()`.  The check
+  verifies the numerator and denominator pole signs, realizes endpoint pole
+  divisors by solving `x+1/x`, checks representative admissible samples, and
+  confirms that clearance vanishes on the constructed pole lattice.
