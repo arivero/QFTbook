@@ -46,6 +46,10 @@ inside the monograph, not left as literature imports.
     uniform polynomial boundary growth, then the LSZ-amputated on-shell
     amplitude is holomorphic on the fixed-\(t\) domain and inherits tempered
     cut discontinuities.
+  - `thm:fixed-t-finite-subtraction-cauchy`, proving the one-variable
+    finite-subtraction Cauchy formula in a fixed-\(t\) cut plane from a
+    meromorphic first-sheet domain, explicit stable-particle poles, tempered
+    discontinuities on the two cuts, and a polynomial large-contour bound.
 
 ## Planning updates
 
@@ -68,6 +72,6 @@ regularity no longer hidden in notation.  Remaining closure work:
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate
-   control needed to apply `thm:lsz-transfer-fixed-t-domain`.
-3. Prove the finite-subtraction fixed-\(t\) Cauchy representation from the
-   resulting domain rather than taking it as an independent hypothesis.
+   control needed to apply `thm:lsz-transfer-fixed-t-domain`, and the
+   pointwise large-contour polynomial estimate needed to apply
+   `thm:fixed-t-finite-subtraction-cauchy`.

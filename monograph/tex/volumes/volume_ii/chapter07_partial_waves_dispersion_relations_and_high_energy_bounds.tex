@@ -1634,10 +1634,13 @@ conditional implication:
 The genuinely QFT-specific theorem is the preceding line's input: locality,
 the spectrum condition, LSZ pole separation, and the
 Jost--Lehmann--Dyson/Bros--Epstein--Glaser domain analysis must supply the
-fixed-\(t\) first-sheet domain and a finite-subtraction representation with
-tempered cut distributions.  This is the Jin--Martin proof layer.  It is a
-proof obligation for the analytic-scattering part of this monograph, not a
-consequence of Wightman temperedness alone.
+fixed-\(t\) first-sheet domain, the pointwise large-contour growth estimate,
+and the tempered cut distributions.  Once those inputs are known, the
+finite-subtraction Cauchy formula itself follows from
+Theorem~\ref{thm:fixed-t-finite-subtraction-cauchy}.  This is the
+Jin--Martin proof layer.  It is a proof obligation for the analytic-scattering
+part of this monograph and requires more data than Wightman temperedness
+alone.
 \end{corollary}
 
 \begin{proof}
@@ -1646,9 +1649,10 @@ last statement of Proposition~\ref{prop:subtracted-cauchy-transform-tempered-cut
 The remaining sentence identifies the hypotheses not used in the proof of
 that proposition.  The construction of the first-sheet fixed-\(t\) domain is
 an analytic-continuation theorem for Wightman functions and LSZ limits, not a
-consequence of the topological definition of \(\mathcal S'\).  Similarly,
-the finite-subtraction formula is a global Cauchy statement in that domain.
-Both require the locality and spectral machinery named in the corollary.
+consequence of the topological definition of \(\mathcal S'\).  Similarly, the
+pointwise large-contour bound is not a theorem about all tempered boundary
+values.  The global Cauchy formula is proved below, but it needs those
+domain and growth hypotheses before it can be applied to a QFT amplitude.
 \end{proof}
 
 \begin{theorem}[LSZ transfer of a fixed-\(t\) holomorphic domain]
@@ -1766,6 +1770,165 @@ Bros--Epstein--Glaser construction, the passage to the on-shell fixed-\(t\)
 amplitude is a legitimate holomorphic and distributional operation.
 \end{proof}
 
+\begin{theorem}[Finite-subtraction Cauchy formula in a fixed-\(t\) cut plane]
+\label{thm:fixed-t-finite-subtraction-cauchy}
+Let \(b<a\) be real numbers and set
+\[
+  C_R=[a,\infty),\qquad C_L=(-\infty,b],\qquad
+  \Omega=\mathbb C\setminus(C_R\cup C_L).
+\]
+Let \(F\) be meromorphic in \(\Omega\), with only finitely many simple poles
+\(p_\nu\in\Omega\), and write its local pole part as
+\[
+  F(w)=\frac{A_\nu}{p_\nu-w}+\text{holomorphic near }p_\nu .
+  \label{eq:fixed-t-cauchy-pole-convention}
+\]
+Assume that \(F\) has polynomial boundary growth at the two cuts, so that the
+upper and lower boundary values on each cut exist as tempered distributions,
+and denote the discontinuities by
+\[
+  T_R=F(\sigma+\ii0)-F(\sigma-\ii0)\quad(\sigma\in C_R),
+  \qquad
+  T_L=F(\sigma+\ii0)-F(\sigma-\ii0)\quad(\sigma\in C_L).
+\]
+Choose temperedness data \(N_R,N_L\) for the weight orders of \(T_R\) and
+\(T_L\), in the sense of
+\eqref{eq:tempered-cut-order-data} after translating each cut coordinate to
+the real line.  Suppose also that, for some \(A\ge0\), the large circular
+parts \(\Gamma^\infty_{\mathcal R,\epsilon}\) of an admissible cut-plane exhaustion
+obey
+\[
+  \sup_{w\in\Gamma^\infty_{\mathcal R,\epsilon}}
+  |F(w)|\le C_\epsilon \mathcal R^A
+  \qquad(\mathcal R\to\infty)
+  \label{eq:fixed-t-large-circle-polynomial-bound}
+\]
+for every fixed slit-opening regulator \(\epsilon>0\), with constants
+independent of \(R\).  Here the regulator means that the contour runs on the
+two sides of the cuts and connects them to the large circle by small arcs
+that stay a fixed positive angle away from the cut directions before the
+boundary-value limit is taken.
+Choose distinct subtraction points
+\(s_1,\ldots,s_q\in\Omega\), away from \(z\) and from the poles \(p_\nu\),
+with
+\[
+  q>\max\{A,N_R,N_L\}.
+\]
+Define
+\[
+  B_q(w,z)=\prod_{j=1}^q\frac{z-s_j}{w-s_j},
+  \qquad
+  L_j(z)=\prod_{k\ne j}\frac{z-s_k}{s_j-s_k}.
+  \label{eq:fixed-t-cauchy-subtraction-kernels}
+\]
+Then, for \(z\in\Omega\) not equal to a pole,
+\begin{align}
+  F(z)
+  &=
+  P_{q-1}(z)
+  +
+  \sum_\nu
+  \frac{A_\nu}{p_\nu-z}\,B_q(p_\nu,z)
+  \nonumber\\
+  &\quad
+  +
+  \frac{1}{2\pi\ii}
+  \left\langle T_R(\sigma),
+    \frac{B_q(\sigma,z)}{\sigma-z}
+  \right\rangle_{C_R}
+  +
+  \frac{1}{2\pi\ii}
+  \left\langle T_L(\sigma),
+    \frac{B_q(\sigma,z)}{\sigma-z}
+  \right\rangle_{C_L},
+  \label{eq:fixed-t-finite-subtraction-cauchy-theorem}
+\end{align}
+where
+\[
+  P_{q-1}(z)=\sum_{j=1}^qF(s_j)L_j(z)
+  \label{eq:fixed-t-cauchy-interpolation-polynomial}
+\]
+is the degree at most \(q-1\) interpolation polynomial at the subtraction
+points.  Endpoint singularities at \(a\) or \(b\), if present as boundary
+distributions, are included in \(T_R\) or \(T_L\).  Thus no separate
+``threshold circle'' term is present once the discontinuities are understood
+distributionally.
+\end{theorem}
+
+\begin{proof}
+For fixed \(z\in\Omega\), consider
+\[
+  \Phi(w;z)=\frac{F(w)}{w-z}B_q(w,z).
+  \label{eq:fixed-t-cauchy-integrand}
+\]
+On a large circle \(|w|=\mathcal R\), away from the slit regulators,
+\[
+  |\Phi(w;z)|
+  \le
+  C_z \mathcal R^A \mathcal R^{-1}\mathcal R^{-q}
+  =C_z\mathcal R^{A-q-1}.
+\]
+The length of the large circular part is \(O(\mathcal R)\), hence its contribution is
+\(O(\mathcal R^{A-q})\), which tends to zero because \(q>A\).
+
+The residues of \(\Phi\) inside the cut-plane contour are the residue at
+\(w=z\), the residues at the subtraction points \(s_j\), and the residues at
+the poles \(p_\nu\) of \(F\).  They are
+\[
+  \operatorname*{Res}_{w=z}\Phi(w;z)=F(z),
+\]
+\[
+  \operatorname*{Res}_{w=s_j}\Phi(w;z)
+  =
+  -F(s_j)L_j(z),
+  \label{eq:fixed-t-cauchy-subtraction-residue}
+\]
+and, using the pole convention
+\eqref{eq:fixed-t-cauchy-pole-convention},
+\[
+  \operatorname*{Res}_{w=p_\nu}\Phi(w;z)
+  =
+  -\,\frac{A_\nu}{p_\nu-z}B_q(p_\nu,z).
+  \label{eq:fixed-t-cauchy-stable-pole-residue}
+\]
+The boundary of the cut plane has the standard upper-minus-lower orientation
+on each cut.  For contours whose lips lie a positive distance from the cuts,
+the finite part of the boundary integral is
+\[
+  \frac{1}{2\pi\ii}
+  \left[
+  \int_{C_R}\!\dd\sigma\,
+  \frac{F(\sigma+\ii0)-F(\sigma-\ii0)}{\sigma-z}B_q(\sigma,z)
+  +
+  \int_{C_L}\!\dd\sigma\,
+  \frac{F(\sigma+\ii0)-F(\sigma-\ii0)}{\sigma-z}B_q(\sigma,z)
+  \right].
+  \label{eq:fixed-t-cauchy-cut-boundary-integral}
+\]
+The residue theorem says that this boundary integral equals the sum of the
+residues just displayed, since the large circle has disappeared.  Solving for
+\(F(z)\) gives \eqref{eq:fixed-t-finite-subtraction-cauchy-theorem}.
+
+It remains to pass from lip integrals to distributional boundary values and
+to justify the pairings.  On \(C_R\), for large \(\sigma\),
+\[
+  \frac{B_q(\sigma,z)}{\sigma-z}=O(|\sigma|^{-q-1}),
+\]
+and every \(\sigma\)-derivative has at least the same leading decay improved
+by one further power, up to constants depending on \(z\) and the subtraction
+points.  The same estimate holds on \(C_L\).  Because \(q\) is larger than the
+tempered weight orders of \(T_R\) and \(T_L\), the two kernels define
+Schwartz test functions on the cut coordinates after a smooth extension
+across the finite endpoints.  Polynomial boundary growth is exactly the
+hypothesis that the lip values of \(F\) converge to the tempered boundary
+distributions \(F(\sigma\pm\ii0)\).  Testing those convergent boundary values
+against the displayed kernels gives the distributional limit of
+\eqref{eq:fixed-t-cauchy-cut-boundary-integral}; endpoint contributions, if
+any, are included in the same distributional limit.  This limit is precisely
+the pairing displayed in
+\eqref{eq:fixed-t-finite-subtraction-cauchy-theorem}.
+\end{proof}
+
 The domain theorem to be proved is therefore not the elementary estimate
 above, but the construction of its hypotheses from the Wightman data.  Its
 logical pieces are: the primitive Wightman tube theorem from the spectrum
@@ -1789,9 +1952,12 @@ Corollary~\ref{cor:jld-input-for-lsz-retarded-commutator}.  The remaining
 steps are the Dyson-regularity verification for the relevant LSZ
 source-current matrix coefficients and the Bros--Epstein--Glaser
 fixed-\(t\) enlargement with the uniform normal-coordinate control required
-for Theorem~\ref{thm:lsz-transfer-fixed-t-domain}.  These are needed before
-the Jin--Martin polynomial bound can be promoted from a conditional input to a
-derived scattering theorem.
+for Theorem~\ref{thm:lsz-transfer-fixed-t-domain}, together with the
+large-contour polynomial estimate needed in
+Theorem~\ref{thm:fixed-t-finite-subtraction-cauchy}.  These are needed before
+the Jin--Martin polynomial bound and the corresponding finite-subtraction
+dispersion formula can be promoted from conditional inputs to derived
+scattering theorems.
 Complex-analysis results such as the
 edge-of-the-wedge theorem are tools in this construction; they do not replace
 the field-theoretic support, locality, and LSZ arguments.
@@ -1906,10 +2072,12 @@ stated as hypotheses whenever they are used below.
 \end{remark}
 
 For the invariant amplitude, fix real \(t<0\) and continue \(s\) to the
-complex plane.  The displayed dispersion formula records the cut terms in a
-kinematic situation where bound-state pole terms and anomalous first-sheet
-terms are absent; when such terms are present, their residues are added
-explicitly.  More concretely, if the first sheet contains simple stable-particle
+complex plane.  Theorem~\ref{thm:fixed-t-finite-subtraction-cauchy} is the
+precise one-variable Cauchy statement behind the following physics notation.
+The displayed dispersion formula records the cut terms in a kinematic
+situation where bound-state pole terms and anomalous first-sheet terms are
+absent; when such terms are present, their residues are added explicitly.
+More concretely, if the first sheet contains simple stable-particle
 poles with local behavior
 \[
   \mathcal M(s,t)\sim\frac{R_B^{(s)}(t)}{M_B^2-s}

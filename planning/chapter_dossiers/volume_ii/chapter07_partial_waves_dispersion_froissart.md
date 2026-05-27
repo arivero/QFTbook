@@ -182,7 +182,7 @@ hypotheses:
     tempered discontinuities implies pointwise polynomial growth on fixed
     contours.  The remaining Jin--Martin work is a proof obligation in the
     monograph: construct the fixed-\(t\) first-sheet domain and
-    finite-subtraction representation from locality, spectral support, LSZ,
+    large-contour polynomial estimate from locality, spectral support, LSZ,
     and Jost--Lehmann--Dyson/Bros--Epstein--Glaser machinery.
 10d. The analytic LSZ transfer step is now proved as a theorem.  If an
     off-shell connected four-point germ is holomorphic in a fixed-\(t\)
@@ -196,7 +196,15 @@ hypotheses:
     then \(\mathcal M_t(s)=H_t(s,0)\) is holomorphic in the same fixed-\(t\)
     domain and inherits tempered cut discontinuities.  The proof is the Cauchy
     formula in the normal variables plus continuity of boundary-value maps.
-10e. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
+10e. The finite-subtraction Cauchy formula in a fixed-\(t\) cut plane is now
+    proved as a theorem.  If a first-sheet function is meromorphic away from
+    the right and left cuts, has only finitely many simple stable-particle
+    poles, has tempered discontinuities on the cuts, and obeys a polynomial
+    large-contour bound, then for any subtraction number \(q\) larger than
+    the growth and temperedness orders it obeys the explicit
+    \(q\)-subtracted Cauchy formula with Lagrange interpolation polynomial,
+    stable-pole residues, and distributional cut pairings.
+10f. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
     primitive tube analyticity of four-point Wightman functions; local
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
     Jost--Lehmann--Dyson representation for Dyson-regular retarded commutator
@@ -205,11 +213,13 @@ hypotheses:
     has the normal-crossing external-pole control required by the LSZ-transfer
     theorem.  The primitive Wightman tube-domain theorem, Jost-edge gluing
     theorem, conditional causal-commutator Dyson/JLD representation, and
-    analytic LSZ-transfer theorem are now proved in the manuscript.  The
+    analytic LSZ-transfer theorem are now proved in the manuscript, and the
+    one-variable finite-subtraction Cauchy theorem is also proved.  The
     remaining Dyson-regularity verification for the LSZ source-current matrix
     coefficients and the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
-    completion with uniform off-shell control are still to be proved in the
-    monograph, not left as permanent citations.
+    completion with uniform off-shell control and a pointwise large-contour
+    estimate are still to be proved in the monograph, not left as permanent
+    citations.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
       \operatorname{Im}\mathcal A(s,0)\ge
@@ -412,3 +422,12 @@ hypotheses:
   remaining LSZ-related work is no longer the abstract transfer argument, but
   the verification that the BEG/JLD off-shell domain for the actual Wightman
   source-current kernels satisfies these hypotheses.
+- 2026-05-27 issue #495 finite-subtraction pass: added the precise
+  one-variable Cauchy theorem for a fixed-\(t\) cut plane.  The theorem proves
+  the \(q\)-subtracted dispersion formula from a meromorphic cut-plane
+  domain, explicit first-sheet simple poles, tempered discontinuities, and a
+  polynomial large-contour bound, with all subtraction-point residues and pole
+  signs fixed.  The remaining issue #495 proof work is therefore concentrated
+  on the QFT domain/growth theorem: Dyson regularity for LSZ source-current
+  kernels and the BEG/Lehmann--Martin fixed-\(t\) enlargement with off-shell
+  normal-coordinate and large-contour control.
