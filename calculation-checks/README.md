@@ -548,7 +548,8 @@ Current checks:
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,
   the \(H-J^\alpha O_\alpha\) source-response sign from an impulsive physical
-  source, and KMS detailed balance.
+  source, the \(G^{aa}=0\) two-point cancellation and retarded support in the
+  contour-to-\(r/a\) algebra, and KMS detailed balance.
 - `sk_diffusion_action_checks.py`: finite algebra checks for the Volume X
   Schwinger--Keldysh hydrodynamic diffusion action, including the sourced
   density saddle, one-charge and noncommuting two-charge diffusive response

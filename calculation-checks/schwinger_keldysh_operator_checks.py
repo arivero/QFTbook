@@ -4,8 +4,8 @@
 These checks use two-level systems to verify the convention-sensitive
 operator facts used in the real-time Schwinger-Keldysh chapter: diagonal
 unitarity, the positivity bound on the closed-time-path generating
-functional, retarded response from an impulsive physical source, and thermal
-KMS detailed balance.
+functional, retarded response from an impulsive physical source, the
+two-point contour-to-r/a algebra, and thermal KMS detailed balance.
 """
 
 from __future__ import annotations
@@ -157,6 +157,39 @@ def check_retarded_impulse_response() -> None:
     assert_close(earlier_response, 0.0, "retarded response vanishes before the impulse")
 
 
+def check_two_point_matrix_and_ra_cancellation() -> None:
+    omega = 1.4
+    beta = 0.75
+    rho = density_matrix(omega, beta)
+    operator = SIGMA_X
+
+    for time, time_prime in [(0.9, 0.2), (0.2, 0.9)]:
+        o_t = evolve_operator(operator, omega, time)
+        o_tp = evolve_operator(operator, omega, time_prime)
+        greater = expectation(rho, matmul(o_t, o_tp))
+        lesser = expectation(rho, matmul(o_tp, o_t))
+
+        if time >= time_prime:
+            g_pp = greater
+            g_mm = lesser
+        else:
+            g_pp = lesser
+            g_mm = greater
+        g_mp = greater
+        g_pm = lesser
+
+        g_aa = g_pp + g_mm - g_pm - g_mp
+        assert_close(g_aa, 0.0, "aa two-point component cancels by diagonal unitarity")
+
+        retarded_without_minus_i = g_pp - g_pm
+        expected = greater - lesser if time >= time_prime else 0.0
+        assert_close(
+            retarded_without_minus_i,
+            expected,
+            "r/a contour combination has retarded support",
+        )
+
+
 def check_kms_detailed_balance() -> None:
     omega = 1.7
     beta = 0.9
@@ -188,6 +221,7 @@ def check_kms_detailed_balance() -> None:
 def main() -> None:
     check_unitarity_and_positivity()
     check_retarded_impulse_response()
+    check_two_point_matrix_and_ra_cancellation()
     check_kms_detailed_balance()
     print("Schwinger-Keldysh finite-operator checks passed.")
 

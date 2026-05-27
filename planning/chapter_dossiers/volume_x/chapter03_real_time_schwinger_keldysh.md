@@ -20,6 +20,8 @@ used later in transport and hydrodynamic effective actions.
 - `H_J(t)`: source-dependent Hamiltonian `H - J^alpha O_alpha`.
 - `U_J(t_f,t_i)`: source-dependent time-evolution operator.
 - `Z[J_+,J_-]`: closed-time-path generating functional.
+- `C`: closed time contour from `t_i` to `t_f` and back.
+- `T_C`: contour-ordering operator.
 - `W[J_r,J_a]`: connected Schwinger--Keldysh functional `-i log Z`.
 - `J_r`, `J_a`: average and difference sources; the monograph writes these
   as roman subscripts `J_{\mathrm r}` and `J_{\mathrm a}` in formulas.
@@ -35,35 +37,40 @@ used later in transport and hydrodynamic effective actions.
 1. Defines the closed-time-path generating functional
    \(Z[J_+,J_-]=\operatorname{Tr}(U_{J_+}\rho_0U_{J_-}^\dagger)\) for a
    finite or regulated system.
-2. Derives one- and two-point contour derivative formulae, including the
+2. Defines the closed-contour notation as the trace identity with the
+   backward-branch orientation sign, not as a separate postulate.
+3. Derives one- and two-point contour derivative formulae, including the
    signs from forward versus backward source insertions.
-3. Proves \(Z[J,J]=1\), branch-exchange reality
+4. Proves \(Z[J,J]=1\), branch-exchange reality
    \(Z[J_+,J_-]^*=Z[J_-,J_+]\), and the positivity bound \(|Z|\le1\).
-4. Converts these constraints to \(W=-i\log Z\), including
+5. Converts these constraints to \(W=-i\log Z\), including
    \(\operatorname{Im}W\ge0\) near the origin.
-5. Defines \(r/a\) sources and proves that
+6. Proves largest-time cancellation by factoring the common future evolution
+   and using trace cyclicity and unitarity.
+7. Defines \(r/a\) sources and proves that
    \(\delta W/\delta J_{\mathrm a}\) gives the physical one-point function.
-6. Proves that differentiating the one-point function with respect to the
+8. Proves that differentiating the one-point function with respect to the
    physical source \(J_r\) gives the causal source-response kernel
    \(K^R=i\Theta\langle[O(t),O(t')]\rangle\), which is the negative of the
    commutator-retarded convention \(G^{R,\mathrm{comm}}\).
-7. Writes the two-point matrix in terms of \(G^>\), \(G^<\), \(G^R\), \(G^A\),
+9. Writes the two-point matrix in terms of \(G^>\), \(G^<\), \(G^R\), \(G^A\),
    and \(G^K\), and records \(G^{\mathrm{aa}}=0\) as a consequence of
    diagonal unitarity.
-8. Derives the thermal KMS/detailed-balance relation and its
+10. Derives the thermal KMS/detailed-balance relation and its
    fluctuation-dissipation form in the SK basis.
-9. Derives the regulated coordinate path-integral representation with final
+11. Derives the regulated coordinate path-integral representation with final
    gluing and initial density-matrix kernel.
-10. States the gauge-theory/BV status of SK doubling and the continuum
+12. States the gauge-theory/BV status of SK doubling and the continuum
     construction problem.
 
 ## Calculation Checks
 
 - `calculation-checks/schwinger_keldysh_operator_checks.py` verifies diagonal
   unitarity, branch-exchange reality, \(|Z|\le1\), impulse retarded response,
-  and KMS detailed balance in two-level finite systems.
+  two-point \(G^{aa}=0\) cancellation, retarded support in the \(r/a\)
+  contour algebra, and KMS detailed balance in two-level finite systems.
 
 ## Figure Ledger
 
-No figure is included in this pass.  A later figure may show the closed time
-path with the final gluing point and optional Euclidean thermal segment.
+- Figure `fig:sk-closed-time-path`: closed time path with final gluing and
+  optional Euclidean segment representing a thermal initial density matrix.
