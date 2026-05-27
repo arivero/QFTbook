@@ -1847,21 +1847,100 @@ anomalous dimension.
 
 For two rays meeting with Euclidean deflection angle \(\varphi\), define
 \(\Gamma_{\rm cusp}(\varphi,\theta)\) by the logarithmic divergence of the
-renormalized cusped line.  At small geometric angle and fixed scalar coupling,
+renormalized cusped line:
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}
+  =
+  -\Gamma_{\rm cusp}(\varphi)\log\frac{R}{\epsilon}+O(1),
+\]
+where \(R\) is an infrared distance scale and \(\epsilon\) is the short-distance
+cutoff at the cusp.  At small geometric angle and fixed scalar coupling,
 \[
   \Gamma_{\rm cusp}(\varphi)
   =
   -B(\lambda)\varphi^2+O(\varphi^4).
 \]
 The coefficient \(B(\lambda)\) is the Bremsstrahlung function.  On the
-straight-line defect, the displacement operator \(\mathbb D(t)\) has
+straight-line defect, the transverse displacement operators \(\mathbb D_i(t)\)
+are defined by the first shape variation of the line; \(i=1,2,3\) labels
+directions normal to the straight Euclidean line.  Conformal invariance on the
+defect fixes their two-point function to
 \[
-  \langle \mathbb D(t)\mathbb D(0)\rangle
+  \langle \mathbb D_i(t)\mathbb D_j(0)\rangle
   =
-  \frac{C_D}{(t-\ii0)^4},
-  \qquad C_D=12B(\lambda),
+  \frac{C_D\delta_{ij}}{(t-\ii0)^4}.
 \]
-and the radiated power of a slowly accelerating heavy probe is
+
+\begin{proposition}[Displacement normalization of the small cusp]
+\label{prop:displacement-normalization-small-cusp}
+Assume the straight half-BPS line admits the standard defect shape-variation
+Ward identity: for a small transverse deformation \(X^i(t)\) of compact
+support, the universal nonlocal quadratic part of
+\(\log\langle W_X\rangle\) is, with summation over the transverse index \(i\),
+\[
+  \frac12
+  \int\frac{\dd\omega}{2\pi}\,
+  \frac{\pi C_D}{6}|\omega|^3
+  \widehat X^i(\omega)\widehat X^i(-\omega),
+\]
+up to local counterterms polynomial in \(\omega\).  Equivalently, this fixes
+the nonlocal part of the finite-part Fourier transform of the displacement
+two-point distribution,
+\[
+  \operatorname{Fp}\int\dd t\,
+  \frac{\ee^{\ii\omega t}}{(t-\ii0)^4}
+  =
+  \frac{\pi}{6}|\omega|^3
+  +\text{a polynomial in }\omega .
+\]
+Then the small-angle cusp coefficient satisfies
+\[
+  C_D=12B(\lambda).
+\]
+\end{proposition}
+
+\begin{proof}
+Represent a cusp of small angle \(\varphi\) by a deformation of the straight
+line for which
+\[
+  X^1(t)=\varphi t\,\Theta(t)
+\]
+between the scales \(\epsilon\) and \(R\), with a smooth interpolation outside
+that window.  Different smoothings change only power divergences and finite
+terms.  In the logarithmic momentum window \(R^{-1}\ll |\omega|\ll
+\epsilon^{-1}\),
+\[
+  \widehat X^1(\omega)
+  =
+  -\frac{\varphi}{(\omega+\ii0)^2}
+  +\text{endpoint and zero-frequency terms}
+  +O(R^{-1},\epsilon).
+\]
+The endpoint terms depend on the infrared smoothing and give only power
+divergences or finite oscillatory contributions, while the polynomial/contact
+terms and the \(\omega=0\) terms do not affect the coefficient of
+\(\log(R/\epsilon)\).  Hence the universal logarithmic contribution is
+\[
+  \frac12
+  \int_{R^{-1}<|\omega|<\epsilon^{-1}}
+  \frac{\dd\omega}{2\pi}\,
+  \frac{\pi C_D}{6}|\omega|^3
+  \frac{\varphi^2}{\omega^4}
+  =
+  \frac{C_D}{12}\varphi^2\log\frac{R}{\epsilon}.
+\]
+By the definition of the cusp anomalous dimension,
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}\big|_{\log}
+  =
+  -\Gamma_{\rm cusp}(\varphi)\log\frac{R}{\epsilon}.
+\]
+Using
+\(\Gamma_{\rm cusp}(\varphi)=-B(\lambda)\varphi^2+O(\varphi^4)\) and comparing
+the quadratic logarithmic coefficient gives \(B=C_D/12\).
+\end{proof}
+
+Thus the radiated power of a slowly accelerating heavy probe is
 \[
   \frac{\dd E_{\rm rad}}{\dd t}=2\pi B(\lambda)\,\dot v^2 .
 \]

@@ -1886,6 +1886,27 @@ def check_konishi_wrapping_residue_sum() -> None:
         raise AssertionError("Konishi wrapping finite partial sum identity failed")
 
 
+def check_bremsstrahlung_displacement_cusp_normalization() -> None:
+    """Check the finite coefficient in C_D=12 B from the displacement kernel."""
+
+    taylor_factor = Fraction(1, 2)
+    kernel_transform_coefficient = Fraction(1, 6)  # pi |omega|^3 / 6
+    fourier_measure_coefficient = Fraction(1, 2)  # pi from kernel over 2 pi measure
+    positive_and_negative_frequencies = Fraction(2, 1)
+
+    logarithmic_coefficient = (
+        taylor_factor
+        * kernel_transform_coefficient
+        * fourier_measure_coefficient
+        * positive_and_negative_frequencies
+    )
+    if logarithmic_coefficient != Fraction(1, 12):
+        raise AssertionError("displacement-cusp logarithmic coefficient failed")
+
+    if 12 * logarithmic_coefficient != 1:
+        raise AssertionError("C_D=12 B normalization failed")
+
+
 def check_bremsstrahlung_weak_series() -> None:
     # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
     # Verify the first four coefficients using exact rational series division.
@@ -2921,6 +2942,7 @@ def main() -> None:
     check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
+    check_bremsstrahlung_displacement_cusp_normalization()
     check_bremsstrahlung_weak_series()
     check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()

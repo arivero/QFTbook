@@ -1045,3 +1045,42 @@ Calculation checks added:
 - `check_bes_zhukovsky_fourier_transform_signs()` verifies the exact Bessel
   recurrence, the upper-contour phase, the lower-branch signed-`t` phase, and
   the even-`m` failure mode of the absolute-value rewrite.
+
+## Continuation XXXV: Displacement Normalization of Bremsstrahlung
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 stated the Wilson-line relation `C_D=12 B(lambda)` after
+  defining the displacement two-point function.  Because this coefficient is
+  a convention-sensitive bridge between the defect-CFT normalization and the
+  cusp/Bremsstrahlung convention, it needed an explicit derivation rather than
+  a displayed assertion.
+
+Content added:
+
+- Defined the cusp logarithmic-divergence convention
+  `log <W_cusp>_ren = - Gamma_cusp log(R/epsilon)+O(1)`.
+- Added a proposition deriving `C_D=12 B(lambda)` from the straight-line
+  defect shape-variation Ward identity.
+- The proof uses the finite-part Fourier transform of the displacement
+  kernel, `pi C_D |omega|^3/6`, and the small-cusp profile
+  `X(t)=varphi t Theta(t)`.  In the logarithmic window
+  `R^-1 << |omega| << epsilon^-1`, the profile has
+  `Xhat(omega)=-varphi/(omega+i0)^2` modulo endpoint,
+  zero-frequency, and contact terms, giving the universal coefficient
+  `C_D varphi^2 log(R/epsilon)/12`.
+- The localization formula for `B(lambda)` remains a separate exact input;
+  this pass only fixes the defect-normalization derivation.
+
+Calculation checks added:
+
+- `check_bremsstrahlung_displacement_cusp_normalization()` verifies the exact
+  rational coefficient: the Taylor factor, finite-part Fourier coefficient,
+  Fourier measure, and positive/negative frequency half-lines multiply to
+  `1/12`, hence `C_D=12 B`.

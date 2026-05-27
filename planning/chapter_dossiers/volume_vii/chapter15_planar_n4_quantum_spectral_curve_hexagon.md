@@ -162,6 +162,12 @@ three-point functions.
   caveat.
 - Adds Maldacena-Wilson line, cusp, displacement-operator, radiated-power, and
   planar Bremsstrahlung function material with localization/QSC status labels.
+- Derives the coefficient relation `C_D=12 B(lambda)` from the stated
+  straight-line defect shape-variation Ward identity: the finite part
+  transform of the displacement two-point kernel gives
+  `pi C_D |omega|^3/6`, and the small-cusp profile
+  `X(t)=varphi t Theta(t)` produces the logarithmic coefficient
+  `C_D varphi^2/12`.
 
 ## Figure Ledger
 
@@ -223,6 +229,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the small-spin QSC Bessel slope by exact rational
   series: the recurrence `I_{J-1}-I_{J+1}=2J I_J/z` and the first two
   coefficients of `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.
+- The same script checks the displacement-kernel coefficient behind
+  `C_D=12 B`: Taylor factor, finite-part Fourier coefficient, Fourier
+  measure, and the two frequency half-lines give the exact logarithmic
+  coefficient `1/12`.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
   are checked in
   `calculation-checks/planar_n4_integrability_checks.py`.
