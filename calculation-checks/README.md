@@ -314,6 +314,11 @@ Current checks:
   one-screening Dotsenko--Fateev block, the level-two Gram determinant and
   null vector, the Ising spin-field BPZ differential equation, and the crossing
   matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
+- `nonrational_cft_direct_integral_checks.py`: exact finite checks for the
+  direct-integral nonrational-CFT formalism, including unitarity of a rational
+  fusing kernel, preservation of the Plancherel inner product under channel
+  change, and the finite direct-sum version of the spectral radial-product
+  identity.
 - `conformal_block_companion.py`: reusable numerical companion routines for
   OPE-normalized global scalar conformal blocks in the chapter conventions,
   using the Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\),
