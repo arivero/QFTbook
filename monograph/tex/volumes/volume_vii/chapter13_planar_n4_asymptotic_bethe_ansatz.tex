@@ -1062,13 +1062,91 @@ hold only on a proper algebraic sublocus, not as a convention-independent
 identity.
 \end{proof}
 
+\begin{proposition}[Matrix-channel origin of the scalar crossing multiplier]
+\label{prop:planar-n4-crossing-matrix-channel-origin}
+Let \(\bar x_1^\pm=1/x_1^\pm\) denote the crossed-sheet continuation of the
+first magnon and assume all displayed denominators are non-zero.  Form the
+crossed amplitude \(L_{\bar1 2}\) from
+\eqref{eq:planar-n4-su2c-ten-amplitudes} by replacing
+\((x_1^+,x_1^-)\) with \((\bar x_1^+,\bar x_1^-)\), and form \(G_{21}\) by
+exchanging the two magnons and using the analytic-unitarity convention
+\(\mathcal S_{21}=\mathcal S_{12}^{-1}\).  Then
+\begin{equation}
+  \mathcal R_{\rm cr}
+  :=
+  \frac{L_{\bar1 2}}{G_{21}}
+  =
+  \mathcal S_{\bar1 2}\mathcal S_{12}
+  \frac{(x_2^- -1/x_1^-)\,x_1^+(x_1^- -x_2^+)}
+       {(x_2^-x_1^+-1)(x_1^+ -x_2^+)} .
+  \label{eq:planar-n4-crossing-channel-ratio}
+\end{equation}
+Substitute the stringbook scalar split for
+\(\mathcal S_{12}\) and \(\mathcal S_{\bar1 2}\).  In the chamber
+\[
+  x_2^->x_1^+>1,\qquad x_2^+>x_1^->1,
+\]
+where the square roots in the scalar split are taken continuously from
+positive real values, the finite channel condition
+\(\mathcal R_{\rm cr}=1\) is equivalent to
+\begin{equation}
+  \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)=\Xi_{12}.
+  \label{eq:planar-n4-crossing-sigma-from-channel}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The formula for \(L_{\bar1 2}\) is
+\[
+  L_{\bar1 2}
+  =
+  \mathcal S_{\bar1 2}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+},
+\]
+whereas the exchanged \(G\)-amplitude is
+\[
+  G_{21}
+  =
+  \mathcal S_{21}
+  \frac{x_1^+ -x_2^+}{x_1^- -x_2^+}.
+\]
+Using \(\mathcal S_{21}=\mathcal S_{12}^{-1}\) and rewriting
+\((x_2^- -1/x_1^+)=(x_2^-x_1^+-1)/x_1^+\) gives
+\eqref{eq:planar-n4-crossing-channel-ratio}.
+
+Now write
+\[
+  \mathcal S_{12}=R_{12}^{1/2}\sigma_{12},
+  \qquad
+  \mathcal S_{\bar1 2}=R_{\bar1 2}^{1/2}\sigma_{\bar1 2},
+\]
+with \(R\) the rational factor displayed in the scalar split.  Squaring the
+condition \(\mathcal R_{\rm cr}=1\) removes the square-root branch and gives
+a rational identity:
+\[
+  R_{12}R_{\bar1 2}\Xi_{12}^{2}
+  \left[
+    \frac{(x_2^- -1/x_1^-)\,x_1^+(x_1^- -x_2^+)}
+         {(x_2^-x_1^+-1)(x_1^+ -x_2^+)}
+  \right]^2
+  =1 .
+\]
+After cancellation this identity is exactly the product of the factors in
+\(\Xi_{12}\).  The stated real chamber fixes the sign of the square root, so
+the unsquared channel equation is
+\eqref{eq:planar-n4-crossing-sigma-from-channel}.  This is the finite
+matrix-amplitude calculation behind the scalar multiplier; it does not
+construct the analytic crossed scalar branch.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
-The preceding proposition fixes only the rational convention carried by the
-chosen scalar split; it does not derive this monodromy condition from finite
-algebra.  In the normalization where the rational matrix part is separated as
+The two preceding propositions fix the rational convention carried by the
+chosen scalar split and its finite crossed-amplitude origin; they do not
+derive the global monodromy condition from finite algebra.  In the
+normalization where the rational matrix part is separated as
 above, Janik crossing has the convention-fixed form
 \begin{equation}
   \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)

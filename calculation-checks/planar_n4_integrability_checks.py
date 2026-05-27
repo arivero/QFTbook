@@ -554,6 +554,85 @@ def check_crossing_rhs_is_sheet_sensitive() -> None:
         raise AssertionError(f"crossing RHS naive algebraic sample: {algebraic_naive}")
 
 
+def check_matrix_crossing_channel_scalar_multiplier() -> None:
+    """Port the stringbook finite L_cross/G_swap crossing-channel check."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def scalar_split_radicand(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            (second_minus - first_plus)
+            / (second_plus - first_minus)
+            * (1 - 1 / (second_plus * first_minus))
+            / (1 - 1 / (second_minus * first_plus))
+        )
+
+    physical_radicand = scalar_split_radicand(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_radicand = scalar_split_radicand(
+        1 / x1_plus,
+        1 / x1_minus,
+        x2_plus,
+        x2_minus,
+    )
+    crossing_multiplier = (
+        x2_plus
+        / x2_minus
+        * (x2_plus - x1_plus)
+        / (x2_plus - x1_minus)
+        * (x2_minus - 1 / x1_plus)
+        / (x2_minus - 1 / x1_minus)
+    )
+    amplitude_prefactor = (
+        (x2_minus - 1 / x1_minus)
+        * x1_plus
+        * (x1_minus - x2_plus)
+        / ((x2_minus * x1_plus - 1) * (x1_plus - x2_plus))
+    )
+
+    squared_channel_ratio = (
+        physical_radicand
+        * crossed_radicand
+        * crossing_multiplier**2
+        * amplitude_prefactor**2
+    )
+    if squared_channel_ratio != 1:
+        raise AssertionError(f"crossed matrix channel squared ratio: {squared_channel_ratio}")
+
+    inferred_multiplier_squared = 1 / (
+        physical_radicand * crossed_radicand * amplitude_prefactor**2
+    )
+    if inferred_multiplier_squared != crossing_multiplier**2:
+        raise AssertionError(
+            "matrix crossing channel infers the wrong scalar multiplier: "
+            f"{inferred_multiplier_squared}"
+        )
+
+    wrong_reciprocal_ratio = (
+        physical_radicand
+        * crossed_radicand
+        * (1 / crossing_multiplier) ** 2
+        * amplitude_prefactor**2
+    )
+    if wrong_reciprocal_ratio == 1:
+        raise AssertionError("reciprocal scalar crossing multiplier unexpectedly passed")
+
+    branch_ratio = (
+        math.sqrt(float(physical_radicand))
+        * math.sqrt(float(crossed_radicand))
+        * float(crossing_multiplier)
+        * float(amplitude_prefactor)
+    )
+    assert_close("crossed matrix channel positive branch", branch_ratio, 1.0)
+
+
 def check_dressing_charge_antisymmetry_unitarity() -> None:
     """Check that the charge expansion gives scalar dressing unitarity."""
 
@@ -3783,6 +3862,7 @@ def main() -> None:
     check_zhukovsky_map_and_energy()
     check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_matrix_crossing_channel_scalar_multiplier()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
     check_dhm_local_residue_continuation()

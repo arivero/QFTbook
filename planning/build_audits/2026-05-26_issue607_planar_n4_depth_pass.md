@@ -1603,3 +1603,35 @@ Calculation checks added:
   The check verifies the displayed residue package, confirms restoration of
   the outside branch termwise, and fails if the four residue signs are
   reversed.
+
+## Continuation LI: Matrix Channel Origin of Janik Multiplier
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Ported the finite crossing experiment from the stringbook
+  `su(2|2) spin chain.nb` notebook into Chapter 13.
+- Defined the crossed-amplitude ratio
+  `mathcal R_cr=L_bar1 2/G_21`, where the first magnon is continued to
+  `bar x_1^pm=1/x_1^pm` and `S_21=S_12^{-1}` is used for the exchanged
+  amplitude.
+- Proved that substituting the stringbook scalar split into this finite
+  channel gives the Janik scalar product
+  `sigma_bar1 2 sigma_12=Xi_12` in the positive square-root chamber.
+- The text explicitly separates this finite matrix-channel origin of the
+  rational multiplier from the still-global analytic problem of constructing
+  the crossed scalar branch.
+
+Calculation checks added:
+
+- Added `check_matrix_crossing_channel_scalar_multiplier()`, an exact
+  rational check of the squared `L_bar1 2/G_21` ratio.  It verifies that the
+  stringbook multiplier `Xi_12` makes the channel ratio one, that the
+  reciprocal multiplier fails, and that the positive real chamber fixes the
+  unsquared square-root branch.
