@@ -158,6 +158,176 @@ regulated objects are smeared first, the limiting object is a distribution,
 and the proof supplies a uniform estimate that lets the limit pass through
 the integral.
 
+\section{Tree-Level Symanzik Expansion and Cutoff Effects}
+\label{sec:continuum-limit-symanzik-cutoff-effects}
+
+The phrase lattice artifact is precise only after one has chosen continuum
+coordinates for both sources and operators.  At fixed lattice spacing the
+theory has hypercubic symmetry, not full \(O(D)\) invariance.  The continuum
+limit may recover \(O(D)\) invariance because hypercubic but non-\(O(D)\)
+local operators are irrelevant along the scaling trajectory, or because they
+have been canceled by improvement terms.  This is the content, in its
+tree-level form, of the Symanzik expansion.
+
+\begin{definition}[Symanzik expansion datum]
+\label{def:symanzik-expansion-datum}
+Fix a regulated lattice family, a scaling trajectory \(c(a)\), and
+renormalized observable coordinates \(O_a^I(f)\).  A Symanzik expansion to
+order \(a^r\) for a class of smeared correlators is a finite list of
+continuum local distributions \(S_{(n)}\), built from local operators
+allowed by the lattice symmetries, such that
+\[
+  \left\langle
+    O_a^{I_1}(f_1)\cdots O_a^{I_k}(f_k)
+  \right\rangle_a
+  =
+  \sum_{0\le n<r} a^n
+  S_{(n)}^{I_1\ldots I_k}(f_1,\ldots,f_k)
+  +
+  R_{r,a}(f_1,\ldots,f_k),
+  \label{eq:symanzik-expansion-datum}
+\]
+with a stated seminorm \(q\) on the test functions and constants
+\(C,a_0>0\) such that
+\[
+  |R_{r,a}(f_1,\ldots,f_k)|
+  \le C a^r\,q(f_1)\cdots q(f_k),
+  \qquad 0<a<a_0,
+\]
+or with another explicitly stated remainder estimate.  In an interacting
+theory this is a theorem only after the uniform distributional bounds,
+operator-mixing coordinates, and irrelevant operator estimates have been
+proved.  The formal list of allowed local operators alone is not a
+continuum-limit proof.
+\end{definition}
+
+\begin{proposition}[Free scalar tree-level cutoff expansion]
+\label{prop:free-scalar-tree-level-symanzik-expansion}
+For the free lattice scalar of
+\eqref{eq:continuum-limit-free-lattice-action}, write
+\[
+  \hat p_{\mu,a}=\frac{2}{a}\sin\!\left(\frac{ap_\mu}{2}\right),
+  \qquad
+  \hat p_a^2=\sum_{\mu=1}^D\hat p_{\mu,a}^2 .
+\]
+Assume
+\[
+  m_a^2=m^2+a^2\delta m_2+O(a^4)
+  \label{eq:symanzik-free-mass-trajectory}
+\]
+with \(m>0\).  Then for every \(f,g\in C_c^\infty(\mathbb R^D)\),
+\[
+  \langle\phi_a(f)\phi_a(g)\rangle_a
+  =
+  \int_{\mathbb R^D}\frac{\dd^Dp}{(2\pi)^D}\,
+  \frac{\widehat f(-p)\widehat g(p)}{p^2+m^2}
+  +
+  a^2
+  \int_{\mathbb R^D}\frac{\dd^Dp}{(2\pi)^D}\,
+  \widehat f(-p)\widehat g(p)
+  \frac{\frac1{12}\sum_{\mu}p_\mu^4-\delta m_2}
+       {(p^2+m^2)^2}
+  +O(a^4),
+  \label{eq:free-scalar-tree-level-symanzik-propagator}
+\]
+where the \(O(a^4)\) remainder is bounded by a finite Schwartz seminorm of
+\(f\) and \(g\).  The term \(\sum_\mu p_\mu^4\) is hypercubic invariant but
+not \(O(D)\)-invariant for \(D>1\); it is the leading rotation-breaking
+cutoff artifact of the nearest-neighbor action.
+\end{proposition}
+
+\begin{proof}
+The Taylor expansion of the lattice momentum is
+\[
+  \hat p_{\mu,a}^2
+  =
+  p_\mu^2-\frac{a^2}{12}p_\mu^4
+  +\frac{a^4}{360}p_\mu^6+O(a^6p_\mu^8)
+  \label{eq:lattice-momentum-symanzik-expansion}
+\]
+on every compact momentum set.  Hence the inverse kernel has the form
+\[
+  \hat p_a^2+m_a^2
+  =
+  p^2+m^2
+  +
+  a^2\left(
+    \delta m_2-\frac1{12}\sum_\mu p_\mu^4
+  \right)
+  +
+  O(a^4(1+|p|^6)).
+\]
+For \(A=p^2+m^2\) and
+\[
+  B=\delta m_2-\frac1{12}\sum_\mu p_\mu^4,
+\]
+the elementary identity
+\[
+  \frac1{A+a^2B+O(a^4)}
+  =
+  \frac1A-a^2\frac{B}{A^2}+O(a^4)
+\]
+gives the displayed coefficient.  The replacement of the Brillouin-zone
+integral by the integral over \(\mathbb R^D\), and the uniform control of
+the high-momentum tail, are the same Poisson-summation and rapid-decay
+estimates used in the proof of
+Proposition~\ref{prop:free-lattice-scalar-continuum-limit}.  The additional
+polynomial factors in \(p\) are harmless because \(\widehat f\) and
+\(\widehat g\) are Schwartz functions.  Thus the expansion holds as a
+distributional expansion on smeared fields, with the remainder bounded by a
+Schwartz seminorm.
+\end{proof}
+
+\begin{corollary}[Tree-level scalar improvement]
+\label{cor:tree-level-scalar-symanzik-improvement}
+Define an improved free scalar quadratic kernel by
+\[
+  K_a^{\rm imp}(p)
+  =
+  m_a^2+\hat p_a^2+\frac{a^2}{12}
+  \sum_{\mu=1}^D\hat p_{\mu,a}^4 .
+  \label{eq:tree-level-improved-scalar-kernel}
+\]
+If \(m_a^2=m^2+O(a^4)\), then
+\[
+  K_a^{\rm imp}(p)
+  =
+  m^2+p^2+O(a^4(1+|p|^6))
+  \label{eq:tree-level-improved-scalar-kernel-expansion}
+\]
+on compact momentum sets.  Consequently the \(O(a^2)\) correction in
+\eqref{eq:free-scalar-tree-level-symanzik-propagator} is canceled for the
+two-point function.
+\end{corollary}
+
+\begin{proof}
+By \eqref{eq:lattice-momentum-symanzik-expansion},
+\[
+  \hat p_a^2
+  =
+  p^2-\frac{a^2}{12}\sum_\mu p_\mu^4+O(a^4|p|^6),
+  \qquad
+  \sum_\mu\hat p_{\mu,a}^4
+  =
+  \sum_\mu p_\mu^4+O(a^2|p|^6).
+\]
+The \(a^2\sum_\mu p_\mu^4/12\) improvement term cancels the
+nearest-neighbor \(a^2\) artifact, and the mass assumption removes the
+\(\delta m_2\) part.  The conclusion for smeared two-point functions follows
+from the previous proposition.
+\end{proof}
+
+\begin{remark}[Status in interacting lattice theories]
+\label{rem:symanzik-interacting-status}
+For an interacting lattice theory, a Symanzik expansion is not obtained by
+writing all local operators compatible with hypercubic symmetry.  One must
+also prove that the regulated correlators admit the expansion after
+renormalized operator mixing, and that the remainder is controlled in the
+distribution topology used for reconstruction.  Gauge theories add the
+further requirement that improvement terms and operator coordinates be
+gauge-invariant or be formulated inside a gauge-fixed BV/lattice framework.
+\end{remark}
+
 \section{Correlation Length and Scaling Window}
 
 The lattice correlation length is a property of a regulated state.  In a

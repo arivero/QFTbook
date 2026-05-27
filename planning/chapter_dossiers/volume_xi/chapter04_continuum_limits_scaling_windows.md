@@ -20,6 +20,8 @@
 - `S^{I_1...I_k}`: limiting Schwinger distribution.
 - `B_a`, `hat p_a^2`, `m_a`: Brillouin zone, lattice Laplacian symbol, and
   free lattice mass parameter.
+- `K_a^imp`, `delta m_2`: tree-level improved scalar kernel and the
+  \(a^2\) mass-coordinate coefficient in the free Symanzik expansion.
 - `xi_lat`, `kappa_a`: correlation length in lattice units and physical pole
   mass extracted from the lattice pole.
 - `R_b`, `B`, `S_*`, `y_i`: block-spin map, Banach interaction space, fixed
@@ -39,25 +41,36 @@
    \((p^2+m^2)^{-1}\).
 4. The proof of the free limit uses Poisson summation, compact-momentum
    dominated convergence, and rapid-decay bounds on the Brillouin-zone tail.
-5. The exact free lattice pole mass is
+5. Defines a Symanzik expansion datum as an actual distributional expansion
+   with a controlled remainder, not merely a list of compatible local
+   operators.
+6. Derives the tree-level free-scalar cutoff expansion
+   \((p^2+m^2)^{-1}
+   +a^2(\sum_\mu p_\mu^4/12-\delta m_2)(p^2+m^2)^{-2}+O(a^4)\),
+   identifying the leading hypercubic rotation-breaking artifact.
+7. Proves that adding
+   \(a^2\sum_\mu \hat p_{\mu,a}^4/12\) to the quadratic kernel cancels the
+   \(O(a^2)\) free two-point artifact when the mass coordinate is tuned.
+8. The exact free lattice pole mass is
    \(\kappa_a=2a^{-1}\operatorname{arcsinh}(am_a/2)\), so
    \(a\xi_{\rm lat}\to m^{-1}\).
-6. Composite-operator continuum coordinates require Wick/contact-term
+9. Composite-operator continuum coordinates require Wick/contact-term
    subtractions; finite changes of subtraction are identity contact
    coordinates after smearing.
-7. Reflection positivity passes to the continuum limit by closedness of the
+10. Reflection positivity passes to the continuum limit by closedness of the
    positive cone when the distributions converge on positive-time tests.
-8. Hypercubic invariance becomes Euclidean invariance only after
+11. Hypercubic invariance becomes Euclidean invariance only after
    rotation-breaking local operators are controlled or tuned away.
-9. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
+12. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
    RG chart and stable-manifold estimates.
-10. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
+13. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
     four-dimensional \(\phi^4_4\) are logically distinct.
 
 ## Calculation Checks
 
 - `calculation-checks/continuum_scaling_window_checks.py` verifies the
-  lattice Laplacian expansion, free-scalar pole-mass expansion and physical
+  lattice Laplacian expansion, tree-level Symanzik artifact and improved
+  kernel cancellation, free-scalar pole-mass expansion and physical
   correlation length, Gaussian relevant-coordinate scaling, the
   \(\nu=1/y_t\) relation, and finite Wick-subtraction contact shifts.
 

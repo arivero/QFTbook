@@ -265,6 +265,7 @@ Current checks:
   rough-forcing energy-to-Besov bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
+  tree-level Symanzik cutoff artifact and improved-kernel cancellation, the
   exact free-scalar pole mass and correlation length, the Gaussian
   mass-squared RG eigenvalue, the \(\nu=1/y_t\) scaling relation, and finite
   Wick-subtraction contact-coordinate shifts.

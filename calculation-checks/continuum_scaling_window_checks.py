@@ -24,6 +24,28 @@ def check_lattice_laplacian_expansion() -> None:
     assert_close("lattice momentum expansion", lattice_hat_p_squared(a, p), expansion, tol=1.0e-12)
 
 
+def check_tree_level_symanzik_artifact_and_improvement() -> None:
+    a = 1.0e-4
+    p = [0.6, -0.8, 1.1]
+    mass = 1.4
+    p2 = sum(component**2 for component in p)
+    p4sum = sum(component**4 for component in p)
+    continuum_denominator = p2 + mass * mass
+
+    propagator = 1.0 / (lattice_hat_p_squared(a, p) + mass * mass)
+    continuum = 1.0 / continuum_denominator
+    artifact_coefficient = (propagator - continuum) / (a * a)
+    expected_artifact = p4sum / (12.0 * continuum_denominator * continuum_denominator)
+    assert_close("tree-level Symanzik propagator artifact", artifact_coefficient, expected_artifact, tol=1.0e-7)
+
+    hat_components = [(2.0 / a) * math.sin(0.5 * a * component) for component in p]
+    improved_kernel = mass * mass + lattice_hat_p_squared(a, p) + (a * a / 12.0) * sum(
+        component**4 for component in hat_components
+    )
+    improved_artifact = (improved_kernel - continuum_denominator) / (a * a)
+    assert_close("tree-level improved kernel cancels O(a^2)", improved_artifact, 0.0, tol=1.0e-7)
+
+
 def check_free_scalar_pole_mass() -> None:
     a = 2.0e-4
     mass = 1.3
@@ -66,6 +88,7 @@ def check_operator_contact_shift() -> None:
 
 def main() -> None:
     check_lattice_laplacian_expansion()
+    check_tree_level_symanzik_artifact_and_improvement()
     check_free_scalar_pole_mass()
     check_gaussian_relevant_scaling()
     check_operator_contact_shift()
