@@ -1879,3 +1879,36 @@ Calculation checks added:
   scalar unitarity, leaves the regular double-crossing multiplier unchanged,
   fails if made crossing-even, and propagates divisor signs correctly under
   crossing, exchange, and double crossing.
+
+## Continuation LIX: su(2|2)c Intertwiner Rank Certificate
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition giving a generic rank certificate for the one-copy
+  `su(2|2)_c` intertwiner.
+- The text defines `d_12=x_2^- -x_1^+` and `n_12=x_2^+ -x_1^-`, states the
+  non-pole open set, and displays the row-reduced chart
+  `B=beta A`, ..., `L=ell A`.
+- It proves that these nine equations have pivots in the nine non-`A`
+  amplitude columns, hence the generic solution space is one-dimensional and
+  is parametrized by the single scalar `A`.
+- It identifies the stringbook normalization
+  `A=mathcal S_12 n_12/d_12`, recovering the ten displayed amplitudes.
+- Special reducible/pole loci and bound-state projections remain separate
+  boundary analyses rather than being folded into the generic row chart.
+
+Calculation checks added:
+
+- Added `check_su2c_intertwiner_rank_certificate()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check performs
+  exact rational Gaussian elimination on the nine-equation row chart,
+  verifies rank nine in the ten amplitudes, confirms that the row chart
+  recovers the direct ten-amplitude formulas after fixing the scalar, and
+  checks that the two highest-weight `Q` relations survive the row chart.

@@ -1173,6 +1173,166 @@ def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
     assert_close("DHM pole clearance vanishes on pole lattice", pole_clearance(unsafe_delta), 0)
 
 
+def check_su2c_intertwiner_rank_certificate() -> None:
+    """Check the generic one-scalar rank certificate for the su(2|2)c intertwiner."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+    a1 = Fraction(11, 1)
+    a2 = Fraction(13, 1)
+    coupling = Fraction(17, 1)
+    scalar = Fraction(19, 1)
+
+    d12 = x2_minus - x1_plus
+    n12 = x2_plus - x1_minus
+    coefficients = {
+        "B": 1
+        - 2
+        * (x2_plus - x1_plus)
+        / n12
+        * (x2_minus - 1 / x1_plus)
+        / (x2_minus - 1 / x1_minus),
+        "C": 2
+        * a1
+        * a2
+        / coupling
+        * (x2_plus - x1_plus)
+        / ((x1_minus * x2_minus - 1) * n12),
+        "D": -d12 / n12,
+        "E": -d12
+        / n12
+        * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / d12
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        ),
+        "F": -2
+        * coupling
+        / (a1 * a2)
+        * (x1_plus - x1_minus)
+        * (x2_plus - x2_minus)
+        * (x2_minus - x1_minus)
+        / ((x1_plus * x2_plus - 1) * n12),
+        "G": (x2_plus - x1_plus) / n12,
+        "H": (a1 / a2) * (x2_plus - x2_minus) / n12,
+        "K": (a2 / a1) * (x1_plus - x1_minus) / n12,
+        "L": (x2_minus - x1_minus) / n12,
+    }
+
+    columns = ["A", "B", "C", "D", "E", "F", "G", "H", "K", "L"]
+    rows: list[list[Fraction]] = []
+    for name in columns[1:]:
+        row = [Fraction(0) for _ in columns]
+        row[0] = -coefficients[name]
+        row[columns.index(name)] = Fraction(1)
+        rows.append(row)
+
+    def rank(matrix: list[list[Fraction]]) -> int:
+        work = [row[:] for row in matrix]
+        row_index = 0
+        for col_index in range(len(work[0])):
+            pivot = next(
+                (candidate for candidate in range(row_index, len(work)) if work[candidate][col_index]),
+                None,
+            )
+            if pivot is None:
+                continue
+            work[row_index], work[pivot] = work[pivot], work[row_index]
+            pivot_value = work[row_index][col_index]
+            work[row_index] = [entry / pivot_value for entry in work[row_index]]
+            for candidate in range(len(work)):
+                if candidate == row_index or not work[candidate][col_index]:
+                    continue
+                factor = work[candidate][col_index]
+                work[candidate] = [
+                    entry - factor * pivot_entry
+                    for entry, pivot_entry in zip(work[candidate], work[row_index])
+                ]
+            row_index += 1
+        return row_index
+
+    if rank(rows) != 9:
+        raise AssertionError("su(2|2)c intertwiner row chart should have rank 9")
+
+    a12 = scalar * n12 / d12
+    amplitudes = {
+        "A": a12,
+        "B": coefficients["B"] * a12,
+        "C": coefficients["C"] * a12,
+        "D": coefficients["D"] * a12,
+        "E": coefficients["E"] * a12,
+        "F": coefficients["F"] * a12,
+        "G": coefficients["G"] * a12,
+        "H": coefficients["H"] * a12,
+        "K": coefficients["K"] * a12,
+        "L": coefficients["L"] * a12,
+    }
+
+    direct_amplitudes = {
+        "A": scalar * (x2_plus - x1_minus) / d12,
+        "B": scalar
+        * (x2_plus - x1_minus)
+        / d12
+        * (
+            1
+            - 2
+            * (x2_plus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (x2_minus - 1 / x1_plus)
+            / (x2_minus - 1 / x1_minus)
+        ),
+        "C": scalar
+        * 2
+        / coupling
+        * a1
+        * a2
+        / (x1_minus * x2_minus - 1)
+        * (x2_plus - x1_plus)
+        / d12,
+        "D": -scalar,
+        "E": -scalar
+        * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / d12
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        ),
+        "F": -scalar
+        * 2
+        * coupling
+        / (a1 * a2)
+        * (x1_plus - x1_minus)
+        * (x2_plus - x2_minus)
+        / (x1_plus * x2_plus - 1)
+        * (x2_minus - x1_minus)
+        / d12,
+        "G": scalar * (x2_plus - x1_plus) / d12,
+        "H": scalar * (a1 / a2) * (x2_plus - x2_minus) / d12,
+        "K": scalar * (a2 / a1) * (x1_plus - x1_minus) / d12,
+        "L": scalar * (x2_minus - x1_minus) / d12,
+    }
+    for name in columns:
+        if amplitudes[name] != direct_amplitudes[name]:
+            raise AssertionError(f"su(2|2)c row chart mismatch for {name}")
+
+    for row in rows:
+        residual = sum(row[index] * amplitudes[column] for index, column in enumerate(columns))
+        if residual:
+            raise AssertionError(f"su(2|2)c rank certificate residual: {residual}")
+
+    if amplitudes["A"] != (a1 / a2) * amplitudes["K"] + amplitudes["G"]:
+        raise AssertionError("su(2|2)c rank chart lost the first Q relation")
+    if amplitudes["A"] != amplitudes["L"] + (a2 / a1) * amplitudes["H"]:
+        raise AssertionError("su(2|2)c rank chart lost the second Q relation")
+
+
 def check_su2c_matrix_amplitudes_and_unitarity() -> None:
     """Port finite checks from the stringbook su(2|2) S-matrix notebook."""
 
@@ -4692,6 +4852,7 @@ def main() -> None:
     check_dhm_weak_dressing_coefficients()
     check_dhm_local_residue_continuation()
     check_dhm_gamma_pole_lattice_and_admissibility()
+    check_su2c_intertwiner_rank_certificate()
     check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()

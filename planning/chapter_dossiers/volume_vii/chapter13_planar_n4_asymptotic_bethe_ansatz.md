@@ -42,6 +42,11 @@ motivational checks, not foundations.
 - `S^{(1)}_{12}`, `mathcal S_{12}`: one-copy `su(2|2)_c` intertwiner and
   its unfixed common scalar in the stringbook dynamic spin-chain frame.
 - `A_{12},...,L_{12}`: `su(2|2)_c` matrix S-matrix amplitudes.
+- `d_{12}=x_2^- -x_1^+`, `n_{12}=x_2^+ -x_1^-`: generic row-chart
+  denominators for the one-copy `su(2|2)_c` intertwiner.
+- `beta_{12},...,ell_{12}`: row-reduced coefficients expressing
+  `B_{12},...,L_{12}` as multiples of `A_{12}` in the generic
+  intertwiner-rank certificate.
 - `R^{BB}`, `R^{BF}`: finite boson-boson/fermion-fermion and mixed blocks
   used to check local matrix unitarity after factoring out `mathcal S_{12}`.
 - `y,w`: level-II and level-III nested Bethe roots.
@@ -94,6 +99,14 @@ motivational checks, not foundations.
   `x^+=i d/b`, `x^-=-i a/c`, records the length-changing marker convention,
   and proves the highest-weight `Q` amplitude identity
   `A=(a_1/a_2)K+G=L+(a_2/a_1)H`.
+- Adds a generic row-rank certificate for the one-copy `su(2|2)_c`
+  intertwiner: after the dynamic-frame `Q` and `S` equations are reduced on
+  the open set
+  `x_1^pm x_2^pm d_12 n_12 a_1 a_2
+  (x_1^-x_2^- -1)(x_1^+x_2^+ -1) != 0`, the nine equations
+  `B=beta A`, ..., `L=ell A` have pivots in the nine non-`A` amplitude
+  columns, so the generic solution space is one-dimensional and the choice
+  `A=mathcal S_12 n_12/d_12` recovers the ten stringbook amplitudes.
 - Defines the finite matrix blocks `R^{BB}` and `R^{BF}` and records their
   local analytic unitarity after the common one-copy scalar is factored out.
 - Derives the stringbook scalar split
@@ -297,6 +310,11 @@ crossed Zhukovsky sheets.
   highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed
   finite blocks obey `R_12 R_21=1` after the common scalar is removed, and the
   stringbook scalar split reproduces the compact `SU(2)` rational factor.
+- It checks the generic `su(2|2)_c` row-rank certificate exactly over the
+  rationals: the nine row-chart equations have rank nine in the ten
+  amplitudes, recover the displayed ten-amplitude formulas after fixing
+  `A=mathcal S_12 n_12/d_12`, and preserve the two highest-weight `Q`
+  relations.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.

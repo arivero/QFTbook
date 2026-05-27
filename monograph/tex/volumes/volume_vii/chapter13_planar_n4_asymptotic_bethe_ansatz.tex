@@ -489,6 +489,126 @@ intertwiner is unique up to one scalar.  Let this one-copy scalar be denoted
 \label{eq:planar-n4-su2c-ten-amplitudes}
 \end{equation}
 
+\begin{proposition}[Generic rank certificate for the one-copy intertwiner]
+\label{prop:planar-n4-su2c-intertwiner-rank-certificate}
+Let
+\[
+  d_{12}=x_2^- -x_1^+,\qquad n_{12}=x_2^+ -x_1^-,
+\]
+and work on the generic open set where
+\[
+  x_1^\pm x_2^\pm d_{12}n_{12}a_1a_2
+  (x_1^-x_2^- -1)(x_1^+x_2^+ -1)\ne0 .
+\]
+After the dynamic-frame \(Q\)- and \(S\)-intertwining equations are written
+on the ten \(\mathfrak{su}(2)\oplus\mathfrak{su}(2)\)-covariant amplitudes
+and the representation ratios
+\[
+  x_i^+=\ii d_i/b_i,\qquad x_i^-=-\ii a_i/c_i,\qquad a_id_i-b_ic_i=1
+\]
+are used, the finite linear system has the following row-echelon chart:
+\[
+\begin{gathered}
+  B_{12}=\beta_{12}A_{12},\qquad
+  C_{12}=\gamma_{12}A_{12},\qquad
+  D_{12}=\delta_{12}A_{12},\qquad
+  E_{12}=\varepsilon_{12}A_{12},\\
+  F_{12}=\varphi_{12}A_{12},\qquad
+  G_{12}=g_{12}A_{12},\qquad
+  H_{12}=h_{12}A_{12},\qquad
+  K_{12}=k_{12}A_{12},\qquad
+  L_{12}=\ell_{12}A_{12},
+\end{gathered}
+\label{eq:planar-n4-su2c-row-chart}
+\]
+where
+\[
+\begin{aligned}
+  \beta_{12}
+  &=
+  1
+  -2\frac{x_2^+-x_1^+}{n_{12}}
+     \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-},
+  &
+  \gamma_{12}
+  &=
+  \frac{2a_1a_2}{g}
+  \frac{x_2^+-x_1^+}{(x_1^-x_2^- -1)n_{12}},
+  \\
+  \delta_{12}
+  &=-\frac{d_{12}}{n_{12}},
+  &
+  \varepsilon_{12}
+  &=
+  -\frac{d_{12}}{n_{12}}
+  \left[
+  1
+  -2\frac{x_2^- -x_1^-}{d_{12}}
+     \frac{x_2^+ -1/x_1^-}{x_2^+ -1/x_1^+}
+  \right],
+  \\
+  \varphi_{12}
+  &=
+  -\frac{2g}{a_1a_2}
+  \frac{(x_1^+-x_1^-)(x_2^+-x_2^-)(x_2^- -x_1^-)}
+       {(x_1^+x_2^+ -1)n_{12}},
+  &
+  g_{12}
+  &=
+  \frac{x_2^+-x_1^+}{n_{12}},
+  \\
+  h_{12}
+  &=
+  \frac{a_1}{a_2}\frac{x_2^+-x_2^-}{n_{12}},
+  &
+  k_{12}
+  &=
+  \frac{a_2}{a_1}\frac{x_1^+-x_1^-}{n_{12}},
+  \\
+  \ell_{12}
+  &=
+  \frac{x_2^- -x_1^-}{n_{12}} .
+\end{aligned}
+\label{eq:planar-n4-su2c-row-coefficients}
+\]
+Consequently the solution space of the finite intertwining equations is
+one-dimensional on this open set.  Choosing
+\[
+  A_{12}=\mathcal S_{12}\frac{n_{12}}{d_{12}}
+\]
+recovers the ten amplitudes in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.
+\end{proposition}
+
+\begin{proof}
+The displayed chart is a row-reduced certificate.  The unknown vector is
+\[
+  (A,B,C,D,E,F,G,H,K,L).
+\]
+Each equation in \eqref{eq:planar-n4-su2c-row-chart} has the form
+\[
+  X-r_XA=0,\qquad X\in\{B,C,D,E,F,G,H,K,L\},
+\]
+with \(r_X\) one of the nine coefficients in
+\eqref{eq:planar-n4-su2c-row-coefficients}.  Ordered by
+\((B,C,D,E,F,G,H,K,L)\), these nine equations have pivot coefficient \(1\)
+in nine distinct columns.  Their coefficient matrix therefore has rank
+nine, so its kernel in the ten-dimensional amplitude space is one
+dimensional and is parametrized by \(A\).
+
+It remains only to identify the parametrization with the convention used in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.  Substituting
+\(A_{12}=\mathcal S_{12}n_{12}/d_{12}\) into
+\eqref{eq:planar-n4-su2c-row-chart} gives, term by term, the formulas for
+\(B,C,D,E,F,G,H,K,L\) in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.  The genericity assumptions are
+exactly the denominators that appear in this chart and in the two channels
+where the \(Z^\pm\) markers enter.  At their zero loci the tensor product can
+become reducible or the chosen dynamic-frame chart can degenerate; those
+special loci are the bound-state and pole analyses, not the generic
+two-magnon scattering case.
+\end{proof}
+
 \begin{proposition}[Local amplitude checks]
 \label{prop:planar-n4-su2c-local-amplitude-checks}
 Assume the denominators in
