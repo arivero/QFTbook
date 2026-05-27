@@ -2860,11 +2860,11 @@ and four chiral superfields
   B_j\in(\overline{\mathbf N},\mathbf N),
   \qquad i,j=1,2 .
 \]
-Equivalently, one may start from the regular-brane
+Equivalently, one may start from the unitary
 \(U(N)_1\times U(N)_2\) presentation.  Its diagonal \(U(1)\) is a free
 center-of-mass vector multiplet, and the interacting nonabelian sector is
 the \(SU(N)_1\times SU(N)_2\) theory displayed above.  The relative abelian
-factor is useful for describing the one-brane quotient below.
+factor is useful for describing the rank-one abelian quotient below.
 
 The index \(i\) is a doublet index for a global \(SU(2)_A\), and \(j\) is a
 doublet index for a global \(SU(2)_B\).  The baryonic symmetry \(U(1)_B\) is
@@ -2902,8 +2902,8 @@ The algebraic calculations in this section use the four-dimensional
 normalization, and superpotential displayed above.  Statements about the
 mesonic vacuum branch use the classical \(F\)- and \(D\)-flat quotient of
 that Lagrangian and then restrict to the commuting branch where the
-bifundamental matrices can be simultaneously reduced to diagonal regular
-brane data.  Statements about protected dimensions use
+bifundamental matrices can be simultaneously reduced to diagonal
+representatives.  Statements about protected dimensions use
 Hypothesis~\ref{hyp:n1-scft-bookkeeping-input}.  Claims about the full
 continuum conformal manifold are isolated in
 Hypothesis~\ref{hyp:kw-exact-marginality-input} and
@@ -3180,14 +3180,15 @@ The basic mesonic chiral operators are
 \[
   W_{ij}=A_iB_j .
 \]
-For a single regular brane in the \(U(1)\times U(1)\) presentation, the
-diagonal \(U(1)\) decouples and the complexified anti-diagonal gauge group
-acts with charges \(+1\) on the \(A_i\) and \(-1\) on the \(B_j\).  The four
-coordinates \(W_{ij}\) are invariant and obey one quadratic relation.
+For a single rank-one abelian sector in the \(U(1)\times U(1)\)
+presentation, the diagonal \(U(1)\) decouples and the complexified
+anti-diagonal gauge group acts with charges \(+1\) on the \(A_i\) and
+\(-1\) on the \(B_j\).  The four coordinates \(W_{ij}\) are invariant and
+obey one quadratic relation.
 
-\begin{proposition}[One-brane conifold quotient]
-\label{prop:kw-one-brane-conifold-branch}
-For the one-brane abelian quotient just described, the mesonic coordinate
+\begin{proposition}[Rank-one conifold quotient]
+\label{prop:kw-rank-one-conifold-branch}
+For the rank-one abelian quotient just described, the mesonic coordinate
 ring is
 \[
   \C[W_{11},W_{12},W_{21},W_{22}]
@@ -3446,8 +3447,8 @@ with a coefficient depending on the normalization of \(M_{ij}\) and
 \(\mu_*\).
 \end{proof}
 
-Thus the rank difference remains \(M\), while the regular-brane rank
-parameter drops by \(M\).  If
+Thus the rank difference remains \(M\), while the common rank parameter
+drops by \(M\).  If
 \[
   N=qM+r,\qquad 0\leq r<M ,
 \]
@@ -3457,7 +3458,7 @@ then after \(q\) formal cascade steps the pair has reached
 \]
 where the second factor is absent when \(r=0\).  The integer \(q\) is the
 number of rank-reducing duality steps, and \(r=N\bmod M\) is the residual
-regular-brane rank.
+common rank parameter.
 
 \begin{proposition}[KS \(R\)-anomaly remnant]
 \label{prop:ks-r-anomaly-remnant}
@@ -3530,9 +3531,9 @@ symmetry, and gaugino condensation breaks it to \(\mathbb Z_2\), producing
 \(M\) massive vacua in the finite-volume/gap sense used earlier in this
 chapter.  For \(0<r<M\), the final strongly coupled theory contains an ADS
 or quantum-modified chiral coordinate, depending on the precise endpoint
-rank.  In the string-theory realization this field-theoretic endpoint is
-reflected by a deformed conifold parameter; here it is recorded only as a
-cross-reference to the chiral-coordinate dynamics already derived for SQCD.
+rank.  This is only a field-theoretic endpoint ledger in the present
+monograph; any geometric interpretation is outside the argument and is not
+used as evidence for the QFT dynamics.
 
 \section{Status Boundary}
 

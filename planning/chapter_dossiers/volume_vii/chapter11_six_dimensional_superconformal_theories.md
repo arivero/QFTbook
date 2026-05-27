@@ -15,8 +15,9 @@ Reviewed source spine:
   Lagrangian, tensor branch, BPS strings, and compactification to 5D maximally
   supersymmetric Yang-Mills.
 - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
-  lines 13955-14019: M5/AdS7 context used only as motivation, not as a
-  monograph definition.
+  lines 13955-14019: external motivation only.  The monograph definition and
+  all logical uses in this chapter are QFT data, not string-theoretic
+  constructions.
 - GitHub issue #588: request for six-dimensional `(2,0)` theory data and
   compactification/normalization boundaries.
 
@@ -70,9 +71,11 @@ Reviewed source spine:
 
 - The interacting `(2,0)` theory remains a non-Lagrangian object; the chapter
   gives protected and effective data, not a construction.
-- The `(2,0)` anomaly polynomial is quoted theorem status because the
-  derivation uses inflow/geometric input not reproduced as a QFT construction
-  here.
+- The `(2,0)` anomaly polynomial is quoted theorem status because a
+  first-principles construction of the interacting six-dimensional local QFT
+  and its anomaly functional is not reproduced here.  External geometric or
+  string-theoretic arguments can motivate the formula but are not used as
+  foundations.
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.

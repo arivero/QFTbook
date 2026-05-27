@@ -39,7 +39,7 @@ Reviewed source spine:
 - `h_ABJM=2 pi/k`: standard ABJM quartic-superpotential coefficient in this
   chapter's component convention.
 - `A_D`, `B`: diagonal and anti-diagonal abelian gauge fields in the
-  one-brane quotient calculation.
+  rank-one abelian quotient calculation.
 - `lambda_i`, `mu_i`: `S^3` localization Cartan variables for the two
   `U(N)` gauge factors.
 
@@ -64,7 +64,7 @@ Reviewed source spine:
   fixed `(N,k)` is zero-dimensional: `k` is integral, `h_ABJM=2 pi/k` is then
   fixed, real masses/FI coordinates are dimension-one deformations, and
   Yang-Mills kinetic terms are dimensionful regulator/UV-completion data.
-- Proves the `N=1` ABJM branch quotient `C^4/Z_k` from the abelian BF
+- Proves the rank-one abelian ABJM branch quotient `C^4/Z_k` from the abelian BF
   reduction and residual finite gauge transformation.
 - States the general commuting-branch moduli space
   `((C^4/Z_k)^N)/S_N` and `N=8` enhancement for `k=1,2` as a quoted theorem,

@@ -122,6 +122,9 @@ node domain.
   around the weak `Y_{n,0}` formula, and wrapping integral.
 - Stringbook notebook anchor:
   `/Users/xiyin/ResearchIdeas/stringbook/codes/mirror TBA and wrapping corrections.nb`.
+- Scope boundary: `string` in `Bethe string`, `mirror string`, or
+  `stringbook` is integrability/source terminology here.  No string-theoretic
+  construction is used as a premise for the QFT TBA/Y-system claims.
 - Downloaded local study copies under
   `references/planar_n4_integrability/`: Bajnok--Janik `0807.0399` for the
   displayed post-residue per-`Q` summand and telescoping target,

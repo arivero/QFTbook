@@ -10,7 +10,9 @@ and expands the stringbook conifold gauge-theory material from
 `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, especially
 the Klebanov-Witten and Klebanov-Strassler discussion around lines
 18380-18670, while rewriting the derivations in the monograph's notation and
-status-boundary style.
+status-boundary style.  The imported material is used only as a source of
+field-theory conventions and candidate examples; no string compactification,
+brane construction, or holographic interpretation is a premise of the chapter.
 
 ## Notation Inventory
 
@@ -399,7 +401,7 @@ status-boundary style.
 - Performs the KW `a`-maximization calculation for baryonic mixing and
   derives the exact finite-N central charges
   `a=27N^2/64-3/8`, `c=27N^2/64-1/4`.
-- Proves the one-brane abelian conifold quotient
+- Proves the rank-one abelian conifold quotient
   `C[W_ij]/(W_11 W_22 - W_12 W_21)` and records the general commuting
   mesonic branch as `Sym^N(conifold)`.
 - Lists protected meson and baryon dimensions from the superconformal

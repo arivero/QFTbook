@@ -2,9 +2,11 @@
 
 ## Source Position
 
-This chapter follows the one-loop spin-chain construction and imports the
-stringbook all-loop magnon-dispersion and asymptotic-Bethe-ansatz spine into
-the monograph's proof-boundary language.
+This chapter follows the one-loop spin-chain construction and uses the
+stringbook all-loop magnon-dispersion and asymptotic-Bethe-ansatz spine as a
+source of integrability conventions.  The monograph argument remains a
+QFT-side spectral problem: external string-theoretic comparisons are
+motivational checks, not foundations.
 
 ## Notation Inventory
 
@@ -30,7 +32,8 @@ the monograph's proof-boundary language.
 - `K^I,K^II,K^III`: nesting numbers for physical, level-II, and level-III
   excitations in one `su(2|2)_c` copy.
 - `S_str`: string-basis nesting factor after absorbing half of the
-  length-changing marker into bosons.
+  length-changing marker into bosons; this is a conventional integrability
+  frame label, not a string-theory premise.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
 

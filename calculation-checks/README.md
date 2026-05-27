@@ -509,6 +509,12 @@ Current checks:
   six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
   anomaly/tensor-branch arithmetic, and the trace-delta
   \(g_5^2=4\pi^2R\) compactification normalization.
+- `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
+  supersymmetric moduli-space quotient conventions, including the
+  rank-one \(U(1)\) invariant ring
+  \(\mathbb C[x,y]^{\mathbb C^\ast}=\mathbb C[xy]\), the matching
+  real/complex quotient dimension count, and the equivariance of an
+  invariant superpotential's \(F\)-term ideal.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,
