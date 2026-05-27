@@ -426,21 +426,57 @@ def check_zhukovsky_map_and_energy() -> None:
 
 
 def check_crossing_rhs_is_sheet_sensitive() -> None:
-    coupling = 0.2
-    x1_plus, x1_minus = xpm_from_momentum(0.7, coupling)
-    x2_plus, x2_minus = xpm_from_momentum(1.6, coupling)
+    for coupling, momentum_1, momentum_2 in (
+        (0.08, 0.45, 1.35),
+        (0.2, 0.7, 1.6),
+        (0.55, 1.1, 2.45),
+    ):
+        x1_plus, x1_minus = xpm_from_momentum(momentum_1, coupling)
+        x2_plus, x2_minus = xpm_from_momentum(momentum_2, coupling)
 
-    def stringbook_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
-        return (
-            (x2_plus / x2_minus)
-            * ((x2_plus - a_plus) / (x2_plus - a_minus))
-            * ((x2_minus - 1 / a_plus) / (x2_minus - 1 / a_minus))
+        def stringbook_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
+            return (
+                (x2_plus / x2_minus)
+                * ((x2_plus - a_plus) / (x2_plus - a_minus))
+                * ((x2_minus - 1 / a_plus) / (x2_minus - 1 / a_minus))
+            )
+
+        def reciprocal_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
+            return (
+                (x2_minus / x2_plus)
+                * ((x2_plus - a_minus) / (x2_plus - a_plus))
+                * ((x2_minus - 1 / a_minus) / (x2_minus - 1 / a_plus))
+            )
+
+        physical_rhs = stringbook_crossing_rhs(x1_plus, x1_minus)
+        reciprocal_rhs = reciprocal_crossing_rhs(x1_plus, x1_minus)
+        assert_close(
+            "crossing RHS reciprocal convention",
+            physical_rhs * reciprocal_rhs,
+            1,
+            tol=2.0e-9,
         )
 
-    physical_rhs = stringbook_crossing_rhs(x1_plus, x1_minus)
-    naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
-    if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
-        raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+        naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
+        if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
+            raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+
+    algebraic_rhs = (
+        Fraction(5, 7)
+        * Fraction(5 - 2, 5 - 3)
+        * (Fraction(7, 1) - Fraction(1, 2))
+        / (Fraction(7, 1) - Fraction(1, 3))
+    )
+    algebraic_naive = (
+        Fraction(5, 7)
+        * (Fraction(5, 1) - Fraction(1, 2))
+        / (Fraction(5, 1) - Fraction(1, 3))
+        * Fraction(7 - 2, 7 - 3)
+    )
+    if algebraic_rhs != Fraction(117, 112):
+        raise AssertionError(f"crossing RHS algebraic sample: {algebraic_rhs}")
+    if algebraic_naive != Fraction(675, 784):
+        raise AssertionError(f"crossing RHS naive algebraic sample: {algebraic_naive}")
 
 
 def check_dressing_charge_antisymmetry_unitarity() -> None:

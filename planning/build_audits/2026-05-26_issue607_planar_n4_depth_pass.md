@@ -1119,3 +1119,36 @@ Calculation checks added:
   Cauchy-transform model that verifies the lower magic branch equals the
   analytic continuation of the upper Cauchy formula, detects the wrong
   lower-sheet sign, and checks the `hat T_{2,m}` row-product formula.
+
+## Continuation XXXVII: Crossing Scalar Convention Algebra
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Source/standard motivation:
+
+- The stringbook convention ledger fixes a definite Janik crossing RHS, while
+  the literature often prints the reciprocal because the scalar/rational split
+  or the `S_{12}`/`S_{21}` orientation has been chosen differently.  The
+  monograph should not leave that as a reader-facing assertion, especially
+  because the crossed bar is path data rather than a sheet-free substitution.
+
+Content added:
+
+- Added a proposition isolating the rational scalar convention algebra.  It
+  defines the stringbook multiplier `Xi_12`, defines the reciprocal multiplier
+  used in the opposite convention, and proves `Xi_12^rec=Xi_12^{-1}` by
+  factor cancellation.
+- Added an explicit algebraic counterexample showing that substituting
+  `x_1^pm -> 1/x_1^pm` in the same rational expression does not leave the RHS
+  invariant.  The text then restates that Janik crossing itself is the
+  scalar-factor monodromy input, not a finite algebraic identity.
+
+Calculation checks added:
+
+- Strengthened `check_crossing_rhs_is_sheet_sensitive()` so it checks the
+  exact reciprocal relation on several physical-branch samples and verifies
+  the algebraic counterexample used in the text.

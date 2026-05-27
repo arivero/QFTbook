@@ -82,6 +82,11 @@ the monograph's proof-boundary language.
 - Adds the explicit crossing scalar-factor equation and warns that the
   crossing path winds around shifted Zhukovsky branch points rather than
   acting as a sheet-free substitution.
+- Derives the crossing scalar convention algebra in the stringbook
+  orientation: the common reciprocal literature convention is exactly the
+  inverse rational multiplier, while the naive substitution
+  `x_1^pm -> 1/x_1^pm` is not a convention-independent identity.  The
+  genuine crossing equation remains a scalar-factor monodromy input.
 - States the BES/crossing scalar-factor input as a quoted theorem with its
   framework assumptions.
 - Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
@@ -161,8 +166,10 @@ crossed Zhukovsky sheets.
 - The same script checks the Zhukovsky defining equation, large-`u`
   expansion, cut reciprocal boundary values, `x^pm` shortening relation, and
   corrected energy formula.
-- It also checks that the stringbook-orientation crossing RHS is not
-  invariant under a naive sheet-free `x -> 1/x` substitution.
+- It also checks the stringbook-orientation crossing RHS against its exact
+  reciprocal convention and verifies, both on physical-branch samples and on
+  an algebraic counterexample, that it is not invariant under a naive
+  sheet-free `x -> 1/x` substitution.
 - It checks dressing scalar unitarity by evaluating the antisymmetric charge
   expansion on physical-branch `x^pm` samples and verifying
   `theta_12+theta_21=0`, `sigma_12 sigma_21=1`, and the squared-factor

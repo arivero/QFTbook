@@ -594,12 +594,68 @@ which gives \(4\zeta(3)g^3-40\zeta(5)g^5\).
 
 A saddle expansion of the same contour representation gives the AFS and
 Hernandez--Lopez strong-coupling terms.
+
+\begin{proposition}[Crossing scalar convention algebra]
+\label{prop:planar-n4-crossing-scalar-convention-algebra}
+Assume \(x_1^\pm,x_2^\pm\) are non-zero and avoid the displayed
+denominators.  In the stringbook scalar-factor orientation used in this
+chapter set
+\[
+  \Xi_{12}
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}.
+\]
+The common reciprocal orientation is
+\[
+  \Xi_{12}^{\rm rec}
+  =
+  \frac{x_2^-}{x_2^+}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+},
+\]
+and satisfies
+\[
+  \Xi_{12}^{\rm rec}=\Xi_{12}^{-1}.
+\]
+Moreover the algebraic substitution \(x_1^\pm\mapsto1/x_1^\pm\) does not
+leave this multiplier invariant as a rational function.
+\end{proposition}
+
+\begin{proof}
+The inverse statement is the product of the three displayed inverse factors:
+\[
+\begin{aligned}
+  \Xi_{12}\Xi_{12}^{\rm rec}
+  &=
+  \frac{x_2^+}{x_2^-}\frac{x_2^-}{x_2^+}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+}
+  =1 .
+\end{aligned}
+\]
+For the sheet-free substitution claim it is enough to show that the two
+rational functions are not identical.  At
+\[
+  x_1^+=2,\qquad x_1^-=3,\qquad x_2^+=5,\qquad x_2^-=7
+\]
+one obtains \(\Xi_{12}=117/112\), whereas the same formula with
+\(x_1^\pm\) replaced by \(1/x_1^\pm\) gives \(675/784\).  Hence equality can
+hold only on a proper algebraic sublocus, not as a convention-independent
+identity.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
-In the normalization where the rational matrix part is separated as above,
-Janik crossing has the convention-fixed form
+The preceding proposition fixes only the rational convention carried by the
+chosen scalar split; it does not derive this monodromy condition from finite
+algebra.  In the normalization where the rational matrix part is separated as
+above, Janik crossing has the convention-fixed form
 \begin{equation}
   \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)
   =
