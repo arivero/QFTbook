@@ -618,6 +618,11 @@ Current checks:
   the \((\theta\psi)(\theta\chi)\) identity, the
   \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
   auxiliary \(F\)-field elimination.
+- `susy_wilsonian_bv_checks.py`: finite Fourier/odd-variable checks for the
+  Volume VII supersymmetric Wilsonian-schemes chapter, including BV Stokes
+  for a fiber Darboux pair, the pushforward chain-map identity, QME
+  preservation in the finite model, and semigroup behavior for product
+  cycles.
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
