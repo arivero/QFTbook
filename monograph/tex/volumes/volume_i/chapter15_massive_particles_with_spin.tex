@@ -5,10 +5,14 @@
 
 \section{Massive One-Particle Representations}
 
-This chapter works in \(D=4\). Let \(\Hilb_1\) be an irreducible massive
-one-particle subspace of mass \(m>0\). This is the massive row of
-Table~\ref{tab:wigner-classification-four-dimensional}. The positive-energy
-mass shell is
+\begin{definition}[Massive one-particle spin datum]
+\label{def:massive-one-particle-spin-datum}
+Work in \(D=4\). A massive one-particle datum consists of a Hilbert space
+\(\Hilb_1\) carrying an irreducible positive-energy unitary representation of
+the Poincare group whose translation generators \(P^\mu\) have joint spectrum
+supported on a single positive-energy mass shell of mass \(m>0\).
+Equivalently, it is the massive row of
+Table~\ref{tab:wigner-classification-four-dimensional}. The mass shell is
 \[
   \Sigma_m^+
   =
@@ -27,6 +31,7 @@ Section~\ref{sec:rigged-hilbert-continuous-spectrum}, are normalized by
 \]
 The labels \(\sigma,\tau\) span a finite-dimensional internal vector space
 which is fixed by Lorentz symmetry.
+\end{definition}
 
 \begin{remark}[Spacelike Wigner orbits]
 The full representation theory of the Poincare group also contains spacelike
@@ -37,6 +42,8 @@ requires \(\operatorname{Spec}(P)\subset\overline V_+\), while a spacelike orbit
 lies outside the closed forward lightcone.
 \end{remark}
 
+\begin{definition}[Standard rest momentum and normalization frames]
+\label{def:massive-standard-rest-momentum-normalization}
 Choose the reference momentum
 \[
   p_R=(m,\vec0).
@@ -45,7 +52,9 @@ For every \(p\in\Sigma_m^+\), choose a standard Lorentz transformation
 \[
   L(p)\in SO^+(1,3),
   \qquad
-  L(p)p_R=p.
+  L(p)p_R=p,
+  \qquad
+  L(p_R)=1 .
 \]
 It is sometimes useful to compare this covariant normalization with the
 delta-function normalization
@@ -66,7 +75,10 @@ The factor \(N(\vec p)\) is the Jacobian needed to keep the measure
 \(d^3\vec p\) compatible with Lorentz transformations in a
 delta-normalized basis. The covariantly normalized states used below absorb
 this factor into the invariant mass-shell measure.
+\end{definition}
 
+\begin{definition}[Massive Wigner rotation]
+\label{def:massive-wigner-rotation}
 The stabilizer of \(p_R\) in \(SO^+(1,3)\) is the rotation group \(SO(3)\).
 Whenever a Wigner rotation is inserted into a spin representation below, it is
 understood through its lift to the universal cover of \(SO(3)\); the reason for
@@ -97,7 +109,11 @@ let \(D^{(j)}\) be the corresponding irreducible unitary representation of
   \qquad
   \operatorname{sp}(p)=\vec p .
 \]
-The one-particle states transform as
+\end{definition}
+
+\begin{proposition}[Massive Wigner transformation law]
+\label{prop:massive-wigner-transformation-law}
+The covariantly normalized one-particle states transform as
 \[
   U(\Lambda)|\vec p,\sigma\rangle
   =
@@ -121,6 +137,42 @@ This is the same representation written in a basis adapted to
 \(d^3\vec p\) rather than to \(d^3\vec p/(2p^0)\). Keeping both formulas
 visible prevents the normalization factor from being mistaken for a property
 of spin.
+\end{proposition}
+
+\begin{proof}
+By definition \(L(p)p_R=p\) and \(L(\Lambda p)p_R=\Lambda p\). Therefore
+\[
+  W(\Lambda,p)p_R
+  =
+  L(\Lambda p)^{-1}\Lambda L(p)p_R
+  =
+  p_R ,
+\]
+so \(W(\Lambda,p)\) belongs to the little group of the rest momentum.  The
+restriction of the Poincare representation to the little group at \(p_R\) is an
+irreducible \(SU(2)\) representation \(D^{(j)}\).  Acting first by \(L(p)\),
+then by \(\Lambda\), and finally comparing with the chosen standard
+transformation \(L(\Lambda p)\) gives exactly the displayed spin matrix
+\(D^{(j)}(W(\Lambda,p))\).
+
+The absence or presence of the square-root factor is a statement about the
+basis measure.  The invariant mass-shell measure satisfies
+\[
+  \frac{d^3\vec p}{2p^0}
+  =
+  \frac{d^3\operatorname{sp}(\Lambda p)}{2(\Lambda p)^0}.
+\]
+Equivalently,
+\[
+  d^3\operatorname{sp}(\Lambda p)
+  =
+  \frac{(\Lambda p)^0}{p^0}\,d^3\vec p .
+\]
+Thus the covariantly normalized basis, whose resolution of the identity uses
+\(d^3\vec p/(2p^0)\), transforms without a scalar Jacobian.  A basis
+normalized against \(d^3\vec p\) must instead carry the unitary half-density
+factor \(((\Lambda p)^0/p^0)^{1/2}\).  This proves both formulas.
+\end{proof}
 
 \section{Projective Rotations and the Covering Group}
 \label{sec:massive-spin-projective-cover}
@@ -170,40 +222,50 @@ Consequently the correct group acting linearly is the universal cover of
 \end{tikzpicture}
 \end{center}
 
-The fundamental group is
+\begin{proposition}[Massive spin labels from the covering group]
+\label{prop:massive-cover-spin-labels}
+The universal cover of the massive rotation little group is
 \[
-  \pi_1(SO(3))\simeq \mathbb Z_2 .
+  \widetilde{SO(3)}\simeq SU(2).
 \]
-A loop representing a \(2\pi\) rotation is not contractible, while the loop
-representing a \(4\pi\) rotation is contractible. The universal cover is
+Its finite-dimensional irreducible unitary representations are indexed by
 \[
-  \widetilde{SO(3)}\simeq SU(2),
+  j=0,\frac12,1,\frac32,\ldots ,
 \]
-and every finite-dimensional unitary representation decomposes as
-\[
-  D(W)\simeq \bigoplus_a D^{(j_a)}(W),
-  \qquad
-  j_a=0,\frac12,1,\frac32,\ldots .
-\]
-The nontrivial central element of \(SU(2)\) is the lift of a \(2\pi\) rotation.
-In the irreducible spin-\(j\) representation it acts as
+with representation space \(V_j\) of dimension \(2j+1\). The nontrivial
+central element of \(SU(2)\), namely the lift of a \(2\pi\) rotation, acts by
 \[
   D^{(j)}(-1)=(-1)^{2j}\mathbf 1_{V_j}.
 \]
-The lift of a \(4\pi\) rotation is the identity.  Integer and half-integer
-spins are therefore distinct linear representations of the covering group,
-although their projections to \(SO(3)\) describe the same classical rotation.
-When an irreducible massive one-particle representation is chosen, only one
-spin \(j\) occurs. With column vectors the representation matrices satisfy
+The lift of a \(4\pi\) rotation is the identity.  Hence an irreducible massive
+one-particle representation carries exactly one such spin label \(j\).
+\end{proposition}
+
+\begin{proof}
+The group \(SO(3)\) is \(\mathbb{RP}^3\). Its fundamental group is therefore
 \[
-  D(W_2W_1)=D(W_2)D(W_1).
+  \pi_1(SO(3))\simeq \mathbb Z_2 .
 \]
-If the spin labels are carried as row indices on bras or on matrix elements,
-the displayed order is transposed; this is only an index convention and has no
-physical content.
+The nontrivial class is represented by a \(2\pi\) rotation loop, while the
+double loop representing a \(4\pi\) rotation is contractible. The simply
+connected compact Lie group with Lie algebra \(\mathfrak{so}(3)\) is
+\(SU(2)\), and the covering map \(SU(2)\to SO(3)\) has kernel
+\(\{\pm 1\}\).  The highest-weight classification of irreducible unitary
+\(SU(2)\) representations gives one representation \(D^{(j)}\) for
+each nonnegative half-integer \(j\), of dimension \(2j+1\).  In the
+spin-\(j\) representation the central element \(-1\) is the exponential of a
+\(2\pi\) rotation and acts by \((-1)^{2j}\).  Irreducibility of the
+one-particle Poincare representation means that its little-group
+representation is one irreducible summand, not a direct sum.  With column
+vectors the matrices obey \(D(W_2W_1)=D(W_2)D(W_1)\); row-index conventions on
+bras or matrix elements transpose this order and do not alter the
+representation.
+\end{proof}
 
 \section{Spin Frames on the Mass Shell}
 
+\begin{definition}[Massive spin frame]
+\label{def:massive-spin-frame}
 The choice of standard transformations \(L(p)\) is a choice of spin frame over
 the mass shell. To make this statement precise, let
 \[
@@ -221,6 +283,10 @@ The generalized basis associated to this frame is the distributional map
   F_L(p)e_\sigma=|\vec p,\sigma\rangle ,
 \]
 where \(\{e_\sigma\}_{\sigma=-j}^j\) is an orthonormal basis of \(V_j\).
+\end{definition}
+
+\begin{proposition}[Wigner cocycle and spin-frame change]
+\label{prop:massive-wigner-cocycle-spin-frame-change}
 The Lorentz action is
 \[
   U(\Lambda)F_L(p)
@@ -234,18 +300,6 @@ rotation obeys the cocycle identity
   =
   W(\Lambda_2,\Lambda_1 p)W(\Lambda_1,p).
 \]
-Indeed,
-\[
-\begin{aligned}
-  W(\Lambda_2\Lambda_1,p)
-  &=
-  L(\Lambda_2\Lambda_1p)^{-1}\Lambda_2\Lambda_1L(p)       \\
-  &=
-  L(\Lambda_2\Lambda_1p)^{-1}\Lambda_2L(\Lambda_1p)\,
-  L(\Lambda_1p)^{-1}\Lambda_1L(p).
-\end{aligned}
-\]
-
 If \(Q:\Sigma_m^+\to SU(2)\) is a smooth little-group-valued function, then
 \[
   L'(p)=L(p)Q(p)
@@ -277,9 +331,57 @@ is independent of the spin frame because \(D^{(j)}(Q(p))\) is unitary. In this
 language, a scattering amplitude with external massive spin states is a
 multilinear pairing of spin-frame components and dual spin-frame components
 whose value is invariant under the simultaneous transformations above.
+\end{proposition}
+
+\begin{proof}
+The action formula is Proposition~\ref{prop:massive-wigner-transformation-law}
+written as a map \(V_j\to\Hilb_1\). The cocycle identity follows from a direct
+factorization:
+\[
+\begin{aligned}
+  W(\Lambda_2\Lambda_1,p)
+  &=
+  L(\Lambda_2\Lambda_1p)^{-1}\Lambda_2\Lambda_1L(p)\\
+  &=
+  L(\Lambda_2\Lambda_1p)^{-1}\Lambda_2L(\Lambda_1p)\,
+  L(\Lambda_1p)^{-1}\Lambda_1L(p)\\
+  &=
+  W(\Lambda_2,\Lambda_1p)W(\Lambda_1,p).
+\end{aligned}
+\]
+If \(L'(p)=L(p)Q(p)\), then
+\[
+\begin{aligned}
+  W'(\Lambda,p)
+  &=
+  L'(\Lambda p)^{-1}\Lambda L'(p)\\
+  &=
+  Q(\Lambda p)^{-1}L(\Lambda p)^{-1}\Lambda L(p)Q(p)\\
+  &=
+  Q(\Lambda p)^{-1}W(\Lambda,p)Q(p).
+\end{aligned}
+\]
+The basis relation
+\[
+  F_{L'}(p)=F_L(p)D^{(j)}(Q(p))
+\]
+therefore forces the component relation
+\(\psi_{L'}(p)=D^{(j)}(Q(p))^{-1}\psi_L(p)\).  Since \(D^{(j)}\) is unitary,
+\[
+  \psi_{L'}(p)^\dagger\chi_{L'}(p)
+  =
+  \psi_L(p)^\dagger\chi_L(p)
+\]
+pointwise on the mass shell, and the displayed inner product is
+spin-frame independent.  Dual spin-frame components transform by the inverse
+dual matrices, so any contracted scattering amplitude is independent of the
+choice of \(L(p)\).
+\end{proof}
 
 \section{Covariant Fields as Intertwiners}
 
+\begin{proposition}[Vacuum-to-particle intertwiners]
+\label{prop:covariant-field-intertwiner-equivariance}
 Let \(\widehat\Phi_A(x)\) be a local field whose index \(A\) transforms in a
 finite-dimensional representation \(R\) of the double cover
 \(\operatorname{Spin}^+(1,3)\simeq SL(2,\mathbb C)\):
@@ -335,6 +437,51 @@ with the convention for \(L(p)\) fixed above. Different choices of standard
 boost are spin-frame changes of the type described in the previous section,
 and the field intertwiners are used with the corresponding transformed
 spin-frame components.
+\end{proposition}
+
+\begin{proof}
+Translation covariance gives
+\[
+  \widehat\Phi_A(x)=\ee^{-\ii P\cdot x}\widehat\Phi_A(0)\ee^{\ii P\cdot x}
+\]
+in the convention used throughout this volume.  Since
+\(P^\mu|\vec p,\sigma\rangle=p^\mu|\vec p,\sigma\rangle\) and
+\(\bra{\vac}P^\mu=0\), the spacetime dependence is
+\(\ee^{\ii p\cdot x}u_A{}^\sigma(p)\).
+
+For Lorentz covariance, compute the same matrix element in two ways.  The
+Wigner transformation law gives
+\[
+  \bra{\vac}\widehat\Phi_A(0)U(\Lambda)|\vec p,\sigma\rangle
+  =
+  \sum_{\tau=-j}^{j}
+  u_A{}^\tau(\Lambda p)D^{(j)}_{\tau\sigma}(W(\Lambda,p)).
+\]
+Vacuum invariance and field covariance give
+\[
+\begin{aligned}
+  \bra{\vac}\widehat\Phi_A(0)U(\Lambda)|\vec p,\sigma\rangle
+  &=
+  \bra{\vac}U(\Lambda)
+  U(\Lambda)^{-1}\widehat\Phi_A(0)U(\Lambda)|\vec p,\sigma\rangle\\
+  &=
+  R_A{}^B(\Lambda^{-1})u_B{}^\sigma(p).
+\end{aligned}
+\]
+Equating these expressions proves the equivariance condition.  If
+\(\Lambda=W\) fixes \(p_R\), and the standard section has \(L(p_R)=1\), the
+equivariance equation becomes precisely the displayed \(SU(2)\)-intertwiner
+condition at the rest momentum.  Conversely, a rest intertwiner satisfying this
+condition determines the boosted functions by
+\[
+  u_A{}^\sigma(p)=R_A{}^B(L(p)^{-1})u_B{}^\sigma(p_R),
+\]
+and substituting the cocycle identity of
+Proposition~\ref{prop:massive-wigner-cocycle-spin-frame-change} verifies the
+equivariance equation for arbitrary \(\Lambda\).  The possible nonzero
+intertwiners are therefore exactly the copies of \(V_j\) appearing in the
+restriction of \(R\) to the massive little group.
+\end{proof}
 
 \section{Spin One Half}
 
@@ -420,6 +567,8 @@ Thus a \(2\pi\) rotation acts by \(-1\) on a spinor, while a \(4\pi\)
 rotation acts by \(+1\). This is the infinitesimal form of the covering-group
 discussion above.
 
+\begin{proposition}[Massive Dirac eigenspaces, projectors, and spin sums]
+\label{prop:massive-dirac-projectors-spin-sums}
 Write
 \[
   \not p=p_\mu\gamma^\mu .
@@ -535,6 +684,75 @@ Equivalently,
 The minus sign in the second identity is fixed by the sign of the
 \(\beta\)-norm on the negative Dirac eigenspace; the particle Hilbert-space
 inner product remains positive.
+\end{proposition}
+
+\begin{proof}
+The Clifford relation gives
+\[
+  \not p^{\,2}
+  =
+  p_\mu p_\nu\gamma^\mu\gamma^\nu
+  =
+  p^2\mathbf 1
+  =
+  -m^2\mathbf 1
+\]
+on the mass shell, because the antisymmetric commutator part drops out after
+contraction with \(p_\mu p_\nu\). Hence the minimal polynomial of \(\not p\)
+divides \(\lambda^2+m^2\), and the two spectral projectors are
+\[
+  \Pi_+(p)=\frac{m-\ii\not p}{2m},
+  \qquad
+  \Pi_-(p)=\frac{m+\ii\not p}{2m}.
+\]
+They satisfy \(\Pi_\pm^2=\Pi_\pm\), \(\Pi_+\Pi_-=0\), and
+\(\Pi_++\Pi_-=1\).  The defining equations for \(u_R^\sigma\) and
+\(v_R^\sigma\) say that they span the \(\Pi_+(p_R)\) and \(\Pi_-(p_R)\)
+eigenspaces.
+
+The covariance identity
+\[
+  R(\Lambda)\gamma^\mu R(\Lambda)^{-1}
+  =
+  \Lambda^\mu{}_\nu\gamma^\nu
+\]
+implies
+\[
+  \not p\,R(L(p)^{-1})=R(L(p)^{-1})\not p_R ,
+\]
+with \(p=L(p)p_R\).  Applying this identity to \(u_R^\sigma\) and
+\(v_R^\sigma\) proves the two momentum-space Dirac equations.
+
+The relation
+\[
+  R(\Lambda)^\dagger=\beta R(\Lambda^{-1})\beta
+\]
+is equivalent to \(R(\Lambda)^\dagger\beta R(\Lambda)=\beta\), so the
+\(\beta\)-pairing is Lorentz invariant.  Multiplication by
+\((m/p^0)^{1/2}\) in the delta-normalized spinors therefore changes the rest
+norms only by the factor \(m/p^0\), giving the displayed
+\(\beta\)-inner-products.
+
+It remains to identify the matrix-valued completeness relations.  At fixed
+\(p\), the vectors \(\mathcal U^\sigma(p)\) form a \(\beta\)-orthogonal basis
+of the positive eigenspace, while \(\mathcal V^\sigma(p)\) form a
+\(\beta\)-orthogonal basis of the negative eigenspace with negative
+\(\beta\)-norm. Hence
+\[
+  \sum_{\sigma=1}^2
+  \mathcal U^\sigma(p)\overline{\mathcal U}^{\,\sigma}(p)
+  =
+  \frac{m}{p^0}\Pi_+(p),
+  \qquad
+  \sum_{\sigma=1}^2
+  \mathcal V^\sigma(p)\overline{\mathcal V}^{\,\sigma}(p)
+  =
+  -\frac{m}{p^0}\Pi_-(p).
+\]
+Substituting the projectors gives the two spin sums with bars. Since
+\(\beta^2=1\), the identities without bars follow by multiplying on the right
+by \(\beta\). This proves all displayed projector and spin-sum formulas.
+\end{proof}
 
 For the explicit gamma matrices displayed above, an adapted rest basis is
 \[

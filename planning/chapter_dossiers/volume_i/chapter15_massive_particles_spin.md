@@ -6,7 +6,8 @@
 - Begins the particle-classification and spinning-external-state arc.
 - Precedes spinor fields, Grassmann variables, and spinorial LSZ.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 6024--6909,
+  - foundations transcript file, lines 6024--6909 in the current transcript
+    source range,
     with the handwritten pages pp. 146--165 rendered and checked on
     2026-05-22;
   - `references/sound_references/straumann_poincare_representations_0809.4942.pdf`
@@ -54,9 +55,9 @@
 | \(S^{\mu\nu}\) | spinor Lorentz generators |
 | \(\not p\) | \(p_\mu\gamma^\mu\) |
 | \(u^\sigma(p),v^\sigma(p)\) | spinor polarization wavefunctions |
-| \(\mathcal U^\sigma(p),\mathcal V^\sigma(p)\) | delta-normalized spinor polarizations with the source normalization |
+| \(\mathcal U^\sigma(p),\mathcal V^\sigma(p)\) | delta-normalized spinor polarizations |
 | \(\beta\) | \(\ii\gamma^0\), defining the Lorentz-invariant spinor pairing |
-| \(\gamma_5\) | chirality matrix \(-\ii\gamma^0\gamma^1\gamma^2\gamma^3\) in the displayed Clifford basis |
+| \(\gamma_5\) | chirality matrix in the displayed Clifford basis |
 | \(\Pi_\pm(p)\) | projectors onto \(\not p=\pm i m\) eigenspaces |
 
 ## Claims Established
@@ -99,12 +100,24 @@
 - The \(\beta\)-pairing, delta-normalized spinor inner products, and spin
   sums are fixed with their signs and factors of \(p^0\); these identities
   supply the algebra for later spinorial LSZ.
+- The 2026-05-27 formalization pass added labeled statements
+  `def:massive-one-particle-spin-datum`,
+  `def:massive-standard-rest-momentum-normalization`,
+  `def:massive-wigner-rotation`, `prop:massive-wigner-transformation-law`,
+  `prop:massive-cover-spin-labels`, `def:massive-spin-frame`,
+  `prop:massive-wigner-cocycle-spin-frame-change`,
+  `prop:covariant-field-intertwiner-equivariance`, and
+  `prop:massive-dirac-projectors-spin-sums`.
+- `calculation-checks/massive_spin_checks.py` verifies the mass-shell
+  Jacobian, Wigner cocycle, spin-frame unitary covariance, \(SU(2)\) central
+  signs, and the explicit mostly-plus gamma-matrix projector and spin-sum
+  algebra.
 
 ## Figure Requirements
 
-- Double-cover schematic showing the lift from \(SO(3)\) to \(SU(2)\) and the
+- Double-cover diagram showing the lift from \(SO(3)\) to \(SU(2)\) and the
   \(2\pi\)/\(4\pi\) distinction.
-- Endpoint-fixed path-homotopy schematic showing homotopic paths and the
+- Endpoint-fixed path-homotopy diagram showing homotopic paths and the
   noncontractible \(2\pi\) loop whose square is contractible.
 
 ## Exclusions

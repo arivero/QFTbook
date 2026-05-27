@@ -542,6 +542,11 @@ Current checks:
   polarization shifts under the little-group translation subgroup,
   auxiliary-vector polarization-projector transversality, spinor-helicity
   determinant conventions, and BCFW on-shell momentum conservation.
+- `massive_spin_checks.py`: exact symbolic checks for the Volume I
+  massive-particle spin chapter, including the mass-shell boost Jacobian,
+  Wigner cocycle, spin-frame conjugation and inner-product invariance,
+  \(SU(2)\) central signs, and the mostly-plus Dirac projector and spin-sum
+  formulas.
 - `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion
