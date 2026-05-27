@@ -523,6 +523,10 @@ Current checks:
   semi-local kinematic residue, Ising false-vacuum string tension,
   TCSA coupling and counterterm powers, and the Airy scaling of confined
   kink--antikink bound states.
+- `numerical_extrapolation_checks.py`: exact rational checks for the Volume XI
+  finite-regulator extrapolation section, including Lagrange interpolation
+  nonuniqueness of finite cutoff data, two-cutoff Richardson cancellation,
+  and integer-power extrapolation weights with explicit remainder bounds.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar

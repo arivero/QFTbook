@@ -33,27 +33,69 @@ regulator datum.
 
 \section{Rayleigh--Ritz Bound}
 
-Assume \(H\) is self-adjoint and has discrete eigenvalues
+\begin{proposition}[Rayleigh--Ritz bound at fixed Hamiltonian]
+\label{prop:rayleigh-ritz-fixed-hamiltonian}
+Let \(H\) be a self-adjoint operator on \(\Hilb\), bounded below, and suppose
+that
 \[
-  E_0\le E_1\le\cdots
+  E_0\le E_1\le\cdots\le E_n
 \]
-below an essential spectral threshold.  The \(n\)-th variational eigenvalue
-in a finite subspace is
+are isolated eigenvalues below the bottom of the essential spectrum, counted
+with multiplicity.  Let \(\mathcal Q_H\) be the closed quadratic form of
+\(H\).  For a finite-dimensional subspace
+\(\Hilb_\Lambda\subset\operatorname{Dom}\mathcal Q_H\), define
 \[
   E_n(\Lambda)
   =
-  \min_{\dim W=n+1,\ W\subset\Hilb_\Lambda}
-  \max_{\psi\in W,\ \|\psi\|=1}\langle\psi,H\psi\rangle.
+  \min_{\substack{W\subset\Hilb_\Lambda\\ \dim W=n+1}}
+  \max_{\substack{\psi\in W\\ \|\psi\|=1}}\mathcal Q_H(\psi,\psi).
 \]
-Since the minimization is over fewer subspaces than in the full Hilbert
-space,
+Then \(E_n(\Lambda)\ge E_n\).  If \(\{\Hilb_\Lambda\}\) is an increasing net
+and, for some orthonormal eigenbasis
+\(\varphi_0,\ldots,\varphi_n\) of the first \(n+1\) eigenspaces, there are
+\(\eta_j^\Lambda\in\Hilb_\Lambda\) with
 \[
-  E_n(\Lambda)\ge E_n.
+  \eta_j^\Lambda\to\varphi_j
+  \quad\text{in the form norm}\quad
+  \|\psi\|_{\mathcal Q}^2
+  =
+  \|\psi\|^2+\mathcal Q_H(\psi,\psi)-c\|\psi\|^2
 \]
-If \(\Hilb_\Lambda\) is nested and dense in the form domain, these variational
-eigenvalues decrease to \(E_n\).  In QFT, counterterms and continuum limits
-can destroy this monotonicity unless the comparison is made at fixed
-regulated Hamiltonian.
+for a constant \(c<\inf\operatorname{spec}H\), then
+\(E_n(\Lambda)\downarrow E_n\).
+\end{proposition}
+
+\begin{proof}
+The min--max characterization of the \(n\)-th discrete eigenvalue gives
+\[
+  E_n
+  =
+  \inf_{\substack{W\subset\operatorname{Dom}\mathcal Q_H\\ \dim W=n+1}}
+  \sup_{\substack{\psi\in W\\ \|\psi\|=1}}\mathcal Q_H(\psi,\psi).
+\]
+The variational problem defining \(E_n(\Lambda)\) restricts the same infimum
+to the smaller family of subspaces contained in \(\Hilb_\Lambda\), hence
+\(E_n(\Lambda)\ge E_n\).  By the approximation hypothesis, Gram--Schmidt in
+the ordinary Hilbert norm produces an \((n+1)\)-dimensional subspace
+\(W_\Lambda\subset\Hilb_\Lambda\) whose unit sphere converges in form norm to
+the unit sphere of
+\(\operatorname{span}\{\varphi_0,\ldots,\varphi_n\}\).  The Gram--Schmidt
+coefficients are rational functions of inner products whose limiting
+denominators are nonzero, so the form-norm convergence is preserved.  The
+supremum of \(\mathcal Q_H\) on that unit sphere therefore converges to
+\(E_n\).
+The upper bound \(E_n(\Lambda)\le \sup_{\psi\in W_\Lambda,\|\psi\|=1}
+\mathcal Q_H(\psi,\psi)\) gives \(\limsup_\Lambda E_n(\Lambda)\le E_n\).
+Together with the lower bound this proves convergence.  Monotonic decrease
+follows because increasing \(\Hilb_\Lambda\) enlarges the family of trial
+subspaces.
+\end{proof}
+
+This proposition concerns a fixed self-adjoint operator \(H\).  It does not
+assert monotonicity for a family \(H_\Lambda^{\mathrm{ren}}\) whose
+counterterms change with \(\Lambda\), nor for a sequence of finite matrices
+obtained from different regulators.  Those comparisons require their own
+cutoff-error estimates.
 
 \section{Truncated Conformal Space}
 
@@ -447,6 +489,195 @@ behavior, zero modes, normalization of \(\gamma\), and comparison with a
 Lorentz-covariant reconstruction.  The script therefore prints finite
 eigenvalues and a quadratic-form positivity check rather than presenting the
 numbers as physical meson masses.
+
+\section{Finite-Regulator Extrapolation}
+\label{sec:finite-regulator-extrapolation}
+
+The output of a lattice, Hamiltonian-truncation, or DLCQ script is a number
+attached to a regulator.  A continuum claim is a separate mathematical
+statement about a limiting procedure.  This section records the minimal
+finite-dimensional facts used in the companion scripts and explains what an
+extrapolation hypothesis must contain.
+
+\begin{definition}[Finite-regulator observable datum]
+\label{def:finite-regulator-observable-datum}
+A finite-regulator observable datum consists of:
+\[
+  \bigl(I,\preceq;\ X_i,\ A_i,\ \sigma_i,\ \mathcal E_i\bigr) .
+\]
+Here \((I,\preceq)\) is a directed set of regulator labels, \(X_i\) is the
+finite object being computed at label \(i\), \(A_i\in\mathbb R\) is the
+finite observable extracted from \(X_i\), \(\sigma_i\ge0\) is the statistical
+standard error if \(A_i\) is estimated by a random algorithm, and
+\(\mathcal E_i\) is the declared systematic error model.  For deterministic
+TCSA or DLCQ diagonalization one has \(\sigma_i=0\), but \(\mathcal E_i\) is
+not zero: it contains cutoff, finite-volume, counterterm, endpoint, or
+zero-mode errors.  For a Markov-chain computation, \(A_i\) itself is an
+estimator and \(\sigma_i\) must include autocorrelation.
+\end{definition}
+
+\begin{proposition}[Finite data do not determine the continuum limit]
+\label{prop:finite-data-do-not-determine-continuum-limit}
+Let \(K_1,\ldots,K_N\) be distinct positive regulator values and let
+\(A_1,\ldots,A_N\in\mathbb R\) be finite outputs.  For every proposed
+continuum value \(A_\infty\in\mathbb R\), there is a polynomial \(p(t)\) of
+degree at most \(N\) such that
+\[
+  p(0)=A_\infty,
+  \qquad
+  p(K_j^{-1})=A_j,\quad j=1,\ldots,N .
+\]
+Consequently finitely many cutoff values, by themselves, cannot prove a
+continuum limit or its value.
+\end{proposition}
+
+\begin{proof}
+The \(N+1\) points
+\[
+  0,\quad K_1^{-1},\ldots,K_N^{-1}
+\]
+are distinct.  Lagrange interpolation gives a unique polynomial of degree at
+most \(N\) taking the prescribed values \(A_\infty,A_1,\ldots,A_N\) at those
+points.  Since \(A_\infty\) was arbitrary, the same finite data are
+compatible with arbitrarily many candidate limits unless additional
+information is supplied.
+\end{proof}
+
+\begin{definition}[Power-law cutoff expansion with a remainder bound]
+\label{def:power-law-cutoff-expansion}
+Let \(K\) be a positive regulator parameter tending to infinity.  A
+deterministic sequence \(A_K\) has an \(m\)-term power-law cutoff expansion
+with base exponent \(\omega>0\) and controlled remainder if there are real
+numbers \(A_\infty,c_1,\ldots,c_m\), a constant \(C\), and \(K_0\) such that
+\[
+  \left|
+    A_K
+    -
+    A_\infty
+    -
+    \sum_{a=1}^m c_a K^{-a\omega}
+  \right|
+  \le
+  C K^{-(m+1)\omega},
+  \qquad K\ge K_0 .
+  \label{eq:power-law-cutoff-remainder-bound}
+\]
+The same definition applies to a subsequence, for example
+\(K,Ks_1,\ldots,Ks_m\), provided these are admissible regulator labels and
+the displayed bound holds on that subsequence.  In a TCSA computation the
+exponent \(\omega\) and the counterterm coordinates should be derived from
+the high-energy tail or OPE; in a DLCQ computation they should be derived
+from endpoint and zero-mode analysis.  A fit without
+\eqref{eq:power-law-cutoff-remainder-bound} is a diagnostic, not a theorem.
+\end{definition}
+
+\begin{proposition}[Two-cutoff Richardson cancellation]
+\label{prop:two-cutoff-richardson-cancellation}
+Assume
+\[
+  A_K=A_\infty+cK^{-\omega}+r_K,
+  \qquad
+  |r_K|\le C K^{-\eta},
+  \qquad
+  \eta>\omega>0 ,
+\]
+for \(K\ge K_0\).  Define
+\[
+  R_K
+  =
+  \frac{2^\omega A_{2K}-A_K}{2^\omega-1}.
+  \label{eq:two-cutoff-richardson-estimator}
+\]
+Then
+\[
+  |R_K-A_\infty|
+  \le
+  \frac{2^\omega 2^{-\eta}+1}{2^\omega-1}\,
+  C K^{-\eta}.
+  \label{eq:two-cutoff-richardson-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+Substitute the assumed expansion into
+\eqref{eq:two-cutoff-richardson-estimator}:
+\[
+  2^\omega A_{2K}-A_K
+  =
+  (2^\omega-1)A_\infty
+  +
+  2^\omega c(2K)^{-\omega}
+  -
+  cK^{-\omega}
+  +
+  2^\omega r_{2K}-r_K .
+\]
+The two terms proportional to \(c\) cancel because
+\(2^\omega(2K)^{-\omega}=K^{-\omega}\).  Dividing by \(2^\omega-1\) gives
+\[
+  R_K-A_\infty
+  =
+  \frac{2^\omega r_{2K}-r_K}{2^\omega-1}.
+\]
+Using \(|r_{2K}|\le C(2K)^{-\eta}\) gives
+\eqref{eq:two-cutoff-richardson-bound}.
+\end{proof}
+
+\begin{proposition}[Integer-power extrapolation with explicit weights]
+\label{prop:integer-power-extrapolation-weights}
+Let \(s_0,\ldots,s_m\) be distinct positive real numbers and suppose
+\(A_K\) satisfies \eqref{eq:power-law-cutoff-remainder-bound} on the
+subsequence \(s_jK\), \(j=0,\ldots,m\).  Let \(w_0,\ldots,w_m\) be the unique
+solution of
+\[
+  \sum_{j=0}^m w_j=1,
+  \qquad
+  \sum_{j=0}^m w_j s_j^{-a\omega}=0,
+  \quad a=1,\ldots,m .
+  \label{eq:extrapolation-weight-moments}
+\]
+Then the extrapolated value
+\[
+  R_K^{(m)}
+  =
+  \sum_{j=0}^m w_j A_{s_jK}
+\]
+satisfies
+\[
+  |R_K^{(m)}-A_\infty|
+  \le
+  C K^{-(m+1)\omega}
+  \sum_{j=0}^m |w_j|\,s_j^{-(m+1)\omega}.
+  \label{eq:integer-power-extrapolation-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+Set \(q_j=s_j^{-\omega}\).  The numbers \(q_0,\ldots,q_m\) are distinct,
+so the Vandermonde matrix \((q_j^a)_{0\le a,j\le m}\) is invertible.  Hence
+\eqref{eq:extrapolation-weight-moments} has a unique solution.  Insert
+\eqref{eq:power-law-cutoff-remainder-bound} into \(R_K^{(m)}\).  The
+coefficient of \(A_\infty\) is \(\sum_jw_j=1\).  For
+\(a=1,\ldots,m\), the coefficient of \(c_aK^{-a\omega}\) is
+\(\sum_jw_js_j^{-a\omega}=0\).  The remaining error is bounded by the
+triangle inequality:
+\[
+  \left|\sum_{j=0}^m w_j r_{s_jK}\right|
+  \le
+  \sum_{j=0}^m |w_j|\,C(s_jK)^{-(m+1)\omega}.
+\]
+This is \eqref{eq:integer-power-extrapolation-bound}.
+\end{proof}
+
+The companion calculation
+\[
+  \texttt{calculation-checks/numerical\_extrapolation\_checks.py}
+\]
+verifies the algebra in
+\eqref{eq:two-cutoff-richardson-estimator}--\eqref{eq:integer-power-extrapolation-bound}
+with exact rational arithmetic.  It does not verify that a particular QFT
+observable obeys \eqref{eq:power-law-cutoff-remainder-bound}; that remains a
+problem-specific analytic estimate.
 
 \section{Light-Front Hamiltonian}
 

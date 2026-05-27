@@ -26,6 +26,13 @@ numerics.
 - `M_K^2`, `x_n`, `gamma`: finite harmonic-resolution matrix for the
   large-N two-dimensional QCD meson principal-value operator, grid point, and
   coupling normalization.
+- `I`, `X_i`, `A_i`, `sigma_i`, `E_i`: directed finite-regulator labels,
+  finite regulator object, finite observable, statistical standard error, and
+  declared systematic error model.
+- `A_K`, `A_infty`, `omega`, `r_K`, `R_K`, `R_K^(m)`: cutoff sequence,
+  continuum candidate, leading cutoff exponent, remainder, two-cutoff
+  Richardson extrapolate, and multi-cutoff extrapolate.
+- `s_j`, `w_j`: positive scale factors and exact extrapolation weights.
 
 ## Claim Ledger
 
@@ -50,6 +57,14 @@ numerics.
 - Defines DLCQ kinematics and the role of harmonic resolution.
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
   meson equation and proves positivity of its quadratic form.
+- Defines finite-regulator observable data, separating finite observables,
+  statistical errors, and systematic cutoff-error models.
+- Proves by Lagrange interpolation that finitely many cutoff values do not
+  determine a continuum value without an analytic error model.
+- Defines a power-law cutoff expansion with an explicit remainder bound.
+- Proves two-cutoff Richardson cancellation with a displayed error bound.
+- Proves integer-power multi-cutoff extrapolation by exact Vandermonde
+  weights and a displayed remainder estimate.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
@@ -69,3 +84,6 @@ plots.
 - `qft_scripts/thooft_dlcq.py --smoke`: builds and diagonalizes the finite
   principal-value matrix for the large-N two-dimensional QCD meson equation
   at a small harmonic resolution, with a positivity smoke check.
+- `calculation-checks/numerical_extrapolation_checks.py`: exact rational
+  regression check for the Lagrange-interpolation obstruction, Richardson
+  cancellation, and integer-power extrapolation weights used in the chapter.
