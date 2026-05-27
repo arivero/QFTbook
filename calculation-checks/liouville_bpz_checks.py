@@ -220,6 +220,35 @@ require_affine_equal(
     ba1.scale(2) - one_exp - t_exp,
 )
 
+# The dual screening ledger is the independent b -> 1/b version used for the
+# V_{-1/(2b)} BPZ shift.  Symbols are u=b^{-2} and ab1=alpha/b.
+u_exp = AffineExponent.symbol("u")
+ab1 = AffineExponent.symbol("ab1")
+
+require_affine_equal(
+    "dual screening OPE power",
+    one_exp.scale(2) + u_exp.scale(2) - ab1.scale(2),
+    (one_exp + u_exp - ab1).scale(2),
+)
+
+dual_screening_a = -ab1.scale(2)
+dual_screening_c = u_exp
+require_affine_equal(
+    "dual screening beta first gamma argument",
+    one_exp + dual_screening_a,
+    one_exp - ab1.scale(2),
+)
+require_affine_equal(
+    "dual screening beta second gamma argument",
+    one_exp + dual_screening_c,
+    one_exp + u_exp,
+)
+require_affine_equal(
+    "dual screening beta third gamma argument",
+    -one_exp - dual_screening_a - dual_screening_c,
+    ab1.scale(2) - one_exp - u_exp,
+)
+
 def gamma_ratio(x: float) -> float:
     """gamma(x)=Gamma(x)/Gamma(1-x) for non-pole real samples."""
 
@@ -259,6 +288,33 @@ for name, value in [
         raise AssertionError(
             f"{name} mismatch: {screening_original!r} != {value!r}"
         )
+
+sample_u = 1.0 / sample_t
+sample_ab = sample_alpha / sample_b
+dual_screening_original = (
+    -math.pi
+    * gamma_ratio(1.0 - 2.0 * sample_ab)
+    * gamma_ratio(1.0 + sample_u)
+    * gamma_ratio(2.0 * sample_ab - 1.0 - sample_u)
+)
+dual_screening_b_power_form = (
+    math.pi
+    * sample_b ** -4
+    * gamma_ratio(sample_u)
+    * gamma_ratio(2.0 * sample_ab - 1.0 - sample_u)
+    / gamma_ratio(2.0 * sample_ab)
+)
+
+scale = max(
+    1.0,
+    abs(dual_screening_original),
+    abs(dual_screening_b_power_form),
+)
+if abs(dual_screening_original - dual_screening_b_power_form) > 1e-12 * scale:
+    raise AssertionError(
+        "dual screening b-power form mismatch: "
+        f"{dual_screening_original!r} != {dual_screening_b_power_form!r}"
+    )
 
 numerator_shift = (
     one_exp.scale(2)
@@ -443,6 +499,7 @@ if raw_q_block[2] != g2_formula:
     )
 
 print(
-    "All Liouville BPZ, dual-BPZ, screening, Virasoro-block, "
-    "connection-matrix, elliptic-q, and DOZZ-shift checks passed."
+    "All Liouville BPZ, dual-BPZ, screening, dual-screening, "
+    "Virasoro-block, connection-matrix, elliptic-q, and DOZZ-shift checks "
+    "passed."
 )

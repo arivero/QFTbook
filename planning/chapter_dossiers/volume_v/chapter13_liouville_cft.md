@@ -103,6 +103,10 @@ boundaries rather than importing the appendix exposition.
   one-screening Coulomb-gas integral, including the Dotsenko-Fateev
   meromorphic-continuation boundary and the gamma-function rewrites matching
   the chapter convention.
+- Derives the dual one-screening coefficient for the
+  `V_{-1/(2b)}` channel with a formal dual screening coefficient
+  `tilde_mu`, while stating that this is a bootstrap-screening input rather
+  than an extra term in the classical action.
 - Reduces the four-point function with one `V_{-b/2}` insertion to
   hypergeometric blocks, identifies the two local fusion exponents, and
   derives the explicit gamma-product DOZZ `b`-shift ratio from the
@@ -129,9 +133,10 @@ boundaries rather than importing the appendix exposition.
 - The same script checks the formal `b`-power bookkeeping in the explicit
   DOZZ `b`-shift ratio, including the cancellation of all external-momentum
   powers and the final `b^{-4}` factor.
-- The same script verifies the one-screening OPE power, the three
-  Dotsenko-Fateev beta-integral gamma arguments, and the gamma-function
-  rewrites of the meromorphic `C_-(alpha)` coefficient.
+- The same script verifies the one-screening and dual one-screening OPE
+  powers, the Dotsenko-Fateev beta-integral gamma arguments, and the
+  gamma-function rewrites of the meromorphic `C_-(alpha)` and
+  `tilde C_-(alpha)` coefficients.
 - The same script now also checks the affine parameter algebra in the
   hypergeometric connection matrix: the `z=1` exponent gap and the gamma
   arguments `C-A`, `C-B`, and `A+B-C`.
@@ -199,3 +204,6 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 dual-BPZ pass: added the independent
   `V_{-1/(2b)}` level-two null vector and dual BPZ equation, with exact
   Laurent checks of the `b^{-2}` coefficient.
+- 2026-05-26 dual-screening pass: added the formal dual Coulomb-gas
+  screening computation for the `V_{-1/(2b)}` shift channel, with the
+  `tilde_mu` hypothesis and exact gamma-argument checks.

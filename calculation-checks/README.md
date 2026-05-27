@@ -212,7 +212,7 @@ Current checks:
   discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
-  dual, one-screening coefficient
+  dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
   level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).
