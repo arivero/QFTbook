@@ -1289,3 +1289,38 @@ Calculation checks added:
 - Added `check_hexagon_bridge_lengths_and_phase()`, checking the bridge
   length-balance equations, parity/triangle criterion, bridge partition phase,
   and full-state cyclic translation phase.
+
+## Continuation XLII: QSC Large-u Power Balance
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 already displayed the trial large-`u` powers of the six
+  `mu_ab` entries used in the QSC characteristic determinant.  The row
+  balance was stated in prose, but this is a convention-sensitive step
+  because it uses the `chi`-raising convention
+  `(P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)` and fixes which monodromy terms
+  survive at the leading power.
+
+Content added:
+
+- Added a proposition proving the six trial powers
+  `(alpha-J, alpha+1, alpha, alpha, alpha-1, alpha+J)` from the `SL(2)`
+  `P_a` powers, the common sheet exponent shift of `tilde P_a`, and the
+  `mu_12` exponent.
+- Proved that these powers make every retained term in the leading
+  monodromy-recursion system homogeneous with
+  `mu_ab(u+i)-mu_ab(u)`, explaining why the six-coordinate characteristic
+  determinant is a well-defined leading system.
+
+Calculation checks added:
+
+- Added `check_qsc_large_u_mu_power_balance()`, an exact rational check of
+  row homogeneity in `tilde P_a=mu_ab P^b`, the universal monodromy exponent
+  identity `p_a+p_b+alpha=e_ab-1`, and term-by-term homogeneity of the
+  retained monodromy-recursion terms.

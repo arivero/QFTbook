@@ -2812,6 +2812,77 @@ def check_qsc_weak_mu12_mu24_elimination() -> None:
                 raise AssertionError("weak QSC transfer coefficient is not finite")
 
 
+def check_qsc_large_u_mu_power_balance() -> None:
+    """Check the large-u Pmu exponent bookkeeping before the characteristic matrix."""
+
+    pairs = ((1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4))
+
+    for twist, alpha in (
+        (Fraction(2), Fraction(9, 2)),
+        (Fraction(3), Fraction(13, 3)),
+        (Fraction(5), Fraction(17, 4)),
+    ):
+        p_lower = {
+            1: -twist / 2,
+            2: -twist / 2 - 1,
+            3: twist / 2,
+            4: twist / 2 - 1,
+        }
+        p_upper = {
+            1: p_lower[4],
+            2: p_lower[3],
+            3: p_lower[2],
+            4: p_lower[1],
+        }
+        mu_power = {
+            (1, 2): alpha - twist,
+            (1, 3): alpha + 1,
+            (1, 4): alpha,
+            (2, 3): alpha,
+            (2, 4): alpha - 1,
+            (3, 4): alpha + twist,
+        }
+
+        def exponent(index_a: int, index_b: int) -> Fraction:
+            if index_a == index_b:
+                raise AssertionError("diagonal mu entry has no exponent")
+            return mu_power[tuple(sorted((index_a, index_b)))]
+
+        for row in range(1, 5):
+            row_terms = [
+                exponent(row, col) + p_upper[col]
+                for col in range(1, 5)
+                if col != row
+            ]
+            expected_row_power = alpha + p_lower[row]
+            if any(term != expected_row_power for term in row_terms):
+                raise AssertionError("QSC Pmu row exponent balance failed")
+
+        for index_a, index_b in pairs:
+            left_power = exponent(index_a, index_b) - 1
+            universal_rhs_power = alpha + p_lower[index_a] + p_lower[index_b]
+            if left_power != universal_rhs_power:
+                raise AssertionError("QSC monodromy universal exponent mismatch")
+
+            for index_c in range(1, 5):
+                if index_c != index_b:
+                    term_power = (
+                        p_lower[index_a]
+                        + exponent(index_b, index_c)
+                        + p_upper[index_c]
+                    )
+                    if term_power != left_power:
+                        raise AssertionError("QSC monodromy first row power mismatch")
+                if index_c != index_a:
+                    term_power = (
+                        p_lower[index_b]
+                        + exponent(index_a, index_c)
+                        + p_upper[index_c]
+                    )
+                    if term_power != left_power:
+                        raise AssertionError("QSC monodromy second row power mismatch")
+
+
 def check_qsc_large_u_coefficient_constraints() -> None:
     """Check the large-u characteristic equation for the QSC coefficient products."""
 
@@ -3209,6 +3280,7 @@ def main() -> None:
     check_qsc_pq_bridge_unimodular_rank_one_update()
     check_qomega_dual_monodromy_transport()
     check_qsc_weak_mu12_mu24_elimination()
+    check_qsc_large_u_mu_power_balance()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
     check_qsc_collapsed_cut_shift_primitive()

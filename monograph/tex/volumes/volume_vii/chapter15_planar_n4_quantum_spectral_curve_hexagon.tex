@@ -558,17 +558,78 @@ trial exponent \(\alpha\) and write
   \label{eq:qsc-mu-leading-powers-alpha}
 \end{equation}
 provided the leading terms do not undergo accidental cancellations.  The
-physical branch later has \(\alpha=\Delta\).  For example, the three
-contributions
+physical branch later has \(\alpha=\Delta\).
+
+\begin{proposition}[Large-\(u\) power balance for the \(P\mu\) sheet equation]
+\label{prop:qsc-mu-power-balance}
+Fix the \(SL(2)\) \(P\)-powers displayed above and use
+\((P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)\).  Suppose that in the trial
+large-\(u\) sector \(\widetilde P_a\) has the common sheet exponent shift
 \[
-  \mu_{14}P_1,\qquad \mu_{13}P_2,\qquad \mu_{12}P_3
+  \widetilde P_a=O(u^{\alpha+p_a}),
+  \qquad
+  (p_1,p_2,p_3,p_4)=
+  \left(-\frac J2,-\frac J2-1,\frac J2,\frac J2-1\right),
 \]
-to \(\widetilde P_1\) all scale as \(u^{\alpha-J/2}\); this fixes the
-relative powers of \(\mu_{13}\) and \(\mu_{14}\) once the powers of \(P_a\)
-and \(\mu_{12}\) are known.  The physical branch is obtained by setting
-\(\alpha=\Delta\).  The same balance applied to
-\(\widetilde P_2,\widetilde P_3,\widetilde P_4\) gives
+and that the \(\mu_{12}\) exponent is \(\alpha-J\).  If no leading row of
+\(\widetilde P_a=\mu_{ab}P^b\) is cancelled identically, then the six
+\(\mu\)-exponents are exactly those in
+\eqref{eq:qsc-mu-leading-powers-alpha}.  With these exponents, every term
+kept in the leading monodromy system
+\eqref{eq:qsc-large-u-characteristic-linear-system} has the same power as
+\(\mu_{ab}(u+\ii)-\mu_{ab}(u)\) in its component.
+\end{proposition}
+
+\begin{proof}
+Let \(e_{ab}=e_{ba}\) be the large-\(u\) exponent of \(\mu_{ab}\), and let
+\[
+  (q_1,q_2,q_3,q_4)=
+  \left(\frac J2-1,\frac J2,-\frac J2-1,-\frac J2\right)
+\]
+be the powers of \((P^1,P^2,P^3,P^4)\).  The row \(a=1\) in
+\(\widetilde P_a=\mu_{ab}P^b\) has target exponent
+\(\alpha-J/2\).  Since \(e_{12}=\alpha-J\),
+\[
+  e_{12}+q_2=\alpha-\frac J2,\qquad
+  e_{13}+q_3=\alpha-\frac J2,\qquad
+  e_{14}+q_4=\alpha-\frac J2,
+\]
+and hence \(e_{13}=\alpha+1\), \(e_{14}=\alpha\).  Applying the same balance
+to the second row, whose target exponent is \(\alpha-J/2-1\), gives
+\[
+  e_{23}+q_3=\alpha-\frac J2-1,\qquad
+  e_{24}+q_4=\alpha-\frac J2-1,
+\]
+so \(e_{23}=\alpha\) and \(e_{24}=\alpha-1\).  The third row has target
+\(\alpha+J/2\), and therefore
+\[
+  e_{34}+q_4=\alpha+\frac J2,
+\]
+which gives \(e_{34}=\alpha+J\).  The fourth row gives the same value and is
+a consistency check.  These are precisely the powers in
 \eqref{eq:qsc-mu-leading-powers-alpha}.
+
+For the monodromy recursion, the left side of the \((a,b)\) component has
+power \(e_{ab}-1\), since
+\[
+  \mu_{ab}(u+\ii)-\mu_{ab}(u)
+  =
+  \ii e_{ab}m_{ab}u^{e_{ab}-1}+\cdots .
+\]
+Each retained term on the right is of the form
+\(P_a\mu_{bc}P^c\) or \(P_b\mu_{ac}P^c\).  The row balance just proved says
+\[
+  e_{bc}+q_c=\alpha+p_b,\qquad
+  e_{ac}+q_c=\alpha+p_a .
+\]
+Thus these terms have powers \(p_a+\alpha+p_b\) and \(p_b+\alpha+p_a\).
+A direct substitution of the exponents above gives
+\[
+  p_a+p_b+\alpha=e_{ab}-1
+\]
+for the six pairs \((12),(13),(14),(23),(24),(34)\).  Hence the leading
+linear system is homogeneous in powers of \(u\), as required.
+\end{proof}
 
 \begin{proposition}[Large-\(u\) characteristic determinant]
 \label{prop:qsc-large-u-characteristic-determinant}

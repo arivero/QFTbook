@@ -79,9 +79,11 @@ three-point functions.
 - Proves from the `Pmu` discontinuity and pseudo-periodicity that
   `Y_{1,1}Y_{2,2}=mu_12(u+i)/mu_12(u)`, and derives
   `mu_12(u) ~ u^(Delta-J)` when the large-`u` behavior is power-like.
-- Derives the remaining `mu_ab` large-`u` powers from the `Pmu` sheet
-  equation and the `SL(2)` `P_a` powers, under an explicit no-accidental-
-  cancellation assumption.
+- Proves the remaining `mu_ab` large-`u` powers from the `Pmu` sheet
+  equation and the `SL(2)` `P_a` powers, under an explicit common sheet
+  exponent and no-accidental-cancellation assumption.  The proof also checks
+  that the powers are homogeneous in the leading monodromy-recursion system
+  used for the characteristic determinant.
 - Derives the large-`u` QSC characteristic determinant from the six leading
   `mu_ab` monodromy-recursion equations, including the `mu_23` exponent and
   the determinant factorization `det M_alpha = alpha^2 Phi(alpha)`.  The
@@ -219,6 +221,10 @@ structure and the pair-of-pants-to-hexagons cut.
   then checks the displayed `A_1A_4` and `A_2A_3` products, including the
   dimension root, the spin-shadow root `S-1`, the intermediate linear
   relation, and sensitivity to an overall sign flip.
+- The same script checks the QSC large-`u` `mu_ab` power balance exactly:
+  row homogeneity in `tilde P_a=mu_ab P^b`, the universal monodromy exponent
+  `p_a+p_b+alpha=e_ab-1`, and term-by-term homogeneity of the retained
+  monodromy-recursion terms.
 - The same script checks the collapsed-cut digamma package for twist-two
   spins `S=2,4,6`: residues at `u=+-i/2` and the large-`u` logarithmic
   coefficient, using a local recurrence/Stirling implementation of
