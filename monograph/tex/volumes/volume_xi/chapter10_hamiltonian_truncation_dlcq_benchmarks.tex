@@ -375,6 +375,120 @@ after the truncation scheme states the cutoff, the finite-volume form-factor
 prescription, the symmetry sector, the counterterm coordinates, and the
 extrapolation model.
 
+\section{Finite-Matrix Spectral Certificates}
+\label{sec:finite-matrix-spectral-certificates}
+
+Every Hamiltonian-truncation or DLCQ computation ultimately diagonalizes a
+finite Hermitian matrix.  This elementary fact is useful only if the finite
+linear-algebra output is certified separately from the continuum claim.  We
+therefore record the minimal certificate used by the companion scripts.
+
+\begin{definition}[Residual certificate for a finite truncation]
+\label{def:finite-truncation-residual-certificate}
+Let \(A=A^\dagger\) be a finite Hermitian matrix on a finite-dimensional
+Hilbert space \(V\).  A residual certificate for a proposed eigenpair is a
+triple
+\[
+  (\lambda,u,\rho),\qquad \|u\|=1,\qquad
+  \rho=\|(A-\lambda)u\|.
+  \label{eq:finite-matrix-residual-certificate}
+\]
+It is a certificate for the finite matrix \(A\) only.  The number
+\(\lambda\) becomes a QFT energy or invariant mass only after the regulator
+label, counterterm prescription, symmetry sector, finite-volume convention,
+and continuum-extrapolation hypothesis have also been supplied.
+\end{definition}
+
+\begin{proposition}[Spectral meaning of a finite residual]
+\label{prop:finite-residual-spectral-certificate}
+Let \(A=A^\dagger\) be a finite Hermitian matrix, let
+\(\|u\|=1\), and set \(\rho=\|(A-\lambda)u\|\).
+Then
+\[
+  \operatorname{dist}(\lambda,\operatorname{spec}A)\leq \rho .
+  \label{eq:residual-distance-to-spectrum}
+\]
+More generally, let \(S\subset\operatorname{spec}A\) and let \(P_S\) be the
+orthogonal spectral projection onto the span of eigenvectors whose
+eigenvalues lie in \(S\).  If
+\[
+  g=\operatorname{dist}\bigl(\lambda,\operatorname{spec}A\setminus S\bigr)>0,
+  \label{eq:finite-spectral-gap-from-complement}
+\]
+then
+\[
+  \|(1-P_S)u\|\leq \frac{\rho}{g}.
+  \label{eq:finite-projector-leakage-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+Choose an orthonormal eigenbasis \(e_a\) of \(A\),
+\[
+  Ae_a=E_a e_a,\qquad u=\sum_a c_a e_a,\qquad \sum_a |c_a|^2=1.
+\]
+Then
+\[
+  \rho^2
+  =
+  \|(A-\lambda)u\|^2
+  =
+  \sum_a |c_a|^2 |E_a-\lambda|^2 .
+  \label{eq:residual-spectral-expansion}
+\]
+If every eigenvalue obeyed \(|E_a-\lambda|>\rho\), the right hand side of
+\eqref{eq:residual-spectral-expansion} would be strictly larger than
+\(\rho^2\), a contradiction.  This proves
+\eqref{eq:residual-distance-to-spectrum}.  For the projection bound, split
+the sum into \(E_a\in S\) and \(E_a\notin S\).  On the complement,
+\(|E_a-\lambda|\geq g\), hence
+\[
+  \rho^2
+  \geq
+  g^2\sum_{E_a\notin S}|c_a|^2
+  =
+  g^2\|(1-P_S)u\|^2 .
+\]
+Taking square roots gives
+\eqref{eq:finite-projector-leakage-bound}.
+\end{proof}
+
+The first inequality says that a small residual forces the existence of some
+finite-matrix eigenvalue near \(\lambda\).  The second says that, when a
+target spectral cluster is separated from the rest of the finite spectrum,
+the approximate eigenvector has quantitatively small leakage out of that
+cluster.  These statements do not estimate the distance between different
+cutoffs.  Cutoff comparison belongs to the Feshbach identity above, to
+counterterm matching, and to the extrapolation bounds below.
+
+For a Hermitian block decomposition \(V=PV\oplus QV\), the same finite
+linear algebra gives a practical diagnostic for a truncation counterterm.
+At a chosen low-energy value \(E\), the omitted-space correction is exactly
+\[
+  \Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP .
+  \label{eq:finite-schur-self-energy}
+\]
+Approximating \(\Sigma_P(E)\) by a low-dimensional local counterterm is a
+separate approximation; the identity itself is exact only before this
+replacement is made.  A controlled truncation must therefore state a norm,
+an energy window, and a bound on
+\[
+  \Sigma_P(E)-\Sigma_P^{\rm ct}(E)
+  \label{eq:schur-counterterm-remainder}
+\]
+in that window.
+
+The companion check
+\[
+  \texttt{calculation-checks/hamiltonian\_truncation\_dlcq\_checks.py}
+\]
+verifies the finite residual bound
+\eqref{eq:residual-distance-to-spectrum}, the projector leakage estimate
+\eqref{eq:finite-projector-leakage-bound}, the Feshbach determinant identity
+behind \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, the
+Ising-energy Bogoliubov benchmark, and the finite large-\(N\) QCD DLCQ
+quadratic-form identity.
+
 \section{DLCQ Datum}
 
 Light-front coordinates are

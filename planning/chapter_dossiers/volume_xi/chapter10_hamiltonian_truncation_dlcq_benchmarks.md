@@ -54,6 +54,12 @@ numerics.
   contraction caveats, and finite-size correction status.
 - Proves the Feshbach-Schur complement identity that underlies Hamiltonian
   truncation counterterms and high-energy tail corrections.
+- Defines finite residual certificates for Hermitian truncation matrices and
+  proves the residual-to-spectrum and spectral-projector leakage bounds used
+  to certify numerical eigenpairs before any continuum interpretation.
+- Records the exact finite Schur self-energy
+  `Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP` and isolates the separate norm-bound
+  obligation for replacing it by a local counterterm.
 - Defines DLCQ kinematics and the role of harmonic resolution.
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
   meson equation and proves positivity of its quadratic form.
@@ -87,3 +93,8 @@ plots.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational
   regression check for the Lagrange-interpolation obstruction, Richardson
   cancellation, and integer-power extrapolation weights used in the chapter.
+- `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
+  regression check for the Ising-energy benchmark spectrum, the large-\(N\)
+  two-dimensional QCD DLCQ quadratic-form identity, finite residual
+  certification, spectral-projector leakage, and the Feshbach determinant
+  identity.
