@@ -12,9 +12,12 @@
 - Proves the primitive Wightman tube-domain theorem from spectral support and
   proves Jost-edge gluing of ordered tubes from local commutativity plus the
   edge-of-the-wedge theorem.
-- Proves the Dyson/Jost--Lehmann representation for causal commutator matrix
-  elements in coincidence slabs, including the admissible-hyperboloid support
-  restriction needed for the later fixed-\(t\) domain theorem.
+- Proves the Dyson/Jost--Lehmann representation for Dyson-regular causal
+  commutator matrix elements in coincidence slabs, including the
+  admissible-hyperboloid support restriction needed for the later
+  fixed-\(t\) domain theorem, and explicitly separates the still-needed
+  verification that the relevant LSZ source-current commutators satisfy this
+  regularity hypothesis.
 - Records the partial-wave unitarity boundary condition on the physical
   \(s\)-channel cut before using analytic continuation away from it.
 - Derives the Landau equations from Feynman-parameter pinches.
@@ -55,6 +58,7 @@
 | \(h_\pm(\vec q)\) | spacelike or null boundary graphs of a coincidence slab |
 | \(H_\pm(u,\mu)\) | upper/lower sheets of the mass hyperboloid \((q-u)^2=-\mu^2\) |
 | \(S_R\) | set of \(R\)-admissible hyperboloids supporting the Dyson weight |
+| Dyson-regular commutator | causal commutator whose Fourier transform is the \(p_1=p_2=0\) restriction of a rotationally invariant six-dimensional wave-equation solution with well-defined Cauchy data |
 | \(\Psi(u,\mu)\) | distributional Dyson weight in the causal-commutator representation |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
 | \(\alpha_i\) | Feynman parameters for internal lines |
@@ -106,11 +110,14 @@
   local commutativity.  It proves the ordered tube support and Jost gluing
   statements; it does not by itself prove the stronger fixed-\(t\)
   Lehmann--Martin cut plane.
-- The Dyson representation theorem assumes a tempered causal commutator, a
-  distributional coincidence slab \(R\), and spacelike/null slab boundaries.
-  It proves the hyperboloid representation with support in the admissible set
-  \(S_R\).  Local contact polynomials from source-current reduction are
-  separated as subtraction/contact data.
+- The Dyson representation theorem assumes a Dyson-regular tempered causal
+  commutator, a distributional coincidence slab \(R\), and spacelike/null slab
+  boundaries.  Dyson regularity is the explicit six-dimensional lift and
+  Cauchy-data condition; it is not automatic for an arbitrary Wightman
+  distribution.  Under this hypothesis the theorem proves the hyperboloid
+  representation with support in the admissible set \(S_R\).  Local contact
+  polynomials from source-current reduction are separated as
+  subtraction/contact data.
 
 ## Claims to Derive
 
@@ -151,8 +158,9 @@
   Jin--Martin domain remains a stronger retarded-commutator and
   Lehmann--Martin theorem, not a corollary of primitive tube analyticity
   alone.
-- Dyson/Jost--Lehmann representation: if \(C(x)\) is a causal commutator
-  matrix coefficient and \(\widehat C\) vanishes in a slab \(R\), then
+- Dyson/Jost--Lehmann representation: if \(C(x)\) is a Dyson-regular causal
+  commutator matrix coefficient and \(\widehat C\) vanishes in a slab \(R\),
+  then
   \[
     \widehat C(q)=
     \langle\Psi(u,\mu),
@@ -160,10 +168,11 @@
   \]
   with \(\operatorname{supp}\Psi\subset S_R\), the set of hyperboloids whose
   upper sheet stays above \(h_+\) and lower sheet stays below \(h_-\).
-- LSZ retarded-commutator input: source-current commutators have the Dyson
-  representation in every spectral coincidence slab; retarded and advanced
-  transforms are boundary values of the same analytic continuation through
-  the slab, up to finite local-contact polynomials.
+- LSZ retarded-commutator input: once the source-current commutator is
+  verified to be Dyson-regular, it has the Dyson representation in every
+  spectral coincidence slab; retarded and advanced transforms are boundary
+  values of the same analytic continuation through the slab, up to finite
+  local-contact polynomials.
 - On the physical \(s\)-channel cut,
   \[
     \mathcal M(s,t)
@@ -236,11 +245,13 @@
   Lehmann--Martin/Jin--Martin theorem requires additional retarded-commutator
   and LSZ-domain work.
 - 2026-05-27 issue #495 JLD pass: added the causal-commutator Dyson
-  representation theorem.  The proof uses the six-dimensional wave-equation
-  lift of a causal distribution, recovers the four-dimensional commutator as
-  a boundary value on the auxiliary-momentum plane, rewrites the Cauchy
-  formula as a superposition of mostly-plus mass hyperboloids, and records
-  the admissible-hyperboloid support restriction from the coincidence slab.
-  Remaining fixed-\(t\) closure work is now narrowed to the
-  Bros--Epstein--Glaser analytic completion and the LSZ transfer of the
-  resulting domain and cut-discontinuity estimates.
+  representation theorem, then tightened it by introducing the
+  Dyson-regularity hypothesis.  The proof uses the six-dimensional
+  wave-equation lift of a causal distribution with well-defined Cauchy data,
+  recovers the four-dimensional commutator as a boundary value on the
+  auxiliary-momentum plane, rewrites the Cauchy formula as a superposition of
+  mostly-plus mass hyperboloids, and records the admissible-hyperboloid
+  support restriction from the coincidence slab.  Remaining fixed-\(t\)
+  closure work includes proving Dyson regularity for the LSZ source-current
+  matrix coefficients, the Bros--Epstein--Glaser analytic completion, and the
+  LSZ transfer of the resulting domain and cut-discontinuity estimates.

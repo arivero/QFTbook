@@ -530,9 +530,49 @@ The pair \((u,\mu)\) is called \(R\)-admissible if
 Let \(S_R\subset\mathbb R^4\times[0,\infty)\) be the closed set of
 \(R\)-admissible pairs.
 
+\begin{definition}[Dyson-regular causal commutator]
+\label{def:dyson-regular-causal-commutator}
+A causal commutator distribution \(C\in\mathcal S'(\mathbb M^4)\) is
+Dyson-regular if its Fourier transform is the restriction to the plane
+\(p_1=p_2=0\) of a rotationally invariant distribution
+\[
+  F(q,p_1,p_2)\in\mathcal D'(\mathbb R^{1,5})
+\]
+with the following properties:
+\begin{enumerate}
+  \item \(F\) solves the six-dimensional wave equation
+  \[
+    \Box_{1,5}F=0
+  \]
+  in the distributional sense.
+  \item For every smooth spacelike Cauchy surface \(\Sigma\) used below,
+  the traces \(F|_\Sigma\) and \(\partial_nF|_\Sigma\) exist as finite-order
+  distributions and the standard distributional Cauchy formula for the wave
+  equation holds.
+  \item The inverse Fourier transform of \(F\) is supported on the
+  six-dimensional light cone and projects to \(C(x)\) after integration over
+  the two auxiliary spacelike coordinates, up to a fixed nonzero
+  normalization.
+\end{enumerate}
+For a sufficiently regular function \(C(x)\) with causal support this lift is
+represented by Dyson's formula
+\[
+  \widetilde C(x,y)=4\pi C(x)\delta(x_D^2-|y|^2),
+  \qquad y\in\mathbb R^2,
+\]
+in the temporary mostly-minus notation \(x_D^2=(x^0)^2-|\vec x|^2\).  This
+display is not a definition for an arbitrary Wightman distribution: multiplying
+an arbitrary distribution by the light-cone delta is a microlocal operation and
+requires a transversality or regularization argument.  The definition records
+exactly the regularity datum needed for the Dyson proof; verifying it for a
+specified class of unsmeared QFT matrix coefficients is a separate theorem,
+not a notational convention.
+\end{definition}
+
 \begin{theorem}[Dyson representation of a causal commutator]
 \label{thm:dyson-causal-commutator-representation}
-Let \(C\in\mathcal S'(\mathbb M^4)\) satisfy
+Let \(C\in\mathcal S'(\mathbb M^4)\) be Dyson-regular in the sense of
+Definition~\ref{def:dyson-regular-causal-commutator}.  Assume
 \(\operatorname{supp}C\subset\overline V_{\rm caus}\), and suppose that
 \(\widehat C\) vanishes in the slab \(R\) of
 \eqref{eq:dyson-coincidence-slab}.  Then there is a distribution
@@ -560,7 +600,10 @@ change the hyperboloid support or the holomorphic domain away from infinity.
 \begin{proof}
 The proof is a hyperbolic Cauchy problem in disguise.  We give it because the
 support statement is the part that carries the QFT locality information into
-the analytic domain.
+the analytic domain.  The Dyson-regularity hypothesis supplies the
+six-dimensional wave-equation solution \(F\); without that hypothesis, the
+formal product \(C(x)\delta(x_D^2-|y|^2)\) at the light cone would not be a
+legitimate operation for an arbitrary tempered distribution.
 
 Temporarily write the scalar product in Dyson's mostly-minus convention
 \[
@@ -573,48 +616,20 @@ auxiliary spacelike coordinates \(y=(y_1,y_2)\) and set
   \qquad
   Z_D^2=x_D^2-y_1^2-y_2^2 .
 \]
-Define the lifted distribution
-\begin{equation}
-  \widetilde C(Z)
-  =
-  4\pi\,C(x)\,\delta(x_D^2-|y|^2)
-  =
-  4\pi\,C(x)\,\delta(Z_D^2).
-  \label{eq:dyson-six-dimensional-lift}
-\end{equation}
-Because \(C\) vanishes for \(x_D^2<0\), the product with
-\(\delta(x_D^2-|y|^2)\) is well-defined by restricting first to
-\(x_D^2\ge0\) and then pairing with the radial \(y\)-measure.  Conversely,
-integrating \(\widetilde C\) over the auxiliary plane recovers \(C\), up to
-the displayed normalization:
-\[
-  \int_{\mathbb R^2}\widetilde C(x,y)\,\dd^2y
-  =
-  (4\pi)\left(\int_{\mathbb R^2}\delta(x_D^2-|y|^2)\,\dd^2y\right)C(x)
-  =
-  4\pi^2 C(x)
-\]
-for \(x_D^2>0\), and distributionally after the standard boundary
-regularization at \(x_D^2=0\).  The constant is immaterial and is absorbed in
-\(\Psi\).
-
-Let \(R_6=(q,p_1,p_2)\) be the six-dimensional momentum dual to \(Z\), and
-let
-\[
-  F(R_6)=\widehat{\widetilde C}(R_6).
-\]
-Since \(Z_D^2\widetilde C(Z)=0\), Fourier transformation gives the
-six-dimensional wave equation
+Let \(R_6=(q,p_1,p_2)\) be the six-dimensional momentum dual to \(Z\).  By
+Dyson regularity there is a rotationally invariant distribution \(F(R_6)\)
+such that
 \begin{equation}
   \Box_{1,5}F=0 .
   \label{eq:dyson-six-dimensional-wave-equation}
 \end{equation}
-Moreover \(F\) is invariant under rotations in the \((p_1,p_2)\)-plane, and
-the original Fourier transform is recovered as the boundary value
+and the original Fourier transform is recovered as the boundary value
 \[
   \widehat C(q)=F(q,0,0)
 \]
-after absorbing the same normalization constant.
+after absorbing the fixed normalization constant in the definition of the
+lift.  In the regular-function case this \(F\) is the Fourier transform of
+\(4\pi C(x)\delta(Z_D^2)\), which explains the geometry of the construction.
 
 For solutions of \eqref{eq:dyson-six-dimensional-wave-equation}, the Cauchy
 formula on any spacelike hypersurface \(\Sigma\subset\mathbb R^{1,5}\) says
@@ -700,13 +715,15 @@ Let
 denote the source currents obtained by applying the mostly-plus
 Klein--Gordon operators \(\mathcal K_b,\mathcal K_c\) used in the LSZ
 reduction formula.  For finite-energy states \(|Q_i\rangle,|Q_f\rangle\),
-the causal commutator
+assume that the distribution
 \[
   C_{bc}(x)
   =
   \langle Q_f,[J_b(x/2),J_c(-x/2)]Q_i\rangle
 \]
-has a Dyson representation of the form
+is Dyson-regular in the sense of
+Definition~\ref{def:dyson-regular-causal-commutator}.  Then \(C_{bc}\) has a
+Dyson representation of the form
 \eqref{eq:dyson-causal-commutator-representation} in every coincidence slab
 where the intermediate-state spectral condition makes
 \(\widehat C_{bc}\) vanish.  The associated retarded and advanced Fourier
@@ -727,12 +744,14 @@ causal cone.  Translation covariance and the spectral theorem applied to the
 intermediate states between the two currents give the coincidence slabs in
 which the causal Fourier transform vanishes; the functions \(h_\pm\) are the
 lower spectral thresholds for the two possible intermediate-state orderings.
-Theorem~\ref{thm:dyson-causal-commutator-representation} then gives the
-hyperboloid representation.  Multiplication by \(\theta(\pm x^0)\) separates
-the causal commutator into retarded and advanced boundary values.  On a real
-open region where the causal transform vanishes, these two boundary values
-coincide.  The distributional edge-of-the-wedge theorem therefore gives their
-common continuation through the coincidence region.  Finally, replacing
+The assumed Dyson regularity is precisely the additional analytic regularity
+needed to run Theorem~\ref{thm:dyson-causal-commutator-representation}; it is
+not supplied by the words ``tempered distribution'' alone.  The theorem then
+gives the hyperboloid representation.  Multiplication by \(\theta(\pm x^0)\)
+separates the causal commutator into retarded and advanced boundary values.
+On a real open region where the causal transform vanishes, these two boundary
+values coincide.  The distributional edge-of-the-wedge theorem therefore gives
+their common continuation through the coincidence region.  Finally, replacing
 fields by source currents differentiates time-ordered distributions and may
 produce finitely many local terms at \(x=0\); after Fourier transformation
 these are polynomials in \(q\), which are recorded separately as contact or
@@ -745,13 +764,15 @@ axioms, while
 Theorem~\ref{thm:dyson-causal-commutator-representation} supplies the
 causal-commutator representation used to enlarge domains from coincidence
 regions.  The stronger fixed-\(t\) cut-plane theorem used in dispersion
-relations still requires the Bros--Epstein--Glaser analytic-completion step
-and the LSZ pole-separation transfer: one must prove that the primitive
-four-point germ and the causal-commutator Dyson representation extend far
-enough to give a first-sheet \(s\)-plane domain at fixed \(t\), with only the
-stated right- and left-hand cuts and with controlled boundary growth.  That
-additional step is the Lehmann--Martin/Jin--Martin domain theorem, not a
-restatement of primitive tube analyticity.
+relations still requires three more steps: the Dyson-regularity verification
+for the relevant LSZ source-current matrix coefficients, the
+Bros--Epstein--Glaser analytic-completion step, and the LSZ pole-separation
+transfer.  One must prove that the primitive four-point germ and the
+causal-commutator Dyson representation extend far enough to give a first-sheet
+\(s\)-plane domain at fixed \(t\), with only the stated right- and left-hand
+cuts and with controlled boundary growth.  That additional step is the
+Lehmann--Martin/Jin--Martin domain theorem, not a restatement of primitive
+tube analyticity.
 
 The same symbol \(\mathcal M(s,t)\) will denote the holomorphic germ
 \(F(s,t,4m^2-s-t)\) on whichever connected domain is under discussion, and

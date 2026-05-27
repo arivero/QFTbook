@@ -187,15 +187,17 @@ hypotheses:
 10d. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
     primitive tube analyticity of four-point Wightman functions; local
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
-    Jost--Lehmann--Dyson representation for the retarded commutator matrix
-    element; the Bros--Epstein--Glaser enlargement to the Lehmann--Martin
-    domain; and the LSZ limiting argument transferring the domain and
-    tempered-discontinuity bounds to the on-shell amplitude after pole
-    separation.  The primitive Wightman tube-domain theorem, Jost-edge gluing
-    theorem, and causal-commutator Dyson/JLD representation are now proved in
-    Volume II, Chapter 6.  The remaining Bros--Epstein--Glaser
-    Lehmann--Martin fixed-\(t\) completion and the LSZ-transfer step are still
-    to be proved in the monograph, not left as permanent citations.
+    Jost--Lehmann--Dyson representation for Dyson-regular retarded commutator
+    matrix elements; the Bros--Epstein--Glaser enlargement to the
+    Lehmann--Martin domain; and the LSZ limiting argument transferring the
+    domain and tempered-discontinuity bounds to the on-shell amplitude after
+    pole separation.  The primitive Wightman tube-domain theorem, Jost-edge
+    gluing theorem, and conditional causal-commutator Dyson/JLD representation
+    are now proved in Volume II, Chapter 6.  The remaining
+    Dyson-regularity verification for the LSZ source-current matrix
+    coefficients, the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
+    completion, and the LSZ-transfer step are still to be proved in the
+    monograph, not left as permanent citations.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
       \operatorname{Im}\mathcal A(s,0)\ge
@@ -380,12 +382,15 @@ hypotheses:
 - 2026-05-27 issue #495 domain pass: Chapter 6 now proves the primitive
   Wightman tube-domain theorem and Jost-edge gluing, so this chapter's domain
   ledger has been refined.  What remains for full Jin--Martin closure is the
-  self-contained retarded-commutator/Jost--Lehmann--Dyson representation, the
-  Lehmann--Martin fixed-\(t\) enlargement, and the LSZ transfer of the domain
-  and tempered cut-discontinuity bounds to the on-shell amplitude.
+  Dyson-regularity verification and retarded-commutator/Jost--Lehmann--Dyson
+  application, the Lehmann--Martin fixed-\(t\) enlargement, and the LSZ
+  transfer of the domain and tempered cut-discontinuity bounds to the on-shell
+  amplitude.
 - 2026-05-27 issue #495 JLD pass: Chapter 6 now also proves the
-  causal-commutator Dyson/Jost--Lehmann representation in coincidence slabs.
-  The full issue #495 closure target is therefore narrowed again: prove the
-  Bros--Epstein--Glaser analytic completion to the Lehmann--Martin fixed-\(t\)
-  domain, then prove the LSZ transfer of that domain and the tempered
-  discontinuity bounds to the on-shell amplitude.
+  causal-commutator Dyson/Jost--Lehmann representation in coincidence slabs
+  for the explicitly defined class of Dyson-regular commutators.  The full
+  issue #495 closure target is therefore narrowed but not closed: prove
+  Dyson regularity for the LSZ source-current matrix coefficients, prove the
+  Bros--Epstein--Glaser analytic completion to the Lehmann--Martin
+  fixed-\(t\) domain, then prove the LSZ transfer of that domain and the
+  tempered discontinuity bounds to the on-shell amplitude.

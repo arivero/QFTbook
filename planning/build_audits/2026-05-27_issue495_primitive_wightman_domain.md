@@ -23,17 +23,22 @@ inside the monograph, not left as literature imports.
   - `cor:primitive-domain-output-for-scattering`, explaining exactly what
     this primitive domain theorem supplies for connected four-point LSZ
     scattering amplitudes.
+  - `def:dyson-regular-causal-commutator`, separating the six-dimensional
+    Dyson lift from the invalid shorthand of multiplying an arbitrary
+    Wightman distribution by a light-cone delta.
   - `thm:dyson-causal-commutator-representation`, proving the
-    Dyson/Jost--Lehmann representation for a causal commutator distribution
-    whose Fourier transform vanishes in a coincidence slab.
+    Dyson/Jost--Lehmann representation for a Dyson-regular causal commutator
+    distribution whose Fourier transform vanishes in a coincidence slab.
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
 - Updated `monograph/tex/volumes/volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex`
-  so the Jin--Martin proof stack now records the primitive Wightman,
-  Jost-edge, and causal-commutator/JLD steps as proved, while leaving the
-  Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\) completion and
-  LSZ-transfer steps as remaining theorem work.
+  so the Jin--Martin proof stack now records the primitive Wightman and
+  Jost-edge steps as proved, and records the causal-commutator/JLD theorem as
+  proved under the explicit Dyson-regularity hypothesis.  The
+  Dyson-regularity verification for the relevant LSZ source-current matrix
+  coefficients, the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
+  completion, and the LSZ-transfer step remain theorem work.
 
 ## Planning updates
 
@@ -44,12 +49,17 @@ inside the monograph, not left as literature imports.
 
 ## Status
 
-Issue #495 is not closed by this checkpoint.  The primitive tube-domain,
-Jost-edge gluing, and causal-commutator Dyson/JLD theorems are now in the
-monograph.  Remaining closure work:
+Issue #495 is not closed by this checkpoint.  The primitive tube-domain and
+Jost-edge gluing theorems are now in the monograph.  The
+causal-commutator Dyson/JLD theorem is now proved for the mathematically
+defined class of Dyson-regular causal commutators, with the light-cone lift
+regularity no longer hidden in notation.  Remaining closure work:
 
-1. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
+1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
+   in the massive scattering application, or state the minimal wavefront or
+   regularization hypotheses under which it follows.
+2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\).
-2. Prove the LSZ transfer of that domain and the tempered cut-discontinuity
+3. Prove the LSZ transfer of that domain and the tempered cut-discontinuity
    bounds to the on-shell amplitude after stable-particle pole separation.
