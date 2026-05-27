@@ -437,7 +437,8 @@ Current checks:
   Volume XI heat-bath and overrelaxation section, verifying conditional
   heat-bath detailed balance, \(SU(2)\) staple reduction, overrelaxation
   involution, local score preservation, and orthogonality of the
-  overrelaxation map on \(S^3\).
+  overrelaxation map on \(S^3\), plus the corresponding local-staple and
+  unit-link identities in `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py`.
 - `hmc_pseudofermion_checks.py`: exact finite algebra checks for the Volume
   XI HMC and pseudofermion section, verifying leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized

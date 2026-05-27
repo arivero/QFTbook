@@ -3,8 +3,24 @@
 
 from __future__ import annotations
 
+import importlib.util
+import sys
 from fractions import Fraction
 from itertools import permutations
+from pathlib import Path
+
+import numpy as np
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPT_DIR = ROOT / "qft_scripts"
+SCRIPT = SCRIPT_DIR / "su2_gauge_4d_heatbath_overrelaxation.py"
+sys.path.insert(0, str(SCRIPT_DIR))
+spec = importlib.util.spec_from_file_location("su2_gauge_4d_heatbath_overrelaxation", SCRIPT)
+hb = importlib.util.module_from_spec(spec)
+assert spec.loader is not None
+sys.modules[spec.name] = hb
+spec.loader.exec_module(hb)
 
 
 Vector4 = tuple[Fraction, Fraction, Fraction, Fraction]
@@ -103,6 +119,11 @@ def assert_equal(got: object, expected: object, label: str) -> None:
         raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
 
 
+def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-10) -> None:
+    if abs(got - expected) > tol:
+        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
 def check_heat_bath_conditional_balance() -> None:
     """Check pi(x,y) K((x,y),(x',y)) symmetry for finite conditionals."""
 
@@ -176,10 +197,48 @@ def check_overrelaxation_orthogonal_map() -> None:
     assert_equal(abs(det4(transform)), Fraction(1), "overrelaxation absolute Jacobian")
 
 
+def check_companion_script_local_identities() -> None:
+    """Check that the script's staple and overrelaxation match the action."""
+
+    rng = np.random.default_rng(20260527)
+    links = hb.su2.random_links(2, rng)
+    for _ in range(20):
+        site = (
+            int(rng.integers(2)),
+            int(rng.integers(2)),
+            int(rng.integers(2)),
+            int(rng.integers(2)),
+        )
+        mu = int(rng.integers(hb.su2.DIRECTIONS))
+        direct = hb.su2.adjacent_plaquette_score(links, site, mu)
+        staple_score = hb.local_score_from_staple(links, site, mu)
+        assert_close("script staple local score", staple_score, direct, tol=1.0e-10)
+
+        before = hb.local_score_from_staple(links, site, mu)
+        hb.overrelax_update_link(links, site, mu)
+        after = hb.local_score_from_staple(links, site, mu)
+        assert_close("script overrelaxation local score", after, before, tol=1.0e-10)
+        assert_close(
+            "script overrelaxation unit link",
+            float(np.linalg.norm(links[site + (mu,)])),
+            1.0,
+            tol=1.0e-12,
+        )
+
+        hb.heatbath_update_link(links, site, mu, beta=1.3, rng=rng)
+        assert_close(
+            "script heat-bath unit link",
+            float(np.linalg.norm(links[site + (mu,)])),
+            1.0,
+            tol=1.0e-12,
+        )
+
+
 def main() -> None:
     check_heat_bath_conditional_balance()
     check_su2_staple_reduction_and_overrelaxation()
     check_overrelaxation_orthogonal_map()
+    check_companion_script_local_identities()
     print("All finite heat-bath and overrelaxation checks passed.")
 
 

@@ -121,6 +121,10 @@ chapters.
 - Adds the companion script `qft_scripts/su2_gauge_4d_metropolis.py` as a
   compact nonabelian finite-regulator demonstration with unit-quaternion
   \(SU(2)\) links and Wilson loops.
+- Adds the companion script
+  `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py` as an exact
+  single-link heat-bath and deterministic-overrelaxation finite-regulator
+  demonstration for the \(SU(2)\) Wilson lattice action.
 
 ## Figure Ledger
 
@@ -143,6 +147,12 @@ the exponential decay of average phase with volume.
   links.  Certifies a Haar-symmetric local compact-link proposal and reports
   plaquette and Wilson-loop measurements.  It does not certify a heat-bath
   algorithm, HMC/RHMC implementation, or a continuum limit.
+- `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke`: finite
+  periodic four-dimensional \(SU(2)\) Wilson sampler using exact single-link
+  heat-bath conditionals for the staple density, interleaved with optional
+  overrelaxation sweeps.  It reports plaquette and Wilson-loop measurements.
+  It does not certify autocorrelation error estimates, thermodynamic limits,
+  or continuum extrapolation.
 
 ## Calculation Checks
 
@@ -159,7 +169,8 @@ the exponential decay of average phase with volume.
 - `calculation-checks/heatbath_overrelaxation_checks.py` verifies finite
   conditional heat-bath balance, \(SU(2)\) staple reduction, overrelaxation
   involution, local score preservation, and orthogonality of the
-  overrelaxation map on \(S^3\).
+  overrelaxation map on \(S^3\), plus the local-staple and unit-link
+  identities in `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py`.
 - `calculation-checks/hmc_pseudofermion_checks.py` verifies the finite HMC
   and pseudofermion algebra: one-dimensional leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized

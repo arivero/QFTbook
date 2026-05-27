@@ -17,6 +17,7 @@ Individual examples:
 python3 qft_scripts/ising2d_metropolis.py --smoke
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
+python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 ```
@@ -38,6 +39,12 @@ notebooks or CI checks can consume the results without scraping prose.
   plaquette measurements, and rectangular Wilson loops.  It demonstrates the
   compact nonabelian link structure at finite cutoff; it is not a production
   heat-bath, HMC, or continuum-extrapolation code.
+- `su2_gauge_4d_heatbath_overrelaxation.py`: finite four-dimensional
+  \(SU(2)\) Wilson-lattice sampler using exact single-link heat-bath
+  conditionals for the staple density, optionally interleaved with
+  deterministic overrelaxation sweeps.  It illustrates the finite conditional
+  measure and microcanonical reflection described in the monograph; it is not
+  a continuum extrapolation or a production error-analysis framework.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.

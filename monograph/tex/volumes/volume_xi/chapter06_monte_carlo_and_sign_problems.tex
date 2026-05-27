@@ -648,14 +648,26 @@ updates.  The mathematical invariant-measure statement above is therefore
 only one ingredient in a numerical method; it does not by itself establish
 mixing, error bars, or continuum scaling.
 
+The companion script
+\[
+  \texttt{qft\_scripts/su2\_gauge\_4d\_heatbath\_overrelaxation.py}
+\]
+implements the finite \(SU(2)\) Wilson model with exact single-link
+heat-bath conditionals for \eqref{eq:su2-heatbath-x0-density}, interleaved
+with a user-chosen number of deterministic overrelaxation sweeps.  It reports
+finite-cutoff plaquette and Wilson-loop estimates in JSON format.  Its smoke
+mode checks only the finite algorithmic range of the measured observables;
+statistical autocorrelation analysis, thermodynamic limits, and continuum
+extrapolation require additional runs and estimates.
+
 The deterministic check
 \[
   \texttt{calculation-checks/heatbath\_overrelaxation\_checks.py}
 \]
 verifies the finite conditional heat-bath balance identity, the quaternionic
 \(SU(2)\) staple reduction \(V=cW\), the overrelaxation involution, local
-score preservation, and orthogonality of the overrelaxation map on
-\(S^3\).
+score preservation, orthogonality of the overrelaxation map on \(S^3\), and
+the local-staple identities used by the companion script.
 
 \section{Hybrid Monte Carlo and Pseudofermions}
 \label{sec:hmc-pseudofermions-finite-regulator}
