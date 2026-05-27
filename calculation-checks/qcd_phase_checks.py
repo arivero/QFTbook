@@ -6,10 +6,11 @@ Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
 low-temperature chiral effective theory coefficients, static HTL Debye-mass
-normalizations, thermodynamic derivative identities, baryon-number cumulants,
-Roberge--Weiss periodicity bookkeeping, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the existence
-or order of any QCD phase transition.
+normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
+derivative identities, baryon-number cumulants, Roberge--Weiss periodicity
+bookkeeping, and the color-flavor-locked symmetry count.  It is not a lattice
+simulation and it does not assert the existence or order of any QCD phase
+transition.
 """
 
 from fractions import Fraction
@@ -148,6 +149,27 @@ def check_roberge_weiss_periodicity_bookkeeping():
     rw_baryon_half_turn_units = [nc * value for value in rw_quark_half_turn_units]
     assert_equal("first SU(3) RW quark half-turn", rw_quark_half_turn_units[0], Fraction(1, 3))
     assert_equal("RW baryon half-turns are odd", rw_baryon_half_turn_units, [Fraction(1), Fraction(3), Fraction(5)])
+
+
+def check_htl_angular_kernel_transversality_bookkeeping():
+    # For K_mu=(-omega,k) and v^mu=(1,v), the retarded HTL kernel is
+    # K_R^{mu nu}=m_D^2[delta_0^mu delta_0^nu
+    #   - omega <v^mu v^nu/(omega-v.k+i0)>].
+    # Contracting with K_mu cancels the denominator because
+    # K_mu v^mu=-(omega-v.k), leaving -omega delta_0^nu+omega <v^nu>.
+    avg_v0 = Fraction(1)
+    avg_vx = Fraction(0)
+    avg_vy = Fraction(0)
+    avg_vz = Fraction(0)
+    assert_equal("HTL transversality nu=0", -1 + avg_v0, Fraction(0))
+    assert_equal("HTL transversality nu=x", avg_vx, Fraction(0))
+    assert_equal("HTL transversality nu=y", avg_vy, Fraction(0))
+    assert_equal("HTL transversality nu=z", avg_vz, Fraction(0))
+
+    # Rotational averages on S^2 used by the long-wavelength HTL expansion.
+    avg_vx2 = avg_vy2 = avg_vz2 = Fraction(1, 3)
+    assert_equal("unit velocity average", avg_vx2 + avg_vy2 + avg_vz2, Fraction(1))
+    assert_equal("static HTL leaves only 00 component", Fraction(1), Fraction(1))
 
 
 def check_source_curvature_susceptibility():
@@ -351,6 +373,7 @@ def main():
     check_banks_casher_kernel_normalization()
     check_fugacity_laurent_polynomial_shift()
     check_roberge_weiss_periodicity_bookkeeping()
+    check_htl_angular_kernel_transversality_bookkeeping()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()

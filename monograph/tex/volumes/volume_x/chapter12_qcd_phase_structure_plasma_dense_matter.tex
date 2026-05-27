@@ -1325,6 +1325,181 @@ derivation has used only the HTL separation between hard loop momentum and
 soft external field; it does not determine the magnetic sector.
 \end{proof}
 
+\begin{definition}[Retarded HTL induced-current kernel]
+\label{def:qcd-retarded-htl-induced-current-kernel}
+Work in the rest frame of the equilibrium state, with mostly-plus Lorentzian
+metric and \(K=(\omega,\mathbf k)\).  Let
+\[
+  v^\mu=(1,\mathbf v),\qquad |\mathbf v|=1,\qquad
+  \int_{\mathbf v}(\cdots)
+  =
+  \int_{S^2}\frac{\dd\Omega_{\mathbf v}}{4\pi}(\cdots).
+\]
+The retarded HTL induced-current kernel is the distribution
+\(\mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)\) defined by
+\[
+  j^\mu_a(\omega,\mathbf k)
+  =
+  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)A_\nu^b(\omega,\mathbf k),
+\]
+where
+\[
+  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)
+  =
+  \delta^{ab}m_D^2
+  \left[
+    \delta^\mu_0\delta^\nu_0
+    -
+    \omega\int_{\mathbf v}
+    \frac{v^\mu v^\nu}
+    {\omega-\mathbf v\cdot\mathbf k+i0}
+  \right].
+\]
+The \(+i0\) prescription is part of the definition: it is the retarded
+boundary condition for the collisionless response of hard particles.  This
+kernel is normalized so that
+\[
+  \mathcal K_R^{00,ab}(0,\mathbf k)=\delta^{ab}m_D^2,
+\]
+matching Proposition~\ref{prop:qcd-static-htl-debye-mass}.
+\end{definition}
+
+\begin{proposition}[Gauge-covariant HTL equations and transversality]
+\label{prop:qcd-htl-angular-kernel-transversality}
+Let \(W_a(x,\mathbf v)\) be an adjoint auxiliary field on spacetime times the
+unit velocity sphere.  The gauge-covariant linear-response equations
+\[
+  (v\cdot D)W(x,\mathbf v)=v^iF_{i0}(x),\qquad
+  j^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v),
+\]
+where \(D\) is the adjoint covariant derivative, are covariantly conserved:
+\[
+  D_\mu j^\mu=0.
+\]
+Linearizing around \(A_\mu=0\) and imposing the retarded prescription gives
+the kernel of Definition~\ref{def:qcd-retarded-htl-induced-current-kernel}.
+Consequently, in momentum space,
+\[
+  K_\mu\mathcal K_R^{\mu\nu,ab}(K)=0,
+  \qquad
+  K_\mu=(-\omega,\mathbf k),
+\]
+so the HTL response is transverse in the mostly-plus convention.
+\end{proposition}
+
+\begin{proof}
+The auxiliary field \(W\) transforms in the adjoint representation.  Applying
+the covariant divergence to the current gives
+\[
+  D_\mu j^\mu
+  =
+  m_D^2\int_{\mathbf v}(v\cdot D)W
+  =
+  m_D^2\int_{\mathbf v}v^iF_{i0}.
+\]
+Since \(F_{i0}\) is independent of \(\mathbf v\) and
+\(\int_{\mathbf v}v^i=0\), the right side vanishes.  This proves covariant
+current conservation before choosing a gauge.
+
+For the linearized kernel, take fields proportional to
+\(\exp(-i\omega t+i\mathbf k\cdot\mathbf x)\).  The retarded solution of
+\((\partial_t+\mathbf v\cdot\nabla)W=v^iF_{i0}\) is
+\[
+  W(K,\mathbf v)
+  =
+  -\,\frac{\mathbf v\cdot\mathbf k\,A_0(K)
+  +\omega\,v^iA_i(K)}
+  {\omega-\mathbf v\cdot\mathbf k+i0},
+\]
+using \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Inserting this solution into
+\(j^\mu=m_D^2\int_{\mathbf v}v^\mu W\) and using
+\(\int_{\mathbf v}v^i=0\) gives
+\[
+  j^\mu
+  =
+  m_D^2\left[
+    \delta^\mu_0\delta^\nu_0
+    -
+    \omega\int_{\mathbf v}
+    \frac{v^\mu v^\nu}
+    {\omega-\mathbf v\cdot\mathbf k+i0}
+  \right]A_\nu,
+\]
+which is precisely the stated kernel, with the color factor
+\(\delta^{ab}\) restored.
+
+Transversality is an algebraic consequence of the same formula.  With
+\(K_\mu=(-\omega,\mathbf k)\),
+\[
+  K_\mu v^\mu=-(\omega-\mathbf v\cdot\mathbf k).
+\]
+Therefore
+\[
+  K_\mu\mathcal K_R^{\mu\nu}
+  =
+  m_D^2\left[
+    -\omega\,\delta^\nu_0
+    +
+    \omega\int_{\mathbf v}v^\nu
+  \right].
+\]
+The integral of \(v^0\) is \(1\), and the integral of \(v^i\) is \(0\).
+Thus the expression vanishes for \(\nu=0\) and for each spatial \(\nu=i\).
+\end{proof}
+
+\begin{corollary}[Longitudinal HTL response and Landau cut]
+\label{cor:qcd-htl-longitudinal-landau-cut}
+For \(k=|\mathbf k|>0\),
+\[
+  \mathcal K_R^{00,ab}(\omega,\mathbf k)
+  =
+  \delta^{ab}m_D^2
+  \left[
+    1-\frac{\omega}{2k}
+    \log\frac{\omega+k+i0}{\omega-k+i0}
+  \right].
+\]
+Equivalently,
+\[
+  \int_{\mathbf v}
+  \frac{1}{\omega-\mathbf v\cdot\mathbf k+i0}
+  =
+  \frac{1}{2k}
+  \log\frac{\omega+k+i0}{\omega-k+i0}.
+\]
+For \(|\omega|<k\), the logarithm has an imaginary part.  This is the
+Landau cut of the retarded thermal response, caused by hard particles whose
+velocity satisfies \(\omega=\mathbf v\cdot\mathbf k\).
+\end{corollary}
+
+\begin{proof}
+Choose the \(z\)-axis along \(\mathbf k\) and write
+\(\mu=\cos\theta\).  Then
+\[
+  \int_{\mathbf v}
+  \frac{1}{\omega-\mathbf v\cdot\mathbf k+i0}
+  =
+  \frac12\int_{-1}^{1}
+  \frac{\dd\mu}{\omega-k\mu+i0}.
+\]
+The antiderivative is \(-k^{-1}\log(\omega-k\mu+i0)\).  Evaluating it at
+\(\mu=1\) and \(\mu=-1\) gives the displayed logarithm.  Substitution in
+Definition~\ref{def:qcd-retarded-htl-induced-current-kernel} gives
+\(\mathcal K_R^{00}\).
+
+The distribution identity
+\[
+  \frac{1}{\omega-k\mu+i0}
+  =
+  \operatorname{PV}\frac{1}{\omega-k\mu}
+  -i\pi\delta(\omega-k\mu)
+\]
+shows that an imaginary part is present exactly when the equation
+\(\mu=\omega/k\) has a solution in \([-1,1]\), namely when
+\(|\omega|<k\).  This proves the Landau-cut statement and identifies its
+kinematic origin.
+\end{proof}
+
 \begin{proposition}[Magnetic contribution first becomes nonperturbative at \(g^6T^4\)]
 \label{prop:qcd-linde-scale}
 In four-dimensional high-temperature Yang--Mills theory, the static magnetic

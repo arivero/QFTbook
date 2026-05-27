@@ -41,6 +41,9 @@ GitHub issue #628.
 - `C_A`, `T_R`, `I_B`, `I_F`: adjoint quadratic index, representation
   trace index, and the Bose/Fermi thermal susceptibility integrals entering
   the static HTL Debye mass.
+- `v^\mu=(1,mathbf v)`, `W_a(x,mathbf v)`, `mathcal K_R`: hard-particle
+  velocity vector, adjoint HTL auxiliary field, and retarded induced-current
+  kernel.
 - `theta_q`, `theta_B`: imaginary quark and baryon chemical-potential
   angles, related by `theta_B=N_c theta_q`.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
@@ -104,6 +107,10 @@ GitHub issue #628.
   monograph trace convention from hard-particle Bose/Fermi thermal integrals,
   including the \(SU(N_c)\) specialization
   `m_D^2=g^2T^2(2N_c/3+N_f/3)`.
+- Defines the retarded HTL induced-current kernel in the mostly-plus
+  convention, derives it from the gauge-covariant auxiliary kinetic equation
+  `(v.D)W=v^i F_{i0}`, proves transversality, and evaluates the longitudinal
+  angular integral with its Landau cut.
 - Defines transport coefficients through Kubo spectral limits rather than
   phenomenological language.
 - Proves the origin of the finite-density sign problem from loss of
@@ -136,9 +143,9 @@ GitHub issue #628.
   identity, one-loop Polyakov-holonomy potential coefficients,
   chiral Ward-identity and GMOR normalization factors, low-temperature
   chiral effective theory coefficients, static HTL Debye-mass normalization,
-  thermodynamic derivative identities, Roberge--Weiss angle-periodicity
-  bookkeeping, baryon-number cumulants and radius estimators, and CFL
-  Goldstone count.
+  retarded HTL angular-kernel transversality bookkeeping, thermodynamic
+  derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
+  baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -169,6 +176,10 @@ GitHub issue #628.
   derivation of the Debye mass in trace-delta convention and paired it with
   exact arithmetic checks for the Bose/Fermi susceptibility integrals and
   \(SU(3)\), \(N_f=3\) coefficient.
+- 2026-05-27 retarded HTL pass: added the gauge-covariant auxiliary-field
+  derivation of the retarded angular kernel, the component transversality
+  proof in mostly-plus convention, the longitudinal logarithm, and the
+  Landau-cut interpretation.
 - 2026-05-27 QGP thermodynamic-observable pass: added pressure-derivative
   identities for energy density, trace anomaly, fixed-`mu_B/T` reduced
   pressure, and `mu_B=0` sound speed, with the conformal Stefan--Boltzmann
