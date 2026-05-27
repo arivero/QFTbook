@@ -772,6 +772,118 @@ different and the spatial momentum on the cylinder acquires the corresponding
 vacuum shift.
 \end{remark}
 
+\begin{lemma}[Infinitesimal stress-tensor transformation]
+\label{lem:infinitesimal-stress-tensor-transformation}
+With the contour-charge convention
+\eqref{eq:chiral-contour-charge-vector-field} and the stress-tensor OPE
+\eqref{eq:stress-tensor-tt-ope}, a holomorphic vector field
+\(v(z)\partial_z\) acts on \(T(w)\) by
+\begin{equation}
+  \delta_v T(w)
+  =
+  -v(w)\partial T(w)-2v'(w)T(w)-\frac{c}{12}v'''(w).
+  \label{eq:infinitesimal-stress-tensor-transform}
+\end{equation}
+This is an equality of insertions on any annulus on which the contour for
+\(Q_v\) can be chosen without crossing other operators.  The formula is
+therefore a separated-point Ward identity; contact extensions at collisions
+are fixed by the source convention for the stress tensor.
+\end{lemma}
+
+\begin{proof}
+By definition,
+\[
+  \delta_vT(w)=Q_v(C)T(w)
+  =
+  -\oint_C\frac{\dd z}{2\pi\ii}\,v(z)T(z)T(w),
+\]
+where \(C\) is a small positive contour around \(w\).  Insert
+\eqref{eq:stress-tensor-tt-ope}.  The three required residues are
+\[
+  \operatorname*{Res}_{z=w}\frac{v(z)}{z-w}=v(w),
+  \qquad
+  \operatorname*{Res}_{z=w}\frac{v(z)}{(z-w)^2}=v'(w),
+  \qquad
+  \operatorname*{Res}_{z=w}\frac{v(z)}{(z-w)^4}=\frac{v'''(w)}6 .
+\]
+The overall minus sign in \(Q_v\) gives
+\[
+  -\left(
+    v(w)\partial T(w)
+    +2v'(w)T(w)
+    +\frac c2\,\frac{v'''(w)}6
+  \right),
+\]
+which is \eqref{eq:infinitesimal-stress-tensor-transform}.
+\end{proof}
+
+\begin{lemma}[Schwarzian cocycle]
+\label{lem:schwarzian-cocycle}
+For locally univalent holomorphic maps \(f\) and \(g\), the Schwarzian
+derivative
+\[
+  \{f,z\}
+  =
+  \frac{f'''(z)}{f'(z)}
+  -
+  \frac32\left(\frac{f''(z)}{f'(z)}\right)^2
+\]
+satisfies
+\begin{equation}
+  \{g\circ f,z\}
+  =
+  (f'(z))^2\{g,f(z)\}+\{f,z\}.
+  \label{eq:schwarzian-cocycle}
+\end{equation}
+Moreover, if \(f_s(z)=z+s v(z)+O(s^2)\), then
+\begin{equation}
+  \left.\frac{\dd}{\dd s}\right|_{s=0}\{f_s,z\}
+  =
+  v'''(z).
+  \label{eq:schwarzian-linearization}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set
+\[
+  A_f(z)=\frac{f''(z)}{f'(z)}=\partial_z\log f'(z).
+\]
+Then
+\[
+  \{f,z\}=A_f'(z)-\frac12 A_f(z)^2.
+\]
+For a composition,
+\[
+  A_{g\circ f}(z)
+  =
+  A_f(z)+f'(z)A_g(f(z)).
+\]
+Differentiate and subtract one half of the square:
+\[
+\begin{aligned}
+  A_{g\circ f}'-\frac12A_{g\circ f}^2
+  &=
+  A_f'-\frac12A_f^2
+  +(f')^2\left(A_g'-\frac12A_g^2\right)\!\circ f
+\\
+  &\qquad
+  +f''A_g\circ f-A_f f' A_g\circ f .
+\end{aligned}
+\]
+Since \(A_f=f''/f'\), the last two terms cancel.  This proves
+\eqref{eq:schwarzian-cocycle}.  Finally, for
+\(f_s(z)=z+s v(z)+O(s^2)\),
+\[
+  f_s'=1+s v'+O(s^2),\qquad
+  f_s''=s v''+O(s^2),\qquad
+  f_s'''=s v'''+O(s^2).
+\]
+Substitution into the definition of the Schwarzian gives
+\(\{f_s,z\}=s v'''(z)+O(s^2)\), proving
+\eqref{eq:schwarzian-linearization}.
+\end{proof}
+
 \begin{proposition}[Schwarzian transformation and plane-cylinder shift]
 \label{prop:schwarzian-transformation-plane-cylinder-shift}
 The stress tensor itself carries an affine chiral transformation law fixed by
@@ -858,16 +970,52 @@ coordinate change.
 \end{proposition}
 
 \begin{proof}
-The infinitesimal form of
-\eqref{eq:stress-tensor-schwarzian-transformation} is obtained by inserting
-the contour charge \(Q_v(C)\) around \(T(w)\) and using
-\eqref{eq:stress-tensor-tt-ope}.  The fourth-order pole gives the central
-third-derivative term, while the second- and first-order poles give the
-ordinary weight-two tensor transformation.  Exponentiating these infinitesimal
-changes gives the displayed finite transformation.  The possible
-inhomogeneous term must satisfy the composition law for successive coordinate
-changes, and the Schwarzian identity displayed above is exactly that cocycle
-condition.
+First prove the finite formula.  For a local coordinate change \(f\), define
+the right side of \eqref{eq:stress-tensor-schwarzian-transformation} by
+\[
+  \mathcal T_f(f(z))
+  =
+  (f'(z))^{-2}
+  \left[T(z)-\frac c{12}\{f,z\}\right].
+\]
+If \(f_s(z)=z+s v(z)+O(s^2)\), then
+\[
+  (f_s')^{-2}=1-2s v'+O(s^2),
+  \qquad
+  T(z)=T(z_s-sv(z_s))+O(s^2)
+\]
+at the fixed final point \(z_s=f_s(z)\).  Together with
+Lemma~\ref{lem:schwarzian-cocycle},
+\[
+  \mathcal T_{f_s}(z_s)
+  =
+  T(z_s)
+  -s\left(
+    v\partial T+2v'T+\frac c{12}v'''
+  \right)(z_s)
+  +O(s^2),
+\]
+which is exactly the infinitesimal Ward action
+\eqref{eq:infinitesimal-stress-tensor-transform}.
+
+It remains to check compatibility with finite composition.  Applying first
+\(f\) and then \(g\) gives
+\[
+  (g'(f)f')^{-2}
+  \left[
+    T
+    -\frac c{12}\{f,z\}
+    -\frac c{12}(f')^2\{g,f(z)\}
+  \right],
+\]
+which equals the transformation for \(g\circ f\) precisely by
+Lemma~\ref{lem:schwarzian-cocycle}.  Thus the displayed formula is a
+projective cocycle for the connected local conformal group whose tangent
+action is the stress-tensor Ward action.  On a simply connected
+neighborhood of the identity this characterizes the integrated action
+uniquely; analytic continuation along paths in the chosen coordinate-change
+group gives the stated finite law, with possible global monodromy recorded
+separately by the gravitational-anomaly data.
 
 For \(w=\ii\log z\), direct differentiation gives
 \[
