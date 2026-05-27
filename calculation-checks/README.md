@@ -90,7 +90,9 @@ Current checks:
   a two-term OPE renormalon ambiguity.  It also checks the positive-ray
   Euler-integrand bound used in the stable quartic Borel-control proposition
   and the integer-charge/conjugate-pair arithmetic of the instanton-sector
-  transseries ledger.
+  transseries ledger, the BPST trace-delta instanton action conversion, and
+  the finite algebra behind the statement that a Gevrey-one coefficient bound
+  gives only local Borel convergence.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, normal Gaussian

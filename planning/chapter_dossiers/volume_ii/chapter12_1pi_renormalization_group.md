@@ -135,9 +135,16 @@ The chapter must define:
   element.
 - the regulated asymptotic-analysis datum for QFT observables, separating
   fixed-regulator Borel/thimble statements from continuum-QFT claims.
+- the quartic-oscillator spectral Borel datum, the precise status of the
+  Graffi--Grecchi--Simon Borel-summability theorem as a quoted spectral
+  result, and the proof that Gevrey-one coefficient growth by itself supplies
+  only local Borel convergence rather than summability of a named observable.
 - the instanton-sector transseries ledger with integer topological charge,
   theta periodicity, conjugate sector pairing, and explicit warnings about
   collective-coordinate and small-instanton boundary data.
+- the concrete BPST one-instanton exponential factor in the active
+  trace-delta Yang--Mills coupling convention, cross-checked against the
+  explicit BPST derivation in the anomaly chapter.
 
 ## Claim Ledger
 
@@ -289,10 +296,21 @@ The chapter must define:
     representation proves that the Borel transform is bounded on the positive
     ray; therefore the positive-ray Borel--Laplace integral exists and has the
     displayed perturbative series as its asymptotic expansion.
-27. An instanton-sector transseries ledger has integer topological charge and
+27. The quartic oscillator has a genuine spectral Borel-summability theorem
+    for its eigenvalue branches, but that theorem rests on sectorial
+    analyticity and resolvent estimates.  A factorial or Gevrey-one
+    coefficient bound only gives local convergence of the Borel transform; it
+    does not prove analytic continuation, Laplace convergence, or equality
+    with a specified observable.
+28. An instanton-sector transseries ledger has integer topological charge and
     hence theta periodicity, but the ledger is not a derivation of instanton
     calculus unless the regulator, zero-mode measure, determinant
     normalization, boundary strata, and continuum limit have been supplied.
+29. In the active trace-delta Yang--Mills convention, the BPST
+    one-instanton exponential factor is
+    \(\exp[-4\pi^2/g_{\rm YM}^2+\ii\theta]\).  The familiar
+    half-trace expression \(\exp[-8\pi^2/g_{\rm ht}^2+\ii\theta]\) is the
+    same statement after \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\).
 
 ## Figure Requirements
 
@@ -370,6 +388,12 @@ The chapter must define:
   Borel-control proposition for the stable zero-dimensional quartic model, and
   the instanton-sector transseries ledger with theta-periodicity and conjugate
   sector pairing; expanded `calculation-checks/borel_laplace_checks.py`.
+- 2026-05-27 issue #503 oscillator/instanton pass: replaced the loose
+  oscillator-status remark by a spectral Borel datum, quoted the precise
+  Graffi--Grecchi--Simon theorem with theorem-boundary language, proved that
+  Gevrey-one growth alone is insufficient for Borel summability, and linked
+  the instanton ledger to the concrete BPST trace-delta exponential factor;
+  expanded `calculation-checks/borel_laplace_checks.py`.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from

@@ -2472,19 +2472,86 @@ expansion because the Taylor coefficients of \(B\) are \(a_n/n!\), as computed
 in Example~\ref{ex:zero-dimensional-quartic-large-order}.
 \end{proof}
 
-\begin{remark}[Oscillator Borel status]
-\label{rem:anharmonic-oscillator-borel-status}
-The stable one-dimensional quartic oscillator is an infinite-dimensional
-spectral problem, not the zero-dimensional integral above.  The rigorous
-Borel summability statements for its low-lying eigenvalues require estimates
-on the resolvent or heat kernel and are not consequences of diagram counting
-alone.  The zero-dimensional Proposition
-\ref{prop:zero-dimensional-quartic-positive-ray-borel-control} is included
-because it gives a completely visible model of the Borel-plane mechanism:
-the first singularity is on the negative ray, while the positive ray has a
-controlled Borel--Laplace integral.  A QFT use of the same phrase must supply
-the analogue of the spectral or functional-integral estimates.
-\end{remark}
+\begin{definition}[Quartic-oscillator spectral Borel datum]
+\label{def:quartic-oscillator-spectral-borel-datum}
+Let \(g\ge0\), and let \(H(g)\) be the Friedrichs realization on
+\(L^2(\mathbb R,\dd x)\) of
+\[
+  H(g)
+  =
+  -\frac12\frac{\dd^2}{\dd x^2}
+  +\frac12x^2
+  +g x^4 .
+  \label{eq:quartic-oscillator-hamiltonian}
+\]
+The domain is determined by the closed quadratic form
+\[
+  q_g[\psi]
+  =
+  \frac12\|\psi'\|_{L^2}^2
+  +\frac12\|x\psi\|_{L^2}^2
+  +g\|x^2\psi\|_{L^2}^2 .
+\]
+Its spectrum is discrete and simple; write \(E_n(g)\), \(n=0,1,\ldots\), for
+the increasing eigenvalues.  The Rayleigh--Schr\"odinger perturbative series at
+the \(n\)-th harmonic-oscillator level is
+\[
+  \widehat E_n(g)=\sum_{r\ge0}E_{n,r}g^r .
+  \label{eq:quartic-oscillator-perturbation-series}
+\]
+A Borel-summability statement for
+\eqref{eq:quartic-oscillator-perturbation-series} means that this particular
+spectral branch \(E_n(g)\), not merely a formal eigenvalue equation, is
+recovered by a Borel--Laplace transform satisfying
+Definition~\ref{def:gevrey-one-directional-borel-sum}.
+\end{definition}
+
+\begin{quotedtheorem}[Quartic-oscillator Borel summability]
+\label{qthm:quartic-oscillator-borel-summability}
+For each fixed \(n\), the series
+\eqref{eq:quartic-oscillator-perturbation-series} is Borel summable on the
+positive real \(g\)-axis to the eigenvalue \(E_n(g)\) of
+\eqref{eq:quartic-oscillator-hamiltonian}.  More precisely, the perturbative
+coefficients are Gevrey-one, the Borel transform has analytic continuation
+and growth in a sector containing the positive Borel ray, and the
+Borel--Laplace integral in that direction equals \(E_n(g)\) for \(g>0\).
+\end{quotedtheorem}
+
+\begin{proof}[Status of the quoted theorem]
+This is a theorem of Graffi--Grecchi--Simon for even polynomial anharmonic
+oscillators.  Its proof uses sectorial analyticity and resolvent estimates
+for the operator family \(H(g)\), not diagram counting.  The theorem is
+quoted here as a well-established one-dimensional spectral result rather than
+reproved, because its proof belongs to analytic perturbation theory of
+ordinary differential operators.  The monograph uses it only as a controlled
+comparison example: in QFT the corresponding estimates must be supplied for
+the regulated field-theoretic observable and then passed through the
+regulator-removal limit.
+\end{proof}
+
+\begin{proposition}[Coefficient growth is not Borel summability]
+\label{prop:coefficient-growth-not-borel-summability}
+Suppose a formal series \(\sum_{r\ge0}a_rg^r\) obeys
+\(|a_r|\le C M^r r!\).  This bound alone implies convergence of the formal
+Borel transform near \(\xi=0\), but it does not imply Borel summability of a
+named observable.
+\end{proposition}
+
+\begin{proof}
+The estimate gives
+\[
+  \left|\frac{a_r}{r!}\xi^r\right|
+  \le C(M|\xi|)^r ,
+\]
+so the Borel series converges for \(|\xi|<M^{-1}\).  Definition
+\ref{def:gevrey-one-directional-borel-sum} requires more: analytic
+continuation of the Borel transform to a sector containing the summation ray,
+an exponential-growth bound there, existence of the Laplace integral, and an
+identity between that Laplace integral and the observable on a nonempty
+domain.  None of these follows from the local coefficient bound.  Thus
+large-order estimates are evidence for a possible summation mechanism, but
+not the mechanism itself.
+\end{proof}
 
 \begin{definition}[Instanton-sector transseries ledger]
 \label{def:instanton-sector-transseries-ledger}
@@ -2558,6 +2625,72 @@ This proves the periodicity.  The stated conjugation rule makes the
 \(\theta\) and \(g>0\).  Adding the two terms gives twice the real part,
 which is \eqref{eq:instanton-pair-real-combination}.
 \end{proof}
+
+\begin{proposition}[BPST sector in the asymptotic-analysis ledger]
+\label{prop:bpst-sector-asymptotic-ledger}
+In the trace-delta Yang--Mills convention of this monograph,
+\[
+  S_{\rm YM,E}
+  =
+  \frac{1}{4g_{\rm YM}^2}
+  \int_{\mathbb R^4}\operatorname{tr}_\Delta
+  (F_{\mu\nu}F_{\mu\nu})\,\dd^4x
+  -\ii\theta Q[A],
+  \label{eq:bpst-ledger-action-trace-delta}
+\]
+the \(SU(2)\) BPST one-instanton sector contributes the exponential ledger
+factor
+\[
+  \exp\left(-\frac{4\pi^2}{g_{\rm YM}^2}+\ii\theta\right)
+  \label{eq:bpst-ledger-factor-trace-delta}
+\]
+to any regulated observable whose insertions have nonzero projection onto
+that sector.  In the common half-trace convention
+\(\operatorname{tr}(T_aT_b)=\delta_{ab}/2\), this same factor is written
+\(\exp[-8\pi^2/g_{\rm ht}^2+\ii\theta]\), with
+\[
+  g_{\rm ht}=\sqrt2\,g_{\rm YM}.
+  \label{eq:half-trace-trace-delta-coupling-relation-ledger}
+\]
+\end{proposition}
+
+\begin{proof}
+The explicit BPST calculation in
+Proposition~\ref{prop:bpst-one-instanton-data} gives \(Q[A]=1\) and, in the
+active trace-delta convention,
+\[
+  \frac{1}{4g_{\rm YM}^2}
+  \int_{\mathbb R^4}
+  \operatorname{tr}_\Delta(F_{\mu\nu}F_{\mu\nu})\,\dd^4x
+  =
+  \frac{4\pi^2}{g_{\rm YM}^2}.
+\]
+Substitution in \eqref{eq:bpst-ledger-action-trace-delta} gives
+\eqref{eq:bpst-ledger-factor-trace-delta}.  The half-trace basis used in much
+of the instanton literature differs from the trace-delta basis by
+\(t_a=\sqrt2\,T_a\).  Therefore the same connection is represented with
+\(g_{\rm ht}^2=2g_{\rm YM}^2\), and
+\[
+  \frac{8\pi^2}{g_{\rm ht}^2}
+  =
+  \frac{4\pi^2}{g_{\rm YM}^2}.
+\]
+The equality is only a convention change; it does not alter the topological
+charge or the physical semiclassical weight.
+\end{proof}
+
+\begin{controlledapproximation}[Semiclassical instanton expansion]
+\label{capprox:semiclassical-instanton-expansion-status}
+The factor \eqref{eq:bpst-ledger-factor-trace-delta} is not yet an instanton
+calculus formula for a continuum QFT observable.  A semiclassical
+one-instanton approximation additionally requires a regulator, a gauge slice
+or BV treatment of the zero modes, the determinant ratio, the collective
+coordinate density on the instanton moduli space, insertion zero-mode
+saturation, and a prescription for boundary strata such as small instantons.
+Only after those data are defined and their regulator-removal behavior is
+proved does the ledger become a theorem about the observable rather than a
+semiclassical sector label.
+\end{controlledapproximation}
 
 \begin{remark}[Status of instanton and renormalon applications]
 \label{rem:instanton-renormalon-application-status}

@@ -98,6 +98,12 @@
 - `def:six-eight-dimensional-euclidean-spinor-blocks` records the \(SO(6)\)
   and \(SO(8)\) block conventions needed later for supersymmetry.
 
+## Figure Requirements
+
+- No standalone figures are required for this convention appendix; the chapter
+  is controlled by explicit matrices, algebraic identities, and calculation
+  checks.
+
 ## Calculation Checks
 
 - `calculation-checks/gamma_trace_checks.py` and

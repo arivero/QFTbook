@@ -170,7 +170,11 @@ def conformal_borel_w_from_xi(xi: Fraction, singular_distance: Fraction) -> Frac
 def check_conformal_borel_map() -> None:
     singular_distance = Fraction(3, 2)
     assert_eq("conformal map origin", conformal_borel_xi_from_w(Fraction(0, 1), singular_distance), 0)
-    assert_eq("conformal map first singularity", conformal_borel_xi_from_w(Fraction(-1, 1), singular_distance), -singular_distance)
+    assert_eq(
+        "conformal map first singularity",
+        conformal_borel_xi_from_w(Fraction(-1, 1), singular_distance),
+        -singular_distance,
+    )
 
     samples = [Fraction(1, 3), Fraction(1, 2), Fraction(2, 3)]
     for w in samples:
@@ -250,6 +254,38 @@ def check_instanton_theta_periodicity_and_pairing() -> None:
     assert_eq("instanton conjugate-pair imaginary cancellation", imaginary_part + (-imaginary_part), 0)
 
 
+def check_bpst_trace_delta_ledger_factor() -> None:
+    # In the trace-delta convention used by the monograph,
+    # S = (4 g_YM^2)^(-1) int tr_delta(F^2).  For the unit BPST instanton,
+    # int tr_delta(F^2) = 16 pi^2, hence S = 4 pi^2/g_YM^2.
+    trace_delta_integral_coeff = Fraction(16, 1)
+    trace_delta_action_coeff = trace_delta_integral_coeff / 4
+    assert_eq("BPST trace-delta action coefficient", trace_delta_action_coeff, 4)
+
+    # The common half-trace convention has action 8 pi^2/g_ht^2, with
+    # g_ht^2 = 2 g_YM^2.  Written in g_YM units this is again 4 pi^2/g_YM^2.
+    half_trace_action_coeff = Fraction(8, 1)
+    converted_coeff = half_trace_action_coeff / 2
+    assert_eq("BPST half-trace to trace-delta conversion", converted_coeff, trace_delta_action_coeff)
+
+    # Q=1 gives exp(i theta); theta -> theta + 2 pi is invisible because the
+    # winding number is integral.
+    topological_charge = 1
+    assert_eq("BPST topological charge ledger", topological_charge, 1)
+
+
+def check_borel_summability_requires_more_than_gevrey() -> None:
+    # A Gevrey-one bound |a_n| <= C M^n n! implies only a local Borel radius
+    # at least 1/M.  It says nothing about continuation to the integration ray.
+    c = Fraction(5, 1)
+    m = Fraction(3, 2)
+    xi = Fraction(1, 3)  # xi < 1/M = 2/3
+    partial_bound = sum(c * (m * xi) ** n for n in range(12))
+    exact_geometric_bound = c / (1 - m * xi)
+    assert partial_bound < exact_geometric_bound
+    assert_eq("local Borel radius lower-bound denominator", 1 - m * xi, Fraction(1, 2))
+
+
 def main() -> None:
     check_gaussian_moments()
     check_quartic_coefficients()
@@ -263,9 +299,12 @@ def main() -> None:
     check_ope_renormalon_ambiguity_cancellation()
     check_quartic_euler_integrand_bound_samples()
     check_instanton_theta_periodicity_and_pairing()
+    check_bpst_trace_delta_ledger_factor()
+    check_borel_summability_requires_more_than_gevrey()
     print(
         "All Borel-Laplace, conformal-map, Borel-Leroy, "
-        "renormalon-model, quartic-Borel, and instanton-ledger checks passed."
+        "renormalon-model, quartic-Borel, oscillator-status, "
+        "and instanton-ledger checks passed."
     )
 
 
