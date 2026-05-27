@@ -23,11 +23,17 @@ inside the monograph, not left as literature imports.
   - `cor:primitive-domain-output-for-scattering`, explaining exactly what
     this primitive domain theorem supplies for connected four-point LSZ
     scattering amplitudes.
+  - `thm:dyson-causal-commutator-representation`, proving the
+    Dyson/Jost--Lehmann representation for a causal commutator distribution
+    whose Fourier transform vanishes in a coincidence slab.
+  - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
+    to LSZ source-current commutators and separating finite contact
+    polynomials.
 - Updated `monograph/tex/volumes/volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex`
-  so the Jin--Martin proof stack now records the primitive Wightman and
-  Jost-edge steps as proved, while leaving the retarded-commutator/JLD,
-  Lehmann--Martin fixed-\(t\), and LSZ-transfer steps as remaining theorem
-  work.
+  so the Jin--Martin proof stack now records the primitive Wightman,
+  Jost-edge, and causal-commutator/JLD steps as proved, while leaving the
+  Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\) completion and
+  LSZ-transfer steps as remaining theorem work.
 
 ## Planning updates
 
@@ -38,13 +44,12 @@ inside the monograph, not left as literature imports.
 
 ## Status
 
-Issue #495 is not closed by this checkpoint.  The primitive tube-domain and
-Jost-edge gluing theorems are now in the monograph.  Remaining closure work:
+Issue #495 is not closed by this checkpoint.  The primitive tube-domain,
+Jost-edge gluing, and causal-commutator Dyson/JLD theorems are now in the
+monograph.  Remaining closure work:
 
-1. Prove the relevant Jost--Lehmann--Dyson representation for the retarded
-   commutator matrix element.
-2. Prove the Lehmann--Martin fixed-\(t\) enlargement needed for the cut
+1. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
+   needed for the cut
    \(s\)-plane at fixed \(t\).
-3. Prove the LSZ transfer of that domain and the tempered cut-discontinuity
+2. Prove the LSZ transfer of that domain and the tempered cut-discontinuity
    bounds to the on-shell amplitude after stable-particle pole separation.
-
