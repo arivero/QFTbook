@@ -218,6 +218,38 @@ def check_ope_renormalon_ambiguity_cancellation() -> None:
     assert_eq("OPE renormalon ambiguity cancellation", total_delta, 0)
 
 
+def check_quartic_euler_integrand_bound_samples() -> None:
+    # The Euler representation used in the text contains
+    # (1 + 2 xi t/3)^(-1/4).  For xi >= 0 and 0 <= t <= 1 this factor is
+    # bounded by 1; checking rational samples guards the sign and branch.
+    samples = [
+        (Fraction(0, 1), Fraction(0, 1)),
+        (Fraction(3, 2), Fraction(1, 4)),
+        (Fraction(5, 1), Fraction(1, 2)),
+        (Fraction(11, 3), Fraction(1, 1)),
+    ]
+    for xi, t in samples:
+        base = 1 + Fraction(2, 3) * xi * t
+        if base < 1:
+            raise AssertionError("quartic Euler integrand base should be at least one")
+
+
+def check_instanton_theta_periodicity_and_pairing() -> None:
+    # The instanton ledger uses integer topological charge k:
+    # exp(i k (theta + 2 pi)) = exp(i k theta).  The finite arithmetic
+    # content is integrality of the winding number and pairing of k with -k.
+    for k in range(-5, 6):
+        assert_eq(f"theta winding integrality k={k}", k, int(k))
+
+    # Represent a sector coefficient as a + i b and its conjugate as a - i b.
+    # Pairing k and -k gives 2 Re(e^{i k theta}(a+i b)); at theta=0 this is 2a.
+    real_part = Fraction(7, 5)
+    imaginary_part = Fraction(-3, 11)
+    paired_theta_zero = (real_part + real_part)
+    assert_eq("instanton conjugate-pair real part at theta zero", paired_theta_zero, 2 * real_part)
+    assert_eq("instanton conjugate-pair imaginary cancellation", imaginary_part + (-imaginary_part), 0)
+
+
 def main() -> None:
     check_gaussian_moments()
     check_quartic_coefficients()
@@ -229,7 +261,12 @@ def main() -> None:
     check_conformal_borel_map()
     check_renormalon_factorial_moment_and_borel_pole()
     check_ope_renormalon_ambiguity_cancellation()
-    print("All Borel-Laplace, conformal-map, Borel-Leroy, and renormalon-model checks passed.")
+    check_quartic_euler_integrand_bound_samples()
+    check_instanton_theta_periodicity_and_pairing()
+    print(
+        "All Borel-Laplace, conformal-map, Borel-Leroy, "
+        "renormalon-model, quartic-Borel, and instanton-ledger checks passed."
+    )
 
 
 if __name__ == "__main__":

@@ -114,7 +114,8 @@ The chapter must define:
   summation.
 - the zero-dimensional stable quartic integral as a worked large-order
   example, including its exact coefficients and hypergeometric Borel
-  transform.
+  transform, together with positive-ray Borel control from Euler's
+  hypergeometric integral.
 - the conformal-Borel map for the case in which the Borel transform is
   holomorphic on a plane cut from the first negative singularity; the chapter
   states explicitly that numerical conformal-Borel use is conditional on the
@@ -132,6 +133,11 @@ The chapter must define:
 - the algebraic OPE cancellation condition for a lateral renormalon ambiguity
   between a coefficient function and the corresponding operator matrix
   element.
+- the regulated asymptotic-analysis datum for QFT observables, separating
+  fixed-regulator Borel/thimble statements from continuum-QFT claims.
+- the instanton-sector transseries ledger with integer topological charge,
+  theta periodicity, conjugate sector pairing, and explicit warnings about
+  collective-coordinate and small-instanton boundary data.
 
 ## Claim Ledger
 
@@ -276,6 +282,17 @@ The chapter must define:
 24. Lefschetz-thimble analysis is a finite-dimensional relative-homology
     statement for holomorphic Morse integrals.  Its QFT use is regulator-level
     unless an infinite-dimensional or continuum-limit theorem is supplied.
+25. A regulated asymptotic-analysis datum proves a continuum QFT statement
+    only after the regulator-removal limit is part of the theorem.  At fixed
+    regulator it proves, at most, a theorem for the regulated observable.
+26. In the zero-dimensional stable quartic model, Euler's hypergeometric
+    representation proves that the Borel transform is bounded on the positive
+    ray; therefore the positive-ray Borel--Laplace integral exists and has the
+    displayed perturbative series as its asymptotic expansion.
+27. An instanton-sector transseries ledger has integer topological charge and
+    hence theta periodicity, but the ledger is not a derivation of instanton
+    calculus unless the regulator, zero-mode measure, determinant
+    normalization, boundary strata, and continuum limit have been supplied.
 
 ## Figure Requirements
 
@@ -347,6 +364,12 @@ The chapter must define:
   conformal-Borel--Leroy approximants, the coefficient-preservation proof, the
   critical-exponent practice status remark, and the algebraic two-term OPE
   ambiguity-cancellation proposition with calculation checks.
+- 2026-05-27 issue #503 application-layer pass: added the regulated
+  asymptotic-analysis datum, the status proposition distinguishing
+  fixed-regulator reconstruction from continuum-QFT claims, the positive-ray
+  Borel-control proposition for the stable zero-dimensional quartic model, and
+  the instanton-sector transseries ledger with theta-periodicity and conjugate
+  sector pairing; expanded `calculation-checks/borel_laplace_checks.py`.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from

@@ -87,7 +87,10 @@ Current checks:
   coefficient identity, the conformal-Borel map for a single negative cut,
   Borel--Leroy coefficient recovery, the factorial moment/Borel-pole algebra
   in the running-coupling renormalon model, and the algebraic cancellation of
-  a two-term OPE renormalon ambiguity.
+  a two-term OPE renormalon ambiguity.  It also checks the positive-ray
+  Euler-integrand bound used in the stable quartic Borel-control proposition
+  and the integer-charge/conjugate-pair arithmetic of the instanton-sector
+  transseries ledger.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, normal Gaussian

@@ -2362,6 +2362,218 @@ nonperturbative or effective-field-theory data.
 \emph{Phys. Rept.} \textbf{317} (1999) 1--142,
 doi:10.1016/S0370-1573(98)00130-6, arXiv:hep-ph/9807443.}
 
+\paragraph{Application status ledgers.}
+The preceding definitions are analytic objects, not decorative language.  A
+QFT application of Borel summation, transseries, or Lefschetz thimbles must
+name the regulated observable, the expansion coordinate, the analytic domain,
+and the limiting statement being asserted.  The following datum is the
+minimal bookkeeping used in this monograph.
+
+\begin{definition}[Regulated asymptotic-analysis datum for a QFT observable]
+\label{def:regulated-asymptotic-analysis-datum}
+Let \(R\) label a regulator, let \(g\) be the perturbative expansion
+coordinate, and let \(\mathcal X_R(g;\lambda)\) be a regulated observable,
+where \(\lambda\) denotes all other named parameters, including masses,
+subtraction scales, background sources, finite volume, and boundary
+conditions.  A \emph{regulated asymptotic-analysis datum} consists of:
+\begin{enumerate}
+  \item a complex domain \(D_R\) in the \(g\)-plane on which
+  \(\mathcal X_R(g;\lambda)\) is defined as a function or distributional
+  matrix element;
+  \item a formal perturbative series
+  \[
+    \widehat{\mathcal X}_R(g;\lambda)
+    =
+    \sum_{n\ge0}a_{R,n}(\lambda)g^n
+  \]
+  with the coefficient-extraction operation specified;
+  \item a Borel transform or Borel--Leroy transform, together with its proved
+  or hypothesized analytic continuation domain and growth bounds;
+  \item, when nonperturbative sectors are present, a sector set \(S_R\), action
+  differences \(A_{R,\sigma}(\lambda)\), powers \(\beta_{R,\sigma}\), and
+  formal fluctuation series
+  \[
+    \ee^{-A_{R,\sigma}(\lambda)/g}g^{\beta_{R,\sigma}}
+    \widehat\Phi_{R,\sigma}(g;\lambda);
+  \]
+  \item a statement of what happens as \(R\) is removed: coefficientwise limit,
+  Borel-plane limit, distributional limit, correlation-function limit, or no
+  continuum-limit claim.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[What a regulated asymptotic datum does and does not prove]
+\label{prop:regulated-asymptotic-datum-status}
+A datum in Definition~\ref{def:regulated-asymptotic-analysis-datum} proves a
+Borel--Laplace reconstruction of \(\mathcal X_R\) in a direction \(\theta\)
+only if the transform in item \(3\) satisfies the hypotheses of
+Definition~\ref{def:gevrey-one-directional-borel-sum} and the resulting
+Borel--Laplace function is identified with \(\mathcal X_R\) on a nonempty open
+subdomain of \(D_R\).  It proves a QFT statement only after the asserted
+regulator-removal limit in item \(5\) is established.  Without item \(5\), the
+datum is a theorem or approximation for the regulated problem, not for the
+continuum QFT.
+\end{proposition}
+
+\begin{proof}
+The first assertion is exactly the content of the Borel--Laplace definition:
+Gevrey growth supplies a locally convergent Borel transform, analytic
+continuation and exponential bounds make the Laplace integral convergent, and
+Theorem~\ref{thm:watson-borel-laplace} supplies the asymptotic expansion of
+the resulting function.  The equality with the originally regulated
+observable is an additional identity of analytic functions or distributions.
+It follows from equality on a nonempty open set inside the common connected
+domain by the identity theorem, or by equality of distributional boundary
+values when the observable is defined distributionally.  Removing the regulator
+is a separate limiting operation.  Thus a statement at fixed \(R\) cannot imply
+a continuum-QFT statement unless item \(5\) is supplied.
+\end{proof}
+
+\begin{proposition}[Positive-ray Borel control in the stable quartic model]
+\label{prop:zero-dimensional-quartic-positive-ray-borel-control}
+For the zero-dimensional quartic integral of
+Example~\ref{ex:zero-dimensional-quartic-large-order}, the Borel transform
+\[
+  B(\xi)
+  =
+  {}_2F_1\left(\frac14,\frac34;1;-\frac{2\xi}{3}\right)
+\]
+has no singularity for \(\xi\ge0\) and is bounded on the positive real
+\(\xi\)-axis.  Therefore
+\[
+  \frac1g\int_0^\infty \ee^{-\xi/g}B(\xi)\,\dd\xi
+\]
+exists for every \(g>0\) and has the formal series
+\(\sum_{n\ge0}a_ng^n\) of
+\eqref{eq:zero-dimensional-quartic-coefficients} as its asymptotic expansion.
+\end{proposition}
+
+\begin{proof}
+Use Euler's hypergeometric integral with
+\[
+  a=\frac14,\qquad b=\frac34,\qquad c=1,\qquad z=-\frac{2\xi}{3}.
+\]
+Since \(\operatorname{Re}c>\operatorname{Re}b>0\),
+\[
+  B(\xi)
+  =
+  \frac{1}{\Gamma(3/4)\Gamma(1/4)}
+  \int_0^1
+  t^{-1/4}(1-t)^{-3/4}
+  \left(1+\frac{2\xi t}{3}\right)^{-1/4}\dd t .
+  \label{eq:quartic-borel-euler-representation}
+\]
+For \(\xi\ge0\) the last factor is real, positive, and bounded above by
+\(1\).  The remaining beta integral is finite.  Thus \(B\) is bounded on the
+positive ray and has no positive-ray singularity.  The Borel--Laplace integral
+therefore converges for \(g>0\), and
+Theorem~\ref{thm:watson-borel-laplace} gives the displayed asymptotic
+expansion because the Taylor coefficients of \(B\) are \(a_n/n!\), as computed
+in Example~\ref{ex:zero-dimensional-quartic-large-order}.
+\end{proof}
+
+\begin{remark}[Oscillator Borel status]
+\label{rem:anharmonic-oscillator-borel-status}
+The stable one-dimensional quartic oscillator is an infinite-dimensional
+spectral problem, not the zero-dimensional integral above.  The rigorous
+Borel summability statements for its low-lying eigenvalues require estimates
+on the resolvent or heat kernel and are not consequences of diagram counting
+alone.  The zero-dimensional Proposition
+\ref{prop:zero-dimensional-quartic-positive-ray-borel-control} is included
+because it gives a completely visible model of the Borel-plane mechanism:
+the first singularity is on the negative ray, while the positive ray has a
+controlled Borel--Laplace integral.  A QFT use of the same phrase must supply
+the analogue of the spectral or functional-integral estimates.
+\end{remark}
+
+\begin{definition}[Instanton-sector transseries ledger]
+\label{def:instanton-sector-transseries-ledger}
+Consider a regulated Euclidean gauge-theory path integral whose configuration
+space has connected components indexed by an integer topological charge
+\(k\in\mathbb Z\).  Assume the Euclidean action in sector \(k\) has the form
+\[
+  S_{E,R}[A,\Psi]
+  =
+  \frac{1}{4g^2}\int \operatorname{tr}_\Delta(F\wedge *F)
+  -\ii\theta k
+  +S_{R,\mathrm{matter}}[A,\Psi],
+  \label{eq:instanton-ledger-action}
+\]
+where \(\operatorname{tr}_\Delta\) is the trace normalization fixed in the
+gauge-theory convention dictionary of this monograph.  An instanton-sector
+transseries ledger for a regulated observable is a formal expansion
+\[
+  \widehat{\mathcal X}_R(g,\theta)
+  =
+  \sum_{k\in\mathbb Z}
+  \sum_{\alpha\in\mathcal S_{R,k}}
+  \ee^{-A_{R,k,\alpha}/g^2}\,
+  \ee^{\ii k\theta}\,
+  g^{\beta_{R,k,\alpha}}\,
+  \widehat\Phi_{R,k,\alpha}(g),
+  \label{eq:instanton-sector-transseries-ledger}
+\]
+where \(\alpha\) labels the regulated saddle or quasi-saddle data inside the
+charge-\(k\) sector.  The notation includes the fluctuation determinant,
+collective-coordinate measure, zero-mode insertions, and boundary
+contributions only if these have been specified by the regulator.
+\end{definition}
+
+\begin{proposition}[Algebraic constraints on an instanton-sector ledger]
+\label{prop:instanton-ledger-algebra}
+For a ledger of the form
+\eqref{eq:instanton-sector-transseries-ledger}, the \(\theta\)-dependence is
+\(2\pi\)-periodic.  If the regulated observable is real at \(\theta=0\) and
+the sector data obey the conjugation rule
+\[
+  A_{R,-k,\bar\alpha}=A_{R,k,\alpha},
+  \qquad
+  \beta_{R,-k,\bar\alpha}=\beta_{R,k,\alpha},
+  \qquad
+  \widehat\Phi_{R,-k,\bar\alpha}(g)
+  =
+  \overline{\widehat\Phi_{R,k,\alpha}(g)}
+  \]
+for \(g>0\), then the paired \(k\) and \(-k\) contribution at real \(\theta\)
+is real and equals
+\[
+  2\,\operatorname{Re}
+  \left[
+    \ee^{-A_{R,k,\alpha}/g^2}
+    \ee^{\ii k\theta}
+    g^{\beta_{R,k,\alpha}}
+    \widehat\Phi_{R,k,\alpha}(g)
+  \right].
+  \label{eq:instanton-pair-real-combination}
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(k\in\mathbb Z\),
+\[
+  \ee^{\ii k(\theta+2\pi)}=\ee^{\ii k\theta}.
+\]
+This proves the periodicity.  The stated conjugation rule makes the
+\(-k\)-sector term the complex conjugate of the \(k\)-sector term for real
+\(\theta\) and \(g>0\).  Adding the two terms gives twice the real part,
+which is \eqref{eq:instanton-pair-real-combination}.
+\end{proof}
+
+\begin{remark}[Status of instanton and renormalon applications]
+\label{rem:instanton-renormalon-application-status}
+Definition~\ref{def:instanton-sector-transseries-ledger} is a bookkeeping
+standard, not an assertion that the instanton expansion has been justified.
+For a gauge theory it remains necessary to define the path integral regulator,
+the topological sectors, the treatment of gauge zero modes and collective
+coordinates, the determinant normalization, the behavior near small-size
+instantons or other boundary strata, and the continuum limit.  Renormalon
+ambiguities are different objects: they arise from momentum-region
+singularities in perturbative coefficient functions and are tied to
+factorization and operator definitions.  Instanton saddles and renormalon
+singularities can coexist in the same observable, but neither one is a
+substitute for the other.
+\end{remark}
+
 In this monograph a displayed perturbative beta function or critical exponent
 has the following default meaning unless a stronger statement is stated: it is
 a coefficientwise construction in a specified regularized and renormalized
