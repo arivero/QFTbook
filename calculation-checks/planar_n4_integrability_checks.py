@@ -668,6 +668,83 @@ def check_dhm_weak_dressing_coefficients() -> None:
     )
 
 
+def check_dhm_local_residue_continuation() -> None:
+    """Check DHM local crossing residue signs and the double-residue contact term."""
+
+    delta_terms = Counter({(1, 0): 1, (-1, 0): 1, (0, 1): -1, (0, -1): -1})
+
+    def multiply(
+        left: Counter[tuple[int, int]],
+        right: Counter[tuple[int, int]],
+    ) -> Counter[tuple[int, int]]:
+        result: Counter[tuple[int, int]] = Counter()
+        for (left_z, left_w), left_coefficient in left.items():
+            for (right_z, right_w), right_coefficient in right.items():
+                result[(left_z + right_z, left_w + right_w)] += (
+                    left_coefficient * right_coefficient
+                )
+        return result
+
+    kernel: Counter[tuple[int, int]] = Counter({(0, 0): 1})
+    for _ in range(3):
+        kernel = multiply(kernel, delta_terms)
+
+    x_value = 0.73 + 0.29j
+    y_value = -0.68 + 0.24j
+
+    def cauchy_factor(power: int, variable: complex, inside: bool) -> complex:
+        if inside:
+            return -(variable**power) if power >= 0 else 0j
+        return variable**power if power <= -1 else 0j
+
+    def raw_integral(x_inside: bool, y_inside: bool) -> complex:
+        bare_value = sum(
+            coefficient
+            * cauchy_factor(z_power, x_value, x_inside)
+            * cauchy_factor(w_power, y_value, y_inside)
+            for (z_power, w_power), coefficient in kernel.items()
+        )
+        return -1j * bare_value
+
+    def kernel_value() -> complex:
+        return sum(
+            coefficient * x_value**z_power * y_value**w_power
+            for (z_power, w_power), coefficient in kernel.items()
+        )
+
+    outside_outside = raw_integral(False, False)
+    inside_x_outside_y = raw_integral(True, False)
+    outside_x_inside_y = raw_integral(False, True)
+    inside_inside = raw_integral(True, True)
+
+    psi_x_outside_y = inside_x_outside_y - outside_outside
+    assert_close(
+        "DHM x-crossing residue restores outside branch",
+        inside_x_outside_y - psi_x_outside_y,
+        outside_outside,
+    )
+
+    psi_y_outside_x = outside_outside - outside_x_inside_y
+    assert_close(
+        "DHM y-crossing residue restores outside branch",
+        outside_x_inside_y + psi_y_outside_x,
+        outside_outside,
+    )
+
+    psi_x_inside_y = inside_inside - outside_x_inside_y
+    psi_y_inside_x = inside_x_outside_y - inside_inside
+    contact = outside_x_inside_y + inside_x_outside_y - inside_inside - outside_outside
+    assert_close("DHM double-residue contact sign", contact, 1j * kernel_value())
+    assert_close(
+        "DHM double crossing with contact restores outside branch",
+        inside_inside - psi_x_inside_y + psi_y_inside_x - contact,
+        outside_outside,
+    )
+    without_contact = inside_inside - psi_x_inside_y + psi_y_inside_x
+    if abs(without_contact - outside_outside) < 1.0e-9:
+        raise AssertionError("DHM double crossing unexpectedly worked without contact term")
+
+
 def check_su2c_matrix_amplitudes_and_unitarity() -> None:
     """Port finite checks from the stringbook su(2|2) S-matrix notebook."""
 
@@ -3562,6 +3639,7 @@ def main() -> None:
     check_crossing_rhs_is_sheet_sensitive()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
+    check_dhm_local_residue_continuation()
     check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()

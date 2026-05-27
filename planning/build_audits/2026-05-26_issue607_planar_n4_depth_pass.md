@@ -1503,3 +1503,38 @@ Calculation checks added:
   `Q` relation, the boson-boson/fermion-fermion and mixed blocks obey
   `R_12 R_21=1` on physical-branch samples after removing the common scalar,
   and the scalar split reproduces the compact `SU(2)` rational factor.
+
+## Continuation XLVIII: Local DHM/BES Analytic Continuation
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Inserted a local DHM residue-continuation proposition between the BES
+  `chi(x,y)` contour and the weak-coefficient extraction.
+- The text defines the Gamma-kernel logarithm `mathcal L_g`, radial raw
+  chambers `chi_raw^{epsilon_x,epsilon_y}`, one-residue corrections
+  `Psi_x`, `Psi_y`, and the double-residue contact term
+  `mathcal C_g=i mathcal L_g(x,y)`.
+- This internalizes the sign pattern from the stringbook
+  `su(2|2) spin chain.nb` analytic-continuation code:
+  inward `x` continuation subtracts the `z=x` residue, inward `y`
+  continuation adds the corresponding `w=y` residue in the stringbook
+  convention, and simultaneous continuation subtracts the contact correction,
+  giving the notebook's final `-i mathcal L_g(x,y)` term.
+- The text explicitly keeps this local contour-deformation result separate
+  from the global Janik crossing equation, which still requires a path on the
+  \(u\)-surface and control of shifted Zhukovsky branch-point windings.
+
+Calculation checks added:
+
+- `check_dhm_local_residue_continuation()` verifies the local continuation
+  algebra on a finite Laurent model of the DHM kernel expansion.  It checks
+  the one-residue signs, proves the double-residue contact has the displayed
+  sign, verifies restoration of the outside branch, and confirms that the
+  double crossing fails if the contact term is omitted.

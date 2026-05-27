@@ -617,6 +617,93 @@ domain where \(|x|>1\), \(|y|>1\).  Formula
 all sheets by itself; outside that domain it is continued with the crossing
 prescription.
 
+\begin{proposition}[Local DHM residue continuation]
+\label{prop:planar-n4-dhm-local-residue-continuation}
+Let
+\[
+  \mathcal L_g(z,w)
+  =
+  \log
+  \frac{\Gamma\!\left(1+\ii g(z+z^{-1}-w-w^{-1})\right)}
+       {\Gamma\!\left(1-\ii g(z+z^{-1}-w-w^{-1})\right)} .
+\]
+Fix \(x,y\) away from the unit circle and away from the Gamma-function
+poles.  Denote by \(\chi_{\rm raw}^{\epsilon_x,\epsilon_y}(x,y)\) the same
+unit-circle double contour integral as in
+\eqref{eq:planar-n4-bes-chi-integral}, with the \(x\)-Cauchy kernel expanded
+radially outside the contour when \(\epsilon_x=+\) and inside the contour
+when \(\epsilon_x=-\), and similarly for \(y\).  Thus
+\(\chi_{\rm raw}^{+,+}\) is the original DHM branch.  With the stringbook
+orientation for crossing inward through \(|x|=1\) and \(|y|=1\), define the
+one-residue corrections by
+\begin{equation}
+  \Psi_x^{\epsilon_y}(x,y)
+  =
+  \chi_{\rm raw}^{-,\epsilon_y}(x,y)
+  -
+  \chi_{\rm raw}^{+,\epsilon_y}(x,y),
+  \qquad
+  \Psi_y^{\epsilon_x}(x,y)
+  =
+  \chi_{\rm raw}^{\epsilon_x,+}(x,y)
+  -
+  \chi_{\rm raw}^{\epsilon_x,-}(x,y).
+  \label{eq:planar-n4-dhm-single-residue-definitions}
+\end{equation}
+Equivalently, \(\Psi_x\) is the residue picked up by the pole \(z=x\), with
+the sign fixed by the kernel \(1/(x-z)\), while \(\Psi_y\) is written with
+the opposite sign because the stringbook formula adds the \(y\)-crossing
+correction.  The analytic continuation of the original outside branch into
+the three neighboring radial chambers is
+\begin{align}
+  \chi^{-,+}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{-,+}(x,y)-\Psi_x^{+}(x,y), \\
+  \chi^{+,-}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{+,-}(x,y)+\Psi_y^{+}(x,y), \\
+  \chi^{-,-}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{-,-}(x,y)
+  -\Psi_x^{-}(x,y)
+  +\Psi_y^{-}(x,y)
+  -\mathcal C_g(x,y),
+  \label{eq:planar-n4-dhm-double-residue-continuation}
+\end{align}
+where the contact term is the double residue
+\begin{equation}
+  \mathcal C_g(x,y)=\ii\,\mathcal L_g(x,y).
+  \label{eq:planar-n4-dhm-contact-term}
+\end{equation}
+These formulas are local sheet-transition rules for the DHM contour.  The
+global Janik crossing equation additionally specifies a path on the
+\(u\)-surface, hence which of \(x^\pm(u)\) winds around which shifted
+Zhukovsky branch point.
+\end{proposition}
+
+\begin{proof}
+The only singularities that move when \(x\) crosses the unit circle are the
+Cauchy poles \(z=x\); the Gamma-function poles are excluded by hypothesis.
+For fixed \(y\)-chamber, deforming the \(z\)-contour back to the unit circle
+therefore changes the raw integral exactly by the residue at \(z=x\).  This
+gives the first definition in
+\eqref{eq:planar-n4-dhm-single-residue-definitions} and hence the first
+continuation formula.  The \(y\)-crossing computation is the same, except
+that the sign is recorded in \(\Psi_y\) so that the stringbook notebook
+convention reads as addition in the second formula.
+
+If both variables cross, the two single residues count the intersection
+where \(z=x\) and \(w=y\) once too many.  The product of the residue signs
+from \(1/(x-z)\) and \(1/(y-w)\), together with the overall factor
+\(-\ii\) in \(\chi\), gives the contact term
+\(\ii\mathcal L_g(x,y)\).  Subtracting this double residue gives the final
+\(-\ii\mathcal L_g(x,y)\) contribution in
+\eqref{eq:planar-n4-dhm-double-residue-continuation}.  The planar \(N=4\)
+companion calculation check verifies these signs on finite Laurent models of
+the DHM kernel, including the failure that occurs if the contact term is
+omitted.
+\end{proof}
+
 Inside this domain the weak-coupling coefficients can be extracted without
 any sheet continuation.  Expand
 \begin{equation}

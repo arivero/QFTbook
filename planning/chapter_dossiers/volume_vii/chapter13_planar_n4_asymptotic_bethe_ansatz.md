@@ -17,6 +17,12 @@ the monograph's proof-boundary language.
 - `q_r`: conserved magnon charges entering the dressing phase.
 - `sigma`, `theta`: dressing factor and phase.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
+- `mathcal L_g(z,w)`: logarithmic Gamma-function kernel inside the DHM
+  double contour.
+- `chi_raw^{epsilon_x,epsilon_y}`: DHM unit-circle contour evaluated with
+  the Cauchy kernels expanded in specified radial chambers.
+- `Psi_x`, `Psi_y`, `mathcal C_g`: one-residue and double-residue contact
+  corrections for local DHM sheet continuation in the stringbook orientation.
 - `S_mat`, `S_0`: matrix and scalar parts of the two-body magnon S-matrix.
 - `S^{(1)}_{12}`, `mathcal S_{12}`: one-copy `su(2|2)_c` intertwiner and
   its unfixed common scalar in the stringbook dynamic spin-chain frame.
@@ -76,6 +82,12 @@ the monograph's proof-boundary language.
   factor times `sigma_{12}^2`.
 - Adds the BES `chi(x,y)` contour-integral representation with its
   sheet-domain caveat.
+- Adds the local DHM residue-continuation rule underlying the stringbook
+  notebook's analytic continuation: crossing \(x\) inward subtracts the
+  `z=x` residue, crossing \(y\) inward adds the corresponding `w=y`
+  residue in the stringbook sign convention, and crossing both variables
+  subtracts the double-residue contact term `i mathcal L_g(x,y)`, producing
+  the notebook's final `-i mathcal L_g(x,y)` contribution.
 - Proves dressing scalar unitarity in the charge-expansion domain:
   antisymmetry of `q_r(1)q_s(2)-q_s(1)q_r(2)` gives `theta_21=-theta_12` and
   hence `sigma_12 sigma_21=1`, while leaving crossing as separate monodromy
@@ -195,6 +207,10 @@ crossed Zhukovsky sheets.
   prefactors against the closed weak formula on an exact rectangular grid in
   `N,r,s`, verifying parity/minimal-order selection, and confirming that the
   first charge-dressed weak term scales as `g^6`.
+- It checks the local DHM analytic-continuation residue bookkeeping on a
+  finite Laurent model of the Gamma-kernel expansion, including the
+  single-residue signs and the necessity/sign of the double-residue contact
+  term.
 - It ports the local finite checks from the stringbook `su(2|2) spin
   chain.nb` notebook: the ten-amplitude formulas satisfy the
   highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed

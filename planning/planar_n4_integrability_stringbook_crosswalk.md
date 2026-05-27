@@ -59,7 +59,7 @@ still needs development.
 | BMN/pp-wave normalization and lightcone string context | `sec:ppwave` and following GS/pp-wave subsubsections | `Context`: monograph Chapter 13 uses BMN scaling as a gauge-theory normalization check | The Green-Schwarz pp-wave action and string spectrum derivation are not pure-QFT floor items for this lane.  If the monograph later wants the holographic string derivation, it needs a separate string-background pass. |
 | All-order magnon dispersion from central extension | `The all-order magnon dispersion relation` | `Expanded` in Chapter 13 with shortening, Zhukovsky variables, physical branch, and energy checks | No major gap, but all later uses must keep `g=sqrt(lambda)/(4 pi)` and the stringbook energy sign. |
 | `su(2|2)_c` magnon S-matrix, amplitudes, length-changing markers, and scalar split | `The magnon S-matrix` | `Expanded/Boundary`: Chapter 13 now defines the dynamic frame, displays the ten one-copy amplitude formulas, proves a highest-weight `Q` identity, records the scalar split, and ports local matrix-unitarity checks from `su(2|2) spin chain.nb`; the global symmetry-fixed S-matrix remains framework input | Still needs the full row-reduction proof of generic one-dimensionality of the intertwined tensor product and a complete audit of the notebook's crossing/analytic-continuation experiments.  Yang--Baxter factorization and the global scalar monodromy remain boundary data rather than finite local algebra. |
-| Crossing equation and crossing-symmetric dressing factor | `The crossing-symmetric dressing factor` | `Partial/Boundary`: Chapter 13 derives scalar unitarity, DHM weak coefficients, reciprocal convention algebra, and states BES/crossing as a theorem | Needs deeper analytic-continuation development: crossing path, branch point winding, DHM/BES contour deformation hypotheses, and a systematic comparison with stringbook notebook conventions. |
+| Crossing equation and crossing-symmetric dressing factor | `The crossing-symmetric dressing factor` | `Partial/Boundary`: Chapter 13 derives scalar unitarity, DHM weak coefficients, the local DHM residue-continuation rules from the stringbook notebook convention, reciprocal convention algebra, and states BES/crossing as a theorem | Needs deeper global analytic-continuation development: full crossing path, branch point winding, Gamma-kernel pole avoidance hypotheses, and a systematic comparison with the remaining stringbook notebook crossing experiments. |
 | Asymptotic Bethe ansatz and finite-density ABA assumption | `Asymptotic Bethe ansatz and the cusp anomalous dimension` | `Expanded/Boundary`: Chapter 13 states the long-chain ABA regime, distinguishes it from TBA, derives the finite-density counting equation, and gives weak/large-spin BES checks | Need keep the status precise: ABA is a long-chain quantization rule assumed to remain valid for controlled finite-density states, not thermodynamic Bethe ansatz. |
 | One-loop `SL(2)` sector and large-spin cusp | stringbook `SL(2)` subsection | `Expanded`: Chapter 13 derives the one-loop noncompact resolvent and `8 g^2 log S` coefficient | No major gap except maintaining normalization against the BES scaling-function convention. |
 | BES equation and weak scaling function | stringbook all-order cusp subsection and `BES equation.nb` | `Partial/Expanded`: Chapter 13 derives the BES bridge and weak coefficients through `g^6`; checks cover signed Zhukovsky Fourier transform and weak integrals | Needs a direct notebook-to-Python crosswalk for all stringbook BES experimental calculations and a clearer boundary for strong-coupling BES results. |
@@ -94,9 +94,10 @@ still needs development.
    matrix-unitarity checks are now in Chapter 13, but the generic row-rank
    proof of uniqueness of the intertwiner and the notebook's crossing
    experiments still need to be fully internalized.
-3. Expand the global dressing/crossing analytic continuation: state the
-   crossing contour, branch cuts, monodromy, BES/DHM kernel hypotheses, and
-   convention transformations.
+3. Expand the global dressing/crossing analytic continuation beyond the local
+   DHM residue chamber rules now in Chapter 13: state the crossing contour,
+   branch cuts, monodromy, BES/DHM kernel hypotheses, and convention
+   transformations.
 4. Complete the full mirror-TBA kernel/source crosswalk from the stringbook:
    all node families, signs, source/target derivative conventions, and
    excited-state sources.
