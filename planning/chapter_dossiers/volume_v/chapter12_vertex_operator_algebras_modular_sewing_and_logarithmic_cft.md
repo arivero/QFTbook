@@ -32,6 +32,11 @@ current QFT scope.
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
 - `mu_A`: complete-rational conformal-net `mu`-index.
+- `C,D`: states forming a rank-two logarithmic Virasoro pair of weight `h`.
+- `mathcal C, mathcal D`: corresponding chiral fields.
+- `N`: nilpotent operator on the logarithmic pair, with `ND=C` and `NC=0`.
+- `b,d`: constants in logarithmic two-point functions; `b` is invariant under
+  `D -> D + lambda C`, while `d` is basis-dependent.
 
 ## Claim Ledger
 
@@ -81,9 +86,14 @@ current QFT scope.
   exponential Tauberian theorem needed to pass from the partition function to
   cumulative state growth, and proves the CFT-internal Cardy density formula
   under compact/discrete-spectrum/positivity hypotheses.
-- Defines logarithmic CFT by nonsemisimple \(L_0\) action, explains the
-  appearance of logarithms, and identifies pseudo-traces and finite tensor
-  category data as the replacement for semisimple modular data.
+- Defines logarithmic CFT by nonsemisimple \(L_0\) action, introduces a
+  rank-two logarithmic Virasoro pair, derives finite state and field scaling,
+  proves the logarithmic two-point functions from the \(L_0\) and \(L_1\)
+  Ward identities, records the basis dependence of the constant term, and
+  explains why ordinary characters miss the nilpotent extension data.
+- Identifies generalized characters, pseudo-traces, projective modules,
+  modified traces, and braided finite tensor category data as the honest
+  replacement for semisimple modular data in logarithmic CFT.
 
 ## Figure Ledger
 
@@ -98,7 +108,9 @@ current QFT scope.
   shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
   vacuum, the Cardy Tauberian saddle coefficient, and the Ising Zhu
-  polynomial/idempotent decomposition over \(\mathbb Q\).
+  polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
+  rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
+  trace invisibility of the nilpotent part.
 
 ## Reference Intake
 
@@ -130,3 +142,8 @@ current QFT scope.
   explicit, proved the CFT-internal cumulative Cardy growth statement from
   modular invariance plus positivity/discreteness assumptions, and added the
   saddle coefficient check.
+- 2026-05-27 logarithmic Jordan-cell pass: expanded logarithmic CFT from a
+  status paragraph into a self-contained rank-two local derivation, including
+  finite logarithmic scaling, \(L_0/L_1\) Ward-identity two-point functions,
+  basis-dependence bookkeeping, the ordinary-character failure mode, and exact
+  formal calculation checks.

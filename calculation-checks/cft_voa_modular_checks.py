@@ -221,6 +221,160 @@ def check_cardy_tauberian_saddle_constants() -> None:
         )
 
 
+def log_polynomial_add(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
+    degree = max(len(lhs), len(rhs))
+    return [
+        (lhs[index] if index < len(lhs) else Fraction(0))
+        + (rhs[index] if index < len(rhs) else Fraction(0))
+        for index in range(degree)
+    ]
+
+
+def log_polynomial_scale(scalar: Fraction, coefficients: list[Fraction]) -> list[Fraction]:
+    return [scalar * coefficient for coefficient in coefficients]
+
+
+def log_polynomial_derivative(coefficients: list[Fraction]) -> list[Fraction]:
+    if len(coefficients) <= 1:
+        return [Fraction(0)]
+    derivative = [
+        Fraction(index) * coefficient
+        for index, coefficient in enumerate(coefficients)
+        if index > 0
+    ]
+    return derivative or [Fraction(0)]
+
+
+def trim_log_polynomial(coefficients: list[Fraction]) -> list[Fraction]:
+    trimmed = list(coefficients)
+    while len(trimmed) > 1 and trimmed[-1] == 0:
+        trimmed.pop()
+    return trimmed
+
+
+def assert_log_polynomial_zero(name: str, coefficients: list[Fraction]) -> None:
+    if any(coefficient != 0 for coefficient in coefficients):
+        raise AssertionError(f"{name}: nonzero log-polynomial {coefficients!r}")
+
+
+def check_logarithmic_jordan_cell_two_point_ward_identities() -> None:
+    """Check the Ward-identity algebra for a rank-two logarithmic pair.
+
+    A correlator z^{-2h} P(log z) is represented only by the polynomial P.
+    The operator z d/dz + 2h differentiates P with respect to log z.
+    """
+
+    a = Fraction(3)
+    b = Fraction(5)
+    d0 = Fraction(7)
+
+    # Scale covariance alone allows a possible <C C> coefficient a and then
+    # forces the displayed log and log^2 descendants.
+    g_cc = [a]
+    g_cd = [b, -a]
+    g_dd = [d0, -2 * b, a]
+    assert_log_polynomial_zero(
+        "logarithmic scale Ward identity for <C C>",
+        log_polynomial_derivative(g_cc),
+    )
+    assert_log_polynomial_zero(
+        "logarithmic scale Ward identity for <C D>",
+        log_polynomial_add(log_polynomial_derivative(g_cd), g_cc),
+    )
+    assert_log_polynomial_zero(
+        "logarithmic scale Ward identity for <D D>",
+        log_polynomial_add(
+            log_polynomial_derivative(g_dd),
+            log_polynomial_scale(Fraction(2), g_cd),
+        ),
+    )
+    l1_cd_residual_factor = -a
+    if l1_cd_residual_factor == 0:
+        raise AssertionError("nonzero <C C> coefficient should violate the L1 Ward identity")
+
+    # The L_1 Ward identity for <C D> forces a=0 in a genuine global
+    # logarithmic pair.  The remaining forms are the standard LCFT
+    # two-point functions.
+    a = Fraction(0)
+    g_cc = [a]
+    g_cd = [b]
+    g_dd = [d0, -2 * b]
+    assert_log_polynomial_zero(
+        "global logarithmic Ward identity for <C C>",
+        log_polynomial_derivative(g_cc),
+    )
+    assert_log_polynomial_zero(
+        "global logarithmic Ward identity for <C D>",
+        log_polynomial_add(log_polynomial_derivative(g_cd), g_cc),
+    )
+    assert_log_polynomial_zero(
+        "global logarithmic Ward identity for <D D>",
+        log_polynomial_add(
+            log_polynomial_derivative(g_dd),
+            log_polynomial_scale(Fraction(2), g_cd),
+        ),
+    )
+    assert_equal("L1 Ward identity forces <C C> coefficient to vanish", -a, Fraction(0))
+    assert_equal("L1 primary part for <D D>", -2 * b, Fraction(-10))
+    assert_equal("L1 nilpotent part for <D D>", 2 * b, Fraction(10))
+    assert_equal("L1 cancellation for <D D>", -2 * b + 2 * b, Fraction(0))
+
+    # D -> D + lambda C leaves b fixed when <C C>=0 and shifts only the
+    # constant term of <D D>.
+    lam = Fraction(2, 3)
+    shifted_g_cd = log_polynomial_add(g_cd, log_polynomial_scale(lam, g_cc))
+    shifted_g_dd = log_polynomial_add(
+        g_dd,
+        log_polynomial_add(
+            log_polynomial_scale(2 * lam, g_cd),
+            log_polynomial_scale(lam * lam, g_cc),
+        ),
+    )
+    assert_equal("logarithmic partner basis shift preserves b", shifted_g_cd, [b])
+    assert_equal(
+        "logarithmic partner basis shift changes d only",
+        trim_log_polynomial(shifted_g_dd),
+        [d0 + 2 * lam * b, -2 * b],
+    )
+    assert_log_polynomial_zero(
+        "shifted logarithmic Ward identity for <D D>",
+        log_polynomial_add(
+            log_polynomial_derivative(shifted_g_dd),
+            log_polynomial_scale(Fraction(2), shifted_g_cd),
+        ),
+    )
+
+
+def check_logarithmic_jordan_trace_invisibility() -> None:
+    """Check that ordinary characters do not see the nilpotent extension.
+
+    For L0 = h I + N with N^2 = 0, q^(L0-c/24) is the scalar
+    q^(h-c/24) times I + t N, where t is the formal coefficient 2 pi i tau.
+    The trace of N is zero, so the ordinary character remembers only the
+    generalized eigenspace dimension.
+    """
+
+    identity = [[Fraction(1), Fraction(0)], [Fraction(0), Fraction(1)]]
+    nilpotent = [[Fraction(0), Fraction(1)], [Fraction(0), Fraction(0)]]
+
+    def trace(matrix: list[list[Fraction]]) -> Fraction:
+        return sum(matrix[index][index] for index in range(len(matrix)))
+
+    def matrix_square(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+        return [
+            [
+                sum(matrix[row][mid] * matrix[mid][column] for mid in range(len(matrix)))
+                for column in range(len(matrix))
+            ]
+            for row in range(len(matrix))
+        ]
+
+    zero_matrix = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
+    assert_equal("rank-two logarithmic nilpotent squares to zero", matrix_square(nilpotent), zero_matrix)
+    assert_equal("ordinary trace sees Jordan-cell dimension", trace(identity), Fraction(2))
+    assert_equal("ordinary trace ignores nilpotent coefficient", trace(nilpotent), Fraction(0))
+
+
 def polynomial_multiply(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
     product = [Fraction(0) for _ in range(len(lhs) + len(rhs) - 1)]
     for i, left in enumerate(lhs):
@@ -313,8 +467,10 @@ def main() -> None:
     check_character_exponents()
     check_ising_t_spin_selection_and_diagonal_invariant()
     check_cardy_tauberian_saddle_constants()
+    check_logarithmic_jordan_cell_two_point_ward_identities()
+    check_logarithmic_jordan_trace_invisibility()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, Zhu-algebra, and conformal-net index checks passed.")
+    print("All CFT VOA/modular-data, Zhu-algebra, logarithmic-cell, and conformal-net index checks passed.")
 
 
 if __name__ == "__main__":

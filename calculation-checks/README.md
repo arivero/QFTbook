@@ -204,8 +204,9 @@ Current checks:
   coefficients, quantum dimensions, shifted character exponents, the
   \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
   Ising modular invariant with one vacuum, the Cardy Tauberian saddle
-  coefficient, and the Zhu-algebra top-weight polynomial with its primitive
-  idempotents.
+  coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
+  invisibility of the nilpotent extension, and the Zhu-algebra top-weight
+  polynomial with its primitive idempotents.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,
