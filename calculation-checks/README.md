@@ -211,7 +211,8 @@ Current checks:
   FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
   discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
-  including the level-two BPZ null vector, one-screening coefficient
+  including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
+  dual, one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
   level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).

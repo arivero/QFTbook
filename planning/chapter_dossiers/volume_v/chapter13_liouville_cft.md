@@ -96,8 +96,9 @@ boundaries rather than importing the appendix exposition.
   wavefunctions, with the boundary bootstrap isolated as a quoted theorem.
 - Defines ZZ boundary states as finite differences of imaginary-parameter
   FZZT states and proves the hyperbolic wavefunction identity.
-- Proves the level-two null-vector coefficient for `alpha=-b/2` and derives
-  the corresponding BPZ differential equation.
+- Proves the level-two null-vector coefficient for `alpha=-b/2` and for the
+  dual degenerate momentum `alpha=-1/(2b)`, deriving both BPZ differential
+  equations with their distinct `b^2` and `b^{-2}` coefficients.
 - Derives the degenerate OPE coefficient `C_-(alpha)` from the local
   one-screening Coulomb-gas integral, including the Dotsenko-Fateev
   meromorphic-continuation boundary and the gamma-function rewrites matching
@@ -121,9 +122,10 @@ boundaries rather than importing the appendix exposition.
 ## Calculation Checks
 
 - `calculation-checks/liouville_bpz_checks.py` verifies the fragile
-  Virasoro arithmetic for the level-two null vector
+  Virasoro arithmetic for the level-two null vectors
   `(L_{-1}^2+b^2 L_{-2})|h>` at `h=-1/2-3b^2/4` and
-  `c=1+6(b+b^{-1})^2`.
+  `(L_{-1}^2+b^{-2} L_{-2})|h^vee>` at
+  `h^vee=-1/2-3/(4b^2)`, both at `c=1+6(b+b^{-1})^2`.
 - The same script checks the formal `b`-power bookkeeping in the explicit
   DOZZ `b`-shift ratio, including the cancellation of all external-momentum
   powers and the final `b^{-4}` factor.
@@ -194,3 +196,6 @@ boundaries rather than importing the appendix exposition.
   variational boundary equation, FZZT one-point and boundary-state
   normalization, ZZ states as imaginary-FZZT finite differences, and exact
   hyperbolic identity checks coordinated with the BCFT chapter.
+- 2026-05-26 dual-BPZ pass: added the independent
+  `V_{-1/(2b)}` level-two null vector and dual BPZ equation, with exact
+  Laurent checks of the `b^{-2}` coefficient.

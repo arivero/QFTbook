@@ -116,11 +116,13 @@ t_inverse = Laurent.monomial(-1)
 
 # h(-b/2)=(-b/2)(Q+b/2)=-1/2-3 b^2/4.
 h = Laurent.constant(Fraction(-1, 2)) + t.scale(Fraction(-3, 4))
+dual_h = Laurent.constant(Fraction(-1, 2)) + t_inverse.scale(Fraction(-3, 4))
 
 # c=1+6(b+b^{-1})^2=13+6t+6t^{-1}.
 c = Laurent.constant(13) + t.scale(6) + t_inverse.scale(6)
 
 kappa = t
+dual_kappa = t_inverse
 
 # Positive-mode action on (L_-1^2 + kappa L_-2)|h>.
 l1_coefficient = h.scale(4) + Laurent.constant(2) + kappa.scale(3)
@@ -132,6 +134,24 @@ require_zero("L2 null-vector coefficient", l2_coefficient)
 # The L1 equation alone fixes kappa=-(4h+2)/3=b^2.
 solved_kappa = -(h.scale(4) + Laurent.constant(2)).scale(Fraction(1, 3))
 require_zero("solved kappa minus b^2", solved_kappa - t)
+
+# The dual degenerate field V_{-1/(2b)} has the independent null vector
+# (L_-1^2 + b^{-2} L_-2)|h^vee>.  This is not a new convention; it is the
+# same Virasoro calculation with t=b^2 inverted.
+dual_l1_coefficient = (
+    dual_h.scale(4) + Laurent.constant(2) + dual_kappa.scale(3)
+)
+dual_l2_coefficient = (
+    dual_h.scale(6)
+    + dual_kappa * (dual_h.scale(4) + c.scale(Fraction(1, 2)))
+)
+require_zero("dual L1 null-vector coefficient", dual_l1_coefficient)
+require_zero("dual L2 null-vector coefficient", dual_l2_coefficient)
+
+solved_dual_kappa = -(dual_h.scale(4) + Laurent.constant(2)).scale(
+    Fraction(1, 3)
+)
+require_zero("solved dual kappa minus b^{-2}", solved_dual_kappa - t_inverse)
 
 # DOZZ b-shift ratio: verify the powers of b in the ratio
 # C(a1+b/2,a2,a3)/C(a1-b/2,a2,a3).  Symbols are
@@ -423,6 +443,6 @@ if raw_q_block[2] != g2_formula:
     )
 
 print(
-    "All Liouville BPZ, screening, Virasoro-block, connection-matrix, "
-    "elliptic-q, and DOZZ-shift checks passed."
+    "All Liouville BPZ, dual-BPZ, screening, Virasoro-block, "
+    "connection-matrix, elliptic-q, and DOZZ-shift checks passed."
 )

@@ -280,7 +280,8 @@ Current absorption:
   action and stress tensor, background charge and central charge, Seiberg
   domain, probabilistic construction boundary, reflection relation,
   continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
-  equations, one-screening coefficient, hypergeometric connection formulas,
+  equations for both \(V_{-b/2}\) and \(V_{-1/(2b)}\), one-screening
+  coefficient, hypergeometric connection formulas,
   level-two Virasoro block coefficients, the elliptic nome interface to
   Zamolodchikov recursion, and boundary Liouville states with FZZT
   one-point functions and ZZ finite differences.  The finite convention
