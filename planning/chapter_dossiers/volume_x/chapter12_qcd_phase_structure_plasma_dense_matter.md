@@ -21,6 +21,9 @@ GitHub issue #628.
 - `h`, `X_Lambda`, `overline O_Lambda`: source, integrated observable, and
   intensive observable entering susceptibility definitions.
 - `P_R(x)`, `ell(T)`: normalized Polyakov loop and center order parameter.
+- `nu_Lambda`, `S_eff,Lambda`, `u_square`, `kappa`: exact finite-regulator
+  Polyakov-loop effective measure, its density action when it exists,
+  fundamental plaquette character coefficient, and Wilson hopping parameter.
 - `P=diag(e^{i theta_j})`: constant Polyakov holonomy used in the one-loop
   high-temperature potential.
 - `f_g(P)`, `f_q(P)`: gluon and quark one-loop holonomy free-energy
@@ -70,6 +73,11 @@ GitHub issue #628.
 - Separates center deconfinement from the zero-temperature Wilson-loop area
   law and from the crossover use of Polyakov loops with dynamical fundamental
   quarks.
+- Defines the exact finite-regulator Polyakov-loop effective measure as the
+  pushforward of the lattice path-integral measure, proves the character
+  expansion and pure-gauge center selection rule, derives the leading
+  strong-coupling nearest-neighbor tube interaction, and derives the leading
+  heavy-quark center-breaking source term.
 - Derives the one-loop Polyakov-holonomy potential from thermal oscillator
   sums, including the adjoint trace formula
   `tr_adj(P^n)=|tr_F P^n|^2-1` and the antiperiodic fundamental-quark term.
@@ -145,6 +153,7 @@ GitHub issue #628.
   chiral effective theory coefficients, static HTL Debye-mass normalization,
   retarded HTL angular-kernel transversality bookkeeping, thermodynamic
   derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
+  Polyakov-loop effective-measure center-charge bookkeeping,
   baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
@@ -161,6 +170,10 @@ GitHub issue #628.
 - 2026-05-27 holonomy pass: added a controlled one-loop high-temperature
   Polyakov-holonomy derivation, center-minimum proof, center-symmetric
   holonomy energy cost, and fundamental-quark center-source term.
+- 2026-05-27 Polyakov-effective-measure pass: added the exact finite-lattice
+  Polyakov-loop marginal measure, its character expansion and center
+  selection rule, the leading strong-coupling tube interaction, and the
+  leading heavy-quark hopping source.
 - 2026-05-27 baryon-susceptibility pass: added finite-regulator cumulant
   definitions, explicit first/second/fourth cumulant formulas, the
   Cauchy--Hadamard diagnostic, and ratio-estimator status hypotheses.

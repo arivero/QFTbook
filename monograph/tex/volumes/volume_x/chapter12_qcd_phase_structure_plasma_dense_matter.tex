@@ -348,6 +348,225 @@ freedom in a crossover regime; it is not, by itself, a theorem that an exact
 phase transition exists.
 \end{remark}
 
+\subsection{Polyakov-Loop Effective Measures at Finite Regulator}
+\label{sec:qcd-polyakov-loop-effective-measures}
+
+A Polyakov-loop effective theory is not, by definition, a new continuum QCD.
+At finite regulator it is a marginal measure obtained from the thermal
+lattice gauge theory by retaining only temporal Wilson lines.  Its usefulness
+depends on whether the resulting nonlocal measure can be approximated by a
+controlled local or rapidly decaying interaction.
+
+\begin{definition}[Exact finite-regulator Polyakov-loop effective measure]
+\label{def:qcd-polyakov-loop-effective-measure}
+Fix a finite thermal lattice
+\(\Lambda=N_\tau\times\Lambda_s\) with spacing \(a\), compact gauge group
+\(SU(N_c)\), and thermal circle length \(\beta=aN_\tau\).  For a gauge
+configuration \(U\), define the temporal Wilson line at a spatial site
+\(\mathbf x\) by
+\[
+  \mathcal P_{\mathbf x}(U)
+  =
+  \prod_{\tau=0}^{N_\tau-1}U_0(\tau,\mathbf x),
+\]
+with the product ordered along the Euclidean time circle.  For every bounded
+class function \(F\) of the collection \(\{\mathcal P_{\mathbf x}\}\), define
+\[
+  \int F(P)\,d\nu_{\Lambda}(P)
+  =
+  \frac{1}{Z_{\Lambda}}
+  \int d\mu_{\Lambda}(U)\,
+  F(\{\mathcal P_{\mathbf x}(U)\})\,
+  e^{-S_g[U]}\prod_f\det D_f[U].
+\]
+When the regulated weight is positive, this is a probability measure on
+\(SU(N_c)^{\Lambda_s}\), restricted to class functions at each site.  At
+real chemical potential, or in any other situation where the determinant is
+complex, the same formula defines a normalized complex linear functional
+rather than a probability measure.  In either case it is the exact
+finite-regulator Polyakov-loop effective object.  If it is absolutely
+continuous with
+respect to the product Haar measure \(dP=\prod_{\mathbf x}dP_{\mathbf x}\),
+one may write
+\[
+  d\nu_{\Lambda}(P)=Z_{\rm eff}^{-1}e^{-S_{\rm eff,\Lambda}(P)}dP,
+\]
+where \(S_{\rm eff,\Lambda}\) is defined up to an additive constant and up
+to changes on Haar-null sets.
+\end{definition}
+
+\begin{proposition}[Character coordinates and center charge]
+\label{prop:qcd-polyakov-character-coordinates}
+Assume \(d\nu_{\Lambda}\) has an \(L^2\) density with respect to product
+Haar measure.  Then the density admits an \(L^2\) character expansion
+\[
+  \frac{d\nu_{\Lambda}}{dP}
+  =
+  \sum_{\{\lambda_{\mathbf x}\}}
+  c_{\{\lambda_{\mathbf x}\}}
+  \prod_{\mathbf x\in\Lambda_s}\chi_{\lambda_{\mathbf x}}(P_{\mathbf x}),
+\]
+where only finitely many sites carry nontrivial representations in each
+basis vector.  In pure Yang--Mills, the coefficient
+\(c_{\{\lambda_{\mathbf x}\}}\) vanishes unless the total \(N\)-ality
+\[
+  \sum_{\mathbf x} k_{\lambda_{\mathbf x}}
+  \]
+is \(0\) modulo \(N_c\).  With dynamical fundamental quarks this selection
+rule is explicitly broken by terms of nonzero total \(N\)-ality.
+\end{proposition}
+
+\begin{proof}
+The Peter--Weyl theorem gives an orthonormal basis of class functions on
+\(SU(N_c)\) consisting of irreducible characters.  Tensoring these bases
+over the finite set \(\Lambda_s\) gives the displayed expansion in
+\(L^2(SU(N_c)^{\Lambda_s})\).
+
+For pure Yang--Mills the finite-regulator measure is invariant under the
+thermal center transformation
+\[
+  P_{\mathbf x}\mapsto zP_{\mathbf x},\qquad z\in Z(SU(N_c)),
+\]
+applied simultaneously at all spatial sites.  Since
+\(\chi_{\lambda}(zP)=z^{k_\lambda}\chi_\lambda(P)\), invariance of the
+density forces
+\[
+  c_{\{\lambda_{\mathbf x}\}}
+  =
+  z^{\sum_{\mathbf x}k_{\lambda_{\mathbf x}}}
+  c_{\{\lambda_{\mathbf x}\}}
+  \quad\text{for all }z\in Z(SU(N_c)).
+\]
+This is possible only when the total \(N\)-ality vanishes modulo \(N_c\), or
+when the coefficient is zero.  Fundamental quark determinants contain
+closed fermion paths winding once around the thermal circle; such paths
+carry fundamental \(N\)-ality and therefore break the selection rule.
+\end{proof}
+
+\begin{controlledapproximation}[Local Polyakov-loop action]
+\label{ca:qcd-local-polyakov-loop-action}
+A local Polyakov-loop action is a truncation of the exact effective measure
+to finitely many character monomials, usually organized by spatial range,
+representation size, winding number, and powers of a strong-coupling or
+hopping parameter.  The truncation is a controlled approximation only in a
+domain where the omitted character coefficients are bounded by a convergent
+cluster or hopping expansion, or by a separately stated numerical error
+estimate.
+\end{controlledapproximation}
+
+\begin{proposition}[Leading strong-coupling tube in pure Yang--Mills]
+\label{prop:qcd-polyakov-strong-coupling-tube}
+Let the pure-gauge lattice action have a plaquette character expansion whose
+fundamental coefficient is \(u_{\square}\), normalized so that
+\(u_{\square}=0\) at zero plaquette coupling.  In a finite lattice
+strong-coupling expansion, the leading center-invariant nearest-neighbor
+interaction between Polyakov loops has the form
+\[
+  S_{\rm eff,\Lambda}^{(1)}(P)
+  =
+  -J_1
+  \sum_{\langle\mathbf x\mathbf y\rangle}
+  \left[
+    \chi_{\square}(P_{\mathbf x})
+    \chi_{\overline\square}(P_{\mathbf y})
+    +
+    \chi_{\overline\square}(P_{\mathbf x})
+    \chi_{\square}(P_{\mathbf y})
+  \right],
+\]
+with
+\[
+  J_1=u_{\square}^{N_\tau}+O(u_{\square}^{N_\tau+2})
+\]
+in the same expansion.  The displayed term is center neutral and therefore
+compatible with Proposition~\ref{prop:qcd-polyakov-character-coordinates}.
+\end{proposition}
+
+\begin{proof}
+Expand each plaquette Boltzmann factor in irreducible characters.  A
+nonzero contribution to the Polyakov-loop marginal measure must leave no
+unpaired spatial link after Haar integration.  For two neighboring spatial
+sites \(\mathbf x,\mathbf y\), the minimal surface that connects their
+temporal Wilson lines is a tube of \(N_\tau\) temporal-spatial plaquettes
+wrapping once around the thermal circle.  Placing the fundamental character
+on each plaquette of this tube and integrating the shared spatial links
+contracts the representation matrices into
+\[
+  \chi_{\square}(P_{\mathbf x})
+  \chi_{\overline\square}(P_{\mathbf y})
+\]
+or its complex conjugate.  The weight of the minimal tube is
+\(u_{\square}^{N_\tau}\).  Corrections either decorate the tube or use
+larger representations and therefore carry higher powers of the plaquette
+character coefficients; in the fundamental channel the first plaquette
+decorations occur at the indicated higher order.  The product has total
+\(N\)-ality \(1-1=0\), so it is invariant under the simultaneous center
+transformation.
+\end{proof}
+
+\begin{proposition}[Leading heavy-quark center-breaking term]
+\label{prop:qcd-polyakov-heavy-quark-term}
+For Wilson fermions with hopping parameter \(\kappa\) and quark chemical
+potential \(\mu_q\), the leading temporal-winding term in the hopping
+expansion of \(N_f\) degenerate fundamental Dirac quarks is
+\[
+  S_{\rm eff,\Lambda}^{\rm hq}(P)
+  =
+  -h
+  \sum_{\mathbf x}
+  \left[
+    e^{\beta\mu_q}\chi_{\square}(P_{\mathbf x})
+    +
+    e^{-\beta\mu_q}\chi_{\overline\square}(P_{\mathbf x})
+  \right]
+  +\cdots,
+\]
+where, in the standard Wilson hopping normalization,
+\[
+  h=2N_f(2\kappa)^{N_\tau}.
+\]
+The ellipsis denotes longer closed fermion paths, multiple windings, spatial
+hops, and higher powers of \(\kappa\).  The displayed term has nonzero
+\(N\)-ality and is the finite-regulator origin of explicit center breaking
+by dynamical fundamental quarks.
+\end{proposition}
+
+\begin{proof}
+Write the Wilson Dirac operator as \(D=1-H\), where \(H\) is the hopping
+matrix.  At finite lattice volume,
+\[
+  \log\det D
+  =
+  \operatorname{Tr}\log(1-H)
+  =
+  -\sum_{n\ge1}\frac1n\operatorname{Tr}H^n
+\]
+as a formal hopping expansion.  Each trace is a sum over closed lattice
+paths.  A path that winds once forward around the Euclidean time circle at
+fixed \(\mathbf x\) has \(N_\tau\) forward temporal hops and gauge factor
+\(\operatorname{tr}_{\square}P_{\mathbf x}\).  The spin projectors along a
+straight temporal Wilson loop leave two spin states, giving the factor \(2\);
+the \(N_f\) degenerate flavors multiply the result by \(N_f\).  The
+antiperiodic fermion boundary condition supplies an additional minus sign
+for a path with odd thermal winding.  This sign cancels the minus sign in
+the logarithmic expansion, so the leading forward-winding contribution to
+\(\log\det D\) is
+\[
+  2N_f(2\kappa)^{N_\tau}e^{\beta\mu_q}
+  \chi_{\square}(P_{\mathbf x}).
+\]
+Here \(\beta=aN_\tau\), so the \(N_\tau\) factors of \(e^{a\mu_q}\) combine
+to \(e^{\beta\mu_q}\).  The backward winding gives the conjugate term with
+\(e^{-\beta\mu_q}\) and \(\chi_{\overline\square}\).  Since
+\(e^{-S_{\rm eff}}\) contains \(\det D=\exp(\log\det D)\), the same positive
+term in \(\log\det D\) appears with a minus sign in \(S_{\rm eff}\), as
+displayed.
+
+Under \(P_{\mathbf x}\mapsto zP_{\mathbf x}\), the first term is multiplied
+by \(z\) and the second by \(z^{-1}\).  Hence the heavy-quark determinant is
+a center-breaking source unless the coefficient \(h\) is set to zero.
+\end{proof}
+
 \section{Controlled High-Temperature Holonomy Potential}
 \label{sec:qcd-weiss-polyakov-holonomy-potential}
 
@@ -1093,7 +1312,7 @@ For a conformal thermal state in four dimensions, \(\Delta=0\).  In QCD,
 \(\Delta\) measures the breaking of scale invariance by quark masses, by the
 running coupling, and by the thermal state itself.
 
-\begin{proposition}[Thermodynamic derivative identities for QCD observables]
+\begin{proposition}[Thermodynamic identities]
 \label{prop:qcd-thermodynamic-derivative-identities}
 Let \(p(T,\mu_B)\) be the thermodynamic pressure of a QCD phase on an open
 domain in which it is twice continuously differentiable.  Define
@@ -1103,7 +1322,10 @@ domain in which it is twice continuously differentiable.  Define
 \]
 Then
 \[
-  dp=s\,dT+n_B\,d\mu_B,\qquad
+  dp=s\,dT+n_B\,d\mu_B,
+\]
+and
+\[
   d\epsilon=T\,ds+\mu_B\,dn_B,
 \]
 and the interaction measure is

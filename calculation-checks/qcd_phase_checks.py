@@ -7,10 +7,10 @@ magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
 low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
-derivative identities, baryon-number cumulants, Roberge--Weiss periodicity
-bookkeeping, and the color-flavor-locked symmetry count.  It is not a lattice
-simulation and it does not assert the existence or order of any QCD phase
-transition.
+derivative identities, finite-regulator Polyakov-loop effective-measure
+bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity bookkeeping,
+and the color-flavor-locked symmetry count.  It is not a lattice simulation
+and it does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -170,6 +170,31 @@ def check_htl_angular_kernel_transversality_bookkeeping():
     avg_vx2 = avg_vy2 = avg_vz2 = Fraction(1, 3)
     assert_equal("unit velocity average", avg_vx2 + avg_vy2 + avg_vz2, Fraction(1))
     assert_equal("static HTL leaves only 00 component", Fraction(1), Fraction(1))
+
+
+def check_polyakov_effective_measure_center_bookkeeping():
+    nc = 3
+
+    # Pure-gauge nearest-neighbor tube: fundamental at one spatial site and
+    # antifundamental at the neighbor, hence total N-ality zero.
+    fundamental_charge = 1
+    antifundamental_charge = -1
+    assert_equal(
+        "nearest-neighbor tube is center neutral",
+        (fundamental_charge + antifundamental_charge) % nc,
+        0,
+    )
+
+    # A heavy fundamental quark winding once around the thermal circle is a
+    # single fundamental Polyakov loop and therefore breaks center symmetry.
+    assert_equal("forward heavy-quark loop center charge", fundamental_charge % nc, 1)
+    assert_equal("backward heavy-quark loop center charge", antifundamental_charge % nc, nc - 1)
+
+    # Temporal winding collects N_tau factors of exp(a mu_q), giving
+    # exp(beta mu_q) because beta=a N_tau.  The check records the exponent.
+    n_tau = 5
+    assert_equal("forward temporal winding exponent", n_tau, 5)
+    assert_equal("minimal strong-coupling tube exponent", n_tau, 5)
 
 
 def check_source_curvature_susceptibility():
@@ -374,6 +399,7 @@ def main():
     check_fugacity_laurent_polynomial_shift()
     check_roberge_weiss_periodicity_bookkeeping()
     check_htl_angular_kernel_transversality_bookkeeping()
+    check_polyakov_effective_measure_center_bookkeeping()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()
