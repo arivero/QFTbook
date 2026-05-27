@@ -497,6 +497,11 @@ Current checks:
   quaternion \(SU(2)\) group operations, the local compact-link plaquette
   score change, pairwise detailed balance, gauge invariance of the action and
   Wilson loops, and the \(1\times1\) Wilson-loop/plaquette identity.
+- `lattice_gradient_flow_checks.py`: exact finite checks for the Volume XI
+  Wilson-flow section, including negative-gradient monotonicity, adjoint
+  norm invariance, linearized heat-kernel damping, the \(w_0\) scale
+  derivative, and the factor two in the Chern--Weil variation of
+  \(\operatorname{tr}(F\wedge F)\).
 - `heatbath_overrelaxation_checks.py`: exact finite algebra checks for the
   Volume XI heat-bath and overrelaxation section, verifying conditional
   heat-bath detailed balance, \(SU(2)\) staple reduction, overrelaxation

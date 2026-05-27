@@ -23,6 +23,12 @@
   \((t+t^5)/(1+t^6)\).
 - Continuum expansion of plaquette holonomy.
 - Wilson loop operators.
+- Wilson/gradient flow as a finite-dimensional ODE on the compact link
+  manifold, including link-gradient definition, global existence,
+  gauge covariance, action monotonicity, continuum linearized heat-kernel
+  smoothing, flowed energy-density scale coordinates \(t_0,w_0\), and the
+  distinction between geometric/index topological charge definitions and
+  numerical flow plateaux.
 - Reflection positivity and transfer-matrix statement.
 - Fermion and chiral-gauge-theory regulator boundary.
 
@@ -36,6 +42,11 @@
 | \(\beta\) | lattice gauge coupling parameter |
 | \(W_R(C)\) | Wilson loop in representation \(R\) |
 | \(T=e^{-aH}\) | transfer matrix |
+| \(V_t(\ell)\) | flowed link at flow time \(t\) |
+| \(\nabla_\ell S\) | left-link gradient of the lattice action |
+| \(\overline E(t)\) | volume-averaged flowed energy density |
+| \(t_0,w_0\) | finite-cutoff flowed scale coordinates, when uniquely defined |
+| \(Q_{\rm geom}(U)\) | geometric lattice topological charge under an admissibility datum |
 | \(U_e,U_p\) | \(\mathbb Z_2\) link variable and plaquette product |
 | \(t=\tanh\beta\) | strong-coupling expansion coordinate |
 | \(A\subset P\) | plaquette subset / \(\mathbb Z_2\)-two-chain |
@@ -61,7 +72,18 @@
 6. The one-cube calculation gives exactly
    \(\langle W(C)\rangle=(t+t^5)/(1+t^6)\), showing the minimal surface and
    complementary surface contributions before any thermodynamic limit.
-7. Chiral gauge theories require additional determinant-phase and anomaly
+7. Wilson flow at finite lattice spacing is the negative-gradient ODE on
+   \(G^E\); compactness gives global existence, gauge invariance gives
+   covariance, and the chain rule gives
+   \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
+8. Positive physical flow time damps ultraviolet Fourier modes in the
+   linearized continuum equation, but flowed scale coordinates and topological
+   charge plateaux acquire continuum meaning only after a scaling trajectory
+   and a regulator-level topological-charge definition are specified.
+9. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
+   bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
+   differential.
+10. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -80,7 +102,19 @@
   enumerates small cubical plaquette complexes over \(\mathbb F_2\),
   verifying the one-cube Wilson-loop polynomial, the \(2\times1\) rectangular
   surface counts, and the finite entropy-bound arithmetic.
+- `calculation-checks/lattice_gradient_flow_checks.py` verifies the
+  negative-gradient monotonicity identity, adjoint norm covariance,
+  linearized heat-kernel damping, the \(w_0\) derivative convention, and the
+  Chern--Weil variation factor used in the Wilson-flow section.
 
 ## Figures
 
 - Plaquette orientation diagram may be added later.
+
+## Audit Notes
+
+- 2026-05-27 issue #631 pass: added the Wilson/gradient-flow section to close
+  the most visible missing lattice-depth topic flagged by the review.  The
+  section treats flow first as a finite-regulator ODE, not as a continuum
+  slogan, and separates flowed smoothing, scale setting, and topological
+  charge definitions.

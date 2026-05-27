@@ -305,6 +305,214 @@ line charges.  Their strong-coupling character expansion gives the area-law
 mechanism described in Chapter~\ref{ch:global-confinement-screening-oblique}.
 Their continuum limit requires line renormalization and an operator scheme.
 
+\section{Wilson Flow, Smoothing, and Topological Charge}
+\label{sec:lattice-wilson-flow-smoothing-topology}
+
+Gradient flow is a finite-regulator operation before it is a continuum
+renormalization tool.  Let
+\[
+  \mathcal U_\Lambda=G^E
+\]
+be the compact manifold of link variables on the finite lattice, and equip
+each copy of \(G\) with the bi-invariant Riemannian metric obtained from an
+invariant positive inner product \((X,Y)_{\mathfrak g}\) on
+\(\mathfrak g=\operatorname{Lie}(G)\).  For a smooth gauge-invariant lattice
+action \(S:\mathcal U_\Lambda\to\mathbb R\), define the left-link gradient
+\(\nabla_\ell S(U)\in\mathfrak g\) by
+\begin{equation}
+  (X,\nabla_\ell S(U))_{\mathfrak g}
+  =
+  \left.\frac{\dd}{\dd s}
+  S(U_{\ell'}^{(s)})\right|_{s=0},
+  \qquad
+  U_\ell^{(s)}=e^{sX}U_\ell,\quad U_{\ell'}^{(s)}=U_{\ell'}\ {\rm for}\ \ell'\ne\ell .
+  \label{eq:lattice-link-gradient-definition}
+\end{equation}
+The Wilson-flow trajectory \(V_t\in\mathcal U_\Lambda\) starting at
+\(U\in\mathcal U_\Lambda\) is the solution of
+\begin{equation}
+  \frac{\dd V_t(\ell)}{\dd t}\,V_t(\ell)^{-1}
+  =
+  -\nabla_\ell S(V_t),
+  \qquad
+  V_0(\ell)=U_\ell .
+  \label{eq:lattice-wilson-flow-ode}
+\end{equation}
+The parameter \(t\) has engineering dimension \(a^2\) if one keeps physical
+units.  The normalized flow time \(\tau=t/a^2\) is often used in finite-lattice
+computations, but the continuum smoothing interpretation concerns fixed
+physical \(t>0\) as \(a\to0\).
+
+\begin{proposition}[Finite-lattice Wilson flow]
+\label{prop:finite-lattice-wilson-flow}
+For every finite lattice and every smooth action \(S\), the flow
+\eqref{eq:lattice-wilson-flow-ode} exists for all \(t\ge0\).  It is gauge
+covariant, and the action decreases according to
+\begin{equation}
+  \frac{\dd}{\dd t}S(V_t)
+  =
+  -\sum_{\ell\in E}\|\nabla_\ell S(V_t)\|_{\mathfrak g}^2
+  \le0 .
+  \label{eq:lattice-wilson-flow-monotonicity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The right-hand side of \eqref{eq:lattice-wilson-flow-ode} is a smooth vector
+field on the compact manifold \(G^E\).  Ordinary differential-equation
+existence gives a local solution, and compactness prevents finite-time escape,
+so the solution is global.  Gauge covariance follows because \(S\) and the
+metric are invariant under the lattice gauge group: differentiating
+\(S(g\cdot U)=S(U)\) along a left variation of one link shows that the gradient
+is transported by the same endpoint conjugations as the link tangent vector.
+Finally, by the chain rule and
+\eqref{eq:lattice-link-gradient-definition},
+\[
+  \frac{\dd}{\dd t}S(V_t)
+  =
+  \sum_{\ell\in E}
+  \left(
+  \frac{\dd V_t(\ell)}{\dd t}V_t(\ell)^{-1},
+  \nabla_\ell S(V_t)
+  \right)_{\mathfrak g}
+  =
+  -\sum_{\ell\in E}\|\nabla_\ell S(V_t)\|_{\mathfrak g}^2 .
+\]
+\end{proof}
+
+The continuum reason that positive flow time is useful is already visible in
+the linearized equation.  Let \(B_\mu(t,x)\) be a smooth continuum connection
+and write its curvature as \(G_{\mu\nu}(t)\).  The Yang--Mills gradient flow is
+\begin{equation}
+  \partial_t B_\mu=D_\nu G_{\nu\mu},
+  \qquad
+  B_\mu(0,x)=A_\mu(x),
+  \label{eq:continuum-gradient-flow}
+\end{equation}
+in the anti-Hermitian connection convention used in the lattice expansion.
+Linearizing about \(A_\mu=0\) gives
+\[
+  \partial_t B_\mu
+  =
+  \partial^2B_\mu-\partial_\mu\partial_\nu B_\nu .
+\]
+In the transverse gauge \(\partial_\mu B_\mu=0\), a Fourier mode of momentum
+\(k\) is multiplied by \(e^{-tk^2}\).  Thus positive flow time damps momenta
+\(k^2\gg t^{-1}\), and the heat-kernel radius is of order \(\sqrt{8t}\) in
+four Euclidean dimensions.
+
+\begin{definition}[Flowed energy density and scale coordinates]
+\label{def:lattice-flowed-energy-scale}
+Let \(G_{\mu\nu}(t,x)\) be a chosen gauge-covariant lattice curvature
+constructed from the flowed links \(V_t\), for example the clover curvature.
+The flowed energy density is represented by
+\[
+  E(t,x)=-\frac12\operatorname{tr}\bigl(G_{\mu\nu}(t,x)G_{\mu\nu}(t,x)\bigr),
+\]
+for anti-Hermitian curvature.  Its volume average is
+\[
+  \overline E(t)=\frac{a^4}{V_\Lambda}\sum_x E(t,x),
+  \qquad
+  V_\Lambda=a^4\#\Lambda^0 .
+\]
+Given a positive reference number \(c\), the finite-cutoff scale coordinates
+\(t_0\) and \(w_0\), if they exist uniquely, are defined by
+\[
+  t_0^2\,\langle\overline E(t_0)\rangle=c,
+  \qquad
+  \left.
+  t\frac{\dd}{\dd t}\bigl(t^2\langle\overline E(t)\rangle\bigr)
+  \right|_{t=w_0^2}=c .
+\]
+Existence, uniqueness, and a continuum limit of these coordinates are
+properties of a scaling trajectory; they are not consequences of the
+finite-lattice ODE alone.
+\end{definition}
+
+The same distinction is essential for topological charge.  A generic finite
+lattice gauge field is a collection of group elements, not a smooth bundle
+connection with a canonical integer \(Q\).  A topological sector on the lattice
+requires an additional construction, such as an admissibility condition plus a
+geometric interpolation, or a chiral lattice Dirac operator whose index is
+well-defined.
+
+\begin{definition}[Admissible geometric topological charge]
+\label{def:admissible-geometric-topological-charge}
+Let \(G=SU(N)\).  On a periodic lattice in four dimensions, an admissibility
+condition is the bound
+\[
+  \|1-U_p\|<\epsilon
+  \qquad{\rm for\ every\ plaquette}\ p
+\]
+with \(\epsilon\) small enough that plaquette holonomies stay in a coordinate
+neighborhood of the identity.  Together with a specified interpolation of the
+link data to transition functions on the continuum torus, this determines a
+principal \(SU(N)\)-bundle \(P_U\to T^4\).  The geometric topological charge is
+\[
+  Q_{\rm geom}(U)
+  =
+  \frac{1}{8\pi^2}\int_{T^4}\operatorname{tr}(F_{\widetilde A}\wedge
+  F_{\widetilde A})
+  \in\mathbb Z,
+\]
+where \(\widetilde A\) is any smooth connection on \(P_U\).  Independence of
+\(\widetilde A\) is the Chern--Weil theorem; independence of the interpolation
+requires the stated admissibility construction and is part of the regulator
+datum.
+\end{definition}
+
+\begin{proposition}[Continuum flow preserves Chern--Weil charge]
+\label{prop:continuum-flow-preserves-cw-charge}
+Let \(B(t)\) be a smooth one-parameter family of connections on a fixed
+principal \(SU(N)\)-bundle over a closed oriented four-manifold \(M\), with
+curvature \(G(t)\).  Then
+\[
+  Q(t)=\frac{1}{8\pi^2}\int_M\operatorname{tr}(G(t)\wedge G(t))
+\]
+is independent of \(t\).  In particular, smooth Yang--Mills gradient flow
+cannot change the bundle topological charge unless the flow leaves the smooth
+fixed-bundle setting.
+\end{proposition}
+
+\begin{proof}
+Write \(\dot B=\partial_tB\).  The curvature variation is
+\(\dot G=D_B\dot B\).  Therefore
+\[
+  \frac{\dd}{\dd t}\operatorname{tr}(G\wedge G)
+  =
+  2\operatorname{tr}(D_B\dot B\wedge G).
+\]
+Using invariance of the trace and the Bianchi identity \(D_BG=0\),
+\[
+  \operatorname{tr}(D_B\dot B\wedge G)
+  =
+  \dd\,\operatorname{tr}(\dot B\wedge G).
+\]
+Thus
+\[
+  \frac{\dd Q}{\dd t}
+  =
+  \frac{1}{4\pi^2}\int_M
+  \dd\,\operatorname{tr}(\dot B\wedge G)
+  =
+  0
+\]
+because \(M\) is closed.
+\end{proof}
+
+\begin{controlledapproximation}[Using flow in continuum extrapolations]
+\label{ca:lattice-gradient-flow-continuum-use}
+A flowed observable at positive physical flow time is a composite observable
+with its own regulator definition.  Statements such as ``the flow removes
+ultraviolet noise'' mean the following precise finite-cutoff procedure:
+first solve \eqref{eq:lattice-wilson-flow-ode}, then construct a
+gauge-invariant observable from \(V_t\), and only then study its infinite-volume
+and continuum limits.  Integer topological charge plateaux observed after
+flow are numerical evidence for stability within an admissible sector; without
+an admissibility or index-theoretic definition they are not, by themselves, a
+definition of a continuum theta sector.
+\end{controlledapproximation}
+
 \section{Reflection Positivity and Transfer Matrix}
 
 For the Wilson plaquette action, reflection positivity follows by assigning
