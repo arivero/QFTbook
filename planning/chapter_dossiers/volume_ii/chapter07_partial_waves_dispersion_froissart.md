@@ -80,6 +80,14 @@ hypotheses:
   boundary distribution.
 - \(\varphi_{R,\Delta}\): translated energy packet centered at \(R\) and of
   width \(\Delta\), used to express distributional high-energy growth.
+- \(T_{\rm cut}\): tempered discontinuity distribution on a fixed-\(t\) cut
+  after pole terms have been separated.
+- \(z_0\): off-real subtraction point used in the subtracted Cauchy kernel.
+- \(q\): number of subtractions in the Cauchy transform of a tempered cut
+  distribution; in the local estimate it is chosen larger than the
+  polynomial-weight order of \(T_{\rm cut}\).
+- \(K_q(\sigma;z,z_0)\): subtracted Cauchy kernel
+  \((z-z_0)^q/[(\sigma-z)(\sigma-z_0)^q]\).
 - \(\lambda=(D-3)/2\): Gegenbauer index in \(D\) spacetime dimensions.
 - \(C_\ell^\lambda(x)\): Gegenbauer polynomial replacing \(P_\ell(x)\) for
   \(D>4\).
@@ -161,6 +169,30 @@ hypotheses:
     \(f(n)\ge e^{n^2}\).  This proves that the Jin--Martin pointwise upgrade
     needs genuine analytic machinery and cannot be replaced by an appeal to
     Wightman temperedness.
+10c. The subtracted Cauchy transform of a tempered cut distribution is
+    pointwise polynomially bounded away from the cut.  If
+    \(T\in\mathcal S'\) has order data \((r_T,N_T)\), \(q>N_T\), and
+    \(K_q(\sigma;z,z_0)=(z-z_0)^q/[(\sigma-z)(\sigma-z_0)^q]\), then
+    \[
+      |\langle T,K_q(\cdot;z,z_0)\rangle|
+      \le C(1+|z|)^q|\operatorname{Im}z|^{-r_T-1}.
+    \]
+    Thus the elementary complex-analysis step in fixed-\(t\) polynomial
+    boundedness is now proven: finite-subtraction Cauchy representation plus
+    tempered discontinuities implies pointwise polynomial growth on fixed
+    contours.  The remaining Jin--Martin work is a proof obligation in the
+    monograph: construct the fixed-\(t\) first-sheet domain and
+    finite-subtraction representation from locality, spectral support, LSZ,
+    and Jost--Lehmann--Dyson/Bros--Epstein--Glaser machinery.
+10d. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
+    tube analyticity of four-point Wightman functions; local commutativity at
+    Jost configurations plus edge-of-the-wedge enlargement; the
+    Jost--Lehmann--Dyson representation for the retarded commutator matrix
+    element; the Bros--Epstein--Glaser enlargement to the Lehmann--Martin
+    domain; and the LSZ limiting argument transferring the domain and
+    tempered-discontinuity bounds to the on-shell amplitude after pole
+    separation.  These are to be proved in the monograph, not left as
+    permanent citations.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
       \operatorname{Im}\mathcal A(s,0)\ge
@@ -335,3 +367,10 @@ hypotheses:
   boundedness of any chosen representative.  This pins down the logical gap
   that the Jin--Martin/Jost--Lehmann--Dyson/Bros--Epstein--Glaser analytic
   machinery must close.
+- 2026-05-27 issue #495 pass: added the self-contained subtracted-Cauchy
+  estimate for tempered cut distributions.  This proves the non-QFT-specific
+  analytic bridge from finite-subtraction Cauchy representation and tempered
+  discontinuities to pointwise cut-plane polynomial growth.  The dossier now
+  marks the Jost--Lehmann--Dyson/Bros--Epstein--Glaser/Jin--Martin domain
+  construction as a proof obligation for this chapter rather than as a
+  permanent quoted boundary.

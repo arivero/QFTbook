@@ -1511,6 +1511,159 @@ handled by their displayed Cauchy residues in the dispersion formula rather
 than hidden inside the cut distribution.
 \end{proof}
 
+\begin{proposition}[Subtracted Cauchy transform of a tempered cut]
+\label{prop:subtracted-cauchy-transform-tempered-cut}
+Let \(T\in\mathcal S'(\mathbb R_\sigma)\), and choose
+\(C_T,r_T,N_T\) such that
+\[
+  |\langle T,\psi\rangle|
+  \le
+  C_T
+  \max_{0\le j\le r_T}
+  \sup_{\sigma\in\mathbb R}
+  \langle \sigma\rangle^{N_T}|\partial_\sigma^j\psi(\sigma)|
+  \label{eq:tempered-cut-order-data}
+\]
+for all \(\psi\in\mathcal S(\mathbb R)\).  Fix
+\(z_0\in\mathbb C\setminus\mathbb R\) and an integer \(q>N_T\).  For
+\(z\in\mathbb C\setminus\mathbb R\), set
+\[
+  K_q(\sigma;z,z_0)
+  =
+  \frac{(z-z_0)^q}{(\sigma-z)(\sigma-z_0)^q},
+  \qquad
+  F_q(z)=\langle T,K_q(\cdot;z,z_0)\rangle .
+  \label{eq:subtracted-cauchy-kernel-tempered-cut}
+\]
+Then \(F_q\) is holomorphic in the upper and lower half-planes, and for
+\(y=|\operatorname{Im}z|>0\),
+\begin{equation}
+  |F_q(z)|
+  \le
+  C_{T,q,z_0}\,
+  (1+|z|)^q\,y^{-r_T-1}.
+  \label{eq:subtracted-cauchy-tempered-pointwise-bound}
+\end{equation}
+Consequently, if a fixed-\(t\) amplitude with pole terms removed admits a
+\(q\)-subtracted Cauchy representation whose right- and left-cut
+discontinuities are tempered distributions of finite orders, then the
+amplitude is pointwise polynomially bounded on every fixed contour staying a
+positive distance from the cuts, up to the subtraction polynomial of degree
+at most \(q-1\).
+\end{proposition}
+
+\begin{proof}
+For real \(\sigma\), the denominator \(\sigma-z\) never vanishes.  Since
+\(q>N_T\), the function \(K_q(\cdot;z,z_0)\) is a Schwartz function of
+\(\sigma\): at large \(|\sigma|\) it decays as \(|\sigma|^{-q-1}\), and every
+\(\sigma\)-derivative decays at least as fast.  Thus \(F_q(z)\) is
+well-defined.  Differentiating \(K_q\) with respect to \(z\) again gives a
+Schwartz function of \(\sigma\), locally uniformly for \(z\) in either open
+half-plane, so differentiation may be passed through the continuous
+functional \(T\).  Hence \(F_q\) is holomorphic separately in the upper and
+lower half-planes.
+
+It remains to prove the displayed bound.  By Leibniz' rule,
+\(\partial_\sigma^jK_q\) is a finite sum of terms
+\[
+  (z-z_0)^q
+  \frac{c_{a,b}}
+  {(\sigma-z)^{a+1}(\sigma-z_0)^{q+b}},
+  \qquad a+b=j,\qquad c_{a,b}\in\mathbb Z .
+  \label{eq:subtracted-cauchy-kernel-derivative-term}
+\]
+Because \(z_0\notin\mathbb R\), and because \(q>N_T\),
+\[
+  \sup_{\sigma\in\mathbb R}
+  \langle\sigma\rangle^{N_T}|\sigma-z_0|^{-q-b}
+  \le C_{q,z_0,N_T}.
+  \label{eq:z0-subtraction-decay-bound}
+\]
+Also \(|\sigma-z|^{-a-1}\le y^{-a-1}\le y^{-r_T-1}\) for
+\(0\le a\le j\le r_T\).  Therefore
+\[
+  \max_{0\le j\le r_T}
+  \sup_{\sigma\in\mathbb R}
+  \langle\sigma\rangle^{N_T}
+  |\partial_\sigma^jK_q(\sigma;z,z_0)|
+  \le
+  C_{q,z_0,N_T,r_T}\,|z-z_0|^q\,y^{-r_T-1}.
+  \label{eq:subtracted-cauchy-kernel-seminorm-bound}
+\]
+Combining this with \eqref{eq:tempered-cut-order-data} and
+\(|z-z_0|\le C_{z_0}(1+|z|)\) gives
+\eqref{eq:subtracted-cauchy-tempered-pointwise-bound}.
+
+For the final assertion, apply the same estimate to each cut distribution
+after translating the cut coordinate to \(\sigma\).  A \(q\)-subtracted
+Cauchy representation has the form
+\[
+  \mathcal M_{\rm reg}(z,t)
+  =
+  P_{q-1}(z;t)
+  +
+  \sum_{\text{cuts}}
+  \left\langle
+    T_{\rm cut}(\sigma;t),
+    \frac{(z-z_0)^q}{(\sigma-z)(\sigma-z_0)^q}
+  \right\rangle .
+  \label{eq:fixed-t-subtracted-cauchy-tempered-cuts}
+\]
+On a contour whose distance from all cuts is bounded below by a positive
+number, the factor \(y^{-r_T-1}\) and its translated analogues are bounded by
+contour-dependent constants.  The subtraction polynomial and the finite sum
+of Cauchy-transform bounds are therefore bounded by a power of \(1+|z|\).
+\end{proof}
+
+\begin{corollary}[Where the Jin--Martin input enters]
+\label{cor:jin-martin-input-location}
+In a massive Wightman theory with stable external scalar particles,
+tempered LSZ boundary values and the subtracted-Cauchy Proposition
+\ref{prop:subtracted-cauchy-transform-tempered-cut} prove only the following
+conditional implication:
+\[
+  \begin{gathered}
+  \text{fixed-}t\text{ first-sheet cut plane}
+  +\text{ finite-subtraction Cauchy formula}\\
+  +\text{ tempered discontinuities}
+  \Longrightarrow
+  \text{pointwise cut-plane polynomial growth.}
+  \end{gathered}
+  \label{eq:jin-martin-location-implication}
+\]
+The genuinely QFT-specific theorem is the preceding line's input: locality,
+the spectrum condition, LSZ pole separation, and the
+Jost--Lehmann--Dyson/Bros--Epstein--Glaser domain analysis must supply the
+fixed-\(t\) first-sheet domain and a finite-subtraction representation with
+tempered cut distributions.  This is the Jin--Martin proof layer.  It is a
+proof obligation for the analytic-scattering part of this monograph, not a
+consequence of Wightman temperedness alone.
+\end{corollary}
+
+\begin{proof}
+The implication \eqref{eq:jin-martin-location-implication} is exactly the
+last statement of Proposition~\ref{prop:subtracted-cauchy-transform-tempered-cut}.
+The remaining sentence identifies the hypotheses not used in the proof of
+that proposition.  The construction of the first-sheet fixed-\(t\) domain is
+an analytic-continuation theorem for Wightman functions and LSZ limits, not a
+consequence of the topological definition of \(\mathcal S'\).  Similarly,
+the finite-subtraction formula is a global Cauchy statement in that domain.
+Both require the locality and spectral machinery named in the corollary.
+\end{proof}
+
+The domain theorem to be proved is therefore not the elementary estimate
+above, but the construction of its hypotheses from the Wightman data.  Its
+logical pieces are: tube analyticity of the four-point Wightman functions from
+the spectrum condition; local commutativity at Jost configurations and the
+edge-of-the-wedge enlargement of the primitive tubes; the
+Jost--Lehmann--Dyson representation for the relevant retarded commutator
+matrix element; the Bros--Epstein--Glaser enlargement that gives the
+fixed-\(t\) Lehmann--Martin domain; and the LSZ limiting argument that carries
+the domain and tempered-discontinuity bounds to the on-shell amplitude after
+stable-particle pole terms have been separated.  Each of these statements is
+QFT-specific and must be proved, with the analytic function theory used as a
+tool rather than as a substitute for the field-theoretic construction.
+
 \begin{proposition}[Temperedness alone does not give pointwise polynomial bounds]
 \label{prop:temperedness-does-not-imply-pointwise-polynomial-bound}
 There is a smooth nonnegative function \(f\in L^1(\mathbb R)\), hence a
@@ -1598,7 +1751,7 @@ scattering the hypothesis is formulated directly for the invariant amplitude:
 locality and causal propagation are reflected in analyticity and in the
 absence of exponential growth in complex energy directions.
 
-\begin{remark}[Jin--Martin fixed-\(t\) boundedness]
+\begin{remark}[Jin--Martin fixed-\(t\) theorem]
 There is a theorem-level fixed-\(t\) result in the Wightman framework.  The
 Lehmann ellipse analysis, its Bros--Epstein--Glaser extension, and the
 Jin--Martin theorem imply the following kind of statement for massive
@@ -1889,7 +2042,7 @@ finite subtraction number.  It is not a proof, by itself, that the axioms of
 massive local QFT imply a two-subtracted representation without first knowing
 that a finite-subtracted representation exists.
 
-\begin{remark}[\L{}ukaszuk--Martin/Yndur\'ain two-subtraction theorem]
+\begin{remark}[Two-subtraction theorem]
 There is a stronger theorem-level input in the axiomatic
 analyticity-unitarity program: for massive two-particle scattering satisfying
 the Wightman hypotheses and the usual mass-gap assumptions used in the
