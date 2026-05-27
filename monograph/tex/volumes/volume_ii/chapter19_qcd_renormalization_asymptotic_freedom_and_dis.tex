@@ -2974,6 +2974,157 @@ estimate in powers of \(v_{\rm rel}\), \(1/m_Q\), and
 \(\Lambda_{\rm QCD}/(m_Qv_{\rm rel})\) when that ratio is used.
 \end{controlledapproximation}
 
+\section{Heavy-Quark Mass Coordinates and Static Energies}
+\label{sec:qcd-heavy-mass-static-energy}
+
+The mass \(m_Q\) appearing in HQET, NRQCD, and pNRQCD is a coordinate in a
+regulated Lagrangian and in its matched effective descriptions.  In a confining
+four-dimensional QCD theory an isolated colored quark is not an asymptotic
+particle, so a quark pole mass is not a gauge-invariant spectral observable.
+Perturbation theory in a fixed gauge nevertheless defines formal mass
+coordinates, including an on-shell coordinate order by order.  Such
+coordinates are useful only after their infrared sensitivity and their
+relation to gauge-invariant quantities have been stated.
+
+The gauge-invariant static quark-antiquark energy is extracted from Wilson
+loops.  With a specified line-renormalization prescription, define
+\begin{equation}
+  E_{\rm stat}(r;\mu)
+  =
+  -\lim_{T\to\infty}\frac1T
+  \log \langle W_{\square}(r,T)\rangle_{\rm ren,\mu},
+  \label{eq:qcd-static-energy-renormalized}
+\end{equation}
+where \(W_{\square}(r,T)\) is the rectangular fundamental Wilson loop of
+spatial size \(r\) and time extent \(T\).  The subscript records the
+ultraviolet and line-renormalization convention.  Additive constants in
+\(E_{\rm stat}\) are not absolute observables; energy differences and matched
+hadron masses are.
+
+At distances \(r\) in a weak-coupling matching range, the pNRQCD singlet
+potential is a coordinate in the decomposition
+\begin{equation}
+  E_{\rm stat}(r;\mu)
+  =
+  2m_{\rm sd}(\mu_f)+V_{\rm sd}(r;\mu,\mu_f)+\Delta_{\rm us}(r;\mu,\mu_f),
+  \label{eq:qcd-static-energy-sd-decomposition}
+\end{equation}
+where \(m_{\rm sd}\) is a short-distance heavy-quark mass coordinate,
+\(V_{\rm sd}\) is the corresponding singlet potential coordinate, and
+\(\Delta_{\rm us}\) denotes lower-energy contributions retained in pNRQCD.
+The auxiliary scale \(\mu_f\) separates contributions assigned to the mass
+coordinate from contributions assigned to the potential coordinate.
+
+\begin{proposition}[Constant mass-coordinate transformations]
+\label{prop:qcd-heavy-mass-potential-shift}
+Let \(\delta m\) be a finite scheme change independent of \(r\).  The
+coordinate transformation
+\begin{equation}
+  m_{\rm sd}'=m_{\rm sd}+\delta m,
+  \qquad
+  V_{\rm sd}'(r)=V_{\rm sd}(r)-2\delta m
+  \label{eq:qcd-heavy-mass-potential-shift}
+\end{equation}
+leaves the static energy \eqref{eq:qcd-static-energy-sd-decomposition}
+unchanged when \(\Delta_{\rm us}\) is held fixed.  If a pNRQCD Hamiltonian is
+shifted by \(V_{\rm sd}\mapsto V_{\rm sd}-2\delta m\), every singlet
+eigenvalue \(E_n\) is shifted by \(-2\delta m\), and
+\(2m_{\rm sd}+E_n\) is unchanged.
+\end{proposition}
+
+\begin{proof}
+Substitution into \eqref{eq:qcd-static-energy-sd-decomposition} gives
+\[
+  2(m_{\rm sd}+\delta m)+(V_{\rm sd}-2\delta m)+\Delta_{\rm us}
+  =
+  2m_{\rm sd}+V_{\rm sd}+\Delta_{\rm us}.
+\]
+For a Hamiltonian \(H_{\rm sd}=T+V_{\rm sd}\), the transformed Hamiltonian is
+\(H_{\rm sd}'=H_{\rm sd}-2\delta m\).  If
+\(H_{\rm sd}\psi_n=E_n\psi_n\), then
+\(H_{\rm sd}'\psi_n=(E_n-2\delta m)\psi_n\).  Therefore
+\[
+  2(m_{\rm sd}+\delta m)+(E_n-2\delta m)=2m_{\rm sd}+E_n .
+\]
+The statement is finite-dimensional spectral algebra applied to the
+regularized Hamiltonian, and then to any limit in which the relevant
+eigenvalue exists.
+\end{proof}
+
+One useful short-distance coordinate is the potential-subtracted mass.  Start
+from a formal perturbative pole coordinate \(m_{\rm pole}\) and define
+\begin{equation}
+  m_{\rm PS}(\mu_f)
+  =
+  m_{\rm pole}-\delta m_{\rm PS}(\mu_f),
+  \qquad
+  \delta m_{\rm PS}(\mu_f)
+  =
+  -\frac12
+  \int_{|\mathbf q|<\mu_f}
+  \frac{\dd^3\mathbf q}{(2\pi)^3}\,
+  \widetilde V(\mathbf q),
+  \label{eq:qcd-ps-mass-definition}
+\end{equation}
+where \(\widetilde V(\mathbf q)\) is the perturbative momentum-space singlet
+potential in the same convention.  At tree level
+\[
+  \widetilde V^{(0)}(\mathbf q)=-\frac{g^2C_F}{|\mathbf q|^2}.
+\]
+Consequently
+\begin{equation}
+  \delta m_{\rm PS}^{(0)}(\mu_f)
+  =
+  \frac{g^2C_F}{4\pi^2}\,\mu_f .
+  \label{eq:qcd-ps-leading-subtraction}
+\end{equation}
+In the common half-trace convention this is the same expression because
+\(g_{\rm ht}^2C_F^{\rm ht}=g^2C_F\).
+
+\begin{proof}
+Using spherical coordinates in momentum space,
+\[
+  \int_{|\mathbf q|<\mu_f}
+  \frac{\dd^3\mathbf q}{(2\pi)^3}\,\frac1{|\mathbf q|^2}
+  =
+  \frac{4\pi}{(2\pi)^3}\int_0^{\mu_f}\dd q
+  =
+  \frac{\mu_f}{2\pi^2}.
+\]
+Multiplying by \(g^2C_F/2\), as dictated by
+\eqref{eq:qcd-ps-mass-definition} and
+\(\widetilde V^{(0)}=-g^2C_F/|\mathbf q|^2\), gives
+\eqref{eq:qcd-ps-leading-subtraction}.
+\end{proof}
+
+\begin{remark}[Renormalon language in the heavy-quark sector]
+\label{rem:qcd-heavy-renormalon-status}
+The leading infrared sensitivity of the formal perturbative pole coordinate
+and the additive constant in the perturbative static potential are tied to the
+same long-distance momentum region.  In perturbative large-order language this
+is described as a cancellation of the leading static-energy renormalon between
+\(2m_{\rm pole}\) and \(V_{\rm pole}(r)\).  The mathematically precise
+statement used here is the finite coordinate transformation
+\eqref{eq:qcd-heavy-mass-potential-shift} and the definition of
+short-distance coordinates such as \eqref{eq:qcd-ps-mass-definition}.  A claim
+about a Borel singularity, its residue, or its cancellation is a claim about a
+specified perturbative expansion and summation prescription, not a
+nonperturbative definition of the quark mass.
+\end{remark}
+
+\begin{controlledapproximation}[Mass schemes in quarkonium predictions]
+\label{ca:qcd-heavy-mass-scheme-control}
+A quarkonium prediction based on pNRQCD must state the mass coordinate, the
+potential coordinate, the subtraction scale \(\mu_f\) when one is used, and the
+class of matrix elements or energy levels being approximated.  Replacing
+\((m,V)\) by a short-distance pair \((m',V')\) is exact at the level of the
+matched Hamiltonian if \eqref{eq:qcd-heavy-mass-potential-shift} is imposed.
+Truncating perturbative series introduces residual \(\mu_f\)- and
+scheme-dependence; the size of that dependence is an error diagnostic only
+after the truncation order, velocity counting, and ultrasoft treatment have
+been fixed.
+\end{controlledapproximation}
+
 \section{Color and Physical External States}
 
 The gauge-fixed quark and gluon fields are useful local variables in

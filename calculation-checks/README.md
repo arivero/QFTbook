@@ -75,6 +75,11 @@ Current checks:
   quarkonium bilocals, the Schrödinger kinetic-sign convention, the singlet
   color factor, the trace-delta to half-trace Coulomb-product conversion, and
   the hard/soft/ultrasoft scale hierarchy.
+- `qcd_heavy_mass_static_energy_checks.py`: finite checks for the Volume II
+  heavy-mass/static-energy section, including invariance under constant
+  mass/potential scheme shifts, quarkonium eigenvalue shifts, the leading
+  potential-subtracted mass coefficient, trace-convention invariance of
+  \(g^2C_F\), and the attractive sign of the singlet Coulomb coefficient.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,

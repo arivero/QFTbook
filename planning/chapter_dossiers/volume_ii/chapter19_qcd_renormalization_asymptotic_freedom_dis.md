@@ -146,6 +146,12 @@ The chapter must define and derive:
   with equal-time Wilson transporters, the pNRQCD singlet action, the
   tree-level attractive singlet Coulomb potential in the trace-delta
   convention, and the hard/soft/ultrasoft scale-separation hypothesis;
+- heavy-quark mass coordinates and static energies, including the
+  gauge-invariant Wilson-loop definition of the renormalized static energy,
+  finite mass/potential scheme transformations, potential-subtracted mass
+  subtraction at leading order, and a careful status statement for
+  heavy-quark renormalon language as perturbative scheme information rather
+  than a nonperturbative mass definition;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -290,6 +296,16 @@ The chapter must define and derive:
      \(V_S^{(0)}(r)=-g^2C_F/(4\pi r)\), with
      \(g_{\rm ht}^2=2g^2\) and \(C_F^{\rm ht}=C_F/2\) leaving the product
      invariant.
+15c. Heavy-quark masses in HQET/NRQCD/pNRQCD are scheme coordinates, not
+     physical colored-particle spectral masses in confining QCD.  The
+     gauge-invariant static energy is extracted from a renormalized
+     rectangular Wilson loop.  A finite shift
+     \(m'\!=m+\delta m\), \(V'\!=V-2\delta m\) leaves
+     \(2m+V\) and \(2m+E_n\) invariant.  The leading potential-subtracted
+     subtraction is
+     \(\delta m_{\rm PS}^{(0)}=g^2C_F\mu_f/(4\pi^2)\), and renormalon
+     terminology is confined to specified perturbative expansions and
+     summation prescriptions.
 16. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
@@ -506,3 +522,9 @@ The chapter must define and derive:
   gauge-invariant singlet/octet bilocals, pNRQCD singlet action, tree-level
   singlet color-factor proof, scale-separation status, and
   `calculation-checks/qcd_nrqcd_checks.py`.
+- 2026-05-27 QCD heavy-mass/static-energy pass: added the Wilson-loop static
+  energy as the gauge-invariant anchor for heavy-quark mass coordinates,
+  proved constant mass/potential scheme invariance, derived the leading
+  potential-subtracted mass coefficient, stated the renormalon status
+  carefully, and added
+  `calculation-checks/qcd_heavy_mass_static_energy_checks.py`.
