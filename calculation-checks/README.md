@@ -539,6 +539,14 @@ Current checks:
   layout, and flow from a sampler checkpoint.  If the default Python lacks
   `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
   Python when available.
+- `su3_topological_charge_diagnostics_checks.py`: finite checks for
+  `qft_scripts/su3_topological_charge_diagnostics_hdf5.py`, verifying
+  oriented plaquette conventions, clover-field anti-Hermiticity and
+  antisymmetry, vanishing on the cold configuration, gauge invariance of
+  \(Q_{\rm clover}\) and the clover action density, and the
+  sampler-to-flow-to-topology HDF5 pipeline.  If the default Python lacks
+  `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
+  Python when available.
 - `lattice_gradient_flow_checks.py`: exact finite checks for the Volume XI
   Wilson-flow section, including negative-gradient monotonicity, adjoint
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale

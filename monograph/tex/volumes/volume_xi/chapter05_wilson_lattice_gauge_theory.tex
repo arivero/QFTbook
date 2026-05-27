@@ -1385,6 +1385,92 @@ requires the stated admissibility construction and is part of the regulator
 datum.
 \end{definition}
 
+\begin{definition}[Clover topological-charge diagnostic]
+\label{def:su3-clover-topological-charge-diagnostic}
+For a finite periodic \(SU(3)\) lattice, write
+\[
+  U_{+\mu}(x)=U_\mu(x),
+  \qquad
+  U_{-\mu}(x)=U_\mu(x-\widehat\mu)^{-1}.
+\]
+For signed directions \(\alpha,\beta\), let
+\[
+  P_{\alpha\beta}(x)
+  =
+  U_\alpha(x)\,
+  U_\beta(x+\widehat\alpha)\,
+  U_{-\alpha}(x+\widehat\alpha+\widehat\beta)\,
+  U_{-\beta}(x+\widehat\beta)
+\]
+be the oriented plaquette based at \(x\).  For \(0\le\mu<\nu\le3\), define
+the clover matrix and clover curvature by
+\begin{align}
+  C_{\mu\nu}^{\rm cl}(x)
+  &=
+  P_{\mu\nu}(x)
+  +P_{\nu,-\mu}(x)
+  +P_{-\mu,-\nu}(x)
+  +P_{-\nu,\mu}(x),
+  \label{eq:su3-clover-matrix}\\
+  F_{\mu\nu}^{\rm cl}(x)
+  &=
+  \frac14\bigl[C_{\mu\nu}^{\rm cl}(x)\bigr]_{\mathfrak{su}(3)}.
+  \label{eq:su3-clover-curvature}
+\end{align}
+Set \(F_{\nu\mu}^{\rm cl}=-F_{\mu\nu}^{\rm cl}\).  The clover diagnostic for
+the Chern--Weil density is
+\begin{equation}
+  Q_{\rm clover}(U)
+  =
+  \frac{1}{32\pi^2}
+  \sum_x\sum_{\mu,\nu,\rho,\sigma=0}^3
+  \epsilon_{\mu\nu\rho\sigma}
+  \operatorname{Re}\operatorname{Tr}_3
+  \bigl(F_{\mu\nu}^{\rm cl}(x)F_{\rho\sigma}^{\rm cl}(x)\bigr).
+  \label{eq:su3-clover-topological-charge}
+\end{equation}
+The associated clover action-density diagnostic is
+\[
+  e_{\rm clover}(U)
+  =
+  \frac1{|\Lambda^0|}
+  \sum_x\sum_{\mu<\nu}
+  -\operatorname{Re}\operatorname{Tr}_3
+  \bigl(F_{\mu\nu}^{\rm cl}(x)F_{\mu\nu}^{\rm cl}(x)\bigr).
+\]
+These are gauge-invariant finite-regulator observables.  They are not, by
+themselves, an integer topological charge or a definition of a theta sector.
+\end{definition}
+
+\begin{proposition}[Gauge invariance of the clover diagnostics]
+\label{prop:su3-clover-diagnostic-gauge-invariance}
+Under a lattice gauge transformation
+\(U_\mu(x)\mapsto g(x)U_\mu(x)g(x+\widehat\mu)^{-1}\),
+\[
+  F_{\mu\nu}^{\rm cl}(x)\mapsto
+  g(x)F_{\mu\nu}^{\rm cl}(x)g(x)^{-1}.
+\]
+Consequently \(Q_{\rm clover}(U)\), \(e_{\rm clover}(U)\), and
+\(\max_p\|1-U_p\|\) are gauge invariant.
+\end{proposition}
+
+\begin{proof}
+The directed link \(U_\alpha(y)\) transforms by conjugation with the gauge
+matrices at the initial and terminal vertices of the directed edge.  In the
+oriented plaquette \(P_{\alpha\beta}(x)\), all gauge matrices at intermediate
+vertices cancel, leaving
+\[
+  P_{\alpha\beta}(x)\mapsto
+  g(x)P_{\alpha\beta}(x)g(x)^{-1}.
+\]
+The clover sum therefore transforms by the same conjugation.  The projection
+\([\cdot]_{\mathfrak{su}(3)}\) commutes with unitary conjugation, hence
+\(F_{\mu\nu}^{\rm cl}(x)\) transforms by conjugation at \(x\).  Traces of
+products at the same base point are invariant.  The plaquette-deviation
+norm is invariant because \(1-U_p\) is conjugated by a unitary matrix at the
+base point.
+\end{proof}
+
 \begin{proposition}[Continuum flow preserves Chern--Weil charge]
 \label{prop:continuum-flow-preserves-cw-charge}
 Let \(B(t)\) be a smooth one-parameter family of connections on a fixed
@@ -1464,6 +1550,27 @@ gauge covariance, and runs the sampler-to-flow HDF5 pipeline.  The
 Lie--Euler step is a numerical integrator for the finite ODE; its step-size
 error is separate from the continuum-limit questions in
 Definition~\ref{def:lattice-flowed-energy-scale} and
+Definition~\ref{def:admissible-geometric-topological-charge}.
+
+The companion diagnostic script
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/}\\
+  \texttt{su3\_topological\_charge\_diagnostics\_hdf5.py}
+  \end{gathered}
+\]
+implements Definition~\ref{def:su3-clover-topological-charge-diagnostic}.
+It reads either the \(\texttt{checkpoint/flowed\_links}\) dataset from the
+Wilson-flow script or the raw \(\texttt{checkpoint/links}\) dataset from the
+sampler, reports \(Q_{\rm clover}\), \(e_{\rm clover}\), and
+\(\max_p\|1-U_p\|\), and can write local density arrays to HDF5.  The
+paired calculation check verifies the oriented plaquette convention against
+the plaquette used in the Wilson action, proves numerically that the clover
+field is anti-Hermitian, traceless, and antisymmetric in \(\mu,\nu\), tests
+gauge invariance of the scalar diagnostics, and runs the full
+sampler-to-flow-to-topology HDF5 pipeline.  The output name
+\(Q_{\rm clover}\) is deliberate: it is a finite diagnostic to be compared
+along a scaling trajectory, not a replacement for
 Definition~\ref{def:admissible-geometric-topological-charge}.
 
 \section{Reflection Positivity and Transfer Matrix}

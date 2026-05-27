@@ -55,6 +55,9 @@
   staple formula, anti-Hermitian traceless projection, monotonicity identity
   for the normalized plaquette score, and an HDF5 companion flow script for
   saved finite configurations.
+- Clover curvature and clover topological-charge diagnostics, with oriented
+  plaquette conventions, gauge-invariance proof, admissibility-distance
+  diagnostic, and an HDF5 companion script for raw or flowed configurations.
 - Reflection positivity and transfer-matrix statement.
 - Fermion and chiral-gauge-theory regulator boundary.
 
@@ -73,6 +76,9 @@
 | \(\overline E(t)\) | volume-averaged flowed energy density |
 | \(t_0,w_0\) | finite-cutoff flowed scale coordinates, when uniquely defined |
 | \(Q_{\rm geom}(U)\) | geometric lattice topological charge under an admissibility datum |
+| \(Q_{\rm clover}(U)\) | finite clover diagnostic for the Chern--Weil density |
+| \(F_{\mu\nu}^{\rm cl}(x)\) | anti-Hermitian traceless clover curvature at site \(x\) |
+| \(e_{\rm clover}(U)\) | clover action-density diagnostic |
 | \(Q(U)\) | normalized finite \(SU(3)\) Wilson plaquette score |
 | \(C_\mu(x;U)\) | \(SU(3)\) Wilson-flow staple matrix for a selected link |
 | \(Z_\mu(x;U)\) | left-gradient generator for the normalized \(SU(3)\) plaquette score |
@@ -166,7 +172,12 @@
     left-gradient of the normalized plaquette score \(Q\), and the normalized
     score-flow equation satisfies
     \(\frac{d}{dt}Q(V_t)=\sum_{x,\mu}\|Z_\mu(x;V_t)\|^2\ge0\).
-22. Chiral gauge theories require additional determinant-phase and anomaly
+22. The clover curvature \(F_{\mu\nu}^{\rm cl}\) transforms by conjugation at
+    its base point, so \(Q_{\rm clover}\), \(e_{\rm clover}\), and
+    \(\max_p\|1-U_p\|\) are gauge-invariant finite-regulator diagnostics.
+    They are not integer topological charges without a separate admissible
+    geometric or index-theoretic construction.
+23. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -181,6 +192,9 @@
 - `qft_scripts/su3_wilson_flow_hdf5.py --smoke`: finite \(SU(3)\)
   Wilson-score gradient-flow evolution for hot/cold links or HDF5
   checkpoints, with trajectory output when `h5py` is available.
+- `qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke`: finite
+  \(SU(3)\) clover topological-charge and action-density diagnostic for raw
+  or flowed HDF5 checkpoints.
 
 ## Calculation Checks
 
@@ -200,6 +214,10 @@
   finite \(SU(3)\) Wilson-score gradient by directional derivatives, one-step
   gauge covariance, small-step monotonicity, group preservation, HDF5
   trajectory layout, and sampler-checkpoint input.
+- `calculation-checks/su3_topological_charge_diagnostics_checks.py` verifies
+  oriented plaquette conventions, cold-configuration vanishing, clover-field
+  anti-Hermiticity/tracelessness/antisymmetry, gauge invariance of the
+  diagnostics, and the sampler-to-flow-to-topology HDF5 pipeline.
 - `calculation-checks/gauge_action_improvement_checks.py` verifies the
   plaquette-plus-rectangle tree-level improvement arithmetic: rectangle flux
   moments, \(c_0+8c_1=1\), \(c_0+20c_1=0\), and the normalization convention
@@ -233,6 +251,9 @@
 - 2026-05-27 issue #631 pass: added the explicit finite \(SU(3)\)
   Wilson-score gradient force and a theorem-anchored HDF5 Wilson-flow
   companion script with directional-derivative and gauge-covariance checks.
+- 2026-05-27 issue #631 pass: added the clover topological-charge diagnostic
+  as a finite-regulator observable, explicitly separated from integer
+  geometric/index topological charge, with HDF5 pipeline checks.
 - 2026-05-27 issue #631 pass: added tree-level plaquette-plus-rectangle gauge
   improvement with an explicit rectangle-flux derivation, while flagging that
   loop-level improvement and transfer-matrix positivity are distinct

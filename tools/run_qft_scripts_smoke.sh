@@ -22,6 +22,9 @@ python3 qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke
 echo "[qft-scripts] su3_wilson_flow_hdf5 --smoke"
 python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
 
+echo "[qft-scripts] su3_topological_charge_diagnostics_hdf5 --smoke"
+python3 qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke
+
 echo "[qft-scripts] autocorrelation_resampling --smoke"
 python3 qft_scripts/autocorrelation_resampling.py --smoke
 

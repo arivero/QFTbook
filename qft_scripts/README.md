@@ -20,6 +20,7 @@ python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke
 python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
+python3 qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke
 python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
@@ -62,6 +63,12 @@ notebooks or CI checks can consume the results without scraping prose.
   flow trajectories and final flowed links, and exposes a smoke test that
   checks monotonicity and group preservation at finite cutoff.  It is not an
   integer topological-charge definition or a continuum extrapolation.
+- `su3_topological_charge_diagnostics_hdf5.py`: finite \(SU(3)\) clover
+  curvature and topological-charge diagnostic for raw or flowed HDF5
+  checkpoints.  It reports \(Q_{\rm clover}\), clover action density, and an
+  admissibility-style plaquette-deviation diagnostic, and can optionally write
+  local density arrays.  It is explicitly not a geometric or index-theoretic
+  definition of a lattice topological sector.
 - `autocorrelation_resampling.py`: one-column Markov-chain time-series
   diagnostics.  It computes biased autocorrelations, a windowed integrated
   autocorrelation time, block means, blocked standard errors,
