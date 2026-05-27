@@ -8,9 +8,10 @@ one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
 low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
 derivative identities, finite-regulator Polyakov-loop effective-measure
-bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity bookkeeping,
-and the color-flavor-locked symmetry count.  It is not a lattice simulation
-and it does not assert the existence or order of any QCD phase transition.
+bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
+baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, and the
+color-flavor-locked symmetry count.  It is not a lattice simulation and it
+does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -195,6 +196,46 @@ def check_polyakov_effective_measure_center_bookkeeping():
     n_tau = 5
     assert_equal("forward temporal winding exponent", n_tau, 5)
     assert_equal("minimal strong-coupling tube exponent", n_tau, 5)
+
+
+def check_high_density_fermi_surface_bookkeeping():
+    # In units where the common pi^{-2} factor is suppressed, the angular
+    # measure coefficient is 4*pi/(2*pi)^3 = 1/(2*pi^2).  Thus one spin and
+    # one internal state have coefficient 1/2, while a positive-energy
+    # massless Dirac branch has two spin states and coefficient 1.
+    one_spin_density_coeff = Fraction(4, 2**3)
+    dirac_density_coeff = 2 * one_spin_density_coeff
+    assert_equal(
+        "one-spin Fermi-surface density coefficient",
+        one_spin_density_coeff,
+        Fraction(1, 2),
+    )
+    assert_equal("Dirac Fermi-surface density coefficient", dirac_density_coeff, Fraction(1))
+
+    # With tr_fund(T^a T^b)=delta^{ab}, each massless Dirac fundamental
+    # flavor contributes g^2 mu_q^2/pi^2 to the zero-temperature dense
+    # electric screening mass.
+    t_fund_trace_delta = Fraction(1)
+    per_flavor_hdl_coeff = dirac_density_coeff * t_fund_trace_delta
+    assert_equal(
+        "trace-delta dense HDL coefficient per flavor",
+        per_flavor_hdl_coeff,
+        Fraction(1),
+    )
+    assert_equal("three-flavor dense HDL coefficient", 3 * per_flavor_hdl_coeff, Fraction(3))
+
+    # The expansion sqrt(1+2a+a^2+b^2)=1+a+b^2/2+O(3) has cancellation of the
+    # a^2 term and transverse curvature coefficient 1/2.
+    sqrt_linear_coeff = Fraction(1, 2) * 2
+    sqrt_a2_coeff = Fraction(1, 2) - Fraction(1, 8) * 4
+    sqrt_b2_coeff = Fraction(1, 2)
+    assert_equal("Fermi-surface longitudinal coefficient", sqrt_linear_coeff, Fraction(1))
+    assert_equal("Fermi-surface longitudinal quadratic cancellation", sqrt_a2_coeff, Fraction(0))
+    assert_equal(
+        "Fermi-surface transverse curvature coefficient",
+        sqrt_b2_coeff,
+        Fraction(1, 2),
+    )
 
 
 def check_source_curvature_susceptibility():
@@ -400,6 +441,7 @@ def main():
     check_roberge_weiss_periodicity_bookkeeping()
     check_htl_angular_kernel_transversality_bookkeeping()
     check_polyakov_effective_measure_center_bookkeeping()
+    check_high_density_fermi_surface_bookkeeping()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()

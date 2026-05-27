@@ -51,6 +51,10 @@ GitHub issue #628.
   angles, related by `theta_B=N_c theta_q`.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
   baryon-number cumulants, susceptibilities, and Cauchy--Hadamard radius.
+- `Lambda_H`, `psi_v`, `ell_parallel`, `ell_perp`: high-density effective
+  theory shell scale, patch quark field, and residual momentum components.
+- `N_ch(0)`, `Delta`: channel density of states at the Fermi surface and the
+  superconducting gap entering the BCS logarithm.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
 
 ## Claim Ledger
@@ -132,6 +136,14 @@ GitHub issue #628.
   derivatives at \(x=\mu_B/T=0\), proves the cumulant identities, and
   separates radius-of-convergence diagnostics from claims about a real QCD
   critical endpoint.
+- States the high-density effective-theory scale separation, defines patch
+  fields near the quark Fermi surface, derives the Fermi-surface measure and
+  density of states, derives the tree-level patch action including the
+  transverse curvature term, and computes the zero-temperature dense-quark
+  HDL Debye coefficient in the monograph trace convention.
+- Derives the BCS logarithm from the Fermi-surface shell as a controlled
+  instability of a specified attractive channel, separating the universal
+  logarithmic mechanism from the QCD-specific gap prefactor.
 - Defines the CFL condensate datum and performs the physical Goldstone count.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
@@ -154,6 +166,7 @@ GitHub issue #628.
   retarded HTL angular-kernel transversality bookkeeping, thermodynamic
   derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
   Polyakov-loop effective-measure center-charge bookkeeping,
+  high-density Fermi-surface and dense-HDL coefficient bookkeeping,
   baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
@@ -201,3 +214,6 @@ GitHub issue #628.
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity
   bookkeeping checks.
+- 2026-05-27 high-density EFT pass: added the patch decomposition, density
+  of states, tree-level HDET action, zero-temperature HDL Debye coefficient,
+  and BCS logarithm derivation before the CFL order-parameter discussion.

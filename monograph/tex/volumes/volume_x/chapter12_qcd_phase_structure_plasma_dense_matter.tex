@@ -2111,6 +2111,295 @@ positivity and single-scale hypotheses are part of the diagnostic; they are
 not consequences of the cumulant definitions alone.
 \end{remark}
 
+\section{High-Density Effective Theory and Fermi-Surface Instability}
+\label{sec:qcd-high-density-effective-theory}
+
+Real baryon density is difficult nonperturbatively, but asymptotically large
+quark chemical potential has a separate weak-coupling control parameter.  The
+running coupling is evaluated at a scale of order \(\mu_q\), while the
+low-energy excitations live in thin shells around the Fermi surface.  The
+resulting effective theory is not an expansion around empty space; it is an
+expansion around a filled Fermi sea with soft residual momenta.
+
+\begin{controlledapproximation}[High-density effective-theory regime]
+\label{ca:qcd-hdet-regime}
+Let
+\[
+  \mu_q=\frac{\mu_B}{N_c}.
+\]
+The high-density effective theory applies to modes whose residual energy and
+momentum are bounded by a scale \(\Lambda_{\rm H}\) satisfying
+\[
+  \Delta,\ T,\ |\ell^\mu|,\ \Lambda_{\rm QCD}
+  \ll
+  \Lambda_{\rm H}
+  \ll
+  \mu_q ,
+\]
+where \(\Delta\) denotes any superconducting gap scale that is being
+resolved.  Gauge fields retained in the effective theory have momenta much
+smaller than \(\mu_q\).  Modes far from the Fermi surface and antiparticle
+branches are integrated out into local operators and into hard-dense-loop
+response terms.
+\end{controlledapproximation}
+
+\begin{definition}[Patch decomposition near the quark Fermi surface]
+\label{def:qcd-hdet-patch-decomposition}
+For each unit vector \(\mathbf v\in S^2\), write a quark momentum near the
+Fermi surface as
+\[
+  \mathbf p=\mu_q\mathbf v+\boldsymbol\ell,
+  \qquad
+  |\boldsymbol\ell|\le \Lambda_{\rm H}.
+\]
+Decompose the residual momentum into longitudinal and transverse parts,
+\[
+  \ell_\parallel=\mathbf v\cdot\boldsymbol\ell,
+  \qquad
+  \boldsymbol\ell_\perp
+  =
+  \boldsymbol\ell-\mathbf v\,\ell_\parallel.
+\]
+The patch field \(\psi_{\mathbf v}\) is the positive-energy quark field
+whose momenta lie in this shell and whose group velocity is near
+\(\mathbf v\).  More invariantly, it is obtained by applying the positive
+spectral projector of the massless one-particle Dirac Hamiltonian in the
+direction \(\mathbf v\), multiplying by the phase
+\(e^{-i\mu_q\mathbf v\cdot\mathbf x}\), and then restricting residual
+momenta to the shell.  A finite regulator is obtained by choosing an
+angular partition of \(S^2\) whose cells have diameter
+\(O(\Lambda_{\rm H}/\mu_q)\); every occurrence of \(\sum_{\mathbf v}\)
+below denotes this regulated patch sum, with the continuum angular integral
+recovered by refining the partition inside the scale separation
+\(\Lambda_{\rm H}\ll\mu_q\).
+\end{definition}
+
+\begin{proposition}[Fermi-surface measure and density of states]
+\label{prop:qcd-hdet-fermi-surface-measure}
+For functions supported in the shell
+\(|\boldsymbol\ell|\le\Lambda_{\rm H}\ll\mu_q\),
+\[
+  \int\frac{d^3p}{(2\pi)^3}f(\mathbf p)
+  =
+  \frac{\mu_q^2}{(2\pi)^3}
+  \int_{S^2}d\Omega_{\mathbf v}
+  \int d\ell_\parallel\,
+  f(\mu_q\mathbf v+\ell_\parallel\mathbf v)
+  +O\!\left(\frac{\Lambda_{\rm H}}{\mu_q}\right)
+\]
+after angular patches are refined so that transverse residual momenta are
+counted once.  The density of states at the Fermi surface, per spin state
+and per internal state, is therefore
+\[
+  N_{\rm one\ spin}(0)=\frac{\mu_q^2}{2\pi^2}.
+\]
+Including the two spin states of a massless Dirac quark gives
+\[
+  N_{\rm Dirac}(0)=\frac{\mu_q^2}{\pi^2}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write \(\mathbf p=(\mu_q+\ell_\parallel)\mathbf v+\boldsymbol\ell_\perp\)
+inside a patch.  To leading order in \(\Lambda_{\rm H}/\mu_q\), the radial
+Jacobian is
+\[
+  p^2dp\,d\Omega_{\mathbf v}
+  =
+  (\mu_q+\ell_\parallel)^2d\ell_\parallel\,d\Omega_{\mathbf v}
+  =
+  \mu_q^2
+  \left(1+O\!\left(\frac{\Lambda_{\rm H}}{\mu_q}\right)\right)
+  d\ell_\parallel\,d\Omega_{\mathbf v}.
+\]
+The shell decomposition is a partition of momentum space near the Fermi
+surface after a choice of angular patches; the patch refinement only avoids
+double counting transverse residual momenta.  Integrating the leading
+measure over \(S^2\) gives
+\[
+  \frac{\mu_q^2}{(2\pi)^3}\,4\pi
+  =
+  \frac{\mu_q^2}{2\pi^2}
+\]
+per spin and internal state.  A massless Dirac quark has two spin states on
+the positive-energy branch, giving the final formula.
+\end{proof}
+
+\begin{proposition}[Tree-level high-density quark action]
+\label{prop:qcd-hdet-tree-action}
+For a massless quark near the Fermi surface, the positive-energy dispersion
+relative to the chemical potential is
+\[
+  |\mu_q\mathbf v+\boldsymbol\ell|-\mu_q
+  =
+  \ell_\parallel
+  +
+  \frac{\boldsymbol\ell_\perp^2}{2\mu_q}
+  +O\!\left(\frac{|\boldsymbol\ell|^3}{\mu_q^2}\right).
+\]
+Consequently the tree-level inverse propagator in a patch is
+\[
+  G_{\mathbf v}^{-1}(\ell)
+  =
+  \ell_0-\ell_\parallel
+  -\frac{\boldsymbol\ell_\perp^2}{2\mu_q}
+  +O\!\left(\frac{|\boldsymbol\ell|^3}{\mu_q^2}\right),
+\]
+with soft gauge fields introduced by replacing residual derivatives by
+covariant derivatives.  The leading local patch Lagrangian has the form
+\[
+  \mathcal L_{\rm HDET}^{(0)}
+  =
+  \sum_{\mathbf v}
+  \psi_{\mathbf v}^{\dagger}
+  \left(
+    iD_t+i\mathbf v\cdot\mathbf D
+    +\frac{D_\perp^2}{2\mu_q}
+    +\cdots
+  \right)
+  \psi_{\mathbf v},
+\]
+where \(D_\perp^2=D_iD_i-(\mathbf v\cdot\mathbf D)^2\), and the ellipsis
+contains higher powers of residual momentum divided by \(\mu_q\), quark
+masses, and local interactions generated by integrating out hard modes.
+\end{proposition}
+
+\begin{proof}
+The expansion follows from
+\[
+  |\mu_q\mathbf v+\boldsymbol\ell|
+  =
+  \mu_q
+  \sqrt{
+    1+\frac{2\ell_\parallel}{\mu_q}
+    +\frac{\ell_\parallel^2+\boldsymbol\ell_\perp^2}{\mu_q^2}
+  }.
+\]
+Taylor expansion of the square root gives
+\[
+  \mu_q+\ell_\parallel+\frac{\boldsymbol\ell_\perp^2}{2\mu_q}
+  +O(|\boldsymbol\ell|^3/\mu_q^2).
+\]
+Subtracting the chemical potential gives the displayed energy relative to
+the filled Fermi sea.  The inverse propagator is \(\ell_0\) minus this
+relative energy.  In coordinate space, residual momentum acts as
+\(-iD\); hence the terms \(-\ell_\parallel\) and
+\(-\boldsymbol\ell_\perp^2/(2\mu_q)\) become
+\(i\mathbf v\cdot\mathbf D\) and \(D_\perp^2/(2\mu_q)\), with the sign
+fixed by the displayed momentum-space inverse propagator.
+\end{proof}
+
+\begin{proposition}[Hard-dense-loop Debye mass at zero temperature]
+\label{prop:qcd-hdl-debye-zero-temperature}
+At \(T=0\), for \(N_f\) massless Dirac quarks with common quark chemical
+potential \(\mu_q\), the static dense-quark contribution to the electric
+screening mass is
+\[
+  m_{D,\mu}^2
+  =
+  g^2\sum_{\text{Dirac }f}T_{R_f}\frac{\mu_q^2}{\pi^2}.
+\]
+For \(SU(N_c)\) fundamentals in the monograph trace convention
+\(\operatorname{tr}_{\square}(T^aT^b)=\delta^{ab}\), this becomes
+\[
+  m_{D,\mu}^2=g^2N_f\frac{\mu_q^2}{\pi^2}.
+\]
+\end{proposition}
+
+\begin{proof}
+The static electric response is the color susceptibility of occupied quark
+states.  At \(T=0\), differentiating the occupation number
+\(\Theta(\mu_q-p)\) with respect to a color chemical potential localizes the
+response on the Fermi surface:
+\[
+  -\frac{\partial}{\partial p}\Theta(\mu_q-p)
+  =
+  \delta(p-\mu_q).
+\]
+For one spin state in representation \(R\),
+\[
+  \int\frac{d^3p}{(2\pi)^3}\delta(p-\mu_q)
+  =
+  \frac{\mu_q^2}{2\pi^2}.
+\]
+The two positive-energy spin states of a Dirac quark give
+\(\mu_q^2/\pi^2\).  Multiplying by the color trace
+\(\operatorname{tr}_{R}(T_R^aT_R^b)=T_R\delta^{ab}\), by \(g^2\), and by the
+number of flavors gives the displayed result.  Antiquark states are far
+from the positive-\(\mu_q\) Fermi surface and do not contribute to this
+leading \(T=0\) dense response.
+\end{proof}
+
+\begin{proposition}[BCS logarithm from the Fermi surface]
+\label{prop:qcd-bcs-logarithm}
+Consider a specified antisymmetric two-quark channel of the high-density
+effective theory and approximate its attractive interaction by a local
+four-fermion coupling \(G>0\) inside a shell
+\(|\xi|\le\Lambda_{\rm H}\), where
+\(\xi=|\mathbf p|-\mu_q\).  Let \(N_{\rm ch}(0)\) be the density of states
+in that channel at the Fermi surface, including the relevant spin, color,
+and flavor multiplicity.  The zero-temperature mean-field gap equation is
+\[
+  1
+  =
+  G N_{\rm ch}(0)
+  \int_0^{\Lambda_{\rm H}}
+  \frac{d\xi}{\sqrt{\xi^2+\Delta^2}} .
+\]
+For \(\Delta\ll\Lambda_{\rm H}\),
+\[
+  \int_0^{\Lambda_{\rm H}}
+  \frac{d\xi}{\sqrt{\xi^2+\Delta^2}}
+  =
+  \log\frac{2\Lambda_{\rm H}}{\Delta}
+  +O\!\left(\frac{\Delta^2}{\Lambda_{\rm H}^2}\right),
+\]
+and hence
+\[
+  \Delta
+  =
+  2\Lambda_{\rm H}
+  \exp\!\left[-\frac{1}{G N_{\rm ch}(0)}\right]
+  \left(1+O\!\left(\frac{\Delta^2}{\Lambda_{\rm H}^2}\right)\right).
+\]
+\end{proposition}
+
+\begin{proof}
+In the paired mean-field Hamiltonian, the quasiparticle energy in the shell
+is
+\[
+  E(\xi)=\sqrt{\xi^2+\Delta^2}.
+\]
+The anomalous expectation value is proportional to
+\(\Delta/(2E(\xi))\).  Dividing the self-consistency equation by
+\(\Delta\ne0\) gives the displayed integral equation after the angular and
+internal sums are collected into \(N_{\rm ch}(0)\).  The integral is exactly
+\[
+  \int_0^{\Lambda_{\rm H}}\frac{d\xi}{\sqrt{\xi^2+\Delta^2}}
+  =
+  \operatorname{arsinh}\frac{\Lambda_{\rm H}}{\Delta}
+  =
+  \log\left(
+    \frac{\Lambda_{\rm H}}{\Delta}
+    +
+    \sqrt{1+\frac{\Lambda_{\rm H}^2}{\Delta^2}}
+  \right).
+\]
+Expanding for \(\Delta/\Lambda_{\rm H}\to0\) gives
+\(\log(2\Lambda_{\rm H}/\Delta)+O(\Delta^2/\Lambda_{\rm H}^2)\), and solving
+the gap equation gives the stated exponential scale.
+\end{proof}
+
+\begin{remark}[What is and is not contained in the BCS logarithm]
+\label{rem:qcd-bcs-logarithm-status}
+Proposition~\ref{prop:qcd-bcs-logarithm} proves the kinematic Fermi-surface
+instability for a local attractive channel.  In QCD the microscopic
+attraction, the color-flavor structure, and the weak-coupling gap prefactor
+also involve electric screening and dynamically screened magnetic gluons.
+Those ingredients refine the value of \(\Delta\); they do not remove the
+basic logarithmic instability once an attractive channel is present.
+\end{remark}
+
 \section{Color Superconductivity and CFL Order}
 
 At asymptotically large \(\mu_B\), quarks near the Fermi surface interact
