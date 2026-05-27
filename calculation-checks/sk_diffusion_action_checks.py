@@ -46,8 +46,12 @@ def matadd(left: Matrix2, right: Matrix2) -> Matrix2:
     )
 
 
+def matdet(matrix: Matrix2) -> complex:
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+
 def matinv(matrix: Matrix2) -> Matrix2:
-    determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    determinant = matdet(matrix)
     if abs(determinant) < 1.0e-14:
         raise AssertionError("matrix inversion encountered a nearly singular matrix")
     return (
@@ -132,6 +136,42 @@ def check_multicharge_density_response_kernel() -> None:
     assert_matrix_close("multi-charge total-charge response", zero_momentum_kernel, ((0.0, 0.0), (0.0, 0.0)))
 
 
+def check_multicharge_diffusion_stability() -> None:
+    chi: Matrix2 = ((2.0, 0.35), (0.35, 1.3))
+    sigma: Matrix2 = ((0.76, 0.18), (0.18, 0.49))
+    chi_inverse = matinv(chi)
+    diffusion = matmul(sigma, chi_inverse)
+
+    # D is self-adjoint in the chi^{-1} density inner product:
+    # chi^{-1} D = chi^{-1} Sigma chi^{-1} is symmetric.
+    metric_diffusion = matmul(chi_inverse, diffusion)
+    assert_close("chi-inverse diffusion symmetry", metric_diffusion[0][1], metric_diffusion[1][0])
+
+    trace = diffusion[0][0] + diffusion[1][1]
+    determinant = matdet(diffusion)
+    discriminant = trace * trace - 4.0 * determinant
+    if discriminant < -1.0e-12:
+        raise AssertionError(f"diffusion eigenvalues are not real: discriminant {discriminant!r}")
+    root = discriminant**0.5
+    eigenvalues = ((trace + root) / 2.0, (trace - root) / 2.0)
+    for index, eigenvalue in enumerate(eigenvalues):
+        if eigenvalue < -1.0e-12:
+            raise AssertionError(f"diffusion eigenvalue {index} is negative: {eigenvalue!r}")
+        assert_close(
+            f"diffusion characteristic equation {index}",
+            eigenvalue * eigenvalue - trace * eigenvalue + determinant,
+            0.0,
+        )
+
+        k = 0.41
+        pole_frequency = -1j * eigenvalue * k * k
+        pole_matrix = matadd(
+            matscale(k * k, diffusion),
+            matscale(-1j * pole_frequency, ((1.0, 0.0), (0.0, 1.0))),
+        )
+        assert_close(f"diffusion pole determinant {index}", matdet(pole_matrix), 0.0)
+
+
 def check_transverse_ohm_response() -> None:
     sigma = 0.73
     omega = 0.41
@@ -189,6 +229,7 @@ def check_noise_normalization() -> None:
 def main() -> None:
     check_density_response_kernel()
     check_multicharge_density_response_kernel()
+    check_multicharge_diffusion_stability()
     check_transverse_ohm_response()
     check_classical_kms_noise_coefficient()
     check_multicharge_classical_kms_noise_matrix()

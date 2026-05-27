@@ -858,9 +858,10 @@ Current checks:
   contour-to-\(r/a\) algebra, and KMS detailed balance.
 - `sk_diffusion_action_checks.py`: finite algebra checks for the Volume X
   Schwinger--Keldysh hydrodynamic diffusion action, including the sourced
-  density saddle, one-charge and noncommuting two-charge diffusive response
-  kernels, transverse Ohm response, scalar and matrix KMS noise coefficients,
-  and Hubbard--Stratonovich noise normalization.
+  density saddle, one-charge and non-diagonal two-charge diffusive response
+  kernels, positivity and \(\chi^{-1}\)-self-adjointness of the multi-charge
+  diffusion endomorphism, transverse Ohm response, scalar and matrix KMS
+  noise coefficients, and Hubbard--Stratonovich noise normalization.
 - `sine_gordon_smatrix_checks.py`: numerical finite checks for the Volume VI
   sine-Gordon exact scattering datum, including soliton-matrix unitarity and
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass

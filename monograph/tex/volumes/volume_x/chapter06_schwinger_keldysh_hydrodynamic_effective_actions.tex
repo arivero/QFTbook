@@ -63,6 +63,64 @@ effective action contains at least one \(a\)-type field.  The positivity
 condition is the damping condition in the path-integral weight
 \(\exp(\ii I_{\rm SK})\).
 
+\begin{proposition}[Finite closed-time-path constraints]
+\label{prop:finite-closed-time-path-constraints}
+Suppose first that the Hilbert space is finite-dimensional, that
+\(\rho_0\ge0\) is a density matrix with \(\operatorname{Tr}\rho_0=1\), and
+that the branch evolutions \(U[A_s]\) are unitary.  Then
+\[
+  Z[A,A]=1,\qquad
+  Z[A_1,A_2]^*=Z[A_2,A_1],\qquad
+  |Z[A_1,A_2]|\le1 .
+  \label{eq:finite-ctp-constraints}
+\]
+Consequently, on the branch of \(I_{\rm SK}=-\ii\log Z\) continuous from
+\(I_{\rm SK}[A_r,0]=0\), equations
+\eqref{eq:sk-hydro-unitarity-zero}--\eqref{eq:sk-hydro-positivity} follow.
+\end{proposition}
+
+\begin{proof}
+The diagonal identity is
+\[
+  Z[A,A]=\operatorname{Tr}(U[A]\rho_0U[A]^\dagger)
+  =\operatorname{Tr}\rho_0=1 .
+\]
+Complex conjugation gives
+\[
+  Z[A_1,A_2]^*
+  =
+  \operatorname{Tr}\!\left(
+  U[A_2]\rho_0U[A_1]^\dagger
+  \right)=Z[A_2,A_1],
+  \label{eq:finite-ctp-reality-proof}
+\]
+where cyclicity of the finite trace and \(\rho_0^\dagger=\rho_0\) are used.
+For the bound, introduce the Hilbert--Schmidt inner product
+\((X,Y)_{\rm HS}=\operatorname{Tr}(X^\dagger Y)\) and set
+\[
+  X=U[A_2]\rho_0^{1/2},\qquad
+  Y=U[A_1]\rho_0^{1/2}.
+\]
+Then \(Z[A_1,A_2]=(X,Y)_{\rm HS}\).  Cauchy--Schwarz gives
+\[
+  |Z[A_1,A_2]|^2
+  \le
+  \operatorname{Tr}(\rho_0)\operatorname{Tr}(\rho_0)=1 .
+  \label{eq:finite-ctp-cauchy-schwarz}
+\]
+Since \(Z=\exp(\ii I_{\rm SK})\), the last inequality is
+\(\exp(-\operatorname{Im}I_{\rm SK})\le1\), hence
+\(\operatorname{Im}I_{\rm SK}\ge0\).  The reality relation for
+\(I_{\rm SK}\) follows from \eqref{eq:finite-ctp-reality-proof} after
+rewriting branch exchange as \(A_a\mapsto -A_a\) at fixed \(A_r\).
+\end{proof}
+
+For continuum QFT the same algebra is first applied with an ultraviolet
+regulator and finite volume, and only then passed to the thermodynamic and
+continuum limits.  Without this order of limits the inequality
+\(|Z|\le1\) is a statement about the regulated closed-time-path functional,
+not a theorem about an unconstructed real-time path integral.
+
 \section{Hydrodynamic Phase Field and Gauge Invariance}
 
 For \(N\) commuting conserved \(U(1)\) charges, labelled by
@@ -94,6 +152,52 @@ conservation law for the \(A\)-th charge.  Varying the action with respect
 to \(\varphi^A_a\) is equivalent to the corresponding Ward identity because
 \(\delta B^A_{a\mu}=\partial_\mu\delta\varphi^A_a\).
 
+\begin{proposition}[Gauge invariance and the hydrodynamic Ward identity]
+\label{prop:sk-hydro-gauge-invariance-ward-identity}
+Let \(I_{\rm eff}\) be a local functional of the gauge-invariant variables
+\(B^A_{r\mu},B^A_{a\mu}\).  Define the expectation-value current on the
+physical slice \(A_a=\varphi_a=0\) by
+\[
+  J_A^\mu(x)
+  =
+  \left.
+  \frac{\delta I_{\rm eff}}{\delta A^A_{a\mu}(x)}
+  \right|_{A_a=\varphi_a=0}.
+  \label{eq:sk-hydro-current-functional-derivative}
+\]
+Then the Euler--Lagrange equation for \(\varphi^A_a\) is the distributional
+Ward identity
+\[
+  \partial_\mu J_A^\mu=0
+  \label{eq:sk-hydro-current-ward-identity}
+\]
+in the absence of external anomaly terms.  Equivalently, the \(a\)-phase is
+not an additional physical scalar; it is the doubled-field implementation of
+current conservation.
+\end{proposition}
+
+\begin{proof}
+On the physical slice, \(B_{a\mu}^A=A_{a\mu}^A+\partial_\mu\varphi_a^A\).
+Thus the variation of the action under a compactly supported
+\(\delta\varphi_a^A\) is
+\[
+  \delta I_{\rm eff}
+  =
+  \int dt\,d^dx\,
+  J_A^\mu\,\partial_\mu\delta\varphi_a^A
+  =
+  -\int dt\,d^dx\,
+  (\partial_\mu J_A^\mu)\delta\varphi_a^A ,
+  \label{eq:sk-hydro-ward-variation-proof}
+\]
+with no boundary term.  Since \(\delta\varphi_a^A\) is arbitrary, the
+Euler--Lagrange equation is \(\partial_\mu J_A^\mu=0\).  If the microscopic
+current is anomalous, the branch gauge transformation of the regulated
+generating functional contains the corresponding local anomaly functional;
+that case belongs to the anomalous-transport chapter, not to the neutral
+diffusion action treated here.
+\end{proof}
+
 \section{Quadratic Diffusion Action}
 
 Consider a homogeneous thermal state at temperature \(T>0\).  Let
@@ -112,6 +216,57 @@ diffusion endomorphism acting on densities is
   D_A{}^B=\Sigma_{AC}(\chi^{-1})^{CB}.
   \label{eq:sk-hydro-diffusion-matrix}
 \end{equation}
+
+\begin{proposition}[Stability of the multi-charge diffusion matrix]
+\label{prop:sk-hydro-diffusion-matrix-stability}
+Assume \(\chi\) is real symmetric positive definite and \(\Sigma\) is real
+symmetric positive semidefinite.  Then
+\[
+  D=\Sigma\chi^{-1}
+  \label{eq:sk-hydro-diffusion-endomorphism-matrix}
+\]
+is diagonalizable over \(\mathbb R\) and all its eigenvalues are
+nonnegative.  It is self-adjoint for the density inner product
+\[
+  \langle u,v\rangle_{\chi^{-1}}
+  =
+  u_A(\chi^{-1})^{AB}v_B .
+  \label{eq:sk-hydro-density-inner-product}
+\]
+If \(\Sigma\) is positive definite, all eigenvalues of \(D\) are positive.
+\end{proposition}
+
+\begin{proof}
+Let \(\chi^{1/2}\) be the positive square root of \(\chi\).  The matrix
+\[
+  S=\chi^{-1/2}\Sigma\chi^{-1/2}
+  \label{eq:sk-hydro-symmetric-diffusion-similarity}
+\]
+is real symmetric positive semidefinite.  Moreover
+\[
+  D=\Sigma\chi^{-1}
+  =
+  \chi^{1/2}S\chi^{-1/2},
+  \label{eq:sk-hydro-diffusion-similar-to-symmetric}
+\]
+so \(D\) is similar to \(S\).  Therefore \(D\) has the same spectrum as
+\(S\), is diagonalizable over \(\mathbb R\), and has nonnegative
+eigenvalues.  For self-adjointness,
+\[
+  \langle u,Dv\rangle_{\chi^{-1}}
+  =
+  u^T\chi^{-1}\Sigma\chi^{-1}v
+  =
+  (Du)^T\chi^{-1}v
+  =
+  \langle Du,v\rangle_{\chi^{-1}},
+  \label{eq:sk-hydro-diffusion-self-adjoint-proof}
+\]
+because \(\chi^{-1}\) and \(\Sigma\) are symmetric.  If \(\Sigma\) is
+positive definite then \(S\) is positive definite, so its eigenvalues, and
+hence the eigenvalues of \(D\), are strictly positive.
+\end{proof}
+
 The leading quadratic local action for the diffusive modes is
 \begin{equation}
   I_{\rm diff}
