@@ -57,6 +57,9 @@ GitHub issue #628.
   superconducting gap entering the BCS logarithm.
 - `T_1 dot T_2`, `C_2(R)`: one-gluon exchange color operator and quadratic
   Casimir used to identify the attractive dense-quark pairing channel.
+- `D_T(omega,k_perp)`, `lambda_mag`, `Lambda_M`: HDL transverse magnetic
+  propagator, leading-log magnetic gap coefficient, and matching scale for
+  the dense color-superconducting gap equation.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
 
 ## Claim Ledger
@@ -149,6 +152,9 @@ GitHub issue #628.
 - Derives the one-gluon exchange color factors for
   `square tensor square = Sym^2 square plus wedge^2 square` in the
   trace-delta convention, identifies the antisymmetric channel as attractive,
+  derives the HDL magnetic leading-log gap equation and solves its reduced
+  logarithmic integral equation to obtain the trace-delta exponent
+  `exp[-3*pi^2/(2g)]` up to leading-log accuracy,
   proves the exchange symmetry that pairs color antisymmetry with flavor
   antisymmetry in spin-zero \(s\)-wave pairing, defines the CFL condensate
   datum, and proves the physical Goldstone count.
@@ -175,6 +181,7 @@ GitHub issue #628.
   Polyakov-loop effective-measure center-charge bookkeeping,
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
   dense one-gluon-exchange color-factor bookkeeping,
+  magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
@@ -228,3 +235,6 @@ GitHub issue #628.
 - 2026-05-27 CFL color-factor pass: added the trace-delta one-gluon exchange
   color-factor derivation, the spin-zero exchange-symmetry derivation, and a
   proposition-level physical Goldstone count.
+- 2026-05-27 magnetic-gap pass: added the HDL transverse magnetic
+  leading-log kernel, its trace-delta coefficient, and the differential
+  equation proof of the leading color-superconducting gap exponent.

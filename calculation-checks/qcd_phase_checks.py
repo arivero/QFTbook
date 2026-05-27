@@ -9,10 +9,11 @@ low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
 derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
-one-gluon exchange color factors for dense pairing, baryon-number cumulants,
-Roberge--Weiss periodicity bookkeeping, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the existence
-or order of any QCD phase transition.
+one-gluon exchange color factors for dense pairing, leading-log magnetic gap
+coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
+bookkeeping, and the color-flavor-locked symmetry count.  It is not a
+lattice simulation and it does not assert the existence or order of any QCD
+phase transition.
 """
 
 from fractions import Fraction
@@ -439,6 +440,32 @@ def check_dense_qq_color_factors():
     assert_equal("SU(3) symmetric qq repulsion", Fraction(2, 3), Fraction(2, 3))
 
 
+def check_magnetic_gap_leading_log_coefficients():
+    # The leading-log magnetic kernel has lambda = g^2 C_qq/(12*pi^2).
+    # In SU(3) trace-delta convention C_qq=4/3, so lambda=(g/pi)^2/9.
+    c_qq_su3 = Fraction(4, 3)
+    lambda_coeff = c_qq_su3 / 12
+    assert_equal("SU(3) trace-delta magnetic lambda coefficient", lambda_coeff, Fraction(1, 9))
+
+    # The abstract leading-log solution has exponent pi/(2 sqrt(lambda)).
+    # If lambda=(g/pi)^2/9, then 1/sqrt(lambda_coeff)=3 and the
+    # coefficient of pi^2/g is 3/2.
+    inverse_sqrt_lambda_coeff = 3
+    assert_equal(
+        "magnetic inverse-square-root coefficient",
+        lambda_coeff * inverse_sqrt_lambda_coeff * inverse_sqrt_lambda_coeff,
+        Fraction(1, 1),
+    )
+    exponent_coeff_trace_delta = Fraction(inverse_sqrt_lambda_coeff, 2)
+    assert_equal("trace-delta leading magnetic exponent coefficient", exponent_coeff_trace_delta, Fraction(3, 2))
+
+    # Converting to the common half-trace coupling g_ht=sqrt(2) g gives
+    # coefficient 3/sqrt(2); checking its square avoids floating radicals.
+    g_ht_squared_over_g_squared = Fraction(2, 1)
+    exponent_coeff_half_trace_squared = exponent_coeff_trace_delta * exponent_coeff_trace_delta * g_ht_squared_over_g_squared
+    assert_equal("half-trace leading magnetic exponent coefficient squared", exponent_coeff_half_trace_squared, Fraction(9, 2))
+
+
 def check_cfl_global_goldstone_count():
     # For N_f=N_c=3 and ignoring the anomalous axial U(1), the CFL condensate
     # locks SU(3)_L x SU(3)_R x U(1)_B to diagonal SU(3).  The gauged color
@@ -467,6 +494,7 @@ def main():
     check_static_htl_debye_mass_normalization()
     check_linde_magnetic_scale()
     check_dense_qq_color_factors()
+    check_magnetic_gap_leading_log_coefficients()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")
 
