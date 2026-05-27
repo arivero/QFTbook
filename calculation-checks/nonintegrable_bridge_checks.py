@@ -83,12 +83,41 @@ def check_airy_scaling_dimension() -> None:
     assert_equal("Airy tension power potential", potential_tension_power, tension_power_in_energy)
 
 
+def check_two_body_phase_space_jacobian() -> None:
+    mass_a = Fraction(5, 1)
+    mass_r = Fraction(2, 1)
+    mass_s = Fraction(1, 1)
+
+    kallen = (
+        mass_a**4
+        + mass_r**4
+        + mass_s**4
+        - 2 * mass_a**2 * mass_r**2
+        - 2 * mass_a**2 * mass_s**2
+        - 2 * mass_r**2 * mass_s**2
+    )
+    p_squared = kallen / (4 * mass_a**2)
+    energy_r = (mass_a**2 + mass_r**2 - mass_s**2) / (2 * mass_a)
+    energy_s = (mass_a**2 + mass_s**2 - mass_r**2) / (2 * mass_a)
+
+    assert_equal("two-body energy sum", energy_r + energy_s, mass_a)
+    assert_equal("two-body r on shell", energy_r**2 - mass_r**2, p_squared)
+    assert_equal("two-body s on shell", energy_s**2 - mass_s**2, p_squared)
+
+    # The delta-function derivative is |p_*| M/(E_r E_s).  Squaring avoids
+    # introducing irrational arithmetic for this exact check.
+    derivative_squared = p_squared * mass_a**2 / (energy_r**2 * energy_s**2)
+    reciprocal_squared = energy_r**2 * energy_s**2 / (p_squared * mass_a**2)
+    assert_equal("two-body Jacobian inverse", derivative_squared * reciprocal_squared, 1)
+
+
 def main() -> None:
     check_broken_charge_ledger()
     check_ffpt_mass_shift()
     check_semilocal_residue_and_confinement_tension()
     check_tcsa_coupling_and_counterterm_powers()
     check_airy_scaling_dimension()
+    check_two_body_phase_space_jacobian()
     print("All nonintegrable-bridge checks passed.")
 
 

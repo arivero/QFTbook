@@ -375,6 +375,136 @@ normalization converges to the connected crossed form factor by the same
 Gaudin-density cancellation.  This proves the displayed inclusive rate.
 \end{proof}
 
+\section{Two-Particle Phase Space In Two Dimensions}
+
+The finite-volume formula becomes especially sharp for the first allowed
+decay channel.  Let the unstable particle \(A\) have mass \(M_A\), and study
+the contribution of two stable particles \(r,s\) of masses \(m_r,m_s\).  In
+the rest frame of \(A\), energy-momentum conservation has a real solution
+precisely when
+\[
+  M_A>m_r+m_s .
+\]
+Define the Kallen polynomial
+\[
+  \lambda(x,y,z)=x^2+y^2+z^2-2xy-2xz-2yz
+\]
+and the relative momentum
+\[
+  p_*=
+  \frac{\sqrt{\lambda(M_A^2,m_r^2,m_s^2)}}{2M_A}.
+\]
+The two on-shell energies at the decay point are
+\[
+  E_r^*=\frac{M_A^2+m_r^2-m_s^2}{2M_A},
+  \qquad
+  E_s^*=\frac{M_A^2+m_s^2-m_r^2}{2M_A}.
+\]
+For each orientation \(\sigma=\pm1\), let
+\[
+  m_r\sinh\theta_r^\sigma=\sigma p_*,
+  \qquad
+  m_s\sinh\theta_s^\sigma=-\sigma p_* .
+\]
+
+\begin{proposition}[Two-particle decay width in \(1+1\) dimensions]
+\label{prop:two-particle-decay-width-two-d}
+Use the state normalization and golden-rule convention of
+Proposition~\ref{prop:finite-volume-golden-rule-limit}.  Suppose \(A\) is at
+rest, \(M_A>m_r+m_s\), and the crossed connected form factor
+\[
+  \mathcal F_{rs;A}(\theta_r,\theta_s)
+  =
+  \langle A_r(\theta_r)A_s(\theta_s)|
+  \mathcal O_b(0)|A\rangle_{\mathrm{conn}}
+\]
+has a finite boundary value at the two energy-conserving rapidity pairs
+\((\theta_r^\sigma,\theta_s^\sigma)\).  If the channel sum is over labelled
+ordered particles, the \(rs\) contribution to the leading width is
+\[
+  \Gamma_{A\to rs}
+  =
+  \frac{\epsilon^2}{M_Ap_*}
+  \sum_{\sigma=\pm1}
+  \left|
+    \mathcal F_{rs;A}(\theta_r^\sigma,\theta_s^\sigma)
+  \right|^2 .
+\]
+If instead the channel is counted as an unordered physical channel, the
+right-hand side must be divided by \(2\) when \(r=s\), and is unchanged when
+\(r\ne s\).
+\end{proposition}
+
+\begin{proof}
+Start from Proposition~\ref{prop:finite-volume-golden-rule-limit} with
+\(P_A=0\) and with a two-particle labelled channel:
+\[
+  \Gamma_{A\to rs}
+  =
+  2\pi\epsilon^2
+  \int
+  \frac{d\theta_r}{2\pi}
+  \frac{d\theta_s}{2\pi}
+  2\pi\delta(p_r+p_s)
+  \delta(M_A-E_r-E_s)
+  |\mathcal F_{rs;A}(\theta_r,\theta_s)|^2 ,
+\]
+where
+\[
+  p_i=m_i\sinh\theta_i,\qquad E_i=m_i\cosh\theta_i .
+\]
+Change variables from rapidities to momenta.  Since \(d\theta_i=dp_i/E_i\),
+the phase-space integral without the exterior factor \(2\pi\epsilon^2\) is
+\[
+  \int_{\R^2}
+  \frac{dp_r\,dp_s}{2\pi E_rE_s}\,
+  \delta(p_r+p_s)\,
+  \delta(M_A-E_r-E_s)\,
+  |\mathcal F_{rs;A}|^2 .
+\]
+The momentum delta function sets \(p_r=p\) and \(p_s=-p\).  Therefore
+\[
+  E_r(p)=\sqrt{m_r^2+p^2},\qquad
+  E_s(p)=\sqrt{m_s^2+p^2}.
+\]
+The equation \(E_r(p)+E_s(p)=M_A\) has the two roots
+\(p=\sigma p_*\), \(\sigma=\pm1\), because solving it gives
+\[
+  E_r^*=\frac{M_A^2+m_r^2-m_s^2}{2M_A},
+  \qquad
+  (E_r^*)^2-m_r^2
+  =
+  \frac{\lambda(M_A^2,m_r^2,m_s^2)}{4M_A^2}.
+\]
+At either root,
+\[
+  \left|
+  \frac{d}{dp}(E_r(p)+E_s(p))
+  \right|
+  =
+  |p_*|\left(\frac1{E_r^*}+\frac1{E_s^*}\right)
+  =
+  \frac{|p_*|M_A}{E_r^*E_s^*}.
+\]
+Thus each root contributes
+\[
+  \frac{1}{2\pi E_r^*E_s^*}\,
+  \frac{E_r^*E_s^*}{|p_*|M_A}
+  |\mathcal F_{rs;A}(\theta_r^\sigma,\theta_s^\sigma)|^2 .
+\]
+Multiplication by the exterior \(2\pi\epsilon^2\) gives the displayed
+formula.  If \(r=s\) and the physical channel is unlabelled, the two labels
+of the identical particles describe the same basis of final states twice;
+dividing by \(2\) implements the chosen unordered channel convention.
+\end{proof}
+
+The factor \(1/p_*\) is the one-dimensional threshold singularity of the
+two-particle density of states.  It is not by itself a physical divergence in
+an observable statement: at threshold the perturbative decay problem must be
+examined with the form-factor boundary value, finite-volume level spacing,
+and possible near-threshold bound or virtual-state poles kept in the same
+scaling limit.
+
 \section{Truncated Conformal Space as Regulator}
 
 Let \(\mathcal C\) be a two-dimensional CFT on a circle of circumference

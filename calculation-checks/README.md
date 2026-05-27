@@ -549,6 +549,7 @@ Current checks:
   bridge from integrable to nonintegrable two-dimensional QFT, including the
   broken-charge commutator ledger, first-order form-factor mass shift,
   semi-local kinematic residue, Ising false-vacuum string tension,
+  two-body phase-space Jacobian for \(1+1\)-dimensional decay widths,
   TCSA coupling and counterterm powers, and the Airy scaling of confined
   kink--antikink bound states.
 - `numerical_extrapolation_checks.py`: exact rational checks for the Volume XI

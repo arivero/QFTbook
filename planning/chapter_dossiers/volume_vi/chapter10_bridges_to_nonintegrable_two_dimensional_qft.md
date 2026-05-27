@@ -17,6 +17,8 @@ and near two-dimensional CFT perturbations.
   law.
 - `M_beta alpha`, `Gamma_A`: first-order transition matrix element and
   second-order decay width.
+- `lambda(x,y,z)`, `p_*`: Kallen polynomial and relative momentum for the
+  two-particle \(1+1\)-dimensional decay-width formula.
 - `E_cut`: truncated conformal-space cutoff.
 
 ## Claim Ledger
@@ -28,6 +30,9 @@ and near two-dimensional CFT perturbations.
   matrix elements.
 - Derives the finite-volume route to a decay width by the large-time
   distributional limit.
+- Evaluates the two-particle \(1+1\)-dimensional phase-space integral from
+  the rapidity measure, including the Jacobian, threshold condition, and
+  identical-particle counting convention.
 - Defines TCSA as a regulator and identifies counterterm obligations.
 
 ## Figure Ledger
