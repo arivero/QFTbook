@@ -5,9 +5,10 @@ The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
-baryon-number cumulants, and the color-flavor-locked symmetry count.  It is
-not a lattice simulation and it does not assert the existence or order of any
-QCD phase transition.
+low-temperature chiral effective theory coefficients, baryon-number
+cumulants, and the color-flavor-locked symmetry count.  It is not a lattice
+simulation and it does not assert the existence or order of any QCD phase
+transition.
 """
 
 from fractions import Fraction
@@ -202,6 +203,41 @@ def check_chiral_ward_identity_normalization():
     assert_equal("half-normalized GMOR coefficient", f_half_sq_mpi_sq, 2 * mass * sigma)
 
 
+def check_low_temperature_chiral_condensate_coefficient():
+    # With tr_f(tau^a tau^b)=delta^{ab} and
+    # U=exp(i sqrt(2) pi^a tau^a/F), the leading chiral Lagrangian has
+    # canonical pion kinetic terms, Sigma=F^2 B, and M_pi^2=2 B m.
+    f_sq = Fraction(17, 5)
+    b_const = Fraction(19, 7)
+    mass = Fraction(3, 11)
+    sigma = f_sq * b_const
+    pion_mass_sq = 2 * b_const * mass
+    f_delta_sq = 2 * f_sq
+
+    assert_equal("chiral EFT tree Sigma", sigma, f_sq * b_const)
+    assert_equal("chiral EFT tree pion mass", pion_mass_sq, 2 * b_const * mass)
+    assert_equal("trace-delta tree GMOR", f_delta_sq * pion_mass_sq, 4 * mass * sigma)
+
+    # The massless thermal tadpole is
+    # int d^3k/(2*pi)^3 n_B(k)/|k| = T^2/12.
+    # Therefore Sigma(T)/Sigma(0)=1-(N_f^2-1)T^2/(12 N_f F^2)+...
+    for nf, expected in [(2, Fraction(1, 8)), (3, Fraction(2, 9)), (4, Fraction(5, 16))]:
+        d_pi = nf * nf - 1
+        coefficient = Fraction(d_pi, 12 * nf)
+        assert_equal(f"low-temperature chiral coefficient Nf={nf}", coefficient, expected)
+
+    # Check the pressure-derivative chain rule:
+    # d p_pi/d M_pi^2 = -(N_f^2-1) T^2/24,
+    # d M_pi^2/dm=2B, and per-flavor division gives the coefficient above.
+    nf = 2
+    d_pi = nf * nf - 1
+    dp_dmpi_sq_over_t2 = Fraction(-d_pi, 24)
+    dm_pi_sq_dm = 2 * b_const
+    per_flavor_delta_sigma_over_t2 = dp_dmpi_sq_over_t2 * dm_pi_sq_dm / nf
+    expected_delta_over_t2 = -Fraction(d_pi, 12 * nf) * b_const
+    assert_equal("pion-gas source derivative coefficient", per_flavor_delta_sigma_over_t2, expected_delta_over_t2)
+
+
 def check_linde_magnetic_scale():
     # In four dimensions, g_3^2 = g^2 T has mass dimension one.  A purely
     # magnetic three-dimensional vacuum free-energy density scales as (g_3^2)^3.
@@ -230,6 +266,7 @@ def main():
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()
+    check_low_temperature_chiral_condensate_coefficient()
     check_baryon_cumulants_and_radius_estimator()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()

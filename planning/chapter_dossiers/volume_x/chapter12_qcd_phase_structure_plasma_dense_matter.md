@@ -31,6 +31,9 @@ GitHub issue #628.
   per-flavor massive chiral condensate, trace-delta flavor generators,
   nonsinglet pseudoscalar density, nonsinglet axial current, and
   pseudoscalar susceptibility.
+- `U`, `F`, `B`, `M_pi`: chiral effective field, half-trace-normalized pion
+  decay constant, leading mass-source constant, and pion mass in the
+  low-temperature chiral EFT.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
@@ -76,6 +79,11 @@ GitHub issue #628.
 - Derives the finite-temperature GMOR relation as a pole-saturation
   consequence with the normalization conversion between trace-delta and
   half-trace flavor generators stated explicitly.
+- Defines the leading low-temperature chiral effective datum, proves
+  `Sigma=F^2 B` and `M_pi^2=2Bm`, and derives the one-loop pion-gas
+  correction
+  `Sigma(T)/Sigma(0)=1-(N_f^2-1)T^2/(12N_f F^2)+O(T^4/F^4)` with its
+  domain of validity stated.
 - Derives the massless free QCD pressure at zero and nonzero baryon chemical
   potential.
 - Records the HTL domain as a controlled approximation and proves the
@@ -106,8 +114,9 @@ GitHub issue #628.
   Banks--Casher kernel normalization, Linde magnetic-scale power counting,
   fugacity Laurent-polynomial shift, source-curvature susceptibility
   identity, one-loop Polyakov-holonomy potential coefficients,
-  chiral Ward-identity and GMOR normalization factors, baryon-number
-  cumulants and radius estimators, and CFL Goldstone count.
+  chiral Ward-identity and GMOR normalization factors, low-temperature
+  chiral effective theory coefficients, baryon-number cumulants and radius
+  estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -130,3 +139,7 @@ GitHub issue #628.
   Euclidean-volume normalization, added the integrated nonsinglet axial Ward
   identity, and derived the finite-temperature GMOR statement only as a
   stated pole-saturation consequence.
+- 2026-05-27 low-temperature chiral EFT pass: added the leading chiral
+  effective datum, tree-level source normalization, and one-loop pion-gas
+  correction to the condensate as a controlled asymptotic statement rather
+  than a proof of chiral restoration.

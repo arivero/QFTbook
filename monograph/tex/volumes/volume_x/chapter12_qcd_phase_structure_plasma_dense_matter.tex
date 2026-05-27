@@ -855,6 +855,172 @@ and the pseudoscalar density by \(1/\sqrt2\), hence
 \eqref{eq:qcd-thermal-gmor-half-normalization}.
 \end{proof}
 
+\subsection{Low-Temperature Chiral Effective Theory}
+\label{subsec:qcd-low-temperature-chiral-effective-theory}
+
+The Ward identity identifies the source derivative of the pressure with the
+integrated pion channel.  In the low-temperature phase this identity can be
+evaluated in a controlled effective theory.  The control assumptions are
+part of the statement: the spatial thermodynamic limit has been taken, the
+temperature is small compared with the first non-Goldstone mass scale, and
+the derivative expansion is organized at momenta \(p\ll 4\pi F\).
+
+\begin{definition}[Leading chiral effective datum]
+\label{def:qcd-leading-chiral-effective-datum}
+For \(N_f\) degenerate light quarks, the leading Euclidean chiral effective
+datum consists of a field \(U:\mathbb R^3\times S^1_\beta\to SU(N_f)\), a
+constant \(F>0\), and a constant \(B>0\), with leading action
+\begin{equation}
+  S_{\chi}^{(2)}
+  =
+  \int_0^\beta d\tau\int d^3x
+  \left[
+    \frac{F^2}{4}
+    \operatorname{tr}_f(\partial_\mu U^\dagger\partial_\mu U)
+    -
+    \frac{F^2B}{2}
+    \operatorname{tr}_f\bigl(MU^\dagger+UM^\dagger\bigr)
+  \right].
+  \label{eq:qcd-leading-chiral-effective-action}
+\end{equation}
+Here \(M=m\mathbf1_{N_f}\) for the degenerate-mass discussion, and
+\(\operatorname{tr}_f\) is the ordinary fundamental flavor trace.  We
+parameterize the pion fields by
+\begin{equation}
+  U=\exp\left(\frac{\ii\sqrt2}{F}\pi^a\tau^a\right),
+  \qquad
+  \operatorname{tr}_f(\tau^a\tau^b)=\delta^{ab}.
+  \label{eq:qcd-chiral-field-parameterization}
+\end{equation}
+With this convention \(F\) is the decay constant in the half-trace flavor
+normalization; the trace-delta decay constant used in
+Proposition~\ref{prop:qcd-thermal-gmor-pole-saturation} is
+\(f_{t,\delta}=\sqrt2F+O(m,T^2)\).
+\end{definition}
+
+\begin{proposition}[Tree-level source normalization]
+\label{prop:qcd-chiral-effective-source-normalization}
+The datum \eqref{eq:qcd-leading-chiral-effective-action} gives
+\begin{equation}
+  \Sigma=F^2B,
+  \qquad
+  M_\pi^2=2Bm
+  \label{eq:qcd-chiral-sigma-mpi-tree}
+\end{equation}
+at tree level, where \(\Sigma\) is the positive per-flavor condensate in
+\eqref{eq:qcd-phase-chiral-condensate-source}.  Equivalently,
+\[
+  F^2M_\pi^2=2m\Sigma,
+  \qquad
+  f_{t,\delta}^2M_\pi^2=4m\Sigma
+\]
+at this order.
+\end{proposition}
+
+\begin{proof}
+For a constant field \(U=\mathbf1\), the Euclidean free-energy density from
+\eqref{eq:qcd-leading-chiral-effective-action} is
+\[
+  f_0(m)=-N_fF^2Bm,
+  \qquad
+  p_0(m)=N_fF^2Bm .
+\]
+Therefore \(N_f^{-1}\partial p_0/\partial m=F^2B\), proving
+\(\Sigma=F^2B\).  Expanding
+\eqref{eq:qcd-chiral-field-parameterization},
+\[
+  U+U^\dagger
+  =
+  2\mathbf1-\frac{2}{F^2}\pi^a\pi^b\tau^a\tau^b+O(\pi^4),
+\]
+and substituting \(M=m\mathbf1\) gives the quadratic Euclidean Lagrangian
+\[
+  \frac12\partial_\mu\pi^a\partial_\mu\pi^a
+  +
+  Bm\,\pi^a\pi^a .
+\]
+Comparing with
+\(\frac12(\partial\pi)^2+\frac12M_\pi^2\pi^2\) gives
+\(M_\pi^2=2Bm\).  The two GMOR forms follow from
+\(f_{t,\delta}=\sqrt2F\) at leading order.
+\end{proof}
+
+\begin{proposition}[One-loop pion-gas correction to the condensate]
+\label{prop:qcd-low-temperature-chiral-condensate}
+Under the leading chiral effective assumptions above, and in the chiral limit
+after the spatial thermodynamic limit, the low-temperature condensate obeys
+\begin{equation}
+  \frac{\Sigma(T)}{\Sigma(0)}
+  =
+  1-\frac{N_f^2-1}{12N_f}\frac{T^2}{F^2}
+  +O\!\left(\frac{T^4}{F^4}\right)
+  \label{eq:qcd-low-temperature-chiral-condensate}
+\end{equation}
+within the chiral derivative expansion.  For \(N_f=2\), this is
+\[
+  \Sigma(T)/\Sigma(0)=1-\frac{T^2}{8F^2}+O(T^4/F^4).
+\]
+\end{proposition}
+
+\begin{proof}
+To one loop in the leading effective theory the only \(m\)-dependent thermal
+term at order \(T^2\) is the free pressure of
+\(d_\pi=N_f^2-1\) pion fields with
+\(\omega_k=(k^2+M_\pi^2)^{1/2}\):
+\begin{equation}
+  p_\pi(T,M_\pi)
+  =
+  -d_\pi T\int\frac{d^3k}{(2\pi)^3}
+  \log\bigl(1-e^{-\beta\omega_k}\bigr).
+  \label{eq:qcd-free-pion-pressure}
+\end{equation}
+The vacuum part is absorbed into the zero-temperature low-energy constants;
+the displayed thermal part is finite.  Differentiating at fixed \(T\),
+\begin{equation}
+  \frac{\partial p_\pi}{\partial M_\pi^2}
+  =
+  -\frac{d_\pi}{2}
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\omega_k}\frac{1}{e^{\beta\omega_k}-1}.
+  \label{eq:qcd-pion-pressure-mass-derivative}
+\end{equation}
+Since \(M_\pi^2=2Bm\), the pion contribution to the per-flavor condensate is
+\[
+  \frac1{N_f}\frac{\partial p_\pi}{\partial m}
+  =
+  -\frac{d_\pi B}{N_f}
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{\omega_k}\frac{1}{e^{\beta\omega_k}-1}.
+\]
+In the chiral limit the integral is
+\[
+  \int\frac{d^3k}{(2\pi)^3}
+  \frac{1}{|k|}\frac{1}{e^{\beta |k|}-1}
+  =
+  \frac{T^2}{12}.
+  \label{eq:qcd-massless-pion-tadpole}
+\]
+Thus
+\[
+  \Sigma(T)
+  =
+  F^2B-\frac{N_f^2-1}{N_f}B\,\frac{T^2}{12}
+  +O(T^4/F^2).
+\]
+Dividing by \(\Sigma(0)=F^2B\) gives
+\eqref{eq:qcd-low-temperature-chiral-condensate}.  The next terms require
+the \(O(p^4)\) chiral Lagrangian and two-loop pion interactions; they are
+not fixed by symmetry and \(F,B\) alone.
+\end{proof}
+
+\begin{remark}[What the low-temperature formula establishes]
+Equation~\eqref{eq:qcd-low-temperature-chiral-condensate} is a controlled
+asymptotic statement inside the broken phase.  It does not by itself prove a
+chiral restoration temperature or determine the order of a transition.  Such
+questions require the nonperturbative thermal QCD limit, or an effective
+description whose domain includes the critical region.
+\end{remark}
+
 \section{Free Plasma Limit and Thermodynamic Observables}
 
 At asymptotically high temperature and fixed \(\mu_B/T\), asymptotic freedom
