@@ -539,6 +539,11 @@ Current checks:
   gauge-covariant link-smearing section, including polar-projection
   equivariance, the \(\mathfrak{su}(N)\) projection used in stout smearing,
   and endpoint-conjugation covariance of the stout algebra element.
+- `lattice_perturbation_tadpole_checks.py`: exact finite checks for the
+  Volume XI lattice perturbative-coordinate section, including inversion of
+  the tree-level gauge-fixed lattice kernel, the \(\widehat p^2\) expansion
+  coefficient \(-1/12\), and the plaquette tadpole/boosted-coupling
+  bookkeeping.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for
   the Volume XI nonabelian lattice-observable section, including the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state

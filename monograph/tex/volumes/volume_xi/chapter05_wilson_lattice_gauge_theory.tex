@@ -745,6 +745,231 @@ smeared operators must keep this radius fixed in lattice units, or specify
 how it scales with \(a\), before the operator scheme has mathematical
 meaning.
 
+\section{Lattice Perturbative Coordinates and Tadpole Normalization}
+\label{sec:lattice-perturbative-coordinates-tadpole}
+
+Perturbation theory on a compact gauge lattice begins after choosing a chart
+near the trivial connection.  For \(G=SU(N)\), use Hermitian generators
+\(t^a\) normalized by
+\[
+  \operatorname{tr}(t^a t^b)=\delta^{ab},
+  \label{eq:lattice-perturbative-trace-normalization}
+\]
+and write a link near the identity as
+\[
+  U_\mu(x)
+  =
+  \exp\{-\ii g_0 a A_\mu(x+\tfrac a2\widehat\mu)\},
+  \qquad
+  A_\mu=A_\mu^a t^a .
+  \label{eq:lattice-link-perturbative-coordinate}
+\]
+With the Wilson action in the convention
+\[
+  S_W[U]
+  =
+  \frac{\beta}{N}
+  \sum_{x,\mu<\nu}
+  \operatorname{Re}\operatorname{tr}\bigl(\mathbf 1-U_{\mu\nu}(x)\bigr),
+  \qquad
+  \beta=\frac{N}{g_0^2},
+  \label{eq:lattice-perturbative-wilson-beta}
+\]
+the parameter \(g_0\) is the lattice coupling coordinate matching the
+continuum trace-delta convention
+\(\frac{1}{4g_0^2}\int\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\) at tree
+level.
+
+Let
+\[
+  \nabla_\mu^+ f(x)=\frac{f(x+a\widehat\mu)-f(x)}{a}
+\]
+be the forward difference.  The linearized lattice curvature is
+\[
+  f_{\mu\nu}(x)
+  =
+  \nabla_\mu^+ A_\nu(x+\tfrac a2\widehat\nu)
+  -
+  \nabla_\nu^+ A_\mu(x+\tfrac a2\widehat\mu).
+  \label{eq:lattice-linearized-curvature}
+\]
+Expanding the plaquette gives
+\[
+  U_{\mu\nu}(x)
+  =
+  \exp\{-\ii g_0 a^2 f_{\mu\nu}(x)+O(g_0a^3A,g_0^2a^3A^2)\}.
+  \label{eq:lattice-plaquette-perturbative-expansion}
+\]
+Therefore the quadratic Wilson action is
+\[
+  S_W^{(2)}[A]
+  =
+  \frac12
+  \sum_x a^D\sum_{\mu<\nu}
+  \operatorname{tr}\bigl(f_{\mu\nu}(x)f_{\mu\nu}(x)\bigr).
+  \label{eq:lattice-quadratic-wilson-action}
+\]
+All higher vertices come from the same compact-link exponential and from the
+Baker--Campbell--Hausdorff expansion of the plaquette.  The finite-regulator
+definition remains the Haar integral; the perturbative chart is a local
+coordinate system for asymptotic expansion around \(U_\ell=\mathbf 1\).
+
+On a periodic lattice, use Fourier modes with lattice momentum
+\[
+  \widehat p_\mu=\frac{2}{a}\sin\frac{ap_\mu}{2},
+  \qquad
+  \widehat p^2=\sum_\rho \widehat p_\rho^2.
+  \label{eq:lattice-hat-momentum}
+\]
+After absorbing the harmless mid-link phases into the Fourier components,
+\eqref{eq:lattice-quadratic-wilson-action} becomes
+\[
+  S_W^{(2)}
+  =
+  \frac12
+  \sum_p
+  A_\mu^a(-p)
+  \left[
+    \delta_{\mu\nu}\widehat p^2-\widehat p_\mu\widehat p_\nu
+  \right]
+  A_\nu^a(p).
+  \label{eq:lattice-transverse-quadratic-kernel}
+\]
+The zero modes and gauge orbits are treated by a finite-volume gauge-fixing
+or by restricting to gauge-invariant observables.  In a covariant perturbative
+calculation one adds the lattice gauge-fixing quadratic form
+\[
+  S_{\rm gf}^{(2)}
+  =
+  \frac{1}{2\xi}
+  \sum_p
+  A_\mu^a(-p)\,\widehat p_\mu\widehat p_\nu\,A_\nu^a(p),
+  \qquad \xi>0 .
+  \label{eq:lattice-covariant-gauge-fixing-quadratic}
+\]
+The resulting kernel is
+\[
+  K_{\mu\nu}^{(\xi)}(p)
+  =
+  \delta_{\mu\nu}\widehat p^2
+  -
+  \left(1-\frac1\xi\right)\widehat p_\mu\widehat p_\nu,
+  \label{eq:lattice-gauge-fixed-kernel}
+\]
+with inverse on nonzero momenta
+\[
+  D_{\mu\nu}^{ab}(p)
+  =
+  \delta^{ab}
+  \frac{1}{\widehat p^2}
+  \left[
+    \delta_{\mu\nu}
+    -
+    (1-\xi)\frac{\widehat p_\mu\widehat p_\nu}{\widehat p^2}
+  \right].
+  \label{eq:lattice-tree-propagator}
+\]
+As \(a\to0\) at fixed physical \(p\),
+\[
+  \widehat p^2
+  =
+  p^2-\frac{a^2}{12}\sum_\mu p_\mu^4+O(a^4p^6).
+  \label{eq:lattice-hat-momentum-expansion}
+\]
+This displayed artifact is one elementary source of the tree-level Symanzik
+corrections discussed above.
+
+\begin{proposition}[Tree-level lattice propagator]
+\label{prop:lattice-tree-level-propagator}
+For every nonzero lattice momentum, the tensor
+\eqref{eq:lattice-tree-propagator} is the inverse of
+\eqref{eq:lattice-gauge-fixed-kernel}:
+\[
+  K_{\mu\rho}^{(\xi)}(p)D_{\rho\nu}^{ab}(p)
+  =
+  \delta^{ab}\delta_{\mu\nu}.
+  \label{eq:lattice-propagator-inverse-identity}
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(P_L\) be the rank-one projector
+\[
+  (P_L)_{\mu\nu}=\frac{\widehat p_\mu\widehat p_\nu}{\widehat p^2},
+  \qquad
+  P_T=\mathbf 1-P_L .
+\]
+Then
+\[
+  K^{(\xi)}=\widehat p^2(P_T+\xi^{-1}P_L),
+  \qquad
+  D=\widehat p^{-2}(P_T+\xi P_L).
+  \]
+Since \(P_TP_L=0\) and \(P_T^2=P_T\), \(P_L^2=P_L\), their product is the
+identity tensor.  The color factor is diagonal by
+\eqref{eq:lattice-perturbative-trace-normalization}.
+\end{proof}
+
+Mean-link or tadpole normalization is best understood as a finite coordinate
+change for perturbative expansions of link observables and action
+coefficients.  Define the plaquette mean link, when the expectation is
+positive, by
+\[
+  u_0(\beta)
+  =
+  \left\langle
+    \frac1N\operatorname{Re}\operatorname{tr}U_p
+  \right\rangle_\beta^{1/4}.
+  \label{eq:plaquette-mean-link-definition}
+\]
+If a Wilson-line observable contains \(L\) elementary links, its
+plaquette-tadpole-normalized coordinate is
+\[
+  O_{\rm TI}=u_0^{-L}O .
+  \label{eq:tadpole-normalized-line-operator}
+\]
+For the Wilson plaquette action, the same bookkeeping rewrites the plaquette
+coefficient as
+\[
+  \frac{\beta}{N}\operatorname{Re}\operatorname{tr}U_p
+  =
+  \frac{\beta u_0^4}{N}
+  \operatorname{Re}\operatorname{tr}\bigl(u_0^{-4}U_p\bigr),
+  \]
+so the boosted coupling coordinate is
+\[
+  g_{\rm TI}^2=\frac{g_0^2}{u_0^4}.
+  \label{eq:tadpole-boosted-coupling}
+\]
+Equations \eqref{eq:tadpole-normalized-line-operator} and
+\eqref{eq:tadpole-boosted-coupling} define a perturbative coordinate
+convention.  They acquire predictive content only after specifying which
+renormalized observable is being matched and which finite-order truncation is
+being compared.
+
+\begin{example}[First terms of the boosted coupling]
+\label{ex:tadpole-boosted-coupling-series}
+Suppose the mean plaquette has a weak-coupling expansion
+\[
+  \left\langle
+    \frac1N\operatorname{Re}\operatorname{tr}U_p
+  \right\rangle_\beta
+  =
+  1-c_P g_0^2+O(g_0^4).
+  \label{eq:mean-plaquette-weak-coupling}
+\]
+Then \(u_0^4=1-c_Pg_0^2+O(g_0^4)\) and
+\[
+  g_{\rm TI}^2
+  =
+  g_0^2\left(1+c_Pg_0^2+O(g_0^4)\right).
+  \label{eq:tadpole-boosted-coupling-series}
+\]
+The coefficient \(c_P\) depends on the action, gauge group, and regulator
+volume used to define the expectation value.  The formula itself is the
+finite algebra of the coordinate change.
+\end{example}
+
 \section{Wilson Loops}
 
 For a closed oriented lattice contour \(C\),

@@ -35,6 +35,11 @@
 - Gauge-covariant link smearing as a local map \(G^E\to G^E\), including
   APE preprojection, polar \(SU(N)\) projection equivariance, stout smearing,
   and the locality/scheme status of iterated smearing.
+- Lattice perturbative coordinates around the trivial connection, including
+  the trace-delta coupling convention \(\beta=N/g_0^2\), the quadratic Wilson
+  kernel, covariant gauge fixing, the tree-level propagator, lattice momentum
+  artifacts, and plaquette tadpole normalization as a finite coordinate
+  convention.
 - Wilson loop operators.
 - Rectangular Wilson-loop transfer-matrix spectral representation, static
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
@@ -75,6 +80,8 @@
 | \(c_0,c_1\) | plaquette and rectangle coefficients in a local improved gauge action |
 | \(\mathcal S\) | local gauge-covariant smearing map on lattice links |
 | \(C_\ell,X_\ell,Q_\ell\) | staple sum, APE preprojection matrix, and stout algebra element |
+| \(g_0,\xi,\widehat p_\mu\) | lattice perturbative coupling coordinate, gauge-fixing parameter, and lattice momentum |
+| \(u_0,g_{\rm TI}\) | plaquette mean link and boosted/tadpole-improved coupling coordinate |
 | \(W_S(n,m)\) | normalized rectangular Wilson loop in representation \(S\) |
 | \(V_{a,S}(n)\) | finite-cutoff static potential in a static-source sector |
 | \(\chi(n,m)\) | Creutz ratio |
@@ -118,24 +125,35 @@
     smearing gives a smooth \(SU(N)\)-valued gauge-covariant link map because
     its algebra element is anti-Hermitian, traceless, and transforms by
     endpoint conjugation.
-13. Rectangular Wilson loops are transfer-matrix correlators in static-source
+13. The Wilson action with \(\beta=N/g_0^2\) has tree-level quadratic kernel
+    \(K_{\mu\nu}^{(\xi)}=\delta_{\mu\nu}\widehat p^2
+    -(1-\xi^{-1})\widehat p_\mu\widehat p_\nu\) after covariant gauge fixing,
+    with inverse \(D_{\mu\nu}=\widehat p^{-2}[\delta_{\mu\nu}
+    -(1-\xi)\widehat p_\mu\widehat p_\nu/\widehat p^2]\).
+14. The lattice momentum obeys
+    \(\widehat p^2=p^2-\frac{a^2}{12}\sum_\mu p_\mu^4+O(a^4p^6)\), giving an
+    explicit tree-level cutoff artifact.
+15. Plaquette tadpole normalization defines finite perturbative coordinates
+    \(O_{\rm TI}=u_0^{-L}O\) and \(g_{\rm TI}^2=g_0^2/u_0^4\); matching
+    statements require a specified observable and truncation order.
+16. Rectangular Wilson loops are transfer-matrix correlators in static-source
    sectors; an isolated lowest state gives the finite-lattice static
    potential by the effective-mass ratio.
-14. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
+17. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
-15. Wilson flow at finite lattice spacing is the negative-gradient ODE on
+18. Wilson flow at finite lattice spacing is the negative-gradient ODE on
    \(G^E\); compactness gives global existence, gauge invariance gives
    covariance, and the chain rule gives
    \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
-16. Positive physical flow time damps ultraviolet Fourier modes in the
+19. Positive physical flow time damps ultraviolet Fourier modes in the
    linearized continuum equation, but flowed scale coordinates and topological
    charge plateaux acquire continuum meaning only after a scaling trajectory
    and a regulator-level topological-charge definition are specified.
-17. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
+20. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
    bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
    differential.
-18. Chiral gauge theories require additional determinant-phase and anomaly
+21. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -165,6 +183,9 @@
 - `calculation-checks/link_smearing_checks.py` verifies polar-projection
   equivariance, the anti-Hermitian traceless stout algebra projection, and
   endpoint-conjugation covariance of the stout algebra element.
+- `calculation-checks/lattice_perturbation_tadpole_checks.py` verifies the
+  tree-level gauge-fixed kernel inverse, the \(\widehat p^2\) expansion
+  coefficient, and tadpole-normalization bookkeeping.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -188,3 +209,7 @@
 - 2026-05-27 issue #631 pass: added gauge-covariant smearing as regulator data
   with polar projection and stout smearing proofs, keeping the operator-scheme
   and locality assumptions explicit.
+- 2026-05-27 issue #631 pass: added lattice perturbative coordinates and
+  tadpole normalization, deriving the tree-level gauge-fixed kernel and
+  boosted-coupling coordinate as finite perturbative conventions whose
+  continuum use requires a stated matching problem.
