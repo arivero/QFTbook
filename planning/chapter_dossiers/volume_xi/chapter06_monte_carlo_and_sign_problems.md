@@ -59,6 +59,8 @@ chapters.
   plaquette score used by the HDF5 companion sampler.
 - `sample,R,T,W`: sample-level Wilson-loop table coordinates exported by
   the finite \(SU(3)\) generator and consumed by the static-potential script.
+- `measurements/wilson_loops[sample,R-1,T-1]`: HDF5 Wilson-loop coordinate
+  written by the \(SU(3)\) sampler and read by the static-potential script.
 - `Q_Lambda`: finite-dimensional HMC configuration manifold.
 - `Gamma_Lambda`, `lambda`: finite-dimensional HMC phase space and
   reference measure.
@@ -160,7 +162,8 @@ chapters.
   autocorrelation, blocking, delete-one-block jackknife, and block-bootstrap
   diagnostics on one-column time series.
 - Connects the static-potential analysis script's sample-level mode to the
-  correlated jackknife construction for nonlinear Wilson-loop ratios.
+  correlated jackknife construction for nonlinear Wilson-loop ratios,
+  including the HDF5 sampler data coordinate.
 
 ## Figure Ledger
 
@@ -199,7 +202,8 @@ the exponential decay of average phase with volume.
   jackknife errors, and block-bootstrap errors.
 - `qft_scripts/static_potential_from_wilson_loops.py --smoke`: also certifies
   the sample-level mode that recomputes static-potential logarithmic ratios
-  on deleted or resampled Monte Carlo blocks.
+  on deleted or resampled Monte Carlo blocks; its HDF5 mode reads
+  `measurements/wilson_loops[sample,R-1,T-1]`.
 
 ## Calculation Checks
 
@@ -242,7 +246,8 @@ the exponential decay of average phase with volume.
   the companion script.
 - `calculation-checks/static_potential_analysis_checks.py` includes the
   correlated delete-one jackknife check for static-potential nonlinear
-  Wilson-loop ratios.
+  Wilson-loop ratios and the HDF5 bridge from sampler data to static-potential
+  analysis.
 
 ## Audit Notes
 
@@ -262,3 +267,6 @@ the exponential decay of average phase with volume.
   subgroup-Metropolis HDF5/checkpointed data generator, with explicit
   Wilson-loop sample export feeding the static-potential/error-analysis
   scripts.
+- 2026-05-27 issue #631 pass: connected the static-potential script directly
+  to the sampler HDF5 coordinate
+  `measurements/wilson_loops[sample,R-1,T-1]`.

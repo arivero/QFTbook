@@ -188,7 +188,7 @@
 - `qft_scripts/static_potential_from_wilson_loops.py --smoke`: finite
   Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
   ratios from positive rectangular-loop data, including a sample-level
-  correlated jackknife/bootstrap mode.
+  correlated jackknife/bootstrap mode for CSV or HDF5 sampler output.
 - `qft_scripts/su3_wilson_flow_hdf5.py --smoke`: finite \(SU(3)\)
   Wilson-score gradient-flow evolution for hot/cold links or HDF5
   checkpoints, with trajectory output when `h5py` is available.
@@ -231,7 +231,9 @@
 - `calculation-checks/static_potential_analysis_checks.py` verifies the
   static-potential companion script on synthetic area-plus-perimeter
   Wilson-loop data, including elementary ratio-error propagation and
-  correlated delete-one jackknife errors for nonlinear Wilson-loop ratios.
+  correlated delete-one jackknife errors for nonlinear Wilson-loop ratios;
+  it also checks the HDF5 bridge from
+  `measurements/wilson_loops[sample,R-1,T-1]`.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -272,3 +274,6 @@
   with sample-level correlated jackknife/bootstrap analysis for the nonlinear
   logarithmic ratios, avoiding independent-error propagation when Monte Carlo
   rectangles are correlated.
+- 2026-05-27 issue #631 pass: connected the static-potential analysis
+  directly to the HDF5 SU(3) sampler dataset
+  `measurements/wilson_loops[sample,R-1,T-1]`, with an HDF5 calculation check.

@@ -76,9 +76,12 @@ notebooks or CI checks can consume the results without scraping prose.
 - `static_potential_from_wilson_loops.py`: finite-regulator analysis tool for
   positive rectangular Wilson-loop data.  It computes transfer-matrix
   effective-mass ratios and Creutz ratios from aggregate CSV input, and it
-  has a sample-level CSV mode that recomputes those nonlinear ratios on
-  deleted or resampled Monte Carlo blocks for correlated jackknife/bootstrap
-  errors.  The smoke test uses synthetic area-plus-perimeter data.
+  has sample-level CSV and HDF5 modes that recompute those nonlinear ratios
+  on deleted or resampled Monte Carlo blocks for correlated
+  jackknife/bootstrap errors.  The HDF5 mode reads the subgroup-Metropolis
+  dataset `measurements/wilson_loops` with index convention
+  `wilson_loops[sample,R-1,T-1]`.  The smoke test uses synthetic
+  area-plus-perimeter data.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.

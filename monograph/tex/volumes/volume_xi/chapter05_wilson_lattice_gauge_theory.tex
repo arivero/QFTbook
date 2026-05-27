@@ -1101,7 +1101,14 @@ Creutz ratios, and includes a synthetic area-plus-perimeter smoke test for
 \eqref{eq:creutz-area-perimeter-ansatz}.  It also has a sample-level mode for
 tables with columns \(\texttt{sample},R,T,W\): this mode forms block means,
 deletes or resamples entire Monte Carlo blocks, and recomputes the logarithmic
-ratios themselves.  This is the finite-regulator implementation of the
+ratios themselves.  The same sample-level analysis can be fed directly from
+the HDF5 sampler dataset
+\[
+  \texttt{measurements/wilson\_loops[sample,R-1,T-1]},
+\]
+which is the finite-data coordinate used by
+\(\texttt{su3\_gauge\_4d\_metropolis\_hdf5.py}\).  This is the
+finite-regulator implementation of the
 correlated jackknife construction in
 Proposition~\ref{prop:correlated-delete-one-block-jackknife}.  The optional
 elementary error propagation in aggregate mode is only the independent-error

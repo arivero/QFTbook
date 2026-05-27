@@ -35,6 +35,7 @@ import io
 import math
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -115,6 +116,52 @@ def read_wilson_loop_sample_csv(path: Path) -> list[WilsonLoopSampleDatum]:
             require(value > 0.0, "Wilson-loop values used in logarithms must be positive")
             data.append(WilsonLoopSampleDatum(sample, r, t, value))
     return data
+
+
+def import_h5py():
+    try:
+        import h5py  # type: ignore
+    except ImportError as exc:
+        raise RuntimeError("HDF5 input requires h5py; install h5py or use CSV input") from exc
+    return h5py
+
+
+def wilson_loop_grid_to_sample_data(wilson_loop_grid: Any) -> list[WilsonLoopSampleDatum]:
+    """Convert a sampler Wilson-loop array into correlated sample data.
+
+    The finite SU(3) sampler writes an array with index convention
+    ``wilson_loops[sample, R-1, T-1]``.  The sample labels used here are the
+    consecutive row labels of that array, not the Monte Carlo sweep numbers.
+    This is the right coordinate for blocking because the block construction
+    acts on the ordered measurement stream.
+    """
+
+    try:
+        shape = tuple(wilson_loop_grid.shape)
+    except AttributeError as exc:
+        raise ValueError("Wilson-loop grid must have a shape attribute") from exc
+    require(len(shape) == 3, "HDF5 Wilson-loop dataset must have shape (sample, R, T)")
+    nsamples, max_r, max_t = shape
+    require(nsamples >= 1, "HDF5 Wilson-loop dataset must contain at least one sample")
+    require(max_r >= 1 and max_t >= 1, "HDF5 Wilson-loop dataset must contain at least one rectangle")
+    data: list[WilsonLoopSampleDatum] = []
+    for sample in range(nsamples):
+        for r_index in range(max_r):
+            for t_index in range(max_t):
+                value = float(wilson_loop_grid[sample, r_index, t_index])
+                require(value > 0.0, "Wilson-loop values used in logarithms must be positive")
+                data.append(WilsonLoopSampleDatum(sample, r_index + 1, t_index + 1, value))
+    return data
+
+
+def read_wilson_loop_sample_hdf5(
+    path: Path,
+    dataset: str = "measurements/wilson_loops",
+) -> list[WilsonLoopSampleDatum]:
+    h5py = import_h5py()
+    with h5py.File(path, "r") as handle:
+        require(dataset in handle, f"HDF5 dataset {dataset!r} not found")
+        return wilson_loop_grid_to_sample_data(handle[dataset][...])
 
 
 def index_data(data: list[WilsonLoopDatum]) -> dict[tuple[int, int], WilsonLoopDatum]:
@@ -418,6 +465,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, help="CSV file with columns R,T,W[,dW]")
     parser.add_argument("--samples-input", type=Path, help="CSV file with columns sample,R,T,W")
+    parser.add_argument("--samples-hdf5", type=Path, help="HDF5 file with measurements/wilson_loops[sample,R-1,T-1]")
+    parser.add_argument("--hdf5-dataset", default="measurements/wilson_loops", help="Wilson-loop dataset inside --samples-hdf5")
     parser.add_argument("--output", type=Path, help="output CSV for extracted observables")
     parser.add_argument("--lattice-spacing", type=float, default=1.0)
     parser.add_argument("--block-size", type=int, default=4)
@@ -435,7 +484,11 @@ def main() -> None:
         run_smoke_test()
         return
     require(args.output is not None, "--output is required outside --smoke")
-    require((args.input is None) != (args.samples_input is None), "choose exactly one of --input and --samples-input")
+    input_count = sum(
+        value is not None
+        for value in (args.input, args.samples_input, args.samples_hdf5)
+    )
+    require(input_count == 1, "choose exactly one of --input, --samples-input, and --samples-hdf5")
     if not args.no_effective_mass:
         include_effective_mass = True
     else:
@@ -450,7 +503,10 @@ def main() -> None:
             output.extend(creutz_ratios(data))
         write_observables(args.output, output)
         return
-    sample_data = read_wilson_loop_sample_csv(args.samples_input)
+    if args.samples_input is not None:
+        sample_data = read_wilson_loop_sample_csv(args.samples_input)
+    else:
+        sample_data = read_wilson_loop_sample_hdf5(args.samples_hdf5, args.hdf5_dataset)
     resampled = resampled_static_observables(
         sample_data,
         args.lattice_spacing,
