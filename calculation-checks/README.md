@@ -196,6 +196,12 @@ Current checks:
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
   term on the unit square, and vanishing of a \(Q\)-exact deformation when the
   boundary contribution is zero.
+- `cohomological_field_theory_checks.py`: exact finite checks for the Volume
+  VIII cohomological-field-theory chapter, including the Cartan identity
+  \(d_C^2=-u\mathcal L_v\), equivariant closure of
+  \(\omega+u\mu\) for the Hamiltonian rotation model, the
+  Mathai--Quillen auxiliary Gaussian square-completion sign, and rank-one
+  zero-locus orientation.
 - `tqft_frobenius_gluing_checks.py`: exact rational checks for the Volume VIII
   bordism-functoriality chapter, including the inverse-pairing cylinder
   identity, Frobenius neck-exchange relation, pair-of-pants associativity, and
