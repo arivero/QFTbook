@@ -270,23 +270,38 @@ Current absorption:
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
   operator algebras, ordinary modules, characters, Zhu algebras and top-level
-  module classification, conformal blocks as Ward identity functionals,
-  higher-genus sewing, modular tensor category data, the Verlinde formula,
-  rational full-CFT modular invariants, a leading Cardy high-temperature
-  derivation, and logarithmic CFT boundaries.  The Ising modular and Zhu data
-  are checked by
-  `calculation-checks/cft_voa_modular_checks.py`.
+  module classification, unitary Virasoro minimal-model representation data,
+  conformal blocks as Ward identity functionals, higher-genus sewing, modular
+  tensor category data, the Verlinde formula, rational full-CFT modular
+  invariants, torus one-point trace blocks, Verlinde topological defect lines,
+  a leading Cardy high-temperature derivation, and logarithmic CFT
+  boundaries.  The torus/defect layer states Zhu modular covariance with
+  explicit hypotheses, proves the diagonal Verlinde defect fusion and
+  temporal/spatial modular \(S\)-move, and works the Ising spin-flip and
+  Kramers--Wannier defect examples.  The unitary minimal-model layer now
+  includes the full A-series \(S,T\) modular data, the
+  Kac-field-identification quotient normalization, and the finite
+  \(SU(2)\)-quotient fusion rule.  The Ising minimal-model
+  discussion now includes the level-two Virasoro Gram/null-vector calculation,
+  the BPZ equation for the spin four-point function, and the crossing
+  calculation fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\), expanding the stringbook appendix
+  discussion into a self-contained monograph derivation.  The Ising modular,
+  defect-line, Zhu, logarithmic-cell, and unitary-minimal-model data are
+  checked by `calculation-checks/cft_voa_modular_checks.py` and
+  `calculation-checks/cft_virasoro_minimal_checks.py`.
 - Volume V, Chapter 13 develops Liouville CFT from the QFT side: classical
   action and stress tensor, background charge and central charge, Seiberg
   domain, probabilistic construction boundary, reflection relation,
   continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
   equations for both \(V_{-b/2}\) and \(V_{-1/(2b)}\), ordinary and dual
   one-screening coefficients, hypergeometric connection formulas,
-  level-two Virasoro block coefficients, the elliptic nome interface to
-  Zamolodchikov recursion, and boundary Liouville states with FZZT
-  one-point functions and ZZ finite differences.  The finite convention
-  algebra is checked by `calculation-checks/liouville_bpz_checks.py` and the
-  Liouville boundary hyperbolic identities are checked by
+  Virasoro block Gram-projector coefficients through level three, the
+  elliptic nome interface to Zamolodchikov recursion, and boundary Liouville
+  states with FZZT one-point functions and ZZ finite differences.  The finite
+  convention algebra is checked by
+  `calculation-checks/liouville_bpz_checks.py` and the Liouville boundary
+  hyperbolic identities are checked by
   `calculation-checks/bcft_cardy_checks.py`.
 - Volume V, Chapter 14 develops the 2D BCFT appendix material as a
   self-contained boundary-state theory: conformal boundary data, Ishibashi
@@ -303,13 +318,18 @@ Current absorption:
   the extended \(\mathcal N=2\) spectral-flow operator layer with the
   charge-lattice/locality hypothesis, \(U(1)_R\) bosonization, integer and
   half-integer flow fields, and \(X^\pm/Y^\pm\) charge bookkeeping,
-  protected Landau--Ginzburg central-charge tests, and the supersymmetric
-  rank-one coset interfaces for \(SU(2)_k/U(1)\) minimal models and the
+  elliptic-genus Ramond trace hypotheses, right-moving ground-state
+  localization, spectral-flow/Jacobi covariance, protected
+  Landau--Ginzburg central-charge and \(\chi_y\) charge-polynomial tests,
+  and the supersymmetric rank-one coset interfaces for
+  \(SU(2)_k/U(1)\) minimal models and the
   \(SL(2,\mathbb R)_k/U(1)\) cigar, including central charges, weights,
-  \(R\)-charges, spectral-flowed labels, field identifications, compact
-  \(\mathbb Z_k\) action, and cigar momentum/winding bookkeeping.
+  \(R\)-charges, the compact \(A\)-series chiral ring, spectral-flowed
+  labels, field identifications, compact \(\mathbb Z_k\) action, and cigar
+  momentum/winding bookkeeping.
   It explicitly coordinates with the Volume VII supersymmetric-QFT lane for
-  the actual LG/GLSM RG-flow and cigar/Liouville mirror-duality
+  the actual LG/GLSM RG-flow, elliptic-genus realization theorem, and
+  cigar/Liouville mirror-duality
   constructions.  The finite algebra is checked by
   `calculation-checks/superconformal_algebra_checks.py`.
 

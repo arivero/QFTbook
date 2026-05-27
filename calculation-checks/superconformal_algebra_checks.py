@@ -307,6 +307,67 @@ def check_lg_central_charges():
         raise AssertionError("quintic LG central charge should be 9")
 
 
+def check_elliptic_genus_spectral_flow_law():
+    for c in (Fraction(3), Fraction(6), Fraction(9), Fraction(12), Fraction(15, 2)):
+        index = c / 6
+        for lam in range(-3, 4):
+            q_factor = -index * lam * lam
+            y_factor = -2 * index * lam
+            assert_equal(q_factor, -c * lam * lam / 6, f"elliptic q multiplier c={c}, lambda={lam}")
+            assert_equal(y_factor, -c * lam / 3, f"elliptic y multiplier c={c}, lambda={lam}")
+
+        for lam_1 in range(-2, 3):
+            for lam_2 in range(-2, 3):
+                # The elliptic shift factors obey the Jacobi cocycle:
+                # first shift by lam_2, then by lam_1 at z+lam_2 tau.
+                sequential_q = (
+                    -index * lam_2 * lam_2
+                    -index * lam_1 * lam_1
+                    -2 * index * lam_1 * lam_2
+                )
+                sequential_y = -2 * index * (lam_1 + lam_2)
+                combined_q = -index * (lam_1 + lam_2) ** 2
+                combined_y = -2 * index * (lam_1 + lam_2)
+                assert_equal(
+                    sequential_q,
+                    combined_q,
+                    f"elliptic q cocycle c={c}, lambda1={lam_1}, lambda2={lam_2}",
+                )
+                assert_equal(
+                    sequential_y,
+                    combined_y,
+                    f"elliptic y cocycle c={c}, lambda1={lam_1}, lambda2={lam_2}",
+                )
+
+
+def check_lg_chi_y_charge_polynomials():
+    for k in range(0, 16):
+        c = Fraction(3 * k, k + 2)
+        ramond_shift = c / 6
+        charges = [Fraction(ell, k + 2) - ramond_shift for ell in range(k + 1)]
+        assert_equal(len(charges), k + 1, f"A-series chi_y term count k={k}")
+        assert_equal(sum(charges), Fraction(0), f"A-series Ramond charges sum k={k}")
+        for ell, charge in enumerate(charges):
+            reflected = charges[k - ell]
+            assert_equal(charge + reflected, Fraction(0), f"A-series charge reflection k={k}, ell={ell}")
+            expected = Fraction(2 * ell - k, 2 * (k + 2))
+            assert_equal(charge, expected, f"A-series Ramond charge k={k}, ell={ell}")
+
+        witten_index = sum(Fraction(1) for _ in charges)
+        assert_equal(witten_index, Fraction(k + 1), f"A-series Witten index k={k}")
+
+    quintic_degrees = [5, 5, 5, 5, 5]
+    quintic_weights = [Fraction(1, degree) for degree in quintic_degrees]
+    quintic_c = 3 * sum(Fraction(1) - 2 * weight for weight in quintic_weights)
+    quintic_shift = quintic_c / 6
+    quintic_dimension = 1
+    for degree in quintic_degrees:
+        quintic_dimension *= degree - 1
+    assert_equal(quintic_c, Fraction(9), "quintic elliptic central charge")
+    assert_equal(quintic_shift, Fraction(3, 2), "quintic Ramond charge shift")
+    assert_equal(quintic_dimension, 4**5, "quintic Jacobi/Witten index dimension")
+
+
 def compact_coset_hq(k: int, j: Fraction, m: Fraction, eta: Fraction = Fraction(0)):
     return (
         (j * (j + 1) - (m + eta) ** 2) / k + eta**2 / 2,
@@ -319,6 +380,72 @@ def noncompact_coset_hq(k: int, j: Fraction, m: Fraction, eta: Fraction = Fracti
         (-j * (j - 1) + (m + eta) ** 2) / k + eta**2 / 2,
         2 * (m + eta) / k + eta,
     )
+
+
+def compact_chiral_ring_product(k: int, left, right):
+    if left is None or right is None:
+        return None
+    minimal_level = k - 2
+    product = left + right
+    return product if product <= minimal_level else None
+
+
+def check_compact_coset_chiral_ring():
+    for k in range(2, 30):
+        minimal_level = k - 2
+        c_compact = Fraction(3 * minimal_level, k)
+        max_chiral_charge = c_compact / 3
+
+        for ell in range(minimal_level + 1):
+            j = Fraction(ell, 2)
+            h_chiral, q_chiral = compact_coset_hq(k, j, -j)
+            assert_equal(q_chiral, Fraction(ell, k), f"compact chiral charge k={k}, ell={ell}")
+            assert_equal(h_chiral, q_chiral / 2, f"compact chiral shortening k={k}, ell={ell}")
+
+            ramond_h, ramond_q = compact_coset_hq(k, j, -j, Fraction(-1, 2))
+            assert_equal(ramond_h, c_compact / 24, f"compact Ramond ground weight k={k}, ell={ell}")
+            expected_ramond_q = Fraction(2 * ell - minimal_level, 2 * k)
+            assert_equal(ramond_q, expected_ramond_q, f"compact Ramond charge k={k}, ell={ell}")
+
+        for left in range(minimal_level + 1):
+            for right in range(minimal_level + 1):
+                product = compact_chiral_ring_product(k, left, right)
+                if left + right <= minimal_level:
+                    assert_equal(product, left + right, f"compact chiral product k={k}")
+                    charge_sum = Fraction(left, k) + Fraction(right, k)
+                    assert_equal(
+                        charge_sum,
+                        Fraction(product, k),
+                        f"compact chiral charge additivity k={k}",
+                    )
+                else:
+                    assert_equal(product, None, f"compact chiral nilpotence k={k}")
+                    if Fraction(left + right, k) <= max_chiral_charge:
+                        raise AssertionError(
+                            f"compact nilpotent product should exceed c/3 k={k}"
+                        )
+
+        labels = list(range(minimal_level + 1)) + [None]
+        for a in labels:
+            for b in labels:
+                for c in labels:
+                    left_assoc = compact_chiral_ring_product(
+                        k, compact_chiral_ring_product(k, a, b), c
+                    )
+                    right_assoc = compact_chiral_ring_product(
+                        k, a, compact_chiral_ring_product(k, b, c)
+                    )
+                    assert_equal(left_assoc, right_assoc, f"compact chiral associativity k={k}")
+
+        generator_power = 0
+        for power in range(1, minimal_level + 1):
+            generator_power = compact_chiral_ring_product(k, generator_power, 1)
+            assert_equal(generator_power, power, f"compact chiral generator power k={k}")
+        assert_equal(
+            compact_chiral_ring_product(k, generator_power, 1),
+            None,
+            f"compact chiral generator nilpotence k={k}",
+        )
 
 
 def check_supersymmetric_rank_one_coset_interfaces():
@@ -429,8 +556,14 @@ def main():
     check_ns_to_ramond_ground_state()
     check_extended_n2_spectral_flow_operators()
     check_lg_central_charges()
+    check_elliptic_genus_spectral_flow_law()
+    check_lg_chi_y_charge_polynomials()
+    check_compact_coset_chiral_ring()
     check_supersymmetric_rank_one_coset_interfaces()
-    print("All 2D superconformal algebra checks passed.")
+    print(
+        "All 2D superconformal algebra, elliptic-genus, compact chiral-ring, "
+        "and rank-one coset checks passed."
+    )
 
 
 if __name__ == "__main__":

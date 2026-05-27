@@ -195,6 +195,84 @@ def check_ising_t_spin_selection_and_diagonal_invariant() -> None:
     )
 
 
+def defect_eigenvalues(line_index: int) -> list[Qsqrt2]:
+    return [S[line_index][sector] / S[0][sector] for sector in range(len(LABELS))]
+
+
+def check_ising_verlinde_defect_lines() -> None:
+    eigenvalues = {
+        label: defect_eigenvalues(index)
+        for index, label in enumerate(LABELS)
+    }
+    assert_equal("identity defect eigenvalues", eigenvalues["1"], [ONE, ONE, ONE])
+    assert_equal("sigma defect eigenvalues", eigenvalues["sigma"], [SQRT2, ZERO, -SQRT2])
+    assert_equal("epsilon defect eigenvalues", eigenvalues["epsilon"], [ONE, -ONE, ONE])
+
+    for a, left in enumerate(LABELS):
+        for b, right in enumerate(LABELS):
+            for sector in range(len(LABELS)):
+                lhs = eigenvalues[left][sector] * eigenvalues[right][sector]
+                rhs = sum(
+                    (verlinde(a, b, c) * eigenvalues[target][sector]
+                     for c, target in enumerate(LABELS)),
+                    ZERO,
+                )
+                assert_equal(
+                    f"defect fusion eigencharacter {left} x {right} on {LABELS[sector]}",
+                    lhs,
+                    rhs,
+                )
+
+    expected_spatial_epsilon = [
+        [ZERO, ZERO, ONE],
+        [ZERO, ONE, ZERO],
+        [ONE, ZERO, ZERO],
+    ]
+    expected_spatial_sigma = [
+        [ZERO, ONE, ZERO],
+        [ONE, ZERO, ONE],
+        [ZERO, ONE, ZERO],
+    ]
+    spatial_coefficients = {}
+    for a, line in enumerate(LABELS):
+        spatial_coefficients[line] = [
+            [
+                sum(
+                    (
+                        eigenvalues[line][i] * S[i][p] * S[i][q]
+                        for i in range(len(LABELS))
+                    ),
+                    ZERO,
+                )
+                for q in range(len(LABELS))
+            ]
+            for p in range(len(LABELS))
+        ]
+        for p in range(len(LABELS)):
+            for q in range(len(LABELS)):
+                assert_equal(
+                    f"S transform of temporal defect {line}: {LABELS[p]}, {LABELS[q]}",
+                    spatial_coefficients[line][p][q],
+                    verlinde(a, p, q),
+                )
+
+    assert_equal(
+        "epsilon temporal defect S-transform spatial multiplicities",
+        spatial_coefficients["epsilon"],
+        expected_spatial_epsilon,
+    )
+    assert_equal(
+        "sigma temporal defect S-transform spatial multiplicities",
+        spatial_coefficients["sigma"],
+        expected_spatial_sigma,
+    )
+    assert_equal(
+        "spin-field torus one-point killed by spin-flip defect",
+        eigenvalues["epsilon"][LABELS.index("sigma")],
+        -ONE,
+    )
+
+
 def check_cardy_tauberian_saddle_constants() -> None:
     """Check the Legendre-dual coefficient in the Cardy density formula.
 
@@ -466,11 +544,12 @@ def main() -> None:
     check_quantum_dimensions()
     check_character_exponents()
     check_ising_t_spin_selection_and_diagonal_invariant()
+    check_ising_verlinde_defect_lines()
     check_cardy_tauberian_saddle_constants()
     check_logarithmic_jordan_cell_two_point_ward_identities()
     check_logarithmic_jordan_trace_invisibility()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, Zhu-algebra, logarithmic-cell, and conformal-net index checks passed.")
+    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, and conformal-net index checks passed.")
 
 
 if __name__ == "__main__":

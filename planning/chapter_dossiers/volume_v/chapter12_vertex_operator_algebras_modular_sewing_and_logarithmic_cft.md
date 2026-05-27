@@ -22,12 +22,29 @@ current QFT scope.
 - `Omega(M)`: subspace killed by modes above their zero-mode threshold.
 - `C_2(V)`: span of \(a_{-2}b\), used in the explicit cofiniteness
   hypothesis for character modularity.
+- `M(c,h)`: Virasoro Verma module with central charge `c` and highest weight
+  `h`.
+- `c_m`: unitary minimal-model central charge `1 - 6/(m(m+1))`.
+- `h_{r,s}^{(m)}`: Kac-table highest weight for the unitary minimal model
+  `M(m,m+1)`.
+- `J(r,s)`: Kac-table field-identification involution
+  `(r,s) -> (m-r,m+1-s)`.
+- `n^{(k)}_{ab}{}^c`: \(SU(2)_k\) fusion coefficient used in the finite
+  quotient formula for unitary minimal-model fusion.
+- `F_0,F_epsilon`: Ising spin four-point Virasoro block basis in the identity
+  and energy channels.
 - `CB_{g,n}`: space of chiral conformal blocks.
 - `q`: sewing parameter in \(zw=q\).
 - `S,T`: genus-one modular matrices.
 - `N_{ij}{}^k`: fusion coefficient.
 - `d_i`: quantum dimension \(S_{i0}/S_{00}\).
 - `M_{ij}`: full-CFT modular-invariant multiplicity matrix.
+- `F_i(v;tau)`: chiral torus one-point block
+  `Tr_{M_i} o(v) q^{L_0-c/24}`.
+- `D_a`: Verlinde topological defect labelled by a simple chiral object `a`
+  in the diagonal rational full CFT.
+- `lambda_a(i)`: defect eigenvalue `S_{ai}/S_{0i}` on the diagonal sector
+  `M_i otimes overline{M_i^vee}`.
 - `A(I)`: von Neumann algebra assigned by a conformal net to an interval
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
@@ -55,6 +72,15 @@ current QFT scope.
 - Works the Ising Zhu algebra as
   \(\mathbb C[x]/(x(x-1/16)(x-1/2))\), matching the vacuum, spin, and energy
   top weights.
+- Adds the unitary Virasoro minimal-model layer: derives the level-one and
+  level-two Gram matrices, states the unitary highest-weight classification as
+  a quoted theorem boundary, records the Kac-table identification and
+  triangular representative set, states the full unitary minimal-model
+  \(S,T\) modular data with quotient normalization, proves the finite
+  \(SU(2)\)-quotient fusion rule from Verlinde, derives the Ising spin
+  level-two null vector, and proves the Ising spin four-point BPZ/crossing
+  calculation fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\).
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - States explicit rationality/sewing hypotheses before invoking modular
@@ -81,6 +107,15 @@ current QFT scope.
   equivalence.
 - Defines rational full-CFT torus partition functions and the modular
   invariance constraints \(MS=SM\), \(MT=TM\).
+- Defines chiral torus one-point trace blocks, states Zhu modular covariance
+  with the primary weight factor and explicit rationality/\(C_2\)-cofiniteness
+  hypotheses, and explains why full-CFT torus one-point functions constrain
+  OPE tensors beyond the scalar partition function.
+- Defines diagonal Verlinde topological defects \(D_a\), proves their fusion
+  from the simultaneous diagonalization form of the Verlinde formula, proves
+  the temporal-defect to spatial-defect modular \(S\)-move, and works the
+  Ising spin-flip and Kramers--Wannier defect lines including the spin-field
+  one-point selection rule.
 - Derives the leading Cardy high-temperature partition-function asymptotic
   from modular invariance and a unique vacuum hypothesis, states the
   exponential Tauberian theorem needed to pass from the partition function to
@@ -107,10 +142,19 @@ current QFT scope.
   conformal-net `mu`-index/global-dimension relation, character exponent
   shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
-  vacuum, the Cardy Tauberian saddle coefficient, and the Ising Zhu
+  vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
+  \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
+  the Cardy Tauberian saddle coefficient, and the Ising Zhu
   polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
   rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
   trace invisibility of the nilpotent part.
+- `calculation-checks/cft_virasoro_minimal_checks.py` verifies the unitary
+  minimal-model Kac-table arithmetic, Ising and tricritical-Ising weights,
+  A-series minimal-model \(S\)-matrix orthogonality, \(S^2\), Verlinde
+  integrality and agreement with the exact \(SU(2)\)-quotient fusion rule,
+  level-two Ising Gram determinant/null vector, Ising BPZ block differential
+  equation, and the crossing matrix fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
 
@@ -121,6 +165,12 @@ current QFT scope.
   and the definitions of split property, strong additivity, and `mu`-index.
   The monograph text defines the net objects locally and quotes only the
   external theorem boundary.
+- Internal source consulted for the unitary Virasoro pass:
+  `transcription/tex/253c/conformal_field_theory.tex`, pp. 116--135 source
+  block, and `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`
+  around the Ising minimal-model four-point and torus discussion.  The
+  monograph gives local Gram/BPZ/crossing derivations and treats the full
+  unitary classification as a quoted theorem boundary.
 
 ## Audit Notes
 
@@ -147,3 +197,19 @@ current QFT scope.
   finite logarithmic scaling, \(L_0/L_1\) Ward-identity two-point functions,
   basis-dependence bookkeeping, the ordinary-character failure mode, and exact
   formal calculation checks.
+- 2026-05-27 unitary Virasoro minimal-model pass: incorporated the 253c and
+  stringbook Ising/minimal-model material into Chapter 12 by deriving the
+  low-level Virasoro Gram/null-vector algebra, stating the unitary
+  minimal-model classification boundary, proving the Ising BPZ block/crossing
+  calculation fixing \(C_{\sigma\sigma\varepsilon}=1/2\), and adding a
+  dedicated conformal-block calculation check script.
+- 2026-05-27 unitary minimal-model modular-data pass: added the full A-series
+  \(S,T\) data for \(\mathcal M(m,m+1)\), made the Kac-field-identification
+  quotient normalization explicit, proved the finite \(SU(2)\)-quotient
+  fusion rule, and extended the minimal-model calculation companion to check
+  modular orthogonality and Verlinde fusion for \(m=3,\ldots,7\).
+- 2026-05-27 torus one-point/defect-line pass: added Zhu torus one-point
+  trace blocks, the modular-covariance theorem boundary with explicit
+  hypotheses, diagonal Verlinde defect operators, the temporal/spatial defect
+  modular \(S\)-move, Ising spin-flip and Kramers--Wannier examples, and exact
+  defect-line arithmetic checks.

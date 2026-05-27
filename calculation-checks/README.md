@@ -211,9 +211,19 @@ Current checks:
   coefficients, quantum dimensions, shifted character exponents, the
   \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
   Ising modular invariant with one vacuum, the Cardy Tauberian saddle
-  coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
-  invisibility of the nilpotent extension, and the Zhu-algebra top-weight
-  polynomial with its primitive idempotents.
+  coefficient, Verlinde/topological-defect eigencharacters, exact temporal
+  to spatial defect \(S\)-move multiplicities, the Ising spin-field
+  one-point selection rule under the spin-flip defect, the rank-two
+  logarithmic Jordan-cell Ward identities and trace invisibility of the
+  nilpotent extension, and the Zhu-algebra top-weight polynomial with its
+  primitive idempotents.
+- `cft_virasoro_minimal_checks.py`: exact checks for the unitary Virasoro
+  minimal-model and Ising BPZ-block material, including Kac-table
+  identifications, Ising and tricritical-Ising weights, the A-series
+  minimal-model \(S\)-matrix, \(S^2\), Verlinde integrality, agreement with
+  the exact \(SU(2)\)-quotient fusion rule, the level-two Gram determinant
+  and null vector, the Ising spin-field BPZ differential equation, and the
+  crossing matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,
@@ -225,7 +235,8 @@ Current checks:
   including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
   dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
-  level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
+  Virasoro block coefficients through level three with Gram determinant
+  factorization and global-block limits, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).
 - `superconformal_algebra_checks.py`: exact rational checks for the
   two-dimensional superconformal-algebra chapter, including the
@@ -233,10 +244,12 @@ Current checks:
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
   extended \(\mathcal N=2\) spectral-flow operator weights, charges,
   Heisenberg OPE exponents, and descendant charges, protected
-  Landau--Ginzburg central-charge arithmetic, and the
+  Landau--Ginzburg central-charge arithmetic, elliptic-genus spectral-flow
+  Jacobi multipliers, Landau--Ginzburg \(\chi_y\) Ramond charge
+  polynomials and Witten-index counts, and the
   supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
-  coset central-charge, chiral-primary, field-identification, and
-  spectral-flow formulas.
+  coset central-charge, compact chiral-ring, chiral-primary,
+  field-identification, and spectral-flow formulas.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
