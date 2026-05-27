@@ -531,6 +531,10 @@ Current checks:
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale
   derivative, and the factor two in the Chern--Weil variation of
   \(\operatorname{tr}(F\wedge F)\).
+- `gauge_action_improvement_checks.py`: exact arithmetic checks for the
+  Volume XI tree-level improved gauge-action section, including rectangle
+  flux moments, the equations \(c_0+8c_1=1\) and \(c_0+20c_1=0\), and the
+  plaquette-plus-rectangle normalization convention.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for
   the Volume XI nonabelian lattice-observable section, including the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state

@@ -28,6 +28,10 @@
   \(d\langle N^{-1}\operatorname{Re}\operatorname{Tr}U_p\rangle/d\beta
   |_{\beta=0}=1/(2N^2)\), hence \(1/18\) for \(SU(3)\).
 - Continuum expansion of plaquette holonomy.
+- Plaquette-plus-rectangle improved gauge actions, including the finite
+  regulator meaning of action improvement, the tree-level Symanzik
+  coefficients \(c_1=-1/12,c_0=5/3\), the Iwasaki normalization convention,
+  and the separation between improvement and reflection positivity.
 - Wilson loop operators.
 - Rectangular Wilson-loop transfer-matrix spectral representation, static
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
@@ -65,6 +69,7 @@
 | \(\rho,K(C)\) | surface-entropy constants in the finite area estimate |
 | \(D_\lambda,\chi_\lambda,c_\lambda\) | irreducible representation, character, and character-expansion coefficient |
 | \(P_\ell\) | link Haar projector in the nonabelian spin-foam expansion |
+| \(c_0,c_1\) | plaquette and rectangle coefficients in a local improved gauge action |
 | \(W_S(n,m)\) | normalized rectangular Wilson loop in representation \(S\) |
 | \(V_{a,S}(n)\) | finite-cutoff static potential in a static-source sector |
 | \(\chi(n,m)\) | Creutz ratio |
@@ -94,24 +99,31 @@
    \(\exp[(\beta/N)\operatorname{Re}\operatorname{Tr}U]\), the normalized
    fundamental plaquette has slope \(1/(2N^2)\) at \(\beta=0\), so the
    \(SU(3)\) coefficient is \(1/18\).
-9. Rectangular Wilson loops are transfer-matrix correlators in static-source
+9. In the plaquette-plus-rectangle action, leading continuum normalization
+   gives \(c_0+8c_1=1\); cancellation of the abelian quadratic \(O(a^2)\)
+   derivative artifact gives \(c_0+20c_1=0\); hence the tree-level Symanzik
+   coefficients are \(c_1=-1/12,c_0=5/3\).
+10. Improved action coefficients, continuum normalization, and
+    reflection-positivity/transfer-matrix reconstruction are separate
+    regulator requirements.
+11. Rectangular Wilson loops are transfer-matrix correlators in static-source
    sectors; an isolated lowest state gives the finite-lattice static
    potential by the effective-mass ratio.
-10. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
+12. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
-11. Wilson flow at finite lattice spacing is the negative-gradient ODE on
+13. Wilson flow at finite lattice spacing is the negative-gradient ODE on
    \(G^E\); compactness gives global existence, gauge invariance gives
    covariance, and the chain rule gives
    \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
-12. Positive physical flow time damps ultraviolet Fourier modes in the
+14. Positive physical flow time damps ultraviolet Fourier modes in the
    linearized continuum equation, but flowed scale coordinates and topological
    charge plateaux acquire continuum meaning only after a scaling trajectory
    and a regulator-level topological-charge definition are specified.
-13. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
+15. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
    bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
    differential.
-14. Chiral gauge theories require additional determinant-phase and anomaly
+16. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -134,6 +146,10 @@
   negative-gradient monotonicity identity, adjoint norm covariance,
   linearized heat-kernel damping, the \(w_0\) derivative convention, and the
   Chern--Weil variation factor used in the Wilson-flow section.
+- `calculation-checks/gauge_action_improvement_checks.py` verifies the
+  plaquette-plus-rectangle tree-level improvement arithmetic: rectangle flux
+  moments, \(c_0+8c_1=1\), \(c_0+20c_1=0\), and the normalization convention
+  for one-parameter rectangle actions.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -150,3 +166,7 @@
   section treats flow first as a finite-regulator ODE, not as a continuum
   slogan, and separates flowed smoothing, scale setting, and topological
   charge definitions.
+- 2026-05-27 issue #631 pass: added tree-level plaquette-plus-rectangle gauge
+  improvement with an explicit rectangle-flux derivation, while flagging that
+  loop-level improvement and transfer-matrix positivity are distinct
+  regulator questions.

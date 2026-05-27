@@ -440,6 +440,142 @@ for anti-Hermitian \(A_\mu\).  Matching to
 \]
 fixes the relation between \(\beta\), \(g\), and the trace normalization.
 
+\section{Improved Gauge Actions at Tree Level}
+\label{sec:lattice-tree-level-improved-gauge-actions}
+
+The lattice action is part of the regulator definition.  Two local
+gauge-invariant actions may define the same continuum theory only after a
+scaling trajectory and a comparison of renormalized coordinates have been
+specified.  Improvement is the finite-regulator problem of choosing the
+local action so that selected irrelevant coordinates are absent, or smaller,
+in a chosen coordinate system.
+
+For \(G=SU(N)\) in the fundamental trace convention used above, let
+\(U_{\mu\nu}^{1\times1}(x)\) be the elementary plaquette and let
+\(U_{\mu\nu}^{1\times2}(x)\) denote the oriented rectangle with side lengths
+\(a\) and \(2a\) in the \(\mu,\nu\) plane.  The plaquette-plus-rectangle
+family is
+\[
+  S_{c_0,c_1}[U]
+  =
+  \frac{\beta}{N}
+  \sum_x\sum_{\mu<\nu}
+  \left[
+    c_0\bigl(N-\operatorname{Re}\operatorname{Tr}U_{\mu\nu}^{1\times1}(x)\bigr)
+    +c_1\sum_{\rho\in\{(\mu,\nu),(\nu,\mu)\}}
+     \bigl(N-\operatorname{Re}\operatorname{Tr}U_\rho^{1\times2}(x)\bigr)
+  \right].
+  \label{eq:plaquette-rectangle-gauge-action}
+\]
+The two rectangles in the last sum have their long side in the first or
+second direction of the ordered pair.  Since a \(1\times2\) rectangle has
+twice the area of a plaquette, its leading \(F_{\mu\nu}^2\) contribution is
+four times the plaquette contribution.  Thus the continuum normalization is
+\[
+  c_0+8c_1=1.
+  \label{eq:plaquette-rectangle-continuum-normalization}
+\]
+The Wilson action is \(c_0=1,c_1=0\).
+
+\begin{proposition}[Tree-level rectangle improvement]
+\label{prop:tree-level-rectangle-gauge-improvement}
+In the plaquette-plus-rectangle family
+\eqref{eq:plaquette-rectangle-gauge-action}, the tree-level cancellation of
+the abelian quadratic \(O(a^2)\) derivative artifact is equivalent to
+\[
+  c_0+20c_1=0.
+  \label{eq:plaquette-rectangle-derivative-cancellation}
+\]
+Together with \eqref{eq:plaquette-rectangle-continuum-normalization}, this
+gives
+\[
+  c_1=-\frac{1}{12},\qquad c_0=\frac{5}{3}.
+  \label{eq:tree-level-symanzik-gauge-coefficients}
+\]
+\end{proposition}
+
+\begin{proof}
+It suffices for the tree-level quadratic calculation to work in an abelian
+Cartan direction.  Let \(F=F_{\mu\nu}\) be a smooth scalar field strength and
+consider a rectangle centered at \(x\) with side lengths \(ra\) in the
+\(\mu\)-direction and \(sa\) in the \(\nu\)-direction.  Its flux is
+\[
+  \Phi_{r,s}(x)
+  =
+  \int_{-ra/2}^{ra/2}\!\dd u
+  \int_{-sa/2}^{sa/2}\!\dd v\,
+  F(x+u\hat\mu+v\hat\nu).
+\]
+Taylor expansion around the center gives
+\[
+  \Phi_{r,s}
+  =
+  r s a^2 F
+  +
+  \frac{r s a^4}{24}
+  \left(r^2\partial_\mu^2+s^2\partial_\nu^2\right)F
+  +O(a^6).
+  \label{eq:rectangle-flux-expansion}
+\]
+The small-field loop weight is proportional to \(\frac12\Phi_{r,s}^2\).
+After summing over lattice sites, the \(F\partial^2F\) term may be integrated
+by parts up to boundary terms or finite-volume periodic identities:
+\[
+  \frac12\Phi_{r,s}^2
+  =
+  \frac12r^2s^2a^4F^2
+  -
+  \frac{r^2s^2a^6}{24}
+  \left[
+    r^2(\partial_\mu F)^2+s^2(\partial_\nu F)^2
+  \right]
+  +O(a^8).
+  \label{eq:rectangle-flux-square-expansion}
+\]
+For the plaquette \((r,s)=(1,1)\), the derivative coefficient in one
+\(\mu\nu\)-plane is proportional to \(1\).  For the two \(1\times2\)
+rectangles, \((r,s)=(1,2)\) and \((2,1)\), the corresponding coefficients
+add to
+\[
+  4(1^2+2^2)=20
+\]
+in the symmetric combination
+\((\partial_\mu F_{\mu\nu})^2+(\partial_\nu F_{\mu\nu})^2\).  Therefore the
+quadratic \(O(a^2)\) derivative artifact is proportional to \(c_0+20c_1\).
+Setting this coefficient to zero and imposing the leading continuum
+normalization \(c_0+8c_1=1\) gives
+\eqref{eq:tree-level-symanzik-gauge-coefficients}.
+\end{proof}
+
+The preceding proposition is deliberately a tree-level statement.  In a
+nonabelian interacting theory, the dimension-six gauge-invariant operator
+basis contains covariant-derivative and cubic-curvature terms, modulo Bianchi
+identities and field redefinitions.  Loop-level improvement is therefore a
+renormalized-coordinate problem whose conditions extend the two tree-level
+algebraic equations above.  The full Luescher--Weisz class also allows chair and
+parallelogram six-link loops; with coefficients
+\((c_0,c_1,c_2,c_3)\) in the standard orientation-counting convention, the
+leading normalization is
+\[
+  c_0+8c_1+16c_2+8c_3=1,
+  \label{eq:luescher-weisz-normalization}
+\]
+where the numerical factors count orientations and leading squared areas in
+one coordinate plane.  The commonly used Iwasaki one-parameter action belongs
+to the plaquette-plus-rectangle subfamily with \(c_1\simeq -0.331\) and
+\(c_0=1-8c_1\); this coefficient is fixed by a renormalization-group
+criterion, not by the tree-level cancellation
+\eqref{eq:plaquette-rectangle-derivative-cancellation}.
+
+Reflection positivity is an additional constraint.  The compact Euclidean
+integral \eqref{eq:plaquette-rectangle-gauge-action} is well-defined whenever
+the Boltzmann weight is integrable, but a transfer-matrix reconstruction
+requires a positivity argument for the chosen action.  Negative rectangle
+coefficients, useful for improvement, need not preserve the elementary
+reflection-positivity proof available for the Wilson plaquette action.
+Thus improvement, continuum normalization, and Hilbert-space reconstruction
+are separate requirements of the regulator datum.
+
 \section{Wilson Loops}
 
 For a closed oriented lattice contour \(C\),
