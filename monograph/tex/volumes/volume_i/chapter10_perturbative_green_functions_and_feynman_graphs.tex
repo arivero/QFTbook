@@ -5,6 +5,8 @@
 
 \section{Regulated Euclidean Scalar Theory}
 
+\begin{definition}[Regulated Euclidean \(\phi^4\) datum]
+\label{def:regulated-euclidean-phi-four-datum}
 Let \(D\ge1\). In this chapter \(x\in\mathbb R^D\) denotes a Euclidean
 spacetime point and \(k\in\mathbb R^D\) denotes the corresponding Euclidean
 momentum. The field variable is a real scalar function \(\phi\). For the
@@ -36,8 +38,8 @@ so that the interaction part of the Euclidean action is
   \frac{g}{4!}\int\dd^D x\,\phi(x)^4 ,
 \]
 where \(g\in\mathbb R\) is the quartic coupling.  This expression is a
-regulated bare interaction.  With the finite-dimensional cutoff introduced
-below, \(\phi_\Lambda(x)^4\) is an ordinary function on the regulated
+regulated interaction coordinate.  With the finite-dimensional cutoff
+introduced below, \(\phi_\Lambda(x)^4\) is an ordinary function on the regulated
 configuration space and the integral is a well-defined polynomial.  The
 continuum symbol \(\phi(x)^4\) is not, by itself, a defined local operator:
 products of continuum fields at coincident points require a renormalization
@@ -111,6 +113,17 @@ an ordinary finite-dimensional Gaussian expectation, or the limit of such
 expectations. Formulas written without \(\Lambda\) are coefficientwise
 perturbative formulas or shorthand for regulator-dependent formulas before
 the limit is studied.
+\end{definition}
+
+\begin{remark}[Constructive status of the scalar example]
+The constructive comments above are not used as hidden axioms in the
+perturbative derivations below.  They delimit the status of the continuum
+limit: every formula in this chapter is first an identity at finite regulator
+or a coefficient of a regulated formal power series; the additional question
+of removing \(\Lambda\) is a separate renormalization or constructive
+existence problem.
+\end{remark}
+
 With a sharp Fourier cutoff this finite-dimensional statement is represented
 by
 \[
@@ -125,6 +138,8 @@ pair \(k,-k\) and fixing the resulting finite-dimensional Gaussian
 normalization. The symbol \([\dd\phi]\) is never used here as an unregulated
 Lebesgue measure on an infinite-dimensional vector space.
 
+\begin{definition}[Normalized regulated Euclidean Green functions]
+\label{def:normalized-regulated-euclidean-green-functions}
 The normalized Euclidean \(n\)-point function is
 \[
 \begin{aligned}
@@ -142,9 +157,39 @@ It is a distribution in the insertion points after the regulator is removed,
 when that limit exists or has been renormalized. Perturbation theory is the
 coefficientwise expansion of this expression in powers of the coupling \(g\),
 with the regulator kept fixed before renormalized limits are considered.
+\end{definition}
+
+\begin{proposition}[Coefficientwise perturbation at fixed regulator]
+\label{prop:fixed-regulator-coefficientwise-perturbation}
+At any finite regulator for which \(S_{\mathrm{int},E}\) is a polynomial on a
+finite-dimensional Gaussian space, the coefficient of \(g^V\) in
+\(G_{E,n,\Lambda}\) is obtained by expanding numerator and denominator in
+powers of \(S_{\mathrm{int},E}\), taking ordinary Gaussian moments, and then
+dividing the resulting formal power series by the denominator series.
+\end{proposition}
+
+\begin{proof}
+At finite regulator the Gaussian expectation is an ordinary normalized
+finite-dimensional integral with positive covariance.  The exponential
+\(\exp[-S_{\mathrm{int},E}]\) is treated either as an honest integrable
+function for values of \(g\) where the integral converges, or as the formal
+series
+\[
+  \sum_{V\ge0}
+  \frac{(-1)^V}{V!}S_{\mathrm{int},E}[\phi]^V .
+\]
+Since \(S_{\mathrm{int},E}\) is polynomial, each coefficient is a finite sum
+of Gaussian moments.  The denominator has constant term \(1\), so it has a
+unique inverse as a formal power series in \(g\).  Multiplication by that
+inverse gives the displayed normalized Green function coefficient by
+coefficient.  No infinite-dimensional measure or regulator-removal operation
+enters this algebraic step.
+\end{proof}
 
 \section{Wick Expansion and Connected Functions}
 
+\begin{proposition}[Wick graph expansion and connected cumulants]
+\label{prop:wick-graph-expansion-connected-cumulants}
 For the centered Gaussian expectation,
 \[
   \vev{\phi(x_1)\cdots\phi(x_{2r})}_{0,\Lambda}
@@ -180,6 +225,26 @@ external endpoint. Therefore a normalized \(n\)-point function is a sum over
 graphs whose every connected component contains at least one external label.
 The connected \(n\)-point function is the part in which all external labels
 belong to one connected component.
+\end{proposition}
+
+\begin{proof}
+The first displayed formula is Wick's theorem for the finite-dimensional
+Gaussian vector obtained by evaluating the regulated field at the indicated
+test functions or points.  Substituting the formal exponential expansion of
+Proposition~\ref{prop:fixed-regulator-coefficientwise-perturbation} expresses
+each coefficient as a finite sum over pairings of the \(n+4V\) field factors.
+Every pair in a Wick pairing supplies one covariance \(C_\Lambda\); grouping
+the paired half-edges incident to the same interaction point gives precisely
+the graph description.
+
+The cancellation of vacuum components is the exponential formula for labelled
+structures applied to Wick pairings.  Equivalently, write every pairing graph
+as the disjoint union of connected components.  Components with no external
+label are generated by the same series that appears in
+\(Z_\Lambda[0]\), so division by \(Z_\Lambda[0]\) removes them.  The connected
+part is then selected by requiring that the external labels lie in one
+component.
+\end{proof}
 
 \begin{figure}[H]
 \centering
@@ -208,6 +273,8 @@ contains at least one external insertion.}
 \label{fig:normalized-correlator-component-selection}
 \end{figure}
 
+\begin{proposition}[Connected Green functions are source cumulants]
+\label{prop:connected-green-functions-source-cumulants}
 Introduce a source \(J\) and define
 \[
   Z_\Lambda[J]
@@ -233,9 +300,23 @@ For \(n\ge1\),
   \right|_{J=0}.
 \]
 This identity is the cumulant identity for the regulated probability measure.
+\end{proposition}
+
+\begin{proof}
+At finite regulator \(Z_\Lambda[J]\) is the moment generating functional of a
+finite-dimensional random vector after adjoining the polynomial weight
+\(\exp[-S_{\mathrm{int},E}]\).  The logarithm of a moment generating function
+is the cumulant generating function.  Differentiating \(W_\Lambda[J]\) at
+\(J=0\) therefore gives the joint cumulant of the \(n\) inserted fields.  The
+moment-cumulant relation is equivalent to the connected-component expansion of
+the preceding proposition, so the functional derivatives of \(W_\Lambda\) are
+exactly the connected regulated Green functions.
+\end{proof}
 
 \section{Momentum-Space Graph Weights}
 
+\begin{definition}[Euclidean graph weight]
+\label{def:momentum-space-labelled-euclidean-graph-weight}
 In translation-invariant infinite-volume notation, write
 \[
   G_{E,n}^{\mathrm{conn}}(x_1,\ldots,x_n)
@@ -266,6 +347,7 @@ edge \(e\), and \(\operatorname{Aut}\Gamma\) is the group of graph
 automorphisms preserving all external labels. This convention includes the
 factor \(1/4!\) in the action and the Wick-contraction multiplicities in the
 single symmetry factor.
+\end{definition}
 
 \begin{figure}[H]
 \centering
@@ -298,6 +380,8 @@ recovered by counting Wick contractions.
 
 \section{Symmetry Factors from Wick Pairings}
 
+\begin{proposition}[Automorphism denominator from Wick pairings]
+\label{prop:automorphism-denominator-from-wick-pairings}
 The coefficient \( |\operatorname{Aut}\Gamma|^{-1} \) in the graph rule is
 the residual count left by the regulated Wick expansion. Consider a connected
 graph \(\Gamma\) with \(V\) quartic
@@ -321,6 +405,23 @@ Multiplying the two factors gives precisely
 Thus the graph automorphism factor is the quotient between the arbitrary
 labellings introduced by the expansion and the relabellings leaving the graph
 unchanged.
+\end{proposition}
+
+\begin{proof}
+Start with the \(V\)-th term of the regulated expansion, where the integration
+variables \(z_1,\ldots,z_V\) are ordered and the four field factors at each
+vertex are ordered by their position in \(\phi(z_a)^4\).  These choices give
+\(V!(4!)^V\) auxiliary labels for the same abstract incidence graph.  The
+Wick pairing then identifies half-edges in pairs to form internal edges or
+connects half-edges to the fixed external labels.  For a fixed labelled
+external graph \(\Gamma\), the group
+\(\operatorname{Aut}\Gamma\) is exactly the stabilizer of this labelling data:
+it consists of the vertex and half-edge relabellings that leave the incidence
+relations and all external labels unchanged.  By the orbit-stabilizer
+identity, the number of labelled Wick contractions giving the same abstract
+\(\Gamma\) is \(V!(4!)^V/|\operatorname{Aut}\Gamma|\).  Multiplying by the
+expansion prefactor gives \((-g)^V/|\operatorname{Aut}\Gamma|\).
+\end{proof}
 
 For example, the order-\(g\) tadpole correction to the two-point function has
 one quartic vertex. The two external labels are fixed, while the two remaining
@@ -404,6 +505,8 @@ Its perturbative expansion begins as
 \quad+\cdots .
 \]
 
+\begin{definition}[Euclidean self-energy]
+\label{def:euclidean-self-energy}
 Define the Euclidean self-energy \(\Sigma_E(k)\) by the Dyson form
 \begin{equation}
   \widetilde G_E(k)
@@ -426,6 +529,7 @@ Equivalently,
 \]
 With this sign convention \(\Sigma_E\) is the sum of amputated connected
 one-particle-irreducible two-point insertions.
+\end{definition}
 
 \[
 \Sigma_E(k)
@@ -455,6 +559,8 @@ one-particle-irreducible two-point insertions.
 \quad+\cdots .
 \]
 
+\begin{proposition}[One-loop tadpole self-energy and cutoff growth]
+\label{prop:one-loop-tadpole-self-energy-cutoff-growth}
 The order-\(g\) tadpole is
 \[
 \begin{tikzpicture}[baseline=-0.45ex,scale=0.75,>=Stealth]
@@ -515,7 +621,31 @@ inside the radial expression. The second line uses
 \[
   \Sigma_E^{(1)}(k)=-g\,C_1(\Lambda,m).
 \]
+\end{proposition}
 
+\begin{proof}
+The coefficient \(-g/2\) is the symmetry factor computed in
+Proposition~\ref{prop:automorphism-denominator-from-wick-pairings}: the two
+unattached half-edges at the quartic vertex form one loop and may be
+interchanged.  No external momentum enters the loop propagator, so the
+amputated insertion is momentum independent and equals the displayed
+regulated integral.  In spherical coordinates the cutoff integral is
+\[
+  \frac12
+  \frac{\operatorname{vol}(S^{D-1})}{(2\pi)^D}
+  \int_0^\Lambda \frac{r^{D-1}\,\dd r}{r^2+m^2}.
+\]
+For \(D=2\) the integral is
+\(\frac12\log((\Lambda^2+m^2)/m^2)=\log(\Lambda/m)+O(\Lambda^{-2})\).
+For \(D\ge3\), subtract the leading asymptotic term
+\(r^{D-3}\); the remainder is lower degree at infinity, so the leading
+growth is \(\Lambda^{D-2}/(D-2)\) with the displayed prefactor.  The Dyson
+sign convention of Definition~\ref{def:euclidean-self-energy} then gives
+\(\Sigma_E^{(1)}=-gC_1\).
+\end{proof}
+
+\begin{proposition}[Two-loop sunset insertion]
+\label{prop:two-loop-sunset-insertion}
 The order-\(g^2\) sunset insertion is
 \[
 \begin{aligned}
@@ -544,9 +674,28 @@ This formula is a Euclidean integral.  Its Lorentzian boundary values are
 obtained by analytic continuation with contour-deformation control; for
 timelike external momentum the three-particle Landau threshold of this graph
 prevents a naive independent Wick rotation of the loop energies.
+\end{proposition}
+
+\begin{proof}
+The graph has two quartic vertices and three internal lines joining them.
+After the two external half-edges are fixed, the remaining three internal
+edges may be permuted, giving the automorphism factor \(3!\).  Thus the
+coefficient is \(g^2/6\), in agreement with the Wick-pairing count in the
+preceding section.  Momentum conservation at the two vertices leaves two
+independent loop momenta, chosen as \(q_1,q_2\); the third internal momentum
+is then \(k-q_1-q_2\).  Multiplication of the three Euclidean propagators gives
+the displayed integral.  The final statement follows because the Euclidean
+integral is defined on real \(D\)-momenta, while Lorentzian boundary values are
+obtained by continuing external energy and deforming loop-energy contours
+without crossing singularities.  At the three-particle threshold the Landau
+equations allow simultaneous on-shell internal lines, so this deformation
+cannot be represented as an independent rotation of each loop energy.
+\end{proof}
 
 \section{Pole Mass and Counterterm Bookkeeping}
 
+\begin{definition}[Pole mass of an interpolating scalar field]
+\label{def:pole-mass-interpolating-scalar-field}
 As derived in Chapter~\ref{ch:kallen-lehmann}, the spectral representation of
 the Euclidean two-point function has the form
 \[
@@ -578,7 +727,10 @@ free field on the isolated one-particle asymptotic Fock space with pole mass
 and residue of the interpolating-field Green function; the LSZ theorem later
 uses those data to project external legs onto the asymptotic one-particle
 states.
+\end{definition}
 
+\begin{proposition}[One-loop pole shift and mass-coordinate prescription]
+\label{prop:one-loop-pole-shift-mass-coordinate-prescription}
 Using
 \[
   \widetilde G_E(k)
@@ -642,9 +794,32 @@ coefficient in the expansion in \(g\). The physical statement is made after
 Green functions are expressed in terms of the chosen finite parameters, such as
 the pole mass \(m_*\). In the on-shell mass prescription the finite terms are
 chosen so that \(m_R=m_*\) order by order.
+\end{proposition}
+
+\begin{proof}
+To first order, insert
+\(\Sigma_E^{(1)}(k)=-gC_1(\Lambda,m)\) from
+Proposition~\ref{prop:one-loop-tadpole-self-energy-cutoff-growth} into the
+Dyson denominator:
+\[
+  k^2+m^2-\Sigma_E(k)
+  =
+  k^2+m^2+gC_1(\Lambda,m)+O(g^2).
+\]
+The pole in the variable \(k^2\) is therefore at
+\(k^2=-m^2-gC_1(\Lambda,m)+O(g^2)\), equivalently
+\(m_*^2=m^2+gC_1(\Lambda,m)+O(g^2)\).  If the quadratic coordinate of the
+regulated action is rewritten as \(m_R^2+\delta m^2\), the counterterm is a
+two-valent interaction vertex with the sign displayed above.  Requiring the
+pole to sit at \(m_R^2\) through order \(g\) forces the order-\(g\) part of
+\(\delta m^2\) to cancel \(C_1(\Lambda,m_R)\), up to the chosen finite
+renormalization convention.
+\end{proof}
 
 \section{Connected Four-Point Function}
 
+\begin{proposition}[Four-point moment-cumulant decomposition]
+\label{prop:four-point-moment-cumulant-decomposition}
 For four insertions, the normalized Green function decomposes into pairwise
 products of two-point functions and a connected part:
 \[
@@ -660,6 +835,16 @@ products of two-point functions and a connected part:
   +G_{E,4}^{\mathrm{conn}}(x_1,x_2,x_3,x_4).
 \end{aligned}
 \]
+\end{proposition}
+
+\begin{proof}
+Apply the moment-cumulant identity to four fields.  If the theory is
+\(\mathbb Z_2\)-invariant, as the regulated \(\phi^4\) theory is, all odd
+cumulants vanish.  The partitions of four labels therefore contribute either
+one four-label cumulant or one of the three partitions into two pairs.  The
+pair cumulants are the full two-point functions \(G_E\), and the four-label
+cumulant is, by definition, \(G_{E,4}^{\mathrm{conn}}\).
+\end{proof}
 
 \begin{figure}[H]
 \centering
@@ -704,6 +889,8 @@ The three Wick pairings are separated from
 \label{fig:four-point-wick-connected-decomposition}
 \end{figure}
 
+\begin{proposition}[Leading connected four-point Green function]
+\label{prop:leading-connected-four-point-green-function}
 The Fourier transform of the connected part is defined by
 \[
 \begin{aligned}
@@ -732,3 +919,16 @@ To leading order,
 This is a connected Green function with external propagators included. Later,
 after scattering states and LSZ have been constructed, the operation of
 removing the external propagators will acquire its scattering interpretation.
+\end{proposition}
+
+\begin{proof}
+The order-\(g\) connected four-point graph has one quartic vertex and four
+labelled external endpoints.  The \(1/4!\) in the interaction is cancelled by
+the \(4!\) assignments of the four labelled external fields to the four
+half-edges of the vertex, so the vertex coefficient is \(-g\).  Translation
+invariance supplies the momentum-conserving delta function.  Each external
+field remains connected to the vertex by a Euclidean free propagator, giving
+\(\prod_i(k_i^2+m^2)^{-1}\).  Since this is a Green function rather than an
+amputated scattering amplitude, those external propagators are part of the
+coefficient.
+\end{proof}
