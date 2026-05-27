@@ -280,48 +280,245 @@ scalar factor even though the projected \(x^\pm\)-values have returned.
 
 \section{Two-Body S-Matrix}
 
-The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor.
-Let \(S^{\rm mat}_{12}\) denote the matrix part determined by the two
-centrally extended \(\mathfrak{su}(2|2)\) copies.  The full two-magnon
-operator is
+The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor,
+after one has fixed the dynamic spin-chain frame.  Let
+\(S^{\rm mat}_{12}\) denote the matrix part determined by the two centrally
+extended \(\mathfrak{su}(2|2)\) copies.  The full two-magnon operator is
 \[
   S_{12}=S_0(x_1^\pm,x_2^\pm)\,S^{\rm mat}_{12}.
 \]
-For one \(\mathfrak{su}(2|2)\) copy, the matrix part is the graded
-intertwiner
+For one \(\mathfrak{su}(2|2)\) copy, write \(S^{(1)}_{12}\) for the
+intertwiner before tensoring the left and right copies.  It is defined by
 \[
-  S^{\rm mat}_{12}\Delta_{12}(J)
+  S^{(1)}_{12}\Delta_{12}(J)
   =
-  \Delta_{21}(J)S^{\rm mat}_{12},
+  \Delta_{21}(J)S^{(1)}_{12},
   \qquad J\in\mathfrak{su}(2|2)_{\rm c},
 \]
-where the coproduct includes the braiding phase carried by the magnon
-momentum.  Its independent amplitudes are fixed by
+where the coproduct includes the braiding phase carried by the magnon momentum.
+The labels \(1,2\) on one-particle states record the momenta \(p_1,p_2\), not
+extra internal indices.  We use unnormalized symmetrization and
+antisymmetrization:
+\[
+  v^{\{a}w^{b\}}=v^a w^b+v^b w^a,
+  \qquad
+  v^{[a}w^{b]}=v^a w^b-v^b w^a .
+\]
+With this convention the most general
+\(\mathfrak{su}(2)\oplus\mathfrak{su}(2)\)-covariant two-particle operator has
+ten amplitudes:
 \[
 \begin{aligned}
-  S\ket{\phi_1^a\phi_2^b}
+  S^{(1)}_{12}\ket{\phi_1^a\phi_2^b}
   &=
   A_{12}\ket{\phi_2^{\{a}\phi_1^{b\}}}
   +B_{12}\ket{\phi_2^{[a}\phi_1^{b]}}
-  +C_{12}\varepsilon^{ab}\varepsilon_{\alpha\beta}
+  +\frac12 C_{12}\varepsilon^{ab}\varepsilon_{\alpha\beta}
     \ket{\psi_2^\alpha\psi_1^\beta},\\
-  S\ket{\psi_1^\alpha\psi_2^\beta}
+  S^{(1)}_{12}\ket{\psi_1^\alpha\psi_2^\beta}
   &=
   D_{12}\ket{\psi_2^{\{\alpha}\psi_1^{\beta\}}}
   +E_{12}\ket{\psi_2^{[\alpha}\psi_1^{\beta]}}
-  +F_{12}\varepsilon^{\alpha\beta}\varepsilon_{ab}
+  +\frac12 F_{12}\varepsilon^{\alpha\beta}\varepsilon_{ab}
     \ket{\phi_2^a\phi_1^b},\\
-  S\ket{\phi_1^a\psi_2^\beta}
+  S^{(1)}_{12}\ket{\phi_1^a\psi_2^\beta}
   &=
   G_{12}\ket{\psi_2^\beta\phi_1^a}
   +H_{12}\ket{\phi_2^a\psi_1^\beta},
+  \\
+  S^{(1)}_{12}\ket{\psi_1^\alpha\phi_2^b}
+  &=
+  K_{12}\ket{\psi_2^\alpha\phi_1^b}
+  +L_{12}\ket{\phi_2^b\psi_1^\alpha}.
 \end{aligned}
 \]
-with analogous \(K_{12},L_{12}\) amplitudes on
-\(\ket{\psi_1^\alpha\phi_2^b}\).  Solving the intertwining equations fixes
-these ten amplitudes as rational functions of \(x_1^\pm,x_2^\pm\) and of the
-representation coefficients \(a,b,c,d\), up to one common scalar factor.
-The scalar factor is written as
+The length-changing markers are suppressed in this display but not forgotten:
+the \(C_{12}\) channel carries the \(Z^-\) marker and the \(F_{12}\) channel
+carries the \(Z^+\) marker in the stringbook dynamic spin-chain frame.  The
+markers are precisely the source of the braided coproduct.
+
+For a magnon \(i\) write its representation coefficients as
+\(a_i,b_i,c_i,d_i\).  The stringbook frame relates them to \(x_i^\pm\) by
+\[
+  x_i^+=\ii\frac{d_i}{b_i},
+  \qquad
+  x_i^-=-\ii\frac{a_i}{c_i},
+  \qquad
+  a_i d_i-b_i c_i=1 .
+\]
+The same \(x_i^\pm\) obey the Zhukovsky relations already fixed in
+\eqref{eq:planar-n4-xpm-definition}.  At generic non-pole kinematics the
+tensor product of two fundamental short representations is long and the
+intertwiner is unique up to one scalar.  Let this one-copy scalar be denoted
+\(\mathcal S_{12}\).  Solving the finite intertwining equations gives
+\begin{equation}
+\begin{aligned}
+  A_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+},
+  \\
+  B_{12}
+  &=
+  A_{12}\left[
+  1
+  -2\frac{x_2^+-x_1^+}{x_2^+-x_1^-}
+     \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}
+  \right],
+  \\
+  C_{12}
+  &=
+  \mathcal S_{12}
+  \frac{2g^{-1}a_1a_2}{x_1^-x_2^- -1}
+  \frac{x_2^+-x_1^+}{x_2^- -x_1^+},
+  \\
+  D_{12}
+  &=-\mathcal S_{12},
+  \\
+  E_{12}
+  &=
+  -\mathcal S_{12}\left[
+  1
+  -2\frac{x_2^- -x_1^-}{x_2^- -x_1^+}
+     \frac{x_2^+ -1/x_1^-}{x_2^+ -1/x_1^+}
+  \right],
+  \\
+  F_{12}
+  &=
+  -\mathcal S_{12}
+  \frac{2g(x_1^+-x_1^-)(x_2^+-x_2^-)}
+       {a_1a_2(x_1^+x_2^+ -1)}
+  \frac{x_2^- -x_1^-}{x_2^- -x_1^+},
+  \\
+  G_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^+}{x_2^- -x_1^+},
+  \qquad
+  H_{12}
+  =
+  \mathcal S_{12}\frac{a_1}{a_2}
+  \frac{x_2^+-x_2^-}{x_2^- -x_1^+},
+  \\
+  K_{12}
+  &=
+  \mathcal S_{12}\frac{a_2}{a_1}
+  \frac{x_1^+-x_1^-}{x_2^- -x_1^+},
+  \qquad
+  L_{12}
+  =
+  \mathcal S_{12}
+  \frac{x_2^- -x_1^-}{x_2^- -x_1^+}.
+\end{aligned}
+\label{eq:planar-n4-su2c-ten-amplitudes}
+\end{equation}
+
+\begin{proposition}[Local amplitude checks]
+\label{prop:planar-n4-su2c-local-amplitude-checks}
+Assume the denominators in
+\eqref{eq:planar-n4-su2c-ten-amplitudes} are non-zero.  The amplitudes above
+satisfy the highest-weight \(Q\)-intertwining relation
+\begin{equation}
+  A_{12}
+  =
+  \frac{a_1}{a_2}K_{12}+G_{12}
+  =
+  L_{12}+\frac{a_2}{a_1}H_{12}.
+  \label{eq:planar-n4-su2c-q-check}
+\end{equation}
+After factoring out \(\mathcal S_{12}\), the same amplitudes also obey the
+local analytic unitarity identities
+\[
+  R_{12}^{\rm BB}R_{21}^{\rm BB}=1,
+  \qquad
+  R_{12}^{\rm BF}R_{21}^{\rm BF}=1,
+\]
+on the boson-boson/fermion-fermion block \(R^{\rm BB}\) and the mixed
+boson-fermion block \(R^{\rm BF}\) written, for fixed distinct doublet
+indices, in the ordered bases
+\[
+  (\psi_1^1\psi_2^2,\psi_1^2\psi_2^1,\phi_1^1\phi_2^2,\phi_1^2\phi_2^1),
+  \qquad
+  (\phi_1^1\psi_2^1,\psi_1^1\phi_2^1).
+\]
+The blocks are explicitly
+\[
+  R_{12}^{\rm BB}
+  =
+  \frac1{\mathcal S_{12}}
+  \begin{pmatrix}
+    (D-E)/2 & (D+E)/2 & -F/2 & F/2\\
+    (D+E)/2 & (D-E)/2 & F/2 & -F/2\\
+    -C/2 & C/2 & (A-B)/2 & (A+B)/2\\
+    C/2 & -C/2 & (A+B)/2 & (A-B)/2
+  \end{pmatrix}_{12},
+  \qquad
+  R_{12}^{\rm BF}
+  =
+  \frac1{\mathcal S_{12}}
+  \begin{pmatrix}
+    H & G\\
+    L & K
+  \end{pmatrix}_{12}.
+\]
+Equivalently, the matrix part has the correct inverse when the two magnons are
+exchanged; the scalar unitarity condition is the separate condition
+\(\mathcal S_{12}\mathcal S_{21}=1\), or, for the full two-copy scalar split,
+\(S_{0,12}S_{0,21}=1\).
+\end{proposition}
+
+\begin{proof}
+The first identity is the direct result of applying \(Q^\alpha{}_a\) to the
+symmetric boson state and comparing the independent
+\(\ket{\psi_2\phi_1}\) and \(\ket{\phi_2\psi_1}\) components.  Substituting
+\eqref{eq:planar-n4-su2c-ten-amplitudes} gives
+\[
+\begin{aligned}
+  \frac{a_1}{a_2}K_{12}+G_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_1^+-x_1^-+x_2^+-x_1^+}{x_2^- -x_1^+}
+  =
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+}
+  =
+  A_{12},\\
+  L_{12}+\frac{a_2}{a_1}H_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^- -x_1^-+x_2^+-x_2^-}{x_2^- -x_1^+}
+  =
+  A_{12}.
+\end{aligned}
+\]
+The remaining \(Q\)- and \(S\)-intertwining equations are obtained in the same
+finite way from the other highest-weight components.  Clearing denominators
+reduces them to polynomial identities in \(x_i^\pm\) and the representation
+ratios \(a_1/a_2\), together with the defining relations for \(b_i,c_i,d_i\)
+above.  The companion calculation check constructs the two nontrivial finite
+blocks explicitly from \eqref{eq:planar-n4-su2c-ten-amplitudes} and verifies
+\(R_{12}R_{21}=1\) on nonsingular physical-branch samples.  This check is not
+a substitute for crossing or Yang--Baxter factorization; it certifies the
+local frame and amplitude algebra used by the nested Bethe derivation below.
+\end{proof}
+
+The convenient scalar split used in the stringbook is
+\[
+  \mathcal S_{12}
+  =
+  \left[
+  \frac{x_2^- -x_1^+}{x_2^+ -x_1^-}
+  \frac{1-1/(x_2^+x_1^-)}{1-1/(x_2^-x_1^+)}
+  \right]^{1/2}\sigma_{12}.
+\]
+Consequently the compact \(SU(2)\)-sector two-copy amplitude
+\((A_{12})^2\) contains the rational factor
+\[
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+}
+  \frac{1-1/(x_2^+x_1^-)}{1-1/(x_2^-x_1^+)}
+\]
+times \(\sigma_{12}^2\), in the orientation fixed by the convention ledger.
+Equivalently, the full scalar factor may be written as
 \[
   S_0(x_1^\pm,x_2^\pm)
   =

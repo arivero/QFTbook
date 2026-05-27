@@ -1459,3 +1459,47 @@ Calculation checks added:
 - No new calculation check was added in this bookkeeping pass.  The crosswalk
   identifies the next calculation-check migrations required from the
   stringbook notebooks.
+
+## Continuation XLVII: `su(2|2)_c` Matrix Amplitude Derivation Pass
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Source/standard motivation:
+
+- The crosswalk identified the one-copy centrally extended `su(2|2)` matrix
+  part as a remaining floor blocker.  The chapter previously named the ten
+  amplitudes but did not display the stringbook formulas or reproduce the
+  local notebook checks that certify the frame and scalar split.
+
+Content added:
+
+- Expanded Chapter 13's two-body S-matrix section with the dynamic spin-chain
+  frame, unnormalized symmetrization convention, marker placement for the
+  `C_{12}` and `F_{12}` channels, and the representation-ratio definitions
+  `x^+=i d/b`, `x^-=-i a/c`.
+- Added the full stringbook ten-amplitude formula block for
+  `A_{12},...,L_{12}` in terms of `x_i^pm`, `a_i`, `g`, and the one-copy
+  scalar `mathcal S_{12}`.
+- Proved the highest-weight `Q` relation
+  `A=(a_1/a_2)K+G=L+(a_2/a_1)H`, defined the finite `R^{BB}` and `R^{BF}`
+  matrix blocks, and separated local matrix unitarity from scalar unitarity,
+  Yang-Baxter factorization, and crossing.
+- Added the stringbook scalar split for `mathcal S_{12}` and the resulting
+  compact `SU(2)` rational factor multiplying `sigma_{12}^2`.
+- Updated the crosswalk status for this row to `Expanded/Boundary`: the local
+  amplitude and unitarity algebra is now internalized, while the generic
+  row-rank proof of one-dimensionality and the notebook's crossing experiments
+  remain floor work.
+
+Calculation checks added:
+
+- Added `check_su2c_matrix_amplitudes_and_unitarity()`, porting finite checks
+  from `su(2|2) spin chain.nb`: the ten amplitudes satisfy the displayed
+  `Q` relation, the boson-boson/fermion-fermion and mixed blocks obey
+  `R_12 R_21=1` on physical-branch samples after removing the common scalar,
+  and the scalar split reproduces the compact `SU(2)` rational factor.

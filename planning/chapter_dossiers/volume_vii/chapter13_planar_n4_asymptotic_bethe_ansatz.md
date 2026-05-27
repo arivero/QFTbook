@@ -18,7 +18,11 @@ the monograph's proof-boundary language.
 - `sigma`, `theta`: dressing factor and phase.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
 - `S_mat`, `S_0`: matrix and scalar parts of the two-body magnon S-matrix.
+- `S^{(1)}_{12}`, `mathcal S_{12}`: one-copy `su(2|2)_c` intertwiner and
+  its unfixed common scalar in the stringbook dynamic spin-chain frame.
 - `A_{12},...,L_{12}`: `su(2|2)_c` matrix S-matrix amplitudes.
+- `R^{BB}`, `R^{BF}`: finite boson-boson/fermion-fermion and mixed blocks
+  used to check local matrix unitarity after factoring out `mathcal S_{12}`.
 - `y,w`: level-II and level-III nested Bethe roots.
 - `f(y,p)`, `S^{II,I}(y,p)`: one-defect nesting coefficient and the
   level-II/level-I scattering factor in the stringbook spin-chain basis.
@@ -57,7 +61,19 @@ the monograph's proof-boundary language.
   `H=1+2ig(1/x^+-1/x^-)`, including the physical branch and cut
   reciprocal relation.
 - Separates the symmetry-fixed matrix part of the S-matrix from the scalar
-  dressing factor, including the ten-amplitude intertwiner form.
+  dressing factor, including the ten-amplitude one-copy intertwiner form.
+- Adds the full stringbook `su(2|2)_c` ten-amplitude formulas in the dynamic
+  spin-chain frame, defines the representation ratios
+  `x^+=i d/b`, `x^-=-i a/c`, records the length-changing marker convention,
+  and proves the highest-weight `Q` amplitude identity
+  `A=(a_1/a_2)K+G=L+(a_2/a_1)H`.
+- Defines the finite matrix blocks `R^{BB}` and `R^{BF}` and records their
+  local analytic unitarity after the common one-copy scalar is factored out.
+- Derives the stringbook scalar split
+  `mathcal S_{12}=[(x_2^- -x_1^+)/(x_2^+-x_1^-)
+  (1-1/(x_2^+x_1^-))/(1-1/(x_2^-x_1^+))]^{1/2} sigma_{12}` and checks that
+  the compact `SU(2)` two-copy amplitude contains the expected rational
+  factor times `sigma_{12}^2`.
 - Adds the BES `chi(x,y)` contour-integral representation with its
   sheet-domain caveat.
 - Proves dressing scalar unitarity in the charge-expansion domain:
@@ -179,6 +195,11 @@ crossed Zhukovsky sheets.
   prefactors against the closed weak formula on an exact rectangular grid in
   `N,r,s`, verifying parity/minimal-order selection, and confirming that the
   first charge-dressed weak term scales as `g^6`.
+- It ports the local finite checks from the stringbook `su(2|2) spin
+  chain.nb` notebook: the ten-amplitude formulas satisfy the
+  highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed
+  finite blocks obey `R_12 R_21=1` after the common scalar is removed, and the
+  stringbook scalar split reproduces the compact `SU(2)` rational factor.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.

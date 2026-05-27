@@ -58,7 +58,7 @@ still needs development.
 | Coordinate Bethe ansatz for the one-loop `SU(2)` chain | stringbook equations around `twomagwvfn`, `bethasimp`, `abaheisen` | `Expanded` in Chapter 12 with chamber exchange coefficient and closed-chain inverse Bethe-Yang orientation | No major gap; preserve the distinction between ordered-wavefunction exchange coefficient and Bethe-Yang phase. |
 | BMN/pp-wave normalization and lightcone string context | `sec:ppwave` and following GS/pp-wave subsubsections | `Context`: monograph Chapter 13 uses BMN scaling as a gauge-theory normalization check | The Green-Schwarz pp-wave action and string spectrum derivation are not pure-QFT floor items for this lane.  If the monograph later wants the holographic string derivation, it needs a separate string-background pass. |
 | All-order magnon dispersion from central extension | `The all-order magnon dispersion relation` | `Expanded` in Chapter 13 with shortening, Zhukovsky variables, physical branch, and energy checks | No major gap, but all later uses must keep `g=sqrt(lambda)/(4 pi)` and the stringbook energy sign. |
-| `su(2|2)_c` magnon S-matrix, amplitudes, length-changing markers, and scalar split | `The magnon S-matrix` | `Partial/Boundary`: Chapter 13 gives the amplitude form, scalar split, and convention ledger; the full symmetry-fixed S-matrix is a quoted theorem | Still needs a complete local derivation of the ten amplitude ratios from the centrally extended representation, or a sharper theorem boundary explaining exactly which representation-theoretic uniqueness result is being imported.  The `su(2|2) spin chain.nb` notebook must be audited against the companion checks. |
+| `su(2|2)_c` magnon S-matrix, amplitudes, length-changing markers, and scalar split | `The magnon S-matrix` | `Expanded/Boundary`: Chapter 13 now defines the dynamic frame, displays the ten one-copy amplitude formulas, proves a highest-weight `Q` identity, records the scalar split, and ports local matrix-unitarity checks from `su(2|2) spin chain.nb`; the global symmetry-fixed S-matrix remains framework input | Still needs the full row-reduction proof of generic one-dimensionality of the intertwined tensor product and a complete audit of the notebook's crossing/analytic-continuation experiments.  Yang--Baxter factorization and the global scalar monodromy remain boundary data rather than finite local algebra. |
 | Crossing equation and crossing-symmetric dressing factor | `The crossing-symmetric dressing factor` | `Partial/Boundary`: Chapter 13 derives scalar unitarity, DHM weak coefficients, reciprocal convention algebra, and states BES/crossing as a theorem | Needs deeper analytic-continuation development: crossing path, branch point winding, DHM/BES contour deformation hypotheses, and a systematic comparison with stringbook notebook conventions. |
 | Asymptotic Bethe ansatz and finite-density ABA assumption | `Asymptotic Bethe ansatz and the cusp anomalous dimension` | `Expanded/Boundary`: Chapter 13 states the long-chain ABA regime, distinguishes it from TBA, derives the finite-density counting equation, and gives weak/large-spin BES checks | Need keep the status precise: ABA is a long-chain quantization rule assumed to remain valid for controlled finite-density states, not thermodynamic Bethe ansatz. |
 | One-loop `SL(2)` sector and large-spin cusp | stringbook `SL(2)` subsection | `Expanded`: Chapter 13 derives the one-loop noncompact resolvent and `8 g^2 log S` coefficient | No major gap except maintaining normalization against the BES scaling-function convention. |
@@ -89,9 +89,11 @@ still needs development.
    `calculation-checks/planar_n4_integrability_checks.py`; every Mathematica
    experiment that supports a monograph formula should either be ported to
    clear Python/SymPy code or explicitly declared obsolete.
-2. Deepen the `su(2|2)_c` S-matrix derivation: define the representation,
-   central charges, length-changing frame, and solve the intertwining equations
-   for the amplitude ratios, with checks.
+2. Finish the `su(2|2)_c` S-matrix derivation: the representation,
+   length-changing frame, ten amplitude formulas, scalar split, and local
+   matrix-unitarity checks are now in Chapter 13, but the generic row-rank
+   proof of uniqueness of the intertwiner and the notebook's crossing
+   experiments still need to be fully internalized.
 3. Expand the global dressing/crossing analytic continuation: state the
    crossing contour, branch cuts, monodromy, BES/DHM kernel hypotheses, and
    convention transformations.

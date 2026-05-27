@@ -668,6 +668,145 @@ def check_dhm_weak_dressing_coefficients() -> None:
     )
 
 
+def check_su2c_matrix_amplitudes_and_unitarity() -> None:
+    """Port finite checks from the stringbook su(2|2) S-matrix notebook."""
+
+    def amplitudes(
+        x1_plus: complex,
+        x1_minus: complex,
+        x2_plus: complex,
+        x2_minus: complex,
+        a1: complex,
+        a2: complex,
+        coupling: float,
+        scalar: complex = 1 + 0j,
+    ) -> tuple[complex, complex, complex, complex, complex, complex, complex, complex, complex, complex]:
+        denominator = x2_minus - x1_plus
+        a12 = scalar * (x2_plus - x1_minus) / denominator
+        b12 = a12 * (
+            1
+            - 2
+            * (x2_plus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (x2_minus - 1 / x1_plus)
+            / (x2_minus - 1 / x1_minus)
+        )
+        c12 = (
+            scalar
+            * 2
+            / coupling
+            * a1
+            * a2
+            / (x1_minus * x2_minus - 1)
+            * (x2_plus - x1_plus)
+            / denominator
+        )
+        d12 = -scalar
+        e12 = -scalar * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / denominator
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        )
+        f12 = (
+            -scalar
+            * 2
+            * coupling
+            / (a1 * a2)
+            * (x1_plus - x1_minus)
+            * (x2_plus - x2_minus)
+            / (x1_plus * x2_plus - 1)
+            * (x2_minus - x1_minus)
+            / denominator
+        )
+        g12 = scalar * (x2_plus - x1_plus) / denominator
+        h12 = scalar * (a1 / a2) * (x2_plus - x2_minus) / denominator
+        k12 = scalar * (a2 / a1) * (x1_plus - x1_minus) / denominator
+        l12 = scalar * (x2_minus - x1_minus) / denominator
+        return a12, b12, c12, d12, e12, f12, g12, h12, k12, l12
+
+    def bosonic_block(amplitude_data: tuple[complex, ...]) -> list[list[complex]]:
+        a12, b12, c12, d12, e12, f12, _g12, _h12, _k12, _l12 = amplitude_data
+        return [
+            [(d12 - e12) / 2, (d12 + e12) / 2, -f12 / 2, f12 / 2],
+            [(d12 + e12) / 2, (d12 - e12) / 2, f12 / 2, -f12 / 2],
+            [-c12 / 2, c12 / 2, (a12 - b12) / 2, (a12 + b12) / 2],
+            [c12 / 2, -c12 / 2, (a12 + b12) / 2, (a12 - b12) / 2],
+        ]
+
+    def mixed_block(amplitude_data: tuple[complex, ...]) -> list[list[complex]]:
+        _a12, _b12, _c12, _d12, _e12, _f12, g12, h12, k12, l12 = amplitude_data
+        return [[h12, g12], [l12, k12]]
+
+    def matrix_product(left: list[list[complex]], right: list[list[complex]]) -> list[list[complex]]:
+        return [
+            [
+                sum(left[row][middle] * right[middle][col] for middle in range(len(right)))
+                for col in range(len(right[0]))
+            ]
+            for row in range(len(left))
+        ]
+
+    def identity_matrix(size: int) -> list[list[complex]]:
+        return [[1 if row == col else 0 for col in range(size)] for row in range(size)]
+
+    samples = (
+        (0.31, 0.6, 1.4, 1.2 + 0.3j, -0.7 + 0.8j),
+        (0.47, 1.2, 2.1, -0.4 + 1.1j, 1.3 - 0.2j),
+    )
+    for coupling, p1, p2, a1, a2 in samples:
+        x1_plus, x1_minus = xpm_from_momentum(p1, coupling)
+        x2_plus, x2_minus = xpm_from_momentum(p2, coupling)
+
+        amp12 = amplitudes(x1_plus, x1_minus, x2_plus, x2_minus, a1, a2, coupling)
+        amp21 = amplitudes(x2_plus, x2_minus, x1_plus, x1_minus, a2, a1, coupling)
+        a12, _b12, _c12, _d12, _e12, _f12, g12, h12, k12, l12 = amp12
+
+        assert_close("su(2|2)c Q-intertwiner first amplitude relation", a12, a1 * k12 / a2 + g12)
+        assert_close("su(2|2)c Q-intertwiner second amplitude relation", a12, l12 + a2 * h12 / a1)
+
+        for block_name, block_function, size in (
+            ("bosonic", bosonic_block, 4),
+            ("mixed", mixed_block, 2),
+        ):
+            product = matrix_product(block_function(amp12), block_function(amp21))
+            expected = identity_matrix(size)
+            for row in range(size):
+                for col in range(size):
+                    assert_close(
+                        f"su(2|2)c {block_name} matrix unitarity",
+                        product[row][col],
+                        expected[row][col],
+                        tol=1.0e-12,
+                    )
+
+        scalar_split = cmath.sqrt(
+            (x2_minus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (1 - 1 / (x2_plus * x1_minus))
+            / (1 - 1 / (x2_minus * x1_plus))
+        )
+        compact_a12 = amplitudes(
+            x1_plus,
+            x1_minus,
+            x2_plus,
+            x2_minus,
+            a1,
+            a2,
+            coupling,
+            scalar_split,
+        )[0]
+        su2_rational_factor = (
+            (x2_plus - x1_minus)
+            / (x2_minus - x1_plus)
+            * (1 - 1 / (x2_plus * x1_minus))
+            / (1 - 1 / (x2_minus * x1_plus))
+        )
+        assert_close("su(2|2)c scalar split gives compact SU(2) factor", compact_a12**2, su2_rational_factor)
+
+
 def check_su2c_single_level_ii_nesting_step() -> None:
     samples = (
         (
@@ -3423,6 +3562,7 @@ def main() -> None:
     check_crossing_rhs_is_sheet_sensitive()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
+    check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
     check_su2c_nested_bethe_yang_frame_factors()
