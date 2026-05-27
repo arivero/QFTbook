@@ -52,19 +52,73 @@ def check_flat_hadamard_transport_identity():
     )
     assert_equal("flat Hadamard U transport", sp.simplify(leading_transport), 0)
 
+    m_squared = sp.symbols("m_squared")
+    v0_flat = m_squared / 2
+    first_log_transport = (
+        2
+        * sum(
+            inverse_metric[index] * sp.diff(sigma, coordinate) * sp.diff(v0_flat, coordinate)
+            for index, coordinate in enumerate(coordinates)
+        )
+        + (box_sigma - 2) * v0_flat
+        - m_squared
+    )
+    assert_equal("flat Hadamard v0 transport", sp.simplify(first_log_transport), 0)
+
+
+def check_hadamard_v0_coincidence_formula():
+    m_squared, xi, scalar_curvature = sp.symbols("m_squared xi scalar_curvature")
+    box_sigma_diagonal = sp.Integer(4)
+    p_u_diagonal = m_squared + (xi - sp.Rational(1, 6)) * scalar_curvature
+    v0_diagonal = sp.Rational(1, 2) * p_u_diagonal
+
+    assert_equal(
+        "Hadamard v0 diagonal transport",
+        sp.simplify((box_sigma_diagonal - 2) * v0_diagonal - p_u_diagonal),
+        0,
+    )
+    assert_equal(
+        "massless conformal v0 diagonal",
+        sp.simplify(v0_diagonal.subs({m_squared: 0, xi: sp.Rational(1, 6)})),
+        0,
+    )
+
+
+def check_wald_finite_freedom_dimensions():
+    dim_m = 1
+    dim_curvature = 2
+    dim_metric = 0
+    dim_derivative = 1
+    target_stress_dimension = 4
+
+    term_dimensions = {
+        "m^4 g_munu": 4 * dim_m + dim_metric,
+        "m^2 G_munu": 2 * dim_m + dim_curvature,
+        "variation R^2": 2 * dim_curvature,
+        "variation Ricci^2": 2 * dim_curvature,
+        "Box R trace term": 2 * dim_derivative + dim_curvature,
+    }
+    for name, dimension in term_dimensions.items():
+        assert_equal(f"Wald local freedom dimension {name}", dimension, target_stress_dimension)
+
 
 def main():
     check_flat_hadamard_transport_identity()
+    check_hadamard_v0_coincidence_formula()
+    check_wald_finite_freedom_dimensions()
 
     w_state = Fraction(7, 5)
     w_prime_state = Fraction(11, 13)
     h_singular = Fraction(2, 3)
     smooth_shift = Fraction(5, 17)
+    scale_shift = Fraction(19, 23)
     wick_state = w_state - h_singular
     wick_prime_state = w_prime_state - h_singular
     wick_shifted_subtraction = w_state - (h_singular + smooth_shift)
+    wick_scale_shifted = w_state - (h_singular + scale_shift)
     assert_equal("point-split state difference", wick_state - wick_prime_state, w_state - w_prime_state)
     assert_equal("point-split smooth subtraction sign", wick_shifted_subtraction, wick_state - smooth_shift)
+    assert_equal("Hadamard scale-change subtraction sign", wick_scale_shifted, wick_state - scale_shift)
 
     bose_integral = mp.quad(lambda x: x**3 / mp.expm1(x), [0, mp.inf])
     assert_close("Bose integral", bose_integral, mp.pi**4 / 15)

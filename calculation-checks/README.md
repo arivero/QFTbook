@@ -830,8 +830,10 @@ Current checks:
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
-  Hadamard \(U\)-transport equation, state-difference cancellation of the
-  common Hadamard singularity, the sign of a smooth subtraction change, the
+  Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport
+  equation and coincidence value, state-difference cancellation of the
+  common Hadamard singularity, the sign of smooth and scale subtraction
+  changes, Wald finite-freedom engineering dimensions, the
   Bose integral \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat
   thermal scalar energy density and traceless equation of state, the massless
   plane-wave eigenvalues of the displayed bidifferential operators, and the
