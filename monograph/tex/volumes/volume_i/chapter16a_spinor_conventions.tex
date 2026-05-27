@@ -11,6 +11,8 @@ keep the Lorentzian metric fixed as \(\eta=\operatorname{diag}(-,+,+,+)\).
 
 \section{Four-Dimensional Lorentzian Clifford Algebra}
 
+\begin{definition}[Four-dimensional mostly-plus spinor convention]
+\label{def:four-dimensional-mostly-plus-spinor-convention}
 The Lorentzian metric is
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-,+,+,+),
@@ -99,9 +101,69 @@ For a real Abelian charge \(q\), the Hermitian vector current is
 The explicit factor of \(\ii\) is not optional: it follows from
 \eqref{eq:appendix-dirac-adjoint} and the anti-Hermitian nature of
 \(\bar\psi\gamma^\mu\psi\) in the mostly-plus convention.
+\end{definition}
+
+\begin{proposition}[Basic Clifford, adjoint, and current identities]
+\label{prop:basic-clifford-adjoint-current-identities}
+The data in Definition~\ref{def:four-dimensional-mostly-plus-spinor-convention}
+obey
+\[
+  \not p^{\,2}=p^2\mathbf 1_S,
+  \qquad
+  \beta^\dagger=\beta,
+  \qquad
+  \beta^2=\mathbf 1_S,
+  \qquad
+  (\gamma^\mu)^\dagger\beta=-\beta\gamma^\mu .
+\]
+Consequently the pairing \(s,t\mapsto s^\dagger\beta t\) is the invariant
+Dirac pairing used throughout the monograph, and
+\(\ii\bar\psi\gamma^\mu\psi\) is Hermitian for an even classical spinor
+field or for the corresponding normal-ordered quantum current.
+\end{proposition}
+
+\begin{proof}
+The square of \(\not p=p_\mu\gamma^\mu\) is
+\[
+  p_\mu p_\nu\gamma^\mu\gamma^\nu
+  =
+  \frac12 p_\mu p_\nu\{\gamma^\mu,\gamma^\nu\}
+  =
+  p_\mu p_\nu\eta^{\mu\nu}\mathbf 1_S.
+\]
+The explicit matrices give
+\((\gamma^0)^\dagger=-\gamma^0\) and
+\((\gamma^i)^\dagger=\gamma^i\).  Since \(\beta=\ii\gamma^0\) and
+\((\gamma^0)^2=-1\), this gives \(\beta^\dagger=\beta\) and
+\(\beta^2=1\).  For \(\mu=0\),
+\[
+  (\gamma^0)^\dagger\beta=-\gamma^0\ii\gamma^0=\ii
+  =
+  -\ii\gamma^0\gamma^0=-\beta\gamma^0 ,
+\]
+and for \(i=1,2,3\),
+\[
+  (\gamma^i)^\dagger\beta
+  =
+  \gamma^i\ii\gamma^0
+  =
+  -\ii\gamma^0\gamma^i
+  =
+  -\beta\gamma^i .
+\]
+Thus \(\beta\gamma^\mu\) is anti-Hermitian.  With the adjoint convention
+\(\bar\psi=\psi^\dagger\beta\), the bilinear
+\(\bar\psi\gamma^\mu\psi\) is anti-Hermitian in the even finite-dimensional
+model.  Multiplication by \(\ii\) gives the Hermitian current normalization.
+The quantum statement follows after imposing the same adjoint convention on
+the operator-valued distribution and using normal ordering when products at
+the same point are represented in a regulator.
+\end{proof}
 
 \section{Spin Representation and Chirality}
 
+\begin{definition}[Spin representation and chirality]
+\label{def:spin-representation-and-chirality}
 The spinor Lorentz generators are
 \begin{equation}
   S^{\mu\nu}
@@ -183,9 +245,85 @@ the four-dimensional trace convention is
   \label{eq:appendix-gamma-five-trace}
 \end{equation}
 This is the convention used in the anomaly chapter.
+\end{definition}
+
+\begin{proposition}[Spin covariance and chirality trace]
+\label{prop:spin-covariance-and-chirality-trace}
+The generators in Definition~\ref{def:spin-representation-and-chirality}
+satisfy
+\[
+  [S^{\mu\nu},\gamma^\rho]
+  =
+  -\ii\gamma^\mu\eta^{\nu\rho}
+  +\ii\gamma^\nu\eta^{\mu\rho}.
+\]
+Consequently
+\[
+  R(\Lambda)\gamma^\mu R(\Lambda)^{-1}
+  =
+  \Lambda^\mu{}_\nu\gamma^\nu,
+  \qquad
+  R(\Lambda)^\dagger\beta R(\Lambda)=\beta .
+\]
+The chirality matrix obeys
+\[
+  \gamma_5^2=1,\qquad
+  \{\gamma_5,\gamma^\mu\}=0,\qquad
+  [\gamma_5,S^{\mu\nu}]=0,
+\]
+and, with \(\epsilon^{0123}=+1\),
+\[
+  \operatorname{tr}
+  (\gamma_5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)
+  =
+  4\ii\,\epsilon^{\mu\nu\rho\sigma}.
+\]
+\end{proposition}
+
+\begin{proof}
+For any Clifford generators,
+\[
+  [[\gamma^\mu,\gamma^\nu],\gamma^\rho]
+  =
+  4(\eta^{\nu\rho}\gamma^\mu-\eta^{\mu\rho}\gamma^\nu).
+\]
+Multiplying by \(-\ii/4\) gives the displayed commutator for
+\(S^{\mu\nu}\).  Exponentiating this infinitesimal identity gives the
+Clifford covariance of \(R(\Lambda)\gamma^\mu R(\Lambda)^{-1}\).
+The infinitesimal derivative of \(R^\dagger\beta R\) is zero because
+\((S^{\mu\nu})^\dagger\beta=\beta S^{\mu\nu}\), which follows from
+Proposition~\ref{prop:basic-clifford-adjoint-current-identities}; the value
+at the identity is \(\beta\).
+
+Let \(\Gamma=\gamma^0\gamma^1\gamma^2\gamma^3\).  Moving each
+\(\gamma^\mu\) through the other three Clifford generators shows that
+\(\Gamma\) anticommutes with every \(\gamma^\mu\).  Since
+\[
+  \Gamma^2=(-1)^6(\gamma^0)^2(\gamma^1)^2(\gamma^2)^2(\gamma^3)^2=-1,
+\]
+\(\gamma_5=-\ii\Gamma\) squares to \(1\).  Anticommutation with every
+\(\gamma^\mu\) implies commutation with every even commutator
+\([\gamma^\mu,\gamma^\nu]\), hence with \(S^{\mu\nu}\).
+
+The trace with \(\gamma_5\) is totally antisymmetric in the four vector
+indices: moving adjacent Clifford generators past one another changes the
+sign, while the metric term produced by the anticommutator has a repeated
+index and gives zero in the fully antisymmetric part.  It is therefore enough
+to evaluate the ordered component:
+\[
+  \operatorname{tr}(\gamma_5\gamma^0\gamma^1\gamma^2\gamma^3)
+  =
+  -\ii\operatorname{tr}(\Gamma^2)
+  =
+  4\ii .
+\]
+This gives the stated \(\epsilon^{0123}=+1\) normalization.
+\end{proof}
 
 \section{Two-Component Blocks and Index Conventions}
 
+\begin{definition}[Two-component block and epsilon conventions]
+\label{def:two-component-block-epsilon-conventions}
 Let
 \[
   \gamma^\mu
@@ -251,9 +389,66 @@ Complex conjugation exchanges the chiral and antichiral components:
   =
   (\widetilde\chi_{\dot a})^* .
 \]
+\end{definition}
+
+\begin{proposition}[Two-component sign and contraction identities]
+\label{prop:two-component-sign-contraction-identities}
+With the epsilon conventions of
+Definition~\ref{def:two-component-block-epsilon-conventions},
+\[
+  (\rho^\mu_{+-})_a{}^{\dot b}
+  =
+  -\epsilon^{\dot b\dot c}
+  (\rho^\mu_{-+})_{\dot c}{}^d
+  \epsilon_{da},
+\]
+and
+\[
+  (\rho_\mu)_{a\dot b}(\rho_\nu)^{a\dot b}
+  =
+  2\eta_{\mu\nu}.
+\]
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  \epsilon=
+  \begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+The matrices in the two chiral blocks are
+\[
+  \rho^0_{+-}=-\ii I_2,\quad \rho^j_{+-}=-\ii\sigma_j,
+  \qquad
+  \rho^0_{-+}=-\ii I_2,\quad \rho^j_{-+}=+\ii\sigma_j .
+\]
+Substituting the Pauli matrices gives the finite matrix identity
+\[
+  \rho^\mu_{+-}
+  =
+  \left(-\epsilon\,\rho^\mu_{-+}\,\epsilon\right)^T,
+\]
+which is precisely the displayed index formula.  For the contraction, lower
+the vector index with \(\eta_{\mu\nu}\) and raise the two spinor indices with
+the same epsilon matrix:
+\[
+  M^{a\dot b}=\epsilon^{ac}\epsilon^{\dot b\dot d}M_{c\dot d}.
+\]
+Direct multiplication of the four displayed \(2\times2\) matrices gives
+\[
+  \sum_{a,\dot b}(\rho_\mu)_{a\dot b}(\rho_\nu)^{a\dot b}
+  =
+  -2\,\delta_{\mu0}\delta_{\nu0}
+  +2\sum_{j=1}^3\delta_{\mu j}\delta_{\nu j}
+  =
+  2\eta_{\mu\nu}.
+\]
+\end{proof}
 
 \section{Majorana Conjugation}
 
+\begin{definition}[Majorana conjugation in the Weinberg-compatible basis]
+\label{def:majorana-conjugation-weinberg-basis}
 A Majorana condition is a Lorentz-covariant reality condition on the complex
 spinor representation.  In the explicit basis
 \eqref{eq:appendix-weinberg-gamma-basis}, set
@@ -308,6 +503,64 @@ where the precise matrix placement is the one fixed in
 \eqref{eq:appendix-rho-sign-relation}.  For Grassmann-odd spinors the same
 formula must be combined with the sign rules for moving odd coefficients
 through one another.
+\end{definition}
+
+\begin{proposition}[Majorana conjugation is Lorentz covariant]
+\label{prop:majorana-conjugation-lorentz-covariant}
+The anti-linear map \(s\mapsto s^c=B^{-1}s^*\) obeys
+\[
+  (s^c)^c=s,
+  \qquad
+  (R(\Lambda)s)^c=R(\Lambda)s^c .
+\]
+The Majorana condition \(s=s^c\) is therefore a Lorentz-covariant real
+structure on the complex spinor representation.  If \(s\) is Majorana, then
+\[
+  \bar s=\ii s^T C,\qquad C=B\gamma^0 .
+\]
+\end{proposition}
+
+\begin{proof}
+The explicit matrices give
+\[
+  (\gamma^\mu)^*=B\gamma^\mu B^{-1},
+  \qquad
+  B^*B=1.
+\]
+The second identity gives
+\[
+  (s^c)^c
+  =
+  B^{-1}(B^{-1}s^*)^*
+  =
+  B^{-1}(B^*)^{-1}s
+  =
+  s.
+\]
+The first identity implies
+\((S^{\mu\nu})^*=-B S^{\mu\nu}B^{-1}\).  The minus sign is exactly canceled
+by complex conjugating the factor \(-\ii\) in the exponential, hence
+\(R(\Lambda)^*=B R(\Lambda)B^{-1}\).  Therefore
+\[
+  (R(\Lambda)s)^c
+  =
+  B^{-1}R(\Lambda)^*s^*
+  =
+  R(\Lambda)B^{-1}s^*
+  =
+  R(\Lambda)s^c .
+\]
+If \(s=s^c\), then \(s^*=Bs\), and
+\[
+  \bar s=s^\dagger\ii\gamma^0
+  =
+  (s^*)^T\ii\gamma^0
+  =
+  s^T B^T\ii\gamma^0.
+\]
+For the displayed basis \(B^T=B\), so the last expression is
+\(\ii s^T B\gamma^0=\ii s^T C\).
+\end{proof}
 
 \section{Comparison with Wess-Bagger-Type Conventions}
 
@@ -377,8 +630,58 @@ abstract Hermitian pairing after the basis change:
 The displayed matrix in the last expression is the Wess-Bagger-basis matrix
 for the same invariant pairing.
 
+\begin{proposition}[Same-metric Wess-Bagger phase translation]
+\label{prop:same-metric-wess-bagger-phase-translation}
+At the fixed metric \(\eta=\operatorname{diag}(-,+,+,+)\), the matrix
+\[
+  U_{\rm ch}=\begin{pmatrix}I_2&0\\0&\ii I_2\end{pmatrix}
+\]
+relates the Wess-Bagger-type basis
+\eqref{eq:appendix-wb-gamma-basis} to the Weinberg-compatible basis by
+\[
+  \gamma^\mu=U_{\rm ch}\gamma^\mu_{\rm WB}U_{\rm ch}^{-1}.
+\]
+The chirality operator is unchanged as an endomorphism of the abstract
+spinor module, while the antichiral coordinate column is multiplied by
+\(\ii\).  Hence any formula imported from Wess-Bagger-type notation must
+translate both the gamma matrices and the epsilon-index convention.
+\end{proposition}
+
+\begin{proof}
+Since \(U_{\rm ch}^{-1}=\operatorname{diag}(I_2,-\ii I_2)\), direct block
+multiplication gives
+\[
+  U_{\rm ch}
+  \begin{pmatrix}0&I_2\\-I_2&0\end{pmatrix}
+  U_{\rm ch}^{-1}
+  =
+  -\ii\begin{pmatrix}0&I_2\\I_2&0\end{pmatrix}
+  =
+  \gamma^0
+\]
+and, for \(j=1,2,3\),
+\[
+  U_{\rm ch}
+  \begin{pmatrix}0&\sigma_j\\ \sigma_j&0\end{pmatrix}
+  U_{\rm ch}^{-1}
+  =
+  -\ii\begin{pmatrix}0&\sigma_j\\-\sigma_j&0\end{pmatrix}
+  =
+  \gamma^j.
+\]
+Both bases are block-off-diagonal with the same chiral splitting, so
+\(\gamma_5\) remains \(\operatorname{diag}(I_2,-I_2)\).  The coordinate
+relation \(s=U_{\rm ch}s_{\rm WB}\) gives
+\((\chi,\widetilde\chi)^T=(\chi_{\rm WB},\ii\widetilde\chi_{\rm WB})^T\),
+which is the stated antichiral phase.  The epsilon symbols determine how
+lowered and raised two-component indices are identified; therefore the
+matrix phase alone is not a complete translation of two-component formulae.
+\end{proof}
+
 \section{Dimensional Continuation and \texorpdfstring{\(\gamma_5\)}{gamma5}}
 
+\begin{definition}[Dimensional-reduction chiral trace prescription]
+\label{def:dimensional-reduction-chiral-trace-prescription}
 Dimensional regularization and dimensional reduction are perturbative
 schemes; they are not definitions of a non-perturbative fermionic path
 integral.  Whenever a chiral trace is present, the finite-dimensional
@@ -404,9 +707,12 @@ chiral trace algebra used in the dimensional-reduction anomaly calculation.
 Changing this prescription changes intermediate contact terms and must be
 compensated by an explicit finite local counterterm if the same renormalized
 Ward identity is to be recovered.
+\end{definition}
 
 \section{Three-Dimensional Lorentzian Spinors}
 
+\begin{definition}[Three-dimensional mostly-plus Majorana convention]
+\label{def:three-dimensional-mostly-plus-majorana-convention}
 For later use in lower-dimensional QFT, take
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-,+,+),
@@ -441,9 +747,38 @@ are symmetric in \(a,b\).  For two Grassmann-even Majorana spinors
   =
   \ii\,\zeta_1^a\Gamma^\mu_{ab}\zeta_2^b .
 \]
+\end{definition}
+
+\begin{proposition}[Three-dimensional Clifford and symmetric block identities]
+\label{prop:three-dimensional-clifford-symmetric-block-identities}
+The matrices in
+Definition~\ref{def:three-dimensional-mostly-plus-majorana-convention} obey
+\[
+  \{\Gamma^\mu,\Gamma^\nu\}=2\eta^{\mu\nu},
+\]
+and \(\Gamma^\mu_{ab}=(\Gamma^\mu)_a{}^c\epsilon_{cb}\) is symmetric in
+\(a,b\).
+\end{proposition}
+
+\begin{proof}
+The Pauli identities
+\(\sigma_i\sigma_j+\sigma_j\sigma_i=2\delta_{ij}\) give
+\((\ii\sigma^2)^2=-1\), \((\sigma^1)^2=(\sigma^3)^2=1\), and zero
+anticommutators between distinct displayed matrices.  With
+\(\epsilon=\begin{pmatrix}0&1\\-1&0\end{pmatrix}\),
+\[
+  \Gamma^0\epsilon=-I_2,\qquad
+  \Gamma^1\epsilon=\begin{pmatrix}-1&0\\0&1\end{pmatrix},
+  \qquad
+  \Gamma^2\epsilon=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+\]
+which are all symmetric.
+\end{proof}
 
 \section{Two-Dimensional Lorentzian Spinors}
 
+\begin{definition}[Two-dimensional mostly-plus spinor trace convention]
+\label{def:two-dimensional-mostly-plus-spinor-trace-convention}
 In two-dimensional Lorentzian calculations the monograph uses
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-,+),
@@ -474,9 +809,160 @@ Thus
  \]
 As in four dimensions, \(\bar\psi=\ii\psi^\dagger\gamma^0\) in the
 mostly-plus convention.
+\end{definition}
+
+\begin{proposition}[Two-dimensional chirality trace]
+\label{prop:two-dimensional-chirality-trace}
+The two-dimensional convention of
+Definition~\ref{def:two-dimensional-mostly-plus-spinor-trace-convention}
+is realized by
+\[
+  \gamma^0=\ii\sigma^2,\qquad
+  \gamma^1=\sigma^1,\qquad
+  \gamma=\gamma^0\gamma^1=\sigma^3.
+\]
+It satisfies
+\[
+  \operatorname{tr}(\gamma^\nu\gamma\,\gamma^\rho)
+  =
+  2\epsilon^{\rho\nu}.
+\]
+\end{proposition}
+
+\begin{proof}
+The Clifford relation follows from the same Pauli algebra as in three
+dimensions.  With \(\epsilon^{01}=+1\), the two nonzero traces are
+\[
+  \operatorname{tr}(\gamma^0\gamma\gamma^1)=-2,
+  \qquad
+  \operatorname{tr}(\gamma^1\gamma\gamma^0)=2,
+\]
+which equal \(2\epsilon^{10}\) and \(2\epsilon^{01}\), respectively; repeated
+indices vanish by anticommutation and tracelessness.
+\end{proof}
+
+\begin{definition}[Two-dimensional chiral-component Majorana convention]
+\label{def:two-dimensional-chiral-component-majorana-convention}
+For comparison with two-dimensional CFT component conventions, it is useful
+to use a Majorana basis adapted to light-cone components.  In flat coordinates
+\(x^0=t\), \(x^1=\sigma\), set
+\[
+  \widehat\Gamma^0=-\ii\sigma^1,\qquad
+  \widehat\Gamma^1=\sigma^2,
+  \qquad
+  \widehat\Gamma=\widehat\Gamma^0\widehat\Gamma^1=\sigma^3 .
+\]
+Let \(\sigma^\pm=\sigma\pm t\), so that
+\[
+  \widehat\Gamma^+=\widehat\Gamma^1+\widehat\Gamma^0,
+  \qquad
+  \widehat\Gamma^-=\widehat\Gamma^1-\widehat\Gamma^0.
+\]
+Spinor indices \(A,B=\pm\) are raised and lowered by
+\[
+  \epsilon^{+-}=\epsilon_{+-}=1,\qquad
+  v^A=\epsilon^{AB}v_B .
+\]
+The lowered light-cone gamma matrices are
+\[
+  (\widehat\Gamma^\pm)_{AB}
+  :=
+  (\widehat\Gamma^\pm)_A{}^C\epsilon_{CB}.
+\]
+This basis gives
+\[
+  (\widehat\Gamma^+)_{++}=2\ii,\qquad
+  (\widehat\Gamma^-)_{--}=2\ii,
+\]
+with all other lowered light-cone components zero.  It is the convention that
+reduces the covariant Majorana action
+\[
+  -\frac{\ii}{4\pi}
+  \int d^2\sigma\,\sqrt{-g}\,
+  \psi\Gamma^a\nabla_a^{\rm spin}\psi
+\]
+to
+\[
+  -\frac1{2\pi}\int d^2\sigma\,
+  \bigl(\psi_+\partial_-\psi_+
+  +\psi_-\partial_+\psi_-\bigr)
+\]
+in flat coordinates, with the same spinor-index contraction convention.  Its
+role in this monograph is translational: it is the convenient bridge to the
+chiral free-fermion fields of two-dimensional CFT.  After Wick rotation,
+\(\psi_-\) and \(\psi_+\) become the holomorphic and antiholomorphic spin
+fields on a Riemann surface, and the global information is carried by a spin
+structure rather than by a preferred global spinor frame.  Most
+two-dimensional CFT computations are therefore done directly with these
+components, their OPEs, and their Szego kernels.  No ghost system or
+integration over moduli space is part of this convention; those are separate
+structures that are outside the fixed-surface two-dimensional QFT/CFT
+framework being recorded here.
+\end{definition}
+
+\begin{proposition}[Compatibility of the two-dimensional spinor bases]
+\label{prop:two-dimensional-chiral-component-dirac-compatibility}
+The Dirac-anomaly basis of
+Proposition~\ref{prop:two-dimensional-chirality-trace} and the
+Majorana basis of
+Definition~\ref{def:two-dimensional-chiral-component-majorana-convention} are
+similar representations of the same mostly-plus Clifford algebra.  Explicitly,
+with
+\[
+  U_2=\begin{pmatrix}-\ii&0\\0&1\end{pmatrix},
+\]
+one has
+\[
+  \widehat\Gamma^0=U_2\gamma^0U_2^{-1},
+  \qquad
+  \widehat\Gamma^1=U_2\gamma^1U_2^{-1},
+  \qquad
+  \widehat\Gamma=U_2\gamma U_2^{-1}.
+\]
+Consequently the two bases define the same invariant Clifford algebra and the
+same chirality splitting, while the free-fermion light-cone component
+normalization and the Dirac-anomaly trace normalization are different
+coordinate realizations of that algebra.  The monograph uses the
+Dirac-anomaly basis when evaluating spinor traces and uses the
+chiral-component Majorana basis when comparing to two-dimensional CFT
+component conventions.
+\end{proposition}
+
+\begin{proof}
+Direct multiplication gives
+\[
+  U_2(\ii\sigma^2)U_2^{-1}=-\ii\sigma^1,
+  \qquad
+  U_2\sigma^1U_2^{-1}=\sigma^2.
+\]
+The chirality relation follows by multiplying the two identities.  Lowering
+the spinor index of
+\[
+  \widehat\Gamma^+=
+  \begin{pmatrix}0&-2\ii\\0&0\end{pmatrix},
+  \qquad
+  \widehat\Gamma^-=
+  \begin{pmatrix}0&0\\2\ii&0\end{pmatrix}
+\]
+with
+\(\epsilon=\begin{pmatrix}0&1\\-1&0\end{pmatrix}\) gives
+\[
+  \widehat\Gamma^+\epsilon=
+  \begin{pmatrix}2\ii&0\\0&0\end{pmatrix},
+  \qquad
+  \widehat\Gamma^-\epsilon=
+  \begin{pmatrix}0&0\\0&2\ii\end{pmatrix}.
+\]
+Thus the light-cone components have the stated chiral-component
+normalization.  Since \(U_2\) is invertible, all Clifford, chirality, and
+trace identities are transported between the two bases after transforming the
+coordinate components of the spinors.
+\end{proof}
 
 \section{Euclidean Spinors}
 
+\begin{definition}[Recursive Euclidean Clifford basis]
+\label{def:recursive-euclidean-clifford-basis}
 Euclidean gamma matrices in even dimension \(d\) are denoted
 \(\Gamma^1,\ldots,\Gamma^d\) and obey
 \[
@@ -526,9 +1012,42 @@ and
 These formulae fix a basis; invariant statements should be phrased in terms
 of the corresponding real, complex, or quaternionic structure on the
 Euclidean spinor module.
+\end{definition}
+
+\begin{proposition}[Euclidean recursion preserves the Clifford relations]
+\label{prop:euclidean-recursion-preserves-clifford-relations}
+The recursive construction in
+Definition~\ref{def:recursive-euclidean-clifford-basis} gives
+\[
+  \{\Gamma^i_{(d)},\Gamma^j_{(d)}\}=2\delta^{ij},
+  \qquad
+  \Gamma_E^2=1
+\]
+in every even dimension \(d\).
+\end{proposition}
+
+\begin{proof}
+The \(d=2\) matrices are the Pauli matrices \(\sigma_1,\sigma_2\), so the
+claim holds at the initial step.  Assume it holds in dimension \(d-2\).
+For \(i,j\le d-2\), tensoring both matrices with \(-\sigma_3\) preserves the
+anticommutator because \((-\sigma_3)^2=1\).  The two new matrices
+\(I\otimes\sigma_1\) and \(I\otimes\sigma_2\) anticommute with each other and
+square to \(1\).  They also anticommute with the old matrices because
+\(\sigma_1\) and \(\sigma_2\) anticommute with \(\sigma_3\).  Hence the
+Clifford relation holds in dimension \(d\).
+
+Let \(\Omega_d=\Gamma^1\cdots\Gamma^d\).  In Euclidean signature,
+\(\Omega_d^2=(-1)^{d(d-1)/2}\).  For even \(d=2r\), this is
+\((-1)^r\).  Since \(\Gamma_E=\ii^{-r}\Omega_d\),
+\[
+  \Gamma_E^2=\ii^{-2r}(-1)^r=(-1)^{-r}(-1)^r=1.
+\]
+\end{proof}
 
 \section{Six- and Eight-Dimensional Euclidean Blocks}
 
+\begin{definition}[Six- and eight-dimensional Euclidean spinor blocks]
+\label{def:six-eight-dimensional-euclidean-spinor-blocks}
 For later supersymmetric and internal-symmetry applications, it is useful to
 record block conventions for Euclidean \(SO(6)\) and \(SO(8)\) spinors.
 
@@ -590,3 +1109,4 @@ They satisfy
 \]
 These identities are the ones used when four-dimensional supersymmetry or
 higher-dimensional reductions are translated into \(SU(4)\) index notation.
+\end{definition}

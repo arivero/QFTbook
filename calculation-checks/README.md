@@ -347,6 +347,15 @@ Current checks:
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
   in the nonabelian anomaly coefficient.
+- `spinor_convention_checks.py`: exact finite checks for the local
+  spinor-convention section, including the mostly-plus Clifford algebra,
+  Dirac-adjoint identities, spin-generator commutators, \(\gamma_5\) trace
+  normalization, two-component \(\rho\)-block signs, Majorana conjugation,
+  Wess-Bagger phase translation, low-dimensional Lorentzian traces, and
+  Euclidean Clifford recursion.  It also checks the two-dimensional
+  chiral-component convention
+  \((\widehat\Gamma^+)_{++}=(\widehat\Gamma^-)_{--}=2i\) and its basis
+  change to the two-dimensional Dirac-anomaly convention.
 - `gauge_convention_checks.py`: \(SU(N)\) Hermitian-generator normalization
   \(\operatorname{tr}(t^a t^b)=\delta^{ab}\), output-first structure
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
@@ -901,7 +910,7 @@ Current checks:
   \(\zeta_{\rm R}(-1)=-1/12\), and the sign of the determinant's scale
   dependence.
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
-  algebraic checks, adapted from the stringbook spinor appendix and
+  algebraic checks, adapted from the source spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.
 - `planar_n4_reader_companion_checks.wl`: a plain Wolfram Language companion
   to `planar_n4_reader_companion_checks.py`, keeping the same spin-chain,
