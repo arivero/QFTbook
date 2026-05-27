@@ -477,7 +477,8 @@ Current checks:
   Lie bracket in a two-coupling model.
 - `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
   Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
-  variation coefficients, the full string-frame metric trace split and
+  variation coefficients, the local worldsheet tadpole and bubble origins of
+  the \(H\)-dependent counterterms, the full string-frame metric trace split and
   scalar dilaton variation, linear-dilaton central-charge condition,
   heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
   direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of

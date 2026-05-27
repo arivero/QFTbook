@@ -723,39 +723,161 @@ equivalently \(D+6\alpha'V^2=26\), matching the central-charge convention
 used below in Remark~\ref{rem:nlsm-linear-dilaton-criticality}.
 \end{proof}
 
-\begin{remark}[One-loop \(H\)-coefficient origin]
-\label{rem:nlsm-one-loop-h-coefficients}
-The coefficients \(-1/4\) in
-\eqref{eq:nlsm-one-loop-hatted-beta-g} and \(-1/2\) in
-\eqref{eq:nlsm-one-loop-hatted-beta-b} have two independent origins.  The
-target-space functional variation above fixes them by the factors \(3\) and
-\(6\) in \(\delta(H^2)\) and \(\delta H=\dd\delta B\).  In the
-background-field computation, the same coefficients come from two one-loop
-poles.  The tadpole vertex
-\[
-  \frac{\ii}{8\pi\alpha'}
-  \int
-  \epsilon^{ab}
-  \nabla_\ell H_{kij}\,
-  \xi^\ell\xi^k
-  \partial_ax^i\partial_bx^j
-\]
-produces the \(\nabla^kH_{kij}\) pole in the antisymmetric channel, while the
-bubble built from
-\[
+\begin{proposition}[Local one-loop origin of the \(H\)-coefficients]
+\label{prop:nlsm-one-loop-h-flux-poles}
+Work in the same dimensional-regularization and minimal-subtraction scheme as
+Proposition~\ref{prop:nlsm-one-loop-ricci-divergence}.  Freeze the background
+map at a point, choose a local orthonormal target frame parallel at that point,
+and keep only logarithmic poles with two derivatives of the slowly varying
+background \(x:\Sigma\to M\).  The \(B\)-field interaction has the local
+covariant expansion
+\begin{equation}
+\begin{aligned}
+  S_B[x,\xi]
+  &=
   \frac{\ii}{4\pi\alpha'}
+  \int\epsilon^{ab}B_{ij}(x)\partial_ax^i\partial_bx^j
+  \\
+  &\quad+
+  \frac{\ii}{4\pi\alpha'}
+  \int\epsilon^{ab}
+  H_{k\ell i}(x)\xi^kD_a\xi^\ell\partial_bx^i
+  \\
+  &\quad+
+  \frac{\ii}{8\pi\alpha'}
+  \int\epsilon^{ab}
+  \nabla_\ell H_{kij}(x)\xi^\ell\xi^k
+  \partial_ax^i\partial_bx^j
+  +O(\xi^3,\partial^3x).
+\end{aligned}
+  \label{eq:nlsm-b-field-background-expansion}
+\end{equation}
+With the dimensional-continuation convention
+\begin{equation}
+  \epsilon^{ab}\epsilon^{cd}\gamma_{ac}
+  =
+  \gamma^{bd}+O(\epsilon)
+  \quad\text{inside logarithmic poles},
+  \label{eq:nlsm-epsilon-contraction-convention}
+\end{equation}
+the one-loop pole from the last line of
+\eqref{eq:nlsm-b-field-background-expansion} is
+\begin{equation}
+  \Gamma^{(1)}_{B,\mathrm{tad},\mathrm{div}}
+  =
+  \frac{\ii}{8\pi\epsilon}
   \int
-  \epsilon^{ab}
-  H_{k\ell i}\,
-  \xi^kD_a\xi^\ell\partial_bx^i
+  \epsilon^{ab}\nabla^kH_{kij}(x)
+  \partial_ax^i\partial_bx^j ,
+  \label{eq:nlsm-b-tadpole-divergence}
+\end{equation}
+and the connected bubble from the middle line is
+\begin{equation}
+  \Gamma^{(1)}_{B,\mathrm{bub},\mathrm{div}}
+  =
+  \frac1{16\pi\epsilon}
+  \int\sqrt\gamma\,\gamma^{ab}
+  H_i{}^{k\ell}H_{jk\ell}(x)
+  \partial_ax^i\partial_bx^j .
+  \label{eq:nlsm-b-bubble-divergence}
+\end{equation}
+Consequently the minimal-subtraction counterterms contain
+\begin{equation}
+  \delta B_{ij}
+  =
+  -\frac{\alpha'}{2\epsilon}\nabla^kH_{kij},
+  \qquad
+  \delta G_{ij}
+  =
+  -\frac{\alpha'}{4\epsilon}H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-h-flux-minimal-subtraction-counterterms}
+\end{equation}
+which are precisely the \(H\)-dependent non-dilaton coefficients in
+\eqref{eq:nlsm-one-loop-hatted-beta-g} and
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.
+\end{proposition}
+
+\begin{proof}
+The expansion \eqref{eq:nlsm-b-field-background-expansion} is most cleanly
+obtained by differentiating the pulled-back gerbe representative along the
+geodesic family \(X_s=\exp_x(s\xi)\).  The linear term in \(s\) is
+\(\iota_\xi H\) up to an exact two-form on the worldsheet, which is a
+\(B\)-field gauge variation on closed \(\Sigma\).  Covariantizing the
+worldsheet derivative of \(\xi\) gives the middle vertex.  Differentiating
+once more gives the \(\nabla H\) vertex, and the Taylor factor \(1/2\) gives
+the coefficient in the third line.
+
+The tadpole uses only the coincident pole
+\eqref{eq:nlsm-free-fluctuation-coincident-pole}:
+\[
+  \left\langle
+    \xi^\ell(\sigma)\xi^k(\sigma)
+  \right\rangle_{\mathrm{div}}
+  =
+  \frac{\alpha'}{\epsilon}G^{\ell k}.
 \]
-produces the \(H_i{}^{k\ell}H_{jk\ell}\) pole in the metric channel.  These
-are local pole computations in a chosen dimensional-continuation convention
-for \(\epsilon^{ab}\); \(B\)-field gauge invariance of the final Weyl
-coefficient is restored by expressing the answer in terms of \(H\) and by
-allowing the gauge redundant direction in
-\eqref{eq:nlsm-hatted-beta-b-redundant}.
-\end{remark}
+Substituting this in the third line of
+\eqref{eq:nlsm-b-field-background-expansion} gives
+\eqref{eq:nlsm-b-tadpole-divergence}.  Since the local \(B\)-coupling in the
+action has prefactor \(\ii/(4\pi\alpha')\), cancellation of this pole requires
+the first counterterm in
+\eqref{eq:nlsm-h-flux-minimal-subtraction-counterterms}.
+
+For the bubble, let \(\Delta=(-\partial^2+m^2)^{-1}\) be the scalar local
+Green kernel used in \eqref{eq:nlsm-local-heat-kernel-pole}.  The only local
+logarithmic contraction needed, after freezing \(x\), is
+\begin{equation}
+  \int\dd^d\sigma'\,
+  \partial_a\Delta(\sigma-\sigma')\,
+  \partial_c\Delta(\sigma-\sigma')
+  =
+  \frac{\gamma_{ac}}{4\pi\epsilon}+O(\epsilon^0).
+  \label{eq:nlsm-derivative-propagator-pole}
+\end{equation}
+In momentum space this is the rotational identity
+\[
+  \int\frac{\dd^dp}{(2\pi)^d}
+  \frac{p_ap_c}{(p^2+m^2)^2}
+  =
+  \frac{\gamma_{ac}}{d}
+  \int\frac{\dd^dp}{(2\pi)^d}
+  \frac{p^2}{(p^2+m^2)^2}
+  =
+  \frac{\gamma_{ac}}{4\pi\epsilon}+O(\epsilon^0),
+\]
+using \(d=2-\epsilon\); terms proportional to \(m^2/(p^2+m^2)^2\) are finite
+in the logarithmic pole part.  The free covariance contributes
+\((2\pi\alpha')^2\), the two Wick pairings give the same tensor after using
+antisymmetry of \(H_{k\ell i}\), and the connected effective action contains
+\[
+  -\frac12\left(\frac{\ii}{4\pi\alpha'}\right)^2
+  \left\langle
+    \left(
+      \int\epsilon^{ab}H_{k\ell i}\xi^kD_a\xi^\ell\partial_bx^i
+    \right)^2
+  \right\rangle_{\!c}.
+\]
+Combining the factors gives
+\[
+  -\frac12\left(\frac{\ii}{4\pi\alpha'}\right)^2
+  \cdot 2\cdot
+  \frac{\pi(\alpha')^2}{\epsilon}
+  =
+  \frac1{16\pi\epsilon}.
+\]
+The target-index contractions give
+\(H_{k\ell i}H_{mn j}G^{km}G^{\ell n}=H_i{}^{k\ell}H_{jk\ell}\), and
+\eqref{eq:nlsm-epsilon-contraction-convention} converts the two
+antisymmetric worldsheet tensors into \(\gamma^{bd}\).  This proves
+\eqref{eq:nlsm-b-bubble-divergence}.  Comparing with the metric action
+prefactor \(1/(4\pi\alpha')\) gives the second counterterm in
+\eqref{eq:nlsm-h-flux-minimal-subtraction-counterterms}.
+
+The two counterterms are local and gauge invariant after being expressed in
+terms of \(H\).  Adding the dilaton-gradient redundant direction later in
+Proposition~\ref{prop:nlsm-hatted-beta-redundant-directions} converts these
+coordinate beta representatives into the hatted Weyl-anomaly coefficients.
+\end{proof}
 
 \section{Minimal Subtraction as Geometry on Coupling Space}
 \label{sec:nlsm-ms-geometry}

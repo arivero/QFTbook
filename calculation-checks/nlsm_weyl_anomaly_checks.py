@@ -36,6 +36,47 @@ def check_h_squared_variation_coefficients() -> None:
     assert_equal("B beta dilaton-gradient coefficient", dilaton_gradient_coefficient, 1)
 
 
+def check_worldsheet_h_flux_pole_coefficients() -> None:
+    """Check the local background-field pole factors for the H vertices."""
+
+    # Strip the common factors i/(pi epsilon) for the B tadpole.  The
+    # quadratic H-derivative vertex has prefactor 1/8; the coincident
+    # fluctuation pole contributes alpha'/epsilon, and the B action has
+    # prefactor 1/4.  Cancellation therefore gives delta B = -alpha' nabla.H/2e.
+    b_action_prefactor = Fraction(1, 4)
+    b_tadpole_prefactor = Fraction(1, 8)
+    b_counterterm_coefficient = -b_tadpole_prefactor / b_action_prefactor
+    assert_equal(
+        "worldsheet H tadpole B-counterterm coefficient",
+        b_counterterm_coefficient,
+        Fraction(-1, 2),
+    )
+
+    # Strip the common factor 1/(pi epsilon) for the metric bubble.  The
+    # connected effective action contributes -1/2, the two imaginary vertices
+    # contribute -1/(4^2), the two Wick pairings give 2, and the local
+    # derivative-propagator integral supplies the remaining normalized unit.
+    connected_cumulant = Fraction(-1, 2)
+    imaginary_vertices = -Fraction(1, 4 * 4)
+    wick_pairings = 2
+    derivative_integral_unit = 1
+    bubble_divergence = (
+        connected_cumulant
+        * imaginary_vertices
+        * wick_pairings
+        * derivative_integral_unit
+    )
+    assert_equal("worldsheet H bubble divergence coefficient", bubble_divergence, Fraction(1, 16))
+
+    metric_action_prefactor = Fraction(1, 4)
+    metric_counterterm_coefficient = -bubble_divergence / metric_action_prefactor
+    assert_equal(
+        "worldsheet H bubble metric-counterterm coefficient",
+        metric_counterterm_coefficient,
+        Fraction(-1, 4),
+    )
+
+
 def check_string_frame_metric_trace_and_scalar_variation() -> None:
     """Check the trace/scalar split in the one-loop string-frame action."""
 
@@ -176,6 +217,7 @@ def check_exterior_square_zero_for_h_beta() -> None:
 
 def main() -> None:
     check_h_squared_variation_coefficients()
+    check_worldsheet_h_flux_pole_coefficients()
     check_string_frame_metric_trace_and_scalar_variation()
     check_linear_dilaton_constant()
     check_heterotic_bianchi_coefficients()
