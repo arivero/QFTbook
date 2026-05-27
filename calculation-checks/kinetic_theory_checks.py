@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import math
 
+import sympy as sp
+
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-11) -> None:
     if abs(got - expected) > tol:
@@ -60,6 +62,40 @@ def check_linearized_collision_positive_form() -> None:
     assert_close("collision invariant null vector", invariant_delta, 0.0)
 
 
+def check_finite_collision_algebra_exact() -> None:
+    etas = [1, -1, 1, -1]
+    # Work with a_i = f_i / (1 + eta_i f_i).  The selected values satisfy
+    # a_0 a_1 = a_2 a_3, hence detailed balance for 0+1 <-> 2+3.
+    a_values = [sp.Rational(1, 3), sp.Rational(1, 5), sp.Rational(1, 6), sp.Rational(2, 5)]
+    f0 = [
+        a / (1 - eta * a)
+        for a, eta in zip(a_values, etas)
+    ]
+    loss0 = f0[0] * f0[1] * (1 + etas[2] * f0[2]) * (1 + etas[3] * f0[3])
+    gain0 = f0[2] * f0[3] * (1 + etas[0] * f0[0]) * (1 + etas[1] * f0[1])
+    if sp.simplify(loss0 - gain0) != 0:
+        raise AssertionError("finite detailed balance failed")
+
+    t = sp.symbols("t")
+    chi = [sp.Rational(2, 7), sp.Rational(-1, 3), sp.Rational(5, 11), sp.Rational(1, 13)]
+    f = [base + t * base * (1 + eta * base) * variation for base, eta, variation in zip(f0, etas, chi)]
+    loss = f[0] * f[1] * (1 + etas[2] * f[2]) * (1 + etas[3] * f[3])
+    gain = f[2] * f[3] * (1 + etas[0] * f[0]) * (1 + etas[1] * f[1])
+    linear_rate = sp.diff(loss - gain, t).subs(t, 0)
+    expected_linear_rate = loss0 * (chi[0] + chi[1] - chi[2] - chi[3])
+    if sp.simplify(linear_rate - expected_linear_rate) != 0:
+        raise AssertionError("finite linearized collision rate failed")
+
+    p_values = [sp.Rational(3, 2), sp.Rational(5, 4), sp.Rational(7, 4), sp.Rational(1, 1)]
+    assert sp.simplify(p_values[0] + p_values[1] - p_values[2] - p_values[3]) == 0
+    alpha = sp.Rational(4, 9)
+    beta = sp.Rational(-2, 5)
+    invariant = [alpha + beta * momentum for momentum in p_values]
+    invariant_delta = invariant[0] + invariant[1] - invariant[2] - invariant[3]
+    if sp.simplify(invariant_delta) != 0:
+        raise AssertionError("finite collision invariant failed")
+
+
 def check_relaxation_time_shear_integral() -> None:
     temperature = 0.8
     tau = 1.6
@@ -77,6 +113,7 @@ def main() -> None:
     check_detailed_balance()
     check_h_theorem_integrand()
     check_linearized_collision_positive_form()
+    check_finite_collision_algebra_exact()
     check_relaxation_time_shear_integral()
     print("All kinetic-theory controlled-limit checks passed.")
 

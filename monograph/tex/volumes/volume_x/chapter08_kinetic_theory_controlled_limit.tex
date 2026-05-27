@@ -313,6 +313,225 @@ is spanned by conserved collision invariants.  Transport coefficients are
 quadratic forms involving the inverse of \(\mathcal L\) on the orthogonal
 complement of this null space.
 
+\section{Finite Collision Algebra Behind the Integral Formula}
+\label{sec:finite-collision-algebra-behind-kinetic-integral}
+
+The continuum formulas above are compact notations for a positive measure on
+reaction kinematics.  The sign, null-space, and detailed-balance statements
+are already present at the finite algebraic level, so we record that level
+explicitly.  This also fixes the precise content of the phrase ``collision
+invariant'' before functional analysis is added.
+
+\begin{definition}[Finite reversible collision datum]
+\label{def:finite-reversible-collision-datum}
+A finite reversible collision datum consists of:
+\begin{enumerate}
+\item a finite set \(I\) of one-particle cells, each with a statistics sign
+  \(\eta_i\in\{+1,-1\}\);
+\item an open state domain
+  \[
+    \mathcal D
+    =
+    \{f\in\mathbb R^I:\ f_i>0,\ 1+\eta_i f_i>0\ \text{for all }i\};
+  \]
+\item a finite set \(\mathcal R\) of reversible reactions
+  \(r=(i,j;k,l)\), interpreted as \(i+j\rightleftarrows k+l\), with weights
+  \(w_r>0\);
+\item additive labels \(P_i\) taking values in a real vector space
+  \(\mathcal P\), such that
+  \[
+    P_i+P_j=P_k+P_l
+    \label{eq:finite-collision-additive-conservation}
+  \]
+  for every reaction \(r=(i,j;k,l)\).
+\end{enumerate}
+For \(f\in\mathcal D\), define
+\[
+  L_r(f)=f_if_j(1+\eta_k f_k)(1+\eta_l f_l),
+  \qquad
+  G_r(f)=f_kf_l(1+\eta_i f_i)(1+\eta_j f_j),
+  \label{eq:finite-collision-loss-gain-products}
+\]
+and the stoichiometric vector
+\[
+  \nu_r=-e_i-e_j+e_k+e_l\in\mathbb R^I .
+  \label{eq:finite-collision-stoichiometric-vector}
+\]
+The collision vector field is
+\[
+  \dot f
+  =
+  \sum_{r\in\mathcal R}w_r\bigl(L_r(f)-G_r(f)\bigr)\nu_r .
+  \label{eq:finite-collision-vector-field}
+\]
+\end{definition}
+
+\begin{proposition}[Finite collision conservation and entropy production]
+\label{prop:finite-collision-conservation-h-theorem}
+For every finite reversible collision datum, the vector field
+\eqref{eq:finite-collision-vector-field} preserves every additive conserved
+quantity
+\[
+  Q_A(f)=\sum_{i\in I}A(P_i)f_i,
+  \qquad A\in\mathcal P^* .
+  \label{eq:finite-collision-additive-charge}
+\]
+Moreover the entropy
+\[
+  S(f)
+  =
+  -\sum_{i\in I}
+  \left[
+    f_i\log f_i
+    -\eta_i(1+\eta_if_i)\log(1+\eta_if_i)
+  \right]
+  \label{eq:finite-collision-entropy}
+\]
+satisfies
+\[
+  \dot S(f)
+  =
+  \sum_{r\in\mathcal R}
+  w_r\bigl(L_r(f)-G_r(f)\bigr)
+  \log\!\left(\frac{L_r(f)}{G_r(f)}\right)
+  \ge0 .
+  \label{eq:finite-collision-entropy-production}
+\]
+Equality holds if and only if \(L_r(f)=G_r(f)\) for every reaction with
+\(w_r>0\).
+\end{proposition}
+
+\begin{proof}
+For the conserved quantity,
+\[
+  \frac{d}{dt}Q_A(f)
+  =
+  \sum_{r}w_r(L_r-G_r)
+  \bigl[-A(P_i)-A(P_j)+A(P_k)+A(P_l)\bigr],
+\]
+and the bracket vanishes by
+\eqref{eq:finite-collision-additive-conservation}.
+
+For the entropy, differentiate the one-cell entropy:
+\[
+  \frac{\partial S}{\partial f_i}
+  =
+  -\log\!\left(\frac{f_i}{1+\eta_if_i}\right).
+  \label{eq:finite-collision-entropy-derivative}
+\]
+For \(r=(i,j;k,l)\),
+\[
+  \nu_r\cdot\nabla S
+  =
+  \log\!\left(
+  \frac{f_if_j(1+\eta_kf_k)(1+\eta_lf_l)}
+       {f_kf_l(1+\eta_if_i)(1+\eta_jf_j)}
+  \right)
+  =
+  \log\!\left(\frac{L_r}{G_r}\right).
+  \]
+Substitution into \(\dot S=\nabla S\cdot\dot f\) gives
+\eqref{eq:finite-collision-entropy-production}.  The inequality is the
+elementary monotonicity of the logarithm:
+\[
+  (x-y)\log(x/y)\ge0,\qquad x>0,\quad y>0 .
+  \]
+It is strict unless \(x=y\), which gives the equality condition.
+\end{proof}
+
+\begin{definition}[Finite local equilibrium and collision invariants]
+\label{def:finite-local-equilibrium-collision-invariants}
+A state \(f^{(0)}\in\mathcal D\) is a finite equilibrium for the datum when
+\[
+  \frac{f_i^{(0)}}{1+\eta_i f_i^{(0)}}
+  =
+  \exp[-\alpha-A(P_i)]
+  \label{eq:finite-collision-equilibrium-form}
+\]
+for some \(\alpha\in\mathbb R\) and \(A\in\mathcal P^*\).  A function
+\(\chi:I\to\mathbb R\) is a collision invariant when
+\[
+  \chi_i+\chi_j-\chi_k-\chi_l=0
+  \label{eq:finite-collision-invariant}
+\]
+for every reaction \(i+j\rightleftarrows k+l\).
+\end{definition}
+
+\begin{proposition}[Finite linearized collision operator]
+\label{prop:finite-linearized-collision-positive}
+Let \(f^{(0)}\) be a finite equilibrium.  Write
+\[
+  f_i=f_i^{(0)}+f_i^{(0)}(1+\eta_i f_i^{(0)})\chi_i .
+  \label{eq:finite-collision-linearization}
+\]
+To first order in \(\chi\),
+\[
+  L_r(f)-G_r(f)
+  =
+  M_r
+  \bigl(\chi_i+\chi_j-\chi_k-\chi_l\bigr)+O(\chi^2),
+  \label{eq:finite-collision-linearized-rate}
+\]
+where
+\[
+  M_r=L_r(f^{(0)})=G_r(f^{(0)})>0 .
+  \label{eq:finite-collision-equilibrium-weight}
+\]
+Consequently the linearized entropy production is
+\[
+  \dot S^{(2)}
+  =
+  \sum_{r\in\mathcal R}
+  w_rM_r
+  \bigl(\chi_i+\chi_j-\chi_k-\chi_l\bigr)^2\ge0.
+  \label{eq:finite-collision-linearized-entropy-production}
+\]
+Its null space is precisely the space of collision invariants.  If the
+reaction graph is connected enough that every collision invariant is of the
+form \(\chi_i=\alpha+A(P_i)\), then the only zero modes are the conserved
+hydrodynamic variables.
+\end{proposition}
+
+\begin{proof}
+At equilibrium, detailed balance follows from
+\eqref{eq:finite-collision-equilibrium-form} and additive conservation:
+\[
+  \frac{L_r(f^{(0)})}{G_r(f^{(0)})}
+  =
+  \exp[-A(P_i)-A(P_j)+A(P_k)+A(P_l)]
+  =
+  1 .
+  \]
+For a variation \(\delta f_i=f_i^{(0)}(1+\eta_i f_i^{(0)})\chi_i\),
+\[
+  \delta\log\!\left(\frac{f_i}{1+\eta_i f_i}\right)=\chi_i .
+  \]
+Therefore
+\[
+  \delta\log(L_r/G_r)
+  =
+  \chi_i+\chi_j-\chi_k-\chi_l .
+  \]
+Since \(L_r=G_r=M_r\) at equilibrium, this is equivalent to
+\eqref{eq:finite-collision-linearized-rate}.  Expanding
+\((L_r-G_r)\log(L_r/G_r)\) to second order gives
+\eqref{eq:finite-collision-linearized-entropy-production}.  The last two
+claims are then just the condition for every square in that sum to vanish,
+together with the stated connectivity hypothesis.
+\end{proof}
+
+The continuum \(2\to2\) formulas are obtained from
+Definition~\ref{def:finite-reversible-collision-datum} by replacing the
+finite reaction sum by the invariant positive measure
+\[
+  d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  |\mathcal M_{ab\to cd}|^2 .
+\]
+The finite theorem is not a derivation of this measure from QFT; it is the
+exact algebraic part of the kinetic construction once the collision measure
+has been derived or declared.
+
 \section{Worked Example: Relaxation-Time Shear Viscosity}
 
 \begin{controlledapproximation}[Constant relaxation time]

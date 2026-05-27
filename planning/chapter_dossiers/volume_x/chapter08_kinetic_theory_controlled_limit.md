@@ -26,6 +26,10 @@ arise from the inverse linearized collision operator.
 - `L_ab`: linearized collision operator.
 - `tau_R`: relaxation time in the explicitly marked controlled
   approximation.
+- `I`, `R`, `nu_r`: finite one-particle cell set, reversible reaction set,
+  and stoichiometric vector in the finite collision algebra.
+- `L_r`, `G_r`, `M_r`: loss product, gain product, and equilibrium reaction
+  weight for a finite reversible collision.
 
 ## Claim Ledger
 
@@ -48,19 +52,25 @@ arise from the inverse linearized collision operator.
    \((\chi_1+\chi_2-\chi_3-\chi_4)^2\).
 8. The null space of the linearized operator is spanned by conserved
    collision invariants under the stated connectivity hypothesis.
-9. The relaxation-time worked example gives
+9. The finite reversible collision datum proves the algebraic core of the
+   continuum formulas: additive conserved quantities are preserved, entropy
+   production is \(\sum_r w_r(L_r-G_r)\log(L_r/G_r)\ge0\), and the
+   linearized entropy production is a positive sum of squares.
+10. The relaxation-time worked example gives
    \(\eta_{\rm RTA}=4p_{\rm therm}\tau_R/5\) for one massless classical
    species in three spatial dimensions, as a controlled model on the shear
    subspace.
-10. Gauge-theory kinetic theory requires matching hard quasiparticles,
+11. Gauge-theory kinetic theory requires matching hard quasiparticles,
     soft collective gauge fields, and ultrasoft hydrodynamic modes in a
     common regulator and source convention.
 
 ## Calculation Checks
 
 - `calculation-checks/kinetic_theory_checks.py` verifies detailed balance,
-  the H-theorem integrand, linearized collision positivity and null vectors,
-  and the relaxation-time shear-viscosity integral.
+  the H-theorem integrand, exact finite reversible-collision detailed
+  balance, exact finite linearized-rate algebra, finite collision-invariant
+  algebra, linearized collision positivity and null vectors, and the
+  relaxation-time shear-viscosity integral.
 
 ## Figure Ledger
 

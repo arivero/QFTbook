@@ -525,8 +525,10 @@ Current checks:
   arithmetic used in the strong-coupling area estimate.
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
   theory chapter, including Bose/Fermi detailed balance, the H-theorem
-  integrand, linearized collision-operator positivity and null vectors, and
-  the relaxation-time shear-viscosity integral.
+  integrand, exact finite reversible-collision detailed balance, exact
+  linearized rate and collision-invariant algebra, linearized
+  collision-operator positivity and null vectors, and the relaxation-time
+  shear-viscosity integral.
 - `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
   Monte Carlo and sign-problem chapter, including the finite-\(N\)
   autocorrelation variance identity, the reweighting identity, the
