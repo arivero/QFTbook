@@ -476,6 +476,21 @@ def check_cfl_global_goldstone_count():
     assert_equal("CFL physical Goldstone count", global_before - global_after, 9)
 
 
+def check_cfl_gauge_invariant_composite_charges():
+    # Each quark has baryon charge 1/3.  The antisymmetric diquark field
+    # varphi has charge 2/3; det(varphi) has charge 2 and is color invariant
+    # because det SU(3)=1.  Sigma=varphi_L^\dagger varphi_R is baryon neutral.
+    quark_baryon_charge = Fraction(1, 3)
+    diquark_charge = 2 * quark_baryon_charge
+    assert_equal("CFL diquark baryon charge", diquark_charge, Fraction(2, 3))
+
+    determinant_charge = 3 * diquark_charge
+    assert_equal("CFL determinant baryon charge", determinant_charge, Fraction(2, 1))
+
+    sigma_charge = -diquark_charge + diquark_charge
+    assert_equal("CFL chiral composite baryon charge", sigma_charge, Fraction(0, 1))
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -496,6 +511,7 @@ def main():
     check_dense_qq_color_factors()
     check_magnetic_gap_leading_log_coefficients()
     check_cfl_global_goldstone_count()
+    check_cfl_gauge_invariant_composite_charges()
     print("All QCD phase-structure checks passed.")
 
 

@@ -61,6 +61,9 @@ GitHub issue #628.
   propagator, leading-log magnetic gap coefficient, and matching scale for
   the dense color-superconducting gap equation.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
+- `varphi_L`, `varphi_R`, `B_L`, `B_R`, `Sigma`: gauge-covariant
+  antisymmetric CFL diquarks and the gauge-invariant baryon-superfluid and
+  chiral composites used to diagnose the physical CFL symmetry realization.
 
 ## Claim Ledger
 
@@ -157,7 +160,10 @@ GitHub issue #628.
   `exp[-3*pi^2/(2g)]` up to leading-log accuracy,
   proves the exchange symmetry that pairs color antisymmetry with flavor
   antisymmetry in spin-zero \(s\)-wave pairing, defines the CFL condensate
-  datum, and proves the physical Goldstone count.
+  datum, constructs gauge-invariant local and Wilson-line CFL diagnostics,
+  proves the gauge-averaging statement excluding a gauge-covariant diquark
+  one-point function as a physical local order parameter, and proves the
+  physical Goldstone count.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -182,7 +188,8 @@ GitHub issue #628.
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
   dense one-gluon-exchange color-factor bookkeeping,
   magnetic leading-log gap coefficient bookkeeping,
-  baryon-number cumulants and radius estimators, and CFL Goldstone count.
+  baryon-number cumulants and radius estimators, CFL gauge-invariant
+  composite charge bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -238,3 +245,8 @@ GitHub issue #628.
 - 2026-05-27 magnetic-gap pass: added the HDL transverse magnetic
   leading-log kernel, its trace-delta coefficient, and the differential
   equation proof of the leading color-superconducting gap exponent.
+- 2026-05-27 CFL gauge-invariant diagnostics pass: added local
+  gauge-invariant composites for baryon-superfluid and chiral order, the
+  Wilson-line diquark correlator, and the finite-volume gauge-averaging proof
+  that the diquark one-point function is not itself a physical local order
+  parameter.

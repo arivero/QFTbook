@@ -2824,12 +2824,168 @@ flavor rotations preserving the same diagonal \(SU(3)\) leave the
 representative invariant.
 \end{definition}
 
+\begin{definition}[Gauge-invariant CFL diagnostics]
+\label{def:qcd-cfl-gauge-invariant-diagnostics}
+Let
+\[
+  \varphi_L\in
+  \overline{\square}_{\rm color}\otimes
+  \overline{\square}_{L},
+  \qquad
+  \varphi_R\in
+  \overline{\square}_{\rm color}\otimes
+  \overline{\square}_{R}
+\]
+denote the antisymmetric spin-zero diquark composite obtained from two
+left-handed or two right-handed quark fields:
+\[
+  (\varphi_L)^A{}_{I}(x)
+  =
+  \frac12
+  \epsilon^{A}{}_{ab}\epsilon_{I}{}^{ij}\,
+  q^a_{L i}(x)Cq^b_{L j}(x),
+  \qquad
+  (\varphi_R)^A{}_{\bar I}(x)
+  =
+  \frac12
+  \epsilon^{A}{}_{ab}\epsilon_{\bar I}{}^{ij}\,
+  q^a_{R i}(x)Cq^b_{R j}(x).
+  \label{eq:qcd-cfl-diquark-varphi}
+\]
+Here \(A\) is an anti-fundamental color index, \(I\) is an
+anti-fundamental \(SU(3)_L\) flavor index, and \(\bar I\) is an
+anti-fundamental \(SU(3)_R\) flavor index.  Each quark has baryon charge
+\(1/3\), hence \(\varphi_L\) and \(\varphi_R\) have baryon charge \(2/3\).
+
+The following operators are gauge invariant and carry the physical symmetry
+information of the CFL phase:
+\[
+  \mathcal B_L
+  =
+  \frac1{3!}
+  \epsilon_{ABC}\epsilon^{IJK}
+  (\varphi_L)^A{}_{I}(\varphi_L)^B{}_{J}(\varphi_L)^C{}_{K},
+  \qquad
+  \mathcal B_R
+  =
+  \frac1{3!}
+  \epsilon_{ABC}\epsilon^{\bar I\bar J\bar K}
+  (\varphi_R)^A{}_{\bar I}(\varphi_R)^B{}_{\bar J}
+  (\varphi_R)^C{}_{\bar K},
+  \label{eq:qcd-cfl-baryon-superfluid-composites}
+\]
+and
+\[
+  \Sigma^{I}{}_{\bar J}
+  =
+  (\varphi_L^\dagger)^{I}{}_{A}
+  (\varphi_R)^A{}_{\bar J}.
+  \label{eq:qcd-cfl-chiral-composite}
+\]
+The operators \(\mathcal B_L,\mathcal B_R\) are color and flavor singlets
+with baryon charge \(2\).  The operator \(\Sigma\) is color invariant,
+baryon neutral, and transforms as
+\[
+  \Sigma\longmapsto g_L\,\Sigma\,g_R^{-1}
+  \qquad
+  (g_L,g_R)\in SU(3)_L\times SU(3)_R .
+\]
+Finally, for a path \(\gamma\) from \(y\) to \(x\), the Wilson-line
+completion
+\[
+  G_L^{I}{}_{J}(x,y;\gamma)
+  =
+  \left\langle
+  (\varphi_L^\dagger)^{I}{}_{A}(x)\,
+  \left[W_{\overline{\square}}(\gamma)\right]^{A}{}_{B}\,
+  (\varphi_L)^B{}_{J}(y)
+  \right\rangle
+  \label{eq:qcd-cfl-wilson-line-diquark-correlator}
+\]
+is gauge invariant but path dependent.  It is not a new local order
+parameter; it is a gauge-invariant way to test the long-distance order
+encoded by a gauge-covariant diquark field.
+\end{definition}
+
+\begin{proposition}[Gauge averaging and physical CFL order]
+\label{prop:qcd-cfl-gauge-invariant-order}
+In a finite-volume regularized gauge theory with a gauge-invariant action,
+measure, boundary condition, and source, the expectation value of any local
+operator transforming in a nontrivial irreducible representation of the
+color gauge group is zero.  Consequently the gauge-covariant diquark
+one-point function \(\langle\varphi_L\rangle\) is not itself a physical
+local order parameter.  The CFL symmetry realization is instead detected by
+the gauge-invariant composites of
+Definition~\ref{def:qcd-cfl-gauge-invariant-diagnostics}: long-distance
+order in \(\mathcal B_{L,R}\) diagnoses baryon superfluid order, while
+long-distance order in \(\Sigma\) diagnoses
+\[
+  SU(3)_L\times SU(3)_R\longrightarrow SU(3)_{\rm diagonal}.
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(O\) be a local operator whose color indices span a finite-dimensional
+representation \(\rho\) of \(SU(3)_{\rm color}\).  Gauge invariance of the
+regularized functional integral gives, for every constant color
+transformation \(h\in SU(3)\),
+\[
+  \langle O\rangle=\rho(h)\langle O\rangle .
+\]
+Averaging over \(h\) with normalized Haar measure gives
+\[
+  \langle O\rangle
+  =
+  \int_{SU(3)}dh\,\rho(h)\langle O\rangle .
+\]
+The Haar average is the projection onto the invariant subspace of
+\(\rho\).  If \(\rho\) has no singlet component, this projection is zero.
+The diquark field \(\varphi_L\) carries the
+\(\overline{\square}_{\rm color}\) representation, so its gauge-invariant
+finite-volume expectation vanishes unless one first fixes a gauge or uses a
+gauge-covariant source-selected representative as in
+Definition~\ref{def:qcd-cfl-condensate-datum}.
+
+The composites in
+Definition~\ref{def:qcd-cfl-gauge-invariant-diagnostics} are different.
+For \(\mathcal B_L\), the color indices are contracted with
+\(\epsilon_{ABC}\), and \(\det h=1\) for \(h\in SU(3)\), so the color
+factor is invariant.  The flavor contraction is likewise invariant under
+\(SU(3)_L\), and the baryon charge is
+\[
+  3\cdot\frac23=2 .
+\]
+The same argument applies to \(\mathcal B_R\).  Therefore a nonzero
+source-selected long-distance limit of the two-point function of
+\(\mathcal B_L\) or \(\mathcal B_R\) is a gauge-invariant statement that
+\(U(1)_B\) is spontaneously broken.
+
+For \(\Sigma\), the color anti-fundamental index of \(\varphi_R\) is
+contracted with the conjugate color index of \(\varphi_L^\dagger\), so the
+operator is color invariant.  Its baryon charge is
+\[
+  -\frac23+\frac23=0.
+\]
+Since \(\varphi_L^\dagger\) transforms in the fundamental of \(SU(3)_L\)
+and \(\varphi_R\) in the anti-fundamental of \(SU(3)_R\), \(\Sigma\)
+transforms as \(g_L\Sigma g_R^{-1}\).  A source-selected expectation
+proportional to the identity leaves only \(g_L=g_R\), which is the diagonal
+chiral subgroup.  The Wilson-line correlator
+\eqref{eq:qcd-cfl-wilson-line-diquark-correlator} is gauge invariant
+because the endpoint transformations of the Wilson line cancel the color
+transformations of the two diquark insertions.  Its path dependence is the
+price of using a nonlocal completion of a gauge-covariant field, not an
+additional physical symmetry.
+\end{proof}
+
 \begin{proposition}[Physical CFL Goldstone count]
 \label{prop:qcd-cfl-goldstone-count}
-Assume \(N_c=N_f=3\), ignore the anomalous axial \(U(1)\), and treat the
-CFL datum of Definition~\ref{def:qcd-cfl-condensate-datum} as the
-source-selected order in an infinite-volume dense state.  The physical
-global symmetry breaking pattern is
+Assume \(N_c=N_f=3\), ignore the anomalous axial \(U(1)\), and suppose the
+infinite-volume dense state has the gauge-invariant CFL long-distance order
+described in
+Definition~\ref{def:qcd-cfl-gauge-invariant-diagnostics} and
+Proposition~\ref{prop:qcd-cfl-gauge-invariant-order}.  The physical global
+symmetry breaking pattern is
 \[
   SU(3)_L\times SU(3)_R\times U(1)_B
   \longrightarrow
