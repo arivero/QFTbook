@@ -45,7 +45,105 @@ state space, the estimator
 \[
   \overline O_N=\frac1N\sum_{n=1}^N O(\Phi_n)
 \]
-converges almost surely to \(\langle O\rangle_\Lambda\).
+converges to \(\langle O\rangle_\Lambda\) in the sense made precise below.
+
+The finite-state statement is elementary enough that it should not be used as
+a black box.  Let \(\Omega\) be a finite set, let \(P(x,y)\) be a stochastic
+matrix, and let \(\pi(x)>0\) be a probability vector with \(\pi P=\pi\).  A
+state \(y\) is reachable from \(x\) if \(P^n(x,y)>0\) for some \(n\).  The
+chain is irreducible if every state is reachable from every other state, and
+aperiodic if
+\[
+  \gcd\{n\geq1:P^n(x,x)>0\}=1
+\]
+for one, hence every, state \(x\).
+
+\begin{proposition}[Finite-state ergodic theorem]
+\label{prop:finite-state-markov-ergodic-theorem}
+Let \(P\) be an irreducible and aperiodic stochastic matrix on a finite set
+\(\Omega\).  Then \(P\) has a unique stationary probability distribution
+\(\pi\) with strictly positive entries, and
+\[
+  \lim_{n\to\infty}P^n(x,y)=\pi(y)
+  \qquad (x,y\in\Omega).
+  \label{eq:finite-chain-pointwise-convergence}
+\]
+For every function \(f:\Omega\to\mathbb C\) and every initial state \(X_0\),
+\[
+  \frac1N\sum_{n=0}^{N-1}f(X_n)
+  \longrightarrow
+  \sum_{x\in\Omega}\pi(x)f(x)
+  \label{eq:finite-chain-time-average-convergence}
+\]
+in probability.  If the chain is run in stationarity, the same convergence
+holds in \(L^2\).
+\end{proposition}
+
+\begin{proof}
+For an irreducible aperiodic finite chain there is an integer \(m\) for which
+\[
+  P^m(x,y)>0\qquad\text{for all }x,y\in\Omega .
+  \label{eq:finite-chain-primitive-power}
+\]
+Indeed, irreducibility gives closed walks based at any state, and
+aperiodicity makes the semigroup of return times have greatest common divisor
+one; adding fixed paths from \(x\) to a reference state and from that
+reference state to \(y\) gives positivity for all sufficiently large common
+times.  Let
+\[
+  \epsilon=\min_{x,y}P^m(x,y)>0 .
+\]
+For probability vectors \(\mu,\nu\), write \(\alpha=\mu-\nu\), so
+\(\sum_x\alpha(x)=0\).  Decompose
+\[
+  P^m(x,y)=\epsilon+R(x,y),
+  \qquad
+  R(x,y)\geq0,
+  \qquad
+  \sum_y R(x,y)=1-|\Omega|\epsilon .
+\]
+The constant part drops out after multiplication by \(\alpha\), and therefore
+\[
+  \|\alpha P^m\|_1
+  =
+  \|\alpha R\|_1
+  \leq
+  (1-|\Omega|\epsilon)\|\alpha\|_1 .
+  \label{eq:finite-chain-l1-contraction}
+\]
+Thus \(P^m\) is a strict contraction on the affine space of probability
+vectors modulo total mass.  It has a unique fixed probability vector
+\(\pi\), and every \(\mu P^{km}\) converges to \(\pi\).  Since \(\pi P\) is
+also fixed by \(P^m\), uniqueness gives \(\pi P=\pi\).  The finitely many
+intermediate subsequences \(\mu P^{km+r}\), \(0\leq r<m\), converge to
+\(\pi P^r=\pi\), proving \eqref{eq:finite-chain-pointwise-convergence}.  The
+positivity of \(\pi\) follows from
+\[
+  \pi(y)=\sum_x\pi(x)P^m(x,y)\geq\epsilon .
+\]
+
+For convergence of time averages in stationarity, it is enough to treat
+real-valued \(f\), since the real and imaginary parts can be handled
+separately.  Set \(g=f-\sum_x\pi(x)f(x)\).  Since
+\(P^n(x,y)\to\pi(y)\), the stationary covariance
+\[
+  C_g(n)=\sum_{x,y}\pi(x)g(x)P^n(x,y)g(y)
+\]
+tends to zero.  Hence
+\[
+  \mathbb E_\pi\left|\frac1N\sum_{n=0}^{N-1}g(X_n)\right|^2
+  =
+  \frac1{N^2}\sum_{r,s=0}^{N-1} C_g(|r-s|)
+  \longrightarrow0,
+  \label{eq:finite-chain-l2-average-proof}
+\]
+because a Cesaro average of a sequence tending to zero tends to zero.  This
+gives \(L^2\) convergence in stationarity.  For a nonstationary initial
+state, discard a fixed burn-in time \(M\); by
+\eqref{eq:finite-chain-pointwise-convergence} the law of \(X_M\) can be made
+arbitrarily close to \(\pi\), while the first \(M\) terms have vanishing
+weight as \(N\to\infty\).  The convergence in probability follows.
+\end{proof}
 
 \section{Metropolis Updates as a Finite-Regulator Theorem}
 
@@ -239,7 +337,8 @@ of the plaquette action and Wilson loops, and the equality between the
 
 \section{Autocorrelation and Effective Sample Size}
 
-For a stationary chain, define the connected autocorrelation function
+For a stationary chain and a real observable \(O\), define the connected
+autocorrelation function
 \[
   C_O(t)
   =
@@ -262,6 +361,57 @@ when the sum converges.  The variance of the sample mean is then
 \]
 Critical slowing down is the growth of \(\tau_{\mathrm{int}}\) along a scaling
 trajectory toward a continuum limit.
+
+\begin{proposition}[Exact finite-\(N\) variance identity]
+\label{prop:markov-autocorrelation-variance-identity}
+Assume the chain is stationary and \(O\) is real with \(C_O(0)>0\).  Then
+\[
+  \operatorname{Var}(\overline O_N)
+  =
+  \frac{1}{N^2}
+  \left[
+    NC_O(0)+2\sum_{t=1}^{N-1}(N-t)C_O(t)
+  \right].
+  \label{eq:finite-n-autocorrelation-variance}
+\]
+If
+\[
+  \sum_{t=1}^{\infty}|C_O(t)|<\infty ,
+  \label{eq:autocorrelation-absolute-summability}
+\]
+then
+\[
+  \operatorname{Var}(\overline O_N)
+  =
+  \frac{2\tau_{\mathrm{int}}(O)}{N}\,C_O(0)+o(N^{-1}).
+  \label{eq:asymptotic-autocorrelation-variance}
+\]
+\end{proposition}
+
+\begin{proof}
+Write \(O_n=O(\Phi_n)\) and
+\(\mu_O=\langle O\rangle\).  Stationarity gives
+\[
+  \operatorname{Cov}(O_r,O_s)=C_O(|r-s|).
+\]
+Therefore
+\[
+  \operatorname{Var}(\overline O_N)
+  =
+  \frac1{N^2}
+  \sum_{r,s=0}^{N-1}\operatorname{Cov}(O_r,O_s).
+\]
+There are \(N\) pairs with \(r=s\).  For each lag \(t\geq1\), there are
+\(N-t\) ordered pairs with \(s=r+t\) and \(N-t\) ordered pairs with
+\(r=s+t\).  This proves
+\eqref{eq:finite-n-autocorrelation-variance}.  Dividing by \(N^{-1}C_O(0)\)
+and using absolute summability to replace
+\[
+  \sum_{t=1}^{N-1}\left(1-\frac{t}{N}\right)\frac{C_O(t)}{C_O(0)}
+\]
+by its infinite sum gives
+\eqref{eq:asymptotic-autocorrelation-variance}.
+\end{proof}
 
 \section{Reweighting and the Sign Problem}
 
@@ -287,10 +437,68 @@ target and phase-quenched systems differ by \(\Delta f\) in volume \(V\), then
   =
   \exp[-V\Delta f].
 \]
+Here
+\[
+  Z=\int e^{-S_R(\Phi)}e^{\ii\Theta(\Phi)}\,d\Phi,\qquad
+  Z_R=\int e^{-S_R(\Phi)}\,d\Phi,
+  \qquad
+  \langle e^{\ii\Theta}\rangle_R=\frac{Z}{Z_R},
+\]
+and \(\Delta f\) is the real number defined by
+\[
+  \Delta f=-\frac1V\log\left|\frac{Z}{Z_R}\right|.
+  \label{eq:phase-quenched-free-energy-difference}
+\]
 Estimating a ratio with a denominator of this size requires a number of
 independent samples growing as \(\exp[2V\Delta f]\) for fixed relative error,
 unless the numerator and denominator are computed by a method that avoids
 phase reweighting.
+
+\begin{proposition}[Finite-volume phase-reweighting variance bound]
+\label{prop:finite-volume-sign-problem-variance}
+Let
+\[
+  m=\langle e^{\ii\Theta}\rangle_R\neq0 .
+\]
+For \(N\) independent samples from \(d\nu_R\), the unbiased estimator
+\[
+  \widehat m_N=\frac1N\sum_{j=1}^{N}e^{\ii\Theta(\Phi_j)}
+\]
+satisfies
+\[
+  \frac{\mathbb E_R|\widehat m_N-m|^2}{|m|^2}
+  =
+  \frac{1-|m|^2}{N|m|^2}.
+  \label{eq:average-phase-relative-variance}
+\]
+Consequently, if \(|m|=\exp[-V\Delta f]\), any direct phase-reweighting
+estimation of the denominator with relative mean-square error at most
+\(\delta^2\) requires
+\[
+  N\geq
+  \delta^{-2}\left(e^{2V\Delta f}-1\right).
+  \label{eq:sign-problem-sample-lower-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(|e^{\ii\Theta}|=1\),
+\[
+  \mathbb E_R|e^{\ii\Theta}-m|^2
+  =
+  \mathbb E_R|e^{\ii\Theta}|^2-|m|^2
+  =
+  1-|m|^2 .
+  \]
+Independence divides this variance by \(N\), proving
+\eqref{eq:average-phase-relative-variance}.  Substitution of
+\(|m|=e^{-V\Delta f}\) gives
+\eqref{eq:sign-problem-sample-lower-bound}.  The estimate concerns the
+denominator alone.  A ratio estimator for \(\langle O\rangle\) can have
+additional covariance between numerator and denominator, but it cannot remove
+the need to determine a denominator of exponentially small magnitude unless
+the method changes the representation of the finite-regulator integral.
+\end{proof}
 
 \section{Fermion Determinants}
 
@@ -308,11 +516,64 @@ If \(D\) obeys a positivity relation, such as
 \[
   \gamma_5D\gamma_5=D^\dagger
 \]
-together with flavor pairing, the determinant can be nonnegative.  At finite
-chemical potential or in chiral gauge theories this positivity may fail.  The
-Monte Carlo problem is then not merely inefficient sampling; the finite
-regulator has no declared positive probability measure whose expectations are
-the target correlators without reweighting or contour deformation.
+together with flavor pairing, the determinant can be nonnegative.  The
+single-flavor statement and the paired-flavor statement are different.
+
+\begin{proposition}[What \(\gamma_5\)-Hermiticity does and does not imply]
+\label{prop:gamma5-hermiticity-determinant-positivity}
+Let \(D\) be a finite lattice Dirac matrix and let \(\Gamma\) be an
+involution with \(\Gamma^\dagger=\Gamma\) and \(\Gamma^2=1\).  If
+\[
+  \Gamma D\Gamma=D^\dagger ,
+  \label{eq:finite-gamma5-hermiticity}
+\]
+then \(\det D\in\mathbb R\).  For two degenerate flavors with fermion
+integral \((\det D)^2\), the finite weight is nonnegative because the real
+determinant is squared.  For a conjugate pair of flavors with determinant
+\[
+  \det D\,\det D^\dagger=|\det D|^2,
+  \label{eq:paired-flavor-positive-determinant}
+\]
+the finite-regulator weight is nonnegative before possible zero-mode
+subtleties.  Thus a positivity claim must state the actual flavor and
+operator pairing, not merely the formal \(\gamma_5\)-Hermiticity relation.
+\end{proposition}
+
+\begin{proof}
+Taking determinants in \eqref{eq:finite-gamma5-hermiticity} gives
+\[
+  \det D^\dagger
+  =
+  \det(\Gamma D\Gamma)
+  =
+  \det(\Gamma)^2\det D
+  =
+  \det D .
+\]
+Since \(\det D^\dagger=\overline{\det D}\), the determinant is real.  A real
+number can have either sign, so \(\gamma_5\)-Hermiticity alone does not give
+a positive single-flavor measure.  For an even number of exactly degenerate
+copies, \((\det D)^{2k}\geq0\).  The conjugate-pair identity
+\eqref{eq:paired-flavor-positive-determinant} is the elementary determinant
+identity \(\det D^\dagger=\overline{\det D}\).  If \(\det D=0\), the
+nonnegative weight vanishes and sampling remains mathematically defined, but
+algorithmic ergodicity and condition-number issues become separate finite
+regulator questions.
+\end{proof}
+
+At finite chemical potential or in chiral gauge theories this positivity may
+fail.  The Monte Carlo problem is then not merely inefficient sampling; the
+finite regulator has no declared positive probability measure whose
+expectations are the target correlators without reweighting or contour
+deformation.
+
+The deterministic check
+\[
+  \texttt{calculation-checks/monte\_carlo\_sign\_problem\_checks.py}
+\]
+verifies the finite-\(N\) autocorrelation identity, the phase-reweighting
+variance bound, and the determinant-reality-versus-positivity distinction in
+small finite examples.
 
 \section{Continuum Interpretation}
 

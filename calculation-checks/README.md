@@ -372,6 +372,12 @@ Current checks:
   theory chapter, including Bose/Fermi detailed balance, the H-theorem
   integrand, linearized collision-operator positivity and null vectors, and
   the relaxation-time shear-viscosity integral.
+- `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
+  Monte Carlo and sign-problem chapter, including the finite-\(N\)
+  autocorrelation variance identity, the reweighting identity, the
+  average-phase relative-variance bound, and the distinction between
+  \(\gamma_5\)-Hermiticity, determinant reality, and determinant positivity
+  after flavor pairing.
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
