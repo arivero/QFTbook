@@ -58,6 +58,96 @@ charges.  The BPS inequality has the convention
 \]
 States saturating this bound form shortened \(\mathcal N=2\) multiplets.
 
+In \(\mathcal N=1\) language the same local Abelian \(\mathcal N=2\)
+Wilsonian vector multiplets are represented by vector superfields \(V^I\)
+and chiral superfields \(\Phi^I\) whose scalar components are \(a^I\).  Once
+the two-derivative \(\mathcal N=2\) action is assumed to exist, its scalar
+metric and gauge kinetic coefficients are not independent data.  They are
+encoded by the same holomorphic prepotential:
+\[
+  K_{\mathcal F}(a,\overline a)
+  =
+  \frac1{2\pi}\operatorname{Im}
+  \left(\overline a^{\,I}\frac{\partial\mathcal F}{\partial a^I}\right),
+  \qquad
+  \tau_{IJ}(a)=\frac{\partial^2\mathcal F}{\partial a^I\partial a^J}.
+  \label{eq:rigid-special-kahler-potential}
+\]
+The factor \(1/(2\pi)\) is the superspace normalization used in this volume.
+It can be absorbed into the definition of the Abelian fields, but it must not
+be silently dropped when comparing instanton, period, and component-action
+conventions.
+
+\begin{proposition}[Rigid special-K\"ahler metric from the prepotential]
+\label{prop:rigid-special-kahler-metric-from-prepotential}
+Let \(U\subset\mathbb C^r\) be a coordinate patch with holomorphic
+coordinates \(a^I\), and let \(\mathcal F\) be holomorphic on \(U\).  Define
+\(K_{\mathcal F}\) by \eqref{eq:rigid-special-kahler-potential}.  Then
+\[
+  g_{I\bar J}:=
+  \frac{\partial^2K_{\mathcal F}}{\partial a^I\partial\overline a^{\,J}}
+  =
+  \frac1{2\pi}\operatorname{Im}\tau_{IJ}.
+  \label{eq:rigid-special-kahler-metric}
+\]
+Consequently the scalar kinetic metric is positive exactly on those
+Wilsonian patches where \(\operatorname{Im}\tau_{IJ}\) is positive definite.
+Linear terms in \(\mathcal F\) change \(K_{\mathcal F}\) by a K\"ahler
+transformation, while real quadratic terms shift only \(\operatorname{Re}\tau\)
+and hence only the theta-angle part of the Abelian gauge action.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  K_{\mathcal F}
+  =
+  \frac1{4\pi\ii}
+  \left(
+    \overline a^{\,L}\mathcal F_L(a)
+    -
+    a^L\overline{\mathcal F}_L(\overline a)
+  \right),
+  \qquad
+  \mathcal F_L=\frac{\partial\mathcal F}{\partial a^L}.
+\]
+Treating \(a^I\) and \(\overline a^{\,J}\) as independent complex
+coordinates,
+\[
+  \frac{\partial K_{\mathcal F}}{\partial a^I}
+  =
+  \frac1{4\pi\ii}
+  \left(
+    \overline a^{\,L}\mathcal F_{IL}
+    -
+    \overline{\mathcal F}_I
+  \right).
+\]
+Differentiating once more gives
+\[
+  \frac{\partial^2 K_{\mathcal F}}
+       {\partial a^I\partial\overline a^{\,J}}
+  =
+  \frac1{4\pi\ii}
+  \left(
+    \mathcal F_{IJ}
+    -
+    \overline{\mathcal F}_{IJ}
+  \right)
+  =
+  \frac1{2\pi}\operatorname{Im}\mathcal F_{IJ}.
+\]
+Since \(\tau_{IJ}=\mathcal F_{IJ}\), this proves
+\eqref{eq:rigid-special-kahler-metric}.  If
+\(\mathcal F\mapsto \mathcal F+c_Ia^I+c_0\), then
+\(K_{\mathcal F}\) changes by
+\((2\pi)^{-1}\operatorname{Im}(\overline a^{\,I}c_I)\), a sum of a
+holomorphic and an antiholomorphic function, so \(g_{I\bar J}\) is unchanged.
+If \(\mathcal F\mapsto \mathcal F+\frac12 q_{IJ}a^Ia^J\) with \(q_{IJ}\)
+real and symmetric, then \(\operatorname{Im}\tau\) is unchanged and
+\(\operatorname{Re}\tau\) shifts by \(q_{IJ}\).
+\end{proof}
+
 \section{Seiberg-Witten Period Data}
 
 A Seiberg-Witten period datum consists of a family of compact Riemann surfaces

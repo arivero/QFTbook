@@ -18,8 +18,35 @@ later lower-dimensional examples, protected sectors, and localization.
 - `M`, `H_p`, `A_p`, `G_p`: quantum moduli space, Hilbert space, local
   operator algebra, and background response in vacuum `p`.
 - `R_ch`, `ev_p`: chiral ring and evaluation homomorphism at a vacuum.
+- `Q^a_i`, `tilde Q_a^i`, `M^i_j`: SQCD quarks, antiquarks, and mesons.
+- `P_a^I`, `V^{IJ}`: \(SU(2)\), \(N_f=2\) doublet fields and antisymmetric
+  meson/baryon Plucker coordinates.
+- `Pf(V)`: Pfaffian
+  \(V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}\) for the \(SU(2)\),
+  \(N_f=2\) quotient.
+- `prop:su2-nf2-classical-plucker-quotient`: classical \(SU(2)\),
+  \(N_f=2\) SQCD quotient as the Pfaffian/Plucker hypersurface.
+- `prop:su2-nf2-quantum-deformation-algebra`: conditional algebraic
+  consequences of the \(SU(2)\), \(N_f=2\) quantum deformation
+  \(\operatorname{Pf}(V)=\Lambda_h^4\), including smoothness and the
+  diagonal-mass two-vacuum check.
+- `m_1`, `m_2`, `X`: diagonal mass-source parameters and the Lagrange
+  multiplier used to impose the quantum-deformed Pfaffian constraint.
+- `Lambda_0`: pure \(SU(2)\) holomorphic scale after the nondegenerate
+  antisymmetric mass deformation, with
+  \(\Lambda_0^6=m_1m_2\Lambda_h^4\).
 - `M_H`, `mu_R`, `mu_C`: hyperkahler quotient and real/complex moment maps.
 - `g_{i bar j}`: branch metric in the low-energy effective action.
+- `q_i`, `tilde q_i`: rank-one \(U(1)\) hypermultiplet coordinates with
+  charges \(+1\) and \(-1\).
+- `z_i^(a)`, `p_i^(a)`: local base and cotangent coordinates on the
+  \(q_a\neq0\) patch of the rank-one hyperkahler quotient.
+- `zeta`: positive real FI parameter in the rank-one hypermultiplet model.
+- `Theta`: holomorphic cotangent one-form \(\sum_i\tilde q_i\,dq_i\).
+- `prop:n2-rank-one-hyperkahler-quotient`: explicit construction of the
+  rank-one \(U(1)\) hypermultiplet Higgs branch as
+  \(T^\ast\mathbb P^{N-1}\), including dimension, local coordinates, moment
+  map solving, and one-form descent.
 
 ## Claim Ledger
 
@@ -35,7 +62,24 @@ later lower-dimensional examples, protected sectors, and localization.
 - Relates chiral rings to holomorphic functions under explicit separation and
   reducedness hypotheses.
 - Records `N=1` SQCD branch behavior and `N=2` Coulomb/Higgs/mixed branch
-  structures.
+  structures, while explicitly marking the SQCD table as an orientation
+  ledger rather than a proof.
+- Proves the classical \(SU(2)\), \(N_f=2\) SQCD quotient
+  \(\mathcal M_{\mathrm{ch},\mathrm{cl}}\simeq
+  \{\operatorname{Pf}(V)=0\}\subset\bigwedge^2\mathbb C^4\), with explicit
+  doublet coordinates, Pfaffian convention, converse reconstruction on a
+  nonzero Plucker chart, and dimension check.
+- Separates the Wilsonian quantum-deformation input
+  \(\operatorname{Pf}(V)=\Lambda_h^4\) from its algebraic consequences, then
+  proves smoothness for \(\Lambda_h\neq0\), reduces a nondegenerate
+  antisymmetric mass matrix to Darboux form, solves the constrained
+  \(F\)-term equations, and matches the two superpotential values to pure
+  \(SU(2)\) by holomorphic threshold scale matching.
+- Proves the rank-one \(\mathcal N=2\) hypermultiplet quotient
+  \(\{\mu_C=0,\mu_R=\zeta\}/U(1)\simeq T^\ast\mathbb P^{N-1}\) for
+  \(\zeta>0\), including the elementary real-moment representative,
+  local cotangent coordinates, and preservation of the canonical holomorphic
+  one-form on overlaps.
 - Identifies singularities as loci where the low-energy theory changes and
   records the domain of validity of branch effective actions.
 
@@ -43,8 +87,13 @@ later lower-dimensional examples, protected sectors, and localization.
 
 - `calculation-checks/susy_moduli_space_checks.py` verifies the rank-one
   abelian invariant-ring calculation, the matching real/complex quotient
-  dimension count, and F-term ideal equivariance for an invariant
-  superpotential.
+  dimension count, F-term ideal equivariance for an invariant
+  superpotential, and the rank-one hyperkahler quotient dimension, one-form
+  descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
+  together with the \(SU(2)\), \(N_f=2\) Pfaffian/Plucker identity,
+  converse reconstruction chart, quotient dimension ledger, nonzero
+  quantum-deformation smoothness test, diagonal-mass two-vacuum algebra, and
+  holomorphic threshold scale matching.
 
 ## Figure Ledger
 

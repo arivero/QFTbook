@@ -345,11 +345,12 @@ Current checks:
   isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
 - `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
-  matrices, central-charge action and symplecticity, the minimal-curve
-  discriminant, the Picard--Fuchs equation, the electric large-\(u\)
-  asymptotic, logarithmic dual-period growth, linear monopole-period
-  vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas cusp scaling
-  dimensions.
+  matrices, central-charge action and symplecticity, the rigid
+  special-K\"ahler metric identity \(g=(2\pi)^{-1}\operatorname{Im}\tau\),
+  the minimal-curve discriminant, the Picard--Fuchs equation, the electric
+  large-\(u\) asymptotic, logarithmic dual-period growth, linear
+  monopole-period vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas
+  cusp scaling dimensions.
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking
@@ -593,6 +594,9 @@ Current checks:
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
   BF normalization, standard ABJM conformal-locus tangent count,
   \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
+  non-abelian `3D` \(\mathcal N=2\) Chern--Simons-matter auxiliary
+  elimination coefficients, `3D` \(\mathcal N=3\) adjoint-chiral
+  elimination coefficients,
   six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
   anomaly/tensor-branch arithmetic, and the trace-delta
   \(g_5^2=4\pi^2R\) compactification normalization.
@@ -601,13 +605,20 @@ Current checks:
   \(D\)-field square completion and potential sign, the absence of
   Fayet--Iliopoulos parameters for an `su(2)` semisimple factor, vectorlike
   \(U(1)\) anomaly cancellation, and the conjugate-representation anomaly
-  sign.
+  sign, the Hermitian-sign identity converting Wess--Zumino-gauge closure
+  between ordinary-translation and covariant-translation forms, and the
+  \(\mathcal N=2\) QCD cubic gauge contraction together with its
+  \(2g_{\rm YM}^2\) \(F\)-term coefficient.
 - `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
   supersymmetric moduli-space quotient conventions, including the
   rank-one \(U(1)\) invariant ring
   \(\mathbb C[x,y]^{\mathbb C^\ast}=\mathbb C[xy]\), the matching
-  real/complex quotient dimension count, and the equivariance of an
-  invariant superpotential's \(F\)-term ideal.
+  real/complex quotient dimension count, the equivariance of an invariant
+  superpotential's \(F\)-term ideal, and the rank-one hyperk\"ahler quotient
+  dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
+  plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
+  dimension ledger, nonzero quantum-deformation smoothness test,
+  diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,
@@ -620,7 +631,8 @@ Current checks:
   Coulomb one-loop charge-exponent/vacuum-count ledger.
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
-  tree-level elimination, the eliminated derivative identity, Konishi and
+  tree-level elimination, the eliminated derivative identity, the
+  holomorphic gauge-coupling \(q^0\) perturbative projection, Konishi and
   vector-multiplet coordinate shifts, and the differentiated
   holomorphic-canonical relation leading to the NSVZ beta function.
 - `susy_n1_conifold_checks.py`: exact rational checks for the
@@ -706,6 +718,19 @@ Current checks:
   the \((\theta\psi)(\theta\chi)\) identity, the
   \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
   auxiliary \(F\)-field elimination.
+- `susy_superfield_operator_algebra_checks.py`: exact formal-superfield
+  checks for the Volume VII superspace differential-operator conventions,
+  including the Koszul sign in left odd differentiation, the chiral and
+  antichiral coordinate identities \(\bar D_{\dot\alpha}y^\mu=0\) and
+  \(D_\alpha\bar y^\mu=0\), the full \(Q,\bar Q,D,\bar D\) anticommutation
+  algebra on a generic finite superfield, and the anticommutation of
+  supercharges with covariant derivatives.
+- `susy_vector_superfield_checks.py`: exact finite exterior-algebra and
+  sigma-matrix checks for the Volume VII vector-superfield conventions,
+  including inverse epsilon raising, the bosonic \(\theta^2\) coefficient of
+  \(W^\alpha W_\alpha\), and recovery of
+  \(-F_{\mu\nu}F^{\mu\nu}/(4g^2)+D^2/(2g^2)\) after adding the Hermitian
+  conjugate.
 - `susy_wilsonian_bv_checks.py`: finite Fourier/odd-variable checks for the
   Volume VII supersymmetric Wilsonian-schemes chapter, including BV Stokes
   for a fiber Darboux pair, the pushforward chain-map identity, QME

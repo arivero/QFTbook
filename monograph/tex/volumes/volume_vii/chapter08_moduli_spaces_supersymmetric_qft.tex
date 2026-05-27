@@ -162,10 +162,23 @@ operator products or low-energy dynamics.
 
 \section{N One SQCD Branches}
 
-For \(SU(N_c)\) SQCD with \(N_f\) flavors, the gauge-invariant chiral
-coordinates are mesons and baryons as defined in
-Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.  The branch data
-depend on \(N_f\):
+For \(SU(N_c)\) SQCD with \(N_f\) flavors, the microscopic chiral fields are
+quarks \(Q^a{}_i\) in the fundamental and antiquarks
+\(\widetilde Q_a{}^i\) in the antifundamental, with color
+\(a=1,\ldots,N_c\) and flavor \(i=1,\ldots,N_f\).  The elementary
+gauge-invariant chiral coordinates are the mesons
+\[
+  M^i{}_j=\widetilde Q_a{}^i Q^a{}_j
+\]
+and, when \(N_f\geq N_c\), the baryons and antibaryons obtained by
+contracting \(N_c\) quarks or antiquarks with \(\epsilon_{a_1\cdots a_{N_c}}\).
+The relations among these coordinates are algebraic relations in the reduced
+affine quotient; they are not optional decoration, because they decide which
+operator expectation values can occur in a supersymmetric vacuum.
+
+The following ledger is only an orientation map.  It is not used as a proof,
+and each row requires a separate derivation or an explicitly labeled
+Wilsonian input:
 \[
 \begin{array}{c|c}
 N_f<N_c & \text{ADS superpotential produces a runaway direction}\\
@@ -175,6 +188,248 @@ N_f=N_c+1 & \text{confining chiral coordinates with superpotential constraint}\\
 \]
 Each entry is a Wilsonian chiral-coordinate statement.  The metric on the
 branch and the massive spectrum require additional low-energy data.
+
+The table becomes meaningful only after the classical quotient coordinates
+have been fixed and after the status of the quantum input has been separated
+from the algebra done with that input.  The smallest nontrivial
+\(N_f=N_c\) example is therefore not a slogan about a quantum-modified
+constraint.  It is a test case for the monograph's method: construct the
+classical quotient from invariant theory, state the protected quantum
+deformation as the only dynamical input, and then derive all consequences
+that follow from the deformed equation by ordinary algebra.
+
+\begin{proposition}[Classical \(SU(2)\) \(N_f=2\) SQCD quotient]
+\label{prop:su2-nf2-classical-plucker-quotient}
+Consider four-dimensional \(\mathcal N=1\) \(SU(2)\) SQCD with two flavors
+and \(W=0\).  Package the two quark and two antiquark doublets, using the
+pseudoreality of the \(SU(2)\) fundamental, as four chiral doublets
+\[
+  P_a^I,\qquad a=1,2,\qquad I=1,\ldots,4 .
+\]
+The complexified gauge group \(SL(2,\mathbb C)\) acts on the gauge index
+\(a\).  Define the antisymmetric gauge-invariant coordinates
+\begin{equation}
+  V^{IJ}=\epsilon^{ab}P_a^I P_b^J=-V^{JI},
+  \qquad
+  1\leq I,J\leq4,
+  \label{eq:su2-nf2-meson-baryon-v-coordinates}
+\end{equation}
+with \(\epsilon^{12}=1\).  Let
+\begin{equation}
+  \operatorname{Pf}(V)
+  =
+  V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}.
+  \label{eq:su2-nf2-pfaffian-convention}
+\end{equation}
+Then the reduced affine classical chiral quotient is
+\begin{equation}
+  \mathcal M_{\mathrm{ch},\mathrm{cl}}
+  \simeq
+  \{\,V\in\bigwedge\nolimits^2\mathbb C^4
+    \mid \operatorname{Pf}(V)=0\,\}.
+  \label{eq:su2-nf2-classical-plucker-hypersurface}
+\end{equation}
+It has complex dimension \(5\).  In the usual \(Q,\widetilde Q\) flavor
+splitting, the six entries of \(V^{IJ}\) are the mesons and baryons, and
+\eqref{eq:su2-nf2-classical-plucker-hypersurface} is the classical
+\(\det M-B\widetilde B=0\) relation in an \(SU(4)\)-covariant notation.
+The quantum deformation \(\operatorname{Pf}(V)=\Lambda_h^4\) is not part of
+this classical quotient; it is the Wilsonian nonperturbative input discussed
+in Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
+\end{proposition}
+
+\begin{proof}
+Write the two rows of the \(2\times4\) matrix \(P\) as
+\[
+  u=(P_1^1,\ldots,P_1^4),\qquad
+  v=(P_2^1,\ldots,P_2^4).
+\]
+Then \(V^{IJ}=u_Iv_J-u_Jv_I\), so \(V=u\wedge v\) is a decomposable two-form.
+Hence \(V\wedge V=0\).  With the convention
+\eqref{eq:su2-nf2-pfaffian-convention}, the coefficient of
+\(2e_1\wedge e_2\wedge e_3\wedge e_4\) in \(V\wedge V\) is
+\(\operatorname{Pf}(V)\), proving that every gauge orbit maps into the
+displayed hypersurface.
+
+Conversely, suppose \(V\neq0\) and \(\operatorname{Pf}(V)=0\).  After
+relabeling the four flavor indices, assume \(a_0=V^{12}\neq0\).  Set
+\[
+  u=(1,0,-V^{23}/a_0,-V^{24}/a_0),
+  \qquad
+  v=(0,a_0,V^{13},V^{14}).
+\]
+The minors \(u_Iv_J-u_Jv_I\) reproduce \(V^{12}\), \(V^{13}\), \(V^{14}\),
+\(V^{23}\), and \(V^{24}\) by construction, while the remaining minor is
+\[
+  u_3v_4-u_4v_3
+  =
+  \frac{V^{13}V^{24}-V^{14}V^{23}}{a_0}
+  =
+  V^{34},
+\]
+where the last equality is exactly \(\operatorname{Pf}(V)=0\).  The point
+\(V=0\) is obtained from \(P=0\).  Thus the invariant map has precisely the
+hypersurface \eqref{eq:su2-nf2-classical-plucker-hypersurface} as its image.
+
+It remains to justify that no additional reduced affine-coordinate data are
+missing.  In a polynomial invariant, all \(SL(2,\mathbb C)\) gauge indices
+must be contracted by invariant tensors.  For the fundamental two-dimensional
+representation, the invariant tensors are generated by the alternating tensor
+\(\epsilon^{ab}\); equivalently, after decomposing tensor powers into
+irreducible \(SL(2)\) representations, the singlet summands are obtained by
+pairwise antisymmetric contractions.  Hence the reduced invariant ring is
+generated by the pairings \(V^{IJ}\).  For four flavor labels the only
+quadratic straightening relation among these six generators is the Plucker
+relation
+\[
+  V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}=0,
+\]
+which we already identified as the Pfaffian equation.  Therefore the reduced
+affine quotient is the displayed hypersurface.  Its dimension is
+\(6-1=5\), agreeing with the quotient count
+\[
+  \dim_{\mathbb C}\mathbb C^{8}-\dim_{\mathbb C}SL(2,\mathbb C)
+  =
+  8-3=5
+\]
+on the stable maximal-rank locus.
+\end{proof}
+
+\begin{proposition}[Algebra of the \(SU(2)\), \(N_f=2\) quantum deformation]
+\label{prop:su2-nf2-quantum-deformation-algebra}
+Assume the Wilsonian chiral-coordinate input that the quantum branch of the
+theory in Proposition~\ref{prop:su2-nf2-classical-plucker-quotient} is
+\begin{equation}
+  \operatorname{Pf}(V)=\Lambda_h^4,
+  \qquad \Lambda_h\neq0,
+  \label{eq:su2-nf2-quantum-deformed-pfaffian}
+\end{equation}
+where \(\operatorname{Pf}\) is the polynomial in
+\eqref{eq:su2-nf2-pfaffian-convention}.  Then the deformed branch is
+smooth and five-complex-dimensional.  Moreover, after adding a nondegenerate
+antisymmetric mass source and putting it, by a complex linear change of
+flavor basis, in Darboux form
+\begin{equation}
+  W_m=m_1V^{12}+m_2V^{34},
+  \qquad m_1m_2\neq0,
+  \label{eq:su2-nf2-diagonal-mass-source}
+\end{equation}
+and imposing the constraint by a chiral Lagrange multiplier \(X\),
+\begin{equation}
+  W_{\mathrm{constr}}
+  =
+  m_1V^{12}+m_2V^{34}
+  +X\bigl(\operatorname{Pf}(V)-\Lambda_h^4\bigr),
+  \label{eq:su2-nf2-constrained-mass-superpotential}
+\end{equation}
+the \(F\)-term equations over \(\mathbb C\) have exactly two solutions.
+After choosing a square root \(\Lambda_h^2\) of the deformation parameter
+\(\Lambda_h^4\) and a square root of \(m_1m_2\), they are
+\begin{equation}
+  X_\pm=\pm\frac{\sqrt{m_1m_2}}{\Lambda_h^2},
+  \qquad
+  V^{12}_\pm=-\frac{m_2}{X_\pm},
+  \qquad
+  V^{34}_\pm=-\frac{m_1}{X_\pm},
+  \label{eq:su2-nf2-massive-vacua}
+\end{equation}
+with all other \(V^{IJ}\) equal to zero.  Their superpotential values are
+\begin{equation}
+  W_\pm
+  =
+  \mp\,2\Lambda_h^2\sqrt{m_1m_2}.
+  \label{eq:su2-nf2-massive-superpotential-values}
+\end{equation}
+Thus the deformed branch removes the classical origin, and the simplest
+mass deformation has the two isolated chiral vacua expected after decoupling
+to pure \(SU(2)\) supersymmetric Yang--Mills, with scale matching
+\(\Lambda_0^6=m_1m_2\Lambda_h^4\) in this Darboux convention.  The last
+comparison uses matching to the massive low-energy theory; the algebraic
+statement above uses only
+\eqref{eq:su2-nf2-quantum-deformed-pfaffian}.  Different choices of square
+root or of the sign convention relating \(V^{IJ}\) to the usual meson-baryon
+coordinates only relabel the two vacua.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  F(V)=V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}.
+\]
+The gradient of \(F\) in the six affine coordinates is
+\[
+  \nabla F
+  =
+  (V^{34},-V^{24},V^{23},-V^{13},V^{14},V^{12}),
+\]
+ordered as
+\[
+  (V^{12},V^{13},V^{14},V^{24},V^{23},V^{34}).
+\]
+If \(\nabla F=0\), then all six entries of \(V\) vanish, so \(F(V)=0\).
+No point on \(F(V)=\Lambda_h^4\) with \(\Lambda_h\neq0\) can therefore be
+singular.  A smooth hypersurface in six complex affine coordinates has
+complex dimension \(5\).
+
+For the mass deformation, a general holomorphic quadratic mass source in the
+four doublets is an antisymmetric tensor \(m_{IJ}V^{IJ}/2\).  If \(m\) is
+nondegenerate, elementary alternating-form linear algebra gives a basis
+\((e_1,e_2,e_3,e_4)\) with
+\[
+  m=m_1\,e^1\wedge e^2+m_2\,e^3\wedge e^4,
+  \qquad m_1m_2\neq0;
+\]
+one chooses \(e_1\), then \(e_2\) with \(m(e_1,e_2)\neq0\), takes the
+orthogonal complement of their span, and repeats in the remaining
+two-dimensional nondegenerate alternating space.  In that Darboux basis, the
+\(F\)-terms from
+\eqref{eq:su2-nf2-constrained-mass-superpotential} are
+\[
+\begin{array}{lll}
+  m_1+XV^{34}=0, & -XV^{24}=0, & XV^{23}=0,\\
+  -XV^{13}=0, & XV^{14}=0, & m_2+XV^{12}=0,
+\end{array}
+\]
+together with \(F(V)=\Lambda_h^4\).  If \(X=0\), the first and last equations
+would force \(m_1=m_2=0\), contrary to the hypothesis.  Hence \(X\neq0\),
+and the middle four equations set
+\[
+  V^{13}=V^{14}=V^{23}=V^{24}=0.
+\]
+The remaining two linear equations give
+\[
+  V^{12}=-\frac{m_2}{X},\qquad
+  V^{34}=-\frac{m_1}{X}.
+\]
+The constraint then becomes
+\[
+  \frac{m_1m_2}{X^2}=\Lambda_h^4,
+\]
+so \(X=X_\pm\) and the two displayed solutions follow.  Substitution into
+\eqref{eq:su2-nf2-diagonal-mass-source} gives
+\[
+  W_\pm
+  =
+  -\frac{2m_1m_2}{X_\pm}
+  =
+  \mp\,2\Lambda_h^2\sqrt{m_1m_2},
+\]
+as claimed.
+
+Finally, the comparison with pure \(SU(2)\) is the standard holomorphic
+threshold matching applied to two massive doublet pairs.  The one-loop
+holomorphic exponents are \(b_0=4\) for \(SU(2)\) with two flavors and
+\(b_0=6\) for pure \(SU(2)\).  In the Darboux mass convention the Pfaffian
+of the antisymmetric mass matrix is \(m_1m_2\), so decoupling gives
+\[
+  \Lambda_0^6=m_1m_2\Lambda_h^4.
+\]
+Thus the two values above may be written as \(W_\pm=\mp2\Lambda_0^3\) after
+choosing a cube-root branch for \(\Lambda_0^3\), exactly the two-branch
+pure \(SU(2)\) chiral-source pattern.  This matching paragraph uses the
+Wilsonian decoupling input; the smoothness and \(F\)-term solution were
+already proved directly from the deformed Pfaffian equation.
+\end{proof}
 
 \section{N Two Coulomb, Higgs, And Mixed Branches}
 
@@ -191,6 +446,146 @@ quantum corrections encoded by Seiberg-Witten periods.  In many Lagrangian
 examples the Higgs-branch hyperk\"ahler metric is protected, but this protection
 is a statement about the supersymmetric Wilsonian scheme and the branch
 coordinates, not a statement about arbitrary coordinate choices.
+
+The quotient statement has concrete content already in the simplest
+hypermultiplet model.  We spell it out because this is the local model behind
+many later Higgs-branch calculations.
+
+\begin{proposition}[Rank-one hypermultiplet quotient]
+\label{prop:n2-rank-one-hyperkahler-quotient}
+Let \(N\geq2\).  Let \(U(1)\) act on
+\[
+  V=\mathbb C^N_q\oplus\mathbb C^N_{\widetilde q}
+\]
+by
+\[
+  q_i\longmapsto \ee^{\ii\alpha}q_i,\qquad
+  \widetilde q_i\longmapsto
+  \ee^{-\ii\alpha}\widetilde q_i,\qquad i=1,\ldots,N .
+\]
+Use the complex structure in which \(q_i,\widetilde q_i\) are holomorphic
+coordinates.  The complex moment map and real moment map are
+\[
+  \mu_{\mathbb C}(q,\widetilde q)
+  =
+  \sum_{i=1}^N q_i\widetilde q_i,
+  \qquad
+  \mu_{\mathbb R}(q,\widetilde q)
+  =
+  \sum_{i=1}^N |q_i|^2-\sum_{i=1}^N|\widetilde q_i|^2 .
+\]
+For real FI parameter \(\zeta>0\) and complex FI parameter \(0\), the
+Higgs-branch quotient
+\begin{equation}
+  \mathcal M_H(\zeta)
+  =
+  \{\,\mu_{\mathbb C}=0,\ \mu_{\mathbb R}=\zeta\,\}/U(1)
+  \label{eq:rank-one-hyperkahler-quotient}
+\end{equation}
+is biholomorphic, in this complex structure, to \(T^\ast\mathbb P^{N-1}\).
+Its complex dimension is \(2(N-1)\), equivalently its real dimension is
+\(4(N-1)\).  On the patch \(U_a=\{q_a\neq0\}\), local holomorphic
+coordinates are
+\begin{equation}
+  z_i^{(a)}=\frac{q_i}{q_a},\qquad
+  p_i^{(a)}=q_a\widetilde q_i,\qquad i\neq a,
+  \label{eq:rank-one-hyperkahler-local-coordinates}
+\end{equation}
+and the complex moment-map equation determines
+\begin{equation}
+  q_a\widetilde q_a
+  =
+  -\sum_{i\neq a}z_i^{(a)}p_i^{(a)} .
+  \label{eq:rank-one-hyperkahler-moment-solve}
+\end{equation}
+The holomorphic one-form
+\[
+  \Theta=\sum_{i=1}^N\widetilde q_i\,dq_i
+\]
+descends to the canonical cotangent one-form
+\begin{equation}
+  \Theta=\sum_{i\neq a}p_i^{(a)}\,dz_i^{(a)}
+  \label{eq:rank-one-hyperkahler-cotangent-one-form}
+\end{equation}
+on \(U_a\).
+\end{proposition}
+
+\begin{proof}
+First remove the real quotient from the holomorphic bookkeeping.  If
+\(\mu_{\mathbb R}=\zeta>0\), then \(q\neq0\).  Conversely, fix a point
+\((q,\widetilde q)\) with \(q\neq0\) and \(\mu_{\mathbb C}=0\).  Along the
+positive real part of the complexified orbit,
+\[
+  q\mapsto rq,\qquad
+  \widetilde q\mapsto r^{-1}\widetilde q,\qquad r>0,
+\]
+the real moment map becomes
+\[
+  f(r)=r^2\|q\|^2-r^{-2}\|\widetilde q\|^2 .
+\]
+This function is continuous and strictly increasing on \(r>0\), with limit
+\(-\infty\) as \(r\to0\) if \(\widetilde q\neq0\) and limit \(0\) if
+\(\widetilde q=0\), and with limit \(+\infty\) as \(r\to\infty\).  Hence
+there is a unique positive \(r\) solving \(f(r)=\zeta\).  The remaining phase
+is precisely the compact \(U(1)\) action.  Thus the quotient
+\eqref{eq:rank-one-hyperkahler-quotient} is identified with the complex
+quotient
+\begin{equation}
+  \{\,\mu_{\mathbb C}=0,\ q\neq0\,\}/\mathbb C^\ast .
+  \label{eq:rank-one-hyperkahler-complex-quotient}
+\end{equation}
+
+On \(U_a\), the coordinates in
+\eqref{eq:rank-one-hyperkahler-local-coordinates} are invariant under
+\(\mathbb C^\ast\).  They determine the orbit because \(q_a\) supplies the
+complexified gauge scale, the ratios determine all \(q_i\), the \(p_i^{(a)}\)
+determine all \(\widetilde q_i\) with \(i\neq a\), and
+\eqref{eq:rank-one-hyperkahler-moment-solve} determines
+\(\widetilde q_a\).  There are \(2(N-1)\) complex coordinates, so the complex
+dimension is \(2(N-1)\).
+
+It remains to check that the local charts glue as the cotangent bundle, not
+just as an abstract \(2(N-1)\)-dimensional quotient.  It suffices to compare
+two patches; relabel the indices as \(a=1\) and \(b=2\).  Write
+\[
+  z_i=\frac{q_i}{q_1},\quad p_i=q_1\widetilde q_i
+  \quad (i\neq1),
+\]
+and on the patch \(q_2\neq0\),
+\[
+  w_1=\frac{q_1}{q_2}=\frac1{z_2},\qquad
+  w_i=\frac{q_i}{q_2}=\frac{z_i}{z_2}\quad (i\neq1,2),
+\]
+\[
+  r_1=q_2\widetilde q_1=-z_2\sum_{i\neq1}z_ip_i,
+  \qquad
+  r_i=q_2\widetilde q_i=z_2p_i\quad (i\neq1,2),
+\]
+where the formula for \(r_1\) uses \(\mu_{\mathbb C}=0\).  A direct
+differentiation gives
+\begin{equation}
+  r_1\,dw_1+\sum_{i\neq1,2}r_i\,dw_i
+  =
+  \sum_{i\neq1}p_i\,dz_i .
+  \label{eq:rank-one-hyperkahler-one-form-transition}
+\end{equation}
+Thus the transition functions preserve the canonical holomorphic cotangent
+one-form.
+
+Finally, on a single patch,
+\[
+  dq_i=z_i^{(a)}\,dq_a+q_a\,dz_i^{(a)}\qquad (i\neq a).
+\]
+Using \eqref{eq:rank-one-hyperkahler-moment-solve}, the coefficient of
+\(dq_a\) in \(\sum_i\widetilde q_i\,dq_i\) is
+\[
+  \widetilde q_a+\sum_{i\neq a}z_i^{(a)}\widetilde q_i=0,
+\]
+while the coefficient of \(dz_i^{(a)}\) is
+\(q_a\widetilde q_i=p_i^{(a)}\).  This proves
+\eqref{eq:rank-one-hyperkahler-cotangent-one-form} and identifies the quotient
+with \(T^\ast\mathbb P^{N-1}\).
+\end{proof}
 
 \section{Singularities}
 

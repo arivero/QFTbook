@@ -269,6 +269,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
   prove confinement, a mass gap, or the condensate.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
   constraints.
+- Adds an explicit logic-of-argument paragraph for \(N=1\) SQCD: the
+  \(N_f=N_c-1\) first-principles instanton calculation is the constructive
+  seed; zero-mode counting, Yukawa lifting, the radial Higgs cutoff, and the
+  invariant-theory denominator are separated before holomorphic mass
+  decoupling is used to reach lower \(N_f\).
 - States the analytic assumptions required for the semiclassical
   `N_f=N_c-1` SQCD one-instanton calculation: holomorphic regulator,
   maximal-rank Higgs patch, collective-coordinate separation, BPST

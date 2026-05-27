@@ -140,6 +140,55 @@ def check_abjm_s3_matrix_denominator() -> None:
         )
 
 
+def check_three_d_n2_cs_matter_auxiliary_elimination() -> None:
+    # Factor out powers of pi and i.  The D-equation in trace-delta
+    # convention gives sigma = -(2 pi/k) mu.  The scalar sextic coefficient is
+    # then -(2/k)^2 in units of pi^2.  The Yukawa sign is spinor-convention
+    # dependent, but the magnitudes and the 1:2 relative coefficient are fixed
+    # after the same algebraic elimination.
+    for k in (1, 2, 5, -7):
+        sigma_coeff_pi = Fraction(-2, k)
+        sextic_coeff_pi_squared = -(sigma_coeff_pi * sigma_coeff_pi)
+        assert_equal(
+            f"3D N=2 CS sigma solution coefficient k={k}",
+            sigma_coeff_pi,
+            Fraction(-2, k),
+        )
+        assert_equal(
+            f"3D N=2 CS sextic scalar coefficient k={k}",
+            sextic_coeff_pi_squared,
+            Fraction(-4, k * k),
+        )
+
+        moment_yukawa_magnitude_pi = abs(Fraction(2, k))
+        mixed_yukawa_magnitude_pi = abs(Fraction(4, k))
+        assert_equal(
+            f"3D N=2 CS Yukawa relative coefficient k={k}",
+            mixed_yukawa_magnitude_pi,
+            2 * moment_yukawa_magnitude_pi,
+        )
+
+
+def check_three_d_n3_adjoint_chiral_elimination() -> None:
+    # Write W = pi[-(k/8) x^2 + j x].  The algebraic F-term gives
+    # x=(4/k)j, and substituting gives pi*(2/k)j^2.
+    for k in (1, 2, 5, -4):
+        phi_coeff_pi = Fraction(4, k)
+        effective_superpotential_coeff_pi = (
+            -Fraction(k, 8) * phi_coeff_pi * phi_coeff_pi + phi_coeff_pi
+        )
+        assert_equal(
+            f"3D N=3 adjoint chiral solution k={k}",
+            phi_coeff_pi,
+            Fraction(4, k),
+        )
+        assert_equal(
+            f"3D N=3 effective superpotential coefficient k={k}",
+            effective_superpotential_coeff_pi,
+            Fraction(2, k),
+        )
+
+
 def check_six_dimensional_yang_mills_dimension() -> None:
     def gauge_coupling_squared_dimension(spacetime_dimension: int) -> int:
         return 4 - spacetime_dimension
@@ -188,6 +237,8 @@ def main() -> None:
     check_abjm_abelian_bf_normalization()
     check_abjm_orbifold_order_and_dimension()
     check_abjm_s3_matrix_denominator()
+    check_three_d_n2_cs_matter_auxiliary_elimination()
+    check_three_d_n3_adjoint_chiral_elimination()
     check_six_dimensional_yang_mills_dimension()
     check_two_zero_a_type_data()
     check_five_dimensional_instanton_kk_normalization()

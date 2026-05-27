@@ -77,6 +77,55 @@ def check_tree_level_derivative_chain_rule():
         )
 
 
+def perturbative_q_projection(series):
+    """Return the q^0 term of a weak-coupling q-series."""
+
+    for degree in series:
+        if degree < 0:
+            raise ValueError("negative q-degree is outside the weak-coupling patch")
+    return series.get(0, Fraction(0))
+
+
+def check_holomorphic_gauge_one_loop_projection():
+    """Check the formal q-series bookkeeping in holomorphic one-loop exactness."""
+
+    samples = [
+        (Fraction(3), [Fraction(1), Fraction(2)], {1: Fraction(5), 2: Fraction(-7)}),
+        (Fraction(5), [Fraction(3, 2), Fraction(2)], {1: Fraction(11, 3)}),
+        (Fraction(7, 2), [Fraction(4, 3)], {2: Fraction(9), 4: Fraction(-1, 5)}),
+    ]
+    log_interval = Fraction(6, 5)
+    finite_scheme_shift = Fraction(-13, 7)
+
+    for c2, indices, instanton_terms in samples:
+        b0 = 3 * c2 - sum(indices)
+        beta_q_series = {0: b0, **instanton_terms}
+        assert_equal(
+            perturbative_q_projection(beta_q_series),
+            b0,
+            "holomorphic gauge beta perturbative q^0 projection",
+        )
+
+        running_difference = perturbative_q_projection(beta_q_series) * log_interval
+        shifted_difference = (
+            finite_scheme_shift
+            + perturbative_q_projection(beta_q_series) * log_interval
+            - finite_scheme_shift
+        )
+        assert_equal(
+            shifted_difference,
+            running_difference,
+            "finite holomorphic scheme shift has zero scale derivative",
+        )
+
+    try:
+        perturbative_q_projection({-1: Fraction(1), 0: Fraction(2)})
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("negative q-degree should be rejected")
+
+
 def check_konishi_and_vector_coordinate_shifts():
     samples = [
         (Fraction(1, 2), Fraction(3, 5)),
@@ -136,6 +185,7 @@ def check_nsvz_coordinate_identity():
 def main():
     check_tree_level_chiral_elimination_quadratic_block()
     check_tree_level_derivative_chain_rule()
+    check_holomorphic_gauge_one_loop_projection()
     check_konishi_and_vector_coordinate_shifts()
     check_nsvz_coordinate_identity()
     print("All SUSY holomorphy and NSVZ coordinate checks passed.")

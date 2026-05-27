@@ -145,6 +145,160 @@ Eliminating \(D\) leaves the displayed positive potential and hence the
 vacuum equation \eqref{eq:three-d-n2-vacuum-equations}.
 \end{proof}
 
+\begin{proposition}[Non-abelian Chern--Simons auxiliary elimination]
+\label{prop:three-d-n2-nonabelian-auxiliary-elimination}
+Let \(G\) be compact, let \(R\) be a unitary representation, and choose
+Hermitian representation matrices \(t_R^a\) with trace convention
+\(\operatorname{Tr}(t^at^b)=\delta^{ab}\) for the gauge action.  Assume
+\(k\neq 0\), no Yang--Mills kinetic term, no FI term, no real mass, and no
+superpotential.  For one chiral multiplet in \(R\), define the finite
+moment-map coordinates
+\[
+  \mu^a(\phi)=\overline\phi\,t_R^a\phi .
+\]
+For several chiral multiplets, replace \(R\) by the direct sum of their
+representations, so that \(\mu^a\) is the sum of the corresponding quadratic
+coordinates.
+Then the local non-derivative bosonic component terms involving the
+Chern--Simons auxiliary scalar \(\sigma=\sigma^a t^a\) and the auxiliary
+field \(D=D^a t^a\) may be written as
+\[
+  \mathcal L_{\mathrm{bos,aux}}
+  =
+  \frac{k}{2\pi}D^a\sigma^a
+  +
+  D^a\mu^a(\phi)
+  -
+  \sigma^a\sigma^b\,
+  \overline\phi\, t_R^a t_R^b\phi .
+  \label{eq:three-d-n2-nonabelian-auxiliary-lagrangian}
+\]
+Eliminating \(D\) imposes
+\[
+  \sigma^a=-\frac{2\pi}{k}\mu^a(\phi),
+  \label{eq:three-d-n2-cs-sigma-solution}
+\]
+and the remaining scalar interaction is
+\[
+  \mathcal L_{\mathrm{bos,on\text{-}shell}}
+  =
+  -\frac{4\pi^2}{k^2}
+  \bigl(\overline\phi\,t_R^a\phi\bigr)
+  \bigl(\overline\phi\,t_R^b\phi\bigr)
+  \bigl(\overline\phi\,t_R^a t_R^b\phi\bigr).
+  \label{eq:three-d-n2-cs-sextic-scalar}
+\]
+Equivalently, the scalar potential contains the positive contribution
+\[
+  V_{\mathrm{sextic}}
+  =
+  \frac{4\pi^2}{k^2}
+  \bigl(\overline\phi\,t_R^a\phi\bigr)
+  \bigl(\overline\phi\,t_R^b\phi\bigr)
+  \bigl(\overline\phi\,t_R^a t_R^b\phi\bigr)
+\]
+in the same local coordinates.
+\end{proposition}
+
+\begin{proof}
+The field \(D\) is a Lagrange multiplier in the pure Chern--Simons
+normalization.  Varying
+\eqref{eq:three-d-n2-nonabelian-auxiliary-lagrangian} with respect to
+\(D^a\) gives
+\[
+  \frac{k}{2\pi}\sigma^a+\mu^a(\phi)=0,
+\]
+which is \eqref{eq:three-d-n2-cs-sigma-solution}.  Substitution into the last
+term of \eqref{eq:three-d-n2-nonabelian-auxiliary-lagrangian} gives
+\[
+  -\left(-\frac{2\pi}{k}\mu^a\right)
+   \left(-\frac{2\pi}{k}\mu^b\right)
+   \overline\phi\,t_R^at_R^b\phi
+  =
+  -\frac{4\pi^2}{k^2}
+   \mu^a\mu^b\overline\phi\,t_R^at_R^b\phi .
+\]
+No commutativity of the matrices \(t_R^a\) and \(t_R^b\) has been used; the
+ordered product in \eqref{eq:three-d-n2-cs-sextic-scalar} is part of the
+component convention.
+\end{proof}
+
+The same finite-dimensional elimination fixes the power of \(k\) and the
+relative sizes of the induced Yukawa terms.  The signs of the terms carrying
+an explicit \(\ii\) depend on the three-dimensional spinor conjugation and on
+where the \(\ii\) is placed in the Chern--Simons gaugino mass.  In the common
+component convention in which the non-derivative fermion terms are normalized
+as in the stringbook appendices, one obtains coefficient magnitudes
+\[
+  \frac{2\pi}{\lvert k\rvert}
+  \quad\hbox{for}\quad
+  \bigl(\overline\phi\,t_R^a\phi\bigr)
+  \bigl(\overline\psi\,t_R^a\psi\bigr),
+  \qquad
+  \frac{4\pi}{\lvert k\rvert}
+  \quad\hbox{for}\quad
+  \bigl(\overline\psi\,t_R^a\phi\bigr)
+  \bigl(\overline\phi\,t_R^a\psi\bigr).
+\]
+Thus the convention-independent check is the \(1:2\) relative coefficient and
+the single inverse power of \(k\); the signed formula must be read only after
+the spinor bilinear convention has been fixed.
+
+\begin{proposition}[\(\mathcal N=3\) adjoint-chiral elimination]
+\label{prop:three-d-n3-adjoint-chiral-elimination}
+Let \(Q\) and \(\widetilde Q\) be conjugate chiral multiplets in
+representations \(R\) and \(R^\vee\), and let \(\varphi=\varphi^a t^a\) be
+an adjoint chiral multiplet.  With the same trace convention as above, set
+\[
+  J^a=\widetilde Q\,t_R^a Q .
+\]
+The \(\mathcal N=3\) Chern--Simons-matter superpotential
+\[
+  W(\varphi,Q,\widetilde Q)
+  =
+  -\frac{k}{8\pi}\varphi^a\varphi^a
+  +
+  J^a\varphi^a
+\]
+has algebraic \(\varphi\)-equation
+\[
+  \varphi^a=\frac{4\pi}{k}J^a,
+\]
+and the exact tree-level effective superpotential after eliminating
+\(\varphi\) is
+\[
+  W_{\mathrm{eff}}(Q,\widetilde Q)
+  =
+  \frac{2\pi}{k}J^aJ^a
+  =
+  \frac{2\pi}{k}
+  \bigl(\widetilde Q\,t_R^aQ\bigr)
+  \bigl(\widetilde Q\,t_R^aQ\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+The F-term equation is
+\[
+  -\frac{k}{4\pi}\varphi^a+J^a=0.
+\]
+Therefore \(\varphi^a=4\pi J^a/k\).  Substitution gives
+\[
+  -\frac{k}{8\pi}
+  \left(\frac{4\pi}{k}\right)^2J^aJ^a
+  +
+  \frac{4\pi}{k}J^aJ^a
+  =
+  -\frac{2\pi}{k}J^aJ^a
+  +
+  \frac{4\pi}{k}J^aJ^a
+  =
+  \frac{2\pi}{k}J^aJ^a .
+\]
+The calculation is an elimination in the polynomial chiral ring, so it does
+not use a string-theoretic realization of the same Lagrangian.
+\end{proof}
+
 \section{Parity Anomaly And Contact Terms}
 
 A massive three-dimensional Dirac fermion in representation \(R\) shifts the

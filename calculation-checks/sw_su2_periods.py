@@ -7,10 +7,11 @@ The checks use the chapter normalization with Lambda=1:
     aD(u) = i (u-1) 2F1(1/2,1/2;2;(1-u)/2)/2.
 
 They verify monodromy matrices, Picard-Lefschetz central-charge action,
-symplectic preservation, the minimal curve discriminant, the Picard-Fuchs
-equation, the electric large-u asymptotic, the logarithmic large-u growth of
-the dual period, the linear vanishing of the monopole period at u=1, and the
-rank-one Argyres-Douglas cusp scaling dimensions.
+symplectic preservation, the rigid special-Kahler metric identity, the minimal
+curve discriminant, the Picard-Fuchs equation, the electric large-u asymptotic,
+the logarithmic large-u growth of the dual period, the linear vanishing of the
+monopole period at u=1, and the rank-one Argyres-Douglas cusp scaling
+dimensions.
 """
 
 from __future__ import annotations
@@ -37,6 +38,21 @@ def matmul(a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
 
 def transpose(a: list[list[int]]) -> list[list[int]]:
     return [[a[0][0], a[1][0]], [a[0][1], a[1][1]]]
+
+
+def conjugate(z: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+    return (z[0], -z[1])
+
+
+def subtract(
+    z: tuple[Fraction, Fraction], w: tuple[Fraction, Fraction]
+) -> tuple[Fraction, Fraction]:
+    return (z[0] - w[0], z[1] - w[1])
+
+
+def divide_by_two_i(z: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+    # (x+i y)/(2i) = y/2 - i x/2.
+    return (z[1] / 2, -z[0] / 2)
 
 
 def charge_monodromy(n_m: int, n_e: int) -> list[list[int]]:
@@ -103,6 +119,53 @@ def check_picard_lefschetz_action_and_symplecticity() -> None:
                 )
 
 
+def check_rigid_special_kahler_metric() -> None:
+    # Work in units where the common factor 1/(2 pi) in K has been stripped.
+    # The exact algebra behind K=Im(bar a^I F_I) is
+    # d_I d_barJ K = (tau_IJ - conjugate(tau_JI))/(2i) = Im tau_IJ
+    # for a symmetric holomorphic Hessian tau_IJ.
+    tau = [
+        [(Fraction(1), Fraction(3)), (Fraction(2), Fraction(1))],
+        [(Fraction(2), Fraction(1)), (Fraction(-1), Fraction(4))],
+    ]
+    expected_imaginary_metric = [[Fraction(3), Fraction(1)], [Fraction(1), Fraction(4)]]
+
+    for i in range(2):
+        for j in range(2):
+            numerator = subtract(tau[i][j], conjugate(tau[j][i]))
+            metric_entry = divide_by_two_i(numerator)
+            expected = (expected_imaginary_metric[i][j], Fraction(0))
+            if metric_entry != expected:
+                raise AssertionError(
+                    f"rigid special Kahler metric mismatch {(i, j)}: "
+                    f"got {metric_entry}, expected {expected}"
+                )
+
+    leading_minor = expected_imaginary_metric[0][0]
+    determinant = (
+        expected_imaginary_metric[0][0] * expected_imaginary_metric[1][1]
+        - expected_imaginary_metric[0][1] * expected_imaginary_metric[1][0]
+    )
+    if leading_minor <= 0 or determinant <= 0:
+        raise AssertionError("Im tau should be positive definite in the test patch")
+
+    real_theta_shift = [[Fraction(5), Fraction(-2)], [Fraction(-2), Fraction(7)]]
+    shifted_tau = [
+        [
+            (tau[i][j][0] + real_theta_shift[i][j], tau[i][j][1])
+            for j in range(2)
+        ]
+        for i in range(2)
+    ]
+    for i in range(2):
+        for j in range(2):
+            numerator = subtract(shifted_tau[i][j], conjugate(shifted_tau[j][i]))
+            metric_entry = divide_by_two_i(numerator)
+            expected = (expected_imaginary_metric[i][j], Fraction(0))
+            if metric_entry != expected:
+                raise AssertionError("real quadratic prepotential shift changed Im tau")
+
+
 def check_minimal_curve_discriminant() -> None:
     for u in (3, -4, 7):
         branch_discriminant = (1 - (-1)) ** 2 * (1 - u) ** 2 * ((-1) - u) ** 2
@@ -155,6 +218,7 @@ def check_argyres_douglas_scaling() -> None:
 def main() -> None:
     check_monodromies()
     check_picard_lefschetz_action_and_symplecticity()
+    check_rigid_special_kahler_metric()
     check_minimal_curve_discriminant()
     check_picard_fuchs()
     check_large_u_asymptotics()

@@ -178,28 +178,91 @@ For a gauge theory with chiral matter, the holomorphic gauge coordinate is
   \frac{1}{16\pi\ii}\int d^4x\,d^2\theta\,
   \tau(\Lambda)\operatorname{tr}(W^\alpha W_\alpha)+\text{c.c.}
 \]
-In a holomorphic Wilsonian scheme, perturbative corrections to
-\(\tau\) are one-loop exact:
+The trace convention is the one fixed in
+Chapter~\ref{ch:susy-gauge-theory}.  Thus
+\[
+  b_0=3C_2(G)-\sum_iT(R_i)
+\]
+for chiral matter representations \(R_i\).  The indices are defined by
+\[
+  \operatorname{Tr}_{R_i}(XY)=T(R_i)\operatorname{tr}(XY),
+  \qquad
+  \operatorname{Tr}_{\rm ad}(XY)=C_2(G)\operatorname{tr}(XY).
+\]
+
+\begin{proposition}[Wilsonian one-loop exactness of the holomorphic gauge coordinate]
+\label{prop:holomorphic-gauge-coupling-one-loop-exact}
+Work in a weak-coupling Wilsonian patch in which:
+\begin{enumerate}[label=(\roman*)]
+\item the gauge kinetic coefficient is a chiral local coordinate
+\(\tau_{\rm eff}(\mu)\), holomorphic in the microscopic chiral couplings;
+\item the theta-angle periodicity is represented by
+\(\tau\mapsto\tau+1\), so scale derivatives of the gauge kinetic coordinate
+are single-valued holomorphic functions of
+\[
+  q_h:=\exp(2\pi\ii\tau);
+\]
+\item the perturbative sector is the \(q_h^0\) coefficient in the expansion
+near \(q_h=0\); positive powers of \(q_h\) are instanton sectors and negative
+powers are excluded from the weak-coupling Wilsonian patch;
+\item the superpotential spurion ledger contains no additional anomalous
+chiral coordinate with the transformation law of the gauge kinetic term.
+\end{enumerate}
+Then the perturbative Wilsonian running of the holomorphic coordinate is
 \[
   \tau(\Lambda)
   =
   \tau(\Lambda_0)
   +\frac{b_0}{2\pi\ii}\log\frac{\Lambda}{\Lambda_0},
+  \label{eq:holomorphic-gauge-coordinate-one-loop-running}
 \]
-where, in the trace convention of Chapter~\ref{ch:susy-gauge-theory},
-\(b_0\) is computed from the adjoint and matter representation indices in
-that same bilinear form.
+up to a finite \(\Lambda\)-independent holomorphic redefinition of the
+reference coordinate.  Equivalently,
+\[
+  \mu\frac{d\tau_{\rm eff}^{\rm pert}}{d\mu}
+  =
+  \frac{b_0}{2\pi\ii}.
+\]
+\end{proposition}
 
-\begin{proof}[Reason for one-loop exactness]
-The coordinate \(\tau\) is chiral and dimensionless.  Higher-loop
-perturbative corrections would be holomorphic functions of \(\tau\) and the
-chiral matter couplings with the same anomalous symmetry transformation as
-\(\tau\).  The anomalous rescaling of the charged fields fixes the logarithmic
-one-loop shift.  Additional perturbative terms would either violate the
-spurion transformation law or be removable by a holomorphic redefinition of
-the Wilsonian coordinate.  Physical gauge couplings obtained after canonical
-normalization are different coordinates; their beta functions include the
-Jacobian of field rescalings and therefore need not be one-loop exact.
+\begin{proof}
+The statement is about a Wilsonian chiral coordinate, not about the canonical
+two-point-function coupling.  By locality and chirality, the scale derivative
+\(\mu\,d\tau_{\rm eff}/d\mu\) is itself the coefficient of the local chiral
+operator \(\operatorname{tr}(W^\alpha W_\alpha)\).  It is dimensionless,
+holomorphic in the chiral couplings, and invariant under
+\(\tau\mapsto\tau+1\).  On the weak-coupling patch it therefore has an
+expansion
+\[
+  \mu\frac{d\tau_{\rm eff}}{d\mu}
+  =
+  B_0(t)+\sum_{n\geq1}B_n(t)q_h^n ,
+  \label{eq:holomorphic-gauge-beta-q-expansion}
+\]
+after excluding negative powers by the weak-coupling regularity hypothesis.
+The \(n\geq1\) terms are nonperturbative instanton sectors.  The perturbative
+projection is the constant term \(B_0(t)\).
+
+The coefficient \(B_0(t)\) is constrained by the spurion symmetry ledger.
+The gauge kinetic coordinate shifts under the anomalous chiral rotations of
+charged fields; the local anomaly calculation fixes this shift at one loop
+with coefficient \(b_0\).  A perturbative contribution depending
+nontrivially on other chiral couplings would have to transform in the same
+affine way as \(\tau\).  Hypothesis (iv) excludes such an additional
+coordinate.  Hence \(B_0\) is the one-loop anomaly coefficient,
+\[
+  B_0=\frac{b_0}{2\pi\ii}.
+\]
+Integrating in \(\log\Lambda\) gives
+\eqref{eq:holomorphic-gauge-coordinate-one-loop-running}.  A finite
+holomorphic change of the reference coordinate adds a
+\(\Lambda\)-independent function and does not change the derivative.
+
+Canonical gauge couplings are different coordinates.  Passing to them
+requires rescaling matter and gauge multiplets; the corresponding local
+Berezinian is the Konishi-type anomaly derived below.  Thus the
+one-loop-exact statement here is compatible with higher-loop beta functions
+in canonical normalization.
 \end{proof}
 
 \section{Konishi-Type Rescaling Anomaly}
