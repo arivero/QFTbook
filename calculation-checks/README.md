@@ -625,11 +625,13 @@ Current checks:
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
-  stress-tensor examples, including the Bose integral
-  \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat thermal scalar
-  energy density and traceless equation of state, the massless plane-wave
-  eigenvalues of the displayed bidifferential operators, and the de Sitter
-  constant-curvature anomaly specialization for a conformal real scalar.
+  stress-tensor examples, including state-difference cancellation of the
+  common Hadamard singularity, the sign of a smooth subtraction change, the
+  Bose integral \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat
+  thermal scalar energy density and traceless equation of state, the massless
+  plane-wave eigenvalues of the displayed bidifferential operators, and the
+  de Sitter constant-curvature anomaly specialization for a conformal real
+  scalar.
 - `schwinger_model_checks.py`: finite sign and normalization checks for the
   Schwinger-model chapter, including the two-dimensional current-duality
   convention, the algebraic elimination of the electric field, the

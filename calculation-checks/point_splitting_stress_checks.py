@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Finite checks for the point-split stress-tensor examples."""
 
+from fractions import Fraction
+
 import mpmath as mp
 
 
@@ -15,7 +17,22 @@ def assert_close(name, lhs, rhs, tol=mp.mpf("1e-45")):
         raise AssertionError(f"{name}: {lhs} != {rhs}")
 
 
+def assert_equal(name, lhs, rhs):
+    if lhs != rhs:
+        raise AssertionError(f"{name}: {lhs} != {rhs}")
+
+
 def main():
+    w_state = Fraction(7, 5)
+    w_prime_state = Fraction(11, 13)
+    h_singular = Fraction(2, 3)
+    smooth_shift = Fraction(5, 17)
+    wick_state = w_state - h_singular
+    wick_prime_state = w_prime_state - h_singular
+    wick_shifted_subtraction = w_state - (h_singular + smooth_shift)
+    assert_equal("point-split state difference", wick_state - wick_prime_state, w_state - w_prime_state)
+    assert_equal("point-split smooth subtraction sign", wick_shifted_subtraction, wick_state - smooth_shift)
+
     bose_integral = mp.quad(lambda x: x**3 / mp.expm1(x), [0, mp.inf])
     assert_close("Bose integral", bose_integral, mp.pi**4 / 15)
 

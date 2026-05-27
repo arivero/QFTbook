@@ -11,6 +11,10 @@
 
 - Hadamard parametrix \(H(x,y)\).
 - Wick square by point-splitting subtraction.
+- Proposition: the difference of two Hadamard-state Wick-square expectation
+  values is the diagonal of the smooth two-point-function difference, and a
+  smooth change \(H\mapsto H+S\) shifts the Wick square by
+  \(-S(x,x)\mathbf 1\).
 - Finite local freedom of Wick square in four dimensions.
 - Stress tensor by bidifferential operator and local curvature term.
 - Explicit flat-space computation: vacuum subtraction, thermal KMS remainder,
@@ -30,6 +34,7 @@
 | \(\omega\) | Hadamard state |
 | \(\omega_2\) | two-point distribution |
 | \(H(x,y)\) | locally covariant Hadamard parametrix |
+| \(S(x,y)\) | smooth biscalar changing the subtraction prescription |
 | \(:\!\Phi^2\!:\) | Wick square defined by point splitting |
 | \(\mathcal D_{\mu\nu}(x,y)\) | stress-tensor bidifferential operator |
 | \(C_{\mu\nu}\) | finite local curvature tensor freedom |
@@ -42,21 +47,24 @@
 
 1. Wick powers are defined by subtracting the locally covariant singular
    parametrix in all contractions.
-2. Stress-tensor renormalization has finite local covariant freedom.
-3. In flat Minkowski space \(H_0=W_0\), so the point-split vacuum stress
+2. State differences cancel the common Hadamard singularity, while changing
+   the smooth part of the subtraction shifts the composite field by a
+   state-independent local identity term.
+3. Stress-tensor renormalization has finite local covariant freedom.
+4. In flat Minkowski space \(H_0=W_0\), so the point-split vacuum stress
    tensor vanishes once the finite cosmological term is set to zero.
-4. Applying the point-split stress operator to the smooth thermal remainder
+5. Applying the point-split stress operator to the smooth thermal remainder
    gives \(\rho_\beta=\pi^2/(30\beta^4)\) and \(p_\beta=\rho_\beta/3\).
-5. For the massless conformally coupled scalar on de Sitter, maximal
+6. For the massless conformally coupled scalar on de Sitter, maximal
    symmetry and the \(a=1/360\) trace anomaly fix the local curvature
    contribution \(C=-H^4/(960\pi^2)\) in
    \(\langle T_{\mu\nu}\rangle=Cg_{\mu\nu}\), subject to the stated finite
    local-term convention.
-6. Conservation is imposed as a Ward identity after finite local terms are
+7. Conservation is imposed as a Ward identity after finite local terms are
    fixed.
-7. The trace anomaly is the remaining local trace term in the massless
+8. The trace anomaly is the remaining local trace term in the massless
    conformally coupled case.
-8. Point splitting is an operator-definition scheme comparable to path-
+9. Point splitting is an operator-definition scheme comparable to path-
    integral insertion schemes by finite local terms.
 
 ## Figures

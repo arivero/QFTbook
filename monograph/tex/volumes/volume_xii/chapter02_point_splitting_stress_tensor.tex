@@ -25,6 +25,59 @@ point-split Wick square in state \(\omega\) is the distribution defined by
 \]
 \end{definition}
 
+\begin{proposition}[State dependence and subtraction dependence]
+\label{prop:point-splitting-smooth-change}
+Fix a normal convex neighborhood in which the Hadamard parametrix \(H\) is
+defined.  If \(\omega\) and \(\omega'\) are Hadamard states of the same
+Klein--Gordon field, then
+\[
+  W_{\omega,\omega'}(x,y)
+  =
+  \omega_2(x,y)-\omega'_2(x,y)
+\]
+is smooth near the diagonal, and the corresponding Wick-square expectation
+values obey
+\[
+  \omega\bigl(:\!\Phi^2\!:_H(f)\bigr)
+  -
+  \omega'\bigl(:\!\Phi^2\!:_H(f)\bigr)
+  =
+  \int_M f(x)\,W_{\omega,\omega'}(x,x)\,d{\rm vol}_g(x).
+\]
+If \(H'=H+S\), where \(S(x,y)\) is a smooth symmetric locally constructed
+biscalar, then
+\[
+  :\!\Phi^2\!:_{H'}(f)
+  =
+  :\!\Phi^2\!:_{H}(f)
+  -
+  \int_M f(x)S(x,x)\,d{\rm vol}_g(x)\,\mathbf 1
+\]
+as a relation between expectation values in every Hadamard state.
+\end{proposition}
+
+\begin{proof}
+The defining property of a Hadamard two-point function is that, in each
+normal convex neighborhood, its singular part is the universal local
+parametrix \(H\), while the remainder is smooth.  Thus
+\[
+  \omega_2=H+R_\omega,\qquad
+  \omega'_2=H+R_{\omega'}
+\]
+with \(R_\omega\) and \(R_{\omega'}\) smooth near the diagonal.  Their
+difference \(W_{\omega,\omega'}=R_\omega-R_{\omega'}\) is smooth, so the
+diagonal value \(W_{\omega,\omega'}(x,x)\) is an ordinary smooth function.
+Subtracting the two point-splitting definitions gives the first displayed
+formula.  For the second formula,
+\[
+  \omega_2-H'=\omega_2-H-S .
+\]
+Taking the diagonal limit and smearing with \(f\) subtracts
+\(\int f(x)S(x,x)d{\rm vol}_g(x)\), independent of the state.  A
+state-independent scalar multiple of every expectation value is represented
+by the same scalar multiple of the identity field.
+\end{proof}
+
 For higher Wick powers, one subtracts the parametrix in every contraction.
 The result is an operator-valued distribution in perturbative algebraic QFT
 and a quadratic form in representations where the required domains are
