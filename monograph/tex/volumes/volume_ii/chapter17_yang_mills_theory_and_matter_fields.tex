@@ -210,6 +210,83 @@ It follows from \eqref{eq:ym-covariant-operator-transformation} that
   \label{eq:ym-curvature-covariance}
 \end{equation}
 
+\begin{proposition}[Connection, curvature, and Bianchi identities]
+\label{prop:ym-connection-curvature-bianchi}
+In the Hermitian convention of this chapter, the finite transformation law
+\eqref{eq:ym-finite-gauge-transformation} is equivalent to
+\eqref{eq:ym-covariant-operator-transformation}.  Consequently the curvature
+transforms covariantly as in \eqref{eq:ym-curvature-covariance}.  Its
+components are
+\begin{equation}
+  F^a_{\mu\nu}
+  =
+  \partial_\mu A^a_\nu-\partial_\nu A^a_\mu
+  +f^a{}_{bc}A^b_\mu A^c_\nu .
+  \label{eq:ym-component-field-strength}
+\end{equation}
+For an adjoint-valued field \(X\), define
+\[
+  D_\mu X:=\partial_\mu X-\ii[A_\mu,X].
+\]
+Then the curvature obeys the Bianchi identity
+\begin{equation}
+  D_\lambda F_{\mu\nu}
+  +
+  D_\mu F_{\nu\lambda}
+  +
+  D_\nu F_{\lambda\mu}
+  =
+  0 .
+  \label{eq:ym-bianchi-identity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let \(s\) be a test section in the local trivialization.  Using
+\(\partial_\mu(g^{-1}s)=(\partial_\mu g^{-1})s+g^{-1}\partial_\mu s\),
+\[
+\begin{aligned}
+  (g\nabla_\mu g^{-1})s
+  &=
+  g\bigl(\partial_\mu-\ii A_\mu\bigr)(g^{-1}s)  \\
+  &=
+  \partial_\mu s
+  +g(\partial_\mu g^{-1})s
+  -\ii gA_\mu g^{-1}s .
+\end{aligned}
+\]
+Since \(A'_\mu=gA_\mu g^{-1}+\ii g\partial_\mu g^{-1}\), the last line is
+\((\partial_\mu-\ii A'_\mu)s\).  This proves
+\(\nabla_\mu'=g\nabla_\mu g^{-1}\).  Therefore
+\[
+  [\nabla_\mu',\nabla_\nu']
+  =
+  g[\nabla_\mu,\nabla_\nu]g^{-1},
+\]
+and multiplication by \(\ii\) gives
+\eqref{eq:ym-curvature-covariance}.
+
+For the component formula, substitute \(A_\mu=A^a_\mu t^a\) into
+\eqref{eq:ym-field-strength-definition} and use
+\([t^b,t^c]=\ii f^a{}_{bc}t^a\).  The commutator term contributes
+\(-\ii A^b_\mu A^c_\nu[t^b,t^c]
+=f^a{}_{bc}A^b_\mu A^c_\nu t^a\), which gives
+\eqref{eq:ym-component-field-strength}.
+
+Finally, the Jacobi identity for the differential operators \(\nabla_\mu\)
+is
+\[
+  [\nabla_\lambda,[\nabla_\mu,\nabla_\nu]]
+  +[\nabla_\mu,[\nabla_\nu,\nabla_\lambda]]
+  +[\nabla_\nu,[\nabla_\lambda,\nabla_\mu]]
+  =0 .
+\]
+Since \([\nabla_\mu,\nabla_\nu]=-\ii F_{\mu\nu}\) and
+\([\nabla_\lambda,X]=D_\lambda X\) for multiplication by an adjoint field
+\(X\), the Jacobi identity is precisely
+\eqref{eq:ym-bianchi-identity}.
+\end{proof}
+
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
@@ -316,6 +393,89 @@ is
 Changing the invariant bilinear rescales the component expression and hence the
 coordinate called \(g_{\mathrm{YM}}\); the trace-form equation above is the
 definition of the coupling convention used in this monograph.
+
+\begin{proposition}[Yang--Mills variation in the trace-form convention]
+\label{prop:ym-variation-trace-form-convention}
+Let
+\[
+  S_{\mathrm{YM}}[A]
+  =
+  -\frac1{4g_{\mathrm{YM}}^2}
+  \int_M\dd^Dx\,\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+\]
+on a Lorentzian spacetime region \(M\), and assume boundary conditions for
+which integrations by parts have no boundary contribution.  For a variation
+\(\delta A_\mu\),
+\begin{equation}
+  \delta F_{\mu\nu}
+  =
+  D_\mu\delta A_\nu-D_\nu\delta A_\mu,
+  \label{eq:ym-curvature-variation}
+\end{equation}
+and
+\begin{equation}
+  \delta S_{\mathrm{YM}}
+  =
+  \frac1{g_{\mathrm{YM}}^2}
+  \int_M\dd^Dx\,
+  \operatorname{tr}\bigl((D_\mu F^{\mu\nu})\delta A_\nu\bigr).
+  \label{eq:ym-action-variation}
+\end{equation}
+If matter coupled to the same connection has current \(j^\nu\) defined by
+\begin{equation}
+  \delta S_{\mathrm{matter}}
+  =
+  -\int_M\dd^Dx\,\operatorname{tr}(j^\nu\delta A_\nu),
+  \label{eq:ym-matter-current-definition}
+\end{equation}
+then the classical gauge-field equation is
+\begin{equation}
+  D_\mu F^{\mu\nu}
+  =
+  g_{\mathrm{YM}}^2 j^\nu .
+  \label{eq:ym-euler-lagrange-with-current}
+\end{equation}
+For pure Yang--Mills, \(j^\nu=0\).
+\end{proposition}
+
+\begin{proof}
+Using the definition of \(F_{\mu\nu}\),
+\[
+\begin{aligned}
+  \delta F_{\mu\nu}
+  &=
+  \partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu
+  -\ii[\delta A_\mu,A_\nu]-\ii[A_\mu,\delta A_\nu]  \\
+  &=
+  D_\mu\delta A_\nu-D_\nu\delta A_\mu .
+\end{aligned}
+\]
+Then
+\[
+  \delta S_{\mathrm{YM}}
+  =
+  -\frac1{2g_{\mathrm{YM}}^2}
+  \int\dd^Dx\,
+  \operatorname{tr}(F^{\mu\nu}\delta F_{\mu\nu}).
+\]
+Substituting \eqref{eq:ym-curvature-variation} and using antisymmetry of
+\(F^{\mu\nu}\) gives
+\[
+  \delta S_{\mathrm{YM}}
+  =
+  -\frac1{g_{\mathrm{YM}}^2}
+  \int\dd^Dx\,
+  \operatorname{tr}(F^{\mu\nu}D_\mu\delta A_\nu).
+\]
+The invariant trace satisfies
+\(\operatorname{tr}(X D_\mu Y)=\partial_\mu\operatorname{tr}(XY)
+-\operatorname{tr}((D_\mu X)Y)\).  After dropping the boundary term, this is
+\eqref{eq:ym-action-variation}.  Adding
+\eqref{eq:ym-matter-current-definition} and requiring the variation to vanish
+for arbitrary \(\delta A_\nu\) gives
+\eqref{eq:ym-euler-lagrange-with-current}.
+\end{proof}
+
 For a unitary Lorentzian quantum theory built from these fields, the invariant
 quadratic form on the gauge algebra is chosen positive definite.  Equivalently,
 the local gauge algebra is a compact reductive Lie algebra: a direct sum of
