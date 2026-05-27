@@ -259,7 +259,8 @@ Current absorption:
   Riemann--Hurwitz monodromy ledger for the first twist-correlator covering
   checks and the beta-normalized local coordinate map for the primitive
   joining cover, plus the Schwarzian/OPE-power ledger and class-normalized
-  group factor for the primitive joining channel.  The public arithmetic check
+  group factor for the primitive joining channel, together with the normalized
+  transposition join/split class-algebra factors.  The public arithmetic check
   covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.

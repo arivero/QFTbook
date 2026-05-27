@@ -3577,6 +3577,129 @@ Substituting the class-size formula and using \(R=K+L-1\) gives
 \eqref{eq:symmetric-product-primitive-joining-group-factor}.
 \end{proof}
 
+\begin{proposition}[Transposition class algebra: join and split factors]
+\label{prop:symmetric-product-transposition-join-split-factors}
+Let \(\Sigma_2^{(M)}\) be the normalized transposition class operator from
+\eqref{eq:symmetric-product-normalized-single-cycle-class}.  Assume the same
+labelled twist normalization as in
+Proposition~\ref{prop:symmetric-product-primitive-joining-class-normalization}.
+For \(K\ge2\) and \(M\ge K+1\), the class-normalized channel in which a
+transposition joins a fixed point to a \(K\)-cycle is
+\begin{equation}
+  \Sigma_2^{(M)}(z,\bar z)\Sigma_K^{(M)}(0)
+  \supset
+  \mathfrak j_K^{(M)}\,C_{2,K}^{K+1}\,
+  z^{h_{K+1}-h_2-h_K}
+  \bar z^{\bar h_{K+1}-\bar h_2-\bar h_K}
+  \Sigma_{K+1}^{(M)}(0),
+  \label{eq:symmetric-product-transposition-join-channel}
+\end{equation}
+with
+\begin{equation}
+  \left(\mathfrak j_K^{(M)}\right)^2
+  =
+  2K(K+1)\frac{M-K}{M(M-1)}.
+  \label{eq:symmetric-product-transposition-join-factor}
+\end{equation}
+
+For a split channel, let \(K\ge4\), let \(a,b\ge2\), and let \(a+b=K\).  Let
+\([a,b]\subset S_M\) be the conjugacy class with one \(a\)-cycle, one
+\(b\)-cycle, and \(M-K\) fixed points, and define
+\[
+  \Sigma_{a,b}^{(M)}
+  =
+  |[a,b]|^{-1/2}\sum_{\eta\in[a,b]}\sigma_\eta .
+\]
+Then
+\begin{equation}
+  \Sigma_2^{(M)}(z,\bar z)\Sigma_K^{(M)}(0)
+  \supset
+  \mathfrak s_{a,b}^{(M)}\,C_{2,K}^{a,b}\,
+  z^{h_a+h_b-h_2-h_K}
+  \bar z^{\bar h_a+\bar h_b-\bar h_2-\bar h_K}
+  \Sigma_{a,b}^{(M)}(0),
+  \label{eq:symmetric-product-transposition-split-channel}
+\end{equation}
+where \(C_{2,K}^{a,b}\) is the labelled split-channel coefficient and
+\begin{equation}
+  \left(\mathfrak s_{a,b}^{(M)}\right)^2
+  =
+  \frac{2Kab}{(1+\delta_{a,b})M(M-1)} .
+  \label{eq:symmetric-product-transposition-split-factor}
+\end{equation}
+If one piece is a fixed point, say \(K=b+1\) with \(b\ge2\), the output class
+is the single-cycle class \([b]\) and the endpoint split factor is
+\begin{equation}
+  \left(\mathfrak s_{1,b}^{(M)}\right)^2
+  =
+  2(b+1)b\,\frac{M-b}{M(M-1)}.
+  \label{eq:symmetric-product-transposition-endpoint-split-factor}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The join channel is the special case \(L=2\) of
+Proposition~\ref{prop:symmetric-product-primitive-joining-class-normalization}.
+Substituting \(R=K+1\) into
+\eqref{eq:symmetric-product-primitive-joining-group-factor} gives
+\eqref{eq:symmetric-product-transposition-join-factor}.
+
+For the split channel, fix a permutation \(\eta=\alpha\beta\), where
+\(\alpha\) and \(\beta\) are disjoint cycles of lengths \(a\) and \(b\).
+If \(p\) is in the support of \(\alpha\) and \(q\) is in the support of
+\(\beta\), then \(\tau=(p\,q)\) cuts and reglues the two directed cycles into
+a single \(K\)-cycle
+\[
+  \gamma=\tau\eta .
+\]
+Since \(\tau^2=1\), this is equivalent to \(\tau\gamma=\eta\).  Conversely,
+if \(\tau\gamma=\eta\) with \(\tau\) a transposition and \(\gamma\) a
+\(K\)-cycle, then \(\tau\) cannot involve a fixed point of \(\eta\), because
+then \(\gamma=\tau\eta\) would move a sheet outside the support of \(\eta\).
+It also cannot exchange two points in the same component of \(\eta\): the
+other component would remain invariant under \(\gamma\), contradicting the
+assumption that \(\gamma\) is a single \(K\)-cycle.  Hence \(\tau\) must
+connect one point of the \(a\)-cycle to one point of the \(b\)-cycle, so a
+fixed output \(\eta\in[a,b]\) has exactly
+\[
+  ab
+\]
+labelled split factorizations.
+
+The class size is
+\[
+  |[a,b]|
+  =
+  \frac{M!}{ab(1+\delta_{a,b})(M-K)!},
+\]
+where the factor \(1+\delta_{a,b}\) is the permutation symmetry of the two
+equal-length cycles when \(a=b\).  Projecting
+\[
+  \frac{ab\,C_{2,K}^{a,b}}{\sqrt{|[2]||[K]|}}
+  \sum_{\eta\in[a,b]}\sigma_\eta
+\]
+onto \(\Sigma_{a,b}^{(M)}\) gives
+\[
+  \left(\mathfrak s_{a,b}^{(M)}\right)^2
+  =
+  a^2b^2\frac{|[a,b]|}{|[2]||[K]|}.
+\]
+Using \(|[2]|=M!/(2(M-2)!)\) and
+\(|[K]|=M!/(K(M-K)!)\) gives
+\eqref{eq:symmetric-product-transposition-split-factor}.
+
+If one component has length \(1\), fix the nontrivial output \(b\)-cycle
+\(\beta\).  The split-off fixed point may be any of the \(M-b\) sheets outside
+the support of \(\beta\), and the cut point on \(\beta\) may be chosen in
+\(b\) ways.  Thus a fixed output \(\beta\in[b]\) receives \(b(M-b)\) labelled
+factorizations.  Projecting to the single-cycle class \(\Sigma_b^{(M)}\) and
+using \(K=b+1\) gives
+\eqref{eq:symmetric-product-transposition-endpoint-split-factor}.  This is
+the same finite factor as the join coefficient
+\(\mathfrak j_b^{(M)}\), as required by the diagonal two-point
+normalization.
+\end{proof}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[

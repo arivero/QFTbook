@@ -150,6 +150,13 @@ def single_cycle_class_size(total_copies: int, length: int) -> int:
     return factorial(total_copies) // (length * factorial(total_copies - length))
 
 
+def cycle_type_class_size(total_copies: int, nontrivial_lengths: list[int]) -> int:
+    fixed_points = total_copies - sum(nontrivial_lengths)
+    return symmetric_group_order(total_copies) // centralizer_order(
+        [*nontrivial_lengths, *([1] * fixed_points)]
+    )
+
+
 def primitive_joining_factorization_count(left_length: int, right_length: int) -> int:
     joined_length = left_length + right_length - 1
     joined_cycle = cycle_permutation(joined_length, list(range(joined_length)))
@@ -172,6 +179,77 @@ def primitive_joining_group_factor_square(
         * single_cycle_class_size(total_copies, joined_length),
         single_cycle_class_size(total_copies, left_length)
         * single_cycle_class_size(total_copies, right_length),
+    )
+
+
+def transposition_join_factorization_count(cycle_length: int) -> int:
+    joined_length = cycle_length + 1
+    joined_cycle = cycle_permutation(joined_length, list(range(joined_length)))
+    count = 0
+    for transposition in all_cycles(joined_length, 2):
+        candidate_cycle = compose(transposition, joined_cycle)
+        expected_lengths = [cycle_length] if cycle_length > 1 else []
+        if nontrivial_cycle_lengths(candidate_cycle) == expected_lengths:
+            count += 1
+    return count
+
+
+def transposition_join_group_factor_square(total_copies: int, cycle_length: int) -> Fraction:
+    joined_length = cycle_length + 1
+    return Fraction(
+        joined_length * joined_length
+        * single_cycle_class_size(total_copies, joined_length),
+        single_cycle_class_size(total_copies, 2)
+        * single_cycle_class_size(total_copies, cycle_length),
+    )
+
+
+def transposition_split_factorization_count(
+    total_copies: int,
+    first_length: int,
+    second_length: int,
+) -> int:
+    if first_length == 1 and second_length == 1:
+        raise ValueError("the identity endpoint channel is not part of this finite check")
+
+    if first_length == 1 or second_length == 1:
+        nontrivial_length = max(first_length, second_length)
+        output = cycle_permutation(total_copies, list(range(nontrivial_length)))
+    else:
+        output = compose(
+            cycle_permutation(total_copies, list(range(first_length))),
+            cycle_permutation(total_copies, list(range(first_length, first_length + second_length))),
+        )
+
+    joined_length = first_length + second_length
+    count = 0
+    for transposition in all_cycles(total_copies, 2):
+        candidate_cycle = compose(transposition, output)
+        if nontrivial_cycle_lengths(candidate_cycle) == [joined_length]:
+            count += 1
+    return count
+
+
+def transposition_split_group_factor_square(
+    total_copies: int,
+    first_length: int,
+    second_length: int,
+) -> Fraction:
+    joined_length = first_length + second_length
+    if first_length == 1 or second_length == 1:
+        output_lengths = [max(first_length, second_length)]
+    else:
+        output_lengths = [first_length, second_length]
+    factorization_count = transposition_split_factorization_count(
+        total_copies,
+        first_length,
+        second_length,
+    )
+    return Fraction(
+        factorization_count * factorization_count
+        * cycle_type_class_size(total_copies, output_lengths),
+        single_cycle_class_size(total_copies, 2)
+        * single_cycle_class_size(total_copies, joined_length),
     )
 
 
@@ -375,6 +453,91 @@ def check_conjugacy_class_joining_normalization() -> None:
     )
 
 
+def check_transposition_join_split_factors() -> None:
+    for cycle_length in range(2, 8):
+        assert_equal(
+            f"transposition joins fixed point to length {cycle_length}",
+            transposition_join_factorization_count(cycle_length),
+            cycle_length + 1,
+        )
+        for total_copies in range(cycle_length + 1, cycle_length + 6):
+            expected_square = Fraction(
+                2 * cycle_length * (cycle_length + 1) * (total_copies - cycle_length),
+                total_copies * (total_copies - 1),
+            )
+            assert_equal(
+                f"transposition join group factor K={cycle_length}, M={total_copies}",
+                transposition_join_group_factor_square(total_copies, cycle_length),
+                expected_square,
+            )
+
+    for joined_length in range(4, 9):
+        for first_length in range(2, joined_length - 1):
+            second_length = joined_length - first_length
+            for total_copies in range(joined_length, joined_length + 4):
+                expected_count = first_length * second_length
+                expected_square = Fraction(
+                    2 * joined_length * first_length * second_length,
+                    (1 if first_length != second_length else 2)
+                    * total_copies
+                    * (total_copies - 1),
+                )
+                assert_equal(
+                    f"transposition split count a={first_length}, b={second_length}, M={total_copies}",
+                    transposition_split_factorization_count(
+                        total_copies,
+                        first_length,
+                        second_length,
+                    ),
+                    expected_count,
+                )
+                assert_equal(
+                    f"transposition split group factor a={first_length}, b={second_length}, M={total_copies}",
+                    transposition_split_group_factor_square(
+                        total_copies,
+                        first_length,
+                        second_length,
+                    ),
+                    expected_square,
+                )
+
+    for joined_length in range(3, 9):
+        nontrivial_length = joined_length - 1
+        for total_copies in range(joined_length, joined_length + 5):
+            expected_count = nontrivial_length * (total_copies - nontrivial_length)
+            expected_square = Fraction(
+                2 * joined_length * nontrivial_length * (total_copies - nontrivial_length),
+                total_copies * (total_copies - 1),
+            )
+            assert_equal(
+                f"endpoint split count b={nontrivial_length}, M={total_copies}",
+                transposition_split_factorization_count(
+                    total_copies,
+                    1,
+                    nontrivial_length,
+                ),
+                expected_count,
+            )
+            assert_equal(
+                f"endpoint split group factor b={nontrivial_length}, M={total_copies}",
+                transposition_split_group_factor_square(
+                    total_copies,
+                    1,
+                    nontrivial_length,
+                ),
+                expected_square,
+            )
+            assert_equal(
+                f"endpoint split equals adjoint join b={nontrivial_length}, M={total_copies}",
+                transposition_split_group_factor_square(
+                    total_copies,
+                    1,
+                    nontrivial_length,
+                ),
+                transposition_join_group_factor_square(total_copies, nontrivial_length),
+            )
+
+
 def check_connected_cover_hecke_count() -> None:
     for degree in range(1, 13):
         representatives = connected_cover_representatives(degree)
@@ -542,6 +705,7 @@ def main() -> None:
     check_schwarzian_and_primitive_ope_powers()
     check_normalized_two_cycle_count()
     check_conjugacy_class_joining_normalization()
+    check_transposition_join_split_factors()
     check_connected_cover_hecke_count()
     check_twist_cover_riemann_hurwitz()
     check_primitive_joining_cover_polynomial()
