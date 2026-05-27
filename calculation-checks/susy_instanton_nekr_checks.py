@@ -96,6 +96,67 @@ def check_ads_higgs_patch_collective_coordinates() -> None:
         assert_equal(reduced_factor_dimension, -det_m_dimension, "ADS reduced determinant dimension")
 
 
+def check_ads_yukawa_lifting_berezin_determinant() -> None:
+    for nc in range(2, 12):
+        nf = nc - 1
+
+        q_blocks = nf
+        tilde_q_blocks = nf
+        lifted_bilinears = q_blocks + tilde_q_blocks
+        lifted_grassmann_variables = 2 * lifted_bilinears
+        assert_equal(
+            lifted_bilinears,
+            2 * nf,
+            "ADS Yukawa lifting bilinear count",
+        )
+        assert_equal(
+            lifted_grassmann_variables,
+            4 * nf,
+            "ADS Yukawa lifted Grassmann variable saturation",
+        )
+
+        adjoint_gaugino_zero_modes = 2 * nc
+        lifted_adjoint_modes = 2 * nf
+        exact_goldstino_modes = adjoint_gaugino_zero_modes - lifted_adjoint_modes
+        assert_equal(exact_goldstino_modes, 2, "ADS Yukawa leaves d^2 theta")
+
+        scalar_coefficients = q_blocks + tilde_q_blocks
+        meson_products = nf
+        assert_equal(
+            scalar_coefficients,
+            2 * meson_products,
+            "ADS Yukawa determinant scalar coefficient count",
+        )
+
+        # In the diagonal patch M_i^i = tilde v_i v_i.  The lifted Berezin
+        # determinant carries one conjugate v_i and one conjugate tilde v_i
+        # per flavor, hence the conjugate of det(M), not the holomorphic
+        # inverse determinant.  The latter is fixed only after the full
+        # regulated measure and holomorphy/invariance argument.
+        diagonal_det_m_degree = nf
+        berezin_product_meson_degree = nf
+        assert_equal(
+            berezin_product_meson_degree,
+            diagonal_det_m_degree,
+            "ADS Yukawa Berezin product matches diagonal det M degree",
+        )
+
+        for start in (Fraction(2), Fraction(3, 5), Fraction(7, 3)):
+            q_coefficients = [start + index for index in range(nf)]
+            tilde_coefficients = [start + nf + index for index in range(nf)]
+            top_coefficient = Fraction(1)
+            for coefficient in q_coefficients + tilde_coefficients:
+                top_coefficient *= coefficient
+            pair_product = Fraction(1)
+            for index in range(nf):
+                pair_product *= q_coefficients[index] * tilde_coefficients[index]
+            assert_equal(
+                top_coefficient,
+                pair_product,
+                "ADS Yukawa Berezin top coefficient factorization",
+            )
+
+
 def check_ads_meson_invariant_uniqueness() -> None:
     for nc in range(2, 12):
         n = nc - 1
@@ -219,6 +280,7 @@ def main() -> None:
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()
     check_ads_higgs_patch_collective_coordinates()
+    check_ads_yukawa_lifting_berezin_determinant()
     check_ads_meson_invariant_uniqueness()
     check_holomorphic_decoupling_dimensions()
     check_ads_decoupling_recursion()

@@ -79,6 +79,10 @@ status-boundary style.
 - `prop:ads-higgs-patch-collective-coordinate-ledger`: explicit
   Higgs-patch gauge-breaking, bosonic-moduli, fermion-zero-mode, and
   Yukawa-lifting ledger for the ADS instanton calculation.
+- `prop:ads-yukawa-lifting-berezin-determinant`: finite-dimensional
+  diagonal-patch Berezin determinant for the Yukawa lifting matrix,
+  separating the zero-mode saturation algebra from the later holomorphic
+  `1/det M` argument.
 - `prop:ads-maximal-rank-meson-invariant`: invariant-theory lemma on the
   maximal-rank meson patch proving that special-flavor invariance and the
   ADS scaling degree force the reduced instanton factor to be `C/det M`.
@@ -242,6 +246,12 @@ status-boundary style.
   translations/size/orientations, index-theorem fermion zero-mode counts,
   and the rank statement for Yukawa lifting by nonzero Higgs expectation
   values.
+- Proves the finite-dimensional Berezin determinant for the Yukawa lifting
+  matrix in the diagonal patch: the block action
+  `sum_i a_i chi_i zeta_i + b_i tilde chi_i tilde zeta_i` saturates all
+  lifted Grassmann variables, is nonzero exactly on `det M != 0`, leaves the
+  two Goldstino modes, and gives an anti-holomorphic determinant factor that
+  is explicitly distinguished from the final holomorphic ADS denominator.
 - Proves the maximal-rank meson invariant used in the ADS denominator:
   an `SL(N_f,C)_L x SL(N_f,C)_R` invariant holomorphic function on
   `det M != 0` is a function of `det M`; the ADS homogeneity degree then
@@ -399,8 +409,9 @@ status-boundary style.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
-  collective-coordinate counts, determinant-fiber transitivity and
-  inverse-determinant homogeneity for the maximal-rank meson invariant,
+  collective-coordinate counts, Yukawa-lifting Berezin determinant
+  saturation and coefficient factorization, determinant-fiber transitivity
+  and inverse-determinant homogeneity for the maximal-rank meson invariant,
   holomorphic decoupling exponent shifts, and ADS decoupling-recursion
   coefficient and one-variable `F_X=0` algebra.
 

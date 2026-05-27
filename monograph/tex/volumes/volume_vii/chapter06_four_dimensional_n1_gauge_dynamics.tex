@@ -1006,6 +1006,87 @@ supersymmetries are not lifted; they are the exact Grassmann coordinates
 whose integration is the \(d^2\theta\) measure.
 \end{proof}
 
+\begin{proposition}[Yukawa-lifting Berezin determinant on the Higgs patch]
+\label{prop:ads-yukawa-lifting-berezin-determinant}
+Assume the setup of
+Proposition~\ref{prop:ads-higgs-patch-collective-coordinate-ledger}.  After
+choosing bases for the \(2N_f\) matter zero modes and for the \(2N_f\)
+non-Goldstino adjoint zero modes, the zero-mode part of
+\eqref{eq:ads-yukawa-lifting-zero-mode-coupling} has the finite-dimensional
+form
+\[
+  S_{\mathrm{lift}}
+  =
+  \sum_{i=1}^{N_f}
+  \left(
+    a_i\,\chi_i\zeta_i
+    +
+    b_i\,\widetilde\chi_i\widetilde\zeta_i
+  \right),
+  \qquad
+  a_i=c_i\,\overline{v_i},\quad
+  b_i=\widetilde c_i\,\overline{\widetilde v_i},
+  \label{eq:ads-yukawa-lifting-diagonal-matrix}
+\]
+where \(c_i,\widetilde c_i\) are nonzero constants depending only on
+normalizations of zero-mode wavefunctions.  With the orientation convention
+and these nonzero normalization constants absorbed into a nonzero constant
+\(C_{\mathrm{or}}\), the lifted zero-mode integral is
+\[
+  \int
+  \prod_{i=1}^{N_f}
+  d\chi_i\,d\zeta_i\,d\widetilde\chi_i\,d\widetilde\zeta_i\,
+  \exp(-S_{\mathrm{lift}})
+  =
+  C_{\mathrm{or}}
+  \prod_{i=1}^{N_f}
+  \overline{v_i\,\widetilde v_i}.
+  \label{eq:ads-yukawa-lifting-berezin-determinant}
+\]
+Thus the Yukawa matrix has maximal rank precisely on the patch
+\(\det M\neq0\), saturates all lifted Grassmann coordinates, and leaves only
+the two exact gaugino modes.  The anti-holomorphic product in
+\eqref{eq:ads-yukawa-lifting-berezin-determinant} is a statement about this
+finite-dimensional Euclidean lifting determinant.  It is not, by itself, the
+holomorphic ADS denominator; the full regulated instanton measure, the
+bosonic Higgs cutoff, and the hypothesis that the sector defines a
+holomorphic \(F\)-term are what determine the reduced factor
+\(\mathcal F(M)\) below.
+\end{proposition}
+
+\begin{proof}
+The diagonal Higgs background separates the flavor-color directions.  The
+terms in \eqref{eq:ads-yukawa-lifting-zero-mode-coupling} pair the \(Q\)
+matter zero mode in the \(i\)-th direction with one lifted adjoint mode, with
+coefficient proportional to \(\overline{v_i}\), and pair the
+\(\widetilde Q\) matter zero mode with another lifted adjoint mode, with
+coefficient proportional to \(\overline{\widetilde v_i}\).  Since
+\(v_i\widetilde v_i\neq0\) on the patch, each \(2\times2\) Grassmann block
+has nonzero coefficient.
+
+For a single block,
+\[
+  \exp(-a\chi\zeta)=1-a\chi\zeta .
+\]
+The Berezin integral over \(d\chi\,d\zeta\) extracts the coefficient of the
+top monomial, up to the chosen orientation sign.  Hence one block contributes
+a nonzero multiple of \(a\), and the tensor product of all \(Q\) and
+\(\widetilde Q\) blocks contributes
+\[
+  C_{\mathrm{or}}\prod_i a_i b_i
+  =
+  C'_{\mathrm{or}}
+  \prod_i \overline{v_i\,\widetilde v_i}.
+\]
+Renaming this nonzero constant as \(C_{\mathrm{or}}\) gives
+\eqref{eq:ads-yukawa-lifting-berezin-determinant}.
+If any lifted variable is omitted, or if one of the coefficients is zero,
+the top monomial in the corresponding Grassmann variables is absent and the
+integral vanishes.  This proves both the saturation statement and the
+maximal-rank criterion.  The two Goldstino coordinates do not appear in
+\(S_{\mathrm{lift}}\), so they remain as the \(d^2\theta\) measure.
+\end{proof}
+
 \begin{proposition}[Maximal-rank meson invariant for the ADS patch]
 \label{prop:ads-maximal-rank-meson-invariant}
 Let \(n=N_c-1\), and let
