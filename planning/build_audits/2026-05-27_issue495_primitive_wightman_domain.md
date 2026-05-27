@@ -59,6 +59,12 @@ inside the monograph, not left as literature imports.
     proves preservation of causal support, punctured light-cone wavefront
     avoidance, finite scaling degree, and finite scaling degree of the
     punctured six-dimensional Dyson product.
+  - `prop:six-dimensional-distributional-cauchy-formula`, proving the
+    distributional Cauchy formula for the six-dimensional wave equation from
+    the spatial Fourier transform of the constant-coefficient Cauchy problem.
+    Dyson regularity now requires \(F\in\mathcal S'(\mathbb R^{1,5})\),
+    tempered Cauchy traces on affine spacelike hyperplanes, and this precise
+    formula, rather than an undefined ``standard Cauchy formula''.
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -112,7 +118,10 @@ punctured wavefront and scaling inputs; the remaining regularity issue is
 therefore not a hidden derivative problem.  The fixed-\(t\) Cauchy theorem
 now also has an explicit admissible two-cut contour class, so its
 large-contour and threshold-endpoint limits are no longer hidden in the
-word ``admissible.''  Remaining closure work:
+word ``admissible.''  The six-dimensional wave-equation Cauchy step in the
+Dyson representation is now internal: the needed distributional formula is
+proved by Fourier solving the Cauchy problem and is built into the
+Dyson-regularity definition.  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application.  The new microlocal proposition

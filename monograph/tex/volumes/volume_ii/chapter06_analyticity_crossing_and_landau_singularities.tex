@@ -530,13 +530,114 @@ The pair \((u,\mu)\) is called \(R\)-admissible if
 Let \(S_R\subset\mathbb R^4\times[0,\infty)\) be the closed set of
 \(R\)-admissible pairs.
 
+\begin{proposition}[Distributional Cauchy formula for the six-dimensional wave equation]
+\label{prop:six-dimensional-distributional-cauchy-formula}
+Let \(Y=(\tau,\mathbf y)\in\mathbb R^{1,5}\), with
+\(\mathbf y\in\mathbb R^5\), and let
+\[
+  \Box_{1,5}=\partial_\tau^2-\Delta_{\mathbf y}.
+\]
+Let \(F\in\mathcal S'(\mathbb R^{1,5})\) solve
+\[
+  \Box_{1,5}F=0
+\]
+in the distributional sense.  Fix an affine spacelike hyperplane
+\(\Sigma_{\tau_*}=\{\tau=\tau_*\}\), and suppose the Cauchy traces
+\[
+  f=F|_{\Sigma_{\tau_*}},
+  \qquad
+  g=\partial_\tau F|_{\Sigma_{\tau_*}}
+\]
+exist as tempered distributions on \(\mathbb R^5\).  Let \(D_6\) be the odd
+fundamental solution of the six-dimensional wave equation, normalized by
+\[
+  \mathcal F_{\mathbf y}D_6(t,\cdot)(\mathbf k)
+  =
+  \frac{\sin(|\mathbf k|t)}{|\mathbf k|},
+  \qquad
+  \partial_tD_6(0,\mathbf y)=\delta(\mathbf y),
+  \qquad
+  D_6(0,\mathbf y)=0 .
+  \label{eq:six-dimensional-wave-commutator-kernel}
+\]
+Then, as a tempered distribution in \(Y_0=(\tau_0,\mathbf y_0)\),
+\[
+  F(Y_0)
+  =
+  \left\langle
+    f(\mathbf y),
+    \partial_{\tau}D_6(\tau_*-\tau_0,\mathbf y-\mathbf y_0)
+  \right\rangle_{\mathbf y}
+  -
+  \left\langle
+    g(\mathbf y),
+    D_6(\tau_*-\tau_0,\mathbf y-\mathbf y_0)
+  \right\rangle_{\mathbf y}.
+  \label{eq:six-dimensional-distributional-cauchy-formula}
+\]
+Equivalently, for an affine spacelike hyperplane
+\(\Sigma\subset\mathbb R^{1,5}\) with future unit normal \(n\),
+\[
+  F(Y_0)
+  =
+  \int_\Sigma
+  \left(
+    F(Y)\,\partial_{n_Y}D_6(Y-Y_0)
+    -
+    D_6(Y-Y_0)\,\partial_{n_Y}F(Y)
+  \right)\dd\Sigma(Y),
+  \label{eq:six-dimensional-geometric-cauchy-formula}
+\]
+where the displayed integral denotes the distributional pairing of the
+Cauchy traces with the kernel.
+\end{proposition}
+
+\begin{proof}
+It is enough to prove the formula for \(\tau_*=0\); translating \(\tau\)
+gives the general case.  Taking the Fourier transform in the five spatial
+variables converts the wave equation into
+\[
+  \partial_\tau^2\widehat F(\tau,\mathbf k)
+  +
+  |\mathbf k|^2\widehat F(\tau,\mathbf k)=0
+  \label{eq:six-dimensional-wave-spatial-fourier-ode}
+\]
+in \(\mathcal S'(\mathbb R_\tau\times\mathbb R^5_{\mathbf k})\).  A
+distributional solution of this constant-coefficient ordinary differential
+equation is uniquely determined by
+\[
+  \widehat F(0,\mathbf k)=\widehat f(\mathbf k),
+  \qquad
+  \partial_\tau\widehat F(0,\mathbf k)=\widehat g(\mathbf k),
+\]
+because the difference of two such solutions has zero Cauchy data and
+therefore pairs to zero with every compactly supported test function after
+solving the adjoint final-value problem.  The solution is
+\[
+  \widehat F(\tau,\mathbf k)
+  =
+  \cos(|\mathbf k|\tau)\widehat f(\mathbf k)
+  +
+  \frac{\sin(|\mathbf k|\tau)}{|\mathbf k|}\widehat g(\mathbf k),
+  \label{eq:six-dimensional-wave-fourier-solution}
+\]
+with the quotient interpreted by its smooth value \(\tau\) at
+\(\mathbf k=0\).  Inverse Fourier transformation and the normalization
+\eqref{eq:six-dimensional-wave-commutator-kernel} give
+\eqref{eq:six-dimensional-distributional-cauchy-formula}.  The geometric
+form follows by applying a real Lorentz transformation carrying the chosen
+affine spacelike hyperplane to a constant-\(\tau\) hyperplane; the wave
+operator, \(D_6\), the normal derivative, and the distributional pairing are
+invariant under that transformation.
+\end{proof}
+
 \begin{definition}[Dyson-regular causal commutator]
 \label{def:dyson-regular-causal-commutator}
 A causal commutator distribution \(C\in\mathcal S'(\mathbb M^4)\) is
 Dyson-regular if its Fourier transform is the restriction to the plane
 \(p_1=p_2=0\) of a rotationally invariant distribution
 \[
-  F(q,p_1,p_2)\in\mathcal D'(\mathbb R^{1,5})
+  F(q,p_1,p_2)\in\mathcal S'(\mathbb R^{1,5})
 \]
 with the following properties:
 \begin{enumerate}
@@ -545,10 +646,10 @@ with the following properties:
     \Box_{1,5}F=0
   \]
   in the distributional sense.
-  \item For every smooth spacelike Cauchy surface \(\Sigma\) used below,
-  the traces \(F|_\Sigma\) and \(\partial_nF|_\Sigma\) exist as finite-order
-  distributions and the standard distributional Cauchy formula for the wave
-  equation holds.
+  \item On every affine spacelike hyperplane used in the Dyson argument, the
+  traces \(F|_\Sigma\) and \(\partial_nF|_\Sigma\) exist as tempered
+  distributions, and the distributional Cauchy formula
+  \eqref{eq:six-dimensional-geometric-cauchy-formula} holds.
   \item The inverse Fourier transform of \(F\) is supported on the
   six-dimensional light cone and projects to \(C(x)\) after integration over
   the two auxiliary spacelike coordinates, up to a fixed nonzero
@@ -1078,8 +1179,11 @@ after absorbing the fixed normalization constant in the definition of the
 lift.  In the regular-function case this \(F\) is the Fourier transform of
 \(4\pi C(x)\delta(Z_D^2)\), which explains the geometry of the construction.
 
-For solutions of \eqref{eq:dyson-six-dimensional-wave-equation}, the Cauchy
-formula on any spacelike hypersurface \(\Sigma\subset\mathbb R^{1,5}\) says
+For solutions of \eqref{eq:dyson-six-dimensional-wave-equation} with the
+Dyson-regular Cauchy traces,
+Proposition~\ref{prop:six-dimensional-distributional-cauchy-formula} gives,
+on every affine spacelike hyperplane
+\(\Sigma\subset\mathbb R^{1,5}\),
 \[
   F(R_0)
   =
@@ -1092,12 +1196,9 @@ formula on any spacelike hypersurface \(\Sigma\subset\mathbb R^{1,5}\) says
   \label{eq:dyson-cauchy-wave-formula}
 \]
 where \(D_6\) is the odd fundamental solution of the six-dimensional wave
-operator and \(n_R\) is the future unit normal to \(\Sigma\).  For finite-order
-distributions this identity is obtained by testing against a smooth compactly
-supported function of \(R_0\), integrating by parts in the slab bounded by
-\(\Sigma\) and a translated copy of it, and using
-\(\Box_{1,5}D_6=0\) away from the light cone with the standard jump across the
-cone.  No QFT input enters this Cauchy formula.
+operator and \(n_R\) is the future unit normal to \(\Sigma\).  This is a
+theorem about the linear wave equation and its distributional Cauchy data; no
+QFT input enters it after Dyson regularity has supplied the traces.
 
 Take \(R_0=(q,0,0)\).  Because \(D_6\) is supported on the
 six-dimensional light cone, and because \(F\) is rotation-invariant in the

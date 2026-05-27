@@ -58,6 +58,7 @@
 | \(h_\pm(\vec q)\) | spacelike or null boundary graphs of a coincidence slab |
 | \(H_\pm(u,\mu)\) | upper/lower sheets of the mass hyperboloid \((q-u)^2=-\mu^2\) |
 | \(S_R\) | set of \(R\)-admissible hyperboloids supporting the Dyson weight |
+| \(D_6\) | odd fundamental solution of the six-dimensional wave equation, normalized by \(\mathcal F_{\mathbf y}D_6(t,\cdot)(\mathbf k)=\sin(|\mathbf k|t)/|\mathbf k|\) |
 | Dyson-regular commutator | causal commutator whose Fourier transform is the \(p_1=p_2=0\) restriction of a rotationally invariant six-dimensional wave-equation solution with well-defined Cauchy data |
 | \(\Psi(u,\mu)\) | distributional Dyson weight in the causal-commutator representation |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
@@ -113,11 +114,13 @@
 - The Dyson representation theorem assumes a Dyson-regular tempered causal
   commutator, a distributional coincidence slab \(R\), and spacelike/null slab
   boundaries.  Dyson regularity is the explicit six-dimensional lift and
-  Cauchy-data condition; it is not automatic for an arbitrary Wightman
-  distribution.  Under this hypothesis the theorem proves the hyperboloid
-  representation with support in the admissible set \(S_R\).  Local contact
-  polynomials from source-current reduction are separated as
-  subtraction/contact data.
+  Cauchy-data condition; the six-dimensional Cauchy formula itself is now
+  proved in `prop:six-dimensional-distributional-cauchy-formula` from the
+  spatial Fourier transform of the wave equation.  Dyson regularity is not
+  automatic for an arbitrary Wightman distribution.  Under this hypothesis
+  the theorem proves the hyperboloid representation with support in the
+  admissible set \(S_R\).  Local contact polynomials from source-current
+  reduction are separated as subtraction/contact data.
 
 ## Claims to Derive
 
@@ -168,6 +171,18 @@
   \]
   with \(\operatorname{supp}\Psi\subset S_R\), the set of hyperboloids whose
   upper sheet stays above \(h_+\) and lower sheet stays below \(h_-\).
+- Six-dimensional wave-equation Cauchy formula: if
+  \(F\in\mathcal S'(\mathbb R^{1,5})\) solves
+  \(\Box_{1,5}F=0\) and has tempered Cauchy traces
+  \(f=F|_{\tau=\tau_*}\), \(g=\partial_\tau F|_{\tau=\tau_*}\), then
+  \[
+    F(Y_0)=
+    \langle f,\partial_\tau D_6(\tau_*-\tau_0,\cdot-\mathbf y_0)\rangle
+    -
+    \langle g,D_6(\tau_*-\tau_0,\cdot-\mathbf y_0)\rangle .
+  \]
+  This is part of the proof infrastructure for the Dyson/JLD theorem, not an
+  unproved appeal to a standard wave-equation fact.
 - LSZ retarded-commutator input: once the source-current commutator is
   verified to be Dyson-regular, it has the Dyson representation in every
   spectral coincidence slab; retarded and advanced transforms are boundary
