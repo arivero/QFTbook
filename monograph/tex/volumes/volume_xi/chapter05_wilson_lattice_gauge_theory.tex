@@ -146,6 +146,124 @@ plaquette average and rectangular Wilson loops.  Its output is finite-cutoff
 data.  An infinite-volume transition, a continuum limit, or a continuum
 confinement statement requires additional limiting hypotheses and estimates.
 
+\section{Surface Counting and the Strong-Coupling Area Bound}
+
+The exact formula in
+Proposition~\ref{prop:z2-gauge-character-expansion} becomes an area-law
+estimate only after one controls how many surfaces of a given area have the
+same boundary.  This counting step is often hidden in the phrase
+``strong-coupling expansion.''  We spell out the finite statement.
+
+Fix a finite lattice and a closed contour \(C\) which is a boundary in the
+\(\mathbb Z_2\) plaquette chain complex.  Define the lattice area
+\[
+  A_{\min}(C)
+  =
+  \min\{|A|:A\subset P,\ \partial A=C\}.
+  \label{eq:z2-minimal-lattice-area}
+\]
+For \(n\geq0\), let
+\[
+  N_C(n)
+  =
+  \#\{A\subset P:\partial A=C,\ |A|=A_{\min}(C)+n\}.
+  \label{eq:z2-surface-counting-number}
+\]
+Similarly let \(N_0(n)\) count closed plaquette subsets of area \(n\).
+
+\begin{proposition}[Finite surface expansion and area estimate]
+\label{prop:z2-surface-counting-area-bound}
+Let \(\beta\geq0\) and \(t=\tanh\beta\).  If \(C\) is a boundary, then
+\[
+  \langle W(C)\rangle_{\Lambda,\beta}
+  =
+  t^{A_{\min}(C)}
+  \frac{\sum_{n\geq0}N_C(n)t^n}
+       {\sum_{n\geq0}N_0(n)t^n}.
+  \label{eq:z2-surface-counting-expansion}
+\]
+In particular, since the denominator is at least \(1\),
+\[
+  0\leq
+  \langle W(C)\rangle_{\Lambda,\beta}
+  \leq
+  t^{A_{\min}(C)}
+  \sum_{n\geq0}N_C(n)t^n .
+  \label{eq:z2-area-bound-before-entropy}
+\]
+If, for a family of contours, the surface entropy obeys
+\[
+  N_C(n)\leq K(C)\rho^n
+  \qquad(n\geq0)
+  \label{eq:z2-surface-entropy-hypothesis}
+\]
+with \(0\leq\rho t<1\), then
+\[
+  \langle W(C)\rangle_{\Lambda,\beta}
+  \leq
+  \frac{K(C)}{1-\rho t}\,
+  \exp\{-[-\log t]A_{\min}(C)\}.
+  \label{eq:z2-entropy-area-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+The numerator in
+Proposition~\ref{prop:z2-gauge-character-expansion} is a finite sum over
+plaquette subsets satisfying \(\partial A=C\).  Grouping these subsets by
+the excess area \(n=|A|-A_{\min}(C)\) gives the numerator
+\[
+  t^{A_{\min}(C)}\sum_{n\geq0}N_C(n)t^n .
+  \]
+The same grouping with \(C=0\) gives the denominator.  For
+\(\beta\geq0\), all terms in the denominator are nonnegative and the empty
+closed surface gives the term \(1\); hence the denominator is at least
+\(1\), proving \eqref{eq:z2-area-bound-before-entropy}.  The final estimate
+is the geometric-series bound
+\[
+  \sum_{n\geq0}N_C(n)t^n
+  \leq
+  K(C)\sum_{n\geq0}(\rho t)^n
+  =
+  \frac{K(C)}{1-\rho t}.
+  \]
+\end{proof}
+
+For a rectangular loop \(C_{R,T}\) in a coordinate plane,
+\(A_{\min}(C_{R,T})=RT/a^2\) when the rectangle is smaller than the chosen
+finite box and the flat spanning rectangle is the unique minimal surface in
+that homology class.  Equation~\eqref{eq:z2-entropy-area-bound} then gives a
+finite-regulator area bound at sufficiently small \(t\).  If the constants
+in the surface-counting estimate have at most perimeter growth,
+\(K(C_{R,T})\leq \exp\{c(R+T)/a\}\), the area coefficient in lattice units is
+bounded below by
+\[
+  \sigma_{\rm lat}(\beta)\geq -\log(\tanh\beta)
+\]
+with the displayed perimeter and finite entropy prefactors kept separately.
+This is a strong-coupling theorem at fixed cutoff.  It is not a proof of
+continuum confinement, because a continuum Yang--Mills limit in four
+dimensions would require control along a scaling trajectory where the Wilson
+parameter does not remain in this small-\(\beta\) domain.
+
+\begin{example}[One-cube surface polynomial]
+\label{ex:z2-one-cube-surface-polynomial}
+On the boundary of one elementary cube, let \(C\) be the boundary of one
+face.  There are exactly two plaquette subsets with boundary \(C\): the face
+itself, with area \(1\), and the complementary five faces, with area \(5\).
+The closed subsets are the empty surface and the six-face cube boundary.
+Therefore
+\[
+  \langle W(C)\rangle
+  =
+  \frac{t+t^5}{1+t^6}.
+  \label{eq:z2-one-cube-wilson-polynomial}
+\]
+This example shows explicitly why the leading strong-coupling term is the
+minimal spanning surface and why closed surfaces correct both numerator and
+denominator.
+\end{example}
+
 \section{Continuum Expansion}
 
 For a smooth continuum connection \(A_\mu(x)\), set

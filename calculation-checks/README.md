@@ -363,6 +363,11 @@ Current checks:
   local link-flip plaquette-score change, pairwise detailed balance, gauge
   invariance of the action and Wilson loops, and the identity between the
   \(1\times1\) Wilson-loop average and the plaquette average.
+- `z2_strong_coupling_surface_checks.py`: exact enumeration of small
+  cubical plaquette chain complexes over \(\mathbb F_2\), verifying the
+  one-cube Wilson-loop polynomial \((t+t^5)/(1+t^6)\), the first
+  \(2\times1\) rectangular surface counts, and the finite entropy-bound
+  arithmetic used in the strong-coupling area estimate.
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
   theory chapter, including Bose/Fermi detailed balance, the H-theorem
   integrand, linearized collision-operator positivity and null vectors, and
