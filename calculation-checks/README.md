@@ -372,6 +372,10 @@ Current checks:
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number
   orthogonality.
+- `haag_ruelle_velocity_checks.py`: finite checks for the Volume I
+  Haag--Ruelle velocity-support chapter material, including positive-energy
+  phase cancellation, massive group-velocity subluminality,
+  velocity-tube separation, and the nonstationary phase-gradient lower bound.
 - `global_form_line_lattice_checks.py`: exact finite checks for the
   \(\mathfrak{su}(N)\) global-form and Wilson--'t Hooft line-lattice
   section, including the \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\)

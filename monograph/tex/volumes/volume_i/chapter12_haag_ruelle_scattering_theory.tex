@@ -237,6 +237,69 @@ The one-particle vector created by this family is
 It is independent of \(t\). The role of the phase in \(h_t\) is precisely to
 cancel the free time evolution on the mass shell.
 
+\begin{proposition}[Spectral filter and one-particle time independence]
+\label{prop:hr-spectral-filter-time-independence}
+Let \(B\) be an almost-local operator whose energy-momentum transfer is
+contained in a neighborhood of \(\Sigma_m^+\) disjoint from the rest of
+\(\operatorname{Spec}(P)\).  Write the one-particle spectral wavefunction of
+\(B\vac\) as
+\[
+  P_1B\vac
+  =
+  W_1 b,\qquad
+  b\in L^2(\Sigma_m^+,\dd\mu_m).
+\]
+For \(h\in C_c^\infty(\mathbb R^d)\), the Haag--Ruelle approximant satisfies
+\[
+  P_1B_t(h)\vac
+  =
+  W_1(bh),
+  \qquad
+  P_1\frac{\dd}{\dd t}B_t(h)\vac=0.
+\]
+In particular, the one-particle vector represented by \(B_t(h)\vac\) is
+independent of \(t\).
+\end{proposition}
+
+\begin{proof}
+Because \(U(t,\vec x)\vac=\vac\) and \(P_1\) commutes with translations,
+the mass-shell component of \(B(t,\vec x)\vac\) is
+\[
+  P_1B(t,\vec x)\vac
+  =
+  W_1\!\left(
+    p\mapsto
+    \ee^{-\ii\omega_{\vec p}t+\ii\vec p\cdot\vec x}b(p)
+  \right),
+\]
+using \(a_\mu p^\mu=-t\omega_{\vec p}+\vec x\cdot\vec p\).  Substitution in
+the definition of \(B_t(h)\) gives
+\[
+\begin{aligned}
+P_1B_t(h)\vac
+&=
+W_1\!\left(
+  p\mapsto b(p)
+  \int_{\mathbb R^d}\dd^d\vec x\,
+  h_t(\vec x)
+  \ee^{-\ii\omega_{\vec p}t+\ii\vec p\cdot\vec x}
+\right)  \\
+&=
+W_1\!\left(
+  p\mapsto b(p)
+  \int\frac{\dd^d\vec q}{(2\pi)^d}\,h(\vec q)
+  \ee^{\ii(\omega_{\vec q}-\omega_{\vec p})t}
+  \int_{\mathbb R^d}\dd^d\vec x\,
+  \ee^{\ii(\vec p-\vec q)\cdot\vec x}
+\right)  \\
+&=W_1(bh).
+\end{aligned}
+\]
+The last expression is independent of \(t\).  Differentiating the first line
+under the smooth compactly supported momentum integral gives
+\(P_1\frac{\dd}{\dd t}B_t(h)\vac=0\).
+\end{proof}
+
 \section{Point-Field Smearing and Propagation}
 
 The bounded-operator formulation is the cleanest theorem statement.  In
@@ -453,6 +516,85 @@ almost-local operators supported in mutually spacelike tubes.  Locality then
 turns geometric separation into the commutator estimate used in the
 existence proof.
 
+\begin{proposition}[Velocity-tube separation and off-tube decay]
+\label{prop:hr-velocity-tube-separation}
+Let \(h\in C_c^\infty(\mathbb R^d)\), and let
+\[
+  V(h)=\{\nabla_{\vec p}\omega_{\vec p}:\vec p\in\operatorname{supp}h\}.
+\]
+For every \(\epsilon>0\) and every \(N\ge1\), there is \(C_{N,\epsilon}\) such
+that
+\[
+  \sup_{\operatorname{dist}(\vec x/t,V(h))\ge\epsilon}
+  |h_t(\vec x)|
+  \le
+  C_{N,\epsilon}(1+|t|)^{-N},
+  \qquad |t|\ge1 .
+\]
+If \(h_i,h_j\) have compact velocity supports with
+\(\delta_{ij}=\operatorname{dist}(V(h_i),V(h_j))>0\), then for
+\(0<\epsilon<\delta_{ij}/4\) and
+\(\vec x\in\Gamma_i(t,\epsilon)\), \(\vec y\in\Gamma_j(t,\epsilon)\),
+\[
+  |\vec x-\vec y|\ge \frac12\delta_{ij}|t|.
+\]
+Thus the equal-time spacetime points \((t,\vec x)\) and \((t,\vec y)\) are
+spacelike separated by a distance growing linearly in \(|t|\).
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  h_t(\vec x)
+  =
+  \int\frac{\dd^d\vec p}{(2\pi)^d}
+  h(\vec p)\,
+  \ee^{\ii t\Phi_{\vec x/t}(\vec p)},
+  \qquad
+  \Phi_{\vec u}(\vec p)=\omega_{\vec p}-\vec p\cdot\vec u .
+\]
+On the compact set \(\operatorname{supp}h\), the gradient is
+\[
+  \nabla_{\vec p}\Phi_{\vec u}(\vec p)
+  =
+  \frac{\vec p}{\omega_{\vec p}}-\vec u .
+\]
+If \(\operatorname{dist}(\vec u,V(h))\ge\epsilon\), then
+\(|\nabla_{\vec p}\Phi_{\vec u}|\ge\epsilon\) on \(\operatorname{supp}h\).
+Apply repeatedly the adjoint of
+\[
+  L_{\vec u}
+  =
+  \frac{1}{\ii t}
+  \frac{\nabla_{\vec p}\Phi_{\vec u}\cdot\nabla_{\vec p}}
+       {|\nabla_{\vec p}\Phi_{\vec u}|^2},
+  \qquad
+  L_{\vec u}\ee^{\ii t\Phi_{\vec u}}=\ee^{\ii t\Phi_{\vec u}} .
+\]
+Derivatives of \(\Phi_{\vec u}\) are uniformly bounded for \(\vec p\) in the
+fixed compact support and for the relevant \(\vec u\).  Each integration by
+parts gives a factor \(|t|^{-1}\), proving the displayed off-tube estimate.
+
+For the geometric separation, choose
+\(\vec v_i\in V(h_i)\) and \(\vec v_j\in V(h_j)\) with
+\[
+  |\vec x/t-\vec v_i|<\epsilon,\qquad
+  |\vec y/t-\vec v_j|<\epsilon .
+\]
+Then
+\[
+  |\vec x-\vec y|
+  =
+  |t|\,|\vec x/t-\vec y/t|
+  \ge
+  |t|(\delta_{ij}-2\epsilon)
+  \ge
+  \frac12\delta_{ij}|t|.
+\]
+Equal-time separation is spacelike when \(\vec x\ne\vec y\), since the
+Minkowski squared separation is \(|\vec x-\vec y|^2\).
+\end{proof}
+
 \section{Multi-Particle Limits}
 
 Let \(B_1,\ldots,B_n\) be almost-local operators obtained as above, and let
@@ -466,7 +608,23 @@ supports. Define the time-dependent vector
 
 \begin{proposition}[Cook estimate form of the Haag--Ruelle limits]
 \label{prop:haag-ruelle-cook-limits}
-Under the assumptions stated above, the limits
+Assume the locality, spectrum, isolated-shell, and regularity hypotheses
+stated above.  Suppose, in addition, that the Haag--Ruelle product
+\(\Psi_t(h_1,\ldots,h_n)\) is strongly differentiable on the large-time tails
+and that there are integrable functions \(R_\pm\) such that
+\[
+  \left\|\frac{\dd}{\dd t}\Psi_t(h_1,\ldots,h_n)\right\|
+  \le R_+(t)\quad (t\ge T_0),
+  \qquad
+  \left\|\frac{\dd}{\dd t}\Psi_t(h_1,\ldots,h_n)\right\|
+  \le R_-(t)\quad (t\le -T_0).
+\]
+Suppose also that the recursive scalar-product contraction estimates hold:
+large-time scalar products of velocity-separated products are obtained by
+pairing one-particle vectors, up to errors that vanish on the large-time
+tails.  Finally, suppose the same Cook and contraction estimates hold after
+replacing one creator by the difference of two creators with the same
+one-particle vector.  Then the limits
 \[
   \Psi^{\mathrm{out}}(h_1,\ldots,h_n)
   =
@@ -486,7 +644,37 @@ one-particle vectors
 and not on the auxiliary operators \(B_j\) used to interpolate them.
 \end{proposition}
 
-The proof has two analytic inputs. First, disjoint velocity supports imply
+\begin{proof}
+For \(t'>t\ge T_0\),
+\[
+  \|\Psi_{t'}-\Psi_t\|
+  \le
+  \int_t^{t'}
+  \left\|\frac{\dd}{\dd s}\Psi_s\right\|\,\dd s
+  \le
+  \int_t^{t'}R_+(s)\,\dd s .
+\]
+Since \(R_+\in L^1([T_0,\infty))\), the right side tends to zero when
+\(t,t'\to+\infty\).  Hence \(\Psi_t\) is Cauchy in the Hilbert norm and has
+an outgoing limit.  The incoming proof is identical with \(R_-\) on the
+negative tail.
+
+If \(B_j\) and \(B'_j\) have the same one-particle vector, multilinearity
+writes the difference of the two \(n\)-particle approximants as a finite sum
+in which one factor is \(D_j=B_j-B'_j\).  For that factor
+\[
+  P_1D_{j,t}(h_j)\vac=0 .
+\]
+The assumed Cook estimate for such zero-one-particle replacements implies
+that each difference term has a norm limit.  Its limiting Fock inner product
+with all velocity-separated Haag--Ruelle vectors is zero, because the
+recursive contraction of asymptotic scalar products contains no one-particle
+contraction for the \(D_j\) entry.  Density of the velocity-separated
+algebraic Fock domain then gives that this limit vector is zero.  Thus the
+large-time vector depends only on \(\psi_j=P_1B_{j,t}(h_j)\vac\).
+\end{proof}
+
+The proposition has two analytic inputs. First, disjoint velocity supports imply
 that the effective localization regions of \(B_{j,t}(h_j)\) separate
 spacelike at large \(|t|\). Locality then gives rapid decay of commutators
 \[
@@ -547,8 +735,8 @@ two-packet calculation is the concrete model for the general Cook estimate.
 
 \section{The Estimate Behind the Limit}
 
-The preceding theorem is a norm-convergence statement.  Its proof is governed
-by an estimate of the following form.  Let \(B_{i,t}(h_i)\) and
+The preceding proposition is a norm-convergence statement.  Its proof is
+governed by an estimate of the following form.  Let \(B_{i,t}(h_i)\) and
 \(B_{j,t}(h_j)\) be Haag--Ruelle operators with disjoint velocity supports.
 For every \(N\ge1\), almost locality and stationary phase give constants
 \(C_N\) such that
