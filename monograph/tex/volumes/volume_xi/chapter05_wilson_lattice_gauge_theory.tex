@@ -264,6 +264,152 @@ minimal spanning surface and why closed surfaces correct both numerator and
 denominator.
 \end{example}
 
+\section{Compact-Group Character Expansion}
+\label{sec:compact-group-character-expansion}
+
+The \(\mathbb Z_2\) expansion has a nonabelian analogue.  The analogue is
+not a sum over unoriented plaquette subsets; it is a finite tensor-network
+sum over irreducible representations and Haar projectors.  This distinction
+is important: in a nonabelian gauge theory the local degrees of freedom
+carried by a surface include representation labels and invariant tensors at
+links.
+
+Let \(G\) be a compact Lie group and let \(\widehat G\) be the set of
+equivalence classes of finite-dimensional irreducible unitary
+representations.  For \(\lambda\in\widehat G\), write
+\[
+  D_\lambda:G\to U(V_\lambda),
+  \qquad
+  \chi_\lambda(U)=\operatorname{Tr}_{V_\lambda}D_\lambda(U).
+\]
+Let \(K:G\to\mathbb C\) be a continuous class function.  Its character
+coefficients are
+\[
+  c_\lambda[K]
+  =
+  \int_G dU\,K(U)\overline{\chi_\lambda(U)} .
+  \label{eq:compact-character-coefficients}
+\]
+Peter--Weyl orthogonality gives the \(L^2(G)\) expansion
+\[
+  K(U)=\sum_{\lambda\in\widehat G}c_\lambda[K]\chi_\lambda(U),
+  \label{eq:compact-character-expansion}
+\]
+with rapid coefficient decay when \(K\) is smooth.  For the Wilson plaquette
+weight with the irrelevant constant removed one may take
+\[
+  K_\beta(U)=
+  \exp\!\left(
+    \frac{\beta}{\dim R}\operatorname{Re}\operatorname{Tr}_R U
+  \right).
+  \label{eq:compact-wilson-plaquette-weight}
+\]
+
+\begin{proposition}[Compact-group spin-foam expansion at finite cutoff]
+\label{prop:compact-group-spin-foam-expansion}
+On a finite lattice, replace each plaquette Boltzmann factor by a smooth
+class function \(K(U_p)\).  Then the finite-volume partition function is
+represented by
+\[
+  Z_\Lambda[K]
+  =
+  \sum_{\lambda:P\to\widehat G}
+  \left(\prod_{p\in P}c_{\lambda_p}[K]\right)
+  \mathcal A_\Lambda(\{\lambda_p\}),
+  \label{eq:compact-spin-foam-partition}
+\]
+where \(\mathcal A_\Lambda(\{\lambda_p\})\) is the tensor contraction
+obtained by assigning \(V_{\lambda_p}\) or \(V_{\lambda_p}^*\) to the four
+oriented sides of each plaquette and, for every link \(\ell\), inserting
+the Haar projector
+\[
+  P_\ell(\{\lambda_p\}_{p\supset\ell})
+  =
+  \int_G dU_\ell
+  \bigotimes_{p\supset\ell}
+  D_{\lambda_p}(U_\ell)^{\epsilon(p,\ell)} ,
+  \label{eq:compact-link-haar-projector}
+\]
+with \(\epsilon(p,\ell)=+1\) if the plaquette orientation uses \(U_\ell\)
+and \(\epsilon(p,\ell)=-1\) if it uses \(U_\ell^{-1}\).  A Wilson loop in
+representation \(S\) is represented by inserting the additional boundary
+tensor \(D_S(U_\ell)^{\pm1}\) on each link of the loop before taking the
+same Haar projectors.
+\end{proposition}
+
+\begin{proof}
+Insert the character expansion
+\eqref{eq:compact-character-expansion} independently for every plaquette.
+After choosing bases of the representation spaces, every plaquette character
+is a cyclic contraction of four matrix factors, one for each link in its
+boundary.  Each link variable appears only in the factors associated to
+plaquettes incident on that link, and in the Wilson-loop insertion if the
+link belongs to the loop.  Integrating over this link gives precisely the
+Haar average
+\eqref{eq:compact-link-haar-projector}.  Performing the finitely many link
+integrals leaves a finite tensor contraction for each plaquette-label
+assignment.  Truncating the representation labels gives finite tensor
+network sums.  For smooth \(K\), in particular for
+\eqref{eq:compact-wilson-plaquette-weight}, the character coefficients
+decay rapidly enough that the truncated sums converge to the original
+finite-dimensional integral.  The \(L^2\) Peter--Weyl statement gives the
+same formula for less regular class functions after the corresponding
+convergence mode has been specified.
+\end{proof}
+
+For \(G=SU(N)\), \(N\ge3\), with \(R\) the fundamental representation and
+with the conventional Wilson weight
+\[
+  K_\beta(U)=
+  \exp\!\left(\frac{\beta}{N}\operatorname{Re}\operatorname{Tr}U\right),
+  \label{eq:suN-fundamental-wilson-weight}
+\]
+the small-\(\beta\) coefficients of the fundamental and antifundamental
+characters are
+\[
+  c_F[K_\beta]=c_{\overline F}[K_\beta]
+  =
+  \frac{\beta}{2N}+O(\beta^2).
+  \label{eq:suN-fundamental-character-coefficient}
+\]
+This follows by expanding \(K_\beta=1+\frac{\beta}{2N}(\chi_F+\chi_{\bar F})
+ +O(\beta^2)\) and using character orthogonality.  The coefficient changes
+for \(SU(2)\), because the fundamental representation is self-conjugate and
+\(\operatorname{Re}\chi_F=\chi_F\).
+
+\begin{example}[Fundamental plaquette normalization in \(SU(N)\)]
+\label{ex:suN-fundamental-plaquette-strong-coupling-normalization}
+For \(N\ge3\), let
+\[
+  w_p(U)=\frac1N\operatorname{Re}\operatorname{Tr}U_p .
+\]
+At \(\beta=0\), the plaquette holonomy \(U_p\) is Haar distributed, so
+\(\langle w_p\rangle_{\beta=0}=0\).  Differentiating the normalized
+expectation at \(\beta=0\) gives
+\[
+  \left.\frac{\dd}{\dd\beta}\langle w_p\rangle_\beta\right|_{\beta=0}
+  =
+  \int_G dU\,
+  \frac{\chi_F(U)+\chi_{\bar F}(U)}{2N}\,
+  \frac{\chi_F(U)+\chi_{\bar F}(U)}{2N}
+  =
+  \frac{1}{2N^2}.
+  \label{eq:suN-one-plaquette-slope}
+\]
+Thus, for \(SU(3)\),
+\[
+  \langle w_p\rangle_\beta
+  =
+  \frac{\beta}{18}+O(\beta^2).
+  \label{eq:su3-one-plaquette-slope}
+\]
+The calculation fixes the normalization used in the nonabelian
+strong-coupling expansion.  Higher-area Wilson loops are obtained by the
+same Haar-projector contractions, but a theorem-level area estimate also
+requires bounds on representation sums, invariant-tensor contractions, and
+surface entropy.
+\end{example}
+
 \section{Continuum Expansion}
 
 For a smooth continuum connection \(A_\mu(x)\), set
@@ -304,6 +450,114 @@ is gauge invariant.  Wilson loops are the basic gauge-invariant probes of
 line charges.  Their strong-coupling character expansion gives the area-law
 mechanism described in Chapter~\ref{ch:global-confinement-screening-oblique}.
 Their continuum limit requires line renormalization and an operator scheme.
+
+\section{Static Potential and Creutz Ratios}
+\label{sec:lattice-static-potential-creutz-ratios}
+
+A rectangular Wilson loop has a Hamiltonian meaning when the transfer matrix
+exists.  Let \(C_{n,m}\) be a rectangle with spatial side \(R=na\) and
+Euclidean time side \(T=ma\).  Use the normalized loop
+\[
+  W_S(n,m)
+  =
+  \frac{1}{\dim S}
+  \left\langle
+    \operatorname{Tr}_S\prod_{\ell\in C_{n,m}}U_\ell
+  \right\rangle .
+  \label{eq:normalized-rectangular-wilson-loop}
+\]
+In the transfer-matrix Hilbert space, the spatial transporter between two
+static sources defines a vector \(\Psi_{S,n}\) in the sector containing a
+source and an antisource separated by \(n\) lattice spacings.  Reflection
+positivity gives
+\[
+  W_S(n,m)=
+  \langle \Psi_{S,n},T^m\Psi_{S,n}\rangle .
+  \label{eq:rectangular-wilson-loop-transfer-matrix}
+\]
+If the spectral measure of \(\Psi_{S,n}\) for \(T=e^{-aH}\) has an isolated
+largest transfer-matrix eigenvalue \(e^{-aE_0(n,S)}\) with nonzero weight,
+then
+\[
+  aV_{a,S}(n)
+  =
+  -\lim_{m\to\infty}
+  \log\frac{W_S(n,m+1)}{W_S(n,m)}
+  =
+  aE_0(n,S).
+  \label{eq:lattice-static-potential-effective-mass}
+\]
+This is the finite-cutoff static potential in the chosen static-source
+sector.  In a continuum limit it contains an additive line self-energy:
+the force, potential differences, or a specified subtraction scheme must be
+used before comparing continuum quantities.
+
+\begin{proposition}[Spectral extraction of the finite-lattice static energy]
+\label{prop:spectral-static-potential-extraction}
+Assume
+\[
+  W_m=\sum_{\alpha=0}^{r}A_\alpha e^{-amE_\alpha},
+  \qquad
+  A_0>0,\quad A_\alpha\ge0,\quad
+  E_0<E_1\le\cdots\le E_r .
+  \label{eq:finite-static-spectral-sum}
+\]
+Then
+\[
+  -\log\frac{W_{m+1}}{W_m}
+  =
+  aE_0+O(e^{-am(E_1-E_0)}).
+  \label{eq:finite-static-effective-mass-error}
+\]
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  W_m=A_0e^{-amE_0}
+  \left(
+    1+\sum_{\alpha>0}\frac{A_\alpha}{A_0}
+    e^{-am(E_\alpha-E_0)}
+  \right).
+\]
+The ratio \(W_{m+1}/W_m\) is \(e^{-aE_0}\) times a quotient of two factors
+which both tend to \(1\), and the difference from \(1\) is bounded by a
+constant times \(e^{-am(E_1-E_0)}\).  Taking the logarithm gives
+\eqref{eq:finite-static-effective-mass-error}.
+\end{proof}
+
+The Creutz ratio is a finite-difference observable designed to cancel the
+leading perimeter and constant terms in a rectangular Wilson-loop ansatz.
+For positive Wilson loops define
+\[
+  \chi(n,m)
+  =
+  -\log
+  \frac{W(n,m)W(n-1,m-1)}
+       {W(n,m-1)W(n-1,m)} .
+  \label{eq:lattice-creutz-ratio}
+\]
+If, over a range of lattice sizes,
+\[
+  W(n,m)=
+  \exp\{-\sigma_{\rm lat}nm-\mu_{\rm lat}(n+m)-c_{\rm lat}
+       +\varepsilon(n,m)\},
+  \label{eq:creutz-area-perimeter-ansatz}
+\]
+then
+\[
+  \chi(n,m)=
+  \sigma_{\rm lat}
+  -
+  \varepsilon(n,m)-\varepsilon(n-1,m-1)
+  +\varepsilon(n,m-1)+\varepsilon(n-1,m).
+  \label{eq:creutz-ratio-error-combination}
+\]
+Thus an observed Creutz-ratio plateau is a statement about a controlled
+two-dimensional finite difference of the correction term \(\varepsilon\).
+It is not, by itself, a continuum string-tension theorem; that requires the
+scaling trajectory, infinite-volume limit, and line-operator
+renormalization to be controlled.
 
 \section{Wilson Flow, Smoothing, and Topological Charge}
 \label{sec:lattice-wilson-flow-smoothing-topology}

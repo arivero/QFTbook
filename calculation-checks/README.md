@@ -531,6 +531,11 @@ Current checks:
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale
   derivative, and the factor two in the Chern--Weil variation of
   \(\operatorname{tr}(F\wedge F)\).
+- `nonabelian_lattice_observable_checks.py`: finite convention checks for
+  the Volume XI nonabelian lattice-observable section, including the
+  \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
+  transfer-matrix ratio for static-energy extraction, and Creutz-ratio
+  cancellation of area-plus-perimeter terms.
 - `heatbath_overrelaxation_checks.py`: exact finite algebra checks for the
   Volume XI heat-bath and overrelaxation section, verifying conditional
   heat-bath detailed balance, \(SU(2)\) staple reduction, overrelaxation
