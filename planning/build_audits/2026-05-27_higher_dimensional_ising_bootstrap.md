@@ -9,6 +9,7 @@
 - Files touched:
   - `monograph/tex/volumes/volume_iii/chapter09_operator_product_expansion.tex`
   - `monograph/tex/volumes/volume_ii/chapter14_the_wilson_fisher_fixed_point_and_scaling_operators.tex`
+  - `calculation-checks/conformal_block_companion.py`
   - `calculation-checks/ising_mixed_bootstrap_checks.py`
   - `calculation-checks/README.md`
   - `planning/chapter_dossiers/volume_iii/chapter09_operator_product_expansion.md`
@@ -39,10 +40,22 @@ the scalar four-point prefactor ratios, \(F_\pm\) symmetry signs, spin exchange
 sign, even-sector positive-semidefinite OPE matrices, and five-vector packing
 of the crossing equations.
 
+A follow-up companion script, `conformal_block_companion.py`, provides the
+same normalization layer for actual global-block evaluation.  Its automatic
+evaluator uses the Dolan--Osborn hypergeometric closed forms in \(D=2\) and
+\(D=4\), and the Dolan--Osborn/Hogervorst--Rychkov Casimir recursion for
+\(D=3\) or generic \(D>2\) Euclidean radial checks.  The script also exposes
+the universal leading radial Gegenbauer/harmonic term and the mixed-correlator
+\(F_\pm\) helper.  Two-dimensional Virasoro blocks are noted as a separate
+Zamolodchikov-recursion companion task, and production bootstrap runs should
+continue to compare against established packages such as PyCFTBoot/SDPB.
+
 ## Verification
 
 - `python3 calculation-checks/ising_mixed_bootstrap_checks.py`
 - `python3 -m py_compile calculation-checks/ising_mixed_bootstrap_checks.py`
+- `python3 calculation-checks/conformal_block_companion.py`
+- `python3 -m py_compile calculation-checks/conformal_block_companion.py`
 - `tools/run_calculation_checks.sh`
 - `tools/audit_monograph_text.sh`
 - `tools/audit_chapter_dossiers.sh`

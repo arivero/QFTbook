@@ -214,6 +214,14 @@ Current checks:
   coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
   invisibility of the nilpotent extension, and the Zhu-algebra top-weight
   polynomial with its primitive idempotents.
+- `conformal_block_companion.py`: reusable numerical companion routines for
+  OPE-normalized global scalar conformal blocks in the chapter conventions,
+  using the Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\),
+  the Dolan--Osborn/Hogervorst--Rychkov Casimir \(z\)-series recursion for
+  \(D=3\) and other \(D>2\) checks, the universal leading radial
+  Gegenbauer/harmonic term, and the mixed-correlator \(F_\pm\) crossing kernel
+  normalization.  Two-dimensional Virasoro blocks require a separate
+  Zamolodchikov-recursion companion rather than this global-block evaluator.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,

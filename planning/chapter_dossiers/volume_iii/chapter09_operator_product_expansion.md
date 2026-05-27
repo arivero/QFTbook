@@ -98,6 +98,13 @@ The chapter establishes:
   equations, their five-vector semidefinite-programming packaging, the
   positive-semidefinite even-sector OPE matrices, and the finite-functional
   exclusion certificate;
+- companion scalar-block code in `calculation-checks/conformal_block_companion.py`
+  implementing chapter-normalized global scalar blocks with the
+  Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\), the
+  Dolan--Osborn/Hogervorst--Rychkov Casimir \(z\)-series recursion for
+  \(D=3\) and other \(D>2\) numerical checks, the universal leading radial
+  Gegenbauer/harmonic term, and the \(F_\pm\) crossing-kernel normalization
+  used by the mixed-correlator section;
 - the status boundary for the three-dimensional Ising numerical island:
   the mixed-correlator crossing and positivity system is derived in the
   chapter, while derivative truncations, block approximations, gap choices,
@@ -237,6 +244,14 @@ The chapter establishes:
 - Run `calculation-checks/ising_mixed_bootstrap_checks.py` after changing the
   mixed-correlator prefactor, \(F_\pm\), spin-exchange, PSD, or five-vector
   conventions.
+- Run `calculation-checks/conformal_block_companion.py` after changing scalar
+  conformal-block normalizations, the \(D=2\)/\(D=4\)
+  Dolan--Osborn hypergeometric formulas, the
+  Dolan--Osborn/Hogervorst--Rychkov recursion used for \(D=3\) and other
+  \(D>2\) checks, the arbitrary-\(D\) leading radial Gegenbauer convention, or
+  the mixed-correlator \(F_\pm\) helper.  Do not identify this global-block
+  script with the separate two-dimensional Virasoro-block problem, whose
+  numerical treatment should use Zamolodchikov recursion data.
 
 ## Audit Notes
 
@@ -308,3 +323,11 @@ The chapter establishes:
   numerical SDP islands as external/certification-boundary input, and added
   `calculation-checks/ising_mixed_bootstrap_checks.py` for the exact
   prefactor/sign/PSD/vector-packing algebra.
+- 2026-05-27 companion-code follow-up: added
+  `calculation-checks/conformal_block_companion.py` with reusable
+  OPE-normalized global scalar block evaluators based on Dolan--Osborn
+  hypergeometric closed forms in \(D=2,4\) and the
+  Dolan--Osborn/Hogervorst--Rychkov Casimir recursion for \(D=3\) and generic
+  \(D>2\) numerical checks, with explicit leading Gegenbauer/harmonic
+  normalization tests and a note that Virasoro blocks require a separate
+  Zamolodchikov-recursion companion.
