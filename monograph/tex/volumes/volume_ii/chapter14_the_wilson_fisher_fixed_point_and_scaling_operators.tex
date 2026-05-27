@@ -95,8 +95,12 @@ below denotes the dimensionless coordinate.  The term \(-\epsilon\lambda\) in
 the beta function is precisely the derivative of the factor
 \(\mu^{-\epsilon}g_0\) at fixed bare coupling.
 
-Define a dimensionless 1PI quartic coordinate by the symmetric Euclidean
-subtraction condition
+\begin{definition}[Symmetric MOM quartic chart]
+\label{def:wilson-fisher-symmetric-mom-chart}
+In the one-component \(\mathbb Z_2\)-even scalar theory, the symmetric
+Euclidean momentum-subtraction chart at scale \(\mu>0\) is the local
+renormalized coordinate system defined as follows.  The dimensionless quartic
+coordinate is the 1PI coefficient
 \[
   \lambda(\mu)
   =
@@ -112,14 +116,48 @@ where
     1-\frac{\partial\Sigma}{\partial k^2}
   \right)^{-1}_{k^2=\mu^2}.
 \]
-Equations above define the symmetric Euclidean momentum-subtraction chart.  If
-several schemes are present, its coordinates will be denoted
+The subtraction point is nonexceptional: no nonempty proper subset of the
+external momenta has vanishing total momentum.  The mass coordinate of this
+chart is fixed separately by the endpoint condition that the infrared
+two-point function be massless.  Thus the displayed \(\lambda(\mu)\) is a
+coordinate on the massless endpoint slice, not a substitute for the mass
+tuning.
+
+If several schemes are present, the coordinates of this chart will be denoted
 \(\lambda_{\rm MOM}(\mu)\) and \(Z_{\rm MOM}(\mu)\); the lighter notation
 \(\lambda(\mu)\) and \(Z(\mu)\) is used here only while no pole-subtraction
 field factor is being discussed.  In particular, \(Z_{\rm MOM}(\mu)\) is a
 finite residue normalization at the subtraction momentum, whereas the
 minimal-subtraction field factor introduced below contains only pole
 counterterms in \(\epsilon\).
+\end{definition}
+
+\begin{proposition}[One-loop quartic vector field]
+\label{prop:wilson-fisher-one-loop-quartic-vector-field}
+In the chart of
+Definition~\ref{def:wilson-fisher-symmetric-mom-chart}, the one-loop
+dimensionally regularized quartic RG vector field is
+\[
+  \beta^\epsilon(\lambda)
+  =
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -\epsilon\lambda
+  +
+  \left(\frac{3}{16\pi^2}+O(\epsilon)\right)\lambda^2
+  +
+  O(\lambda^3).
+\]
+Consequently the nonzero perturbative zero in the one-coupling massless chart
+has the formal small-\(\epsilon\) expansion
+\[
+  \lambda_*(\epsilon)
+  =
+  \frac{16\pi^2}{3}\epsilon+O(\epsilon^2).
+\]
+\end{proposition}
+
+\begin{proof}
 At one loop \(Z(\mu)=1\), and the bubble graph gives
 \[
   \lambda(\mu)
@@ -244,6 +282,7 @@ chapter, unless a separate nonperturbative construction is explicitly stated,
 ``the Wilson--Fisher fixed point'' means this formal perturbative fixed-point
 data.  The mass perturbation is a separate relevant direction and will be
 identified below from the \(\phi^2\) scaling operator.
+\end{proof}
 
 \begin{remark}[Local uniqueness of the perturbative branch]
 \label{rem:wilson-fisher-local-uniqueness}
@@ -369,13 +408,50 @@ the 1PI coordinate definition is included, has the endpoint value
 
 \section{The First Scaling Operators}
 
-At a fixed point, the anomalous-dimension matrix can be diagonalized into
-scaling operators.  The elementary field \(O_1=\phi\) has a fixed-point scaling
-dimension independent of finite analytic changes of the local field coordinate,
-but the anomalous-dimension function away from the fixed point depends on the
+\begin{definition}[Scaling operators in a local source chart]
+\label{def:wilson-fisher-scaling-operator-source-chart}
+Fix a renormalized local source chart near a fixed point.  Thus one has a
+finite set of renormalized local fields \(O_A\), with total derivatives,
+equation-of-motion fields, and the identity source either removed or placed in
+separate blocks, and a source deformation
+\[
+  \delta S
+  =
+  \sum_A\int \dd^D x\, g^A(x)\,O_A(x).
+\]
+For constant sources, let \(g^A\) denote the corresponding dimensionless
+coordinates and suppose that their RG equation has a linearization
+\[
+  \frac{\dd g^A}{\dd\log\mu}
+  =
+  -M^A{}_B\,g^B+O(g^2)
+\]
+at the fixed point.  A scaling source is an eigen-coordinate \(u^r\) of
+\(M\).  If
+\[
+  \frac{\dd u^r}{\dd\log\mu}
+  =
+  -y_r u^r+O(g^2),
+\]
+then the dual scaling operator has dimension
+\[
+  \Delta_r=D-y_r .
+\]
+Equivalently, under a change of physical scale \(\mu\mapsto s\mu\) at the
+linearized fixed point, \(u^r\) scales as \(s^{-y_r}u^r\).  Relevant,
+marginal, and irrelevant directions are respectively those with
+\(y_r>0\), \(y_r=0\), and \(y_r<0\).  This definition is local in the chosen
+source chart; if several fields with the same quantum numbers mix, the
+operators themselves are the eigenvectors of the mixing matrix, not the
+individual basis representatives.
+\end{definition}
+
+The elementary field \(O_1=\phi\) has a fixed-point scaling dimension
+independent of finite analytic changes of the local field coordinate, but the
+anomalous-dimension function away from the fixed point depends on the
 renormalization chart.  We compute it below in the minimal-subtraction pole
-chart.  Let \(\lambda_{\rm MS}\) be the dimensionless quartic coordinate in this
-chart, and let
+chart.  Let \(\lambda_{\rm MS}\) be the dimensionless quartic coordinate in
+this chart, and let
 \[
   \phi_0=\left(Z_\phi^{\rm MS}\right)^{1/2}\phi_{\rm MS},
   \qquad
@@ -680,6 +756,102 @@ At the Wilson-Fisher fixed point,
   =
   2-\frac{2}{3}\epsilon+O(\epsilon^2).
 \]
+
+\begin{proposition}[Leading \(N=1\) scaling data]
+\label{prop:wilson-fisher-leading-scaling-data}
+In the one-component scalar theory with interaction normalized as
+\(\lambda\phi^4/4!\), the minimal-subtraction pole chart gives
+\[
+  \gamma_\phi(\lambda)
+  =
+  \frac{\lambda^2}{12(16\pi^2)^2}+O(\lambda^3),
+  \qquad
+  \gamma_2(\lambda)
+  =
+  \frac{\lambda}{16\pi^2}
+  +O(\epsilon\lambda,\lambda^2).
+\]
+On the nonzero small-\(\epsilon\) fixed-point branch
+\[
+  \lambda_{{\rm MS},*}
+  =
+  \frac{16\pi^2}{3}\epsilon+O(\epsilon^2),
+\]
+the elementary field and the even quadratic scalar have dimensions
+\[
+  \Delta_\phi
+  =
+  1-\frac{\epsilon}{2}
+  +\frac{\epsilon^2}{108}
+  +O(\epsilon^3),
+  \qquad
+  \Delta_{\phi^2}
+  =
+  2-\frac{2}{3}\epsilon+O(\epsilon^2).
+\]
+Equivalently,
+\[
+  \eta=2\gamma_{\phi*}
+  =
+  \frac{\epsilon^2}{54}+O(\epsilon^3),
+  \qquad
+  y_t=D-\Delta_{\phi^2}
+  =
+  2-\frac{\epsilon}{3}+O(\epsilon^2).
+\]
+\end{proposition}
+
+\begin{proof}
+The field statement follows from the pole part of the sunset self-energy
+computed above:
+\[
+  \log Z_\phi^{\rm MS}
+  =
+  -\frac{\lambda^2}{12(16\pi^2)^2}\frac1\epsilon
+  +O(\lambda^3).
+\]
+Since the engineering part of the beta function is
+\(-\epsilon\lambda+O(\lambda^2)\), differentiating
+\(\frac12\log Z_\phi^{\rm MS}\) at fixed regulated theory gives
+\[
+  \gamma_\phi(\lambda)
+  =
+  \frac12\left(-\epsilon\lambda\right)
+  \frac{\partial}{\partial\lambda}
+  \left[
+    -\frac{\lambda^2}{12(16\pi^2)^2}\frac1\epsilon
+  \right]
+  +O(\lambda^3)
+  =
+  \frac{\lambda^2}{12(16\pi^2)^2}+O(\lambda^3).
+\]
+The quadratic-source statement follows from the nonexceptional insertion
+calculation: the factor \(1/2\) in the one-loop graph and the pole of the
+massless two-point integral give
+\[
+  \log Z_{2,\rm src}^{\rm MS}
+  =
+  -\frac{\lambda}{16\pi^2}\frac1\epsilon
+  +O(\lambda\epsilon^0,\lambda^2),
+\]
+and the same fixed-regulator differentiation gives
+\(\gamma_2(\lambda)=\lambda/(16\pi^2)+O(\epsilon\lambda,\lambda^2)\).
+The one-loop fixed point is obtained by solving
+\[
+  -\epsilon\lambda+\frac{3\lambda^2}{16\pi^2}+O(\lambda^3)=0
+\]
+on the nonzero formal branch.  Substitution into
+\[
+  \Delta_\phi=\frac{D-2}{2}+\gamma_{\phi*},
+  \qquad
+  \Delta_{\phi^2}=D-2+\gamma_{2*}
+\]
+then gives the displayed dimensions.  The formula for \(\eta\) is the
+definition of the two-point exponent
+\(2\Delta_\phi=D-2+\eta\), and \(y_t=D-\Delta_{\phi^2}\) is
+Definition~\ref{def:wilson-fisher-scaling-operator-source-chart} applied to
+the source dual to \([\phi^2]\).
+\end{proof}
 
 \section{Two-Loop Pole Data and NLO Epsilon Expansion}
 \label{sec:wilson-fisher-two-loop-nlo}
@@ -1454,9 +1626,12 @@ classification of Belavin, Polyakov, and Zamolodchikov.
 \section{\texorpdfstring{The \(O(N)\) Wilson--Fisher Family}{The O(N) Wilson-Fisher Family}}
 \label{sec:on-wilson-fisher-family}
 
-The one-component theory is the \(N=1\) member of a family.  For a positive
-integer \(N\), let
-\(\phi=(\phi^1,\ldots,\phi^N)\) be an \(O(N)\)-vector scalar and write
+\begin{definition}[\(O(N)\) quartic scalar chart]
+\label{def:on-quartic-scalar-chart}
+For a positive integer \(N\), let
+\(\phi=(\phi^1,\ldots,\phi^N)\) be an \(O(N)\)-vector scalar.  Indices are
+raised and lowered with \(\delta_{ij}\), repeated \(O(N)\) indices are
+summed, and
 \[
   \phi^2:=\delta_{ij}\phi^i\phi^j .
 \]
@@ -1472,8 +1647,7 @@ The \(O(N)\)-invariant quartic theory in \(D=4-\epsilon\) is
   \right].
   \label{eq:on-vector-phi-four-action}
 \end{equation}
-Repeated \(O(N)\) indices are contracted with \(\delta_{ij}\).  The quartic
-vertex tensor associated with the normalization in
+The quartic vertex tensor associated with the normalization in
 \eqref{eq:on-vector-phi-four-action} is
 \begin{equation}
   V_{ij;kl}
@@ -1499,7 +1673,10 @@ Set again
 \[
   x:=\frac{\lambda_{\rm MS}}{16\pi^2}.
 \]
-In the minimal-subtraction chart determined by the singlet quartic vertex
+\end{definition}
+
+The one-component theory is the \(N=1\) member of this family.  In the
+minimal-subtraction chart determined by the singlet quartic vertex
 \eqref{eq:on-quartic-vertex-tensor}, the two-loop local pole map is
 \begin{equation}
   \frac{g_0}{16\pi^2}
@@ -1715,7 +1892,9 @@ concern the singlet thermal direction and the elementary vector field.  A
 complete operator-spectrum analysis must diagonalize each \(O(N)\)
 representation sector separately.
 
-\subsection{\texorpdfstring{Large \(N\), the Spherical Model, and the Sigma-Model Chart}{Large N, the Spherical Model, and the Sigma-Model Chart}}
+\subsection{\texorpdfstring{Large \(N\), the Spherical Model, and the
+Sigma-Model Chart}{Large N, the Spherical Model, and the Sigma-Model
+Chart}}
 \label{subsec:on-large-n-spherical-sigma}
 
 The limit \(N\to\infty\) is not obtained by holding \(x\) fixed.  The fixed
@@ -1864,11 +2043,64 @@ scaling \(|p|^{2\Delta-D}\).  Thus
   y_t=D-\Delta_\sigma=D-2,
   \label{eq:on-large-n-sigma-dimension}
 \end{equation}
-which is the same content as \eqref{eq:on-large-n-nu}.  The first nonzero
-field anomalous dimension is an \(O(1/N)\) effect from exchange of the
-collective \(\sigma\) field; the present saddle calculation establishes the
-exact \(N=\infty\) dimensions and gives the expansion point for the systematic
-\(1/N\) diagrammatics.
+which is the same content as \eqref{eq:on-large-n-nu}.
+
+\begin{proposition}[Large-\(N\) critical saddle]
+\label{prop:on-large-n-critical-saddle}
+Consider the finite-cutoff \(O(N)\)-invariant scalar model
+\eqref{eq:on-large-n-potential-action}, with \(U\) tuned so that the
+translation-invariant large-\(N\) saddle has \(m=0\).  Assume \(2<D<4\), the
+cutoff is removed only after the saddle equations have been expressed in terms
+of a fixed finite critical displacement \(\tau\), and the saddle remains on a
+steepest-descent contour obtained from the regulated finite-dimensional
+integral.  Then at \(N=\infty\)
+\[
+  \Delta_\phi=\frac{D-2}{2},
+  \qquad
+  \eta=0,
+  \qquad
+  \Delta_\sigma=2,
+  \qquad
+  \nu=\frac1{D-2}.
+\]
+\end{proposition}
+
+\begin{proof}
+At the critical saddle the inverse vector propagator is \(p^2\), hence the
+vector two-point function scales as \(p^{-2}\).  Comparing with the
+momentum-space scaling law
+\(|p|^{2\Delta_\phi-D}\) gives
+\(2\Delta_\phi-D=-2\), or
+\(\Delta_\phi=(D-2)/2\), and therefore \(\eta=0\).
+
+The thermal displacement is measured by the saddle mass \(m\).  For
+\(2<D<4\), the cutoff integral has the nonanalytic small-\(m\) expansion
+\[
+  \Omega_D(m)-\Omega_D(0)=-K_Dm^{D-2}+O(m^2\Lambda^{D-4}),
+  \qquad K_D>0,
+\]
+so a finite critical displacement satisfies
+\(\tau\propto m^{D-2}\).  Since the correlation length of the vector
+propagator is \(\xi=m^{-1}\), this gives
+\(\xi\propto |\tau|^{-1/(D-2)}\), hence \(\nu=1/(D-2)\).
+
+Finally, the quadratic kernel of the collective field \(\sigma\) is dominated
+in the infrared by the bubble
+\[
+  B_D(p)=b_D|p|^{D-4}
+\]
+rather than by the local term.  Its propagator therefore scales as
+\(|p|^{4-D}\).  Comparing
+\(|p|^{4-D}\) with \(|p|^{2\Delta_\sigma-D}\) gives
+\(\Delta_\sigma=2\).  The source dual to \(\sigma\) is the thermal source, so
+\(y_t=D-\Delta_\sigma=D-2\), consistently reproducing the value of \(\nu\)
+just derived.
+\end{proof}
+
+The first nonzero field anomalous dimension is an \(O(1/N)\) effect from
+exchange of the collective \(\sigma\) field; the present saddle calculation
+establishes the exact \(N=\infty\) dimensions and gives the expansion point
+for the systematic \(1/N\) diagrammatics.
 
 Equations \eqref{eq:on-large-n-gap-equations} are the continuum
 field-theory form of the spherical model: the fluctuating \(N\)-component spin
