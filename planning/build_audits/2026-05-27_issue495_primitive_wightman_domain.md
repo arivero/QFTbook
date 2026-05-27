@@ -36,6 +36,13 @@ inside the monograph, not left as literature imports.
     \(B_f\times\operatorname{Spec}(P)\times B_i\), with the generalized
     sharp-momentum shorthand giving the familiar supports
     \(\Sigma_{bc}^{fi}-K\) and \(K-\Sigma_{cb}^{fi}\).
+  - `prop:dyson-light-cone-lift-microlocal-criterion`, isolating the
+    microlocal status of Dyson's light-cone lift.  It proves that the ordinary
+    product \(\pi^*C\delta(x_D^2-|y|^2)\) is defined away from the vertex
+    under the explicit transversality condition
+    \(\operatorname{WF}(C)\cap\mathcal N_{\rm lc}=\varnothing\), and proves
+    that different extensions differ by finite contact polynomials after
+    Fourier transform.
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -72,12 +79,16 @@ Jost-edge gluing theorems are now in the monograph.  The
 source-current coincidence-region support statement is now proved from the
 spectral theorem.  The causal-commutator Dyson/JLD theorem is now proved for
 the mathematically defined class of Dyson-regular causal commutators, with the
-light-cone lift regularity no longer hidden in notation.  Remaining closure
-work:
+light-cone lift regularity no longer hidden in notation.  The microlocal
+criterion now explains exactly where the naive light-cone product is valid
+and where renormalized lift data must be supplied.  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
-   in the massive scattering application, or state the minimal wavefront or
-   regularization hypotheses under which it follows.
+   in the massive scattering application.  The new microlocal proposition
+   supplies a sufficient wavefront transversality criterion and the contact
+   ambiguity analysis, but the actual source-current kernels still require a
+   theorem proving the needed wavefront/scaling behavior or a different
+   construction of the six-dimensional lift.
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate

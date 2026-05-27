@@ -569,6 +569,124 @@ specified class of unsmeared QFT matrix coefficients is a separate theorem,
 not a notational convention.
 \end{definition}
 
+\begin{proposition}[Microlocal status of the Dyson light-cone lift]
+\label{prop:dyson-light-cone-lift-microlocal-criterion}
+Let
+\[
+  X^\circ=(\mathbb M^4\times\mathbb R^2)\setminus\{(0,0)\},
+  \qquad
+  g(x,y)=x_D^2-|y|^2,
+  \qquad
+  \pi(x,y)=x ,
+\]
+where \(x_D^2=(x^0)^2-|\vec x|^2\).  Let
+\[
+  \mathcal N_{\rm lc}
+  =
+  \{(x;\lambda\,\dd_x x_D^2)\mid x\ne0,\ x_D^2=0,\ \lambda\in\mathbb R^\times\}
+  \subset T^*\mathbb M^4\setminus0
+\]
+be the conormal bundle of the punctured four-dimensional light cone.  If
+\(C\in\mathcal D'(\mathbb M^4)\) satisfies
+\[
+  \operatorname{WF}(C)\cap\mathcal N_{\rm lc}=\varnothing ,
+  \label{eq:dyson-lift-wavefront-transversality}
+\]
+then the product
+\[
+  U^\circ=\pi^*C\cdot\delta(g)
+  \label{eq:dyson-lift-punctured-product}
+\]
+is a well-defined distribution on \(X^\circ\).  If
+\(\operatorname{supp}C\subset\overline V_{\rm caus}\), then
+\[
+  \operatorname{supp}U^\circ
+  \subset
+  \{(x,y)\in X^\circ\mid x\in\overline V_{\rm caus},\ x_D^2=|y|^2\}.
+\]
+Any two extensions of \(U^\circ\) to
+\(\mathbb M^4\times\mathbb R^2\) differ by a distribution supported at
+\((0,0)\).  Hence their six-dimensional Fourier transforms differ by a
+polynomial in the six dual momenta, and their restrictions to \(p_1=p_2=0\)
+differ by a polynomial in \(q\).
+
+Consequently, if
+\(\operatorname{WF}(C)\) contains a nonzero covector conormal to the
+punctured light cone, Dyson's displayed product
+\[
+  C(x)\delta(x_D^2-|y|^2)
+\]
+is not canonically defined by the standard product of distributions.  In that
+case a Dyson lift, if it exists, contains extra renormalized extension data;
+that data is invisible away from the light-cone vertex only after one proves
+the corresponding finite-contact ambiguity and the six-dimensional wave
+equation.
+\end{proposition}
+
+\begin{proof}
+The projection \(\pi:X^\circ\to\mathbb M^4\) is a submersion, so the pullback
+\(\pi^*C\) is always defined and
+\[
+  \operatorname{WF}(\pi^*C)
+  \subset
+  \{(x,y;\xi,0)\mid (x;\xi)\in\operatorname{WF}(C)\}.
+  \label{eq:dyson-pullback-wavefront}
+\]
+On \(X^\circ\), the hypersurface \(g=0\) is smooth: the only zero of
+\(\dd g\) is \((0,0)\), which has been removed.  Therefore
+\[
+  \operatorname{WF}(\delta(g))
+  =
+  \{(x,y;\lambda\,\dd_x g,\lambda\,\dd_y g)
+    \mid g(x,y)=0,\ \lambda\in\mathbb R^\times\}.
+  \label{eq:dyson-delta-wavefront}
+\]
+Hormander's product criterion says that the product of two distributions is
+defined if their wavefront sets contain no pair of opposite covectors over
+the same base point.  A possible obstruction to multiplying
+\(\pi^*C\) by \(\delta(g)\) would therefore require
+\[
+  (\xi,0)+(\lambda\,\dd_x g,\lambda\,\dd_y g)=0 .
+\]
+If \(y\ne0\), then \(\dd_y g=-2y\cdot\dd y\ne0\), and the second component
+cannot vanish for \(\lambda\ne0\).  Hence the only obstruction can occur at
+\(y=0\).  On \(g=0\), this forces \(x_D^2=0\), and the remaining obstruction
+is precisely
+\[
+  (x;\xi)=
+  (x;-\lambda\,\dd_x x_D^2)
+  \in\mathcal N_{\rm lc}.
+\]
+The transversality condition
+\eqref{eq:dyson-lift-wavefront-transversality} excludes this case and proves
+that \eqref{eq:dyson-lift-punctured-product} is a well-defined distribution
+on \(X^\circ\).
+
+The support statement follows from the elementary support rule for a defined
+product of distributions:
+\[
+  \operatorname{supp}(\pi^*C\cdot\delta(g))
+  \subset
+  \pi^{-1}(\operatorname{supp}C)\cap\{g=0\}.
+\]
+If \(U_1\) and \(U_2\) are two extensions to the full six-dimensional space,
+then \(U_1-U_2\) vanishes on \(X^\circ\), so its support is contained in the
+single point \((0,0)\).  A distribution supported at one point is a finite
+linear combination of derivatives of the delta distribution at that point:
+\[
+  U_1-U_2
+  =
+  \sum_{|\alpha|+|\beta|\le N}
+  c_{\alpha\beta}\,
+  \partial_x^\alpha\partial_y^\beta
+  \delta(x)\delta(y).
+\]
+Fourier transformation sends this finite sum to a polynomial in
+\((q,p_1,p_2)\), and restriction to \(p_1=p_2=0\) gives a polynomial in
+\(q\).  This is exactly the local-contact ambiguity recorded in the Dyson
+representation.
+\end{proof}
+
 \begin{theorem}[Dyson representation of a causal commutator]
 \label{thm:dyson-causal-commutator-representation}
 Let \(C\in\mathcal S'(\mathbb M^4)\) be Dyson-regular in the sense of
@@ -926,7 +1044,11 @@ causal-commutator representation used to enlarge domains from those
 coincidence regions, provided the commutator is Dyson-regular.  The stronger
 fixed-\(t\) cut-plane theorem used in dispersion relations still requires the
 Dyson-regularity verification for the relevant LSZ source-current matrix
-coefficients, the Bros--Epstein--Glaser analytic-completion step, and the LSZ
+coefficients.  Proposition~\ref{prop:dyson-light-cone-lift-microlocal-criterion}
+shows the precise microlocal obstruction to treating Dyson's light-cone lift
+as an ordinary product of distributions, and identifies the finite local
+ambiguity of any renormalized lift.  After that regularity problem one still
+needs the Bros--Epstein--Glaser analytic-completion step and the LSZ
 pole-separation transfer hypotheses.  The analytic LSZ transfer itself is
 proved in
 Theorem~\ref{thm:lsz-transfer-fixed-t-domain}: once an off-shell fixed-\(t\)

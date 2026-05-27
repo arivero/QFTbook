@@ -440,3 +440,11 @@ hypotheses:
   spectral vanishing in the coincidence slab as an asserted JLD premise; it is
   now a derived support statement.  The remaining source-current premise is
   Dyson regularity.
+- 2026-05-27 issue #495 Dyson-lift microlocal pass: Chapter 6 now proves the
+  precise microlocal criterion under which the Dyson light-cone lift is an
+  ordinary product away from the vertex, and proves that different extensions
+  contribute only finite contact polynomials after Fourier transform.  The
+  Chapter 7 fixed-\(t\) proof stack now separates this proved microlocal
+  diagnostic from the still-open theorem that the actual LSZ source-current
+  kernels have the required wavefront/scaling behavior or an equivalent
+  renormalized six-dimensional lift.

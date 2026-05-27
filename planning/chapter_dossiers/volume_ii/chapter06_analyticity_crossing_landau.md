@@ -267,3 +267,15 @@
   \(K-\Sigma_{cb}^{fi}\).  The coincidence slab used by the Dyson/JLD theorem
   is therefore a proved spectral-support output; the remaining source-current
   issue is Dyson regularity, not the spectral vanishing region.
+- 2026-05-27 issue #495 Dyson-lift microlocal pass: added the proposition
+  isolating the ordinary distribution-product content of Dyson's light-cone
+  lift.  Away from the vertex \((x,y)=(0,0)\), the product
+  \(\pi^*C\delta(x_D^2-|y|^2)\) is proved to exist under the explicit
+  wavefront condition
+  \(\operatorname{WF}(C)\cap\mathcal N_{\rm lc}=\varnothing\).  The proof
+  computes the pullback wavefront set, the conormal wavefront set of
+  \(\delta(g)\), applies the product criterion, and proves that extension
+  ambiguity at the vertex is exactly a finite contact polynomial after
+  Fourier transform.  This does not prove Dyson regularity for the physical
+  source-current kernels; it turns that phrase into a precise remaining
+  wavefront/scaling or renormalized-lift theorem.
