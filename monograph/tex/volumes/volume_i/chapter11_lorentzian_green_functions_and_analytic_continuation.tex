@@ -5,6 +5,8 @@
 
 \section{Time-Ordered Boundary Values}
 
+\begin{definition}[Lorentzian scalar vacuum-sector datum]
+\label{def:lorentzian-scalar-vacuum-sector-datum}
 Let \(x^\mu=(x^0,\vec x)\in\mathbb R^{1,D-1}\) and use the mostly-plus
 metric
 \[
@@ -46,7 +48,10 @@ boundary value \(T\in\mathcal S'(M^{r-1})\) when, for every
   \langle T,f\rangle ,
 \]
 with \(y\) approaching the real edge inside the specified tube cone.
+\end{definition}
 
+\begin{definition}[Wightman and time-ordered distributions]
+\label{def:wightman-time-ordered-distributions}
 The Wightman \(n\)-point distribution is
 \[
   W_n(x_1,\ldots,x_n)
@@ -101,7 +106,10 @@ operator notation
   |\vac\rangle
 \]
 refers to this specified distribution.
+\end{definition}
 
+\begin{proposition}[Free scalar Feynman boundary value]
+\label{prop:free-scalar-feynman-boundary-value}
 For the free scalar field of mass \(m>0\), the two-point time-ordered Green
 function has Fourier representation
 \[
@@ -124,9 +132,38 @@ the poles in the complex \(k^0\)-plane are
   k^0=+\omega_{\vec k}-\ii0 .
 \]
 This is the Feynman boundary value of the meromorphic function of \(k^0\).
+\end{proposition}
+
+\begin{proof}
+The positive-frequency Wightman two-point function is
+\[
+  \Delta_+(x;m^2)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}\,
+  \ee^{-\ii\omega_{\vec k}x^0+\ii\vec k\cdot\vec x}.
+\]
+The time-ordered distribution is
+\(\theta(x^0)\Delta_+(x)+\theta(-x^0)\Delta_+(-x)\), with the value on
+\(x^0=0\) fixed as a distributional extension.  For \(x^0>0\), close the
+\(k^0\)-contour of
+\[
+  -\ii\int\frac{\dd k^0}{2\pi}\,
+  \frac{\ee^{-\ii k^0x^0}}{-(k^0)^2+\omega_{\vec k}^2-\ii0}
+\]
+in the lower half-plane; the pole at \(+\omega_{\vec k}-\ii0\) gives
+\(\ee^{-\ii\omega_{\vec k}x^0}/(2\omega_{\vec k})\).  For \(x^0<0\), close
+the contour in the upper half-plane; the pole at
+\(-\omega_{\vec k}+\ii0\) gives
+\(\ee^{+\ii\omega_{\vec k}x^0}/(2\omega_{\vec k})\).  Combining the two time
+regions yields the displayed Fourier representation.  The pole placement is
+therefore not an independent rule: it is the boundary-value encoding of time
+ordering and positive energy.
+\end{proof}
 
 \section{Tube Analyticity From the Spectrum Condition}
 
+\begin{proposition}[Forward-tube analyticity from the spectrum condition]
+\label{prop:forward-tube-analyticity-spectrum-condition}
 The \(i\epsilon\) prescription is the two-point perturbative expression of a
 more general analytic fact.  Let
 \[
@@ -218,6 +255,32 @@ The boundary value is \(w_n\) in \(\mathcal S'(M^{n-1})\):
   \langle w_n,f\rangle,
   \qquad f\in\mathcal S(M^{n-1}).
 \]
+\end{proposition}
+
+\begin{proof}
+Insert a complete spectral resolution of the translation generators between
+successive fields.  In relative coordinates the Fourier variables are the
+successive momentum transfers carried by these intermediate states.  The
+joint spectral condition therefore implies
+\(\operatorname{supp}\widetilde w_n\subset\overline V_+^{n-1}\).  If
+\(\eta_j\in V_+\) and \(p_j\in\overline V_+\), the mostly-plus metric gives
+\(p_j\cdot\eta_j\le0\), with strict negativity away from the boundary unless
+one vector is null and parallel to the other.  Hence the factor
+\(\exp(\sum_jp_j\cdot\eta_j)\) supplies exponential damping on every closed
+subcone inside the tube direction.
+
+For fixed \(\eta\in V_+^{n-1}\), multiplication of the tempered distribution
+\(\widetilde w_n\) by the smooth function
+\(\exp(\sum_jp_j\cdot\eta_j)\) is defined by first inserting a conic cutoff
+equal to one near the support; two such cutoffs differ away from the support
+and therefore give the same product.  Differentiation with respect to
+\(z_j\) brings down polynomial factors in \(p_j\), which remain valid
+multipliers of tempered distributions after the same exponential damping.
+Thus the Fourier-Laplace transform is holomorphic in the forward tube.
+Letting \(\eta\downarrow0\) inside the tube removes the damping multiplier and
+recovers the original Fourier transform in the topology of tempered
+distributions, which is exactly the stated boundary value.
+\end{proof}
 
 Different operator orderings give holomorphic functions in corresponding
 permuted tubes.  Local commutativity identifies their boundary values on real
@@ -262,6 +325,8 @@ appearing in the Feynman propagator.
 
 \section{Boundary-Value Dictionary}
 
+\begin{definition}[Ordered Lorentzian and Euclidean boundary values]
+\label{def:ordered-lorentzian-euclidean-boundary-values}
 The preceding tube statement gives a precise dictionary among Wightman,
 time-ordered, and Euclidean functions.  Fix an ordering \(\pi\) and real
 Lorentzian points with
@@ -322,7 +387,10 @@ Then
   \mathcal W_{n,\pi}(z_{\pi(1)},\ldots,z_{\pi(n)}).
 \end{aligned}
 \]
+\end{definition}
 
+\begin{proposition}[Source sign under Wick rotation]
+\label{prop:source-sign-under-wick-rotation}
 The same dictionary fixes the sign in source functionals.  Let
 \[
   Z_L^{(+)}[J]
@@ -387,6 +455,22 @@ In that contour convention the Euclidean functional with
 \(Z_L^{(-)}[J_C]\), after setting \(J_E(\tau,\vec x)=-J_C(\ii\tau,\vec x)\).
 The two formulas describe different contour/source-sign conventions, not two
 different Green functions.
+\end{proposition}
+
+\begin{proof}
+Expand the contour-ordered exponential in powers of the source.  Each
+Lorentzian source insertion carries the factor \(\ii\,\dd z^0\).  On the
+lower imaginary-time contour \(z^0=-\ii\tau\), the one-dimensional volume form
+is \(\dd z^0=-\ii\,\dd\tau\), and therefore
+\(\ii\,\dd z^0=+\dd\tau\).  The source term becomes \(+\int J_E\phi_E\) after
+the identification \(J_E(\tau,\vec x)=J_C(-\ii\tau,\vec x)\).  On the upper
+contour \(z^0=+\ii\tau\), one instead has
+\(\ii\,\dd z^0=-\dd\tau\), so the same Lorentzian source convention produces
+the opposite Euclidean sign unless the source is replaced by its negative.
+The calculation is termwise in the regulated source expansion, hence fixes
+all Euclidean \(n\)-point signs.
+\end{proof}
+
 Conversely, an OS-admissible Schwinger hierarchy reconstructs Wightman
 boundary values by the positive-time quotient and analytic-continuation
 theorem of Chapter~\ref{ch:volume-iv-osterwalder-schrader-reconstruction}.
@@ -394,6 +478,8 @@ Thus the boundary-value dictionary has two certified entrances: spectral
 Wightman data with tube analyticity, and Euclidean data satisfying the OS
 positivity, covariance, regularity, and growth hypotheses.
 
+\begin{proposition}[Two-point Feynman prescription from ordered tubes]
+\label{prop:two-point-feynman-prescription-ordered-tubes}
 For \(n=2\), the dictionary gives the Feynman prescription.  If
 \(x^0>0\), the ordered boundary value is obtained with the positive-energy
 pole below the real \(k^0\)-axis and the negative-energy pole above it:
@@ -405,9 +491,24 @@ pole below the real \(k^0\)-axis and the negative-energy pole above it:
 If \(x^0<0\), the contour closure selects the opposite residue in the same
 single distribution \(\Delta_F\).  This two-point pole rule is the momentum
 space encoding of the ordered tube boundary value above.
+\end{proposition}
+
+\begin{proof}
+The ordered tube prescription for \(x^0>0\) approaches the first field from a
+larger negative imaginary time than the second.  In Fourier variables this is
+the same damping choice as in
+Proposition~\ref{prop:free-scalar-feynman-boundary-value}, so the positive
+energy pole is passed below the real axis.  If \(x^0<0\), the operator order is
+reversed and the contour closure selects the negative-energy pole above the
+axis.  The two cases are precisely the two boundary values of the single
+meromorphic denominator \(k^2+m^2\), hence the denominator is
+\(k^2+m^2-\ii0\).
+\end{proof}
 
 \section{Lorentzian Feynman Rules for Green Functions}
 
+\begin{definition}[Lorentzian labelled graph rules for Green functions]
+\label{def:lorentzian-labelled-graph-rules-green-functions}
 Consider the same scalar \(\phi^4\) interaction as in the Euclidean chapter,
 with Lorentzian interaction density
 \[
@@ -461,9 +562,12 @@ the graph that fixes every external label and preserves the incidence
 relations.  For the tadpole graph below this residual group has order \(2\),
 coming from the interchange of the two internal half-edges forming the loop;
 this is why the tadpole coefficient is \(-\ii g/2\), not \(-\ii g\).
+\end{definition}
 
 \section{Loop Rotation and the Tadpole}
 
+\begin{proposition}[Tadpole contour rotation and self-energy matching]
+\label{prop:tadpole-contour-rotation-self-energy-matching}
 The one-loop tadpole contribution to the Lorentzian two-point self-energy
 insertion is
 \[
@@ -569,7 +673,28 @@ Eq.~\eqref{eq:euclidean-self-energy}.  The factor \(\ii\) displayed above
 belongs to the Lorentzian two-point insertion in the Dyson series; it is not an
 extra sign in the scalar function \(\Sigma\) appearing in the denominator of
 \(\widetilde G(k)\).
+\end{proposition}
 
+\begin{proof}
+The coefficient \(-\ii g/2\) follows from
+Definition~\ref{def:lorentzian-labelled-graph-rules-green-functions}: the
+labelled quartic vertex supplies \(-\ii g\), and the loop made from the two
+remaining half-edges has residual automorphism group of order \(2\).  The
+Feynman pole displacement places the positive-energy pole below and the
+negative-energy pole above the real loop-energy axis.  Rotating the real
+\(\ell^0\)-cycle to \(\ell^0=\ii\ell_E^D\) crosses no pole in this tadpole
+because no external energy flows through the loop.  The Jacobian gives
+\(\dd^D\ell=\ii\dd^D\ell_E\), while the propagator numerator gives
+\(-\ii\); their product is \(+1\).  The remaining vertex factor is exactly
+\(\ii\) times the Euclidean tadpole insertion.  Since the Lorentzian
+two-point Green function is written with a global propagator numerator
+\(-\ii\), this extra \(\ii\) belongs to the insertion in the Dyson series and
+not to the denominator self-energy scalar itself.  This proves
+\eqref{eq:lorentzian-euclidean-self-energy-match}.
+\end{proof}
+
+\begin{proposition}[Loop rotation and pinch obstruction]
+\label{prop:loop-rotation-pinch-obstruction}
 The contour rotation just used is a special case with no external energy
 flowing through the loop.  The same direct rotation is also legitimate for
 loop integrals with Euclidean external momenta, where the external energies
@@ -600,9 +725,32 @@ a naive independent rotation of each loop energy.  The discontinuity across
 such cuts is computed by the Cutkosky rules, which are the perturbative
 expression of the same spectral and unitarity structure developed in
 Chapter~\ref{ch:volume-ii-analyticity-crossing-landau}.
+\end{proposition}
+
+\begin{proof}
+For Euclidean external energies, every external energy entering a propagator
+has imaginary value, so the propagator poles in each loop-energy variable
+remain separated from the deformation from the real cycle to the imaginary
+cycle.  A deformation theorem for meromorphic integrands then identifies the
+Lorentzian integral with the Euclidean integral on that first-sheet domain.
+For real timelike \(k\), the sunset denominators admit the simultaneous
+on-shell solution
+\[
+  q_1^2=q_2^2=(k-q_1-q_2)^2=-m^2,
+  \qquad
+  q_1^0,q_2^0,k^0-q_1^0-q_2^0>0
+\]
+when \(k^0\ge3m\) in the rest frame.  At such a point poles approach the
+integration cycle from opposite sides in the two loop-energy variables, so
+the cycle is pinched and cannot be deformed without crossing a singularity.
+The Lorentzian value above threshold is therefore a boundary value on a cut of
+the first-sheet analytic function, not an ordinary Euclidean rotation.
+\end{proof}
 
 \section{Full Two-Point Function and First Sheet}
 
+\begin{definition}[First-sheet two-point continuation]
+\label{def:first-sheet-two-point-continuation}
 The perturbative time-ordered two-point function is written as
 \[
   G(x,y)
@@ -633,7 +781,10 @@ because \(k^2=k_E^2\) at \(k^0=\ii k_E^D\) with the mostly-plus convention.
 The Lorentzian value is the boundary value obtained by analytic continuation of
 \(k^0\) from this axis to the prescribed side of the real axis without crossing
 the first-sheet cuts.
+\end{definition}
 
+\begin{proposition}[Spectral thresholds and first-sheet cuts]
+\label{prop:spectral-thresholds-first-sheet-cuts}
 The spectral representation fixes the location of the first singular
 thresholds. Suppose the continuum part \(d\rho_{\mathrm c}\) in the two-point
 spectral measure has lowest invariant mass \(M\), meaning
@@ -669,6 +820,25 @@ The Feynman boundary value on the positive-energy cut is reached from the
 upper half-plane. Thus the value of \(\Sigma(k)\) at real positive \(k^0\) is
 the boundary value approached from \(\operatorname{Im}k^0>0\) on the first
 sheet. The negative-energy cut is reached with the conjugate placement.
+\end{proposition}
+
+\begin{proof}
+The K\"all\'en--Lehmann representation writes the connected two-point
+function as an integral of free denominators over the positive spectral
+measure:
+\[
+  \int_{[M^2,\infty)}\frac{\dd\rho_{\rm c}(s)}
+  {k^2+s-\ii0}.
+\]
+At fixed \(\vec k\), each value of \(s\) has branch points or poles at
+\(k^0=\pm\sqrt{\vec k^{\,2}+s}\).  The union of these singular loci over
+\(s\ge M^2\) is exactly the pair of cuts beginning at
+\(\pm E_M(\vec k)\).  The Feynman prescription puts the positive-energy
+denominator below the real axis, so the physical positive-energy boundary
+value is obtained by approaching the cut from \(\operatorname{Im}k^0>0\).
+The negative-energy side is the conjugate boundary value imposed by the same
+real spectral measure.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95,>=Stealth]
