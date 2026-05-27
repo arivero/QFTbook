@@ -748,8 +748,8 @@ assumption is exactly the one stated above, namely that the long-chain
 two-body magnon S-matrix continues to quantize the physical chain when
 \(M_L/L=O(1)\), as long as mirror winding remains asymptotically suppressed.
 
-In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
-be written
+For the rank-one equation in the stringbook \(SL(2)\)-vacuum orientation, the
+all-loop asymptotic Bethe equations can be written
 \begin{equation}
   \left(\frac{x_j^+}{x_j^-}\right)^L
   =
@@ -757,7 +757,7 @@ be written
   \frac{x_j^- -x_k^+}{x_j^+ -x_k^-}
   \frac{1-1/(x_j^+x_k^-)}{1-1/(x_j^-x_k^+)}
   \sigma(x_j^\pm,x_k^\pm)^2 ,
-  \label{eq:planar-n4-su2-aba}
+  \label{eq:planar-n4-rank-one-stringbook-aba}
 \end{equation}
 with cyclicity
 \[
@@ -1135,7 +1135,7 @@ additional dynamical assumptions.
 
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}
-Equation~\eqref{eq:planar-n4-su2-aba} is an instance of
+Equation~\eqref{eq:planar-n4-rank-one-stringbook-aba} is an instance of
 Assumption~\ref{ass:planar-n4-aba-regime}.  At weak coupling, wrapping
 effects begin at the loop order at which planar interactions can close around
 the trace.  At finite coupling, the distinction is between the asymptotic
@@ -1145,33 +1145,101 @@ quantum spectral curve.
 
 \section{Weak-Coupling Reduction}
 
-At small \(g\), \(x^\pm\) reduce to the one-loop rapidity variable:
+The weak-coupling limit is a useful place to separate two conventions that
+are often conflated.  The stringbook rank-one equation
+\eqref{eq:planar-n4-rank-one-stringbook-aba} uses the \(SL(2)\)-vacuum
+orientation.  The compact \(SU(2)\) coordinate Bethe equation of
+Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains} uses the reciprocal
+Bethe--Yang phase, because there the scattering phase is the inverse of the
+ordered-chamber exchange coefficient.  The two statements are compatible,
+but only after the orientation is named.
+
+\begin{proposition}[Weak limit of the rank-one ABA orientation]
+\label{prop:planar-n4-rank-one-aba-weak-limit}
+Let \(u_j,u_k\) stay away from the shifted branch points and from each other
+as \(g\to0\), and take the physical outside branch
 \[
-  x^\pm=\frac{1}{g}\left(u\pm\frac{\ii}{2}\right)+O(g).
+  x_j^\pm=x(u_j\pm\ii/2),
+  \qquad
+  x(U)+x(U)^{-1}=\frac{U}{g}.
 \]
 Then
-\[
+\begin{align}
+  x_j^\pm
+  &=
+  \frac{u_j\pm\ii/2}{g}
+  -\frac{g}{u_j\pm\ii/2}
+  +O(g^3),
+  \label{eq:planar-n4-xpm-weak-branch-expansion}\\
   \frac{x_j^+}{x_j^-}
-  =
+  &=
   \frac{u_j+\ii/2}{u_j-\ii/2}+O(g^2),
-\]
-and the rational part of \eqref{eq:planar-n4-su2-aba} reduces to
-\[
-  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}+O(g^2).
-\]
-The dressing phase starts at higher weak-coupling order, so the leading
-equation is the one-loop Bethe equation
-\eqref{eq:planar-n4-one-loop-su2-bethe}.  The dispersion expands as
-\[
-  H(p)-1
+  \label{eq:planar-n4-weak-momentum-ratio}\\
+  \mathcal R_{jk}
+  &:=
+  \frac{x_j^- -x_k^+}{x_j^+ -x_k^-}
+  \frac{1-1/(x_j^+x_k^-)}{1-1/(x_j^-x_k^+)}
   =
-  8g^2\sin^2\frac p2
-  -32g^4\sin^4\frac p2
-  +256g^6\sin^6\frac p2
-  +O(g^8).
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii}+O(g^2),
+  \label{eq:planar-n4-rank-one-rational-weak-limit}\\
+  H(u_j)-1
+  &=
+  2\ii g\left(\frac1{x_j^+}-\frac1{x_j^-}\right)
+  =
+  \frac{2g^2}{u_j^2+1/4}+O(g^4).
+  \label{eq:planar-n4-rank-one-energy-weak-limit}
+\end{align}
+The dressing phase satisfies \(\sigma^2=1+O(g^6)\) for fixed weak Bethe
+roots in the charge-expansion regime.  Hence
+\eqref{eq:planar-n4-rank-one-stringbook-aba} reduces to
+\begin{equation}
+  \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^L
+  =
+  \prod_{\substack{k=1\\k\neq j}}^M
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii},
+  \label{eq:planar-n4-rank-one-sl2-weak-bethe}
+\end{equation}
+the \(SL(2)\)-orientation also used in
+\eqref{eq:planar-n4-sl2-one-loop-bethe} and in the weak-QSC Baxter
+degeneration of Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
+The reciprocal factor \(\mathcal R_{jk}^{-1}\) gives the compact \(SU(2)\)
+one-loop phase of \eqref{eq:planar-n4-one-loop-su2-bethe}.
+\end{proposition}
+
+\begin{proof}
+The outside branch of \(x+x^{-1}=U/g\) has the expansion
+\[
+  x(U)=\frac{U}{g}-\frac{g}{U}+O(g^3),
 \]
-Using \(g^2=\lambda/(16\pi^2)\), the leading term agrees with the one-loop
-normalization of Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.
+which gives \eqref{eq:planar-n4-xpm-weak-branch-expansion}.  Dividing the
+two shifted expansions proves \eqref{eq:planar-n4-weak-momentum-ratio}.  In
+\(\mathcal R_{jk}\), the first factor has numerator
+\[
+  \frac{u_j-\ii/2}{g}-\frac{u_k+\ii/2}{g}+O(g)
+  =
+  \frac{u_j-u_k-\ii}{g}+O(g)
+\]
+and denominator \((u_j-u_k+\ii)/g+O(g)\).  The second factor equals
+\(1+O(g^2)\), because each \(x^\pm\) is \(O(g^{-1})\).  This proves
+\eqref{eq:planar-n4-rank-one-rational-weak-limit}.  The energy expansion is
+\[
+  2\ii g^2\left(
+    \frac{1}{u_j+\ii/2}-\frac{1}{u_j-\ii/2}
+  \right)+O(g^4)
+  =
+  \frac{2g^2}{u_j^2+1/4}+O(g^4).
+\]
+Finally, the first weak BES coefficient is \(c_{2,3}(g)=O(g^3)\), while the
+weak charges give \(q_2q_3-q_3q_2=O(g^3)\); the dressing phase therefore
+cannot affect the one-loop equation.  Substituting the limits into
+\eqref{eq:planar-n4-rank-one-stringbook-aba} gives
+\eqref{eq:planar-n4-rank-one-sl2-weak-bethe}.
+\end{proof}
+
+Using \(g^2=\lambda/(16\pi^2)\), the leading energy term in
+\eqref{eq:planar-n4-rank-one-energy-weak-limit} agrees with the one-loop
+normalization of Chapters~\ref{ch:planar-n4-spectral-problem-spin-chains}
+and~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
 
 \section{Bound States and the Large-Spin Cusp Limit}
 

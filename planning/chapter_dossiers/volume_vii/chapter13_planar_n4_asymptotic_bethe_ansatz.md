@@ -93,7 +93,9 @@ the monograph's proof-boundary language.
   `rho+rho_h=Z'(u)/(2 pi)=p'(u)/(2 pi)+int K(u,v)rho(v)dv`.  The text states
   the branch/no-crossed-singularity hypotheses and emphasizes that this is
   still ABA, not mirror TBA.
-- Gives the `SU(2)` all-loop asymptotic Bethe equations and cyclicity.
+- Gives the stringbook rank-one all-loop asymptotic Bethe equation and
+  cyclicity in the `SL(2)`-vacuum orientation, rather than conflating it with
+  the compact one-loop `SU(2)` chamber convention of Chapter 12.
 - Proves the first single-defect nested Bethe step in the stringbook
   orientation: the mixed `su(2|2)_c` amplitude ratios imply
   `f(y,p)=a(p)/(y-x^+(p))` and
@@ -114,8 +116,12 @@ the monograph's proof-boundary language.
 - Adds a string-basis frame ledger for `S^{I,I}`, `S^{II,I}`,
   `S^{III,II}`, and `S^{III,III}`, and states the reciprocal auxiliary
   insertion for the alternative `SL(2)` vacuum nesting.
-- Proves weak-coupling reduction to the one-loop Bethe equation and dispersion
-  normalization.
+- Proves the weak-coupling reduction of the rank-one all-loop ABA:
+  the physical outside branch gives
+  `x^pm=(u+-i/2)/g-g/(u+-i/2)+O(g^3)`, the stringbook rational factor tends
+  to the `SL(2)` phase `(u_j-u_k-i)/(u_j-u_k+i)`, its reciprocal gives the
+  compact `SU(2)` phase of Chapter 12, and
+  `H-1=2g^2/(u^2+1/4)+O(g^4)`.
 - Adds bound-state dispersion and the large-spin cusp-scaling function with
   status boundaries.
 - Expands the one-loop `SL(2)` large-spin cusp derivation: states the
@@ -174,6 +180,9 @@ crossed Zhukovsky sheets.
 - It checks the finite-density ABA counting normalization on a toy diagonal
   phase: the empirical measure is normalized by `1/L`, the limiting mass is
   `M/L`, and the level density is `Z'(u)/(2 pi)`.
+- It checks the weak rank-one ABA orientation: physical-branch `x^pm`
+  expansion, momentum ratio, anomalous-energy normalization, the stringbook
+  `SL(2)` rational factor, and the reciprocal compact `SU(2)` phase.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
 - It checks the one-loop `SL(2)` large-spin cusp resolvent: physical

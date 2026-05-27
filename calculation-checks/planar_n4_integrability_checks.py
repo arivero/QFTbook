@@ -909,6 +909,75 @@ def check_finite_density_aba_counting_normalization() -> None:
         )
 
 
+def check_rank_one_aba_weak_orientation() -> None:
+    """Check the stringbook rank-one ABA weak limit and reciprocal SU(2) phase."""
+
+    def x_shifted(rapidity: complex, shift_sign: int, coupling: float) -> complex:
+        return zhukovsky_outside(rapidity + shift_sign * 0.5j, coupling)
+
+    coupling = 1.0e-4
+    for rapidity in (0.7, -1.3, 2.2 + 0.4j):
+        for shift_sign in (1, -1):
+            shifted = rapidity + shift_sign * 0.5j
+            x_value = x_shifted(rapidity, shift_sign, coupling)
+            expansion = shifted / coupling - coupling / shifted
+            assert_close(
+                "rank-one xpm weak branch expansion",
+                x_value / expansion,
+                1,
+                tol=1.0e-12,
+            )
+
+        x_plus = x_shifted(rapidity, 1, coupling)
+        x_minus = x_shifted(rapidity, -1, coupling)
+        assert_close(
+            "rank-one weak momentum ratio",
+            x_plus / x_minus,
+            (rapidity + 0.5j) / (rapidity - 0.5j),
+            tol=5.0e-8,
+        )
+        anomalous_energy = 2j * coupling * (1 / x_plus - 1 / x_minus)
+        assert_close(
+            "rank-one weak energy normalization",
+            anomalous_energy / (coupling * coupling),
+            2 / (rapidity * rapidity + 0.25),
+            tol=2.0e-7,
+        )
+
+    for rapidity_j, rapidity_k in ((0.7, -1.1), (1.4, 0.2), (-0.8 + 0.3j, 1.6 - 0.2j)):
+        xj_plus = x_shifted(rapidity_j, 1, coupling)
+        xj_minus = x_shifted(rapidity_j, -1, coupling)
+        xk_plus = x_shifted(rapidity_k, 1, coupling)
+        xk_minus = x_shifted(rapidity_k, -1, coupling)
+        first_factor = (xj_minus - xk_plus) / (xj_plus - xk_minus)
+        second_factor = (1 - 1 / (xj_plus * xk_minus)) / (
+            1 - 1 / (xj_minus * xk_plus)
+        )
+        stringbook_factor = first_factor * second_factor
+        sl2_factor = (rapidity_j - rapidity_k - 1j) / (
+            rapidity_j - rapidity_k + 1j
+        )
+        su2_factor = 1 / sl2_factor
+        assert_close(
+            "rank-one stringbook ABA weak SL2 orientation",
+            stringbook_factor / sl2_factor,
+            1,
+            tol=5.0e-8,
+        )
+        assert_close(
+            "rank-one reciprocal compact SU2 orientation",
+            (1 / stringbook_factor) / su2_factor,
+            1,
+            tol=5.0e-8,
+        )
+        assert_close(
+            "rank-one dressingless second rational factor starts at one",
+            second_factor,
+            1,
+            tol=5.0e-8,
+        )
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -2599,6 +2668,7 @@ def main() -> None:
     check_su2c_level_ii_and_iii_nested_scattering()
     check_su2c_nested_bethe_yang_frame_factors()
     check_finite_density_aba_counting_normalization()
+    check_rank_one_aba_weak_orientation()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()

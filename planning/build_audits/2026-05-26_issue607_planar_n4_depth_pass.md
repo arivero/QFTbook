@@ -886,3 +886,45 @@ Calculation checks added:
 - `check_qsc_large_u_coefficient_constraints()` now also constructs the
   six-by-six leading characteristic matrix for complex sample values and
   verifies numerically that its determinant equals `alpha^2 Phi(alpha)`.
+
+## Continuation XXXI: Rank-One ABA Weak Orientation
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Source/standard motivation:
+
+- The stringbook rank-one ABA formula uses the `SL(2)`-vacuum orientation:
+  its weak rational factor is `(u_j-u_k-i)/(u_j-u_k+i)`.  The monograph text
+  had described the same displayed all-loop equation as `SU(2)` and then
+  claimed reduction to the compact Chapter 12 `SU(2)` one-loop phase, whose
+  factor is the reciprocal.  This was a convention conflict across the
+  one-loop spin-chain, all-loop ABA, and weak-QSC Baxter discussions.
+
+Content added:
+
+- Renamed the displayed all-loop rank-one equation as the stringbook
+  `SL(2)`-vacuum orientation rather than a compact `SU(2)` scalar equation.
+- Added a proposition deriving the weak physical-branch expansion
+  `x^pm=(u+-i/2)/g-g/(u+-i/2)+O(g^3)`.
+- Derived the weak rational factor
+  `(x_j^- - x_k^+)/(x_j^+ - x_k^-)
+   * (1-1/(x_j^+ x_k^-))/(1-1/(x_j^- x_k^+))
+   = (u_j-u_k-i)/(u_j-u_k+i)+O(g^2)`.
+- Stated explicitly that the compact Chapter 12 `SU(2)` one-loop
+  Bethe--Yang phase is the reciprocal of this rank-one stringbook factor,
+  while the noncompact `SL(2)` equation and Chapter 15 weak-QSC Baxter
+  degeneration use the stringbook orientation.
+- Derived the weak anomalous-energy normalization
+  `H-1=2g^2/(u^2+1/4)+O(g^4)`.
+
+Calculation checks added:
+
+- `check_rank_one_aba_weak_orientation()` verifies the physical-branch
+  shifted Zhukovsky expansion, weak momentum ratio, anomalous-energy
+  normalization, stringbook `SL(2)` rational factor, reciprocal compact
+  `SU(2)` phase, and the fact that the dressingless second rational factor
+  starts at one.
