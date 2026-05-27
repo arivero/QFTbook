@@ -21,6 +21,23 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   a level-II root lies inside, outside, or on the unit `y`-circle.
 - `epsilon_A`, `Y_A`: mirror pseudoenergies and Y-functions.
 - `K_BA`: mirror scattering kernel.
+- `mathcal I`: mirror-TBA node set containing `bullet_Q`, `y_pm^(alpha)`,
+  `(v|M)^(alpha)`, and `(w|M)^(alpha)` for wings `alpha=L,R`.
+- `nu_L=+1`, `nu_R=-1`: wing signs for the fermionic mirror chemical
+  potentials.
+- `d_A`: mirror-TBA driving term `L tilde E_A-mu_A`; only `bullet_Q` carries
+  length energy, while `y_pm^(alpha)` carries `nu_alpha pi i`.
+- `K^sb_AB`: target-first stringbook kernel
+  `(2 pi i)^{-1} partial_v log S^sb_AB(u,v)`, related to the chapter
+  source kernel by `K^sb_AB(u,v)=-K_BA(v,u)`.
+- `mathcal R_m`: constituent-shift set
+  `{-(m-1)/2, ..., (m-1)/2}` for a fused mirror string.
+- `Phi_mn^{bullet bullet}`: rational fused mirror `bullet_m`--`bullet_n`
+  scattering phase in stringbook orientation.
+- `Theta_mn^{bullet bullet}`: endpoint dressing-phase combination built from
+  the analytically continued `chi(x,y)`.
+- `S^{y_pm bullet}`, `S^{(v|m) bullet}`: fused auxiliary-to-bullet phases
+  used to define the target-first mirror-TBA kernels.
 - `rho_p,rho_L,rho_h`: one-species mirror particle, level, and hole
   densities used in the statistical-mechanical derivation of TBA.
 - `K^dens(v,u)`: target-derivative density kernel
@@ -35,6 +52,11 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `Y_n^circ,Y^oplus,Y^ominus`: one-wing `n|w` and two-sheet `y` Y-functions
   used to derive the auxiliary-wing Y-system.
 - `Y_{a,s}`: T-hook Y-system variables.
+- `mathcal A_l`: strip of meromorphy
+  `-l/2 < Im u < l/2` after explicitly removing state source factors.
+- `Y^bullet_n,Y^oplus,Y^ominus,Y^triangle_n,Y^circ_n`: stringbook
+  Y-system nodes mapped to `Y_{n,0}`, `Y_{1,pm1}^{-1}`,
+  `Y_{2,pm2}`, `Y_{n+1,pm1}^{-1}`, and `Y_{1,pm(n+1)}^{-1}`.
 - `B_alpha(u)=(u-alpha+i/2)/(u-alpha-i/2)`: elementary shifted zero-pole source
   factor whose shifted product supplies a local analytic Y-system source.
 - `u_j`: exact physical Bethe roots in excited-state TBA.
@@ -47,6 +69,10 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Defines the mirror transformation and emphasizes the non-relativistic
   difference from two-dimensional relativistic integrable QFT, using the
   stringbook sign convention `E=i tilde p`, `p=i tilde E`.
+- Adds an explicit status boundary for mirror magnons: they are analytically
+  continued worldsheet/spin-chain excitations inherited from the relativistic
+  string worldsheet mirror channel, not ordinary four-dimensional local QFT
+  asymptotic particles.
 - Derives the mirror bound-state dispersion from double Wick rotation.
 - Adds the sheet/branch status of physical versus mirror Zhukovsky variables.
 - Adds and proves an explicit mirror Zhukovsky parametrization for real mirror
@@ -54,6 +80,9 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   `xi_Q=(tilde p-i Q)/sqrt(Q^2+tilde p^2)`, including shortening,
   `log(x_Q^-/x_Q^+)=tilde E_Q`, the stringbook mirror momentum equation, and
   weak Boltzmann scaling `exp(-L tilde E_Q)=O(g^{2L})`.
+- Cross-references the same sheet convention to the Chapter 15
+  fermionic-node large-`u` QSC bridge, without duplicating that later
+  derivation inside the mirror-kernel setup.
 - Defines a mirror-kernel datum as the scattering factor together with source
   and target contours, and adds the mirror Bethe-string node inventory.
 - Adds the one-wing mirror auxiliary Bethe-Yang subsystem in the stringbook
@@ -80,12 +109,29 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   gives the physical root contribution `E(u_j)`.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
+- Adds the multi-species mirror-TBA node/source inventory: maps the
+  stringbook `oplus`, `ominus`, `M|yw`, and `M|w` symbols to
+  `y_+`, `y_-`, `(v|M)`, and `(w|M)`, states the left/right fermion
+  chemical potentials, proves the target-first/source-kernel bridge, and
+  records the node-by-node source families including the reversed-root
+  denominator signs for `ominus` and `w` sources.
+- Adds the fused mirror-kernel formula crosswalk from the stringbook:
+  defines the constituent shift set, displays the rational
+  `bullet_m`--`bullet_n` phase, the endpoint dressing combination, the
+  `y_pm`--`bullet` and `(v|m)`--`bullet` phases, their reciprocal target/source
+  orientations, and the auxiliary double-sum kernel reduction to the closed
+  fused `K_mn` expression.  The global analytic continuation of `chi` remains
+  an explicit dressing-phase boundary, not a finite fusion claim.
 - Gives the excited-state energy formula with wrapping integral.
 - Adds a self-contained derivation of the `A_infinity` auxiliary-string kernel
   inverse in Fourier variables, including the fused kernel symbol and the
   one-index kernel identity.
 - Derives the one-wing `n|w` Y-system relation from the mirror TBA by applying
   the kernel inverse and then the strip-analytic inverse of `s`.
+- Proves the precise domain and failure mode of the `s`-kernel inverse: on a
+  regular closed strip it is the shift operator, while boundary zero modes and
+  shifted zero-pole factors carry exactly the source data that the local
+  Y-system would otherwise forget.
 - Defines the planar `N=4` bulk T-hook domain, with `T_{0,s}` adjoined as a
   gauge boundary, proves the local Hirota origin of the interior Y-system
   relation, and proves cancellation of the four-function T-gauge redundancy
@@ -95,8 +141,13 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Proves the local shifted zero-pole source-factor identity
   `B_a^+ B_a^-=(u-a+i)/(u-a-i)`, explaining how contour and sheet data enter
   analytic Y-system equations as rational source factors.
-- Adds analytic Y-system data: shifted strips, meromorphy domains,
-  discontinuities, and exact-root regularity conditions.
+- Adds explicit analytic Y-system data in the stringbook convention: the
+  stringbook-to-T-hook node map, strip assumptions, first Zhukovsky
+  branch-point lattice, central fermionic cut inversion
+  `Y_{2,pm2,+}=1/Y_{1,pm1,-}`, source-factor recording rule, and exact-root
+  regularity conditions.  The text states that global analytic continuation is
+  an independent datum to be checked against the mirror sheet and dressing
+  branch, not a consequence of local Hirota algebra or of literature authority.
 - Uses Konishi as the first wrapping test and separates finite-length
   correction from magnon-dispersion correction.
 - Adds the weak-coupling Konishi root expansion and ABA coefficient.
@@ -150,15 +201,38 @@ node domain.
   finite grid: constrained entropy variation, stationarity of the grand
   functional, free-energy identity, source-kernel sign conversion, and the
   excited-state zero condition.
+- The same script checks the multi-species mirror-TBA node/source inventory:
+  length-driving support only on `bullet_Q`, left/right fermion boundary
+  phases, the `M=1` boundary in the `bullet_Q` equation, the
+  target-first/source-kernel sign bridge, and the ratio signs from reversed
+  `ominus` and `w` roots.
+- The same script checks the fused mirror-kernel formula crosswalk: finite
+  `bullet_m`--`bullet_n` rational unitarity, endpoint dressing antisymmetry
+  for an antisymmetric mock `chi`, `y_-` as the inverse-sheet `y_+` formula,
+  exact endpoint telescoping of the square-root packages, reciprocal auxiliary
+  orientations, exact auxiliary pole-multiplicity reduction, and equality of
+  the auxiliary double-sum derivative with the closed fused `K_mn` kernel.
 - The same script checks the excited-state contour-deformation residue signs:
   source orientation `-log S`, product orientation, energy residue
   `+i tilde p`, and inverse mirror continuation to physical energy.
 - The same script checks the auxiliary-wing TBA-to-Y-system kernel algebra:
   the fused `A_mn` Fourier symbol, tridiagonal inverse, `A^{-1}K` identities,
   `s^{-1}` shift symbol, and boundary-source algebra for the `n|w` Y-system.
+- The same script checks the `s`-inverse data-loss mechanism: an explicit
+  boundary zero mode, its closest strip-boundary poles, and the shifted
+  zero-pole factor that leaves rational source memory.
 - The same script checks the local analytic Y-system source factor
   `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
   of shifted zero-pole sources.
+- `calculation-checks/planar_n4_reader_companion_checks.py` and
+  `calculation-checks/planar_n4_reader_companion_checks.wl` provide compact
+  reader-facing checks of the Hirota-to-Y identities, shifted source factor,
+  finite-grid mirror-TBA pseudoenergy/Y-form equivalence, and the
+  `A_infinity` inverse symbol.
+- The same script checks the analytic Y-system strip/cut bookkeeping:
+  stringbook-to-T-hook node map, nearest branch-point lattice outside the open
+  strip, integer central fermion cut shifts, central cut inversion, and finite
+  source-power accounting.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the exact weak-density rationalization behind the `q=2u` integrand, the
   exact paired-root factorization of the Konishi quartics, the `Q=1`

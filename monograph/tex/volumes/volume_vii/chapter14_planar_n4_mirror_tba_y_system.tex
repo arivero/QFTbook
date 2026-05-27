@@ -11,6 +11,28 @@ problem.  This chapter states the logical structure without pretending that
 the mirror thermodynamic Bethe ansatz is a theorem of four-dimensional
 constructive QFT.
 
+\begin{warning}[Status of mirror magnons]
+\label{warn:planar-n4-mirror-magnon-status}
+A mirror magnon is not a new physical particle of four-dimensional
+\(\mathcal N=4\) SYM.  It is the excitation obtained after analytically
+continuing the two-dimensional worldsheet/spin-chain kinematics so that
+Euclidean time and space are exchanged.  In the relativistic string
+worldsheet before light-cone gauge fixing this exchange is the natural
+mirror-channel operation.  After gauge fixing, the magnon dispersion is
+nonrelativistic and the same operation becomes a path on the Zhukovsky
+surface together with a specified dressing-phase branch.  This is why the
+mirror relation is not explained by the nonrelativistic spin chain alone.
+
+The reason to use mirror magnons in the gauge-theory spectral problem is
+therefore indirect.  Once the long-trace magnon S-matrix is accepted as the
+asymptotic integrable description, finite trace length is computed by the
+standard mirror-channel finite-size construction: virtual mirror particles
+wrap around the trace, and their thermodynamics gives the TBA.  This is the
+worldsheet and integrability explanation.  There is no known purely
+four-dimensional derivation in which the mirror magnon appears directly as an
+ordinary local QFT asymptotic state.
+\end{warning}
+
 \section{Mirror Transformation}
 
 For a physical magnon with energy \(E(p)\) and momentum \(p\), the mirror
@@ -186,6 +208,14 @@ Finally,
 \(\ee^{-\widetilde E_Q}=(\sqrt{1+R_Q^2/(16g^2)}-R_Q/(4g))^2\), whose
 small-\(g\) expansion gives \eqref{eq:planar-n4-mirror-weak-boltzmann}.
 \end{proof}
+
+The same mirror sheet parametrization fixes the large-rapidity fermionic-node
+ratio used later to identify the \(Y_{1,1}Y_{2,2}\) energy exponent in the QSC
+bridge; see Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio}.  This is a
+good example of the convention burden in this subject: the sign comes from the
+inside/outside assignment just proved here, but the ratio itself belongs to the
+later TBA-to-QSC asymptotic bridge rather than to the definition of the mirror
+kernel.
 
 \begin{definition}[Mirror-kernel datum]
 \label{def:planar-n4-mirror-kernel-datum}
@@ -709,6 +739,297 @@ The contours \(\mathcal C_B\), signs for fermionic auxiliary roots, and
 chemical potentials \(\mu_A\) are part of the mirror-model definition.  They
 are not decorations: changing them changes the finite-size answer.
 
+\begin{proposition}[Mirror-TBA node and source inventory]
+\label{prop:planar-n4-mirror-tba-node-source-inventory}
+Assume the mirror Bethe-string hypothesis of
+Proposition~\ref{prop:planar-n4-mirror-auxiliary-strings}, diagonal scalar
+factors for the fused mirror strings satisfying
+\[
+  S^{\rm sb}_{AB}(u,v)S^{\rm mirror}_{BA}(v,u)=1
+\]
+on the chosen contours, and no contour-crossing source in the ground-state
+calculation.  Let
+\[
+  \mathcal I
+  =
+  \{\bullet_Q:Q\geq1\}
+  \cup
+  \{y_\pm^{(\alpha)},(v|M)^{(\alpha)},(w|M)^{(\alpha)}:
+       M\geq1,\ \alpha=L,R\}.
+\]
+The stringbook symbols are identified as
+\[
+  y_+^{(\alpha)}=\oplus^{(\alpha)},\qquad
+  y_-^{(\alpha)}=\ominus^{(\alpha)},\qquad
+  (v|M)^{(\alpha)}=M|yw^{(\alpha)},\qquad
+  (w|M)^{(\alpha)}=M|w^{(\alpha)}.
+\]
+Put \(\nu_L=+1\), \(\nu_R=-1\).  The driving terms are
+\[
+  d_{\bullet_Q}=L\,\widetilde E_Q,\qquad
+  d_{y_\pm^{(\alpha)}}=\nu_\alpha\pi\ii,\qquad
+  d_{(v|M)^{(\alpha)}}=d_{(w|M)^{(\alpha)}}=0,
+\]
+or equivalently \(d_A=L\widetilde E_A-\mu_A\), with
+\(\widetilde E_A=0\) for auxiliary nodes and
+\(\mu_{y_\pm^{(\alpha)}}=-\nu_\alpha\pi\ii\).  If
+\[
+  K^{\rm sb}_{AB}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm sb}_{AB}(u,v)
+\]
+denotes the target-first stringbook kernel, then
+\begin{equation}
+  K^{\rm sb}_{AB}(u,v)=-K_{BA}(v,u).
+  \label{eq:planar-n4-stringbook-source-kernel-bridge}
+\end{equation}
+Consequently \eqref{eq:planar-n4-mirror-tba-general} is equivalent to the
+target-first system
+\begin{equation}
+  \epsilon_A(u)
+  =
+  d_A(u)
+  +
+  \sum_{B\in\mathcal I}
+  \int_{\mathcal C_B}\dd v\,
+  K^{\rm sb}_{AB}(u,v)\log(1+Y_B(v)).
+  \label{eq:planar-n4-mirror-tba-target-first}
+\end{equation}
+Write \(\mathcal S_A\) for the convolution part of
+\eqref{eq:planar-n4-mirror-tba-target-first}.  The nonzero source families
+are precisely
+\begin{align*}
+  \mathcal S_{\bullet_Q}
+  &=
+  \sum_{Q'\geq1}K^{\bullet\bullet}_{QQ'}*\log(1+Y_{\bullet_{Q'}})
+  +
+  \sum_{\alpha=L,R}\sum_{M\geq2}
+    K^{\bullet v}_{QM}*\log(1+Y_{(v|M)^{(\alpha)}})
+  \\
+  &\quad
+  +
+  \sum_{\alpha=L,R}
+  \left[
+    K^{\bullet y_+}_{Q}*\log(1+Y_{y_+^{(\alpha)}})
+    +
+    K^{\bullet y_-}_{Q}*\log(1+Y_{y_-^{(\alpha)}})
+  \right]
+  ,
+  \\
+  \mathcal S_{y_\pm^{(\alpha)}}
+  &=
+  \sum_{Q\geq1}K^{y_\pm\bullet}_{Q}*\log(1+Y_{\bullet_Q})
+  +
+  \sum_{M\geq1}K_M*
+  \log\frac{1+Y_{(v|M)^{(\alpha)}}}
+           {1+Y_{(w|M)^{(\alpha)}}}
+  ,
+  \\
+  \mathcal S_{(v|M)^{(\alpha)}}
+  &=
+  \sum_{Q\geq1}K^{v\bullet}_{MQ}*\log(1+Y_{\bullet_Q})
+  +
+  \sum_{N\geq1}K_{MN}*\log(1+Y_{(v|N)^{(\alpha)}})
+  \\
+  &\quad
+  +
+  K_M*\log\frac{1+Y_{y_+^{(\alpha)}}}
+                 {1+Y_{y_-^{(\alpha)}}}
+  ,
+  \\
+  \mathcal S_{(w|M)^{(\alpha)}}
+  &=
+  \sum_{N\geq1}K_{MN}*\log(1+Y_{(w|N)^{(\alpha)}})
+  +
+  K_M*\log\frac{1+Y_{y_+^{(\alpha)}}}
+                 {1+Y_{y_-^{(\alpha)}}}.
+\end{align*}
+The lower bound \(M\geq2\) in the \(\bullet_Q\) equation is the stringbook
+indexing of the \(v\)-string source adjacent to the \(y\)-sheet boundary.
+The denominator entries are not optional signs: they encode the reversed
+ordering of the \(\ominus\)-sheet and \(w\)-string Bethe roots.
+\end{proposition}
+
+\begin{proof}
+The one-species derivation above already gives the density-to-TBA transpose.
+For species \(A\), the logarithmic Bethe-Yang equation is differentiated in
+the target rapidity.  The entropy variation transposes the density kernel, so
+the target-first TBA contains
+\((2\pi\ii)^{-1}\partial_v\log S^{\rm sb}_{AB}(u,v)\).  The diagonal
+unitarity relation displayed in the hypotheses gives
+\[
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm sb}_{AB}(u,v)
+  =
+  -
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm mirror}_{BA}(v,u),
+\]
+which is \eqref{eq:planar-n4-stringbook-source-kernel-bridge} and converts
+\eqref{eq:planar-n4-mirror-tba-target-first} to
+\eqref{eq:planar-n4-mirror-tba-general}.  Only the \(\bullet_Q\) strings carry
+mirror energy, so the length term is \(L\widetilde E_Q\) on those nodes and is
+zero on auxiliary nodes.  The sign \(-1\) in the level-II mirror Bethe-Yang
+equation gives the additive fermion chemical potential
+\(\nu_\alpha\pi\ii\) in each wing, equivalently
+\(\mu_{y_\pm^{(\alpha)}}=-\nu_\alpha\pi\ii\) in the source-kernel convention.
+
+The remaining entries are the fused forms of
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang}.  Fusing level-I roots gives
+the \(\bullet\)-kernels; fusing the auxiliary arrays gives the rational
+\(K_M\) and \(K_{MN}\) kernels used below.  The roots on the
+\(\ominus\)-sheet and in the \(w\)-strings are ordered oppositely to the
+\(\oplus\)-sheet and \(v\)-string roots in the stringbook Bethe-Yang
+products.  Their scattering factors therefore enter inverted, which is
+exactly the logarithmic ratio displayed in the \(y\)-, \(v\)-, and
+\(w\)-node equations.
+\end{proof}
+
+\begin{proposition}[Fused mirror kernels in stringbook orientation]
+\label{prop:planar-n4-fused-mirror-kernel-formulas}
+Fix a mirror sheet and write
+\[
+  \mathcal R_m=
+  \left\{-\frac{m-1}{2},-\frac{m-1}{2}+1,\ldots,\frac{m-1}{2}\right\}.
+\]
+For an integer \(a\), \(x^{[a]}(u)\) denotes the continuation of
+\(x(u+\ii a/2)\) on that sheet, with the side of the cut fixed by the
+contour datum.  Away from zeros and poles, the fused rational
+\(\bullet_m\)-\(\bullet_n\) phase is
+\begin{align}
+  \Phi^{\bullet\bullet}_{mn}(u,v)
+  &=
+  \sum_{r\in\mathcal R_m}
+  \sum_{s\in\mathcal R_n}
+  \log\left[
+    \frac{x^{[2s-1]}(v)-x^{[2r+1]}(u)}
+         {x^{[2s+1]}(v)-x^{[2r-1]}(u)}
+    \frac{1-\bigl(x^{[2s+1]}(v)x^{[2r-1]}(u)\bigr)^{-1}}
+         {1-\bigl(x^{[2s-1]}(v)x^{[2r+1]}(u)\bigr)^{-1}}
+  \right],
+  \label{eq:planar-n4-mirror-bullet-bullet-rational-phase}
+\end{align}
+and the dressing contribution is the endpoint combination
+\begin{align}
+  \Theta^{\bullet\bullet}_{mn}(u,v)
+  =
+  2\ii\bigl(&
+  \chi(x^{[m]}(u),x^{[n]}(v))
+  +
+  \chi(x^{[-m]}(u),x^{[-n]}(v))
+  \nonumber\\
+  &-
+  \chi(x^{[-m]}(u),x^{[n]}(v))
+  -
+  \chi(x^{[m]}(u),x^{[-n]}(v))
+  \bigr).
+  \label{eq:planar-n4-mirror-bullet-bullet-dressing-phase}
+\end{align}
+Thus
+\[
+  K^{\bullet\bullet}_{mn}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \left(
+    \Phi^{\bullet\bullet}_{mn}(u,v)
+    +
+    \Theta^{\bullet\bullet}_{mn}(u,v)
+  \right)
+\]
+in the target-first convention.  The \(y\)-sheet and \(v\)-string phases
+that occur in the source inventory are
+\begin{align}
+  \log S^{y_+\bullet}_n(u,v)
+  &=
+  \log\left[
+    \frac{x(u)-x^{[n]}(v)}
+         {x(u)-x^{[-n]}(v)}
+    \sqrt{\frac{x^{[-n]}(v)}{x^{[n]}(v)}}
+  \right],
+  \label{eq:planar-n4-mirror-yplus-bullet-phase}\\
+  \log S^{y_-\bullet}_n(u,v)
+  &=
+  \log\left[
+    \frac{x(u)^{-1}-x^{[n]}(v)}
+         {x(u)^{-1}-x^{[-n]}(v)}
+    \sqrt{\frac{x^{[-n]}(v)}{x^{[n]}(v)}}
+  \right],
+  \label{eq:planar-n4-mirror-yminus-bullet-phase}\\
+  \log S^{(v|m)\bullet}_{mn}(u,v)
+  &=
+  \sum_{\sigma=\pm1}
+  \sum_{r\in\mathcal R_m}
+  \sum_{s\in\mathcal R_n}
+  \log\left[
+    \frac{x^{[2r+\sigma]}(u)-x^{[2s+1]}(v)}
+         {x^{[2r+\sigma]}(u)-x^{[2s-1]}(v)}
+    \sqrt{\frac{x^{[2s-1]}(v)}{x^{[2s+1]}(v)}}
+  \right].
+  \label{eq:planar-n4-mirror-v-bullet-phase}
+\end{align}
+Their opposite orientations are reciprocals:
+\[
+  \log S^{\bullet y_\pm}_n(v,u)=-\log S^{y_\pm\bullet}_n(u,v),
+  \qquad
+  \log S^{\bullet(v|m)}_{nm}(v,u)
+  =
+  -\log S^{(v|m)\bullet}_{mn}(u,v).
+\]
+Finally, the auxiliary rational string phase
+\[
+  \Phi^{\rm aux}_{mn}(u,v)
+  =
+  \sum_{r\in\mathcal R_m}\sum_{s\in\mathcal R_n}
+  \log\frac{u-v+\ii(r-s+1)}{u-v+\ii(r-s-1)}
+\]
+has kernel
+\begin{equation}
+  \frac{1}{2\pi\ii}\partial_v\Phi^{\rm aux}_{mn}
+  =
+  K_{m+n}+K_{\lvert m-n\rvert}
+  +
+  2\sum_{j=1}^{\min(m,n)-1}K_{\lvert m-n\rvert+2j},
+  \label{eq:planar-n4-mirror-auxiliary-fused-kernel-crosswalk}
+\end{equation}
+with \(K_0=0\) and
+\[
+  K_N(u-v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \log\frac{u-v+\ii N/2}{u-v-\ii N/2}.
+\]
+\end{proposition}
+
+\begin{proof}
+The rational factors are finite products over the constituents of the two
+Bethe strings.  The sets \(\mathcal R_m\) and \(\mathcal R_n\) are exactly the
+constituent shifts, so multiplying the elementary level-I rational factor
+over \(r\) and \(s\) gives
+\eqref{eq:planar-n4-mirror-bullet-bullet-rational-phase}.  Reversing the
+order of the two strings in each elementary factor inverts the product, which
+is the reciprocal orientation stated for \(y_\pm\) and \((v|m)\) sources.
+The distinction between \(y_+\) and \(y_-\) is the replacement
+\(x(u)\mapsto x(u)^{-1}\) on the two \(y\)-sheets.
+
+For the purely auxiliary kernel put \(z=u-v\).  The derivative of
+\(\log(z+\ii a)\) with respect to \(v\) is \(-(z+\ii a)^{-1}\).  Hence the
+double sum contributes the difference between the multiplicities of
+\(r-s-1\) and \(r-s+1\).  As \(r\) and \(s\) run over two consecutive
+arithmetic strings, all interior multiplicities cancel in pairs except the
+two boundary terms and the doubled interior terms with the same parity as
+\(|m-n|\).  This gives precisely the right-hand side of
+\eqref{eq:planar-n4-mirror-auxiliary-fused-kernel-crosswalk}; it is the fused
+\(A_\infty\) kernel used in the Y-system inversion below.
+
+The dressing term is different in status.  If \(\chi(x,y)=-\chi(y,x)\) on the
+continued branches, the endpoint combination
+\eqref{eq:planar-n4-mirror-bullet-bullet-dressing-phase} is antisymmetric
+under \((m,u)\leftrightarrow(n,v)\), so it is compatible with scalar
+unitarity.  The existence of the globally continued \(\chi\), its branch
+choice, and possible additional crossed singularities are part of the
+dressing-phase analytic-continuation input inherited from
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.  The finite fusion algebra
+proved here supplies the rational products and the endpoint sign package.
+\end{proof}
+
 For a state with physical Bethe roots \(u_1,\ldots,u_K\), the excited-state
 TBA is obtained by contour deformation.  The physical roots satisfy exact
 Bethe equations of the form
@@ -882,6 +1203,79 @@ For functions analytic in the stated strip,
 \eqref{eq:planar-n4-wing-y-system}.  If a pole or branch cut crosses during
 the shift, the right-hand side acquires extra source terms; this is precisely
 why the analytic data below are part of the finite-volume spectral problem.
+\end{proof}
+
+\begin{proposition}[Data lost by the \(\mathsf s\)-kernel inverse]
+\label{prop:planar-n4-s-inverse-data-loss}
+Write
+\[
+  (\nabla_{\mathsf s}F)(u)=F(u+\ii/2)+F(u-\ii/2).
+\]
+Suppose \(F=\mathsf s*f\), where \(f\) is integrable, \(F\) is holomorphic in
+a neighbourhood of the closed strip \(|\operatorname{Im}u|\leq1/2\), and the
+two contour shifts meet no singularity of \(F\).  In logarithmic TBA
+applications this means that no zero or pole of the underlying Y-function, and
+no logarithmic cut, is crossed.  Then
+\begin{equation}
+  \nabla_{\mathsf s}F=f .
+  \label{eq:planar-n4-s-inverse-regular-domain}
+\end{equation}
+The converse datum is not contained in the local equation.  For
+\(\alpha\in\C\),
+\begin{equation}
+  Z_\alpha(u)=\frac{1}{2\cosh\pi(u-\alpha)}
+  \label{eq:planar-n4-s-inverse-zero-mode}
+\end{equation}
+satisfies
+\[
+  Z_\alpha(u+\ii/2)+Z_\alpha(u-\ii/2)=0
+\]
+as a meromorphic identity away from \(u=\alpha\), while its closest poles are
+at \(u=\alpha\pm\ii/2\).  Thus applying \(\mathsf s^{-1}\) determines only the
+regular part of a logarithmic TBA equation modulo such boundary data.  If the
+logarithm instead contains the shifted zero-pole factor
+\[
+  B_\alpha(u)=\frac{u-\alpha+\ii/2}{u-\alpha-\ii/2},
+\]
+then
+\begin{equation}
+  B_\alpha^+(u)B_\alpha^-(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha-\ii}.
+  \label{eq:planar-n4-s-inverse-source-memory}
+\end{equation}
+Consequently the local Y-system knows neither the positions \(\alpha\), nor
+the integer powers of such factors, nor the side of the cut from which they
+come.  These are extra analytic data supplied by the mirror-TBA contour and
+by exact-root regularity.
+\end{proposition}
+
+\begin{proof}
+With the Fourier convention of
+Proposition~\ref{prop:planar-n4-auxiliary-kernel-inverse},
+\(\widehat{\mathsf s}(\omega)=1/(2\cosh(\omega/2))\).  Shifting the contour
+for \(F(u+\ii/2)\) and \(F(u-\ii/2)\) back to the real line multiplies the
+Fourier transform by \(\ee^{\omega/2}\) and \(\ee^{-\omega/2}\), respectively.
+Under the stated no-crossing hypothesis the sum therefore has transform
+\[
+  2\cosh(\omega/2)\,\widehat{\mathsf s}(\omega)\widehat f(\omega)
+  =
+  \widehat f(\omega),
+\]
+which proves \eqref{eq:planar-n4-s-inverse-regular-domain}.  If a singularity
+lies on a shifted contour, the same contour move has a residue or jump
+contribution; that contribution is not present in the pointwise local
+equation unless it is recorded as a source.
+
+For the zero mode, use
+\[
+  \cosh\pi(u-\alpha+\ii/2)=\ii\sinh\pi(u-\alpha),
+  \qquad
+  \cosh\pi(u-\alpha-\ii/2)=-\ii\sinh\pi(u-\alpha).
+\]
+The two shifted terms cancel away from their boundary pole.  The last identity
+is the direct multiplication of \(B_\alpha(u+\ii/2)\) and
+\(B_\alpha(u-\ii/2)\).
 \end{proof}
 
 The TBA equations imply functional relations among Y-functions after applying
@@ -1071,35 +1465,90 @@ from the exact Bethe-root regularity conditions.
 
 The analytic Y-system supplements \eqref{eq:planar-n4-y-system} by specifying
 where each shifted function is meromorphic and which discontinuities occur
-when a shift crosses a cut.  A compact way to state the data is to introduce
-the shifted notation
+when a shift crosses a cut.  This is not cosmetic.  The symbolic Y-system is a
+local relation; the analytic data determine which local solution is the
+finite-volume spectrum.
+
+We use the shifted notation
 \[
   f^{[n]}(u)=f(u+\ii n/2)
 \]
-and to assign to every T-hook node \((a,s)\) a strip
+and write
 \[
-  \mathcal A_{a,s}
-  =
-  \{u\in\C:\ |\operatorname{Im}u|<\alpha_{a,s}/2\}
-  \setminus\{\text{short Zhukovsky cuts and state poles}\}.
+  Z_0^\vee=[-2g,2g]
 \]
-The integers \(\alpha_{a,s}\) are fixed by the T-hook position and by the
-chosen analytic gauge for \(T_{a,s}\).  Inside \(\mathcal A_{a,s}\), the
-functions \(Y_{a,s}\) are meromorphic; on the boundary of the strip the
-discontinuity is inherited from the mirror dressing phase and from Bethe-root
-zeros.  The exact Bethe equations are then regularity conditions:
+for the central mirror-sheet Zhukovsky cut.  Let \(\mathcal A_\ell\) denote the
+class of functions meromorphic in the open strip
+\begin{equation}
+  -\frac{\ell}{2}<\operatorname{Im}u<\frac{\ell}{2},
+  \label{eq:planar-n4-analytic-strip}
+\end{equation}
+after removing state-dependent poles and zeros that are explicitly recorded by
+source factors.  The basic stringbook-to-T-hook identification is
+\begin{align}
+  Y^\bullet_n=Y_{n,0},\qquad
+  Y^{\oplus,L/R}=Y_{1,\pm1}^{-1},\qquad
+  Y^{\ominus,L/R}=Y_{2,\pm2},
+  \nonumber\\
+  Y^{\vartriangle,L/R}_n=Y_{n+1,\pm1}^{-1},\qquad
+  Y^{\circ,L/R}_n=Y_{1,\pm(n+1)}^{-1}.
+  \label{eq:planar-n4-y-node-stringbook-map}
+\end{align}
+
+\begin{assumption}[Analytic Y-system strip and cut data]
+\label{ass:planar-n4-analytic-y-system-data}
+Fix the mirror-TBA sheet and the stringbook node convention
+\eqref{eq:planar-n4-y-node-stringbook-map}.  For every \(n\geq1\),
+\begin{equation}
+  Y_{n,0},\qquad Y_{n+1,\pm1},\qquad Y_{1,\pm(n+1)}
+  \in \mathcal A_n .
+  \label{eq:planar-n4-y-strip-assumption}
+\end{equation}
+Their first Zhukovsky branch points occur at
+\begin{equation}
+  u=\pm 2g+\frac{\ii\ell}{2},
+  \qquad
+  \ell=\pm n,\ \pm(n+2),\ \pm(n+4),\ldots .
+  \label{eq:planar-n4-y-branch-lattice}
+\end{equation}
+The central fermionic nodes \(Y_{1,\pm1}\) and \(Y_{2,\pm2}\) have cuts
+\(Z_0^\vee+\ii m\), \(m\in\mathbb Z\), and their two sides on the central cut
+are related by
+\begin{equation}
+  Y_{2,\pm2}(u+\ii0)=\frac{1}{Y_{1,\pm1}(u-\ii0)},
+  \qquad u\in Z_0^\vee .
+  \label{eq:planar-n4-central-fermion-cut-inversion}
+\end{equation}
+Finally, every zero or pole introduced by an excited-state contour deformation
+is part of the data and must be recorded by a finite product of local factors
+of the form in Proposition~\ref{prop:planar-n4-local-y-source-factor}.
+\end{assumption}
+
+The strip statement is an analytic input extracted from the mirror TBA and its
+asymptotic Bethe-ansatz limit; it is not a theorem of the local Hirota algebra.
+The same limitation is visible in the Arutyunov--Frolov derivation of the
+mirror TBA: applying the inverse \(s\)-kernel loses data, and the local
+Y-equations are controlled on the central mirror interval unless additional
+analytic-continuation assumptions are supplied.  We do not use that literature
+statement as a proof.  The assumption above is the independent monograph datum
+that must be checked against the chosen mirror sheet, source factors, and
+dressing branch.
+The branch-point lattice explains why the homogeneous Y-system can be shifted
+inside the strip \(\mathcal A_n\) but acquires sources when an endpoint, pole,
+zero, or dressing cut is crossed.  The central inversion
+\eqref{eq:planar-n4-central-fermion-cut-inversion} is the piece that later
+turns into the magic-sheet gluing condition for the one-row T-gauge and,
+eventually, into the \(P\mu\)-system.
+
+With these conventions the exact Bethe equations are regularity conditions:
 \[
   1+Y_{\bullet_1}^{\rm phys}(u_j)=0
 \]
-removes would-be singularities at the physical roots after the contour
-deformation.
-
-This formulation is deliberately more verbose than the symbolic Y-system.
-The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical sheet to
-the mirror sheet, and the operations ``shift'' and ``continue through a cut''
-do not commute without recording the path.  In practical TBA calculations
-this information is encoded in the integration contours, source terms, and
-driving terms for the excited state.
+removes would-be singularities at the physical roots after contour
+deformation.  This formulation is deliberately more verbose than the symbolic
+Y-system.  The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical
+sheet to the mirror sheet, and the operations ``shift'' and ``continue through
+a cut'' do not commute without recording the path.
 
 \section{Konishi as the First Wrapping Test}
 

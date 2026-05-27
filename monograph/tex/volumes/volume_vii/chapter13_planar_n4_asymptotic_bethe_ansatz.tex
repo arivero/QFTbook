@@ -60,6 +60,41 @@ write the reciprocal of this expression.  The companion check script enforces
 the \(x^\pm\)-energy and sheet conventions used here; crossing itself remains
 a monodromy input rather than a finite algebraic identity.
 
+\begin{warning}[Status of magnon crossing]
+\label{warn:planar-n4-magnon-crossing-status}
+The crossing equation used in this chapter is not the Wightman--LSZ crossing
+theorem for four-dimensional local scattering amplitudes.  A spin-chain
+magnon is an excitation above the chosen BMN vacuum in a single-trace sector;
+it is not created by a gauge-invariant local field, its two-body scattering
+operator is asymptotic in the trace length, and its dispersion is encoded on
+the Zhukovsky rapidity surface rather than on a relativistic mass shell.
+Consequently ordinary four-dimensional QFT does not by itself give the
+replacement \(x^\pm\mapsto1/x^\pm\) or the scalar equation displayed above.
+
+The conceptual origin of the condition is the relativistic
+\(\mathrm{AdS}_5\times S^5\) string worldsheet at strong 't Hooft coupling.
+Before uniform light-cone gauge fixing, the worldsheet theory is a
+two-dimensional relativistic QFT: its Euclidean continuation supplies the
+mirror-channel interchange of space and time, and relativistic crossing is
+realized as an analytic continuation in rapidity.  Gauge fixing and
+decompactification turn the excitations into nonrelativistic magnons with the
+Zhukovsky dispersion, so the inherited crossing operation has no intrinsic
+explanation from the nonrelativistic spin chain alone.  In the resulting
+integrable worldsheet/spin-chain framework the crossed magnon is the
+contragredient short representation of the centrally extended residual
+symmetry;
+equivalently, the antipode operation sends the Zhukovsky variables to the
+crossed sheet \(x^\pm\mapsto1/x^\pm\) along a specified path.  Matrix
+consistency with this crossed representation fixes the rational multiplier
+below, while the dressing phase is required to have the corresponding scalar
+monodromy.  Extending this worldsheet crossing condition to all 't Hooft
+coupling, and using it as a statement about planar gauge-theory anomalous
+dimensions, is an integrability assumption constrained by symmetry,
+unitarity, Yang--Baxter factorization, perturbative gauge-theory checks, and
+finite-size TBA/QSC tests.  It is not presently a theorem derived from a
+constructive four-dimensional definition of \(\mathcal N=4\) SYM.
+\end{warning}
+
 \section{BMN Vacuum and Central Extension}
 
 The vacuum spin-chain state is
@@ -488,6 +523,126 @@ intertwiner is unique up to one scalar.  Let this one-copy scalar be denoted
 \end{aligned}
 \label{eq:planar-n4-su2c-ten-amplitudes}
 \end{equation}
+
+\begin{proposition}[Generic rank certificate for the one-copy intertwiner]
+\label{prop:planar-n4-su2c-intertwiner-rank-certificate}
+Let
+\[
+  d_{12}=x_2^- -x_1^+,\qquad n_{12}=x_2^+ -x_1^-,
+\]
+and work on the generic open set where
+\[
+  x_1^\pm x_2^\pm d_{12}n_{12}a_1a_2
+  (x_1^-x_2^- -1)(x_1^+x_2^+ -1)\ne0 .
+\]
+After the dynamic-frame \(Q\)- and \(S\)-intertwining equations are written
+on the ten \(\mathfrak{su}(2)\oplus\mathfrak{su}(2)\)-covariant amplitudes
+and the representation ratios
+\[
+  x_i^+=\ii d_i/b_i,\qquad x_i^-=-\ii a_i/c_i,\qquad a_id_i-b_ic_i=1
+\]
+are used, the finite linear system has the following row-echelon chart:
+\[
+\begin{gathered}
+  B_{12}=\beta_{12}A_{12},\qquad
+  C_{12}=\gamma_{12}A_{12},\qquad
+  D_{12}=\delta_{12}A_{12},\qquad
+  E_{12}=\varepsilon_{12}A_{12},\\
+  F_{12}=\varphi_{12}A_{12},\qquad
+  G_{12}=g_{12}A_{12},\qquad
+  H_{12}=h_{12}A_{12},\qquad
+  K_{12}=k_{12}A_{12},\qquad
+  L_{12}=\ell_{12}A_{12},
+\end{gathered}
+\label{eq:planar-n4-su2c-row-chart}
+\]
+where
+\[
+\begin{aligned}
+  \beta_{12}
+  &=
+  1
+  -2\frac{x_2^+-x_1^+}{n_{12}}
+     \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-},
+  &
+  \gamma_{12}
+  &=
+  \frac{2a_1a_2}{g}
+  \frac{x_2^+-x_1^+}{(x_1^-x_2^- -1)n_{12}},
+  \\
+  \delta_{12}
+  &=-\frac{d_{12}}{n_{12}},
+  &
+  \varepsilon_{12}
+  &=
+  -\frac{d_{12}}{n_{12}}
+  \left[
+  1
+  -2\frac{x_2^- -x_1^-}{d_{12}}
+     \frac{x_2^+ -1/x_1^-}{x_2^+ -1/x_1^+}
+  \right],
+  \\
+  \varphi_{12}
+  &=
+  -\frac{2g}{a_1a_2}
+  \frac{(x_1^+-x_1^-)(x_2^+-x_2^-)(x_2^- -x_1^-)}
+       {(x_1^+x_2^+ -1)n_{12}},
+  &
+  g_{12}
+  &=
+  \frac{x_2^+-x_1^+}{n_{12}},
+  \\
+  h_{12}
+  &=
+  \frac{a_1}{a_2}\frac{x_2^+-x_2^-}{n_{12}},
+  &
+  k_{12}
+  &=
+  \frac{a_2}{a_1}\frac{x_1^+-x_1^-}{n_{12}},
+  \\
+  \ell_{12}
+  &=
+  \frac{x_2^- -x_1^-}{n_{12}} .
+\end{aligned}
+\label{eq:planar-n4-su2c-row-coefficients}
+\]
+Consequently the solution space of the finite intertwining equations is
+one-dimensional on this open set.  Choosing
+\[
+  A_{12}=\mathcal S_{12}\frac{n_{12}}{d_{12}}
+\]
+recovers the ten amplitudes in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.
+\end{proposition}
+
+\begin{proof}
+The displayed chart is a row-reduced certificate.  The unknown vector is
+\[
+  (A,B,C,D,E,F,G,H,K,L).
+\]
+Each equation in \eqref{eq:planar-n4-su2c-row-chart} has the form
+\[
+  X-r_XA=0,\qquad X\in\{B,C,D,E,F,G,H,K,L\},
+\]
+with \(r_X\) one of the nine coefficients in
+\eqref{eq:planar-n4-su2c-row-coefficients}.  Ordered by
+\((B,C,D,E,F,G,H,K,L)\), these nine equations have pivot coefficient \(1\)
+in nine distinct columns.  Their coefficient matrix therefore has rank
+nine, so its kernel in the ten-dimensional amplitude space is one
+dimensional and is parametrized by \(A\).
+
+It remains only to identify the parametrization with the convention used in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.  Substituting
+\(A_{12}=\mathcal S_{12}n_{12}/d_{12}\) into
+\eqref{eq:planar-n4-su2c-row-chart} gives, term by term, the formulas for
+\(B,C,D,E,F,G,H,K,L\) in
+\eqref{eq:planar-n4-su2c-ten-amplitudes}.  The genericity assumptions are
+exactly the denominators that appear in this chart and in the two channels
+where the \(Z^\pm\) markers enter.  At their zero loci the tensor product can
+become reducible or the chosen dynamic-frame chart can degenerate; those
+special loci are the bound-state and pole analyses, not the generic
+two-magnon scattering case.
+\end{proof}
 
 \begin{proposition}[Local amplitude checks]
 \label{prop:planar-n4-su2c-local-amplitude-checks}
@@ -1198,13 +1353,189 @@ matrix-amplitude calculation behind the scalar multiplier; it does not
 construct the analytic crossed scalar branch.
 \end{proof}
 
+\begin{proposition}[Scalar crossing monodromy cocycle]
+\label{prop:planar-n4-crossing-scalar-monodromy-cocycle}
+Let \(\mathsf C_1\) denote a chosen crossing continuation of the first
+magnon along \(\gamma_{\rm cr}\) from
+Definition~\ref{def:planar-n4-crossing-path}.  Fix a scalar branch
+\(\sigma^{[\gamma]}_{12}\) on a sheet reached by a path \(\gamma\) from the
+physical chamber, and write
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}
+  :=
+  \sigma^{[\gamma\mathsf C_1]}(x_1^\pm,x_2^\pm)
+\]
+for the same external coordinates evaluated after analytic continuation
+along the concatenated path.  Assume that the crossed path avoids all poles
+and zeros in the denominators below and that Janik crossing holds on each
+crossed segment in the stringbook orientation,
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma^{[\gamma]}_{12}
+  =\Xi_{12}(x_1^\pm,x_2^\pm).
+\]
+Then the second crossing is not an involution on the scalar branch.  It acts
+by
+\begin{equation}
+  \frac{\sigma^{[\gamma\mathsf C_1\mathsf C_1]}_{12}}
+       {\sigma^{[\gamma]}_{12}}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\Xi_{12}(x_1^\pm,x_2^\pm)}
+  =:\mathcal M_{12}^{(2)},
+  \label{eq:planar-n4-crossing-double-monodromy}
+\end{equation}
+where explicitly
+\begin{equation}
+  \mathcal M_{12}^{(2)}
+  =
+  \frac{x_2^+ -1/x_1^+}{x_2^+ -1/x_1^-}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -x_1^+}{x_2^- -x_1^-}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+}.
+  \label{eq:planar-n4-crossing-double-monodromy-expanded}
+\end{equation}
+In the reciprocal scalar convention
+\(\sigma^{\rm rec}_{12}:=\sigma_{12}^{-1}\), the one-crossing multiplier
+and the double-crossing multiplier are inverted.
+\end{proposition}
+
+\begin{proof}
+The first crossing gives
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}
+  =
+  \frac{\Xi_{12}(x_1^\pm,x_2^\pm)}
+       {\sigma^{[\gamma]}_{12}} .
+\]
+After that continuation the projected Zhukovsky variables of the first
+magnon are \(1/x_1^\pm\).  Applying the same crossing equation once more
+therefore gives
+\[
+  \sigma^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\sigma^{[\gamma\mathsf C_1]}_{12}}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\Xi_{12}(x_1^\pm,x_2^\pm)}
+  \sigma^{[\gamma]}_{12}.
+\]
+Substituting the definition of \(\Xi_{12}\) cancels the common
+\(x_2^+/x_2^-\) factor and yields
+\eqref{eq:planar-n4-crossing-double-monodromy-expanded}.  If the reciprocal
+scalar factor is used, every displayed crossing equation is inverted because
+\(\sigma^{\rm rec}_{12}=1/\sigma_{12}\); the same two-line calculation then
+gives \((\mathcal M_{12}^{(2)})^{-1}\).  The argument proves the rational
+branch displacement forced by the chosen crossing law.  It does not classify
+all possible homotopy classes of scalar branches or prove that the BES
+branch is the unique minimal solution.
+\end{proof}
+
+\begin{proposition}[CDD ambiguity of the scalar crossing problem]
+\label{prop:planar-n4-crossing-cdd-ambiguity}
+Let \(\mathcal U\) be a regular domain of scalar branches closed under
+particle exchange and under the chosen first-particle crossing segments
+\(\mathsf C_1\), with no zero or pole of the functions below on the crossed
+segments.  Suppose \(\sigma_{12}\) and \(\sigma'_{12}\) are two non-zero
+meromorphic scalar branches on \(\mathcal U\) satisfying the same Janik
+crossing equation
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma^{[\gamma]}_{12}
+  =
+  \sigma'^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma'^{[\gamma]}_{12}
+  =
+  \Xi_{12}
+\]
+and the same scalar unitarity equation
+\[
+  \sigma^{[\gamma P]}_{21}\sigma^{[\gamma]}_{12}
+  =
+  \sigma'^{[\gamma P]}_{21}\sigma'^{[\gamma]}_{12}
+  =1,
+\]
+where \(P\) exchanges the two particles.  Set
+\[
+  \mathcal F^{[\gamma]}_{12}
+  :=
+  \frac{\sigma'^{[\gamma]}_{12}}{\sigma^{[\gamma]}_{12}} .
+\]
+Then \(\mathcal F\) is a CDD factor in this convention:
+\begin{equation}
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma]}_{12}=1,\qquad
+  \mathcal F^{[\gamma P]}_{21}
+  \mathcal F^{[\gamma]}_{12}=1,\qquad
+  \mathcal F^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  =
+  \mathcal F^{[\gamma]}_{12}.
+  \label{eq:planar-n4-cdd-factor-equations}
+\end{equation}
+Conversely, multiplying any scalar solution by a non-zero meromorphic
+\(\mathcal F\) satisfying the first two equations in
+\eqref{eq:planar-n4-cdd-factor-equations} gives another scalar solution with
+the same crossing multiplier and scalar unitarity.  If \(\mathcal F\) has a
+zero of order \(m\) at a regular point of a branch, then it has a pole of
+order \(m\) at the corresponding crossed point and at the exchanged point.
+Thus a CDD-free BES branch is a minimality and analyticity choice, not a
+formal consequence of the finite matrix crossing multiplier.
+\end{proposition}
+
+\begin{proof}
+Dividing the crossing equation for \(\sigma'\) by the crossing equation for
+\(\sigma\) gives
+\[
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma]}_{12}=1.
+\]
+Dividing scalar unitarity for \(\sigma'\) by scalar unitarity for
+\(\sigma\) gives
+\[
+  \mathcal F^{[\gamma P]}_{21}
+  \mathcal F^{[\gamma]}_{12}=1.
+\]
+Applying the first identity on the already crossed branch gives
+\[
+  \mathcal F^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}=1.
+\]
+Together with \(\mathcal F^{[\gamma\mathsf C_1]}_{12}
+=(\mathcal F^{[\gamma]}_{12})^{-1}\), this proves the double-crossing
+identity for the CDD factor.  Conversely, if
+\(\sigma'_{12}:=\mathcal F_{12}\sigma_{12}\), then the first CDD equation
+cancels the extra factor in crossing and the second cancels the extra factor
+in scalar unitarity.
+
+For the divisor statement, work in a coordinate chart where crossing and
+exchange are biholomorphic.  The identity
+\(\mathcal F^{[\gamma\mathsf C_1]}=1/\mathcal F^{[\gamma]}\) changes an
+order-\(m\) zero into an order-\(m\) pole on the crossed branch, and the
+exchange identity does the same on the exchanged branch.  In a simply
+connected pole-free subdomain one may write
+\(\mathcal F=\exp \ell\), and the equations become
+\[
+  \ell^{[\gamma\mathsf C_1]}_{12}=-\ell^{[\gamma]}_{12},
+  \qquad
+  \ell^{[\gamma P]}_{21}=-\ell^{[\gamma]}_{12}.
+\]
+Hence setting \(\ell=0\), or equivalently \(\mathcal F=1\), is an additional
+minimal-branch normalization.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
-The two preceding propositions fix the rational convention carried by the
-chosen scalar split and its finite crossed-amplitude origin; they do not
-derive the global monodromy condition from finite algebra.  In the
+The preceding propositions fix the rational convention carried by the
+chosen scalar split, its finite crossed-amplitude origin, and the
+double-crossing sheet displacement forced by that convention, while
+\eqref{eq:planar-n4-cdd-factor-equations} identifies the remaining
+CDD freedom.  They do not derive the global monodromy condition from finite
+algebra.  Homotopic crossing paths inside a singularity-free chamber give
+the same rational cocycle, but paths separated by poles, zeros, or extra CDD
+singularities can land on different scalar branches.  In the
 normalization where the rational matrix part is separated as
 above, Janik crossing has the convention-fixed form
 \begin{equation}
@@ -1851,21 +2182,153 @@ and~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
 \section{Bound States and the Large-Spin Cusp Limit}
 
 A pole of the \(SL(2)\) scalar factor at \(x_1^-=x_2^+\) gives a Bethe
-string.  A \(Q\)-magnon bound state is described by
+string.  More precisely, the displayed \(SL(2)\)-vacuum rational factor has
+a simple kinematic pole when the outgoing endpoint of the first constituent
+equals the incoming endpoint of the second constituent.  A \(Q\)-magnon
+string with real center \(u\) is described by
 \[
   u_j=u+\frac{\ii}{2}(Q-2j+1),
   \qquad j=1,\ldots,Q,
 \]
-and has
+with constituent variables \(x_j^\pm=x(u_j\pm\ii/2)\).  Put
+\begin{equation}
+  x_Q^+(u)=x\!\left(u+\frac{\ii Q}{2}\right)=x_1^+,
+  \qquad
+  x_Q^-(u)=x\!\left(u-\frac{\ii Q}{2}\right)=x_Q^- .
+  \label{eq:planar-n4-bound-state-endpoints}
+\end{equation}
+These are the only Zhukovsky endpoints that survive after fusion.
+
+\begin{proposition}[Fusion of a Bethe string]
+\label{prop:planar-n4-bound-state-fusion}
+Assume a \(Q\)-string is formed by the adjacent-pole conditions
+\[
+  x_j^-=x_{j+1}^+,\qquad j=1,\ldots,Q-1,
+\]
+and that the path to this pole does not cross a dressing-phase branch
+singularity.  Then the total momentum and physical energy of the string are
 \[
   \ee^{\ii p}=\frac{x_1^+}{x_Q^-},
   \qquad
-  E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
+  H_Q(u)=Q+2\ii g\left(\frac1{x_Q^+(u)}-\frac1{x_Q^-(u)}\right),
+  \label{eq:planar-n4-bound-state-momentum-energy}
 \]
-Its scattering with another bound state is obtained by fusing the elementary
-S-matrices over all constituent rapidities and projecting to the short
-\(Q\)-particle representation.  This fusion step is one of the inputs that
-later reappears in mirror TBA kernels.
+and the shortening identity gives
+\begin{equation}
+  H_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
+  \label{eq:planar-n4-bound-state-dispersion}
+\end{equation}
+If \(y\) is a level-II auxiliary root in the \(SL(2)\)-vacuum string basis,
+then its product of constituent scattering factors telescopes:
+\begin{equation}
+  \prod_{j=1}^{Q}
+  \frac{y-x_j^+}{y-x_j^-}
+  \sqrt{\frac{x_j^-}{x_j^+}}
+  =
+  \frac{y-x_Q^+(u)}{y-x_Q^-(u)}
+  \sqrt{\frac{x_Q^-(u)}{x_Q^+(u)}} .
+  \label{eq:planar-n4-bound-state-auxiliary-telescope}
+\end{equation}
+For two bound states of charges \(Q_1,Q_2\) and centers \(u,v\), the fused
+\(SL(2)\)-vacuum scalar factor is
+\begin{equation}
+  S^{Q_1,Q_2}_{SL(2)}(u,v)
+  =
+  \prod_{m=1}^{Q_1}\prod_{n=1}^{Q_2}
+  S_{SL(2)}
+  \!\left(
+    u+\frac{\ii}{2}(Q_1-2m+1),
+    v+\frac{\ii}{2}(Q_2-2n+1)
+  \right),
+  \label{eq:planar-n4-fused-sl2-bound-state-scalar}
+\end{equation}
+followed by projection to the short \(Q_1\)- and \(Q_2\)-particle
+representations.  The product formula is the scalar part of fusion; the
+matrix projection and the analytic continuation of the dressing factor are
+separate representation-theoretic and scalar-branch inputs.
+\end{proposition}
+
+\begin{proof}
+The condition \(u_{j+1}=u_j-\ii\) gives
+\[
+  x_j^-=x(u_j-\ii/2)=x(u_{j+1}+\ii/2)=x_{j+1}^+,
+\]
+so all internal endpoints cancel in products.  Hence
+\[
+  \prod_{j=1}^{Q}\frac{x_j^+}{x_j^-}
+  =
+  \frac{x_1^+}{x_Q^-}
+  =
+  \frac{x_Q^+(u)}{x_Q^-(u)}.
+\]
+The same cancellation in the sum of the physical-sheet one-particle energies
+\[
+  H_j=1+2\ii g\left(\frac1{x_j^+}-\frac1{x_j^-}\right)
+\]
+gives the energy formula in
+\eqref{eq:planar-n4-bound-state-momentum-energy}.  The bound-state
+shortening relation is the centrally extended one with \(H^2-Q^2=4PK\), and
+the total central charges telescope to
+\[
+  P=g(1-\ee^{\ii p}),
+  \qquad
+  K=g(1-\ee^{-\ii p}).
+\]
+Therefore
+\[
+  H_Q^2=Q^2+4g^2(1-\ee^{\ii p})(1-\ee^{-\ii p})
+  =
+  Q^2+16g^2\sin^2\frac p2 .
+\]
+Taking the positive physical branch gives
+\eqref{eq:planar-n4-bound-state-dispersion}.
+
+The auxiliary factor
+\eqref{eq:planar-n4-bound-state-auxiliary-telescope} is the same endpoint
+cancellation:
+\[
+  \prod_{j=1}^{Q}\frac{y-x_j^+}{y-x_j^-}
+  =
+  \frac{y-x_1^+}{y-x_Q^-},
+  \qquad
+  \prod_{j=1}^{Q}\frac{x_j^-}{x_j^+}
+  =
+  \frac{x_Q^-}{x_1^+}.
+\]
+Finally, scalar fusion means that a distant probe scatters consecutively
+through every constituent of each string before the internal tensor product is
+projected to the short representation.  This gives
+\eqref{eq:planar-n4-fused-sl2-bound-state-scalar}.  Internal pole residues
+and the matrix projection determine the normalization of the bound-state
+intertwiner; they are not additional endpoint identities and are kept as
+fusion inputs here.
+\end{proof}
+
+The resulting asymptotic Bethe--Yang equations for \(K^{\rm I}\) bound-state
+particles of charges \(Q_k\) are obtained from
+\eqref{eq:planar-n4-single-copy-nested-bethe-yang} by replacing the
+fundamental scalar factor with
+\eqref{eq:planar-n4-fused-sl2-bound-state-scalar} and the fundamental
+auxiliary factors with
+\eqref{eq:planar-n4-bound-state-auxiliary-telescope}.  Thus the first
+equation in the \(SL(2)\)-vacuum frame reads
+\begin{equation}
+  \ee^{\ii p_kL}
+  =
+  \prod_{\substack{j=1\\j\neq k}}^{K^{\rm I}}
+  S^{Q_j,Q_k}_{SL(2)}(u_j,u_k)
+  \prod_{\varsigma=L,R}
+  \prod_{\ell=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_\ell^{(\varsigma)}-x_{Q_k}^+(u_k)}
+       {y_\ell^{(\varsigma)}-x_{Q_k}^-(u_k)}
+  \sqrt{\frac{x_{Q_k}^-(u_k)}{x_{Q_k}^+(u_k)}} .
+  \label{eq:planar-n4-bound-state-bethe-yang}
+\end{equation}
+The level-II and level-III equations keep the same rational form as before,
+with each fundamental \(x^\pm\) replaced by the appropriate bound-state
+endpoints \(x_Q^\pm(u)\).  This is the bound-state input used by the mirror
+TBA node \(Q\mid\bullet\) in
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.
 
 In the \(SL(2)\) sector, twist-\(L\) spin-\(S\) operators are
 \[

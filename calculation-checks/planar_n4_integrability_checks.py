@@ -633,6 +633,137 @@ def check_matrix_crossing_channel_scalar_multiplier() -> None:
     assert_close("crossed matrix channel positive branch", branch_ratio, 1.0)
 
 
+def check_crossing_scalar_monodromy_cocycle() -> None:
+    """Check the scalar one- and two-crossing branch cocycle."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def xi(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            second_plus
+            / second_minus
+            * (second_plus - first_plus)
+            / (second_plus - first_minus)
+            * (second_minus - 1 / first_plus)
+            / (second_minus - 1 / first_minus)
+        )
+
+    physical_multiplier = xi(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_multiplier = xi(1 / x1_plus, 1 / x1_minus, x2_plus, x2_minus)
+    if physical_multiplier != Fraction(117, 112):
+        raise AssertionError(f"one-crossing scalar multiplier: {physical_multiplier}")
+    if crossed_multiplier != Fraction(675, 784):
+        raise AssertionError(f"crossed one-crossing scalar multiplier: {crossed_multiplier}")
+    if physical_multiplier == crossed_multiplier:
+        raise AssertionError("crossing scalar multiplier should be sheet-sensitive")
+
+    double_crossing_multiplier = crossed_multiplier / physical_multiplier
+    expanded_multiplier = (
+        (x2_plus - 1 / x1_plus)
+        / (x2_plus - 1 / x1_minus)
+        * (x2_plus - x1_minus)
+        / (x2_plus - x1_plus)
+        * (x2_minus - x1_plus)
+        / (x2_minus - x1_minus)
+        * (x2_minus - 1 / x1_minus)
+        / (x2_minus - 1 / x1_plus)
+    )
+    if double_crossing_multiplier != Fraction(75, 91):
+        raise AssertionError(f"double-crossing multiplier: {double_crossing_multiplier}")
+    if expanded_multiplier != double_crossing_multiplier:
+        raise AssertionError(
+            "expanded double-crossing multiplier disagrees: "
+            f"{expanded_multiplier} != {double_crossing_multiplier}"
+        )
+
+    sigma_branch = Fraction(11, 13)
+    sigma_crossed = physical_multiplier / sigma_branch
+    sigma_double_crossed = crossed_multiplier / sigma_crossed
+    if sigma_double_crossed / sigma_branch != double_crossing_multiplier:
+        raise AssertionError("two-step crossing recursion failed")
+
+    reciprocal_branch = 1 / sigma_branch
+    reciprocal_crossed = (1 / physical_multiplier) / reciprocal_branch
+    reciprocal_double_crossed = (1 / crossed_multiplier) / reciprocal_crossed
+    if reciprocal_double_crossed / reciprocal_branch != 1 / double_crossing_multiplier:
+        raise AssertionError("reciprocal scalar convention should invert the cocycle")
+
+
+def check_crossing_cdd_factor_ambiguity() -> None:
+    """Check the CDD quotient equations left by crossing and unitarity."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def xi(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            second_plus
+            / second_minus
+            * (second_plus - first_plus)
+            / (second_plus - first_minus)
+            * (second_minus - 1 / first_plus)
+            / (second_minus - 1 / first_minus)
+        )
+
+    physical_multiplier = xi(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_multiplier = xi(1 / x1_plus, 1 / x1_minus, x2_plus, x2_minus)
+    sigma_branch = Fraction(11, 13)
+    sigma_crossed = physical_multiplier / sigma_branch
+    sigma_double_crossed = crossed_multiplier / sigma_crossed
+    sigma_swapped = 1 / sigma_branch
+
+    cdd_branch = Fraction(17, 19)
+    cdd_crossed = 1 / cdd_branch
+    cdd_double_crossed = cdd_branch
+    cdd_swapped = 1 / cdd_branch
+
+    sigma_prime = cdd_branch * sigma_branch
+    sigma_prime_crossed = cdd_crossed * sigma_crossed
+    sigma_prime_double_crossed = cdd_double_crossed * sigma_double_crossed
+    sigma_prime_swapped = cdd_swapped * sigma_swapped
+
+    if sigma_prime_crossed * sigma_prime != physical_multiplier:
+        raise AssertionError("CDD-dressed branch failed Janik crossing")
+    if sigma_prime_swapped * sigma_prime != 1:
+        raise AssertionError("CDD-dressed branch failed scalar unitarity")
+    if sigma_prime_double_crossed / sigma_prime != sigma_double_crossed / sigma_branch:
+        raise AssertionError("CDD factor should not change regular double crossing")
+
+    wrong_cdd_crossed = cdd_branch
+    if wrong_cdd_crossed * sigma_crossed * sigma_prime == physical_multiplier:
+        raise AssertionError("crossing-even CDD factor unexpectedly preserved crossing")
+
+    physical_divisor = Counter({"z0": 2, "z1": -3})
+
+    def propagated_divisor(divisor: Counter[str], sign: int) -> Counter[str]:
+        return Counter({point: sign * order for point, order in divisor.items()})
+
+    crossed_divisor = propagated_divisor(physical_divisor, -1)
+    swapped_divisor = propagated_divisor(physical_divisor, -1)
+    double_crossed_divisor = propagated_divisor(crossed_divisor, -1)
+    if crossed_divisor != Counter({"z0": -2, "z1": 3}):
+        raise AssertionError(f"CDD crossed divisor propagation: {crossed_divisor}")
+    if swapped_divisor != crossed_divisor:
+        raise AssertionError("CDD swap should invert the divisor just like crossing")
+    if double_crossed_divisor != physical_divisor:
+        raise AssertionError("CDD regular double crossing should restore the divisor")
+
+
 def check_dressing_charge_antisymmetry_unitarity() -> None:
     """Check that the charge expansion gives scalar dressing unitarity."""
 
@@ -1040,6 +1171,166 @@ def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
 
     unsafe_delta = 1j * 4 / coupling
     assert_close("DHM pole clearance vanishes on pole lattice", pole_clearance(unsafe_delta), 0)
+
+
+def check_su2c_intertwiner_rank_certificate() -> None:
+    """Check the generic one-scalar rank certificate for the su(2|2)c intertwiner."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+    a1 = Fraction(11, 1)
+    a2 = Fraction(13, 1)
+    coupling = Fraction(17, 1)
+    scalar = Fraction(19, 1)
+
+    d12 = x2_minus - x1_plus
+    n12 = x2_plus - x1_minus
+    coefficients = {
+        "B": 1
+        - 2
+        * (x2_plus - x1_plus)
+        / n12
+        * (x2_minus - 1 / x1_plus)
+        / (x2_minus - 1 / x1_minus),
+        "C": 2
+        * a1
+        * a2
+        / coupling
+        * (x2_plus - x1_plus)
+        / ((x1_minus * x2_minus - 1) * n12),
+        "D": -d12 / n12,
+        "E": -d12
+        / n12
+        * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / d12
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        ),
+        "F": -2
+        * coupling
+        / (a1 * a2)
+        * (x1_plus - x1_minus)
+        * (x2_plus - x2_minus)
+        * (x2_minus - x1_minus)
+        / ((x1_plus * x2_plus - 1) * n12),
+        "G": (x2_plus - x1_plus) / n12,
+        "H": (a1 / a2) * (x2_plus - x2_minus) / n12,
+        "K": (a2 / a1) * (x1_plus - x1_minus) / n12,
+        "L": (x2_minus - x1_minus) / n12,
+    }
+
+    columns = ["A", "B", "C", "D", "E", "F", "G", "H", "K", "L"]
+    rows: list[list[Fraction]] = []
+    for name in columns[1:]:
+        row = [Fraction(0) for _ in columns]
+        row[0] = -coefficients[name]
+        row[columns.index(name)] = Fraction(1)
+        rows.append(row)
+
+    def rank(matrix: list[list[Fraction]]) -> int:
+        work = [row[:] for row in matrix]
+        row_index = 0
+        for col_index in range(len(work[0])):
+            pivot = next(
+                (candidate for candidate in range(row_index, len(work)) if work[candidate][col_index]),
+                None,
+            )
+            if pivot is None:
+                continue
+            work[row_index], work[pivot] = work[pivot], work[row_index]
+            pivot_value = work[row_index][col_index]
+            work[row_index] = [entry / pivot_value for entry in work[row_index]]
+            for candidate in range(len(work)):
+                if candidate == row_index or not work[candidate][col_index]:
+                    continue
+                factor = work[candidate][col_index]
+                work[candidate] = [
+                    entry - factor * pivot_entry
+                    for entry, pivot_entry in zip(work[candidate], work[row_index])
+                ]
+            row_index += 1
+        return row_index
+
+    if rank(rows) != 9:
+        raise AssertionError("su(2|2)c intertwiner row chart should have rank 9")
+
+    a12 = scalar * n12 / d12
+    amplitudes = {
+        "A": a12,
+        "B": coefficients["B"] * a12,
+        "C": coefficients["C"] * a12,
+        "D": coefficients["D"] * a12,
+        "E": coefficients["E"] * a12,
+        "F": coefficients["F"] * a12,
+        "G": coefficients["G"] * a12,
+        "H": coefficients["H"] * a12,
+        "K": coefficients["K"] * a12,
+        "L": coefficients["L"] * a12,
+    }
+
+    direct_amplitudes = {
+        "A": scalar * (x2_plus - x1_minus) / d12,
+        "B": scalar
+        * (x2_plus - x1_minus)
+        / d12
+        * (
+            1
+            - 2
+            * (x2_plus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (x2_minus - 1 / x1_plus)
+            / (x2_minus - 1 / x1_minus)
+        ),
+        "C": scalar
+        * 2
+        / coupling
+        * a1
+        * a2
+        / (x1_minus * x2_minus - 1)
+        * (x2_plus - x1_plus)
+        / d12,
+        "D": -scalar,
+        "E": -scalar
+        * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / d12
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        ),
+        "F": -scalar
+        * 2
+        * coupling
+        / (a1 * a2)
+        * (x1_plus - x1_minus)
+        * (x2_plus - x2_minus)
+        / (x1_plus * x2_plus - 1)
+        * (x2_minus - x1_minus)
+        / d12,
+        "G": scalar * (x2_plus - x1_plus) / d12,
+        "H": scalar * (a1 / a2) * (x2_plus - x2_minus) / d12,
+        "K": scalar * (a2 / a1) * (x1_plus - x1_minus) / d12,
+        "L": scalar * (x2_minus - x1_minus) / d12,
+    }
+    for name in columns:
+        if amplitudes[name] != direct_amplitudes[name]:
+            raise AssertionError(f"su(2|2)c row chart mismatch for {name}")
+
+    for row in rows:
+        residual = sum(row[index] * amplitudes[column] for index, column in enumerate(columns))
+        if residual:
+            raise AssertionError(f"su(2|2)c rank certificate residual: {residual}")
+
+    if amplitudes["A"] != (a1 / a2) * amplitudes["K"] + amplitudes["G"]:
+        raise AssertionError("su(2|2)c rank chart lost the first Q relation")
+    if amplitudes["A"] != amplitudes["L"] + (a2 / a1) * amplitudes["H"]:
+        raise AssertionError("su(2|2)c rank chart lost the second Q relation")
 
 
 def check_su2c_matrix_amplitudes_and_unitarity() -> None:
@@ -1721,6 +2012,83 @@ def check_bound_state_dispersion() -> None:
                 assert_close("bound-state dispersion", constituent_energy, fused)
 
 
+def check_bound_state_fusion_telescoping() -> None:
+    """Check the Q-string endpoint and auxiliary-factor fusion algebra."""
+
+    def constituents(center: complex, charge: int, coupling: float) -> list[tuple[complex, complex]]:
+        pairs = []
+        for j in range(1, charge + 1):
+            rapidity = center + 0.5j * (charge - 2 * j + 1)
+            pairs.append(
+                (
+                    zhukovsky_outside(rapidity + 0.5j, coupling),
+                    zhukovsky_outside(rapidity - 0.5j, coupling),
+                )
+            )
+        return pairs
+
+    def sl2_rational(pair_1: tuple[complex, complex], pair_2: tuple[complex, complex]) -> complex:
+        x1p, x1m = pair_1
+        x2p, x2m = pair_2
+        return (
+            (x2m - x1p)
+            / (x2p - x1m)
+            * (1 - 1 / (x2p * x1m))
+            / (1 - 1 / (x2m * x1p))
+        )
+
+    for coupling in (0.12, 0.37):
+        for charge in (2, 3, 5):
+            center = 4.0 + 0.3 * charge
+            string = constituents(center, charge, coupling)
+            x_plus = string[0][0]
+            x_minus = string[-1][1]
+
+            for j in range(charge - 1):
+                assert_close("bound-state internal endpoint", string[j][1], string[j + 1][0])
+
+            momentum_ratio = 1 + 0j
+            for pair in string:
+                momentum_ratio *= pair[0] / pair[1]
+            assert_close("bound-state momentum telescoping", momentum_ratio, x_plus / x_minus)
+
+            energy_sum = sum(1 + 2j * coupling * (1 / pair[0] - 1 / pair[1]) for pair in string)
+            energy_endpoint = charge + 2j * coupling * (1 / x_plus - 1 / x_minus)
+            assert_close("bound-state energy telescoping", energy_sum, energy_endpoint)
+
+            central_p = coupling * (1 - momentum_ratio)
+            central_k = coupling * (1 - 1 / momentum_ratio)
+            assert_close(
+                "bound-state shortening",
+                energy_endpoint * energy_endpoint,
+                charge * charge + 4 * central_p * central_k,
+            )
+
+            y_root = 1.7 + 0.2j
+            aux_product = 1 + 0j
+            for pair in string:
+                aux_product *= (y_root - pair[0]) / (y_root - pair[1])
+                aux_product *= cmath.sqrt(pair[1] / pair[0])
+            aux_endpoint = (y_root - x_plus) / (y_root - x_minus) * cmath.sqrt(x_minus / x_plus)
+            assert_close("bound-state auxiliary telescoping", aux_product, aux_endpoint)
+
+    q1 = constituents(4.6, 2, 0.2)
+    q2 = constituents(5.3, 3, 0.2)
+    fused_forward = 1 + 0j
+    for pair_1 in q1:
+        for pair_2 in q2:
+            fused_forward *= sl2_rational(pair_1, pair_2)
+    fused_indexed = 1 + 0j
+    for m in range(1, 3):
+        u_m = 4.6 + 0.5j * (2 - 2 * m + 1)
+        pair_m = (zhukovsky_outside(u_m + 0.5j, 0.2), zhukovsky_outside(u_m - 0.5j, 0.2))
+        for n in range(1, 4):
+            v_n = 5.3 + 0.5j * (3 - 2 * n + 1)
+            pair_n = (zhukovsky_outside(v_n + 0.5j, 0.2), zhukovsky_outside(v_n - 0.5j, 0.2))
+            fused_indexed *= sl2_rational(pair_m, pair_n)
+    assert_close("bound-state fused scalar indexing", fused_forward, fused_indexed)
+
+
 def check_mirror_double_wick_dispersion() -> None:
     for coupling in (0.15, 0.5):
         for charge in (1, 2, 4):
@@ -2027,6 +2395,420 @@ def check_one_species_tba_variation() -> None:
         )
 
 
+def check_mirror_tba_node_source_inventory() -> None:
+    """Check the multi-species mirror-TBA source and orientation bookkeeping."""
+
+    def make_node(kind: str, index: int = 0, wing: str = "") -> tuple[str, int, str]:
+        return (kind, index, wing)
+
+    bullet_nodes = [make_node("bullet", 1), make_node("bullet", 2)]
+    auxiliary_nodes: list[tuple[str, int, str]] = []
+    for wing in ("L", "R"):
+        auxiliary_nodes.extend(
+            [
+                make_node("y_plus", 0, wing),
+                make_node("y_minus", 0, wing),
+                make_node("v", 1, wing),
+                make_node("v", 2, wing),
+                make_node("w", 1, wing),
+                make_node("w", 2, wing),
+            ]
+        )
+    nodes = bullet_nodes + auxiliary_nodes
+
+    def wing_sign(wing: str) -> int:
+        return 1 if wing == "L" else -1
+
+    mirror_length = 4.0
+    bullet_energy = {1: 0.9, 2: 1.35}
+
+    def length_energy(node: tuple[str, int, str]) -> float:
+        kind, index, _wing = node
+        return bullet_energy[index] if kind == "bullet" else 0.0
+
+    def driving(node: tuple[str, int, str]) -> complex:
+        kind, index, wing = node
+        if kind == "bullet":
+            return mirror_length * bullet_energy[index]
+        if kind in ("y_plus", "y_minus"):
+            return wing_sign(wing) * math.pi * 1j
+        return 0j
+
+    def chemical_potential(node: tuple[str, int, str]) -> complex:
+        return mirror_length * length_energy(node) - driving(node)
+
+    for node in nodes:
+        assert_close(
+            "mirror TBA driving convention",
+            mirror_length * length_energy(node) - chemical_potential(node),
+            driving(node),
+        )
+        if node[0] in ("y_plus", "y_minus"):
+            assert_close("mirror fermion boundary sign", cmath.exp(-driving(node)), -1)
+        elif node[0] != "bullet" and abs(length_energy(node)) > 0:
+            raise AssertionError("auxiliary node must not carry a length driving term")
+
+    def same_wing(target: tuple[str, int, str], source: tuple[str, int, str]) -> bool:
+        return bool(target[2]) and target[2] == source[2]
+
+    def stringbook_coefficient(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> int:
+        target_kind, _target_index, _target_wing = target
+        source_kind, source_index, _source_wing = source
+        if target_kind == "bullet":
+            if source_kind == "bullet":
+                return 1
+            if source_kind == "v" and source_index >= 2:
+                return 1
+            if source_kind in ("y_plus", "y_minus"):
+                return 1
+            return 0
+        if target_kind in ("y_plus", "y_minus"):
+            if source_kind == "bullet":
+                return 1
+            if same_wing(target, source) and source_kind == "v":
+                return 1
+            if same_wing(target, source) and source_kind == "w":
+                return -1
+            return 0
+        if target_kind == "v":
+            if source_kind == "bullet":
+                return 1
+            if same_wing(target, source) and source_kind == "v":
+                return 1
+            if same_wing(target, source) and source_kind == "y_plus":
+                return 1
+            if same_wing(target, source) and source_kind == "y_minus":
+                return -1
+            return 0
+        if target_kind == "w":
+            if same_wing(target, source) and source_kind == "w":
+                return 1
+            if same_wing(target, source) and source_kind == "y_plus":
+                return 1
+            if same_wing(target, source) and source_kind == "y_minus":
+                return -1
+            return 0
+        raise AssertionError("unknown node in mirror TBA inventory")
+
+    for wing in ("L", "R"):
+        assert (
+            stringbook_coefficient(make_node("bullet", 1), make_node("v", 1, wing))
+            == 0
+        )
+        assert (
+            stringbook_coefficient(make_node("bullet", 1), make_node("v", 2, wing))
+            == 1
+        )
+
+    rapidity = {
+        node: -1.2 + 0.27 * index
+        for index, node in enumerate(nodes, start=1)
+    }
+    quadrature_weight = {
+        node: 0.11 + 0.03 * ((index % 5) + 1)
+        for index, node in enumerate(nodes, start=1)
+    }
+    y_value = {
+        node: 0.2 + 0.07 * ((index * 3) % 11)
+        for index, node in enumerate(nodes, start=1)
+    }
+    log_one_plus_y = {node: math.log(1 + value) for node, value in y_value.items()}
+
+    def phase_strength(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> float:
+        raw = (
+            17 * (1 + target[1])
+            + 19 * (1 + source[1])
+            + sum(
+                ord(letter)
+                for letter in target[0] + source[0] + target[2] + source[2]
+            )
+        )
+        return 0.02 * (1 + raw % 7)
+
+    def phase_prime(z_value: complex, width: float) -> complex:
+        return 1 / (z_value + 1j * width) - 1 / (z_value - 1j * width)
+
+    def target_first_kernel(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> complex:
+        coefficient = stringbook_coefficient(target, source)
+        if coefficient == 0:
+            return 0j
+        width = 0.6 + 0.05 * ((target[1] + source[1]) % 3)
+        z_value = rapidity[target] - rapidity[source]
+        return (
+            -coefficient
+            * phase_strength(target, source)
+            * phase_prime(z_value, width)
+        )
+
+    def source_kernel(
+        source: tuple[str, int, str], target: tuple[str, int, str]
+    ) -> complex:
+        return -target_first_kernel(target, source)
+
+    for target in nodes:
+        stringbook_rhs = driving(target)
+        compact_rhs = mirror_length * length_energy(target) - chemical_potential(target)
+        for source in nodes:
+            assert_close(
+                "mirror TBA target/source kernel bridge",
+                target_first_kernel(target, source) + source_kernel(source, target),
+                0,
+            )
+            stringbook_rhs += (
+                quadrature_weight[source]
+                * target_first_kernel(target, source)
+                * log_one_plus_y[source]
+            )
+            compact_rhs -= (
+                quadrature_weight[source]
+                * source_kernel(source, target)
+                * log_one_plus_y[source]
+            )
+        assert_close("mirror TBA compact/source inventory", compact_rhs, stringbook_rhs)
+
+    for wing in ("L", "R"):
+        kernel_value = 0.37
+        v_node = make_node("v", 1, wing)
+        w_node = make_node("w", 1, wing)
+        y_plus = make_node("y_plus", 0, wing)
+        y_minus = make_node("y_minus", 0, wing)
+        assert_close(
+            "mirror TBA y-node reversed w-string ratio",
+            kernel_value * log_one_plus_y[v_node] - kernel_value * log_one_plus_y[w_node],
+            kernel_value * math.log((1 + y_value[v_node]) / (1 + y_value[w_node])),
+        )
+        assert_close(
+            "mirror TBA auxiliary reversed y-sheet ratio",
+            kernel_value * log_one_plus_y[y_plus]
+            - kernel_value * log_one_plus_y[y_minus],
+            kernel_value
+            * math.log((1 + y_value[y_plus]) / (1 + y_value[y_minus])),
+        )
+
+
+def check_mirror_fused_kernel_formula_crosswalk() -> None:
+    """Check finite fusion arithmetic in the stringbook mirror-TBA kernels."""
+
+    def shift_labels(length: int) -> list[int]:
+        """Return the integer labels 2r for r in R_length."""
+
+        return [-(length - 1) + 2 * index for index in range(length)]
+
+    def string_shifts(length: int) -> list[float]:
+        return [label / 2 for label in shift_labels(length)]
+
+    def x_u(shift: float) -> complex:
+        return 1.6 + 0.17 * shift + 0.03 * shift * shift + 0.11j * (shift + 2)
+
+    def x_v(shift: float) -> complex:
+        return -0.7 + 0.13 * shift - 0.02 * shift * shift + 0.09j * (shift - 1)
+
+    def bullet_bullet_rational(
+        left_length: int,
+        right_length: int,
+        left_x,
+        right_x,
+    ) -> complex:
+        product = 1 + 0j
+        for r_shift in string_shifts(left_length):
+            for s_shift in string_shifts(right_length):
+                left_plus = left_x(2 * r_shift + 1)
+                left_minus = left_x(2 * r_shift - 1)
+                right_plus = right_x(2 * s_shift + 1)
+                right_minus = right_x(2 * s_shift - 1)
+                product *= (right_minus - left_plus) / (right_plus - left_minus)
+                product *= (1 - 1 / (right_plus * left_minus)) / (
+                    1 - 1 / (right_minus * left_plus)
+                )
+        return product
+
+    def mock_chi(left_value: complex, right_value: complex) -> complex:
+        return left_value * right_value * (left_value - right_value)
+
+    def dressing_endpoint(
+        left_length: int,
+        right_length: int,
+        left_x,
+        right_x,
+    ) -> complex:
+        return 2j * (
+            mock_chi(left_x(left_length), right_x(right_length))
+            + mock_chi(left_x(-left_length), right_x(-right_length))
+            - mock_chi(left_x(-left_length), right_x(right_length))
+            - mock_chi(left_x(left_length), right_x(-right_length))
+        )
+
+    for left_length in range(1, 5):
+        for right_length in range(1, 5):
+            forward = bullet_bullet_rational(
+                left_length, right_length, x_u, x_v
+            )
+            backward = bullet_bullet_rational(
+                right_length, left_length, x_v, x_u
+            )
+            assert_close(
+                "mirror bullet-bullet rational fused unitarity",
+                forward * backward,
+                1,
+                tol=2.0e-12,
+            )
+            assert_close(
+                "mirror bullet-bullet dressing endpoint antisymmetry",
+                dressing_endpoint(left_length, right_length, x_u, x_v)
+                + dressing_endpoint(right_length, left_length, x_v, x_u),
+                0,
+                tol=2.0e-12,
+            )
+
+    def y_plus_bullet(y_value: complex, x_plus: complex, x_minus: complex) -> complex:
+        return (y_value - x_plus) / (y_value - x_minus) * cmath.sqrt(x_minus / x_plus)
+
+    def y_minus_bullet(y_value: complex, x_plus: complex, x_minus: complex) -> complex:
+        return (1 / y_value - x_plus) / (1 / y_value - x_minus) * cmath.sqrt(
+            x_minus / x_plus
+        )
+
+    def y_sqrt_endpoint_exponents(length: int) -> Counter[int]:
+        return Counter({-length: Fraction(1, 2), length: Fraction(-1, 2)})
+
+    y_sheet_value = 0.8 + 0.6j
+    for length in range(1, 5):
+        x_plus = x_v(length)
+        x_minus = x_v(-length)
+        y_minus_phase = y_minus_bullet(y_sheet_value, x_plus, x_minus)
+        assert_close(
+            "mirror y-minus equals y-plus on inverse sheet",
+            y_minus_phase,
+            y_plus_bullet(1 / y_sheet_value, x_plus, x_minus),
+        )
+        if y_sqrt_endpoint_exponents(length) != Counter(
+            {-length: Fraction(1, 2), length: Fraction(-1, 2)}
+        ):
+            raise AssertionError("mirror y-bullet square-root endpoint package")
+
+    def v_bullet_phase(
+        v_length: int,
+        bullet_length: int,
+        v_x,
+        bullet_x,
+    ) -> complex:
+        product = 1 + 0j
+        for sigma in (-1, 1):
+            for r_shift in string_shifts(v_length):
+                for s_shift in string_shifts(bullet_length):
+                    v_endpoint = v_x(2 * r_shift + sigma)
+                    bullet_plus = bullet_x(2 * s_shift + 1)
+                    bullet_minus = bullet_x(2 * s_shift - 1)
+                    product *= (v_endpoint - bullet_plus) / (
+                        v_endpoint - bullet_minus
+                    )
+                    product *= cmath.sqrt(bullet_minus / bullet_plus)
+        return product
+
+    for v_length in range(1, 4):
+        for bullet_length in range(1, 4):
+            phase = v_bullet_phase(v_length, bullet_length, x_u, x_v)
+            assert_close(
+                "mirror v-bullet reciprocal orientation",
+                phase * (1 / phase),
+                1,
+                tol=2.0e-12,
+            )
+
+            sqrt_exponents: Counter[int] = Counter()
+            for _sigma in (-1, 1):
+                for _r_label in shift_labels(v_length):
+                    for s_label in shift_labels(bullet_length):
+                        sqrt_exponents[s_label - 1] += Fraction(1, 2)
+                        sqrt_exponents[s_label + 1] -= Fraction(1, 2)
+            expected_sqrt_exponents = Counter(
+                {-bullet_length: v_length, bullet_length: -v_length}
+            )
+            if sqrt_exponents != expected_sqrt_exponents:
+                raise AssertionError(
+                    "mirror v-bullet square-root factors do not telescope to endpoints"
+                )
+
+    def raw_auxiliary_derivative(
+        left_length: int, right_length: int, z_value: complex
+    ) -> complex:
+        total = 0j
+        for r_shift in string_shifts(left_length):
+            for s_shift in string_shifts(right_length):
+                upper = r_shift - s_shift + 1
+                lower = r_shift - s_shift - 1
+                total += 1 / (z_value + 1j * lower) - 1 / (z_value + 1j * upper)
+        return total
+
+    def one_index_derivative(index: int, z_value: complex) -> complex:
+        if index == 0:
+            return 0j
+        return 1 / (z_value - 0.5j * index) - 1 / (z_value + 0.5j * index)
+
+    def closed_auxiliary_derivative(
+        left_length: int, right_length: int, z_value: complex
+    ) -> complex:
+        value = one_index_derivative(left_length + right_length, z_value)
+        value += one_index_derivative(abs(left_length - right_length), z_value)
+        for offset in range(1, min(left_length, right_length)):
+            value += 2 * one_index_derivative(
+                abs(left_length - right_length) + 2 * offset,
+                z_value,
+            )
+        return value
+
+    def raw_auxiliary_pole_multiplicities(
+        left_length: int, right_length: int
+    ) -> Counter[Fraction]:
+        multiplicities: Counter[Fraction] = Counter()
+        for r_label in shift_labels(left_length):
+            for s_label in shift_labels(right_length):
+                difference = Fraction(r_label - s_label, 2)
+                multiplicities[difference - 1] += 1
+                multiplicities[difference + 1] -= 1
+        return multiplicities
+
+    def closed_auxiliary_pole_multiplicities(
+        left_length: int, right_length: int
+    ) -> Counter[Fraction]:
+        multiplicities: Counter[Fraction] = Counter()
+
+        def add_index(index: int, coefficient: int = 1) -> None:
+            if index == 0:
+                return
+            half_index = Fraction(index, 2)
+            multiplicities[-half_index] += coefficient
+            multiplicities[half_index] -= coefficient
+
+        add_index(left_length + right_length)
+        add_index(abs(left_length - right_length))
+        for offset in range(1, min(left_length, right_length)):
+            add_index(abs(left_length - right_length) + 2 * offset, coefficient=2)
+        return multiplicities
+
+    for left_length in range(1, 7):
+        for right_length in range(1, 7):
+            if raw_auxiliary_pole_multiplicities(
+                left_length, right_length
+            ) != closed_auxiliary_pole_multiplicities(left_length, right_length):
+                raise AssertionError(
+                    "mirror auxiliary fused kernel pole multiplicity crosswalk"
+                )
+            z_value = 0.37 + 0.21j
+            assert_close(
+                "mirror auxiliary fused kernel double-sum crosswalk",
+                raw_auxiliary_derivative(left_length, right_length, z_value),
+                closed_auxiliary_derivative(left_length, right_length, z_value),
+                tol=2.0e-12,
+            )
+
+
 def check_excited_tba_contour_deformation_residues() -> None:
     """Check the source and energy signs from excited-state contour residues."""
 
@@ -2201,6 +2983,47 @@ def check_mirror_wing_kernel_inverse() -> None:
         )
 
 
+def check_s_kernel_inverse_data_loss() -> None:
+    """Check the zero-mode and source memories hidden by the s-kernel inverse."""
+
+    def zero_mode(u_value: complex, root: complex) -> complex:
+        return 1 / (2 * cmath.cosh(math.pi * (u_value - root)))
+
+    for u_value, root in (
+        (0.31 + 0.17j, -0.43 + 0.08j),
+        (-0.72 + 0.21j, 0.19 - 0.11j),
+        (1.13 - 0.09j, -0.27 + 0.14j),
+    ):
+        shifted_sum = zero_mode(u_value + 0.5j, root) + zero_mode(
+            u_value - 0.5j,
+            root,
+        )
+        assert_close("s-kernel inverse zero mode", shifted_sum, 0j, tol=2.0e-14)
+
+    for root in (-0.4 + 0.1j, 0.8 - 0.2j):
+        for sign in (-1, 1):
+            boundary_pole = root + sign * 0.5j
+            denominator = 2 * cmath.cosh(math.pi * (boundary_pole - root))
+            assert_close("s-kernel zero-mode boundary pole", denominator, 0j, tol=2.0e-15)
+        interior_denominator = 2 * cmath.cosh(math.pi * (root + 0.23j - root))
+        if abs(interior_denominator) < 1.0e-8:
+            raise AssertionError("s-kernel zero mode should not have an interior strip pole")
+
+    def source_factor(u_value: complex, root: complex) -> complex:
+        return (u_value - root + 0.5j) / (u_value - root - 0.5j)
+
+    for u_value, root in (
+        (0.23 + 0.19j, -0.51 + 0.03j),
+        (1.2 - 0.31j, 0.44 + 0.07j),
+    ):
+        shifted_source = source_factor(u_value + 0.5j, root) * source_factor(
+            u_value - 0.5j,
+            root,
+        )
+        expected_source = (u_value - root + 1j) / (u_value - root - 1j)
+        assert_close("s-kernel inverse source memory", shifted_source, expected_source)
+
+
 def check_y_system_shift_source_factor() -> None:
     """Check local shifted zero-pole source factors for analytic Y-systems."""
 
@@ -2244,6 +3067,87 @@ def check_y_system_shift_source_factor() -> None:
         ) ** power
         rational_product *= ((u_value - root + 1j) / (u_value - root - 1j)) ** power
     assert_close("Y-system finite source product", shifted_product, rational_product)
+
+
+def check_analytic_y_system_strip_and_cut_data() -> None:
+    """Check analytic Y-system strip, branch-lattice, and node bookkeeping."""
+
+    def t_hook_node(stringbook_node: tuple[str, int, str]) -> tuple[int, int, int]:
+        family, rank, wing = stringbook_node
+        wing_sign = 1 if wing == "L" else -1
+        if family == "bullet":
+            return (rank, 0, 1)
+        if family == "oplus":
+            return (1, wing_sign, -1)
+        if family == "ominus":
+            return (2, 2 * wing_sign, 1)
+        if family == "triangle":
+            return (rank + 1, wing_sign, -1)
+        if family == "circle":
+            return (1, wing_sign * (rank + 1), -1)
+        raise ValueError(f"unknown stringbook node family: {family}")
+
+    expected_nodes = {
+        ("bullet", 3, "L"): (3, 0, 1),
+        ("oplus", 0, "L"): (1, 1, -1),
+        ("oplus", 0, "R"): (1, -1, -1),
+        ("ominus", 0, "L"): (2, 2, 1),
+        ("ominus", 0, "R"): (2, -2, 1),
+        ("triangle", 4, "L"): (5, 1, -1),
+        ("triangle", 4, "R"): (5, -1, -1),
+        ("circle", 2, "L"): (1, 3, -1),
+        ("circle", 2, "R"): (1, -3, -1),
+    }
+    for node, expected in expected_nodes.items():
+        if t_hook_node(node) != expected:
+            raise AssertionError("analytic Y-system stringbook/T-hook node map failed")
+
+    def branch_offsets(rank: int, depth: int = 4) -> list[int]:
+        offsets: list[int] = []
+        for step in range(depth):
+            value = rank + 2 * step
+            offsets.extend((-value, value))
+        return sorted(offsets)
+
+    for rank in range(1, 8):
+        offsets = branch_offsets(rank)
+        nearest_upper = min(offset for offset in offsets if offset > 0)
+        nearest_lower = max(offset for offset in offsets if offset < 0)
+        if (nearest_lower, nearest_upper) != (-rank, rank):
+            raise AssertionError("analytic Y-system nearest branch lattice failed")
+        if not (-rank / 2 < 0 < rank / 2):
+            raise AssertionError("analytic Y-system central strip should contain real axis")
+        for offset in offsets:
+            imag_position = Fraction(offset, 2)
+            if Fraction(-rank, 2) < imag_position < Fraction(rank, 2):
+                raise AssertionError("analytic Y-system branch point entered open strip")
+
+    central_cut_shifts = [2 * index for index in range(-3, 4)]
+    shifted_rank_two_branches = branch_offsets(2, depth=4)
+    for shift in central_cut_shifts:
+        if shift % 2:
+            raise AssertionError("central fermion cuts should lie at integer shifts")
+    if any(abs(offset) % 2 for offset in shifted_rank_two_branches):
+        raise AssertionError("rank-two branch lattice should have integer cut shifts")
+
+    boundary_samples = (
+        (0.7 + 0.2j, 1 / (0.7 + 0.2j)),
+        (-1.1 + 0.4j, 1 / (-1.1 + 0.4j)),
+        (0.3 - 0.8j, 1 / (0.3 - 0.8j)),
+    )
+    for lower_y11, upper_y22 in boundary_samples:
+        assert_close(
+            "central fermion cut inversion",
+            upper_y22 * lower_y11,
+            1,
+        )
+        if abs(upper_y22 - lower_y11) < 1.0e-14:
+            raise AssertionError("central inversion check failed to detect sheet inversion")
+
+    source_powers = Counter({("root_a", 1): 2, ("root_b", -1): 1})
+    total_power = sum(power * multiplicity for (_root, power), multiplicity in source_powers.items())
+    if total_power != 1:
+        raise AssertionError("analytic source-power bookkeeping failed")
 
 
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
@@ -3048,6 +3952,134 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
             base - 0.5j * m_value
         )
         assert_close("magic-sheet T2 row product", t2_from_factorization, t2_from_row_product)
+
+
+def check_qsc_t_gauge_discontinuity_telescope() -> None:
+    """Check the bold-T and mathbb-T gauge algebra before the Pmu bridge."""
+
+    def t_key(a_value: int, s_value: int, shift: int) -> tuple[str, int, int, int]:
+        return ("T", a_value, s_value, shift)
+
+    def h_key(shift: int) -> tuple[str, int]:
+        return ("h", shift)
+
+    def cal_key(a_value: int, s_value: int, shift: int) -> tuple[str, int, int, int]:
+        return ("calT", a_value, s_value, shift)
+
+    def clean(counter: Counter) -> Counter:
+        return Counter({key: value for key, value in counter.items() if value})
+
+    def combine(*counters: Counter) -> Counter:
+        result: Counter = Counter()
+        for counter in counters:
+            for key, value in counter.items():
+                result[key] += value
+        return clean(result)
+
+    def canonical_t(counter: Counter) -> Counter:
+        result: Counter = Counter()
+        for key, value in counter.items():
+            if not value:
+                continue
+            _tag, a_value, s_value, shift = key
+            if a_value == 0:
+                result[t_key(0, 0, shift + s_value)] += value
+            elif (a_value, s_value) == (3, 2):
+                result[t_key(2, 3, shift)] += value
+            elif (a_value, s_value) == (3, -2):
+                result[t_key(2, -3, shift)] += value
+            else:
+                result[key] += value
+        return clean(result)
+
+    def y_counter(a_value: int, s_value: int, shift: int = 0) -> Counter:
+        return Counter(
+            {
+                t_key(a_value, s_value + 1, shift): 1,
+                t_key(a_value, s_value - 1, shift): 1,
+                t_key(a_value + 1, s_value, shift): -1,
+                t_key(a_value - 1, s_value, shift): -1,
+            }
+        )
+
+    fermionic_product = canonical_t(combine(y_counter(1, 1), y_counter(2, 2)))
+    expected_fermionic_product = canonical_t(
+        Counter({t_key(1, 0, 0): 1, t_key(0, 0, 1): -1})
+    )
+    if fermionic_product != expected_fermionic_product:
+        raise AssertionError("QSC bold-T fermionic product reduction failed")
+
+    for length in range(1, 9):
+        product_counter: Counter = Counter()
+        for node in range(1, length + 1):
+            shift = 2 * length - node
+            product_counter = combine(
+                product_counter,
+                Counter(
+                    {
+                        t_key(node, 0, shift + 1): 1,
+                        t_key(node, 0, shift - 1): 1,
+                        t_key(node + 1, 0, shift): -1,
+                        t_key(node - 1, 0, shift): -1,
+                    }
+                ),
+            )
+
+        expected_counter = Counter(
+            {
+                t_key(1, 0, 2 * length): 1,
+                t_key(length, 0, length - 1): 1,
+                t_key(0, 0, 2 * length - 1): -1,
+                t_key(length + 1, 0, length): -1,
+            }
+        )
+        if canonical_t(product_counter) != canonical_t(expected_counter):
+            raise AssertionError("QSC central-row discontinuity telescope failed")
+
+    for s_value in range(-4, 5):
+        # mathbb T_{0,s}=T_{0,s}(T_{0,0}^{[s]})^{-1}=1 in the bold-T boundary
+        # gauge.  The sign factor is trivial for a=0.
+        mathbb_boundary = canonical_t(
+            combine(
+                Counter({t_key(0, s_value, 0): 1}),
+                Counter({t_key(0, 0, s_value): -1}),
+            )
+        )
+        if mathbb_boundary:
+            raise AssertionError("QSC mathbb-T boundary normalization failed")
+
+    for m_value in range(2, 8):
+        mathbb_t2_counter = Counter(
+            {
+                h_key(m_value + 1): 1,
+                h_key(m_value - 1): 1,
+                h_key(-m_value + 1): 1,
+                h_key(-m_value - 1): 1,
+                cal_key(2, m_value, 0): 1,
+            }
+        )
+        magic_row_factorization = combine(
+            mathbb_t2_counter,
+            Counter({cal_key(2, m_value, 0): -1}),
+            Counter(
+                {
+                    cal_key(1, 1, m_value): 1,
+                    cal_key(1, 1, -m_value): 1,
+                }
+            ),
+        )
+        row_product_counter = Counter(
+            {
+                h_key(m_value + 1): 1,
+                h_key(m_value - 1): 1,
+                cal_key(1, 1, m_value): 1,
+                h_key(-m_value + 1): 1,
+                h_key(-m_value - 1): 1,
+                cal_key(1, 1, -m_value): 1,
+            }
+        )
+        if clean(magic_row_factorization) != clean(row_product_counter):
+            raise AssertionError("QSC mathbb-T magic-row h-factor compatibility failed")
 
 
 def check_t_hook_wronskian_pmu_bridge() -> None:
@@ -3935,11 +4967,14 @@ def main() -> None:
     check_zhukovsky_map_and_energy()
     check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_crossing_scalar_monodromy_cocycle()
+    check_crossing_cdd_factor_ambiguity()
     check_matrix_crossing_channel_scalar_multiplier()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
     check_dhm_local_residue_continuation()
     check_dhm_gamma_pole_lattice_and_admissibility()
+    check_su2c_intertwiner_rank_certificate()
     check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
@@ -3952,13 +4987,18 @@ def main() -> None:
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
     check_bound_state_dispersion()
+    check_bound_state_fusion_telescoping()
     check_mirror_double_wick_dispersion()
     check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
+    check_mirror_tba_node_source_inventory()
+    check_mirror_fused_kernel_formula_crosswalk()
     check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
+    check_s_kernel_inverse_data_loss()
     check_y_system_shift_source_factor()
+    check_analytic_y_system_strip_and_cut_data()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_konishi_wrapping_exact_residue_reduction()
@@ -3969,6 +5009,7 @@ def main() -> None:
     check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
+    check_qsc_t_gauge_discontinuity_telescope()
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_fermionic_node_ratio_large_u()
     check_qsc_pq_bridge_unimodular_rank_one_update()

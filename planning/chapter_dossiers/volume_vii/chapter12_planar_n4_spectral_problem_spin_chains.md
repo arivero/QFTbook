@@ -126,6 +126,10 @@ single-trace word and the adjacent exchange interaction.
   holomorphic `X,Z` subsector.
 - Same script now also checks BMN scaling and bound-state dispersion
   normalizations that depend on the chapter's coupling convention.
+- `calculation-checks/planar_n4_reader_companion_checks.py` and
+  `calculation-checks/planar_n4_reader_companion_checks.wl` provide smaller
+  reader-facing Python and Wolfram Language versions of the length-four
+  Konishi spin-chain eigenvector/cyclicity and one-loop Bethe-root checks.
 
 ## Source Notes
 

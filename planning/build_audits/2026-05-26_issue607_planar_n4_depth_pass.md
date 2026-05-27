@@ -1667,3 +1667,390 @@ Calculation checks added:
   verifies the numerator and denominator pole signs, realizes endpoint pole
   divisors by solving `x+1/x`, checks representative admissible samples, and
   confirms that clearance vanishes on the constructed pole lattice.
+
+## Continuation LIII: Bound-State Fusion Telescoping
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Expanded the Chapter 13 bound-state paragraph into a proposition-level
+  derivation of `Q`-string fusion.
+- Defined the bound-state endpoints `x_Q^pm(u)=x(u+-iQ/2)` and proved that
+  adjacent pole conditions `x_j^-=x_{j+1}^+` telescope the momentum and
+  physical-sheet energy to the endpoints.
+- Derived the bound-state shortening dispersion
+  `H_Q(p)=sqrt(Q^2+16 g^2 sin^2(p/2))` from the total central charges
+  `P=g(1-e^{ip})`, `K=g(1-e^{-ip})`.
+- Proved the telescoping of the `SL(2)`-vacuum level-II auxiliary factor and
+  used it to state the bound-state Bethe-Yang equation with fused
+  `S_{SL(2)}^{Q_1,Q_2}`.
+- Explicitly separated endpoint/scalar fusion from the remaining boundary
+  input: projection to the short bound-state matrix representation and the
+  scalar-branch pole-residue normalization.
+
+Calculation checks added:
+
+- Added `check_bound_state_fusion_telescoping()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  internal endpoint cancellation, momentum telescoping, energy telescoping,
+  bound-state shortening, level-II auxiliary-factor telescoping, and the
+  indexed product defining the fused scalar factor.
+
+## Continuation LIV: Mirror TBA Node-Source Inventory
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition-level mirror-TBA node/source inventory after the compact
+  general TBA equation.
+- The text identifies the stringbook nodes
+  `oplus`, `ominus`, `M|yw`, and `M|w` with the monograph nodes
+  `y_+`, `y_-`, `(v|M)`, and `(w|M)` in each wing.
+- It states the driving terms:
+  only `bullet_Q` has length energy, while both `y` sheets in wing `alpha`
+  carry the fermionic boundary chemical potential `nu_alpha pi i` with
+  `nu_L=+1`, `nu_R=-1`.
+- It proves the target-first/source-kernel bridge
+  `K^sb_AB(u,v)=-K_BA(v,u)` from diagonal unitarity, explaining why the
+  compact source-kernel TBA has a minus sign while the stringbook
+  target-first equations have plus signs.
+- It records the node-by-node source families and the reversed-root
+  denominator signs for the `ominus` sheet and `w` strings, including the
+  stringbook `M>=2` boundary in the `bullet_Q` equation.
+
+Calculation checks added:
+
+- Added `check_mirror_tba_node_source_inventory()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the length-driving support, left/right fermion phases, `M=1` boundary
+  convention, target/source kernel sign bridge, compact-vs-target-first TBA
+  equality on a finite node set, and the ratio signs from reversed
+  `ominus` and `w` roots.
+
+## Continuation LV: Fused Mirror TBA Kernel Crosswalk
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition-level crosswalk for the fused mirror TBA kernels in
+  stringbook orientation.
+- The text defines the constituent shift set `R_m`, the rational
+  `bullet_m`--`bullet_n` phase, the endpoint dressing combination built from
+  the analytically continued `chi`, and the `y_pm`--`bullet` and
+  `(v|m)`--`bullet` phases.
+- It records the reciprocal source/target orientations needed by the compact
+  TBA inventory.
+- It derives the auxiliary double-sum kernel from the stringbook phase and
+  reduces it to the closed fused expression
+  `K_{m+n}+K_{|m-n|}+2 sum K_{|m-n|+2j}`.
+- The global continuation of `chi`, branch choices, and possible additional
+  crossed singularities are stated as dressing-phase analytic input rather
+  than finite fusion algebra.
+
+Calculation checks added:
+
+- Added `check_mirror_fused_kernel_formula_crosswalk()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  finite `bullet_m`--`bullet_n` rational fused unitarity, endpoint dressing
+  antisymmetry for an antisymmetric mock `chi`, the `y_-`/inverse-sheet
+  relation, exact endpoint telescoping of the square-root packages, reciprocal
+  auxiliary orientations, exact auxiliary pole-multiplicity reduction, and
+  equality of the auxiliary double-sum derivative with the closed fused
+  `K_mn` kernel.
+
+## Continuation LVI: QSC T-Gauge Discontinuity Telescope
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added the intermediate fermionic `mathbf T` and `mathbb T` gauge chain from
+  the stringbook before the `Pmu` system.
+- The text now states the central strip data, boundary identifications
+  `T_{0,s}=T_{0,0}^{[s]}`, the `mathbb T_{0,s}=1` normalization, and the
+  single-short-cut `hat h` relation between the magic `mathcal T` and
+  `mathbb T` gauges.
+- Proved the local T-gauge reduction
+  `Y_{1,1}Y_{2,2}=mathbf T_{1,0}/mathbf T_{0,0}^{[+1]}`.
+- Proved the central-row telescope
+  `prod_{a=1}^n(1+Y_{a,0}^{[2n-a]})
+  =T_{1,0}^{[2n]}T_{n,0}^{[n-1]}/
+  (T_{0,0}^{[2n-1]}T_{n+1,0}^{[n]})`.
+- Kept the mirror-TBA discontinuity relation as analytic-Y-system input while
+  deriving the T-gauge form used by the QSC bridge.
+- Proved that the `mathbb T` gauge is compatible with the magic-row
+  factorization
+  `hat mathbb T_{2,m}=hat mathbb T_{1,1}^{[m]}hat mathbb T_{1,1}^{[-m]}`.
+
+Calculation checks added:
+
+- Added `check_qsc_t_gauge_discontinuity_telescope()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the symbolic `Y_{1,1}Y_{2,2}` reduction, exact central-row telescoping for
+  `n=1,...,8`, the `mathbb T_{0,s}=1` boundary normalization, and the
+  `hat h`-factor compatibility behind the magic-row product.
+
+## Continuation LVII: Crossing Scalar Monodromy Cocycle
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition deriving the scalar crossing branch cocycle from
+  Janik crossing in the stringbook orientation.
+- The text defines the chosen first-magnon crossing continuation
+  `mathsf C_1`, distinguishes scalar branches by path labels, and proves
+  `sigma^{[gamma C_1 C_1]}_12/sigma^{[gamma]}_12 =
+  Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`.
+- It expands the double-crossing multiplier into the four rational factors
+  appearing in the stringbook discussion and records that the reciprocal
+  scalar convention inverts both one-crossing and two-crossing multipliers.
+- It keeps the remaining minimal BES-branch construction and homotopy-class
+  classification as analytic input rather than finite rational algebra.
+
+Calculation checks added:
+
+- Added `check_crossing_scalar_monodromy_cocycle()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the one-crossing multipliers on an exact rational sample, the
+  sheet-sensitivity of `Xi_12`, the expanded double-crossing product, the
+  two-step branch recursion, and inversion in the reciprocal scalar
+  convention.
+
+## Continuation LVIII: Crossing CDD Ambiguity
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition identifying the CDD ambiguity left by the scalar
+  crossing problem in the stringbook convention.
+- The text defines the quotient `mathcal F=sigma'/sigma` of two scalar
+  branches solving the same Janik crossing and scalar unitarity equations.
+- It proves the local CDD equations
+  `mathcal F^{[gamma C_1]} mathcal F^{[gamma]}=1` and
+  `mathcal F^{[gamma P]}_{21} mathcal F^{[gamma]}_{12}=1`, and proves the
+  converse: multiplying a solution by such a non-zero meromorphic factor
+  preserves the same crossing multiplier and unitarity.
+- It derives regular double-crossing triviality for the CDD factor and the
+  induced zero/pole propagation under crossing and particle exchange.
+- It states explicitly that choosing the BES CDD-free branch is a
+  minimality/analyticity condition, not a consequence of finite matrix
+  crossing algebra.
+
+Calculation checks added:
+
+- Added `check_crossing_cdd_factor_ambiguity()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  that a crossing-odd and swap-odd CDD factor preserves Janik crossing and
+  scalar unitarity, leaves the regular double-crossing multiplier unchanged,
+  fails if made crossing-even, and propagates divisor signs correctly under
+  crossing, exchange, and double crossing.
+
+## Continuation LIX: su(2|2)c Intertwiner Rank Certificate
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition giving a generic rank certificate for the one-copy
+  `su(2|2)_c` intertwiner.
+- The text defines `d_12=x_2^- -x_1^+` and `n_12=x_2^+ -x_1^-`, states the
+  non-pole open set, and displays the row-reduced chart
+  `B=beta A`, ..., `L=ell A`.
+- It proves that these nine equations have pivots in the nine non-`A`
+  amplitude columns, hence the generic solution space is one-dimensional and
+  is parametrized by the single scalar `A`.
+- It identifies the stringbook normalization
+  `A=mathcal S_12 n_12/d_12`, recovering the ten displayed amplitudes.
+- Special reducible/pole loci and bound-state projections remain separate
+  boundary analyses rather than being folded into the generic row chart.
+
+Calculation checks added:
+
+- Added `check_su2c_intertwiner_rank_certificate()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check performs
+  exact rational Gaussian elimination on the nine-equation row chart,
+  verifies rank nine in the ten amplitudes, confirms that the row chart
+  recovers the direct ten-amplitude formulas after fixing the scalar, and
+  checks that the two highest-weight `Q` relations survive the row chart.
+
+## Continuation LX: Crossing and Mirror-Magnon Status Boundary
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added an explicit warning in Chapter 13 that magnon crossing is not the
+  Wightman-LSZ crossing theorem for four-dimensional local gauge-theory
+  scattering amplitudes.
+- The text now identifies the physical explanation as the relativistic
+  `AdS_5 x S^5` string worldsheet at strong 't Hooft coupling before
+  uniform light-cone gauge fixing.  After gauge fixing and decompactification,
+  that worldsheet crossing/mirror operation is inherited by nonrelativistic
+  magnons as a Zhukovsky-sheet monodromy.
+- Added an explicit warning in Chapter 14 that mirror magnons are analytically
+  continued worldsheet/spin-chain excitations used in the mirror-channel
+  finite-size construction, not ordinary four-dimensional local QFT
+  asymptotic particles.
+- No calculation-check code was added in this pass because the change is a
+  logical-status and motivation clarification; the convention-sensitive
+  sheet and scalar algebra remains covered by the existing planar
+  integrability checks.
+
+## Continuation LXI: Analytic Y-System Strip and Cut Data
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Replaced the overly terse analytic Y-system paragraph by an explicit
+  stringbook-convention datum.
+- The text now defines the strip `mathcal A_l`, the central mirror cut
+  `Z_0^vee`, and the stringbook-to-T-hook node map
+  `Y^bullet_n=Y_{n,0}`, `Y^oplus=Y_{1,pm1}^{-1}`,
+  `Y^ominus=Y_{2,pm2}`, `Y^triangle_n=Y_{n+1,pm1}^{-1}`,
+  `Y^circ_n=Y_{1,pm(n+1)}^{-1}`.
+- It states the branch-point lattice
+  `u=pm 2g + i ell/2`, `ell=pm n,pm(n+2),...`, for the
+  `Y_{n,0}`, `Y_{n+1,pm1}`, and `Y_{1,pm(n+1)}` families.
+- It records the central fermionic cut inversion
+  `Y_{2,pm2}(u+i0)=1/Y_{1,pm1}(u-i0)` on `Z_0^vee`, and ties the
+  exact-root conditions to source-factor recording rather than to the
+  homogeneous Y-system alone.
+- The text explicitly says that the global analytic continuation is not
+  proved by local Hirota algebra or by appeal to the literature.  The
+  Arutyunov--Frolov papers are used here only as convention and warning
+  checks; the monograph datum must be independently checked against the
+  selected mirror sheet, source factors, and dressing branch.
+- Added a Chapter 14 bridge sentence to the Chapter 15
+  fermionic-node large-`u` ratio, avoiding a duplicate derivation while
+  keeping the mirror sheet convention visible at the point where the sign is
+  fixed.
+
+Calculation checks added:
+
+- Added `check_analytic_y_system_strip_and_cut_data()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the stringbook/T-hook node map, the nearest branch-point lattice relative
+  to the open strip, integer central fermion cut shifts, central cut
+  inversion, and finite source-power bookkeeping.
+- Confirmed that `check_qsc_fermionic_node_ratio_large_u()` remains part of
+  the executed planar suite in the QSC block, rather than being duplicated in
+  Chapter 14.
+
+## Continuation LXII: `s`-Inverse Data Loss and Source Memory
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition proving the regular-domain identity
+  `nabla_s(s*f)=f` under explicit closed-strip analyticity and no-crossing
+  hypotheses.
+- Exhibited the concrete boundary zero mode
+  `Z_alpha(u)=1/(2 cosh pi(u-alpha))`, whose shifted sum vanishes away from
+  the boundary pole.  This makes precise why applying `s^{-1}` to the mirror
+  TBA loses analytic data.
+- Connected the zero-mode discussion to the shifted zero-pole factor
+  `B_alpha=(u-alpha+i/2)/(u-alpha-i/2)`, whose shifted product leaves the
+  rational source memory `(u-alpha+i)/(u-alpha-i)`.
+- The AF mirror-TBA source was used only as a warning check for this failure
+  mode; the monograph now gives its own local derivation and keeps global
+  sheet, cut, and dressing-branch selection as independent analytic data.
+
+Calculation checks added:
+
+- Added `check_s_kernel_inverse_data_loss()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the explicit zero-mode cancellation, closest strip-boundary pole locations,
+  absence of an interior pole in the sample strip, and the shifted source
+  memory factor.
+
+## Continuation LXIII: Reader Companion Integrability Checks
+
+Substantive files edited:
+
+- `calculation-checks/planar_n4_reader_companion_checks.py`
+- `calculation-checks/planar_n4_reader_companion_checks.wl`
+- `calculation-checks/README.md`
+- `planning/chapter_dossiers/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.md`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a compact reader-facing Python companion script for the planar
+  integrability spine.  It verifies the length-four Konishi spin-chain
+  eigenvector and cyclicity, the one-loop Bethe-Yang orientation and energy,
+  local Hirota/Y-system source algebra, and a finite-grid mirror-TBA
+  pseudoenergy/Y-form identity with the `A_infinity` inverse symbol.
+- Added a plain Wolfram Language companion carrying the same checks in a form
+  close to Mathematica-style symbolic manipulation, while avoiding `.nb`
+  notebook structure.
+- Registered the pair in the calculation-check README and in the Chapter
+  12--14 dossiers as a pedagogical companion layer distinct from the larger
+  `planar_n4_integrability_checks.py` convention audit.
+- Updated the stringbook crosswalk to record that this is only the first
+  reader-facing port of notebook-style checks; the remaining notebook audit is
+  broader and still open.
+
+Calculation checks added:
+
+- `python3 calculation-checks/planar_n4_reader_companion_checks.py`
+- `/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script calculation-checks/planar_n4_reader_companion_checks.wl`

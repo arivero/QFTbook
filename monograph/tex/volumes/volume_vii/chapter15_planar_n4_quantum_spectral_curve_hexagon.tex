@@ -175,6 +175,208 @@ original \(\mathcal T_{1,m}\).  Outside that strip, the equality is a statement
 about a chosen continuation path.  The \(P\mu\)-system below is a finite
 Riemann--Hilbert compression of this analytically continued T-hook data.
 
+\subsection{Gauge Chain and Fermionic Discontinuities}
+
+The stringbook derivation passes through two further analytic gauges before
+introducing \(P\)-functions.  We spell out the finite algebra because the
+same formulae fix the signs in the \(Y_{1,1}Y_{2,2}\) product and in the
+large-\(u\) energy exponent.
+
+\begin{assumption}[Fermionic \(\mathbf T\)-gauge and \(\mathbb T\)-gauge]
+\label{ass:qsc-bold-t-and-mathbb-t-gauges}
+Choose a Hirota gauge \(\mathbf T_{a,s}\) with the same Y-functions as
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.  For \(n\geq1\), its central
+analyticity strips satisfy
+\[
+  \mathbf T_{n-1,0},\quad
+  \mathbf T_{n,\pm1},\quad
+  \mathbf T_{n+1,\pm2}
+  \in\mathcal A_n .
+\]
+The boundary and left-right identifications are
+\[
+  \mathbf T_{n,\pm2}=\mathbf T_{2,\pm n}\quad(n\geq3),
+  \qquad
+  \mathbf T_{0,0}^{[+1]}=\mathbf T_{0,0}^{[-1]},
+  \qquad
+  \mathbf T_{0,s}=\mathbf T_{0,0}^{[s]} .
+\]
+On a patch where the indicated square roots are fixed, define
+\begin{equation}
+  \mathbb T_{a,s}
+  =
+  (-1)^{as}\mathbf T_{a,s}
+  \left(\mathbf T_{0,0}^{[a+s]}\right)^{(a-2)/2}.
+  \label{eq:qsc-mathbb-t-from-bold-t}
+\end{equation}
+Then \(\mathbb T_{0,s}=1\), and the magic-sheet continuations obey
+\begin{align}
+  \widehat{\mathbb T}_{1,m}
+  &=
+  \widehat h^{[m]}\widehat h^{[-m]}
+  \widehat{\mathcal T}_{1,m},
+  \label{eq:qsc-mathbb-t-cal-t-row-one}\\
+  \widehat{\mathbb T}_{2,m}
+  &=
+  \widehat h^{[m+1]}\widehat h^{[m-1]}
+  \widehat h^{[-m+1]}\widehat h^{[-m-1]}
+  \widehat{\mathcal T}_{2,m},
+  \qquad m\geq2,
+  \label{eq:qsc-mathbb-t-cal-t-row-two}
+\end{align}
+for a function \(\widehat h\) with only the central short cut in this gauge.
+\end{assumption}
+
+The assumption records an analytic gauge choice, not a new dynamical equation.
+The gauge transformation leaves the local Y-functions unchanged; its role is
+to put the central row and the two horizontal wings in a form adapted to
+single-short-cut Wronskians.
+
+\begin{proposition}[Fermionic product and central-row telescope]
+\label{prop:qsc-fermionic-discontinuity-telescope}
+In the \(\mathbf T\)-gauge of
+Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges},
+\begin{equation}
+  Y_{1,1}Y_{2,2}
+  =
+  \frac{\mathbf T_{1,0}}{\mathbf T_{0,0}^{[+1]}}.
+  \label{eq:qsc-bold-t-fermionic-product}
+\end{equation}
+Moreover, for every \(n\geq1\),
+\begin{equation}
+  \prod_{a=1}^n
+  \left(1+Y_{a,0}^{[2n-a]}\right)
+  =
+  \frac{
+    \mathbf T_{1,0}^{[2n]}\mathbf T_{n,0}^{[n-1]}
+  }{
+    \mathbf T_{0,0}^{[2n-1]}\mathbf T_{n+1,0}^{[n]}
+  } .
+  \label{eq:qsc-central-row-telescope}
+\end{equation}
+Consequently the analytic-Y-system discontinuity input
+\[
+  \operatorname{Disc}
+  \left(\log Y_{1,1}Y_{2,2}\right)^{[2n]}
+  =
+  \sum_{a=1}^n
+  \operatorname{Disc}\log
+  \left(1+Y_{a,0}^{[2n-a]}\right)
+\]
+is equivalently written as
+\begin{equation}
+  \operatorname{Disc}
+  \left(\log Y_{1,1}Y_{2,2}\right)^{[2n]}
+  =
+  \operatorname{Disc}\log
+  \frac{
+    \mathbf T_{1,0}^{[2n]}\mathbf T_{n,0}^{[n-1]}
+  }{
+    \mathbf T_{0,0}^{[2n-1]}\mathbf T_{n+1,0}^{[n]}
+  } .
+  \label{eq:qsc-fermionic-discontinuity-bold-t}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use the local T-system definition
+\[
+  Y_{a,s}
+  =
+  \frac{\mathbf T_{a,s+1}\mathbf T_{a,s-1}}
+       {\mathbf T_{a+1,s}\mathbf T_{a-1,s}} .
+\]
+Then
+\[
+  Y_{1,1}Y_{2,2}
+  =
+  \frac{\mathbf T_{1,2}\mathbf T_{1,0}}
+       {\mathbf T_{2,1}\mathbf T_{0,1}}
+  \frac{\mathbf T_{2,3}\mathbf T_{2,1}}
+       {\mathbf T_{3,2}\mathbf T_{1,2}}
+  =
+  \frac{\mathbf T_{1,0}\mathbf T_{2,3}}
+       {\mathbf T_{0,1}\mathbf T_{3,2}}.
+\]
+The \(\mathbf T\)-gauge identifications give
+\(\mathbf T_{3,2}=\mathbf T_{2,3}\) and
+\(\mathbf T_{0,1}=\mathbf T_{0,0}^{[+1]}\), proving
+\eqref{eq:qsc-bold-t-fermionic-product}.
+
+For the telescope, Hirota gives
+\[
+  1+Y_{a,0}
+  =
+  \frac{\mathbf T_{a,0}^+\mathbf T_{a,0}^-}
+       {\mathbf T_{a+1,0}\mathbf T_{a-1,0}} .
+\]
+After the shift by \([2n-a]\), the \(a\)-th factor is
+\[
+  \frac{
+    \mathbf T_{a,0}^{[2n-a+1]}
+    \mathbf T_{a,0}^{[2n-a-1]}
+  }{
+    \mathbf T_{a+1,0}^{[2n-a]}
+    \mathbf T_{a-1,0}^{[2n-a]}
+  } .
+\]
+Multiplying from \(a=1\) to \(a=n\), every interior
+\(\mathbf T_{b,0}^{[2n-b+1]}\) and
+\(\mathbf T_{b,0}^{[2n-b-1]}\) with \(2\leq b\leq n-1\) appears once in the
+numerator and once in the denominator.  The surviving boundary terms are
+\(\mathbf T_{1,0}^{[2n]}\), \(\mathbf T_{n,0}^{[n-1]}\),
+\(\mathbf T_{0,0}^{[2n-1]}\), and \(\mathbf T_{n+1,0}^{[n]}\), which is
+\eqref{eq:qsc-central-row-telescope}.  Taking logarithmic discontinuities
+along the central cut gives \eqref{eq:qsc-fermionic-discontinuity-bold-t}.
+The first displayed discontinuity relation is the analytic-Y-system input
+from the mirror TBA; the proof here supplies its T-gauge form.
+\end{proof}
+
+\begin{proposition}[\(\mathbb T\)-gauge compatibility with the magic row]
+\label{prop:qsc-mathbb-t-magic-row-compatibility}
+Under Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges} and
+Proposition~\ref{prop:qsc-magic-sheet-one-row-gauge},
+\[
+  \widehat{\mathbb T}_{2,m}
+  =
+  \widehat{\mathbb T}_{1,1}^{[m]}
+  \widehat{\mathbb T}_{1,1}^{[-m]},
+  \qquad m\geq2 .
+\]
+Thus the two-row Wronskian reconstruction used below may be normalized in the
+\(\mathbb T\)-gauge without changing the one-row magic-sheet algebra.
+\end{proposition}
+
+\begin{proof}
+Substitute
+\(\widehat{\mathcal T}_{2,m}
+=\widehat{\mathcal T}_{1,1}^{[m]}
+\widehat{\mathcal T}_{1,1}^{[-m]}\) from
+\eqref{eq:qsc-magic-sheet-t-gauge} into
+\eqref{eq:qsc-mathbb-t-cal-t-row-two}.  The four \(\widehat h\)-factors
+become
+\[
+  \widehat h^{[m+1]}\widehat h^{[m-1]}
+  \widehat h^{[-m+1]}\widehat h^{[-m-1]} .
+\]
+Using \eqref{eq:qsc-mathbb-t-cal-t-row-one} at arguments \(u+\ii m/2\) and
+\(u-\ii m/2\) gives
+\[
+  \widehat{\mathbb T}_{1,1}^{[m]}
+  =
+  \widehat h^{[m+1]}\widehat h^{[m-1]}
+  \widehat{\mathcal T}_{1,1}^{[m]},
+  \qquad
+  \widehat{\mathbb T}_{1,1}^{[-m]}
+  =
+  \widehat h^{[-m+1]}\widehat h^{[-m-1]}
+  \widehat{\mathcal T}_{1,1}^{[-m]} .
+\]
+Multiplication gives the claim.  The statement is local in the chosen
+analytic gauge; zeros of \(\widehat h\) or Wronskian degeneracies are handled
+by analytic continuation on the neighboring patch.
+\end{proof}
+
 \section{Pmu System}
 
 Let \(u\in\C\) be the spectral parameter.  The quantum spectral curve uses four
@@ -364,7 +566,7 @@ statement after substituting
 \eqref{eq:qsc-local-mu12-discontinuity}.
 \end{proof}
 
-\begin{proposition}[Fermionic-node ratio and the large-\(u\) energy sign]
+\begin{proposition}[Fermionic-node asymptotics]
 \label{prop:qsc-fermionic-node-large-u-ratio}
 Let \(x_{\rm f}(u)\) be the fermionic-node Zhukovsky sheet used in the
 large-\(u\) expansion of \(Y_{1,1}Y_{2,2}\), normalized by

@@ -23,6 +23,11 @@ motivational checks, not foundations.
 - `Xi_12`: stringbook-orientation rational scalar-crossing multiplier.
 - `mathcal R_cr`: finite crossed-amplitude ratio `L_bar1 2/G_21` used to
   recover the scalar-crossing multiplier from the matrix channel.
+- `mathsf C_1`: chosen first-magnon crossing continuation along `gamma_cr`.
+- `mathcal M_{12}^{(2)}`: two-crossing scalar-branch displacement
+  `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`.
+- `mathcal F_{12}`: quotient of two scalar dressing branches, i.e. the CDD
+  factor left undetermined by crossing and scalar unitarity.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
 - `mathcal L_g(z,w)`: logarithmic Gamma-function kernel inside the DHM
   double contour.
@@ -37,6 +42,11 @@ motivational checks, not foundations.
 - `S^{(1)}_{12}`, `mathcal S_{12}`: one-copy `su(2|2)_c` intertwiner and
   its unfixed common scalar in the stringbook dynamic spin-chain frame.
 - `A_{12},...,L_{12}`: `su(2|2)_c` matrix S-matrix amplitudes.
+- `d_{12}=x_2^- -x_1^+`, `n_{12}=x_2^+ -x_1^-`: generic row-chart
+  denominators for the one-copy `su(2|2)_c` intertwiner.
+- `beta_{12},...,ell_{12}`: row-reduced coefficients expressing
+  `B_{12},...,L_{12}` as multiples of `A_{12}` in the generic
+  intertwiner-rank certificate.
 - `R^{BB}`, `R^{BF}`: finite boson-boson/fermion-fermion and mixed blocks
   used to check local matrix unitarity after factoring out `mathcal S_{12}`.
 - `y,w`: level-II and level-III nested Bethe roots.
@@ -89,6 +99,14 @@ motivational checks, not foundations.
   `x^+=i d/b`, `x^-=-i a/c`, records the length-changing marker convention,
   and proves the highest-weight `Q` amplitude identity
   `A=(a_1/a_2)K+G=L+(a_2/a_1)H`.
+- Adds a generic row-rank certificate for the one-copy `su(2|2)_c`
+  intertwiner: after the dynamic-frame `Q` and `S` equations are reduced on
+  the open set
+  `x_1^pm x_2^pm d_12 n_12 a_1 a_2
+  (x_1^-x_2^- -1)(x_1^+x_2^+ -1) != 0`, the nine equations
+  `B=beta A`, ..., `L=ell A` have pivots in the nine non-`A` amplitude
+  columns, so the generic solution space is one-dimensional and the choice
+  `A=mathcal S_12 n_12/d_12` recovers the ten stringbook amplitudes.
 - Defines the finite matrix blocks `R^{BB}` and `R^{BF}` and records their
   local analytic unitarity after the common one-copy scalar is factored out.
 - Derives the stringbook scalar split
@@ -136,6 +154,12 @@ motivational checks, not foundations.
 - Adds the explicit crossing scalar-factor equation and warns that the
   crossing path winds around shifted Zhukovsky branch points rather than
   acting as a sheet-free substitution.
+- Adds an explicit status boundary for magnon crossing: it is not ordinary
+  Wightman-LSZ crossing for four-dimensional local amplitudes.  Its physical
+  explanation comes from the relativistic string worldsheet at strong
+  coupling before light-cone gauge fixing; its all-coupling spin-chain use is
+  an integrability assumption constrained by symmetry, worldsheet crossing,
+  finite-size tests, and gauge-theory data.
 - Derives the crossing scalar convention algebra in the stringbook
   orientation: the common reciprocal literature convention is exactly the
   inverse rational multiplier, while the naive substitution
@@ -147,6 +171,21 @@ motivational checks, not foundations.
   `sigma_bar1 2 sigma_12=Xi_12` in the positive square-root chamber; this
   explains the rational multiplier's matrix-channel origin while keeping the
   global scalar branch as separate analytic data.
+- Derives the scalar crossing monodromy cocycle: if a scalar branch satisfies
+  Janik crossing on two successive first-magnon crossing segments, then
+  `sigma^{[gamma C_1 C_1]}_12/sigma^{[gamma]}_12 =
+  Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`, with the expanded rational
+  double-crossing multiplier and the reciprocal-convention inverse stated
+  explicitly.  Homotopy and minimal BES-branch uniqueness remain analytic
+  inputs rather than finite algebra.
+- Classifies the local CDD ambiguity left by crossing and scalar unitarity:
+  the quotient `mathcal F=sigma'/sigma` must obey
+  `mathcal F^{[gamma C_1]} mathcal F^{[gamma]}=1` and
+  `mathcal F^{[gamma P]}_{21} mathcal F^{[gamma]}_{12}=1`; conversely any
+  non-zero meromorphic factor with these two properties preserves the same
+  scalar crossing multiplier and unitarity.  The text records the induced
+  zero/pole propagation and makes explicit that the BES CDD-free branch is a
+  minimality/analyticity choice, not a finite algebra consequence.
 - States the BES/crossing scalar-factor input as a quoted theorem with its
   framework assumptions.
 - Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
@@ -189,8 +228,12 @@ motivational checks, not foundations.
   to the `SL(2)` phase `(u_j-u_k-i)/(u_j-u_k+i)`, its reciprocal gives the
   compact `SU(2)` phase of Chapter 12, and
   `H-1=2g^2/(u^2+1/4)+O(g^4)`.
-- Adds bound-state dispersion and the large-spin cusp-scaling function with
-  status boundaries.
+- Expands the bound-state fusion block: constructs the `Q`-string endpoints,
+  proves momentum and energy telescoping, derives the shortening dispersion,
+  proves the level-II auxiliary-factor telescoping, and defines the fused
+  `SL(2)` scalar product used in bound-state Bethe-Yang equations.  The
+  remaining matrix-intertwiner projection and scalar-branch pole normalization
+  are marked as boundary inputs rather than hidden in the endpoint algebra.
 - Expands the one-loop `SL(2)` large-spin cusp derivation: states the
   noncompact one-loop Bethe equation, defines the scaled root density and
   resolvent, solves the one-cut Riemann-Hilbert problem with
@@ -239,6 +282,16 @@ crossed Zhukovsky sheets.
   notebook: the squared `L_bar1 2/G_21` ratio becomes one exactly when the
   scalar product uses `Xi_12`, the reciprocal multiplier fails, and the
   positive real chamber fixes the unsquared square-root branch.
+- It checks the scalar crossing monodromy cocycle exactly: the sheet-shifted
+  multiplier is different from the physical one, the double-crossing ratio is
+  `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`, the expanded product agrees
+  with that quotient, the two-step branch recursion reproduces it, and the
+  reciprocal scalar convention inverts it.
+- It checks the CDD quotient equations exactly: multiplying a scalar branch
+  by a crossing-odd and swap-odd CDD factor preserves Janik crossing and
+  scalar unitarity, leaves regular double crossing unchanged, fails if the
+  CDD factor is crossing-even, and propagates divisor signs correctly under
+  crossing, exchange, and double crossing.
 - It checks dressing scalar unitarity by evaluating the antisymmetric charge
   expansion on physical-branch `x^pm` samples and verifying
   `theta_12+theta_21=0`, `sigma_12 sigma_21=1`, and the squared-factor
@@ -263,6 +316,11 @@ crossed Zhukovsky sheets.
   highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed
   finite blocks obey `R_12 R_21=1` after the common scalar is removed, and the
   stringbook scalar split reproduces the compact `SU(2)` rational factor.
+- It checks the generic `su(2|2)_c` row-rank certificate exactly over the
+  rationals: the nine row-chart equations have rank nine in the ten
+  amplitudes, recover the displayed ten-amplitude formulas after fixing
+  `A=mathcal S_12 n_12/d_12`, and preserve the two highest-weight `Q`
+  relations.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.
@@ -279,8 +337,14 @@ crossed Zhukovsky sheets.
 - It checks the weak rank-one ABA orientation: physical-branch `x^pm`
   expansion, momentum ratio, anomalous-energy normalization, the stringbook
   `SL(2)` rational factor, and the reciprocal compact `SU(2)` phase.
-- The same script now checks BMN scaling, bound-state dispersion, and weak
-  coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
+- `calculation-checks/planar_n4_reader_companion_checks.py` and
+  `calculation-checks/planar_n4_reader_companion_checks.wl` provide compact
+  reader-facing checks of the one-loop Bethe-Yang orientation, cyclicity, and
+  Konishi roots; the full integrability script remains the exhaustive
+  convention audit.
+- The same script now checks BMN scaling, bound-state dispersion, bound-state
+  fusion telescoping, fused scalar-product indexing, and weak coefficient
+  arithmetic relevant to cusp/Bremsstrahlung comparisons.
 - It checks the one-loop `SL(2)` large-spin cusp resolvent: physical
   square-root branch normalization, derivative formula, discontinuity and
   positivity of the density, and extraction of the `8g^2 log S` term with

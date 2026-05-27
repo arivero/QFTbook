@@ -15,6 +15,14 @@ three-point functions.
 - `G, bar G, rho`: one-row T-gauge Cauchy transforms and discontinuity
   density used before passing to the magic-sheet T-hook gauge.
 - `hat G, hat T`: magic-sheet continuations through the Zhukovsky cut.
+- `mathbf T_{a,s}`: fermionic analytic T-gauge used between the Y-system
+  discontinuity relations and the `Pmu` system.
+- `mathbb T_{a,s}`: gauge-normalized T-functions with `mathbb T_{0,s}=1`
+  used for the two-row Wronskian ansatz.
+- `hat h`: single-short-cut gauge factor relating the magic-sheet
+  `mathcal T` and `mathbb T` gauges.
+- `Disc`: logarithmic discontinuity across the central Zhukovsky cut in the
+  analytic Y-system.
 - `x_f(u)`: fermionic-node large-`u` Zhukovsky sheet with
   `x_f(u)=g/u+O(u^-3)`.
 - `R_Q(u,v)`: fermionic-node mirror scattering ratio whose large-`u`
@@ -53,6 +61,23 @@ three-point functions.
   relation `G_+=-bar G_-`:
   `hat T_{1,m}=m+hat G^[m]-hat G^[-m]`,
   `hat T_{2,m}=hat T_{1,1}^[m] hat T_{1,1}^[-m]`.
+- Adds the intermediate fermionic `mathbf T` and `mathbb T` gauge chain from
+  the stringbook: strip data, boundary identifications
+  `T_{0,s}=T_{0,0}^{[s]}`, the gauge normalization
+  `mathbb T_{0,s}=1`, and the `hat h` relation between the magic
+  `mathcal T` and `mathbb T` gauges.
+- Proves the local T-gauge algebra for the fermionic product and central-row
+  discontinuity telescope:
+  `Y_{1,1}Y_{2,2}=mathbf T_{1,0}/mathbf T_{0,0}^{[+1]}` and
+  `prod_{a=1}^n(1+Y_{a,0}^{[2n-a]})
+  =mathbf T_{1,0}^{[2n]}mathbf T_{n,0}^{[n-1]}/
+  (mathbf T_{0,0}^{[2n-1]}mathbf T_{n+1,0}^{[n]})`.  The mirror-TBA
+  discontinuity relation is kept as analytic-Y-system input; the proof
+  supplies its T-gauge form.
+- Proves compatibility of the `mathbb T` gauge with the magic-row
+  factorization, so
+  `hat mathbb T_{2,m}=hat mathbb T_{1,1}^{[m]}hat mathbb T_{1,1}^{[-m]}`
+  before imposing the two-row Wronskian reconstruction.
 - Adds a QSC Riemann-Hilbert datum definition: spectral plane, single-cut
   `P_a`, antisymmetric `mu_ab`, fixed `chi`, tilde continuation, regularity,
   large-`u` charge asymptotics, gluing data, and cyclic single-trace
@@ -209,6 +234,10 @@ structure and the pair-of-pants-to-hexagons cut.
   including a finite Cauchy-transform model that detects the wrong lower-sheet
   sign and verifies the `hat T_{2,m}=hat T_{1,1}^[m]hat T_{1,1}^[-m]`
   product.
+- The same script checks the fermionic `mathbf T`/`mathbb T` gauge bridge:
+  `Y_{1,1}Y_{2,2}` reduction, exact central-row discontinuity telescoping for
+  `n=1,...,8`, `mathbb T_{0,s}=1`, and `hat h`-factor compatibility with the
+  magic-row product.
 - The same script checks the two-row T-hook Wronskian Pluecker identity,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.
