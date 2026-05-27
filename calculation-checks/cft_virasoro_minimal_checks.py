@@ -3,12 +3,18 @@
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from fractions import Fraction
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
+        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_close(name: str, got: float, expected: float, tolerance: float = 1e-9) -> None:
+    if abs(got - expected) > tolerance:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
 
 
@@ -47,6 +53,131 @@ def h_minimal(m: int, r: int, s: int) -> Fraction:
     numerator = ((m + 1) * r - m * s) ** 2 - 1
     denominator = 4 * m * (m + 1)
     return Fraction(numerator, denominator)
+
+
+def triangular_labels(m: int) -> list[tuple[int, int]]:
+    return [(r, s) for r in range(1, m) for s in range(1, r + 1)]
+
+
+def kac_reflection(m: int, label: tuple[int, int]) -> tuple[int, int]:
+    r, s = label
+    return (m - r, m + 1 - s)
+
+
+def su2_fusion(k: int, a: int, b: int, c: int) -> int:
+    if not 0 <= a <= k or not 0 <= b <= k or not 0 <= c <= k:
+        return 0
+    if abs(a - b) <= c <= min(a + b, 2 * k - a - b) and (a + b + c) % 2 == 0:
+        return 1
+    return 0
+
+
+def minimal_fusion_from_su2_orbit(
+    m: int,
+    left: tuple[int, int],
+    right: tuple[int, int],
+    target: tuple[int, int],
+) -> int:
+    r1, s1 = left
+    r2, s2 = right
+    r3, s3 = target
+    reflected_r3, reflected_s3 = kac_reflection(m, target)
+    direct = su2_fusion(m - 2, r1 - 1, r2 - 1, r3 - 1) * su2_fusion(
+        m - 1, s1 - 1, s2 - 1, s3 - 1
+    )
+    reflected = su2_fusion(m - 2, r1 - 1, r2 - 1, reflected_r3 - 1) * su2_fusion(
+        m - 1, s1 - 1, s2 - 1, reflected_s3 - 1
+    )
+    return direct + reflected
+
+
+def minimal_s_entry(m: int, left: tuple[int, int], right: tuple[int, int]) -> float:
+    r, s = left
+    rp, sp = right
+    sign = -1.0 if (1 + s * rp + r * sp) % 2 else 1.0
+    factor = 2.0 * math.sqrt(2.0 / (m * (m + 1)))
+    return (
+        factor
+        * sign
+        * math.sin(math.pi * (m + 1) * r * rp / m)
+        * math.sin(math.pi * m * s * sp / (m + 1))
+    )
+
+
+def minimal_s_matrix(m: int) -> list[list[float]]:
+    labels = triangular_labels(m)
+    return [[minimal_s_entry(m, left, right) for right in labels] for left in labels]
+
+
+def check_unitary_minimal_modular_data_and_fusion() -> None:
+    for m in range(3, 8):
+        labels = triangular_labels(m)
+        matrix = minimal_s_matrix(m)
+        size = len(labels)
+
+        for row in range(size):
+            for column in range(size):
+                inner = sum(matrix[row][idx] * matrix[column][idx] for idx in range(size))
+                assert_close(
+                    f"minimal-model S orthogonality m={m} row={row} column={column}",
+                    inner,
+                    1.0 if row == column else 0.0,
+                )
+
+        for row in range(size):
+            for column in range(size):
+                squared = sum(matrix[row][idx] * matrix[idx][column] for idx in range(size))
+                assert_close(
+                    f"minimal-model S^2 charge conjugation m={m} row={row} column={column}",
+                    squared,
+                    1.0 if row == column else 0.0,
+                )
+
+        for left_index, left in enumerate(labels):
+            for right_index, right in enumerate(labels):
+                for target_index, target in enumerate(labels):
+                    verlinde = sum(
+                        matrix[left_index][channel_index]
+                        * matrix[right_index][channel_index]
+                        * matrix[target_index][channel_index]
+                        / matrix[0][channel_index]
+                        for channel_index in range(size)
+                    )
+                    rounded = round(verlinde)
+                    assert_close(
+                        (
+                            "minimal-model Verlinde integrality "
+                            f"m={m} left={left} right={right} target={target}"
+                        ),
+                        verlinde,
+                        float(rounded),
+                    )
+                    assert_equal(
+                        (
+                            "minimal-model orbit fusion "
+                            f"m={m} left={left} right={right} target={target}"
+                        ),
+                        rounded,
+                        minimal_fusion_from_su2_orbit(m, left, right, target),
+                    )
+
+    ising_order = [(1, 1), (2, 2), (2, 1)]
+    ising_s = [
+        [minimal_s_entry(3, left, right) for right in ising_order]
+        for left in ising_order
+    ]
+    expected_ising_s = [
+        [0.5, math.sqrt(2) / 2, 0.5],
+        [math.sqrt(2) / 2, 0.0, -math.sqrt(2) / 2],
+        [0.5, -math.sqrt(2) / 2, 0.5],
+    ]
+    for row in range(3):
+        for column in range(3):
+            assert_close(
+                f"Ising S from minimal-model formula row={row} column={column}",
+                ising_s[row][column],
+                expected_ising_s[row][column],
+            )
 
 
 def check_unitary_minimal_kac_tables() -> None:
@@ -236,6 +367,7 @@ def check_ising_crossing_matrix_fixes_sigma_sigma_epsilon() -> None:
 
 def main() -> None:
     check_unitary_minimal_kac_tables()
+    check_unitary_minimal_modular_data_and_fusion()
     check_level_two_ising_sigma_null_vector()
     check_ising_sigma_bpz_block_solutions()
     check_ising_crossing_matrix_fixes_sigma_sigma_epsilon()

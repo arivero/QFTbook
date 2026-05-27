@@ -274,9 +274,12 @@ Current absorption:
   conformal blocks as Ward identity functionals, higher-genus sewing, modular
   tensor category data, the Verlinde formula, rational full-CFT modular
   invariants, a leading Cardy high-temperature derivation, and logarithmic CFT
-  boundaries.  The Ising minimal-model discussion now includes the level-two
-  Virasoro Gram/null-vector calculation, the BPZ equation for the spin
-  four-point function, and the crossing calculation fixing
+  boundaries.  The unitary minimal-model layer now includes the full A-series
+  \(S,T\) modular data, the Kac-field-identification quotient normalization,
+  and the finite \(SU(2)\)-quotient fusion rule.  The Ising minimal-model
+  discussion now includes the level-two Virasoro Gram/null-vector calculation,
+  the BPZ equation for the spin four-point function, and the crossing
+  calculation fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\), expanding the stringbook appendix
   discussion into a self-contained monograph derivation.  The Ising modular,
   Zhu, logarithmic-cell, and unitary-minimal-model data are checked by

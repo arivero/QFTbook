@@ -443,6 +443,125 @@ triangular set
 \[
   1\le s\le r\le m-1.
 \]
+
+\begin{quotedtheorem}[Unitary minimal-model modular data]
+\label{qthm:unitary-minimal-model-modular-data}
+Let \(\mathcal M(m,m+1)\) be the diagonal unitary Virasoro minimal model
+with \(m\ge3\).  Its chiral character vector is indexed by Kac-table orbits
+\[
+  [r,s]=[m-r,m+1-s],
+  \qquad
+  1\le r\le m-1,\quad 1\le s\le m,
+\]
+or equivalently by the triangular representatives \(1\le s\le r\le m-1\).
+The modular transformation \(\tau\mapsto-1/\tau\) is represented by
+\begin{equation}
+  S_{(r,s),(r',s')}
+  =
+  2\sqrt{\frac{2}{m(m+1)}}\,
+  (-1)^{1+sr'+rs'}
+  \sin\!\left(\frac{\pi(m+1)rr'}{m}\right)
+  \sin\!\left(\frac{\pi mss'}{m+1}\right),
+  \label{eq:unitary-minimal-model-s-matrix}
+\end{equation}
+and \(\tau\mapsto\tau+1\) is represented by the diagonal matrix
+\begin{equation}
+  T_{(r,s),(r,s)}
+  =
+  \exp\!\left(2\pi\ii\left(h_{r,s}^{(m)}-\frac{c_m}{24}\right)\right).
+  \label{eq:unitary-minimal-model-t-matrix}
+\end{equation}
+The formula for \(S\) is well-defined on Kac-table orbits, is unitary on the
+orbit basis, and together with \(T\) gives the genus-one modular
+representation on characters.
+\end{quotedtheorem}
+
+The label identification is a quotient, not a mnemonic.  The involution
+\[
+  J(r,s)=(m-r,m+1-s)
+\]
+has no fixed points: a fixed point would require \(2r=m\) and \(2s=m+1\),
+which cannot hold simultaneously in integers.  Thus every orbit has two
+members, and the factor \(2\sqrt{2/(m(m+1))}\) in
+\eqref{eq:unitary-minimal-model-s-matrix} is the quotient normalization.  If
+one starts from the product of the two sine matrices for \(SU(2)_{m-2}\) and
+\(SU(2)_{m-1}\), restriction to the \(J\)-orbits multiplies the parent
+normalization by \(\sqrt2\).  This is the finite normalization step that is
+often hidden in physics derivations.
+
+It is useful to state the resulting fusion rule without appealing to any
+picture of fields.  Let \(n^{(k)}_{ab}{}^c\) be the \(SU(2)_k\) fusion
+coefficient for \(0\le a,b,c\le k\):
+\[
+  n^{(k)}_{ab}{}^c=
+  \begin{cases}
+    1,& |a-b|\le c\le \min(a+b,2k-a-b)\ \text{and}\ a+b+c\in2\mathbb Z,\\
+    0,& \text{otherwise}.
+  \end{cases}
+\]
+For triangular representatives \(a=(r,s)\), \(b=(r',s')\), and
+\(c=(r'',s'')\), the unitary minimal-model Verlinde coefficient is
+\begin{equation}
+\begin{split}
+  N_{ab}{}^c
+  &=
+  n^{(m-2)}_{r-1,r'-1}{}^{r''-1}\,
+  n^{(m-1)}_{s-1,s'-1}{}^{s''-1}
+\\
+  &\quad+
+  n^{(m-2)}_{r-1,r'-1}{}^{m-r''-1}\,
+  n^{(m-1)}_{s-1,s'-1}{}^{m-s''}.
+\end{split}
+  \label{eq:unitary-minimal-model-fusion-rule}
+\end{equation}
+The first term fuses to the displayed representative of the target orbit; the
+second fuses to its \(J\)-image.
+
+\begin{proposition}[Finite quotient check of minimal-model fusion]
+\label{prop:unitary-minimal-model-fusion-check}
+Assume the modular data of
+Theorem~\ref{qthm:unitary-minimal-model-modular-data}.  The Verlinde formula
+\eqref{eq:verlinde-formula} gives exactly
+\eqref{eq:unitary-minimal-model-fusion-rule}.  In particular the coefficients
+are nonnegative integers.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  S^{(k)}_{ab}=\sqrt{\frac{2}{k+2}}\,
+  \sin\!\left(\frac{\pi(a+1)(b+1)}{k+2}\right)
+\]
+be the \(SU(2)_k\) sine matrix.  The finite sine orthogonality relation
+\[
+  \sum_{x=0}^k
+  S^{(k)}_{ax}S^{(k)}_{bx}=\delta_{ab}
+\]
+is the ordinary orthogonality of sine functions on the finite interval.
+The \(SU(2)_k\) Verlinde calculation with this matrix gives precisely the
+integer rule defining \(n^{(k)}_{ab}{}^c\).  For the minimal model, the
+matrix \eqref{eq:unitary-minimal-model-s-matrix} is the signed product of
+the \(SU(2)_{m-2}\) and \(SU(2)_{m-1}\) sine matrices, followed by the
+fixed-point-free quotient by \(J\).  The signs are the simple-current
+selection rule; in the Verlinde sum they enforce the Kac-table orbit
+projection.  Therefore the parent product fusion coefficient must be summed
+over the two representatives \(c\) and \(Jc\) of the target orbit.  Written in
+triangular labels, this is exactly
+\eqref{eq:unitary-minimal-model-fusion-rule}.  Each summand is a product of
+\(0\)-\(1\) \(SU(2)\) fusion coefficients, so the result is a nonnegative
+integer.
+\end{proof}
+
+Consequently the diagonal A-series full CFT has genus-one partition function
+\[
+  Z_m(\tau,\bar\tau)
+  =
+  \sum_{1\le s\le r\le m-1}
+  \left|\chi_{r,s}(\tau)\right|^2,
+\]
+which is modular invariant because the same unitary \(S\) and diagonal \(T\)
+act on the holomorphic and antiholomorphic character vectors.
+
 For \(m=3\), one obtains
 \[
   c_3=\frac12,\qquad
