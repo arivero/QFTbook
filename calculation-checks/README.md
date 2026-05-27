@@ -535,6 +535,10 @@ Current checks:
   Volume XI tree-level improved gauge-action section, including rectangle
   flux moments, the equations \(c_0+8c_1=1\) and \(c_0+20c_1=0\), and the
   plaquette-plus-rectangle normalization convention.
+- `link_smearing_checks.py`: finite matrix-algebra checks for the Volume XI
+  gauge-covariant link-smearing section, including polar-projection
+  equivariance, the \(\mathfrak{su}(N)\) projection used in stout smearing,
+  and endpoint-conjugation covariance of the stout algebra element.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for
   the Volume XI nonabelian lattice-observable section, including the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state

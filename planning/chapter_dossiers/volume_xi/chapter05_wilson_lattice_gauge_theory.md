@@ -32,6 +32,9 @@
   regulator meaning of action improvement, the tree-level Symanzik
   coefficients \(c_1=-1/12,c_0=5/3\), the Iwasaki normalization convention,
   and the separation between improvement and reflection positivity.
+- Gauge-covariant link smearing as a local map \(G^E\to G^E\), including
+  APE preprojection, polar \(SU(N)\) projection equivariance, stout smearing,
+  and the locality/scheme status of iterated smearing.
 - Wilson loop operators.
 - Rectangular Wilson-loop transfer-matrix spectral representation, static
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
@@ -70,6 +73,8 @@
 | \(D_\lambda,\chi_\lambda,c_\lambda\) | irreducible representation, character, and character-expansion coefficient |
 | \(P_\ell\) | link Haar projector in the nonabelian spin-foam expansion |
 | \(c_0,c_1\) | plaquette and rectangle coefficients in a local improved gauge action |
+| \(\mathcal S\) | local gauge-covariant smearing map on lattice links |
+| \(C_\ell,X_\ell,Q_\ell\) | staple sum, APE preprojection matrix, and stout algebra element |
 | \(W_S(n,m)\) | normalized rectangular Wilson loop in representation \(S\) |
 | \(V_{a,S}(n)\) | finite-cutoff static potential in a static-source sector |
 | \(\chi(n,m)\) | Creutz ratio |
@@ -106,24 +111,31 @@
 10. Improved action coefficients, continuum normalization, and
     reflection-positivity/transfer-matrix reconstruction are separate
     regulator requirements.
-11. Rectangular Wilson loops are transfer-matrix correlators in static-source
+11. A smearing map used for line operators or actions is part of the regulator
+    datum.  Gauge covariance requires
+    \(\mathcal S_\ell(g\cdot U)=g(x)\mathcal S_\ell(U)g(y)^{-1}\).
+12. Polar projection is gauge equivariant on its smooth branch, and stout
+    smearing gives a smooth \(SU(N)\)-valued gauge-covariant link map because
+    its algebra element is anti-Hermitian, traceless, and transforms by
+    endpoint conjugation.
+13. Rectangular Wilson loops are transfer-matrix correlators in static-source
    sectors; an isolated lowest state gives the finite-lattice static
    potential by the effective-mass ratio.
-12. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
+14. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
-13. Wilson flow at finite lattice spacing is the negative-gradient ODE on
+15. Wilson flow at finite lattice spacing is the negative-gradient ODE on
    \(G^E\); compactness gives global existence, gauge invariance gives
    covariance, and the chain rule gives
    \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
-14. Positive physical flow time damps ultraviolet Fourier modes in the
+16. Positive physical flow time damps ultraviolet Fourier modes in the
    linearized continuum equation, but flowed scale coordinates and topological
    charge plateaux acquire continuum meaning only after a scaling trajectory
    and a regulator-level topological-charge definition are specified.
-15. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
+17. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
    bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
    differential.
-16. Chiral gauge theories require additional determinant-phase and anomaly
+18. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -150,6 +162,9 @@
   plaquette-plus-rectangle tree-level improvement arithmetic: rectangle flux
   moments, \(c_0+8c_1=1\), \(c_0+20c_1=0\), and the normalization convention
   for one-parameter rectangle actions.
+- `calculation-checks/link_smearing_checks.py` verifies polar-projection
+  equivariance, the anti-Hermitian traceless stout algebra projection, and
+  endpoint-conjugation covariance of the stout algebra element.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -170,3 +185,6 @@
   improvement with an explicit rectangle-flux derivation, while flagging that
   loop-level improvement and transfer-matrix positivity are distinct
   regulator questions.
+- 2026-05-27 issue #631 pass: added gauge-covariant smearing as regulator data
+  with polar projection and stout smearing proofs, keeping the operator-scheme
+  and locality assumptions explicit.

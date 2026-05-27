@@ -576,6 +576,175 @@ reflection-positivity proof available for the Wilson plaquette action.
 Thus improvement, continuum normalization, and Hilbert-space reconstruction
 are separate requirements of the regulator datum.
 
+\section{Gauge-Covariant Link Smearing}
+\label{sec:gauge-covariant-link-smearing}
+
+Smearing is a regulator-level map from link fields to link fields.  It is
+used to build extended observables, improve overlap with low-energy states,
+and, in some actions, define the local lattice Lagrangian itself.  Its
+mathematical datum is a map
+\[
+  \mathcal S:\mathcal U_\Lambda=G^E\to G^E
+\]
+with a locality radius and a gauge-covariance law.  For a link
+\(\ell=(x,y)\), gauge covariance means
+\[
+  \mathcal S_\ell(g\cdot U)
+  =
+  g(x)\mathcal S_\ell(U)g(y)^{-1}.
+  \label{eq:smearing-gauge-covariance}
+\]
+When a Wilson loop is built from \(\mathcal S(U)\), it is a different
+regularized line operator from the loop built from \(U\).  When an action is
+built from \(\mathcal S(U)\), it is a different regulator action.  The
+continuum comparison is again a scaling-trajectory and operator-scheme
+question.
+
+Let \(G=SU(N)\).  The oriented staple sum \(C_\ell(U)\) associated with a
+link \(\ell=(x,y)\) is the sum over the \(2(D-1)\) shortest three-link paths
+from \(x\) to \(y\) that, together with \(\ell^{-1}\), form an elementary
+plaquette.  It transforms as a link:
+\[
+  C_\ell(g\cdot U)=g(x)C_\ell(U)g(y)^{-1}.
+  \label{eq:staple-link-covariance}
+\]
+The APE preprojection matrix is
+\[
+  X_\ell(U)
+  =
+  (1-\alpha)U_\ell
+  +
+  \frac{\alpha}{2(D-1)}C_\ell(U),
+  \qquad \alpha\in\mathbb R .
+  \label{eq:ape-preprojection}
+\]
+It has the same covariance law as a link, but it is generally a complex
+matrix rather than an element of \(SU(N)\).  A projection back to the group
+is therefore part of the regulator definition.
+
+\begin{proposition}[Equivariance of polar link projection]
+\label{prop:polar-link-projection-equivariance}
+Let \(X\in GL(N,\mathbb C)\), and write its polar decomposition as
+\[
+  X=U_XH_X,\qquad
+  U_X\in U(N),\qquad H_X=(X^\dagger X)^{1/2}>0.
+\]
+For \(g,h\in SU(N)\),
+\[
+  U_{gXh^{-1}}=gU_Xh^{-1}.
+  \label{eq:polar-unitary-equivariance}
+\]
+Consequently the locally defined special-unitary projection
+\[
+  \Pi_{SU(N)}(X)
+  =
+  (\det U_X)^{-1/N}U_X
+  \label{eq:suN-polar-projection}
+\]
+is gauge covariant on any open set where a branch of the \(N\)-th root is
+chosen continuously.
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+  (gXh^{-1})^\dagger(gXh^{-1})
+  =
+  h(X^\dagger X)h^{-1},
+\]
+functional calculus gives
+\[
+  H_{gXh^{-1}}=hH_Xh^{-1}.
+\]
+Therefore
+\[
+  gXh^{-1}
+  =
+  (gU_Xh^{-1})(hH_Xh^{-1})
+\]
+is the polar decomposition of \(gXh^{-1}\), because the first factor is
+unitary and the second is positive.  This proves
+\eqref{eq:polar-unitary-equivariance}.  The determinant of \(gU_Xh^{-1}\)
+equals \(\det U_X\), since \(g,h\in SU(N)\), so the determinant-normalized
+projection has the same covariance law whenever the root branch is fixed on
+the chosen connected domain.
+\end{proof}
+
+The projection map is smooth on \(GL(N,\mathbb C)\) after choosing the
+determinant branch, and it becomes singular when \(X\) loses rank or crosses
+a branch cut.  This is why differentiable algorithms often use stout
+smearing, which stays on the group without a polar projection.
+
+Let
+\[
+  \Pi_{\mathfrak{su}(N)}(M)
+  =
+  \frac12(M-M^\dagger)
+  -
+  \frac{1}{2N}\operatorname{Tr}(M-M^\dagger)\mathbf 1 .
+  \label{eq:suN-algebra-projection}
+\]
+This is the orthogonal projection, with respect to the real Hilbert--Schmidt
+inner product, onto anti-Hermitian traceless matrices.  Define
+\[
+  \Omega_\ell(U)=C_\ell(U)U_\ell^{-1},
+  \qquad
+  Q_\ell(U)=\rho\,\Pi_{\mathfrak{su}(N)}(\Omega_\ell(U)),
+  \qquad
+  \mathcal S_\ell^{\rm stout}(U)=e^{Q_\ell(U)}U_\ell .
+  \label{eq:stout-smearing-definition}
+\]
+
+\begin{proposition}[Stout smearing is a smooth gauge-covariant link map]
+\label{prop:stout-smearing-gauge-covariance}
+For every real \(\rho\), the map
+\eqref{eq:stout-smearing-definition} is a smooth map
+\(\mathcal U_\Lambda\to SU(N)^E\) and satisfies the gauge-covariance law
+\eqref{eq:smearing-gauge-covariance}.
+\end{proposition}
+
+\begin{proof}
+The staple covariance \eqref{eq:staple-link-covariance} gives
+\[
+  \Omega_\ell(g\cdot U)
+  =
+  g(x)\Omega_\ell(U)g(x)^{-1}.
+\]
+The projection \(\Pi_{\mathfrak{su}(N)}\) commutes with unitary conjugation,
+so
+\[
+  Q_\ell(g\cdot U)=g(x)Q_\ell(U)g(x)^{-1}.
+\]
+Hence
+\[
+  e^{Q_\ell(g\cdot U)}
+  =
+  g(x)e^{Q_\ell(U)}g(x)^{-1}.
+\]
+Multiplying by the transformed link
+\((g\cdot U)_\ell=g(x)U_\ell g(y)^{-1}\) gives
+\[
+  \mathcal S_\ell^{\rm stout}(g\cdot U)
+  =
+  g(x)\mathcal S_\ell^{\rm stout}(U)g(y)^{-1}.
+\]
+Because \(Q_\ell\) is anti-Hermitian and traceless, \(e^{Q_\ell}\in SU(N)\),
+and therefore \(e^{Q_\ell}U_\ell\in SU(N)\).  Smoothness follows from the
+polynomial staple map, the linear projection
+\eqref{eq:suN-algebra-projection}, and the matrix exponential.
+\end{proof}
+
+Hypercubic smearing is an iterated local construction in which staples are
+restricted to lower-dimensional faces before the next level is formed.  Its
+definition is a finite composition of maps of the preceding type; hence its
+gauge covariance follows by induction once every intermediate projection or
+exponential map is specified.  Locality is regulator locality: after \(k\)
+smearing steps the smeared link depends on links in a bounded neighborhood
+whose radius grows at most linearly in \(k\).  A continuum theorem using
+smeared operators must keep this radius fixed in lattice units, or specify
+how it scales with \(a\), before the operator scheme has mathematical
+meaning.
+
 \section{Wilson Loops}
 
 For a closed oriented lattice contour \(C\),
