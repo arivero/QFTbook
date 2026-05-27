@@ -1,130 +1,490 @@
-\chapter{Eta Invariants And Global Anomalies}
+\chapter{Eta Invariants and Global Anomalies}
 \label{ch:curved-eta-invariants-global-anomalies}
 
 \ConventionsEuclidean
 
-This chapter continues the determinant-line construction of
-Chapter~\ref{ch:curved-background-gauge-fields-index-theory}.  The local
-anomaly polynomial controls infinitesimal background variations; eta
-invariants control phases under large diffeomorphisms, large gauge
-transformations, and loops in background-field space.
+Chapter~\ref{ch:curved-background-gauge-fields-index-theory} treated the
+local index density and the curvature of the determinant line.  This chapter
+develops the complementary holonomy problem.  A local anomaly is detected by
+infinitesimal motion in background-field space; a global anomaly is detected
+by transporting the fermion functional integral around a closed loop of
+backgrounds.  For free fermions the transport is computed by eta invariants
+of Dirac operators on the associated mapping tori.
 
-\section{Eta Function}
+\section{Self-Adjoint Dirac Operators and Eta Functions}
 
-Let \(Y\) be a closed odd-dimensional Riemannian spin manifold with background
-gauge field \(A\), and let \(D_Y\) be a self-adjoint Dirac operator coupled to
-the chosen bundle.  Its nonzero eigenvalues are real and discrete.  The eta
-function is
+Let \(Y\) be a closed oriented Riemannian spin manifold of odd dimension
+\(2n+1\).  Let \(E\to Y\) be a Hermitian vector bundle with unitary connection
+\(\nabla^E\).  The coupled Dirac operator
 \[
-  \eta_{D_Y}(s)
+  B_Y
+  :
+  C^\infty(Y,S_Y\otimes E)\longrightarrow
+  C^\infty(Y,S_Y\otimes E)
+\]
+is self-adjoint on \(L^2(Y,S_Y\otimes E)\) when the Clifford action is chosen
+skew-Hermitian in Euclidean signature.  Its spectrum is real, discrete, and
+has finite-dimensional eigenspaces.  The eta function is initially defined by
+\[
+  \eta_{B_Y}(s)
   =
-  \sum_{\lambda\neq0}
+  \sum_{\lambda\in\operatorname{Spec}(B_Y)\setminus\{0\}}
   \operatorname{sign}(\lambda)|\lambda|^{-s},
-  \qquad \operatorname{Re}s\gg1 .
-\]
-For Dirac-type operators this function has a meromorphic continuation that is
-regular at \(s=0\).  Define
-\[
-  h(D_Y)=\dim\ker D_Y,
   \qquad
-  \xi(D_Y)=\frac{\eta_{D_Y}(0)+h(D_Y)}{2}.
+  \operatorname{Re}s\gg1 .
+  \label{eq:eta-function-definition}
 \]
-The reduced invariant \(\xi(D_Y)\) is the phase datum that enters fermion
-determinants.
-
-\section{Atiyah-Patodi-Singer Boundary Formula}
-
-Let \(X\) be a compact even-dimensional spin manifold with boundary
-\(\partial X=Y\), and assume the metric and background fields have product
-form near \(Y\).  Let \(D_X^+\) be the chiral Dirac operator with
-Atiyah-Patodi-Singer boundary condition.  Then
+For a Dirac-type operator the heat-kernel expansion gives a meromorphic
+continuation to \(s\in\mathbb C\), regular at \(s=0\).  We define
 \[
-  \operatorname{ind}D_X^+
+  h(B_Y)=\dim\ker B_Y,
+  \qquad
+  \xi(B_Y)=\frac{\eta_{B_Y}(0)+h(B_Y)}2 .
+  \label{eq:reduced-eta-invariant}
+\]
+The real number \(\xi(B_Y)\) depends on the metric and connection, but
+\(\exp(2\pi\ii\xi(B_Y))\) is the natural phase variable: when eigenvalues
+cross through zero, \(\xi\) changes by an integer.
+
+\begin{lemma}[Integer jump at a simple crossing]
+\label{lem:eta-integer-jump}
+Let \(B_t\), \(t\in(-\varepsilon,\varepsilon)\), be a smooth one-parameter
+family of self-adjoint Dirac-type operators.  Suppose exactly one simple
+eigenvalue \(\lambda(t)\) crosses zero, with
+\(\lambda(t)<0\) for \(t<0\) and \(\lambda(t)>0\) for \(t>0\), and all other
+eigenvalues stay away from zero.  Then the contribution of this eigenvalue to
+\(\xi(B_t)\) jumps by \(+1\).  A crossing in the opposite direction gives a
+jump by \(-1\).
+\end{lemma}
+
+\begin{proof}
+Away from the crossing the eigenvalue contributes
+\(\operatorname{sign}(\lambda)/2\) to
+\((\eta(0)+h)/2\).  Just before the crossing this contribution is
+\(-1/2\), at the crossing it is \(1/2\) because \(h=1\), and just after the
+crossing it is \(1/2\).  Thus the one-sided jump from \(t<0\) to \(t>0\) is
+\(+1\).  The reverse crossing is the same calculation with signs reversed.
+\end{proof}
+
+\begin{definition}[Spectral flow]
+For a smooth path \(B_t\), \(0\leq t\leq1\), whose endpoints are invertible,
+the spectral flow \(\operatorname{sf}(B_t)\) is the signed number of
+eigenvalues crossing zero from negative to positive, counted with
+multiplicity.  If the endpoints have kernels, one fixes a small perturbation
+or uses the APS convention below; the resulting quantity is well-defined
+modulo the endpoint-kernel bookkeeping appearing in \(\xi\).
+\end{definition}
+
+Lemma~\ref{lem:eta-integer-jump} is the elementary reason that global
+anomalies are naturally phases rather than real-valued functions of
+\(\eta(0)\) alone.  The smooth part of \(\xi\) is local; the integer jumps
+record spectral flow.
+
+\section{The APS Boundary Formula}
+
+Let \(X\) be a compact oriented Riemannian spin manifold of even dimension
+\(2n+2\), with boundary \(\partial X=Y\).  Assume that, on a collar
+\((-\epsilon,0]\times Y\), the metric and the connection have product form.
+Let \(u\) be the inward normal coordinate.  In this collar the chiral Dirac
+operator has the form
+\[
+  D_X^+
+  =
+  c(\nu)\bigl(\partial_u+B_Y\bigr)
+  \quad\hbox{up to the standard chiral identification,}
+  \label{eq:aps-collar-dirac-form}
+\]
+where \(\nu\) is the outward unit normal and \(B_Y\) is the self-adjoint
+tangential Dirac operator on \(Y\).
+
+The APS boundary condition keeps the boundary values of spinors in the
+negative spectral subspace of \(B_Y\):
+\[
+  P_{\geq0}\bigl(\psi|_Y\bigr)=0,
+  \label{eq:aps-boundary-condition}
+\]
+where \(P_{\geq0}\) is the orthogonal projection onto the span of eigenvectors
+with eigenvalue \(\geq0\).  Including the zero eigenspace in \(P_{\geq0}\) is
+the convention paired with the reduced invariant \(\xi=(\eta+h)/2\).
+
+\begin{quotedtheorem}[Atiyah--Patodi--Singer index formula]
+\label{qthm:aps-index-formula}
+For the product-collar data above, the chiral Dirac operator with APS
+boundary condition is Fredholm and
+\[
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})
   =
   \int_X
-  \widehat A(R)\operatorname{ch}(F)\big|_{\dim X}
+  \bigl[\widehat A(TX)\operatorname{ch}(E)\bigr]_{2n+2}
   -
-  \xi(D_Y).
+  \xi(B_Y).
+  \label{eq:aps-index-formula}
 \]
-The boundary condition is spectral: boundary spinors are projected onto the
-span of eigenvectors of \(D_Y\) with negative eigenvalue, with the kernel
-treated by the convention included in \(h(D_Y)\).
+For non-product data one first deforms to product form near the boundary or
+adds the corresponding local transgression term.  The sum of bulk density,
+local boundary transgression, and eta term is the invariant integer.
+\end{quotedtheorem}
 
-\begin{proposition}[Metric variation of the reduced eta invariant]
+The theorem is a theorem of global analysis.  In QFT it is used as the
+mathematical statement that separates local anomaly density from spectral
+boundary data.
+
+\begin{proposition}[Cylinder variation of the reduced eta invariant]
 \label{prop:eta-variation-local}
-Along a smooth path of background fields on \(Y\) for which \(\dim\ker D_Y\)
-is constant, the variation of \(\xi(D_Y)\) is given modulo integers by the
-integral of the local descent form obtained from
-\(\widehat A(R)\operatorname{ch}(F)\).
+Let \(B_t\), \(0\leq t\leq1\), be a smooth path of odd-dimensional Dirac
+operators obtained from a smooth path of metrics and unitary connections on a
+fixed closed odd-dimensional spin manifold \(Y\).  Let
+\[
+  X=[0,1]\times Y
+\]
+carry the interpolating product-near-boundary data.  Then
+\[
+  \xi(B_1)-\xi(B_0)
+  \equiv
+  \int_X
+  \bigl[\widehat A(TX)\operatorname{ch}(E)\bigr]_{2n+2}
+  \pmod{\mathbb Z}.
+  \label{eq:eta-cylinder-variation}
+\]
+If the path has no zero crossings and the endpoint kernels have constant
+dimension, differentiating this formula gives the usual local descent
+variation of \(\xi\).
 \end{proposition}
 
 \begin{proof}
-Let the path parameter be \(t\in[0,1]\), and form the cylinder
-\(X=[0,1]\times Y\) with the interpolating background.  Apply the
-Atiyah-Patodi-Singer formula to the cylinder.  The index is an integer.  The
-bulk integral is the transgression of the characteristic form along the path,
-and the two boundary contributions are the reduced eta invariants at the
-endpoints with opposite orientations.  Hence the change of \(\xi\) equals the
-bulk transgression modulo an integer.  Differentiating with respect to the
-path parameter gives the local descent variation.
+The boundary of \(X=[0,1]\times Y\) is
+\[
+  \partial X=Y_1\sqcup(-Y_0).
+\]
+The tangential operator on \(Y_1\) is \(B_1\), while the tangential operator on
+the oppositely oriented component \(-Y_0\) is \(-B_0\).  Applying
+\eqref{eq:aps-index-formula} to \(X\) gives
+\[
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})
+  =
+  \int_X
+  \bigl[\widehat A(TX)\operatorname{ch}(E)\bigr]_{2n+2}
+  -
+  \xi(B_1)-\xi(-B_0).
+\]
+Since \(\eta_{-B_0}(0)=-\eta_{B_0}(0)\) and
+\(h(-B_0)=h(B_0)\), one has
+\[
+  \xi(-B_0)
+  =
+  -\xi(B_0)+h(B_0).
+\]
+The Fredholm index and \(h(B_0)\) are integers.  Moving them to the other
+side gives \eqref{eq:eta-cylinder-variation} modulo \(\mathbb Z\).
 \end{proof}
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[thick] (0,0) rectangle (4.2,2.2);
+  \draw[->,thick] (0.45,1.1) -- (3.75,1.1);
+  \node at (0.2,1.1) [left] {\(Y_0\)};
+  \node at (4.4,1.1) [right] {\(Y_1\)};
+  \node at (2.1,2.45) {\([0,1]\times Y\)};
+  \node at (2.1,0.75) {\(B_t\)};
+  \draw[rounded corners,thick] (6.0,0.15) rectangle (9.9,2.05);
+  \draw[->,thick] (6.5,1.1) arc[start angle=180,end angle=-180,x radius=1.45,y radius=0.72];
+  \node at (7.95,2.45) {mapping torus \(Y_\gamma\)};
+  \node at (7.95,0.65) {\((x,1)\sim\gamma(x,0)\)};
+\end{tikzpicture}
+\caption{The APS cylinder computes the local change of \(\xi\) modulo
+integers.  Identifying the two ends by a closed loop of backgrounds gives the
+mapping torus whose eta invariant computes determinant-line holonomy.}
+\label{fig:eta-cylinder-mapping-torus}
+\end{figure}
 
 \section{Determinant-Line Holonomy}
 
-Let \(\mathcal B\) be a smooth space of background metrics and gauge fields
-modulo based gauge transformations.  A family of chiral Dirac operators over
-\(\mathcal B\) defines a determinant line bundle
+Let \(M\) be a closed even-dimensional spin manifold, and let
+\(\mathcal B\) be a smooth parameter space of background metrics and
+connections, before quotienting by large gauge transformations.  A family of
+chiral Dirac operators
 \[
-  \operatorname{Det}D\longrightarrow \mathcal B .
+  D_b^+:\Gamma(M,S^+\otimes E_b)\longrightarrow
+  \Gamma(M,S^-\otimes E_b),
+  \qquad b\in\mathcal B,
 \]
-For a loop \(\gamma:S^1\to\mathcal B\), form the mapping torus \(Y_\gamma\).
-The natural connection on the determinant line has holonomy
+defines the determinant line
+\[
+  \operatorname{Det}D_b
+  =
+  \bigwedge\nolimits^{\mathrm{top}}\ker D_b^+
+  \otimes
+  \left(\bigwedge\nolimits^{\mathrm{top}}\ker D_b^-\right)^* .
+  \label{eq:det-line-fiber}
+\]
+Where kernels jump this formula is not a literal vector bundle chart, but the
+Quillen determinant construction glues these local descriptions to a smooth
+complex line bundle over \(\mathcal B\).  The regulated chiral fermion
+functional integral is a section of this line, not a function, until a
+trivialization is chosen.
+
+Let \(\gamma:S^1\to\mathcal B\) be a loop of backgrounds.  The mapping torus
+\[
+  Y_\gamma
+  =
+  ([0,1]\times M)/\bigl((1,x)\sim(0,x)\hbox{ using }\gamma\bigr)
+  \label{eq:mapping-torus-background-loop}
+\]
+is a closed odd-dimensional spin manifold with the induced bundle and
+connection.  The Dirac operator on \(Y_\gamma\) will be denoted
+\(B_{Y_\gamma}\).
+
+\begin{quotedtheorem}[Bismut--Freed holonomy formula]
+\label{qthm:bismut-freed-holonomy}
+With the determinant-line and chirality conventions of
+\eqref{eq:det-line-fiber}, the natural Bismut--Freed connection on
+\(\operatorname{Det}D\) has holonomy
 \[
   \operatorname{Hol}_\gamma(\operatorname{Det}D)
   =
-  \exp\!\left(-2\pi\ii\,\xi(D_{Y_\gamma})\right)
+  \exp\!\left(-2\pi\ii\,\xi(B_{Y_\gamma})\right).
+  \label{eq:bismut-freed-holonomy}
 \]
-with the sign fixed by the orientation convention for the mapping torus and
-the chiral determinant.  This formula is the global anomaly diagnostic: a
-nontrivial holonomy means that the fermion partition function is a section of
-a nontrivial line bundle over background-field space.
+Its curvature is the fiber integral over \(M\) of the degree
+\((\dim M+2)\) component of
+\(\widehat A(TM)\operatorname{ch}(E)\).
+\end{quotedtheorem}
 
-\section{Dai-Freed Phase}
+The curvature statement is the local anomaly polynomial.  The holonomy
+statement is the global anomaly.  Therefore cancellation of the local anomaly
+is the vanishing of the curvature of the total anomaly line, while
+cancellation of the global anomaly is the triviality of the holonomy of that
+flat line around every closed loop in background-field space.
 
-For an odd-dimensional boundary theory, the exponentiated eta invariant of an
-even-dimensional bulk supplies a canonical phase factor
+\begin{proposition}[Finite gauge transformation as determinant-line transport]
+\label{prop:finite-gauge-transformation-holonomy}
+Let \(g\) be a gauge transformation of a background bundle on \(M\), and let
+\(A_t\), \(0\leq t\leq1\), be a path from \(A\) to \(A^g\).  The ratio between
+the transported determinant at \(A^g\) and the determinant at \(A\) is
+computed by \eqref{eq:bismut-freed-holonomy} on the mapping torus
 \[
-  \exp\!\left(2\pi\ii\,\xi(D_X)\right)
+  Y_g
+  =
+  ([0,1]\times M)/\bigl((1,x)\sim(0,gx)\bigr).
+  \label{eq:gauge-mapping-torus}
 \]
-whose variation cancels the determinant-line variation of the boundary
-fermion when the bulk and boundary bundles are paired correctly.  The combined
-bulk-boundary partition function is a number rather than a section, provided
-the background fields extend over the bulk and the relevant bordism
-ambiguity has trivial phase.  This is the eta-invariant form of anomaly
-inflow for global anomalies.
+If this phase is not \(1\), the chiral fermion measure does not descend to a
+function on the quotient by that gauge transformation.
+\end{proposition}
 
-\section{Relation To Local Anomaly Polynomials}
+\begin{proof}
+Parallel transport along \(A_t\) identifies
+\(\operatorname{Det}D_A\) with \(\operatorname{Det}D_{A^g}\).  Gauge
+equivariance identifies \(\operatorname{Det}D_{A^g}\) with
+\(\operatorname{Det}D_A\).  The composition is transport around a closed loop
+in the quotient background groupoid.  The geometric representative of this
+loop is precisely the mapping torus \(Y_g\), and the holonomy is therefore
+\eqref{eq:bismut-freed-holonomy}.
+\end{proof}
 
-If \(Y\) is the mapping torus of an infinitesimal loop in background space,
-Proposition~\ref{prop:eta-variation-local} reduces the eta phase to the
-integral of the descent form associated with the local anomaly polynomial.
-Large loops require the full reduced eta invariant.  Therefore local anomaly
-cancellation is the vanishing of the curvature of the determinant line, while
-global anomaly cancellation is the triviality of its holonomy on all loops in
-background-field space.
+\section{Pfaffian Lines and Mod-Two Indices}
 
-\section{Interacting Theories}
+Some fermion systems have a real or pseudoreal structure that replaces the
+complex determinant line by a Pfaffian line.  The four-dimensional
+\(SU(2)\) fundamental Weyl fermion is the basic example.  The fundamental
+representation is pseudoreal, and the spin representation supplies an
+anti-linear symmetry that makes the Euclidean quadratic form skew on a real
+vector space.  The path integral is then a Pfaffian.  Its possible global
+anomaly is a sign.
 
-For free fermions, determinant lines and eta invariants are built from Dirac
-operators.  For an interacting QFT, the analogous object is the anomaly line
-over background-field space, defined by the phase ambiguity of the regulated
-partition function and by its response to background gluing.  A fully
-developed theory must construct this line without relying on a quadratic
-fermion determinant and must compare it with invertible bulk field theories.
+\begin{definition}[Mod-two index]
+\label{def:mod-two-index}
+Let \(Y\) be a closed spin manifold of dimension \(8k+5\), and let \(E\) be a
+pseudoreal bundle for which the coupled Dirac operator has the corresponding
+real skew structure.  The mod-two index is
+\[
+  \operatorname{Ind}_2(B_Y)
+  =
+  \dim\ker B_Y
+  \pmod 2 .
+  \label{eq:mod-two-index-definition}
+\]
+The parity is stable under continuous deformations preserving the real
+structure.
+\end{definition}
+
+\begin{proof}[Proof of deformation invariance]
+Eigenvalues away from zero occur in pairs \(\lambda,-\lambda\) for the real
+skew structure relevant to the Pfaffian.  Under a deformation, nonzero
+eigenvalues can enter or leave the kernel only through such paired crossings.
+Thus the dimension of the kernel can change only by an even integer, and
+\(\dim\ker B_Y\) modulo \(2\) is invariant.
+\end{proof}
+
+For such a Pfaffian line the Dai--Freed holonomy specializes to
+\[
+  \operatorname{Hol}_\gamma(\operatorname{Pf}D)
+  =
+  (-1)^{\operatorname{Ind}_2(B_{Y_\gamma})}.
+  \label{eq:pfaffian-mod-two-holonomy}
+\]
+This formula is the sign analogue of
+\eqref{eq:bismut-freed-holonomy}.
+
+\section{\texorpdfstring{The Witten \(SU(2)\) Global Anomaly}{The Witten SU(2) Global Anomaly}}
+
+Let \(M=S^4\), and let \(g:S^4\to SU(2)\) represent the nontrivial element of
+\[
+  \pi_4(SU(2))\simeq\mathbb Z_2 .
+\]
+Form the mapping torus \(Y_g\) as in \eqref{eq:gauge-mapping-torus}.  A
+single left-handed Weyl fermion in the fundamental representation of
+\(SU(2)\) has Pfaffian holonomy
+\[
+  \operatorname{Hol}_g(\operatorname{Pf}D)=-1 .
+  \label{eq:witten-su2-fundamental-sign}
+\]
+Equivalently,
+\[
+  \operatorname{Ind}_2(B_{Y_g,\square})=1 .
+  \label{eq:witten-su2-fundamental-mod-two-index}
+\]
+
+\begin{quotedtheorem}[Mod-two index theorem for the Witten mapping torus]
+\label{qthm:witten-su2-mod-two-index}
+Let \(R_j\) be the irreducible \(SU(2)\) representation of isospin
+\(j\in\frac12\mathbb Z_{\geq0}\), and set \(n=2j\).  With the trace-delta
+normalization of Chapter~\ref{ch:curved-background-gauge-fields-index-theory},
+\[
+  \operatorname{tr}_{R_j}(t^a t^b)
+  =
+  T_\Delta(R_j)\delta^{ab},
+  \qquad
+  T_\Delta(R_j)
+  =
+  \frac{n(n+1)(n+2)}6 .
+  \label{eq:su2-trace-delta-dynkin-index}
+\]
+For the mapping torus of the generator of \(\pi_4(SU(2))\),
+\[
+  \operatorname{Ind}_2(B_{Y_g,R_j})
+  \equiv
+  T_\Delta(R_j)
+  \pmod2 .
+  \label{eq:witten-su2-index-parity-dynkin}
+\]
+\end{quotedtheorem}
+
+The theorem is a five-dimensional mod-two index theorem.  The algebraic
+content of the anomaly criterion is elementary once
+\eqref{eq:witten-su2-index-parity-dynkin} is known.
+
+\begin{proposition}[Parity criterion for \(SU(2)\) representations]
+\label{prop:su2-global-anomaly-parity-criterion}
+The isospin-\(j\) Weyl fermion has the original spin \(SU(2)\) global anomaly
+precisely when \(2j\equiv1\pmod4\).  A collection of Weyl fermions in
+representations \(R_{j_\alpha}\) is free of this anomaly precisely when
+\[
+  \sum_\alpha T_\Delta(R_{j_\alpha})
+  \equiv0
+  \pmod2 .
+  \label{eq:su2-global-anomaly-cancellation-condition}
+\]
+\end{proposition}
+
+\begin{proof}
+Write \(n=2j\).  The integer
+\[
+  T_\Delta(R_j)=\frac{n(n+1)(n+2)}6
+\]
+is the binomial coefficient \(\binom{n+2}{3}\).  Its parity is given by
+Lucas' theorem: \(\binom{N}{3}\) is odd exactly when the binary digits of
+\(3\) are contained in those of \(N\).  Since \(3\) has binary expansion
+\(\cdots 0011\), this means \(N=n+2\equiv3\pmod4\), or
+\[
+  n\equiv1\pmod4 .
+\]
+Equation~\eqref{eq:witten-su2-index-parity-dynkin} then gives the Pfaffian
+sign.  For several Weyl fermions the Pfaffian line is the tensor product of
+the individual Pfaffian lines, so the signs multiply and the exponents add
+modulo \(2\).
+\end{proof}
+
+\begin{example}[First few \(SU(2)\) representations]
+\label{ex:su2-global-anomaly-first-representations}
+The sequence of trace-delta indices is
+\[
+\begin{array}{c|ccccc}
+j & \frac12 & 1 & \frac32 & 2 & \frac52\\
+\hline
+T_\Delta(R_j) & 1 & 4 & 10 & 20 & 35 .
+\end{array}
+\]
+Thus a single doublet has the anomaly, a single triplet does not, a
+single four-dimensional representation does not, and a single
+six-dimensional representation has the anomaly.  The vanishing of the
+ordinary four-dimensional cubic \(SU(2)\) anomaly does not decide this
+question because \(SU(2)\) has no independent symmetric cubic invariant.
+\end{example}
+
+\section{Dai--Freed Inflow}
+
+The determinant or Pfaffian of a \(d\)-dimensional fermion is a vector in an
+anomaly line over the background groupoid.  A \((d+1)\)-dimensional
+invertible field theory trivializes this line when its boundary variation is
+the inverse of the fermion-line variation.  In the free-fermion model the
+closed \((d+1)\)-manifold partition function is the eta phase
+\[
+  Z_{\mathrm{DF}}(Y)
+  =
+  \exp\!\left(2\pi\ii\,\xi(B_Y)\right)
+  \label{eq:dai-freed-closed-phase}
+\]
+for a complex chiral determinant, with the corresponding mod-two sign in the
+real Pfaffian case.
+
+If \(Y\) has boundary \(M\), the APS construction assigns not a number but a
+vector in the inverse determinant line over the boundary background on \(M\).
+Pairing this vector with the boundary fermion determinant gives a number.
+Changing the filling changes the trivialization by the closed-manifold phase
+obtained by gluing the two fillings.  This is the precise geometric meaning
+of anomaly inflow in the eta-invariant model.
+
+\begin{proposition}[Local descent as the infinitesimal limit of inflow]
+\label{prop:eta-inflow-local-descent}
+For a contractible loop of background fields, the Dai--Freed holonomy reduces
+to the exponential of the descent integral determined by the local anomaly
+polynomial.  For a noncontractible loop, the reduced eta invariant contains
+additional global information not determined by the local polynomial alone.
+\end{proposition}
+
+\begin{proof}
+If the loop is contractible, choose a disk of backgrounds filling it.  The
+mapping torus bounds the total space over this disk.  Applying the APS index
+formula to the bounding manifold expresses \(\xi\) modulo integers as the
+integral of \(\widehat A\operatorname{ch}\).  The transgression of this
+integral to the boundary loop is exactly the descent form.  If the loop is
+not contractible in the background groupoid, such a disk need not exist; the
+eta phase is then a genuine holonomy of a flat anomaly line.
+\end{proof}
+
+\section{Interacting Theories and Anomaly Lines}
+
+For free fermions, the anomaly line is constructed from a family of Dirac
+operators.  For an interacting QFT, the same structure should be formulated
+without choosing quadratic fields.  The background groupoid has objects given
+by structured background fields and morphisms given by gauge transformations,
+diffeomorphisms, and identifications of background data.  An anomaly line is
+a functor from this groupoid to the groupoid of complex lines, equipped with
+compatible gluing data.  The partition function of the anomalous theory is a
+section of this functorial line.
+
+Local counterterms change the trivialization of the line.  They shift the
+connection one-form and the cocycle representative, but they do not change
+the curvature class or the holonomy class.  Thus a genuine global anomaly is
+not removed by changing local coordinates on the space of actions.
 
 \begin{openproblem}[Global anomaly line for interacting QFT]
 \label{op:global-anomaly-line-interacting-qft}
 Construct the anomaly line of an interacting QFT over the space of background
 fields, prove its local curvature and global holonomy formulae, and identify
-the conditions under which it is represented by an invertible bulk theory.
+the conditions under which it is represented by an invertible bulk field
+theory.  The free-fermion determinant and Pfaffian lines developed above are
+models for this structure, not a general construction of it.
 \end{openproblem}

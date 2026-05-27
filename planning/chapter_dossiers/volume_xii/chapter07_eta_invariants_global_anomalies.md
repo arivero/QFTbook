@@ -1,36 +1,68 @@
-# Chapter 07: Eta Invariants And Global Anomalies
+# Chapter 07: Eta Invariants and Global Anomalies
 
 ## Source Position
 
 Volume XII has introduced background gauge fields, index theory, anomaly
-polynomials, and determinant lines.  This chapter adds reduced eta
-invariants, APS boundary formulae, determinant-line holonomy, and the
-Dai-Freed phase for global anomalies.
+polynomials, and determinant lines.  This chapter now develops the holonomy
+side of the same structure: eta invariants, APS boundary terms, determinant
+and Pfaffian-line transport, Dai--Freed inflow, and the Witten \(SU(2)\)
+global anomaly as an explicit mod-two-index example.
 
 ## Notation Inventory
 
-- `Y`, `X`: closed odd-dimensional manifold and bounding even-dimensional
-  manifold.
-- `D_Y`, `D_X^+`: boundary Dirac operator and chiral bulk Dirac operator.
-- `eta_D(s)`, `h(D)`, `xi(D)`: eta function, kernel dimension, and reduced
+- `Y`: closed odd-dimensional spin manifold; `X`: compact even-dimensional
+  spin manifold with boundary.
+- `B_Y`: self-adjoint odd-dimensional Dirac operator.
+- `eta_B(s)`, `h(B)`, `xi(B)`: eta function, kernel dimension, and reduced
   eta invariant.
-- `Ahat(R) ch(F)`: index density.
-- `Det D`: determinant line over background-field space.
-- `gamma`, `Y_gamma`: loop of backgrounds and its mapping torus.
+- `D_X^{+,APS}`: chiral Dirac operator with APS spectral boundary condition.
+- `P_{\geq0}`: APS projection onto nonnegative boundary spectrum.
+- `Det D`, `Pf D`: determinant and Pfaffian lines over background-field space.
+- `gamma`, `Y_gamma`: closed loop of backgrounds and its mapping torus.
+- `Ind_2(B_Y)`: mod-two index of the real/pseudoreal Dirac operator.
+- `R_j`, `n=2j`, `T_Delta(R_j)`: \(SU(2)\) isospin representation, doubled
+  isospin, and trace-delta Dynkin index.
 
 ## Claim Ledger
 
-- Defines eta functions and reduced eta invariants for self-adjoint
-  Dirac-type operators.
-- States the APS index formula with boundary condition conventions.
-- Proves the local variation of the reduced eta invariant modulo integers by
-  applying APS to a cylinder.
-- Defines determinant-line holonomy by the mapping-torus eta phase.
-- Connects Dai-Freed phases to global anomaly inflow and states the
-  interacting-QFT anomaly-line problem.
+- Defines the eta function and reduced eta invariant for self-adjoint
+  Dirac-type operators, including the integer jump at zero crossings.
+- States the APS formula as an external global-analysis theorem with explicit
+  product-collar and boundary-projection conventions.
+- Proves the cylinder variation formula for \(\xi\) modulo integers from the
+  APS theorem, including the orientation-reversal bookkeeping
+  \(\xi(-B)=-\xi(B)+h(B)\).
+- Defines determinant-line fibers and states the Bismut--Freed holonomy
+  theorem for mapping tori.
+- Derives finite gauge-transformation phases as determinant-line holonomies.
+- Defines the Pfaffian mod-two index and proves its deformation invariance in
+  the real skew setting.
+- States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
+  derives the parity criterion \(2j\equiv1\pmod4\) using exact binomial parity.
+- Explains Dai--Freed inflow as a boundary-line trivialization and proves the
+  descent limit for contractible loops.
+- Records the interacting-QFT anomaly-line construction as an open problem.
+
+## Calculation Ledger
+
+- `calculation-checks/eta_global_anomaly_checks.py` checks the APS
+  orientation bookkeeping, the first \(SU(2)\) trace-delta Dynkin indices,
+  Witten parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
+  cancellation, and cylinder congruence arithmetic.
+- Related scripts: `calculation-checks/background_index_theory_checks.py`,
+  `calculation-checks/anomaly_polynomial_descent_checks.py`, and
+  `calculation-checks/inflow_anomaly_line_checks.py`.
 
 ## Figure Ledger
 
-No figure is included in this pass.  Future figures should show the cylinder
-used for eta variation, the mapping torus of a loop in background space, and
-the bulk-boundary cancellation of determinant-line phase.
+- `fig:eta-cylinder-mapping-torus` shows the APS cylinder and the mapping
+  torus used to pass from local eta variation to determinant-line holonomy.
+
+## Residual Work
+
+- The quoted APS, Bismut--Freed, and mod-two-index theorems are mathematical
+  inputs.  A later appendix could develop their proofs in the level of
+  global analysis and KO-theory needed by the monograph.
+- A later interacting-anomaly chapter should replace the free-fermion
+  determinant-line model by a general construction of anomaly lines for
+  interacting QFTs.

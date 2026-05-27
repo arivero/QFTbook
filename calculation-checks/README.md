@@ -35,6 +35,11 @@ Current checks:
   trace-delta \(SU(N)\) instanton indices, the Abelian \(T^4\) flux index,
   the six-form anomaly-polynomial coefficients, and the Dirac zero-mode
   selection-rule count.
+- `eta_global_anomaly_checks.py`: exact arithmetic checks for the
+  Volume XII eta-invariant and global-anomaly chapter, including APS
+  orientation bookkeeping, the trace-delta \(SU(2)\) index table,
+  Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
+  multiplicativity, and vanishing of the ordinary \(SU(2)\) cubic weight sum.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including functorial composition of anomaly-line cocycles, local
   counterterm/frame changes of cocycle representatives, and the finite
