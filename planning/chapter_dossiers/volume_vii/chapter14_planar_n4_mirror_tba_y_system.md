@@ -21,6 +21,15 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   a level-II root lies inside, outside, or on the unit `y`-circle.
 - `epsilon_A`, `Y_A`: mirror pseudoenergies and Y-functions.
 - `K_BA`: mirror scattering kernel.
+- `mathcal I`: mirror-TBA node set containing `bullet_Q`, `y_pm^(alpha)`,
+  `(v|M)^(alpha)`, and `(w|M)^(alpha)` for wings `alpha=L,R`.
+- `nu_L=+1`, `nu_R=-1`: wing signs for the fermionic mirror chemical
+  potentials.
+- `d_A`: mirror-TBA driving term `L tilde E_A-mu_A`; only `bullet_Q` carries
+  length energy, while `y_pm^(alpha)` carries `nu_alpha pi i`.
+- `K^sb_AB`: target-first stringbook kernel
+  `(2 pi i)^{-1} partial_v log S^sb_AB(u,v)`, related to the chapter
+  source kernel by `K^sb_AB(u,v)=-K_BA(v,u)`.
 - `rho_p,rho_L,rho_h`: one-species mirror particle, level, and hole
   densities used in the statistical-mechanical derivation of TBA.
 - `K^dens(v,u)`: target-derivative density kernel
@@ -80,6 +89,12 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   gives the physical root contribution `E(u_j)`.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
+- Adds the multi-species mirror-TBA node/source inventory: maps the
+  stringbook `oplus`, `ominus`, `M|yw`, and `M|w` symbols to
+  `y_+`, `y_-`, `(v|M)`, and `(w|M)`, states the left/right fermion
+  chemical potentials, proves the target-first/source-kernel bridge, and
+  records the node-by-node source families including the reversed-root
+  denominator signs for `ominus` and `w` sources.
 - Gives the excited-state energy formula with wrapping integral.
 - Adds a self-contained derivation of the `A_infinity` auxiliary-string kernel
   inverse in Fourier variables, including the fused kernel symbol and the
@@ -150,6 +165,11 @@ node domain.
   finite grid: constrained entropy variation, stationarity of the grand
   functional, free-energy identity, source-kernel sign conversion, and the
   excited-state zero condition.
+- The same script checks the multi-species mirror-TBA node/source inventory:
+  length-driving support only on `bullet_Q`, left/right fermion boundary
+  phases, the `M=1` boundary in the `bullet_Q` equation, the
+  target-first/source-kernel sign bridge, and the ratio signs from reversed
+  `ominus` and `w` roots.
 - The same script checks the excited-state contour-deformation residue signs:
   source orientation `-log S`, product orientation, energy residue
   `+i tilde p`, and inverse mirror continuation to physical energy.

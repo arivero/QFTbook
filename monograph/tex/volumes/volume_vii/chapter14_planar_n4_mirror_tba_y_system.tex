@@ -709,6 +709,150 @@ The contours \(\mathcal C_B\), signs for fermionic auxiliary roots, and
 chemical potentials \(\mu_A\) are part of the mirror-model definition.  They
 are not decorations: changing them changes the finite-size answer.
 
+\begin{proposition}[Mirror-TBA node and source inventory]
+\label{prop:planar-n4-mirror-tba-node-source-inventory}
+Assume the mirror Bethe-string hypothesis of
+Proposition~\ref{prop:planar-n4-mirror-auxiliary-strings}, diagonal scalar
+factors for the fused mirror strings satisfying
+\[
+  S^{\rm sb}_{AB}(u,v)S^{\rm mirror}_{BA}(v,u)=1
+\]
+on the chosen contours, and no contour-crossing source in the ground-state
+calculation.  Let
+\[
+  \mathcal I
+  =
+  \{\bullet_Q:Q\geq1\}
+  \cup
+  \{y_\pm^{(\alpha)},(v|M)^{(\alpha)},(w|M)^{(\alpha)}:
+       M\geq1,\ \alpha=L,R\}.
+\]
+The stringbook symbols are identified as
+\[
+  y_+^{(\alpha)}=\oplus^{(\alpha)},\qquad
+  y_-^{(\alpha)}=\ominus^{(\alpha)},\qquad
+  (v|M)^{(\alpha)}=M|yw^{(\alpha)},\qquad
+  (w|M)^{(\alpha)}=M|w^{(\alpha)}.
+\]
+Put \(\nu_L=+1\), \(\nu_R=-1\).  The driving terms are
+\[
+  d_{\bullet_Q}=L\,\widetilde E_Q,\qquad
+  d_{y_\pm^{(\alpha)}}=\nu_\alpha\pi\ii,\qquad
+  d_{(v|M)^{(\alpha)}}=d_{(w|M)^{(\alpha)}}=0,
+\]
+or equivalently \(d_A=L\widetilde E_A-\mu_A\), with
+\(\widetilde E_A=0\) for auxiliary nodes and
+\(\mu_{y_\pm^{(\alpha)}}=-\nu_\alpha\pi\ii\).  If
+\[
+  K^{\rm sb}_{AB}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm sb}_{AB}(u,v)
+\]
+denotes the target-first stringbook kernel, then
+\begin{equation}
+  K^{\rm sb}_{AB}(u,v)=-K_{BA}(v,u).
+  \label{eq:planar-n4-stringbook-source-kernel-bridge}
+\end{equation}
+Consequently \eqref{eq:planar-n4-mirror-tba-general} is equivalent to the
+target-first system
+\begin{equation}
+  \epsilon_A(u)
+  =
+  d_A(u)
+  +
+  \sum_{B\in\mathcal I}
+  \int_{\mathcal C_B}\dd v\,
+  K^{\rm sb}_{AB}(u,v)\log(1+Y_B(v)).
+  \label{eq:planar-n4-mirror-tba-target-first}
+\end{equation}
+Write \(\mathcal S_A\) for the convolution part of
+\eqref{eq:planar-n4-mirror-tba-target-first}.  The nonzero source families
+are precisely
+\begin{align*}
+  \mathcal S_{\bullet_Q}
+  &=
+  \sum_{Q'\geq1}K^{\bullet\bullet}_{QQ'}*\log(1+Y_{\bullet_{Q'}})
+  +
+  \sum_{\alpha=L,R}\sum_{M\geq2}
+    K^{\bullet v}_{QM}*\log(1+Y_{(v|M)^{(\alpha)}})
+  \\
+  &\quad
+  +
+  \sum_{\alpha=L,R}
+  \left[
+    K^{\bullet y_+}_{Q}*\log(1+Y_{y_+^{(\alpha)}})
+    +
+    K^{\bullet y_-}_{Q}*\log(1+Y_{y_-^{(\alpha)}})
+  \right]
+  ,
+  \\
+  \mathcal S_{y_\pm^{(\alpha)}}
+  &=
+  \sum_{Q\geq1}K^{y_\pm\bullet}_{Q}*\log(1+Y_{\bullet_Q})
+  +
+  \sum_{M\geq1}K_M*
+  \log\frac{1+Y_{(v|M)^{(\alpha)}}}
+           {1+Y_{(w|M)^{(\alpha)}}}
+  ,
+  \\
+  \mathcal S_{(v|M)^{(\alpha)}}
+  &=
+  \sum_{Q\geq1}K^{v\bullet}_{MQ}*\log(1+Y_{\bullet_Q})
+  +
+  \sum_{N\geq1}K_{MN}*\log(1+Y_{(v|N)^{(\alpha)}})
+  \\
+  &\quad
+  +
+  K_M*\log\frac{1+Y_{y_+^{(\alpha)}}}
+                 {1+Y_{y_-^{(\alpha)}}}
+  ,
+  \\
+  \mathcal S_{(w|M)^{(\alpha)}}
+  &=
+  \sum_{N\geq1}K_{MN}*\log(1+Y_{(w|N)^{(\alpha)}})
+  +
+  K_M*\log\frac{1+Y_{y_+^{(\alpha)}}}
+                 {1+Y_{y_-^{(\alpha)}}}.
+\end{align*}
+The lower bound \(M\geq2\) in the \(\bullet_Q\) equation is the stringbook
+indexing of the \(v\)-string source adjacent to the \(y\)-sheet boundary.
+The denominator entries are not optional signs: they encode the reversed
+ordering of the \(\ominus\)-sheet and \(w\)-string Bethe roots.
+\end{proposition}
+
+\begin{proof}
+The one-species derivation above already gives the density-to-TBA transpose.
+For species \(A\), the logarithmic Bethe-Yang equation is differentiated in
+the target rapidity.  The entropy variation transposes the density kernel, so
+the target-first TBA contains
+\((2\pi\ii)^{-1}\partial_v\log S^{\rm sb}_{AB}(u,v)\).  The diagonal
+unitarity relation displayed in the hypotheses gives
+\[
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm sb}_{AB}(u,v)
+  =
+  -
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm mirror}_{BA}(v,u),
+\]
+which is \eqref{eq:planar-n4-stringbook-source-kernel-bridge} and converts
+\eqref{eq:planar-n4-mirror-tba-target-first} to
+\eqref{eq:planar-n4-mirror-tba-general}.  Only the \(\bullet_Q\) strings carry
+mirror energy, so the length term is \(L\widetilde E_Q\) on those nodes and is
+zero on auxiliary nodes.  The sign \(-1\) in the level-II mirror Bethe-Yang
+equation gives the additive fermion chemical potential
+\(\nu_\alpha\pi\ii\) in each wing, equivalently
+\(\mu_{y_\pm^{(\alpha)}}=-\nu_\alpha\pi\ii\) in the source-kernel convention.
+
+The remaining entries are the fused forms of
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang}.  Fusing level-I roots gives
+the \(\bullet\)-kernels; fusing the auxiliary arrays gives the rational
+\(K_M\) and \(K_{MN}\) kernels used below.  The roots on the
+\(\ominus\)-sheet and in the \(w\)-strings are ordered oppositely to the
+\(\oplus\)-sheet and \(v\)-string roots in the stringbook Bethe-Yang
+products.  Their scattering factors therefore enter inverted, which is
+exactly the logarithmic ratio displayed in the \(y\)-, \(v\)-, and
+\(w\)-node equations.
+\end{proof}
+
 For a state with physical Bethe roots \(u_1,\ldots,u_K\), the excited-state
 TBA is obtained by contour deformation.  The physical roots satisfy exact
 Bethe equations of the form

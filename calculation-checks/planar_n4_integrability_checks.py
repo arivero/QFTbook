@@ -2104,6 +2104,203 @@ def check_one_species_tba_variation() -> None:
         )
 
 
+def check_mirror_tba_node_source_inventory() -> None:
+    """Check the multi-species mirror-TBA source and orientation bookkeeping."""
+
+    def make_node(kind: str, index: int = 0, wing: str = "") -> tuple[str, int, str]:
+        return (kind, index, wing)
+
+    bullet_nodes = [make_node("bullet", 1), make_node("bullet", 2)]
+    auxiliary_nodes: list[tuple[str, int, str]] = []
+    for wing in ("L", "R"):
+        auxiliary_nodes.extend(
+            [
+                make_node("y_plus", 0, wing),
+                make_node("y_minus", 0, wing),
+                make_node("v", 1, wing),
+                make_node("v", 2, wing),
+                make_node("w", 1, wing),
+                make_node("w", 2, wing),
+            ]
+        )
+    nodes = bullet_nodes + auxiliary_nodes
+
+    def wing_sign(wing: str) -> int:
+        return 1 if wing == "L" else -1
+
+    mirror_length = 4.0
+    bullet_energy = {1: 0.9, 2: 1.35}
+
+    def length_energy(node: tuple[str, int, str]) -> float:
+        kind, index, _wing = node
+        return bullet_energy[index] if kind == "bullet" else 0.0
+
+    def driving(node: tuple[str, int, str]) -> complex:
+        kind, index, wing = node
+        if kind == "bullet":
+            return mirror_length * bullet_energy[index]
+        if kind in ("y_plus", "y_minus"):
+            return wing_sign(wing) * math.pi * 1j
+        return 0j
+
+    def chemical_potential(node: tuple[str, int, str]) -> complex:
+        return mirror_length * length_energy(node) - driving(node)
+
+    for node in nodes:
+        assert_close(
+            "mirror TBA driving convention",
+            mirror_length * length_energy(node) - chemical_potential(node),
+            driving(node),
+        )
+        if node[0] in ("y_plus", "y_minus"):
+            assert_close("mirror fermion boundary sign", cmath.exp(-driving(node)), -1)
+        elif node[0] != "bullet" and abs(length_energy(node)) > 0:
+            raise AssertionError("auxiliary node must not carry a length driving term")
+
+    def same_wing(target: tuple[str, int, str], source: tuple[str, int, str]) -> bool:
+        return bool(target[2]) and target[2] == source[2]
+
+    def stringbook_coefficient(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> int:
+        target_kind, _target_index, _target_wing = target
+        source_kind, source_index, _source_wing = source
+        if target_kind == "bullet":
+            if source_kind == "bullet":
+                return 1
+            if source_kind == "v" and source_index >= 2:
+                return 1
+            if source_kind in ("y_plus", "y_minus"):
+                return 1
+            return 0
+        if target_kind in ("y_plus", "y_minus"):
+            if source_kind == "bullet":
+                return 1
+            if same_wing(target, source) and source_kind == "v":
+                return 1
+            if same_wing(target, source) and source_kind == "w":
+                return -1
+            return 0
+        if target_kind == "v":
+            if source_kind == "bullet":
+                return 1
+            if same_wing(target, source) and source_kind == "v":
+                return 1
+            if same_wing(target, source) and source_kind == "y_plus":
+                return 1
+            if same_wing(target, source) and source_kind == "y_minus":
+                return -1
+            return 0
+        if target_kind == "w":
+            if same_wing(target, source) and source_kind == "w":
+                return 1
+            if same_wing(target, source) and source_kind == "y_plus":
+                return 1
+            if same_wing(target, source) and source_kind == "y_minus":
+                return -1
+            return 0
+        raise AssertionError("unknown node in mirror TBA inventory")
+
+    for wing in ("L", "R"):
+        assert (
+            stringbook_coefficient(make_node("bullet", 1), make_node("v", 1, wing))
+            == 0
+        )
+        assert (
+            stringbook_coefficient(make_node("bullet", 1), make_node("v", 2, wing))
+            == 1
+        )
+
+    rapidity = {
+        node: -1.2 + 0.27 * index
+        for index, node in enumerate(nodes, start=1)
+    }
+    quadrature_weight = {
+        node: 0.11 + 0.03 * ((index % 5) + 1)
+        for index, node in enumerate(nodes, start=1)
+    }
+    y_value = {
+        node: 0.2 + 0.07 * ((index * 3) % 11)
+        for index, node in enumerate(nodes, start=1)
+    }
+    log_one_plus_y = {node: math.log(1 + value) for node, value in y_value.items()}
+
+    def phase_strength(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> float:
+        raw = (
+            17 * (1 + target[1])
+            + 19 * (1 + source[1])
+            + sum(
+                ord(letter)
+                for letter in target[0] + source[0] + target[2] + source[2]
+            )
+        )
+        return 0.02 * (1 + raw % 7)
+
+    def phase_prime(z_value: complex, width: float) -> complex:
+        return 1 / (z_value + 1j * width) - 1 / (z_value - 1j * width)
+
+    def target_first_kernel(
+        target: tuple[str, int, str], source: tuple[str, int, str]
+    ) -> complex:
+        coefficient = stringbook_coefficient(target, source)
+        if coefficient == 0:
+            return 0j
+        width = 0.6 + 0.05 * ((target[1] + source[1]) % 3)
+        z_value = rapidity[target] - rapidity[source]
+        return (
+            -coefficient
+            * phase_strength(target, source)
+            * phase_prime(z_value, width)
+        )
+
+    def source_kernel(
+        source: tuple[str, int, str], target: tuple[str, int, str]
+    ) -> complex:
+        return -target_first_kernel(target, source)
+
+    for target in nodes:
+        stringbook_rhs = driving(target)
+        compact_rhs = mirror_length * length_energy(target) - chemical_potential(target)
+        for source in nodes:
+            assert_close(
+                "mirror TBA target/source kernel bridge",
+                target_first_kernel(target, source) + source_kernel(source, target),
+                0,
+            )
+            stringbook_rhs += (
+                quadrature_weight[source]
+                * target_first_kernel(target, source)
+                * log_one_plus_y[source]
+            )
+            compact_rhs -= (
+                quadrature_weight[source]
+                * source_kernel(source, target)
+                * log_one_plus_y[source]
+            )
+        assert_close("mirror TBA compact/source inventory", compact_rhs, stringbook_rhs)
+
+    for wing in ("L", "R"):
+        kernel_value = 0.37
+        v_node = make_node("v", 1, wing)
+        w_node = make_node("w", 1, wing)
+        y_plus = make_node("y_plus", 0, wing)
+        y_minus = make_node("y_minus", 0, wing)
+        assert_close(
+            "mirror TBA y-node reversed w-string ratio",
+            kernel_value * log_one_plus_y[v_node] - kernel_value * log_one_plus_y[w_node],
+            kernel_value * math.log((1 + y_value[v_node]) / (1 + y_value[w_node])),
+        )
+        assert_close(
+            "mirror TBA auxiliary reversed y-sheet ratio",
+            kernel_value * log_one_plus_y[y_plus]
+            - kernel_value * log_one_plus_y[y_minus],
+            kernel_value
+            * math.log((1 + y_value[y_plus]) / (1 + y_value[y_minus])),
+        )
+
+
 def check_excited_tba_contour_deformation_residues() -> None:
     """Check the source and energy signs from excited-state contour residues."""
 
@@ -4034,6 +4231,7 @@ def main() -> None:
     check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
+    check_mirror_tba_node_source_inventory()
     check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
     check_y_system_shift_source_factor()

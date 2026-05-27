@@ -1701,3 +1701,40 @@ Calculation checks added:
   internal endpoint cancellation, momentum telescoping, energy telescoping,
   bound-state shortening, level-II auxiliary-factor telescoping, and the
   indexed product defining the fused scalar factor.
+
+## Continuation LIV: Mirror TBA Node-Source Inventory
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition-level mirror-TBA node/source inventory after the compact
+  general TBA equation.
+- The text identifies the stringbook nodes
+  `oplus`, `ominus`, `M|yw`, and `M|w` with the monograph nodes
+  `y_+`, `y_-`, `(v|M)`, and `(w|M)` in each wing.
+- It states the driving terms:
+  only `bullet_Q` has length energy, while both `y` sheets in wing `alpha`
+  carry the fermionic boundary chemical potential `nu_alpha pi i` with
+  `nu_L=+1`, `nu_R=-1`.
+- It proves the target-first/source-kernel bridge
+  `K^sb_AB(u,v)=-K_BA(v,u)` from diagonal unitarity, explaining why the
+  compact source-kernel TBA has a minus sign while the stringbook
+  target-first equations have plus signs.
+- It records the node-by-node source families and the reversed-root
+  denominator signs for the `ominus` sheet and `w` strings, including the
+  stringbook `M>=2` boundary in the `bullet_Q` equation.
+
+Calculation checks added:
+
+- Added `check_mirror_tba_node_source_inventory()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the length-driving support, left/right fermion phases, `M=1` boundary
+  convention, target/source kernel sign bridge, compact-vs-target-first TBA
+  equality on a finite node set, and the ratio signs from reversed
+  `ominus` and `w` roots.
