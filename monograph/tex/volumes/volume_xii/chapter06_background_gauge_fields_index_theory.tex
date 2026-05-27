@@ -3,143 +3,332 @@
 
 \ConventionsEuclidean
 
-Background gauge fields couple QFT to vector bundles over spacetime.  For
-fermions, the index of the coupled Dirac operator controls chiral zero modes,
-global charge violation in fixed backgrounds, and the topological part of
-anomaly inflow.
+Background gauge fields are not auxiliary decorations.  They are sources for
+global currents, they specify the bundles in which charged fields take
+values, and for chiral fermions they determine both zero-mode selection
+rules and anomaly lines.  This chapter develops the index-theoretic part of
+that structure with explicit conventions.  The analytic input is the index
+of a coupled Dirac operator; the QFT input is the Berezin integral over its
+zero modes and the determinant line of its nonzero modes.
 
-\section{Dirac Operators with Background Bundles}
+\section{Spinors, Bundles, and Curvature Conventions}
 
-Let \(M^{2n}\) be a closed oriented Riemannian spin manifold with spinor
-bundles \(S^\pm\).  Let \(E\to M\) be a Hermitian vector bundle with unitary
-connection \(A\).  The chiral Dirac operator is
+Let \(M^{2n}\) be a closed oriented Riemannian spin manifold.  The complex
+spinor bundle splits into chiral pieces
 \[
-  D_A^+:\Gamma(S^+\otimes E)\longrightarrow \Gamma(S^-\otimes E).
+  S=S^+\oplus S^- .
 \]
-Its Fredholm index is
+Let \(E\to M\) be a Hermitian vector bundle with unitary connection
+\(\nabla^E\).  In the characteristic-class formulas of this chapter the
+curvature \(F_E=(\nabla^E)^2\) is skew-Hermitian, so
 \[
+  \operatorname{ch}(E)
+  =
+  \operatorname{tr}_E\exp\!\left(\frac{\ii F_E}{2\pi}\right)
+\]
+is a real even cohomology class.  If a physics convention uses Hermitian
+generators and Hermitian curvature \(F_{\rm phys}\), then
+\[
+  F_E=-\ii F_{\rm phys}
+\]
+in this formula.  All traces in \(\operatorname{ch}(E)\) are traces in the
+fermion representation, not necessarily the trace used in the Yang-Mills
+kinetic term.
+
+The coupled Dirac operator is
+\[
+  D_A:\Gamma(S\otimes E)\longrightarrow\Gamma(S\otimes E),
+  \qquad
+  D_A=\gamma^\mu\nabla_\mu^{S\otimes E}.
+\]
+With respect to chirality,
+\[
+  D_A=
+  \begin{pmatrix}
+  0 & D_A^-\\
+  D_A^+ & 0
+  \end{pmatrix},
+  \qquad
+  D_A^+:\Gamma(S^+\otimes E)\to\Gamma(S^-\otimes E).
+\]
+The analytic index is
+\begin{equation}
   \operatorname{Ind}(D_A^+)
   =
   \dim\ker D_A^+-\dim\ker D_A^- .
+  \label{eq:index-analytic-definition}
+\end{equation}
+Because \(M\) is compact and \(D_A^+\) is elliptic, this is a finite integer.
+
+\section{McKean--Singer Supertrace}
+
+Let \(\Gamma\) denote the chirality operator, acting by \(+1\) on \(S^+\) and
+by \(-1\) on \(S^-\).  The heat operator \(e^{-tD_A^2}\) is trace class for
+\(t>0\).
+
+\begin{proposition}[McKean--Singer identity]
+\label{prop:index-mckean-singer}
+For every \(t>0\),
+\[
+  \operatorname{Str}\,e^{-tD_A^2}
+  :=
+  \operatorname{Tr}\!\left(\Gamma e^{-tD_A^2}\right)
+  =
+  \operatorname{Ind}(D_A^+).
+  \label{eq:index-mckean-singer}
 \]
-The heat-kernel representative of the index is
+\end{proposition}
+
+\begin{proof}
+The nonzero spectrum of \(D_A^2\) on \(S^+\otimes E\) is paired with the
+nonzero spectrum on \(S^-\otimes E\).  Indeed, if
+\(\psi_+\in\Gamma(S^+\otimes E)\) satisfies
+\[
+  D_A^-D_A^+\psi_+=\lambda\psi_+,\qquad \lambda>0,
+\]
+then \(D_A^+\psi_+\neq0\) and
+\[
+  D_A^+D_A^-(D_A^+\psi_+)=\lambda(D_A^+\psi_+).
+\]
+The inverse pairing is \(\psi_-\mapsto D_A^-\psi_-\).  Hence the positive
+eigenvalue contributions to
+\[
+  \operatorname{Tr}_{S^+}e^{-tD_A^-D_A^+}
+  -
+  \operatorname{Tr}_{S^-}e^{-tD_A^+D_A^-}
+\]
+cancel.  The zero eigenspaces are precisely \(\ker D_A^+\) and
+\(\ker D_A^-\), so the supertrace is
+\(\dim\ker D_A^+-\dim\ker D_A^-\).
+\end{proof}
+
+This proof is finite-dimensional after elliptic spectral theory supplies the
+discrete spectrum and heat-kernel trace class property.  It is the analytic
+bridge between zero-mode counting and local curvature densities.
+
+\section{Local Index Theorem}
+
+Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
+\(\widehat A\)-class is
+\[
+  \widehat A(TM)
+  =
+  \det\nolimits^{1/2}
+  \left(\frac{R/4\pi}{\sinh(R/4\pi)}\right)
+  =
+  1-\frac{p_1(TM)}{24}
+  +\frac{7p_1(TM)^2-4p_2(TM)}{5760}+\cdots .
+\]
+
+\begin{quotedtheorem}[Atiyah--Singer local index theorem]
+\label{thm:index-atiyah-singer-local}
+For the chiral Dirac operator coupled to \(E\),
 \[
   \operatorname{Ind}(D_A^+)
   =
-  \lim_{t\to0^+}\operatorname{Tr}\!\left(
-  \Gamma\,e^{-tD_A^2}
-  \right),
+  \int_M
+  \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}.
+  \label{eq:index-atiyah-singer}
 \]
-where \(\Gamma\) is chirality on \(S^+\oplus S^-\).
-
-\section{Atiyah--Singer Formula}
-
-The index theorem gives
+Equivalently, the local heat-kernel density of the supertrace has
 \[
-  \operatorname{Ind}(D_A^+)
+  \lim_{t\to0^+}{\rm str}\,K_t(x,x)\,d{\rm vol}_g
   =
-  \int_M \widehat A(TM)\operatorname{ch}(E).
+  \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}.
 \]
-Here
-\[
-  \operatorname{ch}(E)=\operatorname{tr}_E\exp\!\left(\frac{\ii F_A}{2\pi}\right),
-\]
-and
-\[
-  \widehat A(TM)=1-\frac{p_1(TM)}{24}+\cdots
-\]
-is the \(\widehat A\)-class of the tangent bundle.  In four dimensions,
-\[
+\end{quotedtheorem}
+
+The theorem is a theorem of differential geometry, not an axiom of QFT.  This
+monograph uses it as mathematical input while deriving the QFT consequences:
+zero-mode selection rules, anomaly polynomials, determinant lines, and
+inflow.
+
+In four dimensions the formula becomes
+\begin{equation}
   \operatorname{Ind}(D_A^+)
   =
   \int_M
   \left[
   \operatorname{ch}_2(E)
-  -\frac{\operatorname{rank}(E)}{24}p_1(TM)
+  -
+  \frac{\operatorname{rank}(E)}{24}p_1(TM)
   \right].
-\]
-The trace in \(\operatorname{ch}(E)\) is the trace in the fermion
-representation.  Converting this formula to the gauge-theory trace convention
-requires the representation index relating the two bilinear forms.
-
-\section{Zero Modes and Charge Violation}
-
-Let a left-handed Weyl fermion of charge representation \(E\) be placed in a
-background \(A\).  The Berezin integral over fermions vanishes unless
-insertions absorb the zero modes of \(D_A^+\).  If
+  \label{eq:index-four-dimensional-formula}
+\end{equation}
+For an \(SU(N)\) bundle \(E_R\) associated to a representation \(R\),
 \[
-  k=\operatorname{Ind}(D_A^+)>0
+  c_1(E_R)=0,
+  \qquad
+  \int_M\operatorname{ch}_2(E_R)=T_\Delta(R)\,k .
+  \label{eq:index-trace-delta-instanton-number}
 \]
-and there are no right-handed zero modes in the conjugate sector, correlation
-functions must contain \(k\) insertions of the corresponding fermionic
-variable to be nonzero.  This is an exact finite-dimensional statement about
-the zero-mode part of the Berezin integral after the nonzero modes have been
-paired.
+Here \(k\in\mathbb Z\) is the instanton number in the fundamental bundle and
+\(T_\Delta(R)\) is the quadratic index in the monograph's trace-delta
+normalization
+\[
+  \operatorname{tr}_R(t^a_Rt^b_R)=T_\Delta(R)\delta^{ab},
+  \qquad
+  T_\Delta(\square)=1.
+\]
+Thus \(T_\Delta({\rm adj})=2N\).  This is the same normalization compatible
+with the Yang-Mills kinetic term
+\[
+  \frac{1}{4g^2}\int\operatorname{tr}_\Delta(F_{\mu\nu}F^{\mu\nu}).
+\]
 
-\section{Anomaly Polynomial}
+\section{Four-Dimensional Examples}
+
+On a spin four-manifold with \(p_1(TM)=0\), a unit \(SU(N)\) instanton gives
+\[
+  \operatorname{Ind}(D_{\square}^+)=1,
+  \qquad
+  \operatorname{Ind}(D_{\rm adj}^+)=2N .
+\]
+For \(SU(2)\), the fundamental Weyl fermion has one complex zero mode in the
+orientation convention of \eqref{eq:index-trace-delta-instanton-number}, and
+an adjoint Weyl fermion has four complex zero modes.  Reversing the
+orientation of the gauge instanton reverses the sign of the index and swaps
+the chirality of the zero modes.
+
+For an Abelian line bundle \(L^q\) of charge \(q\),
+\[
+  \operatorname{ch}(L^q)=e^{q x},
+  \qquad x=c_1(L).
+\]
+On \(T^4\) with \(p_1(TT^4)=0\), take integral two-forms \(a,b\) with
+\[
+  \int_{T^4}a\wedge b=1,
+  \qquad a\wedge a=b\wedge b=0,
+\]
+and \(x=m_1a+m_2b\).  Then
+\[
+  \operatorname{Ind}(D_{L^q}^+)
+  =
+  \int_{T^4}\frac12q^2x^2
+  =
+  q^2m_1m_2 .
+  \label{eq:index-u1-t4-example}
+\]
+This example is useful because it is completely Abelian: the index is the
+intersection pairing of magnetic fluxes through complementary two-tori.
+
+\section{Zero Modes and Berezin Selection Rules}
+
+Let \(\psi\) be a left-handed Weyl fermion valued in \(E\).  Decompose it in
+an orthonormal eigenbasis of the coupled Dirac operator.  If
+\(\{\zeta_1,\ldots,\zeta_m\}\) is a basis of \(\ker D_A^+\), then the
+Grassmann field has zero-mode coordinates
+\[
+  \psi_0(x)=\sum_{i=1}^m\eta_i\zeta_i(x),
+  \qquad \eta_i\eta_j=-\eta_j\eta_i .
+\]
+
+\begin{proposition}[Finite-dimensional zero-mode rule]
+\label{prop:index-berezin-zero-mode-rule}
+After nonzero modes have been paired, the zero-mode part of a fermionic path
+integral is
+\[
+  \int d\eta_m\cdots d\eta_1\,\mathcal O(\eta_1,\ldots,\eta_m).
+\]
+It vanishes unless the insertion \(\mathcal O\) contains the top monomial
+\(\eta_1\cdots\eta_m\).  Therefore a background with \(m\) unpaired Weyl
+zero modes requires \(m\) corresponding fermion insertions for a nonzero
+correlator.
+\end{proposition}
+
+\begin{proof}
+Berezin integration is the linear functional fixed by
+\[
+  \int d\eta\,1=0,
+  \qquad
+  \int d\eta\,\eta=1.
+\]
+For \(m\) generators it extracts the coefficient of
+\(\eta_1\cdots\eta_m\) in the declared order.  All lower-degree monomials are
+annihilated by at least one of the integrations.
+\end{proof}
+
+For a vectorlike Dirac fermion in representation \(R\), written in
+two-component language as left-handed fields in \(R\) and \(\overline R\),
+a charge-\(k\) instanton produces \(T_\Delta(R)k\) zero modes in each of the
+two conjugate chiral variables, with chirality determined by the instanton
+orientation.  The resulting finite-dimensional Berezin integral is the
+precise origin of the fermion-number selection rule usually encoded by the
+'t Hooft vertex.
+
+\section{Anomaly Polynomial and Descent}
 
 For a chiral fermion in \(2n\) dimensions, the anomaly polynomial is the
-\((2n+2)\)-form component
-\[
+\((2n+2)\)-form
+\begin{equation}
   I_{2n+2}
   =
   \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n+2}.
-\]
-Choose a Chern-Simons form \(I_{2n+1}\) with
+  \label{eq:index-anomaly-polynomial}
+\end{equation}
+Choose a Chern-Simons form \(I_{2n+1}\) satisfying
 \[
   dI_{2n+1}=I_{2n+2}.
 \]
-The descent equation
+For an infinitesimal background gauge transformation with parameter
+\(\alpha\),
 \[
-  \delta_\alpha I_{2n+1}=dI_{2n}^{(1)}(\alpha)
+  \delta_\alpha I_{2n+1}=dI_{2n}^{(1)}(\alpha).
 \]
-gives the local anomalous variation
+The local anomalous variation of the Euclidean effective action is
 \[
   \delta_\alpha W[A,g]
   =
-  2\pi\ii\int_M I_{2n}^{(1)}(\alpha).
+  2\pi\ii\int_M I_{2n}^{(1)}(\alpha),
+  \label{eq:index-local-descent-variation}
 \]
-This formula agrees with the inflow construction of
-Chapter~\ref{ch:global-anomaly-inflow-invertible-field-theories} when the
-bulk invertible theory is defined by the corresponding differential
-cohomology refinement of \(I_{2n+2}\).
+with an overall sign changed if the opposite chirality convention is chosen.
+The sign is not independent data; it is fixed by the orientation of
+\(D_A^+\), the definition of \(W=-\log Z\), and the chirality assignment of
+the fermion.
 
-\section{Four-Dimensional Gauge and Mixed Terms}
-
-In four dimensions the six-form component contains
-\[
+In four-dimensional QFT, the relevant six-form is
+\begin{equation}
   I_6
   =
-  \left[\operatorname{ch}_3(E)
-  -\frac{p_1(TM)}{24}\operatorname{ch}_1(E)\right].
-\]
-The first term gives the cubic gauge anomaly.  The second term gives the
-mixed gauge-gravitational anomaly for a \(U(1)\) factor.  For a semisimple
-gauge group, \(\operatorname{ch}_1(E)=0\), so this mixed term is absent in
-that representation.  The condition for gauging a background symmetry is the
-vanishing of the total anomaly polynomial modulo terms that are canceled by
-specified inflow or by an explicitly declared local counterterm.
+  \operatorname{ch}_3(E)
+  -
+  \frac{p_1(TM)}{24}\operatorname{ch}_1(E).
+  \label{eq:index-four-dimensional-anomaly-polynomial}
+\end{equation}
+The first term gives cubic gauge anomalies.  The second gives the mixed
+gauge-gravitational anomaly for a \(U(1)\) background.  For a semisimple
+group in a traceless representation, \(\operatorname{ch}_1(E)=0\), so the
+mixed term is absent.  A background symmetry can be gauged only after the
+total anomaly line has been trivialized; cancellation of the local polynomial
+is necessary but does not by itself eliminate global anomalies.
 
-\section{Families and Global Anomalies}
+\section{Determinant Line and Families}
 
-Let \(\mathcal A/\mathcal G\) be a background-field moduli space.  The
-fermion determinant is a section of a determinant line over this space:
+As the metric and background connection vary, the chiral fermion determinant
+is not naturally a complex number.  It is a section of the determinant line
 \[
-  \operatorname{Det} D
+  \operatorname{Det}D
   =
-  \bigwedge^{\max}\ker D
+  \bigwedge\nolimits^{\max}\ker D_A^+
   \otimes
-  \left(\bigwedge^{\max}\operatorname{coker}D\right)^\ast .
+  \left(\bigwedge\nolimits^{\max}\ker D_A^-\right)^\ast
 \]
-Local anomalies are the curvature of this line with its natural connection.
-Global anomalies are its holonomies around loops in \(\mathcal A/\mathcal G\).
-Trivializing the determinant line, not merely its curvature, is required for a
-single-valued background-field partition function.
+over background-field space.  The local anomaly is the curvature of this
+line with its natural connection.  Global anomalies are its holonomies around
+loops.  Thus a well-defined background-field partition function requires a
+trivialization of the determinant line, not merely a vanishing local
+curvature form.
+
+The next chapter develops the eta-invariant formula for these holonomies.
+The present chapter supplies the local and zero-mode input: the index counts
+the imbalance of chiral zero modes, while the family of such indices
+organizes the determinant line.
 
 \begin{openproblem}[Index-theoretic anomaly line in interacting QFT]
 \label{op:index-anomaly-line-interacting-qft}
 Extend the determinant-line and index-theoretic description from free chiral
 fermions coupled to backgrounds to interacting continuum QFTs with composite
 currents, contact terms, and extended operators, while retaining an explicit
-comparison with local anomaly descent.
+comparison with local anomaly descent and global anomaly holonomy.
 \end{openproblem}

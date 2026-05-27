@@ -29,6 +29,12 @@ Current checks:
   \(2\pi\ii\) conversion to effective-action inflow, one-generation Standard
   Model hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
   cubic-anomaly bookkeeping.
+- `background_index_theory_checks.py`: exact rational checks for the
+  Volume XII background-index-theory chapter, including the
+  four-dimensional \(\widehat A\,\operatorname{ch}\) index formula,
+  trace-delta \(SU(N)\) instanton indices, the Abelian \(T^4\) flux index,
+  the six-form anomaly-polynomial coefficients, and the Dirac zero-mode
+  selection-rule count.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including functorial composition of anomaly-line cocycles, local
   counterterm/frame changes of cocycle representatives, and the finite
