@@ -5,24 +5,39 @@
 
 \section{Variational Framework}
 
-Work on \(D\)-dimensional Minkowski spacetime \(\mathbb M^D\), with mostly-plus
-metric \(\eta_{\mu\nu}\). Let \(A\) range over a finite set of bosonic field
-components. A classical field configuration is written
+\begin{definition}[First-derivative classical field datum]
+\label{def:first-derivative-classical-field-datum}
+Work on \(D\)-dimensional Minkowski spacetime \(\mathbb M^D\), with
+mostly-plus metric \(\eta_{\mu\nu}\).  Let \(A\) range over a finite set of
+bosonic field components.  A classical field configuration is a smooth map
 \[
-  \phi=\{\phi^A\}.
+  \phi:M\longrightarrow \mathbb R^N,\qquad
+  x\longmapsto \{\phi^A(x)\},
 \]
-In this chapter the Lagrangian density is a first-derivative local expression
+on a spacetime region \(M\subset \mathbb M^D\).  In this chapter a Lagrangian
+density means a first-derivative local expression
 \[
-  \mathcal L=\mathcal L(\phi^A,\partial_\mu\phi^A).
+  \mathcal L=\mathcal L(\phi^A,\partial_\mu\phi^A)
 \]
-The action over a spacetime region \(M\subset\mathbb M^D\) is
+with no dependence on derivatives of order two or higher.  The corresponding
+action over \(M\) is
 \[
   S_M[\phi]=\int_M\dd^Dx\,\mathcal L(\phi,\partial\phi).
 \]
-Variations are assumed smooth. When no boundary term is being studied, the
-variation has compact support in \(M\).
+A variation is a smooth one-parameter family \(\phi_s\) with
+\(\phi_0=\phi\); its tangent is
+\[
+  \delta\phi^A=\left.\frac{\dd}{\dd s}\phi_s^A\right|_{s=0}.
+\]
+When the boundary term is not part of the question, \(\delta\phi^A\) is
+assumed to have compact support in \(M^\circ\), the interior of \(M\).
+\end{definition}
 
-Define the Euler--Lagrange expression
+\begin{proposition}[First variational identity]
+\label{prop:first-variational-identity}
+For the datum of
+Definition~\ref{def:first-derivative-classical-field-datum}, define the
+Euler--Lagrange expression
 \[
   E_A(\mathcal L)
   =
@@ -31,22 +46,20 @@ Define the Euler--Lagrange expression
   \partial_\mu
   \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)} .
 \]
-For a variation \(\delta\phi^A\),
+Then every smooth variation satisfies
 \[
   \delta\mathcal L
   =
   E_A(\mathcal L)\,\delta\phi^A
   +
   \partial_\mu\theta^\mu(\delta\phi),
-\]
-where repeated \(A\) and spacetime indices are summed and
-\[
+  \qquad
   \theta^\mu(\delta\phi)
   =
   \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
-  \delta\phi^A .
+  \delta\phi^A ,
 \]
-Thus
+where repeated component and spacetime indices are summed.  Consequently
 \[
   \delta S_M
   =
@@ -55,85 +68,170 @@ Thus
   \int_{\partial M}\dd\Sigma_\mu\,\theta^\mu(\delta\phi),
 \]
 where \(\dd\Sigma_\mu\) is the oriented hypersurface measure on
-\(\partial M\). A classical solution is a field configuration satisfying
+\(\partial M\).
+\end{proposition}
+
+\begin{proof}
+The chain rule gives
+\[
+  \delta\mathcal L
+  =
+  \frac{\partial\mathcal L}{\partial\phi^A}\delta\phi^A
+  +
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+  \partial_\mu\delta\phi^A .
+\]
+Apply the product rule to the second term:
+\[
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+  \partial_\mu\delta\phi^A
+  =
+  \partial_\mu
+  \left(
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+    \delta\phi^A
+  \right)
+  -
+  \partial_\mu
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+  \delta\phi^A .
+\]
+Combining the two non-divergence terms gives \(E_A(\mathcal L)\delta\phi^A\).
+Integrating the pointwise identity over \(M\) and applying Stokes' theorem
+gives the displayed formula for \(\delta S_M\).
+\end{proof}
+
+\begin{definition}[Classical solution]
+\label{def:classical-solution-euler-lagrange}
+A classical solution of the first-derivative Lagrangian problem is a field
+configuration obeying
 \[
   E_A(\mathcal L)=0
 \]
-for every component \(A\), with whatever boundary conditions are part of the
-problem.
+for every component \(A\), together with the boundary or asymptotic conditions
+specified by the variational problem.  The Euler--Lagrange equation alone is
+not a complete boundary-value or Cauchy problem; the boundary data are part of
+the definition of the classical problem being solved.
+\end{definition}
 
 \section{Infinitesimal Symmetries}
 
+\begin{definition}[Infinitesimal variational symmetry]
+\label{def:infinitesimal-variational-symmetry}
 An infinitesimal field-space transformation is a rule
 \[
   \delta_R\phi^A=R^A[\phi],
 \]
 where \(R^A[\phi]\) is a local expression in \(x\), the fields, and finitely
-many derivatives of the fields. The transformation is a variational symmetry
-of the action when there exists a local vector \(K_R^\mu\) such that
+many derivatives of the fields.  The transformation is a variational symmetry
+of the action if there exists a local vector \(K_R^\mu\) such that
 \[
   \delta_R\mathcal L=\partial_\mu K_R^\mu .
 \]
 This equation is the definition of the symmetry in the present classical
-Lagrangian framework. It is local in the fields and is stated before imposing
-the Euler--Lagrange equation.
+Lagrangian framework.  It is an off-shell identity of local functions of the
+fields; no Euler--Lagrange equation has yet been imposed.
+\end{definition}
 
-Substituting \(\delta_R\phi^A=R^A\) into the variational identity gives
-\[
-  E_A(\mathcal L)R^A
-  +
-  \partial_\mu
-  \left(
-    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A
-    -
-    K_R^\mu
-  \right)
-  =
-  0.
-\]
-The Noether current associated to the chosen representative \(R\) is therefore
+\begin{proposition}[Noether identity for a variational symmetry]
+\label{prop:noether-identity-variational-symmetry}
+Let \(R\) be a variational symmetry in the sense of
+Definition~\ref{def:infinitesimal-variational-symmetry}.  The local current
 \[
   j_R^\mu
   =
   \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A
   -
-  K_R^\mu .
+  K_R^\mu
 \]
-On solutions,
+obeys the off-shell identity
 \[
-  \partial_\mu j_R^\mu=0.
+  E_A(\mathcal L)R^A+\partial_\mu j_R^\mu=0.
 \]
-The same current can be identified by localizing the symmetry parameter. Let
-\(\epsilon\in C_c^\infty(M)\), replace the constant infinitesimal parameter by
-\(\epsilon(x)\), and use
+In particular, on every classical solution,
+\[
+  \partial_\mu j_R^\mu=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:first-variational-identity} to the variation
+\(\delta_R\phi^A=R^A\):
+\[
+  \delta_R\mathcal L
+  =
+  E_A(\mathcal L)R^A
+  +
+  \partial_\mu
+  \left(
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A
+  \right).
+\]
+The variational-symmetry condition says that the left hand side is
+\(\partial_\mu K_R^\mu\).  Moving this total derivative to the right gives the
+displayed off-shell identity.  Setting \(E_A(\mathcal L)=0\) gives current
+conservation on solutions.
+\end{proof}
+
+\begin{proposition}[Localized-parameter form of Noether's theorem]
+\label{prop:localized-parameter-noether}
+Let \(\epsilon\in C_c^\infty(M)\), and localize the transformation by
 \[
   \delta_{\epsilon R}\phi^A=\epsilon R^A .
 \]
-Modulo the compactly supported total derivative
-\(\partial_\mu(\epsilon K_R^\mu)\), the variation of the action is
+For a first-derivative Lagrangian,
+\[
+  \delta_{\epsilon R}\mathcal L
+  =
+  \partial_\mu(\epsilon K_R^\mu)
+  +
+  (\partial_\mu\epsilon)j_R^\mu .
+\]
+Thus, for compactly supported \(\epsilon\),
 \[
   \delta_{\epsilon R}S_M
   =
   \int_M\dd^Dx\,(\partial_\mu\epsilon)\,j_R^\mu .
 \]
-If the field is a solution, the compactly supported variation has zero first
-variation; hence integration by parts gives
+If the field is a classical solution, this identity is equivalent, as a
+distributional statement, to \(\partial_\mu j_R^\mu=0\).
+\end{proposition}
+
+\begin{proof}
+Using the chain rule,
+\[
+  \delta_{\epsilon R}\mathcal L
+  =
+  \epsilon\,\delta_R\mathcal L
+  +
+  (\partial_\mu\epsilon)
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A .
+\]
+Since \(\delta_R\mathcal L=\partial_\mu K_R^\mu\),
+\[
+  \epsilon\,\partial_\mu K_R^\mu
+  =
+  \partial_\mu(\epsilon K_R^\mu)-(\partial_\mu\epsilon)K_R^\mu .
+\]
+Combining the two \(\partial_\mu\epsilon\) terms gives
+\((\partial_\mu\epsilon)j_R^\mu\).  The integral of
+\(\partial_\mu(\epsilon K_R^\mu)\) vanishes because \(\epsilon\) has compact
+support in \(M\).  On a solution the first variation of the action by a
+compactly supported variation vanishes, hence
 \[
   0
   =
-  \delta_{\epsilon R}S_M
-  =
-  \int_M\dd^Dx\,(\partial_\mu\epsilon)\,j_R^\mu
+  \int_M\dd^Dx\,(\partial_\mu\epsilon)j_R^\mu
   =
   -\int_M\dd^Dx\,\epsilon\,\partial_\mu j_R^\mu .
 \]
-Since \(\epsilon\) is arbitrary with compact support, this is equivalent to the
-on-shell conservation law. This local-parameter test is often the cleanest way
-to read off the current, because \(j_R^\mu\) is precisely the coefficient of
-\(\partial_\mu\epsilon\) after the constant-parameter total derivative has been
-separated.
+The fundamental lemma of distributions then gives
+\(\partial_\mu j_R^\mu=0\).  The converse follows by integrating by parts.
+\end{proof}
 
-The current is a representative of a local equivalence class. If
+\begin{definition}[Current improvement]
+\label{def:current-improvement}
+The Noether current is a representative of a local equivalence class.  If
 \[
   B_R^{\nu\mu}=-B_R^{\mu\nu},
 \]
@@ -141,30 +239,55 @@ then
 \[
   j_R^\mu\longmapsto j_R^\mu+\partial_\nu B_R^{\nu\mu}
 \]
-has the same local divergence, because
-\(\partial_\mu\partial_\nu B_R^{\nu\mu}=0\). The corresponding charge is
-unchanged when the surface integral of \(B_R\) at spatial boundary vanishes.
+is called a current improvement.  It has the same local divergence because
+\(\partial_\mu\partial_\nu B_R^{\nu\mu}=0\).  The corresponding integrated
+charge is unchanged when the surface integral of \(B_R\) at spatial boundary
+vanishes in the stated boundary condition or asymptotic domain.
+\end{definition}
 
 \section{Charges and Generators}
 
-Let \(\Sigma_t=\{x^0=t\}\) be a constant-time slice. If \(j_R^\mu\) is
-conserved and the spatial integral exists, define
+\begin{definition}[Classical charge of a conserved current]
+\label{def:classical-current-charge}
+Let \(\Sigma_t=\{x^0=t\}\) be a constant-time slice.  If \(j_R^\mu\) is
+conserved and the spatial integral exists, the charge on \(\Sigma_t\) is
 \[
   Q_R(t)=\int_{\Sigma_t}\dd^{D-1}\vec x\,j_R^0(t,\vec x).
 \]
-For a spatial region \(V\subset\mathbb R^{D-1}\),
+For a spatial region \(V\subset\mathbb R^{D-1}\), the finite-region charge is
 \[
   Q_R^V(t)=\int_V\dd^{D-1}\vec x\,j_R^0(t,\vec x).
 \]
-Current conservation gives
+The existence of \(Q_R(t)\) is an analytic condition on the solution and on
+the asymptotic domain; it is not implied by the local equation
+\(\partial_\mu j_R^\mu=0\) alone.
+\end{definition}
+
+\begin{proposition}[Charge balance in a spacetime slab]
+\label{prop:charge-balance-spacetime-slab}
+Let \(V\subset\mathbb R^{D-1}\) be a spatial region with piecewise smooth
+boundary, and assume \(j_R^\mu\) is smooth on
+\([t_1,t_2]\times V\) with \(\partial_\mu j_R^\mu=0\).  Then
 \[
   Q_R^V(t_2)-Q_R^V(t_1)
   =
   -\int_{t_1}^{t_2}\dd x^0
-  \int_{\partial V}\dd S_i\,j_R^i(x^0,\vec x).
+  \int_{\partial V}\dd S_i\,j_R^i(x^0,\vec x),
 \]
-Thus \(Q_R(t)\) is time independent when the flux through spatial boundary is
-zero in the limit \(V\nearrow\mathbb R^{D-1}\).
+where \(\dd S_i=n_i\,\dd S\), \(n_i\) is the outward unit normal to
+\(\partial V\), and \(\dd S\) is the Euclidean surface measure on
+\(\partial V\).  Hence \(Q_R(t)\) is time independent whenever the boundary
+flux tends to zero in the limit \(V\nearrow\mathbb R^{D-1}\).
+\end{proposition}
+
+\begin{proof}
+Integrate \(\partial_0 j_R^0+\partial_i j_R^i=0\) over
+\([t_1,t_2]\times V\).  The time derivative integrates to
+\(Q_R^V(t_2)-Q_R^V(t_1)\), and the spatial divergence integrates by the
+ordinary divergence theorem to
+\(\int_{t_1}^{t_2}\dd x^0\int_{\partial V}\dd S_i\,j_R^i\).  Moving this
+boundary term to the other side gives the stated identity.
+\end{proof}
 
 \begin{figure}[H]
 \centering
@@ -189,8 +312,11 @@ spatial boundary.}
 \label{fig:current-conservation-boundary-flux}
 \end{figure}
 
-The equal-time Poisson bracket convention is the one used in the scalar-field
-construction:
+\begin{definition}[Equal-time Poisson bracket and Hamiltonian generator]
+\label{def:equal-time-poisson-generator}
+Let \(\Pi_A\) denote the canonical momentum conjugate to \(\phi^A\).  On the
+phase-space functionals whose variational derivatives and boundary terms are
+defined, the equal-time Poisson bracket is
 \[
   \{F,G\}
   =
@@ -203,54 +329,92 @@ construction:
     \frac{\delta G}{\delta\phi^A(\vec x)}
   \right].
 \]
-It gives
+In particular,
 \[
   \{\phi^A(\vec x),\Pi_B(\vec y)\}
   =
   \delta^A{}_B\,\delta^{(D-1)}(\vec x-\vec y).
 \]
 A charge \(Q_R\) generates the infinitesimal transformation \(R\) on canonical
-observables when
+observables if
 \[
   \delta_R F=\{F,Q_R\}
 \]
-for functionals \(F\) on phase space in the domain where the functional
-derivatives and boundary terms are defined. In particular,
+for every functional \(F\) in the stated domain.  Applied to the coordinate
+field this condition reads
 \[
   R^A(t,\vec x)=\{\phi^A(t,\vec x),Q_R\}.
 \]
+\end{definition}
 
-For the common first-order case in which \(K_R^0=0\) and \(R^A\) is a function
-of canonical coordinates and spatial derivatives but not of velocities, the
-charge has the form
+\begin{proposition}[First-order Noether charges as phase-space generators]
+\label{prop:first-order-noether-charge-generator}
+Assume \(K_R^0=0\), and assume \(R^A\) depends on the canonical coordinates
+and their spatial derivatives but not on the velocities or momenta.  If the
+Noether charge is represented on phase space by
 \[
-  Q_R=\int_{\Sigma_t}\dd^{D-1}\vec x\,\Pi_A R^A ,
+  Q_R=\int_{\Sigma_t}\dd^{D-1}\vec x\,\Pi_A R^A
 \]
-up to possible spatial-divergence improvements. Then
-\(\delta Q_R/\delta\Pi_A=R^A\), and the displayed generator identity follows
-directly from the equal-time bracket. When \(R^A\) or \(K_R^0\) contains
-velocities, the Noether charge is first rewritten as a phase-space functional.
-For example, a time translation by \(\tau\) gives
+up to spatial-divergence improvements whose boundary integrals vanish, then
 \[
-  R^A=-\tau\dot\phi^A,\qquad Q_R=-\tau H,
+  \{\phi^A(t,\vec x),Q_R\}=R^A(t,\vec x).
 \]
-so Hamilton's equation yields
+More generally, if \(R^A\) or \(K_R^0\) contains velocities, the current
+obtained from the Lagrangian calculation must first be expressed as a
+functional on phase space before the generator statement is tested.
+\end{proposition}
+
+\begin{proof}
+Under the stated hypotheses the functional derivative of \(Q_R\) with respect
+to \(\Pi_A(\vec x)\) is \(R^A(\vec x)\).  The equal-time bracket in
+Definition~\ref{def:equal-time-poisson-generator} therefore gives
+\[
+  \{\phi^A(\vec x),Q_R\}
+  =
+  \frac{\delta Q_R}{\delta\Pi_A(\vec x)}
+  =
+  R^A(\vec x).
+\]
+Spatial-divergence improvements do not change the result under the assumed
+boundary condition.  If velocities occur, the expression
+\(\int j_R^0\) is not yet a function on canonical phase space; the Legendre
+map must be used first, and the displayed derivative calculation is then
+performed on the resulting phase-space functional.
+\end{proof}
+
+\begin{example}[Time translation]
+\label{ex:time-translation-noether-generator}
+For a time translation by \(\tau\),
+\[
+  R^A=-\tau\dot\phi^A,\qquad Q_R=-\tau H.
+\]
+Hamilton's equation yields
 \[
   \{\phi^A,-\tau H\}=-\tau\dot\phi^A .
 \]
-Thus the generator statement is a statement on phase space, with the Noether
+Thus the generator statement is a phase-space statement with the Noether
 charge expressed in canonical variables.
+\end{example}
 
 \section{Poincare Transformations of Scalar Fields}
 
-For a scalar field, a finite Poincare transformation is described by
+\begin{definition}[Scalar representation of the Poincare group]
+\label{def:scalar-poincare-transformation}
+For a scalar field, a finite proper orthochronous Poincare transformation is
+described by
 \[
   x'^\mu=\Lambda^\mu{}_\nu x^\nu+a^\mu,\qquad
   \phi'(x')=\phi(x),
 \]
-where \(\Lambda^T\eta\Lambda=\eta\). Write
+where \(\Lambda^T\eta\Lambda=\eta\).  Equivalently,
+\[
+  \phi'(x)
+  =
+  \phi\big(\Lambda^{-1}(x-a)\big).
+\]
+Write
 \(\Lambda^\mu{}_\nu=\delta^\mu{}_\nu+\omega^\mu{}_\nu+O(\omega^2)\), with
-\(\omega_{\mu\nu}=-\omega_{\nu\mu}\). The fixed-coordinate infinitesimal
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\).  The fixed-coordinate infinitesimal
 variation is
 \[
   \delta\phi(x)
@@ -259,23 +423,18 @@ variation is
 \]
 The translation and Lorentz currents below are the Noether currents for the
 two independent parameters \(a^\mu\) and \(\omega_{\mu\nu}\).
+\end{definition}
 
 \section{Translation Symmetry and the Stress Tensor}
 
-Assume that \(\mathcal L\) has no explicit dependence on \(x\). For a constant
-vector \(\xi^\nu\), use the fixed-coordinate field variation
+\begin{proposition}[Canonical stress tensor from translations]
+\label{prop:canonical-stress-tensor-translations}
+Assume that \(\mathcal L\) has no explicit dependence on \(x\).  For a
+constant vector \(\xi^\nu\), use the fixed-coordinate field variation
 \[
   \delta_\xi\phi^A(x)=-\xi^\nu\partial_\nu\phi^A(x).
 \]
-Since \(\mathcal L\) is a scalar local expression,
-\[
-  \delta_\xi\mathcal L=-\xi^\nu\partial_\nu\mathcal L
-  =
-  \partial_\mu K^\mu_\xi,
-  \qquad
-  K^\mu_\xi=-\xi^\mu\mathcal L.
-\]
-The corresponding Noether current is written
+Then the translation Noether current can be written
 \[
   j^\mu_\xi=\xi^\nu T^\mu{}_\nu,
 \]
@@ -293,18 +452,63 @@ On solutions,
 \[
   \partial_\mu T^\mu{}_\nu=0.
 \]
-Equivalently, let \(\xi^\nu(x)\) be a compactly supported vector field and use
-\(\delta_\xi\phi^A=-\xi^\nu\partial_\nu\phi^A\). After separating the total
-derivative \(-\partial_\mu(\xi^\mu\mathcal L)\), the action variation is
+Equivalently, for compactly supported \(\xi^\nu(x)\),
 \[
   \delta_\xi S_M
   =
-  \int_M\dd^Dx\,(\partial_\mu\xi^\nu)\,T^\mu{}_\nu .
+  \int_M\dd^Dx\,(\partial_\mu\xi^\nu)\,T^\mu{}_\nu ,
 \]
-For arbitrary compactly supported \(\xi^\nu\), integration by parts on a
-solution is equivalent to \(\partial_\mu T^\mu{}_\nu=0\). Thus
+after the compactly supported total derivative has been separated.  Thus
 \(T^\mu{}_\nu\) is the response coefficient for a localized translation.
-The translation charges are
+\end{proposition}
+
+\begin{proof}
+For constant \(\xi^\nu\), the density has no explicit coordinate dependence.
+Translation invariance of the scalar local density gives
+\[
+  \delta_\xi\mathcal L=-\xi^\nu\partial_\nu\mathcal L
+  =
+  \partial_\mu K_\xi^\mu,
+  \qquad
+  K_\xi^\mu=-\xi^\mu\mathcal L .
+\]
+Substituting \(R^A=-\xi^\nu\partial_\nu\phi^A\) and this \(K_\xi^\mu\) into
+Proposition~\ref{prop:noether-identity-variational-symmetry} gives
+\[
+  j_\xi^\mu
+  =
+  -\xi^\nu
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+  \partial_\nu\phi^A
+  +
+  \xi^\mu\mathcal L
+  =
+  \xi^\nu T^\mu{}_\nu .
+\]
+Since \(\xi^\nu\) is arbitrary, conservation of \(j_\xi^\mu\) for every
+constant \(\xi^\nu\) is equivalent to
+\(\partial_\mu T^\mu{}_\nu=0\).
+
+For local \(\xi^\nu(x)\), compute directly:
+\[
+  \delta_\xi\mathcal L
+  =
+  -\xi^\nu\partial_\nu\mathcal L
+  -
+  (\partial_\mu\xi^\nu)
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}
+  \partial_\nu\phi^A .
+\]
+The first term is
+\(-\partial_\mu(\xi^\mu\mathcal L)+(\partial_\mu\xi^\mu)\mathcal L\).
+The coefficient of \(\partial_\mu\xi^\nu\) is therefore precisely
+\(T^\mu{}_\nu\).  Integration over \(M\) gives the localized-translation
+formula because the total derivative has compact support.
+\end{proof}
+
+\begin{definition}[Translation charges]
+\label{def:translation-charges}
+When the spatial integrals exist, the momentum covector and vector are
 \[
   P_\nu=\int\dd^{D-1}\vec x\,T^0{}_\nu,
   \qquad
@@ -312,8 +516,13 @@ The translation charges are
   =
   \int\dd^{D-1}\vec x\,T^{0\nu}.
 \]
+With the mostly-plus metric, \(P^0\) is the energy.  Equivalently,
+\(P_0=-P^0\).
+\end{definition}
 
-For the real scalar field
+\begin{proposition}[Stress tensor of a real scalar field]
+\label{prop:real-scalar-stress-tensor}
+For
 \[
   \mathcal L
   =
@@ -321,7 +530,7 @@ For the real scalar field
   -
   V(\phi),
 \]
-the stress tensor is
+the canonical stress tensor is
 \[
   T^\mu{}_\nu
   =
@@ -336,7 +545,7 @@ Raising the second index,
 \[
   T^{\mu\nu}=\eta^{\nu\rho}T^\mu{}_\rho,
 \]
-gives a symmetric tensor in this example. Its \(00\)-component is
+gives a symmetric tensor in this example.  Its energy density is
 \[
   T^{00}
   =
@@ -346,19 +555,50 @@ gives a symmetric tensor in this example. Its \(00\)-component is
   +
   V(\phi).
 \]
-Thus for the free scalar field, where
-\(V(\phi)=\frac12m^2\phi^2\), \(T^{00}\) is the Hamiltonian density already
-obtained by canonical quantization.
+For the free scalar field, \(V(\phi)=\frac12m^2\phi^2\), this is the
+Hamiltonian density obtained by canonical quantization.
+\end{proposition}
+
+\begin{proof}
+The derivative of the Lagrangian with respect to \(\partial_\mu\phi\) is
+\[
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}
+  =
+  -\partial^\mu\phi .
+\]
+Substitution into Proposition~\ref{prop:canonical-stress-tensor-translations}
+gives the displayed \(T^\mu{}_\nu\).  Since
+\[
+  T^{\mu\nu}
+  =
+  \partial^\mu\phi\,\partial^\nu\phi
+  -
+  \eta^{\mu\nu}
+  \left(
+    \frac12\partial_\rho\phi\,\partial^\rho\phi+V(\phi)
+  \right),
+\]
+the tensor is symmetric.  Finally, with \(\eta_{00}=-1\),
+\[
+  \partial_\rho\phi\,\partial^\rho\phi
+  =
+  -(\partial_0\phi)^2+\sum_{i=1}^{D-1}(\partial_i\phi)^2,
+\]
+and the displayed expression for \(T^{00}\) follows.
+\end{proof}
 
 \section{Metric Variation and Improvement}
 
+\begin{definition}[Lorentzian Hilbert stress tensor]
+\label{def:lorentzian-hilbert-stress-tensor}
 Suppose the flat-space action is obtained by restricting a generally covariant
-background-metric action \(S_g[\phi]\) to \(g_{\mu\nu}=\eta_{\mu\nu}\). The
-Hilbert stress tensor is defined by
+background-metric action \(S_g[\phi]\) to \(g_{\mu\nu}=\eta_{\mu\nu}\).  With
+the Lorentzian mostly-plus action convention used in this volume, the Hilbert
+stress tensor is defined by
 \[
   T_{\mathrm H}^{\mu\nu}(x)
   =
-  -\frac{2}{\sqrt{|g|}}
+  \frac{2}{\sqrt{|g|}}
   \frac{\delta S_g}{\delta g_{\mu\nu}(x)}
   \bigg|_{g=\eta}.
 \]
@@ -366,41 +606,113 @@ Equivalently,
 \[
   \delta_g S_g
   =
-  -\frac12
+  \frac12
   \int\dd^Dx\,\sqrt{|g|}\,
   T_{\mathrm H}^{\mu\nu}\,\delta g_{\mu\nu}.
 \]
 Using
 \(\delta g^{\mu\nu}=-g^{\mu\rho}g^{\nu\sigma}\delta g_{\rho\sigma}\), this is
-equivalently
+the same as
 \[
   T_{\mathrm H}^{\mu\nu}(x)
   =
-  \frac{2}{\sqrt{|g|}}
+  -\frac{2}{\sqrt{|g|}}
   g^{\mu\rho}g^{\nu\sigma}
   \frac{\delta S_g}{\delta g^{\rho\sigma}(x)}
   \bigg|_{g=\eta}.
 \]
-The Euclidean source-functional chapters use the same conversion between
-covariant and contravariant metric variations, with \(\sqrt g\) in place of
-\(\sqrt{|g|}\).
-For the minimally coupled scalar action this definition gives the symmetric
-stress tensor displayed above.
+The Euclidean source-functional chapters state their Euclidean sign convention
+separately.  The chain-rule conversion between covariant and contravariant
+metric variations is the same; the sign attached to the stress tensor depends
+on whether one is varying the Lorentzian action or the Euclidean
+\(\exp(-S_E)\) source functional.
+\end{definition}
 
-Stress tensors that differ by an improvement term
+\begin{proposition}[Minimal scalar Hilbert tensor]
+\label{prop:minimal-scalar-hilbert-stress}
+For the minimally coupled scalar action
+\[
+  S_g[\phi]
+  =
+  \int\dd^Dx\,\sqrt{|g|}
+  \left(
+    -\frac12g^{\rho\sigma}\partial_\rho\phi\,\partial_\sigma\phi
+    -V(\phi)
+  \right),
+\]
+Definition~\ref{def:lorentzian-hilbert-stress-tensor} gives
+\[
+  T_{\mathrm H}^{\mu\nu}
+  =
+  \partial^\mu\phi\,\partial^\nu\phi
+  -
+  g^{\mu\nu}
+  \left(
+    \frac12\partial_\rho\phi\,\partial^\rho\phi+V(\phi)
+  \right),
+\]
+which agrees in flat space with
+Proposition~\ref{prop:real-scalar-stress-tensor}.
+\end{proposition}
+
+\begin{proof}
+Vary with respect to the contravariant metric.  The determinant identity is
+\[
+  \delta\sqrt{|g|}
+  =
+  -\frac12\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu}.
+\]
+Therefore
+\[
+  \delta_g S_g
+  =
+  -\frac12
+  \int\dd^Dx\,\sqrt{|g|}
+  \left[
+    \partial_\mu\phi\,\partial_\nu\phi
+    +
+    g_{\mu\nu}
+    \left(
+      -\frac12g^{\rho\sigma}\partial_\rho\phi\,\partial_\sigma\phi
+      -V
+    \right)
+  \right]\delta g^{\mu\nu}.
+\]
+Comparing with the contravariant form of
+Definition~\ref{def:lorentzian-hilbert-stress-tensor} gives
+\[
+  T_{\mathrm H\,\mu\nu}
+  =
+  \partial_\mu\phi\,\partial_\nu\phi
+  +
+  g_{\mu\nu}
+  \left(
+    -\frac12\partial_\rho\phi\,\partial^\rho\phi
+    -V
+  \right).
+\]
+Raising both indices gives the displayed expression.
+\end{proof}
+
+\begin{definition}[Stress-tensor improvement]
+\label{def:stress-tensor-improvement}
+Stress tensors that differ by
 \[
   T^{\mu\nu}\longmapsto
   T^{\mu\nu}+\partial_\rho B^{\rho\mu\nu},
   \qquad
   B^{\rho\mu\nu}=-B^{\mu\rho\nu},
 \]
-have the same conservation law. They define the same translation charges when
-the resulting surface integrals vanish. The choice of representative matters
-for local operator identities and for couplings to background geometry, so the
-representative must be stated as part of the framework.
+have the same local conservation law.  They define the same translation
+charges when the resulting surface integrals vanish.  The choice of
+representative matters for local operator identities and for couplings to
+background geometry, so the representative is part of the framework.
+\end{definition}
 
 \section{Lorentz Currents}
 
+\begin{proposition}[Lorentz current from a symmetric stress tensor]
+\label{prop:lorentz-current-symmetric-stress}
 For a scalar field, an infinitesimal Lorentz transformation is specified by
 \(\omega_{\mu\nu}=-\omega_{\nu\mu}\) and
 \[
@@ -408,26 +720,23 @@ For a scalar field, an infinitesimal Lorentz transformation is specified by
   =
   -\omega^\mu{}_\nu x^\nu\partial_\mu\phi(x).
 \]
-If \(T^{\mu\nu}=T^{\nu\mu}\), the Lorentz current may be written
+If \(T^{\mu\nu}=T^{\nu\mu}\) and \(\partial_\mu T^{\mu\nu}=0\), then
+\[
+  M^{\mu,\rho\sigma}
+  =
+  x^\rho T^{\mu\sigma}-x^\sigma T^{\mu\rho}
+\]
+is conserved:
+\[
+  \partial_\mu M^{\mu,\rho\sigma}=0.
+\]
+The Lorentz current for parameter \(\omega_{\rho\sigma}\) is
 \[
   j^\mu_\omega
   =
   \frac12\omega_{\rho\sigma}M^{\mu,\rho\sigma},
 \]
-with
-\[
-  M^{\mu,\rho\sigma}
-  =
-  x^\rho T^{\mu\sigma}-x^\sigma T^{\mu\rho}.
-\]
-Using \(\partial_\mu T^{\mu\nu}=0\),
-\[
-  \partial_\mu M^{\mu,\rho\sigma}
-  =
-  T^{\rho\sigma}-T^{\sigma\rho}.
-\]
-Thus \(M^{\mu,\rho\sigma}\) is conserved when the stress tensor is symmetric.
-The corresponding Lorentz charges are
+and the corresponding charges, when the spatial integrals exist, are
 \[
   J^{\rho\sigma}
   =
@@ -436,18 +745,41 @@ The corresponding Lorentz charges are
     x^\rho T^{0\sigma}-x^\sigma T^{0\rho}
   \right).
 \]
+\end{proposition}
 
-For fields carrying Lorentz indices or spinor indices, the current includes an
-additional spin term. In such cases one either keeps the canonical spin current
-explicitly or passes to a Belinfante-improved symmetric stress tensor, provided
-the improvement is defined and the boundary conditions make the charges
-equivalent.
+\begin{proof}
+Differentiate \(M^{\mu,\rho\sigma}\):
+\[
+  \partial_\mu M^{\mu,\rho\sigma}
+  =
+  T^{\rho\sigma}+x^\rho\partial_\mu T^{\mu\sigma}
+  -
+  T^{\sigma\rho}-x^\sigma\partial_\mu T^{\mu\rho}.
+\]
+Stress-tensor conservation removes the terms proportional to \(x\), and
+symmetry of \(T^{\mu\nu}\) removes the remaining difference.  The current
+\(j^\mu_\omega\) is therefore conserved for every constant antisymmetric
+\(\omega_{\rho\sigma}\).
+\end{proof}
+
+\begin{remark}[Spin terms and Belinfante improvement]
+\label{rem:spin-terms-belinfante}
+For fields carrying Lorentz or spinor indices, the Lorentz current includes an
+additional spin current.  In such cases one either keeps the canonical spin
+current explicitly or passes to a Belinfante-improved symmetric stress tensor,
+provided the improvement is defined and the boundary conditions make the
+charges equivalent.  The spinor chapter fixes the corresponding representation
+matrices before using these currents.
+\end{remark}
 
 \section{Quantum Currents and Charges}
 
+\begin{definition}[Quantum current]
+\label{def:quantum-current-operator-valued-distribution}
 In a quantum field theory, a current is a vector of operator-valued
-distributions \(j^\mu_R\) on a common dense domain \(\mathcal D\subset\Hilb\).
-For \(f\in C_c^\infty(\mathbb M^D)\), the smeared current is denoted
+distributions \(j^\mu_R\) on a common dense domain
+\(\mathcal D\subset\Hilb\).  For \(f\in C_c^\infty(\mathbb M^D)\), the
+smeared current is denoted
 \[
   j^\mu_R(f)=\int\dd^Dx\,f(x)j^\mu_R(x).
 \]
@@ -455,13 +787,25 @@ Current conservation is a distributional statement:
 \[
   \partial_\mu j_R^\mu=0.
 \]
-Equivalently, all matrix elements between vectors in \(\mathcal D\) obey the
-corresponding distributional conservation law.
+Equivalently, for all \(\psi,\chi\in\mathcal D\) and all
+\(f\in C_c^\infty(\mathbb M^D)\),
+\[
+  \sum_{\mu=0}^{D-1}
+  \left\langle\psi,j_R^\mu(\partial_\mu f)\chi\right\rangle=0,
+\]
+with the derivative acting on the test function.  This is the operator-valued
+distributional version of integration by parts.
+\end{definition}
 
+\begin{definition}[Regulated Ward identity and contact terms]
+\label{def:regulated-ward-identity-contact-terms}
 In correlation functions with local insertions, the quantum statement is a
 Ward identity of distributions and includes contact terms on collision
 diagonals.  Its precise form is part of the chosen quantum construction.  In a
-regulated source-functional presentation, let \(X=\prod_i\mathcal O_i(x_i)\)
+regulated source-functional presentation, let
+\[
+  X=\prod_{i=1}^n\mathcal O_i(x_i)
+\]
 be a product of renormalized local insertions and let the local symmetry
 parameter be \(\epsilon(x)\).  The finite-regulator change of variables gives
 \begin{equation}
@@ -480,7 +824,7 @@ Berezinian density described in
 Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}.  If the symmetry is
 implemented without anomaly in the chosen regularization and source chart,
 \(\mathcal A_{\epsilon,R}=0\).  The first term on the right of
-\eqref{eq:quantum-noether-ward-regulated} gives the contact distributions
+\eqref{eq:quantum-noether-ward-regulated} gives contact distributions
 supported at \(x=x_i\):
 \[
   \delta_{\epsilon R}X
@@ -499,20 +843,29 @@ used later is formulated in
 Section~\ref{sec:cft-source-functionals-ward-contacts}, with the status of
 the source brackets specified in
 Definition~\ref{def:cft-fixed-point-source-bracket-status}.
+\end{definition}
 
-A quantum charge is defined as a limit of smeared local charges when that limit
-exists. Choose a compactly supported time smearing \(f_t(x^0)\) concentrated
-near \(t\) and spatial cutoff functions \(\chi_R(\vec x)\) with
-\(\chi_R\to1\) as \(R\to\infty\). The regulated charge is
+\begin{definition}[Quantum charge as a smeared limit]
+\label{def:quantum-charge-smeared-limit}
+A quantum charge is defined as a limit of smeared local charges when that
+limit exists.  Choose a compactly supported time smearing \(f_t(x^0)\)
+concentrated near \(t\), normalized by
+\(\int\dd x^0\,f_t(x^0)=1\), and spatial cutoff functions
+\(\chi_R(\vec x)\) with \(\chi_R\to1\) as \(R\to\infty\).  The regulated
+charge is
 \[
   Q_R[f_t,\chi_R]
   =
   \int\dd^Dx\,f_t(x^0)\chi_R(\vec x)j_R^0(x).
 \]
 If these operators converge on a specified domain, the limit is the charge
-operator \(Q_R\). If \(Q_R\) is essentially self-adjoint or has a chosen
-self-adjoint extension, it exponentiates to a one-parameter unitary group.
+operator \(Q_R\).  If \(Q_R\) is essentially self-adjoint or has a chosen
+self-adjoint extension, it exponentiates to a one-parameter unitary group by
+Stone's theorem.
+\end{definition}
 
+\begin{definition}[Quantum generator convention]
+\label{def:quantum-generator-convention}
 With the fixed-coordinate Noether convention, the infinitesimal quantum action
 on an operator \(\widehat{\mathcal O}\) is
 \[
@@ -521,7 +874,7 @@ on an operator \(\widehat{\mathcal O}\) is
   \frac{\ii}{\hbar}
   [Q_R,\widehat{\mathcal O}]
 \]
-on the common domain where the commutator is defined. For spacetime
+on the common domain where the commutator is defined.  For spacetime
 translations the covariance convention of the earlier chapters is
 \[
   U(a)^{-1}\widehat\Phi_A(x)U(a)
@@ -530,14 +883,42 @@ translations the covariance convention of the earlier chapters is
   \qquad
   U(a)=\exp\left(\frac{\ii}{\hbar}a^\nu P_\nu\right).
 \]
-This is equivalent to
+\end{definition}
+
+\begin{proposition}[Translation commutator convention]
+\label{prop:translation-commutator-convention}
+The convention in Definition~\ref{def:quantum-generator-convention} is
+equivalent to
 \[
   [P_\nu,\widehat\Phi_A(x)]
   =
   \ii\hbar\,\partial_\nu\widehat\Phi_A(x)
 \]
 in distributional notation.
+\end{proposition}
 
+\begin{proof}
+Differentiate
+\[
+  U(a)^{-1}\widehat\Phi_A(x)U(a)=\widehat\Phi_A(x+a)
+\]
+with respect to \(a^\nu\) at \(a=0\), using
+\(U(a)=\exp(\ii a^\rho P_\rho/\hbar)\).  The derivative of the left hand side
+is
+\[
+  -\frac{\ii}{\hbar}P_\nu\widehat\Phi_A(x)
+  +
+  \frac{\ii}{\hbar}\widehat\Phi_A(x)P_\nu
+  =
+  -\frac{\ii}{\hbar}[P_\nu,\widehat\Phi_A(x)].
+\]
+The derivative of the right hand side is
+\(\partial_\nu\widehat\Phi_A(x)\).  Multiplying by \(\ii\hbar\) gives the
+claimed commutator.
+\end{proof}
+
+\begin{definition}[Stress-tensor charges in the quantum theory]
+\label{def:quantum-stress-tensor-charges}
 When a renormalized stress tensor exists as a local operator-valued
 distribution, the Poincare generators are represented by
 \[
@@ -553,10 +934,10 @@ and, for a symmetric stress tensor in the scalar case,
   \right),
 \]
 with the same regulator-and-limit interpretation as for general charges.
+The quantum theory must specify the operator domains, renormalization
+prescription, conservation law, and boundary behavior under which the
+classical Noether densities define these charges.
+\end{definition}
 
-The classical Noether construction supplies the local densities for
-Lagrangian models. The quantum theory must specify the operator domains,
-renormalization prescription, conservation law, and boundary behavior under
-which those densities define charges. Once those data are fixed, the stress
-tensor is the local bridge between spacetime symmetry and the generators that
-act on states and fields.
+Once those data are fixed, the stress tensor is the local bridge between
+spacetime symmetry and the generators that act on states and fields.
