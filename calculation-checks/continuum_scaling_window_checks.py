@@ -74,6 +74,33 @@ def check_gaussian_relevant_scaling() -> None:
     assert_close("nu equals inverse thermal eigenvalue", xi, t0 ** (-1.0 / y_t), tol=1.0e-9)
 
 
+def check_finite_size_scaling_variables() -> None:
+    b = 2.0
+    steps = 6
+    size_in_lattice_units = b**steps
+    y_t = 1.6
+    omega = 0.83
+    microscopic_relevant_coordinate = 2.5e-4
+    microscopic_irrelevant_coordinate = 0.37
+
+    endpoint_relevant_coordinate = microscopic_relevant_coordinate * b ** (steps * y_t)
+    expected_endpoint = microscopic_relevant_coordinate * size_in_lattice_units**y_t
+    assert_close("finite-size scaling endpoint variable", endpoint_relevant_coordinate, expected_endpoint)
+
+    endpoint_irrelevant_coordinate = microscopic_irrelevant_coordinate * b ** (-steps * omega)
+    expected_irrelevant = microscopic_irrelevant_coordinate * size_in_lattice_units ** (-omega)
+    assert_close("finite-size irrelevant correction", endpoint_irrelevant_coordinate, expected_irrelevant)
+
+    lattice_spacing = 1.0e-3
+    physical_mass = 0.7
+    physical_size = 3.0
+    lattice_size = physical_size / lattice_spacing
+    tuned_relevant_coordinate = (lattice_spacing * physical_mass) ** y_t
+    finite_volume_scaling_variable = tuned_relevant_coordinate * lattice_size**y_t
+    expected_physical_variable = (physical_mass * physical_size) ** y_t
+    assert_close("physical finite-volume scaling variable", finite_volume_scaling_variable, expected_physical_variable)
+
+
 def check_operator_contact_shift() -> None:
     # A finite change of Wick subtraction changes the smeared square by
     # a multiple of the identity coordinate integral int f.
@@ -91,6 +118,7 @@ def main() -> None:
     check_tree_level_symanzik_artifact_and_improvement()
     check_free_scalar_pole_mass()
     check_gaussian_relevant_scaling()
+    check_finite_size_scaling_variables()
     check_operator_contact_shift()
     print("All continuum-limit and scaling-window checks passed.")
 

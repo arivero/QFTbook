@@ -267,8 +267,10 @@ Current checks:
   continuum-limit chapter, including the lattice momentum expansion, the
   tree-level Symanzik cutoff artifact and improved-kernel cancellation, the
   exact free-scalar pole mass and correlation length, the Gaussian
-  mass-squared RG eigenvalue, the \(\nu=1/y_t\) scaling relation, and finite
-  Wick-subtraction contact-coordinate shifts.
+  mass-squared RG eigenvalue, the \(\nu=1/y_t\) scaling relation, the
+  finite-size endpoint variable and irrelevant correction, the physical
+  finite-volume scaling variable, and finite Wick-subtraction
+  contact-coordinate shifts.
 - `rg_projection_checks.py`: exact rational checks for the Volume XI
   rigorous-RG projection-truncation section, including a spurious projected
   zero with no full fixed point and the finite-dimensional

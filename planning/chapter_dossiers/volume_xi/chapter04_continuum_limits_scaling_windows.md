@@ -26,8 +26,11 @@
   mass extracted from the lattice pole.
 - `R_b`, `B`, `S_*`, `y_i`: block-spin map, Banach interaction space, fixed
   point, and RG eigenvalues.
-- `t`, `y_t`, `nu`: one relevant coordinate, its RG eigenvalue, and
-  correlation-length exponent.
+- `t`, `y_t`, `nu`, `omega`: one relevant coordinate, its RG eigenvalue,
+  correlation-length exponent, and an irrelevant correction exponent.
+- `N`, `L`, `u_N`, `F`, `sigma_s`: finite lattice size, physical box size,
+  finite-size endpoint variable, finite-size scaling kernel, and step-scaling
+  coordinate.
 
 ## Claim Ledger
 
@@ -54,16 +57,25 @@
 8. The exact free lattice pole mass is
    \(\kappa_a=2a^{-1}\operatorname{arcsinh}(am_a/2)\), so
    \(a\xi_{\rm lat}\to m^{-1}\).
-9. Composite-operator continuum coordinates require Wick/contact-term
+9. Finite-size scaling is derived from an RG chart with a locally Lipschitz
+   endpoint kernel, endpoint-coordinate control, irrelevant decay, and
+   operator-coordinate stability:
+   \(N^{\sum\Delta_I}G_N=F(tN^{y_t})+O(N^{-\omega})\).
+10. If \(t(a)=(aM)^{y_t}+O(a^{y_t+\epsilon})\), the finite-volume scaling
+    variable tends to \((ML)^{y_t}\) at fixed physical size.
+11. Step scaling is defined by a finite-volume observable coordinate and a
+    continuum \(a/L\to0\) limit at fixed \(g_L=u\); its Symanzik
+    extrapolation must state exponents and a remainder bound.
+12. Composite-operator continuum coordinates require Wick/contact-term
    subtractions; finite changes of subtraction are identity contact
    coordinates after smearing.
-10. Reflection positivity passes to the continuum limit by closedness of the
+13. Reflection positivity passes to the continuum limit by closedness of the
    positive cone when the distributions converge on positive-time tests.
-11. Hypercubic invariance becomes Euclidean invariance only after
+14. Hypercubic invariance becomes Euclidean invariance only after
    rotation-breaking local operators are controlled or tuned away.
-12. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
+15. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
    RG chart and stable-manifold estimates.
-13. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
+16. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
     four-dimensional \(\phi^4_4\) are logically distinct.
 
 ## Calculation Checks
@@ -72,7 +84,9 @@
   lattice Laplacian expansion, tree-level Symanzik artifact and improved
   kernel cancellation, free-scalar pole-mass expansion and physical
   correlation length, Gaussian relevant-coordinate scaling, the
-  \(\nu=1/y_t\) relation, and finite Wick-subtraction contact shifts.
+  \(\nu=1/y_t\) relation, finite-size endpoint variables, irrelevant
+  corrections, physical finite-volume scaling variables, and finite
+  Wick-subtraction contact shifts.
 
 ## Figure Ledger
 

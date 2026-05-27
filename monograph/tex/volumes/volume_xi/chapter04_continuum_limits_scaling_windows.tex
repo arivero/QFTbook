@@ -376,6 +376,177 @@ The expansion
 \]
 shows explicitly how the lattice mass approaches the physical pole mass.
 
+\section{Finite-Volume Scaling and Step-Scaling Coordinates}
+\label{sec:finite-volume-scaling-step-scaling-coordinates}
+
+Finite volume is an infrared regulator.  It is not merely a numerical
+convenience, because a finite-volume observable can be used as a
+renormalized coordinate on the continuum theory.  To avoid confusing this
+coordinate with the ultraviolet cutoff, keep three lengths separate:
+\[
+  a,\qquad L=Na,\qquad \xi_{\rm phys}=a\,\xi_{\rm lat}.
+\]
+Here \(N\) is the number of lattice spacings across the box, \(L\) is the
+physical size, and \(\xi_{\rm phys}\) is the physical correlation length.
+A continuum finite-volume observable is obtained by taking
+\[
+  a\to0,\qquad L\ \text{fixed},\qquad
+  \text{renormalized relevant coordinates fixed}.
+\]
+The infinite-volume limit \(L\to\infty\) is a subsequent infrared limit.
+Interchanging these limits is an additional theorem, not part of the
+definition of the finite-volume continuum object.
+
+\begin{definition}[Finite-size scaling datum]
+\label{def:finite-size-scaling-datum}
+Fix a block scale \(b>1\), lattice tori
+\((a\mathbb Z/Na\mathbb Z)^D\) with \(N=b^n\), and an RG chart near a
+fixed point with one relevant coordinate \(t\), irrelevant coordinates
+\(w=(w_\alpha)\), and local operators \(O^I\) of RG dimensions
+\(\Delta_I\).  A finite-size scaling datum on a compact set
+\(\mathcal K\subset\mathbb R\) of scaling variables consists of:
+\begin{enumerate}[label=(\roman*)]
+  \item the integer \(n=\log_b N\);
+  \item an endpoint coordinate
+  \[
+    u_N=t\,N^{y_t}+E_N(t,w),
+    \qquad |E_N(t,w)|\le C N^{-\omega}
+  \]
+  whenever \(tN^{y_t}\in\mathcal K\);
+  \item an irrelevant-coordinate estimate
+  \[
+    \|w_N\|\le C N^{-\omega}
+  \]
+  for some \(\omega>0\);
+  \item endpoint kernels
+  \(F^{I_1\ldots I_k}(u;z_1,\ldots,z_k)\), locally Lipschitz in \(u\),
+  and renormalized separated-point kernels
+  \(G_{N,t,w}^{I_1\ldots I_k}(z_1,\ldots,z_k)\), with
+  \(z_i\in(\mathbb R/\mathbb Z)^D\) and \(z_i\ne z_j\), such that after
+  \(n\) RG steps
+  \[
+    \left|
+    N^{\Delta_{I_1}+\cdots+\Delta_{I_k}}
+    G_{N,t,w}^{I_1\ldots I_k}(z_1,\ldots,z_k)
+    -
+    F^{I_1\ldots I_k}(u_N;z_1,\ldots,z_k)
+    \right|
+    \le C N^{-\omega}
+  \]
+  uniformly on compact subsets of the configuration space with pairwise
+  separation bounded below.
+\end{enumerate}
+The constants \(C\) may depend on the compact set of noncoincident
+configuration points and on the bounded microscopic set of irrelevant
+coordinates, but not on \(N\).
+\end{definition}
+
+\begin{proposition}[Finite-size scaling from an RG chart]
+\label{prop:finite-size-scaling-from-rg-chart}
+Assume the finite-size scaling datum of
+Definition~\ref{def:finite-size-scaling-datum}.  Then
+\[
+  N^{\Delta_{I_1}+\cdots+\Delta_{I_k}}\,
+  G_{N,t,w}^{I_1\ldots I_k}(z_1,\ldots,z_k)
+  =
+  F^{I_1\ldots I_k}
+    (tN^{y_t};z_1,\ldots,z_k)
+  +
+  O(N^{-\omega})
+  \label{eq:finite-size-scaling-rg-chart}
+\]
+uniformly for \(tN^{y_t}\in\mathcal K\).  If the continuum massive
+coordinate is parameterized by a physical mass \(M\) through
+\[
+  t(a)=(aM)^{y_t}+O(a^{y_t+\epsilon})
+\]
+for some \(\epsilon>0\), then the scaling variable has the continuum
+finite-volume limit
+\[
+  t(a)N^{y_t}\to (ML)^{y_t}.
+  \label{eq:finite-size-scaling-physical-variable}
+\]
+\end{proposition}
+
+\begin{proof}
+After \(n\) blocking steps, lengths have been divided by \(b^n=N\), and the
+torus has order-one diameter in the blocked lattice units.  The
+renormalized operator coordinate \(O^I\) contributes the factor
+\(b^{-n\Delta_I}=N^{-\Delta_I}\).  The relevant coordinate at the endpoint
+is \(u_N=tN^{y_t}+O(N^{-\omega})\), and the irrelevant coordinates have
+norm \(O(N^{-\omega})\).  The endpoint estimate in the datum gives the
+correlator with \(F(u_N;z_1,\ldots,z_k)\) up to \(O(N^{-\omega})\).
+Since the endpoint kernel is locally Lipschitz in \(u\) on
+\(\mathcal K\), replacing \(u_N\) by \(tN^{y_t}\) changes the right-hand
+side by another \(O(N^{-\omega})\).  This proves
+\eqref{eq:finite-size-scaling-rg-chart}.  Finally, if \(N=L/a\) and
+\(t(a)=(aM)^{y_t}+O(a^{y_t+\epsilon})\), then
+\[
+  t(a)N^{y_t}
+  =
+  (aM)^{y_t}(L/a)^{y_t}
+  +
+  O(a^\epsilon (L/a)^{y_t}a^{y_t})
+  =
+  (ML)^{y_t}+O(a^\epsilon L^{y_t}),
+\]
+which proves \eqref{eq:finite-size-scaling-physical-variable}.
+\end{proof}
+
+The proposition states exactly what must be proved before finite-size
+scaling is a theorem: an RG chart, endpoint control, irrelevant decay, and
+operator-coordinate stability.  The common formula
+\(G_N=N^{-\sum\Delta_I}F(tN^{y_t})\) is the conclusion of these estimates,
+not their replacement.
+
+\begin{definition}[Step-scaling coordinate]
+\label{def:step-scaling-coordinate}
+Let \(\mathcal O_{a,L}\) be a finite-volume renormalized observable whose
+regulator-level definition is gauge-invariant, or is a specified coordinate
+in a gauge-fixed BV formulation, and whose continuum limit exists at fixed
+physical size \(L\).  Suppose a real coordinate \(g_L\) is defined by an
+injective normalization map
+\[
+  \mathcal O_{\rm cont}(L)=\Phi(g_L)
+\]
+on an interval of couplings.  For \(s>1\), the continuum step-scaling
+function associated to this coordinate is
+\[
+  \sigma_s(u)
+  =
+  \lim_{a/L\to0}
+  g_{sL}(a)
+  \quad
+  \text{with }g_L(a)=u,
+  \label{eq:step-scaling-coordinate-definition}
+\]
+provided the tuning \(g_L(a)=u\) and the continuum limit exist.  If the
+cutoff effects are described by a Symanzik expansion, the numerical
+extrapolation has the form
+\[
+  g_{sL}(a)=\sigma_s(u)+
+  \sum_{j=1}^{r-1} c_j(u,s)(a/L)^{\omega_j}
+  +
+  R_{r,a}(u,s),
+  \label{eq:step-scaling-symanzik-extrapolation}
+\]
+with explicitly stated exponents and a stated bound on \(R_{r,a}\).
+\end{definition}
+
+This definition is the precise finite-volume version of a running coupling.
+Different choices of \(\mathcal O\) define different schemes.  Scheme
+dependence is not a defect: it is the coordinate dependence of the
+renormalized theory.  What is scheme independent is the existence of the
+continuum finite-volume observable, the consistency of the coordinate
+changes where they overlap, and universal data such as fixed-point critical
+exponents when the relevant theorem has been proved.
+
+For lattice sizes not exactly of the form \(b^n\), the residual size
+\(N/b^{\lfloor\log_bN\rfloor}\in[1,b)\) is an additional finite endpoint
+coordinate.  It must be included in the scaling datum or eliminated by an
+explicit interpolation estimate; ignoring it is harmless only after that
+bounded-coordinate dependence has been controlled.
+
 \section{Operator Coordinates and Contact Terms}
 
 Renormalized operator coordinates are part of the continuum-limit datum.
