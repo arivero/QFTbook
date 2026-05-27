@@ -503,6 +503,11 @@ Current checks:
   unitarity and crossing, the sign and total integral of the TBA kernel, the
   golden-ratio plateau equation, and the Rogers-dilogarithm value
   \(L(\phi^{-2})=\pi^2/15\) giving \(c_{\rm eff}=2/5\).
+- `integrable_rg_flow_checks.py`: exact arithmetic checks for the Volume VI
+  perturbed-CFT and integrable-RG-flow chapter, including the
+  \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model
+  central-charge drops, Kac-table identification, source-scaling sign, and
+  right/left massless dispersion identities.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar

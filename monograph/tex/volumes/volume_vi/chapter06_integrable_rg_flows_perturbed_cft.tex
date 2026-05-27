@@ -3,75 +3,313 @@
 
 \ConventionsMixedCFT
 
-This chapter studies massive and massless two-dimensional flows that are
-specified in the ultraviolet by a conformal field theory and a relevant local
-operator, and whose infrared dynamics is constrained by factorized scattering.
-The comparison data along the flow are finite-size ground-state energies,
-local correlators, and scattering data, all expressed in declared
-normalization conventions.
+This chapter studies two-dimensional quantum field theories specified near a
+conformal fixed point by a relevant scalar local operator and studied away
+from the fixed point through factorized scattering, form factors, and
+finite-size spectra.  The word flow will always mean a comparison between
+renormalized local QFT data at different length scales.  An identification of
+such a flow includes a declared local-operator chart, infinite-volume
+scattering data, and a finite-volume Hilbert-space construction whose
+ground-state energy is computed by the stated TBA system.
 
-\section{Relevant Perturbations}
+\section{Perturbed-CFT Data}
 
-Let \(\mathcal C\) be a unitary Euclidean two-dimensional CFT on the plane
-with local scalar primary operator \(\mathcal O(z,\bar z)\) of scaling
-dimension
+Let \(\mathcal C\) be a Euclidean two-dimensional CFT on the plane.  A scalar
+primary operator \(\mathcal O\) has holomorphic and antiholomorphic weights
+\((h,\bar h)\) with \(h=\bar h\), and scaling dimension
 \[
-  \Delta_{\mathcal O}=h+\bar h<2 .
+  \Delta_{\mathcal O}=h+\bar h=2h .
 \]
-A regulated perturbation of \(\mathcal C\) is a family of correlation
-functionals
+It is relevant if
 \[
-  \left\langle X\right\rangle_{g,\Lambda}
+  y_{\mathcal O}:=2-\Delta_{\mathcal O}>0 .
+\]
+The number \(y_{\mathcal O}\) is the engineering dimension of the coupling
+that multiplies the integrated insertion \(\int d^2x\,\mathcal O(x)\).  This
+dimension statement is independent of perturbation theory: under the Euclidean
+dilation \(x\mapsto \lambda x\), the measure contributes \(\lambda^2\) and
+the primary insertion contributes \(\lambda^{-\Delta_{\mathcal O}}\).
+
+\begin{definition}[Renormalized perturbed-CFT chart]
+\label{def:renormalized-perturbed-cft-chart}
+A renormalized perturbation chart for \((\mathcal C,\mathcal O)\) consists of
+the following data.
+
+\begin{enumerate}
+\item A normalization of \(\mathcal O\), for example
+\[
+  \langle \mathcal O(x)\mathcal O(0)\rangle_{\mathcal C}
+  =
+  \frac{1}{|x|^{2\Delta_{\mathcal O}}}
+  \quad (x\neq0),
+\]
+or another explicitly stated nonzero constant in the numerator.
+\item A local source coordinate \(g\) with mass dimension
+\([g]=y_{\mathcal O}\).
+\item For each collection \(X\) of separated spectator insertions and each
+integer \(n\ge0\), an extension prescription
+\[
+  \mathcal R_n\!\left[
+  \langle X\,\mathcal O(x_1)\cdots\mathcal O(x_n)\rangle_{\mathcal C}
+  \right]
+\]
+from the configuration space where all points are distinct to a distribution
+on the full product space.  The extension prescription must state its contact
+terms on diagonals; different choices are different renormalized coordinates.
+\end{enumerate}
+
+The formal perturbation series in this chart is
+\[
+  \langle X\rangle_g
   =
   \frac{
-  \left\langle
-  X\exp\!\left[-g_\Lambda\int d^2x\,\mathcal O_\Lambda(x)\right]
-  \right\rangle_{\mathcal C,\Lambda}}
-  {\left\langle
-  \exp\!\left[-g_\Lambda\int d^2x\,\mathcal O_\Lambda(x)\right]
-  \right\rangle_{\mathcal C,\Lambda}},
+  \sum_{n\ge0}\frac{(-g)^n}{n!}
+  \int \prod_{j=1}^n d^2x_j\,
+  \mathcal R_n[
+  \langle X\,\mathcal O(x_1)\cdots\mathcal O(x_n)\rangle_{\mathcal C}]}
+  {\sum_{n\ge0}\frac{(-g)^n}{n!}
+  \int \prod_{j=1}^n d^2x_j\,
+  \mathcal R_n[
+  \langle \mathcal O(x_1)\cdots\mathcal O(x_n)\rangle_{\mathcal C}]} .
 \]
-where \(\Lambda\) is a short-distance regulator, \(g_\Lambda\) is a
-cutoff-dependent coordinate, \(\mathcal O_\Lambda\) is the corresponding
-regularized insertion, and \(X\) is a product of separated local insertions.
-The renormalized coupling has engineering dimension \(2-\Delta_{\mathcal O}\).
-When the perturbation produces a massive theory with mass scale \(M\), the
-dimensionless ratio
+The expression is a formal or regulated object until the volume, infrared
+boundary condition, and convergence or summability statement have been
+specified.
+\end{definition}
+
+The extension maps in Definition~\ref{def:renormalized-perturbed-cft-chart}
+are part of the definition of the perturbed theory.  They are where contact
+terms enter a perturbed CFT.  In a distributional formulation the product of
+local fields is first defined away from diagonals.  A renormalized
+perturbation chooses extensions to the diagonals subject to locality,
+covariance, and the declared source normalization.  Thus the coupling \(g\) is
+a coordinate in the Lagrangian or source functional of a specified regularized
+and renormalized path integral.
+
+\begin{proposition}[First-order scaling of a relevant source]
+\label{prop:first-order-relevant-source-scaling}
+Let \(g(\mu)\) denote the dimensionful source in the chart above, and let
 \[
-  r=MR
+  \lambda(\mu)=\mu^{-y_{\mathcal O}}g(\mu)
 \]
-is the natural variable for placing the theory on a spatial circle of
-circumference \(R\).
+be the corresponding dimensionless coordinate at renormalization scale
+\(\mu\).  If contact-term extensions are not changed while comparing two
+nearby scales and nonlinear OPE contributions are ignored, then
+\[
+  \mu\frac{d\lambda}{d\mu}=-y_{\mathcal O}\lambda .
+\]
+Equivalently, increasing the length scale \(\ell=\log(\mu_0/\mu)\) gives
+\[
+  \frac{d\lambda}{d\ell}=y_{\mathcal O}\lambda .
+\]
+\end{proposition}
+
+\begin{proof}
+The dimensionful source \(g\) has mass dimension \(y_{\mathcal O}\).  Holding
+the source functional fixed while changing only the unit of mass gives
+\(\lambda(\mu)=\mu^{-y_{\mathcal O}}g\).  Differentiating this identity at
+fixed \(g\) proves the first displayed equation.  The second follows from
+\(\ell=-\log\mu+\mathrm{constant}\).  Corrections beyond this statement come
+from the diagonal extension of products of \(\mathcal O\), equivalently from
+the singular part of the \(\mathcal O\times\mathcal O\) OPE in the chosen
+renormalized coordinate.
+\end{proof}
+
+If the perturbation generates a massive theory with mass gap \(M>0\), the
+dimensionless finite-size variable on a circle of circumference \(R\) is
+\[
+  r=MR .
+\]
+Dimensional analysis fixes only the power relating \(M\) and
+\(|g|^{1/y_{\mathcal O}}\).  Once the normalization of \(\mathcal O\), the
+source coordinate, and the scattering mass convention have been declared, an
+integrable model may determine a numerical mass-coupling constant
+\[
+  M=\kappa_{\mathcal O}\,|g|^{1/y_{\mathcal O}} .
+\]
+The number \(\kappa_{\mathcal O}\) is part of the matching data after the
+coordinates are fixed.
+
+\section{Unitary Minimal Models and \texorpdfstring{\(\phi_{1,3}\)}{phi13}}
+
+The A-series unitary Virasoro minimal model is denoted
+\(\mathcal M(m,m+1)\), with \(m\ge3\).  Its central charge is
+\[
+  c_m=1-\frac{6}{m(m+1)} ,
+\]
+and its chiral Kac weights are
+\[
+  h_{r,s}^{(m)}
+  =
+  \frac{\big((m+1)r-ms\big)^2-1}{4m(m+1)},
+  \qquad
+  1\le r\le m-1,\quad 1\le s\le m ,
+\]
+with the identification \((r,s)\sim(m-r,m+1-s)\).  The diagonal full CFT has
+scalar primaries when the same chiral module is paired with its
+antiholomorphic copy.
+
+\begin{proposition}[Elementary data of the \(\phi_{1,3}\) perturbation]
+\label{prop:phi13-minimal-model-data}
+In \(\mathcal M(m,m+1)\), the diagonal scalar primary
+\(\phi_{1,3}\) has
+\[
+  h_{1,3}^{(m)}=\frac{m-1}{m+1},
+  \qquad
+  \Delta_{1,3}^{(m)}=\frac{2(m-1)}{m+1},
+  \qquad
+  y_{1,3}^{(m)}=\frac{4}{m+1}.
+\]
+Moreover
+\[
+  c_m-c_{m-1}=\frac{12}{m(m^2-1)}
+  \qquad (m\ge4).
+\]
+\end{proposition}
+
+\begin{proof}
+For \((r,s)=(1,3)\),
+\[
+  (m+1)r-ms=m+1-3m=1-2m .
+\]
+Therefore
+\[
+  h_{1,3}^{(m)}
+  =
+  \frac{(2m-1)^2-1}{4m(m+1)}
+  =
+  \frac{4m(m-1)}{4m(m+1)}
+  =
+  \frac{m-1}{m+1}.
+\]
+The full diagonal scalar has scaling dimension \(2h_{1,3}^{(m)}\), giving the
+displayed \(\Delta_{1,3}^{(m)}\).  Subtracting from \(2\) gives
+\[
+  y_{1,3}^{(m)}
+  =
+  2-\frac{2(m-1)}{m+1}
+  =
+  \frac{4}{m+1}.
+\]
+Finally,
+\[
+  c_m-c_{m-1}
+  =
+  \left(1-\frac{6}{m(m+1)}\right)
+  -
+  \left(1-\frac{6}{(m-1)m}\right)
+  =
+  \frac{6}{m}\left(\frac1{m-1}-\frac1{m+1}\right),
+\]
+which is \(12/[m(m^2-1)]\).
+\end{proof}
+
+The standard integrable identification asserts that, for the massless branch
+of the \(\phi_{1,3}\) perturbation and a definite sign convention for the
+source \(g\),
+\[
+  \mathcal M(m,m+1)
+  +g\int d^2x\,\phi_{1,3}(x)
+  \quad\longrightarrow\quad
+  \mathcal M(m-1,m)
+  \qquad (m\ge4).
+\]
+In this monograph the theorem boundary is kept explicit.  The exact
+arithmetic in Proposition~\ref{prop:phi13-minimal-model-data} proves only
+that the proposed infrared central charge is smaller by the displayed
+positive amount and that the perturbing operator is relevant.  A theorem-level
+identification of the flow would require a construction of the perturbed
+local QFT, a proof of its infrared limit, and a matching of its local operator
+algebra to that of \(\mathcal M(m-1,m)\).
+
+\begin{example}[First minimal-model cases]
+\label{ex:first-phi13-minimal-flows}
+For \(m=3\), \(\mathcal M(3,4)\) is the Ising CFT.  The label
+\((1,3)\) is identified with \((2,1)\), and
+\[
+  h_{1,3}^{(3)}=\frac12,\qquad \Delta_{1,3}^{(3)}=1.
+\]
+This is the thermal perturbation, whose massive scaling limit is the free
+massive Majorana theory discussed in
+Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}.  For \(m=4\),
+\[
+  c_4=\frac{7}{10},\qquad c_3=\frac12,\qquad c_4-c_3=\frac15,
+\]
+which is the central-charge drop of the tricritical-Ising to Ising massless
+branch.  These statements fix the conformal arithmetic; the sign of the
+coupling and the operator normalization still have to be declared before
+comparing with scattering or TBA conventions.
+\end{example}
 
 \section{Finite-Size Scaling Function}
 
-Let \(E_0(R)\) be the ground-state energy on a circle.  Define the effective
-central-charge function
+Let \(E_0(R)\) be the ground-state energy on a spatial circle of
+circumference \(R\).  Define
 \[
   c_{\mathrm{eff}}(R)
   =
   -\frac{6R}{\pi}E_0(R).
 \]
-For a CFT with periodic boundary conditions,
+For a CFT with periodic boundary conditions and cylinder Hamiltonian
+\[
+  H_R=\frac{2\pi}{R}\left(L_0+\bar L_0-\frac{c}{12}\right),
+\]
+the vacuum energy is
 \[
   E_0(R)=-\frac{\pi c}{6R},
 \]
-so \(c_{\mathrm{eff}}(0)\) equals the ultraviolet central charge when the
-scaling limit exists and no zero-mode obstruction changes the cylinder
-vacuum.  For a massive infrared theory with a unique vacuum, the large-\(R\)
-energy has the form
+so \(c_{\mathrm{eff}}(R)=c\).  In a nonunitary CFT the cylinder ground state
+may be a primary of negative weight; then the same formula gives
 \[
-  E_0(R)=\mathcal E_{\mathrm{bulk}}R+o(R^0),
+  c_{\mathrm{eff}}=c-24h_{\min},
 \]
-after the universal Casimir term disappears.  The bulk energy density
-\(\mathcal E_{\mathrm{bulk}}\) is a local counterterm coordinate; comparisons
-of \(c_{\mathrm{eff}}\) between ultraviolet and infrared theories must specify
-whether this extensive term has been subtracted.
+where \(h_{\min}\) is the lowest diagonal conformal weight.  This is the
+convention used for the Lee--Yang example in
+Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}.
+
+For a massive infrared theory with a unique vacuum,
+\[
+  E_0(R)=\mathcal E_{\mathrm{bulk}}R+o(R^0)
+  \qquad (R\to\infty).
+\]
+The bulk energy density \(\mathcal E_{\mathrm{bulk}}\) is a local extensive
+coordinate.  Hence comparisons of ultraviolet and infrared central charges
+must say whether the extensive term has been subtracted.  The subtracted
+quantity is
+\[
+  E_0^{\mathrm{sub}}(R)=E_0(R)-\mathcal E_{\mathrm{bulk}}R,
+  \qquad
+  c_{\mathrm{sub}}(R)=-\frac{6R}{\pi}E_0^{\mathrm{sub}}(R).
+\]
+
+\begin{definition}[Finite-size identification datum]
+\label{def:finite-size-identification-datum}
+A finite-size identification between a perturbed CFT and a factorized
+scattering model consists of:
+\begin{enumerate}
+\item a Hilbert space on the circle and a self-adjoint Hamiltonian \(H_R\) for
+each \(R\) in the scaling regime;
+\item a normalization of the vacuum energy, including the value of
+\(\mathcal E_{\mathrm{bulk}}\);
+\item a mass convention for the infinite-volume particles;
+\item a proof, or an explicitly stated hypothesis, that the large-volume
+mirror-channel thermodynamics computes \(E_0(R)\).
+\end{enumerate}
+With these data declared, the equality between a TBA scaling function and a
+QFT finite-size energy is a precise mathematical assertion.
+\end{definition}
 
 \section{TBA Scaling Function}
 
-For a diagonal factorized massive theory, Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}
-gives pseudoenergies \(\epsilon_a(\theta;r)\) satisfying
+For a diagonal factorized massive theory, use the kernel convention of
+Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz},
+\[
+  \varphi_{ab}(\theta)
+  =
+  \frac{1}{2\pi\ii}\frac{d}{d\theta}\log S_{ab}(\theta).
+\]
+Let \(m_a=\mu_a M\), where \(M\) is the reference mass and
+\(\mu_a>0\).  The pseudoenergies are solutions of
 \[
   \epsilon_a(\theta;r)
   =
@@ -79,19 +317,18 @@ gives pseudoenergies \(\epsilon_a(\theta;r)\) satisfying
   -\sum_b\int_{\mathbb R}d\theta'\,
   \varphi_{ab}(\theta-\theta')
   \log\!\left(1+e^{-\epsilon_b(\theta';r)}\right),
+  \qquad r=MR .
 \]
-where \(m_a=\mu_a M\).  The finite-size ground-state energy in the
-mirror channel is
+With the bulk term separated, the mirror-channel formula gives
 \[
-  E_0(R)
+  E_0^{\mathrm{sub}}(R)
   =
   -\frac{M}{2\pi}
   \sum_a\mu_a\int_{\mathbb R}d\theta\,
   \cosh\theta\,
-  \log\!\left(1+e^{-\epsilon_a(\theta;r)}\right)
-  +\mathcal E_{\mathrm{bulk}}R .
+  \log\!\left(1+e^{-\epsilon_a(\theta;r)}\right).
 \]
-Consequently the subtracted scaling function is
+Consequently
 \[
   c_{\mathrm{TBA}}(r)
   =
@@ -100,43 +337,32 @@ Consequently the subtracted scaling function is
   \cosh\theta\,
   \log\!\left(1+e^{-\epsilon_a(\theta;r)}\right).
 \]
-This formula is a construction from scattering data and an assumption that the
-mirror-channel TBA computes the finite-size vacuum energy.
+This formula is a theorem about the variational TBA functional under the
+hypotheses of Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}; its
+identification with the finite-size vacuum energy of a local QFT requires the
+additional datum in Definition~\ref{def:finite-size-identification-datum}.
 
-\begin{proposition}[Dilogarithm form of the constant-kernel ultraviolet limit]
-\label{prop:tba-dilogarithm-uv}
-Assume that as \(r\to0\) the functions \(\epsilon_a(\theta;r)\) have a plateau
-region in which the kernels may be replaced by their integrals
+\begin{controlledapproximation}[Plateau reduction]
+\label{ca:tba-plateau-reduction}
+Assume that as \(r\downarrow0\) the solution has a plateau interval whose
+width tends to infinity, that the boundary layers at the ends of the plateau
+contribute only the standard Rogers-dilogarithm endpoints, and that the
+convolution kernels may be replaced on the plateau by their total integrals
 \[
-  N_{ab}=\int_{\mathbb R}d\theta\,\varphi_{ab}(\theta),
+  N_{ab}=\int_{\mathbb R}d\theta\,\varphi_{ab}(\theta).
 \]
-and that the plateau values \(Y_a=e^{\epsilon_a}\) solve
+The plateau values \(Y_a=\exp(\epsilon_a)\) then obey
 \[
-  \log Y_a=-\sum_b N_{ab}\log(1+Y_b^{-1}) .
+  \log Y_a=-\sum_b N_{ab}\log(1+Y_b^{-1}).
 \]
-Then the plateau contribution to the ultraviolet central charge is
+The corresponding ultraviolet contribution to the effective central charge is
 \[
   c_{\mathrm{UV}}
   =
   \frac{6}{\pi^2}\sum_a
   L\!\left(\frac{1}{1+Y_a}\right),
 \]
-where \(L(x)\) is the Rogers dilogarithm.
-\end{proposition}
-
-\begin{proof}
-In the plateau approximation, the derivative of the TBA equation with respect
-to \(\theta\) relates \(d\epsilon_a\) to the derivative of the driving term.
-After integrating by parts in the scaling function, the contribution from
-each species takes the form
-\[
-  \frac{6}{\pi^2}
-  \int_{\epsilon_a(-\infty)}^{\epsilon_a(+\infty)}
-  d\epsilon\,
-  \log(1+e^{-\epsilon})
-  \frac{d}{d\epsilon}\log(1+e^{\epsilon})^{-1}.
-\]
-With \(x=(1+e^\epsilon)^{-1}\), this integral is the Rogers dilogarithm
+where
 \[
   L(x)
   =
@@ -144,52 +370,170 @@ With \(x=(1+e^\epsilon)^{-1}\), this integral is the Rogers dilogarithm
   \left(
   \frac{\log(1-t)}{t}
   +\frac{\log t}{1-t}
-  \right),
+  \right)
+  =
+  \operatorname{Li}_2(x)+\frac12\log x\log(1-x)
 \]
-evaluated at the plateau value.  The assumed algebraic equations determine
-those endpoint values.  The stated formula follows by summing over species.
+for \(0<x<1\).
+\end{controlledapproximation}
+
+\begin{proof}
+The displayed algebraic equation is obtained by dropping the driving term on
+the plateau and replacing each convolution by the total kernel integral.  To
+derive the dilogarithm contribution, differentiate the TBA equation with
+respect to rapidity in a boundary layer where the pseudoenergy changes from a
+constant plateau value to its asymptotic value.  The same integration by
+parts used in the Lee--Yang calculation of
+Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz} reduces the scaling
+integral for species \(a\) to
+\[
+  \frac{6}{\pi^2}
+  \int d\epsilon_a\,
+  \log(1+e^{-\epsilon_a})
+  \frac{d}{d\epsilon_a}
+  \log(1+e^{\epsilon_a})^{-1}.
+\]
+With \(x=(1+e^{\epsilon_a})^{-1}\), this is the Rogers dilogarithm evaluated
+between the endpoint values.  Under the present plateau hypothesis the
+nontrivial endpoint is \(x_a=(1+Y_a)^{-1}\), giving the stated sum.  The
+argument is a controlled asymptotic reduction.  A complete application to a
+particular model includes a proof of the stated plateau hypothesis for that
+model.
 \end{proof}
 
 \section{Massless Flows}
 
-For an integrable flow between two CFTs, the infrared may contain massless
-right- and left-moving particles.  A right mover has
+An integrable massless flow contains right- and left-moving asymptotic
+particles in the infrared scaling description.  A right mover is
+parametrized by
 \[
   E=p=\frac{M}{2}e^\theta ,
 \]
-and a left mover has
+and a left mover by
 \[
   E=-p=\frac{M}{2}e^{-\theta}.
 \]
-The TBA then uses pseudoenergies
-\(\epsilon_R(\theta)\) and \(\epsilon_L(\theta)\), together with
-right-right, left-left, and right-left kernels.  The mixed kernel records the
-interaction between the two chiral sectors along the flow.  The ultraviolet
-and infrared central charges are extracted from the small-\(r\) and large-\(r\)
-limits of the same finite-size functional after the bulk term is fixed.
+The parameter \(M\) is the crossover scale.  The TBA now has right-right,
+left-left, and right-left kernels.  The right-left kernel records the
+interaction between the two chiral sectors along the flow; its normalization
+controls the interpolation between the ultraviolet and infrared plateaux.
+
+\begin{definition}[Massless factorized-flow datum]
+\label{def:massless-factorized-flow-datum}
+A diagonal massless factorized-flow datum consists of:
+\begin{enumerate}
+\item right species \(a\in A_R\) and left species \(\alpha\in A_L\);
+\item analytic two-body amplitudes
+\[
+  S^{RR}_{ab}(\theta),\qquad
+  S^{LL}_{\alpha\beta}(\theta),\qquad
+  S^{RL}_{a\alpha}(\theta)
+\]
+obeying the declared unitarity, crossing, and bootstrap equations in their
+analytic strips;
+\item a TBA system with driving terms
+\[
+  r\,\mu_a e^\theta/2,\qquad r\,\nu_\alpha e^{-\theta}/2,
+\]
+and kernels obtained from the logarithmic derivatives of the amplitudes in
+the same sign convention;
+\item ultraviolet and infrared local-operator charts to which the finite-size
+scaling function and form factors are to be matched.
+\end{enumerate}
+\end{definition}
+
+For the minimal-model \(\phi_{1,3}\) massless branch, the expected endpoint
+central charges satisfy
+\[
+  \lim_{r\downarrow0}c_{\mathrm{sub}}(r)=c_m,\qquad
+  \lim_{r\to\infty}c_{\mathrm{sub}}(r)=c_{m-1}.
+\]
+The value of \(c_m-c_{m-1}\) is fixed by
+Proposition~\ref{prop:phi13-minimal-model-data}.  The exact TBA system must
+reproduce these two limits after the bulk term and mass scale have been
+matched.  This central-charge comparison is one component of the
+identification; the full identification also includes the local operator
+algebras and their OPE data in the ultraviolet and infrared.
 
 \section{Operator Data Along the Flow}
 
-Scattering data and TBA do not determine all local correlators by themselves.
-To compare the perturbing CFT with the massive theory, one must also specify
-form factors of local operators and their ultraviolet normalization.  For a
-local operator \(\widehat{\mathcal O}\), the short-distance scaling dimension
-is tested by the two-point function
+The local-correlator part of the flow is supplied by form factors and their
+short-distance normalization.  For a local operator
+\(\widehat{\mathcal A}\), define its infinite-volume form factors by
 \[
-  \left\langle \widehat{\mathcal O}(x)\widehat{\mathcal O}(0)\right\rangle
-  \sim
-  \frac{C_{\mathcal O}}{|x|^{2\Delta_{\mathcal O}}}
-  \quad (M|x|\to0),
+  F^{\mathcal A}_{a_1\cdots a_n}(\theta_1,\ldots,\theta_n)
+  =
+  \langle 0|\widehat{\mathcal A}(0)|
+  \theta_1,a_1;\ldots;\theta_n,a_n\rangle_{\mathrm{in}},
 \]
-with \(C_{\mathcal O}\) fixed by a source convention.  A factorized model
-therefore represents an integrable RG flow only after the scattering theory,
-TBA scaling function, and local form-factor normalization agree with a common
-ultraviolet operator chart.
+where the ordering convention and particle-state normalization are those of
+Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.  The
+ultraviolet scaling dimension is tested by the short-distance behavior
+\[
+  \langle \widehat{\mathcal A}(x)\widehat{\mathcal A}(0)\rangle_{\mathrm c}
+  \sim
+  \frac{C_{\mathcal A}}{|x|^{2\Delta_{\mathcal A}}}
+  \qquad (M|x|\to0),
+\]
+with \(C_{\mathcal A}\) fixed by a source convention.  The perturbing operator
+itself must also satisfy the trace relation in the chosen normalization:
+\[
+  \Theta(x)
+  =
+  \kappa_\Theta\,y_{\mathcal O}\,g\,\mathcal O(x)
+  +O(g^2)
+\]
+when the Euclidean action is perturbed as
+\(S_{\mathcal C}+g\int d^2x\,\mathcal O(x)\) and the stress tensor is
+normalized by \(T^\mu{}_\mu=\Theta\).  The constant \(\kappa_\Theta\) is fixed
+by the Weyl-variation convention for the stress tensor and by whether a factor
+such as \(1/(2\pi)\) is included in the source term.  A chapter using this
+relation states \(\kappa_\Theta\) before using numerical trace-normalization
+formulas.
+
+\begin{proposition}[Necessary matching conditions for an integrable flow]
+\label{prop:necessary-integrable-flow-matching}
+Suppose a factorized scattering model is identified with a relevant
+perturbation of \(\mathcal C\) by \(\mathcal O\) in the sense of
+Definition~\ref{def:renormalized-perturbed-cft-chart}.  Then the following
+data must be mutually compatible:
+\begin{enumerate}
+\item the particle masses and scattering amplitudes determine a TBA scaling
+function whose ultraviolet limit equals the effective central charge of
+\(\mathcal C\);
+\item if the infrared limit is conformal, the large-\(R\) subtracted
+finite-size energy gives the infrared central charge;
+\item the form-factor spectral expansion of the operator corresponding to
+\(\mathcal O\) has the ultraviolet two-point normalization fixed in the
+perturbed-CFT chart;
+\item the trace operator extracted from the finite-size response to a change
+of \(R\) agrees, to first order in \(g\), with the perturbing operator through
+the displayed trace relation.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The first two assertions are consequences of the definition of
+\(c_{\mathrm{sub}}(R)\) and of the CFT cylinder Hamiltonian.  A mismatch of
+central charge would contradict equality of the finite-size vacuum energies
+in either scaling limit.  The third assertion follows because the source
+coordinate in Definition~\ref{def:renormalized-perturbed-cft-chart} fixes the
+normalization of \(\mathcal O\); a different form-factor normalization would
+compute a different source derivative of the Schwinger functional.  For the
+fourth assertion, vary the perturbed action under a Weyl rescaling.  The
+integrated insertion has scaling defect \(y_{\mathcal O}\), and the declared
+stress-tensor normalization converts the Weyl variation of the action into
+the trace insertion.  Higher powers of \(g\) are contact-term and operator
+mixing data of the same renormalized chart.
+\end{proof}
 
 \begin{openproblem}[Rigorous integrable-flow reconstruction]
 \label{op:integrable-flow-reconstruction}
 Construct a theorem that starts from factorized scattering data, form-factor
 solutions satisfying locality and convergence estimates, and TBA finite-size
 data, and reconstructs a local two-dimensional QFT whose ultraviolet limit is
-a specified CFT perturbation.
+a specified CFT perturbation.  The theorem should identify the operator
+topology in which the ultraviolet limit is taken, prove the finite-size
+Hamiltonian/TBA equality, and show that the OPE coefficients obtained from
+short-distance limits agree with the declared CFT data.
 \end{openproblem}
