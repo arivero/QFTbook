@@ -307,7 +307,9 @@ Current checks:
   mode-tracing calculation, including the imaginary-axis Gamma-function norm,
   the \(|\alpha|^2/|\beta|^2=e^{2\pi\omega/\kappa}\) ratio, the displayed
   Planck factor in \(|\beta_{\omega\omega'}|^2\), the continuum
-  normalization-density identity, and the exponential precursor blueshift.
+  normalization-density identity, the wave-packet Planck-bin average, the
+  exponential precursor blueshift, the exponential-map Schwarzian flux, and
+  the Schwarzschild \(T_H=1/(8\pi M)\) convention.
 - `hydrodynamic_modes_checks.py`: finite algebra checks for the Volume X
   hydrodynamic Ward-identity chapter, including shear diffusion, sound
   attenuation, entropy-production positivity for sample transport matrices,

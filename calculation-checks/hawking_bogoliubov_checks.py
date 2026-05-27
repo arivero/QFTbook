@@ -59,6 +59,38 @@ def main():
         blueshift_exponential = omega * mp.e ** (kappa * u) / (kappa * C)
         assert_close("late-time precursor blueshift", blueshift_from_ray, blueshift_exponential)
 
+        beta_h = 2 * mp.pi / kappa
+        bin_width = mp.mpf("0.13")
+        bin_left = mp.mpf("0.41")
+        bin_right = bin_left + bin_width
+        bin_average_closed = (
+            mp.log((1 - mp.e ** (-beta_h * bin_right)) / (1 - mp.e ** (-beta_h * bin_left)))
+            / (beta_h * bin_width)
+        )
+        bin_average_integral = (
+            mp.quad(lambda w: 1 / (mp.e ** (beta_h * w) - 1), [bin_left, bin_right])
+            / bin_width
+        )
+        assert_close("wave-packet Planck bin average", bin_average_closed, bin_average_integral)
+
+        p_prime = C * kappa * mp.e ** (-kappa * u)
+        p_double_prime = -C * kappa**2 * mp.e ** (-kappa * u)
+        p_triple_prime = C * kappa**3 * mp.e ** (-kappa * u)
+        schwarzian = p_triple_prime / p_prime - mp.mpf("1.5") * (p_double_prime / p_prime) ** 2
+        assert_close("exponential ray-tracing Schwarzian", schwarzian, -kappa**2 / 2)
+
+        c = mp.mpf("1.0")
+        flux_from_schwarzian = -c * schwarzian / (24 * mp.pi)
+        flux_from_planck = c * mp.pi / (12 * beta_h**2)
+        flux_from_kappa = c * kappa**2 / (48 * mp.pi)
+        assert_close("two-dimensional Hawking flux from Schwarzian", flux_from_schwarzian, flux_from_kappa)
+        assert_close("two-dimensional Hawking flux from Planck integral", flux_from_planck, flux_from_kappa)
+
+        mass = mp.mpf("3.7")
+        schwarzschild_kappa = 1 / (4 * mass)
+        schwarzschild_temp = schwarzschild_kappa / (2 * mp.pi)
+        assert_close("Schwarzschild temperature convention", schwarzschild_temp, 1 / (8 * mp.pi * mass))
+
     print("All Hawking Bogoliubov coefficient checks passed.")
 
 

@@ -3,72 +3,180 @@
 
 \ConventionsLorentzian
 
-The Hawking effect is a statement about QFT on a fixed spacetime containing a
-black-hole horizon.  It relates regularity of a state at the future horizon
-to a thermal flux at future null infinity.  The temperature is determined by
-the surface gravity of the horizon.
+The Hawking effect is a statement about quantum fields on a fixed spacetime
+whose causal structure contains a future black-hole horizon.  Its invariant
+content is not that a preferred global particle basis exists.  Rather, under
+regularity at the future horizon and suitable propagation to future null
+infinity, late outgoing observables have a thermal occupation factor with
+temperature fixed by the surface gravity.  This chapter separates four
+ingredients which are often compressed into one slogan: horizon regularity,
+exponential ray tracing, Bogoliubov mixing of wave packets, and propagation
+through the exterior geometry.
 
-\section{Stationary Horizon and Surface Gravity}
+\section{Stationary Horizons and Surface Gravity}
 
-Let \((M,g)\) be a stationary black-hole spacetime with Killing vector
-\(\chi^\mu\) generating the horizon.  On the horizon,
+Let \((M,g)\) be a smooth Lorentzian spacetime and let \(\chi\) be a Killing
+field.  A null hypersurface \(\mathcal H\) is a Killing horizon for \(\chi\)
+if \(\chi\) is tangent to \(\mathcal H\), nonzero on the open horizon, and
+null on \(\mathcal H\).  On \(\mathcal H\), the acceleration of the horizon
+generators is necessarily proportional to \(\chi\):
+\begin{equation}
+  \chi^\nu\nabla_\nu\chi^\mu=\kappa\chi^\mu .
+  \label{eq:hawking-surface-gravity-definition}
+\end{equation}
+The proportionality factor \(\kappa\) is the surface gravity in the
+normalization of \(\chi\).  For an asymptotically flat stationary black hole
+the normalization is fixed by requiring that \(\chi\) approach a unit time
+translation at infinity.
+
+\begin{lemma}[Rindler normal form of a nonextremal horizon]
+\label{lem:hawking-rindler-normal-form}
+Suppose \(\mathcal H\) is a nonextremal Killing horizon, \(\kappa>0\).  In a
+neighborhood of a horizon cross-section, the two-dimensional metric in the
+normal directions can be written, up to terms smooth in \(\rho^2\), as
 \[
-  \chi^\nu\nabla_\nu\chi^\mu=\kappa\chi^\mu ,
+  ds^2_{\perp}
+  =
+  -\kappa^2\rho^2\,dt^2+d\rho^2 .
 \]
-where \(\kappa\) is the surface gravity.  Near a nonextremal horizon, the
-metric in the two-dimensional normal directions has Rindler form
+Equivalently, the coordinates
 \[
-  ds^2\simeq -\kappa^2\rho^2dt^2+d\rho^2+\cdots .
+  U=-\rho e^{-\kappa t},\qquad V=\rho e^{\kappa t}
 \]
-Thus the local horizon problem is the Rindler problem of
-Chapter~\ref{ch:curved-unruh-effect-modular-theory}, with acceleration scale
-replaced by \(\kappa\).
+are regular null coordinates through the future horizon \(U=0\), and
+\(\chi=\partial_t\).
+\end{lemma}
+
+\begin{proof}
+Near a nondegenerate zero of \(\chi^2=g(\chi,\chi)\) transverse to the
+horizon, choose \(\rho\ge0\) so that the proper distance from the horizon on
+a static slice is \(\rho\).  The norm of the Killing field has the expansion
+\[
+  -\chi^2=\kappa^2\rho^2+O(\rho^4),
+\]
+which is another form of \eqref{eq:hawking-surface-gravity-definition}.  The
+orthogonal two-plane metric therefore has the stated Rindler form to leading
+order; smoothness across the bifurcate extension is expressed by the regular
+coordinates \(U,V\), for which
+\[
+  -\kappa^2\rho^2dt^2+d\rho^2=-dU\,dV
+\]
+up to the harmless convention-dependent factor in the null product.  Terms
+from the angular metric and higher even powers of \(\rho\) are smooth in
+\(UV=-\rho^2\).
+\end{proof}
+
+For Schwarzschild of mass \(M\) in units \(G=\hbar=c=k_B=1\),
+\[
+  ds^2= -\left(1-\frac{2M}{r}\right)dt^2
+  +\left(1-\frac{2M}{r}\right)^{-1}dr^2+r^2d\Omega_2^2 .
+\]
+Writing \(r=2M+\rho^2/(8M)+O(\rho^4/M^3)\) gives
+\[
+  ds^2_{\perp}
+  =
+  -\left(\frac{\rho}{4M}\right)^2dt^2+d\rho^2+O(\rho^4),
+\]
+so
+\[
+  \kappa_{\rm Schw}=\frac1{4M},
+  \qquad
+  T_{\rm Schw}=\frac1{8\pi M}.
+\]
 
 \section{Euclidean Regularity}
 
-Analytically continue \(t=-\ii\tau\).  The normal metric becomes
+Analytically continue the stationary time by \(t=-\ii\tau\).  The normal
+metric becomes
 \[
-  ds_E^2\simeq \kappa^2\rho^2d\tau^2+d\rho^2+\cdots .
+  ds_E^2\simeq \kappa^2\rho^2d\tau^2+d\rho^2 .
 \]
-This is smooth at \(\rho=0\) only if the angular variable
-\(\kappa\tau\) has period \(2\pi\).  Therefore the Euclidean state regular at
-the horizon is periodic in imaginary Killing time with inverse temperature
+This is the flat metric in polar coordinates if and only if the angular
+coordinate \(\kappa\tau\) has period \(2\pi\).  The Euclidean regularity
+argument therefore fixes
 \[
   \beta_H=\frac{2\pi}{\kappa},
   \qquad
   T_H=\frac{\kappa}{2\pi}.
 \]
-This derivation establishes the KMS periodicity of correlation functions that
-admit the Euclidean regular continuation; it does not by itself prove
-existence of the interacting Lorentzian state.
 
-\section{Bogoliubov Coefficients From Mode Tracing}
+\begin{proposition}[What Euclidean regularity proves]
+\label{prop:hawking-euclidean-regularity-scope}
+Assume a Euclidean QFT has been constructed on the smooth Euclidean black-hole
+section, the analytic continuation to stationary Lorentzian correlators
+exists, and the Euclidean time circle is the continuation of the normalized
+Killing time.  Then the analytically continued stationary correlation
+functions satisfy the KMS periodicity at inverse temperature
+\(\beta_H=2\pi/\kappa\).  This statement does not by itself prove existence
+of an interacting Lorentzian Hadamard state on a collapse spacetime.
+\end{proposition}
 
-The Euclidean argument identifies the temperature of a regular stationary
-state.  The collapse calculation gives a Lorentzian particle-production
-mechanism.  We now carry out the coefficient calculation for a massless
-scalar field in the geometric-optics approximation.  The angular variables
-and the potential barrier are suppressed in this section; they are restored
-as greybody factors below.
+\begin{proof}
+Smoothness at \(\rho=0\) identifies \(\kappa\tau\) as an angle.  Hence the
+Euclidean Schwinger functions are periodic under
+\(\tau\mapsto\tau+2\pi/\kappa\), with the usual ordering around the Euclidean
+circle.  Under the assumed Osterwalder-Schrader or analytic-continuation
+reconstruction for the stationary problem, Euclidean periodicity becomes the
+KMS boundary relation for Lorentzian Killing-time correlation functions.
+The final sentence records an implication that is not part of the argument:
+Euclidean smoothness constructs a stationary thermal object, whereas collapse
+requires a state empty on \(\mathcal I^-\), regular at the future horizon,
+and propagated through a time-dependent geometry.
+\end{proof}
 
+\section{Exponential Ray Tracing in Collapse}
+
+The collapse derivation begins with the geometry of late outgoing null rays.
 Let \(v\) be advanced time on past null infinity \(\mathcal I^-\), and let
-\(u\) be retarded time on future null infinity \(\mathcal I^+\).  In a
-collapsing geometry forming a nonextremal future horizon, outgoing null rays
-arriving at late \(u\) originate from \(v\) exponentially close to the last
-escaping ray \(v_0\).  The relation has the universal form
+\(u\) be retarded time on future null infinity \(\mathcal I^+\).  Let \(v_0\)
+label the last escaping ray: rays with \(v<v_0\) reach \(\mathcal I^+\),
+while rays with \(v>v_0\) fall through the future horizon.
+
+\begin{lemma}[Universal late-time ray tracing]
+\label{lem:hawking-exponential-ray-tracing}
+Assume the collapse spacetime settles at late retarded time to a stationary
+nonextremal black-hole exterior with future-horizon Kruskal coordinate
+\[
+  U=-C_H e^{-\kappa u}
+\]
+near \(\mathcal I^+\), with \(C_H>0\), and assume the past-null coordinate
+\(v\) is a smooth affine parameter through the last escaping ray with
+\[
+  U=A(v-v_0)+O((v-v_0)^2),
+  \qquad A>0 .
+\]
+Then for \(v<v_0\),
 \[
   v_0-v=C e^{-\kappa u}+O(e^{-2\kappa u}),
-  \qquad C>0.
+  \qquad C=\frac{C_H}{A}>0,
 \]
-Equivalently,
+or equivalently
 \[
-  u(v)=-\frac{1}{\kappa}\log\frac{v_0-v}{C}+O(v_0-v),
-  \qquad v<v_0 .
+  u(v)=-\frac1\kappa\log\frac{v_0-v}{C}+O(v_0-v).
 \]
-The constant \(C\) depends on the collapse geometry and on the normalization
-of \(u\), but it will only contribute a phase to the occupation number.
+\end{lemma}
 
-Normalize right-moving modes on a null line by
+\begin{proof}
+For an escaping ray close to the horizon, \(U<0\).  The two displayed
+relations give
+\[
+  -C_H e^{-\kappa u}
+  =
+  A(v-v_0)+O((v-v_0)^2).
+\]
+Solving this smooth equation for \(v_0-v\) gives the asserted expansion.  The
+logarithmic expression is the inverse expansion.
+\end{proof}
+
+The constants \(A,C_H,C\) are nonuniversal; the exponential rate \(\kappa\)
+is fixed by the regularity of the horizon coordinate.
+
+\section{Bogoliubov Coefficients from Mode Tracing}
+
+We carry out the coefficient calculation for a massless scalar field in the
+geometric-optics approximation.  Angular variables and the exterior
+potential are suppressed in this section; they reappear as greybody factors
+below.  Normalize right-moving modes on a null line by
 \[
   f_{\omega'}^{\rm in}(v)
   =
@@ -81,42 +189,45 @@ Normalize right-moving modes on a null line by
   \omega,\omega'>0 .
 \]
 Tracing \(p_\omega^{\rm out}\) backwards to \(\mathcal I^-\) gives, near the
-late-time singular part responsible for particle creation,
-\[
+singular late-time part responsible for particle creation,
+\begin{equation}
   p_\omega(v)
   =
   \frac{1}{\sqrt{4\pi\omega}}
-  \left(\frac{v_0-v}{C}\right)^{\ii\omega/\kappa}\theta(v_0-v)
-  +\hbox{terms smooth across }v=v_0 .
-\]
-The smooth terms have rapidly decaying Fourier transform at large
-\(\omega'\) and do not determine the thermal ratio.  The singular term is
-expanded as
-\[
-  p_\omega(v)
-  =
-  \int_0^\infty d\omega'\,
-  \left(
-  \alpha_{\omega\omega'}f_{\omega'}^{\rm in}(v)
-  +
-  \beta_{\omega\omega'}\overline{f_{\omega'}^{\rm in}(v)}
-  \right).
-\]
-Using the Klein-Gordon product on a null line,
+  \left(\frac{v_0-v}{C}\right)^{\ii\omega/\kappa}
+  \theta(v_0-v)
+  +\text{terms smooth across }v=v_0 .
+  \label{eq:hawking-traced-mode-singular-part}
+\end{equation}
+The smooth terms have rapidly decaying Fourier transforms at large
+\(\omega'\) and do not determine the universal thermal ratio.
+
+Use the Klein-Gordon product on a null line,
 \[
   (f,g)_{\mathcal I^-}
   =
   -\ii\int_{-\infty}^{\infty}
-  f(v)\overleftrightarrow{\partial_v}\overline{g(v)}\,dv,
+  f(v)\overleftrightarrow{\partial_v}\overline{g(v)}\,dv .
 \]
-one obtains
+The expansion
+\[
+  p_\omega
+  =
+  \int_0^\infty d\omega'\,
+  \left(
+  \alpha_{\omega\omega'}f_{\omega'}^{\rm in}
+  +
+  \beta_{\omega\omega'}\overline{f_{\omega'}^{\rm in}}
+  \right)
+\]
+has
 \[
   \alpha_{\omega\omega'}=(f_{\omega'}^{\rm in},p_\omega)_{\mathcal I^-},
   \qquad
   \beta_{\omega\omega'}=-(\overline{f_{\omega'}^{\rm in}},p_\omega)_{\mathcal I^-}.
 \]
-Up to phases depending on \(C\) and \(v_0\), the required Fourier integrals
-are
+Putting \(x=v_0-v\) and \(a=\omega/\kappa\), the needed oscillatory boundary
+values are
 \[
   \int_0^\infty x^{\ii a}e^{-\ii\omega' x}\,dx
   =
@@ -125,11 +236,10 @@ are
 \[
   \int_0^\infty x^{\ii a}e^{+\ii\omega' x}\,dx
   =
-  e^{+\ii\pi/2}e^{-\pi a/2}\Gamma(1+\ii a)(\omega')^{-1-\ii a},
-  \qquad a=\frac{\omega}{\kappa}.
+  e^{+\ii\pi/2}e^{-\pi a/2}\Gamma(1+\ii a)(\omega')^{-1-\ii a}.
 \]
 Equivalently, since \(\Gamma(1+\ii a)=\ii a\,\Gamma(\ii a)\), the singular
-Bogoliubov coefficients can be written in the form
+coefficients can be written
 \[
   \alpha_{\omega\omega'}
   =
@@ -159,91 +269,300 @@ Using
 \[
   |\Gamma(\ii a)|^2=\frac{\pi}{a\sinh(\pi a)}
 \]
-gives the explicit negative-frequency coefficient
-\[
+gives the explicit negative-frequency density
+\begin{equation}
   |\beta_{\omega\omega'}|^2
   =
   \frac{1}{2\pi\kappa\,\omega'}
   \frac{1}{e^{2\pi\omega/\kappa}-1}.
-\]
-The factor \(1/\omega'\) is not a typographical nuisance; it records that the
-idealized late-time stationary approximation has infinite retarded-time
-duration.  A mathematically meaningful particle number is obtained by using
-wave packets localized in retarded time.  For wave packets centered at
-frequency \(\omega_j\) and late retarded-time bin \(n\), the expectation
-value tends to
-\[
-  \langle N_{j n}\rangle
+  \label{eq:hawking-continuum-beta-density}
+\end{equation}
+
+Equation~\eqref{eq:hawking-continuum-beta-density} is not yet a finite
+particle number.  The factor \(1/\omega'\) is the density remnant of an
+idealized stationary late-time limit.  Finite observables are wave-packet
+observables.
+
+\section{Wave Packets and the Planck Factor}
+
+Fix a frequency resolution \(\varepsilon>0\).  For integers \(j\ge0\) and
+\(n\in\mathbb Z\), define outgoing packets
+\begin{equation}
+  p_{jn}^{\rm out}
   =
-  \frac{1}{e^{2\pi\omega_j/\kappa}-1}
-  +\hbox{terms vanishing at late }n ,
-\]
-before greybody scattering is included.  Thus
+  \frac{1}{\sqrt\varepsilon}
+  \int_{j\varepsilon}^{(j+1)\varepsilon}
+  d\omega\,
+  e^{2\pi\ii n\omega/\varepsilon}p_\omega^{\rm out}.
+  \label{eq:hawking-wave-packet-definition}
+\end{equation}
+The integer \(j\) labels a frequency bin and \(n\) labels retarded-time
+localization, with center approximately \(u_n=2\pi n/\varepsilon\).
+
+\begin{proposition}[Late-time packet occupation]
+\label{prop:hawking-wave-packet-occupation}
+In the stationary late-time approximation determined by
+Lemma~\ref{lem:hawking-exponential-ray-tracing}, the number of incoming-vacuum
+quanta in the outgoing packet \((j,n)\) is
 \[
-  n_\omega=\frac{1}{e^{\beta_H\omega}-1},
+  \langle N_{jn}\rangle
+  =
+  \frac1{\varepsilon}
+  \int_{j\varepsilon}^{(j+1)\varepsilon}
+  \frac{d\omega}{e^{\beta_H\omega}-1}
+  +o(1)
+  \qquad(n\to+\infty),
+  \label{eq:hawking-packet-bin-average}
+\]
+where \(\beta_H=2\pi/\kappa\).  If the bin is narrow compared with the scale
+on which the Planck factor varies, this is
+\[
+  \langle N_{jn}\rangle
+  =
+  \frac{1}{e^{\beta_H\omega_j}-1}
+  +O(\varepsilon\,\partial_\omega n_\omega),
+  \qquad \omega_j=(j+\tfrac12)\varepsilon .
+\]
+\end{proposition}
+
+\begin{proof}
+The packet Bogoliubov coefficient is
+\[
+  \beta_{jn,\omega'}
+  =
+  \frac1{\sqrt\varepsilon}
+  \int_{j\varepsilon}^{(j+1)\varepsilon}
+  d\omega\,e^{2\pi\ii n\omega/\varepsilon}
+  \beta_{\omega\omega'} .
+\]
+The packet number is
+\[
+  \langle N_{jn}\rangle
+  =
+  \int_0^\infty d\omega'\,|\beta_{jn,\omega'}|^2 .
+\]
+Inserting the singular coefficient gives a double integral over
+\(\omega_1,\omega_2\) and the \(\omega'\)-factor
+\[
+  \int_0^\infty
+  \frac{d\omega'}{\omega'}
+  (\omega')^{\ii(\omega_2-\omega_1)/\kappa}.
+\]
+With a large finite affine-time regulator this is the Fourier transform of a
+long interval in \(\log\omega'\).  In the infinite stationary limit it is the
+distribution
+\[
+  2\pi\kappa\,\delta(\omega_1-\omega_2).
+  \label{eq:hawking-log-frequency-delta}
+\]
+The phase \(e^{2\pi\ii n(\omega_1-\omega_2)/\varepsilon}\) then drops out,
+and the remaining diagonal coefficient is exactly the Planck factor in
+\eqref{eq:hawking-continuum-beta-density}.  Nonstationary corrections from
+the \(O(e^{-2\kappa u})\) part of the ray-tracing map and from the smooth
+part of the traced mode give the \(o(1)\) term for packets moved to late
+retarded time.
+\end{proof}
+
+The exact bin average in \eqref{eq:hawking-packet-bin-average} can be written
+without approximation:
+\[
+  \frac1{\varepsilon}
+  \int_{\omega_-}^{\omega_+}
+  \frac{d\omega}{e^{\beta_H\omega}-1}
+  =
+  \frac{1}{\beta_H\varepsilon}
+  \log
+  \frac{1-e^{-\beta_H\omega_+}}
+       {1-e^{-\beta_H\omega_-}},
   \qquad
-  \beta_H=\frac{2\pi}{\kappa}.
+  \omega_\pm=j\varepsilon,(j+1)\varepsilon .
 \]
 
-The same tracing relation shows the trans-Planckian sensitivity of the
-geometric-optics derivation.  A wave packet observed at retarded time \(u\)
-with frequency \(\omega\) has precursor frequency on \(\mathcal I^-\) of
-order
+\section{Two-Dimensional Flux and the Moving-Mirror Model}
+
+For a two-dimensional conformal scalar, the same exponential map determines
+the stress-tensor flux.  Let \(p(u)\) denote the incoming null coordinate of
+the ray reaching \(\mathcal I^+\) at retarded time \(u\):
 \[
-  \omega_{\rm in}\sim
+  v=p(u)=v_0-Ce^{-\kappa u}.
+\]
+For a CFT of central charge \(c\) in the incoming vacuum, the chiral stress
+tensor transforms under the reparametrization \(v=p(u)\) as
+\begin{equation}
+  \langle T_{uu}\rangle
+  =
+  -\frac{c}{24\pi}\{p,u\},
+  \qquad
+  \{p,u\}=\frac{p'''}{p'}-\frac32\left(\frac{p''}{p'}\right)^2 .
+  \label{eq:hawking-schwarzian-flux}
+\end{equation}
+For the exponential map,
+\[
+  \{v_0-Ce^{-\kappa u},u\}=-\frac{\kappa^2}{2},
+\]
+and hence
+\begin{equation}
+  \langle T_{uu}\rangle
+  =
+  \frac{c\,\kappa^2}{48\pi}
+  =
+  \frac{\pi c}{12\beta_H^2}.
+  \label{eq:hawking-two-dimensional-flux}
+\end{equation}
+The last equality is the thermal energy flux of one chiral CFT sector:
+\[
+  \int_0^\infty\frac{d\omega}{2\pi}
+  \frac{\omega}{e^{\beta_H\omega}-1}
+  =
+  \frac{\pi}{12\beta_H^2}
+\]
+for \(c=1\).  The moving-mirror model realizes this calculation in flat
+space by choosing a mirror trajectory whose ray-tracing function \(p(u)\)
+has the same late exponential form.  It is a useful model of the kinematics
+of Hawking radiation, not a derivation of quantum gravity.
+
+\section{Trans-Planckian Precursor Frequencies}
+
+The same tracing relation also shows the trans-Planckian domain of the
+geometric-optics derivation.  A packet observed at retarded time \(u\) with
+frequency \(\omega\) has precursor frequency on \(\mathcal I^-\) of order
+\[
+  \omega_{\rm in}
+  \sim
   \omega\,\frac{du}{dv}
   =
   \frac{\omega}{\kappa(v_0-v)}
   \sim
   \frac{\omega}{\kappa C}e^{\kappa u}.
 \]
-At sufficiently late \(u\) this exceeds any fixed microscopic scale.  The
-fixed-background QFT derivation is therefore a conditional theorem inside
-the assumed continuum theory; robustness under modified short-distance
-physics is a separate problem, often modeled in two dimensions by moving
-mirror trajectories \(v=p(u)=v_0-Ce^{-\kappa u}\), which reproduce the same
-Bogoliubov ratio and stress-tensor flux for a conformal scalar.
+For any fixed microscopic scale \(\Lambda_{\rm micro}\), sufficiently late
+packets have \(\omega_{\rm in}>\Lambda_{\rm micro}\).  Thus the
+fixed-background continuum derivation is a conditional theorem inside the
+assumed QFT on the assumed smooth geometry.  Robustness under modified
+short-distance physics is a separate statement requiring a specified
+microscopic model and a controlled limit.
 
-\section{States: Boulware, Hartle--Hawking, and Unruh}
+\section{Boulware, Hartle--Hawking, and Unruh States}
 
-The Boulware state is empty with respect to static time at infinity but is
-singular at the horizon.  The Hartle--Hawking state is regular on both future
-and past horizons and is thermal on both exterior regions.  The Unruh state
-is regular on the future horizon and empty on past null infinity; it describes
-an evaporating black hole in the fixed-background approximation and produces
-outgoing thermal flux at future null infinity.
+In a stationary eternal black-hole exterior, three quasifree scalar states
+serve as reference points.
+\begin{enumerate}[label=(\roman*)]
+\item The Boulware state is positive-frequency with respect to the static
+  Killing time at infinity.  It is empty for static observers at infinity but
+  is singular at the horizon.
+\item The Hartle--Hawking state is regular on both future and past horizons
+  of the bifurcate extension and is KMS at inverse temperature
+  \(\beta_H\) with respect to the exterior Killing time.
+\item The Unruh state is regular on the future horizon and empty on past null
+  infinity.  It is the fixed-background state appropriate to collapse and
+  gives outgoing flux on \(\mathcal I^+\).
+\end{enumerate}
+These names denote state-selection properties, not extra axioms.  In a given
+model, each state must be constructed as a positive Hadamard two-point
+function or by another equivalent locally covariant construction.
 
-\section{Flux and Greybody Factors}
+\section{Greybody Factors and Four-Dimensional Flux}
 
-In an asymptotically flat black-hole spacetime, propagation from the near
-horizon region to infinity includes scattering by the curvature potential.
-The number flux for angular momentum channel \(\ell\) has the form
+In an asymptotically flat black-hole spacetime, propagation from the
+near-horizon region to infinity includes scattering by the exterior curvature
+potential.  For a scalar field on Schwarzschild, write the mode as
 \[
-  \frac{dN_{\ell}}{dt\,d\omega}
+  \phi_{\omega\ell m}
   =
-  \frac{\Gamma_\ell(\omega)}
-  {2\pi\bigl(e^{\beta_H\omega}-1\bigr)},
+  \frac{1}{r}\psi_{\omega\ell}(r_\ast)Y_{\ell m}(\theta,\varphi)
+  e^{-\ii\omega t},
+  \qquad
+  \frac{dr_\ast}{dr}=\left(1-\frac{2M}{r}\right)^{-1}.
 \]
-where \(\Gamma_\ell(\omega)\) is the greybody factor determined by the
-classical wave equation in the exterior geometry.  The thermal factor is
-horizon kinematics; the greybody factor is propagation through the exterior
-potential.
+The radial equation is
+\[
+  \left[
+  -\frac{d^2}{dr_\ast^2}
+  +V_\ell(r)
+  \right]\psi_{\omega\ell}
+  =
+  \omega^2\psi_{\omega\ell},
+  \qquad
+  V_\ell(r)=
+  \left(1-\frac{2M}{r}\right)
+  \left(\frac{\ell(\ell+1)}{r^2}+\frac{2M}{r^3}\right).
+\]
+Let \(\Gamma_\ell(\omega)\) be the transmission probability through this
+one-dimensional scattering problem, normalized by unit incoming flux from
+the horizon.  The number and energy fluxes at infinity are
+\[
+  \frac{dN}{dt\,d\omega}
+  =
+  \sum_{\ell,m}
+  \frac{\Gamma_\ell(\omega)}
+  {2\pi(e^{\beta_H\omega}-1)},
+\]
+\[
+  \frac{dE}{dt\,d\omega}
+  =
+  \sum_{\ell,m}
+  \frac{\omega\,\Gamma_\ell(\omega)}
+  {2\pi(e^{\beta_H\omega}-1)} .
+\]
+The Planck factor is horizon kinematics; \(\Gamma_\ell(\omega)\) is ordinary
+hyperbolic propagation through the exterior.  Fermions replace the
+Bose-Einstein denominator by \(e^{\beta_H\omega}+1\), and gauge fields
+require the corresponding physical-polarization and ghost-free Hilbert-space
+construction.
+
+\section{Back-Reaction Boundary}
+
+Fixed-background QFT treats \(g\) as prescribed.  Semiclassical gravity asks
+instead for
+\[
+  G_{\mu\nu}[g]+\Lambda g_{\mu\nu}
+  =
+  8\pi G\,\langle T_{\mu\nu}\rangle_{\rm ren}[g,\omega],
+\]
+where \(\omega\) is the chosen Hadamard state and the stress tensor includes
+the finite local curvature counterterms discussed earlier in this volume.  In
+an adiabatic Schwarzschild approximation, energy conservation suggests an
+ODE
+\[
+  \frac{dM}{du}=-L(M),
+  \qquad
+  L(M)=
+  \sum_{\ell,m}
+  \int_0^\infty
+  \frac{d\omega}{2\pi}\,
+  \frac{\omega\,\Gamma_\ell(\omega;M)}
+       {e^{8\pi M\omega}-1},
+\]
+for a scalar contribution.  This equation is not a theorem about the full
+evaporating geometry.  It assumes slow variation on the scale \(M\), ignores
+stress-tensor fluctuations except through their mean, and presupposes that
+the state remains close to an Unruh-type Hadamard state on each instantaneous
+exterior.
 
 \section{QFT Boundary}
 
-For interacting QFT, a theorem-level Hawking effect requires existence of a
-Hadamard state with the required horizon regularity, control of stress-tensor
-renormalization, and propagation estimates from the horizon to infinity.  In
-semiclassical gravity one must also solve the backreaction equation
-\[
-  G_{\mu\nu}=8\pi G\,\langle T_{\mu\nu}\rangle_{\rm ren},
-\]
-which is beyond fixed-background QFT.
+A theorem-level Hawking effect for an interacting local QFT on black-hole
+backgrounds requires all of the following data:
+\begin{enumerate}[label=(\roman*)]
+\item a precise class of globally hyperbolic collapse spacetimes with
+  controlled late approach to a nonextremal stationary exterior;
+\item construction of a Hadamard state empty on \(\mathcal I^-\) and regular
+  at the future horizon;
+\item a local and covariant stress-tensor renormalization scheme;
+\item propagation estimates connecting near-horizon data to \(\mathcal I^+\);
+\item control of the limits defining late-time wave-packet observables;
+\item a statement separating the universal horizon factor from
+  model-dependent greybody and interaction effects.
+\end{enumerate}
+Without these hypotheses, the phrase ``black holes radiate thermally'' is not
+a mathematical theorem.  With these hypotheses supplied, the fixed-background
+calculation above shows where the temperature and Planck factor enter.
 
 \begin{openproblem}[Interacting Hawking theorem]
 \label{op:interacting-hawking-theorem}
 Prove a Hawking radiation theorem for an interacting local QFT on a class of
 black-hole backgrounds, including Hadamard state construction, KMS or
 near-horizon analyticity, renormalized stress tensor, greybody propagation,
-and the precise limits in which the emitted flux is thermal.
+late-time wave-packet limits, and the precise sense in which the emitted
+flux is thermal.
 \end{openproblem}
