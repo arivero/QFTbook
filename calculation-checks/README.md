@@ -211,9 +211,12 @@ Current checks:
   coefficients, quantum dimensions, shifted character exponents, the
   \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
   Ising modular invariant with one vacuum, the Cardy Tauberian saddle
-  coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
-  invisibility of the nilpotent extension, and the Zhu-algebra top-weight
-  polynomial with its primitive idempotents.
+  coefficient, Verlinde/topological-defect eigencharacters, exact temporal
+  to spatial defect \(S\)-move multiplicities, the Ising spin-field
+  one-point selection rule under the spin-flip defect, the rank-two
+  logarithmic Jordan-cell Ward identities and trace invisibility of the
+  nilpotent extension, and the Zhu-algebra top-weight polynomial with its
+  primitive idempotents.
 - `cft_virasoro_minimal_checks.py`: exact checks for the unitary Virasoro
   minimal-model and Ising BPZ-block material, including Kac-table
   identifications, Ising and tricritical-Ising weights, the A-series

@@ -1157,6 +1157,195 @@ and \(S_{\mathbf 1\varepsilon}=1/2\ne0\), so \(b=1\).  Thus
 from \eqref{eq:rational-torus-partition-function}.
 \end{proof}
 
+\subsection{Torus One-Point Blocks and Verlinde Defect Lines}
+\label{subsec:torus-one-point-blocks-defect-lines}
+
+The partition function is the genus-one zero-point function.  A complete
+genus-one discussion also needs one-point blocks and topological defect
+lines.  Both are often drawn pictorially; here we spell out the algebraic
+content because the assumptions are different from those used in the scalar
+partition function.
+
+Let \(V\) be a rational chiral theory satisfying
+Definition~\ref{def:sewing-compatible-rational-chiral-theory}, and let
+\(v\in V\) be homogeneous of conformal weight \(h_v\).  The zero mode
+\[
+  o(v):=v_{h_v-1}
+\]
+has \(L_0\)-degree zero.  The chiral torus one-point block on the simple
+module \(M_i\) is
+\begin{equation}
+  F_i(v;\tau)
+  :=
+  \operatorname{Tr}_{M_i}
+  o(v)\,q^{L_0-c/24}.
+  \label{eq:chiral-torus-one-point-block}
+\end{equation}
+Only the zero mode can contribute to a trace over \(L_0\)-eigenspaces:
+a mode of nonzero \(L_0\)-degree maps each finite-dimensional eigenspace to a
+different eigenspace and therefore has zero diagonal trace.  For
+\(v=\mathbf 1\), \(o(v)=1\) and \(F_i(\mathbf 1;\tau)=\chi_i(\tau)\).
+
+\begin{quotedtheorem}[Zhu modular covariance of torus one-point blocks]
+\label{qthm:zhu-one-point-modular-covariance}
+Assume \(V\) is rational, \(C_2\)-cofinite, of CFT type, and has ordinary
+simple modules \(M_i\).  For each homogeneous \(v\in V\), the finite vector
+\((F_i(v;\tau))_i\) spans a representation of \(SL_2(\mathbb Z)\).  If \(v\)
+is Virasoro primary of weight \(h_v\), then for
+\(\gamma=\begin{psmallmatrix}a&b\\ c&d\end{psmallmatrix}\)
+\[
+  F_i\!\left(v;\frac{a\tau+b}{c\tau+d}\right)
+  =
+  (c\tau+d)^{h_v}
+  \sum_j \rho_v(\gamma)_{ij}F_j(v;\tau).
+  \label{eq:zhu-one-point-modular-covariance}
+\]
+For \(v=\mathbf 1\), \(\rho_v\) is the character modular representation
+used above.
+\end{quotedtheorem}
+
+The factor \((c\tau+d)^{h_v}\) is just the conformal weight factor for the
+change of torus coordinate.  The theorem input is the finite-dimensionality
+and holomorphic modular closure of the trace functions.  A full-CFT torus
+one-point function of a bulk primary \(\Phi\) of weights
+\((h,\bar h)\) is a sesquilinear pairing of the corresponding chiral
+one-point-block vectors.  Modular covariance therefore requires an invariant
+coefficient tensor for
+\(\rho_\Phi(\gamma)\otimes \overline{\rho_\Phi(\gamma)}\), together with the
+weight factor \((c\tau+d)^h(c\bar\tau+d)^{\bar h}\).  Thus torus one-point
+functions constrain bulk OPE data; they are not determined by the scalar
+partition function alone.
+
+Topological defect lines give a second genus-one probe.  In a diagonal
+rational full CFT built from a unitary modular tensor category
+\(\mathcal C\), the Verlinde defects are labelled by simple objects
+\(a\in I\).  Let
+\[
+  \mathcal H_{\rm diag}
+  =
+  \bigoplus_{i\in I}M_i\otimes \overline{M_i^\vee}
+\]
+be the diagonal Hilbert space.  Define \(D_a\) on the summand labelled by
+\(i\) by
+\begin{equation}
+  D_a\big|_{M_i\otimes \overline{M_i^\vee}}
+  =
+  \lambda_a(i)\operatorname{id},
+  \qquad
+  \lambda_a(i):=\frac{S_{ai}}{S_{0i}} .
+  \label{eq:verlinde-defect-eigenvalue}
+\end{equation}
+The denominator is nonzero in a unitary modular tensor category because
+\(S_{0i}=d_i S_{00}\) and \(d_i>0\).
+
+\begin{proposition}[Verlinde defect fusion and modular covariance]
+\label{prop:verlinde-defect-fusion-modular-covariance}
+For the diagonal rational full CFT above,
+\[
+  D_aD_b=\sum_c N_{ab}{}^cD_c .
+  \label{eq:verlinde-defect-fusion}
+\]
+Moreover, the torus trace with \(D_a\) wrapping the Euclidean-time cycle is
+\begin{equation}
+  Z_a^{\rm time}(\tau,\bar\tau)
+  =
+  \sum_i \lambda_a(i)\chi_i(\tau)\overline{\chi_i(\tau)} .
+  \label{eq:temporal-verlinde-defect-torus}
+\end{equation}
+After the modular \(S\)-move it becomes the spatial-defect trace
+\begin{equation}
+  Z_a^{\rm time}(-1/\tau,-1/\bar\tau)
+  =
+  \sum_{p,q}N_{ap}{}^q\,\chi_p(\tau)\overline{\chi_q(\tau)} .
+  \label{eq:spatial-verlinde-defect-torus}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Verlinde formula says that the matrices \(N_a\) are simultaneously
+diagonalized by \(S\), with eigenvalue \(S_{ai}/S_{0i}\) on the \(i\)-th
+character.  Hence for every \(i\),
+\[
+  \lambda_a(i)\lambda_b(i)
+  =
+  \sum_c N_{ab}{}^c\lambda_c(i),
+\]
+which proves \eqref{eq:verlinde-defect-fusion} on each diagonal summand of
+\(\mathcal H_{\rm diag}\).
+
+For the modular transform, insert the character transformation law into
+\eqref{eq:temporal-verlinde-defect-torus}.  The coefficient of
+\(\chi_p\overline{\chi_q}\) is
+\[
+  \sum_i
+  \frac{S_{ai}}{S_{0i}}\,S_{ip}\,\overline{S_{iq}}
+  =
+  \sum_i
+  \frac{S_{ai}S_{pi}S_{q^\vee i}}{S_{0i}}
+  =
+  N_{ap}{}^q,
+\]
+where unitarity gives \(\overline{S_{iq}}=S_{q^\vee i}\), and the last
+equality is Verlinde.  This proves
+\eqref{eq:spatial-verlinde-defect-torus}.  The right side is a Hilbert-space
+trace over
+\[
+  \mathcal H_a
+  =
+  \bigoplus_{p,q}N_{ap}{}^q\,
+  M_p\otimes\overline{M_q^\vee},
+\]
+so the modular move has turned a temporal defect operator into a spatial
+defect sector.
+\end{proof}
+
+For the Ising labels \((\mathbf 1,\sigma,\varepsilon)\), the eigenvalue
+vectors \((\lambda_a(\mathbf 1),\lambda_a(\sigma),\lambda_a(\varepsilon))\)
+are
+\[
+  \lambda_{\mathbf 1}=(1,1,1),\qquad
+  \lambda_\sigma=(\sqrt2,0,-\sqrt2),\qquad
+  \lambda_\varepsilon=(1,-1,1).
+\]
+Thus
+\[
+  D_\varepsilon^2=D_{\mathbf 1},\qquad
+  D_\varepsilon D_\sigma=D_\sigma,\qquad
+  D_\sigma^2=D_{\mathbf 1}+D_\varepsilon,
+\]
+so \(D_\varepsilon\) is the invertible spin-flip line and \(D_\sigma\) is the
+noninvertible Kramers--Wannier line.  Their modular covariance is completely
+finite.  For example,
+\[
+  Z_\varepsilon^{\rm time}
+  =
+  |\chi_{\mathbf 1}|^2-|\chi_\sigma|^2+|\chi_\varepsilon|^2
+\]
+is sent by \(S\) to
+\[
+  \chi_{\mathbf 1}\overline{\chi_\varepsilon}
+  +\chi_\varepsilon\overline{\chi_{\mathbf 1}}
+  +|\chi_\sigma|^2,
+\]
+the Hilbert space twisted by the spin-flip defect.  Similarly
+\[
+  Z_\sigma^{\rm time}
+  =
+  \sqrt2\left(|\chi_{\mathbf 1}|^2-|\chi_\varepsilon|^2\right)
+\]
+is sent by \(S\) to
+\[
+  \chi_{\mathbf 1}\overline{\chi_\sigma}
+  +\chi_\varepsilon\overline{\chi_\sigma}
+  +\chi_\sigma\overline{\chi_{\mathbf 1}}
+  +\chi_\sigma\overline{\chi_\varepsilon}.
+\]
+The same line-sliding argument gives selection rules for torus one-point
+functions.  Since \(D_\varepsilon\) acts by \(-1\) on the Ising spin primary,
+the torus one-point function of \(\sigma\) equals its negative and therefore
+vanishes.  This topological-defect Ward identity is independent of any
+particular lattice realization.
+
 For a unitary compact two-dimensional CFT with discrete spectrum on the
 circle, the rectangular torus partition function
 \[

@@ -39,6 +39,12 @@ current QFT scope.
 - `N_{ij}{}^k`: fusion coefficient.
 - `d_i`: quantum dimension \(S_{i0}/S_{00}\).
 - `M_{ij}`: full-CFT modular-invariant multiplicity matrix.
+- `F_i(v;tau)`: chiral torus one-point block
+  `Tr_{M_i} o(v) q^{L_0-c/24}`.
+- `D_a`: Verlinde topological defect labelled by a simple chiral object `a`
+  in the diagonal rational full CFT.
+- `lambda_a(i)`: defect eigenvalue `S_{ai}/S_{0i}` on the diagonal sector
+  `M_i otimes overline{M_i^vee}`.
 - `A(I)`: von Neumann algebra assigned by a conformal net to an interval
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
@@ -101,6 +107,15 @@ current QFT scope.
   equivalence.
 - Defines rational full-CFT torus partition functions and the modular
   invariance constraints \(MS=SM\), \(MT=TM\).
+- Defines chiral torus one-point trace blocks, states Zhu modular covariance
+  with the primary weight factor and explicit rationality/\(C_2\)-cofiniteness
+  hypotheses, and explains why full-CFT torus one-point functions constrain
+  OPE tensors beyond the scalar partition function.
+- Defines diagonal Verlinde topological defects \(D_a\), proves their fusion
+  from the simultaneous diagonalization form of the Verlinde formula, proves
+  the temporal-defect to spatial-defect modular \(S\)-move, and works the
+  Ising spin-flip and Kramers--Wannier defect lines including the spin-field
+  one-point selection rule.
 - Derives the leading Cardy high-temperature partition-function asymptotic
   from modular invariance and a unique vacuum hypothesis, states the
   exponential Tauberian theorem needed to pass from the partition function to
@@ -127,7 +142,9 @@ current QFT scope.
   conformal-net `mu`-index/global-dimension relation, character exponent
   shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
-  vacuum, the Cardy Tauberian saddle coefficient, and the Ising Zhu
+  vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
+  \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
+  the Cardy Tauberian saddle coefficient, and the Ising Zhu
   polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
   rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
   trace invisibility of the nilpotent part.
@@ -191,3 +208,8 @@ current QFT scope.
   quotient normalization explicit, proved the finite \(SU(2)\)-quotient
   fusion rule, and extended the minimal-model calculation companion to check
   modular orthogonality and Verlinde fusion for \(m=3,\ldots,7\).
+- 2026-05-27 torus one-point/defect-line pass: added Zhu torus one-point
+  trace blocks, the modular-covariance theorem boundary with explicit
+  hypotheses, diagonal Verlinde defect operators, the temporal/spatial defect
+  modular \(S\)-move, Ising spin-flip and Kramers--Wannier examples, and exact
+  defect-line arithmetic checks.
