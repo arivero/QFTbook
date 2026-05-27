@@ -282,11 +282,49 @@ to second order in \(A\), equation
   F_{\mu\nu}F_{\rho\sigma}.
   \label{eq:axial-background-gauge-variation}
 \end{equation}
-Thus the axial \(U(1)\) is an exact global symmetry only if one does not
-require a gauge-invariant functional of an axial background field.  Its
-background response is the anomaly class.  Promoting the same background to a
-dynamical gauge field would demand invariance under \(A\mapsto A+\dd\zeta\)
-and is obstructed by \eqref{eq:axial-background-gauge-variation}.
+
+\begin{proposition}[Axial background obstruction]
+\label{prop:axial-background-obstruction}
+In the vector-current-preserving regularization convention used above, the
+massless Dirac fermion has a nontrivial anomaly for the axial \(U(1)\)
+background.  More precisely, no four-dimensional local counterterm depending
+only on the axial background \(A\), within this convention, can make
+\(\Gamma[A]\) invariant under all compactly supported infinitesimal
+background transformations \(A\mapsto A+\dd\zeta\).  Therefore the axial
+background cannot be promoted to an ordinary dynamical gauge field unless
+additional matter or topological data cancels the class represented by
+\eqref{eq:axial-background-gauge-variation}.
+\end{proposition}
+
+\begin{proof}
+Gauge invariance of an Abelian background functional would require
+\(\delta_\zeta\Gamma[A]=0\) for every test function \(\zeta\).  Equation
+\eqref{eq:axial-background-gauge-variation} gives instead
+\[
+  \delta_\zeta\Gamma[A]
+  =
+  \frac1{48\pi^2}
+  \int_{M_4}\zeta\,\epsilon^{\mu\nu\rho\sigma}
+  F_{\mu\nu}F_{\rho\sigma}.
+\]
+Since \(F\wedge F\) can be varied independently in a compact spacetime
+region, this distribution is not identically zero.  A local counterterm would
+change the right hand side by a local Abelian Wess--Zumino coboundary.  In the
+single-background Abelian complex there is no four-form local functional
+whose infinitesimal variation is \(\zeta\,F\wedge F\): the only possible
+Chern--Simons primitive \(A\wedge F\) is a three-form, while \(A\wedge
+A\wedge F\) vanishes for an Abelian one-form.  Equivalently, the class
+whose descent gives \(\zeta F\wedge F\) is the nonzero six-form anomaly
+polynomial proportional to \(F\wedge F\wedge F\).  Thus the obstruction
+cannot be removed without changing the theory, changing the symmetry being
+gauged, or adding another sector with the opposite anomaly.
+\end{proof}
+
+Thus the axial rotation is a symmetry of the classical massless action in
+flat space without background flux, but its quantum coupling to an axial
+background is anomalous: the partition function is naturally a section of an
+anomaly line rather than a function on the quotient by axial background gauge
+transformations.
 
 \section{Example: A Finite SU(2) Anomaly}
 
@@ -366,6 +404,40 @@ fundamental Weyl doublet.  Thus an odd number of such doublets has a finite
 independent symmetric cubic invariant; equation
 \eqref{eq:su2-global-anomaly-pfaffian} detects an obstruction invisible to the
 infinitesimal descent calculation.
+
+\begin{proposition}[Finite \(SU(2)\) anomaly of doublets]
+\label{prop:finite-su2-anomaly-doublets}
+Let \(n\) left-handed Weyl fermions transform as fundamental doublets of a
+background \(SU(2)\) symmetry on a compact spin four-manifold.  For a closed
+loop of backgrounds represented by the mapping torus
+\((X_g,\sigma_g,E_g)\), the Pfaffian line has holonomy
+\[
+  \operatorname{Hol}(X_g,\sigma_g,E_g)
+  =
+  (-1)^{n\,\zeta(X_g,\sigma_g,E_g)} .
+\]
+For the test family \(M=S^4\) with \(g\) the generator of
+\(\pi_4(SU(2))\simeq\mathbb Z_2\), one has
+\(\zeta(X_g,\sigma_g,E_g)=1\).  Hence an odd number of doublets has a genuine
+finite \(SU(2)\) anomaly, while this particular obstruction cancels for an
+even number.
+\end{proposition}
+
+\begin{proof}
+The fermionic functional integral for one pseudoreal Weyl doublet is a
+Pfaffian rather than an ordinary complex determinant.  Along a loop of
+backgrounds, parallel transport of the Pfaffian line is computed by the
+Dai--Freed holonomy.  In the pseudoreal five-dimensional problem the relevant
+eta-invariant reduces mod \(2\) to the real Dirac index
+\(\zeta(X_g,\sigma_g,E_g)\), giving the sign
+\eqref{eq:su2-global-anomaly-pfaffian}.  For \(n\) independent doublets the
+Pfaffian line is the tensor product of \(n\) copies, so the holonomy is the
+\(n\)-th power of the one-doublet sign.  The Witten test family on \(S^4\)
+evaluates the mod-two index to \(1\).  Therefore the sign around the
+nontrivial loop is \((-1)^n\).  A gauge theory requires the fermion measure to
+descend to a single-valued function on the quotient by background gauge
+transformations; a loop with holonomy \(-1\) prevents this descent.
+\end{proof}
 
 If this \(SU(2)\) symmetry is gauged, the sign in
 \eqref{eq:su2-global-anomaly-pfaffian} prevents the fermion measure from
@@ -602,6 +674,48 @@ do not connect distinct pure phases:
   \bra{\Omega_i}\mathcal A(x)\ket{\Omega_j}=0
   \qquad (i\ne j).
 \]
+
+\begin{proposition}[Local operators preserve pure vacuum sectors]
+\label{prop:local-operators-preserve-pure-vacua}
+Assume an infinite-volume relativistic QFT has a set of translation-invariant
+pure vacua \(\{\ket{\Omega_i}\}\) satisfying cluster decomposition inside each
+pure phase.  Assume also spacelike commutativity for the local observable
+algebra.  Then the vacuum-sector matrices
+\[
+  A_{ij}:=\bra{\Omega_i}\mathcal A(0)\ket{\Omega_j}
+\]
+of all local observables \(\mathcal A\) generate a commutative algebra.
+After decomposing this commutative algebra into its characters, local
+observables have no matrix elements between distinct pure sectors:
+\[
+  \bra{\Omega_i}\mathcal A(x)\ket{\Omega_j}=0,
+  \qquad i\ne j .
+\]
+\end{proposition}
+
+\begin{proof}
+For two local observables \(\mathcal A,\mathcal B\), place
+\(\mathcal A(x)\) and \(\mathcal B(y)\) at large spacelike separation.
+Inserting the vacuum-sector resolution in the large-distance channel and
+using clustering in each pure phase gives
+\[
+  \bra{\Omega_i}\mathcal A(x)\mathcal B(y)\ket{\Omega_j}
+  =
+  \sum_k A_{ik}B_{kj}+o(1)
+\]
+as the separation tends to infinity.  Reversing the order gives
+\(\sum_kB_{ik}A_{kj}+o(1)\).  Spacelike locality makes the two correlators
+equal before the limit, hence \(AB=BA\) for every pair of vacuum-sector
+matrices.  Passing to the pure-sector decomposition is precisely the
+decomposition of this commutative vacuum-sector algebra into characters.  In a
+character representation every element of the algebra acts by a scalar.  If a
+local observable had an off-diagonal matrix element between two distinct
+characters, multiplication by a second element of the algebra would give
+different left and right scalar actions unless the two characters were equal.
+Thus local observables preserve the phase label.  The statement is
+superselection by locality and clustering, not a finite-volume level splitting
+statement.
+\end{proof}
 
 \section{Spontaneous Symmetry Breaking}
 
@@ -901,6 +1015,59 @@ so the Goldstone boson becomes a pseudo-Goldstone boson with
 \]
 This is the prototype for the pion mass generated by small quark masses.
 
+\begin{proposition}[Masses in the \(U(1)\) Goldstone model]
+\label{prop:u1-goldstone-model-masses}
+With the mostly-plus kinetic convention used in this volume, define canonical
+small-fluctuation fields near the vacuum by
+\[
+  h=\sqrt2\,\rho,
+  \qquad
+  \pi=\sqrt2\,v\,\theta .
+\]
+If \(V'(v)=0\) and \(V''(v)>0\), then the radial excitation has
+\[
+  m_h^2=\frac12V''(v),
+\]
+while the angular excitation is massless when the \(U(1)\) symmetry is exact.
+For the explicit breaking
+\(\Delta V=-\epsilon\operatorname{Re}\phi\), the angular excitation at
+\(\theta=0\) has, to first order in \(\epsilon\),
+\[
+  m_\pi^2=\frac{\epsilon}{2v}+O(\epsilon^2).
+\]
+\end{proposition}
+
+\begin{proof}
+The quadratic kinetic terms are
+\[
+  -\partial_\mu\rho\,\partial^\mu\rho
+  -v^2\partial_\mu\theta\,\partial^\mu\theta
+  =
+  -\frac12\partial_\mu h\,\partial^\mu h
+  -\frac12\partial_\mu\pi\,\partial^\mu\pi .
+\]
+Expanding the symmetric potential gives
+\[
+  -V(v+\rho)
+  =
+  -V(v)-\frac12V''(v)\rho^2+O(\rho^3)
+  =
+  -V(v)-\frac14V''(v)h^2+O(h^3),
+\]
+which is the canonical mass term
+\(-\frac12m_h^2h^2\) with \(m_h^2=V''(v)/2\).  No term depending on a constant
+\(\theta\) is allowed by the exact shift symmetry, so \(\pi\) has no mass
+term.  The explicit breaking contributes
+\[
+  \epsilon v\cos\theta
+  =
+  \epsilon v-\frac{\epsilon v}{2}\theta^2+O(\theta^4)
+  =
+  \epsilon v-\frac{\epsilon}{4v}\pi^2+O(\pi^4),
+\]
+and therefore \(m_\pi^2=\epsilon/(2v)\) in canonical normalization.
+\end{proof}
+
 \section{Chiral Symmetry of Massless QCD}
 
 Let \(q_L^I=P_Lq^I\) and \(q_R^I=P_Rq^I\), \(I=1,\ldots,N_f\), be massless
@@ -988,6 +1155,30 @@ therefore
   \label{eq:qcd-chiral-breaking-pattern}
 \end{equation}
 Given this dynamical input, the number of Goldstone bosons is \(N_f^2-1\).
+
+\begin{definition}[Chiral Goldstone datum of QCD]
+\label{def:qcd-chiral-goldstone-datum}
+Conditional on the breaking pattern
+\eqref{eq:qcd-chiral-breaking-pattern}, the Goldstone target is
+\[
+  \frac{SU(N_f)_L\times SU(N_f)_R}{SU(N_f)_V}
+  \simeq SU(N_f).
+\]
+The coordinate \(U\in SU(N_f)\) is chosen with left flavor as the row index
+and right flavor as the column index.  With this index convention it
+parameterizes the condensate orientation relative to the reference condensate
+\(U=1\), and the left and right flavor groups act by
+\[
+  U\longmapsto LUR^{-1}.
+\]
+This is the index convention used by the mass spurion and the pion effective
+action below; it is the same physical orientation as the bilinear matrix
+\(A_{IJ}=\langle\bar q_{R,J}q_{L,I}\rangle\) above, written with the opposite
+choice of displayed row and column indices.
+The diagonal subgroup \(L=R\) fixes the reference orientation \(U=1\) and acts
+on the tangent space at \(U=1\) by the adjoint representation of
+\(\mathfrak{su}(N_f)\).
+\end{definition}
 
 At \(\theta=0\), the non-chiral flavor symmetry is constrained by the
 positivity structure of the Euclidean vectorlike theory.  The statement has a
@@ -1094,7 +1285,7 @@ With this convention, the leading two-derivative chiral Lagrangian is
 \begin{equation}
   \mathcal L_2
   =
-  \frac{f_\pi^2}{4}
+  -\frac{f_\pi^2}{4}
   \operatorname{Tr}
   \bigl(D_\mu U^\dagger D^\mu U\bigr),
   \label{eq:leading-chiral-lagrangian}
@@ -1107,8 +1298,24 @@ where the covariant derivative in external left and right flavor backgrounds
   \partial_\mu U-\ii\ell_\mu U+\ii U r_\mu .
   \label{eq:pion-external-covariant-derivative}
 \end{equation}
-Setting \(\ell_\mu=r_\mu=0\) gives the ordinary pion kinetic term and its
-derivative self-interactions.
+The minus sign in \eqref{eq:leading-chiral-lagrangian} is the mostly-plus
+metric convention used throughout this volume.  Expanding
+\eqref{eq:pion-matrix-field} at \(\ell_\mu=r_\mu=0\) gives
+\[
+  \operatorname{Tr}(\partial_\mu U^\dagger\partial^\mu U)
+  =
+  \frac2{f_\pi^2}\,
+  \partial_\mu\pi^a\partial^\mu\pi^a
+  +O(\pi^3),
+\]
+and hence the canonical leading kinetic term
+\[
+  \mathcal L_2
+  =
+  -\frac12\partial_\mu\pi^a\partial^\mu\pi^a+\cdots .
+\]
+The same expansion also fixes the normalization of the derivative
+self-interactions.
 
 \section{Soft-Pion Ward Identity and the Adler Zero}
 \label{sec:soft-pion-adler-zero}
