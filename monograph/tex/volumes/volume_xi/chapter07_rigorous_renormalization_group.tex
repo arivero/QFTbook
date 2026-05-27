@@ -431,6 +431,101 @@ arithmetic.  In an actual Wilsonian RG proof, the hard work is to bound
 \(\epsilon_N(V_N;A)\), \(\rho\), and \(L\) in the infinite-dimensional norm,
 not to solve the projected equation.
 
+\section{Constructive Fixed-Point Output Data}
+
+The most useful rigorous fixed-point examples do not merely produce a number
+called a critical coupling.  They produce a fixed interaction together with
+correlation and response functions whose remainders are controlled in a
+declared norm.  The following datum is the minimum output recorded in this
+monograph when using the recent long-range fermionic RG constructions as a
+benchmark.
+
+\begin{definition}[Constructive fermionic fixed-point output datum]
+\label{def:constructive-fermionic-fixed-point-output-datum}
+A constructive fermionic fixed-point output datum consists of:
+\begin{enumerate}
+  \item a finite ultraviolet cutoff and a Grassmann Gaussian covariance
+  \(C_\Lambda\), including its scaling law;
+  \item a Banach space \(\mathcal B_{\rm ker}\) of antisymmetric interaction
+  kernels, with a norm controlling decay, differentiability, and scale
+  weights;
+  \item an exact RG map \(\mathcal R\) on an open subset of
+  \(\mathcal B_{\rm ker}\), defined by Grassmann Gaussian integration,
+  localization of relevant coordinates, and rescaling;
+  \item a fixed interaction \(V_\ast\in\mathcal B_{\rm ker}\), satisfying
+  \(\mathcal R(V_\ast)=V_\ast\);
+  \item source coordinates for the field and for the density, with scaling
+  dimensions \([\psi]\) and \([J]\);
+  \item response functions constructed from the fixed-point generating
+  functional, together with scale-covariance estimates and explicit
+  remainders.
+\end{enumerate}
+The datum is fixed-cutoff constructive RG output.  A continuum-QFT theorem
+requires an additional removal or interpretation of the cutoff in the
+observable topology being claimed.
+\end{definition}
+
+\begin{quotedtheorem}[Long-range fermionic \(\psi^4_d\) fixed point]
+\label{qthm:long-range-fermionic-psi4-fixed-point}
+For the long-range fermionic \(\psi^4_d\) model in dimensions
+\(d=1,2,3\), with fractional kinetic term chosen so that the quartic
+interaction is weakly relevant, there is a small-parameter regime in which
+the constructive RG map has a nontrivial fixed interaction \(V_\ast\) in the
+Banach space of kernels.  With a fixed ultraviolet cutoff, the field and
+density response functions at \(V_\ast\) are constructed by convergent tree
+expansions.  The field exponent is the naive exponent, while the density
+exponent is anomalous and analytic in the small parameter.  The associated
+scaling operators have two-point functions that are scale covariant up to a
+stretched-exponential large-distance remainder controlled by the ultraviolet
+cutoff.
+\end{quotedtheorem}
+
+\begin{proof}[Status of the quoted theorem]
+This is the theorem-level output of Giuliani--Mastropietro--Rychkov and
+Giuliani--Mastropietro--Rychkov--Scola.  The proof is not a finite beta
+function calculation: it constructs \(V_\ast\) in an infinite-dimensional
+kernel space and controls the irrelevant tail by a convergent multiscale tree
+expansion.  The theorem is quoted here as a state-of-the-art benchmark for
+what a nonperturbative Wilsonian fixed-point statement must contain.  The
+monograph does not import its estimates as black-box input for scalar or
+gauge theories; it uses the theorem to calibrate the form of a complete RG
+claim.
+\end{proof}
+
+\begin{proposition}[Irrelevant tails are part of the theorem]
+\label{prop:irrelevant-tail-part-of-rg-theorem}
+Let \(\mathcal B=\mathbb R^m\oplus\mathcal K\), where \(\mathcal K\) is a
+Banach space of irrelevant kernels, and let \(P:\mathcal B\to\mathbb R^m\) be
+the coordinate projection.  A solution of the projected equation
+\[
+  P(\mathcal R(g,0)-(g,0))=0
+\]
+does not define a fixed point of \(\mathcal R\) unless the irrelevant residual
+\[
+  Q(\mathcal R(g,0)-(g,0))\in\mathcal K
+\]
+is either zero or is absorbed by a controlled graph \(K=h(g)\) satisfying the
+full fixed-point equation.
+\end{proposition}
+
+\begin{proof}
+Write \(Q=1-P\).  If \(V=(g,0)\) solves only the projected equation, then
+\[
+  \mathcal R(V)-V=(0,Q(\mathcal R(V)-V)).
+\]
+Thus \(V\) is a fixed point if and only if the displayed irrelevant residual
+vanishes.  More generally, a fixed point with the same local coordinates must
+have the form \(V_h=(g,h(g))\) and satisfy
+\[
+  P(\mathcal R(V_h)-V_h)=0,\qquad
+  Q(\mathcal R(V_h)-V_h)=0 .
+\]
+The second equation is the irrelevant-tail equation.  In a constructive RG
+proof it is solved by contraction, graph transform, or Newton validation in
+the norm of \(\mathcal K\); without such a bound, the projected equation is
+only a coordinate calculation.
+\end{proof}
+
 \section{Current Rigorous Fixed-Point Benchmarks}
 
 The preceding definition deliberately separates what has been proved from

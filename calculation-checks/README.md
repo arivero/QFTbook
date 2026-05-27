@@ -218,7 +218,8 @@ Current checks:
   rigorous-RG projection-truncation section, including a spurious projected
   zero with no full fixed point and the finite-dimensional
   complement-residual lift condition used in the Newton--Kantorovich
-  argument.
+  argument, plus the finite irrelevant-tail graph equation illustrating why
+  projected local coordinates alone do not define a Wilsonian fixed point.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

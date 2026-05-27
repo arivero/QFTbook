@@ -34,6 +34,12 @@ constructive RG developments.
   projection, and projected RG subspace.
 - `epsilon_N(V_N;A)`: complement residual after solving the projected RG
   fixed-point equation.
+- `B_ker`: Banach space of kernels in a constructive fermionic fixed-point
+  output datum.
+- `C_Lambda`, `V_*`: fixed-cutoff covariance and fixed interaction in the
+  long-range fermionic benchmark.
+- `[psi]`, `[J]`: field and density source scaling dimensions in the
+  fermionic fixed-point output theorem.
 - `I`: index set of microscopic regulators in a Wilsonian universality datum.
 - `Rec_{i,n}`: \(n\)-step reconstruction map from a tuned microscopic
   regulator to normalized long-distance observable data.
@@ -63,6 +69,17 @@ constructive RG developments.
 - Proves the corollary that a projected RG zero lifts to a true fixed point
   only when the complement residual and Newton--Kantorovich constants satisfy
   the full Banach-space contraction inequalities.
+- Defines the output data of a constructive fermionic RG fixed point:
+  fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
+  interaction, source dimensions, response functions, and remainders.
+- States the long-range fermionic \(\psi^4_d\) fixed-point theorem as a
+  quoted benchmark: a nontrivial fixed interaction, constructed response
+  functions, naive field exponent, anomalous analytic density exponent, and
+  stretched-exponential cutoff-controlled remainders.
+- Proves that irrelevant-kernel tails are part of the fixed-point theorem:
+  solving only the projected local-coordinate equation leaves an uncontrolled
+  \(Q(\mathcal R(V)-V)\) residual unless a graph or contraction solves the
+  full irrelevant equation.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, and
   infinite-dimensional tensor-RG fixed points with explicit contraction
@@ -85,4 +102,4 @@ remainder contraction.
 
 - `calculation-checks/rg_projection_checks.py`: exact rational check for the
   finite-dimensional projected-zero counterexample and complement-residual
-  lift calculation.
+  lift calculation, plus the finite irrelevant-tail graph equation.

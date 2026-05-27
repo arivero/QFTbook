@@ -106,9 +106,33 @@ def check_projected_zero_lift_condition():
     )
 
 
+def check_irrelevant_tail_residual():
+    # Model B = R^1 + K with a finite irrelevant tail K = R^3.
+    # The projected local equation vanishes at g=0, but the tail residual is
+    # nonzero unless the kernel coordinate is solved as part of the full fixed
+    # point equation.
+    local_residual = Fraction(0)
+    tail_residual = (Fraction(1, 2), Fraction(-1, 3), Fraction(1, 5))
+    assert_equal("projected local residual", local_residual, 0)
+    assert_true("irrelevant tail residual is nonzero", norm_l1(tail_residual[:2]) + abs(tail_residual[2]) > 0)
+
+    # If the irrelevant equation is linear K' = lambda K + c with |lambda|<1,
+    # the exact graph solution is K*=c/(1-lambda).  This is the finite algebra
+    # behind solving the irrelevant tail by contraction rather than dropping it.
+    lambdas = (Fraction(1, 2), Fraction(1, 3), Fraction(-1, 4))
+    graph_solution = tuple(c / (1 - lam) for c, lam in zip(tail_residual, lambdas))
+    residual_after_graph = tuple(lam * k + c - k for k, c, lam in zip(graph_solution, tail_residual, lambdas))
+    assert_equal(
+        "irrelevant graph residual",
+        residual_after_graph,
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+
+
 def main():
     check_spurious_projected_zero()
     check_projected_zero_lift_condition()
+    check_irrelevant_tail_residual()
     print("All RG projection checks passed.")
 
 
