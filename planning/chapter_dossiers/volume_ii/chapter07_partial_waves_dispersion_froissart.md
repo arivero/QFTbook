@@ -185,13 +185,16 @@ hypotheses:
     finite-subtraction representation from locality, spectral support, LSZ,
     and Jost--Lehmann--Dyson/Bros--Epstein--Glaser machinery.
 10d. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
-    tube analyticity of four-point Wightman functions; local commutativity at
-    Jost configurations plus edge-of-the-wedge enlargement; the
+    primitive tube analyticity of four-point Wightman functions; local
+    commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
     Jost--Lehmann--Dyson representation for the retarded commutator matrix
     element; the Bros--Epstein--Glaser enlargement to the Lehmann--Martin
     domain; and the LSZ limiting argument transferring the domain and
     tempered-discontinuity bounds to the on-shell amplitude after pole
-    separation.  These are to be proved in the monograph, not left as
+    separation.  The first two QFT-specific steps are now proved in Volume II,
+    Chapter 6 as the primitive Wightman tube-domain theorem and Jost-edge
+    gluing theorem.  The remaining retarded-commutator, Lehmann--Martin, and
+    LSZ-transfer steps are still to be proved in the monograph, not left as
     permanent citations.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
@@ -374,3 +377,9 @@ hypotheses:
   marks the Jost--Lehmann--Dyson/Bros--Epstein--Glaser/Jin--Martin domain
   construction as a proof obligation for this chapter rather than as a
   permanent quoted boundary.
+- 2026-05-27 issue #495 domain pass: Chapter 6 now proves the primitive
+  Wightman tube-domain theorem and Jost-edge gluing, so this chapter's domain
+  ledger has been refined.  What remains for full Jin--Martin closure is the
+  self-contained retarded-commutator/Jost--Lehmann--Dyson representation, the
+  Lehmann--Martin fixed-\(t\) enlargement, and the LSZ transfer of the domain
+  and tempered cut-discontinuity bounds to the on-shell amplitude.
