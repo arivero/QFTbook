@@ -296,11 +296,12 @@ Current absorption:
   continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
   equations for both \(V_{-b/2}\) and \(V_{-1/(2b)}\), ordinary and dual
   one-screening coefficients, hypergeometric connection formulas,
-  level-two Virasoro block coefficients, the elliptic nome interface to
-  Zamolodchikov recursion, and boundary Liouville states with FZZT
-  one-point functions and ZZ finite differences.  The finite convention
-  algebra is checked by `calculation-checks/liouville_bpz_checks.py` and the
-  Liouville boundary hyperbolic identities are checked by
+  Virasoro block Gram-projector coefficients through level three, the
+  elliptic nome interface to Zamolodchikov recursion, and boundary Liouville
+  states with FZZT one-point functions and ZZ finite differences.  The finite
+  convention algebra is checked by
+  `calculation-checks/liouville_bpz_checks.py` and the Liouville boundary
+  hyperbolic identities are checked by
   `calculation-checks/bcft_cardy_checks.py`.
 - Volume V, Chapter 14 develops the 2D BCFT appendix material as a
   self-contained boundary-state theory: conformal boundary data, Ishibashi

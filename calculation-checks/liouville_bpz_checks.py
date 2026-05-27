@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for the Liouville level-two BPZ null vector."""
+"""Finite algebra checks for Liouville BPZ and Virasoro-block conventions."""
 
 from __future__ import annotations
 
@@ -457,6 +457,85 @@ def power_one_plus_truncated(
     return result
 
 
+def determinant_3_by_3(matrix: list[list[Fraction]]) -> Fraction:
+    return (
+        matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+        - matrix[0][1] * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+        + matrix[0][2] * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0])
+    )
+
+
+def solve_3_by_3(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+    determinant = determinant_3_by_3(matrix)
+    if determinant == 0:
+        raise AssertionError("singular 3 by 3 matrix in sample block check")
+    solution: list[Fraction] = []
+    for column in range(3):
+        replaced = [row[:] for row in matrix]
+        for row in range(3):
+            replaced[row][column] = vector[row]
+        solution.append(determinant_3_by_3(replaced) / determinant)
+    return solution
+
+
+a3_block = h_sample + 3 * h3_sample - h4_sample
+b3_block = h_sample + 3 * h2_sample - h1_sample
+a21_block = a2_block * (a1_block + 2)
+b21_block = b2_block * (b1_block + 2)
+a111_block = a1_block * (a1_block + 1) * (a1_block + 2)
+b111_block = b1_block * (b1_block + 1) * (b1_block + 2)
+
+gram_33 = 6 * h_sample + 2 * c_sample
+gram_321 = 10 * h_sample
+gram_3111 = 24 * h_sample
+gram_2121 = h_sample * (c_sample + 8 * h_sample + 8)
+gram_21111 = 12 * h_sample * (3 * h_sample + 1)
+gram_111111 = 24 * h_sample * (h_sample + 1) * (2 * h_sample + 1)
+
+level_three_gram = [
+    [gram_33, gram_321, gram_3111],
+    [gram_321, gram_2121, gram_21111],
+    [gram_3111, gram_21111, gram_111111],
+]
+level_three_det = determinant_3_by_3(level_three_gram)
+level_three_det_formula = (
+    48
+    * h_sample
+    * h_sample
+    * (16 * h_sample * h_sample + 2 * (c_sample - 5) * h_sample + c_sample)
+    * (3 * h_sample * h_sample + (c_sample - 7) * h_sample + c_sample + 2)
+)
+if level_three_det != level_three_det_formula:
+    raise AssertionError(
+        "level-three Gram determinant mismatch: "
+        f"{level_three_det} != {level_three_det_formula}"
+    )
+
+level_three_right = [a3_block, a21_block, a111_block]
+level_three_left = [b3_block, b21_block, b111_block]
+level_three_solution = solve_3_by_3(level_three_gram, level_three_right)
+level_three_from_projector = sum(
+    level_three_left[index] * level_three_solution[index]
+    for index in range(3)
+)
+expected_level_three_sample = Fraction(1382428354989, 471923200000)
+if level_three_from_projector != expected_level_three_sample:
+    raise AssertionError(
+        "level-three Virasoro-block coefficient mismatch: "
+        f"{level_three_from_projector} != {expected_level_three_sample}"
+    )
+
+global_level_three = b111_block * a111_block / (
+    24 * h_sample * (h_sample + 1) * (2 * h_sample + 1)
+)
+expected_global_level_three = Fraction(21274913, 17408000)
+if global_level_three != expected_global_level_three:
+    raise AssertionError(
+        f"level-three global block denominator mismatch: "
+        f"{global_level_three} != {expected_global_level_three}"
+    )
+
+
 # Elliptic-nome conversion.  The theta identity
 # lambda(q)=theta_2(q)^4/theta_3(q)^4 gives
 # lambda(q)=16 q (1 - 8 q + 44 q^2 + O(q^3)).
@@ -500,6 +579,6 @@ if raw_q_block[2] != g2_formula:
 
 print(
     "All Liouville BPZ, dual-BPZ, screening, dual-screening, "
-    "Virasoro-block, connection-matrix, elliptic-q, and DOZZ-shift checks "
-    "passed."
+    "Virasoro-block through level three, connection-matrix, elliptic-q, "
+    "and DOZZ-shift checks passed."
 )

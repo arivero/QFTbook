@@ -27,7 +27,9 @@ boundaries rather than importing the appendix exposition.
 - `h`: internal chiral conformal weight in a Virasoro Verma module.
 - `G_2`: level-two Virasoro Gram/Shapovalov matrix in the
   `(L_-2|h>, L_-1^2|h>)` basis.
-- `f_1`, `f_2`: first two normalized Virasoro four-point block
+- `G_3`: level-three Virasoro Gram/Shapovalov matrix in the
+  `(L_-3|h>, L_-2 L_-1|h>, L_-1^3|h>)` basis.
+- `f_1`, `f_2`, `f_3`: first normalized Virasoro four-point block
   coefficients in the `z`-channel expansion.
 - `q(z)`: elliptic nome of the four-punctured sphere.
 - `lambda(q)`: modular lambda function `theta_2(q)^4/theta_3(q)^4`.
@@ -70,8 +72,12 @@ boundaries rather than importing the appendix exposition.
 - States the continuous Liouville four-point conformal-block decomposition as
   a direct integral over `P in [0,infty)`.
 - Defines normalized ordinary Virasoro four-point blocks with explicit
-  nondegeneracy hypotheses through level two and derives `f_1` and `f_2`
-  from the level-one and level-two Gram matrices.
+  nondegeneracy hypotheses through the level under discussion; derives
+  `f_1`, `f_2`, and `f_3` from the level-one, level-two, and level-three
+  Gram projectors.
+- Displays the level-three Gram matrix, factors its determinant into the
+  level-two Kac factor and the new level-three factor, and proves the
+  large-`c` reduction of `f_3` to the global `SL_2` block coefficient.
 - Records where the Gram-matrix formula fails without modification:
   degenerate Kac-determinant parameters require null quotients,
   meromorphic limits, or logarithmic extensions.
@@ -140,9 +146,10 @@ boundaries rather than importing the appendix exposition.
 - The same script now also checks the affine parameter algebra in the
   hypergeometric connection matrix: the `z=1` exponent gap and the gamma
   arguments `C-A`, `C-B`, and `A+B-C`.
-- The same script checks the level-two Virasoro Gram determinant, the
-  level-one and level-two ordinary block coefficients, and the large-`c`
-  global-block limit in exact rational arithmetic.
+- The same script checks the level-two and level-three Virasoro Gram
+  determinants, the level-one, level-two, and level-three ordinary block
+  coefficients, and the large-`c` global-block limits in exact rational
+  arithmetic.
 - The same script checks the modular-lambda expansion through
   `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
   raw elliptic \(q\)-coefficients `g_1` and `g_2`.
@@ -153,9 +160,10 @@ boundaries rather than importing the appendix exposition.
 ## Remaining Obligations
 
 - Extend the elliptic-recursion discussion by adding the full
-  Zamolodchikov residue-product normalization and higher-order recursive
-  coefficients after the chiral vertex-operator normalization ledger is
-  fixed.
+  Zamolodchikov residue-product normalization after the chiral
+  vertex-operator normalization ledger is fixed.  The low-level Gram
+  projector data now run through level three, but the all-level residue
+  product remains a theorem-boundary normalization problem.
 - Extend the Liouville boundary discussion to boundary two-point functions,
   boundary-condition-changing operators, and annulus spectral-density
   positivity only after the nonrational sewing framework is fixed; do not
@@ -193,6 +201,10 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 Virasoro-block pass: added ordinary conformal-block
   coefficients through level two from Gram matrices, including
   nondegeneracy hypotheses and exact rational calculation checks.
+- 2026-05-27 Virasoro-block level-three pass: extended the ordinary
+  conformal-block derivation to the level-three Shapovalov matrix, determinant
+  factorization, finite projector formula for `f_3`, and exact rational
+  checks of the sample coefficient and global-block limit.
 - 2026-05-26 elliptic-recursion coordinate pass: added the elliptic nome,
   modular lambda expansion, first `z`-to-`q` block-coefficient conversion,
   and a theorem boundary for the full Zamolodchikov recursion with exact

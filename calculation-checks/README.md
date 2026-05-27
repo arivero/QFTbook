@@ -235,7 +235,8 @@ Current checks:
   including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
   dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
-  level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
+  Virasoro block coefficients through level three with Gram determinant
+  factorization and global-block limits, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).
 - `superconformal_algebra_checks.py`: exact rational checks for the
   two-dimensional superconformal-algebra chapter, including the
