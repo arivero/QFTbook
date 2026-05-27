@@ -332,11 +332,12 @@ Current checks:
   isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
 - `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
-  matrices, central-charge action and symplecticity, the minimal-curve
-  discriminant, the Picard--Fuchs equation, the electric large-\(u\)
-  asymptotic, logarithmic dual-period growth, linear monopole-period
-  vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas cusp scaling
-  dimensions.
+  matrices, central-charge action and symplecticity, the rigid
+  special-K\"ahler metric identity \(g=(2\pi)^{-1}\operatorname{Im}\tau\),
+  the minimal-curve discriminant, the Picard--Fuchs equation, the electric
+  large-\(u\) asymptotic, logarithmic dual-period growth, linear
+  monopole-period vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas
+  cusp scaling dimensions.
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking

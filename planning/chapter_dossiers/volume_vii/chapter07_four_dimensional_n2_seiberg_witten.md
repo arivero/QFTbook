@@ -15,6 +15,8 @@ Wilsonian dynamics are available for later use.
   coordinates.
 - `a^I`, `a_{D,I}`, `F(a)`, `tau_IJ`: special coordinates, dual periods,
   prepotential, and Abelian coupling matrix.
+- `K_F`, `g_{I bar J}`: rigid special-Kahler potential and scalar metric
+  determined by the same prepotential in the local Abelian Wilsonian action.
 - `gamma=(n_m^I,n_{e,I})`, `Z_gamma`: electromagnetic charge and central
   charge.
 - `Sigma_u`, `lambda_SW`, `A_I`, `B^I`: Seiberg-Witten curve, differential,
@@ -55,6 +57,11 @@ Wilsonian dynamics are available for later use.
   convention at the first use of `N=2` gauge dynamics.
 - Defines special coordinates, the prepotential, electric-magnetic duality,
   and the BPS central charge.
+- Derives the rigid special-Kahler metric identity
+  `g_{I bar J}=(2 pi)^(-1) Im tau_IJ` from
+  `K_F=(2 pi)^(-1) Im(bar a^I F_I)`, and records how linear and real
+  quadratic prepotential shifts affect only Kahler transformations or
+  theta-angle coordinates.
 - Proves local existence of the prepotential from symmetry of the period
   coupling.
 - Defines the argument-status labels used for Seiberg-Witten reasoning and
@@ -116,11 +123,12 @@ Wilsonian dynamics are available for later use.
 
 - `calculation-checks/sw_su2_periods.py` verifies the monodromy matrices, the
   finite-monodromy product, Picard-Lefschetz central-charge action and
-  symplecticity, the minimal-curve discriminant, the Picard-Fuchs equation for
-  the displayed hypergeometric periods, the large-\(u\) asymptotic of
-  \(a(u)\), logarithmic growth of \(a_D(u)\), linear vanishing of \(a_D\) at
-  the monopole point, and the rank-one Argyres-Douglas cusp scaling
-  dimensions.
+  symplecticity, the rigid special-Kahler metric identity and real
+  theta-shift invariance, the minimal-curve discriminant, the Picard-Fuchs
+  equation for the displayed hypergeometric periods, the large-\(u\)
+  asymptotic of \(a(u)\), logarithmic growth of \(a_D(u)\), linear vanishing
+  of \(a_D\) at the monopole point, and the rank-one Argyres-Douglas cusp
+  scaling dimensions.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
   dimension count, trace-delta to half-trace instanton-action conversion,
   the pure `SU(2)` one-instanton Nekrasov fixed-point sum, the first
