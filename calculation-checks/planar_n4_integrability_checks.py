@@ -425,6 +425,81 @@ def check_zhukovsky_map_and_energy() -> None:
             assert_close("alternate stringbook energy formula", energy_from_difference, energy)
 
 
+def check_zhukovsky_crossing_path_monodromy() -> None:
+    """Track square-root branches around shifted Zhukovsky crossing endpoints."""
+
+    coupling = 1.0
+    base_u = 3.1 + 0j
+    radius = 0.31
+
+    def segment(start: complex, end: complex, steps: int) -> list[complex]:
+        return [start + (end - start) * index / steps for index in range(1, steps + 1)]
+
+    def endpoint_loop(center: complex) -> list[complex]:
+        start = center + radius
+        path = [base_u]
+        path.extend(segment(base_u, start, 80))
+        path.extend(
+            center + radius * cmath.exp(2j * math.pi * index / 180)
+            for index in range(1, 181)
+        )
+        path.extend(segment(start, base_u, 80))
+        return path
+
+    lower_endpoint = 2 * coupling - 0.5j
+    upper_endpoint = 2 * coupling + 0.5j
+    lower_loop = endpoint_loop(lower_endpoint)
+    upper_loop = endpoint_loop(upper_endpoint)
+    combined_loop = lower_loop + upper_loop[1:]
+
+    def continued_x(path: list[complex], shift: complex) -> complex:
+        z_initial = (path[0] + shift) / coupling
+        x_initial = zhukovsky_outside(path[0] + shift, coupling)
+        root = 2 * x_initial - z_initial
+        for u_value in path[1:]:
+            z_value = (u_value + shift) / coupling
+            candidate = cmath.sqrt(z_value * z_value - 4)
+            if abs(candidate - root) > abs(-candidate - root):
+                candidate = -candidate
+            root = candidate
+        z_final = (path[-1] + shift) / coupling
+        return 0.5 * (z_final + root)
+
+    x_plus = zhukovsky_outside(base_u + 0.5j, coupling)
+    x_minus = zhukovsky_outside(base_u - 0.5j, coupling)
+
+    lower_plus = continued_x(lower_loop, 0.5j)
+    lower_minus = continued_x(lower_loop, -0.5j)
+    assert_close("lower crossing loop flips x+", lower_plus, 1 / x_plus, tol=2.0e-8)
+    assert_close("lower crossing loop leaves x-", lower_minus, x_minus, tol=2.0e-8)
+
+    upper_plus = continued_x(upper_loop, 0.5j)
+    upper_minus = continued_x(upper_loop, -0.5j)
+    assert_close("upper crossing loop leaves x+", upper_plus, x_plus, tol=2.0e-8)
+    assert_close("upper crossing loop flips x-", upper_minus, 1 / x_minus, tol=2.0e-8)
+
+    crossed_plus = continued_x(combined_loop, 0.5j)
+    crossed_minus = continued_x(combined_loop, -0.5j)
+    assert_close("combined crossing path flips x+", crossed_plus, 1 / x_plus, tol=2.0e-8)
+    assert_close("combined crossing path flips x-", crossed_minus, 1 / x_minus, tol=2.0e-8)
+    assert_close(
+        "crossing path preserves xpm shortening",
+        crossed_plus + 1 / crossed_plus - crossed_minus - 1 / crossed_minus,
+        1j / coupling,
+        tol=2.0e-8,
+    )
+    assert_close(
+        "crossing path inverts momentum ratio",
+        crossed_plus / crossed_minus,
+        x_minus / x_plus,
+        tol=2.0e-8,
+    )
+
+    energy = 1 + 2j * coupling * (1 / x_plus - 1 / x_minus)
+    crossed_energy = 1 + 2j * coupling * (1 / crossed_plus - 1 / crossed_minus)
+    assert_close("crossing path flips continued energy", crossed_energy, -energy, tol=2.0e-8)
+
+
 def check_crossing_rhs_is_sheet_sensitive() -> None:
     for coupling, momentum_1, momentum_2 in (
         (0.08, 0.45, 1.35),
@@ -3636,6 +3711,7 @@ def main() -> None:
     check_twist_two_qsc_baxter_family()
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
+    check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()

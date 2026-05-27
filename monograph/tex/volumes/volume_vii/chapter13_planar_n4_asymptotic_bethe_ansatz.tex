@@ -278,6 +278,82 @@ sheet.  Applying the path twice generally lands on a different sheet of the
 scalar factor even though the projected \(x^\pm\)-values have returned.
 \end{warning}
 
+\begin{definition}[Crossing path for the Zhukovsky variables]
+\label{def:planar-n4-crossing-path}
+Let \(x(u)\) be the physical Zhukovsky branch, \(x(u)\sim u/g\) at infinity,
+and set \(x^\pm(u)=x(u\pm\ii/2)\).  A crossing path for the first magnon is
+a path \(\gamma_{\rm cr}\) on the \(u\)-surface, starting at a physical point
+and ending above the same projected \(u\)-value on a crossed sheet, with the
+following topological data:
+\[
+  w_{\gamma_{\rm cr}}\!\left(2g-\frac{\ii}{2}\right)=1,
+  \qquad
+  w_{\gamma_{\rm cr}}\!\left(2g+\frac{\ii}{2}\right)=1
+  \pmod 2,
+\]
+and with even winding around the other two shifted endpoints in this
+right-endpoint convention.  Equivalently, the lower shifted cut of \(x^+\)
+and the upper shifted cut of \(x^-\) are each crossed once.  When this path
+is used in the DHM contour formula below, it is also required to avoid the
+Cauchy and Gamma-function singularities except for the controlled residue
+crossings described in
+Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}.
+\end{definition}
+
+\begin{proposition}[Zhukovsky monodromy along the crossing path]
+\label{prop:planar-n4-zhukovsky-crossing-monodromy}
+Analytic continuation of \(x^\pm(u)\) along a path with the winding data of
+Definition~\ref{def:planar-n4-crossing-path} gives
+\[
+  \bar x^\pm(u)=\frac{1}{x^\pm(u)} .
+\]
+Consequently,
+\[
+  \frac{\bar x^+}{\bar x^-}
+  =
+  \left(\frac{x^+}{x^-}\right)^{-1},
+  \qquad
+  H(\bar x^\pm)=-H(x^\pm),
+\]
+where \(H(x^\pm)=1+2\ii g(1/x^+-1/x^-)\) is the physical-sheet energy
+continued as a meromorphic function of \(x^\pm\).
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  x(u)=\frac12\left(\frac{u}{g}
+  +\sqrt{\left(\frac{u}{g}\right)^2-4}\right)
+\]
+on the physical branch.  Encircling either endpoint of the short cut
+\([-2g,2g]\) changes the sign of the square root and therefore sends
+\[
+  x(u)\longmapsto
+  \frac12\left(\frac{u}{g}
+  -\sqrt{\left(\frac{u}{g}\right)^2-4}\right)
+  =
+  \frac1{x(u)} .
+\]
+For \(x^+(u)=x(u+\ii/2)\), the relevant shifted cut has endpoint
+\(2g-\ii/2\); for \(x^-(u)=x(u-\ii/2)\), it has endpoint \(2g+\ii/2\).
+The mod-two winding data in Definition~\ref{def:planar-n4-crossing-path}
+therefore inverts both \(x^+\) and \(x^-\).  The momentum ratio is then
+inverted immediately.  Finally, using the stringbook energy identity
+\[
+  H(x^\pm)=-1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g(1/x^+-1/x^-)
+\]
+on the physical sheet, the crossed value is
+\[
+  H(\bar x^\pm)
+  =
+  1+2\ii g(x^+-x^-)
+  =
+  -H(x^\pm).
+\]
+\end{proof}
+
 \section{Two-Body S-Matrix}
 
 The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor,

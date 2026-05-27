@@ -14,6 +14,8 @@ the monograph's proof-boundary language.
 - `P,K,H`: central charges in the centrally extended residual algebra.
 - `x^pm`: Zhukovsky variables.
 - `x(u)`: physical-branch Zhukovsky map with short cut `[-2g,2g]`.
+- `gamma_cr`: right-endpoint crossing path on the shifted Zhukovsky
+  `u`-surface.
 - `q_r`: conserved magnon charges entering the dressing phase.
 - `sigma`, `theta`: dressing factor and phase.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
@@ -66,6 +68,11 @@ the monograph's proof-boundary language.
 - Corrects and proves the Zhukovsky energy formula
   `H=1+2ig(1/x^+-1/x^-)`, including the physical branch and cut
   reciprocal relation.
+- Defines the right-endpoint crossing path on the shifted Zhukovsky
+  `u`-surface, with odd mod-two winding around `2g-i/2` for `x^+` and
+  `2g+i/2` for `x^-`, and proves that this path sends
+  `x^pm -> 1/x^pm`, inverts the momentum ratio, and flips the analytically
+  continued energy.
 - Separates the symmetry-fixed matrix part of the S-matrix from the scalar
   dressing factor, including the ten-amplitude one-copy intertwiner form.
 - Adds the full stringbook `su(2|2)_c` ten-amplitude formulas in the dynamic
@@ -194,6 +201,11 @@ crossed Zhukovsky sheets.
 - The same script checks the Zhukovsky defining equation, large-`u`
   expansion, cut reciprocal boundary values, `x^pm` shortening relation, and
   corrected energy formula.
+- It tracks the square-root branch of `x(u+i/2)` and `x(u-i/2)` around the
+  shifted crossing endpoints, checking that the lower loop flips only `x^+`,
+  the upper loop flips only `x^-`, and the combined crossing path flips both
+  variables while preserving shortening, inverting momentum, and flipping the
+  continued energy.
 - It also checks the stringbook-orientation crossing RHS against its exact
   reciprocal convention and verifies, both on physical-branch samples and on
   an algebraic counterexample, that it is not invariant under a naive

@@ -1538,3 +1538,37 @@ Calculation checks added:
   the one-residue signs, proves the double-residue contact has the displayed
   sign, verifies restoration of the outside branch, and confirms that the
   double crossing fails if the contact term is omitted.
+
+## Continuation XLIX: Shifted-Cut Crossing Path
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Promoted the earlier warning about sheet data in crossing into an explicit
+  right-endpoint crossing-path definition on the shifted Zhukovsky
+  \(u\)-surface.
+- The path data now states the mod-two winding around `2g-i/2`, which flips
+  `x^+`, and around `2g+i/2`, which flips `x^-`, while requiring the DHM
+  contour singularities to be avoided except for the controlled residue
+  crossings already described.
+- Added a proved Zhukovsky monodromy proposition: along such a crossing path,
+  `x^pm -> 1/x^pm`, the momentum ratio is inverted, and the meromorphically
+  continued stringbook energy changes sign.
+- Updated the crosswalk to narrow the remaining crossing floor work to the
+  scalar-factor monodromy, pole-avoidance hypotheses, and remaining
+  stringbook notebook crossing experiments.
+
+Calculation checks added:
+
+- `check_zhukovsky_crossing_path_monodromy()` numerically tracks the
+  continuous square-root branch of `x(u+i/2)` and `x(u-i/2)` around the
+  shifted right endpoints.  It verifies that the lower endpoint flips only
+  `x^+`, the upper endpoint flips only `x^-`, and the combined path flips
+  both variables while preserving shortening, inverting momentum, and flipping
+  the continued energy.
