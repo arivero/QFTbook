@@ -2301,6 +2301,223 @@ def check_mirror_tba_node_source_inventory() -> None:
         )
 
 
+def check_mirror_fused_kernel_formula_crosswalk() -> None:
+    """Check finite fusion arithmetic in the stringbook mirror-TBA kernels."""
+
+    def shift_labels(length: int) -> list[int]:
+        """Return the integer labels 2r for r in R_length."""
+
+        return [-(length - 1) + 2 * index for index in range(length)]
+
+    def string_shifts(length: int) -> list[float]:
+        return [label / 2 for label in shift_labels(length)]
+
+    def x_u(shift: float) -> complex:
+        return 1.6 + 0.17 * shift + 0.03 * shift * shift + 0.11j * (shift + 2)
+
+    def x_v(shift: float) -> complex:
+        return -0.7 + 0.13 * shift - 0.02 * shift * shift + 0.09j * (shift - 1)
+
+    def bullet_bullet_rational(
+        left_length: int,
+        right_length: int,
+        left_x,
+        right_x,
+    ) -> complex:
+        product = 1 + 0j
+        for r_shift in string_shifts(left_length):
+            for s_shift in string_shifts(right_length):
+                left_plus = left_x(2 * r_shift + 1)
+                left_minus = left_x(2 * r_shift - 1)
+                right_plus = right_x(2 * s_shift + 1)
+                right_minus = right_x(2 * s_shift - 1)
+                product *= (right_minus - left_plus) / (right_plus - left_minus)
+                product *= (1 - 1 / (right_plus * left_minus)) / (
+                    1 - 1 / (right_minus * left_plus)
+                )
+        return product
+
+    def mock_chi(left_value: complex, right_value: complex) -> complex:
+        return left_value * right_value * (left_value - right_value)
+
+    def dressing_endpoint(
+        left_length: int,
+        right_length: int,
+        left_x,
+        right_x,
+    ) -> complex:
+        return 2j * (
+            mock_chi(left_x(left_length), right_x(right_length))
+            + mock_chi(left_x(-left_length), right_x(-right_length))
+            - mock_chi(left_x(-left_length), right_x(right_length))
+            - mock_chi(left_x(left_length), right_x(-right_length))
+        )
+
+    for left_length in range(1, 5):
+        for right_length in range(1, 5):
+            forward = bullet_bullet_rational(
+                left_length, right_length, x_u, x_v
+            )
+            backward = bullet_bullet_rational(
+                right_length, left_length, x_v, x_u
+            )
+            assert_close(
+                "mirror bullet-bullet rational fused unitarity",
+                forward * backward,
+                1,
+                tol=2.0e-12,
+            )
+            assert_close(
+                "mirror bullet-bullet dressing endpoint antisymmetry",
+                dressing_endpoint(left_length, right_length, x_u, x_v)
+                + dressing_endpoint(right_length, left_length, x_v, x_u),
+                0,
+                tol=2.0e-12,
+            )
+
+    def y_plus_bullet(y_value: complex, x_plus: complex, x_minus: complex) -> complex:
+        return (y_value - x_plus) / (y_value - x_minus) * cmath.sqrt(x_minus / x_plus)
+
+    def y_minus_bullet(y_value: complex, x_plus: complex, x_minus: complex) -> complex:
+        return (1 / y_value - x_plus) / (1 / y_value - x_minus) * cmath.sqrt(
+            x_minus / x_plus
+        )
+
+    def y_sqrt_endpoint_exponents(length: int) -> Counter[int]:
+        return Counter({-length: Fraction(1, 2), length: Fraction(-1, 2)})
+
+    y_sheet_value = 0.8 + 0.6j
+    for length in range(1, 5):
+        x_plus = x_v(length)
+        x_minus = x_v(-length)
+        y_minus_phase = y_minus_bullet(y_sheet_value, x_plus, x_minus)
+        assert_close(
+            "mirror y-minus equals y-plus on inverse sheet",
+            y_minus_phase,
+            y_plus_bullet(1 / y_sheet_value, x_plus, x_minus),
+        )
+        if y_sqrt_endpoint_exponents(length) != Counter(
+            {-length: Fraction(1, 2), length: Fraction(-1, 2)}
+        ):
+            raise AssertionError("mirror y-bullet square-root endpoint package")
+
+    def v_bullet_phase(
+        v_length: int,
+        bullet_length: int,
+        v_x,
+        bullet_x,
+    ) -> complex:
+        product = 1 + 0j
+        for sigma in (-1, 1):
+            for r_shift in string_shifts(v_length):
+                for s_shift in string_shifts(bullet_length):
+                    v_endpoint = v_x(2 * r_shift + sigma)
+                    bullet_plus = bullet_x(2 * s_shift + 1)
+                    bullet_minus = bullet_x(2 * s_shift - 1)
+                    product *= (v_endpoint - bullet_plus) / (
+                        v_endpoint - bullet_minus
+                    )
+                    product *= cmath.sqrt(bullet_minus / bullet_plus)
+        return product
+
+    for v_length in range(1, 4):
+        for bullet_length in range(1, 4):
+            phase = v_bullet_phase(v_length, bullet_length, x_u, x_v)
+            assert_close(
+                "mirror v-bullet reciprocal orientation",
+                phase * (1 / phase),
+                1,
+                tol=2.0e-12,
+            )
+
+            sqrt_exponents: Counter[int] = Counter()
+            for _sigma in (-1, 1):
+                for _r_label in shift_labels(v_length):
+                    for s_label in shift_labels(bullet_length):
+                        sqrt_exponents[s_label - 1] += Fraction(1, 2)
+                        sqrt_exponents[s_label + 1] -= Fraction(1, 2)
+            expected_sqrt_exponents = Counter(
+                {-bullet_length: v_length, bullet_length: -v_length}
+            )
+            if sqrt_exponents != expected_sqrt_exponents:
+                raise AssertionError(
+                    "mirror v-bullet square-root factors do not telescope to endpoints"
+                )
+
+    def raw_auxiliary_derivative(
+        left_length: int, right_length: int, z_value: complex
+    ) -> complex:
+        total = 0j
+        for r_shift in string_shifts(left_length):
+            for s_shift in string_shifts(right_length):
+                upper = r_shift - s_shift + 1
+                lower = r_shift - s_shift - 1
+                total += 1 / (z_value + 1j * lower) - 1 / (z_value + 1j * upper)
+        return total
+
+    def one_index_derivative(index: int, z_value: complex) -> complex:
+        if index == 0:
+            return 0j
+        return 1 / (z_value - 0.5j * index) - 1 / (z_value + 0.5j * index)
+
+    def closed_auxiliary_derivative(
+        left_length: int, right_length: int, z_value: complex
+    ) -> complex:
+        value = one_index_derivative(left_length + right_length, z_value)
+        value += one_index_derivative(abs(left_length - right_length), z_value)
+        for offset in range(1, min(left_length, right_length)):
+            value += 2 * one_index_derivative(
+                abs(left_length - right_length) + 2 * offset,
+                z_value,
+            )
+        return value
+
+    def raw_auxiliary_pole_multiplicities(
+        left_length: int, right_length: int
+    ) -> Counter[Fraction]:
+        multiplicities: Counter[Fraction] = Counter()
+        for r_label in shift_labels(left_length):
+            for s_label in shift_labels(right_length):
+                difference = Fraction(r_label - s_label, 2)
+                multiplicities[difference - 1] += 1
+                multiplicities[difference + 1] -= 1
+        return multiplicities
+
+    def closed_auxiliary_pole_multiplicities(
+        left_length: int, right_length: int
+    ) -> Counter[Fraction]:
+        multiplicities: Counter[Fraction] = Counter()
+
+        def add_index(index: int, coefficient: int = 1) -> None:
+            if index == 0:
+                return
+            half_index = Fraction(index, 2)
+            multiplicities[-half_index] += coefficient
+            multiplicities[half_index] -= coefficient
+
+        add_index(left_length + right_length)
+        add_index(abs(left_length - right_length))
+        for offset in range(1, min(left_length, right_length)):
+            add_index(abs(left_length - right_length) + 2 * offset, coefficient=2)
+        return multiplicities
+
+    for left_length in range(1, 7):
+        for right_length in range(1, 7):
+            if raw_auxiliary_pole_multiplicities(
+                left_length, right_length
+            ) != closed_auxiliary_pole_multiplicities(left_length, right_length):
+                raise AssertionError(
+                    "mirror auxiliary fused kernel pole multiplicity crosswalk"
+                )
+            z_value = 0.37 + 0.21j
+            assert_close(
+                "mirror auxiliary fused kernel double-sum crosswalk",
+                raw_auxiliary_derivative(left_length, right_length, z_value),
+                closed_auxiliary_derivative(left_length, right_length, z_value),
+                tol=2.0e-12,
+            )
+
+
 def check_excited_tba_contour_deformation_residues() -> None:
     """Check the source and energy signs from excited-state contour residues."""
 
@@ -4232,6 +4449,7 @@ def main() -> None:
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
     check_mirror_tba_node_source_inventory()
+    check_mirror_fused_kernel_formula_crosswalk()
     check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
     check_y_system_shift_source_factor()

@@ -1738,3 +1738,40 @@ Calculation checks added:
   convention, target/source kernel sign bridge, compact-vs-target-first TBA
   equality on a finite node set, and the ratio signs from reversed
   `ominus` and `w` roots.
+
+## Continuation LV: Fused Mirror TBA Kernel Crosswalk
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition-level crosswalk for the fused mirror TBA kernels in
+  stringbook orientation.
+- The text defines the constituent shift set `R_m`, the rational
+  `bullet_m`--`bullet_n` phase, the endpoint dressing combination built from
+  the analytically continued `chi`, and the `y_pm`--`bullet` and
+  `(v|m)`--`bullet` phases.
+- It records the reciprocal source/target orientations needed by the compact
+  TBA inventory.
+- It derives the auxiliary double-sum kernel from the stringbook phase and
+  reduces it to the closed fused expression
+  `K_{m+n}+K_{|m-n|}+2 sum K_{|m-n|+2j}`.
+- The global continuation of `chi`, branch choices, and possible additional
+  crossed singularities are stated as dressing-phase analytic input rather
+  than finite fusion algebra.
+
+Calculation checks added:
+
+- Added `check_mirror_fused_kernel_formula_crosswalk()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  finite `bullet_m`--`bullet_n` rational fused unitarity, endpoint dressing
+  antisymmetry for an antisymmetric mock `chi`, the `y_-`/inverse-sheet
+  relation, exact endpoint telescoping of the square-root packages, reciprocal
+  auxiliary orientations, exact auxiliary pole-multiplicity reduction, and
+  equality of the auxiliary double-sum derivative with the closed fused
+  `K_mn` kernel.

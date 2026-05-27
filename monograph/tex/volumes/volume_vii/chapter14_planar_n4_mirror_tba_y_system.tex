@@ -853,6 +853,153 @@ exactly the logarithmic ratio displayed in the \(y\)-, \(v\)-, and
 \(w\)-node equations.
 \end{proof}
 
+\begin{proposition}[Fused mirror kernels in stringbook orientation]
+\label{prop:planar-n4-fused-mirror-kernel-formulas}
+Fix a mirror sheet and write
+\[
+  \mathcal R_m=
+  \left\{-\frac{m-1}{2},-\frac{m-1}{2}+1,\ldots,\frac{m-1}{2}\right\}.
+\]
+For an integer \(a\), \(x^{[a]}(u)\) denotes the continuation of
+\(x(u+\ii a/2)\) on that sheet, with the side of the cut fixed by the
+contour datum.  Away from zeros and poles, the fused rational
+\(\bullet_m\)-\(\bullet_n\) phase is
+\begin{align}
+  \Phi^{\bullet\bullet}_{mn}(u,v)
+  &=
+  \sum_{r\in\mathcal R_m}
+  \sum_{s\in\mathcal R_n}
+  \log\left[
+    \frac{x^{[2s-1]}(v)-x^{[2r+1]}(u)}
+         {x^{[2s+1]}(v)-x^{[2r-1]}(u)}
+    \frac{1-\bigl(x^{[2s+1]}(v)x^{[2r-1]}(u)\bigr)^{-1}}
+         {1-\bigl(x^{[2s-1]}(v)x^{[2r+1]}(u)\bigr)^{-1}}
+  \right],
+  \label{eq:planar-n4-mirror-bullet-bullet-rational-phase}
+\end{align}
+and the dressing contribution is the endpoint combination
+\begin{align}
+  \Theta^{\bullet\bullet}_{mn}(u,v)
+  =
+  2\ii\bigl(&
+  \chi(x^{[m]}(u),x^{[n]}(v))
+  +
+  \chi(x^{[-m]}(u),x^{[-n]}(v))
+  \nonumber\\
+  &-
+  \chi(x^{[-m]}(u),x^{[n]}(v))
+  -
+  \chi(x^{[m]}(u),x^{[-n]}(v))
+  \bigr).
+  \label{eq:planar-n4-mirror-bullet-bullet-dressing-phase}
+\end{align}
+Thus
+\[
+  K^{\bullet\bullet}_{mn}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \left(
+    \Phi^{\bullet\bullet}_{mn}(u,v)
+    +
+    \Theta^{\bullet\bullet}_{mn}(u,v)
+  \right)
+\]
+in the target-first convention.  The \(y\)-sheet and \(v\)-string phases
+that occur in the source inventory are
+\begin{align}
+  \log S^{y_+\bullet}_n(u,v)
+  &=
+  \log\left[
+    \frac{x(u)-x^{[n]}(v)}
+         {x(u)-x^{[-n]}(v)}
+    \sqrt{\frac{x^{[-n]}(v)}{x^{[n]}(v)}}
+  \right],
+  \label{eq:planar-n4-mirror-yplus-bullet-phase}\\
+  \log S^{y_-\bullet}_n(u,v)
+  &=
+  \log\left[
+    \frac{x(u)^{-1}-x^{[n]}(v)}
+         {x(u)^{-1}-x^{[-n]}(v)}
+    \sqrt{\frac{x^{[-n]}(v)}{x^{[n]}(v)}}
+  \right],
+  \label{eq:planar-n4-mirror-yminus-bullet-phase}\\
+  \log S^{(v|m)\bullet}_{mn}(u,v)
+  &=
+  \sum_{\sigma=\pm1}
+  \sum_{r\in\mathcal R_m}
+  \sum_{s\in\mathcal R_n}
+  \log\left[
+    \frac{x^{[2r+\sigma]}(u)-x^{[2s+1]}(v)}
+         {x^{[2r+\sigma]}(u)-x^{[2s-1]}(v)}
+    \sqrt{\frac{x^{[2s-1]}(v)}{x^{[2s+1]}(v)}}
+  \right].
+  \label{eq:planar-n4-mirror-v-bullet-phase}
+\end{align}
+Their opposite orientations are reciprocals:
+\[
+  \log S^{\bullet y_\pm}_n(v,u)=-\log S^{y_\pm\bullet}_n(u,v),
+  \qquad
+  \log S^{\bullet(v|m)}_{nm}(v,u)
+  =
+  -\log S^{(v|m)\bullet}_{mn}(u,v).
+\]
+Finally, the auxiliary rational string phase
+\[
+  \Phi^{\rm aux}_{mn}(u,v)
+  =
+  \sum_{r\in\mathcal R_m}\sum_{s\in\mathcal R_n}
+  \log\frac{u-v+\ii(r-s+1)}{u-v+\ii(r-s-1)}
+\]
+has kernel
+\begin{equation}
+  \frac{1}{2\pi\ii}\partial_v\Phi^{\rm aux}_{mn}
+  =
+  K_{m+n}+K_{\lvert m-n\rvert}
+  +
+  2\sum_{j=1}^{\min(m,n)-1}K_{\lvert m-n\rvert+2j},
+  \label{eq:planar-n4-mirror-auxiliary-fused-kernel-crosswalk}
+\end{equation}
+with \(K_0=0\) and
+\[
+  K_N(u-v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \log\frac{u-v+\ii N/2}{u-v-\ii N/2}.
+\]
+\end{proposition}
+
+\begin{proof}
+The rational factors are finite products over the constituents of the two
+Bethe strings.  The sets \(\mathcal R_m\) and \(\mathcal R_n\) are exactly the
+constituent shifts, so multiplying the elementary level-I rational factor
+over \(r\) and \(s\) gives
+\eqref{eq:planar-n4-mirror-bullet-bullet-rational-phase}.  Reversing the
+order of the two strings in each elementary factor inverts the product, which
+is the reciprocal orientation stated for \(y_\pm\) and \((v|m)\) sources.
+The distinction between \(y_+\) and \(y_-\) is the replacement
+\(x(u)\mapsto x(u)^{-1}\) on the two \(y\)-sheets.
+
+For the purely auxiliary kernel put \(z=u-v\).  The derivative of
+\(\log(z+\ii a)\) with respect to \(v\) is \(-(z+\ii a)^{-1}\).  Hence the
+double sum contributes the difference between the multiplicities of
+\(r-s-1\) and \(r-s+1\).  As \(r\) and \(s\) run over two consecutive
+arithmetic strings, all interior multiplicities cancel in pairs except the
+two boundary terms and the doubled interior terms with the same parity as
+\(|m-n|\).  This gives precisely the right-hand side of
+\eqref{eq:planar-n4-mirror-auxiliary-fused-kernel-crosswalk}; it is the fused
+\(A_\infty\) kernel used in the Y-system inversion below.
+
+The dressing term is different in status.  If \(\chi(x,y)=-\chi(y,x)\) on the
+continued branches, the endpoint combination
+\eqref{eq:planar-n4-mirror-bullet-bullet-dressing-phase} is antisymmetric
+under \((m,u)\leftrightarrow(n,v)\), so it is compatible with scalar
+unitarity.  The existence of the globally continued \(\chi\), its branch
+choice, and possible additional crossed singularities are part of the
+dressing-phase analytic-continuation input inherited from
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.  The finite fusion algebra
+proved here supplies the rational products and the endpoint sign package.
+\end{proof}
+
 For a state with physical Bethe roots \(u_1,\ldots,u_K\), the excited-state
 TBA is obtained by contour deformation.  The physical roots satisfy exact
 Bethe equations of the form

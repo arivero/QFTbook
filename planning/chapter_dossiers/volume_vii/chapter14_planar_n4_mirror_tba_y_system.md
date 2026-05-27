@@ -30,6 +30,14 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `K^sb_AB`: target-first stringbook kernel
   `(2 pi i)^{-1} partial_v log S^sb_AB(u,v)`, related to the chapter
   source kernel by `K^sb_AB(u,v)=-K_BA(v,u)`.
+- `mathcal R_m`: constituent-shift set
+  `{-(m-1)/2, ..., (m-1)/2}` for a fused mirror string.
+- `Phi_mn^{bullet bullet}`: rational fused mirror `bullet_m`--`bullet_n`
+  scattering phase in stringbook orientation.
+- `Theta_mn^{bullet bullet}`: endpoint dressing-phase combination built from
+  the analytically continued `chi(x,y)`.
+- `S^{y_pm bullet}`, `S^{(v|m) bullet}`: fused auxiliary-to-bullet phases
+  used to define the target-first mirror-TBA kernels.
 - `rho_p,rho_L,rho_h`: one-species mirror particle, level, and hole
   densities used in the statistical-mechanical derivation of TBA.
 - `K^dens(v,u)`: target-derivative density kernel
@@ -95,6 +103,13 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   chemical potentials, proves the target-first/source-kernel bridge, and
   records the node-by-node source families including the reversed-root
   denominator signs for `ominus` and `w` sources.
+- Adds the fused mirror-kernel formula crosswalk from the stringbook:
+  defines the constituent shift set, displays the rational
+  `bullet_m`--`bullet_n` phase, the endpoint dressing combination, the
+  `y_pm`--`bullet` and `(v|m)`--`bullet` phases, their reciprocal target/source
+  orientations, and the auxiliary double-sum kernel reduction to the closed
+  fused `K_mn` expression.  The global analytic continuation of `chi` remains
+  an explicit dressing-phase boundary, not a finite fusion claim.
 - Gives the excited-state energy formula with wrapping integral.
 - Adds a self-contained derivation of the `A_infinity` auxiliary-string kernel
   inverse in Fourier variables, including the fused kernel symbol and the
@@ -170,6 +185,12 @@ node domain.
   phases, the `M=1` boundary in the `bullet_Q` equation, the
   target-first/source-kernel sign bridge, and the ratio signs from reversed
   `ominus` and `w` roots.
+- The same script checks the fused mirror-kernel formula crosswalk: finite
+  `bullet_m`--`bullet_n` rational unitarity, endpoint dressing antisymmetry
+  for an antisymmetric mock `chi`, `y_-` as the inverse-sheet `y_+` formula,
+  exact endpoint telescoping of the square-root packages, reciprocal auxiliary
+  orientations, exact auxiliary pole-multiplicity reduction, and equality of
+  the auxiliary double-sum derivative with the closed fused `K_mn` kernel.
 - The same script checks the excited-state contour-deformation residue signs:
   source orientation `-log S`, product orientation, energy residue
   `+i tilde p`, and inverse mirror continuation to physical energy.

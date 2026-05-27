@@ -72,7 +72,7 @@ still needs development.
 | Excited-state one-particle TBA and contour deformation | `Excited states` | `Expanded`: Chapter 14 derives defect source signs, zero condition, and energy residue orientation | No major gap; keep the contour hypotheses explicit. |
 | Multi-species mirror Bethe-Yang to TBA | `TBA from Bethe-Yang equations` | `Expanded/Boundary`: Chapter 14 now proves the target-first/source-kernel convention bridge, maps `oplus`, `ominus`, `M|yw`, and `M|w` to the monograph nodes, states the left/right fermion chemical potentials, and records the node-by-node source inventory including reversed-root denominator signs | Remaining boundary is the global mirror string hypothesis and scalar-kernel analytic input; the explicit closed formulas for every fused scattering kernel are tracked in the full mirror-TBA row. |
 | Mirror Bethe strings: `y`, `v|M`, `w|M`, and `bullet_Q` support | `Bethe strings of the mirror model` | `Expanded`: Chapter 14 derives the support and pole-cancellation arrays, with string-hypothesis status for real centers | Need verify every stringbook array and naming convention against the companion checks and the mirror TBA notation table. |
-| Full mirror TBA equations | `Mirror TBA` | `Partial`: Chapter 14 contains the TBA framework, node/source inventory, and enough structure for Y-system and Konishi | Needs a systematic formula-by-formula comparison of the explicit fused scattering kernels and dressing-phase analytic continuations with the stringbook full mirror TBA block and the Arutyunov-Frolov convention sources. |
+| Full mirror TBA equations | `Mirror TBA` | `Expanded/Boundary`: Chapter 14 contains the TBA framework, node/source inventory, fused `bullet bullet`, `y bullet`, `(v|M) bullet`, and auxiliary `K_mn` formula crosswalk, and enough structure for Y-system and Konishi | Remaining boundary is global dressing-phase analytic continuation for `chi`, possible extra crossed singularities, and the excited-state source crosswalk beyond the one-species residue theorem. |
 | Y-system from TBA/Hirota and analytic Y-system data | `The Y-system` | `Expanded/Partial`: Chapter 14 proves local Hirota-to-Y-system algebra, T-gauge cancellation, shifted zero-pole source factors, and records analytic data | Needs the complete discontinuity/source-condition crosswalk from the stringbook analytic continuation discussion. |
 | Excited finite-volume states and asymptotic conditions | `Excited states in finite volume and asymptotic conditions` | `Partial`: Chapter 14 and Chapter 15 derive several local bridges and mark remaining QSC/TBA framework inputs | Needs a tighter bridge from excited-state TBA source terms to QSC asymptotics, including all assumptions on roots, contours, and physical gluing. |
 | Konishi wrapping | `The Konishi operator and wrapping corrections`; `mirror TBA and wrapping corrections.nb` | `Expanded/Boundary`: Chapter 14 now derives weak-density rationalization, pole structure, exact residue reduction, telescoping, and final coefficient; the leading mirror input remains an explicit assumption | Need audit the whole notebook, not just the rational density/residue path, and decide whether the leading mirror input can be derived further from the preceding ABA/mirror data. |
@@ -100,11 +100,11 @@ still needs development.
    lattice and the finite matrix-channel origin of the Janik multiplier:
    state the scalar-factor monodromy, homotopy-class dependence of the scalar
    branch, and convention transformations.
-4. Complete the full mirror-TBA kernel formula crosswalk from the stringbook:
-   the node families, fermion signs, reversed-root ratios, and source/target
-   derivative conventions are now internalized; the remaining work is the
-   explicit fused-kernel and dressing-continuation comparison plus
-   excited-state sources.
+4. Complete the global mirror-TBA analytic-continuation crosswalk from the
+   stringbook: the node families, fermion signs, reversed-root ratios,
+   source/target derivative conventions, fused rational kernels, and endpoint
+   dressing package are now internalized; the remaining work is the global
+   `chi` continuation and excited-state sources.
 5. Tighten the QSC derivation from T-system/TBA to `Pmu`: every global
    analytic assumption should either be proved locally, quoted as a theorem
    with hypotheses, or listed as a framework input.
