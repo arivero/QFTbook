@@ -539,6 +539,11 @@ Current checks:
   layout, and flow from a sampler checkpoint.  If the default Python lacks
   `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
   Python when available.
+- `su3_ape_smearing_checks.py`: finite checks for
+  `qft_scripts/su3_ape_smearing_hdf5.py`, verifying the cold fixed point,
+  spatial-mode preservation of temporal links, gauge covariance of the APE
+  map, and HDF5 sampler-to-smearing plus smearing-to-smearing checkpoint
+  layout.
 - `su3_topological_charge_diagnostics_checks.py`: finite checks for
   `qft_scripts/su3_topological_charge_diagnostics_hdf5.py`, verifying
   oriented plaquette conventions, clover-field anti-Hermiticity and

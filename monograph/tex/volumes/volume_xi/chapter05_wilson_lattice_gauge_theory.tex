@@ -745,6 +745,22 @@ smeared operators must keep this radius fixed in lattice units, or specify
 how it scales with \(a\), before the operator scheme has mathematical
 meaning.
 
+The companion script
+\[
+  \texttt{qft\_scripts/su3\_ape\_smearing\_hdf5.py}
+\]
+implements the finite \(SU(3)\) APE map \eqref{eq:ape-preprojection} for raw,
+flowed, or already-smeared HDF5 checkpoints.  In its spatial mode the active
+directions are \(1,2,3\), and temporal links are left unchanged; this is the
+finite-data convention appropriate for constructing smeared spatial
+transporters in static-source correlators.  In its all-direction mode all
+four Euclidean directions are active.  The paired calculation check verifies
+the cold fixed point, preservation of temporal links in spatial mode, gauge
+covariance of the smearing map, and the HDF5 checkpoint convention
+\(\texttt{checkpoint/smeared\_links}\).  As above, this is a regulator-level
+operator construction, not an assertion about continuum improvement by
+itself.
+
 \section{Lattice Perturbative Coordinates and Tadpole Normalization}
 \label{sec:lattice-perturbative-coordinates-tadpole}
 

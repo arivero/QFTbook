@@ -192,6 +192,9 @@
 - `qft_scripts/su3_wilson_flow_hdf5.py --smoke`: finite \(SU(3)\)
   Wilson-score gradient-flow evolution for hot/cold links or HDF5
   checkpoints, with trajectory output when `h5py` is available.
+- `qft_scripts/su3_ape_smearing_hdf5.py --smoke`: finite \(SU(3)\)
+  APE-smearing utility for raw, flowed, or already-smeared HDF5 checkpoints,
+  with spatial and all-direction modes.
 - `qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke`: finite
   \(SU(3)\) clover topological-charge and action-density diagnostic for raw
   or flowed HDF5 checkpoints.
@@ -214,6 +217,10 @@
   finite \(SU(3)\) Wilson-score gradient by directional derivatives, one-step
   gauge covariance, small-step monotonicity, group preservation, HDF5
   trajectory layout, and sampler-checkpoint input.
+- `calculation-checks/su3_ape_smearing_checks.py` verifies the cold fixed
+  point, spatial-mode preservation of temporal links, gauge covariance of the
+  APE map, and HDF5 sampler-to-smearing plus smearing-to-smearing checkpoint
+  layout.
 - `calculation-checks/su3_topological_charge_diagnostics_checks.py` verifies
   oriented plaquette conventions, cold-configuration vanishing, clover-field
   anti-Hermiticity/tracelessness/antisymmetry, gauge invariance of the
@@ -263,6 +270,8 @@
 - 2026-05-27 issue #631 pass: added gauge-covariant smearing as regulator data
   with polar projection and stout smearing proofs, keeping the operator-scheme
   and locality assumptions explicit.
+- 2026-05-27 issue #631 pass: added a theorem-anchored \(SU(3)\) APE-smearing
+  HDF5 companion script, with gauge-covariance and checkpoint-layout checks.
 - 2026-05-27 issue #631 pass: added lattice perturbative coordinates and
   tadpole normalization, deriving the tree-level gauge-fixed kernel and
   boosted-coupling coordinate as finite perturbative conventions whose

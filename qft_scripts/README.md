@@ -63,6 +63,12 @@ notebooks or CI checks can consume the results without scraping prose.
   flow trajectories and final flowed links, and exposes a smoke test that
   checks monotonicity and group preservation at finite cutoff.  It is not an
   integer topological-charge definition or a continuum extrapolation.
+- `su3_ape_smearing_hdf5.py`: finite \(SU(3)\) APE-smearing utility for raw,
+  flowed, or already-smeared HDF5 checkpoints.  Spatial mode leaves temporal
+  links unchanged and is intended for static-line operator construction; all
+  mode smears every Euclidean direction.  The script records the plaquette
+  trajectory and final smeared links, and its calculation check verifies
+  gauge covariance and HDF5 auto-dataset behavior.
 - `su3_topological_charge_diagnostics_hdf5.py`: finite \(SU(3)\) clover
   curvature and topological-charge diagnostic for raw or flowed HDF5
   checkpoints.  It reports \(Q_{\rm clover}\), clover action density, and an

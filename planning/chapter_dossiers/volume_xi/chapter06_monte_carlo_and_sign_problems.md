@@ -196,6 +196,9 @@ the exponential decay of average phase with volume.
   four-dimensional \(SU(3)\) Wilson-gauge subgroup-Metropolis sampler.  It
   reports plaquette and Wilson-loop measurements and can write HDF5
   measurement/checkpoint files when `h5py` is available.
+- `qft_scripts/su3_ape_smearing_hdf5.py --smoke`: downstream HDF5
+  post-processing utility for constructing smeared links before static-line
+  or glueball-operator measurements.
 - `qft_scripts/autocorrelation_resampling.py --smoke`: finite time-series
   diagnostic script.  It reports a windowed integrated autocorrelation
   coordinate, block means, blocked standard errors, delete-one-block
@@ -248,6 +251,9 @@ the exponential decay of average phase with volume.
   correlated delete-one jackknife check for static-potential nonlinear
   Wilson-loop ratios and the HDF5 bridge from sampler data to static-potential
   analysis.
+- `calculation-checks/su3_ape_smearing_checks.py` verifies the gauge-covariant
+  HDF5 smearing layer used between raw link generation and smeared-observable
+  measurements.
 
 ## Audit Notes
 
@@ -270,3 +276,6 @@ the exponential decay of average phase with volume.
 - 2026-05-27 issue #631 pass: connected the static-potential script directly
   to the sampler HDF5 coordinate
   `measurements/wilson_loops[sample,R-1,T-1]`.
+- 2026-05-27 issue #631 pass: added a checked \(SU(3)\) APE-smearing HDF5
+  post-processing layer for smeared static-line and glueball-operator
+  construction.
