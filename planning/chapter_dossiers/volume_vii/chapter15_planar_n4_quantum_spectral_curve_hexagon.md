@@ -30,6 +30,8 @@ three-point functions.
 - `h(u,v)`: elementary scalar hexagon factor for two scalar magnons.
 - `S_hex^scal`: scalar Watson factor obtained from `h(u,v)/h(v,u)`.
 - `ell_ij`: bridge lengths between three single-trace operators.
+- `p(bar alpha)`: total spin-chain momentum of a partition subset moved across
+  a hexagon bridge.
 - `A_i`: leading QSC asymptotic coefficients.
 - `S`: Lorentz spin in the `SL(2)` QSC asymptotic conditions.
 - `epsilon`: small-spin QSC amplitude with `epsilon^2=O(S)`.
@@ -161,6 +163,13 @@ three-point functions.
   explicitly marked as a QSC input.
 - Defines the hexagon partition of planar three-point functions and states the
   proof boundary for deriving it from the gauge-theory path integral.
+- Proves the planar pair-of-pants bridge-length formula
+  `ell_12=(L_1+L_2-L_3)/2`, etc., from the three length-balance equations, and
+  records the parity/triangle-inequality criterion for a nonnegative integer
+  planar skeleton.
+- Derives the bridge translation phase
+  `prod_{u_j in bar alpha} exp(i p_j ell)=exp(i p(bar alpha) ell)` used in
+  the schematic asymptotic hexagon partition sum.
 - Adds the elementary scalar hexagon factor `h(u,v)` and its crossing-path
   caveat.
 - Proves the local scalar Watson identity
@@ -241,6 +250,9 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the small-spin QSC Bessel slope by exact rational
   series: the recurrence `I_{J-1}-I_{J+1}=2J I_J/z` and the first two
   coefficients of `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.
+- The same script checks the hexagon bridge-length bookkeeping: length-balance
+  equations, parity/triangle existence criterion, bridge partition phase, and
+  full-state cyclic translation phase.
 - The same script checks the hexagon scalar Watson factor exactly on rational
   samples and verifies its weak compact one-loop orientation against the
   reciprocal `SL(2)` phase.

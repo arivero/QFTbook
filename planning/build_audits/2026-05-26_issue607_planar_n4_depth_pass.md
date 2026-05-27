@@ -1256,3 +1256,36 @@ Calculation checks added:
 - Added `check_hexagon_scalar_watson_factor()`, which verifies the Watson
   identity exactly on rational samples and checks that the weak limit matches
   the compact one-loop phase rather than the reciprocal `SL(2)` ABA phase.
+
+## Continuation XLI: Hexagon Bridge Kinematics
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 used the standard bridge lengths and partition phase in the
+  asymptotic hexagon formula.  These are elementary but load-bearing
+  kinematic data, and the monograph should state the planar length-balance
+  hypotheses rather than leaving the formula as an unexplained convention.
+
+Content added:
+
+- Added a proposition deriving
+  `ell_12=(L_1+L_2-L_3)/2`, `ell_23=(L_2+L_3-L_1)/2`, and
+  `ell_31=(L_3+L_1-L_2)/2` from the three planar pair-of-pants length-balance
+  equations.
+- Recorded the exact existence criterion for a nonnegative integer planar
+  skeleton: even total length plus the three triangle inequalities.
+- Clarified the one-excited-operator status of the displayed asymptotic
+  partition formula and derived the bridge phase
+  `prod exp(i p_j ell)=exp(i p(bar alpha) ell)`.
+
+Calculation checks added:
+
+- Added `check_hexagon_bridge_lengths_and_phase()`, checking the bridge
+  length-balance equations, parity/triangle criterion, bridge partition phase,
+  and full-state cyclic translation phase.

@@ -1922,6 +1922,55 @@ def check_konishi_wrapping_residue_sum() -> None:
         raise AssertionError("Konishi wrapping finite partial sum identity failed")
 
 
+def check_hexagon_bridge_lengths_and_phase() -> None:
+    """Check planar pair-of-pants bridge lengths and partition phases."""
+
+    samples = (
+        (4, 4, 4),
+        (6, 4, 2),
+        (7, 5, 4),
+        (8, 6, 6),
+    )
+    for l1, l2, l3 in samples:
+        ell12 = Fraction(l1 + l2 - l3, 2)
+        ell23 = Fraction(l2 + l3 - l1, 2)
+        ell31 = Fraction(l3 + l1 - l2, 2)
+        if any(ell.denominator != 1 or ell < 0 for ell in (ell12, ell23, ell31)):
+            raise AssertionError("sample should define nonnegative integer bridges")
+        if ell12 + ell31 != l1 or ell12 + ell23 != l2 or ell23 + ell31 != l3:
+            raise AssertionError("hexagon bridge length-balance equation failed")
+
+    impossible_samples = (
+        (3, 3, 3),  # odd total length
+        (8, 2, 2),  # triangle inequality failure
+        (5, 4, 2),  # odd total length and half-integer bridge
+    )
+    for l1, l2, l3 in impossible_samples:
+        total_even = (l1 + l2 + l3) % 2 == 0
+        triangle = l1 + l2 >= l3 and l2 + l3 >= l1 and l3 + l1 >= l2
+        ell_values = (
+            Fraction(l1 + l2 - l3, 2),
+            Fraction(l2 + l3 - l1, 2),
+            Fraction(l3 + l1 - l2, 2),
+        )
+        integer_nonnegative = all(ell.denominator == 1 and ell >= 0 for ell in ell_values)
+        if integer_nonnegative != (total_even and triangle):
+            raise AssertionError("hexagon bridge existence criterion mismatch")
+
+    bridge_length = 5
+    subset_momenta = (0.4, -1.1, 2.3)
+    product_phase = math.prod(cmath.exp(1j * momentum * bridge_length) for momentum in subset_momenta)
+    summed_phase = cmath.exp(1j * sum(subset_momenta) * bridge_length)
+    assert_close("hexagon partition bridge phase", product_phase, summed_phase)
+
+    cyclic_momenta = (2 * math.pi / 7, -4 * math.pi / 7, 2 * math.pi / 7)
+    assert_close(
+        "hexagon full-state cyclic translation phase",
+        cmath.exp(1j * sum(cyclic_momenta) * bridge_length),
+        1,
+    )
+
+
 def check_hexagon_scalar_watson_factor() -> None:
     """Check the scalar hexagon Watson ratio and weak one-loop orientation."""
 
@@ -3148,6 +3197,7 @@ def main() -> None:
     check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
+    check_hexagon_bridge_lengths_and_phase()
     check_hexagon_scalar_watson_factor()
     check_bremsstrahlung_displacement_cusp_normalization()
     check_bremsstrahlung_weak_series()

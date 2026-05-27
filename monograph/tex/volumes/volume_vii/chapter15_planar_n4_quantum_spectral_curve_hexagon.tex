@@ -1831,6 +1831,44 @@ bridge lengths are
   \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
   \ell_{31}=\frac{L_3+L_1-L_2}{2}.
 \]
+
+\begin{proposition}[Planar bridge-length bookkeeping]
+\label{prop:planar-n4-hexagon-bridge-lengths}
+Consider the planar tree-level pair-of-pants skeleton for three cyclic
+single-trace operators of lengths \(L_1,L_2,L_3\).  Let \(\ell_{ij}=\ell_{ji}\)
+be the number of adjacent Wick-contraction slots shared by operators \(i\)
+and \(j\).  Then the bridge lengths are forced to be
+\[
+  \ell_{12}=\frac{L_1+L_2-L_3}{2},\qquad
+  \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
+  \ell_{31}=\frac{L_3+L_1-L_2}{2}.
+  \label{eq:planar-n4-hexagon-bridge-lengths-derived}
+\]
+Conversely, a nonnegative integer planar skeleton of this type exists exactly
+when \(L_1+L_2+L_3\) is even and the three triangle inequalities
+\(L_i+L_j\geq L_k\) hold.
+\end{proposition}
+
+\begin{proof}
+In the planar skeleton each trace is cut at two cyclic splitting points.  The
+letters of operator \(1\) are divided into the bridge shared with operator
+\(2\) and the bridge shared with operator \(3\), and similarly for the other
+two operators.  Hence
+\[
+  L_1=\ell_{12}+\ell_{31},\qquad
+  L_2=\ell_{12}+\ell_{23},\qquad
+  L_3=\ell_{23}+\ell_{31}.
+\]
+Adding the first two equations and subtracting the third gives
+\(2\ell_{12}=L_1+L_2-L_3\).  The other two formulae follow by cyclic
+permutation.  Since \(\ell_{ij}\) counts letters, the right-hand sides must
+be nonnegative integers; this is precisely even total length plus the
+triangle inequalities.  Conversely, if these conditions hold, the three
+numbers in \eqref{eq:planar-n4-hexagon-bridge-lengths-derived} define
+nonnegative integer arcs on the three cyclic words satisfying the displayed
+length-balance equations, which is the required pair-of-pants skeleton.
+\end{proof}
+
 Asymptotically, the structure constant is a sum over partitions of magnons
 between the two hexagons:
 \[
@@ -1842,11 +1880,24 @@ between the two hexagons:
   H(\alpha)H(\bar\alpha)\,
   \mathcal N^{-1/2}.
 \]
-Here \(H\) is the hexagon form factor, \(p(\bar\alpha)\) is the total momentum
-of the magnons moved across the bridge, and \(\mathcal N\) is the Gaudin norm
-factor of the Bethe state.  Mirror particles on the bridges add finite-size
-corrections, analogous in spirit to wrapping corrections in the spectral
-problem.
+Here the displayed formula is the specialization in which the magnons shown
+belong to one external operator: \(\ell\) is the bridge crossed by the subset
+\(\bar\alpha\), \(H\) is the hexagon form factor, and
+\[
+  p(\bar\alpha)=\sum_{u_j\in\bar\alpha}p(u_j).
+\]
+The phase is the spin-chain translation phase.  Moving a magnon of momentum
+\(p_j\) through \(\ell\) vacuum letters multiplies the coordinate Bethe wave
+by \(\ee^{\ii p_j\ell}\), and moving all magnons in \(\bar\alpha\) gives
+\[
+  \prod_{u_j\in\bar\alpha}\ee^{\ii p_j\ell}
+  =
+  \ee^{\ii p(\bar\alpha)\ell}.
+  \label{eq:planar-n4-hexagon-bridge-translation-phase}
+\]
+The factor \(\mathcal N\) is the Gaudin norm factor of the Bethe state.
+Mirror particles on the bridges add finite-size corrections, analogous in
+spirit to wrapping corrections in the spectral problem.
 
 For scalar magnons the elementary two-particle scalar factor entering the
 hexagon can be written, in the same \(x^\pm\) and \(\sigma\) conventions as
