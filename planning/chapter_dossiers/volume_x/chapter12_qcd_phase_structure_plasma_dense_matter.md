@@ -55,6 +55,10 @@ GitHub issue #628.
   theory shell scale, patch quark field, and residual momentum components.
 - `N_ch(0)`, `Delta`: channel density of states at the Fermi surface and the
   superconducting gap entering the BCS logarithm.
+- `C_F`, `lambda_NFL`, `Lambda_NFL`, `Z(p0)`: trace-delta fundamental
+  Casimir, leading cold dense non-Fermi-liquid self-energy coefficient,
+  finite matching scale, and the logarithmic patch residue in the unpaired
+  high-density regime.
 - `Pi_phys`, `G_Lambda(f)`, `Q_A`, `mu_A`: finite-regulator physical-state
   projector, Gauss-law generator, gauge-invariant global charges, and their
   thermodynamic sources.
@@ -165,6 +169,11 @@ GitHub issue #628.
   density of states, derives the tree-level patch action including the
   transverse curvature term, and computes the zero-temperature dense-quark
   HDL Debye coefficient in the monograph trace convention.
+- Derives the leading cold dense non-Fermi-liquid quark self-energy from
+  Landau-damped magnetic exchange in HDET, including the trace-delta
+  coefficient `lambda_NFL=g^2 C_F/(12 pi^2)`, the `SU(3)` specialization
+  `2g^2/(9 pi^2)`, the collinear `1/3` logarithm, and the logarithmic
+  vanishing of the perturbative patch residue.
 - Derives the BCS logarithm from the Fermi-surface shell as a controlled
   instability of a specified attractive channel, separating the universal
   logarithmic mechanism from the QCD-specific gap prefactor.
@@ -227,6 +236,7 @@ GitHub issue #628.
   derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
   Polyakov-loop effective-measure center-charge bookkeeping,
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
+  dense non-Fermi-liquid self-energy coefficient bookkeeping,
   dense one-gluon-exchange color-factor bookkeeping,
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
@@ -283,6 +293,9 @@ GitHub issue #628.
 - 2026-05-27 high-density EFT pass: added the patch decomposition, density
   of states, tree-level HDET action, zero-temperature HDL Debye coefficient,
   and BCS logarithm derivation before the CFL order-parameter discussion.
+- 2026-05-27 non-Fermi-liquid pass: added the controlled HDL unpaired dense
+  regime, the derivation of the \(ip_0\log(\Lambda_{\rm NFL}/|p_0|)\)
+  self-energy coefficient, and the logarithmic patch-residue consequence.
 - 2026-05-27 neutrality pass: added the finite-regulator distinction between
   global charge sources and gauge constraints, the Gauss-law projector proof
   of zero color charge, the gauge-fixed temporal-background stationarity

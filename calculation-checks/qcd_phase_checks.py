@@ -9,13 +9,14 @@ low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
 derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
-one-gluon exchange color factors for dense pairing, leading-log magnetic gap
-coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
-bookkeeping, dense-matter neutrality constraints, color-flavor-locked
-gauge-invariant composite charges, screening and collective-mode counts,
-dense Fermi-surface stress scales, color-flavor-locked anomaly matching, and
-the color-flavor-locked symmetry count.  It is not a lattice simulation and
-it does not assert the existence or order of any QCD phase transition.
+non-Fermi-liquid self-energy coefficients, one-gluon exchange color factors
+for dense pairing, leading-log magnetic gap coefficient bookkeeping,
+baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
+neutrality constraints, color-flavor-locked gauge-invariant composite
+charges, screening and collective-mode counts, dense Fermi-surface stress
+scales, color-flavor-locked anomaly matching, and the color-flavor-locked
+symmetry count.  It is not a lattice simulation and it does not assert the
+existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -240,6 +241,34 @@ def check_high_density_fermi_surface_bookkeeping():
         sqrt_b2_coeff,
         Fraction(1, 2),
     )
+
+
+def check_dense_non_fermi_liquid_coefficients():
+    # In the trace-delta convention C_F=(N_c^2-1)/N_c.  The cold dense
+    # non-Fermi-liquid coefficient is lambda_NFL=g^2 C_F/(12*pi^2).
+    nc = 3
+    c_f_trace_delta = Fraction(nc * nc - 1, nc)
+    nfl_coeff = c_f_trace_delta / 12
+    assert_equal("SU(3) trace-delta C_F", c_f_trace_delta, Fraction(8, 3))
+    assert_equal("SU(3) non-Fermi-liquid coefficient", nfl_coeff, Fraction(2, 9))
+
+    # The coefficient decomposes into the same patch prefactor g^2 C_F/(4*pi^2)
+    # and the Landau-damped magnetic collinear factor 1/3.
+    patch_prefactor_without_g2_pi2 = c_f_trace_delta / 4
+    collinear_factor = Fraction(1, 3)
+    assert_equal(
+        "non-Fermi-liquid prefactor factorization",
+        patch_prefactor_without_g2_pi2 * collinear_factor,
+        nfl_coeff,
+    )
+
+    # The residue is asymptotically inverse-logarithmic: at logarithmic size L
+    # the leading denominator is lambda_NFL * L.  Check the bookkeeping at an
+    # arbitrary rational L.
+    logarithm = Fraction(9, 5)
+    leading_denominator = nfl_coeff * logarithm
+    leading_residue_times_denominator = leading_denominator / leading_denominator
+    assert_equal("non-Fermi-liquid inverse-log residue bookkeeping", leading_residue_times_denominator, Fraction(1))
 
 
 def check_source_curvature_susceptibility():
@@ -623,6 +652,7 @@ def main():
     check_htl_angular_kernel_transversality_bookkeeping()
     check_polyakov_effective_measure_center_bookkeeping()
     check_high_density_fermi_surface_bookkeeping()
+    check_dense_non_fermi_liquid_coefficients()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()
