@@ -2070,15 +2070,15 @@ def check_qsc_small_spin_bessel_slope() -> None:
 
 
 def check_t_system_to_y_system_identity() -> None:
-    """Check the algebraic Y-system relation from a local Hirota square."""
+    """Check the algebraic Y-system relation from local Hirota squares."""
 
     # Positive sample T-values around one interior T-hook node.
-    t_center_plus = 7.0
-    t_center_minus = 11.0
-    t_up = 5.0
-    t_down = 3.0
-    t_left = 2.0
-    t_right = 13.0
+    t_center_plus = Fraction(7)
+    t_center_minus = Fraction(11)
+    t_up = Fraction(5)
+    t_down = Fraction(3)
+    t_left = Fraction(2)
+    t_right = Fraction(13)
 
     # Hirota: T^+ T^- = T_up T_down + T_left T_right.
     t_center_minus = (t_up * t_down + t_left * t_right) / t_center_plus
@@ -2087,8 +2087,76 @@ def check_t_system_to_y_system_identity() -> None:
     one_plus_y = (t_center_plus * t_center_minus) / (t_left * t_right)
     one_plus_inverse_y = (t_center_plus * t_center_minus) / (t_up * t_down)
 
-    assert_close("1+Y from Hirota", one_plus_y, 1 + y)
-    assert_close("1+1/Y from Hirota", one_plus_inverse_y, 1 + 1 / y)
+    if one_plus_y != 1 + y:
+        raise AssertionError("1+Y from Hirota")
+    if one_plus_inverse_y != 1 + 1 / y:
+        raise AssertionError("1+1/Y from Hirota")
+
+    # Check the full interior Y-system relation using the four neighbouring
+    # Hirota squares around (a,s), without assuming a global T-system solution.
+    t_as = Fraction(11, 5)
+    t_a_sp2 = Fraction(17, 3)
+    t_a_sm2 = Fraction(19, 7)
+    t_ap_sp = Fraction(23, 5)
+    t_am_sp = Fraction(29, 11)
+    t_ap_sm = Fraction(31, 13)
+    t_am_sm = Fraction(37, 17)
+    t_ap2_s = Fraction(41, 19)
+    t_am2_s = Fraction(43, 23)
+
+    upper_base = t_ap_sp * t_am_sp
+    upper_y_part = t_a_sp2 * t_as
+    lower_base = t_ap_sm * t_am_sm
+    lower_y_part = t_as * t_a_sm2
+    right_y_part = t_ap_sp * t_ap_sm
+    right_base = t_ap2_s * t_as
+    left_y_part = t_am_sp * t_am_sm
+    left_base = t_as * t_am2_s
+
+    y_system_left = (
+        (upper_base + upper_y_part)
+        * (lower_base + lower_y_part)
+        / ((right_y_part + right_base) * (left_y_part + left_base))
+    )
+    y_system_right = (
+        (1 + upper_y_part / upper_base)
+        * (1 + lower_y_part / lower_base)
+        / ((1 + right_base / right_y_part) * (1 + left_base / left_y_part))
+    )
+    if y_system_left != y_system_right:
+        raise AssertionError("interior T-hook Hirota-to-Y-system identity")
+
+    def gauge_labels(a_value: int, s_value: int, shift: int = 0) -> Counter[tuple[str, int]]:
+        return Counter(
+            {
+                ("g1", a_value + s_value + shift): 1,
+                ("g2", a_value - s_value + shift): 1,
+                ("g3", -a_value - s_value + shift): 1,
+                ("g4", -a_value + s_value + shift): 1,
+            }
+        )
+
+    a_value, s_value = 4, 1
+    center_shifted_labels = gauge_labels(a_value, s_value, 1) + gauge_labels(
+        a_value, s_value, -1
+    )
+    if center_shifted_labels != (
+        gauge_labels(a_value + 1, s_value) + gauge_labels(a_value - 1, s_value)
+    ):
+        raise AssertionError("Hirota gauge covariance failed for horizontal product")
+    if center_shifted_labels != (
+        gauge_labels(a_value, s_value + 1) + gauge_labels(a_value, s_value - 1)
+    ):
+        raise AssertionError("Hirota gauge covariance failed for vertical product")
+
+    y_numerator_labels = gauge_labels(a_value, s_value + 1) + gauge_labels(
+        a_value, s_value - 1
+    )
+    y_denominator_labels = gauge_labels(a_value + 1, s_value) + gauge_labels(
+        a_value - 1, s_value
+    )
+    if y_numerator_labels != y_denominator_labels:
+        raise AssertionError("T-gauge factors should cancel in Y-functions")
 
 
 def check_t_gauge_resolvent_hirota_factorization() -> None:

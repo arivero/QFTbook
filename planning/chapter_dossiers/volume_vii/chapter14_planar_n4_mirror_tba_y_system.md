@@ -86,8 +86,12 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   one-index kernel identity.
 - Derives the one-wing `n|w` Y-system relation from the mirror TBA by applying
   the kernel inverse and then the strip-analytic inverse of `s`.
-- States the T-hook Y-system relation, derives its local Hirota origin, and
-  warns that Y-system equations alone do not define the spectrum.
+- Defines the planar `N=4` bulk T-hook domain, with `T_{0,s}` adjoined as a
+  gauge boundary, proves the local Hirota origin of the interior Y-system
+  relation, and proves cancellation of the four-function T-gauge redundancy
+  in `Y_{a,s}`.  Boundary-node modifications are separated from the interior
+  algebra.
+- Warns that Y-system equations alone do not define the spectrum.
 - Proves the local shifted zero-pole source-factor identity
   `B_a^+ B_a^-=(u-a+i)/(u-a-i)`, explaining how contour and sheet data enter
   analytic Y-system equations as rational source factors.
@@ -114,8 +118,11 @@ node domain.
 
 ## Calculation Checks
 
-- `calculation-checks/planar_n4_integrability_checks.py` verifies a local
-  Hirota-to-Y-system algebra identity.
+- `calculation-checks/planar_n4_integrability_checks.py` verifies the local
+  Hirota-to-Y-system algebra: the `1+Y` and `1+1/Y` identities, the full
+  interior T-hook Y-system product relation, Hirota covariance under the
+  four-function T-gauge, and exact cancellation of T-gauge factors in
+  `Y_{a,s}`.
 - The same script verifies the mirror double-Wick dispersion identity.
 - The same script verifies the mirror Zhukovsky sheet parametrization, including
   inside/outside status, shortening, stringbook mirror-momentum sign, and weak

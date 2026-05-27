@@ -1152,3 +1152,41 @@ Calculation checks added:
 - Strengthened `check_crossing_rhs_is_sheet_sensitive()` so it checks the
   exact reciprocal relation on several physical-branch samples and verifies
   the algebraic counterexample used in the text.
+
+## Continuation XXXVIII: Interior T-Hook Y-System Algebra
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Source/standard motivation:
+
+- Chapter 14 already derived the auxiliary-wing Y-system from TBA kernels, but
+  the passage from local Hirota T-functions to the full interior T-hook
+  Y-system was still compressed into "direct substitution."  Since QSC uses
+  exactly this T-gauge redundancy and T-hook boundary data, the monograph
+  should spell out the local algebra and identify where boundary modifications
+  enter.
+
+Content added:
+
+- Defined the planar `N=4` bulk T-hook domain used by the interior functional
+  relation, with `T_{0,s}` adjoined as a gauge boundary and zero T-functions
+  outside that hook-plus-boundary domain.
+- Added a proposition proving that Hirota plus
+  `Y_{a,s}=T_{a,s+1}T_{a,s-1}/(T_{a+1,s}T_{a-1,s})` gives the interior
+  Y-system relation.  The proof derives the local `1+Y` and `1+1/Y`
+  identities, applies them to the four neighboring Hirota squares, and
+  cancels the common T-product.
+- Proved that the four-function Hirota gauge
+  `T_{a,s}->g_1^[a+s]g_2^[a-s]g_3^[-a-s]g_4^[-a+s]T_{a,s}` cancels in
+  `Y_{a,s}`, while analytic QSC gauge data still must fix cuts, asymptotics,
+  and gluing.
+
+Calculation checks added:
+
+- Strengthened `check_t_system_to_y_system_identity()` with exact rational
+  checks of the full interior T-hook product relation, Hirota gauge
+  covariance, and cancellation of the T-gauge labels in `Y_{a,s}`.

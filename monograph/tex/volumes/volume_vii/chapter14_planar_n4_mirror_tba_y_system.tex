@@ -885,8 +885,21 @@ why the analytic data below are part of the finite-volume spectral problem.
 \end{proof}
 
 The TBA equations imply functional relations among Y-functions after applying
-kernel identities and shifting the spectral parameter.  On the interior of
-the planar \(\mathcal N=4\) T-hook, the relation has the form
+kernel identities and shifting the spectral parameter.  The bulk of the
+planar \(\mathcal N=4\) T-hook is the subset
+\[
+  \mathfrak T_{\rm bulk}
+  =
+  \{(a,s): a\in\mathbb Z_{\ge1},\ s\in\mathbb Z,\ |s|\le2\}
+  \cup
+  \{(a,s): a=1,2,\ s\in\mathbb Z\}.
+\]
+The row \(a=0\) is adjoined as a gauge boundary \(T_{0,s}\); outside
+\(\mathfrak T_{\rm bulk}\) and this boundary row one sets \(T_{a,s}=0\).  A
+Y-node is called interior when \(a\geq1\) and all four neighbouring
+T-functions appearing below belong to \(\mathfrak T_{\rm bulk}\) or to the
+boundary row, and are non-zero on the patch under consideration.  On such
+nodes the local relation has the form
 \begin{equation}
   Y_{a,s}^+(u)Y_{a,s}^-(u)
   =
@@ -898,29 +911,91 @@ where
 \[
   f^\pm(u)=f(u\pm\ii/2).
 \]
-The indices \((a,s)\) lie in the T-hook domain determined by the two
-\(\mathfrak{su}(2|2)\) wings.  Boundary nodes require modified relations.
+Boundary nodes require modified relations because one of the four neighboring
+T-functions has left the hook.
 
-The same relation may be obtained from Hirota \(T\)-functions.  If
-\[
-  Y_{a,s}
-  =
-  \frac{T_{a,s+1}T_{a,s-1}}{T_{a+1,s}T_{a-1,s}}
-\]
-and the \(T\)-functions obey
+\begin{proposition}[Hirota origin of the interior T-hook Y-system]
+\label{prop:planar-n4-hirota-origin-y-system}
+Let \(T_{a,s}\) be non-zero on an interior patch of the T-hook and obey
+Hirota,
 \[
   T_{a,s}^+T_{a,s}^-
   =
-  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1},
+  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1}.
 \]
-then the interior Y-system equation follows by direct substitution.  The
-representation has gauge redundancy
+Define
 \[
+  Y_{a,s}
+  =
+  \frac{T_{a,s+1}T_{a,s-1}}{T_{a+1,s}T_{a-1,s}} .
+\]
+Then \(Y_{a,s}\) obeys
+\eqref{eq:planar-n4-y-system} at every interior node.  Moreover \(Y_{a,s}\)
+is invariant under the local Hirota gauge transformation
+\begin{equation}
   T_{a,s}\mapsto
   g_1^{[a+s]}g_2^{[a-s]}g_3^{[-a-s]}g_4^{[-a+s]}T_{a,s},
+  \label{eq:planar-n4-t-gauge-redundancy}
+\end{equation}
+where \(f^{[n]}(u)=f(u+\ii n/2)\).
+\end{proposition}
+
+\begin{proof}
+Hirota at \((a,s)\) gives the two useful identities
+\[
+  1+Y_{a,s}
+  =
+  \frac{T_{a,s}^+T_{a,s}^-}{T_{a+1,s}T_{a-1,s}},
+  \qquad
+  1+\frac1{Y_{a,s}}
+  =
+  \frac{T_{a,s}^+T_{a,s}^-}{T_{a,s+1}T_{a,s-1}} .
 \]
-so a QSC derivation must also state the analytic gauge in which the cuts and
-asymptotics are imposed.
+Now compute
+\[
+  Y_{a,s}^+Y_{a,s}^-
+  =
+  \frac{
+    T_{a,s+1}^+T_{a,s+1}^-
+    T_{a,s-1}^+T_{a,s-1}^-
+  }{
+    T_{a+1,s}^+T_{a+1,s}^-
+    T_{a-1,s}^+T_{a-1,s}^-
+  } .
+\]
+Applying the two displayed identities to the four neighboring nodes turns the
+numerator into
+\[
+  (1+Y_{a,s+1})(1+Y_{a,s-1})
+  T_{a+1,s+1}T_{a-1,s+1}T_{a+1,s-1}T_{a-1,s-1},
+\]
+and the denominator into
+\[
+  (1+Y_{a+1,s}^{-1})(1+Y_{a-1,s}^{-1})
+  T_{a+1,s+1}T_{a+1,s-1}T_{a-1,s+1}T_{a-1,s-1}.
+\]
+The common T-product cancels, proving
+\eqref{eq:planar-n4-y-system}.
+
+For the gauge statement, let
+\[
+  \mathcal G(a,s)
+  =
+  \{(1,a+s),(2,a-s),(3,-a-s),(4,-a+s)\}
+\]
+record which \(g_i\) appears with which shift.  The numerator of \(Y_{a,s}\)
+has gauge multiset
+\[
+  \mathcal G(a,s+1)\sqcup\mathcal G(a,s-1),
+\]
+and the denominator has
+\[
+  \mathcal G(a+1,s)\sqcup\mathcal G(a-1,s).
+\]
+These two multisets are identical.  Hence all gauge factors cancel.  The
+calculation is local; analytic gauge choices in the QSC additionally fix
+cuts, asymptotics, and gluing data.
+\end{proof}
 
 \begin{warning}[Y-system data are not only equations]
 \label{warn:y-system-not-complete}
