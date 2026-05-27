@@ -64,6 +64,10 @@ GitHub issue #628.
 - `varphi_L`, `varphi_R`, `B_L`, `B_R`, `Sigma`: gauge-covariant
   antisymmetric CFL diquarks and the gauge-invariant baryon-superfluid and
   chiral composites used to diagnose the physical CFL symmetry realization.
+- `C_E`, `C_M`, `F_H`, `v_H`, `m_E`, `m_M`: gauge-invariant static
+  screening correlators and the low-energy CFL Higgs-screening coefficients.
+- `F_pi`, `F_B`, `v_pi`, `v_B`, `phi_B`: CFL chiral and baryon-superfluid
+  collective-mode coefficients and baryon phase.
 
 ## Claim Ledger
 
@@ -162,8 +166,11 @@ GitHub issue #628.
   antisymmetry in spin-zero \(s\)-wave pairing, defines the CFL condensate
   datum, constructs gauge-invariant local and Wilson-line CFL diagnostics,
   proves the gauge-averaging statement excluding a gauge-covariant diquark
-  one-point function as a physical local order parameter, and proves the
-  physical Goldstone count.
+  one-point function as a physical local order parameter, defines
+  gauge-invariant static electric and magnetic screening exponents, derives
+  the CFL Higgs screening mass matrix from the trace-delta effective action,
+  proves the physical Goldstone count, and derives the ideal CFL chiral-octet
+  and baryon-phonon dispersions from the leading low-energy action.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -189,7 +196,8 @@ GitHub issue #628.
   dense one-gluon-exchange color-factor bookkeeping,
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, CFL gauge-invariant
-  composite charge bookkeeping, and CFL Goldstone count.
+  composite charge bookkeeping, CFL screening-sector and collective-mode
+  count bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -250,3 +258,7 @@ GitHub issue #628.
   Wilson-line diquark correlator, and the finite-volume gauge-averaging proof
   that the diquark one-point function is not itself a physical local order
   parameter.
+- 2026-05-27 CFL screening and collective-mode pass: added gauge-invariant
+  static screening correlators, the CFL Higgs screening effective action and
+  mass-matrix derivation, and the leading chiral-octet/baryon-phonon
+  collective-mode action and dispersion derivation.

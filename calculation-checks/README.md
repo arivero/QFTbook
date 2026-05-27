@@ -65,7 +65,8 @@ Current checks:
   patch-curvature coefficients, one-gluon exchange color factors in dense
   pairing channels, leading-log magnetic gap coefficient and exponent
   conversion, baryon-number cumulants and radius estimators, CFL
-  gauge-invariant composite charges, and the CFL Goldstone count.
+  gauge-invariant composite charges, CFL screening-sector and collective-mode
+  counts, and the CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact

@@ -3017,6 +3017,243 @@ direct lattice importance sampling is obstructed by
 Proposition~\ref{prop:qcd-finite-density-sign-problem}.
 \end{proof}
 
+\begin{definition}[Gauge-invariant static screening diagnostics in dense QCD]
+\label{def:qcd-gauge-invariant-static-screening}
+Let \(x=(0,\mathbf x)\), \(y=(0,\mathbf y)\), and let \(\gamma\) be a
+spatial path from \(y\) to \(x\).  For the canonically normalized color
+gauge potential \(a_\mu=a_\mu^aT^a\), with field strength
+\(\mathfrak f_{\mu\nu}=\mathfrak f_{\mu\nu}^aT^a\), define the Wilson-line
+completed static electric and magnetic correlators
+\[
+  C_E(r;\gamma)
+  =
+  \sum_{i=1}^3
+  \left\langle
+  \operatorname{tr}\!\left[
+    \mathfrak f_{0i}(x)\,
+    W_{\square}(\gamma)\,
+    \mathfrak f_{0i}(y)\,
+    W_{\square}(\gamma)^{-1}
+  \right]\right\rangle_{\rm conn},
+\]
+\[
+  C_M(r;\gamma)
+  =
+  \frac12\sum_{i,j=1}^3
+  \left\langle
+  \operatorname{tr}\!\left[
+    \mathfrak f_{ij}(x)\,
+    W_{\square}(\gamma)\,
+    \mathfrak f_{ij}(y)\,
+    W_{\square}(\gamma)^{-1}
+  \right]\right\rangle_{\rm conn},
+  \qquad
+  r=|\mathbf x-\mathbf y|.
+  \label{eq:qcd-cfl-screening-correlators}
+\]
+The static electric and magnetic screening exponents are the leading
+large-\(r\) exponential decay rates, when they exist after the
+thermodynamic and continuum limits,
+\[
+  m_E=-\lim_{r\to\infty}\frac1r\log |C_E(r;\gamma_r)|,
+  \qquad
+  m_M=-\lim_{r\to\infty}\frac1r\log |C_M(r;\gamma_r)|,
+  \label{eq:qcd-cfl-screening-exponents}
+\]
+for a specified family of paths \(\gamma_r\).  In weakly coupled phases
+these exponents are computed by a gauge-fixed long-distance effective
+action, but equations
+\eqref{eq:qcd-cfl-screening-correlators}--\eqref{eq:qcd-cfl-screening-exponents}
+are the gauge-invariant diagnostic.
+\end{definition}
+
+\begin{controlledapproximation}[CFL Higgs screening effective action]
+\label{ca:qcd-cfl-higgs-screening-effective-action}
+In a dense state with the CFL long-distance order of
+Definition~\ref{def:qcd-cfl-gauge-invariant-diagnostics}, introduce a
+local gauge-covariant coordinate \(U(x)\in SU(3)\) for the color-flavor
+locked orientation.  Under a color gauge transformation \(h(x)\) and a
+global locked flavor transformation \(g\), it transforms as
+\[
+  U(x)\longmapsto h(x)U(x)g^{-1}.
+\]
+The leading static screening part of the long-distance effective action is
+\[
+  \mathcal L_{\rm H}
+  =
+  \frac{F_H^2}{2}
+  \operatorname{tr}\!\left[(D_0U)^\dagger D_0U\right]
+  -
+  \frac{F_H^2v_H^2}{2}
+  \operatorname{tr}\!\left[(D_iU)^\dagger D_iU\right],
+  \label{eq:qcd-cfl-higgs-screening-action}
+\]
+where
+\[
+  D_\mu U=\partial_\mu U-i g\,a_\mu^aT^aU,
+  \qquad
+  \operatorname{tr}_{\square}(T^aT^b)=\delta^{ab}.
+\]
+The constants \(F_H>0\) and \(0<v_H\le1\) are low-energy coefficients of
+the dense medium.  Symmetry fixes the tensor structure of
+\eqref{eq:qcd-cfl-higgs-screening-action}, not the microscopic numerical
+value of \(F_H\) or \(v_H\).
+\end{controlledapproximation}
+
+\begin{proposition}[CFL Higgs screening mass matrix]
+\label{prop:qcd-cfl-higgs-screening-mass-matrix}
+In the CFL Higgs-screening effective action, the color-flavor-locked
+background gives equal screening masses to all eight color gauge fields.  More
+precisely, within
+Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action},
+one has
+\[
+  (m_E^2)^{ab}=g^2F_H^2\,\delta^{ab},
+  \qquad
+  (m_M^2)^{ab}=g^2F_H^2v_H^2\,\delta^{ab}.
+  \label{eq:qcd-cfl-higgs-screening-masses}
+\]
+These masses are coefficients in the gauge-fixed quadratic effective action
+whose gauge-invariant content is the exponential screening described by
+Definition~\ref{def:qcd-gauge-invariant-static-screening}.
+\end{proposition}
+
+\begin{proof}
+Use the gauge freedom to set \(U=1\) locally; this is unitary gauge for the
+Higgs-coordinate chart, not a definition of a gauge-invariant operator.
+Then
+\[
+  D_\mu U=-i g\,a_\mu^aT^a .
+\]
+Substitution into \eqref{eq:qcd-cfl-higgs-screening-action} gives
+\[
+  \mathcal L_{\rm H}^{(2)}
+  =
+  \frac{g^2F_H^2}{2}
+  a_0^aa_0^b\operatorname{tr}(T^aT^b)
+  -
+  \frac{g^2F_H^2v_H^2}{2}
+  a_i^aa_i^b\operatorname{tr}(T^aT^b).
+\]
+The trace convention of the chapter makes
+\(\operatorname{tr}(T^aT^b)=\delta^{ab}\).  Therefore the quadratic
+coefficients are exactly the matrices displayed in
+\eqref{eq:qcd-cfl-higgs-screening-masses}.  The equality of the eight
+eigenvalues follows from the unbroken diagonal \(SU(3)\): the gluons form
+the adjoint representation of this diagonal group, and the quadratic mass
+operator is an invariant bilinear form on the adjoint.  Since the adjoint of
+\(SU(3)\) is simple, this invariant form is proportional to
+\(\delta^{ab}\), and the direct computation fixes the proportionality
+constant.
+\end{proof}
+
+\begin{definition}[CFL collective fields]
+\label{def:qcd-cfl-collective-fields}
+Ignoring quark-mass effects and the anomalous axial \(U(1)\), the
+gauge-invariant low-energy collective fields of the CFL phase are:
+\[
+  \Sigma(x)\in SU(3),
+  \qquad
+  \Sigma\longmapsto g_L\Sigma g_R^{-1},
+\]
+for the chiral octet, and
+\[
+  e^{i\phi_B(x)}\in U(1)_B,
+  \qquad
+  \phi_B\longmapsto \phi_B+\alpha_B ,
+\]
+for the baryon superfluid phase.  The leading real-time effective
+Lagrangian in the rest frame of the dense medium is
+\[
+  \mathcal L_{\rm CFL,NGB}
+  =
+  \frac{F_\pi^2}{4}
+  \operatorname{tr}\!\left[
+    \partial_0\Sigma\,\partial_0\Sigma^\dagger
+    -
+    v_\pi^2\partial_i\Sigma\,\partial_i\Sigma^\dagger
+  \right]
+  +
+  \frac{F_B^2}{2}
+  \left[
+    (\partial_0\phi_B)^2
+    -
+    v_B^2(\partial_i\phi_B)^2
+  \right]
+  +\cdots .
+  \label{eq:qcd-cfl-ngb-effective-action}
+\]
+The constants \(F_\pi,F_B,v_\pi,v_B\) are dense-medium low-energy
+coefficients.  The ellipsis contains higher derivatives, mass-source terms,
+and anomaly-suppressed effects.
+\end{definition}
+
+\begin{proposition}[Physical collective-mode content of ideal CFL]
+\label{prop:qcd-cfl-collective-mode-content}
+Under the assumptions of
+Definition~\ref{def:qcd-cfl-collective-fields}, the ideal CFL phase has
+eight chiral Nambu--Goldstone modes and one baryon superfluid phonon.  To
+quadratic order their dispersion relations are
+\[
+  \omega^2=v_\pi^2\mathbf k^2
+  \quad\text{for the chiral octet},
+  \qquad
+  \omega^2=v_B^2\mathbf k^2
+  \quad\text{for the baryon phonon}.
+  \label{eq:qcd-cfl-ngb-dispersions}
+\]
+The eight color-orientation modes are not additional physical
+Nambu--Goldstone particles; in the screening effective action they are the
+fields removed by the Higgs mechanism and are represented physically by
+the eight screened color gauge sectors of
+Proposition~\ref{prop:qcd-cfl-higgs-screening-mass-matrix}.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  \Sigma(x)=\exp\!\left(\frac{2i\pi^a(x)\tau^a}{F_\pi}\right),
+  \qquad
+  \operatorname{tr}(\tau^a\tau^b)=\delta^{ab},
+\]
+where \(a=1,\ldots,8\).  Expanding
+\eqref{eq:qcd-cfl-ngb-effective-action} to quadratic order gives
+\[
+  \mathcal L_{\pi}^{(2)}
+  =
+  \frac12\sum_{a=1}^8
+  \left[
+    (\partial_0\pi^a)^2
+    -
+    v_\pi^2(\partial_i\pi^a)^2
+  \right],
+\]
+after the displayed normalization of the exponential is used.  The Euler
+equation is
+\[
+  \partial_0^2\pi^a-v_\pi^2\nabla^2\pi^a=0,
+\]
+so a plane wave has \(\omega^2=v_\pi^2\mathbf k^2\).  The field
+\(\Sigma\in SU(3)\) has dimension \(8\), hence the chiral sector contains
+eight modes.
+
+The baryon phase part of \eqref{eq:qcd-cfl-ngb-effective-action} gives
+\[
+  \partial_0^2\phi_B-v_B^2\nabla^2\phi_B=0,
+\]
+and therefore the second dispersion relation in
+\eqref{eq:qcd-cfl-ngb-dispersions}.  This is one real compact phase field.
+Finally, the color orientation \(U\) in
+Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action}
+has eight local coordinates, but it transforms under local color.  The
+unitary-gauge computation in
+Proposition~\ref{prop:qcd-cfl-higgs-screening-mass-matrix} shows that those
+coordinates are not gauge-invariant massless particles; they supply the
+longitudinal screening components of the eight color gauge sectors.  Thus
+the physical gapless count is \(8+1=9\), matching
+Proposition~\ref{prop:qcd-cfl-goldstone-count}.
+\end{proof}
+
 \section{Comparison of Confinement Criteria}
 
 Several observables are often described by the same word ``confinement.''  In

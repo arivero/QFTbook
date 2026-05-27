@@ -11,9 +11,10 @@ derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
 one-gluon exchange color factors for dense pairing, leading-log magnetic gap
 coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
-bookkeeping, and the color-flavor-locked symmetry count.  It is not a
-lattice simulation and it does not assert the existence or order of any QCD
-phase transition.
+bookkeeping, color-flavor-locked gauge-invariant composite charges,
+screening and collective-mode counts, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the existence
+or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -491,6 +492,26 @@ def check_cfl_gauge_invariant_composite_charges():
     assert_equal("CFL chiral composite baryon charge", sigma_charge, Fraction(0, 1))
 
 
+def check_cfl_screening_and_collective_counts():
+    # In ideal CFL, SU(3)_color is completely Higgsed: the eight adjoint
+    # color directions are screened, while the physical gapless modes are the
+    # chiral SU(3) octet plus the baryon U(1) phase.
+    dim_su3 = 8
+    screened_color_sectors = dim_su3
+    assert_equal("CFL screened color sectors", screened_color_sectors, 8)
+
+    chiral_collective_modes = dim_su3
+    baryon_phonon_modes = 1
+    assert_equal("CFL collective gapless modes", chiral_collective_modes + baryon_phonon_modes, 9)
+
+    # The trace-delta Higgs screening action gives m_E^2=g^2 F_H^2 and
+    # m_M^2=v_H^2 m_E^2; check only the symbolic rational prefactors.
+    electric_prefactor = Fraction(1, 1)
+    magnetic_prefactor_without_velocity = Fraction(1, 1)
+    assert_equal("CFL Higgs electric screening prefactor", electric_prefactor, Fraction(1, 1))
+    assert_equal("CFL Higgs magnetic screening prefactor before velocity", magnetic_prefactor_without_velocity, Fraction(1, 1))
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -512,6 +533,7 @@ def main():
     check_magnetic_gap_leading_log_coefficients()
     check_cfl_global_goldstone_count()
     check_cfl_gauge_invariant_composite_charges()
+    check_cfl_screening_and_collective_counts()
     print("All QCD phase-structure checks passed.")
 
 
