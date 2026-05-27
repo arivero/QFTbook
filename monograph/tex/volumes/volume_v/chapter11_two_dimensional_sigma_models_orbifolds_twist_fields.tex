@@ -2854,6 +2854,8 @@ The Ward identity
 then gives \eqref{eq:cyclic-permutation-twist-weight}.
 \end{proof}
 
+\begin{proposition}[Free-boson rotation twist weight]
+\label{prop:complex-boson-rotation-twist-weight}
 For a single complex free boson \(Z\) with rotation
 \[
   Z(\ee^{2\pi\ii}z,\ee^{-2\pi\ii}\bar z)
@@ -2861,15 +2863,55 @@ For a single complex free boson \(Z\) with rotation
   \ee^{2\pi\ii\alpha}Z(z,\bar z),
   \qquad 0\le\alpha<1,
 \]
-the twisted oscillator frequencies are \(n+\alpha\) and \(n+1-\alpha\).
-Zeta-regularizing the normal-ordering shift relative to the untwisted sector
-gives
+the holomorphic ground twist field has
 \begin{equation}
   h_\alpha
   =
   \frac12\alpha(1-\alpha).
   \label{eq:complex-boson-rotation-twist-weight}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+The monodromy shifts the holomorphic oscillator moding of \(\partial Z\) and
+\(\partial\bar Z\) by \(\alpha\) and \(1-\alpha\).  With the convention that
+positive oscillator frequencies contribute \(\frac12 r\) to the
+normal-ordering constant, the twisted zero-point contribution relative to the
+untwisted complex boson is
+\[
+  E_0(\alpha)-E_0(0)
+  =
+  \frac12\sum_{n=0}^\infty(n+\alpha)
+  +\frac12\sum_{n=0}^\infty(n+1-\alpha)
+  -\sum_{n=1}^\infty n .
+\]
+The sums are not ordinary convergent sums; they define the local
+normal-ordering constant by Hurwitz-zeta continuation,
+\[
+  \sum_{n=0}^\infty(n+x)
+  :=
+  \zeta(-1,x)
+  =
+  -\frac12\left(x^2-x+\frac16\right).
+\]
+At the endpoint \(\alpha=0\), this expression is read as the untwisted
+sector value, equivalently as the continuous limit \(\alpha\downarrow0\)
+after the zero-frequency mode has been omitted from the oscillator energy.
+Therefore
+\[
+  E_0(\alpha)-E_0(0)
+  =
+  \frac12\zeta(-1,\alpha)
+  +\frac12\zeta(-1,1-\alpha)
+  -\zeta(-1,1)
+  =
+  \frac12\alpha(1-\alpha).
+\]
+The twist ground state is a Virasoro primary, and its \(L_0\) eigenvalue is
+this shifted zero-point energy, giving
+\eqref{eq:complex-boson-rotation-twist-weight}.
+\end{proof}
+
 For one real boson with \(\mathbb Z_2\) reflection, this is half of the
 complex-boson answer at \(\alpha=1/2\):
 \[

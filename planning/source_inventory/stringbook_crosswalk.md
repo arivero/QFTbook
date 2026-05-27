@@ -253,7 +253,9 @@ Current absorption:
   spectrum-status conventions stated before the gauged sigma-model
   geometries.  The monograph now also checks the bell and cigar
   one-loop Weyl-anomaly equations directly from the rotational curvature
-  formulas.  The symmetric-product orbifold pass now includes the
+  formulas.  The orbifold twist-field pass now derives the complex-boson
+  rotation twist weight from the fractional oscillator normal-ordering
+  constant.  The symmetric-product orbifold pass now includes the
   connected-torus-cover Hermite-normal-form count behind the Hecke transform
   and the constant-seed partition-number normalization test, together with a
   Riemann--Hurwitz monodromy ledger for the first twist-correlator covering

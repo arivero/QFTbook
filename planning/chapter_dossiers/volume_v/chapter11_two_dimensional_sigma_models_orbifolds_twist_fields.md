@@ -136,7 +136,8 @@
   transformations.
 - Defines twist fields as endpoints of monodromy lines and derives cyclic
   permutation twist weights by the Schwarzian covering map.
-- Records complex-boson rotation twist weights and the real
+- Derives complex-boson rotation twist weights by the fractional oscillator
+  normal-ordering shift and records the real
   \(\mathbb Z_2\) value \(h=\bar h=1/16\).
 - Defines the symmetric-product orbifold
   \(\operatorname{Sym}^N(\mathcal C)=\mathcal C^{\otimes N}/S_N\),
@@ -250,8 +251,10 @@
    trivialization is chosen.
 32. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-33. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
-   reflection twist field has \(h=1/16\).
+33. The cyclic twist weight equals \(c_0(K-K^{-1})/24\); for a complex boson
+   with rotation angle \(\alpha\), the Hurwitz-zeta oscillator shift gives
+   \(h_\alpha=\alpha(1-\alpha)/2\), and the real reflection twist field has
+   \(h=1/16\).
 34. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
@@ -336,7 +339,9 @@
 ## Checks
 
 - `calculation-checks/orbifold_twist_weight_checks.py` verifies the finite
-  rational arithmetic of the cyclic permutation and rotation twist weights.
+  rational arithmetic of the cyclic permutation twist weight, the
+  Schwarzian-cover derivation, and the Hurwitz-zeta oscillator derivation of
+  the rotation twist weight.
 - `calculation-checks/narain_lattice_cocycle_checks.py` verifies the lattice
   cocycle identities, sample even-unimodular Gram matrices, the
   \(B\)-independence of the Narain integral pairing, and the modular

@@ -504,8 +504,9 @@ Current checks:
 - `orbifold_twist_weight_checks.py`: finite rational checks for the
   two-dimensional orbifold chapter, including the cyclic permutation twist
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
-  \(c_0=6\) length-two value \(h=3/8\), and the real
-  \(\mathbb Z_2\) reflection twist value \(h=1/16\).
+  \(c_0=6\) length-two value \(h=3/8\), the Hurwitz-zeta oscillator derivation
+  of the complex rotation twist weight, and the real \(\mathbb Z_2\)
+  reflection twist value \(h=1/16\).
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
