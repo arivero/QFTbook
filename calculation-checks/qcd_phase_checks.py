@@ -4,12 +4,13 @@
 The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
-one-loop Polyakov-holonomy coefficients, and the color-flavor-locked
-symmetry count.  It is not a lattice simulation and it does not assert the
-existence or order of any QCD phase transition.
+one-loop Polyakov-holonomy coefficients, baryon-number cumulants, and the
+color-flavor-locked symmetry count.  It is not a lattice simulation and it
+does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
+from math import factorial
 
 
 def assert_equal(label, actual, expected):
@@ -138,6 +139,43 @@ def check_weiss_holonomy_potential_coefficients():
     assert_equal("adjoint center charge", (1 - 1) % nc, 0)
 
 
+def check_baryon_cumulants_and_radius_estimator():
+    # Symmetric finite-volume baryon-number distribution at mu_B=0.
+    weights = [Fraction(1, 4), Fraction(1, 2), Fraction(1, 4)]
+    baryon_numbers = [Fraction(-1), Fraction(0), Fraction(1)]
+    volume = Fraction(5)
+    temperature = Fraction(2)
+    normalization = volume * temperature**3
+
+    moments = {
+        power: sum(w * b**power for w, b in zip(weights, baryon_numbers))
+        for power in range(1, 5)
+    }
+    mean = moments[1]
+    second_cumulant = moments[2] - mean * mean
+    third_cumulant = moments[3] - 3 * moments[2] * mean + 2 * mean**3
+    fourth_cumulant = (
+        moments[4]
+        - 4 * moments[3] * mean
+        - 3 * moments[2] * moments[2]
+        + 12 * moments[2] * mean * mean
+        - 6 * mean**4
+    )
+
+    assert_equal("charge-conjugation odd first cumulant", mean, Fraction(0))
+    assert_equal("charge-conjugation odd third cumulant", third_cumulant, Fraction(0))
+    assert_equal("baryon second susceptibility", second_cumulant / normalization, Fraction(1, 80))
+    assert_equal("baryon fourth susceptibility", fourth_cumulant / normalization, Fraction(-1, 160))
+
+    # If chi_{2n}/(2n)! = R^{-2n}, the standard even ratio estimator returns R.
+    radius = Fraction(3)
+    n = 2
+    chi_2n = factorial(2 * n) * radius ** (-2 * n)
+    chi_2n_plus_2 = factorial(2 * n + 2) * radius ** (-2 * n - 2)
+    ratio_squared = Fraction((2 * n + 2) * (2 * n + 1)) * chi_2n / chi_2n_plus_2
+    assert_equal("even susceptibility ratio estimator squared", ratio_squared, radius * radius)
+
+
 def check_linde_magnetic_scale():
     # In four dimensions, g_3^2 = g^2 T has mass dimension one.  A purely
     # magnetic three-dimensional vacuum free-energy density scales as (g_3^2)^3.
@@ -165,6 +203,7 @@ def main():
     check_fugacity_laurent_polynomial_shift()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
+    check_baryon_cumulants_and_radius_estimator()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")

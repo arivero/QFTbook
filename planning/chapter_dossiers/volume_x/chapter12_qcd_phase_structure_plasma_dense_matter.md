@@ -29,6 +29,8 @@ GitHub issue #628.
   eigenvalue density.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
+- `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
+  baryon-number cumulants, susceptibilities, and Cauchy--Hadamard radius.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
 
 ## Claim Ledger
@@ -68,6 +70,10 @@ GitHub issue #628.
   phenomenological language.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
+- Defines baryon-number susceptibilities as finite-regulator source
+  derivatives at \(x=\mu_B/T=0\), proves the cumulant identities, and
+  separates radius-of-convergence diagnostics from claims about a real QCD
+  critical endpoint.
 - Defines the CFL condensate datum and performs the physical Goldstone count.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
@@ -84,8 +90,8 @@ GitHub issue #628.
   Stefan--Boltzmann coefficients, baryon-chemical-potential coefficients,
   Banks--Casher kernel normalization, Linde magnetic-scale power counting,
   fugacity Laurent-polynomial shift, source-curvature susceptibility
-  identity, one-loop Polyakov-holonomy potential coefficients, and CFL
-  Goldstone count.
+  identity, one-loop Polyakov-holonomy potential coefficients,
+  baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -101,3 +107,6 @@ GitHub issue #628.
 - 2026-05-27 holonomy pass: added a controlled one-loop high-temperature
   Polyakov-holonomy derivation, center-minimum proof, center-symmetric
   holonomy energy cost, and fundamental-quark center-source term.
+- 2026-05-27 baryon-susceptibility pass: added finite-regulator cumulant
+  definitions, explicit first/second/fourth cumulant formulas, the
+  Cauchy--Hadamard diagnostic, and ratio-estimator status hypotheses.
