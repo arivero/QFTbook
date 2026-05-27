@@ -55,6 +55,10 @@ chapters.
   \(Q_e(U_e)=\frac13\operatorname{Re}\operatorname{Tr}_3(U_eV_e)+Q_{\widehat e}\).
 - `nu_{alpha,e}(h|U)`: conditional subgroup density for an \(SU(3)\)
   Cabibbo-Marinari type link update.
+- `Q(U)=sum_p 1/3 Re Tr_3 U_p`: normalized finite \(SU(3)\) Wilson
+  plaquette score used by the HDF5 companion sampler.
+- `sample,R,T,W`: sample-level Wilson-loop table coordinates exported by
+  the finite \(SU(3)\) generator and consumed by the static-potential script.
 - `Q_Lambda`: finite-dimensional HMC configuration manifold.
 - `Gamma_Lambda`, `lambda`: finite-dimensional HMC phase space and
   reference measure.
@@ -108,6 +112,9 @@ chapters.
   \(SU(3)\) link, proves detailed balance on the subgroup orbit, and records
   the precise boundary between invariant-measure preservation and claims about
   mixing, topological freezing, or continuum extrapolation.
+- Adds the companion script `qft_scripts/su3_gauge_4d_metropolis_hdf5.py` as
+  a finite \(SU(3)\) Wilson-gauge subgroup-Metropolis data generator with
+  HDF5 measurement/checkpoint output and sample-level Wilson-loop CSV export.
 - Proves the finite-regulator HMC Metropolis-correction theorem from
   volume preservation, reversibility, and the momentum-flip involution.
 - Proves leapfrog volume preservation and reversibility in finite Euclidean
@@ -182,6 +189,10 @@ the exponential decay of average phase with volume.
   overrelaxation sweeps.  It reports plaquette and Wilson-loop measurements.
   It does not certify autocorrelation error estimates, thermodynamic limits,
   or continuum extrapolation.
+- `qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke`: finite periodic
+  four-dimensional \(SU(3)\) Wilson-gauge subgroup-Metropolis sampler.  It
+  reports plaquette and Wilson-loop measurements and can write HDF5
+  measurement/checkpoint files when `h5py` is available.
 - `qft_scripts/autocorrelation_resampling.py --smoke`: finite time-series
   diagnostic script.  It reports a windowed integrated autocorrelation
   coordinate, block means, blocked standard errors, delete-one-block
@@ -212,6 +223,10 @@ the exponential decay of average phase with volume.
   \(\mathfrak{su}(3)\) span from the three color-pair subgroups, subgroup
   commutators, local staple-score gauge covariance, and Metropolis pairwise
   balance.
+- `calculation-checks/su3_hdf5_sampler_checks.py` verifies the companion
+  \(SU(3)\) sampler's embedded subgroup proposals, local score-change
+  computation, gauge invariance, \(1\times1\) Wilson-loop/plaquette identity,
+  and HDF5 measurement/checkpoint layout.
 - `calculation-checks/hmc_pseudofermion_checks.py` verifies the finite HMC
   and pseudofermion algebra: one-dimensional leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized
@@ -243,3 +258,7 @@ the exponential decay of average phase with volume.
 - 2026-05-27 issue #631 pass: added the correlated nonlinear jackknife Taylor
   estimate and tied it to the static-potential script's sample-level
   resampling mode.
+- 2026-05-27 issue #631 pass: added a finite \(SU(3)\)
+  subgroup-Metropolis HDF5/checkpointed data generator, with explicit
+  Wilson-loop sample export feeding the static-potential/error-analysis
+  scripts.

@@ -801,6 +801,52 @@ verifies the embedded \(SU(2)\) determinants and unitarity, the
 covariance of the local staple score, and the finite Metropolis
 detailed-balance identity used in the preceding proposition.
 
+The companion data-generator
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/}\\
+  \texttt{su3\_gauge\_4d\_metropolis\_hdf5.py}
+  \end{gathered}
+\]
+implements the finite subgroup-update Metropolis kernel described above for
+the periodic four-dimensional pure \(SU(3)\) Wilson lattice model.  Its
+normalized plaquette score is
+\[
+  Q(U)=\sum_p\frac13\operatorname{Re}\operatorname{Tr}_3 U_p,
+  \qquad
+  d\nu_\beta(U)=Z_{\beta,\Lambda}^{-1}e^{\beta Q(U)}
+  \prod_{\ell}dU_\ell .
+  \label{eq:su3-script-wilson-measure}
+\]
+The script writes, when the optional package \(\texttt{h5py}\) is available,
+an HDF5 file containing the run parameters, per-sweep plaquette and
+rectangular Wilson-loop measurements, the final link field, and the state of
+the pseudorandom generator.  This is a checkpoint at the level of the finite
+Markov chain: resuming from it continues a regulator computation, not a
+continuum construction.  The script can also export the Wilson-loop
+measurements as a table with columns
+\[
+  \texttt{sample},\quad R,\quad T,\quad W ,
+\]
+which is the sample-level input expected by
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/}\\
+  \texttt{static\_potential\_from\_wilson\_loops.py}.
+  \end{gathered}
+\]
+The deterministic check
+\[
+  \begin{gathered}
+  \texttt{calculation-checks/}\\
+  \texttt{su3\_hdf5\_sampler\_checks.py}
+  \end{gathered}
+\]
+verifies the embedded-subgroup proposals, the local score change against a
+direct total-score difference, gauge invariance of the score and Wilson loop,
+the \(1\times1\) Wilson-loop/plaquette identity, and the HDF5
+measurement/checkpoint layout.
+
 \section{Hybrid Monte Carlo and Pseudofermions}
 \label{sec:hmc-pseudofermions-finite-regulator}
 
