@@ -3267,7 +3267,7 @@ dimension \(\Delta\), its twist is
 \]
 In an interacting theory \(\Delta\) is a renormalized scaling exponent of the
 chosen operator basis.  The word ``twist'' in this section is therefore a
-statement about the renormalized leading-power expansion, not merely about the
+statement about the renormalized leading-power expansion, not only about the
 engineering dimension of a classical monomial.  In the Bjorken limit, the
 leading terms in the OPE are the smallest-twist operators compatible with the
 quantum numbers of the currents.  A convenient way to collect the tower of
@@ -3724,6 +3724,348 @@ and
 \]
 The two column sums therefore vanish.
 \end{proof}
+
+\section{Transverse-Momentum Dependent Distributions and Rapidity Renormalization}
+\label{sec:qcd-tmd-rapidity-renormalization}
+
+Integrated PDFs are obtained after summing over all transverse momentum in the
+collinear sector.  Observables differential in a transverse momentum, for
+example color-singlet production with \(q_\perp^2\ll Q^2\), require a different
+operator coordinate.  The relevant nonperturbative input is not the integrated
+light-ray operator \eqref{eq:qcd-quark-light-ray-operator}; it is a
+transverse-separated light-ray matrix element with Wilson lines whose geometry
+creates rapidity divergences.  Rapidity subtraction is therefore part of the
+definition, in the same sense that ultraviolet subtraction is part of the
+definition of a renormalized local operator.
+
+Let \(n,\bar n\) be future-directed lightlike vectors with
+\(n\cdot\bar n=2\), and let \(b_\perp\) be transverse:
+\[
+  b_\perp\cdot n=b_\perp\cdot\bar n=0 .
+\]
+For a real parameter \(\lambda\), set
+\[
+  z^\mu=\lambda n^\mu+b_\perp^\mu .
+\]
+A finite rapidity regulator may be implemented by replacing lightlike Wilson
+lines by Wilson lines along non-lightlike directions \(v,\bar v\), by an
+analytic rapidity regulator, by a delta regulator, or by an equivalent
+gauge-covariant subtraction.  The monograph denotes the regulator data
+collectively by \(\rho\).  At finite \(\rho\) and finite ultraviolet cutoff
+\(\Lambda\), let
+\(\mathcal U^{[\eta]}_{v}(z,0;\rho,\Lambda)\) be a staple transporter from
+\(0\) to \(z\), with longitudinal direction \(v\), transverse bridge
+\(b_\perp\), and orientation \(\eta=+1\) for future-pointing and
+\(\eta=-1\) for past-pointing staples.
+
+\begin{definition}[TMD operator datum]
+\label{def:qcd-tmd-operator-datum}
+A quark TMD datum for a hadron \(H\) with momentum \(P\) consists of:
+\begin{enumerate}
+  \item the vectors \(n,\bar n\), a transverse separation \(b_\perp\), and an
+  orientation \(\eta\) of the staple Wilson line;
+  \item a finite rapidity regulator \(\rho\) and ultraviolet regulator
+  \(\Lambda\), both chosen in a gauge-covariant way;
+  \item the unsubtracted beam matrix element
+  \[
+    B^{\rm unsub}_{q/H}(x,b_\perp;\rho,\Lambda,\eta)
+    =
+    \frac1{2P\cdot n}
+    \int\frac{\dd\lambda}{2\pi}\,
+    \ee^{-\ii x\lambda P\cdot n}
+    \Bigl\langle
+    \bar q(z)\,
+    \mathcal U^{[\eta]}_{v}(z,0;\rho,\Lambda)\,
+    \gamma\cdot n\,q(0)
+    \Bigr\rangle_{P,H};
+  \]
+  \item the vacuum soft factor
+  \(S(b_\perp;\rho,\Lambda,\eta)\), defined by the trace of the closed Wilson
+  geometry obtained by multiplying the corresponding \(v\)- and
+  \(\bar v\)-staples in the vacuum;
+  \item a finite-part prescription, denoted
+  \(\operatorname{FP}_{\rho,\Lambda}\), which removes ultraviolet and rapidity
+  regulator dependence and introduces the scales \(\mu\) and \(\zeta\).
+\end{enumerate}
+The renormalized TMD in this scheme is
+\begin{equation}
+  F_{q/H}^{[\eta]}(x,b_\perp;\mu,\zeta)
+  =
+  \operatorname{FP}_{\rho,\Lambda}
+  \left[
+    Z_q(\mu,\zeta;\rho,\Lambda)\,
+    \frac{
+      B^{\rm unsub}_{q/H}(x,b_\perp;\rho,\Lambda,\eta)
+    }{
+      S(b_\perp;\rho,\Lambda,\eta)^{1/2}
+    }
+  \right].
+  \label{eq:qcd-renormalized-tmd-definition}
+\end{equation}
+The square root is a convention for assigning half of the soft subtraction to
+each collinear sector.  A different finite assignment is a different TMD
+scheme, related by a finite multiplicative transformation.  The variables
+\(\mu\) and \(\zeta\) record, respectively, ultraviolet and rapidity
+renormalization.  The orientation \(\eta\) is part of the operator definition;
+time-reversal odd TMDs may change sign between future- and past-pointing
+staples, as in semi-inclusive DIS versus Drell--Yan kinematics.
+\end{definition}
+
+\begin{proposition}[Gauge invariance of the subtracted TMD datum]
+\label{prop:qcd-tmd-gauge-invariance}
+At finite regulator, the numerator and soft factor in
+\eqref{eq:qcd-renormalized-tmd-definition} are gauge invariant after taking
+the color trace and endpoint fields into account.  Hence a background
+gauge-covariant finite-part prescription produces a gauge-invariant
+renormalized TMD matrix element.
+\end{proposition}
+
+\begin{proof}
+Every Wilson segment transforms by multiplication with the gauge
+transformation at its endpoints, as in
+Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.  Along a staple, the
+factors at internal junctions cancel between adjacent segments.  The remaining
+endpoint factors at \(0\) and \(z\) cancel the gauge transformations of
+\(q(0)\) and \(\bar q(z)\).  In the soft factor all Wilson lines are multiplied
+inside a trace, so the residual base-point factor is removed by cyclicity of
+the trace.  The finite-part map changes only regulator and scale coordinates;
+if it is background gauge covariant, it cannot introduce an uncanceled color
+index.
+\end{proof}
+
+Rapidity evolution is the statement that changing the auxiliary rapidity
+scale changes the coordinate description of the same physical transverse
+momentum distribution.  It is most transparent in impact-parameter space,
+where convolutions in transverse momentum become products.  Put
+\[
+  \ell_\mu:=\log\mu,
+  \qquad
+  \ell_\zeta:=\log\sqrt{\zeta}.
+\]
+For a fixed \(x\)-test function and fixed \(b_\perp\), suppose the paired TMD
+matrix element is nonzero and obeys
+\begin{align}
+  \frac{\partial}{\partial\ell_\zeta}
+  \log F_{q/H}^{[\eta]}(x,b_\perp;\mu,\zeta)
+  &=
+  \mathcal D_q(b_\perp;\mu),
+  \label{eq:qcd-collins-soper-equation}\\
+  \frac{\partial}{\partial\ell_\mu}
+  \log F_{q/H}^{[\eta]}(x,b_\perp;\mu,\zeta)
+  &=
+  \gamma_F^q(g(\mu),\ell_\zeta-\ell_\mu).
+  \label{eq:qcd-tmd-mu-evolution}
+\end{align}
+The first equation defines the Collins--Soper kernel
+\(\mathcal D_q\) in the chosen convention.
+
+\begin{proposition}[Collins--Soper consistency]
+\label{prop:qcd-collins-soper-consistency}
+If the derivatives in
+\eqref{eq:qcd-collins-soper-equation}--\eqref{eq:qcd-tmd-mu-evolution}
+commute on the renormalized TMD distribution, then
+\begin{equation}
+  \frac{\partial}{\partial\ell_\mu}\mathcal D_q(b_\perp;\mu)
+  =
+  \frac{\partial}{\partial\ell_\zeta}
+  \gamma_F^q(g(\mu),\ell_\zeta-\ell_\mu).
+  \label{eq:qcd-collins-soper-integrability}
+\end{equation}
+In the convention
+\[
+  \gamma_F^q(g,\ell_\zeta-\ell_\mu)
+  =
+  \gamma_F^{q,0}(g)
+  -2\Gamma_{\rm cusp}^q(g)(\ell_\zeta-\ell_\mu),
+\]
+this gives
+\begin{equation}
+  \frac{\partial}{\partial\log\mu}\mathcal D_q(b_\perp;\mu)
+  =
+  -2\Gamma_{\rm cusp}^q(g(\mu)).
+  \label{eq:qcd-collins-soper-cusp}
+\end{equation}
+At small \(b_\perp\), the one-loop solution compatible with the cusp
+normalization of \eqref{eq:qcd-nonsinglet-large-n} is
+\begin{equation}
+  \mathcal D_q(b_\perp;\mu)
+  =
+  -\frac{g^2(\mu)C_F}{4\pi^2}
+  \log\frac{\mu^2 b_\perp^2\ee^{2\gamma_{\rm E}}}{4}
+  +O(g^4),
+  \label{eq:qcd-collins-soper-kernel-one-loop}
+\end{equation}
+up to a finite \(b_\perp\)-dependent scheme term independent of \(\mu\).
+\end{proposition}
+
+\begin{proof}
+Apply
+\(\partial_{\ell_\mu}\partial_{\ell_\zeta}
+=\partial_{\ell_\zeta}\partial_{\ell_\mu}\)
+to \(\log F_{q/H}^{[\eta]}\).  The left order differentiates
+\eqref{eq:qcd-collins-soper-equation}; the right order differentiates
+\eqref{eq:qcd-tmd-mu-evolution}.  This proves
+\eqref{eq:qcd-collins-soper-integrability}.  Substituting the displayed form
+of \(\gamma_F^q\) gives
+\eqref{eq:qcd-collins-soper-cusp}.  Finally,
+\(\partial_{\log\mu}\log(\mu^2b_\perp^2\ee^{2\gamma_{\rm E}}/4)=2\), so the
+derivative of \eqref{eq:qcd-collins-soper-kernel-one-loop} is
+\(-g^2C_F/(2\pi^2)+O(g^4)\), equal to
+\(-2\Gamma_{\rm cusp}^q(g)+O(g^4)\) with
+\(\Gamma_{\rm cusp}^q(g)=g^2C_F/(4\pi^2)+O(g^4)\) in the trace-delta
+normalization.
+\end{proof}
+
+\begin{proposition}[Finite TMD scheme changes]
+\label{prop:qcd-tmd-finite-scheme-change}
+Let \(R(b_\perp;\mu,\zeta)\) be a finite scalar function and set
+\(F'=\ee^R F\).  Then
+\[
+  \mathcal D'=\mathcal D+\frac{\partial R}{\partial\ell_\zeta},
+  \qquad
+  \gamma_F'=\gamma_F+\frac{\partial R}{\partial\ell_\mu}.
+\]
+The consistency relation
+\eqref{eq:qcd-collins-soper-integrability} is preserved.  Therefore the
+separation of a rapidity-sensitive cross section into hard, TMD, and soft
+coordinates is scheme dependent, whereas the final cross section is not.
+\end{proposition}
+
+\begin{proof}
+Take logarithms of \(F'=\ee^R F\) and differentiate with respect to
+\(\ell_\zeta\) and \(\ell_\mu\).  The displayed transformations follow.  Taking
+\(\partial_{\ell_\mu}\) of the first transformation and
+\(\partial_{\ell_\zeta}\) of the second gives the same extra term
+\(\partial_{\ell_\mu}\partial_{\ell_\zeta}R\).  Hence the difference between
+the two sides of
+\eqref{eq:qcd-collins-soper-integrability} is unchanged.
+\end{proof}
+
+\begin{hypothesis}[Small-\(q_\perp\) color-singlet TMD factorization datum]
+\label{hyp:qcd-tmd-factorization-datum}
+For a color-singlet final state of invariant mass \(Q\) produced in
+hadron--hadron scattering, a leading-power small-\(q_\perp\) TMD
+factorization datum consists of TMD schemes for the two incoming hadrons, a
+hard function \(H_{ij}(Q,\mu)\), rapidity scales satisfying
+\(\zeta_A\zeta_B=Q^4\), a \(Y\)-term that matches the region
+\(|q_\perp|\sim Q\), a statement about Glauber exchange, and a distributional
+remainder estimate.  In the region
+\(\Lambda_{\rm QCD}\lesssim |q_\perp|\ll Q\) the singular part has the
+impact-parameter form
+\begin{equation}
+  \frac{\dd\sigma_{\rm sing}}{\dd Q^2\dd^2q_\perp}
+  =
+  \sum_{i,j}
+  H_{ij}(Q,\mu)
+  \int\frac{\dd^2 b_\perp}{(2\pi)^2}\,
+  \ee^{\ii b_\perp\cdot q_\perp}
+  F_{i/A}(x_A,b_\perp;\mu,\zeta_A)
+  F_{j/B}(x_B,b_\perp;\mu,\zeta_B).
+  \label{eq:qcd-tmd-factorization}
+\end{equation}
+The formula is a theorem only when the regulator construction, cancellation or
+operator representation of Glauber exchange, and the topology of the
+power-remainder estimate have all been supplied.
+\end{hypothesis}
+
+\section{Off-Forward Light-Ray Matrix Elements and GPDs}
+\label{sec:qcd-gpd-light-ray-matrix-elements}
+
+Generalized parton distributions are light-ray matrix elements between
+different hadron momenta.  They do not require a rapidity subtraction in the
+same way as TMDs, because the operator remains integrated over transverse
+momentum.  Their new datum is off-forwardness.
+
+Let \(p'\) and \(p\) be on-shell spin-\(\frac12\) hadron momenta, and define
+\[
+  P=\frac{p'+p}{2},
+  \qquad
+  \Delta=p'-p,
+  \qquad
+  t=\Delta^2,
+  \qquad
+  \xi=-\frac{\Delta\cdot n}{2P\cdot n}.
+\]
+For the symmetric light-ray separation
+\[
+  z^\mu=\lambda n^\mu ,
+\]
+define the quark vector GPDs \(H^q\) and \(E^q\) by
+\begin{align}
+  &\int\frac{\dd\lambda}{2\pi}\,
+  \ee^{-\ii x\lambda P\cdot n}
+  \bra{p',s'}
+  \left[
+  \bar q\!\left(\frac{\lambda n}{2}\right)
+  W_{\square}\!\left(\frac{\lambda n}{2},-\frac{\lambda n}{2}\right)
+  \gamma\cdot n\,
+  q\!\left(-\frac{\lambda n}{2}\right)
+  \right]_{\mu}
+  \ket{p,s}
+  \notag\\
+  &\qquad =
+  \bar u_{s'}(p')
+  \left[
+    \gamma\cdot n\,H^q(x,\xi,t;\mu)
+    +\frac{\ii\sigma^{n\alpha}\Delta_\alpha}{2M}\,
+    E^q(x,\xi,t;\mu)
+  \right]
+  u_s(p),
+  \label{eq:qcd-gpd-definition}
+\end{align}
+where \(\sigma^{n\alpha}:=n_\mu\sigma^{\mu\alpha}\), and \(M\) is the hadron
+mass.  The support and endpoint behavior of the distributions are properties
+of the renormalized light-ray matrix elements and of the chosen hadronic
+state; they are not imposed by a parton model.
+
+\begin{proposition}[Polynomiality of GPD moments]
+\label{prop:qcd-gpd-polynomiality}
+Assume the renormalized twist-two local operators obtained from the light-ray
+operator in \eqref{eq:qcd-gpd-definition} exist as local operator-valued
+distributions between the hadron states under consideration.  Then the
+\(N\)-th Mellin moments
+\[
+  \int_{-1}^{1}\dd x\,x^{N-1}H^q(x,\xi,t;\mu),
+  \qquad
+  \int_{-1}^{1}\dd x\,x^{N-1}E^q(x,\xi,t;\mu)
+\]
+are polynomials in \(\xi\) of degree at most \(N\), with coefficients that are
+Lorentz-scalar form factors depending on \(t\) and \(\mu\).
+\end{proposition}
+
+\begin{proof}
+Expanding the symmetric light-ray operator in \(\lambda\) gives the local
+twist-two tower
+\[
+  \bar q\,\gamma^{(\mu_1}
+  \ii D^{\mu_2}\cdots\ii D^{\mu_N)}q-\text{traces},
+\]
+contracted with \(n_{\mu_1}\cdots n_{\mu_N}\).  Since \(n^2=0\), all trace
+terms vanish after contraction with these \(n\)'s.  Lorentz covariance of the
+off-forward matrix element gives a finite decomposition into symmetric tensors
+made from \(P\), \(\Delta\), the metric, and the spinor bilinears
+\(\bar u(p')\gamma^\alpha u(p)\) and
+\(\bar u(p')\ii\sigma^{\alpha\beta}\Delta_\beta u(p)\).  After contraction
+with \(n_{\mu_1}\cdots n_{\mu_N}\), each term contains
+\[
+  (P\cdot n)^{N-k}(\Delta\cdot n)^k
+  =
+  (P\cdot n)^N(-2\xi)^k
+\]
+for some \(0\le k\le N\), multiplied by a scalar form factor depending only on
+\(t\) and \(\mu\).  Dividing by the overall powers of \(P\cdot n\) in the GPD
+decomposition therefore gives a polynomial in \(\xi\) of degree no larger than
+\(N\).  This argument uses only locality, Lorentz covariance, and the
+existence of the renormalized local twist-two tower; it does not use a
+probability interpretation.
+\end{proof}
+
+Deeply virtual Compton scattering and related exclusive processes use these
+GPDs in coefficient-function convolutions.  As in inclusive DIS and TMD
+factorization, the GPD itself is the renormalized hadronic light-ray matrix
+element.  The factorization theorem connecting it to a measured exclusive
+amplitude is an additional leading-power assertion with its own endpoint,
+Glauber, and power-remainder data.
 
 \section{Local Twist-Two Operators and Integer Moments}
 

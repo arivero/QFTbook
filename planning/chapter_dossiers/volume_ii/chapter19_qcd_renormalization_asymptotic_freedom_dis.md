@@ -162,8 +162,12 @@ The chapter must define and derive:
   distributional power-remainder bound, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
-  sum-rule checks, logarithmic scaling violation, and the endpoint/large-spin
-  cusp boundary of the DIS factorization statement.
+  sum-rule checks, TMDs as soft-subtracted transverse light-ray matrix
+  elements with Collins--Soper rapidity evolution, small-\(q_\perp\)
+  color-singlet TMD factorization data, GPDs as off-forward light-ray matrix
+  elements, GPD polynomiality from local twist-two covariance, logarithmic
+  scaling violation, and the endpoint/large-spin cusp boundary of the DIS
+  factorization statement.
 
 ## Claim Ledger
 
@@ -297,6 +301,15 @@ The chapter must define and derive:
      distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
      threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
      not consequences of the compact-\(x\) statement.
+22d. TMDs are transverse-separated Wilson-line matrix elements with a soft
+     subtraction and an independent rapidity renormalization scale.  The
+     Collins--Soper kernel is defined by rapidity evolution, its
+     \(\mu\)-dependence is fixed by the lightlike cusp coefficient, and finite
+     TMD scheme changes preserve the mixed-derivative consistency equation.
+22e. GPDs are off-forward light-ray matrix elements.  Their Mellin moments are
+     polynomials in the skewness \(\xi\) because the corresponding local
+     twist-two matrix elements decompose into finitely many Lorentz-covariant
+     tensors built from \(P\) and \(\Delta\).
 23. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
@@ -333,6 +346,9 @@ The chapter must define and derive:
 - DIS inclusive-scattering kinematics figure.
 - DIS factorization figures must distinguish operator definitions from
   parton-model mnemonics.
+- Future TMD figures should distinguish unsubtracted beam matrix elements,
+  soft Wilson-line factors, rapidity subtraction, and the final
+  impact-parameter convolution.
 
 ## Audit Notes
 
@@ -439,3 +455,8 @@ The chapter must define and derive:
   definitions and colored parton-model language, convolution renormalization,
   compact-\(x\) factorization status with a distributional remainder, exact
   \(D_0\)-based DGLAP sum-rule proof, and endpoint/large-spin cusp discussion.
+- 2026-05-27 issue #630 TMD/GPD pass: added soft-subtracted TMD operator data,
+  Collins--Soper consistency, finite TMD scheme transformations,
+  small-\(q_\perp\) color-singlet factorization data, off-forward GPD
+  definitions, a proof of GPD polynomiality from local twist-two covariance,
+  and `calculation-checks/qcd_tmd_gpd_checks.py`.
