@@ -1651,6 +1651,121 @@ the finite-subtraction formula is a global Cauchy statement in that domain.
 Both require the locality and spectral machinery named in the corollary.
 \end{proof}
 
+\begin{theorem}[LSZ transfer of a fixed-\(t\) holomorphic domain]
+\label{thm:lsz-transfer-fixed-t-domain}
+Fix a real \(t<0\).  Let \(D_t\subset\mathbb C_s\) be a connected
+one-variable first-sheet domain whose boundary contains a real open edge, and
+let
+\[
+  \kappa_a=k_a^2+m^2,\qquad a=1,\ldots,4,
+\]
+be local holomorphic normal coordinates to the four external mass shells in an
+off-shell neighbourhood of the relevant on-shell configurations.  Suppose an
+off-shell connected four-point time-ordered germ
+\[
+  G_t(s,\kappa_1,\ldots,\kappa_4)
+\]
+is holomorphic for \(s\in D_t\) and \(0<|\kappa_a|<\epsilon_a\), and has at
+most normal-crossing simple external one-particle poles in the following
+strong sense: the LSZ-amputated germ
+\begin{equation}
+  H_t(s,\kappa)
+  =
+  \left[
+    \prod_{a=1}^4
+    Z_a^{-1/2}\,\ii\,\kappa_a
+  \right]
+  G_t(s,\kappa)
+  \label{eq:fixed-t-offshell-lsz-amputated-germ}
+\end{equation}
+extends holomorphically to the full polydisc
+\[
+  D_t\times\{|\kappa_a|<\epsilon_a,\ a=1,\ldots,4\}.
+\]
+Assume also that \(H_t\) has local polynomial boundary growth in \(s\),
+uniformly for \(\kappa\) on compact subpolydiscs.  Define
+\begin{equation}
+  \mathcal M_t(s)=H_t(s,0,0,0,0).
+  \label{eq:fixed-t-lsz-transferred-amplitude}
+\end{equation}
+Then \(\mathcal M_t\) is holomorphic on \(D_t\), has local polynomial
+boundary growth on every real edge inherited from \(H_t\), and its
+distributional discontinuities across cuts are the external-mass-shell
+restrictions of the discontinuities of \(H_t\).  In particular, if the
+off-shell discontinuity on a noncompact real edge is tempered in \(s\), with
+the seminorm orders uniform for \(|\kappa_a|\le\epsilon'_a<\epsilon_a\), then
+the on-shell discontinuity of \(\mathcal M_t\) is tempered in \(s\).
+\end{theorem}
+
+\begin{proof}
+The first assertion is the restriction theorem for holomorphic functions:
+because \(H_t\) is holomorphic on a neighbourhood of the complex submanifold
+\(\kappa=0\), its restriction \(\mathcal M_t(s)=H_t(s,0)\) is holomorphic in
+\(s\in D_t\).  The Cauchy formula in the normal variables gives the explicit
+restriction map.  Choose radii \(0<r_a<\epsilon_a\).  Then
+\begin{equation}
+  H_t(s,0)
+  =
+  \frac{1}{(2\pi\ii)^4}
+  \int_{|\zeta_1|=r_1}\!\!\cdots\!\!
+  \int_{|\zeta_4|=r_4}
+  \frac{H_t(s,\zeta_1,\ldots,\zeta_4)}
+       {\zeta_1\zeta_2\zeta_3\zeta_4}\,
+  \dd\zeta_1\cdots\dd\zeta_4 .
+  \label{eq:fixed-t-lsz-cauchy-normal-variables}
+\end{equation}
+The integrand is holomorphic in \(s\), and the integration tori are compact,
+so the integral is holomorphic in \(s\).
+
+The same formula transfers polynomial boundary growth.  Let \(K\Subset D_t\)
+be a subdomain whose boundary approach to a real edge is controlled in the
+usual tempered-holomorphic sense, and assume
+\[
+  |H_t(s,\zeta)|
+  \le
+  C_K(1+|s|)^N d(s,\partial D_t)^{-M}
+\]
+for \(s\in K\) and \(|\zeta_a|=r_a\).  Taking absolute values in
+\eqref{eq:fixed-t-lsz-cauchy-normal-variables} gives the same type of bound
+for \(H_t(s,0)\), with the constant multiplied by
+\(\prod_a r_a^{-1}\).  Thus the LSZ mass-shell restriction does not create a
+new high-energy growth mechanism; it only changes constants and keeps the
+finite polynomial order.
+
+For boundary values, test against a compactly supported smooth function
+\(\varphi(s)\) on a real edge.  The polynomial-growth hypothesis permits the
+boundary-value map to commute with the compact Cauchy integrals:
+\[
+  \langle \operatorname{bv}\mathcal M_t,\varphi\rangle
+  =
+  \frac{1}{(2\pi\ii)^4}
+  \int_{|\zeta_1|=r_1}\!\!\cdots\!\!
+  \int_{|\zeta_4|=r_4}
+  \left\langle
+    \operatorname{bv}H_t(\cdot,\zeta),
+    \varphi
+  \right\rangle
+  \frac{\dd^4\zeta}{\zeta_1\zeta_2\zeta_3\zeta_4}.
+  \label{eq:fixed-t-lsz-boundary-cauchy-commutation}
+\]
+Taking the difference of the upper and lower boundary values gives the same
+formula for the discontinuity.  If the off-shell discontinuities are tempered
+with seminorm orders independent of \(\zeta\) on the chosen tori, the right
+side is bounded by the same finite Schwartz seminorms of \(\varphi\), again up
+to the compact-torus constant.  This proves temperedness of the on-shell
+discontinuity.
+
+Finally, the normalization in
+\eqref{eq:fixed-t-offshell-lsz-amputated-germ} is exactly the external
+one-particle pole extraction of the LSZ theorem in
+Chapter~\ref{ch:lsz-reduction}.  The theorem here does not prove that a
+particular Wightman theory supplies the off-shell domain and uniform
+normal-crossing extension; it proves that once those hypotheses are supplied
+by the locality, spectrum, Jost--Lehmann--Dyson, and
+Bros--Epstein--Glaser construction, the passage to the on-shell fixed-\(t\)
+amplitude is a legitimate holomorphic and distributional operation.
+\end{proof}
+
 The domain theorem to be proved is therefore not the elementary estimate
 above, but the construction of its hypotheses from the Wightman data.  Its
 logical pieces are: the primitive Wightman tube theorem from the spectrum
@@ -1658,9 +1773,12 @@ condition; local commutativity at Jost configurations and the
 edge-of-the-wedge enlargement of the primitive tubes; the
 Jost--Lehmann--Dyson representation for the relevant retarded commutator
 matrix element; the Bros--Epstein--Glaser enlargement that gives the
-fixed-\(t\) Lehmann--Martin domain; and the LSZ limiting argument that carries
-the domain and tempered-discontinuity bounds to the on-shell amplitude after
-stable-particle pole terms have been separated.  The first two QFT-specific
+fixed-\(t\) Lehmann--Martin domain; and the verification that this off-shell
+domain satisfies the normal-crossing hypotheses of
+Theorem~\ref{thm:lsz-transfer-fixed-t-domain}.  Once those hypotheses hold,
+that theorem carries the domain and tempered-discontinuity bounds to the
+on-shell amplitude after stable-particle pole terms have been separated.  The
+first two QFT-specific
 steps are proved in
 Theorems~\ref{thm:primitive-wightman-tube-domain} and
 \ref{thm:jost-edge-gluing-primitive-tubes}; the causal-commutator
@@ -1669,10 +1787,11 @@ distributions in
 Theorem~\ref{thm:dyson-causal-commutator-representation} and
 Corollary~\ref{cor:jld-input-for-lsz-retarded-commutator}.  The remaining
 steps are the Dyson-regularity verification for the relevant LSZ
-source-current matrix coefficients, the Bros--Epstein--Glaser fixed-\(t\)
-enlargement, and the LSZ transfer theorem needed before the Jin--Martin
-polynomial bound can be promoted from a conditional input to a derived
-scattering theorem.
+source-current matrix coefficients and the Bros--Epstein--Glaser
+fixed-\(t\) enlargement with the uniform normal-coordinate control required
+for Theorem~\ref{thm:lsz-transfer-fixed-t-domain}.  These are needed before
+the Jin--Martin polynomial bound can be promoted from a conditional input to a
+derived scattering theorem.
 Complex-analysis results such as the
 edge-of-the-wedge theorem are tools in this construction; they do not replace
 the field-theoretic support, locality, and LSZ arguments.

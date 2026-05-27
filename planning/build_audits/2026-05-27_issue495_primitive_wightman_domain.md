@@ -38,7 +38,14 @@ inside the monograph, not left as literature imports.
   proved under the explicit Dyson-regularity hypothesis.  The
   Dyson-regularity verification for the relevant LSZ source-current matrix
   coefficients, the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
-  completion, and the LSZ-transfer step remain theorem work.
+  completion, and the verification of the off-shell normal-coordinate
+  hypotheses needed for LSZ transfer remain theorem work.
+  - `thm:lsz-transfer-fixed-t-domain`, proving the analytic LSZ transfer
+    itself: if the BEG/JLD construction supplies an off-shell fixed-\(t\)
+    holomorphic domain with normal-crossing external one-particle poles and
+    uniform polynomial boundary growth, then the LSZ-amputated on-shell
+    amplitude is holomorphic on the fixed-\(t\) domain and inherits tempered
+    cut discontinuities.
 
 ## Planning updates
 
@@ -60,6 +67,7 @@ regularity no longer hidden in notation.  Remaining closure work:
    regularization hypotheses under which it follows.
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
-   \(s\)-plane at fixed \(t\).
-3. Prove the LSZ transfer of that domain and the tempered cut-discontinuity
-   bounds to the on-shell amplitude after stable-particle pole separation.
+   \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate
+   control needed to apply `thm:lsz-transfer-fixed-t-domain`.
+3. Prove the finite-subtraction fixed-\(t\) Cauchy representation from the
+   resulting domain rather than taking it as an independent hypothesis.

@@ -184,19 +184,31 @@ hypotheses:
     monograph: construct the fixed-\(t\) first-sheet domain and
     finite-subtraction representation from locality, spectral support, LSZ,
     and Jost--Lehmann--Dyson/Bros--Epstein--Glaser machinery.
-10d. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
+10d. The analytic LSZ transfer step is now proved as a theorem.  If an
+    off-shell connected four-point germ is holomorphic in a fixed-\(t\)
+    domain and in punctured external mass-shell normal coordinates
+    \(\kappa_a=k_a^2+m^2\), and if
+    \[
+      H_t(s,\kappa)=
+      \prod_{a=1}^4 Z_a^{-1/2}\ii\kappa_a\,G_t(s,\kappa)
+    \]
+    extends holomorphically to \(\kappa=0\) with polynomial boundary growth,
+    then \(\mathcal M_t(s)=H_t(s,0)\) is holomorphic in the same fixed-\(t\)
+    domain and inherits tempered cut discontinuities.  The proof is the Cauchy
+    formula in the normal variables plus continuity of boundary-value maps.
+10e. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
     primitive tube analyticity of four-point Wightman functions; local
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
     Jost--Lehmann--Dyson representation for Dyson-regular retarded commutator
     matrix elements; the Bros--Epstein--Glaser enlargement to the
-    Lehmann--Martin domain; and the LSZ limiting argument transferring the
-    domain and tempered-discontinuity bounds to the on-shell amplitude after
-    pole separation.  The primitive Wightman tube-domain theorem, Jost-edge
-    gluing theorem, and conditional causal-commutator Dyson/JLD representation
-    are now proved in Volume II, Chapter 6.  The remaining
-    Dyson-regularity verification for the LSZ source-current matrix
-    coefficients, the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
-    completion, and the LSZ-transfer step are still to be proved in the
+    Lehmann--Martin domain; and the verification that this off-shell domain
+    has the normal-crossing external-pole control required by the LSZ-transfer
+    theorem.  The primitive Wightman tube-domain theorem, Jost-edge gluing
+    theorem, conditional causal-commutator Dyson/JLD representation, and
+    analytic LSZ-transfer theorem are now proved in the manuscript.  The
+    remaining Dyson-regularity verification for the LSZ source-current matrix
+    coefficients and the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
+    completion with uniform off-shell control are still to be proved in the
     monograph, not left as permanent citations.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
@@ -392,5 +404,11 @@ hypotheses:
   issue #495 closure target is therefore narrowed but not closed: prove
   Dyson regularity for the LSZ source-current matrix coefficients, prove the
   Bros--Epstein--Glaser analytic completion to the Lehmann--Martin
-  fixed-\(t\) domain, then prove the LSZ transfer of that domain and the
-  tempered discontinuity bounds to the on-shell amplitude.
+  fixed-\(t\) domain, and verify the off-shell normal-coordinate hypotheses
+  needed for the LSZ-transfer theorem.
+- 2026-05-27 issue #495 LSZ-transfer pass: added the fixed-\(t\) LSZ transfer
+  theorem.  The analytic residue-transfer step is now proved under explicit
+  normal-crossing external-pole and uniform-boundary-growth hypotheses.  The
+  remaining LSZ-related work is no longer the abstract transfer argument, but
+  the verification that the BEG/JLD off-shell domain for the actual Wightman
+  source-current kernels satisfies these hypotheses.

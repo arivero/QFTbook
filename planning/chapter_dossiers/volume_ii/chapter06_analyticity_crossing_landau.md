@@ -254,4 +254,5 @@
   support restriction from the coincidence slab.  Remaining fixed-\(t\)
   closure work includes proving Dyson regularity for the LSZ source-current
   matrix coefficients, the Bros--Epstein--Glaser analytic completion, and the
-  LSZ transfer of the resulting domain and cut-discontinuity estimates.
+  off-shell normal-coordinate hypotheses needed to apply the LSZ-transfer
+  theorem of Volume II, Chapter 7.
