@@ -8,15 +8,13 @@
   integral, and the spinorial pole structure needed for external fermions.
 - Precedes massless helicity, gauge redundancy, Maxwell theory, and QED.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 6773--8175,
+  - foundations transcript file, lines 6773--8175 in the current transcript
+    source range,
     with handwritten pp. 165--189 checked on 2026-05-22;
-  - source visual trace
-    `monograph/tex/build/source_visual_trace/253a_trace-166.png`--`253a_trace-189.png`
-    for the Dirac/Weyl/Majorana, Grassmann mechanics, coherent-state path
-    integral, spinor spectral pole, spinorial LSZ, and first four-fermion
-    vertex block;
-  - manuscript visual trace
-    `monograph/tex/build/manuscript_visual_trace/chapter16_spinor_grassmann-286.png`--`chapter16_spinor_grassmann-298.png`;
+  - source visual trace pages 166--189 for the Dirac/Weyl/Majorana,
+    Grassmann mechanics, coherent-state path integral, spinor spectral pole,
+    spinorial LSZ, and first four-fermion vertex block;
+  - manuscript visual trace pages 286--298 for the spinor-Grassmann chapter;
   - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
     section "The path integral", subsection "Path integral with
     Grassmann-odd field variables", used to sharpen the coherent-state
@@ -64,28 +62,28 @@
 | --- | --- |
 | \(\psi_\alpha,\bar\psi^\alpha\) | Dirac spinor field and Dirac adjoint |
 | \(\beta\) | \(\ii\gamma^0\), used in \(\bar\psi=\psi^\dagger\beta\) |
-| \(b_\sigma^\dagger,d_\sigma^\dagger\) | creation operators for charged spin-\(\frac12\) particle and antiparticle |
-| \(a_\sigma^\dagger,c_\sigma\) | trial oscillators used only to compare ordinary commutators with CAR |
-| \(\mathcal U^\sigma,\mathcal V^\sigma\) | delta-normalized spinor polarizations from Chapter 15 used in the sign check |
+| \(b_\sigma^\dagger,d_\sigma^\dagger\) | charged particle and antiparticle creation operators |
+| \(a_\sigma^\dagger,c_\sigma\) | trial oscillators for the commutator/CAR comparison |
+| \(\mathcal U^\sigma,\mathcal V^\sigma\) | delta-normalized spinor polarizations |
 | \(\Delta_+\) | positive-frequency scalar two-point distribution |
 | \(P_\pm\) | chiral projectors \((1\pm\gamma_5)/2\) |
 | \(B\) | matrix implementing complex conjugation on gamma matrices |
 | \(\Pi V\) | purely odd affine superspace with structure sheaf \(\Lambda(V^\vee)\) |
-| \(R_{\overline 0}\oplus R_{\overline 1}\) | supercommutative test algebra used for functor-of-points language |
-| \(\operatorname{Ber}\) / Berezinian line | line whose densities are integrated by Berezin integration |
+| \(R_{\overline 0}\oplus R_{\overline 1}\) | supercommutative test algebra |
+| \(\operatorname{Ber}\) / Berezinian line | line of Berezinian densities |
 | \(\Lambda_N\) | Grassmann algebra on \(N\) generators |
 | \(\eta_a,\bar\eta_a\) | finite-dimensional Grassmann generators |
-| \(\chi_a,\pi_a\) | second-class constraints and canonical momenta in finite-dimensional Grassmann mechanics |
+| \(\chi_a,\pi_a\) | constraints and canonical momenta |
 | \(A\) | invertible matrix in a Berezin Gaussian integral |
 | \(J,\bar J\) | Grassmann sources |
 | \(\ket{\eta},\langle\!\langle\chi|\) | fermionic coherent ket and dual coherent bra |
 | \(\beta_{\mathrm T}\) | Euclidean inverse temperature for the fermionic trace |
 | \(S_F\) | free Dirac Feynman two-point function |
 | \(Z_\psi\) | spinor one-particle pole residue |
-| \(K_{\alpha\beta}{}^{\gamma\delta}\) | local spinor-index kernel of the first four-fermion vertex |
+| \(K_{\alpha\beta}{}^{\gamma\delta}\) | four-fermion vertex spinor-index kernel |
 | \(p_!\) | finite-dimensional Berezin pushforward along a purely odd fiber |
-| \(Q,Q^\dagger,H,I_W\) | supersymmetric quantum-mechanics supercharges, Hamiltonian, and Witten index |
-| \(\widehat A(TM),\operatorname{ch}(E)\) | characteristic classes appearing in the worldline index-density computation |
+| \(Q,Q^\dagger,H,I_W\) | supercharges, Hamiltonian, and Witten index |
+| \(\widehat A(TM),\operatorname{ch}(E)\) | index-density characteristic classes |
 
 ## Claims Established
 
@@ -159,6 +157,20 @@
   \(K_{\alpha\beta}{}^{\gamma\delta}
   =\ii g(\delta_\alpha{}^\gamma\delta_\beta{}^\delta
   -\delta_\alpha{}^\delta\delta_\beta{}^\gamma)\).
+- The 2026-05-27 formalization pass added labeled statements
+  `def:free-dirac-spinor-intertwiner-data`,
+  `def:free-charged-dirac-field-car`,
+  `prop:free-dirac-equations-charge-convention`,
+  `prop:free-dirac-locality-selects-car`,
+  `def:finite-fermionic-configuration-superspace`,
+  `prop:purely-odd-berezinian-transformation`,
+  `prop:finite-berezin-gaussian-contractions`,
+  `prop:fermionic-coherent-state-resolution`, and
+  `prop:fermionic-trace-boundary-signs`.
+- `calculation-checks/spinor_grassmann_checks.py` verifies the finite sign
+  algebra behind the Dirac phase equations, \(U(1)\) charge convention, CAR
+  locality sign, odd Dirac bracket, Berezinian inverse determinant, one-pair
+  Berezin Gaussian, and coherent-state trace endpoint signs.
 
 ## Figure Requirements
 
@@ -176,6 +188,9 @@
 - `calculation-checks/susy_qm_index_checks.py` verifies the harmonic SUSY-QM
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
   extraction, and the \(\widehat A\)-series coefficients through degree six.
+- `calculation-checks/spinor_grassmann_checks.py` verifies finite sign and
+  normalization algebra for the spinor-field and Grassmann path-integral
+  sections formalized on 2026-05-27.
 
 ## Exclusions
 

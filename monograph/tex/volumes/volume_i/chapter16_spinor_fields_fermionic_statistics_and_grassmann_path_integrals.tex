@@ -5,6 +5,8 @@
 
 \section{The Free Dirac Field}
 
+\begin{definition}[Spinor convention and massive intertwiners]
+\label{def:free-dirac-spinor-intertwiner-data}
 Work in \(D=4\) with
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-,+,+,+),
@@ -88,6 +90,10 @@ Let
   \qquad
   p^0=\omega_{\vec p}.
 \]
+\end{definition}
+
+\begin{definition}[Free charged Dirac field and CAR]
+\label{def:free-charged-dirac-field-car}
 Introduce two independent families of fermionic creation and annihilation
 operators
 \[
@@ -129,6 +135,10 @@ Its adjoint field is
   =
   \bigl(\widehat\psi^\dagger(x)\beta\bigr)^\alpha .
 \]
+\end{definition}
+
+\begin{proposition}[Free Dirac equations and charge convention]
+\label{prop:free-dirac-equations-charge-convention}
 Because of the two momentum-space Dirac equations above,
 \[
   (\not\partial+m)\widehat\psi(x)=0,
@@ -155,14 +165,56 @@ then
   =
   \ee^{-\ii\theta}\widehat{\bar\psi}^{\alpha}(x).
 \]
+\end{proposition}
+
+\begin{proof}
+For the creation part of \(\widehat\psi\),
+\[
+  (\not\partial+m)\bigl(v^\sigma(p)\ee^{-\ii p\cdot x}\bigr)
+  =
+  (-\ii\not p+m)v^\sigma(p)\ee^{-\ii p\cdot x}
+  =
+  0,
+\]
+because \((\not p+\ii m)v^\sigma(p)=0\).  For the annihilation part,
+\[
+  (\not\partial+m)\bigl(u^\sigma(p)\ee^{\ii p\cdot x}\bigr)
+  =
+  (\ii\not p+m)u^\sigma(p)\ee^{\ii p\cdot x}
+  =
+  0,
+\]
+because \((\not p-\ii m)u^\sigma(p)=0\).  The adjoint equation follows by
+taking the Dirac adjoint and using
+\((\gamma^\mu)^\dagger\beta=-\beta\gamma^\mu\), with the derivative acting on
+the field to its left.
+
+The charge convention is fixed on the oscillator algebra by
+\[
+  [\widehat Q,b_\sigma^\dagger(\vec p)]=b_\sigma^\dagger(\vec p),
+  \qquad
+  [\widehat Q,d_\sigma^\dagger(\vec p)]=-d_\sigma^\dagger(\vec p).
+\]
+Taking adjoints gives
+\[
+  [\widehat Q,b_\sigma(\vec p)]=-b_\sigma(\vec p),
+  \qquad
+  [\widehat Q,d_\sigma(\vec p)]=d_\sigma(\vec p).
+\]
+Both terms in \(\widehat\psi\) therefore have charge \(+1\), while
+\(\widehat{\bar\psi}\) has charge \(-1\). Exponentiating the commutators gives
+the displayed \(U_\theta\)-transformation laws.
+\end{proof}
 
 \section{The Statistics Sign from Locality}
 
-The sign in the canonical relations is fixed by locality once the
-spin-\(\frac12\) one-particle representation and the covariant spinor
-intertwiners have been chosen. To see the point without obscuring it by
-normalization factors, use the delta-normalized polarizations
-\(\mathcal U,\mathcal V\) of Chapter~\ref{ch:massive-particles-spin}. Let
+\begin{proposition}[Free spinor locality selects the CAR sign]
+\label{prop:free-dirac-locality-selects-car}
+Once the spin-\(\frac12\) one-particle representation and the covariant spinor
+intertwiners have been chosen, the local free field is obtained from
+canonical anticommutators rather than ordinary commutators. Use the
+delta-normalized polarizations \(\mathcal U,\mathcal V\) of
+Chapter~\ref{ch:massive-particles-spin}. Let
 \[
   \Delta_+(z;m^2)
   =
@@ -232,6 +284,35 @@ The bracket is the Pauli--Jordan distribution. It vanishes for spacelike
 separation, so the spinor field is local as an odd field in a graded local
 algebra. This computation is the free-field derivation of the statistics sign
 used in the rest of the chapter.
+\end{proposition}
+
+\begin{proof}
+Only the oscillator pairings \(aa^\dagger\) and \(cc^\dagger\), or their CAR
+counterparts, contribute.  Inserting the mode expansion and using the spin
+sums \eqref{eq:dirac-individual-spin-sums} gives the two displayed kernels.
+For ordinary commutators the scalar part is the even combination
+\[
+  m\bigl(\Delta_+(x-y;m^2)+\Delta_+(y-x;m^2)\bigr).
+\]
+At equal time and \(\vec x\ne\vec y\) this is the Fourier transform of the
+positive mass-shell density
+\((2\omega_{\vec p})^{-1}d^3\vec p\) plus its reflected copy.  It is not the
+zero distribution; for example smearing by a nonzero real test function
+supported in an equal-time ball gives a strictly positive quadratic form.
+Thus ordinary commutators violate locality.
+
+For CAR, the creation and annihilation contributions enter with the relative
+minus sign shown above, and the scalar factor is the Pauli--Jordan
+distribution
+\[
+  \Delta(x-y;m^2)=\Delta_+(x-y;m^2)-\Delta_+(y-x;m^2).
+\]
+The scalar chapter proves that \(\Delta(z;m^2)\) has support in the closed
+light cone. Applying the local differential operator
+\((-\not\partial_x+m)_\alpha{}^\beta\) cannot enlarge support, so the
+anticommutator vanishes at spacelike separation. This is precisely graded
+locality for an odd field.
+\end{proof}
 
 \section{Locality and the CAR}
 
@@ -438,6 +519,8 @@ determined separately by the spectral and asymptotic data of the theory.
 
 \section{Odd Field Variables and Configuration Superspaces}
 
+\begin{definition}[Finite fermionic configuration superspace]
+\label{def:finite-fermionic-configuration-superspace}
 There are two distinct meanings of the word ``fermionic field'' in this
 chapter. The operator field \(\widehat\psi_\alpha(x)\) is an
 operator-valued distribution on a \(\mathbb Z_2\)-graded Hilbert space. After
@@ -488,7 +571,10 @@ supermanifold is the locally super-ringed space
 in a local trivialization. This description is the finite-dimensional
 geometric meaning of the formal phrase ``integration over fermionic
 fields.''
+\end{definition}
 
+\begin{proposition}[Purely odd Berezinian transformation]
+\label{prop:purely-odd-berezinian-transformation}
 Berezin integration is the associated algebraic integration on the
 Berezinian line. For a purely odd coordinate system
 \((\eta_1,\ldots,\eta_N)\), choosing the ordered Berezinian element
@@ -513,6 +599,28 @@ integrals after a regulator has supplied finitely many odd coordinates. All
 determinants, Pfaffians, source contractions, and fermionic signs in the
 formal continuum notation are inherited from these finite-dimensional
 Berezinian operations.
+\end{proposition}
+
+\begin{proof}
+The ordered integral with density
+\(\dd\eta_N\cdots\dd\eta_1\) extracts the coefficient of the ordered monomial
+\(\eta_1\cdots\eta_N\). If \(\eta'_a=A_a{}^b\eta_b\), then antisymmetry of
+the odd coordinates gives
+\[
+  \eta'_1\cdots\eta'_N=(\det A)\eta_1\cdots\eta_N .
+\]
+For the coefficient extracted from \(f(\eta)\dd\eta_N\cdots\dd\eta_1\) to be
+coordinate independent, the ordered Berezinian element must transform by the
+inverse factor:
+\[
+  \dd\eta'_N\cdots\dd\eta'_1
+  =
+  (\det A)^{-1}\dd\eta_N\cdots\dd\eta_1 .
+\]
+This is the odd part of the Berezinian.  The construction uses only the
+finite-dimensional exterior algebra and its top coefficient.  No underlying
+set of odd values, sigma-algebra, or positivity structure enters.
+\end{proof}
 
 \section{Classical Grassmann Mechanics and Dirac Brackets}
 
@@ -726,6 +834,8 @@ For \(N\) generators the ordered integral is fixed by
   1.
 \]
 
+\begin{proposition}[Finite Berezin Gaussian and contractions]
+\label{prop:finite-berezin-gaussian-contractions}
 For independent pairs \(\eta_a,\bar\eta_a\), \(a=1,\ldots,N\), and an
 invertible \(N\times N\) complex matrix \(A\), use the ordered measure
 \[
@@ -780,6 +890,40 @@ the normalized integral obeys
 Higher Gaussian moments are obtained by repeated contractions, with the sign
 determined by the number of odd variables moved past one another to bring a
 contracted pair together.
+\end{proposition}
+
+\begin{proof}
+The Gaussian identity is an identity in the finite exterior algebra generated
+by the \(2N\) odd variables.  The Berezin integral extracts one fixed top
+coefficient.  The coefficient of the top monomial in
+\(\exp(-\bar\eta_a A^a{}_b\eta_b)\) is multilinear and alternating in the
+columns of \(A\), and the declared ordering normalizes the identity matrix
+case to \(1\).  Hence the coefficient is \(\det A\).
+
+For the source identity, use the odd translation
+\[
+  \eta\mapsto \eta-A^{-1}J,
+  \qquad
+  \bar\eta\mapsto \bar\eta-\bar J A^{-1}.
+\]
+Berezinian densities are invariant under translations, and the exponent
+becomes
+\[
+  -\bar\eta A\eta+\bar J A^{-1}J .
+\]
+The source-free Gaussian integral then gives the factor
+\(\det A\exp(\bar J A^{-1}J)\).  Differentiating the source identity with the
+same left/right derivative convention gives
+\(\langle\eta_a\bar\eta_b\rangle_A=(A^{-1})_a{}^b\). Equivalently, the
+integration-by-parts identity displayed above gives
+\[
+  \delta_c{}^b=A^b{}_d\langle\eta_d\bar\eta_c\rangle_A ,
+\]
+which is the same statement after multiplication by \(A^{-1}\). Repeated
+differentiation gives Wick contractions, with Koszul signs determined by the
+permutation needed to place each contracted pair next to the source
+derivatives.
+\end{proof}
 
 \section{The Fermionic Coherent-State Path Integral}
 
@@ -802,6 +946,8 @@ On the two-dimensional Hilbert space with basis \(\ket{0},\ket{1}\), choose
   \widehat\chi\ket{1}=0.
 \]
 
+\begin{proposition}[Fermionic coherent-state resolution]
+\label{prop:fermionic-coherent-state-resolution}
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \node[gray!70] (nullL) at (-1.25,0) {\(0\)};
@@ -954,9 +1100,38 @@ In this first-order odd system the Hamiltonian and Lagrangian forms coincide:
 \(\chi\) is the odd conjugate variable of \(\eta\), and it remains in the
 first-order action rather than being removed by a nondegenerate even Gaussian
 integration.
+\end{proposition}
+
+\begin{proof}
+The eigenket identity follows directly from the two-state action:
+\[
+  \widehat\eta(\ket0+\ket1\eta)=\ket0\eta=(\ket0+\ket1\eta)\eta,
+\]
+because \(\eta^2=0\).  The dual coherent bra gives
+\[
+  \langle\!\langle\chi|\eta\rangle
+  =
+  (-\bra1+\chi\bra0)(\ket0+\ket1\eta)
+  =
+  \chi-\eta,
+\]
+and
+\[
+  \langle\!\langle\chi|\widehat\eta=-\chi\langle\!\langle\chi|
+\]
+by the same basis calculation.  The displayed Berezin computation of
+\(\int\ket\eta\,\dd\eta\,\langle\!\langle\eta|\) extracts the coefficient of
+\(\eta\) and gives \(\ket0\bra0+\ket1\bra1\).  Inserting this identity between
+short-time evolution factors gives the finite-\(N\) kernel. The overlap
+identities follow by applying the same one-variable Berezin integral to
+\(\langle\!\langle\eta_{n+1}|\eta_n\rangle\) and
+\(\langle\!\langle\eta_{n+1}|\widehat\chi|\eta_n\rangle\).
+\end{proof}
 
 \section{Fermionic Traces and Thermal Boundary Conditions}
 
+\begin{proposition}[Fermionic trace endpoint signs]
+\label{prop:fermionic-trace-boundary-signs}
 The trace of a fermionic Hilbert-space operator carries one extra sign from
 the odd coherent-state resolution. For inverse temperature
 \(\beta_{\mathrm T}>0\),
@@ -997,6 +1172,31 @@ replaces the final \(\ket{-\eta}\) by \(\ket{\eta}\), and therefore imposes
 periodic fermionic boundary conditions. This distinction is the
 finite-dimensional origin of the spin-structure choice for fermionic fields
 on a Euclidean time circle.
+\end{proposition}
+
+\begin{proof}
+For the trace sign, let \(A\) be the matrix
+\[
+  A=
+  \begin{pmatrix} a&b\\ c&d\end{pmatrix}
+\]
+in the ordered basis \(\ket0,\ket1\). Then
+\[
+  \int\dd\eta\,\langle\!\langle\eta|A|-\eta\rangle=a+d
+  =
+  \operatorname{Tr}A,
+\]
+whereas
+\[
+  \int\dd\eta\,\langle\!\langle\eta|A|\eta\rangle=a-d
+  =
+  \operatorname{Tr}((-1)^F A).
+\]
+Thus an ordinary trace identifies the endpoint coherent variable with a minus
+sign, while the insertion of \((-1)^F\) removes that sign. Time slicing carries
+this endpoint algebra into anti-periodic and periodic Euclidean fermion
+boundary conditions, respectively.
+\end{proof}
 
 \section{Berezin Integration as Functorial Pushforward}
 

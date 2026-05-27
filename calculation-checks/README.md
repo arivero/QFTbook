@@ -547,6 +547,12 @@ Current checks:
   Wigner cocycle, spin-frame conjugation and inner-product invariance,
   \(SU(2)\) central signs, and the mostly-plus Dirac projector and spin-sum
   formulas.
+- `spinor_grassmann_checks.py`: finite exact checks for the Volume I
+  spinor-field and Grassmann path-integral chapter, including the phase signs
+  in the free Dirac equations, the charge ledger for \(b,d\) oscillators, the
+  CAR locality sign, the odd Dirac bracket, the purely odd Berezinian
+  determinant, one-pair Berezin Gaussian normalization, and coherent-state
+  trace and supertrace endpoint signs.
 - `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion
