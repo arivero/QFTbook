@@ -46,6 +46,7 @@ affiliated with \(\Obs(\mathcal O)\) or belongs to the unbounded field algebra
 whose bounded functions generate observables localized in \(\mathcal O\).
 
 \begin{definition}[Common invariant field domain]
+\label{def:common-invariant-field-domain}
   A common invariant field domain for a family of fields is a dense subspace
   \(\mathcal D\subset\Hilb\) such that every smeared field
   \(\widehat\Phi_A(f)\) maps \(\mathcal D\) into itself, every finite product
@@ -70,6 +71,7 @@ for \(\psi,\chi\) in a stated dense domain.  This continuity is the analytic
 content behind point-field notation.
 
 \begin{proposition}[Distributional matrix elements]
+\label{prop:distributional-matrix-elements}
   Suppose the smeared products above are defined on a common invariant field
   domain and the displayed matrix elements are continuous multilinear
   functionals on \(C_c^\infty(\mathbb M^D)^n\).  Then for each pair
@@ -109,6 +111,7 @@ For \(f\in C_c^\infty(\mathbb M^D)\), define the transformed test function
 \]
 
 \begin{definition}[Covariant field multiplet]
+\label{def:covariant-field-multiplet}
 A field multiplet \(\widehat\Phi_A\) is Poincare covariant with component
 representation \(S\) when
 \[
@@ -155,6 +158,60 @@ so moving the derivative from the field distribution to the test function
 produces the minus sign in the smeared commutator.  Lorentz generators act by
 an orbital term on the spacetime argument and a spin term on the component
 index.
+
+\begin{proposition}[Covariance of Wightman distributions]
+\label{prop:wightman-distribution-covariance-from-fields}
+Assume that \(\widehat\Phi_A\) is a covariant field multiplet on the common
+invariant domain of Definition~\ref{def:common-invariant-field-domain}, and
+that the vacuum is Poincare invariant:
+\[
+  U(g)\vac=\vac,\qquad g\in\Poinc .
+\]
+Then the \(n\)-point Wightman distributions satisfy
+\[
+\begin{split}
+  W_{A_1\cdots A_n}(f_1,\ldots,f_n)
+  &=
+  S(\Lambda)_{A_1}{}^{B_1}\cdots
+  S(\Lambda)_{A_n}{}^{B_n}
+\\
+  &\quad \times
+  W_{B_1\cdots B_n}\bigl((f_1)_g,\ldots,(f_n)_g\bigr),
+  \qquad g=(a,\Lambda),
+\end{split}
+\]
+where \((f_i)_g(y)=f_i(g^{-1}y)\).  In point-field notation this is
+\[
+  W_{A_1\cdots A_n}(x_1,\ldots,x_n)
+  =
+  S(\Lambda)_{A_1}{}^{B_1}\cdots S(\Lambda)_{A_n}{}^{B_n}
+  W_{B_1\cdots B_n}(gx_1,\ldots,gx_n),
+\]
+with the same distributional meaning as the smeared formula.
+\end{proposition}
+
+\begin{proof}
+By vacuum invariance and unitarity,
+\[
+  \bra{\vac}\widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\ket{\vac}
+  =
+  \bra{\vac}
+  U(g)^{-1}\widehat\Phi_{A_1}(f_1)\cdots
+  \widehat\Phi_{A_n}(f_n)U(g)
+  \ket{\vac}.
+\]
+Since \(U(g)\mathcal D\subset\mathcal D\), conjugation by \(U(g)\) may be
+applied to each factor on the common domain.  Using
+Definition~\ref{def:covariant-field-multiplet} for every field gives
+\[
+  U(g)^{-1}\widehat\Phi_{A_i}(f_i)U(g)
+  =
+  S(\Lambda)_{A_i}{}^{B_i}\widehat\Phi_{B_i}((f_i)_g).
+\]
+Multiplying these identities in the given operator order yields the smeared
+covariance formula.  The point-field formula is exactly the same identity
+paired with tensor-product test functions.
+\end{proof}
 
 \section{Spacelike Separation Of Supports}
 
@@ -206,6 +263,7 @@ For bosonic fields both parities are zero, so this is the ordinary
 commutator.
 
 \begin{definition}[Microcausality for smeared fields]
+\label{def:microcausality-smeared-fields}
 The field multiplets satisfy microcausality on \(\mathcal D\) when
 \[
   [\widehat\Phi_A(f),\widehat\Psi_B(g)]_{\mathrm{gr}}\psi=0
@@ -222,6 +280,53 @@ In point-field notation the bosonic case is written
 \]
 The smeared statement is the definition. It is the local compatibility
 condition for spacelike separated field insertions.
+
+\begin{proposition}[Adjacent spacelike exchange in Wightman functions]
+\label{prop:wightman-adjacent-spacelike-exchange}
+Assume microcausality in the sense of
+Definition~\ref{def:microcausality-smeared-fields}.  Let
+\(\widehat\Phi_A\) and \(\widehat\Psi_B\) be homogeneous fields of parities
+\(|A|\) and \(|B|\).  If \(f\) and \(g\) have spacelike separated supports,
+then for any fields placed to the left and right whose products are defined
+on the common domain,
+\[
+\begin{split}
+  &\bra{\vac}
+  \widehat X\,
+  \widehat\Phi_A(f)\widehat\Psi_B(g)\,
+  \widehat Y
+  \ket{\vac}
+\\
+  &\qquad =
+  (-1)^{|A||B|}
+  \bra{\vac}
+  \widehat X\,
+  \widehat\Psi_B(g)\widehat\Phi_A(f)\,
+  \widehat Y
+  \ket{\vac}.
+\end{split}
+\]
+Equivalently, adjacent entries of a Wightman distribution may be exchanged
+across a spacelike support separation with the Koszul sign
+\((-1)^{|A||B|}\).
+\end{proposition}
+
+\begin{proof}
+Microcausality gives, on \(\mathcal D\),
+\[
+  \widehat\Phi_A(f)\widehat\Psi_B(g)
+  -
+  (-1)^{|A||B|}
+  \widehat\Psi_B(g)\widehat\Phi_A(f)=0 .
+\]
+Let \(\widehat Y\ket{\vac}\in\mathcal D\); this is part of the common-domain
+assumption for finite products of smeared fields.  Applying the displayed
+operator identity to this vector and then pairing with
+\(\bra{\vac}\widehat X\) gives the stated matrix-element identity.  Since
+Wightman distributions are the continuous multilinear extensions of these
+smeared matrix elements, the same exchange relation is their distributional
+support-separated boundary value.
+\end{proof}
 
 \section{Field Coordinates And Local Algebras}
 

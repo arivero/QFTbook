@@ -512,6 +512,12 @@ Current checks:
   plaquette coefficient formula
   \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta\), and finite
   \(SU(2)\) tensor-product character multiplicities.
+- `local_field_covariance_checks.py`: exact rational checks for the
+  Volume I local-field chapter, including mostly-plus Lorentz interval
+  preservation, the pullback composition order
+  \((f_g)_h=f_{hg}\), Koszul signs for adjacent spacelike exchange, and the
+  tensor-product ordering of component covariance factors in Wightman
+  distributions.
 - `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion

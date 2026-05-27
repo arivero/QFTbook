@@ -56,9 +56,11 @@ Working framework:
 | \(\widehat\Phi_A\) | operator-valued distribution | field coordinate |
 | \(x\in\mathbb M^D\) | spacetime label for point-field notation, not a Hilbert-space operator | localization |
 | \(f\) | test function | smearing |
+| \(f_g\) | pullback-transformed test function \(f_g(y)=f(g^{-1}y)\) | covariance |
 | \(\widehat\Phi_A(f)\) | operator on \(\mathcal D\) or affiliated local operator | smeared field |
 | \(S(\Lambda)\) | finite-dimensional representation on field indices | covariance |
 | \(\operatorname{supp} f\) | closed support of \(f\) | localization |
+| \(|A|\) | fermion parity of a homogeneous field component | graded locality |
 
 ## Definition Ledger
 
@@ -66,6 +68,8 @@ Working framework:
 - spacetime label versus Hilbert-space operator;
 - smeared field;
 - local support of a smeared field;
+- common invariant field domain;
+- distributional matrix elements of finite products;
 - Poincare-covariant field;
 - microcausality for smeared fields;
 - graded locality for fermionic fields.
@@ -77,7 +81,9 @@ Working framework:
 | Point-field notation is shorthand for distributional smearing. | Definition/framework statement | Wightman-style definition |
 | The spacetime argument \(x\) in \(\widehat\Phi_A(x)\) is a localization label and becomes an operator only after smearing. | Source-certified convention | Added from handwritten p. 5 |
 | Covariance acts simultaneously on spacetime arguments and field indices. | Definition | Chapter definition |
+| Poincare covariance of fields and vacuum invariance imply covariance of all Wightman distributions. | Proven in chapter | Proposition `prop:wightman-distribution-covariance-from-fields`; finite convention checks in `calculation-checks/local_field_covariance_checks.py` |
 | Microcausality is a support condition on smeared commutators. | Definition | Chapter definition |
+| Adjacent spacelike-separated insertions in a Wightman distribution can be exchanged with the Koszul sign. | Proven in chapter | Proposition `prop:wightman-adjacent-spacelike-exchange`; finite sign check in `calculation-checks/local_field_covariance_checks.py` |
 | Local fields can coordinate local observable data but need not be the only primitive. | Framework comparison | AQFT comparison, stated carefully |
 
 ## Drafted Chapter Sections
@@ -99,6 +105,9 @@ Working framework:
 - Define every representation, domain, support condition, and index set.
 - 2026-05-24 issue #424 pass: restated field-covariance translations using
   \(U(a)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\), matching Chapters 1--2.
+- 2026-05-27 issue #615 pass: promoted the domain and covariance material
+  into explicit definitions/propositions and added companion checks for the
+  pullback order, Lorentz sign, component tensor factors, and graded exchange.
 
 ## Figure Ledger
 
