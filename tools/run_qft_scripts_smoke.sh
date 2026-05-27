@@ -16,6 +16,9 @@ python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 echo "[qft-scripts] su2_gauge_4d_heatbath_overrelaxation --smoke"
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 
+echo "[qft-scripts] autocorrelation_resampling --smoke"
+python3 qft_scripts/autocorrelation_resampling.py --smoke
+
 echo "[qft-scripts] static_potential_from_wilson_loops --smoke"
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 

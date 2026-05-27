@@ -16,6 +16,10 @@ chapters.
 - `pi`: stationary finite-chain probability vector.
 - `C_O(t)`: connected stationary autocorrelation function.
 - `tau_int(O)`: integrated autocorrelation time.
+- `b`, `B`, `Y_j`: block length, number of complete blocks, and block means
+  in finite Markov-chain error analysis.
+- `se_block`, `Var_jack`: blocked standard-error and delete-one-block
+  jackknife variance coordinates.
 - `Theta`: phase of a complex Euclidean weight.
 - `Z`, `Z_R`, `Delta f`: target partition function,
   phase-quenched partition function, and average-phase free-energy
@@ -121,6 +125,9 @@ chapters.
   \(|\phi^\dagger(r_m(A)-A^{-\alpha})\phi|\le\delta\|\phi\|^2\).
 - Proves the exact finite-\(N\) autocorrelation variance identity and derives
   the integrated-autocorrelation asymptotic under absolute summability.
+- Defines block means and proves the delete-one-block jackknife identity for
+  the sample mean, \(\operatorname{Var}_{\rm jack}=s_Y^2/B\), while stating
+  the Markov-chain hypotheses needed for blocked bootstrap use.
 - Defines the average phase as \(Z/Z_R\), defines the finite-volume
   free-energy difference \(\Delta f\), and proves the relative-variance lower
   bound behind exponential phase-reweighting degradation.
@@ -139,6 +146,9 @@ chapters.
   `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py` as an exact
   single-link heat-bath and deterministic-overrelaxation finite-regulator
   demonstration for the \(SU(2)\) Wilson lattice action.
+- Adds the companion script `qft_scripts/autocorrelation_resampling.py` for
+  autocorrelation, blocking, delete-one-block jackknife, and block-bootstrap
+  diagnostics on one-column time series.
 
 ## Figure Ledger
 
@@ -167,6 +177,10 @@ the exponential decay of average phase with volume.
   overrelaxation sweeps.  It reports plaquette and Wilson-loop measurements.
   It does not certify autocorrelation error estimates, thermodynamic limits,
   or continuum extrapolation.
+- `qft_scripts/autocorrelation_resampling.py --smoke`: finite time-series
+  diagnostic script.  It reports a windowed integrated autocorrelation
+  coordinate, block means, blocked standard errors, delete-one-block
+  jackknife errors, and block-bootstrap errors.
 
 ## Calculation Checks
 
@@ -199,6 +213,10 @@ the exponential decay of average phase with volume.
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
   average-phase relative-variance bound, and the determinant
   reality/positivity distinction in finite examples.
+- `calculation-checks/autocorrelation_resampling_checks.py` verifies the
+  finite block means, blocked standard error, delete-one-block jackknife
+  identity, biased autocovariances, and windowed \(\tau_{\rm int}\) used by
+  the companion script.
 
 ## Audit Notes
 
@@ -207,3 +225,7 @@ the exponential decay of average phase with volume.
   \(SU(2)\) compact-gauge algorithms, and it states the finite-regulator
   invariant-measure theorem without promoting subgroup reachability to a
   continuum or rapid-mixing theorem.
+- 2026-05-27 issue #631 pass: added blocking/jackknife/bootstrap error
+  coordinates and a theorem-anchored time-series diagnostic script, providing
+  the upstream error layer needed for Wilson-loop and flowed-observable
+  analysis.

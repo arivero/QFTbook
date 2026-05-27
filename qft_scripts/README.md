@@ -18,6 +18,7 @@ python3 qft_scripts/ising2d_metropolis.py --smoke
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
+python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
@@ -47,6 +48,10 @@ notebooks or CI checks can consume the results without scraping prose.
   deterministic overrelaxation sweeps.  It illustrates the finite conditional
   measure and microcanonical reflection described in the monograph; it is not
   a continuum extrapolation or a production error-analysis framework.
+- `autocorrelation_resampling.py`: one-column Markov-chain time-series
+  diagnostics.  It computes biased autocorrelations, a windowed integrated
+  autocorrelation time, block means, blocked standard errors,
+  delete-one-block jackknife errors, and block-bootstrap errors.
 - `static_potential_from_wilson_loops.py`: finite-regulator analysis tool for
   positive rectangular Wilson-loop data.  It computes transfer-matrix
   effective-mass ratios and Creutz ratios from CSV input, with a smoke test

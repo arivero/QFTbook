@@ -544,6 +544,10 @@ Current checks:
   the tree-level gauge-fixed lattice kernel, the \(\widehat p^2\) expansion
   coefficient \(-1/12\), and the plaquette tadpole/boosted-coupling
   bookkeeping.
+- `autocorrelation_resampling_checks.py`: finite checks for
+  `qft_scripts/autocorrelation_resampling.py`, verifying block means,
+  blocked standard errors, delete-one-block jackknife errors, biased
+  autocovariances, and the windowed integrated autocorrelation coordinate.
 - `static_potential_analysis_checks.py`: finite checks for
   `qft_scripts/static_potential_from_wilson_loops.py`, verifying that
   synthetic area-plus-perimeter Wilson-loop data reproduce the expected

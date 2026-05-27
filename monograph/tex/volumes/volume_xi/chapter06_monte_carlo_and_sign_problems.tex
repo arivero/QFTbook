@@ -1194,6 +1194,119 @@ by its infinite sum gives
 \eqref{eq:asymptotic-autocorrelation-variance}.
 \end{proof}
 
+\section{Blocking, Jackknife, and Bootstrap Error Coordinates}
+\label{sec:blocking-jackknife-bootstrap-error-coordinates}
+
+Autocorrelation estimates enter numerical QFT through finite data-analysis
+coordinates.  Let \(O_0,\ldots,O_{N-1}\) be a real time series sampled after
+thermalization.  Choose a block length \(b\) and write
+\[
+  B=\left\lfloor\frac{N}{b}\right\rfloor .
+\]
+Discarding the final incomplete block for definiteness, define block means
+\[
+  Y_j=\frac1b\sum_{r=0}^{b-1}O_{jb+r},
+  \qquad j=0,\ldots,B-1,
+  \label{eq:block-mean-definition}
+\]
+and
+\[
+  \overline Y=\frac1B\sum_{j=0}^{B-1}Y_j .
+\]
+If \(b\) is large compared with the integrated autocorrelation scale, the
+block means are closer to independent samples than the original time series.
+This sentence is a diagnostic hypothesis about the Markov chain and the
+chosen observable; it is checked by varying \(b\), by monitoring slow modes,
+and by comparing independent chains.
+
+\begin{proposition}[Delete-one-block jackknife for the mean]
+\label{prop:block-jackknife-mean-identity}
+Assume \(B\ge2\).  Let
+\[
+  s_Y^2=\frac{1}{B-1}\sum_{j=0}^{B-1}(Y_j-\overline Y)^2 .
+  \label{eq:block-sample-variance}
+\]
+The blocked standard-error coordinate for \(\overline Y\) is
+\[
+  \operatorname{se}_{\rm block}(\overline Y)=\sqrt{\frac{s_Y^2}{B}}.
+  \label{eq:block-standard-error}
+\]
+Let \(\overline Y_{(j)}\) be the mean of the \(B-1\) block means with the
+\(j\)-th block removed:
+\[
+  \overline Y_{(j)}
+  =
+  \frac{1}{B-1}\sum_{k\ne j}Y_k .
+  \label{eq:delete-one-block-mean}
+\]
+Then the delete-one-block jackknife variance for the mean,
+\[
+  \operatorname{Var}_{\rm jack}(\overline Y)
+  =
+  \frac{B-1}{B}\sum_{j=0}^{B-1}
+  \left(
+    \overline Y_{(j)}
+    -
+    \frac1B\sum_{k=0}^{B-1}\overline Y_{(k)}
+  \right)^2,
+  \label{eq:delete-one-block-jackknife-variance}
+\]
+equals \(s_Y^2/B\).
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+  \overline Y_{(j)}
+  =
+  \frac{B\overline Y-Y_j}{B-1},
+  \]
+the average of the delete-one estimates is
+\[
+  \frac1B\sum_{j=0}^{B-1}\overline Y_{(j)}=\overline Y .
+  \]
+Therefore
+\[
+  \overline Y_{(j)}-\overline Y
+  =
+  -\frac{Y_j-\overline Y}{B-1}.
+  \]
+Substitution in
+\eqref{eq:delete-one-block-jackknife-variance} gives
+\[
+  \operatorname{Var}_{\rm jack}(\overline Y)
+  =
+  \frac{B-1}{B}
+  \frac{1}{(B-1)^2}
+  \sum_{j=0}^{B-1}(Y_j-\overline Y)^2
+  =
+  \frac{s_Y^2}{B}.
+  \]
+\end{proof}
+
+For a nonlinear observable \(F(\overline O^{(1)},\ldots,\overline O^{(m)})\),
+the delete-one-block jackknife is applied to the whole analysis function:
+one recomputes \(F\) after deleting each block, and then uses
+\eqref{eq:delete-one-block-jackknife-variance} with \(F_{(j)}\) in place of
+\(\overline Y_{(j)}\).  This keeps correlations among the components of
+\(F\) inside each delete-one sample.  Block bootstrap resampling similarly
+resamples the block means or the original contiguous blocks.  Its consistency
+requires an asymptotic regime in which \(b\to\infty\), \(B\to\infty\), and
+the block length grows slowly enough compared with the total chain length;
+the finite script described below reports the coordinate values and leaves
+the asymptotic claim to the stated Markov-chain hypotheses.
+
+The companion script
+\[
+  \texttt{qft\_scripts/autocorrelation\_resampling.py}
+\]
+computes the biased autocorrelation estimate, a windowed
+\(\tau_{\rm int}\), blocked standard errors, delete-one-block jackknife
+errors for the mean, and block-bootstrap errors from a one-column CSV time
+series.  It is intended as the upstream error-analysis layer for Wilson-loop
+and flowed-observable measurements before ratios such as
+\eqref{eq:lattice-static-potential-effective-mass} are formed.
+
 \section{Reweighting and the Sign Problem}
 
 Suppose the target finite-regulator integral has complex weight
