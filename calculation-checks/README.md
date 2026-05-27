@@ -98,10 +98,11 @@ Current checks:
   relation.
 - `finite_temperature_path_integral_checks.py`: finite convention checks for
   the thermal path-integral chapter, including bosonic and fermionic
-  Matsubara boundary phases, the finite-volume spectral representation of
-  Euclidean correlators, the separate zero-frequency degenerate term, the
-  Matsubara Cauchy transform, and chemical-potential twist and
-  imaginary-holonomy periodicity.
+  Matsubara boundary phases, the one-mode fermionic coherent-state trace
+  identity with the chapter's Berezin sign convention, the finite-volume
+  spectral representation of Euclidean correlators, the separate
+  zero-frequency degenerate term, the Matsubara Cauchy transform, and
+  chemical-potential twist and imaginary-holonomy periodicity.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier

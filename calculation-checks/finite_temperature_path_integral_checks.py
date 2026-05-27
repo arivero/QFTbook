@@ -3,9 +3,9 @@
 
 The checks cover algebraic facts used in the finite-temperature path-integral
 chapter: circle eigenvalue quantization, finite-volume spectral representation
-of Euclidean correlators, Matsubara Cauchy transforms, and chemical-potential
-twist bookkeeping.  They are finite-dimensional convention checks, not a
-continuum construction.
+of Euclidean correlators, the one-mode fermionic coherent-state trace sign,
+Matsubara Cauchy transforms, and chemical-potential twist bookkeeping.  They
+are finite-dimensional convention checks, not a continuum construction.
 """
 
 from __future__ import annotations
@@ -27,6 +27,37 @@ def check_matsubara_boundary_phases() -> None:
 
         omega_f = (2 * n + 1) * math.pi / beta
         assert_close(cmath.exp(1j * omega_f * beta), -1.0, "fermionic mode is antiperiodic")
+
+
+def check_one_mode_fermionic_trace_identity() -> None:
+    """Check the Berezin sign convention used in the coherent-state trace.
+
+    With ordered integral dbar eta d eta, the chapter convention is
+    integral(bar eta eta) = -1.  The coefficient of bar eta eta in
+    exp(-bar eta eta)<-eta|O|eta> is therefore minus Tr O.
+    """
+
+    operator = [
+        [1.2 + 0.3j, -0.4 + 0.8j],
+        [0.9 - 0.2j, -0.7 + 0.5j],
+    ]
+    o00 = operator[0][0]
+    o11 = operator[1][1]
+
+    berezin_bar_eta_eta = -1.0
+    trace_integrand_coeff = -(o00 + o11)
+    graded_integrand_coeff = -(o00 - o11)
+
+    assert_close(
+        trace_integrand_coeff * berezin_bar_eta_eta,
+        o00 + o11,
+        "fermionic coherent-state trace identity",
+    )
+    assert_close(
+        graded_integrand_coeff * berezin_bar_eta_eta,
+        o00 - o11,
+        "fermionic coherent-state graded trace identity",
+    )
 
 
 def off_diagonal_matrix(entries: dict[tuple[int, int], complex], size: int) -> list[list[complex]]:
@@ -195,6 +226,7 @@ def check_chemical_potential_twist() -> None:
 
 def main() -> None:
     check_matsubara_boundary_phases()
+    check_one_mode_fermionic_trace_identity()
     check_bosonic_spectral_representation()
     check_chemical_potential_twist()
     print("Finite-temperature path-integral convention checks passed.")
