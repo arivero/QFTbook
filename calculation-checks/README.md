@@ -389,6 +389,12 @@ Current checks:
   test-function arithmetic, the finite-graph random-walk resolvent,
   closedness of reflection-positive Gram matrices, and tensor-product
   locality for spin algebras.
+- `lattice_fermion_chiral_checks.py`: exact finite checks for the
+  Volume XI lattice-fermion chapter, including naive-doubler chirality
+  cancellation, Wilson corner-mass degeneracies, the Ginsparg-Wilson and
+  overlap-index algebra, Berezinian index normalization, reflection-positive
+  crossing-factor coefficients, Wilson reflection projectors, and staggered
+  phase signs.
 - `nested_bethe_ansatz_checks.py`: finite algebra checks for the Volume VI
   algebraic and nested Bethe-ansatz chapters, including the rational
   Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
