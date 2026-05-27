@@ -822,6 +822,8 @@ Current checks:
   conformal-window/free-phase inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
+  Uhlenbeck stratum codimension arithmetic, the one-box Gieseker tangent
+  Euler-class specialization,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
   and Higgs-patch collective-coordinate ledger, the radial Higgs-cutoff

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Exact checks for SQCD instantons, ADHM dimensions, and Nekrasov k=1."""
+"""Exact checks for SQCD instantons, ADHM dimensions, and Nekrasov k=1.
+
+The checks include the singular-instanton compactification arithmetic used in
+the compact-localization chapter: Uhlenbeck stratum codimensions and the
+one-box specialization of the Gieseker tangent Euler class.
+"""
 
 from __future__ import annotations
 
@@ -22,6 +27,21 @@ def check_adhm_dimension_count() -> None:
             assert_equal(complex_dimension, 2 * k * n, "ADHM complex dimension")
             assert_equal(2 * complex_dimension, 4 * k * n, "ADHM real dimension")
             assert_equal(2 * complex_dimension - 4, 4 * k * n - 4, "centered ADHM dimension")
+
+
+def check_uhlenbeck_stratum_codimension() -> None:
+    for k in range(1, 8):
+        for n in range(1, 7):
+            top_complex_dimension = 2 * k * n
+            for lost_charge in range(0, k + 1):
+                stratum_dimension = 2 * (k - lost_charge) * n + 2 * lost_charge
+                codimension = top_complex_dimension - stratum_dimension
+                assert_equal(
+                    codimension,
+                    2 * lost_charge * (n - 1),
+                    "Uhlenbeck stratum codimension",
+                )
+    assert_equal(2 * 1 * (2 - 1), 2, "SU(2) one-point complex codimension")
 
 
 def check_instanton_exponential_coupling_conversion() -> None:
@@ -301,6 +321,55 @@ def check_nekrasov_su2_one_instanton() -> None:
         assert_equal(got, expected, "SU(2) Nekrasov prepotential coefficient")
 
 
+def one_box_tangent_euler(
+    alpha: int,
+    a_values: list[Fraction],
+    epsilon1: Fraction,
+    epsilon2: Fraction,
+) -> Fraction:
+    total = epsilon1 * epsilon2
+    epsilon = epsilon1 + epsilon2
+    for beta, a_beta in enumerate(a_values):
+        if beta == alpha:
+            continue
+        diff = a_values[alpha] - a_beta
+        total *= diff * (diff + epsilon)
+    return total
+
+
+def check_one_box_tangent_euler_class() -> None:
+    samples = [
+        ([Fraction(-2), Fraction(3)], Fraction(1), Fraction(2)),
+        ([Fraction(-3), Fraction(1), Fraction(5)], Fraction(2), Fraction(-1)),
+        ([Fraction(-5), Fraction(-1), Fraction(4), Fraction(9)], Fraction(2), Fraction(1)),
+    ]
+    for a_values, epsilon1, epsilon2 in samples:
+        fixed_point_sum = sum(
+            Fraction(1, one_box_tangent_euler(alpha, a_values, epsilon1, epsilon2))
+            for alpha in range(len(a_values))
+        )
+        direct_sum = Fraction(1, epsilon1 * epsilon2) * sum(
+            Fraction(
+                1,
+                math_product(
+                    (a_values[alpha] - a_values[beta])
+                    * (a_values[alpha] - a_values[beta] + epsilon1 + epsilon2)
+                    for beta in range(len(a_values))
+                    if beta != alpha
+                ),
+            )
+            for alpha in range(len(a_values))
+        )
+        assert_equal(fixed_point_sum, direct_sum, "one-box tangent Euler class")
+
+
+def math_product(values) -> Fraction:
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
+
+
 def check_young_diagram_one_box_count() -> None:
     for n in range(1, 12):
         one_box_fixed_points = n
@@ -309,6 +378,7 @@ def check_young_diagram_one_box_count() -> None:
 
 def main() -> None:
     check_adhm_dimension_count()
+    check_uhlenbeck_stratum_codimension()
     check_instanton_exponential_coupling_conversion()
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()
@@ -319,6 +389,7 @@ def main() -> None:
     check_holomorphic_decoupling_dimensions()
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
+    check_one_box_tangent_euler_class()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")
 

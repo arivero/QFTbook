@@ -27,6 +27,16 @@
   fixed-locus statement, trace-delta Gaussian convention, vector and
   hypermultiplet one-loop determinants, and Nekrasov north/south pole
   factors.
+- Singular-instanton compactification choices: Uhlenbeck stratification,
+  Gieseker/framed torsion-free-sheaf resolution, and Donaldson--Uhlenbeck
+  compactification on a compact four-manifold.
+- ADHM stability criterion, its failure as the small-instanton stratum, the
+  tangent Euler-class formula at Young-diagram fixed points, and the one-box
+  fixed-point derivation of the \(k=1\) Nekrasov term.
+- Field-theoretic Gieseker-matching hypothesis: the resolved equivariant
+  integral is a theorem after choosing the Gieseker moduli space, while its
+  equality to the continuum \(S^4\) gauge-theory path integral requires a
+  regulator and limiting argument.
 - \(H\)-function convergence, logarithmic derivative, and Barnes-\(G\)
   counterterm convention.
 - \(\mathcal N=4\) Yang-Mills degeneration to a Gaussian matrix model.
@@ -60,6 +70,9 @@
 | \(H(x)\) | Pestun one-loop determinant function |
 | \(G_B\) | Barnes \(G\)-function in the chapter normalization |
 | \(Z_{\rm inst}\) | Nekrasov equivariant instanton factor |
+| \(\mathcal M^{sm},\overline{\mathcal M}^{U},\mathfrak M^{G}\) | smooth/Uhlenbeck/Gieseker instanton spaces |
+| \(B_1,B_2,I,J\) | ADHM variables in the singular-instanton comparison |
+| \(A_Y(s),L_Y(s)\) | arm and relative leg lengths of a Young-diagram box |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
 | \(\zeta\) | \(3D\) FI parameter |
@@ -86,18 +99,30 @@
    comparison includes a declared quadratic counterterm convention.
 7. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
    vector/hyper one-loop determinants and north/south Nekrasov factors.
-8. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+8. Uhlenbeck strata have codimension
+   \(2\ell(N-1)\) in complex dimension, so the familiar real codimension-four
+   one-point boundary is the \(N=2,\ell=1\) case rather than a universal
+   statement for all \(U(N)\).
+9. ADHM stability failure is the finite-dimensional small-instanton
+   mechanism; the Gieseker quotient resolves it while the Uhlenbeck quotient
+   records the lost charge as points of \(\mathbb C^2\).
+10. The displayed tangent Euler class at a Young-diagram fixed point reduces
+    to the standard \(U(N)\) one-instanton fixed-point sum for one box.
+11. The equality between the Gieseker-resolved equivariant integral and the
+    \(S^4\) field-theoretic localized path integral is recorded as a
+    field-theoretic matching hypothesis unless a regulator proves it.
+12. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.
-9. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
+13. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
-10. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+14. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-11. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+15. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-12. The conjugate-chiral determinant identity gives
+16. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-13. Contact terms and local curvature counterterms are QFT coordinates, not
+17. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -109,6 +134,11 @@
   derivative, finite double-sine reflection and chiral pole conventions, the
   \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
   round-\(S^3\) conjugate-chiral-pair integral.
+- `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
+  dimension count, Uhlenbeck stratum codimension arithmetic, the one-box
+  Gieseker tangent Euler-class specialization, and the \(SU(2)\)
+  one-instanton Nekrasov fixed-point sum used by the cross-referenced
+  Seiberg-Witten chapter.
 
 ## Source Notes
 

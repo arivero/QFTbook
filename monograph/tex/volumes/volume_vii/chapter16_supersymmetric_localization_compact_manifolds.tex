@@ -223,7 +223,9 @@ D\Phi\).  They are part of the regulated localization datum.  In the formulae
 below this datum will be stated by naming the finite-dimensional variables,
 the contour, and the determinant or equivariant-integral prescription.
 
-\section{\texorpdfstring{\(S^4\) Localization In Four-Dimensional \(\mathcal N=2\) Gauge Theory}{S4 Localization In Four-Dimensional N=2 Gauge Theory}}
+\section{\texorpdfstring
+  {\(S^4\) Localization In Four-Dimensional \(\mathcal N=2\) Gauge Theory}
+  {S4 Localization In Four-Dimensional N=2 Gauge Theory}}
 
 Let \(G\) be compact connected, with Lie algebra \(\mathfrak g\), maximal
 torus \(T\), Cartan algebra \(\mathfrak t\), Weyl group \(W_G\), and root
@@ -386,6 +388,233 @@ systems the formula requires the corresponding compactification or an
 equivalent contour prescription as part of the stated datum.
 \end{definition}
 
+\section{Singular Instantons And Compactification Choices}
+\label{sec:susy-localization-singular-instantons}
+
+The factor \(Z_{\rm inst}\) in the \(S^4\) formula is a compactification
+choice, not a decorative notation.  Smooth instantons on \(\mathbb C^2\) can
+shrink to zero size.  The limiting curvature is then no longer represented
+by a smooth connection; the lost action is recorded as a point with
+multiplicity.  A localization formula that sums over point instantons must
+therefore say which compactified moduli space is being integrated over.
+
+\begin{definition}[Framed instanton compactifications on \(\mathbb C^2\)]
+\label{def:framed-instanton-compactifications-c2}
+Let \(\mathcal M_{k,N}^{\rm sm}\) be the framed smooth \(U(N)\)
+\(k\)-instanton moduli space on \(\mathbb C^2\).
+\begin{enumerate}
+  \item The Uhlenbeck compactification is stratified by
+  \[
+    \overline{\mathcal M}_{k,N}^{\,U}
+    =
+    \bigsqcup_{\ell=0}^{k}
+    \mathcal M_{k-\ell,N}^{\rm sm}\times
+    {\rm Sym}^{\ell}(\mathbb C^2).
+    \label{eq:uhlenbeck-stratification-c2}
+  \]
+  The integer \(\ell\) is the amount of instanton number carried by ideal
+  point instantons.
+  \item The Gieseker, or framed torsion-free-sheaf, compactification
+  \(\mathfrak M_{k,N}^{G}\) is the smooth stable ADHM quotient.  It carries
+  a proper morphism
+  \[
+    \pi_{G\to U}:\mathfrak M_{k,N}^{G}
+    \longrightarrow
+    \overline{\mathcal M}_{k,N}^{\,U}
+  \]
+  that resolves the small-instanton strata relevant to equivariant
+  localization.
+  \item On a compact four-manifold \(X\), the Donaldson--Uhlenbeck
+  compactification of ASD connections is the analogous compactification by
+  weak limits of connections away from finitely many points, together with
+  the lost second Chern class recorded as an effective zero-cycle on \(X\).
+\end{enumerate}
+These spaces have different meanings.  A field-theoretic path integral with
+a specified regulator must explain which compactification, or which
+equivalent contour, it produces.
+\end{definition}
+
+\begin{proposition}[Dimension of Uhlenbeck strata]
+\label{prop:uhlenbeck-stratum-dimension}
+The complex dimension of the top stratum
+\(\mathcal M_{k,N}^{\rm sm}\) is \(2kN\).  The stratum with \(\ell\) ideal
+points in \eqref{eq:uhlenbeck-stratification-c2} has complex dimension
+\[
+  2(k-\ell)N+2\ell .
+\]
+Hence its complex codimension inside the top-dimensional instanton
+component is
+\[
+  2\ell(N-1).
+  \label{eq:uhlenbeck-stratum-codimension}
+\]
+For \(N=2\) and \(\ell=1\), this is real codimension four.
+\end{proposition}
+
+\begin{proof}
+The ADHM dimension count in
+Proposition~\ref{prop:adhm-dimension-count} gives complex dimension
+\(2rN\) for the smooth framed charge-\(r\) moduli space.  The symmetric
+product \({\rm Sym}^{\ell}(\mathbb C^2)\) has complex dimension \(2\ell\).
+Adding the two dimensions gives the displayed stratum dimension with
+\(r=k-\ell\).  Subtracting from \(2kN\) gives
+\[
+  2kN-\bigl(2(k-\ell)N+2\ell\bigr)=2\ell(N-1).
+\]
+\end{proof}
+
+\begin{definition}[ADHM stability and the small-instanton locus]
+\label{def:adhm-stability-small-instanton}
+Let \(K\simeq\mathbb C^k\), \(W\simeq\mathbb C^N\), and let
+\((B_1,B_2,I,J)\) obey the complex ADHM equation
+\[
+  [B_1,B_2]+IJ=0 .
+\]
+The datum is stable if no proper subspace
+\(S\subsetneq K\) satisfies
+\[
+  B_1S\subset S,\qquad B_2S\subset S,\qquad I(W)\subset S .
+\]
+The Gieseker compactification is the stable GIT quotient by \(GL(K)\), or
+equivalently the positive real-moment-map hyperkähler quotient.  The
+Uhlenbeck compactification is obtained from the affine quotient after
+discarding the stable framing data carried by punctual quotients.  Failure
+of stability is the ADHM description of the small-instanton stratum.
+\end{definition}
+
+\begin{proof}[Explanation]
+If the cyclic span of \(I(W)\) under \(B_1\) and \(B_2\) is all of \(K\), the
+framing data generate the length-\(k\) torsion-free sheaf and the
+complexified gauge action has the expected stable orbit.  If the cyclic span
+is a proper subspace \(S\), then the quotient \(K/S\) carries ADHM length not
+seen by the framed smooth connection.  In the affine quotient this quotient
+is recorded only by the eigenvalue data of \(B_1,B_2\), hence by points of
+\(\mathbb C^2\) with multiplicity.  These are precisely the ideal
+point-instanton coordinates in the Uhlenbeck stratum.  The positive
+real-moment-map quotient forbids this loss by forcing stability; the price is
+that the singular stratum is replaced by the Gieseker resolution.
+\end{proof}
+
+\begin{definition}[Tangent Euler class at a Young-diagram fixed point]
+\label{def:nekrasov-tangent-euler-class}
+Let a fixed point of \(\mathfrak M_{k,N}^{G}\) be labeled by
+\(\vec Y=(Y_1,\ldots,Y_N)\).  For a box \(s=(i,j)\in Y_\alpha\), define the
+arm and relative leg lengths by
+\[
+  A_{Y_\alpha}(s)=Y_{\alpha,i}-j,
+  \qquad
+  L_{Y_\beta}(s)=Y_{\beta,j}^{\,T}-i .
+\]
+With Coulomb weights \(a_\alpha\) and rotation weights
+\(\epsilon_1,\epsilon_2\), use the orientation convention
+\[
+\begin{aligned}
+  e_T(T_{\vec Y}\mathfrak M_{k,N}^{G})
+  &=
+  \prod_{\alpha,\beta=1}^{N}
+  \prod_{s\in Y_\alpha}
+  \Bigl(a_\alpha-a_\beta
+  -\epsilon_1L_{Y_\beta}(s)
+  +\epsilon_2(A_{Y_\alpha}(s)+1)\Bigr)
+\\
+  &\quad\times
+  \Bigl(a_\alpha-a_\beta
+  +\epsilon_1(L_{Y_\beta}(s)+1)
+  -\epsilon_2A_{Y_\alpha}(s)\Bigr).
+  \label{eq:nekrasov-tangent-euler-class}
+\end{aligned}
+\]
+The pure vector fixed-point contribution is
+\[
+  Z_{\vec Y}^{\rm vec}
+  =
+  e_T(T_{\vec Y}\mathfrak M_{k,N}^{G})^{-1}
+\]
+in this convention.  Matter multiplets multiply this by the Euler classes of
+their corresponding equivariant index bundles.
+\end{definition}
+
+\begin{proposition}[One-box fixed points from the tangent character]
+\label{prop:one-box-fixed-points-from-euler-class}
+For \(k=1\), the fixed points are the \(N\) choices in which one Young
+diagram \(Y_\alpha\) consists of a single box.  Formula
+\eqref{eq:nekrasov-tangent-euler-class} gives
+\[
+  Z_1^{U(N)}
+  =
+  \frac1{\epsilon_1\epsilon_2}
+  \sum_{\alpha=1}^{N}
+  \prod_{\beta\ne\alpha}
+  \frac1{(a_\alpha-a_\beta)
+  (a_\alpha-a_\beta+\epsilon_1+\epsilon_2)} ,
+\]
+which is the one-instanton formula used in
+Definition~\ref{def:pure-vector-nekrasov-partition}.
+\end{proposition}
+
+\begin{proof}
+Let \(s=(1,1)\) be the single box of \(Y_\alpha\).  For \(\beta=\alpha\),
+\[
+  A_{Y_\alpha}(s)=0,\qquad L_{Y_\alpha}(s)=0,
+\]
+so the two tangent weights are \(\epsilon_2\) and \(\epsilon_1\).  For
+\(\beta\ne\alpha\), the diagram \(Y_\beta\) is empty, hence
+\[
+  A_{Y_\alpha}(s)=0,\qquad L_{Y_\beta}(s)=-1.
+\]
+The two weights in \eqref{eq:nekrasov-tangent-euler-class} are then
+\[
+  a_\alpha-a_\beta+\epsilon_1+\epsilon_2,
+  \qquad
+  a_\alpha-a_\beta .
+\]
+Multiplying the weights and summing over the \(N\) possible positions of the
+one box gives the displayed expression.
+\end{proof}
+
+\begin{example}[The charge-one resolution]
+\label{ex:charge-one-gieseker-resolution}
+For \(k=1\), the ADHM matrices \(B_1,B_2\) are complex numbers, hence give
+the center point in \(\mathbb C^2\).  The remaining data
+\[
+  I\in W^\ast,\qquad J\in W,\qquad IJ=0
+\]
+modulo the \(GL(1)\) action, with positive real moment map, give
+\[
+  \mathfrak M_{1,N}^{G}\simeq \mathbb C^2\times T^\ast\mathbb{CP}^{N-1}.
+\]
+The Uhlenbeck compactification collapses the resolved orientation/size data
+over the ideal point-instanton stratum.  For \(N=2\), the collapsed stratum
+has real codimension four in the top moduli component, matching
+Proposition~\ref{prop:uhlenbeck-stratum-dimension}.
+\end{example}
+
+\begin{hypothesis}[Field-theoretic matching to the Gieseker integral]
+\label{hyp:field-theoretic-gieseker-matching}
+The \(S^4\) formula
+\eqref{eq:pestun-s4-localization} uses the Gieseker/Nekrasov equivariant
+integral at each pole.  A theorem-level derivation from the four-dimensional
+gauge-theory path integral requires a regulator and integration cycle whose
+localized small-instanton sector is identified with
+\(\mathfrak M_{k,N}^{G}\), not merely with the Uhlenbeck space
+\(\overline{\mathcal M}_{k,N}^{\,U}\).  Noncommutative or positive
+ADHM-moment-map regularization supplies a finite-dimensional resolution of
+the small-instanton singularity, but the construction-level equivalence
+between this resolved equivariant integral and the continuum supersymmetric
+path integral is retained here as a hypothesis unless the regulator has been
+specified and the limiting argument has been proven.
+\end{hypothesis}
+
+This hypothesis is the point at which the monograph refuses the common
+shortcut.  Equivariant localization on \(\mathfrak M_{k,N}^{G}\) is a
+mathematical theorem after the resolved moduli space is chosen.  The
+assertion that the original QFT path integral localizes to that particular
+resolved integral is an additional field-theoretic statement.  A BV
+pushforward formulation, as in
+Chapter~\ref{ch:tqft-bv-integration-localization}, must include the boundary
+term at the singular stratum or a regulator that replaces the stratum by a
+cycle without boundary.
+
 The localized partition function is
 \[
   Z_{S^4}^{\mathcal N=2}
@@ -430,7 +659,9 @@ on \(\mathbb C^2\).  The partition function reduces to the ordinary Gaussian
 \]
 \end{example}
 
-\section{\texorpdfstring{\(S^3\) Localization In Three-Dimensional \(\mathcal N=2\) Theories}{S3 Localization In Three-Dimensional N=2 Theories}}
+\section{\texorpdfstring
+  {\(S^3\) Localization In Three-Dimensional \(\mathcal N=2\) Theories}
+  {S3 Localization In Three-Dimensional N=2 Theories}}
 
 Let \(G\), \(T\), \(\mathfrak t\), \(W_G\), and \(\Delta\) be as above.  On
 the round \(S^3_r\), the Coulomb-branch localization variable is the constant
