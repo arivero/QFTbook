@@ -919,6 +919,7 @@ giving \eqref{eq:ising-spin-four-point-structure-constant}.
 \end{proof}
 
 \section{Sewing and Higher-Genus Blocks}
+\label{sec:voa-higher-genus-sewing}
 
 Sewing is the operation that constructs higher-genus surfaces and higher-point
 blocks from lower-genus pieces.  Let \(C_1\) and \(C_2\) have marked points
@@ -942,15 +943,251 @@ dual basis with respect to the invariant pairing, and
 \(L_0 e_\alpha=(h_a+n_\alpha)e_\alpha\).  The exponent records propagation
 along the sewn annulus.
 
+The formula is meaningful only after specifying a topology on the module and
+a convergence domain for the sum.  For a unitary positive-energy chiral
+module \(M_a\) write
+\[
+  M_a=\widehat{\bigoplus_{n\ge0}}\,M_{a,h_a+n},
+  \qquad
+  d_a(n)=\dim M_{a,h_a+n},
+\]
+where \(L_0\) has eigenvalue \(h_a+n\) on \(M_{a,h_a+n}\).  For
+\(0<|q|<1\) define the annular propagation operator
+\begin{equation}
+  P_a(q)=q^{L_0-c/24},
+  \qquad
+  P_a(q)e=q^{h_a+n-c/24}e
+  \quad(e\in M_{a,h_a+n}),
+  \label{eq:annular-propagator}
+\end{equation}
+with a fixed branch of \(\log q\) on the sewing coordinate chart.  Its trace
+norm is
+\begin{equation}
+  \|P_a(q)\|_1
+  =
+  |q|^{h_a-c/24}\sum_{n\ge0}d_a(n)|q|^n
+  =
+  |\chi_a(q)|,
+  \label{eq:annular-propagator-trace-norm}
+\end{equation}
+up to the phase carried by \(q^{L_0-c/24}\).  Thus the first analytic
+condition behind sewing is ordinary character convergence at the modulus
+\(|q|\).
+
+\begin{definition}[Hilbert sewing datum]
+\label{def:hilbert-sewing-datum}
+Let \(M_a\) be a unitary chiral module with nondegenerate invariant Hermitian
+pairing.  A one-channel Hilbert sewing datum consists of:
+\begin{enumerate}
+  \item two continuous linear functionals
+  \(\ell_1,\ell_2\) on the Hilbert completion of \(M_a\), representing the
+  two lower-genus chiral blocks with one \(M_a\)-leg and one \(M_a^\vee\)-leg;
+  \item a sewing parameter \(q\) for which the propagator \(P_a(q)\) is
+  trace class;
+  \item a choice of dual homogeneous bases
+  \(\{e_\alpha\}\), \(\{e^\alpha\}\) satisfying
+  \(\langle e^\alpha,e_\beta\rangle=\delta^\alpha{}_\beta\).
+\end{enumerate}
+The sewn block is the scalar
+\begin{equation}
+  \operatorname{Sew}_{a,q}(\ell_1,\ell_2)
+  =
+  \sum_\alpha
+  \ell_1(e_\alpha)\,
+  q^{L_0(e_\alpha)-c/24}\,
+  \ell_2(e^\alpha),
+  \label{eq:hilbert-sewing-scalar}
+\end{equation}
+provided the series is absolutely convergent.
+\end{definition}
+
+\begin{proposition}[Trace-class estimate for one-channel sewing]
+\label{prop:trace-class-estimate-one-channel-sewing}
+Assume \(P_a(q)\) is trace class and that
+\(\ell_i(v)=\langle u_i,v\rangle\) for vectors \(u_i\) in the Hilbert
+completion of \(M_a\).  Then the series
+\eqref{eq:hilbert-sewing-scalar} is absolutely convergent and satisfies
+\begin{equation}
+  \left|
+    \operatorname{Sew}_{a,q}(\ell_1,\ell_2)
+  \right|
+  \le
+  \|u_1\|\,\|u_2\|\,\|P_a(q)\|_1 .
+  \label{eq:one-channel-sewing-bound}
+\end{equation}
+In particular the sewn block is independent of the chosen orthonormal
+homogeneous basis.
+\end{proposition}
+
+\begin{proof}
+Choose the homogeneous basis orthonormal.  With
+\(\lambda_\alpha=q^{L_0(e_\alpha)-c/24}\),
+\[
+  \operatorname{Sew}_{a,q}(\ell_1,\ell_2)
+  =
+  \sum_\alpha
+  \langle u_1,e_\alpha\rangle\lambda_\alpha
+  \langle e_\alpha,u_2\rangle
+  =
+  \langle u_1,P_a(q)u_2\rangle
+\]
+when the finite-level partial sums are taken first.  Since \(P_a(q)\) is
+trace class, it is bounded and
+\(|\langle u_1,P_a(q)u_2\rangle|\le\|u_1\|\,\|P_a(q)\|\,\|u_2\|\le
+\|u_1\|\,\|P_a(q)\|_1\,\|u_2\|\).  Absolute convergence follows from
+\[
+  \sum_\alpha
+  |\langle u_1,e_\alpha\rangle|\,|\lambda_\alpha|\,
+  |\langle e_\alpha,u_2\rangle|
+  \le
+  \|u_1\|\,\|u_2\|
+  \sup_{\|v\|=\|w\|=1}
+  \sum_\alpha |\lambda_\alpha|
+  |\langle v,e_\alpha\rangle|\,|\langle e_\alpha,w\rangle|
+  \le
+  \|u_1\|\,\|u_2\|\sum_\alpha|\lambda_\alpha|.
+\]
+The last sum is \(\|P_a(q)\|_1\).  Since the value is the Hilbert inner
+product \(\langle u_1,P_a(q)u_2\rangle\), changing the orthonormal basis
+does not change the scalar.
+\end{proof}
+
+\begin{proposition}[Torus trace from self-sewing]
+\label{prop:torus-trace-from-self-sewing}
+Let \(M_a\) be a unitary positive-energy module and let \(v\) be a chiral
+state whose vertex operator \(Y(v,1)\) preserves the common domain of
+\(P_a(q)\).  Sewing the two punctures of the sphere two-point block
+\(\langle e^\alpha,Y(v,1)e_\alpha\rangle\) gives
+\begin{equation}
+  Z_a(v;q)
+  =
+  \operatorname{Tr}_{M_a}
+  \left(
+    Y(v,1)q^{L_0-c/24}
+  \right).
+  \label{eq:torus-one-point-trace-from-sewing}
+\end{equation}
+For \(v=\mathbf 1\), this is the character
+\begin{equation}
+  Z_a(\mathbf 1;q)=\chi_a(q)
+  =
+  \operatorname{Tr}_{M_a}q^{L_0-c/24}.
+  \label{eq:character-from-self-sewing}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let \(\{e_\alpha\}\) be a homogeneous orthonormal basis.  The self-sewn
+block is
+\[
+  \sum_\alpha
+  q^{L_0(e_\alpha)-c/24}
+  \langle e_\alpha,Y(v,1)e_\alpha\rangle,
+\]
+which is exactly the trace of
+\(Y(v,1)q^{L_0-c/24}\) on finite-level truncations and hence, whenever the
+trace is convergent, the operator trace.  Setting \(v=\mathbf 1\) gives
+\(Y(\mathbf 1,1)=\operatorname{id}_{M_a}\).
+\end{proof}
+
+\begin{definition}[Sewing graph for a chiral block]
+\label{def:chiral-sewing-graph}
+A chiral sewing graph \(\Gamma\) consists of:
+\begin{enumerate}
+  \item vertices \(v\), each labelled by a genus \(g_v\), external insertion
+  labels, and a finite-dimensional chiral block functional
+  \(\mathcal F_v\);
+  \item internal edges \(e\), each joining two marked local coordinates or
+  two marked coordinates on the same vertex surface;
+  \item for every internal edge \(e\), a channel label \(a_e\), a pair of
+  dual chiral modules \(M_{a_e}\), \(M_{a_e}^\vee\), and a sewing parameter
+  \(q_e\) with \(|q_e|<1\);
+  \item an orientation convention specifying which end of each edge carries
+  \(M_{a_e}\) and which carries \(M_{a_e}^\vee\).
+\end{enumerate}
+Its geometric genus is
+\begin{equation}
+  g(\Gamma)=
+  \sum_v g_v+b_1(\Gamma),
+  \label{eq:sewing-graph-genus}
+\end{equation}
+where \(b_1(\Gamma)\) is the first Betti number of the graph.
+\end{definition}
+
+Given \(\Gamma\), the formal sewn block is obtained by inserting a dual basis
+on every internal edge and multiplying the propagator factors:
+\begin{equation}
+  \mathcal F_\Gamma(\{q_e\})
+  =
+  \sum_{\{\alpha_e\}}
+  \left(
+    \prod_{e}
+    q_e^{L_0(e_{\alpha_e})-c/24}
+  \right)
+  \prod_v
+  \mathcal F_v(\ldots,e_{\alpha_e},e^{\alpha_e},\ldots).
+  \label{eq:sewing-graph-block}
+\end{equation}
+The genus formula \eqref{eq:sewing-graph-genus} follows because sewing two
+connected components adds genera, while sewing two punctures on the same
+connected component adds one independent cycle.
+
+\begin{proposition}[Finite-channel convergence criterion]
+\label{prop:finite-channel-sewing-convergence}
+Assume a rational unitary chiral theory with finitely many channel labels,
+and fix a sewing graph \(\Gamma\).  Suppose that for each edge \(e\),
+\(P_{a_e}(q_e)\) is trace class, and that every vertex block functional
+\(\mathcal F_v\) extends continuously to the Hilbert tensor product of its
+incident channel modules.  Then the edge-basis sum
+\eqref{eq:sewing-graph-block} converges absolutely for the chosen
+\(\{q_e\}\).  Its value is independent of the orthonormal homogeneous bases
+used on internal edges.
+\end{proposition}
+
+\begin{proof}
+Insert finite-level projectors \(E_{a_e,\le N}\) on every internal edge.  For
+fixed cutoffs the sum is finite.  The continuous vertex functionals have
+finite operator norms on the tensor products of the incident Hilbert spaces.
+Repeatedly applying the one-edge estimate
+\eqref{eq:one-channel-sewing-bound} bounds the absolute value of the cutoff
+sum by
+\[
+  \left(\prod_v \|\mathcal F_v\|\right)
+  \left(\prod_e \|P_{a_e}(q_e)\|_1\right).
+\]
+The right hand side is finite by the trace-class hypotheses and independent
+of the cutoffs.  Monotone convergence applied to the absolute values of the
+finite basis sums gives absolute convergence.  Basis independence follows
+edge by edge from Proposition~\ref{prop:trace-class-estimate-one-channel-sewing}.
+\end{proof}
+
+\begin{hypothesis}[Analytic sewing theorem for rational chiral data]
+\label{hyp:rational-analytic-sewing-theorem}
+For the rational chiral theories treated as fully constructed in this
+chapter, the absolutely convergent local sewing series
+\eqref{eq:sewing-graph-block} analytically continue over the appropriate
+cover of the moduli space of pointed curves, assemble into finite-rank vector
+bundles of chiral blocks, and are compatible with changes of pants
+decomposition by the fusing, braiding, and modular moves.  The compatibility
+maps obey the pentagon, hexagon, and genus-one modular identities.
+\end{hypothesis}
+
+This hypothesis is not a cosmetic assumption.  The trace-class estimates
+above control a local plumbing coordinate chart near \(q_e=0\).  They do not
+by themselves prove global analytic continuation, mapping-class-group
+covariance, or equality of two different decompositions of the same Riemann
+surface.  Those assertions are precisely the higher-genus sewing theorem.
+
 \begin{definition}[Sewing-compatible rational chiral theory]
 \label{def:sewing-compatible-rational-chiral-theory}
 For this chapter, a rational chiral theory is a VOA \(V\) with finitely many
 simple ordinary modules \(\{M_i\}_{i\in I}\), semisimple module category,
 finite-dimensional conformal-block spaces, nondegenerate two-point pairings,
 and convergent sewing expansions \eqref{eq:chiral-block-sewing} in a
-neighborhood of \(q=0\).  The analytic continuations of these blocks along the
-moduli space of pointed curves give a projectively flat vector bundle of
-conformal blocks.
+neighborhood of \(q=0\), satisfying
+Hypothesis~\ref{hyp:rational-analytic-sewing-theorem}.  The analytic
+continuations of these blocks along the moduli space of pointed curves give a
+projectively flat vector bundle of conformal blocks.
 \end{definition}
 
 The mapping class group acts on this bundle.  In genus zero the elementary
