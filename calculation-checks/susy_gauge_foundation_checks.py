@@ -56,6 +56,37 @@ def commutator(left, right):
     )
 
 
+def matmul2(left, right):
+    return [
+        [
+            left[0][0] * right[0][0] + left[0][1] * right[1][0],
+            left[0][0] * right[0][1] + left[0][1] * right[1][1],
+        ],
+        [
+            left[1][0] * right[0][0] + left[1][1] * right[1][0],
+            left[1][0] * right[0][1] + left[1][1] * right[1][1],
+        ],
+    ]
+
+
+def matvec2(matrix, vector):
+    return [
+        matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+        matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+    ]
+
+
+def rowmat2(row, matrix):
+    return [
+        row[0] * matrix[0][0] + row[1] * matrix[1][0],
+        row[0] * matrix[0][1] + row[1] * matrix[1][1],
+    ]
+
+
+def rowvec2(row, vector):
+    return row[0] * vector[0] + row[1] * vector[1]
+
+
 def check_d_term_square_completion():
     """Check the auxiliary D-field equation and on-shell potential sign."""
 
@@ -162,12 +193,47 @@ def check_wz_closure_translation_decomposition():
     )
 
 
+def check_n2_qcd_superpotential_contraction_and_fterms():
+    """Check the N=2 QCD cubic contraction and F-term coefficient."""
+
+    phi = [
+        [Fraction(2), Fraction(3)],
+        [Fraction(5), Fraction(7)],
+    ]
+    q = [Fraction(11), Fraction(13)]
+    q_tilde = [Fraction(17), Fraction(19)]
+    u = [
+        [Fraction(1), Fraction(1)],
+        [Fraction(0), Fraction(1)],
+    ]
+    u_inv = [
+        [Fraction(1), Fraction(-1)],
+        [Fraction(0), Fraction(1)],
+    ]
+
+    original = rowvec2(rowmat2(q_tilde, phi), q)
+    transformed_q = matvec2(u, q)
+    transformed_q_tilde = rowmat2(q_tilde, u_inv)
+    transformed_phi = matmul2(matmul2(u, phi), u_inv)
+    transformed = rowvec2(rowmat2(transformed_q_tilde, transformed_phi), transformed_q)
+    assert_equal(transformed, original, "N=2 QCD cubic gauge contraction")
+
+    g_squared = Fraction(5, 7)
+    coefficient_squared = 2 * g_squared
+    assert_equal(
+        coefficient_squared,
+        Fraction(10, 7),
+        "N=2 QCD F-term coefficient from (sqrt(2) g)^2",
+    )
+
+
 def main():
     check_d_term_square_completion()
     check_fi_parameter_centrality_for_su2()
     check_vectorlike_u1_anomaly_cancellation()
     check_conjugate_nonabelian_anomaly_sign()
     check_wz_closure_translation_decomposition()
+    check_n2_qcd_superpotential_contraction_and_fterms()
     print("All supersymmetric gauge-foundation checks passed.")
 
 

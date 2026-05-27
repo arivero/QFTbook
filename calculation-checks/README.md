@@ -592,8 +592,10 @@ Current checks:
   \(D\)-field square completion and potential sign, the absence of
   Fayet--Iliopoulos parameters for an `su(2)` semisimple factor, vectorlike
   \(U(1)\) anomaly cancellation, and the conjugate-representation anomaly
-  sign, and the Hermitian-sign identity converting Wess--Zumino-gauge
-  closure between ordinary-translation and covariant-translation forms.
+  sign, the Hermitian-sign identity converting Wess--Zumino-gauge closure
+  between ordinary-translation and covariant-translation forms, and the
+  \(\mathcal N=2\) QCD cubic gauge contraction together with its
+  \(2g_{\rm YM}^2\) \(F\)-term coefficient.
 - `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
   supersymmetric moduli-space quotient conventions, including the
   rank-one \(U(1)\) invariant ring

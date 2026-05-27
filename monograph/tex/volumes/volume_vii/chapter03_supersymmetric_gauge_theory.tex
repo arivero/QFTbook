@@ -350,6 +350,125 @@ Lagrangian.  Since Lorentzian scalar Lagrangians have the form kinetic minus
 potential, the potential is the positive final expression.
 \end{proof}
 
+\section{\texorpdfstring{\(\mathcal N=2\) Gauge-Matter Coupling in
+\(\mathcal N=1\) Variables}{N=2 Gauge-Matter Coupling in N=1 Variables}}
+
+We shall often use \(\mathcal N=1\) superfields to describe
+four-dimensional \(\mathcal N=2\) gauge theory.  The translation is
+field-theoretic and does not use any string-theoretic construction.  Its
+data are as follows.  Let \(G\) be compact, let \(R\) be a finite-dimensional
+unitary representation, and choose the invariant trace form on
+\(\mathfrak g\) used in the Yang--Mills kinetic term.  An
+\(\mathcal N=2\) vector multiplet consists, in \(\mathcal N=1\) language, of
+the vector superfield \(V\) together with an adjoint chiral superfield
+\[
+  \Phi=\Phi^a T^a\in\mathfrak g_{\mathbb C}.
+\]
+A hypermultiplet in \(R\) is represented by two chiral superfields
+\[
+  Q\in R,
+  \qquad
+  \widetilde Q\in R^\vee ,
+\]
+where \(R^\vee\) is the algebraic dual representation.  If
+\(T_R^a\in\operatorname{End}(R)\) are the representation matrices, write
+\[
+  \Phi_R=\Phi^aT_R^a\in\operatorname{End}(R).
+\]
+
+With canonical flat chiral-field metrics and the Yang--Mills coupling
+normalization already fixed in the vector kinetic term, the minimal
+\(\mathcal N=2\) gauge-matter superpotential is
+\begin{equation}
+  W_{\mathcal N=2}
+  =
+  \sqrt2\,g_{\rm YM}\,\widetilde Q\,\Phi_R Q
+  =
+  \sqrt2\,g_{\rm YM}\,\Phi^a\,\widetilde Q\,T_R^a Q .
+  \label{eq:n2-qcd-superpotential-n1-variables}
+\end{equation}
+The coefficient in \eqref{eq:n2-qcd-superpotential-n1-variables} is part of
+the normalization statement: rescaling \(Q,\widetilde Q,\Phi\), or changing
+the trace convention, changes the displayed coefficient together with the
+kinetic terms and the gauge coupling.  Additional flavor tensors or
+independent cubic coefficients are deformations of the \(\mathcal N=1\)
+theory; they are not the minimal \(\mathcal N=2\) gauge coupling.
+
+\begin{proposition}[Gauge invariance and \(F\)-term equations]
+\label{prop:n2-qcd-superpotential-fterms}
+Assume the preceding flat chiral-field metrics, and choose an orthonormal
+basis \(T^a\) for the trace form.  Under a finite gauge transformation
+\[
+  Q\mapsto u_R Q,
+  \qquad
+  \widetilde Q\mapsto \widetilde Q u_R^{-1},
+  \qquad
+  \Phi_R\mapsto u_R\Phi_Ru_R^{-1},
+\]
+the contraction \(\widetilde Q\Phi_R Q\) is invariant.  The corresponding
+scalar \(F\)-term potential is
+\[
+  V_F
+  =
+  2g_{\rm YM}^2
+  \left(
+    \|\varphi_R q\|_R^2
+    +\|\widetilde q\,\varphi_R\|_{R^\vee}^2
+    +\sum_a|\widetilde q\,T_R^a q|^2
+  \right),
+\]
+where \(q,\widetilde q,\varphi\) are the scalar components of
+\(Q,\widetilde Q,\Phi\), and
+\(\varphi_R=\varphi^aT_R^a\).  Hence the \(F\)-flat equations are
+\[
+  \varphi_R q=0,
+  \qquad
+  \widetilde q\,\varphi_R=0,
+  \qquad
+  \widetilde q\,T_R^a q=0
+  \quad\text{for every }a .
+\]
+\end{proposition}
+
+\begin{proof}
+Gauge invariance is the finite-dimensional identity
+\[
+  (\widetilde Q u_R^{-1})
+  (u_R\Phi_Ru_R^{-1})
+  (u_R Q)
+  =
+  \widetilde Q\Phi_RQ .
+\]
+Let \(c=\sqrt2\,g_{\rm YM}\).  In coordinates,
+\[
+  W=c\,\widetilde q_i(\varphi_R)^i{}_j q^j
+    =c\,\varphi^a\,\widetilde q_i(T_R^a)^i{}_j q^j .
+\]
+Differentiating with respect to the three independent chiral coordinates
+gives
+\[
+  \frac{\partial W}{\partial \widetilde q_i}
+    =c(\varphi_R q)^i,\qquad
+  \frac{\partial W}{\partial q^j}
+    =c(\widetilde q\,\varphi_R)_j,\qquad
+  \frac{\partial W}{\partial\varphi^a}
+    =c\,\widetilde q\,T_R^a q .
+\]
+For canonical flat metrics the \(F\)-term potential is the squared norm of
+this holomorphic gradient.  Since \(|c|^2=2g_{\rm YM}^2\), the displayed
+potential follows, and its zero locus is precisely the simultaneous
+vanishing of the three displayed gradient components.
+\end{proof}
+
+If \(R\) is the adjoint representation, the two chiral fields in the
+hypermultiplet are also adjoint-valued.  Together with \(\Phi\) they are the
+three adjoint chiral superfields of \(\mathcal N=4\) Yang--Mills written in
+\(\mathcal N=1\) language, and the cubic term above becomes the usual
+adjoint cubic after translating \(T_R^a\) into the adjoint action.  The
+enhancement statement is a statement about the full kinetic, Yukawa, and
+auxiliary-field normalizations, not merely about the existence of a cubic
+polynomial.
+
 \section{Gauge Anomalies as a Consistency Condition}
 
 The classical field-variable construction is not yet a quantum gauge theory.

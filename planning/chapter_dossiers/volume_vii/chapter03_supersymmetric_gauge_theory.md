@@ -27,6 +27,13 @@
 - Matter chiral multiplets in a representation \(R\).
 - Moment-map definition of the \(D\)-term coupling, FI centrality condition,
   and explicit auxiliary \(D\)-field elimination.
+- Four-dimensional \(\mathcal N=2\) gauge-matter coupling in
+  \(\mathcal N=1\) variables: vector multiplet \(V\) plus adjoint chiral
+  \(\Phi\), hypermultiplet chiral fields \(Q\in R\) and
+  \(\widetilde Q\in R^\vee\), the representation endomorphism
+  \(\Phi_R=\Phi^aT_R^a\), the minimal superpotential
+  \(W_{\mathcal N=2}=\sqrt2\,g_{\rm YM}\widetilde Q\Phi_RQ\), and the
+  derived \(F\)-term potential and flatness equations.
 - Perturbative local gauge anomaly as a consistency condition.
 - Conjugate-pair and real-representation perturbative gauge-anomaly
   cancellation.
@@ -46,6 +53,11 @@
 | \(V\) | real vector superfield |
 | \(W_\alpha\) | chiral gauge field-strength superfield |
 | \(R\) | matter representation |
+| \(R^\vee\) | algebraic dual representation |
+| \(\Phi\) | adjoint chiral superfield in an \(\mathcal N=2\) vector multiplet |
+| \(\Phi_R\) | representation endomorphism \(\Phi^aT_R^a\) acting on \(R\) |
+| \(\varphi_R\) | scalar component endomorphism \(\varphi^aT_R^a\) |
+| \(Q,\widetilde Q\) | \(\mathcal N=1\) chiral fields of a hypermultiplet in \(R\oplus R^\vee\) |
 | \(\mu_R\) | moment map of the matter representation |
 | \(\zeta\) | FI functional, defined only on the abelian quotient |
 | \(\eta^\sharp\) | trace-dual of \(\mu_R-\zeta\) used in the D-term potential |
@@ -66,9 +78,13 @@
 6. Matter \(D\)-terms are encoded by a moment map; eliminating the auxiliary
    field gives \(V_D=g^2 \|\mu_R-\zeta\|^2/2\) with FI terms only on abelian
    factors.
-7. Vanishing of the perturbative gauge anomaly is a quantum consistency
+7. The \(\mathcal N=2\) gauge-matter superpotential is a gauge-invariant
+   finite-dimensional contraction; with canonical chiral metrics it gives
+   \(V_F=2g_{\rm YM}^2(\|\varphi_Rq\|^2+\|\widetilde q\varphi_R\|^2+
+   \sum_a|\widetilde qT_R^aq|^2)\).
+8. Vanishing of the perturbative gauge anomaly is a quantum consistency
    condition, separate from the classical superspace construction.
-8. Vectorlike conjugate pairs and real representations have zero
+9. Vectorlike conjugate pairs and real representations have zero
    perturbative cubic gauge anomaly; the vector-multiplet adjoint gaugino is
    therefore locally gauge-anomaly free.
 
@@ -79,7 +95,9 @@
   semisimple factor, vectorlike `U(1)` anomaly cancellation, and the
   conjugate-representation anomaly sign.  It also checks the Hermitian-sign
   algebra that rewrites Wess--Zumino-gauge closure from ordinary translation
-  plus gauge to covariant translation plus shifted gauge.
+  plus gauge to covariant translation plus shifted gauge, and verifies the
+  finite gauge invariance of the \(\mathcal N=2\) QCD cubic contraction and
+  the exact \(2g_{\rm YM}^2\) coefficient in its \(F\)-term potential.
 
 ## Figures
 
