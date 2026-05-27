@@ -450,6 +450,284 @@ label by one.  The same shift is produced by the generator
 \(S\) has gaugino-phase charge \(2\).
 \end{proof}
 
+\begin{proposition}[Pure-SYM one-instanton zero-mode test]
+\label{prop:pure-sym-one-instanton-zero-mode-test}
+Work in the charge-one \(SU(N_c)\) instanton sector in the BPST
+normalization of Section~\ref{sec:bpst-instanton-thooft-vertex}.  Assume a
+semiclassical collective-coordinate separation in which the exact adjoint
+fermion zero modes are represented by Grassmann variables and must be
+saturated by separated operator insertions.  Then
+\[
+  \left\langle S(x_1)\cdots S(x_m)\right\rangle_{k=1}^{\mathrm{sep}}=0,
+  \qquad m<N_c,
+  \label{eq:pure-sym-instanton-too-few-s-insertions}
+\]
+before contact terms or boundary contributions are considered.  The first
+separated chiral correlator whose fermion degree can saturate the
+charge-one instanton measure is the \(N_c\)-point correlator
+\[
+  \left\langle S(x_1)\cdots S(x_{N_c})\right\rangle_{k=1}^{\mathrm{sep}}.
+  \label{eq:pure-sym-instanton-first-saturated-correlator}
+\]
+Its protected charge and dimension ledger is the same ledger as the VY
+equation \(S^{N_c}\sim \Lambda_h^{3N_c}\).
+\end{proposition}
+
+\begin{proof}
+The Dirac index in the adjoint representation gives
+\[
+  n_\lambda=2T(\operatorname{adj})\,k=2N_c
+\]
+left-handed gaugino zero modes for a charge-one instanton.  Let
+\(\eta_1,\ldots,\eta_{2N_c}\) denote their Grassmann coefficients.  The
+zero-mode part of the collective-coordinate measure contains
+\[
+  d\eta_{2N_c}\cdots d\eta_1 .
+\]
+The lowest component of \(S\) is quadratic in the gaugino field.  Hence a
+separated insertion of \(S\) is a polynomial of Grassmann degree at most
+two in the \(\eta_a\)'s, and a product of \(m\) such insertions has degree at
+most \(2m\).  A Berezin integral over \(2N_c\) variables extracts only the
+coefficient of \(\eta_1\cdots\eta_{2N_c}\).  If \(m<N_c\), that coefficient
+is absent, proving \eqref{eq:pure-sym-instanton-too-few-s-insertions}.
+
+For \(m=N_c\), the Grassmann degree can be \(2N_c\).  This is a necessary
+zero-mode condition, not yet a proof of a nonzero coefficient; the
+spacetime dependence, nonzero-mode determinant, instanton-size integration,
+and possible boundary terms still have to be controlled.  The holomorphic
+scale factor of a charge-one pure-SYM instanton is
+\(\Lambda_h^{3N_c}\), while \(S^{N_c}\) has engineering dimension \(3N_c\)
+and gaugino-phase charge \(2N_c\).  Thus the first zero-mode-saturated
+chiral correlator has precisely the dimension and anomalous-charge ledger
+of the VY critical equation.
+\end{proof}
+
+\begin{proposition}[Saturated pure-SYM Berezin coefficient]
+\label{prop:pure-sym-saturated-berezin-coefficient}
+Keep the assumptions and notation of
+Proposition~\ref{prop:pure-sym-one-instanton-zero-mode-test}.  At fixed
+bosonic instanton collective coordinate \(\mathfrak m\), let
+\[
+  \eta_1,\ldots,\eta_{2N_c}
+\]
+be an oriented basis of the adjoint gaugino zero-mode Grassmann variables,
+with Berezin measure
+\[
+  \dd\eta_{2N_c}\cdots\dd\eta_1 .
+\]
+For a separated insertion point \(x_a\), write the zero-mode part of the
+lowest component of \(S(x_a)\) as the quadratic form
+\[
+  S(x_a)\big|_{\mathrm{zm}}
+  =
+  \sum_{1\leq p<q\leq 2N_c}
+  K_a^{pq}(x_a;\mathfrak m)\,\eta_p\eta_q ,
+  \label{eq:pure-sym-s-insertion-zero-mode-quadratic-form}
+\]
+where the coefficients \(K_a^{pq}\) are ordinary complex numbers after the
+bosonic collective coordinate and the zero-mode basis have been fixed.  Define
+the saturated Berezin coefficient
+\[
+  \mathfrak B_{N_c}(K_1,\ldots,K_{N_c})
+  =
+  [\eta_1\cdots\eta_{2N_c}]
+  \prod_{a=1}^{N_c}
+  \left(
+    \sum_{p<q}K_a^{pq}\eta_p\eta_q
+  \right),
+  \label{eq:pure-sym-saturated-berezin-coefficient}
+\]
+where \([\eta_1\cdots\eta_{2N_c}]\) denotes coefficient extraction in the
+ordered monomial \(\eta_1\cdots\eta_{2N_c}\).  Equivalently,
+\[
+  \mathfrak B_{N_c}
+  =
+  \sum_{\substack{p_a<q_a\\
+        \bigsqcup_{a=1}^{N_c}\{p_a,q_a\}
+        =\{1,\ldots,2N_c\}}}
+  \operatorname{sgn}(p_1,q_1,\ldots,p_{N_c},q_{N_c})
+  \prod_{a=1}^{N_c}K_a^{p_aq_a}.
+  \label{eq:pure-sym-saturated-berezin-expansion}
+\]
+The fixed-\(\mathfrak m\) zero-mode integral of the \(N_c\)-point insertion is
+\[
+  \int \dd\eta_{2N_c}\cdots\dd\eta_1
+  \prod_{a=1}^{N_c}S(x_a)\big|_{\mathrm{zm}}
+  =
+  \mathfrak B_{N_c}(K_1,\ldots,K_{N_c}) .
+  \label{eq:pure-sym-fixed-moduli-berezin-integral}
+\]
+Thus the saturated instanton calculation requires a nonzero top exterior
+component of the \(N_c\) two-forms \(K_a\).  In the canonical test case
+\[
+  K_a=\eta_{2a-1}\eta_{2a},
+  \qquad a=1,\ldots,N_c,
+\]
+the coefficient is \(1\).  If instead every insertion has the same canonical
+two-form
+\[
+  \Omega_0=\sum_{a=1}^{N_c}\eta_{2a-1}\eta_{2a},
+\]
+then the coefficient of \(\Omega_0^{N_c}\) is \(N_c!\).  These factorial and
+sign conventions are part of the instanton calculation; they are not fixed
+by dimension, holomorphy, or the index.
+\end{proposition}
+
+\begin{proof}
+Berezin integration over the zero-mode variables extracts the coefficient of
+the oriented top monomial:
+\[
+  \int \dd\eta_{2N_c}\cdots\dd\eta_1\,
+  \eta_1\cdots\eta_{2N_c}=1 .
+\]
+Substituting
+\eqref{eq:pure-sym-s-insertion-zero-mode-quadratic-form} into the product of
+insertions therefore gives
+\eqref{eq:pure-sym-fixed-moduli-berezin-integral} directly.  Expanding the
+product, a monomial contributes only if every variable
+\(\eta_1,\ldots,\eta_{2N_c}\) occurs exactly once.  Ordering that monomial to
+\(\eta_1\cdots\eta_{2N_c}\) produces the sign in
+\eqref{eq:pure-sym-saturated-berezin-expansion}.  If a variable is missing or
+repeated, the coefficient of the top monomial is zero.
+
+For \(K_a=\eta_{2a-1}\eta_{2a}\), the product is already the ordered top
+monomial, hence the coefficient is \(1\).  For
+\(\Omega_0=\sum_a\eta_{2a-1}\eta_{2a}\), the only nonzero terms in
+\(\Omega_0^{N_c}\) choose each pair exactly once; the \(N_c!\) permutations
+of these commuting degree-two pair factors all contribute with positive sign.
+This proves the displayed coefficient and records the convention-sensitive
+normalization that later gets absorbed into the nonzero constant
+\(\kappa_{\mathrm{inst}}\).
+\end{proof}
+
+\begin{proposition}[Topological-sector selection for \(S\)-correlators]
+\label{prop:pure-sym-topological-sector-s-selection}
+Fix an instanton number \(\nu\in\mathbb Z_{>0}\).  Work in a self-dual
+charge-\(\nu\) sector of pure \(SU(N_c)\) supersymmetric Yang--Mills, with the
+same BPST/index normalization as above.  Assume that the exact adjoint
+gaugino zero modes are separated as Grassmann variables and that, in the
+separated chiral correlator under consideration, the only insertions carrying
+these variables are the displayed \(S\)-insertions.  Then
+\[
+  \left\langle S(x_1)\cdots S(x_m)\right\rangle_{\nu}^{\mathrm{sep}}=0,
+  \qquad m<\nu N_c,
+  \label{eq:pure-sym-topological-sector-too-few-s}
+\]
+at the zero-mode Berezin level.  The first possible saturated chiral
+correlator in the charge-\(\nu\) sector has
+\[
+  m=\nu N_c
+\]
+insertions and carries the same dimension and anomalous gaugino-phase charge
+as \(\Lambda_h^{3\nu N_c}\).  Consequently the \(N_c\)-point correlator used
+in Hypothesis~\ref{hyp:pure-sym-zero-mode-saturated-instanton-correlator} is
+a charge-one test: sectors with \(\nu\geq2\) leave unsaturated adjoint zero
+modes in that channel.  Anti-self-dual sectors have the conjugate chirality
+zero modes and are paired with anti-chiral \(\overline S\)-insertions rather
+than with the holomorphic \(S\)-correlator above.
+\end{proposition}
+
+\begin{proof}
+The adjoint Dirac index gives
+\[
+  n_\lambda(\nu)=2T(\operatorname{adj})\,\nu=2N_c\nu
+\]
+left-handed gaugino zero modes in a self-dual charge-\(\nu\) sector.  A
+separated insertion of \(S\) is quadratic in the left-handed gaugino
+zero-mode variables, so \(m\) such insertions have Grassmann degree at most
+\(2m\).  The zero-mode Berezin integral in the charge-\(\nu\) sector extracts
+the coefficient of a monomial of degree \(2N_c\nu\).  If \(m<\nu N_c\), that
+top-degree coefficient is absent, proving
+\eqref{eq:pure-sym-topological-sector-too-few-s}.
+
+For \(m=\nu N_c\), the fermion degree can match the top degree.  This is only
+the algebraic saturation condition; the corresponding coefficient and the
+bosonic moduli integral remain separate analytic inputs, as in
+Hypothesis~\ref{hyp:pure-sym-zero-mode-saturated-instanton-correlator}.  The
+dimension of \(S^{\nu N_c}\) is \(3\nu N_c\), and its gaugino-phase charge is
+\(2\nu N_c\), matching the holomorphic scale factor
+\(\Lambda_h^{3\nu N_c}\) and the index count of the zero modes.  Setting
+\(m=N_c\) forces \(\nu=1\) for equality.  For \(\nu\geq2\), the same
+\(N_c\)-point insertion has degree \(2N_c\), leaving
+\(2(\nu-1)N_c\) adjoint zero modes unsaturated.
+
+The chirality statement is the conjugate form of the same index theorem:
+anti-self-dual sectors carry the opposite chiral zero modes.  The holomorphic
+operator \(S\) is built from the chiral field strength \(W_\alpha W^\alpha\),
+whereas the conjugate zero modes are supplied by \(\overline S\).  Thus they
+belong to the anti-chiral conjugate calculation, apart from contact terms,
+source insertions, or boundary effects outside the separated chiral
+selection rule.
+\end{proof}
+
+\begin{hypothesis}[Zero-mode-saturated pure-SYM instanton correlator]
+\label{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
+The following is the additional analytic input required if one wants to use
+the original instanton logic as evidence for the pure-SYM condensate.  In a
+supersymmetric holomorphic regulator, assume that the separated
+\(N_c\)-point chiral correlator
+\eqref{eq:pure-sym-instanton-first-saturated-correlator} receives a
+well-defined charge-one instanton contribution
+\begin{equation}
+  \left\langle S(x_1)\cdots S(x_{N_c})\right\rangle_{k=1}^{\mathrm{sep}}
+  =
+  \kappa_{\mathrm{inst}}\Lambda_h^{3N_c},
+  \qquad \kappa_{\mathrm{inst}}\neq0 ,
+  \label{eq:pure-sym-zero-mode-saturated-correlator-input}
+\end{equation}
+for separated points in the chiral sector, in the same finite normalization
+of \(S\) and \(\Lambda_h\) used above.  This hypothesis includes control of
+the saturated Berezin coefficient
+\eqref{eq:pure-sym-saturated-berezin-coefficient} after integration over
+bosonic collective coordinates, the instanton-size integral, the nonzero-mode
+determinant, collision singularities, and boundary strata.  In un-Higgsed
+pure SYM these analytic controls are not supplied by the elementary zero-mode
+count alone.
+\end{hypothesis}
+
+\begin{proposition}[Cluster extraction is a separate assumption]
+\label{prop:pure-sym-instanton-cluster-extraction}
+Assume Hypothesis~\ref{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
+and assume the infinite-volume theory has a massive pure phase
+\(\omega_\ell\) with cluster decomposition and one-point value
+\[
+  \omega_\ell(S)=s_\ell .
+\]
+If the separated chiral \(N_c\)-point function is identified with the
+large-separation limit in that pure phase, then
+\[
+  s_\ell^{N_c}
+  =
+  \kappa_{\mathrm{inst}}\Lambda_h^{3N_c}.
+  \label{eq:pure-sym-cluster-root-equation}
+\]
+Consequently the instanton \(N_c\)-point calculation can at most supply the
+root equation for the condensate.  The choice of a particular root and the
+existence of the massive pure phases require the anomaly, index, and
+massive-branch inputs stated in this section.
+\end{proposition}
+
+\begin{proof}
+Choose separated points \(x_1,\ldots,x_{N_c}\), and translate them so that
+their mutual distances go to infinity.  Cluster decomposition in the pure
+phase gives
+\[
+  \lim_{\min_{a\neq b}|x_a-x_b|\to\infty}
+  \omega_\ell\!\left(S(x_1)\cdots S(x_{N_c})\right)
+  =
+  \prod_{a=1}^{N_c}\omega_\ell(S)
+  =
+  s_\ell^{N_c}.
+\]
+If this large-separation limit is the protected chiral correlator
+\eqref{eq:pure-sym-zero-mode-saturated-correlator-input}, then
+\eqref{eq:pure-sym-cluster-root-equation} follows.  The equation determines
+only the \(N_c\)-th power.  Its \(N_c\) roots are then organized by the
+\(\mathbb Z_{2N_c}\) anomaly and the \(\theta\)-monodromy described in
+Proposition~\ref{prop:pure-sym-condensate-branches-source}; no
+single-instanton Berezin integral selects one branch by itself.
+\end{proof}
+
 The component condensate \(\langle\operatorname{tr}\lambda\lambda\rangle_k\)
 is obtained from \(\langle S\rangle_k\) by the fixed component convention in
 the definition of \(S\).  The phase information above is convention
@@ -540,6 +818,97 @@ continuum quantum field theory is a statement about the spectral behavior of
 the regulated family.
 \end{proof}
 
+\begin{proposition}[Finite-volume symmetry basis versus cluster branches]
+\label{prop:pure-sym-index-cluster-basis-lemma}
+The following finite-dimensional lemma is only an algebraic model for the
+zero-energy sector after the massive-branch hypotheses have been imposed.
+Let \(V_0\) be an \(N_c\)-dimensional zero-energy space on which all states
+have the same fermion parity \(\varepsilon=\pm1\).  Suppose a unitary
+operator \(U\), representing the generator of the quotient
+\(\mathbb Z_{2N_c}/\mathbb Z_2\), acts on a branch basis
+\(\{|k\rangle\}_{k\in\mathbb Z/N_c\mathbb Z}\) by
+\[
+  U|k\rangle=|k+1\rangle .
+\]
+Suppose also that the chiral coordinate \(S\) is diagonal in this branch
+basis,
+\[
+  S|k\rangle=s\,\omega^k|k\rangle,
+  \qquad
+  \omega=\exp(2\pi\ii/N_c),
+  \qquad s\neq0 .
+\]
+Then
+\[
+  \operatorname{Tr}_{V_0}(-1)^F=\varepsilon N_c,
+  \qquad
+  \operatorname{Tr}_{V_0}\!\left(U^p(-1)^F\right)=0
+  \quad (p\not\equiv0\!\!\pmod {N_c}),
+  \label{eq:pure-sym-twined-index-regular-representation}
+\]
+and the \(U\)-eigenvectors
+\[
+  |r\rangle
+  =
+  \frac{1}{\sqrt{N_c}}
+  \sum_{k=0}^{N_c-1}\omega^{-rk}|k\rangle,
+  \qquad r\in\mathbb Z/N_c\mathbb Z ,
+\]
+satisfy
+\[
+  U|r\rangle=\omega^r|r\rangle,
+  \qquad
+  \langle r|S|r\rangle=0,
+  \qquad
+  S|r\rangle=s\,|r-1\rangle .
+  \label{eq:pure-sym-finite-volume-symmetry-basis}
+\]
+Thus a finite-volume basis that diagonalizes the exact discrete symmetry
+need not display a nonzero one-point condensate.  The nonzero values
+\(\langle k|S|k\rangle=s\omega^k\) belong to the cluster branch basis, which
+is an infinite-volume pure-phase idealization requiring the additional
+massive-branch and cluster hypotheses, beyond the ordinary Witten index.
+\end{proposition}
+
+\begin{proof}
+In the branch basis, \(U^p\) is the permutation \(k\mapsto k+p\).  If
+\(p\not\equiv0\pmod{N_c}\), this permutation has no fixed basis vector and
+therefore has trace zero.  If \(p\equiv0\), the trace is \(N_c\).  Since
+\((-1)^F=\varepsilon\) on \(V_0\), this proves
+\eqref{eq:pure-sym-twined-index-regular-representation}.
+
+The displayed Fourier vectors obey
+\[
+  U|r\rangle
+  =
+  \frac{1}{\sqrt{N_c}}
+  \sum_k \omega^{-rk}|k+1\rangle
+  =
+  \omega^r|r\rangle .
+\]
+Their diagonal \(S\)-matrix element is
+\[
+  \langle r|S|r\rangle
+  =
+  \frac{s}{N_c}\sum_{k=0}^{N_c-1}\omega^k
+  =
+  0 ,
+\]
+because \(\omega\neq1\) and \(\omega^{N_c}=1\).  Finally,
+\[
+  S|r\rangle
+  =
+  \frac{s}{\sqrt{N_c}}
+  \sum_k \omega^{(1-r)k}|k\rangle
+  =
+  s\,|r-1\rangle .
+\]
+The operator \(S\) therefore changes the discrete chiral charge sector
+rather than producing a diagonal order parameter in the symmetry-eigenstate
+basis.  The branch basis diagonalizes \(S\) but not \(U\), exactly as a
+symmetry-breaking basis should.
+\end{proof}
+
 \begin{hypothesis}[Small-circle affine-Toda input]
 \label{hyp:pure-sym-small-circle-affine-toda-input}
 The following semiclassical computation is used as a controlled chiral-sector
@@ -564,9 +933,9 @@ one four-dimensional instanton, denoted by the compactified scale coordinate
 \(\eta\).  Effects with additional fermion zero modes, nonchiral
 determinants, and boundary terms are assumed not to change the protected
 critical-point count.  After the chiral variables are gapped, the remaining
-three-dimensional theory may be placed in finite spatial volume; each
-nondegenerate massive chiral critical point contributes one even
-supersymmetric ground state to the local index.
+three-dimensional theory may be placed in finite spatial volume, and the
+finite-dimensional local oscillator calculation below applies to each
+nondegenerate massive chiral critical point.
 \end{hypothesis}
 
 Under Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input}, the
@@ -635,6 +1004,69 @@ nondegenerate on the hyperplane.  Thus each critical point is Morse in the
 complex holomorphic sense.
 \end{proof}
 
+\begin{proposition}[Local index of a nondegenerate chiral critical point]
+\label{prop:pure-sym-local-chiral-critical-index}
+Consider a finite-dimensional supersymmetric quantum mechanics obtained by
+keeping \(n\) complex chiral zero modes \(z^a\), a positive Hermitian metric
+at a critical point \(p\), and a holomorphic superpotential \(W\).  Assume
+that
+\[
+  \partial_a W(p)=0,
+  \qquad
+  H_{ab}=\partial_a\partial_bW(p)
+\]
+is an invertible complex symmetric matrix, and that the regulator localizes
+the low-energy contribution to a small ball around \(p\) without introducing
+extra boundary zero modes.  Then \(p\) contributes
+\[
+  \mathcal I_{\mathrm{loc}}(p)=+1
+\]
+to the graded trace.  In particular, the local contribution in the
+affine-Toda chamber is not the real Morse sign of \(\operatorname{Re}W\);
+the holomorphic chiral complex has a canonical complex orientation.
+\end{proposition}
+
+\begin{proof}
+Choose normal holomorphic coordinates for the Hermitian metric at \(p\), and
+discard higher terms in \(W\).  The discarded terms give a compact
+perturbation of the local oscillator as long as no boundary zero mode is
+created, so the local index is unchanged by the finite-dimensional
+graded-trace identity.  Since \(H\) is complex symmetric and invertible,
+Takagi factorization gives a unitary matrix \(U\) and nonzero singular values
+\(\mu_a>0\) such that
+\[
+  H=U^T\operatorname{diag}(\mu_1,\ldots,\mu_n)U .
+\]
+After this holomorphic change of variables, the quadratic model is a tensor
+product of one-dimensional chiral oscillators with
+\[
+  W_{\mathrm{quad}}
+  =
+  \frac12\sum_{a=1}^n \mu_a (z^a)^2 .
+\]
+For one factor, the supersymmetric ground-state equation is the Gaussian
+equation
+\[
+  \left(\frac{\partial}{\partial \bar z}
+        +\mu z\right)\Psi_0=0,
+  \qquad
+  \Psi_0(z,\bar z)=\exp(-\mu |z|^2)
+\]
+up to normalization and the harmless convention-dependent factor in the
+oscillator frequency.  This state is normalizable, unique, and lies in the
+even fermion sector.  Every excited oscillator state is paired with a state
+of opposite fermion parity by the local supercharge.  Hence one complex
+factor has local supertrace \(+1\), and the tensor product of \(n\) factors
+also has local supertrace \(+1\).
+
+The statement about signs follows from the same normal form.  As a real
+Morse function, \(\operatorname{Re}(\mu z^2/2)\) has one positive and one
+negative Hessian direction for each complex coordinate.  That real Morse
+sign belongs to the de Rham Morse complex of \(\operatorname{Re}W\), not to
+the holomorphic chiral oscillator used in the supersymmetric gauge-theory
+index.
+\end{proof}
+
 \begin{hypothesis}[Index continuation and massive-branch interpretation]
 \label{hyp:pure-sym-index-continuation-massive-branch}
 The \(SU(N_c)\) index obtained in the small-circle semiclassical chamber is
@@ -672,8 +1104,11 @@ The affine-Toda computation gives \(N_c\) isolated supersymmetric critical
 points in the small-circle chamber.  The finite-volume graded-trace identity
 turns this critical-point count into the index in that chamber, because the
 critical points are isolated and massive in the chiral variables of the
-semiclassical approximation.  The continuation hypothesis then identifies
-the same integer with the four-dimensional \(SU(N_c)\) finite-volume index.
+semiclassical approximation, and
+Proposition~\ref{prop:pure-sym-local-chiral-critical-index} gives local
+contribution \(+1\) at each of them.  The continuation hypothesis then
+identifies the same integer with the four-dimensional \(SU(N_c)\)
+finite-volume index.
 
 The condensate statement uses an input beyond the index: the additional
 glueball \(F\)-term hypothesis.  Under that hypothesis,
@@ -821,6 +1256,159 @@ matter zero mode and one non-Goldstino gaugino mode.  Thus the lifting matrix
 has rank \(2N_f=2N_c-2\).  The two gaugino modes generated by the broken
 supersymmetries are not lifted; they are the exact Grassmann coordinates
 whose integration is the \(d^2\theta\) measure.
+\end{proof}
+
+\begin{proposition}[Yukawa-lifting Berezin determinant on the Higgs patch]
+\label{prop:ads-yukawa-lifting-berezin-determinant}
+Assume the setup of
+Proposition~\ref{prop:ads-higgs-patch-collective-coordinate-ledger}.  After
+choosing bases for the \(2N_f\) matter zero modes and for the \(2N_f\)
+non-Goldstino adjoint zero modes, the zero-mode part of
+\eqref{eq:ads-yukawa-lifting-zero-mode-coupling} has the finite-dimensional
+form
+\[
+  S_{\mathrm{lift}}
+  =
+  \sum_{i=1}^{N_f}
+  \left(
+    a_i\,\chi_i\zeta_i
+    +
+    b_i\,\widetilde\chi_i\widetilde\zeta_i
+  \right),
+  \qquad
+  a_i=c_i\,\overline{v_i},\quad
+  b_i=\widetilde c_i\,\overline{\widetilde v_i},
+  \label{eq:ads-yukawa-lifting-diagonal-matrix}
+\]
+where \(c_i,\widetilde c_i\) are nonzero constants depending only on
+normalizations of zero-mode wavefunctions.  With the orientation convention
+and these nonzero normalization constants absorbed into a nonzero constant
+\(C_{\mathrm{or}}\), the lifted zero-mode integral is
+\[
+  \int
+  \prod_{i=1}^{N_f}
+  d\chi_i\,d\zeta_i\,d\widetilde\chi_i\,d\widetilde\zeta_i\,
+  \exp(-S_{\mathrm{lift}})
+  =
+  C_{\mathrm{or}}
+  \prod_{i=1}^{N_f}
+  \overline{v_i\,\widetilde v_i}.
+  \label{eq:ads-yukawa-lifting-berezin-determinant}
+\]
+Thus the Yukawa matrix has maximal rank precisely on the patch
+\(\det M\neq0\), saturates all lifted Grassmann coordinates, and leaves only
+the two exact gaugino modes.  The anti-holomorphic product in
+\eqref{eq:ads-yukawa-lifting-berezin-determinant} is a statement about this
+finite-dimensional Euclidean lifting determinant.  It is not, by itself, the
+holomorphic ADS denominator; the full regulated instanton measure, the
+bosonic Higgs cutoff, and the hypothesis that the sector defines a
+holomorphic \(F\)-term are what determine the reduced factor
+\(\mathcal F(M)\) below.
+\end{proposition}
+
+\begin{proof}
+The diagonal Higgs background separates the flavor-color directions.  The
+terms in \eqref{eq:ads-yukawa-lifting-zero-mode-coupling} pair the \(Q\)
+matter zero mode in the \(i\)-th direction with one lifted adjoint mode, with
+coefficient proportional to \(\overline{v_i}\), and pair the
+\(\widetilde Q\) matter zero mode with another lifted adjoint mode, with
+coefficient proportional to \(\overline{\widetilde v_i}\).  Since
+\(v_i\widetilde v_i\neq0\) on the patch, each \(2\times2\) Grassmann block
+has nonzero coefficient.
+
+For a single block,
+\[
+  \exp(-a\chi\zeta)=1-a\chi\zeta .
+\]
+The Berezin integral over \(d\chi\,d\zeta\) extracts the coefficient of the
+top monomial, up to the chosen orientation sign.  Hence one block contributes
+a nonzero multiple of \(a\), and the tensor product of all \(Q\) and
+\(\widetilde Q\) blocks contributes
+\[
+  C_{\mathrm{or}}\prod_i a_i b_i
+  =
+  C'_{\mathrm{or}}
+  \prod_i \overline{v_i\,\widetilde v_i}.
+\]
+Renaming this nonzero constant as \(C_{\mathrm{or}}\) gives
+\eqref{eq:ads-yukawa-lifting-berezin-determinant}.
+If any lifted variable is omitted, or if one of the coefficients is zero,
+the top monomial in the corresponding Grassmann variables is absent and the
+integral vanishes.  This proves both the saturation statement and the
+maximal-rank criterion.  The two Goldstino coordinates do not appear in
+\(S_{\mathrm{lift}}\), so they remain as the \(d^2\theta\) measure.
+\end{proof}
+
+\begin{proposition}[Radial Higgs cutoff in the ADS instanton patch]
+\label{prop:ads-radial-higgs-cutoff}
+Keep the \(N_f=N_c-1\) Higgs-patch setup above, and write
+\[
+  H(v,\widetilde v)
+  =
+  \sum_{i=1}^{N_f}
+  \bigl(|v_i|^2+|\widetilde v_i|^2\bigr).
+\]
+On the maximal-rank patch \(\det M\neq0\), one has
+\(H(v,\widetilde v)>0\).  Suppose that a fixed angular and zero-mode term in
+the regulated charge-one collective-coordinate integral has radial factor
+\[
+  \rho^{2p-1}\exp(-c\,\rho^2H(v,\widetilde v))\,d\rho,
+  \qquad p\in\mathbb Z_{>0},\quad c>0,
+  \label{eq:ads-radial-higgs-model-integral}
+\]
+where \(\rho>0\) is the instanton size.  Then the radial integral is
+\[
+  I_p(H)
+  =
+  \int_0^\infty
+  \rho^{2p-1}\exp(-cH\rho^2)\,d\rho
+  =
+  \frac{(p-1)!}{2(cH)^p}.
+  \label{eq:ads-radial-higgs-integral-value}
+\]
+In particular, the Higgs expectation values give exponential convergence at
+large \(\rho\) and a real homogeneous factor of degree \(-2p\) under
+\((v_i,\widetilde v_i)\mapsto t(v_i,\widetilde v_i)\).  This real cutoff
+estimate is not the holomorphic ADS denominator.  It neither supplies the
+Yukawa lifting rank on the boundary \(\det M=0\) nor determines the
+holomorphic factor \(1/\det M\); those are separate inputs supplied by
+Propositions~\ref{prop:ads-yukawa-lifting-berezin-determinant} and
+\ref{prop:ads-maximal-rank-meson-invariant}.
+\end{proposition}
+
+\begin{proof}
+If \(\det M\neq0\) in the diagonal patch, then
+\(\widetilde v_i v_i\neq0\) for every \(i\), hence each summand in \(H\) is
+strictly positive and \(H>0\).  The large-size convergence in
+\eqref{eq:ads-radial-higgs-model-integral} follows immediately from
+\(cH>0\).
+
+Set \(u=cH\rho^2\).  Then
+\[
+  \rho^{2p-1}\,d\rho
+  =
+  \frac{u^{p-1}}{2(cH)^p}\,du .
+\]
+Therefore
+\[
+  I_p(H)
+  =
+  \frac{1}{2(cH)^p}
+  \int_0^\infty u^{p-1}e^{-u}\,du
+  =
+  \frac{\Gamma(p)}{2(cH)^p}
+  =
+  \frac{(p-1)!}{2(cH)^p},
+\]
+because \(p\) is a positive integer.
+
+If all Higgs coordinates are multiplied by \(t\), then \(H\) is multiplied by
+\(|t|^2\), so \(I_p\) is multiplied by \(|t|^{-2p}\).  The absolute values
+show why this radial estimate is a real analytic convergence statement, not
+a holomorphic transformation law.  Approaching \(\det M=0\) also changes the
+rank of the finite-dimensional Yukawa lifting matrix, so the maximal-rank
+instanton calculation cannot be extended across that boundary by the radial
+estimate alone.
 \end{proof}
 
 \begin{proposition}[Maximal-rank meson invariant for the ADS patch]
@@ -1143,6 +1731,230 @@ If \(C_{N_c-1}=1\), induction on \(d=N_c-n\) gives \(C_n=d\).  Indeed, if
   =
   d .
 \]
+\end{proof}
+
+\begin{proposition}[Massive SQCD decoupling to pure SYM branches]
+\label{prop:massive-sqcd-to-pure-sym-condensate-branches}
+Fix \(1\leq n<N_c\), and assume the \(n\)-flavor Wilsonian chiral sector on
+the maximal-rank meson patch is described by the standard ADS representative
+\begin{equation}
+  W_{\mathrm{ADS},n}
+  =
+  d\left(
+    \frac{\Lambda_n^{3N_c-n}}{\det M}
+  \right)^{1/d},
+  \qquad d=N_c-n,
+  \label{eq:massive-sqcd-ads-standard-representative}
+\end{equation}
+on a chosen holomorphic branch.  Add an invertible holomorphic mass matrix
+\begin{equation}
+  W_{\mathrm{mass}}=m_i{}^j M^i{}_j,
+  \qquad \det m\neq0 .
+  \label{eq:massive-sqcd-mass-matrix}
+\end{equation}
+Assume that integrating out the massive meson coordinates is legitimate in
+the Wilsonian chiral theory and that holomorphic threshold matching to pure
+SYM holds:
+\begin{equation}
+  \Lambda_0^{3N_c}
+  =
+  (\det m)\,\Lambda_n^{3N_c-n}.
+  \label{eq:massive-sqcd-pure-scale-matching}
+\end{equation}
+Then the massive SQCD branch superpotential is
+\begin{equation}
+  W_{\mathrm{eff},k}
+  =
+  N_c\,\Lambda_0^3
+  \exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  \qquad k\in\mathbb Z/N_c\mathbb Z,
+  \label{eq:massive-sqcd-pure-branch-superpotential}
+\end{equation}
+up to the same finite normalization of \(\Lambda_0\) and \(S\) used in the
+pure-SYM glueball description.  The source identity gives
+\begin{equation}
+  \Lambda_0^{3N_c}
+  \frac{\partial W_{\mathrm{eff},k}}
+       {\partial \Lambda_0^{3N_c}}
+  =
+  \Lambda_0^3
+  \exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+  \label{eq:massive-sqcd-pure-source-identity}
+\end{equation}
+Thus massive SQCD decoupling reproduces the pure-SYM condensate root
+equation and its \(N_c\) branches, conditional on the ADS input and the
+massive threshold assumptions.
+\end{proposition}
+
+\begin{proof}
+Write
+\begin{equation}
+  A=\Lambda_n^{3N_c-n},
+  \qquad
+  Y=\left(\frac{A}{\det M}\right)^{1/d}.
+  \label{eq:massive-sqcd-y-coordinate}
+\end{equation}
+Then \(W_{\mathrm{ADS},n}=dY\).  For a variation of an invertible meson
+matrix,
+\[
+  \delta\log\det M=\operatorname{tr}(M^{-1}\delta M),
+  \qquad
+  \delta Y
+  =
+  -\frac{Y}{d}\operatorname{tr}(M^{-1}\delta M).
+\]
+Hence
+\[
+  \delta W_{\mathrm{ADS},n}
+  =
+  -Y\,\operatorname{tr}(M^{-1}\delta M).
+\]
+In indices, the \(F_M=0\) equation is therefore
+\begin{equation}
+  m_i{}^j=Y\,(M^{-1})^j{}_i .
+  \label{eq:massive-sqcd-f-term-matrix}
+\end{equation}
+Multiplying by \(M^i{}_j\) and summing gives
+\begin{equation}
+  m_i{}^jM^i{}_j=nY,
+  \label{eq:massive-sqcd-trace-mass-meson}
+\end{equation}
+because \(M^i{}_j(M^{-1})^j{}_i=n\).  Taking determinants in
+\eqref{eq:massive-sqcd-f-term-matrix} gives
+\begin{equation}
+  \det m=\frac{Y^n}{\det M}.
+  \label{eq:massive-sqcd-determinant-f-term}
+\end{equation}
+Since \(Y^d=A/\det M\), equations
+\eqref{eq:massive-sqcd-determinant-f-term} and
+\eqref{eq:massive-sqcd-y-coordinate} imply
+\[
+  Y^{d+n}=A\,\det m.
+\]
+As \(d+n=N_c\), this is
+\[
+  Y^{N_c}
+  =
+  (\det m)\Lambda_n^{3N_c-n}
+  =
+  \Lambda_0^{3N_c}
+\]
+by \eqref{eq:massive-sqcd-pure-scale-matching}.  Thus
+\[
+  Y_k=\Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  \qquad k\in\mathbb Z/N_c\mathbb Z,
+\]
+after choosing a branch of \(\Lambda_0^3\).
+
+At a critical point,
+\[
+  W_{\mathrm{eff}}
+  =
+  dY+m_i{}^jM^i{}_j
+  =
+  dY+nY
+  =
+  N_cY,
+\]
+which proves \eqref{eq:massive-sqcd-pure-branch-superpotential}.  Finally,
+with \(L_0=\Lambda_0^{3N_c}\), the branch value is
+\[
+  W_{\mathrm{eff},k}=N_c\,L_0^{1/N_c}\ee^{2\pi\ii k/N_c}.
+\]
+Therefore
+\[
+  L_0\frac{\partial W_{\mathrm{eff},k}}{\partial L_0}
+  =
+  L_0^{1/N_c}\ee^{2\pi\ii k/N_c},
+\]
+which is \eqref{eq:massive-sqcd-pure-source-identity}.  The proof is a
+finite-dimensional chiral-coordinate elimination.  It does not by itself
+construct the pure-SYM Hilbert space, prove the mass gap, or justify the ADS
+and threshold hypotheses from a microscopic regulator.
+\end{proof}
+
+\begin{proposition}[Mass-source and Konishi ledger in massive SQCD]
+\label{prop:massive-sqcd-konishi-source-ledger}
+Assume the hypotheses and notation of
+Proposition~\ref{prop:massive-sqcd-to-pure-sym-condensate-branches}.  On a
+chosen massive branch, the holomorphic source derivative with respect to the
+mass matrix gives the meson expectation
+\begin{equation}
+  \frac{\partial W_{\mathrm{eff},k}}{\partial m_i{}^j}
+  =
+  \langle M^i{}_j\rangle_k .
+  \label{eq:massive-sqcd-mass-source-meson}
+\end{equation}
+The finite-dimensional \(F_M=0\) equation then implies the matrix identity
+\begin{equation}
+  \langle M^a{}_j\rangle_k\,m_i{}^j
+  =
+  \langle S\rangle_k\,\delta_i{}^a,
+  \qquad
+  \langle S\rangle_k
+  =
+  \Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+  \label{eq:massive-sqcd-konishi-matrix-ledger}
+\end{equation}
+Taking the trace gives
+\begin{equation}
+  m_i{}^j\langle M^i{}_j\rangle_k
+  =
+  n\,\langle S\rangle_k .
+  \label{eq:massive-sqcd-konishi-trace-ledger}
+\end{equation}
+This is the massive-SQCD chiral-coordinate realization of the Konishi
+relation.  The local operator identity with the Konishi current and
+\(\bar D^2\)-exact terms requires the regulator-level current statement of
+Chapter~\ref{ch:susy-nonrenormalization-holomorphy}; the proposition here
+uses only the already stated Wilsonian source calculus.
+\end{proposition}
+
+\begin{proof}
+The full chiral function before eliminating \(M\) is
+\[
+  W(M;m,L_n)
+  =
+  d\left(\frac{L_n}{\det M}\right)^{1/d}
+  +m_i{}^jM^i{}_j,
+  \qquad L_n=\Lambda_n^{3N_c-n}.
+\]
+Let \(M_k(m,L_n)\) be the critical point on the chosen branch.  The
+envelope theorem for a holomorphic finite-dimensional critical point gives
+\[
+  \frac{\partial}{\partial m_i{}^j}
+  W(M_k(m,L_n);m,L_n)
+  =
+  M_k{}^i{}_j ,
+\]
+because the terms involving
+\(\partial M_k/\partial m_i{}^j\) are multiplied by \(F_M\) and vanish at
+the critical point.  This proves
+\eqref{eq:massive-sqcd-mass-source-meson}.
+
+Equation~\eqref{eq:massive-sqcd-f-term-matrix} says
+\[
+  m_i{}^j=Y_k(M_k^{-1})^j{}_i .
+\]
+Multiplying by \(M_k{}^a{}_j\) gives
+\[
+  M_k{}^a{}_j\,m_i{}^j
+  =
+  Y_k\,M_k{}^a{}_j(M_k^{-1})^j{}_i
+  =
+  Y_k\,\delta_i{}^a .
+\]
+By
+\eqref{eq:massive-sqcd-pure-source-identity}, the same branch coordinate is
+the glueball source derivative:
+\[
+  \langle S\rangle_k=Y_k
+  =
+  \Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+\]
+This gives \eqref{eq:massive-sqcd-konishi-matrix-ledger}.  Setting
+\(a=i\) and summing over \(i=1,\ldots,n\) gives
+\eqref{eq:massive-sqcd-konishi-trace-ledger}.
 \end{proof}
 
 \section{Quantum Modified Constraint and Confining Decoupling}
@@ -2048,11 +2860,11 @@ and four chiral superfields
   B_j\in(\overline{\mathbf N},\mathbf N),
   \qquad i,j=1,2 .
 \]
-Equivalently, one may start from the regular-brane
+Equivalently, one may start from the unitary
 \(U(N)_1\times U(N)_2\) presentation.  Its diagonal \(U(1)\) is a free
 center-of-mass vector multiplet, and the interacting nonabelian sector is
 the \(SU(N)_1\times SU(N)_2\) theory displayed above.  The relative abelian
-factor is useful for describing the one-brane quotient below.
+factor is useful for describing the rank-one abelian quotient below.
 
 The index \(i\) is a doublet index for a global \(SU(2)_A\), and \(j\) is a
 doublet index for a global \(SU(2)_B\).  The baryonic symmetry \(U(1)_B\) is
@@ -2090,11 +2902,12 @@ The algebraic calculations in this section use the four-dimensional
 normalization, and superpotential displayed above.  Statements about the
 mesonic vacuum branch use the classical \(F\)- and \(D\)-flat quotient of
 that Lagrangian and then restrict to the commuting branch where the
-bifundamental matrices can be simultaneously reduced to diagonal regular
-brane data.  Statements about protected dimensions use
+bifundamental matrices can be simultaneously reduced to diagonal
+representatives.  Statements about protected dimensions use
 Hypothesis~\ref{hyp:n1-scft-bookkeeping-input}.  Claims about the full
 continuum conformal manifold are isolated in
-Quoted Theorem~\ref{qt:kw-conformal-manifold}.
+Hypothesis~\ref{hyp:kw-exact-marginality-input} and
+Proposition~\ref{prop:kw-local-conformal-manifold-rank-one}.
 \end{hypothesis}
 
 \begin{proposition}[KW \(F\)-term equations]
@@ -2367,14 +3180,15 @@ The basic mesonic chiral operators are
 \[
   W_{ij}=A_iB_j .
 \]
-For a single regular brane in the \(U(1)\times U(1)\) presentation, the
-diagonal \(U(1)\) decouples and the complexified anti-diagonal gauge group
-acts with charges \(+1\) on the \(A_i\) and \(-1\) on the \(B_j\).  The four
-coordinates \(W_{ij}\) are invariant and obey one quadratic relation.
+For a single rank-one abelian sector in the \(U(1)\times U(1)\)
+presentation, the diagonal \(U(1)\) decouples and the complexified
+anti-diagonal gauge group acts with charges \(+1\) on the \(A_i\) and
+\(-1\) on the \(B_j\).  The four coordinates \(W_{ij}\) are invariant and
+obey one quadratic relation.
 
-\begin{proposition}[One-brane conifold quotient]
-\label{prop:kw-one-brane-conifold-branch}
-For the one-brane abelian quotient just described, the mesonic coordinate
+\begin{proposition}[Rank-one conifold quotient]
+\label{prop:kw-rank-one-conifold-branch}
+For the rank-one abelian quotient just described, the mesonic coordinate
 ring is
 \[
   \C[W_{11},W_{12},W_{21},W_{22}]
@@ -2435,24 +3249,97 @@ Symmetric products
 have \(R=\ell\) and \(\Delta=\frac32\ell\) when they represent nonzero
 chiral-primary classes.
 
-\begin{quotedtheorem}[KW local conformal manifold]
-\label{qt:kw-conformal-manifold}
-In the continuum \(\mathcal N=1\) SCFT defined by the Klebanov--Witten
-fixed point, the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving exactly
-marginal deformations form a local complex two-dimensional conformal
-manifold near the symmetric point.  One may use the two gauge couplings
-\(\tau_1,\tau_2\) and the superpotential coupling \(h\) as microscopic
-coordinates.  The local quotient by the complexified field redefinition
-acting on \((A_i,B_j)\) leaves one independent complex beta-function
-constraint among these three coordinates, and hence two local exactly
-marginal coordinates.
-\end{quotedtheorem}
+\begin{hypothesis}[Local \(\mathcal N=1\) exact-marginality chart]
+\label{hyp:n1-local-exact-marginality-chart}
+Let \(\mathcal T_0\) be a four-dimensional \(\mathcal N=1\) SCFT with a
+chosen global-symmetry subalgebra \(\mathfrak f\) to be preserved.  A local
+holomorphic marginal-source chart consists of complex coordinates
+\[
+  u=(u^1,\ldots,u^m)
+\]
+for gauge and superpotential sources coupled to \(\mathfrak f\)-invariant
+chiral operators of superpotential dimension \(3\), together with a
+holomorphic beta map
+\[
+  \mathcal B:U\subset\mathbb C^m\longrightarrow\mathbb C^r
+\]
+whose zero set is exactly the set of conformal theories in this source
+chart.  Redundant directions from holomorphic field-coordinate changes have
+either been quotient out or fixed by a declared source normalization.  The
+map \(\mathcal B\) includes the gauge beta functions, superpotential beta
+functions, and any current-moment-map obstruction for a broken conserved
+current.  If \(d\mathcal B\) has constant rank \(r\) along the zero set, the
+local conformal manifold in this chart is the complex manifold
+\(\mathcal B^{-1}(0)\) of dimension \(m-r\).
+\end{hypothesis}
 
-The theorem is quoted because exact marginality is an infrared statement
-about the continuum SCFT.  Proposition~\ref{prop:kw-beta-function-rank-count}
-supplies only the necessary beta-function rank count.  The chapter also
-supplies the anomaly, NSVZ, and \(a\)-maximization arithmetic that any such
-statement must satisfy.
+Under this hypothesis, the dimension statement is the holomorphic
+implicit-function theorem applied to the finite-dimensional source chart.
+The QFT content is not the theorem of complex analysis; it is the hypothesis
+that the beta map and the quotient by redundant coordinates faithfully
+describe the continuum SCFT family.
+
+\begin{hypothesis}[KW exact-marginality input]
+\label{hyp:kw-exact-marginality-input}
+Near the Klebanov--Witten point, use local holomorphic sources
+\[
+  u=(\tau_1,\tau_2,h)
+\]
+for the two \(SU(N)\) gauge couplings and the quartic superpotential in
+\eqref{eq:kw-superpotential}, restricted to the
+\(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving chart.  Assume the
+continuum SCFT exists in this neighborhood, the NSVZ Wilsonian coordinate
+ledger of this chapter computes the vanishing conditions for these sources,
+and no additional exactly marginal obstruction is present after the
+background contact-term and source-normalization data are fixed.  Finally
+assume the common defect
+\[
+  E(u)=1+\gamma_A(u)+\gamma_B(u)
+\]
+has nonzero differential at the symmetric point in the chosen source chart.
+\end{hypothesis}
+
+\begin{proposition}[KW local conformal manifold from rank one]
+\label{prop:kw-local-conformal-manifold-rank-one}
+Assume Hypothesis~\ref{hyp:kw-exact-marginality-input}.  In the
+\(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source chart, the
+Klebanov--Witten conformal locus is locally a complex two-dimensional
+submanifold of the three-dimensional source space with coordinates
+\((\tau_1,\tau_2,h)\).
+\end{proposition}
+
+\begin{proof}
+Proposition~\ref{prop:kw-beta-function-rank-count} gives, in this chart,
+\[
+  \mathcal B_1=N E,\qquad
+  \mathcal B_2=N E,\qquad
+  \mathcal B_h=E,
+  \qquad
+  E=1+\gamma_A+\gamma_B .
+\]
+Thus the zero set of the three beta functions is the single equation
+\[
+  E(u)=0 .
+\]
+By Hypothesis~\ref{hyp:kw-exact-marginality-input}, \(dE\neq0\) at the
+Klebanov--Witten point.  The holomorphic implicit-function theorem therefore
+identifies the local zero set with a smooth complex hypersurface in the
+three-dimensional source chart.  Its local complex dimension is
+\[
+  3-1=2 .
+\]
+The proof uses no holographic construction.  Its nontrivial QFT assumptions
+are exactly those isolated in
+Hypothesis~\ref{hyp:kw-exact-marginality-input}: existence of the continuum
+SCFT chart, completeness of the beta-function ledger, and absence of hidden
+current or contact-term obstructions in the preserved-symmetry sector.
+\end{proof}
+
+The result is a conditional field-theoretic reconstruction of the
+Leigh--Strassler rank count for this example.  The chapter has proved the
+anomaly, NSVZ, \(a\)-maximization, chiral-ring, and rank-one beta-function
+arithmetic.  It has not constructed the nonperturbative continuum SCFT from
+a regulator.
 
 \section{Klebanov--Strassler Cascade}
 \label{sec:n1-klebanov-strassler-cascade}
@@ -2560,8 +3447,8 @@ with a coefficient depending on the normalization of \(M_{ij}\) and
 \(\mu_*\).
 \end{proof}
 
-Thus the rank difference remains \(M\), while the regular-brane rank
-parameter drops by \(M\).  If
+Thus the rank difference remains \(M\), while the common rank parameter
+drops by \(M\).  If
 \[
   N=qM+r,\qquad 0\leq r<M ,
 \]
@@ -2571,7 +3458,7 @@ then after \(q\) formal cascade steps the pair has reached
 \]
 where the second factor is absent when \(r=0\).  The integer \(q\) is the
 number of rank-reducing duality steps, and \(r=N\bmod M\) is the residual
-regular-brane rank.
+common rank parameter.
 
 \begin{proposition}[KS \(R\)-anomaly remnant]
 \label{prop:ks-r-anomaly-remnant}
@@ -2644,9 +3531,9 @@ symmetry, and gaugino condensation breaks it to \(\mathbb Z_2\), producing
 \(M\) massive vacua in the finite-volume/gap sense used earlier in this
 chapter.  For \(0<r<M\), the final strongly coupled theory contains an ADS
 or quantum-modified chiral coordinate, depending on the precise endpoint
-rank.  In the string-theory realization this field-theoretic endpoint is
-reflected by a deformed conifold parameter; here it is recorded only as a
-cross-reference to the chiral-coordinate dynamics already derived for SQCD.
+rank.  This is only a field-theoretic endpoint ledger in the present
+monograph; any geometric interpretation is outside the argument and is not
+used as evidence for the QFT dynamics.
 
 \section{Status Boundary}
 

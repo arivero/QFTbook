@@ -32,6 +32,11 @@ current QFT scope.
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
 - `mu_A`: complete-rational conformal-net `mu`-index.
+- `C,D`: states forming a rank-two logarithmic Virasoro pair of weight `h`.
+- `mathcal C, mathcal D`: corresponding chiral fields.
+- `N`: nilpotent operator on the logarithmic pair, with `ND=C` and `NC=0`.
+- `b,d`: constants in logarithmic two-point functions; `b` is invariant under
+  `D -> D + lambda C`, while `d` is basis-dependent.
 
 ## Claim Ledger
 
@@ -59,7 +64,9 @@ current QFT scope.
 - Proves the Verlinde formula from simultaneous diagonalization by the
   modular \(S\)-matrix.
 - Works the Ising chiral theory explicitly: \(c=1/2\), three simple modules,
-  \(S_{\rm Ising}\), quantum dimensions, and fusion rules.
+  \(S_{\rm Ising}\), \(T_{\rm Ising}\), quantum dimensions, fusion rules, and
+  the finite genus-one proof that the diagonal full-CFT modular invariant is
+  the unique nonnegative invariant with one vacuum on the Ising label set.
 - Defines chiral conformal nets on `S^1`: interval algebras, isotony,
   locality, Moebius/diffeomorphism covariance, positive energy, vacuum
   cyclicity, irreducibility, split property, strong additivity, `mu`-index,
@@ -75,10 +82,18 @@ current QFT scope.
 - Defines rational full-CFT torus partition functions and the modular
   invariance constraints \(MS=SM\), \(MT=TM\).
 - Derives the leading Cardy high-temperature partition-function asymptotic
-  from modular invariance and a unique vacuum hypothesis.
-- Defines logarithmic CFT by nonsemisimple \(L_0\) action, explains the
-  appearance of logarithms, and identifies pseudo-traces and finite tensor
-  category data as the replacement for semisimple modular data.
+  from modular invariance and a unique vacuum hypothesis, states the
+  exponential Tauberian theorem needed to pass from the partition function to
+  cumulative state growth, and proves the CFT-internal Cardy density formula
+  under compact/discrete-spectrum/positivity hypotheses.
+- Defines logarithmic CFT by nonsemisimple \(L_0\) action, introduces a
+  rank-two logarithmic Virasoro pair, derives finite state and field scaling,
+  proves the logarithmic two-point functions from the \(L_0\) and \(L_1\)
+  Ward identities, records the basis dependence of the constant term, and
+  explains why ordinary characters miss the nilpotent extension data.
+- Identifies generalized characters, pseudo-traces, projective modules,
+  modified traces, and braided finite tensor category data as the honest
+  replacement for semisimple modular data in logarithmic CFT.
 
 ## Figure Ledger
 
@@ -90,8 +105,12 @@ current QFT scope.
 - `calculation-checks/cft_voa_modular_checks.py` verifies the Ising modular
   \(S\)-matrix, Verlinde fusion coefficients, quantum dimensions, the
   conformal-net `mu`-index/global-dimension relation, character exponent
-  shifts in \(\mathbb Q(\sqrt2)\), and the Ising Zhu polynomial/idempotent
-  decomposition over \(\mathbb Q\).
+  shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
+  uniqueness of the diagonal Ising genus-one modular invariant with one
+  vacuum, the Cardy Tauberian saddle coefficient, and the Ising Zhu
+  polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
+  rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
+  trace invisibility of the nilpotent part.
 
 ## Reference Intake
 
@@ -115,3 +134,16 @@ current QFT scope.
 - 2026-05-26 Zhu-algebra pass: inserted the Zhu algebra/top-level module
   section, made the theorem hypotheses explicit, and added exact Ising
   Zhu-polynomial/idempotent checks.
+- 2026-05-27 Ising full-CFT modular-invariant pass: added the Ising
+  \(T\)-matrix, proved that the genus-one modular-invariance equations force
+  the diagonal invariant under the one-vacuum/nonnegative-integral
+  hypothesis, and extended the exact modular-data check.
+- 2026-05-27 Cardy Tauberian pass: made the analytic Tauberian hypothesis
+  explicit, proved the CFT-internal cumulative Cardy growth statement from
+  modular invariance plus positivity/discreteness assumptions, and added the
+  saddle coefficient check.
+- 2026-05-27 logarithmic Jordan-cell pass: expanded logarithmic CFT from a
+  status paragraph into a self-contained rank-two local derivation, including
+  finite logarithmic scaling, \(L_0/L_1\) Ward-identity two-point functions,
+  basis-dependence bookkeeping, the ordinary-character failure mode, and exact
+  formal calculation checks.

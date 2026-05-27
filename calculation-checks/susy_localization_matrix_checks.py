@@ -5,6 +5,7 @@ The checks verify convention-sensitive pieces that appear in the displayed
 S^4 and S^3 matrix models:
 
 * the trace-delta S^4 Gaussian coefficient;
+* the finite normal Gaussian Pfaffian/determinant convention;
 * the finite-product logarithmic derivative of the S^4 H-function;
 * the elementary U(1) S^4 Gaussian integral;
 * the finite double-sine reflection identity and chiral pole convention;
@@ -17,6 +18,7 @@ from __future__ import annotations
 
 import cmath
 import math
+from fractions import Fraction
 import mpmath as mp
 
 
@@ -28,6 +30,56 @@ def assert_close(name: str, got: complex | mp.mpf | mp.mpc, expected: complex | 
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}, tol={tol}")
 
 
+def assert_equal(name: str, got, expected) -> None:
+    if got != expected:
+        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def determinant_exact(matrix: list[list[int | Fraction]]) -> Fraction:
+    size = len(matrix)
+    work = [[Fraction(entry) for entry in row] for row in matrix]
+    det = Fraction(1)
+    for col in range(size):
+        pivot = None
+        for row in range(col, size):
+            if work[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            return Fraction(0)
+        if pivot != col:
+            work[col], work[pivot] = work[pivot], work[col]
+            det *= -1
+        pivot_value = work[col][col]
+        det *= pivot_value
+        for entry in range(col, size):
+            work[col][entry] /= pivot_value
+        for row in range(col + 1, size):
+            factor = work[row][col]
+            for entry in range(col, size):
+                work[row][entry] -= factor * work[col][entry]
+    return det
+
+
+def pfaffian_exact(matrix: list[list[int | Fraction]]) -> Fraction:
+    size = len(matrix)
+    if size == 0:
+        return Fraction(1)
+    if size % 2:
+        return Fraction(0)
+    total = Fraction(0)
+    for column in range(1, size):
+        if matrix[0][column] == 0:
+            continue
+        submatrix = [
+            [matrix[row][col] for col in range(size) if col not in (0, column)]
+            for row in range(size)
+            if row not in (0, column)
+        ]
+        total += Fraction((-1) ** (column + 1)) * Fraction(matrix[0][column]) * pfaffian_exact(submatrix)
+    return total
+
+
 def check_s4_trace_delta_gaussian_coefficient() -> None:
     # Half-trace variables have tr(T_a T_b)=delta_ab/2 and
     # exp[-8 pi^2 tr_ht(a^2)/g_ht^2].  For the same physical Cartan matrix
@@ -37,6 +89,59 @@ def check_s4_trace_delta_gaussian_coefficient() -> None:
     coupling_conversion = mp.mpf("0.5")
     trace_delta_coefficient = common_coefficient * coupling_conversion
     assert_close("S4 trace-delta Gaussian coefficient", trace_delta_coefficient, 4, mp.mpf("1e-40"))
+
+
+def check_finite_normal_gaussian_factor() -> None:
+    examples = [
+        [[2]],
+        [[1, 3], [2, 5]],
+        [[1, 0, 2], [3, -1, 4], [2, 5, 7]],
+    ]
+    for differential in examples:
+        rank = len(differential)
+        fermion_matrix = [[Fraction(0) for _ in range(2 * rank)] for _ in range(2 * rank)]
+        for row in range(rank):
+            for col in range(rank):
+                entry = Fraction(differential[row][col])
+                fermion_matrix[row][rank + col] = entry
+                fermion_matrix[rank + col][row] = -entry
+
+        expected_sign = -1 if (rank * (rank - 1) // 2) % 2 else 1
+        expected_pfaffian = Fraction(expected_sign) * determinant_exact(differential)
+        assert_equal(
+            "finite normal block Pfaffian sign",
+            pfaffian_exact(fermion_matrix),
+            expected_pfaffian,
+        )
+
+    bosonic_matrix = [[2, 1], [1, 3]]
+    fermion_matrix = [[0, 4], [-4, 0]]
+    det_a = determinant_exact(bosonic_matrix)
+    pf_f = pfaffian_exact(fermion_matrix)
+    assert_equal("finite normal bosonic determinant", det_a, Fraction(5))
+    assert_equal("finite normal fermion Pfaffian", pf_f, Fraction(4))
+
+    normalized_factor = mp.mpf(pf_f.numerator) / mp.mpf(pf_f.denominator)
+    normalized_factor /= mp.sqrt(mp.mpf(det_a.numerator) / mp.mpf(det_a.denominator))
+    assert_close(
+        "finite normal Gaussian normalized factor",
+        normalized_factor,
+        4 / mp.sqrt(5),
+        mp.mpf("1e-45"),
+    )
+
+    singular_fermion_matrix = [[0, 0], [0, 0]]
+    assert_equal(
+        "finite normal fermion zero mode has zero Pfaffian",
+        pfaffian_exact(singular_fermion_matrix),
+        Fraction(0),
+    )
+    singular_bosonic_matrix = [[1, 2], [2, 4]]
+    assert_equal(
+        "finite normal bosonic zero mode has zero determinant",
+        determinant_exact(singular_bosonic_matrix),
+        Fraction(0),
+    )
 
 
 def check_s4_u1_gaussian_integral() -> None:
@@ -129,6 +234,7 @@ def check_s3_chiral_pair_integral() -> None:
 
 def main() -> None:
     check_s4_trace_delta_gaussian_coefficient()
+    check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()
     check_s4_H_log_derivative()
     check_s3_double_sine_conventions()

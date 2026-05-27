@@ -63,6 +63,100 @@ coordinate class.  Anomaly-induced coordinate changes are precisely the
 declared exceptions in the scheme data.
 \end{proof}
 
+\begin{proposition}[Tree-level elimination of a massive chiral block]
+\label{prop:tree-level-holomorphic-elimination}
+Let the chiral coordinates split as \((X^a,\Phi^i)\), where the \(X^a\) are
+massive in a Wilsonian patch.  Suppose the holomorphic equations
+\[
+  \partial_{X^a}W(X,\Phi;t)=0
+\]
+have, on this patch, a unique holomorphic solution
+\[
+  X^a=X_*^a(\Phi;t),
+\]
+and suppose the heavy-block Hessian
+\[
+  H_{ab}=\partial_{X^a}\partial_{X^b}W(X_*,\Phi;t)
+\]
+is invertible there.  Then the tree-level eliminated superpotential
+\[
+  W_{\mathrm{eff}}(\Phi;t)=W(X_*(\Phi;t),\Phi;t)
+\]
+is holomorphic in the remaining chiral coordinates and couplings, and its
+first derivatives are
+\[
+  \partial_{\Phi^i}W_{\mathrm{eff}}
+  =
+  \left.
+  \partial_{\Phi^i}W
+  \right|_{X=X_*}.
+  \label{eq:tree-level-holomorphic-elimination-derivative}
+\]
+In the quadratic special case
+\[
+  W(X,\Phi;t)
+  =
+  W_0(\Phi;t)
+  +J_a(\Phi;t)X^a
+  +\frac12 M_{ab}(\Phi;t)X^aX^b,
+  \qquad \det M\neq0,
+\]
+one has
+\[
+  X_*^a=-(M^{-1})^{ab}J_b,
+  \qquad
+  W_{\mathrm{eff}}
+  =
+  W_0-\frac12J_a(M^{-1})^{ab}J_b .
+  \label{eq:quadratic-chiral-elimination}
+\]
+\end{proposition}
+
+\begin{proof}
+The hypotheses are precisely those of the holomorphic implicit-function
+theorem applied to the map
+\[
+  F_a(X,\Phi;t)=\partial_{X^a}W(X,\Phi;t).
+\]
+Invertibility of \(H_{ab}=\partial F_a/\partial X^b\) at the solution gives
+a unique holomorphic solution \(X_*(\Phi;t)\) after possibly shrinking the
+patch.  Composing the holomorphic functions \(W\) and \(X_*\) gives a
+holomorphic \(W_{\mathrm{eff}}\).  The chain rule gives
+\[
+  \partial_{\Phi^i}W_{\mathrm{eff}}
+  =
+  \left.
+  \partial_{\Phi^i}W
+  \right|_{X=X_*}
+  +
+  \left.
+  \partial_{X^a}W
+  \right|_{X=X_*}
+  \partial_{\Phi^i}X_*^a .
+\]
+The second term vanishes by the heavy-field equation of motion, proving
+\eqref{eq:tree-level-holomorphic-elimination-derivative}.
+
+For the quadratic representative, the heavy-field equation is
+\[
+  J_a+M_{ab}X^b=0,
+\]
+so \(X_*^a=-(M^{-1})^{ab}J_b\).  Substitution gives
+\[
+  W_{\mathrm{eff}}
+  =
+  W_0
+  -J_a(M^{-1})^{ab}J_b
+  +\frac12M_{ab}(M^{-1})^{ac}J_c(M^{-1})^{bd}J_d
+  =
+  W_0-\frac12J_a(M^{-1})^{ab}J_b ,
+\]
+where symmetry of \(M_{ab}=\partial_a\partial_bW\) is used in the last
+step.  If \(\det M\) vanishes, the patch contains an additional massless
+chiral coordinate and the elimination is no longer a Wilsonian tree-level
+operation in this sense.
+\end{proof}
+
 \section{Spurion Symmetries}
 
 Treat a coupling \(t^A\) as a background chiral superfield.  If an exact
@@ -410,14 +504,38 @@ zero \(\mu\)-derivative in the fixed scheme and therefore drops out of the
 beta-function identity.
 \end{proof}
 
-The
-holomorphic coordinate obeys
+\begin{proposition}[NSVZ beta function as a coordinate identity]
+\label{prop:nsvz-beta-coordinate-identity}
+Assume the hypotheses of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived}, and assume the
+holomorphic Wilsonian coordinate has the one-loop derivative
 \[
   \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g_h^2}\right)
   =
   3C_2(G)-\sum_iT(R_i).
+  \label{eq:holomorphic-coordinate-one-loop-derivative}
 \]
-Differentiate the coordinate relation.  Since
+Then, in the canonical coupling coordinate \(g\), with
+\[
+  \gamma_i=\mu\,\frac{d}{d\mu}\log Z_i ,
+\]
+\[
+  \beta_g
+  =
+  -\frac{g^3}{16\pi^2}\,
+  \frac{
+    3C_2(G)-\sum_iT(R_i)\bigl(1-\gamma_i\bigr)
+  }{
+    1-\frac{C_2(G)g^2}{8\pi^2}
+  } .
+  \tag{NSVZ}
+  \label{eq:nsvz-coordinate-beta-function}
+\]
+\end{proposition}
+
+\begin{proof}
+Differentiate the coordinate relation of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived}.  Since
 \[
   \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g^2}\right)
   =
@@ -425,7 +543,7 @@ Differentiate the coordinate relation.  Since
   \qquad
   \mu\frac{d}{d\mu}\log g^2=\frac{2\beta_g}{g},
 \]
-one obtains
+and \(\mu\,d\kappa/d\mu=0\), one obtains
 \[
   \left(
     -\frac{16\pi^2}{g^3}
@@ -437,22 +555,33 @@ one obtains
   =
   3C_2(G)-\sum_iT(R_i).
 \]
-Solving for \(\beta_g=\mu\,dg/d\mu\) gives
+Move the anomalous-dimension term to the right:
 \[
-  \boxed{
-  \beta_g
+  \left(
+    \frac{16\pi^2}{g^3}
+    -
+    \frac{2C_2(G)}{g}
+  \right)\beta_g
   =
-  -\frac{g^3}{16\pi^2}\,
-  \frac{
-    3C_2(G)-\sum_iT(R_i)\bigl(1-\gamma_i\bigr)
-  }{
-    1-\frac{C_2(G)g^2}{8\pi^2}
-  }}
-  \tag{NSVZ}
+  -
+  \left(
+    3C_2(G)-\sum_iT(R_i)(1-\gamma_i)
+  \right).
 \]
-in this coupling coordinate and anomalous-dimension convention.  The formula
-is a coordinate statement derived from a holomorphic Wilsonian coupling, the
-rescaling anomaly, and a declared canonical normalization prescription.
+Factoring the left hand side as
+\[
+  \frac{16\pi^2}{g^3}
+  \left(
+    1-\frac{C_2(G)g^2}{8\pi^2}
+  \right)\beta_g
+\]
+and dividing gives \eqref{eq:nsvz-coordinate-beta-function}.  Thus the
+displayed beta function is a coordinate statement derived from a holomorphic
+Wilsonian coupling, the rescaling anomaly, and a declared canonical
+normalization prescription.  A finite redefinition of the canonical coupling
+changes the denominator by ordinary reparametrization of the vector field
+\(\beta_g\partial_g\).
+\end{proof}
 
 \section{Status Boundary}
 

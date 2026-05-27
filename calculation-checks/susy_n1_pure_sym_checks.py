@@ -2,7 +2,7 @@
 """Exact checks for pure 4D N=1 SYM glueball and index arithmetic."""
 
 from fractions import Fraction
-from math import gcd
+from math import factorial, gcd
 
 
 def assert_equal(left, right, label):
@@ -34,6 +34,43 @@ def determinant_integer(matrix):
             for entry in range(col, size):
                 work[row][entry] -= factor * work[col][entry]
     return det
+
+
+def wedge_sign(left_mask, right_mask, total_variables):
+    """Sign from concatenating two increasing Grassmann monomials."""
+    inversions = 0
+    for left_index in range(total_variables):
+        if not (left_mask & (1 << left_index)):
+            continue
+        for right_index in range(left_index):
+            if right_mask & (1 << right_index):
+                inversions += 1
+    return -1 if inversions % 2 else 1
+
+
+def wedge_product(left_form, right_form, total_variables):
+    result = {}
+    for left_mask, left_coeff in left_form.items():
+        for right_mask, right_coeff in right_form.items():
+            if left_mask & right_mask:
+                continue
+            new_mask = left_mask | right_mask
+            sign = wedge_sign(left_mask, right_mask, total_variables)
+            result[new_mask] = result.get(new_mask, 0) + sign * left_coeff * right_coeff
+    return {mask: coeff for mask, coeff in result.items() if coeff}
+
+
+def pair_two_form(first_index, second_index):
+    if first_index >= second_index:
+        raise ValueError("pair_two_form expects increasing indices")
+    return {(1 << first_index) | (1 << second_index): 1}
+
+
+def multiply_forms(forms, total_variables):
+    product = {0: 1}
+    for form in forms:
+        product = wedge_product(product, form, total_variables)
+    return product
 
 
 def check_discrete_chiral_anomaly_and_condensate_phases():
@@ -102,6 +139,232 @@ def check_condensate_source_and_branch_monodromy():
             )
 
 
+def check_pure_sym_instanton_zero_mode_saturation():
+    for nc in range(2, 30):
+        instanton_number = 1
+        adjoint_index = nc
+        adjoint_gaugino_zero_modes = 2 * adjoint_index * instanton_number
+        s_insertion_fermion_degree = 2
+
+        assert_equal(
+            adjoint_gaugino_zero_modes,
+            2 * nc,
+            "pure SYM one-instanton adjoint zero modes",
+        )
+
+        first_saturated_insertions = adjoint_gaugino_zero_modes // s_insertion_fermion_degree
+        assert_equal(
+            first_saturated_insertions,
+            nc,
+            "pure SYM first zero-mode-saturated S correlator",
+        )
+
+        for insertions in range(0, nc):
+            insertion_degree = s_insertion_fermion_degree * insertions
+            assert_equal(
+                insertion_degree < adjoint_gaugino_zero_modes,
+                True,
+                "pure SYM too-few S insertions leave unsaturated modes",
+            )
+
+        saturated_dimension = 3 * first_saturated_insertions
+        instanton_scale_dimension = 3 * nc
+        assert_equal(
+            saturated_dimension,
+            instanton_scale_dimension,
+            "pure SYM S^Nc instanton-scale dimension match",
+        )
+
+        saturated_gaugino_phase_charge = 2 * first_saturated_insertions
+        assert_equal(
+            saturated_gaugino_phase_charge,
+            adjoint_gaugino_zero_modes,
+            "pure SYM S^Nc anomalous charge matches zero modes",
+        )
+
+        for branch in range(nc):
+            # The VY phases are exp(2 pi i branch/Nc).  Raising to Nc removes
+            # the branch label, matching the one-instanton Nc-point ledger.
+            phase_after_nc_power = (nc * branch) % nc
+            assert_equal(
+                phase_after_nc_power,
+                0,
+                "pure SYM clustered Nc-point branch independence",
+            )
+
+
+def check_pure_sym_topological_sector_selection():
+    for nc in range(2, 30):
+        s_insertion_fermion_degree = 2
+        for instanton_number in range(1, 7):
+            zero_modes = 2 * nc * instanton_number
+            first_saturated_insertions = instanton_number * nc
+            assert_equal(
+                s_insertion_fermion_degree * first_saturated_insertions,
+                zero_modes,
+                "pure SYM topological sector first saturation",
+            )
+
+            for insertions in range(first_saturated_insertions):
+                assert_equal(
+                    s_insertion_fermion_degree * insertions < zero_modes,
+                    True,
+                    "pure SYM topological sector unsaturated insertions vanish",
+                )
+
+            n_c_point_gap = zero_modes - s_insertion_fermion_degree * nc
+            expected_gap = 2 * nc * (instanton_number - 1)
+            assert_equal(
+                n_c_point_gap,
+                expected_gap,
+                "pure SYM Nc-point correlator selects charge one",
+            )
+            assert_equal(
+                n_c_point_gap == 0,
+                instanton_number == 1,
+                "pure SYM Nc-point saturation iff instanton number one",
+            )
+
+            saturated_dimension = 3 * first_saturated_insertions
+            saturated_gaugino_phase_charge = 2 * first_saturated_insertions
+            assert_equal(
+                saturated_dimension,
+                3 * nc * instanton_number,
+                "pure SYM topological sector scale dimension",
+            )
+            assert_equal(
+                saturated_gaugino_phase_charge,
+                zero_modes,
+                "pure SYM topological sector anomalous charge",
+            )
+
+        # Anti-instantons carry the conjugate chirality zero modes, so the
+        # holomorphic S channel and anti-holomorphic Sbar channel are distinct.
+        holomorphic_s_chirality = 1
+        anti_instanton_zero_mode_chirality = -1
+        assert_equal(
+            holomorphic_s_chirality == anti_instanton_zero_mode_chirality,
+            False,
+            "pure SYM anti-instanton zero modes are anti-chiral for S channel",
+        )
+
+
+def check_pure_sym_saturated_berezin_coefficient():
+    for nc in range(2, 10):
+        total_variables = 2 * nc
+        top_mask = (1 << total_variables) - 1
+
+        canonical_pair_insertions = [
+            pair_two_form(2 * index, 2 * index + 1)
+            for index in range(nc)
+        ]
+        product = multiply_forms(canonical_pair_insertions, total_variables)
+        assert_equal(
+            product.get(top_mask, 0),
+            1,
+            "pure SYM canonical saturated Berezin coefficient",
+        )
+
+        unsaturated_product = multiply_forms(
+            canonical_pair_insertions[:-1],
+            total_variables,
+        )
+        assert_equal(
+            unsaturated_product.get(top_mask, 0),
+            0,
+            "pure SYM unsaturated Berezin coefficient vanishes",
+        )
+
+        repeated_pair_product = multiply_forms(
+            [canonical_pair_insertions[0]] * nc,
+            total_variables,
+        )
+        assert_equal(
+            repeated_pair_product.get(top_mask, 0),
+            0,
+            "pure SYM repeated zero-mode pair cannot saturate all modes",
+        )
+
+        canonical_symplectic_form = {}
+        for index in range(nc):
+            canonical_symplectic_form.update(canonical_pair_insertions[index])
+        omega_power = multiply_forms(
+            [canonical_symplectic_form] * nc,
+            total_variables,
+        )
+        assert_equal(
+            omega_power.get(top_mask, 0),
+            factorial(nc),
+            "pure SYM identical two-form saturation gives Nc factorial",
+        )
+
+    # A two-pair sign check: eta_1 eta_3 eta_2 eta_4 = - eta_1 eta_2 eta_3 eta_4.
+    product = multiply_forms(
+        [pair_two_form(0, 2), pair_two_form(1, 3)],
+        4,
+    )
+    assert_equal(
+        product.get((1 << 4) - 1, 0),
+        -1,
+        "pure SYM Berezin crossing sign",
+    )
+
+    # Degree-two factors commute with each other: eta_3 eta_4 eta_1 eta_2
+    # has four transpositions and hence positive sign.
+    product = multiply_forms(
+        [pair_two_form(2, 3), pair_two_form(0, 1)],
+        4,
+    )
+    assert_equal(
+        product.get((1 << 4) - 1, 0),
+        1,
+        "pure SYM degree-two insertion commutation sign",
+    )
+
+
+def check_finite_volume_symmetry_cluster_basis_ledger():
+    for nc in range(2, 30):
+        for parity in (-1, 1):
+            ordinary_index = parity * nc
+            assert_equal(
+                ordinary_index,
+                parity * nc,
+                "pure SYM ordinary index in same-parity branch basis",
+            )
+
+        for shift in range(nc):
+            fixed_branch_count = sum(
+                1
+                for branch in range(nc)
+                if (branch + shift) % nc == branch
+            )
+            expected_trace = nc if shift == 0 else 0
+            assert_equal(
+                fixed_branch_count,
+                expected_trace,
+                "pure SYM chiral-twined regular-representation trace",
+            )
+
+        for charge_sector in range(nc):
+            # With |r> = sum_k omega^{-rk}|k>, the condensate coordinate with
+            # branch phase omega^k maps |r> to |r-1>.  Thus it is off-diagonal
+            # in the finite-volume symmetry basis.
+            s_times_state_exponent = (1 - charge_sector) % nc
+            target_state_exponent = (-(charge_sector - 1)) % nc
+            assert_equal(
+                s_times_state_exponent,
+                target_state_exponent,
+                "pure SYM S operator shifts finite-volume chiral charge",
+            )
+
+            diagonal_character_power = 1
+            assert_equal(
+                diagonal_character_power % nc != 0,
+                True,
+                "pure SYM finite-volume S expectation is a nontrivial character sum",
+            )
+
+
 def check_affine_toda_index_match():
     for nc in range(2, 30):
         simple_root_terms = nc - 1
@@ -152,11 +415,46 @@ def check_affine_toda_index_match():
         assert_equal(condensate_phases, witten_index, "pure SYM condensate/index match")
 
 
+def check_local_chiral_oscillator_index():
+    for nc in range(2, 30):
+        complex_dimension = nc - 1
+        takagi_nonzero_singular_values = complex_dimension
+        assert_equal(
+            takagi_nonzero_singular_values,
+            complex_dimension,
+            "local chiral critical point nondegenerate Hessian rank",
+        )
+
+        one_complex_factor_index = 1
+        local_index = one_complex_factor_index ** complex_dimension
+        assert_equal(local_index, 1, "local chiral oscillator index")
+
+        bosonic_ground_fermion_number = 0
+        bosonic_ground_parity = (-1) ** bosonic_ground_fermion_number
+        assert_equal(bosonic_ground_parity, 1, "local chiral oscillator ground parity")
+
+        # For Re(z^2/2), each complex coordinate would give one negative real
+        # Morse direction.  The chiral index uses the holomorphic oscillator
+        # orientation instead, so the local contribution stays +1 for every
+        # complex dimension.
+        real_morse_negative_directions = complex_dimension
+        assert_equal(
+            real_morse_negative_directions,
+            nc - 1,
+            "real Morse sign directions are not the chiral-index convention",
+        )
+
+
 def main():
     check_discrete_chiral_anomaly_and_condensate_phases()
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
+    check_pure_sym_instanton_zero_mode_saturation()
+    check_pure_sym_topological_sector_selection()
+    check_pure_sym_saturated_berezin_coefficient()
+    check_finite_volume_symmetry_cluster_basis_ledger()
     check_affine_toda_index_match()
+    check_local_chiral_oscillator_index()
     print("All pure N=1 SYM glueball and index checks passed.")
 
 

@@ -32,7 +32,10 @@
   density, \(D_a\xi\) kinetic term, and the curvature vertex with the chapter
   curvature convention.
 - Derives the one-loop Ricci divergence in background-field dimensional
-  regularization.
+  regularization, including the local heat-kernel pole
+  \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\),
+  the \(\alpha'/\epsilon\) fluctuation contraction, and the minimal-subtraction
+  Ricci counterterm sign.
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
   \(H\)-flux and dilaton terms.
 - States the hypotheses under which one-loop Weyl-anomaly coefficients are
@@ -41,9 +44,19 @@
   first-order large-radius \(\alpha'\) expansion.
 - Derives the one-loop string-frame variational package
   `int sqrt(G) exp(-2 Phi) (R + 4|grad Phi|^2 - H^2/12)`, including the
-  `B`-field integration by parts, the `-1/4 H_i H_j` metric coefficient, and
-  the scalar anomaly representative
+  fixed-dilaton metric variation
+  `E_ij - G_ij S_Phi/2`, the dilaton variation `-2 S_Phi`, the exact
+  removal of the metric trace by the scalar equation, the `B`-field
+  integration by parts, the `-1/4 H_i H_j` metric coefficient, and the
+  scalar anomaly representative
   `(D-26)/6 + alpha'(|grad Phi|^2 - nabla^2 Phi/2 - H^2/24)`.
+- Derives the local background-field worldsheet origin of the one-loop
+  `H`-dependent coefficients: the covariant `B`-field expansion through the
+  `H xi D xi dx` and `nabla H xi xi dx dx` vertices, the tadpole pole
+  producing `delta B_ij = -alpha' nabla^k H_kij/(2 epsilon)`, and the
+  connected bubble pole producing
+  `delta G_ij = -alpha' H_i{}^{kl}H_jkl/(4 epsilon)` in the stated
+  dimensional-continuation convention for `epsilon^{ab}`.
 - Defines local perturbative sigma-model renormalization schemes as
   coordinate systems on the infinite-dimensional coupling space
   \((G,B,\Phi)\), modulo target diffeomorphism and gerbe gauge redundancy.
@@ -92,7 +105,9 @@
   positive \(d\)-planes and formulates \(T\)-duality as an isomorphism of
   exact CFT data.
 - Derives the Buscher rules by gauging a circle isometry, integrating out the
-  gauge fields, and tracking the Gaussian determinant dilaton shift.
+  gauge fields, and tracking the Gaussian determinant dilaton shift, including
+  a finite cell-regulator ledger whose `N_0-N_1+N_2` exponent gives the
+  Euler-characteristic half coefficient.
 - Proves Buscher involutivity and states beta-function covariance as an
   order-by-order perturbative statement, not a nonperturbative theorem.
 - Defines the compact simply connected WZW action using the integral
@@ -108,8 +123,9 @@
 - Defines the rank-one solvable cosets \(SU(2)_k/U(1)\) and
   \(SL(2,\mathbb R)_k/U(1)\) from current algebra first: parafermion
   branching labels, selection rules, field identification, central charge,
-  conformal weights, fusion rules, modular \(S\)-matrix, diagonal invariant,
-  and the noncompact cigar's representation, continuous spectrum,
+  conformal weights, fusion rules, modular \(S\)-matrix, unitary
+  orbit normalization, Verlinde recovery of fusion, diagonal invariant, and
+  the noncompact cigar's representation, continuous spectrum,
   momentum/winding, reflection, normalizability, and modular-data
   requirements.
 - Derives the bell and cigar gauged-WZW metrics and dilatons from local
@@ -120,21 +136,33 @@
   the rotational curvature formulas and computes the constant scalar
   dilaton-anomaly terms, matching the leading large-\(k\) central-charge
   shifts.
+- Cross-references the supersymmetric rank-one coset refinements to
+  Volume V, Chapter 15, where the compact `N=2` minimal coset and
+  noncompact cigar chiral-algebra interfaces are developed with
+  spectral-flow and `R`-charge bookkeeping.
 - Defines finite orbifolds using anomaly-free topological symmetry lines,
   twisted Hilbert spaces, centralizer projection, and discrete torsion.
 - Derives the finite-orbifold torus partition function and its modular label
   transformations.
 - Defines twist fields as endpoints of monodromy lines and derives cyclic
   permutation twist weights by the Schwarzian covering map.
-- Records complex-boson rotation twist weights and the real
+- Derives complex-boson rotation twist weights by the fractional oscillator
+  normal-ordering shift and records the real
   \(\mathbb Z_2\) value \(h=\bar h=1/16\).
 - Defines the symmetric-product orbifold
   \(\operatorname{Sym}^N(\mathcal C)=\mathcal C^{\otimes N}/S_N\),
   cycle-type sectors, centralizer projection, long-string weights,
-  Hecke-transform partition-function generating series, twist OPE
-  monodromy multiplication, and normalized two-cycle deformation operators.
+  Hecke-transform partition-function generating series, connected torus-cover
+  Hermite-normal-form counting, the constant-seed partition-number test,
+  twist OPE monodromy multiplication, the Riemann--Hurwitz covering-genus
+  ledger for twist correlators, the primitive joining-cover polynomial and
+  its local coordinate coefficients, the Schwarzian double-pole/OPE-power
+  ledger for primitive joining, the class-normalized primitive joining group
+  factor, the normalized transposition join/split class factors, and
+  normalized two-cycle deformation operators.
 - Defines twist-field deformations as regulated integrated local-operator
-  perturbations with OPE/contact-term beta functions.
+  perturbations with a cutoff-shell derivation of the OPE beta function and
+  contact-term scheme law.
 
 ## Claims To Verify
 
@@ -153,111 +181,175 @@
    `-1/4 H_i{}^{kl} H_{jkl}`, and varying it with respect to `B` gives the
    `-1/2 nabla^k H_{kij}` beta-function coefficient after the Weyl-anomaly
    representative is chosen.
-7. The scalar anomaly representative gives
+7. The same `H` coefficients arise from the local background-field pole
+   computation: the `nabla H xi xi dx dx` tadpole has pole
+   `i/(8 pi epsilon) nabla^k H_kij`, and the connected bubble of two
+   `H xi D xi dx` vertices has pole
+   `H_i{}^{kl}H_jkl/(16 pi epsilon)`, so comparison with the local action
+   prefactors gives the stated minimal-subtraction counterterms.
+8. The scalar anomaly representative gives
    `D + 6 alpha' V^2 = 26` for a flat linear dilaton after ghosts are
    included.
-8. The heterotic Green--Schwarz Bianchi identity has the stated relative sign
+9. The heterotic Green--Schwarz Bianchi identity has the stated relative sign
    and one-quarter coefficient in the chosen convention; standard embedding
    cancels the displayed source.
-9. The heterotic gauge beta representative follows from the `D.F` pole, the
+10. The heterotic gauge beta representative follows from the `D.F` pole, the
    torsion `H.F/2` contraction, and the redundant target-diffeomorphism
    direction generated by `W=alpha' grad Phi`.
-10. The \(\mathcal N=(2,2)\) one-loop beta tensor is the Kähler Ricci tensor
+11. The \(\mathcal N=(2,2)\) one-loop beta tensor is the Kähler Ricci tensor
    `-partial partialbar log det G` in the superspace-preserving scheme.
-11. The torsionful connection `Gamma^- = Gamma - H/2` has Ricci tensor with
+12. The torsionful connection `Gamma^- = Gamma - H/2` has Ricci tensor with
    symmetric `-H_i{}^{kl}H_{jkl}/4`, antisymmetric
    `-nabla^k H_{kij}/2`, and dilaton-gradient
    `nabla^k Phi H_{kij}` coefficients in the stated convention.
-12. The pure-metric two-loop representative has coefficient
+13. The pure-metric two-loop representative has coefficient
    \((\alpha')^2R_{ik\ell m}R_j{}^{k\ell m}/2\) in the stated MS scheme.
-13. The one-loop sigma-model RG equation
+14. The one-loop sigma-model RG equation
    `partial_{log mu} G = alpha' Ric(G)` becomes Hamilton's Ricci flow
    `partial_t G = -2 Ric(G)` only after the time change
    \(t=-\alpha'\log\mu/2\); increasing Ricci-flow time is therefore the
    infrared orientation of the one-loop RG convention.
-14. For \(G=r^2\gamma\) with constant sectional curvature
+15. For \(G=r^2\gamma\) with constant sectional curvature
    \(\sigma=\pm1\), the two-loop representative gives
    `d r^2/d log mu = (n-1) alpha' (sigma + alpha'/r^2)` and
    `d lambda/d log mu = -(n-1) lambda^2 (sigma + lambda)`, modulo the stated
    higher-loop remainder.
-15. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
-   are involutive with the dilaton shift.
-16. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
+16. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
+   are involutive with the dilaton shift; the cell-regulated gauge-field
+   Gaussian, gauge-volume normalization, and dual-scalar measure give the
+   net factor `(G_00)^{chi(Sigma)/2}`, equivalent to
+   `Phi -> Phi - log(G_00)/2`.
+17. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
    integer spin gives \(k\circ k\in2\mathbb Z\).
-17. The explicit cocycle
+18. The explicit cocycle
    \((-1)^{\sum_{i>j}A_{ij}m^in^j}\) satisfies associativity and the exchange
    law when \(A\) is an even integral Gram matrix.
-18. The lattice theta function's \(T\)-phase from the zero modes is cancelled
+19. The lattice theta function's \(T\)-phase from the zero modes is cancelled
    by evenness, while the eta determinants leave the gravitational-anomaly
    phase \(\exp[-2\pi i(n_L-n_R)/24]\).
-19. The toroidal sigma-model momenta
+20. The toroidal sigma-model momenta
    \(k_{L,R}(m,w)\) give the integral pairing
    \(m(w')+m'(w)\), independent of the antisymmetric \(B\)-field.
-20. The WZW level is integral because changing the filling shifts the action
+21. The WZW level is integral because changing the filling shifts the action
    by \(2\pi i k\) times the pairing with \(H^3(G,\mathbb Z)\).
-21. The affine current OPE in the chapter convention gives the mode algebra
+22. The affine current OPE in the chapter convention gives the mode algebra
    \([J_m^a,J_n^b]=f_{ab}{}^cJ_{m+n}^c+km\delta^{ab}\delta_{m+n,0}\).
-22. Sugawara's coefficient is fixed by the requirement that currents have
+23. Sugawara's coefficient is fixed by the requirement that currents have
     conformal weight \(1\), with the \(h^\vee\) shift coming from the adjoint
     Casimir in the double contraction.
-23. Coset central charges and weights are differences of the \(G\) and
+24. Coset central charges and weights are differences of the \(G\) and
     embedded \(H\) Sugawara data; gauge consistency is level matching for the
     gauged subgroup.
-24. The \(SU(2)_k/U(1)\) parafermion labels satisfy the selection rule
+25. The \(SU(2)_k/U(1)\) parafermion labels satisfy the selection rule
     \(\ell+m\in2\mathbb Z\), and the field identification
     \((\ell,m)\sim(k-\ell,m+k)\) preserves conformal weights modulo
     integers.
-25. The compact parafermion simple-current action is free, giving
+26. The compact parafermion simple-current action is free, giving
     \(k(k+1)/2\) primary orbits; fusion is the \(SU(2)_k\) truncated fusion
     rule together with \(U(1)\) charge conservation modulo \(2k\).
-26. The displayed parafermion modular \(S\)-matrix is well-defined on
+27. The displayed parafermion modular \(S\)-matrix is well-defined on
     field-identification orbits because the sine and charge phases cancel by
-    the selection rule.
-27. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
+    the selection rule; the factor of two from the free simple-current
+    quotient gives a unitary orbit matrix, and the finite Verlinde sum
+    recovers the truncated \(SU(2)_k\) fusion rule together with \(U(1)\)
+    charge conservation.
+28. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
     noncompact dual-Coxeter shift \(k-2\), and the stated
     momentum/winding labels give integer spin \(h-\bar h=nw\).
-28. The cigar continuous spectrum has \(j=1/2+\ii s\), and the reflection
+29. The cigar continuous spectrum has \(j=1/2+\ii s\), and the reflection
     relation \(j\leftrightarrow1-j\) is compatible with conformal weights;
     the reflection coefficient and discrete residues are nonlocal analytic
     CFT data.
-29. The bell and cigar metrics and dilatons follow from gauged-WZW gauge
+30. The bell and cigar metrics and dilatons follow from gauged-WZW gauge
     fixing, algebraic gauge-field elimination, and Gaussian determinants
     only as controlled large-level representatives; the exact CFTs also
     require branching or noncompact representation data.
-30. For \(ds^2=K(du^2+f(u)^2d\varphi^2)\), the bell and cigar choices of
+31. For \(ds^2=K(du^2+f(u)^2d\varphi^2)\), the bell and cigar choices of
     \(f\) and \(\Phi\) satisfy \(R_{ij}+2\nabla_i\nabla_j\Phi=0\), and
     \(|\nabla\Phi|^2-\nabla^2\Phi/2=\pm K^{-1}\), giving the leading
     central-charge shifts \(2\pm6/k\) before the exact affine shifts.
-31. The orbifold Hilbert space is
+32. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-32. The torus partition function is the finite gauge sum over commuting
+33. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-33. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
-   reflection twist field has \(h=1/16\).
-34. For a cycle type
+34. The cyclic twist weight equals \(c_0(K-K^{-1})/24\); for a complex boson
+   with rotation angle \(\alpha\), the Hurwitz-zeta oscillator shift gives
+   \(h_\alpha=\alpha(1-\alpha)/2\), and the real reflection twist field has
+   \(h=1/16\).
+35. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
    \(C_\lambda\)-invariant subspace of the tensor product of long-string
    Hilbert spaces.
-35. The symmetric-product partition-function generating series is the
+36. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
-   connected torus covers.
-36. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+   connected torus covers; the connected degree-\(m\) covers are counted by
+   \(\sigma_1(m)\), and the deck-automorphism factor gives the \(1/m\) in the
+   Hecke transform.
+37. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
-37. Twist-field deformations are conformal perturbations by projected local
-   fields; exact marginality requires the full beta-function/contact-term
-   analysis.
-38. In the source-coupled background-field definition, the Gaussian mean is
+38. For a connected genus-zero twist correlator, the active monodromies must
+   multiply to the identity, act transitively on active sheets, and have cover
+   genus
+   `1-N + sum_a(N-c(gamma_a))/2`; the two-point and primitive joining covers
+   are genus zero.
+39. The primitive joining cover with branch indices `K,L,K+L-1` is
+    represented, after placing the branch points at `0,1,infty`, by the
+    beta-normalized polynomial
+    `B_{K,L}^{-1} int_0^t u^{K-1}(u-1)^{L-1} du`; its local coefficients are
+    `binom(N,K)`, `(-1)^{L-1} binom(N,L)`, and
+    `(-1)^{L-1}(K-1)!(L-1)!/(N-1)!` at `0,1,infty`.
+40. The local inverse-branch Schwarzian at ramification index `r` gives the
+    twist-weight double pole `c_0(r-1/r)/24`; for primitive joining this
+    fixes the OPE power `h_N-h_K-h_L` with `N=K+L-1`, but not the numerical
+    OPE coefficient.
+41. For total copy number `M`, normalized single-cycle class sums have class
+    size `M!/(r(M-r)!)`; a fixed primitive joined cycle of length
+    `R=K+L-1` has exactly `R` labelled factorizations as a `K`-cycle times an
+    `L`-cycle, giving group-factor square
+    `K L R (M-K)!(M-L)!/(M!(M-R)!)`.
+42. The normalized transposition class has finite join/split class factors:
+    joining a fixed point to a `K`-cycle gives square
+    `2K(K+1)(M-K)/(M(M-1))`, splitting a `K`-cycle into two nontrivial cycles
+    `a+b=K` gives `2Kab/((1+delta_ab)M(M-1))`, and the endpoint split into a
+    fixed point plus a `b`-cycle gives `2(b+1)b(M-b)/(M(M-1))`.
+43. Twist-field deformations are conformal perturbations by projected local
+   fields; the annular cutoff OPE gives
+   `beta_ell^A = y_A g^A - pi C_BC^A g^B g^C + O(g^3)`, the energy-scale beta
+   has the opposite sign, and quadratic contact-term changes shift
+   `b^A_BC` by `(y_B+y_C-y_A)M^A_BC`.
+44. In the source-coupled background-field definition, the Gaussian mean is
    `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
    \(J=L\) and justifies computing the one-loop pole from
    `1/2 log det A` off shell.
-39. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
+45. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
    first-variation coefficient \(-(2\pi\alpha')^{-1}G_{ij}\nabla^a
    \partial_ax^j\) and quadratic coefficient \((4\pi\alpha')^{-1}
    (|D\xi|^2-\langle R(\xi,\partial x)\partial x,\xi\rangle)\).
+46. The one-loop local heat-kernel pole
+   \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\)
+   combines with the kinetic prefactor \((2\pi\alpha')^{-1}\) to give
+   \(\langle\xi^k\xi^\ell\rangle_{\mathrm{div}}=
+   \alpha'G^{k\ell}/\epsilon\), hence
+   \(\Gamma^{(1)}_{\mathrm{div}}=-(4\pi\epsilon)^{-1}
+   \int R_{ij}\partial x^i\partial x^j\) and
+   \(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\).
+47. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
+   variation has trace coefficient
+   \(-S_\Phi/2\), while the dilaton variation is \(-2S_\Phi\); imposing the
+   scalar equation therefore removes exactly the trace part and leaves the
+   hatted metric Weyl-anomaly representative.
+48. The supersymmetric rank-one coset refinements are not inferred from the
+    bell/cigar sigma-model metrics; their exact `N=2` chiral data are stated
+    in Chapter 15 and coordinated with Volume VII for GLSM/mirror
+    constructions.
+49. Replacing the seed partition function in the symmetric-product Hecke
+    formula by the formal constant `1` gives
+    `prod_{r >= 1} (1-p^r)^(-1)`, so the coefficient of `p^N` is the number
+    of cycle types of `S_N`.
 
 ## Figures
 
@@ -269,7 +361,9 @@
 ## Checks
 
 - `calculation-checks/orbifold_twist_weight_checks.py` verifies the finite
-  rational arithmetic of the cyclic permutation and rotation twist weights.
+  rational arithmetic of the cyclic permutation twist weight, the
+  Schwarzian-cover derivation, and the Hurwitz-zeta oscillator derivation of
+  the rotation twist weight.
 - `calculation-checks/narain_lattice_cocycle_checks.py` verifies the lattice
   cocycle identities, sample even-unimodular Gram matrices, the
   \(B\)-independence of the Narain integral pairing, and the modular
@@ -277,17 +371,22 @@
 - `calculation-checks/nlsm_background_field_checks.py` verifies the
   source-coupled background-field Gaussian algebra: the mean-zero condition
   \(J=L\), the sign in completing the square, and the pure-metric
-  second-variation normalization and curvature-vertex sign.
+  second-variation normalization, curvature-vertex sign, heat-kernel pole
+  normalization, and Ricci-counterterm sign.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
+  cell-regulated Euler-characteristic determinant ledger, plus the
   constant-curvature specialization of the two-loop metric coefficient and
   radius/coupling beta functions for spherical and hyperbolic signs.
 - `calculation-checks/nlsm_weyl_anomaly_checks.py` verifies the rational
   coefficient bookkeeping for the one-loop \(H^2\) metric variation,
-  \(B\)-field integration by parts, linear-dilaton central charge, heterotic
-  Bianchi coefficient, heterotic gauge/dilaton redundant direction,
-  torsionful one-loop Ricci package, and local `d^2=0` preservation of the
-  `H` beta Bianchi identity.
+  the local background-field tadpole and bubble origins of the
+  \(H\)-dependent minimal-subtraction counterterms,
+  the full string-frame metric trace decomposition and scalar dilaton
+  variation, \(B\)-field integration by parts, linear-dilaton central
+  charge, heterotic Bianchi coefficient, heterotic gauge/dilaton redundant
+  direction, torsionful one-loop Ricci package, and local `d^2=0`
+  preservation of the `H` beta Bianchi identity.
 - `calculation-checks/nlsm_scheme_redefinition_checks.py` verifies the sign
   and order of the finite-scheme-redefinition bracket
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.
@@ -295,15 +394,27 @@
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
   weights, diagonal coset minimal-model central charges, parafermion
   selection-rule and field-identification weights, parafermion orbit counts
-  and fusion rules, cigar central charges, reflection weight invariance and
+  and fusion rules, parafermion modular \(S\)-matrix unitarity and Verlinde
+  recovery of fusion, cigar central charges, reflection weight invariance and
   integer-spin momentum/winding labels, bell/cigar one-loop geometry
   residuals, leading-versus-exact central-charge shifts, and
   Ising/tricritical examples.
+- `calculation-checks/conformal_perturbation_rg_checks.py` verifies the
+  annular OPE cutoff-power cancellation, the second-order \(\pi\) factor, the
+  length-scale versus energy-scale beta sign, and the quadratic contact-term
+  scheme-shift law used for twist-field deformations.
 - `calculation-checks/symmetric_product_orbifold_checks.py` verifies
   \(S_N\) centralizer orders, conjugacy-class counting, central-charge
-  additivity, cycle-type twist weights, joining weight shifts, and the
-  two-cycle normalization count.
-- Later calculation checks should cover covering-space twist correlators.
+  additivity, cycle-type twist weights, joining weight shifts, the two-cycle
+  normalization count, connected torus-cover Hecke weights, and the
+  constant-seed partition-number test, and Riemann--Hurwitz genus tests for
+  twist-field two-point and primitive joining covers, including the
+  beta-normalized primitive joining-cover polynomial and its local
+  coefficients, the Schwarzian/OPE-power ledger, and the class-normalized
+  primitive joining and transposition join/split group factors.
+- Later calculation checks should cover numerical covering-space twist
+  correlator coefficients after seed correlators and local coordinate
+  normalizations are specified.
 
 ## Reference Intake
 
@@ -320,6 +431,7 @@
   and the WZW/coset and supersymmetric coset discussions around
   `sec:wzwcoset`, `sec:coset`, `sec:sutwocos`, and the \(N=2\)
   \(SL(2,\mathbb R)/U(1)\) subsection.  The monograph import keeps the
-  stringbook's conceptual order but expands the bosonic derivations and
-  defers the supersymmetric \(N=2\) refinements to the supersymmetric field
-  theory development.
+  stringbook's conceptual order but expands the bosonic derivations; the
+  exact supersymmetric \(N=2\) coset chiral data are now developed in
+  Volume V, Chapter 15, while the GLSM/mirror-flow construction remains a
+  supersymmetric-QFT obligation.

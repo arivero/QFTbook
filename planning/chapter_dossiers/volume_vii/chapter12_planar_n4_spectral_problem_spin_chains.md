@@ -16,6 +16,12 @@ replacement for the QFT.
 - `lambda^A_alpha`: four adjoint Weyl fermions.
 - `tau`: complexified Yang-Mills coupling
   `theta/(2 pi)+4 pi i/g_YM^2`.
+- `mathfrak H`: upper-half-plane coupling chart for the local
+  \(\mathcal N=4\) conformal family.
+- `Gamma`: duality subgroup of `PSL(2,Z)` acting on the chosen global-form
+  and line-operator datum.
+- `T`, `S`: fractional-linear transformations
+  `tau -> tau+1` and `tau -> -1/tau`.
 - `C_2(g)`: adjoint quadratic Casimir.
 - `a,c`: four-dimensional conformal anomaly coefficients.
 - `O_C^(k)`: half-BPS single-trace representative in `[0,k,0]`.
@@ -45,8 +51,16 @@ replacement for the QFT.
   bookkeeping and states explicitly that it is not the full R-symmetry.
 - Proves one-loop ordinary and holomorphic beta-function cancellation from
   field content.
-- Quotes exact finiteness/marginality with regulator-level hypotheses rather
-  than treating it as a one-line folklore consequence.
+- Replaces the old exact-finiteness quote with an explicit finite
+  \(\mathcal N=4\) conformal-family hypothesis: regulator, Ward identities,
+  stress-tensor multiplet, fixed contact/source normalization, no
+  current-moment-map obstruction, and zero beta function for `tau`.
+- Defines the upper-half-plane coupling chart, proves the local
+  one-complex-dimensional conformal-manifold statement, and separates this
+  local exact marginality from any global electric-magnetic quotient.
+- States the \(PSL(2,Z)\) duality quotient as a separate QFT-status
+  hypothesis depending on global form and line-operator lattice; no string
+  construction is used as an input.
 - Computes the free-field anomaly coefficients to get
   `a=c=dim(g)/4`, with `SU(N)` and `U(N)` specializations.
 - Defines the half-BPS `[0,k,0]` representatives, separates them from the
@@ -94,8 +108,10 @@ single-trace word and the adjacent exchange interaction.
 ## Calculation Checks
 
 - `calculation-checks/susy_n4_scft_checks.py` verifies one-loop and
-  holomorphic beta-function cancellation, `a=c=dim(g)/4`, idempotence and
-  dimension of the `SO(6)` symmetric-traceless projector, the
+  holomorphic beta-function cancellation, the one-dimensional local
+  exact-marginal coupling-chart count, theta-periodicity, `SL(2,Z)` generator
+  relations and upper-half-plane preservation, `a=c=dim(g)/4`, idempotence
+  and dimension of the `SO(6)` symmetric-traceless projector, the
   stress-tensor-multiplet two-point normalization factor, and the planar
   chiral two-point/OPE coefficient arithmetic including the pair-of-pants
   cyclic factor.

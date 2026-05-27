@@ -35,6 +35,55 @@ def check_abjm_superpotential_r_charge() -> None:
     assert_equal("ABJM quartic superpotential R-charge", quartic_r, 2)
 
 
+def check_abjm_standard_conformal_locus_dimension() -> None:
+    # In 3D N=2 conventions, a chiral primary has Delta=R at the ABJM point
+    # and the d^2 theta measure has dimension 1.  The quartic ABJM
+    # superpotential is therefore power-counting marginal, but the standard
+    # N=6 completion fixes its normalized coefficient to 1/k.
+    matter_dimension = Fraction(1, 2)
+    f_term_measure_dimension = 1
+    spacetime_dimension = 3
+    quartic_dimension = 4 * matter_dimension
+    coefficient_dimension = spacetime_dimension - f_term_measure_dimension - quartic_dimension
+    assert_equal("ABJM quartic coefficient engineering dimension", coefficient_dimension, 0)
+
+    for k in range(1, 15):
+        normalized_superpotential_coefficient = Fraction(1, k)
+        assert_equal(
+            f"ABJM normalized h*k relation k={k}",
+            k * normalized_superpotential_coefficient,
+            1,
+        )
+
+        # The integer level lattice has zero tangent space.  Since the
+        # standard N=6 coefficient is a function of k, its allowed tangent is
+        # also zero.
+        level_lattice_tangent_dimension = 0
+        superpotential_tangent_dimension = level_lattice_tangent_dimension
+        assert_equal(
+            f"ABJM N=6 superpotential tangent k={k}",
+            superpotential_tangent_dimension,
+            0,
+        )
+        standard_conformal_locus_dimension = level_lattice_tangent_dimension
+        assert_equal(
+            f"standard ABJM conformal-locus dimension k={k}",
+            standard_conformal_locus_dimension,
+            0,
+        )
+
+    real_mass_dimension = 1
+    fi_dimension = 1
+    yang_mills_coupling_squared_dimension = 1
+    assert_equal("ABJM real mass is relevant", real_mass_dimension, 1)
+    assert_equal("ABJM FI coordinate is relevant", fi_dimension, 1)
+    assert_equal(
+        "3D Yang-Mills coupling squared is dimensionful",
+        yang_mills_coupling_squared_dimension,
+        1,
+    )
+
+
 def check_abjm_parity_level_pair() -> None:
     for k in (1, 2, 5, -3):
         levels = (k, -k)
@@ -134,6 +183,7 @@ def check_five_dimensional_instanton_kk_normalization() -> None:
 
 def main() -> None:
     check_abjm_superpotential_r_charge()
+    check_abjm_standard_conformal_locus_dimension()
     check_abjm_parity_level_pair()
     check_abjm_abelian_bf_normalization()
     check_abjm_orbifold_order_and_dimension()

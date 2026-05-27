@@ -10,16 +10,79 @@ representative, the gauge-invariant observables, and the regularization
 scheme separate.
 
 \section{Gauge and Trace Conventions}
+\label{sec:susy-gauge-trace-conventions}
 
-Let \(G\) be a compact Lie group with Lie algebra \(\mathfrak g\).  Fix an
+This chapter uses the Hermitian-generator convention of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  If
+\(\operatorname{Lie}(G)\) is realized by anti-Hermitian matrices in a unitary
+representation, write
+\[
+  \mathfrak g:=\ii\,\operatorname{Lie}(G)
+\]
+for the corresponding real vector space of Hermitian generators.  Its compact
+Lie bracket in Hermitian coordinates is
+\[
+  [X,Y]_{\rm H}:=-\ii[X,Y],
+  \qquad X,Y\in\mathfrak g,
+\]
+where the bracket on the right is the ordinary matrix commutator.  Fix an
 invariant nondegenerate symmetric bilinear form
-\(\operatorname{tr}:\mathfrak g\otimes\mathfrak g\to\R\).  For a connection
-\(A=A_\mu dx^\mu\) on a principal \(G\)-bundle, write
+\(\operatorname{tr}:\mathfrak g\otimes\mathfrak g\to\R\).  In trace-delta
+examples one chooses a basis \(t^a\) with
+\(\operatorname{tr}(t^a t^b)=\delta^{ab}\).
+
+In a local trivialization, a gauge field is a Hermitian
+\(\mathfrak g\)-valued one-form \(A=A_\mu dx^\mu\), and the covariant
+derivative on a field in a unitary representation is
+\[
+  \nabla_\mu=\partial_\mu-\ii A_\mu .
+\]
+The curvature is
 \[
   F_{\mu\nu}
+  :=
+  \ii[\nabla_\mu,\nabla_\nu]
   =
-  \partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu].
+  \partial_\mu A_\nu-\partial_\nu A_\mu-\ii[A_\mu,A_\nu].
 \]
+Under a smooth gauge transformation \(u:U\to G\),
+\[
+  A_\mu^u=uA_\mu u^{-1}+\ii u\,\partial_\mu u^{-1}.
+\]
+
+\begin{proposition}[Curvature covariance and gauge-invariant densities]
+\label{prop:susy-gauge-curvature-covariance}
+With the definitions above,
+\[
+  F_{\mu\nu}^u=uF_{\mu\nu}u^{-1}.
+\]
+Consequently
+\(\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\) and
+\(\operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu})\) are local
+gauge-invariant scalar densities.
+\end{proposition}
+
+\begin{proof}
+The transformation law for \(A_\mu\) is equivalent to
+\[
+  \nabla_\mu^u=u\nabla_\mu u^{-1}
+\]
+as an equality of differential operators.  Therefore
+\[
+  F_{\mu\nu}^u
+  =
+  \ii[\nabla_\mu^u,\nabla_\nu^u]
+  =
+  \ii u[\nabla_\mu,\nabla_\nu]u^{-1}
+  =
+  uF_{\mu\nu}u^{-1}.
+\]
+Invariance of the bilinear form gives
+\(\operatorname{tr}(uXu^{-1}uYu^{-1})=\operatorname{tr}(XY)\).  Applying
+this to \(X=F_{\mu\nu}\) and \(Y=F^{\mu\nu}\), and then to
+\(Y=\widetilde F^{\mu\nu}\), proves the two density statements.
+\end{proof}
+
 The Yang--Mills coupling convention in this monograph is
 \[
   \mathcal L_{\rm YM}
@@ -102,32 +165,85 @@ normalization.
 
 \section{Matter Multiplets and the Moment Map}
 
-Let \(R\) be a finite-dimensional complex representation of \(G\).  A chiral
-matter multiplet is a chiral superfield \(\Phi\) valued in \(R\).  Gauge
-covariance of the kinetic term is expressed by
+Let \(R\) be a finite-dimensional unitary complex representation of \(G\).
+A chiral matter multiplet is a chiral superfield \(\Phi\) valued in \(R\).
+Gauge covariance of the kinetic term is expressed by
 \[
   \int d^4\theta\, \bar\Phi e^V\Phi .
 \]
 In components this term contains the scalar kinetic term, fermion kinetic
 term, gauge couplings, and the auxiliary coupling
 \[
-  \operatorname{tr}(D\,\mu_R(\phi,\bar\phi)),
+  \langle\mu_R(\phi,\bar\phi),D\rangle,
 \]
 where \(\mu_R\in\mathfrak g^*\) is the moment map determined by
 \[
   \langle \mu_R(\phi,\bar\phi),X\rangle
   =
-  \bar\phi\, X_R\, \phi,
+  \phi^\dagger X_R\phi,
   \qquad X\in\mathfrak g .
 \]
-After using the bilinear form to identify \(\mathfrak g^*\) with
-\(\mathfrak g\), the algebraic equation of motion for \(D\) gives the
-\(D\)-term potential
+Here \(X_R\) is the Hermitian generator acting in \(R\).  A
+Fayet--Iliopoulos parameter is a linear functional
+\(\zeta\in\mathfrak g^*\) satisfying
 \[
-  V_D=\frac{g^2}{2}\operatorname{tr}(\mu_R\mu_R)
+  \zeta([X,Y]_{\rm H})=0,\qquad X,Y\in\mathfrak g,
 \]
-in this convention, up to Fayet--Iliopoulos terms for abelian factors when
-they are allowed by the global form of the gauge group.
+so it factors through the abelian quotient of \(\mathfrak g\).  In
+particular there is no FI parameter for a semisimple gauge algebra.
+
+\begin{proposition}[Auxiliary \(D\)-field elimination]
+\label{prop:susy-d-term-auxiliary-elimination}
+Let \(\eta=\mu_R(\phi,\bar\phi)-\zeta\), with \(\zeta=0\) if no FI parameter
+is allowed.  Use the bilinear form to define
+\(\eta^\sharp\in\mathfrak g\) by
+\[
+  \operatorname{tr}(\eta^\sharp X)=\langle\eta,X\rangle
+  \quad\text{for every }X\in\mathfrak g .
+\]
+For fixed scalar fields, the auxiliary part of the Lorentzian Lagrangian is
+\[
+  \mathcal L_D
+  =
+  \frac{1}{2g^2}\operatorname{tr}(D^2)
+  +\langle\eta,D\rangle .
+\]
+Eliminating \(D\) gives
+\[
+  D=-g^2\eta^\sharp,
+  \qquad
+  \mathcal L_D\big|_{\rm on\ shell}
+  =
+  -\frac{g^2}{2}\operatorname{tr}(\eta^\sharp\eta^\sharp).
+\]
+Thus the corresponding scalar potential contribution is
+\[
+  V_D=\frac{g^2}{2}\operatorname{tr}(\eta^\sharp\eta^\sharp)
+\]
+in this convention.
+\end{proposition}
+
+\begin{proof}
+By the definition of \(\eta^\sharp\),
+\[
+  \mathcal L_D
+  =
+  \frac{1}{2g^2}\operatorname{tr}(D^2)
+  +\operatorname{tr}(\eta^\sharp D).
+\]
+Completing the square gives
+\[
+  \mathcal L_D
+  =
+  \frac{1}{2g^2}
+  \operatorname{tr}\!\left(D+g^2\eta^\sharp\right)^2
+  -\frac{g^2}{2}\operatorname{tr}(\eta^\sharp\eta^\sharp).
+\]
+The algebraic Euler--Lagrange equation is therefore
+\(D+g^2\eta^\sharp=0\).  Substitution gives the displayed on-shell
+Lagrangian.  Since Lorentzian scalar Lagrangians have the form kinetic minus
+potential, the potential is the positive final expression.
+\end{proof}
 
 \section{Gauge Anomalies as a Consistency Condition}
 
@@ -150,6 +266,45 @@ condition is
 as an invariant symmetric trilinear form.  Global anomalies and mixed
 anomalies require separate topological data and are not detected by this
 polynomial alone.
+
+\begin{proposition}[Conjugate-pair and real-representation cancellation]
+\label{prop:susy-gauge-anomaly-conjugate-cancellation}
+Let \(R^\vee\) be the conjugate representation of a unitary representation
+\(R\), in the Hermitian-generator convention.  Then
+\[
+  A_{R^\vee}=-A_R .
+\]
+Consequently a vectorlike pair \(R\oplus R^\vee\) has zero perturbative local
+gauge anomaly.  If \(R\) is equivalent to its conjugate representation, then
+\(A_R=0\).  In particular, the adjoint gaugino in an \(\mathcal N=1\) vector
+multiplet gives no perturbative cubic gauge anomaly.
+\end{proposition}
+
+\begin{proof}
+If \(T_R^a\) are Hermitian generators in \(R\), then the conjugate
+representation has Hermitian generators
+\[
+  T_{R^\vee}^a=-(T_R^a)^* .
+\]
+Therefore
+\[
+  \operatorname{Tr}_{R^\vee}
+  \left(T_{R^\vee}^a\{T_{R^\vee}^b,T_{R^\vee}^c\}\right)
+  =
+  -
+  \left[
+  \operatorname{Tr}_{R}
+  \left(T_R^a\{T_R^b,T_R^c\}\right)
+  \right]^* .
+\]
+The trace on the right is real because the anticommutator of Hermitian
+matrices is Hermitian and the invariant symmetric tensor is obtained by
+symmetrizing over \(a,b,c\).  Hence \(A_{R^\vee}=-A_R\).  The vectorlike
+statement follows by addition.  If \(R\simeq R^\vee\), anomaly coefficients
+are representation invariants, so \(A_R=A_{R^\vee}=-A_R\), and \(A_R=0\).
+The adjoint representation of a compact Lie algebra is real, giving the last
+claim.
+\end{proof}
 
 \begin{openproblem}[Supersymmetric gauge theory with regulated Ward identities]
 \label{op:susy-gauge-regulated-ward-identities}

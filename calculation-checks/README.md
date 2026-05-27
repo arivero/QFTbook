@@ -194,10 +194,19 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `conformal_perturbation_rg_checks.py`: exact rational checks for the
+  two-dimensional conformal-perturbation section, including the cutoff-power
+  cancellation in the annular OPE integral, the second-order \(\pi\) factor,
+  the length-scale versus energy-scale beta-function sign, and the quadratic
+  contact-term scheme-shift law.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
-  coefficients, quantum dimensions, shifted character exponents, and the
-  Zhu-algebra top-weight polynomial with its primitive idempotents.
+  coefficients, quantum dimensions, shifted character exponents, the
+  \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
+  Ising modular invariant with one vacuum, the Cardy Tauberian saddle
+  coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
+  invisibility of the nilpotent extension, and the Zhu-algebra top-weight
+  polynomial with its primitive idempotents.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,
@@ -206,7 +215,8 @@ Current checks:
   FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
   discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
-  including the level-two BPZ null vector, one-screening coefficient
+  including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
+  dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
   level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).
@@ -214,7 +224,12 @@ Current checks:
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
-  and protected Landau--Ginzburg central-charge arithmetic.
+  extended \(\mathcal N=2\) spectral-flow operator weights, charges,
+  Heisenberg OPE exponents, and descendant charges, protected
+  Landau--Ginzburg central-charge arithmetic, and the
+  supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
+  coset central-charge, chiral-primary, field-identification, and
+  spectral-flow formulas.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
@@ -407,9 +422,11 @@ Current checks:
   Hirota-to-Y-system algebra identity.
 - `susy_n4_scft_checks.py`: exact arithmetic checks for the Volume VII
   \(\mathcal N=4\) SYM SCFT foundation material, including one-loop and
-  holomorphic beta-function cancellation, \(a=c=\dim\mathfrak g/4\), the
-  \(SO(6)\) symmetric-traceless projector, stress-tensor-multiplet
-  two-point normalization, and planar half-BPS chiral OPE coefficients.
+  holomorphic beta-function cancellation, the one-complex-dimensional
+  exact-marginal coupling chart, theta-periodicity and \(SL(2,\mathbb Z)\)
+  generator arithmetic, \(a=c=\dim\mathfrak g/4\), the \(SO(6)\)
+  symmetric-traceless projector, stress-tensor-multiplet two-point
+  normalization, and planar half-BPS chiral OPE coefficients.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
@@ -453,19 +470,24 @@ Current checks:
   background-field source convention, including the mean-zero condition
   \(J=L\), the Gaussian square-completion sign used in the one-loop
   effective-action determinant, and the pure-metric second-variation
-  normalization and curvature-vertex sign.
+  normalization, curvature-vertex sign, heat-kernel pole normalization, and
+  Ricci-counterterm sign.
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift
-  involution, the constant-curvature two-loop \(R_{ik\ell m}R_j{}^{k\ell m}\)
-  coefficient, and the spherical/hyperbolic radius-flow beta functions.
+  involution, the cell-regulated Euler-characteristic ledger for the
+  Buscher determinant, the constant-curvature two-loop
+  \(R_{ik\ell m}R_j{}^{k\ell m}\) coefficient, and the
+  spherical/hyperbolic radius-flow beta functions.
 - `nlsm_scheme_redefinition_checks.py`: finite polynomial checks for the
   NLSM finite-scheme-redefinition law
   \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
   Lie bracket in a two-coupling model.
 - `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
   Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
-  variation coefficients, linear-dilaton central-charge condition,
+  variation coefficients, the local worldsheet tadpole and bubble origins of
+  the \(H\)-dependent counterterms, the full string-frame metric trace split and
+  scalar dilaton variation, linear-dilaton central-charge condition,
   heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
   direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of
   the \(H\)-beta Bianchi identity.
@@ -492,8 +514,9 @@ Current checks:
 - `orbifold_twist_weight_checks.py`: finite rational checks for the
   two-dimensional orbifold chapter, including the cyclic permutation twist
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
-  \(c_0=6\) length-two value \(h=3/8\), and the real
-  \(\mathbb Z_2\) reflection twist value \(h=1/16\).
+  \(c_0=6\) length-two value \(h=3/8\), the Hurwitz-zeta oscillator derivation
+  of the complex rotation twist weight, and the real \(\mathbb Z_2\)
+  reflection twist value \(h=1/16\).
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
@@ -541,27 +564,61 @@ Current checks:
 - `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
   six-dimensional supersymmetric field-theory chapters, including the ABJM
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
-  BF normalization, \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model
-  denominator powers, six-dimensional Yang-Mills coupling dimension,
-  \(A_{N-1}\) \((2,0)\) anomaly/tensor-branch arithmetic, and the
-  trace-delta \(g_5^2=4\pi^2R\) compactification normalization.
+  BF normalization, standard ABJM conformal-locus tangent count,
+  \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
+  six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
+  anomaly/tensor-branch arithmetic, and the trace-delta
+  \(g_5^2=4\pi^2R\) compactification normalization.
+- `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
+  supersymmetric gauge-theory foundation chapter, including the auxiliary
+  \(D\)-field square completion and potential sign, the absence of
+  Fayet--Iliopoulos parameters for an `su(2)` semisimple factor, vectorlike
+  \(U(1)\) anomaly cancellation, and the conjugate-representation anomaly
+  sign.
+- `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
+  supersymmetric moduli-space quotient conventions, including the
+  rank-one \(U(1)\) invariant ring
+  \(\mathbb C[x,y]^{\mathbb C^\ast}=\mathbb C[xy]\), the matching
+  real/complex quotient dimension count, and the equivariance of an
+  invariant superpotential's \(F\)-term ideal.
+- `susy_2d_lg_glsm_checks.py`: exact finite checks for the
+  two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
+  including \(A\)-series quasihomogeneous charges and central charges,
+  Fermat Jacobi-basis dimensions, quintic Landau--Ginzburg central charge,
+  hypersurface GLSM gauge-invariance arithmetic, axial-anomaly charge sums,
+  positive-chamber hypersurface dimensions, and negative-chamber residual
+  finite-gauge-group orders, together with the A/B twist spin-shift ledger
+  that identifies the scalar supercharges and the abelian circle-duality
+  momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
+  Coulomb one-loop charge-exponent/vacuum-count ledger.
+- `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
+  holomorphy and NSVZ coordinate algebra, including quadratic chiral
+  tree-level elimination, the eliminated derivative identity, Konishi and
+  vector-multiplet coordinate shifts, and the differentiated
+  holomorphic-canonical relation leading to the NSVZ beta function.
 - `susy_n1_conifold_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
   including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,
   KW beta-function rank count for the two gauge numerators and quartic
-  marginality defect, \(a\)-maximization quadratic term, central charges,
-  rank-one conifold relation, KS beta-function numerator signs, unequal-rank
-  \(R\)-anomaly coefficients, Seiberg-dual magnetic rank, magnetic meson
-  quadratic-form integration, Euclidean cascade step count, and
+  marginality defect, the KW two-dimensional local conformal-locus count,
+  \(a\)-maximization quadratic term, central charges, rank-one conifold
+  relation, KS beta-function numerator signs, unequal-rank \(R\)-anomaly
+  coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
+  integration, Euclidean cascade step count, and
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
 - `susy_n1_pure_sym_checks.py`: exact finite checks for pure
   four-dimensional \(\mathcal N=1\) supersymmetric Yang--Mills, including
   the adjoint-fermion discrete chiral anomaly, the
   \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
   dimension/source/\(F\)-term arithmetic, condensate branch monodromy under a
-  theta-angle loop, the affine-Toda product constraint, constrained Hessian
-  nondegeneracy, local critical-point index contribution, and the
-  affine-Toda/Witten-index vacuum count match.
+  theta-angle loop, pure-SYM one-instanton zero-mode saturation for
+  \(S^{N_c}\) rather than a one-point condensate, instanton-number
+  selection for separated \(S\)-correlators, the saturated Berezin
+  coefficient and its factorial/sign conventions, finite-volume
+  symmetry-basis versus cluster-branch linear algebra, the affine-Toda
+  product constraint, constrained Hessian nondegeneracy, local holomorphic
+  chiral oscillator index convention, local critical-point index
+  contribution, and the affine-Toda/Witten-index vacuum count match.
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
   including Seiberg-dual rank involution, baryon-charge matching, SQCD
@@ -575,13 +632,16 @@ Current checks:
   't Hooft anomaly matching, mass and Higgs deformation rank/dimension/
   \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
-  quantum-modified constraint, and the conformal-window/free-phase
-  inequalities.
+  quantum-modified constraint, massive-SQCD elimination to pure-SYM branch
+  superpotentials, source identity, and mass-source/Konishi ledger, and the
+  conformal-window/free-phase inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
-  and Higgs-patch collective-coordinate ledger, the maximal-rank meson
+  and Higgs-patch collective-coordinate ledger, the radial Higgs-cutoff
+  integral scaling, the Yukawa-lifting Berezin determinant saturation and
+  coefficient-factorization ledger, the maximal-rank meson
   determinant-invariant uniqueness step, holomorphic decoupling exponent
   shift, ADS decoupling-recursion coefficient and one-variable \(F\)-term
   algebra, the pure \(SU(2)\)
@@ -589,11 +649,12 @@ Current checks:
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
-  Gaussian coefficient, the \(S^4\) \(H\)-function finite-product logarithmic
+  Gaussian coefficient, the finite normal Gaussian Pfaffian/determinant
+  convention, the \(S^4\) \(H\)-function finite-product logarithmic
   derivative, the \(U(1)\) \(S^4\) Gaussian matrix integral, finite
-  double-sine reflection and pole-convention checks, the \(U(1)_k\) \(S^3\)
-  Chern--Simons Fresnel completion of the square, and the round-\(S^3\)
-  conjugate-chiral-pair integral
+  double-sine reflection and pole-convention checks, the \(U(1)_k\)
+  \(S^3\) Chern--Simons Fresnel completion of the square, and the
+  round-\(S^3\) conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
 - `soft_drop_irc_checks.py`: exact rational checks for the soft-drop
   IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
@@ -606,11 +667,33 @@ Current checks:
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
   extraction, and the \(\widehat A\)-series coefficients through degree six.
+- `susy_representation_checks.py`: exact finite checks for the Volume VII
+  supersymmetry representation chapter, including massive \(\mathcal N=1\)
+  Fock-space dimensions, boson/fermion balance, the Clebsch--Gordan
+  dimension identity for the one-oscillator spin sector, the rank-one massless
+  supercharge norm matrix, and BPS-bound block eigenvalues
+  \(2(m\pm z)\).
+- `susy_superspace_component_checks.py`: finite Grassmann-algebra checks for
+  the Volume VII superspace/local-actions conventions, including
+  \(\theta^2=2\theta^1\theta^2\), the left-derivative rule for \(\theta^2\),
+  the \((\theta\psi)(\theta\chi)\) identity, the
+  \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
+  auxiliary \(F\)-field elimination.
+- `susy_wilsonian_bv_checks.py`: finite Fourier/odd-variable checks for the
+  Volume VII supersymmetric Wilsonian-schemes chapter, including BV Stokes
+  for a fiber Darboux pair, the pushforward chain-map identity, QME
+  preservation in the finite model, and semigroup behavior for product
+  cycles.
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
-  charge additivity, cycle-type twist weights, join/split weight shifts, and
-  the two-cycle normalization count.
+  charge additivity, cycle-type twist weights, join/split weight shifts, the
+  two-cycle normalization count, connected torus-cover Hecke weights, and the
+  constant-seed partition-number test, plus Riemann--Hurwitz genus tests for
+  twist-field two-point and primitive joining covers and beta-normalized
+  primitive joining-cover local-coordinate coefficients, Schwarzian
+  double-pole weights, primitive-joining OPE powers, and class-normalized
+  primitive joining and transposition join/split group factors.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign
@@ -631,7 +714,8 @@ Current checks:
   simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
   identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
-  weights, compact parafermion orbit counts and fusion rules,
+  weights, compact parafermion orbit counts, fusion rules, modular
+  \(S\)-matrix unitarity, and Verlinde recovery of fusion,
   \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
   invariance, momentum/winding spin checks, bell/cigar one-loop geometry
   residuals and leading-versus-exact central-charge shifts, and the

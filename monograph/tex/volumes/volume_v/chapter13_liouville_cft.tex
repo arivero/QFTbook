@@ -1044,6 +1044,63 @@ The \(L_1\) equation requires
 Thus both positive modes annihilate \eqref{eq:liouville-level-two-null-vector}.
 \end{proof}
 
+\begin{proposition}[Dual level-two null vector and BPZ equation]
+\label{prop:liouville-dual-level-two-null-vector}
+Let \(c=1+6Q^2\), \(Q=b+b^{-1}\), and
+\[
+  h^\vee=-\frac12-\frac{3}{4b^2}.
+\]
+In a highest-weight Virasoro module with highest vector \(|h^\vee\rangle\),
+the level-two vector
+\begin{equation}
+  \left(L_{-1}^2+b^{-2}L_{-2}\right)|h^\vee\rangle
+  \label{eq:liouville-dual-level-two-null-vector}
+\end{equation}
+is annihilated by \(L_1\) and \(L_2\).  Therefore the degenerate insertion
+\(V_{-1/(2b)}\) satisfies the dual BPZ equation
+\begin{equation}
+  \left[
+    \partial_z^2
+    +b^{-2}\sum_{i=1}^n
+    \left(
+      \frac{h_i}{(z-z_i)^2}
+      +\frac1{z-z_i}\partial_{z_i}
+    \right)
+  \right]
+  \left\langle
+    V_{-1/(2b)}(z)\prod_{i=1}^n V_{\alpha_i}(z_i)
+  \right\rangle
+  =
+  0 ,
+  \label{eq:liouville-dual-bpz-equation}
+\end{equation}
+for separated-point correlators in any domain where the Ward identity and
+the degenerate quotient are valid.
+\end{proposition}
+
+\begin{proof}
+The Virasoro commutator calculation in the proof of
+Proposition~\ref{prop:liouville-level-two-null-vector} applies to every
+candidate \((L_{-1}^2+\kappa L_{-2})|h\rangle\).  Substituting
+\(h=h^\vee\) gives from the \(L_1\) equation
+\[
+  \kappa=-\frac{4h^\vee+2}{3}=b^{-2}.
+\]
+The remaining \(L_2\) coefficient is
+\[
+  6h^\vee+b^{-2}(4h^\vee+c/2).
+\]
+With \(c=1+6(b+b^{-1})^2\) and
+\(h^\vee=-1/2-3/(4b^2)\), this coefficient is zero.  Hence
+\eqref{eq:liouville-dual-level-two-null-vector} is a null vector in the
+degenerate quotient.  Inserting
+\((L_{-1}^2+b^{-2}L_{-2})V_{-1/(2b)}=0\) into the same stress-tensor Ward
+identity used below gives \eqref{eq:liouville-dual-bpz-equation}.  The
+restriction to separated points is the same restriction as for
+\eqref{eq:liouville-bpz-equation}; collision limits require OPE
+renormalization and meromorphic continuation.
+\end{proof}
+
 \begin{proposition}[BPZ differential equation]
 \label{prop:liouville-bpz-equation}
 Let
@@ -1104,6 +1161,13 @@ momenta,
   +
   C_-(\alpha)V_{\alpha+b/2}.
 \]
+The dual degenerate field \(V_{-1/(2b)}\) similarly shifts a generic momentum
+to \(\alpha\pm1/(2b)\) and supplies the \(b^{-1}\)-shift equation.  The two
+degenerate equations are logically separate: the first uses the null vector
+\eqref{eq:liouville-level-two-null-vector}, while the second uses
+\eqref{eq:liouville-dual-level-two-null-vector}.  Treating the second as an
+unstated symmetry argument would hide one of the hypotheses needed in the
+standard bootstrap determination of the DOZZ constant.
 Solving \eqref{eq:liouville-bpz-equation} near one puncture and matching it
 to the same equation near another puncture gives shift equations for the
 three-point structure constants.  The DOZZ constant is the meromorphic
@@ -1196,6 +1260,77 @@ strip.  Substituting \(a=-2b\alpha\) and \(c=b^2\) gives the first line of
 \(\gamma(1-x)=\gamma(x)^{-1}\),
 \(\gamma(1+b^2)=\gamma(-b^2)^{-1}\), and
 \(\gamma(1+b^2)=-b^4\gamma(b^2)\).
+\end{proof}
+
+\begin{proposition}[Dual screening computation]
+\label{prop:liouville-dual-screening-coefficient}
+Assume, as a Coulomb-gas representation of the \(b^{-1}\)-shift equation,
+that the dual screening operator \(V_{1/b}\) is available with formal
+coefficient \(\widetilde\mu\).  This is an additional bootstrap-screening
+input, not an extra term in the classical action
+\eqref{eq:liouville-classical-action}.  Normalize the no-dual-screening
+channel in
+\[
+  V_{-1/(2b)}V_\alpha
+  \sim
+  \widetilde C_+(\alpha)V_{\alpha-1/(2b)}
+  +
+  \widetilde C_-(\alpha)V_{\alpha+1/(2b)}
+\]
+by \(\widetilde C_+(\alpha)=1\).  Then the one-dual-screening coefficient is
+the meromorphic function
+\begin{equation}
+\begin{aligned}
+  \widetilde C_-(\alpha)
+  &=
+  -\pi\widetilde\mu\,
+  \gamma\!\left(1-\frac{2\alpha}{b}\right)\,
+  \gamma\!\left(1+\frac1{b^2}\right)\,
+  \gamma\!\left(\frac{2\alpha}{b}-1-\frac1{b^2}\right)
+  \\
+  &=
+  \pi\widetilde\mu\,b^{-4}\gamma(b^{-2})\,
+  \frac{
+    \gamma\!\left(\frac{2\alpha}{b}-1-\frac1{b^2}\right)}
+       {\gamma(2\alpha/b)} .
+\end{aligned}
+  \label{eq:liouville-dual-coulomb-gas-cminus}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The no-dual-screening product has charge \(\alpha-1/(2b)\) and fixes
+\(\widetilde C_+(\alpha)=1\).  The channel
+\(\alpha+1/(2b)\) requires one insertion of the dual screening
+\(V_{1/b}(w)\).  Its free contractions give
+\[
+  -\widetilde\mu\int_{\mathbb C}\dd^2 w\,
+  |z|^{2\alpha/b}\,|w-z|^{2/b^2}\,|w|^{-4\alpha/b}\,
+  V_{\alpha+1/(2b)}(0).
+\]
+After setting \(w=zu\), the \(z\)-dependent factor is
+\[
+  |z|^{2+2/b^2-2\alpha/b}
+  =
+  |z|^{2(h_{\alpha+1/(2b)}-h_\alpha-h_{-1/(2b)})},
+\]
+so the scaling power matches the dual OPE channel.  The remaining
+Dotsenko--Fateev integral is
+\[
+  -\widetilde\mu
+  \int_{\mathbb C}\dd^2u\,
+  |u|^{-4\alpha/b}|1-u|^{2/b^2}.
+\]
+Applying \eqref{eq:liouville-dotsenko-fateev-beta-integral} with
+\(a=-2\alpha/b\) and \(c=b^{-2}\) gives the first line of
+\eqref{eq:liouville-dual-coulomb-gas-cminus}.  The second line follows from
+\(\gamma(1-x)=\gamma(x)^{-1}\) and
+\(\gamma(1+b^{-2})=-b^{-4}\gamma(b^{-2})\).  The formula is therefore the
+precise \(b\leftrightarrow b^{-1}\) counterpart of
+Proposition~\ref{prop:liouville-degenerate-screening-coefficient}, with
+\(\widetilde\mu\) kept explicit because the relation between \(\mu\) and
+\(\widetilde\mu\) is part of the full bootstrap normalization, not of this
+local integral alone.
 \end{proof}
 
 \begin{proposition}[Degenerate BPZ blocks and the DOZZ \(b\)-shift]

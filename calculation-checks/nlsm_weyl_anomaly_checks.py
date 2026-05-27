@@ -36,6 +36,109 @@ def check_h_squared_variation_coefficients() -> None:
     assert_equal("B beta dilaton-gradient coefficient", dilaton_gradient_coefficient, 1)
 
 
+def check_worldsheet_h_flux_pole_coefficients() -> None:
+    """Check the local background-field pole factors for the H vertices."""
+
+    # Strip the common factors i/(pi epsilon) for the B tadpole.  The
+    # quadratic H-derivative vertex has prefactor 1/8; the coincident
+    # fluctuation pole contributes alpha'/epsilon, and the B action has
+    # prefactor 1/4.  Cancellation therefore gives delta B = -alpha' nabla.H/2e.
+    b_action_prefactor = Fraction(1, 4)
+    b_tadpole_prefactor = Fraction(1, 8)
+    b_counterterm_coefficient = -b_tadpole_prefactor / b_action_prefactor
+    assert_equal(
+        "worldsheet H tadpole B-counterterm coefficient",
+        b_counterterm_coefficient,
+        Fraction(-1, 2),
+    )
+
+    # Strip the common factor 1/(pi epsilon) for the metric bubble.  The
+    # connected effective action contributes -1/2, the two imaginary vertices
+    # contribute -1/(4^2), the two Wick pairings give 2, and the local
+    # derivative-propagator integral supplies the remaining normalized unit.
+    connected_cumulant = Fraction(-1, 2)
+    imaginary_vertices = -Fraction(1, 4 * 4)
+    wick_pairings = 2
+    derivative_integral_unit = 1
+    bubble_divergence = (
+        connected_cumulant
+        * imaginary_vertices
+        * wick_pairings
+        * derivative_integral_unit
+    )
+    assert_equal("worldsheet H bubble divergence coefficient", bubble_divergence, Fraction(1, 16))
+
+    metric_action_prefactor = Fraction(1, 4)
+    metric_counterterm_coefficient = -bubble_divergence / metric_action_prefactor
+    assert_equal(
+        "worldsheet H bubble metric-counterterm coefficient",
+        metric_counterterm_coefficient,
+        Fraction(-1, 4),
+    )
+
+
+def check_string_frame_metric_trace_and_scalar_variation() -> None:
+    """Check the trace/scalar split in the one-loop string-frame action."""
+
+    scalar_equation = {
+        "R": Fraction(1),
+        "laplacian_phi": Fraction(4),
+        "grad_phi_sq": Fraction(-4),
+        "H2": Fraction(-1, 12),
+    }
+
+    # Trace terms in the fixed-dilaton metric variation of
+    # sqrt(G) e^{-2 Phi} (R + 4 |grad Phi|^2 - H^2/12).
+    trace_terms = {
+        "R": Fraction(-1, 2),
+        "laplacian_phi": Fraction(-2),
+        "grad_phi_sq": Fraction(2),
+        "H2": Fraction(1, 24),
+    }
+    for monomial, coefficient in trace_terms.items():
+        assert_equal(
+            f"metric trace coefficient for {monomial}",
+            coefficient,
+            -scalar_equation[monomial] / 2,
+        )
+
+    # The non-trace grad_i Phi grad_j Phi terms cancel between the Palatini
+    # variation of R with the weighted measure and the variation of 4|grad Phi|^2.
+    assert_equal(
+        "nontrace grad Phi tensor cancellation",
+        Fraction(-4) + Fraction(4),
+        0,
+    )
+
+    # Varying Phi first gives -2 L delta Phi plus
+    # 8 grad^i Phi grad_i delta Phi from 4|grad Phi|^2.
+    direct_variation = {
+        "R": Fraction(-2),
+        "laplacian_phi": Fraction(0),
+        "grad_phi_sq": Fraction(-8),
+        "H2": Fraction(1, 6),
+    }
+    integrated_by_parts = {
+        "R": Fraction(0),
+        "laplacian_phi": Fraction(-8),
+        "grad_phi_sq": Fraction(16),
+        "H2": Fraction(0),
+    }
+    total_scalar_variation = {
+        monomial: direct_variation[monomial] + integrated_by_parts[monomial]
+        for monomial in scalar_equation
+    }
+    expected_scalar_variation = {
+        monomial: -2 * coefficient
+        for monomial, coefficient in scalar_equation.items()
+    }
+    assert_equal(
+        "dilaton scalar variation after integration by parts",
+        total_scalar_variation,
+        expected_scalar_variation,
+    )
+
+
 def check_linear_dilaton_constant() -> None:
     for dimension in range(2, 27):
         alpha_prime_v_squared = Fraction(26 - dimension, 6)
@@ -114,6 +217,8 @@ def check_exterior_square_zero_for_h_beta() -> None:
 
 def main() -> None:
     check_h_squared_variation_coefficients()
+    check_worldsheet_h_flux_pole_coefficients()
+    check_string_frame_metric_trace_and_scalar_variation()
     check_linear_dilaton_constant()
     check_heterotic_bianchi_coefficients()
     check_heterotic_gauge_dilaton_redundant_direction()

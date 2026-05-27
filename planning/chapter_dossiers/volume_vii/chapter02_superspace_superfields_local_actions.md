@@ -23,7 +23,13 @@
 - Off-shell closure of the chiral-multiplet component transformations.
 - Berezin integration as top-coefficient projection on the odd coordinate
   algebra.
+- Normalization of \(\theta^2=\theta^\alpha\theta_\alpha\), hence
+  \(\theta^2=2\theta^1\theta^2\) with the monograph epsilon convention, and
+  the corresponding Berezin-measure normalization.
 - \(D\)-terms, \(F\)-terms, and component Lagrangian for chiral fields.
+- Nilpotent Taylor coefficient for chiral \(F\)-terms:
+  \([W(\Phi)]_{\theta^2}=F^i\partial_iW-\frac12
+  \partial_i\partial_jW\,\psi^{i\alpha}\psi^j_\alpha\).
 - Wess--Zumino model component action, auxiliary-field elimination, and scalar
   potential derivation for canonical Kahler potential and holomorphic
   superpotential.
@@ -63,6 +69,7 @@
 | \(\Phi\) | chiral superfield |
 | \(\phi,\psi_\alpha,F\) | chiral multiplet component fields |
 | \(K\), \(W\) | Kähler potential and superpotential coordinates |
+| \([W(\Phi)]_{\theta^2}\) | top chiral coefficient selected by \(d^2\theta\) |
 | \(V\) | real vector superfield |
 | \(\Lambda\) | chiral gauge parameter for vector-superfield gauge transformations |
 | \(A_\mu,\lambda_\alpha,D\) | Wess--Zumino gauge vector-multiplet representative fields |
@@ -83,31 +90,43 @@
    the chiral-coordinate expansion; auxiliary fields make component
    supersymmetry close off shell.
 5. Berezin integration is coefficient extraction in the odd algebra.
-6. Supersymmetric local actions are built from \(D\)-term and \(F\)-term
+6. The \(\theta^2\) normalization is part of the component convention:
+   with \(\theta^2=\theta^\alpha\theta_\alpha\), the identity
+   \((\theta\psi^i)(\theta\psi^j)=-\frac12\theta^2
+   \psi^{i\alpha}\psi^j_\alpha\) gives the Yukawa coefficient
+   \(-\frac12\partial_i\partial_jW\,\psi^i\psi^j\).
+7. Supersymmetric local actions are built from \(D\)-term and \(F\)-term
    integrals under the stated convention.
-7. The Wess--Zumino model component Lagrangian is obtained by a nilpotent
+8. The Wess--Zumino model component Lagrangian is obtained by a nilpotent
    Taylor expansion of \(W(\Phi)\) and top-coefficient extraction; eliminating
    auxiliary fields gives \(V=\sum_i|\partial_i W|^2\).
-8. Wess--Zumino gauge is a local representative of a vector superfield modulo
+9. Wess--Zumino gauge is a local representative of a vector superfield modulo
    chiral gauge transformations; supersymmetry in this gauge requires a
    compensating gauge transformation and is not a gauge-invariant realization.
-9. Holomorphic and nonrenormalization statements require an explicitly
+10. Holomorphic and nonrenormalization statements require an explicitly
    defined supersymmetric Wilsonian scheme before they can be used in exact
    gauge dynamics.
-10. BV/off-shell-superfield methods can organize the symmetry-preserving
+11. BV/off-shell-superfield methods can organize the symmetry-preserving
    Wilsonian integration problem after a regulator is supplied, but do not
    themselves prove the existence of a manifest supersymmetric regulator.
-11. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
+12. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
    supersymmetric regulators require explicit loop-order or scheme-level
    consistency checks before they certify nonrenormalization or anomaly
    statements.
-12. Supersymmetric examples in dimensions other than four must not be treated
+13. Supersymmetric examples in dimensions other than four must not be treated
    as analogies: \(2D\) LG/CY/GLSM, \(3D\) Chern--Simons--matter, and \(6D\)
    SCFT examples have distinct definitions, anomaly data, extended operators,
    and nonperturbative-status ledgers.
-13. Localization formulae require a regulated localization datum; residue
+14. Localization formulae require a regulated localization datum; residue
    prescriptions and singular instanton sectors are not automatic consequences
    of formal \(Q\)-exact deformation.
+
+## Calculation Checks
+
+- `calculation-checks/susy_superspace_component_checks.py` verifies the
+  \(\theta^2\) normalization, left-derivative rule, two-spinor Grassmann
+  product identity, chiral \(F\)-term Yukawa coefficient, and auxiliary
+  \(F\)-field square completion used in this chapter.
 
 ## Figures
 

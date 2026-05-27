@@ -23,11 +23,15 @@ component formulae are the same after the parameters are moved outside the
 graded algebra, but closure signs must be translated accordingly.
 We use
 \[
-  \theta^2=\frac12\theta^\alpha\theta_\alpha,\qquad
-  \bar\theta^2=\frac12\bar\theta_{\dot\alpha}\bar\theta^{\dot\alpha},
+  \theta^2=\theta^\alpha\theta_\alpha,\qquad
+  \bar\theta^2=\bar\theta_{\dot\alpha}\bar\theta^{\dot\alpha},
   \qquad
   \epsilon\psi=\epsilon^\alpha\psi_\alpha .
 \]
+Thus, with \(\epsilon^{12}=\epsilon_{12}=1\),
+\(\theta^2=2\theta^1\theta^2\) as a top monomial.  The Berezin measure below
+is normalized against this \(\theta^2\), not against the unordered monomial
+\(\theta^1\theta^2\).
 
 \section{Superfields as Field-Variable Data}
 
@@ -188,8 +192,10 @@ The coefficient of \(1\) is
 \(\sqrt2\,\epsilon^\alpha\psi_\alpha\), giving
 \eqref{eq:chiral-delta-phi}.  The coefficient of \(\theta^\alpha\) is
 \(\sqrt2\,\delta\psi_\alpha\).  Since
-\(\partial^L\theta^2/\partial\theta^\alpha=\theta_\alpha\), the
-\(\epsilon Q\) part contributes \(\sqrt2\,\epsilon_\alpha F\), and the
+\(\partial^L\theta^2/\partial\theta^\alpha=2\theta_\alpha\), the
+\(\epsilon Q\) part contributes \(2\epsilon_\alpha F\) to the coefficient of
+\(\theta^\alpha\).  Dividing by the \(\sqrt2\) in the component expansion
+gives the displayed \(\sqrt2\,\epsilon_\alpha F\).  The
 \(\bar\epsilon\bar Q\) part contributes
 \(\ii\sqrt2\,\sigma^\mu_{\alpha\dot\alpha}\bar\epsilon^{\dot\alpha}
 \partial_\mu\phi\), giving \eqref{eq:chiral-delta-psi}.
@@ -251,6 +257,68 @@ superspace action for chiral fields has the form
 where \(K\) is a real function of superfields and \(W\) is holomorphic in the
 chiral superfields.  The \(d^4\theta\) term is a \(D\)-term; the
 \(d^2\theta\) term is an \(F\)-term.
+
+\begin{proposition}[Nilpotent Taylor coefficient of a chiral \(F\)-term]
+\label{prop:chiral-f-term-taylor-coefficient}
+Let
+\[
+  \Phi^i=\phi^i+\sqrt2\,\theta^\alpha\psi^i_\alpha+\theta^2F^i,
+  \qquad i=1,\ldots,n,
+\]
+with the \(\theta^2\) convention fixed above, and let \(W\) be holomorphic in
+the even variables \(\phi^i\).  The \(\theta^2\) coefficient of \(W(\Phi)\)
+is
+\[
+  [W(\Phi)]_{\theta^2}
+  =
+  F^i\,\partial_iW(\phi)
+  -
+  \frac12\,\partial_i\partial_jW(\phi)\,
+  \psi^{i\alpha}\psi^j_\alpha .
+  \label{eq:chiral-f-term-taylor-coefficient}
+\]
+The repeated flavor indices are summed, and
+\(\psi^{i\alpha}\psi^j_\alpha\) is symmetric in \(i,j\) because the spinor
+contraction and the odd field variables both change sign under exchange.
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+  \Xi^i=\sqrt2\,\theta^\alpha\psi^i_\alpha+\theta^2F^i .
+\]
+Since there are only two undotted \(\theta\)-coordinates, all terms of
+degree higher than two in \(\Xi\) have zero \(\theta^2\) coefficient.  Thus
+\[
+  W(\phi+\Xi)
+  =
+  W(\phi)+\partial_iW(\phi)\Xi^i
+  +\frac12\partial_i\partial_jW(\phi)\Xi^i\Xi^j
+\]
+for the purpose of extracting the \(F\)-term.  The linear term contributes
+\(\theta^2F^i\partial_iW\).  In the quadratic term the only possible
+\(\theta^2\) contribution comes from the one-\(\theta\) pieces.  The
+monograph's spinor and odd-variable conventions give the identity
+\[
+  (\theta\psi^i)(\theta\psi^j)
+  =
+  -\frac12\,\theta^2\,\psi^{i\alpha}\psi^j_\alpha .
+  \label{eq:theta-psi-product-identity}
+\]
+Therefore
+\[
+  \frac12\partial_i\partial_jW
+  \bigl(\sqrt2\,\theta\psi^i\bigr)
+  \bigl(\sqrt2\,\theta\psi^j\bigr)
+  =
+  -\frac12\theta^2
+  \partial_i\partial_jW\,
+  \psi^{i\alpha}\psi^j_\alpha .
+\]
+Combining the linear and quadratic contributions proves
+\eqref{eq:chiral-f-term-taylor-coefficient}.  No equation of motion or
+integration by parts has been used.
+\end{proof}
 
 For one chiral field with \(K=\bar\Phi\Phi\), the component expansion gives
 \[
@@ -329,21 +397,8 @@ dependence of \(\Phi\) and the conjugate
   +\bar F^{\bar i}F^i
   +\partial_\mu(\cdots).
 \]
-The total derivative is discarded in the action.  For the \(F\)-term, use
-Taylor expansion of the holomorphic function in the nilpotent increment
-\(\sqrt2\,\theta\psi+\theta^2F\):
-\[
-  W(\Phi)
-  =
-  W(\phi)
-  +\partial_iW(\phi)
-  \bigl(\sqrt2\,\theta\psi^i+\theta^2F^i\bigr)
-  +\frac12\partial_i\partial_jW(\phi)
-  \bigl(\sqrt2\,\theta\psi^i\bigr)
-  \bigl(\sqrt2\,\theta\psi^j\bigr).
-\]
-Since \(\theta^\alpha\theta^\beta\psi^i_\alpha\psi^j_\beta
-=-\frac12\theta^\rho\theta_\rho\,\psi^{i\alpha}\psi^j_\alpha\), the
+The total derivative is discarded in the action.  For the \(F\)-term, apply
+Proposition~\ref{prop:chiral-f-term-taylor-coefficient}.  Its
 \(\theta^2\) coefficient is
 \[
   F^i\partial_iW(\phi)

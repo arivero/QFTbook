@@ -17,6 +17,10 @@
 - Clean fixed locus and acyclic normal-complex Gaussian determinant as the
   local model for one-loop determinants, with zero modes separated from the
   determinant.
+- Finite normal Gaussian proposition proving that the one-loop normal factor
+  is `Pf(F)/sqrt(det A)` after splitting zero modes, and clarifying that the
+  differential block appears through a fermion-fermion antisymmetric matrix,
+  not an odd-even quadratic term.
 - Regulated QFT localization datum:
   \((\mathfrak F_\Lambda,C_\Lambda,\mu_\Lambda,S_\Lambda,Q_\Lambda,V_\Lambda)\).
 - \(S^4\) \(\mathcal N=2\) localization variables, \(Q^2\) datum, bulk
@@ -44,6 +48,9 @@
 | \(V\) | odd localizing functional |
 | \(C_\Lambda\) | regulated integration cycle |
 | \(N_F^\bullet\) | normal \(\mathbb Z_2\)-graded complex at a clean fixed locus |
+| \(A\) | bosonic Hessian in the finite normal localization model |
+| \(\mathsf F\) | antisymmetric fermionic quadratic form in the normal model |
+| \(D\) | differential block whose orientation-dependent Pfaffian is \(\pm\det D\) |
 | \(\mathfrak t\) | Cartan algebra of the compact gauge group |
 | \(W_G\) | Weyl group |
 | \(\Delta,\Delta_+\) | root system and positive roots |
@@ -63,8 +70,9 @@
 1. The \(Q\)-exact deformation identity follows by differentiating under the
    integral and applying \(Q\)-Stokes with the declared boundary condition.
 2. Normal one-loop factors are finite-dimensional Berezin Gaussian
-   determinants of the acyclic normal \(Q\)-complex; zero modes must be split
-   off before taking the determinant.
+   determinants of the acyclic normal \(Q\)-complex; the finite normal model
+   gives \(\operatorname{Pf}\mathsf F/\sqrt{\det A}\), and zero modes must be
+   split off before taking the determinant.
 3. Infinite-dimensional localization formulae require a regulated
    localization datum; residue and compactification prescriptions are part of
    that datum.
@@ -96,10 +104,11 @@
 
 - `calculation-checks/susy_localization_matrix_checks.py` verifies the
   trace-delta \(S^4\) Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian
-  integral, the \(S^4\) \(H\)-function finite-product logarithmic derivative,
-  finite double-sine reflection and chiral pole conventions, the \(U(1)_k\)
-  \(S^3\) Fresnel completing-square identity, and the round-\(S^3\)
-  conjugate-chiral-pair integral.
+  integral, the finite normal Gaussian Pfaffian/determinant convention and
+  zero-mode detection, the \(S^4\) \(H\)-function finite-product logarithmic
+  derivative, finite double-sine reflection and chiral pole conventions, the
+  \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
+  round-\(S^3\) conjugate-chiral-pair integral.
 
 ## Source Notes
 
