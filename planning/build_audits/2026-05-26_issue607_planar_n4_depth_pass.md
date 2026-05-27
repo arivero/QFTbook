@@ -1006,3 +1006,42 @@ Calculation checks added:
 - `check_qsc_small_spin_bessel_slope()` verifies the Bessel recurrence and
   the first two exact rational coefficients of
   `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.
+
+## Continuation XXXIV: BES Zhukovsky Fourier Transform
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Source/standard motivation:
+
+- The stringbook BES derivation uses the signed transform
+  `J_m(2 g t)/t` in the Fourier image of `1/(x^pm)^m`.  Chapter 13 had
+  recorded the identity without proof and had rewritten the Bessel ratio with
+  absolute values, which erases the lower-branch parity sign for even `m`.
+  Since this transform feeds the large-spin ABA-to-BES bridge, it is exactly
+  the sort of analytic-continuation step that needs derivation rather than
+  citation.
+
+Content added:
+
+- Added a proposition proving the Zhukovsky Fourier transform for the
+  physical outside branch `x(z)+x(z)^-1=z/g`, with `x^pm(u)=x(u+-i/2)`.
+- Derived the upper-branch support by shifting to `R+i/2`, closing the
+  contour according to the sign of `t`, mapping the crossed short-cut loop to
+  `|x|=1`, and using the Bessel generating function for
+  `exp[-i g t (x+x^-1)]`.
+- Used the recurrence `J_{m-1}(z)+J_{m+1}(z)=2m J_m(z)/z` to obtain the
+  factor `(-i)^m m J_m(2gt)/t`, then derived the lower-branch transform by
+  complex conjugation and `J_m(-z)=(-1)^m J_m(z)`.
+- Stated explicitly that the signed `t` ratio is part of the convention and
+  must not be replaced by the absolute-value ratio with the same lower-sign
+  prefactor.
+
+Calculation checks added:
+
+- `check_bes_zhukovsky_fourier_transform_signs()` verifies the exact Bessel
+  recurrence, the upper-contour phase, the lower-branch signed-`t` phase, and
+  the even-`m` failure mode of the absolute-value rewrite.

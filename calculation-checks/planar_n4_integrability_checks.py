@@ -1054,6 +1054,54 @@ def check_sl2_large_spin_cusp_resolvent() -> None:
         )
 
 
+def check_bes_zhukovsky_fourier_transform_signs() -> None:
+    """Check the signed-t Bessel convention in the BES Fourier transform."""
+
+    def bessel_j_series(order: int, max_degree: int) -> dict[int, Fraction]:
+        series: dict[int, Fraction] = {}
+        if order > max_degree:
+            return series
+        for index in range((max_degree - order) // 2 + 1):
+            degree = order + 2 * index
+            coefficient = Fraction(
+                (-1) ** index,
+                (2**degree)
+                * math.factorial(index)
+                * math.factorial(index + order),
+            )
+            series[degree] = coefficient
+        return series
+
+    max_degree = 16
+    for order in range(1, 8):
+        j_minus = bessel_j_series(order - 1, max_degree)
+        j_order = bessel_j_series(order, max_degree)
+        j_plus = bessel_j_series(order + 1, max_degree)
+        recurrence_lhs = {
+            degree: j_minus.get(degree, 0) + j_plus.get(degree, 0)
+            for degree in set(j_minus) | set(j_plus)
+        }
+        recurrence_rhs = {
+            degree - 1: 2 * order * coefficient
+            for degree, coefficient in j_order.items()
+        }
+        for degree in range(max_degree):
+            if recurrence_lhs.get(degree, 0) != recurrence_rhs.get(degree, 0):
+                raise AssertionError(f"BES Fourier Bessel recurrence failed for m={order}")
+
+        plus_cut_phase = -1j * ((-1j) ** (order - 1))
+        if abs(plus_cut_phase - (-1j) ** order) > 0:
+            raise AssertionError(f"BES x+ contour phase failed for m={order}")
+
+        lower_signed_t_phase = ((-1) ** order) * ((-1j) ** order)
+        if abs(lower_signed_t_phase - (1j) ** order) > 0:
+            raise AssertionError(f"BES x- signed-t phase failed for m={order}")
+
+        lower_abs_t_phase = -((-1j) ** order)
+        if order % 2 == 0 and abs(lower_abs_t_phase - lower_signed_t_phase) == 0:
+            raise AssertionError("absolute-value lower transform failed to expose parity sign")
+
+
 def check_bes_weak_scaling_function() -> None:
     """Check the weak BES scaling-function expansion through g^6."""
 
@@ -2861,6 +2909,7 @@ def main() -> None:
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
+    check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()

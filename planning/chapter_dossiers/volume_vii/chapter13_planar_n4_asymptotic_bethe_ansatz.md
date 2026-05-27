@@ -41,6 +41,8 @@ the monograph's proof-boundary language.
   large-spin `SL(2)` root distribution.
 - `K_0,K_dr,K_BES`: rational, dressing, and total BES kernels entering the
   large-spin scaling equation.
+- `J_m`: Bessel function entering the signed-`t` Zhukovsky Fourier transform
+  for `1/(x^pm)^m`.
 
 ## Claim Ledger
 
@@ -133,8 +135,11 @@ the monograph's proof-boundary language.
 - Adds the all-loop large-spin BES bridge from the `SL(2)` ABA: states the
   fixed-twist/large-spin assumptions, defines the inner-density fluctuation
   `hat sigma(t)`, gives the rational and dressing BES kernels in the
-  stringbook convention, records the branch-sensitive Fourier transform of
+  stringbook convention, proves the branch-sensitive Fourier transform of
   `1/(x^pm)^m`, and derives the BES integral equation for `hat sigma`.
+- Corrects the Fourier-transform convention to keep the stringbook signed
+  ratio `J_m(2gt)/t`; writing it as `J_m(2g|t|)/|t|` with the same lower
+  sign loses the parity factor in the `x^-` transform.
 - Defines the monograph scaling-function normalization
   `Delta-S-L=f(g) log S+O(S^0)` and derives
   `f(g)=8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45+O(g^8)` from the BES equation,
@@ -189,6 +194,10 @@ crossed Zhukovsky sheets.
   square-root branch normalization, derivative formula, discontinuity and
   positivity of the density, and extraction of the `8g^2 log S` term with
   the constant `4g^2 log 4`.
+- It checks the signed-`t` Zhukovsky Fourier transform used in the BES
+  bridge: exact Bessel recurrence, contour phase for the upper branch, lower
+  branch conjugation, and the even-`m` parity failure of the absolute-value
+  rewrite.
 - It checks the weak BES scaling-function expansion: the `sigma_0` and
   `sigma_1` density coefficients, the Bose-integral coefficients
   `A_0=pi^2/24` and `A_1=-11 pi^4/360`, the resulting

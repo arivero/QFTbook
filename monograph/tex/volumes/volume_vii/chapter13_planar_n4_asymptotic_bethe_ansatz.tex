@@ -1422,17 +1422,94 @@ where \(c_{r,s}(g)=-c_{s,r}(g)\) for \(r>s\).  The BES kernel used below is
 \end{definition}
 
 The Fourier transform which turns powers of \(x^\pm(u)^{-1}\) into Bessel
-functions is the convention-sensitive step.  On the physical weak branch,
-with \(m\geq1\),
+functions is the convention-sensitive step.  We spell it out because replacing
+the signed ratio \(J_m(2gt)/t\) by \(J_m(2g|t|)/|t|\) loses a parity sign in
+the lower half-plane transform.
+
+\begin{proposition}[Zhukovsky Fourier transform]
+\label{prop:planar-n4-bes-fourier-xpm}
+Let \(g>0\), let \(m\in\mathbb Z_{>0}\), and let \(x(z)\) be the physical
+outside branch of
+\[
+  x(z)+x(z)^{-1}=\frac{z}{g},
+  \qquad x(z)\sim \frac{z}{g}\quad (z\to\infty),
+\]
+with short cut \([-2g,2g]\).  Put
+\[
+  x^\pm(u)=x(u\pm \ii/2),
+  \qquad u\in\mathbb R .
+\]
+For \(t\neq0\), with \(\Theta(t)=1\) for \(t>0\) and \(0\) for \(t<0\),
+the oscillatory Fourier transform is
 \begin{equation}
   \int_{-\infty}^{\infty}\frac{\dd u}{2\pi}\,
   \ee^{-\ii t u}\frac1{x^\pm(u)^m}
   =
   (-\ii)^m m\,\ee^{-|t|/2}\,
-  \frac{\pm\Theta(\pm t)J_m(2g|t|)}{|t|}.
+  \frac{\pm\Theta(\pm t)J_m(2gt)}{t}.
   \label{eq:planar-n4-bes-fourier-xpm}
 \end{equation}
-The signs in \eqref{eq:planar-n4-bes-fourier-xpm} encode the same
+Here the upper sign is used for \(x^+\), the lower sign for \(x^-\), and
+\(J_m\) is the Bessel function of the first kind.
+\end{proposition}
+
+\begin{proof}
+For the \(x^+\) transform set \(z=u+\ii/2\).  Then
+\[
+  \ee^{-\ii t u}=\ee^{-t/2}\ee^{-\ii t z},
+\]
+and the integration line is \(\mathbb R+\ii/2\).  If \(t<0\), this line is
+closed in the upper half-plane and no cut is crossed, so the integral
+vanishes.  If \(t>0\), close in the lower half-plane.  The deformation crosses
+the Zhukovsky cut and gives the negatively oriented loop around it.  Using
+\(z=g(x+x^{-1})\) on this loop, with \(x\) running around \(|x|=1\), gives
+\[
+  I_m^+(t)
+  =
+  -\ee^{-t/2}\oint_{|x|=1}\frac{\dd x}{2\pi}\,
+  g(1-x^{-2})x^{-m}\ee^{-\ii gt(x+x^{-1})}.
+\]
+The generating function
+\[
+  \ee^{-\ii gt(x+x^{-1})}
+  =
+  \sum_{n\in\mathbb Z}(-\ii)^nJ_n(2gt)x^n
+\]
+therefore yields
+\[
+  I_m^+(t)
+  =
+  -\ii g\ee^{-t/2}
+  \left[(-\ii)^{m-1}J_{m-1}(2gt)
+        -(-\ii)^{m+1}J_{m+1}(2gt)\right].
+\]
+Since \((-\ii)^{m+1}=-(-\ii)^{m-1}\), and
+\[
+  J_{m-1}(z)+J_{m+1}(z)=\frac{2m}{z}J_m(z),
+\]
+this becomes
+\[
+  I_m^+(t)=(-\ii)^m m\,\ee^{-t/2}\frac{J_m(2gt)}{t},
+  \qquad t>0.
+\]
+Together with the vanishing for \(t<0\), this proves the upper-sign formula.
+
+For real \(u\), the lower shifted branch satisfies
+\[
+  x^-(u)=\overline{x^+(u)}.
+\]
+Hence
+\[
+  I_m^-(t)=\overline{I_m^+(-t)}.
+\]
+Applying the upper-sign result to \(-t>0\) and using
+\(J_m(-z)=(-1)^mJ_m(z)\) gives the lower-sign formula in
+\eqref{eq:planar-n4-bes-fourier-xpm}.  The factor \(J_m(2gt)/t\), with
+signed \(t\), is therefore part of the convention rather than a cosmetic
+choice.
+\end{proof}
+
+The signs in Proposition~\ref{prop:planar-n4-bes-fourier-xpm} encode the same
 \(x^+\)-above, \(x^-\)-below sheet convention as the mirror continuation in
 Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.  Reversing them would invert
 the dressing-source contribution.
