@@ -1914,11 +1914,51 @@ Reading off the coefficients of
 \eqref{eq:buscher-g0i-b0i}--\eqref{eq:buscher-bij}.
 
 The functional determinant from the Gaussian integral over \(A_\pm\) is
-proportional to \((\det G_{00})^{-1/2}\) at each worldsheet point in a
-covariant regulator.  Coupling this local factor to the worldsheet curvature
-is equivalent to shifting the dilaton by
-\eqref{eq:buscher-dilaton-shift}.  This last step is where the path-integral
-measure, rather than only the classical action, enters the Buscher rules.
+the only remaining convention-sensitive point.  A gauge-invariant cell
+regularization makes its coefficient transparent.  First take \(G_{00}\) to
+be constant and choose a finite cell decomposition of the closed worldsheet
+with \(N_0\) vertices, \(N_1\) edges, and \(N_2\) faces.  Put the gauged
+field \(A\) on edges, the gauge parameter on vertices, and the dual scalar
+\(\widetilde X^0\) on faces.  Normalize the scalar and gauge-parameter
+measures by the \(L^2\) norm induced by \(G_{00}\), and normalize the dual
+scalar measure by the dual metric \(G'_{00}=G_{00}^{-1}\).  Ignoring only
+zero modes and holonomy sums, which do not change the local coefficient of
+\(\log G_{00}\), the \(G_{00}\)-dependent factors in the finite-dimensional
+Gaussian are:
+\[
+  \underbrace{(G_{00})^{-N_1/2}}_{A\text{-edge Gaussian}}
+  \underbrace{(G_{00})^{N_0/2}}_{\text{gauge normalization}}
+  \underbrace{(G_{00})^{N_2/2}}_{\text{dual scalar measure}} .
+\]
+The product is
+\begin{equation}
+  (G_{00})^{(N_0-N_1+N_2)/2}
+  =
+  (G_{00})^{\chi(\Sigma)/2}.
+  \label{eq:buscher-cell-determinant-euler-factor}
+\end{equation}
+This is the finite-dimensional origin of the half coefficient; it is not a
+choice that can be read from the classical saddle alone.
+
+For slowly varying \(G_{00}(X^i)\), locality of the ultraviolet regulator
+promotes the constant factor
+\eqref{eq:buscher-cell-determinant-euler-factor} to the local curvature
+counterterm
+\[
+  \exp\!\left[
+    \frac1{8\pi}
+    \int_\Sigma\sqrt\gamma\,R_\gamma\,\log G_{00}(X)
+  \right],
+\]
+up to terms with derivatives of \(G_{00}\) that belong to the same
+higher-derivative \(\alpha'\)-scheme choice as the other Buscher covariance
+corrections.  Since the dilaton coupling in
+\eqref{eq:nlsm-euclidean-action-representative} contributes
+\(\exp[-(4\pi)^{-1}\int\sqrt\gamma\,R_\gamma\Phi]\) to the path integral,
+this local determinant factor is exactly equivalent to
+\eqref{eq:buscher-dilaton-shift}.  This last step is where the
+path-integral measure, rather than only the classical action, enters the
+Buscher rules.
 \end{proof}
 
 \begin{proposition}[Involutivity]

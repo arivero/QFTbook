@@ -105,7 +105,9 @@
   positive \(d\)-planes and formulates \(T\)-duality as an isomorphism of
   exact CFT data.
 - Derives the Buscher rules by gauging a circle isometry, integrating out the
-  gauge fields, and tracking the Gaussian determinant dilaton shift.
+  gauge fields, and tracking the Gaussian determinant dilaton shift, including
+  a finite cell-regulator ledger whose `N_0-N_1+N_2` exponent gives the
+  Euler-characteristic half coefficient.
 - Proves Buscher involutivity and states beta-function covariance as an
   order-by-order perturbative statement, not a nonperturbative theorem.
 - Defines the compact simply connected WZW action using the integral
@@ -212,7 +214,10 @@
    `d lambda/d log mu = -(n-1) lambda^2 (sigma + lambda)`, modulo the stated
    higher-loop remainder.
 16. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
-   are involutive with the dilaton shift.
+   are involutive with the dilaton shift; the cell-regulated gauge-field
+   Gaussian, gauge-volume normalization, and dual-scalar measure give the
+   net factor `(G_00)^{chi(Sigma)/2}`, equivalent to
+   `Phi -> Phi - log(G_00)/2`.
 17. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
    integer spin gives \(k\circ k\in2\mathbb Z\).
 18. The explicit cocycle
@@ -366,6 +371,7 @@
   normalization, and Ricci-counterterm sign.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
+  cell-regulated Euler-characteristic determinant ledger, plus the
   constant-curvature specialization of the two-loop metric coefficient and
   radius/coupling beta functions for spherical and hyperbolic signs.
 - `calculation-checks/nlsm_weyl_anomaly_checks.py` verifies the rational

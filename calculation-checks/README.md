@@ -469,8 +469,10 @@ Current checks:
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift
-  involution, the constant-curvature two-loop \(R_{ik\ell m}R_j{}^{k\ell m}\)
-  coefficient, and the spherical/hyperbolic radius-flow beta functions.
+  involution, the cell-regulated Euler-characteristic ledger for the
+  Buscher determinant, the constant-curvature two-loop
+  \(R_{ik\ell m}R_j{}^{k\ell m}\) coefficient, and the
+  spherical/hyperbolic radius-flow beta functions.
 - `nlsm_scheme_redefinition_checks.py`: finite polynomial checks for the
   NLSM finite-scheme-redefinition law
   \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
