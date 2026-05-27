@@ -1428,3 +1428,34 @@ Calculation checks added:
   simple-pole derivative formula, verifies cancellation of radicals in the
   contour sum, and compares the result with the displayed per-charge summand
   for the first four mirror charges.
+
+## Continuation XLVI: Stringbook Integrability Crosswalk
+
+Substantive files edited:
+
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Source/standard motivation:
+
+- The user identified incorporation and expansion of the two stringbook
+  integrability chapters as the floor requirement for the monograph's planar
+  integrability component.  A precise crosswalk is needed before any honest
+  claim of completion can be made.
+
+Content added:
+
+- Added a working ledger mapping the two stringbook integrability chapters and
+  the relevant stringbook notebooks to Chapters 12--15 of the monograph.
+- Introduced explicit status categories: `Expanded`, `Boundary`, `Partial`,
+  `Context`, and `Open`.
+- Recorded which topics are already derivation-grade and checked, and which
+  topics still block certification: global `su(2|2)` S-matrix derivation,
+  dressing/crossing analytic continuation, full mirror-TBA kernel/source
+  inventory, global QSC reconstruction assumptions, notebook-to-companion-code
+  migration, and strong-coupling/small-spin QSC development.
+
+Calculation checks added:
+
+- No new calculation check was added in this bookkeeping pass.  The crosswalk
+  identifies the next calculation-check migrations required from the
+  stringbook notebooks.
