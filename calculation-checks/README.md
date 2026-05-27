@@ -308,9 +308,12 @@ Current checks:
   minimal-model and Ising BPZ-block material, including Kac-table
   identifications, Ising and tricritical-Ising weights, the A-series
   minimal-model \(S\)-matrix, \(S^2\), Verlinde integrality, agreement with
-  the exact \(SU(2)\)-quotient fusion rule, the level-two Gram determinant
-  and null vector, the Ising spin-field BPZ differential equation, and the
-  crossing matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
+  the exact \(SU(2)\)-quotient fusion rule, the Coulomb-gas background-charge
+  convention, screening dimensions, Kac weights, charge reflection modulo the
+  unitary null charge relation, the Euler beta integral used in the
+  one-screening Dotsenko--Fateev block, the level-two Gram determinant and
+  null vector, the Ising spin-field BPZ differential equation, and the crossing
+  matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
 - `conformal_block_companion.py`: reusable numerical companion routines for
   OPE-normalized global scalar conformal blocks in the chapter conventions,
   using the Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\),

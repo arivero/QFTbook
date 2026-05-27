@@ -55,6 +55,63 @@ def h_minimal(m: int, r: int, s: int) -> Fraction:
     return Fraction(numerator, denominator)
 
 
+Charge = tuple[Fraction, Fraction]
+
+
+def charge_dot(m: int, left: Charge, right: Charge) -> Fraction:
+    """Product of (a alpha_+ + b alpha_-) and (c alpha_+ + d alpha_-)."""
+
+    a, b = left
+    c, d = right
+    alpha_plus_squared = Fraction(2 * (m + 1), m)
+    alpha_minus_squared = Fraction(2 * m, m + 1)
+    alpha_product = Fraction(-2)
+    return (
+        a * c * alpha_plus_squared
+        + b * d * alpha_minus_squared
+        + (a * d + b * c) * alpha_product
+    )
+
+
+def charge_add(left: Charge, right: Charge) -> Charge:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def charge_sub(left: Charge, right: Charge) -> Charge:
+    return (left[0] - right[0], left[1] - right[1])
+
+
+def charge_scale(scalar: Fraction, charge: Charge) -> Charge:
+    return (scalar * charge[0], scalar * charge[1])
+
+
+def alpha_zero_charge() -> Charge:
+    return (Fraction(1, 2), Fraction(1, 2))
+
+
+def alpha_kac_charge(r: int, s: int) -> Charge:
+    return (Fraction(1 - r, 2), Fraction(1 - s, 2))
+
+
+def coulomb_gas_central_charge(m: int) -> Fraction:
+    alpha_zero_squared = charge_dot(m, alpha_zero_charge(), alpha_zero_charge())
+    return Fraction(1) - 12 * alpha_zero_squared
+
+
+def coulomb_gas_weight(m: int, charge: Charge) -> Fraction:
+    shifted = charge_sub(charge, charge_scale(Fraction(2), alpha_zero_charge()))
+    return Fraction(1, 2) * charge_dot(m, charge, shifted)
+
+
+def charge_is_null_in_unitary_model(m: int, charge: Charge) -> bool:
+    # The unitary relation is m alpha_+ + (m+1) alpha_- = 0.
+    return (m + 1) * charge[0] == m * charge[1]
+
+
+def euler_beta_for_nonnegative_integers(a: int, b: int) -> Fraction:
+    return Fraction(math.factorial(a) * math.factorial(b), math.factorial(a + b + 1))
+
+
 def triangular_labels(m: int) -> list[tuple[int, int]]:
     return [(r, s) for r in range(1, m) for s in range(1, r + 1)]
 
@@ -243,6 +300,62 @@ def check_unitary_minimal_kac_tables() -> None:
                 )
 
 
+def check_coulomb_gas_minimal_model_conventions() -> None:
+    for m in range(3, 12):
+        assert_equal(
+            f"Coulomb-gas central charge m={m}",
+            coulomb_gas_central_charge(m),
+            c_minimal(m),
+        )
+        assert_equal(
+            f"alpha_+ screening weight m={m}",
+            coulomb_gas_weight(m, (Fraction(1), Fraction(0))),
+            Fraction(1),
+        )
+        assert_equal(
+            f"alpha_- screening weight m={m}",
+            coulomb_gas_weight(m, (Fraction(0), Fraction(1))),
+            Fraction(1),
+        )
+        assert_equal(
+            f"unitary null charge relation m={m}",
+            charge_dot(m, (Fraction(m), Fraction(m + 1)), (Fraction(1), Fraction(0))),
+            Fraction(0),
+        )
+        for r in range(1, m):
+            for s in range(1, m + 1):
+                charge = alpha_kac_charge(r, s)
+                assert_equal(
+                    f"Coulomb-gas Kac weight m={m} r={r} s={s}",
+                    coulomb_gas_weight(m, charge),
+                    h_minimal(m, r, s),
+                )
+                reflected = alpha_kac_charge(m - r, m + 1 - s)
+                conjugate = charge_sub(charge_scale(Fraction(2), alpha_zero_charge()), charge)
+                assert_equal(
+                    f"Coulomb-gas reflected charge has same weight m={m} r={r} s={s}",
+                    coulomb_gas_weight(m, reflected),
+                    coulomb_gas_weight(m, charge),
+                )
+                assert_equal(
+                    f"Coulomb-gas reflected charge equals conjugate modulo null relation m={m} r={r} s={s}",
+                    charge_is_null_in_unitary_model(m, charge_sub(reflected, conjugate)),
+                    True,
+                )
+
+    for a in range(0, 7):
+        for b in range(0, 7):
+            direct_sum = sum(
+                Fraction(math.comb(a, k) * (-1) ** k, b + k + 1)
+                for k in range(a + 1)
+            )
+            assert_equal(
+                f"Euler beta integer integral A={a} B={b}",
+                direct_sum,
+                euler_beta_for_nonnegative_integers(a, b),
+            )
+
+
 def gram_level_two(c: Fraction, h: Fraction) -> list[list[Fraction]]:
     return [
         [4 * h + c / 2, 6 * h],
@@ -368,6 +481,7 @@ def check_ising_crossing_matrix_fixes_sigma_sigma_epsilon() -> None:
 def main() -> None:
     check_unitary_minimal_kac_tables()
     check_unitary_minimal_modular_data_and_fusion()
+    check_coulomb_gas_minimal_model_conventions()
     check_level_two_ising_sigma_null_vector()
     check_ising_sigma_bpz_block_solutions()
     check_ising_crossing_matrix_fixes_sigma_sigma_epsilon()
