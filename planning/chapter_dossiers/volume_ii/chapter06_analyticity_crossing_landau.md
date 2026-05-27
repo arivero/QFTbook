@@ -65,6 +65,7 @@
 | Dyson-regular commutator | causal commutator whose Fourier transform is the \(p_1=p_2=0\) restriction of a rotationally invariant six-dimensional wave-equation solution with well-defined Cauchy data |
 | \(\mathcal H\Psi\) | Dyson hyperboloid transform pairing \(\Psi(u,\mu)\) with \(\varepsilon(q^0-u^0)\delta((q-u)^2+\mu^2)\) |
 | support-pruned Dyson data | representative of the Dyson Cauchy-data class, modulo \(\ker\mathcal H\), supported in \(S_R\) for a specified coincidence slab |
+| axis trace | restriction \(F(q,p_1,p_2)|_{p_1=p_2=0}\) of a six-dimensional Dyson lift |
 | \(\Psi(u,\mu)\) | distributional Dyson weight in the causal-commutator representation |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
 | \(\alpha_i\) | Feynman parameters for internal lines |
@@ -193,6 +194,12 @@
   \]
   This isolates the classical Jost--Lehmann support-removal step as a
   theorem-level input for the physical LSZ source-current kernels.
+- Codimension-two trace nonuniqueness: there is a nonzero smooth tempered
+  \(O(2)\)-invariant solution of the six-dimensional wave equation whose
+  auxiliary-momentum trace \(F(q,0,0)\) vanishes on a slab.  The construction
+  uses smooth radial \(1+2\)-dimensional wave data supported away from the
+  auxiliary axis and proves the needed finite-propagation statement from the
+  local energy identity.
 - Six-dimensional wave-equation Cauchy formula: if
   \(F\in\mathcal S'(\mathbb R^{1,5})\) solves
   \(\Box_{1,5}F=0\) and has tempered Cauchy traces
@@ -299,9 +306,12 @@
   mostly-plus mass hyperboloids.  A later tightening pass separated the
   admissible-hyperboloid support restriction from slab vanishing: the
   support-restricted representation now requires support-pruned Dyson data
-  relative to the slab.  Remaining fixed-\(t\) closure work includes proving
-  Dyson regularity and support-pruning for the LSZ source-current matrix
-  coefficients, the Bros--Epstein--Glaser analytic completion, and the
+  relative to the slab.  The same pass adds an explicit wave-equation example
+  proving that vanishing of the \(p=0\) trace on a slab is not enough to
+  determine or prune the six-dimensional data.  Remaining fixed-\(t\)
+  closure work includes proving Dyson regularity and support-pruning for the
+  LSZ source-current matrix coefficients, the Bros--Epstein--Glaser analytic
+  completion, and the
   off-shell normal-coordinate and large-contour growth hypotheses needed to
   apply the LSZ-transfer and finite-subtraction Cauchy theorems of Volume II,
   Chapter 7.

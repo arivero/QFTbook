@@ -478,4 +478,7 @@ hypotheses:
   separates the support-pruned Dyson datum from the proved spectral vanishing
   in a coincidence slab.  This prevents the fixed-\(t\) proof stack from
   treating the hard Jost--Lehmann support-removal step as a consequence of
-  \(\widehat C=0\) on \(R\) alone.
+  \(\widehat C=0\) on \(R\) alone.  The same pass proves an explicit
+  codimension-two trace nonuniqueness example for the six-dimensional wave
+  equation, so the remaining support-pruning theorem is not merely a
+  bookkeeping refinement.

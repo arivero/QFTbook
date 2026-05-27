@@ -31,6 +31,12 @@ inside the monograph, not left as literature imports.
     \(S_R\)-support restriction needed in a coincidence slab.  The support
     pruning is now an explicit theorem obligation, not an inference from
     \(\widehat C=0\) on \(R\) alone.
+  - `prop:dyson-axis-trace-nonuniqueness`, proving by an explicit
+    \(1+2\)-dimensional finite-propagation construction that a nonzero
+    rotationally invariant six-dimensional wave-equation solution can have
+    zero auxiliary-momentum trace on a slab.  This gives a concrete reason
+    the \(p=0\) trace vanishing cannot replace the missing support-pruning
+    theorem.
   - `thm:dyson-causal-commutator-representation`, proving the
     Dyson/Jost--Lehmann hyperboloid representation for a Dyson-regular
     causal commutator distribution, with the \(S_R\)-support-restricted
@@ -127,7 +133,9 @@ commutators, with the light-cone lift regularity no longer hidden in notation.
 The \(S_R\)-support-restricted form used for the coincidence-slab enlargement
 has been made conditional on support-pruned Dyson data; this is a genuine
 remaining source-current theorem obligation, not a consequence of slab
-vanishing alone.  The microlocal
+vanishing alone.  A new trace-nonuniqueness proposition gives an explicit
+finite-propagation wave-equation example showing why the codimension-two
+trace condition is too weak.  The microlocal
 criterion now explains exactly where the naive light-cone product is valid
 and where renormalized lift data must be supplied.  The finite-scaling-degree
 extension theorem now makes the local extension/contact-polynomial mechanism

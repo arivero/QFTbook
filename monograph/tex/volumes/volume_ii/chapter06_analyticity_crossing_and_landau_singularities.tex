@@ -827,6 +827,93 @@ reconstruct the same six-dimensional wave solution by
 Proposition~\ref{prop:six-dimensional-distributional-cauchy-formula}.
 \end{definition}
 
+\begin{proposition}[Axis trace nonuniqueness]
+\label{prop:dyson-axis-trace-nonuniqueness}
+Let the six-dimensional wave operator be written in affine coordinates
+\[
+  Y=(\tau,\xi,p)\in\mathbb R_\tau\times\mathbb R^3_\xi\times\mathbb R^2_p,
+  \qquad
+  \Box_{1,5}=\partial_\tau^2-\Delta_\xi-\Delta_p .
+\]
+There exists a nonzero \(O(2)\)-invariant tempered smooth solution
+\[
+  F\in C^\infty(\mathbb R^{1,5})
+\]
+of \(\Box_{1,5}F=0\) such that
+\[
+  F(\tau,\xi,0)=0
+  \qquad
+  \text{for } |\tau|<1,\ \xi\in\mathbb R^3 .
+  \label{eq:axis-trace-vanishing-example}
+\]
+Thus vanishing of the auxiliary-momentum trace on a coincidence slab does not
+by itself imply that the six-dimensional Cauchy data vanish in the region of
+Cauchy-data space whose hyperboloids meet that slab.
+\end{proposition}
+
+\begin{proof}
+Choose a nonzero function
+\[
+  a\in C_c^\infty((2,3))
+\]
+and define radial Cauchy data on the auxiliary \(p\)-plane by
+\[
+  f(p)=a(|p|),
+  \qquad
+  g(p)=0 .
+\]
+Let \(F_0(\tau,p)\) be the solution of the \(1+2\)-dimensional wave equation
+\[
+  (\partial_\tau^2-\Delta_p)F_0=0,
+  \qquad
+  F_0(0,p)=f(p),\qquad
+  \partial_\tau F_0(0,p)=g(p).
+\]
+The Cauchy problem with smooth compactly supported data has a unique smooth
+solution, obtained for instance by Fourier transform in \(p\).  Rotational
+invariance of the operator and uniqueness imply that \(F_0(\tau,p)\) is
+\(O(2)\)-invariant.  The finite-propagation estimate follows from the local
+energy identity.  For a solution \(u\) of
+\((\partial_\tau^2-\Delta_p)u=0\), the stress tensor
+\[
+  e=\frac12\bigl((\partial_\tau u)^2+|\nabla_pu|^2\bigr),
+  \qquad
+  j=-\partial_\tau u\,\nabla_pu
+\]
+satisfies \(\partial_\tau e+\nabla_p\cdot j=0\).  Integrating this identity
+over a truncated backward cone with vertex \((\tau_0,p_0)\) gives
+\[
+  E(s_2)+\int_{\text{null side}}\frac12
+  \bigl(\partial_\tau u+\hat n\cdot\nabla_pu\bigr)^2\,\dd\sigma
+  =
+  E(s_1),
+\]
+where \(E(s)\) is the energy on the disk
+\(|p-p_0|\le \tau_0-s\) at time \(s\) and \(\hat n\) is the outward radial
+unit vector on the side of the cone.  The side flux is nonnegative, so zero
+Cauchy data on the base disk force \(u\) to vanish in the cone.  Hence the
+value at \((\tau,p_0)\) depends only on the data in
+\[
+  \{p\in\mathbb R^2: |p-p_0|\le |\tau|\}.
+\]
+For \(p_0=0\) and \(|\tau|<1\), this disk is disjoint from
+\(\operatorname{supp}f\subset\{|p|>2\}\) and from
+\(\operatorname{supp}g\).  Hence \(F_0(\tau,0)=0\) for \(|\tau|<1\).
+On the other hand \(F_0(0,p)=a(|p|)\) is not identically zero.
+
+Define
+\[
+  F(\tau,\xi,p)=F_0(\tau,p).
+\]
+Then \(F\) is independent of \(\xi\), solves
+\(\partial_\tau^2F-\Delta_\xi F-\Delta_pF=0\), is \(O(2)\)-invariant in
+the auxiliary variables, and satisfies
+\eqref{eq:axis-trace-vanishing-example}.  Since \(F_0\) is smooth and has at
+most polynomial growth as a distribution under the Fourier-transform solution
+formula, its pullback constant in \(\xi\) is tempered on
+\(\mathbb R^{1,5}\).  This proves the claim.
+\end{proof}
+
 \begin{definition}[Dyson regularity modulo contact terms]
 \label{def:dyson-regular-modulo-contact}
 A causal commutator \(C\in\mathcal S'(\mathbb M^4)\) is Dyson-regular
