@@ -2055,7 +2055,7 @@ patches.
 \begin{proposition}[Quantization of the WZW level]
 \label{prop:wzw-level-quantization}
 The exponent \(\exp(-S_k[g])\) is independent of the filling \(B\) for every
-closed worldsheet \(\Sigma\) if \(k\in\mathbb Z\).  Conversely, for simply
+closed two-manifold \(\Sigma\) if \(k\in\mathbb Z\).  Conversely, for simply
 connected simple \(G\), filling independence for all maps requires \(k\) to
 be integral in this normalization.
 \end{proposition}
@@ -2168,6 +2168,194 @@ contractions with two structure constants give the quantum correction
 gives \eqref{eq:wzw-central-charge}.  The remaining second- and first-order
 poles reproduce the Virasoro action because the same coefficient already
 makes each current a primary field of weight \(1\).
+\end{proof}
+
+\subsection{Knizhnik--Zamolodchikov Equations from Current Ward Identities}
+\label{subsec:wzw-kz-equations}
+
+The affine current algebra does more than determine the stress tensor.  It
+turns chiral correlation functions of WZW primary fields into flat sections of
+a logarithmic connection on the configuration space of marked points.  We give
+the derivation because the equation is often quoted as representation theory
+data, while in the CFT it is a direct consequence of the local current OPE and
+the Sugawara expression for translations.
+
+Let \(V_\lambda\) be the finite-dimensional irreducible \(\mathfrak g\)-module
+of highest weight \(\lambda\in P_k^+\), and let
+\[
+  t_\lambda^a:V_\lambda\to V_\lambda
+\]
+be the action of the basis element \(T_a\).  Thus
+\([t_\lambda^a,t_\lambda^b]=f_{ab}{}^c t_\lambda^c\), and the quadratic
+Casimir acts by
+\[
+  \sum_a t_\lambda^a t_\lambda^a
+  =
+  (\lambda,\lambda+2\rho)\,1_{V_\lambda}
+\]
+in the normalization of \eqref{eq:wzw-dual-coxeter-normalization}.  A chiral
+WZW primary field with horizontal type \(V_\lambda\) is an intertwining field
+\(\Phi_\lambda(v,z)\), \(v\in V_\lambda\), whose current OPE is
+\begin{equation}
+  J^a(\zeta)\Phi_\lambda(v,z)
+  \sim
+  \frac{\Phi_\lambda(t_\lambda^a v,z)}{\zeta-z}
+  +\text{regular}.
+  \label{eq:wzw-primary-current-ope}
+\end{equation}
+Equivalently, \(J_n^a\Phi_\lambda(v,0)|0\rangle=0\) for \(n>0\), while
+\(J_0^a\) acts as \(t_\lambda^a\).
+
+For distinct points \(z_1,\ldots,z_n\in\mathbb C\), choose primary labels
+\(\lambda_1,\ldots,\lambda_n\).  A genus-zero chiral block is a multilinear
+function
+\[
+  \mathcal F(z_1,\ldots,z_n):
+  V_{\lambda_1}\otimes\cdots\otimes V_{\lambda_n}\to\mathbb C
+\]
+obtained by inserting the corresponding chiral primary fields and projecting
+to the vacuum channel at infinity.  We write \(t_i^a\) for \(t_{\lambda_i}^a\)
+acting on the \(i\)-th tensor factor, and
+\begin{equation}
+  \Omega_{ij}
+  =
+  \sum_a t_i^a t_j^a
+  \qquad (i\ne j).
+  \label{eq:wzw-kz-omega-ij}
+\end{equation}
+The global current Ward identity is
+\begin{equation}
+  \mathcal F\circ \left(\sum_{i=1}^n t_i^a\right)=0,
+  \label{eq:wzw-global-current-ward}
+\end{equation}
+which is the statement that the contour integral of \(J^a\) around all finite
+insertions can be moved to infinity and annihilates the vacuum.
+
+\begin{theorem}[Knizhnik--Zamolodchikov equation]
+\label{thm:wzw-kz-equation}
+For every \(i=1,\ldots,n\), the chiral block satisfies
+\begin{equation}
+  (k+h^\vee)\,\partial_{z_i}\mathcal F
+  =
+  \mathcal F\circ
+  \sum_{j\ne i}\frac{\Omega_{ij}}{z_i-z_j}.
+  \label{eq:wzw-kz-equation}
+\end{equation}
+With invariant Hermitian forms used to identify \(V_{\lambda_i}\) with its
+dual, the same equation may be written for vector-valued blocks with
+\(\Omega_{ij}\) acting on the left.
+\end{theorem}
+
+\begin{proof}
+The translation Ward identity gives
+\[
+  \partial_{z_i}\Phi_{\lambda_i}(v_i,z_i)
+  =
+  \Phi_{\lambda_i}(L_{-1}v_i,z_i).
+\]
+Apply the Sugawara formula
+\eqref{eq:wzw-sugawara-stress-tensor} to the affine primary state
+\(v_i\).  In the mode expression
+\[
+  L_{-1}
+  =
+  \frac{1}{2(k+h^\vee)}
+  \sum_{a,m\in\mathbb Z}
+  :J^a_{-1-m}J^a_m: ,
+\]
+all terms vanish on \(v_i\) except the two terms with \(m=0\) and
+\(m=-1\).  Their sum is
+\begin{equation}
+  \frac{1}{2(k+h^\vee)}
+  \sum_a
+  \left(J^a_{-1}J^a_0+J^a_0J^a_{-1}\right)v_i
+  =
+  \frac{1}{k+h^\vee}
+  \sum_a J^a_{-1}t_i^a v_i ,
+  \label{eq:wzw-sugawara-lminusone-on-primary}
+\end{equation}
+because
+\(\sum_a[J^a_0,J^a_{-1}]
+=\sum_{a,c}f_{aa}{}^cJ^c_{-1}=0\).
+
+It remains to evaluate a block with \(J^a_{-1}\) acting on the \(i\)-th
+primary.  By definition of modes around \(z_i\),
+\[
+  J^a_{-1}\Phi_{\lambda_i}(v_i,z_i)
+  =
+  \oint_{z_i}\frac{\dd\zeta}{2\pi\ii}\,
+  \frac{J^a(\zeta)\Phi_{\lambda_i}(v_i,z_i)}{\zeta-z_i}.
+\]
+Insert this contour integral in the chiral block.  Deforming the contour away
+from \(z_i\) gives the negative of the sum of small contours around the other
+insertions; the integrand has residue
+\(\Phi_{\lambda_j}(t_j^a v_j,z_j)/(z_j-z_i)\) at \(z_j\).  Therefore
+\[
+  \mathcal F(\ldots,J^a_{-1}t_i^av_i,\ldots)
+  =
+  \sum_{j\ne i}
+  \frac{1}{z_i-z_j}\,
+  \mathcal F(\ldots,t_i^a v_i,\ldots,t_j^a v_j,\ldots).
+\]
+Substituting this identity into
+\eqref{eq:wzw-sugawara-lminusone-on-primary} gives
+\eqref{eq:wzw-kz-equation}.
+\end{proof}
+
+\begin{proposition}[Flatness and four-point reduction]
+\label{prop:wzw-kz-flatness-four-point}
+The operators
+\begin{equation}
+  \nabla_i
+  =
+  (k+h^\vee)\partial_{z_i}
+  -
+  \sum_{j\ne i}\frac{\Omega_{ij}}{z_i-z_j}
+  \label{eq:wzw-kz-connection}
+\end{equation}
+define a flat logarithmic connection on the configuration space
+\(\operatorname{Conf}_n(\mathbb C)\), after restricting to the invariant
+subspace \(\left(V_{\lambda_1}\otimes\cdots\otimes V_{\lambda_n}\right)^G\)
+or, equivalently, imposing \eqref{eq:wzw-global-current-ward}.  After fixing
+three points by a Mobius transformation, a four-point block with insertions
+at \(0,x,1,\infty\) obeys
+\begin{equation}
+  (k+h^\vee)\frac{\dd}{\dd x}\mathcal F(x)
+  =
+  \left(\frac{\Omega_{21}}{x}
+        +\frac{\Omega_{23}}{x-1}\right)\mathcal F(x),
+  \label{eq:wzw-four-point-kz}
+\end{equation}
+with \(\Omega_{2j}\) acting on the remaining invariant tensor space.
+\end{proposition}
+
+\begin{proof}
+Only commutators of \(\Omega\)'s sharing an index can be nonzero.  The
+quadratic tensor
+\[
+  \Omega=\sum_a T_a\otimes T_a\in\mathfrak g\otimes\mathfrak g
+\]
+is invariant under the diagonal adjoint action, hence
+\[
+  [\Omega_{ij},t_i^b+t_j^b]=0
+\]
+on \(V_{\lambda_i}\otimes V_{\lambda_j}\).  Multiplying by \(t_k^b\) on a
+third tensor factor and summing over \(b\) gives, for distinct \(i,j,k\),
+\begin{equation}
+  [\Omega_{ij},\Omega_{ik}+\Omega_{jk}]=0.
+  \label{eq:wzw-infinitesimal-braid-relation}
+\end{equation}
+These are the infinitesimal braid relations.  Expanding
+\([\nabla_i,\nabla_j]\), the derivative terms cancel the double-pole
+derivatives of \((z_i-z_j)^{-1}\), while the remaining triple-index
+commutators are precisely the combinations in
+\eqref{eq:wzw-infinitesimal-braid-relation}.  Thus the curvature vanishes.
+
+For \(n=4\), use conformal covariance to place the points at
+\((z_1,z_2,z_3,z_4)=(0,x,1,\infty)\).  The equation with \(i=2\) gives
+\eqref{eq:wzw-four-point-kz}; terms involving the insertion at infinity are
+absorbed by the global Ward identity, which identifies the fourth action with
+minus the sum of the first three finite actions on invariant tensors.
 \end{proof}
 
 The highest-weight representations that occur in the compact unitary WZW

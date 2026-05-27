@@ -150,8 +150,22 @@ Assume \(\mathcal H_i\) is paired with its conjugate in
 \eqref{eq:diagonal-closed-hilbert-space-bcft}.  Choose a homogeneous
 orthonormal basis \(\{e_\alpha\}\) of \(\mathcal H_i\) and an antiunitary
 map \(U_i:\mathcal H_i\to\overline{\mathcal H_i}\) intertwining the chiral
-algebra with the orientation-reversed antiholomorphic copy.  The Ishibashi
-state associated to \(i\) is the formal state
+algebra with the antiholomorphic copy.  The convention is
+\begin{equation}
+  U_i L_m U_i^{-1}=\bar L_m
+  \label{eq:ishibashi-antiunitary-convention}
+\end{equation}
+on the finite-energy domain.  For an additional chiral generator \(W^a_m\) of
+spin \(s_a\), the preserved boundary condition is encoded by the corresponding
+antiunitary adjoint convention
+\begin{equation}
+  U_i (W^a_m)^\dagger U_i^{-1}
+  =
+  (-1)^{s_a}\Omega(\bar W^a_{-m}),
+  \label{eq:ishibashi-current-antiunitary-convention}
+\end{equation}
+where \(\Omega\) is the chosen automorphism of the chiral algebra.  The
+Ishibashi state associated to \(i\) is the formal state
 \begin{equation}
   |i\rangle\!\rangle
   =
@@ -173,30 +187,62 @@ The state \(|i\rangle\!\rangle\) satisfies
 for all \(n\in\mathbb Z\).  More generally, if \(W^a_m\) is a mode of a
 chiral current of spin \(s_a\), the symmetry-preserving Ishibashi state
 satisfies
-\[
+\begin{equation}
   \left(W^a_m-(-1)^{s_a}\Omega(\bar W^a_{-m})\right)|i\rangle\!\rangle=0
-\]
+  \label{eq:ishibashi-current-gluing}
+\end{equation}
 for the chosen automorphism \(\Omega\) of the chiral algebra.
 \end{proposition}
 
 \begin{proof}
-It suffices to prove the Virasoro statement.  For any finite-level vectors
- \(u,v\in\mathcal H_i\), pair \((L_n-\bar L_{-n})|i\rangle\!\rangle\) with
-\(u\otimes U_iv\).  Using the invariant Hermitian form and the antiunitarity
-of \(U_i\), this matrix element equals
+It suffices to prove the Virasoro statement; the current-algebra statement is
+the same calculation with \(L_n\) replaced by \(W^a_m\).  Let
+\[
+  C_i=\sum_\alpha e_\alpha\otimes U_i e_\alpha
+\]
+denote the formal coevaluation vector.  We first record the finite-level
+identity which controls the antiunitary bookkeeping.  If \(A\) is an operator
+on the finite-energy domain of \(\mathcal H_i\) with adjoint \(A^\dagger\),
+then
+\begin{equation}
+  (A\otimes 1)C_i=(1\otimes U_i A^\dagger U_i^{-1})C_i
+  \label{eq:coevaluation-adjoint-identity}
+\end{equation}
+as a distributional vector, meaning after pairing against any
+finite-level vector \(u\otimes U_iv\).  Indeed, using the Hermitian inner
+product on \(\mathcal H_i\), written antilinear in the first argument, the
+antiunitarity of \(U_i\), and the finite-level resolution of the identity
+\(\sum_\alpha |e_\alpha\rangle\langle e_\alpha|=1\), the two pairings are
 \[
   \sum_\alpha
-  \langle u,L_ne_\alpha\rangle\langle v,e_\alpha\rangle
-  -
-  \sum_\alpha
-  \langle u,e_\alpha\rangle\langle v,L_{-n}e_\alpha\rangle .
+  \langle u,Ae_\alpha\rangle\,\langle e_\alpha,v\rangle
+  =
+  \langle u,Av\rangle
+  =
+  \langle A^\dagger u,v\rangle
 \]
-Completeness of the basis converts the two sums to
-\(\langle L_n^\dagger u,v\rangle\) and
-\(\langle u,L_{-n}v\rangle\).  Positive-energy unitarity gives
- \(L_n^\dagger=L_{-n}\), so the difference is zero.  The current-algebra
-statement is identical, with the sign \((-1)^{s_a}\) coming from rotating a
-spin-\(s_a\) field by \(\pi\) in the reflected copy.
+and
+\[
+  \sum_\alpha
+  \langle u,e_\alpha\rangle\,\langle A^\dagger e_\alpha,v\rangle
+  =
+  \langle A^\dagger u,v\rangle .
+\]
+Since finite-level vectors separate the graded dual completion in which
+\(|i\rangle\!\rangle\) lives, \eqref{eq:coevaluation-adjoint-identity}
+follows.  Taking \(A=L_n\) and using positive-energy unitarity
+\(L_n^\dagger=L_{-n}\), together with
+\eqref{eq:ishibashi-antiunitary-convention}, gives
+\[
+  (L_n\otimes 1)|i\rangle\!\rangle
+  =
+  (1\otimes \bar L_{-n})|i\rangle\!\rangle ,
+\]
+which is \eqref{eq:ishibashi-virasoro-gluing}.  For a spin-\(s_a\) current the
+same adjoint identity gives the \(-m\) mode in the reflected copy, while
+rotating a spin-\(s_a\) field through the boundary reflection contributes
+\((-1)^{s_a}\) and the preserved current may be composed with the automorphism
+\(\Omega\).  This gives \eqref{eq:ishibashi-current-gluing}.
 \end{proof}
 
 The overlap of two Ishibashi states is diagonal:
