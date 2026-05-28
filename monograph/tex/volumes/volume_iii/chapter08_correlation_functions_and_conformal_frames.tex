@@ -35,6 +35,40 @@ as a distribution on the configuration space \(x_i\ne x_j\).  Contact terms on
 coincident-point diagonals are part of the local Ward identities and are not
 used in the kinematic classification below.
 
+\begin{definition}[Separated Euclidean CFT correlator]
+\label{def:separated-euclidean-cft-correlator}
+For an ordered \(n\)-tuple of local operators
+\(\mathcal O_1,\ldots,\mathcal O_n\), the separated configuration space is
+\[
+  \operatorname{Conf}_n(\R^D)
+  =
+  \{(x_1,\ldots,x_n)\in(\R^D)^n\mid x_i\ne x_j\text{ for }i\ne j\}.
+\]
+The separated correlator is the restriction of the corresponding
+Schwinger distribution to this open set,
+\[
+  G_{\mathcal O_1\cdots\mathcal O_n}(x_1,\ldots,x_n)
+  =
+  \left\langle
+    \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  \right\rangle,
+\]
+with values in the dual tensor product of the spin representation spaces when
+the insertions carry indices.  A scalar primary tuple
+\((\mathcal O_i,\Delta_i)\) is separated conformally covariant if, for every
+finite conformal transformation \(f\) whose image avoids coincidences,
+\[
+  G_{\mathcal O_1\cdots\mathcal O_n}(f(x_1),\ldots,f(x_n))
+  =
+  \prod_{i=1}^n \Omega_f(x_i)^{-\Delta_i}\,
+  G_{\mathcal O_1\cdots\mathcal O_n}(x_1,\ldots,x_n),
+  \label{eq:separated-scalar-correlator-covariance}
+\]
+where \(f^*\delta=\Omega_f^2\delta\).  This definition contains no extension
+across the collision diagonals.  Such extensions are local renormalization
+data and can differ by contact terms supported on partial diagonals.
+\end{definition}
+
 \begin{lemma}[Special-conformal invariance from radial spectrum positivity]
 \label{lem:vacuum-k-invariance-from-radial-spectrum}
 Let \(\ket{\vac}\) be the common vacuum of
@@ -103,8 +137,23 @@ primary \(\phi\) of dimension \(\Delta_\phi\),
 
 \section{One- and Two-Point Functions}
 
+\begin{proposition}[Scalar one-point selection rule]
+\label{prop:scalar-one-point-selection-rule}
 Let \(\mathcal O_i\) be scalar primary operators of dimensions
-\(\Delta_i\).  Translation invariance makes a one-point function constant:
+\(\Delta_i\).  If the separated Ward identities and the finite scalar
+primary covariance law hold, then
+\[
+  \left\langle \mathcal O_i(x)\right\rangle=0
+  \qquad\text{unless}\qquad
+  \Delta_i=0.
+\]
+In a reflection-positive CFT whose \(\Delta=0\) scalar primary sector is the
+vacuum representation, the only nonzero scalar-primary one-point function is
+the identity expectation value, after choosing the identity normalization.
+\end{proposition}
+
+\begin{proof}
+Translation invariance makes a one-point function constant:
 \[
   \left\langle \mathcal O_i(x)\right\rangle=c_i.
 \]
@@ -114,9 +163,12 @@ Scale covariance gives
   \qquad
   \text{for all }\lambda>0.
 \]
-Hence \(c_i=0\) unless \(\Delta_i=0\).  In a unitary theory satisfying the
-vacuum assumptions stated in Chapter~\ref{ch:volume-iii-unitarity-bounds-short-multiplets},
-the scalar primary with \(\Delta=0\) is the identity representation.
+If \(\Delta_i\ne0\), choosing any \(\lambda\ne1\) forces \(c_i=0\).  The final
+statement uses the \(\Delta=0\) branch of the scalar unitarity analysis in
+Chapter~\ref{ch:volume-iii-unitarity-bounds-short-multiplets}: the local field
+has vanishing translation descendants and hence acts as a multiple of the
+identity on the cyclic vacuum representation.
+\end{proof}
 
 \begin{theorem}[Scalar two-point selection rule]
 \label{thm:scalar-two-point-selection-rule}
@@ -282,6 +334,8 @@ positivity used in the unitarity-bound derivation.
 
 \section{Spin Structures}
 
+\begin{definition}[Inversion tensor and symmetric-traceless transport]
+\label{def:inversion-stt-parallel-transport}
 The inversion tensor
 \begin{equation}
   I_{\mu\nu}(x)
@@ -289,7 +343,7 @@ The inversion tensor
   \delta_{\mu\nu}-2\frac{x_\mu x_\nu}{x^2}
   \label{eq:inversion-tensor}
 \end{equation}
-is the orthogonal part of the inversion Jacobian.  It is the elementary
+is the orthogonal part of the inversion Jacobian.  It is the basic
 building block for two-point functions with vector or tensor indices.  Its
 action on the line spanned by \(x^\mu\) is multiplication by \(-1\), while its
 action on the orthogonal complement of \(x^\mu\) is the identity.  Hence
@@ -297,19 +351,8 @@ action on the orthogonal complement of \(x^\mu\) is the identity.  Hence
 \(I_{\mu\nu}(x)\) in a spin tensor structure therefore presupposes the extension
 of the \(SO(D)\) spin action to the disconnected orthogonal, or pin, action
 specified in Chapter~\ref{ch:volume-iii-primary-operators-finite-transformations}.
-For
-example, a vector primary of dimension \(\Delta_V\) obeys
-\begin{equation}
-  \left\langle V_\mu(x)V_\nu(0)\right\rangle
-  =
-  \frac{C_V}{|x|^{2\Delta_V}}I_{\mu\nu}(x),
-  \label{eq:vector-primary-two-point}
-\end{equation}
-after diagonalizing any degeneracy labels.
 
-More generally, let
-\(\mathcal O_{\mu_1\cdots\mu_s}\) be a rank-\(s\) symmetric traceless tensor
-primary.  Define
+For a rank-\(s\) symmetric traceless tensor representation, define
 \[
   \mathcal I^{(s)}_{\mu_1\cdots\mu_s,\nu_1\cdots\nu_s}(x)
   =
@@ -320,7 +363,22 @@ primary.  Define
 \]
 where \(\Pi_{\operatorname{STT}}\) symmetrizes separately in the
 \(\mu\)-indices and the \(\nu\)-indices and removes all traces with respect to
-\(\delta_{\mu\nu}\).  Conformal covariance fixes the two-point function to be
+\(\delta_{\mu\nu}\).
+\end{definition}
+
+\begin{proposition}[Spinning two-point structures]
+\label{prop:spinning-two-point-structures}
+Let \(V_\mu\) be a vector primary of dimension \(\Delta_V\).  After
+diagonalizing degeneracy labels within the same primary type,
+\begin{equation}
+  \left\langle V_\mu(x)V_\nu(0)\right\rangle
+  =
+  \frac{C_V}{|x|^{2\Delta_V}}I_{\mu\nu}(x).
+  \label{eq:vector-primary-two-point}
+\end{equation}
+More generally, if
+\(\mathcal O_{\mu_1\cdots\mu_s}\) is a rank-\(s\) symmetric traceless tensor
+primary of dimension \(\Delta_{\mathcal O}\), then
 \begin{equation}
   \left\langle
     \mathcal O_{\mu_1\cdots\mu_s}(x)
@@ -334,6 +392,26 @@ where \(\Pi_{\operatorname{STT}}\) symmetrizes separately in the
 up to the same positive Hermitian coefficient matrix in possible degeneracy
 labels.  Two-point functions between inequivalent \(SO(D)\) representations
 vanish by rotational covariance.
+\end{proposition}
+
+\begin{proof}
+Translation covariance puts one insertion at the origin, and dilatation
+covariance gives the overall power \(|x|^{-2\Delta}\) once the two
+dimensions have been matched by the scalar selection rule generalized to the
+chosen spin type.  The remaining tensor must intertwine the spin
+representation at the origin with the spin representation transported to the
+point \(x\).  Applying inversion sends \(x\) to \(x/x^2\), fixes the origin as
+the point at infinity in radial quantization, and contributes the orthogonal
+Jacobian \(I_{\mu\nu}(x)\) on vector indices.  Hence the unique vector
+intertwiner is \(I_{\mu\nu}(x)\).  For symmetric traceless rank \(s\), the
+tensor product of \(s\) vector intertwiners must be projected to the
+symmetric-traceless irreducible component at both ends, giving
+\(\mathcal I^{(s)}\).  Schur's lemma on each irreducible \(SO(D)\) type gives
+vanishing between inequivalent representations and a Hermitian degeneracy
+matrix within equivalent representations.  Reflection positivity makes that
+matrix positive semidefinite before quotienting null states and positive
+definite on the Hilbert quotient.
+\end{proof}
 
 For the stress tensor, \(s=2\), \(\Delta_T=D\), and conservation gives a
 canonical normalization convention through the Ward identity.  Its two-point
@@ -362,8 +440,11 @@ normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
 
 \section{Three-Point Functions}
 
-For scalar primaries, conformal covariance fixes the three-point function up
-to one coefficient:
+\begin{theorem}[Scalar three-point kinematics]
+\label{thm:scalar-three-point-kinematics}
+Let \(\mathcal O_i\) be scalar primaries of dimensions \(\Delta_i\).  On the
+configuration space of three distinct points, separated conformal covariance
+fixes the three-point function to the form
 \begin{equation}
   \left\langle
     \mathcal O_1(x_1)\mathcal O_2(x_2)\mathcal O_3(x_3)
@@ -379,6 +460,52 @@ where
 \[
   x_{ij}=x_i-x_j.
 \]
+\end{theorem}
+
+\begin{proof}
+The connected Euclidean conformal group acts transitively on ordered triples
+of distinct points.  Indeed, translate \(x_3\) to the origin, use an inversion
+composed with a translation to send one of the remaining points to infinity,
+and then rotate and dilate the last finite point to a fixed unit vector.  Thus
+there is no conformal cross-ratio for three separated points; the correlator
+is determined by one coefficient once its local weights at the three
+insertions are fixed.
+
+It remains to determine the powers of the pairwise distances.  Write the
+unique possible separated scalar form as
+\[
+  C_{123}
+  |x_{12}|^{-\alpha_{12}}
+  |x_{23}|^{-\alpha_{23}}
+  |x_{13}|^{-\alpha_{13}} .
+\]
+Under inversion \(x\mapsto x/x^2\),
+\[
+  |x_{ij}|
+  \longmapsto
+  \frac{|x_{ij}|}{|x_i|\,|x_j|},
+  \qquad
+  \Omega(x_i)=|x_i|^{-2}.
+\]
+Comparison with
+\eqref{eq:separated-scalar-correlator-covariance} gives the three local
+weight equations
+\[
+  \alpha_{12}+\alpha_{13}=2\Delta_1,\qquad
+  \alpha_{12}+\alpha_{23}=2\Delta_2,\qquad
+  \alpha_{13}+\alpha_{23}=2\Delta_3 .
+\]
+Solving this linear system gives
+\[
+  \alpha_{12}=\Delta_1+\Delta_2-\Delta_3,\quad
+  \alpha_{23}=\Delta_2+\Delta_3-\Delta_1,\quad
+  \alpha_{13}=\Delta_1+\Delta_3-\Delta_2,
+\]
+which is precisely \eqref{eq:scalar-primary-three-point}.  Uniform dilatation
+covariance is then automatic because the sum of the three powers is
+\(\Delta_1+\Delta_2+\Delta_3\).
+\end{proof}
+
 The constants \(C_{123}\), after fixing the two-point normalization of
 primaries, are the scalar three-point OPE coefficients.  If the primaries
 carry spin, let \(a_i\) denote indices in the corresponding finite-dimensional
@@ -434,7 +561,7 @@ and, for a dimensionless tensor
 \end{equation}
 Let \(\operatorname{Sym}_{\mu\nu}\) denote the unnormalized symmetrization
 obtained by adding the expression with \(\mu\) and \(\nu\) interchanged.  The
-elementary symmetric-traceless tensors are
+following symmetric-traceless tensors are
 \begin{align}
   h^1_{\mu\nu}
   &=
@@ -882,8 +1009,19 @@ function vanishes.
 
 \section{Four-Point Functions and Cross Ratios}
 
-For four scalar insertions, conformal transformations can remove all position
-dependence except two cross ratios:
+\begin{definition}[Ordered four-point conformal frame]
+\label{def:ordered-four-point-conformal-frame}
+For \(D\ge2\), let
+\[
+  x=(x_1,x_2,x_3,x_4)\in\operatorname{Conf}_4(\R^D).
+\]
+A four-point conformal frame for \(x\) is a conformal transformation, possibly
+followed by the one-point compactification of \(\R^D\), that sends the
+quadruple to
+\[
+  z_1=0,\qquad z_2=z,\qquad z_3=1,\qquad z_4=\infty
+\]
+inside an oriented two-plane.  The associated scalar cross ratios are
 \begin{equation}
   u=
   \frac{x_{12}^2x_{34}^2}{x_{13}^2x_{24}^2},
@@ -892,19 +1030,61 @@ dependence except two cross ratios:
   \frac{x_{14}^2x_{23}^2}{x_{13}^2x_{24}^2}.
   \label{eq:cross-ratios-u-v}
 \end{equation}
-Equivalently, the four points can be moved into a two-plane and placed at
-\[
-  z_1=0,\qquad z_2=z,\qquad z_3=1,\qquad z_4=\infty,
-\]
-with
+In the frame they obey
 \[
   z=\frac{z_{12}z_{34}}{z_{13}z_{24}},
   \qquad
   u=z\bar z,\qquad v=(1-z)(1-\bar z).
 \]
-This frame is obtained by first using the conformal group to put the four
-points in a common two-plane and then using the residual fractional-linear
-transformation \(z\mapsto(\alpha z+\beta)/(\gamma z+\delta)\) on that plane.
+\end{definition}
+
+\begin{theorem}[Completeness of four-point cross ratios]
+\label{thm:four-point-cross-ratio-completeness}
+For a generic ordered quadruple of distinct Euclidean points in \(D\ge2\), an
+oriented four-point frame is labelled by \(z\).  The pair \((u,v)\) is
+equivalent to \(z\) modulo complex conjugation.  For \(D\ge3\), this pair
+separates connected conformal orbits.  For \(D=2\), it separates orbits only
+after adjoining the orientation-reversing conformal transformation
+\(z\mapsto\bar z\); the connected orientation-preserving group distinguishes
+\(z\) from \(\bar z\).  Thus scalar four-point correlators invariant under
+the relevant Euclidean parity operation can have nontrivial position
+dependence only through two independent real conformal invariants.
+\end{theorem}
+
+\begin{proof}
+We give the explicit frame construction.  Translate so that \(x_1=0\).  The
+special conformal map
+\[
+  y\longmapsto
+  \frac{y-b\,y^2}{1-2b\cdot y+b^2y^2},
+  \qquad
+  b=\frac{x_4}{x_4^2},
+\]
+fixes the origin and sends \(x_4\) to the point at infinity, because the
+denominator vanishes at \(y=x_4\).  For a generic quadruple, the image of
+\(x_3\) is finite and nonzero; a rotation and a dilatation send it to the unit
+vector \(e_1\).  The stabilizer of \(0\), \(e_1\), and \(\infty\) is the
+orthogonal group acting on the \((D-1)\)-dimensional subspace orthogonal to
+\(e_1\).  This stabilizer rotates the image of \(x_2\) into the
+\((e_1,e_2)\)-plane, leaving a complex coordinate \(z\).  In this frame the
+Euclidean distances give exactly
+\[
+  u=z\bar z,\qquad v=(1-z)(1-\bar z).
+\]
+Conversely, two framed quadruples with the same \(z\) are equal, and replacing
+the orientation of the two-plane sends \(z\) to \(\bar z\) without changing
+\((u,v)\).  When \(D\ge3\), this orientation reversal of the chosen two-plane
+is implemented by a rotation in the orthogonal complement, for instance by
+flipping one in-plane basis vector and one transverse basis vector.  When
+\(D=2\), it is not in the connected orientation-preserving conformal group and
+must be added as a separate parity operation.  The dimension count is
+consistent:
+\[
+  4D-\frac{(D+1)(D+2)}2+\frac{(D-2)(D-3)}2=2,
+\]
+where the last term is the dimension of the residual rotation group fixing a
+generic two-plane frame.
+\end{proof}
 
 \begin{figure}[H]
   \centering
@@ -959,7 +1139,11 @@ transformation \(z\mapsto(\alpha z+\beta)/(\gamma z+\delta)\) on that plane.
   \label{fig:four-point-conformal-frame}
 \end{figure}
 
-The general scalar four-point function can be written as
+\begin{proposition}[Scalar four-point prefactor covariance]
+\label{prop:scalar-four-point-prefactor-covariance}
+Let \(\mathcal O_i\) be scalar primaries of dimensions \(\Delta_i\).  Every
+separated conformally covariant four-point function can be written uniquely in
+the form
 \begin{align}
   &\left\langle
     \mathcal O_1(x_1)\mathcal O_2(x_2)
@@ -985,6 +1169,44 @@ For identical scalar primaries of dimension \(\Delta\), this simplifies to
        {|x_{12}|^{2\Delta}|x_{34}|^{2\Delta}}.
   \label{eq:identical-scalar-four-point}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+The quotient of a scalar four-point function by the displayed prefactor is
+invariant under translations and rotations because it is built from
+distances.  Under a uniform dilatation, the prefactor has degree
+\(-(\Delta_1+\Delta_2+\Delta_3+\Delta_4)\), the required total degree.  It
+remains to check the local weights under inversion.  Since
+\[
+  |x_{ij}|\longmapsto \frac{|x_{ij}|}{|x_i|\,|x_j|},
+\]
+write the prefactor as \(\prod_{i<j}|x_{ij}|^{a_{ij}}\), with
+\[
+\begin{gathered}
+  a_{12}=-(\Delta_1+\Delta_2),
+  \qquad
+  a_{34}=-(\Delta_3+\Delta_4),
+  \qquad
+  a_{24}=\Delta_1-\Delta_2,\\
+  a_{14}=-(\Delta_1-\Delta_2)+(\Delta_3-\Delta_4),
+  \qquad
+  a_{13}=-(\Delta_3-\Delta_4),
+  \qquad
+  a_{23}=0 .
+\end{gathered}
+\]
+The inversion power at \(x_i\) is \(-\sum_{j\ne i}a_{ij}\).  Direct
+substitution gives \(2\Delta_i\) for each \(i=1,\ldots,4\).  This is exactly
+the inversion weight of four scalar primaries because
+\(\Omega_I(x_i)=|x_i|^{-2}\).  Therefore the remaining factor is a
+dimensionless conformal invariant and hence a function of \(u,v\) on the
+generic configuration space by
+Theorem~\ref{thm:four-point-cross-ratio-completeness}.  Uniqueness follows
+because the prefactor is nonzero on \(\operatorname{Conf}_4(\R^D)\).  The
+identical-scalar formula is the specialization
+\(\Delta_1=\cdots=\Delta_4=\Delta\).
+\end{proof}
+
 The function \(\mathcal G(u,v)\) is dynamical CFT data.  The next stage is to
 determine how the operator product expansion encodes local multiplication of
 operators and how associativity constrains the allowed spectrum and OPE

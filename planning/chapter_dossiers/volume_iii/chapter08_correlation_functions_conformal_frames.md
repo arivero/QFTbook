@@ -20,14 +20,29 @@ The chapter establishes:
   \(\widehat D_{\rm rad}\ket{\vac}=0\),
   \([\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu\), and the
   nonnegative spectrum of \(\widehat D_{\rm rad}\);
+- Definition `def:separated-euclidean-cft-correlator`, making the chapter's
+  configuration space and separated-distribution status explicit;
+- Proposition `prop:scalar-one-point-selection-rule`, proving the scalar
+  one-point selection rule from translations and dilatations;
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
+- Theorem `thm:scalar-three-point-kinematics`, deriving the scalar
+  three-point exponents from conformal-frame transitivity and inversion
+  weights;
 - spinning tensor structures with stated representation data;
+- Definition `def:inversion-stt-parallel-transport` and Proposition
+  `prop:spinning-two-point-structures`, formalizing inversion transport and
+  the vector/STT two-point structures;
 - the Osborn--Petkou parity-even stress-tensor three-point basis, including
   the explicit \(h^1,\ldots,h^5\) tensors, the three \(D\ge4\) structures,
   the conservation equations fixing dependent coefficients, and the
   three-dimensional Schouten degeneration to two parity-even structures;
 - radial conjugation and BPZ-type bra construction from cylinder-time limits;
+- Definition `def:ordered-four-point-conformal-frame`, Theorem
+  `thm:four-point-cross-ratio-completeness`, and Proposition
+  `prop:scalar-four-point-prefactor-covariance`, giving the ordered
+  four-point frame, the residual stabilizer dimension count, and the scalar
+  four-point prefactor covariance proof;
 - conformal frames and residual stabilizer groups;
 - positivity conditions on two-point coefficient matrices.
 
@@ -80,3 +95,10 @@ The chapter establishes:
   two-structure count now carries explicit references to Maldacena--Zhiboedov
   and to the Costa--Penedones--Poland--Rychkov / Costa--Hansen--Penedones--
   Trevisani spinning-correlator technology.
+- 2026-05-28 density/formalization pass: promoted separated correlators,
+  one-point selection, spinning two-point structures, scalar three-point
+  kinematics, four-point frame completeness, and four-point prefactor
+  covariance to formal environments.  Added
+  `calculation-checks/cft_correlator_kinematics_checks.py` to guard the
+  three-point exponent algebra, four-point inversion weights, and residual
+  four-point quotient dimension.
