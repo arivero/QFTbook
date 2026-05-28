@@ -865,9 +865,10 @@ Current checks:
   the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
   principal-chiral gamma-function scalar unitarity identities, the supersphere,
   projective-supermodel, and orthosymplectic one-loop cancellations,
-  the repulsive sausage charged scattering identities, and the sausage-metric
-  scalar-curvature, Ricci-flow closure, integrated Ricci trajectories, and
-  cylinder endpoint formulae.
+  the repulsive sausage charged scattering identities, the full triplet
+  matrix unitarity and Yang--Baxter finite-matrix checks, the rational
+  \(O(3)\) limit, and the sausage-metric scalar-curvature, Ricci-flow
+  closure, integrated Ricci trajectories, and cylinder endpoint formulae.
 - `susy_yang_mills_family_checks.py`: exact finite checks for the
   supersymmetric Yang--Mills family discussion, including the pure-SYM
   root-of-unity domain-wall sine formula, the one-coordinate chiral

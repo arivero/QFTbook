@@ -533,6 +533,53 @@ def sausage_charge_zero_matrix(theta: complex, lam: float) -> np.ndarray:
     )
 
 
+def sausage_full_triplet_matrix(theta: complex, lam: float) -> np.ndarray:
+    matrix = np.zeros((9, 9), dtype=complex)
+
+    def pair_index(first: int, second: int) -> int:
+        return 3 * first + second
+
+    # Basis labels: 0=+, 1=0, 2=-.
+    matrix[pair_index(0, 0), pair_index(0, 0)] = sausage_spp(theta, lam)
+    matrix[pair_index(2, 2), pair_index(2, 2)] = sausage_spp(theta, lam)
+
+    charge_one = sausage_charge_one_matrix(theta, lam)
+    for basis in ([(0, 1), (1, 0)], [(2, 1), (1, 2)]):
+        for row, (out_first, out_second) in enumerate(basis):
+            for col, (in_first, in_second) in enumerate(basis):
+                matrix[pair_index(out_first, out_second), pair_index(in_first, in_second)] = charge_one[row, col]
+
+    charge_zero = sausage_charge_zero_matrix(theta, lam)
+    zero_basis = [(0, 2), (1, 1), (2, 0)]
+    for row, (out_first, out_second) in enumerate(zero_basis):
+        for col, (in_first, in_second) in enumerate(zero_basis):
+            matrix[pair_index(out_first, out_second), pair_index(in_first, in_second)] = charge_zero[row, col]
+
+    return matrix
+
+
+def sausage_op13(two_particle_matrix: np.ndarray) -> np.ndarray:
+    operator = np.zeros((27, 27), dtype=complex)
+
+    def triple_index(first: int, second: int, third: int) -> int:
+        return 9 * first + 3 * second + third
+
+    def pair_index(first: int, third: int) -> int:
+        return 3 * first + third
+
+    for first_in in range(3):
+        for second in range(3):
+            for third_in in range(3):
+                col = triple_index(first_in, second, third_in)
+                pair_col = pair_index(first_in, third_in)
+                for first_out in range(3):
+                    for third_out in range(3):
+                        row = triple_index(first_out, second, third_out)
+                        pair_row = pair_index(first_out, third_out)
+                        operator[row, col] = two_particle_matrix[pair_row, pair_col]
+    return operator
+
+
 def check_sausage_repulsive_smatrix_ledgers() -> None:
     for lam in (0.1, 0.25, 0.49):
         for theta in (0.37, 1.11):
@@ -555,6 +602,13 @@ def check_sausage_repulsive_smatrix_ledgers() -> None:
                 np.max(np.abs(zero_matrix @ zero_inverse_matrix - np.eye(3))),
                 0.0,
             )
+            full_matrix = sausage_full_triplet_matrix(theta, lam)
+            full_inverse_matrix = sausage_full_triplet_matrix(-theta, lam)
+            assert_close(
+                f"sausage full triplet unitarity lambda={lam} theta={theta}",
+                np.max(np.abs(full_matrix @ full_inverse_matrix - np.eye(9))),
+                0.0,
+            )
 
         # Finite integer ledger for the denominator zeros.  The proof in the
         # text gives the all-integer argument.
@@ -575,6 +629,23 @@ def check_sausage_repulsive_smatrix_ledgers() -> None:
     assert_close("sausage lambda->0 highest-charge limit", sausage_spp(theta, lam), o3_highest, 1.0e-6)
     assert_close("sausage lambda->0 charge-one direct limit", limiting_matrix[0, 0], o3_direct, 1.0e-6)
     assert_close("sausage lambda->0 charge-one exchange limit", limiting_matrix[0, 1], o3_exchange, 1.0e-6)
+
+    identity_three = np.eye(3)
+    for lam in (0.1, 0.25, 0.49):
+        for theta, phi in ((0.37, 0.71), (0.83, 1.19)):
+            s_theta = sausage_full_triplet_matrix(theta, lam)
+            s_phi = sausage_full_triplet_matrix(phi, lam)
+            s_sum = sausage_full_triplet_matrix(theta + phi, lam)
+            op12 = np.kron(s_theta, identity_three)
+            op23 = np.kron(identity_three, s_phi)
+            op13 = sausage_op13(s_sum)
+            lhs = op12 @ op13 @ op23
+            rhs = op23 @ op13 @ op12
+            assert_close(
+                f"sausage full triplet YBE lambda={lam} theta={theta} phi={phi}",
+                np.max(np.abs(lhs - rhs)),
+                0.0,
+            )
 
 
 def check_sausage_metric_curvature() -> None:
