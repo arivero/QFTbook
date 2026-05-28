@@ -1036,6 +1036,12 @@ regime.  It analytically continues angular momentum rather than taking the
 large-\(\ell\) continuum limit at fixed \(b\).  The continuation is not a
 consequence of the partial-wave expansion alone; it is an additional
 analyticity and growth hypothesis in the complex angular-momentum plane.
+The simultaneous Mandelstam representation, when available, controls the
+locations and discontinuities of first-sheet singularities in the invariant
+variables.  It does not by itself assert that the partial-wave sequence has a
+unique meromorphic interpolation in \(J\), nor that such an interpolation has
+only pole singularities.  Regge poles therefore enter below only after the
+complex-\(J\) interpolation and its growth class have been declared.
 
 To state the construction, use the crossed \(t\)-channel scattering angle
 \[
@@ -1057,6 +1063,57 @@ in the \(t\)-channel physical region.  The signature components are
   \qquad
   \tau=\pm1,\qquad u=4m^2-s-t .
 \]
+
+\begin{quotedtheorem}[Carlson uniqueness in the half-plane]
+\label{qthm:carlson-half-plane-uniqueness}
+Let \(F\) be holomorphic in \(\operatorname{Re}J>0\), continuous on
+\(\operatorname{Re}J\ge0\), and suppose that for some \(\varepsilon>0\)
+\[
+  |F(J)|\le C_\delta
+  \exp\bigl((\pi-\varepsilon+\delta)|J|\bigr)
+  \qquad
+  \operatorname{Re}J\ge0
+\]
+for every \(\delta>0\), while \(F(\ii y)\) has at most exponential type
+strictly smaller than \(\pi\) on the boundary line.  If
+\[
+  F(n)=0,\qquad n=0,1,2,\ldots ,
+\]
+then \(F\equiv0\) in the half-plane.  Equivalently, within this growth class
+the values on the nonnegative integers determine the holomorphic
+interpolation uniquely.
+\end{quotedtheorem}
+
+\begin{proposition}[Uniqueness of an admissible angular-momentum interpolation]
+\label{prop:regge-carlson-interpolation-uniqueness}
+Fix \(t\) and a signature \(\tau\).  Suppose two proposed continuations
+\(a_{\tau,1}(J,t)\) and \(a_{\tau,2}(J,t)\) of the same partial-wave
+sequence \(a_{\tau,\ell}(t)\) are holomorphic in a right half-plane after
+separating the same declared Regge-pole set, have the same pole principal
+parts there, and obey the Carlson growth class of
+Quoted Theorem~\ref{qthm:carlson-half-plane-uniqueness} on the pole-subtracted
+difference.  Then the two continuations agree in that half-plane.
+\end{proposition}
+
+\begin{proof}
+Subtract the common pole principal parts and define
+\[
+  F(J)=a_{\tau,1}(J,t)-a_{\tau,2}(J,t).
+\]
+The hypotheses make \(F\) holomorphic in the right half-plane and put it in
+the Carlson growth class.  Since both continuations reproduce the same
+integer-spin partial waves, \(F(n)=0\) for every \(n\in\mathbb Z_{\ge0}\).
+Quoted Theorem~\ref{qthm:carlson-half-plane-uniqueness} gives
+\(F\equiv0\).  Adding back the common pole principal parts proves the claim.
+\end{proof}
+
+The proposition is a uniqueness statement, not an existence theorem.  It
+shows why a Regge analysis must state the vertical-strip or half-plane growth
+bound of the complex-\(J\) continuation: without such a bound, infinitely
+many functions can agree at every integer \(J\) and differ away from the
+integers.  The pole assumptions used below are therefore part of the
+analytic input, not consequences of the physical partial-wave series alone.
+
 Assume that, for fixed \(t\) in a domain of interest, the signature-projected
 partial waves admit an analytic continuation \(a_\tau(J,t)\) from
 nonnegative integer \(J\) to a meromorphic function in a right half-plane, with
