@@ -109,37 +109,42 @@ Figure~\ref{fig:fp-gauge-slice} records the geometric content.
   \resizebox{0.86\textwidth}{!}{%
   \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \foreach \x/\bend in {-3.6/0.25,-2.1/-0.35,-0.55/0.28,1.05/-0.22,2.65/0.35} {
-      \draw[blue!70!black,line width=0.95pt]
+      \draw[blue!70!black,line width=0.95pt,densely dashed]
         (\x,-1.8)
         .. controls ({\x+\bend},-0.85) and ({\x-\bend},0.75) ..
         ({\x+0.08},1.85);
     }
+    \draw[blue!70!black,line width=1.35pt]
+      (-0.55,-1.8)
+      .. controls (-0.45,-0.85) and (-0.65,0.75) ..
+      (-0.55,1.85);
     \draw[red!75!black,line width=1.15pt]
       (-4.35,-0.55)
-      .. controls (-2.55,0.45) and (-1.15,0.45) ..
-      (-0.15,-0.05)
+      .. controls (-2.55,0.45) and (-1.25,0.35) ..
+      (-0.55,-0.22)
       .. controls (1.0,-0.65) and (2.45,-0.25) ..
       (4.25,0.65);
 
     \node[blue!70!black,fill=white,inner sep=2pt] at (-3.0,2.12)
-      {gauge orbits};
+      {dashed curves: gauge orbits};
     \node[red!75!black,fill=white,inner sep=2pt] at (2.65,1.08)
       {gauge slice \(F^A[\phi]=0\)};
 
-    \fill[black] (-0.95,0.42) circle (2.4pt);
-    \node[above left] at (-0.95,0.42) {\(\phi\)};
-    \fill[purple!80!black] (-0.42,-0.08) circle (2.4pt);
-    \node[below right,purple!80!black] at (-0.42,-0.08) {\(\phi^\xi\)};
+    \fill[black] (-0.55,1.03) circle (2.4pt);
+    \node[above left] at (-0.55,1.03) {\(\phi\)};
+    \draw[purple!80!black,line width=0.9pt,fill=white] (-0.55,-0.22) circle (3.0pt);
+    \node[below right,purple!80!black] at (-0.55,-0.22) {\(\phi^\xi\)};
     \draw[-{Latex[length=2mm]},purple!80!black,line width=0.9pt]
-      (-0.88,0.27) .. controls (-0.55,0.08) and (-0.36,0.03) .. (-0.42,-0.03);
+      (-0.55,0.82) .. controls (-0.65,0.40) and (-0.67,0.05) .. (-0.55,-0.12);
     \node[purple!80!black,fill=white,inner sep=2pt] at (-1.35,-0.55)
-      {gauge transformation};
+      {motion along one orbit};
 
   \end{tikzpicture}
   }
   \caption{A local gauge condition is a slice through field space.  The blue
-  curves are gauge orbits, the red curve is the surface \(F^A[\phi]=0\), and
-  \(\phi\) and \(\phi^\xi\) are two representatives of the same gauge orbit.
+  dashed curves are gauge orbits, the heavier red curve is the surface
+  \(F^A[\phi]=0\), and the filled point \(\phi\) and open point \(\phi^\xi\)
+  lie on the same highlighted gauge orbit.
   The Faddeev--Popov determinant is the Jacobian that converts integration
   along the orbit to integration through the slice.}
   \label{fig:fp-gauge-slice}

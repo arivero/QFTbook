@@ -867,32 +867,61 @@ coupled to the link variables.  The naive free lattice Dirac operator is
 \end{equation}
 Its zeros occur whenever every \(ap_\mu\) is \(0\) or \(\pi\).  In four
 dimensions this gives \(2^4=16\) light species near the corners of the
-Brillouin zone.
+Brillouin zone.  Figure~\ref{fig:lattice-fermion-doubling} displays the
+two-dimensional Brillouin-torus version, where edge identifications turn nine
+drawn zeros into four inequivalent continuum cones.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.72\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
-    \draw[->] (-3.2,0)--(3.35,0) node[right] {\(ap_1\)};
+    \draw[->] (-3.2,0)--(3.62,0) node[right] {\(ap_1\)};
     \draw[->] (0,-3.2)--(0,3.35) node[above] {\(ap_2\)};
     \draw (-3.1416,-0.08)--(-3.1416,0.08) node[below=4pt] {\(-\pi\)};
     \draw (3.1416,-0.08)--(3.1416,0.08) node[below=4pt] {\(\pi\)};
     \draw (-0.08,-3.1416)--(0.08,-3.1416) node[left=4pt] {\(-\pi\)};
     \draw (-0.08,3.1416)--(0.08,3.1416) node[left=4pt] {\(\pi\)};
     \draw[blue!55!black,thick] (-3.1416,-3.1416) rectangle (3.1416,3.1416);
-    \foreach \x in {-3.1416,0,3.1416} {
-      \foreach \y in {-3.1416,0,3.1416} {
-        \fill[red!75!black] (\x,\y) circle (2.7pt);
+    \draw[dotted,line width=0.7pt] (-3.1416,3.1416)--(3.1416,3.1416);
+    \draw[dotted,line width=0.7pt] (-3.1416,-3.1416)--(3.1416,-3.1416);
+    \draw[dotted,line width=0.7pt] (-3.1416,-3.1416)--(-3.1416,3.1416);
+    \draw[dotted,line width=0.7pt] (3.1416,-3.1416)--(3.1416,3.1416);
+    \fill[red!75!black] (0,0) circle (3.0pt);
+    \node[above right] at (0,0) {\((0,0)\)};
+    \foreach \x in {-3.1416,3.1416} {
+      \draw[red!75!black,line width=0.9pt,fill=white] (\x,0) rectangle ++(-0.08,0.08);
+      \draw[red!75!black,line width=0.9pt,fill=white] (\x,0) ++(-0.08,-0.08) rectangle ++(0.16,0.16);
+    }
+    \node[below right] at (3.1416,-0.18) {\((\pi,0)\)};
+    \foreach \y in {-3.1416,3.1416} {
+      \draw[red!75!black,line width=0.9pt,fill=white]
+        (-0.10,\y-0.08)--(0.10,\y-0.08)--(0,\y+0.10)--cycle;
+    }
+    \node[above right] at (0.12,3.1416) {\((0,\pi)\)};
+    \foreach \x in {-3.1416,3.1416} {
+      \foreach \y in {-3.1416,3.1416} {
+        \draw[red!75!black,line width=1.0pt] (\x-0.11,\y-0.11)--(\x+0.11,\y+0.11);
+        \draw[red!75!black,line width=1.0pt] (\x-0.11,\y+0.11)--(\x+0.11,\y-0.11);
       }
     }
+    \node[above right] at (3.1416,3.1416) {\((\pi,\pi)\)};
+    \foreach \x/\y in {0.36/-0.34,2.72/-0.52,0.36/2.60,2.72/2.60} {
+      \begin{scope}[shift={(\x,\y)},scale=0.24]
+        \draw[line width=0.75pt] (-0.7,-0.35)--(0,0.7)--(0.7,-0.35);
+        \draw[line width=0.75pt] (-0.45,-0.35)--(0,0.25)--(0.45,-0.35);
+      \end{scope}
+    }
     \node[align=center] at (0,-3.85)
-      {zeros of \(\sin(ap_\mu)\) in two dimensions;\\
-       four dimensions have \(2^4\) corners};
+      {edge identifications of the Brillouin torus group the nine displayed
+       zeros into\\
+       four inequivalent two-dimensional Dirac species; four dimensions have
+       \(2^4\) species};
   \end{tikzpicture}
   }
   \caption{The naive lattice derivative vanishes at every Brillouin-zone
-  corner.  Each corner supplies a continuum Dirac cone, producing species
-  doubling.}
+  corner.  In two dimensions the center, the two identified horizontal-edge
+  zeros, the two identified vertical-edge zeros, and the four identified
+  corners give four inequivalent continuum Dirac cones.}
   \label{fig:lattice-fermion-doubling}
 \end{figure}
 

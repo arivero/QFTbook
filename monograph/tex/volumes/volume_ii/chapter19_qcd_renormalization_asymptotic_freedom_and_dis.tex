@@ -258,7 +258,10 @@ self-interactions:
   \label{eq:qcd-ordinary-gluon-self-interactions}
 \end{align}
 These displayed action terms specify the convention before any momentum-flow
-choice is made for a vertex tensor.
+choice is made for a vertex tensor.  Figure~\ref{fig:qcd-ordinary-covariant-gauge-rules}
+records the corresponding propagator and vertex conventions in a notation that
+distinguishes ghost, gauge, present, and absent local vertices by line style as
+well as by labels.
 
 \begin{figure}[H]
   \centering
@@ -335,8 +338,8 @@ choice is made for a vertex tensor.
       \foreach \ang in {45,135,225,315}
         \draw[gluon] (v)--++(\ang:1.08);
       \fill (v) circle (2pt);
-      \node[align=center] at (0,-0.88)
-        {four-gluon term\\from \(S_{AAAA}\)};
+      \node[align=center,text width=2.5cm] at (0,-0.92)
+        {four-gluon\\interaction from\\ \(S_{AAAA}\)};
     \end{scope}
 
     \node[align=center,orange!85!black] at (0,-2.95)
@@ -508,34 +511,51 @@ To extract the logarithmic coefficient, take \(\widetilde A_\mu\) to be
 approximately constant inside a large box and to vanish smoothly outside.
 The box size supplies an infrared scale \(L\sim\mu^{-1}\).  In the constant
 region, the functional trace of a function of a differential operator reduces
-to an ordinary momentum integral:
+to an ordinary momentum integral.  Figure~\ref{fig:qcd-constant-background-box}
+separates the position-space infrared regulator from the momentum-space
+large-\(|k|\) tail whose logarithm gives the ultraviolet pole:
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.78\textwidth}{!}{%
+  \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \draw[thick] (-3.2,-1.55) rectangle (3.2,1.55);
-    \fill[blue!10] (-1.55,0) circle (1.35);
-    \draw[blue!65!black,thick] (-1.55,0) circle (1.35);
-    \foreach \x/\y/\dx/\dy in {-2.45/-0.62/0.66/0.42,-2.52/0.28/0.78/0.30,-1.88/0.92/0.58/-0.35,-1.12/-0.82/0.50/0.48,-0.72/0.28/0.35/-0.45} {
-      \draw[blue!65!black,thick,->] (\x,\y)--++(\dx,\dy);
-    }
-    \node[blue!65!black,align=center] at (-1.55,0)
+    \begin{scope}[shift={(-2.65,0)}]
+      \draw[thick] (-2.25,-1.35) rectangle (2.25,1.35);
+      \fill[blue!10] (-0.85,0) circle (1.02);
+      \draw[blue!65!black,thick] (-0.85,0) circle (1.02);
+      \node[blue!65!black,align=center] at (-0.85,0)
       {\(\widetilde A_\mu\simeq\text{const.}\)};
-    \node[align=center] at (1.42,0.82)
-      {\(\widetilde A_\mu\to0\)\\near the boundary};
-    \draw[->,thick] (1.2,0.35)--(-0.18,0.42);
-    \draw[<->,purple!75!black,thick] (-3.2,-1.92)--(3.2,-1.92);
-    \node[purple!75!black,below] at (0,-1.92)
-      {\(L\sim\mu^{-1}\)};
-    \node[align=center,orange!85!black] at (0,2.12)
-      {UV pole from \(k\to\infty\), infrared scale from the box};
+      \node[align=center] at (1.05,0.58)
+        {\(\widetilde A_\mu\to0\)\\near the boundary};
+      \draw[->,thick] (0.98,0.20)--(0.08,0.28);
+      \draw[<->,purple!75!black,thick] (-2.25,-1.68)--(2.25,-1.68);
+      \node[purple!75!black,below] at (0,-1.68)
+        {\(L\sim\mu^{-1}\)};
+      \node[align=center] at (0,-2.35) {position-space\\infrared regulator};
+    \end{scope}
+
+    \begin{scope}[shift={(3.05,0)}]
+      \draw[->,thick] (-1.75,0)--(1.95,0) node[right] {\(k_1\)};
+      \draw[->,thick] (0,-1.55)--(0,1.75) node[above] {\(k_2\)};
+      \draw[densely dashed,line width=0.85pt] (0,0) circle (0.62);
+      \node[below right] at (0.45,-0.44) {\(|k|=\mu\)};
+      \draw[orange!85!black,line width=1.25pt,->] (0.78,0.58)
+        arc[start angle=37,end angle=83,radius=0.98];
+      \draw[orange!85!black,line width=1.25pt,->] (-0.92,-0.72)
+        arc[start angle=218,end angle=168,radius=1.18];
+      \draw[orange!85!black,line width=1.25pt,->] (1.05,-1.00)--(1.65,-1.42);
+      \node[orange!85!black,align=center] at (0.95,1.16)
+        {large-\(|k|\)\\tail};
+      \node[orange!85!black] at (1.92,-1.48) {\(k\to\infty\)};
+      \node[align=center] at (0,-2.35) {momentum-space\\UV logarithm};
+    \end{scope}
   \end{tikzpicture}
   }
   \caption{The constant-background computation is a local extraction of the
   logarithmic coefficient.  The background is chosen nearly constant in a
   region of size \(L\), and the scale \(\mu\sim L^{-1}\) is used as the
-  infrared cutoff in the momentum integral.}
+  infrared cutoff in the momentum integral; the ultraviolet pole is the
+  large-momentum tail of the same local trace.}
   \label{fig:qcd-constant-background-box}
 \end{figure}
 

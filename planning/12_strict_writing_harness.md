@@ -391,6 +391,27 @@ Negative clarification is allowed only in a remark, footnote, or appendix after
 the positive construction has been given and only to prevent a specific
 misreading.
 
+## Figure Rule
+
+Figures are part of the mathematical exposition.  Every floated figure in the
+compiled monograph must have a `fig:` label and must be referenced from the
+surrounding text with a `Figure~\ref{fig:...}` callout that states its local
+role.  Inline TikZ is reserved for notation-sized schematics placed adjacent
+to the formula they abbreviate; caption-worthy diagrams belong in floated
+figures.  Semantic distinctions in figures must remain readable in grayscale
+through line style, weight, marker shape, or direct labeling, not color alone.
+Spacetime-axis conventions must either follow the project default, time
+vertical and space horizontal, or state the local departure before the figure.
+The detailed project policy is `planning/figure_style_guide.md`; the audit
+tool is
+
+```bash
+tools/audit_figures.py
+```
+
+and `tools/audit_figures.py --strict` is the gate once the existing figure
+backlog has been fully remediated.
+
 ## QFT Ordering Rule
 
 - Kallen--Lehmann spectral representation appears early.
