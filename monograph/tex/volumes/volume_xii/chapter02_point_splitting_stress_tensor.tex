@@ -540,6 +540,68 @@ and
 with compactly supported metric variations and boundary terms discarded.
 \end{proposition}
 
+\begin{proof}
+Set \(D_{\mu\nu}:=T'_{\mu\nu}-T_{\mu\nu}\).  The state-dependence clause in
+Definition~\ref{def:point-split-stress-tensor-prescription} implies that for
+any two Hadamard states \(\omega,\omega'\),
+\[
+  \omega(D_{\mu\nu})-\omega'(D_{\mu\nu})=0.
+\]
+Thus \(D_{\mu\nu}\) is a state-independent local covariant tensor constructed
+from \(g_{\mu\nu}\), the constant mass parameter \(m\), and curvature.  The
+conservation clause gives \(\nabla^\mu D_{\mu\nu}=0\).  The engineering
+dimension clause says that every monomial in \(D_{\mu\nu}\) has total dimension
+four, counting \(m\) as dimension one, \(g_{\mu\nu}\) as dimension zero, and
+each curvature tensor as dimension two.
+
+The dimension-four local covariant candidates split by powers of \(m\).  The
+only \(m^4\) tensor with two covariant indices and no derivatives is
+\(m^4g_{\mu\nu}\), and it is conserved because \(m\) is constant and
+\(\nabla g=0\).  At order \(m^2\) the possible curvature tensors are
+\(m^2R_{\mu\nu}\) and \(m^2Rg_{\mu\nu}\).  Their divergence is
+\[
+  \nabla^\mu(\alpha R_{\mu\nu}+\beta Rg_{\mu\nu})
+  =
+  \left(\frac{\alpha}{2}+\beta\right)\nabla_\nu R,
+\]
+using the contracted Bianchi identity.  Conservation therefore forces
+\(\beta=-\alpha/2\), giving the Einstein tensor \(G_{\mu\nu}\).
+
+It remains to classify the curvature-squared part.  In four dimensions the
+scalar local curvature densities of dimension four are spanned, modulo total
+derivatives, by
+\[
+  R^2,\qquad R_{\alpha\beta}R^{\alpha\beta},\qquad
+  R_{\alpha\beta\gamma\delta}R^{\alpha\beta\gamma\delta}.
+\]
+Their metric Euler derivatives are symmetric conserved tensors because the
+corresponding integrated counterterms are diffeomorphism invariant.  The
+four-dimensional Gauss--Bonnet combination
+\[
+  E_4
+  =
+  R_{\alpha\beta\gamma\delta}R^{\alpha\beta\gamma\delta}
+  -4R_{\alpha\beta}R^{\alpha\beta}
+  +R^2
+\]
+has vanishing metric variation on compactly supported variations in the
+interior, since its integral is topological.  Hence the Euler derivative of
+\(R_{\alpha\beta\gamma\delta}R^{\alpha\beta\gamma\delta}\) is a linear
+combination of the Euler derivatives of \(R^2\) and
+\(R_{\alpha\beta}R^{\alpha\beta}\).  These two remaining Euler derivatives are
+precisely \(I_{\mu\nu}\) and \(J_{\mu\nu}\) in
+\eqref{eq:ij-curvature-tensors-definition}.
+
+No further independent local covariant conserved tensor of this dimension is
+available: terms with explicit derivatives, such as
+\(\nabla_\mu\nabla_\nu R\), \(g_{\mu\nu}\Box R\), and \(\Box R_{\mu\nu}\),
+occur exactly in the Euler derivatives just described; total derivative
+scalar counterterms give boundary contributions under compactly supported
+metric variations; and tensors with more curvatures or more derivatives have
+dimension larger than four.  Therefore \(D_{\mu\nu}\) has the displayed
+four-parameter form.
+\end{proof}
+
 \begin{proposition}[Curvature-squared Euler tensors]
 \label{prop:curvature-squared-euler-tensors-point-splitting}
 With the convention of

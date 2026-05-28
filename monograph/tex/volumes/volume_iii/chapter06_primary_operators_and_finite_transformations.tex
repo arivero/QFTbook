@@ -577,6 +577,71 @@ factor \(\Omega_f\) from \(M_f\), and the remaining determinant factor supplies
 the primary weight \(\Omega_f^{-\Delta}\).
 \end{proposition}
 
+\begin{proof}
+For a conformal diffeomorphism \(f\), the Jacobian matrix
+\[
+  M^\mu{}_\nu(x)=\frac{\partial f^\mu}{\partial x^\nu}
+\]
+satisfies \(M^T M=\Omega_f(x)^2\mathbf 1\).  Hence
+\[
+  R^\mu{}_\nu(x):=\Omega_f(x)^{-1}M^\mu{}_\nu(x)
+\]
+is orthogonal on the Euclidean tangent space, and
+\[
+  \det M=\Omega_f^D\det R.
+\]
+On the connected orientation-preserving component, \(\det R=1\), so
+\(\Omega_f=(\det M)^{1/D}\); on an orientation-reversing component the
+orientation sign is part of the \(O(D)\) tensor representation and the
+positive scale is \(\Omega_f=|\det M|^{1/D}\).  The formulas above are written
+for the orientation-preserving component, which is the component used in the
+local conformal Ward identities.
+
+The abstract primary law proved in
+Theorem~\ref{thm:finite-primary-transformation-law} is
+\[
+  \mathcal O'_a(f(x))
+  =
+  \Omega_f(x)^{-\Delta}\rho(R_f(x))_a{}^b\mathcal O_b(x).
+\]
+For a covariant vector index, the orthogonal representation acts by
+\[
+  (R^{-1})^\nu{}_\mu
+  =
+  \Omega_f\frac{\partial x^\nu}{\partial f^\mu},
+\]
+because \(M^{-1}=\partial x/\partial f\).  For a contravariant vector index it
+acts by
+\[
+  R^\mu{}_\nu
+  =
+  \Omega_f^{-1}\frac{\partial f^\mu}{\partial x^\nu}.
+\]
+Tensor-product representations multiply these factors index by index.  Thus a
+covariant rank-\(s\) tensor acquires
+\[
+  \Omega_f^{-\Delta}\Omega_f^s
+  \frac{\partial x^{\nu_1}}{\partial f^{\mu_1}}\cdots
+  \frac{\partial x^{\nu_s}}{\partial f^{\mu_s}}
+  =
+  (\det M)^{-(\Delta-s)/D}
+  \frac{\partial x^{\nu_1}}{\partial f^{\mu_1}}\cdots
+  \frac{\partial x^{\nu_s}}{\partial f^{\mu_s}},
+\]
+which is \eqref{eq:finite-primary-covariant-tensor}.  Similarly a
+contravariant rank-\(s\) tensor acquires
+\[
+  \Omega_f^{-\Delta}\Omega_f^{-s}
+  \frac{\partial f^{\mu_1}}{\partial x^{\nu_1}}\cdots
+  \frac{\partial f^{\mu_s}}{\partial x^{\nu_s}}
+  =
+  (\det M)^{-(\Delta+s)/D}
+  \frac{\partial f^{\mu_1}}{\partial x^{\nu_1}}\cdots
+  \frac{\partial f^{\mu_s}}{\partial x^{\nu_s}},
+\]
+which is \eqref{eq:finite-primary-contravariant-tensor}.
+\end{proof}
+
 \begin{proposition}[Finite covariance of primary correlators]
 \label{prop:primary-correlator-finite-covariance}
 If the vacuum is invariant under the conformal transformation, correlation

@@ -536,20 +536,25 @@ enter the Euler density \(E_6\), or are type-D counterterm variations.
 
 \section{Anomaly Coefficients and Stress-Tensor Correlators}
 
-\begin{proposition}[Two-dimensional central charge and Weyl anomaly]
-\label{prop:two-dimensional-central-charge-weyl-anomaly}
-The same number \(c_{2d}\) in \eqref{eq:two-dimensional-weyl-anomaly} is the
-Virasoro central charge in the holomorphic stress-tensor OPE normalization
+\begin{convention}[\(2D\) central charge and anomaly]
+\label{conv:two-dimensional-central-charge-weyl-anomaly}
+When a two-dimensional CFT is coupled to a curved metric and its flat
+holomorphic stress tensor is normalized by the same metric source functional,
+the symbol \(c_{2d}\) denotes both the coefficient in
+\eqref{eq:two-dimensional-weyl-anomaly} and the Virasoro central charge in the
+holomorphic OPE normalization
 \[
   \langle T(z)T(0)\rangle=\frac{c_{2d}}{2z^4}.
 \]
-The equality of these two definitions is obtained by taking two metric
+The identification is the contact Ward identity obtained by taking two metric
 variations of \eqref{eq:two-dimensional-weyl-anomaly} around a flat metric and
-then rewriting the resulting contact Ward identity in complex coordinates.
-\end{proposition}
+then rewriting the result in complex coordinates.  The present chapter uses
+this identity as a normalization convention; it is not being introduced here
+as a separate theorem without proof.
+\end{convention}
 
-\begin{proposition}[Four-dimensional \(C_T\) and \(c_{\rm W}\)]
-\label{prop:four-dimensional-ct-cw-normalization}
+\begin{convention}[Four-dimensional \(C_T\) and \(c_{\rm W}\)]
+\label{conv:four-dimensional-ct-cw-normalization}
 Use the following local normalization of the separated flat-space
 stress-tensor two-point function:
 \[
@@ -570,22 +575,23 @@ where
   -
   \frac1D\delta_{\mu\nu}\delta_{\rho\sigma}.
 \]
-The same convention is developed systematically in
+The same two-point convention is developed systematically in
 Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames}.  With
-this normalization, the Weyl-squared coefficient is fixed by the separated
-stress-tensor two-point coefficient:
+this normalization, the symbol \(c_{\rm W}\) in
+\eqref{eq:four-dimensional-weyl-anomaly} is normalized so that the separated
+stress-tensor two-point coefficient is
 \begin{equation}
   C_T=\frac{40}{\pi^4}\,c_{\rm W}.
   \label{eq:four-dimensional-ct-cw-relation}
 \end{equation}
-This relation is a normalization statement.  It follows by taking two metric
-variations of the \(W^2\) term in
-\eqref{eq:four-dimensional-weyl-anomaly}, Fourier transforming the resulting
-quadratic curvature contact term, and matching the logarithmic scale
-dependence of the flat-space \(TT\) correlator to the displayed two-point
-normalization.  The Euler term begins to contribute independent information
-at the next metric variation.
-\end{proposition}
+The relation is a normalization statement for the metric source.  Its
+curvature-kernel verification is obtained by taking two metric variations of
+the \(W^2\) term in \eqref{eq:four-dimensional-weyl-anomaly}, Fourier
+transforming the resulting quadratic curvature contact term, and matching the
+logarithmic scale dependence of the flat-space \(TT\) correlator to the
+displayed two-point normalization.  The Euler term begins to contribute
+independent information at the next metric variation.
+\end{convention}
 
 \begin{proposition}[Four-dimensional anomaly map from \(TTT\) data]
 \label{prop:four-dimensional-anomaly-map-from-ttt}
