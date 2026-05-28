@@ -3465,6 +3465,273 @@ have been defined.  Asymptotic completeness is a large-time statement about
 the range of physical wave operators in the gauge-invariant Hilbert space.
 \end{openproblem}
 
+\section{Hadron Spectroscopy as an Ab Initio QCD Datum}
+\label{sec:qcd-hadron-spectroscopy-ab-initio}
+
+Hadron spectroscopy is not a list of model names assigned to observed peaks.
+It is a collection of spectral and scattering statements about the
+gauge-invariant Hilbert space of QCD.  A spectroscopic claim must therefore
+state which Hilbert-space object is being computed.  Stable hadrons are
+isolated eigenvalues of the mass operator \(M^2=P_\mu P^\mu\) in color-singlet
+superselection sectors.  Resonances are poles of color-singlet scattering
+amplitudes on specified nonphysical sheets, as in
+Chapter~\ref{ch:volume-ii-resonances-dressed-propagators}; they are not
+additional vectors in the asymptotic Hilbert space.  Finite-volume energy
+levels are regulator observables whose infinite-volume interpretation requires
+a quantization map, not a direct equality between a box eigenvalue and a
+resonance mass.
+
+Let \(I,J\) denote flavor labels and let \(i,j\) be color labels.  Typical
+local color-singlet sources are
+\begin{align}
+  M_{\Gamma,IJ}(x)
+  &=
+  \bar q_I(x)\Gamma q_J(x),
+  \label{eq:qcd-meson-local-source}\\
+  B_{\alpha_1\cdots\alpha_{N_c};I_1\cdots I_{N_c}}(x)
+  &=
+  \epsilon_{i_1\cdots i_{N_c}}\,
+  q^{i_1}_{\alpha_1 I_1}(x)\cdots
+  q^{i_{N_c}}_{\alpha_{N_c} I_{N_c}}(x),
+  \label{eq:qcd-baryon-local-source}\\
+  G_{\mathcal P}(x)
+  &=
+  \operatorname{tr}\mathcal P(F_{\mu\nu},D_\rho)(x).
+  \label{eq:qcd-glueball-local-source}
+\end{align}
+Here \(\Gamma\) is a Dirac matrix, possibly with covariant derivatives
+inserted and with Lorentz indices projected to a definite spin channel, and
+\(\mathcal P\) is a gauge-covariant polynomial whose color indices are traced
+using the convention fixed in \eqref{eq:qcd-casimir-definitions}.  Nonlocal
+sources are allowed, but their Wilson lines, smearing kernels, and endpoint
+renormalizations are part of the operator definition.  For example, a hybrid
+meson source may be represented by
+\[
+  \bar q_I(x)\Gamma^{\mu\nu} F_{\mu\nu}(x) q_J(x),
+\]
+or by a point-split bilinear with a Wilson-line path and a field-strength
+insertion on that path.  These are different regulator coordinates unless a
+continuum matching relation has been supplied.
+
+\begin{definition}[Hadron spectral extraction datum]
+\label{def:qcd-hadron-spectral-extraction-datum}
+A QCD hadron spectral extraction datum consists of:
+\begin{enumerate}
+  \item the quark masses, gauge group, global form, spacetime volume, boundary
+  conditions, and regulator action;
+  \item a list of gauge-invariant interpolating operators, including their
+  flavor, parity, charge conjugation, spin or cubic-group channel, smearing,
+  and renormalization prescriptions;
+  \item the Euclidean correlation matrix
+  \[
+    C_{AB}(t)=
+    \langle \mathcal O_A(t)\mathcal O_B^\dagger(0)\rangle
+    -\langle \mathcal O_A\rangle\langle\mathcal O_B^\dagger\rangle ;
+  \]
+  \item a finite-volume spectral extraction method, usually a generalized
+  eigenvalue problem for \(C(t)\);
+  \item a map from finite-volume energies to infinite-volume observables:
+  isolated stable masses for one-particle states, and scattering amplitudes or
+  pole positions for resonances;
+  \item continuum, chiral, heavy-quark, and infinite-volume extrapolations,
+  with the systematics stated separately.
+\end{enumerate}
+The datum is called \emph{ab initio} only when the matrix elements are defined
+from the QCD path integral or Hilbert space itself.  A constituent model may
+be useful as a coordinate chart or mnemonic, but it is not an ab initio
+definition of the spectrum.
+\end{definition}
+
+For a finite spatial torus and a reflection-positive lattice regulator, the
+spectral decomposition has the same form as
+\eqref{eq:lattice-glueball-spectral-matrix}:
+\[
+  C_{AB}(t)=
+  \sum_{n\ge0}Z_A^{(n)}\overline{Z_B^{(n)}}\ee^{-E_n t},
+  \qquad
+  Z_A^{(n)}=\bra{\Omega}\mathcal O_A\ket{n,L}.
+\]
+The vectors \(\ket{n,L}\) are finite-volume color-singlet eigenvectors.  If
+an eigenvalue converges, after removing the center-of-mass motion and taking
+the regulator limits, to an isolated one-particle mass below all relevant
+thresholds, the resulting number is a stable-hadron mass.  Above threshold the
+finite-volume levels instead sample the scattering operator.  In a single
+elastic two-particle channel with total momentum zero, particle masses
+\(m_1,m_2\), relative momentum \(k\), and energy
+\[
+  E=\sqrt{m_1^2+k^2}+\sqrt{m_2^2+k^2},
+\]
+the simplest unmixed partial-wave quantization condition is
+\begin{equation}
+  \delta_\ell(k)+\phi_{\ell}(q)=n\pi,
+  \qquad
+  q=\frac{kL}{2\pi},
+  \label{eq:qcd-luscher-single-channel-condition}
+\end{equation}
+where \(\delta_\ell\) is the infinite-volume elastic phase shift and
+\(\phi_\ell\) is a known geometric function built from the finite-volume zeta
+function.  Equation~\eqref{eq:qcd-luscher-single-channel-condition} is not a
+model of a resonance.  It is a finite-volume reconstruction theorem under
+elasticity, locality, and regulator hypotheses.  In realistic QCD channels
+one must use the coupled-channel determinant version, because cubic symmetry
+mixes partial waves and inelastic thresholds are often nearby.
+
+\begin{definition}[QCD resonance pole datum]
+\label{def:qcd-resonance-pole-datum}
+A hadronic resonance datum consists of a channel space of stable
+color-singlet asymptotic states, a physical-region scattering matrix
+\(S_{ab}(s)\), a specified analytic continuation across specified unitary
+cuts, and an isolated pole \(s_\ast\) of the continued matrix or of an
+equivalent partial-wave amplitude.  The mass and width coordinates
+\[
+  \sqrt{s_\ast}=M_\ast-\frac{\ii}{2}\Gamma_\ast
+\]
+are pole coordinates after a branch of the square root has been declared.
+For a broad or overlapping resonance, line-shape parameters on the real axis
+are not invariant substitutes for \(s_\ast\).
+\end{definition}
+
+This definition is the correct language for the \(\rho\), the light scalar
+isoscalar pole usually denoted \(f_0(500)\), many excited baryons, and
+near-threshold exotic candidates.  The notation ``tetraquark'', ``molecule'',
+``hybrid'', or ``glueball component'' is then a statement about operator
+overlaps, pole motion under controlled deformations, large-\(N_c\) scaling,
+or residue factorization.  It is not a separate definition of the state.
+
+The light pseudoscalar sector has additional structure because chiral symmetry
+and the anomaly constrain the low-energy coordinates.  Chapter~\ref{ch:volume-ii-21}
+derives the pion effective theory, the Gell-Mann--Oakes--Renner relation, and
+the Witten--Veneziano large-\(N_c\) formula for the singlet mass.  The vector
+and scalar resonances require the scattering-amplitude language above.  For
+\(\pi\pi\) scattering, write the isospin partial waves as \(t_\ell^I(s)\)
+with physical-region elastic unitarity
+\[
+  \operatorname{Im}t_\ell^I(s)
+  =
+  \rho_{\pi\pi}(s)|t_\ell^I(s)|^2,
+  \qquad
+  \rho_{\pi\pi}(s)=\sqrt{1-\frac{4m_\pi^2}{s}},
+\]
+below the first inelastic threshold in the chosen normalization.  Roy-type
+representations are twice-subtracted fixed-\(t\) dispersion relations
+projected to partial waves:
+\begin{equation}
+  \operatorname{Re}t_\ell^I(s)
+  =
+  k_\ell^I(s;a_0^0,a_0^2)
+  +
+  \sum_{I',\ell'}\int_{4m_\pi^2}^{\infty}\dd s'\,
+  K_{\ell\ell'}^{II'}(s,s')\,\operatorname{Im}t_{\ell'}^{I'}(s').
+  \label{eq:qcd-roy-equation-projected}
+\end{equation}
+The subtraction constants are the \(S\)-wave scattering lengths.  The kernels
+are fixed by crossing, analyticity, and partial-wave projection.  A pole
+extraction from \eqref{eq:qcd-roy-equation-projected} is therefore a
+controlled dispersive determination only after the high-energy input,
+inelastic channels, subtraction constants, and error correlations have been
+specified.  The same principle governs Roy--Steiner equations for
+\(\pi K\), \(\pi N\), and related channels.
+
+Heavy quarkonium uses a different controlled coordinate system.  If
+\[
+  m_Q\gg m_Qv\gg m_Qv^2
+\]
+is a useful hierarchy, the pNRQCD Hamiltonian of the preceding sections
+predicts the charmonium and bottomonium level spacings through a potential
+coordinate, spin-dependent \(1/m_Q\) operators, and ultrasoft corrections.
+The spin-averaged levels, hyperfine splittings, and fine structure are then
+matrix elements in a stated effective Hamiltonian.  They are not predictions
+of a nonrelativistic potential unless the matching coefficients, mass scheme,
+and ultrasoft treatment have been fixed as part of the datum.
+
+Baryon spectroscopy is likewise a QCD spectral problem, not a three-body
+mechanics problem imposed from outside.  For \(N_f=3\) light flavors, the
+lowest baryons organize approximately into flavor \(SU(3)\) octet and
+decuplet representations when the quark masses are close.  To first order in
+an octet symmetry-breaking Hamiltonian, the octet masses may be written as
+\[
+  M(Y,I)=M_0+aY
+  +b\left(I(I+1)-\frac{Y^2}{4}\right),
+  \label{eq:qcd-baryon-octet-gmo-chart}
+\]
+where \(Y\) is hypercharge and \(I\) is isospin.  This coordinate chart gives
+the Gell-Mann--Okubo relation
+\begin{equation}
+  2(M_N+M_\Xi)=3M_\Lambda+M_\Sigma .
+  \label{eq:qcd-baryon-gell-mann-okubo}
+\end{equation}
+For the decuplet, first-order octet breaking gives equal spacing along the
+hypercharge ladder.  These relations are symmetry consequences of a stated
+approximation; the actual QCD masses require lattice, dispersive, and chiral
+extrapolation inputs.
+
+\begin{proposition}[Octet and decuplet first-order mass relations]
+\label{prop:qcd-baryon-first-order-mass-relations}
+Assume that first-order \(SU(3)\)-breaking baryon masses are described by
+\eqref{eq:qcd-baryon-octet-gmo-chart} in the octet and by
+\(M_{10}(Y)=M_{10,0}+cY\) in the decuplet.  Then
+\eqref{eq:qcd-baryon-gell-mann-okubo} holds and
+\[
+  M_{\Sigma^\ast}-M_\Delta
+  =
+  M_{\Xi^\ast}-M_{\Sigma^\ast}
+  =
+  M_\Omega-M_{\Xi^\ast}.
+  \label{eq:qcd-decuplet-equal-spacing}
+\]
+\end{proposition}
+
+\begin{proof}
+For the octet,
+\[
+  (Y,I)_N=(1,\tfrac12),\quad
+  (Y,I)_\Lambda=(0,0),\quad
+  (Y,I)_\Sigma=(0,1),\quad
+  (Y,I)_\Xi=(-1,\tfrac12).
+\]
+Substitution in \eqref{eq:qcd-baryon-octet-gmo-chart} gives
+\[
+  M_N=M_0+a+\frac b2,\quad
+  M_\Xi=M_0-a+\frac b2,\quad
+  M_\Lambda=M_0,\quad
+  M_\Sigma=M_0+2b,
+\]
+which implies \eqref{eq:qcd-baryon-gell-mann-okubo}.  For the decuplet the
+hypercharges are \(1,0,-1,-2\).  A linear function of \(Y\) has equal
+successive differences, giving \eqref{eq:qcd-decuplet-equal-spacing}.
+\end{proof}
+
+In the large-\(N_c\) limit with \(N_f\) fixed, the baryon operator
+\eqref{eq:qcd-baryon-local-source} contains \(N_c\) quark fields.  The
+pair-counting argument around \eqref{eq:qcd-large-n-baryon-pair-counting}
+gives a mass of order \(N_c\), while collective spin-flavor splittings are
+typically \(O(1/N_c)\) in the rotor regime.  This is a controlled limit of QCD
+under its own hypotheses, and it explains why baryons require a separate
+large-\(N_c\) analysis from mesons.  It does not license importing
+constituent-quark spectra as QCD predictions.
+
+The practical hierarchy of spectroscopic control is therefore:
+\begin{itemize}
+  \item Stable mesons and baryons are isolated color-singlet mass eigenvalues;
+  their controlled extraction uses the finite-volume transfer matrix and
+  continuum extrapolation.
+  \item Elastic resonances are second-sheet poles of partial waves; their
+  controlled extraction uses Luscher, Roy, or Roy--Steiner reconstruction.
+  \item Heavy quarkonium is a color-singlet \(Q\bar Q\) spectrum; its
+  controlled extraction uses a matched NRQCD or pNRQCD Hamiltonian and
+  lattice checks.
+  \item Hybrids and glueballs are operator-overlap sectors and pole data; their
+  controlled extraction uses lattice GEVP, large-\(N_c\), and mixing analysis.
+  \item Exotic near-threshold states are poles plus residues in coupled
+  channels; their controlled extraction uses finite-volume coupled-channel
+  amplitudes.
+\end{itemize}
+Every entry in this list is a statement about QCD observables.  The words
+``quark model'', ``molecule'', ``diquark'', and ``flux-tube excitation'' may
+summarize patterns in a chosen coordinate system, but the monograph treats
+them as derived interpretations only after the corresponding spectral or pole
+datum has been defined.
+
 \section{Detector Observables and Energy Correlators}
 
 A nonperturbative formulation of high-energy QCD final states begins with

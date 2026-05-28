@@ -821,6 +821,11 @@ Current checks:
   generalized-eigenvalue problem in a finite two-state subspace, large-\(N\)
   glueball width power counting, and the cubic-group dimension split of a
   continuum \(J=2\) channel.
+- `qcd_spectroscopy_regge_checks.py`: exact algebra checks for the QCD
+  hadron-spectroscopy and Regge sections, including the octet
+  Gell-Mann--Okubo relation, decuplet equal spacing, Veneziano-residue
+  polynomial degrees and coefficients, and the rational coefficient in the
+  classical open-flux-tube Regge slope.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

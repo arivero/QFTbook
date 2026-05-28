@@ -1185,6 +1185,120 @@ The Regge trajectory is therefore a statement about analytic organization of
 a family of exchanged singularities, not an independent replacement for the
 spectral condition or for LSZ.
 
+\begin{definition}[Regge trajectory and daughter data]
+\label{def:regge-trajectory-daughter-data}
+Fix a signature \(\tau\), a \(t\)-domain, and a meromorphic continuation
+\(a_\tau(J,t)\) satisfying the vertical-strip hypotheses needed for
+\eqref{eq:sommerfeld-watson-signature}.  A Regge trajectory datum is a
+collection of pole curves
+\[
+  J=\alpha_r(t)-n,\qquad n\in \mathbb Z_{\ge0},
+\]
+together with residues \(r_{\tau,r,n}(t)\) and a statement of the background
+contour.  The curve \(n=0\) is called the leading trajectory and \(n>0\)
+curves are daughter trajectories.  This terminology is only meaningful after
+the complex-\(J\) continuation and its growth conditions have been specified.
+\end{definition}
+
+Daughters are not optional decorations if the amplitude is expected to encode
+an infinite family of crossed-channel resonances while retaining crossing
+symmetry and polynomial boundedness.  A daughter pole contributes
+\[
+  \mathcal M_{\tau,r,n}^{\rm pole}(s,t)
+  \sim
+  \eta_\tau(\alpha_r(t)-n)\,
+  \mathfrak r_{\tau,r,n}(t)
+  \left(\frac{s}{s_0(t)}\right)^{\alpha_r(t)-n}.
+\]
+It is therefore suppressed at fixed \(t\) and large \(s\) relative to the
+leading pole, but it can carry the crossed-channel particle poles required by
+the finite-spin spectrum.  The statement that a hadron family lies on a Regge
+trajectory means that the corresponding scattering amplitude has such a pole
+organization and that the trajectory passes through the physical pole
+positions.  It is not a statement about a constituent potential.
+
+\begin{proposition}[Veneziano residue and finite-spin exchange]
+\label{prop:veneziano-residue-finite-spin}
+Let
+\[
+  A(s,t)=g^2
+  \frac{\Gamma(-\alpha(s))\Gamma(-\alpha(t))}
+       {\Gamma(-\alpha(s)-\alpha(t))},
+  \qquad
+  \alpha(x)=\alpha_0+\alpha' x,\quad \alpha'>0 .
+  \label{eq:veneziano-beta-amplitude}
+\]
+At \(\alpha(s)=n\in\mathbb Z_{\ge0}\), \(A(s,t)\) has a simple pole whose
+residue is a polynomial of degree \(n\) in \(\alpha(t)\).  Explicitly,
+\[
+  A(s,t)
+  =
+  -\,\frac{g^2}{n!}\,
+  \frac{\prod_{r=1}^{n}\bigl(\alpha(t)+r\bigr)}
+       {\alpha(s)-n}
+  +O(1).
+  \label{eq:veneziano-residue-polynomial}
+\]
+Thus the \(n\)-th pole contains crossed-channel angular dependence no higher
+than spin \(n\), in the same sense that a polynomial of degree \(n\) in the
+crossed scattering variable decomposes into partial waves with
+\(\ell\le n\).
+\end{proposition}
+
+\begin{proof}
+Near \(\alpha(s)=n\), write \(\epsilon=\alpha(s)-n\).  Since
+\[
+  \Gamma(-n-\epsilon)
+  =
+  \frac{(-1)^{n+1}}{n!\,\epsilon}+O(1),
+\]
+one has
+\[
+  A(s,t)
+  =
+  \frac{g^2(-1)^{n+1}}{n!\,(\alpha(s)-n)}
+  \frac{\Gamma(-\alpha(t))}
+       {\Gamma(-n-\alpha(t))}
+  +O(1).
+\]
+Using
+\[
+  \frac{\Gamma(z)}{\Gamma(z-n)}
+  =
+  \prod_{r=1}^{n}(z-r)
+\]
+with \(z=-\alpha(t)\) gives
+\[
+  \frac{\Gamma(-\alpha(t))}
+       {\Gamma(-n-\alpha(t))}
+  =
+  (-1)^n\prod_{r=1}^{n}(\alpha(t)+r),
+\]
+which proves \eqref{eq:veneziano-residue-polynomial}.
+\end{proof}
+
+\begin{controlledapproximation}[Flux-tube slope and Regge phenomenology]
+\label{ca:flux-tube-slope-regge-phenomenology}
+If a highly excited mesonic state is approximated by a long rotating open flux
+tube of tension \(\sigma\) with endpoint masses neglected, the classical
+relations
+\[
+  E=\frac{\pi\sigma}{\omega},\qquad
+  J=\frac{\pi\sigma}{2\omega^2}
+\]
+give
+\[
+  J=\frac{E^2}{2\pi\sigma}.
+  \label{eq:open-flux-tube-regge-slope}
+\]
+This explains the frequently quoted slope
+\(\alpha'_{\rm open}=1/(2\pi\sigma)\) as a long-string approximation.  It is
+not a nonperturbative derivation of the QCD hadron spectrum.  Endpoint masses,
+spin, string breaking, mixing with multi-hadron channels, and the fact that
+most physical resonances are second-sheet poles must be supplied before
+\eqref{eq:open-flux-tube-regge-slope} becomes a quantitative QCD statement.
+\end{controlledapproximation}
+
 The leading even-signature vacuum singularity is called the Pomeron.  In a
 pure pole model with
 \[
