@@ -33,8 +33,11 @@ only the finite-cutoff or effective description from which the tree kernel is
 computed.
 
 The connected \(\phi_1\phi_1\to\phi_1\phi_1\) tree amplitude receives
-\(s\)-, \(t\)-, and \(u\)-channel exchange contributions:
-\[
+\(s\)-, \(t\)-, and \(u\)-channel exchange contributions.  The three routings
+and the solid/dashed line convention are fixed in
+Figure~\ref{fig:exchange-model-stu-tree-routings}.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[baseline=-0.5ex,scale=0.86,
   one/.style={line width=0.9pt},
   two/.style={dash pattern=on 3pt off 2pt,line width=0.9pt}]
@@ -68,7 +71,12 @@ The connected \(\phi_1\phi_1\to\phi_1\phi_1\) tree amplitude receives
     \node at (0,-1.18) {\(u\)};
   \end{scope}
 \end{tikzpicture}
-\]
+\caption{Tree exchange routings in the cubic scalar model.  Solid directed
+lines are external \(\phi_1\) legs and the dashed internal line is the exchanged
+\(\phi_2\) field.  The labels \(s,t,u\) specify which Mandelstam invariant flows
+through the internal denominator.}
+\label{fig:exchange-model-stu-tree-routings}
+\end{figure}
 With all external momenta on the \(\phi_1\) mass shell, define
 \[
   s=-(k_1+k_2)^2,\qquad

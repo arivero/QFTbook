@@ -544,8 +544,10 @@ Thus a single local interaction produces vertices with zero, one, two, or
 three quantum fluctuation legs.  The first term is a purely background
 contribution to the zero-loop effective action; the terms with
 \(\xi\)-legs are contracted in the shifted functional integral; and
-the source supplies one more one-point quantum vertex.  Diagrammatically:
-\[
+the source supplies one more one-point quantum vertex.  The shifted-vertex
+bookkeeping is displayed in Figure~\ref{fig:background-field-shifted-cubic-vertices}.
+\begin{figure}[!ht]
+\centering
   \begin{tikzpicture}[>=Stealth,scale=0.86,
     q/.style={line width=0.75pt},
     bg/.style={line width=0.75pt,densely dotted,blue!70!black},
@@ -577,7 +579,12 @@ the source supplies one more one-point quantum vertex.  Diagrammatically:
     \fill[orange!85!black] (5.95,0) circle (1.8pt);
     \node[orange!85!black] at (5.6,-0.48) {\(J_\varphi\xi\)};
   \end{tikzpicture}
-\]
+\caption{Cubic interaction after the background-field split
+\(\phi=\varphi+\xi\).  Dotted blue legs are background fields, solid legs are
+quantum fluctuations, and the orange one-point vertex is the source term fixed
+by the condition \(\langle\xi\rangle_\varphi=0\).}
+\label{fig:background-field-shifted-cubic-vertices}
+\end{figure}
 Since \(J_{\varphi}\) is fixed by \(\vev{\xi}=0\), all tadpole
 subdiagrams in the shifted theory cancel in the sum.
 

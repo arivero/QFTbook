@@ -69,9 +69,11 @@ because this is the value for which \(u=0\).  The analytic function whose
 boundary value is the physical amplitude also has the lower \(s\)-channel
 threshold at \(s=4m^2\); for \(4m^2<s<4m^2-t\) the point is on the same
 right-hand cut but outside the physical \(s\)-channel scattering interval for
-that fixed \(t\).
+that fixed \(t\).  Figure~\ref{fig:fixed-t-physical-edge-cuts} fixes the
+corresponding \(s\)-plane branch conventions.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \begin{scope}
     \node[draw,circle,fill=gray!15,minimum size=0.78cm,inner sep=0pt] (a) at (0,0) {};
@@ -110,7 +112,12 @@ that fixed \(t\).
       {physical\\upper edge};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Fixed-\(t\) physical edge and cuts in the \(s\)-plane.  The left panel
+fixes the center-of-mass kinematics and the angular variable.  The right panel
+shows the first-sheet right-hand cut, the crossed cut, possible stable poles,
+and the upper-edge boundary value used for the physical amplitude.}
+\label{fig:fixed-t-physical-edge-cuts}
+\end{figure}
 
 For fixed real \(t<0\), the physical amplitude is the upper-edge boundary
 value
@@ -2536,9 +2543,11 @@ the candidate singular locus in the external invariants.  Equivalently, the
 Gram matrix \(G_{ij}=q_i\cdot q_j\) has a null vector
 \((\alpha_1,\alpha_2,\alpha_3)\) with strictly positive entries.  Thus the
 condition is not only \(\det G=0\), but the existence of a positive null vector
-for the oriented on-shell momenta.
+for the oriented on-shell momenta.  The graph and vector-closure data are shown
+in Figure~\ref{fig:triangle-landau-positive-parameter-data}.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.86]
   \begin{scope}
     \coordinate (a) at (-1.25,0.25);
@@ -2572,7 +2581,12 @@ for the oriented on-shell momenta.
       {positive-parameter\\vector closure};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Triangle Landau data.  The left panel labels the external momentum
+flow in the triangle graph.  The right panel shows the positive-parameter
+closure condition \(\alpha_1q_1+\alpha_2q_2+\alpha_3q_3=0\) for oriented
+on-shell internal momenta.}
+\label{fig:triangle-landau-positive-parameter-data}
+\end{figure}
 
 In the equal-internal-mass planar example, the Euclideanized internal momentum
 vectors in the sketch all have length \(m\).  The external invariant \(M_a\)
@@ -2588,9 +2602,11 @@ configuration shown, and no positive relation
 \(M_1,M_2>\sqrt2\,m\), the vectors can be arranged with the origin in their
 convex hull; the positive-parameter Landau equation can then be satisfied.
 The remaining invariant is fixed by this geometry, giving a singularity at
-the corresponding value \(P_3^2=-M_3^2\).
+the corresponding value \(P_3^2=-M_3^2\).  The convex-hull distinction is drawn
+in Figure~\ref{fig:triangle-landau-convex-hull-criterion}.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.84]
   \begin{scope}
     \node[align=center] at (0,1.95)
@@ -2628,7 +2644,12 @@ the corresponding value \(P_3^2=-M_3^2\).
       {origin inside convex hull\\positive closure possible};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Convex-hull form of the positive-parameter Landau condition in the
+equal-internal-mass triangle example.  When the origin lies outside the hull of
+the oriented on-shell vectors no positive closure exists; when it lies inside,
+the stationary equation can be solved with \(\alpha_i>0\).}
+\label{fig:triangle-landau-convex-hull-criterion}
+\end{figure}
 
 The vector sketch represents the Coleman--Norton condition.  The actual
 singular locus is obtained by solving the three on-shell equations together

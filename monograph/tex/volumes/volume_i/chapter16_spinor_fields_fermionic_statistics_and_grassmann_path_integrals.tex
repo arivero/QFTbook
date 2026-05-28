@@ -2058,9 +2058,41 @@ spinor-index kernel of the vertex is
 \]
 The two terms are the direct and exchange contractions. Their relative sign
 is the sign obtained by moving odd fields through one another before applying
-the Gaussian contraction.
+the Gaussian contraction.  Figure~\ref{fig:four-fermion-direct-exchange-vertex}
+draws the two index contractions; the arrows are a bookkeeping convention for
+the ordered contraction from \(\psi\) to \(\bar\psi\), not an additional
+dynamical orientation.
 
-\begin{center}
+For external spinors \(\zeta_i\) selected by the LSZ table, the corresponding
+tree-level four-fermion amplitude has the index contraction
+\[
+  \mathcal M
+  =
+  \bar\zeta_3{}^\gamma\bar\zeta_4{}^\delta\,
+  K_{\alpha\beta}{}^{\gamma\delta}\,
+  \zeta_1^\alpha\zeta_2^\beta .
+\]
+For two identical incoming and two identical outgoing charge-\(+\) particles
+this reads
+\[
+  \mathcal M
+  =
+  \ii g
+  \left[
+    (\bar\zeta_3\zeta_1)(\bar\zeta_4\zeta_2)
+    -
+    (\bar\zeta_4\zeta_1)(\bar\zeta_3\zeta_2)
+  \right],
+\]
+with \(\zeta_i\) replaced by the charge and in/out spinors appropriate to the
+chosen process. This example is the first template for fermionic
+Feynman diagrams: every vertex has a local index tensor, every internal line
+is the time-ordered two-point function, and every exchange of odd fields
+contributes its parity sign.
+\end{proposition}
+
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \node[fill=black,circle,inner sep=2pt] (v1) at (0,0) {};
   \coordinate (a1) at (-1.7,0.85);
@@ -2092,35 +2124,12 @@ the Gaussian contraction.
   \node[right] at (d2) {\(\delta\)};
   \node[below] at (5.2,-1.25) {\(-\,\ii g\,\delta_\alpha{}^\delta\delta_\beta{}^\gamma\)};
 \end{tikzpicture}
-\end{center}
-
-For external spinors \(\zeta_i\) selected by the LSZ table, the corresponding
-tree-level four-fermion amplitude has the index contraction
-\[
-  \mathcal M
-  =
-  \bar\zeta_3{}^\gamma\bar\zeta_4{}^\delta\,
-  K_{\alpha\beta}{}^{\gamma\delta}\,
-  \zeta_1^\alpha\zeta_2^\beta .
-\]
-For two identical incoming and two identical outgoing charge-\(+\) particles
-this reads
-\[
-  \mathcal M
-  =
-  \ii g
-  \left[
-    (\bar\zeta_3\zeta_1)(\bar\zeta_4\zeta_2)
-    -
-    (\bar\zeta_4\zeta_1)(\bar\zeta_3\zeta_2)
-  \right],
-\]
-with \(\zeta_i\) replaced by the charge and in/out spinors appropriate to the
-chosen process. This example is the first template for fermionic
-Feynman diagrams: every vertex has a local index tensor, every internal line
-is the time-ordered two-point function, and every exchange of odd fields
-contributes its parity sign.
-\end{proposition}
+\caption{Direct and exchange contractions in the first local four-fermion
+vertex.  The exchange contraction differs by the transposition of the two
+outgoing spinor indices and by the Berezin sign from moving odd variables into
+the contracted order.}
+\label{fig:four-fermion-direct-exchange-vertex}
+\end{figure}
 
 \begin{proof}
 At first order in \(g\), the interaction insertion is the local product

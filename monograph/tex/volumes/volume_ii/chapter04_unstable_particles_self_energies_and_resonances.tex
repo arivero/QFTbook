@@ -246,7 +246,10 @@ outgoing spatial direction.  Such a function is not in \(L^2(\R)\), so it is
 not an eigenvector of the self-adjoint Hamiltonian on the Hilbert space.
 \end{proof}
 
-\begin{center}
+The spatial growth and temporal decay described in the proof are summarized in
+Figure~\ref{fig:resonance-k-plane-outgoing-growth}.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.9]
   \begin{scope}
     \draw[->,line width=0.7pt] (-0.15,0)--(5.65,0) node[right] {\(x\)};
@@ -283,16 +286,24 @@ not an eigenvector of the self-adjoint Hamiltonian on the Hilbert space.
     \node at (0,-1.95) {\(E=k^2/(2\mu)\)};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Outgoing Gamow behavior and the \(k\)-plane location of poles in the
+one-dimensional resonance model.  The left panel distinguishes temporary
+localization from outward flux; the right panel separates a bound-state pole on
+the positive imaginary \(k\)-axis from a resonance pole with
+\(\operatorname{Im} k_\ast<0\).}
+\label{fig:resonance-k-plane-outgoing-growth}
+\end{figure}
 
 Because \(E=k^2/(2\mu)\), the energy plane is a two-sheeted cover of the
 \(k\)-plane. Bound-state poles lie on the positive imaginary \(k\)-axis and
 map to negative real energies on the physical sheet. Resonance poles with
 \(\operatorname{Re}k_\ast>0\) and \(\operatorname{Im}k_\ast<0\) map to
 complex energies below the positive real axis on the sheet reached by
-continuing through the scattering cut.
+continuing through the scattering cut.  The continuation through the cut is
+shown explicitly in Figure~\ref{fig:resonance-second-sheet-energy-plane}.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \draw[->,line width=0.7pt] (-2.25,0)--(4.45,0)
     node[right] {\(\operatorname{Re}E\)};
@@ -323,7 +334,11 @@ continuing through the scattering cut.
     {second sheet\\lower lip};
   \fill (0,0) circle (1.8pt) node[below left] {\(0\)};
 \end{tikzpicture}
-\end{center}
+\caption{Energy-plane branch structure for a resonance pole.  The first sheet
+is reached from the upper edge of the positive real cut; crossing the cut gives
+the second-sheet lower-edge branch on which the resonance pole appears.}
+\label{fig:resonance-second-sheet-energy-plane}
+\end{figure}
 
 \section{The Dressed Propagator}
 
@@ -584,7 +599,11 @@ The denominator \(F_{\rm I}=m_R^2-s-\ii0-\Sigma_1^R\) therefore has the
 opposite imaginary part, up to the infinitesimal boundary prescription.
 \end{proof}
 
-\begin{center}
+Figure~\ref{fig:self-energy-cut-continuation} records the two analytic
+continuations used in the self-energy computation: the \(k^0\) contour
+deformation and the corresponding discontinuity across the \(s\)-channel cut.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \begin{scope}
     \draw[->,line width=0.7pt] (-2.55,0)--(3.0,0)
@@ -620,7 +639,12 @@ opposite imaginary part, up to the infinitesimal boundary prescription.
     \draw[cyan!70!black,->,line width=0.9pt] (3.2,-0.78)--(3.2,-0.12);
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Cut continuation for the one-loop self-energy.  The left panel shows
+the \(k^0\) continuation from the upper edge past the on-shell singularities.
+The right panel records the sign convention for the logarithm on the two sides
+of the \(s\)-channel cut beginning at \(4m_1^2\).}
+\label{fig:self-energy-cut-continuation}
+\end{figure}
 
 Choose a real resonance mass parameter \(M_R\) by the condition that the real
 part of the denominator vanishes at \(s=M_R^2\),

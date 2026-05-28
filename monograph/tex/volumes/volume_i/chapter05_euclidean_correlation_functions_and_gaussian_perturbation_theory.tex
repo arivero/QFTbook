@@ -1154,9 +1154,12 @@ At second order,
 contains disconnected contractions and connected contractions.  The connected
 sector already has distinct topologies: the two vertices may be joined by two
 propagators with one tadpole at each vertex, or they may be joined by four
-propagators.
+propagators.  Figure~\ref{fig:anharmonic-second-order-vacuum-topologies}
+records this separation between disconnected vacuum products and the connected
+two-vertex topologies that enter the linked-cluster proof.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[scale=0.82]
   \node at (-0.25,1.08) {\scriptsize disconnected};
   \foreach \x in {-0.9,0.4} {
@@ -1198,7 +1201,12 @@ propagators.
   \draw[thick,blue!65!black]
     (5.05,0) .. controls (5.45,-0.2) and (5.95,-0.2) .. (6.35,0);
 \end{tikzpicture}
-\end{center}
+\caption{Second-order Wick topologies in the anharmonic oscillator expansion.
+The left pair is a product of disconnected one-vertex vacuum bubbles.  The two
+right diagrams are connected two-vertex vacuum contractions: two inter-vertex
+lines with one tadpole at each vertex, and four inter-vertex lines.}
+\label{fig:anharmonic-second-order-vacuum-topologies}
+\end{figure}
 
 \begin{proposition}[Linked-cluster formula for the cutoff expansion]
 \label{prop:linked-cluster-formula-cutoff-anharmonic}
@@ -1451,8 +1459,10 @@ two-point diagrams.
 \end{center}
 
 Consequently the normalized correlator is represented by connected diagrams
-with the two external insertions fixed at \(\tau\) and \(0\):
-\begin{center}
+with the two external insertions fixed at \(\tau\) and \(0\), as displayed in
+Figure~\ref{fig:anharmonic-normalized-two-point-connected-diagrams}:
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[baseline=-0.5ex,scale=0.66]
   \fill[red!80!black] (0,0) circle (2.4pt);
   \draw[thick] (0,0) -- (1.1,0);
@@ -1491,7 +1501,12 @@ with the two external insertions fixed at \(\tau\) and \(0\):
   \draw[thick,blue!65!black] (9.05,0) .. controls (9.1,-0.72) and (9.47,-0.72) .. (9.52,0);
   \node at (10.42,0) {$+\cdots$};
 \end{tikzpicture}
-\end{center}
+\caption{First connected topologies contributing to the normalized two-point
+function.  Red endpoints mark the fixed insertions \(q(\tau)\) and \(q(0)\);
+black vertices are interaction insertions; blue arcs are contracted oscillator
+fields.  Vacuum components are absent because they cancel against \(Z_g\).}
+\label{fig:anharmonic-normalized-two-point-connected-diagrams}
+\end{figure}
 The same path integral, with the same Euclidean ordering convention, computes
 \(\bra0\widehat q_E(0)\widehat q_E(\tau)\ket0\) when \(\tau<0\). Thus
 \[

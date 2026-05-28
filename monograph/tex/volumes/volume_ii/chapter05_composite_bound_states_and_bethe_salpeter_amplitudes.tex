@@ -207,9 +207,12 @@ analytic background terms.  They do not contain the
 \(f(s)\sim\pi/(m\sqrt{4m^2-s})\) threshold enhancement that drives the
 denominator displayed above.  Including the crossed and omitted kernels in a
 more complete Bethe--Salpeter kernel can change the numerical pole position;
-the calculation below is the leading single-channel statement.
+the calculation below is the leading single-channel statement.  The channel
+separation and the pole denominator are organized in
+Figure~\ref{fig:chain-amplitude-single-channel}.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.82,
   leg/.style={line width=0.8pt},
   dot/.style={fill=gray!25,draw,circle,inner sep=1.8pt}]
@@ -240,7 +243,12 @@ the calculation below is the leading single-channel statement.
       {pole condition:\\\(1+g f(s)/(8\pi)=0\)};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Single-channel bubble-chain contribution to the invariant amplitude.
+The gray vertex denotes the contact kernel in the selected channel, while the
+successive two-particle bubbles generate the denominator whose zero is the
+leading pole criterion \(1+g f(s)/(8\pi)=0\).}
+\label{fig:chain-amplitude-single-channel}
+\end{figure}
 
 Near the two-particle threshold from below, write
 \[
@@ -802,7 +810,12 @@ fixed-\(t\) dispersion formulae are not independent terms in a meromorphic ansat
 their positions and residues are the spectral and Bethe--Salpeter data of the
 stable one-particle sector.
 
-\begin{center}
+Figure~\ref{fig:bethe-salpeter-kernel-homogeneous-equation} collects the three
+operator statements used in this paragraph: the definition of the two-particle
+irreducible kernel, its iteration into the scattering operator, and the
+homogeneous eigenvalue equation for a stable bound-state amplitude.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.82,
   leg/.style={line width=0.82pt},
   kern/.style={draw,fill=blue!8,rounded corners=2pt,minimum width=0.7cm,minimum height=1.25cm,inner sep=0pt},
@@ -858,7 +871,12 @@ stable one-particle sector.
       {homogeneous equation:\\\((\mathbf 1-\widehat V_P)\Psi_B=0\)};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Bethe--Salpeter kernel, scattering equation, and homogeneous
+bound-state equation.  The dashed cut marks a two-particle reducible
+contribution, which is excluded from \(\mathcal K_P\) and generated instead by
+iterating \(\mathcal K_P\mathcal G_P\).}
+\label{fig:bethe-salpeter-kernel-homogeneous-equation}
+\end{figure}
 
 \section{Ladder Limit}
 

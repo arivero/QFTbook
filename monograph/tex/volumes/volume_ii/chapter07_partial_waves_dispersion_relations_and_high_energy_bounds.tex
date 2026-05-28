@@ -120,9 +120,11 @@ eigenvalue-one condition
 Section~\ref{sec:bethe-salpeter-homogeneous-equation}.  The high-energy
 estimate below depends on the nearest singular location \(t_0\); the associated
 residue becomes relevant when the fixed-\(t\) dispersion relation is written
-with explicit pole terms.
+with explicit pole terms.  Figure~\ref{fig:lehmann-ellipse-nearest-singularity}
+shows how this nearest singularity fixes the available Lehmann ellipse.
 
-\begin{center}
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
   \draw[->,line width=0.75pt] (-4.8,0)--(5.05,0)
     node[below] {\(\operatorname{Re}x\)};
@@ -161,7 +163,12 @@ with explicit pole terms.
   \node[align=center] at (0,-1.75)
     {ellipses have foci at \(x=\pm1\)};
 \end{tikzpicture}
-\end{center}
+\caption{Lehmann ellipses in the angular variable \(x=\cos\theta\).  The
+physical interval has foci at \(x=\pm1\).  The nearest crossed-channel
+singularity fixes the largest available ellipse \(\gamma_s\); smaller ellipses
+with positive distance from the singular set are used in the estimates.}
+\label{fig:lehmann-ellipse-nearest-singularity}
+\end{figure}
 
 The angular analyticity hypothesis used below is this precise statement: for
 each such \(s\), the boundary value \(\mathcal M(s+\ii0,x)\), continued in
@@ -1511,7 +1518,10 @@ momentum, then
   L^2=\bar L^2+O(\bar L).
 \]
 
-\begin{center}
+The rearrangement step and the angular-analyticity domain are illustrated in
+Figure~\ref{fig:partial-wave-box-profile-lehmann-domain}.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
   \begin{scope}
     \draw[->,line width=0.75pt] (-2.9,0)--(3.15,0)
@@ -1544,7 +1554,12 @@ momentum, then
       {allowed\\weights};
   \end{scope}
 \end{tikzpicture}
-\end{center}
+\caption{Angular point inside the Lehmann ellipse and the minimizing
+partial-wave weight profile.  For \(x>1\) inside \(\gamma_s\), positivity of
+\(P_\ell(x)\) makes the extremal lower-bound profile a filled box
+\(b_\ell\) up to the endpoint angular momentum \(L\).}
+\label{fig:partial-wave-box-profile-lehmann-domain}
+\end{figure}
 
 For \(x>1\), write \(x=\cosh\eta\), \(\eta>0\).  The integral representation
 \[
@@ -2532,7 +2547,10 @@ Equivalently,
 \]
 where \(\gamma\) encloses \(s\) and the subtraction points before deformation.
 
-\begin{center}
+Figure~\ref{fig:subtracted-fixed-t-cauchy-contour} shows the contour
+deformation used in the subtracted fixed-\(t\) dispersion formula.
+\begin{figure}[!ht]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
   \draw[->,line width=0.75pt] (-4.35,0)--(4.55,0)
     node[below] {\(\operatorname{Re}s'\)};
@@ -2563,7 +2581,12 @@ where \(\gamma\) encloses \(s\) and the subtraction points before deformation.
   \node[blue!70!black,align=center,fill=white,inner sep=1.5pt] at (0,-1.88)
     {deformed contour:\\cuts plus subtraction residues};
 \end{tikzpicture}
-\end{center}
+\caption{Subtracted fixed-\(t\) Cauchy contour.  The original contour
+\(\gamma\) encloses the evaluation point and subtraction points; after
+deformation it is replaced by integrals along the right- and left-hand cuts,
+with the subtraction factors suppressing the large-circle contribution.}
+\label{fig:subtracted-fixed-t-cauchy-contour}
+\end{figure}
 
 Let
 \[
