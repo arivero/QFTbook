@@ -815,7 +815,8 @@ Current checks:
   \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, and the
   excited-level expansion coefficients with closed-string level matching, and
   the displayed baryonic \(Y\)-string Steiner lengths in the equilateral and
-  \(120^\circ\)-threshold cases.
+  \(120^\circ\)-threshold cases, together with the open/closed equality of
+  the worldsheet Hagedorn coefficient.
 - `qcd_glueball_spectrum_checks.py`: exact finite checks for the pure
   Yang--Mills glueball-spectrum extraction section, including the exact
   generalized-eigenvalue problem in a finite two-state subspace, large-\(N\)

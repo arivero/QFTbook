@@ -2175,6 +2175,124 @@ transverse modes, while the \(1/L^3\) and later terms are effective-string
 matching data unless a universality theorem for the relevant order and
 boundary condition has been established.
 
+\subsection{Oscillator Growth and the Flux-String Hagedorn Scale}
+
+The degeneracy of the oscillator levels in
+\eqref{eq:qcd-string-open-oscillator-generating} grows exponentially.  This
+growth is a statement about the effective long-string Hilbert space.  The
+deconfinement transition of the four-dimensional gauge theory is a property of
+the thermal gauge-theory transfer matrix and is discussed in Volume~X.  The
+calculation here gives the scale at which a gas of arbitrarily long
+effective-string states ceases to have a finite canonical partition function
+inside the regime where the long-string description is used.
+
+\begin{proposition}[Colored-partition growth and the string Hagedorn scale]
+\label{prop:qcd-string-hagedorn-growth}
+Let \(p_c(N)\) be the coefficient of \(q^N\) in
+\[
+  \prod_{n=1}^\infty(1-q^n)^{-c},
+  \qquad c\in\mathbb Z_{>0}.
+\]
+Then
+\begin{equation}
+  \log p_c(N)
+  =
+  2\pi\sqrt{\frac{cN}{6}}+O(\log N)
+  \qquad (N\to\infty).
+  \label{eq:qcd-string-colored-partition-asymptotic}
+\end{equation}
+For the Nambu--Goto reference spectrum of a long confining flux string with
+\(c_\perp=D-2\) transverse massless fields and tension \(\sigma\), the
+oscillator density has the exponential scale
+\begin{equation}
+  \rho(E)\sim \exp(\beta_{\rm H}^{\rm ws} E),
+  \qquad
+  \beta_{\rm H}^{\rm ws}
+  =
+  \sqrt{\frac{\pi c_\perp}{3\sigma}} .
+  \label{eq:qcd-string-worldsheet-hagedorn-beta}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Set \(q=\ee^{-\varepsilon}\), with \(\varepsilon>0\).  The logarithm of the
+oscillator generating function is
+\[
+  -c\sum_{n\ge1}\log(1-\ee^{-n\varepsilon})
+  =
+  c\sum_{m\ge1}\frac1m\frac{\ee^{-m\varepsilon}}{1-\ee^{-m\varepsilon}} .
+\]
+As \(\varepsilon\downarrow0\), comparison with the corresponding Riemann sum,
+or equivalently the modular transformation of the Dedekind eta function, gives
+\[
+  \log\prod_{n=1}^{\infty}(1-\ee^{-n\varepsilon})^{-c}
+  =
+  \frac{\pi^2 c}{6\varepsilon}+O(\log\varepsilon).
+  \label{eq:qcd-string-partition-small-epsilon}
+\]
+Cauchy's coefficient formula writes \(p_c(N)\) as the contour integral of
+\(q^{-N-1}\prod_n(1-q^n)^{-c}\).  The exponential part of the integrand on the
+positive saddle is
+\[
+  N\varepsilon+\frac{\pi^2 c}{6\varepsilon}.
+\]
+The stationary point is
+\[
+  \varepsilon_*=\pi\sqrt{\frac{c}{6N}},
+\]
+and the saddle exponent is
+\[
+  N\varepsilon_*+\frac{\pi^2 c}{6\varepsilon_*}
+  =
+  2\pi\sqrt{\frac{cN}{6}} .
+\]
+Gaussian fluctuations and the \(O(\log\varepsilon)\) term in
+\eqref{eq:qcd-string-partition-small-epsilon} contribute only logarithmic
+corrections to \(\log p_c(N)\), proving
+\eqref{eq:qcd-string-colored-partition-asymptotic}.
+
+For an open Nambu--Goto reference string at large excitation number,
+\eqref{eq:qcd-string-ng-open-levels} gives
+\[
+  E^2=2\pi\sigma N+O(N^0)
+\]
+in the oscillator-dominated regime.  Substituting
+\(N=E^2/(2\pi\sigma)+O(1)\) into
+\eqref{eq:qcd-string-colored-partition-asymptotic} gives
+\[
+  \log\rho(E)
+  =
+  2\pi\sqrt{\frac{c_\perp}{6}\frac{E^2}{2\pi\sigma}}
+  +O(\log E)
+  =
+  E\sqrt{\frac{\pi c_\perp}{3\sigma}}+O(\log E).
+\]
+For a closed string with level matching at zero longitudinal momentum,
+\(N_L=N_R=N\).  The degeneracy is \(p_{c_\perp}(N)^2\), while
+\eqref{eq:qcd-string-ng-closed-levels} gives
+\[
+  E^2=8\pi\sigma N+O(N^0).
+\]
+The doubled entropy and the doubled energy coefficient combine to the same
+\(\beta_{\rm H}^{\rm ws}\).  This proves
+\eqref{eq:qcd-string-worldsheet-hagedorn-beta}.
+\end{proof}
+
+\begin{controlledapproximation}[Flux-tube Hagedorn scale]
+\label{ca:qcd-string-hagedorn-interpretation}
+Equation~\eqref{eq:qcd-string-worldsheet-hagedorn-beta} is a consequence of
+three declared inputs: a stable long flux-tube sector, \(c_\perp\) massless
+transverse fields with the oscillator generating function above, and the
+Nambu--Goto high-level relation between excitation level and energy.  It is a
+worldsheet-density statement.  A four-dimensional deconfinement temperature
+requires the thermal gauge-theory path integral, center symmetry and
+matter-content data, and the infinite-volume limit.  Equality between a
+thermal transition scale and the worldsheet Hagedorn scale is an additional
+dynamical statement whose proof would have to relate the thermal transfer
+matrix to the long-string density
+\eqref{eq:qcd-string-worldsheet-hagedorn-beta}.
+\end{controlledapproximation}
+
 \subsection{Static Observables, Lattice Extraction, and the Meaning of
 String Tension}
 

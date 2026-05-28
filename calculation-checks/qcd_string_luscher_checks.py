@@ -133,12 +133,25 @@ def check_baryonic_y_string_geometry() -> None:
     )
 
 
+def check_hagedorn_coefficient() -> None:
+    # The saddle gives beta_H^2 sigma = pi c/3.  For open strings one uses
+    # log rho ~ 2 pi sqrt(c N/6) and E^2 ~ 2 pi sigma N.  For closed strings
+    # one uses twice the entropy, log rho ~ 4 pi sqrt(c N/6), and
+    # E^2 ~ 8 pi sigma N.  The rational coefficient multiplying pi c/sigma is
+    # the same in both cases.
+    open_coefficient = Fraction(4, 1) * Fraction(1, 6) / Fraction(2, 1)
+    closed_coefficient = Fraction(16, 1) * Fraction(1, 6) / Fraction(8, 1)
+    assert_equal("open Hagedorn beta coefficient", open_coefficient, Fraction(1, 3))
+    assert_equal("closed Hagedorn beta coefficient", closed_coefficient, Fraction(1, 3))
+
+
 def main() -> None:
     check_open_and_closed_casimir_coefficients()
     check_nambu_goto_reference_expansion()
     check_open_oscillator_degeneracies()
     check_excited_level_expansion_coefficients()
     check_baryonic_y_string_geometry()
+    check_hagedorn_coefficient()
     print("All QCD-string effective-spectrum checks passed.")
 
 
