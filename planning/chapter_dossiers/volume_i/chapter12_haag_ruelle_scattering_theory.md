@@ -87,6 +87,11 @@
   symmetric Fock construction is used.
 - A local operator with nonzero one-particle overlap can be energy-momentum
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
+- Definition `def:hr-spectrally-filtered-interpolating-creator` and
+  Proposition `prop:hr-filtered-local-creators-almost-local` now isolate the
+  filtered local creator \(B=A(\chi)\), prove almost locality from Schwartz
+  truncation, and state the one-particle spectral selection by the joint
+  spectral theorem.
 - Proposition `prop:hr-spectral-filter-time-independence` proves in the
   mass-shell spectral representation that the positive-energy phase in \(h_t\)
   cancels the translation phase of \(B(t,\vec x)\), so
@@ -94,6 +99,9 @@
   \(P_1\frac{d}{dt}B_t(h)\Omega=0\).
 - In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
   the isolated mass shell with coefficient \(Z_\phi^{1/2}\tilde f\).
+- Proposition `prop:hr-point-field-isolated-shell-projection` now states and
+  proves this point-field mass-shell projection as a spectral theorem, with
+  the rigged-Hilbert notation explicitly separated from Hilbert vectors.
 - The family \(f^{(T)}\) preserves the one-particle vector while moving the
   spacetime support with group velocity \(\vec p/\omega_{\vec p}\).
 - Disjoint velocity supports imply asymptotic spacelike separation of the
@@ -119,6 +127,12 @@
   separation.
 - The limits carry the bosonic Fock inner product and define isometric wave
   operators from free Fock space into the physical Hilbert space.
+- Definitions `def:hr-scalar-asymptotic-fock-space` and
+  `def:hr-wave-operators-separated-domain` now mark the asymptotic Fock space
+  and the separated algebraic domain before wave operators are used.
+- Proposition `prop:hr-scalar-wave-operator-isometry` packages the
+  Cook-limit independence plus scalar-product contraction estimates into the
+  isometric extension of the incoming/outgoing maps.
 - The Fock-space inner product is derived from the \(L^2\) mass-shell model by
   the symmetrized product formula for decomposable wave functions, using the
   \(\sqrt{n!}\Pi_{s,n}\) convention for \(\odot\).
@@ -129,6 +143,10 @@
   delta-function normalization.
 - The S-operator is \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) when the
   incoming and outgoing ranges coincide.
+- Definition `def:hr-scattering-operator-massive-sector` and Proposition
+  `prop:hr-scattering-operator-unitarity-matrix-elements` now separate the
+  definition of \(S\) from the proof of unitarity and the matrix-element
+  formula.
 - The chapter separates three range statements: equality of incoming and
   outgoing ranges for the selected species; completeness of a specified closed
   massive scattering sector; and full asymptotic completeness of the physical
@@ -198,3 +216,7 @@
   phase cancellation, velocity-tube separation/off-tube decay, and the
   conditional Cook-limit criterion; added
   `calculation-checks/haag_ruelle_velocity_checks.py`.
+- 2026-05-27 #615 follow-up: formalized the filtered local creator, the
+  point-field isolated-shell projection, the scalar asymptotic Fock space and
+  wave-operator domain, the isometric wave-operator extension, the scattering
+  operator, and the range/completeness distinctions.

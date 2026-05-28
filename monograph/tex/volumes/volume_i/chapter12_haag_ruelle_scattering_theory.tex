@@ -56,6 +56,7 @@ The invariant mass operator is
 \]
 
 \begin{definition}[Massive one-particle sector]
+\label{def:hr-massive-one-particle-sector}
 Fix \(m>0\). A massive one-particle sector of mass \(m\) is a closed subspace
 \(\Hilb_1\subset\Hilb\) such that:
 \begin{enumerate}
@@ -193,6 +194,9 @@ that
 \[
   P_1A\vac\ne0 .
 \]
+
+\begin{definition}[Spectrally filtered interpolating creator]
+\label{def:hr-spectrally-filtered-interpolating-creator}
 Choose a Schwartz test function \(\chi\in\mathcal S(\mathbb R^D)\) whose
 Fourier transform is supported in a small neighborhood of the positive mass
 shell \(\Sigma_m^+\) and avoids the rest of the energy-momentum spectrum.
@@ -204,13 +208,32 @@ Define
   \qquad
   A(x)=U(x)AU(x)^{-1}.
 \]
-The operator \(B\) is almost local in the sense of
-Definition~\ref{def:almost-local-bounded-operator}.  Indeed, truncate the
+\end{definition}
+
+\begin{proposition}[Filtered local creators are almost local]
+\label{prop:hr-filtered-local-creators-almost-local}
+If \(A\in\Obs(O)\) is bounded and \(\chi\in\mathcal S(\mathbb R^D)\), then
+the filtered operator \(B=A(\chi)\) of
+Definition~\ref{def:hr-spectrally-filtered-interpolating-creator} is almost
+local.  If the support of \(\widehat\chi\) meets the joint spectrum of
+\(P^\mu\) only on the isolated one-particle shell in
+Definition~\ref{def:hr-massive-one-particle-sector}, then \(B\vac\) has no
+spectral component outside \(\Hilb_1\) in that support window.
+\end{proposition}
+
+\begin{proof}
+For almost locality, truncate the
 spacetime integral to a double cone of radius \(R\), enlarged by the bounded
 localization region of \(A\).  The Schwartz decay of \(\chi\), together with
 \(\|A(x)\|=\|A\|\), gives the bound
 \(\|B-B_R\|\le C_N R^{-N}\) for every \(N\).  This property is sufficient for
-the locality estimates used below.
+the locality estimates used below.  The spectral statement follows from the
+joint spectral theorem: the Fourier support of \(\chi\) restricts the
+energy-momentum transfer of \(B\), and the vacuum has zero four-momentum.
+Because the chosen support avoids the rest of \(\operatorname{Spec}(P)\), the
+only possible nonzero component of \(B\vac\) in that window lies in
+\(\Hilb_1\).
+\end{proof}
 
 Let \(h\in C_c^\infty(\mathbb R^d)\) be a smooth compactly supported momentum
 wave packet. Define the positive-energy Klein--Gordon solution
@@ -308,6 +331,8 @@ same construction is then expressed by smearing \(\hat\phi\) against spacetime
 test functions and by choosing the Fourier support so that only the isolated
 one-particle shell is selected.
 
+\begin{proposition}[Point-field projection to the isolated shell]
+\label{prop:hr-point-field-isolated-shell-projection}
 Assume that \(\hat\phi\) is a scalar local field whose matrix element between
 the vacuum and the one-particle sector is nonzero.  The kets below are
 generalized vectors in the rigged-Hilbert-space sense of
@@ -356,9 +381,22 @@ from the rest of the energy-momentum spectrum, then
   \int_{\Sigma_m^+}\dd\mu_m(p)\,
   \tilde f(p)|p\rangle ,
 \]
-with no continuum contribution.  A Gaussian packet centered near a spacetime
-point \((t_*,\vec x_*)\) and a momentum \((E_*,\vec P_*)\) may be used as an
-approximation,
+with no continuum contribution.
+\end{proposition}
+
+\begin{proof}
+The first formula is the spectral resolution of \(P_1\hat\phi(0)\vac\)
+transported by translations, with the positive constant \(Z_\phi\) fixing the
+normalization of this field's one-particle pole.  Smearing by \(f\) pairs the
+spectral distribution with the Fourier transform \(\tilde f\).  If
+\(\operatorname{supp}\tilde f\) is contained in the isolated shell
+neighborhood and avoids the rest of the spectrum, the joint spectral
+projection kills every continuum component.  The remaining integral is
+therefore exactly the displayed one-particle mass-shell integral.
+\end{proof}
+
+A Gaussian packet centered near a spacetime point \((t_*,\vec x_*)\) and a
+momentum \((E_*,\vec P_*)\) may be used as an approximation,
 \[
   f(x)
   =
@@ -780,6 +818,8 @@ direction of propagation.
 
 \section{Fock Structure and Wave Operators}
 
+\begin{definition}[Scalar asymptotic Fock space]
+\label{def:hr-scalar-asymptotic-fock-space}
 Let
 \[
   \mathcal F_s(\Hilb_1)
@@ -790,6 +830,7 @@ be the bosonic Fock space over \(\Hilb_1\), where
 \(\Hilb_1^{\odot n}\) denotes the symmetric \(n\)-fold tensor product and
 \(\Hilb_1^{\odot0}=\mathbb C\Omega_F\). The vector \(\Omega_F\) is the Fock
 vacuum.
+\end{definition}
 
 The construction is intrinsic: it is the Hilbert completion of the algebraic
 finite symmetric tensor algebra over \(\Hilb_1\).  The mass-shell model above
@@ -836,11 +877,16 @@ Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}; the present
 Haag--Ruelle construction uses the scalar instance.
 \end{remark}
 
-The asymptotic identifications from this free Fock space to the physical
-Hilbert space are called the incoming and outgoing Haag--Ruelle wave operators.
-Concretely, each wave operator is an asymptotic identification map: it assigns
-to an abstract collection of asymptotic one-particle wave packets the physical
-Hilbert-space vector obtained as a large-time Haag--Ruelle limit.
+\begin{definition}[Haag--Ruelle wave operators on the separated algebraic domain]
+\label{def:hr-wave-operators-separated-domain}
+The asymptotic identifications from the free Fock space
+\(\mathcal F_s(\Hilb_1)\) to the physical Hilbert space are called the
+incoming and outgoing Haag--Ruelle wave operators.  On the dense algebraic
+domain generated by velocity-separated decomposable vectors, each wave
+operator assigns to an abstract collection of asymptotic one-particle wave
+packets the physical Hilbert-space vector obtained as a large-time
+Haag--Ruelle limit.
+\end{definition}
 
 The topology in this statement is pointwise Hilbert-norm convergence on the
 asymptotic Fock domain.  Choose, for a dense algebraic subspace
@@ -878,7 +924,11 @@ is not asserted in Haag--Ruelle theory.  The isometric extension of
 \(\Omega_{\rm out/in}\) to all of \(\mathcal F_s(\Hilb_1)\) is obtained after
 the Fock inner product has been reproduced on the dense algebraic domain.
 
-For wave packets with disjoint velocity supports, define
+\begin{proposition}[Definition and isometry of the scalar Haag--Ruelle maps]
+\label{prop:hr-scalar-wave-operator-isometry}
+Under the Cook and scalar-product contraction hypotheses of
+Proposition~\ref{prop:haag-ruelle-cook-limits}, the following assignments on
+velocity-separated decomposable vectors are well-defined:
 \[
   \Omega_{\mathrm{out}}
   (\psi_1\odot\cdots\odot\psi_n)
@@ -926,6 +976,17 @@ scattering subspaces,
   \qquad
   \Hilb_{\mathrm{in}}=\operatorname{Ran}\Omega_{\mathrm{in}} .
 \]
+\end{proposition}
+
+\begin{proof}
+Well-definedness is exactly the independence statement in
+Proposition~\ref{prop:haag-ruelle-cook-limits}.  The scalar-product
+contraction estimates give the displayed Fock inner product on the dense
+velocity-separated algebraic domain.  Therefore the maps preserve norms and
+extend uniquely by continuity to isometries from the completed Fock space
+\(\mathcal F_s(\Hilb_1)\) into \(\Hilb\).  Their ranges are closed because
+isometries have closed range.
+\end{proof}
 
 The Poincare group acts on \(\mathcal F_s(\Hilb_1)\) by the free Fock
 representation \(U_F\) induced from its action on \(\Hilb_1\). The
@@ -985,6 +1046,8 @@ between the two bases is the scattering matrix.
 
 \section{The Scattering Operator}
 
+\begin{definition}[Scattering operator in a massive Haag--Ruelle sector]
+\label{def:hr-scattering-operator-massive-sector}
 If
 \[
   \Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}},
@@ -999,7 +1062,15 @@ space is
   :
   \mathcal F_s(\Hilb_1)\longrightarrow \mathcal F_s(\Hilb_1).
 \]
-When the incoming and outgoing ranges coincide, \(S\) is unitary. The matrix
+\end{definition}
+
+\begin{proposition}[Unitarity and matrix elements of \(S\)]
+\label{prop:hr-scattering-operator-unitarity-matrix-elements}
+When the incoming and outgoing ranges coincide, the operator
+\[
+  S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}
+\]
+is unitary.  The matrix
 element between an incoming \(n\)-particle wave packet
 \(\psi_1\odot\cdots\odot\psi_n\) and an outgoing \(m\)-particle wave packet
 \(\varphi_1\odot\cdots\odot\varphi_m\) is
@@ -1023,7 +1094,21 @@ This equation is the nonperturbative definition of the scattering matrix
 elements in the massive sector. The right hand side is an inner product in the
 physical Hilbert space; the left hand side records the same number in the
 free asymptotic particle basis.
+\end{proposition}
 
+\begin{proof}
+Since \(\Omega_{\mathrm{in}}\) and \(\Omega_{\mathrm{out}}\) are isometries,
+\(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) is an isometry when
+\(\operatorname{Ran}\Omega_{\mathrm{in}}\subset
+\operatorname{Ran}\Omega_{\mathrm{out}}\).  If the ranges coincide, applying
+the same argument to \(\Omega_{\mathrm{in}}^*\Omega_{\mathrm{out}}\) gives
+the inverse, hence \(S\) is unitary on the asymptotic Fock space.  The matrix
+element formula is the definition of the adjoint \(\Omega_{\mathrm{out}}^*\)
+applied to the incoming wave-operator vector.
+\end{proof}
+
+\begin{definition}[Range and completeness statements]
+\label{def:hr-range-completeness-statements}
 There are three logically distinct range statements.
 \begin{enumerate}[label=(\alph*)]
   \item \emph{Range coincidence for the chosen asymptotic species.}  The
@@ -1058,6 +1143,7 @@ There are three logically distinct range statements.
   \]
   on the relevant finite-energy physical Hilbert space.
 \end{enumerate}
+\end{definition}
 
 Thus ordinary asymptotic completeness is the last statement, not merely the
 range coincidence in (a).  The definition of \(S\) on a chosen scattering
