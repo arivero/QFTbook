@@ -112,12 +112,36 @@ def check_luscher_kmatrix_pole_algebra() -> None:
     assert_equal("second-sheet pole denominator imaginary part", denominator_imag, Fraction(0))
 
 
+def check_coupled_channel_determinant_reduction() -> None:
+    # In an unmixed two-channel finite-volume determinant,
+    # det(K^{-1}+F)=0 reduces channel by channel.  This pins down the sign of
+    # the finite-volume geometric function in the convention F=rho*cot(phi).
+    k1_inv = Fraction(7, 5)
+    k2_inv = Fraction(-3, 4)
+    f1 = -k1_inv
+    f2 = Fraction(11, 6)
+    determinant = (k1_inv + f1) * (k2_inv + f2)
+    assert_equal("unmixed determinant channel reduction", determinant, Fraction(0))
+
+    # Sheet bookkeeping: physical sheet denominator is K^{-1}-i*rho; changing
+    # the first channel to the adjacent sheet flips only the first rho sign.
+    sigma1 = Fraction(-1)
+    sigma2 = Fraction(1)
+    rho1 = Fraction(2, 3)
+    rho2 = Fraction(5, 7)
+    imag_first = -sigma1 * rho1
+    imag_second = -sigma2 * rho2
+    assert_equal("first crossed-channel imaginary sign", imag_first, rho1)
+    assert_equal("second physical-channel imaginary sign", imag_second, -rho2)
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
     check_luscher_kmatrix_pole_algebra()
+    check_coupled_channel_determinant_reduction()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

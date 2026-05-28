@@ -3787,6 +3787,94 @@ finite-volume resonance extraction.  A concrete determination of
 \(K_\ell^{-1}\), regulator and volume limits for the input energies, and
 separate bounds for neglected partial waves and inelastic channels.
 
+\begin{proposition}[Coupled-channel determinant and sheet bookkeeping]
+\label{prop:qcd-coupled-channel-kmatrix-sheet}
+Let \(a,b=1,\ldots,N\) label finitely many stable two-particle
+color-singlet channels in a fixed set of conserved quantum numbers, and let
+\(\alpha,\beta\) label the partial waves and cubic-irrep components retained
+in a finite-volume analysis.  On a real interval below the next omitted
+threshold, let \(\rho(s)\) be the positive diagonal matrix with entries
+\(\rho_a(s)=2k_a(s)/\sqrt s\), repeated on the retained angular-momentum
+indices.  With the normalization
+\[
+  S=1+2\ii\,\rho^{1/2}t^{(I)}\rho^{1/2},
+\]
+elastic coupled-channel unitarity is equivalent, on the interval, to
+\begin{equation}
+  t^{(I)}(s)=\bigl(K^{-1}(s)-\ii\rho(s)\bigr)^{-1},
+  \qquad
+  K^{-1}(s)^\dagger=K^{-1}(s).
+  \label{eq:qcd-coupled-channel-kmatrix}
+\end{equation}
+Suppose, in addition, that the coupled-channel finite-volume reconstruction
+theorem has been established for this channel and written in the same
+normalization, so that the finite-volume energies in a cubic irrep
+\(\Gamma\) obey
+\begin{equation}
+  \det\!\bigl(K^{-1}(E^2)+F^\Gamma(E,L)\bigr)=0,
+  \label{eq:qcd-coupled-channel-luscher-determinant}
+\end{equation}
+where \(F^\Gamma(E,L)\) is the real geometric matrix determined by the box,
+total momentum, masses, and irrep projection.  In the one-channel unmixed
+limit \(F^\Gamma=\rho_{12}\cot\phi_\ell\), so
+\eqref{eq:qcd-coupled-channel-luscher-determinant} reduces to
+\eqref{eq:qcd-luscher-kmatrix-sample}.  If \(\Sigma\) is the diagonal matrix
+whose entry is \(+1\) on a channel kept on the physical branch and \(-1\) on
+a channel analytically continued through its unitary cut, the corresponding
+sheet amplitude is
+\begin{equation}
+  t^{(\Sigma)}(s)=
+  \bigl(K^{-1}(s)-\ii\,\Sigma\rho(s)\bigr)^{-1},
+  \qquad
+  \det\!\bigl(K^{-1}(s_\ast)-\ii\,\Sigma\rho(s_\ast)\bigr)=0 .
+  \label{eq:qcd-coupled-channel-sheet-pole}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+From \(S^\dagger S=1\) and
+\(S=1+2\ii\rho^{1/2}t^{(I)}\rho^{1/2}\), one obtains
+\[
+  t^{(I)}-t^{(I)\dagger}
+  =
+  2\ii\,t^{(I)\dagger}\rho\,t^{(I)}.
+\]
+Multiplying by \(\bigl(t^{(I)\dagger}\bigr)^{-1}\) on the left and by
+\(\bigl(t^{(I)}\bigr)^{-1}\) on the right gives
+\[
+  \bigl(t^{(I)\dagger}\bigr)^{-1}
+  -
+  \bigl(t^{(I)}\bigr)^{-1}
+  =
+  2\ii\rho,
+  \qquad
+  \bigl(t^{(I)}\bigr)^{-1}
+  -
+  \bigl(t^{(I)\dagger}\bigr)^{-1}
+  =
+  -2\ii\rho .
+\]
+Thus \(K^{-1}:=\bigl(t^{(I)}\bigr)^{-1}+\ii\rho\) is Hermitian on the
+physical interval, and \eqref{eq:qcd-coupled-channel-kmatrix} follows.  The
+finite-volume determinant relation is the stated reconstruction input
+expressed in this \(K\)-matrix coordinate.  In the one-channel unmixed
+reduction, its zero condition is
+\[
+  K_\ell^{-1}(E^2)+\rho_{12}(E^2)\cot\phi_\ell(q)=0,
+  \qquad
+  K_\ell^{-1}(E^2)
+  =
+  -\rho_{12}(E^2)\cot\phi_\ell(q),
+\]
+which is exactly \eqref{eq:qcd-luscher-kmatrix-sample}.  Finally, analytic
+continuation through a chosen channel cut changes the sign of that channel's
+two-body momentum, hence of the corresponding diagonal entry of \(\rho\),
+while the \(K^{-1}\) germ is held fixed.  Repeating this sign choice for all
+channels gives the matrix \(\Sigma\), the sheet amplitude in
+\eqref{eq:qcd-coupled-channel-sheet-pole}, and the determinant pole
+condition.
+\end{proof}
+
 \begin{definition}[QCD resonance pole datum]
 \label{def:qcd-resonance-pole-datum}
 A hadronic resonance datum consists of a channel space of stable

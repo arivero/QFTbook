@@ -828,7 +828,8 @@ Current checks:
   polynomial degrees and coefficients, the rational coefficient in the
   classical open-flux-tube Regge slope, and the one-channel
   Luescher/K-matrix sign convention that maps finite-volume energies to a
-  second-sheet pole equation.
+  second-sheet pole equation, together with the coupled-channel determinant
+  reduction and sheet-sign bookkeeping.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
   and topological-charge normalization on the \(\CP^1\) chart,
