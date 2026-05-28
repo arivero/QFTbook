@@ -831,6 +831,11 @@ Current checks:
   the algebraic equivalence between the principal-chiral-model Lax flatness
   polynomial and the equation-of-motion/Maurer--Cartan pair, and sample WZW
   central charges.
+- `susy_yang_mills_family_checks.py`: exact finite checks for the
+  supersymmetric Yang--Mills family discussion, including the pure-SYM
+  root-of-unity domain-wall sine formula, the one-coordinate chiral
+  mass-normalization algebra, the local Seiberg--Witten monopole-condensate
+  \(F\)-term equation, and the Abelian vortex square completion.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

@@ -897,6 +897,7 @@ light charges force the infrared description outside an ordinary weakly
 coupled Abelian hypermultiplet frame.
 
 \section{Low-Energy Abelian Theory Near A Singular Point}
+\label{sec:n2-low-energy-abelian-singular-point}
 
 Near a point where the monopole period \(a_D\) vanishes, the correct
 low-energy variables are the dual \(U(1)\) vector multiplet with scalar
@@ -906,11 +907,155 @@ superpotential has the form
   W_{\mathrm{loc}}=\sqrt2\,A_D M\widetilde M ,
 \]
 where \(A_D\) is the dual chiral multiplet and \(M,\widetilde M\) are monopole
-chiral multiplets of opposite dual electric charge.  Adding a small
-\(\mathcal N=1\)-preserving deformation proportional to \(u\) gives an
-F-term equation that forces monopole condensation in the local theory.  This
-is the microscopic input behind the Abelian confinement mechanism used later
-in the Witten--Donaldson and Seiberg-Witten comparison.
+chiral multiplets of opposite dual electric charge.  Let \(U(A_D)\) denote the
+chiral coordinate whose lowest component is the Coulomb-branch coordinate
+\(u\) expressed in the local dual frame.  Add a small
+\(\mathcal N=1\)-preserving deformation
+\[
+  W_{\mathrm{def}}=\mu\,U(A_D),
+  \qquad
+  \mu\in\mathbb C,\qquad |\mu|\ll |\Lambda|,
+  \label{eq:sw-small-mass-deformation}
+\]
+so that the local superpotential is
+\[
+  W_{\mathrm{loc},\mu}
+  =
+  \sqrt2\,A_D M\widetilde M+\mu\,U(A_D).
+  \label{eq:sw-local-superpotential-with-mass}
+\]
+The smallness assumption keeps the analysis inside the Abelian neighborhood
+where the monopole hypermultiplet is the only additional light charged
+field.
+
+\begin{proposition}[Monopole condensation from the local \(F\)-terms]
+\label{prop:sw-monopole-condensation-f-terms}
+Assume \(U'(0)\neq0\) at the monopole point \(A_D=0\), and work on the local
+patch described by \eqref{eq:sw-local-superpotential-with-mass}.  The
+\(F\)-term equations have a branch
+\[
+  A_D=0,\qquad
+  M\widetilde M=-\frac{\mu}{\sqrt2}\,U'(0).
+  \label{eq:sw-monopole-condensate-local}
+\]
+When the \(U(1)_D\) \(D\)-term equation is imposed with vanishing real
+Fayet--Iliopoulos parameter,
+\[
+  |M|^2-|\widetilde M|^2=0,
+  \label{eq:sw-local-d-term}
+\]
+the dual gauge group is Higgsed for \(\mu U'(0)\neq0\).
+\end{proposition}
+
+\begin{proof}
+The derivatives of \eqref{eq:sw-local-superpotential-with-mass} are
+\[
+  \frac{\partial W_{\mathrm{loc},\mu}}{\partial M}
+  =
+  \sqrt2\,A_D\widetilde M,\qquad
+  \frac{\partial W_{\mathrm{loc},\mu}}{\partial \widetilde M}
+  =
+  \sqrt2\,A_D M,
+\]
+and
+\[
+  \frac{\partial W_{\mathrm{loc},\mu}}{\partial A_D}
+  =
+  \sqrt2\,M\widetilde M+\mu\,U'(A_D).
+\]
+The first two equations are solved by \(A_D=0\).  Substituting this value in
+the third equation gives
+\eqref{eq:sw-monopole-condensate-local}.  If \(U'(0)\mu\neq0\), then
+\(M\widetilde M\neq0\).  Together with
+\eqref{eq:sw-local-d-term}, this implies \(|M|=|\widetilde M|\neq0\), and the
+oppositely charged monopole fields Higgs the dual \(U(1)_D\).
+\end{proof}
+
+In the dual Abelian description, a Wilson line of the original electric
+charge is magnetically charged with respect to \(U(1)_D\).  The Higgsed dual
+gauge theory therefore supports Abrikosov--Nielsen--Olesen flux tubes whose
+magnetic flux is the original electric flux.  This gives the local
+confinement mechanism used in the comparison between Donaldson and
+Seiberg--Witten theories.
+
+\begin{definition}[Local Seiberg--Witten confining-string datum]
+\label{def:sw-local-confining-string-datum}
+In the neighborhood of a monopole singularity, a local confining-string datum
+consists of:
+\begin{enumerate}[label=(\roman*)]
+\item the dual Abelian gauge field \(A_{D,\mu}\) with curvature \(F_D\) and
+  coupling \(e_D\);
+\item monopole fields \(M,\widetilde M\) of dual charges \(+1\) and \(-1\);
+\item the complex parameter
+  \[
+    \xi_{\mathbb C}=-\frac{\mu}{\sqrt2}\,U'(0),
+    \label{eq:sw-complex-fi-parameter}
+  \]
+  defined by the local \(F\)-term equation \(M\widetilde M=\xi_{\mathbb C}\);
+\item a flux sector \(n\in\mathbb Z\) with
+  \[
+    \frac{1}{2\pi}\int_{\mathbb R^2}F_D=n
+  \]
+  on the plane transverse to the string;
+\item boundary conditions at transverse infinity obeying
+  \(M\widetilde M\to\xi_{\mathbb C}\) and
+  \(|M|=|\widetilde M|\).
+\end{enumerate}
+The string tension is the infimum of the static energy per unit length in the
+fixed flux sector.
+\end{definition}
+
+\begin{controlledapproximation}[BPS vortex tension in the local Abelian model]
+\label{ca:sw-local-bps-vortex-tension}
+If the local theory is approximated by an \(\mathcal N=2\) Abelian Higgs model
+with Fayet--Iliopoulos triplet of magnitude
+\(|\xi|=|\xi_{\mathbb C}|\) in the normalization
+\[
+  \mathcal E
+  =
+  \frac{1}{2e_D^2}B_D^2+|D_1q|^2+|D_2q|^2
+  +\frac{e_D^2}{2}(|q|^2-|\xi|)^2 ,
+  \label{eq:sw-local-abelian-higgs-energy}
+\]
+then a vortex of flux \(2\pi n\) obeys
+\[
+  T_n\ge 2\pi |n|\,|\xi|,
+  \label{eq:sw-local-vortex-bound}
+\]
+and saturation is equivalent to the first-order vortex equations
+\[
+  (D_1+\ii\,\operatorname{sgn}(n)D_2)q=0,
+  \qquad
+  B_D=\operatorname{sgn}(n)e_D^2(|\xi|-|q|^2).
+  \label{eq:sw-local-vortex-equations}
+\]
+\end{controlledapproximation}
+
+\begin{proof}
+For \(n>0\), complete the square in
+\eqref{eq:sw-local-abelian-higgs-energy}:
+\[
+  \mathcal E
+  =
+  |(D_1+\ii D_2)q|^2
+  +
+  \frac{1}{2e_D^2}
+  \bigl(B_D-e_D^2(|\xi|-|q|^2)\bigr)^2
+  +
+  |\xi|B_D
+  +
+  \partial_i J^i .
+\]
+The current \(J^i\) is a total derivative whose integral vanishes for the
+finite-energy boundary conditions in
+Definition~\ref{def:sw-local-confining-string-datum}.  Integrating over the
+transverse plane gives
+\[
+  T_n\ge |\xi|\int_{\mathbb R^2}F_D=2\pi n|\xi|.
+\]
+For \(n<0\), use the opposite square completion.  The two square terms vanish
+precisely when \eqref{eq:sw-local-vortex-equations} holds.
+\end{proof}
 
 \section{Status Boundary}
 

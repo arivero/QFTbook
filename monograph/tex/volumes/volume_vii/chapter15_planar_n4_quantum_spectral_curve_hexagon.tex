@@ -2411,6 +2411,131 @@ descriptions of the cusped line reproduce the same function with
 cusp-specific asymptotic data, providing a stringent normalization check on
 \(g=\sqrt\lambda/(4\pi)\).
 
+\section{Wilson-Line Flux Tube as a Conformal Spectral Datum}
+\label{sec:planar-n4-wilson-line-flux-tube-datum}
+
+Pure Yang--Mills glueball spectroscopy, \(\mathcal N=1\) SYM chiral branches,
+softly broken \(\mathcal N=2\) monopole condensation, and planar
+\(\mathcal N=4\) Wilson-line integrability are related examples of
+gauge-theory spectral data, but the objects being measured differ.  In
+planar \(\mathcal N=4\) SYM, conformal invariance supplies no intrinsic mass
+gap.  The analog of a flux-tube spectrum is instead a defect spectrum: the
+Hamiltonian is the generator of translations along a line or of boosts around
+a null cusp, and the excitations are states of the defect Hilbert space
+associated to the Wilson line.
+
+\begin{definition}[Planar \(\mathcal N=4\) Wilson-line flux-tube datum]
+\label{def:planar-n4-wilson-line-flux-tube-datum}
+Fix the planar limit of \(\mathcal N=4\) \(SU(N)\) SYM with
+\(\lambda=g_{\rm YM}^2N\) and \(g=\sqrt\lambda/(4\pi)\).  A Wilson-line
+flux-tube datum consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a half-BPS straight Maldacena--Wilson line or its analytic continuation
+  to a null cusp, with the scalar coupling normalized as in the preceding
+  section;
+\item the defect Hilbert space \(\mathcal H_{\rm def}\) obtained by radial or
+  boost quantization around the line or cusp, with Hamiltonian \(H_{\rm def}\)
+  and spatial momentum \(P_{\rm def}\) along the defect;
+\item local defect fields \(\mathbb O_a(t)\), including the displacement
+  operators \(\mathbb D_i(t)\), scalar insertions, fermion insertions, and
+  covariant derivatives along the line;
+\item a spectral resolution of connected defect two-point functions,
+  \[
+    \langle\mathbb O_a(t)\mathbb O_b(0)\rangle_{\rm conn}
+    =
+    \sum_\alpha
+    \int d\mu_\alpha(u)\,
+    F_{a,\alpha}(u)F_{b,\alpha}(u)^*
+    \ee^{-E_\alpha(u)|t|+\ii p_\alpha(u)t},
+    \label{eq:planar-n4-defect-spectral-resolution}
+  \]
+  where \(u\) denotes rapidity-type spectral coordinates when the
+  integrability description is available;
+\item transition data, such as pentagon form factors or mirror-TBA kernels,
+  that reconstruct multiparticle defect correlators from the one-particle
+  energies, momenta, measures, and scattering phases.
+\end{enumerate}
+The cusp anomalous dimension is the defect vacuum energy density in the
+null-cusp frame, while the generalized scaling function and pentagon OPE data
+are higher spectral coordinates of the same defect system.
+\end{definition}
+
+\begin{proposition}[Cusp anomalous dimension as defect ground-state energy]
+\label{prop:cusp-as-defect-ground-state-energy}
+Assume the null-cusp Wilson line admits a defect Hamiltonian description on a
+strip of length \(L=\log(R/\epsilon)\), where \(R\) and \(\epsilon\) are the
+infrared and ultraviolet scales used in the cusp renormalization.  If
+\(E_0(\varphi,\theta)\) denotes the extensive ground-state energy in this
+strip normalization, then
+\[
+  E_0(\varphi,\theta)
+  =
+  \Gamma_{\rm cusp}(\varphi,\theta)\,L+O(1).
+  \label{eq:cusp-ground-state-energy}
+\]
+For the lightlike cusp, the coefficient of \(L\) is the lightlike cusp
+anomalous dimension \(\Gamma_{\rm cusp}(\lambda)\).  In the large-spin
+operator problem, the same coefficient controls the leading logarithmic
+growth
+\[
+  \Delta(S)-S
+  =
+  \Gamma_{\rm cusp}(\lambda)\log S+O(S^0)
+  \qquad (S\to\infty)
+  \label{eq:large-spin-cusp-growth}
+\]
+in the normalization of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
+\end{proposition}
+
+\begin{proof}
+The renormalized cusped-line expectation value has the defining logarithmic
+form
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}
+  =
+  -\Gamma_{\rm cusp}(\varphi,\theta)\log\frac{R}{\epsilon}+O(1).
+\]
+In the defect Hamiltonian representation, the same path integral on the
+logarithmic strip is
+\[
+  \langle W_{\rm cusp}\rangle_{\rm ren}
+  =
+  \langle B_{\rm out}|\ee^{-LH_{\rm def}}|B_{\rm in}\rangle_{\rm ren},
+  \qquad
+  L=\log\frac{R}{\epsilon},
+\]
+with boundary states determined by the ultraviolet and infrared
+regularizations.  If the lowest defect energy is isolated in the sector
+selected by the cusp boundary conditions, the large-\(L\) asymptotic is
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}
+  =
+  -E_0(\varphi,\theta)+O(L^0)
+  =
+  -\varepsilon_0(\varphi,\theta)L+O(L^0),
+\]
+where \(E_0=\varepsilon_0L\) is extensive in the strip length.  Comparing the
+coefficients of \(L\) gives
+\(\varepsilon_0=\Gamma_{\rm cusp}\), which is
+\eqref{eq:cusp-ground-state-energy}.  The large-spin relation
+\eqref{eq:large-spin-cusp-growth} follows from the same logarithmic
+renormalization of the lightlike Wilson line that appears in the factorized
+soft-collinear limit of twist-two operators; in the planar integrability
+description this coefficient is reproduced by the BES equation and by the
+large-spin limit of the asymptotic Bethe equations.
+\end{proof}
+
+This defect datum is the \(\mathcal N=4\) member of the broader
+gauge-theory family discussed in
+Section~\ref{sec:pure-sym-protected-spectral-data}: the protected local
+operators, line operators, and spectral measures must be defined before
+their integrable or semiclassical solution methods are invoked.  The
+integrability problem in planar \(\mathcal N=4\) SYM gives an unusually
+complete solution of the defect spectral data; a derivation from a
+nonperturbatively defined four-dimensional planar QFT remains part of the
+proof boundary below.
+
 \section{Proof Boundary}
 
 Planar integrability gives a highly constrained exact spectral structure for
