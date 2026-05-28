@@ -836,6 +836,11 @@ Current checks:
   root-of-unity domain-wall sine formula, the one-coordinate chiral
   mass-normalization algebra, the local Seiberg--Witten monopole-condensate
   \(F\)-term equation, and the Abelian vortex square completion.
+- `susy_yang_mills_deformation_ladder_checks.py`: exact finite checks for
+  the supersymmetric Yang--Mills deformation-ladder chapter, including
+  holomorphic scale-dimension matching, the \(\mathcal N=1^\ast\)
+  fuzzy-sphere \(F\)-term ansatz, and the sine-law/Casimir \(k\)-string
+  ledger identities.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

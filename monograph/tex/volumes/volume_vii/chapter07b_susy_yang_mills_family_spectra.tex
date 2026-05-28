@@ -1,0 +1,648 @@
+\chapter{Spectral Bridges Among Supersymmetric Yang--Mills Cousins}
+\label{ch:susy-yang-mills-family-spectra}
+
+\ConventionsLorentzian
+
+The preceding chapters developed three separate structures: pure
+\(\mathcal N=1\) Yang--Mills chiral dynamics, pure \(\mathcal N=2\)
+Seiberg--Witten special geometry, and planar \(\mathcal N=4\) spectral
+integrability.  They are connected by relevant deformations, but the
+connection has several layers.  Holomorphic quantities can often be matched
+by scale coordinates and protected Ward identities.  Massive spectra,
+confining strings, and line-operator Hilbert spaces require additional
+nonperturbative data.  This chapter defines the comparison problem.
+
+\section{Comparison Datum}
+\label{sec:susy-ym-family-comparison-datum}
+
+Let \(G=SU(N_c)\) with \(N_c\ge2\).  A comparison among the
+\(\mathcal N=4,\mathcal N=2,\mathcal N=1\), and bosonic Yang--Mills theories
+is a comparison among four QFT problems, not a single family of Lagrangian
+symbols.  The amount of supersymmetry determines which quantities are
+protected, which deformations preserve a chiral coordinate chart, and which
+spectral questions remain dynamical.
+
+\begin{definition}[Yang--Mills cousin comparison datum]
+\label{def:ym-cousin-comparison-datum}
+A Yang--Mills cousin comparison datum consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a gauge group \(G=SU(N_c)\) or a specified global form with a specified
+  line-operator lattice;
+\item a UV description of the \(\mathcal N=4\) theory in the
+  \(\mathcal N=1\) field variables
+  \[
+    V,\qquad \Phi_1,\Phi_2,\Phi_3\in\operatorname{ad}G,
+  \]
+  with holomorphic coupling
+  \[
+    \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_{\rm YM}^2}
+  \]
+  in the trace convention fixed in Chapter~\ref{ch:susy-gauge-theory};
+\item a finite list of relevant deformation parameters, for example adjoint
+  chiral masses \(m_i\), an \(\mathcal N=2\to\mathcal N=1\) mass coordinate
+  \(\mu\), and a soft gaugino-mass spurion \(m_\lambda\);
+\item for each deformation regime, a declared set of observables:
+  gauge-invariant local operators, center-charged line operators, domain-wall
+  boundary conditions, and defect operators on Wilson lines;
+\item a status label for each comparison: holomorphic scale matching,
+  protected \(F\)-term matching, semiclassical Abelian approximation, lattice
+  spectral datum, planar-integrability datum, or open nonperturbative
+  construction.
+\end{enumerate}
+Two rows of the datum are compared only after the observable type and status
+label have been fixed.
+\end{definition}
+
+The basic ladder is:
+\[
+\begin{array}{ccl}
+\mathcal N=4
+&\xrightarrow{\;m_{\rm hyper}\;}
+&\mathcal N=2^\ast
+\xrightarrow{\;E\ll |m_{\rm hyper}|\;}
+\text{pure }\mathcal N=2,\\[3pt]
+\mathcal N=4
+&\xrightarrow{\;m_1,m_2,m_3\;}
+&\mathcal N=1^\ast
+\xrightarrow{\;E\ll \min_i|m_i|\;}
+\text{pure }\mathcal N=1,\\[3pt]
+\text{pure }\mathcal N=2
+&\xrightarrow{\;\mu\,u\;}
+&\text{softly broken }\mathcal N=1\text{ with Abelian confinement},\\[3pt]
+\text{pure }\mathcal N=1
+&\xrightarrow{\;X_\lambda S+\mathrm{c.c.}\;}
+&\text{bosonic Yang--Mills deformation problem}.
+\end{array}
+\]
+The arrows are deformation regimes.  A continuum construction for the
+endpoint theory, or a proof that a path of deformations reaches a chosen
+endpoint without crossing a phase boundary in the observables of interest, is
+extra information.
+
+\section{Holomorphic Scale Matching}
+\label{sec:susy-ym-family-scale-matching}
+
+Holomorphic scale matching is the cleanest part of the comparison.  It is a
+statement about chiral source coordinates and threshold matching in a
+holomorphic Wilsonian scheme.  It does not compute the nonchiral spectrum.
+
+\begin{definition}[Holomorphic threshold matching]
+\label{def:holomorphic-threshold-matching}
+Let a four-dimensional supersymmetric gauge theory with gauge algebra
+\(\mathfrak{su}(N_c)\) have holomorphic one-loop coefficient \(b_{\rm high}\)
+above a chiral mass threshold \(m\) and coefficient \(b_{\rm low}\) below the
+threshold.  A holomorphic threshold matching at the scale \(m\) is the
+identity of chiral scale coordinates
+\[
+  \Lambda_{\rm low}^{b_{\rm low}}
+  =
+  m^{\,b_{\rm low}-b_{\rm high}}\,
+  \Lambda_{\rm high}^{b_{\rm high}},
+  \label{eq:holomorphic-threshold-matching}
+\]
+up to finite holomorphic scheme rescalings already included in the
+definitions of \(m\) and \(\Lambda\).
+\end{definition}
+
+\begin{proposition}[\(\mathcal N=4\) to pure \(\mathcal N=2\) matching]
+\label{prop:n4-to-n2-star-scale-matching}
+Write \(\mathcal N=4\) Yang--Mills in \(\mathcal N=2\) variables as one
+\(\mathcal N=2\) vector multiplet plus one adjoint hypermultiplet.  Give the
+hypermultiplet a holomorphic mass \(m_{\rm h}\).  In the region
+\[
+  E\ll |m_{\rm h}|,
+\]
+the remaining pure \(\mathcal N=2\) holomorphic scale satisfies
+\[
+  \Lambda_{\mathcal N=2}^{2N_c}
+  =
+  m_{\rm h}^{2N_c}\,q,
+  \qquad
+  q=\ee^{2\pi\ii\tau}.
+  \label{eq:n4-to-n2-scale-matching}
+\]
+\end{proposition}
+
+\begin{proof}
+The \(\mathcal N=4\) theory has vanishing holomorphic beta coefficient, so
+the high-energy scale coordinate is the dimensionless instanton factor
+\(q=\ee^{2\pi\ii\tau}\).  Pure \(\mathcal N=2\) \(SU(N_c)\) Yang--Mills has
+holomorphic coefficient
+\[
+  b_{\mathcal N=2}=2N_c .
+\]
+Applying \eqref{eq:holomorphic-threshold-matching} with
+\[
+  b_{\rm high}=0,\qquad b_{\rm low}=2N_c,\qquad m=m_{\rm h}
+\]
+gives \eqref{eq:n4-to-n2-scale-matching}.  The dimension of the right-hand
+side is \(2N_c\), matching the dimension of
+\(\Lambda_{\mathcal N=2}^{2N_c}\).
+\end{proof}
+
+\begin{proposition}[\(\mathcal N=4\) to pure \(\mathcal N=1\) matching]
+\label{prop:n4-to-n1-star-scale-matching}
+Write \(\mathcal N=4\) Yang--Mills in \(\mathcal N=1\) variables as one
+vector multiplet and three adjoint chiral multiplets
+\(\Phi_1,\Phi_2,\Phi_3\).  Give the three adjoint chiral multiplets
+holomorphic masses \(m_1,m_2,m_3\).  In the region
+\[
+  E\ll \min_i |m_i|,
+\]
+the pure \(\mathcal N=1\) holomorphic scale satisfies
+\[
+  \Lambda_{\mathcal N=1}^{3N_c}
+  =
+  (m_1m_2m_3)^{N_c}\,q,
+  \qquad
+  q=\ee^{2\pi\ii\tau}.
+  \label{eq:n4-to-n1-scale-matching}
+\]
+\end{proposition}
+
+\begin{proof}
+The high-energy \(\mathcal N=4\) coefficient is zero.  Pure
+\(\mathcal N=1\) \(SU(N_c)\) Yang--Mills has coefficient
+\[
+  b_{\mathcal N=1}=3N_c .
+\]
+Each massive adjoint chiral multiplet changes the holomorphic coefficient by
+\(T(\operatorname{ad})=N_c\).  Applying
+\eqref{eq:holomorphic-threshold-matching} successively at the three mass
+thresholds gives
+\[
+  \Lambda_{\mathcal N=1}^{3N_c}
+  =
+  m_1^{N_c}m_2^{N_c}m_3^{N_c}q,
+\]
+which is \eqref{eq:n4-to-n1-scale-matching}.  The mass dimension is
+\(3N_c\), as required for the pure \(\mathcal N=1\) scale coordinate.
+\end{proof}
+
+\begin{example}[\(\mathcal N=1^\ast\) chiral critical equations]
+\label{ex:n1-star-critical-equations}
+In an \(\mathcal N=1\) presentation, the equal-mass \(\mathcal N=1^\ast\)
+superpotential is
+\[
+  W
+  =
+  \sqrt2\,\operatorname{tr}\Phi_1[\Phi_2,\Phi_3]
+  +
+  \frac{m}{2}\sum_{i=1}^3\operatorname{tr}\Phi_i^2 .
+  \label{eq:n1-star-superpotential}
+\]
+The \(F\)-term equations are
+\[
+  \sqrt2[\Phi_2,\Phi_3]+m\Phi_1=0,
+  \qquad
+  \sqrt2[\Phi_3,\Phi_1]+m\Phi_2=0,
+  \qquad
+  \sqrt2[\Phi_1,\Phi_2]+m\Phi_3=0.
+  \label{eq:n1-star-f-terms}
+\]
+If \(J_i\) are matrices obeying
+\[
+  [J_i,J_j]=\ii\epsilon_{ijk}J_k,
+  \label{eq:su2-fuzzy-sphere-algebra}
+\]
+then
+\[
+  \Phi_i=\frac{\ii m}{\sqrt2}\,J_i
+  \label{eq:n1-star-fuzzy-sphere-solution}
+\]
+solves \eqref{eq:n1-star-f-terms}.  Such solutions organize chiral vacua of
+the massive adjoint theory by embeddings of \(\mathfrak{su}(2)\) into
+\(\mathfrak{su}(N_c)\).  The full massive spectrum and confinement data also
+depend on the nonchiral dynamics and on the chosen line-operator lattice.
+\end{example}
+
+\section{What Is Uniform Across the Ladder}
+\label{sec:susy-ym-family-uniform-data}
+
+The uniform part of the ladder is a map of observables, not a universal
+numerical formula.  Four classes appear repeatedly.
+
+\begin{definition}[Family observable ledger]
+\label{def:susy-ym-family-observable-ledger}
+For a Yang--Mills cousin comparison datum, the observable ledger is the
+following table.
+\begin{center}
+\small
+\begin{tabular}{p{0.22\textwidth}|p{0.39\textwidth}|p{0.28\textwidth}}
+\textbf{observable type} & \textbf{representative datum} & \textbf{status}\\
+\hline
+chiral local &
+  \(S,\ u,\ \operatorname{tr}\Phi^k\) &
+  holomorphic or protected\\
+massive local spectral &
+  \(\rho_{ij}(B)\) for gauge-invariant sources &
+  Hilbert-space or lattice spectral datum\\
+center-charged line &
+  \(W_R(C),\ H_m(C)\), flux-sector transfer matrix &
+  line-operator datum\\
+defect spectral &
+  \(\mathcal H_{\rm def},\ H_{\rm def},\mathbb O_a(t)\) &
+  Wilson-line or cusp datum
+\end{tabular}
+\end{center}
+where \(S\) is the pure \(\mathcal N=1\) glueball coordinate of
+Section~\ref{sec:pure-sym-gaugino-condensation}, \(u\) is the rank-one
+\(\mathcal N=2\) Coulomb coordinate of
+Chapter~\ref{ch:susy-four-dimensional-n2-seiberg-witten}, \(\rho_{ij}\) is
+the spectral measure of
+Definition~\ref{def:pure-sym-vacuum-spectral-datum}, \(W_R(C)\) is a Wilson
+line in representation \(R\), \(H_m(C)\) is a magnetic line with magnetic
+charge \(m\), and \(\mathcal H_{\rm def}\) is the defect Hilbert space of
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum}.
+\end{definition}
+
+\begin{proposition}[Observable-type preservation under a controlled threshold]
+\label{prop:observable-type-threshold-preservation}
+Consider a relevant mass deformation with threshold \(M\) between two
+supersymmetric Yang--Mills cousins.  Assume:
+\begin{enumerate}[label=(\roman*)]
+\item a Wilsonian description exists above and below \(M\) in a common
+  regulator or in compatible holomorphic schemes;
+\item the local source under consideration has external momenta
+  \(|p_a|\ll |M|\);
+\item every massive field integrated out has a gap bounded below by
+  \(c|M|\) for some \(c>0\) in the chosen background;
+\item the line-operator sector is kept fixed by declaring the global form and
+  allowed electric and magnetic charges before the deformation.
+\end{enumerate}
+Then chiral local sources match by holomorphic threshold coordinates, local
+nonchiral correlators match after adding local higher-dimension Wilsonian
+operators, and center-charge labels of line operators are preserved as
+labels.  The numerical masses, string tensions, and line-defect excitation
+energies are dynamical functions of the deformation parameters.
+\end{proposition}
+
+\begin{proof}
+For chiral local sources, the supersymmetric Wilsonian action separates the
+holomorphic \(F\)-terms from \(D\)-terms.  The threshold contribution of a
+massive chiral multiplet to the holomorphic gauge coupling is one-loop exact
+in the Wilsonian holomorphic coordinate, giving the scale matching of
+Definition~\ref{def:holomorphic-threshold-matching}.  Thus the chiral
+coordinates match by finite holomorphic maps such as
+\eqref{eq:n4-to-n2-scale-matching} and \eqref{eq:n4-to-n1-scale-matching}.
+
+For nonchiral local correlators at momenta \(|p_a|\ll |M|\), the massive
+propagators admit an expansion in powers of \(p/M\) after the regulator and
+subtraction scheme have been fixed.  The coefficients are local functionals
+of the light fields and sources, hence enter the Wilsonian action as
+higher-dimension local operators.  This is an equality of low-momentum
+Wilsonian coordinates at fixed order in the derivative expansion, with a
+remainder controlled only when the chosen regulator supplies the corresponding
+analytic estimates.
+
+Line operators require the global form and charge lattice as part of the
+definition.  A mass threshold changes the dynamics of screening and
+confinement, but it does not change the declared lattice of allowed line
+charges.  Therefore the center or charge label can be transported through the
+comparison datum.  The area-law coefficient or defect excitation energy is
+obtained from the Hilbert-space or transfer-matrix problem in the deformed
+theory, so it remains a dynamical spectral quantity.
+\end{proof}
+
+\section[Center Strings and k-String Ledgers]{Center Strings and \(k\)-String Ledgers}
+\label{sec:susy-ym-family-k-string-ledgers}
+
+For \(SU(N_c)\) with the usual Wilson lines, the center charge of a
+representation is an element of \(\mathbb Z_{N_c}\).  A confining theory may
+have stable flux sectors labeled by
+\[
+  k\in\{0,1,\ldots,N_c-1\},
+\]
+with \(k\) and \(N_c-k\) related by charge conjugation.
+
+\begin{definition}[\(k\)-string tension datum]
+\label{def:k-string-tension-datum}
+A \(k\)-string tension datum for a confining Yang--Mills theory consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a regulator or continuum Hilbert-space construction with spatial
+  transfer matrix \(T_L\) on a box whose long direction has length \(L\);
+\item a center-flux sector \(k\in\mathbb Z_{N_c}\);
+\item the lowest energy \(E_k(L)\) in that sector after the vacuum energy is
+  subtracted;
+\item a limit
+  \[
+    T_k=\lim_{L\to\infty}\frac{E_k(L)}{L}
+    \label{eq:k-string-transfer-tension}
+  \]
+  whenever the limit exists.
+\end{enumerate}
+Equivalently, in an area-law regime for a large rectangular Wilson loop in a
+representation of \(N\)-ality \(k\),
+\[
+  \langle W_k(C)\rangle
+  =
+  \exp\!\bigl(-T_k\,\operatorname{Area}(C)+o(\operatorname{Area}(C))\bigr)
+  \label{eq:k-string-area-law}
+\]
+defines the same tension if the transfer-matrix and Wilson-loop formulations
+have been proved equivalent for the regulator under consideration.
+\end{definition}
+
+Two comparison formulae are useful as ledgers:
+\[
+  R_k^{\rm sine}(N_c)
+  =
+  \frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)},
+  \qquad
+  R_k^{\rm Casimir}(N_c)
+  =
+  \frac{k(N_c-k)}{N_c-1}.
+  \label{eq:k-string-ledger-ratios}
+\]
+The first appears in Abelianized supersymmetric regimes and in several
+string-inspired large-\(N_c\) calculations.  The second is a quadratic
+color-factor comparison coordinate.  In the monograph they are ledgers for
+comparison unless a chapter supplies a derivation in a specified QFT
+framework.
+
+\begin{proposition}[Finite algebra of the two \(k\)-string ledgers]
+\label{prop:k-string-ledger-algebra}
+For \(1\le k\le N_c-1\),
+\[
+  R_k^{\rm sine}(N_c)=R_{N_c-k}^{\rm sine}(N_c),
+  \qquad
+  R_k^{\rm Casimir}(N_c)=R_{N_c-k}^{\rm Casimir}(N_c).
+  \label{eq:k-string-charge-conjugation-symmetry}
+\]
+At fixed \(k\) and large \(N_c\),
+\[
+  R_k^{\rm sine}(N_c)
+  =
+  k-\frac{\pi^2}{6}\frac{k(k^2-1)}{N_c^2}
+  +O(N_c^{-4}),
+  \label{eq:sine-law-large-n-expansion}
+\]
+while
+\[
+  R_k^{\rm Casimir}(N_c)
+  =
+  k-\frac{k(k-1)}{N_c}+O(N_c^{-2}).
+  \label{eq:casimir-large-n-expansion}
+\]
+\end{proposition}
+
+\begin{proof}
+The symmetry follows from
+\[
+  \sin\!\left(\frac{\pi(N_c-k)}{N_c}\right)
+  =
+  \sin\!\left(\pi-\frac{\pi k}{N_c}\right)
+  =
+  \sin\!\left(\frac{\pi k}{N_c}\right)
+\]
+and from the equality
+\[
+  (N_c-k)k=k(N_c-k).
+\]
+For the sine ledger, expand
+\[
+  \sin\frac{\pi k}{N_c}
+  =
+  \frac{\pi k}{N_c}
+  -
+  \frac{\pi^3k^3}{6N_c^3}
+  +O(N_c^{-5}),
+  \qquad
+  \sin\frac{\pi}{N_c}
+  =
+  \frac{\pi}{N_c}
+  -
+  \frac{\pi^3}{6N_c^3}
+  +O(N_c^{-5}).
+\]
+Dividing gives
+\[
+  R_k^{\rm sine}
+  =
+  k\left(1-\frac{\pi^2k^2}{6N_c^2}\right)
+  \left(1+\frac{\pi^2}{6N_c^2}\right)
+  +O(N_c^{-4}),
+\]
+which is \eqref{eq:sine-law-large-n-expansion}.  For the Casimir ledger,
+\[
+  \frac{k(N_c-k)}{N_c-1}
+  =
+  k\frac{1-k/N_c}{1-1/N_c}
+  =
+  k\left(1-\frac{k}{N_c}\right)
+  \left(1+\frac{1}{N_c}+O(N_c^{-2})\right),
+\]
+which gives \eqref{eq:casimir-large-n-expansion}.
+\end{proof}
+
+\section{Entries of the Family}
+\label{sec:susy-ym-family-entries}
+
+\subsection{Pure Bosonic Yang--Mills}
+
+Pure bosonic Yang--Mills is the endpoint with the fewest protected
+observables and the strongest need for a nonperturbative construction.  Its
+glueball and flux-tube spectra are formulated in
+Section~\ref{sec:lattice-ym-glueballs-flux-observables}.  In the family
+ledger, the bosonic row contains:
+\[
+\begin{array}{c|c}
+\text{datum} & \text{role}\\
+\hline
+\text{OS-positive lattice gauge measure} &
+  \text{candidate regulator and transfer matrix}\\
+\text{local operators }\operatorname{tr}F^2,\operatorname{tr}F\widetilde F,\ldots &
+  J^{PC}\text{ glueball sources}\\
+\text{center-flux sectors} &
+  k\text{-string tensions and excited flux tubes}\\
+\text{large-}N_c\text{ expansion} &
+  M_{\rm glueball}=O(1),\quad \Gamma_{\rm glueball}=O(N_c^{-2})
+\end{array}
+\]
+The bosonic theory supplies the target spectral questions: a mass gap,
+isolated glueball poles, stable flux sectors, and an effective string
+description in the long-string regime.
+
+\subsection[Pure N=1 Yang--Mills]{Pure \(\mathcal N=1\) Yang--Mills}
+
+Pure \(\mathcal N=1\) Yang--Mills adds protected chiral branch data.  The
+local coordinate
+\[
+  S=-\frac{1}{32\pi^2}\operatorname{tr}W^\alpha W_\alpha
+\]
+has branch values
+\[
+  \langle S\rangle_k=C\Lambda_h^3\ee^{2\pi\ii k/N_c}.
+\]
+The family ledger separates three outputs:
+\[
+\begin{array}{c|c}
+\text{output} & \text{source}\\
+\hline
+N_c\text{ branch phases} & \mathbb Z_{2N_c}\text{ anomaly and chiral }F\text{-term}\\
+T_{ij}=2|W_i-W_j| & \mathcal N=1\text{ BPS wall algebra}\\
+\text{glueball/gluinoball masses} & \text{spectral measure }\rho_{ij}^{(k)}
+\end{array}
+\]
+The first two are protected after the stated hypotheses of
+Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.  The third is a
+massive spectral problem involving the scalar, pseudoscalar, and fermionic
+components of gauge-invariant superfields.  Supersymmetry organizes isolated
+massive states into multiplets when the vacuum preserves the supercharges,
+but it does not supply their numerical masses.
+
+\subsection[Pure N=2 and Softly Broken N=2]{Pure \(\mathcal N=2\) and Softly Broken \(\mathcal N=2\)}
+
+Pure \(\mathcal N=2\) Yang--Mills has Coulomb-branch coordinate \(u\), period
+vector \((a_D,a)\), and BPS central charge
+\[
+  Z_\gamma=n_ea+n_ma_D .
+\]
+At a monopole singularity, a soft \(\mathcal N=1\) deformation
+\[
+  W_{\mathrm{loc},\mu}
+  =
+  \sqrt2\,A_DM\widetilde M+\mu\,U(A_D)
+\]
+gives
+\[
+  A_D=0,\qquad
+  M\widetilde M=-\frac{\mu}{\sqrt2}U'(0).
+\]
+The dual \(U(1)_D\) is Higgsed, and the local Abelian model supports flux
+tubes carrying the original electric flux.  The Seiberg--Witten row therefore
+contains a controlled Abelian confinement mechanism near the singularity.
+The detailed non-Abelian \(k\)-string spectrum away from the local Abelian
+regime is a separate spectral problem.
+
+\subsection[Planar N=4]{Planar \(\mathcal N=4\)}
+
+Planar \(\mathcal N=4\) Yang--Mills is conformal, so the family ledger uses
+scaling dimensions and defect energies instead of massive glueball poles.  A
+local-operator row is the planar spin-chain/QSC spectral problem of
+Chapters~\ref{ch:planar-n4-spectral-problem-spin-chains}--\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.  A line-defect row is the
+Wilson-line flux-tube datum of
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum}.  Its vacuum
+energy is the cusp anomalous dimension, and its excitations are the
+pentagon-OPE or mirror-TBA flux-tube excitations in an integrability
+description.
+
+The \(\mathcal N=4\) row is therefore the most exactly soluble spectral row
+currently available inside four-dimensional interacting QFT, while its
+proof boundary is also sharp: the planar integrability construction is an
+exact spectral framework under stated integrability hypotheses, and a
+derivation from a nonperturbative four-dimensional regulator remains open.
+
+\section{Soft Breaking Toward Bosonic Yang--Mills}
+\label{sec:susy-ym-family-soft-breaking-to-bosonic}
+
+The deformation from pure \(\mathcal N=1\) Yang--Mills toward bosonic
+Yang--Mills is naturally expressed by a spurion source for the chiral
+coordinate \(S\):
+\[
+  \Delta\mathcal L
+  =
+  \int\dd^2\theta\,X_\lambda(\theta)S+\mathrm{c.c.},
+  \qquad
+  X_\lambda(\theta)=\theta^2m_\lambda .
+  \label{eq:gaugino-mass-spurion-source}
+\]
+The component deformation is
+\[
+  \Delta\mathcal L_{\rm comp}
+  =
+  m_\lambda\,S|_{\theta=0}
+  +
+  \overline m_\lambda\,\overline S|_{\overline\theta=0}.
+  \label{eq:gaugino-mass-component-source}
+\]
+At small \(|m_\lambda|\), the leading branch energy splitting is obtained
+from the chiral condensate:
+\[
+  \Delta E_k
+  =
+  -2\,\operatorname{Re}\!\left(
+    m_\lambda\,C\Lambda_h^3\ee^{2\pi\ii k/N_c}
+  \right)
+  +O(|m_\lambda|^2).
+  \label{eq:gaugino-mass-branch-splitting}
+\]
+This formula is a first-order source-response statement in the massive
+\(\mathcal N=1\) theory.  Increasing \(|m_\lambda|\) until the gaugino
+decouples is a deformation path whose spectral continuity must be examined
+with nonchiral observables: glueball masses, string tensions, domain-wall
+fates, and line-operator sectors.  The endpoint comparison with bosonic
+Yang--Mills therefore belongs to the spectral ledger of
+Definition~\ref{def:susy-ym-family-observable-ledger}, not only to the
+chiral branch ledger.
+
+\begin{controlledapproximation}[Small soft mass branch selection]
+\label{ca:small-soft-mass-branch-selection}
+Assume pure \(\mathcal N=1\) \(SU(N_c)\) Yang--Mills has \(N_c\) massive
+branches with condensates
+\[
+  S_k=C\Lambda_h^3\ee^{2\pi\ii k/N_c}
+\]
+and that the soft source \eqref{eq:gaugino-mass-spurion-source} can be
+treated in first-order perturbation theory in a finite volume before the
+thermodynamic limit is taken.  Then the branch selected at first order is the
+branch maximizing
+\[
+  \operatorname{Re}(m_\lambda S_k).
+\]
+\end{controlledapproximation}
+
+\begin{proof}
+The first-order shift of the vacuum energy density under the component source
+\(m_\lambda S+\overline m_\lambda\overline S\) is minus the expectation value
+of the source term:
+\[
+  \Delta E_k
+  =
+  -
+  \left(m_\lambda S_k+\overline m_\lambda\,\overline S_k\right)
+  +O(|m_\lambda|^2)
+  =
+  -2\operatorname{Re}(m_\lambda S_k)+O(|m_\lambda|^2).
+\]
+At first order, minimizing \(\Delta E_k\) is the same as maximizing
+\(\operatorname{Re}(m_\lambda S_k)\).
+\end{proof}
+
+\section{Status Ledger}
+\label{sec:susy-ym-family-status-ledger}
+
+The present chapter closes the elementary comparison map.  It records the
+following theorem boundaries:
+\[
+\begin{array}{c|c}
+\text{statement} & \text{status in this monograph}\\
+\hline
+\mathcal N=4\to\mathcal N=2,\mathcal N=1
+\text{ scale matching} & \text{derived holomorphic threshold matching}\\
+\mathcal N=1\text{ branches and BPS walls} &
+  \text{derived from chiral }F\text{-term hypotheses}\\
+\mathcal N=2\text{ monopole condensation} &
+  \text{derived in local Abelian patch}\\
+\mathcal N=2\text{ vortex tension} &
+  \text{BPS Abelian-Higgs controlled approximation}\\
+\mathcal N=4\text{ Wilson-line flux tube} &
+  \text{defect spectral datum plus integrability hypotheses}\\
+\text{bosonic glueball and }k\text{-string spectra} &
+  \text{lattice or Hilbert-space spectral problem}
+\end{array}
+\]
+The frontier problem is to construct a regulator-level family in which enough
+of the ladder is realized simultaneously to compare the spectral measures,
+line-defect Hilbert spaces, and flux-sector transfer matrices directly.
+
+\begin{openproblem}[Regulator-level supersymmetry-breaking spectral bridge]
+\label{op:regulator-level-susy-breaking-spectral-bridge}
+Construct a regulator and continuum-limiting framework for the deformation
+from supersymmetric Yang--Mills theories to bosonic Yang--Mills that controls
+all of the following in the same topology: gauge-invariant local spectral
+measures, center-flux transfer matrices, line-operator charge lattices,
+domain-wall sectors, and protected chiral coordinates.  Prove, disprove, or
+replace the commonly assumed continuity of glueball and flux-string spectra
+along such deformation paths by a theorem with stated hypotheses.
+\end{openproblem}
