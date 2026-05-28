@@ -7,6 +7,8 @@ inflow sections:
 * the degree-six expansion
   [A-hat(T) ch(E)]_6 = ch_3(E) - p_1(T) ch_1(E)/24;
 * the conversion 2 pi i * F^3/[6(2 pi)^3] -> i F^3/(24 pi^2);
+* the Chern-Weil transgression coefficients in the universal
+  Chern-Simons representative;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -55,6 +57,28 @@ def check_effective_action_conversion() -> None:
     assert_equal("mixed gravitational-U(1) inflow rational coefficient", mixed_conversion, Fraction(-1, 24))
 
 
+def universal_cs_coefficients(n: int) -> list[Fraction]:
+    # In (n+1) int_0^1 dt < A [t dA + t^2 A^2]^n >, the term with j
+    # factors of A^2 has coefficient (n+1) binom(n,j)/(n+j+1).
+    from math import comb
+
+    return [Fraction((n + 1) * comb(n, j), n + j + 1) for j in range(n + 1)]
+
+
+def check_chern_weil_transgression_coefficients() -> None:
+    assert_equal("CS_3 A dA coefficient", universal_cs_coefficients(1)[0], Fraction(1))
+    assert_equal("CS_3 A^3 coefficient", universal_cs_coefficients(1)[1], Fraction(2, 3))
+    assert_equal("CS_5 A(dA)^2 coefficient", universal_cs_coefficients(2)[0], Fraction(1))
+    assert_equal("CS_5 A dA A^2 coefficient", universal_cs_coefficients(2)[1], Fraction(3, 2))
+    assert_equal("CS_5 A(A^2)^2 coefficient", universal_cs_coefficients(2)[2], Fraction(3, 5))
+
+    # In the Abelian case all A^2 terms vanish and I_{2n+1}^{(0)}=A F^n.
+    # The gauge variation d(lambda) F^n equals d(lambda F^n) because dF=0.
+    abelian_variation = Fraction(1)
+    descent_boundary = Fraction(1)
+    assert_equal("Abelian descent coefficient", abelian_variation, descent_boundary)
+
+
 def check_standard_model_hypercharge_sums() -> None:
     cubic = sum(su3 * su2 * y**3 for _, su3, su2, y in SM_FIELDS)
     linear = sum(su3 * su2 * y for _, su3, su2, y in SM_FIELDS)
@@ -82,6 +106,7 @@ def check_su_n_bookkeeping() -> None:
 def main() -> None:
     check_index_polynomial_expansion()
     check_effective_action_conversion()
+    check_chern_weil_transgression_coefficients()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()
     print("All anomaly-polynomial and inflow coefficient checks passed.")

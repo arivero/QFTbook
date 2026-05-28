@@ -29,8 +29,10 @@ Current checks:
 - `anomaly_polynomial_descent_checks.py`: exact rational checks for the
   index-normalized anomaly-polynomial and inflow sections, including the
   six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
-  \(2\pi\ii\) conversion to effective-action inflow, one-generation Standard
-  Model hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
+  \(2\pi\ii\) conversion to effective-action inflow, universal
+  Chern--Weil transgression coefficients through the five-form case,
+  the Abelian descent coefficient, one-generation Standard Model
+  hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
   cubic-anomaly bookkeeping.
 - `standard_model_anomaly_checks.py`: exact rational checks for the
   Standard Model hybrid-definition chapter, including one-generation

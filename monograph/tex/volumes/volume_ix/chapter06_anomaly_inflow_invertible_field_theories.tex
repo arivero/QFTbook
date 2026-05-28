@@ -256,6 +256,74 @@ can choose a Chern--Simons form \(I_{D+1}^{(0)}(A)\) satisfying
 \[
   dI_{D+1}^{(0)}(A)=P_{D+2}(F).
 \]
+For the common case \(D=2n\) and
+\[
+  P_{2n+2}(F)=\langle F^{n+1}\rangle ,
+\]
+where \(\langle\cdots\rangle\) is an invariant symmetric
+\((n+1)\)-linear form on the Lie algebra, this local primitive is
+constructed by a path of connections.  Put
+\[
+  A_t=tA,\qquad
+  F_t=dA_t+A_t\wedge A_t=t\,dA+t^2A\wedge A .
+\]
+Define
+\begin{equation}
+  I_{2n+1}^{(0)}(A)
+  =
+  (n+1)\int_0^1dt\,\langle A\,F_t^n\rangle .
+  \label{eq:universal-cs-transgression}
+\end{equation}
+
+\begin{lemma}[Chern--Weil transgression]
+\label{lem:chern-weil-transgression}
+The form \eqref{eq:universal-cs-transgression} satisfies
+\[
+  d I_{2n+1}^{(0)}(A)=\langle F^{n+1}\rangle .
+\]
+\end{lemma}
+
+\begin{proof}
+Let \(D_t=d+[A_t,\cdot]\) be the covariant exterior derivative for \(A_t\).
+Since \(\dot A_t=A\), the curvature variation is
+\[
+  \dot F_t=D_t\dot A_t=D_tA .
+\]
+Using invariance of \(\langle\cdots\rangle\) and the Bianchi identity
+\(D_tF_t=0\),
+\[
+  \frac{d}{dt}\langle F_t^{n+1}\rangle
+  =
+  (n+1)\langle D_tA\,F_t^n\rangle
+  =
+  (n+1)d\langle A\,F_t^n\rangle .
+\]
+Integrating this identity from \(t=0\) to \(t=1\) gives
+\[
+  \langle F^{n+1}\rangle-\langle F_0^{n+1}\rangle
+  =
+  d\left((n+1)\int_0^1dt\,\langle A\,F_t^n\rangle\right).
+\]
+Because \(F_0=0\), the left side is \(\langle F^{n+1}\rangle\), proving the
+claim.
+\end{proof}
+
+In the Abelian case \(F=dA\) and \eqref{eq:universal-cs-transgression}
+reduces to
+\[
+  I_{2n+1}^{(0)}(A)=A\wedge F^n .
+\]
+For a gauge variation \(\delta_\lambda A=d\lambda\),
+\[
+  \delta_\lambda I_{2n+1}^{(0)}
+  =
+  d\lambda\wedge F^n
+  =
+  d(\lambda F^n),
+  \qquad dF=0,
+\]
+so \(I_{2n}^{(1)}(\lambda,A)=\lambda F^n\) is an explicit descent
+representative in this normalization.
 For an infinitesimal gauge parameter \(\alpha\),
 \[
   \delta_\alpha A=D_A\alpha=d\alpha+[A,\alpha].
