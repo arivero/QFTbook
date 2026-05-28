@@ -127,7 +127,7 @@ and
 \end{equation}
 The word minimal means that no CDD factor, unitary and crossing-symmetric and
 analytic without zeros or poles in the physical strip, has been multiplied
-into the displayed solution.  The formula is a scattering datum.  Identifying
+into the displayed solution.  The formula is a scattering input.  Identifying
 it with a continuum local sigma-model QFT additionally requires the
 nonperturbative construction and matching problem stated at the end of the
 chapter.
@@ -522,18 +522,18 @@ For a unit vector \(n:\Sigma\to S^2\subset\R^3\), set
 \end{equation}
 
 \begin{proposition}[\(\mathbb{CP}^1\) as the \(O(3)\) sigma model]
-\label{prop:cp1-o3-normalization-ledger}
+\label{prop:cp1-o3-normalization-identities}
 The map \(n\mapsto P_n\) identifies \(S^2\) with the rank-one Hermitian
 projectors in \(\mathbb C^2\) and obeys
 \begin{align}
   \operatorname{tr}(\partial_\mu P_n\,\partial_\mu P_n)
   &=
   \frac12\,\partial_\mu n\cdot\partial_\mu n,
-  \label{eq:cp1-o3-kinetic-ledger}\\
+  \label{eq:cp1-o3-kinetic-identity}\\
   -\ii\,\operatorname{tr}(P_n\,\dd P_n\wedge\dd P_n)
   &=
   \frac12\,\epsilon_{abc}n_a\,\dd n_b\wedge\dd n_c .
-  \label{eq:cp1-o3-charge-ledger}
+  \label{eq:cp1-o3-charge-identity}
 \end{align}
 Consequently the \(\mathbb{CP}^1\) action
 \[
@@ -586,9 +586,9 @@ For the curvature form,
 \]
 because the term with \(\operatorname{tr}(\sigma_b\sigma_c)\) is symmetric in
 \((b,c)\) and hence vanishes after wedging.  The Pauli trace identity gives
-\eqref{eq:cp1-o3-charge-ledger}.  Substituting
-\eqref{eq:cp1-o3-kinetic-ledger} into the projector action gives the coupling
-match, and substituting \eqref{eq:cp1-o3-charge-ledger} into \(Q[P]\) gives
+\eqref{eq:cp1-o3-charge-identity}.  Substituting
+\eqref{eq:cp1-o3-kinetic-identity} into the projector action gives the coupling
+match, and substituting \eqref{eq:cp1-o3-charge-identity} into \(Q[P]\) gives
 the degree formula.
 \end{proof}
 
@@ -646,9 +646,9 @@ Thus \(N^{-1}E_{V\bar V}\) projects onto the singlet line
 \]
 projects onto the adjoint summand in \(V\otimes V^\vee\).
 
-\begin{definition}[Projective crossing datum]
-\label{def:projective-crossing-datum}
-A rank-one projective bootstrap datum consists of meromorphic functions
+\begin{definition}[Projective crossing system]
+\label{def:projective-crossing-system}
+A rank-one projective bootstrap system consists of meromorphic functions
 \(A(\theta)\), \(B(\theta)\), \(C(\theta)\), and \(D(\theta)\), together with
 the operators
 \begin{align}
@@ -668,8 +668,8 @@ meromorphic relation
 \end{definition}
 
 \begin{proposition}[Crossing of the invariant tensors]
-\label{prop:projective-crossing-tensor-ledger}
-With the convention of Definition~\ref{def:projective-crossing-datum}, the
+\label{prop:projective-crossing-tensor-identity}
+With the convention of Definition~\ref{def:projective-crossing-system}, the
 crossed tensor of \(S_{VV}\) is exactly \(S_{V\bar V}\) with coefficients
 \eqref{eq:projective-crossing-functions}.
 \end{proposition}
@@ -704,8 +704,8 @@ The first tensor is \(I_{V\bar V}\), and the second tensor is
 \eqref{eq:projective-crossing-functions}.
 \end{proof}
 
-\begin{proposition}[Projective-channel unitarity ledger]
-\label{prop:projective-channel-unitarity-ledger}
+\begin{proposition}[Projective-channel unitarity identities]
+\label{prop:projective-channel-unitarity-identities}
 Let
 \[
   S_\pm(\theta)=A(\theta)\pm B(\theta),\qquad
@@ -739,10 +739,10 @@ eigenvalues of \(S_{V\bar V}\) are therefore \(S_{\rm sing}\) and
 \end{proof}
 
 \begin{proposition}[Pole assignment in the projective rank-one block]
-\label{prop:projective-pole-assignment-ledger}
+\label{prop:projective-pole-assignment-rule}
 Suppose the \(VV\) tensor part is the rational block
 \(\mathcal R_N(\theta)\) of \eqref{eq:su-n-rational-r-block}, multiplied by a
-scalar factor \(X_{\mathbb{CP}}(\theta)\).  If the projective bootstrap datum
+scalar factor \(X_{\mathbb{CP}}(\theta)\).  If the projective bootstrap system
 assigns no stable direct-channel particle in \(\wedge^2 V\), then
 \[
   X_{\mathbb{CP}}(\theta)
@@ -773,7 +773,7 @@ with its normalization fixed by the Hilbert-space inner product.
 \label{ca:cpn-exact-scattering-status}
 The preceding tensor constructions give finite-dimensional bootstrap
 infrastructure for the projective family.  They specify the invariant channels,
-their crossing relation, and the pole-assignment ledger before any scalar
+their crossing relation, and the pole-assignment rule before any scalar
 factor is chosen.  A completed projective-model \(S\)-matrix further specifies
 the scalar functions, their physical-strip singularities, the CDD
 normalization, and the map from the regulator-defined model
@@ -1265,7 +1265,7 @@ Let \(V=\mathbb C^N\) be the defining representation of \(SU(N)\), and write
 \[
   V_a=\wedge^a V,\qquad a=1,\ldots,N-1 .
 \]
-The conjugate of \(V_a\) is \(V_{N-a}\).  A bootstrap spectrum datum of
+The conjugate of \(V_a\) is \(V_{N-a}\).  A bootstrap spectrum of
 sine-law type assigns masses
 \begin{equation}
   m_a=M\,\frac{\sin(\pi a/N)}{\sin(\pi/N)},
@@ -1279,7 +1279,7 @@ principal chiral model the corresponding particles carry left and right
 indices, with one common convention taking the rank-\(a\) multiplet to
 transform in \(V_a\otimes V_a^\ast\) under \(SU(N)_L\times SU(N)_R\).  The
 choice of the global form of the symmetry and the quotient by common centers
-is part of the family datum; it affects which line operators and twisted
+is part of the family specification; it affects which line operators and twisted
 sectors exist, although not the local sine-mass formula itself.
 
 \begin{proposition}[Fusing-angle consistency of the sine spectrum]
@@ -1400,7 +1400,7 @@ multiplication for representative \(N\) and rapidities.
 \section{SU(N) Scalar Factors and CDD Conventions}
 \label{sec:su-n-scalar-factors-cdd}
 
-The rational matrix block is only the tensor part of the scattering datum.
+The rational matrix block is only the tensor part of the scattering problem.
 The scalar factor fixes the analytic normalization.  Let
 \[
   \mathcal P=\{\theta\in\mathbb C:0<\operatorname{Im}\theta<\pi\}
@@ -1495,8 +1495,8 @@ matrix pole at \(\theta=\ii\lambda_N\) is then the first
 antisymmetric bound-state pole, while \(A_N\) itself supplies the minimal
 gamma-function normalization in this convention.
 
-\begin{proposition}[Gross--Neveu scalar unitarity ledger]
-\label{prop:su-n-cgn-scalar-unitarity-ledger}
+\begin{proposition}[Gross--Neveu scalar unitarity identity]
+\label{prop:su-n-cgn-scalar-unitarity-identity}
 As meromorphic identities in \(\theta\),
 \[
   A_N(\theta)A_N(-\theta)=1,
@@ -1593,14 +1593,14 @@ additional factor satisfying Definition~\ref{def:cdd-factor-one-channel}
 changes the bootstrap theory unless the extra singularity data are also
 specified.
 
-\begin{proposition}[Principal-chiral scalar unitarity ledger]
-\label{prop:pcm-scalar-unitarity-ledger}
+\begin{proposition}[Principal-chiral scalar unitarity identity]
+\label{prop:pcm-scalar-unitarity-identity}
 The scalar factor \eqref{eq:pcm-wiegmann-scalar} obeys
 \begin{equation}
   W_N(\theta)W_N(-\theta)
   =
   \left(1+\frac{\lambda_N^2}{\theta^2}\right)^{-2}.
-  \label{eq:pcm-wiegmann-unitarity-ledger}
+  \label{eq:pcm-wiegmann-unitarity-identity}
 \end{equation}
 Consequently \(X_{\rm PCM}(\theta)X_{\rm PCM}(-\theta)=1\), and
 \eqref{eq:pcm-fundamental-smatrix-matrix-part} is unitary on the real
@@ -1632,7 +1632,7 @@ Since \(\lambda_N=2\pi a\) and \(\theta=2\pi\ii x\),
   \frac{(x-a)(x+a)}{x^2}.
 \]
 Squaring the gamma-ratio product proves
-\eqref{eq:pcm-wiegmann-unitarity-ledger}.  Multiplying by
+\eqref{eq:pcm-wiegmann-unitarity-identity}.  Multiplying by
 \[
   \left(\frac{\theta-\ii\lambda_N}{\theta}\right)^2
   \left(\frac{-\theta-\ii\lambda_N}{-\theta}\right)^2
@@ -1782,8 +1782,8 @@ Euclidean sigma-model functional is
 understood as a local expression in the supercoordinate sheaf.  The ordinary
 round sphere is recovered at \(n=0\), \(m=N\).
 
-\begin{proposition}[One-loop supersphere curvature ledger]
-\label{prop:supersphere-one-loop-curvature-ledger}
+\begin{proposition}[Supersphere Ricci coefficient]
+\label{prop:supersphere-one-loop-curvature-identity}
 In the standard constant-curvature normalization of
 \eqref{eq:supersphere-sigma-action}, the Ricci tensor entering the one-loop
 sigma-model beta tensor is
@@ -1872,8 +1872,8 @@ local functions.  The gauge-invariant superprojector is
 \]
 where \(\operatorname{str}\) is the supertrace.
 
-\begin{proposition}[Projective-supermodel one-loop ledger]
-\label{prop:projective-supermodel-one-loop-ledger}
+\begin{proposition}[Projective-supermodel one-loop identity]
+\label{prop:projective-supermodel-one-loop-identity}
 For the Fubini--Study supermetric on \(\mathbb{CP}^{p|q}\), the one-loop
 Ricci coefficient is
 \[
@@ -2449,9 +2449,9 @@ domain treated here has no such denominator poles by
 Proposition~\ref{prop:repulsive-sausage-elementary-checks}.
 \end{controlledapproximation}
 
-\begin{definition}[Sigma-model family datum]
-\label{def:sigma-model-family-datum}
-A sigma-model family datum consists of:
+\begin{definition}[Sigma-model family specification]
+\label{def:sigma-model-family-specification}
+A sigma-model family specification consists of:
 \begin{enumerate}
   \item a target, quotient, or supertarget \(X\), including its global and
   local redundancy groups;

@@ -5,7 +5,7 @@
 
 This chapter begins the lower-dimensional supersymmetric examples.  The main
 objects are \(2D\) \(\mathcal N=(2,2)\) Landau--Ginzburg models, sigma
-models, and gauged linear sigma models.  Each is treated as a QFT datum with
+models, and gauged linear sigma models.  Each is treated as a QFT presentation with
 declared fields, symmetries, operator coordinates, and infrared questions.
 
 \section{The N=(2,2) Algebra}
@@ -24,17 +24,17 @@ An \(R\)-symmetry assignment consists of vector and axial charges
 \[
   F_V,\qquad F_A,
 \]
-whose action on supercharges is part of the model datum.  A BPS state with
+whose action on supercharges is part of the model specification.  A BPS state with
 central charge \(Z\) obeys an inequality obtained by positivity of
 \((Q+\ee^{\ii\alpha}\bar Q)^\dagger(Q+\ee^{\ii\alpha}\bar Q)\); the saturated
 states are kernels of a corresponding linear combination of supercharges.
 
-\section{Landau--Ginzburg Datum}
+\section{Landau--Ginzburg Presentations}
 
-\begin{definition}[Two-dimensional Landau--Ginzburg datum]
-\label{def:two-dimensional-lg-datum}
-A polynomial \(2D\) \(\mathcal N=(2,2)\) Landau--Ginzburg datum in this
-chapter consists of:
+\begin{definition}[Two-dimensional Landau--Ginzburg presentation]
+\label{def:two-dimensional-lg-presentation}
+A polynomial \(2D\) \(\mathcal N=(2,2)\) Landau--Ginzburg presentation in this
+chapter is specified by:
 \begin{enumerate}
 \item a Euclidean worldsheet \(\Sigma\), initially a smooth oriented
 surface with a chosen spin structure when fermions are kept explicitly;
@@ -56,7 +56,7 @@ is positive on the field chart used in the perturbative construction;
   W\in\C[\phi^1,\ldots,\phi^n].
 \]
 \end{enumerate}
-The datum is a field-variable presentation.  A continuum QFT requires a
+This is a field-variable presentation.  A continuum QFT requires a
 regulator, a supersymmetric Ward identity, and a Hilbert-space or Euclidean
 reconstruction; none of these is inferred from the polynomial \(W\) alone.
 \end{definition}
@@ -82,8 +82,8 @@ Thus supersymmetric classical vacua in the affine field chart solve
   \partial_iW(\phi)=0,\qquad i=1,\ldots,n.
 \]
 
-\begin{definition}[Quasihomogeneous isolated Landau--Ginzburg datum]
-\label{def:vii-quasihomogeneous-lg-datum}
+\begin{definition}[Quasihomogeneous isolated Landau--Ginzburg polynomial]
+\label{def:vii-quasihomogeneous-lg-polynomial}
 Let \(q_i\in\mathbb Q_{>0}\).  A polynomial
 \[
   W\in\C[\phi^1,\ldots,\phi^n]
@@ -102,7 +102,7 @@ It is isolated when the common zero locus of
   \partial_1W,\ldots,\partial_nW
 \]
 in \(\C^n\) is the single point \(0\).  The algebraic chiral coordinate ring
-attached to the datum is the Jacobi algebra
+attached to the polynomial is the Jacobi algebra
 \begin{equation}
   \operatorname{Jac}(W)
   =
@@ -161,10 +161,10 @@ because \(Q_Bh^i(\phi)=0\).  Thus
 operators by exact polynomial operators gives \eqref{eq:vii-lg-jacobi-ring}.
 \end{proof}
 
-\begin{proposition}[Quasihomogeneous charge and central-charge ledger]
-\label{prop:lg-quasihomogeneous-charge-ledger}
-Let \(W\) be a quasihomogeneous isolated datum in the sense of
-Definition~\ref{def:vii-quasihomogeneous-lg-datum}.  Assign the monomial
+\begin{proposition}[Quasihomogeneous charge and central charge]
+\label{prop:lg-quasihomogeneous-charge-central-charge}
+Let \(W\) be a quasihomogeneous isolated polynomial in the sense of
+Definition~\ref{def:vii-quasihomogeneous-lg-polynomial}.  Assign the monomial
 \[
   \phi^a=(\phi^1)^{a_1}\cdots(\phi^n)^{a_n}
 \]
@@ -219,7 +219,7 @@ remaining monomials \eqref{eq:fermat-lg-jacobi-basis} are linearly
 independent in the quotient.  Counting the allowed exponents gives
 \eqref{eq:fermat-lg-jacobi-dimension}.
 
-The final formula is the protected anomaly ledger used by the
+The final formula is the protected anomaly calculation used by the
 \(\mathcal N=2\) superconformal-algebra interface in
 Chapter~\ref{ch:two-dimensional-superconformal-algebras}.  The present
 proposition records its algebraic inputs and status: once a continuum
@@ -377,11 +377,11 @@ an off-shell realization, the same statement is made after passing to
 gauge-invariant observables.
 \end{proof}
 
-\section{Gauged Linear Sigma-Model Datum}
+\section{Gauged Linear Sigma-Model Presentations}
 
-\begin{definition}[Abelian \(2D\) \(\mathcal N=(2,2)\) GLSM datum]
-\label{def:abelian-2d-glsm-datum}
-An abelian GLSM datum in this chapter consists of:
+\begin{definition}[Abelian \(2D\) \(\mathcal N=(2,2)\) GLSM presentation]
+\label{def:abelian-2d-glsm-presentation}
+An abelian GLSM presentation in this chapter is specified by:
 \begin{enumerate}
 \item gauge group \(G=U(1)\);
 \item chiral multiplets \(\Phi_i\), \(i=1,\ldots,m\), with integer charges
@@ -409,12 +409,12 @@ Higgs vacua with at least one charged scalar nonzero therefore solve the
 \(U(1)\).
 \end{definition}
 
-The axial \(R\)-symmetry anomaly coefficient of this abelian datum is
+The axial \(R\)-symmetry anomaly coefficient of this abelian presentation is
 \begin{equation}
   \mathcal A_A=\sum_{i=1}^m Q_i.
   \label{eq:abelian-glsm-axial-anomaly}
 \end{equation}
-This coefficient is a finite charge ledger: each charged chiral multiplet
+This coefficient is a finite charge sum: each charged chiral multiplet
 contributes its charge to the axial rotation of the fermion measure.  When
 \(\mathcal A_A=0\), the FI coordinate is not shifted by the axial rotation at
 one loop.  This is a necessary condition for an axial \(R\)-symmetry in an
@@ -423,8 +423,8 @@ infrared superconformal candidate, not a proof of conformality.
 The vector and axial \(R\)-symmetries have different anomaly requirements.
 The A twist is available only when \(F_V\) is a genuine symmetry of the
 regulated theory.  The B twist is available only when \(F_A\) is a genuine
-symmetry.  In the abelian GLSM datum of
-Definition~\ref{def:abelian-2d-glsm-datum}, the axial anomaly obstruction is
+symmetry.  In the abelian GLSM presentation of
+Definition~\ref{def:abelian-2d-glsm-presentation}, the axial anomaly obstruction is
 the charge sum \eqref{eq:abelian-glsm-axial-anomaly}.  Therefore the
 hypersurface GLSM with charges \((1,\ldots,1,-d)\) has an axial B-twist
 candidate precisely when \(N=d\).
@@ -583,7 +583,7 @@ chiral and twisted-chiral field variables.  The global QFT statement requires
 the compact path-integral measure, spin structures, contact terms, and
 topological sectors to be specified.
 
-\begin{hypothesis}[Compact scalar first-order duality datum]
+\begin{hypothesis}[Compact scalar first-order duality setup]
 \label{hyp:compact-scalar-first-order-duality}
 Let \(\Sigma\) be a closed oriented Euclidean surface.  A compact scalar
 \(\vartheta:\Sigma\to\mathbb R/2\pi\mathbb Z\) of radius \(R>0\) has action
@@ -685,8 +685,8 @@ compatible with the first-order path integral.  This check is not by itself
 a proof of equality of all correlation functions; it is the exact arithmetic
 that any such proof must realize.
 
-\begin{definition}[Local \(\mathcal N=(2,2)\) abelian duality datum]
-\label{def:n22-abelian-duality-legendre-datum}
+\begin{definition}[Local \(\mathcal N=(2,2)\) abelian Legendre duality]
+\label{def:n22-abelian-duality-legendre-setup}
 Let \(\mathcal B\) be a real \(\mathcal N=(2,2)\) superfield coordinate for a
 shift-isometry direction, and let \(Y\) be a twisted-chiral superfield whose
 imaginary part is periodic.  Locally, suppressing normalization constants
@@ -714,7 +714,7 @@ and gives the Legendre-dual K\"ahler potential
 
 \begin{proposition}[Hessian inversion in abelian \(\mathcal N=(2,2)\) duality]
 \label{prop:n22-abelian-duality-hessian-inversion}
-Assume Definition~\ref{def:n22-abelian-duality-legendre-datum}.  Then
+Assume Definition~\ref{def:n22-abelian-duality-legendre-setup}.  Then
 \begin{equation}
   \widetilde K''(u)=\frac{1}{K''(\mathcal B(u))}.
   \label{eq:n22-abelian-duality-hessian-inverse}
@@ -758,7 +758,7 @@ and hence
 For a charged chiral field in an abelian GLSM, the same local dualization
 couples the dual twisted-chiral variable linearly to the abelian field
 strength \(\Sigma\), with coefficient equal to the integer gauge charge.
-The perturbative local ledger is therefore compatible with the GLSM charge
+The perturbative local calculation is therefore compatible with the GLSM charge
 matrix.  Nonperturbative exponential terms in the dual twisted
 superpotential, when present, require a separate vortex-instanton
 calculation: compactness of the vortex moduli space, fermion zero-mode
@@ -766,8 +766,8 @@ saturation, determinant-line orientation, and boundary control must be
 supplied before such terms are promoted from semiclassical input to a QFT
 statement.
 
-\section{Abelian GLSM Coulomb-Branch One-Loop Ledger}
-\label{sec:abelian-glsm-coulomb-one-loop-ledger}
+\section{Abelian GLSM Coulomb-Branch One-Loop Calculation}
+\label{sec:abelian-glsm-coulomb-one-loop-calculation}
 
 The classical Higgs quotient is not the whole GLSM story.  A second protected
 calculation is obtained by moving to a Coulomb-branch region where
@@ -780,8 +780,8 @@ not a nonperturbative construction of the full infrared QFT.
 
 \begin{hypothesis}[Abelian Coulomb one-loop determinant]
 \label{hyp:abelian-glsm-coulomb-one-loop-determinant}
-Fix an abelian GLSM datum as in
-Definition~\ref{def:abelian-2d-glsm-datum}, assume all charges \(Q_i\) are
+Fix an abelian GLSM presentation as in
+Definition~\ref{def:abelian-2d-glsm-presentation}, assume all charges \(Q_i\) are
 nonzero, and restrict to a simply connected branch of the region
 \[
   Q_i\sigma\neq0,\qquad i=1,\ldots,m.
@@ -867,7 +867,7 @@ Take \(m=N\), \(Q_i=1\), and \(W=0\).  The local equation is
 \[
   \left(\frac{\sigma}{\mu}\right)^N=\ee^t .
 \]
-Thus the Coulomb-branch one-loop ledger predicts \(N\) massive twisted
+Thus the Coulomb-branch one-loop calculation predicts \(N\) massive twisted
 chiral vacua in the chamber where this effective description is valid.  This
 is the protected arithmetic behind the usual \(\mathbb P^{N-1}\) vacuum
 count.  The statement that these vacua exhaust the continuum theory requires
@@ -994,7 +994,7 @@ infrared QFTs.
 For each two-dimensional supersymmetric model one must distinguish:
 \[
 \begin{gathered}
-  \text{UV regulator datum},\qquad
+  \text{UV regulator},\qquad
   \text{supersymmetric Wilsonian flow},\\
   \text{protected operator algebra},\qquad
   \text{full infrared QFT}.

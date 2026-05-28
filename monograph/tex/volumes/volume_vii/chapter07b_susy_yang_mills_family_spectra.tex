@@ -12,8 +12,8 @@ by scale coordinates and protected Ward identities.  Massive spectra,
 confining strings, and line-operator Hilbert spaces require additional
 nonperturbative data.  This chapter defines the comparison problem.
 
-\section{Comparison Datum}
-\label{sec:susy-ym-family-comparison-datum}
+\section{Comparison Problem}
+\label{sec:susy-ym-family-comparison-problem}
 
 Let \(G=SU(N_c)\) with \(N_c\ge2\).  A comparison among the
 \(\mathcal N=4,\mathcal N=2,\mathcal N=1\), and bosonic Yang--Mills theories
@@ -22,9 +22,9 @@ symbols.  The amount of supersymmetry determines which quantities are
 protected, which deformations preserve a chiral coordinate chart, and which
 spectral questions remain dynamical.
 
-\begin{definition}[Yang--Mills cousin comparison datum]
-\label{def:ym-cousin-comparison-datum}
-A Yang--Mills cousin comparison datum consists of:
+\begin{definition}[Yang--Mills cousin comparison problem]
+\label{def:ym-cousin-comparison-problem}
+A Yang--Mills cousin comparison problem is specified by:
 \begin{enumerate}[label=(\roman*)]
 \item a gauge group \(G=SU(N_c)\) or a specified global form with a specified
   line-operator lattice;
@@ -46,11 +46,11 @@ A Yang--Mills cousin comparison datum consists of:
   boundary conditions, and defect operators on Wilson lines;
 \item a status label for each comparison: holomorphic scale matching,
   protected \(F\)-term matching, semiclassical Abelian approximation, lattice
-  spectral datum, planar-integrability datum, or open nonperturbative
-  construction.
+  spectral extraction, planar-integrability reconstruction, or open
+  nonperturbative construction.
 \end{enumerate}
-Two rows of the datum are compared only after the observable type and status
-label have been fixed.
+Two rows of the comparison are compared only after the observable type and
+status label have been fixed.
 \end{definition}
 
 The basic ladder is:
@@ -222,27 +222,27 @@ depend on the nonchiral dynamics and on the chosen line-operator lattice.
 The uniform part of the ladder is a map of observables, not a universal
 numerical formula.  Four classes appear repeatedly.
 
-\begin{definition}[Family observable ledger]
-\label{def:susy-ym-family-observable-ledger}
-For a Yang--Mills cousin comparison datum, the observable ledger is the
-following table.
+\begin{definition}[Family observable comparison table]
+\label{def:susy-ym-family-observable-table}
+For a Yang--Mills cousin comparison problem, the repeated observable classes
+are the following.
 \begin{center}
 \small
 \begin{tabular}{p{0.22\textwidth}|p{0.39\textwidth}|p{0.28\textwidth}}
-\textbf{observable type} & \textbf{representative datum} & \textbf{status}\\
+\textbf{observable type} & \textbf{representative object} & \textbf{status}\\
 \hline
 chiral local &
   \(S,\ u,\ \operatorname{tr}\Phi^k\) &
   holomorphic or protected\\
 massive local spectral &
   \(\rho_{ij}(B)\) for gauge-invariant sources &
-  Hilbert-space or lattice spectral datum\\
+  spectral measure; lattice extraction\\
 center-charged line &
   \(W_R(C),\ H_m(C)\), flux-sector transfer matrix &
-  line-operator datum\\
+  declared line-sector problem\\
 defect spectral &
   \(\mathcal H_{\rm def},\ H_{\rm def},\mathbb O_a(t)\) &
-  Wilson-line or cusp datum
+  Wilson-line or cusp spectral problem
 \end{tabular}
 \end{center}
 where \(S\) is the pure \(\mathcal N=1\) glueball coordinate of
@@ -250,10 +250,10 @@ Section~\ref{sec:pure-sym-gaugino-condensation}, \(u\) is the rank-one
 \(\mathcal N=2\) Coulomb coordinate of
 Chapter~\ref{ch:susy-four-dimensional-n2-seiberg-witten}, \(\rho_{ij}\) is
 the spectral measure of
-Definition~\ref{def:pure-sym-vacuum-spectral-datum}, \(W_R(C)\) is a Wilson
+Definition~\ref{def:pure-sym-vacuum-spectral-problem}, \(W_R(C)\) is a Wilson
 line in representation \(R\), \(H_m(C)\) is a magnetic line with magnetic
 charge \(m\), and \(\mathcal H_{\rm def}\) is the defect Hilbert space of
-Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum}.
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem}.
 \end{definition}
 
 \begin{proposition}[Observable-type preservation under a controlled threshold]
@@ -299,13 +299,13 @@ Line operators require the global form and charge lattice as part of the
 definition.  A mass threshold changes the dynamics of screening and
 confinement, but it does not change the declared lattice of allowed line
 charges.  Therefore the center or charge label can be transported through the
-comparison datum.  The area-law coefficient or defect excitation energy is
+comparison problem.  The area-law coefficient or defect excitation energy is
 obtained from the Hilbert-space or transfer-matrix problem in the deformed
 theory, so it remains a dynamical spectral quantity.
 \end{proof}
 
-\section[Center Strings and k-String Ledgers]{Center Strings and \(k\)-String Ledgers}
-\label{sec:susy-ym-family-k-string-ledgers}
+\section[Center Strings and k-String Tension Comparisons]{Center Strings and \(k\)-String Tension Comparisons}
+\label{sec:susy-ym-family-k-string-tensions}
 
 For \(SU(N_c)\) with the usual Wilson lines, the center charge of a
 representation is an element of \(\mathbb Z_{N_c}\).  A confining theory may
@@ -315,9 +315,10 @@ have stable flux sectors labeled by
 \]
 with \(k\) and \(N_c-k\) related by charge conjugation.
 
-\begin{definition}[\(k\)-string tension datum]
-\label{def:k-string-tension-datum}
-A \(k\)-string tension datum for a confining Yang--Mills theory consists of:
+\begin{definition}[\(k\)-string tension extraction]
+\label{def:k-string-tension-extraction}
+A \(k\)-string tension extraction for a confining Yang--Mills theory is
+specified by:
 \begin{enumerate}[label=(\roman*)]
 \item a regulator or continuum Hilbert-space construction with spatial
   transfer matrix \(T_L\) on a box whose long direction has length \(L\);
@@ -343,7 +344,7 @@ defines the same tension if the transfer-matrix and Wilson-loop formulations
 have been proved equivalent for the regulator under consideration.
 \end{definition}
 
-Two comparison formulae are useful as ledgers:
+Two comparison formulae are useful reference functions:
 \[
   R_k^{\rm sine}(N_c)
   =
@@ -352,16 +353,17 @@ Two comparison formulae are useful as ledgers:
   R_k^{\rm Casimir}(N_c)
   =
   \frac{k(N_c-k)}{N_c-1}.
-  \label{eq:k-string-ledger-ratios}
+  \label{eq:k-string-tension-ratios}
 \]
 The first appears in Abelianized supersymmetric regimes and in several
 string-inspired large-\(N_c\) calculations.  The second is a quadratic
-color-factor comparison coordinate.  In the monograph they are ledgers for
+color-factor comparison coordinate.  In the monograph they are comparison
+functions for
 comparison unless a chapter supplies a derivation in a specified QFT
 framework.
 
-\begin{proposition}[Finite algebra of the two \(k\)-string ledgers]
-\label{prop:k-string-ledger-algebra}
+\begin{proposition}[Finite algebra of the two \(k\)-string comparisons]
+\label{prop:k-string-tension-algebra}
 For \(1\le k\le N_c-1\),
 \[
   R_k^{\rm sine}(N_c)=R_{N_c-k}^{\rm sine}(N_c),
@@ -399,7 +401,7 @@ and from the equality
 \[
   (N_c-k)k=k(N_c-k).
 \]
-For the sine ledger, expand
+For the sine-law comparison, expand
 \[
   \sin\frac{\pi k}{N_c}
   =
@@ -423,7 +425,7 @@ Dividing gives
   \left(1+\frac{\pi^2}{6N_c^2}\right)
   +O(N_c^{-4}),
 \]
-which is \eqref{eq:sine-law-large-n-expansion}.  For the Casimir ledger,
+which is \eqref{eq:sine-law-large-n-expansion}.  For the Casimir comparison,
 \[
   \frac{k(N_c-k)}{N_c-1}
   =
@@ -444,10 +446,10 @@ Pure bosonic Yang--Mills is the endpoint with the fewest protected
 observables and the strongest need for a nonperturbative construction.  Its
 glueball and flux-tube spectra are formulated in
 Section~\ref{sec:lattice-ym-glueballs-flux-observables}.  In the family
-ledger, the bosonic row contains:
+comparison, the bosonic row contains:
 \[
 \begin{array}{c|c}
-\text{datum} & \text{role}\\
+\text{object} & \text{role}\\
 \hline
 \text{OS-positive lattice gauge measure} &
   \text{candidate regulator and transfer matrix}\\
@@ -465,7 +467,7 @@ description in the long-string regime.
 
 \subsection[Pure N=1 Yang--Mills]{Pure \(\mathcal N=1\) Yang--Mills}
 
-Pure \(\mathcal N=1\) Yang--Mills adds protected chiral branch data.  The
+Pure \(\mathcal N=1\) Yang--Mills adds protected chiral branch information.  The
 local coordinate
 \[
   S=-\frac{1}{32\pi^2}\operatorname{tr}W^\alpha W_\alpha
@@ -474,7 +476,7 @@ has branch values
 \[
   \langle S\rangle_k=C\Lambda_h^3\ee^{2\pi\ii k/N_c}.
 \]
-The family ledger separates three outputs:
+The family comparison separates three outputs:
 \[
 \begin{array}{c|c}
 \text{output} & \text{source}\\
@@ -491,17 +493,17 @@ components of gauge-invariant superfields.  Supersymmetry organizes isolated
 massive states into multiplets when the vacuum preserves the supercharges,
 but it does not supply their numerical masses.
 
-\begin{definition}[Pure-SYM channel source ledger]
-\label{def:pure-sym-channel-source-ledger}
+\begin{definition}[Pure-SYM channel source table]
+\label{def:pure-sym-channel-source-family}
 Fix a massive branch \(k\) of pure \(\mathcal N=1\) \(SU(N_c)\) Yang--Mills
-and the vacuum spectral datum of
-Definition~\ref{def:pure-sym-vacuum-spectral-datum}.  Let
+and the vacuum spectral measure of
+Definition~\ref{def:pure-sym-vacuum-spectral-problem}.  Let
 \[
   S=-\frac{1}{32\pi^2}\operatorname{tr}W^\alpha W_\alpha
 \]
 be the chiral coordinate used in
 Section~\ref{sec:pure-sym-protected-spectral-data}.  The elementary source
-ledger attached to this superfield is:
+table attached to this superfield is:
 \begin{center}
 \small
 \begin{tabular}{p{0.20\textwidth}|p{0.37\textwidth}|p{0.32\textwidth}}
@@ -522,25 +524,25 @@ fermionic &
 \end{tabular}
 \end{center}
 Here the vertical bar denotes restriction to \(\theta=\overline\theta=0\) after
-the chosen superspace operator has been renormalized.  The table is a source
-ledger, not a list of particles: the spectral measure may contain several
+the chosen superspace operator has been renormalized.  The table lists source
+families, not particles: the spectral measure may contain several
 isolated atoms and continuum components in any row, and the same atom can have
 nonzero residue for several sources with the same exact quantum numbers.
 Center-charged Wilson or magnetic lines belong to a separate line-sector
-ledger; they define flux-string sectors rather than chiral-particle masses.
+problem; they define flux-string sectors rather than chiral-particle masses.
 \end{definition}
 
 \begin{proposition}[Mass degeneracy inside an isolated pure-SYM multiplet]
 \label{prop:pure-sym-isolated-multiplet-mass-degeneracy}
 Assume the vacuum branch \(k\) carries unbroken \(\mathcal N=1\) supercharges
 \(Q_\alpha,\overline Q_{\dot\alpha}\) on the Hilbert space of
-Definition~\ref{def:pure-sym-vacuum-spectral-datum}.  Let \(E_k(\Sigma_m)\)
+Definition~\ref{def:pure-sym-vacuum-spectral-problem}.  Let \(E_k(\Sigma_m)\)
 be the spectral projection onto an isolated positive-mass shell
 \(\Sigma_m=\{p:p^2=-m^2,\ p^0>0\}\), separated from the rest of the joint
 translation spectrum in a neighborhood invariant under the little group.
 Then the range of \(E_k(\Sigma_m)\) is invariant under the supercharges.  In
 particular, whenever a bosonic or fermionic source in
-Definition~\ref{def:pure-sym-channel-source-ledger} has nonzero overlap with
+Definition~\ref{def:pure-sym-channel-source-family} has nonzero overlap with
 this atom, the complete supermultiplet generated by the supercharges has the
 same mass \(m\).
 \end{proposition}
@@ -569,8 +571,8 @@ nothing about the numerical value of \(m\) or about whether the atom exists;
 those are spectral questions in the chosen nonperturbative construction.
 \end{proof}
 
-\begin{definition}[Regulated pure-SYM spectral extraction datum]
-\label{def:regulated-pure-sym-spectral-extraction-datum}
+\begin{definition}[Regulated pure-SYM spectral extraction]
+\label{def:regulated-pure-sym-spectral-extraction}
 A regulated extraction of the pure \(\mathcal N=1\) SYM spectrum consists of:
 \begin{enumerate}[label=(\roman*)]
 \item a gauge-field regulator and an adjoint Majorana-fermion regulator with
@@ -587,24 +589,25 @@ A regulated extraction of the pure \(\mathcal N=1\) SYM spectrum consists of:
   \(m_{\lambda,\mathrm{reg}}\to m_{\lambda,\ast}\), including the order of
   limits and the systematic error controls used in the extrapolation.
 \end{enumerate}
-This datum is the supersymmetric analogue of the pure-glue datum in
-Section~\ref{sec:lattice-ym-glueballs-flux-observables}.  It is not replaced
-by the Veneziano--Yankielowicz superpotential: the latter supplies protected
-branch data, while this datum is what can define numerical glueball,
+This regulated extraction is the supersymmetric analogue of the pure-glue
+construction in Section~\ref{sec:lattice-ym-glueballs-flux-observables}.  It
+is not replaced by the Veneziano--Yankielowicz superpotential: the latter
+supplies protected branch information, while the spectral extraction is what
+can define numerical glueball,
 gluinoball, and mixed supermultiplet masses.
 \end{definition}
 
 \begin{definition}[Channel-by-channel pure-SYM correlator matrices]
 \label{def:pure-sym-channel-correlator-matrices}
-Fix the regulated extraction datum of
-Definition~\ref{def:regulated-pure-sym-spectral-extraction-datum}.  Choose
+Fix the regulated extraction of
+Definition~\ref{def:regulated-pure-sym-spectral-extraction}.  Choose
 zero-spatial-momentum finite-volume sources
 \[
   B_{+,r},\qquad B_{-,r},\qquad F_{\alpha,r},
   \qquad r=1,\ldots,R ,
 \]
 where \(B_+\) has the quantum numbers of the even scalar row of
-Definition~\ref{def:pure-sym-channel-source-ledger}, \(B_-\) has the
+Definition~\ref{def:pure-sym-channel-source-family}, \(B_-\) has the
 odd-scalar row, and \(F_\alpha\) has the fermionic row.  With the vacuum
 projection removed, define the Euclidean transfer-matrix correlator matrices
 \begin{align}
@@ -646,7 +649,7 @@ error estimate.
 
 \begin{proposition}[Common pole extraction in a restored massive multiplet]
 \label{prop:pure-sym-common-pole-extraction}
-Assume the continuum limit of the regulated datum contains an isolated massive
+Assume the continuum limit of the regulated extraction contains an isolated massive
 \(\mathcal N=1\) one-particle supermultiplet of mass \(m>0\), separated in
 each of the three source channels of
 Definition~\ref{def:pure-sym-channel-correlator-matrices} by an energy gap
@@ -793,7 +796,7 @@ vanishing of
 \]
 in the joint continuum, infinite-volume, and massless-gluino limit, with the
 limiting procedure stated as part of
-Definition~\ref{def:regulated-pure-sym-spectral-extraction-datum}.
+Definition~\ref{def:regulated-pure-sym-spectral-extraction}.
 
 \subsection[Pure N=2 and Softly Broken N=2]{Pure \(\mathcal N=2\) and Softly Broken \(\mathcal N=2\)}
 
@@ -901,7 +904,7 @@ The local \(U(1)_D\) vortex just derived is the rank-one building block.  For
 singular loci where several mutually local magnetic states become light and
 the low-energy magnetic gauge group is an Abelian torus.  The string
 calculation in such a region is an Abelianized calculation.  Its output is a
-precise low-energy spectral datum; comparison with the non-Abelian
+precise low-energy spectral problem; comparison with the non-Abelian
 pure-Yang--Mills \(k\)-string spectrum requires an additional deformation
 argument.
 
@@ -918,9 +921,9 @@ the phases of the \(\xi_i\) are aligned, the BPS square completion of the
 rank-one calculation applies independently in each diagonalized magnetic
 charge sector.
 
-\begin{definition}[Abelianized \(A_{N_c-1}\) string datum]
-\label{def:abelianized-a-string-datum}
-An Abelianized \(A_{N_c-1}\) string datum consists of:
+\begin{definition}[Abelianized \(A_{N_c-1}\) string construction]
+\label{def:abelianized-a-string-approximation}
+An Abelianized \(A_{N_c-1}\) string construction is specified by:
 \begin{enumerate}[label=(\roman*)]
 \item a magnetic low-energy patch with gauge group \(U(1)^{N_c-1}\), gauge
   fields \(A_{D,i}\), and mutually local charged monopole hypermultiplets;
@@ -937,7 +940,7 @@ An Abelianized \(A_{N_c-1}\) string datum consists of:
 \item the domain in Coulomb-branch and deformation-parameter space in which
   the Abelian two-derivative description is used.
 \end{enumerate}
-This datum defines an Abelianized string spectrum in the local effective
+This construction defines an Abelianized string spectrum in the local effective
 theory.  It becomes a statement about the microscopic non-Abelian theory only
 after the Seiberg--Witten effective action and the deformation to the chosen
 microscopic problem have been justified in the stated regime.
@@ -945,8 +948,8 @@ microscopic problem have been justified in the stated regime.
 
 \begin{proposition}[Cartan BPS bound for aligned Abelian strings]
 \label{prop:cartan-abelian-string-bps-bound}
-Assume the Abelianized datum of
-Definition~\ref{def:abelianized-a-string-datum} and suppose that, in the
+Assume the Abelianized construction of
+Definition~\ref{def:abelianized-a-string-approximation} and suppose that, in the
 chosen magnetic frame, the static transverse energy density is a sum of
 rank-one Abelian-Higgs BPS densities with aligned \(\xi_i\).  For flux vector
 \(n=(n_1,\ldots,n_{N_c-1})\), every finite-energy string obeys
@@ -1010,7 +1013,7 @@ eigenvector of the \(A_{N_c-1}\) Cartan matrix with eigenvalue
   \lambda_1=4\sin^2\frac{\pi}{2N_c}.
   \label{eq:a-type-sine-profile-eigenvalue}
 \]
-Consequently, if an Abelianized \(SU(N_c)\) string datum has aligned FI
+Consequently, if an Abelianized \(SU(N_c)\) string construction has aligned FI
 magnitudes
 \[
   |\xi_k|=|\xi_1|\frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)}
@@ -1110,7 +1113,7 @@ pure-Yang--Mills \(k\)-strings consists of:
 
 \begin{proposition}[What the Abelian sine calculation transfers]
 \label{prop:abelian-sine-transfer-status}
-Assume a comparison datum as in
+Assume a comparison problem as in
 Definition~\ref{def:sw-to-pure-ym-string-comparison}.  If, for a fixed
 \(k\), the tensions \(T_1(t)\) and \(T_k(t)\) exist, are positive, and are
 continuous on \(0\le t\le1\), then the normalized ratio \(R_k(t)\) is
@@ -1137,12 +1140,12 @@ statement about a family of nonperturbative flux-sector transfer matrices.
 
 \subsection[Planar N=4]{Planar \(\mathcal N=4\)}
 
-Planar \(\mathcal N=4\) Yang--Mills is conformal, so the family ledger uses
+Planar \(\mathcal N=4\) Yang--Mills is conformal, so the family comparison uses
 scaling dimensions and defect energies instead of massive glueball poles.  A
 local-operator row is the planar spin-chain/QSC spectral problem of
 Chapters~\ref{ch:planar-n4-spectral-problem-spin-chains}--\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.  A line-defect row is the
-Wilson-line flux-tube datum of
-Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum}.  Its vacuum
+Wilson-line flux-tube spectral problem of
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem}.  Its vacuum
 energy is the cusp anomalous dimension, and its excitations are the
 pentagon-OPE or mirror-TBA flux-tube excitations in an integrability
 description.
@@ -1192,9 +1195,9 @@ This formula is a first-order source-response statement in the massive
 decouples is a deformation path whose spectral continuity must be examined
 with nonchiral observables: glueball masses, string tensions, domain-wall
 fates, and line-operator sectors.  The endpoint comparison with bosonic
-Yang--Mills therefore belongs to the spectral ledger of
-Definition~\ref{def:susy-ym-family-observable-ledger}, not only to the
-chiral branch ledger.
+Yang--Mills therefore belongs to the spectral comparison table of
+Definition~\ref{def:susy-ym-family-observable-table}, not only to the
+chiral branch comparison.
 
 \begin{controlledapproximation}[Small soft mass branch selection]
 \label{ca:small-soft-mass-branch-selection}
@@ -1229,8 +1232,8 @@ At first order, minimizing \(\Delta E_k\) is the same as maximizing
 \(\operatorname{Re}(m_\lambda S_k)\).
 \end{proof}
 
-\section{Status Ledger}
-\label{sec:susy-ym-family-status-ledger}
+\section{Status Summary}
+\label{sec:susy-ym-family-status-summary}
 
 The present chapter closes the elementary comparison map.  It records the
 following theorem boundaries:
@@ -1247,9 +1250,9 @@ following theorem boundaries:
 \mathcal N=2\text{ vortex tension} &
   \text{BPS Abelian-Higgs controlled approximation}\\
 \mathcal N=2\text{ Abelianized }k\text{-strings} &
-  \text{\(A\)-type sine profile; comparison datum}\\
+  \text{\(A\)-type sine profile; comparison problem}\\
 \mathcal N=4\text{ Wilson-line flux tube} &
-  \text{defect spectral datum plus integrability hypotheses}\\
+  \text{defect spectral problem plus integrability hypotheses}\\
 \text{bosonic glueball and }k\text{-string spectra} &
   \text{lattice or Hilbert-space spectral problem}
 \end{array}

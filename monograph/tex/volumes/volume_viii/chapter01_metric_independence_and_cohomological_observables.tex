@@ -71,7 +71,7 @@ representative.  Metric independence is the assertion that the right-hand
 side vanishes for the chosen cohomology classes and for every allowed
 path \(g_s\).
 
-\section{Cohomological Ward Data}
+\section{Cohomological Ward Systems}
 
 The letter \(Q\) will denote an odd operator of degree \(+1\).  If \(Y\) is a
 homogeneous insertion, write \(|Y|\in\mathbb Z_2\) for its parity.  The
@@ -83,9 +83,9 @@ For an odd \(Y\), this is an anticommutator; for an even \(Y\), it is a
 commutator.  In a path-integral presentation it is often clearer to regard
 \(Q\) as an odd derivation \(\delta_Q\) on the algebra of insertions.
 
-\begin{definition}[Cohomological Ward datum]
-\label{def:cohomological-ward-datum}
-A cohomological Ward datum over a family of metrics \(g_s\) consists of:
+\begin{definition}[Cohomological Ward system]
+\label{def:cohomological-ward-system}
+A cohomological Ward system over a family of metrics \(g_s\) consists of:
 \begin{enumerate}[label=(\roman*)]
 \item a graded algebra \(\mathcal A_s\) of renormalized insertions;
 \item an odd degree-\(+1\) derivation
@@ -103,7 +103,7 @@ A cohomological Ward datum over a family of metrics \(g_s\) consists of:
     \label{eq:cohomological-ward-identity}
   \end{equation}
 \end{enumerate}
-The datum is anomaly-free on this family if
+The system is anomaly-free on this family if
 \eqref{eq:cohomological-ward-identity} holds without additional local or
 boundary terms.  If
 \(\langle\delta_QY\rangle_s=\langle\mathcal A_Q(Y)\rangle_s\) for a nonzero
@@ -119,7 +119,7 @@ master equation, and boundary behavior at infinity or at singular strata.
 \begin{definition}[Cohomological topological sector]
 \label{def:cohomological-topological-sector}
 A cohomological topological sector for the family \(g_s\) is a
-cohomological Ward datum together with, for every \(s\), a class of
+cohomological Ward system together with, for every \(s\), a class of
 \(Q\)-closed insertions \(X_s\) and an odd insertion \(V_s\) such that
 \begin{equation}
   \frac{\dd}{\dd s}\langle X_s\rangle_s
@@ -148,8 +148,8 @@ terms and the explicit variation of \(X_s\) are also \(Q\)-exact.  In
 examples, the latter terms are often where the nontrivial geometry of the
 observable enters.
 
-\begin{theorem}[Metric independence from a cohomological Ward datum]
-\label{thm:metric-independence-from-ward-datum}
+\begin{theorem}[Metric independence from a cohomological Ward system]
+\label{thm:metric-independence-from-ward-system}
 Let \(g_s\), \(0\le s\le1\), be a smooth path of metrics on a closed
 manifold \(M\).  Suppose \(X_s\in\mathcal A_s^{\rm adm}\) satisfies
 \(\delta_QX_s=0\), the one-parameter metric response is defined for all
@@ -177,7 +177,7 @@ interval.  Integrating over \(s\) gives the equality of the endpoint
 correlators.
 \end{proof}
 
-In local stress-tensor language, Theorem~\ref{thm:metric-independence-from-ward-datum}
+In local stress-tensor language, Theorem~\ref{thm:metric-independence-from-ward-system}
 is often summarized by saying that \(T_{\mu\nu}\) is \(Q\)-exact.  The
 precise statement is \eqref{eq:stress-response-q-exact-family}: the whole
 renormalized metric response, including contact terms and moving insertion
@@ -239,11 +239,11 @@ operator and produce observables supported on cycles.  This is the descent
 construction.  It is the source of Donaldson observables, topological
 sigma-model observables, and many protected line and surface insertions.
 
-\begin{definition}[Descent datum]
-\label{def:tqft-descent-datum}
+\begin{definition}[Descent equations]
+\label{def:tqft-descent-equations}
 Let \(O^{(p)}\) be a sequence of renormalized \(p\)-form-valued local
 operators, \(0\le p\le D\), with total parity including form degree.  A
-descent datum is the system
+descent system is
 \begin{equation}
   \delta_Q O^{(0)}=0,
   \qquad
@@ -372,7 +372,7 @@ If \(\alpha\) is \(Q\)-closed and \(V_t\) is an odd family, then
 \]
 where \(Q\alpha=0\), \(Q(QV_t)=0\), and the graded Leibniz rule fix the
 sign.  This is the finite-dimensional prototype of
-Theorem~\ref{thm:metric-independence-from-ward-datum}.  Infinite-dimensional
+Theorem~\ref{thm:metric-independence-from-ward-system}.  Infinite-dimensional
 QFT applications require a regulator, a measure or BV half-density, and a
 proof that no boundary terms appear from noncompact field directions.
 

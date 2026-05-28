@@ -455,9 +455,9 @@ interpretation of separated correlators.  The following formulation is the
 radial CFT counterpart of a Wightman or Osterwalder--Schrader reconstruction
 theorem.
 
-\begin{definition}[Abstract radial OPE datum]
-\label{def:abstract-radial-ope-datum}
-An abstract radial OPE datum in dimension \(D\ge2\) consists of the following
+\begin{definition}[Abstract radial OPE system]
+\label{def:abstract-radial-ope-system}
+An abstract radial OPE system in dimension \(D\ge2\) consists of the following
 objects.
 \begin{enumerate}[label=(\roman*)]
   \item A countable set \(\mathcal P\) of primary labels, including the
@@ -505,7 +505,7 @@ objects.
   parenthesizations on their common radial domains.  A separate coherence
   theorem may allow the higher-point identities to be derived from a smaller
   list of associativity identities; absent such a theorem, the all-tree
-  compatibility is part of the datum.
+  compatibility is part of the system.
   \item Euclidean covariance under the conformal group, graded permutation
   symmetry at separated points, and radial reflection positivity for every
   finite linear combination of inside-supported products.
@@ -515,10 +515,10 @@ objects.
 \end{enumerate}
 \end{definition}
 
-The finite-multiplicity condition in item (i) is part of the datum because
+The finite-multiplicity condition in item (i) is part of the system because
 the radial OPE theorem uses spectral projections onto finite-dimensional
 energy windows.  The compatibility condition in item (vi) is also part of the
-datum.  A single four-point crossing equation is one instance of this
+system.  A single four-point crossing equation is one instance of this
 condition and is normally far from determining even that four-point function
 uniquely.  Complete all-primary four-point associativity constraints are a
 different object: once the OPE table is known, they constrain the whole
@@ -527,10 +527,10 @@ assumes the analytic and higher-coherence properties needed for
 reconstruction, rather than renaming their desired conclusion as an input
 theorem.
 
-\begin{theorem}[Conditional radial reconstruction from OPE data]
+\begin{theorem}[Conditional radial reconstruction from an OPE system]
 \label{thm:conditional-cft-reconstruction-from-ope}
-Let \(\mathfrak D\) be an abstract radial OPE datum in the sense of
-Definition~\ref{def:abstract-radial-ope-datum}.  Then \(\mathfrak D\)
+Let \(\mathfrak D\) be an abstract radial OPE system in the sense of
+Definition~\ref{def:abstract-radial-ope-system}.  Then \(\mathfrak D\)
 determines a separated-point Euclidean conformal correlation hierarchy
 \[
   S_{I_1\cdots I_n}^{\mathfrak D}(x_1,\ldots,x_n),
@@ -542,7 +542,7 @@ hierarchy satisfies Euclidean conformal covariance, graded permutation
 symmetry, radial reflection positivity, the spectral discreteness and
 finite-multiplicity conditions of radial quantization, and the OPE with the
 prescribed primary dimensions, spin representations, and three-point
-coefficients.  If the datum also includes tube-domain analytic continuation,
+coefficients.  If the system also includes tube-domain analytic continuation,
 the spectrum condition, and local commutativity for the boundary values, then
 the reconstructed Euclidean hierarchy gives a Lorentzian Wightman CFT
 satisfying the radial reconstruction hypotheses used in this volume.
@@ -551,7 +551,7 @@ satisfying the radial reconstruction hypotheses used in this volume.
 \begin{proof}
 First construct the dense finite-energy vector space
 \(\mathcal H_{\rm fin}^{\rm abs}=\bigoplus_a V_a\) with the positive inner
-product specified in Definition~\ref{def:abstract-radial-ope-datum}.  Its
+product specified in Definition~\ref{def:abstract-radial-ope-system}.  Its
 Hilbert completion is the radial Hilbert space.  The conformal generators act
 on each \(V_a\), and the adjointness relations make the representation
 unitary on the finite-energy domain.  The identity module supplies the vacuum
@@ -582,7 +582,7 @@ with coefficients \(\lambda_{ab}^{c,\alpha}\) and conformally determined
 descendant coefficients.  Since compatible trees give the same patched
 correlator, the same OPE holds independently of the auxiliary tree used to
 compute the correlator.  The stated uniqueness follows because any Euclidean
-hierarchy with the same datum has the same convergent OPE sums on every
+hierarchy with the same system has the same convergent OPE sums on every
 radial tree domain, and those domains cover separated configurations.
 
 Finally, if tube-domain analytic continuation, the Lorentzian spectrum
@@ -616,8 +616,8 @@ equations for all relevant choices of external operators.  This is an exact
 infinite-data problem, analogous to determining a theory from a sufficiently
 complete set of precision observables; it is not the problem of solving a
 single bootstrap equation.  Under what additional analytic hypotheses does
-it extend to an abstract radial OPE datum satisfying
-Definition~\ref{def:abstract-radial-ope-datum}?
+it extend to an abstract radial OPE system satisfying
+Definition~\ref{def:abstract-radial-ope-system}?
 
 In dimension \(D>2\), complete such data are expected to determine at most one
 CFT up to unitary equivalence and changes of operator basis, once the
@@ -626,7 +626,7 @@ requires theorem-level control of radial convergence, spectral finiteness,
 coherence of higher iterated OPEs, distributional extensions and contact-term
 prescriptions, and Lorentzian boundary-value properties.  Those requirements
 are precisely why Theorem~\ref{thm:conditional-cft-reconstruction-from-ope}
-is formulated from an abstract radial OPE datum rather than from a single
+is formulated from an abstract radial OPE system rather than from a single
 informal crossing statement.
 \end{openproblem}
 
@@ -2343,20 +2343,20 @@ forces nontrivial operator content in the \(\phi\times\phi\) OPE at dimensions
 controlled by \(\Delta_\phi\).  A rigorous numerical or analytic bound
 requires the full conformal blocks and lies beyond this first approximation.
 
-\section{Mixed Correlators and the Three-Dimensional Ising Bootstrap Datum}
-\label{sec:ising-mixed-correlator-bootstrap-datum}
+\section{Mixed Correlators and the Three-Dimensional Ising Bootstrap System}
+\label{sec:ising-mixed-correlator-bootstrap-system}
 
 The preceding argument used one four-point function.  The first sharp
 bootstrap examples in \(D>2\) require several four-point functions at once,
 because positivity is then matrix-valued rather than a list of nonnegative
 numbers.  This section records the exact crossing system for the scalar pair
 used in the three-dimensional Ising bootstrap.  It is not a numerical
-solution of that system.  It is the CFT datum to which finite-dimensional
+solution of that system.  It is the CFT information to which finite-dimensional
 semidefinite programs are applied.
 
-\begin{definition}[\(\mathbb Z_2\)-graded scalar bootstrap datum]
-\label{def:z2-scalar-bootstrap-datum}
-A \(\mathbb Z_2\)-graded scalar bootstrap datum in a unitary CFT in
+\begin{definition}[\(\mathbb Z_2\)-graded scalar bootstrap system]
+\label{def:z2-scalar-bootstrap-system}
+A \(\mathbb Z_2\)-graded scalar bootstrap system in a unitary CFT in
 dimension \(D>2\) consists of:
 \begin{enumerate}
   \item two Hermitian scalar primaries \(\sigma\) and \(\varepsilon\), with
@@ -2422,7 +2422,7 @@ scalar crossing kernel
 
 \begin{proposition}[Five crossing equations for the \(\sigma,\varepsilon\) system]
 \label{prop:ising-mixed-five-crossing-equations}
-Let Definition~\ref{def:z2-scalar-bootstrap-datum} hold.  The three
+Let Definition~\ref{def:z2-scalar-bootstrap-system} hold.  The three
 four-point functions
 \[
   \langle\sigma\sigma\sigma\sigma\rangle,\qquad
@@ -2666,7 +2666,7 @@ five components of \eqref{eq:ising-mixed-vector-crossing}.  Suppose that:
   \(\vec\alpha\cdot\vec{\mathsf V}_{-,\Delta,\ell}\ge0\).
 \end{enumerate}
 Then no unitary CFT with that spectrum and those gaps realizes the candidate
-datum.
+spectrum.
 \end{proposition}
 
 \begin{proof}
@@ -2698,17 +2698,17 @@ together with the \(D=3\) unitarity bounds
 Derivative functionals at \(z=\bar z=1/2\) then turn
 Proposition~\ref{prop:mixed-correlator-functional-exclusion} into a finite
 semidefinite search after one chooses a block approximation and proves or
-certifies its positivity on the relevant ranges of \(\Delta\).  Floating-point
+verifies its positivity on the relevant ranges of \(\Delta\).  Floating-point
 SDP output is numerical evidence until it is accompanied by a rigorous
 certificate, for example by interval bounds for the block derivatives and
 positive-polynomial or sum-of-squares certificates.  This is the precise
-status boundary between the mathematical CFT data
+status boundary between the mathematical CFT crossing system
 \eqref{eq:ising-mixed-vector-crossing} and the high-precision numerical
 islands quoted in the Wilson--Fisher comparison table.
 
-\begin{openproblem}[Certified mixed-correlator Ising island]
-\label{op:certified-mixed-correlator-ising-island}
-Give a fully certified exclusion proof, with interval-controlled conformal
+\begin{openproblem}[Interval-verified mixed-correlator Ising island]
+\label{op:interval-verified-mixed-correlator-ising-island}
+Give a fully verified exclusion proof, with interval-controlled conformal
 block derivatives and exact semidefinite certificates, that isolates the
 three-dimensional Ising point inside a specified rectangle in
 \((\Delta_\sigma,\Delta_\varepsilon)\) under stated gap assumptions such as

@@ -2387,12 +2387,12 @@ nonperturbative or effective-field-theory data.
 \emph{Phys. Rept.} \textbf{317} (1999) 1--142,
 doi:10.1016/S0370-1573(98)00130-6, arXiv:hep-ph/9807443.}
 
-\paragraph{Application status ledgers.}
+\paragraph{Application status.}
 The preceding definitions are analytic objects, not decorative language.  A
 QFT application of Borel summation, transseries, or Lefschetz thimbles must
 name the regulated observable, the expansion coordinate, the analytic domain,
-and the limiting statement being asserted.  The following datum is the
-minimal bookkeeping used in this monograph.
+and the limiting statement being asserted.  The following structured input is
+the minimal specification used in this monograph.
 
 \begin{definition}[Regulated asymptotic-analysis datum for a QFT observable]
 \label{def:regulated-asymptotic-analysis-datum}
@@ -2427,16 +2427,16 @@ conditions.  A \emph{regulated asymptotic-analysis datum} consists of:
 \end{enumerate}
 \end{definition}
 
-\begin{remark}[Scope of a regulated asymptotic datum]
+\begin{remark}[Scope of a regulated asymptotic analysis]
 \label{rem:regulated-asymptotic-datum-status}
-A datum in Definition~\ref{def:regulated-asymptotic-analysis-datum} proves a
+A specification in Definition~\ref{def:regulated-asymptotic-analysis-datum} proves a
 Borel--Laplace reconstruction of \(\mathcal X_R\) in a direction \(\theta\)
 only if the transform in item \(3\) satisfies the hypotheses of
 Definition~\ref{def:gevrey-one-directional-borel-sum} and the resulting
 Borel--Laplace function is identified with \(\mathcal X_R\) on a nonempty open
 subdomain of \(D_R\).  It proves a QFT statement only after the asserted
 regulator-removal limit in item \(5\) is established.  Without item \(5\), the
-datum is a theorem or approximation for the regulated problem, not for the
+result is a theorem or approximation for the regulated problem, not for the
 continuum QFT.
 \par
 The first clause is exactly the content of the Borel--Laplace definition:
@@ -2495,7 +2495,7 @@ expansion because the Taylor coefficients of \(B\) are \(a_n/n!\), as computed
 in Example~\ref{ex:zero-dimensional-quartic-large-order}.
 \end{proof}
 
-\begin{definition}[Quartic-oscillator spectral Borel datum]
+\begin{definition}[Quartic-oscillator spectral Borel problem]
 \label{def:quartic-oscillator-spectral-borel-datum}
 Let \(g\ge0\), and let \(H(g)\) be the Friedrichs realization on
 \(L^2(\mathbb R,\dd x)\) of
@@ -2576,8 +2576,8 @@ large-order estimates are evidence for a possible summation mechanism, but
 not the mechanism itself.
 \end{proof}
 
-\begin{definition}[Instanton-sector transseries ledger]
-\label{def:instanton-sector-transseries-ledger}
+\begin{definition}[Instanton-sector transseries]
+\label{def:instanton-sector-transseries}
 Consider a regulated Euclidean gauge-theory path integral whose configuration
 space has connected components indexed by an integer topological charge
 \(k\in\mathbb Z\).  Assume the Euclidean action in sector \(k\) has the form
@@ -2587,11 +2587,11 @@ space has connected components indexed by an integer topological charge
   \frac{1}{4g^2}\int \operatorname{tr}_\Delta(F\wedge *F)
   -\ii\theta k
   +S_{R,\mathrm{matter}}[A,\Psi],
-  \label{eq:instanton-ledger-action}
+  \label{eq:instanton-sector-action}
 \]
 where \(\operatorname{tr}_\Delta\) is the trace normalization fixed in the
 gauge-theory convention dictionary of this monograph.  An instanton-sector
-transseries ledger for a regulated observable is a formal expansion
+transseries for a regulated observable is a formal expansion
 \[
   \widehat{\mathcal X}_R(g,\theta)
   =
@@ -2601,7 +2601,7 @@ transseries ledger for a regulated observable is a formal expansion
   \ee^{\ii k\theta}\,
   g^{\beta_{R,k,\alpha}}\,
   \widehat\Phi_{R,k,\alpha}(g),
-  \label{eq:instanton-sector-transseries-ledger}
+  \label{eq:instanton-sector-transseries}
 \]
 where \(\alpha\) labels the regulated saddle or quasi-saddle data inside the
 charge-\(k\) sector.  The notation includes the fluctuation determinant,
@@ -2609,10 +2609,10 @@ collective-coordinate measure, zero-mode insertions, and boundary
 contributions only if these have been specified by the regulator.
 \end{definition}
 
-\begin{proposition}[Algebraic constraints on an instanton-sector ledger]
-\label{prop:instanton-ledger-algebra}
-For a ledger of the form
-\eqref{eq:instanton-sector-transseries-ledger}, the \(\theta\)-dependence is
+\begin{proposition}[Algebraic constraints on an instanton-sector transseries]
+\label{prop:instanton-transseries-algebra}
+For a transseries of the form
+\eqref{eq:instanton-sector-transseries}, the \(\theta\)-dependence is
 \(2\pi\)-periodic.  If the regulated observable is real at \(\theta=0\) and
 the sector data obey the conjugation rule
 \[
@@ -2649,8 +2649,8 @@ This proves the periodicity.  The stated conjugation rule makes the
 which is \eqref{eq:instanton-pair-real-combination}.
 \end{proof}
 
-\begin{proposition}[BPST sector in the asymptotic-analysis ledger]
-\label{prop:bpst-sector-asymptotic-ledger}
+\begin{proposition}[BPST sector in the trace-delta convention]
+\label{prop:bpst-sector-trace-delta-weight}
 In the trace-delta Yang--Mills convention of this monograph,
 \[
   S_{\rm YM,E}
@@ -2659,13 +2659,13 @@ In the trace-delta Yang--Mills convention of this monograph,
   \int_{\mathbb R^4}\operatorname{tr}_\Delta
   (F_{\mu\nu}F_{\mu\nu})\,\dd^4x
   -\ii\theta Q[A],
-  \label{eq:bpst-ledger-action-trace-delta}
+  \label{eq:bpst-action-trace-delta}
 \]
-the \(SU(2)\) BPST one-instanton sector contributes the exponential ledger
+the \(SU(2)\) BPST one-instanton sector contributes the exponential sector
 factor
 \[
   \exp\left(-\frac{4\pi^2}{g_{\rm YM}^2}+\ii\theta\right)
-  \label{eq:bpst-ledger-factor-trace-delta}
+  \label{eq:bpst-sector-factor-trace-delta}
 \]
 to any regulated observable whose insertions have nonzero projection onto
 that sector.  In the common half-trace convention
@@ -2673,7 +2673,7 @@ that sector.  In the common half-trace convention
 \(\exp[-8\pi^2/g_{\rm ht}^2+\ii\theta]\), with
 \[
   g_{\rm ht}=\sqrt2\,g_{\rm YM}.
-  \label{eq:half-trace-trace-delta-coupling-relation-ledger}
+  \label{eq:half-trace-trace-delta-coupling-relation}
 \]
 \end{proposition}
 
@@ -2688,8 +2688,8 @@ active trace-delta convention,
   =
   \frac{4\pi^2}{g_{\rm YM}^2}.
 \]
-Substitution in \eqref{eq:bpst-ledger-action-trace-delta} gives
-\eqref{eq:bpst-ledger-factor-trace-delta}.  The half-trace basis used in much
+Substitution in \eqref{eq:bpst-action-trace-delta} gives
+\eqref{eq:bpst-sector-factor-trace-delta}.  The half-trace basis used in much
 of the instanton literature differs from the trace-delta basis by
 \(t_a=\sqrt2\,T_a\).  Therefore the same connection is represented with
 \(g_{\rm ht}^2=2g_{\rm YM}^2\), and
@@ -2704,21 +2704,21 @@ charge or the physical semiclassical weight.
 
 \begin{controlledapproximation}[Semiclassical instanton expansion]
 \label{capprox:semiclassical-instanton-expansion-status}
-The factor \eqref{eq:bpst-ledger-factor-trace-delta} is not yet an instanton
+The factor \eqref{eq:bpst-sector-factor-trace-delta} is not yet an instanton
 calculus formula for a continuum QFT observable.  A semiclassical
 one-instanton approximation additionally requires a regulator, a gauge slice
 or BV treatment of the zero modes, the determinant ratio, the collective
 coordinate density on the instanton moduli space, insertion zero-mode
 saturation, and a prescription for boundary strata such as small instantons.
 Only after those data are defined and their regulator-removal behavior is
-proved does the ledger become a theorem about the observable rather than a
-semiclassical sector label.
+proved does the sector expansion become a theorem about the observable rather
+than a semiclassical sector label.
 \end{controlledapproximation}
 
 \begin{remark}[Status of instanton and renormalon applications]
 \label{rem:instanton-renormalon-application-status}
-Definition~\ref{def:instanton-sector-transseries-ledger} is a bookkeeping
-standard, not an assertion that the instanton expansion has been justified.
+Definition~\ref{def:instanton-sector-transseries} is a bookkeeping standard,
+not an assertion that the instanton expansion has been justified.
 For a gauge theory it remains necessary to define the path integral regulator,
 the topological sectors, the treatment of gauge zero modes and collective
 coordinates, the determinant normalization, the behavior near small-size

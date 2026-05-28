@@ -61,7 +61,7 @@ large gauge transformations.  Gauge invariance of
 a large gauge transformation to lie in \(2\pi\mathbb Z\).  For a spin
 Chern--Simons theory the allowed counterterms may differ from the purely
 bosonic theory by half-integral contact terms; this choice is part of the
-three-dimensional QFT datum.
+three-dimensional QFT specification.
 
 Varying the action gives
 \[
@@ -76,7 +76,7 @@ On a closed manifold, the field equation of pure Chern--Simons theory is
   F_A=0.
 \]
 On a manifold with boundary, a boundary condition or boundary degrees of
-freedom are part of the gauge-theory datum.
+freedom are part of the gauge-theory specification.
 
 \section{Supersymmetric Chern--Simons--Matter Action}
 
@@ -345,8 +345,8 @@ the apparent global symmetry of the interacting fixed point.  Thus a
 Lagrangian written in \(\mathcal N=2\) variables may describe a theory with
 larger supersymmetry only after the monopole sectors are included.
 
-\section{ABJM Gauge-Theory Datum}
-\label{sec:abjm-gauge-theory-datum}
+\section{ABJM Gauge-Theory Specification}
+\label{sec:abjm-gauge-theory-specification}
 
 Fix integers \(N\ge1\) and \(k\ne0\).  The ABJM gauge group and levels are
 \[
@@ -426,23 +426,23 @@ so the gauge-covariant kinetic terms and the quartic superpotential are
 carried into their complex conjugate form with the same real action.
 \end{proof}
 
-\section{ABJM Conformal Locus And Marginal-Coupling Ledger}
-\label{sec:abjm-conformal-locus-ledger}
+\section{ABJM Conformal Locus And Marginal Couplings}
+\label{sec:abjm-conformal-locus}
 
 The ABJM family is often described as if a Chern--Simons level were an
 ordinary coupling.  For conformal-manifold questions this is the wrong
-category: the level is part of the topological gauge datum and is quantized
+category: the level is part of the topological gauge specification and is quantized
 by large gauge transformations.  We first state the local notion being used.
 
-\begin{definition}[Local conformal manifold in a fixed QFT datum]
-\label{def:fixed-datum-conformal-manifold}
-Fix a \(d\)-dimensional continuum QFT datum \(\mathfrak D\), including the
+\begin{definition}[Local conformal manifold in a fixed QFT specification]
+\label{def:fixed-qft-specification-conformal-manifold}
+Fix a \(d\)-dimensional continuum QFT specification \(\mathfrak D\), including the
 global form of the gauge group, line-operator lattice, spin and framing
 choices, background contact-term scheme, and the global or supersymmetry
 algebra required to be preserved.  A local conformal manifold through a
-conformal theory \(\mathcal T_0\) with datum \(\mathfrak D\) is a germ of a
+conformal theory \(\mathcal T_0\) with specification \(\mathfrak D\) is a germ of a
 smooth parameter space \(U\) and a family \(\{\mathcal T_u\}_{u\in U}\) of
-conformal QFTs with the same datum such that tangent vectors at \(0\) are
+conformal QFTs with the same specification such that tangent vectors at \(0\) are
 represented by integrated scalar primary deformations
 \[
   \delta S
@@ -459,12 +459,12 @@ functions and background contact terms remaining inside \(\mathfrak D\).
 
 \begin{hypothesis}[Standard ABJM conformal class]
 \label{hyp:standard-abjm-conformal-class}
-In this section ``standard ABJM'' means the local theory with gauge datum
+In this section ``standard ABJM'' means the local theory with gauge specification
 \[
   U(N)_k\times U(N)_{-k},\qquad k\in\mathbb Z\setminus\{0\},
 \]
 the four bifundamental chiral multiplets of
-Section~\ref{sec:abjm-gauge-theory-datum}, zero real masses, zero FI
+Section~\ref{sec:abjm-gauge-theory-specification}, zero real masses, zero FI
 coordinates, the standard line-operator lattice used in the \(S^3\)
 localization formula, and the interacting \(\mathcal N=6\) superconformal
 symmetry with \(SU(4)\) flavor symmetry.  Within this class the quartic
@@ -475,14 +475,14 @@ of the enhanced supersymmetry fixes its coefficient to
 \]
 in the component convention of this chapter.  Deformations that keep only
 \(\mathcal N=2\), change the flavor symmetry, change the line lattice, or
-alter background contact terms are different QFT data and are not counted as
+alter background contact terms are different QFT specifications and are not counted as
 tangent vectors to this standard ABJM conformal class.
 \end{hypothesis}
 
 \begin{proposition}[Standard ABJM has no continuous conformal coupling]
 \label{prop:standard-abjm-zero-dimensional-conformal-locus}
 Assume Hypothesis~\ref{hyp:standard-abjm-conformal-class}.  At fixed
-\((N,k)\) the local conformal-manifold germ of the standard ABJM datum is
+\((N,k)\) the local conformal-manifold germ of the standard ABJM specification is
 zero-dimensional.  The standard ABJM theories form a discrete family indexed
 by the integer level \(k\), with \(k\) and \(-k\) related when one includes
 orientation reversal and exchange of the two gauge factors as in
@@ -493,11 +493,11 @@ Proposition~\ref{prop:abjm-parity-opposite-levels}.
 The Chern--Simons levels are not coordinates on a real or complex manifold.
 Gauge invariance of \(\exp(\ii S_{\rm CS})\) under large gauge
 transformations restricts the levels to an integral lattice.  Hence an
-infinitesimal deformation preserving the same gauge datum has
+infinitesimal deformation preserving the same gauge specification has
 \[
   \delta k=0 .
 \]
-The opposite-level condition in the standard ABJM datum also fixes the
+The opposite-level condition in the standard ABJM specification also fixes the
 second level to be \(-k\), so there is no independent continuous level
 direction.
 
@@ -515,12 +515,12 @@ Therefore
 \[
   \delta h=-\frac{2\pi}{k^2}\,\delta k=0
 \]
-for a tangent vector that preserves the standard ABJM datum.
+for a tangent vector that preserves the standard ABJM specification.
 
 The remaining familiar Lagrangian coordinates do not give exactly marginal
 directions in this class.  Real masses and FI coordinates have engineering
 dimension \(1\) in three dimensions and break part of the conformal or flavor
-datum.  A Yang--Mills kinetic term, if introduced as a regulator or UV
+specification.  A Yang--Mills kinetic term, if introduced as a regulator or UV
 completion coordinate, carries a dimensionful coupling
 \[
   [g_{\rm YM}^2]=1
@@ -528,7 +528,7 @@ completion coordinate, carries a dimensionful coupling
 and is not a scalar-primary deformation of dimension \(3\) of the conformal
 theory.  Background Chern--Simons contact terms are quantized scheme data,
 not continuous local-operator deformations.  Thus every allowed tangent
-vector in the fixed standard ABJM datum is redundant or zero.
+vector in the fixed standard ABJM specification is redundant or zero.
 \end{proof}
 
 This proposition is deliberately narrower than a classification theorem for
@@ -660,12 +660,12 @@ each pair contributes
 \]
 The two pairs give \(1/(4\cosh^2(\pi(\lambda_i-\mu_j)))\) for each ordered
 pair \((i,j)\).  The oscillatory contour, framing phase, and contact terms
-are part of the localization datum.  Thus
-\eqref{eq:abjm-s3-matrix-model} is an exact protected observable once that
-datum is supplied.  A microscopic construction of the continuum theory
+are part of the localization input.  Thus
+\eqref{eq:abjm-s3-matrix-model} is an exact protected observable once those
+inputs are supplied.  A microscopic construction of the continuum theory
 requires independent definition of the underlying three-dimensional QFT.
 
-\section{Sphere Free Energy and the F-Theorem Datum}
+\section{Sphere Free Energy and the F-Theorem}
 \label{sec:three-d-sphere-free-energy-f-theorem}
 
 Three-dimensional conformal field theories have a distinguished finite
@@ -695,7 +695,7 @@ function.
 \end{definition}
 
 In a supersymmetric theory the same definition is evaluated by the localized
-matrix integral only after the \(S^3\) localization datum of
+matrix integral only after the \(S^3\) localization input of
 Chapter~\ref{ch:susy-localization-compact-manifolds} has been supplied:
 Cartan contour, parity-anomaly regulator, framing phase, real-mass and FI
 coordinates, and background Chern--Simons counterterms.  For ABJM,
@@ -707,7 +707,7 @@ coordinates, and background Chern--Simons counterterms.  For ABJM,
 \]
 with \(Z^{\rm ABJM}_{S^3}\) defined by
 \eqref{eq:abjm-s3-matrix-model}.  This is a protected observable of the
-declared QFT datum; changing the line-operator lattice or contact terms can
+declared QFT specification; changing the line-operator lattice or contact terms can
 change phases and, in some schemes, finite background terms.
 
 \begin{quotedtheorem}[\(F\)-theorem]
@@ -739,7 +739,7 @@ data.
 \label{rem:f-theorem-not-matrix-model-identity}
 The monotonicity theorem is a continuum theorem about unitary RG flows.  A
 localized \(S^3\) matrix model computes \(F\) at a supersymmetric fixed point
-when its localization datum is valid; it does not by itself prove
+when its localization input is valid; it does not by itself prove
 monotonicity for flows between two fixed points.  Conversely, the
 \(F\)-theorem applies to nonsupersymmetric flows for which no localization
 formula exists.
@@ -771,7 +771,7 @@ for a nontrivial flow.  For a product of decoupled fixed points
 The first assertion is the inequality
 \eqref{eq:f-theorem-inequality} after identifying the endpoint \(F\)'s with
 the localized finite parts.  This identification is an endpoint statement:
-it uses the localization datum at the fixed point and does not require a
+it uses the localization input at the fixed point and does not require a
 localized description of the entire RG trajectory.
 
 For the product statement, the Hilbert space, operator algebra, and
