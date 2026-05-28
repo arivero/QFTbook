@@ -812,7 +812,8 @@ Current checks:
   effective-string section, including the open and closed transverse-scalar
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed
   Nambu--Goto reference expansion coefficients at orders \(1/L\) and
-  \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, and the
+  \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, the associated
+  \(D_{\infty h}\) channel decomposition through oscillator level \(3\), the
   excited-level expansion coefficients with closed-string level matching, and
   the displayed baryonic \(Y\)-string Steiner lengths in the equilateral and
   \(120^\circ\)-threshold cases, together with the open/closed equality of

@@ -2078,6 +2078,107 @@ and angular momentum around the source axis; those labels are obtained by
 decomposing the oscillator states under the residual spacetime symmetries of
 the static-source sector.
 
+In four spacetime dimensions, place a static fundamental source and static
+antifundamental source on the \(z\)-axis at \(z=\pm L/2\).  The continuum
+symmetry group preserving this source pair is the usual cylindrical group
+\(D_{\infty h}\).  Its labels are:
+\[
+  \Lambda=0,1,2,\ldots
+  \quad\Longleftrightarrow\quad
+  \Sigma,\Pi,\Delta,\Phi,\ldots ,
+\]
+where \(\Lambda\) is the absolute value of the angular momentum about the
+source axis; a sign
+\(\eta=\pm1\), denoted \(g/u\), for the combined operation which exchanges the
+source and antisource and inverts about the midpoint; and, only for
+\(\Lambda=0\), a reflection sign \(\epsilon=\pm\) for reflection through a
+plane containing the source axis.  At finite lattice spacing with the axis
+chosen along a lattice direction, \(D_{\infty h}\) is reduced to the
+corresponding lattice subgroup.  The continuum labels are therefore continuum
+and large-distance assignments obtained after subduction and extrapolation,
+not exact labels of a single finite lattice calculation.
+
+\begin{proposition}[Open flux-tube oscillator labels]
+\label{prop:qcd-string-open-dinfty-labels}
+Assume the Gaussian open-string sector in \(D=4\), with circular transverse
+oscillators \(a_{n,+}^{\dagger}\) and \(a_{n,-}^{\dagger}\) of frequency
+\(\pi n/L\), where \(n\geq1\) and the signs denote angular momentum
+\(\pm1\) about the source axis.  For a Fock monomial
+\[
+  \prod_{n\geq1}
+  \bigl(a_{n,+}^{\dagger}\bigr)^{N_{n,+}}
+  \bigl(a_{n,-}^{\dagger}\bigr)^{N_{n,-}}\vac_{\rm str},
+\]
+the oscillator level, axial angular-momentum label, and \(g/u\) sign are
+\begin{align}
+  N&=\sum_{n\geq1}n(N_{n,+}+N_{n,-}),\\
+  \Lambda&=\left|\sum_{n\geq1}(N_{n,+}-N_{n,-})\right|,\\
+  \eta&=(-1)^{\sum_{n\geq1}n(N_{n,+}+N_{n,-})}.
+  \label{eq:qcd-string-open-channel-bookkeeping}
+\end{align}
+For \(\Lambda=0\), reflection through a plane containing the source axis
+exchanges \(+\) and \(-\) oscillators, so reflection eigenstates are the even
+and odd combinations of each reflection orbit; if the monomial is pointwise
+fixed by this exchange, only the even \(\Sigma^+\) state is obtained.
+\end{proposition}
+
+\begin{proof}
+The level formula is the definition of the open-string oscillator level in
+\eqref{eq:qcd-string-open-oscillator-level}.  A circular transverse
+oscillator is built from
+\[
+  X^{+}=X^2+iX^3,\qquad X^{-}=X^2-iX^3 .
+\]
+Under a rotation by angle \(\alpha\) about the source axis,
+\(X^{\pm}\mapsto \ee^{\pm i\alpha}X^{\pm}\).  A monomial with occupations
+\(N_{n,\pm}\) therefore has axial angular momentum
+\(\sum_n(N_{n,+}-N_{n,-})\), and the irreducible cylindrical label records
+its absolute value \(\Lambda\).
+
+The operation defining \(g/u\) exchanges the endpoints and sends
+\((z,X^2,X^3)\mapsto(-z,-X^2,-X^3)\) in the static-source coordinate system.
+The mode function transforms as
+\[
+  \sin\frac{\pi n(L-s)}{L}
+  =
+  (-1)^{n+1}\sin\frac{\pi ns}{L},
+\]
+while the transverse vector itself contributes the additional sign \(-1\).
+Thus a single \(n\)-th transverse oscillator has eigenvalue \((-1)^n\) under
+the combined operation, and multiplication over all occupied oscillators gives
+the sign \(\eta\) in
+\eqref{eq:qcd-string-open-channel-bookkeeping}.  Reflection through a plane
+containing the axis complex-conjugates \(X^+\) and \(X^-\), hence exchanges
+the two circular polarizations.  For \(\Lambda>0\) this reflection relates the
+two helicity components of the same two-dimensional real representation.  For
+\(\Lambda=0\) it can be diagonalized, giving \(\epsilon=\pm\) when the
+reflection orbit has two monomials and only the even state when the monomial
+is fixed.
+\end{proof}
+
+For the first oscillator levels in \(D=4\) this gives
+\begin{center}
+\begin{tabular}{c|c|c}
+level \(N\) & \(D_{\infty h}\) content of the Gaussian reference sector
+& total oscillator degeneracy\\
+\hline
+0 & \(\Sigma_g^+\) & \(1\)\\
+1 & \(\Pi_u\) & \(2\)\\
+2 & \(\Sigma_g^+\oplus\Pi_g\oplus\Delta_g\) & \(5\)\\
+3 &
+\(\Sigma_u^+\oplus\Sigma_u^-\oplus2\Pi_u\oplus\Delta_u\oplus\Phi_u\)
+& \(10\)
+\end{tabular}
+\end{center}
+The table is a long-string reference decomposition.  A measured hybrid static
+potential in the same \(\Lambda_\eta^\epsilon\) channel may contain massive
+surface excitations, endpoint-local excitations, or short-distance gluelump
+physics that are not present in the free transverse oscillator Hilbert space.
+Conversely, the free oscillator labels become useful at large \(L\) only
+after a transfer-matrix calculation has isolated the corresponding static
+sector and after the effective-string expansion is within its declared
+regime.
+
 For a closed flux tube winding a spatial circle, the quadratic theory has
 left- and right-moving oscillators.  Define
 \[

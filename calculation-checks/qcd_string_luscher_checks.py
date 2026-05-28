@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
 
 
@@ -58,6 +59,91 @@ def check_open_oscillator_degeneracies() -> None:
     # product_{n >= 1} (1 - q^n)^(-2), whose first coefficients are displayed
     # in the monograph.
     assert colored_partition_degeneracies(colors=2, max_level=3) == [1, 2, 5, 10]
+
+
+def generate_open_fock_states(level: int) -> list[dict[tuple[int, int], int]]:
+    modes = [(n, pol) for n in range(1, level + 1) for pol in (1, -1)]
+    states: list[dict[tuple[int, int], int]] = []
+
+    def rec(index: int, remaining: int, state: dict[tuple[int, int], int]) -> None:
+        if index == len(modes):
+            if remaining == 0:
+                states.append(dict(state))
+            return
+        n, pol = modes[index]
+        for occ in range(remaining // n + 1):
+            if occ:
+                state[(n, pol)] = occ
+            elif (n, pol) in state:
+                del state[(n, pol)]
+            rec(index + 1, remaining - occ * n, state)
+        state.pop((n, pol), None)
+
+    rec(0, level, {})
+    return states
+
+
+def reflected_state(state: dict[tuple[int, int], int]) -> dict[tuple[int, int], int]:
+    return {(n, -pol): occ for (n, pol), occ in state.items()}
+
+
+def state_key(state: dict[tuple[int, int], int]) -> tuple[tuple[int, int, int], ...]:
+    return tuple(sorted((n, pol, occ) for (n, pol), occ in state.items()))
+
+
+def greek_label(lambda_abs: int) -> str:
+    labels = {0: "Sigma", 1: "Pi", 2: "Delta", 3: "Phi"}
+    return labels[lambda_abs]
+
+
+def decompose_open_dinfty_channels(level: int) -> Counter[tuple[str, str, str | None]]:
+    states = generate_open_fock_states(level)
+    counter: Counter[tuple[str, str, str | None]] = Counter()
+    zero_helicity: dict[tuple[tuple[int, int, int], ...], dict[tuple[int, int], int]] = {}
+
+    for state in states:
+        helicity = sum(pol * occ for (_n, pol), occ in state.items())
+        gu = "g" if sum(n * occ for (n, _pol), occ in state.items()) % 2 == 0 else "u"
+        if helicity != 0:
+            counter[(greek_label(abs(helicity)), gu, None)] += 1
+        else:
+            zero_helicity[state_key(state)] = state
+
+    visited: set[tuple[tuple[int, int, int], ...]] = set()
+    for key, state in zero_helicity.items():
+        if key in visited:
+            continue
+        gu = "g" if sum(n * occ for (n, _pol), occ in state.items()) % 2 == 0 else "u"
+        refl_key = state_key(reflected_state(state))
+        visited.add(key)
+        visited.add(refl_key)
+        if refl_key == key:
+            counter[("Sigma", gu, "+")] += 1
+        else:
+            counter[("Sigma", gu, "+")] += 1
+            counter[("Sigma", gu, "-")] += 1
+    return counter
+
+
+def check_open_dinfty_channel_decomposition() -> None:
+    assert decompose_open_dinfty_channels(0) == Counter({("Sigma", "g", "+"): 1})
+    assert decompose_open_dinfty_channels(1) == Counter({("Pi", "u", None): 2})
+    assert decompose_open_dinfty_channels(2) == Counter(
+        {
+            ("Sigma", "g", "+"): 1,
+            ("Pi", "g", None): 2,
+            ("Delta", "g", None): 2,
+        }
+    )
+    assert decompose_open_dinfty_channels(3) == Counter(
+        {
+            ("Sigma", "u", "+"): 1,
+            ("Sigma", "u", "-"): 1,
+            ("Pi", "u", None): 4,
+            ("Delta", "u", None): 2,
+            ("Phi", "u", None): 2,
+        }
+    )
 
 
 def check_excited_level_expansion_coefficients() -> None:
@@ -149,6 +235,7 @@ def main() -> None:
     check_open_and_closed_casimir_coefficients()
     check_nambu_goto_reference_expansion()
     check_open_oscillator_degeneracies()
+    check_open_dinfty_channel_decomposition()
     check_excited_level_expansion_coefficients()
     check_baryonic_y_string_geometry()
     check_hagedorn_coefficient()
