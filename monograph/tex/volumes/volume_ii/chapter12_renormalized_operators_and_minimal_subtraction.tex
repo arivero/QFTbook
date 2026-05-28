@@ -478,72 +478,63 @@ operator insertion.  These kernels agree with the projected 1PI insertion
 kernels in another subtraction scheme after the corresponding finite
 source-coordinate map and field normalization have been specified.
 
-Figure~\ref{fig:source-extended-wilsonian-operator-bridge} organizes the
-source-extended comparison: source coordinates define insertion kernels in the
-regulated Wilsonian functional, and the same source chart determines the 1PI
-representative after Legendre transformation.
+Figure~\ref{fig:source-extended-wilsonian-operator-bridge} shows the
+nontrivial part of the source-extended comparison at two external low-field
+legs: differentiating the connected insertion with respect to ordinary field
+sources gives an insertion with exact external propagators; the 1PI
+representative is the amputated kernel obtained after the Legendre transform.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.98\textwidth}{!}{%
+  \resizebox{0.92\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,text width=1.85cm,minimum height=0.82cm},
-      lowbox/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,text width=2.05cm,minimum height=0.76cm},
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
-      darr/.style={-{Latex[length=2mm]},line width=0.85pt,dashed}
+      ext/.style={circle,fill=black,inner sep=1.5pt},
+      kern/.style={draw,circle,line width=0.9pt,minimum size=1.05cm,
+        fill=blue!7,align=center},
+      op/.style={draw,rectangle,rounded corners=2pt,line width=0.9pt,
+        minimum width=0.72cm,minimum height=0.56cm,fill=red!8},
+      prop/.style={line width=0.9pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
-    \node[box] (bare) at (0,2.12)
-      {bare\\sources\\\(\eta_0\)};
-    \node[box] (map) at (2.30,2.12)
-      {local\\source map\\\(\mathcal Z_\Lambda\)};
-    \node[box] (wil) at (4.60,2.12)
-      {Wilsonian\\action\\\(L_\Lambda\)};
-    \node[box] (wlow) at (6.90,2.12)
-      {connected\\functional\\\(W_\Lambda^{\rm low}\)};
-    \node[box] (leg) at (9.20,2.12)
-      {1PI\\effective action\\\(\Gamma_\Lambda\)};
-    \node[box] (proj) at (11.50,2.12)
-      {projected\\1PI kernels\\and \(N\)};
+    \node[ext,label=left:\(J(p)\)] (l1) at (-4.2,1.05) {};
+    \node[ext,label=above:\(J(-p-Q)\)] (r1) at (-0.6,1.05) {};
+    \node[op,label=above:\(\eta_A(Q)\)] (cins) at (-2.4,1.05) {};
+    \draw[prop] (l1)--(cins)--(r1);
+    \node[align=center] at (-2.4,0.22)
+      {connected insertion\\
+      \(G^{(A)}_{\rm conn}(p,Q)
+      =-\delta^3 W_\Lambda^{\rm low}/\delta J\,\delta J\,\delta\eta_A\)};
 
-    \node[lowbox] (opw) at (4.60,0.35)
-      {Wilsonian insertion\\\(\mathcal O_\Lambda^{\rm W}\)};
-    \node[lowbox] (opc) at (6.90,0.35)
-      {connected insertion\\\(-\delta W/\delta\eta\)};
-    \node[lowbox] (opg) at (9.20,0.35)
-      {1PI insertion\\\(\mathcal O_\Lambda^\Gamma\)};
+    \node at (0.70,1.05) {\(\Longleftrightarrow\)};
 
-    \draw[arr] (bare)--(map);
-    \draw[arr] (map)--(wil);
-    \draw[arr] (wil)--(wlow);
-    \draw[arr] (wlow)--(leg);
-    \draw[arr] (leg)--(proj);
-    \draw[darr] (wil)--(opw);
-    \draw[darr] (wlow)--(opc);
-    \draw[darr] (leg)--(opg);
-    \draw[arr] (opw)--(opc);
-    \draw[arr] (opc)--(opg);
+    \node[ext,label=left:\(J\)] (l2) at (1.55,1.05) {};
+    \node[kern] (k) at (4.15,1.05)
+      {\(K_A^{(2)}\)};
+    \node[ext,label=right:\(J\)] (r2) at (6.75,1.05) {};
+    \draw[prop] (l2)--(k)--(r2);
+    \node[above] at (2.85,1.24) {\(G_\Lambda(p)\)};
+    \node[above] at (5.45,1.24) {\(G_\Lambda(p+Q)\)};
+    \node[align=center] at (4.15,0.05)
+      {amputated 1PI insertion\\
+      \(K_A^{(2)}
+       =\delta^2\mathcal O_A^\Gamma/\delta\varphi\,\delta\varphi\)};
 
-    \node[blue!70!black,align=center] at (1.15,3.02)
-      {local differential\\source coordinates};
-    \node[green!45!black,align=center] at (4.60,3.02)
-      {Gaussian\\pushforward};
-    \node[orange!85!black,align=center] at (5.75,-0.55)
-      {low-field\\integral};
-    \node[red!70!black,align=center] at (8.05,-0.55)
-      {Legendre\\transform};
-    \node[purple!70!black,align=center] at (10.35,3.24)
-      {1PI subtraction\\coordinates};
+    \node[draw,rounded corners=3pt,fill=orange!6,align=center,
+      inner sep=4pt,text width=9.1cm] at (1.25,-1.2)
+      {For a vacuum with no one-field insertion,
+      \(G^{(A)}_{\rm conn}(p,Q)=
+      G_\Lambda(p)\,K_A^{(2)}(p,Q)\,G_\Lambda(p+Q)\).
+      Source-coordinate changes alter the local part of \(K_A^{(2)}\);
+      the connected insertion changes by the same kernel with exact
+      external propagators attached.};
   \end{tikzpicture}
   }
-  \caption{Local operator insertions have several representatives connected
-  by explicit maps.  The top row maps source-dependent functionals.  The
-  lower row records their source derivatives: Wilsonian insertion functional,
-  connected insertion, and 1PI insertion, with
-  \(\mathcal O_\Lambda^{\rm W}=\delta L_\Lambda/\delta\eta_\Lambda\) and
-  \(\mathcal O_\Lambda^\Gamma=-\delta\Gamma_\Lambda/\delta\eta_\Lambda\).}
+  \caption{The Legendre transform changes a connected low-field insertion into
+  an amputated 1PI insertion kernel.  In the two-point sector, and when
+  one-field insertion terms vanish by the vacuum quantum numbers, the connected
+  insertion is obtained by attaching exact low-field propagators to the
+  amputated kernel.}
   \label{fig:source-extended-wilsonian-operator-bridge}
 \end{figure}
 
@@ -673,59 +664,80 @@ normal-product choice as part of the local source-coordinate chart: changing a
 Zimmermann normal product changes the finite local operator coordinates and
 therefore the source coordinate map.
 
-Figure~\ref{fig:mass-insertion-source-wilsonian-matching} displays this mass
-insertion example as a finite source-coordinate matching problem between a
-BPHZ normal product and the Wilsonian operator chart.
+Figure~\ref{fig:mass-insertion-source-wilsonian-matching} displays the
+actual covariance assignment on the one-loop insertion graph.  The loop has
+two internal propagator slots; inserting
+\(C_{\Lambda_0}=C_\Lambda+C_>\) in each slot gives the low--low,
+high--high, and two mixed contributions in
+\eqref{eq:operator-insertion-bubble-covariance-split}.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.96\textwidth}{!}{%
+  \resizebox{0.95\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
-      box/.style={draw,rounded corners=3pt,align=center,
-        minimum width=2.58cm,minimum height=0.76cm}
+      ext/.style={circle,fill=black,inner sep=1.35pt},
+      op/.style={draw,rectangle,rounded corners=2pt,line width=0.85pt,
+        fill=red!8,minimum width=0.42cm,minimum height=0.42cm},
+      vtx/.style={circle,fill=black,inner sep=1.6pt},
+      low/.style={line width=1.1pt,blue!70!black},
+      high/.style={line width=1.1pt,orange!90!black,dashed},
+      leg/.style={line width=0.85pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.75pt}
     }
-    \node[box] (bare) at (0,1.8)
-      {bare insertion\\bubble};
-    \node[box] (hh) at (4.0,3.0)
-      {high--high\\part};
-    \node[box] (ll) at (4.0,1.8)
-      {low--low\\part};
-    \node[box] (mix) at (4.0,0.6)
-      {mixed\\part};
-    \node[box] (wil) at (8.15,3.0)
-      {Wilsonian\\insertion};
-    \node[box] (low) at (8.15,1.8)
-      {low-field\\1PI insertion};
-    \node[box] (loc) at (8.15,0.6)
-      {local source\\map};
-    \node[box] (coord) at (12.05,1.8)
-      {renormalized\\normal product};
+    \newcommand{\bubblegraph}[4]{%
+      \node[op,label=above:\(\eta_m(Q)\)] (#1o) at (#2,#3) {};
+      \node[vtx] (#1v) at (#2+1.85,#3) {};
+      \draw[#4] (#1o) .. controls (#2+0.55,#3+0.82) and (#2+1.30,#3+0.82) .. (#1v);
+      \draw[#4] (#1o) .. controls (#2+0.55,#3-0.82) and (#2+1.30,#3-0.82) .. (#1v);
+      \draw[leg] (#1v)--(#2+2.65,#3+0.55);
+      \draw[leg] (#1v)--(#2+2.65,#3-0.55);
+    }
+    \newcommand{\bubblemix}[5]{%
+      \node[op,label=above:\(\eta_m(Q)\)] (#1o) at (#2,#3) {};
+      \node[vtx] (#1v) at (#2+1.85,#3) {};
+      \draw[#4] (#1o) .. controls (#2+0.55,#3+0.82) and (#2+1.30,#3+0.82) .. (#1v);
+      \draw[#5] (#1o) .. controls (#2+0.55,#3-0.82) and (#2+1.30,#3-0.82) .. (#1v);
+      \draw[leg] (#1v)--(#2+2.65,#3+0.55);
+      \draw[leg] (#1v)--(#2+2.65,#3-0.55);
+    }
 
-    \draw[arr] (bare)--(hh);
-    \draw[arr] (bare)--(ll);
-    \draw[arr] (bare)--(mix);
-    \draw[arr] (hh)--(wil);
-    \draw[arr] (ll)--(low);
-    \draw[arr] (mix)--(loc);
-    \draw[arr] (wil)--(coord);
-    \draw[arr] (low)--(coord);
-    \draw[arr] (loc)--(coord);
+    \bubblegraph{ll}{-4.95}{1.45}{low}
+    \node[align=center,blue!70!black] at (-4.02,0.25)
+      {\(\mathcal I_{<,<}(Q)\)\\\(C_\Lambda C_\Lambda\)};
 
-    \node[blue!70!black,align=center] at (2.0,3.45)
-      {\(C_>C_>\)};
-    \node[green!45!black,align=center] at (2.0,2.18)
-      {\(C_\Lambda C_\Lambda\)};
-    \node[orange!85!black,align=center] at (1.75,0.55)
-      {\(C_\Lambda C_>\)\\\(+C_>C_\Lambda\)};
+    \bubblegraph{hh}{-0.85}{1.45}{high}
+    \node[align=center,orange!90!black] at (0.08,0.25)
+      {\(\mathcal I_{>,>}(Q)\)\\\(C_>C_>\)};
+
+    \bubblemix{lh}{3.25}{1.45}{low}{high}
+    \node[align=center] at (4.18,0.25)
+      {\(\mathcal I_{C_\Lambda,C_>}(Q)\)};
+
+    \bubblemix{hl}{7.25}{1.45}{high}{low}
+    \node[align=center] at (8.18,0.25)
+      {\(\mathcal I_{C_>,C_\Lambda}(Q)\)};
+
+    \node[align=center] at (1.62,-1.05)
+      {\(\mathcal I_{C_{\Lambda_0},C_{\Lambda_0}}(Q)
+      =
+      \mathcal I_{<,<}(Q)+\mathcal I_{>,>}(Q)
+      +\mathcal I_{C_\Lambda,C_>}(Q)+\mathcal I_{C_>,C_\Lambda}(Q)\)};
+    \node[draw,rounded corners=3pt,fill=blue!4,align=center,
+      inner sep=4pt,text width=4.0cm] at (-4.05,-2.10)
+      {low--low piece survives in the remaining low-field 1PI calculation};
+    \node[draw,rounded corners=3pt,fill=orange!6,align=center,
+      inner sep=4pt,text width=4.2cm] at (5.95,-2.10)
+      {high--high and mixed pieces are absorbed into the Wilsonian insertion
+      and its local source-coordinate Taylor data};
   \end{tikzpicture}
   }
-  \caption{The one-loop mass-operator insertion is split by the covariance
-  decomposition.  The high--high part contributes to the Wilsonian insertion
-  functional, the low--low part is produced by the remaining low-field 1PI
-  insertion, and the mixed part is local in the low-momentum expansion and is
-  represented in the source-coordinate map.}
+  \caption{The one-loop mass-operator kernel is a single insertion graph with
+  two internal covariance slots.  Expanding
+  \(C_{\Lambda_0}=C_\Lambda+C_>\) on those slots gives the four displayed
+  assignments; the two mixed assignments form
+  \(\mathcal I_\times\).  This is the graph-level content behind the local
+  Wilsonian source-coordinate matching.}
   \label{fig:mass-insertion-source-wilsonian-matching}
 \end{figure}
 
@@ -1184,49 +1196,63 @@ low-field two-point function.  Consequently projected 1PI multi-insertion
 kernels have a contact-term convention inherited from both the nonlinear
 source chart and the Legendre-transform projection.
 
-Figure~\ref{fig:multi-insertion-contact-source-jets} identifies the origin of
-multi-insertion contact conventions: nonlinear source jets and the subtraction
-of one-low-field reducible pieces in the projected 1PI transform.
+Figure~\ref{fig:multi-insertion-contact-source-jets} records the geometric
+support statement behind contact terms.  The linear jet acts on the open
+configuration space of separated points.  Higher source jets are local
+distributions supported on pairwise and higher collision diagonals, and the
+Legendre transform adds the separate one-low-field-reducible subtraction
+displayed above.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.90\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,align=center,
-        minimum width=2.75cm,minimum height=0.78cm,line width=0.8pt},
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+      diag/.style={line width=1.0pt,red!70!black},
+      pdiag/.style={line width=1.0pt,orange!80!black,dashed},
+      pt/.style={circle,fill=black,inner sep=1.3pt},
+      note/.style={draw,rounded corners=3pt,fill=blue!4,align=center,
+        inner sep=4pt,text width=3.1cm}
     }
-    \node[box] (source) at (0,1.5)
-      {local source chart\\\(\eta_0=\mathcal Z_\Lambda(\eta_\Lambda)\)};
-    \node[box] (linear) at (4.0,2.55)
-      {linear jet\\\(D\mathcal Z_\Lambda\)};
-    \node[box] (higher) at (4.0,0.45)
-      {higher jets\\\(D^r\mathcal Z_\Lambda,\ r\ge2\)};
-    \node[box] (sep) at (8.05,2.55)
-      {noncoincident\\insertions};
-    \node[box] (diag) at (8.05,0.45)
-      {collision\\diagonals};
-    \node[box] (dist) at (12.0,1.5)
-      {renormalized\\inserted distribution};
+    \draw[rounded corners=5pt,line width=0.9pt,fill=gray!4]
+      (-4.7,-2.35) rectangle (4.7,2.35);
+    \node[fill=white,inner sep=1pt] at (0,2.10)
+      {\(\mathrm{Conf}_3=(\mathbb R^D)^3\setminus
+      \bigcup_{1\le a<b\le 3}\Delta_{ab}\)};
 
-    \draw[arr] (source)--(linear);
-    \draw[arr] (source)--(higher);
-    \draw[arr] (linear)--(sep);
-    \draw[arr] (higher)--(diag);
-    \draw[arr] (sep)--(dist);
-    \draw[arr] (diag)--(dist);
+    \draw[diag] (-4.05,-1.65)--(4.05,1.65)
+      node[pos=0.87,above,fill=white,inner sep=1pt] {\(\Delta_{12}:x_1=x_2\)};
+    \draw[diag] (-4.05,1.45)--(4.05,-1.45)
+      node[pos=0.84,below,fill=white,inner sep=1pt] {\(\Delta_{23}:x_2=x_3\)};
+    \draw[pdiag] (0,-2.05)--(0,2.05)
+      node[pos=0.86,right,fill=white,inner sep=1pt] {\(\Delta_{13}:x_1=x_3\)};
+    \node[draw,circle,fill=red!12,line width=0.9pt,minimum size=0.62cm]
+      (triple) at (0,0) {};
+    \node[fill=white,inner sep=1pt] at (0.95,0.28)
+      {\(\Delta_{123}\)};
 
-    \node[blue!70!black,align=center] at (6.1,3.05)
-      {operator mixing};
-    \node[red!70!black,align=center] at (6.1,-0.10)
-      {contact convention};
+    \node[pt] (confpt) at (-2.95,0.85) {};
+    \node[above,fill=white,inner sep=1pt] at (confpt.north)
+      {\((x_1,x_2,x_3)\in\mathrm{Conf}_3\)};
+    \node[pt] at (2.75,1.25) {};
+    \node[note] at (-3.05,-2.95)
+      {singleton partition\\linear jet\\\(D\mathcal Z_\Lambda\)};
+    \node[note,fill=red!5] at (0,-2.95)
+      {pair collision\\second jet\\\(D^2\mathcal Z_\Lambda\)};
+    \node[note,fill=orange!8] at (3.10,-2.95)
+      {triple collision\\third jet\\\(D^3\mathcal Z_\Lambda\)};
+
+    \node[align=center] at (0,-3.92)
+      {\(\mathcal Z^I{}_{AB}(z;x,y)\) is supported on \(z=x=y\);
+      \(\mathcal Z^I{}_{ABC}(z;x,y,w)\) is supported on
+      \(z=x=y=w\).};
   \end{tikzpicture}
   }
-  \caption{A full source coordinate chart has a linear jet and higher local
-  jets.  The linear jet determines operator mixing at separated insertion
-  points.  The higher jets are supported on collision diagonals and determine
-  the contact-term convention for the full distribution.}
+  \caption{Contact terms are support statements on configuration space.  The
+  singleton part of the source Taylor expansion acts on separated insertion
+  points; higher Taylor coefficients are local distributions on collision
+  strata, such as the pairwise diagonals \(\Delta_{ab}\) and the triple
+  diagonal \(\Delta_{123}\) for three insertions.}
   \label{fig:multi-insertion-contact-source-jets}
 \end{figure}
 
@@ -1440,53 +1466,55 @@ The MS convention fixes the finite redefinition freedom present in a general
 subtraction coordinate.  It is especially convenient because the beta functions
 and anomalous dimensions are encoded in the pole coefficients.
 
-Figure~\ref{fig:volume-ii-ms-coordinate-structure} fixes the MS coordinate
-convention used below: the finite coordinate is kept separate from the pole
-part, and all scheme information resides in the pole coefficients
-\(K_I^{(n)}\).
+Figure~\ref{fig:volume-ii-ms-coordinate-structure} depicts the MS coordinate
+as a Laurent-principal-part prescription at \(\epsilon=0\).  The finite
+coordinate \(\lambda_I\) is the regular part selected after the pole part has
+been subtracted; the pole coefficients \(K_I^{(n)}\) are the residues of the
+principal part in this formal meromorphic coordinate.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.94\textwidth}{!}{%
+  \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \begin{scope}
-      \node[font=\small] at (0,2.05) {MS coordinate};
-      \node[draw=black, rounded corners, align=center, inner sep=7pt] at (0,0.55)
-        {\(g_I^\epsilon=\mu^{-\delta_I(\epsilon)}\)\\
-         \(\times\left[\lambda_I+\epsilon^{-1}K_I^{(1)}
-         +\epsilon^{-2}K_I^{(2)}+\cdots\right]\)};
-      \node[blue!70!black, align=center] at (0,-1.25)
-        {finite coordinate plus\\pole counterterms};
-    \end{scope}
-
-    \begin{scope}[shift={(5.45,0)}]
-      \node[font=\small] at (0,2.05) {dimension counting};
-      \draw[thick] (-1.6,1.25)--(1.6,1.25);
-      \draw[thick] (-0.25,-0.75)--(-0.25,1.65);
-      \node at (-0.9,0.95) {\(\phi\)};
-      \node at (0.85,0.95) {\((d-\epsilon-2)/2\)};
-      \node at (-0.9,0.25) {\(O_I\)};
-      \node at (0.85,0.25) {\(d-\epsilon+\delta_I\)};
-      \node at (-0.9,-0.45) {\(g_I^\epsilon\)};
-      \node at (0.85,-0.45) {\(-\delta_I\)};
-    \end{scope}
-
-    \begin{scope}[shift={(10.0,0)}]
-      \node[font=\small] at (0,2.05) {pole data};
-      \draw[-{Latex[length=2mm]}, thick] (-1.7,0.6)--(1.7,0.6);
-      \node[above] at (-1.45,0.6) {\(K^{(1)}\)};
-      \node[above] at (0,0.6) {\(K^{(2)}\)};
-      \node[above] at (1.45,0.6) {\(\cdots\)};
-      \node[align=center, blue!70!black] at (0,-0.45)
-        {recursive relations\\from \(\dd g_I^\epsilon/\dd\log\mu=0\)};
-    \end{scope}
+    \tikzset{
+      pole/.style={line width=0.8pt,red!70!black},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \draw[->] (-3.8,0)--(3.8,0) node[right] {\(\operatorname{Re}\epsilon\)};
+    \draw[->] (0,-2.05)--(0,2.05) node[above] {\(\operatorname{Im}\epsilon\)};
+    \draw[line width=0.9pt,blue!65!black] (0,0) circle (0.58);
+    \fill[red!70!black] (0,0) circle (1.8pt);
+    \node[above right] at (0.08,0.08) {\(\epsilon=0\)};
+    \draw[pole] (-0.15,-1.45)--(0.15,1.45);
+    \draw[pole] (-0.32,-1.18)--(0.32,1.18);
+    \node[red!70!black,align=center] at (-2.35,1.30)
+      {principal part\\
+      \(\sum_{n\ge1}\epsilon^{-n}K_I^{(n)}(\lambda)\)};
+    \draw[arr,red!70!black] (-1.35,1.05)--(-0.28,0.40);
+    \node[blue!65!black,align=center] at (2.45,1.12)
+      {regular part\\\(\lambda_I(\mu)\)};
+    \draw[arr,blue!65!black] (1.56,0.95)--(0.48,0.25);
+    \node[draw,rounded corners=3pt,fill=gray!4,align=center,
+      inner sep=5pt,text width=8.9cm] at (0,-2.95)
+      {\(\displaystyle
+        g_I^\epsilon=\mu^{-\delta_I(\epsilon)}
+        \left[
+        \lambda_I(\mu)+
+        \underbrace{\sum_{n\ge1}\epsilon^{-n}K_I^{(n)}(\lambda(\mu))}_{P_-
+        \text{ principal part}}
+        \right],
+        \quad
+        P_{\rm fin}\bigl(\mu^{\delta_I(\epsilon)}g_I^\epsilon\bigr)
+        =\lambda_I .
+      \)};
   \end{tikzpicture}
   }
-  \caption[Minimal-subtraction coordinate and pole data]{Minimal subtraction defines dimensionless running coordinates by
-  expressing regulator-dependent couplings as a finite coordinate plus pole
-  parts in dimensional regularization.  The pole coefficients are constrained
-  by the independence of the regulated couplings from the auxiliary scale
-  \(\mu\).}
+  \caption[Minimal-subtraction coordinate and pole data]{Minimal subtraction
+  is a Laurent projection at the regulator point \(\epsilon=0\).  The
+  dimensionless running coordinate is the finite part after the principal
+  pole part has been subtracted.  The coefficients \(K_I^{(n)}\) are then
+  constrained by the condition
+  \(\dd g_I^\epsilon/\dd\log\mu=0\).}
   \label{fig:volume-ii-ms-coordinate-structure}
 \end{figure}
 
@@ -1955,46 +1983,59 @@ The \(-\epsilon\lambda\) term is the engineering contribution in
 \(4-\epsilon\) dimensions; the \(\epsilon^0\) term is the four-dimensional
 perturbative beta function.
 
-Figure~\ref{fig:volume-ii-ms-recursion} records the recursive separation used in
-the pole equations: positive powers in the beta function determine the pole
-coefficients, while the engineering term contributes the universal
-\(-\epsilon\lambda\) part.
+Figure~\ref{fig:volume-ii-ms-recursion} records the coefficient equations in
+the Laurent expansion.  The positive powers of \(\epsilon\) fix the allowed
+\(\epsilon\)-dependence of the \(d-\epsilon\) beta function, while the
+nonpositive powers give the displayed linear recursion for the pole
+coefficients.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.94\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.25) {positive powers};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (b2) at (-2.8,0.75) {\(\beta^{(m)}\)\\\(m\ge2\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (b1) at (0,0.75) {\(\beta^{(1)}\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (b0) at (2.8,0.75) {\(\beta^{(0)}=\beta\)};
-    \draw[-{Latex[length=2mm]}, thick] (b2)--(b1);
-    \draw[-{Latex[length=2mm]}, thick] (b1)--(b0);
-    \node[blue!70!black, align=center] at (0,-0.35)
-      {\(\beta^{(m)}=0\) for \(m\ge2\),\\
-       \(\beta^{(1)}=\delta^{(1)}\lambda\)};
-
-    \node[font=\small] at (7.3,2.25) {pole recursion};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (k1) at (5.4,0.75) {\(K^{(1)}\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (k2) at (7.3,0.75) {\(K^{(2)}\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      (k3) at (9.2,0.75) {\(\cdots\)};
-    \draw[-{Latex[length=2mm]}, thick] (k1)--(k2);
-    \draw[-{Latex[length=2mm]}, thick] (k2)--(k3);
-    \node[blue!70!black, align=center] at (7.3,-0.35)
-      {nonpositive powers determine\\pole coefficients recursively};
+    \tikzset{
+      row/.style={draw,rounded corners=3pt,fill=gray!4,align=left,
+        text width=10.2cm,minimum height=0.68cm,inner sep=4pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \node[font=\small] at (0,2.35)
+      {coefficient equations in \(\dd g_I^\epsilon/\dd\log\mu=0\)};
+    \node[row,fill=blue!5] (pos) at (0,1.45)
+      {\(\epsilon^{m\ge2}\): \(\beta_I^{(m)}=0\), \qquad
+       \(\epsilon^{1}\): \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).};
+    \node[row] (zero) at (0,0.45)
+      {\(\epsilon^{0}\): \(
+       A_IK_I^{(1)}
+       =
+       \beta_I-\delta_I^{(0)}\lambda_I,\qquad
+       A_I=\delta_I^{(1)}-D_\epsilon\).};
+    \node[row] (minusone) at (0,-0.55)
+      {\(\epsilon^{-1}\): \(
+       A_IK_I^{(2)}
+       =
+       (D_\beta-\delta_I^{(0)})K_I^{(1)}\).};
+    \node[row] (minusn) at (0,-1.55)
+      {\(\epsilon^{-n}\): \(
+       A_IK_I^{(n+1)}
+       =
+       (D_\beta-\delta_I^{(0)})K_I^{(n)},\quad n\ge1\).};
+    \draw[arr] (zero.south) -- (minusone.north)
+      node[midway,right,fill=white,inner sep=1pt]
+      {\(K^{(1)}\mapsto K^{(2)}\)};
+    \draw[arr] (minusone.south) -- (minusn.north)
+      node[midway,right,fill=white,inner sep=1pt]
+      {iterate};
+    \node[draw,rounded corners=3pt,fill=orange!8,align=center,
+      inner sep=4pt,text width=8.6cm] at (0,-2.82)
+      {When \(A_I\) is invertible on the selected local monomial sector,
+      each pole coefficient is fixed by lower data:
+      \(K_I^{(n+1)}=A_I^{-1}(D_\beta-\delta_I^{(0)})K_I^{(n)}\).};
   \end{tikzpicture}
   }
-  \caption{The scale independence of bare couplings splits the MS equations
-  into two parts.  Positive powers of \(\epsilon\) fix the allowed
-  \(\epsilon\)-dependence of \(\beta^\epsilon\).  Nonpositive powers determine
-  the pole coefficients \(K^{(n)}\) recursively from the \(d\)-dimensional beta
-  function.}
+  \caption{The scale independence of the regulated coupling is a Laurent
+  identity in \(\epsilon\).  Matching coefficients first fixes the positive
+  powers in \(\beta^\epsilon\), then determines the pole coefficients
+  recursively by the linear equations shown here.}
   \label{fig:volume-ii-ms-recursion}
 \end{figure}
 
