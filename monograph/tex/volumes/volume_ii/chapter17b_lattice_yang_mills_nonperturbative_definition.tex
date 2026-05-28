@@ -823,6 +823,200 @@ Gaussian point.  The monograph therefore treats triviality and asymptotic
 non-freedom as theory-specific continuum-limit questions, not as consequences
 of formal power series alone.
 
+\section{Glueball Spectrum and Flux-Tube Observables}
+\label{sec:lattice-ym-glueballs-flux-observables}
+
+The preceding sections define finite-regulator expectation values.  To discuss
+the pure Yang--Mills spectrum one must say which gauge-invariant Hilbert-space
+object is being extracted from those expectations.  At finite spatial volume
+and finite lattice spacing, reflection positivity supplies a transfer matrix
+\(\mathbb T=\exp(-aH_{\rm lat})\) on the gauge-invariant Hilbert space.  A
+glueball is an eigenstate of \(H_{\rm lat}\) in the vacuum superselection
+sector, created with nonzero overlap by a gauge-invariant local operator built
+from closed Wilson loops or lattice field-strength composites.  This is a
+finite-regulator definition.  A continuum glueball mass is a limit of energy
+differences along a scaling trajectory, if the limit exists.
+
+Let \(\mathcal O_i(t)\), \(i=1,\ldots,m\), be gauge-invariant operators
+projected to a chosen zero-momentum lattice symmetry channel and with vacuum
+expectation subtracted when the channel permits it.  The Euclidean correlation
+matrix is
+\begin{equation}
+  C_{ij}(t)
+  =
+  \langle \mathcal O_i(t)\mathcal O_j(0)\rangle
+  -
+  \langle \mathcal O_i\rangle\langle\mathcal O_j\rangle .
+  \label{eq:lattice-glueball-correlation-matrix}
+\end{equation}
+If \(0=E_0<E_1\le E_2\le\cdots\) are transfer-matrix energies in this channel,
+then the spectral theorem gives
+\begin{equation}
+  C_{ij}(t)
+  =
+  \sum_{n\ge1}
+  Z_i^{(n)}\overline{Z_j^{(n)}}\,\ee^{-aE_n t},
+  \qquad
+  Z_i^{(n)}=\bra{\Omega}\mathcal O_i\ket{n}.
+  \label{eq:lattice-glueball-spectral-matrix}
+\end{equation}
+The integer \(t\) is Euclidean time in lattice units.  The connected
+subtraction removes the vacuum term; without it the scalar \(0^{++}\) channel
+would be dominated by the identity.
+
+\begin{proposition}[Exact finite-basis GEVP extraction]
+\label{prop:lattice-glueball-gevp-exact}
+Assume that, for \(n=1,\ldots,m\), the overlap matrix
+\(Z_i^{(n)}\) is invertible and that the operator subspace has zero overlap
+with all higher states.  Then the generalized eigenvalue problem
+\begin{equation}
+  C(t)v_n(t,t_0)
+  =
+  \lambda_n(t,t_0)C(t_0)v_n(t,t_0),
+  \qquad t>t_0,
+  \label{eq:lattice-glueball-gevp}
+\end{equation}
+has eigenvalues
+\begin{equation}
+  \lambda_n(t,t_0)=\ee^{-aE_n(t-t_0)}.
+  \label{eq:lattice-glueball-gevp-eigenvalues}
+\end{equation}
+With higher-state overlap present, the same formula is the leading term in a
+large-\((t-t_0)\) expansion whose error is controlled by the first omitted
+energy gap and by the conditioning of the chosen operator basis.
+\end{proposition}
+
+\begin{proof}
+Under the stated finite-basis hypothesis,
+\[
+  C(t)=Z\,D(t)\,Z^\dagger,\qquad
+  D(t)=\operatorname{diag}(\ee^{-aE_1t},\ldots,\ee^{-aE_mt}).
+\]
+Since \(Z\) is invertible,
+\[
+  C(t_0)^{-1}C(t)
+  =
+  (Z^\dagger)^{-1}D(t_0)^{-1}D(t)Z^\dagger .
+\]
+This matrix is similar to \(D(t_0)^{-1}D(t)\), hence has eigenvalues
+\(\ee^{-aE_n(t-t_0)}\).  If higher states are present, write the correlation
+matrix as this finite-rank part plus a positive remainder bounded by the first
+omitted exponential in the chosen channel.  Standard perturbation estimates
+for generalized eigenvalues then give the stated controlled leading behavior
+whenever \(C(t_0)\) is well conditioned.
+\end{proof}
+
+The continuum spin labels \(J^{PC}\) are recovered only after the cubic
+lattice irreducible representations have been compared across lattice
+spacings and volumes.  The following table records the operator meaning of the
+lowest pure-glue channels; it is not a phenomenological assignment to
+QCD-with-quarks resonances.
+\[
+\begin{array}{c|c|c}
+\text{continuum channel} & \text{typical continuum operator} &
+\text{cubic-lattice channel} \\
+\hline
+0^{++} &
+\operatorname{tr}(F_{\mu\nu}F_{\mu\nu}) &
+A_1^{++} \\
+2^{++} &
+\operatorname{tr}\!\left(F_{\mu\alpha}F_{\nu\alpha}
+-\frac14\delta_{\mu\nu}F_{\rho\sigma}F_{\rho\sigma}\right) &
+E^{++}\oplus T_2^{++} \\
+0^{-+} &
+\operatorname{tr}(F_{\mu\nu}\widetilde F_{\mu\nu}) &
+A_1^{-+} \\
+0^{+-} &
+\text{multi-loop CP-odd scalar combinations} &
+A_1^{+-} \\
+1^{+-},\,1^{-+} &
+\text{hypercubic vector loop combinations} &
+T_1^{+-},\,T_1^{-+}
+\end{array}
+\]
+At nonzero lattice spacing the cubic irreducible representation is the exact
+label.  A continuum spin claim is supported when the expected degeneracies
+among cubic irreducibles emerge under continuum extrapolation; for example a
+continuum \(J=2\) state splits into the \(E\) and \(T_2\) representations of
+the cubic group at finite \(a\).
+
+\begin{definition}[Pure-glue spectral continuum datum]
+\label{def:pure-glue-spectral-continuum-datum}
+A pure-glue spectral continuum datum consists of:
+\begin{enumerate}
+  \item a choice of gauge group and global form;
+  \item a reflection-positive lattice action and scaling trajectory;
+  \item a basis of gauge-invariant operators in each cubic \(PC\) channel,
+  together with smearing or blocking maps stated as regulator definitions;
+  \item finite-volume energies extracted from
+  \eqref{eq:lattice-glueball-gevp};
+  \item continuum and infinite-volume extrapolations of dimensionless ratios
+  such as \(M_{J^{PC}}/\sqrt\sigma\) or \(M_{J^{PC}}/\Lambda_{\overline{\rm MS}}\);
+  \item a systematic-error budget for excited-state contamination, volume
+  effects, lattice-spacing artifacts, topological freezing, and operator-basis
+  conditioning.
+\end{enumerate}
+Only after these data are stated is a numerical glueball spectrum a statement
+about pure Yang--Mills theory rather than about a particular finite lattice
+calculation.
+\end{definition}
+
+The static flux-tube sector is extracted from rectangular Wilson loops or
+from Polyakov-line correlators.  For two static sources in a representation
+\(R\), the finite-regulator static energy is
+\begin{equation}
+  E_R(L)
+  =
+  -\lim_{T\to\infty}\frac1{aT}
+  \log
+  \langle W_R(L,T)\rangle_{\rm conn},
+  \label{eq:lattice-static-energy-from-wilson-loop}
+\end{equation}
+when the limit exists.  The string tension in a stable center-charge sector is
+\[
+  \sigma_R=\lim_{L\to\infty}\frac{E_R(L)}{L}.
+\]
+Chapter~\ref{ch:volume-ii-19} develops the long-string effective expansion:
+the Luscher term, excited open and closed flux-tube levels, \(k\)-string
+sectors, baryonic flux networks, and the distinction between winding closed
+flux tubes and contractible glueball states.  The role of the present chapter
+is the regulator-level extraction: the operators are well-defined finite
+Haar-integral observables, and the continuum question is whether their
+dimensionless spectral data converge.
+
+\begin{proposition}[Large-\(N\) glueball width counting]
+\label{prop:lattice-glueball-large-n-width}
+Normalize single-trace glueball operators by
+\[
+  \mathcal O_N(x)=\frac1{N}\operatorname{tr}\mathcal P(F,D)(x),
+\]
+so that connected two-point functions are \(O(N^0)\) in the confining
+large-\(N\) scaling regime.  If the large-\(N\) expansion has isolated
+single-glueball poles with LSZ residues of order one, then connected
+\(k\)-glueball amplitudes scale as \(N^{2-k}\).  In particular a three-glueball
+coupling is \(O(N^{-1})\), and a glueball decay width into two glueballs is
+\(O(N^{-2})\), when the decay is kinematically allowed.
+\end{proposition}
+
+\begin{proof}
+The double-line expansion for connected correlators of \(k\) normalized
+single-trace insertions has leading sphere topology with \(k\) marked
+boundaries, hence \(N^{2-k}\).  Isolated poles with order-one residues do not
+change the \(N\)-power when the external legs are amputated.  A decay width is
+quadratic in the on-shell three-point coupling and includes no compensating
+positive power of \(N\) in the density of a fixed number of color-singlet
+final states, so it is \(O(N^{-2})\).
+\end{proof}
+
+None of the preceding statements proves the four-dimensional continuum
+existence and mass-gap theorem for Yang--Mills theory.  They give the precise
+finite-regulator and continuum-extrapolation language in which the expected
+mass gap, glueball spectrum, and confining flux-string data are formulated.
+The rigorous construction problem remains the one stated at the end of this
+chapter: produce a continuum local quantum field theory, prove positivity and
+locality after reconstruction, and prove a strictly positive lowest
+color-singlet excitation above the vacuum.
+
 \section[Theta-Term and Lattice Topology]{The \(\theta\)-Term and Lattice Topology}
 
 For a smooth continuum \(SU(N)\) connection on a closed four-manifold,

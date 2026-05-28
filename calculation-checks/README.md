@@ -816,6 +816,11 @@ Current checks:
   excited-level expansion coefficients with closed-string level matching, and
   the displayed baryonic \(Y\)-string Steiner lengths in the equilateral and
   \(120^\circ\)-threshold cases.
+- `qcd_glueball_spectrum_checks.py`: exact finite checks for the pure
+  Yang--Mills glueball-spectrum extraction section, including the exact
+  generalized-eigenvalue problem in a finite two-state subspace, large-\(N\)
+  glueball width power counting, and the cubic-group dimension split of a
+  continuum \(J=2\) channel.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the
