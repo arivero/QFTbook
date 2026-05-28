@@ -443,6 +443,51 @@ def check_quarkonium_spin_centroid() -> None:
     )
 
 
+def check_coulombic_quarkonium_ground_state() -> None:
+    # For H=-nabla^2/m-alpha/r and psi=exp(-kappa r),
+    # nabla^2 psi=(kappa^2-2 kappa/r)psi away from the origin.
+    # The 1/r term cancels when kappa=m alpha/2, and E=-kappa^2/m.
+    mass = Fraction(11, 3)
+    alpha = Fraction(5, 7)
+    kappa = mass * alpha / 2
+    inverse_r_coefficient = 2 * kappa / mass - alpha
+    energy = -(kappa**2) / mass
+    assert_equal("Coulombic 1S inverse-r cancellation", inverse_r_coefficient, Fraction(0))
+    assert_equal("Coulombic 1S energy coefficient", energy, -mass * alpha**2 / 4)
+
+    # After stripping the displayed pi factor, |psi(0)|^2=kappa^3/pi
+    # equals (m alpha)^3/(8 pi).
+    psi_origin_without_pi = kappa**3
+    assert_equal(
+        "Coulombic 1S wavefunction at origin",
+        psi_origin_without_pi,
+        (mass * alpha) ** 3 / 8,
+    )
+
+
+def check_linear_elastic_pole_coordinate() -> None:
+    # With K^{-1}=A(s-M^2) and second-sheet denominator K^{-1}+i rho,
+    # the pole is s_*=M^2-i rho/A.  The narrow width coordinate satisfies
+    # Im s_*=-M Gamma at leading order.
+    slope = Fraction(13, 5)
+    rho = Fraction(7, 11)
+    mass = Fraction(17, 4)
+    pole_imaginary_part = -rho / slope
+    width = rho / (slope * mass)
+    assert_equal("linear elastic pole imaginary part", pole_imaginary_part, -mass * width)
+
+    # A quadratic correction B(s-M^2)^2 evaluated on the leading displacement
+    # is of order B rho^2/A^2, matching the monograph remainder scale.
+    curvature = Fraction(3, 8)
+    leading_shift = -rho / slope
+    quadratic_remainder_scale = curvature * leading_shift**2
+    assert_equal(
+        "linear elastic pole quadratic scale",
+        quadratic_remainder_scale,
+        curvature * rho**2 / slope**2,
+    )
+
+
 def check_nucleon_sachs_coordinate_transform() -> None:
     tau = Fraction(3, 8)
     f1 = Fraction(5, 7)
@@ -612,6 +657,8 @@ def main() -> None:
     check_shallow_bound_effective_range_algebra()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
+    check_coulombic_quarkonium_ground_state()
+    check_linear_elastic_pole_coordinate()
     check_nucleon_sachs_coordinate_transform()
     check_stable_current_three_point_ratio()
     check_forward_compton_baldin_prefactor()

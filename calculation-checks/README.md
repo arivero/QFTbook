@@ -842,7 +842,9 @@ Current checks:
   convention that maps finite-volume energies to a second-sheet pole
   equation, together with the coupled-channel determinant reduction,
   sheet-sign bookkeeping, and the quarkonium spin-centroid algebra for fine
-  and hyperfine splittings, plus the nucleon Sachs Dirac--Pauli coordinate
+  and hyperfine splittings, the Coulombic \(1S\) pNRQCD energy and
+  wavefunction-at-origin normalization, and the linear elastic-pole
+  mass-width coordinate, plus the nucleon Sachs Dirac--Pauli coordinate
   transform, the stable-current three-point extraction ratio with
   excited-state suppression factors, the forward Compton/Baldin dispersion
   prefactor, and the GDH and forward spin-polarizability prefactors in the

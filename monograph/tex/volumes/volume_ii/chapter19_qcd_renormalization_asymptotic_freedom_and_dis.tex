@@ -3749,6 +3749,83 @@ so the product of the exchange kernel \(g^2/|\mathbf q|^2\) with the singlet
 color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
 \end{proof}
 
+\begin{proposition}[Leading Coulombic \(1S\) quarkonium level]
+\label{prop:qcd-coulombic-quarkonium-one-s}
+Assume a weak-coupling pNRQCD chart in which the spin-independent singlet
+Hamiltonian is truncated to
+\begin{equation}
+  H_C
+  =
+  -\frac{\nabla_{\mathbf r}^2}{m_Q}
+  -\frac{\alpha_C}{r},
+  \qquad
+  \alpha_C:=\frac{g^2C_F}{4\pi},
+  \qquad r=|\mathbf r|.
+  \label{eq:qcd-coulombic-pnrqcd-hamiltonian}
+\end{equation}
+Here \(m_Q\) is the heavy-quark mass coordinate in the same short-distance
+scheme as the potential coordinate.  The normalized \(1S\) eigenfunction
+\begin{equation}
+  \psi_{1S}(\mathbf r)
+  =
+  \left(\frac{\kappa^3}{\pi}\right)^{1/2}\ee^{-\kappa r},
+  \qquad
+  \kappa:=\frac{m_Q\alpha_C}{2},
+  \label{eq:qcd-coulombic-one-s-wavefunction}
+\end{equation}
+has energy
+\begin{equation}
+  E_{1S}^{(0)}
+  =
+  -\frac{m_Q\alpha_C^2}{4},
+  \qquad
+  |\psi_{1S}(0)|^2=
+  \frac{(m_Q\alpha_C)^3}{8\pi}.
+  \label{eq:qcd-coulombic-one-s-energy-origin}
+\end{equation}
+The corresponding leading spin-averaged quarkonium mass coordinate is
+\[
+  M_{1S}^{(0)}=2m_Q+E_{1S}^{(0)}
+\]
+before the additive mass--potential rearrangements of
+Section~\ref{sec:qcd-heavy-mass-static-energy} and before ultrasoft,
+relativistic, and spin-dependent corrections are included.
+\end{proposition}
+
+\begin{proof}
+For \(r>0\),
+\[
+  \nabla^2\ee^{-\kappa r}
+  =
+  \left(\kappa^2-\frac{2\kappa}{r}\right)\ee^{-\kappa r}.
+\]
+Thus
+\[
+  H_C\ee^{-\kappa r}
+  =
+  \left[
+    -\frac{\kappa^2}{m_Q}
+    +
+    \left(\frac{2\kappa}{m_Q}-\alpha_C\right)\frac1r
+  \right]\ee^{-\kappa r}.
+\]
+With \(\kappa=m_Q\alpha_C/2\) the \(1/r\) term cancels and the eigenvalue is
+\(-\kappa^2/m_Q=-m_Q\alpha_C^2/4\).  The normalization follows from
+\[
+  4\pi
+  \left(\frac{\kappa^3}{\pi}\right)
+  \int_0^\infty r^2\ee^{-2\kappa r}\,\dd r
+  =
+  4\kappa^3\frac{2}{(2\kappa)^3}=1,
+\]
+and the value at the origin is the square of the normalization constant.
+The mass formula is then the definition of the spin-averaged singlet energy
+coordinate in this leading Hamiltonian.  This calculation does not define the
+physical charmonium or bottomonium spectrum by itself: it computes the first
+term in a declared pNRQCD expansion whose mass scheme, matching scale, and
+omitted operators must be specified.
+\end{proof}
+
 \begin{proposition}[Quarkonium fine and hyperfine spin algebra]
 \label{prop:qcd-quarkonium-spin-centroid}
 Fix a quarkonium radial level and orbital angular momentum \(L\) in a
@@ -5117,6 +5194,145 @@ constants and low-energy crossing constraints.  The same logic governs
 Roy--Steiner equations for \(\pi K\), \(\pi N\), and related channels, with
 unequal masses and additional crossed-channel partial waves changing the
 kernel construction but not the Cauchy-crossing-projection logic.
+\end{remark}
+
+\begin{definition}[Concrete light-meson pole chart]
+\label{def:qcd-concrete-light-meson-pole-chart}
+A concrete light-meson pole statement in this chapter consists of a
+color-singlet channel, a partial wave, a reconstruction method, and a
+sheet-labeled pole or stable mass.  The minimal chart used for the examples
+below is:
+\begin{enumerate}[label=(\roman*)]
+  \item \(\pi,K,\eta,\eta'\).  The QCD channel is the pseudoscalar flavor
+  sector.  The amplitude coordinate is a stable mass, together with mixing
+  coordinates where appropriate.  The controlled route uses chiral effective
+  theory matched to QCD, lattice masses, and the anomaly constraints of
+  Chapter~\ref{ch:volume-ii-20}.
+  \item \(\rho\).  The QCD channel is \(I=1\), \(\ell=1\) \(\pi\pi\).  The
+  amplitude coordinate is the second-sheet pole of \(t_1^1(s)\).  The
+  controlled route is Roy input or finite-volume \(P\)-wave \(\pi\pi\)
+  quantization followed by analytic continuation.
+  \item \(f_0(500)\).  The QCD channel is \(I=0\), \(\ell=0\) \(\pi\pi\).
+  The amplitude coordinate is a broad second-sheet pole of \(t_0^0(s)\).  The
+  controlled route is Roy input with subtraction constants and correlated
+  high-energy input.
+  \item \(K^\ast\).  The QCD channel is \(I=\frac12\), \(P\)-wave \(\pi K\).
+  The amplitude coordinate is the second-sheet pole of the unequal-mass
+  partial wave.  The controlled route is Roy--Steiner input or finite-volume
+  \(\pi K\) quantization.
+  \item \(K_0^\ast\) channel.  The QCD channel is \(I=\frac12\), \(S\)-wave
+  \(\pi K\).  The amplitude coordinate is nearby pole data, often broad.  The
+  controlled route is Roy--Steiner input with explicit treatment of inelastic
+  and left-hand input.
+  \item Hybrid or exotic \(1^{-+}\) channels.  The QCD channel is a source
+  chart containing \(q\bar qF\) or Wilson-line operators.  The amplitude
+  coordinate is pole data plus source-overlap and pole-motion coordinates.
+  The controlled route is lattice GEVP followed by finite-volume scattering
+  reconstruction.
+\end{enumerate}
+The entries are not model assignments.  They are instructions for which QCD
+operator sector, partial wave, analytic sheet, and reconstruction theorem must
+be supplied before the label denotes a spectroscopic output.
+\end{definition}
+
+\begin{proposition}[Linear elastic pole coordinate near a narrow vector
+resonance]
+\label{prop:qcd-linear-elastic-pole-coordinate}
+Consider a one-channel elastic partial wave in the normalization
+\[
+  t^{(I)}(s)=\frac{1}{K^{-1}(s)-\ii\rho(s)},
+  \qquad
+  t^{(II)}(s)=\frac{1}{K^{-1}(s)+\ii\rho(s)}.
+\]
+Let \(M_0^2\) be a real point in the elastic interval such that
+\[
+  K^{-1}(M_0^2)=0,\qquad
+  A:=\left.\frac{\dd K^{-1}}{\dd s}\right|_{M_0^2}>0,
+  \qquad
+  \rho_0:=\rho(M_0^2)>0,
+\]
+and suppose that, in a neighborhood whose size is small compared with the
+nearest omitted singularity,
+\[
+  K^{-1}(s)=A(s-M_0^2)+O((s-M_0^2)^2),
+  \qquad
+  \rho(s)=\rho_0+O(s-M_0^2).
+\]
+Then the adjacent-sheet pole in this linearized chart is
+\begin{equation}
+  s_\ast=M_0^2-\ii\,\frac{\rho_0}{A}
+  +O\!\left(\frac{\rho_0^2}{A^2}\,
+  \sup |(K^{-1})''|+\frac{\rho_0}{A}\sup|\rho'|\right),
+  \label{eq:qcd-linear-elastic-pole-coordinate}
+\end{equation}
+where the suprema are taken on the same neighborhood.  If the pole is
+parametrized by
+\[
+  \sqrt{s_\ast}=M_\ast-\frac{\ii}{2}\Gamma_\ast
+\]
+and the pole is narrow enough that
+\(|s_\ast-M_0^2|\ll M_0^2\), then
+\begin{equation}
+  M_\ast=M_0+O(\Gamma_\ast^2/M_0),
+  \qquad
+  \Gamma_\ast=\frac{\rho_0}{A M_0}
+  +O(\rho_0^2/A^2M_0^3).
+  \label{eq:qcd-linear-elastic-width-coordinate}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+In the exactly linear and constant approximation the second-sheet pole
+condition is
+\[
+  K^{-1}(s_\ast)+\ii\rho(s_\ast)=0
+  \quad\Longrightarrow\quad
+  A(s_\ast-M_0^2)+\ii\rho_0=0,
+\]
+which gives \(s_\ast=M_0^2-\ii\rho_0/A\).  The displayed remainder follows
+by substituting
+\[
+  s_\ast=M_0^2-\ii\rho_0/A+\Delta
+\]
+into the full denominator and solving once for \(\Delta\) by Taylor's theorem
+on the neighborhood where the derivative of
+\(K^{-1}+\ii\rho\) remains bounded away from zero.  This is an ordinary
+one-complex-variable implicit-function estimate; its small parameters are
+the quadratic variation of \(K^{-1}\) and the variation of the phase-space
+factor across the pole displacement.
+
+Finally,
+\[
+  (M_\ast-\ii\Gamma_\ast/2)^2
+  =
+  M_\ast^2-\frac{\Gamma_\ast^2}{4}-\ii M_\ast\Gamma_\ast.
+\]
+Comparing the imaginary part with
+\(\operatorname{Im}s_\ast=-\rho_0/A+O(\rho_0^2/A^2M_0^2)\) gives
+\eqref{eq:qcd-linear-elastic-width-coordinate}; the real part then gives the
+stated correction to \(M_\ast\).  The proof is only a coordinate
+linearization of the pole equation.  It is appropriate for a narrow
+\(\rho\)-type vector pole in an elastic window; it is not appropriate for a
+broad scalar such as the \(f_0(500)\), where the pole coordinate itself, not
+a real-axis mass and width pair, is the invariant output.
+\end{proof}
+
+\begin{remark}[How the chart is used]
+For the \(\rho\), one may use the \(I=1\), \(\ell=1\) entry of
+Definition~\ref{def:qcd-concrete-light-meson-pole-chart} and, when the
+elastic window and narrowness assumptions are adequate, the linear pole
+coordinate of Proposition~\ref{prop:qcd-linear-elastic-pole-coordinate}.
+For \(f_0(500)\), the same one-channel formula is not the correct primary
+language: the broad pole is obtained by solving the analytically continued
+Roy equations for \(t_0^0(s)\).  For \(\pi K\) resonances the unequal-mass
+Roy--Steiner construction above fixes the kinematics and the crossing input.
+For near-threshold exotic candidates, the effective-range and pole-motion
+charts of
+Definition~\ref{def:qcd-controlled-pole-motion-chart} and
+Proposition~\ref{prop:qcd-shallow-bound-state-effective-range-chart} specify
+what is meant by a molecular or compact coordinate.  In every case the QCD
+statement is a pole or a stable mass extracted from a declared operator and
+regulator setup.
 \end{remark}
 
 \begin{definition}[Unequal-mass elastic kinematics]
