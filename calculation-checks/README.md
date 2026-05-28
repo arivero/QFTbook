@@ -847,7 +847,8 @@ Current checks:
   symmetric-space Lax flatness polynomials and their
   equation-of-motion/Maurer--Cartan systems, the Polyakov--Wiegmann boundary
   coefficient in the chapter's WZ normalization, sample WZW central charges,
-  nonabelian-bosonization central-charge bookkeeping, the
+  nonabelian-bosonization central-charge bookkeeping, the projective-model
+  crossing tensors and \(V\otimes V^\vee\) singlet/adjoint projectors, the
   \(SU(N)\) sine-mass/fusion-angle and rational-matrix bootstrap identities,
   the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
   principal-chiral gamma-function scalar unitarity ledgers, the supersphere,

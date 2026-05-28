@@ -4,9 +4,10 @@
 The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
 split, the Polyakov-Wiegmann WZ coefficient, WZW central charges,
 nonabelian-bosonization central-charge
-bookkeeping, the SU(N) sine-mass/fusion-angle and rational-matrix bootstrap
-blocks, the supertarget one-loop coefficient ledgers, and the curvature and
-one-loop Ricci-flow closure formulae for the sausage metric used in Volume VI.
+bookkeeping, the projective-model crossing tensors, the SU(N)
+sine-mass/fusion-angle and rational-matrix bootstrap blocks, the supertarget
+one-loop coefficient ledgers, and the curvature and one-loop Ricci-flow
+closure formulae for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
@@ -165,6 +166,84 @@ def op23(two_body: np.ndarray, n: int) -> np.ndarray:
 def op13(two_body: np.ndarray, n: int) -> np.ndarray:
     swap23 = op23(flip(n), n)
     return swap23 @ op12(two_body, n) @ swap23
+
+
+def projective_annihilation(n: int) -> np.ndarray:
+    matrix = np.zeros((n * n, n * n), dtype=complex)
+    for i in range(n):
+        for j in range(n):
+            input_index = i * n + j
+            if i == j:
+                for m in range(n):
+                    matrix[m * n + m, input_index] = 1.0
+    return matrix
+
+
+def check_projective_crossing_tensors() -> None:
+    for n in (2, 3, 5):
+        identity = np.eye(n * n, dtype=complex)
+        permutation = flip(n)
+        annihilation = projective_annihilation(n)
+        assert_close(
+            f"projective annihilation idempotent N={n}",
+            np.max(np.abs(annihilation @ annihilation - n * annihilation)),
+            0.0,
+        )
+
+        singlet_projector = annihilation / n
+        adjoint_projector = identity - singlet_projector
+        assert_close(
+            f"projective singlet projector N={n}",
+            np.max(np.abs(singlet_projector @ singlet_projector - singlet_projector)),
+            0.0,
+        )
+        assert_close(
+            f"projective adjoint projector N={n}",
+            np.max(np.abs(adjoint_projector @ adjoint_projector - adjoint_projector)),
+            0.0,
+        )
+        assert_close(
+            f"projective projector orthogonality N={n}",
+            np.max(np.abs(singlet_projector @ adjoint_projector)),
+            0.0,
+        )
+
+        a, b = 1.7, -0.4
+        vv_matrix = a * identity + b * permutation
+        symmetric = np.zeros(n * n, dtype=complex)
+        antisymmetric = np.zeros(n * n, dtype=complex)
+        symmetric[0 * n + 1] = 1.0
+        symmetric[1 * n + 0] = 1.0
+        antisymmetric[0 * n + 1] = 1.0
+        antisymmetric[1 * n + 0] = -1.0
+        assert_close(
+            f"projective VV symmetric eigenvalue N={n}",
+            np.max(np.abs(vv_matrix @ symmetric - (a + b) * symmetric)),
+            0.0,
+        )
+        assert_close(
+            f"projective VV antisymmetric eigenvalue N={n}",
+            np.max(np.abs(vv_matrix @ antisymmetric - (a - b) * antisymmetric)),
+            0.0,
+        )
+
+        vbar_matrix = a * identity + b * annihilation
+        adjoint_vector = np.zeros(n * n, dtype=complex)
+        adjoint_vector[0 * n + 0] = 1.0
+        adjoint_vector[1 * n + 1] = -1.0
+        singlet_vector = np.zeros(n * n, dtype=complex)
+        for m in range(n):
+            singlet_vector[m * n + m] = 1.0
+        assert_close(
+            f"projective VbarV adjoint eigenvalue N={n}",
+            np.max(np.abs(vbar_matrix @ adjoint_vector - a * adjoint_vector)),
+            0.0,
+        )
+        assert_close(
+            f"projective VbarV singlet eigenvalue N={n}",
+            np.max(np.abs(vbar_matrix @ singlet_vector - (a + n * b) * singlet_vector)),
+            0.0,
+        )
 
 
 def check_su_n_sine_mass_fusion() -> None:
@@ -383,6 +462,7 @@ def main() -> None:
     check_polyakov_wiegmann_coefficient()
     check_wzw_central_charge_examples()
     check_nonabelian_bosonization_central_charge()
+    check_projective_crossing_tensors()
     check_su_n_sine_mass_fusion()
     check_su_n_rational_block()
     check_scalar_cdd_and_su_n_gamma_ledgers()
