@@ -39,13 +39,14 @@ Current checks:
   Jarlskog rephasing cancellation, the tree-level \(\rho\)-identity,
   the Higgs mass coefficient, \(B-L\) anomaly bookkeeping with and
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
-  tree-level singlet-neutrino matching, strong-CP phase invariance,
-  one-loop gauge beta-function coefficients, GUT hypercharge-rescaling
-  conversion, the top-Higgs one-loop subsystem coefficients, and basic
-  oblique-parameter identities for the \(S,T,U\) source-chart coordinates.
-  It also checks the muon \(g-2\) Schwinger coefficient, the leading
-  electroweak coefficient normalization, and the HVP Feynman-parameter
-  kernel identity used in the hybrid-observable section.
+  tree-level singlet-neutrino matching, the dimension-six Warsaw-type
+  one-generation class counts and field-content dimensions, strong-CP phase
+  invariance, one-loop gauge beta-function coefficients, GUT
+  hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
+  coefficients, and basic oblique-parameter identities for the \(S,T,U\)
+  source-chart coordinates.  It also checks the muon \(g-2\) Schwinger
+  coefficient, the leading electroweak coefficient normalization, and the HVP
+  Feynman-parameter kernel identity used in the hybrid-observable section.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional

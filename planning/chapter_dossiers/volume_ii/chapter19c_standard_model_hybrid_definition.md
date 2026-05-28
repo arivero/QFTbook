@@ -40,6 +40,11 @@
   local operators, derives the Weinberg-operator neutrino mass normalization,
   and gives the tree-level singlet-neutrino matching coordinate
   \(C_5/\Lambda=Y_\nu M^{-1}Y_\nu^T\).
+- Defines the dimension-six quotient by total derivatives and
+  equation-of-motion field-coordinate changes, lists the Warsaw-type
+  baryon-number preserving ledger by operator class, records the
+  baryon-violating dimension-six classes, and proves field-content exhaustion
+  from engineering dimensions.
 - Defines the invariant strong-CP coordinate
   \(\overline\theta=\theta_3+\arg\det(M_uM_d)\) with the massless-quark caveat.
 - Derives the one-loop gauge beta coefficients
@@ -80,7 +85,8 @@
   charges from \(Q=T^3+Y\), the \(\mathbb Z_6\) kernel generator, CKM
   parameter counts, Jarlskog rephasing cancellation, \(m_h^2=2\lambda v^2\),
   \(\rho_{\rm tree}=1\), \(B-L\) anomaly bookkeeping, Weinberg-operator
-  mass normalization, singlet-neutrino tree matching, and strong-CP phase
+  mass normalization, singlet-neutrino tree matching, dimension-six
+  one-generation ledger counts and field-content dimensions, strong-CP phase
   invariance, one-loop gauge beta coefficients, GUT hypercharge conversion,
   top-Higgs subsystem coefficient algebra, and elementary \(S,T,U\)
   source-chart identities, plus the muon \(g-2\) Schwinger coefficient,
@@ -105,21 +111,25 @@
 8. The Weinberg operator and singlet-neutrino matching are EFT coordinate
    statements with declared normalization, not assumptions about the minimal
    datum.
-9. \(\overline\theta\) is the invariant QCD theta/mass-phase coordinate;
+9. Dimension-six SMEFT coefficients are coordinates on a declared quotient of
+   local operators modulo total derivatives and field-coordinate
+   equation-of-motion directions; the ledger is not meaningful without the
+   scheme, flavor, Hermiticity, and baryon-number restrictions.
+10. \(\overline\theta\) is the invariant QCD theta/mass-phase coordinate;
    its empirical smallness is a parameter statement, not a selection
    principle.
-10. The RG equations are source-chart equations in dimensional
+11. The RG equations are source-chart equations in dimensional
    regularization/minimal subtraction; they do not assert a nonperturbative
    electroweak continuum construction or provide an ultraviolet-selection
    principle.
-11. The \(S,T,U\) variables are finite coordinates on the two-point
+12. The \(S,T,U\) variables are finite coordinates on the two-point
    electroweak source chart under analyticity and input-scheme assumptions;
    they do not replace vertex, box, four-fermion, or detector-function data.
-12. The Standard Model is used as a hybrid operational object, not as an
+13. The Standard Model is used as a hybrid operational object, not as an
    assumed complete constructive four-dimensional continuum theorem.
-13. The Fermi operator coefficient is a tree-level matched EFT coefficient;
+14. The Fermi operator coefficient is a tree-level matched EFT coefficient;
    QCD matrix elements and radiative corrections are separate matching data.
-14. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
+15. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
    declared hybrid computation; HVP and HLbL are QCD current-correlator
    inputs, not perturbative QCD expansions.
 

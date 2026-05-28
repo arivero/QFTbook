@@ -360,6 +360,54 @@ def check_muon_gminus_two_hybrid_identities() -> None:
     assert_equal("HVP Feynman-parameter kernel identity", feynman_side, kernel_side)
 
 
+def check_dimension_six_ledger_counts() -> None:
+    bosonic_classes = {
+        "X^3": 4,
+        "H^6": 1,
+        "H^4 D^2": 2,
+        "X^2 H^2": 8,
+    }
+    two_fermion_classes = {
+        "psi^2 H^3": 3,
+        "psi^2 H^2 D": 8,
+        "psi^2 X H": 8,
+    }
+    four_fermion_baryon_preserving_classes = {
+        "LL": 5,
+        "RR": 7,
+        "LR_vector": 8,
+        "LR_scalar_tensor": 5,
+    }
+    assert_equal("dimension-six bosonic one-generation class count", sum(bosonic_classes.values()), 15)
+    assert_equal("dimension-six two-fermion one-generation class count", sum(two_fermion_classes.values()), 19)
+    assert_equal(
+        "dimension-six four-fermion baryon-preserving class count",
+        sum(four_fermion_baryon_preserving_classes.values()),
+        25,
+    )
+    assert_equal(
+        "dimension-six baryon-preserving one-generation Warsaw-type class count",
+        sum(bosonic_classes.values())
+        + sum(two_fermion_classes.values())
+        + sum(four_fermion_baryon_preserving_classes.values()),
+        59,
+    )
+    assert_equal("dimension-six baryon-violating class count", 4, 4)
+
+    field_dimensions = {
+        "X^3": 3 * 2,
+        "H^6": 6 * 1,
+        "H^4 D^2": 4 * 1 + 2 * 1,
+        "X^2 H^2": 2 * 2 + 2 * 1,
+        "psi^2 H^3": 2 * Fraction(3, 2) + 3 * 1,
+        "psi^2 H^2 D": 2 * Fraction(3, 2) + 2 * 1 + 1,
+        "psi^2 X H": 2 * Fraction(3, 2) + 2 + 1,
+        "psi^4": 4 * Fraction(3, 2),
+    }
+    for name, dimension in field_dimensions.items():
+        assert_equal(f"dimension-six field-content dimension for {name}", dimension, 6)
+
+
 def main() -> None:
     check_su3_su3_u1()
     check_su2_su2_u1()
@@ -380,7 +428,8 @@ def main() -> None:
     check_top_higgs_subsystem_coefficients()
     check_oblique_parameter_identities()
     check_muon_gminus_two_hybrid_identities()
-    print("All Standard Model representation, flavor, electroweak, RG, and hybrid-observable checks passed.")
+    check_dimension_six_ledger_counts()
+    print("All Standard Model representation, flavor, SMEFT, electroweak, RG, and hybrid-observable checks passed.")
 
 
 if __name__ == "__main__":
