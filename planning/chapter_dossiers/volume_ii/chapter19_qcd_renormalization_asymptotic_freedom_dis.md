@@ -191,12 +191,15 @@ The chapter must define and derive:
   distributional power-remainder bound, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
-  sum-rule checks, TMDs as soft-subtracted transverse light-ray matrix
-  elements with Collins--Soper rapidity evolution, small-\(q_\perp\)
-  color-singlet TMD factorization data, GPDs as off-forward light-ray matrix
-  elements, GPD polynomiality from local twist-two covariance, logarithmic
-  scaling violation, and the endpoint/large-spin cusp boundary of the DIS
-  factorization statement.
+  sum-rule checks, the small-\(x\) boundary as a regulated Wilson-line dipole
+  problem with a leading BFKL kernel datum, transverse kernel covariance, and
+  the Mellin eigenvalue
+  \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
+  soft-subtracted transverse light-ray matrix elements with Collins--Soper
+  rapidity evolution, small-\(q_\perp\) color-singlet TMD factorization data,
+  GPDs as off-forward light-ray matrix elements, GPD polynomiality from local
+  twist-two covariance, logarithmic scaling violation, and the
+  endpoint/large-spin cusp boundary of the DIS factorization statement.
 
 ## Claim Ledger
 
@@ -378,6 +381,17 @@ The chapter must define and derive:
      distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
      threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
      not consequences of the compact-\(x\) statement.
+22cc. The small-\(x\) boundary is grounded in regulated Wilson-line dipole
+      matrix elements rather than colored parton scattering states.  The
+      leading fixed-coupling BFKL kernel is written with the monograph
+      trace-delta coefficient \(g^2C_A/(8\pi^3)\), equivalently
+      \(\bar\alpha_s=g^2C_A/(4\pi^2)\) multiplying the \(1/(2\pi)\)-normalized
+      transverse integral.  Its dipole kernel measure is invariant under
+      transverse translations, rotations, scalings, and inversion, and its
+      Mellin eigenvalue is
+      \(2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), with
+      \(\chi(1/2)=4\log2\) and the quadratic diffusion coefficient
+      \(-14\zeta(3)\) on the line \(\gamma=1/2+\ii\nu\).
 22d. TMDs are transverse-separated Wilson-line matrix elements with a soft
      subtraction and an independent rapidity renormalization scale.  The
      Collins--Soper kernel is defined by rapidity evolution, its
@@ -468,6 +482,10 @@ The chapter must define and derive:
   collinear EEC coefficient derivation, clarified the status of the result
   relative to the full small-angle light-ray/OPE theorem, and added
   `calculation-checks/energy_correlator_collinear_checks.py`.
+- 2026-05-28 issue #630 small-\(x\) pass: added the regulated dipole datum,
+  gauge-invariance proof, leading-logarithmic BFKL/BK status statement,
+  transverse kernel covariance proof, Mellin-eigenvalue derivation by analytic
+  regularization, and `calculation-checks/qcd_bfkl_small_x_checks.py`.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

@@ -5268,3 +5268,347 @@ in the joint limit \(Q\to\infty\), \(N\to\infty\).  The large-spin logarithm in
 \eqref{eq:qcd-nonsinglet-large-n} is the operator-renormalization side of that
 structure.  The small-\(x\) limit is a different boundary of the same DIS
 observable and is not obtained by continuing the threshold expansion.
+
+\section{\texorpdfstring{Small-\(x\) Boundary, Dipoles, and the BFKL Kernel}
+{Small-x Boundary, Dipoles, and the BFKL Kernel}}
+\label{sec:qcd-small-x-bfkl}
+
+The compact-\(x_B\) factorization datum in
+Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} also does not claim
+uniform control as \(x_B\to0\).  Put
+\[
+  Y:=\log\frac1{x_B},
+\]
+up to a process-dependent finite shift fixed by the chosen rapidity
+factorization scheme.  In the high-energy boundary \(Y\gg1\), powers of
+\(g^2Y\) may compete with powers of \(g^2\).  The leading-logarithmic
+small-\(x\) expansion is therefore not a new definition of QCD and not a
+replacement for the hadronic tensor
+\eqref{eq:hadronic-tensor-definition}.  It is a rapidity factorization of
+regulated Wilson-line matrix elements in a kinematic region where the
+ordinary twist-two evolution at fixed \(x_B\) is not uniform.
+
+Let \(\mathbf x,\mathbf y,\mathbf z\in\mathbb R^2\) denote transverse
+coordinates, and set
+\[
+  r_{xy}:=|\mathbf x-\mathbf y|.
+\]
+The leading transverse kernel is
+\begin{equation}
+  M_{\mathbf x\mathbf y\mathbf z}
+  :=
+  \frac{r_{xy}^2}{r_{xz}^2 r_{zy}^2}.
+  \label{eq:qcd-dipole-transverse-kernel}
+\end{equation}
+The singularities at \(\mathbf z=\mathbf x\) and
+\(\mathbf z=\mathbf y\) are not meaningful as separate real-emission
+probabilities.  They are defined only after the virtual subtraction in the
+evolution equation, or after an equivalent rapidity regulator and finite-part
+map have been specified.
+
+\begin{definition}[Regulated small-\(x\) dipole datum]
+\label{def:qcd-small-x-dipole-datum}
+A small-\(x\) dipole datum for a color-singlet probe consists of:
+\begin{enumerate}
+  \item a QCD regulator \(\mathcal R_\epsilon\) preserving background gauge
+  covariance, or a gauge-fixed BV regulator with the quantum master equation;
+  \item two nearly lightlike Wilson-line directions, a rapidity regulator
+  \(\rho\), and a finite rapidity separation \(Y\);
+  \item fundamental Wilson transporters
+  \(U_{\rho,Y}(\mathbf x)\) and \(U_{\rho,Y}(\mathbf y)\), with transverse
+  closures or boundary conditions that make the residual endpoint gauge
+  transformations explicit;
+  \item the renormalized color dipole matrix element
+  \begin{equation}
+    S_Y(\mathbf x,\mathbf y)
+    :=
+    \frac1{N_c}
+    \left\langle
+      \operatorname{tr}_{\square}
+      \bigl[
+        U_{\rho,Y}(\mathbf x)U_{\rho,Y}(\mathbf y)^\dagger
+      \bigr]
+    \right\rangle_{\epsilon,\rho,Y}^{\rm ren},
+    \qquad
+    N_Y(\mathbf x,\mathbf y):=1-S_Y(\mathbf x,\mathbf y);
+    \label{eq:qcd-small-x-dipole-definition}
+  \end{equation}
+  \item a finite-part prescription for ultraviolet endpoint divergences,
+  lightlike or near-lightlike rapidity divergences, and possible cusp
+  divergences introduced by the chosen closures.
+\end{enumerate}
+The quantity \(S_Y\) is a Wilson-line matrix element.  Its connection to a
+measured small-\(x\) structure function is an additional high-energy
+factorization statement with its own impact factor, rapidity subtraction, and
+power-remainder data.
+\end{definition}
+
+\begin{proposition}[Gauge invariance of the dipole matrix element]
+\label{prop:qcd-small-x-dipole-gauge-invariance}
+At finite regulator, the trace in
+\eqref{eq:qcd-small-x-dipole-definition} is gauge invariant after the
+endpoint closures or boundary conditions of
+Definition~\ref{def:qcd-small-x-dipole-datum} are included.  A background
+gauge-covariant finite-part prescription therefore gives a gauge-invariant
+renormalized dipole matrix element.
+\end{proposition}
+
+\begin{proof}
+Each Wilson transporter transforms by multiplication with the gauge
+transformation at its two endpoints.  Along a closed contour the adjacent
+endpoint factors cancel and the residual base-point factor is removed by the
+cyclicity of \(\operatorname{tr}_{\square}\).  If the regulated Wilson lines
+are represented instead as open lines ending at a rapidity boundary, the
+boundary condition is part of the datum and supplies the same endpoint
+cancellation.  The finite-part map changes only regulator and scale
+coordinates and is assumed background gauge covariant; hence it cannot
+introduce an uncanceled color index.
+\end{proof}
+
+\begin{hypothesis}[Leading-logarithmic dipole/BFKL evolution datum]
+\label{hyp:qcd-leading-log-small-x-datum}
+In a fixed-coupling leading-logarithmic rapidity scheme, the linearized
+color-singlet dipole amplitude obeys
+\begin{equation}
+  \partial_Y N_Y(\mathbf x,\mathbf y)
+  =
+  \frac{g^2 C_A}{8\pi^3}
+  \int_{\mathbb R^2}\dd^2\mathbf z\,
+  M_{\mathbf x\mathbf y\mathbf z}
+  \bigl[
+    N_Y(\mathbf x,\mathbf z)
+    +N_Y(\mathbf z,\mathbf y)
+    -N_Y(\mathbf x,\mathbf y)
+  \bigr],
+  \label{eq:qcd-coordinate-bfkl-equation}
+\end{equation}
+where \(C_A=2N_c\) in the trace convention of
+\eqref{eq:qcd-casimir-definitions}.  Equivalently, with
+\[
+  \bar\alpha_{\rm s}:=\frac{g^2C_A}{4\pi^2}
+  =
+  \frac{g^2N_c}{2\pi^2},
+\]
+the right-hand side is
+\[
+  \bar\alpha_{\rm s}\,
+  \frac1{2\pi}
+  \int\dd^2\mathbf z\,M_{\mathbf x\mathbf y\mathbf z}[\cdots].
+\]
+In the common half-trace convention,
+\(g_{\rm ht}^2=2g^2\) and \(C_A^{\rm ht}=N_c\), so the product
+\(g^2C_A=g_{\rm ht}^2C_A^{\rm ht}\) and the kernel coefficient are unchanged.
+
+For a large-\(N_c\) dipole-factorization truncation of the Balitsky hierarchy,
+the corresponding nonlinear equation for \(N_Y=1-S_Y\) has the additional
+term
+\[
+  -\frac{g^2 C_A}{8\pi^3}
+  \int\dd^2\mathbf z\,
+  M_{\mathbf x\mathbf y\mathbf z}\,
+  N_Y(\mathbf x,\mathbf z)N_Y(\mathbf z,\mathbf y).
+  \label{eq:qcd-bk-nonlinear-term}
+\]
+At finite \(N_c\), the exact Wilson-line rapidity hierarchy contains higher
+multi-trace operators; replacing them by the product in
+\eqref{eq:qcd-bk-nonlinear-term} is an additional closure assumption, not a
+theorem about continuum QCD.
+\end{hypothesis}
+
+\begin{proposition}[Conformal covariance of the transverse kernel]
+\label{prop:qcd-bfkl-kernel-conformal-covariance}
+The measure
+\[
+  \dd^2\mathbf z\,M_{\mathbf x\mathbf y\mathbf z}
+\]
+is invariant under translations, rotations, uniform scalings, and inversion
+\(\mathbf u\mapsto\mathbf u/|\mathbf u|^2\), whenever the transformed points
+avoid the inversion center.  Thus the leading fixed-coupling transverse
+kernel is covariant under the real Mobius transformations generated by these
+maps.
+\end{proposition}
+
+\begin{proof}
+Translations and rotations preserve all distances and \(\dd^2\mathbf z\).
+Under the scaling \(\mathbf u\mapsto\lambda\mathbf u\), the kernel
+\(M_{\mathbf x\mathbf y\mathbf z}\) scales as \(\lambda^{-2}\), while
+\(\dd^2\mathbf z\) scales as \(\lambda^2\).
+
+For inversion, write \(\mathbf u'=\mathbf u/|\mathbf u|^2\).  The Euclidean
+distance and area element transform as
+\[
+  |\mathbf u'-\mathbf v'|^2
+  =
+  \frac{|\mathbf u-\mathbf v|^2}
+       {|\mathbf u|^2|\mathbf v|^2},
+  \qquad
+  \dd^2\mathbf z'
+  =
+  \frac{\dd^2\mathbf z}{|\mathbf z|^4}.
+\]
+Substituting these identities gives
+\[
+  M_{\mathbf x'\mathbf y'\mathbf z'}\,\dd^2\mathbf z'
+  =
+  \frac{
+    r_{xy}^2/(|\mathbf x|^2|\mathbf y|^2)
+  }{
+    r_{xz}^2/(|\mathbf x|^2|\mathbf z|^2)\,
+    r_{zy}^2/(|\mathbf z|^2|\mathbf y|^2)
+  }
+  \frac{\dd^2\mathbf z}{|\mathbf z|^4}
+  =
+  M_{\mathbf x\mathbf y\mathbf z}\,\dd^2\mathbf z.
+\]
+This proves the stated covariance.
+\end{proof}
+
+\begin{proposition}[Mellin eigenvalue of the leading BFKL kernel]
+\label{prop:qcd-bfkl-mellin-eigenvalue}
+Let \(0<\operatorname{Re}\gamma<1\).  For the power
+\[
+  f_\gamma(\mathbf x,\mathbf y)
+  =
+  \bigl(\mu_\perp^2 r_{xy}^2\bigr)^\gamma ,
+\]
+define the subtracted transverse integral by analytic regularization as in
+the proof below.  Then
+\begin{equation}
+  \frac1{2\pi}\int_{\mathbb R^2}\dd^2\mathbf z\,
+  M_{\mathbf x\mathbf y\mathbf z}
+  \bigl[
+    f_\gamma(\mathbf x,\mathbf z)
+    +f_\gamma(\mathbf z,\mathbf y)
+    -f_\gamma(\mathbf x,\mathbf y)
+  \bigr]
+  =
+  \chi(\gamma)f_\gamma(\mathbf x,\mathbf y),
+  \label{eq:qcd-bfkl-eigenvalue-equation}
+\end{equation}
+where
+\begin{equation}
+  \chi(\gamma)
+  =
+  2\psi(1)-\psi(\gamma)-\psi(1-\gamma),
+  \qquad
+  \psi(u):=\frac{\dd}{\dd u}\log\Gamma(u).
+  \label{eq:qcd-bfkl-characteristic-function}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+By translation and scaling it suffices to set
+\(\mathbf y=0\), \(r_{xy}=1\), and \(\mu_\perp=1\).  The singular terms in
+the three brackets are regulated in \(d=2-2\epsilon\) transverse dimensions.
+The Euclidean beta integral
+\[
+  \int\dd^d\mathbf z\,
+  \frac1{(\mathbf z^2)^a((\mathbf z-\mathbf x)^2)^b}
+  =
+  \pi^{d/2}
+  \frac{
+    \Gamma(d/2-a)\Gamma(d/2-b)\Gamma(a+b-d/2)
+  }{
+    \Gamma(a)\Gamma(b)\Gamma(d-a-b)
+  }
+  (\mathbf x^2)^{d/2-a-b}
+  \label{eq:qcd-bfkl-beta-integral}
+\]
+is first valid in its convergence domain and then analytically continued.
+Applying \eqref{eq:qcd-bfkl-beta-integral} to the three pieces gives
+\[
+\begin{aligned}
+  J_\epsilon(\gamma)
+  &=
+  \pi^{1-\epsilon}
+  \frac{
+    \Gamma(\gamma-\epsilon)\Gamma(-\epsilon)
+    \Gamma(1-\gamma+\epsilon)
+  }{
+    \Gamma(1-\gamma)\Gamma(\gamma-2\epsilon)
+  },\\
+  J_\epsilon(1-\gamma)
+  &=
+  \pi^{1-\epsilon}
+  \frac{
+    \Gamma(1-\gamma-\epsilon)\Gamma(-\epsilon)
+    \Gamma(\gamma+\epsilon)
+  }{
+    \Gamma(\gamma)\Gamma(1-\gamma-2\epsilon)
+  },\\
+  J_\epsilon(0)
+  &=
+  \pi^{1-\epsilon}
+  \frac{\Gamma(-\epsilon)^2\Gamma(1+\epsilon)}
+       {\Gamma(-2\epsilon)} .
+\end{aligned}
+\]
+The regulated subtracted integral is
+\[
+  J_\epsilon(\gamma)+J_\epsilon(1-\gamma)-J_\epsilon(0).
+\]
+Using
+\[
+  \Gamma(u+\delta)
+  =
+  \Gamma(u)\bigl(1+\delta\psi(u)+O(\delta^2)\bigr)
+\]
+and the corresponding expansion at the pole \(u=0\), the \(1/\epsilon\)
+terms cancel and the finite part is
+\[
+  2\pi\,[2\psi(1)-\psi(\gamma)-\psi(1-\gamma)].
+\]
+Dividing by \(2\pi\) proves
+\eqref{eq:qcd-bfkl-eigenvalue-equation}.
+\end{proof}
+
+\begin{corollary}[Fixed-coupling leading intercept and diffusion coefficient]
+\label{cor:qcd-bfkl-intercept-diffusion}
+For the leading fixed-coupling kernel in
+\eqref{eq:qcd-coordinate-bfkl-equation},
+\[
+  \chi\!\left(\frac12\right)=4\log2,
+  \qquad
+  \chi\!\left(\frac12+\ii\nu\right)
+  =
+  4\log2-14\zeta(3)\nu^2+O(\nu^4).
+\]
+Thus a Mellin component near \(\gamma=\frac12\) evolves as
+\[
+  \exp\!\left[
+    \bar\alpha_{\rm s}\,4\log2\,Y
+    -\bar\alpha_{\rm s}\,14\zeta(3)\nu^2Y
+    +O(\bar\alpha_{\rm s}\nu^4Y)
+  \right]
+\]
+inside the fixed-coupling leading-logarithmic datum.
+\end{corollary}
+
+\begin{proof}
+The reflection identities for the polygamma function give
+\[
+  \psi\!\left(\frac12\right)=-\gamma_{\rm E}-2\log2,
+  \qquad
+  \psi''\!\left(\frac12\right)=-14\zeta(3).
+\]
+Substitution into
+\eqref{eq:qcd-bfkl-characteristic-function} gives the value at
+\(\gamma=\frac12\).  Differentiating
+\(\chi(\gamma)\) shows \(\chi'(\frac12)=0\) and
+\(\chi''(\frac12)=28\zeta(3)\).  Expanding at
+\(\gamma=\frac12+\ii\nu\) gives the displayed sign.
+\end{proof}
+
+\begin{controlledapproximation}[Status of small-\(x\) resummation]
+\label{ca:qcd-small-x-status}
+A small-\(x\) resummation used for a QCD observable must state:
+the regulated Wilson-line operator being evolved; the rapidity variable and
+subtraction scheme; the impact factor connecting the Wilson-line matrix
+element to the measured process; whether running coupling, energy-scale,
+collinear-improvement, saturation, or finite-\(N_c\) hierarchy effects are
+included; and the topology of the remainder estimate.  The BFKL kernel in
+Proposition~\ref{prop:qcd-bfkl-mellin-eigenvalue} is a theorem about the
+leading transverse integral.  It is not by itself a nonperturbative
+construction of high-energy hadron scattering, nor a proof of the growth of a
+unitarized physical cross section.
+\end{controlledapproximation}

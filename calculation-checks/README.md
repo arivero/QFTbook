@@ -77,6 +77,11 @@ Current checks:
   number conservation, quark/gluon momentum-column sum rules, the exact
   nonsinglet Mellin moment formula, and the trace-delta versus half-trace cusp
   coefficient conversion.
+- `qcd_bfkl_small_x_checks.py`: finite checks for the Volume II small-\(x\)
+  QCD block, including trace-delta versus half-trace invariance of the BFKL
+  kernel coefficient, transverse inversion covariance of the dipole kernel
+  measure, and the saddle value, first derivative, second derivative, and
+  diffusion expansion of the leading BFKL characteristic function.
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in
