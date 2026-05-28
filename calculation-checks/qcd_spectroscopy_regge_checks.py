@@ -135,6 +135,38 @@ def check_coupled_channel_determinant_reduction() -> None:
     assert_equal("second physical-channel imaginary sign", imag_second, -rho2)
 
 
+def check_quarkonium_spin_centroid() -> None:
+    # Two spin-1/2 particles have S_Q.S_Qbar =
+    # 1/2(S(S+1)-3/2): -3/4 for singlet and 1/4 for triplet.
+    singlet_spin_spin = Fraction(1, 2) * (0 * 1 - Fraction(3, 2))
+    triplet_spin_spin = Fraction(1, 2) * (1 * 2 - Fraction(3, 2))
+    assert_equal("quarkonium singlet spin-spin", singlet_spin_spin, Fraction(-3, 4))
+    assert_equal("quarkonium triplet spin-spin", triplet_spin_spin, Fraction(1, 4))
+
+    # For S=1, L.S = 1/2(J(J+1)-L(L+1)-2).  The degeneracy-weighted triplet
+    # trace vanishes for every L, so spin-orbit terms do not shift the
+    # spin-weighted centroid.
+    for ell in range(1, 7):
+        eigenvalues = {
+            ell - 1: Fraction(-(ell + 1)),
+            ell: Fraction(-1),
+            ell + 1: Fraction(ell),
+        }
+        trace = sum(Fraction(2 * j + 1) * value for j, value in eigenvalues.items())
+        assert_equal(f"quarkonium spin-orbit trace L={ell}", trace, Fraction(0))
+
+    # The centroid hyperfine difference is (E+A/4)-(E-3A/4)=A.
+    energy = Fraction(23, 5)
+    spin_spin_coefficient = Fraction(7, 11)
+    triplet_centroid = energy + spin_spin_coefficient * triplet_spin_spin
+    singlet_mass = energy + spin_spin_coefficient * singlet_spin_spin
+    assert_equal(
+        "quarkonium centroid hyperfine difference",
+        triplet_centroid - singlet_mass,
+        spin_spin_coefficient,
+    )
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -142,6 +174,7 @@ def main() -> None:
     check_rotating_string_slope_coefficient()
     check_luscher_kmatrix_pole_algebra()
     check_coupled_channel_determinant_reduction()
+    check_quarkonium_spin_centroid()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

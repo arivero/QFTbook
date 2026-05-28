@@ -3342,6 +3342,133 @@ so the product of the exchange kernel \(g^2/|\mathbf q|^2\) with the singlet
 color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
 \end{proof}
 
+\begin{proposition}[Quarkonium fine and hyperfine spin algebra]
+\label{prop:qcd-quarkonium-spin-centroid}
+Fix a quarkonium radial level and orbital angular momentum \(L\) in a
+pNRQCD datum.  Let
+\[
+  \mathbf S_Q=\frac12\boldsymbol\sigma_Q,\qquad
+  \mathbf S_{\bar Q}=\frac12\boldsymbol\sigma_{\bar Q},\qquad
+  \mathbf S=\mathbf S_Q+\mathbf S_{\bar Q},\qquad
+  \mathbf J=\mathbf L+\mathbf S .
+\]
+Assume that, to first order in the spin-dependent part of the matched
+Hamiltonian, the restriction to this radial-orbital subspace has the form
+\begin{equation}
+  H_{nL}^{\rm sd}
+  =
+  A_{nL}\,\mathbf S_Q\cdot\mathbf S_{\bar Q}
+  +
+  B_{nL}\,\mathbf L\cdot\mathbf S
+  +
+  C_{nL}\,\mathcal T_{LS},
+  \label{eq:qcd-quarkonium-spin-dependent-hamiltonian}
+\end{equation}
+where \(A_{nL},B_{nL},C_{nL}\) are radial matrix elements or matching
+coefficients in the chosen scheme, and \(\mathcal T_{LS}\) is the rotational
+scalar obtained by coupling a traceless rank-two orbital tensor to a
+traceless rank-two spin tensor.  Then
+\[
+  \mathbf S_Q\cdot\mathbf S_{\bar Q}
+  =
+  \begin{cases}
+  -\frac34, & S=0,\\[2mm]
+  \frac14, & S=1,
+  \end{cases}
+  \label{eq:qcd-quarkonium-spin-spin-eigenvalues}
+\]
+and, on the triplet \(S=1\) states,
+\begin{equation}
+  \mathbf L\cdot\mathbf S
+  =
+  \frac12\bigl(J(J+1)-L(L+1)-2\bigr)
+  =
+  \begin{cases}
+  -(L+1), & J=L-1,\\
+  -1, & J=L,\\
+  L, & J=L+1 .
+  \end{cases}
+  \label{eq:qcd-quarkonium-spin-orbit-eigenvalues}
+\end{equation}
+If \(M(^1L_L)\) denotes the singlet mass and \(M(^3L_J)\) the triplet masses
+computed to this first order from a common spin-independent radial level
+\(E_{nL}^{(0)}\), then the triplet centroid obeys
+\begin{equation}
+  \overline M(^3L)
+  :=
+  \frac{\sum_{J=L-1}^{L+1}(2J+1)M(^3L_J)}{3(2L+1)}
+  =
+  E_{nL}^{(0)}+\frac14 A_{nL},
+  \label{eq:qcd-quarkonium-triplet-centroid}
+\end{equation}
+with the obvious omission of the nonexistent \(J=L-1\) term when \(L=0\).
+The centroid hyperfine difference is therefore
+\begin{equation}
+  \overline M(^3L)-M(^1L_L)=A_{nL}.
+  \label{eq:qcd-quarkonium-hyperfine-centroid}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The two heavy spins are spin-\(\frac12\) representations.  Since
+\[
+  \mathbf S^2
+  =
+  \mathbf S_Q^2+\mathbf S_{\bar Q}^2
+  +2\mathbf S_Q\cdot\mathbf S_{\bar Q},
+  \qquad
+  \mathbf S_Q^2=\mathbf S_{\bar Q}^2=\frac34,
+\]
+one has
+\[
+  \mathbf S_Q\cdot\mathbf S_{\bar Q}
+  =
+  \frac12\left(S(S+1)-\frac32\right),
+\]
+which gives \eqref{eq:qcd-quarkonium-spin-spin-eigenvalues} for
+\(S=0,1\).  Similarly
+\[
+  \mathbf J^2
+  =
+  \mathbf L^2+\mathbf S^2+2\mathbf L\cdot\mathbf S
+\]
+gives the first equality in
+\eqref{eq:qcd-quarkonium-spin-orbit-eigenvalues}; substituting
+\(S=1\) and \(J=L-1,L,L+1\) gives the displayed three values.
+
+It remains to check the centroid.  The trace of \(\mathbf L\cdot\mathbf S\)
+on the tensor product of the orbital \(L\) space and the triplet spin space
+vanishes:
+\[
+  \operatorname{Tr}_{L\otimes S=1}(\mathbf L\cdot\mathbf S)
+  =
+  \sum_i \operatorname{Tr}_{L}(L_i)\operatorname{Tr}_{S=1}(S_i)=0,
+\]
+because every generator of an irreducible \(SU(2)\) representation is
+traceless.  The operator \(\mathcal T_{LS}\) is a contraction of traceless
+rank-two tensors, so its trace on the same tensor product also vanishes.  The
+weighted sum
+\(\sum_J(2J+1)M(^3L_J)\) is precisely this trace after decomposition into
+irreducible \(J\) summands.  Therefore only the spin-independent energy and
+the triplet spin-spin eigenvalue \(\frac14A_{nL}\) survive in the centroid,
+proving \eqref{eq:qcd-quarkonium-triplet-centroid}.  The singlet has
+\(\mathbf L\cdot\mathbf S=0\), no rank-two spin tensor, and spin-spin
+eigenvalue \(-\frac34\); subtracting its first-order mass from the triplet
+centroid gives \eqref{eq:qcd-quarkonium-hyperfine-centroid}.
+\end{proof}
+
+Proposition~\ref{prop:qcd-quarkonium-spin-centroid} is the part of
+quarkonium spectroscopy that follows from angular momentum and the matched
+operator form alone.  The numerical values of
+\(A_{nL},B_{nL},C_{nL}\) are QCD matching data.  In weak-coupling pNRQCD they
+are computed from perturbative potentials and wavefunctions in a stated mass
+scheme; in strong-coupling pNRQCD they are Wilson-loop and chromofield
+insertion matrix elements.  In either case the symbols
+``hyperfine splitting'' and ``fine structure'' refer to the spectral
+differences defined by
+\eqref{eq:qcd-quarkonium-spin-orbit-eigenvalues}--\eqref{eq:qcd-quarkonium-hyperfine-centroid},
+rather than to a freestanding constituent-potential model.
+
 \begin{controlledapproximation}[Quarkonium scale separation]
 \label{ca:nrqcd-pnrqcd-scale-separation}
 Let \(v_{\rm rel}\) be the velocity coordinate assigned to a family of
@@ -3941,7 +4068,10 @@ coordinate, spin-dependent \(1/m_Q\) operators, and ultrasoft corrections.
 The spin-averaged levels, hyperfine splittings, and fine structure are then
 matrix elements in a stated effective Hamiltonian.  They are not predictions
 of a nonrelativistic potential unless the matching coefficients, mass scheme,
-and ultrasoft treatment have been fixed as part of the datum.
+and ultrasoft treatment have been fixed as part of the datum.  The angular
+momentum algebra that turns these matched operators into centroid, fine, and
+hyperfine coordinates is the finite-dimensional statement of
+Proposition~\ref{prop:qcd-quarkonium-spin-centroid}.
 
 Baryon spectroscopy is likewise a QCD spectral problem, not a three-body
 mechanics problem imposed from outside.  For \(N_f=3\) light flavors, the
