@@ -827,13 +827,13 @@ Current checks:
   hadron-spectroscopy and Regge sections, including the octet
   Gell-Mann--Okubo relation, decuplet equal spacing, Veneziano-residue
   polynomial degrees and coefficients, the rational coefficient in the
-  classical open-flux-tube Regge slope, and the one-channel
-  Luescher/K-matrix sign convention that maps finite-volume energies to a
-  second-sheet pole equation, together with the coupled-channel determinant
-  reduction, sheet-sign bookkeeping, and the quarkonium spin-centroid
-  algebra for fine and hyperfine splittings, plus the nucleon Sachs
-  Dirac--Pauli coordinate transform, the stable-current three-point
-  extraction ratio with excited-state suppression factors, the forward
+  classical open-flux-tube Regge slope, the \(S\)-wave Luescher zeta
+  normalization, and the one-channel Luescher/K-matrix sign convention that
+  maps finite-volume energies to a second-sheet pole equation, together with
+  the coupled-channel determinant reduction, sheet-sign bookkeeping, and the
+  quarkonium spin-centroid algebra for fine and hyperfine splittings, plus
+  the nucleon Sachs Dirac--Pauli coordinate transform, the stable-current
+  three-point extraction ratio with excited-state suppression factors, the forward
   Compton/Baldin dispersion prefactor, and the GDH and forward
   spin-polarizability prefactors in the
   \(\Delta\sigma=\sigma_{1/2}-\sigma_{3/2}\) convention.

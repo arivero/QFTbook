@@ -3922,6 +3922,166 @@ elasticity, locality, and regulator hypotheses.  In realistic QCD channels
 one must use the coupled-channel determinant version, because cubic symmetry
 mixes partial waves and inelastic thresholds are often nearby.
 
+\begin{definition}[Periodic Green function and \(S\)-wave zeta coordinate]
+\label{def:qcd-periodic-green-zeta-coordinate}
+For a cubic spatial torus of side \(L\), let
+\[
+  \mathbf p_{\mathbf n}:=\frac{2\pi}{L}\mathbf n,\qquad
+  \mathbf n\in\mathbb Z^3,
+\]
+and let \(k>0\) be such that \(k^2\ne \mathbf p_{\mathbf n}^{\,2}\) for all
+\(\mathbf n\).  The periodic Helmholtz Green function is the distribution
+\begin{equation}
+  G_L(\mathbf r;k)
+  :=
+  \frac1{L^3}
+  \sum_{\mathbf n\in\mathbb Z^3}
+  \frac{\ee^{\ii\mathbf p_{\mathbf n}\cdot\mathbf r}}
+       {\mathbf p_{\mathbf n}^{\,2}-k^2},
+  \qquad
+  (\Delta+k^2)G_L(\mathbf r;k)=-\delta_L(\mathbf r),
+  \label{eq:qcd-periodic-helmholtz-green}
+\end{equation}
+where \(\delta_L\) is the periodic delta distribution.  Its singular expansion
+at the origin is written
+\begin{equation}
+  G_L(\mathbf r;k)
+  =
+  \frac{1}{4\pi|\mathbf r|}
+  +
+  c_L(k)
+  +O(|\mathbf r|),
+  \qquad
+  \mathbf r\to0.
+  \label{eq:qcd-periodic-green-constant-term}
+\end{equation}
+Equivalently, with \(q=kL/(2\pi)\), define the analytically continued
+Luescher zeta coordinate \(\mathcal Z_{00}(1;q^2)\) by
+\begin{equation}
+  4\pi c_L(k)
+  =
+  \frac{2}{\sqrt\pi\,L}\,
+  \mathcal Z_{00}(1;q^2),
+  \qquad
+  \mathcal Z_{00}(s;q^2)
+  :=
+  \frac1{\sqrt{4\pi}}
+  \sum_{\mathbf n\in\mathbb Z^3}
+  \frac{1}{(\mathbf n^2-q^2)^s}
+  \quad(\operatorname{Re}s>\tfrac32),
+  \label{eq:qcd-luscher-zeta-coordinate}
+\end{equation}
+continued meromorphically to \(s=1\).  The singular summands at
+\(\mathbf n^2=q^2\) are absent from the elastic interval under discussion;
+when a free two-particle level is crossed, the condition is read by the usual
+limiting prescription from adjacent \(q^2\).
+\end{definition}
+
+\begin{proposition}[\(S\)-wave finite-volume quantization from wave matching]
+\label{prop:qcd-swave-luscher-wave-matching}
+Consider a single elastic two-particle channel in the center-of-mass frame.
+Assume the two stable particles have masses \(m_1,m_2\), the interaction range
+in the relative coordinate is contained in \(|\mathbf r|<R\), the box obeys
+\(L>2R\), and the finite-volume corrections from virtual particles wrapping
+around the torus are bounded by \(C\ee^{-m_{\rm gap}L}\) for some positive
+mass scale \(m_{\rm gap}\) in the omitted exchange channel.  In an exact
+finite-range model this exponential remainder is absent.  Assume also that
+the cubic irrep isolates the \(S\)-wave, so higher partial waves are not
+retained in the truncation.  Let \(k\) be the relative momentum determined by
+\[
+  E=\sqrt{m_1^2+k^2}+\sqrt{m_2^2+k^2}.
+\]
+Then the finite-volume energy is allowed precisely when
+\begin{equation}
+  k\cot\delta_0(k)=4\pi c_L(k)
+  =
+  \frac{2}{\sqrt\pi\,L}\mathcal Z_{00}(1;q^2),
+  \qquad q=\frac{kL}{2\pi}.
+  \label{eq:qcd-swave-luscher-kcot-form}
+\end{equation}
+Equivalently,
+\begin{equation}
+  q\cot\delta_0(k)=\frac1{\pi^{3/2}}\mathcal Z_{00}(1;q^2),
+  \qquad
+  \delta_0(k)+\phi_0(q)=n\pi,
+  \qquad
+  \cot\phi_0(q)=
+  -\frac{\mathcal Z_{00}(1;q^2)}{\pi^{3/2}q}.
+  \label{eq:qcd-swave-luscher-phase-form}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Outside the interaction region the relative wave function
+\(\psi(\mathbf r)\) satisfies the free Helmholtz equation
+\((\Delta+k^2)\psi=0\) and periodic boundary conditions.  In the \(S\)-wave
+truncation any such finite-volume solution with a source at the origin is
+proportional, in the exterior region \(R<|\mathbf r|<L/2\), to the periodic
+Green function \(G_L(\mathbf r;k)\).  The proportionality constant is
+irrelevant; the quantization condition is obtained by comparing the ratio of
+the regular and singular terms in the short-distance expansion.
+
+The infinite-volume elastic \(S\)-wave outside the interaction range has the
+standard real form
+\[
+  \psi_{\infty}(r)
+  =
+  A\,\frac{\sin(kr+\delta_0(k))}{kr},
+  \qquad r>R .
+\]
+Expanding this expression at small \(r\) gives
+\[
+  \psi_{\infty}(r)
+  =
+  A\left[
+    \frac{\sin\delta_0(k)}{kr}
+    +
+    \cos\delta_0(k)
+    +O(r)
+  \right].
+\]
+Thus the ratio of the regular coefficient to the \(1/r\) coefficient is
+\[
+  \frac{A\cos\delta_0(k)}
+       {A\sin\delta_0(k)/k}
+  =
+  k\cot\delta_0(k).
+  \label{eq:qcd-swave-boundary-ratio}
+\]
+On the other hand, the finite-volume exterior solution proportional to
+\eqref{eq:qcd-periodic-helmholtz-green} has expansion
+\[
+  B\,G_L(\mathbf r;k)
+  =
+  B\left[
+    \frac1{4\pi r}+c_L(k)+O(r)
+  \right],
+  \qquad r=|\mathbf r|.
+  \]
+Its regular-to-singular ratio is \(4\pi c_L(k)\).  Matching the exterior
+finite-volume solution to the infinite-volume scattering boundary condition
+therefore gives the first equality in
+\eqref{eq:qcd-swave-luscher-kcot-form}.  The second equality is the zeta
+coordinate definition \eqref{eq:qcd-luscher-zeta-coordinate}.
+
+Multiplying the first form by \(L/(2\pi)\) and using \(q=kL/(2\pi)\) gives
+the first equation in \eqref{eq:qcd-swave-luscher-phase-form}.  The phase
+form follows by defining \(\phi_0\) through
+\(\cot\phi_0=-\mathcal Z_{00}(1;q^2)/(\pi^{3/2}q)\):
+\[
+  \cot\delta_0(k)=-\cot\phi_0(q)
+  =
+  \cot\bigl(n\pi-\phi_0(q)\bigr),
+  \]
+which is equivalent to
+\(\delta_0(k)+\phi_0(q)=n\pi\) modulo \(\pi\).  The only physics input beyond
+the spectral existence of the two-particle level is the replacement of the
+interacting QFT outside the range by the elastic scattering boundary
+condition, with exponential finite-volume corrections controlled by the
+lightest omitted exchange.  Thus the formula is a reconstruction statement
+with explicit hypotheses, not a model of the resonance.
+\end{proof}
+
 \begin{proposition}[Single-channel finite-volume pole reconstruction]
 \label{prop:qcd-single-channel-luscher-kmatrix-pole}
 Assume that, on an open real energy interval \(I\), a QCD channel is

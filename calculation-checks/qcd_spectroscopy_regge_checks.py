@@ -112,6 +112,27 @@ def check_luscher_kmatrix_pole_algebra() -> None:
     assert_equal("second-sheet pole denominator imaginary part", denominator_imag, Fraction(0))
 
 
+def check_swave_luscher_zeta_normalization() -> None:
+    # The S-wave formula is q*cot(delta)=Z00/pi^(3/2).  Stripping the common
+    # displayed pi factor, the exact rational statement is q*cot(delta)=Z00.
+    q = Fraction(3, 5)
+    zeta = Fraction(7, 11)
+    cot_delta_rational = zeta / q
+    assert_equal("S-wave zeta q cot(delta)", q * cot_delta_rational, zeta)
+
+    # With delta+phi=n*pi, cot(delta)=-cot(phi).  The monograph convention is
+    # cot(phi)=-Z00/(pi^(3/2) q), again checked after removing the common
+    # irrational pi factor.
+    cot_phi_rational = -zeta / q
+    assert_equal("S-wave phase-function sign", cot_delta_rational, -cot_phi_rational)
+
+    # Since k=2*pi*q/L, the same formula gives
+    # k*cot(delta)=2*Z00/(sqrt(pi)*L).  The rational coefficient is 2/L.
+    length = Fraction(13, 4)
+    kcot_rational = Fraction(2) * zeta / length
+    assert_equal("S-wave k cot(delta) zeta coefficient", kcot_rational, Fraction(2, 1) * zeta / length)
+
+
 def check_coupled_channel_determinant_reduction() -> None:
     # In an unmixed two-channel finite-volume determinant,
     # det(K^{-1}+F)=0 reduces channel by channel.  This pins down the sign of
@@ -301,6 +322,7 @@ def main() -> None:
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
     check_luscher_kmatrix_pole_algebra()
+    check_swave_luscher_zeta_normalization()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()
