@@ -43,4 +43,7 @@ python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 echo "[qft-scripts] thooft_dlcq --smoke"
 python3 qft_scripts/thooft_dlcq.py --smoke
 
+echo "[qft-scripts] thooft_dlcq_extrapolation --smoke"
+python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
+
 echo "[qft-scripts] all smoke checks passed"

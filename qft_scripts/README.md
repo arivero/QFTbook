@@ -26,6 +26,7 @@ python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
+python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 ```
 
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
@@ -109,3 +110,8 @@ a production lattice-QCD workflow or a continuum extrapolation.
 - `thooft_dlcq.py`: finite harmonic-resolution matrix for the large-\(N\)
   two-dimensional QCD meson equation.  It is a DLCQ-style principal-value
   regulator, not a proof of the continuum spectrum.
+- `thooft_dlcq_extrapolation.py`: large-\(K\) diagnostic for fixed eigenvalue
+  labels of the finite 't Hooft DLCQ matrices.  It reports polynomial fits in
+  \(K^{-\omega}\), residuals, conditioning, and the finite linear-algebra
+  amplification factor for a possible remainder bound; it does not assert a
+  continuum meson spectrum without the missing analytic large-\(K\) estimate.

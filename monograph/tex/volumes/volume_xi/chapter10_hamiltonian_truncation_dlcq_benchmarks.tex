@@ -571,7 +571,8 @@ verifies the finite residual bound
 \eqref{eq:finite-projector-leakage-bound}, the Feshbach determinant identity
 behind \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, the
 Ising-energy Bogoliubov benchmark, the connected Ising TFFSA block
-normalization, and the finite large-\(N\) QCD DLCQ quadratic-form identity.
+normalization, the finite large-\(N\) QCD DLCQ quadratic-form identity, and
+the exact-intercept cases of the finite large-\(K\) extrapolation diagnostic.
 
 \section{DLCQ Datum}
 
@@ -867,6 +868,111 @@ triangle inequality:
 This is \eqref{eq:integer-power-extrapolation-bound}.
 \end{proof}
 
+\paragraph{\texorpdfstring{Large-\(K\) diagnostic for the finite 't Hooft matrices}{Large-K diagnostic for the finite 't Hooft matrices}.}
+For the finite matrices \(M_K^2\) in
+Proposition~\ref{prop:thooft-dlcq-finite-positivity}, write their eigenvalues
+in nondecreasing order as
+\[
+  \lambda_0(K)\leq\lambda_1(K)\leq\cdots\leq\lambda_{K-2}(K).
+\]
+For a fixed label \(\ell\), the numerical sequence
+\[
+  A_K=\lambda_\ell(K)
+\]
+is a finite-regulator sequence in the sense of
+Definition~\ref{def:finite-regulator-observable-datum}.  Keeping the label
+\(\ell\) fixed is only a diagnostic convention until one proves that the
+corresponding continuum state is isolated and that nearby finite-\(K\) levels
+do not interchange in a way that changes the limiting object.  Choose distinct
+resolutions \(K_1<\cdots<K_N\), a base exponent \(\omega>0\), and an integer
+\(p<N\).  Set
+\[
+  q_r=K_r^{-\omega},\qquad
+  X_{ra}=q_r^a,\qquad
+  r=1,\ldots,N,\quad a=0,\ldots,p .
+\]
+The least-squares polynomial fit is
+\[
+  \widehat c=(X^T X)^{-1}X^T A,\qquad
+  A=(A_{K_1},\ldots,A_{K_N})^T ,
+  \label{eq:dlcq-large-K-least-squares-fit}
+\]
+provided \(X\) has full column rank.  The reported continuum diagnostic is
+\(\widehat c_0\), the fitted intercept at \(q=0\).
+
+\begin{proposition}[Finite large-\(K\) fit with an explicit remainder amplifier]
+\label{prop:finite-large-K-fit-remainder-amplifier}
+Assume that the finite data used in
+\eqref{eq:dlcq-large-K-least-squares-fit} have the form
+\[
+  A_{K_r}
+  =
+  A_\infty+\sum_{a=1}^p c_a K_r^{-a\omega}+\rho_r ,
+  \qquad r=1,\ldots,N ,
+  \label{eq:large-K-fit-model-with-remainder}
+\]
+with \(X\) of full column rank.  Let
+\[
+  B=(X^T X)^{-1}X^T .
+\]
+Then the fitted intercept satisfies
+\[
+  |\widehat c_0-A_\infty|
+  \leq
+  \left(\sum_{r=1}^N |B_{0r}|\right)\max_{1\leq r\leq N}|\rho_r| .
+  \label{eq:large-K-intercept-remainder-amplification}
+\]
+In particular, if all \(\rho_r\) vanish, the fit recovers \(A_\infty\)
+exactly, independently of the overdetermination \(N>p+1\).
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  c=(A_\infty,c_1,\ldots,c_p)^T,
+  \qquad
+  \rho=(\rho_1,\ldots,\rho_N)^T .
+\]
+Equation~\eqref{eq:large-K-fit-model-with-remainder} is the vector identity
+\[
+  A=Xc+\rho .
+\]
+Since \(X\) has full column rank, \(BX=I_{p+1}\).  Hence
+\[
+  \widehat c
+  =
+  BA
+  =
+  B(Xc+\rho)
+  =
+  c+B\rho .
+\]
+Taking the zeroth component gives
+\[
+  \widehat c_0-A_\infty
+  =
+  \sum_{r=1}^N B_{0r}\rho_r .
+\]
+The triangle inequality gives
+\eqref{eq:large-K-intercept-remainder-amplification}.  If \(\rho=0\), then
+\(\widehat c=c\) and the intercept is exact.
+\end{proof}
+
+The companion script
+\[
+  \texttt{qft\_scripts/thooft\_dlcq\_extrapolation.py}
+\]
+implements this finite procedure for the matrices \(M_K^2\): it prints the
+finite eigenvalues, the fitted intercepts, the residuals, the condition number
+of \(X\), and the factor
+\(\sum_r |B_{0r}|\) appearing in
+\eqref{eq:large-K-intercept-remainder-amplification}.  These quantities
+measure how a chosen finite data set responds to a chosen ansatz.  They do not
+prove that the large-\(K\) limit of the large-\(N\) QCD meson equation exists
+or that the selected exponent \(\omega\) is correct.  Those conclusions require
+separate endpoint and zero-mode estimates producing a bound of the form
+\eqref{eq:large-K-fit-model-with-remainder}.
+
 The companion calculation
 \[
   \texttt{calculation-checks/numerical\_extrapolation\_checks.py}
@@ -876,6 +982,13 @@ verifies the algebra in
 with exact rational arithmetic.  It does not verify that a particular QFT
 observable obeys \eqref{eq:power-law-cutoff-remainder-bound}; that remains a
 problem-specific analytic estimate.
+
+The companion calculation
+\[
+  \texttt{calculation-checks/hamiltonian\_truncation\_dlcq\_checks.py}
+\]
+also verifies the exact-intercept and constant-sequence cases of
+Proposition~\ref{prop:finite-large-K-fit-remainder-amplifier}.
 
 \section{Light-Front Hamiltonian}
 
@@ -913,7 +1026,8 @@ The public companion-script policy is recorded in
 \]
 runs the finite Ising Metropolis, Ising-energy Hamiltonian-truncation, and
 the large-\(N\) QCD DLCQ example, together with the connected Ising TFFSA
-block.  Passing that harness certifies
+block and the finite large-\(K\) DLCQ extrapolation diagnostic.  Passing that
+harness certifies
 only the finite computations and internal consistency checks just described.
 
 \begin{openproblem}[Certified QFT truncation]

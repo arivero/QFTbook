@@ -33,6 +33,9 @@ numerics.
   continuum candidate, leading cutoff exponent, remainder, two-cutoff
   Richardson extrapolate, and multi-cutoff extrapolate.
 - `s_j`, `w_j`: positive scale factors and exact extrapolation weights.
+- `lambda_ell(K)`, `q_r`, `X_{ra}`, `B`: ordered finite DLCQ eigenvalue,
+  large-`K` fit coordinate, Vandermonde design matrix, and least-squares
+  left inverse used in the finite intercept-remainder amplifier.
 
 ## Claim Ledger
 
@@ -74,10 +77,18 @@ numerics.
 - Proves two-cutoff Richardson cancellation with a displayed error bound.
 - Proves integer-power multi-cutoff extrapolation by exact Vandermonde
   weights and a displayed remainder estimate.
+- Defines a fixed-label large-`K` diagnostic for the finite large-N QCD DLCQ
+  matrix sequence, explicitly separating the numerical label convention from
+  any continuum-state claim.
+- Proves a finite least-squares intercept bound: if the finite data equal a
+  polynomial in `K^{-omega}` plus a remainder, the fitted intercept differs
+  from the continuum coefficient by at most the row-`l1` amplification factor
+  times the maximum remainder.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
-  `qft_scripts/thooft_dlcq.py`, and `tools/run_qft_scripts_smoke.sh`.
+  `qft_scripts/thooft_dlcq.py`, `qft_scripts/thooft_dlcq_extrapolation.py`,
+  and `tools/run_qft_scripts_smoke.sh`.
 
 ## Figure Ledger
 
@@ -96,11 +107,16 @@ plots.
 - `qft_scripts/thooft_dlcq.py --smoke`: builds and diagonalizes the finite
   principal-value matrix for the large-N two-dimensional QCD meson equation
   at a small harmonic resolution, with a positivity smoke check.
+- `qft_scripts/thooft_dlcq_extrapolation.py --smoke`: fits fixed finite
+  DLCQ eigenvalue labels to a chosen polynomial in `K^{-omega}`, reporting
+  residuals, conditioning, and the finite intercept-remainder amplification
+  factor without asserting a continuum spectrum.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational
   regression check for the Lagrange-interpolation obstruction, Richardson
   cancellation, and integer-power extrapolation weights used in the chapter.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
-  block normalization, finite residual certification, spectral-projector
-  leakage, and the Feshbach determinant identity.
+  block normalization, finite large-`K` fit algebra, finite residual
+  certification, spectral-projector leakage, and the Feshbach determinant
+  identity.

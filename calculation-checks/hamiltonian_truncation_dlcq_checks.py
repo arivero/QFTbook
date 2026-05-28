@@ -16,6 +16,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import thooft_dlcq  # noqa: E402
+import thooft_dlcq_extrapolation as thooft_extrapolation  # noqa: E402
 
 
 def assert_close(name: str, actual: float, expected: float, tol: float = 1.0e-11) -> None:
@@ -101,6 +102,46 @@ def check_thooft_quadratic_form_identity() -> None:
         raise AssertionError("finite 't Hooft matrix should be positive definite")
 
 
+def check_thooft_large_K_fit_algebra() -> None:
+    Ks = thooft_extrapolation.parse_Ks("8, 10 12,16")
+    if Ks != [8, 10, 12, 16]:
+        raise AssertionError("DLCQ K parser changed its ordering convention")
+
+    exact_values = [2.5 - 1.25 / K + 0.75 / (K * K) for K in Ks]
+    exact_fit = thooft_extrapolation.fit_cutoff_sequence(
+        Ks=Ks,
+        values=exact_values,
+        fit_order=2,
+        base_exponent=1.0,
+    )
+    assert_close("DLCQ exact polynomial intercept", exact_fit["A_infinity"], 2.5)
+    assert_leq("DLCQ exact polynomial residual", exact_fit["max_residual"], 1.0e-13)
+
+    constant_fit = thooft_extrapolation.fit_cutoff_sequence(
+        Ks=Ks,
+        values=[3.0 for _ in Ks],
+        fit_order=2,
+        base_exponent=1.0,
+    )
+    assert_close("DLCQ constant intercept", constant_fit["A_infinity"], 3.0)
+    assert_leq("DLCQ constant residual", constant_fit["max_residual"], 1.0e-13)
+
+    script_result = thooft_extrapolation.run(
+        Ks=[8, 10, 12],
+        levels=2,
+        m1=0.15,
+        m2=0.15,
+        gamma=0.5,
+        fit_order=1,
+        base_exponent=1.0,
+    )
+    if not script_result["positive_finite_spectra"]:
+        raise AssertionError("finite large-K DLCQ diagnostic found a negative spectrum")
+    for level_fit in script_result["extrapolated_levels"]:
+        if not np.isfinite(level_fit["A_infinity"]):
+            raise AssertionError("finite large-K DLCQ diagnostic produced a non-finite fit")
+
+
 def check_residual_certificate() -> None:
     eigenvalues = np.array([1.0, 3.0, 8.0])
     matrix = np.diag(eigenvalues)
@@ -144,6 +185,7 @@ def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_tffsa_connected_spin_block()
     check_thooft_quadratic_form_identity()
+    check_thooft_large_K_fit_algebra()
     check_residual_certificate()
     check_feshbach_determinant_identity()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
