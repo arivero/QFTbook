@@ -331,6 +331,250 @@ This is the large-\(N\) form of asymptotic freedom.  The finite-\(N\)
 one-loop coefficient replaces \(N\) by \(N-2\) in the beta function for the
 unscaled coupling, as in the Ricci-tensor calculation above.
 
+\section{Projective Sigma Models}
+\label{sec:integrable-cpn-sigma-models}
+
+The next basic asymptotically free family is the projective model with target
+\(\mathbb{CP}^{N-1}\).  A convenient ultraviolet coordinate uses a complex
+\(N\)-component field \(z\), a nondynamical \(U(1)\) connection \(A_\mu\), and
+the local redundancy
+\[
+  z(x)\mapsto \ee^{\ii\alpha(x)}z(x),\qquad
+  A_\mu(x)\mapsto A_\mu(x)+\partial_\mu\alpha(x).
+\]
+The constraint and covariant derivative are
+\[
+  z^\dagger z=1,\qquad D_\mu z=(\partial_\mu-\ii A_\mu)z,
+\]
+and the Euclidean action is
+\begin{equation}
+  S_{\mathbb{CP}^{N-1}}[z,A]
+  =
+  \frac1{g^2}\int_\Sigma\dd^2x\, (D_\mu z)^\dagger D_\mu z
+  +\ii\frac{\theta}{2\pi}\int_\Sigma F_A .
+  \label{eq:cpn-action-auxiliary-gauge}
+\end{equation}
+The \(U(1)\) field is part of the quotient description, not an additional
+microscopic photon.  On a closed Euclidean surface, for a smooth line bundle,
+\[
+  \frac1{2\pi}\int_\Sigma F_A\in\mathbb Z,
+\]
+so the coefficient \(\theta\) is \(2\pi\)-periodic in the continuum
+topological sectors.  A lattice or other ultraviolet definition must specify
+how this integer is represented before the \(\theta\)-dependent path integral
+is a mathematical object.
+
+The projector
+\[
+  P=z z^\dagger,\qquad P^2=P,\qquad \operatorname{tr}P=1,
+\]
+is gauge invariant and gives an intrinsic coordinate on
+\(\mathbb{CP}^{N-1}\).  In
+these terms the kinetic density is proportional to
+\(\operatorname{tr}(\partial_\mu P\,\partial_\mu P)\), with the proportionality
+fixed by the normalization of \eqref{eq:cpn-action-auxiliary-gauge}.  The
+one-loop beta tensor is again the Ricci tensor of the target; with the
+Fubini--Study metric normalized so that
+\[
+  \operatorname{Ric}=N\,h_{\rm FS},
+\]
+the model is asymptotically free.  If \(t=g^2\) denotes the scalar coupling in
+\eqref{eq:cpn-action-auxiliary-gauge}, the leading running has the form
+\begin{equation}
+  \mu\frac{\dd t}{\dd\mu}
+  =
+  -\frac{N}{2\pi}t^2+\text{higher powers of }t,
+  \label{eq:cpn-leading-beta}
+\end{equation}
+in this normalization.
+
+At large \(N\) with \(\lambda=Ng^2\) fixed, introduce a Lagrange multiplier
+enforcing \(z^\dagger z=1\).  A translation-invariant saddle gives
+\begin{equation}
+  \frac1{\lambda}
+  =
+  \int^\Lambda\frac{\dd^2p}{(2\pi)^2}\frac1{p^2+m^2}
+  =
+  \frac1{4\pi}\log\!\left(\frac{\Lambda^2+m^2}{m^2}\right),
+  \label{eq:cpn-large-n-gap}
+\end{equation}
+up to the convention-dependent factor already fixed in the action.  Thus the
+projective family has the same dimensional-transmutation structure as the
+round \(O(N)\) model.  What differs is the global topology, the \(U(1)\)
+quotient, the \(\theta\)-angle, and the particle multiplet structure.
+
+\begin{controlledapproximation}[Projective scattering status]
+\label{ca:cpn-exact-scattering-status}
+The integrable projective-model scattering descriptions are statements about
+massive particles carrying \(SU(N)\) quantum numbers, their antiparticles, and
+bound-state poles arranged by the bootstrap.  Matching those data to
+\eqref{eq:cpn-action-auxiliary-gauge} requires a continuum construction,
+identification of local currents, and a comparison of the mass scale produced
+by \eqref{eq:cpn-large-n-gap} with the bootstrap mass coordinate.  The
+\(\theta=\pi\) infrared behavior is a separate dynamical question; for some
+families it is expected to land on a level-one WZW fixed point, but that
+statement belongs to a specified continuum limit and cannot be read off from
+the perturbative beta function alone.
+\end{controlledapproximation}
+
+\section{Principal Chiral Models and WZW Endpoints}
+\label{sec:integrable-pcm-wzw-family}
+
+Let \(G\) be a compact simple Lie group with invariant positive form
+\(\kappa\) on its Lie algebra \(\mathfrak g\).  The principal chiral model has
+field \(U:\Sigma\to G\), current \(j_\mu=U^{-1}\partial_\mu U\), and action
+\begin{equation}
+  S_{\rm PCM}[U]
+  =
+  \frac1{2g^2}\int_\Sigma\dd^2x\,\kappa(j_\mu,j_\mu).
+  \label{eq:pcm-action}
+\end{equation}
+The global symmetry is \(G_L\times G_R\), acting by
+\[
+  U\mapsto g_L\,U\,g_R^{-1}.
+\]
+The equations of motion and Maurer--Cartan identity in light-cone coordinates
+are
+\begin{equation}
+  \partial_+j_-+\partial_-j_+=0,
+  \qquad
+  \partial_+j_- -\partial_-j_+ +[j_+,j_-]=0 .
+  \label{eq:pcm-eom-maurer-cartan}
+\end{equation}
+
+\begin{proposition}[Principal-chiral Lax equivalence]
+\label{prop:pcm-lax-equivalence}
+Define
+\begin{equation}
+  L_+(\zeta)=\frac{j_+}{1-\zeta},\qquad
+  L_-(\zeta)=\frac{j_-}{1+\zeta}.
+  \label{eq:pcm-lax-pair}
+\end{equation}
+Then the flatness condition
+\[
+  \partial_+L_-(\zeta)-\partial_-L_+(\zeta)+[L_+(\zeta),L_-(\zeta)]=0
+\]
+for all complex \(\zeta\) away from \(\pm1\) is equivalent to the two
+relations in \eqref{eq:pcm-eom-maurer-cartan}.
+\end{proposition}
+
+\begin{proof}
+Multiplying the curvature by \(1-\zeta^2\) gives
+\[
+  (1-\zeta)\partial_+j_-
+  -(1+\zeta)\partial_-j_+
+  +[j_+,j_-]
+  =
+  \bigl(\partial_+j_- -\partial_-j_+ +[j_+,j_-]\bigr)
+  -\zeta(\partial_+j_-+\partial_-j_+).
+\]
+Vanishing for all \(\zeta\) is therefore equivalent to the vanishing of the
+constant and linear coefficients, which are precisely the Maurer--Cartan
+identity and the equation of motion.
+\end{proof}
+
+The Wess--Zumino deformation is defined by extending \(U\) to a three-manifold
+\(B\) with \(\partial B=\Sigma\) and setting
+\begin{equation}
+  \Gamma[U]
+  =
+  \frac1{24\pi}\int_B
+  \kappa(U^{-1}\dd U,[U^{-1}\dd U,U^{-1}\dd U]).
+  \label{eq:wz-functional}
+\end{equation}
+The quantum functional
+\begin{equation}
+  S_{k,\lambda}[U]
+  =
+  \frac1{2\lambda^2}\int_\Sigma\kappa(j_\mu,j_\mu)
+  +\ii k\,\Gamma[U]
+  \label{eq:pcm-wz-action}
+\end{equation}
+is single-valued only when the normalization of \(\kappa\) and the integer
+level \(k\) make the change of \(k\Gamma\) under a different extension a
+multiple of \(2\pi\).  At the conformal WZW point the chiral currents generate
+the affine algebra \(\widehat{\mathfrak g}_k\), and the Sugawara stress tensor
+has central charge
+\begin{equation}
+  c=\frac{k\,\dim\mathfrak g}{k+h^\vee},
+  \label{eq:wzw-central-charge-crosslink}
+\end{equation}
+where \(h^\vee\) is the dual Coxeter number.  Volume~V develops the affine
+and VOA side.  The role here is to identify WZW models as fixed points and
+endpoints in the sigma-model family, not as isolated algebraic examples.
+
+\section{Symmetric-Space, Supergroup, and Deformed-Sphere Families}
+\label{sec:integrable-symmetric-super-sausage}
+
+Many integrable sigma models are organized by a homogeneous target \(G/H\).
+Let \(\mathfrak g=\mathfrak h\oplus\mathfrak m\) be a reductive split and
+write
+\[
+  g^{-1}\dd g=A+P,\qquad A\in\mathfrak h,\quad P\in\mathfrak m .
+\]
+The bosonic coset action is
+\begin{equation}
+  S_{G/H}[g]
+  =
+  \frac1{2g^2}\int_\Sigma\kappa(P_\mu,P_\mu),
+  \label{eq:coset-sigma-action}
+\end{equation}
+with local \(H\) redundancy \(g(x)\mapsto g(x)h(x)\).  If \(G/H\) is a
+symmetric space,
+\[
+  [\mathfrak h,\mathfrak h]\subset\mathfrak h,\qquad
+  [\mathfrak h,\mathfrak m]\subset\mathfrak m,\qquad
+  [\mathfrak m,\mathfrak m]\subset\mathfrak h,
+\]
+the equations admit a Lax representation analogous to
+\eqref{eq:pcm-lax-pair}.  Projective space is the example
+\[
+  \mathbb{CP}^{N-1}=SU(N)/S(U(N-1)\times U(1)).
+\]
+The same construction extends formally to supergroups and supercosets by
+replacing vector spaces by super vector spaces and \(\kappa\) by an invariant
+even bilinear form.  The path-integral meaning then involves the supermanifold
+language developed earlier in the monograph: odd coordinates are elements of
+the structure sheaf, and Berezin integration is not a Borel measure.
+
+\begin{controlledapproximation}[Supercoset and deformed-sphere status]
+\label{ca:supercoset-sausage-status}
+Supergroup sigma models, principal supergroup models, and deformed-sphere
+models such as the sausage deformation of the \(O(3)\) target are indispensable
+members of the integrable sigma-model landscape.  In this chapter they are
+recorded as family data: target or coset, coupling coordinates, global
+symmetries, Lax representation when available, and expected bootstrap
+particles.  A theorem-level identification with a local QFT requires the same
+ingredients demanded in Open Problem~\ref{op:constructive-factorizing-on-gn}:
+a regulator, Hilbert space or graded state space, local observables, conserved
+currents, and matching between ultraviolet and bootstrap coordinates.  The
+sausage family in particular should be treated as a controlled deformation of
+the round \(S^2\) sigma model with a stated metric and RG trajectory before
+any comparison to cigar or parafermion cosets is made.
+\end{controlledapproximation}
+
+\begin{definition}[Sigma-model family datum]
+\label{def:sigma-model-family-datum}
+A sigma-model family datum consists of:
+\begin{enumerate}
+  \item a target, quotient, or supertarget \(X\), including its global and
+  local redundancy groups;
+  \item a regulator definition of maps \(\Sigma\to X\) and of the functional
+  measure or Berezin functional;
+  \item coupling coordinates in the metric, \(B\)-field, Wess--Zumino, and
+  \(\theta\)-angle sectors;
+  \item classical integrability data, such as a Lax connection, when present;
+  \item ultraviolet beta functions or a nonperturbative mass-generation
+  calculation;
+  \item a proposed bootstrap spectrum and S-matrix, with CDD choices and bound
+  state poles specified;
+  \item a matching statement between the regulator and bootstrap data.
+\end{enumerate}
+The families discussed in this chapter are the round \(O(N)\) model,
+\(\mathbb{CP}^{N-1}\), principal chiral models, WZW endpoints, symmetric-space
+cosets, supergroup variants, and deformed-sphere trajectories.
+\end{definition}
+
 \section{Gross--Neveu Ultraviolet Datum}
 
 Let \(\psi^i\), \(i=1,\ldots,N\), be Majorana fermions in two Lorentzian

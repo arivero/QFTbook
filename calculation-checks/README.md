@@ -826,6 +826,11 @@ Current checks:
   Gell-Mann--Okubo relation, decuplet equal spacing, Veneziano-residue
   polynomial degrees and coefficients, and the rational coefficient in the
   classical open-flux-tube Regge slope.
+- `sigma_model_family_checks.py`: exact finite checks for the integrable
+  sigma-model family chapter, including the \(\CP^{N-1}\) projector identity,
+  the algebraic equivalence between the principal-chiral-model Lax flatness
+  polynomial and the equation-of-motion/Maurer--Cartan pair, and sample WZW
+  central charges.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the
