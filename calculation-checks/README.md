@@ -193,6 +193,11 @@ Current checks:
   Dirac--Pauli conversion \(F_1=F+G\), \(F_2=-G\), the zero-transfer
   vertex-parameter integral, and Schwinger's
   \(g_{\mathrm{mag}}-2=\alpha/\pi\) normalization.
+- `qed_external_state_checks.py`: finite sign checks for the Volume I QED
+  external-state chapter, including local charge neutrality, Abelian
+  Wilson-line endpoint cancellation, field independence of the Abelian
+  Faddeev--Popov determinant, tree Compton longitudinal Ward-cancellation
+  signs, and the fixed-incoming-label cross-section sum.
 - `conformal_collider_checks.py`: exact rational checks for the ANEC and
   conformal-collider section, including the \(S^2\) angular averages in the
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions

@@ -5,21 +5,23 @@
 
 \section{Charged Spinors and Abelian Gauge Representatives}
 
-The free theories constructed in the preceding chapters can be coupled by
-letting a Dirac spinor field carry a one-dimensional unitary representation
-of an Abelian gauge group. Let \(g\in\R\) be the charge of the spinor field.
-For the electron convention used below,
+\begin{definition}[QED representative datum]
+\label{def:qed-representative-datum}
+A local representative datum for four-dimensional QED consists of a real
+Abelian vector-potential representative \(A_\mu(x)\), a Dirac spinor
+representative \(\psi_\alpha(x)\), its mostly-plus Dirac adjoint
+\(\bar\psi^\alpha(x)=\psi^\dagger\beta\), and a real charge coordinate
+\(g\in\mathbb R\).  For the electron convention used below,
 \[
   g=-e,\qquad e>0 .
 \]
-The representative fields are
+The representative fields are therefore
 \[
   A_\mu(x),\qquad \psi_\alpha(x),\qquad \bar\psi^\alpha(x),
 \]
-where \(A_\mu\) is a real vector-potential representative and
-\(\bar\psi=\psi^\dagger\beta\) is the Dirac adjoint defined in
-Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}.
-A real function \(\xi(x)\) changes representatives by
+with \(\bar\psi\) defined as in
+Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}.  A real function
+\(\xi(x)\) changes representatives by
 \[
   A_\mu\mapsto A_\mu+\partial_\mu\xi,\qquad
   \psi\mapsto \ee^{\ii g\xi}\psi,\qquad
@@ -31,6 +33,40 @@ The Abelian covariant derivative is
   =
   \partial_\mu\psi-\ii gA_\mu\psi .
 \]
+\end{definition}
+
+\begin{proposition}[Covariance of the Abelian Dirac coupling]
+\label{prop:qed-abelian-dirac-coupling-covariant}
+For the representative change of
+Definition~\ref{def:qed-representative-datum}, the covariant derivative
+transforms as
+\[
+  D_\mu(\ee^{\ii g\xi}\psi)=\ee^{\ii g\xi}D_\mu\psi .
+\]
+Consequently the local action
+\[
+  S_{\mathrm{QED}}[A,\bar\psi,\psi]
+  =
+  \int\dd^4x\,
+  \left[
+    -\frac14F_{\mu\nu}F^{\mu\nu}
+    -\bar\psi(\gamma^\mu D_\mu+m)\psi
+  \right]
+\]
+is invariant under compactly supported changes of Abelian representative,
+where
+\[
+  F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,\qquad
+  \not a=a_\mu\gamma^\mu .
+\]
+In the monograph's mostly-plus gamma convention the current represented by
+the coupling to \(A_\mu\) is
+\[
+  j^\mu=\ii g\,\bar\psi\gamma^\mu\psi .
+\]
+\end{proposition}
+
+\begin{proof}
 It transforms with the same charge as \(\psi\):
 \[
 \begin{aligned}
@@ -42,22 +78,10 @@ It transforms with the same charge as \(\psi\):
   \ee^{\ii g\xi}D_\mu\psi .
 \end{aligned}
 \]
-Thus the local action
-\[
-  S_{\mathrm{QED}}[A,\bar\psi,\psi]
-  =
-  \int\dd^4x\,
-  \left[
-    -\frac14F_{\mu\nu}F^{\mu\nu}
-    -\bar\psi(\gamma^\mu D_\mu+m)\psi
-  \right]
-\]
-is invariant under the representative change. Here
-\[
-  F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,\qquad
-  \not a=a_\mu\gamma^\mu
-\]
-for any covector \(a_\mu\). Expanding the covariant derivative gives
+The curvature \(F_{\mu\nu}\) is unchanged because
+\(\partial_\mu\partial_\nu\xi=\partial_\nu\partial_\mu\xi\).  The Dirac term
+is invariant because the phase of \(D_\mu\psi\) cancels the opposite phase of
+\(\bar\psi\).  Expanding the covariant derivative gives
 \[
   \mathcal L_{\mathrm{QED}}
   =
@@ -73,10 +97,14 @@ electric current represented by the coupling to \(A_\mu\) is
 The leading factor of \(\ii\) is fixed by the mostly-plus Dirac adjoint
 \(\bar\psi=\psi^\dagger\beta\), \(\beta=\ii\gamma^0\), together with
 \(D_\mu=\partial_\mu-\ii gA_\mu\).
-It is invariant under the local Abelian representative change.
+It is invariant under the local Abelian representative change because the
+endpoint phases of \(\bar\psi\) and \(\psi\) cancel.
+\end{proof}
 
 \section{Local Observables and Charged Insertions}
 
+\begin{definition}[Local Abelian charge of a representative monomial]
+\label{def:qed-local-abelian-charge}
 A local observable is represented by a local expression in the fields that is
 invariant under all compactly supported changes of gauge representative.
 Examples are
@@ -90,18 +118,60 @@ A local monomial containing \(N_\psi\) factors of \(\psi\) and
 \[
   g(N_\psi-N_{\bar\psi}) .
 \]
-Gauge invariance of a pointlike local monomial therefore requires the net
-local charge to vanish.
+\end{definition}
 
+\begin{proposition}[Neutrality criterion for pointlike local monomials]
+\label{prop:qed-pointlike-local-neutrality}
+Gauge invariance of a pointlike local monomial therefore requires the net
+local charge in Definition~\ref{def:qed-local-abelian-charge} to vanish.
+\end{proposition}
+
+\begin{proof}
+Under a compactly supported representative change the monomial is multiplied
+by
+\[
+  \exp\!\left(\ii g(N_\psi-N_{\bar\psi})\xi(x)\right)
+\]
+at the point of insertion.  Since \(\xi(x)\) can be chosen arbitrarily while
+remaining compactly supported, invariance for all representative changes
+forces \(g(N_\psi-N_{\bar\psi})=0\).  For nonzero charge coordinate \(g\) this
+is precisely \(N_\psi=N_{\bar\psi}\).
+\end{proof}
+
+\begin{definition}[Wilson-line dressed charged insertion]
+\label{def:qed-wilson-line-dressed-charged-insertion}
 Charged insertions are represented by adding dressing data. Let \(C_x\) be an
 oriented curve beginning at \(x\) and ending at a prescribed asymptotic
-endpoint. For gauge parameters that vanish at that endpoint, define
+endpoint. For gauge parameters that vanish at that endpoint, set
 \[
   \Psi_{C_x}(x)
   =
   \exp\left(\ii g\int_{C_x} A_\mu(y)\,\dd y^\mu\right)\psi(x).
 \]
-Indeed,
+Similarly, for a path \(C_{y\to x}\) from \(y\) to \(x\), set
+\[
+  \mathcal O_{\alpha}{}^{\beta}(x,y;C_{y\to x})
+  =
+  \psi_\alpha(x)
+  \exp\left(
+    -\ii g\int_{C_{y\to x}} A_\mu(z)\,\dd z^\mu
+  \right)
+  \bar\psi^\beta(y).
+\]
+The curve is part of the insertion datum; these are not pointlike local
+observables.
+\end{definition}
+
+\begin{proposition}[Endpoint cancellation for Abelian Wilson dressings]
+\label{prop:qed-wilson-dressing-endpoint-cancellation}
+The dressed operators in
+Definition~\ref{def:qed-wilson-line-dressed-charged-insertion} are invariant
+under compactly supported Abelian representative changes compatible with the
+stated endpoint convention.
+\end{proposition}
+
+\begin{proof}
+For the half-infinite dressing,
 \[
   \int_{C_x}\partial_\mu\xi(y)\,\dd y^\mu
   =
@@ -110,26 +180,17 @@ Indeed,
   -\xi(x),
 \]
 so the phase acquired by the line integral cancels the phase of \(\psi(x)\).
-The curve is part of the insertion: it records electromagnetic dressing data.
-It is therefore not an additional pointlike local observable.
-
-Similarly, for a path \(C_{y\to x}\) from \(y\) to \(x\),
-\[
-  \psi_\alpha(x)
-  \exp\left(
-    -\ii g\int_{C_{y\to x}} A_\mu(z)\,\dd z^\mu
-  \right)
-  \bar\psi^\beta(y)
-\]
-is invariant under compactly supported representative changes, because the
-Wilson-line phase changes by
+For the finite bilocal dressing the Wilson-line phase changes by
 \[
   \exp\{-\ii g(\xi(x)-\xi(y))\}.
 \]
 This cancels the endpoint phases of \(\psi_\alpha(x)\) and
-\(\bar\psi^\beta(y)\). The line operator itself may require short-distance
+\(\bar\psi^\beta(y)\).
+\end{proof}
+
+The line operator itself may require short-distance
 renormalization when it is defined as an operator-valued distribution. That
-renormalization question is separate from the elementary gauge-covariance
+renormalization question is separate from the finite gauge-covariance
 calculation displayed here.
 
 \begin{remark}
@@ -238,6 +299,8 @@ nonabelian local-coordinate and BRST analysis of
 Chapter~\ref{ch:volume-ii-18}, especially
 Theorem~\ref{thm:singer-gribov-obstruction}.
 
+\begin{definition}[Regulated gauge-fixed QED source functional]
+\label{def:qed-gauge-fixed-source-functional}
 Introduce an ordinary source \(J^\mu\) for \(A_\mu\), and Grassmann sources
 \(\eta_\alpha,\bar\eta^\alpha\) for \(\bar\psi^\alpha,\psi_\alpha\). The
 regulated Lorentzian generating functional, written in continuum shorthand, is
@@ -261,13 +324,18 @@ expansion of the interaction term
 \[
   \ii gA_\mu\bar\psi\gamma^\mu\psi
 \]
-around the Gaussian Maxwell and Dirac functionals already constructed. The
+around the Gaussian Maxwell and Dirac functionals already constructed.  The
 covariant gauge parameter \(\xi_{\mathrm g}\) changes representative
 correlators; the local gauge-invariant correlators obtained from neutral
 operators and field strengths do not depend on this representative choice.
+\end{definition}
 
-The elementary momentum-space rules are as follows. A directed fermion line
-from \(\psi_\alpha\) to \(\bar\psi^\beta\) carries
+\begin{proposition}[Representative QED Feynman rules]
+\label{prop:qed-representative-feynman-rules}
+The coefficientwise expansion of
+Definition~\ref{def:qed-gauge-fixed-source-functional} gives the following
+momentum-space representative rules. A directed fermion line from
+\(\psi_\alpha\) to \(\bar\psi^\beta\) carries
 \[
 \begin{tikzpicture}[baseline=-0.6ex,scale=0.82]
   \draw[thick,-{Stealth[length=3pt]}] (0,0) -- (1.8,0);
@@ -320,9 +388,31 @@ For the electron convention \(g=-e\), the vertex factor is
 \(\xi_{\mathrm g}\) appears only in the representative photon propagator.
 Amplitudes between physical photon helicity states are obtained after LSZ
 projection and are independent of the longitudinal representative.
+\end{proposition}
+
+\begin{proof}
+The fermion propagator is the inverse of the free Dirac kernel in the
+conventions of Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}; the
+displayed numerator is the adjugate of \(\not k+\ii m\) in the mostly-plus
+spinor convention, with the Feynman boundary value fixed by
+\(-\ii\epsilon\).  The photon representative propagator is the inverse of the
+quadratic Maxwell operator after adding
+\(-(\partial_\mu A^\mu)^2/(2\xi_{\mathrm g})\), as derived in
+Chapter~\ref{ch:maxwell-theory-constraints-gauge-fixing}.  The Abelian
+Faddeev--Popov determinant is field independent by
+Proposition~\ref{prop:qed-abelian-faddeev-popov-specialization}, so no ghost
+vertex occurs.  Finally, differentiating the interaction
+\(\ii\int \ii g A_\mu\bar\psi\gamma^\mu\psi\) with respect to one photon
+source and the two Grassmann sources gives the cubic representative vertex
+\(-g\gamma^\mu\), with the displayed index placement inherited from the
+ordered source convention in
+Definition~\ref{def:qed-gauge-fixed-source-functional}.
+\end{proof}
 
 \section{External Factors as Pole Data}
 
+\begin{definition}[QED external pole-residue factors]
+\label{def:qed-external-pole-residue-factors}
 External factors in a diagrammatic amplitude are residues of poles already
 identified by LSZ. The particle definitions have already been supplied by the
 one-particle spectral data and scattering construction. With the normalizations
@@ -369,6 +459,8 @@ e^+_{\mathrm{in}}(\vec p,\sigma)
 e_\mu^h(\vec k).
 \end{array}
 \]
+\end{definition}
+
 \begin{remark}[Status of the charged entries]
 The electron and positron rows are literal LSZ residues only in a sector whose
 charged spectrum contains an isolated massive one-particle shell.  This is the
@@ -386,6 +478,24 @@ absent.  The spinor factors below should consequently be read as hard-kernel
 data whose physical completion is supplied by the inclusive and dressed
 constructions of Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.
 \end{remark}
+
+\begin{proposition}[Residue origin of the external factors]
+\label{prop:qed-external-factors-lsz-residue-origin}
+Assume the spinor and photon representative two-point functions have the
+isolated one-particle pole data specified in Chapters~\ref{ch:lsz-reduction},
+\ref{ch:spinor-fields-fermionic-path-integrals}, and
+\ref{ch:maxwell-theory-constraints-gauge-fixing}.  Then the factors in
+Definition~\ref{def:qed-external-pole-residue-factors} are exactly the
+coefficients obtained by applying the LSZ boundary-value operation to the
+corresponding amputated kernel.  A change
+\[
+  e_\mu^h(\vec k)\mapsto e_\mu^h(\vec k)+\alpha k_\mu
+\]
+does not change the physical photon state; it changes only the representative
+used before the final helicity quotient.
+\end{proposition}
+
+\begin{proof}
 The spinor entries use the normalization derived in
 \eqref{eq:spinor-external-normalization-factors}: the \(2\omega_{\vec p}\)
 factor in the covariant one-particle measure is paired with the
@@ -423,6 +533,13 @@ For any polarization representative,
 \[
   \not e^{\,h}(\vec k)=e_\mu^h(\vec k)\gamma^\mu .
 \]
+The LSZ operation removes the adjacent free propagator and leaves precisely
+the displayed residue vector or covector.  For the photon, the quotient by
+longitudinal representatives is the helicity quotient constructed in
+Chapter~\ref{ch:massless-particles-helicity-gauge-redundancy}; replacing
+\(e_\mu^h\) by \(e_\mu^h+\alpha k_\mu\) changes the representative but not
+the resulting one-photon helicity state.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm]
@@ -501,6 +618,8 @@ with the common normalization factors displayed in the table.
 
 \section{Compton Scattering at Tree Level}
 
+\begin{proposition}[Tree-level Compton hard kernel]
+\label{prop:qed-tree-compton-hard-kernel}
 Consider the process
 \[
   e^-(p,\sigma)+\gamma(k,h)
@@ -567,6 +686,22 @@ from the scattering matrix element, the reduced amplitude is
   u^\sigma(\vec p).
 \end{aligned}
 \]
+\end{proposition}
+
+\begin{proof}
+At tree level the source expansion of
+Proposition~\ref{prop:qed-representative-feynman-rules} has exactly two
+connected diagrams with one internal electron line: the channel with internal
+momentum \(p+k\) and the channel with internal momentum \(p-k'\).  The photon
+external factors are the helicity representatives in
+Definition~\ref{def:qed-external-pole-residue-factors}; the adjacent photon
+propagators have already been removed by LSZ.  The two cubic vertices
+contribute the factor \(e^2\) in the electron convention \(g=-e\), while the
+single internal spinor propagator contributes the displayed numerator and
+denominator in each channel.  Removing the overall
+\((2\pi)^4\delta^{(4)}(p+k-p'-k')\) gives the stated reduced kernel.
+\end{proof}
+
 In an infrared-deformed theory with ordinary charged one-particle poles, this
 is an LSZ-reduced expression: the external spinors and polarization vectors
 are the pole residues listed above.  In massless QED it is the Born hard
@@ -577,6 +712,16 @@ into an exact fixed-photon-number electron \(S\)-matrix element; they are
 combined in the inclusive or dressed constructions developed in
 Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.
 
+\begin{theorem}[Tree-level Ward identity for the Compton hard kernel]
+\label{thm:qed-compton-tree-ward-identity}
+The hard kernel of Proposition~\ref{prop:qed-tree-compton-hard-kernel}
+descends from photon polarization representatives to photon helicity states.
+Equivalently, replacing either external photon polarization representative by
+that representative plus a multiple of its null momentum leaves the sum of the
+two tree diagrams unchanged.
+\end{theorem}
+
+\begin{proof}
 The expression descends from photon representatives to photon helicity states.
 Let
 \[
@@ -652,7 +797,10 @@ so the contribution is
 \]
 The outgoing-polarization shifts cancel as well. This cancellation is the
 tree-level Ward identity for the Compton amplitude.
+\end{proof}
 
+\begin{corollary}[Tree Compton cross-section functional]
+\label{cor:qed-tree-compton-cross-section-functional}
 With the cross-section normalization of
 Chapter~\ref{ch:cross-sections-unitarity}, the total cross section
 for fixed incoming spin and helicity is
@@ -672,13 +820,26 @@ for fixed incoming spin and helicity is
   \right|^2 ,
 \end{aligned}
 \]
-where \(v\) is the incoming relative velocity. The evaluation of the spin
-and polarization sums is a kinematic exercise built from the completeness
-relations of Chapters~\ref{ch:spinor-fields-fermionic-path-integrals} and
+where \(v\) is the incoming relative velocity. The spin and polarization sums
+are obtained from the completeness relations of
+Chapters~\ref{ch:spinor-fields-fermionic-path-integrals} and
 \ref{ch:massless-particles-helicity-gauge-redundancy}.
+\end{corollary}
+
+\begin{proof}
+This is the sharp-kernel event-probability formula of
+Chapter~\ref{ch:cross-sections-unitarity} applied to the reduced kernel
+\(\mathcal M\) in Proposition~\ref{prop:qed-tree-compton-hard-kernel}.  The
+delta distribution imposes the four-momentum conservation already factored
+out of the \(S\)-matrix element, and the sum runs over the final physical
+spin and helicity labels.  The incoming spin and helicity are held fixed, so
+there is no incoming average in the displayed expression.
+\end{proof}
 
 \section{Infrared Boundary of Charged Scattering}
 
+\begin{proposition}[Infrared boundary of charged QED scattering]
+\label{prop:qed-charged-scattering-infrared-boundary}
 The perturbative rules above are rules for hard Green-function residues. They
 are valid order by order once an infrared regulator or an inclusive
 prescription has been specified. The exact long-range theory has an additional
@@ -693,6 +854,24 @@ This boundary is already visible in the charged dressing
 \(\Psi_{C_x}(x)\). A dressing that retains nonzero electric charge extends to
 infinity. In scattering, the same long-range field is represented
 perturbatively by arbitrarily soft photons.
+\end{proposition}
+
+\begin{proof}
+For a gauge parameter that approaches a nonzero constant on a large sphere,
+Gauss' law relates the total electric charge inside the sphere to the
+asymptotic electric flux.  Thus a charged vector cannot be created from the
+vacuum by a compactly supported gauge-invariant operator, and a charged
+insertion must carry dressing data extending to the boundary as in
+Definition~\ref{def:qed-wilson-line-dressed-charged-insertion}.  Because the
+photon is massless, adding arbitrarily low-energy photons to a charged hard
+configuration changes the state while changing the total energy-momentum by
+an arbitrarily small amount.  The charged mass threshold is therefore not an
+isolated one-particle mass shell separated by a gap from the rest of the
+charged spectrum.  This is precisely the hypothesis ordinary massive
+Haag--Ruelle and the pole form of LSZ require, so the representative hard
+kernel must be completed by an infrared-aware construction.
+\end{proof}
+
 The physical completions are inclusive transition probabilities, where soft
 photons below a resolution threshold are summed over, or dressed asymptotic
 charged states. Those constructions belong after renormalization and the

@@ -1,6 +1,7 @@
 # Volume I, Chapter 19 Dossier: Quantum Electrodynamics and External States
 
-Status: revised and source-audited on 2026-05-22.
+Status: revised and source-audited on 2026-05-22; formalized and
+calculation-check companion added on 2026-05-27.
 
 ## Source Placement
 
@@ -27,6 +28,12 @@ Status: revised and source-audited on 2026-05-22.
 
 - The chapter derives the classical gauge covariance of the QED Lagrangian and
   the tree-level Ward cancellation directly.
+- The 2026-05-27 formalization pass promotes the representative datum,
+  local-neutrality criterion, Wilson-line dressing endpoint cancellation,
+  gauge-fixed source functional, representative Feynman rules, LSZ external
+  residue factors, tree Compton hard kernel, tree Ward identity, and infrared
+  boundary of charged scattering into labeled definitions/propositions or a
+  theorem with proof blocks.
 - It uses the Buchholz--Dybalski review only to justify the stated limitation
   that charged sectors of long-range Abelian gauge theories need infrared-aware
   asymptotic constructions beyond ordinary massive Haag--Ruelle hypotheses.
@@ -61,14 +68,15 @@ Status: revised and source-audited on 2026-05-22.
 | \(j^\mu\) | electromagnetic current represented, in these gamma conventions, by \(\ii g\bar\psi\gamma^\mu\psi\) |
 | \(\xi_{\mathrm g}\) | covariant gauge-fixing parameter |
 | \(J^\mu,\eta,\bar\eta\) | sources for \(A_\mu,\bar\psi,\psi\) in the generating functional |
-| \(F_\varphi[A]\) | covariant gauge condition \(\partial_\mu A^\mu-\varphi\) used to derive the QED Faddeev--Popov operator |
-| \(\Delta_{\rm FP}^{U(1)}\) | Abelian Faddeev--Popov determinant \(\det{}'\Box\) after residual zero modes are removed |
+| \(F_\varphi[A]\) | covariant gauge condition \(\partial_\mu A^\mu-\varphi\) used for the QED Faddeev--Popov operator |
+| \(\Delta_{\rm FP}^{U(1)}\) | Abelian Faddeev--Popov determinant after residual zero modes are removed |
 | \(C_x,C_{y\to x}\) | dressing paths for charged Wilson-line insertions |
 | \(Z_\psi,Z_A\) | pole residues for spinor and photon representative fields |
 | \(u^\sigma,v^\sigma\) | massive spinor intertwiners fixed in Chapter 16 |
 | \(e_\mu^h\) | massless helicity-one polarization representative |
 | \(\not e^{\,h}\) | \(e_\mu^h\gamma^\mu\) |
 | \(\mathcal M\) | reduced scattering amplitude after removing the momentum-conservation delta function |
+| \(N(q),D(q)\) | tree-Compton shorthand \(N(q)=-\ii\not q+m\), \(D(q)=q^2+m^2-\ii\epsilon\) |
 
 ## Claims Established
 
@@ -101,6 +109,11 @@ Status: revised and source-audited on 2026-05-22.
 - Tree-level Compton scattering is presented as a Born hard kernel.  It is not
   claimed to be an exact fixed-photon-number electron \(S\)-matrix element of
   massless QED after removal of the infrared regulator.
+- The companion script `calculation-checks/qed_external_state_checks.py`
+  verifies the finite sign bookkeeping for charge neutrality, Abelian
+  Wilson-line endpoint phases, Abelian Faddeev--Popov field independence, the
+  tree-Compton longitudinal Ward cancellation, and the fixed-incoming-label
+  cross-section summation convention.
 
 ## Figure Requirements
 
