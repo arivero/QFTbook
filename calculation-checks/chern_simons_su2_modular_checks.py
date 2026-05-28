@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Finite checks for the SU(2)_k Chern-Simons modular data."""
+"""Finite checks for Chern-Simons normalizations and SU(2)_k modular data."""
 
 from __future__ import annotations
 
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-10) -> None:
@@ -39,6 +40,55 @@ def su2_truncated_rule(k: int, a: int, b: int, c: int) -> int:
     if abs(a - b) <= c <= min(a + b, 2 * k - a - b):
         return 1
     return 0
+
+
+def assert_equal(name: str, got: object, expected: object) -> None:
+    if got != expected:
+        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def check_finite_gauge_transgression_coefficient() -> None:
+    # With A^g=gAg^{-1}-dg g^{-1}, the pure Maurer-Cartan term in
+    # cs(A^g)-cs(A) is (1/3) tr(theta^3).  The action prefactor k/(4*pi)
+    # and the winding normalization (24*pi^2) give 2*pi*k*n.
+    coefficient_in_units_of_pi_k = Fraction(1, 4) * Fraction(1, 3) * 24
+    assert_equal("Chern-Simons winding coefficient", coefficient_in_units_of_pi_k, Fraction(2))
+
+
+def check_abelian_transgression_derivative_sign() -> None:
+    # In the Abelian limit theta^2=dtheta=0 and A^g=A-theta.  Directly
+    # expanding (A-theta) d(A-theta)-A dA gives -theta dA.  Since
+    # d(theta A)=dtheta A-theta dA, the local transgression must contain
+    # +d(theta A), not -d(theta A).
+    direct_theta_d_a = Fraction(-1)
+    plus_d_theta_a_theta_d_a = Fraction(-1)
+    minus_d_theta_a_theta_d_a = Fraction(1)
+    assert_equal("Abelian transgression derivative sign", direct_theta_d_a, plus_d_theta_a_theta_d_a)
+    if direct_theta_d_a == minus_d_theta_a_theta_d_a:
+        raise AssertionError("wrong-sign Chern-Simons derivative term was not detected")
+
+
+def check_holomorphic_polarization_variation() -> None:
+    # Boundary variation coefficients in units of k/(pi) for the independent
+    # monomials A_z delta A_bar and A_bar delta A_z.
+    bulk_z_dbar = Fraction(1, 4)
+    bulk_bar_dz = Fraction(-1, 4)
+    pol_z_dbar = Fraction(1, 4)
+    pol_bar_dz = Fraction(1, 4)
+    assert_equal("polarized variation A_z delta Abar", bulk_z_dbar + pol_z_dbar, Fraction(1, 2))
+    assert_equal("polarized variation Abar delta Az", bulk_bar_dz + pol_bar_dz, Fraction(0))
+
+
+def check_polyakov_wiegmann_cross_coefficients() -> None:
+    # Cross terms in units of k/pi.  The kinetic part contributes
+    # (X_z Y_bar + X_bar Y_z)/4.  The WZ boundary term contributes
+    # (-X_z Y_bar + X_bar Y_z)/4.
+    kinetic_xz_ybar = Fraction(1, 4)
+    kinetic_xbar_yz = Fraction(1, 4)
+    wz_xz_ybar = Fraction(-1, 4)
+    wz_xbar_yz = Fraction(1, 4)
+    assert_equal("PW canceled cross term", kinetic_xz_ybar + wz_xz_ybar, Fraction(0))
+    assert_equal("PW surviving cross coefficient", kinetic_xbar_yz + wz_xbar_yz, Fraction(1, 2))
 
 
 def check_s_orthogonality() -> None:
@@ -88,11 +138,15 @@ def check_verlinde_dimensions() -> None:
 
 
 def main() -> None:
+    check_finite_gauge_transgression_coefficient()
+    check_abelian_transgression_derivative_sign()
+    check_holomorphic_polarization_variation()
+    check_polyakov_wiegmann_cross_coefficients()
     check_s_orthogonality()
     check_quantum_dimensions_and_hopf_links()
     check_verlinde_rule()
     check_verlinde_dimensions()
-    print("All SU(2)_k Chern-Simons modular-data checks passed.")
+    print("All Chern-Simons normalization and SU(2)_k modular-data checks passed.")
 
 
 if __name__ == "__main__":

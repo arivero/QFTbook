@@ -157,6 +157,13 @@ Current checks:
   theory chapter, including finite Fourier projection onto flat cochains,
   the groupoid-cardinality partition function, cellular Wilson gauge
   invariance, and the Wilson/surface linking phase sign.
+- `chern_simons_su2_modular_checks.py`: finite checks for the Volume VIII
+  Chern--Simons chapter, including the finite-gauge-transgression winding
+  coefficient, the Abelian limit fixing the total-derivative sign,
+  holomorphic-polarization boundary-variation coefficients,
+  Polyakov--Wiegmann cross-term bookkeeping, and the \(SU(2)_k\)
+  modular-data orthogonality, quantum dimensions, Hopf links, Verlinde
+  coefficients, and genus-zero/one state-space dimensions.
 - `finite_gauge_state_sum_checks.py`: exact finite checks for the Volume VIII
   finite-gauge state-sum chapter, including action-groupoid cardinality,
   connected-manifold homomorphism counts, closed-surface character formulas

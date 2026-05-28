@@ -49,14 +49,75 @@ For simply connected compact simple \(G\), choose the bilinear form so that
   \operatorname{tr}\bigl(g^{-1}dg\bigr)^3\in\mathbb Z
 \]
 for maps \(g:S^3\to G\) representing the generator of \(\pi_3(G)\).  Under a
-gauge transformation \(g:M\to G\), the Chern--Simons functional changes by
+gauge transformation \(g:M\to G\), use the right action convention
+\[
+  A^g=gAg^{-1}-(dg)g^{-1}.
+\]
+Put \(\theta_g=dg\,g^{-1}\).  The right Maurer--Cartan equation is
+\[
+  d\theta_g=\theta_g\wedge\theta_g .
+\]
+
+\begin{lemma}[Chern--Simons transgression under a finite gauge transformation]
+\label{lem:cs-finite-gauge-transgression}
+With
+\[
+  \operatorname{cs}(A)
+  =
+  \operatorname{tr}\!\left(A\wedge dA+\frac23A\wedge A\wedge A\right),
+\]
+one has the identity of three-forms
+\[
+  \operatorname{cs}(A^g)-\operatorname{cs}(A)
+  =
+  d\,\operatorname{tr}(\theta_g\wedge A)
+  +\frac13\operatorname{tr}(\theta_g\wedge\theta_g\wedge\theta_g).
+  \label{eq:cs-finite-gauge-transgression}
+\]
+\end{lemma}
+
+\begin{proof}
+Write \(B=gAg^{-1}\).  Then \(A^g=B-\theta_g\),
+\[
+  dB=g(dA)g^{-1}+\theta_g\wedge B-B\wedge\theta_g,
+  \qquad
+  d\theta_g=\theta_g\wedge\theta_g .
+\]
+Substitute these two identities into
+\(\operatorname{tr}((B-\theta_g)\wedge d(B-\theta_g)
++\frac23(B-\theta_g)^3)\).  The terms containing only \(B\) give
+\(\operatorname{cs}(A)\) by invariance of \(\operatorname{tr}\).  The terms
+with two \(B\)'s and one \(\theta_g\) cancel after cyclic permutation inside
+the invariant trace.  Conjugating the remaining one-\(\theta_g\) mixed terms
+back to the original \(A\)-frame by invariance of \(\operatorname{tr}\), they
+combine as
+\[
+  \operatorname{tr}(d\theta_g\wedge A)
+  -\operatorname{tr}(\theta_g\wedge dA)
+  =
+  d\,\operatorname{tr}(\theta_g\wedge A),
+\]
+and the pure Maurer--Cartan terms give
+\(\frac13\operatorname{tr}(\theta_g^3)\).  This is
+\eqref{eq:cs-finite-gauge-transgression}.
+\end{proof}
+
+Therefore, on closed \(M\),
 \[
   S_{\rm CS}(A^g)-S_{\rm CS}(A)
   =
   2\pi k\, n(g)
 \]
-on closed \(M\), where \(n(g)\in\mathbb Z\) is the winding number with the
-chosen normalization.
+where
+\[
+  n(g)
+  =
+  \frac{1}{24\pi^2}
+  \int_M\operatorname{tr}(\theta_g\wedge\theta_g\wedge\theta_g)
+  \in\mathbb Z
+\]
+is the winding number with the chosen normalization.  The sign in this
+formula is tied to the displayed right-action convention for \(A^g\).
 
 \begin{proposition}[Gauge invariance of the exponentiated action]
 \label{prop:cs-level-quantization}
@@ -371,11 +432,31 @@ identity
   \left(g^{-1}\dd g\wedge \dd h\,h^{-1}\right).
 \]
 Stokes' theorem converts the final term to a boundary integral on
-\(\Sigma\).  Expanding the kinetic term in
-\eqref{eq:wzw-action-boundary-cs} for \(gh\) gives the two separate kinetic
-terms plus the two cross terms.  The boundary contribution from the Wess--
-Zumino term cancels one cross term and doubles the other, leaving precisely
-the displayed expression.
+\(\Sigma\).  To see the coefficient and sign, put
+\[
+  X_z=g^{-1}\partial_zg,\qquad
+  X_{\bar z}=g^{-1}\partial_{\bar z}g,\qquad
+  Y_z=\partial_zh\,h^{-1},\qquad
+  Y_{\bar z}=\partial_{\bar z}h\,h^{-1}.
+\]
+The kinetic term of \(gh\) has the cross contribution
+\[
+  \frac{k}{4\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(X_zY_{\bar z}+X_{\bar z}Y_z).
+\]
+The boundary contribution from the Wess--Zumino three-form identity is
+\[
+  \frac{k}{4\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(-X_zY_{\bar z}+X_{\bar z}Y_z).
+\]
+Adding the two cross contributions cancels the \(X_zY_{\bar z}\) term and
+doubles the \(X_{\bar z}Y_z\) term:
+\[
+  \frac{k}{2\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(g^{-1}\partial_{\bar z}g\,\partial_zh\,h^{-1}).
+\]
+The non-cross terms are exactly \(S_{{\rm WZW},k}(g)\) and
+\(S_{{\rm WZW},k}(h)\).  This proves the identity.
 \end{proof}
 
 The gauged chiral boundary action in the same polarization is
