@@ -813,11 +813,14 @@ Current checks:
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed
   Nambu--Goto reference expansion coefficients at orders \(1/L\) and
   \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, the associated
-  \(D_{\infty h}\) channel decomposition through oscillator level \(3\), the
-  excited-level expansion coefficients with closed-string level matching, and
-  the displayed baryonic \(Y\)-string Steiner lengths in the equilateral and
-  \(120^\circ\)-threshold cases, together with the open/closed equality of
-  the worldsheet Hagedorn coefficient.
+  \(D_{\infty h}\) channel decomposition through oscillator level \(4\)
+  including the first \(\Sigma_g^-\) entry, the trace-delta
+  antisymmetric-Casimir \(k\)-string ratio, the sine-law comparison algebra
+  and displayed low-rank values, the excited-level expansion coefficients
+  with closed-string level matching, and the displayed baryonic \(Y\)-string
+  Steiner lengths in the equilateral and \(120^\circ\)-threshold cases,
+  together with the open/closed equality of the worldsheet Hagedorn
+  coefficient.
 - `qcd_glueball_spectrum_checks.py`: exact finite checks for the pure
   Yang--Mills glueball-spectrum extraction section, including the exact
   generalized-eigenvalue problem in a finite two-state subspace, large-\(N\)

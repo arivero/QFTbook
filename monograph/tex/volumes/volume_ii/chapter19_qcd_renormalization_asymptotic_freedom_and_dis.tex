@@ -1774,6 +1774,280 @@ short-distance representation carried by the flux, so the asymptotic tension
 depends on the center charge \(k_R\), not on the full microscopic
 representation \(R\), after all lower-energy screening channels are included.
 
+\subsection[Center Sectors and k-String Tensions]{Center Sectors and \(k\)-String Tensions}
+
+The preceding definition becomes sharper when the gauge theory has no
+dynamical fields of nonzero center charge.  Let the microscopic gauge group be
+the simply connected group \(SU(N_c)\), and let the only dynamical fields be
+adjoint fields.  The electric one-form symmetry is then \(\mathbb Z_{N_c}\).
+An external source in a representation \(R\) has center charge
+\[
+  k_R \equiv
+  \text{number of fundamental boxes of }R
+  \pmod{N_c}.
+\]
+The static-source Hilbert space decomposes into sectors labelled by this
+charge.  If dynamical matter of center charge \(q\) is present, the label is
+only the quotient charge left unscreened by such matter; if the global form of
+the gauge group is changed, the allowed Wilson lines and the one-form symmetry
+are changed as in the line-operator classification of
+Chapter~\ref{ch:global-forms-higher-form-symmetry}.  Thus a \(k\)-string is a
+spectral sector of a specified gauge theory, including its global form and its
+dynamical matter content, rather than an intrinsic label of a Lie algebra.
+
+\begin{definition}[Center-sector string tension]
+\label{def:qcd-center-sector-string-tension}
+In pure \(SU(N_c)\) Yang--Mills theory, fix
+\(k\in\{1,\ldots,N_c-1\}\).  A \(k\)-string tension is the number
+\begin{equation}
+  \sigma_k
+  =
+  \lim_{L\to\infty}
+  \frac{E_k(L)-E_{\rm vac}}{L},
+  \label{eq:qcd-k-string-transfer-definition}
+\end{equation}
+when the following objects and limits exist: a regulator with a positive
+transfer matrix, a static-source or winding-flux sector of electric center
+charge \(k\), the lowest energy \(E_k(L)\) in that sector for flux length
+\(L\), the vacuum energy subtraction \(E_{\rm vac}\) in the same finite box,
+and the thermodynamic and continuum limits in which the dimensionless ratio
+\(\sigma_k/\sigma_1\) stabilizes.  Charge conjugation identifies the sectors
+\(k\) and \(N_c-k\), hence
+\begin{equation}
+  \sigma_k=\sigma_{N_c-k}.
+  \label{eq:qcd-k-string-charge-conjugation}
+\end{equation}
+A sector is elementary at the level of tensions only if
+\begin{equation}
+  \sigma_k
+  <
+  \min_{\substack{k_1+\cdots+k_m\equiv k \!\!\!\pmod{N_c}\\ m\ge2}}
+  (\sigma_{k_1}+\cdots+\sigma_{k_m})
+  \label{eq:qcd-k-string-stability-criterion}
+\end{equation}
+for all nontrivial decompositions into allowed unscreened center charges.  If
+the inequality is saturated, the lowest state may be a multi-string threshold
+rather than a single stable flux tube.
+\end{definition}
+
+The normalized ratios
+\[
+  R_k(N_c)=\frac{\sigma_k}{\sigma_1}
+\]
+are nonperturbative observables.  Two closed formulas are often useful as
+comparison coordinates, but neither is a theorem of nonsupersymmetric
+four-dimensional Yang--Mills theory:
+\begin{align}
+  R_k^{\rm Casimir}(N_c)
+  &=
+  \frac{k(N_c-k)}{N_c-1},
+  \label{eq:qcd-k-string-casimir-ratio}\\
+  R_k^{\rm sine}(N_c)
+  &=
+  \frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)}.
+  \label{eq:qcd-k-string-sine-ratio}
+\end{align}
+The first is the ratio of quadratic Casimirs of the rank-\(k\) antisymmetric
+representation and the fundamental representation.  The second is the sine
+profile that appears in particular Abelianized supersymmetric BPS-vortex
+regimes, and is derived in that setting in Volume~VII.  In the present
+Yang--Mills discussion, both formulas are comparison functions for lattice or
+other nonperturbative determinations of \(\sigma_k\).
+
+\begin{proposition}[Antisymmetric Casimir ratio in trace-delta convention]
+\label{prop:qcd-k-string-casimir-ratio}
+Let \(t^a\) be \(SU(N_c)\) fundamental generators normalized by
+\[
+  \operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}.
+\]
+Let \(A_k=\Lambda^k\mathbb C^{N_c}\) be the rank-\(k\) antisymmetric
+representation, \(1\le k\le N_c-1\).  The quadratic Casimir eigenvalues in
+this normalization obey
+\begin{equation}
+  C_2(A_k)
+  =
+  \frac{k(N_c-k)(N_c+1)}{N_c},
+  \qquad
+  C_2(\square)
+  =
+  \frac{N_c^2-1}{N_c},
+  \label{eq:qcd-k-string-casimirs}
+\end{equation}
+and hence
+\[
+  \frac{C_2(A_k)}{C_2(\square)}
+  =
+  \frac{k(N_c-k)}{N_c-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+The trace-delta Fierz identity in the fundamental representation is
+\[
+  \sum_a (t^a)^i{}_j(t^a)^m{}_n
+  =
+  \delta^i{}_n\delta^m{}_j
+  -
+  \frac1{N_c}\delta^i{}_j\delta^m{}_n .
+  \label{eq:qcd-trace-delta-fierz}
+\]
+Contracting \(j=n\) and summing over \(j\) gives
+\[
+  \sum_a (t^a t^a)^i{}_m
+  =
+  \left(N_c-\frac1{N_c}\right)\delta^i{}_m,
+\]
+so \(C_2(\square)=(N_c^2-1)/N_c\).
+
+On \(V^{\otimes k}\), with \(V=\mathbb C^{N_c}\), the total generator is
+\[
+  T^a_{\rm tot}=\sum_{r=1}^k t^a_{(r)} ,
+\]
+where \(t^a_{(r)}\) acts on the \(r\)-th tensor factor.  Its quadratic
+Casimir is
+\[
+  \sum_a T^a_{\rm tot}T^a_{\rm tot}
+  =
+  \sum_{r=1}^k\sum_a t^a_{(r)}t^a_{(r)}
+  +
+  2\sum_{1\le r<s\le k}\sum_a t^a_{(r)}t^a_{(s)} .
+\]
+By \eqref{eq:qcd-trace-delta-fierz}, the two-site operator is
+\[
+  \sum_a t^a_{(r)}t^a_{(s)}
+  =
+  P_{rs}-\frac1{N_c},
+\]
+where \(P_{rs}\) exchanges the two tensor factors.  On
+\(\Lambda^kV\), \(P_{rs}=-1\).  Therefore
+\[
+  C_2(A_k)
+  =
+  k\,\frac{N_c^2-1}{N_c}
+  +
+  2\binom{k}{2}\left(-1-\frac1{N_c}\right)
+  =
+  \frac{k(N_c-k)(N_c+1)}{N_c}.
+\]
+Dividing by the fundamental value gives
+\eqref{eq:qcd-k-string-casimir-ratio}.  The factor-of-two convention in the
+generator trace cancels in the ratio, but it is displayed because this
+chapter uses the trace-delta normalization throughout.
+\end{proof}
+
+\begin{proposition}[Sine comparison algebra]
+\label{prop:qcd-k-string-sine-algebra}
+For \(1\le k\le N_c-1\), the sine comparison function
+\eqref{eq:qcd-k-string-sine-ratio} satisfies charge conjugation,
+\[
+  R_k^{\rm sine}(N_c)=R_{N_c-k}^{\rm sine}(N_c),
+\]
+strict subadditivity,
+\[
+  R_{k+\ell}^{\rm sine}(N_c)
+  <
+  R_k^{\rm sine}(N_c)+R_\ell^{\rm sine}(N_c),
+  \qquad
+  k,\ell\ge1,\quad k+\ell\le N_c-1,
+  \label{eq:qcd-sine-subadditivity}
+\]
+and the fixed-\(k\), large-\(N_c\) expansion
+\[
+  R_k^{\rm sine}(N_c)
+  =
+  k-\frac{\pi^2}{6}\frac{k(k^2-1)}{N_c^2}
+  +O(N_c^{-4}).
+  \label{eq:qcd-sine-large-n}
+\]
+The Casimir comparison function obeys the same charge conjugation symmetry,
+but its fixed-\(k\) expansion begins as
+\[
+  R_k^{\rm Casimir}(N_c)
+  =
+  k-\frac{k(k-1)}{N_c}+O(N_c^{-2}).
+  \label{eq:qcd-casimir-large-n}
+\]
+\end{proposition}
+
+\begin{proof}
+Charge conjugation for the sine function is
+\[
+  \sin\frac{\pi(N_c-k)}{N_c}
+  =
+  \sin\left(\pi-\frac{\pi k}{N_c}\right)
+  =
+  \sin\frac{\pi k}{N_c}.
+\]
+For subadditivity set \(a=\pi k/N_c\) and \(b=\pi\ell/N_c\).  Since
+\(0<a,b\) and \(a+b<\pi\),
+\[
+  \sin a+\sin b-\sin(a+b)
+  =
+  4\sin\frac a2\sin\frac b2\sin\frac{a+b}{2}>0,
+\]
+and division by the positive number \(\sin(\pi/N_c)\) gives
+\eqref{eq:qcd-sine-subadditivity}.  The expansion
+\eqref{eq:qcd-sine-large-n} follows by dividing
+\[
+  \sin\frac{\pi k}{N_c}
+  =
+  \frac{\pi k}{N_c}
+  -
+  \frac{\pi^3k^3}{6N_c^3}
+  +O(N_c^{-5})
+\]
+by the corresponding expansion with \(k=1\).  The Casimir symmetry and
+\eqref{eq:qcd-casimir-large-n} follow directly from
+\[
+  \frac{k(N_c-k)}{N_c-1}
+  =
+  k\frac{1-k/N_c}{1-1/N_c}.
+\]
+\end{proof}
+
+The different \(1/N_c\) behavior in
+\eqref{eq:qcd-sine-large-n} and \eqref{eq:qcd-casimir-large-n} is one reason
+that \(k\)-strings are useful probes of large-\(N_c\) confinement dynamics.
+For the low ranks often used in lattice comparisons, the two functions give
+\[
+\begin{array}{c|c|c|c}
+N_c & k & R_k^{\rm Casimir} & R_k^{\rm sine}\\
+\hline
+4 & 2 & 4/3 & \sqrt2\\
+5 & 2 & 3/2 & (1+\sqrt5)/2\\
+6 & 2 & 8/5 & \sqrt3\\
+6 & 3 & 9/5 & 2\\
+8 & 2 & 12/7 & \sqrt{2+\sqrt2}\\
+8 & 3 & 15/7 & 1+\sqrt2\\
+8 & 4 & 16/7 & \sqrt{4+2\sqrt2}
+\end{array}
+\]
+Published lattice determinations for \(SU(4)\), \(SU(5)\), \(SU(6)\), and
+\(SU(8)\) determine the transfer-matrix quantity \(\sigma_k/\sigma_1\) after
+continuum extrapolation, with operator-overlap, finite-volume, and
+lattice-spacing errors stated.  A derivation of either comparison formula
+would require an independent spectral argument inside the gauge theory.  The
+improved pure-gauge computations generally place the measured ratios between
+the two comparison curves; the support supplied by those measurements is for
+that interpolation pattern rather than for exact Casimir scaling in
+four-dimensional nonsupersymmetric Yang--Mills theory.
+
+\begin{controlledapproximation}[\(k\)-string comparison formulas]
+\label{ca:qcd-k-string-comparison-formulas}
+When this monograph compares lattice \(k\)-string data to
+\eqref{eq:qcd-k-string-casimir-ratio} or
+\eqref{eq:qcd-k-string-sine-ratio}, the comparison means precisely this:
+the lattice calculation supplies a nonperturbative estimate of
+\(\sigma_k/\sigma_1\), while the two displayed functions are finite
+comparison coordinates with distinct group-theoretic or supersymmetric
+origins.  No conclusion about the microscopic mechanism of confinement
+follows from numerical closeness alone.  A mechanism claim would require an
+operator-level derivation of the relevant transfer-matrix sector and its
+large-\(L\) spectrum.
+\end{controlledapproximation}
+
+\subsection{Effective String Action and the Luscher Term}
+
 Figure~\ref{fig:qcd-string-flux-tube-worldsheet} records the static-source flux
 tube as the object whose ground-state energy \(E_0(L)\) defines the string
 tension \(\sigma_R\) in \eqref{eq:qcd-string-tension-definition}.
@@ -2172,6 +2446,16 @@ level \(N\) & \(D_{\infty h}\) content of the Gaussian reference sector
 & \(10\)
 \end{tabular}
 \end{center}
+At the next level the decomposition contains
+\[
+  3\Sigma_g^+\oplus\Sigma_g^-
+  \oplus3\Pi_g\oplus3\Delta_g\oplus\Phi_g\oplus(\Lambda=4)_g,
+\]
+with total oscillator degeneracy \(20\).  Thus \(\Sigma_g^-\) is an allowed
+cylindrical channel, but it is not present in the first three free
+transverse-oscillator levels.  This distinction matters when one compares the
+long-string reference spectrum with hybrid static-potential data.
+
 The table is a long-string reference decomposition.  A measured hybrid static
 potential in the same \(\Lambda_\eta^\epsilon\) channel may contain massive
 surface excitations, endpoint-local excitations, or short-distance gluelump
@@ -2180,6 +2464,25 @@ Conversely, the free oscillator labels become useful at large \(L\) only
 after a transfer-matrix calculation has isolated the corresponding static
 sector and after the effective-string expansion is within its declared
 regime.
+
+In the lattice program initiated by Juge, Kuti, and Morningstar, the objects
+called \(\Pi_u\), \(\Sigma_g^-\), \(\Sigma_u^\pm\), \(\Pi_g\), and so on are
+channel-resolved static energies extracted from correlation matrices of
+gauge-invariant source operators subduced to the finite lattice subgroup of
+\(D_{\infty h}\).  The label is therefore assigned before an effective-string
+fit is made.  At small separation the same channel can be governed by a
+gluelump-like excitation of the gauge field bound to a compact static
+color-octet source pair; at large separation, if no lower massive worldsheet
+or endpoint excitation intervenes, the channel may approach one of the
+long-string oscillator towers above.  The observed \(L\)-dependence of a
+hybrid static potential is the interpolation between these two spectral
+descriptions, with the Nambu--Goto reference formula supplying only the
+asymptotic massless-transverse-oscillator comparison.
+The channels \(\Pi_u\) and \(\Sigma_g^-\) are especially useful diagnostics:
+\(\Pi_u\) is the first transverse oscillator tower in the Gaussian
+long-string limit, whereas a low-lying \(\Sigma_g^-\) level indicates
+additional channel dynamics until the higher-level long-string asymptotics are
+actually reached.
 
 For a closed flux tube winding a spatial circle, the quadratic theory has
 left- and right-moving oscillators.  Define

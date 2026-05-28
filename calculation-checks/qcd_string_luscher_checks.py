@@ -6,6 +6,8 @@ from __future__ import annotations
 from collections import Counter
 from fractions import Fraction
 
+import sympy as sp
+
 
 def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
     if got != expected:
@@ -15,6 +17,12 @@ def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
 def assert_less(name: str, left: Fraction, right: Fraction) -> None:
     if not left < right:
         raise AssertionError(f"{name} failed: expected {left} < {right}")
+
+
+def assert_zero(name: str, expr: sp.Expr) -> None:
+    simplified = sp.simplify(sp.trigsimp(expr))
+    if simplified != 0:
+        raise AssertionError(f"{name} failed: {simplified!r}")
 
 
 def check_open_and_closed_casimir_coefficients() -> None:
@@ -58,7 +66,7 @@ def check_open_oscillator_degeneracies() -> None:
     # For D=4 there are two transverse colors.  The generating function is
     # product_{n >= 1} (1 - q^n)^(-2), whose first coefficients are displayed
     # in the monograph.
-    assert colored_partition_degeneracies(colors=2, max_level=3) == [1, 2, 5, 10]
+    assert colored_partition_degeneracies(colors=2, max_level=4) == [1, 2, 5, 10, 20]
 
 
 def generate_open_fock_states(level: int) -> list[dict[tuple[int, int], int]]:
@@ -92,7 +100,7 @@ def state_key(state: dict[tuple[int, int], int]) -> tuple[tuple[int, int, int], 
 
 
 def greek_label(lambda_abs: int) -> str:
-    labels = {0: "Sigma", 1: "Pi", 2: "Delta", 3: "Phi"}
+    labels = {0: "Sigma", 1: "Pi", 2: "Delta", 3: "Phi", 4: "Lambda4"}
     return labels[lambda_abs]
 
 
@@ -144,6 +152,73 @@ def check_open_dinfty_channel_decomposition() -> None:
             ("Phi", "u", None): 2,
         }
     )
+    assert decompose_open_dinfty_channels(4) == Counter(
+        {
+            ("Sigma", "g", "+"): 3,
+            ("Sigma", "g", "-"): 1,
+            ("Pi", "g", None): 6,
+            ("Delta", "g", None): 6,
+            ("Phi", "g", None): 2,
+            ("Lambda4", "g", None): 2,
+        }
+    )
+
+
+def check_k_string_comparison_formulas() -> None:
+    for n_c in range(3, 13):
+        c_fund = Fraction(n_c * n_c - 1, n_c)
+        for k_value in range(1, n_c):
+            c_anti = Fraction(k_value * (n_c - k_value) * (n_c + 1), n_c)
+            casimir_ratio = c_anti / c_fund
+            assert_equal(
+                f"antisymmetric Casimir ratio N={n_c}, k={k_value}",
+                casimir_ratio,
+                Fraction(k_value * (n_c - k_value), n_c - 1),
+            )
+            assert_equal(
+                f"Casimir charge conjugation N={n_c}, k={k_value}",
+                casimir_ratio,
+                Fraction((n_c - k_value) * k_value, n_c - 1),
+            )
+
+            sine_ratio = sp.sin(sp.pi * k_value / n_c) / sp.sin(sp.pi / n_c)
+            sine_conj = sp.sin(sp.pi * (n_c - k_value) / n_c) / sp.sin(sp.pi / n_c)
+            assert_zero(f"sine charge conjugation N={n_c}, k={k_value}", sine_ratio - sine_conj)
+
+    x, k = sp.symbols("x k", positive=True)
+    sine_series = sp.series(sp.sin(sp.pi * k * x) / sp.sin(sp.pi * x), x, 0, 5).removeO()
+    expected_sine = k - sp.pi**2 * k * (k**2 - 1) * x**2 / 6
+    assert_zero("sine large-N constant term", sine_series.coeff(x, 0) - expected_sine.coeff(x, 0))
+    assert_zero("sine large-N x^2 coefficient", sine_series.coeff(x, 2) - expected_sine.coeff(x, 2))
+
+    casimir_x = k * (1 / x - k) / (1 / x - 1)
+    casimir_series = sp.series(casimir_x, x, 0, 3).removeO()
+    expected_casimir = k - k * (k - 1) * x
+    assert_zero(
+        "Casimir large-N x coefficient",
+        casimir_series.coeff(x, 1) - expected_casimir.coeff(x, 1),
+    )
+
+    special_values = [
+        (4, 2, Fraction(4, 3), sp.sqrt(2)),
+        (5, 2, Fraction(3, 2), (1 + sp.sqrt(5)) / 2),
+        (6, 2, Fraction(8, 5), sp.sqrt(3)),
+        (6, 3, Fraction(9, 5), sp.Integer(2)),
+        (8, 2, Fraction(12, 7), sp.sqrt(2 + sp.sqrt(2))),
+        (8, 3, Fraction(15, 7), 1 + sp.sqrt(2)),
+        (8, 4, Fraction(16, 7), sp.sqrt(4 + 2 * sp.sqrt(2))),
+    ]
+    for n_c, k_value, expected_casimir_value, expected_sine_value in special_values:
+        assert_equal(
+            f"displayed Casimir value N={n_c}, k={k_value}",
+            Fraction(k_value * (n_c - k_value), n_c - 1),
+            expected_casimir_value,
+        )
+        displayed_sine = sp.sin(sp.pi * k_value / n_c) / sp.sin(sp.pi / n_c)
+        assert_zero(
+            f"displayed sine value N={n_c}, k={k_value}",
+            displayed_sine - expected_sine_value,
+        )
 
 
 def check_excited_level_expansion_coefficients() -> None:
@@ -236,6 +311,7 @@ def main() -> None:
     check_nambu_goto_reference_expansion()
     check_open_oscillator_degeneracies()
     check_open_dinfty_channel_decomposition()
+    check_k_string_comparison_formulas()
     check_excited_level_expansion_coefficients()
     check_baryonic_y_string_geometry()
     check_hagedorn_coefficient()
