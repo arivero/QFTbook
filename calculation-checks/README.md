@@ -849,7 +849,9 @@ Current checks:
   coefficient in the chapter's WZ normalization, sample WZW central charges,
   nonabelian-bosonization central-charge bookkeeping, the
   \(SU(N)\) sine-mass/fusion-angle and rational-matrix bootstrap identities,
-  and the sausage-metric scalar-curvature formula.
+  the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
+  principal-chiral gamma-function scalar unitarity ledgers, and the
+  sausage-metric scalar-curvature formula.
 - `susy_yang_mills_family_checks.py`: exact finite checks for the
   supersymmetric Yang--Mills family discussion, including the pure-SYM
   root-of-unity domain-wall sine formula, the one-coordinate chiral

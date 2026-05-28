@@ -13,6 +13,7 @@ from __future__ import annotations
 import math
 from fractions import Fraction
 
+import mpmath as mp
 import numpy as np
 import sympy as sp
 
@@ -202,6 +203,86 @@ def check_su_n_rational_block() -> None:
             assert_close(f"SU(N) rational YBE N={n} theta={theta} phi={phi}", ybe_error, 0.0)
 
 
+def cgn_a_scalar(theta: float, n: int) -> complex:
+    x = theta / (2.0 * math.pi * 1j)
+    return complex(
+        -mp.gamma(1 - x)
+        * mp.gamma(1 - 1 / n + x)
+        / (mp.gamma(1 + x) * mp.gamma(1 - 1 / n - x))
+    )
+
+
+def pcm_w_scalar(theta: float, n: int) -> complex:
+    x = theta / (2.0 * math.pi * 1j)
+    gamma_ratio = (
+        mp.gamma(1 - x)
+        * mp.gamma(x - 1 / n)
+        / (mp.gamma(1 - x - 1 / n) * mp.gamma(x))
+    )
+    hyperbolic = mp.sinh(theta / 2.0 - math.pi * 1j / n) / mp.sinh(
+        theta / 2.0 + math.pi * 1j / n
+    )
+    return complex(hyperbolic * gamma_ratio**2)
+
+
+def check_scalar_cdd_and_su_n_gamma_ledgers() -> None:
+    theta, alpha = sp.symbols("theta alpha")
+    cdd = (sp.sinh(theta) + sp.I * sp.sin(alpha)) / (
+        sp.sinh(theta) - sp.I * sp.sin(alpha)
+    )
+    assert_trig_zero("CDD unitarity", cdd * cdd.subs(theta, -theta) - 1)
+    assert_trig_zero(
+        "CDD crossing",
+        cdd.subs(theta, sp.I * sp.pi - theta) - cdd,
+    )
+
+    for n in (3, 4, 5):
+        lam = 2.0 * math.pi / n
+        for theta_value in (0.37, 1.11):
+            a_plus = cgn_a_scalar(theta_value, n)
+            a_minus = cgn_a_scalar(-theta_value, n)
+            assert_close(
+                f"CGN A scalar unitarity N={n} theta={theta_value}",
+                a_plus * a_minus,
+                1.0,
+            )
+
+            b_plus = a_plus / (1.0 - 1j * lam / theta_value)
+            c_plus = -1j * lam * b_plus / theta_value
+            b_minus = a_minus / (1.0 + 1j * lam / theta_value)
+            c_minus = 1j * lam * b_minus / theta_value
+            identity_channel = b_plus * b_minus + c_plus * c_minus
+            permutation_channel = b_plus * c_minus + c_plus * b_minus
+            assert_close(
+                f"CGN component identity channel N={n} theta={theta_value}",
+                identity_channel,
+                1.0,
+            )
+            assert_close(
+                f"CGN component permutation channel N={n} theta={theta_value}",
+                permutation_channel,
+                0.0,
+            )
+
+            w_plus = pcm_w_scalar(theta_value, n)
+            w_minus = pcm_w_scalar(-theta_value, n)
+            unnormalized_needed = (
+                1.0 + lam * lam / (theta_value * theta_value)
+            ) ** -2
+            assert_close(
+                f"PCM W scalar unnormalized ledger N={n} theta={theta_value}",
+                w_plus * w_minus,
+                unnormalized_needed,
+            )
+            x_plus = w_plus * ((theta_value - 1j * lam) / theta_value) ** 2
+            x_minus = w_minus * ((-theta_value - 1j * lam) / (-theta_value)) ** 2
+            assert_close(
+                f"PCM normalized scalar unitarity N={n} theta={theta_value}",
+                x_plus * x_minus,
+                1.0,
+            )
+
+
 def check_sausage_metric_curvature() -> None:
     r, h, q = sp.symbols("r h q", nonzero=True)
     e_metric = h / ((1 - r**2) * (1 + q * r**2))
@@ -225,6 +306,7 @@ def main() -> None:
     check_nonabelian_bosonization_central_charge()
     check_su_n_sine_mass_fusion()
     check_su_n_rational_block()
+    check_scalar_cdd_and_su_n_gamma_ledgers()
     check_sausage_metric_curvature()
     print("All sigma-model family checks passed.")
 

@@ -82,6 +82,9 @@ references/**/*.tar
 references/**/*.tar.gz
 references/**/*.tgz
 references/**/*.zip
+references/**/*.sty
+references/**/*.eps
+references/**/*.ps
 
 # Temporary local notes
 *.tmp

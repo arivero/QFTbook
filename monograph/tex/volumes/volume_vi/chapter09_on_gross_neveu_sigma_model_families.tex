@@ -902,33 +902,262 @@ calculation companion checks this equality by finite-dimensional matrix
 multiplication for representative \(N\) and rapidities.
 \end{proof}
 
-For the chiral Gross--Neveu family, the two-particle S-matrix in the
-fundamental channel has the form
+\section{SU(N) Scalar Factors and CDD Conventions}
+\label{sec:su-n-scalar-factors-cdd}
+
+The rational matrix block is only the tensor part of the scattering datum.
+The scalar factor fixes the analytic normalization.  Let
+\[
+  \mathcal P=\{\theta\in\mathbb C:0<\operatorname{Im}\theta<\pi\}
+\]
+be the physical rapidity strip for equal-mass relativistic scattering.  In a
+scalar channel, unitarity is the meromorphic identity
+\[
+  X(\theta)X(-\theta)=1,
+\]
+and self-conjugate crossing is the identity \(X(\theta)=X(\ii\pi-\theta)\).
+For non-self-conjugate multiplets, crossing relates a particle-particle
+amplitude to a particle-antiparticle amplitude; the scalar factor must be
+specified together with the charge-conjugation convention.
+
+\begin{definition}[CDD factor in one scalar channel]
+\label{def:cdd-factor-one-channel}
+A scalar CDD factor is a meromorphic function \(C(\theta)\), nonzero on the
+real rapidity axis, such that
+\[
+  C(\theta)C(-\theta)=1
+\]
+and such that the appropriate crossing equation of the channel is preserved.
+It is an allowed ambiguity only after its zeros and poles in
+\(\mathcal P\) have been declared either absent or assigned to specified
+bound states, Coleman--Thun singularities, or other explicitly stated
+on-shell mechanisms.  A scalar factor is called minimal relative to a listed
+bootstrap spectrum when it has no additional zeros or poles in
+\(\mathcal P\) beyond those listed.
+\end{definition}
+
+The elementary self-conjugate block
+\begin{equation}
+  C_\alpha(\theta)
+  =
+  \frac{\sinh\theta+\ii\sin\alpha}
+       {\sinh\theta-\ii\sin\alpha}
+  \label{eq:elementary-cdd-block}
+\end{equation}
+obeys \(C_\alpha(\theta)C_\alpha(-\theta)=1\) and
+\(C_\alpha(\ii\pi-\theta)=C_\alpha(\theta)\).  Its denominator vanishes at
+\(\theta=\ii u\) when \(\sin u=\sin\alpha\).  Thus, for
+\(0<\alpha<\pi\), it has physical-strip singularities at
+\(u=\alpha\) and \(u=\pi-\alpha\), with coincidences at
+\(\alpha=\pi/2\).  Such a block is therefore not a harmless convention unless
+those singularities have been assigned.  This is the reason that ``multiply
+by a CDD factor'' is not a mathematical conclusion; it is new scattering
+data.
+
+For the \(SU(N)\) chiral Gross--Neveu family, \(N\ge3\), put
+\[
+  x=\frac{\theta}{2\pi\ii},\qquad \lambda_N=\frac{2\pi}{N},
+\]
+and define the rank-one scalar transmission eigenvalue
+\begin{equation}
+  A_N(\theta)
+  =
+  -
+  \frac{
+    \Gamma(1-x)\Gamma(1-\frac1N+x)}
+  {
+    \Gamma(1+x)\Gamma(1-\frac1N-x)}
+  .
+  \label{eq:su-n-cgn-a-scalar}
+\end{equation}
+In the Zamolodchikov--Faddeev component convention with outgoing order
+reversed,
+\begin{equation}
+  S_{\alpha\beta}^{\delta\gamma}(\theta)
+  =
+  \delta_\alpha^\gamma\delta_\beta^\delta\,b_N(\theta)
+  +
+  \delta_\alpha^\delta\delta_\beta^\gamma\,c_N(\theta),
+  \qquad
+  c_N(\theta)=-\frac{\ii\lambda_N}{\theta}b_N(\theta),
+  \label{eq:su-n-cgn-component-smatrix}
+\end{equation}
+with
+\[
+  A_N(\theta)=b_N(\theta)+c_N(\theta),
+  \qquad
+  b_N(\theta)=\frac{A_N(\theta)}{1-\ii\lambda_N/\theta}.
+\]
+Equivalently, if the outgoing permutation is pulled out explicitly, this is
 \[
   S_{\rm CGN}^{(1,1)}(\theta)
   =
-  X_{\rm CGN}(\theta)\,\mathcal R_N(\theta),
+  A_N(\theta)\,P\,\mathcal R_N(\theta),
   \label{eq:chiral-gn-fundamental-smatrix-form}
 \]
-where \(X_{\rm CGN}\) is a scalar meromorphic function fixed by unitarity,
-crossing, physical-strip pole requirements, and a CDD convention.  Higher
-antisymmetric particles are produced by fusion at the angles
-\eqref{eq:su-n-fusing-angle}.  For the principal chiral model, the fundamental
-particle carries two chiral indices and the matrix part is correspondingly a
-left-right product,
+with \(\mathcal R_N\) defined in \eqref{eq:su-n-rational-r-block}.  The
+matrix pole at \(\theta=\ii\lambda_N\) is then the first
+antisymmetric bound-state pole, while \(A_N\) itself supplies the minimal
+gamma-function normalization in this convention.
+
+\begin{proposition}[Gross--Neveu scalar unitarity ledger]
+\label{prop:su-n-cgn-scalar-unitarity-ledger}
+As meromorphic identities in \(\theta\),
 \[
+  A_N(\theta)A_N(-\theta)=1,
+\]
+and the component matrix \eqref{eq:su-n-cgn-component-smatrix} obeys
+\[
+  S(\theta)S(-\theta)=I
+\]
+on \(V\otimes V\), away from its poles.
+\end{proposition}
+
+\begin{proof}
+The first identity follows immediately from
+\eqref{eq:su-n-cgn-a-scalar}: replacing \(x\) by \(-x\) interchanges the two
+gamma-function products, while the two overall signs multiply to \(1\).
+For the component matrix, write \(S=bP+cI\) with
+\(c=-(\ii\lambda_N/\theta)b\).  At \(-\theta\),
+\[
+  c(-\theta)=\frac{\ii\lambda_N}{\theta}b(-\theta).
+\]
+Since \(A=b(1-\ii\lambda_N/\theta)\) and
+\[
+  A(-\theta)=b(-\theta)(1+\ii\lambda_N/\theta),
+\]
+the scalar identity gives
+\[
+  b(\theta)b(-\theta)\left(1+\frac{\lambda_N^2}{\theta^2}\right)=1.
+\]
+Using \(P^2=I\),
+\[
+  (bP+cI)(b_-P+c_-I)
+  =
+  (bb_-+cc_-)I+(bc_-+cb_-)P,
+\]
+where \(b_-=b(-\theta)\) and \(c_-=c(-\theta)\).  The \(P\)-coefficient
+vanishes, and the \(I\)-coefficient is the scalar displayed above.  This
+proves matrix unitarity.
+\end{proof}
+
+For the \(SU(N)\) principal chiral model, the fundamental particle carries
+left and right indices.  It is convenient to distinguish the normalized block
+\(\mathcal R_N\) from the unnormalized rational block
+\[
+  \widetilde{\mathcal R}_N(\theta)
+  =
+  I-\frac{\ii\lambda_N}{\theta}P
+  =
+  \frac{\theta-\ii\lambda_N}{\theta}\,\mathcal R_N(\theta).
+\]
+One standard particle-particle bootstrap convention is
+\begin{equation}
+  S_{\rm PCM}^{(1,1)}(\theta)
+  =
+  W_N(\theta)\,
+  \widetilde{\mathcal R}_{N,L}(\theta)\otimes
+  \widetilde{\mathcal R}_{N,R}(\theta),
+  \label{eq:pcm-fundamental-smatrix-unnormalized}
+\end{equation}
+where
+\begin{equation}
+  W_N(\theta)
+  =
+  \frac{\sinh(\theta/2-\pi\ii/N)}
+       {\sinh(\theta/2+\pi\ii/N)}
+  \left[
+  \frac{\Gamma(1-x)\Gamma(x-\frac1N)}
+       {\Gamma(1-x-\frac1N)\Gamma(x)}
+  \right]^2,
+  \qquad x=\frac{\theta}{2\pi\ii}.
+  \label{eq:pcm-wiegmann-scalar}
+\end{equation}
+In the normalized block convention used in
+\eqref{eq:pcm-fundamental-smatrix-matrix-part} below, the scalar factor is
+\begin{equation}
+  X_{\rm PCM}(\theta)
+  =
+  W_N(\theta)\left(\frac{\theta-\ii\lambda_N}{\theta}\right)^2.
+  \label{eq:pcm-normalized-scalar}
+\end{equation}
+Thus
+\begin{equation}
   S_{\rm PCM}^{(1,1)}(\theta)
   =
   X_{\rm PCM}(\theta)\,
-  \mathcal R_{N,L}(\theta)\otimes\mathcal R_{N,R}(\theta),
+  \mathcal R_{N,L}(\theta)\otimes\mathcal R_{N,R}(\theta).
   \label{eq:pcm-fundamental-smatrix-matrix-part}
+\end{equation}
+The sine-law tower \eqref{eq:su-n-sine-mass-spectrum} is generated by fusion
+at \eqref{eq:su-n-fusing-angle}; higher-rank scattering is obtained by
+projecting tensor products onto the corresponding antisymmetric
+representations and taking residues at the listed poles.  The CDD convention
+is part of the statement: multiplying \(W_N\) or \(X_{\rm PCM}\) by any
+additional factor satisfying Definition~\ref{def:cdd-factor-one-channel}
+changes the bootstrap theory unless the extra singularity data are also
+specified.
+
+\begin{proposition}[Principal-chiral scalar unitarity ledger]
+\label{prop:pcm-scalar-unitarity-ledger}
+The scalar factor \eqref{eq:pcm-wiegmann-scalar} obeys
+\begin{equation}
+  W_N(\theta)W_N(-\theta)
+  =
+  \left(1+\frac{\lambda_N^2}{\theta^2}\right)^{-2}.
+  \label{eq:pcm-wiegmann-unitarity-ledger}
+\end{equation}
+Consequently \(X_{\rm PCM}(\theta)X_{\rm PCM}(-\theta)=1\), and
+\eqref{eq:pcm-fundamental-smatrix-matrix-part} is unitary on the real
+rapidity axis away from poles.
+\end{proposition}
+
+\begin{proof}
+Let \(a=1/N\) and \(x=\theta/(2\pi\ii)\).  The hyperbolic prefactor in
+\eqref{eq:pcm-wiegmann-scalar} has product \(1\) under
+\(\theta\mapsto-\theta\), because \(\sinh\) is odd.  For the gamma ratio
+\[
+  G(x)=
+  \frac{\Gamma(1-x)\Gamma(x-a)}
+       {\Gamma(1-x-a)\Gamma(x)},
 \]
-again with a separate scalar factor.  Equations
-\eqref{eq:chiral-gn-fundamental-smatrix-form} and
-\eqref{eq:pcm-fundamental-smatrix-matrix-part} are exact bootstrap data once
-the scalar functions and CDD convention have been specified.  They become
-statements about the continuum sigma models only after the ultraviolet
-definitions of the preceding sections are matched to the factorizing QFT.
+use \(\Gamma(1+x)=x\Gamma(x)\),
+\(\Gamma(1-x)=-x\Gamma(-x)\),
+\(\Gamma(1-x-a)=(-x-a)\Gamma(-x-a)\), and
+\(\Gamma(1+x-a)=(x-a)\Gamma(x-a)\).  These identities give
+\[
+  G(x)G(-x)=\frac{x^2}{(x-a)(x+a)}.
+\]
+Since \(\lambda_N=2\pi a\) and \(\theta=2\pi\ii x\),
+\[
+  1+\frac{\lambda_N^2}{\theta^2}
+  =
+  1-\frac{a^2}{x^2}
+  =
+  \frac{(x-a)(x+a)}{x^2}.
+\]
+Squaring the gamma-ratio product proves
+\eqref{eq:pcm-wiegmann-unitarity-ledger}.  Multiplying by
+\[
+  \left(\frac{\theta-\ii\lambda_N}{\theta}\right)^2
+  \left(\frac{-\theta-\ii\lambda_N}{-\theta}\right)^2
+  =
+  \left(1+\frac{\lambda_N^2}{\theta^2}\right)^2
+\]
+then gives \(X_{\rm PCM}(\theta)X_{\rm PCM}(-\theta)=1\).  The normalized
+matrix blocks are unitary by
+Proposition~\ref{prop:su-n-rational-block-ybe}, so the full
+particle-particle PCM matrix is unitary.
+\end{proof}
+
+Equations \eqref{eq:chiral-gn-fundamental-smatrix-form} and
+\eqref{eq:pcm-fundamental-smatrix-matrix-part} are exact bootstrap data with
+the displayed scalar convention.  They become statements about the continuum
+sigma models only after the ultraviolet definitions of the preceding sections
+are matched to the factorizing QFT: one must construct the Hilbert space,
+local or graded-local fields, conserved currents, Haag--Ruelle scattering
+states, and the map between the regulator mass scale and the bootstrap mass
+coordinate.
 
 \section{Symmetric-Space and Deformed-Sphere Families}
 \label{sec:integrable-symmetric-super-sausage}
