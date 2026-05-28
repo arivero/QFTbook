@@ -2418,8 +2418,8 @@ finite set of kernels and derivatives entering these Taylor coefficients, so
 the same \((\mu/\Lambda)^{p_N}\) bound applies to the subtracted summand.
 \end{proof}
 
-\begin{theorem}[Finite-order BPHZ--Wilsonian matching]
-\label{thm:finite-order-bphz-wilsonian-matching}
+\begin{definition}[Admissible finite-order BPHZ--Wilsonian matching context]
+\label{def:finite-order-bphz-wilsonian-matching-context}
 Consider a massive Euclidean scalar theory with local polynomial
 interactions, finite ultraviolet regulator \(\Lambda_0\), an intermediate
 admissible plateau smooth cutoff \(\Lambda\) in the sense of
@@ -2463,9 +2463,13 @@ vertices \(L_\Lambda^{(N)}(u)\), restrict its source argument to
 source space with the same finite local normalization convention as
 \(\mathfrak b\).  The resulting formal 1PI functional is truncated after loop
 order \(\ell\).
+\end{definition}
 
-Assume the following estimates hold on the coordinate neighborhood under
-consideration:
+\begin{hypothesis}[Finite-order BPHZ--Wilsonian matching estimates]
+\label{hyp:finite-order-bphz-wilsonian-matching-estimates}
+In the context of
+Definition~\ref{def:finite-order-bphz-wilsonian-matching-context}, assume the
+following estimates hold on the coordinate neighborhood under consideration:
 \begin{enumerate}[label=(\alph*)]
   \item the BPHZ forest theorem applies to all graphs through loop order
   \(\ell\) that contribute to the projectors \(\Pi_I\);
@@ -2491,7 +2495,14 @@ consideration:
   perturbative limits supplied by Polchinski/Salmhofer/Kopper--M\"uller-type
   cutoff estimates in the chosen norm.
 \end{enumerate}
-Then the BPHZ-renormalized 1PI coordinates through loop order \(\ell\) obey
+\end{hypothesis}
+
+\begin{theorem}[Finite-order BPHZ--Wilsonian matching]
+\label{thm:finite-order-bphz-wilsonian-matching}
+In an admissible matching context as in
+Definition~\ref{def:finite-order-bphz-wilsonian-matching-context}, and under
+Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}, the
+BPHZ-renormalized 1PI coordinates through loop order \(\ell\) obey
 \begin{equation}
   g_I^{\mathfrak b,(\leq\ell)}(\mu)
   =
@@ -2525,6 +2536,78 @@ implicit function theorem gives a local finite change of coordinates
 \]
 with the same \(O((\mu/\Lambda)^{p_N})\) truncation error.
 \end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:plateau-low-source-identity} gives
+\eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in \(\mathcal E_<\).
+This equality is an equality of functions on the same finite-dimensional
+source space.  By
+Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}\textup{(b)},
+the maps
+\[
+  J\longmapsto \varphi=\frac{\delta W[J]}{\delta J}
+\]
+are locally invertible for both sides of
+\eqref{eq:wilsonian-low-w-equals-bare-w}.  Since the functions \(W\) agree,
+their first derivatives and local inverse maps agree.  Therefore the
+Legendre transforms on \(\mathcal E_<\),
+\[
+  \Gamma^<[\varphi]=W[J(\varphi)]-\langle J(\varphi),\varphi\rangle ,
+\]
+agree on the corresponding low classical-field neighborhood.  This proves
+equality of low-mode 1PI kernels at finite regulator.  The object just
+constructed is the 1PI functional for the low test space; it is the object
+used by the projectors \(\Pi_I\).
+
+Theorem~\ref{thm:bphz-finiteness-massive-euclidean-scalar} proves, by the
+Hepp-sector Taylor-remainder estimates in
+Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas}, that at the fixed
+loop order \(\ell\) every ultraviolet subtraction in the chosen massive BPHZ
+scheme \(\mathfrak b\) is a Taylor polynomial in the external variables of
+the subgraph and that the subtracted graph has a finite
+\(\Lambda_0\to\infty\) limit.  Thus, after the selected subtraction points,
+field normalization, and oversubtraction degrees are fixed, the projected
+BPHZ coordinates \(g_I^{\mathfrak b,(\leq\ell)}(\mu)\) are finite Taylor
+coefficients of the same low-mode 1PI kernels obtained from the Wilsonian
+action.  The \(\Lambda_0\to\infty\) limit here is not taken at fixed
+UV-cutoff Lagrangian coordinates: by
+Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}\textup{(d)},
+it is taken along the
+Polchinski-flow counterterm trajectory that holds the chosen renormalized
+boundary data fixed and has a limit for the Wilsonian kernels at the
+intermediate scale \(\Lambda\).  At fixed loop order this is precisely the
+perturbative renormalized trajectory constructed by the Wilsonian estimates,
+not a nonperturbative assertion about a cutoff coupling held fixed.
+
+Computing the projected low kernels with the retained local action
+\(L_\Lambda^{(N)}(u)\) is exactly the definition
+\eqref{eq:finite-order-bphz-wilsonian-matching-map} of
+\(M_I^{(\ell,N)}\).
+
+It remains only to compare the exact Wilsonian action with its finite local
+projection.  The graph expansion is first decomposed according to
+\(L_\Lambda=L_\Lambda^{(N)}+v_{\perp,N}\).  By
+Lemma~\ref{lem:bphz-commutes-with-wilsonian-vertex-split}, the BPHZ forest
+operation commutes with this finite additive vertex decomposition, and the
+subtracted graphs with at least one \(v_{\perp,N}\)-insertion are still graphs
+to which the Wilsonian Taylor-remainder norm estimate applies.
+Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}\textup{(c)}
+puts those subtracted graphs in the situation of
+Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}.  The lemma gives the
+displayed power bound for their contribution to the selected Taylor
+coefficients of low 1PI kernels.  Substituting this estimate into the equality
+of finite-regulator low 1PI kernels, and then taking the tuned
+BPHZ/Polchinski \(\Lambda_0\to\infty\) limit at fixed \(\Lambda\) and
+\(\mu\), gives
+\eqref{eq:finite-order-bphz-wilsonian-coordinate-comparison}.
+
+The final assertion is finite-dimensional.  If \(J_{IA}\) is invertible, the
+map from the selected Wilsonian coordinates \(u_A\), \(A\in A_0\), to the
+selected 1PI coordinates has an invertible derivative at \(u_*\).  The
+implicit function theorem therefore gives the displayed local coordinate
+map \(G_A\), with the same remainder estimate because the previous paragraph
+already controls the omitted Wilsonian coordinates.
+\end{proof}
 
 The finite change of coordinates in
 Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} can be constructed
@@ -2579,73 +2662,6 @@ order by order.  The coefficients
 \(\mathcal F_{I,r}\) are finite because BPHZ supplies finite 1PI projectors at
 the chosen loop order, and the Wilsonian Taylor-remainder lemma controls the
 omitted local coordinates by the displayed power of \(\mu/\Lambda\).
-
-\begin{proof}
-Lemma~\ref{lem:plateau-low-source-identity} gives
-\eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in \(\mathcal E_<\).
-This equality is an equality of functions on the same finite-dimensional
-source space.  By hypothesis (b), the maps
-\[
-  J\longmapsto \varphi=\frac{\delta W[J]}{\delta J}
-\]
-are locally invertible for both sides of
-\eqref{eq:wilsonian-low-w-equals-bare-w}.  Since the functions \(W\) agree,
-their first derivatives and local inverse maps agree.  Therefore the
-Legendre transforms on \(\mathcal E_<\),
-\[
-  \Gamma^<[\varphi]=W[J(\varphi)]-\langle J(\varphi),\varphi\rangle ,
-\]
-agree on the corresponding low classical-field neighborhood.  This proves
-equality of low-mode 1PI kernels at finite regulator.  The object just
-constructed is the 1PI functional for the low test space; it is the object
-used by the projectors \(\Pi_I\).
-
-Theorem~\ref{thm:bphz-finiteness-massive-euclidean-scalar} proves, by the
-Hepp-sector Taylor-remainder estimates in
-Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas}, that at the fixed
-loop order \(\ell\) every ultraviolet subtraction in the chosen massive BPHZ
-scheme \(\mathfrak b\) is a Taylor polynomial in the external variables of
-the subgraph and that the subtracted graph has a finite
-\(\Lambda_0\to\infty\) limit.  Thus, after the selected subtraction points,
-field normalization, and oversubtraction degrees are fixed, the projected
-BPHZ coordinates \(g_I^{\mathfrak b,(\leq\ell)}(\mu)\) are finite Taylor
-coefficients of the same low-mode 1PI kernels obtained from the Wilsonian
-action.  The \(\Lambda_0\to\infty\) limit here is not taken at fixed
-UV-cutoff Lagrangian coordinates: by hypothesis (d), it is taken along the
-Polchinski-flow counterterm trajectory that holds the chosen renormalized
-boundary data fixed and has a limit for the Wilsonian kernels at the
-intermediate scale \(\Lambda\).  At fixed loop order this is precisely the
-perturbative renormalized trajectory constructed by the Wilsonian estimates,
-not a nonperturbative assertion about a cutoff coupling held fixed.
-
-Computing the projected low kernels with the retained local action
-\(L_\Lambda^{(N)}(u)\) is exactly the definition
-\eqref{eq:finite-order-bphz-wilsonian-matching-map} of
-\(M_I^{(\ell,N)}\).
-
-It remains only to compare the exact Wilsonian action with its finite local
-projection.  The graph expansion is first decomposed according to
-\(L_\Lambda=L_\Lambda^{(N)}+v_{\perp,N}\).  By
-Lemma~\ref{lem:bphz-commutes-with-wilsonian-vertex-split}, the BPHZ forest
-operation commutes with this finite additive vertex decomposition, and the
-subtracted graphs with at least one \(v_{\perp,N}\)-insertion are still graphs
-to which the Wilsonian Taylor-remainder norm estimate applies.  Hypothesis
-(c) puts those subtracted graphs in the situation of
-Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}.  The lemma gives the
-displayed power bound for their contribution to the selected Taylor
-coefficients of low 1PI kernels.  Substituting this estimate into the equality
-of finite-regulator low 1PI kernels, and then taking the tuned
-BPHZ/Polchinski \(\Lambda_0\to\infty\) limit at fixed \(\Lambda\) and
-\(\mu\), gives
-\eqref{eq:finite-order-bphz-wilsonian-coordinate-comparison}.
-
-The final assertion is finite-dimensional.  If \(J_{IA}\) is invertible, the
-map from the selected Wilsonian coordinates \(u_A\), \(A\in A_0\), to the
-selected 1PI coordinates has an invertible derivative at \(u_*\).  The
-implicit function theorem therefore gives the displayed local coordinate
-map \(G_A\), with the same remainder estimate because the previous paragraph
-already controls the omitted Wilsonian coordinates.
-\end{proof}
 
 \begin{remark}[Scope of the matching theorem]
 The theorem is a fixed-loop perturbative statement in a specified subtraction

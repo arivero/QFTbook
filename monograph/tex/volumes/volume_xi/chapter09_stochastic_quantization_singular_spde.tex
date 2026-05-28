@@ -4126,8 +4126,8 @@ exactly Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}
 applied to the finite list of smeared cylinder coordinates.
 \end{proof}
 
-\begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
-\label{thm:phi-four-two-spde-main-theorem}
+\begin{hypothesis}[\(\Phi^4_2\) stochastic-quantization assembly inputs on the torus]
+\label{hyp:phi-four-two-spde-assembly-inputs}
 Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
 \(\beta=1+2\kappa\).  Let \(P_N\) be a reflection-symmetric Fourier cutoff
 on \(\mathbb T^2\).  Let \(\mu_N\) be the finite-dimensional Wick-ordered
@@ -4229,7 +4229,12 @@ Assume the following three further analytic facts.
   are collected in
   Proposition~\ref{prop:spde-smooth-regulator-nelson-consequences}.
 \end{enumerate}
-Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
+\end{hypothesis}
+
+\begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
+\label{thm:phi-four-two-spde-main-theorem}
+Under Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}, every weak limit
+\(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
 the finite-cutoff Wick-ordered Schwinger functions, and \(\mu\) satisfies OS
 reflection positivity for cylinder observables.  If, in addition, the
@@ -4257,14 +4262,17 @@ convergence and fixes the Wick normalization.  Given this enhanced noise,
 the products in the DPD nonlinearity are defined by
 Lemma~\ref{lem:spde-dpd-sobolev-products}, and
 Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} gives the local
-solution map.  Hypothesis (a) is precisely the global rough-energy and
+solution map.  Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(a)}
+is precisely the global rough-energy and
 compact-continuity upgrade of the smooth estimate
 Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}; in the Besov
 topology this upgrade is organized by
 Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}.  Thus
-the limiting Markov semigroup \(P_t\) is well-defined on the support of
-every weak stationary limit in (b), and \(P_t^{(N)}F\to P_tF\) uniformly on
-the high-probability compact sets supplied by (a) and (b).
+the limiting Markov semigroup \(P_t\) is well-defined on the support of every
+weak stationary limit in
+Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(b)}, and
+\(P_t^{(N)}F\to P_tF\) uniformly on the high-probability compact sets supplied
+by Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(a),(b)}.
 
 Proposition~\ref{prop:spde-invariant-measure-limit} now applies with
 \(E=H^{-\kappa}\).  Therefore
@@ -4276,7 +4284,8 @@ invariant.  The convergence of Schwinger functions follows by applying the
 same weak convergence to products of smeared fields and Wick powers after
 approximating the polynomial observables by bounded cylinder observables;
 the uniform moment bounds needed for this approximation are part of the
-tightness and rough-energy input in (b).
+tightness and rough-energy input in
+Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(b)}.
 
 For OS positivity, let \(\Theta\) be Euclidean time reflection and let
 \(F\) be a cylinder observable supported in positive Euclidean time.  The
@@ -4344,7 +4353,7 @@ quartic tails at each lattice cutoff are proved by
 Proposition~\ref{prop:spde-finite-lattice-quartic-tails}, while uniformity
 as the cutoff is removed remains part of the constructive estimate.  These
 inputs are listed explicitly in
-Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
+Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}.
 
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
 \label{thm:dpd-solution-mechanism}
@@ -5630,7 +5639,7 @@ Consequently, for the Gaussian coordinates
   \Xi,\quad X,\quad X^2,\quad X^3
 \]
 in the strict negative sector, the physical scale slack appearing in
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} is
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} is
 \[
   \sigma_\Xi=\kappa,\qquad
   \sigma_{X^k}=k\kappa\quad(k=1,2,3),
@@ -6729,8 +6738,8 @@ coordinate.  Thus the condition \(\sigma>D/p\) is the precise high-moment
 requirement: by choosing \(p\) large enough, a positive regularity slack
 beats the scale entropy.
 
-\begin{theorem}[Coordinate estimates imply finite-sector model convergence]
-\label{thm:spde-coordinate-estimates-model-convergence}
+\begin{hypothesis}[Finite-sector coordinate-control data]
+\label{hyp:spde-finite-sector-coordinate-control-data}
 Fix \(K\), \(\gamma\), \(A_{<\gamma}\), and \(r\) as in
 Theorem~\ref{thm:spde-random-model-cauchy-criterion}.  Let
 \[
@@ -6825,7 +6834,11 @@ Define
   +
   \frac{C_{i,1}^{1/p}\widetilde B_i}{1-2^{-\varepsilon_i/p}} .
 \]
-Then
+\end{hypothesis}
+
+\begin{corollary}[Finite-sector model convergence from coordinate estimates]
+\label{thm:spde-coordinate-estimates-model-convergence}
+Under Hypothesis~\ref{hyp:spde-finite-sector-coordinate-control-data},
 \[
   \sup_{n\geq1}
   \|N_n\|_{L^p(\Omega)}
@@ -6851,7 +6864,7 @@ Consequently, \(Z_n\) satisfies
 \]
 Thus the limiting random model and the convergence estimates of
 Theorem~\ref{thm:spde-random-model-cauchy-criterion} follow.
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
 Apply Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to each
@@ -6891,7 +6904,7 @@ in \eqref{eq:spde-random-model-cauchy-hypotheses}.  The final assertion is
 exactly Theorem~\ref{thm:spde-random-model-cauchy-criterion}.
 \end{proof}
 
-Theorem~\ref{thm:spde-coordinate-estimates-model-convergence} fixes the
+Corollary~\ref{thm:spde-coordinate-estimates-model-convergence} fixes the
 logical boundary of the remaining BPHZ task.  A finite-dimensional
 reexpansion component or a finite basis component of \(T_\alpha\) is included
 by enlarging the finite index set \(I\).  The model construction for
@@ -7091,8 +7104,8 @@ finite-dimensional norm comparison to
 \(c_{n+1}-c_n\) gives the stated model-distance version.
 \end{proof}
 
-\begin{theorem}[Negative-sector model convergence from scale-summed coordinates]
-\label{thm:spde-phi-four-three-negative-sector-model-convergence}
+\begin{hypothesis}[Negative-sector scale-summed coordinate scheme]
+\label{hyp:spde-negative-sector-scale-summed-coordinate-scheme}
 Fix \(0<\kappa<1/14\), set
 \[
   \gamma_-=\frac12-7\kappa,
@@ -7245,7 +7258,11 @@ and
   }
   {1-2^{-(\sigma_i-D_i/p)}} .
 \]
-Then
+\end{hypothesis}
+
+\begin{corollary}[Negative-sector model convergence from scale-summed coordinates]
+\label{thm:spde-phi-four-three-negative-sector-model-convergence}
+Under Hypothesis~\ref{hyp:spde-negative-sector-scale-summed-coordinate-scheme},
 \[
   \sup_{n\geq1}\|N_n^-\|_{L^p(\Omega)}
   \leq
@@ -7271,7 +7288,7 @@ in the model distance \(d_{K;\gamma_-}\), to a limiting random model on
   }
   {1-2^{-\rho}}\,2^{-\rho n}.
 \]
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
 For a fixed coordinate label \(i\), the entropy hypothesis
@@ -7572,7 +7589,7 @@ Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}, the
 fields \(U_{\tau,m}\), \(\tau\in\mathfrak C_{\rm G}\), have continuous
 modifications on each \(\mathcal X_{\Pi,m}\) and satisfy the
 \(\Pi\)-coordinate hypotheses of
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
 \[
   D_\tau=Q,\qquad d_\tau=Q+1,
 \]
@@ -7614,7 +7631,7 @@ increments of the corresponding fields \(U_{\tau,m}^{(n+1)}-U_{\tau,m}^{(n)}\),
 with an additional factor \(2^{-\rho n}\) in \(L^p\) for some \(\rho>0\),
 then the associated cutoff-difference variables satisfy the \(V\)-hypotheses
 of
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
 the same \(D_\tau,d_\tau,\sigma_\tau,\varepsilon_\tau\) and with that
 convergence rate \(\rho\).
 \end{proposition}
@@ -7642,7 +7659,7 @@ which is \(|\mathcal X_{k,(z,\delta)}(\varphi)|\).  Taking the supremum over
 the support convention used in the dual-norm proposition, gives
 \eqref{eq:spde-gaussian-pi-coordinate-fields}.  This is the promised map from
 physical \(\Pi\)-coordinates to the abstract coordinate fields of
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
 
 Set \(\delta=2^{-m}a\) with \(a\in[1/2,1]\).  The factor \(a\) is bounded
 above and below by numerical constants, hence
@@ -7710,7 +7727,7 @@ implies
 \]
 and it also implies \(\varepsilon_\tau>0\).  These are precisely the
 scale-slack and edge-slack inequalities required in
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
 
 It remains only to justify the continuity hypothesis.  The same edge estimate,
 before restriction to the dyadic edge set, holds for arbitrary
@@ -8091,7 +8108,7 @@ and
   \label{eq:spde-gamma-coordinate-input-fields}
 \]
 Then the \(\mathfrak g\)-coordinate hypotheses of
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold
 with
 \[
   D_{\mathfrak g}=5,
@@ -8227,7 +8244,7 @@ precisely that
   \varepsilon_{\mathfrak g}=p\theta-d_{\mathfrak g}>0 .
 \]
 Thus the scale-slack and edge-slack hypotheses in
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold.
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold.
 The deterministic Holder estimate
 \eqref{eq:spde-gamma-coordinate-input-pointwise-edge} also gives continuous
 sample paths whenever the norm \(\|T_n\|_{-3/2;U,r}\) is finite, which proves
@@ -8917,7 +8934,7 @@ and the cutoff increments obey
 \end{equation}
 Then the nonlinear coordinates \(XY\) and \(X^2Y\) satisfy the
 \(\Pi\)-coordinate hypotheses of
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
 \[
   D_\tau=5,\qquad d_\tau=6,\qquad
   \varepsilon_\tau=p\theta-6 .
@@ -9061,7 +9078,7 @@ Cauchy uniformly along every chain of nested approximants.  This defines a
 continuous modification on the compact metric space
 \(\mathcal X_{\Pi,m}\).  The same argument applies to \(V_{n,\tau,m}\).
 Hence all hypotheses needed for
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} are
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} are
 satisfied for the nonlinear \(\Pi\)-coordinates.
 \end{proof}
 
@@ -10227,7 +10244,7 @@ coordinates, and the scale-summed criterion that would imply convergence of
 that sector have been proved in
 Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
 and
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
 What remains is to prove, for the actual BPHZ-renormalized model, the
 coordinate estimates required by that theorem for
 \[
@@ -10267,7 +10284,7 @@ Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}.
 The three-dimensional part requires: construction of the BPHZ-renormalized
 dynamic \(\Phi^4_3\) model; proof of the coordinate moment and cutoff-Cauchy
 estimates in
-Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence};
+Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence};
 extension of those estimates from the strict negative sector to the full
 sector used in the fixed-point problem; verification that the concrete BPHZ
 model satisfies the Schauder and product estimates required by
