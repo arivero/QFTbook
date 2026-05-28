@@ -5722,9 +5722,119 @@ amplitude.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
 \(\bar K N\) and \(\pi\Sigma\) \(S\)-wave channels.  In each case the QCD
 statement is the sheet-labeled pole of
 Definition~\ref{def:qcd-baryon-meson-resonance-data}.  A finite-volume
-calculation supplies this pole information through a generalized eigenvalue problem and
-a coupled-channel quantization condition; a dispersive calculation supplies
-it through the corresponding analyticity and crossing assumptions.
+calculation supplies this pole information through a generalized eigenvalue
+problem and a coupled-channel quantization condition; a dispersive
+calculation supplies it through the corresponding analyticity and crossing
+assumptions.
+
+\begin{proposition}[Two-channel sheet continuation and residue vector]
+\label{prop:qcd-two-channel-sheet-residue}
+Fix a partial wave and an energy neighborhood in which two stable
+color-singlet two-body channels are the only open channels retained in the
+analysis.  Suppose that, in this neighborhood, the coupled-channel amplitude
+admits a \(K\)-matrix representation
+\begin{equation}
+  t^{\rm phys}(s)
+  =
+  \left[
+    K(s)^{-1}
+    -\ii\,\operatorname{diag}\!\bigl(\rho_1(s),\rho_2(s)\bigr)
+  \right]^{-1},
+  \label{eq:qcd-two-channel-physical-kmatrix}
+\end{equation}
+where \(K(s)^{-1}\) is a complex-analytic symmetric matrix that is real
+symmetric on the physical real interval, and each \(\rho_a(s)\) is the
+chosen square-root phase-space branch for channel \(a\).  For a sheet label
+\(\sigma=(\sigma_1,\sigma_2)\), \(\sigma_a=\pm1\), define
+\begin{equation}
+  D_\sigma(s)
+  :=
+  K(s)^{-1}
+  -\ii\,\operatorname{diag}\!\bigl(\sigma_1\rho_1(s),\sigma_2\rho_2(s)\bigr),
+  \qquad
+  t^{(\sigma)}(s):=D_\sigma(s)^{-1}.
+  \label{eq:qcd-two-channel-sheet-denominator}
+\end{equation}
+Then a resonance pole on this sheet is a zero of
+\begin{equation}
+  \Delta_\sigma(s):=\det D_\sigma(s).
+  \label{eq:qcd-two-channel-pole-determinant}
+\end{equation}
+If \(s_\ast\) is a simple zero of \(\Delta_\sigma\) and
+\(\operatorname{rank}D_\sigma(s_\ast)=1\), then
+\begin{equation}
+  t^{(\sigma)}(s)
+  =
+  -\,\frac{\operatorname{adj}D_\sigma(s_\ast)}
+          {\Delta_\sigma'(s_\ast)}\,
+    \frac1{s_\ast-s}
+  +O(1).
+  \label{eq:qcd-two-channel-residue-adjugate}
+\end{equation}
+Because \(D_\sigma(s_\ast)\) is complex symmetric, the adjugate in
+\eqref{eq:qcd-two-channel-residue-adjugate} has rank one and can be written
+as \(c\,v_av_b\), where \(v\) spans
+\(\ker D_\sigma(s_\ast)\).  Thus the projective residue vector in
+Definition~\ref{def:qcd-baryon-meson-resonance-data} is the null direction of
+the analytically continued denominator, with the overall complex phase fixed
+only after choosing a residue normalization.
+
+In the constant local coordinate chart
+\[
+  K^{-1}=
+  \begin{pmatrix}a&b\\ b&c\end{pmatrix},
+  \qquad
+  \rho_a(s)=\rho_a,
+\]
+the pole equation on sheet \(\sigma\) is
+\begin{equation}
+  (a-\ii\sigma_1\rho_1)(c-\ii\sigma_2\rho_2)-b^2=0.
+  \label{eq:qcd-two-channel-local-pole-equation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:qcd-two-channel-physical-kmatrix} is the representation
+assumed in the proposition.  On the physical interval it is equivalent to the
+two-channel elastic-unitarity identity
+\[
+  \operatorname{Im}\bigl(t^{\rm phys}(s)^{-1}\bigr)
+  =
+  -\operatorname{diag}(\rho_1(s),\rho_2(s))
+\]
+on the physical interval.  Analytic continuation through the unitarity cut of
+channel \(a\) changes the sign of the square root \(k_a(s)\), hence of
+\(\rho_a(s)\), and leaves the other channel branches unchanged.  This gives
+\eqref{eq:qcd-two-channel-sheet-denominator}.  Since the matrix inverse is
+meromorphic wherever the entries are analytic, its poles are precisely the
+zeros of \(\det D_\sigma\), unless the adjugate vanishes to sufficient order
+to cancel the zero.  Under the stated rank-one and simple-zero hypotheses,
+the adjugate does not vanish, and
+\[
+  D_\sigma(s)^{-1}
+  =
+  \frac{\operatorname{adj}D_\sigma(s)}
+       {\Delta_\sigma(s)}
+  =
+  \frac{\operatorname{adj}D_\sigma(s_\ast)}
+       {(s-s_\ast)\Delta_\sigma'(s_\ast)}
+  +O(1),
+\]
+which is \eqref{eq:qcd-two-channel-residue-adjugate} after rewriting
+\((s-s_\ast)^{-1}=-(s_\ast-s)^{-1}\).  A \(2\times2\) matrix of rank one has
+rank-one adjugate; for a complex symmetric matrix the left and right null
+directions agree, so this rank-one matrix is proportional to \(vv^T\).  The
+constant formula \eqref{eq:qcd-two-channel-local-pole-equation} is the
+determinant of the displayed \(2\times2\) denominator.
+\end{proof}
+
+This proposition is the minimal algebra behind statements about the
+\(\Lambda(1405)\)-type \(\bar K N\)-\(\pi\Sigma\) sector, hidden-charm
+pentaquark channels, and near-threshold heavy-meson channels.  The number of
+poles, their locations, and their residues are outputs of a finite-volume or
+dispersive reconstruction.  The phrase ``molecular'' can be used only after a
+specific residue, pole-motion, or source-overlap coordinate has been declared;
+it is not an independent QCD definition.
 
 \begin{definition}[Light-baryon spectroscopy charts]
 \label{def:qcd-light-baryon-spectroscopy-charts}
@@ -5860,6 +5970,99 @@ are then coordinates on residues, pole motion under quark-mass variation,
 large-\(N_c\) behavior, and source-overlap charts.  They are not primitive
 spectral definitions.
 \end{definition}
+
+\begin{definition}[Glueball and hybrid spectroscopy source charts]
+\label{def:qcd-glueball-hybrid-source-charts}
+Fix \(J^{PC}\), flavor quantum numbers, and a finite-volume regulator with a
+transfer matrix.  A glueball source chart is a finite-dimensional subspace
+\(\mathcal V_G\) spanned by gauge-invariant pure-glue operators, such as
+traces of small Wilson loops or local curvature polynomials after operator
+renormalization.  A flavor-singlet meson chart is a subspace
+\(\mathcal V_M\) spanned by color-singlet quark bilinears and multi-hadron
+operators with the same exact quantum numbers.  A hybrid chart is a subspace
+\(\mathcal V_H\) spanned by gauge-invariant sources in which quark fields are
+connected by Wilson lines and one or more local curvature insertions, for
+example representative operator families of the form
+\(\bar q(x)\Gamma\,U(x,y)F_{\mu\nu}(y)U(y,z)q(z)\) after the endpoint and
+composite-operator renormalizations are specified.
+
+The QCD spectrum is the spectrum extracted from the full correlation matrix
+on the span of these source spaces and their multi-hadron completions.  The
+labels glueball, hybrid, and flavor-singlet meson are source-chart
+coordinates on eigenvectors and pole residues.  They become invariant only
+after a supplementary limit or comparison is stated, for example the pure
+Yang--Mills limit, the large-\(N_c\) limit, or a declared quark-mass
+deformation path.
+\end{definition}
+
+\begin{controlledapproximation}[Two-state mixing coordinate]
+\label{ca:qcd-two-state-glueball-hybrid-mixing}
+A two-state mixing matrix is a coordinate on a controlled finite-dimensional
+projection of the transfer-matrix problem, not a definition of the QCD
+spectrum.  It is admissible only after the source subspaces, the inner
+product, the fitting window, and the error made by omitting other levels have
+been stated.  Within such a projection, suppose two normalized basis vectors
+\(|G\rangle\in\mathcal V_G\) and
+\(|M\rangle\in\mathcal V_M\oplus\mathcal V_H\) give the self-adjoint matrix
+\begin{equation}
+  H_{\rm eff}(x)=
+  \begin{pmatrix}
+    M_G(x)&h(x)\\
+    h(x)&M_M(x)
+  \end{pmatrix},
+  \label{eq:qcd-two-state-mixing-hamiltonian}
+\end{equation}
+where \(x\) is a declared deformation coordinate, such as a quark mass or
+\(1/N_c\).
+\end{controlledapproximation}
+
+\begin{proposition}[Avoided crossing in a two-state spectroscopy chart]
+\label{prop:qcd-two-state-avoided-crossing}
+In the controlled approximation
+\ref{ca:qcd-two-state-glueball-hybrid-mixing}, the two projected energies are
+\begin{equation}
+  E_\pm(x)
+  =
+  \frac{M_G(x)+M_M(x)}2
+  \pm
+  \sqrt{
+    \left(\frac{M_M(x)-M_G(x)}2\right)^2+h(x)^2
+  }.
+  \label{eq:qcd-two-state-avoided-crossing-eigenvalues}
+\end{equation}
+If \(M_G(x_0)=M_M(x_0)\) and \(h(x_0)\ne0\), the projected levels are
+separated by \(2|h(x_0)|\).  Away from degeneracy, a real orthogonal
+diagonalization angle \(\theta(x)\) may be chosen so that
+\begin{equation}
+  \tan 2\theta(x)=\frac{2h(x)}{M_M(x)-M_G(x)}.
+  \label{eq:qcd-two-state-mixing-angle}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The characteristic polynomial of
+\eqref{eq:qcd-two-state-mixing-hamiltonian} is
+\[
+  E^2-(M_G+M_M)E+M_GM_M-h^2 .
+\]
+Solving this quadratic gives
+\eqref{eq:qcd-two-state-avoided-crossing-eigenvalues}.  At \(M_G=M_M\), the
+square root is \(|h|\), so the separation is \(2|h|\).  For the angle, write
+the rotated off-diagonal entry as
+\[
+  \frac12(M_G-M_M)\sin2\theta+h\cos2\theta .
+\]
+Setting it to zero gives
+\((M_M-M_G)\sin2\theta=2h\cos2\theta\), which is
+\eqref{eq:qcd-two-state-mixing-angle} when the denominator is nonzero.  At
+degeneracy the diagonalizing angle is \(\theta=\pi/4\) modulo basis signs.
+\end{proof}
+
+The proposition explains why an eigenstate cannot be assigned an invariant
+glueball or hybrid percentage from a two-by-two table alone.  The invariant
+quantities are the QCD energies or pole positions and the declared matrix
+elements.  The percentages are coordinates depending on the finite source
+space, normalization, and deformation path.
 
 \begin{proposition}[Heavy-baryon spin average removes the chromomagnetic coordinate]
 \label{prop:qcd-heavy-baryon-spin-average}

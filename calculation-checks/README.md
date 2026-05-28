@@ -841,8 +841,10 @@ Current checks:
   the one-channel Luescher/K-matrix sign
   convention that maps finite-volume energies to a second-sheet pole
   equation, together with the coupled-channel determinant reduction,
-  sheet-sign bookkeeping, and the quarkonium spin-centroid algebra for fine
-  and hyperfine splittings, the Coulombic \(1S\) pNRQCD energy and
+  sheet-sign bookkeeping, two-channel sheet/residue adjugate algebra,
+  two-state glueball/hybrid avoided-crossing algebra, and the quarkonium
+  spin-centroid algebra for fine and hyperfine splittings, the Coulombic
+  \(1S\) pNRQCD energy and
   wavefunction-at-origin normalization, and the linear elastic-pole
   mass-width coordinate, plus the nucleon Sachs Dirac--Pauli coordinate
   transform, the stable-current three-point extraction ratio with

@@ -53,6 +53,13 @@ def det_2(a: Matrix) -> Fraction:
     return a[0][0] * a[1][1] - a[0][1] * a[1][0]
 
 
+def adj_2(a: Matrix) -> Matrix:
+    return (
+        (a[1][1], -a[0][1]),
+        (-a[1][0], a[0][0]),
+    )
+
+
 def identity_matrix(n: int) -> Matrix:
     return tuple(
         tuple(Fraction(1) if i == j else Fraction(0) for j in range(n))
@@ -411,6 +418,81 @@ def check_coupled_channel_determinant_reduction() -> None:
     assert_equal("second physical-channel imaginary sign", imag_second, -rho2)
 
 
+def check_two_channel_sheet_residue_algebra() -> None:
+    # For D_sigma=[[a-i sigma1 rho1,b],[b,c-i sigma2 rho2]],
+    # det D has real part ac-b^2-sigma1*sigma2*rho1*rho2 and imaginary
+    # part -(a*sigma2*rho2+c*sigma1*rho1).
+    a = Fraction(7, 5)
+    b = Fraction(2, 3)
+    c = Fraction(11, 6)
+    rho1 = Fraction(5, 4)
+    rho2 = Fraction(13, 10)
+    sigma1 = Fraction(-1)
+    sigma2 = Fraction(1)
+    real_part = a * c - b**2 - sigma1 * sigma2 * rho1 * rho2
+    imag_part = -(a * sigma2 * rho2 + c * sigma1 * rho1)
+    assert_equal(
+        "two-channel determinant real part",
+        real_part,
+        a * c - b**2 + rho1 * rho2,
+    )
+    assert_equal(
+        "two-channel determinant imaginary part",
+        imag_part,
+        -(a * rho2 - c * rho1),
+    )
+
+    # At a simple pole, the residue matrix is proportional to the adjugate of
+    # a rank-one denominator.  A rank-one symmetric denominator with null
+    # vector (3,-2) has rank-one adjugate proportional to vv^T.
+    denominator: Matrix = (
+        (Fraction(2), Fraction(3)),
+        (Fraction(3), Fraction(9, 2)),
+    )
+    adj = adj_2(denominator)
+    null_vec = (Fraction(3), Fraction(-2))
+    vv_t: Matrix = (
+        (null_vec[0] * null_vec[0], null_vec[0] * null_vec[1]),
+        (null_vec[1] * null_vec[0], null_vec[1] * null_vec[1]),
+    )
+    assert_equal("rank-one denominator determinant", det_2(denominator), Fraction(0))
+    assert_equal("adjugate rank-one determinant", det_2(adj), Fraction(0))
+    assert_equal("adjugate proportional 00", adj[0][0], vv_t[0][0] / 2)
+    assert_equal("adjugate proportional 01", adj[0][1], vv_t[0][1] / 2)
+    zero_2: Matrix = ((Fraction(0), Fraction(0)), (Fraction(0), Fraction(0)))
+    assert_equal("adjugate annihilates denominator", mat_mul(adj, denominator), zero_2)
+
+    delta_prime = Fraction(5, 7)
+    residue_entry = -adj[0][0] / delta_prime
+    assert_equal("residue adjugate sign", residue_entry, -Fraction(63, 10))
+
+
+def check_two_state_mixing_algebra() -> None:
+    mg = Fraction(10)
+    mm = Fraction(14)
+    h = Fraction(3)
+    trace = mg + mm
+    determinant = mg * mm - h**2
+    discriminant = trace**2 - 4 * determinant
+    assert_equal(
+        "two-state avoided-crossing discriminant",
+        discriminant,
+        (mm - mg) ** 2 + 4 * h**2,
+    )
+    assert_equal("two-state mixing-angle tangent", 2 * h / (mm - mg), Fraction(3, 2))
+
+    crossing_mass = Fraction(21, 5)
+    crossing_h = Fraction(7, 4)
+    crossing_trace = 2 * crossing_mass
+    crossing_det = crossing_mass**2 - crossing_h**2
+    crossing_discriminant = crossing_trace**2 - 4 * crossing_det
+    assert_equal(
+        "two-state crossing split squared",
+        crossing_discriminant,
+        4 * crossing_h**2,
+    )
+
+
 def check_quarkonium_spin_centroid() -> None:
     # Two spin-1/2 particles have S_Q.S_Qbar =
     # 1/2(S(S+1)-3/2): -3/4 for singlet and 1/4 for triplet.
@@ -656,6 +738,8 @@ def main() -> None:
     check_gevp_basis_covariance()
     check_shallow_bound_effective_range_algebra()
     check_coupled_channel_determinant_reduction()
+    check_two_channel_sheet_residue_algebra()
+    check_two_state_mixing_algebra()
     check_quarkonium_spin_centroid()
     check_coulombic_quarkonium_ground_state()
     check_linear_elastic_pole_coordinate()
