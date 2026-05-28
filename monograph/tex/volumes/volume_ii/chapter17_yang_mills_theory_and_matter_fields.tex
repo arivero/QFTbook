@@ -955,42 +955,86 @@ uses the pairing between \(R^*\) and \(R\).  Mass and Yukawa couplings are
 gauge invariant only when their flavor and representation tensors define
 intertwiners from the tensor product of fields to the trivial representation.
 
-Figure~\ref{fig:ym-matter-representation-covariance} displays this covariance
-statement: a matter field, its covariant derivative, and gauge-invariant
-contractions are linked by the representation \(R\) and its invariant pairing.
+Figure~\ref{fig:ym-matter-representation-covariance} displays the geometric
+meaning of the same covariance statement.  The matter field is a section of
+the associated bundle \(P\times_G V_R\).  Parallel transport along a curve
+\(\gamma:x\to y\) is the representation \(R\) applied to the gauge-field
+parallel transport, and infinitesimal loop transport acts on matter by the
+represented curvature:
+\[
+  U_R(\partial\square)\psi(x)
+  =
+  \psi(x)+\ii F^a_{\mu\nu}(x)t_R^a\psi(x)\,ab
+  +O(a^2b+ab^2).
+\]
+The invariant pairings used in kinetic, mass, and Yukawa terms are pairings
+of associated fibers.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.55) {matter field};
-    \draw[rounded corners=4pt,thick] (-1.35,0.65) rectangle (1.35,1.75);
-    \node at (0,1.22) {\(\psi(x)\in V_R\)};
-    \draw[-{Latex[length=2mm]},thick] (1.55,1.22)--(3.15,1.22);
-    \node[align=center] at (2.35,1.65)
-      {local\\transformation};
+    \tikzset{
+      base/.style={fill=gray!7,draw=black,line width=0.65pt},
+      fiber/.style={line width=0.7pt},
+      transport/.style={-{Latex[length=2mm]},line width=0.9pt},
+      point/.style={circle,fill=black,inner sep=1.3pt}
+    }
 
-    \draw[rounded corners=4pt,thick] (3.30,0.65) rectangle (6.10,1.75);
-    \node at (4.70,1.22) {\(\psi'=\rho_R(g)\psi\)};
+    \node[font=\small] at (2.75,3.38)
+      {section of the associated bundle \(P\times_GV_R\)};
+    \draw[base] (-0.35,0.00) .. controls (1.40,-0.35) and (4.25,-0.28) ..
+      (5.70,0.08) .. controls (4.55,0.42) and (1.25,0.48) .. cycle;
+    \node[gray!65!black] at (5.45,-0.32) {spacetime base};
 
-    \draw[-{Latex[length=2mm]},thick] (6.30,1.22)--(7.88,1.22);
-    \node[align=center] at (7.08,1.65)
-      {covariant\\derivative};
+    \coordinate (xpt) at (1.05,0.16);
+    \coordinate (ypt) at (4.65,0.18);
+    \node[point,label=below:\(x\)] at (xpt) {};
+    \node[point,label=below:\(y\)] at (ypt) {};
+    \draw[fiber,blue!65!black] (1.05,0.16)--(1.05,2.48);
+    \draw[fiber,blue!65!black] (4.65,0.18)--(4.65,2.48);
+    \node[blue!65!black] at (1.05,2.72) {fiber \(V_R|_x\)};
+    \node[blue!65!black] at (4.65,2.72) {fiber \(V_R|_y\)};
+    \fill[blue!65!black] (1.05,1.55) circle (2.2pt);
+    \node[left,blue!65!black] at (1.00,1.55) {\(\psi(x)\)};
+    \draw[transport,purple!75!black]
+      (1.08,1.55) .. controls (2.25,2.16) and (3.45,2.14) ..
+      node[above=3pt] {\(U_R(\gamma)=\rho_R(P\exp\{\ii\int_\gamma A\})\)}
+      (4.62,1.55);
+    \fill[purple!75!black] (4.65,1.55) circle (2.2pt);
+    \node[right,purple!75!black] at (4.72,1.55) {\(\psi(y)\)};
 
-    \draw[rounded corners=4pt,thick] (8.05,0.65) rectangle (11.20,1.75);
-    \node at (9.62,1.22)
-      {\(D_\mu=\partial_\mu-\ii A^a_\mu t_R^a\)};
-
-    \node[blue!65!black,align=center] at (4.70,0.10)
-      {\(\rho_R(gh)=\rho_R(g)\rho_R(h)\)};
-    \node[purple!75!black,align=center] at (9.62,0.10)
-      {\((D_\mu\psi)'=\rho_R(g)D_\mu\psi\)};
+    \begin{scope}[shift={(7.05,0.12)}]
+      \node[font=\small] at (2.00,3.26)
+        {curvature in representation \(R\)};
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (2.15,0);
+      \coordinate (c) at (2.15,1.55);
+      \coordinate (d) at (0,1.55);
+      \fill[orange!10] (a)--(b)--(c)--(d)--cycle;
+      \draw[transport,orange!80!black] (a)--(b);
+      \draw[transport,orange!80!black] (b)--(c);
+      \draw[transport,orange!80!black] (c)--(d);
+      \draw[transport,orange!80!black] (d)--(a);
+      \node[align=center,orange!80!black] at (1.08,0.78)
+        {\(\ii F^a_{\mu\nu}t_R^a\,ab\)};
+      \node[align=left] at (4.18,1.18)
+        {\(\displaystyle
+        U_R(\partial\square)
+        =
+        1+\ii F^a_{\mu\nu}t_R^a\,ab+\cdots\)};
+      \node[align=left,purple!75!black] at (4.18,0.25)
+        {pairing \(R^*\otimes R\to\mathbb C\)\\
+        contracts transported fibers};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{A matter field transforms in a representation \(R\) of the gauge
-  group.  The covariant derivative uses the corresponding Lie-algebra
-  generators \(t_R^a\), so \(D_\mu\psi\) transforms in the same representation
-  as \(\psi\).}
+  \caption{Matter covariance as associated-bundle parallel transport.  A
+  section value \(\psi(x)\in V_R|_x\) is transported by applying the
+  representation \(R\) to the gauge holonomy.  Around an infinitesimal loop
+  the first nontrivial term is the represented curvature
+  \(F_{\mu\nu}^at_R^a\).  Gauge-invariant matter contractions are pairings of
+  associated fibers, for instance \(R^*\otimes R\to\mathbb C\).}
   \label{fig:ym-matter-representation-covariance}
 \end{figure}
 
@@ -1148,41 +1192,77 @@ ghost--ghost--\(h\) vertex.  In an Abelian unbroken gauge theory ghosts
 decouple; in the \(R_\xi\) chart of the Abelian Higgs model this field
 dependence of the gauge condition makes their BRST role visible.
 
-Figure~\ref{fig:abelian-beh-mode-accounting} keeps the Abelian BEH
-field-accounting explicit: the scalar chart, gauge-field polarizations,
-Goldstone coordinate, gauge condition, and ghost mass are all chart-dependent
-pieces of the same gauge-fixed presentation.
+Figure~\ref{fig:abelian-beh-mode-accounting} separates the two pieces of the
+Abelian BEH calculation.  The angular coordinate on the circle of scalar
+minima is a gauge-orbit coordinate, and the physical local mode count is the
+same before and after rewriting the fields.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.55) {BEH mode accounting in the Abelian model};
-    \draw[rounded corners=4pt,thick] (-5.7,0.35) rectangle (-2.3,1.85);
-    \node[align=center] at (-4.0,1.45) {scalar chart};
-    \node[align=center] at (-4.0,0.92)
-      {\(h\): radial\\\(\pi\): gauge-orbit};
-    \draw[-{Latex[length=2mm]},thick] (-2.05,1.10)--(-0.35,1.10);
-    \node[align=center] at (-1.20,1.52) {quadratic\\mixing};
-    \draw[rounded corners=4pt,thick] (-0.1,0.35) rectangle (3.3,1.85);
-    \node[align=center] at (1.6,1.45) {massive vector};
-    \node[align=center] at (1.6,0.92)
-      {\(A_\mu-\partial_\mu\theta/v\)\\three polarizations};
-    \draw[-{Latex[length=2mm]},thick] (3.55,1.10)--(5.25,1.10);
-    \node[align=center] at (4.40,1.52) {BRST\\quotient};
-    \draw[rounded corners=4pt,thick] (5.5,0.35) rectangle (8.9,1.85);
-    \node[align=center] at (7.2,1.45) {physical modes};
-    \node[align=center] at (7.2,0.92)
-      {massive vector\\radial scalar \(h\)};
-    \node[align=center,blue!65!black] at (1.6,-0.15)
-      {\(R_\xi\) gauges keep \(\pi,c,\bar c\) with gauge-dependent masses;\\
-       unitary gauge removes \(\pi\) locally but hides power counting.};
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      tally/.style={align=left,inner sep=2pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (2.15,4.25)
+        {scalar vacuum chart};
+      \draw[gray!45] (0,0)--(4.40,0);
+      \draw[gray!45] (2.20,-1.05)--(2.20,3.10);
+      \node[below] at (4.38,0) {\(\operatorname{Re}\phi\)};
+      \node[left] at (2.20,3.05) {\(\operatorname{Im}\phi\)};
+      \foreach \r/\col in {0.70/gray!18,1.15/gray!14,1.60/gray!10} {
+        \draw[\col,line width=5pt] (2.20,1.02) circle (\r);
+      }
+      \draw[blue!70!black,line width=1pt] (2.20,1.02) circle (1.15);
+      \fill[blue!70!black] (3.35,1.02) circle (2.2pt);
+      \node[right] at (3.38,1.02) {\(v/\sqrt2\)};
+      \draw[arrow,red!70!black] (3.35,1.02)--(4.15,1.02);
+      \node[red!70!black,above] at (3.82,1.08) {radial \(h\)};
+      \draw[arrow,purple!75!black]
+        (3.35,1.02) .. controls (3.30,1.42) and (3.12,1.75) .. (2.85,1.98);
+      \node[purple!75!black,align=center] at (2.95,2.45)
+        {gauge-orbit\\coordinate \(\theta\sim\pi/v\)};
+      \node[align=center] at (2.20,-0.78)
+        {\(\lambda(|\phi|^2-v^2/2)^2\) has a circle of minima};
+    \end{scope}
+
+    \begin{scope}[shift={(6.25,0.05)}]
+      \node[font=\small] at (2.55,4.20)
+        {local physical mode count};
+      \node[tally] at (0.25,3.25)
+        {before gauge fixing:\\
+        massless vector \(A_\mu\): \(2\)\\
+        complex scalar \(\phi\): \(2\)\\
+        total: \(4\)};
+      \node[tally] at (4.10,3.25)
+        {after local BEH chart:\\
+        massive vector \(B_\mu\): \(3\)\\
+        radial scalar \(H\): \(1\)\\
+        total: \(4\)};
+
+      \draw[blue!65!black,line width=0.9pt] (0.15,1.22)--(5.30,1.22);
+      \node[blue!65!black,above] at (2.70,1.26)
+        {\(R_\xi\) gauge representation};
+      \node[align=center] at (1.35,0.60)
+        {unphysical fields\\
+        \(\pi,c,\bar c\)\\
+        mass \(\sqrt{\xi}\,m_A\)};
+      \draw[arrow,purple!75!black] (2.60,0.62)--(4.20,0.62);
+      \node[align=center] at (4.55,0.60)
+        {BRST cohomology\\
+        leaves \(B_\mu,H\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{The would-be Goldstone coordinate is a coordinate along the gauge
-  orbit.  It supplies the longitudinal polarization in a massive vector
-  description, while \(R_\xi\) gauges keep it as an unphysical field paired
-  with ghosts by BRST.}
+  \caption{Abelian BEH geometry and mode accounting.  The angular coordinate
+  along the circle of minima is a gauge-orbit coordinate; locally it is the
+  would-be Goldstone field.  The local field variables reorganize
+  \(2+2\) degrees of freedom into a massive vector with three physical
+  polarizations and one radial scalar.  \(R_\xi\) gauges keep the orbit
+  coordinate and ghosts as gauge-dependent representatives, but the BRST
+  cohomology contains the same physical modes.}
   \label{fig:abelian-beh-mode-accounting}
 \end{figure}
 
@@ -1661,47 +1741,73 @@ monopole: after gauge fixing
 field is described by a \(U(1)\) magnetic bundle, while the full \(SU(2)\)
 fields remain smooth at the origin.
 
-Figure~\ref{fig:bogomolny-bound-structure} summarizes the Bogomolny completion:
-the square term gives the BPS equation, and the boundary term gives the
-magnetic charge contribution to the energy.
+Figure~\ref{fig:bogomolny-bound-structure} shows the explicit
+Prasad--Sommerfield profiles.  This is the quantitative content hidden by the
+square completion: the nonabelian core is smooth, the Higgs field approaches
+the vacuum orbit at infinity, and the gauge profile decays to the unbroken
+\(U(1)\) magnetic bundle.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.96\textwidth}{!}{%
+  \resizebox{0.92\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.75) {Bogomolny structure};
-    \draw[rounded corners=4pt,thick] (-5.70,0.55) rectangle (-2.05,2.05);
-    \node at (-3.88,1.58) {\(\displaystyle
-      E=\frac1{2g^2}\int\operatorname{tr}(B_iB_i+D_i\Phi D_i\Phi)\)};
-    \node at (-3.88,1.02) {BPS limit \(U=0\)};
+    \tikzset{
+      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
+      curve/.style={line width=1.15pt},
+      marker/.style={densely dashed,gray!55,line width=0.55pt}
+    }
+    \node[font=\small] at (4.35,4.70)
+      {Prasad--Sommerfield unit monopole profiles};
+    \draw[axis] (-0.05,0)--(8.85,0) node[below] {\(\rho=ur\)};
+    \draw[axis] (0,-0.08)--(0,4.20) node[left] {profile};
+    \foreach \x/\lab in {0/0,1.6/1,3.2/2,4.8/3,6.4/4,8.0/5} {
+      \draw[gray!50] (\x,0.06)--(\x,-0.06);
+      \node[below] at (\x,-0.08) {\(\lab\)};
+    }
+    \foreach \y/\lab in {0/0,1.0/{0.25},2.0/{0.5},3.0/{0.75},4.0/1} {
+      \draw[gray!50] (0.06,\y)--(-0.06,\y);
+      \node[left] at (-0.08,\y) {\(\lab\)};
+    }
+    \draw[marker] (0,4.0)--(8.40,4.0);
+    \draw[marker] (0,0)--(8.40,0);
 
-    \draw[-{Latex[length=2mm]},thick] (-1.82,1.30)--(-0.28,1.30);
-    \node[align=center] at (-1.05,1.72) {complete\\the square};
+    \draw[curve,blue!70!black] plot[smooth] coordinates {
+      (0,4.00) (0.80,3.84) (1.60,3.31) (2.40,2.35)
+      (3.20,1.37) (4.00,0.75) (4.80,0.38) (5.60,0.18)
+      (6.40,0.09) (7.20,0.04) (8.00,0.02)
+    };
+    \draw[curve,red!70!black] plot[smooth] coordinates {
+      (0,0.00) (0.80,0.52) (1.60,1.14) (2.40,1.70)
+      (3.20,2.16) (4.00,2.53) (4.80,2.81) (5.60,3.05)
+      (6.40,3.22) (7.20,3.37) (8.00,3.48)
+    };
+    \node[blue!70!black,anchor=west] at (5.25,0.58)
+      {\(K(\rho)=\rho/\sinh\rho\)};
+    \node[red!70!black,anchor=west] at (4.65,3.34)
+      {\(H(\rho)=\coth\rho-1/\rho\)};
 
-    \draw[rounded corners=4pt,thick] (-0.05,0.55) rectangle (3.55,2.05);
-    \node at (1.75,1.58)
-      {\(\displaystyle \frac1{2g^2}\int\operatorname{tr}(B_i-D_i\Phi)^2\)};
-    \node at (1.75,1.02)
-      {\(\displaystyle +\frac1{g^2}\int_{S^2_\infty}\operatorname{tr}(\Phi B_i)\dd S_i\)};
+    \draw[decorate,decoration={brace,mirror,amplitude=4pt},gray!65]
+      (0,-0.55)--(1.10,-0.55);
+    \node[align=center,gray!65!black] at (0.55,-1.00)
+      {smooth\\core};
+    \draw[decorate,decoration={brace,mirror,amplitude=4pt},gray!65]
+      (6.10,-0.55)--(8.15,-0.55);
+    \node[align=center,gray!65!black] at (7.13,-1.00)
+      {approach to\\\(S^2_\infty\) data};
 
-    \draw[-{Latex[length=2mm]},thick] (3.78,1.30)--(5.22,1.30);
-    \node[align=center] at (4.50,1.72) {topological\\flux};
-
-    \draw[rounded corners=4pt,thick] (5.45,0.55) rectangle (8.95,2.05);
-    \node at (7.20,1.58)
-      {\(\displaystyle E\ge \frac{4\pi v_{\mathrm m}}{g^2}|n|\)};
-    \node at (7.20,1.02)
-      {\(B_i=\pm D_i\Phi\) at equality};
-
-    \draw[blue!65!black,thick] (-4.90,-0.35)--(-4.20,-0.35)--(-3.50,-0.35);
-    \node[blue!65!black] at (-4.20,-0.72) {finite-energy configuration};
-    \draw[purple!75!black,thick,->] (6.25,-0.55)--(7.95,-0.55);
-    \node[purple!75!black] at (7.10,-0.92) {magnetic charge sector};
+    \node[align=center] at (2.10,3.48)
+      {\(K(0)=1,\ H(0)=0\)};
+    \node[align=center] at (7.20,2.18)
+      {\(K(\infty)=0,\ H(\infty)=1\)};
   \end{tikzpicture}
   }
-  \caption{In the BPS limit the energy is a nonnegative square plus a surface
-  term fixed by the magnetic sector.  The displayed square completion derives
-  the monopole mass bound from the finite-energy sector.}
+  \caption{Profiles of the explicit unit BPS monopole in the auxiliary
+  \(T_a=\sigma_a/2\) basis of \eqref{eq:hedgehog-monopole-ansatz}.  The gauge
+  profile \(K(\rho)=\rho/\sinh\rho\) removes the would-be Dirac singularity at
+  the origin and decays to zero, while
+  \(H(\rho)=\coth\rho-1/\rho\) carries the adjoint Higgs field from the smooth
+  core to the vacuum orbit at infinity.  The first-order equations force
+  these boundary behaviors and saturate the Bogomolny surface bound.}
   \label{fig:bogomolny-bound-structure}
 \end{figure}
 
@@ -2132,40 +2238,82 @@ Dirac-adjoint projectors, \(M\) is defined by the identity
   M_{IJ}\bar\psi_{IL}\psi_{JR}
   +M^*_{IJ}\bar\psi_{JR}\psi_{IL}.
 \]
-Thus \(M\) is the same mass data expressed in the chiral basis.
+Thus \(M\) is the same mass data expressed in the chiral basis.  The reason
+this package is useful is that it exposes the phase affected by anomalous
+axial rotations.  Under a common vector rotation
+\(\psi_L\mapsto \ee^{\ii\beta}\psi_L\),
+\(\psi_R\mapsto \ee^{\ii\beta}\psi_R\), \(M\) is unchanged.  Under a common
+axial rotation
+\[
+  \psi_L\mapsto \ee^{\ii\alpha}\psi_L,
+  \qquad
+  \psi_R\mapsto \ee^{-\ii\alpha}\psi_R,
+\]
+the left-right bilinear transforms as
+\(\bar\psi_L\psi_R\mapsto \ee^{-2\ii\alpha}\bar\psi_L\psi_R\), so the
+spurion transformation preserving the mass term is
+\[
+  M\mapsto \ee^{2\ii\alpha}M .
+\]
+For \(N_f\) fundamental Dirac quarks the anomalous Jacobian shifts
+\(\theta\mapsto\theta-2N_f\alpha\) in the normalization
+\eqref{eq:ym-theta-density}.  Hence the combination
+\[
+  \bar\theta:=\theta+\arg\det M
+\]
+is invariant under this common axial change of variables, provided
+\(\det M\neq0\).  If a quark mass vanishes, \(\arg\det M\) is not defined and
+the chiral rotation must be treated on the rank-deficient mass matrix itself.
 
-Figure~\ref{fig:qcd-chiral-mass-data} records the conversion between Dirac mass
-data and chiral mass data, fixing the convention for the complex matrix \(M\)
-used in the QCD chiral-symmetry discussion.
+Figure~\ref{fig:qcd-chiral-mass-data} records this invariant phase relation,
+which is the reason for using the complex chiral mass matrix in the QCD
+chiral-symmetry discussion.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.94\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.35) {Dirac-field mass data};
-    \draw[rounded corners=4pt,thick] (-1.45,0.65) rectangle (1.45,1.70);
-    \node at (0,1.30) {\(m_{IJ}\bar\psi_I\psi_J\)};
-    \node at (0,0.95) {\(\widetilde m_{IJ}\bar\psi_I\gamma_5\psi_J\)};
+    \tikzset{
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
+      nodebox/.style={draw,rounded corners=3pt,line width=0.75pt,
+        align=center,inner sep=5pt}
+    }
+    \node[font=\small] at (4.55,4.05)
+      {common chiral rotations and the QCD phase};
+    \node[nodebox,fill=blue!5] (mass) at (1.05,2.45)
+      {\(\displaystyle M\)\\
+       \(\displaystyle \arg\det M\)};
+    \node[nodebox,fill=purple!5] (theta) at (7.95,2.45)
+      {\(\displaystyle \theta\)\\
+       topological sector weight};
+    \node[nodebox,fill=green!7] (invar) at (4.50,0.55)
+      {\(\displaystyle \bar\theta=\theta+\arg\det M\)\\
+       invariant for \(\det M\ne0\)};
 
-    \draw[-{Latex[length=2mm]},thick] (1.72,1.17)--(3.10,1.17);
-    \node[align=center] at (2.42,1.58) {chiral\\projectors};
+    \draw[arr,blue!70!black] (mass)--node[above]
+      {\(U(1)_A:\ M\mapsto \ee^{2\ii\alpha}M\)} (theta);
+    \node[blue!70!black,align=center] at (4.50,3.05)
+      {\(\arg\det M\mapsto \arg\det M+2N_f\alpha\)};
+    \draw[arr,purple!75!black] (theta)--node[right]
+      {\(\theta\mapsto\theta-2N_f\alpha\)} (invar);
+    \draw[arr,green!45!black] (mass)--node[left]
+      {sum unchanged} (invar);
 
-    \node[font=\small] at (4.80,2.35) {left and right components};
-    \draw[rounded corners=4pt,thick] (3.20,0.65) rectangle (6.40,1.70);
-    \node at (4.80,1.36) {\(\psi_{IL}=P_L\psi_I\)};
-    \node at (4.80,0.95) {\(\psi_{IR}=P_R\psi_I\)};
-
-    \draw[-{Latex[length=2mm]},thick] (6.65,1.17)--(8.05,1.17);
-    \node[align=center] at (7.35,1.58) {complex\\matrix};
-
-    \node[font=\small] at (9.95,2.35) {chiral mass form};
-    \draw[rounded corners=4pt,thick] (8.15,0.65) rectangle (11.80,1.70);
-    \node at (9.98,1.34) {\(-M_{IJ}\bar\psi_{IL}\psi_{JR}\)};
-    \node at (9.98,0.94) {\(-M^*_{IJ}\bar\psi_{JR}\psi_{IL}\)};
+    \draw[gray!60,line width=0.75pt] (0.35,3.45)--(8.65,3.45);
+    \node[align=center,gray!65!black] at (4.50,3.78)
+      {\(U(1)_V\) leaves \(M\) and \(\theta\) unchanged};
+    \node[align=center] at (4.50,-0.48)
+      {the complex chiral mass matrix is not only notation;\\
+       its determinant phase is tied to the anomalous topological angle};
   \end{tikzpicture}
   }
-  \caption{Scalar and pseudoscalar Hermitian mass matrices can be repackaged
-  into a complex matrix coupling left- and right-handed quark fields.}
+  \caption{Phase information in the chiral mass matrix.  With the
+  \(\gamma_5\) convention used here, a common axial field redefinition sends
+  \(M\mapsto e^{2i\alpha}M\) and shifts the topological angle by
+  \(\theta\mapsto\theta-2N_f\alpha\).  Therefore
+  \(\bar\theta=\theta+\arg\det M\) is the invariant phase when \(M\) is
+  nonsingular.  The vector \(U(1)\) rotation leaves both quantities
+  unchanged.}
   \label{fig:qcd-chiral-mass-data}
 \end{figure}
 
