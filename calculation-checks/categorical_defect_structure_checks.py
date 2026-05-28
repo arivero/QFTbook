@@ -32,6 +32,16 @@ def matrix_matrix(left: Matrix, right: Matrix) -> Matrix:
     return [[dot(row, column) for column in columns] for row in left]
 
 
+def inverse_2x2(matrix: Matrix) -> Matrix:
+    determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if determinant == 0:
+        raise AssertionError("singular 2x2 matrix")
+    return [
+        [matrix[1][1] / determinant, -matrix[0][1] / determinant],
+        [-matrix[1][0] / determinant, matrix[0][0] / determinant],
+    ]
+
+
 def identity(size: int) -> Matrix:
     return [
         [Fraction(1) if row == column else Fraction(0) for column in range(size)]
@@ -41,6 +51,10 @@ def identity(size: int) -> Matrix:
 
 def zero_matrix(rows: int, columns: int) -> Matrix:
     return [[Fraction(0) for _ in range(columns)] for _ in range(rows)]
+
+
+def weighted_inner(metric: Matrix, left: Vector, right: Vector) -> Fraction:
+    return dot(left, matrix_vector(metric, right))
 
 
 def check_defect_fusion_as_operator_composition() -> None:
@@ -108,6 +122,37 @@ def check_dagger_composition_and_pairing() -> None:
             raise AssertionError("reflection pairing should be positive on nonzero vectors")
 
 
+def check_bpz_weighted_defect_adjoint() -> None:
+    # Finite analogue of <rho_D v,w>_BPZ = <v,rho_{D^\dagger} w>_BPZ.
+    # The BPZ metric is not chosen to be the identity, so the adjoint is
+    # G^{-1} rho_D^T G rather than the ordinary transpose.
+    metric: Matrix = [
+        [Fraction(2), Fraction(1)],
+        [Fraction(1), Fraction(3)],
+    ]
+    rho_d: Matrix = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(-1), Fraction(0)],
+    ]
+    rho_d_dagger = matrix_matrix(matrix_matrix(inverse_2x2(metric), transpose(rho_d)), metric)
+
+    for vector_left in [
+        [Fraction(1), Fraction(0)],
+        [Fraction(2), Fraction(-3)],
+        [Fraction(5), Fraction(7)],
+    ]:
+        for vector_right in [
+            [Fraction(0), Fraction(1)],
+            [Fraction(-4), Fraction(1)],
+            [Fraction(3), Fraction(2)],
+        ]:
+            assert_equal(
+                "BPZ weighted adjoint identity",
+                weighted_inner(metric, matrix_vector(rho_d, vector_left), vector_right),
+                weighted_inner(metric, vector_left, matrix_vector(rho_d_dagger, vector_right)),
+            )
+
+
 def check_isotopy_matrix_unitarity_for_junction_pairing() -> None:
     # Rational orthogonal change of basis preserving the finite reflection
     # pairing.  This models an isotopy map between orthonormal junction bases.
@@ -133,6 +178,7 @@ def main() -> None:
     check_defect_fusion_as_operator_composition()
     check_noninvertible_projection_action()
     check_dagger_composition_and_pairing()
+    check_bpz_weighted_defect_adjoint()
     check_isotopy_matrix_unitarity_for_junction_pairing()
     print("All categorical-defect action and dagger-structure checks passed.")
 

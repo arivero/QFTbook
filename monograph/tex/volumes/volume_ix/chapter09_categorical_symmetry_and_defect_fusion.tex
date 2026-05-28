@@ -26,6 +26,115 @@ reduce to an ordinary group symmetry.  Categorical symmetry keeps the same
 fusion operation but allows noninvertible simple objects and nontrivial
 junction spaces.
 
+\begin{definition}[Topological defect datum in correlation functions]
+\label{def:topological-defect-correlation-datum}
+Fix the class of Euclidean backgrounds and insertions on which
+\(\mathcal Q\) is defined.  A codimension-one defect label \(a\) assigns to
+every oriented framed hypersurface \(\Sigma\), together with a tubular
+neighborhood disjoint from the other insertions, multilinear distributions
+\[
+  Z_{\Sigma,a}(\mathfrak A_1,\ldots,\mathfrak A_n)
+  =
+  \bigl\langle D_a(\Sigma)\,\mathfrak A_1\cdots\mathfrak A_n\bigr\rangle
+  \label{eq:defect-correlation-functional}
+\]
+on separated smeared local and extended insertions.  The assignment is called
+topological if, for every smooth isotopy \(\Sigma_t\) fixed near the boundary
+of the chosen coordinate patch and avoiding the supports of
+\(\mathfrak A_i\),
+\[
+  \frac{d}{dt}
+  Z_{\Sigma_t,a}(\mathfrak A_1,\ldots,\mathfrak A_n)=0
+  \label{eq:defect-correlation-topological-invariance}
+\]
+as a distribution in the insertion variables.  The datum is local if it is
+compatible with restriction to sub-balls and gluing along collars.  It is
+renormalized if the limit defining
+\eqref{eq:defect-correlation-functional} is independent of auxiliary cutoff
+choices up to the declared finite defect counterterms.
+\end{definition}
+
+When the response to a normal displacement is represented by a local defect
+operator \(\mathfrak D_{\perp,a}\), called the displacement operator, the
+infinitesimal Ward identity has the form
+\[
+  \frac{d}{dt}
+  \bigl\langle D_a(\Sigma_t)\,\mathfrak A_1\cdots\mathfrak A_n\bigr\rangle
+  =
+  \left\langle
+    D_a(\Sigma_t)
+    \int_{\Sigma_t}\nu_t\,\mathfrak D_{\perp,a}\,
+    \mathfrak A_1\cdots\mathfrak A_n
+  \right\rangle ,
+  \label{eq:defect-displacement-ward-identity}
+\]
+where \(\nu_t\) is the scalar normal velocity of the deformation.
+
+\begin{proposition}[Displacement criterion for topological defects]
+\label{prop:displacement-criterion-topological-defect}
+Assume the displacement Ward identity
+\eqref{eq:defect-displacement-ward-identity} holds for a renormalized defect
+label \(a\).  The defect is topological in the sense of
+Definition~\ref{def:topological-defect-correlation-datum} if
+\(\mathfrak D_{\perp,a}=0\) as a defect local operator.  Conversely, if
+\eqref{eq:defect-correlation-topological-invariance} holds for all compactly
+supported normal variations and separated test insertions, then
+\(\mathfrak D_{\perp,a}\) is zero in the defect-operator quotient by
+correlation functions.
+\end{proposition}
+
+\begin{proof}
+If \(\mathfrak D_{\perp,a}\) is zero in all defect correlation functions, the
+right hand side of
+\eqref{eq:defect-displacement-ward-identity} vanishes for every normal
+velocity \(\nu_t\), hence every correlation functional is constant along the
+isotopy.  This is exactly
+\eqref{eq:defect-correlation-topological-invariance}.
+
+Conversely, suppose
+\eqref{eq:defect-correlation-topological-invariance} holds.  Choose
+\(\nu_t\) supported in an arbitrarily small coordinate patch of \(\Sigma_t\).
+The left hand side of
+\eqref{eq:defect-displacement-ward-identity} is then zero for every such
+\(\nu_t\) and every separated test configuration.  Since test functions
+\(\nu_t\) separate distributions on the defect worldvolume, the distribution
+defined by inserting \(\mathfrak D_{\perp,a}\) has zero pairing with every
+test function and every exterior insertion.  Therefore
+\(\mathfrak D_{\perp,a}\) lies in the null subspace of defect local
+operators, which is the asserted quotient statement.
+\end{proof}
+
+\begin{definition}[Physical defect category]
+\label{def:physical-defect-category-null-quotient}
+For a finite ordered list \(X=(D_{a_1},\ldots,D_{a_m})\) of defect sheets
+entering a small ball and a finite ordered list \(Y\) exiting it, let
+\(\mathcal J(X,Y)\) be the vector space spanned by renormalized junction
+insertions in the ball with those boundary defect labels.  Let
+\(\mathcal N(X,Y)\subset\mathcal J(X,Y)\) be the subspace of junctions whose
+ball correlation functions vanish after gluing to every compatible exterior
+defect network and every separated bulk insertion.  The physical junction
+space is
+\[
+  \operatorname{Hom}_{\mathcal D_{\mathcal Q}}(X,Y)
+  =
+  \mathcal J(X,Y)/\mathcal N(X,Y).
+  \label{eq:defect-hom-null-quotient}
+\]
+Vertical composition is gluing of balls; tensor product is juxtaposition of
+defect sheets in a collar; fusion of parallel topological sheets is the
+correlation-function limit in which the collar thickness tends to zero.
+Whenever these operations exist and are associative up to specified junction
+isomorphisms, the quotient spaces form the physical defect category
+\(\mathcal D_{\mathcal Q}\).
+\end{definition}
+
+This definition is deliberately not a declaration that every local QFT has a
+finite semisimple defect category.  Semisimplicity, rigidity, and
+finite-dimensionality of junction spaces are additional hypotheses.  They
+hold in many rational examples and in finite topological models, but in a
+general continuum QFT the null quotient, the fusion limit, and the topology
+of the junction spaces are part of the mathematical problem.
+
 \section{Action On Local Operators}
 
 The phrase ``action on local operators'' hides a limiting operation.  It is
@@ -102,6 +211,46 @@ fixed small separation and collapse the annular slab between them to the
 fused defect \(D_1\otimes D_2\), then take the common shrinking limit.  The
 two procedures give the same correlation seminorms with every separated test
 configuration, hence the same element of \(\mathcal V_{\rm loc}(0)\).
+\end{proof}
+
+\begin{proposition}[Reflection adjoint of a topological-defect action]
+\label{prop:defect-action-reflection-adjoint}
+Assume radial quantization is available and let
+\(\mathcal H_{\rm loc}\) be the Hilbert completion of local states obtained
+from the reflection-positive BPZ inner product.  Suppose \(D\) and its
+reflection-reversed defect \(D^\dagger\) have shrinking actions on a common
+dense local-operator domain \(\mathcal D_{\rm loc}\subset\mathcal H_{\rm loc}\),
+and suppose these actions extend to bounded operators on
+\(\mathcal H_{\rm loc}\).  Then
+\[
+  \langle \rho_D v,w\rangle_{\rm BPZ}
+  =
+  \langle v,\rho_{D^\dagger}w\rangle_{\rm BPZ},
+  \qquad v,w\in\mathcal H_{\rm loc}.
+  \label{eq:defect-action-bpz-adjoint}
+\]
+Thus \(\rho_{D^\dagger}=\rho_D^*\).  In particular, a reflection-invariant
+defect acts by a self-adjoint bounded operator, but it need not act by a
+unitary operator unless the defect is invertible.
+\end{proposition}
+
+\begin{proof}
+It is enough to prove the identity on the dense local domain.  Represent
+\(\langle \rho_D v,w\rangle_{\rm BPZ}\) by a ball correlation function with
+the state \(v\) inserted at the origin, the conjugate state \(w\) inserted at
+infinity after reflection, and the defect \(D\) placed on a small sphere
+around the origin.  Reflection positivity identifies the reflected
+configuration with the BPZ inner product.  Reflecting the whole ball reverses
+the orientation of the defect sheet and sends \(D\) to \(D^\dagger\).  Since
+the defect is topological, the reflected sheet can be deformed to a small
+sphere surrounding the reflected insertion without crossing any operator.
+The resulting correlation function is precisely
+\(\langle v,\rho_{D^\dagger}w\rangle_{\rm BPZ}\).  Boundedness extends the
+identity from \(\mathcal D_{\rm loc}\) to the Hilbert completion.  If
+\(D\simeq D^\dagger\) the operator is self-adjoint.  Unitarity would require
+\(\rho_{D^\dagger}\rho_D=\mathbf 1\), which is the action of
+\(D^\dagger\otimes D\); a noninvertible defect has a direct-sum fusion product
+instead and therefore is not forced, or expected, to act unitarily.
 \end{proof}
 
 When \(D\) is not invertible, \(\rho_D\) may be a projection, a sum of
