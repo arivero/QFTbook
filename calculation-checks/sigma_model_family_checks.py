@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Exact finite checks for sigma-model family identities.
 
-The checks cover the CP^{N-1} projector, the PCM Lax coefficient split, WZW
-central charges, nonabelian-bosonization central-charge bookkeeping, the SU(N)
-sine-mass/fusion-angle and rational-matrix bootstrap blocks, and the curvature
-formula for the sausage metric used in Volume VI.
+The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
+split, WZW central charges, nonabelian-bosonization central-charge
+bookkeeping, the SU(N) sine-mass/fusion-angle and rational-matrix bootstrap
+blocks, and the curvature formula for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
@@ -26,6 +26,12 @@ def assert_zero(name: str, value) -> None:
         raise AssertionError(f"{name}: got {value}, expected 0")
 
 
+def assert_trig_zero(name: str, value) -> None:
+    reduced = sp.trigsimp(sp.simplify(value.rewrite(sp.cos)))
+    if reduced != 0:
+        raise AssertionError(f"{name}: got {value}, expected 0")
+
+
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
     if abs(got - expected) > tol:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
@@ -36,6 +42,29 @@ def check_cp_projector() -> None:
     # P^2 = z (z^\dagger z) z^\dagger = P.  The exact scalar coefficient is 1.
     z_dagger_z = Fraction(1)
     assert_equal("CP projector scalar", z_dagger_z**2, z_dagger_z)
+
+    theta, phi = sp.symbols("theta phi", real=True)
+    unit_i = sp.I
+    z = sp.Matrix([sp.cos(theta / 2), sp.exp(unit_i * phi) * sp.sin(theta / 2)])
+    p = z * z.conjugate().T
+    dtheta_p = p.diff(theta)
+    dphi_p = p.diff(phi)
+
+    a_phi = sp.simplify(-unit_i * (z.conjugate().T * z.diff(phi))[0])
+    f_theta_phi = sp.diff(a_phi, theta)
+    dtheta_z = z.diff(theta)
+    dphi_z = z.diff(phi) - unit_i * a_phi * z
+    kin_theta = sp.simplify((dtheta_z.conjugate().T * dtheta_z)[0])
+    kin_phi = sp.trigsimp(sp.simplify((dphi_z.conjugate().T * dphi_z)[0]))
+
+    assert_trig_zero("CP1 projector theta kinetic", sp.trace(dtheta_p * dtheta_p) - 2 * kin_theta)
+    assert_trig_zero("CP1 projector phi kinetic", sp.trace(dphi_p * dphi_p) - 2 * kin_phi)
+    assert_trig_zero("CP1 monopole potential", a_phi - sp.sin(theta / 2) ** 2)
+    assert_trig_zero("CP1 curvature", f_theta_phi - sp.sin(theta) / 2)
+    assert_trig_zero(
+        "CP1 projector curvature",
+        -unit_i * sp.trace(p * (dtheta_p * dphi_p - dphi_p * dtheta_p)) - f_theta_phi,
+    )
 
 
 def check_pcm_lax_coefficients() -> None:

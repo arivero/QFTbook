@@ -369,11 +369,112 @@ The projector
   P=z z^\dagger,\qquad P^2=P,\qquad \operatorname{tr}P=1,
 \]
 is gauge invariant and gives an intrinsic coordinate on
-\(\mathbb{CP}^{N-1}\).  In
-these terms the kinetic density is proportional to
-\(\operatorname{tr}(\partial_\mu P\,\partial_\mu P)\), with the proportionality
-fixed by the normalization of \eqref{eq:cpn-action-auxiliary-gauge}.  The
-one-loop beta tensor is again the Ricci tensor of the target; with the
+\(\mathbb{CP}^{N-1}\).  The \(U(1)\) connection in
+\eqref{eq:cpn-action-auxiliary-gauge} can be eliminated at the classical
+level.  Varying with respect to \(A_\mu\), while imposing \(z^\dagger z=1\),
+gives
+\begin{equation}
+  A_\mu=-\ii z^\dagger\partial_\mu z,
+  \qquad
+  D_\mu z=(1-P)\partial_\mu z .
+  \label{eq:cpn-auxiliary-connection-eliminated}
+\end{equation}
+This formula is invariant under \(z\mapsto \ee^{\ii\alpha}z\) together with
+\(A\mapsto A+\dd\alpha\), as required by the quotient description.
+
+\begin{proposition}[Projector form of the kinetic term and charge]
+\label{prop:cpn-projector-kinetic-topological-charge}
+For a smooth representative \(z\) of a map into \(\mathbb{CP}^{N-1}\), with
+\(A=-\ii z^\dagger\dd z\) and \(P=zz^\dagger\),
+\begin{align}
+  \operatorname{tr}(\partial_\mu P\,\partial_\mu P)
+  &=2(D_\mu z)^\dagger D_\mu z,
+  \label{eq:cpn-projector-kinetic-identity}\\
+  F_A&=-\ii\,\operatorname{tr}(P\,\dd P\wedge\dd P).
+  \label{eq:cpn-projector-curvature-identity}
+\end{align}
+Consequently the action in \eqref{eq:cpn-action-auxiliary-gauge} is
+equivalently
+\[
+  S_{\mathbb{CP}^{N-1}}[P]
+  =
+  \frac1{2g^2}\int_\Sigma\dd^2x\,
+  \operatorname{tr}(\partial_\mu P\,\partial_\mu P)
+  +\ii\theta Q[P],
+  \qquad
+  Q[P]=-\frac{\ii}{2\pi}\int_\Sigma
+  \operatorname{tr}(P\,\dd P\wedge\dd P).
+\]
+\end{proposition}
+
+\begin{proof}
+The stationarity equation for \(A_\mu\) follows from
+\[
+  (D_\mu z)^\dagger D_\mu z
+  =
+  \partial_\mu z^\dagger\partial_\mu z
+  +A_\mu^2
+  +2\ii A_\mu z^\dagger\partial_\mu z ,
+\]
+where \(\partial_\mu z^\dagger z=-z^\dagger\partial_\mu z\).  Hence
+\(A_\mu=-\ii z^\dagger\partial_\mu z\), and then
+\[
+  D_\mu z
+  =
+  \partial_\mu z-z(z^\dagger\partial_\mu z)
+  =
+  (1-P)\partial_\mu z .
+\]
+Differentiating \(P=zz^\dagger\) and using \(z^\dagger D_\mu z=0\) gives
+\[
+  \partial_\mu P=(D_\mu z)z^\dagger+z(D_\mu z)^\dagger .
+\]
+Squaring and tracing gives
+\[
+  \operatorname{tr}(\partial_\mu P\,\partial_\mu P)
+  =
+  2(D_\mu z)^\dagger D_\mu z,
+\]
+because \(z^\dagger D_\mu z=0\) and \(z^\dagger z=1\).  Finally
+\[
+  F_A=\dd A=-\ii\,\dd z^\dagger\wedge\dd z .
+\]
+The same differentiated-projector identity gives
+\[
+  \operatorname{tr}(P\,\dd P\wedge\dd P)
+  =
+  \dd z^\dagger\wedge\dd z,
+\]
+which proves \eqref{eq:cpn-projector-curvature-identity}.  If the map is a
+section of a nontrivial line bundle, the computation is local and the
+two-form patches globally; its integral is the first Chern number of that
+line bundle.
+\end{proof}
+
+On an oriented Euclidean surface with local coordinates \(x^1,x^2\), write
+\(F_{12}\dd x^1\wedge\dd x^2=F_A\).  The algebraic identity
+\[
+  \bigl|D_1z\pm\ii D_2z\bigr|^2
+  =
+  |D_1z|^2+|D_2z|^2\mp F_{12}
+\]
+gives the instanton bound, in the normalization of
+\eqref{eq:cpn-action-auxiliary-gauge},
+\begin{equation}
+  S_{\mathbb{CP}^{N-1},\theta=0}
+  \ge
+  \frac{2\pi}{g^2}|Q[P]|.
+  \label{eq:cpn-instanton-bound}
+\end{equation}
+For \(Q>0\), equality is attained by \(D_1z+\ii D_2z=0\), equivalently by a
+holomorphic map to projective space in the induced complex structure.  For
+\(Q<0\), equality is attained by the anti-holomorphic equation.  This is a
+finite-action Euclidean saddle statement in the continuum sigma-model
+functional.  A real-time local QFT construction additionally supplies the
+Hilbert space, local observables, reflection-positive Euclidean data, and
+analytic continuation needed to interpret these sectors dynamically.
+
+The one-loop beta tensor is again the Ricci tensor of the target; with the
 Fubini--Study metric normalized so that
 \[
   \operatorname{Ric}=N\,h_{\rm FS},

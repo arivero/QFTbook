@@ -827,7 +827,8 @@ Current checks:
   polynomial degrees and coefficients, and the rational coefficient in the
   classical open-flux-tube Regge slope.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
-  sigma-model family chapter, including the \(\CP^{N-1}\) projector identity,
+  sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
+  and topological-charge normalization on the \(\CP^1\) chart,
   the algebraic equivalence between the principal-chiral-model Lax flatness
   polynomial and the equation-of-motion/Maurer--Cartan pair, sample WZW
   central charges, nonabelian-bosonization central-charge bookkeeping, the
