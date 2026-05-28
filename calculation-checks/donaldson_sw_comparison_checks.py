@@ -211,6 +211,81 @@ def check_furuta_examples() -> None:
             raise AssertionError("E(2m) violates Furuta arithmetic check")
 
 
+def moore_witten_constant_exponent(chi_value: int, sigma_value: int) -> Fraction:
+    return Fraction(2, 1) + Fraction(7 * chi_value + 11 * sigma_value, 4)
+
+
+def check_moore_witten_constants_for_tables() -> None:
+    # K3 has C_X = 2^0 in the common Moore-Witten normalization.
+    assert_equal(
+        moore_witten_constant_exponent(24, -16),
+        Fraction(0),
+        "K3 Moore-Witten exponent",
+    )
+
+    # E(n): chi = 12 n, sigma = -8 n, hence exponent 2 - n.
+    for n in range(2, 8):
+        assert_equal(
+            moore_witten_constant_exponent(12 * n, -8 * n),
+            Fraction(2 - n),
+            "E(n) Moore-Witten exponent",
+        )
+
+    # Blow-up changes chi by +1 and sigma by -1, so the exponent drops by one.
+    examples = [(24, -16), (36, -24), (48, -32), (7, -3)]
+    for chi_value, sigma_value in examples:
+        before = moore_witten_constant_exponent(chi_value, sigma_value)
+        after = moore_witten_constant_exponent(chi_value + 1, sigma_value - 1)
+        assert_equal(after, before - 1, "blow-up halves Moore-Witten constant")
+
+
+def km_normal_form_surface_degree_terms(n: int) -> list[tuple[int, int, int]]:
+    """Triples (j, ell, lambda_power) allowed by j + 2 ell <= n."""
+
+    terms: list[tuple[int, int, int]] = []
+    for j in range(n + 1):
+        for ell in range((n - j) // 2 + 1):
+            terms.append((j, ell, n - j - 2 * ell))
+    return terms
+
+
+def check_kotschick_morgan_degree_bookkeeping() -> None:
+    for n in range(8):
+        terms = km_normal_form_surface_degree_terms(n)
+        for j, ell, lambda_power in terms:
+            assert_equal(
+                j + 2 * ell + lambda_power,
+                n,
+                "KM polynomial surface-degree bookkeeping",
+            )
+        # The leading monomial <lambda,h>^n is always present in the normal
+        # form, and Q(h,h) can appear only when n >= 2.
+        if (0, 0, n) not in terms:
+            raise AssertionError("missing leading KM lambda monomial")
+        if n < 2 and any(ell > 0 for _, ell, _ in terms):
+            raise AssertionError("Q term appeared below surface degree two")
+
+
+def check_donaldson_blowup_cosh_bookkeeping() -> None:
+    # Under the comparison datum, the blow-up has two exceptional basic classes
+    # K +/- E and the Moore-Witten constant is halved.  The two equal phases
+    # therefore combine to (1/2)(e^t + e^{-t}) = cosh(t).  Check the first few
+    # even Taylor coefficients as exact rationals.
+    for m in range(5):
+        cosh_coeff = Fraction(1, factorial(2 * m))
+        combined_coeff = Fraction(1, 2) * (
+            Fraction(1, factorial(2 * m)) + Fraction(1, factorial(2 * m))
+        )
+        assert_equal(combined_coeff, cosh_coeff, "Donaldson blow-up cosh coefficient")
+
+
+def factorial(n: int) -> int:
+    value = 1
+    for k in range(2, n + 1):
+        value *= k
+    return value
+
+
 def check_trace_delta_action_normalization() -> None:
     # The BPST normalization used elsewhere in the repository gives
     # integral tr_delta(F wedge *F) = 8 pi^2 for k = 1.  With the monograph
@@ -230,6 +305,9 @@ def main() -> None:
     check_blowup_simple_type_square_shift()
     check_elliptic_surface_binomial_coefficients()
     check_furuta_examples()
+    check_moore_witten_constants_for_tables()
+    check_kotschick_morgan_degree_bookkeeping()
+    check_donaldson_blowup_cosh_bookkeeping()
     check_trace_delta_action_normalization()
     print("Donaldson-Witten and Seiberg-Witten comparison checks passed.")
 
