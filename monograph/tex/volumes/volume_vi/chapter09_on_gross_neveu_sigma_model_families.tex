@@ -593,7 +593,72 @@ The quantum functional
 \end{equation}
 is single-valued only when the normalization of \(\kappa\) and the integer
 level \(k\) make the change of \(k\Gamma\) under a different extension a
-multiple of \(2\pi\).  At the conformal WZW point the chiral currents generate
+multiple of \(2\pi\).
+
+\begin{proposition}[Polyakov--Wiegmann identity in the chapter normalization]
+\label{prop:polyakov-wiegmann-identity}
+Let \(U,V:\Sigma\to G\) be smooth maps that admit extensions to a common
+three-manifold \(B\) with \(\partial B=\Sigma\).  Put
+\[
+  \Theta_U=U^{-1}\dd U,\qquad
+  \overline\Theta_V=\dd V\,V^{-1}.
+\]
+With \(\Gamma\) normalized as in \eqref{eq:wz-functional},
+\begin{equation}
+  \Gamma[UV]
+  =
+  \Gamma[U]+\Gamma[V]
+  -\frac1{4\pi}\int_\Sigma \kappa(\Theta_U,\overline\Theta_V),
+  \label{eq:polyakov-wiegmann-identity}
+\end{equation}
+up to the integral periods already fixed by the level quantization of the WZ
+term.  Here \(\kappa(\Theta_U,\overline\Theta_V)\) denotes the scalar
+two-form obtained by wedging the one-forms and pairing their Lie-algebra
+values by \(\kappa\).
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  H(g)
+  =
+  \frac1{24\pi}\kappa(g^{-1}\dd g,[g^{-1}\dd g,g^{-1}\dd g])
+\]
+be the closed three-form integrated in \(\Gamma[g]\).  The bracket of
+Lie-algebra-valued one-forms is the wedge bracket, so that the displayed
+normalization agrees with \eqref{eq:wz-functional}.  Since
+\[
+  (UV)^{-1}\dd(UV)
+  =
+  V^{-1}\Theta_UV+V^{-1}\dd V ,
+\]
+invariance of \(\kappa\) and the Maurer--Cartan equations
+\[
+  \dd\Theta_U+\frac12[\Theta_U,\Theta_U]=0,
+  \qquad
+  \dd\overline\Theta_V-\frac12[\overline\Theta_V,\overline\Theta_V]=0
+\]
+give the differential identity
+\begin{equation}
+  H(UV)
+  =
+  H(U)+H(V)
+  -\frac1{4\pi}\dd\,\kappa(\Theta_U,\overline\Theta_V).
+  \label{eq:polyakov-wiegmann-three-form-identity}
+\end{equation}
+To see the coefficient, expand the cubic expression for \(H(UV)\): the pure
+\(\Theta_U\) and pure \(V^{-1}\dd V\) terms give \(H(U)\) and \(H(V)\), and
+the three mixed cyclic placements combine with the two Maurer--Cartan
+equations into the exterior derivative in
+\eqref{eq:polyakov-wiegmann-three-form-identity}.  Integrating this identity
+over \(B\) and applying Stokes' theorem gives
+\eqref{eq:polyakov-wiegmann-identity}.  Changing the extensions shifts the
+three bulk terms by integral periods; the quantization condition on \(k\) is
+exactly the condition that \(\exp(-S_{k,\lambda})\) be independent of that
+choice.
+\end{proof}
+
+At the conformal WZW point the chiral currents generate
 the affine algebra \(\widehat{\mathfrak g}_k\), and the Sugawara stress tensor
 has central charge
 \begin{equation}
@@ -958,20 +1023,21 @@ even bilinear form.  The path-integral meaning then involves the supermanifold
 language developed earlier in the monograph: odd coordinates are elements of
 the structure sheaf, and Berezin integration is not a Borel measure.
 
-\begin{controlledapproximation}[Supercoset and deformed-sphere status]
+\begin{controlledapproximation}[Supercoset status]
 \label{ca:supercoset-sausage-status}
-Supergroup sigma models, principal supergroup models, and deformed-sphere
-models such as the sausage deformation of the \(O(3)\) target are indispensable
+Supergroup sigma models, principal supergroup models, and deformed sphere
+models such as the sausage deformation of the \(O(3)\) target are important
 members of the integrable sigma-model landscape.  In this chapter they are
 recorded as family data: target or coset, coupling coordinates, global
 symmetries, Lax representation when available, and expected bootstrap
 particles.  A theorem-level identification with a local QFT requires the same
 ingredients demanded in Open Problem~\ref{op:constructive-factorizing-on-gn}:
-a regulator, Hilbert space or graded state space, local observables, conserved
-currents, and matching between ultraviolet and bootstrap coordinates.  The
-sausage family in particular should be treated as a controlled deformation of
-the round \(S^2\) sigma model with a stated metric and RG trajectory before
-any comparison to cigar or parafermion cosets is made.
+a regulator, Hilbert space or graded state space, local observables,
+conserved currents, and matching between ultraviolet and bootstrap
+coordinates.  The sausage family in particular should be treated as a
+controlled deformation of the round \(S^2\) sigma model with a stated metric
+and RG trajectory before any comparison to cigar or parafermion cosets is
+made.
 \end{controlledapproximation}
 
 \begin{definition}[Sausage metric datum]

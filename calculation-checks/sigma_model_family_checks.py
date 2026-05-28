@@ -2,7 +2,8 @@
 """Exact finite checks for sigma-model family identities.
 
 The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
-split, WZW central charges, nonabelian-bosonization central-charge
+split, the Polyakov-Wiegmann WZ coefficient, WZW central charges,
+nonabelian-bosonization central-charge
 bookkeeping, the SU(N) sine-mass/fusion-angle and rational-matrix bootstrap
 blocks, and the curvature formula for the sausage metric used in Volume VI.
 """
@@ -99,6 +100,20 @@ def check_symmetric_space_lax_coefficients() -> None:
     # (Maurer-Cartan_m, equation_of_motion) has determinant 2.
     change_matrix = sp.Matrix([[1, -1], [1, 1]])
     assert_equal("symmetric-space MC/EOM determinant", int(change_matrix.det()), 2)
+
+
+def check_polyakov_wiegmann_coefficient() -> None:
+    # With H(g)=1/(24*pi) kappa(theta,[theta,theta]), and the matrix-trace
+    # convention kappa(theta,[theta,theta])=2 Tr(theta^3), the standard cubic
+    # expansion gives the mixed exact term -3 d Tr(A wedge B)/(12*pi).
+    # Hence the boundary coefficient in Gamma[UV] is -1/(4*pi).
+    cubic_normalization_denominator = Fraction(12)
+    mixed_cyclic_count = Fraction(-3)
+    assert_equal(
+        "Polyakov-Wiegmann boundary coefficient",
+        mixed_cyclic_count / cubic_normalization_denominator,
+        Fraction(-1, 4),
+    )
 
 
 def check_wzw_central_charge_examples() -> None:
@@ -205,6 +220,7 @@ def main() -> None:
     check_cp_projector()
     check_pcm_lax_coefficients()
     check_symmetric_space_lax_coefficients()
+    check_polyakov_wiegmann_coefficient()
     check_wzw_central_charge_examples()
     check_nonabelian_bosonization_central_charge()
     check_su_n_sine_mass_fusion()

@@ -837,7 +837,8 @@ Current checks:
   and topological-charge normalization on the \(\CP^1\) chart,
   the algebraic equivalence between the principal-chiral-model and
   symmetric-space Lax flatness polynomials and their
-  equation-of-motion/Maurer--Cartan systems, sample WZW central charges,
+  equation-of-motion/Maurer--Cartan systems, the Polyakov--Wiegmann boundary
+  coefficient in the chapter's WZ normalization, sample WZW central charges,
   nonabelian-bosonization central-charge bookkeeping, the
   \(SU(N)\) sine-mass/fusion-angle and rational-matrix bootstrap identities,
   and the sausage-metric scalar-curvature formula.
