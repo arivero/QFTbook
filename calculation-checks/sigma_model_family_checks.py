@@ -2,14 +2,17 @@
 """Exact finite checks for sigma-model family identities.
 
 The checks cover the CP^{N-1} projector, the PCM Lax coefficient split, WZW
-central charges, nonabelian-bosonization central-charge bookkeeping, and the
-curvature formula for the sausage metric used in Volume VI.
+central charges, nonabelian-bosonization central-charge bookkeeping, the SU(N)
+sine-mass/fusion-angle and rational-matrix bootstrap blocks, and the curvature
+formula for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 
+import numpy as np
 import sympy as sp
 
 
@@ -21,6 +24,11 @@ def assert_equal(name: str, got, expected) -> None:
 def assert_zero(name: str, value) -> None:
     if sp.simplify(value) != 0:
         raise AssertionError(f"{name}: got {value}, expected 0")
+
+
+def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
+    if abs(got - expected) > tol:
+        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
 
 
 def check_cp_projector() -> None:
@@ -63,6 +71,73 @@ def check_nonabelian_bosonization_central_charge() -> None:
             )
 
 
+def flip(n: int) -> np.ndarray:
+    matrix = np.zeros((n * n, n * n), dtype=complex)
+    for i in range(n):
+        for j in range(n):
+            matrix[j * n + i, i * n + j] = 1.0
+    return matrix
+
+
+def rational_r(theta: complex, n: int, normalized: bool) -> np.ndarray:
+    lam = 2.0 * math.pi / n
+    identity = np.eye(n * n, dtype=complex)
+    numerator = theta * identity - 1j * lam * flip(n)
+    if normalized:
+        return numerator / (theta - 1j * lam)
+    return numerator
+
+
+def op12(two_body: np.ndarray, n: int) -> np.ndarray:
+    return np.kron(two_body, np.eye(n, dtype=complex))
+
+
+def op23(two_body: np.ndarray, n: int) -> np.ndarray:
+    return np.kron(np.eye(n, dtype=complex), two_body)
+
+
+def op13(two_body: np.ndarray, n: int) -> np.ndarray:
+    swap23 = op23(flip(n), n)
+    return swap23 @ op12(two_body, n) @ swap23
+
+
+def check_su_n_sine_mass_fusion() -> None:
+    for n in range(3, 10):
+        scale = 1.0 / math.sin(math.pi / n)
+        for a in range(1, n):
+            for b in range(1, n - a):
+                ma = scale * math.sin(math.pi * a / n)
+                mb = scale * math.sin(math.pi * b / n)
+                mab = scale * math.sin(math.pi * (a + b) / n)
+                u = math.pi * (a + b) / n
+                assert_close(
+                    f"SU(N) sine fusion N={n} a={a} b={b}",
+                    mab * mab,
+                    ma * ma + mb * mb + 2.0 * ma * mb * math.cos(u),
+                )
+
+
+def check_su_n_rational_block() -> None:
+    for n in (3, 4):
+        identity = np.eye(n * n, dtype=complex)
+        for theta in (0.37, 1.11):
+            unitary_error = np.max(np.abs(rational_r(theta, n, True) @ rational_r(-theta, n, True) - identity))
+            assert_close(f"SU(N) rational block unitarity N={n} theta={theta}", unitary_error, 0.0)
+        for theta, phi in ((0.41, 0.73), (0.82, 1.19)):
+            lhs = (
+                op12(rational_r(theta, n, False), n)
+                @ op13(rational_r(theta + phi, n, False), n)
+                @ op23(rational_r(phi, n, False), n)
+            )
+            rhs = (
+                op23(rational_r(phi, n, False), n)
+                @ op13(rational_r(theta + phi, n, False), n)
+                @ op12(rational_r(theta, n, False), n)
+            )
+            ybe_error = np.max(np.abs(lhs - rhs))
+            assert_close(f"SU(N) rational YBE N={n} theta={theta} phi={phi}", ybe_error, 0.0)
+
+
 def check_sausage_metric_curvature() -> None:
     r, h, q = sp.symbols("r h q", nonzero=True)
     e_metric = h / ((1 - r**2) * (1 + q * r**2))
@@ -82,6 +157,8 @@ def main() -> None:
     check_pcm_lax_coefficients()
     check_wzw_central_charge_examples()
     check_nonabelian_bosonization_central_charge()
+    check_su_n_sine_mass_fusion()
+    check_su_n_rational_block()
     check_sausage_metric_curvature()
     print("All sigma-model family checks passed.")
 

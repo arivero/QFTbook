@@ -595,7 +595,176 @@ Chapter~\ref{ch:integrable-sine-gordon-thirring-affine-toda}; in the
 nonabelian case the replacement of the compact boson by a WZW field is the
 essential new datum.
 
-\section{Symmetric-Space, Supergroup, and Deformed-Sphere Families}
+\section{SU(N) Bootstrap Spectrum and Matrix Blocks}
+\label{sec:su-n-bootstrap-spectrum-pcm-gn}
+
+The exact scattering descriptions of the \(SU(N)\) chiral Gross--Neveu and
+principal-chiral families contain a common representation-theoretic skeleton.
+Let \(V=\mathbb C^N\) be the defining representation of \(SU(N)\), and write
+\[
+  V_a=\wedge^a V,\qquad a=1,\ldots,N-1 .
+\]
+The conjugate of \(V_a\) is \(V_{N-a}\).  A bootstrap spectrum datum of
+sine-law type assigns masses
+\begin{equation}
+  m_a=M\,\frac{\sin(\pi a/N)}{\sin(\pi/N)},
+  \qquad
+  a=1,\ldots,N-1 ,
+  \label{eq:su-n-sine-mass-spectrum}
+\end{equation}
+for a single positive mass scale \(M=m_1\).  In the chiral Gross--Neveu
+family these multiplets are the antisymmetric tensor particles.  In the
+principal chiral model the corresponding particles carry left and right
+indices, with one common convention taking the rank-\(a\) multiplet to
+transform in \(V_a\otimes V_a^\ast\) under \(SU(N)_L\times SU(N)_R\).  The
+choice of the global form of the symmetry and the quotient by common centers
+is part of the family datum; it affects which line operators and twisted
+sectors exist, although not the local sine-mass formula itself.
+
+\begin{proposition}[Fusing-angle consistency of the sine spectrum]
+\label{prop:su-n-sine-mass-fusing-angle}
+For \(1\le a,b\) and \(a+b<N\), the mass formula
+\eqref{eq:su-n-sine-mass-spectrum} is compatible with a direct-channel bound
+state \(V_a\otimes V_b\to V_{a+b}\) at rapidity
+\[
+  \theta=\ii u_{ab}^{a+b},\qquad
+  u_{ab}^{a+b}=\frac{\pi(a+b)}{N}.
+  \label{eq:su-n-fusing-angle}
+\]
+Indeed,
+\begin{equation}
+  m_{a+b}^2
+  =
+  m_a^2+m_b^2+2m_am_b\cos u_{ab}^{a+b}.
+  \label{eq:su-n-sine-mass-fusion-identity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Set \(A=\pi a/N\), \(B=\pi b/N\), and suppress the common positive factor
+\(M/\sin(\pi/N)\).  The required identity is
+\[
+  \sin^2(A+B)
+  =
+  \sin^2A+\sin^2B+2\sin A\sin B\cos(A+B).
+  \label{eq:su-n-trig-fusion-identity}
+\]
+Using \(\cos(A+B)=\cos A\cos B-\sin A\sin B\), the right-hand side becomes
+\[
+  \sin^2A+\sin^2B+2\sin A\sin B\cos A\cos B
+  -2\sin^2A\sin^2B .
+\]
+Since
+\[
+  \sin^2(A+B)
+  =
+  \sin^2A\cos^2B+\cos^2A\sin^2B
+  +2\sin A\sin B\cos A\cos B ,
+\]
+and \(\cos^2A=1-\sin^2A\), \(\cos^2B=1-\sin^2B\), the two expressions agree.
+The restriction \(a+b<N\) selects the antisymmetric tensor before conjugation;
+fusion channels with \(a+b\ge N\) are equivalently described after replacing
+\(V_c^\ast\) by \(V_{N-c}\) and keeping track of crossed-channel conventions.
+\end{proof}
+
+The fundamental rational \(SU(N)\) matrix block acts on \(V\otimes V\).  Let
+\[
+  P(v\otimes w)=w\otimes v,\qquad
+  \lambda_N=\frac{2\pi}{N},
+\]
+and define
+\begin{equation}
+  \mathcal R_N(\theta)
+  =
+  \frac{\theta\,I-\ii\lambda_N P}{\theta-\ii\lambda_N}.
+  \label{eq:su-n-rational-r-block}
+\end{equation}
+This normalization makes the symmetric-channel eigenvalue equal to \(1\), and
+the antisymmetric-channel eigenvalue equal to
+\[
+  \frac{\theta+\ii\lambda_N}{\theta-\ii\lambda_N}.
+\]
+Thus the pole of the matrix block at \(\theta=\ii\lambda_N\) lies in the
+antisymmetric channel, matching the rank-two entry of
+\eqref{eq:su-n-sine-mass-spectrum}.  The scalar factor multiplying
+\(\mathcal R_N\) is not optional: it fixes crossing, removes or adds CDD
+ambiguities, and supplies the complete pole-residue normalization.  The
+matrix block records the tensor part of the exact S-matrix; the scalar
+minimality and the regulator-to-bootstrap matching are additional data.
+
+\begin{proposition}[Rational-block unitarity and Yang--Baxter equation]
+\label{prop:su-n-rational-block-ybe}
+The block \(\mathcal R_N\) obeys
+\[
+  \mathcal R_N(\theta)\mathcal R_N(-\theta)=I
+\]
+as an operator on \(V\otimes V\).  Its unnormalized numerator
+\[
+  R_N(\theta)=\theta I-\ii\lambda_NP
+\]
+obeys the Yang--Baxter equation
+\[
+  R_{12}(\theta)R_{13}(\theta+\phi)R_{23}(\phi)
+  =
+  R_{23}(\phi)R_{13}(\theta+\phi)R_{12}(\theta)
+  \label{eq:su-n-rational-ybe}
+\]
+on \(V^{\otimes3}\).
+\end{proposition}
+
+\begin{proof}
+Unitarity is immediate from \(P^2=I\):
+\[
+  (\theta I-\ii\lambda_NP)(-\theta I-\ii\lambda_NP)
+  =
+  -(\theta^2+\lambda_N^2)I
+  =
+  (\theta-\ii\lambda_N)(-\theta-\ii\lambda_N)I .
+\]
+For the Yang--Baxter equation, expand both sides of
+\eqref{eq:su-n-rational-ybe} as polynomials in \(\theta,\phi\) and
+\(\lambda_N\).  The constant, linear, and quadratic terms reduce to the
+relations of the symmetric group acting on tensor factors:
+\[
+  P_{12}^2=P_{23}^2=I,\qquad
+  P_{12}P_{23}P_{12}=P_{23}P_{12}P_{23}.
+\]
+The mixed \(P_{13}\) terms are written as
+\(P_{13}=P_{12}P_{23}P_{12}=P_{23}P_{12}P_{23}\).  After this substitution the
+two expanded polynomials coincide coefficient by coefficient.  The
+calculation companion checks this equality by finite-dimensional matrix
+multiplication for representative \(N\) and rapidities.
+\end{proof}
+
+For the chiral Gross--Neveu family, the two-particle S-matrix in the
+fundamental channel has the form
+\[
+  S_{\rm CGN}^{(1,1)}(\theta)
+  =
+  X_{\rm CGN}(\theta)\,\mathcal R_N(\theta),
+  \label{eq:chiral-gn-fundamental-smatrix-form}
+\]
+where \(X_{\rm CGN}\) is a scalar meromorphic function fixed by unitarity,
+crossing, physical-strip pole requirements, and a CDD convention.  Higher
+antisymmetric particles are produced by fusion at the angles
+\eqref{eq:su-n-fusing-angle}.  For the principal chiral model, the fundamental
+particle carries two chiral indices and the matrix part is correspondingly a
+left-right product,
+\[
+  S_{\rm PCM}^{(1,1)}(\theta)
+  =
+  X_{\rm PCM}(\theta)\,
+  \mathcal R_{N,L}(\theta)\otimes\mathcal R_{N,R}(\theta),
+  \label{eq:pcm-fundamental-smatrix-matrix-part}
+\]
+again with a separate scalar factor.  Equations
+\eqref{eq:chiral-gn-fundamental-smatrix-form} and
+\eqref{eq:pcm-fundamental-smatrix-matrix-part} are exact bootstrap data once
+the scalar functions and CDD convention have been specified.  They become
+statements about the continuum sigma models only after the ultraviolet
+definitions of the preceding sections are matched to the factorizing QFT.
+
+\section{Symmetric-Space and Deformed-Sphere Families}
 \label{sec:integrable-symmetric-super-sausage}
 
 Many integrable sigma models are organized by a homogeneous target \(G/H\).
