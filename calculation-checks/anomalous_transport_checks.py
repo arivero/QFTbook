@@ -6,6 +6,8 @@ from __future__ import annotations
 import math
 from fractions import Fraction
 
+import sympy as sp
+
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-12) -> None:
     if abs(got - expected) > tol:
@@ -83,11 +85,55 @@ def check_chiral_vortical_coefficients() -> None:
     assert_close("no vector T^2 term for Dirac pair", vector_temperature_piece, 0.0)
 
 
+def check_entropy_force_sign_and_ideal_cancellation() -> None:
+    beta0, beta1, beta2, beta3 = sp.symbols("beta0 beta1 beta2 beta3")
+    j0, j1, j2, j3 = sp.symbols("j0 j1 j2 j3")
+    da0, da1, da2, da3 = sp.symbols("da0 da1 da2 da3")
+    beta = [beta0, beta1, beta2, beta3]
+    current = [j0, j1, j2, j3]
+    dalpha = [da0, da1, da2, da3]
+    f01, f02, f03, f12, f13, f23 = sp.symbols("f01 f02 f03 f12 f13 f23")
+    field = [
+        [0, f01, f02, f03],
+        [-f01, 0, f12, f13],
+        [-f02, -f12, 0, f23],
+        [-f03, -f13, -f23, 0],
+    ]
+
+    starting_source_terms = -sum(current[mu] * dalpha[mu] for mu in range(4)) - sum(
+        current[mu] * beta[nu] * field[nu][mu]
+        for mu in range(4)
+        for nu in range(4)
+    )
+    force_form = -sum(
+        current[mu] * (dalpha[mu] - sum(beta[nu] * field[mu][nu] for nu in range(4)))
+        for mu in range(4)
+    )
+    if sp.simplify(starting_source_terms - force_form) != 0:
+        raise AssertionError("entropy force sign algebra failed")
+
+    temperature, entropy, density, chemical = sp.symbols("T s n mu", nonzero=True)
+    d_temperature, d_chemical = sp.symbols("dT dmu")
+    pressure_derivative = entropy * d_temperature + density * d_chemical
+    energy_plus_pressure = temperature * entropy + chemical * density
+    # Ideal part of div(p beta - beta.T_id - alpha J_id) after expanding
+    # beta = u/T and alpha = mu/T along the fluid velocity.
+    ideal_divergence = (
+        pressure_derivative / temperature
+        - energy_plus_pressure * d_temperature / temperature**2
+        - density * d_chemical / temperature
+        + density * chemical * d_temperature / temperature**2
+    )
+    if sp.simplify(ideal_divergence) != 0:
+        raise AssertionError("ideal entropy cancellation failed")
+
+
 def main() -> None:
     check_chiral_magnetic_coefficients()
     check_equilibrium_cs_variation()
     check_general_hydrostatic_cs_variation()
     check_chiral_vortical_coefficients()
+    check_entropy_force_sign_and_ideal_cancellation()
     print("All anomalous-transport coefficient checks passed.")
 
 

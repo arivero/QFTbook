@@ -425,19 +425,99 @@ with anomaly density \(\mathcal A\).  The canonical entropy current is
   \qquad
   \beta^\mu=\frac{u^\mu}{T},\quad \alpha=\frac{\mu}{T}.
 \]
-Using the thermodynamic identity
+The following derivation fixes the signs in this formula.  It is independent
+of any derivative expansion.
+
+\begin{proposition}[Canonical entropy divergence with anomaly]
+\label{prop:canonical-entropy-divergence-anomaly}
+Let
 \[
-  \dd p=s\,\dd T+n\,\dd\mu
+  T^{\mu\nu}
+  =
+  \epsilon u^\mu u^\nu+p\Delta^{\mu\nu}+\tau^{\mu\nu},
+  \qquad
+  J^\mu=nu^\mu+\nu^\mu,
+  \label{eq:anomalous-transport-dissipative-decomposition}
 \]
-and the conservation equations, the divergence of \(S^\mu_{\mathrm{can}}\)
-contains the dissipative products plus the anomaly term
+with \(u_\mu\tau^{\mu\nu}=0\) and \(u_\mu\nu^\mu=0\).  Assume the
+thermodynamic relations
 \[
+  \dd p=s\,\dd T+n\,\dd\mu,\qquad
+  \epsilon+p=Ts+\mu n.
+  \label{eq:anomalous-transport-thermodynamics}
+\]
+Then the canonical entropy current satisfies
+\[
+  \nabla_\mu S^\mu_{\rm can}
+  =
+  -\tau^{\mu\nu}\nabla_\mu\beta_\nu
+  -\nu^\mu\left(\nabla_\mu\alpha-\beta^\nu F_{\mu\nu}\right)
   -\alpha\,\mathcal A .
+  \label{eq:canonical-entropy-divergence-anomaly}
 \]
-Parity-odd additions to \(S^\mu\) can cancel nondissipative anomaly-induced
-terms, leaving nonnegative entropy production from dissipative tensors.  This
-calculation fixes relations among \(\xi_B,\xi_\omega\) and anomaly
-coefficients, up to terms not seen by the entropy analysis.
+\end{proposition}
+
+\begin{proof}
+Differentiate
+\[
+  S^\mu_{\rm can}=p\beta^\mu-\beta_\nu T^{\mu\nu}-\alpha J^\mu .
+\]
+Using the anomalous Ward identities gives
+\[
+\begin{aligned}
+  \nabla_\mu S^\mu_{\rm can}
+  &=
+  \beta^\mu\nabla_\mu p
+  +p\nabla_\mu\beta^\mu
+  -T^{\mu\nu}\nabla_\mu\beta_\nu
+  -J^\mu\nabla_\mu\alpha
+  -\beta_\nu F^{\nu\lambda}J_\lambda
+  -\alpha\mathcal A .
+\end{aligned}
+  \label{eq:entropy-divergence-before-ideal-cancel}
+\]
+The last source term can be rewritten as
+\[
+  -J^\mu\nabla_\mu\alpha-\beta_\nu F^{\nu\lambda}J_\lambda
+  =
+  -J^\mu\left(\nabla_\mu\alpha-\beta^\nu F_{\mu\nu}\right),
+  \label{eq:entropy-force-combination}
+\]
+using antisymmetry of \(F_{\mu\nu}\).  It remains to show that the ideal
+part cancels.  Substituting
+\[
+  T^{\mu\nu}_{\rm id}=\epsilon u^\mu u^\nu+p(g^{\mu\nu}+u^\mu u^\nu),
+  \qquad J^\mu_{\rm id}=nu^\mu,
+\]
+and \(\beta^\mu=u^\mu/T\), \(\alpha=\mu/T\), the ideal contribution to
+\eqref{eq:entropy-divergence-before-ideal-cancel} is
+\[
+  \frac{u^\mu\nabla_\mu p}{T}
+  +p\nabla_\mu\left(\frac{u^\mu}{T}\right)
+  -T^{\mu\nu}_{\rm id}\nabla_\mu\left(\frac{u_\nu}{T}\right)
+  -nu^\mu\nabla_\mu\left(\frac{\mu}{T}\right).
+  \label{eq:entropy-ideal-cancellation-line}
+\]
+Since \(u^\nu u_\nu=-1\), \(u^\nu\nabla_\mu u_\nu=0\).  A direct expansion
+of \eqref{eq:entropy-ideal-cancellation-line} reduces it to
+\[
+  \frac{u^\mu}{T}
+  \bigl(\nabla_\mu p-s\nabla_\mu T-n\nabla_\mu\mu\bigr),
+\]
+which vanishes by \(\dd p=s\,\dd T+n\,\dd\mu\).  The remaining terms are
+exactly those involving \(\tau^{\mu\nu}\), \(\nu^\mu\), and
+\(\mathcal A\), giving
+\eqref{eq:canonical-entropy-divergence-anomaly}.
+\end{proof}
+
+Equation~\eqref{eq:canonical-entropy-divergence-anomaly} explains how
+anomaly-induced transport can be nondissipative.  The anomaly contributes
+the fixed term \(-\alpha\mathcal A\); parity-odd additions to the entropy
+current, built from \(B^\mu\), \(\omega^\mu\), and thermodynamic scalars, can
+move this term into a total divergence and thereby relate
+\(\xi_B,\xi_\omega\) to anomaly coefficients.  Coefficients invisible to
+this entropy analysis must instead be fixed by the hydrostatic functional or
+by Kubo formulae with the current representative and contact terms specified.
 
 \section{Topological Terms and Contact Terms}
 

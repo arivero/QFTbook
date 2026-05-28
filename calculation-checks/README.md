@@ -17,7 +17,9 @@ Current checks:
   magnetic and chiral vortical coefficients, including the equilibrium
   Chern--Simons variation, the general hydrostatic Chern--Simons
   source-variation algebra, the \(e^2q^2\) electromagnetic charge factor,
-  and the cancellation of the Dirac vector-current \(T^2\) vortical term.
+  the cancellation of the Dirac vector-current \(T^2\) vortical term, and
+  the sign algebra plus ideal-fluid cancellation in the canonical entropy
+  divergence with an anomalous Ward identity.
 - `anomaly_matching_wzw_checks.py`: exact rational checks for the anomaly
   matching and Wess--Zumino--Witten coefficient section, including
   \(n=N_c\) from matching the left-flavor anomaly, vector-flavor anomaly
