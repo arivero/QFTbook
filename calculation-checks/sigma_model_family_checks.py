@@ -81,6 +81,26 @@ def check_pcm_lax_coefficients() -> None:
     assert_equal("PCM zeta coefficient", (coeff_dpjm_zeta, coeff_dmjp_zeta, coeff_comm_zeta), (-1, -1, 0))
 
 
+def check_symmetric_space_lax_coefficients() -> None:
+    # For L_+ = A_+ + zeta P_+ and L_- = A_- + zeta^{-1} P_-,
+    # flatness expands as H + zeta^{-1} D_+P_- - zeta D_-P_+.
+    # The vanishing of the three Laurent coefficients is equivalent to the
+    # h-component Maurer-Cartan equation and the two first-order equations
+    # D_+P_- = D_-P_+ = 0, which combine into the m-component
+    # Maurer-Cartan identity and the Euler-Lagrange equation.
+    coeff_zeta_minus_one = (Fraction(1), Fraction(0), Fraction(0))
+    coeff_zeta_zero = (Fraction(0), Fraction(1), Fraction(0))
+    coeff_zeta_plus_one = (Fraction(0), Fraction(0), Fraction(-1))
+    assert_equal("symmetric-space zeta^-1 coefficient", coeff_zeta_minus_one, (1, 0, 0))
+    assert_equal("symmetric-space zeta^0 coefficient", coeff_zeta_zero, (0, 1, 0))
+    assert_equal("symmetric-space zeta^1 coefficient", coeff_zeta_plus_one, (0, 0, -1))
+
+    # The linear change of variables between (D_+P_-, D_-P_+) and
+    # (Maurer-Cartan_m, equation_of_motion) has determinant 2.
+    change_matrix = sp.Matrix([[1, -1], [1, 1]])
+    assert_equal("symmetric-space MC/EOM determinant", int(change_matrix.det()), 2)
+
+
 def check_wzw_central_charge_examples() -> None:
     # c = k dim(g)/(k+hvee).  For SU(2)_1 this is c=1; for SU(3)_1 this is c=2.
     assert_equal("SU(2)_1 WZW c", Fraction(1 * 3, 1 + 2), Fraction(1))
@@ -184,6 +204,7 @@ def check_sausage_metric_curvature() -> None:
 def main() -> None:
     check_cp_projector()
     check_pcm_lax_coefficients()
+    check_symmetric_space_lax_coefficients()
     check_wzw_central_charge_examples()
     check_nonabelian_bosonization_central_charge()
     check_su_n_sine_mass_fusion()

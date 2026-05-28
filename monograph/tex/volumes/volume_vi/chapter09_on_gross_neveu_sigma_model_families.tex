@@ -888,8 +888,67 @@ symmetric space,
   [\mathfrak h,\mathfrak m]\subset\mathfrak m,\qquad
   [\mathfrak m,\mathfrak m]\subset\mathfrak h,
 \]
-the equations admit a Lax representation analogous to
-\eqref{eq:pcm-lax-pair}.  Projective space is the example
+the equations admit a Lax representation that is slightly different from the
+principal-chiral one because the \(H\) gauge connection must remain in the
+auxiliary connection.  Write \(A_\pm\) and \(P_\pm\) for the light-cone
+components of \(A\) and \(P\), and let
+\[
+  D_\pm X=\partial_\pm X+[A_\pm,X]
+\]
+be the \(H\)-covariant derivative on \(\mathfrak m\)-valued fields.
+
+\begin{proposition}[Symmetric-space Lax equivalence]
+\label{prop:symmetric-space-lax-equivalence}
+For the bosonic symmetric-space action \eqref{eq:coset-sigma-action}, the
+Euler--Lagrange equation together with the two \(\mathfrak h\)- and
+\(\mathfrak m\)-components of the Maurer--Cartan identity is equivalent to
+flatness, for every \(\zeta\in\mathbb C^\times\), of the connection
+\begin{equation}
+  \mathcal L_+(\zeta)=A_+ +\zeta P_+,\qquad
+  \mathcal L_-(\zeta)=A_- +\zeta^{-1}P_- .
+  \label{eq:symmetric-space-lax-pair}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Maurer--Cartan equation for \(g^{-1}\dd g=A+P\) splits, using the
+symmetric-space brackets, into
+\begin{align}
+  F_{+-}(A)+[P_+,P_-]&=0,
+  \label{eq:symmetric-space-mc-h}\\
+  D_+P_- -D_-P_+&=0 .
+  \label{eq:symmetric-space-mc-m}
+\end{align}
+Varying \(g\) by a compactly supported \(\mathfrak m\)-valued field gives the
+field equation
+\begin{equation}
+  D_+P_-+D_-P_+=0 .
+  \label{eq:symmetric-space-eom}
+\end{equation}
+Conversely, \eqref{eq:symmetric-space-mc-m} and
+\eqref{eq:symmetric-space-eom} are equivalent to
+\[
+  D_+P_-=0,\qquad D_-P_+=0 .
+\]
+The curvature of \eqref{eq:symmetric-space-lax-pair} is
+\[
+  \partial_+\mathcal L_- -\partial_-\mathcal L_+
+  +[\mathcal L_+,\mathcal L_-]
+  =
+  F_{+-}(A)+[P_+,P_-]
+  +\zeta^{-1}D_+P_- -\zeta D_-P_+ .
+\]
+If \eqref{eq:symmetric-space-mc-h}, \eqref{eq:symmetric-space-mc-m}, and
+\eqref{eq:symmetric-space-eom} hold, this curvature vanishes for all
+\(\zeta\).  If the curvature vanishes for all
+\(\zeta\in\mathbb C^\times\), the coefficients of \(\zeta^{-1}\),
+\(\zeta^0\), and \(\zeta\) give \(D_+P_-=0\),
+\(F_{+-}(A)+[P_+,P_-]=0\), and \(D_-P_+=0\), which imply the
+Maurer--Cartan identities and the equation of motion.  This proves the
+equivalence.
+\end{proof}
+
+Projective space is the example
 \[
   \mathbb{CP}^{N-1}=SU(N)/S(U(N-1)\times U(1)).
 \]
