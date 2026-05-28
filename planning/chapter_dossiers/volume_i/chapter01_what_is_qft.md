@@ -57,24 +57,26 @@ Use these only for theorem boundaries and later comparisons.
 | \(\eta_{\mu\nu}\) | Lorentzian metric components | convention |
 | \(\Hilb\) | complex Hilbert space | quantum state space |
 | \(U(a,\Lambda)\) | strongly continuous unitary representation | Poincare symmetry |
-| \(P^\mu\), \(P_\mu=\eta_{\mu\nu}P^\nu\) | self-adjoint energy-momentum generators; \(U(a,1)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\) | spectral calculus |
+| \(P^\mu\), \(P_\mu\) | self-adjoint energy-momentum generators | spectral calculus |
 | \(\vac\) | invariant unit vector | vacuum sector |
 | \(\mathcal O\) | bounded open spacetime region | localization |
 | \(\Obs(\mathcal O)\) | local algebra assigned to \(\mathcal O\) | observable net |
 | \(\widehat\Phi_A(f)\) | smeared field operator/distribution | field coordinate |
-| \(\Delta_n\) | collision locus in \(M^n\) where at least two insertion points coincide | contact-term geometry |
+| \(\Delta_n\) | collision locus in \(M^n\) | contact-term geometry |
 | \(J^A\) | compactly supported local source field | source chart |
-| \(W[J]\) | source functional whose derivatives define inserted distributions | source-response data |
-| \(\mathrm{EFT}\) | effective field theory presentation, not a separate axiom system | regulated/local expansion framework |
+| \(W[J]\) | source functional defining inserted distributions | source-response data |
+| \(\mathrm{EFT}\) | effective field theory presentation | regulated/local expansion |
 
 ## Definition Ledger
 
 - Vacuum Minkowski local quantum framework: working data for the opening
-  volume.
+  volume.  Label: `def:vacuum-minkowski-local-qft`.
 - Continuum local quantum field theory: local data that exist after removing
-  a UV regulator in a declared topology and framework.
+  a UV regulator in a declared topology and framework.  Label:
+  `def:continuum-local-qft-opening`.
 - Effective field theory presentation: regulated or renormalized local
   prescription for a specified scale window, expansion, and observable class.
+  Label: `def:effective-field-theory-presentation-opening`.
 - Conformal perturbation as a controlled construction method: deformation of
   an already supplied CFT by declared local operators, contact-term
   conventions, and regulator/subtraction data, not a general definition of
@@ -92,27 +94,75 @@ Use these only for theorem boundaries and later comparisons.
   Wightman/OS data, Hilbert space or local observable net, positivity,
   covariance, locality, and spectral properties for a non-Gaussian local
   scalar or gauge model.
+- First derived objects and extra hypotheses: stable one-particle sectors,
+  S-matrix, LSZ, and path-integral presentations as later constructions, not
+  opening data.  Label: `def:first-derived-objects-extra-hypotheses`.
 
 Definitions must specify domains and support conditions.
 
 ## Claim Ledger
 
-| Claim | Status | Certification |
-| --- | --- | --- |
-| The opening framework consists of Hilbert space, symmetry, spectrum, vacuum, and local observables. | Working definition | Defined in chapter |
-| Continuum local QFT and EFT presentations share locality but make different mathematical-status claims. | Source-certified framework distinction | Added from handwritten pp. 1--2 with caveats about regulator removal, scale windows, and power counting |
-| CFT perturbation theory is a local construction method with explicit fixed-point/operator/contact/regulator hypotheses, not a universal definition of QFT. | Methodological boundary statement | Added Remark `rem:opening-cft-perturbation-scope` for issue #488 |
-| Fields in this framework are distributional coordinates on local data. | Framework statement | Defined and compared with Wightman language |
-| Contact terms are coincident-point/source-response data supported on collision diagonals, not determined by separated-point correlators alone. | Framework definition | Added as Definition `contact-terms-source-chart` |
-| Wightman/OS data for selected fields do not by themselves fix composite products, time-ordered products, nonlinear source couplings, or repeated source derivatives on diagonals. | Boundary statement | Stated in opening analytic-status section |
-| Wightman, AQFT, OS, and path-integral presentations are connected by explicit comparison maps, each with its own hypotheses. | Theorem register | Added comparison-map register pointing to Wightman reconstruction, Wightman-to-net, net-to-Wightman, OS-II reconstruction, and path-integral-to-OS composition |
-| Wightman, OS, AQFT/local-net, constructive, perturbative, and functorial/path-integral frameworks are theorem-bearing comparison frameworks whose hypotheses must be retained in theorem statements. | Framework-status statement | Added Section `sec:status-axiom-systems-constructive-examples` for issue #483 |
-| Constructive examples calibrate expected properties: completed non-Gaussian constructions are concentrated in low-dimensional regimes, standard `D >= 4` positive `phi^4` routes are constrained by triviality, and four-dimensional gauge-theory construction remains open. | Constructive status statement | Cross-references Table `tab:constructive-master-status` and OS Remark `rem:os-constructive-status-inputs` for issues #480/#482 |
-| The relationship among Wightman fields, OS data, local nets, and functorial/path-integral data is itself an open comparison problem. | Open problem | Added Open Problem `op:axiomatic-comparison-physical-examples` |
-| OS Euclidean data for reconstruction are zero-diagonal Schwinger distributions with OS-II semigroup and linear-growth input, not merely Euclidean moments plus reflection positivity. | Historical/analytic correction | Aligned with OS II and the OSReconstruction formalization interface |
-| Constructive existence of physically interacting four-dimensional local QFT is an open problem except for free/generalized-free examples and model-specific conditional or trivial regimes. | Status/open problem | Added as Open Problem `op:four-dimensional-constructive-qft`; cross-checks the path-integral status catalog |
-| Particles, S-matrix, LSZ, and perturbative scattering require further hypotheses. | Structural claim | Stated as dependency plan; derived later |
-| Kallen--Lehmann will be the first bridge from local fields to particle content. | Ordering rule | Source spine |
+- The opening framework consists of Hilbert space, symmetry, spectrum,
+  vacuum, and local observables.
+  Status: working definition. Certification: defined in chapter.
+- Continuum local QFT and EFT presentations share locality but make different
+  mathematical-status claims.
+  Status: source-certified framework distinction. Certification: handwritten
+  pp. 1--2 plus regulator-removal and scale-window caveats.
+- CFT perturbation theory is a local construction method with explicit
+  fixed-point, operator, contact, and regulator hypotheses.
+  Status: methodological boundary statement. Certification:
+  `rem:opening-cft-perturbation-scope`.
+- Vacuum uniqueness identifies the zero-momentum projection with
+  \(|\Omega\rangle\langle\Omega|\), and the translation convention gives
+  \([P_\mu,\phi(x)]=i\partial_\mu\phi(x)\).
+  Status: proven in chapter. Certification:
+  `prop:opening-vacuum-projection-translation-convention`.
+- Fields in this framework are distributional coordinates on local data.
+  Status: framework statement. Certification: Wightman comparison.
+- Contact terms are coincident-point/source-response data supported on
+  collision diagonals.
+  Status: framework definition. Certification:
+  `def:contact-terms-source-chart`.
+- Local finite source-coordinate changes alter only collision-diagonal
+  supported distributions.
+  Status: proven in chapter. Certification:
+  `prop:local-source-chart-changes-contact-terms`.
+- Wightman/OS data for selected fields do not by themselves fix composite
+  products, time-ordered products, nonlinear source couplings, or repeated
+  source derivatives on diagonals.
+  Status: boundary statement. Certification: analytic-status section.
+- Wightman, AQFT, OS, and path-integral presentations are connected by
+  explicit comparison maps, each with its own hypotheses.
+  Status: theorem register. Certification: comparison-map register.
+- Wightman, OS, AQFT/local-net, constructive, perturbative, and functorial
+  frameworks are theorem-bearing comparison frameworks.
+  Status: framework-status statement. Certification:
+  `sec:status-axiom-systems-constructive-examples`.
+- Constructive examples calibrate expected properties: completed
+  non-Gaussian constructions are concentrated in low-dimensional regimes,
+  while \(D\ge4\) positive \(\phi^4\) routes are constrained by triviality.
+  Status: constructive status statement. Certification:
+  `tab:constructive-master-status`.
+- The relationship among Wightman fields, OS data, local nets, and
+  functorial/path-integral data is itself an open comparison problem.
+  Status: open problem. Certification:
+  `op:axiomatic-comparison-physical-examples`.
+- OS Euclidean data for reconstruction are zero-diagonal Schwinger
+  distributions with OS-II semigroup and linear-growth input.
+  Status: historical/analytic correction. Certification: OSReconstruction
+  formalization interface.
+- Constructive existence of physically interacting four-dimensional local QFT
+  is open except for free/generalized-free examples and model-specific
+  conditional or trivial regimes.
+  Status: open problem. Certification:
+  `op:four-dimensional-constructive-qft`.
+- Particles, S-matrix, LSZ, and perturbative scattering require further
+  hypotheses.
+  Status: structural claim. Certification:
+  `def:first-derived-objects-extra-hypotheses`.
+- Kallen--Lehmann is the first bridge from local fields to particle content.
+  Status: ordering rule. Certification: source spine.
 
 ## Required Revisions
 
@@ -145,6 +195,10 @@ Definitions must specify domains and support conditions.
   constructive-status cross-reference to the Volume XI table, OS
   constructive-input remark, and open problem on axiomatic comparison and
   verification in physically central examples.
+- Completed: 2026-05-27 #615 follow-up labeled the principal presentation
+  definitions, added the vacuum-projection/translation-sign proposition,
+  proved local source-chart changes produce contact terms, and formalized the
+  first derived objects whose hypotheses enter only later.
 
 ## Figure Ledger
 

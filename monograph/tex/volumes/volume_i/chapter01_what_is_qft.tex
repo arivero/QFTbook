@@ -95,6 +95,7 @@ Two different mathematical statuses will appear throughout the monograph.
 They share locality, but they are not the same assertion.
 
 \begin{definition}[Continuum local quantum field theory]
+\label{def:continuum-local-qft-opening}
   A continuum local quantum field theory is a local quantum theory whose
   declared correlation functions, local algebras, or Hilbert-space operators
   exist after the ultraviolet regulator has been removed, in a stated
@@ -108,6 +109,7 @@ They share locality, but they are not the same assertion.
 \end{definition}
 
 \begin{definition}[Effective field theory presentation]
+\label{def:effective-field-theory-presentation-opening}
   An effective field theory presentation is a regulated or renormalized local
   prescription for computing observables in a specified range of length,
   energy, and external-state scales.  Its defining data include the fields or
@@ -370,6 +372,33 @@ covariance law above uses the same passive coordinate convention: conjugating
 an observable by \(U(g)^{-1}\), with \(g=(a,\Lambda)\), sends its localization
 region to \(g\mathcal O=\pi(\Lambda)\mathcal O+a\).
 
+\begin{proposition}[Vacuum projection and translation convention]
+\label{prop:opening-vacuum-projection-translation-convention}
+In the framework of Definition~\ref{def:vacuum-minkowski-local-qft}, the
+projection onto translation-invariant vectors is
+\(|\vac\rangle\langle\vac|\).  For a scalar field satisfying the stated
+translation covariance,
+\[
+  U(a,1)^{-1}\widehat\phi(x)U(a,1)=\widehat\phi(x+a),
+\]
+the distributional infinitesimal relation is
+\[
+  [P_\mu,\widehat\phi(x)]=\ii\,\partial_\mu\widehat\phi(x).
+\]
+\end{proposition}
+
+\begin{proof}
+The first assertion is the vacuum-uniqueness clause in the definition:
+\(E_P(\{0\})\Hilb=\mathbb C\vac\), and the vector \(\vac\) has unit norm.
+Thus \(E_P(\{0\})\) is the rank-one projection
+\(|\vac\rangle\langle\vac|\).  For the second assertion, differentiate
+\(e^{-\ii a^\mu P_\mu}\widehat\phi(x)e^{\ii a^\mu P_\mu}
+=\widehat\phi(x+a)\) at \(a=0\).  The left derivative is
+\(-\ii[P_\mu,\widehat\phi(x)]\), and the right derivative is
+\(\partial_\mu\widehat\phi(x)\).  Multiplication by \(\ii\) gives the stated
+commutator.
+\end{proof}
+
 In this opening convention \(\Obs(\mathcal O)\) is a concrete algebra of
 bounded observables on the chosen Hilbert space and is not assumed to be norm
 closed or weakly closed unless this is stated.  If a \(C^*\)-algebra or von
@@ -415,7 +444,8 @@ but the usual interacting scalar and gauge theories require separate
 continuum-limit theorems.  Standard positive \(\lambda\phi^4_D\) scaling-limit
 families in \(D\geq4\) are constrained by triviality theorems, with the
 four-dimensional marginal case governed by the Aizenman--Duminil-Copin
-triviality theorem for the standard Ising/\(\phi^4_4\) scaling problem.
+triviality theorem for the nearest-neighbor Ising/\(\phi^4_4\) scaling
+problem.
 Four-dimensional pure Yang--Mills, QCD, and other asymptotically free gauge
 theories still require a construction of the continuum gauge-invariant
 Schwinger functions or Wightman theory with the desired spectral properties.
@@ -431,6 +461,7 @@ presentation emphasizes a different class of objects, and each comparison map
 carries hypotheses.
 
 \begin{definition}[Wightman field presentation]
+\label{def:wightman-field-presentation-opening}
   A Wightman field presentation consists of Hilbert-space data
   \[
     (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_A\}_{A\in I})
@@ -438,7 +469,7 @@ carries hypotheses.
   where \(I\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
   dense common invariant domain containing \(\vac\), and each \(\widehat\Phi_A\) is an
   operator-valued distribution on a declared invariant test-function space
-  \(\mathcal T\), with common domain \(\mathcal D\).  In the standard
+  \(\mathcal T\), with common domain \(\mathcal D\).  In the classical
   Wightman case \(\mathcal T=\mathcal S(\mathbb M^D)\), so the vacuum
   distributions below are tempered.  The domain assumptions are
   \[
@@ -562,6 +593,7 @@ carries hypotheses.
 \end{definition}
 
 \begin{definition}[Local-net presentation]
+\label{def:local-net-presentation-opening}
   A local-net presentation consists of a specified class
   \(\mathcal K(\mathbb M^D)\) of open spacetime regions, a quasilocal
   \(*\)-algebra or \(C^*\)-algebra \(\Obs_{\rm qloc}\), and an assignment
@@ -578,6 +610,7 @@ carries hypotheses.
 \end{definition}
 
 \begin{definition}[Euclidean correlation presentation]
+\label{def:euclidean-correlation-presentation-opening}
   Let \(E=\mathbb R^D\) be Euclidean space and let \(V\) be the
   finite-dimensional complex field-label space, with homogeneous basis labels
   \(a\) and parity \(|a|\in\mathbb Z/2\mathbb Z\) when a grading is present.  A
@@ -678,7 +711,7 @@ carries hypotheses.
   The regularity and growth condition is also part of the data.  The corrected
   OS-II reconstruction theorem requires more than ordinary temperedness at each
   fixed \(n\): one needs uniform control on the growth of the distributional
-  order with \(n\).  In a simple full-Schwartz presentation this includes
+  order with \(n\).  In a full-Schwartz presentation this includes
   constants \(A,B,\gamma>0\) and a seminorm order \(N(n)\) growing at most
   linearly in \(n\), such that every
   \(F\in\mathcal S_\circ(E^n;V^{\otimes n})\) obeys a Schwartz-seminorm bound,
@@ -859,14 +892,14 @@ and open problems.  The completed non-Gaussian constructions are concentrated
 in special low-dimensional regimes, such as \(P(\phi)_2\), massive
 \(\phi^4_3\), selected two-dimensional scalar--fermion models, massive
 Gross--Neveu type models, and two-dimensional Yang--Mills in holonomy or
-heat-kernel formulations.  The standard reflection-positive
+heat-kernel formulations.  The reflection-positive
 Ising/\(\lambda\phi^4\) route in \(D\ge4\) is constrained by triviality
 theorems, with the four-dimensional marginal case requiring the precise
 qualification stated in Table~\ref{tab:constructive-master-status}.  A
 four-dimensional UV-complete interacting QFT agreeing with formal
 \(\phi^4_4\) perturbation theory to all orders is not ruled out by the
-standard positive-lattice triviality theorem as a purely logical matter; it is
-a distinct open construction problem.  Four-dimensional Yang--Mills with mass
+positive-lattice triviality theorem as a purely logical matter; it is a
+distinct open construction problem.  Four-dimensional Yang--Mills with mass
 gap remains the central constructive gauge-theory problem.
 
 \begin{openproblem}[Axiomatic comparison and physical examples]
@@ -900,6 +933,7 @@ status.  This separation is part of the subject, because the same formula may
 denote different objects in different constructions.
 
 \begin{definition}[Regulated theory]
+\label{def:regulated-theory-opening}
   A regulated theory is a finite-dimensional or cutoff-defined construction
   with a specified state space or configuration space, algebra of variables,
   covariance or symmetry action, and expectation functional
@@ -911,6 +945,7 @@ denote different objects in different constructions.
 \end{definition}
 
 \begin{definition}[Continuum correlation theory]
+\label{def:continuum-correlation-theory-opening}
   A continuum correlation theory is a hierarchy of distributions, Schwinger
   functions, Wightman functions, or time-ordered distributions obtained as a
   limit of regulated theories or specified directly by axioms.  The topology
@@ -965,8 +1000,35 @@ diagonals.  With the linear source normalization fixed, the restriction of
 purely local finite choices, while the contact-term extension changes.
 \end{definition}
 
+\begin{proposition}[Local source-coordinate changes produce contact terms]
+\label{prop:local-source-chart-changes-contact-terms}
+Fix the linear source normalization in
+Definition~\ref{def:contact-terms-source-chart}.  If the source functional is
+changed by a local functional of a finite jet of the source,
+\[
+  W[J]\longmapsto
+  W[J]+\int_M\mathcal L(x,j_x^kJ)\dd^Dx,
+\]
+then the induced change in each \(n\)-fold source derivative at \(J=0\) is a
+finite sum of distributions supported on collision diagonals in \(M^n\).
+Consequently the separated-point distribution on \(M^n\setminus\Delta_n\) is
+unchanged.
+\end{proposition}
+
+\begin{proof}
+Every dependence of the added functional on the sources occurs through
+\(\partial^\alpha J^A(x)\) at one integration point \(x\), with
+\(|\alpha|\le k\).  A functional derivative with respect to \(J^A(y)\)
+therefore produces a finite linear combination of derivatives of
+\(\delta(x-y)\).  After \(n\) source derivatives, the \(x\)-integration leaves
+finite sums of products of delta functions and their derivatives imposing
+\(y_i=y_j\) along partial or total diagonals.  These distributions have
+support contained in \(\Delta_n\), hence vanish after restriction to
+\(M^n\setminus\Delta_n\).
+\end{proof}
+
 The Wightman and Osterwalder--Schrader frameworks assign distributional
-correlators to the selected elementary or named fields.  This assignment gives
+correlators to the selected basic or named fields.  This assignment gives
 the distributions specified by those frameworks, including their declared
 domains and positivity properties.  It does not canonically choose composite
 fields, time-ordered products, nonlinear source couplings, or the response of
@@ -989,6 +1051,7 @@ match the problem under discussion, without being treated as a complete
 nonperturbative axiom system for all QFTs.
 
 \begin{definition}[Hilbert-space or algebraic completion]
+\label{def:hilbert-algebraic-completion-opening}
   A Hilbert-space or algebraic completion is a reconstruction of operators,
   states, local algebras, and symmetries from correlation data or from an
   abstract local net.  Positivity is the bridge: Hilbert spaces arise from
@@ -1046,26 +1109,26 @@ results with stated hypotheses.
 Several familiar objects are constructed from the framework after adding
 further hypotheses.
 
-\begin{itemize}
-  \item A stable one-particle sector is a spectral subspace of the translation
-  generators associated with an isolated positive-energy mass hyperboloid
-  \(p^2=-m^2\), \(p^0>0\), possibly with finite internal or spin
-  multiplicity.
-  \item An S-matrix is constructed from incoming and outgoing asymptotic
-  multi-particle states and wave operators comparing asymptotic Hilbert spaces
-  with the interacting Hilbert space.  This is an additional long-time
-  dynamical construction.  Surjectivity of those wave operators onto the
-  physical sector is the stronger asymptotic-completeness property and must be
-  supplied as a separate theorem or hypothesis.
-  \item LSZ reduction is a theorem relating S-matrix elements to residues or
-  pole parts of time-ordered correlation functions, after the relevant
-  asymptotic states and field-particle overlaps have been identified.
-  \item A path-integral presentation is a construction or computational
-  scheme for correlation functions after a regulator, contour, measure, or
-  perturbative prescription has been specified. The symbol
-  \(\int D\phi\,\ee^{\ii S[\phi]}\) receives its meaning from that additional
-  specification.
-\end{itemize}
+\begin{definition}[First derived objects and their extra hypotheses]
+\label{def:first-derived-objects-extra-hypotheses}
+A stable one-particle sector is a spectral subspace of the translation
+generators associated with an isolated positive-energy mass hyperboloid
+\(p^2=-m^2\), \(p^0>0\), possibly with finite internal or spin multiplicity.
+An S-matrix is constructed from incoming and outgoing asymptotic multiparticle
+states and wave operators comparing asymptotic Hilbert spaces with the
+interacting Hilbert space.  Surjectivity of those wave operators onto the
+physical sector is the stronger asymptotic-completeness property and must be
+supplied as a separate theorem or hypothesis.  LSZ reduction is a theorem
+relating already-defined S-matrix elements to residues or pole parts of
+time-ordered correlation functions, after the relevant asymptotic states and
+field-particle overlaps have been identified.
+
+A path-integral presentation is a construction or computational scheme for
+correlation functions after a regulator, contour, measure, or perturbative
+prescription has been specified. The symbol
+\(\int D\phi\,\ee^{\ii S[\phi]}\) receives its meaning from that additional
+specification.
+\end{definition}
 
 This dependency order is part of the construction. Perturbative Feynman graphs
 may be introduced as an expansion for Green functions before scattering is
