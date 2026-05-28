@@ -188,6 +188,46 @@ def check_nucleon_sachs_coordinate_transform() -> None:
     assert_equal("neutron magnetic Sachs zero", neutron_f1_zero + neutron_f2_zero, Fraction(-13, 10))
 
 
+def check_stable_current_three_point_ratio() -> None:
+    # Exact finite-dimensional model of the transfer-matrix extraction:
+    # C3_leading = Z_out Z_in exp_out exp_in M, and the fitted overlap/energy
+    # denominator removes only the external propagation and source overlap.
+    z_in = Fraction(5, 3)
+    z_out = Fraction(-7, 4)
+    matrix_element = Fraction(11, 6)
+    exp_in = Fraction(2, 5)
+    exp_out = Fraction(3, 7)
+    leading_three_point = z_out * z_in * exp_out * exp_in * matrix_element
+    leading_denominator = z_out * z_in * exp_out * exp_in
+    assert_equal(
+        "stable-current leading three-point ratio",
+        leading_three_point / leading_denominator,
+        matrix_element,
+    )
+
+    # Excited-state terms in the sink and source channels remain proportional
+    # to the corresponding suppression factors exp(-Delta_out(t-tau)) and
+    # exp(-Delta_in tau) after the same division.
+    sink_overlap = Fraction(13, 10)
+    source_overlap = Fraction(-17, 12)
+    sink_current = Fraction(19, 8)
+    source_current = Fraction(-23, 9)
+    sink_suppression = Fraction(1, 29)
+    source_suppression = Fraction(1, 31)
+    numerator = (
+        leading_three_point
+        + sink_overlap * z_in * exp_out * sink_suppression * exp_in * sink_current
+        + z_out * source_overlap * exp_out * exp_in * source_suppression * source_current
+    )
+    ratio = numerator / leading_denominator
+    expected_ratio = (
+        matrix_element
+        + (sink_overlap / z_out) * sink_suppression * sink_current
+        + (source_overlap / z_in) * source_suppression * source_current
+    )
+    assert_equal("stable-current excited-state bookkeeping", ratio, expected_ratio)
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -197,6 +237,7 @@ def main() -> None:
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()
+    check_stable_current_three_point_ratio()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 
