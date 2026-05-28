@@ -1345,43 +1345,67 @@ Fourier transformation gives the position-space scaling law
   \Delta_{\phi^2}=2-\epsilon+\gamma_{2*}.
 \]
 
-Figure~\ref{fig:volume-ii-phi-two-correlator-scaling} tracks the same
-renormalized \(\phi^2\) insertion from the momentum-space subtraction point to
-the position-space scaling law at the fixed point.
+Figure~\ref{fig:volume-ii-phi-two-correlator-scaling} displays the invariant
+content of this calculation.  Once a common normalization is chosen at
+\(\mu_0|x|=1\), the scaling dimension is the slope of the correlator on
+logarithmic axes.  The anomalous dimension \(\gamma_{2*}\) changes that slope
+by \(2\gamma_{2*}\), not by introducing a new scale.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.9\textwidth}{!}{%
+  \resizebox{0.94\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[draw=black, rounded corners, align=center, inner sep=6pt,
-      minimum height=1.05cm] (renfinite)
-      at (-4.2,0.9)
+    \tikzset{
+      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
+      curve/.style={line width=1.1pt},
+      note/.style={align=center,inner sep=2pt}
+    }
+
+    \node[font=\small] at (3.9,4.95)
+      {fixed-point position-space correlator on logarithmic axes};
+    \draw[axis] (-0.10,0)--(7.85,0)
+      node[below] {\(X=\log(\mu_0|x|)\)};
+    \draw[axis] (0,-0.10)--(0,4.55)
+      node[left] {\(Y=-\log(G_2(|x|)/A)\)};
+    \node[anchor=east] at (-0.06,0) {\(0\)};
+    \node[below] at (0,-0.08) {\(\mu_0|x|=1\)};
+
+    \draw[curve,gray!65!black]
+      (0,0)--(6.7,2.95);
+    \draw[curve,blue!70!black]
+      (0,0)--(6.7,3.72);
+    \draw[dashed,gray!50] (5.75,0)--(5.75,3.42);
+    \draw[{Latex[length=1.8mm]}-{Latex[length=1.8mm]},red!70!black,
+      line width=0.75pt] (5.75,2.53)--(5.75,3.20);
+    \node[red!70!black,anchor=west] at (5.90,2.86)
+      {\(2\gamma_{2*}X\)};
+
+    \node[gray!65!black,anchor=west,fill=white,inner sep=1.5pt]
+      at (3.70,2.24)
       {\(\displaystyle
-      \langle[\widetilde O_2(p)]_{|p|}
-      [\widetilde O_2(q)]_{|q|}\rangle\)\\
-       \(\displaystyle\propto\delta(p+q)|p|^{-\epsilon}\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt,
-      minimum height=1.05cm] (running)
-      at (0.4,0.9)
+        Y_{\rm G}(X)=2(2-\epsilon)\,X\)};
+    \node[blue!70!black,anchor=west,fill=white,inner sep=1.5pt]
+      at (3.30,3.83)
       {\(\displaystyle
-      [\widetilde O_2(p)]_{|p|}\)\\
-      \(\displaystyle=(|p|/\mu_0)^{-\gamma_{2*}}\widetilde O_2(p)\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt,
-      minimum height=1.05cm] (position)
-      at (4.45,0.9)
+        Y_{\rm WF}(X)=2(2-\epsilon+\gamma_{2*})\,X\)};
+
+    \node[note] at (2.00,3.88)
       {\(\displaystyle
-      \langle O_2(x)O_2(0)\rangle\)\\
-       \(\displaystyle\propto |x|^{-2\Delta_{\phi^2}}\)};
-    \draw[-{Latex[length=2mm]}, thick] (renfinite.east)--(running.west);
-    \draw[-{Latex[length=2mm]}, thick] (running.east)--(position.west);
-    \node[blue!70!black] at (0.4,-0.65)
-      {\(\Delta_{\phi^2}=2-\epsilon+\gamma_{2*}\)};
+        G_2(r)=A(\mu_0 r)^{-2\Delta_{\phi^2}}\),\\
+       \(\displaystyle
+        \Delta_{\phi^2}=2-\epsilon+\gamma_{2*}\)};
+    \node[note,blue!70!black] at (6.20,0.72)
+      {long-distance decay is faster\\
+       by the slope shift \(2\gamma_{2*}\)};
   \end{tikzpicture}
   }
-  \caption{Renormalized momentum-space correlators at the fixed point have no
-  scale other than the external momentum.  Undoing the operator running gives
-  the anomalous power in the bare operator correlator and hence the
-  position-space scaling dimension.}
+  \caption{Logarithmic plot of the \(\phi^2\) two-point function at a fixed
+  point, with \(G_2(r)=\mu_0^{2\gamma_{2*}}\langle O_2(x)O_2(0)\rangle\),
+  \(r=|x|\), and a common normalization \(G_2(1/\mu_0)=A\).  The Gaussian
+  scalar composite has slope \(2(2-\epsilon)\).  The Wilson--Fisher scaling
+  operator has slope \(2\Delta_{\phi^2}=2(2-\epsilon+\gamma_{2*})\).  Thus the
+  anomalous dimension appears as a slope shift \(2\gamma_{2*}\) in the
+  log-log correlator.}
   \label{fig:volume-ii-phi-two-correlator-scaling}
 \end{figure}
 
