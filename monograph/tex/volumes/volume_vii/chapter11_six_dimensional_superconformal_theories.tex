@@ -97,6 +97,69 @@ structure or a formulation in which self-duality is imposed after variation.
 Consequently this chapter states self-dual fields through their equations,
 charge lattice, anomaly inflow, and compactification tests.
 
+\begin{definition}[Abelian self-dual tensor datum]
+\label{def:six-d-abelian-self-dual-tensor-datum}
+An abelian six-dimensional tensor sector on a spacetime \(M_6\) consists,
+locally, of two-form gauge potentials \(B^I\) with gauge transformations
+\[
+  B^I\longmapsto B^I+d\Lambda^I ,
+\]
+three-form field strengths \(H^I\), an integral string-charge lattice
+\(\Lambda_{\rm str}\), and a nondegenerate symmetric Dirac pairing
+\[
+  \Omega:\Lambda_{\rm str}\times\Lambda_{\rm str}\longrightarrow\mathbb Z .
+\]
+In a topologically trivial local chart without background Chern--Simons
+corrections, \(H^I=dB^I\).  Globally, \(B^I\) is better regarded as a
+differential-cohomology field, and the periods of \(H^I/2\pi\) pair
+integrally with string charges.  A self-dual tensor field is not specified by
+an unconstrained Gaussian integral over \(B^I\).  Its local equations include
+a chirality constraint of the form
+\[
+  H^I = *H^I
+\]
+after choosing the self-dual subspace determined by the metric and the
+pairing convention.  If both self-dual and anti-self-dual tensors are present,
+the chirality matrix is correspondingly part of the datum.
+\end{definition}
+
+\begin{proposition}[On-shell degrees of freedom of a chiral two-form]
+\label{prop:six-d-chiral-two-form-degrees}
+For a free massless two-form gauge potential in six-dimensional Minkowski
+space, the gauge-invariant one-particle polarizations before imposing
+self-duality form \(\Lambda^2\mathbb R^4\), where \(\mathbb R^4\) is the
+transverse little-group vector representation.  Thus an ordinary two-form has
+\(\binom42=6\) physical bosonic polarizations.  The Hodge star on
+\(\Lambda^2\mathbb R^4\) squares to \(1\), so a chiral two-form has
+\[
+  \frac12\binom42=3
+\]
+physical bosonic polarizations.  A free \((2,0)\) tensor multiplet therefore
+has \(3+5=8\) bosonic on-shell polarizations.
+\end{proposition}
+
+\begin{proof}
+For a massless particle choose momentum \(k\) and quotient by gauge
+transformations \(B\mapsto B+k\wedge\lambda\).  The physical polarizations
+are transverse two-forms modulo longitudinal ones; equivalently they are
+two-forms on the \(D-2=4\) dimensional transverse representation of the
+massless little group \(SO(4)\).  This gives \(\binom42=6\) polarizations for
+an unconstrained two-form.  The six-dimensional self-duality condition on
+the field strength reduces, on the one-particle transverse space, to the
+four-dimensional decomposition
+\[
+  \Lambda^2\mathbb R^4
+  =
+  \Lambda^2_+\mathbb R^4\oplus
+  \Lambda^2_-\mathbb R^4 ,
+  \qquad
+  \dim\Lambda^2_\pm\mathbb R^4=3 .
+\]
+Choosing one chirality leaves three polarizations.  The five scalars of the
+\((2,0)\) tensor multiplet add five further bosonic polarizations, for a
+total of eight.
+\end{proof}
+
 \section{Tensor-Branch Datum}
 
 On a tensor branch, expectation values of tensor-multiplet scalars define
@@ -118,6 +181,29 @@ low-energy action contains
 with self-duality imposed as a constraint on the equations of motion or by a
 chosen self-dual-field formalism.  The four-form \(X_I^{(4)}\) encodes gauge,
 flavor, and gravitational couplings of the branch EFT.
+
+\begin{definition}[Tensor-branch effective datum]
+\label{def:six-d-tensor-branch-effective-datum}
+A tensor-branch effective datum consists of
+\[
+\begin{gathered}
+  \Lambda_{\rm str},\quad \Omega_{IJ},\quad
+  \phi\in\mathcal C\subset \Lambda_{\rm str}^{\vee}\otimes\mathbb R^n,
+  \quad
+  B^I,\ H^I,\\
+  X_I^{(4)}\in\Omega^4(M_6),
+  \qquad
+  \text{a self-dual tensor quantization prescription.}
+\end{gathered}
+\]
+The four-forms \(X_I^{(4)}\) are built from background gauge, flavor,
+R-symmetry, and tangent-bundle curvatures.  Here \(n=1\) for a \((1,0)\)
+tensor scalar and \(n=5\) for the
+\((2,0)\) \(\operatorname{Spin}(5)_R\)-vector scalar.  The cone
+\(\mathcal C\) is divided into chambers by loci where charged strings become
+tensionless.  The low-energy formulae on one chamber are not a construction
+of the fixed point at the chamber wall.
+\end{definition}
 
 For a \((2,0)\) theory of simply laced type \(\mathfrak g\), with Cartan
 algebra \(\mathfrak t_{\mathfrak g}\), rank \(r_{\mathfrak g}\), and Weyl
@@ -186,6 +272,69 @@ where \(\Omega^{IJ}\) is the inverse tensor pairing.  The right-hand side is
 produced by Green--Schwarz couplings \(B^I\wedge X_I^{(4)}\).  This equation
 is a computable constraint on branch EFTs and on proposed fixed points.
 
+\begin{proposition}[Quadratic Green--Schwarz descent]
+\label{prop:six-d-green-schwarz-descent}
+Fix the descent convention in which an anomaly polynomial \(P_8\) contributes
+\[
+  \delta_\alpha \Gamma = 2\pi\ii\int_{M_6}P_6^{(1)}(\alpha)
+\]
+when \(P_8=dP_7^{(0)}\) and
+\(\delta_\alpha P_7^{(0)}=dP_6^{(1)}(\alpha)\).  Suppose
+\[
+  X_I^{(4)}=dX_I^{(3)},\qquad
+  \delta_\alpha X_I^{(3)}=dX_I^{(2)}(\alpha),
+\]
+and \(\Omega^{IJ}\) is symmetric.  Then the quadratic polynomial
+\[
+  P_8^{\rm GS}
+  =
+  \frac12\Omega^{IJ}X_I^{(4)}X_J^{(4)}
+  \label{eq:six-d-gs-quadratic-polynomial}
+\]
+has descent representative
+\[
+  P_6^{(1),{\rm GS}}(\alpha)
+  =
+  \Omega^{IJ}X_I^{(2)}(\alpha)X_J^{(4)} .
+  \label{eq:six-d-gs-descent-six-form}
+\]
+With the sign of the local Green--Schwarz functional chosen so that its
+variation is \(2\pi\ii\int P_6^{(1),{\rm GS}}\), the tensor-branch matching
+condition is precisely
+\[
+  I_8^{\rm UV}=I_8^{\rm branch}+P_8^{\rm GS}.
+\]
+\end{proposition}
+
+\begin{proof}
+Because \(X_I^{(4)}\) has even degree, the product
+\(X_I^{(4)}X_J^{(4)}\) is symmetric under \(I\leftrightarrow J\).  A descent
+seven-form for \eqref{eq:six-d-gs-quadratic-polynomial} is
+\[
+  P_7^{(0),{\rm GS}}
+  =
+  \frac12\Omega^{IJ}
+  \bigl(
+    X_I^{(3)}X_J^{(4)}
+    +
+    X_J^{(3)}X_I^{(4)}
+  \bigr),
+\]
+which equals \(\Omega^{IJ}X_I^{(3)}X_J^{(4)}\) after using the symmetry of
+\(\Omega^{IJ}\).  Varying gives
+\[
+  \delta_\alpha P_7^{(0),{\rm GS}}
+  =
+  \Omega^{IJ}dX_I^{(2)}(\alpha)X_J^{(4)}
+  =
+  d\!\left(\Omega^{IJ}X_I^{(2)}(\alpha)X_J^{(4)}\right),
+\]
+since \(dX_J^{(4)}=0\).  This proves
+\eqref{eq:six-d-gs-descent-six-form}.  The final matching equation is the
+statement that the anomaly of the branch massless fields plus the anomaly
+generated by the Green--Schwarz term equals the anomaly of the fixed point.
+\end{proof}
+
 \begin{quotedtheorem}[\((2,0)\) anomaly polynomial]
 \label{qt:six-d-two-zero-anomaly-polynomial}
 Let \(\mathfrak g\) be simply laced, with rank \(r_{\mathfrak g}\), dimension
@@ -222,6 +371,55 @@ construction of the \((2,0)\) theory must reproduce.  External geometric or
 string-theoretic derivations may motivate the formula, but they are not
 premises in the argument of this chapter.
 
+\begin{proposition}[ADE arithmetic in the \((2,0)\) anomaly coefficient]
+\label{prop:six-d-ade-anomaly-arithmetic}
+For simply laced \(\mathfrak g\), the coefficient multiplying
+\(p_2(N_R)\) in \eqref{eq:six-d-two-zero-anomaly} is
+\[
+  \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{24}.
+\]
+For the ADE series this gives
+\[
+\begin{array}{c|c|c|c|c}
+  \mathfrak g & r_{\mathfrak g} & d_{\mathfrak g}
+  & h^\vee_{\mathfrak g}
+  & d_{\mathfrak g}h^\vee_{\mathfrak g}/24\\ \hline
+  A_{N-1} & N-1 & N^2-1 & N & N(N^2-1)/24\\
+  D_N & N & N(2N-1) & 2N-2 & N(N-1)(2N-1)/12\\
+  E_6 & 6 & 78 & 12 & 39\\
+  E_7 & 7 & 133 & 18 & 399/4\\
+  E_8 & 8 & 248 & 30 & 310
+\end{array}
+\]
+The \(A_{N-1}\) coefficient grows as \(N^3/24\) at large \(N\), while the
+number of free tensor multiplets on the generic branch is only \(N-1\).
+\end{proposition}
+
+\begin{proof}
+The entries use the standard simply laced Lie-algebra dimensions and dual
+Coxeter numbers:
+\[
+  d_{A_{N-1}}=N^2-1,\quad h^\vee_{A_{N-1}}=N,
+\]
+\[
+  d_{D_N}=N(2N-1),\quad h^\vee_{D_N}=2N-2,
+\]
+and
+\[
+  (d_{E_6},h^\vee_{E_6})=(78,12),\quad
+  (d_{E_7},h^\vee_{E_7})=(133,18),\quad
+  (d_{E_8},h^\vee_{E_8})=(248,30).
+\]
+Substitution into \(d_{\mathfrak g}h^\vee_{\mathfrak g}/24\) gives the table.
+For \(A_{N-1}\),
+\[
+  \frac{N(N^2-1)}{24}
+  =
+  \frac{N^3}{24}-\frac{N}{24},
+\]
+which displays the cubic scaling.
+\end{proof}
+
 \section{BPS Strings}
 
 Tensor multiplets couple electrically to strings.  A string with charge
@@ -244,6 +442,46 @@ root \(\alpha\) gives a string with tension
 At the superconformal point some tensions vanish, and the corresponding
 degrees of freedom are strings, not particles in six dimensions.
 
+\begin{proposition}[BPS string tension from the tensor-branch central charge]
+\label{prop:six-d-bps-string-tension-central-charge}
+Normalize the tensor-branch scalar coordinates so that the string central
+charge vector of a charge \(q\in\Lambda_{\rm str}\) is
+\[
+  Z_q^A=q_I\phi^{IA},\qquad A=1,\ldots,n,
+\]
+where \(n=1\) in \((1,0)\) notation and \(n=5\) in \((2,0)\) notation.  The
+positive-energy representation of the six-dimensional supersymmetry algebra
+then gives the BPS inequality
+\[
+  T_q\geq |Z_q|,
+\]
+and a BPS string saturates it:
+\[
+  T_q=|q_I\phi^I|.
+\]
+For a \((2,0)\) theory of type \(\mathfrak g\), taking
+\(\Lambda_{\rm str}\) to be the root lattice gives
+\[
+  T_\alpha=|\alpha(\phi)|
+\]
+for the string of root charge \(\alpha\).
+\end{proposition}
+
+\begin{proof}
+The supersymmetry algebra in a sector containing a straight static string has
+an anticommutator whose right hand side is the sum of the string tension
+times the identity on the preserved two-dimensional worldsheet directions and
+a central-charge term valued in the R-symmetry vector carried by the
+tensor-multiplet scalars.  Positivity of
+\(\{Q+uQ^\dagger,Q+uQ^\dagger\}\) for arbitrary spinor/R-symmetry parameter
+is equivalent to the statement that the tension dominates the norm of the
+central-charge vector.  Equality is precisely the condition that a nonzero
+linear combination of supercharges annihilates the string state.  With the
+normalization above this gives \(T_q=|Z_q|\).  In the \((2,0)\) ADE theory
+the charged strings on a generic tensor branch are labeled by roots, hence
+\(q=\alpha\) gives the displayed formula.
+\end{proof}
+
 The worldsheet theory of a BPS string carries anomalies determined by inflow
 from the bulk Green--Schwarz term.  If the string worldsheet is \(\Sigma\),
 the anomaly polynomial has the form
@@ -257,6 +495,15 @@ the anomaly polynomial has the form
 \]
 where \(N_\Sigma\) is the normal bundle.  The omitted terms must be fixed by
 the chosen R-symmetry and tangent-bundle conventions, not by analogy.
+
+\begin{remark}[What the BPS-string statement does and does not construct]
+The tension formula is a consequence of the supersymmetry algebra and
+tensor-branch normalization.  It does not construct the interacting
+tensionless string theory at \(T_q=0\), nor does it define its operator
+algebra.  The tensionless limit is part of the fixed-point data whose
+existence must be supplied by a construction or by a set of mutually
+consistent protected tests.
+\end{remark}
 
 \section{Circle Compactification And Five-Dimensional Yang--Mills}
 
@@ -316,6 +563,41 @@ is often quoted without specifying the trace convention.  Here it is tied to
 the instanton normalization used elsewhere in the monograph, so that
 compactification tests, instanton-soliton masses, and Yang--Mills kinetic
 terms use the same coupling coordinate.
+
+\begin{proposition}[Wrapped strings and Coulomb-branch masses]
+\label{prop:six-d-wrapped-string-w-boson-mass}
+Compactify a \((2,0)\) theory of type \(\mathfrak g\) on a circle of radius
+\(R\), and work on a generic tensor branch.  A BPS string of root charge
+\(\alpha\) wrapped once on the circle gives a five-dimensional BPS particle
+with mass
+\[
+  M_\alpha^{\rm wrap}=2\pi R\,|\alpha(\phi_{6d})| .
+\]
+If this particle is identified with the \(W\)-boson of five-dimensional
+maximally supersymmetric Yang--Mills on its Coulomb branch, then the
+five-dimensional Coulomb scalar coordinate is normalized by
+\[
+  \phi_{5d}=2\pi R\,\phi_{6d},
+\]
+so that \(M_\alpha^{W}=|\alpha(\phi_{5d})|\).  This is a compactification
+matching condition; it is not an independent six-dimensional Lagrangian
+definition.
+\end{proposition}
+
+\begin{proof}
+A static string of tension \(T_\alpha\) wrapped on a circle of circumference
+\(2\pi R\) has rest energy
+\[
+  M_\alpha^{\rm wrap}=(2\pi R)T_\alpha .
+\]
+Using Proposition~\ref{prop:six-d-bps-string-tension-central-charge} gives
+the first displayed formula.  In a five-dimensional gauge theory on the
+Coulomb branch, the mass of the vector multiplet associated with a root
+\(\alpha\) is the absolute value of the corresponding root evaluated on the
+Coulomb scalar.  Equating the wrapped-string particle with this \(W\)-boson
+therefore fixes the scalar normalization
+\(\phi_{5d}=2\pi R\,\phi_{6d}\).
+\end{proof}
 
 \section{Compactification On Riemann Surfaces}
 

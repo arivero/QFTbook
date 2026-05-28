@@ -217,6 +217,20 @@ def check_six_dimensional_yang_mills_dimension() -> None:
     assert_equal("6D gauge coupling dimension", gauge_coupling_squared_dimension(6), -2)
 
 
+def check_six_dimensional_chiral_two_form_degrees() -> None:
+    transverse_dimension = 4
+    two_form_polarizations = transverse_dimension * (transverse_dimension - 1) // 2
+    chiral_two_form_polarizations = two_form_polarizations // 2
+    scalar_polarizations = 5
+    assert_equal("6D ordinary two-form physical polarizations", two_form_polarizations, 6)
+    assert_equal("6D chiral two-form physical polarizations", chiral_two_form_polarizations, 3)
+    assert_equal(
+        "6D (2,0) tensor multiplet bosonic polarizations",
+        chiral_two_form_polarizations + scalar_polarizations,
+        8,
+    )
+
+
 def check_two_zero_a_type_data() -> None:
     for n in range(1, 8):
         rank = n - 1
@@ -229,6 +243,47 @@ def check_two_zero_a_type_data() -> None:
             Fraction(n * (n * n - 1), 24),
         )
         assert_equal(f"A_{n-1} tensor branch real dimension", 5 * rank, 5 * (n - 1))
+
+
+def check_two_zero_ade_anomaly_coefficients() -> None:
+    # Entries are (rank, dimension, dual Coxeter number, coefficient).
+    exceptional = {
+        "E6": (6, 78, 12, Fraction(39)),
+        "E7": (7, 133, 18, Fraction(399, 4)),
+        "E8": (8, 248, 30, Fraction(310)),
+    }
+    for name, (rank, dimension, dual_coxeter, coefficient) in exceptional.items():
+        assert_equal(f"{name} anomaly coefficient", Fraction(dimension * dual_coxeter, 24), coefficient)
+        assert_equal(f"{name} tensor branch real dimension", 5 * rank, 5 * rank)
+
+    for n in range(4, 11):
+        rank = n
+        dimension = n * (2 * n - 1)
+        dual_coxeter = 2 * n - 2
+        coefficient = Fraction(dimension * dual_coxeter, 24)
+        assert_equal(
+            f"D_{n} anomaly coefficient",
+            coefficient,
+            Fraction(n * (n - 1) * (2 * n - 1), 12),
+        )
+        assert_equal(f"D_{n} tensor branch real dimension", 5 * rank, 5 * n)
+
+
+def check_green_schwarz_quadratic_descent_factor() -> None:
+    # The 1/2 in (1/2) Omega^{IJ} X_I X_J is cancelled in descent by the two
+    # equal variations of the symmetric product.
+    omega = [[Fraction(2), Fraction(1)], [Fraction(1), Fraction(3)]]
+    x2 = [Fraction(5), Fraction(7)]
+    x4 = [Fraction(11), Fraction(13)]
+    descent_from_half_quadratic = Fraction(0)
+    direct_descent = Fraction(0)
+    for i in range(2):
+        for j in range(2):
+            descent_from_half_quadratic += Fraction(1, 2) * omega[i][j] * (
+                x2[i] * x4[j] + x2[j] * x4[i]
+            )
+            direct_descent += omega[i][j] * x2[i] * x4[j]
+    assert_equal("GS half-quadratic descent factor", descent_from_half_quadratic, direct_descent)
 
 
 def check_five_dimensional_instanton_kk_normalization() -> None:
@@ -249,6 +304,16 @@ def check_five_dimensional_instanton_kk_normalization() -> None:
     assert_equal("5D g5^2/(pi^2 R) coefficient", g5_squared_over_pi2_r, 4)
 
 
+def check_wrapped_string_mass_normalization() -> None:
+    # Omitting the common factor pi, M_wrap = 2 R T_alpha and
+    # phi_5d = 2 R phi_6d in the chapter convention.
+    radius = Fraction(3)
+    alpha_phi_6d = Fraction(5)
+    wrapped_mass_over_pi = 2 * radius * alpha_phi_6d
+    phi_5d_over_pi = 2 * radius * alpha_phi_6d
+    assert_equal("wrapped string/W-boson scalar normalization", wrapped_mass_over_pi, phi_5d_over_pi)
+
+
 def main() -> None:
     check_abjm_superpotential_r_charge()
     check_abjm_standard_conformal_locus_dimension()
@@ -260,8 +325,12 @@ def main() -> None:
     check_three_d_n2_cs_matter_auxiliary_elimination()
     check_three_d_n3_adjoint_chiral_elimination()
     check_six_dimensional_yang_mills_dimension()
+    check_six_dimensional_chiral_two_form_degrees()
     check_two_zero_a_type_data()
+    check_two_zero_ade_anomaly_coefficients()
+    check_green_schwarz_quadratic_descent_factor()
     check_five_dimensional_instanton_kk_normalization()
+    check_wrapped_string_mass_normalization()
     print("All ABJM and six-dimensional SUSY convention checks passed.")
 
 

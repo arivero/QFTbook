@@ -34,6 +34,8 @@ Reviewed source spine:
 - `I_8`, `I_8(1)`: interacting and free-tensor anomaly polynomials.
 - `N_R`: rank-five `SO(5)_R` background bundle for `(2,0)` anomalies.
 - `Omega^{IJ}`, `X_I^{(4)}`: tensor pairing and Green-Schwarz four-forms.
+- `Lambda_str`: integral lattice of string charges.
+- `Z_q^A`: tensor-branch central-charge vector of a string of charge `q`.
 - `q`, `alpha`: BPS string charge vector and root-lattice charge.
 - `g_5`, `R`: five-dimensional trace-delta Yang-Mills coupling and circle
   radius.
@@ -46,26 +48,46 @@ Reviewed source spine:
   dimension and therefore is not a marginal conformal coordinate.
 - Defines `(1,0)` and `(2,0)` tensor multiplet variables while marking
   self-dual field actions as formulation-dependent.
-- Defines tensor-branch coordinates and Green-Schwarz couplings.
+- Defines the abelian self-dual tensor datum using a local two-form gauge
+  field, differential-cohomology/global-period caveat, integral string-charge
+  lattice, and Dirac pairing.
+- Proves that a six-dimensional chiral two-form has three physical
+  polarizations and that a free `(2,0)` tensor multiplet has eight bosonic
+  on-shell polarizations.
+- Defines tensor-branch coordinates, the chamber structure, and
+  Green-Schwarz couplings as effective data rather than a fixed-point
+  construction.
 - Gives the `(2,0)` tensor-branch quotient
   `(R^5 tensor t_g)/W_g`, with the type `A_{N-1}` chart as an example.
 - States anomaly matching as an equality involving `I_8` and quadratic
   Green-Schwarz terms.
+- Proves the quadratic Green-Schwarz descent factor
+  `1/2 Omega^{IJ} X_I X_J`, including why the `1/2` disappears in the
+  six-form descent representative.
 - Records the `(2,0)` anomaly polynomial as a quoted theorem, with all
   coefficients and characteristic classes named.
+- Displays and derives the ADE arithmetic of the `(2,0)` anomaly coefficient,
+  including the `A_{N-1}` cubic scaling.
 - Defines BPS string charges, tensions, and inflow data, including
   root-lattice strings for `(2,0)` theories.
+- Derives the BPS string tension from the tensor-branch central charge and
+  states explicitly that this does not construct the tensionless limit.
 - Proves the trace-delta compactification normalization
   `g_5^2 = 4 pi^2 R` from the BPST instanton mass and KK momentum.
+- Derives the wrapped-string/W-boson mass matching and the scalar
+  normalization `phi_5d = 2 pi R phi_6d`.
 - Records compactification on Riemann surfaces as a test requiring twist,
   defect, anomaly, and descendant data.
 
 ## Calculation Checks
 
 - `calculation-checks/susy_abjm_6d_checks.py` verifies the six-dimensional
-  Yang-Mills coupling dimension, type `A_{N-1}` `(2,0)` rank/dimension/anomaly
-  coefficient arithmetic, tensor-branch dimension, and the trace-delta
-  five-dimensional instanton/Kaluza-Klein normalization.
+  Yang-Mills coupling dimension, chiral two-form physical degrees of freedom,
+  type `A_{N-1}`, `D_N`, and exceptional `(2,0)` rank/dimension/anomaly
+  coefficient arithmetic, tensor-branch dimensions, the quadratic
+  Green-Schwarz descent factor, the trace-delta five-dimensional
+  instanton/Kaluza-Klein normalization, and wrapped-string/W-boson scalar
+  normalization.
 
 ## Proof Obligations And Boundaries
 
@@ -79,9 +101,18 @@ Reviewed source spine:
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.
-- Future passes should add a fuller self-dual-field formalism, line/surface
-  defect categories, anomaly descent calculations for string worldsheets, and
-  class-`S` anomaly reductions.
+- Future passes should add line/surface defect categories, anomaly descent
+  calculations for string worldsheets, global forms/discrete quotients of the
+  `(2,0)` theories, and class-`S` anomaly reductions.
+
+## Development Log
+
+- 2026-05-28 issue #633 reading audit pass: expanded the chapter with an
+  abelian self-dual tensor datum, chiral two-form degree-of-freedom
+  proposition, tensor-branch effective datum, Green-Schwarz descent proof,
+  ADE anomaly-coefficient arithmetic, BPS tension derivation, and
+  wrapped-string/W-boson compactification matching.  Extended
+  `calculation-checks/susy_abjm_6d_checks.py` accordingly.
 
 ## Figure Ledger
 

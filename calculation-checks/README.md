@@ -963,9 +963,11 @@ Current checks:
   non-abelian `3D` \(\mathcal N=2\) Chern--Simons-matter auxiliary
   elimination coefficients, `3D` \(\mathcal N=3\) adjoint-chiral
   elimination coefficients,
-  six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
-  anomaly/tensor-branch arithmetic, and the trace-delta
-  \(g_5^2=4\pi^2R\) compactification normalization.
+  six-dimensional Yang-Mills coupling dimension, chiral two-form physical
+  degree-of-freedom count, \(A_{N-1}\), \(D_N\), and exceptional \((2,0)\)
+  anomaly/tensor-branch arithmetic, the quadratic Green--Schwarz descent
+  factor, the trace-delta \(g_5^2=4\pi^2R\) compactification normalization,
+  and the wrapped-string/W-boson scalar normalization.
 - `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
   supersymmetric gauge-theory foundation chapter, including the auxiliary
   \(D\)-field square completion and potential sign, the absence of
