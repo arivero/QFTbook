@@ -124,7 +124,7 @@
   Gaussian integral produces determinants and fermionic Wick signs.
 - The Grassmann path integral is obtained from coherent-state resolutions of
   identity for a two-state fermionic system, including the endpoint signs in
-  the elementary overlap identities.
+  the one-step overlap identities.
 - The ordinary fermionic thermal trace yields anti-periodic Euclidean
   boundary conditions, while the supertrace with \((-1)^F\) yields periodic
   fermionic boundary conditions.
@@ -171,6 +171,25 @@
   algebra behind the Dirac phase equations, \(U(1)\) charge convention, CAR
   locality sign, odd Dirac bracket, Berezinian inverse determinant, one-pair
   Berezin Gaussian, and coherent-state trace endpoint signs.
+- The 2026-05-28 follow-up formalized the remaining long prose blocks:
+  `def:dirac-weyl-majorana-local-spinor-data`,
+  `prop:weyl-majorana-covariant-reductions`,
+  `def:finite-odd-first-order-mechanics`,
+  `prop:odd-second-class-dirac-brackets`,
+  `def:finite-grassmann-algebra-berezin-derivative`,
+  `def:finite-berezin-pushforward`,
+  `prop:finite-berezin-pushforward-functoriality`,
+  `def:susy-qm-witten-index-datum`,
+  `prop:harmonic-susy-oscillator-index`,
+  `def:twisted-dirac-index-periodic-worldline-datum`,
+  `prop:periodic-fermion-worldline-index-density`,
+  `def:free-dirac-functional-integral-datum`,
+  `prop:free-dirac-propagator-feynman-inverse`,
+  `def:isolated-spinor-one-particle-pole-datum`,
+  `prop:locality-fixes-conjugate-spinor-pole-residue`,
+  `prop:spinor-mass-shell-residue-external-factors`,
+  `def:spinorial-lsz-pole-assignment`, and
+  `prop:first-four-fermion-direct-minus-exchange-vertex`.
 
 ## Figure Requirements
 

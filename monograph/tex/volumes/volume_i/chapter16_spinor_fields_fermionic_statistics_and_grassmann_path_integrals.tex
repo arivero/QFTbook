@@ -373,7 +373,7 @@ requires a specified Wightman framework: a common invariant dense domain for
 the smeared fields, a positive-energy unitary representation of the spin
 cover of the proper orthochronous Poincare group, covariance of the fields as
 operator-valued tempered distributions, locality on the common domain,
-positivity of the Hilbert-space inner product, and the standard adjoint
+positivity of the Hilbert-space inner product, and the stated adjoint
 compatibility between fields and their conjugates.  Under those hypotheses,
 integer-spin fields have even local commutation and half-integer-spin fields
 have odd local anticommutation, except for fields that vanish in the physical
@@ -384,6 +384,8 @@ field used below.
 
 \section{Dirac, Weyl, and Majorana Fields}
 
+\begin{definition}[Dirac, Weyl, and Majorana local spinor data]
+\label{def:dirac-weyl-majorana-local-spinor-data}
 The Dirac field transforms in the spinor representation:
 \[
   U(\Lambda)\widehat\psi_\alpha(x)U(\Lambda)^{-1}
@@ -467,7 +469,31 @@ field satisfies
 \[
   \widehat\xi=\widehat\xi^c .
 \]
-The covariance check is direct:
+\end{definition}
+
+\begin{proposition}[Lorentz covariance of chiral and Majorana reductions]
+\label{prop:weyl-majorana-covariant-reductions}
+The projectors \(P_\pm=(1\pm\gamma_5)/2\) define Lorentz-covariant Weyl
+subfields. If \(B\) obeys the two identities in
+Definition~\ref{def:dirac-weyl-majorana-local-spinor-data}, then charge
+conjugation \(\psi\mapsto\psi^c=B^{-1}\psi^*\) is Lorentz covariant and
+involutive. In four dimensions a Weyl field \(\widehat\chi_+\) determines a
+Majorana field
+\[
+  \widehat\xi
+  =
+  \widehat\chi_+
+  +
+  B^*\widehat\chi_+^*,
+\]
+whose \(P_+\)-projection is \(\widehat\chi_+\).
+\end{proposition}
+
+\begin{proof}
+The commutator \([\gamma_5,S^{\mu\nu}]=0\) implies
+\([P_\pm,R(\Lambda)]=0\) for the connected spin group, hence the Weyl
+conditions \(P_\pm\chi_\pm=\chi_\pm\) are preserved by Lorentz
+transformations.  The charge-conjugation covariance check is direct:
 \[
 \begin{aligned}
   U(\Lambda)\widehat\psi^c(x)U(\Lambda)^{-1}
@@ -512,6 +538,8 @@ Moreover \(B^*\widehat\chi_+^*\) is anti-chiral:
   =
   -B^*\widehat\chi_+^* .
 \]
+\end{proof}
+
 Thus in four dimensions a Majorana spinor is equivalent, as Lorentz
 representation data, to one Weyl spinor together with its conjugate. These
 are statements about local field representations. Particle content is
@@ -624,6 +652,8 @@ set of odd values, sigma-algebra, or positivity structure enters.
 
 \section{Classical Grassmann Mechanics and Dirac Brackets}
 
+\begin{definition}[Finite odd first-order mechanical datum]
+\label{def:finite-odd-first-order-mechanics}
 The finite-dimensional model underlying fermion path integrals is specified
 by its coordinate superalgebra. Let \(\eta_\alpha\), \(\alpha=1,\ldots,N\),
 be odd generators of a Grassmann algebra,
@@ -674,7 +704,14 @@ For odd canonical variables use the graded Poisson brackets
   =
   \delta_{\alpha\beta}.
 \]
-The constraint matrix is
+\end{definition}
+
+\begin{proposition}[Odd second-class constraints and Dirac brackets]
+\label{prop:odd-second-class-dirac-brackets}
+For the datum of
+Definition~\ref{def:finite-odd-first-order-mechanics}, the constraints
+\(\chi_\alpha=\pi_\alpha-M_{\alpha\beta}\eta_\beta\) are second class with
+constraint matrix
 \[
   K_{\alpha\beta}
   =
@@ -682,7 +719,7 @@ The constraint matrix is
   =
   -2M_{\alpha\beta},
 \]
-so the constraints are second class. The Dirac bracket is
+and the Dirac bracket
 \[
   \{f,g\}_{\mathrm D}
   =
@@ -692,11 +729,11 @@ so the constraints are second class. The Dirac bracket is
   (K^{-1})^{\alpha\beta}
   \{\chi_\beta,g\}_{\mathrm P}.
 \]
-It makes the constraints identically invisible:
+annihilates the constraints:
 \[
   \{f,\chi_\alpha\}_{\mathrm D}=0.
 \]
-For the coordinates themselves,
+For the odd coordinates,
 \[
 \begin{aligned}
   \{\eta_\alpha,\eta_\beta\}_{\mathrm D}
@@ -709,7 +746,42 @@ For the coordinates themselves,
   \frac12\delta_{\alpha\beta}.
 \end{aligned}
 \]
-These are the classical brackets to be quantized.
+In the \(N=2\) model below, quantization gives a two-state Hilbert space with
+Hamiltonian eigenvalues \(-\omega/4\) and \(+\omega/4\).
+\end{proposition}
+
+\begin{proof}
+Using the graded Poisson brackets in the definition,
+\[
+\begin{aligned}
+  \{\chi_\alpha,\chi_\beta\}_{\mathrm P}
+  &=
+  \{\pi_\alpha-M_{\alpha\gamma}\eta_\gamma,
+    \pi_\beta-M_{\beta\delta}\eta_\delta\}_{\mathrm P} \\
+  &=
+  -M_{\beta\alpha}-M_{\alpha\beta}
+   =
+  -2M_{\alpha\beta},
+\end{aligned}
+\]
+because \(M_{\alpha\beta}=M_{\beta\alpha}\).  Nondegeneracy of \(M\) makes
+\(K\) invertible, hence the constraints are second class.  The displayed
+Dirac bracket is the usual Schur-complement correction of the graded Poisson
+bracket by the inverse constraint matrix.  Substituting one argument
+\(\chi_\alpha\) gives zero because
+\(\{\chi_\rho,\chi_\alpha\}_{\mathrm P}=K_{\rho\alpha}\).
+For the coordinates,
+\(\{\eta_\alpha,\chi_\rho\}_{\mathrm P}=\delta_{\alpha\rho}\), so
+\[
+  \{\eta_\alpha,\eta_\beta\}_{\mathrm D}
+  =
+  -\delta_{\alpha\rho}(K^{-1})^{\rho\sigma}
+  \delta_{\sigma\beta}
+  =
+  \frac12(M^{-1})_{\alpha\beta}.
+\]
+The same substitution gives
+\(\{\eta_\alpha,\pi_\beta\}_{\mathrm D}=\delta_{\alpha\beta}/2\).
 
 For \(N=2\), take
 \[
@@ -764,6 +836,7 @@ so that
   \end{pmatrix}.
 \]
 The finite Grassmann system therefore quantizes to a two-state Hilbert space.
+\end{proof}
 
 \section{Berezin Calculus}
 
@@ -788,6 +861,8 @@ obtained from a fermionic Gaussian, use this ordering together with the Koszul
 rule for moving odd variables and odd differentials past one another.
 \end{convention}
 
+\begin{definition}[Finite Grassmann algebra and Berezin derivative]
+\label{def:finite-grassmann-algebra-berezin-derivative}
 Let \(\Lambda_N\) be the complex Grassmann algebra generated by
 \[
   \eta_1,\ldots,\eta_N
@@ -833,6 +908,7 @@ For \(N\) generators the ordered integral is fixed by
   =
   1.
 \]
+\end{definition}
 
 \begin{proposition}[Finite Berezin Gaussian and contractions]
 \label{prop:finite-berezin-gaussian-contractions}
@@ -927,7 +1003,7 @@ derivatives.
 
 \section{The Fermionic Coherent-State Path Integral}
 
-The elementary complex fermionic system has two operators
+The one-mode complex fermionic system has two operators
 \[
   \widehat\eta,\qquad \widehat\chi,
 \]
@@ -1036,7 +1112,7 @@ Insert the coherent-state resolution of identity at times
   \node[below] at (7.2,-0.45) {\(t_N\)};
 \end{tikzpicture}
 \end{center}
-The elementary overlap identities are
+The one-step overlap identities are
 \[
   \langle\!\langle\eta_{n+1}|\eta_n\rangle
   =
@@ -1200,6 +1276,8 @@ boundary conditions, respectively.
 
 \section{Berezin Integration as Functorial Pushforward}
 
+\begin{definition}[Finite Berezin pushforward]
+\label{def:finite-berezin-pushforward}
 Let \(V\) be a finite-dimensional complex vector space and let
 \(\Pi V\) denote the purely odd affine superspace with structure sheaf
 \(\Lambda(V^\vee)\).  A basis \(e_1,\ldots,e_N\) of \(V\) determines odd
@@ -1245,9 +1323,14 @@ defined by
   \right)
   [\dd\theta].
 \]
-This is the finite-dimensional prototype of a fermionic path integral: a
-fiberwise algebraic pushforward of Berezinian densities.  Functoriality is
-literal.  For
+\end{definition}
+
+This finite-dimensional pushforward is the prototype of a fermionic path
+integral: it is a fiberwise algebraic pushforward of Berezinian densities.
+
+\begin{proposition}[Functoriality of finite Berezin pushforward]
+\label{prop:finite-berezin-pushforward-functoriality}
+For
 \[
   \Pi(V\oplus W\oplus U)
   \xrightarrow{q}
@@ -1259,13 +1342,27 @@ the equality
 \[
   (p\circ q)_!=p_!\circ q_!
 \]
-is the associativity of coefficient extraction with the declared ordering of
-the odd coordinates.  This is the algebraic reason that a finite regulator
-may integrate fermionic modes in stages without changing the value, provided
-the induced Berezinian order is carried along.
+holds when the Berezinian orders are the induced product orders.  Thus a
+finite regulator may integrate fermionic modes in stages without changing the
+value, provided the induced Berezinian order is carried along.
+\end{proposition}
+
+\begin{proof}
+Choose ordered odd coordinates \(\theta\) on \(V\), \(\eta\) on \(W\), and
+\(\zeta\) on \(U\), with total Berezinian density
+\([\dd\zeta][\dd\eta][\dd\theta]\).  Applying \((p\circ q)_!\) extracts first
+the coefficient of \(\zeta_1\cdots\zeta_{\dim U}\eta_1\cdots\eta_{\dim W}\)
+from the coefficient polynomial over \(\Lambda(V^\vee)\).  Applying \(q_!\)
+extracts the \(\zeta\)-top coefficient and leaves a Berezinian density on
+\(\Pi(V\oplus W)\); applying \(p_!\) then extracts the \(\eta\)-top
+coefficient.  Since coefficient extraction in a finite exterior algebra is
+associative once the ordered monomial is fixed, the two operations agree.
+\end{proof}
 
 \section{Supersymmetric Quantum Mechanics and the Witten Index}
 
+\begin{definition}[One-dimensional supersymmetric quantum-mechanics datum]
+\label{def:susy-qm-witten-index-datum}
 Let \(W:\mathbb R\to\mathbb R\) be a smooth function for which the operators
 below are essentially self-adjoint on the Schwartz domain and have discrete
 low-energy spectrum.  The Hilbert space is
@@ -1304,6 +1401,7 @@ The Witten index is
 \]
 whenever this trace is defined by the finite-volume or confining
 regularization under discussion.
+\end{definition}
 
 \begin{proposition}[Pairing of positive-energy states]
 \label{prop:susy-qm-witten-index-pairing}
@@ -1340,7 +1438,16 @@ For the harmonic superpotential
 \[
   W(x)=\frac{m}{2}x^2,\qquad m>0,
 \]
-the zero-mode equations are
+\begin{proposition}[Harmonic supersymmetric oscillator index]
+\label{prop:harmonic-susy-oscillator-index}
+For \(W(x)=mx^2/2\) with \(m>0\), the regulated Witten index is
+\[
+  I_W=1.
+\]
+\end{proposition}
+
+\begin{proof}
+The zero-mode equations are
 \[
   (\partial_x+mx)f_0(x)=0,
   \qquad
@@ -1377,9 +1484,12 @@ Thus
 In the coherent-state path integral this is the same supertrace discussed in
 the previous section, so the fermionic variable is periodic on the Euclidean
 time circle.
+\end{proof}
 
 \section{Worldline Index Density from Periodic Fermions}
 
+\begin{definition}[Twisted Dirac index and periodic worldline datum]
+\label{def:twisted-dirac-index-periodic-worldline-datum}
 Let \(M\) be a compact oriented Riemannian spin manifold of dimension
 \(2n\), let \(E\to M\) be a Hermitian vector bundle with unitary connection,
 and let
@@ -1414,7 +1524,30 @@ a point \(x_0\in M\), split
   \psi^a(\tau)=\psi_0^a+\psi_{\perp}^a(\tau),
 \]
 with \(y\) and \(\psi_\perp\) having zero average.  The finite-mode Gaussian
-calculation of the nonzero modes gives one factor for each skew-eigenvalue
+calculation is performed around this zero-mode decomposition.
+\end{definition}
+
+\begin{proposition}[Periodic-fermion worldline index density]
+\label{prop:periodic-fermion-worldline-index-density}
+For the preceding periodic worldline datum, the finite-mode nonzero-mode
+calculation and the fermion zero-mode Berezin integral give the local index
+density
+\[
+  \left[
+    \widehat A(TM)\operatorname{ch}(E)
+  \right]_{2n}.
+\]
+After integration over the bosonic zero mode, this gives
+\[
+  \operatorname{ind}D_E
+  =
+  \int_M\widehat A(TM)\operatorname{ch}(E).
+\]
+\end{proposition}
+
+\begin{proof}
+The finite-mode Gaussian calculation of the nonzero modes gives one factor
+for each skew-eigenvalue
 \(r_j\) of the curvature two-form \(R/(2\pi\ii)\):
 \begin{equation}
   \prod_{j=1}^n
@@ -1456,6 +1589,8 @@ Atiyah--Singer formula
   =
   \int_M\widehat A(TM)\operatorname{ch}(E).
 \]
+\end{proof}
+
 The analytic content behind the last equality is the heat-kernel asymptotic
 expansion for \(D_E^2\) on a compact manifold and the McKean--Singer
 supertrace identity.  The path-integral calculation above identifies the
@@ -1463,6 +1598,8 @@ local coefficient by finite-dimensional Gaussian and Berezinian operations.
 
 \section{Dirac Functional Integrals and Propagators}
 
+\begin{definition}[Free Dirac functional-integral datum]
+\label{def:free-dirac-functional-integral-datum}
 For a classical Grassmann spinor field \(\psi_\alpha(x)\), define
 \[
   \bar\psi^\alpha(x)
@@ -1553,7 +1690,13 @@ Charge conservation gives
     \widehat{\bar\psi}^{\beta}(y)\}\ket{\vac}=0
 \]
 for the free charged Dirac field.
-It is the Feynman inverse of \(\not\partial+m\):
+\end{definition}
+
+\begin{proposition}[Free Dirac propagator as Feynman inverse]
+\label{prop:free-dirac-propagator-feynman-inverse}
+The free charged Dirac two-point function in
+Definition~\ref{def:free-dirac-functional-integral-datum} is the Feynman
+inverse of \(\not\partial+m\):
 \[
   S_F(x;m)
   =
@@ -1577,9 +1720,32 @@ one obtains
 The numerator is the spinor projector algebra of
 Chapter~\ref{ch:massive-particles-spin}, while the denominator is the scalar
 mass-shell pole with the Feynman boundary value.
+\end{proposition}
+
+\begin{proof}
+Since \(\Delta_F\) is the scalar Feynman inverse in the convention
+\[
+  (-\partial^2+m^2)\Delta_F(x;m^2)=-\ii\delta^{(4)}(x),
+\]
+and the Clifford relation gives
+\[
+  (\not\partial+m)(-\not\partial+m)
+  =
+  -\not\partial^2+m^2
+  =
+  -\partial^2+m^2,
+\]
+the distribution \(S_F=(-\not\partial+m)\Delta_F\) obeys the Dirac inverse
+equation with the same Feynman boundary value.  Fourier transforming
+\(\partial_\mu\mapsto\ii k_\mu\) in the convention used in the scalar
+chapter gives the displayed numerator
+\(-\ii(-\ii\not k+m)\) over \(k^2+m^2-\ii0\).
+\end{proof}
 
 \section{Spinor Spectral Poles and LSZ}
 
+\begin{definition}[Isolated spinor one-particle pole datum]
+\label{def:isolated-spinor-one-particle-pole-datum}
 Let an interacting theory have a global \(U(1)\) charge \(\widehat Q\), a
 vacuum satisfying \(\widehat Q\vac=0\), and an isolated massive
 spin-\(\frac12\) one-particle sector of mass \(m\) and charge \(+1\). Let
@@ -1619,6 +1785,10 @@ the LSZ formulas, write
   \qquad
   Z_\psi\ge0 .
 \]
+\end{definition}
+
+\begin{proposition}[Locality fixes conjugate spinor pole residue]
+\label{prop:locality-fixes-conjugate-spinor-pole-residue}
 The conjugate field has the corresponding overlap with the charge \(-1\)
 sector,
 \[
@@ -1628,9 +1798,18 @@ sector,
   Z_\psi^{1/2}\,
   \ee^{-\ii p\cdot x}\bar u^{\sigma,\alpha}(p),
 \]
-with the same pole residue after the phase convention is fixed.
-The equality of residues is a locality condition on the isolated pole.
-Indeed the one-particle contribution to the vacuum anticommutator has the
+with the same pole residue after the phase convention is fixed.  The
+time-ordered two-point function then has the one-particle pole
+\[
+  Z_\psi
+  (-\not\partial_x+m)_\alpha{}^\beta
+  \Delta_F(x-y;m^2).
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(Z_{\bar\psi}\) denote the conjugate-sector residue before imposing
+locality.  The one-particle contribution to the vacuum anticommutator has the
 form
 \[
 \begin{aligned}
@@ -1683,7 +1862,10 @@ isolated one-particle mass shell. In momentum space the pole term is
   \frac{-\ii(-\ii\not k+m)_\alpha{}^\beta}
        {k^2+m^2-\ii\epsilon}.
 \]
+\end{proof}
 
+\begin{proposition}[Spinor mass-shell residue and external factors]
+\label{prop:spinor-mass-shell-residue-external-factors}
 The normalization content of this pole fixes the external spinor factor.  Put
 \(p=(\omega_{\vec p},\vec p)\).  The
 delta-normalized spinor intertwiners obey
@@ -1756,7 +1938,28 @@ spinor external leg contributes
 with the choice among them fixed by charge and by the in/out convention.  This
 is the spinorial normalization counterpart of the scalar one-particle
 normalization in Chapter~\ref{ch:volume-ii-local-data}.
+\end{proposition}
 
+\begin{proof}
+The spin sums \eqref{eq:spinor-sum-lsz-normalization} express the Dirac
+numerator as the mass-shell projector together with the Jacobian
+\(2\omega_{\vec p}\), giving
+\eqref{eq:spinor-numerator-jacobian}.  Expanding the scalar denominator near
+the positive-energy shell gives the linear factor displayed before
+\eqref{eq:positive-energy-spinor-pole-residue}; substituting the projector
+identity gives the residue formula
+\eqref{eq:positive-energy-spinor-pole-residue}.  The negative-energy pole is
+the same calculation with the \(v\)-spin sum and
+\(k^0+\omega_{\vec k}-\ii0\).  Therefore no additional factor of
+\(2\omega_{\vec p}\) is inserted by hand in the external spinor; it has
+already appeared in the projector identity.  The remaining Fourier
+normalization of the delta-normalized one-particle wavefunction is
+\((2\pi)^{-3/2}\), yielding
+\eqref{eq:spinor-external-normalization-factors}.
+\end{proof}
+
+\begin{definition}[Spinorial LSZ pole assignment]
+\label{def:spinorial-lsz-pole-assignment}
 Spinorial LSZ reduction applies the same Haag--Ruelle and pole-extraction
 logic as the scalar case. The difference is that the residue has spinor
 indices. With Fourier transform convention
@@ -1797,6 +2000,7 @@ with the choice of \(u\) or \(v\) determined by the external charge and by
 whether the particle is incoming or outgoing. Thus external spinor factors in
 perturbative scattering are the one-particle pole intertwiners of local
 spinor fields.
+\end{definition}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9]
@@ -1827,7 +2031,11 @@ spinor fields.
 At this point the S-matrix has already been defined through asymptotic
 one-particle states, and LSZ has related its matrix elements to pole
 residues of time-ordered Green functions. Perturbation theory now enters as a
-method for computing those Green functions. Consider
+method for computing those Green functions.
+
+\begin{proposition}[First four-fermion direct-minus-exchange vertex]
+\label{prop:first-four-fermion-direct-minus-exchange-vertex}
+Consider
 \[
   \mathcal L
   =
@@ -1908,10 +2116,26 @@ this reads
   \right],
 \]
 with \(\zeta_i\) replaced by the charge and in/out spinors appropriate to the
-chosen process. This example is the elementary template for fermionic
+chosen process. This example is the first template for fermionic
 Feynman diagrams: every vertex has a local index tensor, every internal line
 is the time-ordered two-point function, and every exchange of odd fields
 contributes its parity sign.
+\end{proposition}
+
+\begin{proof}
+At first order in \(g\), the interaction insertion is the local product
+\(-\frac g2(\bar\psi\psi)(\bar\psi\psi)\).  Contracting two incoming
+\(\psi\)-fields with two outgoing \(\bar\psi\)-fields gives two pairings.
+The first pairs \((\alpha,\gamma)\) and \((\beta,\delta)\) and gives
+\(\delta_\alpha{}^\gamma\delta_\beta{}^\delta\).  The second pairs
+\((\alpha,\delta)\) and \((\beta,\gamma)\).  To put the odd fields in that
+pairing order one transposes one pair of fermionic variables, producing the
+minus sign.  The factor \(1/2\) in the Lagrangian cancels the two identical
+ways of choosing the two \(\bar\psi\psi\) factors, leaving the displayed
+vertex normalization.  The external expression is obtained by contracting
+this local kernel with the spinorial LSZ residues from
+Definition~\ref{def:spinorial-lsz-pole-assignment}.
+\end{proof}
 
 The next chapter turns to massless particles. The logical input will again be
 the one-particle representation theory, now with the massless little group and
