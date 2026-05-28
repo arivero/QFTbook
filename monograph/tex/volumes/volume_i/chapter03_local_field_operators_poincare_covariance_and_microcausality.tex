@@ -10,6 +10,8 @@ point-field formula is shorthand for a continuous smeared matrix element.
 
 \section{Field Multiplets As Operator-Valued Distributions}
 
+\begin{definition}[Field multiplet as an operator-valued distribution]
+\label{def:field-multiplet-operator-valued-distribution}
 Let \(\mathcal D\subset\Hilb\) be a dense linear subspace. In this chapter
 \(\operatorname{End}(\mathcal D)\) denotes the algebra of linear maps
 \(\mathcal D\to\mathcal D\). A field multiplet is a collection
@@ -20,7 +22,7 @@ defines a continuous linear map
   \qquad
   f\mapsto\widehat\Phi_A(f).
 \]
-Continuity is meant in the standard test-function topology on
+Continuity is meant in the usual locally convex LF topology on
 \(C_c^\infty(\mathbb M^D)\). This is the localization version of the
 test-function convention in Chapter~\ref{ch:starting-data-local-qft}; when a
 later spectral statement uses \(\mathcal S(\mathbb M^D)\), the additional
@@ -36,7 +38,10 @@ operator on \(\Hilb\).  The operator is obtained only after smearing the
 distributional field against a test function.  This convention separates
 spacetime localization data from the Hilbert-space operators that act on
 states.
+\end{definition}
 
+\begin{definition}[Localization of a smeared field]
+\label{def:localized-smeared-field}
 The support of the smeared field \(\widehat\Phi_A(f)\) is controlled by
 \(\operatorname{supp}f\). If \(\operatorname{supp}f\subset\mathcal O\), where
 \(\mathcal O\subset\mathbb M^D\) is a bounded open region, the field is
@@ -44,6 +49,7 @@ localized in \(\mathcal O\). In the local-algebra framework of Chapter
 \ref{ch:starting-data-local-qft}, this means that \(\widehat\Phi_A(f)\) is
 affiliated with \(\Obs(\mathcal O)\) or belongs to the unbounded field algebra
 whose bounded functions generate observables localized in \(\mathcal O\).
+\end{definition}
 
 \begin{definition}[Common invariant field domain]
 \label{def:common-invariant-field-domain}
@@ -87,11 +93,24 @@ content behind point-field notation.
   \]
 \end{proposition}
 
-This proposition is a restatement of the definition of distributions, but it
-fixes the direction of logic: point-dependent expressions are compact
-notation for continuous smeared matrix elements.  Later analytic continuation,
-spectral representation, and LSZ extraction all act on these distributions or
-on their Fourier transforms.
+\begin{proof}
+The completed projective tensor product
+\(C_c^\infty(\mathbb M^D)^{\widehat\otimes n}\) is canonically
+\(C_c^\infty((\mathbb M^D)^n)\).  By hypothesis the displayed matrix element
+is a continuous \(n\)-linear functional of the test functions, hence it
+extends uniquely to a continuous linear functional on
+\(C_c^\infty((\mathbb M^D)^n)\).  This is exactly a distribution on
+\((\mathbb M^D)^n\).  The formula on decomposable test functions records the
+extension on a dense generating set.
+\end{proof}
+
+\begin{remark}[Direction of point-field notation]
+\label{rem:point-field-notation-direction}
+The preceding proposition fixes the direction of logic: point-dependent
+expressions are compact notation for continuous smeared matrix elements.
+Later analytic continuation, spectral representation, and LSZ extraction all
+act on these distributions or on their Fourier transforms.
+\end{remark}
 
 \section{Poincare Covariance Of Fields}
 
@@ -105,10 +124,19 @@ acting on the field components:
 \[
   S(\Lambda)_A{}^B.
 \]
+
+\begin{definition}[Poincare pullback on test functions]
+\label{def:poincare-pullback-test-functions}
 For \(f\in C_c^\infty(\mathbb M^D)\), define the transformed test function
 \[
   f_g(y)=f(g^{-1}y)=f(\Lambda^{-1}(y-a)).
 \]
+The assignment \(f\mapsto f_g\) is the pullback by \(g^{-1}\). With the group
+law \(h g:x\mapsto h(gx)\), it satisfies
+\[
+  (f_g)_h=f_{hg}.
+\]
+\end{definition}
 
 \begin{definition}[Covariant field multiplet]
 \label{def:covariant-field-multiplet}
@@ -158,6 +186,69 @@ so moving the derivative from the field distribution to the test function
 produces the minus sign in the smeared commutator.  Lorentz generators act by
 an orbital term on the spacetime argument and a spin term on the component
 index.
+
+\begin{proposition}[Infinitesimal translation covariance]
+\label{prop:infinitesimal-translation-covariance}
+Let \(\widehat\Phi\) be a scalar covariant field and assume that
+\(a\mapsto U(a,\mathbf 1)\) is generated on the common domain by
+\(U(a,\mathbf 1)=\exp(\ii a^\mu P_\mu)\). Then, as an identity of smeared
+operators on \(\mathcal D\),
+\[
+  [P_\mu,\widehat\Phi(f)]
+  =
+  -\ii\,\widehat\Phi(\partial_\mu f).
+\]
+Equivalently, in distributional point notation,
+\[
+  [P_\mu,\widehat\Phi(x)]
+  =
+  \ii\,\partial_\mu\widehat\Phi(x).
+\]
+\end{proposition}
+
+\begin{proof}
+For a pure translation \(g=(a,\mathbf 1)\),
+Definition~\ref{def:covariant-field-multiplet} gives
+\[
+  U(a)^{-1}\widehat\Phi(f)U(a)
+  =
+  \widehat\Phi(f_a),
+  \qquad
+  f_a(y)=f(y-a).
+\]
+Differentiate at \(a=0\) in the \(\mu\)-direction. The left side gives
+\[
+  \frac{d}{dt}\Big|_{t=0}
+  e^{-\ii tP_\mu}\widehat\Phi(f)e^{\ii tP_\mu}
+  =
+  -\ii[P_\mu,\widehat\Phi(f)],
+\]
+while the right side gives
+\[
+  \frac{d}{dt}\Big|_{t=0}\widehat\Phi(f(\,\cdot-te_\mu))
+  =
+  -\widehat\Phi(\partial_\mu f).
+\]
+Equating the two derivatives gives the smeared formula. Pairing the
+point-field identity with \(f\) and integrating by parts gives the
+distributional version.
+\end{proof}
+
+\begin{corollary}[Covariance of localization regions]
+\label{cor:covariance-localization-regions}
+If \(\operatorname{supp}f\subset\mathcal O\), then
+\(\operatorname{supp}f_g\subset g\mathcal O\). Therefore the covariant
+transform \(U(g)^{-1}\widehat\Phi_A(f)U(g)\) is localized in \(g\mathcal O\)
+whenever \(\widehat\Phi_A(f)\) is localized in \(\mathcal O\).
+\end{corollary}
+
+\begin{proof}
+The support identity \(\operatorname{supp}f_g=g\,\operatorname{supp}f\)
+follows from \(f_g(y)=f(g^{-1}y)\) and continuity of the homeomorphism \(g\).
+The covariance law then rewrites the transformed operator as a linear
+combination of fields smeared with test functions supported in
+\(g\mathcal O\).
+\end{proof}
 
 \begin{proposition}[Covariance of Wightman distributions]
 \label{prop:wightman-distribution-covariance-from-fields}
@@ -215,6 +306,8 @@ paired with tensor-product test functions.
 
 \section{Spacelike Separation Of Supports}
 
+\begin{definition}[Spacelike separated supports]
+\label{def:spacelike-separated-supports}
 Two subsets \(K_1,K_2\subset\mathbb M^D\) are spacelike separated when
 \[
   (x-y)^2>0
@@ -224,6 +317,30 @@ Two subsets \(K_1,K_2\subset\mathbb M^D\) are spacelike separated when
 Thus two test functions \(f,g\in C_c^\infty(\mathbb M^D)\) have spacelike
 separated supports when \(K_1=\operatorname{supp}f\) and
 \(K_2=\operatorname{supp}g\) satisfy this condition.
+\end{definition}
+
+\begin{proposition}[Poincare invariance of spacelike support separation]
+\label{prop:poincare-invariance-spacelike-support-separation}
+Let \(g=(a,\Lambda)\in\Poinc\). If \(K_1,K_2\subset\mathbb M^D\) are
+spacelike separated, then \(gK_1\) and \(gK_2\) are spacelike separated. If
+test functions \(f_1,f_2\) have spacelike separated supports, then the
+supports of \((f_1)_g\) and \((f_2)_g\) are also spacelike separated.
+\end{proposition}
+
+\begin{proof}
+For \(x\in K_1\) and \(y\in K_2\),
+\[
+  (gx-gy)^2=(\Lambda(x-y))^2=(x-y)^2>0,
+\]
+because translations cancel in differences and \(\Lambda\) preserves the
+Minkowski quadratic form. Hence \(gK_1\) and \(gK_2\) are spacelike separated.
+For test functions, \(\operatorname{supp}(f_g)=g\,\operatorname{supp}f\):
+indeed \(f_g(y)=f(g^{-1}y)\) can be nonzero only when
+\(g^{-1}y\in\operatorname{supp}f\), equivalently
+\(y\in g\,\operatorname{supp}f\), and the reverse inclusion follows after
+taking closures. Applying the first part to the two supports proves the
+claim.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95,>=Stealth]
@@ -252,6 +369,8 @@ separation.
 
 \section{Microcausality}
 
+\begin{definition}[Homogeneous parity and graded commutator]
+\label{def:homogeneous-parity-graded-commutator}
 Suppose the field multiplets carry a fermion parity \(|\widehat\Phi_A|\in
 \{0,1\}\). For homogeneous operators \(X,Y\), define the graded commutator by
 \[
@@ -261,6 +380,7 @@ Suppose the field multiplets carry a fermion parity \(|\widehat\Phi_A|\in
 \]
 For bosonic fields both parities are zero, so this is the ordinary
 commutator.
+\end{definition}
 
 \begin{definition}[Microcausality for smeared fields]
 \label{def:microcausality-smeared-fields}
@@ -330,6 +450,8 @@ support-separated boundary value.
 
 \section{Field Coordinates And Local Algebras}
 
+\begin{definition}[Local polynomial field algebra on a common domain]
+\label{def:local-polynomial-field-algebra}
 For a bounded open region \(\mathcal O\), let
 \[
   \mathcal P(\mathcal O)
@@ -339,6 +461,35 @@ and products of smeared fields \(\widehat\Phi_A(f)\) with
 \(\operatorname{supp}f\subset\mathcal O\), together with their adjoints when
 the adjoints preserve the chosen domain. This algebra records local unbounded
 field coordinates.
+\end{definition}
+
+\begin{proposition}[Isotony and graded locality for polynomial field algebras]
+\label{prop:polynomial-field-algebra-isotony-graded-locality}
+If \(\mathcal O_1\subset\mathcal O_2\), then
+\(\mathcal P(\mathcal O_1)\subset\mathcal P(\mathcal O_2)\). If
+\(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated and the fields
+satisfy Definition~\ref{def:microcausality-smeared-fields}, then homogeneous
+monomials \(X\in\mathcal P(\mathcal O_1)\) and
+\(Y\in\mathcal P(\mathcal O_2)\) satisfy
+\[
+  XY=(-1)^{|X||Y|}YX
+\]
+on the common invariant domain, after expanding \(X\) and \(Y\) into ordered
+products of homogeneous smeared fields.
+\end{proposition}
+
+\begin{proof}
+The isotony statement follows directly from support inclusion: every test
+function supported in \(\mathcal O_1\) is also supported in \(\mathcal O_2\).
+For locality, every generating smeared field from
+\(\mathcal P(\mathcal O_1)\) has spacelike separated support from every
+generating smeared field from \(\mathcal P(\mathcal O_2)\). Microcausality
+therefore permits each generator in \(X\) to be moved past each generator in
+\(Y\). Each exchange of homogeneous factors contributes the sign
+\((-1)^{|A||B|}\). Multiplying these signs over all crossings gives the total
+Koszul sign \((-1)^{|X||Y|}\), where \(|X|\) and \(|Y|\) are the sums of the
+parities of their constituent fields modulo \(2\).
+\end{proof}
 
 The observable algebra \(\Obs(\mathcal O)\subset\mathcal B(\Hilb)\) is the
 bounded local algebra used in the opening framework. The relation between
@@ -355,6 +506,8 @@ are made.
 
 \section{Wightman Functions}
 
+\begin{definition}[Wightman distribution of a field multiplet]
+\label{def:wightman-distribution-field-multiplet}
 Let \(\widehat\Phi_{A_1},\ldots,\widehat\Phi_{A_n}\) be fields whose products
 on the vacuum vector are defined on the common domain. The \(n\)-point
 Wightman distribution is the multilinear functional
@@ -375,6 +528,32 @@ Point notation writes this distribution as
   \widehat\Phi_{A_n}(x_n)
   \ket{\vac}.
 \]
+\end{definition}
+
+\begin{proposition}[Field axioms inherited by Wightman distributions]
+\label{prop:wightman-inherits-covariance-and-locality}
+Assume the common-domain and continuity hypotheses of
+Proposition~\ref{prop:distributional-matrix-elements}. If the vacuum is
+Poincare invariant and the field multiplet is covariant, the Wightman
+distributions obey the covariance law of
+Proposition~\ref{prop:wightman-distribution-covariance-from-fields}. If the
+field multiplet satisfies microcausality, adjacent spacelike separated
+insertions obey the graded exchange relation of
+Proposition~\ref{prop:wightman-adjacent-spacelike-exchange}.
+\end{proposition}
+
+\begin{proof}
+Both statements are obtained by applying the corresponding operator identities
+to smeared products on the common domain and then using the defining
+continuity of the Wightman distributions.  Covariance follows by inserting
+\(U(g)U(g)^{-1}\) between neighboring factors and using vacuum invariance.
+Locality follows by applying the vanishing graded commutator to the two
+adjacent factors with spacelike separated supports.  Since the distributions
+are determined by their values on tensor-product test functions, these
+smeared identities are exactly the distributional covariance and exchange
+relations.
+\end{proof}
+
 Poincare covariance of the fields gives covariance of the Wightman
 distributions. Microcausality gives graded exchange relations when adjacent
 insertions have spacelike separated supports. The spectrum condition will give

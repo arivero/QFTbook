@@ -54,7 +54,7 @@ Working framework:
 | \(C_c^\infty(\mathbb M^D)\) | test-function space | distributions |
 | \(\mathcal D\) | dense invariant domain in \(\Hilb\) | unbounded operators |
 | \(\widehat\Phi_A\) | operator-valued distribution | field coordinate |
-| \(x\in\mathbb M^D\) | spacetime label for point-field notation, not a Hilbert-space operator | localization |
+| \(x\in\mathbb M^D\) | spacetime label, not a Hilbert-space operator | localization |
 | \(f\) | test function | smearing |
 | \(f_g\) | pullback-transformed test function \(f_g(y)=f(g^{-1}y)\) | covariance |
 | \(\widehat\Phi_A(f)\) | operator on \(\mathcal D\) or affiliated local operator | smeared field |
@@ -70,21 +70,64 @@ Working framework:
 - local support of a smeared field;
 - common invariant field domain;
 - distributional matrix elements of finite products;
+- Poincare pullback on test functions and its composition order;
 - Poincare-covariant field;
+- infinitesimal translation covariance for scalar fields;
+- Poincare invariance of spacelike support separation;
 - microcausality for smeared fields;
-- graded locality for fermionic fields.
+- graded locality for fermionic fields;
+- local polynomial field algebra on a common domain;
+- Wightman distribution of a field multiplet.
 
 ## Claim Ledger
 
-| Claim | Status | Certification |
-| --- | --- | --- |
-| Point-field notation is shorthand for distributional smearing. | Definition/framework statement | Wightman-style definition |
-| The spacetime argument \(x\) in \(\widehat\Phi_A(x)\) is a localization label and becomes an operator only after smearing. | Source-certified convention | Added from handwritten p. 5 |
-| Covariance acts simultaneously on spacetime arguments and field indices. | Definition | Chapter definition |
-| Poincare covariance of fields and vacuum invariance imply covariance of all Wightman distributions. | Proven in chapter | Proposition `prop:wightman-distribution-covariance-from-fields`; finite convention checks in `calculation-checks/local_field_covariance_checks.py` |
-| Microcausality is a support condition on smeared commutators. | Definition | Chapter definition |
-| Adjacent spacelike-separated insertions in a Wightman distribution can be exchanged with the Koszul sign. | Proven in chapter | Proposition `prop:wightman-adjacent-spacelike-exchange`; finite sign check in `calculation-checks/local_field_covariance_checks.py` |
-| Local fields can coordinate local observable data but need not be the only primitive. | Framework comparison | AQFT comparison, stated carefully |
+- Point-field notation is shorthand for distributional smearing.
+  Status: definition/framework statement. Certification: Wightman-style
+  definition.
+- The spacetime argument \(x\) in \(\widehat\Phi_A(x)\) is a localization
+  label and becomes an operator only after smearing.
+  Status: source-certified convention. Certification: handwritten p. 5.
+- Covariance acts simultaneously on spacetime arguments and field indices.
+  Status: definition. Certification: chapter definition.
+- Distributional product matrix elements extend from smeared products to
+  distributions on \((\mathbb M^D)^n\).
+  Status: proven in chapter. Certification:
+  `prop:distributional-matrix-elements`.
+- The pullback convention satisfies \((f_g)_h=f_{hg}\).
+  Status: definition plus finite check. Certification:
+  `def:poincare-pullback-test-functions` and
+  `calculation-checks/local_field_covariance_checks.py`.
+- Scalar infinitesimal translations obey
+  \([P_\mu,\Phi(f)]=-i\Phi(\partial_\mu f)\).
+  Status: proven in chapter. Certification:
+  `prop:infinitesimal-translation-covariance`.
+- Covariant field transformations send fields localized in \(\mathcal O\)
+  to fields localized in \(g\mathcal O\).
+  Status: proven in chapter. Certification:
+  `cor:covariance-localization-regions`.
+- Poincare covariance of fields and vacuum invariance imply covariance of all
+  Wightman distributions.
+  Status: proven in chapter. Certification:
+  `prop:wightman-distribution-covariance-from-fields`.
+- Spacelike support separation is Poincare invariant.
+  Status: proven in chapter. Certification:
+  `prop:poincare-invariance-spacelike-support-separation`.
+- Microcausality is a support condition on smeared commutators.
+  Status: definition. Certification: chapter definition.
+- Adjacent spacelike-separated insertions in a Wightman distribution can be
+  exchanged with the Koszul sign.
+  Status: proven in chapter. Certification:
+  `prop:wightman-adjacent-spacelike-exchange`.
+- Local polynomial field algebras obey isotony and graded locality on the
+  common domain.
+  Status: proven in chapter. Certification:
+  `prop:polynomial-field-algebra-isotony-graded-locality`.
+- Wightman distributions inherit field covariance and locality by smearing.
+  Status: proven in chapter. Certification:
+  `prop:wightman-inherits-covariance-and-locality`.
+- Local fields can coordinate local observable data but need not be the only
+  primitive.
+  Status: framework comparison. Certification: AQFT comparison.
 
 ## Drafted Chapter Sections
 
@@ -108,6 +151,11 @@ Working framework:
 - 2026-05-27 issue #615 pass: promoted the domain and covariance material
   into explicit definitions/propositions and added companion checks for the
   pullback order, Lorentz sign, component tensor factors, and graded exchange.
+- 2026-05-27 issue #615 follow-up: formalized the field-multiplet datum,
+  localization, distributional matrix-element proof, Poincare pullback,
+  infinitesimal translation law, localization covariance, spacelike support
+  invariance, graded commutator, polynomial field algebra, and Wightman
+  distribution inheritance statements.
 
 ## Figure Ledger
 
