@@ -475,6 +475,31 @@ def check_sausage_metric_curvature() -> None:
     q_dot_from_kappa = sp.diff(q_physical, kappa) * kappa_dot
     assert_zero("sausage kappa-flow conversion", q_dot.subs(q, q_physical) - q_dot_from_kappa)
 
+    tau, tau0, h0, alpha, beta = sp.symbols("tau tau0 h0 alpha beta", nonzero=True)
+    negative_argument = sp.atanh(alpha * h0) - alpha * (tau - tau0)
+    h_negative = sp.tanh(negative_argument) / alpha
+    q_negative = -alpha**2 * h_negative**2
+    assert_zero(
+        "sausage integrated negative h-flow",
+        sp.diff(h_negative, tau) + (1 - alpha**2 * h_negative**2),
+    )
+    assert_zero(
+        "sausage integrated negative invariant",
+        q_negative / h_negative**2 + alpha**2,
+    )
+
+    positive_argument = sp.atan(beta * h0) - beta * (tau - tau0)
+    h_positive = sp.tan(positive_argument) / beta
+    q_positive = beta**2 * h_positive**2
+    assert_zero(
+        "sausage integrated positive h-flow",
+        sp.diff(h_positive, tau) + (1 + beta**2 * h_positive**2),
+    )
+    assert_zero(
+        "sausage integrated positive invariant",
+        q_positive / h_positive**2 - beta**2,
+    )
+
     rho = sp.symbols("rho")
     r_cyl = sp.tanh(rho)
     radial_limit = sp.simplify(

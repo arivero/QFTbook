@@ -1860,6 +1860,85 @@ Substituting \(\dot h=-(1+q)\) gives
 \]
 \end{proof}
 
+\begin{proposition}[Integrated sausage Ricci trajectory]
+\label{prop:sausage-integrated-ricci-trajectory}
+Fix a solution of \eqref{eq:sausage-ricci-flow-hq} with initial value
+\((h_0,q_0)\) at \(\tau=\tau_0\).  If \(q_0=0\), then
+\[
+  h(\tau)=h_0-(\tau-\tau_0),\qquad q(\tau)=0 .
+  \label{eq:sausage-round-integrated-flow}
+\]
+On the physical sausage branch \(q<0\), write the invariant as
+\[
+  \frac{q}{h^2}=-\alpha^2,\qquad \alpha>0,
+  \label{eq:sausage-alpha-invariant}
+\]
+so that \(\kappa(\tau)=\alpha h(\tau)\).  While \(0<\alpha h(\tau)<1\),
+\begin{equation}
+  h(\tau)
+  =
+  \frac1\alpha
+  \tanh\!\left(
+    \operatorname{arctanh}(\alpha h_0)-\alpha(\tau-\tau_0)
+  \right),
+  \qquad
+  q(\tau)=-\alpha^2h(\tau)^2 .
+  \label{eq:sausage-physical-integrated-flow}
+\end{equation}
+On the positive branch \(q>0\), write \(q/h^2=\beta^2\), \(\beta>0\).  Then
+\begin{equation}
+  h(\tau)
+  =
+  \frac1\beta
+  \tan\!\left(
+    \arctan(\beta h_0)-\beta(\tau-\tau_0)
+  \right),
+  \qquad
+  q(\tau)=\beta^2h(\tau)^2 ,
+  \label{eq:sausage-positive-integrated-flow}
+\end{equation}
+up to the first zero or pole of the tangent chart.
+\end{proposition}
+
+\begin{proof}
+Proposition~\ref{prop:sausage-ricci-flow-closure} proves that \(q/h^2\) is
+constant.  For \(q_0=0\), the equation for \(h\) reduces to \(\dot h=-1\),
+which gives \eqref{eq:sausage-round-integrated-flow}.
+
+On the negative branch, substitute \(q=-\alpha^2h^2\) into
+\eqref{eq:sausage-ricci-flow-hq}.  The scalar equation is
+\[
+  \dot h=-(1-\alpha^2h^2).
+  \label{eq:sausage-negative-h-ode}
+\]
+Since
+\[
+  \frac{\dd}{\dd h}\operatorname{arctanh}(\alpha h)
+  =
+  \frac{\alpha}{1-\alpha^2h^2},
+\]
+\eqref{eq:sausage-negative-h-ode} is equivalent to
+\[
+  \frac{\dd}{\dd\tau}\operatorname{arctanh}(\alpha h(\tau))=-\alpha .
+\]
+Integrating from \(\tau_0\) to \(\tau\) gives
+\eqref{eq:sausage-physical-integrated-flow}.  The relation
+\(q=-\alpha^2h^2\) then supplies the second coordinate.  The condition
+\(\alpha h<1\) is exactly \(q>-1\), the Riemannian domain of
+Definition~\ref{def:sausage-metric-datum}.
+
+On the positive branch, substitute \(q=\beta^2h^2\).  Then
+\[
+  \dot h=-(1+\beta^2h^2),
+\]
+and
+\[
+  \frac{\dd}{\dd h}\arctan(\beta h)=\frac{\beta}{1+\beta^2h^2}.
+\]
+Thus \(\frac{\dd}{\dd\tau}\arctan(\beta h(\tau))=-\beta\), and integration
+gives \eqref{eq:sausage-positive-integrated-flow}.
+\end{proof}
+
 \begin{proposition}[Round and cylindrical endpoints of the metric family]
 \label{prop:sausage-metric-endpoints}
 The branch \(q=-\kappa^2\), \(0\le\kappa<1\), interpolates at the metric level
