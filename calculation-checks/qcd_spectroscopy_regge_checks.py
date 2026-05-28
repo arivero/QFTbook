@@ -157,6 +157,41 @@ def check_triple_regge_exponents_and_eikonal_poisson() -> None:
         assert_equal(f"eikonal Poisson normalization coefficient {degree}", coefficient, Fraction(0))
 
 
+def falling_factorial(n: int, r: int) -> int:
+    if n < r:
+        return 0
+    out = 1
+    for k in range(r):
+        out *= n - k
+    return out
+
+
+def check_reggeon_diffusion_and_agk_moments() -> None:
+    # The free Reggeon quadratic datum gives exp[(Delta-alpha' q^2)Y].
+    # With t=-q^2 the trajectory exponent is alpha(t)-1=Delta+alpha' t.
+    delta = Fraction(2, 9)
+    alpha_prime = Fraction(5, 13)
+    momentum_sq = Fraction(7, 11)
+    t = -momentum_sq
+    transverse_exponent = delta - alpha_prime * momentum_sq
+    trajectory_exponent = delta + alpha_prime * t
+    assert_equal("free Reggeon trajectory exponent", transverse_exponent, trajectory_exponent)
+
+    # Eikonal AGK-type cancellation: the coefficient of Omega^m in the r-th
+    # factorial moment of P_n=e^{-Omega} Omega^n/n! is delta_{m,r}.
+    for r in range(1, 6):
+        for m in range(0, 10):
+            coefficient = sum(
+                Fraction(
+                    falling_factorial(n, r) * ((-1) ** (m - n)),
+                    factorial(n) * factorial(m - n),
+                )
+                for n in range(0, m + 1)
+            )
+            expected = Fraction(1) if m == r else Fraction(0)
+            assert_equal(f"eikonal AGK factorial moment r={r}, m={m}", coefficient, expected)
+
+
 def check_luscher_kmatrix_pole_algebra() -> None:
     # From delta + phi = n*pi, cot(delta) = -cot(phi).  With
     # K^{-1}=rho*cot(delta), finite-volume levels therefore sample
@@ -451,6 +486,7 @@ def main() -> None:
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
     check_triple_regge_exponents_and_eikonal_poisson()
+    check_reggeon_diffusion_and_agk_moments()
     check_luscher_kmatrix_pole_algebra()
     check_swave_luscher_zeta_normalization()
     check_pipi_crossing_and_roy_subtractions()
