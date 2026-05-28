@@ -47,6 +47,26 @@ def check_h_theorem_integrand() -> None:
             raise AssertionError(f"H-theorem integrand {index} negative: {entropy_integrand}")
 
 
+def check_quasiparticle_drift_projection() -> None:
+    p0, px, py, pz, m = sp.symbols("p0 px py pz m", positive=True)
+    ft, fx, fy, fz = sp.symbols("ft fx fy fz")
+    shell_function = p0**2 - px**2 - py**2 - pz**2 - m**2
+
+    # With the kinetic Poisson-bracket convention of the chapter, the
+    # force-free bracket gives 1/2 {F,G} -> p0 dt f + p_i dx_i f on shell.
+    half_bracket_coefficient = sp.Rational(1, 2) * (
+        sp.diff(shell_function, p0) * ft
+        - sp.diff(shell_function, px) * fx
+        - sp.diff(shell_function, py) * fy
+        - sp.diff(shell_function, pz) * fz
+    )
+    energy = sp.sqrt(px**2 + py**2 + pz**2 + m**2)
+    projected = half_bracket_coefficient.subs(p0, energy)
+    expected = energy * ft + px * fx + py * fy + pz * fz
+    if sp.simplify(projected - expected) != 0:
+        raise AssertionError("quasiparticle drift projection failed")
+
+
 def check_linearized_collision_positive_form() -> None:
     weight = 0.37
     chi = [0.2, -0.4, 0.1, 0.6]
@@ -112,6 +132,7 @@ def check_relaxation_time_shear_integral() -> None:
 def main() -> None:
     check_detailed_balance()
     check_h_theorem_integrand()
+    check_quasiparticle_drift_projection()
     check_linearized_collision_positive_form()
     check_finite_collision_algebra_exact()
     check_relaxation_time_shear_integral()

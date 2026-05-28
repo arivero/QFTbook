@@ -78,6 +78,104 @@ where \(\Gamma_a\) is the damping width and
 These inequalities are hypotheses on the state and on the coupling regime;
 they are not consequences of conservation laws alone.
 
+\section{Quasiparticle Projection of the Two-Point Equation}
+\label{sec:kinetic-quasiparticle-projection-two-point-equation}
+
+The Boltzmann drift term is the on-shell projection of the leading
+Schwinger--Keldysh two-point equation.  We record the projection explicitly
+because it is the point where an operator statement about correlators becomes
+a phase-space equation.
+
+\begin{controlledapproximation}[Force-free quasiparticle projection]
+\label{ca:kinetic-force-free-quasiparticle-projection}
+Consider one scalar species in flat spacetime, with constant mass and a
+single narrow positive-energy peak.  Let
+\[
+  F(p)=(p^0)^2-E(\mathbf p)^2,\qquad
+  E(\mathbf p)=\sqrt{\mathbf p^2+m^2},
+  \label{eq:kinetic-free-mass-shell-function}
+\]
+and assume that the leading-gradient Kadanoff--Baym equation has the form
+\[
+  \frac12\{F,G^<\}_{\rm kin}=I^<[G],
+  \label{eq:kinetic-leading-kb-force-free}
+\]
+where \(I^<\) is the collision functional and
+\[
+  \{A,B\}_{\rm kin}
+  =
+  \partial_{p^0}A\,\partial_tB
+  -\partial_tA\,\partial_{p^0}B
+  -\partial_{\mathbf p}A\cdot\nabla_{\mathbf x}B
+  +\nabla_{\mathbf x}A\cdot\nabla_{\mathbf p}B .
+  \label{eq:kinetic-poisson-bracket-convention}
+\]
+Use the positive-energy ansatz
+\[
+  G^<(X,p)=2\pi Z(\mathbf p)f(X,\mathbf p)\delta(p^0-E(\mathbf p))
+  \label{eq:kinetic-positive-energy-lesser-ansatz}
+\]
+with \(Z\) independent of \(X\) at this order.  Terms from mean-field
+forces, Berry curvature, spatially varying masses, and off-shell memory
+kernels are omitted in this controlled approximation; each of them modifies
+the left-hand side by additional explicitly computable phase-space terms.
+\end{controlledapproximation}
+
+\begin{proposition}[Projection of the drift term]
+\label{prop:kinetic-quasiparticle-drift-projection}
+Under
+Controlled Approximation~\ref{ca:kinetic-force-free-quasiparticle-projection},
+the positive-energy shell projection of
+\eqref{eq:kinetic-leading-kb-force-free} is
+\[
+  p^\mu\partial_\mu f(X,\mathbf p)=\mathcal C[f](X,\mathbf p),
+  \qquad
+  p^\mu=(E(\mathbf p),\mathbf p),
+  \label{eq:kinetic-projected-boltzmann-equation}
+\]
+with
+\[
+  \mathcal C[f](X,\mathbf p)
+  =
+  \frac{1}{Z(\mathbf p)}
+  \int_0^\infty\frac{dp^0}{2\pi}\,I^<[G](X,p).
+  \label{eq:kinetic-projected-collision-functional}
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(F\) is independent of \(X\),
+\[
+  \{F,G^<\}_{\rm kin}
+  =
+  2p^0\partial_tG^<
+  +2\mathbf p\cdot\nabla_{\mathbf x}G^< .
+  \label{eq:kinetic-free-bracket}
+\]
+Using \eqref{eq:kinetic-positive-energy-lesser-ansatz} and the
+\(X\)-independence of \(Z\) and \(E\),
+\[
+  \frac12\{F,G^<\}_{\rm kin}
+  =
+  2\pi Z(\mathbf p)
+  \bigl(p^0\partial_t+\mathbf p\cdot\nabla_{\mathbf x}\bigr)
+  f(X,\mathbf p)\,\delta(p^0-E(\mathbf p)).
+  \label{eq:kinetic-projected-bracket-before-integral}
+\]
+Integrating over \(p^0>0\) and dividing by \(Z(\mathbf p)\) gives
+\[
+  E(\mathbf p)\partial_tf+\mathbf p\cdot\nabla_{\mathbf x}f
+  =
+  \frac{1}{Z(\mathbf p)}
+  \int_0^\infty\frac{dp^0}{2\pi}I^<[G](X,p),
+  \label{eq:kinetic-projected-bracket-after-integral}
+\]
+which is \eqref{eq:kinetic-projected-boltzmann-equation}.  Dividing by
+\(E\) gives the coordinate-time form
+\((\partial_t+\mathbf v\cdot\nabla_{\mathbf x})f=C^{(t)}[f]\) with
+\(\mathbf v=\mathbf p/E\).
+\end{proof}
+
 \section{Boltzmann Equation and Collision Kernel}
 
 The covariant Boltzmann equation is
