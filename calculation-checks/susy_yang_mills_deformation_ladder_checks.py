@@ -4,7 +4,8 @@
 The checks cover algebraic identities used in Volume VII's family-comparison
 chapter: holomorphic scale dimensions, the N=1* fuzzy-sphere F-term ansatz,
 finite k-string comparison ledgers, and the local Seiberg-Witten vortex
-profile normalization, together with pure N=1 SYM channel-pole bookkeeping.
+profile normalization, together with the Abelianized A-type sine profile and
+pure N=1 SYM channel-pole bookkeeping.
 """
 
 from __future__ import annotations
@@ -16,6 +17,12 @@ def assert_zero(name: str, expr: sp.Expr) -> None:
     simplified = sp.simplify(sp.factor(expr))
     if simplified != 0:
         raise AssertionError(f"{name} failed: {simplified!r}")
+
+
+def assert_near_zero(name: str, expr: sp.Expr, tol: sp.Float = sp.Float("1e-45")) -> None:
+    value = abs(sp.N(expr, 80))
+    if value >= tol:
+        raise AssertionError(f"{name} failed numerically: {value!r}")
 
 
 def check_holomorphic_scale_dimensions() -> None:
@@ -82,6 +89,52 @@ def check_sw_vortex_radial_normalization() -> None:
         )
 
 
+def check_abelianized_a_type_sine_profile() -> None:
+    for rank_plus_one in range(3, 11):
+        dim = rank_plus_one - 1
+        cartan = sp.zeros(dim, dim)
+        for i in range(dim):
+            cartan[i, i] = 2
+            if i > 0:
+                cartan[i, i - 1] = -1
+            if i + 1 < dim:
+                cartan[i, i + 1] = -1
+
+        sine_vector = sp.Matrix(
+            [sp.sin(sp.pi * (i + 1) / rank_plus_one) for i in range(dim)]
+        )
+        eigenvalue = 4 * sp.sin(sp.pi / (2 * rank_plus_one)) ** 2
+        residual = cartan * sine_vector - eigenvalue * sine_vector
+        for i, entry in enumerate(residual):
+            assert_near_zero(f"A-type sine eigenvector N={rank_plus_one}, row={i+1}", entry)
+
+        for k_value in range(1, rank_plus_one):
+            ratio = sp.sin(sp.pi * k_value / rank_plus_one) / sp.sin(sp.pi / rank_plus_one)
+            conjugate_ratio = sp.sin(sp.pi * (rank_plus_one - k_value) / rank_plus_one) / sp.sin(
+                sp.pi / rank_plus_one
+            )
+            assert_zero(
+                f"A-type sine charge conjugation N={rank_plus_one}, k={k_value}",
+                sp.trigsimp(ratio - conjugate_ratio),
+            )
+
+        for k_value in range(1, rank_plus_one - 1):
+            for ell_value in range(1, rank_plus_one - k_value):
+                a = sp.pi * k_value / rank_plus_one
+                b = sp.pi * ell_value / rank_plus_one
+                difference = sp.sin(a) + sp.sin(b) - sp.sin(a + b)
+                factorized = 4 * sp.sin(a / 2) * sp.sin(b / 2) * sp.sin((a + b) / 2)
+                assert_near_zero(
+                    f"A-type sine subadditivity identity N={rank_plus_one}, k={k_value}, ell={ell_value}",
+                    difference - factorized,
+                )
+                if not bool(sp.N(difference) > 0):
+                    raise AssertionError(
+                        f"A-type sine subadditivity positivity failed for N={rank_plus_one}, "
+                        f"k={k_value}, ell={ell_value}: {difference!r}"
+                    )
+
+
 def check_pure_sym_channel_pole_bookkeeping() -> None:
     mass, t, t0 = sp.symbols("m t t0", positive=True)
     z_plus, z_minus, z_fermion = sp.symbols("z_plus z_minus z_fermion", nonzero=True)
@@ -109,6 +162,7 @@ def main() -> None:
     check_n1_star_fuzzy_sphere_ansatz()
     check_k_string_ledgers()
     check_sw_vortex_radial_normalization()
+    check_abelianized_a_type_sine_profile()
     check_pure_sym_channel_pole_bookkeeping()
     print("All supersymmetric Yang-Mills deformation-ladder checks passed.")
 

@@ -894,6 +894,247 @@ local in the Seiberg--Witten patch; it does not assert that a full non-Abelian
 \(k\)-string spectrum is determined by the Abelian profile.
 \end{proof}
 
+\subsection[Abelianized k-String Comparison]{Abelianized \(k\)-String Comparison}
+
+The local \(U(1)_D\) vortex just derived is the rank-one building block.  For
+\(SU(N_c)\) with \(N_c>2\), the softly broken \(\mathcal N=2\) theory has
+singular loci where several mutually local magnetic states become light and
+the low-energy magnetic gauge group is an Abelian torus.  The string
+calculation in such a region is an Abelianized calculation.  Its output is a
+precise low-energy spectral datum; comparison with the non-Abelian
+pure-Yang--Mills \(k\)-string spectrum requires an additional deformation
+argument.
+
+Let \(K_{ij}\), \(1\le i,j\le N_c-1\), be the \(A_{N_c-1}\) Cartan matrix
+\[
+  K_{ij}=2\delta_{ij}-\delta_{i,j+1}-\delta_{i+1,j}.
+  \label{eq:an-minus-one-cartan-matrix}
+\]
+The simple magnetic fields of an Abelianized Seiberg--Witten patch are
+labelled by these simple roots.  A soft \(\mathcal N=1\) deformation supplies
+complex Fayet--Iliopoulos coordinates \(\xi_i\) for the corresponding local
+Abelian Higgs factors after a magnetic duality frame has been chosen.  When
+the phases of the \(\xi_i\) are aligned, the BPS square completion of the
+rank-one calculation applies independently in each diagonalized magnetic
+charge sector.
+
+\begin{definition}[Abelianized \(A_{N_c-1}\) string datum]
+\label{def:abelianized-a-string-datum}
+An Abelianized \(A_{N_c-1}\) string datum consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a magnetic low-energy patch with gauge group \(U(1)^{N_c-1}\), gauge
+  fields \(A_{D,i}\), and mutually local charged monopole hypermultiplets;
+\item complex FI coordinates \(\xi_i\), \(i=1,\ldots,N_c-1\), with a declared
+  common phase, so that a BPS bound may be written in a single real central
+  charge direction;
+\item flux integers \(n_i\in\mathbb Z\) with
+  \[
+    \frac{1}{2\pi}\int_{\mathbb R^2}F_{D,i}=n_i;
+  \]
+\item a map from the Abelian magnetic flux vector \(n=(n_i)\) to the
+  electric center charge \(k\in\mathbb Z_{N_c}\) of the heavy Wilson source
+  being confined;
+\item the domain in Coulomb-branch and deformation-parameter space in which
+  the Abelian two-derivative description is used.
+\end{enumerate}
+This datum defines an Abelianized string spectrum in the local effective
+theory.  It becomes a statement about the microscopic non-Abelian theory only
+after the Seiberg--Witten effective action and the deformation to the chosen
+microscopic problem have been justified in the stated regime.
+\end{definition}
+
+\begin{proposition}[Cartan BPS bound for aligned Abelian strings]
+\label{prop:cartan-abelian-string-bps-bound}
+Assume the Abelianized datum of
+Definition~\ref{def:abelianized-a-string-datum} and suppose that, in the
+chosen magnetic frame, the static transverse energy density is a sum of
+rank-one Abelian-Higgs BPS densities with aligned \(\xi_i\).  For flux vector
+\(n=(n_1,\ldots,n_{N_c-1})\), every finite-energy string obeys
+\[
+  T(n)\ge
+  2\pi\left|\sum_{i=1}^{N_c-1}n_i\xi_i\right|.
+  \label{eq:cartan-abelian-string-bps-bound}
+\]
+If the first-order vortex equations are solved in every occupied sector with
+the common central-charge orientation, and if all nonzero \(n_i\xi_i\) have
+the phase of \(\sum_j n_j\xi_j\), the bound is saturated.
+\end{proposition}
+
+\begin{proof}
+For a single diagonal magnetic factor the square completion in
+\eqref{eq:sw-local-abelian-higgs-energy} gives
+\[
+  T_i\ge 2\pi |n_i|\,|\xi_i|
+\]
+with equality when the flux orientation is chosen to have the same phase as
+\(n_i\xi_i\).
+Writing all \(\xi_i\) in the common phase direction as
+\(\xi_i=\ee^{\ii\alpha}|\xi_i|\), the central charge of a multi-flux
+configuration is
+\[
+  Z(n)=2\pi\sum_i n_i\xi_i .
+\]
+The triangle inequality gives
+\[
+  \sum_i2\pi |n_i|\,|\xi_i|
+  \ge
+  2\pi\left|\sum_i n_i\xi_i\right|
+  =
+  |Z(n)|,
+\]
+which is \eqref{eq:cartan-abelian-string-bps-bound}.  Saturation of the
+displayed central-charge bound requires equality in the triangle inequality,
+namely all nonzero \(n_i\xi_i\) have the same phase, and also saturation of
+the rank-one square in every occupied sector.  The argument is a statement in
+the diagonal Abelian effective theory; off-diagonal massive fields and
+non-Abelian core effects are outside the hypotheses.
+\end{proof}
+
+At the Chebyshev-type maximally singular point of the pure
+\(\mathcal N=2\) \(SU(N_c)\) Coulomb branch, the Abelianized low-energy
+calculation often produces an FI profile proportional to the positive
+\(A_{N_c-1}\) sine vector
+\[
+  s_i=\sin\frac{\pi i}{N_c},\qquad i=1,\ldots,N_c-1.
+  \label{eq:an-sine-vector}
+\]
+The finite algebra behind the resulting sine ratios is elementary and is
+recorded here because it is the part of the comparison that is independent of
+any literature convention.
+
+\begin{proposition}[\(A_{N_c-1}\) sine profile and normalized tensions]
+\label{prop:a-type-sine-profile-k-string}
+Let \(s_i=\sin(\pi i/N_c)\).  Then \(s=(s_i)\) is the strictly positive
+eigenvector of the \(A_{N_c-1}\) Cartan matrix with eigenvalue
+\[
+  \lambda_1=4\sin^2\frac{\pi}{2N_c}.
+  \label{eq:a-type-sine-profile-eigenvalue}
+\]
+Consequently, if an Abelianized \(SU(N_c)\) string datum has aligned FI
+magnitudes
+\[
+  |\xi_k|=|\xi_1|\frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)}
+  \qquad (1\le k\le N_c-1),
+  \label{eq:sw-sine-fi-profile}
+\]
+and if the \(k\)-labelled string is the single BPS sector associated with
+\(\xi_k\), then the Abelianized normalized tensions are
+\[
+  \frac{T_k^{\rm SW}}{T_1^{\rm SW}}
+  =
+  \frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)}.
+  \label{eq:sw-sine-k-string-ratio}
+\]
+They obey charge conjugation
+\[
+  T_k^{\rm SW}=T_{N_c-k}^{\rm SW}
+  \label{eq:sw-sine-charge-conjugation}
+\]
+and strict subadditivity
+\[
+  T_{k+\ell}^{\rm SW}<T_k^{\rm SW}+T_\ell^{\rm SW},
+  \qquad
+  k,\ell\ge1,\quad k+\ell\le N_c-1 .
+  \label{eq:sw-sine-subadditivity}
+\]
+\end{proposition}
+
+\begin{proof}
+For \(1<i<N_c-1\),
+\[
+  (Ks)_i
+  =
+  2\sin\frac{\pi i}{N_c}
+  -\sin\frac{\pi(i-1)}{N_c}
+  -\sin\frac{\pi(i+1)}{N_c}.
+\]
+Using
+\[
+  \sin(x-a)+\sin(x+a)=2\sin x\cos a
+\]
+with \(a=\pi/N_c\), this becomes
+\[
+  2\left(1-\cos\frac{\pi}{N_c}\right)
+  \sin\frac{\pi i}{N_c}
+  =
+  4\sin^2\frac{\pi}{2N_c}\,s_i .
+\]
+The endpoint rows obey the same identity with the absent sine terms
+\(\sin0\) and \(\sin\pi\), both zero.  The entries \(s_i\) are positive for
+\(1\le i\le N_c-1\), so this is the Perron--Frobenius eigenvector of the
+Cartan matrix.
+
+Under the FI profile \eqref{eq:sw-sine-fi-profile}, the saturated rank-one
+BPS tension in the \(k\)-sector is \(T_k^{\rm SW}=2\pi|\xi_k|\).  Division by
+the \(k=1\) result gives \eqref{eq:sw-sine-k-string-ratio}.  Charge
+conjugation follows from
+\[
+  \sin\frac{\pi(N_c-k)}{N_c}
+  =
+  \sin\frac{\pi k}{N_c}.
+\]
+For subadditivity, set \(a=\pi k/N_c\) and \(b=\pi\ell/N_c\).  Since
+\(0<a,b\) and \(a+b<\pi\),
+\[
+  \sin a+\sin b-\sin(a+b)
+  =
+  4\sin\frac a2\sin\frac b2\sin\frac{a+b}{2}>0 .
+\]
+After multiplying by the positive normalization
+\((2\pi|\xi_1|)/\sin(\pi/N_c)\), this gives
+\eqref{eq:sw-sine-subadditivity}.
+\end{proof}
+
+\begin{definition}[Seiberg--Witten to pure-Yang--Mills string comparison]
+\label{def:sw-to-pure-ym-string-comparison}
+A comparison between the Abelianized Seiberg--Witten strings and the bosonic
+pure-Yang--Mills \(k\)-strings consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a fixed global form of the gauge group and a fixed line-operator
+  lattice, so that the center charge \(k\) means the same thing throughout;
+\item normalized tension functions
+  \[
+    R_k(t)=\frac{T_k(t)}{T_1(t)}
+  \]
+  along a declared deformation path \(t\), where \(t=0\) denotes the
+  Abelianized Seiberg--Witten regime and \(t=1\) denotes the target bosonic
+  Yang--Mills problem;
+\item a statement of the topology in which the flux-sector transfer matrices,
+  their lowest eigenvalues, and the large-length limits defining \(T_k(t)\)
+  vary with \(t\);
+\item a list of possible obstructions: loss of the Abelian patch, string
+  breaking by dynamical matter, collision with another flux-sector level,
+  change of line-operator lattice, or failure of the continuum limit.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[What the Abelian sine calculation transfers]
+\label{prop:abelian-sine-transfer-status}
+Assume a comparison datum as in
+Definition~\ref{def:sw-to-pure-ym-string-comparison}.  If, for a fixed
+\(k\), the tensions \(T_1(t)\) and \(T_k(t)\) exist, are positive, and are
+continuous on \(0\le t\le1\), then the normalized ratio \(R_k(t)\) is
+continuous.  If in addition \(R_k(t)\) is constant along the path, then the
+pure-Yang--Mills ratio equals the Abelianized value
+\[
+  R_k(1)=\frac{\sin(\pi k/N_c)}{\sin(\pi/N_c)} .
+\]
+The Abelian Seiberg--Witten calculation proves the initial value \(R_k(0)\)
+under its low-energy hypotheses; constancy, or any other controlled evolution
+law for \(R_k(t)\), is an additional nonperturbative statement about the
+deformation path.
+\end{proposition}
+
+\begin{proof}
+The first assertion is the elementary continuity of a quotient whose
+denominator is positive.  The second follows by evaluating the constant
+function \(R_k(t)\) at \(t=0\) and using
+\eqref{eq:sw-sine-k-string-ratio}.  The last sentence records the logical
+dependence of the two inputs: Proposition~\ref{prop:a-type-sine-profile-k-string}
+is an Abelian effective-theory statement, while constancy of \(R_k(t)\) is a
+statement about a family of nonperturbative flux-sector transfer matrices.
+\end{proof}
+
 \subsection[Planar N=4]{Planar \(\mathcal N=4\)}
 
 Planar \(\mathcal N=4\) Yang--Mills is conformal, so the family ledger uses
@@ -1005,6 +1246,8 @@ following theorem boundaries:
   \text{derived in local Abelian patch}\\
 \mathcal N=2\text{ vortex tension} &
   \text{BPS Abelian-Higgs controlled approximation}\\
+\mathcal N=2\text{ Abelianized }k\text{-strings} &
+  \text{\(A\)-type sine profile; comparison datum}\\
 \mathcal N=4\text{ Wilson-line flux tube} &
   \text{defect spectral datum plus integrability hypotheses}\\
 \text{bosonic glueball and }k\text{-string spectra} &
