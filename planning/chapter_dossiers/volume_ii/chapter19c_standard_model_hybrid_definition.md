@@ -59,6 +59,11 @@
 - Expands the hybrid matching datum \(\mathcal M\) into scales, parameter
   charts, threshold maps, anomalous dimensions, nonperturbative matrix
   elements, and error/remainder data.
+- Defines the finite chiral-gauge regulator datum needed for a full
+  electroweak lattice construction, proves that the SM anomaly cancellations
+  are necessary determinant-line obstruction cancellations but not sufficient
+  for a nonperturbative construction, and separates lattice QCD matrix
+  elements from a regulator for the full chiral Standard Model.
 - Defines a Standard Model prediction in the hybrid framework by specifying
   regime, regulator/EFT, operator, matching map, error class, and
   gauge/infrared requirements.
@@ -87,7 +92,8 @@
   \(\rho_{\rm tree}=1\), \(B-L\) anomaly bookkeeping, Weinberg-operator
   mass normalization, singlet-neutrino tree matching, dimension-six
   one-generation ledger counts and field-content dimensions, strong-CP phase
-  invariance, one-loop gauge beta coefficients, GUT hypercharge conversion,
+  invariance, local and finite chiral-lattice obstruction cancellations,
+  one-loop gauge beta coefficients, GUT hypercharge conversion,
   top-Higgs subsystem coefficient algebra, and elementary \(S,T,U\)
   source-chart identities, plus the muon \(g-2\) Schwinger coefficient,
   leading electroweak coefficient normalization, and HVP kernel algebra.
@@ -127,9 +133,13 @@
    they do not replace vertex, box, four-fermion, or detector-function data.
 13. The Standard Model is used as a hybrid operational object, not as an
    assumed complete constructive four-dimensional continuum theorem.
-14. The Fermi operator coefficient is a tree-level matched EFT coefficient;
+14. A full electroweak chiral-gauge lattice regulator requires determinant
+   line phase, locality, and reflection/reconstruction data beyond anomaly
+   cancellation; lattice QCD matrix elements are nonperturbative inputs after
+   electroweak matching, not a construction of the full SM.
+15. The Fermi operator coefficient is a tree-level matched EFT coefficient;
    QCD matrix elements and radiative corrections are separate matching data.
-15. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
+16. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
    declared hybrid computation; HVP and HLbL are QCD current-correlator
    inputs, not perturbative QCD expansions.
 

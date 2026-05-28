@@ -40,8 +40,9 @@ Current checks:
   the Higgs mass coefficient, \(B-L\) anomaly bookkeeping with and
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
   tree-level singlet-neutrino matching, the dimension-six Warsaw-type
-  one-generation class counts and field-content dimensions, strong-CP phase
-  invariance, one-loop gauge beta-function coefficients, GUT
+  one-generation class counts and field-content dimensions, the local and
+  finite obstruction checks used in the chiral-lattice regulator discussion,
+  strong-CP phase invariance, one-loop gauge beta-function coefficients, GUT
   hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
   coefficients, and basic oblique-parameter identities for the \(S,T,U\)
   source-chart coordinates.  It also checks the muon \(g-2\) Schwinger

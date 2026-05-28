@@ -408,6 +408,43 @@ def check_dimension_six_ledger_counts() -> None:
         assert_equal(f"dimension-six field-content dimension for {name}", dimension, 6)
 
 
+def check_chiral_lattice_obstruction_conditions() -> None:
+    # The chiral-lattice regulator discussion uses the vanishing of the same
+    # local anomaly coefficients as the determinant-line obstruction.
+    su3_cubic_without_common_index = 2 - 1 - 1
+    assert_zero("SU(3)^3 cubic anomaly in left-handed convention", Fraction(su3_cubic_without_common_index))
+
+    local_obstructions = {
+        "SU(3)^2 U(1)_Y": sum(
+            su2_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in FIELDS
+            if su3_dim == 3
+        ),
+        "SU(2)^2 U(1)_Y": sum(
+            su3_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in FIELDS
+            if su2_dim == 2
+        ),
+        "U(1)_Y^3": sum(
+            su3_dim * su2_dim * hypercharge**3
+            for _, su3_dim, su2_dim, hypercharge, _ in FIELDS
+        ),
+        "grav^2 U(1)_Y": sum(
+            su3_dim * su2_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in FIELDS
+        ),
+    }
+    for name, value in local_obstructions.items():
+        assert_zero(f"chiral-lattice local determinant-line obstruction {name}", value)
+
+    weak_doublets = sum(
+        su3_dim
+        for _, su3_dim, su2_dim, _, is_weak_doublet in FIELDS
+        if is_weak_doublet and su2_dim == 2
+    )
+    assert_equal("weak-doublet parity for chiral-lattice regulator", weak_doublets % 2, 0)
+
+
 def main() -> None:
     check_su3_su3_u1()
     check_su2_su2_u1()
@@ -429,7 +466,8 @@ def main() -> None:
     check_oblique_parameter_identities()
     check_muon_gminus_two_hybrid_identities()
     check_dimension_six_ledger_counts()
-    print("All Standard Model representation, flavor, SMEFT, electroweak, RG, and hybrid-observable checks passed.")
+    check_chiral_lattice_obstruction_conditions()
+    print("All Standard Model representation, flavor, SMEFT, chiral-lattice, electroweak, RG, and hybrid-observable checks passed.")
 
 
 if __name__ == "__main__":

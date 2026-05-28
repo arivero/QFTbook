@@ -1653,6 +1653,107 @@ finite-order perturbative EFT, with the cutoff dependence absorbed into
 renormalized parameters and higher-dimensional operators.
 \end{proof}
 
+\section{Chiral Lattice Status of the Electroweak Sector}
+
+The statement that the electroweak sector is a chiral gauge theory has a
+precise regulator consequence.  Vectorlike lattice fermions define a finite
+Grassmann integral by an ordinary determinant.  A chiral gauge theory instead
+requires a gauge-covariant choice of a subspace of left-handed lattice
+fermions, and the corresponding fermion integral is a section of a
+determinant line over the finite gauge-field space.  The phase of that
+section is part of the regulator, not an optional convention.
+
+\begin{definition}[Finite chiral-gauge regulator datum]
+\label{def:sm-finite-chiral-gauge-regulator-datum}
+A finite chiral-gauge regulator for the Standard Model representation
+content consists of the following data at lattice spacing \(a\) and finite
+volume:
+\begin{enumerate}
+\item compact lattice gauge fields for the chosen global form of
+      \(SU(3)_c\times SU(2)_L\times U(1)_Y\), with a local gauge action;
+\item a local gauge-covariant lattice Dirac operator, for example an
+      overlap/Ginsparg--Wilson operator satisfying
+      \eqref{eq:lattice-ginsparg-wilson};
+\item chiral projectors assigning \(Q_L,L_L\) to left-handed subspaces and
+      \(u^c,d^c,e^c\) to the conjugate left-handed representations of
+      Definition~\ref{def:sm-one-generation-left-weyl};
+\item a gauge-invariant, local, and reflection-compatible choice of phase of
+      the chiral fermion determinant line over lattice gauge fields;
+\item lattice Higgs and Yukawa terms whose gauge quantum numbers reduce to
+      Definition~\ref{def:sm-higgs-yukawa-datum} in the scaling window;
+\item uniform locality and reflection-positivity, or a declared replacement
+      reconstruction route, strong enough to define a candidate continuum
+      local QFT.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Local anomaly cancellation is necessary, not sufficient]
+\label{prop:sm-chiral-lattice-anomaly-necessity}
+For a finite chiral-gauge regulator datum of
+Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}, gauge
+invariance of the chiral determinant line requires the perturbative gauge
+anomaly coefficients of Proposition~\ref{prop:sm-generation-anomaly-cancellation}
+to vanish.  It also requires the finite \(SU(2)\) doublet-parity condition in
+that proposition.  These conditions do not by themselves construct the
+phase, prove locality of the phase choice, or prove a four-dimensional
+continuum limit.
+\end{proposition}
+
+\begin{proof}
+At finite lattice spacing the Grassmann integral over a chiral subspace gives
+a determinant of the chiral Dirac map between finite-dimensional spaces.  As
+the background gauge field varies, these determinants form a complex line
+bundle.  A gauge-invariant fermion measure is a nonvanishing section of this
+line bundle whose phase is compatible with gauge transformations.  Around an
+infinitesimal closed loop in gauge-field space, the phase holonomy is
+computed by the curvature of the determinant connection.  In the classical
+continuum limit, the local part of this curvature is the same descent
+polynomial that appears in Chapter~\ref{ch:volume-ii-20}.  Therefore a
+nonzero local gauge anomaly gives nontrivial infinitesimal holonomy along
+gauge orbits and forbids a gauge-invariant phase.  The calculation of
+Proposition~\ref{prop:sm-generation-anomaly-cancellation} is precisely the
+vanishing of these local obstruction coefficients for the Standard Model
+representations.
+
+There is also a global obstruction for an odd number of \(SU(2)\) doublets:
+transport around the nontrivial loop in the gauge group changes the sign of
+the fermion Pfaffian.  The Standard Model has four weak doublets per
+generation, hence avoids this obstruction.  The conclusion is only
+necessity.  A zero curvature class permits the local obstruction to be
+removed; it does not exhibit a local phase functional, prove reflection
+positivity, or control the continuum scaling limit.
+\end{proof}
+
+\begin{proposition}[Why lattice QCD is not a full Standard Model regulator]
+\label{prop:sm-lattice-qcd-not-full-sm-regulator}
+The lattice datum \(\mathfrak D_{\rm QCD}^{\rm lat}\) in
+Definition~\ref{def:hybrid-standard-model-datum} supplies a nonperturbative
+definition of gauge-invariant QCD matrix elements after the electroweak
+matching data have selected the relevant color-singlet operators.  It does
+not define the full Standard Model chiral gauge theory.
+\end{proposition}
+
+\begin{proof}
+Lattice QCD uses the color gauge group and quark fields as a vectorlike
+fermion system for the purpose of strong-interaction matrix elements.  Its
+finite Grassmann integral is an ordinary determinant, or a controlled product
+of determinants, coupled to compact \(SU(3)_c\) links.  The electroweak
+theory before matching is different: \(Q_L\) is an \(SU(2)_L\) doublet while
+the conjugate fields \(u^c,d^c\) are weak singlets with different
+hypercharges, and \(L_L,e^c\) have the analogous chiral electroweak
+assignment.  A finite regulator for this system must solve the determinant
+line and phase problem in
+Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}.
+
+The hybrid construction avoids conflating these two uses.  For hadronic weak
+observables, the weak fields are first matched onto gauge-invariant local
+operators such as four-quark, semileptonic, or electromagnetic-current
+operators.  The QCD lattice regulator then computes the matrix elements of
+those color-singlet operators.  This is a valid hybrid prediction after the
+matching map \(\mathcal M\) is specified, but it is not a nonperturbative
+construction of the microscopic chiral electroweak gauge theory.
+\end{proof}
+
 \begin{definition}[Standard Model prediction in the hybrid framework]
 \label{def:sm-hybrid-prediction}
 A Standard Model prediction for an observable \(O\) is certified in this
