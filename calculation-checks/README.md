@@ -34,10 +34,11 @@ Current checks:
   cubic-anomaly bookkeeping.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
-  four-dimensional \(\widehat A\,\operatorname{ch}\) index formula,
-  trace-delta \(SU(N)\) instanton indices, the Abelian \(T^4\) flux index,
-  the six-form anomaly-polynomial coefficients, and the Dirac zero-mode
-  selection-rule count.
+  \(\widehat A\)-genus expansion through degree eight, the four-dimensional
+  \(\widehat A\,\operatorname{ch}\) index formula, trace-delta \(SU(N)\)
+  instanton indices, the Abelian \(T^4\) flux index, the six-form
+  anomaly-polynomial coefficients, and the Dirac zero-mode selection-rule
+  count.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,

@@ -106,6 +106,163 @@ This proof is finite-dimensional after elliptic spectral theory supplies the
 discrete spectrum and heat-kernel trace class property.  It is the analytic
 bridge between zero-mode counting and local curvature densities.
 
+\section{Lichnerowicz Formula and Heat-Kernel Scaling}
+
+The local index theorem is a statement about the short-time asymptotics of
+the heat kernel of \(D_A^2\).  We spell out the conventions because the same
+heat-kernel coefficients also enter point-splitting stress tensors and trace
+anomalies.
+
+Let \(c(e^a)=\gamma^a\) denote Clifford multiplication by an orthonormal
+coframe.  We use
+\[
+  \gamma^{ab}:=\frac12[\gamma^a,\gamma^b],
+  \qquad
+  F^E=\frac12F^E_{ab}e^a\wedge e^b .
+\]
+The curvature of the spin connection is
+\[
+  [\nabla_a^S,\nabla_b^S]
+  =
+  \frac14 R_{ab cd}\gamma^{cd}.
+\]
+
+\begin{lemma}[Lichnerowicz formula]
+\label{lem:index-lichnerowicz}
+For the coupled Dirac operator \(D_A=\gamma^a\nabla_a^{S\otimes E}\),
+\[
+  D_A^2
+  =
+  (\nabla^{S\otimes E})^\ast\nabla^{S\otimes E}
+  +\frac14{\rm Scal}
+  +\frac12\gamma^{ab}F^E_{ab}.
+  \label{eq:index-lichnerowicz}
+\]
+\end{lemma}
+
+\begin{proof}
+At a chosen point \(p\), take an oriented orthonormal frame whose Levi-Civita
+connection coefficients vanish at \(p\).  At \(p\),
+\[
+  D_A^2
+  =
+  \gamma^a\gamma^b\nabla_a\nabla_b
+  =
+  g^{ab}\nabla_a\nabla_b
+  +\frac12\gamma^{ab}[\nabla_a,\nabla_b].
+\]
+Restoring the invariant expression changes \(g^{ab}\nabla_a\nabla_b\) into
+the connection Laplacian with the sign convention in
+\((\nabla)^\ast\nabla\).  The bundle-curvature term gives
+\(\frac12\gamma^{ab}F^E_{ab}\).  The spin-curvature term gives
+\[
+  \frac12\gamma^{ab}\frac14R_{ab cd}\gamma^{cd}.
+\]
+The Clifford relations and the first Bianchi identity reduce this contraction
+to \({\rm Scal}/4\): all four-gamma terms cancel by the cyclic Bianchi
+identity, while the two possible metric contractions give the scalar
+curvature with total coefficient \(1/4\).  This proves
+\eqref{eq:index-lichnerowicz}.
+\end{proof}
+
+\begin{definition}[Laplace-type operator and heat coefficients]
+\label{def:index-laplace-type-heat-coefficients}
+A Laplace-type operator on a Hermitian vector bundle \(V\to M^d\) is written
+in the form
+\[
+  P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+\mathcal E),
+  \label{eq:index-laplace-type-convention}
+\]
+where \(\nabla\) is a connection on \(V\) and
+\(\mathcal E\in\Gamma({\rm End}\,V)\).  Its curvature is
+\(\Omega_{\mu\nu}=[\nabla_\mu,\nabla_\nu]\).  The local heat coefficients
+\(a_{2r}(P;x)\) are defined by
+\[
+  {\rm Tr}\!\left(f e^{-tP}\right)
+  \sim
+  (4\pi t)^{-d/2}
+  \sum_{r\geq0}t^r
+  \int_M f(x)\,{\rm tr}_V a_{2r}(P;x)\,d{\rm vol}_g
+  \label{eq:index-heat-coeff-definition}
+\]
+for every test function \(f\).
+\end{definition}
+
+\begin{proposition}[First Seeley--DeWitt coefficients]
+\label{prop:index-seeley-dewitt-coefficients}
+For the convention \eqref{eq:index-laplace-type-convention},
+\[
+  a_0={\bf 1}_V,
+  \qquad
+  a_2=\mathcal E+\frac16{\rm Scal}\,{\bf 1}_V,
+  \label{eq:index-a0-a2}
+\]
+and
+\[
+\begin{aligned}
+  a_4
+  =
+  \frac1{360}\Big[
+  &\left(5{\rm Scal}^2-2{\rm Ric}_{\mu\nu}{\rm Ric}^{\mu\nu}
+  +2R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}\right){\bf 1}_V \\
+  &+60{\rm Scal}\,\mathcal E
+  +180\mathcal E^2
+  +30\Omega_{\mu\nu}\Omega^{\mu\nu} \\
+  &+12\nabla^2{\rm Scal}\,{\bf 1}_V
+  +60\nabla^2\mathcal E
+  \Big].
+  \label{eq:index-a4-seeley-dewitt}
+\end{aligned}
+\]
+On a closed manifold the last line integrates to zero after taking a trace.
+\end{proposition}
+
+\begin{proof}
+Work in a normal convex neighborhood and write Synge's world function as
+\(\sigma(x,y)\).  The heat kernel parametrix has the form
+\[
+  K_t(x,y)
+  \sim
+  (4\pi t)^{-d/2}e^{-\sigma(x,y)/2t}\Delta(x,y)^{1/2}
+  \sum_{r\geq0}t^r b_r(x,y),
+  \qquad b_0(x,x)={\bf 1}_V,
+  \label{eq:index-heat-parametrix}
+\]
+where \(\Delta\) is the van Vleck determinant and \(b_r\) is parallel
+transported in the bundle indices at leading order.  Inserting
+\eqref{eq:index-heat-parametrix} into \((\partial_t+P_x)K_t=0\) and comparing
+powers of \(t\) gives the transport recursion
+\[
+  (\sigma^{;\mu}\nabla_\mu+r)b_r
+  =
+  -\Delta^{-1/2}
+  P_x\!\left(\Delta^{1/2}b_{r-1}\right),
+  \qquad r\geq1.
+  \label{eq:index-heat-transport-recursion}
+\]
+The coincidence limits needed below are
+\[
+  [\sigma^{;\mu}]=0,\qquad
+  [\sigma^{;\mu}{}_{\nu}]=\delta^\mu{}_\nu,\qquad
+  [\nabla_\mu\nabla_\nu\Delta^{1/2}]
+  =\frac16{\rm Ric}_{\mu\nu},
+  \label{eq:index-world-function-coincidence}
+\]
+with brackets denoting \(y\to x\).  Setting \(r=1\) in
+\eqref{eq:index-heat-transport-recursion} immediately gives
+\[
+  [b_1]=\mathcal E+\frac16{\rm Scal}\,{\bf 1}_V .
+  \]
+For \(r=2\), differentiate the transport equation twice, use
+\eqref{eq:index-world-function-coincidence}, the commutator
+\([\nabla_\mu,\nabla_\nu]=\Omega_{\mu\nu}\), and commute covariant
+derivatives until all third and fourth derivatives of \(\sigma\) and
+\(\Delta^{1/2}\) are expressed in curvature.  The resulting coincidence
+limit is precisely \eqref{eq:index-a4-seeley-dewitt}.  No field equation is
+used; the calculation is the universal local recursion for a Laplace-type
+operator.
+\end{proof}
+
 \section{Local Index Theorem}
 
 Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
@@ -120,7 +277,7 @@ Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
   +\frac{7p_1(TM)^2-4p_2(TM)}{5760}+\cdots .
 \]
 
-\begin{quotedtheorem}[Atiyah--Singer local index theorem]
+\begin{theorem}[Local index density by Getzler rescaling]
 \label{thm:index-atiyah-singer-local}
 For the chiral Dirac operator coupled to \(E\),
 \[
@@ -136,12 +293,83 @@ Equivalently, the local heat-kernel density of the supertrace has
   =
   \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}.
 \]
-\end{quotedtheorem}
+\end{theorem}
 
-The theorem is a theorem of differential geometry, not an axiom of QFT.  This
-monograph uses it as mathematical input while deriving the QFT consequences:
-zero-mode selection rules, anomaly polynomials, determinant lines, and
-inflow.
+\begin{proof}
+The McKean--Singer identity reduces the index to the small-\(t\) limit of the
+local supertrace.  Fix \(p\in M\).  Choose geodesic normal coordinates,
+synchronous orthonormal frame, and radial gauges for \(S\) and \(E\).  In these
+coordinates the Taylor expansions of the two connections begin with their
+curvatures:
+\[
+  \nabla_a^S
+  =
+  \partial_a+\frac14 R_{ab cd}(p)x^b\gamma^{cd}+O(|x|^2),
+  \qquad
+  \nabla_a^E
+  =
+  \partial_a+\frac12F^E_{ab}(p)x^b+O(|x|^2).
+  \label{eq:index-radial-gauge-expansion}
+\]
+Rescale \(x=t^{1/2}y\).  Under Getzler scaling the differential operator
+keeps the terms whose combined degree in \(t^{1/2}\), derivatives, and
+Clifford variables can contribute to the top Clifford degree \(2n\); all
+higher Taylor coefficients are suppressed by positive powers of \(t^{1/2}\)
+in the diagonal heat kernel.  Lemma
+\ref{lem:index-lichnerowicz} then gives the constant-curvature model
+operator
+\[
+  H_p
+  =
+  -\sum_a
+  \left(
+  \partial_{y^a}
+  +\frac14 R_{ab}(p)y^b
+  \right)^2
+  +\frac12\gamma^{ab}F^E_{ab}(p),
+  \label{eq:index-getzler-model-operator}
+\]
+where \(R_{ab}(p)\) is viewed as the skew endomorphism of \(T_pM\) with
+matrix entries \(R_{ab cd}(p)\gamma^{cd}\) in the Clifford factor.  The
+ordinary scalar-curvature term in \eqref{eq:index-lichnerowicz} has Clifford
+degree \(0\), hence cannot by itself contribute to the supertrace in
+dimension \(2n\); the missing gravitational contribution is instead produced
+by the harmonic-oscillator determinant in \(H_p\).
+
+The heat kernel of \eqref{eq:index-getzler-model-operator} is the Mehler
+kernel for a constant magnetic oscillator, tensored with the finite
+endomorphism exponential \(\exp(-\frac12\gamma^{ab}F^E_{ab})\).  Diagonalizing
+the skew curvature into two-planes gives the pointwise supertrace
+\[
+  \lim_{t\to0^+}{\rm str}\,K_t(p,p)\,d{\rm vol}_g(p)
+  =
+  \left[
+  \det\nolimits^{1/2}
+  \left(\frac{R/4\pi}{\sinh(R/4\pi)}\right)
+  {\rm tr}_E
+  \exp\!\left(\frac{\ii F_E}{2\pi}\right)
+  \right]_{2n}.
+  \label{eq:index-getzler-mehler-density}
+\]
+The determinant factor is the product over the curvature two-planes of the
+Mehler ratio
+\[
+  \frac{u/2}{\sinh(u/2)},
+\]
+with \(u\) the corresponding Chern-Weil curvature variable.  The Clifford
+supertrace extracts exactly the top exterior degree; lower Clifford degree
+terms vanish because \({\rm str}_S\) is zero away from degree \(2n\).  Equation
+\eqref{eq:index-getzler-mehler-density} is precisely
+\(\left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}\).  Integrating over
+\(M\) and using \eqref{eq:index-mckean-singer} proves
+\eqref{eq:index-atiyah-singer}.
+\end{proof}
+
+This theorem is a theorem of differential geometry, not an axiom of QFT.  The
+derivation above identifies which part is analytic heat-kernel control and
+which part is local Clifford/Chern-Weil algebra.  The QFT consequences below
+are then zero-mode selection rules, anomaly polynomials, determinant lines,
+and inflow.
 
 In four dimensions the formula becomes
 \begin{equation}

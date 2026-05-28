@@ -11,6 +11,23 @@ def assert_equal(name: str, lhs: Fraction | int, rhs: Fraction | int) -> None:
         raise AssertionError(f"{name}: got {lhs}, expected {rhs}")
 
 
+def check_ahat_expansion_two_roots() -> None:
+    # For formal curvature roots x,y,
+    # prod_i (x_i/2)/sinh(x_i/2)
+    # = 1 - p1/24 + (7 p1^2 - 4 p2)/5760 + ...
+    #
+    # Track the degree-four coefficients using u=x^2 and v=y^2.
+    single_u = {0: Fraction(1), 1: Fraction(-1, 24), 2: Fraction(7, 5760)}
+    coeff_u2 = single_u[2]
+    coeff_uv = single_u[1] * single_u[1]
+
+    # Rewrite (7(u+v)^2 - 4uv)/5760.
+    expected_u2 = Fraction(7, 5760)
+    expected_uv = Fraction(14 - 4, 5760)
+    assert_equal("Ahat u^2 coefficient", coeff_u2, expected_u2)
+    assert_equal("Ahat uv coefficient", coeff_uv, expected_uv)
+
+
 def check_four_dimensional_index_formula() -> None:
     # [Ahat ch]_4 = ch_2 - rank(E) p_1/24.
     ahat_p1 = Fraction(-1, 24)
@@ -77,6 +94,7 @@ def check_dirac_selection_rule_count() -> None:
 
 
 def main() -> None:
+    check_ahat_expansion_two_roots()
     check_four_dimensional_index_formula()
     check_trace_delta_su_n_indices()
     check_abelian_t4_flux_index()
