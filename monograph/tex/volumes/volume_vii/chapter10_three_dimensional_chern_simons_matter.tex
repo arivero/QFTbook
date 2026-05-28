@@ -3,15 +3,17 @@
 
 \ConventionsMixed
 
-In three dimensions, supersymmetric gauge theories combine topological gauge
-terms, parity anomalies, monopole operators, and matter dynamics.  This
-chapter treats them as field-theoretic data with specified definitions and
-duality maps.  The first part fixes the \(3D\) \(\mathcal N=2\)
-Chern--Simons--matter conventions used by the localization chapter.  The
-second part gives the Aharony--Bergman--Jafferis--Maldacena theory as a
-worked example with gauge group, levels, matter, superpotential, conformal
-locus, moduli space, monopole enhancement boundary, and \(S^3\)
-localization matrix model all stated in the same normalization.
+In three dimensions, Chern--Simons--matter theories combine topological gauge
+terms, parity anomalies, monopole operators, and matter dynamics.  This chapter
+treats them as field-theoretic data with specified definitions and duality
+maps.  The first part fixes the local Chern--Simons and light-cone conventions,
+including the vector-model large-\(N\) framework in which the gauge action
+becomes quadratic.  The second part fixes the \(3D\) \(\mathcal N=2\)
+Chern--Simons--matter conventions used by the localization chapter.  The final
+part gives the Aharony--Bergman--Jafferis--Maldacena theory as a worked example
+with gauge group, levels, matter, superpotential, conformal locus, moduli
+space, monopole enhancement boundary, and \(S^3\) localization matrix model all
+stated in the same normalization.
 
 \section{Three-Dimensional Supersymmetry}
 
@@ -77,6 +79,212 @@ On a closed manifold, the field equation of pure Chern--Simons theory is
 \]
 On a manifold with boundary, a boundary condition or boundary degrees of
 freedom are part of the gauge-theory specification.
+
+\section{Conformal Chern--Simons--Matter Charts and Light-Cone Gauge}
+\label{sec:cs-matter-light-cone-vector-models}
+
+Chern--Simons--matter theories give a class of three-dimensional conformal
+fixed points whose perturbative expansion is not organized by a dimensionful
+Yang--Mills coupling.  The level \(k\) is quantized, while the perturbative
+coordinate is a dimensionless parameter such as \(1/k\), or in vector models
+the 't Hooft coordinate
+\begin{equation}
+  \lambda:=\frac{N}{k_{\rm eff}},
+  \label{eq:cs-vector-thooft-coordinate}
+\end{equation}
+where \(k_{\rm eff}\) includes the parity-anomaly and regulator shift specified
+with the theory.  This statement is not a claim that every Lagrangian written
+with massless matter is automatically a conformal theory.  Relevant
+deformations, such as scalar and fermion masses, must be tuned to the fixed
+point, and scalar self-interactions must be placed at their fixed-point values
+when they are present.  Once these data have been fixed, correlation functions
+can be computed in ordinary diagrammatic perturbation theory around the
+conformal point.
+
+The light-cone gauge makes a special feature of Chern--Simons theory explicit.
+Use
+\begin{equation}
+  x^\pm=\frac{x^0\pm x^1}{\sqrt2},\qquad x^\perp=x^2,\qquad
+  ds^2=-2\,dx^+dx^-+(dx^\perp)^2,
+  \label{eq:cs-light-cone-coordinates}
+\end{equation}
+and choose the orientation convention
+\(\epsilon^{+-\perp}=+1\).  The gauge condition is
+\begin{equation}
+  A_-=0.
+  \label{eq:cs-light-cone-gauge}
+\end{equation}
+The cubic Chern--Simons vertex then vanishes because every wedge product of
+three one-forms in three dimensions contains one \(dx^-\).  Thus the pure gauge
+part is first order and quadratic:
+\begin{equation}
+  S_{\rm CS}\big|_{A_-=0}
+  =
+  \frac{k}{2\pi}
+  \int d^3x\,\operatorname{Tr}\!\left(A_+\partial_-A_\perp\right),
+  \label{eq:cs-light-cone-quadratic-action}
+\end{equation}
+up to boundary terms and zero-mode data.
+
+\begin{proposition}[Quadratic Chern--Simons action in light-cone gauge]
+\label{prop:cs-light-cone-quadratic-action}
+With the conventions
+\eqref{eq:cs-light-cone-coordinates}--\eqref{eq:cs-light-cone-gauge}, the
+non-abelian cubic term in \(S_{\rm CS}\) vanishes and the quadratic part reduces
+to \eqref{eq:cs-light-cone-quadratic-action}.
+\end{proposition}
+
+\begin{proof}
+The component form of the local Chern--Simons density is
+\[
+  \frac{k}{4\pi}\epsilon^{\mu\nu\rho}
+  \operatorname{Tr}\!\left(
+    A_\mu\partial_\nu A_\rho
+    +\frac23 A_\mu A_\nu A_\rho
+  \right).
+\]
+The cubic term is antisymmetric in the three spacetime labels and therefore
+contains one \(A_-\); it is zero after imposing \(A_-=0\).  The remaining
+quadratic terms with no \(A_-\) are
+\[
+  \frac{k}{4\pi}
+  \operatorname{Tr}\!\left(
+    A_+\partial_-A_\perp
+    -A_\perp\partial_-A_+
+  \right),
+\]
+because \(\epsilon^{+-\perp}=+1\) and
+\(\epsilon^{\perp-+}=-1\).  Integrating the second term by parts in \(x^-\)
+and dropping the boundary term gives twice
+\(\operatorname{Tr}(A_+\partial_-A_\perp)\), proving
+\eqref{eq:cs-light-cone-quadratic-action}.
+\end{proof}
+
+Let matter in a representation \(R\) of \(G\) define the gauge current
+\[
+  J^{\mu a}:=-\frac{\delta S_{\rm matter}}{\delta A_\mu^a}
+\]
+in the same connection normalization as above.  At finite light-front
+regulator, remove the \(\partial_-\) zero mode or keep it as a separate
+Gauss-law degree of freedom.  On the zero-mode-free subspace write
+\(\partial_-^{-1}\) for the inverse with the declared prescription.
+
+\begin{proposition}[Light-cone Chern--Simons current kernel]
+\label{prop:cs-light-cone-current-kernel}
+At finite regulator, the light-cone-gauge integration over \(A_+\) and
+\(A_\perp\) is an ordinary Gaussian integration on the nonzero-mode subspace.
+With the source convention
+\[
+  S[A_+,A_\perp;J]
+  =
+  \int d^3x\left[
+  \frac{k}{2\pi}A_+^a\partial_-A_\perp^a
+  -A_+^aJ^{+a}-A_\perp^aJ^{\perp a}\right],
+  \label{eq:cs-light-cone-source-action}
+\]
+substitution of the classical solution gives the effective current interaction
+\begin{equation}
+  S_{\rm eff}[J]
+  =
+  -\frac{2\pi}{k}
+  \int d^3x\,
+  J^{+a}\,\partial_-^{-1}J^{\perp a},
+  \label{eq:cs-light-cone-effective-current}
+\end{equation}
+with the ordering and zero-mode prescription displayed.
+\end{proposition}
+
+\begin{proof}
+Set \(a=k/(2\pi)\) and \(D=\partial_-\).  The equations following from
+\eqref{eq:cs-light-cone-source-action} are
+\[
+  aD A_\perp^a=J^{+a},\qquad
+  aD A_+^a=-J^{\perp a},
+\]
+where the second equation uses integration by parts in \(x^-\).  Hence
+\[
+  A_\perp^a=a^{-1}D^{-1}J^{+a},
+  \qquad
+  A_+^a=-a^{-1}D^{-1}J^{\perp a}.
+\]
+Substituting into the action, the bilinear term cancels the \(A_+J^+\) source
+term and leaves
+\[
+  -A_\perp^aJ^{\perp a}
+  =
+  -a^{-1}(D^{-1}J^{+a})J^{\perp a}.
+\]
+This is \eqref{eq:cs-light-cone-effective-current}.  The calculation is a
+finite-dimensional completion of the square after the regulator has replaced
+the nonzero-mode function space by a finite or Hilbert-space Gaussian problem.
+The zero mode is not determined by this inverse; it is the global Gauss-law
+constraint and must be supplied as part of the light-front regulator.
+\end{proof}
+
+This is the three-dimensional analogue of the simplification used in the
+two-dimensional large-\(N\) 't Hooft model of
+Chapter~\ref{ch:large-n-two-dimensional-qcd-light-front}.  The kernel is
+\(\partial_-^{-1}\), not \((-\partial_-^2)^{-1}\), because the Chern--Simons
+kinetic operator is first order rather than Yang--Mills second order.  In both
+cases the light-front gauge field has no transverse propagating polarization
+and imposes a nonlocal current interaction after the constraint is solved.
+
+\begin{definition}[Planar Chern--Simons vector-model datum]
+\label{def:planar-cs-vector-model-datum}
+A planar Chern--Simons vector-model datum consists of:
+\begin{enumerate}[label=(\roman*)]
+\item gauge group \(U(N)\) or \(SU(N)\), global form, spin structure, framing
+  convention, and effective level \(k_{\rm eff}\);
+\item fundamental matter fields, such as scalars or Dirac fermions, with all
+  relevant deformations tuned to the conformal point;
+\item a parity-anomaly regulator fixing \(k_{\rm eff}\) and all background
+  Chern--Simons contact terms;
+\item a large-\(N\) limit with \(\lambda=N/k_{\rm eff}\) fixed;
+\item a light-front or Euclidean regulator specifying zero modes,
+  \(\partial_-^{-1}\), and the renormalized gauge-invariant singlet
+  operators whose correlators are computed.
+\end{enumerate}
+\end{definition}
+
+For fundamental matter the color algebra uses the same trace-delta
+normalization as the QCD chapters,
+\begin{equation}
+  (t^a)^i{}_j(t^a)^k{}_\ell
+  =
+  \delta^i{}_\ell\delta^k{}_j
+  -
+  \frac1N\delta^i{}_j\delta^k{}_\ell .
+  \label{eq:cs-vector-fundamental-completeness}
+\end{equation}
+Consequently the interaction
+\eqref{eq:cs-light-cone-effective-current} preserves the single color trace at
+leading order, while the second term in
+\eqref{eq:cs-vector-fundamental-completeness} is suppressed by \(1/N\) in
+connected singlet correlators.  The trace-preserving leading contraction is the
+planar color algebra behind the bilocal closure of the two-dimensional
+'t Hooft model and the singlet light-front closure used here.
+
+\begin{controlledapproximation}[Planar light-front closure]
+\label{ca:planar-cs-vector-light-front-closure}
+In the datum of Definition~\ref{def:planar-cs-vector-model-datum}, the
+large-\(N\) light-front perturbation series for single-trace singlet
+correlators is controlled by planar ladders and rainbow self-energies built
+from the kernel \eqref{eq:cs-light-cone-effective-current}.  The closure is a
+statement about the declared regulator and the singlet sector: it gives
+integral equations for exact planar two- and three-point functions once the
+mass and contact terms have been tuned to the conformal point.  It is not a
+proof of nonperturbative existence of the continuum theory and does not identify
+colored fundamental fields as asymptotic states.
+\end{controlledapproximation}
+
+The useful lesson for the monograph is conceptual as well as computational.
+Chern--Simons vector models are conformal gauge theories in which conventional
+diagrams can be evaluated at the fixed point, and light-cone gauge converts the
+topological gauge field into an exactly solvable constraint kernel.  This makes
+them a higher-dimensional counterpart of the 't Hooft model: not identical in
+dynamics, because the kernel, spin, parity anomaly, and operator spectrum are
+different, but similar in the precise sense that the gauge field can be
+integrated out before solving the planar singlet equations.
 
 \section{Supersymmetric Chern--Simons--Matter Action}
 

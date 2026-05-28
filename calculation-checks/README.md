@@ -238,6 +238,12 @@ Current checks:
   extraction of the charged velocity from flux extrema, the half-line Fourier
   transform of an asymptotic worldline current, and the equality between the
   worldline-current denominator and the momentum-space eikonal denominator.
+- `cs_matter_lightfront_checks.py`: exact coefficient checks for the
+  three-dimensional Chern--Simons--matter light-cone-gauge section, including
+  the factor of two in the quadratic light-cone Chern--Simons action, the
+  first-order Gaussian source sign, the trace-delta large-\(N\) color
+  contraction, and the rational part of the planar exchange coefficient
+  \(N(2/k_{\rm eff})=2\lambda\).
 - `chpt_nlo_checks.py`: finite arithmetic checks for the NLO chiral
   perturbation theory section, including the ten \(L_1,\ldots,L_{10}\)
   Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the
