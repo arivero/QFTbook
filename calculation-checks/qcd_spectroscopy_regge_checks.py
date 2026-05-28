@@ -219,6 +219,29 @@ def check_reggeon_diffusion_and_agk_moments() -> None:
             assert_equal(f"eikonal AGK factorial moment r={r}, m={m}", coefficient, expected)
 
 
+def check_two_reggeon_cut_bookkeeping() -> None:
+    delta = Fraction(2, 9)
+    alpha_prime = Fraction(5, 13)
+    q_sq = Fraction(7, 11)
+    t = -q_sq
+
+    two_reggeon_exponent = 2 * delta - alpha_prime * q_sq / 2
+    two_reggeon_cut = 2 * delta + alpha_prime * t / 2
+    assert_equal("two-Reggeon cut exponent", two_reggeon_exponent, two_reggeon_cut)
+
+    # Completing the square gives k^2+(q-k)^2=2(k-q/2)^2+q^2/2.
+    k = Fraction(17, 19)
+    q = Fraction(3, 5)
+    left = k**2 + (q - k) ** 2
+    shifted = 2 * (k - q / 2) ** 2 + q**2 / 2
+    assert_equal("two-Reggeon square completion", left, shifted)
+
+    for n in range(2, 8):
+        exponent = n * delta - alpha_prime * q_sq / n
+        trajectory_form = n * delta + alpha_prime * t / n
+        assert_equal(f"n-Reggeon cut slope n={n}", exponent, trajectory_form)
+
+
 def check_luscher_kmatrix_pole_algebra() -> None:
     # From delta + phi = n*pi, cot(delta) = -cot(phi).  With
     # K^{-1}=rho*cot(delta), finite-volume levels therefore sample
@@ -731,6 +754,7 @@ def main() -> None:
     check_rotating_string_slope_coefficient()
     check_triple_regge_exponents_and_eikonal_poisson()
     check_reggeon_diffusion_and_agk_moments()
+    check_two_reggeon_cut_bookkeeping()
     check_luscher_kmatrix_pole_algebra()
     check_swave_luscher_zeta_normalization()
     check_pipi_crossing_and_roy_subtractions()

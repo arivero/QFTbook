@@ -833,7 +833,9 @@ Current checks:
   coefficients, the rational coefficient in the classical open-flux-tube
   Regge slope, triple-Regge exponent bookkeeping, eikonal Poisson
   normalization, free-Reggeon trajectory signs, the eikonal AGK factorial
-  moment cancellation, the \(S\)-wave Luescher zeta normalization, unequal-mass
+  moment cancellation, the two-Reggeon cut intercept/slope bookkeeping and
+  \(n\)-Reggeon free-cut slope law, the \(S\)-wave Luescher zeta normalization,
+  unequal-mass
   Roy--Steiner kinematics and partial-wave normalization, GEVP basis
   covariance for finite-volume spectral extraction, shallow-bound-state
   effective-range pole and residue algebra, the \(\pi\pi\)
