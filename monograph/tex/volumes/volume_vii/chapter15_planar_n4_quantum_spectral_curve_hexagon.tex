@@ -2526,6 +2526,157 @@ description this coefficient is reproduced by the BES equation and by the
 large-spin limit of the asymptotic Bethe equations.
 \end{proof}
 
+\subsection{Pentagon Channel Expansion as a Defect Spectral Resolution}
+
+The pentagon OPE used for null polygonal Wilson loops is a spectral
+resolution in the defect Hilbert space of the null-cusp flux tube.  The word
+``pentagon'' does not replace the Hilbert-space statement: it names the
+transition amplitude between two adjacent channel decompositions of the same
+renormalized Wilson-line observable.
+
+Fix a channel of a null polygon whose conformal cross-ratios are parametrized
+by \((\tau,\sigma,\phi)\).  Here \(\tau\) is the Euclidean propagation length
+in the chosen flux-tube channel, \(\sigma\) is the translation coordinate
+along the defect, and \(\phi\) is the angle conjugate to the transverse
+rotation charge.  The channel evolution operator is
+\[
+  U(\tau,\sigma,\phi)
+  =
+  \exp\{-\tau H_{\rm def}
+        +\ii\sigma P_{\rm def}
+        +\ii\phi J_{\rm def}\},
+  \label{eq:n4-flux-tube-channel-evolution}
+\]
+where \(H_{\rm def}\), \(P_{\rm def}\), and \(J_{\rm def}\) are the energy,
+longitudinal momentum, and transverse angular-momentum generators of
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum}.  Let
+\(\langle\mathcal P_{\rm R}|\) and \(|\mathcal P_{\rm L}\rangle\) denote the
+right and left boundary states prepared by the adjacent Wilson-line segments
+in this channel, after the local cusp and edge renormalizations have been
+fixed.  The channel contribution is the matrix element
+\[
+  \mathcal W_{\rm ch}(\tau,\sigma,\phi)
+  =
+  \langle\mathcal P_{\rm R}|
+  U(\tau,\sigma,\phi)
+  |\mathcal P_{\rm L}\rangle .
+  \label{eq:n4-pentagon-channel-matrix-element}
+\]
+
+\begin{proposition}[Pentagon OPE from the defect spectral resolution]
+\label{prop:pentagon-ope-defect-resolution}
+Assume the planar Wilson-line defect datum of
+Definition~\ref{def:planar-n4-wilson-line-flux-tube-datum} and assume that,
+in the channel under consideration, the identity on \(\mathcal H_{\rm def}\)
+admits the generalized multiparticle resolution
+\[
+  \mathbf 1_{\rm def}
+  =
+  |0\rangle\langle0|
+  +
+  \sum_{k\geq1}
+  \sum_{a_1,\ldots,a_k}
+  \frac{1}{|\operatorname{Aut}(a_1,\ldots,a_k)|}
+  \int
+  \prod_{r=1}^k
+  \frac{\dd u_r}{2\pi}\,\mu_{a_r}(u_r)\,
+  |\mathbf a,\mathbf u\rangle\langle\mathbf a,\mathbf u| ,
+  \label{eq:n4-flux-tube-identity-resolution}
+\]
+where \(a_r\) labels the one-particle species, \(u_r\) is its rapidity
+coordinate, \(\mu_a(u)\) is the one-particle spectral measure in this
+normalization, and
+\(|\operatorname{Aut}(a_1,\ldots,a_k)|\) is the product of factorials of the
+multiplicities of identical species.  Suppose further that these states
+diagonalize \(H_{\rm def}\), \(P_{\rm def}\), and \(J_{\rm def}\) additively:
+\[
+  E(\mathbf a,\mathbf u)=\sum_{r=1}^kE_{a_r}(u_r),\quad
+  p(\mathbf a,\mathbf u)=\sum_{r=1}^kp_{a_r}(u_r),\quad
+  m(\mathbf a)=\sum_{r=1}^km_{a_r}.
+\]
+Then \eqref{eq:n4-pentagon-channel-matrix-element} has the expansion
+\begin{align}
+  \mathcal W_{\rm ch}(\tau,\sigma,\phi)
+  &=
+  \langle\mathcal P_{\rm R}|0\rangle
+  \langle0|\mathcal P_{\rm L}\rangle
+  \notag\\
+  &\quad+
+  \sum_{k\geq1}
+  \sum_{a_1,\ldots,a_k}
+  \frac{1}{|\operatorname{Aut}(a_1,\ldots,a_k)|}
+  \int
+  \prod_{r=1}^k
+  \frac{\dd u_r}{2\pi}\,\mu_{a_r}(u_r)\,
+  \notag\\
+  &\qquad\times
+  \exp\!\left[
+    -\tau\sum_{r=1}^kE_{a_r}(u_r)
+    +\ii\sigma\sum_{r=1}^kp_{a_r}(u_r)
+    +\ii\phi\sum_{r=1}^km_{a_r}
+  \right]
+  \notag\\
+  &\qquad\times
+  P_{\rm R}(\mathbf a,\mathbf u)\,
+  P_{\rm L}(\mathbf a,\mathbf u)^* ,
+  \label{eq:n4-pentagon-ope-spectral-form}
+\end{align}
+where
+\[
+  P_{\rm R}(\mathbf a,\mathbf u)
+  =
+  \langle\mathcal P_{\rm R}|\mathbf a,\mathbf u\rangle,
+  \qquad
+  P_{\rm L}(\mathbf a,\mathbf u)
+  =
+  \langle\mathcal P_{\rm L}|\mathbf a,\mathbf u\rangle .
+\]
+\end{proposition}
+
+\begin{proof}
+Insert \eqref{eq:n4-flux-tube-identity-resolution} between
+\(\langle\mathcal P_{\rm R}|\) and
+\(U(\tau,\sigma,\phi)|\mathcal P_{\rm L}\rangle\) in
+\eqref{eq:n4-pentagon-channel-matrix-element}.  On the vacuum term,
+\(H_{\rm def}\), \(P_{\rm def}\), and \(J_{\rm def}\) give the chosen vacuum
+normalization.  On a multiparticle eigenstate, the assumed additivity gives
+\[
+  U(\tau,\sigma,\phi)|\mathbf a,\mathbf u\rangle
+  =
+  \exp\!\left[
+    -\tau\sum_rE_{a_r}(u_r)
+    +\ii\sigma\sum_rp_{a_r}(u_r)
+    +\ii\phi\sum_rm_{a_r}
+  \right]
+  |\mathbf a,\mathbf u\rangle .
+\]
+The overlap with the right and left boundary states gives the two transition
+amplitudes displayed in
+\eqref{eq:n4-pentagon-ope-spectral-form}.  The automorphism factor is the
+standard quotient by permutations of indistinguishable equal-species
+particles; without it, the same unordered spectral state would be integrated
+once for each such permutation.  This proves the expansion.
+\end{proof}
+
+In the integrability solution, the overlaps
+\(P_{\rm R}\) and \(P_{\rm L}\) are encoded by elementary pentagon transition
+functions.  For a diagonal scalar component of two ordered one-particle
+excitations in a fixed rapidity normalization, Watson consistency is the
+identity
+\[
+  P_{a|b}(u|v)
+  =
+  S_{ab}(u,v)\,P_{b|a}(v|u),
+  \label{eq:n4-pentagon-watson-diagonal}
+\]
+with \(S_{ab}\) the flux-tube scattering phase or matrix element in the same
+rapidity normalization.  Mirror moves relate a particle crossing an edge of
+the pentagon to an excitation in the adjacent channel.  These relations are
+powerful constraints, but they are not substitutes for the spectral datum:
+the species, rapidity sheets, measures, transition normalizations, and
+renormalized Wilson-line observable must all be fixed before the formula has
+a mathematical meaning.
+
 This defect datum is the \(\mathcal N=4\) member of the broader
 gauge-theory family discussed in
 Section~\ref{sec:pure-sym-protected-spectral-data}: the protected local

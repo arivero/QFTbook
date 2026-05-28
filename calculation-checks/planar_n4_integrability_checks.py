@@ -3635,6 +3635,33 @@ def check_bremsstrahlung_displacement_cusp_normalization() -> None:
         raise AssertionError("C_D=12 B normalization failed")
 
 
+def check_pentagon_ope_resolution_bookkeeping() -> None:
+    """Check the symmetry and additive-charge factors in the pentagon channel."""
+
+    species = ["F", "F", "phi", "psi"]
+    multiplicities = Counter(species)
+    automorphism_factor = math.prod(math.factorial(count) for count in multiplicities.values())
+    labelled_permutations = math.factorial(len(species))
+    unordered_configurations = labelled_permutations // automorphism_factor
+    if automorphism_factor != 2:
+        raise AssertionError("pentagon automorphism factor failed")
+    if unordered_configurations != 12:
+        raise AssertionError("pentagon unordered multiplicity failed")
+
+    # The defect evolution factor is exp[-tau sum E + i sigma sum p + i phi sum m].
+    # This exact integer example checks the additivity used in the spectral
+    # insertion before any theory-specific dispersion relation is supplied.
+    energies = [2, 3, 5, 7]
+    momenta = [1, -2, 4, 0]
+    transverse_spins = [1, 1, -2, 0]
+    if sum(energies) != 17:
+        raise AssertionError("pentagon energy additivity failed")
+    if sum(momenta) != 3:
+        raise AssertionError("pentagon momentum additivity failed")
+    if sum(transverse_spins) != 0:
+        raise AssertionError("pentagon spin additivity failed")
+
+
 def check_bremsstrahlung_weak_series() -> None:
     # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
     # Verify the first four coefficients using exact rational series division.
@@ -5005,6 +5032,7 @@ def main() -> None:
     check_hexagon_bridge_lengths_and_phase()
     check_hexagon_scalar_watson_factor()
     check_bremsstrahlung_displacement_cusp_normalization()
+    check_pentagon_ope_resolution_bookkeeping()
     check_bremsstrahlung_weak_series()
     check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()
