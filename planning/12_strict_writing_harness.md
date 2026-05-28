@@ -154,6 +154,30 @@ equivalence relation and the invariant object.  If a formal expression is used
 as a coordinate on a future construction, state what mathematical object the
 coordinate is intended to represent and what remains to be proved.
 
+## Positive Scope Prose Rule
+
+Reader-facing prose must state what an object is, what data it uses, and what
+claim it supports before discussing exclusions.  Backward corrective sentences
+such as "This is not ...", "It is not, by itself, ...", "should not be read as
+...", "not a substitute for ...", and "not merely ..." are forbidden in the
+compiled TeX volumes.  Rewrite them as positive scope statements: name the
+construction, theorem, datum, or approximation that is actually present, then
+state the additional data required for any stronger conclusion.
+
+Precise mathematical negation is allowed when it is the content of the claim:
+for example a vanishing statement, a nonexistence theorem, a counterexample, a
+failure of a hypothesis, or a definition of a complement.  The forbidden form
+is the prose afterthought that corrects a possible misconception instead of
+declaring the scope directly.
+
+The local gate is
+
+```bash
+tools/audit_negative_scope_prose.py
+```
+
+and the full build runs it before LaTeX.
+
 ## Symbol Rule
 
 Every symbol must be introduced with its type before load-bearing use. If a

@@ -120,8 +120,8 @@ The subtraction point is nonexceptional: no nonempty proper subset of the
 external momenta has vanishing total momentum.  The mass coordinate of this
 chart is fixed separately by the endpoint condition that the infrared
 two-point function be massless.  Thus the displayed \(\lambda(\mu)\) is a
-coordinate on the massless endpoint slice, not a substitute for the mass
-tuning.
+coordinate on the massless endpoint slice; the mass tuning is the separate
+condition that places the trajectory on that slice.
 
 If several schemes are present, the coordinates of this chart will be denoted
 \(\lambda_{\rm MOM}(\mu)\) and \(Z_{\rm MOM}(\mu)\); the lighter notation
@@ -271,11 +271,10 @@ constructs a formal power series
 whose coefficients are determined recursively from the beta function expanded
 as a formal series in \(\lambda\) and \(\epsilon\).  At any finite loop order,
 one obtains a truncated polynomial vector field and a zero whose residual in
-the next omitted order is of higher order in \(\epsilon\).  This is not, by
-itself, a proof that an exact RG flow or a nonperturbative continuum QFT has a
-fixed point at any fixed positive value of \(\epsilon\).  Such an existence
-statement would require additional input: for example a constructive
-Wilsonian or lattice continuum-limit theorem, or a summability theorem for the
+the next omitted order is of higher order in \(\epsilon\).  An exact RG flow
+or a nonperturbative continuum QFT with a fixed point at fixed positive
+\(\epsilon\) requires additional input: for example a constructive Wilsonian
+or lattice continuum-limit theorem, or a summability theorem for the
 perturbative data together with a proof that the summed correlators satisfy
 the required locality, positivity, and regularity properties.  In this
 chapter, unless a separate nonperturbative construction is explicitly stated,
@@ -316,15 +315,14 @@ formal branch \(u(\epsilon)=u_0+O(\epsilon)\) in a neighborhood of \(u_0\).
 Together with the Gaussian branch \(\lambda=0\), this exhausts the small
 one-coupling branches visible in this local chart.
 
-This is not a global uniqueness theorem in scalar theory space.  Other
-perturbative fixed-point constructions arise after changing the chart or the
-field content: \(O(N)\)-vector Wilson--Fisher fixed points, multicritical
-scalar fixed points such as the tricritical \(\phi^6\) branch near
-\(D=3-\epsilon\), multi-coupling gauge or gauge--Yukawa fixed points of
-Banks--Zaks type, and decoupled product fixed points.  These examples are
-different local problems; they do not contradict the local uniqueness just
-stated, and the local statement does not classify nonperturbative fixed
-points outside the small-coupling neighborhood.
+The scope is local uniqueness in the one-component \(\mathbb Z_2\)-even
+small-coupling scalar chart.  Other perturbative fixed-point constructions
+belong to different charts or field contents: \(O(N)\)-vector
+Wilson--Fisher fixed points, multicritical scalar fixed points such as the
+tricritical \(\phi^6\) branch near \(D=3-\epsilon\), multi-coupling gauge or
+gauge--Yukawa fixed points of Banks--Zaks type, and decoupled product fixed
+points.  Nonperturbative fixed points outside the small-coupling neighborhood
+require separate construction.
 \end{remark}
 
 \begin{figure}[H]
@@ -2219,9 +2217,9 @@ microscopic equality of actions.
 \label{sec:dangerously-irrelevant-coordinates}
 
 Irrelevance is a statement about the RG endpoint in a specified coordinate
-chart.  It is not, by itself, a license to set the corresponding coordinate
-to zero inside every observable before taking the physical limit.  The precise
-distinction is as follows.
+chart.  Setting the corresponding coordinate to zero inside an observable is a
+separate limiting operation whose validity depends on the physical limit and
+on the observable topology.  The precise distinction is as follows.
 
 \begin{definition}[Dangerously irrelevant coordinate for an observable]
 Fix a finite RG chart near a fixed point, with relevant coordinates \(u^A\)
