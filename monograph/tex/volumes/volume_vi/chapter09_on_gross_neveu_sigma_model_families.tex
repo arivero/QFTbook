@@ -505,6 +505,164 @@ projective family has the same dimensional-transmutation structure as the
 round \(O(N)\) model.  What differs is the global topology, the \(U(1)\)
 quotient, the \(\theta\)-angle, and the particle multiplet structure.
 
+\begin{proposition}[Large-\(N\) induced gauge-field kernel]
+\label{prop:cpn-large-n-induced-gauge-kernel}
+Work at \(\theta=0\), in the translation-invariant large-\(N\) saddle of
+\eqref{eq:cpn-large-n-gap}, and expand the effective action around the
+constant mass \(m>0\) and \(A_\mu=0\).  The one-loop quadratic term for the
+auxiliary \(U(1)\) field has the transverse form
+\begin{equation}
+  \Gamma^{(2)}[A]
+  =
+  \frac{N}{2}\int\frac{\dd^2p}{(2\pi)^2}\,
+  A_\mu(-p)
+  \left[
+    (p^2\delta_{\mu\nu}-p_\mu p_\nu)\,
+    \Pi(p^2)
+  \right]
+  A_\nu(p),
+  \label{eq:cpn-large-n-gauge-kernel}
+\end{equation}
+where
+\begin{equation}
+  \Pi(p^2)
+  =
+  \frac1{4\pi}\int_0^1\dd x\,
+  \frac{(1-2x)^2}{m^2+x(1-x)p^2}.
+  \label{eq:cpn-large-n-polarization-scalar}
+\end{equation}
+For \(|p|\ll m\),
+\begin{equation}
+  \Pi(p^2)
+  =
+  \frac1{12\pi m^2}
+  -\frac{p^2}{120\pi m^4}
+  +O(p^4/m^6).
+  \label{eq:cpn-large-n-polarization-expansion}
+\end{equation}
+Equivalently, the leading local term in the low-momentum effective action is
+\begin{equation}
+  \Gamma_{\rm loc}[A]
+  =
+  \frac{N}{48\pi m^2}\int\dd^2x\,F_{\mu\nu}F_{\mu\nu}
+  =
+  \frac{N}{24\pi m^2}\int\dd^2x\,F_{12}^2
+  +O(\partial^4/m^4).
+  \label{eq:cpn-large-n-induced-maxwell}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+At fixed \(A\), the \(z\)-integral is a Gaussian over \(N\) complex fields.
+The quadratic term in the logarithm of the covariant operator
+\(-D_\mu D_\mu+m^2\), including the seagull term from \(A_\mu A_\mu z^\dagger
+z\), gives
+\[
+  \Pi_{\mu\nu}(p)
+  =
+  N\int\frac{\dd^2k}{(2\pi)^2}
+  \left[
+    \frac{(2k+p)_\mu(2k+p)_\nu}
+    {(k^2+m^2)((k+p)^2+m^2)}
+    -
+    \frac{2\delta_{\mu\nu}}{k^2+m^2}
+  \right],
+\]
+after the same ultraviolet regulator and subtraction convention are used in
+both terms.  Introduce a Feynman parameter, shift \(q=k+xp\), and set
+\[
+  M_x^2=m^2+x(1-x)p^2 .
+\]
+The odd terms in \(q\) vanish.  Rotational invariance gives
+\[
+  \int\frac{\dd^2q}{(2\pi)^2}
+  \frac{q_\mu q_\nu}{(q^2+M_x^2)^2}
+  =
+  \frac{\delta_{\mu\nu}}2
+  \int\frac{\dd^2q}{(2\pi)^2}
+  \frac{q^2}{(q^2+M_x^2)^2}.
+\]
+The logarithmic divergence in this expression cancels exactly against the
+seagull term after writing the latter with the same Feynman parameter.  The
+remaining finite tensor is transverse:
+\[
+  \Pi_{\mu\nu}(p)
+  =
+  N(p^2\delta_{\mu\nu}-p_\mu p_\nu)
+  \frac1{4\pi}\int_0^1\dd x\,
+  \frac{(1-2x)^2}{m^2+x(1-x)p^2}.
+\]
+This is \eqref{eq:cpn-large-n-gauge-kernel} and
+\eqref{eq:cpn-large-n-polarization-scalar}.  Expanding the denominator gives
+\[
+  \int_0^1(1-2x)^2\dd x=\frac13,\qquad
+  \int_0^1(1-2x)^2x(1-x)\dd x=\frac1{30},
+\]
+which proves \eqref{eq:cpn-large-n-polarization-expansion}.  Finally, in two
+Euclidean dimensions,
+\[
+  \frac12 A_\mu(p)(p^2\delta_{\mu\nu}-p_\mu p_\nu)A_\nu(-p)
+  =
+  \frac14 F_{\mu\nu}(p)F_{\mu\nu}(-p),
+\]
+and \(F_{\mu\nu}F_{\mu\nu}=2F_{12}^2\), giving
+\eqref{eq:cpn-large-n-induced-maxwell}.
+\end{proof}
+
+\begin{proposition}[Linear potential in the induced two-dimensional gauge sector]
+\label{prop:cpn-large-n-linear-u1-potential}
+Keep only the leading local Maxwell term
+\[
+  \frac1{4e_{\rm eff}^2}\int F_{\mu\nu}F_{\mu\nu},
+  \qquad
+  e_{\rm eff}^2=\frac{12\pi m^2}{N},
+  \label{eq:cpn-large-n-effective-charge}
+\]
+obtained from \eqref{eq:cpn-large-n-induced-maxwell}.  In Lorentzian
+signature on the line, two static external \(U(1)\) sources of charges
+\(+Q\) and \(-Q\), separated by distance \(R\), have electric-field energy
+\begin{equation}
+  V(R)=\frac{e_{\rm eff}^2Q^2}{2}R
+  =
+  \frac{6\pi m^2Q^2}{N}R .
+  \label{eq:cpn-large-n-linear-potential}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Choose \(A_1=0\).  Gauss' law for the Hamiltonian associated with
+\eqref{eq:cpn-large-n-effective-charge} is
+\[
+  \partial_x E(x)=e_{\rm eff}^2Q\bigl(\delta(x)-\delta(x-R)\bigr).
+\]
+With vanishing field outside the interval between the charges, the solution is
+\[
+  E(x)=e_{\rm eff}^2Q,\qquad 0<x<R,
+\]
+and \(E(x)=0\) outside.  The Hamiltonian density is
+\(\frac1{2e_{\rm eff}^2}E^2\), hence
+\[
+  V(R)=\int_0^R\dd x\,\frac{(e_{\rm eff}^2Q)^2}{2e_{\rm eff}^2}
+  =
+  \frac{e_{\rm eff}^2Q^2}{2}R.
+\]
+Substitution of \eqref{eq:cpn-large-n-effective-charge} gives
+\eqref{eq:cpn-large-n-linear-potential}.
+\end{proof}
+
+\begin{controlledapproximation}[Meaning of the induced-gauge large-\(N\) result]
+\label{ca:cpn-large-n-induced-gauge-status}
+Propositions~\ref{prop:cpn-large-n-induced-gauge-kernel} and
+\ref{prop:cpn-large-n-linear-u1-potential} are statements about the
+large-\(N\), low-momentum expansion around the massive saddle of the
+regulated projective path integral.  They explain why the quotient \(U(1)\)
+coordinate cannot be discarded after quantization, and why the charged
+homogeneous variables \(z\) are not gauge-invariant particle states of the
+projective model.  They do not prove factorized scattering for the full
+\(\mathbb{CP}^{N-1}\) local QFT, and they do not decide the \(\theta=\pi\)
+massless endpoint.
+\end{controlledapproximation}
+
 \subsection{The Projective Line and the Exact-Scattering Status}
 \label{subsec:cp1-o3-and-projective-status}
 

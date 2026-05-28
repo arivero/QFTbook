@@ -316,6 +316,32 @@ def check_projective_crossing_tensors() -> None:
         )
 
 
+def check_projective_large_n_induced_gauge_kernel() -> None:
+    x = sp.symbols("x")
+    first_moment = sp.integrate((1 - 2 * x) ** 2, (x, 0, 1))
+    second_moment = sp.integrate((1 - 2 * x) ** 2 * x * (1 - x), (x, 0, 1))
+    assert_equal("CP large-N polarization first moment", first_moment, sp.Rational(1, 3))
+    assert_equal("CP large-N polarization second moment", second_moment, sp.Rational(1, 30))
+
+    # Pi(p^2)=1/(4*pi)[1/(3 m^2)-p^2/(30 m^4)+...].  Since
+    # (1/2) A_mu(p)(p^2 delta_{mu nu}-p_mu p_nu)A_nu(-p)
+    # = (1/4) F_{mu nu}(p)F_{mu nu}(-p), the coefficient of
+    # F_{mu nu}F_{mu nu} is N Pi(0)/4 = N/(48 pi m^2).
+    pi_zero_without_pi = Fraction(1, 12)
+    maxwell_without_pi = pi_zero_without_pi / 4
+    assert_equal("CP large-N Maxwell coefficient without N/pi/m^2", maxwell_without_pi, Fraction(1, 48))
+
+    # If N/(48*pi*m^2)=1/(4 e_eff^2), then e_eff^2=12*pi*m^2/N; the
+    # one-dimensional electrostatic energy is e_eff^2 Q^2 R/2.
+    effective_charge_without_pi_m2_over_n = Fraction(12)
+    linear_potential_without_pi_m2_over_n = effective_charge_without_pi_m2_over_n / 2
+    assert_equal(
+        "CP large-N linear potential coefficient",
+        linear_potential_without_pi_m2_over_n,
+        Fraction(6),
+    )
+
+
 def check_su_n_sine_mass_fusion() -> None:
     for n in range(3, 10):
         scale = 1.0 / math.sin(math.pi / n)
@@ -724,6 +750,7 @@ def main() -> None:
     check_wzw_endpoint_representation_formulas()
     check_nonabelian_bosonization_central_charge()
     check_projective_crossing_tensors()
+    check_projective_large_n_induced_gauge_kernel()
     check_su_n_sine_mass_fusion()
     check_su_n_rational_block()
     check_scalar_cdd_and_su_n_gamma_ledgers()

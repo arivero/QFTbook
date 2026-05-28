@@ -863,7 +863,9 @@ Current checks:
   endpoint primary-weight formulae, diagonal \(SU(2)\) coset central charges,
   nonabelian-bosonization central-charge bookkeeping, the projective-model
   crossing tensors and \(V\otimes V^\vee\) singlet/adjoint projectors, the
-  \(SU(N)\) sine-mass/fusion-angle and rational-matrix bootstrap identities,
+  large-\(N\) projective induced-gauge polarization moments, Maxwell
+  coefficient, and linear-potential coefficient, the \(SU(N)\)
+  sine-mass/fusion-angle and rational-matrix bootstrap identities,
   the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
   principal-chiral gamma-function scalar unitarity identities, the supersphere,
   projective-supermodel, and orthosymplectic one-loop cancellations,
