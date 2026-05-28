@@ -1077,7 +1077,8 @@ Current checks:
   BF normalization, standard ABJM conformal-locus tangent count,
   \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
   free-chiral \(S^3\) determinant normalization, rank-one ABJM sphere-integral
-  factors,
+  factors, ABJM Fermi-gas first trace, leading Weyl coefficient, and Airy
+  inverse-Laplace rescaling,
   non-abelian `3D` \(\mathcal N=2\) Chern--Simons-matter auxiliary
   elimination coefficients, `3D` \(\mathcal N=3\) adjoint-chiral
   elimination coefficients,

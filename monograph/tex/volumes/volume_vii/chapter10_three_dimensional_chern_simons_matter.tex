@@ -1211,6 +1211,360 @@ Taking the absolute value and then \(-\log\) gives the displayed
 free energy.
 \end{proof}
 
+\section{ABJM Fermi-Gas Form and Airy Asymptotics}
+\label{sec:abjm-fermi-gas-airy}
+
+The ABJM sphere integral has a second exact representation which is useful
+because it separates three logically different statements:
+\begin{enumerate}
+\item the finite-dimensional localization integral
+\eqref{eq:abjm-s3-matrix-model};
+\item an algebraic rewriting of that integral as the canonical partition
+function of \(N\) noninteracting fermions with a one-particle density
+operator;
+\item the large-\(N\) Airy behavior that follows when the grand potential of
+that one-particle operator has a cubic perturbative part.
+\end{enumerate}
+Only the second item is a change of variables in the localized integral.  It
+does not define the continuum ABJM theory and it does not replace the
+localization hypotheses.  Throughout this section take \(k>0\); negative
+level is obtained by orientation reversal and complex conjugation of the
+Chern--Simons phase.
+
+Let \(\hbar=2\pi k\), let \(q\) denote multiplication on
+\(L^2(\mathbb R,dq)\), and let \(p=-\ii\hbar\,d/dq\).  Define
+\[
+  u(q)=\frac1{\sqrt{2\cosh(q/2)}},
+  \qquad
+  v(p)=\frac1{2\cosh(p/2)}.
+\]
+The ABJM one-particle density operator is
+\[
+  \rho_k
+  =
+  u(q)\,v(p)\,u(q).
+  \label{eq:abjm-density-operator}
+\]
+Equivalently, in the \(q\)-representation,
+\[
+  \rho_k(q,q')
+  =
+  \frac1{2\pi k}\,
+  \frac1{\sqrt{2\cosh(q/2)}}\,
+  \frac1{2\cosh\!\left(\frac{q-q'}{2k}\right)}\,
+  \frac1{\sqrt{2\cosh(q'/2)}} .
+  \label{eq:abjm-fermi-gas-kernel}
+\]
+
+\begin{lemma}[Trace-class normalization of the ABJM kernel]
+\label{lem:abjm-kernel-trace-class}
+The operator \(\rho_k\) in \eqref{eq:abjm-density-operator} is positive and
+trace class.  Its first trace is
+\[
+  \operatorname{Tr}_{\mathcal H}\rho_k=\frac1{4k}.
+  \label{eq:abjm-rho-first-trace}
+\]
+\end{lemma}
+
+\begin{proof}
+Use the unitary Fourier transform normalized by
+\[
+  \langle q|p\rangle=(2\pi\hbar)^{-1/2}\ee^{\ii qp/\hbar}.
+\]
+The multiplication operator \(v(p)\) is positive.  Hence
+\[
+  \rho_k
+  =
+  \left(v(p)^{1/2}u(q)\right)^*
+  \left(v(p)^{1/2}u(q)\right)
+\]
+is positive.  The operator \(v(p)^{1/2}u(q)\) is Hilbert--Schmidt, because
+its \(p,q\) kernel has squared norm
+\[
+  \int_{\mathbb R^2}\frac{dp\,dq}{2\pi\hbar}\,
+  \frac1{2\cosh(p/2)}\,\frac1{2\cosh(q/2)}
+  <\infty .
+\]
+Therefore \(\rho_k=T^*T\) with \(T\) Hilbert--Schmidt, so \(\rho_k\) is
+trace class.
+
+The Fourier integral
+\[
+  \int_{-\infty}^{\infty}
+  \frac{dp}{2\pi\hbar}\,
+  \frac{\ee^{\ii p(q-q')/\hbar}}{2\cosh(p/2)}
+  =
+  \frac1{2\pi k}\,
+  \frac1{2\cosh\!\left(\frac{q-q'}{2k}\right)}
+\]
+gives \eqref{eq:abjm-fermi-gas-kernel}.  On the diagonal,
+\[
+  \rho_k(q,q)
+  =
+  \frac1{2\pi k}\,
+  \frac1{4\cosh(q/2)} .
+\]
+Since
+\[
+  \int_{-\infty}^{\infty}\frac{dq}{\cosh(q/2)}=2\pi,
+\]
+the trace is \(1/(4k)\).
+\end{proof}
+
+\begin{quotedtheorem}[Finite ABJM Fermi-gas identity]
+\label{qt:abjm-fermi-gas-representation}
+For \(k>0\), the ABJM localization integral
+\eqref{eq:abjm-s3-matrix-model} is equal to
+\[
+  Z^{\rm ABJM}_{S^3}(N,k)
+  =
+  \frac1{N!}\int_{\mathbb R^N}\prod_{i=1}^N dq_i\,
+  \det_{1\le i,j\le N}\rho_k(q_i,q_j).
+  \label{eq:abjm-canonical-fermi-gas}
+\]
+\end{quotedtheorem}
+
+\begin{remark}[What enters the finite identity]
+\label{rem:abjm-fermi-gas-identity-ingredients}
+The identity is finite-dimensional algebra inside the localized matrix
+model, not a holographic or continuum-existence statement.  Its input is the
+change of variables
+\[
+  x_i=2\pi\lambda_i,\qquad y_i=2\pi\mu_i .
+\]
+The main determinant step is the hyperbolic Cauchy identity
+\[
+  \frac{\prod_{i<j}2\sinh\!\left(\frac{x_i-x_j}{2}\right)
+        \prod_{i<j}2\sinh\!\left(\frac{y_i-y_j}{2}\right)}
+       {\prod_{i,j}2\cosh\!\left(\frac{x_i-y_j}{2}\right)}
+  =
+  \det_{i,j}\frac1{2\cosh\!\left(\frac{x_i-y_j}{2}\right)} .
+  \label{eq:hyperbolic-cauchy-abjm}
+\]
+It follows from the ordinary Cauchy identity after setting
+\(X_i=\ee^{x_i}\), \(Y_j=\ee^{y_j}\) and extracting monomials from rows and
+columns.  Squaring \eqref{eq:hyperbolic-cauchy-abjm} rewrites the
+Vandermonde ratio in \eqref{eq:abjm-s3-matrix-model} as a product of
+determinants.  The remaining step is a Gaussian Fourier transform plus a
+unitary phase conjugation.  Phase conjugation leaves every Fredholm minor
+unchanged:
+\[
+  \det\!\left[
+    \ee^{\ii k q_i^2/4\pi}\rho_k(q_i,q_j)
+    \ee^{-\ii k q_j^2/4\pi}
+  \right]_{i,j=1}^N
+  =
+  \det\!\left[\rho_k(q_i,q_j)\right]_{i,j=1}^N .
+\]
+The Fourier normalization is the one displayed in the proof of
+Lemma~\ref{lem:abjm-kernel-trace-class}.  For \(N=1\),
+\eqref{eq:abjm-canonical-fermi-gas} gives
+\(\operatorname{Tr}\rho_k=1/(4k)\), agreeing with
+Proposition~\ref{prop:rank-one-abjm-s3-integral}.
+\end{remark}
+
+\begin{definition}[ABJM grand partition function]
+\label{def:abjm-grand-partition-function}
+The grand partition function attached to the ABJM Fermi-gas operator is
+\[
+  \Xi_k(\kappa)
+  =
+  \det_{\mathcal H}(1+\kappa\rho_k),
+  \qquad
+  \kappa=\ee^\mu ,
+  \label{eq:abjm-grand-partition-function}
+\]
+and its logarithm
+\[
+  J_k(\mu)=\log\Xi_k(\ee^\mu)
+  \label{eq:abjm-grand-potential}
+\]
+is the grand potential.
+\end{definition}
+
+\begin{lemma}[Fredholm expansion and canonical coefficients]
+\label{lem:fredholm-canonical-coefficients}
+Let \(\rho\) be a trace-class operator on \(L^2(\mathbb R,dq)\) with
+integral kernel \(\rho(q,q')\).  Then
+\[
+  \det(1+\kappa\rho)
+  =
+  \sum_{N=0}^{\infty}\kappa^N
+  \frac1{N!}\int_{\mathbb R^N}\prod_{i=1}^N dq_i\,
+  \det_{i,j}\rho(q_i,q_j).
+  \label{eq:fredholm-minor-expansion}
+\]
+Consequently the coefficient of \(\kappa^N\) in
+\(\Xi_k(\kappa)\) is the ABJM sphere partition function
+\(Z^{\rm ABJM}_{S^3}(N,k)\).
+\end{lemma}
+
+\begin{proof}
+For finite-rank \(\rho=\sum_{a=1}^r s_a\,|\psi_a\rangle\langle\phi_a|\),
+the identity is the Cauchy--Binet expansion of the finite determinant
+\(\det(\delta_{ab}+\kappa s_a\langle\phi_a,\psi_b\rangle)\).  Approximate a
+trace-class operator in trace norm by finite-rank operators.  The Fredholm
+determinant is continuous in trace norm, and the Fredholm minors converge in
+the same expansion because the exterior powers satisfy
+\(\|\wedge^N\rho\|_1\le \|\rho\|_1^N/N!\).  This gives
+\eqref{eq:fredholm-minor-expansion}.  Applying
+Quoted Theorem~\ref{qt:abjm-fermi-gas-representation} identifies the
+coefficients with the localized ABJM integrals.
+\end{proof}
+
+\begin{proposition}[Leading phase-space coefficient]
+\label{prop:abjm-leading-phase-space-coefficient}
+The leading Weyl coefficient of the ABJM Fermi gas is
+\[
+  C_k=\frac{2}{\pi^2 k}.
+  \label{eq:abjm-Ck-coefficient}
+\]
+Equivalently, the leading large-\(\mu\) contribution to the grand potential
+is
+\[
+  J_k(\mu)=\frac{C_k}{3}\mu^3+\text{lower powers of }\mu
+  \qquad (\mu\to+\infty)
+  \label{eq:abjm-leading-grand-potential}
+\]
+at fixed \(k\).
+\end{proposition}
+
+\begin{proof}
+The classical symbol of \(\rho_k^{-1}\) is
+\[
+  \exp H(q,p),
+  \qquad
+  H(q,p)
+  =
+  \log\!\left(2\cosh\frac q2\right)
+  +
+  \log\!\left(2\cosh\frac p2\right).
+\]
+For large \(E\), the inequality \(H(q,p)\le E\) has the same leading area
+as
+\[
+  \frac{|q|+|p|}{2}\le E,
+\]
+namely a diamond of area \(8E^2\).  The phase-space cell is
+\[
+  2\pi\hbar=4\pi^2 k .
+\]
+Thus the integrated one-particle density has leading term
+\[
+  n(E)
+  =
+  \frac{8E^2}{4\pi^2 k}+O(E)
+  =
+  \frac{2}{\pi^2 k}E^2+O(E).
+\]
+At zero temperature the leading grand potential is
+\[
+  J_k(\mu)
+  =
+  \int_0^\mu n(E)\,dE+\text{lower powers of }\mu
+  =
+  \frac{2}{3\pi^2 k}\mu^3+\text{lower powers},
+\]
+which gives \eqref{eq:abjm-Ck-coefficient}.
+\end{proof}
+
+\begin{quotedtheorem}[Perturbative ABJM grand potential]
+\label{qt:abjm-perturbative-grand-potential}
+For the trace-class operator \(\rho_k\) above, the part of \(J_k(\mu)\)
+which is polynomial in \(\mu\) in the large-\(\mu\) spectral expansion is
+\[
+  J_k^{\rm pert}(\mu)
+  =
+  \frac{C_k}{3}\mu^3+B_k\mu+A_k,
+  \qquad
+  C_k=\frac{2}{\pi^2 k},
+  \qquad
+  B_k=\frac{k}{24}+\frac1{3k}.
+  \label{eq:abjm-perturbative-grand-potential}
+\]
+The remaining terms in \(J_k(\mu)\) are exponentially small in \(\mu\)
+within the spectral expansion and encode nonperturbative corrections to the
+canonical large-\(N\) answer.  The coefficient \(A_k\) is independent of
+\(\mu\) and depends on the normalization of the exact spectral determinant.
+\end{quotedtheorem}
+
+\begin{theorem}[Airy transform of a cubic grand potential]
+\label{thm:airy-transform-cubic-grand-potential}
+Assume a grand potential has perturbative part
+\[
+  J^{\rm pert}(\mu)=\frac C3\mu^3+B\mu+A,
+  \qquad C>0.
+  \label{eq:cubic-grand-potential-general}
+\]
+Define the perturbative canonical coefficient by the inverse Laplace
+transform
+\[
+  Z_N^{\rm pert}
+  =
+  \int_{\mathcal C}\frac{d\mu}{2\pi\ii}\,
+  \exp\!\left(J^{\rm pert}(\mu)-N\mu\right),
+  \label{eq:perturbative-canonical-inverse-laplace}
+\]
+where \(\mathcal C\) is the standard Airy contour.  Then
+\[
+  Z_N^{\rm pert}
+  =
+  \ee^A\,C^{-1/3}\,
+  \operatorname{Ai}\!\left(C^{-1/3}(N-B)\right).
+  \label{eq:airy-transform-result}
+\]
+For ABJM this gives
+\[
+  Z_{S^3}^{\rm ABJM,pert}(N,k)
+  =
+  \ee^{A_k}\,
+  C_k^{-1/3}\,
+  \operatorname{Ai}\!\left(C_k^{-1/3}(N-B_k)\right),
+  \label{eq:abjm-perturbative-airy}
+\]
+with \(C_k,B_k\) as in
+\eqref{eq:abjm-perturbative-grand-potential}.
+\end{theorem}
+
+\begin{proof}
+Set \(t=C^{1/3}\mu\).  Then \(d\mu=C^{-1/3}dt\) and
+\[
+  \frac C3\mu^3-(N-B)\mu
+  =
+  \frac{t^3}{3}
+  -
+  C^{-1/3}(N-B)t .
+\]
+Therefore
+\[
+  Z_N^{\rm pert}
+  =
+  \ee^A C^{-1/3}
+  \int_{\mathcal C_A}\frac{dt}{2\pi\ii}\,
+  \exp\!\left(\frac{t^3}{3}
+  -
+  C^{-1/3}(N-B)t\right).
+\]
+The last integral is the contour definition of the Airy function
+\(\operatorname{Ai}(z)\) with \(z=C^{-1/3}(N-B)\).  This proves
+\eqref{eq:airy-transform-result}.  Substituting the ABJM coefficients gives
+\eqref{eq:abjm-perturbative-airy}.
+\end{proof}
+
+\begin{remark}[Status of the ABJM Airy formula]
+\label{rem:abjm-airy-status}
+The Airy function in \eqref{eq:abjm-perturbative-airy} is an exact
+consequence of the cubic perturbative grand potential; it is not by itself a
+statement about the full finite-\(N\) sphere partition function.  The full
+Fredholm determinant \(\Xi_k(\kappa)\) also contains exponentially small
+spectral corrections, and their inverse Laplace transforms correct the
+Airy expression.  Thus the logically complete chain is:
+localization matrix integral, Fermi-gas Fredholm determinant, spectral
+large-\(\mu\) expansion, Airy transform of the cubic part, and then
+nonperturbative corrections.  Confusing the last two steps is a common
+source of overstated ``exact large-\(N\)'' claims.
+\end{remark}
+
 \section{Three-Dimensional Dynamics Ledger}
 
 A complete \(3D\) supersymmetric Chern--Simons--matter example must specify:

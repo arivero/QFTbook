@@ -159,6 +159,43 @@ def check_sphere_free_energy_normalizations() -> None:
         assert_equal(f"rank-one ABJM S3 integral k={k}", z_rank_one, Fraction(1, 4 * abs(k)))
 
 
+def check_abjm_fermi_gas_airy_normalizations() -> None:
+    # Diagonal trace of the Fermi-gas kernel:
+    # rho(q,q) = [1/(2*pi*k)] [1/(4*cosh(q/2))] and
+    # int dq/cosh(q/2) = 2*pi, hence Tr rho = 1/(4k).
+    for k in (1, 2, 7):
+        fourier_measure_denominator = 2 * k
+        cosh_diagonal_denominator = 4
+        sech_integral_numerator = 2
+        trace = Fraction(sech_integral_numerator, fourier_measure_denominator * cosh_diagonal_denominator)
+        assert_equal(f"ABJM Fermi-gas first trace k={k}", trace, Fraction(1, 4 * k))
+
+    # Large-energy phase-space diamond:
+    # area(|q|+|p| <= 2E) = 8 E^2 and 2*pi*hbar = 4*pi^2*k,
+    # so n(E) = [2/(pi^2 k)] E^2.
+    area_coefficient = 8
+    phase_space_cell_coefficient = 4
+    leading_density_coefficient_times_pi_squared_k = Fraction(
+        area_coefficient, phase_space_cell_coefficient
+    )
+    assert_equal(
+        "ABJM leading Weyl coefficient times pi^2 k",
+        leading_density_coefficient_times_pi_squared_k,
+        2,
+    )
+
+    # Airy inverse-Laplace rescaling.  Use C=8 so C^(1/3)=2 exactly:
+    # mu=t/2 gives C mu^3/3=t^3/3 and -(N-B)mu=-(N-B)t/2.
+    c = Fraction(8)
+    c_cube_root = Fraction(2)
+    b = Fraction(3)
+    n = Fraction(11)
+    cubic_coefficient_after_rescaling = c / (c_cube_root**3)
+    airy_argument = (n - b) / c_cube_root
+    assert_equal("Airy cubic coefficient after rescaling", cubic_coefficient_after_rescaling, 1)
+    assert_equal("Airy linear coefficient after rescaling", airy_argument, 4)
+
+
 def check_three_d_n2_cs_matter_auxiliary_elimination() -> None:
     # Factor out powers of pi and i.  The D-equation in trace-delta
     # convention gives sigma = -(2 pi/k) mu.  The scalar sextic coefficient is
@@ -322,6 +359,7 @@ def main() -> None:
     check_abjm_orbifold_order_and_dimension()
     check_abjm_s3_matrix_denominator()
     check_sphere_free_energy_normalizations()
+    check_abjm_fermi_gas_airy_normalizations()
     check_three_d_n2_cs_matter_auxiliary_elimination()
     check_three_d_n3_adjoint_chiral_elimination()
     check_six_dimensional_yang_mills_dimension()
