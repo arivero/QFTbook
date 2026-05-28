@@ -506,8 +506,8 @@ Current checks:
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the Gaussian time-domain tail, nonanalytic
-  loop coefficients, the \(d=3\) cutoff/nonanalytic split, and positivity of
-  the stress-noise tensor.
+  loop coefficients, the \(d=2\) cutoff logarithm coefficient, the \(d=3\)
+  cutoff/nonanalytic split, and positivity of the stress-noise tensor.
 - `ising_defect_fusion_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for
   the Ising/Kramers--Wannier noninvertible defect example, including fusion
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix

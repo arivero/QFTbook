@@ -64,6 +64,15 @@ def check_frequency_nonanalytic_coefficients() -> None:
     expected_d3 = -1.0 / (4.0 * math.pi * (2.0 * diffusion) ** 1.5)
     assert_close("d=3 loop coefficient", coeff_d3, expected_d3)
 
+    cutoff = 200.0
+    z_small = 1.0e-8
+    a = 2.0 * diffusion
+    integral_d2 = math.log((z_small + a * cutoff * cutoff) / z_small) / (4.0 * math.pi * a)
+    local_part = math.log(a * cutoff * cutoff) / (4.0 * math.pi * a)
+    log_coefficient = (integral_d2 - local_part) / math.log(z_small)
+    expected_log_coefficient = -1.0 / (4.0 * math.pi * a)
+    assert_close("d=2 cutoff logarithm coefficient", log_coefficient, expected_log_coefficient, tol=1.0e-8)
+
 
 def check_cutoff_integral_d3_separation() -> None:
     diffusion = 0.73
