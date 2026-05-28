@@ -13,7 +13,10 @@ renormalization.
 - `omega_2`: two-point function of a quasifree state.
 - `sigma`, `sigma_epsilon`: half squared geodesic distance and its
   boundary-value prescription.
-- `U`, `V`: Hadamard parametrix coefficients.
+- `Delta`: van Vleck determinant.
+- `U=Delta^{1/2}`: leading Hadamard coefficient.
+- `V`, `v_j`: logarithmic Hadamard coefficient and its transport-recursion
+  coefficients.
 - `H_epsilon`: local Hadamard singular distribution.
 - `p(x,k)`: principal symbol governing propagation of singularities.
 - `Gamma_n(M)`: graph-defined microlocal spectrum cone for \(n\)-point
@@ -31,7 +34,12 @@ renormalization.
 - Adds the higher microlocal spectrum cone \(\Gamma_n(M)\) and the
   all-\(n\)-point microlocal spectrum condition; records why quasifree
   Hadamard states satisfy it by Wick's theorem and the product criterion.
-- Defines the local Hadamard parametrix and its geometric coefficients.
+- Defines the local Hadamard parametrix and derives its geometric
+  coefficients: the transport equation for `U=Delta^{1/2}`, the complete
+  recursion for `v_j`, the coincidence value of `v_0`, and the diagonal
+  recursion denominator `1/[2(j+1)(j+2)]`.
+- Separates the metric characteristic Hamiltonian from the principal symbol of
+  the chapter's Klein-Gordon operator `P_M=-nabla^mu nabla_mu+m^2+xi R`.
 - Derives explicitly that the Hamiltonian flow of the Klein-Gordon principal
   symbol projects to affinely parametrized null geodesics and parallel
   transports the covector.
@@ -42,8 +50,9 @@ renormalization.
 
 - `calculation-checks/microlocal_spectrum_checks.py`: verifies the
   mostly-plus future-covector convention, the Klein-Gordon Hamilton flow sign,
-  the two-point graph covector pattern \((p,-p)\), and the opposite-cone
-  product obstruction.
+  the two-point graph covector pattern \((p,-p)\), the opposite-cone product
+  obstruction, and the diagonal coefficients in the four-dimensional
+  Hadamard recursion.
 
 ## Figure Ledger
 

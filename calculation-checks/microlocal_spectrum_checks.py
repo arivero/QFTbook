@@ -8,11 +8,17 @@ this makes the positive-frequency covector (-E, p) future directed.
 
 from __future__ import annotations
 
+from fractions import Fraction
 import math
 
 
 def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) -> None:
     if abs(got - expected) > tol:
+        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+
+
+def assert_equal(got: Fraction, expected: Fraction, label: str) -> None:
+    if got != expected:
         raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
 
 
@@ -79,11 +85,33 @@ def check_product_opposite_cone_obstruction() -> None:
         raise AssertionError("opposite half-cones should obstruct product")
 
 
+def check_hadamard_transport_coefficients() -> None:
+    # In four dimensions [Box sigma]=4.  The v_0 transport equation gives
+    # 2 v_0(x,x) = P U|_diag, and Box U|_diag = R/6.  Therefore the curvature
+    # coefficient in v_0 is (xi - 1/6)/2.
+    box_sigma_diag = Fraction(4)
+    v0_denominator = box_sigma_diag - Fraction(2)
+    assert_equal(v0_denominator, Fraction(2), "v0 diagonal denominator")
+
+    mass_coeff = Fraction(1, 1) / v0_denominator
+    xi_coeff = Fraction(1, 1) / v0_denominator
+    curvature_from_box_u = Fraction(-1, 6) / v0_denominator
+    assert_equal(mass_coeff, Fraction(1, 2), "v0 mass coefficient")
+    assert_equal(xi_coeff, Fraction(1, 2), "v0 xi coefficient")
+    assert_equal(curvature_from_box_u, Fraction(-1, 12), "v0 curvature shift")
+
+    for j in range(6):
+        diag_coeff = Fraction(1, (j + 1) * (4 + 2 * j))
+        expected = Fraction(1, 2 * (j + 1) * (j + 2))
+        assert_equal(diag_coeff, expected, f"v_{j + 1} recursion denominator")
+
+
 def main() -> None:
     check_future_covector_convention()
     check_kg_hamilton_flow_is_future_null_for_positive_frequency()
     check_two_point_graph_sign_pattern()
     check_product_opposite_cone_obstruction()
+    check_hadamard_transport_coefficients()
     print("All microlocal spectrum convention checks passed.")
 
 

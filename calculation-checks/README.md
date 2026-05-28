@@ -860,7 +860,8 @@ Current checks:
 - `microlocal_spectrum_checks.py`: finite convention checks for the
   microlocal spectrum chapter, including the mostly-plus future-covector
   convention, the Klein-Gordon Hamilton-flow sign, the two-point graph
-  covector pattern \((p,-p)\), and the opposite-cone product obstruction.
+  covector pattern \((p,-p)\), the opposite-cone product obstruction, and
+  the diagonal coefficients in the four-dimensional Hadamard recursion.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
