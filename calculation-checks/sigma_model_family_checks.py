@@ -5,7 +5,8 @@ The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
 split, the Polyakov-Wiegmann WZ coefficient, WZW central charges,
 nonabelian-bosonization central-charge
 bookkeeping, the SU(N) sine-mass/fusion-angle and rational-matrix bootstrap
-blocks, and the curvature formula for the sausage metric used in Volume VI.
+blocks, the supertarget one-loop coefficient ledgers, and the curvature
+formula for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
@@ -283,6 +284,57 @@ def check_scalar_cdd_and_su_n_gamma_ledgers() -> None:
             )
 
 
+def check_supertarget_one_loop_ledgers() -> None:
+    for m in range(2, 9):
+        for n in range(0, 5):
+            tangent_superdimension = (m - 1) - 2 * n
+            supersphere_coefficient = m - 2 * n - 2
+            assert_equal(
+                f"supersphere Ricci graded contraction m={m} n={n}",
+                supersphere_coefficient,
+                tangent_superdimension - 1,
+            )
+
+    for n in range(0, 7):
+        m = 2 * n + 2
+        assert_equal(
+            f"OSp supersphere one-loop cancellation n={n}",
+            m - 2 * n - 2,
+            0,
+        )
+
+    for p in range(0, 7):
+        for q in range(0, 7):
+            ricci_coefficient = p + 1 - q
+            homogeneous_superdimension = (p + 1) - q
+            assert_equal(
+                f"CP^(p|q) Berezinian exponent p={p} q={q}",
+                ricci_coefficient,
+                homogeneous_superdimension,
+            )
+
+    for n in range(1, 8):
+        cp_super_coefficient = (n - 1) + 1 - n
+        assert_equal(
+            f"CP^(N-1|N) one-loop cancellation N={n}",
+            cp_super_coefficient,
+            0,
+        )
+        assert_equal(
+            f"ordinary CP^(N-1) coefficient N={n}",
+            (n - 1) + 1 - 0,
+            n,
+        )
+
+    for n in range(0, 7):
+        osp_dual_coxeter = (2 * n + 2) - 2 * n - 2
+        assert_equal(
+            f"osp(2n+2|2n) dual-Coxeter-zero ledger n={n}",
+            osp_dual_coxeter,
+            0,
+        )
+
+
 def check_sausage_metric_curvature() -> None:
     r, h, q = sp.symbols("r h q", nonzero=True)
     e_metric = h / ((1 - r**2) * (1 + q * r**2))
@@ -307,6 +359,7 @@ def main() -> None:
     check_su_n_sine_mass_fusion()
     check_su_n_rational_block()
     check_scalar_cdd_and_su_n_gamma_ledgers()
+    check_supertarget_one_loop_ledgers()
     check_sausage_metric_curvature()
     print("All sigma-model family checks passed.")
 

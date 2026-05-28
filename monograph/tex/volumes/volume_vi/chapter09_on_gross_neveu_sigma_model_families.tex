@@ -1246,28 +1246,219 @@ Projective space is the example
 \[
   \mathbb{CP}^{N-1}=SU(N)/S(U(N-1)\times U(1)).
 \]
-The same construction extends formally to supergroups and supercosets by
-replacing vector spaces by super vector spaces and \(\kappa\) by an invariant
-even bilinear form.  The path-integral meaning then involves the supermanifold
-language developed earlier in the monograph: odd coordinates are elements of
-the structure sheaf, and Berezin integration is not a Borel measure.
+
+\section{Supergroup and Supersphere Sigma-Model Families}
+\label{sec:supergroup-supersphere-sigma-models}
+
+Supergroup sigma models require the same locally super-ringed-space
+discipline as fermionic path integrals.  A supertarget is not a set of
+ordinary maps.  Locally it is described by even coordinate functions and odd
+coordinate generators in a structure sheaf; the odd coordinates are integrated
+by Berezin rules, not by a Borel measure.  This distinction matters in
+sigma-model examples because cancellations in beta functions are supertrace
+cancellations, not cancellations between two positive measures.
+
+Let \(E=E_{\bar0}\oplus E_{\bar1}\) be a finite-dimensional real super vector
+space, with
+\[
+  \operatorname{sdim}E=\dim E_{\bar0}-\dim E_{\bar1}.
+\]
+For \(m,n\ge0\), the orthosymplectic supersphere
+\[
+  S^{m-1|2n}
+  =
+  OSp(m|2n)/OSp(m-1|2n)
+\]
+is the supermanifold cut out in \(\mathbb R^{m|2n}\) by
+\[
+  X\cdot X=1.
+\]
+Here \(X\cdot X\) uses a positive quadratic form on the even coordinates and
+a nondegenerate symplectic pairing on the \(2n\) odd coordinates.  The
+Euclidean sigma-model functional is
+\begin{equation}
+  S_{S^{m-1|2n}}[X]
+  =
+  \frac1{2g^2}\int_\Sigma\dd^2x\,
+  \partial_\mu X\cdot\partial_\mu X ,
+  \qquad X\cdot X=1,
+  \label{eq:supersphere-sigma-action}
+\end{equation}
+understood as a local expression in the supercoordinate sheaf.  The ordinary
+round sphere is recovered at \(n=0\), \(m=N\).
+
+\begin{proposition}[One-loop supersphere curvature ledger]
+\label{prop:supersphere-one-loop-curvature-ledger}
+In the standard constant-curvature normalization of
+\eqref{eq:supersphere-sigma-action}, the Ricci tensor entering the one-loop
+sigma-model beta tensor is
+\[
+  \operatorname{Ric}_{ab}
+  =
+  (m-2n-2)h_{ab}.
+  \label{eq:supersphere-ricci-coefficient}
+\]
+Thus the scalar coupling has leading perturbative running
+\[
+  \mu\frac{\dd g}{\dd\mu}
+  =
+  -\frac{m-2n-2}{2\pi}g^3+O(g^5).
+  \label{eq:supersphere-leading-beta}
+\]
+The family \(S^{2n+1|2n}=OSp(2n+2|2n)/OSp(2n+1|2n)\) has vanishing one-loop
+coefficient.
+\end{proposition}
+
+\begin{proof}
+For a bosonic round sphere \(S^{m-1}\), the constant-curvature tensor gives
+\(\operatorname{Ric}=(m-2)h\): the tangent space has \(m-1\) dimensions and
+the Ricci contraction counts all tangent directions except the distinguished
+one in the two-plane used by the curvature operator.  In the supersphere,
+the same normal-coordinate computation uses the graded contraction
+\[
+  \operatorname{Ric}_{ab}
+  =
+  (-1)^{|c|}R^{c}{}_{acb},
+  \label{eq:graded-ricci-contraction}
+\]
+where \(|c|=0\) on even tangent directions and \(|c|=1\) on odd tangent
+directions.  The tangent superdimension is
+\[
+  \operatorname{sdim}T S^{m-1|2n}=m-1-2n.
+\]
+The same constant-curvature contraction therefore replaces the bosonic count
+\((m-1)-1\) by the graded count
+\[
+  (m-1-2n)-1=m-2n-2,
+\]
+which gives \eqref{eq:supersphere-ricci-coefficient}.  Substitution into the
+one-loop sigma-model beta tensor
+\[
+  \mu\frac{\dd h_{ab}}{\dd\mu}
+  =
+  \frac1{2\pi}\operatorname{Ric}_{ab}+O(R^2)
+\]
+and \(h_{ab}=g^{-2}h^{\rm unit}_{ab}\) gives
+\eqref{eq:supersphere-leading-beta}.  Setting \(m=2n+2\) gives zero.
+\end{proof}
+
+The projective supermodel is the quotient analogue.  Let
+\[
+  Z=(z^1,\ldots,z^{p+1};\eta^1,\ldots,\eta^q)
+\]
+be a complex supervector, with \(z^i\) even and \(\eta^\alpha\) odd.  The
+superprojective target
+\[
+  \mathbb{CP}^{p|q}
+\]
+is obtained by imposing a nonzero homogeneous coordinate and quotienting by
+the even \(\mathbb C^\times\) rescaling.  In the unitary coordinate used for
+the sigma model, one writes a \(U(1)\) redundancy
+\[
+  Z(x)\mapsto \ee^{\ii\alpha(x)}Z(x),\qquad
+  A_\mu\mapsto A_\mu+\partial_\mu\alpha,
+\]
+and
+\begin{equation}
+  S_{\mathbb{CP}^{p|q}}[Z,A]
+  =
+  \frac1{g^2}\int_\Sigma\dd^2x\, (D_\mu Z)^\dagger D_\mu Z
+  +\ii\frac{\theta}{2\pi}\int_\Sigma F_A ,
+  \qquad
+  D_\mu Z=(\partial_\mu-\ii A_\mu)Z,
+  \label{eq:projective-supermodel-action}
+\end{equation}
+with the constraint \(Z^\dagger Z=1\) interpreted in the superalgebra of
+local functions.  The gauge-invariant superprojector is
+\[
+  \mathcal P=Z Z^\dagger,\qquad
+  \mathcal P^2=\mathcal P,\qquad
+  \operatorname{str}\mathcal P=1,
+\]
+where \(\operatorname{str}\) is the supertrace.
+
+\begin{proposition}[Projective-supermodel one-loop ledger]
+\label{prop:projective-supermodel-one-loop-ledger}
+For the Fubini--Study supermetric on \(\mathbb{CP}^{p|q}\), the one-loop
+Ricci coefficient is
+\[
+  \operatorname{Ric}=(p+1-q)\,h_{\rm FS}.
+  \label{eq:projective-super-ricci-coefficient}
+\]
+Consequently \(\mathbb{CP}^{N-1|N}\) has zero one-loop beta coefficient in
+this normalization, while the ordinary \(\mathbb{CP}^{N-1}\) coefficient is
+\(N\).
+\end{proposition}
+
+\begin{proof}
+In a holomorphic coordinate patch, the Fubini--Study Kähler potential is the
+even function
+\[
+  K=\log(1+w^\dagger w+\eta^\dagger\eta),
+\]
+where \(w\) has \(p\) even components and \(\eta\) has \(q\) odd components.
+The Ricci form of a Kähler supermetric is computed by the Berezinian:
+\[
+  \rho=-\ii\,\partial\bar\partial\log\operatorname{Ber}(g_{A\bar B}).
+  \label{eq:super-kahler-ricci-berezinian}
+\]
+For the Fubini--Study metric, the Berezinian is proportional to
+\[
+  (1+w^\dagger w+\eta^\dagger\eta)^{-(p+1-q)}.
+\]
+The exponent is the ordinary projective homogeneous-coordinate count
+\(p+1\) minus the number \(q\) of odd homogeneous coordinates, because the
+odd block enters the Berezinian inversely.  Applying
+\(-\ii\partial\bar\partial\log\) gives
+\eqref{eq:projective-super-ricci-coefficient}.  The two special cases follow
+by setting \(q=0\), \(p=N-1\), and by setting \(p=N-1\), \(q=N\).
+\end{proof}
+
+Finally, let \(G\) be a Lie supergroup whose Lie superalgebra
+\(\mathfrak g\) carries a nondegenerate even invariant bilinear form
+\(\kappa\).  The principal supergroup sigma-model action is
+\begin{equation}
+  S_{\rm PSG}[U]
+  =
+  \frac1{2g^2}\int_\Sigma\dd^2x\,
+  \kappa(U^{-1}\partial_\mu U,U^{-1}\partial_\mu U).
+  \label{eq:principal-supergroup-action}
+\end{equation}
+The one-loop counterterm is proportional to the Killing form
+\[
+  K(X,Y)=\operatorname{str}_{\mathfrak g}
+  (\operatorname{ad}_X\operatorname{ad}_Y).
+  \label{eq:supergroup-killing-form}
+\]
+Thus supergroups with \(K=0\), such as the projective special linear family
+\(\mathfrak{psl}(N|N)\) and the dual-Coxeter-zero orthosymplectic family
+\(\mathfrak{osp}(2n+2|2n)\), are distinguished perturbatively.  This is a
+statement about the first local counterterm in a regularized superfield
+path integral.  Construction of the Hilbert space, locality, and exact
+factorized scattering theory requires additional data.
 
 \begin{controlledapproximation}[Supercoset status]
-\label{ca:supercoset-sausage-status}
-Supergroup sigma models, principal supergroup models, and deformed sphere
-models such as the sausage deformation of the \(O(3)\) target are important
-members of the integrable sigma-model landscape.  In this chapter they are
-recorded as family data: target or coset, coupling coordinates, global
-symmetries, Lax representation when available, and expected bootstrap
-particles.  A theorem-level identification with a local QFT requires the same
-ingredients demanded in Open Problem~\ref{op:constructive-factorizing-on-gn}:
-a regulator, Hilbert space or graded state space, local observables,
-conserved currents, and matching between ultraviolet and bootstrap
-coordinates.  The sausage family in particular should be treated as a
-controlled deformation of the round \(S^2\) sigma model with a stated metric
-and RG trajectory before any comparison to cigar or parafermion cosets is
-made.
+\label{ca:supercoset-status}
+The supersphere actions, projective supermodels, and principal supergroup
+actions above are ultraviolet family data.  Their perturbative cancellations
+explain why \(OSp(2n+2|2n)\), \(\mathbb{CP}^{N-1|N}\), and
+\(\mathfrak{psl}(N|N)\)-type examples recur in the integrable and logarithmic
+two-dimensional literature.  A theorem-level identification with a local QFT
+requires the same ingredients demanded in
+Open Problem~\ref{op:constructive-factorizing-on-gn}: a regulator, Hilbert
+space or graded state space, local observables, conserved currents, and
+matching between ultraviolet and bootstrap coordinates.  For supertargets,
+one must additionally specify the real form, the positivity or graded
+replacement of positivity, and the interpretation of logarithmic sectors if
+Jordan blocks appear.
 \end{controlledapproximation}
+
+\section{Deformed-Sphere and Sausage Family}
+\label{sec:deformed-sphere-sausage-family}
+
+The sausage family should be treated as a controlled deformation of the round
+\(S^2\) sigma model with a stated metric and RG trajectory before any
+comparison to cigar or parafermion cosets is made.
 
 \begin{definition}[Sausage metric datum]
 \label{def:sausage-metric-datum}
