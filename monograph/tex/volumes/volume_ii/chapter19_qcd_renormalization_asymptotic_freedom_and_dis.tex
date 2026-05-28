@@ -5747,6 +5747,79 @@ input is already contained in the analytic domain, crossing matrices,
 absorptive parts, and subtraction constants of the input.
 \end{proof}
 
+\begin{definition}[Quarkonium spectroscopy chart]
+\label{def:qcd-quarkonium-spectroscopy-chart}
+A neutral heavy quarkonium entry is a color-singlet \(Q\bar Q\) spectral
+coordinate with flavor \(Q=c\) or \(Q=b\), radial label \(n\), orbital angular
+momentum \(L=0,1,2,\ldots\), total heavy-quark spin \(S=0,1\), and total
+angular momentum \(J\).  The spectroscopic notation is
+\[
+  n\,{}^{2S+1}L_J,
+  \qquad
+  L=S,P,D,F,\ldots\quad\hbox{for}\quad L=0,1,2,3,\ldots .
+  \label{eq:qcd-quarkonium-spectroscopic-notation}
+\]
+For hidden flavor, charge conjugation is an exact quantum number in the
+isospin-symmetric QCD-plus-QED-decoupled convention.  The low-lying chart is:
+\[
+\begin{array}{c|c|c|c}
+\hbox{state type} & n\,{}^{2S+1}L_J & J^{PC} & \hbox{standard entries}\\
+\hline
+\hbox{pseudoscalar} & n\,{}^1S_0 & 0^{-+} & \eta_c(nS),\ \eta_b(nS)\\
+\hbox{vector} & n\,{}^3S_1 & 1^{--} & J/\psi,\ \psi(nS),\ \Upsilon(nS)\\
+\hbox{scalar triplet} & n\,{}^3P_0 & 0^{++} & \chi_{c0}(nP),\ \chi_{b0}(nP)\\
+\hbox{axial triplet} & n\,{}^3P_1 & 1^{++} & \chi_{c1}(nP),\ \chi_{b1}(nP)\\
+\hbox{tensor triplet} & n\,{}^3P_2 & 2^{++} & \chi_{c2}(nP),\ \chi_{b2}(nP)\\
+\hbox{singlet \(P\)-wave} & n\,{}^1P_1 & 1^{+-} & h_c(nP),\ h_b(nP)
+\end{array}
+\]
+The entries in the last column are names for QCD spectral levels or
+sheet-labeled poles in the corresponding channels.  The chart by itself is
+not a potential model.  A prediction of the level \(M_{n\,{}^{2S+1}L_J}\)
+requires a regulator or an effective Hamiltonian with a stated heavy-quark
+mass scheme, matching coefficients, ultrasoft treatment, and error estimate.
+\end{definition}
+
+\begin{proposition}[Quarkonium \(J^{PC}\) rule]
+\label{prop:qcd-quarkonium-jpc-rule}
+For a neutral \(Q\bar Q\) color-singlet state in the chart of
+Definition~\ref{def:qcd-quarkonium-spectroscopy-chart}, the allowed angular
+momenta are
+\[
+  J\in\{|L-S|,|L-S|+1,\ldots,L+S\},
+\]
+and the parity and charge-conjugation quantum numbers are
+\begin{equation}
+  P=(-1)^{L+1},
+  \qquad
+  C=(-1)^{L+S}.
+  \label{eq:qcd-quarkonium-pc-rule}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The angular-momentum statement is the Clebsch--Gordan decomposition of the
+orbital representation \(L\) with the total spin representation \(S\).  For a
+fermion-antifermion pair, intrinsic parities multiply to \(-1\).  The orbital
+wavefunction contributes \((-1)^L\) under spatial inversion, giving
+\[
+  P=(-1)(-1)^L=(-1)^{L+1}.
+\]
+Charge conjugation exchanges the quark and antiquark.  In the center-of-mass
+frame this exchange reverses the relative coordinate, contributing
+\((-1)^L\).  The spin wavefunction contributes \(+1\) on the spin-singlet
+state and \(-1\) on the spin-triplet state after the fermion exchange
+convention is included; this factor is \((-1)^S\) relative to the orbital
+factor in the standard \(Q\bar Q\) convention.  Therefore
+\[
+  C=(-1)^L(-1)^S=(-1)^{L+S}.
+\]
+Substitution gives the entries in
+Definition~\ref{def:qcd-quarkonium-spectroscopy-chart}: for example
+\({}^1S_0\) has \(0^{-+}\), \({}^3S_1\) has \(1^{--}\),
+\({}^3P_J\) has \(J^{++}\), and \({}^1P_1\) has \(1^{+-}\).
+\end{proof}
+
 Heavy quarkonium uses a different controlled coordinate system.  If
 \[
   m_Q\gg m_Qv\gg m_Qv^2
@@ -5760,7 +5833,8 @@ of a nonrelativistic potential unless the matching coefficients, mass scheme,
 and ultrasoft treatment have been fixed as part of the input.  The angular
 momentum algebra that turns these matched operators into centroid, fine, and
 hyperfine coordinates is the finite-dimensional statement of
-Proposition~\ref{prop:qcd-quarkonium-spin-centroid}.
+Propositions~\ref{prop:qcd-quarkonium-jpc-rule} and
+\ref{prop:qcd-quarkonium-spin-centroid}.
 
 Baryon spectroscopy is likewise a QCD spectral problem, not a three-body
 mechanics problem imposed from outside.  For \(N_f=3\) light flavors, the

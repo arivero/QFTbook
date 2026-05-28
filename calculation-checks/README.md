@@ -851,7 +851,8 @@ Current checks:
   convention that maps finite-volume energies to a second-sheet pole
   equation, together with the coupled-channel determinant reduction,
   sheet-sign bookkeeping, two-channel sheet/residue adjugate algebra,
-  two-state glueball/hybrid avoided-crossing algebra, and the quarkonium
+  two-state glueball/hybrid avoided-crossing algebra, the quarkonium
+  \(J^{PC}\) chart, and the quarkonium
   spin-centroid algebra for fine and hyperfine splittings, the Coulombic
   \(1S\) pNRQCD energy and
   wavefunction-at-origin normalization, the leading \(1S\) hyperfine contact

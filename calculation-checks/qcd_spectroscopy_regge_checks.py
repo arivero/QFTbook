@@ -548,6 +548,41 @@ def check_quarkonium_spin_centroid() -> None:
     )
 
 
+def check_quarkonium_jpc_chart() -> None:
+    # For neutral quarkonium, P=(-1)^(L+1), C=(-1)^(L+S), and
+    # J ranges from |L-S| to L+S.
+    def j_values(ell: int, spin: int) -> tuple[int, ...]:
+        return tuple(range(abs(ell - spin), ell + spin + 1))
+
+    def pc(ell: int, spin: int) -> tuple[str, str]:
+        parity = "+" if (ell + 1) % 2 == 0 else "-"
+        charge = "+" if (ell + spin) % 2 == 0 else "-"
+        return parity, charge
+
+    expected = {
+        "1S0": ((0,), "-", "+"),
+        "3S1": ((1,), "-", "-"),
+        "3P0": ((0, 1, 2), "+", "+"),
+        "3P1": ((0, 1, 2), "+", "+"),
+        "3P2": ((0, 1, 2), "+", "+"),
+        "1P1": ((1,), "+", "-"),
+        "1D2": ((2,), "-", "+"),
+        "3D": ((1, 2, 3), "-", "-"),
+    }
+
+    computed = {
+        "1S0": (j_values(0, 0), *pc(0, 0)),
+        "3S1": (j_values(0, 1), *pc(0, 1)),
+        "3P0": (j_values(1, 1), *pc(1, 1)),
+        "3P1": (j_values(1, 1), *pc(1, 1)),
+        "3P2": (j_values(1, 1), *pc(1, 1)),
+        "1P1": (j_values(1, 0), *pc(1, 0)),
+        "1D2": (j_values(2, 0), *pc(2, 0)),
+        "3D": (j_values(2, 1), *pc(2, 1)),
+    }
+    assert_equal("quarkonium JPC chart", computed, expected)
+
+
 def check_coulombic_quarkonium_ground_state() -> None:
     # For H=-nabla^2/m-alpha/r and psi=exp(-kappa r),
     # nabla^2 psi=(kappa^2-2 kappa/r)psi away from the origin.
@@ -820,6 +855,7 @@ def main() -> None:
     check_two_channel_sheet_residue_algebra()
     check_two_state_mixing_algebra()
     check_quarkonium_spin_centroid()
+    check_quarkonium_jpc_chart()
     check_coulombic_quarkonium_ground_state()
     check_quarkonium_one_s_hyperfine_contact()
     check_linear_elastic_pole_coordinate()
