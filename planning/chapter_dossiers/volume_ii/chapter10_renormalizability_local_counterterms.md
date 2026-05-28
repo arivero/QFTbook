@@ -30,10 +30,10 @@ The chapter must define:
   finite-regulator reference density, while Gaussian-reference formulas use
   \(\dd\mu_{C_\Lambda}\) and keep only the remaining interaction in the
   exponential;
-- local operators \(\mathcal O_I\) and bare couplings \(g_I\);
+- local operators \(\mathcal O_I\) and regulated local coordinates \(g_I\);
 - regulator choices \(\Lambda\) and \(D=d-\varepsilon\);
 - the finite-dimensional renormalized coordinate domain \(U\) and the
-  regulator-dependent bare coordinate maps \(b_\Lambda,b_\varepsilon\);
+  regulator-dependent regulated coordinate maps \(b_\Lambda,b_\varepsilon\);
 - the distinction, cross-referenced to
   `tab:regulator-integration-status-catalog`, between cutoff regulators that
   may define finite field integrals and dimensional regularization as a
@@ -45,8 +45,14 @@ The chapter must define:
   classification;
 - renormalized coordinate parameters \(\lambda\);
 - engineering dimension \(d_I\) and coupling dimension \(D-d_I\);
-- the superficial degree condition for a local counterterm;
+- theorem `thm:extension-at-a-diagonal`, with proof by Taylor subtraction of
+  test functions and the supported-distribution scaling-degree classification;
+- proposition `prop:power-counting-finite-list-criterion`, deriving the
+  superficial degree condition for a local counterterm and the finite-list
+  criterion;
 - the \(D=6\), \(\phi^3\) counterterm split;
+- proposition `prop:six-dimensional-phi-three-one-loop-local-poles`, deriving
+  the one-loop \(k^2\) and \(m_R^2\) pole coefficients in \(D=6-\varepsilon\);
 - the large-momentum self-energy insertion and its local Taylor subtractions;
 - the Schwinger-parameter picture of subdivergent regions.
 - the boundary of the scaling-degree extension theorem: it assumes a
@@ -64,8 +70,8 @@ The chapter must define:
 
 ## Claim Ledger
 
-1. Bare couplings are functions of the regulator and of a finite set of
-   renormalized input coordinates.
+1. Regulated local coordinates are functions of the regulator and of a finite
+   set of renormalized input coordinates.
 2. A sufficient perturbative finiteness criterion is the finiteness of
    renormalized Euclidean Green functions as distributions.
 2a. Existence of the continuum limit means a theorem or hypothesis for a
@@ -144,10 +150,17 @@ The chapter must define:
 ## Audit Notes
 
 - No reader-facing source-page references.
-- Avoid slogan framing.  State the regulator, the criterion, and the local
+- Avoid compressed framing.  State the regulator, the criterion, and the local
   finite-parameter condition explicitly.
 - Keep BPHZ as the theorem at the boundary of this chapter; the full forest
   formula belongs in the next chapter.
+- 2026-05-28 formalization pass: replaced the older coordinate terminology in
+  the chapter, labelled the finite-parameter renormalized-family and
+  scaling-degree definitions, added the proof of the one-diagonal
+  scaling-degree extension theorem, promoted the finite-list power-counting
+  argument and the \(D=6-\varepsilon\) \(\phi^3\) one-loop pole calculation to
+  propositions, and added
+  `calculation-checks/renormalizability_counterterm_checks.py`.
 - 2026-05-22 pass: tightened the finite-parameter coordinate definition,
   separated full 1PI/Green-function finiteness from local Taylor-coefficient
   finiteness, added tadpole bookkeeping to the \(D=4\) census, and fixed the

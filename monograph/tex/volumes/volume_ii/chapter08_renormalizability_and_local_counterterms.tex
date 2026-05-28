@@ -42,9 +42,9 @@ The index \(I\) includes all discrete labels required to specify the monomial:
 the number of fields, the derivative multi-indices, and the internal symmetry
 contraction when such indices are present.  Operators that differ by a total
 derivative or by a chosen integration-by-parts convention are represented once.
-The coefficient \(g_I\) is a bare coordinate.  The collection of bare
-coordinates includes the parameters chosen as inputs and the regulator-dependent
-coordinates later called counterterms.
+The coefficient \(g_I\) is a regulated local coordinate.  The collection of
+regulated coordinates includes the parameters chosen as finite inputs and the
+regulator-dependent coordinates later called counterterms.
 
 Two regulator languages will be used repeatedly.  A momentum cutoff restricts
 Fourier modes to
@@ -64,16 +64,17 @@ language denotes a finite-regulator field integral only after the regulated
 field space and density have been supplied.  Dimensional regularization is
 not a measure on \(\mathcal F_\Lambda\); it is a meromorphic assignment to the
 formal perturbative graph distributions and their tensor algebra.  In both
-languages the bare coordinates are allowed to depend on the regulator or
+languages the regulated coordinates are allowed to depend on the regulator or
 analytic continuation parameter.
 
 \begin{definition}[Finite-parameter renormalized family]
+\label{def:finite-parameter-renormalized-family}
 Choose an open set \(U\subset\R^N\) with coordinates
 \[
   \lambda=(\lambda_1,\ldots,\lambda_N),
 \]
-and choose, for each regulator value, a map from \(U\) to the bare coordinate
-space,
+and choose, for each regulator value, a map from \(U\) to the regulated
+coordinate space,
 \[
   b_{\Lambda}\colon U\longrightarrow \{g_I\}_{I\in\mathcal I},
   \qquad
@@ -277,6 +278,7 @@ The possible ambiguities in the extension are local distributions supported on
 those diagonals.
 
 \begin{definition}[Scaling degree]
+\label{def:scaling-degree}
 Let \(T\in\mathcal D'(\mathbb R^n\setminus\{0\})\).  For \(\lambda>0\), define
 the scaled distribution \(T_\lambda\) by
 \[
@@ -301,6 +303,7 @@ The extension theorem is the distribution-theoretic core of perturbative
 locality.
 
 \begin{theorem}[Extension at a diagonal]
+\label{thm:extension-at-a-diagonal}
 Let \(T\in\mathcal D'(\mathbb R^n\setminus\{0\})\) have finite scaling degree
 \(s=\operatorname{sd}_0(T)\).  There exists an extension
 \(\overline T\in\mathcal D'(\mathbb R^n)\) whose restriction to
@@ -314,7 +317,71 @@ extensions of scaling degree \(s\) differ by
 with constants \(c_\alpha\).
 \end{theorem}
 
+\begin{proof}
+We give the proof in the one-diagonal model; the general diagonal is reduced
+to this model by separating center-of-mass and relative coordinates.  Let
+\(m=\lfloor s\rfloor-n\).  If \(s<n\), choose a smooth cutoff \(\chi\) that is
+equal to \(1\) near \(0\), and set \(\chi_\epsilon(x)=\chi(x/\epsilon)\).
+For \(f\in C_c^\infty(\mathbb R^n)\), define
+\[
+  \langle \overline T,f\rangle
+  =
+  \lim_{\epsilon\to0^+}
+  \langle T,(1-\chi_\epsilon)f\rangle .
+\]
+The scaling-degree hypothesis with \(s<n\) implies that the contribution from
+the annulus \(\epsilon<|x|<2\epsilon\) is \(O(\epsilon^{n-s-\eta})\) for every
+\(\eta>0\) small enough; hence the limit exists and is independent of the
+cutoff.  This defines an extension with the same scaling degree.  If two such
+extensions existed, their difference would be supported at \(0\).  A
+distribution supported at \(0\) is a finite sum
+\(\sum c_\alpha\partial^\alpha\delta\), and
+\(\operatorname{sd}_0(\partial^\alpha\delta)=n+|\alpha|\ge n\).  Since
+\(s<n\), no nonzero supported-at-zero difference is allowed.  This proves
+existence and uniqueness in the convergent case.
+
+Assume now \(s\ge n\).  Choose test functions \(w_\alpha\in
+C_c^\infty(\mathbb R^n)\), indexed by \(|\alpha|\le m\), such that
+\[
+  \partial^\beta w_\alpha(0)=\delta_{\alpha\beta}
+  \qquad (|\alpha|,|\beta|\le m).
+\]
+Define the Taylor-subtraction projector
+\[
+  Wf
+  =
+  f-\sum_{|\alpha|\le m}(\partial^\alpha f)(0)\,w_\alpha .
+\]
+Then all derivatives of \(Wf\) at the origin through order \(m\) vanish.  This
+vanishing improves the small-scale behavior exactly enough that the same
+cutoff limit
+\[
+  \langle \overline T_0,f\rangle
+  =
+  \lim_{\epsilon\to0^+}
+  \langle T,(1-\chi_\epsilon)Wf\rangle
+\]
+exists and has scaling degree \(s\).  The functional \(\overline T_0\) agrees
+with \(T\) on test functions supported away from \(0\), because then the
+subtraction terms may be chosen away from the support and the cutoff is
+eventually zero on the support.
+
+The choice of \(w_\alpha\) and the values assigned to the Taylor coefficients
+at the origin are not canonical.  Adding
+\[
+  \sum_{|\alpha|\le m} c_\alpha\,\partial^\alpha\delta^{(n)}
+\]
+keeps the restriction to \(\mathbb R^n\setminus\{0\}\) and has scaling degree
+at most \(n+m\le s\).  Conversely, if \(\overline T_1\) and
+\(\overline T_2\) are two extensions with scaling degree \(s\), their
+difference is supported at \(0\), so it is a finite sum of derivatives of
+\(\delta\).  The scaling-degree bound excludes all terms with
+\(n+|\alpha|>s\), hence \(|\alpha|\le\lfloor s\rfloor-n=m\).  This is exactly
+the displayed ambiguity.
+\end{proof}
+
 \begin{remark}[Ultraviolet content of the scaling-degree theorem]
+\label{rem:uv-content-scaling-degree-theorem}
 This theorem is local at the diagonal.  Its hypotheses already assume that a
 distribution \(T\) is defined on the punctured configuration space
 \(\mathbb R^n\setminus\{0\}\), and the conclusion controls only the missing
@@ -358,7 +425,7 @@ allowed derivative-of-delta ambiguity on that diagonal.
 
 \section{First Counterterm Census in Four Dimensions}
 
-The local nature of the required terms is visible in elementary scalar
+The local nature of the required terms is visible in low-order scalar
 examples.  Vacuum-energy terms are omitted from the census because they affect
 only the zero-point functional.  Linear tadpole terms are fixed by the chosen
 expansion point; in a theory without a symmetry forbidding them, their
@@ -557,15 +624,14 @@ and the coupling multiplying it has dimension
   [g_I]=D-d_I .
 \]
 
-The coefficient \(g_I^{\rm eff}\) of \(\mathcal O_I\) in the 1PI effective
-action is extracted by differentiating an \(n_I\)-point 1PI vertex with
-respect to the appropriate external momenta and then setting those momenta to
-zero, or to a specified Euclidean subtraction point, provided the chosen point
-is infrared regular.  Let \(G\) be a graph contributing to the coefficient of
-\(\mathcal O_I\).  Denote by \(V(G)\) the multiset of interaction vertices in
-the graph, and let \(d_v\) be the engineering dimension of the local operator
-at the vertex \(v\).  Dimensional analysis gives the superficial ultraviolet
-form
+\begin{proposition}[Power-counting finite-list criterion]
+\label{prop:power-counting-finite-list-criterion}
+Let \(G\) be a graph contributing to the coefficient of a local operator
+\(\mathcal O_I\) in the 1PI effective action.  Denote by \(V(G)\) the multiset
+of interaction vertices in the graph, and let \(d_v\) be the engineering
+dimension of the local operator at \(v\).  After the external momentum
+derivatives that extract \(\mathcal O_I\) have been taken, the superficial
+ultraviolet scaling has the form
 \[
   \left(\prod_{v\in V(G)}g_v\right)
   \Lambda^{
@@ -575,23 +641,46 @@ form
   \qquad
   0\le r\le L,
 \]
-where \(L\) is the loop number and \(r\) records possible logarithms.  This is
-a statement about the overall ultraviolet scaling of the graph after its
-external momentum derivatives have selected \(\mathcal O_I\); subdivergences
-are treated recursively in the next chapter.  An overall counterterm for
+where \(L\) is the loop number.  An overall local counterterm for
 \(\mathcal O_I\) can be required only when
 \[
   D-d_I-\sum_{v\in V(G)}(D-d_v)\ge0 .
+  \label{eq:finite-list-power-counting-inequality}
 \]
+If all interaction vertices present in the regulated local chart have
+\(d_v\le D\), then every superficially required overall local counterterm has
+\(d_I\le D\).  For scalar polynomial interactions with finitely many
+derivatives at fixed \(D\), after imposing the chosen symmetries and
+integration-by-parts conventions, the space of such local operators is finite
+dimensional.
+\end{proposition}
+
+\begin{proof}
+The coefficient \(g_I^{\rm eff}\) of \(\mathcal O_I\) in the 1PI effective
+action is extracted by differentiating an \(n_I\)-point 1PI vertex with
+respect to the appropriate external momenta and then setting those momenta to
+zero, or to a specified Euclidean subtraction point, provided the chosen point
+is infrared regular.  Under the ultraviolet rescaling of all loop momenta by
+\(\Lambda\), the coefficient of a dimension-\(d_I\) local operator must have
+engineering dimension \(D-d_I\).  The product of vertices contributes the
+dimension \(\sum_v(D-d_v)\).  Therefore the remaining cutoff dependence has
+the power displayed in the statement; logarithms can occur only when
+homogeneous powers collide or after nested integrations, and their degree is
+bounded at fixed loop order.  This is a statement about the overall
+ultraviolet scaling after subdivergences have either been absent or treated
+recursively by the next chapter's forest formula.
 
 If every coupling appearing in the action has \(d_v\le D\), then
-\(D-d_v\ge0\).  The inequality above implies \(d_I\le D\).  For scalar
+\(D-d_v\ge0\).  Inequality
+\eqref{eq:finite-list-power-counting-inequality} implies \(d_I\le D\).  For
+scalar
 polynomial interactions with finitely many derivatives at fixed \(D\), after
 imposing the chosen symmetries and integration-by-parts conventions there are
 only finitely many local operators with \(d_I\le D\).  This is the
 power-counting finite-list criterion for perturbative renormalizability: every
 local ambiguity allowed by superficial ultraviolet scaling lies in a fixed
 finite-dimensional local operator space.
+\end{proof}
 
 If an interaction with \(d_J>D\) is included and its coefficient is allowed to
 participate in the cutoff-removal problem on the same footing, repeated
@@ -640,6 +729,25 @@ finite parameters are \(m_R\), \(g_R\), and the normalization convention for
 \]
 They are functions of \(m_R,g_R,\mu\) and of the regulator.
 
+\begin{proposition}[One-loop local poles in six-dimensional cubic theory]
+\label{prop:six-dimensional-phi-three-one-loop-local-poles}
+In the \(D=6-\varepsilon\) scalar cubic model above, the order-\(g_R^2\)
+self-energy pole is a local polynomial
+\[
+  \Sigma_2(k)\big|_{\rm pole}
+  =
+  -\frac{g_R^2}{6(4\pi)^3}\frac{k^2}{\varepsilon}
+  -
+  \frac{g_R^2}{(4\pi)^3}\frac{m_R^2}{\varepsilon}
+  +O(\varepsilon^0).
+\]
+It is canceled by \(\delta Z\) and \(\delta m^2\).  The order-\(g_R^3\)
+one-loop three-point pole is local in the cubic vertex and is canceled by
+\(\delta g\), while the one-loop four-point box is ultraviolet finite by
+power counting.
+\end{proposition}
+
+\begin{proof}
 At order \(g_R^2\), the one-loop self-energy is
 \[
   \Sigma_{2}(k)
@@ -721,6 +829,7 @@ ultraviolet divergence.  Its pole is independent of external momenta at the
 local order relevant for the marginal vertex, so it is canceled by
 \(\delta g\).  The one-loop four-point box in \(D=6\) is ultraviolet finite by
 power counting.
+\end{proof}
 
 \begin{figure}[H]
   \centering
