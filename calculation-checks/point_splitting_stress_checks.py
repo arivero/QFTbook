@@ -84,6 +84,23 @@ def check_hadamard_v0_coincidence_formula():
     )
 
 
+def check_flat_hadamard_logarithmic_recursion():
+    # In flat space with constant coefficients, Box sigma = 4 and
+    # P v_j = m^2 v_j.  The recursion gives
+    # (4 + 2j) v_{j+1} = m^2 v_j/(j+1).
+    m_squared = sp.symbols("m_squared")
+    coefficients = [
+        m_squared / 2,
+        m_squared**2 / 8,
+        m_squared**3 / 96,
+        m_squared**4 / 2304,
+    ]
+    for j in range(len(coefficients) - 1):
+        lhs = (4 + 2 * j) * coefficients[j + 1]
+        rhs = m_squared * coefficients[j] / (j + 1)
+        assert_equal(f"flat Hadamard logarithmic recursion v_{j + 1}", sp.simplify(lhs - rhs), 0)
+
+
 def check_wald_finite_freedom_dimensions():
     dim_m = 1
     dim_curvature = 2
@@ -102,10 +119,25 @@ def check_wald_finite_freedom_dimensions():
         assert_equal(f"Wald local freedom dimension {name}", dimension, target_stress_dimension)
 
 
+def check_curvature_squared_euler_tensor_traces():
+    dimension = 4
+    r_squared_trace_coefficient = 2 - Fraction(dimension, 2)
+    r_squared_box_coefficient = 2 * dimension - 2
+    ricci_squared_trace_coefficient = 2 - Fraction(dimension, 2)
+    ricci_squared_box_coefficient = -Fraction(dimension, 2)
+
+    assert_equal("R^2 Euler tensor algebraic trace coefficient", r_squared_trace_coefficient, 0)
+    assert_equal("R^2 Euler tensor Box R trace coefficient", r_squared_box_coefficient, 6)
+    assert_equal("Ricci^2 Euler tensor algebraic trace coefficient", ricci_squared_trace_coefficient, 0)
+    assert_equal("Ricci^2 Euler tensor Box R trace coefficient", ricci_squared_box_coefficient, -2)
+
+
 def main():
     check_flat_hadamard_transport_identity()
     check_hadamard_v0_coincidence_formula()
+    check_flat_hadamard_logarithmic_recursion()
     check_wald_finite_freedom_dimensions()
+    check_curvature_squared_euler_tensor_traces()
 
     w_state = Fraction(7, 5)
     w_prime_state = Fraction(11, 13)

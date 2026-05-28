@@ -836,9 +836,11 @@ Current checks:
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport
-  equation and coincidence value, state-difference cancellation of the
-  common Hadamard singularity, the sign of smooth and scale subtraction
-  changes, Wald finite-freedom engineering dimensions, the
+  equation and coincidence value, the flat massive logarithmic Hadamard
+  recursion through \(v_3\), state-difference cancellation of the common
+  Hadamard singularity, the sign of smooth and scale subtraction changes,
+  Wald finite-freedom engineering dimensions, the \(R^2\) and
+  \(R_{\mu\nu}R^{\mu\nu}\) Euler-tensor trace coefficients, the
   Bose integral \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat
   thermal scalar energy density and traceless equation of state, the massless
   plane-wave eigenvalues of the displayed bidifferential operators, and the

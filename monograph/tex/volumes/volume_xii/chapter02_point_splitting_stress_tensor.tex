@@ -213,6 +213,97 @@ which follows from the normal-coordinate expansion of
 and \eqref{eq:point-splitting-v0-coincidence} follows.
 \end{proof}
 
+\begin{proposition}[Hadamard logarithmic recursion]
+\label{prop:hadamard-logarithmic-recursion}
+Let
+\[
+  V_H(x,y)\sim\sum_{j\ge0}v_j(x,y)\sigma(x,y)^j
+\]
+be the local Hadamard logarithmic coefficient in four dimensions.  After
+\(U_H\) has been fixed by
+\eqref{eq:point-splitting-u-transport}, the coefficients \(v_j\) are
+determined recursively along the geodesic from \(y\) to \(x\) by
+\[
+  \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma-2\bigr)v_0
+  =
+  P_{M,x}U_H,
+  \label{eq:hadamard-recursion-v0}
+\]
+and, for \(j\ge0\),
+\[
+  \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma+2j\bigr)v_{j+1}
+  =
+  \frac{1}{j+1}\,P_{M,x}v_j .
+  \label{eq:hadamard-recursion-vj}
+\]
+At coincidence this gives
+\[
+  v_{j+1}(x,x)
+  =
+  \frac{1}{2(j+1)(j+2)}
+  \left.P_{M,x}v_j(x,y)\right|_{y=x}.
+  \label{eq:hadamard-recursion-coincidence}
+\]
+The recursion fixes the complete diagonal jet of \(V_H\).  Choosing a smooth
+representative with that jet is a Borel-extension choice and changes the
+parametrix only by a smooth biscalar flat at the diagonal, hence only by a
+finite local subtraction in point-split composite fields.
+\end{proposition}
+
+\begin{proof}
+Write \(s=\sigma(x,y)\) and compute away from the diagonal.  For a smooth
+biscalar \(v\),
+\[
+  P_{M,x}(v\,s^k\log s)
+  =
+  \bigl(P_{M,x}(v\,s^k)\bigr)\log s
+  -
+  s^{k-1}
+  \bigl(
+    2\sigma^{;\mu}\nabla_\mu v
+    +(\Box_g\sigma+4k-2)v
+  \bigr).
+  \label{eq:hadamard-recursion-basic-identity}
+\]
+This follows by applying the product rule and
+\(\sigma^{;\mu}\sigma_{;\mu}=2\sigma\), exactly as in the proof of
+Proposition~\ref{prop:first-logarithmic-hadamard-coefficient}.  The
+zeroth-order part \(m^2+\xi R\) contributes to the logarithmic term
+\((P_{M,x}(v\,s^k))\log s\), but not to the displayed nonlogarithmic
+coefficient.
+
+The \(\sigma^{-1}\) nonlogarithmic singularity in
+\[
+  P_{M,x}\left(\frac{U_H}{s}+v_0\log s\right)
+\]
+is \(P_{M,x}U_H\) minus the \(k=0\) coefficient in
+\eqref{eq:hadamard-recursion-basic-identity}; setting it to zero gives
+\eqref{eq:hadamard-recursion-v0}.  For \(j\ge0\), inspect the coefficient of
+\(s^j\log s\) in
+\[
+  P_{M,x}\left(\sum_{\ell\ge0}v_\ell s^\ell\right).
+\]
+The term \(P_{M,x}(v_j s^j)\) contributes \(s^jP_{M,x}v_j\), while the
+lower-derivative part of \(P_{M,x}(v_{j+1}s^{j+1})\) contributes
+\[
+  -(j+1)s^j
+  \bigl(
+    2\sigma^{;\mu}\nabla_\mu v_{j+1}
+    +(\Box_g\sigma+2j)v_{j+1}
+  \bigr).
+\]
+Vanishing of the coefficient of \(s^j\log s\) gives
+\eqref{eq:hadamard-recursion-vj}.  At coincidence
+\(\sigma^{;\mu}=0\) and \(\Box_g\sigma=4\), so
+\eqref{eq:hadamard-recursion-vj} gives
+\eqref{eq:hadamard-recursion-coincidence}.  The transport operator has
+nonzero coincidence coefficient at each step, so the value at \(x=y\) and
+then all transverse derivatives are fixed recursively by differentiating the
+transport equation.  Borel's lemma supplies a smooth biscalar with the
+prescribed infinite jet, and two such choices differ by a smooth biscalar
+flat at the diagonal.
+\end{proof}
+
 Changing the time function in \eqref{eq:point-splitting-sigma-epsilon}
 changes only the boundary-value prescription for the same local positive
 frequency singularity.  Changing \(\mu\) changes the subtraction by the
@@ -449,7 +540,119 @@ and
 with compactly supported metric variations and boundary terms discarded.
 \end{proposition}
 
+\begin{proposition}[Curvature-squared Euler tensors]
+\label{prop:curvature-squared-euler-tensors-point-splitting}
+With the convention of
+\eqref{eq:ij-curvature-tensors-definition}, the two independent
+curvature-squared Euler tensors are
+\[
+\begin{aligned}
+  I_{\mu\nu}
+  &=
+  2RR_{\mu\nu}
+  -\frac12g_{\mu\nu}R^2
+  +2g_{\mu\nu}\Box_gR
+  -2\nabla_\mu\nabla_\nu R,\\
+  J_{\mu\nu}
+  &=
+  2R_{\mu\alpha\nu\beta}R^{\alpha\beta}
+  -\frac12g_{\mu\nu}R_{\alpha\beta}R^{\alpha\beta}
+  +\nabla_\mu\nabla_\nu R
+  -\Box_gR_{\mu\nu}
+  -\frac12g_{\mu\nu}\Box_gR .
+\end{aligned}
+  \label{eq:curvature-squared-euler-tensor-formulas}
+\]
+They are conserved,
+\[
+  \nabla^\mu I_{\mu\nu}=0,\qquad
+  \nabla^\mu J_{\mu\nu}=0,
+  \label{eq:curvature-squared-euler-tensor-conservation}
+\]
+and in four dimensions their traces are
+\[
+  g^{\mu\nu}I_{\mu\nu}=6\Box_gR,\qquad
+  g^{\mu\nu}J_{\mu\nu}=-2\Box_gR .
+  \label{eq:curvature-squared-euler-tensor-traces}
+\]
+\end{proposition}
+
 \begin{proof}
+For the \(R^2\) functional, use
+\[
+  \delta\sqrt{|g|}
+  =
+  -\frac12\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu},
+  \qquad
+  \delta R
+  =
+  R_{\mu\nu}\delta g^{\mu\nu}
+  +g_{\mu\nu}\Box_g\delta g^{\mu\nu}
+  -\nabla_\mu\nabla_\nu\delta g^{\mu\nu}.
+  \label{eq:variation-scalar-curvature-inverse-metric}
+\]
+After two integrations by parts with compactly supported metric variation,
+\[
+  \delta\int\sqrt{|g|}R^2
+  =
+  \int\sqrt{|g|}
+  \left(
+    2RR_{\mu\nu}
+    -\frac12g_{\mu\nu}R^2
+    +2g_{\mu\nu}\Box_gR
+    -2\nabla_\mu\nabla_\nu R
+  \right)\delta g^{\mu\nu},
+\]
+which is the first line of
+\eqref{eq:curvature-squared-euler-tensor-formulas}.  The same calculation
+for \(\int\sqrt{|g|}R_{\alpha\beta}R^{\alpha\beta}\), using
+\[
+  \delta R_{\mu\nu}
+  =
+  \frac12g_{\mu\alpha}g_{\nu\beta}\Box_g\delta g^{\alpha\beta}
+  +\frac12g_{\alpha\beta}\nabla_\mu\nabla_\nu\delta g^{\alpha\beta}
+  -\frac12g_{\mu\alpha}\nabla_\beta\nabla_\nu\delta g^{\alpha\beta}
+  -\frac12g_{\nu\alpha}\nabla_\beta\nabla_\mu\delta g^{\alpha\beta},
+  \label{eq:variation-ricci-inverse-metric}
+\]
+commuting covariant derivatives where needed, gives the second line.  These
+are ordinary variational identities for compactly supported variations; no
+field equation is used.
+
+Conservation follows from diffeomorphism invariance of the two functionals.
+For a compactly supported infinitesimal diffeomorphism generated by
+\(\zeta^\mu\),
+\[
+  \delta_\zeta g^{\mu\nu}
+  =
+  -\nabla^\mu\zeta^\nu-\nabla^\nu\zeta^\mu .
+\]
+If \(E_{\mu\nu}\) denotes either variational derivative, then
+\[
+  0=\delta_\zeta\mathcal F
+  =
+  -2\int\sqrt{|g|}\,E_{\mu\nu}\nabla^\mu\zeta^\nu
+  =
+  2\int\sqrt{|g|}\,(\nabla^\mu E_{\mu\nu})\zeta^\nu ,
+\]
+so \(\nabla^\mu E_{\mu\nu}=0\) distributionally, hence smoothly.  Taking
+the trace of the two displayed formulas and using
+\(g^{\mu\nu}\Box_gR_{\mu\nu}=\Box_gR\) gives
+\[
+  g^{\mu\nu}I_{\mu\nu}
+  =
+  (2-\tfrac D2)R^2+(2D-2)\Box_gR,
+  \qquad
+  g^{\mu\nu}J_{\mu\nu}
+  =
+  (2-\tfrac D2)R_{\alpha\beta}R^{\alpha\beta}
+  -\frac D2\Box_gR .
+\]
+Setting \(D=4\) gives
+\eqref{eq:curvature-squared-euler-tensor-traces}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}]
 By the state-dependence condition in
 Definition~\ref{def:point-split-stress-tensor-prescription}, the difference
 between two prescriptions cannot depend on the smooth part of the Hadamard
