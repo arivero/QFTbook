@@ -526,12 +526,193 @@ the norm of \(\mathcal K\); without such a bound, the projected equation is
 only a coordinate calculation.
 \end{proof}
 
+\section{Hierarchical Scalar Fixed-Point Benchmark}
+
+Scalar non-Gaussian fixed points provide the most familiar physical target
+for Wilsonian RG, but the mathematical status depends strongly on the map
+being studied.  The hierarchical scalar models form a class in which the
+block-spin map is an explicitly defined nonlinear integral operator.  They
+are not the short-range nearest-neighbor lattice \(\phi^4\) models, and a
+theorem for the hierarchical map is not, by itself, a theorem for the
+ordinary three-dimensional Ising or \(\phi^4\) fixed point.  They are
+nevertheless an essential benchmark because the fixed point, unstable
+directions, and irrelevant remainder can be treated in a genuine
+infinite-dimensional RG problem rather than in a finite beta-function
+truncation.
+
+\begin{definition}[Hierarchical scalar RG datum]
+\label{def:hierarchical-scalar-rg-datum}
+A one-component hierarchical scalar RG datum consists of:
+\begin{enumerate}
+  \item a scale factor \(L>1\), a dimension parameter \(D>0\), and
+  \(b=L^D\);
+  \item a field scaling exponent \(\Delta>0\), a number
+  \(a=L^{-\Delta}\), and a fluctuation variance \(\gamma>0\);
+  \item a Banach space \(\mathcal B_{\rm hier}\) of even real-analytic
+  functions \(V:\mathbb R\to\mathbb R\), modulo additive constants, with a
+  norm controlling a complex strip or disk and large-field growth;
+  \item the nonlinear map \(\mathcal R_{\rm hier}\) defined, whenever the
+  integral is finite and analytic in the chosen domain, by
+  \[
+    e^{-(\mathcal R_{\rm hier}V)(\Phi)}
+    =
+    Z_V^{-1}
+    \int_{\mathbb R}
+      \exp\!\left[-b\,V(a\Phi+\zeta)\right]\,
+      \frac{e^{-\zeta^2/(2\gamma)}}{\sqrt{2\pi\gamma}}\,\dd\zeta ,
+    \label{eq:hierarchical-scalar-rg-map}
+  \]
+  where \(Z_V\) is fixed by the normalization
+  \((\mathcal R_{\rm hier}V)(0)=0\).
+\end{enumerate}
+The datum is a mathematical RG system.  The hierarchical covariance and the
+normalization convention are part of the definition; they are not inferred
+from a continuum path integral after the fact.
+\end{definition}
+
+The linearization at the Gaussian point already shows the local-coordinate
+arithmetic that underlies the usual relevance labels.  The following
+calculation is exact for the hierarchical Gaussian kernel and does not use a
+formal momentum shell.
+
+\begin{proposition}[Gaussian linearization in Wick coordinates]
+\label{prop:hierarchical-gaussian-wick-eigenvalues}
+Let \(0<a<1\), \(\gamma>0\), and
+\[
+  c_\ast=\frac{\gamma}{1-a^2}.
+\]
+For \(n\geq0\), define the Wick polynomial
+\(:x^n:_{c_\ast}\) by
+\[
+  \exp\!\left(tx-\frac{c_\ast t^2}{2}\right)
+  =
+  \sum_{n=0}^\infty \frac{t^n}{n!}\,:x^n:_{c_\ast}.
+  \label{eq:hierarchical-wick-generating-function}
+\]
+The derivative of \(\mathcal R_{\rm hier}\) at \(V=0\), before quotienting
+the additive constant, acts on the nonconstant Wick coordinates by
+\[
+  D\mathcal R_{\rm hier}|_0\bigl(:\Phi^n:_{c_\ast}\bigr)
+  =
+  b\,a^n :\Phi^n:_{c_\ast},
+  \qquad n\geq1 .
+  \label{eq:hierarchical-wick-eigenvalue}
+\]
+In the canonical scalar bookkeeping
+\[
+  \Delta=\frac{D-2}{2},
+  \qquad b=L^D,
+\]
+the even local coordinate \(:\Phi^{2r}:\) has engineering eigenvalue
+\[
+  \lambda_{2r}=L^{y_{2r}},
+  \qquad
+  y_{2r}=D-r(D-2).
+  \label{eq:hierarchical-scalar-engineering-exponent}
+\]
+Thus \(y_2=2\), \(y_4=4-D\), and \(y_6=6-2D\).
+\end{proposition}
+
+\begin{proof}
+For the first variation of \eqref{eq:hierarchical-scalar-rg-map}, additive
+normalization affects only the constant coordinate.  Hence for a
+nonconstant test direction \(f\),
+\[
+  D\mathcal R_{\rm hier}|_0 f
+  =
+  b\int_{\mathbb R} f(a\Phi+\zeta)\,\dd\mu_\gamma(\zeta)
+  \quad\text{mod constants},
+  \label{eq:hierarchical-linearized-map}
+\]
+where \(\dd\mu_\gamma\) is the centered Gaussian measure of variance
+\(\gamma\).  Apply this to the generating function
+\eqref{eq:hierarchical-wick-generating-function}.  Since
+\(c_\ast-\gamma=a^2c_\ast\),
+\[
+\begin{aligned}
+  \int
+  \exp\!\left(t(a\Phi+\zeta)-\frac{c_\ast t^2}{2}\right)
+  \dd\mu_\gamma(\zeta)
+  &=
+  \exp\!\left(ta\Phi-\frac{(c_\ast-\gamma)t^2}{2}\right)        \\
+  &=
+  \exp\!\left(ta\Phi-\frac{a^2c_\ast t^2}{2}\right)             \\
+  &=
+  \sum_{n=0}^\infty
+    \frac{t^n}{n!}\,a^n:\Phi^n:_{c_\ast}.
+\end{aligned}
+\]
+Comparing coefficients gives the factor \(a^n\); the prefactor \(b\) in
+\eqref{eq:hierarchical-linearized-map} gives
+\eqref{eq:hierarchical-wick-eigenvalue}.  Substituting
+\(a=L^{-(D-2)/2}\) and \(n=2r\) gives
+\[
+  b\,a^{2r}
+  =
+  L^D L^{-r(D-2)}
+  =
+  L^{D-r(D-2)} ,
+\]
+which is \eqref{eq:hierarchical-scalar-engineering-exponent}.
+\end{proof}
+
+\begin{quotedtheorem}[Hierarchical scalar non-Gaussian fixed point]
+\label{qthm:hierarchical-scalar-nongaussian-fixed-point}
+For the Dyson--Wilson hierarchical scalar RG maps in the
+Bleher--Sinai and Collet--Eckmann class, and for the closely related
+\(\phi^4_{3,\epsilon}\) RG construction of
+Brydges--Mitter--Scoppola,\footnote{See P.~M.~Bleher and Ya.~G.~Sinai,
+``Investigation of the critical point in models of the type of Dyson's
+hierarchical models,'' \emph{Commun. Math. Phys.} \textbf{33} (1973);
+P.~Collet and J.-P.~Eckmann, \emph{A Renormalization Group Analysis of the
+Hierarchical Model in Statistical Mechanics}, Lecture Notes in Physics
+\textbf{74}, Springer (1978); and D.~C.~Brydges, P.~K.~Mitter, and
+B.~Scoppola, ``Critical \((\Phi^4)_{3,\epsilon}\),'' arXiv:hep-th/0206040.}
+there are parameter regimes in which a
+non-Gaussian fixed point exists as an element of a Banach space of analytic
+or polymer interactions.  In these regimes the theorem supplies an RG map, a
+domain and norm, a fixed interaction \(V_\ast\), a finite-dimensional
+unstable subspace, contraction or graph estimates for the stable directions,
+and scaling estimates for the corresponding hierarchical or
+\(\phi^4_{3,\epsilon}\) observable data.
+\end{quotedtheorem}
+
+\begin{proof}[Status of the quoted theorem]
+The theorem is quoted as a benchmark, not as an imported proof for the
+ordinary short-range three-dimensional scalar fixed point.  Its mathematical
+content is that the non-Gaussian fixed point is an element of the specified
+infinite-dimensional RG domain and that the irrelevant coordinates are
+controlled by estimates in that domain.  The hierarchical proofs exploit the
+recursive structure of the covariance; the
+\(\phi^4_{3,\epsilon}\) construction uses a multiscale decomposition and
+polymer estimates adapted to the fractional covariance.  In both cases the
+result is stronger than locating a zero of a finite beta function and weaker
+than a construction of the short-range \(\phi^4_3\) Wilson--Fisher CFT.
+That last comparison would require a theorem relating the short-range
+block-spin map and reconstruction data to one of these fixed-point systems.
+\end{proof}
+
+The companion calculation
+\[
+  \texttt{calculation-checks/rg\_hierarchical\_scalar\_checks.py}
+\]
+checks \eqref{eq:hierarchical-wick-eigenvalue} and
+\eqref{eq:hierarchical-scalar-engineering-exponent} with exact rational
+arithmetic for the even Wick coordinates used above.
+
 \section{Current Rigorous Fixed-Point Benchmarks}
 
 The preceding definition deliberately separates what has been proved from
 what is inferred from formal or numerical RG.  Recent rigorous work supplies
 benchmarks for both the constructive-field-theory and tensor-network
 versions of the problem.
+
+The hierarchical scalar results just described are the cleanest scalar
+examples of theorem-level non-Gaussian Wilsonian fixed points.  Their role
+in this chapter is deliberately calibrated: they prove that scalar
+non-Gaussian fixed points can be constructed in rigorous RG systems with
+irrelevant tails, but they do not settle the ordinary short-range
+three-dimensional scalar fixed point.
 
 In the long-range fermionic \(\psi^4_d\) models analyzed by
 Giuliani, Mastropietro, Rychkov, and collaborators,\footnote{See

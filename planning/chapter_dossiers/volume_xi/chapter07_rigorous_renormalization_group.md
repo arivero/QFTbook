@@ -40,6 +40,18 @@ constructive RG developments.
   long-range fermionic benchmark.
 - `[psi]`, `[J]`: field and density source scaling dimensions in the
   fermionic fixed-point output theorem.
+- `L`, `D`, `b=L^D`: hierarchical scale factor, dimension parameter, and
+  block volume in the scalar hierarchical RG datum.
+- `Delta`, `a=L^{-Delta}`, `gamma`: field scaling dimension, rescaling
+  factor, and hierarchical Gaussian fluctuation variance.
+- `B_hier`: Banach space of even analytic scalar hierarchical interactions,
+  modulo additive constants.
+- `R_hier`: hierarchical nonlinear RG map defined by one-dimensional Gaussian
+  convolution and block power.
+- `c_*`, `:Phi^n:_{c_*}`: fixed Gaussian variance and Wick coordinates used
+  to diagonalize the Gaussian hierarchical linearization.
+- `y_{2r}=D-r(D-2)`: engineering exponent of the even scalar local
+  coordinate `:Phi^{2r}:`.
 - `I`: index set of microscopic regulators in a Wilsonian universality datum.
 - `Rec_{i,n}`: \(n\)-step reconstruction map from a tuned microscopic
   regulator to normalized long-distance observable data.
@@ -80,8 +92,19 @@ constructive RG developments.
   solving only the projected local-coordinate equation leaves an uncontrolled
   \(Q(\mathcal R(V)-V)\) residual unless a graph or contraction solves the
   full irrelevant equation.
+- Defines a hierarchical scalar RG datum as an explicit nonlinear Gaussian
+  convolution map on a Banach space of even analytic interactions, with the
+  hierarchical covariance and normalization convention included in the data.
+- Proves the Gaussian hierarchical linearization in Wick coordinates:
+  \(D\mathcal R_{\rm hier}|_0(:\Phi^n:)=b a^n:\Phi^n:\), and derives the
+  canonical scalar engineering exponent \(y_{2r}=D-r(D-2)\).
+- Quotes the theorem-level hierarchical scalar non-Gaussian fixed-point
+  benchmark, while explicitly separating it from an unproved construction of
+  the ordinary short-range three-dimensional scalar Wilson-Fisher fixed
+  point.
 - Records current rigorous benchmarks: constructive long-range fermionic
-  \(\psi^4_d\) fixed points with irrelevant kernels included, and
+  \(\psi^4_d\) fixed points with irrelevant kernels included, hierarchical
+  scalar fixed points with controlled unstable/stable directions, and
   infinite-dimensional tensor-RG fixed points with explicit contraction
   neighborhoods.
 - Gives a precise monograph definition of universality class as an RG
@@ -103,3 +126,6 @@ remainder contraction.
 - `calculation-checks/rg_projection_checks.py`: exact rational check for the
   finite-dimensional projected-zero counterexample and complement-residual
   lift calculation, plus the finite irrelevant-tail graph equation.
+- `calculation-checks/rg_hierarchical_scalar_checks.py`: exact rational
+  checks for the hierarchical scalar Gaussian Wick-coordinate eigenvalue,
+  engineering exponents, and relevance bookkeeping.

@@ -285,6 +285,12 @@ Current checks:
   complement-residual lift condition used in the Newton--Kantorovich
   argument, plus the finite irrelevant-tail graph equation illustrating why
   projected local coordinates alone do not define a Wilsonian fixed point.
+- `rg_hierarchical_scalar_checks.py`: exact rational checks for the Volume XI
+  hierarchical-scalar RG benchmark, including the Gaussian
+  Wick-coordinate eigenvalue
+  \(D\mathcal R_0(:\Phi^n:)=b a^n:\Phi^n:\), the engineering exponents
+  \(y_{2r}=D-r(D-2)\), and the relevance/marginality/irrelevance
+  bookkeeping for the mass, quartic, sextic, and higher scalar coordinates.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the
