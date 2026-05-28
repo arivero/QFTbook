@@ -1228,24 +1228,39 @@ Unruh temperature along an accelerated orbit.
   \resizebox{0.80\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      wedge/.style={draw,line width=0.9pt,fill=blue!5},
+      wedgebd/.style={line width=1.0pt},
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
       box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
         minimum width=2.8cm,minimum height=0.82cm,align=center}
     }
-    \draw[->] (-3.2,0)--(3.2,0) node[right] {space};
-    \draw[->] (0,-2.5)--(0,2.5) node[above] {time};
-    \draw[wedge] (0,0)--(2.15,2.15)--(2.15,-2.15)--cycle;
-    \node[blue!55!black] at (1.45,0) {wedge \(W\)};
-    \draw[arrow,green!45!black] (0.8,-0.75) arc[start angle=-42,end angle=42,radius=1.1];
-    \node[green!45!black] at (2.45,1.3) {boost flow};
-    \node[box] at (-2.1,-1.55) {modular group\\\(\Delta_W^{\ii t}\)};
-    \draw[arrow] (-1.05,-1.25)--(0.9,-0.55);
+    \draw[->] (-0.85,0)--(3.35,0) node[right] {\(x^1\)};
+    \draw[->] (0,-2.55)--(0,2.55) node[above] {\(x^0\)};
+    \path[fill=blue!5] (0,0)--(2.62,2.62)--(2.62,-2.62)--cycle;
+    \draw[wedgebd] (0,0)--(2.48,2.48)
+      node[pos=0.86,above left,fill=white,inner sep=1pt] {\(x^0=x^1\)};
+    \draw[wedgebd] (0,0)--(2.48,-2.48)
+      node[pos=0.86,below left,fill=white,inner sep=1pt] {\(x^0=-x^1\)};
+    \node[blue!55!black,fill=white,inner sep=1.5pt] at (2.12,0.04)
+      {\(W_R=\{x^1>|x^0|\}\)};
+    \draw[green!35!black,line width=0.6pt,domain=-1.05:1.05,samples=80,smooth,variable=\s]
+      plot ({1.35*(exp(\s)+exp(-\s))/2},{1.35*(exp(\s)-exp(-\s))/2});
+    \draw[arrow,green!45!black,domain=-0.95:0.95,samples=80,smooth,variable=\s]
+      plot ({0.82*(exp(\s)+exp(-\s))/2},{0.82*(exp(\s)-exp(-\s))/2});
+    \node[green!45!black,fill=white,inner sep=1.5pt] at (2.68,1.34)
+      {boost orbit};
+    \node[green!45!black,fill=white,inner sep=1.5pt] at (1.82,-1.36)
+      {\((x^1)^2-(x^0)^2=\rho^2\)};
+    \node[box] (modbox) at (-2.0,-1.55)
+      {modular group\\\(\Delta_{W_R}^{\ii t}\)};
+    \draw[arrow] (modbox.east) -- (0.73,-0.36);
+    \node[fill=white,inner sep=1.5pt] at (-1.78,-2.35)
+      {\(\Delta_{W_R}^{\ii t}=U(\Lambda_R(-2\pi t))\)};
   \end{tikzpicture}
   }
   \caption{By the Bisognano--Wichmann theorem, or by the corresponding explicit
   modular-covariance hypothesis in an AQFT net, wedge modular flow is geometric
-  Lorentz boost flow.}
+  Lorentz boost flow; its flow lines inside the right wedge are hyperbolae
+  \((x^1)^2-(x^0)^2=\rho^2\).}
   \label{fig:modular-wedge-flow}
 \end{figure}
 
