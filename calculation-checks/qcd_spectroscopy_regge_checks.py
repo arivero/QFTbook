@@ -369,6 +369,25 @@ def check_gevp_basis_covariance() -> None:
     assert_equal("GEVP determinant basis covariance", det_2(gevp_matrix_prime), det_2(gevp_matrix))
 
 
+def check_shallow_bound_effective_range_algebra() -> None:
+    kappa = Fraction(1, 3)
+    reduced_mass = Fraction(7, 2)
+    effective_range = Fraction(1)
+    scattering_length = 1 / (kappa - effective_range * kappa**2 / 2)
+
+    pole_condition = 1 / scattering_length - kappa + effective_range * kappa**2 / 2
+    assert_equal("effective-range bound-state pole condition", pole_condition, Fraction(0))
+
+    residue = kappa / (reduced_mass * (1 - effective_range * kappa))
+    denominator_derivative = reduced_mass * (effective_range * kappa - 1) / kappa
+    pole_coefficient = 1 / denominator_derivative
+    assert_equal("effective-range pole residue sign", pole_coefficient, -residue)
+
+    compositeness_from_a = scattering_length * kappa / (2 - scattering_length * kappa)
+    compositeness_from_re = 1 / (1 - effective_range * kappa)
+    assert_equal("effective-range compositeness coordinate", compositeness_from_a, compositeness_from_re)
+
+
 def check_coupled_channel_determinant_reduction() -> None:
     # In an unmixed two-channel finite-volume determinant,
     # det(K^{-1}+F)=0 reduces channel by channel.  This pins down the sign of
@@ -565,6 +584,7 @@ def main() -> None:
     check_pipi_crossing_and_roy_subtractions()
     check_roy_steiner_unequal_mass_kinematics()
     check_gevp_basis_covariance()
+    check_shallow_bound_effective_range_algebra()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()

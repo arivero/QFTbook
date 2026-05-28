@@ -4387,6 +4387,148 @@ near-threshold exotic candidates.  The notation ``tetraquark'', ``molecule'',
 overlaps, pole motion under controlled deformations, large-\(N_c\) scaling,
 or residue factorization.  It is not a separate definition of the state.
 
+\begin{definition}[Controlled pole-motion chart]
+\label{def:qcd-controlled-pole-motion-chart}
+Let \(\eta\) be a real coordinate on a family of QCD-like theories or
+regulators whose action, operator definitions, stable-channel spectrum, and
+renormalization prescription have been specified for \(\eta\) in an open
+interval \(I\).  Examples include a quark-mass coordinate, \(1/N_c\) in a
+large-\(N_c\) family, a finite-volume boundary condition used as an auxiliary
+probe before the infinite-volume limit, or a coupling to a source that is set
+to zero after differentiating.  A pole-motion chart in a fixed set of
+conserved quantum numbers consists of:
+\begin{enumerate}
+  \item a channel space \(\mathcal C_\eta\) of stable color-singlet
+  asymptotic states for each \(\eta\), with an identification of these
+  channel spaces over the interval where no threshold crossing changes the
+  channel list;
+  \item an analytic family of continued partial-wave amplitudes
+  \(t^{(\Sigma)}_{ab}(s;\eta)\) on a declared sheet \(\Sigma\);
+  \item an isolated simple pole \(s_\ast(\eta)\) and residue vectors
+  \(g_a(\eta)\) satisfying
+  \[
+    t_{ab}^{(\Sigma)}(s;\eta)
+    =
+    \frac{g_a(\eta)g_b(\eta)}{s_\ast(\eta)-s}
+    +h_{ab}(s;\eta),
+  \]
+  with \(h_{ab}\) holomorphic near \(s_\ast(\eta)\).
+\end{enumerate}
+The derivative \(\dd s_\ast/\dd\eta\), the projective residue vector
+\([g_a(\eta)]\), and their behavior near thresholds are coordinates on the
+declared chart.  They are not intrinsic labels unless the family, channel
+identification, and sheet have been included in the statement.
+\end{definition}
+
+\begin{proposition}[Shallow \(S\)-wave bound-state effective-range chart]
+\label{prop:qcd-shallow-bound-state-effective-range-chart}
+Consider one stable two-hadron channel with reduced mass \(\mu\), threshold
+energy set to \(E=0\), and center-of-mass momentum
+\(k=\sqrt{2\mu E}\), where the physical branch has \(k>0\) for \(E>0\) and
+\(\operatorname{Im}k>0\) below threshold.  Suppose that in an energy disk
+whose radius is large compared with the binding energy but small compared
+with the first omitted left-hand or inelastic singularity, the elastic
+\(S\)-wave amplitude is represented by the effective-range form
+\begin{equation}
+  f(k)
+  =
+  \frac{1}{-a^{-1}+\frac12 r_e k^2-\ii k},
+  \label{eq:qcd-effective-range-amplitude}
+\end{equation}
+where \(a\) is the scattering length and \(r_e\) is the effective range in
+this normalization.  If \(f\) has a bound-state pole at
+\(E=-B=-\kappa^2/(2\mu)\), with \(\kappa>0\), then
+\begin{equation}
+  \frac1a=\kappa-\frac12 r_e\kappa^2.
+  \label{eq:qcd-effective-range-bound-pole-condition}
+\end{equation}
+Moreover, near \(E=-B\),
+\begin{equation}
+  f(E)
+  =
+  -\,\frac{g_{\rm eff}^2}{E+B}+O(1),
+  \qquad
+  g_{\rm eff}^2
+  =
+  \frac{\kappa}{\mu(1-r_e\kappa)}.
+  \label{eq:qcd-effective-range-bound-residue}
+\end{equation}
+When \(1-r_e\kappa\ne0\), the dimensionless coordinate
+\begin{equation}
+  X_{\rm ERE}
+  :=
+  \frac{a\kappa}{2-a\kappa}
+  =
+  \frac{1}{1-r_e\kappa}
+  \label{eq:qcd-effective-range-compositeness-coordinate}
+\end{equation}
+is determined by the low-energy pole and the first two effective-range
+parameters.  It is a compositeness coordinate in this one-channel
+effective-range chart, not a regulator-independent probability attached to a
+QCD eigenstate without the hypotheses above.
+\end{proposition}
+
+\begin{proof}
+The bound-state pole lies on the physical sheet at \(k=\ii\kappa\).  The
+denominator of \eqref{eq:qcd-effective-range-amplitude} therefore vanishes:
+\[
+  -a^{-1}
+  +\frac12 r_e(\ii\kappa)^2
+  -\ii(\ii\kappa)
+  =
+  -a^{-1}-\frac12 r_e\kappa^2+\kappa=0,
+\]
+which gives \eqref{eq:qcd-effective-range-bound-pole-condition}.
+
+Let
+\[
+  D(k)=-a^{-1}+\frac12 r_e k^2-\ii k.
+\]
+Since \(E=k^2/(2\mu)\), one has
+\[
+  \frac{\dd D}{\dd E}
+  =
+  (r_e k-\ii)\frac{\mu}{k}.
+\]
+Evaluating at \(k=\ii\kappa\) gives
+\[
+  \left.\frac{\dd D}{\dd E}\right|_{E=-B}
+  =
+  \frac{\mu(r_e\kappa-1)}{\kappa}.
+\]
+Thus
+\[
+  D(E)=\frac{\mu(r_e\kappa-1)}{\kappa}(E+B)+O((E+B)^2),
+\]
+and
+\[
+  f(E)=
+  \frac{\kappa}{\mu(r_e\kappa-1)}\frac1{E+B}+O(1)
+  =
+  -\,\frac{\kappa}{\mu(1-r_e\kappa)}\frac1{E+B}+O(1),
+\]
+which is \eqref{eq:qcd-effective-range-bound-residue}.  Finally,
+\eqref{eq:qcd-effective-range-bound-pole-condition} gives
+\[
+  a\kappa=\frac{1}{1-\frac12 r_e\kappa}.
+\]
+Substituting this expression into \(a\kappa/(2-a\kappa)\) yields
+\[
+  \frac{a\kappa}{2-a\kappa}
+  =
+  \frac{1}{1-r_e\kappa},
+\]
+proving \eqref{eq:qcd-effective-range-compositeness-coordinate}.
+\end{proof}
+
+The proposition is deliberately local.  It does not classify every
+near-threshold QCD pole.  In coupled channels, or when the omitted range scale
+is not separated from \(\kappa^{-1}\), the residue vector and pole motion of
+Definition~\ref{def:qcd-controlled-pole-motion-chart} are the appropriate
+coordinates.  A statement that a pole is molecular, compact, hybrid, or
+predominantly glueball-like must then be translated into source overlaps,
+residues, large-\(N_c\) behavior, or a specified deformation path.
+
 The light pseudoscalar sector has additional structure because chiral symmetry
 and the anomaly constrain the low-energy coordinates.  Chapter~\ref{ch:volume-ii-21}
 derives the pion effective theory, the Gell-Mann--Oakes--Renner relation, and
