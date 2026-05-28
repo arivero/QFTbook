@@ -851,18 +851,19 @@ Current checks:
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
   and topological-charge normalization on the \(\CP^1\) chart, the
-  \(\CP^1=O(3)\) Pauli-matrix kinetic and degree-normalization ledger,
+  \(\CP^1=O(3)\) Pauli-matrix kinetic and degree-normalization identities,
   the algebraic equivalence between the principal-chiral-model and
   symmetric-space Lax flatness polynomials and their
   equation-of-motion/Maurer--Cartan systems, the Polyakov--Wiegmann boundary
   coefficient in the chapter's WZ normalization, sample WZW central charges,
+  endpoint primary-weight formulae, diagonal \(SU(2)\) coset central charges,
   nonabelian-bosonization central-charge bookkeeping, the projective-model
   crossing tensors and \(V\otimes V^\vee\) singlet/adjoint projectors, the
   \(SU(N)\) sine-mass/fusion-angle and rational-matrix bootstrap identities,
   the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
-  principal-chiral gamma-function scalar unitarity ledgers, the supersphere,
-  projective-supermodel, and orthosymplectic one-loop cancellation ledgers,
-  the repulsive sausage charged scattering ledgers, and the sausage-metric
+  principal-chiral gamma-function scalar unitarity identities, the supersphere,
+  projective-supermodel, and orthosymplectic one-loop cancellations,
+  the repulsive sausage charged scattering identities, and the sausage-metric
   scalar-curvature, Ricci-flow closure, integrated Ricci trajectories, and
   cylinder endpoint formulae.
 - `susy_yang_mills_family_checks.py`: exact finite checks for the

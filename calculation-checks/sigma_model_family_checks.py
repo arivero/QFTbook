@@ -2,13 +2,14 @@
 """Exact finite checks for sigma-model family identities.
 
 The checks cover the CP^{N-1} projector geometry, the CP^1/O(3) Pauli-matrix
-normalization ledger, the PCM Lax coefficient split, the Polyakov-Wiegmann WZ
-coefficient, WZW central charges, nonabelian-bosonization central-charge
-bookkeeping, the projective-model crossing tensors, the SU(N)
-sine-mass/fusion-angle and rational-matrix bootstrap blocks, the repulsive
-sausage charged scattering ledgers, the supertarget one-loop coefficient
-ledgers, and the curvature and one-loop Ricci-flow closure formulae for the
-sausage metric used in Volume VI.
+normalization identities, the PCM Lax coefficient split, the
+Polyakov-Wiegmann WZ coefficient, WZW central charges and endpoint
+representation formulae, nonabelian-bosonization central-charge bookkeeping,
+the projective-model crossing tensors, the SU(N) sine-mass/fusion-angle and
+rational-matrix bootstrap blocks, the repulsive sausage charged scattering
+identities, the supertarget one-loop coefficients, and the curvature and
+one-loop Ricci-flow closure formulae for the sausage metric used in
+Volume VI.
 """
 
 from __future__ import annotations
@@ -157,6 +158,41 @@ def check_wzw_central_charge_examples() -> None:
     # c = k dim(g)/(k+hvee).  For SU(2)_1 this is c=1; for SU(3)_1 this is c=2.
     assert_equal("SU(2)_1 WZW c", Fraction(1 * 3, 1 + 2), Fraction(1))
     assert_equal("SU(3)_1 WZW c", Fraction(1 * 8, 1 + 3), Fraction(2))
+
+
+def check_wzw_endpoint_representation_formulas() -> None:
+    for level in range(1, 9):
+        su2_c = Fraction(3 * level, level + 2)
+        assert_equal(
+            f"SU(2)_{level} Sugawara central charge",
+            su2_c,
+            Fraction(level * 3, level + 2),
+        )
+        for ell in range(level + 1):
+            numerator = ell * (ell + 2)
+            conformal_weight = Fraction(numerator, 4 * (level + 2))
+            assert_equal(
+                f"SU(2)_{level} primary weight ell={ell}",
+                conformal_weight,
+                Fraction(ell * (ell + 2), 4 * (level + 2)),
+            )
+
+        coset_c = su2_c + Fraction(1) - Fraction(3 * (level + 1), level + 3)
+        minimal_c = Fraction(1) - Fraction(6, (level + 2) * (level + 3))
+        assert_equal(
+            f"SU(2)_k x SU(2)_1 / SU(2)_{{k+1}} c k={level}",
+            coset_c,
+            minimal_c,
+        )
+
+    for n in range(2, 8):
+        # For SU(N), dim g = N^2-1 and h^vee = N in the long-root-squared-2
+        # convention used in the WZW endpoint section.
+        assert_equal(
+            f"SU({n})_1 WZW central charge",
+            Fraction(n * n - 1, n + 1),
+            Fraction(n - 1),
+        )
 
 
 def check_nonabelian_bosonization_central_charge() -> None:
@@ -614,6 +650,7 @@ def main() -> None:
     check_symmetric_space_lax_coefficients()
     check_polyakov_wiegmann_coefficient()
     check_wzw_central_charge_examples()
+    check_wzw_endpoint_representation_formulas()
     check_nonabelian_bosonization_central_charge()
     check_projective_crossing_tensors()
     check_su_n_sine_mass_fusion()

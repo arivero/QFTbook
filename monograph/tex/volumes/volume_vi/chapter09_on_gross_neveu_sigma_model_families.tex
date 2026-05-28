@@ -924,16 +924,244 @@ exactly the condition that \(\exp(-S_{k,\lambda})\) be independent of that
 choice.
 \end{proof}
 
-At the conformal WZW point the chiral currents generate
-the affine algebra \(\widehat{\mathfrak g}_k\), and the Sugawara stress tensor
+\subsection{Current Algebra at the WZW Endpoint}
+\label{subsec:volvi-wzw-endpoint-current-algebra}
+
+The conformal endpoint is specified by its local current algebra, positive
+energy representation space, stress tensor, and Ward identities.  We record
+the construction here in the sigma-model normalization used in this chapter;
+Volume~V develops the same object from the broader two-dimensional CFT point
+of view.
+
+Let \((\,\cdot\,,\,\cdot\,)\) be the basic invariant form on
+\(\mathfrak g\), normalized so that long roots have squared length \(2\).
+Choose an orthonormal basis \(T_a\), write
+\[
+  [T_a,T_b]=f_{ab}{}^cT_c,\qquad f_{abc}=f_{ab}{}^d\delta_{dc},
+\]
+and define the dual Coxeter number by
+\begin{equation}
+  f_{acd}f_{bcd}=2h^\vee\delta_{ab}.
+  \label{eq:volvi-wzw-dual-coxeter-normalization}
+\end{equation}
+With this convention the adjoint quadratic Casimir is \(2h^\vee\).
+At a positive integer level \(k\), the holomorphic and antiholomorphic
+currents have separated-point OPEs
+\begin{equation}
+  J^a(z)J^b(0)
+  \sim
+  \frac{k\delta^{ab}}{z^2}
+  +
+  \frac{f_{ab}{}^cJ^c(0)}{z},
+  \qquad
+  \bar J^a(\bar z)\bar J^b(0)
+  \sim
+  \frac{k\delta^{ab}}{\bar z^2}
+  +
+  \frac{f_{ab}{}^c\bar J^c(0)}{\bar z}.
+  \label{eq:volvi-wzw-current-ope}
+\end{equation}
+The mixed \(J\bar J\) OPE is regular at separated points.  If
+\[
+  J^a(z)=\sum_{n\in\mathbb Z}J_n^az^{-n-1},
+\]
+then \eqref{eq:volvi-wzw-current-ope} is equivalent to
+\begin{equation}
+  [J_m^a,J_n^b]
+  =
+  f_{ab}{}^cJ_{m+n}^c
+  +
+  km\,\delta^{ab}\delta_{m+n,0}.
+  \label{eq:volvi-wzw-affine-mode-algebra}
+\end{equation}
+The integer \(k\) is therefore both the Wess--Zumino level and the central
+extension of the loop algebra.  This equality is a theorem of the canonical
+quantization of the WZW functional or, equivalently, of the current Ward
+identity derived from the Polyakov--Wiegmann identity; it is not a separate
+postulate appended to the sigma model.
+
+\begin{proposition}[Sugawara tensor at the WZW endpoint]
+\label{prop:volvi-wzw-sugawara}
+Assume \(k+h^\vee\ne0\).  The holomorphic stress tensor is
+\begin{equation}
+  T_G(z)
+  =
+  \frac{1}{2(k+h^\vee)}
+  \sum_a :J^aJ^a:(z),
+  \label{eq:volvi-wzw-sugawara-tensor}
+\end{equation}
+and has central charge
+\begin{equation}
+  c(G,k)=\frac{k\,\dim\mathfrak g}{k+h^\vee}.
+  \label{eq:volvi-wzw-central-charge}
+\end{equation}
+Each current \(J^a\) is a primary field of weight \(1\).
+\end{proposition}
+
+\begin{proof}
+The coefficient in \eqref{eq:volvi-wzw-sugawara-tensor} is forced by the
+OPE \(T_G(z)J^b(0)\).  Contracting one of the two currents in
+\(:J^aJ^a:\) with \(J^b\), the central term in
+\eqref{eq:volvi-wzw-current-ope} contributes \(2kJ^b/z^2\) before the
+overall coefficient.  The simple-pole contraction gives two adjoint actions.
+When the resulting current is normal ordered past the remaining current, the
+adjoint Casimir contributes \(2h^\vee J^b/z^2\), by
+\eqref{eq:volvi-wzw-dual-coxeter-normalization}.  Hence the numerator of the
+second-order pole is \(2(k+h^\vee)J^b\), and the unique coefficient making
+the current have weight \(1\) is \(1/[2(k+h^\vee)]\).  The first-order pole
+is then \(\partial J^b/z\), because the zero mode of \(T_G\) implements
+translations of the current field.
+
+For the \(T_GT_G\) OPE, the fourth-order pole is obtained from double
+contractions of the two quadratic normal-ordered products.  The central
+central contractions give \(2k^2\dim\mathfrak g\), and the contractions
+containing two structure constants give \(2kh^\vee\dim\mathfrak g\).  After
+division by \([2(k+h^\vee)]^2\), comparison with
+\[
+  T_G(z)T_G(0)
+  \sim
+  \frac{c/2}{z^4}+\frac{2T_G(0)}{z^2}+\frac{\partial T_G(0)}{z}
+\]
+gives \eqref{eq:volvi-wzw-central-charge}.  The lower-order poles agree with
+the Virasoro action because the coefficient was already fixed by the
+current-primary condition.
+\end{proof}
+
+Let \(P^+\) be the dominant integral weights of \(G\), let \(\theta\) be the
+highest root, and let \(\rho\) be the Weyl vector.  The compact unitary WZW
+endpoint at positive integral level \(k\) uses the integrable highest weights
+\begin{equation}
+  P_k^+=\{\lambda\in P^+\mid(\lambda,\theta)\le k\}.
+  \label{eq:volvi-wzw-integrable-weights}
+\end{equation}
+The corresponding affine highest-weight Hilbert spaces are denoted
+\(\mathcal H_\lambda\).  A primary with horizontal highest weight
+\(\lambda\) has conformal weight
+\begin{equation}
+  h_\lambda
+  =
+  \frac{(\lambda,\lambda+2\rho)}
+       {2(k+h^\vee)} .
+  \label{eq:volvi-wzw-primary-weight}
+\end{equation}
+The diagonal compact theory has Hilbert space
+\begin{equation}
+  \Hilb^{\rm diag}_{G,k}
+  =
+  \bigoplus_{\lambda\in P_k^+}
+  \mathcal H_\lambda\otimes\overline{\mathcal H_\lambda}.
+  \label{eq:volvi-wzw-diagonal-hilbert-space}
+\end{equation}
+Other modular invariants change the pairing of left and right integrable
+modules and are therefore extra global data of the full CFT.  They do not
+alter the local affine OPE \eqref{eq:volvi-wzw-current-ope}.
+
+\begin{theorem}[KZ equations from the endpoint Ward identities]
+\label{thm:volvi-wzw-kz-equations}
+Let \(V_{\lambda_i}\) be finite-dimensional \(\mathfrak g\)-modules with
+\(\lambda_i\in P_k^+\), and let
+\(\mathcal F(z_1,\ldots,z_n)\) be a genus-zero chiral block with primary
+insertions of horizontal types \(V_{\lambda_i}\).  Write \(t_i^a\) for the
+action of \(T_a\) on the \(i\)-th tensor factor and
+\[
+  \Omega_{ij}=\sum_a t_i^a t_j^a .
+\]
+Then
+\begin{equation}
+  (k+h^\vee)\,\partial_{z_i}\mathcal F
+  =
+  \mathcal F\circ
+  \sum_{j\ne i}\frac{\Omega_{ij}}{z_i-z_j},
+  \qquad i=1,\ldots,n .
+  \label{eq:volvi-wzw-kz-equations}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For a primary field \(\Phi_{\lambda_i}(v_i,z_i)\), the current OPE is
+\[
+  J^a(\zeta)\Phi_{\lambda_i}(v_i,z_i)
+  \sim
+  \frac{\Phi_{\lambda_i}(t_i^av_i,z_i)}{\zeta-z_i}.
+\]
+The translation Ward identity gives
+\[
+  \partial_{z_i}\Phi_{\lambda_i}(v_i,z_i)
+  =
+  \Phi_{\lambda_i}(L_{-1}v_i,z_i).
+\]
+Applying \eqref{eq:volvi-wzw-sugawara-tensor} to an affine-primary state,
+all modes in
+\[
+  L_{-1}
+  =
+  \frac{1}{2(k+h^\vee)}
+  \sum_{a,m}:J^a_{-1-m}J^a_m:
+\]
+annihilate the state except the two terms with \(m=0\) and \(m=-1\).  Their
+sum is
+\[
+  L_{-1}v_i
+  =
+  \frac{1}{k+h^\vee}\sum_a J^a_{-1}t_i^av_i ,
+\]
+because \(\sum_a[J_0^a,J_{-1}^a]=0\).  The insertion of \(J^a_{-1}\) is the
+contour integral
+\[
+  \oint_{z_i}\frac{\dd\zeta}{2\pi\ii}\,
+  \frac{J^a(\zeta)}{\zeta-z_i}.
+\]
+Deforming this contour away from \(z_i\) gives the sum of the residues at the
+other insertions.  The residue at \(z_j\) is
+\((z_i-z_j)^{-1}t_j^a\).  Substitution gives
+\eqref{eq:volvi-wzw-kz-equations}.  No crossing or modular-invariance input
+enters this derivation; it is a consequence of the local current OPE,
+primary-field OPE, and Sugawara translation operator.
+\end{proof}
+
+\begin{proposition}[GKO coset endpoint coordinates]
+\label{prop:volvi-gko-coset-endpoint}
+Let \(H\subset G\) be a compact connected subgroup with Lie algebra
+\(\mathfrak h\).  If the basic forms satisfy
+\[
+  (X,Y)_{\mathfrak g}=x_e(X,Y)_{\mathfrak h},
+  \qquad X,Y\in\mathfrak h,
+\]
+then the induced \(H\)-current algebra inside \(G_k\) has level
+\(k_H=kx_e\).  The coset stress tensor
+\begin{equation}
+  T_{G/H}=T_G-T_H
+  \label{eq:volvi-gko-coset-stress-tensor}
+\end{equation}
 has central charge
 \begin{equation}
-  c=\frac{k\,\dim\mathfrak g}{k+h^\vee},
-  \label{eq:wzw-central-charge-crosslink}
+  c(G_k/H_{k_H})
+  =
+  \frac{k\dim\mathfrak g}{k+h^\vee_{\mathfrak g}}
+  -
+  \frac{k_H\dim\mathfrak h}{k_H+h^\vee_{\mathfrak h}} .
+  \label{eq:volvi-gko-coset-central-charge}
 \end{equation}
-where \(h^\vee\) is the dual Coxeter number.  Volume~V develops the affine
-and VOA side.  The role here is to identify WZW models as fixed points and
-endpoints in the sigma-model family, not as isolated algebraic examples.
+It has regular OPE with the embedded \(\mathfrak h\)-currents.
+\end{proposition}
+
+\begin{proof}
+The level rescales by the embedding index because the central term in the
+current OPE is the invariant form evaluated on the embedded Lie algebra.
+Both \(T_G\) and \(T_H\) make the same embedded \(H\)-currents primary fields
+of weight \(1\).  Their difference therefore has no singular OPE with those
+currents.  The central charge is the difference of the two Sugawara central
+charges in Proposition~\ref{prop:volvi-wzw-sugawara}, with the \(H\)-level
+set to \(k_H\).
+\end{proof}
+
+Free-field realizations such as Wakimoto charts are useful computational
+coordinates on particular affine modules.  They are not part of the
+definition of the sigma-model endpoint, and they require a separate
+development of bosonic first-order systems and screening charges.  In this
+volume we use only the current algebra, integrable modules, KZ connection,
+and coset stress tensor, which are the endpoint structures needed for the
+principal chiral and current-current perturbations below.
 
 \section{Nonabelian Bosonization and Chiral Gross--Neveu Bridges}
 \label{sec:integrable-nonabelian-bosonization-gn-bridges}
@@ -1016,16 +1244,17 @@ Perturbing the WZW model by the marginal current-current operator
 \end{equation}
 is the bosonic current-algebra presentation of the chiral Gross--Neveu
 family, once the \(U(1)\) sector and discrete quotient data have been fixed.
-The exact massive \(SU(N)\) chiral Gross--Neveu scattering theory is then a
-bootstrap datum for the current-current perturbation, while the WZW model is
-the ultraviolet fixed point described by the affine algebra.  The statement is
-not that every fermionic model is identical to a principal chiral model; the
+The exact massive \(SU(N)\) chiral Gross--Neveu scattering theory is then the
+rapidity-space description of the current-current perturbation, while the WZW
+model is the ultraviolet fixed point described by the affine algebra.  The
+statement is not that every fermionic model is identical to a principal
+chiral model; the
 dictionary is a statement about local current algebras and perturbations with
 specified global quotients.  In the abelian rank-one subcase this reduces to
 the sine-Gordon/massive-Thirring bridge of
 Chapter~\ref{ch:integrable-sine-gordon-thirring-affine-toda}; in the
 nonabelian case the replacement of the compact boson by a WZW field is the
-essential new datum.
+essential new structure.
 
 \section{SU(N) Bootstrap Spectrum and Matrix Blocks}
 \label{sec:su-n-bootstrap-spectrum-pcm-gn}
@@ -1725,11 +1954,11 @@ Jordan blocks appear.
 The sausage family should be treated as a controlled deformation of the round
 \(S^2\) sigma model with a stated metric and RG trajectory before any
 comparison to cigar or parafermion cosets is made.  The sign of the
-deformation parameter is part of the datum: the elongated physical sausage is
-the negative branch of the real parameter used below.
+deformation parameter is part of the specification: the elongated physical
+sausage is the negative branch of the real parameter used below.
 
-\begin{definition}[Sausage metric datum]
-\label{def:sausage-metric-datum}
+\begin{definition}[Sausage metric]
+\label{def:sausage-metric-specification}
 The two-dimensional deformed-sphere, or sausage, target used in the
 semiclassical description is the \(U(1)\)-invariant Riemannian metric
 \begin{equation}
@@ -1751,9 +1980,9 @@ with \(h>0\) and \(q>-1\).  The undeformed value
   \dd s^2_{h,0}=h(\dd\vartheta^2+\sin^2\vartheta\,\dd\phi^2).
 \]
 For \(q\ne0\) the metric preserves only the axial \(U(1)\) isometry.  The
-entry \((h,q)\) is therefore a metric-coordinate datum for the sigma model;
-an exact quantum \(S\)-matrix proposal for the sausage family is a separate
-bootstrap datum that must be matched to this coordinate choice.
+pair \((h,q)\) is therefore a metric coordinate for the sigma model; an exact
+quantum \(S\)-matrix proposal for the sausage family is a separate
+rapidity-space object that must be matched to this coordinate choice.
 \end{definition}
 
 \begin{proposition}[Curvature of the sausage target]
@@ -1926,7 +2155,7 @@ Integrating from \(\tau_0\) to \(\tau\) gives
 \eqref{eq:sausage-physical-integrated-flow}.  The relation
 \(q=-\alpha^2h^2\) then supplies the second coordinate.  The condition
 \(\alpha h<1\) is exactly \(q>-1\), the Riemannian domain of
-Definition~\ref{def:sausage-metric-datum}.
+Definition~\ref{def:sausage-metric-specification}.
 
 On the positive branch, substitute \(q=\beta^2h^2\).  Then
 \[
@@ -1955,7 +2184,7 @@ as \(\kappa\to1\) is
 
 \begin{proof}
 The case \(\kappa=0\) is the calculation already displayed in
-Definition~\ref{def:sausage-metric-datum}.  For \(\kappa\to1\), set
+Definition~\ref{def:sausage-metric-specification}.  For \(\kappa\to1\), set
 \(q=-1\) in \eqref{eq:sausage-metric}.  Then
 \[
   \frac{\dd r^2}{(1-r^2)^2}
@@ -1968,17 +2197,18 @@ is obtained.  The change of variable \(r=\tanh\rho\) gives
 \eqref{eq:sausage-cylinder-limit}.
 \end{proof}
 
-\subsection{Repulsive-Domain Sausage Scattering Datum}
-\label{sec:repulsive-sausage-scattering-datum}
+\subsection{Repulsive-Domain Fateev--Onofri--Zamolodchikov Sausage Scattering}
+\label{sec:repulsive-sausage-scattering}
 
 The metric/RG data above are not themselves a factorized scattering theory.
-The commonly used massive sausage bootstrap datum is a one-parameter
-\(U(1)\)-invariant deformation of the \(O(3)\) triplet scattering theory.
-We record it because it is the datum against which any regulator-defined
-sausage sigma model must be matched.
+The Fateev--Onofri--Zamolodchikov massive sausage scattering proposal is a
+one-parameter \(U(1)\)-invariant deformation of the \(O(3)\) triplet
+scattering theory.  We record the repulsive-domain version because it is the
+exact rapidity-space object against which any regulator-defined sausage sigma
+model must be matched.
 
-\begin{definition}[Repulsive massive sausage bootstrap datum]
-\label{def:repulsive-massive-sausage-bootstrap-datum}
+\begin{definition}[Repulsive massive sausage scattering proposal]
+\label{def:repulsive-massive-sausage-scattering}
 Let \(0\le\lambda<\frac12\).  The one-particle labels are
 \[
   a\in\{+,0,-\},
@@ -2023,19 +2253,20 @@ from charge conjugation and exchange by the following formulae are
 \end{align}
 Here \(S_{-+}^{+-}=S_{+-}^{-+}\) and the remaining charge-conjugate entries
 are fixed by the simultaneous replacement \(+\leftrightarrow-\).  No other
-matrix element is nonzero in this datum.
+matrix element is nonzero in this scattering proposal.
 At \(\lambda=0\) the formula is understood as the meromorphic limit.  The
 parameter \(\lambda\) is a bootstrap coordinate.  A comparison with a
 metric-coordinate deformation such as \((h,q)\) in
-Definition~\ref{def:sausage-metric-datum} requires a separate matching map;
+Definition~\ref{def:sausage-metric-specification} requires a separate
+matching map;
 the semiclassical and TBA/NLIE analyses suggest using a coordinate
 \(\nu\) satisfying
 \[
   \frac{\nu}{4\pi}=\frac{\lambda}{1-2\lambda},
-  \label{eq:sausage-nu-lambda-ledger}
+  \label{eq:sausage-nu-lambda-matching}
 \]
-but in this monograph \eqref{eq:sausage-nu-lambda-ledger} is a matching
-ledger, not a theorem identifying a constructed local QFT.
+but in this monograph \eqref{eq:sausage-nu-lambda-matching} is a matching
+coordinate relation, not a theorem identifying a constructed local QFT.
 \end{definition}
 
 \begin{proposition}[Elementary repulsive-sausage consistency checks]
@@ -2200,8 +2431,8 @@ to \(1,1,0,1\), respectively.  This proves the charge-zero unitarity block.
 \label{ca:sausage-bootstrap-matching}
 Equations \eqref{eq:sausage-metric}, \eqref{eq:sausage-ricci-flow-hq}, and
 \eqref{eq:sausage-cylinder-limit} are metric and one-loop RG data, while
-Definition~\ref{def:repulsive-massive-sausage-bootstrap-datum} is a
-rapidity-space bootstrap datum.  A theorem identifying the two requires a
+Definition~\ref{def:repulsive-massive-sausage-scattering} is a
+rapidity-space scattering proposal.  A theorem identifying the two requires a
 regulator-defined local sigma model, conserved charges or an equivalent
 factorization construction, Haag--Ruelle scattering states, and a matching
 map from the regulator-defined couplings to the bootstrap coordinate
@@ -2211,7 +2442,11 @@ compact parafermion or noncompact cigar descriptions depends on the precise
 scaling limit.  The elementary checks in
 Proposition~\ref{prop:repulsive-sausage-elementary-checks} are necessary
 bootstrap consistency tests; they do not replace the missing constructive
-identification.
+identification.  In attractive analytic continuations, physical-strip poles
+must be accompanied by declared bound-state particles and residue
+normalizations before one can speak of a complete spectrum.  The repulsive
+domain treated here has no such denominator poles by
+Proposition~\ref{prop:repulsive-sausage-elementary-checks}.
 \end{controlledapproximation}
 
 \begin{definition}[Sigma-model family datum]
