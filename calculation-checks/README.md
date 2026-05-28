@@ -175,6 +175,11 @@ Current checks:
   factorization, mostly-plus denominator conversion \(P^2+M^2=M^2-s\),
   Legendre orthogonality, partial-wave selection of a spin-\(J\) pole, and
   the scalar-QED \(P_1(\cos\theta)\) numerator check.
+- `cft_fixed_point_checks.py`: exact finite checks for the opening CFT
+  fixed-point chapter, including the \(-(D-1)\partial^2L\) trace of the
+  scalar stress-tensor improvement, the special conformal Killing equation in
+  mostly-plus signature, the fact that conformal-current divergence depends
+  only on the trace, and \(y=D-\Delta\) for linearized RG eigen-directions.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, the BV-pushforward boundary

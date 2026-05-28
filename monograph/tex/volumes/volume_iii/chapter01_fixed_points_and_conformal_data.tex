@@ -148,25 +148,25 @@ operators in the chosen scheme.  The beta-function vector field is
   \label{eq:cft-opening-beta-function}
 \end{equation}
 
-The trace equation is the local form of the response to a change of scale.
-For the MS-type source charts developed earlier, the derivation has two
-steps.  First, the regulated scale variation of the bare interaction produces
-the engineering-dimension factors multiplying \(g_I^{\rm bare}O_I^{\rm bare}\).
-Second, the identity
+\begin{proposition}[Flat trace equation from a renormalized source chart]
+\label{prop:cft-opening-flat-trace-equation}
+Assume that the renormalized chart
+\(\{g_I(\mu),[O_I]_\mu\}_{I\in\mathcal I}\) is supplied by a local source
+functional whose constant Weyl variation is governed, in flat space, by the
+local RG vector field
 \[
-  0
+  \Delta_\sigma^{\rm loc}
   =
-  \frac{\dd g_I^{\rm bare}}{\dd\log\mu}
-  =
-  -(\text{engineering dimension of }g_I^{\rm bare})\,g_I^{\rm bare}
-  +
-  \sum_J\beta_J(g)
-  \frac{\partial g_I^{\rm bare}}{\partial g_J}
-  \]
-converts those engineering factors into the beta-function vector field acting
-on the same bare density.  Passing to the finite renormalized insertion
-defined in \eqref{eq:cft-opening-renormalized-insertions} gives, in flat space
-and away from coincident insertions,
+  \int\dd^D x\,\sigma
+  \left(
+    2g_{\mu\nu}\frac{\delta}{\delta g_{\mu\nu}}
+    +
+    \beta_I(g)\frac{\delta}{\delta g_I}
+  \right)
+\]
+up to local anomaly/contact functionals and up to the divergence of a local
+virial current.  Then, as a renormalized flat-space local-operator identity
+away from coincident insertions,
 \begin{equation}
   \widehat T^\mu{}_\mu
   =
@@ -175,12 +175,44 @@ and away from coincident insertions,
   \partial_\mu V^\mu .
   \label{eq:cft-opening-trace-beta}
 \end{equation}
-The vector \(V^\mu\) is a local vector operator recording possible virial and
-improvement contributions in the chosen stress-tensor representative.  Contact
-terms in \eqref{eq:cft-opening-trace-beta} are fixed together with the
-renormalized source Ward identities.  Curvature terms appear after coupling
-the theory to a background metric, but vanish in the flat separated-point
-identity displayed here.
+The vector \(V^\mu\) is a local vector operator recording the virial and
+improvement ambiguity in the chosen stress-tensor representative.  Contact
+terms in \eqref{eq:cft-opening-trace-beta} are not inferred from
+separated-point kernels; they are fixed together with the renormalized source
+Ward identities of the chart.  Curvature terms appear after coupling the
+theory to a background metric, but vanish in the flat separated-point identity
+displayed here.
+\end{proposition}
+
+\begin{proof}
+The source chart gives two descriptions of the same infinitesimal change of
+renormalization length.  First, varying the metric by a constant Weyl factor
+\(\delta_\sigma g_{\mu\nu}=2\sigma g_{\mu\nu}\) gives, by the stress-tensor
+definition,
+\[
+  \delta_\sigma W
+  =
+  -\int\dd^D x\,\sqrt g\,\sigma\,
+  \left\langle T^\mu{}_\mu(x)\right\rangle .
+\]
+Second, the same change expressed at fixed regulator is a displacement along
+the beta-function vector field in the renormalized coordinates:
+\[
+  \delta_\sigma W
+  =
+  -\int\dd^D x\,\sqrt g\,\sigma\,
+  \beta_I(g)\left\langle [O_I]_\mu(x)\right\rangle
+  \]
+with the sign fixed by the convention
+\(\mu\,\dd g_I/\dd\mu=\beta_I\) and by
+\eqref{eq:cft-opening-renormalized-insertions}.  Equating the two
+descriptions, and restoring the possible local virial term produced by the
+choice of stress-tensor representative, gives
+\eqref{eq:cft-opening-trace-beta} inside correlators at separated points.
+Local anomaly terms and derivatives of delta functions are exactly the contact
+terms belonging to the chosen source chart, so they do not modify the
+displayed separated-point flat-space operator identity.
+\end{proof}
 
 \begin{remark}[Scale invariance versus conformal invariance]
 \label{rem:cft-opening-scale-versus-conformal}
@@ -246,6 +278,101 @@ references are given in
 Remark~\ref{rem:scale-conformal-dimension-status}.
 \end{remark}
 
+\begin{proposition}[Virial class, improvement, and conformal currents]
+\label{prop:cft-opening-virial-improvement-currents}
+Let \(T^{\mu\nu}\) be a symmetric conserved stress tensor in flat
+\(D\)-dimensional Minkowski space.  Suppose that
+\[
+  T^\mu{}_\mu=\partial_\mu V^\mu
+\]
+as a local operator identity in the chosen separated-point/contact chart.
+Then
+\[
+  D^\mu=x_\nu T^{\mu\nu}-V^\mu
+\]
+is a conserved dilatation current.  If, for some scalar local operator \(L\)
+and conserved current \(J^\mu\),
+\[
+  V^\mu=(D-1)\partial^\mu L+J^\mu,
+  \qquad
+  \partial_\mu J^\mu=0,
+\]
+then the improved stress tensor
+\[
+  T_{\rm imp}^{\mu\nu}
+  =
+  T^{\mu\nu}
+  +
+  (\partial^\mu\partial^\nu-\eta^{\mu\nu}\partial^2)L
+\]
+is symmetric, conserved, and traceless.  Consequently, for every conformal
+Killing vector \(\xi^\mu\) satisfying
+\[
+  \partial_\mu\xi_\nu+\partial_\nu\xi_\mu
+  =
+  \frac2D(\partial_\rho\xi^\rho)\eta_{\mu\nu},
+\]
+the current \(j_\xi^\mu=T_{\rm imp}^{\mu\nu}\xi_\nu\) is conserved.
+\end{proposition}
+
+\begin{proof}
+The divergence of the proposed dilatation current is
+\[
+  \partial_\mu D^\mu
+  =
+  T^\mu{}_\mu
+  +x_\nu\partial_\mu T^{\mu\nu}
+  -\partial_\mu V^\mu
+  =
+  0 .
+\]
+The improvement term is symmetric.  Its divergence vanishes because ordinary
+derivatives commute:
+\[
+  \partial_\mu
+  (\partial^\mu\partial^\nu-\eta^{\mu\nu}\partial^2)L
+  =
+  \partial^\nu\partial^2L-\partial^\nu\partial^2L
+  =
+  0 .
+\]
+Its trace is
+\[
+  \eta_{\mu\nu}
+  (\partial^\mu\partial^\nu-\eta^{\mu\nu}\partial^2)L
+  =
+  -(D-1)\partial^2L .
+\]
+Therefore
+\[
+  T_{{\rm imp}\,\mu}^{\ \ \ \mu}
+  =
+  \partial_\mu V^\mu-(D-1)\partial^2L
+  =
+  \partial_\mu J^\mu
+  =
+  0 .
+\]
+For a conformal Killing vector,
+\[
+  \partial_\mu j_\xi^\mu
+  =
+  T_{\rm imp}^{\mu\nu}\partial_\mu\xi_\nu
+  =
+  \frac12T_{\rm imp}^{\mu\nu}
+  (\partial_\mu\xi_\nu+\partial_\nu\xi_\mu)
+  =
+  \frac1D(\partial_\rho\xi^\rho)
+  T_{{\rm imp}\,\mu}^{\ \ \ \mu}
+  =
+  0 ,
+\]
+where conservation and symmetry of \(T_{\rm imp}^{\mu\nu}\) were used.  Thus
+the improved traceless representative supplies the currents for translations,
+rotations, dilatations, and special conformal transformations whenever the
+corresponding smeared charges are defined.
+\end{proof}
+
 An RG fixed point in the coordinate chart is a point \(g_\ast\) satisfying
 \begin{equation}
   \beta_I(g_\ast)=0
@@ -299,6 +426,61 @@ If the corresponding scalar perturbation is
 where \(\Delta_a\) is the scaling dimension of \(O_a\).  Thus \(y_a>0\),
 \(y_a=0\), and \(y_a<0\) define relevant, marginal, and irrelevant
 directions, respectively, in the long-distance flow.
+
+\begin{proposition}[Linearized RG eigenvalues and operator dimensions]
+\label{prop:cft-opening-linearized-rg-dimensions}
+Assume that the beta-function vector field is differentiable at \(g_\ast\)
+and that the tangent direction \(v^{(a)}\) is an ordinary eigenvector of
+\(B_{IJ}=\partial\beta_I/\partial g_J|_{g_\ast}\) with eigenvalue \(-y_a\).
+Let
+\[
+  O_a=\sum_I v^{(a)}_I[O_I]_{\ast}
+\]
+be the corresponding scalar deformation operator in the linearized source
+chart.  If \(O_a\) is a scaling operator at the fixed point, then its scaling
+dimension satisfies
+\[
+  \Delta_a=D-y_a .
+\]
+If \(B\) has a Jordan block instead of a diagonal eigenspace, the corresponding
+operators form a logarithmic mixing block under scale transformations; the
+number \(D-y_a\) is then the common diagonal scaling dimension of the block,
+not a complete diagonalization of the dilatation action.
+\end{proposition}
+
+\begin{proof}
+Along the eigen-direction write
+\[
+  g_I(\mu)-g_{\ast I}=\lambda_a(\mu)v^{(a)}_I+O(\lambda_a^2).
+\]
+The RG equation gives
+\[
+  \mu\frac{\dd\lambda_a}{\dd\mu}
+  =
+  -y_a\lambda_a+O(\lambda_a^2).
+\]
+Changing the unit of length by \(x\mapsto bx\), \(b>1\), corresponds to
+lowering the momentum scale by \(b^{-1}\), hence
+\[
+  \lambda_a(b)=b^{y_a}\lambda_a+O(\lambda_a^2).
+\]
+At the fixed point a scalar scaling operator obeys
+\[
+  O_a(x)\mapsto b^{-\Delta_a}O_a(b^{-1}x).
+\]
+Therefore the integrated perturbation transforms as
+\[
+  \lambda_a\int\dd^D x\,O_a(x)
+  \mapsto
+  \lambda_a b^{D-\Delta_a}
+  \int\dd^D x\,O_a(x).
+\]
+Comparing this scaling of the coupling with
+\(\lambda_a(b)=b^{y_a}\lambda_a\) gives \(y_a=D-\Delta_a\).  For a Jordan
+block, solving the linearized RG equation gives the same power \(b^{y_a}\)
+multiplied by polynomials in \(\log b\), which is the RG form of logarithmic
+operator mixing.
+\end{proof}
 
 \section{RG Monotones and Fixed-Point Ordering}
 \label{sec:rg-monotones-fixed-point-ordering}

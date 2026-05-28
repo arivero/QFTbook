@@ -23,7 +23,8 @@ The chapter establishes:
   hypotheses have been supplied;
 - renormalized deformation operators and the trace equation
   \(T^\mu{}_\mu=\beta_I[O_I]+\partial_\mu V^\mu\), including the role of
-  contact terms and improvements;
+  contact terms and improvements, now stated as a conditional local-source
+  proposition with the sign convention tied to \(\mu\,dg_I/d\mu=\beta_I\);
 - the scale-versus-conformal obstruction as the local virial class at a
   fixed point, including the definition of a scale-invariant but
   nonconformal local QFT in this stress-tensor framework and Polchinski's
@@ -32,10 +33,15 @@ The chapter establishes:
   hypotheses, conditional four-dimensional anomaly/dilaton constraints with no
   unconditional theorem used here, and no assumed general theorem in other
   dimensions;
+- the virial-improvement proposition: \(T^\mu{}_\mu=\partial_\mu V^\mu\)
+  gives a conserved dilatation current, while
+  \(V^\mu=(D-1)\partial^\mu L+J^\mu\), \(\partial_\mu J^\mu=0\), gives a
+  conserved, symmetric, traceless improved stress tensor and hence conserved
+  currents for all conformal Killing vectors;
 - fixed points as zeros of the beta-function vector field in a chosen local
   coordinate chart;
 - scaling dimensions from the linearized RG eigenvalues
-  \(y_a=D-\Delta_a\);
+  \(y_a=D-\Delta_a\), with a separate Jordan-block/logarithmic-mixing caveat;
 - endpoint RG monotones as data attached to a stated class of unitary RG
   trajectories, with length scale \(R\) increasing toward the infrared and
   \(\mathfrak M_{\rm UV}\geq\mathfrak M_{\rm IR}\);
@@ -224,3 +230,9 @@ The chapter establishes:
   \(+\ii\langle J_L,\mathcal O\rangle\) convention, while
   \(J^A=-J_E^A\) relative to a Euclidean source written with
   \(-\langle J_E,\mathcal O\rangle\) in the exponent.
+- 2026-05-28 issue #633 reading audit pass: expanded the trace equation,
+  virial-improvement/conformal-current criterion, and linearized RG dimension
+  relation into conditional propositions with proofs.  Added
+  `calculation-checks/cft_fixed_point_checks.py` for the improvement trace
+  coefficient, conformal-Killing equation, trace-only current divergence, and
+  \(y=D-\Delta\) algebra.
