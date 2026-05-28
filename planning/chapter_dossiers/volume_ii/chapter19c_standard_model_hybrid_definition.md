@@ -47,6 +47,10 @@
   \(Q=T^3+Y\) hypercharge convention, records the GUT-rescaled conversion,
   and states the invariant one-loop top-Higgs subsystem for
   \((y_t,\lambda)\).
+- Defines the precision electroweak \(S,T,U\) self-energy coordinates from
+  renormalized transverse two-point functions after fixing the input scheme,
+  and derives the relation between \(T\) and the first-order shift of the
+  \(\rho\)-coordinate.
 - Expands the hybrid matching datum \(\mathcal M\) into scales, parameter
   charts, threshold maps, anomalous dimensions, nonperturbative matrix
   elements, and error/remainder data.
@@ -73,7 +77,8 @@
   \(\rho_{\rm tree}=1\), \(B-L\) anomaly bookkeeping, Weinberg-operator
   mass normalization, singlet-neutrino tree matching, and strong-CP phase
   invariance, one-loop gauge beta coefficients, GUT hypercharge conversion,
-  and top-Higgs subsystem coefficient algebra.
+  top-Higgs subsystem coefficient algebra, and elementary \(S,T,U\)
+  source-chart identities.
 
 ## Claim Ledger
 
@@ -101,9 +106,12 @@
    regularization/minimal subtraction; they do not assert a nonperturbative
    electroweak continuum construction or provide an ultraviolet-selection
    principle.
-11. The Standard Model is used as a hybrid operational object, not as an
+11. The \(S,T,U\) variables are finite coordinates on the two-point
+   electroweak source chart under analyticity and input-scheme assumptions;
+   they do not replace vertex, box, four-fermion, or detector-function data.
+12. The Standard Model is used as a hybrid operational object, not as an
    assumed complete constructive four-dimensional continuum theorem.
-12. The Fermi operator coefficient is a tree-level matched EFT coefficient;
+13. The Fermi operator coefficient is a tree-level matched EFT coefficient;
    QCD matrix elements and radiative corrections are separate matching data.
 
 ## Audit Notes

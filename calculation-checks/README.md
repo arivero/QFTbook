@@ -41,7 +41,8 @@ Current checks:
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
   tree-level singlet-neutrino matching, strong-CP phase invariance,
   one-loop gauge beta-function coefficients, GUT hypercharge-rescaling
-  conversion, and the top-Higgs one-loop subsystem coefficients.
+  conversion, the top-Higgs one-loop subsystem coefficients, and basic
+  oblique-parameter identities for the \(S,T,U\) source-chart coordinates.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional

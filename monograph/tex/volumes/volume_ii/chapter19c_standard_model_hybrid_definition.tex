@@ -1130,6 +1130,189 @@ nonperturbative electroweak continuum limit, and it does not turn the running
 of \(\lambda\) into a principle for choosing ultraviolet boundary data.
 \end{proof}
 
+\section{Precision Electroweak Self-Energy Coordinates}
+
+Precision electroweak fits use a finite-dimensional projection of the
+renormalized electroweak two-point functions.  The projection is meaningful
+only after the input scheme, subtraction scheme, and class of observables have
+been fixed.  This section records the source-chart definition used in this
+monograph.
+
+\begin{definition}[Transverse self-energy difference]
+\label{def:sm-transverse-self-energy-difference}
+Fix a reference electroweak source chart with the same input values of
+\(\alpha_{\rm em}\), \(G_F\), and \(m_Z\).  Let
+\[
+  s_W:=\frac{g_1}{\sqrt{g_1^2+g_2^2}},
+  \qquad
+  c_W:=\frac{g_2}{\sqrt{g_1^2+g_2^2}},
+  \qquad
+  e:=g_2s_W=g_1c_W ,
+\]
+so that \(m_W^2=c_W^2m_Z^2\) at tree level in the chart of
+Proposition~\ref{prop:sm-electroweak-stabilizer-masses}.  For
+\(V,V'\in\{W,Z,\gamma\}\), define \(\Delta\Pi_{VV'}(q^2)\) to be the
+difference between the renormalized transverse 1PI two-point scalar in the
+source chart under study and the corresponding scalar in the reference chart,
+with identical external-current normalization.  Thus
+\[
+  \Delta\Gamma^{\mu\nu}_{VV'}(q)\big|_{\rm trans}
+  =
+  -\ii
+  \left(\eta^{\mu\nu}-\frac{q^\mu q^\nu}{q^2}\right)
+  \Delta\Pi_{VV'}(q^2),
+  \label{eq:sm-transverse-self-energy-definition}
+\]
+on conserved external currents.  The electromagnetic on-shell conditions are
+chosen so that
+\[
+  \Delta\Pi_{\gamma\gamma}(0)=0,
+  \qquad
+  \Delta\Pi_{Z\gamma}(0)=0 .
+  \label{eq:sm-oblique-em-onshell}
+\]
+Assume, for the definition below, that the self-energy differences are
+analytic at \(q^2=0\) on the relevant sheet and write
+\(\Delta\Pi'_{VV'}(0):=\dd\Delta\Pi_{VV'}(q^2)/\dd q^2|_{q^2=0}\).
+\end{definition}
+
+\begin{definition}[\(S,T,U\) source-chart coordinates]
+\label{def:sm-stu-coordinates}
+Under the hypotheses of
+Definition~\ref{def:sm-transverse-self-energy-difference}, the
+Peskin--Takeuchi \(S,T,U\) coordinates are the three finite combinations
+\[
+\begin{aligned}
+  \alpha_{\rm em} S
+  &=
+  4s_W^2c_W^2
+  \left[
+    \Delta\Pi'_{ZZ}(0)
+    -\frac{c_W^2-s_W^2}{s_Wc_W}\Delta\Pi'_{Z\gamma}(0)
+    -\Delta\Pi'_{\gamma\gamma}(0)
+  \right],\\
+  \alpha_{\rm em} T
+  &=
+  \frac{\Delta\Pi_{WW}(0)}{m_W^2}
+  -
+  \frac{\Delta\Pi_{ZZ}(0)}{m_Z^2},\\
+  \alpha_{\rm em} U
+  &=
+  4s_W^2
+  \left[
+    \Delta\Pi'_{WW}(0)
+    -c_W^2\Delta\Pi'_{ZZ}(0)
+    -2s_Wc_W\Delta\Pi'_{Z\gamma}(0)
+    -s_W^2\Delta\Pi'_{\gamma\gamma}(0)
+  \right].
+\end{aligned}
+\label{eq:sm-stu-definitions}
+\]
+Here
+\(\alpha_{\rm em}:=e^2/(4\pi)\).  These are coordinates on the two-point part
+of the electroweak source chart, not on the full space of all possible
+four-fermion, vertex, and detector corrections.
+\end{definition}
+
+\begin{proposition}[What the \(T\) coordinate measures]
+\label{prop:sm-t-coordinate-rho}
+Suppose the only low-momentum effect in the two-point chart is a shift of the
+charged and neutral weak mass coordinates,
+\[
+  m_W^2\mapsto m_W^2+\delta m_W^2,
+  \qquad
+  m_Z^2\mapsto m_Z^2+\delta m_Z^2,
+\]
+with \(s_W,c_W\) held fixed by the chosen input convention and with
+\(\Delta\Pi_{WW}(0)=\delta m_W^2\),
+\(\Delta\Pi_{ZZ}(0)=\delta m_Z^2\).  Then
+\[
+  \alpha_{\rm em}T
+  =
+  \frac{\delta m_W^2}{m_W^2}
+  -
+  \frac{\delta m_Z^2}{m_Z^2}
+  \label{eq:sm-t-fractional-mass-shift}
+\]
+and the first-order shift of
+\[
+  \rho:=\frac{m_W^2}{m_Z^2c_W^2}
+\]
+is
+\[
+  \delta\rho=\alpha_{\rm em}T+O(\delta^2).
+  \label{eq:sm-t-rho-shift}
+\]
+\end{proposition}
+
+\begin{proof}
+The first equality is exactly the definition of \(T\) after the stated
+identification of the zero-momentum self-energies with mass-coordinate shifts.
+For the second, use the tree identity \(m_W^2=m_Z^2c_W^2\) and expand
+\[
+  \rho_{\rm shifted}
+  =
+  \frac{m_W^2+\delta m_W^2}
+       {(m_Z^2+\delta m_Z^2)c_W^2}
+  =
+  \left(1+\frac{\delta m_W^2}{m_W^2}\right)
+  \left(1+\frac{\delta m_Z^2}{m_Z^2}\right)^{-1}.
+\]
+The first-order Taylor expansion of \((1+x)^{-1}\) gives
+\[
+  \rho_{\rm shifted}
+  =
+  1+
+  \frac{\delta m_W^2}{m_W^2}
+  -
+  \frac{\delta m_Z^2}{m_Z^2}
+  +O(\delta^2),
+\]
+which proves \eqref{eq:sm-t-rho-shift}.  This is the precise sense in which
+\(T\) records custodial-symmetry breaking in a two-point source chart.
+\end{proof}
+
+\begin{proposition}[Domain of the \(S,T,U\) projection]
+\label{prop:sm-stu-domain}
+Assume all corrections to the relevant electroweak observables enter through
+the analytic transverse two-point functions in
+Definition~\ref{def:sm-transverse-self-energy-difference}, and keep only the
+constant and first-derivative Taylor coefficients at \(q^2=0\).  After the
+input coordinates \(\alpha_{\rm em}\), \(G_F\), and \(m_Z\) are fixed, the
+remaining three input-independent two-point combinations can be chosen as the
+coordinates \(S,T,U\) in Definition~\ref{def:sm-stu-coordinates}.
+\end{proposition}
+
+\begin{proof}
+The tree exchange amplitudes of conserved external fermion currents are
+obtained by inverting the quadratic form of the gauge fields and contracting
+with the current vertices.  To first order in
+\(\Delta\Pi\), the correction is
+\[
+  D_0(q)\,\Delta\Pi(q^2)\,D_0(q),
+\]
+where \(D_0\) is the tree propagator matrix in the same current basis.  Under
+the analyticity hypothesis, the correction through order \(q^2\) depends only
+on \(\Delta\Pi_{VV'}(0)\) and \(\Delta\Pi'_{VV'}(0)\).  Electromagnetic gauge
+invariance and the on-shell electromagnetic normalization impose
+\eqref{eq:sm-oblique-em-onshell}.  Finite redefinitions of the three input
+coordinates \(\alpha_{\rm em}\), \(G_F\), and \(m_Z\) remove three further
+linear combinations: the electric charge normalization, the charged-current
+normalization used to define \(G_F\), and the reference neutral-pole mass.
+
+The combinations displayed in \eqref{eq:sm-stu-definitions} are a convenient
+basis of the remaining three-dimensional quotient.  The \(T\) coordinate is
+the residual custodial mass-ratio coordinate by
+Proposition~\ref{prop:sm-t-coordinate-rho}; the \(S\) coordinate is the
+neutral-current derivative combination that remains after the photon charge
+normalization is removed; and \(U\) is the corresponding charged-minus-neutral
+derivative coordinate.  If nonanalytic thresholds, nonlocal detector
+functionals, vertex corrections, box corrections, or independent local
+four-fermion operators are kept at the same order, they are additional
+coordinates of the hybrid prediction and are not represented by \(S,T,U\)
+alone.
+\end{proof}
+
 \section{The Hybrid Definition}
 
 \begin{definition}[Hybrid Standard Model datum]

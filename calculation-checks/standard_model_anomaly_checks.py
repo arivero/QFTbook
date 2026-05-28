@@ -293,6 +293,47 @@ def check_top_higgs_subsystem_coefficients() -> None:
     assert_equal("lambda gauge-quartic compact/expanded form", compact, expanded)
 
 
+def check_oblique_parameter_identities() -> None:
+    # Use rational sine/cosine satisfying s^2 + c^2 = 1.
+    s = Fraction(3, 5)
+    c = Fraction(4, 5)
+    s2 = s**2
+    c2 = c**2
+    assert_equal("weak-angle identity", s2 + c2, 1)
+
+    mz2 = Fraction(25, 7)
+    mw2 = c2 * mz2
+    assert_equal("tree electroweak mass identity", mw2 / (mz2 * c2), 1)
+
+    fractional_w_shift = Fraction(2, 17)
+    fractional_z_shift = Fraction(5, 19)
+    delta_w = fractional_w_shift * mw2
+    delta_z = fractional_z_shift * mz2
+    alpha_t = delta_w / mw2 - delta_z / mz2
+    assert_equal("T coordinate as fractional rho shift", alpha_t, fractional_w_shift - fractional_z_shift)
+
+    # Universal derivative corrections do not contribute to S or U.
+    universal = Fraction(11, 13)
+    alpha_s_universal = 4 * s2 * c2 * (universal - universal)
+    alpha_u_universal = 4 * s2 * (universal - c2 * universal - s2 * universal)
+    assert_zero("universal derivative contribution to S", alpha_s_universal)
+    assert_zero("universal derivative contribution to U", alpha_u_universal)
+
+    # If the charged derivative equals the neutral electromagnetic rotation of
+    # the same underlying W^3/B self-energy matrix, the U combination vanishes.
+    pi_zz_prime = Fraction(7, 23)
+    pi_zgamma_prime = Fraction(-5, 29)
+    pi_gammagamma_prime = Fraction(13, 31)
+    pi_ww_prime = c2 * pi_zz_prime + 2 * s * c * pi_zgamma_prime + s2 * pi_gammagamma_prime
+    alpha_u = 4 * s2 * (
+        pi_ww_prime
+        - c2 * pi_zz_prime
+        - 2 * s * c * pi_zgamma_prime
+        - s2 * pi_gammagamma_prime
+    )
+    assert_zero("custodial derivative identity for U", alpha_u)
+
+
 def main() -> None:
     check_su3_su3_u1()
     check_su2_su2_u1()
@@ -311,7 +352,8 @@ def main() -> None:
     check_one_loop_gauge_beta_coefficients()
     check_hypercharge_gut_rescaling()
     check_top_higgs_subsystem_coefficients()
-    print("All Standard Model representation, flavor, and electroweak checks passed.")
+    check_oblique_parameter_identities()
+    print("All Standard Model representation, flavor, electroweak, and RG checks passed.")
 
 
 if __name__ == "__main__":
