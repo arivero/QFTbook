@@ -866,14 +866,43 @@ Let \(\psi\) be orthogonal to
 \[
   \langle \psi,\,U(a)A\vac\rangle=0
 \]
-there.  The spectrum condition makes this matrix coefficient the boundary value
-of a function analytic in the forward tube \(\mathbb R^D+iV_+\), so vanishing
-on that open set of real translations forces
-\(\langle \psi,U(a)A\vac\rangle=0\) for all real translations \(a\).  Since
-\(A\) was arbitrary in \(\mathcal R(\mathcal U)\), weak additivity says that
-\(\psi\) is orthogonal to \(\mathcal R_{\rm glob}\vac\).  Global cyclicity then
-gives \(\psi=0\).  The orthogonal complement of
-\(\mathcal R(\mathcal O)\vac\) is zero, which proves the density.
+there.  Let \(E\) be the joint spectral measure of the translation
+generators, so that \(U(a)=\int e^{ia\cdot p}\,dE(p)\) and
+\(\operatorname{supp}E\subset\overline V_+\).  The finite complex measure
+\[
+  \mu_{\psi,A}(\Delta)
+  :=
+  \langle\psi,E(\Delta)A\vac\rangle
+\]
+gives, for real \(a\),
+\[
+  F_A(a):=\langle\psi,U(a)A\vac\rangle
+  =
+  \int_{\overline V_+} e^{ia\cdot p}\,d\mu_{\psi,A}(p).
+\]
+For \(z=a+ib\) with \(b\in V_+\), the same spectral integral
+\[
+  F_A(z)
+  =
+  \int_{\overline V_+} e^{iz\cdot p}\,d\mu_{\psi,A}(p)
+\]
+is holomorphic in \(z\).  Indeed \(b\cdot p\ge0\) for
+\(b,p\in\overline V_+\), and on compact subcones of \(V_+\) every polynomial
+in \(p\) is dominated by the exponential damping \(e^{-b\cdot p}\); dominated
+convergence therefore justifies differentiating under the integral.  Its
+continuous boundary value at \(b\downarrow0\) is the real-translation matrix
+coefficient just displayed.  The boundary uniqueness theorem for tube
+holomorphic functions then says that a continuous boundary value which
+vanishes on a nonempty open real set vanishes on the whole connected real
+edge.  Hence
+\[
+  \langle \psi,U(a)A\vac\rangle=0
+\]
+for every real translation \(a\).  Since \(A\) was arbitrary in
+\(\mathcal R(\mathcal U)\), weak additivity says that \(\psi\) is orthogonal
+to \(\mathcal R_{\rm glob}\vac\).  Global cyclicity then gives \(\psi=0\).
+The orthogonal complement of \(\mathcal R(\mathcal O)\vac\) is zero, which
+proves the density.
 \end{proof}
 
 The result is used as an input for modular theory, superselection analysis,
@@ -889,45 +918,82 @@ no nonzero vector orthogonal to all vectors \(A\vac\) with
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.90\textwidth}{!}{%
+  \resizebox{0.95\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
-      lab/.style={fill=white,inner sep=1.6pt,align=center}
+      lab/.style={fill=white,inner sep=1.6pt,align=center},
+      cone/.style={line width=0.85pt}
     }
-    \draw[->] (-5.0,-1.05)--(-1.15,-1.05) node[right] {\(x^1\)};
-    \draw[->] (-4.35,-1.55)--(-4.35,2.05) node[above] {\(x^0\)};
-    \foreach \x/\opac in {-4.05/25,-3.25/35,-2.45/25} {
-      \draw[blue!\opac,line width=0.7pt] (\x,0.20)--(\x+0.35,0.58)--(\x+0.70,0.20)--(\x+0.35,-0.18)--cycle;
+    \node[font=\scriptsize\bfseries,align=center] at (-4.85,2.55)
+      {real translations\\of the local region};
+    \node[font=\scriptsize\bfseries,align=center] at (2.45,2.55)
+      {tube analyticity\\and boundary uniqueness};
+
+    \draw[->] (-7.05,-1.45)--(-2.35,-1.45);
+    \node[lab] at (-2.45,-1.70) {\(x^1\)};
+    \draw[->] (-6.45,-1.78)--(-6.45,1.92) node[above] {\(x^0\)};
+    \draw[cone,blue!70!black,fill=blue!6]
+      (-6.45,1.25)--(-5.28,0.05)--(-6.45,-1.15)--(-7.62,0.05)--cycle;
+    \node[lab,text=blue!70!black] at (-7.55,1.22) {\(\mathcal O\)};
+    \draw[cone,red!72!black,fill=red!12]
+      (-6.45,0.56)--(-5.96,0.05)--(-6.45,-0.46)--(-6.94,0.05)--cycle;
+    \node[lab,text=red!72!black] at (-6.13,0.83) {\(\mathcal U\Subset\mathcal O\)};
+    \foreach \x/\opac in {-6.02/36,-5.60/28} {
+      \draw[cone,red!\opac!black,fill=red!\opac!white]
+        (\x,0.56)--(\x+0.49,0.05)--(\x,-0.46)--(\x-0.49,0.05)--cycle;
     }
-    \draw[blue!70!black,line width=1.1pt,fill=blue!8]
-      (-4.75,0.25)--(-4.35,0.70)--(-3.95,0.25)--(-4.35,-0.20)--cycle;
-    \node[lab,text=blue!70!black] at (-4.35,1.18) {fixed small\\region \(\mathcal O\)};
-    \draw[arrow,blue!60!black] (-3.88,0.72) .. controls (-3.15,1.55) and (-2.28,1.25) .. (-1.62,0.45)
-      node[pos=0.52,above,lab] {translations};
-    \node[lab] at (-2.95,-0.63) {weak additivity uses\\all translates of \(\mathcal O\)};
+    \node[lab] at (-5.78,-0.92) {small \(a\)};
+    \foreach \x/\y in {-4.08/0.35,-3.32/-0.35,-2.65/0.52} {
+      \draw[cone,blue!30!black,fill=blue!5]
+        (\x,\y+0.44)--(\x+0.42,\y)--(\x,\y-0.44)--(\x-0.42,\y)--cycle;
+    }
+    \draw[arrow,blue!65!black] (-5.45,1.02) .. controls (-4.65,1.72) and (-3.55,1.58) .. (-2.80,0.98)
+      node[pos=0.54,above,lab] {all real translates};
+    \node[lab] at (-3.35,-1.03)
+      {weak additivity:\\all translates generate\\\(\mathcal R_{\rm glob}\)};
 
-    \draw[arrow] (-1.05,0.10)--(0.55,0.10)
-      node[midway,above,lab] {\(A\vac\), \(A\in\mathcal R(\mathcal O)\)};
+    \draw[->] (-0.45,-1.45)--(5.20,-1.45) node[right] {\(\operatorname{Re} a\)};
+    \draw[->] (0.05,-1.80)--(0.05,1.95) node[above] {\(\operatorname{Im} a\in V_+\)};
+    \fill[orange!12] (-0.22,-1.22)--(4.65,-1.22)--(3.43,1.55)--(0.95,1.55)--cycle;
+    \draw[orange!75!black,line width=0.9pt]
+      (-0.22,-1.22)--(4.65,-1.22)--(3.43,1.55)--(0.95,1.55)--cycle;
+    \node[lab,text=orange!80!black] at (3.83,1.18)
+      {\(\mathbb R^D+iV_+\)};
+    \draw[red!75!black,line width=1.25pt] (0.55,-1.45)--(1.70,-1.45);
+    \node[lab,text=red!75!black] at (1.13,-1.08)
+      {boundary zeros\\near \(0\)};
+    \draw[arrow,orange!80!black] (1.78,-1.10) .. controls (2.24,-0.36) and (2.47,0.62) .. (2.25,1.30);
+    \draw[arrow,orange!80!black] (2.56,0.95) .. controls (3.15,0.50) and (3.55,-0.22) .. (3.72,-1.08);
+    \node[lab] at (2.24,0.17)
+      {\(F_A(z)=\langle\psi,U(z)A\vac\rangle\)\\is analytic};
+    \node[lab] at (3.58,-1.03)
+      {\(F_A(a)=0\)\\for all real \(a\)};
 
-    \draw[line width=0.9pt,fill=green!6] (2.35,0.15) ellipse (2.00 and 1.55);
-    \node[lab,text=green!45!black] at (2.35,1.48) {vacuum Hilbert space \(\Hilb\)};
-    \foreach \p in {
-      (1.05,0.00),(1.25,0.60),(1.60,-0.52),(1.95,0.32),(2.15,-0.18),
-      (2.42,0.75),(2.70,-0.48),(3.05,0.15),(3.32,0.62),(3.55,-0.20),
-      (1.45,0.98),(2.85,1.02),(1.80,-0.95),(3.08,-0.92)}
-      \fill[green!50!black] \p circle (1.2pt);
-    \draw[dashed,line width=0.85pt,green!55!black] (2.35,0.15) ellipse (1.58 and 1.16);
-    \node[lab] at (2.35,-1.72)
-      {\(\overline{\mathcal R(\mathcal O)\vac}=\Hilb\)};
-    \draw[arrow,orange!80!black] (0.70,-1.02) .. controls (1.35,-1.42) and (2.05,-1.32) .. (2.30,-1.05)
-      node[pos=0.38,below,lab] {spectrum analyticity excludes\\nonzero orthogonal vectors};
+    \node[align=center,fill=green!5,draw=green!45!black,line width=0.75pt,
+      rounded corners=3pt,inner xsep=5pt,inner ysep=4pt] at (-0.75,-2.95)
+      {\(\psi\perp\mathcal R(\mathcal O)\vac\)
+      \(\Rightarrow\)
+      \(F_A(a)=0\) near \(0\)
+      \(\Rightarrow\)
+      \(F_A(a)=0\) for all \(a\)
+      \(\Rightarrow\)
+      \(\psi\perp\mathcal R_{\rm glob}\vac\)
+      \(\Rightarrow\)
+      \(\psi=0\)};
   \end{tikzpicture}
   }
-  \caption{Reeh--Schlieder local cyclicity.  A fixed small spacetime region
-  \(\mathcal O\) generates a dense subspace from the vacuum; the proof uses
-  positive-energy analyticity to extend local vanishing and weak additivity to
-  turn translated local algebras into the global algebra.}
+  \caption{Reeh--Schlieder local cyclicity.  The geometric input is the
+  existence of \(\mathcal U\Subset\mathcal O\), so that small real
+  translations of \(\mathcal U\) remain inside \(\mathcal O\).  If
+  \(\psi\perp\mathcal R(\mathcal O)\vac\), then
+  \(F_A(a)=\langle\psi,U(a)A\vac\rangle\) vanishes on a real neighborhood of
+  \(0\) for every \(A\in\mathcal R(\mathcal U)\).  The spectral condition
+  analytically continues \(F_A\) to the forward tube; the boundary-value
+  uniqueness theorem for such tube-holomorphic functions propagates this
+  vanishing to all real translations.  Weak additivity then turns the
+  translated local algebras into \(\mathcal R_{\rm glob}\), and global
+  cyclicity forces \(\psi=0\).}
   \label{fig:reeh-schlieder-cyclicity}
 \end{figure}
 
