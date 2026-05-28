@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-11) -> None:
@@ -61,6 +62,39 @@ def check_gksl_trace_preservation() -> None:
     assert_close("single-jump trace preservation", trace(dissipator), 0.0)
 
 
+def check_finite_local_detailed_balance_entropy() -> None:
+    # Two-state, two-reservoir jump model with rates chosen to satisfy
+    # log(W_01/W_10) = -beta (Delta E - mu Delta Q).
+    probabilities = [Fraction(3, 5), Fraction(2, 5)]
+    rates = [
+        (Fraction(1, 3), Fraction(2, 9)),
+        (Fraction(5, 7), Fraction(4, 7)),
+    ]
+
+    total_entropy = 0.0
+    system_entropy_derivative = 0.0
+    reservoir_entropy = 0.0
+    for w01, w10 in rates:
+        forward = probabilities[0] * w01
+        backward = probabilities[1] * w10
+        current = forward - backward
+        total_entropy += 0.5 * float(
+            current * math.log(float(forward / backward))
+            + (-current) * math.log(float(backward / forward))
+        )
+        system_entropy_derivative += 0.5 * float(
+            current * math.log(float(probabilities[0] / probabilities[1]))
+            + (-current) * math.log(float(probabilities[1] / probabilities[0]))
+        )
+        reservoir_entropy += 0.5 * float(
+            current * math.log(float(w01 / w10))
+            + (-current) * math.log(float(w10 / w01))
+        )
+
+    assert total_entropy >= -1.0e-14
+    assert_close("finite local detailed balance entropy split", total_entropy, system_entropy_derivative + reservoir_entropy)
+
+
 def check_two_level_kms_stationary_ratio() -> None:
     beta = 1.4
     gap = 0.9
@@ -97,6 +131,7 @@ def check_positive_noise_kernel() -> None:
 def main() -> None:
     check_reservoir_entropy_production()
     check_gksl_trace_preservation()
+    check_finite_local_detailed_balance_entropy()
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()

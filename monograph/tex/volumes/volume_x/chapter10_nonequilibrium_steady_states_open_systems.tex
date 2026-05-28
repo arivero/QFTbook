@@ -116,6 +116,158 @@ then \(\dot S_{\rm res}=X^TLX\).  The second law in this linear regime is
 equivalent to the positive semidefiniteness of the symmetric part of the
 Onsager matrix \(L\).
 
+\section{Finite Local Detailed Balance}
+\label{sec:finite-local-detailed-balance-ness}
+
+The reservoir formula above is the steady-state remnant of a stronger
+finite statement.  We record it because it fixes the sign convention for
+entropy production before any continuum or hydrodynamic limit is taken.
+
+\begin{definition}[Finite reservoir jump datum]
+\label{def:finite-reservoir-jump-datum}
+A finite reservoir jump datum consists of:
+\begin{enumerate}
+\item a finite set \(I\) of system configurations;
+\item real energy and charge functions \(E_i,Q_i\) on \(I\);
+\item reservoirs \(\alpha\) with parameters \((\beta_\alpha,\mu_\alpha)\);
+\item transition rates \(W^{(\alpha)}_{ij}\ge0\), \(i\ne j\), for jumps
+  \(i\to j\) induced by reservoir \(\alpha\).
+\end{enumerate}
+The rates obey local detailed balance when
+\[
+  W^{(\alpha)}_{ij}>0
+  \quad\Longleftrightarrow\quad
+  W^{(\alpha)}_{ji}>0,
+  \qquad
+  \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}}
+  =
+  -\beta_\alpha
+  \left[
+    E_j-E_i-\mu_\alpha(Q_j-Q_i)
+  \right].
+  \label{eq:finite-local-detailed-balance}
+\]
+The master equation is
+\[
+  \dot p_i
+  =
+  \sum_{\alpha}\sum_{j\ne i}
+  \left[
+    p_jW^{(\alpha)}_{ji}-p_iW^{(\alpha)}_{ij}
+  \right],
+  \qquad p_i\ge0,\qquad \sum_i p_i=1 .
+  \label{eq:finite-reservoir-master-equation}
+\]
+\end{definition}
+
+\begin{proposition}[Finite entropy-production theorem]
+\label{prop:finite-ness-entropy-production}
+For a finite reservoir jump datum satisfying
+\eqref{eq:finite-local-detailed-balance}, define the Shannon entropy
+\[
+  S_{\rm sys}(p)=-\sum_i p_i\log p_i .
+  \label{eq:finite-ness-system-entropy}
+\]
+The reservoir entropy-production rate is
+\[
+  \dot S_{\rm res}
+  =
+  \sum_{\alpha}\sum_{i\ne j}
+  p_iW^{(\alpha)}_{ij}
+  \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}},
+  \label{eq:finite-ness-reservoir-entropy-rate}
+\]
+and the total entropy-production rate is
+\[
+  \dot S_{\rm tot}
+  =
+  \frac12\sum_{\alpha}\sum_{i\ne j}
+  \left(
+    p_iW^{(\alpha)}_{ij}
+    -
+    p_jW^{(\alpha)}_{ji}
+  \right)
+  \log
+  \frac{p_iW^{(\alpha)}_{ij}}
+       {p_jW^{(\alpha)}_{ji}}
+  \ge0 .
+  \label{eq:finite-ness-total-entropy-production}
+\]
+Moreover
+\[
+  \dot S_{\rm tot}=\frac{d}{dt}S_{\rm sys}(p)+\dot S_{\rm res}.
+  \label{eq:finite-ness-system-plus-reservoir}
+\]
+At a stationary distribution \(p^{\rm ss}\), the system entropy derivative
+vanishes, hence \(\dot S_{\rm res}=\dot S_{\rm tot}\ge0\).
+\end{proposition}
+
+\begin{proof}
+The local detailed-balance relation says that a jump \(i\to j\) changes the
+reservoir entropy by
+\[
+  -\beta_\alpha
+  \left[
+    E_j-E_i-\mu_\alpha(Q_j-Q_i)
+  \right]
+  =
+  \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}},
+  \label{eq:finite-ness-jump-reservoir-entropy}
+\]
+which gives \eqref{eq:finite-ness-reservoir-entropy-rate} after averaging
+over jumps.  Differentiating \(S_{\rm sys}\) and using
+\(\sum_i\dot p_i=0\) gives
+\[
+  \frac{dS_{\rm sys}}{dt}
+  =
+  -\sum_i\dot p_i\log p_i .
+  \label{eq:finite-ness-system-entropy-derivative}
+\]
+Substituting the master equation and symmetrizing over \(i,j\),
+\[
+  \frac{dS_{\rm sys}}{dt}
+  =
+  \frac12\sum_{\alpha}\sum_{i\ne j}
+  \left(
+    p_iW^{(\alpha)}_{ij}
+    -
+    p_jW^{(\alpha)}_{ji}
+  \right)
+  \log\frac{p_i}{p_j}.
+  \label{eq:finite-ness-system-entropy-current-form}
+\]
+Similarly, \eqref{eq:finite-ness-reservoir-entropy-rate} can be written as
+\[
+  \dot S_{\rm res}
+  =
+  \frac12\sum_{\alpha}\sum_{i\ne j}
+  \left(
+    p_iW^{(\alpha)}_{ij}
+    -
+    p_jW^{(\alpha)}_{ji}
+  \right)
+  \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}} .
+  \label{eq:finite-ness-reservoir-current-form}
+\]
+Adding the last two equations gives
+\eqref{eq:finite-ness-total-entropy-production}.  Each summand is
+nonnegative because
+\[
+  (x-y)\log(x/y)\ge0,\qquad x>0,\quad y>0 .
+  \label{eq:finite-ness-log-monotonicity}
+\]
+Terms with \(x=y=0\) are omitted by continuity.  This proves both
+\eqref{eq:finite-ness-system-plus-reservoir} and the inequality.
+\end{proof}
+
+The two-reservoir current formula
+\eqref{eq:ness-reservoir-entropy-production} is obtained from this finite
+statement when the stationary currents have well-defined macroscopic energy
+and charge rates.  The finite theorem does not prove existence of the
+long-time QFT state \(\omega_{\rm ss}\); it proves the algebraic positivity
+that any Markovian reservoir reduction with local detailed balance must
+satisfy.
+
 \section{Weak-Coupling Open-System Limit}
 
 Let a system Hilbert space couple to an environment by
