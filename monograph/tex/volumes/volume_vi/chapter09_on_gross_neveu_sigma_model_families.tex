@@ -2887,44 +2887,192 @@ the regulator scale.  Equivalently, with \(\lambda_{\mathrm{GN}}=Ng^2\),
 This derivation is a saddle calculation in a specified regularized functional
 integral; the exact finite-\(N\) factorized QFT is a separate construction.
 
-\section{Bootstrap Matching Conditions}
+\section{Regulator-to-Bootstrap Matching}
+\label{sec:sigma-model-regulator-bootstrap-matching}
 
-For an asymptotically free model family, exact scattering data must match at
-least four layers:
-\[
-  (G,V)\quad
-  \longleftrightarrow\quad
-  \text{particle multiplets},
-\]
-\[
-  \beta(g)<0\quad
-  \longleftrightarrow\quad
-  \text{dynamically generated mass scale},
-\]
-\[
-  \text{local currents and stress tensor}\quad
-  \longleftrightarrow\quad
-  \text{form-factor residues},
-\]
-\[
-  \text{finite-volume spectrum}\quad
-  \longleftrightarrow\quad
-  \text{TBA kernels from }-\ii\partial_\theta\log S_R(\theta).
-\]
-The last line is checked by inserting the channel eigenvalues into the TBA
-kernel
-\[
-  K_R(\theta)=\frac1{2\pi\ii}\partial_\theta\log S_R(\theta).
-\]
-The ultraviolet central charge extracted from the small-volume TBA must agree
-with the short-distance fields that define the regulated model.  This is an
-equality of two constructed objects only after the regulator-to-continuum map
-and the scattering construction have been specified.
+The preceding sections deliberately separated three kinds of statements.
+First, a sigma model can be specified by ultraviolet local data: a target or
+quotient, a regularized functional integral, coupling coordinates, global
+symmetries, and local composite fields.  Second, integrability can be stated
+by classical Lax equations or by finite-dimensional Yang--Baxter identities
+for rapidity-space matrices.  Third, an exact scattering proposal becomes a
+statement about a local QFT only after the Hilbert space, one-particle
+subspaces, scattering states, and local observables have been constructed
+from the same regulator.
 
-\begin{openproblem}[Constructive factorizing examples]
+\begin{definition}[Bootstrap datum for a massive factorizing family]
+\label{def:massive-factorizing-bootstrap-datum}
+A massive factorizing bootstrap datum consists of:
+\begin{enumerate}
+  \item a finite list of one-particle species \(a\), with masses \(m_a>0\),
+  internal Hilbert spaces \(V_a\), charge conjugates \(\bar a\), and a
+  positive inner product on each \(V_a\);
+  \item meromorphic two-particle matrices
+  \[
+    S_{ab}(\theta):V_a\otimes V_b\longrightarrow V_b\otimes V_a
+  \]
+  satisfying real-rapidity unitarity, the appropriate crossing equations,
+  and the Yang--Baxter equation as identities of meromorphic operators;
+  \item a physical-strip pole ledger assigning each pole either to a stable
+  bound-state multiplet with a positive residue in the Hilbert-space
+  convention, to a specified on-shell composite singularity, or to a zero of
+  the scalar factor that cancels an unphysical matrix pole;
+  \item CDD data, namely a declaration that no additional physical-strip
+  zeros or poles are present except those in the ledger;
+  \item form-factor residues for the local currents and stress tensor, or an
+  equivalent construction of the local operator algebra;
+  \item a finite-volume spectral prescription, such as a Bethe--Yang or TBA
+  system, with kernels defined from the channel eigenvalues by
+  \[
+    K_R(\theta)=\frac1{2\pi\ii}\partial_\theta\log S_R(\theta)
+  \]
+  wherever a diagonal channel \(R\) is being used.
+\end{enumerate}
+The word ``exact'' refers to this whole datum, not only to the displayed
+matrix part of \(S_{ab}\).
+\end{definition}
+
+\begin{definition}[Regulator realization of a bootstrap datum]
+\label{def:regulator-realization-bootstrap-datum}
+Let \(\mathcal B\) be a bootstrap datum in the sense of
+Definition~\ref{def:massive-factorizing-bootstrap-datum}.  A regulator
+realization of \(\mathcal B\) is a sequence of regularized local theories
+\(\mathfrak R_\epsilon\), \(\epsilon\downarrow0\), together with a choice of
+renormalized coupling coordinates, such that:
+\begin{enumerate}
+  \item the Euclidean Schwinger functions or Lorentzian Wightman functions of
+  local observables converge, after renormalization, to distributions obeying
+  the positivity, covariance, spectral, and locality properties needed for
+  Haag--Ruelle scattering in the neutral massive sector under discussion;
+  \item the limiting mass operator has isolated one-particle subspaces
+  \(\mathcal H_{1,a}\simeq V_a\otimes L^2(H_{m_a}^+,\dd\mu_{m_a})\), with
+  the same masses and symmetry representations as \(\mathcal B\);
+  \item the local currents, stress tensor, and any topological or Noether
+  charges obtained from the regulator act on these one-particle subspaces in
+  the representations assigned by \(\mathcal B\);
+  \item Haag--Ruelle wave operators exist for the stable species and the
+  two-particle scattering kernel in rapidity variables is the boundary value
+  of a meromorphic function on the domain used by the bootstrap datum;
+  \item this meromorphic scattering kernel, including scalar factors and
+  residue normalizations, equals the \(S_{ab}\) of \(\mathcal B\);
+  \item finite-volume energies and local form factors computed from the
+  regulator converge to the Bethe--Yang/TBA and form-factor data specified in
+  \(\mathcal B\), with the same mass coordinate.
+\end{enumerate}
+The matching map includes the relation between the regulator mass scale,
+renormalized couplings, \(\theta\)-angle or WZ level, and the rapidity-space
+bootstrap parameter.  Without this map, a bootstrap matrix and a sigma-model
+action are two compatible coordinate systems, not yet one constructed QFT.
+\end{definition}
+
+\begin{proposition}[Analytic uniqueness of a matched two-particle kernel]
+\label{prop:analytic-uniqueness-matched-smatrix}
+Assume a regulator realization supplies Haag--Ruelle two-particle scattering
+for species \(a,b\), and that the resulting two-particle kernel
+\(S^{\rm HR}_{ab}(\theta)\) and a bootstrap matrix \(S^{\rm boot}_{ab}(\theta)\)
+are meromorphic operator-valued functions on a connected domain
+\(\Omega\subset\mathbb C\) containing a nonempty real rapidity interval
+\(I\) in its boundary-value set.  Suppose their boundary values on \(I\)
+exist as tempered distribution kernels and agree there as operators
+\[
+  V_a\otimes V_b\longrightarrow V_b\otimes V_a .
+\]
+If the difference has no boundary-supported contact term in the two-particle
+rapidity variable, then
+\[
+  S^{\rm HR}_{ab}(\theta)=S^{\rm boot}_{ab}(\theta)
+\]
+as meromorphic operator-valued functions on \(\Omega\).
+\end{proposition}
+
+\begin{proof}
+Choose bases of \(V_a\) and \(V_b\).  The assertion reduces to scalar
+meromorphic functions for each matrix entry.  Let
+\[
+  F(\theta)=
+  (S^{\rm HR}_{ab})_{\beta\alpha}^{\alpha'\beta'}(\theta)
+  -
+  (S^{\rm boot}_{ab})_{\beta\alpha}^{\alpha'\beta'}(\theta).
+\]
+Multiplying by a product of local pole factors gives a holomorphic function
+\(\widetilde F\) on a smaller connected open set whose boundary still
+contains an interval \(I_0\subset I\).  Equality of the distributional
+boundary values on \(I_0\), together with the absence of a
+boundary-supported contact term in rapidity, means that the boundary value of
+\(\widetilde F\) vanishes on \(I_0\).  By the Schwarz reflection or edge
+uniqueness theorem for one complex variable, a holomorphic function with
+vanishing boundary value on an open real interval in this situation is
+identically zero on the connected component.  Hence each matrix entry of
+\(\widetilde F\), and therefore of \(F\), vanishes away from the removed pole
+divisors.  Since both sides are meromorphic, the equality extends across
+removable points and holds as a meromorphic identity on \(\Omega\).
+\end{proof}
+
+This proposition is intentionally modest.  It does not construct the
+continuum theory, prove asymptotic completeness, or derive factorization from
+the regulator.  It records the last analytic step after those harder inputs
+have been supplied.  The difficult part of a sigma-model bootstrap theorem is
+therefore not the identity theorem; it is the construction of the
+Haag--Ruelle scattering theory and the proof that the regulator produces a
+kernel with the analyticity, pole, and residue properties stated in
+Definition~\ref{def:massive-factorizing-bootstrap-datum}.
+
+\begin{definition}[Family ledger for this chapter]
+\label{def:sigma-model-family-ledger}
+The families developed in this chapter have the following status in the
+terminology above.
+\begin{enumerate}
+  \item The \(O(N)\) sigma model has a regulator action, asymptotic freedom,
+  large-\(N\) mass generation, and a vector bootstrap matrix with the standard
+  tensor decomposition.  The chapter records the bootstrap consistency data;
+  a fully constructive realization remains an open problem.
+  \item The \(O(N)\) Gross--Neveu model has the auxiliary-field ultraviolet
+  datum, the large-\(N\) gap equation, and the same factorizing-scattering
+  logic in the fermionic representation.  The bosonic WZW/current-current
+  bridge is the nonabelian-bosonization coordinate on the same local current
+  algebra, after the \(U(1)\) and quotient data are fixed.
+  \item The \(\mathbb{CP}^{N-1}\) family is specified by the constrained
+  complex field, auxiliary \(U(1)\) quotient connection, projector action,
+  topological charge, instanton bound, large-\(N\) gap equation, induced
+  Maxwell kernel, and projective tensor/crossing ledger.  For
+  \(N=2\), the projector identifies the model with the \(O(3)\) target with
+  the coupling conversion derived above.  For \(N>2\), the chapter treats
+  exact projective scattering as a bootstrap and construction problem rather
+  than importing a scalar factor without a regulator-level proof.
+  \item Principal chiral models are developed through their
+  \(G_L\times G_R\) action, Lax equivalence, Wess--Zumino deformation,
+  Polyakov--Wiegmann identity, WZW endpoint current algebra, KZ equations,
+  GKO cosets, and the \(SU(N)\) sine-law/bootstrap matrix and scalar-factor
+  conventions.  The matrix and scalar unitarity identities are proved in the
+  displayed convention; the constructive matching to a regulator remains
+  separate data.
+  \item Symmetric-space sigma models are developed through the reductive
+  quotient \(G/H\), local \(H\) redundancy, and the Lax equivalence for
+  symmetric spaces.  This proves the classical integrability statement used
+  by the family classification.
+  \item Supersphere, projective-super, and principal-supergroup examples are
+  defined as locally super-ringed target theories.  Their one-loop
+  cancellations are supertrace/Berezinian statements, not statements about
+  positive Borel measures.  Positivity, logarithmic sectors, and exact
+  scattering require separate construction data.
+  \item The deformed-sphere sausage family is specified by its metric, scalar
+  curvature, one-loop Ricci trajectory, round and cylindrical metric limits,
+  the repulsive-domain triplet scattering proposal, real-rapidity unitarity,
+  and the algebraic Yang--Baxter identity for the displayed meromorphic
+  matrix.  The massless \(\theta_{\rm top}=\pi\) endpoint and the
+  regulator-to-\(\lambda\) matching are separate scaling problems.
+\end{enumerate}
+\end{definition}
+
+\begin{openproblem}[Constructive factorizing sigma-model families]
 \label{op:constructive-factorizing-on-gn}
-Construct the \(O(N)\) sigma model and Gross--Neveu factorizing QFTs as local
-QFTs with Hilbert space, local algebras, conserved currents, mass gap,
-Haag--Ruelle scattering states, and exact S-matrix, in one framework where the
-ultraviolet regulator data and the bootstrap data are proved to match.
+Construct the massive factorizing sigma-model families discussed in this
+chapter as local QFTs with Hilbert spaces or graded state spaces, local
+algebras, conserved currents, mass gaps, Haag--Ruelle scattering states, and
+exact \(S\)-matrices in one framework where the ultraviolet regulator data,
+bootstrap data, form factors, and finite-volume spectra are proved to match.
+At present the chapter supplies the regulator definitions, classical
+integrability identities, large-\(N\) controls, algebraic bootstrap checks,
+and scalar-factor ledgers that such a theorem must connect; the constructive
+identification remains a genuine theorem-level problem.
 \end{openproblem}
