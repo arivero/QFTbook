@@ -508,6 +508,81 @@ This equation is meaningful only after the state, stress-tensor
 renormalization, contact terms, gauge condition, and stochastic test space
 have all been specified.
 
+\begin{proposition}[Pushforward covariance of the Einstein--Langevin source]
+\label{prop:einstein-langevin-pushforward-covariance}
+Let \(\mathcal E\) be the real nuclear test-tensor space on which the noise
+covariance \(N\) is defined, and let \(\mathcal E'\) be its distributional
+dual.  Suppose the gauge-fixed linear operator in
+\eqref{eq:semiclassical-einstein-langevin} has a continuous retarded
+solution map
+\[
+  \mathcal G_{\rm ret}:\mathcal E'\longrightarrow \mathcal H ,
+  \label{eq:semiclassical-retarded-solution-map}
+\]
+where \(\mathcal H\) is the chosen linear metric-perturbation distribution
+space.  If \(\xi\) is the centered Gaussian generalized random tensor with
+covariance \(N\), then \(h=\mathcal G_{\rm ret}\xi\) is a centered Gaussian
+random metric perturbation.  For any real linear observables
+\(\ell_1,\ell_2\in\mathcal H^*\),
+\[
+  \mathbb E[\ell_1(h)\ell_2(h)]
+  =
+  N(\mathcal G_{\rm ret}^*\ell_1,\mathcal G_{\rm ret}^*\ell_2),
+  \label{eq:semiclassical-pushforward-covariance-abstract}
+\]
+where \(\mathcal G_{\rm ret}^*:\mathcal H^*\to\mathcal E\) is the transpose.
+In kernel notation this is exactly
+\eqref{eq:semiclassical-metric-covariance}.  The resulting covariance is
+positive semidefinite on metric observables:
+\[
+  \mathbb E[\ell(h)^2]\ge0 .
+  \label{eq:semiclassical-metric-covariance-positivity}
+\]
+\end{proposition}
+
+\begin{proof}
+For a centered Gaussian generalized random tensor, the characteristic
+functional on \(\mathcal E\) is
+\[
+  \mathbb E[e^{\ii\xi(f)}]
+  =
+  \exp\!\left[-\frac12N(f,f)\right].
+  \label{eq:semiclassical-noise-characteristic-functional}
+\]
+For \(\ell\in\mathcal H^*\),
+\[
+  \ell(h)=\ell(\mathcal G_{\rm ret}\xi)
+  =
+  \xi(\mathcal G_{\rm ret}^*\ell).
+  \label{eq:semiclassical-observable-pullback}
+\]
+Thus the finite collection
+\((\ell_1(h),\ldots,\ell_n(h))\) has characteristic function
+\[
+  \exp\!\left[
+    -\frac12
+    \sum_{a,b}t_at_b\,
+    N(\mathcal G_{\rm ret}^*\ell_a,\mathcal G_{\rm ret}^*\ell_b)
+  \right],
+  \label{eq:semiclassical-pushforward-characteristic-function}
+\]
+which is Gaussian with covariance
+\eqref{eq:semiclassical-pushforward-covariance-abstract}.  Positivity
+follows by setting \(\ell_1=\ell_2=\ell\) and using positivity of \(N\).
+When \(\ell\) is evaluation against a compactly supported test tensor on the
+metric side, \(\mathcal G_{\rm ret}^*\ell\) is represented by the retarded
+Green kernel in \eqref{eq:semiclassical-metric-covariance}, producing the
+displayed kernel formula.
+\end{proof}
+
+Only gauge-invariant or gauge-fixed metric observables should be inserted in
+Proposition~\ref{prop:einstein-langevin-pushforward-covariance}.  If
+\(\ell\) is pure gauge and the retarded inverse has been constructed after
+gauge fixing, \(\ell(h)\) is a coordinate artifact, not a physical metric
+fluctuation.  The theorem is therefore a covariance theorem for the declared
+linearized problem, not a replacement for the gravitational constraint
+analysis.
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A

@@ -852,8 +852,9 @@ Current checks:
 - `semiclassical_backreaction_checks.py`: finite checks for the semiclassical
   backreaction chapter, including four-dimensional traces of the
   curvature-squared Euler tensors, the KMS fluctuation-dissipation factor,
-  positivity of a finite noise covariance, and the low-energy root selected
-  by reduction of order in a toy higher-derivative equation.
+  positivity of a finite noise covariance, the Einstein--Langevin
+  pushforward covariance identity \(GNG^T\), and the low-energy root
+  selected by reduction of order in a toy higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,

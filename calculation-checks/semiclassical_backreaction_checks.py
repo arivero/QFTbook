@@ -62,6 +62,33 @@ def check_noise_covariance_positivity() -> None:
             raise AssertionError("noise quadratic form should be nonnegative")
 
 
+def check_einstein_langevin_pushforward_covariance() -> None:
+    # Finite-dimensional analogue of Cov(h) = G N G^T.
+    noise = ((2.0, 0.4), (0.4, 1.1))
+    green = ((1.2, -0.3), (0.5, 0.8), (-0.7, 0.2))
+    covariance = tuple(
+        tuple(
+            sum(green[i][a] * noise[a][b] * green[j][b] for a in range(2) for b in range(2))
+            for j in range(3)
+        )
+        for i in range(3)
+    )
+
+    for i in range(3):
+        for j in range(3):
+            assert_close(covariance[i][j], covariance[j][i], "metric covariance symmetry")
+
+    for test in [(1.0, -2.0, 0.5), (0.3, 0.4, -0.6), (-1.2, 0.0, 0.7)]:
+        pulled = tuple(sum(green[i][a] * test[i] for i in range(3)) for a in range(2))
+        direct_metric_variance = sum(
+            test[i] * covariance[i][j] * test[j] for i in range(3) for j in range(3)
+        )
+        noise_variance = sum(pulled[a] * noise[a][b] * pulled[b] for a in range(2) for b in range(2))
+        assert_close(direct_metric_variance, noise_variance, "pushforward covariance quadratic form")
+        if direct_metric_variance < -1e-12:
+            raise AssertionError("pushforward metric covariance should be positive semidefinite")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -87,6 +114,7 @@ def main() -> None:
     check_curvature_squared_traces()
     check_kms_fluctuation_dissipation()
     check_noise_covariance_positivity()
+    check_einstein_langevin_pushforward_covariance()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 
