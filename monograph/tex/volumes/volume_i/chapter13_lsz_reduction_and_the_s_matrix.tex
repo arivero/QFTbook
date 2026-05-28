@@ -10,6 +10,8 @@ large-time Hilbert-space limits. LSZ reduction is the theorem that computes
 matrix elements of that already-defined scattering operator from the singular
 part of time-ordered Green functions at the one-particle mass shell.
 
+\begin{definition}[Massive scalar LSZ datum]
+\label{def:massive-scalar-lsz-datum}
 This chapter keeps the same massive scalar particle as in the Haag--Ruelle
 chapter. The assumptions are:
 \begin{enumerate}
@@ -32,7 +34,10 @@ chapter. The assumptions are:
   \item the time-ordered products used below have been defined as
   distributions.
 \end{enumerate}
+\end{definition}
 
+\begin{definition}[Relativistic external-state normalization]
+\label{def:lsz-relativistic-external-normalization}
 Let generalized one-particle momentum states, understood as distributional
 vectors as in Section~\ref{sec:rigged-hilbert-continuous-spectrum}, be
 normalized by
@@ -68,7 +73,10 @@ Kernel notation such as
 \]
 means the distributional kernel obtained after smearing all momenta with
 smooth compactly supported wave packets.
+\end{definition}
 
+\begin{definition}[Wave-packet scattering matrix element]
+\label{def:lsz-wave-packet-scattering-matrix-element}
 For wave packets \(f_i,g_j\in C_c^\infty(\mathbb R^d)\), set
 \[
   F_{\mathrm{out}}=f_1\odot\cdots\odot f_m,
@@ -92,6 +100,7 @@ to proper partitions of the incoming and outgoing labels.  The partition
 formula is stated in Section~\ref{sec:lsz-cluster-decomposition}; the theorem
 below identifies each connected component with an external one-particle
 residue of a time-ordered Green function.
+\end{definition}
 
 \section{The LSZ Theorem as a Wave-Packet Statement}
 
@@ -267,6 +276,8 @@ Section~\ref{sec:lsz-cluster-decomposition}.
 
 \section{The One-Particle Pole}
 
+\begin{definition}[Interpolating-field pole datum]
+\label{def:lsz-interpolating-field-pole-datum}
 The matrix element defining \(Z_\phi\) says that \(\widehat\phi\) is an interpolating
 scalar field for the particle species under consideration. With the
 normalization above, the K\"all\'en--Lehmann measure of \(\widehat\phi\)
@@ -329,6 +340,7 @@ Lorentzian Green-function chapter:
 \]
 as a mass-shell boundary-value coefficient. Applying one such operation to
 every external field is the analytic core of LSZ reduction.
+\end{definition}
 
 \begin{proposition}[Invariant denominator coefficient and linear pole residues]
 \label{prop:lsz-invariant-denominator-linear-residues}
@@ -486,6 +498,8 @@ time-ordered correlation functions into scattering matrix elements.
 
 \section{Connected Truncation and External Amputation}
 
+\begin{definition}[Connected Lorentzian source convention]
+\label{def:lsz-connected-lorentzian-source-convention}
 The pole extracted by LSZ is an external one-particle pole.  It is useful to
 separate this operation from two other operations that are often compressed
 in notation.  First, the connected time-ordered functions are obtained from
@@ -567,7 +581,10 @@ respect to the real-time source produces a factor \(\ii^N\); the prefactor
 \(\ii^{-N}\) in Eq.~\eqref{eq:lsz-connected-cumulant} is exactly the
 compensation that leaves the connected time-ordered distribution rather than
 the source-normalized derivative.
+\end{definition}
 
+\begin{definition}[LSZ external amputation map]
+\label{def:lsz-external-amputation-map}
 Second, amputation in LSZ is extraction of the coefficient of the isolated
 external denominator, not a residue in the complex variable \(k^2\).  More
 precisely,
@@ -606,6 +623,7 @@ Thus the reduction map has three logically distinct inputs:
 The Haag--Ruelle construction supplies the last target independently of
 perturbation theory; the Green functions supply a way to compute its matrix
 elements when the one-particle pole hypotheses hold.
+\end{definition}
 
 \section{Contact Terms and Interpolating Fields}
 
@@ -623,7 +641,8 @@ each external variable.  After multiplication by
 and taking the on-shell boundary value with separated wave packets, these
 local terms do not contribute to the connected scattering kernel.  They still
 matter for Ward identities, composite operators, and renormalized local
-products; they are simply not external one-particle residues.
+products; they are local insertions rather than external one-particle
+residues.
 
 Second, the local field used in the reduction is an interpolating field.  Let
 \(\widehat\phi'\) be another scalar local field with
@@ -729,7 +748,7 @@ correlator.  If the Fourier-transformed Green function is regular at
 vanishes by repeated integration by parts.  A nonzero limit is produced by the
 one-particle pole.
 
-The elementary contour integral displays the residue.  With the denominator
+The following contour integral displays the residue.  With the denominator
 convention used in the Lorentzian Green functions,
 \[
 \begin{aligned}
@@ -795,7 +814,7 @@ positive-energy statement is the complex-conjugate contour calculation.
 \end{proof}
 
 If the full Feynman two-point singularity
-\(-\ii Z_\phi/(k^2+m^2-\ii0)\) is used instead of the bare denominator in the
+\(-\ii Z_\phi/(k^2+m^2-\ii0)\) is used instead of the denominator in the
 displayed integral, the extra factor \(-\ii Z_\phi\) combines with the residue above
 to give the mass-shell measure and the external factor \(Z_\phi^{1/2}\).  The LSZ
 operator \(Z_\phi^{-1/2}\ii(k^2+m^2)\) is the distributional way of extracting this
@@ -916,6 +935,8 @@ an additional convention imposed after the reduction formula.
 
 \section{Invariant Amplitudes}
 
+\begin{definition}[Invariant scalar amplitude convention]
+\label{def:lsz-invariant-scalar-amplitude-convention}
 The connected kernel contains the overall conservation law
 \[
   q_1+\cdots+q_m=p_1+\cdots+p_n.
@@ -979,6 +1000,7 @@ where
 \]
 The invariant object is \(\mathcal M\); \(M_\delta\) carries the normalization
 factors attached to a nonrelativistic delta-function basis.
+\end{definition}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.9,>=Stealth]
@@ -1014,31 +1036,65 @@ have been extracted.
 \section{Cluster Decomposition of the Scattering Kernel}
 \label{sec:lsz-cluster-decomposition}
 
-The full scattering kernel is obtained by summing connected kernels over
-partitions of the incoming and outgoing particle labels.  Let
-\(\alpha\) denote the ordered list of incoming external momenta and \(\beta\)
-the ordered list of outgoing external momenta.  A cluster decomposition is a
-common partition
-\[
-  \alpha=\bigsqcup_{I\in\mathcal P}\alpha_I,
-  \qquad
-  \beta=\bigsqcup_{I\in\mathcal P}\beta_I,
-\]
-where each block \(I\) contains the incoming and outgoing labels that belong to
-one connected scattering component.  Then
+\begin{proposition}[Partition formula for connected scattering kernels]
+\label{prop:lsz-connected-scattering-partition-formula}
+Let \(S(\beta|\alpha)\) denote the distributional kernel of the scattering
+operator on the Haag--Ruelle asymptotic Fock space, where \(\alpha\) is the
+ordered list of incoming external labels and \(\beta\) is the ordered list of
+outgoing external labels.  Connected scattering kernels
+\(S^{\mathrm{conn}}\) are defined by the following moment--cumulant relation:
 \[
   S(\beta|\alpha)
   =
   \sum_{\mathcal P}
   \prod_{I\in\mathcal P}
+  S^{\mathrm{conn}}(\beta_I|\alpha_I).
+\]
+Here \(\mathcal P\) runs over simultaneous partitions
+\[
+  \alpha=\bigsqcup_{I\in\mathcal P}\alpha_I,
+  \qquad
+  \beta=\bigsqcup_{I\in\mathcal P}\beta_I,
+\]
+and the singleton identity kernels of the identity operator in
+\(S=\mathbf 1+\) interaction are included as allowed one-particle blocks.
+Equivalently, \(S^{\mathrm{conn}}\) is obtained from \(S\) by M\"obius
+inversion on this finite partition lattice.  With this definition,
+Haag--Ruelle cluster decomposition says that \(S^{\mathrm{conn}}\) is the part
+of the distribution that cannot be written as a product of scattering kernels
+for mutually separated spacetime clusters.  The statement is not
+perturbative: perturbation theory later represents the connected kernels by
+connected Feynman graphs, but the connected/disconnected separation is already
+defined on the asymptotic Hilbert space.
+\end{proposition}
+
+\begin{proof}
+The scattering kernel is a distributional matrix coefficient of \(S\) on the
+asymptotic Fock space.  For each finite set of external labels the set of
+simultaneous partitions is finite, so the displayed relation can be solved
+recursively for \(S^{\mathrm{conn}}\), beginning with the one-block
+partition.  Explicitly,
+\[
+  S^{\mathrm{conn}}(\beta|\alpha)
+  =
+  S(\beta|\alpha)
+  -
+  \sum_{\substack{\mathcal P\ne\{\mathrm{all}\}}}
+  \prod_{I\in\mathcal P}
   S^{\mathrm{conn}}(\beta_I|\alpha_I),
 \]
-with the one-particle identity blocks included.  This formula is the
-scattering analogue of the cumulant decomposition of time-ordered correlation
-functions.  Its content is not perturbative: it is a consequence of the
-Hilbert-space cluster property of asymptotic states.  Perturbation theory later represents
-the connected blocks by connected Feynman graphs, but the connected/disconnected
-separation is already present in the nonperturbative scattering kernel.
+which is the M\"obius inversion formula written in recursive form.  The
+identity operator contributes the one-particle pass-through kernel
+\((2\pi)^d2\omega_{\vec p}\delta^{(d)}(\vec q-\vec p)\) in the corresponding
+singleton block; if one instead works with \(T=S-\mathbf 1\), these identity
+blocks are removed before taking connected interaction kernels.  Finally,
+the Haag--Ruelle cluster property states that translating one group of
+wave-packet creation operators far from another makes the Hilbert-space
+matrix coefficient factor into the product of the corresponding cluster
+matrix coefficients.  The recursive inversion is precisely the subtraction
+of all such factorized contributions, hence it isolates the non-factorizing
+connected kernel.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.9,>=Stealth]
@@ -1065,6 +1121,8 @@ separation is already present in the nonperturbative scattering kernel.
 
 \section{Perturbative Evaluation After Reduction}
 
+\begin{proposition}[Tree-level \(\phi^4\) amplitude after LSZ]
+\label{prop:lsz-tree-phi-four-after-reduction}
 Perturbation theory supplies an expansion of the time-ordered Green function.
 LSZ then turns that expansion into an expansion of matrix elements of the
 scattering operator. This is the point where Feynman graphs acquire their
@@ -1135,9 +1193,27 @@ Therefore
 with the amplitude convention above. Higher orders are obtained from the
 same Green-function expansion together with the external residue factors
 \(Z_\phi^{-1/2}\).
+\end{proposition}
+
+\begin{proof}
+The leading connected four-point Green function has one local quartic vertex
+and four external scalar Feynman denominators.  The LSZ theorem has already
+identified the physical scattering matrix element with the simultaneous
+external pole coefficient of this connected Green function.  Applying
+\(\ii(k_a^2+m^2)\) to each external scalar denominator gives one for each
+external leg in the displayed convention, and \(Z_\phi=1+O(g^2)\) at this
+order.  After the four external poles are removed, the remaining connected
+kernel is the vertex factor \(-\ii g\) times the momentum-conservation delta
+function.  Comparing with
+Definition~\ref{def:lsz-invariant-scalar-amplitude-convention}, where the
+connected kernel equals \(\ii(2\pi)^D\delta^{(D)}(\sum q-\sum p)\mathcal M\),
+gives \(\mathcal M=-g+O(g^2)\).
+\end{proof}
 
 \section{Scope of the Formula}
 
+\begin{proposition}[Scope of scalar LSZ reduction]
+\label{prop:lsz-scope-stable-massive-local-fields}
 The LSZ theorem in this chapter applies to stable massive particles
 represented by isolated one-particle poles in local-field Green functions. It
 is a statement about boundary values of distributions after wave-packet
@@ -1176,3 +1252,17 @@ High-energy QCD observables involving jets are therefore not colored-particle
 such as inclusive hadronic tensors and energy-flow correlators, whose
 nonperturbative definitions are given in terms of physical states and the
 stress tensor.
+\end{proposition}
+
+\begin{proof}
+Every conclusion in Theorem~\ref{thm:lsz-wave-packet} uses the datum of
+Definition~\ref{def:massive-scalar-lsz-datum}: a stable isolated
+one-particle shell, Haag--Ruelle wave operators for that shell, a local
+interpolating field with nonzero one-particle matrix element, and
+time-ordered distributions with the corresponding pole.  Massless
+long-range charged sectors, confined colored fields, unstable resonances, and
+conformal theories fail one or more of these inputs.  Therefore the scalar
+formula cannot be applied to them by changing notation; each case requires
+the asymptotic object and the relevant reduction theorem appropriate to its
+own physical Hilbert-space or detector data.
+\end{proof}

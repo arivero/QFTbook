@@ -42,7 +42,7 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(d\) | spatial dimension, \(D-1\) |
-| \(\mathcal F_s(\Hilb_1)\) | bosonic asymptotic Fock space over the isolated one-particle subspace |
+| \(\mathcal F_s(\Hilb_1)\) | bosonic asymptotic Fock space over \(\Hilb_1\) |
 | \(\Omega_{\mathrm{in/out}}\) | Haag--Ruelle wave operators |
 | \(S\) | scattering operator \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) |
 | \(\omega_{\vec p}\) | \(\sqrt{\vec p^{\,2}+m^2}\) |
@@ -56,7 +56,7 @@
 | \(Z[J]\) | Lorentzian time-ordered source functional with source term \(i\int J\phi\) |
 | \(Z_-[J]\) | alternate Lorentzian source functional with source term \(-i\int J\phi\) |
 | \(Z_E[J_E]\) | Euclidean ordered source functional with source term \(+\int J_E\phi_E\) |
-| \(\operatorname{bv}_{\Sigma_m}\) | Feynman boundary value at the isolated mass shell after wave-packet smearing |
+| \(\operatorname{bv}_{\Sigma_m}\) | Feynman boundary value on \(\Sigma_m\) after smearing |
 | \(p_j\) | incoming positive-energy physical momentum |
 | \(q_i\) | outgoing positive-energy physical momentum |
 | \(k_a\) | all-incoming Green-function momentum, \(q_i\) or \(-p_j\) |
@@ -69,6 +69,11 @@
 - The object computed by LSZ is the Hilbert-space matrix element
   \(\langle F_{\rm out},S F_{\rm in}\rangle_{\mathcal F_s(\Hilb_1)}\), with
   \(S\) supplied by Haag--Ruelle wave operators.
+- Definitions `def:massive-scalar-lsz-datum`,
+  `def:lsz-relativistic-external-normalization`, and
+  `def:lsz-wave-packet-scattering-matrix-element` isolate the hypotheses,
+  the distributional external-state normalization, and the wave-packet
+  Hilbert-space matrix element before the reduction theorem is stated.
 - The wave-packet LSZ theorem identifies the connected component of that
   matrix element with the external one-particle residue of
   \(\widetilde G^{\mathrm{conn}}_{m+n}\), after distributional smearing and
@@ -84,6 +89,10 @@
   \(k^2+m^2-i0\), whereas the complex \(k^0\)-plane residues at fixed
   \(\vec k\) are \(iZ_\phi/(2\omega_{\vec k})\) and
   \(-iZ_\phi/(2\omega_{\vec k})\).
+- Definition `def:lsz-interpolating-field-pole-datum` packages the
+  Kallen--Lehmann atom, the invariant-denominator coefficient, and the
+  external multiplier \(Z_\phi^{-1/2}i(k^2+m^2)\) before the residue
+  propositions.
 - Proposition `prop:lsz-invariant-denominator-linear-residues` proves the
   mostly-plus factorization and the relation between invariant-denominator
   coefficient and the two linear \(k^0\)-pole residues.
@@ -108,6 +117,9 @@
 - The source-derivative prefactor is convention-dependent: with the alternate
   \(-i\int J\phi\) source coupling, the connected cumulant uses
   \((-i)^{-N}=i^N\) rather than \(i^{-N}\).
+- Definitions `def:lsz-connected-lorentzian-source-convention` and
+  `def:lsz-external-amputation-map` separate connected cumulant extraction
+  from external one-particle amputation.
 - The large-time Haag--Ruelle matrix element becomes an oscillatory integral
   whose nonzero limit is precisely the external one-particle pole residue.
 - Proposition `prop:lsz-large-time-pole-selector` records the contour
@@ -120,13 +132,28 @@
   signs.
 - The relation between \(\mathcal M\) and \(M_\delta\) is fixed by the external
   relativistic normalization factors.
+- Definition `def:lsz-invariant-scalar-amplitude-convention` records the
+  invariant-amplitude convention and its conversion to a
+  \(\delta^{(d)}\)-normalized basis before cross-section conventions appear in
+  the next chapter.
 - The full scattering kernel decomposes into products of connected kernels
   over compatible partitions of incoming and outgoing labels.
+- Proposition `prop:lsz-connected-scattering-partition-formula` states this
+  partition formula as the scattering-kernel analogue of moment-cumulant
+  inversion, with a proof from cluster factorization.
 - Perturbative \(\phi^4\) Green functions yield
   \(\mathcal M=-g+O(g^2)\) for tree-level \(2\to2\) scattering after LSZ;
   the four external scalar propagator numerators \((-\ii)^4\) and four LSZ
   multipliers \(\ii^4\) multiply to one before the vertex factor is converted
   to the invariant amplitude.
+- Proposition `prop:lsz-tree-phi-four-after-reduction` labels this
+  perturbative example as a calculation after the nonperturbative
+  Haag--Ruelle/LSZ construction.
+- Proposition `prop:lsz-scope-stable-massive-local-fields` states the exact
+  scope boundary: the scalar formula applies only to stable massive isolated
+  local-field poles; massless gauge, infraparticle, confinement, resonance,
+  and conformal cases require their own asymptotic data and reduction
+  theorems.
 - 2026-05-24 issue #393 pass: standardized the one-particle residue in the
   LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
   \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.
@@ -172,3 +199,8 @@
   residues, spectral projection, contact/interpolating-field stability, and
   the large-time pole selector; added
   `calculation-checks/lsz_residue_checks.py`.
+- 2026-05-27 #615 follow-up: formalized the LSZ assumptions, external-state
+  normalization, wave-packet matrix element, interpolating-field pole datum,
+  connected-source convention, external-amputation map, invariant-amplitude
+  convention, partition formula, tree \(\phi^4\) post-reduction example, and
+  scalar-LSZ scope boundary.
