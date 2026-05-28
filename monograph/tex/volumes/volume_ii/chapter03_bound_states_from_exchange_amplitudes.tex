@@ -237,19 +237,138 @@ claim that every attractive channel near threshold is described by a single
 simple pole in \(s\).
 \end{remark}
 
-Near a stable pole, the connected amplitude factorizes. If \(B\) denotes the
-one-particle state and \(P=k_1+k_2\), then
+\begin{theorem}[Isolated spectral atom gives a first-sheet pole]
+\label{thm:bound-state-spectral-atom-first-sheet-pole}
+Let \(A(x)\) and \(B(x)\) be local or smeared composite operators whose
+Fourier transforms carry the same conserved quantum numbers.  Assume that, in
+the corresponding translation-invariant Hilbert space, the joint
+energy-momentum spectrum contains an isolated finite-multiplicity
+one-particle mass shell of mass \(M_B\), with spectral projection
+\(\Pi_B\), and that this shell is separated by a positive gap from the
+continuum in a neighborhood of total momentum \(P\).  Assume also that the
+matrix elements of \(A\) and \(B\) on this shell are nonzero and that the
+remaining spectral measure is locally finite across \(P^2=-M_B^2\).  Then
+the Fourier transform of the connected time-ordered two-point function
 \[
-  \mathcal M(s,z)
-  \sim
-  \frac{\Gamma_{\mathrm{out}}(z)\Gamma_{\mathrm{in}}(z)}
-       {M_B^2-s-\ii0}
-  +\text{terms regular at }s=M_B^2 ,
+  G_{AB}(P)
+  =
+  \int \dd^4x\,\ee^{\ii P\cdot x}
+  \bra{\vac}\operatorname T A(x)B(0)\ket{\vac}_{\rm conn}
 \]
-where \(M_B\) is the bound-state mass. The functions
-\(\Gamma_{\mathrm{in}}\) and \(\Gamma_{\mathrm{out}}\) are channel couplings;
-they are determined by matrix elements between the one-particle state \(B\)
-and two-particle states created by local or composite operators.
+has, in the mostly-plus Feynman convention of this volume, the local form
+\[
+  G_{AB}(P)
+  =
+  \frac{-\ii\,R_{AB}(P)}
+       {P^2+M_B^2-\ii0}
+  +
+  G_{AB}^{\rm reg}(P),
+  \label{eq:bound-state-spectral-atom-pole}
+\]
+where \(G_{AB}^{\rm reg}\) is analytic in a sufficiently small first-sheet
+neighborhood of the pole and
+\[
+  R_{AB}(P)
+  =
+  \sum_{\lambda=1}^{d_B}
+  \bra{\vac}A(0)\ket{B,P,\lambda}
+  \bra{B,P,\lambda}B(0)\ket{\vac}.
+  \label{eq:bound-state-spectral-residue}
+\]
+Here \(\lambda\) labels an orthonormal basis of the finite spin/internal
+degeneracy space of the isolated shell.
+\end{theorem}
+
+\begin{proof}
+Insert the spectral resolution of the translation generators between the two
+operators in the Wightman function
+\(\bra{\vac}A(x)B(0)\ket{\vac}\).  The isolated one-particle shell contributes
+\[
+  \sum_{\lambda}
+  \int\frac{\dd^3\vec p}{(2\pi)^3\,2E_{\vec p}}\,
+  \ee^{-\ii p\cdot x}
+  \bra{\vac}A(0)\ket{B,p,\lambda}
+  \bra{B,p,\lambda}B(0)\ket{\vac},
+  \qquad
+  E_{\vec p}=\sqrt{|\vec p|^2+M_B^2}.
+  \]
+The negative-time ordering gives the corresponding opposite-energy boundary
+value.  Combining the two time orderings and Fourier transforming gives the
+standard scalar Feynman denominator in the chapter convention,
+\(-\ii/(P^2+M_B^2-\ii0)\), multiplied by the finite-rank residue
+\eqref{eq:bound-state-spectral-residue}.  The gap hypothesis separates this
+mass shell from the rest of the spectral support.  The remaining spectral
+integral is therefore analytic in a neighborhood of the isolated pole on the
+first sheet.  This proves \eqref{eq:bound-state-spectral-atom-pole}.
+\end{proof}
+
+\begin{theorem}[LSZ factorization of an isolated bound-state pole]
+\label{thm:bound-state-lsz-pole-factorization}
+Consider a connected \(2\to2\) amplitude between stable scalar external
+particles, and let \(P=k_1+k_2=k_3+k_4\) be the total momentum in the
+\(s\)-channel, \(s=-P^2\).  Assume the external one-particle LSZ hypotheses
+of Chapter~\ref{ch:lsz-reduction}, and assume that the connected
+four-point function has an isolated spectral atom of mass \(M_B<2m\) in this
+channel satisfying the hypotheses of
+Theorem~\ref{thm:bound-state-spectral-atom-first-sheet-pole}.  Then, in a
+first-sheet neighborhood of \(s=M_B^2\) disjoint from the two-particle cut,
+the invariant amplitude has the factorized form
+\[
+  \mathcal M_{fi}(s,z)
+  =
+  \frac{
+    \sum_{\lambda=1}^{d_B}
+      \Gamma^{\rm out}_{\lambda}(k_3,k_4)\,
+      \Gamma^{\rm in}_{\lambda}(k_1,k_2)}
+       {M_B^2-s-\ii0}
+  +
+  \mathcal M^{\rm reg}_{fi}(s,z).
+  \label{eq:bound-state-lsz-pole-factorization}
+\]
+The functions \(\Gamma^{\rm in/out}_{\lambda}\) are the LSZ-amputated matrix
+elements coupling the two external particles to the one-particle vector
+\(\ket{B,P,\lambda}\).  They depend on the external channel, normalization of
+one-particle states, and finite choice of interpolating fields, but the pole
+position \(M_B^2\), the finite-rank factorization, and the spin content of the
+residue are invariant scattering data.
+\end{theorem}
+
+\begin{proof}
+Write the connected four-point function in the \(s\)-channel as a
+time-ordered two-point function of two composite channel operators.  For
+test functions \(f_{\rm in/out}\) of compact support in the relative
+coordinates, define
+\[
+\begin{aligned}
+  A_{\rm out}(X)
+  &=
+  \int\dd^4r\,f_{\rm out}(r)\,
+  O_3\!\left(X+\frac r2\right)
+  O_4\!\left(X-\frac r2\right),\\
+  A_{\rm in}(Y)
+  &=
+  \int\dd^4r\,f_{\rm in}(r)\,
+  O_1\!\left(Y+\frac r2\right)
+  O_2\!\left(Y-\frac r2\right).
+\end{aligned}
+\]
+LSZ amputation is applied after the external one-particle Fourier variables
+are restored and the test functions are removed in the usual distributional
+order.  Theorem
+\ref{thm:bound-state-spectral-atom-first-sheet-pole} gives the isolated
+denominator \((P^2+M_B^2-\ii0)^{-1}\) and a finite-rank residue equal to the
+product of matrix elements through the spectral projection \(\Pi_B\).
+
+The LSZ operation multiplies the four external legs by the inverse external
+two-point denominators and then puts each external momentum on the stable
+mass shell.  By assumption the external LSZ residues are finite and nonzero,
+and \(M_B^2\) is separated from the external one-particle poles and from the
+two-particle threshold.  Thus LSZ changes only the numerator factors: it
+amputates the external legs in the two matrix elements and leaves the
+internal denominator \(P^2+M_B^2-\ii0=M_B^2-s-\ii0\) untouched.  The finite
+rank of \(\Pi_B\) gives the displayed sum over \(\lambda\), and all remaining
+spectral contributions are regular in the chosen first-sheet neighborhood.
+\end{proof}
 
 \section{One-Dimensional Pole Criterion as Orientation}
 \label{sec:bound-state-one-dimensional-orientation}
@@ -391,8 +510,51 @@ with the branch chosen by \(\beta(s)>0\) for \(s>4m^2\). Elastic unitarity is
 \]
 on the physical elastic interval.
 
+\begin{proposition}[Spin from the angular residue]
+\label{prop:bound-state-spin-from-angular-residue}
+Let the external particles be spinless and work in the center-of-mass frame.
+Suppose the isolated bound-state shell in
+Theorem~\ref{thm:bound-state-lsz-pole-factorization} transforms as an
+irreducible spin-\(J\) representation of spatial rotations and that the
+channel coupling is rotationally covariant.  Then the pole residue in the
+scalar \(2\to2\) amplitude is proportional to \(P_J(z)\), with
+\(z=\widehat k_{\rm out}\cdot\widehat k_{\rm in}\), and only the partial wave
+\(\ell=J\) contains the simple pole.  More precisely,
+\[
+  \sum_{m=-J}^{J}
+  \Gamma^{\rm out}_{Jm}(\widehat k_{\rm out})
+  \Gamma^{\rm in}_{Jm}(\widehat k_{\rm in})
+  =
+  g_{\rm out}g_{\rm in}\,
+  \frac{2J+1}{4\pi}\,
+  P_J(\widehat k_{\rm out}\cdot\widehat k_{\rm in})
+  \label{eq:spin-j-residue-addition-theorem}
+\]
+after the conventional normalization of spherical harmonics is absorbed into
+the constants \(g_{\rm in/out}\).
+\end{proposition}
+
+\begin{proof}
+For spinless external particles, the angular dependence of a coupling to a
+spin-\(J\) intermediate state is an intertwiner from functions on the sphere
+to the spin-\(J\) representation.  Rotational covariance fixes this
+intertwiner, up to an overall constant, to the spherical harmonics
+\[
+  \Gamma^{\rm in}_{Jm}(\widehat k)=g_{\rm in}Y_{Jm}(\widehat k),
+  \qquad
+  \Gamma^{\rm out}_{Jm}(\widehat k)=g_{\rm out}
+  \overline{Y_{Jm}(\widehat k)}
+  \]
+with the conjugation convention determined by in/out orientation.  Summing
+over the magnetic quantum number and using the spherical-harmonic addition
+theorem gives \eqref{eq:spin-j-residue-addition-theorem}.  Orthogonality of
+Legendre polynomials in
+\eqref{eq:exchange-partial-wave-projection} then projects this residue only
+onto the \(\ell=J\) partial wave.
+\end{proof}
+
 A stable spin-\(\ell\) state of mass \(M_B<2m\) coupled to the two-particle
-channel gives
+channel therefore gives
 \[
   a_\ell(s)
   =

@@ -170,6 +170,11 @@ Current checks:
   equals Zimmermann's forest formula for nested, disjoint, and overlapping
   subdivergence posets, and that a counterterm appends the subgraph as the
   largest Taylor operation in a nested forest.
+- `bound_state_pole_checks.py`: finite algebra checks for the Volume II
+  bound-state-pole chapter, including finite-rank spectral-residue
+  factorization, mostly-plus denominator conversion \(P^2+M^2=M^2-s\),
+  Legendre orthogonality, partial-wave selection of a spin-\(J\) pole, and
+  the scalar-QED \(P_1(\cos\theta)\) numerator check.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, the BV-pushforward boundary

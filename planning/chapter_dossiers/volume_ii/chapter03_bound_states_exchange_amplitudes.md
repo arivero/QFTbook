@@ -102,6 +102,16 @@
   that channel.
 - The residue of a bound-state pole factorizes into couplings of the
   bound-state one-particle vector to the external two-particle channel.
+- An isolated finite-multiplicity spectral atom with nonzero channel overlap
+  gives a first-sheet pole in the connected time-ordered channel correlator,
+  with residue equal to the finite spectral-projection matrix element.
+- Under the external LSZ hypotheses, the internal spectral pole is left
+  untouched by amputation and becomes a factorized simple pole of the
+  invariant scattering amplitude at \(M_B^2-s-\ii0=0\).
+- For spinless external particles, a spin-\(J\) isolated intermediate shell
+  has angular residue proportional to \(P_J(\cos\theta)\) by rotational
+  covariance and the spherical-harmonic addition theorem; therefore only the
+  \(\ell=J\) partial wave contains that pole.
 - The chapter computes consequences of an isolated stable pole; it does not
   prove that an arbitrary interacting QFT contains such a pole.
 - The chapter now separates \(M_B<2m\) as a physical location statement from
@@ -129,6 +139,11 @@
 - 2026-05-25 issue #444 pass: reinforced the notation distinction between the
   delta-normalized sharp-momentum kernel \(M_\delta\) and the partial-wave
   coefficient \(a_\ell(s)\).
+- 2026-05-28 issue #633 correction pass: added theorem-level spectral and LSZ
+  derivations of bound-state pole factorization, plus a rotational-covariance
+  proposition identifying the spin from the angular residue.  Added
+  `calculation-checks/bound_state_pole_checks.py` for finite-rank residue,
+  Legendre-projection, scalar-QED \(P_1\), and mostly-plus denominator checks.
 
 ## Figure Requirements
 
