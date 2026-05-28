@@ -830,7 +830,8 @@ Current checks:
   coefficients, the rational coefficient in the classical open-flux-tube
   Regge slope, triple-Regge exponent bookkeeping, eikonal Poisson
   normalization, free-Reggeon trajectory signs, the eikonal AGK factorial
-  moment cancellation, the \(S\)-wave Luescher zeta normalization, the \(\pi\pi\)
+  moment cancellation, the \(S\)-wave Luescher zeta normalization, unequal-mass
+  Roy--Steiner kinematics and partial-wave normalization, the \(\pi\pi\)
   isospin-crossing matrices and Roy-subtraction polynomial slope ratios, and
   the one-channel Luescher/K-matrix sign
   convention that maps finite-volume energies to a second-sheet pole

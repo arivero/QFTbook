@@ -296,6 +296,32 @@ def check_pipi_crossing_and_roy_subtractions() -> None:
     assert_equal("Roy subtraction finite x relation 02", k02 - a02, -Fraction(3) * k11)
 
 
+def check_roy_steiner_unequal_mass_kinematics() -> None:
+    # Elastic A(m1)+B(m2)->A(m1)+B(m2) kinematics:
+    # k_s^2=lambda(s,m1^2,m2^2)/(4s),
+    # t=-2 k_s^2(1-z), u=2(m1^2+m2^2)-s-t.
+    m1_sq = Fraction(4)
+    m2_sq = Fraction(9)
+    s = Fraction(49)
+    z = Fraction(3, 7)
+    s_plus = Fraction(25)
+    s_minus = Fraction(1)
+    k_sq = (s - s_plus) * (s - s_minus) / (4 * s)
+    t = -2 * k_sq * (1 - z)
+    u = 2 * (m1_sq + m2_sq) - s - t
+    assert_equal("unequal-mass Mandelstam sum", s + t + u, 2 * (m1_sq + m2_sq))
+    assert_equal("forward unequal-mass t", -2 * k_sq * (1 - Fraction(1)), Fraction(0))
+    assert_equal("backward unequal-mass t", -2 * k_sq * (1 - Fraction(-1)), -4 * k_sq)
+
+    # Partial-wave normalization in the monograph convention:
+    # T(z)=16*pi sum_l (2l+1) P_l(z) f_l, so the inverse coefficient
+    # (1/(32*pi)) int_{-1}^1 P_l T dz recovers f_l.  After stripping pi,
+    # the rational coefficient is (1/32)*16*(2/(2l+1))*(2l+1)=1.
+    for ell in range(0, 6):
+        inverse_coefficient = Fraction(1, 32) * 16 * Fraction(2, 2 * ell + 1) * (2 * ell + 1)
+        assert_equal(f"unequal-mass partial-wave inverse ell={ell}", inverse_coefficient, Fraction(1))
+
+
 def check_coupled_channel_determinant_reduction() -> None:
     # In an unmixed two-channel finite-volume determinant,
     # det(K^{-1}+F)=0 reduces channel by channel.  This pins down the sign of
@@ -490,6 +516,7 @@ def main() -> None:
     check_luscher_kmatrix_pole_algebra()
     check_swave_luscher_zeta_normalization()
     check_pipi_crossing_and_roy_subtractions()
+    check_roy_steiner_unequal_mass_kinematics()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()

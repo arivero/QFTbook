@@ -4569,6 +4569,214 @@ unequal masses and additional crossed-channel partial waves changing the
 kernel construction but not the Cauchy-crossing-projection logic.
 \end{remark}
 
+\begin{definition}[Unequal-mass elastic kinematics]
+\label{def:qcd-unequal-mass-elastic-kinematics}
+Let \(A(m_1)+B(m_2)\to A(m_1)+B(m_2)\) be elastic scattering of two stable
+color-singlet hadrons, and set
+\[
+  s_\pm:=(m_1\pm m_2)^2,\qquad
+  \lambda(s,m_1^2,m_2^2):=(s-s_+)(s-s_-).
+\]
+For \(s>s_+\), define the center-of-mass momentum
+\[
+  k_s(s):=\frac{\lambda(s,m_1^2,m_2^2)^{1/2}}{2\sqrt s}.
+\]
+If \(z_s\) is the cosine of the \(s\)-channel scattering angle, the
+Mandelstam variables in the physical elastic region are
+\begin{equation}
+  t(s,z_s)=-2k_s(s)^2(1-z_s),
+  \qquad
+  u(s,z_s)=2(m_1^2+m_2^2)-s-t(s,z_s).
+  \label{eq:qcd-unequal-mass-elastic-kinematics}
+\end{equation}
+The identity
+\[
+  s+t+u=2(m_1^2+m_2^2)
+  \label{eq:qcd-pik-mandelstam-sum}
+\]
+is part of the kinematic convention.  For \(\pi K\) scattering one takes
+\((m_1,m_2)=(m_\pi,m_K)\).
+\end{definition}
+
+\begin{lemma}[Elastic unequal-mass projection]
+\label{lem:qcd-unequal-mass-elastic-projection}
+In the kinematics of
+Definition~\ref{def:qcd-unequal-mass-elastic-kinematics}, a scalar
+amplitude \(T(s,t,u)\) with fixed internal quantum numbers has the
+\(s\)-channel partial-wave expansion
+\begin{equation}
+  T(s,t(s,z_s),u(s,z_s))
+  =
+  16\pi
+  \sum_{\ell=0}^{\infty}(2\ell+1)P_\ell(z_s)f_\ell(s),
+  \label{eq:qcd-unequal-mass-partial-wave-expansion}
+\end{equation}
+with inverse
+\begin{equation}
+  f_\ell(s)
+  =
+  \frac1{32\pi}
+  \int_{-1}^{1}P_\ell(z_s)T(s,t(s,z_s),u(s,z_s))\,\dd z_s .
+  \label{eq:qcd-unequal-mass-partial-wave-projection}
+\end{equation}
+With
+\[
+  \rho_{12}(s):=\frac{2k_s(s)}{\sqrt s}
+  =
+  \frac{\lambda(s,m_1^2,m_2^2)^{1/2}}{s},
+\]
+elastic unitarity in this normalization is
+\begin{equation}
+  \operatorname{Im}f_\ell(s)=\rho_{12}(s)|f_\ell(s)|^2
+  \label{eq:qcd-unequal-mass-elastic-unitarity}
+\end{equation}
+below the first inelastic threshold.
+\end{lemma}
+
+\begin{proof}
+In the center-of-mass frame the incoming and outgoing spatial momenta have
+magnitude \(k_s(s)\).  The energy of each species is the same before and
+after scattering, hence the momentum transfer has zero energy component and
+spatial magnitude squared
+\[
+  |\mathbf k-\mathbf k'|^2=2k_s(s)^2(1-z_s).
+\]
+With the Mandelstam convention used in this chapter this gives
+\(t=-|\mathbf k-\mathbf k'|^2\), proving
+\eqref{eq:qcd-unequal-mass-elastic-kinematics}.  The sum rule
+\eqref{eq:qcd-pik-mandelstam-sum} follows directly from the definitions of
+\(s,t,u\) and the four on-shell conditions.
+
+The partial-wave inversion is the Legendre orthogonality identity
+\[
+  \int_{-1}^{1}P_\ell(z)P_{\ell'}(z)\,\dd z
+  =
+  \frac{2}{2\ell+1}\delta_{\ell\ell'}
+\]
+applied to \eqref{eq:qcd-unequal-mass-partial-wave-expansion}.  Finally the
+two-body phase-space density in these conventions is
+\(\rho_{12}(s)=2k_s(s)/\sqrt s\).  Applying \(S_\ell^\ast S_\ell=1\) to
+\[
+  S_\ell(s)=1+2\ii\rho_{12}(s)f_\ell(s)
+\]
+gives \eqref{eq:qcd-unequal-mass-elastic-unitarity}.
+\end{proof}
+
+\begin{definition}[Roy--Steiner datum]
+\label{def:qcd-roy-steiner-datum}
+A Roy--Steiner datum for an unequal-mass two-hadron problem consists of:
+\begin{enumerate}
+  \item the masses, exact internal quantum numbers, and invariant amplitudes
+  \(\mathbf T(s,t,u)\) in a declared basis of isospin or charge channels;
+  \item the crossing matrices relating the chosen \(s\)-channel basis to the
+  \(u\)- and \(t\)-channel bases;
+  \item \(s\)-channel partial waves \(f_\ell^a(s)\) and crossed-channel
+  partial waves \(g_\ell^c(t)\), each with an explicit normalization such as
+  \eqref{eq:qcd-unequal-mass-partial-wave-expansion};
+  \item a fixed-\(t\), fixed-\(u\), or hyperbolic dispersion domain in which
+  the required subtracted Cauchy representations are valid as boundary values
+  of holomorphic functions;
+  \item subtraction constants, matching points, and high-energy/high-partial
+  wave input sufficient to make all projected integrals converge.
+\end{enumerate}
+The datum is a reconstruction coordinate for amplitudes.  It includes the
+analyticity, crossing, subtraction, and asymptotic assumptions; QCD supplies
+the channel Hilbert spaces and current or hadron matrix elements to which
+those assumptions are applied.
+\end{definition}
+
+\begin{proposition}[Roy--Steiner projection construction]
+\label{prop:qcd-roy-steiner-projection-construction}
+Assume a Roy--Steiner datum in the sense of
+Definition~\ref{def:qcd-roy-steiner-datum}.  Let \(J_s\) and \(J_t\) be real
+intervals below the first omitted inelastic thresholds in the \(s\)- and
+crossed \(t\)-channels.  Then the retained \(s\)-channel partial waves have
+the form
+\begin{align}
+  \operatorname{Re}f_\ell^a(s)
+  &=
+  k_\ell^a(s;\mathbf a)
+  +
+  \sum_{b,\ell'}
+  \int_{s_+}^{\infty}\dd s'\,
+  K_{\ell\ell'}^{ab}(s,s')\,\operatorname{Im}f_{\ell'}^b(s')
+  \notag\\
+  &\hspace{2.3cm}
+  +
+  \sum_{c,\ell'}
+  \int_{t_{\rm th}}^{\infty}\dd t'\,
+  G_{\ell\ell'}^{ac}(s,t')\,\operatorname{Im}g_{\ell'}^c(t'),
+  \qquad s\in J_s,
+  \label{eq:qcd-roy-steiner-s-channel-equation}
+\end{align}
+and the crossed-channel partial waves have analogous equations
+\begin{align}
+  \operatorname{Re}g_\ell^c(t)
+  &=
+  \widetilde k_\ell^c(t;\mathbf a)
+  +
+  \sum_{b,\ell'}
+  \int_{s_+}^{\infty}\dd s'\,
+  \widetilde G_{\ell\ell'}^{cb}(t,s')\,\operatorname{Im}f_{\ell'}^b(s')
+  \notag\\
+  &\hspace{2.3cm}
+  +
+  \sum_{d,\ell'}
+  \int_{t_{\rm th}}^{\infty}\dd t'\,
+  \widetilde K_{\ell\ell'}^{cd}(t,t')\,\operatorname{Im}g_{\ell'}^d(t'),
+  \qquad t\in J_t.
+  \label{eq:qcd-roy-steiner-t-channel-equation}
+\end{align}
+Here \(\mathbf a\) denotes the declared subtraction constants.  The kernels
+\(K,G,\widetilde G,\widetilde K\) are the Legendre projections of the
+subtracted Cauchy denominators after the crossed-channel discontinuities have
+been rewritten with the declared crossing matrices.
+\end{proposition}
+
+\begin{proof}
+Begin with the subtracted Cauchy representation in the chosen
+Roy--Steiner domain.  Its discontinuity terms are located on the physical
+cuts of the \(s\), \(u\), and \(t\) variables.  The right-hand \(s\)-channel
+cut is already expressed in the basis whose partial waves are
+\(f_\ell^a\).  The \(u\)- and \(t\)-channel cuts are first moved into their
+physical variables and then rewritten in the chosen \(s\)-channel basis using
+the crossing matrices included in the datum.  This produces a fixed-angle
+representation
+\[
+\begin{aligned}
+  &\operatorname{Re}T^a(s,t(s,z_s),u(s,z_s))
+  \\
+  &\quad =
+  P^a(s,z_s;\mathbf a)
+  +\sum_{b,\ell'}\int_{s_+}^{\infty}\dd s'\,
+    R_{\ell'}^{ab}(s,z_s;s')\,\operatorname{Im}f_{\ell'}^b(s')
+  \\
+  &\qquad\quad
+  +\sum_{c,\ell'}\int_{t_{\rm th}}^{\infty}\dd t'\,
+    H_{\ell'}^{ac}(s,z_s;t')\,\operatorname{Im}g_{\ell'}^c(t').
+\end{aligned}
+\]
+The convergence part of the datum justifies the interchange of the
+partial-wave sums, dispersion integrals, and \(z_s\)-projection on \(J_s\).
+Projecting with
+\[
+  \frac1{32\pi}\int_{-1}^{1}P_\ell(z_s)(\,\cdot\,)\,\dd z_s
+\]
+defines
+\[
+  k_\ell^a(s)=\frac1{32\pi}\int_{-1}^{1}P_\ell(z_s)P^a(s,z_s)\,\dd z_s,
+\]
+and similarly defines \(K_{\ell\ell'}^{ab}\) and
+\(G_{\ell\ell'}^{ac}\) as the same projection of \(R_{\ell'}^{ab}\) and
+\(H_{\ell'}^{ac}\).  This gives
+\eqref{eq:qcd-roy-steiner-s-channel-equation}.  Repeating the same argument
+with a crossed-channel scattering angle and the crossed-channel partial-wave
+normalization gives \eqref{eq:qcd-roy-steiner-t-channel-equation}.  No
+additional dynamical assumption enters at the projection stage; all dynamical
+input is already contained in the analytic domain, crossing matrices,
+absorptive parts, and subtraction constants of the datum.
+\end{proof}
+
 Heavy quarkonium uses a different controlled coordinate system.  If
 \[
   m_Q\gg m_Qv\gg m_Qv^2
