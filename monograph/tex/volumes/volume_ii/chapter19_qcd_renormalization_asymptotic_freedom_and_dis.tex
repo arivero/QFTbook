@@ -4692,13 +4692,159 @@ while the dispersion relation is an additional analyticity statement about the
 real-photon forward amplitude.
 \end{proof}
 
-The spin-dependent amplitude \(g_N\) is handled in the same way after the
-elastic pole term has been fixed by \(F_1^N(0)\) and \(F_2^N(0)\).  Its
-low-energy coefficients define forward spin polarizabilities, and its
-dispersion relations involve
-\(\Delta\sigma_{\gamma N}=\sigma_{1/2}-\sigma_{3/2}\).  The monograph keeps
-this as a statement about current-current matrix elements and their analytic
-continuation; it is not a model of the nucleon as a polarizable medium.
+\begin{definition}[Forward spin polarizability datum]
+\label{def:qcd-forward-spin-polarizability-datum}
+Keep the normalization of the spin-dependent forward Compton amplitude
+\(g_N\) in \eqref{eq:qcd-forward-compton-fg-definition} and the helicity
+difference
+\[
+  \Delta\sigma_{\gamma N}(\omega)
+  :=
+  \sigma_{1/2}(\omega)-\sigma_{3/2}(\omega),
+\]
+where the subscript is the total \(\gamma N\) helicity in the rest frame of
+the target.  Let \(F_1^N(q^2)\) and \(F_2^N(q^2)\) be the Dirac and Pauli form
+factors in the current matrix element
+\eqref{eq:qcd-nucleon-dirac-pauli-form-factors}, and set
+\[
+  Q_N:=F_1^N(0),\qquad
+  \kappa_N:=F_2^N(0).
+\]
+Thus \(Q_p=1\), \(Q_n=0\), and \(\kappa_N\) is the anomalous magnetic moment
+in units \(e/(2M_N)\) in the conventions of this chapter.  The
+spin-dependent low-energy theorem fixes the term linear in \(\omega\):
+\begin{equation}
+  g_N(\omega)
+  =
+  -\,\frac{e^2\kappa_N^2}{8\pi M_N^2}\,\omega
+  +\gamma_0^N\,\omega^3
+  +O(\omega^5).
+  \label{eq:qcd-forward-spin-low-energy-definition}
+\end{equation}
+Equation \eqref{eq:qcd-forward-spin-low-energy-definition} defines the
+forward spin polarizability \(\gamma_0^N\) once the one-nucleon Born
+normalization has been fixed by \(F_1^N(0)\) and \(F_2^N(0)\).  The absence of
+a \(Q_N^2\) term in the coefficient of \(\omega\) is part of the low-energy
+Ward-identity statement: the point-charge contribution is spin independent in
+the forward limit, while the anomalous magnetic moment controls the leading
+spin-dependent Born amplitude.
+\end{definition}
+
+\begin{proposition}[Gerasimov--Drell--Hearn and forward spin-polarizability
+sum rules]
+\label{prop:qcd-gdh-forward-spin-dispersion}
+Assume that \(g_N(\omega)\), after the Compton Ward identity has combined the
+\(s\)-channel, \(u\)-channel, and local Born pieces into a function regular at
+\(\omega=0\), is an odd function of \(\omega\) analytic in the complex
+\(\omega\)-plane cut along
+\((-\infty,-\omega_{\rm th}]\cup[\omega_{\rm th},\infty)\), real on
+\(|\omega|<\omega_{\rm th}\), and sufficiently bounded at infinity that the
+unsubtracted odd dispersion relation below has no boundary term.  Assume also
+that the threshold and high-energy behavior allow the first two terms of the
+small-\(\omega\) expansion of the dispersion integral.  Then, in the
+normalization of \eqref{eq:qcd-forward-spin-compton-optical-theorem},
+\begin{equation}
+  g_N(\omega)
+  =
+  \frac{2\omega}{\pi}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\operatorname{Im}g_N(\omega'+\ii0)}
+       {\omega'^2-\omega^2}\,\dd\omega',
+  \qquad |\omega|<\omega_{\rm th},
+  \label{eq:qcd-forward-spin-odd-dispersion}
+\end{equation}
+and therefore
+\begin{align}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\Delta\sigma_{\gamma N}(\omega')}{\omega'}\,\dd\omega'
+  &=
+  -\,\frac{\pi e^2}{2M_N^2}\,\kappa_N^2
+  =
+  -\,\frac{2\pi^2\alpha_{\rm em}}{M_N^2}\,\kappa_N^2,
+  \label{eq:qcd-gdh-sum-rule}\\
+  \gamma_0^N
+  &=
+  \frac{1}{4\pi^2}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\Delta\sigma_{\gamma N}(\omega')}{\omega'^3}\,\dd\omega' .
+  \label{eq:qcd-forward-spin-polarizability-sum-rule}
+\end{align}
+Here \(\alpha_{\rm em}:=e^2/(4\pi)\).  The sign in
+\eqref{eq:qcd-gdh-sum-rule} follows from the convention
+\(\Delta\sigma_{\gamma N}=\sigma_{1/2}-\sigma_{3/2}\).
+\end{proposition}
+
+\begin{proof}
+Let \(\omega\) lie in the cut plane with \(|\omega|<\omega_{\rm th}\).  Apply
+Cauchy's theorem to \(g_N(z)/(z^2-\omega^2)\) on a contour encircling the two
+cuts and small circles around \(z=\pm\omega\).  The residue contribution is
+\[
+  \frac{g_N(\omega)}{2\omega}
+  +
+  \frac{g_N(-\omega)}{-2\omega}
+  =
+  \frac{g_N(\omega)}{\omega},
+\]
+because \(g_N\) is odd.  The large circle gives no contribution by
+hypothesis.  On the positive cut the discontinuity is
+\[
+  g_N(\omega'+\ii0)-g_N(\omega'-\ii0)
+  =
+  2\ii\,\operatorname{Im}g_N(\omega'+\ii0).
+\]
+On the negative cut, the change of variable \(\omega'\mapsto-\omega'\) gives
+the same contribution, because oddness of \(g_N\) makes
+\(\operatorname{Im}g_N(-\omega'+\ii0)=
+\operatorname{Im}g_N(\omega'+\ii0)\) with the opposite orientation of the
+cut.  Combining the two cuts gives
+\eqref{eq:qcd-forward-spin-odd-dispersion}.
+
+For \(|\omega|<\omega_{\rm th}\),
+\[
+  \frac{1}{\omega'^2-\omega^2}
+  =
+  \frac{1}{\omega'^2}
+  +
+  \frac{\omega^2}{\omega'^4}
+  +O(\omega^4)
+\]
+under the stated integrability assumption.  Hence
+\[
+  g_N(\omega)
+  =
+  \omega\,\frac{2}{\pi}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\operatorname{Im}g_N(\omega'+\ii0)}{\omega'^2}\,\dd\omega'
+  +
+  \omega^3\,\frac{2}{\pi}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\operatorname{Im}g_N(\omega'+\ii0)}{\omega'^4}\,\dd\omega'
+  +O(\omega^5).
+\]
+Substitution of
+\eqref{eq:qcd-forward-spin-compton-optical-theorem} turns the coefficient of
+\(\omega\) into
+\[
+  \frac{1}{4\pi^2}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\Delta\sigma_{\gamma N}(\omega')}{\omega'}\,\dd\omega',
+\]
+and the coefficient of \(\omega^3\) into the right side of
+\eqref{eq:qcd-forward-spin-polarizability-sum-rule}.  Comparing the linear
+coefficient with the low-energy theorem
+\eqref{eq:qcd-forward-spin-low-energy-definition} gives
+\[
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\Delta\sigma_{\gamma N}(\omega')}{\omega'}\,\dd\omega'
+  =
+  4\pi^2\left(-\,\frac{e^2\kappa_N^2}{8\pi M_N^2}\right),
+\]
+which is \eqref{eq:qcd-gdh-sum-rule}.  Thus the sum rule is not an independent
+model assumption about nucleon structure; it is the equality of two
+definitions of the same coefficient, one from the low-energy current Ward
+identity and one from the absorptive spectral representation, under the stated
+analyticity and boundedness hypotheses.
+\end{proof}
 
 The practical hierarchy of spectroscopic control is therefore:
 \begin{itemize}

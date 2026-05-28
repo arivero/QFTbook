@@ -253,6 +253,48 @@ def check_forward_compton_baldin_prefactor() -> None:
     assert_equal("Baldin finite-atom expansion", dispersion_coeff_rational, baldin_rational)
 
 
+def check_forward_spin_gdh_prefactor() -> None:
+    # In the convention Im g(omega)=omega DeltaSigma(omega)/(8*pi), the odd
+    # dispersion relation gives the coefficient of omega as
+    # (2/pi) int Im g(omega')/omega'^2.  The rational part is 2*(1/8)=1/4,
+    # with the displayed pi factors giving 1/(4*pi^2).
+    dispersion_rational = Fraction(2)
+    optical_rational = Fraction(1, 8)
+    assert_equal(
+        "GDH rational dispersion prefactor",
+        dispersion_rational * optical_rational,
+        Fraction(1, 4),
+    )
+
+    # Comparing a_1 omega with a_1=-e^2 kappa^2/(8*pi M^2) gives
+    # int DeltaSigma/omega = 4*pi^2*a_1
+    # = -pi*e^2*kappa^2/(2 M^2).  This checks the rational coefficient and
+    # the sign for DeltaSigma=sigma_{1/2}-sigma_{3/2}.
+    low_energy_rational = -Fraction(1, 8)
+    integral_rational = Fraction(4) * low_energy_rational
+    assert_equal(
+        "GDH low-energy rational coefficient",
+        integral_rational,
+        -Fraction(1, 2),
+    )
+
+    # The omega^3 coefficient has the same dispersion/optical rational
+    # prefactor but two additional powers of omega' in the denominator.
+    atoms = [(Fraction(4, 7), Fraction(-3, 11)), (Fraction(9, 5), Fraction(8, 13))]
+    dispersion_coeff_rational = sum(
+        dispersion_rational * optical_rational * delta_sigma / (omega**3)
+        for omega, delta_sigma in atoms
+    )
+    gamma0_rational = Fraction(1, 4) * sum(
+        delta_sigma / (omega**3) for omega, delta_sigma in atoms
+    )
+    assert_equal(
+        "forward spin polarizability finite-atom expansion",
+        dispersion_coeff_rational,
+        gamma0_rational,
+    )
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -264,6 +306,7 @@ def main() -> None:
     check_nucleon_sachs_coordinate_transform()
     check_stable_current_three_point_ratio()
     check_forward_compton_baldin_prefactor()
+    check_forward_spin_gdh_prefactor()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 
