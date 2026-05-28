@@ -911,59 +911,87 @@ topology, prove convergence of \(W_{\kappa,N}\) or \(\Gamma_{\kappa,N}\), and
 prove that the finite-regulator traces converge uniformly on the field
 neighborhood being used.
 
-Figure~\ref{fig:wilsonian-vs-effective-average-action} distinguishes the two RG
-objects compared here: the Wilsonian action obtained by integrating out high
-modes and the effective average action obtained by a Legendre transform with an
-infrared regulator.
+Figure~\ref{fig:wilsonian-vs-effective-average-action} compares the cutoff
+kernels rather than the names of the constructions.  The Wilsonian covariance
+multiplies the propagator by a profile that keeps low modes and suppresses
+high modes.  The effective-average-action regulator adds a masslike kernel to
+low modes and vanishes for high modes; the flow is localized by
+\(\partial_tR_\kappa\).  This is the concrete sense in which the two
+cutoff-dependent objects are different.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.98\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,text width=2.45cm,minimum height=0.78cm},
-      widebox/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,text width=3.25cm,minimum height=0.88cm},
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
+      curve/.style={line width=1.15pt},
+      band/.style={fill=orange!20,draw=none}
     }
 
-    \node[font=\small] at (2.8,3.15) {Wilsonian cutoff action};
-    \node[box] (suv) at (0,2.25) {\(S_{\Lambda_0}\)};
-    \node[widebox] (shells) at (2.95,2.25)
-      {integrate shells\\\(\Lambda_0\downarrow\Lambda\)};
-    \node[widebox] (lw) at (6.15,2.25)
-      {remaining-field action\\\(L_\Lambda[\phi_<]\)};
-    \node[widebox] (wlow) at (9.35,2.25)
-      {low-source\\connected functional};
-    \draw[arr] (suv)--(shells);
-    \draw[arr] (shells)--(lw);
-    \draw[arr] (lw)--(wlow);
+    \begin{scope}
+      \node[font=\small] at (2.25,2.85)
+        {Wilsonian covariance factor};
+      \draw[axis] (-0.10,0)--(4.80,0)
+        node[below] {\(|p|/\Lambda\)};
+      \draw[axis] (0,-0.12)--(0,2.25)
+        node[left] {\(\chi_\Lambda(p)\)};
+      \draw[dashed,gray] (1.70,0)--(1.70,1.62);
+      \node[below] at (1.70,-0.03) {\(1\)};
+      \node[left] at (-0.03,1.62) {\(1\)};
+      \fill[blue!7] (0,0) rectangle (1.25,1.62);
+      \fill[gray!10] (2.25,0) rectangle (4.25,1.62);
+      \draw[curve,blue!70!black]
+        (0,1.62)--(1.20,1.62)
+        .. controls (1.52,1.60) and (1.70,1.08) .. (1.88,0.48)
+        .. controls (2.08,0.08) and (2.95,0.04) .. (4.45,0.04);
+      \node[align=center,blue!70!black] at (0.92,2.02)
+        {modes kept\\in \(C_\Lambda\)};
+      \node[align=center,gray!65!black] at (3.20,1.18)
+        {high modes\\suppressed};
+      \node[align=center] at (2.25,-0.68)
+        {\(\displaystyle C_\Lambda(p)=
+        \frac{\chi_\Lambda(p)}{p^2+m^2}\)};
+    \end{scope}
 
-    \node[font=\small] at (2.8,0.80) {effective average action};
-    \node[box] (sn) at (0,-0.10) {\(S_N+\Delta S_\kappa\)};
-    \node[widebox] (allmodes) at (2.95,-0.10)
-      {integrate all modes\\with IR suppression};
-    \node[widebox] (wk) at (6.15,-0.10)
-      {\(W_{\kappa,N}[\mathcal J]\)};
-    \node[widebox] (gk) at (9.35,-0.10)
-      {modified Legendre\\\(\Gamma_{\kappa,N}[\varphi]\)};
-    \draw[arr] (sn)--(allmodes);
-    \draw[arr] (allmodes)--(wk);
-    \draw[arr] (wk)--(gk);
-
-    \draw[arr,dashed,blue!70!black] (lw.south)
-      .. controls (5.9,1.25) and (6.2,0.95) .. (wk.north);
-    \node[blue!70!black,align=center,fill=white,inner sep=2pt] at (6.35,1.08)
-      {comparison needs\\compatible cutoffs};
+    \begin{scope}[shift={(6.10,0)}]
+      \node[font=\small] at (2.35,2.85)
+        {effective-average-action IR kernel};
+      \draw[axis] (-0.10,0)--(4.90,0)
+        node[below] {\(|p|/\kappa\)};
+      \draw[axis] (0,-0.12)--(0,2.25)
+        node[left] {\(R_\kappa(p)/\kappa^2\)};
+      \fill[red!7] (0,0) rectangle (1.20,1.72);
+      \fill[gray!10] (2.35,0) rectangle (4.40,1.72);
+      \draw[curve,red!70!black]
+        (0,1.72) .. controls (0.55,1.68) and (0.98,1.58) .. (1.28,1.22)
+        .. controls (1.62,0.78) and (1.86,0.28) .. (2.18,0.10)
+        .. controls (2.58,0.03) and (3.35,0.02) .. (4.45,0.02);
+      \draw[curve,orange!85!black,dashed]
+        (0.25,0.08) .. controls (0.78,0.28) and (1.12,1.42) .. (1.55,1.54)
+        .. controls (1.98,1.40) and (2.25,0.32) .. (2.82,0.08);
+      \draw[dashed,gray] (1.70,0)--(1.70,1.62);
+      \node[below] at (1.70,-0.03) {\(1\)};
+      \node[align=center,red!70!black] at (0.88,2.02)
+        {low modes\\mass-suppressed};
+      \node[align=center,gray!65!black] at (3.25,1.12)
+        {high modes\\unchanged};
+      \node[orange!85!black] at (2.70,1.82)
+        {\(\partial_tR_\kappa\)};
+      \node[align=center] at (2.35,-0.68)
+        {\(\displaystyle
+        \Gamma_\kappa^{(2)}+R_\kappa,\qquad t=\log\kappa\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{The Wilsonian action and the effective average action are distinct
-  cutoff-dependent objects.  The Wilsonian construction integrates shells and
-  leaves an action for remaining fields.  The effective average action
-  integrates all modes with an infrared regulator and then performs a
-  modified Legendre transform.  A relation between the two descriptions
-  requires a compatible choice of cutoff kernels and a matching map.}
+  \caption{The Wilsonian and effective-average-action cutoffs act in opposite
+  ways on momentum modes.  The Wilsonian covariance keeps the low-mode
+  propagator and removes high modes as \(\Lambda\) is lowered.  The
+  effective-average-action regulator adds a large quadratic penalty to modes
+  with \(|p|\lesssim\kappa\) and vanishes at high momentum; the flow kernel
+  \(\partial_tR_\kappa\) is concentrated near \(|p|\simeq\kappa\).  Matching
+  the two descriptions is therefore a statement about compatible kernels and
+  coordinates, not an identity of the cutoff-dependent functionals.}
   \label{fig:wilsonian-vs-effective-average-action}
 \end{figure}
 
@@ -1916,54 +1944,80 @@ cutoff-removal hypothesis; they identify particular ways in which that
 hypothesis contains information beyond formal perturbation theory.
 \end{remark}
 
-Figure~\ref{fig:finite-coordinate-cutoff-removal-estimate} packages the
-finite-coordinate estimate used in this discussion: regulator-dependent
-coordinates are compared at a fixed physical scale before the ultraviolet
-cutoff is removed.
+Figure~\ref{fig:finite-coordinate-cutoff-removal-estimate} draws the
+quantitative estimate used in this discussion.  Increasing the ultraviolet
+separation \(T=t_0-t_R=\log(\Lambda_0/\Lambda_R)\) suppresses direct memory of
+the irrelevant boundary coordinate by \(e^{-\omega T}\).  After the relevant
+coordinates are tuned at \(t_R\), endpoints obtained from different bounded
+irrelevant boundary values therefore approach the same continuum graph value
+up to the generated integral assumed to converge in the theorem.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,text width=2.35cm,minimum height=0.78cm},
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
+      curve/.style={line width=1.1pt},
+      asymp/.style={line width=0.75pt,dashed,gray!70}
     }
-    \draw[-{Latex[length=2mm]},thick] (-0.25,0)--(10.2,0)
-      node[below] {\(t=\log\Lambda\)};
-    \draw[thick] (1.2,-0.12)--(1.2,0.12);
-    \draw[thick] (8.8,-0.12)--(8.8,0.12);
-    \node[below] at (1.2,-0.12) {\(t_R\)};
-    \node[below] at (8.8,-0.12) {\(t_0\)};
+    \begin{scope}
+      \node[font=\small] at (2.45,2.85)
+        {irrelevant boundary memory};
+      \draw[axis] (-0.10,0)--(4.95,0)
+        node[below] {\(T=t_0-t_R\)};
+      \draw[axis] (0,-0.10)--(0,2.35)
+        node[left] {\(\|e^{AT}v(t_0)\|\)};
+      \draw[curve,blue!70!black]
+        (0,1.95) .. controls (0.80,1.25) and (1.55,0.72) ..
+        (2.35,0.40) .. controls (3.05,0.20) and (3.95,0.11) ..
+        (4.55,0.07);
+      \draw[curve,blue!45!black,densely dashed]
+        (0,1.35) .. controls (0.85,0.86) and (1.70,0.47) ..
+        (2.55,0.25) .. controls (3.30,0.12) and (4.05,0.07) ..
+        (4.55,0.04);
+      \node[blue!70!black,align=center] at (2.75,1.45)
+        {\(\le M e^{-\omega T}\|v(t_0)\|\)};
+      \node[align=center] at (2.45,-0.68)
+        {direct dependence on bounded irrelevant\\
+        bare coordinates is power-suppressed};
+    \end{scope}
 
-    \node[box] (ren) at (1.25,1.05)
-      {renormalization\\condition\\\(u(t_R)=u_R\)};
-    \node[box] (bare) at (8.75,1.05)
-      {bounded\\irrelevant\\bare coordinate\\\(v(t_0)\)};
-    \node[box] (gen) at (5.10,2.28)
-      {generated integral\\along the tuned\\trajectory};
-    \node[box] (graph) at (1.25,3.18)
-      {continuum graph\\\(v=V_R(u_R)\)};
-
-    \draw[arr,blue!70!black] (bare.south west)
-      .. controls (6.25,0.25) and (3.65,0.25) .. (ren.south east);
-
-    \draw[arr,orange!85!black,dash pattern=on 5pt off 2.5pt] (gen)--(graph);
-    \draw[arr,green!45!black,densely dotted] (ren)--(graph);
-    \draw[arr,orange!85!black,dash pattern=on 5pt off 2.5pt] (bare.north west)
-      .. controls (7.30,2.10) and (6.35,2.28) .. (gen.east);
-    \draw[arr,orange!85!black,dash pattern=on 5pt off 2.5pt] (ren.north east)
-      .. controls (2.55,1.95) and (3.45,2.20) .. (gen.west);
+    \begin{scope}[shift={(6.25,0)}]
+      \node[font=\small] at (2.65,2.85)
+        {endpoint at the fixed physical scale};
+      \draw[axis] (-0.10,0)--(5.35,0)
+        node[below] {\(T=t_0-t_R\)};
+      \draw[axis] (0,-0.10)--(0,2.35)
+        node[left] {\(v(t_R;t_0,u_R)\)};
+      \draw[asymp] (0.15,1.18)--(5.00,1.18);
+      \node[right] at (5.00,1.18) {\(V_R(u_R)\)};
+      \draw[curve,green!45!black]
+        (0,1.92) .. controls (0.70,1.62) and (1.30,1.38) ..
+        (2.05,1.27) .. controls (3.00,1.16) and (4.00,1.18) ..
+        (4.75,1.18);
+      \draw[curve,orange!85!black]
+        (0,0.52) .. controls (0.75,0.76) and (1.45,1.00) ..
+        (2.20,1.10) .. controls (3.05,1.20) and (4.05,1.18) ..
+        (4.75,1.18);
+      \draw[curve,red!70!black,densely dashed]
+        (0,1.48) .. controls (0.70,1.32) and (1.55,1.20) ..
+        (2.60,1.18) .. controls (3.35,1.17) and (4.25,1.18) ..
+        (4.75,1.18);
+      \node[align=center] at (2.65,-0.68)
+        {different bounded \(v(t_0)\) values\\
+        converge after \(u(t_R)=u_R\) is tuned};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{A finite-coordinate Wilsonian continuum-limit estimate separates
-  direct irrelevant boundary memory from the generated integral along the
-  tuned trajectory.  Solid, dashed, and dotted arrows denote boundary memory,
-  generated integral terms, and the renormalization-condition map respectively.
-  Irrelevant boundary memory is power-suppressed by the cutoff ratio.  The
-  continuum graph at \(\Lambda_R\) is the limiting value of the generated
-  contribution, provided the stated uniform estimates hold.}
+  \caption{The two quantitative pieces in the finite-coordinate
+  cutoff-removal estimate.  If the irrelevant semigroup satisfies
+  \(\|e^{A(t_R-t_0)}\|\le M e^{-\omega(t_0-t_R)}\), direct memory of a bounded
+  irrelevant boundary coordinate is suppressed by
+  \((\Lambda_R/\Lambda_0)^\omega\).  The theorem assumes uniform convergence
+  of the generated integral; under that assumption, all tuned endpoints with
+  bounded irrelevant bare coordinates converge to the same graph
+  \(v=V_R(u_R)\) at the physical scale.}
   \label{fig:finite-coordinate-cutoff-removal-estimate}
 \end{figure}
 
@@ -2196,58 +2250,67 @@ Wilsonian vertices
 vertices; their general relation includes all tree and loop diagrams built
 from the Wilsonian vertices and the remaining cutoff covariance \(C_\Lambda\).
 
-Figure~\ref{fig:bphz-wilsonian-one-pi-bridge} records the precise low-source
-Legendre-transform bridge used here: the source-restricted connected functional
-is transformed on the same finite source space, and the resulting 1PI kernels
-are compared after field normalization.
+Figure~\ref{fig:bphz-wilsonian-one-pi-bridge} shows the nontrivial point in the
+Legendre-transform bridge.  A Legendre transform performed only on the low
+source space inverts the low-source Hessian \(W_{<<}^{(2)}\).  A full Legendre
+transform followed by restriction to low fields instead inverts the Schur
+complement \(W_{<<}^{(2)}-W_{<>}^{(2)}(W_{>>}^{(2)})^{-1}W_{><}^{(2)}\).  The
+chapter uses the first operation; the second requires extra hypotheses and is
+not silently identified with it.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.96\textwidth}{!}{%
+  \resizebox{0.95\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,line width=0.8pt,
-        align=center,minimum width=2.65cm,minimum height=0.85cm},
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+      block/.style={draw,rounded corners=3pt,align=center,inner sep=5pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
+      matcell/.style={draw,line width=0.65pt,minimum width=1.60cm,
+        minimum height=0.72cm,align=center}
     }
-    \node[box] (bare) at (0,1.8)
-      {UV-regulated action\\at \(\Lambda_0\)};
-    \node[box] (bphz) at (4.05,3.25)
-      {BPHZ \(R\)-operation\\on 1PI graphs};
-    \node[box] (wil) at (4.05,1.8)
-      {Wilsonian action\\\(L_\Lambda\)};
-    \node[box] (low) at (8.15,1.8)
-      {low-source\\\(W[J]\)};
-    \node[box] (leg) at (8.15,3.25)
-      {Legendre transform\\\(\Gamma[\varphi]\)};
-    \node[box] (coord) at (12.15,3.25)
-      {1PI coordinates\\\(g_I(\mu)\)};
-    \node[box] (ct) at (12.15,1.8)
-      {Wilsonian coordinates\\\(u_A(\Lambda)\)};
+    \node[font=\small] at (0,2.90)
+      {Hessian of the full connected functional};
+    \node[matcell,fill=blue!6] at (-0.90,1.80) {\(W^{(2)}_{<<}\)};
+    \node[matcell,fill=orange!7] at (0.90,1.80) {\(W^{(2)}_{<>}\)};
+    \node[matcell,fill=orange!7] at (-0.90,0.92) {\(W^{(2)}_{><}\)};
+    \node[matcell,fill=gray!8] at (0.90,0.92) {\(W^{(2)}_{>>}\)};
+    \draw[line width=1.0pt] (-1.78,0.45) rectangle (1.78,2.25);
+    \node at (-2.28,1.35) {\(\displaystyle W^{(2)}=\)};
+    \node[block,fill=blue!5,text width=4.25cm] (restricted) at (5.15,2.00)
+      {source-restricted\\Legendre transform\\[1mm]
+      \(\displaystyle
+      \Gamma^{(2)}_{\rm low}
+      =
+      \bigl(W^{(2)}_{<<}\bigr)^{-1}\)};
+    \node[block,fill=red!5,text width=4.95cm] (schur) at (5.15,0.25)
+      {restrict the full Legendre transform\\[1mm]
+      \(\displaystyle
+      \bigl(\Gamma^{(2)}_{\rm full}\bigr)_{<<}
+      =
+      \Bigl(W^{(2)}_{<<}
+      -W^{(2)}_{<>}
+      (W^{(2)}_{>>})^{-1}
+      W^{(2)}_{><}\Bigr)^{-1}\)};
 
-    \draw[arr] (bare)--(bphz);
-    \draw[arr] (bare)--(wil);
-    \draw[arr] (wil)--(low);
-    \draw[arr] (low)--(leg);
-    \draw[arr] (bphz)--(leg);
-    \draw[arr] (leg)--(coord);
-    \draw[arr] (wil)--(ct);
-    \draw[arr,dashed] (ct)--(coord);
+    \draw[arr,blue!70!black] (1.95,1.92)--(restricted.west);
+    \draw[arr,red!70!black] (1.95,0.90)--(schur.west);
 
-    \node[align=center,blue!70!black] at (2.02,3.72)
-      {local Taylor\\subtractions};
-    \node[align=center,green!45!black] at (2.02,1.18)
-      {Gaussian\\pushforward};
-    \node[align=center,orange!85!black] at (10.15,1.23)
-      {finite matching\\after low modes};
-    \node[align=center,red!70!black] at (6.08,0.92)
-      {source support\\inside plateau};
+    \node[block,fill=green!6,text width=4.05cm] at (10.25,1.15)
+      {Use here:\\
+      low-source \(W\) agrees by the plateau condition.\\
+      Match with the upper inverse.\\
+      Bound the Schur term separately.};
+    \draw[arr,green!45!black] (restricted.east)--(8.12,1.45);
+    \draw[arr,dashed,red!70!black] (schur.east)--(8.12,0.85);
   \end{tikzpicture}
   }
-  \caption{BPHZ, Wilsonian, and 1PI constructions are connected by maps.
-  BPHZ acts directly on 1PI graphs, the Wilsonian action is obtained by
-  Gaussian pushforward, and 1PI coordinates are obtained after the connected
-  low-source functional is Legendre transformed.}
+  \caption{The low-source Legendre transform is not the same operation as
+  restricting a full Legendre transform.  In Hessian language, the former
+  inverts \(W^{(2)}_{<<}\), while the latter inverts the Schur complement that
+  subtracts high-source feedback through
+  \(W^{(2)}_{<>}(W^{(2)}_{>>})^{-1}W^{(2)}_{><}\).  The Wilsonian--BPHZ
+  comparison in this section uses the source-restricted transform; identifying
+  it with the restricted full transform would require an additional estimate.}
   \label{fig:bphz-wilsonian-one-pi-bridge}
 \end{figure}
 
@@ -2950,60 +3013,102 @@ finite local convention chosen at the ultraviolet regulator.  The factor
 \(1/2\) is the symmetry factor of the bubble in the normalization
 \((g_0/4!)\phi^4\).
 
-Figure~\ref{fig:quartic-one-loop-bphz-wilsonian-matching} displays the one-loop
-matching calculation: the high-momentum bubble in the Wilsonian quartic vertex
-is compared with the BPHZ-subtracted 1PI quartic coordinate after the chosen
-finite local convention is fixed.
+Figure~\ref{fig:quartic-one-loop-bphz-wilsonian-matching} displays the actual
+one-loop partition used by the matching formula: the same bubble graph is
+evaluated with the four possible covariance assignments on its two internal
+lines.  This is the graph-level content behind the algebraic identity
+\eqref{eq:bubble-covariance-split}.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
-      box/.style={draw,rounded corners=3pt,align=center,
-        minimum width=2.65cm,minimum height=0.76cm}
+      low/.style={green!45!black,line width=1.15pt},
+      high/.style={orange!85!black,line width=1.15pt,dashed},
+      ext/.style={black,line width=0.85pt},
+      note/.style={draw,rounded corners=3pt,align=center,inner sep=4pt,
+        text width=3.00cm,fill=gray!4}
     }
-    \node[box] (full) at (0,1.8)
-      {full regulated\\bubble};
-    \node[box] (hh) at (4.0,3.0)
-      {high--high\\part};
-    \node[box] (ll) at (4.0,1.8)
-      {low--low\\part};
-    \node[box] (mix) at (4.0,0.6)
-      {mixed\\part};
-    \node[box] (wil) at (8.1,3.0)
-      {Wilsonian\\quartic vertex};
-    \node[box] (low) at (8.1,1.8)
-      {low-field\\1PI loop};
-    \node[box] (loc) at (8.1,0.6)
-      {local matching\\coordinates};
-    \node[box] (coord) at (12.0,1.8)
-      {1PI coordinate\\at \(\mathcal S_\mu\)};
+    \node[font=\small] at (0,3.05)
+      {one graph, four covariance assignments};
 
-    \draw[arr] (full)--(hh);
-    \draw[arr] (full)--(ll);
-    \draw[arr] (full)--(mix);
-    \draw[arr] (hh)--(wil);
-    \draw[arr] (ll)--(low);
-    \draw[arr] (mix)--(loc);
-    \draw[arr] (wil)--(coord);
-    \draw[arr] (low)--(coord);
-    \draw[arr] (loc)--(coord);
+    \begin{scope}[shift={(-4.85,1.35)}]
+      \node at (0,1.20) {\(I_{<<}\)};
+      \draw[ext] (-1.35,0.40)--(-0.55,0);
+      \draw[ext] (-1.35,-0.40)--(-0.55,0);
+      \draw[ext] (1.35,0.40)--(0.55,0);
+      \draw[ext] (1.35,-0.40)--(0.55,0);
+      \fill (-0.55,0) circle (1.8pt);
+      \fill (0.55,0) circle (1.8pt);
+      \draw[low] (-0.55,0) .. controls (-0.20,0.75) and (0.20,0.75) .. (0.55,0);
+      \draw[low] (-0.55,0) .. controls (-0.20,-0.75) and (0.20,-0.75) .. (0.55,0);
+      \node[green!45!black] at (0,-1.05) {\(\mathcal B_{C_\Lambda,C_\Lambda}\)};
+    \end{scope}
 
-    \node[align=center,blue!70!black] at (2.0,3.42)
-      {\(C_>C_>\)};
-    \node[align=center,green!45!black] at (2.0,2.18)
-      {\(C_\Lambda C_\Lambda\)};
-    \node[align=center,orange!85!black] at (1.75,0.55)
-      {\(C_\Lambda C_>\)\\\(+C_>C_\Lambda\)};
+    \begin{scope}[shift={(0,1.35)}]
+      \node at (0,1.20) {\(I_{>>}\)};
+      \draw[ext] (-1.35,0.40)--(-0.55,0);
+      \draw[ext] (-1.35,-0.40)--(-0.55,0);
+      \draw[ext] (1.35,0.40)--(0.55,0);
+      \draw[ext] (1.35,-0.40)--(0.55,0);
+      \fill (-0.55,0) circle (1.8pt);
+      \fill (0.55,0) circle (1.8pt);
+      \draw[high] (-0.55,0) .. controls (-0.20,0.75) and (0.20,0.75) .. (0.55,0);
+      \draw[high] (-0.55,0) .. controls (-0.20,-0.75) and (0.20,-0.75) .. (0.55,0);
+      \node[orange!85!black] at (0,-1.05) {\(\mathcal B_{C_>,C_>}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(4.85,1.35)}]
+      \node at (0,1.20) {\(I_{< >}\)};
+      \draw[ext] (-1.35,0.40)--(-0.55,0);
+      \draw[ext] (-1.35,-0.40)--(-0.55,0);
+      \draw[ext] (1.35,0.40)--(0.55,0);
+      \draw[ext] (1.35,-0.40)--(0.55,0);
+      \fill (-0.55,0) circle (1.8pt);
+      \fill (0.55,0) circle (1.8pt);
+      \draw[low] (-0.55,0) .. controls (-0.20,0.75) and (0.20,0.75) .. (0.55,0);
+      \draw[high] (-0.55,0) .. controls (-0.20,-0.75) and (0.20,-0.75) .. (0.55,0);
+      \node[align=center] at (0,-1.05)
+        {\(\mathcal B_{C_\Lambda,C_>}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(4.85,-1.35)}]
+      \node at (0,1.20) {\(I_{> <}\)};
+      \draw[ext] (-1.35,0.40)--(-0.55,0);
+      \draw[ext] (-1.35,-0.40)--(-0.55,0);
+      \draw[ext] (1.35,0.40)--(0.55,0);
+      \draw[ext] (1.35,-0.40)--(0.55,0);
+      \fill (-0.55,0) circle (1.8pt);
+      \fill (0.55,0) circle (1.8pt);
+      \draw[high] (-0.55,0) .. controls (-0.20,0.75) and (0.20,0.75) .. (0.55,0);
+      \draw[low] (-0.55,0) .. controls (-0.20,-0.75) and (0.20,-0.75) .. (0.55,0);
+      \node[align=center] at (0,-1.05)
+        {\(\mathcal B_{C_>,C_\Lambda}\)};
+    \end{scope}
+
+    \node[note,fill=green!6] at (-4.85,-1.25)
+      {low--low:\\remaining low-field\\1PI loop};
+    \node[note,fill=orange!7] at (0,-1.25)
+      {high--high:\\direct Wilsonian\\quartic correction};
+    \node[note,fill=yellow!8,text width=3.45cm] at (0,-3.15)
+      {mixed terms:\\smooth at \(|P_c|\ll\Lambda\), hence assigned to local
+      matching coordinates plus Taylor remainders};
+    \node[align=center] at (-4.85,-3.10)
+      {\(\displaystyle
+      \mathcal B_{C_{\Lambda_0},C_{\Lambda_0}}
+      =
+      I_{<<}+I_{>>}+I_{<>}+I_{><}\)};
   \end{tikzpicture}
   }
-  \caption{At one loop the regulated four-point bubble splits according to the
-  covariance decomposition.  The high--high part contributes to the Wilsonian
-  quartic vertex, the low--low part is produced by the remaining low-field
-  Legendre transform, and the mixed part is represented by local matching data
-  in the low-momentum expansion.}
+  \caption{The covariance decomposition of the one-loop four-point bubble.
+  Each panel is the same bubble graph with a different assignment of the two
+  internal propagators to the low covariance \(C_\Lambda\) or the integrated
+  covariance \(C_>\).  The \(I_{>>}\) term is the high-momentum correction to
+  the Wilsonian quartic vertex, \(I_{<<}\) is generated by the later low-field
+  1PI loop, and the mixed assignments are smooth for external momenta
+  \(|P_c|\ll\Lambda\) and therefore enter the finite local matching map up to
+  Taylor-remainder estimates.}
   \label{fig:quartic-one-loop-bphz-wilsonian-matching}
 \end{figure}
 
