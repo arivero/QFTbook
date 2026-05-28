@@ -165,6 +165,11 @@ Current checks:
   transseries ledger, the BPST trace-delta instanton action conversion, and
   the finite algebra behind the statement that a Gevrey-one coefficient bound
   gives only local Borel convergence.
+- `bphz_forest_formula_checks.py`: finite combinatorial checks for the
+  Volume II BPHZ chapter, verifying that the Bogoliubov preparation recursion
+  equals Zimmermann's forest formula for nested, disjoint, and overlapping
+  subdivergence posets, and that a counterterm appends the subgraph as the
+  largest Taylor operation in a nested forest.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, the BV-pushforward boundary

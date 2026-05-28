@@ -48,8 +48,12 @@ The chapter must define:
 - spinneys and forests;
 - recursive preparation map \(\overline R_\Gamma\), counterterm map
   \(C_\gamma\), and full \(R_\Gamma\);
-- the forest formula;
+- the Bogoliubov preparation recursion as a well-founded graph induction;
+- the Zimmermann forest formula as an identity of formal integrands before
+  loop integration;
+- the Hepp-sector forest extracted from an ordered ultraviolet hierarchy;
 - the overlapping-subgraph diamond example;
+- the Zimmermann identity for oversubtracted normal products;
 - locality of counterterms and the finite-list conclusion for
   power-counting-renormalizable theories.
 - the theorem boundary between massive/nonexceptional BPHZ finiteness and the
@@ -77,6 +81,15 @@ The chapter must define:
    products over connected components.
 5. The recursive BPHZ construction subtracts proper subgraphs first and the
    overall graph last.
+5a. The recursive construction is well founded because every proper
+    connected divergent subgraph has fewer internal lines than the graph whose
+    counterterm is being constructed; each recursive counterterm is a local
+    polynomial vertex of degree bounded by the corresponding superficial
+    degree.
+5b. Zimmermann's forest formula is the integrand-level expansion of the
+    Bogoliubov recursion.  The proof is by induction using the maximal
+    elements of a forest not containing the full graph as the spinney in the
+    prepared graph.
 6. In the two-loop diamond graph, the left and right one-loop subgraphs overlap;
    the compatible forests are therefore
    \(\emptyset,\{\gamma_L\},\{\gamma_R\},\{\Gamma\},
@@ -85,6 +98,9 @@ The chapter must define:
    boundary regions.
 8. In a massive Euclidean scalar theory with nonexceptional external momenta,
    the BPHZ-renormalized integrand is UV integrable.
+8a. A Hepp-sector partition turns each ordered ultraviolet hierarchy into a
+    forest of divergent 1PI components; this is the sector-local reason that
+    the global forest formula subtracts all ultraviolet boundary strata.
 9. Counterterms produced by \(C_\gamma\) are local polynomials bounded in degree
    by \(\omega(\gamma)\).
 10. In a finite-list power-counting-renormalizable theory, the recursive
@@ -101,6 +117,10 @@ The chapter must define:
     of the BPHZ--Wilsonian comparison: in the Wilsonian chapter, these local
     polynomials are identified with finite local coordinates in the retained
     Wilsonian chart.
+14. Changing the subtraction degree of a marked insertion produces a
+    Zimmermann normal-product identity: the difference between the two
+    subtraction schemes is a finite sum of renormalized local insertions with
+    the same exact quantum numbers and bounded engineering degree.
 
 ## Figure Requirements
 
@@ -140,3 +160,10 @@ The chapter must define:
 - 2026-05-24 issue #497 pass: added a forward cross-reference from the finite
   subtraction-coordinate discussion to the Wilsonian comparison theorem, where
   BPHZ local Taylor parts are identified with Wilsonian local-coordinate data.
+- 2026-05-28 issue #633 correction pass: strengthened the BPHZ chapter by
+  adding proposition/theorem/lemma statements with proofs for the Bogoliubov
+  preparation recursion, Zimmermann forest formula, Hepp-sector forest
+  extraction, and Zimmermann normal-product identity.  Added
+  `calculation-checks/bphz_forest_formula_checks.py` to verify the finite
+  recursive/forest combinatorics for nested, disjoint, and overlapping
+  subgraph configurations.

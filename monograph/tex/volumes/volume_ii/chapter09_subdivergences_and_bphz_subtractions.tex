@@ -352,6 +352,45 @@ This formula enforces the order of operations: proper subdivergences are
 subtracted inside \(\overline R_\Gamma\), and the overall Taylor subtraction
 is applied afterward when the whole graph is superficially divergent.
 
+\begin{proposition}[Bogoliubov preparation recursion]
+\label{prop:bogoliubov-preparation-recursion}
+Fix the subtraction points and Taylor degrees described above.  For every
+connected 1PI graph \(\Gamma\), the recursive definitions of
+\(\overline R_\Gamma\), \(C_\gamma\), and \(R_\Gamma\) determine a finite
+linear combination of integrands obtained from \(\Gamma\) by replacing
+divergent connected subgraphs by local polynomial vertices.  If
+\(\gamma\) is connected and divergent, then \(C_\gamma I_\gamma\) is a
+polynomial in the external momenta \(p_\gamma\) of degree at most
+\(\omega(\gamma)\), with coefficients that are finite linear combinations of
+prepared lower-loop or lower-line graph integrands.
+\end{proposition}
+
+\begin{proof}
+Order connected graphs by the number of internal lines.  A proper connected
+subgraph of \(\Gamma\) has strictly fewer internal lines than \(\Gamma\), so
+the recursion is well founded.  For graphs with no proper divergent connected
+subgraphs, \(\overline R_\Gamma I_\Gamma=I_\Gamma\), and, if \(\Gamma\) is
+divergent, \(C_\Gamma I_\Gamma=-t_\Gamma I_\Gamma\), which is a polynomial in
+the external variables by the definition of \(t_\Gamma\).
+
+Assume the claim for all proper connected divergent subgraphs of
+\(\Gamma\).  A spinney is a finite set of mutually disjoint such subgraphs,
+so the product \(\prod_{\gamma\in S}C_\gamma\) can be inserted
+simultaneously: each factor has already been constructed by the induction
+hypothesis, and disjoint replacements affect disjoint vertex and line sets.
+The number of spinneys is finite because \(\Gamma\) has finitely many internal
+lines.  Hence \(\overline R_\Gamma I_\Gamma\) is a finite linear combination
+of integrands on contracted graphs with local polynomial vertices.
+
+If \(\Gamma\) itself is divergent, \(C_\Gamma I_\Gamma\) is defined as
+\(-t_\Gamma\overline R_\Gamma I_\Gamma\).  The Taylor operator acts only on
+the external variables of \(\Gamma\) and truncates at degree
+\(\omega(\Gamma)\); local vertices produced inside \(\overline R_\Gamma\)
+are polynomial factors in slower external variables and remain local after
+the Taylor extraction.  Thus the new counterterm is again a local polynomial
+vertex of the stated degree.  This completes the induction.
+\end{proof}
+
 \section{The Forest Formula}
 
 Let \(\mathfrak F(\Gamma)\) be the set of forests whose elements are connected
@@ -360,17 +399,97 @@ divergent subgraphs of \(\Gamma\), including \(\Gamma\) itself when
 \(F\in\mathfrak F(\Gamma)\), define \(t_F\) by applying \(t_\gamma\) from
 smaller subgraphs to larger subgraphs, with each smaller subtraction regarded
 as a local vertex before the larger Taylor operator is applied.  If two
-elements are disjoint, their operators commute.  The forest formula is
+elements are disjoint, their operators commute.  The forest formula is the
+following identity.
+\begin{theorem}[Zimmermann forest formula]
+\label{thm:zimmermann-forest-formula}
+For the BPHZ recursion of
+Proposition~\ref{prop:bogoliubov-preparation-recursion},
 \[
   R_\Gamma I_\Gamma
   =
   \sum_{F\in\mathfrak F(\Gamma)}
   (-1)^{|F|}\,t_F I_\Gamma ,
+\tag{\(\ast\)}
+\label{eq:zimmermann-forest-formula}
 \]
-with \(t_\emptyset=1\).  This compact formula is equivalent to the recursive
-definition above: expanding the recursion gives one term for every compatible
-choice of subtractions, and the sign records how many Taylor extractions have
-been made.
+with \(t_\emptyset=1\).  The identity is an identity of formal graph
+integrands before loop integrations are performed.  In a nested chain,
+Taylor operators are ordered from smaller subgraphs to larger subgraphs; for
+disjoint subgraphs the order is immaterial.
+\end{theorem}
+
+\begin{proof}
+We prove the identity by induction on the number of internal lines.  For a
+graph with no proper divergent connected subgraphs, the spinney sum contains
+only the empty spinney.  If \(\Gamma\) is superficially convergent then
+\(R_\Gamma I_\Gamma=I_\Gamma\), which is the forest formula with only the
+empty forest.  If \(\Gamma\) is superficially divergent then
+\[
+  R_\Gamma I_\Gamma=(1-t_\Gamma)I_\Gamma
+  =
+  I_\Gamma-t_\Gamma I_\Gamma ,
+\]
+which is the sum over the two forests
+\(\emptyset\) and \(\{\Gamma\}\).
+
+Assume the statement for every proper connected divergent subgraph of
+\(\Gamma\).  Expanding the counterterm of a proper connected divergent
+subgraph \(\gamma\) gives
+\[
+  C_\gamma I_\gamma
+  =
+  -t_\gamma \overline R_\gamma I_\gamma
+  =
+  \sum_{\substack{F_\gamma\in\mathfrak F(\gamma)\\
+                  \gamma\in F_\gamma}}
+  (-1)^{|F_\gamma|}t_{F_\gamma}I_\gamma .
+  \label{eq:bphz-counterterm-as-forests-ending-at-gamma}
+\]
+Indeed, by the induction hypothesis, \(\overline R_\gamma\) is the forest sum
+over forests of \(\gamma\) not containing \(\gamma\); multiplying by
+\(-t_\gamma\) appends \(\gamma\) as the largest element and changes the sign.
+
+Now expand the spinney sum in \(\overline R_\Gamma\).  A nonempty spinney
+\(S\) is a set of pairwise disjoint proper connected divergent subgraphs.
+For each \(\gamma\in S\), choose a forest \(F_\gamma\) of \(\gamma\) whose
+largest element is \(\gamma\), as in
+\eqref{eq:bphz-counterterm-as-forests-ending-at-gamma}.  The union
+\[
+  F=\bigcup_{\gamma\in S}F_\gamma
+\]
+is a forest of \(\Gamma\) that does not contain \(\Gamma\), because different
+members of \(S\) are disjoint and all further elements lie inside those
+members.  Conversely, every forest of \(\Gamma\) not containing \(\Gamma\)
+has a unique set of maximal elements; these maximal elements form a spinney,
+and the portions lying below each maximal element are precisely the
+corresponding \(F_\gamma\)'s.  The product of the signs in the spinney
+expansion is
+\((-1)^{\sum_{\gamma\in S}|F_\gamma|}=(-1)^{|F|}\).
+Therefore
+\[
+  \overline R_\Gamma I_\Gamma
+  =
+  \sum_{\substack{F\in\mathfrak F(\Gamma)\\\Gamma\notin F}}
+  (-1)^{|F|}t_F I_\Gamma .
+  \label{eq:bphz-prepared-as-forests-not-containing-gamma}
+\]
+
+If \(\Gamma\) is superficially convergent, \(R_\Gamma=\overline R_\Gamma\)
+and this is the desired formula.  If \(\Gamma\) is superficially divergent,
+then
+\[
+  R_\Gamma I_\Gamma
+  =
+  (1-t_\Gamma)\overline R_\Gamma I_\Gamma .
+\]
+The first term is
+\eqref{eq:bphz-prepared-as-forests-not-containing-gamma}.  The second term
+appends \(\Gamma\) as the unique largest element to every forest not already
+containing \(\Gamma\), with one extra minus sign.  This gives exactly the
+remaining forests, namely those containing \(\Gamma\), and proves
+\eqref{eq:zimmermann-forest-formula}.
+\end{proof}
 
 The inclusion-exclusion structure can be seen directly in a graph with one
 proper divergent subgraph \(\gamma\) and a divergent overall graph \(\Gamma\).
@@ -518,6 +637,44 @@ is therefore a linear combination of the local operators \(\phi^2\) and
 
 \section{Finiteness and Locality}
 
+\begin{lemma}[Hepp-sector forest associated to an ultraviolet hierarchy]
+\label{lem:hepp-sector-forest-extraction}
+Fix a smooth Hepp-sector partition of the noncompact loop-momentum region of
+a graph \(\Gamma\), so that in each sector the magnitudes of the line momenta
+are ordered up to bounded ratios.  In one sector, the ultraviolet boundary
+strata determine a finite forest \(F_S\) as follows: for each threshold in
+the ordered list of large line momenta, form the subgraph spanned by lines
+above the threshold, decompose it into connected components, keep the
+one-particle-irreducible components that contain loops, and then discard
+components with negative superficial degree.  The retained components are
+pairwise disjoint or nested.  Moreover, every superficially divergent
+ultraviolet boundary of that sector is represented by a member of this
+forest, or by a quotient graph obtained after members of the forest have been
+contracted.
+\end{lemma}
+
+\begin{proof}
+As the threshold is lowered, the set of lines above threshold only grows.
+Thus two threshold subgraphs are line-nested.  A connected component of the
+smaller threshold graph is either contained in a connected component of the
+larger threshold graph or is disjoint from it.  Passing to 1PI loop-containing
+components cannot create a partial overlap: it only removes trees, separates
+components at articulation lines, or keeps a subcomponent inside the same
+larger connected component.  Therefore any two retained components are
+disjoint or nested.
+
+The Hepp-sector coordinates separate the noncompact region into radial scale
+ratios.  Sending one scale ratio to infinity while keeping slower ratios fixed
+is precisely the operation of making the lines above the corresponding
+threshold large relative to the remaining lines.  If the component at such a
+boundary has nonnegative superficial degree, it is retained in \(F_S\).  If
+it has negative superficial degree, it is already power-counting convergent at
+that boundary.  After a retained component is contracted to a local vertex,
+the remaining large-scale boundary is the corresponding quotient graph.  This
+gives the stated representation of all superficially divergent sector
+boundaries.
+\end{proof}
+
 \begin{theorem}[BPHZ finiteness for massive Euclidean scalar graphs]
 \label{thm:bphz-finiteness-massive-euclidean-scalar}
 Let \(\Gamma\) be a connected one-particle-irreducible Euclidean Feynman graph
@@ -536,16 +693,12 @@ subgraph is a polynomial in \(p_\gamma\) of degree at most \(\omega(\gamma)\).
 
 \begin{proof}
 The proof is local on loop-momentum space.  Choose a smooth partition of unity
-subordinate to one compact region and to finitely many conic Hepp sectors.  In
-one such sector the large line momenta are ordered by magnitude.  For each
-large scale threshold, take the subgraph spanned by the lines above the
-threshold and then take the connected one-particle-irreducible components that
-have loops.  As the threshold is varied these components are nested or
-disjoint; after discarding components with negative superficial degree, one
-obtains a forest \(F_S\) of divergent subgraphs attached to the sector \(S\).
-It is enough to prove absolute convergence on each sector, since the partition
-has finitely many sectors and the compact region is harmless for massive
-Euclidean propagators.
+subordinate to one compact region and to finitely many conic Hepp sectors.
+Lemma~\ref{lem:hepp-sector-forest-extraction} attaches to each sector \(S\) a
+forest \(F_S\) containing the superficially divergent boundary components of
+that sector.  It is enough to prove absolute convergence on each sector,
+since the partition has finitely many sectors and the compact region is
+harmless for massive Euclidean propagators.
 
 The elementary estimate is the following Taylor-remainder bound.  Let
 \(\gamma\) be a connected divergent subgraph, and let
@@ -728,26 +881,62 @@ where \(\delta\) is the subtraction degree at the marked vertex.
 
 It fixes a BPHZ subtraction scheme for insertions of \(O\).
 
-Increasing \(\delta\) is an oversubtraction.  If \(\delta'\ge\delta\), the two
-normal products are related by a finite local identity
+Increasing \(\delta\) is an oversubtraction.
+
+\begin{proposition}[Zimmermann identity for oversubtracted normal products]
+\label{prop:zimmermann-normal-product-identity}
+Let \(\delta'\ge\delta\).  Fix a finite basis \(\{O_A\}\) of local monomials,
+with the same exact global and spacetime quantum numbers as \(O\), and with
+engineering degree at most \(\delta'\), modulo total derivatives and field
+relations already chosen as part of the operator basis.  For every graph with
+one insertion of \(O\), the difference between the BPHZ-renormalized
+insertion with subtraction degree \(\delta'\) and the one with subtraction
+degree \(\delta\) is a finite sum of BPHZ-renormalized insertions of the
+\(O_A\)'s:
 \[
   N_{\delta'}[O](x)
   =
   N_\delta[O](x)
   +
   \sum_A c_A\,N_{\delta'}[O_A](x).
+  \label{eq:zimmermann-normal-product-identity}
 \]
-The sum runs over local operators \(O_A\) with the same quantum numbers and
-engineering dimension at most \(\delta'\).  The coefficients \(c_A\) are
-finite functions of the subtraction prescription and of the renormalized
-couplings.  This is a Zimmermann identity.
+The coefficients \(c_A\) are finite functions of the subtraction points,
+finite subtraction prescription, masses, and renormalized couplings.  They
+are local scheme-change coordinates; they are not new nonlocal dynamical data.
+\end{proposition}
 
-The identity has a direct forest interpretation.  The difference between two
-subtraction degrees is a finite Taylor polynomial at the insertion vertex.
-After all subdivergences have been prepared, that polynomial is a local
-vertex.  Therefore the change of normal-product prescription is a finite
-mixing among local operators.  This is the BPHZ form of the operator mixing
-matrix used later in the renormalized-operator chapter.
+\begin{proof}
+Work graph by graph.  For a marked subgraph \(\gamma\) containing the
+insertion vertex, write \(t_\gamma^{(\delta)}\) and
+\(t_\gamma^{(\delta')}\) for the two Taylor operators.  Their difference is
+the finite Taylor polynomial
+\[
+  t_\gamma^{(\delta')}-t_\gamma^{(\delta)}
+  =
+  \sum_{\delta<|\alpha|\le\delta'}
+  \frac{a^\alpha}{\alpha!}
+  \left.\partial_a^\alpha\right|_{a=0}
+  \label{eq:zimmermann-finite-taylor-difference}
+\]
+in the external variables of the marked subgraph, with all lower
+subdivergences prepared in the same forest order as above.  After the marked
+subgraph is contracted, each monomial \(a^\alpha\) is a local derivative
+operator at the insertion point.  By the chosen local operator basis, the
+resulting local insertion is a finite linear combination of the \(O_A\)'s.
+
+Unmarked divergent subgraphs are subtracted in the same way in both normal
+products.  Hence their forest sums cancel in the difference except insofar as
+they prepare the coefficients multiplying the finite Taylor polynomial
+\eqref{eq:zimmermann-finite-taylor-difference}.  The BPHZ finiteness theorem
+applied to graphs with the corresponding local insertion shows that these
+coefficients are finite after the remaining loop integrations.  Regrouping
+the finite local insertions in the common oversubtracted scheme \(\delta'\)
+gives \eqref{eq:zimmermann-normal-product-identity}.
+\end{proof}
+
+This is the BPHZ form of the operator mixing matrix used later in the
+renormalized-operator chapter.
 
 \section{Finite Parts and Subtraction Coordinates}
 
