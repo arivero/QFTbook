@@ -1325,36 +1325,14 @@ Comparison with the invariant-mass decomposition then gives
 \(\dd\rho_1(\mu^2)=Z\,\delta_{m^2}(\dd\mu^2)\).
 \end{proof}
 
-Figure~\ref{fig:field-state-spectral-projections} records the spectral
-decomposition of \(\widehat\phi(f)\vac\) used in the preceding measure
-calculation: vacuum atom, isolated one-particle atom, and continuum part.
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[>=Stealth,scale=0.95]
-  \node (v) at (0,0) {$\widehat\phi(f)\vac$};
-  \node[draw,rounded corners=2pt,inner sep=4pt,blue!70!black] (vac) at (3.0,1.25)
-    {$E(\{0\})\widehat\phi(f)\vac$};
-  \node[draw,rounded corners=2pt,inner sep=4pt,green!45!black] (one) at (3.25,0)
-    {$E(\mu^2=m^2)\widehat\phi(f)\vac$};
-  \node[draw,rounded corners=2pt,inner sep=4pt,orange!80!black] (cont) at (3.35,-1.25)
-    {$E_{\mathrm c}\widehat\phi(f)\vac$};
-  \draw[->,thick] (v) -- (vac);
-  \draw[->,thick] (v) -- (one);
-  \draw[->,thick] (v) -- (cont);
-  \node[blue!70!black] at (6.3,1.25) {vacuum atom};
-  \node[green!45!black] at (6.6,0) {one-particle atom};
-  \node[orange!80!black] at (6.6,-1.25) {continuum spectral part};
-\end{tikzpicture}
-\caption{Spectral projections of the vector
-\(\widehat\phi(f)\vac\).  The vacuum atom, isolated one-particle atom, and
-continuum part are distinct contributions to the two-point spectral measure.}
-\label{fig:field-state-spectral-projections}
-\end{figure}
-
-After subtracting the vacuum expectation value of \(\widehat\phi\), the vacuum
-projection in the first line is absent. The one-particle atom remains precisely
-when the field has nonzero overlap with the isolated mass shell.
+The spectral decomposition of \(\widehat\phi(f)\vac\) used in the preceding
+measure calculation is the orthogonal sum of the vacuum atom
+\(E(\{0\})\widehat\phi(f)\vac\), the isolated one-particle atom
+\(E(\mu^2=m^2)\widehat\phi(f)\vac\), and the continuum projection
+\(E_{\mathrm c}\widehat\phi(f)\vac\).  After subtracting the vacuum
+expectation value of \(\widehat\phi\), the vacuum projection is absent.  The
+one-particle atom remains precisely when the field has nonzero overlap with
+the isolated mass shell.
 
 Under the same assumptions,
 \[

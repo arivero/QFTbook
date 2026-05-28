@@ -537,43 +537,13 @@ theorem gives a strongly continuous unitary representation of the connected
 Poincare group with joint translation spectrum contained in the closed forward
 cone.
 
-The passage from Euclidean covariance to Lorentzian covariance occurs here:
-the Lorentzian Hilbert space and Poincare representation are constructed from
-the positive-time quotient and the analytic-continuation data.
-
-Figure~\ref{fig:os-reconstruction-flow} records the OS reconstruction flow:
-reflection-positive Euclidean data define the positive-time quotient, whose
-completion carries the Lorentzian Hilbert space and Poincare representation.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{0.94\textwidth}{!}{%
-  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \tikzset{
-      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
-        minimum width=3.25cm,minimum height=0.90cm,align=center},
-      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
-    }
-    \node[box] (sch) at (-5.25,0.45) {Schwinger hierarchy\\\(\{S_n\}\)};
-    \node[box] (pos) at (-1.75,0.45) {positive-time\\test sequences};
-    \node[box] (hilb) at (1.75,0.45) {OS quotient\\\(\Hilb_{\rm OS}\)};
-    \node[box] (lor) at (5.25,0.45)
-      {Wightman data\\\(\Hilb_{\rm OS},\vac_{\rm OS},U,\widehat\Phi_\alpha\)};
-    \node[box,fill=green!7] (semigroup) at (0,-1.45)
-      {Euclidean time semigroup\\\(\ee^{-sH}\)};
-    \draw[arrow] (sch)--(pos);
-    \draw[arrow] (pos)--(hilb);
-    \draw[arrow] (hilb)--(lor);
-    \draw[arrow] (pos)--(semigroup);
-    \draw[arrow] (semigroup)--(hilb);
-    \node[blue!60!black] at (-3.50,1.32) {reflection positivity};
-    \node[blue!60!black] at (3.50,1.32) {analytic continuation};
-  \end{tikzpicture}
-  }
-  \caption{OS reconstruction turns Euclidean correlation data into a
-  Lorentzian Hilbert-space theory through a positive-time quotient.}
-  \label{fig:os-reconstruction-flow}
-\end{figure}
+The passage from Euclidean covariance to Lorentzian covariance occurs here.
+Reflection positivity constructs the positive-time quotient and Euclidean time
+semigroup.  The corrected OS-II analytic theorem, with its growth hypothesis,
+then supplies the joint Lorentzian boundary values and the Poincare
+representation.  These are distinct steps: the one-variable semigroup
+argument above is necessary, but the many-variable analytic continuation is
+the additional QFT-specific content.
 
 \section{Fields on the Reconstructed Domain}
 
@@ -1808,36 +1778,12 @@ so the reflected quadratic form is an integral of absolute squares with
 positive weight.  This computation is the Euclidean shadow of the positive
 one-particle Hilbert space of the free scalar field.
 
-Figure~\ref{fig:euclidean-measure-os-data} packages this free example:
-covariance gives the Schwinger functions, reflection positivity gives the inner
-product, and the positive-frequency kernel gives the one-particle space.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{0.86\textwidth}{!}{%
-  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \tikzset{
-      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
-        minimum width=3.1cm,minimum height=0.85cm,align=center},
-      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
-    }
-    \node[box] (measure) at (-4.1,0.9) {Euclidean measure\\\(\mu\)};
-    \node[box] (moments) at (0,0.9) {moments\\\(S_n\)};
-    \node[box] (os) at (4.1,0.9) {OS-positive\\Schwinger data};
-    \node[box,fill=green!7] (wightman) at (0,-1.15)
-      {Lorentzian Wightman\\boundary values};
-    \draw[arrow] (measure)--(moments);
-    \draw[arrow] (moments)--(os)
-      node[midway,above=5pt,fill=white,inner sep=1.2pt] {verify axioms};
-    \draw[arrow] (os)--(wightman);
-    \draw[arrow] (moments)--(wightman)
-      node[midway,left] {analytic continuation};
-  \end{tikzpicture}
-  }
-  \caption{A Euclidean measure yields Lorentzian Wightman data through the
-  verified OS positivity, covariance, and growth requirements.}
-  \label{fig:euclidean-measure-os-data}
-\end{figure}
+In this free example, covariance gives the Schwinger functions, reflection
+positivity gives the inner product, and the positive-frequency kernel gives
+the one-particle space.  For an interacting Euclidean measure the same
+sentences become obligations: one must verify the full OS positivity,
+covariance, regularity, and growth requirements before invoking
+reconstruction.
 
 \section{Relation To Wick Rotation}
 
