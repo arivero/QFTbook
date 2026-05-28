@@ -373,6 +373,57 @@ the argument of \(H\) by the corresponding \(R\)-symmetry background; this is
 a coordinate change in the localization datum, not a change of the underlying
 determinant complex.
 
+\begin{proposition}[\(\mathcal N=4\) determinant cancellation on \(S^4\)]
+\label{prop:s4-n4-adjoint-hyper-cancellation}
+Let \(G\) be compact connected with complexified Lie algebra
+\(\mathfrak g_{\mathbb C}\), Cartan subalgebra \(\mathfrak t_{\mathbb C}\),
+root system \(\Delta\), chosen positive roots \(\Delta_+\), and invariant
+inner product fixed by the Yang--Mills action
+\(\frac1{4g_{\rm YM}^2}\int \operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\).
+Consider the \(\mathcal N=2\) localization formula
+\eqref{eq:s4-localization-one-loop} for one vector multiplet and one
+massless adjoint hypermultiplet, with the hypermultiplet mass coordinate
+tuned to the point where the field content is an \(\mathcal N=4\) vector
+multiplet.  Then the non-polynomial \(H\)-factors cancel identically and the
+one-loop factor is only the Cartan gauge-fixing Jacobian:
+\[
+  Z_{1{\rm -loop}}^{\mathcal N=4}(a)
+  =
+  \prod_{\alpha\in\Delta_+}\alpha(a)^2 .
+  \label{eq:s4-n4-one-loop-cancellation}
+\]
+\end{proposition}
+
+\begin{proof}
+The adjoint representation has weight multiset
+\[
+  {\rm wt}(\mathfrak g_{\mathbb C})
+  =
+  \Delta\;\sqcup\;\{0,\ldots,0\},
+\]
+where the zero weight occurs \(\operatorname{rank}G\) times.  By
+Lemma~\ref{lem:s4-H-function-convention}, \(H\) is an even entire function
+and \(H(0)=1\).  Therefore the zero weights of the adjoint hypermultiplet
+contribute the constant \(H(0)^{-\operatorname{rank}G}=1\), while each pair
+\(\{\alpha,-\alpha\}\) contributes
+\[
+  H(r\,\alpha(a))^{-1}H(-r\,\alpha(a))^{-1}
+  =
+  H(r\,\alpha(a))^{-2}.
+\]
+The vector multiplet contributes
+\[
+  \prod_{\alpha\in\Delta_+}\alpha(a)^2H(r\,\alpha(a))^2 .
+\]
+Multiplying the vector and adjoint-hyper factors root pair by root pair
+leaves exactly \eqref{eq:s4-n4-one-loop-cancellation}.  No regularization
+ambiguity is hidden in this cancellation: changing the normalization of
+\(H\) by an even quadratic exponential would multiply the vector and adjoint
+hypermultiplet factors by inverse local quadratic counterterms at the
+\(\mathcal N=4\) point, so the cancellation holds in the determinant
+convention fixed in \eqref{eq:H-Barnes-G-convention}.
+\end{proof}
+
 \begin{definition}[Nekrasov factor in the \(S^4\) formula]
 \label{def:s4-nekrasov-factor}
 For the four-dimensional localization formula, \(Z_{\rm inst}(a,\tau;
@@ -494,6 +545,81 @@ point-instanton coordinates in the Uhlenbeck stratum.  The positive
 real-moment-map quotient forbids this loss by forcing stability; the price is
 that the singular stratum is replaced by the Gieseker resolution.
 \end{proof}
+
+\begin{proposition}[Positive ADHM moment map excludes the small-instanton stratum]
+\label{prop:positive-adhm-moment-map-stability}
+Let \(K\) and \(W\) be Hermitian vector spaces and let
+\((B_1,B_2,I,J)\in{\rm End}(K)^{\oplus2}\oplus{\rm Hom}(W,K)
+\oplus{\rm Hom}(K,W)\) obey the ADHM equations
+\[
+  [B_1,B_2]+IJ=0,
+  \label{eq:positive-adhm-complex-moment-map}
+\]
+\[
+  [B_1,B_1^\dagger]+[B_2,B_2^\dagger]
+  +II^\dagger-J^\dagger J
+  =
+  \zeta\,{\bf 1}_K ,
+  \qquad \zeta>0 .
+  \label{eq:adhm-real-moment-map-positive}
+\]
+Then the ADHM configuration is stable in the sense of
+Definition~\ref{def:adhm-stability-small-instanton}.  Equivalently, the
+positive real moment-map parameter forbids a quotient \(K/S\) that is
+invisible to the framing \(I(W)\), hence forbids the finite-dimensional
+small-instanton degeneration represented by failure of stability.
+\end{proposition}
+
+\begin{proof}
+Suppose, for contradiction, that there is a proper subspace
+\(S\subsetneq K\) such that \(B_iS\subset S\) for \(i=1,2\) and
+\(I(W)\subset S\).  Let \(T=S^\perp\), and write each \(B_i\) in block form
+with respect to \(K=S\oplus T\):
+\[
+  B_i=
+  \begin{pmatrix}
+    A_i&C_i\\
+    0&D_i
+  \end{pmatrix}.
+\]
+The \(T\)-trace of the commutator block is
+\[
+  \operatorname{Tr}_T\!\bigl([B_i,B_i^\dagger]_{TT}\bigr)
+  =
+  \operatorname{Tr}(D_iD_i^\dagger)
+  -\operatorname{Tr}(C_i^\dagger C_i+D_i^\dagger D_i)
+  =
+  -\operatorname{Tr}(C_i^\dagger C_i).
+  \label{eq:adhm-stability-tt-commutator-trace}
+\]
+Since \(I(W)\subset S\), the \(T\)-block of \(II^\dagger\) is zero.  The
+\(T\)-trace of \(-J^\dagger J\) is
+\(-\operatorname{Tr}_T(J^\dagger J)\le0\).  Taking the trace over \(T\) in
+\eqref{eq:adhm-real-moment-map-positive} therefore gives
+\[
+  -\sum_{i=1}^2\operatorname{Tr}(C_i^\dagger C_i)
+  -\operatorname{Tr}_T(J^\dagger J)
+  =
+  \zeta\,\dim T .
+  \label{eq:adhm-positive-fi-contradiction}
+\]
+The left hand side is nonpositive and the right hand side is positive
+because \(\zeta>0\) and \(T\ne0\).  This contradiction proves stability.
+\end{proof}
+
+\begin{remark}[What this finite-dimensional statement does not prove]
+\label{rem:positive-adhm-does-not-prove-field-theory-matching}
+Proposition~\ref{prop:positive-adhm-moment-map-stability} is a theorem
+inside the ADHM finite-dimensional reduction.  It justifies the common
+statement that a positive ADHM/FI resolution, for example the finite-
+statement that a positive ADHM/FI resolution, for example the
+finite-dimensional resolution induced by noncommutative deformation in the
+Nekrasov--Schwarz construction, removes the small-instanton stratum.  It
+does not by itself prove that a four-dimensional supersymmetric gauge-theory
+path integral with a given regulator localizes to this resolved quotient.
+That identification is the separate regulator theorem, or hypothesis, stated
+in Hypothesis~\ref{hyp:field-theoretic-gieseker-matching}.
+\end{remark}
 
 \begin{definition}[Tangent Euler class at a Young-diagram fixed point]
 \label{def:nekrasov-tangent-euler-class}
@@ -640,9 +766,10 @@ the corresponding conjugation property.
 \begin{example}[\(\mathcal N=4\) Yang--Mills degeneration]
 \label{ex:s4-n4-gaussian-matrix-model}
 For an \(\mathcal N=2\) vector multiplet plus an adjoint hypermultiplet with
-the mass coordinate tuned to the \(\mathcal N=4\) point, the hypermultiplet
-weights cancel the \(H\)-factors from the vector multiplet.  The remaining
-matrix model is
+the mass coordinate tuned to the \(\mathcal N=4\) point,
+Proposition~\ref{prop:s4-n4-adjoint-hyper-cancellation} reduces the
+perturbative one-loop determinant to the Cartan gauge-fixing Jacobian.  The
+remaining matrix model is
 \[
   Z_{S^4}^{\mathcal N=4}
   =

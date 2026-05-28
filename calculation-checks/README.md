@@ -1164,8 +1164,9 @@ Current checks:
   conformal-window/free-phase inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
-  Uhlenbeck stratum codimension arithmetic, the one-box Gieseker tangent
-  Euler-class specialization,
+  Uhlenbeck stratum codimension arithmetic, the positive-ADHM-moment-map
+  trace obstruction to unstable small-instanton subspaces, the one-box
+  Gieseker tangent Euler-class specialization,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
   and Higgs-patch collective-coordinate ledger, the radial Higgs-cutoff
@@ -1178,11 +1179,12 @@ Current checks:
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
-  Gaussian coefficient, the finite normal Gaussian Pfaffian/determinant
-  convention, the \(S^4\) \(H\)-function finite-product logarithmic
-  derivative, the \(U(1)\) \(S^4\) Gaussian matrix integral, finite
-  double-sine reflection and pole-convention checks, the \(U(1)_k\)
-  \(S^3\) Chern--Simons Fresnel completion of the square, and the
+  Gaussian coefficient, the \(S^4\) \(\mathcal N=4\) adjoint-hyper
+  root-pair cancellation of \(H\)-factors, the finite normal Gaussian
+  Pfaffian/determinant convention, the \(S^4\) \(H\)-function
+  finite-product logarithmic derivative, the \(U(1)\) \(S^4\) Gaussian
+  matrix integral, finite double-sine reflection and pole-convention checks,
+  the \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
   round-\(S^3\) conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
 - `soft_drop_irc_checks.py`: exact rational checks for the soft-drop

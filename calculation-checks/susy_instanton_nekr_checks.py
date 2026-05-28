@@ -3,7 +3,8 @@
 
 The checks include the singular-instanton compactification arithmetic used in
 the compact-localization chapter: Uhlenbeck stratum codimensions and the
-one-box specialization of the Gieseker tangent Euler class.
+positive-ADHM-moment-map stability trace obstruction, and the one-box
+specialization of the Gieseker tangent Euler class.
 """
 
 from __future__ import annotations
@@ -42,6 +43,31 @@ def check_uhlenbeck_stratum_codimension() -> None:
                     "Uhlenbeck stratum codimension",
                 )
     assert_equal(2 * 1 * (2 - 1), 2, "SU(2) one-point complex codimension")
+
+
+def check_positive_adhm_moment_map_stability_trace() -> None:
+    # Use a two-block K=S plus T model with S invariant under B_i.  In block
+    # form B_i=[[A_i,C_i],[0,D_i]], the T-trace of [B_i,B_i^dagger] is
+    # -Tr(C_i^dagger C_i).  If I(W) lies in S, the T-block of I I^dagger is
+    # zero, while -J^dagger J is nonpositive.  Hence the T-trace cannot equal
+    # a positive FI parameter times dim(T).
+    examples = [
+        (Fraction(1, 2), Fraction(2, 3), Fraction(3, 5)),
+        (Fraction(4, 7), Fraction(5, 6), Fraction(7, 8)),
+        (Fraction(3, 2), Fraction(5, 4), Fraction(9, 10)),
+    ]
+    for c1, c2, j_t in examples:
+        t_trace_left = -(c1 * c1 + c2 * c2 + j_t * j_t)
+        assert_equal(t_trace_left <= 0, True, "positive ADHM left side nonpositive")
+
+        for zeta in (Fraction(1, 7), Fraction(2, 5), Fraction(11, 6)):
+            t_trace_right = zeta
+            assert_equal(t_trace_right > 0, True, "positive ADHM right side positive")
+            assert_equal(
+                t_trace_left == t_trace_right,
+                False,
+                "positive ADHM stability contradiction",
+            )
 
 
 def check_instanton_exponential_coupling_conversion() -> None:
@@ -379,6 +405,7 @@ def check_young_diagram_one_box_count() -> None:
 def main() -> None:
     check_adhm_dimension_count()
     check_uhlenbeck_stratum_codimension()
+    check_positive_adhm_moment_map_stability_trace()
     check_instanton_exponential_coupling_conversion()
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()

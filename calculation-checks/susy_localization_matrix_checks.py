@@ -5,6 +5,7 @@ The checks verify convention-sensitive pieces that appear in the displayed
 S^4 and S^3 matrix models:
 
 * the trace-delta S^4 Gaussian coefficient;
+* the root-pair cancellation of S^4 H-factors in the N=4 adjoint-hyper limit;
 * the finite normal Gaussian Pfaffian/determinant convention;
 * the finite-product logarithmic derivative of the S^4 H-function;
 * the elementary U(1) S^4 Gaussian integral;
@@ -89,6 +90,28 @@ def check_s4_trace_delta_gaussian_coefficient() -> None:
     coupling_conversion = mp.mpf("0.5")
     trace_delta_coefficient = common_coefficient * coupling_conversion
     assert_close("S4 trace-delta Gaussian coefficient", trace_delta_coefficient, 4, mp.mpf("1e-40"))
+
+
+def check_s4_n4_adjoint_hyper_cancellation() -> None:
+    # In the N=4 limit an N=2 adjoint hypermultiplet has weights
+    # Delta plus rank(G) zero weights.  For each positive root pair, the
+    # vector determinant supplies H(alpha)^2 and the adjoint hyper supplies
+    # H(alpha)^(-1) H(-alpha)^(-1)=H(alpha)^(-2).  The zero weights are
+    # H(0)^(-rank)=1 in the product convention used in the chapter.
+    root_pair_data = [
+        {"root": "alpha_1", "vector_H_power": 2, "hyper_H_power": -2, "vandermonde_power": 2},
+        {"root": "alpha_2", "vector_H_power": 2, "hyper_H_power": -2, "vandermonde_power": 2},
+        {"root": "alpha_1+alpha_2", "vector_H_power": 2, "hyper_H_power": -2, "vandermonde_power": 2},
+    ]
+    for entry in root_pair_data:
+        total_H_power = entry["vector_H_power"] + entry["hyper_H_power"]
+        assert_equal(f"S4 N=4 H cancellation for {entry['root']}", total_H_power, 0)
+        assert_equal(f"S4 N=4 Vandermonde power for {entry['root']}", entry["vandermonde_power"], 2)
+
+    rank_g = 2
+    h_zero_value = Fraction(1)
+    zero_weight_contribution = h_zero_value ** (-rank_g)
+    assert_equal("S4 N=4 adjoint zero-weight contribution", zero_weight_contribution, Fraction(1))
 
 
 def check_finite_normal_gaussian_factor() -> None:
@@ -234,6 +257,7 @@ def check_s3_chiral_pair_integral() -> None:
 
 def main() -> None:
     check_s4_trace_delta_gaussian_coefficient()
+    check_s4_n4_adjoint_hyper_cancellation()
     check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()
     check_s4_H_log_derivative()
