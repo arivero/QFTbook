@@ -7,8 +7,9 @@ The chapter uses the subtracted 't Hooft kernel
 
 and its DLCQ finite matrix. These checks use rational arithmetic to verify
 the color normalization, the finite quadratic-form identity, positivity in a
-sample positive-mass case, and the exact constant zero mode in the massless
-subtracted kernel.
+sample positive-mass case, the exact constant zero mode in the massless
+subtracted kernel, and the endpoint-exponent small-mass expansion in the
+subtracted finite-part convention.
 """
 
 from fractions import Fraction
@@ -112,11 +113,47 @@ def check_massless_constant_zero_mode():
     assert_equal("massless constant quadratic form", quadratic_form(matrix, constant), Fraction(0))
 
 
+def check_endpoint_exponent_series():
+    # The endpoint equation in the subtracted convention is
+    #   r := m^2/gamma = 1 - pi beta cot(pi beta).
+    # With z=(pi beta)^2,
+    #   r = z/3 + z^2/45 + 2 z^3/945 + O(z^4).
+    # Formal inversion gives
+    #   z = 3 r - 3 r^2/5 + 12 r^3/175 + O(r^4).
+    endpoint_series = {
+        1: Fraction(1, 3),
+        2: Fraction(1, 45),
+        3: Fraction(2, 945),
+    }
+    inverse_series = {
+        1: Fraction(3, 1),
+        2: Fraction(-3, 5),
+        3: Fraction(12, 175),
+    }
+    a = inverse_series[1]
+    b = inverse_series[2]
+    c = inverse_series[3]
+    assert_equal("endpoint inverse linear coefficient", endpoint_series[1] * a, Fraction(1))
+    assert_equal(
+        "endpoint inverse quadratic coefficient",
+        endpoint_series[1] * b + endpoint_series[2] * a * a,
+        Fraction(0),
+    )
+    assert_equal(
+        "endpoint inverse cubic coefficient",
+        endpoint_series[1] * c
+        + 2 * endpoint_series[2] * a * b
+        + endpoint_series[3] * a * a * a,
+        Fraction(0),
+    )
+
+
 def main():
     check_trace_delta_color_normalization()
     check_dlcq_quadratic_form_identity()
     check_positive_mass_sample_positive()
     check_massless_constant_zero_mode()
+    check_endpoint_exponent_series()
     print("All large-N two-dimensional QCD checks passed.")
 
 

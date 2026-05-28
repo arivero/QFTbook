@@ -54,11 +54,15 @@ The chapter establishes:
     {(\phi(x)-\phi(y))^2\over (x-y)^2};
   \]
 - the chiral-limit constant zero mode \(M_0^2=0\) at leading planar order;
+- the endpoint finite-part coefficient
+  \(\pi\beta\cot(\pi\beta)-1\) in the subtracted convention, and the endpoint
+  exponent equation
+  \(m_i^2/\gamma_2=1-\pi\beta_i\cot(\pi\beta_i)\);
 - the finite DLCQ matrix and its exact quadratic-form identity;
 - a controlled-approximation block stating the data needed before finite DLCQ
   eigenvalues become continuum meson-mass claims;
-- a status section separating the lessons of the two-dimensional model from
-  claims about four-dimensional QCD.
+- a positive scope section identifying exactly what the two-dimensional
+  large-\(N_c\) construction establishes.
 
 ## Claim Ledger
 
@@ -76,9 +80,11 @@ The chapter establishes:
    together.  Their paired finite part is the subtracted 't Hooft kernel.
 6. The subtracted kernel is positive as a quadratic form and has an exact
    constant zero mode in the massless equal-flavor case.
-7. The common unsubtracted presentation is a different mass-coordinate
+7. Endpoint powers are fixed by cancellation of the leading finite-part
+   singularity in the same subtracted convention that defines the operator.
+8. The common unsubtracted presentation is a different mass-coordinate
    convention, not a different physical equation.
-8. DLCQ matrix eigenvalues are finite-regulator spectral data until zero-mode,
+9. DLCQ matrix eigenvalues are finite-regulator spectral data until zero-mode,
    endpoint-mass, coefficient-matching, and \(K\to\infty\) convergence data are
    supplied.
 
@@ -86,8 +92,8 @@ The chapter establishes:
 
 - `calculation-checks/thooft_model_checks.py` verifies trace-delta color
   normalization, the finite DLCQ quadratic-form identity, positivity in a
-  positive endpoint-mass sample, and the exact massless constant zero mode of
-  the subtracted finite kernel.
+  positive endpoint-mass sample, the exact massless constant zero mode of
+  the subtracted finite kernel, and the endpoint-exponent small-mass expansion.
 
 ## Figure Requirements
 
@@ -97,8 +103,6 @@ The chapter establishes:
 
 ## Open Development
 
-- Derive endpoint exponents for unequal renormalized masses with the chapter's
-  subtracted finite-part convention.
 - Add a numerical spectral comparison between finite DLCQ matrices and the
   continuum integral operator with a controlled extrapolation model.
 - Develop the \(1/N_c\) meson-interaction corrections and connect them to the

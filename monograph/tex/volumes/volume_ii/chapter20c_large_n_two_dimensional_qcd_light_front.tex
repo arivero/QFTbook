@@ -369,6 +369,132 @@ General statements about four-dimensional QCD and the Schwinger-model mass
 generation of Chapter~\ref{ch:schwinger-model} require their own local gauge
 dynamics and anomaly structure.
 
+\section{Endpoint Exponents}
+\label{sec:qcd2-endpoint-exponents}
+
+The endpoint behavior of the wavefunction is part of the domain of the
+light-front mass operator.  It is fixed by the cancellation of the leading
+singular terms in the same finite-part convention that defines
+\eqref{eq:qcd2-subtracted-thooft-operator}.
+
+\begin{proposition}[Endpoint finite part]
+\label{prop:qcd2-endpoint-finite-part}
+Let \(0<\beta<1\), and define
+\[
+  I_\beta(x)
+  :=
+  \operatorname{PV}\int_0^1
+  \frac{x^\beta-y^\beta}{(x-y)^2}\,\dd y .
+\]
+As \(x\downarrow0\),
+\begin{equation}
+  I_\beta(x)
+  =
+  \bigl(\pi\beta\cot(\pi\beta)-1\bigr)x^{\beta-1}
+  +O(1).
+  \label{eq:qcd2-endpoint-kernel-asymptotic}
+\end{equation}
+The analogous right-endpoint statement follows by replacing \(x\) with
+\(1-x\).
+\end{proposition}
+
+\begin{proof}
+Set \(y=xt\).  Then
+\[
+  I_\beta(x)
+  =
+  x^{\beta-1}
+  \operatorname{PV}\int_0^{1/x}
+  \frac{1-t^\beta}{(1-t)^2}\,\dd t .
+\]
+The tail from \(1/x\) to \(\infty\) contributes \(O(x^{1-\beta})\) to the
+integral in \(t\), hence \(O(1)\) to \(I_\beta(x)\).  It remains to compute
+the finite part
+\[
+  C(\beta):=
+  \operatorname{PV}\int_0^\infty
+  \frac{1-t^\beta}{(1-t)^2}\,\dd t .
+\]
+Integrating by parts with the pole at \(t=1\) removed symmetrically gives
+\[
+  C(\beta)
+  =
+  -1+\beta\operatorname{PV}\int_0^\infty
+  \frac{t^{\beta-1}}{1-t}\,\dd t .
+\]
+The principal-value integral is
+\[
+  \operatorname{PV}\int_0^\infty
+  \frac{t^{\beta-1}}{1-t}\,\dd t
+  =
+  \int_0^1\frac{t^{\beta-1}-t^{-\beta}}{1-t}\,\dd t
+  =
+  \psi(1-\beta)-\psi(\beta)
+  =
+  \pi\cot(\pi\beta),
+\]
+where \(\psi=\Gamma'/\Gamma\), and the last equality is the logarithmic
+derivative of Euler's reflection formula
+\(\Gamma(\beta)\Gamma(1-\beta)=\pi/\sin(\pi\beta)\).  Thus
+\(C(\beta)=\pi\beta\cot(\pi\beta)-1\), proving
+\eqref{eq:qcd2-endpoint-kernel-asymptotic}.
+\end{proof}
+
+\begin{corollary}[Endpoint exponents]
+\label{cor:qcd2-endpoint-exponents}
+Suppose an eigenfunction of
+\eqref{eq:qcd2-subtracted-thooft-operator} has nonzero leading behavior
+\[
+  \phi(x)=c_1x^{\beta_1}+o(x^{\beta_1}),
+  \qquad
+  \phi(x)=c_2(1-x)^{\beta_2}+o((1-x)^{\beta_2}),
+\]
+with \(c_1,c_2\ne0\) and \(0\leq\beta_i<1\).  For \(m_i^2>0\), the endpoint
+exponents lie in \(0<\beta_i<1\) and obey
+\begin{equation}
+  \frac{m_i^2}{\gamma_2}
+  =
+  1-\pi\beta_i\cot(\pi\beta_i),
+  \qquad i=1,2.
+  \label{eq:qcd2-endpoint-exponent-equation}
+\end{equation}
+For \(m_i^2=0\), the allowed leading exponent is \(\beta_i=0\) in the
+subtracted convention.
+\end{corollary}
+
+\begin{proof}
+Near \(x=0\), the endpoint mass term in
+\eqref{eq:qcd2-subtracted-thooft-operator} gives
+\[
+  m_1^2c_1x^{\beta_1-1}.
+\]
+Proposition~\ref{prop:qcd2-endpoint-finite-part} gives the singular part of
+the subtracted Coulomb term,
+\[
+  \gamma_2c_1
+  \bigl(\pi\beta_1\cot(\pi\beta_1)-1\bigr)x^{\beta_1-1}.
+\]
+The eigenvalue term \(M^2\phi(x)\) is only \(O(x^{\beta_1})\).  Therefore the
+coefficient of \(x^{\beta_1-1}\) must vanish, giving
+\eqref{eq:qcd2-endpoint-exponent-equation} for \(i=1\).  The right endpoint
+is identical after \(x\mapsto1-x\).
+
+The function \(F(\beta)=1-\pi\beta\cot(\pi\beta)\) is positive and strictly
+increasing from \(0\) to \(+\infty\) on \(0<\beta<1\).  Indeed
+\[
+  F'(\beta)
+  =
+  \pi^2\beta\csc^2(\pi\beta)-\pi\cot(\pi\beta)
+  =
+  \frac{\pi}{\sin^2(\pi\beta)}
+  \bigl(\pi\beta-\sin(\pi\beta)\cos(\pi\beta)\bigr)>0,
+\]
+because \(\pi\beta>\sin(\pi\beta)\cos(\pi\beta)\) for \(0<\beta<1\).  Hence
+each positive \(m_i^2/\gamma_2\) determines a unique exponent.  When
+\(m_i^2=0\), the same equation has the endpoint solution \(\beta_i=0\), which
+is the constant endpoint behavior used in the massless chiral solution above.
+\end{proof}
+
 \section{Finite DLCQ Matrix and Numerical Benchmark}
 
 The finite matrix used in
@@ -435,28 +561,28 @@ verifies the finite color normalization, the quadratic-form identity
 \eqref{eq:qcd2-thooft-dlcq-quadratic-form}, positivity for positive endpoint
 masses, and the exact massless constant zero mode of the subtracted kernel.
 
-\section{What This Model Does and Does Not Prove}
+\section{\texorpdfstring{Scope of the Two-Dimensional Large-\(N_c\) Construction}{Scope of the Two-Dimensional Large-Nc Construction}}
 
-The model gives an exact large-\(N_c\) bound-state equation in a genuine
-confining gauge theory, but its lessons have a precise domain.
+The model gives an exact leading-planar bound-state equation in a genuine
+confining gauge theory.  Its content is the following precise construction.
 \begin{enumerate}
-  \item The meson equation follows from a gauge constraint and planar color
-  algebra, not from treating quarks as physical external particles.
-  \item The absence of transverse gluons in \(1+1\) dimensions is essential.
-  Four-dimensional QCD has propagating gluons, running coupling,
-  spin-dependent interactions, and pair-creation channels that are not
-  captured by \eqref{eq:qcd2-thooft-equation}.
-  \item Large-\(N_c\) factorization makes single-meson sectors stable at
-  leading order.  Meson interactions and widths enter at subleading powers of
+  \item The meson equation follows from a gauge constraint, the color-singlet
+  Hilbert-space sector, and planar color algebra.
+  \item The absence of transverse gauge polarizations in \(1+1\) dimensions
+  makes the gauge field a constraint variable while preserving a nontrivial
+  nonabelian Coulomb kernel.
+  \item Large-\(N_c\) factorization makes one-meson sectors stable at leading
+  order.  Meson interactions and widths are organized by subleading powers of
   \(1/N_c\).
-  \item The light-front derivation is exact only after the zero-mode and
-  endpoint-mass conventions are fixed.  Omitting those conventions changes the
-  mathematical problem.
+  \item The light-front construction is a statement about a declared
+  regulator, a zero-mode prescription, and an endpoint-mass coordinate.
+  Changing any of these data changes the operator whose spectrum is being
+  studied.
 \end{enumerate}
 Thus two-dimensional large-\(N_c\) QCD is a benchmark for confinement,
-bound-state equations, and light-front regularization.  A nonperturbative
-construction of four-dimensional QCD is a separate problem; the
-two-dimensional model is one of the cleanest places where the relation between
-gauge constraints, color-singlet Hilbert-space sectors, and a computable meson
-spectrum can be studied without appealing to perturbative \(S\)-matrix
-intuition.
+bound-state equations, light-front regularization, and the relation between
+gauge constraints and color-singlet Hilbert-space sectors.  Its comparison
+with four-dimensional QCD is structural rather than literal: the
+four-dimensional theory has propagating gluons, running coupling,
+spin-dependent interactions, and multi-particle channels that require the
+separate developments of the later QCD chapters.
