@@ -167,6 +167,27 @@ def check_quarkonium_spin_centroid() -> None:
     )
 
 
+def check_nucleon_sachs_coordinate_transform() -> None:
+    tau = Fraction(3, 8)
+    f1 = Fraction(5, 7)
+    f2 = Fraction(-2, 9)
+    g_e = f1 - tau * f2
+    g_m = f1 + f2
+    recovered_f1 = (g_e + tau * g_m) / (1 + tau)
+    recovered_f2 = (g_m - g_e) / (1 + tau)
+    assert_equal("nucleon Sachs inverse F1", recovered_f1, f1)
+    assert_equal("nucleon Sachs inverse F2", recovered_f2, f2)
+
+    proton_f1_zero = Fraction(1)
+    neutron_f1_zero = Fraction(0)
+    proton_f2_zero = Fraction(17, 11)
+    neutron_f2_zero = Fraction(-13, 10)
+    assert_equal("proton electric charge form factor", proton_f1_zero, Fraction(1))
+    assert_equal("neutron electric charge form factor", neutron_f1_zero, Fraction(0))
+    assert_equal("proton magnetic Sachs zero", proton_f1_zero + proton_f2_zero, Fraction(28, 11))
+    assert_equal("neutron magnetic Sachs zero", neutron_f1_zero + neutron_f2_zero, Fraction(-13, 10))
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -175,6 +196,7 @@ def main() -> None:
     check_luscher_kmatrix_pole_algebra()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
+    check_nucleon_sachs_coordinate_transform()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

@@ -4240,6 +4240,124 @@ under its own hypotheses, and it explains why baryons require a separate
 large-\(N_c\) analysis from mesons.  It does not license importing
 constituent-quark spectra as QCD predictions.
 
+\begin{definition}[Nucleon current-matrix-element datum]
+\label{def:qcd-nucleon-current-matrix-element-datum}
+Let \(|N(p,s)\rangle\) be an isolated one-nucleon state in the color-singlet
+QCD Hilbert space, with \(p^2=-M_N^2\), \(p^0>0\), and spin label \(s\).  In
+the mostly-plus spinor convention of Section~\ref{sec:spinor-conventions},
+use the same Dirac--Pauli basis as in
+Definition~\ref{def:qed-electron-electromagnetic-form-factors}.  For the Hermitian
+electromagnetic current \(J_{\rm em}^\mu\), normalized by the flavor charges
+of the quarks, define the nucleon Dirac and Pauli form factors by
+\begin{equation}
+  \langle N(p',s')|J_{\rm em}^\mu(0)|N(p,s)\rangle
+  =
+  \frac{\ii e}{(2\pi)^3}\,
+  \bar u_{s'}(p')
+  \left[
+    \gamma^\mu F_1^N(k^2)
+    +
+    \frac1{M_N}S^{\mu\nu}k_\nu F_2^N(k^2)
+  \right]
+  u_s(p),
+  \qquad k:=p-p',
+  \label{eq:qcd-nucleon-dirac-pauli-form-factors}
+\end{equation}
+where \(e>0\) is the elementary charge and
+\(S^{\mu\nu}=-\ii[\gamma^\mu,\gamma^\nu]/4\).  The charge normalization is
+\[
+  F_1^p(0)=1,\qquad F_1^n(0)=0.
+\]
+The anomalous magnetic moment coordinate is \(F_2^N(0)\), and the magnetic
+moment in nuclear magnetons is \(F_1^N(0)+F_2^N(0)\) after the conventional
+normalization by \(e/(2M_N)\).
+
+For spacelike transfer set
+\[
+  Q^2:=-k^2>0,\qquad
+  \tau:=\frac{Q^2}{4M_N^2}.
+\]
+The Sachs coordinates are the linear combinations
+\begin{equation}
+  G_E^N(Q^2)=F_1^N(-Q^2)-\tau F_2^N(-Q^2),
+  \qquad
+  G_M^N(Q^2)=F_1^N(-Q^2)+F_2^N(-Q^2).
+  \label{eq:qcd-nucleon-sachs-form-factors}
+\end{equation}
+They are useful Breit-frame coordinates for elastic electron--nucleon
+scattering, but the nonperturbative definition is the current matrix element
+\eqref{eq:qcd-nucleon-dirac-pauli-form-factors}.  A lattice, dispersive, or
+experimental extraction must state the current renormalization, finite-volume
+matrix-element method, excited-state removal, and analytic continuation or
+fit ansatz used to obtain the functions of \(Q^2\).
+\end{definition}
+
+\begin{proposition}[Sachs and Dirac--Pauli coordinates]
+\label{prop:qcd-nucleon-sachs-coordinate-transform}
+For \(\tau\ne -1\), the coordinate change
+\eqref{eq:qcd-nucleon-sachs-form-factors} is invertible:
+\begin{equation}
+  F_1^N(-Q^2)
+  =
+  \frac{G_E^N(Q^2)+\tau G_M^N(Q^2)}{1+\tau},
+  \qquad
+  F_2^N(-Q^2)
+  =
+  \frac{G_M^N(Q^2)-G_E^N(Q^2)}{1+\tau}.
+  \label{eq:qcd-nucleon-sachs-inverse}
+\end{equation}
+At \(Q^2=0\),
+\[
+  G_E^N(0)=F_1^N(0),\qquad
+  G_M^N(0)=F_1^N(0)+F_2^N(0).
+\]
+\end{proposition}
+
+\begin{proof}
+The two equations in \eqref{eq:qcd-nucleon-sachs-form-factors} form the
+linear system
+\[
+  \begin{pmatrix}G_E\\G_M\end{pmatrix}
+  =
+  \begin{pmatrix}1&-\tau\\ 1&1\end{pmatrix}
+  \begin{pmatrix}F_1\\F_2\end{pmatrix}.
+\]
+The determinant is \(1+\tau\).  Inverting the matrix gives
+\eqref{eq:qcd-nucleon-sachs-inverse}.  Setting \(Q^2=0\), hence \(\tau=0\),
+gives the stated zero-transfer normalizations.  No model of nucleon
+substructure enters this argument; it is only a change of coordinates on the
+same current matrix element.
+\end{proof}
+
+\begin{definition}[Isovector axial form factors]
+\label{def:qcd-nucleon-axial-form-factors}
+Let \(A_a^\mu\) be the renormalized isovector axial current, with
+\(a=1,2,3\) and flavor generator \(\tau_a/2\).  Between one-nucleon states,
+parity, Lorentz covariance, and isospin give the decomposition
+\begin{equation}
+  \langle N(p',s')|A_a^\mu(0)|N(p,s)\rangle
+  =
+  \frac{\ii}{(2\pi)^3}\,
+  \bar u_{s'}(p')
+  \left[
+    \gamma^\mu\gamma_5\,G_A(Q^2)
+    +
+    \frac{k^\mu}{2M_N}\gamma_5\,G_P(Q^2)
+  \right]
+  \frac{\tau_a}{2}\,
+  u_s(p),
+  \label{eq:qcd-nucleon-axial-form-factors}
+\end{equation}
+again with \(Q^2=-k^2\).  The number \(g_A:=G_A(0)\) is the axial charge in
+this current normalization.  The induced pseudoscalar form factor \(G_P\)
+contains the pion-pole contribution dictated by the chiral Ward identity and
+the pion effective theory of Chapter~\ref{ch:volume-ii-21}; beyond that pole,
+its regular part is another QCD matrix element.  Thus nucleon axial data are
+part of the same ab initio program as the mass spectrum: they are not
+defined by a quark-model wave function but by renormalized current insertions
+between color-singlet Hilbert-space states.
+\end{definition}
+
 The practical hierarchy of spectroscopic control is therefore:
 \begin{itemize}
   \item Stable mesons and baryons are isolated color-singlet mass eigenvalues;
