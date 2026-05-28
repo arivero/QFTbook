@@ -82,6 +82,11 @@ Current checks:
   scheme-change covariance, fixed-product rapidity-scale cancellation in
   two-hadron factorization, and GPD polynomiality from local twist-two
   contractions.
+- `thooft_model_checks.py`: exact rational checks for the Volume II
+  large-\(N\) two-dimensional QCD chapter, including trace-delta color
+  normalization, the finite DLCQ quadratic-form identity for the subtracted
+  't Hooft kernel, positivity with positive endpoint masses, and the massless
+  constant zero mode.
 - `qcd_theta_witten_veneziano_checks.py`: exact checks for the Volume II theta
   and singlet-axial discussion, including the finite-volume topological
   susceptibility cumulant identity, CP-symmetric first moment, theta

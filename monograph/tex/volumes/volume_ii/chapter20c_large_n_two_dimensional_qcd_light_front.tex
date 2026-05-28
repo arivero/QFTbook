@@ -1,0 +1,462 @@
+\chapter{\texorpdfstring{Large-\(N\) Two-Dimensional QCD and the Light-Front Bound-State Equation}{Large-N Two-Dimensional QCD and the Light-Front Bound-State Equation}}
+\label{ch:large-n-two-dimensional-qcd-light-front}
+\ConventionsLorentzian
+
+\section{Regulated Theory and Light-Front Coordinates}
+
+Two-dimensional QCD is a useful solvable gauge-theory laboratory precisely
+because the gauge field has no local propagating polarization but still
+imposes a nontrivial nonabelian Gauss law.  The model considered in this
+chapter has gauge group \(SU(N_c)\), \(N_f\) Dirac fermions in the fundamental
+representation, and the same trace convention as the four-dimensional QCD
+chapter:
+\begin{equation}
+\begin{gathered}
+  \operatorname{tr}_{\square}(t^at^b)=\delta^{ab},
+  \\
+  (t^a)^i{}_j(t^a)^k{}_\ell
+  =
+  \delta^i{}_\ell\delta^k{}_j
+  -\frac1{N_c}\delta^i{}_j\delta^k{}_\ell .
+\end{gathered}
+\label{eq:qcd2-su-n-completeness}
+\end{equation}
+The second identity is the fundamental completeness relation in this
+normalization; it is the same color algebra used in
+Chapter~\ref{ch:volume-ii-19}.  The coupling \(g_2\) has mass dimension one,
+and the local action is written in the connection normalization
+\begin{equation}
+  S
+  =
+  \int\dd^2x\,
+  \left[
+    -\frac1{4g_2^2}\operatorname{tr}_{\square}(F_{\mu\nu}F^{\mu\nu})
+    -\bar q(\gamma^\mu D_\mu+m)q
+  \right],
+  \qquad
+  D_\mu=\partial_\mu-\ii A_\mu .
+  \label{eq:qcd2-action}
+\end{equation}
+For several flavors and masses, \(m\) is replaced by a diagonal mass matrix.
+The large-\(N_c\) coupling coordinate used below is
+\begin{equation}
+  \lambda_2:=g_2^2N_c .
+  \label{eq:qcd2-thooft-coupling}
+\end{equation}
+It has dimensions of mass squared.  Because the generator normalization is
+fixed by \eqref{eq:qcd2-su-n-completeness}, no hidden factor of \(1/2\) is
+allowed in this definition.
+
+Use light-front coordinates
+\begin{equation}
+  x^\pm=\frac{x^0\pm x^1}{\sqrt2},
+  \qquad
+  \dd s^2=-2\,\dd x^+\dd x^- ,
+  \label{eq:qcd2-light-front-coordinates}
+\end{equation}
+and take \(x^+\) as time.  The momentum \(p^+\) is conjugate to \(x^-\), and
+a massive on-shell particle has
+\[
+  2p^+p^-=m^2,\qquad p^+>0 .
+\]
+The light-front Hamiltonian is \(P^-\), while the invariant mass of a state
+with no transverse momentum in two dimensions is
+\begin{equation}
+  M^2=2P^+P^- .
+  \label{eq:qcd2-light-front-mass}
+\end{equation}
+
+The manipulations below are made at finite regulator before continuum limits
+are discussed.  A convenient regulator is to put \(x^-\) on a circle of
+length \(2\pi R\), remove or separately constrain the zero mode, impose a
+finite harmonic resolution \(K=RP^+\), and only then study \(K\to\infty\).
+Equivalently one may use smooth cutoffs in \(p^+\) and a principal-value
+prescription for the instantaneous kernel.  The zero mode of the gauge
+constraint is not a harmless detail: it fixes the color-neutral sector and
+the global electric-flux data.  The bound-state equation derived below is the
+continuum form of the regulated color-singlet two-body problem after this
+constraint has been imposed.
+
+\section{Light-Front Gauge Constraint}
+
+Choose light-front gauge
+\[
+  A_-=0 .
+\]
+Then \(F_{+-}=-\partial_-A_+\).  The \(A_+\) field is nondynamical; it is the
+Lagrange-multiplier remnant of Gauss law written in a gauge where the
+constraint can be solved explicitly.  The part of the regulated light-front
+action depending on \(A_+\) has the form
+\begin{equation}
+  S[A_+]
+  =
+  \int\dd x^+\dd x^-\,
+  \left[
+    \frac1{2g_2^2}(\partial_-A_+^a)(\partial_-A_+^a)
+    +A_+^aJ^{+a}
+  \right],
+  \label{eq:qcd2-a-plus-action}
+\end{equation}
+where \(J^{+a}\) is the color current of the dynamical light-front fermion
+component.  The sign convention in \eqref{eq:qcd2-a-plus-action} is fixed by
+\(\dd s^2=-2\dd x^+\dd x^-\) and by the action
+\eqref{eq:qcd2-action}.  Variation of \(A_+^a\) gives
+\begin{equation}
+  -\frac1{g_2^2}\partial_-^2A_+^a+J^{+a}=0 .
+  \label{eq:qcd2-gauss-light-front}
+\end{equation}
+Let
+\[
+  G:=(-\partial_-^2)^{-1}
+\]
+on the zero-mode-free subspace selected by the regulator.  On the infinite
+line, \(G\) has kernel \(-|x^-|/2\) as an inverse of \(-\partial_-^2\) on
+test functions of total integral zero; on the circle the corresponding
+kernel is the periodic zero-average Green function.  Solving
+\eqref{eq:qcd2-gauss-light-front} and substituting back gives the positive
+instantaneous Coulomb Hamiltonian
+\begin{equation}
+  P^-_{\rm inst}
+  =
+  \frac{g_2^2}{2}
+  \int\dd x^-\dd y^-\,
+  J^{+a}(x^-)\,G(x^--y^-)\,J^{+a}(y^-),
+  \label{eq:qcd2-instantaneous-hamiltonian}
+\end{equation}
+with the zero-mode sector understood as above.
+
+\begin{proposition}[Finite-regulator Gauss-law reduction]
+\label{prop:qcd2-gauss-law-reduction}
+At finite light-front regulator, after the \(A_+\) zero mode has been either
+fixed by the color-neutral Gauss-law constraint or kept as a separate compact
+degree of freedom, the nonzero-mode integration over \(A_+\) is an ordinary
+Gaussian integration and is equivalent to the instantaneous Hamiltonian
+\eqref{eq:qcd2-instantaneous-hamiltonian}.
+\end{proposition}
+
+\begin{proof}
+On the nonzero-mode regulated space, \(-\partial_-^2\) is a positive
+invertible symmetric operator.  Integrating \eqref{eq:qcd2-a-plus-action} by
+parts in \(x^-\) gives
+\[
+  S[A_+]
+  =
+  \int\dd x^+\,
+  \left[
+    -\frac1{2g_2^2}\langle A_+,\partial_-^2A_+\rangle
+    +\langle A_+,J^+\rangle
+  \right].
+\]
+Completing the square with
+\[
+  A_+=-g_2^2(-\partial_-^2)^{-1}J^+ + A_+'
+\]
+separates a Gaussian in \(A_+'\) from the current-current term.  In the
+Hamiltonian \(P^-\), the latter appears with the positive kernel \(G\) as in
+\eqref{eq:qcd2-instantaneous-hamiltonian}.  The completion of the square does
+not determine the zero mode; that mode is exactly the global Gauss-law
+constraint and must be part of the regulator datum.
+\end{proof}
+
+\section{Planar Color-Singlet Mesons}
+
+Consider one quark flavor of mass \(m_1\) and one antiquark flavor of mass
+\(m_2\).  A color-singlet light-front meson state of total momentum \(P^+>0\)
+has the leading large-\(N_c\) form
+\begin{equation}
+  \ket{P^+;\phi}
+  =
+  \frac1{\sqrt{N_c}}
+  \sum_{i=1}^{N_c}
+  \int_0^1\dd x\,
+  \phi(x)\,
+  b_i^\dagger(xP^+)d^{\dagger i}((1-x)P^+)\ket{\vac}
+  \label{eq:qcd2-meson-state}
+\end{equation}
+after a choice of light-front creation-operator normalization.  The function
+\(\phi\) is a wavefunction on \(0<x<1\).  Its endpoint behavior is part of
+the domain of the mass operator.  For positive renormalized endpoint masses,
+normalizability and finiteness of the mass expectation force sufficient
+vanishing at \(x=0,1\); in the chiral limit an endpoint-constant wavefunction
+is allowed by the subtracted Coulomb kernel below.
+
+The free light-front Hamiltonian contributes
+\[
+  P^-_{\rm kin}
+  =
+  \frac1{2P^+}
+  \left[
+    \frac{m_1^2}{x}+\frac{m_2^2}{1-x}
+  \right]
+\]
+on the component with momentum fraction \(x\).  The instantaneous interaction
+\eqref{eq:qcd2-instantaneous-hamiltonian} transfers longitudinal momentum
+between the quark and antiquark.  The planar color contraction follows from
+\eqref{eq:qcd2-su-n-completeness}: the first term preserves the singlet with
+coefficient \(N_c\), while the second term is suppressed by \(N_c^{-1}\) in
+the normalized singlet matrix element.  The real exchange kernel and the
+quark and antiquark self-energy terms combine into a subtracted principal
+value operator.
+
+\begin{definition}[Subtracted 't Hooft operator]
+\label{def:qcd2-subtracted-thooft-operator}
+For \(\gamma_2>0\) and endpoint masses \(m_1^2,m_2^2\geq0\), define
+\begin{equation}
+  (\mathcal M^2\phi)(x)
+  =
+  \left[
+    \frac{m_1^2}{x}
+    +
+    \frac{m_2^2}{1-x}
+  \right]\phi(x)
+  +
+  \gamma_2\,
+  \operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y .
+  \label{eq:qcd2-subtracted-thooft-operator}
+\end{equation}
+The principal value is best defined by the quadratic form in
+Proposition~\ref{prop:qcd2-thooft-positive-form}.  For smooth test functions,
+it is the finite part obtained by applying the same cutoff to real exchange
+and self-energy terms before removing the cutoff.  In the large-\(N_c\) QCD
+normalization of this chapter,
+\begin{equation}
+  \gamma_2=\frac{\lambda_2}{\pi}
+  \label{eq:qcd2-thooft-gamma-normalization}
+\end{equation}
+for the standard continuum principal-value convention.  A finite DLCQ
+regulator may instead take \(\gamma_2\) as its displayed matrix coefficient
+and use \eqref{eq:qcd2-thooft-gamma-normalization} as the continuum matching
+condition.
+\end{definition}
+
+\begin{theorem}[Planar light-front meson equation]
+\label{thm:qcd2-planar-thooft-equation}
+Assume the finite light-front regulator described above, take
+\(N_c\to\infty\) with \(\lambda_2=g_2^2N_c\) fixed and \(N_f\) fixed, and
+restrict to the color-singlet one-quark-one-antiquark sector with endpoint
+masses \(m_1,m_2\) fixed in the chosen renormalization scheme.  If the
+regulated planar Hamiltonians converge on this sector to the subtracted
+operator of Definition~\ref{def:qcd2-subtracted-thooft-operator}, then the
+leading large-\(N_c\) meson masses are the spectral values \(M^2\) satisfying
+\begin{equation}
+  M^2\phi(x)
+  =
+  \left[
+    \frac{m_1^2}{x}
+    +
+    \frac{m_2^2}{1-x}
+  \right]\phi(x)
+  +
+  \frac{\lambda_2}{\pi}\,
+  \operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y .
+  \label{eq:qcd2-thooft-equation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The free term follows from \(M^2=2P^+P^-\): a quark with momentum \(xP^+\)
+contributes \(m_1^2/(2xP^+)\) to \(P^-\), and the antiquark contributes
+\(m_2^2/(2(1-x)P^+)\).  Multiplication by \(2P^+\) gives the endpoint mass
+operator.
+
+For the interaction, write the current in momentum modes.  At finite
+regulator, the kernel \(G=(-\partial_-^2)^{-1}\) contributes a factor
+\((k^+)^{-2}\) for a nonzero exchanged longitudinal momentum \(k^+\), with
+the zero mode excluded by Gauss law.  Acting on the singlet state
+\eqref{eq:qcd2-meson-state}, the color algebra
+\eqref{eq:qcd2-su-n-completeness} gives a leading contraction
+\(\delta^i{}_\ell\delta^k{}_j\) and a subleading trace subtraction.  Hence the
+leading interaction is proportional to \(g_2^2N_c=\lambda_2\).
+
+The real exchange term alone has a nonintegrable \(1/(x-y)^2\) singularity.
+The self-energy terms generated by the same instantaneous Hamiltonian are the
+terms in which the exchanged longitudinal momentum leaves and returns to the
+same fermion line.  With a common regulator for the real and self-energy
+pieces, their sum is the finite-part difference
+\[
+  \operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y .
+\]
+The coefficient of this subtracted kernel is \(\lambda_2/\pi\) in the
+continuum momentum convention used for light-front creation operators.  The
+assumed convergence of the regulated planar Hamiltonians then gives
+\eqref{eq:qcd2-thooft-equation}.  The statement is deliberately phrased with
+the regulator-convergence hypothesis exposed: the algebra above derives the
+finite-regulator reduction and the planar kernel, while the continuum
+operator domain is an analytic input.
+\end{proof}
+
+\begin{remark}[Relation to the unsubtracted form]
+A common finite-part coordinate writes the same regulated planar equation
+in the form
+\[
+  M^2\phi(x)
+  =
+  \left[
+    \frac{\widetilde m_1^2}{x}
+    +
+    \frac{\widetilde m_2^2}{1-x}
+  \right]\phi(x)
+  -
+  \frac{\lambda_2}{\pi}\,
+  \operatorname{PV}\int_0^1
+  \frac{\phi(y)}{(x-y)^2}\,\dd y .
+\]
+This is not a different physical equation; it is a different finite-part
+coordinate.  The singular term proportional to \(\phi(x)\) has been assigned
+to the endpoint masses \(\widetilde m_i^2\).  The subtracted form
+\eqref{eq:qcd2-thooft-equation} displays the real--self-energy pairing and
+has a positive quadratic form, so it is the convention used in this
+monograph.
+\end{remark}
+
+\section{Quadratic Form, Positivity, and the Chiral Limit}
+
+\begin{proposition}[Positive form of the subtracted kernel]
+\label{prop:qcd2-thooft-positive-form}
+Let \(\phi\) be a real smooth function on \([0,1]\).  Then
+\begin{equation}
+  \int_0^1\dd x\,\phi(x)
+  \operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y
+  =
+  \frac12
+  \int_0^1\dd x\int_0^1\dd y\,
+  \frac{(\phi(x)-\phi(y))^2}{(x-y)^2}.
+  \label{eq:qcd2-thooft-positive-form}
+\end{equation}
+Consequently, for \(m_1^2,m_2^2,\gamma_2\geq0\), the quadratic form of
+\(\mathcal M^2\) is nonnegative on its form domain.
+\end{proposition}
+
+\begin{proof}
+Regulate the singularity by deleting \(|x-y|<\epsilon\).  The regulated
+bilinear expression is
+\[
+  I_\epsilon
+  =
+  \int_0^1\dd x\int_{|x-y|>\epsilon}\dd y\,
+  \phi(x)\frac{\phi(x)-\phi(y)}{(x-y)^2}.
+\]
+Interchange \(x\) and \(y\) in the same integral.  Since
+\((x-y)^2=(y-x)^2\), the average of the two equal expressions is
+\[
+  I_\epsilon
+  =
+  \frac12
+  \int_{|x-y|>\epsilon}\dd x\,\dd y\,
+  \frac{(\phi(x)-\phi(y))^2}{(x-y)^2}.
+\]
+For smooth \(\phi\), the numerator is \(O((x-y)^2)\) near the diagonal, so
+the right hand side has a finite \(\epsilon\downarrow0\) limit.  This proves
+\eqref{eq:qcd2-thooft-positive-form}.  Adding the endpoint mass terms gives
+nonnegative contributions when \(m_i^2\geq0\).
+\end{proof}
+
+In the equal-mass chiral limit \(m_1=m_2=0\), the constant wavefunction
+\[
+  \phi_0(x)=1
+\]
+lies in the kernel of the subtracted Coulomb operator.  Therefore
+\[
+  M_0^2=0
+\]
+in the leading planar equation.  This massless meson is a special feature of
+the large-\(N_c\) two-dimensional model and of the order of limits used here.
+It should not be confused with a general theorem about four-dimensional QCD,
+nor with the Schwinger-model mass generation of
+Chapter~\ref{ch:schwinger-model}; the local gauge dynamics and anomaly
+structure are different.
+
+\section{Finite DLCQ Matrix and Numerical Benchmark}
+
+The finite matrix used in
+Chapter~\ref{ch:constructive-hamiltonian-truncation-dlcq-benchmarks} is the
+DLCQ discretization of the subtracted form above.  Fix \(K\ge3\), grid points
+\[
+  x_n=\frac nK,\qquad n=1,\ldots,K-1,
+\]
+and a coefficient \(\gamma_2>0\).  Define
+\begin{equation}
+  (M_K^2)_{nm}
+  =
+  \delta_{nm}
+  \left[
+    \frac{m_1^2}{x_n}
+    +
+    \frac{m_2^2}{1-x_n}
+    +
+    \gamma_2K
+    \sum_{\substack{j=1\\j\ne n}}^{K-1}\frac1{(n-j)^2}
+  \right]
+  -
+  (1-\delta_{nm})\frac{\gamma_2K}{(n-m)^2}.
+  \label{eq:qcd2-thooft-dlcq-matrix}
+\end{equation}
+Then, for \(v\in\mathbb R^{K-1}\),
+\begin{equation}
+  v^TM_K^2v
+  =
+  \sum_{n=1}^{K-1}
+  \left[
+    \frac{m_1^2}{x_n}
+    +
+    \frac{m_2^2}{1-x_n}
+  \right]v_n^2
+  +
+  \gamma_2K
+  \sum_{1\le n<m\le K-1}
+  \frac{(v_n-v_m)^2}{(n-m)^2}.
+  \label{eq:qcd2-thooft-dlcq-quadratic-form}
+\end{equation}
+This identity is the finite-dimensional shadow of
+\eqref{eq:qcd2-thooft-positive-form}.  It also fixes the sign of the
+off-diagonal matrix elements.  In the massless case, the constant vector is
+an exact zero mode of the kernel part at every \(K\), matching the continuum
+constant solution.
+
+\begin{controlledapproximation}[DLCQ use of the 't Hooft equation]
+A DLCQ calculation of two-dimensional large-\(N_c\) QCD must state the
+harmonic resolution \(K\), the treatment of zero modes, the endpoint mass
+coordinate, the coefficient \(\gamma_2\) and its matching to
+\(\lambda_2/\pi\), the normalization of finite eigenvectors, and the
+extrapolation model for \(K\to\infty\).  A finite eigenvalue of
+\eqref{eq:qcd2-thooft-dlcq-matrix} is a certified eigenvalue of a regulated
+matrix; it becomes a continuum meson mass only after these convergence data
+are supplied.
+\end{controlledapproximation}
+
+The companion script
+\[
+  \texttt{calculation-checks/thooft\_model\_checks.py}
+\]
+verifies the finite color normalization, the quadratic-form identity
+\eqref{eq:qcd2-thooft-dlcq-quadratic-form}, positivity for positive endpoint
+masses, and the exact massless constant zero mode of the subtracted kernel.
+
+\section{What This Model Does and Does Not Prove}
+
+The model gives an exact large-\(N_c\) bound-state equation in a genuine
+confining gauge theory, but its lessons have a precise domain.
+\begin{enumerate}
+  \item The meson equation follows from a gauge constraint and planar color
+  algebra, not from treating quarks as physical external particles.
+  \item The absence of transverse gluons in \(1+1\) dimensions is essential.
+  Four-dimensional QCD has propagating gluons, running coupling,
+  spin-dependent interactions, and pair-creation channels that are not
+  captured by \eqref{eq:qcd2-thooft-equation}.
+  \item Large-\(N_c\) factorization makes single-meson sectors stable at
+  leading order.  Meson interactions and widths enter at subleading powers of
+  \(1/N_c\).
+  \item The light-front derivation is exact only after the zero-mode and
+  endpoint-mass conventions are fixed.  Omitting those conventions changes the
+  mathematical problem.
+\end{enumerate}
+Thus two-dimensional large-\(N_c\) QCD is a benchmark for confinement,
+bound-state equations, and light-front regularization.  It is not a substitute
+for a nonperturbative construction of four-dimensional QCD, but it is one of
+the cleanest places where the relation between gauge constraints,
+color-singlet Hilbert-space sectors, and a computable meson spectrum can be
+studied without appealing to perturbative \(S\)-matrix intuition.
