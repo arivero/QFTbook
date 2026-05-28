@@ -22,6 +22,9 @@ numerics.
   Hamiltonian for the Ising energy-deformation benchmark.
 - `Q_s`, `theta_n`, `rho_I`: finite-volume fermion momentum set, rapidity,
   and free Bethe-state density used in the TFFSA spin matrix element.
+- `H(h)`, `W`, `lambda_*(h)`, `g`: finite affine Hermitian spectral-flow
+  family, perturbing matrix, simple eigenvalue branch, and finite spectral gap
+  used in the Hellmann-Feynman derivative certificate.
 - `x^pm`, `p^+`, `K`: light-front coordinates, longitudinal momentum, and
   harmonic resolution.
 - `M^2`, `P^-`: invariant mass operator and light-front Hamiltonian.
@@ -64,6 +67,9 @@ numerics.
 - Defines a zero-momentum connected TFFSA block with vacuum and
   two-particle-pair states, declares the diagonal vacuum-expectation
   convention, and proves Hermiticity plus the zero-coupling free spectrum.
+- Proves the finite Hellmann-Feynman spectral-flow derivative formula for a
+  simple eigenvalue of an affine finite Hermitian matrix family, including the
+  resolvent-gap hypothesis and the trace identity for the sum of slopes.
 - Proves the Feshbach-Schur complement identity that underlies Hamiltonian
   truncation counterterms and high-energy tail corrections.
 - Defines finite residual certificates for Hermitian truncation matrices and
@@ -110,6 +116,10 @@ plots.
 - `qft_scripts/tffsa_ising_spin_connected.py --smoke`: builds the finite
   zero-momentum connected Ising spin-field TFFSA block, checks Hermiticity,
   and reports the finite eigenvalues and free energies.
+- `qft_scripts/tffsa_ising_spectral_flow.py --smoke`: diagonalizes the finite
+  connected Ising TFFSA block across a small magnetic-coupling grid and checks
+  Hellmann-Feynman slopes against centered finite differences at a separated
+  finite spectral point.
 - `qft_scripts/thooft_dlcq.py --smoke`: builds and diagonalizes the finite
   principal-value matrix for the large-N two-dimensional QCD meson equation
   at a small harmonic resolution, with a positivity smoke check.
@@ -123,6 +133,6 @@ plots.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
-  block normalization, finite large-`K` fit algebra, finite residual
-  certification, spectral-projector leakage, and the Feshbach determinant
-  identity.
+  block normalization, finite Ising TFFSA spectral-flow derivative identities,
+  finite large-`K` fit algebra, finite residual certification,
+  spectral-projector leakage, and the Feshbach determinant identity.

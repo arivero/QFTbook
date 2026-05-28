@@ -25,6 +25,7 @@ python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
+python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 ```
@@ -107,6 +108,11 @@ a production lattice-QCD workflow or a continuum extrapolation.
   assembles off-diagonal form-factor matrix elements in a free-fermion basis
   and declares its diagonal convention explicitly; it is not a production
   magnetic-Ising spectrum calculation.
+- `tffsa_ising_spectral_flow.py`: finite spectral-flow diagnostic for the
+  connected Ising TFFSA block.  It diagonalizes the finite matrix on a grid of
+  magnetic couplings and checks Hellmann-Feynman slopes against centered
+  finite differences; it is a finite-matrix benchmark, not a continuum
+  magnetic-Ising or \(E_8\) spectrum claim.
 - `thooft_dlcq.py`: finite harmonic-resolution matrix for the large-\(N\)
   two-dimensional QCD meson equation.  It is a DLCQ-style principal-value
   regulator, not a proof of the continuum spectrum.

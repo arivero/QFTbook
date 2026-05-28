@@ -15,6 +15,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
+import tffsa_ising_spectral_flow as tffsa_flow  # noqa: E402
 import thooft_dlcq  # noqa: E402
 import thooft_dlcq_extrapolation as thooft_extrapolation  # noqa: E402
 
@@ -81,6 +82,45 @@ def check_tffsa_connected_spin_block() -> None:
     expected_free = np.array([0.0] + [state.energy for state in states])
     if np.max(np.abs(free_eigs - expected_free)) > 1.0e-12:
         raise AssertionError("TFFSA zero-coupling spectrum does not match free energies")
+
+
+def check_tffsa_spectral_flow_derivatives() -> None:
+    base = tffsa.RunConfig(
+        num_pairs=4,
+        mass=1.0,
+        circumference=7.0,
+        magnetic_coupling=0.0,
+        sigma_bar=1.0,
+    )
+    derivative = tffsa_flow.perturbation_matrix(base)
+    matrix_plus = tffsa.finite_matrix(tffsa_flow.config_with_h(base, 0.125))
+    matrix_minus = tffsa.finite_matrix(tffsa_flow.config_with_h(base, -0.125))
+    centered_matrix_derivative = (matrix_plus - matrix_minus) / 0.25
+    assert_leq(
+        "TFFSA exact affine matrix derivative",
+        float(np.max(np.abs(centered_matrix_derivative - derivative))),
+        1.0e-12,
+    )
+
+    values, slopes, trace_error = tffsa_flow.hellmann_feynman_slopes(base, 0.015)
+    assert_leq("TFFSA slope trace identity", trace_error, 1.0e-10)
+    if tffsa_flow.minimum_neighbor_gap(values) <= 0.0:
+        raise AssertionError("TFFSA spectral-flow check needs a simple finite spectrum")
+    finite_difference = tffsa_flow.centered_difference_slopes(base, 0.015, 1.0e-5)
+    assert_leq(
+        "TFFSA Hellmann-Feynman finite-difference comparison",
+        float(np.max(np.abs(finite_difference - slopes))),
+        1.0e-6,
+    )
+
+    result = tffsa_flow.run(
+        base=base,
+        h_values=[-0.02, -0.01, 0.0, 0.01, 0.02],
+        slope_at=0.015,
+        delta=1.0e-5,
+    )
+    assert_leq("TFFSA spectral-flow derivative Hermiticity", result["derivative_hermiticity_error"], 1.0e-12)
+    assert_leq("TFFSA spectral-flow maximum slope error", result["max_abs_slope_error"], 1.0e-6)
 
 
 def check_thooft_quadratic_form_identity() -> None:
@@ -184,6 +224,7 @@ def check_feshbach_determinant_identity() -> None:
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_tffsa_connected_spin_block()
+    check_tffsa_spectral_flow_derivatives()
     check_thooft_quadratic_form_identity()
     check_thooft_large_K_fit_algebra()
     check_residual_certificate()

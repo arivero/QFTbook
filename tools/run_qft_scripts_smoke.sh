@@ -40,6 +40,9 @@ python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 echo "[qft-scripts] tffsa_ising_spin_connected --smoke"
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 
+echo "[qft-scripts] tffsa_ising_spectral_flow --smoke"
+python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
+
 echo "[qft-scripts] thooft_dlcq --smoke"
 python3 qft_scripts/thooft_dlcq.py --smoke
 
