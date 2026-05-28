@@ -399,33 +399,56 @@ neutral algebra is the sector described above.
   shifts \(\theta\) and no fermion mass term obstructs this shift.
 \end{remark}
 
-Figure~\ref{fig:schwinger-model-exact-solution} summarizes the exact solution
-chain used in the chapter: the massless Dirac-Abelian gauge system is
-bosonized, the gauge representative is integrated out, and the remaining scalar
-field carries the Schwinger mass.
+Figure~\ref{fig:schwinger-model-exact-solution} displays two gauge-invariant
+consequences of the same calculation: the local electric field has a massive
+pole with \(m_{\rm Sch}^2=e^2/\pi\), and the static kernel changes from the
+unscreened one-dimensional Coulomb kernel to a screened Yukawa kernel.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
-  \begin{tikzpicture}[>=Stealth,
-    box/.style={draw,rounded corners=2pt,align=center,inner sep=5pt,
-      text width=3.35cm,minimum height=1.05cm},
-    arrowlabel/.style={font=\scriptsize,fill=white,inner sep=1pt}]
-    \node[box] (ferm) at (-5.2,0)
-      {massless Dirac field\\and Abelian gauge representative};
-    \node[box,text width=3.75cm] (curr) at (0,0)
-      {current algebra\\\(J^\mu=\pi^{-1/2}\epsilon^{\mu\nu}\partial_\nu\varphi\)};
-    \node[box] (mass) at (5.2,0)
-      {one massive scalar\\\(m_{\rm Sch}^2=e^2/\pi\)};
-    \draw[->,thick] (ferm.east) -- node[arrowlabel,above] {bosonization} (curr.west);
-    \draw[->,thick] (curr.east) -- node[arrowlabel,above] {integrate \(E\)} (mass.west);
-    \node[align=center] at (0,-1.15)
-      {\(\partial_\mu J_A^\mu=(e/\pi)E\) fixes the mass term};
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[->] (-0.1,0) -- (4.95,0) node[below] {\(|k|/m_{\rm Sch}\)};
+    \draw[->] (0,-0.1) -- (0,3.05) node[left] {\(\omega/m_{\rm Sch}\)};
+    \draw[gray!70,dashed] plot[domain=0:3.8,samples=2]
+      ({\x},{0.68*\x});
+    \draw[blue!70!black,thick] plot[domain=0:3.8,samples=80]
+      ({\x},{0.68*sqrt(1+\x*\x)});
+    \node[blue!70!black,anchor=west] at (2.05,2.15)
+      {\(\omega^2=k^2+m_{\rm Sch}^2\)};
+    \node[gray!60!black,anchor=west] at (2.45,1.25)
+      {\(\omega=|k|\)};
+    \draw[blue!70!black,densely dotted] (0,0.68) -- (3.8,0.68);
+    \node[blue!70!black,anchor=east] at (-0.05,0.68) {\(1\)};
+    \node[align=center] at (2.35,-0.68)
+      {local electric-field pole};
+
+    \begin{scope}[shift={(6.25,0)},x=0.86cm,y=0.62cm]
+      \draw[->] (-0.1,0) -- (5.55,0) node[below] {\(m_{\rm Sch}R\)};
+      \draw[->] (0,-0.1) -- (0,5.25)
+        node[left] {\(\frac{2m_{\rm Sch}V}{Q^2}\)};
+      \draw[gray!70,dashed] plot[domain=0:5,samples=2]
+        ({\x},{\x});
+      \draw[red!70!black,thick] plot[domain=0:5,samples=80]
+        ({\x},{1-exp(-\x)});
+      \draw[red!70!black,densely dotted] (0,1) -- (5,1);
+      \draw[densely dotted] (1,0) -- (1,1);
+      \node[red!70!black,anchor=west] at (2.15,1.35)
+        {\(1-\ee^{-m_{\rm Sch}R}\)};
+      \node[gray!60!black,anchor=west] at (2.65,3.05)
+        {pure Maxwell: \(m_{\rm Sch}R\)};
+      \node[anchor=north] at (1,-0.10) {\(1\)};
+      \node[red!70!black,anchor=east] at (-0.08,1) {\(1\)};
+      \node[align=center] at (2.75,-1.08)
+        {static screening length \(m_{\rm Sch}^{-1}\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{The exact solution of the local sector of the massless Schwinger
-  model.  The anomaly and current algebra convert the gauge-invariant
-  electric field into a free massive scalar field.}
+  \caption{Two observable faces of the same massless Schwinger-model
+  calculation.  The anomaly-fixed current algebra gives the electric field a
+  massive neutral pole, and the same mass changes the static probe potential
+  from a linearly growing Maxwell kernel to the screened form proved in
+  Proposition~\ref{prop:schwinger-screened-static-potential}.}
   \label{fig:schwinger-model-exact-solution}
 \end{figure}
 

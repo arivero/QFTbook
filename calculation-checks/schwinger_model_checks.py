@@ -113,6 +113,20 @@ def check_screened_static_potential() -> None:
     assert_close("large-distance screening limit", charge * charge * green_zero, charge * charge / (2.0 * m))
 
 
+def check_dimensionless_screening_curve() -> None:
+    # The figure uses x=m R and v(x)=2m V/Q^2=1-exp(-x).
+    m = 2.0
+    charge = 3.0
+    for x in [0.0, 0.4, 1.0, 3.0]:
+        separation = x / m
+        potential = charge * charge * (1.0 - math.exp(-m * separation)) / (2.0 * m)
+        plotted_value = 1.0 - math.exp(-x)
+        potential_value = 2.0 * m * potential / (charge * charge)
+        assert_close(f"dimensionless screening curve x={x}", plotted_value, potential_value)
+    assert_close("screening curve origin", 1.0 - math.exp(0.0), 0.0)
+    assert_close("screening curve tangent at origin", (1.0 - math.exp(-1.0e-6)) / 1.0e-6, 1.0, 1.0e-6)
+
+
 def check_massive_probe_string_tension_periodicity() -> None:
     # Check sigma(Q)/(kappa M)=1-cos(2 pi Q/e) for representative charges.
     for q_over_e in [0, 1, -2, 3]:
@@ -137,6 +151,7 @@ def main() -> None:
     check_schwinger_mass_from_eliminating_electric_field()
     check_schwinger_mass_from_anomaly_and_maxwell()
     check_screened_static_potential()
+    check_dimensionless_screening_curve()
     check_massive_probe_string_tension_periodicity()
     check_massive_probe_theta_shift()
     print("All Schwinger-model normalization checks passed.")

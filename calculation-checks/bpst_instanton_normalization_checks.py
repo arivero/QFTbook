@@ -135,11 +135,34 @@ def check_radial_integrals_and_actions() -> None:
     assert_equal("coupling-converted action coefficient", converted_common_coeff, action_trace_delta_coeff)
 
 
+def check_radial_cumulative_profile() -> None:
+    # The normalized cumulative charge inside R=rho*u is
+    # C(u)=1-3/(1+u^2)^2+2/(1+u^2)^3.  It is the integral of
+    # 12 u^3/(1+u^2)^4, i.e. the radial measure times the normalized
+    # BPST density divided by the total charge.
+    def cumulative(u: Fraction) -> Fraction:
+        t = 1 + u * u
+        return 1 - Fraction(3, t * t) + Fraction(2, t * t * t)
+
+    def density_with_measure(u: Fraction) -> Fraction:
+        t = 1 + u * u
+        return Fraction(12) * u**3 / (t**4)
+
+    assert_equal("BPST cumulative at origin", cumulative(Fraction(0)), 0)
+    assert_equal("BPST cumulative at u=1", cumulative(Fraction(1)), Fraction(1, 2))
+
+    u = Fraction(2)
+    t = 1 + u * u
+    derivative = Fraction(12) * u / (t**3) - Fraction(12) * u / (t**4)
+    assert_equal("BPST cumulative derivative", derivative, density_with_measure(u))
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
     check_eta_quadratic_identity()
     check_radial_integrals_and_actions()
+    check_radial_cumulative_profile()
     print("All BPST instanton normalization checks passed.")
 
 

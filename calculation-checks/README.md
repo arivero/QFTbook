@@ -167,7 +167,8 @@ Current checks:
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the
   curvature calculation, \(\int F^a_{\mu\nu}F^a_{\mu\nu}=32\pi^2\), \(Q=1\),
-  and the conversion between the common half-trace action
+  the cumulative radial profile drawn in the BPST figure, and the conversion
+  between the common half-trace action
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\).
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
@@ -1021,8 +1022,8 @@ Current checks:
   Schwinger-model chapter, including the two-dimensional current-duality
   convention, the algebraic elimination of the electric field, the
   anomaly-induced mass \(m_{\rm Sch}^2=e^2/\pi\), the screened static
-  potential, and the periodicity of the massive-model string tension for
-  integer probe charge.
+  potential and its dimensionless figure curve, and the periodicity of the
+  massive-model string tension for integer probe charge.
 - `semiclassical_backreaction_checks.py`: finite checks for the semiclassical
   backreaction chapter, including four-dimensional traces of the
   curvature-squared Euler tensors, the KMS fluctuation-dissipation factor,
