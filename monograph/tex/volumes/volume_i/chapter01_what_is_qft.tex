@@ -164,56 +164,12 @@ Wilson--Fisher and two-dimensional integrable-flow problems, and does not use
 them as the definition of quantum field theory.
 \end{remark}
 
-Figure~\ref{fig:opening-local-qft-eft} records the two local-QFT data types used
-in this opening chapter: continuum local QFT data after regulator removal, and
-effective presentations valid in a declared scale window.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{0.96\textwidth}{!}{%
-  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \tikzset{
-      root/.style={draw,rounded corners=4pt,line width=0.85pt,
-        fill=black!3,minimum width=5.1cm,minimum height=0.7cm,align=center},
-      box/.style={draw,rounded corners=4pt,line width=0.8pt,
-        minimum width=5.4cm,minimum height=1.0cm,align=center},
-      textbox/.style={draw,rounded corners=4pt,line width=0.55pt,
-        align=left,inner sep=5pt,text width=5.8cm},
-      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
-    }
-    \node[root] (root) at (0,2.35)
-      {quantum dynamics with spacetime localization};
-    \node[box,fill=blue!5] (local) at (-4.0,0.82)
-      {continuum local QFT\\data exist after removing the ultraviolet regulator};
-    \node[box,fill=orange!7] (eft) at (4.0,0.82)
-      {effective field theory presentation\\local expansion valid in a declared scale window};
-    \draw[arrow] (root.south west) -- (local.north);
-    \draw[arrow] (root.south east) -- (eft.north);
-
-    \node[textbox,anchor=north,fill=blue!2] at (-4.0,-0.15)
-      {\(\Hilb\), Poincare representation, spectrum condition\\
-       local observables or local field distributions\\
-       microcausality for spacelike separated supports\\[2pt]
-       guiding examples: low-dimensional constructive scalar theories;
-       scaling limits of lattice models near criticality; Yang--Mills/QCD as
-       physical continuum local gauge theories};
-
-    \node[textbox,anchor=north,fill=orange!3] at (4.0,-0.15)
-      {regulated path integral or equivalent local prescription\\
-       symmetry-controlled local operator expansion\\
-       long-distance or low-energy observables in the stated regime\\[2pt]
-       examples: \(\phi^4\) theory in \(D=4\), QED, and the Standard Model as
-       power-counting renormalizable perturbative presentations; chiral
-       perturbation theory and perturbative quantum gravity as
-       nonrenormalizable effective presentations};
-  \end{tikzpicture}
-  }
-  \caption{The opening distinction between continuum local QFT data and
-  effective field theory presentations.  Both sides use locality; the
-  difference is the mathematical status of the construction and the range of
-  claims made from it.}
-  \label{fig:opening-local-qft-eft}
-\end{figure}
+The opening chapter will use two mathematical statuses: continuum local QFT
+data after regulator removal, and effective presentations valid in a declared
+scale window.  Definitions~\ref{def:continuum-local-qft-opening} and
+\ref{def:effective-field-theory-presentation-opening} are the operative definitions;
+comparison maps among Wightman, OS, local-net, and regulated presentations are
+registered below only after their hypotheses have been stated.
 
 \section{Opening Framework}
 
@@ -757,57 +713,9 @@ boundary values.  Conversely, Wightman fields give Euclidean Schwinger
 functions by tube analyticity and restriction to noncoincident imaginary-time
 configurations.
 
-Figure~\ref{fig:opening-framework-comparison} summarizes these comparison maps
-and labels which arrows are constructions and which require additional
-hypotheses.
-
-\begin{figure}[H]
-  \centering
-  \resizebox{0.96\textwidth}{!}{%
-  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \tikzset{
-      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
-        text width=3.15cm,minimum height=0.95cm,inner sep=4pt,align=center},
-      pbox/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
-        text width=3.15cm,minimum height=0.95cm,inner sep=4pt,align=center},
-      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
-      darrow/.style={-{Latex[length=2mm]},dashed,line width=0.85pt},
-      note/.style={align=center,font=\scriptsize}
-    }
-    \node[box] (w) at (-4.45,1.70)
-      {Wightman fields\\\(\widehat\Phi_A(f),\,W_n\)};
-    \node[box] (a) at (4.45,1.70)
-      {local nets\\\(\mathcal O\mapsto\Obs(\mathcal O)\)};
-    \node[box] (e) at (0,-2.10)
-      {OS Euclidean data\\\(S_n\)};
-    \node[pbox] (p) at (0,-4.15)
-      {regulated path integral\\or lattice system};
-    \node[box,fill=green!7] (h) at (0,0.20)
-      {Hilbert-space vacuum sector\\\((\Hilb,\vac,U)\)};
-    \draw[arrow] (w) to[bend left=10]
-      node[midway,above] {closures and affiliation} (a);
-    \draw[arrow] (a) to[bend left=10]
-      node[midway,below] {field coordinates} (w);
-    \draw[arrow] (e) to[bend left=12]
-      node[pos=0.46,left] {OS-II reconstruction} (w);
-    \draw[arrow] (w) to[bend left=12]
-      node[pos=0.48,right] {tube restriction} (e);
-    \draw[arrow] (a.south west) to[out=-150,in=25]
-      node[pos=0.55,above,sloped] {GNS} (h.east);
-    \draw[arrow] (h.west) to[out=155,in=-25]
-      node[pos=0.50,below,sloped] {cyclic field domains} (w.south east);
-    \draw[darrow] (p)--(e)
-      node[midway,right] {continuum Schwinger limits};
-    \node[note] at (0,-5.20)
-      {Each arrow includes hypotheses; the comparison data are part of the theory being used.};
-  \end{tikzpicture}
-  }
-  \caption{Three nonperturbative presentations of local QFT and the principal
-  comparison maps among them.}
-  \label{fig:opening-framework-comparison}
-\end{figure}
-
-The theorem-level comparison register is as follows.
+The theorem-level comparison register is the actual content of the comparison.
+Each entry names the source presentation, the target presentation, and the
+hypotheses that are not automatic from notation alone:
 \begin{itemize}[leftmargin=*]
 \item \textbf{Wightman hierarchy to Wightman fields.}
 Theorem~\ref{thm:wightman-reconstruction} reconstructs the cyclic field

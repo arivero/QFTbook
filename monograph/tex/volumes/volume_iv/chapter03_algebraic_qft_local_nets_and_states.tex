@@ -879,31 +879,55 @@ gives \(\psi=0\).  The orthogonal complement of
 The result is used as an input for modular theory, superselection analysis,
 and scattering theory in algebraic form.
 
-Figure~\ref{fig:reeh-schlieder-cyclicity} displays the Reeh--Schlieder
-mechanism used in the proof: analyticity and weak additivity enlarge local
-cyclic vectors to the global cyclic domain.
+Figure~\ref{fig:reeh-schlieder-cyclicity} emphasizes the strong content of the
+theorem.  Operators localized in a fixed small region \(\mathcal O\) generate,
+from the vacuum alone, a set of vectors dense in the whole vacuum Hilbert
+space.  The conclusion is a Hilbert-space density statement controlled by
+positive-energy analytic continuation: weak additivity and analyticity leave
+no nonzero vector orthogonal to all vectors \(A\vac\) with
+\(A\in\mathcal R(\mathcal O)\).
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.78\textwidth}{!}{%
+  \resizebox{0.90\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
-        minimum width=3.0cm,minimum height=0.86cm,align=center},
-      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      lab/.style={fill=white,inner sep=1.6pt,align=center}
     }
-    \node[box] (local) at (-3.6,0.8) {local algebra\\\(\mathcal R(\mathcal O)\)};
-    \node[box] (vac) at (0,0.8) {vacuum\\\(\vac\)};
-    \node[box] (dense) at (3.6,0.8) {dense subspace\\\(\overline{\mathcal R(\mathcal O)\vac}\)};
-    \node[box,fill=green!7] (inputs) at (0,-1.15)
-      {covariance + spectrum condition\\+ weak additivity};
-    \draw[arrow] (local)--(vac);
-    \draw[arrow] (vac)--(dense);
-    \draw[arrow] (inputs)--(dense);
+    \draw[->] (-5.0,-1.05)--(-1.15,-1.05) node[right] {\(x^1\)};
+    \draw[->] (-4.35,-1.55)--(-4.35,2.05) node[above] {\(x^0\)};
+    \foreach \x/\opac in {-4.05/25,-3.25/35,-2.45/25} {
+      \draw[blue!\opac,line width=0.7pt] (\x,0.20)--(\x+0.35,0.58)--(\x+0.70,0.20)--(\x+0.35,-0.18)--cycle;
+    }
+    \draw[blue!70!black,line width=1.1pt,fill=blue!8]
+      (-4.75,0.25)--(-4.35,0.70)--(-3.95,0.25)--(-4.35,-0.20)--cycle;
+    \node[lab,text=blue!70!black] at (-4.35,1.18) {fixed small\\region \(\mathcal O\)};
+    \draw[arrow,blue!60!black] (-3.88,0.72) .. controls (-3.15,1.55) and (-2.28,1.25) .. (-1.62,0.45)
+      node[pos=0.52,above,lab] {translations};
+    \node[lab] at (-2.95,-0.63) {weak additivity uses\\all translates of \(\mathcal O\)};
+
+    \draw[arrow] (-1.05,0.10)--(0.55,0.10)
+      node[midway,above,lab] {\(A\vac\), \(A\in\mathcal R(\mathcal O)\)};
+
+    \draw[line width=0.9pt,fill=green!6] (2.35,0.15) ellipse (2.00 and 1.55);
+    \node[lab,text=green!45!black] at (2.35,1.48) {vacuum Hilbert space \(\Hilb\)};
+    \foreach \p in {
+      (1.05,0.00),(1.25,0.60),(1.60,-0.52),(1.95,0.32),(2.15,-0.18),
+      (2.42,0.75),(2.70,-0.48),(3.05,0.15),(3.32,0.62),(3.55,-0.20),
+      (1.45,0.98),(2.85,1.02),(1.80,-0.95),(3.08,-0.92)}
+      \fill[green!50!black] \p circle (1.2pt);
+    \draw[dashed,line width=0.85pt,green!55!black] (2.35,0.15) ellipse (1.58 and 1.16);
+    \node[lab] at (2.35,-1.72)
+      {\(\overline{\mathcal R(\mathcal O)\vac}=\Hilb\)};
+    \draw[arrow,orange!80!black] (0.70,-1.02) .. controls (1.35,-1.42) and (2.05,-1.32) .. (2.30,-1.05)
+      node[pos=0.38,below,lab] {spectrum analyticity excludes\\nonzero orthogonal vectors};
   \end{tikzpicture}
   }
-  \caption{The Reeh--Schlieder property expresses local cyclicity of the
-  vacuum in positive-energy local QFT.}
+  \caption{Reeh--Schlieder local cyclicity.  A fixed small spacetime region
+  \(\mathcal O\) generates a dense subspace from the vacuum; the proof uses
+  positive-energy analyticity to extend local vanishing and weak additivity to
+  turn translated local algebras into the global algebra.}
   \label{fig:reeh-schlieder-cyclicity}
 \end{figure}
 
