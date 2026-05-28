@@ -169,8 +169,8 @@ local operators are irrelevant along the scaling trajectory, or because they
 have been canceled by improvement terms.  This is the content, in its
 tree-level form, of the Symanzik expansion.
 
-\begin{definition}[Symanzik expansion datum]
-\label{def:symanzik-expansion-datum}
+\begin{definition}[Symanzik expansion data]
+\label{def:symanzik-expansion-data}
 Fix a regulated lattice family, a scaling trajectory \(c(a)\), and
 renormalized observable coordinates \(O_a^I(f)\).  A Symanzik expansion to
 order \(a^r\) for a class of smeared correlators is a finite list of
@@ -185,7 +185,7 @@ allowed by the lattice symmetries, such that
   S_{(n)}^{I_1\ldots I_k}(f_1,\ldots,f_k)
   +
   R_{r,a}(f_1,\ldots,f_k),
-  \label{eq:symanzik-expansion-datum}
+  \label{eq:symanzik-expansion-data}
 \]
 with a stated seminorm \(q\) on the test functions and constants
 \(C,a_0>0\) such that
@@ -397,13 +397,13 @@ The infinite-volume limit \(L\to\infty\) is a subsequent infrared limit.
 Interchanging these limits is an additional theorem, not part of the
 definition of the finite-volume continuum object.
 
-\begin{definition}[Finite-size scaling datum]
-\label{def:finite-size-scaling-datum}
+\begin{definition}[Finite-size scaling data]
+\label{def:finite-size-scaling-data}
 Fix a block scale \(b>1\), lattice tori
 \((a\mathbb Z/Na\mathbb Z)^D\) with \(N=b^n\), and an RG chart near a
 fixed point with one relevant coordinate \(t\), irrelevant coordinates
 \(w=(w_\alpha)\), and local operators \(O^I\) of RG dimensions
-\(\Delta_I\).  A finite-size scaling datum on a compact set
+\(\Delta_I\).  Finite-size scaling data on a compact set
 \(\mathcal K\subset\mathbb R\) of scaling variables consists of:
 \begin{enumerate}[label=(\roman*)]
   \item the integer \(n=\log_b N\);
@@ -443,8 +443,8 @@ coordinates, but not on \(N\).
 
 \begin{proposition}[Finite-size scaling from an RG chart]
 \label{prop:finite-size-scaling-from-rg-chart}
-Assume the finite-size scaling datum of
-Definition~\ref{def:finite-size-scaling-datum}.  Then
+Assume the finite-size scaling data of
+Definition~\ref{def:finite-size-scaling-data}.  Then
 \[
   N^{\Delta_{I_1}+\cdots+\Delta_{I_k}}\,
   G_{N,t,w}^{I_1\ldots I_k}(z_1,\ldots,z_k)
@@ -474,7 +474,7 @@ torus has order-one diameter in the blocked lattice units.  The
 renormalized operator coordinate \(O^I\) contributes the factor
 \(b^{-n\Delta_I}=N^{-\Delta_I}\).  The relevant coordinate at the endpoint
 is \(u_N=tN^{y_t}+O(N^{-\omega})\), and the irrelevant coordinates have
-norm \(O(N^{-\omega})\).  The endpoint estimate in the datum gives the
+norm \(O(N^{-\omega})\).  The endpoint estimate in the data gives the
 correlator with \(F(u_N;z_1,\ldots,z_k)\) up to \(O(N^{-\omega})\).
 Since the endpoint kernel is locally Lipschitz in \(u\) on
 \(\mathcal K\), replacing \(u_N\) by \(tN^{y_t}\) changes the right-hand
@@ -543,13 +543,13 @@ exponents when the relevant theorem has been proved.
 
 For lattice sizes not exactly of the form \(b^n\), the residual size
 \(N/b^{\lfloor\log_bN\rfloor}\in[1,b)\) is an additional finite endpoint
-coordinate.  It must be included in the scaling datum or eliminated by an
+coordinate.  It must be included in the scaling data or eliminated by an
 explicit interpolation estimate; ignoring it is harmless only after that
 bounded-coordinate dependence has been controlled.
 
 \section{Operator Coordinates and Contact Terms}
 
-Renormalized operator coordinates are part of the continuum-limit datum.
+Renormalized operator coordinates are part of the continuum-limit input.
 For composite observables, the matrix \(Z^I{}_J(a)\) in
 \eqref{eq:continuum-limit-renormalized-smeared-observable} may mix an
 operator with derivatives of lower-dimensional operators and with the

@@ -31,7 +31,7 @@ Laplacian, integration cycle, and coarse-graining map satisfy the quantum
 master equation.  The scalar formulas in this chapter supply the ordinary
 field model.  Their gauge-theory use is routed through the lattice chapter and
 the BV master-formalism chapter, where the gauge quotient, ghosts,
-antifields, and Ward identities are part of the finite-cutoff datum.
+antifields, and Ward identities are part of the finite-cutoff data.
 
 Let \(\chi:[0,\infty)\to[0,1]\) be a smooth nonincreasing cutoff profile with
 \(\chi(0)=1\) and rapid decay as \(t\to\infty\).  The generic
@@ -1459,7 +1459,7 @@ The Wilsonian flow is a downward flow in cutoff.  If an action
 \eqref{eq:wilson-polchinski-flow} constructs \(S_\Lambda\) for
 \(\Lambda<\Lambda_0\).  The finite-cutoff construction therefore supplies a
 trajectory below \(\Lambda_0\); a description extending to arbitrarily large
-\(\Lambda\) is a continuum-limit datum.
+\(\Lambda\) is a continuum-limit input.
 
 Take a regulated path integral at cutoff \(\Lambda_0\), with interaction
 \begin{equation}
@@ -1909,7 +1909,7 @@ description to determine the full generated integral.  In a running-coupling
 expansion, integration over very small or very large intermediate momenta can
 produce factorially growing coefficients and Borel-plane singularities.  When
 the corresponding ambiguity has the size of a power correction, the Wilsonian
-description must supply the missing datum through retained nonperturbative
+description must supply the missing input through retained nonperturbative
 coordinates, through an operator-product-expansion matrix element, or through
 another matched effective description.  Thus renormalons do not replace the
 cutoff-removal hypothesis; they identify particular ways in which that
@@ -2052,7 +2052,7 @@ Let \(L_\Lambda=L_{\Lambda,0}^{\rm src}\) be the source-independent Wilsonian
 interaction obtained from \eqref{eq:define-lambda-prime-interaction} by
 integrating modes between \(\Lambda_0\) and \(\Lambda\).  For a non-plateau
 smooth cutoff and a nonzero open low-momentum source sector, exact source
-preservation requires enlarging the Wilsonian datum to include
+preservation requires enlarging the Wilsonian data to include
 source-dependent vertices.  The corresponding finite-regulator object is
 \begin{equation}
   \exp[-L_{\Lambda,J}^{\rm src}[\phi_<]]
@@ -2121,7 +2121,7 @@ at the finite regulator.  No exact source-independent statement of this form
 is asserted below for non-plateau profiles such as a Gaussian cutoff.  Such a
 profile may be treated either by keeping the source-dependent vertices in
 \eqref{eq:source-dependent-wilsonian-action}, or by proving a separate
-profile-dependent leakage estimate; that is a different comparison datum.
+profile-dependent leakage estimate; that is a different comparison problem.
 
 \begin{lemma}[Exact low-source identity for a plateau split]
 \label{lem:plateau-low-source-identity}
@@ -2251,9 +2251,9 @@ are compared after field normalization.
   \label{fig:bphz-wilsonian-one-pi-bridge}
 \end{figure}
 
-\begin{definition}[BPHZ--Wilsonian comparison datum]
-\label{def:bphz-wilsonian-comparison-datum}
-A comparison datum consists of the following finite choices.
+\begin{definition}[BPHZ--Wilsonian comparison setup]
+\label{def:bphz-wilsonian-comparison-setup}
+A comparison setup consists of the following finite choices.
 First choose a BPHZ scheme \(\mathfrak b\): a Taylor subtraction point and
 subtraction degree \(\delta(\gamma)\) for every superficially divergent
 1PI subgraph type \(\gamma\), including the oversubtraction degrees used for
@@ -2279,7 +2279,7 @@ finite local coordinate projectors \(\rho_A(L_\Lambda)=u_A\), and the finite
 1PI projectors \(\Pi_I\) at nonexceptional Euclidean momenta of size
 \(O(\mu)\).  Third choose a matching ratio \(\zeta=\Lambda/\mu\) in a compact
 subinterval of \((1,\infty)\).  All statements below are statements relative
-to this datum.  A non-plateau smooth cutoff is a different datum: either
+to this setup.  A non-plateau smooth cutoff is a different setup: either
 source-dependent vertices must be included, or an explicit leakage estimate
 must be proved before the comparison theorem is invoked.
 \end{definition}
@@ -2783,7 +2783,7 @@ renormalizability criteria are equivalent through the fixed loop order
 First, BPHZ subtraction data determine Wilsonian local coordinates by
 Proposition~\ref{prop:bphz-local-parts-wilsonian-coordinates}.  The selected
 1PI coordinates are then obtained by the finite matching map
-\(M_I^{(\ell,N)}\).  Conversely, a Wilsonian datum satisfying the stated norm
+\(M_I^{(\ell,N)}\).  Conversely, Wilsonian data satisfying the stated norm
 bound determines finite BPHZ projected coordinates: apply the same projectors
 \(\Pi_I\) to the low-mode 1PI functional, and assign the resulting local Taylor
 parts to the BPHZ subtraction coordinates.  A change of BPHZ subtraction point,

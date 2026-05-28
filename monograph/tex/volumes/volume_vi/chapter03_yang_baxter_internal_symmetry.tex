@@ -3,7 +3,7 @@
 
 \ConventionsLorentzian
 
-The two-body bootstrap datum of
+The two-body bootstrap data of
 Chapter~\ref{ch:integrable-scattering-analyticity-bootstrap} becomes a
 many-particle scattering theory only if different decompositions of the same
 multi-particle process agree.  This chapter formulates that requirement as an
@@ -38,9 +38,9 @@ The \(S\)-operator records physical ordering, while \(R\) records an
 endomorphism on a fixed tensor product.  All equations below are stated in the
 \(R\)-matrix convention because the domains and codomains are then identical.
 
-\begin{definition}[Regular two-body \(R\)-datum]
-\label{def:regular-two-body-r-datum}
-A regular two-body \(R\)-datum consists of species spaces \(V_a\) and
+\begin{definition}[Regular two-body \(R\)-system]
+\label{def:regular-two-body-r-system}
+A regular two-body \(R\)-system consists of species spaces \(V_a\) and
 meromorphic endomorphisms \(R_{ab}(\theta)\in
 \operatorname{End}(V_a\otimes V_b)\) such that, on every common domain of
 holomorphy,
@@ -48,7 +48,7 @@ holomorphy,
   R_{ab}(\theta)R_{ab}(-\theta)=\id_{V_a\otimes V_b}
 \]
 and the crossing and residue data of
-Definition~\ref{def:factorized-scattering-bootstrap-datum} are satisfied
+Definition~\ref{def:factorized-scattering-bootstrap-data} are satisfied
 after undoing the flip.
 \end{definition}
 
@@ -88,7 +88,7 @@ Yang--Baxter equation
 
 \begin{proposition}[Three-particle consistency]
 \label{prop:yb-three-particle-consistency}
-For a regular two-body \(R\)-datum, the factorized three-particle scattering
+For a regular two-body \(R\)-system, the factorized three-particle scattering
 operator is independent of the reduced decomposition of the three-particle
 permutation if and only if the Yang--Baxter equation holds as a meromorphic
 identity on every triple species space.
@@ -112,7 +112,7 @@ operators act on disjoint tensor factors.
 
 Let \(G\) be a group or Lie algebra acting on the species spaces by
 representations \(\rho_a:G\to GL(V_a)\).  Internal-symmetry invariance of the
-two-body scattering datum means
+two-body scattering system means
 \[
   R_{ab}(\theta)(\rho_a(g)\otimes\rho_b(g))
   =
@@ -161,7 +161,7 @@ therefore
 with projectors onto the singlet, antisymmetric, and traceless-symmetric
 channels.  The Yang--Baxter equation becomes a coupled system of functional
 equations for \(r_0,r_A,r_T\), together with the analytic constraints of the
-bootstrap datum.
+bootstrap data.
 \end{example}
 
 \section{What the Equation Certifies}
@@ -175,7 +175,7 @@ conditions.
 
 \begin{openproblem}[From \(R\)-matrices to local fields]
 \label{op:r-matrix-to-local-fields}
-Given a meromorphic \(R\)-datum satisfying unitarity, crossing, the
+Given a meromorphic \(R\)-system satisfying unitarity, crossing, the
 Yang--Baxter equation, residue positivity, and stated growth bounds, construct
 or obstruct a local QFT realization.  The construction must identify a Hilbert
 space, wedge-local or local algebras, form factors of a dense set of local

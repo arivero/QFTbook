@@ -757,15 +757,15 @@ semidensity operator; the displayed Darboux formula is the local expression
 used by perturbative regulators.
 \end{definition}
 
-\begin{definition}[Normal BV half-density datum]
-\label{def:normal-bv-half-density-datum}
+\begin{definition}[Normal BV half-density data]
+\label{def:normal-bv-half-density-data}
 A finite-dimensional quantum BV regulator contains, in addition to
 \((\mathcal E,\omega)\), an even nowhere-vanishing reference half-density
 \(\sigma_0\).  It is called normal when
 \[
   \Delta_{1/2}\sigma_0=0 .
 \]
-For a normal datum, the BV Laplacian on functions is the divergence operator
+For normal half-density data, the BV Laplacian on functions is the divergence operator
 \[
   \Delta_{\sigma_0}F
   :=
@@ -786,9 +786,9 @@ The square \(\sigma_0^2\) is the corresponding Berezinian density.  If a
 chosen regulator supplies a reference half-density with
 \(\Delta_{1/2}\sigma_0\ne0\), its logarithmic defect is an additional local
 measure term; the symbol \(\Delta_{\rm BV}\) in this chapter denotes the
-function operator \(\Delta_{\sigma_0}\) only after a normal half-density datum
-has been chosen.  In Schwarz's geometric terminology, the pair consisting of
-the odd symplectic structure and this compatible volume/half-density datum is
+function operator \(\Delta_{\sigma_0}\) only after normal half-density data
+have been chosen.  In Schwarz's geometric terminology, the pair consisting of
+the odd symplectic structure and these compatible volume/half-density data forms
 the finite-dimensional measure structure behind BV quantization.
 \end{definition}
 
@@ -839,7 +839,7 @@ dimensional statement.
 \section{The Quantum Master Equation}
 
 The classical master equation controls the algebra of gauge symmetry.  The
-quantum functional integral also depends on the half-density datum just
+quantum functional integral also depends on the half-density data just
 defined.  In field theory the operator \(\Delta_{\sigma_0}\) requires a
 regulator because the two functional derivatives act at the same point.  A
 quantum BV problem therefore specifies the regularized odd symplectic space,
@@ -871,7 +871,7 @@ Equivalently,
 
 \begin{proposition}[Component form of the quantum master equation]
 \label{prop:qme-component-form}
-For a normal BV half-density datum and an even action \(S\),
+For normal BV half-density data and an even action \(S\),
 \[
   \Delta_{\sigma_0}\exp(\ii S/\hbar)=0
 \]
@@ -1217,7 +1217,7 @@ following finite-regulator statement records exactly what must be preserved.
 \begin{definition}[BV-compatible infinitesimal RG step]
 \label{def:bv-compatible-infinitesimal-rg-step}
 Let \((\mathcal E,\omega,\sigma_0)\) be a finite-dimensional odd symplectic
-space with normal half-density datum and let
+space with normal half-density data and let
 \[
   \rho_t=\exp(\ii S_t/\hbar)\sigma_0
 \]
@@ -1239,7 +1239,7 @@ made these words finite.
 \label{thm:infinitesimal-bv-rg-preserves-qme}
 Assume \(\Delta_{1/2}\rho_{t_0}=0\) at one value \(t_0\), and assume
 \eqref{eq:bv-infinitesimal-rg-density} holds on an interval with the same
-normal half-density datum.  Then
+normal half-density data.  Then
 \[
   \Delta_{1/2}\rho_t=0
 \]
@@ -1299,7 +1299,7 @@ ansatz.  It is the differential version of BV pushforward: the right hand side
 is \(\Delta_{1/2}\)-exact on half-densities, so it cannot create a master
 equation defect.  A cutoff flow proposed for a gauge theory is therefore
 gauge-compatible only after its regulator supplies \(R_t\), the odd symplectic
-structure, the half-density datum, and the boundary condition making the
+structure, the half-density data, and the boundary condition making the
 finite pushforward or the differential equation legitimate.
 
 \section{Counterterms, Anomalies, and Physical Operators}
@@ -1450,7 +1450,7 @@ Koszul--Tate acyclicity gives the displayed isomorphism.
 \end{proof}
 
 \section{Local Cohomology Ledger for Yang--Mills With Matter}
-\label{sec:bv-local-cohomology-ledger-ym}
+\label{sec:bv-local-cohomology-ym}
 
 The comparison theorem turns the abstract statement "a BV class" into a
 computable local object.  In four-dimensional power-counting-renormalizable
@@ -1459,7 +1459,7 @@ representations, the local classes used by perturbation theory have the
 following concrete representatives.
 
 \begin{proposition}[Renormalizable ghost-number-zero representatives]
-\label{prop:bv-renormalizable-ghost-zero-ledger}
+\label{prop:bv-renormalizable-ghost-zero-cohomology}
 Under the hypotheses of Theorem~\ref{thm:bv-brst-local-comparison-ym}, every
 ghost-number-zero counterterm density of engineering dimension at most four is
 cohomologous, modulo total derivatives and field redefinitions, to a gauge
@@ -1510,8 +1510,8 @@ relative cohomology \(H^{0,4}(s\mid\dd)\), and BRST-exact terms are generated
 by BV canonical transformations, namely field and coordinate redefinitions.
 \end{proof}
 
-\begin{proposition}[Ghost-number-one anomaly ledger]
-\label{prop:bv-ghost-one-anomaly-ledger}
+\begin{proposition}[Ghost-number-one anomaly calculation]
+\label{prop:bv-ghost-one-anomaly-calculation}
 For a four-dimensional chiral Yang--Mills theory in the same perturbative
 local setting, a perturbative local gauge-anomaly candidate is represented in
 \[
@@ -1608,7 +1608,7 @@ observables is
   \label{eq:bv-quantum-observable-differential}
 \end{equation}
 The bracket and Laplacian are the regulated ones associated with the same
-half-density datum used in the quantum master equation.  The support
+half-density data used in the quantum master equation.  The support
 condition in \(\operatorname{Obs}_\Lambda(U)\) means that the kernels of
 \(\mathcal O\) are supported in \(U\), with the regulator determining what
 class of kernels or jets is allowed.

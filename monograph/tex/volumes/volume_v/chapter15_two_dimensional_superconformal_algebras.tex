@@ -16,9 +16,9 @@ to the supersymmetric-QFT development in Volume~VII.  The statements below are
 therefore algebraic consequences and consistency tests for any such model,
 not a replacement for the supersymmetric RG analysis.
 
-\begin{definition}[Spin two-dimensional CFT datum]
-\label{def:spin-two-dimensional-cft-datum}
-A spin two-dimensional CFT datum consists of the following data.
+\begin{definition}[Spin two-dimensional CFT structure]
+\label{def:spin-two-dimensional-cft-structure}
+A spin two-dimensional CFT structure consists of the following items.
 \begin{enumerate}
 \item An oriented two-dimensional Euclidean CFT \(\mathcal C\), with
 holomorphic stress tensor \(T(z)\), antiholomorphic stress tensor
@@ -61,9 +61,9 @@ antiperiodic and periodic spin structures on the cylinder.
 
 \section{\texorpdfstring{\(\mathcal N=1\)}{N=1} Superconformal Algebra}
 
-\begin{definition}[\(\mathcal N=1\) chiral superconformal datum]
-\label{def:n1-superconformal-datum}
-An \(\mathcal N=1\) chiral superconformal datum of central charge \(c\)
+\begin{definition}[\(\mathcal N=1\) chiral superconformal algebra]
+\label{def:n1-superconformal-algebra}
+An \(\mathcal N=1\) chiral superconformal algebra of central charge \(c\)
 consists of a chiral stress tensor \(T(z)\), an odd chiral field \(G(z)\) of
 weight \(3/2\), and a sector choice
 \[
@@ -99,7 +99,7 @@ The singular OPEs are
 
 \begin{proposition}[Mode algebra from the \(\mathcal N=1\) OPEs]
 \label{prop:n1-mode-algebra}
-The modes in Definition~\ref{def:n1-superconformal-datum} obey
+The modes in Definition~\ref{def:n1-superconformal-algebra} obey
 \begin{align}
   [L_m,L_n]
   &=
@@ -194,9 +194,9 @@ current is the reason that spectral flow, chiral-primary bounds, and
 topological twists are algebraic operations rather than model-dependent
 accidents.
 
-\begin{definition}[\(\mathcal N=2\) chiral superconformal datum]
-\label{def:n2-superconformal-datum}
-An \(\mathcal N=2\) chiral superconformal datum of central charge \(c\)
+\begin{definition}[\(\mathcal N=2\) chiral superconformal algebra]
+\label{def:n2-superconformal-algebra}
+An \(\mathcal N=2\) chiral superconformal algebra of central charge \(c\)
 consists of a chiral stress tensor \(T(z)\), a weight-one even current
 \(J(z)\), and two odd weight-\(3/2\) chiral fields \(G^+(z)\) and \(G^-(z)\).
 Their modes are
@@ -239,7 +239,7 @@ sector.  The singular OPEs, in addition to the Virasoro OPE for \(T\), are
 
 \begin{proposition}[Mode algebra for \(\mathcal N=2\)]
 \label{prop:n2-mode-algebra}
-The modes in Definition~\ref{def:n2-superconformal-datum} obey
+The modes in Definition~\ref{def:n2-superconformal-algebra} obey
 \begin{align}
   [L_m,J_n]&=-nJ_{m+n},
   \label{eq:n2-lj-mode-algebra}\\
@@ -448,8 +448,8 @@ mode algebra.  It does not say that spectral flow is implemented by a local
 operator in a particular CFT.  That extra assertion needs a charge lattice
 and locality hypothesis.  This distinction is small in notation and large in
 logic: the extended \(\mathcal N=2\) algebra is an additional chiral-algebra
-datum requiring more than the singular OPEs in
-Definition~\ref{def:n2-superconformal-datum}.
+structure requiring more than the singular OPEs in
+Definition~\ref{def:n2-superconformal-algebra}.
 
 Put
 \[
@@ -623,7 +623,7 @@ have
 In a large-radius Calabi--Yau sigma-model representative these are realized
 by the holomorphic top-form fermion product and the Ramond spin fields,
 respectively.  The present chapter uses only the algebraic implication:
-their existence is a charge-lattice and spin-sector datum whose weights and
+their existence is a charge-lattice and spin-sector input whose weights and
 charges must be exactly those displayed above.
 \end{example}
 
@@ -635,8 +635,8 @@ chiral algebraic data above to the supersymmetric models of Volume~VII.  Its
 definition requires a full spin CFT, not just a chiral algebra.  We therefore
 state the hypotheses before using the trace.
 
-\begin{definition}[Elliptic genus datum]
-\label{def:elliptic-genus-datum}
+\begin{definition}[Elliptic genus setup]
+\label{def:elliptic-genus-setup}
 Let \(\mathcal C\) be a compact unitary \(\mathcal N=(2,2)\) spin CFT with
 discrete Ramond--Ramond Hilbert space
 \[
@@ -662,7 +662,7 @@ of finite multiplicities.  Assume \(c=\bar c\), a left \(U(1)_R\) current
 
 \begin{proposition}[Right-moving localization]
 \label{prop:elliptic-genus-right-moving-localization}
-Under Definition~\ref{def:elliptic-genus-datum}, and assuming the usual
+Under Definition~\ref{def:elliptic-genus-setup}, and assuming the usual
 trace-class cyclicity for the Ramond supertrace, the elliptic genus is
 independent of \(\bar\tau\) and receives contributions only from right-moving
 Ramond ground states:
@@ -740,7 +740,7 @@ charge-lattice scalar \(\zeta(\mu)\).
 
 \begin{quotedtheorem}[Elliptic genus as a Jacobi form]
 \label{qthm:elliptic-genus-jacobi-form}
-Assume, in addition to Definition~\ref{def:elliptic-genus-datum}, the spin
+Assume, in addition to Definition~\ref{def:elliptic-genus-setup}, the spin
 modular-functor covariance of the Ramond trace, anomaly cancellation for the
 chosen \(R\)-symmetry background, and the charge-lattice multiplier specified
 above.  Then \(\varphi_{\mathcal C}(\tau,z)\) is a holomorphic weak Jacobi
@@ -771,8 +771,8 @@ only the spectral-flow part of this statement.
 
 There is a finite Landau--Ginzburg shadow of the elliptic genus which can be
 checked before any infrared-flow theorem is invoked.  Suppose a
-quasihomogeneous isolated datum \(W\) of
-Definition~\ref{def:quasihomogeneous-lg-chiral-datum} is realized by a
+quasihomogeneous isolated polynomial \(W\) of
+Definition~\ref{def:quasihomogeneous-lg-chiral-polynomial} is realized by a
 compact unitary \(\mathcal N=2\) fixed point, and suppose the Jacobi ring
 classes are represented by NS chiral primaries with charges
 \[
@@ -816,10 +816,10 @@ the chiral-ring and central-charge data that any proposed
 as an algebraic interface between the CFT and supersymmetric-QFT volumes, not
 as a proof of an infrared fixed point.
 
-\begin{definition}[Quasihomogeneous Landau--Ginzburg chiral datum]
-\label{def:quasihomogeneous-lg-chiral-datum}
+\begin{definition}[Quasihomogeneous Landau--Ginzburg chiral polynomial]
+\label{def:quasihomogeneous-lg-chiral-polynomial}
 Let \(X_1,\ldots,X_N\) be complex variables with rational weights
-\(q_i\in(0,1/2]\).  A quasihomogeneous Landau--Ginzburg chiral datum consists
+\(q_i\in(0,1/2]\).  A quasihomogeneous Landau--Ginzburg chiral polynomial consists
 of a polynomial
 \[
   W\in\mathbb C[X_1,\ldots,X_N]
@@ -854,7 +854,7 @@ is
   Q_R(X^a)=\sum_{i=1}^N a_iq_i.
   \label{eq:lg-monomial-r-charge}
 \]
-If the datum is realized by a unitary compact \(\mathcal N=2\)
+If the polynomial is realized by a unitary compact \(\mathcal N=2\)
 superconformal fixed point with these fields as chiral primaries, the
 chiral-primary relation gives
 \[
@@ -933,12 +933,12 @@ sharper: once the supersymmetric WZW coset exists as an \(\mathcal N=2\)
 chiral algebra, its central charge, primary weights, \(R\)-charges, spectral
 flow, and basic field-identification arithmetic are fixed.
 
-We use the following conventions.  A supersymmetric \(SU(2)_k\) WZW datum,
+We use the following conventions.  A supersymmetric \(SU(2)_k\) WZW model,
 with \(k\in\mathbb Z_{\ge2}\), is represented by a bosonic
 \(\widehat{\mathfrak{su}}(2)_{k-2}\) current algebra with currents
 \(k^a(z)\), \(a=1,2,3\), together with three free Majorana fermions
 \(\chi^a(z)\).  The total Cartan current is denoted \(K^3\).  The
-supersymmetric \(SL(2,\mathbb R)_k\) datum, with \(k>0\), is represented by
+supersymmetric \(SL(2,\mathbb R)_k\) model, with \(k>0\), is represented by
 a bosonic \(\widehat{\mathfrak{sl}}(2,\mathbb R)_{k+2}\) current algebra with
 currents \(j^a(z)\), three free fermions \(\psi^a(z)\) with the
 noncompact-signature bilinear form, and total Cartan current \(J^3\).  In
@@ -950,7 +950,7 @@ the removed \(\mathcal N=1\) \(U(1)\) sector.
 \begin{definition}[Compact supersymmetric rank-one coset]
 \label{def:compact-supersymmetric-rank-one-coset}
 For \(k\in\mathbb Z_{\ge2}\), the compact supersymmetric rank-one coset is
-the chiral algebra obtained from the supersymmetric \(SU(2)_k\) datum by
+the chiral algebra obtained from the supersymmetric \(SU(2)_k\) model by
 decoupling the \(\mathcal N=1\) \(U(1)\) sector generated by
 \(\chi^3\) and \(K^3\).  Put
 \[
@@ -1192,7 +1192,7 @@ identification and the \(\mathbb Z_k\) selection rule.
 \begin{definition}[Noncompact supersymmetric rank-one coset]
 \label{def:noncompact-supersymmetric-rank-one-coset}
 For \(k>0\), the noncompact supersymmetric rank-one coset is obtained from
-the supersymmetric \(SL(2,\mathbb R)_k\) datum by decoupling the
+the supersymmetric \(SL(2,\mathbb R)_k\) model by decoupling the
 \(\mathcal N=1\) abelian sector generated by \(\psi^3\) and \(J^3\).  Put
 \[
   j^\pm=j^1\pm\ii j^2,
@@ -1418,9 +1418,9 @@ algebra and four supercurrents.  It includes \(\mathcal N=2\) subalgebras
 after choosing a Cartan \(U(1)\subset SU(2)_R\), but the representation
 theory involves the full \(SU(2)_R\) spin.
 
-\begin{definition}[Small \(\mathcal N=4\) chiral datum]
-\label{def:small-n4-chiral-datum}
-A small \(\mathcal N=4\) chiral datum at level \(k\in\mathbb Z_{\ge0}\)
+\begin{definition}[Small \(\mathcal N=4\) chiral algebra]
+\label{def:small-n4-chiral-algebra}
+A small \(\mathcal N=4\) chiral algebra at level \(k\in\mathbb Z_{\ge0}\)
 consists of:
 \begin{enumerate}
 \item a stress tensor \(T(z)\) of central charge \(c=6k\);
@@ -1434,7 +1434,7 @@ supercurrents by the doublet representation.
 \end{enumerate}
 \end{definition}
 
-Definition~\ref{def:small-n4-chiral-datum} records only the part of the
+Definition~\ref{def:small-n4-chiral-algebra} records only the part of the
 small-\(\mathcal N=4\) algebra used in this volume.  The present monograph
 uses two consequences: the central charge is tied to the affine level by
 \(c=6k\), and every Cartan choice supplies an \(\mathcal N=2\) subalgebra
@@ -1451,7 +1451,7 @@ sigma models, and their proposed infrared SCFTs as intrinsic two-dimensional
 QFTs with a regulator, supersymmetric Ward identities, renormalized
 \(U(1)_R\) current, and a topology in which the infrared chiral ring and
 central charge are obtained.  The algebraic checks in
-Definition~\ref{def:quasihomogeneous-lg-chiral-datum} and
+Definition~\ref{def:quasihomogeneous-lg-chiral-polynomial} and
 Examples~\ref{ex:a-series-lg-algebra}--\ref{ex:quintic-lg-algebraic-check}
 are necessary consistency tests, not a construction of the continuum fixed
 point.

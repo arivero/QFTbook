@@ -436,13 +436,13 @@ not to solve the projected equation.
 The most useful rigorous fixed-point examples produce a fixed interaction
 together with correlation and response functions whose remainders are
 controlled in a
-declared norm.  The following datum is the minimum output recorded in this
+declared norm.  The following output record is the minimum structure recorded in this
 monograph when using the recent long-range fermionic RG constructions as a
 benchmark.
 
-\begin{definition}[Constructive fermionic fixed-point output datum]
-\label{def:constructive-fermionic-fixed-point-output-datum}
-A constructive fermionic fixed-point output datum consists of:
+\begin{definition}[Constructive fermionic fixed-point output]
+\label{def:constructive-fermionic-fixed-point-output}
+A constructive fermionic fixed-point output consists of:
 \begin{enumerate}
   \item a finite ultraviolet cutoff and a Grassmann Gaussian covariance
   \(C_\Lambda\), including its scaling law;
@@ -460,7 +460,7 @@ A constructive fermionic fixed-point output datum consists of:
   functional, together with scale-covariance estimates and explicit
   remainders.
 \end{enumerate}
-The datum is fixed-cutoff constructive RG output.  A continuum-QFT theorem
+This is fixed-cutoff constructive RG output.  A continuum-QFT theorem
 requires an additional removal or interpretation of the cutoff in the
 observable topology being claimed.
 \end{definition}
@@ -540,9 +540,9 @@ directions, and irrelevant remainder can be treated in a genuine
 infinite-dimensional RG problem rather than in a finite beta-function
 truncation.
 
-\begin{definition}[Hierarchical scalar RG datum]
-\label{def:hierarchical-scalar-rg-datum}
-A one-component hierarchical scalar RG datum consists of:
+\begin{definition}[Hierarchical scalar RG system]
+\label{def:hierarchical-scalar-rg-system}
+A one-component hierarchical scalar RG system consists of:
 \begin{enumerate}
   \item a scale factor \(L>1\), a dimension parameter \(D>0\), and
   \(b=L^D\);
@@ -565,7 +565,7 @@ A one-component hierarchical scalar RG datum consists of:
   where \(Z_V\) is fixed by the normalization
   \((\mathcal R_{\rm hier}V)(0)=0\).
 \end{enumerate}
-The datum is a mathematical RG system.  The hierarchical covariance and the
+This is a mathematical RG system.  The hierarchical covariance and the
 normalization convention are part of the definition; they are not inferred
 from a continuum path integral after the fact.
 \end{definition}
@@ -761,11 +761,11 @@ reconstruction.
 
 In this monograph, the phrase \emph{universality class} is not used as a
 synonym for ``same symmetries and same dimension.''  It denotes a convergence
-statement in a declared topology.  The minimal datum is the following.
+statement in a declared topology.  The minimal statement is the following.
 
-\begin{definition}[Wilsonian universality datum]
-\label{def:wilsonian-universality-datum}
-A Wilsonian universality datum consists of:
+\begin{definition}[Wilsonian universality statement]
+\label{def:wilsonian-universality-statement}
+A Wilsonian universality statement consists of:
 \begin{enumerate}
   \item an index set \(I\) of microscopic regulators or bare finite-cutoff
   models;
@@ -787,7 +787,7 @@ A Wilsonian universality datum consists of:
   encoding allowed metric factors, field normalizations, and coordinate
   rescalings.
 \end{enumerate}
-The datum is a theorem-level universality statement if, for every \(i\in I\),
+This is a theorem-level universality statement if, for every \(i\in I\),
 there are \(g_i\in G\) and \(O_\ast\in\mathcal O\) such that
 \[
   \mathcal R^n(V_i)\in\mathcal N\quad(n\gg1),\qquad
@@ -806,7 +806,7 @@ QFT universality theorem.
 
 \begin{proposition}[Universality as an equivalence relation after reconstruction]
 \label{prop:universality-equivalence-relation}
-Assume the data of Definition~\ref{def:wilsonian-universality-datum}, and
+Assume the data of Definition~\ref{def:wilsonian-universality-statement}, and
 suppose the displayed convergence to a common \(O_\ast\) holds.  Define
 \(i\sim j\) if there exist \(g_i,g_j\in G\) such that
 \[
@@ -838,7 +838,7 @@ normalizations \(g_i,g_j,h_j,h_k\in G\) for which
 In the theorem-level situation above, each normalized sequence also converges
 to the same orbit representative \(O_\ast\) after some allowed normalization.
 Choose the normalizations \(a_i,a_j,a_k\in G\) that appear in
-Definition~\ref{def:wilsonian-universality-datum}.  Then
+Definition~\ref{def:wilsonian-universality-statement}.  Then
 \[
   a_i\operatorname{Rec}_{i,n}(V_i)\to O_\ast,
   \qquad
@@ -860,7 +860,7 @@ Thus a universality class may be summarized by a triple
   (\mathcal R,\mathcal N,V_\ast)
 \]
 together with the observable topology, reconstruction maps, and normalization
-group of Definition~\ref{def:wilsonian-universality-datum}.  Symmetry and
+group of Definition~\ref{def:wilsonian-universality-statement}.  Symmetry and
 dimension may guide the choice of \(I\) and the list of relevant coordinates,
 but they do not by themselves define the class.  The theorem is the attraction
 and reconstruction statement.

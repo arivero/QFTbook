@@ -82,7 +82,7 @@ coordinate.
   \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \begin{scope}
-      \node[font=\small] at (0,1.65) {tree datum};
+      \node[font=\small] at (0,1.65) {tree input};
       \coordinate (v) at (0,0);
       \foreach \a in {35,145,215,325} {
         \draw[thick] (v)--++({0.95*cos(\a)},{0.95*sin(\a)});
@@ -1220,7 +1220,7 @@ This calculation is the scale-differential form of the locality statements
 from the previous chapters.  The logarithm associated with a subgraph can be
 reused inside a larger graph, and the coefficient of the resulting double
 logarithm is determined by the lower-order beta function rather than by an
-independent datum.
+independent input.
 
 \section{Scheme Changes}
 
@@ -1741,10 +1741,10 @@ holomorphic domain.  Summing over singularities on the ray gives the stated
 local contribution.
 \end{proof}
 
-\begin{definition}[One-parameter transseries datum]
-\label{def:one-parameter-transseries-datum}
+\begin{definition}[One-parameter transseries system]
+\label{def:one-parameter-transseries-system}
 Fix \(A>0\), \(\beta\in\mathbb C\), and a sector in the \(g\)-plane.  A
-one-parameter transseries datum at the first exponential scale is a formal
+one-parameter transseries system at the first exponential scale is a formal
 object
 \[
   \widehat F(g;\sigma)
@@ -1752,11 +1752,11 @@ object
   \widehat\Phi_0(g)
   +
   \sigma\,\ee^{-A/g}g^\beta\widehat\Phi_1(g),
-  \label{eq:one-parameter-transseries-datum}
+  \label{eq:one-parameter-transseries-system}
 \]
 where \(\widehat\Phi_0\) and \(\widehat\Phi_1\) are formal power series and
 \(\sigma\in\mathbb C\) is a parameter.  A summation of
-\eqref{eq:one-parameter-transseries-datum} requires summation data for both
+\eqref{eq:one-parameter-transseries-system} requires summation data for both
 formal series and a rule for how \(\sigma\) changes when the summation
 direction crosses a Stokes ray.
 \end{definition}
@@ -2394,13 +2394,13 @@ name the regulated observable, the expansion coordinate, the analytic domain,
 and the limiting statement being asserted.  The following structured input is
 the minimal specification used in this monograph.
 
-\begin{definition}[Regulated asymptotic-analysis datum for a QFT observable]
-\label{def:regulated-asymptotic-analysis-datum}
+\begin{definition}[Regulated asymptotic-analysis specification for a QFT observable]
+\label{def:regulated-asymptotic-analysis-specification}
 Let \(R\) label a regulator, let \(g\) be the perturbative expansion
 coordinate, and let \(\mathcal X_R(g;\lambda)\) be a regulated observable,
 where \(\lambda\) denotes all other named parameters, including masses,
 subtraction scales, background sources, finite volume, and boundary
-conditions.  A \emph{regulated asymptotic-analysis datum} consists of:
+conditions.  A \emph{regulated asymptotic-analysis specification} consists of:
 \begin{enumerate}
   \item a complex domain \(D_R\) in the \(g\)-plane on which
   \(\mathcal X_R(g;\lambda)\) is defined as a function or distributional
@@ -2428,8 +2428,8 @@ conditions.  A \emph{regulated asymptotic-analysis datum} consists of:
 \end{definition}
 
 \begin{remark}[Scope of a regulated asymptotic analysis]
-\label{rem:regulated-asymptotic-datum-status}
-A specification in Definition~\ref{def:regulated-asymptotic-analysis-datum} proves a
+\label{rem:regulated-asymptotic-analysis-status}
+A specification in Definition~\ref{def:regulated-asymptotic-analysis-specification} proves a
 Borel--Laplace reconstruction of \(\mathcal X_R\) in a direction \(\theta\)
 only if the transform in item \(3\) satisfies the hypotheses of
 Definition~\ref{def:gevrey-one-directional-borel-sum} and the resulting
@@ -2496,7 +2496,7 @@ in Example~\ref{ex:zero-dimensional-quartic-large-order}.
 \end{proof}
 
 \begin{definition}[Quartic-oscillator spectral Borel problem]
-\label{def:quartic-oscillator-spectral-borel-datum}
+\label{def:quartic-oscillator-spectral-borel-problem}
 Let \(g\ge0\), and let \(H(g)\) be the Friedrichs realization on
 \(L^2(\mathbb R,\dd x)\) of
 \[

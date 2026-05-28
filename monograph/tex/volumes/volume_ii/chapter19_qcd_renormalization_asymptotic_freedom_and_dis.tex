@@ -997,9 +997,9 @@ gluon variables internally, but the object being defined must be a
 color-singlet operator, a line operator, or a BRST-cohomology class with a
 specified regulator and renormalization prescription.
 
-\begin{definition}[Regulated gauge-invariant QCD matrix-element datum]
-\label{def:qcd-regulated-matrix-element-datum}
-A regulated gauge-invariant QCD matrix-element datum consists of:
+\begin{definition}[Regulated gauge-invariant QCD matrix-element specification]
+\label{def:qcd-regulated-matrix-element-specification}
+A regulated gauge-invariant QCD matrix-element specification consists of:
 \begin{enumerate}
   \item a regulator family \(\mathcal R_\epsilon\), such as a finite lattice,
   a gauge-covariant heat-kernel cutoff, or a gauge-fixed BV regulator together
@@ -3130,9 +3130,9 @@ The phase removes the rest-energy oscillation associated with \(m_Qv^\mu\).
 The field \(H_v\) carries the complementary Dirac components and is separated
 from \(h_v\) by a gap of order \(m_Q\) in the free theory.
 
-\begin{definition}[HQET regulator datum]
-\label{def:hqet-regulator-datum}
-A finite-cutoff HQET datum at velocity \(v\) consists of the following data.
+\begin{definition}[HQET regulator specification]
+\label{def:hqet-regulator-specification}
+A finite-cutoff HQET regulator specification at velocity \(v\) consists of:
 \begin{enumerate}
   \item A gauge-covariant ultraviolet regulator for QCD with the heavy field
   \(Q\) and mass coordinate \(m_Q\), together with an infrared domain of states
@@ -3571,9 +3571,10 @@ The sign of the spatial Laplacian in \eqref{eq:nrqcd-leading-action} is fixed
 by the convention \(D_i\ee^{\ii\mathbf p\cdot\mathbf x}=\ii p_i
 \ee^{\ii\mathbf p\cdot\mathbf x}\) in the free theory.
 
-\begin{definition}[NRQCD datum]
-\label{def:nrqcd-datum}
-An NRQCD datum for a heavy flavor of mass \(m_Q\) consists of the following
+\begin{definition}[NRQCD regulator and operator specification]
+\label{def:nrqcd-regulator-operator-specification}
+An NRQCD regulator and operator specification for a heavy flavor of mass
+\(m_Q\) consists of:
 items.
 \begin{enumerate}
   \item A gauge-covariant regulator for QCD and a matching scale below
@@ -3594,7 +3595,7 @@ items.
   and local four-heavy-field annihilation operators, ordered by the chosen
   velocity and \(1/m_Q\) power counting.
   \item Renormalized heavy-pair composite operators.  A quarkonium interpolator
-  or current is part of the datum only after its Wilson-line dressing,
+  or current is part of the specification only after its Wilson-line dressing,
   regulator, and subtraction convention have been specified.
 \end{enumerate}
 The Pauli magnetic term
@@ -3751,7 +3752,7 @@ color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
 \begin{proposition}[Quarkonium fine and hyperfine spin algebra]
 \label{prop:qcd-quarkonium-spin-centroid}
 Fix a quarkonium radial level and orbital angular momentum \(L\) in a
-pNRQCD datum.  Let
+pNRQCD specification.  Let
 \[
   \mathbf S_Q=\frac12\boldsymbol\sigma_Q,\qquad
   \mathbf S_{\bar Q}=\frac12\boldsymbol\sigma_{\bar Q},\qquad
@@ -4164,9 +4165,9 @@ or by a point-split bilinear with a Wilson-line path and a field-strength
 insertion on that path.  These are different regulator coordinates unless a
 continuum matching relation has been supplied.
 
-\begin{definition}[Hadron spectral extraction datum]
-\label{def:qcd-hadron-spectral-extraction-datum}
-A QCD hadron spectral extraction datum consists of:
+\begin{definition}[Hadron spectral extraction setup]
+\label{def:qcd-hadron-spectral-extraction-setup}
+A QCD hadron spectral extraction setup consists of:
 \begin{enumerate}
   \item the quark masses, gauge group, global form, spacetime volume, boundary
   conditions, and regulator action;
@@ -4187,7 +4188,7 @@ A QCD hadron spectral extraction datum consists of:
   \item continuum, chiral, heavy-quark, and infinite-volume extrapolations,
   with the systematics stated separately.
 \end{enumerate}
-The datum is called \emph{ab initio} only when the matrix elements are defined
+The setup is called \emph{ab initio} only when the matrix elements are defined
 from the QCD path integral or Hilbert space itself.  A constituent model may
 be useful as a coordinate chart or mnemonic, but it is not an ab initio
 definition of the spectrum.
@@ -4314,7 +4315,7 @@ fixed.  A numerical fraction assigned to that subspace, however, requires a
 choice of positive form on the source space and a projection.  Different
 smearings, renormalization schemes, or source decompositions change that
 positive form and hence change the fraction without changing the extracted
-energy or pole datum.  This proves the final assertion.
+energy or pole data.  This proves the final assertion.
 \end{proof}
 
 \begin{corollary}[Spectroscopic names as derived coordinates]
@@ -4670,9 +4671,9 @@ channels gives the matrix \(\Sigma\), the sheet amplitude in
 condition.
 \end{proof}
 
-\begin{definition}[QCD resonance pole datum]
-\label{def:qcd-resonance-pole-datum}
-A hadronic resonance datum consists of a channel space of stable
+\begin{definition}[QCD resonance pole data]
+\label{def:qcd-resonance-pole-data}
+The resonance pole data in a hadronic channel consist of a channel space of stable
 color-singlet asymptotic states, a physical-region scattering matrix
 \(S_{ab}(s)\), a specified analytic continuation across specified unitary
 cuts, and an isolated pole \(s_\ast\) of the continued matrix or of an
@@ -4975,9 +4976,9 @@ coordinates used in this section are
   a_0^2:=t_0^2(4m_\pi^2).
 \]
 
-\begin{definition}[Roy datum for \(\pi\pi\) scattering]
-\label{def:qcd-pipi-roy-datum}
-A Roy datum on a real interval \(J\subset[4m_\pi^2,s_{\rm max})\) consists of:
+\begin{definition}[Roy input for \(\pi\pi\) scattering]
+\label{def:qcd-pipi-roy-input}
+Roy input on a real interval \(J\subset[4m_\pi^2,s_{\rm max})\) consists of:
 \begin{enumerate}
   \item the pion mass, the isospin amplitudes \(\mathbf T\), and the partial
   wave normalization \eqref{eq:qcd-pipi-partial-wave-normalization};
@@ -5015,7 +5016,7 @@ polynomial.  This normalization fixes what is meant below by the Roy kernels
 
 \begin{proposition}[Roy projection from fixed-\(t\) analyticity and crossing]
 \label{prop:qcd-roy-projection-construction}
-Assume the Roy datum of Definition~\ref{def:qcd-pipi-roy-datum}.  Then, for
+Assume the Roy input of Definition~\ref{def:qcd-pipi-roy-input}.  Then, for
 \(s\in J\), the real part of each retained partial wave obeys
 \begin{equation}
   \operatorname{Re}t_\ell^I(s)
@@ -5082,7 +5083,7 @@ For \(s'\ge4m_\pi^2\), expand the absorptive part in partial waves,
 Performing the \(z'\)-projection contained in the crossed-channel Cauchy
 terms gives the functions \(R_{\ell'}^{II'}(s,z;s')\) in
 \eqref{eq:qcd-fixed-t-roy-resolvent-form}.  The convergence assumptions in
-the Roy datum justify interchanging this partial-wave expansion with the
+the Roy input justify interchanging this partial-wave expansion with the
 subtracted dispersion integrals on \(J\).
 
 Finally project the resulting fixed-\(t\) formula in the \(s\)-channel:
@@ -5211,9 +5212,9 @@ two-body phase-space density in these conventions is
 gives \eqref{eq:qcd-unequal-mass-elastic-unitarity}.
 \end{proof}
 
-\begin{definition}[Roy--Steiner datum]
-\label{def:qcd-roy-steiner-datum}
-A Roy--Steiner datum for an unequal-mass two-hadron problem consists of:
+\begin{definition}[Roy--Steiner input]
+\label{def:qcd-roy-steiner-input}
+Roy--Steiner input for an unequal-mass two-hadron problem consists of:
 \begin{enumerate}
   \item the masses, exact internal quantum numbers, and invariant amplitudes
   \(\mathbf T(s,t,u)\) in a declared basis of isospin or charge channels;
@@ -5228,7 +5229,7 @@ A Roy--Steiner datum for an unequal-mass two-hadron problem consists of:
   \item subtraction constants, matching points, and high-energy/high-partial
   wave input sufficient to make all projected integrals converge.
 \end{enumerate}
-The datum is a reconstruction coordinate for amplitudes.  It includes the
+This input is a reconstruction coordinate for amplitudes.  It includes the
 analyticity, crossing, subtraction, and asymptotic assumptions; QCD supplies
 the channel Hilbert spaces and current or hadron matrix elements to which
 those assumptions are applied.
@@ -5236,8 +5237,8 @@ those assumptions are applied.
 
 \begin{proposition}[Roy--Steiner projection construction]
 \label{prop:qcd-roy-steiner-projection-construction}
-Assume a Roy--Steiner datum in the sense of
-Definition~\ref{def:qcd-roy-steiner-datum}.  Let \(J_s\) and \(J_t\) be real
+Assume Roy--Steiner input in the sense of
+Definition~\ref{def:qcd-roy-steiner-input}.  Let \(J_s\) and \(J_t\) be real
 intervals below the first omitted inelastic thresholds in the \(s\)- and
 crossed \(t\)-channels.  Then the retained \(s\)-channel partial waves have
 the form
@@ -5289,7 +5290,7 @@ cuts of the \(s\), \(u\), and \(t\) variables.  The right-hand \(s\)-channel
 cut is already expressed in the basis whose partial waves are
 \(f_\ell^a\).  The \(u\)- and \(t\)-channel cuts are first moved into their
 physical variables and then rewritten in the chosen \(s\)-channel basis using
-the crossing matrices included in the datum.  This produces a fixed-angle
+the crossing matrices included in the input.  This produces a fixed-angle
 representation
 \[
 \begin{aligned}
@@ -5305,7 +5306,7 @@ representation
     H_{\ell'}^{ac}(s,z_s;t')\,\operatorname{Im}g_{\ell'}^c(t').
 \end{aligned}
 \]
-The convergence part of the datum justifies the interchange of the
+The convergence part of the input justifies the interchange of the
 partial-wave sums, dispersion integrals, and \(z_s\)-projection on \(J_s\).
 Projecting with
 \[
@@ -5323,7 +5324,7 @@ with a crossed-channel scattering angle and the crossed-channel partial-wave
 normalization gives \eqref{eq:qcd-roy-steiner-t-channel-equation}.  No
 additional dynamical assumption enters at the projection stage; all dynamical
 input is already contained in the analytic domain, crossing matrices,
-absorptive parts, and subtraction constants of the datum.
+absorptive parts, and subtraction constants of the input.
 \end{proof}
 
 Heavy quarkonium uses a different controlled coordinate system.  If
@@ -5336,7 +5337,7 @@ coordinate, spin-dependent \(1/m_Q\) operators, and ultrasoft corrections.
 The spin-averaged levels, hyperfine splittings, and fine structure are then
 matrix elements in a stated effective Hamiltonian.  They are not predictions
 of a nonrelativistic potential unless the matching coefficients, mass scheme,
-and ultrasoft treatment have been fixed as part of the datum.  The angular
+and ultrasoft treatment have been fixed as part of the input.  The angular
 momentum algebra that turns these matched operators into centroid, fine, and
 hyperfine coordinates is the finite-dimensional statement of
 Proposition~\ref{prop:qcd-quarkonium-spin-centroid}.
@@ -5407,12 +5408,12 @@ under its own hypotheses, and it explains why baryons require a separate
 large-\(N_c\) analysis from mesons.  It does not license importing
 constituent-quark spectra as QCD predictions.
 
-\begin{definition}[Baryon-meson resonance datum]
-\label{def:qcd-baryon-meson-resonance-datum}
+\begin{definition}[Baryon-meson resonance reconstruction data]
+\label{def:qcd-baryon-meson-resonance-data}
 Fix conserved quantum numbers: baryon number one, total isospin \(I\), total
 strangeness \(S\), total angular momentum and parity \(J^P\), and any other
 exact charges in the chosen QCD mass convention.  A two-body baryon-meson
-resonance datum consists of:
+resonance reconstruction data consist of:
 \begin{enumerate}
   \item a finite list of stable color-singlet two-body channels
   \(a=(B_a,M_a)\) in the chosen energy window, with baryon mass \(M_{B_a}\),
@@ -5450,7 +5451,7 @@ The invariant content is the pole position, the sheet, and the residue
 projective vector \(g_a\), together with the operator and regulator data by
 which the amplitude was obtained.  Names such as radial excitation,
 molecule, compact multiquark configuration, or meson-baryon bound state are
-interpretive coordinates on this datum.
+interpretive coordinates on these data.
 \end{definition}
 
 \begin{proposition}[Pseudoscalar-meson--baryon partial-wave quantum numbers]
@@ -5504,7 +5505,7 @@ amplitude.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
 \(J^P=\frac12^-\), and its minimal two-body description couples the
 \(\bar K N\) and \(\pi\Sigma\) \(S\)-wave channels.  In each case the QCD
 statement is the sheet-labeled pole of
-Definition~\ref{def:qcd-baryon-meson-resonance-datum}.  A finite-volume
+Definition~\ref{def:qcd-baryon-meson-resonance-data}.  A finite-volume
 calculation supplies this pole information through a generalized eigenvalue problem and
 a coupled-channel quantization condition; a dispersive calculation supplies
 it through the corresponding analyticity and crossing assumptions.
@@ -5547,7 +5548,7 @@ An excited light-baryon entry in this monograph is specified by:
 \item exact charges \(B=1\), \(I\), \(S_{\rm str}\), \(J^P\), and any
   additional exact discrete quantum numbers of the chosen mass convention;
 \item a finite list of two-body and effective multi-hadron channels retained
-  in the reconstruction of Definition~\ref{def:qcd-baryon-meson-resonance-datum};
+  in the reconstruction of Definition~\ref{def:qcd-baryon-meson-resonance-data};
 \item a sheet-labeled pole \(s_\ast\) of the corresponding color-singlet
   amplitude, or an isolated stable level if the state lies below every open
   channel in the stated volume and mass regime;
@@ -5723,8 +5724,8 @@ and coupled-channel charts above; it does not replace the QCD pole or
 eigenvalue definitions.
 \end{remark}
 
-\begin{definition}[Nucleon current-matrix-element datum]
-\label{def:qcd-nucleon-current-matrix-element-datum}
+\begin{definition}[Nucleon current matrix elements]
+\label{def:qcd-nucleon-current-matrix-elements}
 Let \(|N(p,s)\rangle\) be an isolated one-nucleon state in the color-singlet
 QCD Hilbert space, with \(p^2=-M_N^2\), \(p^0>0\), and spin label \(s\).  In
 the mostly-plus spinor convention of Section~\ref{sec:spinor-conventions},
@@ -6022,7 +6023,7 @@ nonzero overlap of the chosen source with the state.
 \end{proof}
 
 The continuum nucleon form factors of
-Definition~\ref{def:qcd-nucleon-current-matrix-element-datum} are obtained
+Definition~\ref{def:qcd-nucleon-current-matrix-elements} are obtained
 from the finite-volume matrix element in
 Proposition~\ref{prop:qcd-stable-current-three-point-extraction} only after
 the current-renormalization scheme has been fixed and the regulator and
@@ -6031,8 +6032,8 @@ in a ratio of Euclidean correlators is therefore evidence for the hypotheses
 of the proposition in a numerical calculation; it is not itself the definition
 of the form factor.
 
-\begin{definition}[Forward Compton and polarizability datum]
-\label{def:qcd-forward-compton-polarizability-datum}
+\begin{definition}[Forward Compton amplitude and polarizabilities]
+\label{def:qcd-forward-compton-polarizabilities}
 Let \(N\) be a stable proton or neutron state of mass \(M_N\) and spin
 \(\frac12\).  Work in the nucleon rest frame and let a real photon have energy
 \(\omega>0\), direction \(\mathbf n\in S^2\), and transverse polarization
@@ -6175,8 +6176,8 @@ while the dispersion relation is an additional analyticity statement about the
 real-photon forward amplitude.
 \end{proof}
 
-\begin{definition}[Forward spin polarizability datum]
-\label{def:qcd-forward-spin-polarizability-datum}
+\begin{definition}[Forward spin polarizabilities]
+\label{def:qcd-forward-spin-polarizabilities}
 Keep the normalization of the spin-dependent forward Compton amplitude
 \(g_N\) in \eqref{eq:qcd-forward-compton-fg-definition} and the helicity
 difference
@@ -6349,7 +6350,7 @@ Every entry in this list is a statement about QCD observables.  The words
 ``quark model'', ``molecule'', ``diquark'', and ``flux-tube excitation'' may
 summarize patterns in a chosen coordinate system, but the monograph treats
 them as derived interpretations only after the corresponding spectral or pole
-datum has been defined.
+input has been defined.
 
 \section{Detector Observables and Energy Correlators}
 
@@ -6787,7 +6788,7 @@ for a color-singlet source and in a rapidity-renormalization scheme with
 rapidity scale \(\nu\).  The hard, jet, and soft functions have coupled
 \(\mu\)- and \(\nu\)-evolution equations; solving them resums Sudakov
 logarithms of \(q_T/Q\).  The power remainder and the absence or treatment of
-Glauber exchanges are part of the factorization datum.
+Glauber exchanges are part of the factorization hypothesis.
 
 Here and below \(\alpha_s(\mu):=g^2(\mu)/(4\pi)\) in the trace-delta gauge
 coordinate of this chapter.  Whenever a coefficient is proportional to
@@ -7415,10 +7416,10 @@ light-ray renormalization have been performed, the same observable can be
 coordinatized by universal hadronic light-ray matrix elements and perturbative
 coefficient functions.
 
-\begin{hypothesis}[Leading-twist DIS factorization datum]
+\begin{hypothesis}[Leading-twist DIS factorization hypothesis]
 \label{hyp:qcd-dis-leading-twist-factorization}
 Fix a factorization scheme and a compact interval
-\(K\Subset(0,1)\) of Bjorken \(x\).  A leading-twist factorization datum for an
+\(K\Subset(0,1)\) of Bjorken \(x\).  A leading-twist factorization hypothesis for an
 inclusive structure function \(F_i\) consists of coefficient distributions
 \(C_{i,a}\), renormalized integrated PDFs \(f_{a/H}\), and constants
 \(C_{K,\varphi}\), \(\Lambda_{\rm HT}\), and \(p>0\), such that for every test
@@ -7688,9 +7689,9 @@ collectively by \(\rho\).  At finite \(\rho\) and finite ultraviolet cutoff
 \(b_\perp\), and orientation \(\eta=+1\) for future-pointing and
 \(\eta=-1\) for past-pointing staples.
 
-\begin{definition}[TMD operator datum]
-\label{def:qcd-tmd-operator-datum}
-A quark TMD datum for a hadron \(H\) with momentum \(P\) consists of:
+\begin{definition}[TMD operator definition]
+\label{def:qcd-tmd-operator-definition}
+A quark TMD operator definition for a hadron \(H\) with momentum \(P\) consists of:
 \begin{enumerate}
   \item the vectors \(n,\bar n\), a transverse separation \(b_\perp\), and an
   orientation \(\eta\) of the staple Wilson line;
@@ -7741,7 +7742,7 @@ time-reversal odd TMDs may change sign between future- and past-pointing
 staples, as in semi-inclusive DIS versus Drell--Yan kinematics.
 \end{definition}
 
-\begin{proposition}[Gauge invariance of the subtracted TMD datum]
+\begin{proposition}[Gauge invariance of the subtracted TMD operator]
 \label{prop:qcd-tmd-gauge-invariance}
 At finite regulator, the numerator and soft factor in
 \eqref{eq:qcd-renormalized-tmd-definition} are gauge invariant after taking
@@ -7871,11 +7872,11 @@ the two sides of
 \eqref{eq:qcd-collins-soper-integrability} is unchanged.
 \end{proof}
 
-\begin{hypothesis}[Small-\(q_\perp\) color-singlet TMD factorization datum]
-\label{hyp:qcd-tmd-factorization-datum}
+\begin{hypothesis}[Small-\(q_\perp\) color-singlet TMD factorization hypothesis]
+\label{hyp:qcd-tmd-factorization-hypothesis}
 For a color-singlet final state of invariant mass \(Q\) produced in
 hadron--hadron scattering, a leading-power small-\(q_\perp\) TMD
-factorization datum consists of TMD schemes for the two incoming hadrons, a
+factorization hypothesis consists of TMD schemes for the two incoming hadrons, a
 hard function \(H_{ij}(Q,\mu)\), rapidity scales satisfying
 \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term that matches the region
 \(|q_\perp|\sim Q\), a statement about Glauber exchange, and a distributional
@@ -7988,15 +7989,15 @@ Solving the two equations gives
 \eqref{eq:qcd-drell-yan-xa-xb}.
 \end{proof}
 
-\begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD datum]
-\label{hyp:qcd-drell-yan-tmd-datum}
-A leading-power Drell--Yan TMD factorization datum consists of:
+\begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD factorization hypothesis]
+\label{hyp:qcd-drell-yan-tmd-factorization-hypothesis}
+A leading-power Drell--Yan TMD factorization hypothesis consists of:
 \begin{enumerate}
   \item the renormalized current hard function \(H_{ij}(Q,\mu)\);
   \item past-pointing TMD operator data
   \(F_{i/A}^{[-]}(x_A,b_\perp;\mu,\zeta_A)\) and
   \(F_{j/B}^{[-]}(x_B,b_\perp;\mu,\zeta_B)\), in the notation of
-  Definition~\ref{def:qcd-tmd-operator-datum};
+  Definition~\ref{def:qcd-tmd-operator-definition};
   \item rapidity scales constrained by \(\zeta_A\zeta_B=Q^4\);
   \item a \(Y\)-term matching to the region \(|q_\perp|\sim Q\);
   \item a proof or controlled hypothesis for Glauber exchange;
@@ -8071,7 +8072,7 @@ the leading regions, color flow, rapidity regulator, and measurement topology
 have been fixed.  It does not prove by itself that QCD Glauber exchanges act
 only on an unobserved tensor factor, nor that the contour deformations needed
 to isolate the leading regions are valid.  Those statements are part of the
-Glauber item in Hypothesis~\ref{hyp:qcd-drell-yan-tmd-datum}.  If the
+Glauber item in Hypothesis~\ref{hyp:qcd-drell-yan-tmd-factorization-hypothesis}.  If the
 observable measures hadronic radiation in a way that resolves the spectator
 sector, or if a color exchange remains entangled with the measured hard
 sector, the finite identity above no longer supplies the required
@@ -8084,7 +8085,7 @@ cancellation.
 Generalized parton distributions are light-ray matrix elements between
 different hadron momenta.  They do not require a rapidity subtraction in the
 same way as TMDs, because the operator remains integrated over transverse
-momentum.  Their new datum is off-forwardness.
+momentum.  Their new feature is off-forwardness.
 
 Let \(p'\) and \(p\) be on-shell spin-\(\frac12\) hadron momenta, and define
 \[
@@ -8186,7 +8187,7 @@ state.  This is the part of the pion \(S\)-matrix where asymptotic freedom
 gives a direct large-momentum prediction: the short-distance subgraph is a
 perturbatively renormalized quark-gluon amplitude, while the pion appears only
 through a renormalized gauge-invariant light-ray matrix element.  The statement
-is not that a pion is a weakly bound pair of on-shell quarks.  The pion datum is
+is not that a pion is a weakly bound pair of on-shell quarks.  The pion input is
 the same hadronic state defined by the nonperturbative QCD sector; only the
 coefficient multiplying its light-ray matrix element is perturbative.
 
@@ -8228,8 +8229,8 @@ operator between the vacuum and the one-pion state.  It is not a probability
 postulate.  The function \(\varphi_\pi\) is a renormalized distribution in
 \(x\), depending on the factorization scheme and scale.
 
-\begin{definition}[Exclusive pion factorization datum]
-\label{def:qcd-exclusive-pion-factorization-datum}
+\begin{definition}[Exclusive pion factorization scheme]
+\label{def:qcd-exclusive-pion-factorization-scheme}
 An exclusive large-\(Q\) pion factorization statement consists of:
 \begin{enumerate}
   \item a renormalized QCD matrix element whose external hadrons and currents
@@ -8244,7 +8245,7 @@ An exclusive large-\(Q\) pion factorization statement consists of:
   stated hypotheses, together with the order in \(\alpha_s\) to which
   \(T_H\) is known.
 \end{enumerate}
-The datum is part of the definition of the controlled approximation.  Without
+The scheme is part of the definition of the controlled approximation.  Without
 it, a formula involving a pion distribution amplitude is only notation.
 \end{definition}
 
@@ -8394,7 +8395,7 @@ At leading twist and leading order in the hard coefficient,
   \label{eq:qcd-pion-form-factor-factorization}
 \end{equation}
 The subscript ``fac'' means that the power remainder belongs to the
-factorization datum of Definition~\ref{def:qcd-exclusive-pion-factorization-datum};
+factorization scheme of Definition~\ref{def:qcd-exclusive-pion-factorization-scheme};
 endpoint sensitivity can modify the practical convergence at accessible
 \(Q^2\) unless controlled by an additional Sudakov or nonperturbative input.
 
@@ -8758,7 +8759,7 @@ observable and is not obtained by continuing the threshold expansion.
 {Small-x Boundary, Dipoles, and the BFKL Kernel}}
 \label{sec:qcd-small-x-bfkl}
 
-The compact-\(x_B\) factorization datum in
+The compact-\(x_B\) factorization hypothesis in
 Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} also does not claim
 uniform control as \(x_B\to0\).  Put
 \[
@@ -8791,9 +8792,9 @@ probabilities.  They are defined only after the virtual subtraction in the
 evolution equation, or after an equivalent rapidity regulator and finite-part
 map have been specified.
 
-\begin{definition}[Regulated small-\(x\) dipole datum]
-\label{def:qcd-small-x-dipole-datum}
-A small-\(x\) dipole datum for a color-singlet probe consists of:
+\begin{definition}[Regulated small-\(x\) dipole setup]
+\label{def:qcd-small-x-dipole-setup}
+A small-\(x\) dipole setup for a color-singlet probe consists of:
 \begin{enumerate}
   \item a QCD regulator \(\mathcal R_\epsilon\) preserving background gauge
   covariance, or a gauge-fixed BV regulator with the quantum master equation;
@@ -8833,7 +8834,7 @@ power-remainder data.
 At finite regulator, the trace in
 \eqref{eq:qcd-small-x-dipole-definition} is gauge invariant after the
 endpoint closures or boundary conditions of
-Definition~\ref{def:qcd-small-x-dipole-datum} are included.  A background
+Definition~\ref{def:qcd-small-x-dipole-setup} are included.  A background
 gauge-covariant finite-part prescription therefore gives a gauge-invariant
 renormalized dipole matrix element.
 \end{proposition}
@@ -8844,14 +8845,14 @@ transformation at its two endpoints.  Along a closed contour the adjacent
 endpoint factors cancel and the residual base-point factor is removed by the
 cyclicity of \(\operatorname{tr}_{\square}\).  If the regulated Wilson lines
 are represented instead as open lines ending at a rapidity boundary, the
-boundary condition is part of the datum and supplies the same endpoint
+boundary condition is part of the setup and supplies the same endpoint
 cancellation.  The finite-part map changes only regulator and scale
 coordinates and is assumed background gauge covariant; hence it cannot
 introduce an uncanceled color index.
 \end{proof}
 
-\begin{hypothesis}[Leading-logarithmic dipole/BFKL evolution datum]
-\label{hyp:qcd-leading-log-small-x-datum}
+\begin{hypothesis}[Leading-logarithmic dipole/BFKL evolution setup]
+\label{hyp:qcd-leading-log-small-x-setup}
 In a fixed-coupling leading-logarithmic rapidity scheme, the linearized
 color-singlet dipole amplitude obeys
 \begin{equation}
@@ -9066,7 +9067,7 @@ Thus a Mellin component near \(\gamma=\frac12\) evolves as
     +O(\bar\alpha_{\rm s}\nu^4Y)
   \right]
 \]
-inside the fixed-coupling leading-logarithmic datum.
+inside the fixed-coupling leading-logarithmic setup.
 \end{corollary}
 
 \begin{proof}

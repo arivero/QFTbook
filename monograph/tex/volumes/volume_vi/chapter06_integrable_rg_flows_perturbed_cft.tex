@@ -282,8 +282,8 @@ quantity is
   c_{\mathrm{sub}}(R)=-\frac{6R}{\pi}E_0^{\mathrm{sub}}(R).
 \]
 
-\begin{definition}[Finite-size identification datum]
-\label{def:finite-size-identification-datum}
+\begin{definition}[Finite-size identification data]
+\label{def:finite-size-identification-data}
 A finite-size identification between a perturbed CFT and a factorized
 scattering model consists of:
 \begin{enumerate}
@@ -310,9 +310,9 @@ normalization of the stress tensor or the perturbing source is used, the same
 statements hold after replacing \(\Theta\) by the correspondingly normalized
 trace operator.
 
-\begin{definition}[Zamolodchikov sum-rule datum]
-\label{def:zamolodchikov-sum-rule-datum}
-A two-dimensional Euclidean RG trajectory has a Zamolodchikov sum-rule datum
+\begin{definition}[Zamolodchikov sum-rule hypotheses]
+\label{def:zamolodchikov-sum-rule-hypotheses}
+A two-dimensional Euclidean RG trajectory satisfies the Zamolodchikov sum-rule hypotheses
 if the following data are specified.
 \begin{enumerate}
 \item A reflection-positive local QFT on \(\mathbb R^2\) with a symmetric
@@ -344,7 +344,7 @@ and whose radial derivative is represented by
   -\frac{3}{4\pi}
   \int_0^{2\pi} d\alpha\,
   R^4\,G_\Theta(R e^{\ii\alpha})
-  \label{eq:zamolodchikov-radial-derivative-datum}
+  \label{eq:zamolodchikov-radial-derivative-identity}
 \end{equation}
 in the distributional sense after smearing in \(R\).
 \end{enumerate}
@@ -358,7 +358,7 @@ assumptions of the chosen QFT framework.
 
 \begin{proposition}[Trace sum rule]
 \label{prop:integrable-flow-trace-sum-rule}
-For a trajectory with a Zamolodchikov sum-rule datum,
+For a trajectory satisfying the Zamolodchikov sum-rule hypotheses,
 \begin{equation}
   c_{\rm UV}-c_{\rm IR}
   =
@@ -372,7 +372,7 @@ density at separated points, then \(c_{\rm UV}\geq c_{\rm IR}\).
 \end{proposition}
 
 \begin{proof}
-Integrating \eqref{eq:zamolodchikov-radial-derivative-datum} from
+Integrating \eqref{eq:zamolodchikov-radial-derivative-identity} from
 \(R=\epsilon\) to \(R=L\) gives
 \[
   C(\epsilon)-C(L)
@@ -388,7 +388,7 @@ Since \(d^2x=R\,dR\,d\alpha\), the right side is
   \int_{\epsilon<|x|<L}d^2x\, |x|^2G_\Theta(x).
 \]
 The integrability hypothesis in
-Definition~\ref{def:zamolodchikov-sum-rule-datum} permits the limits
+Definition~\ref{def:zamolodchikov-sum-rule-hypotheses} permits the limits
 \(\epsilon\downarrow0\) and \(L\to\infty\), while the endpoint hypothesis
 identifies the left side with \(c_{\rm UV}-c_{\rm IR}\).  Positivity of the
 weighted trace two-point distribution gives the inequality.
@@ -517,7 +517,7 @@ Consequently
 This formula is a theorem about the variational TBA functional under the
 hypotheses of Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}; its
 identification with the finite-size vacuum energy of a local QFT requires the
-additional datum in Definition~\ref{def:finite-size-identification-datum}.
+additional input in Definition~\ref{def:finite-size-identification-data}.
 
 \begin{controlledapproximation}[Plateau reduction]
 \label{ca:tba-plateau-reduction}
@@ -595,9 +595,9 @@ left-left, and right-left kernels.  The right-left kernel records the
 interaction between the two chiral sectors along the flow; its normalization
 controls the interpolation between the ultraviolet and infrared plateaux.
 
-\begin{definition}[Massless factorized-flow datum]
-\label{def:massless-factorized-flow-datum}
-A diagonal massless factorized-flow datum consists of:
+\begin{definition}[Massless factorized-flow data]
+\label{def:massless-factorized-flow-data}
+Diagonal massless factorized-flow data consist of:
 \begin{enumerate}
 \item right species \(a\in A_R\) and left species \(\alpha\in A_L\);
 \item analytic two-body amplitudes

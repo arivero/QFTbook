@@ -57,9 +57,9 @@ propagation.  The pressure is the thermodynamic limit
 \end{equation}
 provided the limit exists along the chosen continuum trajectory.
 
-\begin{definition}[QCD phase datum]
-\label{def:qcd-phase-datum}
-A QCD phase datum at fixed \(N_c,N_f\) consists of:
+\begin{definition}[QCD phase specification]
+\label{def:qcd-phase-specification}
+A QCD phase specification at fixed \(N_c,N_f\) consists of:
 \begin{enumerate}
   \item the thermodynamic pressure \(p(T,\mu_B,m)\) as a function on the
   domain where the continuum thermal state is defined;
@@ -73,7 +73,7 @@ A QCD phase datum at fixed \(N_c,N_f\) consists of:
   continuum-extrapolation claim, controlled weak-coupling claim, or
   conjectural continuation.
 \end{enumerate}
-The word ``phase'' is used in this chapter only through such a datum.
+The word ``phase'' is used in this chapter only through such a specification.
 \end{definition}
 
 \section{Finite-Regulator Analyticity and Thermodynamic Phases}
@@ -87,8 +87,8 @@ mass, or a source-selection limit.  This elementary point is important
 because it prevents a phase diagram from being treated as a drawing whose
 curves exist before the limiting observables have been defined.
 
-\begin{definition}[Finite lattice thermal gauge datum]
-\label{def:qcd-finite-lattice-thermal-gauge-datum}
+\begin{definition}[Finite lattice thermal gauge setup]
+\label{def:qcd-finite-lattice-thermal-gauge-setup}
 Fix a finite Euclidean lattice
 \[
   \Lambda=(N_\tau,N_s^3,a)
@@ -114,13 +114,13 @@ partition function is
   \label{eq:qcd-finite-lattice-partition-analytic}
 \end{equation}
 where \(E(\Lambda)\) is the finite link set.  Rooted or otherwise
-non-polynomial fermion prescriptions are not included in this datum unless a
+non-polynomial fermion prescriptions are not included in this setup unless a
 separate branch and locality construction has been supplied.
 \end{definition}
 
 \begin{proposition}[Finite-regulator analyticity]
 \label{prop:qcd-finite-regulator-analyticity}
-For the datum of Definition~\ref{def:qcd-finite-lattice-thermal-gauge-datum},
+For the setup of Definition~\ref{def:qcd-finite-lattice-thermal-gauge-setup},
 \(Z_\Lambda(\kappa,m,\zeta)\) is entire in the gauge couplings and masses
 and Laurent-polynomial in the fugacity \(\zeta\).  Consequently the finite
 pressure
@@ -902,7 +902,7 @@ The theorem is a statement about the thermodynamic spectral density near
 zero.  Setting \(m=0\) at finite volume first gives no condensate from paired
 nonzero eigenvalues.  The density of eigenvalues at spacing
 \(O(\mathcal V_4^{-1})\) near the origin is precisely the infinite-volume
-datum that can survive the subsequent chiral limit.
+order parameter that can survive the subsequent chiral limit.
 \end{remark}
 
 \subsection{Axial Ward Identity and Thermal GMOR Logic}
@@ -1084,10 +1084,10 @@ part of the statement: the spatial thermodynamic limit has been taken, the
 temperature is small compared with the first non-Goldstone mass scale, and
 the derivative expansion is organized at momenta \(p\ll 4\pi F\).
 
-\begin{definition}[Leading chiral effective datum]
-\label{def:qcd-leading-chiral-effective-datum}
+\begin{definition}[Leading chiral effective theory]
+\label{def:qcd-leading-chiral-effective-theory}
 For \(N_f\) degenerate light quarks, the leading Euclidean chiral effective
-datum consists of a field \(U:\mathbb R^3\times S^1_\beta\to SU(N_f)\), a
+theory consists of a field \(U:\mathbb R^3\times S^1_\beta\to SU(N_f)\), a
 constant \(F>0\), and a constant \(B>0\), with leading action
 \begin{equation}
   S_{\chi}^{(2)}
@@ -1119,7 +1119,7 @@ Proposition~\ref{prop:qcd-thermal-gmor-pole-saturation} is
 
 \begin{proposition}[Tree-level source normalization]
 \label{prop:qcd-chiral-effective-source-normalization}
-The datum \eqref{eq:qcd-leading-chiral-effective-action} gives
+The action \eqref{eq:qcd-leading-chiral-effective-action} gives
 \begin{equation}
   \Sigma=F^2B,
   \qquad
@@ -1756,7 +1756,7 @@ Perturbation theory cannot determine \(c\), because it expands around a
 massless three-dimensional gauge theory whose infrared behavior is precisely
 the magnetic theory being asked to generate the scale.  The proposition does
 not prove the magnetic mass gap; it identifies the order at which the
-nonperturbative magnetic datum first enters the high-temperature expansion.
+nonperturbative magnetic input first enters the high-temperature expansion.
 \end{proof}
 
 \section{Transport and Quark--Gluon Plasma Observables}
@@ -3441,9 +3441,9 @@ which is the diagonal \(SU(3)\) condition after the chosen color-flavor
 identification.  This is the color-flavor locking statement.
 \end{proof}
 
-\begin{definition}[CFL condensate datum]
-\label{def:qcd-cfl-condensate-datum}
-For \(N_c=N_f=3\), a color-flavor-locked Higgs datum is a source-selected or
+\begin{definition}[CFL condensate data]
+\label{def:qcd-cfl-condensate-data}
+For \(N_c=N_f=3\), color-flavor-locked Higgs data are a source-selected or
 gauge-fixed representative of the gauge-covariant pairing tensor
 \[
   \Phi^{ab}_{L,ij}
@@ -3590,7 +3590,7 @@ The diquark field \(\varphi_L\) carries the
 \(\overline{\square}_{\rm color}\) representation, so its gauge-invariant
 finite-volume expectation vanishes unless one first fixes a gauge or uses a
 gauge-covariant source-selected representative as in
-Definition~\ref{def:qcd-cfl-condensate-datum}.
+Definition~\ref{def:qcd-cfl-condensate-data}.
 
 The composites in
 Definition~\ref{def:qcd-cfl-gauge-invariant-diagnostics} are different.
