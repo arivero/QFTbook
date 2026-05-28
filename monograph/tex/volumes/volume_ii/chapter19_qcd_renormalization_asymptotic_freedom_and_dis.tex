@@ -3694,6 +3694,99 @@ elasticity, locality, and regulator hypotheses.  In realistic QCD channels
 one must use the coupled-channel determinant version, because cubic symmetry
 mixes partial waves and inelastic thresholds are often nearby.
 
+\begin{proposition}[Single-channel finite-volume pole reconstruction]
+\label{prop:qcd-single-channel-luscher-kmatrix-pole}
+Assume that, on an open real energy interval \(I\), a QCD channel is
+elastic, has two stable color-singlet particles of masses \(m_1,m_2\), and
+has been reduced, by a stated cubic-irrep analysis, to a single partial wave
+\(\ell\).  Put \(J=\{E^2:E\in I\}\) and
+\[
+  \rho_{12}(s)=\frac{2k(s)}{\sqrt s},
+  \qquad
+  E=\sqrt{m_1^2+k(s)^2}+\sqrt{m_2^2+k(s)^2},
+\]
+for \(s=E^2\in J\), and use the partial-wave normalization
+\[
+  S_\ell(s)=1+2\ii \rho_{12}(s)t_\ell^{(I)}(s)
+  =\ee^{2\ii\delta_\ell(s)} .
+\]
+Then the physical-sheet elastic amplitude is equivalently written
+\begin{equation}
+  t_\ell^{(I)}(s)=
+  \frac{1}{K_\ell^{-1}(s)-\ii\rho_{12}(s)},
+  \qquad
+  K_\ell^{-1}(s)=\rho_{12}(s)\cot\delta_\ell(s),
+  \label{eq:qcd-single-channel-kmatrix-definition}
+\end{equation}
+where \(K_\ell^{-1}(s)\) is real on \(J\).  Each finite-volume energy
+\(E_n\in I\) satisfying
+\eqref{eq:qcd-luscher-single-channel-condition} determines the real-axis
+coordinate
+\begin{equation}
+  K_\ell^{-1}(E_n^2)
+  =
+  -\rho_{12}(E_n^2)\cot\phi_\ell(q_n),
+  \qquad
+  q_n=\frac{k(E_n)L}{2\pi}.
+  \label{eq:qcd-luscher-kmatrix-sample}
+\end{equation}
+If \(K_\ell^{-1}\) and \(\rho_{12}\) have the chosen analytic continuations
+to a simply connected neighborhood of a candidate resonance pole and no
+additional channel threshold crosses that neighborhood, the corresponding
+second-sheet pole \(s_\ast\) is a zero of
+\begin{equation}
+  K_\ell^{-1}(s_\ast)+\ii\rho_{12}(s_\ast)=0 .
+  \label{eq:qcd-single-channel-second-sheet-pole}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Elastic unitarity in the normalization of the proposition says
+\(S_\ell^\ast S_\ell=1\) on \(I\).  Hence
+\[
+  t_\ell^{(I)}(s)
+  =
+  \frac{\ee^{2\ii\delta_\ell(s)}-1}{2\ii\rho_{12}(s)}
+  =
+  \frac{\ee^{\ii\delta_\ell(s)}\sin\delta_\ell(s)}
+       {\rho_{12}(s)}
+\]
+and therefore
+\[
+  \bigl(t_\ell^{(I)}(s)\bigr)^{-1}
+  =
+  \rho_{12}(s)\bigl(\cot\delta_\ell(s)-\ii\bigr).
+\]
+This proves \eqref{eq:qcd-single-channel-kmatrix-definition} and identifies
+the real coordinate \(K_\ell^{-1}=\rho_{12}\cot\delta_\ell\).  At a
+finite-volume level satisfying
+\(\delta_\ell(k_n)+\phi_\ell(q_n)=n\pi\),
+\[
+  \cot\delta_\ell(k_n)
+  =
+  \cot\bigl(n\pi-\phi_\ell(q_n)\bigr)
+  =
+  -\cot\phi_\ell(q_n),
+\]
+which gives \eqref{eq:qcd-luscher-kmatrix-sample}.  Across the elastic
+unitarity cut the chosen branch of the two-body momentum changes sign, so
+\(\rho_{12}\) changes sign while \(K_\ell^{-1}\), being the real analytic
+coordinate fixed on the cut, continues through the same germ.  Thus the
+amplitude on the adjacent sheet is
+\[
+  t_\ell^{(II)}(s)=
+  \frac{1}{K_\ell^{-1}(s)+\ii\rho_{12}(s)} ,
+\]
+and its isolated poles are precisely the zeros of the denominator, giving
+\eqref{eq:qcd-single-channel-second-sheet-pole}.
+\end{proof}
+
+This proposition gives the exact algebraic target of a one-channel
+finite-volume resonance extraction.  A concrete determination of
+\(s_\ast\) also contains an analytic representation or parametrization of
+\(K_\ell^{-1}\), regulator and volume limits for the input energies, and
+separate bounds for neglected partial waves and inelastic channels.
+
 \begin{definition}[QCD resonance pole datum]
 \label{def:qcd-resonance-pole-datum}
 A hadronic resonance datum consists of a channel space of stable

@@ -89,11 +89,35 @@ def check_rotating_string_slope_coefficient() -> None:
     )
 
 
+def check_luscher_kmatrix_pole_algebra() -> None:
+    # From delta + phi = n*pi, cot(delta) = -cot(phi).  With
+    # K^{-1}=rho*cot(delta), finite-volume levels therefore sample
+    # K^{-1}=-rho*cot(phi).  Use rationals for an exact representative.
+    rho = Fraction(5, 7)
+    cot_phi = Fraction(-11, 13)
+    cot_delta = -cot_phi
+    assert_equal("Luscher cotangent sign", rho * cot_delta, -rho * cot_phi)
+
+    # With t_I = 1/(K^{-1} - i*rho), the adjacent second sheet is
+    # t_II = 1/(K^{-1} + i*rho).  For K^{-1}(s)=(s-M^2)/g^2 and locally
+    # constant rho, the pole is s_* = M^2 - i g^2 rho.  Check the real
+    # and imaginary parts of the denominator separately.
+    mass_sq = Fraction(19, 3)
+    coupling_sq = Fraction(2, 5)
+    pole_real = mass_sq
+    pole_imag = -coupling_sq * rho
+    denominator_real = (pole_real - mass_sq) / coupling_sq
+    denominator_imag = pole_imag / coupling_sq + rho
+    assert_equal("second-sheet pole denominator real part", denominator_real, Fraction(0))
+    assert_equal("second-sheet pole denominator imaginary part", denominator_imag, Fraction(0))
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
+    check_luscher_kmatrix_pole_algebra()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

@@ -825,8 +825,10 @@ Current checks:
 - `qcd_spectroscopy_regge_checks.py`: exact algebra checks for the QCD
   hadron-spectroscopy and Regge sections, including the octet
   Gell-Mann--Okubo relation, decuplet equal spacing, Veneziano-residue
-  polynomial degrees and coefficients, and the rational coefficient in the
-  classical open-flux-tube Regge slope.
+  polynomial degrees and coefficients, the rational coefficient in the
+  classical open-flux-tube Regge slope, and the one-channel
+  Luescher/K-matrix sign convention that maps finite-volume energies to a
+  second-sheet pole equation.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
   and topological-charge normalization on the \(\CP^1\) chart,
