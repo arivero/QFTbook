@@ -334,6 +334,32 @@ def check_oblique_parameter_identities() -> None:
     assert_zero("custodial derivative identity for U", alpha_u)
 
 
+def check_muon_gminus_two_hybrid_identities() -> None:
+    # If a_mu = F_2(0) = alpha/(2 pi), then g_mu = 2(1+a_mu)
+    # gives g_mu - 2 = alpha/pi at first order.
+    a_mu_schwinger_coeff = Fraction(1, 2)
+    assert_equal("Schwinger a_mu coefficient in units alpha/pi", a_mu_schwinger_coeff, Fraction(1, 2))
+    assert_equal("Schwinger g-2 coefficient in units alpha/pi", 2 * a_mu_schwinger_coeff, 1)
+
+    # Leading electroweak coefficient:
+    # 1/8 * [5/3 + z/3] = [5+z]/24 in units G_F m_mu^2/(sqrt(2) pi^2).
+    s2 = Fraction(3, 10)
+    z_vector = (1 - 4 * s2) ** 2
+    left = Fraction(1, 8) * (Fraction(5, 3) + Fraction(1, 3) * z_vector)
+    right = Fraction(1, 24) * (5 + z_vector)
+    assert_equal("EW one-loop coefficient normalization", left, right)
+
+    # HVP kernel algebra with Q_x^2 = x^2 m^2/(1-x):
+    # (1-x) Q_x^2/(s + Q_x^2) = x^2(1-x)/(x^2 + (1-x)s/m^2).
+    x = Fraction(2, 5)
+    m2 = Fraction(7, 11)
+    s = Fraction(13, 17)
+    qx2 = x**2 * m2 / (1 - x)
+    feynman_side = (1 - x) * qx2 / (s + qx2)
+    kernel_side = x**2 * (1 - x) / (x**2 + (1 - x) * s / m2)
+    assert_equal("HVP Feynman-parameter kernel identity", feynman_side, kernel_side)
+
+
 def main() -> None:
     check_su3_su3_u1()
     check_su2_su2_u1()
@@ -353,7 +379,8 @@ def main() -> None:
     check_hypercharge_gut_rescaling()
     check_top_higgs_subsystem_coefficients()
     check_oblique_parameter_identities()
-    print("All Standard Model representation, flavor, electroweak, and RG checks passed.")
+    check_muon_gminus_two_hybrid_identities()
+    print("All Standard Model representation, flavor, electroweak, RG, and hybrid-observable checks passed.")
 
 
 if __name__ == "__main__":

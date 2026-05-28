@@ -1494,6 +1494,371 @@ renormalization of hadronic weak operators, electromagnetic corrections, CKM
 factors, and matrix elements of the resulting four-fermion operators are
 separate parts of the low-energy hybrid datum.
 
+\section{Muon \texorpdfstring{\(g-2\)}{g-2} as a Hybrid Prediction}
+
+The anomalous magnetic moment of the muon is a useful organizing example
+because it is a single low-energy form-factor coordinate whose Standard Model
+evaluation uses all parts of
+\(\mathfrak D_{\rm SM}\): perturbative QED, perturbative electroweak matching,
+and nonperturbative QCD current correlators.
+
+\begin{definition}[Muon Pauli-coordinate observable]
+\label{def:sm-muon-gminus-two-observable}
+Let \(\ell=\mu\) be the charged-lepton field in the low-energy EFT and let
+\(J_{\rm em}^\mu\) be the electromagnetic current normalized so that the muon
+has charge \(-e\), \(e>0\).  Since the muon has weak decay channels, the
+magnetic moment used here is the real Pauli-operator coordinate in the
+low-energy effective Hamiltonian for a one-muon wave packet, equivalently the
+real part of the Pauli form factor obtained after matching the
+\(\mu\mu\gamma\) vertex and separating absorptive decay operators.  In the
+zero-width projection used for this matching, define the Dirac--Pauli form
+factors by
+\[
+  \langle p',\sigma'|J_{\rm em}^\mu(0)|p,\sigma\rangle
+  =
+  -\frac{\ii e}{(2\pi)^3}
+  \bar u_{\sigma'}(p')
+  \left[
+    \gamma^\mu F_1^\mu(k^2)
+    +
+    \frac1{m_\mu}S^{\mu\nu}k_\nu F_2^\mu(k^2)
+  \right]
+  u_\sigma(p),
+  \qquad k:=p-p',
+  \label{eq:sm-muon-dirac-pauli-form-factors}
+\]
+with \(S^{\mu\nu}:=-\ii[\gamma^\mu,\gamma^\nu]/4\) in the mostly-plus
+spinor convention of Section~\ref{sec:spinor-conventions}.  The charge
+normalization is \(F_1^\mu(0)=1\).  The muon anomalous magnetic moment is
+\[
+  a_\mu:=\frac{g_\mu-2}{2}:=F_2^\mu(0).
+  \label{eq:sm-muon-anomalous-magnetic-moment}
+\]
+\end{definition}
+
+\begin{proposition}[First QED term]
+\label{prop:sm-muon-schwinger-term}
+In the QED hard-kernel convention of
+Chapter~\ref{ch:qed-renormalization-form-factors},
+\[
+  a_\mu^{\rm QED,1}=\frac{\alpha}{2\pi},
+  \qquad
+  \alpha:=\frac{e^2}{4\pi}.
+  \label{eq:sm-muon-schwinger-term}
+\]
+\end{proposition}
+
+\begin{proof}
+Chapter~\ref{ch:qed-renormalization-form-factors} defines a form-factor basis
+\((F,G)\) in which \(F_2^{\rm DP}(0)=-G(0)\).  The one-loop vertex
+calculation gives \(G(0)=-\alpha/(2\pi)\).  Substituting this relation into
+Definition~\ref{def:sm-muon-gminus-two-observable} gives
+\(a_\mu=F_2^\mu(0)=\alpha/(2\pi)\) at first order in QED.  The lepton mass
+enters the loop integral but cancels from the zero-transfer dimensionless
+coefficient, as shown explicitly in
+Proposition~\ref{prop:qed-one-loop-vertex-schwinger}.
+\end{proof}
+
+\begin{definition}[Hybrid decomposition through a declared order]
+\label{def:sm-muon-gminus-two-hybrid-decomposition}
+Fix a renormalization scheme, an input-parameter chart, and a maximum order in
+the electromagnetic, weak, and QCD matching expansions.  The corresponding
+Standard Model source-coordinate prediction for \(a_\mu\) is written
+\[
+  a_\mu^{\rm SM}
+  =
+  a_\mu^{\rm QED}
+  +a_\mu^{\rm EW}
+  +a_\mu^{\rm HVP}
+  +a_\mu^{\rm HLbL}
+  +a_\mu^{\rm rem}.
+  \label{eq:sm-muon-gminus-two-hybrid-decomposition}
+\]
+Here \(a_\mu^{\rm QED}\) contains the purely leptonic and photon
+contributions in the low-energy QED EFT; \(a_\mu^{\rm EW}\) contains diagrams
+or matched Pauli-operator coefficients with at least one \(W,Z,h\), or weak
+Goldstone/ghost representative in a gauge-fixed computation;
+\(a_\mu^{\rm HVP}\) contains contributions in which the photon propagator is
+corrected by the gauge-invariant hadronic electromagnetic current two-point
+function; \(a_\mu^{\rm HLbL}\) contains the hadronic electromagnetic
+four-current contribution coupled to the muon line by photons; and
+\(a_\mu^{\rm rem}\) records the declared higher-order remainder and any
+separation-scheme convention.
+\end{definition}
+
+\begin{proposition}[Leading electroweak Pauli coefficient]
+\label{prop:sm-muon-leading-electroweak}
+In the broken-phase electroweak source chart, and at leading order in
+\(m_\mu^2/m_W^2\), \(m_\mu^2/m_Z^2\), and \(m_\mu^2/m_h^2\), the one-loop weak
+contribution to the muon Pauli coordinate is
+\[
+  a_\mu^{\rm EW,1}
+  =
+  \frac{G_Fm_\mu^2}{8\sqrt2\pi^2}
+  \left[
+    \frac53+\frac13(1-4s_W^2)^2
+  \right]
+  +
+  O\!\left(\frac{G_Fm_\mu^4}{m_W^2}\right),
+  \label{eq:sm-muon-leading-electroweak}
+\]
+where \(s_W^2=g_1^2/(g_1^2+g_2^2)\) in the convention
+\(Q=T^3+Y\).
+\end{proposition}
+
+\begin{proof}
+The weak contribution is the coefficient of the dimension-five Pauli operator
+\[
+  \frac{e}{4m_\mu}a_\mu\,
+  \bar\mu[\gamma^\mu,\gamma^\nu]\mu\,F_{\mu\nu}
+  \label{eq:sm-muon-pauli-operator}
+\]
+in the low-energy QED EFT obtained after integrating out \(W,Z,h\).  At one
+loop the coefficient is obtained by matching the on-shell
+\(\mu\mu\gamma\) vertex in the electroweak theory to the same vertex in the
+low-energy EFT, expanded in external momenta over \(m_W,m_Z,m_h\).
+Gauge-parameter dependence cancels in the sum of vector, Goldstone, and ghost
+representatives because the Pauli operator is electromagnetic-gauge invariant
+and the matching is performed between physical on-shell matrix elements.
+
+The charged-current \(W\)-sector diagrams give the heavy-vector coefficient
+\[
+  \frac{G_Fm_\mu^2}{8\sqrt2\pi^2}\,\frac53 .
+  \label{eq:sm-muon-w-coefficient}
+\]
+The neutral-current \(Z\)-sector contribution depends on the vector coupling
+of the \(Z\) to the muon.  With
+\[
+  J_Z^\mu
+  =
+  \bar\mu\gamma^\mu
+  \bigl(g_LP_L+g_RP_R\bigr)\mu,
+  \qquad
+  g_L=-\frac12+s_W^2,\qquad g_R=s_W^2,
+\]
+the vector-minus-axial combination entering the leading Pauli coefficient
+reduces, after using \(G_F/\sqrt2=1/(2v^2)\), to
+\[
+  \frac{G_Fm_\mu^2}{8\sqrt2\pi^2}\,
+  \frac13(1-4s_W^2)^2 .
+  \label{eq:sm-muon-z-coefficient}
+\]
+The Higgs contribution is suppressed by an additional factor
+\(m_\mu^2/m_h^2\) because both the Higgs coupling and the chirality flip are
+proportional to the muon Yukawa coordinate.  Adding the charged and neutral
+leading terms gives \eqref{eq:sm-muon-leading-electroweak}.  This is a
+short-distance matching statement in the electroweak EFT; higher weak loops
+and mixed electroweak-hadronic terms are separate entries in
+\(a_\mu^{\rm rem}\) unless explicitly included in the declared order.
+\end{proof}
+
+\begin{definition}[Hadronic vacuum polarization from QCD current data]
+\label{def:sm-muon-hvp-current-data}
+Let
+\[
+  J_{\rm had}^\mu
+  =
+  \sum_{q} Q_q\,\bar q\gamma^\mu q
+  \label{eq:sm-hadronic-em-current}
+\]
+be the quark part of the electromagnetic current, with the sum taken over the
+active quark fields in the chosen low-energy QCD description and with the
+current renormalized in the declared regulator.  The connected transverse
+current two-point function defines a scalar polarization by
+\[
+  \ii\int \dd^4x\,\ee^{\ii q\cdot x}
+  \langle\vac|\operatorname T J_{\rm had}^\mu(x)J_{\rm had}^\nu(0)|\vac\rangle_{\rm conn}
+  =
+  (q^\mu q^\nu-q^2\eta^{\mu\nu})\Pi_{\rm had}(q^2)
+  +\text{local contact terms}.
+  \label{eq:sm-hvp-lorentzian-polarization}
+\]
+The charge-subtracted coordinate is
+\[
+  \widehat\Pi_{\rm had}(q^2):=\Pi_{\rm had}(q^2)-\Pi_{\rm had}(0),
+  \label{eq:sm-hvp-subtracted-pi}
+\]
+where the subtraction is part of the electromagnetic input normalization.
+\end{definition}
+
+\begin{proposition}[Dispersive form of leading HVP]
+\label{prop:sm-muon-hvp-dispersive}
+Assume the hadronic current two-point function has a positive spectral
+representation and no massless hadronic state in the electromagnetic channel.
+Let
+\[
+  R_{\rm had}(s):=
+  \frac{\sigma(e^+e^-\to{\rm hadrons};s)}
+       {4\pi\alpha^2/(3s)}
+  \label{eq:sm-rhad-definition}
+\]
+be the spectral density in the standard electromagnetic normalization.  QED
+vacuum-polarization effects are removed according to the same input scheme.
+Then the leading HVP contribution is
+\[
+  a_\mu^{\rm HVP,LO}
+  =
+  \frac13\left(\frac{\alpha}{\pi}\right)^2
+  \int_{s_0}^{\infty}\frac{\dd s}{s}\,
+  K_{\rm HVP}(s)\,R_{\rm had}(s),
+  \label{eq:sm-hvp-dispersive}
+\]
+where \(s_0\) is the hadronic threshold and
+\[
+  K_{\rm HVP}(s)
+  :=
+  \int_0^1\dd x\,
+  \frac{x^2(1-x)}
+       {x^2+(1-x)s/m_\mu^2}.
+  \label{eq:sm-hvp-kernel}
+\]
+\end{proposition}
+
+\begin{proof}
+The photon-line insertion in the one-loop Pauli form-factor calculation gives
+the Euclidean-momentum representation
+\[
+  a_\mu^{\rm HVP,LO}
+  =
+  \frac{\alpha}{\pi}
+  \int_0^1\dd x\,(1-x)
+  \bigl[-4\pi\alpha\,\widehat\Pi_{\rm had}(-Q_x^2)\bigr],
+  \qquad
+  Q_x^2:=\frac{x^2}{1-x}m_\mu^2,
+  \label{eq:sm-hvp-feynman-parameter}
+\]
+with the same Pauli projection as in
+Proposition~\ref{prop:qed-one-loop-vertex-schwinger}.  The once-subtracted
+spectral representation of the hadronic current correlator is
+\[
+  -4\pi\alpha\,\widehat\Pi_{\rm had}(-Q^2)
+  =
+  \frac{\alpha}{3\pi}
+  \int_{s_0}^{\infty}\dd s\,
+  \frac{Q^2}{s(s+Q^2)}R_{\rm had}(s).
+  \label{eq:sm-hvp-subtracted-dispersion}
+\]
+Substitute \(Q^2=Q_x^2\) into
+\eqref{eq:sm-hvp-feynman-parameter}, interchange the positive \(x\)- and
+\(s\)-integrals, and use
+\[
+  (1-x)\frac{Q_x^2}{s+Q_x^2}
+  =
+  \frac{x^2(1-x)}
+       {x^2+(1-x)s/m_\mu^2}.
+\]
+This gives \eqref{eq:sm-hvp-dispersive}.  The formula is therefore not a
+perturbative expansion of QCD: all hadronic dynamics is in the spectral
+function \(R_{\rm had}\), equivalently in the current-current correlator of
+Definition~\ref{def:sm-muon-hvp-current-data}.
+\end{proof}
+
+\begin{definition}[Euclidean lattice HVP coordinate]
+\label{def:sm-muon-lattice-hvp-coordinate}
+In a Euclidean nonperturbative QCD regulator, define the zero-spatial-momentum
+current correlator
+\[
+  G(t)
+  :=
+  \frac13\sum_{i=1}^3
+  \int_{\mathbb R^3}\dd^3\vec x\,
+  \langle J_{\rm had}^i(t,\vec x)J_{\rm had}^i(0,\vec0)\rangle_E ,
+  \qquad t\ge0,
+  \label{eq:sm-hvp-euclidean-gt}
+\]
+with the conserved or renormalized lattice current declared as part of
+\(\mathfrak D_{\rm QCD}^{\rm lat}\).  The subtracted Euclidean polarization is
+then equivalently encoded by
+\[
+  \widehat\Pi_E(Q^2)
+  =
+  \int_0^\infty \dd t\,G(t)
+  \left[
+    t^2-\frac{4}{Q^2}\sin^2\!\left(\frac{Qt}{2}\right)
+  \right],
+  \label{eq:sm-hvp-time-momentum-pi}
+\]
+which fixes the normalization convention for \(G(t)\) relative to
+\(\widehat\Pi_E\); on a finite lattice the corresponding current
+renormalization factor is part of the regulator datum.  Combining this
+identity with the Euclidean form of \eqref{eq:sm-hvp-feynman-parameter} gives
+\[
+  a_\mu^{\rm HVP,LO}
+  =
+  \left(\frac{\alpha}{\pi}\right)^2
+  \int_0^\infty\dd t\,\widetilde K_\mu(t)\,G(t),
+  \label{eq:sm-hvp-time-momentum}
+\]
+where \(\widetilde K_\mu\) is the positive QED kernel obtained by performing
+the \(Q^2\)- or Feynman-parameter integral after inserting
+\eqref{eq:sm-hvp-time-momentum-pi}.  The lattice prediction additionally
+requires continuum, infinite-volume, physical-mass, isospin-breaking, and QED
+correction data; these are entries of \(\mathcal M\), not optional refinements.
+\end{definition}
+
+\begin{definition}[Hadronic light-by-light coordinate]
+\label{def:sm-muon-hlbl-coordinate}
+The hadronic light-by-light contribution is defined from the connected
+Euclidean four-current correlator
+\[
+  \Pi_{\mu\nu\rho\sigma}(x,y,z)
+  :=
+  \langle
+    J_{\rm had}^\mu(x)J_{\rm had}^\nu(y)
+    J_{\rm had}^\rho(z)J_{\rm had}^\sigma(0)
+  \rangle_{E,\rm conn}
+  \label{eq:sm-hlbl-four-current}
+\]
+by convolution with the exactly known QED muon-line kernel
+\(\mathcal K_{\mu\nu\rho\sigma}(x,y,z;m_\mu)\):
+\[
+  a_\mu^{\rm HLbL}
+  =
+  \int \dd^4x\,\dd^4y\,\dd^4z\,
+  \mathcal K_{\mu\nu\rho\sigma}(x,y,z;m_\mu)\,
+  \Pi^{\mu\nu\rho\sigma}(x,y,z),
+  \label{eq:sm-hlbl-master-coordinate}
+\]
+with the current normalization, contact-term subtraction, finite-volume
+treatment, and QED infrared regulator specified in \(\mathcal M\).  Dispersive
+descriptions of the same coordinate decompose the four-current spectral data
+into intermediate-channel amplitudes; lattice descriptions compute the
+four-current Schwinger function directly.  The equality of these descriptions,
+when both are available, is a nontrivial matching statement about the same
+QCD-defined current correlator.
+\end{definition}
+
+\begin{proposition}[Certification of the \(a_\mu\) prediction]
+\label{prop:sm-muon-gminus-two-certification}
+A value assigned to \(a_\mu^{\rm SM}\) is certified in the sense of
+Definition~\ref{def:sm-hybrid-prediction} only after the following data have
+been declared:
+\begin{enumerate}
+\item the lepton-sector QED perturbative order and charge scheme;
+\item the electroweak input scheme and the order of weak matching;
+\item the HVP source, either a dispersive spectral function with its
+      radiative-correction convention or a lattice current correlator with its
+      continuum and infinite-volume extrapolations;
+\item the HLbL four-current treatment and its contact-term convention;
+\item the combination rule for correlations among input parameters and
+      systematic uncertainties.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Definition~\ref{def:sm-muon-gminus-two-observable} identifies \(a_\mu\) as a
+single Pauli-form-factor coordinate.  The decomposition
+\eqref{eq:sm-muon-gminus-two-hybrid-decomposition} is not a decomposition of
+the observable itself; it is a decomposition of its computation in a declared
+source chart.  The QED and electroweak entries are perturbative Pauli-operator
+matching coefficients.  The HVP and HLbL entries are functionals of
+gauge-invariant QCD current correlators, defined either by a spectral
+representation or by a finite regulator such as the lattice.  Changing any
+item in the list changes the coordinate map from the hybrid datum to the
+number called \(a_\mu^{\rm SM}\).  Thus the listed data are necessary for the
+five certification requirements in Definition~\ref{def:sm-hybrid-prediction}.
+\end{proof}
+
 \begin{openproblem}[Constructive Standard Model]
 \label{op:constructive-standard-model}
 Construct a continuum local QFT realizing the Standard Model representation

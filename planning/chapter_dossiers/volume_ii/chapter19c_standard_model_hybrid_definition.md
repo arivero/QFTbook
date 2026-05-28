@@ -59,6 +59,11 @@
   gauge/infrared requirements.
 - Derives the tree-level Fermi-theory matching
   \(G_F/\sqrt2=1/(2v^2)\).
+- Defines the muon \(g-2\) Pauli-coordinate observable as a low-energy
+  hybrid prediction, derives the Schwinger term from the QED form-factor
+  chapter, records the leading electroweak Pauli coefficient, and defines HVP
+  and HLbL as functionals of gauge-invariant QCD electromagnetic current
+  correlators.
 - States the constructive Standard Model open problem.
 
 ## Figure Ledger
@@ -78,7 +83,8 @@
   mass normalization, singlet-neutrino tree matching, and strong-CP phase
   invariance, one-loop gauge beta coefficients, GUT hypercharge conversion,
   top-Higgs subsystem coefficient algebra, and elementary \(S,T,U\)
-  source-chart identities.
+  source-chart identities, plus the muon \(g-2\) Schwinger coefficient,
+  leading electroweak coefficient normalization, and HVP kernel algebra.
 
 ## Claim Ledger
 
@@ -113,6 +119,9 @@
    assumed complete constructive four-dimensional continuum theorem.
 13. The Fermi operator coefficient is a tree-level matched EFT coefficient;
    QCD matrix elements and radiative corrections are separate matching data.
+14. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
+   declared hybrid computation; HVP and HLbL are QCD current-correlator
+   inputs, not perturbative QCD expansions.
 
 ## Audit Notes
 

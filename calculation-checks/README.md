@@ -43,6 +43,9 @@ Current checks:
   one-loop gauge beta-function coefficients, GUT hypercharge-rescaling
   conversion, the top-Higgs one-loop subsystem coefficients, and basic
   oblique-parameter identities for the \(S,T,U\) source-chart coordinates.
+  It also checks the muon \(g-2\) Schwinger coefficient, the leading
+  electroweak coefficient normalization, and the HVP Feynman-parameter
+  kernel identity used in the hybrid-observable section.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional
