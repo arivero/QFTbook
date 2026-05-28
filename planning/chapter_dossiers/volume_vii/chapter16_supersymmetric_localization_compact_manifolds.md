@@ -110,7 +110,11 @@
     to the standard \(U(N)\) one-instanton fixed-point sum for one box.
 11. The equality between the Gieseker-resolved equivariant integral and the
     \(S^4\) field-theoretic localized path integral is recorded as a
-    field-theoretic matching hypothesis unless a regulator proves it.
+    field-theoretic matching hypothesis unless a regulator proves it.  The
+    chapter now cross-references the finite BV boundary-obstruction formula:
+    a smooth-stratum pushforward fails the residual QME by the
+    small-instanton boundary functional unless a resolution, relative cycle,
+    residue datum, or vanishing theorem cancels it.
 12. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the planar

@@ -22,6 +22,11 @@ analysis before invoking the identities here.
 - Gauge-fixing independence under Lagrangian cobordism.
 - BV pushforward along a fluctuation Lagrangian and preservation of the
   quantum master equation.
+- BV pushforward with fluctuation boundary:
+  \(\Delta_{\rm res}\pi_*\rho=-\mathcal B_{\partial\mathcal L}(\rho)\).
+- Singular-stratum boundary data for localized gauge-theory moduli spaces,
+  including the precise obstruction term and the resolution/relative-cycle/
+  residue data required to cancel it.
 - \(Q\)-exact deformation invariance for finite-dimensional cohomological
   integrals under the explicit hypothesis \(\int_M Q\beta=0\).
 - One-loop normal form and the
@@ -50,8 +55,10 @@ analysis before invoking the identities here.
 | \(\mathcal L\) | Lagrangian gauge-fixing cycle |
 | \(\mathcal F_{\rm res},\mathcal F_{\rm fluc}\) | residual and fluctuation BV variables |
 | \(\pi_*\rho\) | BV pushforward semidensity |
+| \(\mathcal B_{\partial\mathcal L}\) | boundary functional of a fluctuation Lagrangian cycle |
 | \(Q,V,I(t)\) | cohomological differential, odd deformation functional, and deformed integral |
 | \(F,N_F,e_Q(N_F)\) | localization fixed locus, normal bundle, and equivariant Euler class |
+| \(\mathcal M^{\rm sm},S_\alpha,\widetilde{\mathcal M}\) | smooth fixed locus, singular strata, and resolved fixed locus |
 | \(A,B\) | even symmetric and odd antisymmetric normal quadratic operators |
 | \(\Theta_{t,a}\) | rank-one Mathai--Quillen Thom density |
 | \(V,\lambda,H,\Omega_\lambda\) | circle generator, equivariant parameter, moment map, and equivariantly closed form in the \(S^2\) model |
@@ -70,23 +77,31 @@ analysis before invoking the identities here.
    cobordism swept by the family of gauge-fixing cycles.
 6. BV pushforward preserves the quantum master equation after the fluctuation
    BV Laplacian integrates to zero on the chosen Lagrangian cycle.
-7. \(Q\)-exact localization is valid exactly when the integration functional
+7. If the fluctuation Lagrangian has boundary, BV pushforward obeys
+   \(\Delta_{\rm res}\pi_*\rho=-\mathcal B_{\partial\mathcal L}(\rho)\);
+   the boundary functional must vanish or be cancelled by additional data.
+8. Singular fixed-locus strata are BV boundary data.  Smooth-stratum
+   localization satisfies the residual QME only after vanishing,
+   relative-cycle, resolution, or residue data have cancelled the stratum
+   boundary functional.
+9. \(Q\)-exact localization is valid exactly when the integration functional
    annihilates \(Q\)-exact terms in the class under consideration.
-8. The normal localization factor is
+10. The normal localization factor is
    \(\operatorname{Pf}(B)/\sqrt{\det A}\) after Gaussian rescaling and
    determinant-line orientation choices.
-9. The rank-one Mathai--Quillen density integrates to the local degree of the
+11. The rank-one Mathai--Quillen density integrates to the local degree of the
    section at its transverse zero.
-10. The \(S^2\) equivariant integral equals the sum of the north and south
+12. The \(S^2\) equivariant integral equals the sum of the north and south
     fixed-point contributions with weights \(w_N=1\) and \(w_S=-1\).
-11. Noncompact ends, boundaries, reducible connections, small instantons, and
+13. Noncompact ends, boundaries, reducible connections, small instantons, and
     residue prescriptions are part of the data required for any
     infinite-dimensional localization statement.
 
 ## Calculation Checks
 
 - `calculation-checks/bv_localization_checks.py` verifies the one-pair BV
-  Laplacian product identity, BV Stokes endpoint formula, normal
+  Laplacian product identity, BV Stokes endpoint formula, the finite
+  residual/fluctuation boundary-obstruction model, normal
   Pfaffian/determinant factor, rank-one Mathai--Quillen normalization, and
   the \(S^2\) fixed-point coefficient identity.
 

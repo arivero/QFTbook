@@ -3,9 +3,9 @@
 
 The script checks finite-dimensional algebra used in Volume VIII, Chapter 10:
 the one-pair BV Laplacian identity, BV Stokes as an endpoint statement, the
-normal Gaussian determinant factor, and the rank-one Mathai-Quillen
-normalization.  It does not model an infinite-dimensional gauge-theory
-functional integral.
+BV-pushforward boundary obstruction, the normal Gaussian determinant factor,
+and the rank-one Mathai-Quillen normalization.  It does not model an
+infinite-dimensional gauge-theory functional integral.
 """
 
 from __future__ import annotations
@@ -111,6 +111,36 @@ def check_bv_stokes_endpoint_term() -> None:
     )
 
 
+def check_bv_pushforward_boundary_obstruction() -> None:
+    # Toy product BV space with residual pair (r, eta) and fluctuation pair
+    # (x, xi).  Let
+    #   rho = r eta - x xi
+    # so Delta_res rho = 1 and Delta_fluc rho = -1.  Thus the full QME
+    # Delta rho=0 holds, but the fluctuation Lagrangian x in [0,1], xi=0 has
+    # a nonzero boundary functional C(1)-C(0)=-1 from the xi coefficient
+    # C(x)=-x.  The pushed residual semidensity is r eta, whose residual
+    # Laplacian is 1 = - boundary.
+    delta_res_r_eta = Fraction(1)
+    delta_fluc_minus_x_xi = Fraction(-1)
+    assert_equal(
+        "product BV QME before pushforward",
+        delta_res_r_eta + delta_fluc_minus_x_xi,
+        Fraction(0),
+    )
+
+    pushed_residual_laplacian = delta_res_r_eta
+    boundary_functional = eval_poly(poly(0, -1), Fraction(1)) - eval_poly(
+        poly(0, -1),
+        Fraction(0),
+    )
+    assert_equal("BV fluctuation boundary functional", boundary_functional, Fraction(-1))
+    assert_equal(
+        "BV pushforward boundary obstruction",
+        pushed_residual_laplacian,
+        -boundary_functional,
+    )
+
+
 def determinant(matrix: list[list[Fraction]]) -> Fraction:
     n = len(matrix)
     if n == 0:
@@ -192,6 +222,7 @@ def check_s2_fixed_point_series() -> None:
 def main() -> None:
     check_bv_product_identity()
     check_bv_stokes_endpoint_term()
+    check_bv_pushforward_boundary_obstruction()
     check_gaussian_normal_factor()
     check_mathai_quillen_rank_one()
     check_s2_fixed_point_series()

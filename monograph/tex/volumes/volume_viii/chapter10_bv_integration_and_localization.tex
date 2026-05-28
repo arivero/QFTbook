@@ -279,12 +279,183 @@ the fluctuation variables.  The observable statement is the same calculation
 with \(\rho\) replaced by \(\mathcal O\rho\).
 \end{proof}
 
+\begin{definition}[Boundary functional of a fluctuation cycle]
+\label{def:bv-fluctuation-boundary-functional}
+Let \(\mathcal L_{\rm fluc}\) be a fluctuation Lagrangian cycle with boundary.
+For a semidensity \(\sigma=f\,\mu^{1/2}\) on
+\(\mathcal F_{\rm fluc}\), define
+\(\mathcal B_{\partial\mathcal L_{\rm fluc}}(\sigma)\) by
+\[
+  \int_{\mathcal L_{\rm fluc}}(\Delta_{\rm fluc}\sigma)|_{\mathcal L_{\rm fluc}}
+  =
+  \mathcal B_{\partial\mathcal L_{\rm fluc}}(\sigma).
+  \label{eq:bv-boundary-functional-definition}
+\]
+In a Darboux chart in which
+\(\mathcal L_{\rm fluc}=\{\xi_i=0\}\), this boundary functional is the
+ordinary Stokes boundary integral of the vector density with components
+\[
+  (-1)^{|x^i|}
+  \left.
+  \frac{\partial f}{\partial \xi_i}
+  \right|_{\xi=0}.
+  \label{eq:bv-boundary-vector-density}
+\]
+The coordinate-independence is precisely the boundary version of
+Theorem~\ref{thm:finite-bv-stokes}.
+\end{definition}
+
+\begin{proposition}[BV pushforward with fluctuation boundary]
+\label{prop:bv-pushforward-boundary-obstruction}
+Let \(\mathcal F=\mathcal F_{\rm res}\times\mathcal F_{\rm fluc}\) and let
+\(\mathcal L_{\rm fluc}\subset\mathcal F_{\rm fluc}\) be a fluctuation
+Lagrangian cycle with boundary.  Assume that all integrations converge and
+that \(\rho\) obeys the full finite-dimensional QME
+\(\Delta_{\mathcal F}\rho=0\).  Then the pushed semidensity satisfies
+\[
+  \Delta_{\rm res}(\pi_*\rho)
+  =
+  -\mathcal B_{\partial\mathcal L_{\rm fluc}}(\rho).
+  \label{eq:bv-pushforward-boundary-obstruction}
+\]
+Thus BV pushforward preserves the QME if and only if the displayed boundary
+functional vanishes or is cancelled by an additional boundary, residue, or
+regulator contribution.  The same formula holds with \(\rho\) replaced by
+\(\mathcal O\rho\) for quantum observables.
+\end{proposition}
+
+\begin{proof}
+As in Theorem~\ref{thm:bv-pushforward-qme-preservation},
+\(\Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}\).  Therefore
+\[
+  \Delta_{\rm res}\pi_*\rho
+  =
+  \int_{\mathcal L_{\rm fluc}}
+  (\Delta_{\rm res}\rho)|_{\mathcal L_{\rm fluc}}
+  =
+  -\int_{\mathcal L_{\rm fluc}}
+  (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
+  \label{eq:bv-boundary-pushforward-proof}
+\]
+Definition~\ref{def:bv-fluctuation-boundary-functional} identifies the last
+integral with the boundary functional.  This proves
+\eqref{eq:bv-pushforward-boundary-obstruction}.  The observable statement is
+identical after replacing \(\rho\) by \(\mathcal O\rho\).
+\end{proof}
+
 In field theory this theorem is the finite-dimensional model for Wilsonian
 integration of BV fields.  A regulator must provide a finite-dimensional
 replacement or a trace-class analogue of the split above.  If
 \(\Delta\rho=\mathcal A\rho\), the semidensity \(\mathcal A\rho\) is the
 finite-dimensional anomaly insertion; the pushforward preserves the anomaly
 class rather than producing a solution of the quantum master equation.
+
+\section{Singular Strata As BV Boundary Data}
+\label{sec:bv-singular-strata-boundary-data}
+
+Gauge-theoretic localization often integrates over a smooth moduli stratum
+whose natural compactification has additional strata.  Let
+\(\mathcal M^{\rm sm}\) denote the smooth locus and let
+\[
+  \overline{\mathcal M}
+  =
+  \mathcal M^{\rm sm}\sqcup\bigsqcup_\alpha S_\alpha
+  \label{eq:moduli-compactification-strata}
+\]
+be a stratified compactification.  In applications \(S_\alpha\) may be a
+reducible-connection stratum, a singular-monopole stratum, or the
+small-instanton stratum of an Uhlenbeck compactification.  A BV localization
+argument over \(\mathcal M^{\rm sm}\) is not complete until it states the
+boundary functional produced by the strata \(S_\alpha\).
+
+\begin{definition}[Boundary-cancellation datum]
+\label{def:boundary-cancellation-datum}
+For a regulated BV localization problem with smooth fixed locus
+\(\mathcal M^{\rm sm}\) and compactification
+\eqref{eq:moduli-compactification-strata}, a boundary-cancellation datum
+consists of one of the following:
+\begin{enumerate}
+  \item vanishing of every stratum functional,
+  \(\mathcal B_{S_\alpha}(\rho)=0\);
+  \item a relative integration cycle whose boundary cancels
+  \(\sum_\alpha\mathcal B_{S_\alpha}(\rho)\);
+  \item a resolved regulated fixed locus
+  \(\widetilde{\mathcal M}\to\overline{\mathcal M}\) with an induced
+  semidensity \(\widetilde\rho\);
+  \item a finite-dimensional contour or residue rule whose Stokes boundary
+  equals \(-\sum_\alpha\mathcal B_{S_\alpha}(\rho)\).
+\end{enumerate}
+In the resolution case the necessary equality is the identity of pushed
+residual semidensities
+\[
+  \pi_*^{\widetilde{\mathcal M}}\widetilde\rho
+  =
+  \pi_*^{\mathcal M^{\rm sm}}\rho
+  +
+  \sum_\alpha C_\alpha,
+  \qquad
+  \Delta_{\rm res} C_\alpha
+  =
+  \mathcal B_{S_\alpha}(\rho),
+  \label{eq:resolved-boundary-cancellation-datum}
+\]
+where \(C_\alpha\) is the contribution supported over the exceptional or
+relative piece replacing \(S_\alpha\).  Equation
+\eqref{eq:resolved-boundary-cancellation-datum} is data to be proved from
+the regulator; it is not implied by writing a compactification symbol.
+\end{definition}
+
+\begin{proposition}[Singular-stratum obstruction to localized QME]
+\label{prop:singular-stratum-obstruction-localized-qme}
+Assume that a regulated gauge-theoretic BV integral has been localized to a
+smooth finite-dimensional fixed locus \(\mathcal M^{\rm sm}\) and that the
+full regulated semidensity obeys the QME before the limiting
+compactification is taken.  If the compactification of
+\(\mathcal M^{\rm sm}\) contains strata \(S_\alpha\), then the residual
+localized semidensity obeys
+\[
+  \Delta_{\rm res}(\pi_*^{\mathcal M^{\rm sm}}\rho)
+  =
+  -\sum_\alpha \mathcal B_{S_\alpha}(\rho).
+  \label{eq:singular-stratum-localized-qme-obstruction}
+\]
+Therefore the localized expression is a BV pushforward satisfying the QME
+only after a boundary-cancellation datum in the sense of
+Definition~\ref{def:boundary-cancellation-datum} has been supplied and
+verified.
+\end{proposition}
+
+\begin{proof}
+Choose a collar neighborhood of each singular stratum in the compactified
+moduli problem and remove a tubular neighborhood of radius \(\epsilon\).
+The resulting truncated fixed locus
+\(\mathcal M_\epsilon^{\rm sm}\) is a manifold with boundary.  Applying
+Proposition~\ref{prop:bv-pushforward-boundary-obstruction} gives
+\[
+  \Delta_{\rm res}(\pi_*^{\mathcal M_\epsilon^{\rm sm}}\rho)
+  =
+  -\sum_\alpha
+  \mathcal B_{\partial_\alpha\mathcal M_\epsilon^{\rm sm}}(\rho).
+  \label{eq:singular-stratum-truncated-boundary}
+\]
+If the limit \(\epsilon\to0\) exists as a distributional or semidensity
+limit, the boundary functionals converge to the stratum functionals
+\(\mathcal B_{S_\alpha}(\rho)\), giving
+\eqref{eq:singular-stratum-localized-qme-obstruction}.  If the limit does
+not exist, the localization formula itself is not yet defined.  A vanishing,
+relative-cycle, resolution, or residue datum is exactly the additional input
+that makes the right hand side vanish or cancel in the residual QME.
+\end{proof}
+
+For the \(S^4\) instanton factors of
+Chapter~\ref{ch:susy-localization-compact-manifolds}, the Uhlenbeck
+small-instanton strata are precisely such \(S_\alpha\).  Replacing the
+Uhlenbeck compactification by the Gieseker/Nekrasov resolution supplies a
+candidate resolution datum.  The statement that the original four-dimensional
+path integral selects that resolved datum is therefore a regulator theorem or
+a hypothesis, as stated in
+Hypothesis~\ref{hyp:field-theoretic-gieseker-matching}, rather than a
+consequence of formal \(Q\)-exact deformation alone.
 
 \section{Cohomological Localization}
 
