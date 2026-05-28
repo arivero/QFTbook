@@ -392,29 +392,74 @@ in the convention of \eqref{eq:kubo-fluctuation-dissipation}.  Equivalently
 regular slope appearing in the finite dc Kubo formula.
 \end{proof}
 
-Figure~\ref{fig:kubo-order-of-limits} records the operational order in which
-the singular and regular parts of the low-frequency response are separated.
-The dc Kubo limit is not a finite-volume operation: one first takes the
-thermodynamic limit, separates possible \(\delta(\omega)\) terms produced by
-conserved projections, and only then extracts the regular low-frequency
-slope.
+After the thermodynamic limit has been taken, the low-frequency real
+conductivity in a fixed tensor channel must be regarded as a distribution.
+The separation used below is
+\[
+  \operatorname{Re}\sigma_{ij}(\omega)
+  =
+  \pi D_{ij}\delta(\omega)+\sigma^{\rm reg}_{ij}(\omega),
+  \qquad
+  \sigma^{\rm reg}_{ij}(\omega)
+  =
+  \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0)
+  \quad(\omega\ne0),
+  \label{eq:kubo-drude-regular-decomposition}
+\]
+where \(D_{ij}\) is the Drude matrix produced by conserved projections and
+\(\sigma^{\rm reg}_{ij}\) is locally integrable near \(\omega=0\).  The
+ordinary dissipative dc coefficient is
+\[
+  \sigma^{\rm dc}_{ij}
+  =
+  \lim_{\omega\downarrow0}\sigma^{\rm reg}_{ij}(\omega)
+  =
+  \lim_{\omega\downarrow0}
+  \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0),
+  \label{eq:kubo-regular-dc-from-regular-spectral-slope}
+\]
+when this limit exists.  The singular term is not a large value of
+\(\sigma^{\rm reg}\); it is a separate distributional summand.  This is the
+mathematical content of the order-of-limits prescription.
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[>=Stealth]
-  \node[draw,rounded corners=2pt,align=center,text width=2.65cm,minimum height=1.05cm]
-    (finite) {finite volume\\pure-point spectrum};
-  \node[draw,rounded corners=2pt,align=center,right=0.95cm of finite,text width=2.85cm,minimum height=1.05cm]
-    (thermo) {thermodynamic limit\\continuous spectral sector};
-  \node[draw,rounded corners=2pt,align=center,right=0.95cm of thermo,text width=2.9cm,minimum height=1.05cm]
-    (zero) {zero-frequency limit\\regular slope or singular term};
-  \draw[->,thick] (finite) -- node[above] {\(L\to\infty\)} (thermo);
-  \draw[->,thick] (thermo) -- node[above] {\(\omega\downarrow0\)} (zero);
-  \node[below=0.85cm of thermo,align=center]
-    {Drude weights and conserved projections must be separated before the
-    final limit.};
+\begin{tikzpicture}[>=Stealth,scale=1.0]
+  \draw[->] (-3.3,0) -- (3.45,0) node[right] {\(\omega\)};
+  \draw[->] (0,0) -- (0,2.85) node[above] {\(\operatorname{Re}\sigma(\omega)\)};
+  \draw[dashed,gray] (-3.0,0.86) -- (3.0,0.86);
+  \node[gray,anchor=west,fill=white,inner sep=1pt] at (2.05,0.94)
+    {\(\sigma_{\rm dc}\)};
+  \draw[blue!70!black,thick,smooth,domain=-3.0:3.0,samples=80]
+    plot (\x,{0.28 + 1.15/(1.0+0.70*\x*\x)});
+  \node[blue!70!black,anchor=west,fill=white,inner sep=1pt] at (1.05,1.62)
+    {regular dissipative peak};
+  \draw[orange!85!black,thick,smooth,domain=-3.0:3.0,samples=80]
+    plot (\x,{0.78 + 0.055*\x*\x});
+  \node[orange!85!black,anchor=west,fill=white,inner sep=1pt] at (-3.05,1.45)
+    {regular channel};
+  \draw[red!75!black,very thick,->] (0,0) -- (0,2.45);
+  \node[red!75!black,anchor=west] at (0.18,2.35)
+    {\(\pi D\,\delta(\omega)\)};
+  \node[anchor=west] at (0.18,2.02)
+    {singular sector};
+  \draw[decorate,decoration={brace,amplitude=4pt}]
+    (-0.25,0.05) -- (-0.25,0.86);
+  \node[anchor=east,fill=white,inner sep=1pt] at (-0.40,0.43)
+    {\(\lim_{\omega\downarrow0}\sigma^{\rm reg}\)};
+  \fill[blue!70!black] (0,1.43) circle (1.7pt);
+  \fill[orange!85!black] (0,0.78) circle (1.7pt);
+  \node[anchor=north] at (0,-0.12) {\(0\)};
+  \node[align=center,anchor=north] at (0,-0.48)
+    {thermodynamic limit first; subtract \(\delta(\omega)\);
+    then take the regular limit};
 \end{tikzpicture}
-\caption{Order of limits in the dc Kubo prescription.}
+\caption{Distributional low-frequency content of a conductivity after the
+thermodynamic limit.  The finite dc coefficient is the zero-frequency limit
+of the regular part \(\sigma^{\rm reg}\), equivalently the slope of
+\(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\).  A Drude
+or superfluid weight is a separate \(\delta(\omega)\) summand and is not
+obtained by evaluating the regular curve at \(\omega=0\).}
 \label{fig:kubo-order-of-limits}
 \end{figure}
 

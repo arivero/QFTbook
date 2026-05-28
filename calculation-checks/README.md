@@ -1252,8 +1252,9 @@ Current checks:
   fluctuation--dissipation in a two-level system, the sign
   \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
   the vector-potential response sign, plus the fact that real local contact
-  terms do not change dissipative spectral slopes, and the finite Mazur
-  projection/Drude-weight relation for a current with conserved overlap.
+  terms do not change dissipative spectral slopes, the finite Mazur
+  projection/Drude-weight relation for a current with conserved overlap, and
+  the regular-versus-Drude decomposition used in the Kubo figure.
 - `trace_anomaly_classification_checks.py`: finite checks for the
   type-A/type-B trace-anomaly classification, including the parity-even bulk
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed

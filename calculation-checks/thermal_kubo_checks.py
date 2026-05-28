@@ -167,12 +167,41 @@ def check_mazur_projection_and_drude_weight() -> None:
     assert_close("Drude weight matches persistent symmetrized correlator", persistent_from_drude, expected_persistent)
 
 
+def check_regular_drude_decomposition_for_figure() -> None:
+    sigma_dc = 0.64
+    tau = 1.7
+    drude_weight = 0.23
+
+    def sigma_regular(omega: float) -> float:
+        return sigma_dc / (1.0 + (omega * tau) ** 2)
+
+    for omega in (1.0e-4, 2.0e-4, 5.0e-4):
+        rho_regular = 2.0 * omega * sigma_regular(omega)
+        assert_close(
+            "regular spectral slope gives dc conductivity",
+            rho_regular / (2.0 * omega),
+            sigma_dc,
+            tol=5.0e-7,
+        )
+
+    for width in (0.5, 0.25, 0.125):
+        # delta_width integrates to one on the real line.  Thus
+        # pi*D*delta_width has total weight pi*D and height D/width at zero.
+        delta_width_at_zero = 1.0 / (math.pi * width)
+        spike_height = math.pi * drude_weight * delta_width_at_zero
+        assert_close("Drude Lorentzian height", spike_height, drude_weight / width)
+        total_weight = math.pi * drude_weight
+        assert total_weight > 0.0
+    assert drude_weight / 0.125 > drude_weight / 0.25 > drude_weight / 0.5
+
+
 def main() -> None:
     check_two_level_kms_and_fdt()
     check_retarded_sign_and_transport_slope()
     check_contact_term_does_not_change_spectral_slope()
     check_vector_potential_response_sign()
     check_mazur_projection_and_drude_weight()
+    check_regular_drude_decomposition_for_figure()
     print("All thermal Kubo convention checks passed.")
 
 
