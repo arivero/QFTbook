@@ -83,11 +83,29 @@ def check_t_hooft_coordinate_dimensionless() -> None:
     assert_equal("CS vector planar exchange coefficient", planar_exchange_without_pi, 2 * lam)
 
 
+def check_bilocal_saddle_scaling() -> None:
+    # With B=(1/N) psi_bar psi, the trace-preserving color contraction of
+    # J^a K J^a is N^2 B K B, while the trace-subtraction is N B K B.
+    # Multiplication by the CS kernel coefficient 2*pi/k_eff = 2*pi lambda/N
+    # gives an O(N) leading bilocal action and an O(1) subtraction.
+    n = Fraction(23)
+    k_eff = Fraction(29)
+    lam = n / k_eff
+    kernel_coeff_without_pi = Fraction(2, 1) / k_eff
+
+    leading_without_pi = kernel_coeff_without_pi * n * n
+    subtraction_without_pi = kernel_coeff_without_pi * n
+    assert_equal("CS bilocal leading action coefficient", leading_without_pi, 2 * n * lam)
+    assert_equal("CS bilocal subtraction coefficient", subtraction_without_pi, 2 * lam)
+    assert_equal("CS bilocal leading/subleading ratio", leading_without_pi / subtraction_without_pi, n)
+
+
 def main() -> None:
     check_light_cone_quadratic_factor()
     check_first_order_gaussian_sign()
     check_trace_delta_color_scaling()
     check_t_hooft_coordinate_dimensionless()
+    check_bilocal_saddle_scaling()
     print("All Chern-Simons-matter light-front checks passed.")
 
 

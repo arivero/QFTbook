@@ -264,6 +264,149 @@ connected singlet correlators.  The trace-preserving leading contraction is the
 planar color algebra behind the bilocal closure of the two-dimensional
 't Hooft model and the singlet light-front closure used here.
 
+\subsection{Finite-Regulator Singlet Closure}
+
+The preceding statement can be written as a finite-dimensional algebraic
+identity before taking the large-\(N\) limit.  Let \(\Psi_i^A\) denote the
+regulated fundamental matter variables that remain after gauge fixing; the
+index \(i=1,\ldots,N\) is color, while \(A\) collects spin, flavor, position
+or momentum, and any regulator labels.  Let \(\overline\Psi_A^i\) be the
+conjugate variable in the antifundamental representation.  Define the singlet
+bilocal matrix
+\begin{equation}
+  B^A{}_{B}
+  =
+  \frac1N\overline\Psi^i_B\Psi_i^A .
+  \label{eq:cs-vector-bilocal-singlet}
+\end{equation}
+A gauge current component that is bilinear in the matter variables has the
+form
+\[
+  J^{\mu a}
+  =
+  \overline\Psi^i_A\,(V^\mu)^A{}_{B}\,(t^a)^j{}_{i}\,\Psi_j^B ,
+\]
+where \(V^\mu\) is the matrix, including all differential or regulator
+kernels, carried by the current component.  The displayed algebraic identity
+below is written for ordinary complex variables.  In fermionic vector models
+the current product is instead a graded product in the declared current order;
+the color contraction and its \(N\)-scaling are identical, while signs coming
+from moving Grassmann variables belong to the spinor and kernel convention of
+the particular Schwinger--Dyson equation rather than to the color algebra.
+
+\begin{proposition}[Planar color reduction of the light-cone kernel]
+\label{prop:cs-vector-bilocal-color-reduction}
+Let \(K\) be any regulator kernel acting on the non-color labels; in the
+light-cone Chern--Simons problem \(K=\partial_-^{-1}\) with the zero-mode
+prescription already declared.  With the normalization
+\eqref{eq:cs-vector-fundamental-completeness},
+\begin{align}
+  J^{+a}KJ^{\perp a}
+  &=
+  N^2\,
+  (V^+)^A{}_{B}\,B^B{}_{C}\,
+  K^C{}_{D}\,
+  (V^\perp)^D{}_{E}\,B^E{}_{A}
+  \nonumber\\
+  &\quad
+  -N\,
+  (V^+)^A{}_{B}\,B^B{}_{A}\,
+  K^C{}_{D}\,
+  (V^\perp)^D{}_{E}\,B^E{}_{C}.
+  \label{eq:cs-vector-bilocal-color-reduction}
+\end{align}
+Consequently the light-cone interaction
+\eqref{eq:cs-light-cone-effective-current} has the form
+\[
+  S_{\rm eff}
+  =
+  -2\pi N\lambda\,
+  (V^+)^A{}_{B}B^B{}_{C}K^C{}_{D}(V^\perp)^D{}_{E}B^E{}_{A}
+  +
+  O(N^0)
+\]
+at fixed \(\lambda=N/k_{\rm eff}\).
+\end{proposition}
+
+\begin{proof}
+Insert the current expression and use
+\eqref{eq:cs-vector-fundamental-completeness}:
+\[
+  (t^a)^j{}_{i}(t^a)^\ell{}_{k}
+  =
+  \delta^j{}_{k}\delta^\ell{}_{i}
+  -
+  \frac1N\delta^j{}_{i}\delta^\ell{}_{k}.
+\]
+The first color contraction produces
+\[
+  \overline\Psi^i_A(V^+)^A{}_{B}\Psi_k^B\,
+  K^C{}_{D}\,
+  \overline\Psi^k_C(V^\perp)^D{}_{E}\Psi_i^E
+  =
+  N^2
+  (V^+)^A{}_{B}B^B{}_{C}K^C{}_{D}(V^\perp)^D{}_{E}B^E{}_{A}.
+\]
+The trace-subtraction term gives the second line of
+\eqref{eq:cs-vector-bilocal-color-reduction} with one fewer factor of \(N\).
+Multiplication by the kernel coefficient \(2\pi/k_{\rm eff}=2\pi\lambda/N\)
+then makes the first term order \(N\) and the trace-subtraction term order
+\(N^0\).
+\end{proof}
+
+\begin{proposition}[Finite-regulator Schwinger--Dyson identity]
+\label{prop:cs-vector-finite-regulator-sd}
+At finite regulator, let \(S_{\rm reg}[\Psi,\overline\Psi]\) be the matter
+action after the light-cone gauge field has been integrated out as in
+\eqref{eq:cs-light-cone-effective-current}.  For an ordinary complex bosonic
+fundamental vector, integration by parts gives
+\begin{equation}
+  \left\langle
+  \frac{\partial \mathcal O}{\partial \Psi_i^A}
+  -
+  \mathcal O\,\frac{\partial S_{\rm reg}}{\partial \Psi_i^A}
+  \right\rangle_{\rm reg}
+  =
+  0
+  \label{eq:cs-vector-bosonic-sd}
+\end{equation}
+for every polynomial singlet observable \(\mathcal O\).  For a Grassmann
+fundamental vector the same equation holds with the ordinary derivative
+replaced by the left Berezin derivative and with the standard graded sign
+when the derivative crosses \(\mathcal O\).  If the large-\(N\) singlet sector
+has factorization
+\[
+  \langle B_1\cdots B_r\rangle_{\rm conn}=O(N^{1-r}),
+  \label{eq:cs-vector-factorization}
+\]
+then the leading equations obtained from
+\eqref{eq:cs-vector-bosonic-sd} close on the one-bilocal expectation
+\(G^A{}_{B}:=\langle B^A{}_{B}\rangle\).
+\end{proposition}
+
+\begin{proof}
+At finite regulator the bosonic statement is the divergence theorem applied to
+the finite-dimensional integral over the variables \(\Psi_i^A\), with boundary
+terms removed by the regulator damping or by compact contour deformation:
+\[
+  0
+  =
+  \int d\Psi\,d\overline\Psi\,
+  \frac{\partial}{\partial\Psi_i^A}
+  \left(\mathcal O\,\ee^{-S_{\rm reg}}\right).
+\]
+Expanding the derivative gives
+\eqref{eq:cs-vector-bosonic-sd}.  The Grassmann version is the corresponding
+translation identity for the Berezin integral.  After the gauge field has
+been integrated out, the bilocal color reduction above shows that the
+order-\(N\) interaction is a functional only of \(B\).  Taking
+\(\mathcal O\) to be a product of singlet bilocals therefore gives equations
+whose leading terms contain products of \(B\)'s.  The factorization estimate
+\eqref{eq:cs-vector-factorization} replaces those products, at leading order,
+by products of \(G\).  Thus no nonsinglet correlator enters the leading
+large-\(N\) Schwinger--Dyson equation.
+\end{proof}
+
 \begin{controlledapproximation}[Planar light-front closure]
 \label{ca:planar-cs-vector-light-front-closure}
 In the datum of Definition~\ref{def:planar-cs-vector-model-datum}, the
