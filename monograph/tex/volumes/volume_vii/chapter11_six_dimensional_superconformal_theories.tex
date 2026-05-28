@@ -622,6 +622,192 @@ The compactification is a test with substantial content.  It must specify:
 Supplying only a Seiberg--Witten curve in four dimensions does not by itself
 construct the six-dimensional parent theory.
 
+\section{Hitchin-Base Coulomb Operators In Class-\texorpdfstring{\(S\)}{S} Compactification}
+\label{sec:six-d-class-s-hitchin-base}
+
+Consider the \((2,0)\) theory of simply laced type \(\mathfrak g\)
+compactified on a closed Riemann surface \(C\) of genus \(g_C>1\), with the
+standard partial twist that preserves four-dimensional \(\mathcal N=2\)
+supersymmetry and with no punctures.  Let
+\[
+  d_1,\ldots,d_{r_{\mathfrak g}}
+\]
+be the degrees of the algebraically independent invariant polynomials on
+\(\mathfrak g_{\mathbb C}\), ordered increasingly.  Equivalently
+\[
+  d_i=m_i+1
+\]
+where \(m_i\) are the exponents of \(\mathfrak g\).  The protected Coulomb
+coordinates in the compactified theory are modeled by the Hitchin-base
+spaces
+\[
+  \varphi_{d_i}\in H^0(C,K_C^{d_i}),
+  \qquad i=1,\ldots,r_{\mathfrak g},
+  \label{eq:class-s-hitchin-base-coordinates}
+\]
+where \(K_C\) is the holomorphic canonical bundle of \(C\).  In the
+four-dimensional theory the coordinate associated with \(\varphi_{d_i}\) has
+scaling dimension \(d_i\).
+
+\begin{remark}[Status of the Hitchin-base statement]
+\label{rem:hitchin-base-status-six-d}
+Equation \eqref{eq:class-s-hitchin-base-coordinates} is used here as a
+protected compactification test of the \((2,0)\) theory, not as a definition
+of the six-dimensional QFT.  A construction of the compactified theory must
+also specify the Hilbert space, local operators, line and surface defects,
+metric dependence before twisting, and the treatment of degenerating complex
+structures.  The Hitchin base records the Coulomb chiral ring coordinates
+visible in the twisted protected sector.
+\end{remark}
+
+\begin{lemma}[Riemann--Roch count for Hitchin differentials]
+\label{lem:hitchin-differential-riemann-roch-count}
+Let \(C\) be a closed Riemann surface of genus \(g_C>1\).  For every integer
+\(d\ge2\),
+\[
+  \dim_{\mathbb C}H^0(C,K_C^d)=(2d-1)(g_C-1).
+  \label{eq:hitchin-differential-dimension}
+\]
+\end{lemma}
+
+\begin{proof}
+The degree of \(K_C\) is \(2g_C-2\), hence
+\[
+  \deg K_C^d=d(2g_C-2).
+\]
+Riemann--Roch gives
+\[
+  h^0(C,K_C^d)-h^0(C,K_C^{1-d})
+  =
+  \deg K_C^d+1-g_C .
+  \label{eq:rr-hitchin-differential}
+\]
+For \(d\ge2\), the line bundle \(K_C^{1-d}\) has negative degree, so it has
+no nonzero holomorphic sections.  Therefore
+\[
+  h^0(C,K_C^d)
+  =
+  d(2g_C-2)+1-g_C
+  =
+  (2d-1)(g_C-1).
+\]
+\end{proof}
+
+\begin{lemma}[Degree sum for a simple Lie algebra]
+\label{lem:lie-degree-sum-dimension}
+For a complex simple Lie algebra \(\mathfrak g_{\mathbb C}\) with invariant
+polynomial degrees \(d_i=m_i+1\),
+\[
+  \sum_{i=1}^{r_{\mathfrak g}}(2d_i-1)=d_{\mathfrak g},
+  \label{eq:lie-degree-sum-dimension}
+\]
+where \(d_{\mathfrak g}=\dim_{\mathbb C}\mathfrak g_{\mathbb C}\).
+\end{lemma}
+
+\begin{proof}
+The exponents \(m_i\) satisfy
+\[
+  \sum_{i=1}^{r_{\mathfrak g}}m_i=|\Delta_+|,
+  \label{eq:exponent-sum-positive-roots}
+\]
+where \(\Delta_+\) is a set of positive roots.  One way to see
+\eqref{eq:exponent-sum-positive-roots} is to compare the top degree in the
+standard Poincare polynomial identity for the flag variety:
+\[
+  \sum_{w\in W_{\mathfrak g}}t^{2\ell(w)}
+  =
+  \prod_{i=1}^{r_{\mathfrak g}}
+  \frac{1-t^{2(m_i+1)}}{1-t^2}.
+\]
+The maximal length of a Weyl-group element is \(|\Delta_+|\), while the top
+degree on the product side is \(2\sum_i m_i\).  Hence
+\(\sum_i m_i=|\Delta_+|\).  Since
+\[
+  d_{\mathfrak g}=r_{\mathfrak g}+2|\Delta_+|,
+\]
+we obtain
+\[
+  \sum_i(2d_i-1)
+  =
+  \sum_i(2m_i+1)
+  =
+  2|\Delta_+|+r_{\mathfrak g}
+  =
+  d_{\mathfrak g}.
+\]
+\end{proof}
+
+\begin{proposition}[Unpunctured class-\(S\) Coulomb-base dimension]
+\label{prop:unpunctured-class-s-coulomb-base-dimension}
+For the unpunctured genus-\(g_C>1\) compactification above, the protected
+Coulomb base modeled by the Hitchin base
+\[
+  \mathcal B_{\mathfrak g,C}
+  =
+  \bigoplus_{i=1}^{r_{\mathfrak g}} H^0(C,K_C^{d_i})
+  \label{eq:class-s-hitchin-base}
+\]
+has complex dimension
+\[
+  \dim_{\mathbb C}\mathcal B_{\mathfrak g,C}
+  =
+  (g_C-1)d_{\mathfrak g}.
+  \label{eq:class-s-coulomb-dimension}
+\]
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:hitchin-differential-riemann-roch-count},
+\[
+  \dim_{\mathbb C}\mathcal B_{\mathfrak g,C}
+  =
+  \sum_i(2d_i-1)(g_C-1).
+  \label{eq:hitchin-base-dimension-sum}
+\]
+Factoring out \(g_C-1\) and using
+Lemma~\ref{lem:lie-degree-sum-dimension} gives
+\[
+  \dim_{\mathbb C}\mathcal B_{\mathfrak g,C}
+  =
+  (g_C-1)\sum_i(2d_i-1)
+  =
+  (g_C-1)d_{\mathfrak g}.
+\]
+\end{proof}
+
+\begin{example}[ADE degree checks]
+\label{ex:ade-class-s-coulomb-dimension-checks}
+For \(A_{N-1}\), the degrees are \(2,3,\ldots,N\).  Therefore
+\[
+  \sum_{d=2}^{N}(2d-1)=N^2-1=d_{A_{N-1}},
+\]
+and the unpunctured genus-\(g_C\) Coulomb-base dimension is
+\[
+  (g_C-1)(N^2-1).
+\]
+For \(D_N\), the degrees are
+\[
+  2,4,6,\ldots,2N-2,\ N,
+\]
+with the usual repeated degree when \(N\) is even.  Their contribution is
+\[
+  \sum_{j=1}^{N-1}(4j-1)+(2N-1)
+  =
+  N(2N-1)=d_{D_N}.
+\]
+For the exceptional algebras, the degree lists are
+\[
+\begin{array}{c|c}
+  \mathfrak g & (d_i)\\ \hline
+  E_6 & 2,5,6,8,9,12\\
+  E_7 & 2,6,8,10,12,14,18\\
+  E_8 & 2,8,12,14,18,20,24,30 .
+\end{array}
+\]
+In each case \(\sum_i(2d_i-1)\) gives \(78\), \(133\), and \(248\),
+respectively.
+\end{example}
+
 \section{Status Ledger}
 
 Six-dimensional SCFT data in this monograph consist of:

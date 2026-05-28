@@ -351,6 +351,45 @@ def check_wrapped_string_mass_normalization() -> None:
     assert_equal("wrapped string/W-boson scalar normalization", wrapped_mass_over_pi, phi_5d_over_pi)
 
 
+def check_class_s_hitchin_base_degrees() -> None:
+    for n in range(2, 10):
+        a_degrees = list(range(2, n + 1))
+        a_sum = sum(2 * degree - 1 for degree in a_degrees)
+        assert_equal(f"A_{n-1} Hitchin degree sum", a_sum, n * n - 1)
+        for genus in range(2, 6):
+            assert_equal(
+                f"A_{n-1} genus-{genus} Hitchin base dimension",
+                (genus - 1) * a_sum,
+                (genus - 1) * (n * n - 1),
+            )
+
+    for n in range(4, 10):
+        d_degrees = [2 * j for j in range(1, n)] + [n]
+        d_sum = sum(2 * degree - 1 for degree in d_degrees)
+        assert_equal(f"D_{n} Hitchin degree sum", d_sum, n * (2 * n - 1))
+        for genus in range(2, 6):
+            assert_equal(
+                f"D_{n} genus-{genus} Hitchin base dimension",
+                (genus - 1) * d_sum,
+                (genus - 1) * n * (2 * n - 1),
+            )
+
+    exceptional_degrees = {
+        "E6": ([2, 5, 6, 8, 9, 12], 78),
+        "E7": ([2, 6, 8, 10, 12, 14, 18], 133),
+        "E8": ([2, 8, 12, 14, 18, 20, 24, 30], 248),
+    }
+    for name, (degrees, dimension) in exceptional_degrees.items():
+        degree_sum = sum(2 * degree - 1 for degree in degrees)
+        assert_equal(f"{name} Hitchin degree sum", degree_sum, dimension)
+        for genus in range(2, 5):
+            assert_equal(
+                f"{name} genus-{genus} Hitchin base dimension",
+                (genus - 1) * degree_sum,
+                (genus - 1) * dimension,
+            )
+
+
 def main() -> None:
     check_abjm_superpotential_r_charge()
     check_abjm_standard_conformal_locus_dimension()
@@ -369,6 +408,7 @@ def main() -> None:
     check_green_schwarz_quadratic_descent_factor()
     check_five_dimensional_instanton_kk_normalization()
     check_wrapped_string_mass_normalization()
+    check_class_s_hitchin_base_degrees()
     print("All ABJM and six-dimensional SUSY convention checks passed.")
 
 

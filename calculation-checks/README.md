@@ -1087,7 +1087,8 @@ Current checks:
   degree-of-freedom count, \(A_{N-1}\), \(D_N\), and exceptional \((2,0)\)
   anomaly/tensor-branch arithmetic, the quadratic Green--Schwarz descent
   factor, the trace-delta \(g_5^2=4\pi^2R\) compactification normalization,
-  and the wrapped-string/W-boson scalar normalization.
+  the wrapped-string/W-boson scalar normalization, and ADE class-\(S\)
+  Hitchin-base degree sums.
 - `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
   supersymmetric gauge-theory foundation chapter, including the auxiliary
   \(D\)-field square completion and potential sign, the absence of
