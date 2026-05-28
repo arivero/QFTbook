@@ -8,7 +8,7 @@ First focused development pass on GitHub issue #634 for
 The goal of this pass is not to turn the chapter into a particle-physics
 review.  It strengthens load-bearing Standard Model data that must be precise
 in a hybrid-QFT treatment: global form, flavor coordinates, electroweak
-scalar/custodial identities, baryon/lepton anomaly bookkeeping, SMEFT source
+scalar/custodial identities, baryon/lepton anomaly bookkeeping, SMEFT coupling
 coordinates, neutrino mass coordinates, strong-CP phase bookkeeping, and the
 matching datum.
 
@@ -26,7 +26,7 @@ matching datum.
   `rho_tree=1`.
 - Added Definition `def:sm-b-l-charges`, Proposition
   `prop:sm-baryon-lepton-anomaly`, and the sphaleron-selection-rule remark.
-- Added Definition `def:sm-smeft-source-chart`, Definition
+- Added Definition `def:sm-smeft-coupling-chart`, Definition
   `def:sm-weinberg-operator`, and Proposition
   `prop:sm-type-i-seesaw-matching`.
 - Added Proposition `prop:sm-strong-cp-phase` with the invariant
@@ -61,5 +61,5 @@ The full monograph build and final log scan are clean.  The generated
 This pass does not close #634.  Remaining large items include the one-loop SM
 RG system, Higgs vacuum-stability flow as a controlled EFT statement,
 precision electroweak `S,T,U`, the full muon `g-2` hybrid calculation, a
-more explicit dimension-six operator-basis ledger, and the chiral-lattice
+more explicit dimension-six operator-basis treatment, and the chiral-lattice
 construction connection.

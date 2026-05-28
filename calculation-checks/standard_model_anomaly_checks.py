@@ -293,6 +293,40 @@ def check_top_higgs_subsystem_coefficients() -> None:
     assert_equal("lambda gauge-quartic compact/expanded form", compact, expanded)
 
 
+def check_higgs_large_field_coupling_chart_identities() -> None:
+    lam = Fraction(5, 7)
+    c_h = Fraction(11, 13)
+    cutoff = Fraction(17, 1)
+    h = Fraction(19, 1)
+    v = Fraction(2, 1)
+    potential = lam * ((h**2 - v**2) / 2) ** 2 + c_h / cutoff**2 * (h**2 / 2) ** 3
+    expanded = lam * h**4 / 4 - lam * v**2 * h**2 / 2 + lam * v**4 / 4 + c_h * h**6 / (8 * cutoff**2)
+    assert_equal("dimension-six radial Higgs potential expansion", potential, expanded)
+
+    relative_dim6 = (c_h * h**6 / (8 * cutoff**2)) / (lam * h**4 / 4)
+    assert_equal("dimension-six/quartic large-field ratio", relative_dim6, c_h * h**2 / (2 * lam * cutoff**2))
+
+    n = 4
+    c_n = Fraction(23, 29)
+    general_operator = c_n * h ** (2 * n) / (2**n * cutoff ** (2 * n - 4))
+    general_ratio = general_operator / (lam * h**4 / 4)
+    expected_general_ratio = c_n / (lam * 2 ** (n - 2)) * (h**2 / cutoff**2) ** (n - 2)
+    assert_equal("general large-field operator/quartic ratio", general_ratio, expected_general_ratio)
+
+    g1 = Fraction(2, 3)
+    g2 = Fraction(5, 7)
+    yt = Fraction(11, 13)
+    beta_lambda_at_zero = -6 * yt**4 + Fraction(3, 8) * (2 * g2**4 + (g2**2 + g1**2) ** 2)
+    direct_at_zero = (
+        24 * 0**2
+        + 12 * 0 * yt**2
+        - 6 * yt**4
+        - 3 * 0 * (3 * g2**2 + g1**2)
+        + Fraction(3, 8) * (2 * g2**4 + (g2**2 + g1**2) ** 2)
+    )
+    assert_equal("lambda beta at lambda=0", direct_at_zero, beta_lambda_at_zero)
+
+
 def check_oblique_parameter_identities() -> None:
     # Use rational sine/cosine satisfying s^2 + c^2 = 1.
     s = Fraction(3, 5)
@@ -360,7 +394,7 @@ def check_muon_gminus_two_hybrid_identities() -> None:
     assert_equal("HVP Feynman-parameter kernel identity", feynman_side, kernel_side)
 
 
-def check_dimension_six_ledger_counts() -> None:
+def check_dimension_six_basis_counts() -> None:
     bosonic_classes = {
         "X^3": 4,
         "H^6": 1,
@@ -463,9 +497,10 @@ def main() -> None:
     check_one_loop_gauge_beta_coefficients()
     check_hypercharge_gut_rescaling()
     check_top_higgs_subsystem_coefficients()
+    check_higgs_large_field_coupling_chart_identities()
     check_oblique_parameter_identities()
     check_muon_gminus_two_hybrid_identities()
-    check_dimension_six_ledger_counts()
+    check_dimension_six_basis_counts()
     check_chiral_lattice_obstruction_conditions()
     print("All Standard Model representation, flavor, SMEFT, chiral-lattice, electroweak, RG, and hybrid-observable checks passed.")
 

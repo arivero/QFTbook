@@ -389,6 +389,50 @@ misreading.
 - Physical scaling limits are statements about correlation functions,
   operator dimensions, spectra, or other specified observables.  These three
   RG notions may be related only after the map between their data is stated.
+- A high-scale perturbative RG continuation is not a physical Wilsonian
+  cutoff theory.  Treating its endpoint as a UV cutoff, or treating omitted
+  operators as absent up to that endpoint, is an additional hypothesis that
+  must be stated with its finite-regulator, BV, lattice, or constructive
+  framework.
+- Standard Model claims must identify which part of the hybrid definition
+  they use: nonperturbative QCD matrix elements, the all-orders
+  renormalized perturbative electroweak construction, the QCD--electroweak
+  coupling through specified color-gauge-invariant local QCD operators,
+  weak-effective-theory matching, or perturbative RG continuation of
+  renormalized coupling coordinates.  Do not describe the Standard Model
+  prediction framework as a finite-cutoff EFT; cutoffs are auxiliary
+  regulators to be removed or extra Wilsonian/EFT data in a different
+  problem.  The electroweak component of the baseline hybrid Standard Model
+  is the all-orders renormalized perturbative chiral gauge theory, not a
+  finite-cutoff electroweak theory.
+  Coupling a Wightman QCD sector to perturbative electroweak fields is
+  additional structure, not automatic juxtaposition: the current/scalar-density
+  operator schemes, Ward identities, anomaly contact terms, and mixed-correlator
+  prescription must be stated.
+  Do not present \(SU(3)_c\times SU(2)_L\times U(1)_Y\) as the gauge group of
+  a completed hybrid quantum theory.  It is local charge, representation, and
+  bundle/global-form bookkeeping; the color and electroweak factors have
+  different mathematical statuses in the hybrid Standard Model definition.
+  If a cutoff-like parameter appears in a Standard Model discussion, state
+  whether it is merely auxiliary electroweak regularization, weak-EFT
+  Wilsonian data, a proposed hybrid construction with continuum Wightman QCD
+  and regulated electroweak/source variables, or a proposed full coupled
+  regulator.  The first case must be removed or matched away.  The hybrid
+  construction case is not the baseline definition and is admissible only if
+  the QCD sector remains a continuum Wightman theory and the mixed generating
+  functionals, contact terms, and electroweak Ward/BV identities at finite
+  electroweak cutoff are specified.  The full coupled regulator case must also
+  regulate the color sector and solve the chiral-gauge regulator problem.
+  Do not import phenomenology folklore as a theory definition, and do not call
+  a quantity a prediction until the required inputs, regulators, matching maps,
+  and observable definitions have been specified.
+- Beyond-Standard-Model particle-physics models are never accepted as
+  explanations, motivations, or UV completions by default.  They may appear
+  only as precisely stated mathematical hypotheses added to the hybrid
+  definition: either finite EFT extensions with stated operators and matching
+  assumptions, or theories with a robust nonperturbative regulator or
+  constructive framework.  Literature popularity, phenomenological fashion,
+  or perturbative Lagrangian writing is not evidence for physical existence.
 
 ## Calculation-Check Rule
 

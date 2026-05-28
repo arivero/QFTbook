@@ -44,8 +44,11 @@ Current checks:
   finite obstruction checks used in the chiral-lattice regulator discussion,
   strong-CP phase invariance, one-loop gauge beta-function coefficients, GUT
   hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
-  coefficients, and basic oblique-parameter identities for the \(S,T,U\)
-  source-chart coordinates.  It also checks the muon \(g-2\) Schwinger
+  coefficients, the Higgs large-field coupling-chart radial-potential,
+  higher-operator ratio, and \(\beta_\lambda|_{\lambda=0}\) identities, and
+  basic oblique-parameter identities for the \(S,T,U\) two-point
+  coordinates.  It also checks the
+  muon \(g-2\) Schwinger
   coefficient, the leading electroweak coefficient normalization, and the HVP
   Feynman-parameter kernel identity used in the hybrid-observable section.
 - `background_index_theory_checks.py`: exact rational checks for the

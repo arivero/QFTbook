@@ -2,6 +2,36 @@
 \label{ch:standard-model-hybrid}
 \ConventionsLorentzian
 
+The Standard Model used in physics is not presently a single completed
+constructive definition of a four-dimensional continuum QFT.  It is a precise
+hybrid object whose components have different mathematical statuses:
+nonperturbative QCD, understood through its continuum Wightman target and
+through lattice regulators used to define hadronic matrix elements; the
+renormalized electroweak chiral gauge theory, defined order by order in
+perturbation theory in the same sense in which perturbative QED is defined;
+hybrid coupling data that pairs perturbative electroweak fields and sources
+with specified gauge-invariant local QCD operators; lower-energy weak
+effective theories; and matching maps between overlapping regimes.  No
+physical ultraviolet cutoff is a parameter of a Standard Model prediction.
+Cutoffs and regulators enter either as auxiliary devices that are removed or
+absorbed into renormalized coordinates, or as extra data in a different
+Wilsonian or SMEFT problem.  The purpose of this chapter is to write the
+hybrid object without hiding these domains of validity.  Within each domain
+the standard formulae are derived as statements about explicit fields,
+couplings, operators, and observables.  Assertions about higher energies, large
+field values, or physics beyond this field content require additional
+mathematical data; they are not supplied merely by drawing a perturbative RG
+curve or by writing a formal Lagrangian.
+
+The local representation theory is developed first, because it fixes the
+charges, anomalies, mass coordinates, and operator coordinates that every
+perturbative, effective, or nonperturbative realization must reproduce.  The
+hybrid definition of the full object is then assembled after these components
+have been made explicit.  Until that point, the phrase ``the Standard Model''
+in a local formula means the corresponding renormalized perturbative
+electroweak construction together with the stated QCD and matching data, not an
+assumed constructive theorem and not a finite-cutoff theory.
+
 \section{Gauge and Matter Data}
 
 \begin{convention}[Electroweak charge and trace normalizations]
@@ -11,7 +41,7 @@ The hypercharge coordinate is normalized by
   Q_{\rm em}=T^3_L+Y ,
 \]
 where \(T^3_L\) is the third generator of the weak \(SU(2)_L\) doublet in the
-usual electroweak normalization.  For transparent mass and charge formulae,
+standard electroweak normalization.  For transparent mass and charge formulae,
 this chapter temporarily uses the conventional explicit-coupling fields
 \(\mathcal G_\mu,\mathcal W_\mu,\mathcal B_\mu\).  The conversion to the
 monograph's Yang--Mills convention of
@@ -22,7 +52,9 @@ Chapter~\ref{ch:vol2-classical-yang-mills-matter} is
   A^{(1)}_\mu=g_1\mathcal B_\mu Y ,
 \]
 where \(T^A\) and \(\tau^a=\sigma^a/2\) are the conventional half-trace
-generators.  If \(t^a=\sqrt2\,\tau^a\) denotes the trace-delta basis used in
+generators, normalized by
+\(\operatorname{tr}(\tau^a\tau^b)=\frac12\delta^{ab}\) in the fundamental
+weak doublet.  If \(t^a=\sqrt2\,\tau^a\) denotes the trace-delta basis used in
 Chapter~\ref{ch:vol2-classical-yang-mills-matter}, then
 \(g_{2,\rm mono}=g_2/\sqrt2\) in a matter vertex.  The invariant kinetic
 terms are equivalently written as explicit-coupling kinetic terms for
@@ -51,7 +83,7 @@ representation \((\mathbf1,\mathbf1)_0\) and does not affect the local gauge
 anomaly sums.
 \end{definition}
 
-\begin{definition}[Minimal Higgs and Yukawa datum]
+\begin{definition}[Minimal Higgs and Yukawa sector]
 \label{def:sm-higgs-yukawa-datum}
 The minimal Higgs scalar is
 \[
@@ -85,22 +117,23 @@ by the invariant tensors of \(SU(3)_c\) and \(SU(2)_L\).  In components,
 coordinates.
 \end{definition}
 
-\begin{definition}[Local Standard Model gauge datum]
+\begin{definition}[Local Standard Model charge and bundle data]
 \label{def:local-standard-model-gauge-datum}
-The local Standard Model gauge algebra is
+The local Standard Model charge algebra is
 \[
   \mathfrak g_{\rm SM}
   =
   \mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y .
 \]
-The covering compact group is
+The corresponding covering compact group for local representation and bundle
+bookkeeping is
 \[
   \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_y ,
 \]
 where \(y:=6Y\) is the integer hypercharge coordinate for the compact
 \(U(1)\) factor.  The Lie-algebra generator appearing in the electroweak
 covariant derivative is still \(Y=y/6\).
-A global form is a quotient
+A representation-theoretic global form is a quotient
 \[
   G_{\rm SM}=\widetilde G_{\rm SM}/\Gamma ,
   \qquad
@@ -109,22 +142,85 @@ A global form is a quotient
 for which the local fields in
 Definitions~\ref{def:sm-one-generation-left-weyl} and
 \ref{def:sm-higgs-yukawa-datum} descend to representations of
-\(G_{\rm SM}\).  On a spin four-manifold \(M\), a finite-cutoff local Standard
-Model datum consists of a principal \(G_{\rm SM}\)-bundle \(P\to M\), a
-connection on \(P\), three copies of the chiral matter representation in
-Definition~\ref{def:sm-one-generation-left-weyl}, one Higgs scalar in
-Definition~\ref{def:sm-higgs-yukawa-datum}, and the local action functional
-obtained from the Yang--Mills, scalar, Yukawa, and gauge-fixing/BV data after
-a regulator has been specified.
+\(G_{\rm SM}\).  On a spin four-manifold \(M\), let \(S_L\) denote the
+left-handed spinor bundle and let \(E_R:=P\times_{G_{\rm SM}}R\) be the vector
+bundle associated to a representation \(R\).  The local classical field data
+consist of \(P\), a connection on \(P\), left-Weyl fields in
+\(\Gamma(S_L\otimes E_R)\) for the three generations of the representations
+in Definition~\ref{def:sm-one-generation-left-weyl}, a Higgs field in
+\(\Gamma(E_H)\) for \(H\in(\mathbf1,\mathbf2)_{1/2}\), and the local
+Yang--Mills, scalar, and Yukawa action.  The perturbative electroweak quantum
+theory further requires gauge fixing or BV data, a subtraction scheme, and the
+renormalized construction of Green functions and operator insertions as formal
+power series to all orders in the electroweak couplings.  A cutoff regulator
+may be introduced in a proof or computation, but then it is an auxiliary
+regularization device to be removed or matched away; it is not the definition
+of the electroweak sector and it is not a parameter in the Standard Model
+prediction.
 \end{definition}
+
+The product \(\widetilde G_{\rm SM}\) in
+Definition~\ref{def:local-standard-model-gauge-datum} is not, by itself, the
+gauge group of a completed quantum Standard Model.  In the hybrid definition
+of Definition~\ref{def:hybrid-standard-model-datum}, the \(SU(3)_c\) factor
+belongs to the nonperturbative QCD Wightman component, while
+\(SU(2)_L\times U(1)_Y\) belongs to the all-orders renormalized perturbative
+electroweak component; their coupling is mediated by the operator datum
+\(\mathcal C_{\rm QCD\text{-}EW}\).  The product notation records the common
+local charge assignments, anomaly sums, and possible bundle/global-form
+bookkeeping that these components must share.  It should not be read as a
+single nonperturbative path integral with all three gauge factors treated on
+the same footing.
 
 The quotient \(\Gamma\) is invisible in the Lie algebra and in local
 perturbative vertices, but it changes the allowed bundles, line operators,
-and higher-form backgrounds.  Those global questions belong to the
-generalized-symmetry analysis in
-Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses only
-the local representation-theoretic data unless a bundle or line operator is
-explicitly mentioned.
+and higher-form backgrounds in any formulation where those objects are
+defined.  Those global questions belong to the generalized-symmetry analysis
+in Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses
+only the local representation-theoretic data unless a bundle or line operator
+is explicitly mentioned.
+
+\begin{remark}[Electroweak perturbation theory and optional cutoffs]
+\label{rem:sm-cutoff-path-integral-not-baseline}
+The baseline electroweak component of the hybrid Standard Model is
+\(\mathfrak D_{\rm EW}^{\rm pert}\): an all-orders renormalized perturbative
+chiral gauge theory, formulated after gauge fixing or in BV language, with a
+specified subtraction and composite-operator scheme.  It is not a
+finite-cutoff theory.  In a proof or computation one may introduce a
+cutoff-like parameter for electroweak fields, external sources, or a weak
+effective theory; such a parameter is then auxiliary regularization data or
+extra Wilsonian/EFT data for a different problem, not a hidden ultraviolet
+cutoff in the Standard Model prediction framework.  The color sector is not
+thereby made into a cutoff sector of the same path integral; it is supplied
+through the QCD component \(\mathfrak D_{\rm QCD}^{\rm W}\), with lattice or
+other nonperturbative regulators used only to approximate the required
+gauge-invariant QCD matrix elements.
+
+One could instead pose a separate formal construction problem in which the QCD
+sector is kept as a continuum Wightman theory while an ultraviolet regulator
+is placed only on electroweak perturbative fields and sources.  Such a
+construction would have to define mixed generating functionals whose
+coefficients are QCD Wightman distributions of the gauge-invariant operators
+in Definition~\ref{def:sm-qcd-ew-coupling-data}; it would also have to
+specify the extension of those distributions at coincident points, the
+contact-term scheme, and the electroweak Ward or BV identities at finite
+electroweak cutoff.  This is a coherent possible formalization of the hybrid
+viewpoint, but it is additional mathematical data beyond
+\(\mathfrak D_{\rm EW}^{\rm pert}\), it is not the usual textbook path
+integral, and it is not ordinarily how Standard Model phenomenological
+computations are presented.
+
+This is different from postulating a single ultraviolet-regulated path
+integral for the full local product data
+\(SU(3)_c\times SU(2)_L\times U(1)_Y\).  Such a full cutoff formulation would
+have to regulate the \(SU(3)_c\) gauge fields and the chiral electroweak
+fields in one coupled object, choose the phase of the chiral determinant,
+provide reflection or reconstruction data, and formulate a continuum-limit
+problem for the coupled theory.  That stronger object is the kind of data
+discussed later in
+Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}; it is not the
+baseline Standard Model prediction framework used in this chapter.
+\end{remark}
 
 \begin{proposition}[Kernel of the minimal Standard Model representations]
 \label{prop:sm-zsix-global-form}
@@ -177,7 +273,7 @@ minimal representation content.  Distinguishing these global forms requires
 line-operator and bundle data, not only the local Lie algebra.
 \end{proof}
 
-\begin{proposition}[Gauge invariance of the minimal Yukawa datum]
+\begin{proposition}[Gauge invariance of the minimal Yukawa sector]
 \label{prop:sm-yukawa-gauge-invariance}
 The three terms in Definition~\ref{def:sm-higgs-yukawa-datum} are precisely
 the gauge-invariant local monomials that are bilinear in the listed
@@ -208,8 +304,8 @@ Thus \(Q_LHu^c\), \(Q_L\widetilde H d^c\), and
 local gauge-invariant monomials in the left-handed convention.  Power
 counting excludes additional renormalizable matter monomials with more fields
 or derivatives in this minimal field content.  Flavor indices are spectators
-for the gauge group, so the allowed coefficients are the three arbitrary
-complex flavor matrices shown above.
+for the local charge algebra, so the allowed coefficients are the three
+arbitrary complex flavor matrices shown above.
 \end{proof}
 
 Flavor rotations of the fermion fields remove unphysical parameters; the
@@ -393,6 +489,16 @@ quartet imaginary part is zero in that coordinate.
 
 \section{Electroweak Breaking and Mass Coordinates}
 
+The word ``breaking'' in this section refers to a local field coordinate
+around a Higgs background and to the stabilizer of that background.  Gauge
+redundancy is not a global symmetry acting faithfully on the physical Hilbert
+space, and it is not literally broken.  The physical content of the
+Brout--Englert--Higgs phase is the spectrum, currents, and gauge-invariant
+operator algebra described in the renormalized perturbative construction
+after gauge fixing or BV treatment, or in a nonperturbative construction if
+one has been supplied.  The formulas below are the tree-level mass and
+coupling coordinates of that local electroweak chart.
+
 \begin{definition}[Electroweak scalar chart]
 \label{def:sm-electroweak-scalar-chart}
 The minimal renormalizable electroweak scalar potential is
@@ -412,9 +518,10 @@ The reference vacuum vector is
 \[
   H_0=\frac1{\sqrt2}\begin{pmatrix}0\\ v\end{pmatrix}
 \]
-in the same chart.  The fields \(\chi_1,\chi_2,\chi_3\) are local
-coordinates tangent to the broken gauge orbit at \(H_0\), while \(h\) is the
-radial scalar coordinate.
+in the same chart.  Here \(v>0\) and \(\lambda>0\) are renormalized
+coordinates in the perturbative electroweak construction.  The fields
+\(\chi_1,\chi_2,\chi_3\) are local coordinates tangent to the gauge orbit
+through \(H_0\), while \(h\) is the radial scalar coordinate.
 \end{definition}
 
 \begin{proposition}[Electromagnetic stabilizer and weak-boson masses]
@@ -600,7 +707,7 @@ EFT; they are not part of this tree-level identity.
 
 \section{Gauge-Anomaly Cancellation}
 
-\begin{definition}[Gauge-anomaly coefficients for the local datum]
+\begin{definition}[Gauge-anomaly coefficients for the local field content]
 \label{def:sm-local-anomaly-coefficients}
 For a collection of left-handed Weyl fermions in representations \(R_i\) of
 \(\mathfrak g_{\rm SM}\), the perturbative gauge-anomaly tensor is the
@@ -774,7 +881,10 @@ one has chosen a particular neutrino-mass mechanism.
 The \(SU(2)_L\) anomaly means that an electroweak gauge-field history with
 topological charge \(Q_{\rm top}\) changes the global charges by
 \(\Delta B=\Delta L=N_gQ_{\rm top}\), where \(N_g\) is the number of
-generations, while \(\Delta(B-L)=0\).  The sphaleron is the unstable static
+generations, while \(\Delta(B-L)=0\).  This statement assumes a field history
+whose boundary conditions make the \(SU(2)\) second Chern number an integer;
+on more general backgrounds the corresponding statement must be formulated in
+terms of the anomaly inflow class.  The sphaleron is the unstable static
 configuration at the top of the minimal barrier between neighboring
 electroweak sectors, as described in
 Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  Rates in a thermal state
@@ -784,11 +894,11 @@ topological selection rule alone.
 
 \section{Higher-Dimensional Operator Coordinates}
 
-\begin{definition}[SMEFT source chart]
-\label{def:sm-smeft-source-chart}
-Fix a regulator, a local operator basis, and a subtraction scheme.  A
-Standard-Model effective source chart below a scale \(\Lambda\) is a local
-functional of the form
+\begin{definition}[SMEFT coupling chart]
+\label{def:sm-smeft-coupling-chart}
+Fix a regulator, a local operator basis, and a subtraction scheme.  The
+corresponding Standard-Model effective coupling chart below a scale
+\(\Lambda\) is the local functional
 \[
   S_{\rm EFT}
   =
@@ -797,14 +907,19 @@ functional of the form
   \sum_{d>4}\Lambda^{4-d}
   \sum_{A\in\mathcal B_d} C_A^{(d)}(\mu)
   \int_{M_4}\mathcal O_A^{(d)}(\mu),
-  \label{eq:sm-smeft-source-chart}
+  \label{eq:sm-smeft-coupling-chart}
 \]
-where \(\mathcal B_d\) is a declared basis of gauge-invariant local
+where \(\mathcal B_d\) is a specified basis of gauge-invariant local
 operators of engineering dimension \(d\), after quotienting by total
 derivatives and by the chosen field-redefinition equations of motion.  The
-Wilson coordinates \(C_A^{(d)}(\mu)\) are not observables by themselves; an
-observable uses them together with the operator scheme, matching map, and
-matrix elements.
+symbol \(\Lambda\) is a reference scale used to write dimensionless Wilson
+coordinates in an effective theory beyond the renormalizable Standard Model.
+It is not a hidden cutoff parameter of Standard Model predictions.  If the
+same expansion is interpreted as a Wilsonian theory with a physical cutoff,
+that interpretation is additional regulator and matching data.  The
+coordinates \(C_A^{(d)}(\mu)\) are not observables by themselves; an
+observable uses them together with the operator scheme, matching map, field
+domain, and matrix elements.
 \end{definition}
 
 \begin{definition}[Weinberg operator in the left-handed convention]
@@ -899,7 +1014,8 @@ Substituting this solution back into the quadratic expression in
 used to order the Grassmann variables in the Majorana bilinear.  Comparing
 with Definition~\ref{def:sm-weinberg-operator} gives the displayed matching
 coordinate.  The statement is a tree-level EFT matching computation, not a
-claim that singlet neutrinos are part of the minimal Standard Model datum.
+claim that singlet neutrinos are part of the minimal Standard Model field
+content.
 \end{proof}
 
 \begin{definition}[Dimension-six quotient space]
@@ -910,9 +1026,9 @@ gauge-invariant densities of engineering dimension six built from
   G^A_{\mu\nu},\quad W^I_{\mu\nu},\quad B_{\mu\nu},\quad
   H,\quad D_\mu,\quad q,\ell,u,d,e,
 \]
-where \(q,\ell,u,d,e\) denote the usual chiral Standard-Model fields in
+where \(q,\ell,u,d,e\) denote the standard chiral Standard-Model fields in
 four-component notation.  This notation is a bookkeeping device for this
-ledger: \(q,\ell\) are the left-handed fields \(Q_L,L_L\), while \(u,d,e\)
+basis: \(q,\ell\) are the left-handed fields \(Q_L,L_L\), while \(u,d,e\)
 are the right-handed conjugates of the left-handed Weyl fields
 \((u^c,d^c,e^c)\) used in
 Definition~\ref{def:sm-one-generation-left-weyl}.  Let
@@ -941,7 +1057,10 @@ coefficients.
 \begin{proposition}[Why equation-of-motion operators are coordinates]
 \label{prop:sm-eom-operator-coordinate-change}
 Let \(S_{\rm SM}^{\rm ren}\) be the renormalized SM action in the chosen
-regularization and subtraction scheme.  The infinitesimal local change of
+regularization and subtraction scheme.  Assume the regulator treats the
+near-identity local field change below as an allowed coordinate change, with
+its Jacobian either trivial in dimensional regularization or absorbed into
+local counterterms in a local cutoff scheme.  The infinitesimal local change of
 field coordinates
 \[
   \Phi\longmapsto
@@ -950,7 +1069,7 @@ field coordinates
 \]
 changes the action, to order \(\Lambda^{-2}\), by an element of
 \(\mathcal E_6\).  Therefore coefficients multiplying elements of
-\(\mathcal E_6\) are not invariant source coordinates of the effective
+\(\mathcal E_6\) are not invariant coordinates of the effective
 theory; they are removed by the quotient in
 Definition~\ref{def:sm-dimension-six-quotient}.
 \end{proposition}
@@ -972,15 +1091,19 @@ Boundary terms produced by moving derivatives between
 \(\delta S/\delta\Phi\) and \(\mathcal F_\Phi\) lie in
 \(\partial\mathcal V_5\).  Thus the order-\(\Lambda^{-2}\) shift is exactly
 of the form \eqref{eq:sm-eom-operator-subspace}.  The statement is a
-coordinate statement inside a declared regularized path integral; it does
-not say that the corresponding composite operator insertion vanishes as a
-distribution without specifying the operator-renormalization scheme.
+coordinate statement inside a specified renormalized perturbative or regulated
+effective path integral; it does not say that the corresponding composite
+operator insertion vanishes as a distribution without specifying the
+operator-renormalization scheme.  If the chosen scheme produces a local
+Jacobian for the field redefinition, that Jacobian changes local coupling
+coordinates in the same EFT chart; it does not make the equation-of-motion
+operator an independent observable.
 \end{proof}
 
-\begin{definition}[Warsaw-type dimension-six ledger]
-\label{def:sm-warsaw-type-dimension-six-ledger}
-For a baryon-number preserving source chart with no singlet neutrino fields,
-one convenient ordered basis of \(\mathcal Q_6\) is a Warsaw-type ledger.
+\begin{definition}[Warsaw-type dimension-six basis]
+\label{def:sm-warsaw-type-dimension-six-basis}
+For a baryon-number preserving coupling chart with no singlet neutrino fields,
+one convenient ordered basis of \(\mathcal Q_6\) is the Warsaw-type basis.
 Write
 \[
   \widetilde X_{\mu\nu}:=
@@ -1086,16 +1209,17 @@ LR_{\rm scalar/tensor}&:\quad
 \end{aligned}
 \]
 Flavor labels \(I,J,K,L\) are part of the coefficient coordinates.  When
-flavor labels are restored, Hermiticity and exchange symmetries must be
-declared before counting real parameters.  Thus the ledger is a basis
-declaration, not a number quoted independently of a flavor convention.
+flavor labels are restored, Hermiticity and exchange symmetries must be fixed
+before counting real parameters.  Thus the basis is not merely a number of
+operators: it is an ordered coordinate system with specified flavor and
+reality conventions.
 \end{definition}
 
 \begin{definition}[Baryon-violating dimension-six classes]
-\label{def:sm-baryon-violating-dimension-six-ledger}
-If baryon number is not imposed as a source restriction, four additional
-gauge-invariant dimension-six classes are allowed.  In standard chiral
-four-component notation they may be represented as
+\label{def:sm-baryon-violating-dimension-six-classes}
+If baryon number is not imposed as a restriction on the effective couplings,
+four additional gauge-invariant dimension-six classes are allowed.  In
+standard chiral four-component notation they may be represented as
 \[
 \begin{aligned}
   O_{duq\ell}&=
@@ -1112,10 +1236,10 @@ four-component notation they may be represented as
 \end{aligned}
 \]
 Each class carries flavor labels and changes \(B\) and \(L\) by one unit
-with \(\Delta(B-L)=0\).  In the minimal SM hybrid datum these coefficients
-are set to zero by choosing baryon number as a source restriction; in a more
-general effective source chart they are independent coordinates constrained
-by proton-decay observables.
+with \(\Delta(B-L)=0\).  In the minimal SM definition used here these
+coefficients are set to zero by imposing baryon number on the effective
+couplings; in a more general effective theory they are independent
+coordinates constrained by proton-decay observables.
 \end{definition}
 
 \begin{proposition}[Field-content exhaustion at dimension six]
@@ -1132,9 +1256,9 @@ equations of motion, has one of the following field contents:
   X^3,\quad H^6,\quad H^4D^2,\quad X^2H^2,\quad
   \psi^2H^3,\quad \psi^2H^2D,\quad \psi^2XH,\quad \psi^4 .
 \]
-Consequently Definitions~\ref{def:sm-warsaw-type-dimension-six-ledger} and
-\ref{def:sm-baryon-violating-dimension-six-ledger} are exhaustive as a
-dimension-six field-content ledger.
+Consequently Definitions~\ref{def:sm-warsaw-type-dimension-six-basis} and
+\ref{def:sm-baryon-violating-dimension-six-classes} are exhaustive as a
+dimension-six field-content classification.
 \end{proposition}
 
 \begin{proof}
@@ -1156,7 +1280,7 @@ possibilities are \(H^3\), \(H^2D\), and \(XH\), giving
 \(\psi^2H^3\), \(\psi^2H^2D\), and \(\psi^2XH\).  With four fermions, the
 fermions already have dimension six, so no additional \(H,D\), or \(X\) may
 appear.  Gauge invariance and the finite Fierz identities then select the
-contractions listed in the ledger definitions.  The latter selection is a
+contractions listed in the basis definitions.  The latter selection is a
 finite algebraic basis choice inside \(\mathcal Q_6\), while this proposition
 establishes that no further field-content class exists.
 \end{proof}
@@ -1197,15 +1321,20 @@ chart and the theta dependence must be reconsidered separately.
 \end{proof}
 
 The empirical bound on \(\overline\theta\) is a bound on the coefficient of a
-specific CP-odd QCD operator in the hybrid datum.  It is not a principle for
-choosing parameters.
+specific CP-odd QCD operator in the Standard Model definition.  It is not a
+principle for choosing parameters.
 
-\section{One-Loop Running in a Minimal Source Chart}
+\section{One-Loop Running in a Minimal Coupling Chart}
 
 Renormalization-group formulae in the Standard Model are statements about a
-renormalized source chart.  The equations below use dimensional
-regularization and minimal subtraction in the explicit-coupling convention of
-Convention~\ref{conv:sm-electroweak-trace-normalization}.  Write
+renormalized coordinate system for couplings and masses.  The equations below
+use dimensional regularization and minimal subtraction in a mass-independent
+unbroken-representation chart with three active generations and one Higgs
+doublet.  Threshold matching, the broken-phase expansion, and
+higher-dimensional Wilson coefficients in an EFT extension are separate data.
+The explicit-coupling convention is
+the one fixed in Convention~\ref{conv:sm-electroweak-trace-normalization}.
+Write
 \[
   t:=\log\mu,\qquad \beta_x:=\frac{\dd x}{\dd t}.
 \]
@@ -1243,7 +1372,7 @@ fermions and complex scalars,
 \]
 This is the background-field one-loop pole coefficient derived in
 Chapter~\ref{ch:volume-ii-19}; here we only evaluate the representation
-sums in the Standard Model source chart.  For \(U(1)_Y\) the same formula is
+sums in the Standard Model coupling chart.  For \(U(1)_Y\) the same formula is
 read with \(T_G(R)\) replaced by \(Y^2\), including all nonabelian spectator
 multiplicities.  One generation contributes
 \[
@@ -1287,7 +1416,8 @@ One generation contributes
   2\cdot\frac{1}{2}+\frac{1}{2}+\frac{1}{2}=2,
 \]
 where the factor \(2\) is the weak multiplicity of \(Q_L\).  Three
-generations give \(6\), and there is no colored scalar in the minimal datum.
+generations give \(6\), and there is no colored scalar in the minimal field
+content.
 Thus
 \[
   b_3=-\frac{11}{3}\cdot3+\frac{2}{3}\cdot6=-7 .
@@ -1307,7 +1437,7 @@ chapter use the unrescaled \(g_1\).
 
 \begin{proposition}[One-loop top-Higgs subsystem]
 \label{prop:sm-one-loop-top-higgs-subsystem}
-Restrict the minimal Standard Model source chart to the invariant subspace in
+Restrict the minimal Standard Model coupling chart to the invariant subspace in
 which the only nonzero Yukawa singular value is the top coordinate \(y_t\).
 In the same minimal-subtraction convention,
 \[
@@ -1374,22 +1504,318 @@ the positive quartic polynomial
 \[
   \frac{3}{8}\left[2g_2^4+(g_2^2+g_1^2)^2\right].
 \]
-The statement is a perturbative source-chart equation.  It does not assert a
-nonperturbative electroweak continuum limit, and it does not turn the running
-of \(\lambda\) into a principle for choosing ultraviolet boundary data.
+The statement is an equation for renormalized perturbative coordinates.  It
+does not assert a nonperturbative electroweak continuum limit, and it does
+not turn the running of \(\lambda\) into a principle for choosing ultraviolet
+boundary data.  It also is not the full physical Standard Model trajectory
+unless the remaining Yukawa singular values and all higher-dimensional
+coordinates are consistently set to zero in the chosen chart; its role here
+is to isolate the leading top-Higgs mechanism in the quartic running.
 \end{proof}
+
+\section{Higgs Quartic Running and Large-Field Claims}
+
+The running quartic \(\lambda(\mu)\) is a coordinate in a chosen subtraction
+scheme.  The sign of this coordinate is a useful perturbative fact, but it is
+not by itself an observable and it is not a theorem about a nonperturbatively
+constructed Standard Model.  A statement often called ``Higgs vacuum
+stability'' therefore has to say which mathematical object it concerns.  It
+may concern a minimal-subtraction trajectory, a perturbative effective
+potential, a semiclassical decay functional, or an additional Wilsonian EFT
+extension.  These are different objects.  The large-field effective-potential
+analysis is meaningful only after the subtraction scheme, gauge convention,
+field range, perturbative error estimate, omitted higher-dimensional
+operators if an EFT extension is being used, and the relation between a
+background Higgs coordinate and the observable or decay problem have been
+specified.
+
+\begin{definition}[High-scale RG continuation]
+\label{def:sm-high-scale-rg-continuation-datum}
+Fix coupling coordinates \(c^A(\mu)\).  In the minimal perturbative electroweak
+chart these include
+\[
+  g_1(\mu),\qquad g_2(\mu),\qquad g_3(\mu),\qquad
+  y_t(\mu),\qquad \lambda(\mu),\qquad \ldots .
+\]
+Also fix a subtraction scheme, a loop order, and matching data
+\(c^A(\mu_0)\) at a reference scale.  A high-scale RG continuation to
+\(\mu_1>\mu_0\) is the solution of the specified ordinary differential
+equation
+\[
+  \frac{\dd c^A}{\dd\log\mu}=\beta^A(c)
+  \label{eq:sm-high-scale-rg-continuation-ode}
+\]
+on an interval where the perturbative chart and its error estimate are
+specified.  This continuation is not the assertion that the Standard Model has
+a physical cutoff \(\mu_1\).  It is a continuation of renormalized coordinates
+inside a perturbative scheme.  To reinterpret \(\mu_1\) as a Wilsonian cutoff,
+one must change the problem by adding a Wilsonian QFT definition at scale
+\(\mu_1\), a matching map from that definition to the low-energy coordinates,
+and a proof or controlled hypothesis that the observables under discussion are
+reproduced in the overlap regime.
+\end{definition}
+
+\begin{proposition}[Minimal-subtraction running does not supply a Wilsonian
+cutoff]
+\label{prop:sm-ms-running-not-wilsonian-cutoff}
+The RG continuation of
+Definition~\ref{def:sm-high-scale-rg-continuation-datum}, by itself, is not
+a Wilsonian effective theory with ultraviolet cutoff \(\mu_1\).  In
+particular it does not define a finite field-variable space, a path-integral
+measure or half-density, a Hilbert space, a gauge-invariant chiral regulator,
+or a local Wilsonian action at \(\mu_1\).
+\end{proposition}
+
+\begin{proof}
+The minimal-subtraction beta functions are obtained from the pole parts of
+renormalized 1PI coordinate changes in dimensional regularization.  Solving
+\eqref{eq:sm-high-scale-rg-continuation-ode} transports coordinates in this
+renormalized coupling chart.  A Wilsonian cutoff theory is different data: it
+requires a finite regulator or BV pushforward, a cutoff-dependent local
+action or half-density, and a statement that low-momentum observables are
+preserved by integrating out degrees of freedom.  None of these objects is
+constructed by the ordinary differential equation for minimal-subtraction
+coordinates.  Therefore any argument that treats the endpoint of the
+minimal-subtraction trajectory as a physical high-cutoff Wilsonian EFT has
+introduced an additional assumption.  In this monograph such an assumption
+must be written as part of the theory under discussion and cannot be used as
+a hidden premise.
+\end{proof}
+
+\begin{remark}[Extensions beyond the Standard Model]
+A proposed extension of the Standard Model is an additional mathematical
+hypothesis, not an explanation by itself.  If it is used only through finitely
+many higher-dimensional operators, it is a choice of EFT coordinates together
+with matching assumptions.  If it is claimed to be an ultraviolet completion,
+the claim requires a regulator or constructive framework at least as explicit
+as the ones demanded in
+Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum} and
+Proposition~\ref{prop:sm-ms-running-not-wilsonian-cutoff}.  A perturbative
+Lagrangian, a high-scale RG trajectory, or a phenomenological motivation is
+not by itself such a theory.
+\end{remark}
+
+\begin{definition}[Quartic positivity in a specified chart]
+\label{def:sm-quartic-positivity-statement}
+Fix a subtraction scheme, a gauge for the perturbative effective potential if
+one is used, a loop order, matching maps from measured pole or threshold
+observables to coupling coordinates at \(\mu_0\), and a scale interval
+\(I=[\mu_0,\mu_1]\).  Specify whether \(I\) is only a high-scale RG
+continuation in the sense of
+Definition~\ref{def:sm-high-scale-rg-continuation-datum}, or whether an
+additional Wilsonian or constructive definition is being attached to the
+endpoint.
+A quartic-positivity statement on \(I\) is the claim that the solution of the
+specified RG equations satisfies
+\[
+  \lambda(\mu)>0,\qquad \mu\in I,
+  \label{eq:sm-quartic-positive-trajectory}
+\]
+with an error estimate that includes threshold matching, loop truncation,
+input-parameter uncertainties, and the effect of higher-dimensional
+operators in the chosen coupling chart.  It is a statement about
+perturbative coordinates.  It is not a nonperturbative vacuum statement
+unless the additional regulator and observable data below make it one.
+\end{definition}
+
+\begin{definition}[Metastability in a specified semiclassical calculation]
+\label{def:sm-metastability-statement}
+In the same chart, a metastability claim is not the assertion
+\(\lambda(\mu)<0\).  It is a semiclassical statement about a
+false-vacuum decay functional: one must specify the gauge-fixed effective
+action used for the bounce calculation, the fluctuation determinant
+convention, the renormalization scale-setting prescription, the spacetime
+volume or cosmological history against which the rate is compared, and the
+higher-dimensional operators retained in the field range of the bounce.  The
+output is an inequality of the form
+\[
+  \Gamma_{\rm decay}\,{\mathcal V}_4 < \varepsilon ,
+  \label{eq:sm-metastability-rate-statement}
+\]
+with a specified uncertainty.  The sign of \(\lambda\) along an RG trajectory
+is one input to such a calculation, not the calculation itself.  It becomes a
+prediction of a QFT only after the path integral, field range, and omitted
+operator remainder are controlled in the regime sampled by the bounce.
+\end{definition}
+
+\begin{proposition}[Large-field EFT expansion requires a field-domain
+hypothesis]
+\label{prop:sm-radial-potential-dimension-six}
+Let \(h\) be the radial Higgs coordinate defined by
+\[
+  H^\dagger H=\frac{h^2}{2}.
+\]
+In a coupling chart whose scalar potential is
+\[
+  V_{\leq 6}(h)
+  =
+  \lambda\left(\frac{h^2-v^2}{2}\right)^2
+  +
+  \frac{C_H}{\Lambda^2}\left(\frac{h^2}{2}\right)^3
+  \label{eq:sm-higgs-radial-potential-dim-six}
+\]
+the large-field quartic approximation is controlled only for
+\(h^2/\Lambda^2\) in the specified EFT range.  More precisely, for
+\(h\gg v\),
+\[
+  V_{\leq 6}(h)
+  =
+  \frac{\lambda}{4}h^4
+  \left[
+    1+\frac{C_H}{2\lambda}\frac{h^2}{\Lambda^2}
+    +O\!\left(\frac{v^2}{h^2}\right)
+  \right],
+  \label{eq:sm-higgs-dim-six-relative-size}
+\]
+whenever \(\lambda\neq0\).  Therefore a sign statement about the
+dimension-four coordinate \(\lambda\) alone is not a statement about the
+large-field potential unless the higher-dimensional coordinates and the field
+range have been specified.  More generally, an operator
+\[
+  \frac{C_n}{\Lambda^{2n-4}}(H^\dagger H)^n,\qquad n\geq3,
+  \label{eq:sm-higgs-general-large-field-operator}
+\]
+contributes, relative to the quartic term, by the factor
+\[
+  \frac{C_n}{\lambda\,2^{\,n-2}}
+  \left(\frac{h^2}{\Lambda^2}\right)^{n-2}.
+  \label{eq:sm-higgs-general-large-field-ratio}
+\]
+Thus a finite truncation of the large-field potential is a controlled EFT
+statement only in a field domain where the omitted tower is bounded by a
+specified remainder.
+\end{proposition}
+
+\begin{proof}
+Substituting \(H^\dagger H=h^2/2\) gives
+\[
+  \lambda\left(\frac{h^2-v^2}{2}\right)^2
+  =
+  \frac{\lambda}{4}h^4
+  -\frac{\lambda v^2}{2}h^2
+  +\frac{\lambda v^4}{4}
+\]
+and
+\[
+  \frac{C_H}{\Lambda^2}\left(\frac{h^2}{2}\right)^3
+  =
+  \frac{C_H}{8\Lambda^2}h^6 .
+\]
+Factoring \(\lambda h^4/4\) from the large-field expression gives
+\eqref{eq:sm-higgs-dim-six-relative-size}.  The ratio of the dimension-six
+term to the quartic term grows as \(h^2/\Lambda^2\).  Thus the EFT coupling
+chart, not only the dimension-four coordinate, is part of the statement.
+
+For the general operator \eqref{eq:sm-higgs-general-large-field-operator},
+substitution of \(H^\dagger H=h^2/2\) gives
+\[
+  \frac{C_n}{\Lambda^{2n-4}}\frac{h^{2n}}{2^n}.
+\]
+Dividing by \(\lambda h^4/4\) gives
+\eqref{eq:sm-higgs-general-large-field-ratio}.  If \(h^2/\Lambda^2\) is not
+small, or if the coefficients \(C_n\) are not bounded by a stated matching
+hypothesis, no finite truncation gives a controlled statement about the
+potential in that region.
+\end{proof}
+
+\begin{proposition}[No baseline large-field theorem in the hybrid definition]
+\label{prop:sm-no-baseline-large-field-conclusion}
+The hybrid Standard Model definition of
+Definition~\ref{def:hybrid-standard-model-datum}, without additional
+mathematical input beyond the listed nonperturbative QCD, perturbative
+electroweak, weak-EFT, and matching data, does not imply a nonperturbative
+large-field stability or metastability theorem for the Higgs coordinate.
+\end{proposition}
+
+\begin{proof}
+The definition contains the electroweak sector as a renormalized perturbative
+chiral gauge theory and supplies matching maps to lower-energy EFTs and
+nonperturbative QCD inputs.  It does not contain a nonperturbative
+construction of a probability measure, Hilbert space, or operator algebra for
+the full chiral electroweak theory that would make arbitrary large Higgs-field
+regions into an object of theorem-level control.  Nor does a
+minimal-subtraction trajectory supply such an object, by
+Proposition~\ref{prop:sm-ms-running-not-wilsonian-cutoff}.  If one changes the
+problem to an EFT extension with higher-dimensional operators,
+Proposition~\ref{prop:sm-radial-potential-dimension-six} shows that a
+large-field statement also samples the omitted operator coordinates unless the
+field range and matching assumptions control them.  Hence the baseline hybrid
+definition supports conditional perturbative statements about the chosen
+coupling chart or decay functional, but not an unconditional QFT theorem about
+Higgs large-field stability or metastability.
+\end{proof}
+
+\begin{proposition}[One-loop source of downward quartic running]
+\label{prop:sm-top-source-downward-quartic}
+In the one-loop top-Higgs subsystem of
+Proposition~\ref{prop:sm-one-loop-top-higgs-subsystem}, the beta function at
+\(\lambda=0\) is
+\[
+  (4\pi)^2\beta_\lambda\big|_{\lambda=0}
+  =
+  -6y_t^4
+  +
+  \frac{3}{8}\left[
+    2g_2^4+(g_2^2+g_1^2)^2
+  \right].
+  \label{eq:sm-lambda-beta-at-zero}
+\]
+Thus the top-Yukawa coordinate is the negative contribution that can drive
+the minimal-subtraction quartic coordinate through zero along the RG flow.
+This is a statement about the specified perturbative coupling chart.
+\end{proposition}
+
+\begin{proof}
+Set \(\lambda=0\) in \eqref{eq:sm-one-loop-lambda-beta}.  The terms
+\(24\lambda^2\), \(12\lambda y_t^2\), and
+\(-3\lambda(3g_2^2+g_1^2)\) vanish, leaving exactly
+\eqref{eq:sm-lambda-beta-at-zero}.  The negative sign of the top term is the
+closed-fermion-loop sign already identified in the proof of
+Proposition~\ref{prop:sm-one-loop-top-higgs-subsystem}.  No
+scheme-independent observable is obtained until the matching inputs and the
+observable or decay functional have been specified.
+\end{proof}
+
+\begin{definition}[Data required for a Higgs large-field claim]
+\label{def:sm-higgs-large-field-claim-data}
+A Higgs large-field claim in the hybrid Standard Model definition has a
+precise meaning only after specifying:
+\begin{enumerate}
+\item the input observables and matching maps used to determine
+      \(g_1,g_2,g_3,y_t,\lambda\) and the relevant higher-dimensional
+      coefficients at the reference scale;
+\item the subtraction scheme, loop order, threshold convention, and scale
+      interval for the RG evolution;
+\item whether the endpoint of the scale interval is only a formal RG
+      continuation of renormalized coordinates or is being supplemented by an
+      additional Wilsonian, lattice, BV, or constructive definition;
+\item whether the output is a quartic-positivity statement in the sense of
+      Definition~\ref{def:sm-quartic-positivity-statement} or a metastability
+      statement in the sense of
+      Definition~\ref{def:sm-metastability-statement};
+\item the treatment of \(O_H=(H^\dagger H)^3\) and every other retained
+      higher-dimensional operator whose contribution is not uniformly small
+      over the field range;
+\item a remainder estimate for perturbative truncation and for omitted
+      operators.
+\end{enumerate}
+Without these data, a sentence about ``vacuum stability'' has no definite
+mathematical content in this chapter.  Even with these data, the result is
+conditional unless a theorem or controlled argument relates the chosen
+perturbative quantity to the claimed observable or decay problem.
+\end{definition}
 
 \section{Precision Electroweak Self-Energy Coordinates}
 
 Precision electroweak fits use a finite-dimensional projection of the
 renormalized electroweak two-point functions.  The projection is meaningful
 only after the input scheme, subtraction scheme, and class of observables have
-been fixed.  This section records the source-chart definition used in this
-monograph.
+been fixed.  This section defines the \(S,T,U\) coordinates as such a
+two-point projection.
 
 \begin{definition}[Transverse self-energy difference]
 \label{def:sm-transverse-self-energy-difference}
-Fix a reference electroweak source chart with the same input values of
+Fix a reference electroweak coupling chart with the same input values of
 \(\alpha_{\rm em}\), \(G_F\), and \(m_Z\).  Let
 \[
   s_W:=\frac{g_1}{\sqrt{g_1^2+g_2^2}},
@@ -1402,7 +1828,7 @@ so that \(m_W^2=c_W^2m_Z^2\) at tree level in the chart of
 Proposition~\ref{prop:sm-electroweak-stabilizer-masses}.  For
 \(V,V'\in\{W,Z,\gamma\}\), define \(\Delta\Pi_{VV'}(q^2)\) to be the
 difference between the renormalized transverse 1PI two-point scalar in the
-source chart under study and the corresponding scalar in the reference chart,
+chart under study and the corresponding scalar in the reference chart,
 with identical external-current normalization.  Thus
 \[
   \Delta\Gamma^{\mu\nu}_{VV'}(q)\big|_{\rm trans}
@@ -1425,7 +1851,7 @@ analytic at \(q^2=0\) on the relevant sheet and write
 \(\Delta\Pi'_{VV'}(0):=\dd\Delta\Pi_{VV'}(q^2)/\dd q^2|_{q^2=0}\).
 \end{definition}
 
-\begin{definition}[\(S,T,U\) source-chart coordinates]
+\begin{definition}[\(S,T,U\) two-point coordinates]
 \label{def:sm-stu-coordinates}
 Under the hypotheses of
 Definition~\ref{def:sm-transverse-self-energy-difference}, the
@@ -1459,7 +1885,7 @@ Peskin--Takeuchi \(S,T,U\) coordinates are the three finite combinations
 \]
 Here
 \(\alpha_{\rm em}:=e^2/(4\pi)\).  These are coordinates on the two-point part
-of the electroweak source chart, not on the full space of all possible
+of the electroweak coupling chart, not on the full space of all possible
 four-fermion, vertex, and detector corrections.
 \end{definition}
 
@@ -1518,7 +1944,7 @@ The first-order Taylor expansion of \((1+x)^{-1}\) gives
   +O(\delta^2),
 \]
 which proves \eqref{eq:sm-t-rho-shift}.  This is the precise sense in which
-\(T\) records custodial-symmetry breaking in a two-point source chart.
+\(T\) records custodial-symmetry breaking in a two-point electroweak chart.
 \end{proof}
 
 \begin{proposition}[Domain of the \(S,T,U\) projection]
@@ -1558,99 +1984,213 @@ normalization is removed; and \(U\) is the corresponding charged-minus-neutral
 derivative coordinate.  If nonanalytic thresholds, nonlocal detector
 functionals, vertex corrections, box corrections, or independent local
 four-fermion operators are kept at the same order, they are additional
-coordinates of the hybrid prediction and are not represented by \(S,T,U\)
+coordinates of the matched prediction and are not represented by \(S,T,U\)
 alone.
 \end{proof}
 
 \section{The Hybrid Definition}
 
-\begin{definition}[Hybrid Standard Model datum]
+\begin{definition}[QCD--electroweak coupling data]
+\label{def:sm-qcd-ew-coupling-data}
+Let \(\mathfrak D_{\rm QCD}^{\rm W}\) be a Wightman QFT with Hilbert space
+\(\mathcal H_{\rm QCD}\), vacuum \(\Omega_{\rm QCD}\), and a net or common
+domain of color-gauge-invariant local operator-valued distributions.  A
+QCD--electroweak coupling datum \(\mathcal C_{\rm QCD\text{-}EW}\) consists
+of the following data.
+\begin{enumerate}
+\item A finite or countable list of renormalized color-gauge-invariant local
+      QCD fields
+      \[
+        \mathcal O_A(x)\in\mathcal O_{\rm QCD}^{\rm inv},
+      \]
+      including the flavor vector and axial currents, charged weak currents,
+      electromagnetic current, and scalar or pseudoscalar quark-density
+      operators needed after an electroweak scalar chart is chosen.  Each
+      \(\mathcal O_A\) is an operator-valued tempered distribution, with its
+      domain, normalization, and composite-operator scheme specified.
+\item The transformation laws of these operators under the flavor and
+      electroweak source symmetries that are to be gauged perturbatively,
+      together with their Ward identities, anomaly contact terms, and
+      current-conservation or partial-conservation equations.
+\item A local perturbative interaction functional
+      \[
+        I_{\rm int}[\varphi_{\rm EW};\mathcal O]
+        =
+        \sum_A \int_{M_4}\varphi_{\rm EW}^A(x)\,\mathcal O_A(x),
+        \label{eq:sm-qcd-ew-hybrid-coupling}
+      \]
+      where \(\varphi_{\rm EW}^A\) denotes the corresponding perturbative
+      electroweak field, source, or composite expression.  The product in
+      \eqref{eq:sm-qcd-ew-hybrid-coupling} is required to be invariant under
+      the electroweak gauge symmetry after the perturbative gauge-fixing or BV
+      formulation has been specified.
+\item A prescription for mixed correlators as formal series in electroweak
+      couplings whose coefficients are Wightman distributions of the QCD
+      operators \(\mathcal O_A\), combined with the perturbative electroweak
+      propagators and vertices.  The prescription includes the renormalization
+      of coincident insertions and the contact-term scheme.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Hybrid coupling is additional structure]
+\label{prop:sm-hybrid-coupling-additional-structure}
+The datum \(\mathcal C_{\rm QCD\text{-}EW}\) in
+Definition~\ref{def:sm-qcd-ew-coupling-data} is not determined by separately
+giving a nonperturbative QCD Wightman theory and a perturbative electroweak
+Lagrangian.  It is additional mathematical structure needed to define the
+hybrid Standard Model prediction framework.
+\end{proposition}
+
+\begin{proof}
+A nonperturbative QCD Wightman theory contains physical local fields only in
+the color-gauge-invariant operator algebra.  The colored quark fields that
+appear in a gauge-fixed perturbative Lagrangian are not, by themselves,
+Wightman fields on the physical QCD Hilbert space.  Therefore an electroweak
+boson or Higgs fluctuation cannot be coupled to a nonperturbative QCD sector
+by reusing a colored perturbative quark line.  The coupling has to be
+expressed through color-gauge-invariant QCD operator-valued distributions:
+for example the electromagnetic current, charged weak currents, neutral
+currents, and scalar density operators.  Their normalizations, contact terms,
+Ward identities, and anomaly conventions determine the coefficients of mixed
+correlators with electroweak external fields.
+
+At order \(n\) in the electroweak couplings, a mixed correlator is a finite
+sum of perturbative electroweak kernels paired with QCD Wightman
+distributions of the form
+\[
+  \bigl\langle
+    \Omega_{\rm QCD},
+    \mathcal O_{A_1}(x_1)\cdots \mathcal O_{A_n}(x_n)
+    \mathcal X_1(y_1)\cdots\mathcal X_m(y_m)
+    \Omega_{\rm QCD}
+  \bigr\rangle,
+  \label{eq:sm-qcd-ew-mixed-coefficient}
+\]
+where the \(\mathcal X_i\) are the QCD operators appearing in the observable.
+The distribution \eqref{eq:sm-qcd-ew-mixed-coefficient}, its extension to
+coincident points, and its Ward identities are not supplied by the
+electroweak perturbative Lagrangian.  Conversely, the pure QCD Wightman theory
+does not know which electroweak source or gauge field multiplies which
+operator.  Thus the hybrid coupling datum is logically necessary.
+\end{proof}
+
+\begin{definition}[Hybrid Standard Model definition]
 \label{def:hybrid-standard-model-datum}
-The Standard Model is used in this monograph as the following hybrid datum,
-not as a single completed constructive theorem for a four-dimensional
-continuum QFT:
+The Standard Model is used in this monograph through the following hybrid
+definition, not as a single completed constructive theorem for a
+four-dimensional continuum QFT:
 \[
   \mathfrak D_{\rm SM}
   =
   \bigl(
-    \mathfrak D_{\rm QCD}^{\rm lat},
-    \mathfrak D_{\rm EW}^{\Lambda},
+    \mathfrak D_{\rm QCD}^{\rm W},
+    \mathfrak D_{\rm EW}^{\rm pert},
+    \mathcal C_{\rm QCD\text{-}EW},
     \mathfrak D_{\rm weak\,EFT},
     \mathcal M
   \bigr).
 \]
-Here \(\mathfrak D_{\rm QCD}^{\rm lat}\) is the finite-lattice
-gauge-invariant regularization of the \(SU(3)_c\) sector with quark matter
-and a continuum-limit problem of the kind stated in
-Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit};
-\(\mathfrak D_{\rm EW}^{\Lambda}\) is the electroweak chiral gauge theory
-with Higgs field treated as a finite-cutoff effective theory below a scale
-\(\Lambda\); \(\mathfrak D_{\rm weak\,EFT}\) is the tower of lower-energy
-effective theories obtained by integrating out massive weak fields and heavy
-flavors; and \(\mathcal M\) is the matching data fixing parameters and local
-operators between overlapping regimes.
+Here \(\mathfrak D_{\rm QCD}^{\rm W}\) denotes the nonperturbative continuum
+QCD Wightman theory selected by the \(SU(3)_c\) gauge theory with quark
+matter; in constructive and computational practice it is approached through
+finite lattice regulators and a continuum-limit problem of the kind stated in
+Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit}.  When a concrete
+lattice regulator is needed for a hadronic matrix element, it will be denoted
+\(\mathfrak D_{\rm QCD}^{\rm lat}\); this notation refers to the regulator
+used to approximate the QCD component, not to a cutoff definition of the full
+Standard Model.
+\(\mathfrak D_{\rm EW}^{\rm pert}\) denotes the renormalized electroweak
+chiral gauge theory with Higgs field, constructed as a perturbative formal
+power series to all orders after gauge fixing or BV treatment, anomaly
+cancellation, and a subtraction scheme have been fixed;
+\(\mathcal C_{\rm QCD\text{-}EW}\) is the hybrid coupling datum of
+Definition~\ref{def:sm-qcd-ew-coupling-data};
+\(\mathfrak D_{\rm weak\,EFT}\) is the tower of lower-energy effective
+theories obtained by integrating out massive weak fields and heavy flavors;
+and \(\mathcal M\) is the matching data fixing parameters and local operators
+between overlapping regimes.  The symbol
+\(\mathfrak D_{\rm EW}^{\rm pert}\) is not a finite-cutoff definition and is
+not a claim that a nonperturbative four-dimensional chiral electroweak
+continuum construction has been supplied.
 \end{definition}
 
 \begin{definition}[Matching data in the hybrid Standard Model]
 \label{def:sm-hybrid-matching-data}
 The symbol \(\mathcal M\) in
 Definition~\ref{def:hybrid-standard-model-datum} consists of the following
-declared data for the observable class under consideration:
+specified data for the observable class under consideration:
 \begin{enumerate}
 \item a sequence of scales or windows where adjacent descriptions overlap;
 \item renormalized parameter charts for \(g_3,g_2,g_1,\lambda,v\), the
-      Yukawa matrices, theta angles, and higher-dimensional Wilson
-      coordinates;
+      Yukawa matrices, theta angles, and, when an EFT extension is being used,
+      higher-dimensional Wilson coordinates;
 \item threshold matching maps when \(W,Z,h,t,b,c,\tau,\ldots\) are removed
       from the active field content;
 \item anomalous-dimension matrices for the chosen operator bases between
       thresholds;
+\item the QCD--electroweak coupling datum
+      \(\mathcal C_{\rm QCD\text{-}EW}\), including the scheme for the
+      currents, scalar densities, contact terms, and Ward identities entering
+      the observable;
 \item nonperturbative QCD matrix elements, defined by
-      \(\mathfrak D_{\rm QCD}^{\rm lat}\) or by another explicitly declared
+      \(\mathfrak D_{\rm QCD}^{\rm lat}\) or by another explicitly specified
       nonperturbative regulator, for hadronic operators;
 \item the error model or remainder statement attached to each perturbative,
       lattice, or combined extrapolation.
 \end{enumerate}
-None of these entries is optional in a certified precision prediction.
+A numerical precision claim is well defined only after these choices and
+their error estimates are specified.
 \end{definition}
 
-\begin{proposition}[Logical layers of the hybrid datum]
+\begin{proposition}[Logical parts of the hybrid definition]
 \label{prop:sm-hybrid-logical-layers}
-The datum of Definition~\ref{def:hybrid-standard-model-datum} separates
-finite-regulator definition, perturbative effective definition, and
-observable-specific matching.  These layers cannot be replaced by one another
-without adding an extra theorem or hypothesis.
+Definition~\ref{def:hybrid-standard-model-datum} separates
+nonperturbative QCD input, perturbative electroweak definitions, their hybrid
+operator coupling, lower-energy effective theories, and observable-specific
+matching.  These parts cannot be replaced by one another without adding an
+extra theorem or hypothesis.
 \end{proposition}
 
 \begin{proof}
-First, the QCD sector has a precise finite nonperturbative regulator by
-compact lattice link variables, Haar measure, and finite Grassmann algebra
-for quarks.  The existence of the four-dimensional continuum limit with the
-desired physical spectrum is still a theorem-level open problem, but the
-finite-regulator object and its gauge-invariant observables are mathematically
-well-defined.
+First, the QCD sector is the nonperturbative part of the definition.  It is
+intended as a continuum Wightman QFT with gauge-invariant local and extended
+observables, while compact lattice link variables, Haar measure, and finite
+Grassmann algebra for quarks provide the concrete nonperturbative regulators
+used to define approximating matrix elements.  The existence of the
+four-dimensional continuum limit with the desired physical spectrum is still a
+theorem-level constructive problem, but the logical role of this component is
+not perturbative electroweak renormalization.
 
 Second, the electroweak sector is a perturbatively renormalizable chiral gauge
-EFT.  Its perturbative consistency uses anomaly cancellation, BRST or BV
-Ward identities, and the local power-counting analysis of the BEH phase.  A
-standalone nonperturbative continuum construction is not supplied by these
-facts.  The hypercharge \(U(1)\) coupling is not asymptotically free, and the
+theory.  Its perturbative consistency uses anomaly cancellation, BRST or BV
+Ward identities, and the local power-counting analysis of the BEH phase.  This
+defines renormalized Green functions and operator insertions as formal power
+series to all orders in the chosen subtraction scheme.  A standalone
+nonperturbative continuum construction is not supplied by these facts.  The
+hypercharge \(U(1)\) coupling is not asymptotically free, and the
 four-dimensional scalar quartic sector lies on the same marginal-triviality
-boundary discussed in Chapters~\ref{ch:scalar-path-integrals-green-functions} and
-\ref{ch:volume-ii-ising-universality}.  Moreover, a fully satisfactory
+boundary discussed in Chapters~\ref{ch:scalar-path-integrals-green-functions}
+and \ref{ch:volume-ii-ising-universality}.  Moreover, a fully satisfactory
 interacting lattice construction of a four-dimensional chiral gauge theory
 with the Standard Model representation content is a separate problem, related
 to the determinant-line and chiral-lattice issues in
 Chapter~\ref{ch:constructive-lattice-fermions-chiral-symmetry}.
 
-Third, physical predictions are extracted in regimes where a controlled
+Third, the coupling of these two parts is not automatic.  It is mediated by
+the color-gauge-invariant QCD operator insertions specified in
+\(\mathcal C_{\rm QCD\text{-}EW}\).  This is the point at which
+nonperturbative hadronic matrix elements enter electroweak amplitudes and
+where contact terms and Ward identities must be fixed.
+
+Fourth, physical predictions are extracted in regimes where a controlled
 object is available.  High-energy short-distance processes use perturbative
 renormalization and factorization with explicitly stated infrared-safe
 observables.  Low-energy hadronic weak processes use QCD matrix elements
 defined by the QCD regulator together with weak effective operators matched at
-the electroweak scale.  Precision electroweak observables use the
-finite-order perturbative EFT, with the cutoff dependence absorbed into
-renormalized parameters and higher-dimensional operators.
+the electroweak scale.  Precision electroweak observables use finite-order
+renormalized perturbation theory.  A cutoff parameter is not part of the
+prediction; any auxiliary regulator dependence has been removed or absorbed
+into the stated renormalized coordinates and operator scheme.
 \end{proof}
 
 \section{Chiral Lattice Status of the Electroweak Sector}
@@ -1663,14 +2203,15 @@ fermions, and the corresponding fermion integral is a section of a
 determinant line over the finite gauge-field space.  The phase of that
 section is part of the regulator, not an optional convention.
 
-\begin{definition}[Finite chiral-gauge regulator datum]
+\begin{definition}[Finite chiral-gauge regulator data]
 \label{def:sm-finite-chiral-gauge-regulator-datum}
 A finite chiral-gauge regulator for the Standard Model representation
 content consists of the following data at lattice spacing \(a\) and finite
 volume:
 \begin{enumerate}
-\item compact lattice gauge fields for the chosen global form of
-      \(SU(3)_c\times SU(2)_L\times U(1)_Y\), with a local gauge action;
+\item compact lattice gauge fields for the chosen global form of the local
+      product data \(SU(3)_c\times SU(2)_L\times U(1)_Y\), with a local gauge
+      action;
 \item a local gauge-covariant lattice Dirac operator, for example an
       overlap/Ginsparg--Wilson operator satisfying
       \eqref{eq:lattice-ginsparg-wilson};
@@ -1681,7 +2222,7 @@ volume:
       the chiral fermion determinant line over lattice gauge fields;
 \item lattice Higgs and Yukawa terms whose gauge quantum numbers reduce to
       Definition~\ref{def:sm-higgs-yukawa-datum} in the scaling window;
-\item uniform locality and reflection-positivity, or a declared replacement
+\item uniform locality and reflection-positivity, or a specified replacement
       reconstruction route, strong enough to define a candidate continuum
       local QFT.
 \end{enumerate}
@@ -1689,7 +2230,7 @@ volume:
 
 \begin{proposition}[Local anomaly cancellation is necessary, not sufficient]
 \label{prop:sm-chiral-lattice-anomaly-necessity}
-For a finite chiral-gauge regulator datum of
+For finite chiral-gauge regulator data in the sense of
 Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}, gauge
 invariance of the chiral determinant line requires the perturbative gauge
 anomaly coefficients of Proposition~\ref{prop:sm-generation-anomaly-cancellation}
@@ -1716,9 +2257,9 @@ vanishing of these local obstruction coefficients for the Standard Model
 representations.
 
 There is also a global obstruction for an odd number of \(SU(2)\) doublets:
-transport around the nontrivial loop in the gauge group changes the sign of
-the fermion Pfaffian.  The Standard Model has four weak doublets per
-generation, hence avoids this obstruction.  The conclusion is only
+transport around the nontrivial loop in the weak \(SU(2)\) gauge factor
+changes the sign of the fermion Pfaffian.  The Standard Model has four weak
+doublets per generation, hence avoids this obstruction.  The conclusion is only
 necessity.  A zero curvature class permits the local obstruction to be
 removed; it does not exhibit a local phase functional, prove reflection
 positivity, or control the continuum scaling limit.
@@ -1726,10 +2267,11 @@ positivity, or control the continuum scaling limit.
 
 \begin{proposition}[Why lattice QCD is not a full Standard Model regulator]
 \label{prop:sm-lattice-qcd-not-full-sm-regulator}
-The lattice datum \(\mathfrak D_{\rm QCD}^{\rm lat}\) in
-Definition~\ref{def:hybrid-standard-model-datum} supplies a nonperturbative
-definition of gauge-invariant QCD matrix elements after the electroweak
-matching data have selected the relevant color-singlet operators.  It does
+The lattice regulators used to approximate the QCD component
+\(\mathfrak D_{\rm QCD}^{\rm W}\) in
+Definition~\ref{def:hybrid-standard-model-datum} supply nonperturbative
+definitions of gauge-invariant QCD matrix elements after the electroweak
+matching data have selected the relevant color-singlet operators.  They do
 not define the full Standard Model chiral gauge theory.
 \end{proposition}
 
@@ -1749,18 +2291,23 @@ The hybrid construction avoids conflating these two uses.  For hadronic weak
 observables, the weak fields are first matched onto gauge-invariant local
 operators such as four-quark, semileptonic, or electromagnetic-current
 operators.  The QCD lattice regulator then computes the matrix elements of
-those color-singlet operators.  This is a valid hybrid prediction after the
-matching map \(\mathcal M\) is specified, but it is not a nonperturbative
+those color-singlet operators.  This gives a valid matched prediction after
+the map \(\mathcal M\) is specified, but it is not a nonperturbative
 construction of the microscopic chiral electroweak gauge theory.
 \end{proof}
 
-\begin{definition}[Standard Model prediction in the hybrid framework]
+\begin{definition}[Standard Model prediction]
 \label{def:sm-hybrid-prediction}
-A Standard Model prediction for an observable \(O\) is certified in this
-chapter only after the following data are specified:
+A Standard Model prediction for an observable \(O\), in the sense used in
+this chapter, is a number or distribution obtained only after the following
+data are specified:
 \begin{enumerate}
-\item the energy regime and the regulator or EFT used in that regime;
-\item the local operator or detector functional representing \(O\);
+\item the energy regime and the component of the hybrid definition used in
+      that regime: nonperturbative QCD input, renormalized perturbative
+      electroweak theory, a lower-energy EFT, or an additional Wilsonian/EFT
+      extension;
+\item the gauge-invariant local operator, infrared-safe inclusive observable,
+      or detector functional representing \(O\);
 \item the matching map from the adjacent higher-energy description, including
       the scheme and normalization of all operator coordinates;
 \item the perturbative, lattice, or combined expansion parameter and the
@@ -1842,7 +2389,7 @@ Comparing with
 The equality is a tree-level matching statement in the electroweak EFT.  QCD
 renormalization of hadronic weak operators, electromagnetic corrections, CKM
 factors, and matrix elements of the resulting four-fermion operators are
-separate parts of the low-energy hybrid datum.
+separate parts of the low-energy matching problem.
 
 \section{Muon \texorpdfstring{\(g-2\)}{g-2} as a Hybrid Prediction}
 
@@ -1909,11 +2456,11 @@ coefficient, as shown explicitly in
 Proposition~\ref{prop:qed-one-loop-vertex-schwinger}.
 \end{proof}
 
-\begin{definition}[Hybrid decomposition through a declared order]
+\begin{definition}[Matched decomposition through a specified order]
 \label{def:sm-muon-gminus-two-hybrid-decomposition}
 Fix a renormalization scheme, an input-parameter chart, and a maximum order in
 the electromagnetic, weak, and QCD matching expansions.  The corresponding
-Standard Model source-coordinate prediction for \(a_\mu\) is written
+Standard Model value for \(a_\mu\) is written
 \[
   a_\mu^{\rm SM}
   =
@@ -1932,13 +2479,13 @@ Goldstone/ghost representative in a gauge-fixed computation;
 corrected by the gauge-invariant hadronic electromagnetic current two-point
 function; \(a_\mu^{\rm HLbL}\) contains the hadronic electromagnetic
 four-current contribution coupled to the muon line by photons; and
-\(a_\mu^{\rm rem}\) records the declared higher-order remainder and any
+\(a_\mu^{\rm rem}\) records the specified higher-order remainder and any
 separation-scheme convention.
 \end{definition}
 
 \begin{proposition}[Leading electroweak Pauli coefficient]
 \label{prop:sm-muon-leading-electroweak}
-In the broken-phase electroweak source chart, and at leading order in
+In the broken-phase electroweak coupling chart, and at leading order in
 \(m_\mu^2/m_W^2\), \(m_\mu^2/m_Z^2\), and \(m_\mu^2/m_h^2\), the one-loop weak
 contribution to the muon Pauli coordinate is
 \[
@@ -1999,7 +2546,7 @@ proportional to the muon Yukawa coordinate.  Adding the charged and neutral
 leading terms gives \eqref{eq:sm-muon-leading-electroweak}.  This is a
 short-distance matching statement in the electroweak EFT; higher weak loops
 and mixed electroweak-hadronic terms are separate entries in
-\(a_\mu^{\rm rem}\) unless explicitly included in the declared order.
+\(a_\mu^{\rm rem}\) unless explicitly included in the specified order.
 \end{proof}
 
 \begin{definition}[Hadronic vacuum polarization from QCD current data]
@@ -2013,7 +2560,7 @@ Let
 \]
 be the quark part of the electromagnetic current, with the sum taken over the
 active quark fields in the chosen low-energy QCD description and with the
-current renormalized in the declared regulator.  The connected transverse
+current renormalized in the specified regulator.  The connected transverse
 current two-point function defines a scalar polarization by
 \[
   \ii\int \dd^4x\,\ee^{\ii q\cdot x}
@@ -2116,7 +2663,7 @@ current correlator
   \qquad t\ge0,
   \label{eq:sm-hvp-euclidean-gt}
 \]
-with the conserved or renormalized lattice current declared as part of
+with the conserved or renormalized lattice current specified as part of
 \(\mathfrak D_{\rm QCD}^{\rm lat}\).  The subtracted Euclidean polarization is
 then equivalently encoded by
 \[
@@ -2130,7 +2677,7 @@ then equivalently encoded by
 \]
 which fixes the normalization convention for \(G(t)\) relative to
 \(\widehat\Pi_E\); on a finite lattice the corresponding current
-renormalization factor is part of the regulator datum.  Combining this
+renormalization factor is part of the regulator data.  Combining this
 identity with the Euclidean form of \eqref{eq:sm-hvp-feynman-parameter} gives
 \[
   a_\mu^{\rm HVP,LO}
@@ -2178,11 +2725,11 @@ when both are available, is a nontrivial matching statement about the same
 QCD-defined current correlator.
 \end{definition}
 
-\begin{proposition}[Certification of the \(a_\mu\) prediction]
+\begin{proposition}[Data needed for the \(a_\mu\) prediction]
 \label{prop:sm-muon-gminus-two-certification}
-A value assigned to \(a_\mu^{\rm SM}\) is certified in the sense of
-Definition~\ref{def:sm-hybrid-prediction} only after the following data have
-been declared:
+A value assigned to \(a_\mu^{\rm SM}\) is a Standard Model prediction in the
+sense of Definition~\ref{def:sm-hybrid-prediction} only after the following
+data have been specified:
 \begin{enumerate}
 \item the lepton-sector QED perturbative order and charge scheme;
 \item the electroweak input scheme and the order of weak matching;
@@ -2199,14 +2746,16 @@ been declared:
 Definition~\ref{def:sm-muon-gminus-two-observable} identifies \(a_\mu\) as a
 single Pauli-form-factor coordinate.  The decomposition
 \eqref{eq:sm-muon-gminus-two-hybrid-decomposition} is not a decomposition of
-the observable itself; it is a decomposition of its computation in a declared
-source chart.  The QED and electroweak entries are perturbative Pauli-operator
+the observable itself; it is a decomposition of its computation in a specified
+low-energy matching scheme.  The QED and electroweak entries are perturbative
+Pauli-operator
 matching coefficients.  The HVP and HLbL entries are functionals of
 gauge-invariant QCD current correlators, defined either by a spectral
 representation or by a finite regulator such as the lattice.  Changing any
-item in the list changes the coordinate map from the hybrid datum to the
-number called \(a_\mu^{\rm SM}\).  Thus the listed data are necessary for the
-five certification requirements in Definition~\ref{def:sm-hybrid-prediction}.
+item in the list changes the coordinate map from the hybrid Standard Model
+definition to the number called \(a_\mu^{\rm SM}\).  Thus the listed data are
+necessary for the five requirements in
+Definition~\ref{def:sm-hybrid-prediction}.
 \end{proof}
 
 \begin{openproblem}[Constructive Standard Model]
@@ -2216,6 +2765,7 @@ content, gauge symmetry, anomaly cancellation, BEH phase, QCD confinement
 data, and weak interactions with positivity, locality, covariance, and a
 controlled relation to the observed parameter regime.  A solution may be a
 single nonperturbative construction or a theorem explaining why the hybrid
-datum above has a universal continuum domain for the specified observables.
+definition above has a universal continuum domain for the specified
+observables.
 No such theorem is assumed in this monograph.
 \end{openproblem}
