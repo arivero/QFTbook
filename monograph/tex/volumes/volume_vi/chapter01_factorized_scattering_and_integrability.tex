@@ -17,6 +17,69 @@ and isolated one-particle species labelled by \(a,b,\ldots\), with masses
 The Lorentz group acts by translating \(\theta\).  Hence a two-particle
 invariant depends on the rapidity difference \(\theta_{12}=\theta_1-\theta_2\).
 
+\begin{definition}[Rapidity chart and ordered chambers]
+\label{def:integrable-rapidity-chart-ordered-chambers}
+For a species \(a\), the rapidity chart is the map
+\[
+  \theta\longmapsto p_a(\theta)=m_a(\cosh\theta,\sinh\theta)
+\]
+from \(\R\) to the positive-energy mass shell
+\(\{p\in\R^{1,1}:p^2=-m_a^2,\ p^0>0\}\).  The positive two-particle
+Mandelstam invariant is
+\[
+  s_{ab}(\theta_1-\theta_2)
+  :=
+  -\bigl(p_a(\theta_1)+p_b(\theta_2)\bigr)^2 .
+\]
+For \(N\) particles, an ordered rapidity chamber is a connected component of
+\[
+  \{(\theta_1,\ldots,\theta_N)\in\R^N:
+    \theta_i\ne\theta_j\ \text{for }i\ne j\}.
+\]
+The fundamental chamber used below is
+\(\theta_1>\theta_2>\cdots>\theta_N\).  Other chambers are reached by
+permuting rapidities and then relating the corresponding scattering bases by
+two-body scattering operators.
+\end{definition}
+
+\begin{proposition}[Two-particle kinematics in rapidity variables]
+\label{prop:two-particle-rapidity-kinematics}
+In the rapidity chart of
+Definition~\ref{def:integrable-rapidity-chart-ordered-chambers},
+\[
+  s_{ab}(\theta)
+  =
+  m_a^2+m_b^2+2m_am_b\cosh\theta,
+  \qquad \theta=\theta_1-\theta_2 .
+\]
+The Lorentz-invariant two-body kinematics of massive particles in
+\(1+1\) dimensions is therefore encoded by the rapidity difference
+\(\theta\), together with the species labels.
+\end{proposition}
+
+\begin{proof}
+With mostly-plus metric,
+\[
+  p_a(\theta_1)\cdot p_b(\theta_2)
+  =
+  -m_am_b\cosh\theta_1\cosh\theta_2
+  +m_am_b\sinh\theta_1\sinh\theta_2
+  =
+  -m_am_b\cosh(\theta_1-\theta_2).
+\]
+Since \(p_a^2=-m_a^2\) and \(p_b^2=-m_b^2\),
+\[
+  -\bigl(p_a+p_b\bigr)^2
+  =
+  m_a^2+m_b^2+2m_am_b\cosh(\theta_1-\theta_2).
+\]
+A proper orthochronous Lorentz boost of rapidity \(\lambda\) sends
+\(\theta_i\mapsto\theta_i+\lambda\), so \(\theta_1-\theta_2\) is invariant.
+Conversely, once the masses and the total invariant mass are fixed,
+\(\cosh(\theta_1-\theta_2)\) is fixed; the sign of
+\(\theta_1-\theta_2\) records the ordering of the two momenta.
+\end{proof}
+
 \section{Factorized Scattering Datum}
 
 \begin{definition}[Elastic factorized scattering datum]
@@ -67,10 +130,9 @@ as an identity on the tensor product of three one-particle internal spaces.
 The notation \(S_{ij}\) means that the two-particle matrix \(S\) acts on the
 \(i\)-th and \(j\)-th tensor factors and as the identity on the remaining
 factor.  The Yang--Baxter equation is the associativity condition for
-reordering three rapidities by adjacent transpositions.  It is the exact
-analogue, for ordered asymptotic particles in \(1+1\) dimensions, of the
-ordinary associativity constraint on multiple OPE expansions in the CFT
-volume.
+reordering three rapidities by adjacent transpositions.  It is a structural
+part of factorized scattering: it identifies the pairwise decompositions of a
+single ordered three-particle process.
 
 \begin{definition}[Separating higher-spin family]
 \label{def:separating-higher-spin-family}
@@ -111,6 +173,30 @@ the hypothesis used below; this sufficient condition is only a convenient
 checkable way to obtain it.
 \end{definition}
 
+\begin{lemma}[Support test by multiplication]
+\label{lem:support-test-by-multiplication}
+Let \(U\subset\R^n\) be open, let \(T\in\mathcal D'(U)\), and let
+\(f\in C^\infty(U)\).  If \(fT=0\) and \(f\) has no zero on an open set
+\(V\subset U\), then \(T\) vanishes on \(V\).
+\end{lemma}
+
+\begin{proof}
+For any test function \(\varphi\in C_c^\infty(V)\), the quotient
+\(\varphi/f\) is smooth with compact support in \(V\), because \(f\) is
+nowhere zero on \(V\).  Since \(fT=0\),
+\[
+  \langle T,\varphi\rangle
+  =
+  \left\langle T,f\frac{\varphi}{f}\right\rangle
+  =
+  \left\langle fT,\frac{\varphi}{f}\right\rangle
+  =
+  0 .
+\]
+Thus \(T\) pairs to zero with every test function supported in \(V\), which
+means \(T|_V=0\).
+\end{proof}
+
 \begin{proposition}[Factorization from conserved higher-spin charges]
 \label{prop:higher-spin-factorization-kinematic}
 Assume a massive \(1+1\)-dimensional QFT has Haag--Ruelle asymptotic particle
@@ -150,11 +236,11 @@ Commutation with \(Q_{s,\lambda}\) gives, in the sense of distributions,
   \right)
   K_{N\to M}=0
 \]
-for every \((s,\lambda)\).  A standard support property of distributions says
-that if a smooth function \(f\) is nonzero on an open set and \(fT=0\), then
-the distribution \(T\) vanishes on that open set.  Therefore the support of
-the kernel is contained in the common zero locus of all differences of charge
-eigenvalues.
+for every \((s,\lambda)\).  The following support property of distributions
+is being used: Lemma~\ref{lem:support-test-by-multiplication} implies that
+the kernel vanishes on any open set where one of the displayed charge
+differences is nonzero.  Therefore the support of the kernel is contained in
+the common zero locus of all differences of charge eigenvalues.
 
 For \(M=N\), the \(N\)-separation hypothesis says that this common zero locus,
 outside the exceptional set, is precisely the union of permutation graphs
@@ -167,6 +253,69 @@ open domain.  Threshold and bound-state loci are excluded from the statement
 because the distribution kernels may have additional singular components
 there; those components must be described after the relevant channel is
 resolved.
+\end{proof}
+
+\section{Ordered Bases and the Scattering Groupoid}
+
+Factorized scattering is most precise when formulated as a comparison of
+ordered bases for the same asymptotic Hilbert-space sector.  Fix a regular
+rapidity point with distinct rapidities.  For each chamber
+\(\theta_{\sigma(1)}>\cdots>\theta_{\sigma(N)}\), choose the ordered
+asymptotic basis in which the creation operators are written in that order.
+Crossing a codimension-one wall \(\theta_i=\theta_{i+1}\) is represented by
+the two-body operator
+\[
+  \mathsf T_i(\theta_i-\theta_{i+1})
+  =
+  S_{i,i+1}(\theta_i-\theta_{i+1})
+\]
+acting on the adjacent species spaces and reversing the adjacent rapidity
+order.  Thus the elementary maps \(\mathsf T_i\) are morphisms in the groupoid
+whose objects are rapidity chambers and whose arrows are paths crossing
+walls.  A consistent factorized scattering theory requires this groupoid
+representation to be path independent on the complement of the declared
+threshold and bound-state singular loci.
+
+\begin{proposition}[Scattering-chamber consistency]
+\label{prop:scattering-chamber-consistency}
+Let \(S_{ab}^{cd}(\theta)\) be an elastic factorized scattering datum.  Away
+from poles and coincident rapidities, the adjacent chamber maps
+\(\mathsf T_i\) define a path-independent representation of the chamber
+groupoid if and only if the two-particle unitarity identities and the
+Yang--Baxter equation hold.
+\end{proposition}
+
+\begin{proof}
+The chamber groupoid for ordered points on the line is generated by adjacent
+wall crossings.  Its local relations are:
+\[
+  \mathsf T_i^2=1,\qquad
+  \mathsf T_i\mathsf T_j=\mathsf T_j\mathsf T_i\quad (|i-j|>1),
+  \qquad
+  \mathsf T_i\mathsf T_{i+1}\mathsf T_i
+  =
+  \mathsf T_{i+1}\mathsf T_i\mathsf T_{i+1}.
+\]
+The first relation is exactly two-particle unitarity,
+\[
+  S_{ab}(\theta)S_{ba}(-\theta)=\id,
+\]
+written in components as the identity in
+Definition~\ref{def:elastic-factorized-scattering-datum}.  The second
+relation holds because disjoint adjacent crossings act on disjoint tensor
+factors.  For three adjacent rapidities
+\(\theta_1>\theta_2>\theta_3\), the two reduced paths from the chamber
+\((123)\) to the chamber \((321)\) give
+\[
+  S_{12}(\theta_{12})S_{13}(\theta_{13})S_{23}(\theta_{23})
+  \quad\text{and}\quad
+  S_{23}(\theta_{23})S_{13}(\theta_{13})S_{12}(\theta_{12}),
+\]
+respectively.  Equality is precisely the Yang--Baxter equation.  These local
+relations present the chamber groupoid away from the excluded diagonals and
+singular loci, so unitarity plus Yang--Baxter gives path independence.
+Conversely, path independence around the two local loops just described gives
+unitarity and the Yang--Baxter equation.
 \end{proof}
 
 \section{Zamolodchikov--Faddeev Operators}
@@ -182,13 +331,96 @@ For each species \(a\) introduce distributional creation operators
   \qquad \theta_1>\theta_2 .
   \label{eq:zf-creation-exchange}
 \end{equation}
-Repeated species labels are summed.  Associativity of the product of three
-creation operators is equivalent to the Yang--Baxter equation in
-Definition~\ref{def:elastic-factorized-scattering-datum}; applying
-\eqref{eq:zf-creation-exchange} to reorder
-\(\theta_1>\theta_2>\theta_3\) along the two reduced words
-\((12)(13)(23)\) and \((23)(13)(12)\) gives precisely the two sides of that
-equation.
+Repeated species labels are summed.  These operator-valued distributions are
+a compact encoding of ordered asymptotic creation operators and their
+chamber-transition functions.  Local fields enter through form factors and
+operator reconstruction below.
+
+\begin{proposition}[Associativity of the ZF creation algebra]
+\label{prop:zf-associativity-yang-baxter}
+Assume two-particle unitarity.  The exchange rule
+\eqref{eq:zf-creation-exchange} gives an associative algebra of ordered
+creation symbols, independent of the sequence of adjacent re-orderings, if
+and only if the Yang--Baxter equation in
+Definition~\ref{def:elastic-factorized-scattering-datum} holds.
+\end{proposition}
+
+\begin{proof}
+It is enough to compare the two ways of reordering three strictly ordered
+rapidities \(\theta_1>\theta_2>\theta_3\).  Starting from
+\[
+  Z_a^\dagger(\theta_1)Z_b^\dagger(\theta_2)Z_c^\dagger(\theta_3),
+\]
+the reduced word which first moves the first rapidity past the second and
+then through the third gives the coefficient
+\[
+  S_{ab}^{a'b'}(\theta_{12})
+  S_{a'c}^{a''c'}(\theta_{13})
+  S_{b'c'}^{b''c''}(\theta_{23})
+\]
+multiplying the final ordered product
+\[
+  Z_{c''}^\dagger(\theta_3)
+  Z_{b''}^\dagger(\theta_2)
+  Z_{a''}^\dagger(\theta_1).
+\]
+The other reduced word gives the same final ordered product with coefficient
+\[
+  S_{bc}^{b'c'}(\theta_{23})
+  S_{ac'}^{a'c''}(\theta_{13})
+  S_{a'b'}^{a''b''}(\theta_{12}).
+\]
+Equality of these coefficients for all external species is exactly the
+component form of the Yang--Baxter equation.  The inverse adjacent move is
+well defined by two-particle unitarity, and disjoint moves commute because
+they involve disjoint creation symbols.  Hence the braid relations are
+equivalent to associativity and sequence independence of the exchange
+algebra.
+\end{proof}
+
+\begin{definition}[\(S\)-symmetric finite-particle wavefunctions]
+\label{def:s-symmetric-finite-particle-wavefunctions}
+An \(N\)-particle \(S\)-symmetric wavefunction is a collection of functions
+\[
+  \psi_{a_1\ldots a_N}(\theta_1,\ldots,\theta_N)
+\]
+on rapidity chambers, square-integrable with respect to
+\(\dd\theta_1\cdots\dd\theta_N\) on compactly supported wave packets, whose
+boundary values across an adjacent chamber wall obey
+\[
+  \psi_{\ldots a_i a_{i+1}\ldots}
+    (\ldots,\theta_i,\theta_{i+1},\ldots)
+  =
+  S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})\,
+  \psi_{\ldots c b\ldots}
+    (\ldots,\theta_{i+1},\theta_i,\ldots).
+\]
+The finite-particle \(S\)-Fock space is obtained by imposing the
+\(L^2\) positive inner product on compactly supported wavefunctions in one
+fundamental chamber, extending them to all chambers by the displayed
+relations, and completing the resulting pre-Hilbert space.
+\end{definition}
+
+\begin{proposition}[Well-defined chamber extension]
+\label{prop:s-symmetric-extension-well-defined}
+If the two-body datum satisfies unitarity and the Yang--Baxter equation, then
+the chamber relations in
+Definition~\ref{def:s-symmetric-finite-particle-wavefunctions} determine the
+values of an \(S\)-symmetric wavefunction in every chamber from its value in
+one fundamental chamber, independently of the chosen adjacent-transposition
+path.
+\end{proposition}
+
+\begin{proof}
+This is the dual wavefunction form of
+Proposition~\ref{prop:scattering-chamber-consistency}.  The adjoint
+transition across a wall is invertible by two-particle unitarity.  Two
+different paths between the same pair of chambers differ by the local
+relations \(\mathsf T_i^2=1\), disjoint commutation, and the braid relation.
+The first two relations are implemented by unitarity and disjoint tensor
+support, while the braid relation is implemented by Yang--Baxter.  Therefore
+all path choices give the same continuation.
+\end{proof}
 
 \section{Local Operators and Form Factors}
 
@@ -203,26 +435,55 @@ factor is
   \qquad \theta_1>\cdots>\theta_n .
 \]
 Changing the ordered rapidity chamber changes the scattering basis by the
-two-body \(S\)-matrix.  Thus the form-factor boundary values obey Watson
-exchange equations,
+two-body \(S\)-matrix.
+
+\begin{proposition}[Watson exchange from ordered asymptotic bases]
+\label{prop:watson-exchange-ordered-bases}
+For adjacent rapidities in a regular chamber, the form-factor boundary values
+obey
 \[
   F^{\mathcal O}_{\ldots a_i a_{i+1}\ldots}(\ldots,\theta_i,\theta_{i+1},\ldots)
   =
   S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})\,
   F^{\mathcal O}_{\ldots c b\ldots}(\ldots,\theta_{i+1},\theta_i,\ldots),
 \]
-together with crossing, cyclicity, and residue equations at bound-state
-poles.  The exchange equation is a statement about boundary values in
-neighboring rapidity chambers and the normalization of ordered scattering
-states; locality of \(\mathcal O\) enters the cyclicity and semi-locality
-conditions developed in Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
+with summation over \(b,c\).  This statement uses only the factorized
+scattering normalization of ordered asymptotic bases.  The role of locality
+of \(\mathcal O\) begins with the cyclicity and semi-locality conditions
+developed in
+Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
+\end{proposition}
+
+\begin{proof}
+Take the defining matrix element in the chamber
+\(\theta_1>\cdots>\theta_i>\theta_{i+1}>\cdots>\theta_n\).  Applying the ZF
+exchange relation \eqref{eq:zf-creation-exchange} to the adjacent pair gives
+\[
+  Z_{a_i}^\dagger(\theta_i)Z_{a_{i+1}}^\dagger(\theta_{i+1})
+  =
+  S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})\,
+  Z_c^\dagger(\theta_{i+1})Z_b^\dagger(\theta_i).
+\]
+Insert this identity between \(\bra{\vac}\mathcal O(0)\) and \(\ket{\vac}\),
+leaving all other ordered creation operators fixed.  The resulting matrix
+element on the right is exactly the boundary value in the neighboring chamber
+with the adjacent rapidities interchanged.  This gives the displayed Watson
+equation.  No commutation of \(\mathcal O\) through the ZF operator has been
+used.
+\end{proof}
+
+Together with Watson exchange, form-factor bootstrap uses crossing,
+cyclicity, and residue equations at bound-state poles.  The exchange equation
+is a statement about boundary values in neighboring rapidity chambers and the
+normalization of ordered scattering states; locality of \(\mathcal O\) enters
+only in those additional cyclicity and semi-locality conditions.
 The operator reconstruction problem is to determine which solutions of these
 functional equations come from genuine local operators in a Hilbert-space
 QFT.  The theorem-boundary data include the local operator domain,
 positivity, convergence of form-factor expansions, and clustering.
 
 \begin{openproblem}[Completeness of form-factor reconstruction]
-\label{op:form-factor-reconstruction-completeness}
+  \label{op:form-factor-reconstruction-completeness}
 Give intrinsic hypotheses on a factorized scattering datum and a family of
 form-factor solutions that imply the existence of a local QFT with those
 asymptotic particles, those local operators, and Wightman functions obtained

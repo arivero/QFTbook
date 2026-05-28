@@ -17,7 +17,8 @@
   bounds away from the declared pole set; TBA use also requires a branch and
   kernel integrability hypothesis.
 - Bound-state mass formula from a direct-channel pole, derived by analytic
-  continuation of two-body rapidity kinematics.
+  continuation of two-body rapidity kinematics with the mostly-plus
+  convention \(s=-(p_a+p_b)^2\).
 - Residue factorization through bound-state multiplicity space.
 - Bound-state residue projection maps
   \(V_e\leftrightarrows V_a\otimes V_b\), with the sign fixed by

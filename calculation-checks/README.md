@@ -750,6 +750,11 @@ Current checks:
   unitarity and crossing, the sign and total integral of the TBA kernel, the
   golden-ratio plateau equation, and the Rogers-dilogarithm value
   \(L(\phi^{-2})=\pi^2/15\) giving \(c_{\rm eff}=2/5\).
+- `factorized_scattering_algebra_checks.py`: exact checks for the Volume VI
+  factorized-scattering opening chapter, including mostly-plus rapidity
+  kinematics, Newton separation of rapidity multisets, chamber braid
+  relations, the rational Yang--Baxter identity, scalar two-body unitarity,
+  and Watson-exchange coefficient bookkeeping.
 - `integrable_rg_flow_checks.py`: exact arithmetic checks for the Volume VI
   perturbed-CFT and integrable-RG-flow chapter, including the
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model
