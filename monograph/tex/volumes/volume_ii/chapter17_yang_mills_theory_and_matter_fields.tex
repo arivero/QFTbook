@@ -291,45 +291,103 @@ Since \([\nabla_\mu,\nabla_\nu]=-\ii F_{\mu\nu}\) and
 \eqref{eq:ym-bianchi-identity}.
 \end{proof}
 
-Figure~\ref{fig:ym-curvature-action-chain} records the chain of definitions used
-above: connection, curvature, Bianchi identity, gauge transformation law, and
-the Yang--Mills action built from the trace-normalized curvature.
+Figure~\ref{fig:ym-curvature-action-chain} shows the geometric content of the
+commutator formula.  For a small oriented rectangle based at \(x\), with side
+lengths \(a\) in the \(x^\mu\) direction and \(b\) in the \(x^\nu\) direction,
+let
+\[
+  U_\mu(x,a)
+  =
+  \mathcal P\exp\left\{\ii\int_0^a
+  A_\mu(x+s e_\mu)\,\dd s\right\}
+\]
+be the parallel-transport operator for
+\(\dot x^\rho\nabla_\rho s=0\) along the horizontal side.  The oriented loop
+holonomy is
+\[
+  U_\square(x;\mu,\nu)
+  =
+  U_\nu(x,b)^{-1}
+  U_\mu(x+b e_\nu,a)^{-1}
+  U_\nu(x+a e_\mu,b)
+  U_\mu(x,a).
+\]
+Expanding the path-ordered exponentials and using the
+Baker--Campbell--Hausdorff formula gives
+\[
+  U_\square(x;\mu,\nu)
+  =
+  1+\ii F_{\mu\nu}(x)\,ab+O(a^2b+ab^2).
+\]
+Thus \(F_{\mu\nu}\) is the infinitesimal failure of parallel transports in the
+two coordinate directions to commute.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.55) {connection};
-    \draw[rounded corners=4pt,thick] (-1.5,0.65) rectangle (1.5,1.75);
-    \node at (0,1.20) {\(\nabla_\mu=\partial_\mu-\ii A_\mu\)};
+    \tikzset{
+      transport/.style={-{Latex[length=2mm]},line width=1.05pt},
+      guide/.style={densely dashed,gray!55,line width=0.55pt},
+      point/.style={circle,fill=black,inner sep=1.4pt}
+    }
 
-    \draw[-{Latex[length=2mm]},thick] (1.75,1.20)--(3.05,1.20);
-    \node[align=center] at (2.40,1.60) {commutator};
+    \coordinate (x) at (0,0);
+    \coordinate (xm) at (4.25,0);
+    \coordinate (xmn) at (4.25,2.40);
+    \coordinate (xn) at (0,2.40);
 
-    \node[font=\small] at (4.55,2.55) {curvature};
-    \draw[rounded corners=4pt,thick] (3.10,0.65) rectangle (5.95,1.75);
-    \node at (4.53,1.20) {\(F_{\mu\nu}=\ii[\nabla_\mu,\nabla_\nu]\)};
+    \fill[blue!6] (x)--(xm)--(xmn)--(xn)--cycle;
+    \draw[guide] (x)--(4.85,0);
+    \draw[guide] (x)--(0,2.95);
+    \draw[transport,blue!70!black] (x)--node[below=3pt]
+      {\(U_\mu(x,a)\)} (xm);
+    \draw[transport,blue!70!black] (xm)--node[right=3pt]
+      {\(U_\nu(x+a e_\mu,b)\)} (xmn);
+    \draw[transport,blue!70!black] (xmn)--node[above=3pt]
+      {\(U_\mu(x+b e_\nu,a)^{-1}\)} (xn);
+    \draw[transport,blue!70!black] (xn)--node[left=3pt]
+      {\(U_\nu(x,b)^{-1}\)} (x);
 
-    \draw[-{Latex[length=2mm]},thick] (6.18,1.20)--(7.45,1.20);
-    \node[align=center] at (6.82,1.60) {invariant\\trace};
+    \node[point,label=below left:\(x\)] at (x) {};
+    \node[point,label=below:\(x+a e_\mu\)] at (xm) {};
+    \node[point,label=above right:\(x+a e_\mu+b e_\nu\)] at (xmn) {};
+    \node[point,label=above left:\(x+b e_\nu\)] at (xn) {};
+    \node[blue!70!black,align=center] at (2.12,1.20)
+      {curvature flux\\\(\ii F_{\mu\nu}(x)\,ab\)};
+    \node[below] at (2.12,-0.48) {oriented infinitesimal loop};
 
-    \node[font=\small] at (9.05,2.55) {action density};
-    \draw[rounded corners=4pt,thick] (7.55,0.65) rectangle (10.55,1.75);
-    \node at (9.05,1.20)
-      {\(\displaystyle -\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\)};
+    \begin{scope}[shift={(6.15,0.05)}]
+      \node[font=\small] at (2.55,3.05)
+        {first nontrivial term in the loop holonomy};
+      \node[align=left] at (2.55,1.95)
+        {\(\displaystyle
+        U_\square(x;\mu,\nu)
+        =
+        1+\ii F_{\mu\nu}(x)\,ab
+        +O(a^2b+ab^2)\)};
+      \draw[red!70!black,-{Latex[length=2mm]},line width=0.8pt]
+        (0.75,1.45)--(0.75,0.78);
+      \node[red!70!black,align=left,anchor=west] at (0.92,0.72)
+        {this coefficient is\\
+        \(F_{\mu\nu}\), equivalently\\
+        \(\ii[\nabla_\mu,\nabla_\nu]\)};
 
-    \draw[purple!75!black,thick,-{Latex[length=2mm]}]
-      (0,0.45) .. controls (1.6,-0.55) and (3.2,-0.55) .. (4.55,0.45);
-    \node[purple!75!black,align=center] at (2.35,-0.78)
-      {\(\nabla_\mu'=g\nabla_\mu g^{-1}\) implies
-      \(F_{\mu\nu}'=gF_{\mu\nu}g^{-1}\)};
-    \node[blue!65!black,align=center] at (9.05,-0.50)
-      {cyclicity removes the conjugation};
+      \draw[purple!70!black,-{Latex[length=2mm]},line width=0.8pt]
+        (3.35,1.45)--(3.35,0.78);
+      \node[purple!70!black,align=left,anchor=west] at (3.52,0.72)
+        {under a frame change\\
+        \(U_\square\mapsto g(x)U_\square g(x)^{-1}\),\\
+        hence \(F_{\mu\nu}\mapsto gF_{\mu\nu}g^{-1}\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{The Yang-Mills field strength is the curvature of the covariant
-  differential operator.  Its conjugation law is converted into a gauge-invariant
-  action density by an invariant trace.}
+  \caption{Curvature as infinitesimal loop holonomy.  Parallel transport around
+  the small rectangle returns a section to the same base point with
+  \(U_\square=1+\ii F_{\mu\nu}ab+O(a^2b+ab^2)\).  A change of local frame
+  conjugates the based loop holonomy, so the curvature transforms by
+  \(F_{\mu\nu}\mapsto gF_{\mu\nu}g^{-1}\); invariant traces used in the
+  Yang--Mills action remove this conjugation.}
   \label{fig:ym-curvature-action-chain}
 \end{figure}
 
