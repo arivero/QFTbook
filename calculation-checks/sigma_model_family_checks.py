@@ -7,14 +7,15 @@ Polyakov-Wiegmann WZ coefficient, WZW central charges and endpoint
 representation formulae, nonabelian-bosonization central-charge bookkeeping,
 the projective-model crossing tensors, the SU(N) sine-mass/fusion-angle and
 rational-matrix bootstrap blocks, the repulsive sausage charged scattering
-identities, the supertarget one-loop coefficients, and the curvature and
-one-loop Ricci-flow closure formulae for the sausage metric used in
-Volume VI.
+identities and formal Yang--Baxter component identity, the supertarget
+one-loop coefficients, and the curvature and one-loop Ricci-flow closure
+formulae for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
 
 import math
+from collections import defaultdict
 from fractions import Fraction
 
 import mpmath as mp
@@ -606,6 +607,132 @@ def sausage_op13(two_particle_matrix: np.ndarray) -> np.ndarray:
     return operator
 
 
+def sausage_formal_sinh(z: sp.Expr, shift: int, q: sp.Symbol) -> sp.Expr:
+    """Return sinh(lambda theta + i pi lambda shift) with z = exp(lambda theta)."""
+    return (z * q**shift - z**-1 * q**(-shift)) / 2
+
+
+def sausage_formal_spp(z: sp.Expr, q: sp.Symbol) -> sp.Expr:
+    return sp.cancel(sausage_formal_sinh(z, -1, q) / sausage_formal_sinh(z, 1, q))
+
+
+def sausage_formal_charge_one_entries(z: sp.Expr, q: sp.Symbol) -> tuple[sp.Expr, sp.Expr]:
+    d_entry = sausage_formal_spp(z, q)
+    direct = sausage_formal_sinh(z, 0, q) / sausage_formal_sinh(z, -2, q) * d_entry
+    minus_i_sin_two = -(q**2 - q**-2) / 2
+    exchange = minus_i_sin_two / sausage_formal_sinh(z, -2, q) * d_entry
+    return sp.cancel(direct), sp.cancel(exchange)
+
+
+def sausage_formal_spm_exchange(z: sp.Expr, q: sp.Symbol) -> sp.Expr:
+    minus_sin_one_sin_two = (q - q**-1) * (q**2 - q**-2) / 4
+    return sp.cancel(
+        minus_sin_one_sin_two
+        / (sausage_formal_sinh(z, -2, q) * sausage_formal_sinh(z, 1, q))
+    )
+
+
+def sausage_formal_full_triplet_entries(
+    z: sp.Expr,
+    q: sp.Symbol,
+) -> dict[tuple[tuple[int, int], tuple[int, int]], sp.Expr]:
+    entries: dict[tuple[tuple[int, int], tuple[int, int]], sp.Expr] = {}
+
+    def add(out_first: int, out_second: int, in_first: int, in_second: int, value: sp.Expr) -> None:
+        entries[((out_first, out_second), (in_first, in_second))] = sp.cancel(value)
+
+    # Basis labels: 0=+, 1=0, 2=-.
+    add(0, 0, 0, 0, sausage_formal_spp(z, q))
+    add(2, 2, 2, 2, sausage_formal_spp(z, q))
+
+    direct, exchange = sausage_formal_charge_one_entries(z, q)
+    for basis in ([(0, 1), (1, 0)], [(2, 1), (1, 2)]):
+        for row, (out_first, out_second) in enumerate(basis):
+            for col, (in_first, in_second) in enumerate(basis):
+                add(out_first, out_second, in_first, in_second, direct if row == col else exchange)
+
+    crossed_z = q / z
+    e_entry = sausage_formal_spp(crossed_z, q)
+    _, f_entry = sausage_formal_charge_one_entries(crossed_z, q)
+    g_entry = sausage_formal_spm_exchange(z, q)
+    h_entry = direct + g_entry
+    zero_basis = [(0, 2), (1, 1), (2, 0)]
+    zero_block = [[e_entry, f_entry, g_entry], [f_entry, h_entry, f_entry], [g_entry, f_entry, e_entry]]
+    for row, (out_first, out_second) in enumerate(zero_basis):
+        for col, (in_first, in_second) in enumerate(zero_basis):
+            add(out_first, out_second, in_first, in_second, zero_block[row][col])
+
+    return entries
+
+
+def sausage_sparse_op12(
+    two_particle_entries: dict[tuple[tuple[int, int], tuple[int, int]], sp.Expr],
+) -> dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr]:
+    operator: dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr] = {}
+    for (out_pair, in_pair), value in two_particle_entries.items():
+        for third in range(3):
+            operator[((out_pair[0], out_pair[1], third), (in_pair[0], in_pair[1], third))] = value
+    return operator
+
+
+def sausage_sparse_op23(
+    two_particle_entries: dict[tuple[tuple[int, int], tuple[int, int]], sp.Expr],
+) -> dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr]:
+    operator: dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr] = {}
+    for (out_pair, in_pair), value in two_particle_entries.items():
+        for first in range(3):
+            operator[((first, out_pair[0], out_pair[1]), (first, in_pair[0], in_pair[1]))] = value
+    return operator
+
+
+def sausage_sparse_op13(
+    two_particle_entries: dict[tuple[tuple[int, int], tuple[int, int]], sp.Expr],
+) -> dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr]:
+    operator: dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr] = {}
+    for (out_pair, in_pair), value in two_particle_entries.items():
+        for second in range(3):
+            operator[((out_pair[0], second, out_pair[1]), (in_pair[0], second, in_pair[1]))] = value
+    return operator
+
+
+def sausage_sparse_compose(
+    left: dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr],
+    right: dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr],
+) -> dict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr]:
+    right_by_row: defaultdict[tuple[int, int, int], list[tuple[tuple[int, int, int], sp.Expr]]] = defaultdict(list)
+    for (row, col), value in right.items():
+        right_by_row[row].append((col, value))
+
+    composed: defaultdict[tuple[tuple[int, int, int], tuple[int, int, int]], sp.Expr] = defaultdict(lambda: 0)
+    for (row, middle), left_value in left.items():
+        for col, right_value in right_by_row.get(middle, []):
+            composed[(row, col)] += left_value * right_value
+    return {key: sp.cancel(value) for key, value in composed.items() if value != 0}
+
+
+def check_sausage_formal_yang_baxter_components() -> None:
+    q, u, v = sp.symbols("q u v", nonzero=True)
+    entries_u = sausage_formal_full_triplet_entries(u, q)
+    entries_v = sausage_formal_full_triplet_entries(v, q)
+    entries_uv = sausage_formal_full_triplet_entries(u * v, q)
+
+    lhs = sausage_sparse_compose(
+        sausage_sparse_compose(sausage_sparse_op12(entries_u), sausage_sparse_op13(entries_uv)),
+        sausage_sparse_op23(entries_v),
+    )
+    rhs = sausage_sparse_compose(
+        sausage_sparse_compose(sausage_sparse_op23(entries_v), sausage_sparse_op13(entries_uv)),
+        sausage_sparse_op12(entries_u),
+    )
+
+    assert_equal("sausage formal two-particle nonzero count", len(entries_u), 19)
+    assert_equal("sausage formal YBE component support", len(set(lhs) | set(rhs)), 141)
+    for component in sorted(set(lhs) | set(rhs)):
+        numerator = sp.together(lhs.get(component, 0) - rhs.get(component, 0)).as_numer_denom()[0]
+        if sp.factor(numerator) != 0:
+            raise AssertionError(f"sausage formal YBE component {component}: got {sp.cancel(numerator)}, expected 0")
+
+
 def check_sausage_repulsive_smatrix_ledgers() -> None:
     for lam in (0.1, 0.25, 0.49):
         for theta in (0.37, 1.11):
@@ -756,6 +883,7 @@ def main() -> None:
     check_scalar_cdd_and_su_n_gamma_ledgers()
     check_supertarget_one_loop_ledgers()
     check_sausage_repulsive_smatrix_ledgers()
+    check_sausage_formal_yang_baxter_components()
     check_sausage_metric_curvature()
     print("All sigma-model family checks passed.")
 

@@ -2620,8 +2620,8 @@ the nontrivial blocks are respectively
 The \(Q=-1,-2\) blocks are obtained by simultaneous charge conjugation.
 \end{definition}
 
-\begin{quotedtheorem}[Fateev--Onofri--Zamolodchikov factorization identity]
-\label{qt:sausage-foz-factorization}
+\begin{proposition}[Algebraic Yang--Baxter identity for the displayed sausage matrix]
+\label{prop:sausage-foz-factorization}
 For \(0\le\lambda<\frac12\), the meromorphic matrix
 \(S_\lambda(\theta)\) of
 Definition~\ref{def:sausage-full-triplet-matrix} satisfies the
@@ -2635,16 +2635,68 @@ Zamolodchikov--Faddeev Yang--Baxter equation
   \label{eq:sausage-full-yang-baxter}
 \]
 as a meromorphic identity on \(V_{\rm s}^{\otimes3}\).
-\end{quotedtheorem}
+\end{proposition}
 
-The quoted theorem is a bootstrap identity for the displayed meromorphic
-matrix.  It is not a construction of the local sausage sigma model, nor a
-proof that the regulator-defined metric family has scattering matrix
-\(S_\lambda\).  The companion calculation check constructs the full \(9\times9\)
-matrix and tests \eqref{eq:sausage-full-yang-baxter} on representative
-regular rapidities; the mathematical statement above remains a finite
-meromorphic identity, hence equality away from poles is equivalent to equality
-of the finitely many scalar component functions after clearing denominators.
+\begin{proof}
+This is a finite algebraic identity.  We give the reduction because a sampled
+numerical Yang--Baxter check would not be evidence for the meromorphic
+statement.  Put
+\[
+  q=e^{\ii\pi\lambda},\qquad
+  u=e^{\lambda\theta},\qquad
+  v=e^{\lambda\phi},
+\]
+and, for an integer \(k\), abbreviate
+\[
+  [z]_k=\frac12\left(zq^k-z^{-1}q^{-k}\right)
+  =\sinh(\lambda\vartheta+\ii k\pi\lambda)
+  \quad\text{when }z=e^{\lambda\vartheta}.
+\]
+In these variables the highest-charge entry is the rational function
+\[
+  D(z)=\frac{[z]_{-1}}{[z]_{1}},
+\]
+the charge-one entries are
+\[
+  A(z)=\frac{[z]_0}{[z]_{-2}}D(z),\qquad
+  B(z)=-\frac{q^2-q^{-2}}{2[z]_{-2}}D(z),
+\]
+and the charge-zero exchange entry is
+\[
+  G(z)=
+  \frac{(q-q^{-1})(q^2-q^{-2})}
+  {4[z]_{-2}[z]_{1}} .
+\]
+The crossed charge-zero entries are obtained by replacing \(z\) with \(q/z\):
+\[
+  E(z)=D(q/z),\qquad F(z)=B(q/z),\qquad H(z)=A(z)+G(z).
+\]
+Thus every entry of \(S_\lambda(\theta)\), \(S_\lambda(\phi)\), and
+\(S_\lambda(\theta+\phi)\) is an element of the rational function field
+\(\mathbb Q(q,u,v)\), with \(z=u,v,uv\), respectively.  After substituting
+these entries into
+\eqref{eq:sausage-full-yang-baxter}, charge conservation leaves \(141\)
+possibly nonzero scalar component equations.  Clearing the common
+denominators in each component gives \(141\) Laurent polynomial identities in
+\(q,u,v\).  Multiplication by a sufficiently large monomial \(q^a u^b v^c\)
+turns each into an ordinary polynomial identity over \(\mathbb Q\).  Direct
+expansion and collection gives the zero polynomial in every component.
+
+The companion file \texttt{calculation-checks/sigma\_model\_family\_checks.py}
+implements exactly this reduction in sparse tensor notation.  It constructs
+the \(19\) nonzero two-particle components, forms the two sides of
+\eqref{eq:sausage-full-yang-baxter} on \(V_{\rm s}^{\otimes3}\), and verifies
+the \(141\) numerator polynomials symbolically in \(\mathbb Q(q,u,v)\), with
+no floating-point specialization of \(q,u,v\).  Since the two sides are
+meromorphic functions, equality of all cleared numerators proves equality
+away from the union of their pole divisors, and therefore proves the
+meromorphic identity.
+\end{proof}
+
+Proposition~\ref{prop:sausage-foz-factorization} is an algebraic bootstrap
+identity for the displayed meromorphic matrix.  It is not a construction of
+the local sausage sigma model, nor a proof that the regulator-defined metric
+family has scattering matrix \(S_\lambda\).
 
 \begin{proposition}[Rational \(O(3)\) limit of the repulsive sausage matrix]
 \label{prop:sausage-o3-rational-limit}
@@ -2747,7 +2799,7 @@ cigar descriptions depends on the precise scaling limit.  The elementary
 checks in
 Proposition~\ref{prop:repulsive-sausage-elementary-checks} are necessary
 bootstrap consistency tests, and
-Quoted Theorem~\ref{qt:sausage-foz-factorization} is the factorization
+Proposition~\ref{prop:sausage-foz-factorization} is the factorization
 identity for the meromorphic matrix; neither replaces the missing
 constructive identification.  In attractive analytic continuations,
 physical-strip poles must be accompanied by declared bound-state particles

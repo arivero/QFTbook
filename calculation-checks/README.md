@@ -873,7 +873,7 @@ Current checks:
   principal-chiral gamma-function scalar unitarity identities, the supersphere,
   projective-supermodel, and orthosymplectic one-loop cancellations,
   the repulsive sausage charged scattering identities, the full triplet
-  matrix unitarity and Yang--Baxter finite-matrix checks, the rational
+  matrix unitarity and formal \(q,u,v\) Yang--Baxter component proof, the rational
   \(O(3)\) limit, and the sausage-metric scalar-curvature, Ricci-flow
   closure, integrated Ricci trajectories, and cylinder endpoint formulae.
 - `susy_yang_mills_family_checks.py`: exact finite checks for the
