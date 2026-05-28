@@ -470,6 +470,33 @@ def sausage_charge_one_matrix(theta: complex, lam: float) -> np.ndarray:
     return np.array([[direct, exchange], [exchange, direct]], dtype=complex)
 
 
+def sausage_charge_zero_matrix(theta: complex, lam: float) -> np.ndarray:
+    e_entry = sausage_spp(1j * math.pi - theta, lam)
+    f_entry = (
+        -1j
+        * math.sin(2.0 * math.pi * lam)
+        / mp.sinh(lam * (1j * math.pi - theta - 2j * math.pi))
+        * sausage_spp(1j * math.pi - theta, lam)
+    )
+    g_entry = (
+        -math.sin(math.pi * lam)
+        * math.sin(2.0 * math.pi * lam)
+        / (
+            mp.sinh(lam * (theta - 2j * math.pi))
+            * mp.sinh(lam * (theta + 1j * math.pi))
+        )
+    )
+    h_entry = sausage_charge_one_matrix(theta, lam)[0, 0] + g_entry
+    return np.array(
+        [
+            [e_entry, f_entry, g_entry],
+            [f_entry, h_entry, f_entry],
+            [g_entry, f_entry, e_entry],
+        ],
+        dtype=complex,
+    )
+
+
 def check_sausage_repulsive_smatrix_ledgers() -> None:
     for lam in (0.1, 0.25, 0.49):
         for theta in (0.37, 1.11):
@@ -483,6 +510,13 @@ def check_sausage_repulsive_smatrix_ledgers() -> None:
             assert_close(
                 f"sausage charge-one unitarity lambda={lam} theta={theta}",
                 np.max(np.abs(matrix @ inverse_matrix - np.eye(2))),
+                0.0,
+            )
+            zero_matrix = sausage_charge_zero_matrix(theta, lam)
+            zero_inverse_matrix = sausage_charge_zero_matrix(-theta, lam)
+            assert_close(
+                f"sausage charge-zero unitarity lambda={lam} theta={theta}",
+                np.max(np.abs(zero_matrix @ zero_inverse_matrix - np.eye(3))),
                 0.0,
             )
 

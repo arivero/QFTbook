@@ -2046,7 +2046,7 @@ open physical strip
 \[
   \mathcal S_{\rm phys}=\{\theta\in\mathbb C:0<\operatorname{Im}\theta<\pi\}.
 \]
-Moreover, the charge \(+2\) block and the charge \(+1\) block obey
+Moreover, the charge \(+2\), charge \(+1\), and charge \(0\) blocks obey
 two-particle unitarity on the real rapidity axis.  Explicitly, for real
 \(\theta\ne0\),
 \[
@@ -2070,6 +2070,27 @@ where
 satisfies
 \[
   S_{+1}(\theta)S_{+1}(-\theta)=I_2 .
+\]
+In the ordered charge-zero basis \((|+-\rangle,|00\rangle,|-+\rangle)\),
+write
+\[
+  S_{Q=0}(\theta)=
+  \begin{pmatrix}
+    E(\theta)&F(\theta)&G(\theta)\\
+    F(\theta)&H(\theta)&F(\theta)\\
+    G(\theta)&F(\theta)&E(\theta)
+  \end{pmatrix},
+\]
+where
+\[
+  E=S_{+-}^{+-},\qquad
+  F=S_{+-}^{00},\qquad
+  G=S_{+-}^{-+},\qquad
+  H=S_{00}^{00}.
+\]
+Then
+\[
+  S_{Q=0}(\theta)S_{Q=0}(-\theta)=I_3 .
 \]
 \end{proposition}
 
@@ -2123,6 +2144,56 @@ because
 \]
 These two scalar identities are exactly
 \(S_{+1}(\theta)S_{+1}(-\theta)=I_2\).
+
+It remains to check the charge-zero block.  With the same notation
+\(x=\lambda\theta\), \(a=\pi\lambda\), set
+\[
+  s_k=\sinh(x+\ii k a),\qquad u=\sin a,\qquad v=\sin(2a).
+\]
+The entries of \(S_{Q=0}\) are
+\[
+  E=\frac{s_0}{s_{-2}},\qquad
+  F=\frac{\ii v s_0}{s_{-2}s_1},\qquad
+  G=-\frac{uv}{s_{-2}s_1},\qquad
+  H=\frac{s_0s_{-1}-uv}{s_{-2}s_1}.
+  \label{eq:sausage-charge-zero-sk}
+\]
+At rapidity \(-\theta\), the replacement is \(s_k\mapsto -s_{-k}\).  The
+antisymmetric vector \((1,0,-1)\) has eigenvalue \(E-G\), while the symmetric
+subspace spanned by \((1,0,1)\) and \((0,1,0)\) has matrix
+\[
+  \begin{pmatrix}
+    E+G&\sqrt2 F\\
+    \sqrt2 F&H
+  \end{pmatrix}.
+\]
+Thus \(S_{Q=0}(\theta)S_{Q=0}(-\theta)=I_3\) is equivalent to the four scalar
+identities
+\[
+  (E-G)(E_- -G_-)=1,
+  \label{eq:sausage-q0-odd-unitarity}
+\]
+\[
+  (E+G)(E_-+G_-)+2FF_-=1,
+  \label{eq:sausage-q0-even-11}
+\]
+\[
+  (E+G)F_-+FH_-=0,
+  \label{eq:sausage-q0-even-12}
+\]
+\[
+  2FF_-+HH_-=1,
+  \label{eq:sausage-q0-even-22}
+\]
+where \(E_-=E(-\theta)\), and similarly for \(F,G,H\).  Substituting
+\eqref{eq:sausage-charge-zero-sk}, using \(s_k(-x)=-s_{-k}(x)\), and
+repeatedly applying
+\[
+  \sinh(y+\ii b)\sinh(y-\ii b)=\sinh^2y+\sin^2b
+\]
+reduces the left sides of
+\eqref{eq:sausage-q0-odd-unitarity}--\eqref{eq:sausage-q0-even-22} exactly
+to \(1,1,0,1\), respectively.  This proves the charge-zero unitarity block.
 \end{proof}
 
 \begin{controlledapproximation}[Sausage bootstrap matching]
