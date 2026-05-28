@@ -340,35 +340,73 @@ Comparing this with the stress-tensor definition gives the bare trace identity
 \]
 modulo total derivatives and equation-of-motion operators.
 
-Figure~\ref{fig:volume-ii-scale-trace-engineering} records the engineering
-origin of this bare trace identity: a dilatation acts on the coordinate and on
-each coupling according to its dimension.
+Figure~\ref{fig:volume-ii-scale-trace-engineering} draws the two scale
+exponents used in the derivation.  The first is the kinetic exponent as a
+function of the field scaling weight; its zero fixes
+\(\Delta_\phi=(D-2)/2\).  The second is the excess engineering dimension of an
+interaction operator over the volume weight \(D\); differentiating the
+corresponding scale factor at the identity produces the trace density.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.92\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (-3.2,1.75) {dilatation};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (-3.2,0.55)
-      {\(\delta a^\mu=\sigma x^\mu\)\\
-       \(\delta S=-\sigma\int T^\mu{}_\mu\)};
+    \tikzset{
+      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.9pt}
+    }
+    \node[font=\small] at (-3.05,2.10)
+      {kinetic exponent};
+    \draw[axis] (-5.25,0)--(-0.85,0)
+      node[right] {\(\Delta-\Delta_\phi\)};
+    \draw[axis] (-3.05,-1.55)--(-3.05,1.55)
+      node[above] {\(w_{\rm kin}\)};
+    \draw[line width=1.1pt,blue!70!black] (-4.75,1.15)--(-1.35,-1.15);
+    \fill[blue!70!black] (-3.05,0) circle (2.0pt);
+    \node[below right] at (-3.05,0)
+      {\(\Delta=\Delta_\phi\)};
+    \node[align=center] at (-3.05,-2.15)
+      {\(\displaystyle
+      w_{\rm kin}(\Delta)=D-2-2\Delta\),\\
+      \(\displaystyle w_{\rm kin}(\Delta_\phi)=0\)};
+    \node[align=center,blue!70!black] at (-3.05,1.52)
+      {\(\displaystyle \Delta_\phi=\frac{D-2}{2}\)};
 
-    \node[font=\small] at (1.9,1.75) {operator dimensions};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (1.9,0.55)
-      {\(O_I'(x')=(1+\sigma)^{-D-\delta_I}O_I(x)\)\\
-       \(\delta S=-\sigma\int\sum_I\delta_I g_I^\epsilon O_I\)};
-
-    \draw[-{Latex[length=2mm]}, thick] (-1.2,0.55)--(-0.15,0.55);
-    \node[blue!70!black, align=center] at (-0.65,-0.28)
-      {compare\\local densities};
-    \node[font=\small] at (-0.65,-1.0)
-      {\(\displaystyle T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\)};
+    \node[font=\small] at (3.15,2.10)
+      {interaction excess dimension};
+    \draw[axis] (0.85,0)--(5.55,0)
+      node[right] {engineering dimension};
+    \draw[line width=0.8pt] (2.35,-0.10)--(2.35,0.10);
+    \draw[line width=0.8pt] (4.35,-0.10)--(4.35,0.10);
+    \node[above] at (2.35,0.10) {\(D\)};
+    \node[above] at (4.35,0.10) {\(D+\delta_I(\epsilon)\)};
+    \draw[decorate,decoration={brace,mirror,amplitude=5pt},line width=0.8pt]
+      (2.35,-0.35)--(4.35,-0.35)
+      node[midway,below=6pt] {\(\delta_I(\epsilon)\)};
+    \draw[arr,red!70!black] (4.35,0.55)--(2.35,0.55)
+      node[midway,above] {residual after volume cancellation};
+    \node[align=center] at (3.35,-1.42)
+      {\(\displaystyle
+      \int\dd^D x\,g_I^\epsilon O_I
+      \mapsto
+      e^{-\sigma\delta_I(\epsilon)}
+      \int\dd^D x\,g_I^\epsilon O_I\)};
+    \node[align=center,red!70!black] at (3.35,-2.35)
+      {\(\displaystyle
+      \left.\frac{\dd}{\dd\sigma}e^{-\sigma\delta_I(\epsilon)}
+      \right|_{\sigma=0}
+      =
+      -\delta_I(\epsilon)\)};
   \end{tikzpicture}
   }
-  \caption{The bare trace is the engineering-dimension contribution of the
-  regulated interaction terms.}
+  \caption{The two scale exponents entering the bare trace identity.  The
+  kinetic action scales by
+  \(e^{\sigma(D-2-2\Delta)}\), so invariance fixes
+  \(\Delta_\phi=(D-2)/2\).  A local interaction operator of dimension
+  \(D+\delta_I(\epsilon)\) scales by
+  \(e^{-\sigma\delta_I(\epsilon)}\) after the volume factor is included; its
+  infinitesimal variation is the local density that appears in
+  \(T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\).}
   \label{fig:volume-ii-scale-trace-engineering}
 \end{figure}
 
@@ -662,42 +700,58 @@ alone; it also requires a source chart, an anomaly functional satisfying
 \eqref{eq:weyl-wess-zumino-consistency-trace}, and a stress-tensor improvement
 convention.
 
-Figure~\ref{fig:volume-ii-renormalized-trace-identity} places the separated-point
-trace identity and the source/anomaly contact data in the same diagram, so the
-reader can track which pieces survive at flat separated points and which pieces
-enter through source differentiation.
+Figure~\ref{fig:volume-ii-renormalized-trace-identity} separates the two
+support regimes in the local RG identity.  On the open configuration space of
+noncoincident insertions one obtains the beta-function trace identity; on the
+collision strata the same source-functional equation contains contact
+distributions and anomaly derivatives that must be retained as part of the
+renormalized QFT data.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.95\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (-4.2,0.7)
-      {\(\displaystyle T^\mu{}_\mu
-      =\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\)\\
-       bare engineering trace};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (0,0.7)
-      {\(\displaystyle
-      \delta_I g_I^\epsilon
-      =
-      \sum_J\beta_J^\epsilon
-      \partial_{\lambda_J}g_I^\epsilon\)\\
-       \(\dd g_I^\epsilon/\dd\log\mu=0\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (4.3,0.7)
-      {\(\displaystyle
-      T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\)\\
-       finite renormalized trace};
-    \draw[-{Latex[length=2mm]}, thick] (-2.35,0.7)--(-1.55,0.7);
-    \draw[-{Latex[length=2mm]}, thick] (1.7,0.7)--(2.55,0.7);
-    \node[blue!70!black] at (0,-0.8)
-      {\([O_J]_\mu=\lim_{\epsilon\to0}\partial_{\lambda_J}(\sum_Ig_I^\epsilon O_I)\)};
+    \tikzset{
+      diag/.style={line width=1.0pt,red!70!black},
+      pdiag/.style={line width=1.0pt,orange!85!black,dashed},
+      pt/.style={circle,fill=black,inner sep=1.25pt},
+      note/.style={draw,rounded corners=3pt,align=center,inner sep=4pt,
+        text width=3.75cm}
+    }
+    \draw[rounded corners=5pt,line width=0.9pt,fill=gray!4]
+      (-4.85,-2.05) rectangle (4.85,2.25);
+    \node[fill=white,inner sep=1pt] at (0,2.00)
+      {\(\mathrm{Conf}_{1+r}:\ x,x_1,\ldots,x_r\ \text{noncoincident}\)};
+
+    \draw[diag] (-4.15,-1.40)--(4.15,1.35)
+      node[pos=0.83,above,fill=white,inner sep=1pt] {\(x=x_1\)};
+    \draw[diag] (-4.15,1.15)--(4.15,-1.45)
+      node[pos=0.84,below,fill=white,inner sep=1pt] {\(x=x_2\)};
+    \draw[pdiag] (0,-1.75)--(0,1.65)
+      node[pos=0.86,right,fill=white,inner sep=1pt] {higher collisions};
+
+    \node[pt] at (-3.00,0.70) {};
+    \node[align=center,fill=white,inner sep=2pt] at (-2.10,0.82)
+      {separated point};
+    \node[note,fill=blue!5] at (-2.55,-2.72)
+      {open stratum\\
+      \(T^\mu{}_\mu(x)X\equiv
+      \sum_J\beta_J[O_J]_\mu(x)X\)};
+    \node[note,fill=red!5] at (2.55,-2.72)
+      {collision strata\\
+      \(\mathcal C_\sigma^{\mathfrak B}[X]\) and
+      \(\mathcal A_\sigma[X]\)};
+    \node[align=center] at (0,-3.62)
+      {The anomaly/contact data vanish on
+      \(\mathrm{Conf}_{1+r}\) but reappear after differentiating local sources
+      or the background metric.};
   \end{tikzpicture}
   }
-  \caption{The MS trace identity is obtained by converting the engineering
-  dimension factor of a bare coupling into the beta-function vector field
-  acting on the same bare interaction.}
+  \caption{The renormalized trace identity has a separated-point part and a
+  local contact part.  Away from the collision diagonals the flat-space trace
+  is the beta-function insertion.  On the diagonals one must also keep the
+  local distributions produced by source beta functions and by the anomaly
+  functional; these data are invisible in ordinary separated correlators.}
   \label{fig:volume-ii-renormalized-trace-identity}
 \end{figure}
 
@@ -763,38 +817,66 @@ The elementary conformal Killing vector fields are
   \end{cases}
 \]
 
-Figure~\ref{fig:volume-ii-conformal-killing-currents} organizes the conformal
-current construction from the conserved stress tensor and the conformal Killing
-vectors listed above.
+Figure~\ref{fig:volume-ii-conformal-killing-currents} shows the elementary
+Euclidean conformal Killing fields as vector-field flows in two dimensions.
+The algebraic conservation law \(j^\mu_\xi=T^{\mu\nu}\xi_\nu\) uses the same
+CKV equation, and the figure places that conservation law in the geometric
+context of the four generating families.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (-3.8,2.0) {stress tensor data};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (-3.8,0.75)
-      {\(\partial_\mu T^{\mu\nu}=0\)\\
-       \(T^{\mu\nu}=T^{\nu\mu}\)\\
-       \(T^\mu{}_\mu=0\)};
-    \node[font=\small] at (0.0,2.0) {CKV equation};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (0.0,0.75)
-      {\(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu\)\\
-       \(\displaystyle =\frac{2}{d}\delta_{\mu\nu}\partial_\rho\xi^\rho\)};
-    \node[font=\small] at (3.9,2.0) {conserved current};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (3.9,0.75)
-      {\(j^\mu_\xi=T^{\mu\nu}\xi_\nu\)\\
-       \(\partial_\mu j^\mu_\xi=0\)};
-    \draw[-{Latex[length=2mm]}, thick] (-2.15,0.75)--(-1.25,0.75);
-    \draw[-{Latex[length=2mm]}, thick] (1.35,0.75)--(2.35,0.75);
-    \node[blue!70!black] at (0,-0.9)
-      {\(\xi=a,\ \omega x,\ cx,\ b_\rho(2x^\rho x^\mu-x^2\delta^{\rho\mu})\)};
+    \tikzset{
+      panel/.style={draw,rounded corners=4pt,line width=0.9pt,fill=gray!3},
+      vec/.style={-{Latex[length=1.8mm]},line width=0.7pt,blue!70!black},
+      axis/.style={line width=0.45pt,gray!65}
+    }
+    \begin{scope}[shift={(-3.9,1.45)}]
+      \draw[panel] (-1.75,-1.10) rectangle (1.75,1.10);
+      \draw[axis] (-1.45,0)--(1.45,0);
+      \draw[axis] (0,-0.88)--(0,0.88);
+      \foreach \x in {-1.05,0,1.05}
+        \foreach \y in {-0.55,0,0.55}
+          \draw[vec] (\x,\y)--++(0.50,0);
+      \node[above] at (0,1.10) {translation \(a^\mu\)};
+    \end{scope}
+
+    \begin{scope}[shift={(3.9,1.45)}]
+      \draw[panel] (-1.75,-1.10) rectangle (1.75,1.10);
+      \draw[axis] (-1.45,0)--(1.45,0);
+      \draw[axis] (0,-0.88)--(0,0.88);
+      \foreach \x/\y in {-1/0,1/0,0/-0.75,0/0.75,-0.75/-0.55,0.75/-0.55,-0.75/0.55,0.75/0.55}
+        \draw[vec] (\x,\y)--({\x-0.35*\y},{\y+0.35*\x});
+      \node[above] at (0,1.10) {rotation \(\omega^\mu{}_\nu x^\nu\)};
+    \end{scope}
+
+    \begin{scope}[shift={(-3.9,-1.35)}]
+      \draw[panel] (-1.75,-1.10) rectangle (1.75,1.10);
+      \draw[axis] (-1.45,0)--(1.45,0);
+      \draw[axis] (0,-0.88)--(0,0.88);
+      \foreach \x/\y in {-1/0,1/0,0/-0.75,0/0.75,-0.75/-0.55,0.75/-0.55,-0.75/0.55,0.75/0.55}
+        \draw[vec] (\x,\y)--({1.22*\x},{1.22*\y});
+      \node[above] at (0,1.10) {dilatation \(c\,x^\mu\)};
+    \end{scope}
+
+    \begin{scope}[shift={(3.9,-1.35)}]
+      \draw[panel] (-1.75,-1.10) rectangle (1.75,1.10);
+      \draw[axis] (-1.45,0)--(1.45,0);
+      \draw[axis] (0,-0.88)--(0,0.88);
+      \foreach \x/\y in {-1/0,1/0,0/-0.75,0/0.75,-0.75/-0.55,0.75/-0.55,-0.75/0.55,0.75/0.55}
+        \draw[vec] (\x,\y)--({\x+0.24*(\x*\x-\y*\y)},{\y+0.24*(2*\x*\y)});
+      \node[above] at (0,1.10) {special conformal, \(b=e_1\)};
+      \node[below,align=center] at (0,-1.10)
+        {\(\xi=(x_1^2-x_2^2,\,2x_1x_2)\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{A conserved symmetric traceless stress tensor turns every conformal
-  Killing vector field into a conserved current.}
+  \caption{The four elementary conformal Killing vector fields.  Translation,
+  rotation, dilatation, and special conformal generators are different
+  vector-field geometries even though the conservation proof for
+  \(j^\mu_\xi=T^{\mu\nu}\xi_\nu\) uses the same symmetric, conserved, traceless
+  stress tensor and the same conformal Killing equation.}
   \label{fig:volume-ii-conformal-killing-currents}
 \end{figure}
 
@@ -1132,36 +1214,78 @@ checks and a discussion of why the two-dimensional proof does not directly
 extend to higher dimensions.}
 \end{remark}
 
-Figure~\ref{fig:volume-ii-virial-improvement} shows the improvement problem in
-the language used here: a virial current controls the trace, and an improvement
-exists precisely when that current is itself a divergence of the required local
-tensor.
+Figure~\ref{fig:volume-ii-virial-improvement} displays the quotient as the
+actual improvement test used in the proof.  A scalar improvement \(L\) changes
+the stress tensor and simultaneously changes the virial representative by
+\((d-1)\partial_\mu L\).  Conserved currents do not change the trace.  The
+class of \(V_\mu\) after these two identifications is therefore precisely the
+remaining obstruction to a traceless representative.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.9\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (-3.2,0.75)
-      {\(T^\mu{}_\mu=\partial_\mu V^\mu\)\\
-       \(D^\mu=x_\nu T^{\mu\nu}-V^\mu\)};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (0.75,0.75)
-      {\({\rm obs}_{\rm vir}(V)=0\)\\
-       in the improvement quotient};
-    \node[draw=black, rounded corners, align=center, inner sep=6pt]
-      at (4.55,0.75)
-      {\(T'^\mu{}_\mu=0\)\\
-       \(j^\mu_\xi=T'^{\mu\nu}\xi_\nu\)};
-    \draw[-{Latex[length=2mm]}, thick] (-1.55,0.75)--(-0.65,0.75);
-    \draw[-{Latex[length=2mm]}, thick] (2.25,0.75)--(3.2,0.75);
-    \node[blue!70!black, align=center] at (0.75,-0.65)
-      {without such data, scale currents\\do not determine special conformal currents};
+    \tikzset{
+      box/.style={draw,rounded corners=3pt,align=center,inner sep=4pt,
+        text width=3.25cm,fill=gray!4},
+      smallbox/.style={draw,rounded corners=3pt,align=center,inner sep=3pt,
+        text width=3.25cm},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
+      map/.style={-{Latex[length=2mm]},line width=0.95pt,blue!70!black}
+    }
+    \node[font=\small] at (0,3.15)
+      {quotient defining the obstruction class};
+    \node[box] (S) at (-4.75,2.10)
+      {allowed scalar\\improvements\\[1mm]\(\mathfrak S\)};
+    \node[box] (V) at (0,2.10)
+      {virial-current\\representatives\\[1mm]\(\mathfrak V\)};
+    \node[box,text width=3.55cm] (H) at (4.85,2.10)
+      {obstruction\\space\\[1mm]
+      \(\displaystyle
+      \mathcal H_{\rm vir}^{\rm scal}
+      =
+      \frac{\mathfrak V}{\mathfrak J+(d-1)\partial\mathfrak S}\)};
+
+    \draw[map] (S)--(V)
+      node[midway,above] {\((d-1)\partial_\mu L\)};
+    \draw[map] (V)--(H)
+      node[midway,above] {\(\pi\)};
+    \node[smallbox,fill=blue!5,text width=3.80cm] (J) at (0,0.75)
+      {conserved currents\\\(\mathfrak J=\ker(\partial_\mu:\mathfrak V\to
+      \text{local scalars})\)};
+    \draw[arr,blue!65!black] (J)--(V);
+
+    \node[smallbox,fill=white,text width=3.25cm] (T) at (-4.75,-1.55)
+      {scale-current data\\
+      \(T^\mu{}_\mu=\partial_\mu V^\mu\)};
+    \node[smallbox,fill=white,text width=3.65cm] (shift) at (0,-1.55)
+      {improvement by \(L\)\\
+      \(V_\mu^{(L)}=V_\mu-(d-1)\partial_\mu L\)};
+    \node[smallbox,fill=white,text width=3.25cm] (trace) at (4.85,-1.55)
+      {improved trace\\
+      \(T'^\mu{}_\mu=\partial_\mu V^{(L)\mu}\)};
+    \draw[arr] (T)--(shift);
+    \draw[arr] (shift)--(trace);
+    \draw[arr,dashed] (V.south)--(shift.north);
+
+    \node[smallbox,fill=green!7,text width=4.15cm] (zero) at (-2.45,-3.45)
+      {zero class\\
+      \(\pi(V)=0\)\\
+      \(\exists\,L\in\mathfrak S:\ V^{(L)}\in\mathfrak J\)\\
+      \(T'^\mu{}_\mu=0\)};
+    \node[smallbox,fill=red!5,text width=4.15cm] (nonzero) at (2.85,-3.45)
+      {nonzero class\\
+      \(\pi(V)\ne0\)\\
+      \(\forall\,L\in\mathfrak S:\ V^{(L)}\notin\mathfrak J\)\\
+      scalar improvement does not remove the trace};
   \end{tikzpicture}
   }
-  \caption{A virial current gives a conserved dilatation current.  Conformal
-  currents follow when the virial trace is removable by an allowed improvement
-  of the stress tensor.}
+  \caption{The virial obstruction as a concrete quotient test.  Scalar
+  improvements generate the subspace
+  \((d-1)\partial\mathfrak S\subset\mathfrak V\), while conserved currents
+  \(\mathfrak J\) have zero divergence and hence do not affect the trace.
+  The class \(\pi(V)\) vanishes exactly when the improved virial representative
+  is conserved, so that the improved trace is zero.}
   \label{fig:volume-ii-virial-improvement}
 \end{figure}
 
