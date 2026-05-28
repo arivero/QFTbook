@@ -74,6 +74,31 @@ def check_decuplet_equal_spacing() -> None:
     assert_equal("decuplet spacing 2", xi_star - sigma_star, omega - xi_star)
 
 
+def check_pseudoscalar_baryon_partial_waves() -> None:
+    def allowed_j_and_parity(orbital_l: int) -> tuple[tuple[Fraction, ...], int]:
+        if orbital_l == 0:
+            spins = (Fraction(1, 2),)
+        else:
+            spins = (Fraction(orbital_l) - Fraction(1, 2), Fraction(orbital_l) + Fraction(1, 2))
+        parity = -1 if orbital_l % 2 == 0 else 1
+        return spins, parity
+
+    assert_equal("S-wave pseudoscalar-baryon J", allowed_j_and_parity(0)[0], (Fraction(1, 2),))
+    assert_equal("S-wave pseudoscalar-baryon parity", allowed_j_and_parity(0)[1], -1)
+    assert_equal(
+        "P-wave pseudoscalar-baryon J",
+        allowed_j_and_parity(1)[0],
+        (Fraction(1, 2), Fraction(3, 2)),
+    )
+    assert_equal("P-wave pseudoscalar-baryon parity", allowed_j_and_parity(1)[1], 1)
+    assert_equal(
+        "D-wave pseudoscalar-baryon J",
+        allowed_j_and_parity(2)[0],
+        (Fraction(3, 2), Fraction(5, 2)),
+    )
+    assert_equal("D-wave pseudoscalar-baryon parity", allowed_j_and_parity(2)[1], -1)
+
+
 def check_veneziano_residue_degree() -> None:
     p3 = veneziano_residue_polynomial(3)
     assert_equal(
@@ -422,6 +447,7 @@ def check_forward_spin_gdh_prefactor() -> None:
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
+    check_pseudoscalar_baryon_partial_waves()
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
     check_triple_regge_exponents_and_eikonal_poisson()

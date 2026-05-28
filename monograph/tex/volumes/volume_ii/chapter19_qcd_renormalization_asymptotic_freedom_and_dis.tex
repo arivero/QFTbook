@@ -4650,6 +4650,108 @@ under its own hypotheses, and it explains why baryons require a separate
 large-\(N_c\) analysis from mesons.  It does not license importing
 constituent-quark spectra as QCD predictions.
 
+\begin{definition}[Baryon-meson resonance datum]
+\label{def:qcd-baryon-meson-resonance-datum}
+Fix conserved quantum numbers: baryon number one, total isospin \(I\), total
+strangeness \(S\), total angular momentum and parity \(J^P\), and any other
+exact charges in the chosen QCD mass convention.  A two-body baryon-meson
+resonance datum consists of:
+\begin{enumerate}
+  \item a finite list of stable color-singlet two-body channels
+  \(a=(B_a,M_a)\) in the chosen energy window, with baryon mass \(M_{B_a}\),
+  meson mass \(m_{M_a}\), spin \(s_{B_a}\), meson spin \(s_{M_a}\), and
+  intrinsic parities \(P_{B_a},P_{M_a}\);
+  \item a list of retained orbital angular momenta \(L_a\) and spin couplings
+  producing the declared \(J^P\);
+  \item the infinite-volume partial-wave matrix \(t_{ab}^{J^P}(s)\), with
+  phase-space matrix
+  \[
+    \rho_a(s)=
+    \frac{2k_a(s)}{\sqrt s},
+    \qquad
+    \sqrt s=
+    \sqrt{M_{B_a}^2+k_a(s)^2}
+    +
+    \sqrt{m_{M_a}^2+k_a(s)^2};
+  \]
+  \item a reconstruction method for \(t^{J^P}\), for example a
+  coupled-channel finite-volume determinant or a Roy--Steiner representation;
+  \item a sheet label \(\Sigma=\operatorname{diag}(\sigma_a)\), with
+  \(\sigma_a=\pm1\), specifying which channel momenta have been continued
+  through their unitarity cuts;
+  \item pole positions \(s_\ast\) and residue vectors \(g_a\) defined by
+  \begin{equation}
+    t_{ab}^{(\Sigma),J^P}(s)
+    =
+    \frac{g_a g_b}{s_\ast-s}
+    +h_{ab}(s),
+    \label{eq:qcd-baryon-resonance-residue-vector}
+  \end{equation}
+  where \(h_{ab}\) is holomorphic at \(s_\ast\) on the same sheet.
+\end{enumerate}
+The invariant content is the pole position, the sheet, and the residue
+projective vector \(g_a\), together with the operator and regulator data by
+which the amplitude was obtained.  Names such as radial excitation,
+molecule, compact multiquark configuration, or meson-baryon bound state are
+interpretive coordinates on this datum.
+\end{definition}
+
+\begin{proposition}[Pseudoscalar-meson--baryon partial-wave quantum numbers]
+\label{prop:qcd-pseudoscalar-baryon-partial-wave-quantum-numbers}
+Let a positive-parity spin-\(\frac12\) baryon \(B\) scatter with a
+pseudoscalar meson \(M\) of spin \(0\) and parity \(-1\).  In a two-body
+partial wave of orbital angular momentum \(L\), the allowed total angular
+momenta and parity are
+\begin{equation}
+  J\in
+  \begin{cases}
+    \{\frac12\},&L=0,\\
+    \{L-\frac12,L+\frac12\},&L\ge1,
+  \end{cases}
+  \qquad
+  P=(-1)^{L+1}.
+  \label{eq:qcd-pseudoscalar-baryon-jp-rule}
+\end{equation}
+Consequently an \(S\)-wave channel has \(J^P=\frac12^-\), while a
+\(P\)-wave channel has \(J^P=\frac12^+\) or \(J^P=\frac32^+\).
+\end{proposition}
+
+\begin{proof}
+The two-body Hilbert space at fixed center-of-mass momentum decomposes under
+spatial rotations as the tensor product of the orbital representation of spin
+\(L\), the baryon spin representation \(\frac12\), and the meson spin
+representation \(0\).  Therefore the total spin content is
+\[
+  L\otimes\frac12
+  =
+  \begin{cases}
+    \frac12,&L=0,\\
+    (L-\frac12)\oplus(L+\frac12),&L\ge1,
+  \end{cases}
+\]
+which gives the allowed \(J\)'s.  Parity multiplies the intrinsic parities by
+the orbital factor \((-1)^L\):
+\[
+  P=P_B P_M(-1)^L=(+1)(-1)(-1)^L=(-1)^{L+1}.
+\]
+The \(S\)- and \(P\)-wave cases are the first two values of \(L\).
+\end{proof}
+
+This elementary representation-theoretic step is often where baryon
+resonance nomenclature enters the analysis.  The \(\Delta(1232)\) channel is
+the \(I=\frac32\), \(J^P=\frac32^+\) \(P\)-wave \(\pi N\) amplitude.  A
+Roper-type nucleon resonance is a pole in the \(I=\frac12\),
+\(J^P=\frac12^+\) channel, with residues into the retained \(\pi N\),
+\(\eta N\), and multi-hadron channels determined by the chosen coupled-channel
+datum.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
+\(J^P=\frac12^-\), and its minimal two-body description couples the
+\(\bar K N\) and \(\pi\Sigma\) \(S\)-wave channels.  In each case the QCD
+statement is the sheet-labeled pole of
+Definition~\ref{def:qcd-baryon-meson-resonance-datum}.  A finite-volume
+calculation supplies this datum through a generalized eigenvalue problem and
+a coupled-channel quantization condition; a dispersive calculation supplies
+it through the corresponding analyticity and crossing assumptions.
+
 \begin{definition}[Nucleon current-matrix-element datum]
 \label{def:qcd-nucleon-current-matrix-element-datum}
 Let \(|N(p,s)\rangle\) be an isolated one-nucleon state in the color-singlet
