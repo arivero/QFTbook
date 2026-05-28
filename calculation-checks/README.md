@@ -213,6 +213,11 @@ Current checks:
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter.
+- `energy_correlator_collinear_checks.py`: exact rational checks for the
+  tree-level small-angle EEC coefficient, including local detector-weight
+  conservation, cancellation of real splitting-kernel endpoint poles by the
+  ordered EEC weight \(2x(1-x)\), and the resolved real-kernel integrals
+  \(\frac32 C_F\), \(\frac{14}{5}C_A\), and \(\frac15T_F\).
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), finite Wiener-chaos isometry and

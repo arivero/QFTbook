@@ -174,6 +174,10 @@ The chapter must define and derive:
   zero opening angle;
 - the eventwise EEC zeroth and first moment sum rules in the center-of-mass
   frame, including the exact coincident-detector contact weight;
+- the tree-level resolved collinear EEC coefficient, derived from the ordered
+  detector weight \(2x(1-x)\) multiplying the real final-state splitting
+  kernels, with exact coefficients
+  \(\frac32C_F\), \(\frac{14}{5}C_A\), and \(\frac15T_F\) per quark flavor;
 - multipoint jet energy correlators and energy-flow polynomials as polynomial
   functionals of calorimetric data;
 - DIS kinematics, inclusive final-state sums, the leading electromagnetic
@@ -340,6 +344,13 @@ The chapter must define and derive:
      moment in a color-singlet center-of-mass frame; removing the contact term
      removes the weight \(\sum_r z_r^2\) from the separated-angle
      distribution.
+19b. In the small-angle endpoint, the first resolved real-emission EEC
+     coefficient is obtained by multiplying the final-state splitting
+     probability by the ordered detector weight \(2x(1-x)\).  This weight
+     cancels the real-kernel endpoint poles and gives the exact integrals
+     \(\Gamma_q^{\rm EEC}=\frac32C_F\),
+     \(\Gamma_{g\to gg}^{\rm EEC}=\frac{14}{5}C_A\), and
+     \(\Gamma_{g\to q\bar q}^{\rm EEC}=\frac15T_F\) per flavor.
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -453,6 +464,10 @@ The chapter must define and derive:
 - 2026-05-26 issue #519 pass: added the eventwise EEC sum-rule proposition
   and exact finite-event calculation check for zeroth moment, first moment,
   and contact weight.
+- 2026-05-27 issue #519 collinear pass: added the tree-level resolved
+  collinear EEC coefficient derivation, clarified the status of the result
+  relative to the full small-angle light-ray/OPE theorem, and added
+  `calculation-checks/energy_correlator_collinear_checks.py`.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable
