@@ -869,7 +869,8 @@ Current checks:
   density saddle, one-charge and non-diagonal two-charge diffusive response
   kernels, positivity and \(\chi^{-1}\)-self-adjointness of the multi-charge
   diffusion endomorphism, transverse Ohm response, scalar and matrix KMS
-  noise coefficients, and Hubbard--Stratonovich noise normalization.
+  noise coefficients, Hubbard--Stratonovich noise normalization, and the
+  full noncommuting matrix density fluctuation--dissipation identity.
 - `sine_gordon_smatrix_checks.py`: numerical finite checks for the Volume VI
   sine-Gordon exact scattering datum, including soliton-matrix unitarity and
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass

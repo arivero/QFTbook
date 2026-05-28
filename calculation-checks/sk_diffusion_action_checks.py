@@ -25,6 +25,10 @@ def matmul(left: Matrix2, right: Matrix2) -> Matrix2:
     )
 
 
+def mattranspose(matrix: Matrix2) -> Matrix2:
+    return ((matrix[0][0], matrix[1][0]), (matrix[0][1], matrix[1][1]))
+
+
 def matvec(matrix: Matrix2, vector: Vector2) -> Vector2:
     return (
         matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
@@ -226,6 +230,45 @@ def check_noise_normalization() -> None:
     assert_close("Hubbard-Stratonovich denominator", inverse_gaussian_denominator, 2.0 * variance)
 
 
+def check_density_fdt_matrix_identity() -> None:
+    temperature = 1.35
+    omega = 0.47
+    k = 0.29
+    k2 = k * k
+    chi: Matrix2 = ((2.4, 0.41), (0.41, 1.1))
+    sigma: Matrix2 = ((0.83, 0.27), (0.27, 0.58))
+    identity: Matrix2 = ((1.0, 0.0), (0.0, 1.0))
+    diffusion = matmul(sigma, matinv(chi))
+
+    # Use a noncommuting chi/Sigma pair, so the check is genuinely matrix-valued.
+    commutator = matadd(matmul(diffusion, sigma), matscale(-1.0, matmul(sigma, diffusion)))
+    if abs(commutator[0][1]) < 1.0e-12 and abs(commutator[1][0]) < 1.0e-12:
+        raise AssertionError("test matrices accidentally commute")
+
+    resolvent = matinv(matadd(matscale(k2, diffusion), matscale(-1j * omega, identity)))
+    advanced_resolvent = matinv(
+        matadd(matscale(k2, mattranspose(diffusion)), matscale(1j * omega, identity))
+    )
+    retarded = matmul(resolvent, matscale(k2, sigma))
+    advanced = matmul(matscale(k2, sigma), advanced_resolvent)
+    symmetrized = matscale(
+        2.0 * temperature * k2,
+        matmul(matmul(resolvent, sigma), advanced_resolvent),
+    )
+    spectral = matscale(1.0 / (2j), matadd(retarded, matscale(-1.0, advanced)))
+    assert_matrix_close(
+        "matrix density FDT",
+        symmetrized,
+        matscale(2.0 * temperature / omega, spectral),
+    )
+
+    for vector in [(0.3 + 0.2j, -0.7 + 0.1j), (1.1 - 0.4j, 0.6 + 0.9j)]:
+        gv = matvec(symmetrized, vector)
+        quadratic = vector[0].conjugate() * gv[0] + vector[1].conjugate() * gv[1]
+        if quadratic.real < -1.0e-10 or abs(quadratic.imag) > 1.0e-10:
+            raise AssertionError(f"density noise kernel should be Hermitian positive: {quadratic!r}")
+
+
 def main() -> None:
     check_density_response_kernel()
     check_multicharge_density_response_kernel()
@@ -234,6 +277,7 @@ def main() -> None:
     check_classical_kms_noise_coefficient()
     check_multicharge_classical_kms_noise_matrix()
     check_noise_normalization()
+    check_density_fdt_matrix_identity()
     print("All Schwinger-Keldysh diffusion-action checks passed.")
 
 
