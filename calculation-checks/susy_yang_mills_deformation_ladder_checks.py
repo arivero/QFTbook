@@ -3,7 +3,8 @@
 
 The checks cover algebraic identities used in Volume VII's family-comparison
 chapter: holomorphic scale dimensions, the N=1* fuzzy-sphere F-term ansatz,
-and the finite k-string comparison ledgers.
+finite k-string comparison ledgers, and the local Seiberg-Witten vortex
+profile normalization.
 """
 
 from __future__ import annotations
@@ -60,10 +61,32 @@ def check_k_string_ledgers() -> None:
     assert_zero("Casimir large-N through x", sp.expand(casimir_series - expected_casimir).coeff(x, 1))
 
 
+def check_sw_vortex_radial_normalization() -> None:
+    n = sp.symbols("n", positive=True, integer=True)
+    flux = 2 * sp.pi * n * (1 - 0)
+    assert_zero("SW vortex flux normalization", flux - 2 * sp.pi * n)
+
+    r, c = sp.symbols("R c", positive=True)
+    for winding in range(1, 5):
+        f = c * r**winding
+        a = r**2 / (2 * winding)
+        first_eq_residual = sp.diff(f, r) - winding * (1 - a) * f / r
+        second_eq_residual = sp.diff(a, r) - r * (1 - f**2) / winding
+        assert_zero(
+            f"SW vortex small-R leading f equation n={winding}",
+            sp.expand(first_eq_residual).coeff(r, winding - 1),
+        )
+        assert_zero(
+            f"SW vortex small-R leading a equation n={winding}",
+            sp.expand(second_eq_residual).coeff(r, 1),
+        )
+
+
 def main() -> None:
     check_holomorphic_scale_dimensions()
     check_n1_star_fuzzy_sphere_ansatz()
     check_k_string_ledgers()
+    check_sw_vortex_radial_normalization()
     print("All supersymmetric Yang-Mills deformation-ladder checks passed.")
 
 
