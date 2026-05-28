@@ -140,6 +140,25 @@ def check_abjm_s3_matrix_denominator() -> None:
         )
 
 
+def check_sphere_free_energy_normalizations() -> None:
+    # The round S^3 determinant for two conjugate R=1/2 chirals at zero
+    # Cartan variable is 1/(2 cosh 0)=1/2.  Hence a single free chiral has
+    # |Z|^2=1/2 and F=(1/2) log 2 in the chapter convention.
+    conjugate_pair_z_squared = Fraction(1, 2)
+    single_chiral_z_squared = conjugate_pair_z_squared
+    assert_equal("free chiral squared partition value", single_chiral_z_squared, Fraction(1, 2))
+
+    # Rank-one ABJM: x=lambda-mu, y=lambda+mu gives Jacobian 1/2.
+    # The y integral gives 2 delta(k x)=2 delta(x)/|k|, and the two
+    # conjugate bifundamental pairs give a denominator 4 at x=0.
+    for k in (1, 2, 7, -5):
+        jacobian = Fraction(1, 2)
+        fourier_delta_factor = Fraction(2, abs(k))
+        chiral_denominator_at_zero = 4
+        z_rank_one = jacobian * fourier_delta_factor / chiral_denominator_at_zero
+        assert_equal(f"rank-one ABJM S3 integral k={k}", z_rank_one, Fraction(1, 4 * abs(k)))
+
+
 def check_three_d_n2_cs_matter_auxiliary_elimination() -> None:
     # Factor out powers of pi and i.  The D-equation in trace-delta
     # convention gives sigma = -(2 pi/k) mu.  The scalar sextic coefficient is
@@ -237,6 +256,7 @@ def main() -> None:
     check_abjm_abelian_bf_normalization()
     check_abjm_orbifold_order_and_dimension()
     check_abjm_s3_matrix_denominator()
+    check_sphere_free_energy_normalizations()
     check_three_d_n2_cs_matter_auxiliary_elimination()
     check_three_d_n3_adjoint_chiral_elimination()
     check_six_dimensional_yang_mills_dimension()

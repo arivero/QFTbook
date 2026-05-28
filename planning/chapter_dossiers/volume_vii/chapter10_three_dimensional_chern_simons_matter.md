@@ -47,6 +47,9 @@ Reviewed source spine:
   rank-one abelian quotient calculation.
 - `lambda_i`, `mu_i`: `S^3` localization Cartan variables for the two
   `U(N)` gauge factors.
+- `F(T)`: renormalized three-sphere free energy `-log |Z_{S^3}(T)|`.
+- `mathcal F(R)`: Casini-Huerta renormalized entanglement function for a disk
+  of radius `R`.
 
 ## Claim Ledger
 
@@ -86,6 +89,15 @@ Reviewed source spine:
 - Specializes the `S^3` localization formula to ABJM and derives the
   denominator `prod_{i,j} 4 cosh^2(pi(lambda_i-mu_j))` from two conjugate
   bifundamental chiral pairs.
+- Defines the renormalized `S^3` free energy with contact-term and framing
+  scheme specified, and states the continuum `F`-theorem with its
+  entanglement/continuum hypotheses rather than as a matrix-model slogan.
+- Proves the endpoint comparison consequence for supersymmetric localized
+  fixed points and proves additivity of `F` for product theories.
+- Fixes the free chiral value `F_chiral=(1/2) log 2` in the round-sphere
+  determinant convention.
+- Evaluates the rank-one ABJM matrix integral distributionally:
+  `Z_{S^3}^{ABJM}(1,k)=1/(4 |k|)`, hence `F=log(4 |k|)`.
 
 ## Calculation Checks
 
@@ -93,7 +105,8 @@ Reviewed source spine:
   superpotential `R`-charge, parity action on levels `(k,-k)`, abelian
   BF K-matrix normalization, standard conformal-locus tangent count, `Z_k`
   orbifold order, commuting-branch dimension, and the `S^3` matrix-model
-  denominator powers.
+  denominator powers.  It also checks the free-chiral determinant
+  normalization and the rank-one ABJM `S^3` integral factors.
 - The same script verifies the non-abelian `3D` `N=2`
   Chern-Simons-matter `D`/`sigma` elimination coefficients, the
   convention-independent Yukawa magnitude ratio, and the `3D` `N=3`

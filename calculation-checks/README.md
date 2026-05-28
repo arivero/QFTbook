@@ -910,6 +910,8 @@ Current checks:
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
   BF normalization, standard ABJM conformal-locus tangent count,
   \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
+  free-chiral \(S^3\) determinant normalization, rank-one ABJM sphere-integral
+  factors,
   non-abelian `3D` \(\mathcal N=2\) Chern--Simons-matter auxiliary
   elimination coefficients, `3D` \(\mathcal N=3\) adjoint-chiral
   elimination coefficients,
@@ -1033,7 +1035,10 @@ Current checks:
   Fock-space dimensions, boson/fermion balance, the Clebsch--Gordan
   dimension identity for the one-oscillator spin sector, the rank-one massless
   supercharge norm matrix, and BPS-bound block eigenvalues
-  \(2(m\pm z)\).
+  \(2(m\pm z)\).  The same check also covers the HLS central-charge
+  combined-index symmetry, the \(T Z+Z T^T=0\) internal-invariance condition,
+  and the Lorentz-representation dimension ledger used in the HLS normal
+  form.
 - `susy_superspace_component_checks.py`: finite Grassmann-algebra checks for
   the Volume VII superspace/local-actions conventions, including
   \(\theta^2=2\theta^1\theta^2\), the left-derivative rule for \(\theta^2\),

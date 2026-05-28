@@ -665,6 +665,201 @@ are part of the localization datum.  Thus
 datum is supplied; it is not, by itself, a microscopic construction of the
 continuum theory.
 
+\section{Sphere Free Energy and the F-Theorem Datum}
+\label{sec:three-d-sphere-free-energy-f-theorem}
+
+Three-dimensional conformal field theories have a distinguished finite
+observable on the round sphere.  It is useful in supersymmetric
+Chern--Simons--matter theory because localization often reduces it to a
+finite-dimensional matrix integral, but its definition is not a localization
+artifact.
+
+\begin{definition}[Renormalized three-sphere free energy]
+\label{def:renormalized-s3-free-energy}
+Let \(\mathcal T\) be a reflection-positive three-dimensional Euclidean QFT
+with a specified regulator, background metric coupling, and local
+counterterm scheme.  Its round-sphere partition function at radius \(r\) is
+denoted \(Z_{S^3_r}(\mathcal T)\).  At a conformal fixed point, after
+removing power divergences by the declared local counterterms, the
+renormalized sphere free energy is
+\[
+  F(\mathcal T)
+  =
+  -\log\left|Z_{S^3}(\mathcal T)\right|.
+  \label{eq:s3-free-energy-definition}
+\]
+The absolute value removes pure phases produced by framing and background
+Chern--Simons contact terms.  It does not remove the obligation to declare
+the real local counterterm scheme used to define the finite partition
+function.
+\end{definition}
+
+In a supersymmetric theory the same definition is evaluated by the localized
+matrix integral only after the \(S^3\) localization datum of
+Chapter~\ref{ch:susy-localization-compact-manifolds} has been supplied:
+Cartan contour, parity-anomaly regulator, framing phase, real-mass and FI
+coordinates, and background Chern--Simons counterterms.  For ABJM,
+\[
+  F_{\rm ABJM}(N,k)
+  =
+  -\log\left|Z^{\rm ABJM}_{S^3}(N,k)\right|
+  \label{eq:abjm-sphere-free-energy}
+\]
+with \(Z^{\rm ABJM}_{S^3}\) defined by
+\eqref{eq:abjm-s3-matrix-model}.  This is a protected observable of the
+declared QFT datum; changing the line-operator lattice or contact terms can
+change phases and, in some schemes, finite background terms.
+
+\begin{quotedtheorem}[Continuum F-theorem]
+\label{qt:continuum-f-theorem}
+Let a unitary, Lorentz-invariant three-dimensional QFT define an RG flow
+between ultraviolet and infrared conformal fixed points, and assume the
+stress tensor, vacuum state, ball entanglement entropy, and continuum limit
+are controlled so that strong subadditivity and the Casini--Huerta
+renormalized-entanglement construction apply.  Define
+\[
+  \mathcal F(R)=R\,\frac{dS(R)}{dR}-S(R),
+  \label{eq:renormalized-entanglement-f}
+\]
+where \(S(R)\) is the vacuum entanglement entropy of a disk of radius \(R\).
+Then \(\mathcal F(R)\) is monotone nonincreasing as \(R\) increases.  At a
+conformal fixed point, the conformal map from the causal development of the
+disk to the hyperbolic thermal problem identifies \(\mathcal F\) with the
+renormalized sphere free energy \(F\).  Consequently a nontrivial flow
+satisfying these hypotheses obeys
+\[
+  F_{\rm UV}>F_{\rm IR},
+  \label{eq:f-theorem-inequality}
+\]
+with equality only for a trivial flow modulo decoupled topological/contact
+data.
+\end{quotedtheorem}
+
+\begin{remark}[The theorem is not a matrix-model identity]
+\label{rem:f-theorem-not-matrix-model-identity}
+The monotonicity theorem is a continuum theorem about unitary RG flows.  A
+localized \(S^3\) matrix model computes \(F\) at a supersymmetric fixed point
+when its localization datum is valid; it does not by itself prove
+monotonicity for flows between two fixed points.  Conversely, the
+\(F\)-theorem applies to nonsupersymmetric flows for which no localization
+formula exists.
+\end{remark}
+
+\begin{proposition}[Consequences for supersymmetric fixed-point comparisons]
+\label{prop:f-theorem-susy-comparison}
+Suppose \(\mathcal T_{\rm UV}\to\mathcal T_{\rm IR}\) is a three-dimensional
+unitary RG flow satisfying the hypotheses of
+Quoted Theorem~\ref{qt:continuum-f-theorem}, and suppose both endpoints have
+supersymmetric localization data whose finite parts compute the
+renormalized \(S^3\) partition functions in the scheme of
+Definition~\ref{def:renormalized-s3-free-energy}.  Then the localized
+numbers obey
+\[
+  -\log|Z_{S^3}^{\rm loc}(\mathcal T_{\rm UV})|
+  >
+  -\log|Z_{S^3}^{\rm loc}(\mathcal T_{\rm IR})|
+\]
+for a nontrivial flow.  For a product of decoupled fixed points
+\(\mathcal T_1\otimes\mathcal T_2\), the sphere free energy is additive:
+\[
+  F(\mathcal T_1\otimes\mathcal T_2)=F(\mathcal T_1)+F(\mathcal T_2).
+  \label{eq:s3-free-energy-additivity}
+\]
+\end{proposition}
+
+\begin{proof}
+The first assertion is the inequality
+\eqref{eq:f-theorem-inequality} after identifying the endpoint \(F\)'s with
+the localized finite parts.  This identification is an endpoint statement:
+it uses the localization datum at the fixed point and does not require a
+localized description of the entire RG trajectory.
+
+For the product statement, the Hilbert space, operator algebra, and
+Euclidean functional integral factorize.  With product regulators and
+counterterm schemes,
+\[
+  Z_{S^3}(\mathcal T_1\otimes\mathcal T_2)
+  =
+  Z_{S^3}(\mathcal T_1)Z_{S^3}(\mathcal T_2).
+\]
+Taking \(-\log|\cdot|\) gives
+\eqref{eq:s3-free-energy-additivity}.  Possible background contact terms
+also add because they are local functionals of the external fields.
+\end{proof}
+
+\begin{example}[Free chiral multiplet and a massive flow]
+\label{ex:free-chiral-f-value}
+For a free \(\mathcal N=2\) chiral multiplet of \(R\)-charge \(1/2\) and no
+background mass, the round-sphere determinant convention of
+Chapter~\ref{ch:susy-localization-compact-manifolds} gives
+\[
+  Z_{\rm chiral}=\exp\ell\!\left(\frac12\right)=2^{-1/2},
+  \qquad
+  F_{\rm chiral}=\frac12\log2 .
+  \label{eq:free-chiral-f-value}
+\]
+Giving this chiral multiplet a supersymmetric real mass and flowing to
+energies much smaller than \(|m|\) leaves the empty gapped theory, whose
+non-topological sphere free energy is \(0\) in the same normalization.  The
+flow therefore has
+\[
+  F_{\rm UV}=\frac12\log2>0=F_{\rm IR},
+\]
+as required by the \(F\)-theorem.  This example is simple, but it fixes the
+normalization used when more complicated localized matrix integrals are
+compared.
+\end{example}
+
+\begin{proposition}[Rank-one ABJM sphere integral]
+\label{prop:rank-one-abjm-s3-integral}
+With the oscillatory contour and framing convention implicit in
+\eqref{eq:abjm-s3-matrix-model}, the \(N=1\) ABJM matrix integral evaluates
+distributionally to
+\[
+  Z^{\rm ABJM}_{S^3}(1,k)=\frac{1}{4|k|},
+  \qquad
+  F_{\rm ABJM}(1,k)=\log(4|k|).
+  \label{eq:rank-one-abjm-s3-value}
+\]
+\end{proposition}
+
+\begin{proof}
+For \(N=1\), the vector Vandermonde factors are absent and
+\eqref{eq:abjm-s3-matrix-model} becomes
+\[
+  Z
+  =
+  \int_{\mathbb R^2}d\lambda\,d\mu\,
+  \frac{\exp\{\ii\pi k(\lambda^2-\mu^2)\}}
+       {4\cosh^2(\pi(\lambda-\mu))}.
+\]
+Set
+\[
+  x=\lambda-\mu,\qquad y=\lambda+\mu .
+\]
+Then \(d\lambda\,d\mu=\frac12\,dx\,dy\) and
+\(\lambda^2-\mu^2=xy\).  In the oscillatory distribution sense,
+\[
+  \int_{-\infty}^{\infty}dy\,\ee^{\ii\pi kxy}
+  =
+  2\,\delta(kx)
+  =
+  \frac{2}{|k|}\delta(x).
+\]
+Therefore
+\[
+  Z
+  =
+  \frac12\int dx\,
+  \frac{1}{4\cosh^2(\pi x)}
+  \frac{2}{|k|}\delta(x)
+  =
+  \frac{1}{4|k|}.
+\]
+Taking the absolute value and then \(-\log\) gives the displayed
+free energy.
+\end{proof}
+
 \section{Three-Dimensional Dynamics Ledger}
 
 A complete \(3D\) supersymmetric Chern--Simons--matter example must specify:
