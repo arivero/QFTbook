@@ -594,6 +594,207 @@ branch data, while this datum is what can define numerical glueball,
 gluinoball, and mixed supermultiplet masses.
 \end{definition}
 
+\begin{definition}[Channel-by-channel pure-SYM correlator matrices]
+\label{def:pure-sym-channel-correlator-matrices}
+Fix the regulated extraction datum of
+Definition~\ref{def:regulated-pure-sym-spectral-extraction-datum}.  Choose
+zero-spatial-momentum finite-volume sources
+\[
+  B_{+,r},\qquad B_{-,r},\qquad F_{\alpha,r},
+  \qquad r=1,\ldots,R ,
+\]
+where \(B_+\) has the quantum numbers of the even scalar row of
+Definition~\ref{def:pure-sym-channel-source-ledger}, \(B_-\) has the
+odd-scalar row, and \(F_\alpha\) has the fermionic row.  With the vacuum
+projection removed, define the Euclidean transfer-matrix correlator matrices
+\begin{align}
+  C_{+}^{rs}(t)
+  &=
+  \langle\Omega|B_{+,r}\,\ee^{-tH_{\rm reg}}\,B_{+,s}^{\dagger}|\Omega\rangle_c,
+  \label{eq:pure-sym-even-correlator-matrix}\\
+  C_{-}^{rs}(t)
+  &=
+  \langle\Omega|B_{-,r}\,\ee^{-tH_{\rm reg}}\,B_{-,s}^{\dagger}|\Omega\rangle_c,
+  \label{eq:pure-sym-odd-correlator-matrix}\\
+  C_{F}^{rs}(t)
+  &=
+  \frac12\operatorname{tr}_{\rm rest}
+  \langle\Omega|F_r\,\ee^{-tH_{\rm reg}}\,\overline F_s|\Omega\rangle_c .
+  \label{eq:pure-sym-fermion-correlator-matrix}
+\end{align}
+The trace in \eqref{eq:pure-sym-fermion-correlator-matrix} is the declared
+spin average in the rest frame; at finite lattice spacing it must be replaced
+by the exact spin-little-group projection of the regulator.  The channel
+energies are extracted from the generalized eigenvalue problems
+\[
+  C_a(t)v_{a,n}(t,t_0)
+  =
+  \lambda_{a,n}(t,t_0) C_a(t_0)v_{a,n}(t,t_0),
+  \qquad
+  a\in\{+,-,F\}.
+  \label{eq:pure-sym-channel-gevp}
+\]
+The GEVP is an estimator, not an additional definition of the spectrum.  Its
+use requires an accompanying finite-basis and truncation-error statement; the
+underlying pole statement is the spectral statement about matrix elements of
+\(\ee^{-tH_{\rm reg}}\).
+A pure-SYM spectral extraction has restored supersymmetry in a one-particle
+window only after the limiting procedure makes the pole locations extracted
+from the three channels agree within a stated continuum and infinite-volume
+error estimate.
+\end{definition}
+
+\begin{proposition}[Common pole extraction in a restored massive multiplet]
+\label{prop:pure-sym-common-pole-extraction}
+Assume the continuum limit of the regulated datum contains an isolated massive
+\(\mathcal N=1\) one-particle supermultiplet of mass \(m>0\), separated in
+each of the three source channels of
+Definition~\ref{def:pure-sym-channel-correlator-matrices} by an energy gap
+\(\Delta>0\) from the next spectral contribution in the same finite-volume
+window.  Assume that the source matrices have nonzero overlap with this atom.
+Then, after choosing bases in the source spaces, each channel correlator has
+the form
+\[
+  C_a(t)
+  =
+  Z_a Z_a^\dagger \ee^{-mt}
+  +
+  R_a(t),
+  \qquad
+  \|R_a(t)\|\le K_a\ee^{-(m+\Delta)t},
+  \qquad a\in\{+,-,F\}.
+  \label{eq:pure-sym-common-pole-channel-form}
+\]
+For every coefficient vector \(u_a\) whose overlap
+\(z_{a,u}:=u_a^\dagger Z_a\) with the atom is nonzero, the projected
+correlator \(G_{a,u}(t):=u_a^\dagger C_a(t)u_a\) obeys
+\[
+  \frac{G_{a,u}(t)}{G_{a,u}(t_0)}
+  =
+  \ee^{-m(t-t_0)}
+  \frac{1+\rho_{a,u}(t)}{1+\rho_{a,u}(t_0)},
+  \qquad
+  |\rho_{a,u}(s)|
+  \le
+  \frac{K_a\|u_a\|^2}{|z_{a,u}|^2}\,\ee^{-\Delta s}.
+  \label{eq:pure-sym-projected-correlator-ratio}
+\]
+In particular, if the right-hand side bound at \(s=t_0\) is less than one,
+then
+\[
+  \left|
+  \ee^{m(t-t_0)}
+  \frac{G_{a,u}(t)}{G_{a,u}(t_0)}
+  -1
+  \right|
+  \le
+  \frac{\varepsilon_{a,u}(t)+\varepsilon_{a,u}(t_0)}
+       {1-\varepsilon_{a,u}(t_0)},
+  \qquad
+  \varepsilon_{a,u}(s)
+  =
+  \frac{K_a\|u_a\|^2}{|z_{a,u}|^2}\,\ee^{-\Delta s}.
+  \label{eq:pure-sym-projected-correlator-ratio-bound}
+\]
+The common mass entering the three projected correlators is the same \(m\).
+For a GEVP, the exact finite-state case is obtained by replacing the single
+vector \(Z_a\) by the matrix of overlaps with the resolved low-lying atoms:
+if the chosen \(R\)-dimensional source space has an invertible overlap matrix
+with \(R\) states and zero overlap with higher states, the GEVP eigenvalues
+are exactly \(\ee^{-E_n(t-t_0)}\), one of which is
+\(\ee^{-m(t-t_0)}\).  If higher-state overlap is present, a quoted GEVP pole
+extraction is rigorous only after the corresponding matrix-remainder bound is
+given.  Any persistent nonzero splitting among the continuum-extrapolated
+leading pole positions is therefore evidence that at least one hypothesis has
+failed: the sources have isolated different states, the regulator limit has
+not restored supersymmetry in that window, or the assumed one-particle atom is
+not separated from the continuum.
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:pure-sym-isolated-multiplet-mass-degeneracy}, the
+isolated atom generated by the supercharges has one mass \(m\).  The spectral
+resolution of the transfer matrix in each channel gives
+\[
+  C_a^{rs}(t)
+  =
+  \sum_{\nu}
+  Z_{a,\nu}^{r}\overline{Z_{a,\nu}^{s}}\,
+  \ee^{-E_\nu t}
+  +
+  \int_{\mathrm{cont}}
+  Z_{a,E}^{r}\overline{Z_{a,E}^{s}}\,\ee^{-Et}\,\dd\rho_a(E).
+  \label{eq:pure-sym-channel-spectral-expansion}
+\]
+The isolated atom contributes the rank-one matrix
+\(Z_aZ_a^\dagger\ee^{-mt}\) after a basis is chosen in the finite source
+space.  The gap hypothesis places all remaining spectral support in
+\([m+\Delta,\infty)\) in the channel window, so the remainder obeys the
+displayed exponential bound after the finite source basis is fixed; explicitly
+the constant \(K_a\) is the operator-norm bound on the residual spectral
+measure after multiplication by \(\ee^{(m+\Delta)t}\) in this finite channel
+window.
+
+Contracting \eqref{eq:pure-sym-common-pole-channel-form} with
+\(u_a^\dagger\) and \(u_a\) gives
+\[
+  G_{a,u}(t)=|z_{a,u}|^2\ee^{-mt}+r_{a,u}(t),
+  \qquad
+  |r_{a,u}(t)|\le K_a\|u_a\|^2\ee^{-(m+\Delta)t}.
+\]
+Writing \(r_{a,u}(t)=|z_{a,u}|^2\ee^{-mt}\rho_{a,u}(t)\) gives
+\eqref{eq:pure-sym-projected-correlator-ratio}.  If
+\(\varepsilon_{a,u}(t_0)<1\), then
+\[
+  \left|\frac{1+\rho(t)}{1+\rho(t_0)}-1\right|
+  =
+  \left|\frac{\rho(t)-\rho(t_0)}{1+\rho(t_0)}\right|
+  \le
+  \frac{\varepsilon(t)+\varepsilon(t_0)}
+       {1-\varepsilon(t_0)},
+\]
+which is \eqref{eq:pure-sym-projected-correlator-ratio-bound}.
+
+The finite-state GEVP assertion is a direct matrix version of the same
+spectral decomposition.  If \(C_a(t)=Z_aD_a(t)Z_a^\dagger\) with \(Z_a\)
+invertible and
+\(D_a(t)=\operatorname{diag}(\ee^{-E_1t},\ldots,\ee^{-E_Rt})\), then
+\[
+  C_a(t_0)^{-1}C_a(t)
+  =
+  (Z_a^\dagger)^{-1}D_a(t_0)^{-1}D_a(t)Z_a^\dagger
+\]
+is similar to \(D_a(t_0)^{-1}D_a(t)\), and hence its eigenvalues are exactly
+\(\ee^{-E_n(t-t_0)}\).
+
+GEVP estimates with higher-state remainders require the same perturbative
+control of the matrix pair.  Without that extra hypothesis one has the
+projected-correlator pole theorem above, not a theorem about a particular
+numerical implementation.  The final diagnostic statement is the
+contrapositive of the common-pole hypothesis together with these extraction
+formulae.
+\end{proof}
+
+Operationally, the pure-SYM lattice or Hamiltonian analysis should publish,
+for each candidate multiplet, the three leading masses
+\[
+  m_+,\qquad m_-,\qquad m_F
+\]
+with the regulator parameters, source bases, fit windows, finite-volume
+trajectory, and tuning condition for the gluino mass.  The supersymmetry
+restoration diagnostic is not the equality of two names in a table; it is the
+vanishing of
+\[
+  \delta_{\rm SUSY}
+  =
+  \frac{\max\{|m_+-m_-|,|m_+-m_F|,|m_--m_F|\}}
+       {\frac13(m_++m_-+m_F)}
+  \label{eq:pure-sym-spectral-susy-diagnostic}
+\]
+in the joint continuum, infinite-volume, and massless-gluino limit, with the
+limiting procedure stated as part of
+Definition~\ref{def:regulated-pure-sym-spectral-extraction-datum}.
+
 \subsection[Pure N=2 and Softly Broken N=2]{Pure \(\mathcal N=2\) and Softly Broken \(\mathcal N=2\)}
 
 Pure \(\mathcal N=2\) Yang--Mills has Coulomb-branch coordinate \(u\), period

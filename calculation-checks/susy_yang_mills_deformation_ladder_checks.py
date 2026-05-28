@@ -4,7 +4,7 @@
 The checks cover algebraic identities used in Volume VII's family-comparison
 chapter: holomorphic scale dimensions, the N=1* fuzzy-sphere F-term ansatz,
 finite k-string comparison ledgers, and the local Seiberg-Witten vortex
-profile normalization.
+profile normalization, together with pure N=1 SYM channel-pole bookkeeping.
 """
 
 from __future__ import annotations
@@ -82,11 +82,34 @@ def check_sw_vortex_radial_normalization() -> None:
         )
 
 
+def check_pure_sym_channel_pole_bookkeeping() -> None:
+    mass, t, t0 = sp.symbols("m t t0", positive=True)
+    z_plus, z_minus, z_fermion = sp.symbols("z_plus z_minus z_fermion", nonzero=True)
+
+    lambda_plus = z_plus**2 * sp.exp(-mass * t) / (z_plus**2 * sp.exp(-mass * t0))
+    lambda_minus = z_minus**2 * sp.exp(-mass * t) / (z_minus**2 * sp.exp(-mass * t0))
+    lambda_fermion = z_fermion**2 * sp.exp(-mass * t) / (z_fermion**2 * sp.exp(-mass * t0))
+    expected = sp.exp(-mass * (t - t0))
+    assert_zero("pure SYM even-channel pole", lambda_plus / expected - 1)
+    assert_zero("pure SYM odd-channel pole", lambda_minus / expected - 1)
+    assert_zero("pure SYM fermion-channel pole", lambda_fermion / expected - 1)
+
+    equal_masses = [sp.Integer(7), sp.Integer(7), sp.Integer(7)]
+    equal_delta = max(abs(equal_masses[0] - equal_masses[1]), abs(equal_masses[0] - equal_masses[2]), abs(equal_masses[1] - equal_masses[2]))
+    assert_zero("pure SYM equal-mass diagnostic", equal_delta)
+
+    split_masses = [sp.Integer(4), sp.Integer(5), sp.Integer(6)]
+    split_delta = max(abs(split_masses[0] - split_masses[1]), abs(split_masses[0] - split_masses[2]), abs(split_masses[1] - split_masses[2]))
+    split_average = sum(split_masses) / sp.Integer(3)
+    assert_zero("pure SYM split diagnostic value", split_delta / split_average - sp.Rational(2, 5))
+
+
 def main() -> None:
     check_holomorphic_scale_dimensions()
     check_n1_star_fuzzy_sphere_ansatz()
     check_k_string_ledgers()
     check_sw_vortex_radial_normalization()
+    check_pure_sym_channel_pole_bookkeeping()
     print("All supersymmetric Yang-Mills deformation-ladder checks passed.")
 
 

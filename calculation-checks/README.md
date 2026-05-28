@@ -851,7 +851,8 @@ Current checks:
   holomorphic scale-dimension matching, the \(\mathcal N=1^\ast\)
   fuzzy-sphere \(F\)-term ansatz, and the sine-law/Casimir \(k\)-string
   ledger identities, and the local Seiberg--Witten vortex-profile flux and
-  small-radius normalization.
+  small-radius normalization, together with pure \(\mathcal N=1\) SYM
+  channel-pole and supersymmetry-restoration diagnostic bookkeeping.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the
