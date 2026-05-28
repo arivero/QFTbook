@@ -2,7 +2,7 @@
 
 ## Scope
 
-- Compiled in Volume IV after QCD, jets, and anomaly technology are available.
+- Compiled in Volume II after QCD, jets, and anomaly technology are available.
 - Addresses GitHub issue #486.
 - Gives a reader-facing Standard Model chapter whose central object is the
   hybrid datum: lattice/nonperturbative QCD sector, electroweak finite-cutoff
@@ -42,6 +42,11 @@
   \(C_5/\Lambda=Y_\nu M^{-1}Y_\nu^T\).
 - Defines the invariant strong-CP coordinate
   \(\overline\theta=\theta_3+\arg\det(M_uM_d)\) with the massless-quark caveat.
+- Derives the one-loop gauge beta coefficients
+  \(b_1=41/6\), \(b_2=-19/6\), \(b_3=-7\) in the unrescaled
+  \(Q=T^3+Y\) hypercharge convention, records the GUT-rescaled conversion,
+  and states the invariant one-loop top-Higgs subsystem for
+  \((y_t,\lambda)\).
 - Expands the hybrid matching datum \(\mathcal M\) into scales, parameter
   charts, threshold maps, anomalous dimensions, nonperturbative matrix
   elements, and error/remainder data.
@@ -67,7 +72,8 @@
   parameter counts, Jarlskog rephasing cancellation, \(m_h^2=2\lambda v^2\),
   \(\rho_{\rm tree}=1\), \(B-L\) anomaly bookkeeping, Weinberg-operator
   mass normalization, singlet-neutrino tree matching, and strong-CP phase
-  invariance.
+  invariance, one-loop gauge beta coefficients, GUT hypercharge conversion,
+  and top-Higgs subsystem coefficient algebra.
 
 ## Claim Ledger
 
@@ -91,9 +97,13 @@
 9. \(\overline\theta\) is the invariant QCD theta/mass-phase coordinate;
    its empirical smallness is a parameter statement, not a selection
    principle.
-10. The Standard Model is used as a hybrid operational object, not as an
+10. The RG equations are source-chart equations in dimensional
+   regularization/minimal subtraction; they do not assert a nonperturbative
+   electroweak continuum construction or provide an ultraviolet-selection
+   principle.
+11. The Standard Model is used as a hybrid operational object, not as an
    assumed complete constructive four-dimensional continuum theorem.
-11. The Fermi operator coefficient is a tree-level matched EFT coefficient;
+12. The Fermi operator coefficient is a tree-level matched EFT coefficient;
    QCD matrix elements and radiative corrections are separate matching data.
 
 ## Audit Notes

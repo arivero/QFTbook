@@ -39,7 +39,9 @@ Current checks:
   Jarlskog rephasing cancellation, the tree-level \(\rho\)-identity,
   the Higgs mass coefficient, \(B-L\) anomaly bookkeeping with and
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
-  tree-level singlet-neutrino matching, and strong-CP phase invariance.
+  tree-level singlet-neutrino matching, strong-CP phase invariance,
+  one-loop gauge beta-function coefficients, GUT hypercharge-rescaling
+  conversion, and the top-Higgs one-loop subsystem coefficients.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional

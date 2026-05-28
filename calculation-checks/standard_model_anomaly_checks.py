@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite representation checks for one Standard Model generation.
+"""Finite checks for the Standard Model hybrid-definition chapter.
 
 The chapter uses left-handed Weyl fields:
 
@@ -9,8 +9,9 @@ The chapter uses left-handed Weyl fields:
     L_L : (1,2)_{-1/2}
     e^c : (1,1)_1
 
-The script checks the hypercharge anomaly sums and the even number of weak
-doublets needed to avoid the finite SU(2) anomaly.
+The script checks the hypercharge anomaly sums, global-form arithmetic,
+flavor counting, electroweak identities, and one-loop RG coefficients used in
+the chapter.
 """
 
 from __future__ import annotations
@@ -235,6 +236,63 @@ def check_strong_cp_phase_invariance() -> None:
     )
 
 
+def check_one_loop_gauge_beta_coefficients() -> None:
+    generations = 3
+    # U(1)_Y uses spectator multiplicities and the unrescaled Y convention.
+    u1_weyl_per_generation = (
+        6 * Fraction(1, 6) ** 2
+        + 3 * Fraction(-2, 3) ** 2
+        + 3 * Fraction(1, 3) ** 2
+        + 2 * Fraction(-1, 2) ** 2
+        + Fraction(1, 1) ** 2
+    )
+    u1_scalar = 2 * Fraction(1, 2) ** 2
+    b1 = Fraction(2, 3) * generations * u1_weyl_per_generation + Fraction(1, 3) * u1_scalar
+    assert_equal("SM b1 in Q=T3+Y convention", b1, Fraction(41, 6))
+
+    su2_weyl_per_generation = 3 * Fraction(1, 2) + Fraction(1, 2)
+    su2_scalar = Fraction(1, 2)
+    b2 = -Fraction(11, 3) * 2 + Fraction(2, 3) * generations * su2_weyl_per_generation + Fraction(1, 3) * su2_scalar
+    assert_equal("SM b2", b2, Fraction(-19, 6))
+
+    su3_weyl_per_generation = 2 * Fraction(1, 2) + Fraction(1, 2) + Fraction(1, 2)
+    b3 = -Fraction(11, 3) * 3 + Fraction(2, 3) * generations * su3_weyl_per_generation
+    assert_equal("SM b3", b3, Fraction(-7))
+
+
+def check_hypercharge_gut_rescaling() -> None:
+    # g_GUT = sqrt(5/3) g1 implies b_GUT = (3/5) b1.
+    assert_equal("GUT-rescaled hypercharge beta coefficient", Fraction(3, 5) * Fraction(41, 6), Fraction(41, 10))
+
+
+def check_top_higgs_subsystem_coefficients() -> None:
+    top_yukawa_coefficients = {
+        "yt_self": Fraction(9, 2),
+        "g3": Fraction(-8),
+        "g2": Fraction(-9, 4),
+        "g1": Fraction(-17, 12),
+    }
+    expected_top = {
+        "yt_self": Fraction(9, 2),
+        "g3": Fraction(-6) * Fraction(4, 3),
+        "g2": Fraction(-9, 4),
+        "g1": Fraction(-17, 12),
+    }
+    assert_equal("top Yukawa one-loop coefficients", top_yukawa_coefficients, expected_top)
+    assert_equal(
+        "top Yukawa hypercharge coefficient after GUT rescaling",
+        Fraction(3, 5) * Fraction(17, 12),
+        Fraction(17, 20),
+    )
+
+    # Expand (3/8)[2 g2^4 + (g2^2 + g1^2)^2].
+    g1 = Fraction(2, 3)
+    g2 = Fraction(5, 7)
+    compact = Fraction(3, 8) * (2 * g2**4 + (g2**2 + g1**2) ** 2)
+    expanded = Fraction(9, 8) * g2**4 + Fraction(3, 4) * g1**2 * g2**2 + Fraction(3, 8) * g1**4
+    assert_equal("lambda gauge-quartic compact/expanded form", compact, expanded)
+
+
 def main() -> None:
     check_su3_su3_u1()
     check_su2_su2_u1()
@@ -250,6 +308,9 @@ def main() -> None:
     check_weinberg_operator_mass_normalization()
     check_tree_level_singlet_neutrino_matching()
     check_strong_cp_phase_invariance()
+    check_one_loop_gauge_beta_coefficients()
+    check_hypercharge_gut_rescaling()
+    check_top_higgs_subsystem_coefficients()
     print("All Standard Model representation, flavor, and electroweak checks passed.")
 
 
