@@ -196,10 +196,12 @@ The chapter must define and derive:
   the Mellin eigenvalue
   \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
   soft-subtracted transverse light-ray matrix elements with Collins--Soper
-  rapidity evolution, small-\(q_\perp\) color-singlet TMD factorization data,
-  GPDs as off-forward light-ray matrix elements, GPD polynomiality from local
-  twist-two covariance, logarithmic scaling violation, and the
-  endpoint/large-spin cusp boundary of the DIS factorization statement.
+  rapidity evolution, Drell--Yan as a timelike current-current Wightman tensor
+  with past-pointing TMD staples and an explicit Glauber-status datum,
+  small-\(q_\perp\) color-singlet TMD factorization data, GPDs as off-forward
+  light-ray matrix elements, GPD polynomiality from local twist-two
+  covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
+  boundary of the DIS factorization statement.
 
 ## Claim Ledger
 
@@ -392,6 +394,16 @@ The chapter must define and derive:
       \(2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), with
       \(\chi(1/2)=4\log2\) and the quadratic diffusion coefficient
       \(-14\zeta(3)\) on the line \(\gamma=1/2+\ii\nu\).
+22cd. Drell--Yan is formulated as a timelike current-current Wightman tensor
+      between two hadron states.  The leading-power kinematic variables obey
+      \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  The TMD factorization
+      datum uses past-pointing staples, \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term,
+      a power-remainder topology, and an explicit Glauber item.  The finite
+      Glauber lemma proves only the tensor-product unitarity identity
+      \(\operatorname{Tr}[(M\otimes1)(1\otimes U)\rho(1\otimes U^\dagger)]
+      =\operatorname{Tr}[(M\otimes1)\rho]\); applying this identity to QCD
+      requires the leading-region, color-flow, rapidity, and measurement
+      hypotheses to be proven or stated.
 22d. TMDs are transverse-separated Wilson-line matrix elements with a soft
      subtraction and an independent rapidity renormalization scale.  The
      Collins--Soper kernel is defined by rapidity evolution, its
@@ -486,6 +498,11 @@ The chapter must define and derive:
   gauge-invariance proof, leading-logarithmic BFKL/BK status statement,
   transverse kernel covariance proof, Mellin-eigenvalue derivation by analytic
   regularization, and `calculation-checks/qcd_bfkl_small_x_checks.py`.
+- 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
+  hadronic tensor, leading-power kinematics, TMD factorization datum with
+  past-pointing staples, finite tensor-product unitarity lemma for the
+  algebraic content of Glauber cancellation, and
+  `calculation-checks/qcd_drell_yan_glauber_checks.py`.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

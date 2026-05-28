@@ -77,6 +77,11 @@ Current checks:
   number conservation, quark/gluon momentum-column sum rules, the exact
   nonsinglet Mellin moment formula, and the trace-delta versus half-trace cusp
   coefficient conversion.
+- `qcd_drell_yan_glauber_checks.py`: finite checks for the Volume II
+  Drell--Yan/Glauber-status block, including leading-power rapidity
+  kinematics, rapidity-scale product bookkeeping, time-reversal-odd staple
+  orientation signs, and the finite tensor-product unitarity identity used as
+  the algebraic model for Glauber cancellation.
 - `qcd_bfkl_small_x_checks.py`: finite checks for the Volume II small-\(x\)
   QCD block, including trace-delta versus half-trace invariance of the BFKL
   kernel coefficient, transverse inversion covariance of the dipole kernel

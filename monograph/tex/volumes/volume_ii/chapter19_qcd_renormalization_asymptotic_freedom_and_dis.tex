@@ -4955,6 +4955,186 @@ operator representation of Glauber exchange, and the topology of the
 power-remainder estimate have all been supplied.
 \end{hypothesis}
 
+\section{Drell--Yan Factorization and Glauber Status}
+\label{sec:qcd-drell-yan-glauber-status}
+
+Drell--Yan production is the timelike current analogue of DIS:
+\[
+  h_A(P_A)+h_B(P_B)\longrightarrow \ell^+\ell^-+X,
+  \qquad q=p_{\ell^+}+p_{\ell^-},
+  \qquad q^2=Q^2>0 .
+\]
+The QCD object is again a Wightman current matrix element, now between a
+two-hadron incoming state.  For unpolarized hadrons define
+\begin{equation}
+  W_{AB}^{\mu\nu}(P_A,P_B,q)
+  =
+  \frac1{N_{\rm spin}}
+  \sum_{\sigma_A,\sigma_B}
+  \sum_X
+  (2\pi)^4\delta^{(4)}(P_A+P_B-q-P_X)
+  \bra{P_A,P_B}J^\mu(0)\ket{X}
+  \bra{X}J^\nu(0)\ket{P_A,P_B}.
+  \label{eq:qcd-drell-yan-hadronic-tensor}
+\end{equation}
+Equivalently, by translation covariance and completeness,
+\begin{equation}
+  W_{AB}^{\mu\nu}(P_A,P_B,q)
+  =
+  \frac1{N_{\rm spin}}
+  \sum_{\sigma_A,\sigma_B}
+  \int\dd^4x\,\ee^{\ii q\cdot x}
+  \bra{P_A,P_B}J^\mu(x)J^\nu(0)\ket{P_A,P_B},
+  \label{eq:qcd-drell-yan-current-product}
+\end{equation}
+with the same state-normalization convention as in the scattering chapters.
+The partonic formulae below are short-distance coordinates for this tensor;
+they are not definitions of a cross section with colored asymptotic states.
+
+\begin{proposition}[Drell--Yan leading-power kinematics]
+\label{prop:qcd-drell-yan-leading-kinematics}
+Let
+\[
+  s:=(P_A+P_B)^2,
+  \qquad
+  \tau:=\frac{Q^2}{s},
+\]
+and choose the hadron center-of-mass frame with the \(A\)-hadron moving in the
+positive longitudinal direction.  At leading power in hadron masses and
+transverse momentum, the longitudinal momentum fractions entering the
+short-distance hard collision are
+\begin{equation}
+  x_A=\sqrt{\tau}\,\ee^y,
+  \qquad
+  x_B=\sqrt{\tau}\,\ee^{-y},
+  \label{eq:qcd-drell-yan-xa-xb}
+\end{equation}
+where
+\[
+  y:=\frac12\log\frac{q^0+q^3}{q^0-q^3}
+\]
+is the lepton-pair rapidity.  Hence
+\[
+  x_Ax_B=\tau,
+  \qquad
+  y=\frac12\log\frac{x_A}{x_B}.
+\]
+\end{proposition}
+
+\begin{proof}
+In light-cone coordinates adapted to the beam directions, write the leading
+hadron momenta as
+\[
+  P_A^+=\sqrt{s},\quad P_A^-=0,
+  \qquad
+  P_B^-= \sqrt{s},\quad P_B^+=0,
+\]
+and neglect transverse components in the leading-power kinematic identity.
+The active partons carry
+\[
+  q^+=x_AP_A^+,\qquad q^-=x_BP_B^-.
+\]
+Therefore \(Q^2=q^+q^-+O(q_\perp^2,M_{A,B}^2)=x_Ax_Bs+O(q_\perp^2,M_{A,B}^2)\),
+which gives \(x_Ax_B=\tau\) at leading power.  The rapidity satisfies
+\[
+  y=\frac12\log\frac{q^+}{q^-}
+  =
+  \frac12\log\frac{x_A}{x_B}.
+\]
+Solving the two equations gives
+\eqref{eq:qcd-drell-yan-xa-xb}.
+\end{proof}
+
+\begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD datum]
+\label{hyp:qcd-drell-yan-tmd-datum}
+A leading-power Drell--Yan TMD factorization datum consists of:
+\begin{enumerate}
+  \item the renormalized current hard function \(H_{ij}(Q,\mu)\);
+  \item past-pointing TMD operator data
+  \(F_{i/A}^{[-]}(x_A,b_\perp;\mu,\zeta_A)\) and
+  \(F_{j/B}^{[-]}(x_B,b_\perp;\mu,\zeta_B)\), in the notation of
+  Definition~\ref{def:qcd-tmd-operator-datum};
+  \item rapidity scales constrained by \(\zeta_A\zeta_B=Q^4\);
+  \item a \(Y\)-term matching to the region \(|q_\perp|\sim Q\);
+  \item a proof or controlled hypothesis for Glauber exchange;
+  \item a distributional power-remainder estimate in \(q_\perp/Q\) and in the
+  hadron-mass corrections.
+\end{enumerate}
+The singular small-\(q_\perp\) term is then represented as
+\begin{equation}
+  \frac{\dd\sigma_{\rm sing}}{\dd Q^2\dd y\,\dd^2q_\perp}
+  =
+  \sum_{i,j}
+  H_{ij}(Q,\mu)
+  \int\frac{\dd^2b_\perp}{(2\pi)^2}\,
+  \ee^{\ii b_\perp\cdot q_\perp}
+  F_{i/A}^{[-]}(x_A,b_\perp;\mu,\zeta_A)
+  F_{j/B}^{[-]}(x_B,b_\perp;\mu,\zeta_B),
+  \label{eq:qcd-drell-yan-tmd-factorization}
+\end{equation}
+plus the stated \(Y\)-term and power remainder.  The past-pointing staple
+orientation is part of the operator definition.  It is the operator-level
+source of the sign reversal of time-reversal-odd TMD coordinates between
+semi-inclusive DIS and Drell--Yan, once the relevant antiunitary
+transformation and spin conventions are specified.
+\end{hypothesis}
+
+\begin{proposition}[Finite unitarity model for Glauber cancellation]
+\label{prop:qcd-finite-glauber-cancellation-model}
+Let \(\mathcal H_{\rm obs}\) be a finite-dimensional observed Hilbert space,
+let \(\mathcal H_{\rm un}\) be an unobserved Hilbert space, let
+\(\rho\) be a trace-class density matrix on
+\(\mathcal H_{\rm obs}\otimes\mathcal H_{\rm un}\), and let \(M\) be an
+observable acting only on \(\mathcal H_{\rm obs}\).  If the effect of a
+Glauber exchange on the unobserved degrees of freedom is represented by a
+unitary \(U_G\) acting only on \(\mathcal H_{\rm un}\), then
+\begin{equation}
+  \operatorname{Tr}_{\rm obs,un}
+  \left[
+    (M\otimes\mathbf1)
+    (\mathbf1\otimes U_G)\rho(\mathbf1\otimes U_G^\dagger)
+  \right]
+  =
+  \operatorname{Tr}_{\rm obs,un}
+  \left[
+    (M\otimes\mathbf1)\rho
+  \right].
+  \label{eq:qcd-finite-glauber-unitarity-identity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use cyclicity of the full trace and
+\((\mathbf1\otimes U_G^\dagger)(M\otimes\mathbf1)(\mathbf1\otimes U_G)
+=M\otimes\mathbf1\).  The result is
+\[
+  \operatorname{Tr}
+  \left[
+    \rho
+    (\mathbf1\otimes U_G^\dagger)(M\otimes\mathbf1)(\mathbf1\otimes U_G)
+  \right]
+  =
+  \operatorname{Tr}\left[\rho(M\otimes\mathbf1)\right],
+\]
+which is
+\eqref{eq:qcd-finite-glauber-unitarity-identity}.
+\end{proof}
+
+\begin{controlledapproximation}[What the Glauber lemma proves]
+\label{ca:qcd-glauber-cancellation-status}
+Proposition~\ref{prop:qcd-finite-glauber-cancellation-model} is the algebraic
+unitarity identity that a Drell--Yan factorization proof must realize after
+the leading regions, color flow, rapidity regulator, and measurement topology
+have been fixed.  It does not prove by itself that QCD Glauber exchanges act
+only on an unobserved tensor factor, nor that the contour deformations needed
+to isolate the leading regions are valid.  Those statements are part of the
+Glauber item in Hypothesis~\ref{hyp:qcd-drell-yan-tmd-datum}.  If the
+observable measures hadronic radiation in a way that resolves the spectator
+sector, or if a color exchange remains entangled with the measured hard
+sector, the finite identity above no longer supplies the required
+cancellation.
+\end{controlledapproximation}
+
 \section{Off-Forward Light-Ray Matrix Elements and GPDs}
 \label{sec:qcd-gpd-light-ray-matrix-elements}
 
