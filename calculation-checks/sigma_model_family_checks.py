@@ -5,8 +5,8 @@ The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
 split, the Polyakov-Wiegmann WZ coefficient, WZW central charges,
 nonabelian-bosonization central-charge
 bookkeeping, the SU(N) sine-mass/fusion-angle and rational-matrix bootstrap
-blocks, the supertarget one-loop coefficient ledgers, and the curvature
-formula for the sausage metric used in Volume VI.
+blocks, the supertarget one-loop coefficient ledgers, and the curvature and
+one-loop Ricci-flow closure formulae for the sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
@@ -347,6 +347,33 @@ def check_sausage_metric_curvature() -> None:
     expected = 2 * (1 + q) * (1 - q * r**2) / (h * (1 + q * r**2))
     assert_zero("sausage scalar curvature", scalar_curvature - expected)
     assert_zero("sausage round-sphere limit", expected.subs(q, 0) - 2 / h)
+
+    h_dot = -(1 + q)
+    q_dot = -2 * q * (1 + q) / h
+    e_flow = sp.diff(e_metric, h) * h_dot + sp.diff(e_metric, q) * q_dot
+    g_flow = sp.diff(g_metric, h) * h_dot + sp.diff(g_metric, q) * q_dot
+    assert_zero("sausage rr Ricci-flow closure", e_flow + expected * e_metric / 2)
+    assert_zero("sausage phiphi Ricci-flow closure", g_flow + expected * g_metric / 2)
+    assert_zero("sausage Ricci-flow invariant", sp.diff(q / h**2, h) * h_dot + sp.diff(q / h**2, q) * q_dot)
+
+    kappa = sp.symbols("kappa")
+    q_physical = -kappa**2
+    h_dot_kappa = h_dot.subs(q, q_physical)
+    kappa_dot = -kappa * (1 - kappa**2) / h
+    q_dot_from_kappa = sp.diff(q_physical, kappa) * kappa_dot
+    assert_zero("sausage kappa-flow conversion", q_dot.subs(q, q_physical) - q_dot_from_kappa)
+
+    rho = sp.symbols("rho")
+    r_cyl = sp.tanh(rho)
+    radial_limit = sp.simplify(
+        h * sp.diff(r_cyl, rho) ** 2
+        / ((1 - r_cyl**2) * (1 - r_cyl**2))
+    )
+    angular_limit = sp.simplify(
+        h * (1 - r_cyl**2) / (1 - r_cyl**2)
+    )
+    assert_zero("sausage cylinder radial limit", radial_limit - h)
+    assert_zero("sausage cylinder angular limit", angular_limit - h)
 
 
 def main() -> None:

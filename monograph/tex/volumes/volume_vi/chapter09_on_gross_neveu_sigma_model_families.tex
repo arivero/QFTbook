@@ -1458,32 +1458,34 @@ Jordan blocks appear.
 
 The sausage family should be treated as a controlled deformation of the round
 \(S^2\) sigma model with a stated metric and RG trajectory before any
-comparison to cigar or parafermion cosets is made.
+comparison to cigar or parafermion cosets is made.  The sign of the
+deformation parameter is part of the datum: the elongated physical sausage is
+the negative branch of the real parameter used below.
 
 \begin{definition}[Sausage metric datum]
 \label{def:sausage-metric-datum}
 The two-dimensional deformed-sphere, or sausage, target used in the
 semiclassical description is the \(U(1)\)-invariant Riemannian metric
 \begin{equation}
-  \dd s^2_{h,\chi}
+  \dd s^2_{h,q}
   =
   h\left[
-    \frac{\dd r^2}{(1-r^2)(1+\chi^2 r^2)}
+    \frac{\dd r^2}{(1-r^2)(1+q r^2)}
     +
-    \frac{1-r^2}{1+\chi^2 r^2}\,\dd\phi^2
+    \frac{1-r^2}{1+q r^2}\,\dd\phi^2
   \right],
   \qquad
   -1<r<1,\quad \phi\sim\phi+2\pi ,
   \label{eq:sausage-metric}
 \end{equation}
-with \(h>0\) and \(\chi^2>-1\).  The undeformed value
-\(\chi=0\) is the round sphere of radius \(\sqrt h\): setting
+with \(h>0\) and \(q>-1\).  The undeformed value
+\(q=0\) is the round sphere of radius \(\sqrt h\): setting
 \(r=\cos\vartheta\) gives
 \[
   \dd s^2_{h,0}=h(\dd\vartheta^2+\sin^2\vartheta\,\dd\phi^2).
 \]
-For \(\chi\ne0\) the metric preserves only the axial \(U(1)\) isometry.  The
-entry \((h,\chi)\) is therefore a metric-coordinate datum for the sigma model;
+For \(q\ne0\) the metric preserves only the axial \(U(1)\) isometry.  The
+entry \((h,q)\) is therefore a metric-coordinate datum for the sigma model;
 an exact quantum \(S\)-matrix proposal for the sausage family is a separate
 bootstrap datum that must be matched to this coordinate choice.
 \end{definition}
@@ -1492,10 +1494,10 @@ bootstrap datum that must be matched to this coordinate choice.
 \label{prop:sausage-curvature}
 For the metric \eqref{eq:sausage-metric}, the scalar curvature is
 \begin{equation}
-  R_{h,\chi}(r)
+  R_{h,q}(r)
   =
-  \frac{2(1+\chi^2)(1-\chi^2 r^2)}
-       {h(1+\chi^2 r^2)} .
+  \frac{2(1+q)(1-q r^2)}
+       {h(1+q r^2)} .
   \label{eq:sausage-scalar-curvature}
 \end{equation}
 In particular \(R_{h,0}=2/h\), as required for the round two-sphere of radius
@@ -1505,9 +1507,9 @@ In particular \(R_{h,0}=2/h\), as required for the round two-sphere of radius
 \begin{proof}
 Write the metric as \(E(r)\dd r^2+G(r)\dd\phi^2\), where
 \[
-  E(r)=\frac{h}{(1-r^2)(1+\chi^2r^2)},
+  E(r)=\frac{h}{(1-r^2)(1+qr^2)},
   \qquad
-  G(r)=h\frac{1-r^2}{1+\chi^2r^2}.
+  G(r)=h\frac{1-r^2}{1+qr^2}.
 \]
 For any diagonal two-dimensional metric of this form, direct computation from
 the Christoffel symbols gives
@@ -1521,10 +1523,118 @@ the Christoffel symbols gives
 \end{equation}
 Substitution of \(E\) and \(G\) into
 \eqref{eq:diagonal-rotational-curvature-formula} gives
-\eqref{eq:sausage-scalar-curvature}.  At \(\chi=0\), the formula becomes the
+\eqref{eq:sausage-scalar-curvature}.  At \(q=0\), the formula becomes the
 constant \(2/h\), agreeing with the standard scalar curvature of the round
 sphere.
 \end{proof}
+
+\begin{proposition}[Closure under one-loop Ricci flow]
+\label{prop:sausage-ricci-flow-closure}
+Let \(g_{h,q}\) denote the metric \eqref{eq:sausage-metric}.  Under the
+geometric Ricci flow
+\[
+  \partial_\tau g_{ij}=-\operatorname{Ric}_{ij},
+  \label{eq:geometric-ricci-flow}
+\]
+the family \(g_{h,q}\) is closed.  The induced parameter equations are
+\begin{equation}
+  \frac{\dd h}{\dd\tau}=-(1+q),
+  \qquad
+  \frac{\dd q}{\dd\tau}=-\frac{2q(1+q)}{h}.
+  \label{eq:sausage-ricci-flow-hq}
+\end{equation}
+Equivalently, for the physical sausage branch \(q=-\kappa^2\), \(0\le\kappa<1\),
+\begin{equation}
+  \frac{\dd h}{\dd\tau}=-(1-\kappa^2),
+  \qquad
+  \frac{\dd\kappa}{\dd\tau}=-\frac{\kappa(1-\kappa^2)}{h}.
+  \label{eq:sausage-ricci-flow-kappa}
+\end{equation}
+The ratio \(q/h^2\) is constant along \eqref{eq:sausage-ricci-flow-hq}.
+\end{proposition}
+
+\begin{proof}
+In two dimensions \(\operatorname{Ric}_{ij}=\frac12 R g_{ij}\).  Write
+\[
+  g_{rr}=\frac{h}{(1-r^2)(1+qr^2)},
+  \qquad
+  g_{\phi\phi}=h\frac{1-r^2}{1+qr^2}.
+\]
+The logarithmic variation of either component under a parameter change is
+\[
+  \frac{\partial_\tau g_{ij}}{g_{ij}}
+  =
+  \frac{\dot h}{h}-\frac{\dot q\,r^2}{1+qr^2}.
+  \label{eq:sausage-log-variation}
+\]
+The right side of \eqref{eq:geometric-ricci-flow}, using
+\eqref{eq:sausage-scalar-curvature}, gives the common logarithmic factor
+\[
+  -\frac12 R_{h,q}(r)
+  =
+  -\frac{(1+q)(1-qr^2)}{h(1+qr^2)}.
+  \label{eq:sausage-ricci-log-factor}
+\]
+Equating \eqref{eq:sausage-log-variation} and
+\eqref{eq:sausage-ricci-log-factor} as rational functions of \(r^2\) gives
+the constant term
+\[
+  \dot h=-(1+q)
+\]
+and the coefficient of \(r^2\),
+\[
+  q\frac{\dot h}{h}-\dot q=\frac{q(1+q)}{h}.
+\]
+Substituting \(\dot h=-(1+q)\) gives
+\(\dot q=-2q(1+q)/h\).  The \(\kappa\)-form follows from
+\(q=-\kappa^2\).  Finally,
+\[
+  \frac{\dd}{\dd\tau}\left(\frac q{h^2}\right)
+  =
+  \frac{\dot q}{h^2}-\frac{2q\dot h}{h^3}=0.
+\]
+\end{proof}
+
+\begin{proposition}[Round and cylindrical endpoints of the metric family]
+\label{prop:sausage-metric-endpoints}
+The branch \(q=-\kappa^2\), \(0\le\kappa<1\), interpolates at the metric level
+between the round two-sphere and a flat cylinder.  More precisely,
+\(\kappa=0\) gives \(S^2\) of radius \(\sqrt h\), while the limiting metric
+as \(\kappa\to1\) is
+\[
+  \dd s^2_{h,-1}=h(\dd\rho^2+\dd\phi^2),
+  \qquad r=\tanh\rho,\quad \rho\in\mathbb R .
+  \label{eq:sausage-cylinder-limit}
+\]
+\end{proposition}
+
+\begin{proof}
+The case \(\kappa=0\) is the calculation already displayed in
+Definition~\ref{def:sausage-metric-datum}.  For \(\kappa\to1\), set
+\(q=-1\) in \eqref{eq:sausage-metric}.  Then
+\[
+  \frac{\dd r^2}{(1-r^2)^2}
+  +
+  \dd\phi^2
+\]
+is obtained.  The change of variable \(r=\tanh\rho\) gives
+\(\dd r=(1-\tanh^2\rho)\dd\rho=(1-r^2)\dd\rho\), hence
+\(\dd r^2/(1-r^2)^2=\dd\rho^2\).  This proves
+\eqref{eq:sausage-cylinder-limit}.
+\end{proof}
+
+\begin{controlledapproximation}[Sausage bootstrap matching]
+\label{ca:sausage-bootstrap-matching}
+Equations \eqref{eq:sausage-metric}, \eqref{eq:sausage-ricci-flow-hq}, and
+\eqref{eq:sausage-cylinder-limit} are metric and one-loop RG data.  An exact
+factorized \(S\)-matrix description of the sausage model requires a separate
+bootstrap datum: particle labels, physical-strip pole assignments, CDD
+normalization, and a matching map from the regulator-defined sigma model to
+those rapidity-space coordinates.  This matching is especially delicate near
+the cylindrical endpoint, where the target develops an asymptotic circle and
+the relation to compact parafermion or noncompact cigar descriptions depends
+on the precise scaling limit.
+\end{controlledapproximation}
 
 \begin{definition}[Sigma-model family datum]
 \label{def:sigma-model-family-datum}
