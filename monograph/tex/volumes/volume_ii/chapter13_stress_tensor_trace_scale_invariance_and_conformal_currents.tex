@@ -1226,58 +1226,67 @@ remaining obstruction to a traceless representative.
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      box/.style={draw,rounded corners=3pt,align=center,inner sep=4pt,
-        text width=3.25cm,fill=gray!4},
-      smallbox/.style={draw,rounded corners=3pt,align=center,inner sep=3pt,
-        text width=3.25cm},
       arr/.style={-{Latex[length=2mm]},line width=0.85pt},
-      map/.style={-{Latex[length=2mm]},line width=0.95pt,blue!70!black}
+      subspace/.style={fill=blue!8,draw=blue!60!black,line width=0.7pt},
+      coset/.style={purple!70!black,dashed,line width=0.9pt},
+      point/.style={circle,fill=black,inner sep=1.45pt},
+      note/.style={align=center,inner sep=2pt}
     }
-    \node[font=\small] at (0,3.15)
-      {quotient defining the obstruction class};
-    \node[box] (S) at (-4.75,2.10)
-      {allowed scalar\\improvements\\[1mm]\(\mathfrak S\)};
-    \node[box] (V) at (0,2.10)
-      {virial-current\\representatives\\[1mm]\(\mathfrak V\)};
-    \node[box,text width=3.55cm] (H) at (4.85,2.10)
-      {obstruction\\space\\[1mm]
-      \(\displaystyle
-      \mathcal H_{\rm vir}^{\rm scal}
-      =
-      \frac{\mathfrak V}{\mathfrak J+(d-1)\partial\mathfrak S}\)};
 
-    \draw[map] (S)--(V)
-      node[midway,above] {\((d-1)\partial_\mu L\)};
-    \draw[map] (V)--(H)
-      node[midway,above] {\(\pi\)};
-    \node[smallbox,fill=blue!5,text width=3.80cm] (J) at (0,0.75)
-      {conserved currents\\\(\mathfrak J=\ker(\partial_\mu:\mathfrak V\to
-      \text{local scalars})\)};
-    \draw[arr,blue!65!black] (J)--(V);
+    \begin{scope}[shift={(-3.9,0)}]
+      \node[font=\small] at (0,2.62)
+        {quotient in the virial-current space};
+      \draw[line width=0.8pt] (-3.65,-1.85) rectangle (3.65,2.10);
+      \node[anchor=north east] at (3.52,1.98) {\(\mathfrak V\)};
 
-    \node[smallbox,fill=white,text width=3.25cm] (T) at (-4.75,-1.55)
-      {scale-current data\\
-      \(T^\mu{}_\mu=\partial_\mu V^\mu\)};
-    \node[smallbox,fill=white,text width=3.65cm] (shift) at (0,-1.55)
-      {improvement by \(L\)\\
-      \(V_\mu^{(L)}=V_\mu-(d-1)\partial_\mu L\)};
-    \node[smallbox,fill=white,text width=3.25cm] (trace) at (4.85,-1.55)
-      {improved trace\\
-      \(T'^\mu{}_\mu=\partial_\mu V^{(L)\mu}\)};
-    \draw[arr] (T)--(shift);
-    \draw[arr] (shift)--(trace);
-    \draw[arr,dashed] (V.south)--(shift.north);
+      \draw[subspace] (-3.20,-0.58) rectangle (3.20,0.58);
+      \node[note,blue!65!black,fill=white,inner sep=1pt] at (0,0.72)
+        {\(\mathfrak J+(d-1)\partial\mathfrak S\)};
+      \draw[green!45!black,line width=1.0pt] (-2.85,-0.18)--(2.85,-0.18);
+      \node[green!40!black,fill=white,inner sep=1pt] at (-2.25,-0.43)
+        {\(\mathfrak J=\ker\partial\)};
+      \draw[blue!65!black,line width=1.0pt] (-2.65,0.25)--(2.65,0.25);
+      \node[blue!65!black,fill=white,inner sep=1pt] at (1.58,0.02)
+        {\((d-1)\partial\mathfrak S\)};
 
-    \node[smallbox,fill=green!7,text width=4.15cm] (zero) at (-2.45,-3.45)
-      {zero class\\
-      \(\pi(V)=0\)\\
-      \(\exists\,L\in\mathfrak S:\ V^{(L)}\in\mathfrak J\)\\
-      \(T'^\mu{}_\mu=0\)};
-    \node[smallbox,fill=red!5,text width=4.15cm] (nonzero) at (2.85,-3.45)
-      {nonzero class\\
-      \(\pi(V)\ne0\)\\
-      \(\forall\,L\in\mathfrak S:\ V^{(L)}\notin\mathfrak J\)\\
-      scalar improvement does not remove the trace};
+      \draw[coset] (-3.20,1.28)--(3.20,1.28);
+      \node[point] (Vpoint) at (-2.45,1.28) {};
+      \node[above left] at (-2.45,1.28) {\(V\)};
+      \node[purple!70!black,fill=white,inner sep=1pt] at (1.20,1.52)
+        {\(V+\mathfrak J+(d-1)\partial\mathfrak S\)};
+      \node[point,fill=green!45!black] at (-2.55,-0.18) {};
+      \node[below left,green!45!black] at (-2.55,-0.18) {\(\pi(V)=0\)};
+
+      \node[note,purple!70!black,fill=white,inner sep=1pt] at (2.25,1.05)
+        {\(\pi(V)\)};
+    \end{scope}
+
+    \begin{scope}[shift={(3.9,-0.35)}]
+      \node[font=\small] at (0,2.18)
+        {trace test after a scalar improvement};
+      \draw[line width=0.8pt] (-3.15,-1.20)--(3.15,-1.20);
+      \node[right] at (3.15,-1.20) {\(\mathfrak J\)};
+      \draw[blue!65!black,line width=1.0pt] (-2.80,-0.15)--(2.80,-0.15);
+      \node[blue!65!black,fill=white,inner sep=1pt] at (1.65,0.12)
+        {\(V-(d-1)\partial L\)};
+      \node[point] (Vraw) at (-2.50,1.05) {};
+      \node[above] at (-2.50,1.05) {raw \(V\)};
+      \node[point,fill=green!45!black] (Vgood) at (0.10,-1.20) {};
+      \node[below,green!45!black] at (0.10,-1.20)
+        {\(V^{(L)}\in\mathfrak J\)};
+      \node[point,fill=red!70!black] (Vbad) at (2.25,0.58) {};
+      \node[right,red!70!black] at (2.25,0.58)
+        {\(V^{(L)}\notin\mathfrak J\)};
+      \draw[arr,green!45!black] (Vraw)--(Vgood)
+        node[midway,left,fill=white,inner sep=1pt]
+        {\(- (d-1)\partial L\)};
+      \draw[arr,red!70!black,dashed] (Vraw)--(Vbad);
+      \node[note,text width=5.2cm] at (0,-2.18)
+        {\(\pi(V)=0\Longleftrightarrow
+        \exists L\in\mathfrak S:\partial_\mu
+        \bigl(V^\mu-(d-1)\partial^\mu L\bigr)=0
+        \Longleftrightarrow T'^\mu{}_\mu=0\).};
+    \end{scope}
   \end{tikzpicture}
   }
   \caption{The virial obstruction as a concrete quotient test.  Scalar
