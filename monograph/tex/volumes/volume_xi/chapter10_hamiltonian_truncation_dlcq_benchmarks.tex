@@ -97,6 +97,84 @@ counterterms change with \(\Lambda\), nor for a sequence of finite matrices
 obtained from different regulators.  Those comparisons require their own
 cutoff-error estimates.
 
+\begin{proposition}[Gap-stable Ritz counting for a fixed Hamiltonian]
+\label{prop:gap-stable-ritz-counting-fixed-hamiltonian}
+Let \(H\) and \(\mathcal Q_H\) be as in
+Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian}.  Let
+\(\{\Hilb_\Lambda\}\) be an increasing net of finite-dimensional subspaces of
+\(\operatorname{Dom}\mathcal Q_H\) which is dense in the form norm.  Let
+\[
+  E_0\leq E_1\leq\cdots
+\]
+be the discrete eigenvalues of \(H\) below the bottom of the essential
+spectrum, counted with multiplicity, and let
+\[
+  E_0(\Lambda)\leq E_1(\Lambda)\leq\cdots
+       \leq E_{\dim\Hilb_\Lambda-1}(\Lambda)
+\]
+be the Ritz eigenvalues obtained by restricting \(\mathcal Q_H\) to
+\(\Hilb_\Lambda\).  Suppose \(a<b<\inf\operatorname{spec}_{\rm ess}H\) and
+that \(a,b\notin\operatorname{spec}H\).  Define
+\[
+  N_H(c)=\#\{j:E_j<c\},
+  \qquad c\in\{a,b\},
+\]
+and \(m=N_H(b)-N_H(a)\).  Then, for all sufficiently large \(\Lambda\),
+exactly \(m\) Ritz eigenvalues lie in the interval \((a,b)\).
+\end{proposition}
+
+\begin{proof}
+Since \(b\) lies below the essential spectrum and is not an eigenvalue, there
+are only finitely many eigenvalues below \(b\).  Put
+\[
+  M=N_H(b),\qquad r=N_H(a).
+\]
+For each \(j<M\), the form-norm density of \(\bigcup_\Lambda\Hilb_\Lambda\)
+implies the approximation hypothesis in
+Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian} for the first
+\(j+1\) eigenspaces; hence
+\[
+  E_j(\Lambda)\downarrow E_j .
+  \label{eq:fixed-H-ritz-eigenvalue-convergence}
+\]
+If \(j<r\), then \(E_j<a\), and
+\eqref{eq:fixed-H-ritz-eigenvalue-convergence} gives
+\[
+  E_j(\Lambda)<a
+\]
+for all sufficiently large \(\Lambda\).  If \(r\leq j<M\), then
+\[
+  a<E_j<b .
+\]
+The lower inequality \(E_j(\Lambda)\geq E_j>a\) follows from
+Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian}; convergence gives
+\[
+  E_j(\Lambda)<b
+\]
+for all sufficiently large \(\Lambda\).  Thus, eventually, at least
+\(M-r=m\) Ritz values lie in \((a,b)\), namely those with labels
+\[
+  r,\ldots,M-1 .
+\]
+It remains to exclude extra Ritz values below \(b\).  If
+\(E_M(\Lambda)<b\) for some \(\Lambda\), then the min--max definition of
+\(E_M(\Lambda)\) supplies an \((M+1)\)-dimensional subspace of
+\(\operatorname{Dom}\mathcal Q_H\) on whose unit sphere the quadratic form is
+strictly less than \(b\).  Applying the min--max characterization in the full
+form domain would give \(E_M<b\), contradicting \(M=N_H(b)\).  Therefore no
+Ritz value with label \(j\geq M\) can lie below \(b\).  Combining the two
+statements gives exactly \(m\) Ritz values in \((a,b)\) for all sufficiently
+large \(\Lambda\).
+\end{proof}
+
+The proposition is a theorem about Galerkin approximation to one fixed
+self-adjoint Hamiltonian and one fixed quadratic form.  Its hypotheses are
+visible: a lower-bounded self-adjoint operator, an isolated finite spectral
+window, and form-norm density of the trial spaces.  It does not justify a
+counterterm-dependent truncation unless one has first proved that the
+renormalized finite matrices converge to a fixed limiting quadratic form in a
+sense strong enough to replace the form-norm density assumption.
+
 \section{Truncated Conformal Space}
 
 For a two-dimensional QFT built as a relevant deformation of a CFT, choose the

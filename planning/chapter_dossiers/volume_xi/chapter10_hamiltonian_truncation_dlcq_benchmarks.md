@@ -13,6 +13,8 @@ numerics.
 - `H_Lambda^ren`, `c_a`: renormalized projected Hamiltonian and local
   counterterm coordinates.
 - `E_n(Lambda)`: variational finite-subspace eigenvalue.
+- `N_H(c)`: exact spectral-counting function below the energy `c` for a
+  fixed lower-bounded self-adjoint Hamiltonian below its essential spectrum.
 - `E_cut`: truncated conformal-space cutoff.
 - `tau`, `h`: thermal and magnetic Ising deformation couplings.
 - `r`, `p_r`, `H_r`, `H_N`: Neveu-Schwarz Majorana mode label, finite-circle
@@ -42,6 +44,10 @@ numerics.
 - Defines projected Hamiltonian regulator data with counterterms.
 - Derives the Rayleigh-Ritz upper bound for discrete eigenvalues at fixed
   regulated Hamiltonian.
+- Proves gap-stable Ritz counting for a fixed lower-bounded self-adjoint
+  Hamiltonian: in an isolated spectral window below the essential spectrum,
+  form-norm dense finite trial spaces eventually produce exactly the correct
+  number of Ritz eigenvalues in that window.
 - Defines TCSA matrix elements from CFT data and identifies cutoff
   counterterm dependence.
 - Proves the finite-mode Majorana Bogoliubov spectrum used as a
