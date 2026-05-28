@@ -1,0 +1,15 @@
+# Copy to rc_env.sh and edit.  rc_env.sh is intentionally git-ignored.
+
+RC_USER="your_harvard_rc_username"
+RC_SSH_HOST="qft-harvard-rc"
+RC_LOGIN_HOST="login.rc.fas.harvard.edu"
+
+# Remote source checkout and heavy-output directory.
+RC_REMOTE_REPO="$HOME/ResearchIdeas/QFT"
+RC_REMOTE_RESULTS_ROOT="/n/holylabs/LABS/yin_lab/Lab/QFT/results/cluster"
+
+# Local pull destination for heavy outputs.
+RC_LOCAL_RESULTS_ROOT="results/cluster"
+
+# Persistent tmux session used by rc_login.sh.
+RC_TMUX_SESSION="qft-monograph"

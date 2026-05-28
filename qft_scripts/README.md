@@ -31,6 +31,16 @@ python3 qft_scripts/thooft_dlcq.py --smoke
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
 notebooks or CI checks can consume the results without scraping prose.
 
+## Cluster Templates
+
+`qft_scripts/cluster/` contains SLURM and SSH-control templates for running
+the finite-regulator scripts on a cluster without storing authentication
+secrets.  The first vertical slice,
+`qft_scripts/cluster/slurm/su3_small_pipeline.sbatch`, runs the SU(3) HDF5
+sampler, Wilson flow, and static-potential extraction into one results
+directory.  It is a reproducibility wrapper for a small cluster smoke run, not
+a production lattice-QCD workflow or a continuum extrapolation.
+
 ## Scripts
 
 - `ising2d_metropolis.py`: finite two-dimensional Ising Metropolis sampler

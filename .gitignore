@@ -93,3 +93,7 @@ references/**/*.png
 *.tmp
 *.bak
 *.orig
+
+# Local/cluster runtime configuration
+qft_scripts/cluster/rc_env.sh
+results/cluster/

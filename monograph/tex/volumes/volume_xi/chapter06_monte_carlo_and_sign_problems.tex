@@ -847,6 +847,24 @@ direct total-score difference, gauge invariance of the score and Wilson loop,
 the \(1\times1\) Wilson-loop/plaquette identity, and the HDF5
 measurement/checkpoint layout.
 
+The cluster wrapper
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/cluster/slurm/}\\
+  \texttt{su3\_small\_pipeline.sbatch}
+  \end{gathered}
+\]
+runs a small finite-regulator vertical slice: the \(SU(3)\) sampler above,
+the Wilson-flow post-processing script of
+Chapter~\ref{ch:constructive-wilson-lattice-gauge-theory}, and the
+static-potential analysis script of
+Chapter~\ref{ch:constructive-wilson-lattice-gauge-theory}.  The surrounding
+\(\texttt{qft\_scripts/cluster}\) shell templates record the SSH-control,
+source-sync, result-pull, and SLURM-submission protocol.  These files are
+execution wrappers only.  They do not change the finite Markov chain, do not
+prove mixing, and do not turn the small \(L=2\) smoke job into a continuum
+calculation.
+
 \section{Hybrid Monte Carlo and Pseudofermions}
 \label{sec:hmc-pseudofermions-finite-regulator}
 
