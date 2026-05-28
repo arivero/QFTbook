@@ -64,37 +64,6 @@ regularity hypothesis above has been imposed; without it, constraints must be
 included as part of the classical data.
 \end{definition}
 
-Figure~\ref{fig:classical-lagrangian-hamiltonian-data} organizes the regular
-classical data used in the time-sliced construction: the Legendre map from
-Lagrangian data to Hamiltonian data and the two equivalent forms of the
-equations of motion.
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[>=Stealth,node distance=1.7cm,
-  every node/.style={font=\small}]
-  \node[draw,rounded corners=2pt,align=center,inner sep=4pt] (lagdata)
-    {Lagrangian data\\ \((q,\dot q)\)};
-  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,right=of lagdata]
-    (action) {Action\\ \(S=\int L(q,\dot q)\,\dd t\)};
-  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,right=of action]
-    (eom) {Equations\\ \(\delta S=0\)};
-  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,below=of action]
-    (hamdata) {Hamiltonian data\\ \((q,p)\), \(H(q,p)\)};
-  \draw[->] (lagdata) -- (action);
-  \draw[->] (action) -- (eom);
-  \draw[<->] (action) -- node[right,font=\scriptsize]
-    {\(p_a=\partial L/\partial\dot q^a\)} (hamdata);
-  \node[align=left,font=\scriptsize,right=0.55cm of hamdata] {
-    \(H=p_a\dot q^a-L\)\\[2pt]
-    \(\dot q^a=\partial H/\partial p_a\)\\[2pt]
-    \(\dot p_a=-\partial H/\partial q^a\)};
-\end{tikzpicture}
-\caption{Classical Lagrangian and Hamiltonian descriptions, related by a
-regular Legendre transform.}
-\label{fig:classical-lagrangian-hamiltonian-data}
-\end{figure}
-
 \section{Canonical Quantum-Mechanical Data}
 
 \begin{definition}[Schrodinger representation datum]
