@@ -7,6 +7,7 @@ from fractions import Fraction
 
 
 Poly = tuple[Fraction, ...]  # coefficients in ascending powers
+Matrix = tuple[tuple[Fraction, ...], ...]
 
 
 def assert_equal(name: str, got, expected) -> None:
@@ -20,6 +21,23 @@ def poly_mul(a: Poly, b: Poly) -> Poly:
         for j, bj in enumerate(b):
             out[i + j] += ai * bj
     return tuple(out)
+
+
+def mat_mul(a: Matrix, b: Matrix) -> Matrix:
+    rows = len(a)
+    cols = len(b[0])
+    inner = len(b)
+    return tuple(
+        tuple(sum(a[i][k] * b[k][j] for k in range(inner)) for j in range(cols))
+        for i in range(rows)
+    )
+
+
+def identity_matrix(n: int) -> Matrix:
+    return tuple(
+        tuple(Fraction(1) if i == j else Fraction(0) for j in range(n))
+        for i in range(n)
+    )
 
 
 def veneziano_residue_polynomial(n: int) -> Poly:
@@ -131,6 +149,66 @@ def check_swave_luscher_zeta_normalization() -> None:
     length = Fraction(13, 4)
     kcot_rational = Fraction(2) * zeta / length
     assert_equal("S-wave k cot(delta) zeta coefficient", kcot_rational, Fraction(2, 1) * zeta / length)
+
+
+def check_pipi_crossing_and_roy_subtractions() -> None:
+    # The isospin amplitudes T=(T0,T1,T2) are obtained from
+    # A=(A(s,t,u), A(t,s,u), A(u,t,s)) by T=M A.  Crossing matrices are
+    # C=M P M^{-1}; the exact rational entries are convention-sensitive.
+    m: Matrix = (
+        (Fraction(3), Fraction(1), Fraction(1)),
+        (Fraction(0), Fraction(1), -Fraction(1)),
+        (Fraction(0), Fraction(1), Fraction(1)),
+    )
+    m_inv: Matrix = (
+        (Fraction(1, 3), Fraction(0), -Fraction(1, 3)),
+        (Fraction(0), Fraction(1, 2), Fraction(1, 2)),
+        (Fraction(0), -Fraction(1, 2), Fraction(1, 2)),
+    )
+    p_st: Matrix = (
+        (Fraction(0), Fraction(1), Fraction(0)),
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(1)),
+    )
+    p_su: Matrix = (
+        (Fraction(0), Fraction(0), Fraction(1)),
+        (Fraction(0), Fraction(1), Fraction(0)),
+        (Fraction(1), Fraction(0), Fraction(0)),
+    )
+    c_st_expected: Matrix = (
+        (Fraction(1, 3), Fraction(1), Fraction(5, 3)),
+        (Fraction(1, 3), Fraction(1, 2), -Fraction(5, 6)),
+        (Fraction(1, 3), -Fraction(1, 2), Fraction(1, 6)),
+    )
+    c_su_expected: Matrix = (
+        (Fraction(1, 3), -Fraction(1), Fraction(5, 3)),
+        (-Fraction(1, 3), Fraction(1, 2), Fraction(5, 6)),
+        (Fraction(1, 3), Fraction(1, 2), Fraction(1, 6)),
+    )
+    c_st = mat_mul(mat_mul(m, p_st), m_inv)
+    c_su = mat_mul(mat_mul(m, p_su), m_inv)
+    assert_equal("pi-pi s-t crossing matrix", c_st, c_st_expected)
+    assert_equal("pi-pi s-u crossing matrix", c_su, c_su_expected)
+    assert_equal("pi-pi crossing involution st", mat_mul(c_st, c_st), identity_matrix(3))
+    assert_equal("pi-pi crossing involution su", mat_mul(c_su, c_su), identity_matrix(3))
+
+    # Roy subtraction polynomials in the monograph convention:
+    # k00=a00+x/12*(2a00-5a02), k11=x/72*(2a00-5a02),
+    # k02=a02-x/24*(2a00-5a02), where x=(s-4m_pi^2)/m_pi^2.
+    a00 = Fraction(7, 5)
+    a02 = -Fraction(2, 9)
+    x = Fraction(11, 13)
+    combo = 2 * a00 - 5 * a02
+    k00 = a00 + x * combo / 12
+    k11 = x * combo / 72
+    k02 = a02 - x * combo / 24
+    assert_equal("Roy subtraction threshold k00", a00 + Fraction(0) * combo / 12, a00)
+    assert_equal("Roy subtraction threshold k02", a02 - Fraction(0) * combo / 24, a02)
+    assert_equal("Roy subtraction threshold k11", Fraction(0) * combo / 72, Fraction(0))
+    assert_equal("Roy subtraction slope ratio 00/11", (combo / 12) / (combo / 72), Fraction(6))
+    assert_equal("Roy subtraction slope ratio 02/11", (-combo / 24) / (combo / 72), -Fraction(3))
+    assert_equal("Roy subtraction finite x relation", k00 - a00, Fraction(6) * k11)
+    assert_equal("Roy subtraction finite x relation 02", k02 - a02, -Fraction(3) * k11)
 
 
 def check_coupled_channel_determinant_reduction() -> None:
@@ -323,6 +401,7 @@ def main() -> None:
     check_rotating_string_slope_coefficient()
     check_luscher_kmatrix_pole_algebra()
     check_swave_luscher_zeta_normalization()
+    check_pipi_crossing_and_roy_subtractions()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()

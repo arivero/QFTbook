@@ -4289,9 +4289,129 @@ The light pseudoscalar sector has additional structure because chiral symmetry
 and the anomaly constrain the low-energy coordinates.  Chapter~\ref{ch:volume-ii-21}
 derives the pion effective theory, the Gell-Mann--Oakes--Renner relation, and
 the Witten--Veneziano large-\(N_c\) formula for the singlet mass.  The vector
-and scalar resonances require the scattering-amplitude language above.  For
-\(\pi\pi\) scattering, write the isospin partial waves as \(t_\ell^I(s)\)
-with physical-region elastic unitarity
+and scalar resonances require the scattering-amplitude language above.
+
+\begin{definition}[\(\pi\pi\) isospin amplitudes]
+\label{def:qcd-pipi-isospin-amplitudes}
+For equal pion masses let \(s+t+u=4m_\pi^2\) and write the
+\(SU(2)_V\)-invariant four-pion amplitude as in
+\eqref{eq:pion-scattering-isospin-decomposition},
+\[
+  \mathcal A_{ab\to cd}
+  =
+  \delta_{ab}\delta_{cd}A(s,t,u)
+  +\delta_{ac}\delta_{bd}A(t,s,u)
+  +\delta_{ad}\delta_{bc}A(u,t,s).
+\]
+The scalar function \(A\) is symmetric in its last two arguments; this is the
+Bose symmetry obtained by interchanging the two pions in an equal-mass
+initial or final pair while keeping the tensor decomposition above fixed.
+The \(s\)-channel isospin amplitudes are
+\begin{equation}
+  \begin{pmatrix}T^0\\ T^1\\ T^2\end{pmatrix}
+  =
+  \begin{pmatrix}
+    3&1&1\\
+    0&1&-1\\
+    0&1&1
+  \end{pmatrix}
+  \begin{pmatrix}
+    A(s,t,u)\\ A(t,s,u)\\ A(u,t,s)
+  \end{pmatrix}.
+  \label{eq:qcd-pipi-isospin-amplitude-matrix}
+\end{equation}
+Equivalently,
+\[
+  T^0=3A(s,t,u)+A(t,s,u)+A(u,t,s),\quad
+  T^1=A(t,s,u)-A(u,t,s),\quad
+  T^2=A(t,s,u)+A(u,t,s).
+\]
+\end{definition}
+
+\begin{proposition}[Crossing matrices in the \(\pi\pi\) isospin basis]
+\label{prop:qcd-pipi-crossing-matrices}
+With \(\mathbf T:=(T^0,T^1,T^2)^T\), crossing \(s\leftrightarrow t\) and
+\(s\leftrightarrow u\) is
+\begin{equation}
+  \mathbf T(t,s,u)=C_{st}\mathbf T(s,t,u),
+  \qquad
+  \mathbf T(u,t,s)=C_{su}\mathbf T(s,t,u),
+  \label{eq:qcd-pipi-crossing-matrices}
+\end{equation}
+where
+\begin{equation}
+  C_{st}=
+  \begin{pmatrix}
+    \frac13&1&\frac53\\
+    \frac13&\frac12&-\frac56\\
+    \frac13&-\frac12&\frac16
+  \end{pmatrix},
+  \qquad
+  C_{su}=
+  \begin{pmatrix}
+    \frac13&-1&\frac53\\
+    -\frac13&\frac12&\frac56\\
+    \frac13&\frac12&\frac16
+  \end{pmatrix}.
+  \label{eq:qcd-pipi-crossing-matrix-values}
+\end{equation}
+The matrices in \eqref{eq:qcd-pipi-crossing-matrix-values} are part of the
+normalization of the Roy coordinates used below.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  \mathbf A:=
+  \begin{pmatrix}
+    A(s,t,u)\\ A(t,s,u)\\ A(u,t,s)
+  \end{pmatrix},
+  \qquad
+  M:=
+  \begin{pmatrix}
+    3&1&1\\
+    0&1&-1\\
+    0&1&1
+  \end{pmatrix}.
+\]
+Equation~\eqref{eq:qcd-pipi-isospin-amplitude-matrix} is
+\(\mathbf T=M\mathbf A\), and
+\[
+  M^{-1}=
+  \begin{pmatrix}
+    \frac13&0&-\frac13\\
+    0&\frac12&\frac12\\
+    0&-\frac12&\frac12
+  \end{pmatrix}.
+\]
+The exchange \(s\leftrightarrow t\) sends
+\(\mathbf A\) to \(P_{st}\mathbf A\), where \(P_{st}\) interchanges the first
+two components, and \(s\leftrightarrow u\) sends \(\mathbf A\) to
+\(P_{su}\mathbf A\), where \(P_{su}\) interchanges the first and third
+components.  Therefore \(C_{st}=MP_{st}M^{-1}\) and
+\(C_{su}=MP_{su}M^{-1}\), which gives
+\eqref{eq:qcd-pipi-crossing-matrix-values}.  In particular
+\(C_{st}^2=C_{su}^2=1\), as required by applying the same crossing operation
+twice.
+\end{proof}
+
+For \(\pi\pi\) scattering, write the isospin partial waves as \(t_\ell^I(s)\)
+by
+\begin{equation}
+  T^I(s,t(s,z),u(s,z))
+  =
+  32\pi\sum_{\ell=0}^{\infty}(2\ell+1)P_\ell(z)\,t_\ell^I(s),
+  \qquad
+  t(s,z)=-\frac{s-4m_\pi^2}{2}(1-z),
+  \label{eq:qcd-pipi-partial-wave-normalization}
+\end{equation}
+with projection
+\[
+  t_\ell^I(s)=
+  \frac1{64\pi}\int_{-1}^1
+  P_\ell(z)T^I(s,t(s,z),u(s,z))\,\dd z .
+\]
+In this normalization physical-region elastic unitarity is
 \[
   \operatorname{Im}t_\ell^I(s)
   =
@@ -4299,9 +4419,55 @@ with physical-region elastic unitarity
   \qquad
   \rho_{\pi\pi}(s)=\sqrt{1-\frac{4m_\pi^2}{s}},
 \]
-below the first inelastic threshold in the chosen normalization.  Roy-type
-representations are twice-subtracted fixed-\(t\) dispersion relations
-projected to partial waves:
+below the first inelastic threshold.  The \(S\)-wave scattering-length
+coordinates used in this section are
+\[
+  a_0^0:=t_0^0(4m_\pi^2),\qquad
+  a_0^2:=t_0^2(4m_\pi^2).
+\]
+
+\begin{definition}[Roy datum for \(\pi\pi\) scattering]
+\label{def:qcd-pipi-roy-datum}
+A Roy datum on a real interval \(J\subset[4m_\pi^2,s_{\rm max})\) consists of:
+\begin{enumerate}
+  \item the pion mass, the isospin amplitudes \(\mathbf T\), and the partial
+  wave normalization \eqref{eq:qcd-pipi-partial-wave-normalization};
+  \item a domain of fixed-\(t\) analyticity in which twice-subtracted
+  Cauchy representations are valid and the boundary values on the right- and
+  left-hand cuts exist as tempered distributions;
+  \item the crossing matrices \eqref{eq:qcd-pipi-crossing-matrix-values};
+  \item subtraction constants \(a_0^0,a_0^2\);
+  \item high-energy and high-partial-wave absorptive input sufficient for the
+  two subtractions and for the convergence of the partial-wave projections.
+\end{enumerate}
+The subtraction polynomial projected to partial waves is
+\begin{align}
+  k_0^0(s;a_0^0,a_0^2)
+  &=
+  a_0^0
+  +
+  \frac{s-4m_\pi^2}{12m_\pi^2}\,(2a_0^0-5a_0^2),
+  \label{eq:qcd-roy-subtraction-polynomial-00}\\
+  k_1^1(s;a_0^0,a_0^2)
+  &=
+  \frac{s-4m_\pi^2}{72m_\pi^2}\,(2a_0^0-5a_0^2),
+  \label{eq:qcd-roy-subtraction-polynomial-11}\\
+  k_0^2(s;a_0^0,a_0^2)
+  &=
+  a_0^2
+  -
+  \frac{s-4m_\pi^2}{24m_\pi^2}\,(2a_0^0-5a_0^2),
+  \label{eq:qcd-roy-subtraction-polynomial-02}
+\end{align}
+and \(k_\ell^I=0\) for the other partial waves in the twice-subtracted
+polynomial.  This normalization fixes what is meant below by the Roy kernels
+\(K_{\ell\ell'}^{II'}\).
+\end{definition}
+
+\begin{proposition}[Roy projection from fixed-\(t\) analyticity and crossing]
+\label{prop:qcd-roy-projection-construction}
+Assume the Roy datum of Definition~\ref{def:qcd-pipi-roy-datum}.  Then, for
+\(s\in J\), the real part of each retained partial wave obeys
 \begin{equation}
   \operatorname{Re}t_\ell^I(s)
   =
@@ -4311,13 +4477,97 @@ projected to partial waves:
   K_{\ell\ell'}^{II'}(s,s')\,\operatorname{Im}t_{\ell'}^{I'}(s').
   \label{eq:qcd-roy-equation-projected}
 \end{equation}
-The subtraction constants are the \(S\)-wave scattering lengths.  The kernels
-are fixed by crossing, analyticity, and partial-wave projection.  A pole
-extraction from \eqref{eq:qcd-roy-equation-projected} is therefore a
-controlled dispersive determination only after the high-energy input,
-inelastic channels, subtraction constants, and error correlations have been
-specified.  The same principle governs Roy--Steiner equations for
-\(\pi K\), \(\pi N\), and related channels.
+More explicitly, if the twice-subtracted fixed-\(t\) representation is written
+after crossing the left-hand cut into the form
+\begin{equation}
+  \operatorname{Re}T^I(s,t(s,z))
+  =
+  P^I(s,z;a_0^0,a_0^2)
+  +
+  32\pi
+  \sum_{I',\ell'}(2\ell'+1)
+  \int_{4m_\pi^2}^{\infty}\dd s'\,
+  R_{\ell'}^{II'}(s,z;s')\,
+  \operatorname{Im}t_{\ell'}^{I'}(s'),
+  \label{eq:qcd-fixed-t-roy-resolvent-form}
+\end{equation}
+then
+\begin{equation}
+  k_\ell^I(s)
+  =
+  \frac1{64\pi}\int_{-1}^1
+  P_\ell(z)P^I(s,z)\,\dd z,
+  \qquad
+  K_{\ell\ell'}^{II'}(s,s')
+  =
+  \frac{2\ell'+1}{2}
+  \int_{-1}^1
+  P_\ell(z)R_{\ell'}^{II'}(s,z;s')\,\dd z .
+  \label{eq:qcd-roy-kernel-projection-definition}
+\end{equation}
+The functions \(R_{\ell'}^{II'}\), hence the kernels
+\(K_{\ell\ell'}^{II'}\), are determined by the Cauchy denominators, the two
+subtractions, the crossing matrices \(C_{st},C_{su}\), and the Legendre
+projection of the absorptive parts.
+\end{proposition}
+
+\begin{proof}
+Fix \(t\) in the declared fixed-\(t\) analyticity domain.  The twice-subtracted
+Cauchy representation expresses the boundary value of \(\mathbf T(s,t)\) as a
+subtraction polynomial plus integrals over the discontinuities on the
+right-hand and left-hand cuts.  By crossing, the left-hand discontinuity is
+rewritten as a right-hand discontinuity of the crossed isospin vector,
+multiplied by \(C_{st}\) or \(C_{su}\) according to which crossed channel has
+become physical.  This is the step where
+\eqref{eq:qcd-pipi-crossing-matrices} enters; without it the left-hand cut is
+not a QCD input in the same isospin coordinates.
+
+For \(s'\ge4m_\pi^2\), expand the absorptive part in partial waves,
+\[
+  \operatorname{Im}T^{I'}(s',t(s',z'))
+  =
+  32\pi
+  \sum_{\ell'=0}^\infty
+  (2\ell'+1)P_{\ell'}(z')\operatorname{Im}t_{\ell'}^{I'}(s').
+  \]
+Performing the \(z'\)-projection contained in the crossed-channel Cauchy
+terms gives the functions \(R_{\ell'}^{II'}(s,z;s')\) in
+\eqref{eq:qcd-fixed-t-roy-resolvent-form}.  The convergence assumptions in
+the Roy datum justify interchanging this partial-wave expansion with the
+subtracted dispersion integrals on \(J\).
+
+Finally project the resulting fixed-\(t\) formula in the \(s\)-channel:
+\[
+  \operatorname{Re}t_\ell^I(s)
+  =
+  \frac1{64\pi}\int_{-1}^{1}P_\ell(z)
+  \operatorname{Re}T^I(s,t(s,z))\,\dd z .
+  \]
+Substituting \eqref{eq:qcd-fixed-t-roy-resolvent-form} and using the
+orthogonality normalization already built into
+\eqref{eq:qcd-pipi-partial-wave-normalization} gives exactly
+\eqref{eq:qcd-roy-equation-projected} with the projected polynomial and
+kernel in \eqref{eq:qcd-roy-kernel-projection-definition}.  The explicit
+polynomials \eqref{eq:qcd-roy-subtraction-polynomial-00}--\eqref{eq:qcd-roy-subtraction-polynomial-02}
+are the projection of the two independent isospin-even subtraction constants;
+the \(I=1\), \(\ell=1\) subtraction is proportional to the same combination
+\(2a_0^0-5a_0^2\) because crossing fixes the first \(s-4m_\pi^2\) derivative
+of the odd isospin amplitude at threshold.
+\end{proof}
+
+\begin{remark}[Status of a Roy pole extraction]
+A pole extraction from \eqref{eq:qcd-roy-equation-projected} is controlled
+only after the high-energy absorptive input, inelastic channels, matching
+point, subtraction constants, and error correlations have been specified.
+For the \(\rho\), the relevant pole is obtained by continuing the \(I=1\),
+\(\ell=1\) partial wave through the elastic cut.  For the light scalar
+isoscalar pole \(f_0(500)\), the corresponding continuation is in the
+\(I=0\), \(\ell=0\) wave and is especially sensitive to the subtraction
+constants and low-energy crossing constraints.  The same logic governs
+Roy--Steiner equations for \(\pi K\), \(\pi N\), and related channels, with
+unequal masses and additional crossed-channel partial waves changing the
+kernel construction but not the Cauchy-crossing-projection logic.
+\end{remark}
 
 Heavy quarkonium uses a different controlled coordinate system.  If
 \[
