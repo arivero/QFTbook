@@ -95,8 +95,11 @@ The local Standard Model gauge algebra is
 \]
 The covering compact group is
 \[
-  \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_Y .
+  \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_y ,
 \]
+where \(y:=6Y\) is the integer hypercharge coordinate for the compact
+\(U(1)\) factor.  The Lie-algebra generator appearing in the electroweak
+covariant derivative is still \(Y=y/6\).
 A global form is a quotient
 \[
   G_{\rm SM}=\widetilde G_{\rm SM}/\Gamma ,
@@ -122,6 +125,57 @@ generalized-symmetry analysis in
 Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses only
 the local representation-theoretic data unless a bundle or line operator is
 explicitly mentioned.
+
+\begin{proposition}[Kernel of the minimal Standard Model representations]
+\label{prop:sm-zsix-global-form}
+Let \(y:=6Y\) be the integer hypercharge coordinate, so the minimal fields
+have
+\[
+  y(Q_L,u^c,d^c,L_L,e^c,H)=(1,-4,2,-3,6,3).
+\]
+Let \(\omega_3=\exp(2\pi\ii/3)\).  The element
+\[
+  z=\bigl(\omega_3,-1,\exp(\ii\pi/3)\bigr)
+  \in SU(3)_c\times SU(2)_L\times U(1)_y
+  \label{eq:sm-zsix-generator}
+\]
+acts trivially on every field in
+Definitions~\ref{def:sm-one-generation-left-weyl} and
+\ref{def:sm-higgs-yukawa-datum}.  It generates a cyclic subgroup
+\(\mathbb Z_6\) of the center, and the minimal local field content descends
+through any quotient by a subgroup of this \(\mathbb Z_6\):
+\[
+  \Gamma=1,\quad \mathbb Z_2,\quad \mathbb Z_3,\quad \mathbb Z_6 .
+\]
+\end{proposition}
+
+\begin{proof}
+For a representation with color triality \(t\in\mathbb Z/3\mathbb Z\), weak
+doublet parity \(s\in\mathbb Z/2\mathbb Z\), and integer hypercharge \(y\),
+the element \(z\) acts by the phase
+\[
+  \exp\!\left[
+    2\pi\ii\left(\frac{t}{3}+\frac{s}{2}+\frac{y}{6}\right)
+  \right].
+\]
+For the six minimal representations the triples \((t,s,y)\) are
+\[
+\begin{array}{c|c}
+  Q_L & (1,1,1)\\
+  u^c & (-1,0,-4)\\
+  d^c & (-1,0,2)\\
+  L_L & (0,1,-3)\\
+  e^c & (0,0,6)\\
+  H & (0,1,3).
+\end{array}
+\]
+In each row \(t/3+s/2+y/6\) is an integer.  Thus \(z\) acts trivially.
+The element has order six, because its three center components have orders
+three, two, and six.  Since every subgroup of a trivially acting central
+subgroup also acts trivially, the four displayed quotients are allowed by the
+minimal representation content.  Distinguishing these global forms requires
+line-operator and bundle data, not only the local Lie algebra.
+\end{proof}
 
 \begin{proposition}[Gauge invariance of the minimal Yukawa datum]
 \label{prop:sm-yukawa-gauge-invariance}
@@ -162,6 +216,180 @@ Flavor rotations of the fermion fields remove unphysical parameters; the
 remaining charged-current quark mixing is encoded in the CKM matrix.  If
 neutrino masses are included through dimension-five or singlet-neutrino
 operators, a separate PMNS mixing matrix appears in the lepton sector.
+
+\section{Flavor Coordinates and Charged Currents}
+
+The Yukawa matrices are not themselves the physical flavor parameters.  A
+physical statement must specify which field redefinitions have already been
+used and which current is being observed.
+
+\begin{definition}[Quark mass coordinates and CKM matrix]
+\label{def:sm-ckm-matrix}
+After evaluating the Higgs field at \(H_0\), define the complex quark mass
+matrices
+\[
+  M_u=\frac{v}{\sqrt2}Y_u,\qquad
+  M_d=\frac{v}{\sqrt2}Y_d .
+\]
+Choose singular-value decompositions
+\[
+  (U_L^u)^\dagger M_uU_R^u=D_u,\qquad
+  (U_L^d)^\dagger M_dU_R^d=D_d ,
+  \label{eq:sm-quark-svd}
+\]
+where \(U_L^u,U_R^u,U_L^d,U_R^d\in U(3)\) and \(D_u,D_d\) are diagonal with
+nonnegative entries.  The Cabibbo--Kobayashi--Maskawa matrix is
+\[
+  V_{\rm CKM}:=(U_L^u)^\dagger U_L^d .
+  \label{eq:sm-ckm-definition}
+\]
+It is the coefficient matrix in the charged weak current written in quark
+mass coordinates:
+\[
+  J_\mu^+
+  =
+  \overline u_{L,a}\gamma_\mu
+  (V_{\rm CKM})_{ab}d_{L,b},
+  \qquad
+  J_\mu^-=(J_\mu^+)^\dagger .
+\]
+Here \(u_L,d_L\) denote mass-basis left-handed quark fields.  The neutral
+gauge currents remain diagonal in flavor in these coordinates.
+\end{definition}
+
+\begin{proposition}[Flavor parameter counting]
+\label{prop:sm-flavor-parameter-counting}
+For \(n\) quark generations with nondegenerate masses, the pair of complex
+Yukawa matrices \((Y_u,Y_d)\) contains
+\[
+  2n \quad\text{quark masses},\qquad
+  \frac{n(n-1)}{2}\quad\text{mixing angles},\qquad
+  \frac{(n-1)(n-2)}{2}\quad\text{CP-odd phases}.
+\]
+In particular, two generations allow one mixing angle and no CKM CP phase,
+while three generations allow three angles and one CKM CP phase.
+\end{proposition}
+
+\begin{proof}
+The two complex \(n\times n\) Yukawa matrices contain \(4n^2\) real
+parameters.  In the absence of Yukawa couplings the quark kinetic and gauge
+terms have flavor symmetry
+\[
+  U(n)_Q\times U(n)_u\times U(n)_d .
+\]
+The Yukawa matrices break this group to the diagonal baryon-number
+\(U(1)_B\), which does not change \(Y_u\) or \(Y_d\).  Therefore
+\(3n^2-1\) real parameters are removable by flavor-coordinate choices.
+The physical quark-sector parameter count is
+\[
+  4n^2-(3n^2-1)=n^2+1 .
+\]
+Among these are \(2n\) nonnegative singular values, namely the quark masses.
+Thus the mixing matrix carries
+\[
+  n^2+1-2n=(n-1)^2
+\]
+parameters.  A unitary \(n\times n\) matrix has \(n^2\) real parameters.
+After the masses have been diagonalized, the \(2n\) quark mass eigenfields
+may be rephased, but the common baryon-number rephasing leaves
+\(V_{\rm CKM}\) unchanged.  Hence \(2n-1\) phases are unphysical in \(V_{\rm
+CKM}\).  The remaining \((n-1)^2\) parameters split into
+\(n(n-1)/2\) real rotation angles and
+\[
+  (n-1)^2-\frac{n(n-1)}{2}=\frac{(n-1)(n-2)}{2}
+\]
+phases.
+\end{proof}
+
+\begin{proposition}[Tree-level GIM diagonality]
+\label{prop:sm-gim-tree-level-diagonality}
+In the quark mass basis of Definition~\ref{def:sm-ckm-matrix}, the neutral
+electromagnetic, gluon, and \(Z\)-boson currents are flavor diagonal at tree
+level.  Flavor change in the renormalizable gauge currents is confined to the
+charged current and is controlled by \(V_{\rm CKM}\).
+\end{proposition}
+
+\begin{proof}
+The gluon and photon couple to generators proportional to the identity in
+generation space.  A unitary change of mass coordinates therefore gives
+\[
+  \overline q_L U_L^\dagger\gamma_\mu T U_L q_L
+  =
+  \overline q_L\gamma_\mu T q_L
+\]
+whenever \(T\) acts only on color or electric charge and not on generation.
+The \(Z\)-current is a linear combination of \(T_L^3\) and \(Q_{\rm em}\).
+Within the up sector and within the down sector these charges are again
+generation-independent, so the same unitarity cancellation applies.  The
+charged current is different because it pairs the up component of \(Q_L\)
+with the down component before the two independent left singular-vector
+matrices have been chosen.  Its flavor matrix is therefore
+\((U_L^u)^\dagger U_L^d=V_{\rm CKM}\).
+\end{proof}
+
+\begin{definition}[Jarlskog invariant]
+\label{def:sm-jarlskog-invariant}
+For three generations, a rephasing-invariant CKM CP-odd coordinate is
+\[
+  J_{\rm CKM}
+  =
+  \operatorname{Im}
+  \left(
+    V_{us}V_{cb}V_{ub}^*V_{cs}^*
+  \right).
+\]
+Equivalently, any expression
+\(\operatorname{Im}(V_{ij}V_{kl}V_{il}^*V_{kj}^*)\) with distinct
+\(i,k\) and distinct \(j,l\) is a rephasing-invariant quartet.  For a
+three-by-three unitary matrix these quartets are related by unitarity and
+carry the same magnitude, with signs fixed by row and column orientation.
+\end{definition}
+
+\begin{proposition}[Rephasing invariance of \(J_{\rm CKM}\)]
+\label{prop:sm-jarlskog-rephasing}
+Under mass-basis quark rephasings
+\[
+  V_{ij}\longmapsto \ee^{\ii\alpha_i}V_{ij}\ee^{-\ii\beta_j},
+\]
+the quantity \(J_{\rm CKM}\) is invariant.  For \(n=2\) the corresponding
+quartet invariant vanishes after rephasing, so a two-generation charged
+current has no intrinsic CKM CP phase.
+\end{proposition}
+
+\begin{proof}
+The phase of the quartet
+\[
+  V_{us}V_{cb}V_{ub}^*V_{cs}^*
+\]
+is multiplied by
+\[
+  \ee^{\ii\alpha_u}\ee^{-\ii\beta_s}
+  \ee^{\ii\alpha_c}\ee^{-\ii\beta_b}
+  \ee^{-\ii\alpha_u}\ee^{\ii\beta_b}
+  \ee^{-\ii\alpha_c}\ee^{\ii\beta_s}=1 .
+\]
+Thus its imaginary part is a coordinate-independent CP-odd function of the
+charged current.  The equality of magnitudes of the different three-generation
+quartets follows directly from row and column orthogonality.  For example,
+if \(i\neq k\) and \(j,l,n\) are the three column labels, row orthogonality
+gives
+\[
+  V_{ij}V_{kj}^*+V_{il}V_{kl}^*+V_{in}V_{kn}^*=0 .
+\]
+Multiplying by \(V_{kl}V_{il}^*\) and taking imaginary parts gives
+\[
+  \operatorname{Im}(V_{ij}V_{kl}V_{il}^*V_{kj}^*)
+  =
+  -\operatorname{Im}(V_{in}V_{kl}V_{il}^*V_{kn}^*) .
+\]
+Repeating the same argument with column orthogonality relates all remaining
+choices, with signs determined by interchanging the ordered row or column
+pair.  For two generations,
+Proposition~\ref{prop:sm-flavor-parameter-counting} shows that all phases in
+a \(2\times2\) unitary charged-current matrix are removable by quark-field
+rephasings.  A representative can therefore be chosen real, and every
+quartet imaginary part is zero in that coordinate.
+\end{proof}
 
 \section{Electroweak Breaking and Mass Coordinates}
 
@@ -293,6 +521,83 @@ Chapter~\ref{ch:vol2-classical-yang-mills-matter} applied to the
 \(R_\xi\) gauge they remain as unphysical fields paired by BRST, while in a
 unitary-gauge chart they are removed locally.
 
+\begin{proposition}[Higgs radial mass coordinate]
+\label{prop:sm-higgs-radial-mass}
+In the scalar chart of Definition~\ref{def:sm-electroweak-scalar-chart}, the
+potential restricted to the radial coordinate is
+\[
+  V(h)=\lambda\left(vh+\frac{h^2}{2}\right)^2
+  =
+  \lambda v^2h^2+\lambda vh^3+\frac{\lambda}{4}h^4 .
+\]
+Consequently the radial scalar mass coordinate is
+\[
+  m_h^2=2\lambda v^2 .
+\]
+The cubic and quartic self-interaction coefficients in the potential are
+\(\lambda v\) and \(\lambda/4\), respectively, in this field coordinate.
+\end{proposition}
+
+\begin{proof}
+In the unitary local chart \(H=(0,(v+h)/\sqrt2)^T\),
+\[
+  H^\dagger H-\frac{v^2}{2}=vh+\frac{h^2}{2}.
+\]
+Substitution into \(V(H)\) gives the displayed polynomial.  The Lorentzian
+Lagrangian contains \(-V\), while the standard real-scalar mass term is
+\(-\frac12m_h^2h^2\).  Comparing the quadratic coefficients gives
+\(m_h^2=2\lambda v^2\).
+\end{proof}
+
+\begin{proposition}[Custodial \(SU(2)\) and the tree-level \(\rho\) coordinate]
+\label{prop:sm-custodial-rho}
+Set
+\[
+  \Sigma:=(\widetilde H,H).
+\]
+The scalar kinetic term with \(g_1=0\) and the scalar potential are invariant
+under
+\[
+  \Sigma\longmapsto U_L\Sigma U_R^\dagger,
+  \qquad U_L,U_R\in SU(2),
+\]
+and the vacuum \(\Sigma_0=(v/\sqrt2)\mathbf1_2\) preserves the diagonal
+subgroup \(SU(2)_V\).  With hypercharge gauged as the \(T^3_R\) subgroup, the
+tree-level mass ratio
+\[
+  \rho_{\rm tree}
+  :=
+  \frac{m_W^2}{m_Z^2\cos^2\theta_W}
+\]
+is equal to \(1\).
+\end{proposition}
+
+\begin{proof}
+The identity
+\[
+  \frac{1}{2}\operatorname{tr}(\Sigma^\dagger\Sigma)=H^\dagger H
+\]
+shows that the scalar potential depends only on
+\(\operatorname{tr}(\Sigma^\dagger\Sigma)\), hence is invariant under
+left and right multiplication by unitary matrices.  With \(g_1=0\), the
+covariant derivative acts only by left \(SU(2)_L\) multiplication, so the
+right \(SU(2)_R\) remains a global symmetry of the scalar kinetic term.  The
+vacuum equation \(U_L\Sigma_0U_R^\dagger=\Sigma_0\) is equivalent to
+\(U_L=U_R\), giving the diagonal stabilizer.
+
+The hypercharge gauge field gauges only the \(T^3_R\) direction and therefore
+breaks the global \(SU(2)_R\) explicitly, but the mass formulae of
+Proposition~\ref{prop:sm-electroweak-stabilizer-masses} still give
+\[
+  \cos\theta_W=\frac{g_2}{\sqrt{g_1^2+g_2^2}},\qquad
+  m_W^2=\frac{g_2^2v^2}{4},\qquad
+  m_Z^2=\frac{(g_1^2+g_2^2)v^2}{4}.
+\]
+Substitution gives \(\rho_{\rm tree}=1\).  Radiative corrections and
+higher-dimensional operators are separate coordinates of the electroweak
+EFT; they are not part of this tree-level identity.
+\end{proof}
+
 \section{Gauge-Anomaly Cancellation}
 
 \begin{definition}[Gauge-anomaly coefficients for the local datum]
@@ -389,6 +694,263 @@ the regulated fermion determinant line; they are not consequences of
 perturbative renormalizability alone.
 \end{proof}
 
+\section{Baryon and Lepton Number as Global Data}
+
+\begin{definition}[Classical \(B\), \(L\), and \(B-L\) charges]
+\label{def:sm-b-l-charges}
+In the left-handed Weyl convention, assign baryon and lepton charges
+\[
+\begin{array}{c|cc}
+  \text{field} & B & L \\ \hline
+  Q_L & 1/3 & 0\\
+  u^c & -1/3 & 0\\
+  d^c & -1/3 & 0\\
+  L_L & 0 & 1\\
+  e^c & 0 & -1\\
+  \nu^c\text{, if included} & 0 & -1 .
+\end{array}
+\]
+The signs for conjugate fields are the charges of the left-handed conjugate
+fields themselves.  These assignments are statements about global-current
+coordinates in the local Lagrangian; whether a global symmetry survives in
+the quantum theory is determined by its anomaly polynomial and by possible
+operator insertions.
+\end{definition}
+
+\begin{proposition}[\(B+L\) anomaly and \(B-L\) mixed-gauge cancellation]
+\label{prop:sm-baryon-lepton-anomaly}
+For one generation of the minimal representation without \(\nu^c\), the
+mixed \(SU(2)_L^2U(1)_B\) and \(SU(2)_L^2U(1)_L\) anomaly coefficients are
+both nonzero:
+\[
+  \mathcal A[SU(2)_L^2U(1)_B]=T(\mathbf2),\qquad
+  \mathcal A[SU(2)_L^2U(1)_L]=T(\mathbf2).
+\]
+Their difference vanishes, so \(B-L\) has no mixed
+\(SU(2)_L^2\) anomaly.  The mixed \(SU(3)_c^2U(1)_{B-L}\) anomaly also
+vanishes.  The gravitational and cubic anomalies of \(B-L\) vanish
+generation by generation only after a gauge-singlet \(\nu^c\) with
+\(B-L=1\) is included.
+\end{proposition}
+
+\begin{proof}
+The \(SU(2)^2U(1)\) coefficient is the sum of the global charge times the
+quadratic index of each weak doublet, with color multiplicity included.  For
+baryon number only \(Q_L\) contributes, giving
+\[
+  3\left(\frac{1}{3}\right)T(\mathbf2)=T(\mathbf2).
+\]
+For lepton number only \(L_L\) contributes, giving \(T(\mathbf2)\).  Thus
+\(B+L\) is anomalous and \(B-L\) cancels in the \(SU(2)^2\) channel.  For
+\(SU(3)^2(B-L)\), the common \(T(\mathbf3)\) factors out and the coefficient
+is
+\[
+  2\left(\frac{1}{3}\right)-\frac{1}{3}-\frac{1}{3}=0,
+\]
+where the factor \(2\) is the weak multiplicity of \(Q_L\).
+
+For the mixed gravitational anomaly of \(B-L\), including multiplicities but
+not \(\nu^c\), one obtains
+\[
+  6\left(\frac{1}{3}\right)
+  +3\left(-\frac{1}{3}\right)
+  +3\left(-\frac{1}{3}\right)
+  +2(-1)+1=-1 .
+\]
+The cubic \(U(1)_{B-L}^3\) coefficient gives the same value:
+\[
+  6\left(\frac{1}{3}\right)^3
+  +3\left(-\frac{1}{3}\right)^3
+  +3\left(-\frac{1}{3}\right)^3
+  +2(-1)^3+1^3=-1 .
+\]
+Adding a singlet \(\nu^c\) with \(B-L=1\) contributes \(+1\) to each of
+these two anomaly coefficients and cancels them.  This is a finite anomaly
+calculation, not a statement that a singlet neutrino has been observed or that
+one has chosen a particular neutrino-mass mechanism.
+\end{proof}
+
+\begin{remark}[Sphalerons as transitions between electroweak sectors]
+The \(SU(2)_L\) anomaly means that an electroweak gauge-field history with
+topological charge \(Q_{\rm top}\) changes the global charges by
+\(\Delta B=\Delta L=N_gQ_{\rm top}\), where \(N_g\) is the number of
+generations, while \(\Delta(B-L)=0\).  The sphaleron is the unstable static
+configuration at the top of the minimal barrier between neighboring
+electroweak sectors, as described in
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  Rates in a thermal state
+require real-time finite-temperature dynamics and are not fixed by the
+topological selection rule alone.
+\end{remark}
+
+\section{Higher-Dimensional Operator Coordinates}
+
+\begin{definition}[SMEFT source chart]
+\label{def:sm-smeft-source-chart}
+Fix a regulator, a local operator basis, and a subtraction scheme.  A
+Standard-Model effective source chart below a scale \(\Lambda\) is a local
+functional of the form
+\[
+  S_{\rm EFT}
+  =
+  S_{\rm SM}^{\rm ren}
+  +
+  \sum_{d>4}\Lambda^{4-d}
+  \sum_{A\in\mathcal B_d} C_A^{(d)}(\mu)
+  \int_{M_4}\mathcal O_A^{(d)}(\mu),
+  \label{eq:sm-smeft-source-chart}
+\]
+where \(\mathcal B_d\) is a declared basis of gauge-invariant local
+operators of engineering dimension \(d\), after quotienting by total
+derivatives and by the chosen field-redefinition equations of motion.  The
+Wilson coordinates \(C_A^{(d)}(\mu)\) are not observables by themselves; an
+observable uses them together with the operator scheme, matching map, and
+matrix elements.
+\end{definition}
+
+\begin{definition}[Weinberg operator in the left-handed convention]
+\label{def:sm-weinberg-operator}
+With only the minimal fields of
+Definitions~\ref{def:sm-one-generation-left-weyl} and
+\ref{def:sm-higgs-yukawa-datum}, the derivative-free dimension-five
+lepton-number-violating operator is
+\[
+  \mathcal O_5^{IJ}
+  =
+  \epsilon^{\alpha\beta}
+  \bigl(\epsilon_{ij}L^I_{\alpha i}H_j\bigr)
+  \bigl(\epsilon_{k\ell}L^J_{\beta k}H_\ell\bigr),
+  \label{eq:sm-weinberg-operator}
+\]
+with symmetric flavor coefficient \(C_5^{IJ}=C_5^{JI}\).  In the convention
+\[
+  \Delta\mathcal L_5
+  =
+  -\frac{1}{2\Lambda}C_5^{IJ}\mathcal O_5^{IJ}
+  +\text{Hermitian conjugate},
+  \label{eq:sm-weinberg-lagrangian-convention}
+\]
+the neutral-lepton Majorana mass matrix in the electroweak scalar chart is
+\[
+  (M_\nu)^{IJ}=\frac{v^2}{2\Lambda}C_5^{IJ}.
+  \label{eq:sm-weinberg-neutrino-mass}
+\]
+\end{definition}
+
+\begin{proof}[Derivation of \eqref{eq:sm-weinberg-neutrino-mass}]
+At \(H=H_0\), the weak contraction
+\(\epsilon_{ij}L^I_iH_j\) selects the neutral component of \(L^I\) and gives
+\[
+  \epsilon_{ij}L^I_{\alpha i}H_{0,j}
+  =
+  \frac{v}{\sqrt2}\,\nu^I_{\alpha}.
+\]
+Substitution into \eqref{eq:sm-weinberg-lagrangian-convention} gives
+\[
+  \Delta\mathcal L_5
+  =
+  -\frac{1}{2}
+  \left(\frac{v^2}{2\Lambda}C_5^{IJ}\right)
+  \epsilon^{\alpha\beta}\nu^I_\alpha\nu^J_\beta
+  +\text{Hermitian conjugate},
+\]
+which is the displayed Majorana mass coordinate.  The symmetry of
+\(C_5^{IJ}\) follows because the Lorentz contraction of two left-handed Weyl
+fields is symmetric in the flavor labels after the anticommutation of the
+fields is combined with the antisymmetry of
+\(\epsilon^{\alpha\beta}\).
+\end{proof}
+
+\begin{proposition}[Integrating out singlet neutrinos at tree level]
+\label{prop:sm-type-i-seesaw-matching}
+Add gauge-singlet left-handed fields \(\nu^{cA}\) with
+\[
+  \Delta\mathcal L
+  =
+  -Y_\nu^{IA}(L^I H)\nu^{cA}
+  -\frac{1}{2}M_{AB}\nu^{cA}\nu^{cB}
+  +\text{Hermitian conjugate},
+\]
+where \(M\) is a nonsingular complex symmetric matrix and spinor and weak
+indices are contracted as in \eqref{eq:sm-weinberg-operator}.  At tree level
+and to leading order in external momenta over the singular values of \(M\),
+the dimension-five coefficient obeys
+\[
+  \frac{C_5}{\Lambda}
+  =
+  Y_\nu M^{-1}Y_\nu^{T}
+\]
+up to the conventional overall sign that can be changed by rephasing
+Majorana fields.
+\end{proposition}
+
+\begin{proof}
+The algebraic equation for the heavy singlet field, after suppressing
+derivative corrections, is
+\[
+  M_{AB}\nu^{cB}+Y_\nu^{IA}(L^I H)=0 .
+\]
+Thus
+\[
+  \nu^{cA}=-(M^{-1})^{AB}Y_\nu^{IB}(L^I H).
+\]
+Substituting this solution back into the quadratic expression in
+\(\nu^c\) gives a local operator quadratic in \((LH)\) with coefficient
+\(\frac12Y_\nu M^{-1}Y_\nu^T\), with the sign depending on the convention
+used to order the Grassmann variables in the Majorana bilinear.  Comparing
+with Definition~\ref{def:sm-weinberg-operator} gives the displayed matching
+coordinate.  The statement is a tree-level EFT matching computation, not a
+claim that singlet neutrinos are part of the minimal Standard Model datum.
+\end{proof}
+
+\begin{remark}[Dimension-six bases]
+At dimension six the phrase ``the SMEFT coefficients'' is incomplete until a
+basis and scheme have been declared.  A basis such as a Warsaw-type basis is
+a coordinate chart on local operators modulo integration by parts, algebraic
+identities, and field redefinitions.  Changing the basis changes the
+coordinates \(C_A^{(6)}\) and the anomalous-dimension matrix, while physical
+predictions are invariant only after the matching map and matrix elements are
+transformed with them.
+\end{remark}
+
+\section{QCD Theta Angle and Quark-Mass Phase}
+
+\begin{proposition}[Physical strong-CP phase coordinate]
+\label{prop:sm-strong-cp-phase}
+In the quark sector with nonsingular mass matrices, the invariant phase
+coordinate involving the QCD theta angle and the quark mass matrices is
+\[
+  \overline\theta
+  =
+  \theta_3+\arg\det(M_uM_d)
+  \quad\text{mod }2\pi .
+  \label{eq:sm-strong-cp-phase}
+\]
+Equivalently, replacing \(M_u,M_d\) by positive diagonal mass matrices by
+chiral flavor-coordinate changes shifts the coefficient of
+\(\operatorname{tr}(F\wedge F)\) by the opposite amount, leaving
+\(\overline\theta\) unchanged.
+\end{proposition}
+
+\begin{proof}
+The determinant phase of the quark mass term changes under anomalous chiral
+flavor rotations.  For a single Dirac quark of mass \(m\ee^{\ii\varphi}\), an
+axial rotation by angle \(-\varphi/2\) makes the mass real.  The same
+rotation changes the fermion measure by the four-dimensional chiral anomaly
+and shifts the QCD theta angle by \(+\varphi\) in the convention of
+Chapter~\ref{ch:volume-ii-20}.  For several quarks the phases
+add, because the anomalous Jacobian is additive over left-handed Weyl
+components in the fundamental color representation.  The total phase removed
+from the quark mass matrices is \(\arg\det(M_uM_d)\).  Therefore the
+combination \(\theta_3+\arg\det(M_uM_d)\) is invariant under the
+mass-diagonalizing chiral coordinate choice.  If one quark mass matrix has a
+zero singular value, the determinant phase is not a coordinate on the mass
+chart and the theta dependence must be reconsidered separately.
+\end{proof}
+
+The empirical bound on \(\overline\theta\) is a bound on the coefficient of a
+specific CP-odd QCD operator in the hybrid datum.  It is not a principle for
+choosing parameters.
+
 \section{The Hybrid Definition}
 
 \begin{definition}[Hybrid Standard Model datum]
@@ -416,6 +978,29 @@ with Higgs field treated as a finite-cutoff effective theory below a scale
 effective theories obtained by integrating out massive weak fields and heavy
 flavors; and \(\mathcal M\) is the matching data fixing parameters and local
 operators between overlapping regimes.
+\end{definition}
+
+\begin{definition}[Matching data in the hybrid Standard Model]
+\label{def:sm-hybrid-matching-data}
+The symbol \(\mathcal M\) in
+Definition~\ref{def:hybrid-standard-model-datum} consists of the following
+declared data for the observable class under consideration:
+\begin{enumerate}
+\item a sequence of scales or windows where adjacent descriptions overlap;
+\item renormalized parameter charts for \(g_3,g_2,g_1,\lambda,v\), the
+      Yukawa matrices, theta angles, and higher-dimensional Wilson
+      coordinates;
+\item threshold matching maps when \(W,Z,h,t,b,c,\tau,\ldots\) are removed
+      from the active field content;
+\item anomalous-dimension matrices for the chosen operator bases between
+      thresholds;
+\item nonperturbative QCD matrix elements, defined by
+      \(\mathfrak D_{\rm QCD}^{\rm lat}\) or by another explicitly declared
+      nonperturbative regulator, for hadronic operators;
+\item the error model or remainder statement attached to each perturbative,
+      lattice, or combined extrapolation.
+\end{enumerate}
+None of these entries is optional in a certified precision prediction.
 \end{definition}
 
 \begin{proposition}[Logical layers of the hybrid datum]

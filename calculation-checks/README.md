@@ -32,6 +32,14 @@ Current checks:
   \(2\pi\ii\) conversion to effective-action inflow, one-generation Standard
   Model hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
   cubic-anomaly bookkeeping.
+- `standard_model_anomaly_checks.py`: exact rational checks for the
+  Standard Model hybrid-definition chapter, including one-generation
+  hypercharge anomaly sums, electric charges from \(Q=T^3+Y\), the
+  \(\mathbb Z_6\) global-form kernel generator, CKM parameter counting,
+  Jarlskog rephasing cancellation, the tree-level \(\rho\)-identity,
+  the Higgs mass coefficient, \(B-L\) anomaly bookkeeping with and
+  without a singlet \(\nu^c\), Weinberg-operator mass normalization,
+  tree-level singlet-neutrino matching, and strong-CP phase invariance.
 - `background_index_theory_checks.py`: exact rational checks for the
   Volume XII background-index-theory chapter, including the
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional
