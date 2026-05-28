@@ -71,10 +71,20 @@ tools/audit_figures.py
 ```
 
 reports figure labels, body references, unreferenced figures, placement
-specifiers, and inline TikZ counts.  The strict mode
+specifiers, inline TikZ counts, and large inline TikZ diagrams.  The strict
+mode
 
 ```bash
 tools/audit_figures.py --strict
 ```
 
 fails when a floated figure label has no body reference.
+
+Use
+
+```bash
+tools/audit_figures.py --list-inline --inline-long-threshold 30
+```
+
+to audit inline TikZ locations.  An inline diagram above the threshold should
+be inspected as a candidate for promotion to a floated, captioned figure.

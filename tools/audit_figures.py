@@ -18,6 +18,7 @@ FIGURE_RE = re.compile(r"\\begin\{figure\}(?:\[(?P<placement>[^\]]*)\])?(?P<body
 LABEL_RE = re.compile(r"\\label\{(?P<label>fig:[^}]+)\}")
 REF_RE = re.compile(r"\\(?P<cmd>Cref|cref|autoref|pageref|ref)\s*\{(?P<body>[^}]*fig:[^}]*)\}")
 TIKZ_RE = re.compile(r"\\begin\{tikzpicture\}")
+TIKZ_BLOCK_RE = re.compile(r"\\begin\{tikzpicture\}(?P<body>.*?)\\end\{tikzpicture\}", re.S)
 
 
 @dataclass(frozen=True)
@@ -26,6 +27,13 @@ class FigureRecord:
     line: int
     placement: str
     labels: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class InlineTikzRecord:
+    path: Path
+    line: int
+    lines: int
 
 
 def line_number(text: str, index: int) -> int:
@@ -55,8 +63,11 @@ def refs_in_text(text: str) -> set[str]:
     return refs
 
 
-def audit(paths: list[Path]) -> tuple[list[FigureRecord], set[str], int, int, dict[str, int]]:
+def audit(
+    paths: list[Path],
+) -> tuple[list[FigureRecord], set[str], int, int, dict[str, int], list[InlineTikzRecord]]:
     figures: list[FigureRecord] = []
+    inline_tikz: list[InlineTikzRecord] = []
     body_refs: set[str] = set()
     tikz_inside = 0
     tikz_outside = 0
@@ -67,6 +78,15 @@ def audit(paths: list[Path]) -> tuple[list[FigureRecord], set[str], int, int, di
         stripped, blocks = strip_figure_blocks(text)
         body_refs |= refs_in_text(stripped)
         tikz_outside += len(TIKZ_RE.findall(stripped))
+        for tikz_match in TIKZ_BLOCK_RE.finditer(stripped):
+            body = tikz_match.group("body")
+            inline_tikz.append(
+                InlineTikzRecord(
+                    path=path.relative_to(ROOT),
+                    line=line_number(stripped, tikz_match.start()),
+                    lines=body.count("\n") + 2,
+                )
+            )
         for start, _end, match in blocks:
             body = match.group("body")
             labels = tuple(m.group("label") for m in LABEL_RE.finditer(body))
@@ -81,7 +101,7 @@ def audit(paths: list[Path]) -> tuple[list[FigureRecord], set[str], int, int, di
                     labels=labels,
                 )
             )
-    return figures, body_refs, tikz_inside, tikz_outside, placements
+    return figures, body_refs, tikz_inside, tikz_outside, placements, inline_tikz
 
 
 def main() -> int:
@@ -97,6 +117,22 @@ def main() -> int:
         action="store_true",
         help="return nonzero when any floated figure label lacks a body reference",
     )
+    parser.add_argument(
+        "--list-inline",
+        action="store_true",
+        help="list TikZ pictures that are not inside figure environments",
+    )
+    parser.add_argument(
+        "--inline-long-threshold",
+        type=int,
+        default=30,
+        help="line-count threshold for reporting large inline TikZ diagrams",
+    )
+    parser.add_argument(
+        "--strict-inline-long",
+        action="store_true",
+        help="return nonzero when an inline TikZ diagram exceeds --inline-long-threshold",
+    )
     args = parser.parse_args()
 
     roots = args.paths or [DEFAULT_SOURCE]
@@ -111,7 +147,7 @@ def main() -> int:
             print(f"missing path: {root}", file=sys.stderr)
             return 2
 
-    figures, body_refs, tikz_inside, tikz_outside, placements = audit(tex_paths)
+    figures, body_refs, tikz_inside, tikz_outside, placements, inline_tikz = audit(tex_paths)
     labels = [label for fig in figures for label in fig.labels]
     missing_label = [fig for fig in figures if not fig.labels]
     duplicate_labels = sorted({label for label in labels if labels.count(label) > 1})
@@ -127,6 +163,11 @@ def main() -> int:
     print(f"  duplicate fig: labels: {len(duplicate_labels)}")
     print(f"  TikZ inside figures: {tikz_inside}")
     print(f"  TikZ outside figures: {tikz_outside}")
+    long_inline_tikz = [rec for rec in inline_tikz if rec.lines > args.inline_long_threshold]
+    print(
+        f"  inline TikZ above {args.inline_long_threshold} lines: "
+        f"{len(long_inline_tikz)}"
+    )
     if placements:
         print("  placement specifiers:")
         for key, value in sorted(placements.items(), key=lambda kv: (kv[0] != "H", kv[0])):
@@ -149,7 +190,20 @@ def main() -> int:
             joined = ", ".join(fig.labels)
             print(f"  {fig.path}:{fig.line}: {joined}")
 
+    if args.list_inline:
+        print("\nInline TikZ outside figure environments:")
+        for rec in sorted(inline_tikz, key=lambda item: (str(item.path), item.line)):
+            marker = " large" if rec.lines > args.inline_long_threshold else ""
+            print(f"  {rec.path}:{rec.line}: {rec.lines} lines{marker}")
+
+    if long_inline_tikz and not args.list_inline:
+        print("\nInline TikZ above threshold:")
+        for rec in sorted(long_inline_tikz, key=lambda item: (str(item.path), item.line)):
+            print(f"  {rec.path}:{rec.line}: {rec.lines} lines")
+
     if args.strict and (unreferenced or missing_label or duplicate_labels):
+        return 1
+    if args.strict_inline_long and long_inline_tikz:
         return 1
     return 0
 
