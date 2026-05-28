@@ -857,6 +857,72 @@ is the relevant deformation that unfolds the collision.  The normalization is
 chosen so that a period of \(\lambda_{\rm AD}\) has mass dimension one.
 \end{definition}
 
+\begin{proposition}[Discriminant of the cusp unfolding]
+\label{prop:ad-cusp-discriminant}
+For the local curve
+\[
+  y^2=x^3+v x+u ,
+\]
+the finite discriminant is
+\[
+  \Delta_{\rm cusp}(u,v)=-4v^3-27u^2 .
+  \label{eq:ad-cusp-discriminant}
+\]
+Thus the two nodal singularities in the \(u\)-plane collide at
+\((u,v)=(0,0)\).  At \(v=0\), the singular fiber is a cusp rather than a
+node.
+\end{proposition}
+
+\begin{proof}
+For a monic cubic \(f(x)=x^3+px+q\), the discriminant is
+\[
+  \operatorname{disc}(f)
+  =
+  \prod_{i<j}(r_i-r_j)^2,
+  \qquad
+  f(x)=\prod_i(x-r_i),
+\]
+and the elementary symmetric relations give
+\[
+  \operatorname{disc}(x^3+px+q)=-4p^3-27q^2 .
+\]
+Substituting \(p=v\), \(q=u\) gives
+\eqref{eq:ad-cusp-discriminant}.  For \(v\ne0\), the discriminant equation
+has two local solutions for \(u\), namely two nodal degenerations after a
+choice of branch of \(v^{3/2}\).  As \(v\to0\), both solutions approach
+\(u=0\).  At \(u=v=0\) the polynomial is \(x^3\), so all three finite branch
+points coincide and the singularity is cuspidal.
+\end{proof}
+
+\begin{proposition}[Mutually nonlocal light charges obstruct an electric frame]
+\label{prop:ad-mutual-nonlocal-electric-obstruction}
+Let \(\Gamma\) be a rank-two electromagnetic charge lattice with symplectic
+pairing \(\langle\,\cdot,\cdot\,\rangle\).  If two primitive charges
+\(\gamma_1,\gamma_2\in\Gamma\) obey
+\[
+  \langle\gamma_1,\gamma_2\rangle\ne0,
+  \label{eq:ad-mutually-nonlocal-pairing}
+\]
+then no symplectic change of basis can make both charges purely electric.
+Consequently a neighborhood in which both central charges vanish cannot be
+described as a weakly coupled Abelian vector multiplet coupled only to
+ordinary electric hypermultiplets for both charges.
+\end{proposition}
+
+\begin{proof}
+In any electric-magnetic frame, the purely electric sublattice is Lagrangian:
+the symplectic pairing of any two purely electric charges is zero.  A
+symplectic change of basis preserves
+\(\langle\,\cdot,\cdot\,\rangle\).  Therefore if both \(\gamma_1\) and
+\(\gamma_2\) became purely electric in some frame, their pairing would have
+to vanish in that frame and hence in every frame, contradicting
+\eqref{eq:ad-mutually-nonlocal-pairing}.  The last assertion follows because
+an ordinary local Abelian Lagrangian with hypermultiplets of electric charge
+uses one electric polarization of \(\Gamma\); it cannot include two
+hypermultiplet fields whose charges have nonzero Dirac pairing in that same
+polarization.
+\end{proof}
+
 \begin{proposition}[Scaling dimensions in the cusp model]
 \label{prop:ad-cusp-scaling-dimensions}
 For the local model \eqref{eq:ad-a1-a2-local-curve} with differential

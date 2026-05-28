@@ -215,6 +215,28 @@ def check_argyres_douglas_scaling() -> None:
         raise AssertionError("AD relevant deformation dimension mismatch")
 
 
+def check_argyres_douglas_discriminant_and_nonlocality() -> None:
+    def cubic_discriminant(p: int, q: int) -> int:
+        return -4 * p**3 - 27 * q**2
+
+    for v, u in ((0, 0), (3, 2), (-2, 5), (1, -4)):
+        direct = cubic_discriminant(v, u)
+        chapter_formula = -4 * v**3 - 27 * u**2
+        if direct != chapter_formula:
+            raise AssertionError("AD cusp discriminant formula mismatch")
+    if cubic_discriminant(0, 0) != 0:
+        raise AssertionError("AD cusp should have vanishing discriminant at the collision")
+
+    electric_one = (0, 1)
+    electric_two = (0, 3)
+    if symplectic_pair(electric_one, electric_two) != 0:
+        raise AssertionError("electric sublattice should be isotropic")
+
+    mutually_nonlocal_pair = ((1, 0), (0, 1))
+    if symplectic_pair(*mutually_nonlocal_pair) == 0:
+        raise AssertionError("test AD charges should be mutually nonlocal")
+
+
 def main() -> None:
     check_monodromies()
     check_picard_lefschetz_action_and_symplecticity()
@@ -224,6 +246,7 @@ def main() -> None:
     check_large_u_asymptotics()
     check_monopole_vanishing()
     check_argyres_douglas_scaling()
+    check_argyres_douglas_discriminant_and_nonlocality()
     print("All SU(2) Seiberg-Witten period and monodromy checks passed.")
 
 

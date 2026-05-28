@@ -577,7 +577,8 @@ Current checks:
   the minimal-curve discriminant, the Picard--Fuchs equation, the electric
   large-\(u\) asymptotic, logarithmic dual-period growth, linear
   monopole-period vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas
-  cusp scaling dimensions.
+  cusp scaling dimensions, discriminant collision, and mutual-nonlocality
+  obstruction.
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking
