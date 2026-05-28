@@ -853,7 +853,8 @@ Current checks:
   excited-state suppression factors, the forward Compton/Baldin dispersion
   prefactor, and the GDH and forward spin-polarizability prefactors in the
   \(\Delta\sigma=\sigma_{1/2}-\sigma_{3/2}\) convention, together with the
-  heavy-baryon spin-average cancellation of the chromomagnetic coordinate.
+  heavy-baryon spin-average cancellation of the chromomagnetic coordinate and
+  the exact two-flavor contracted-\(SU(4)\) spin-flavor commutator scaling.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
   and topological-charge normalization on the \(\CP^1\) chart, the

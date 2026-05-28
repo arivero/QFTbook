@@ -1748,6 +1748,119 @@ where the collective-coordinate description is valid.  In the Veneziano limit
 with \(N_f/N_c\) fixed, the spin-flavor representation theory and baryon
 entropy grow differently and must be analyzed as a distinct limit.
 
+For two light flavors the contracted spin-flavor algebra can be written
+without appealing to a quark-model Hamiltonian.  It is the large-\(N_c\)
+limit of the exact one-body spin-flavor algebra acting on the symmetric
+spin-flavor part of a color-singlet baryon source.
+
+\begin{definition}[Two-flavor spin-flavor one-body generators]
+\label{def:qcd-two-flavor-spin-flavor-generators}
+On the spin-flavor space
+\[
+  \left(\mathbb C^2_{\rm spin}\otimes\mathbb C^2_{\rm isospin}\right)^{\otimes N_c}
+\]
+write \(\sigma_r^i\) and \(\tau_r^a\) for Pauli matrices acting on the spin
+and isospin factors of the \(r\)-th quark slot.  Define
+\begin{equation}
+  J^i=\sum_{r=1}^{N_c}\frac{\sigma_r^i}{2},
+  \qquad
+  I^a=\sum_{r=1}^{N_c}\frac{\tau_r^a}{2},
+  \qquad
+  G^{ia}=\sum_{r=1}^{N_c}\frac{\sigma_r^i\tau_r^a}{4}.
+  \label{eq:qcd-two-flavor-spin-flavor-generators}
+\end{equation}
+Here \(J^i\) generates spatial spin, \(I^a\) generates isospin, and
+\(G^{ia}\) is the mixed spin-isospin one-body generator.  The normalization is
+fixed by the displayed Pauli matrices; it is independent of the gauge-group
+trace convention used in the Yang--Mills action.
+\end{definition}
+
+\begin{proposition}[Contraction of the two-flavor baryon spin-flavor algebra]
+\label{prop:qcd-contracted-su4-baryon-algebra}
+The generators of Definition~\ref{def:qcd-two-flavor-spin-flavor-generators}
+satisfy the exact finite-\(N_c\) commutation relations
+\begin{align}
+  [J^i,J^j]&=\ii\varepsilon^{ijk}J^k,
+  &
+  [I^a,I^b]&=\ii\varepsilon^{abc}I^c,
+  &
+  [J^i,I^a]&=0,
+  \label{eq:qcd-spin-flavor-ji-algebra}\\
+  [J^i,G^{ja}]&=\ii\varepsilon^{ijk}G^{ka},
+  &
+  [I^a,G^{ib}]&=\ii\varepsilon^{abc}G^{ic},
+  \label{eq:qcd-spin-flavor-g-vector}\\
+  [G^{ia},G^{jb}]
+  &=
+  \frac{\ii}{4}\delta^{ij}\varepsilon^{abc}I^c
+  +
+  \frac{\ii}{4}\delta^{ab}\varepsilon^{ijk}J^k .
+  \label{eq:qcd-spin-flavor-g-commutator}
+\end{align}
+Set \(X^{ia}=G^{ia}/N_c\).  On any sequence of baryon states whose matrix
+elements of \(J^i\) and \(I^a\) grow no faster than \(O(N_c)\), the
+commutator of the rescaled mixed generators obeys
+\begin{equation}
+  [X^{ia},X^{jb}]
+  =
+  \frac{\ii}{4N_c^2}\delta^{ij}\varepsilon^{abc}I^c
+  +
+  \frac{\ii}{4N_c^2}\delta^{ab}\varepsilon^{ijk}J^k
+  =
+  O(N_c^{-1})
+  \label{eq:qcd-contracted-su4-xx}
+\end{equation}
+in matrix elements, and it is \(O(N_c^{-2})\) on fixed-spin and fixed-isospin
+families.  The limiting algebra has \(X^{ia}\)'s transforming as vectors
+under spin and isospin but commuting among themselves.  This is the
+two-flavor contracted \(SU(4)\) algebra.
+\end{proposition}
+
+\begin{proof}
+Operators acting on different quark slots commute, so it is enough to compute
+the one-slot algebra.  Let \(s^i=\sigma^i/2\) and \(t^a=\tau^a/2\).  The
+Pauli relations give
+\[
+  [s^i,s^j]=\ii\varepsilon^{ijk}s^k,\qquad
+  \{s^i,s^j\}=\frac12\delta^{ij},
+\]
+and the same formulae with \(s,i,j,k\) replaced by \(t,a,b,c\).  Since spin
+and isospin matrices commute with each other,
+\[
+  [s^i t^a,s^j t^b]
+  =
+  \frac12\{s^i,s^j\}[t^a,t^b]
+  +
+  \frac12[s^i,s^j]\{t^a,t^b\}.
+\]
+Substituting the Pauli relations gives
+\[
+  [s^i t^a,s^j t^b]
+  =
+  \frac{\ii}{4}\delta^{ij}\varepsilon^{abc}t^c
+  +
+  \frac{\ii}{4}\delta^{ab}\varepsilon^{ijk}s^k .
+  \label{eq:qcd-one-slot-gg-commutator}
+\]
+Summing \eqref{eq:qcd-one-slot-gg-commutator} over the \(N_c\) quark slots
+gives \eqref{eq:qcd-spin-flavor-g-commutator}.  The remaining commutators
+follow in the same way from the facts that \(s^i\) transforms as a spin vector
+and \(t^a\) transforms as an isospin vector.
+
+Dividing \(G^{ia}\) by \(N_c\) gives
+\[
+  [X^{ia},X^{jb}]=\frac1{N_c^2}[G^{ia},G^{jb}],
+\]
+which is \eqref{eq:qcd-contracted-su4-xx}.  If matrix elements of \(J\) and
+\(I\) are at most order \(N_c\), the right-hand side is at most order
+\(N_c^{-1}\).  If the spin and isospin labels are held fixed as
+\(N_c\to\infty\), it is order \(N_c^{-2}\).  The commutators with \(J\) and
+\(I\) in \eqref{eq:qcd-spin-flavor-g-vector} survive the rescaling because
+\([J,X]=[J,G]/N_c\) and \([I,X]=[I,G]/N_c\).  Thus the limiting algebra is a
+semidirect product of spin and isospin rotations with commuting generators
+\(X^{ia}\).
+\end{proof}
+
 The expansion also gives the perturbative origin of the string language used
 in the next section.  Ribbon graphs are organized by the genus of an oriented
 surface, while the connected vacuum functional has the form

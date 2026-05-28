@@ -746,6 +746,39 @@ def check_heavy_baryon_spin_average() -> None:
     assert_equal("Sigma_Q spin average", average, common)
 
 
+def check_contracted_su4_spin_flavor_algebra() -> None:
+    # With s=sigma/2, t=tau/2, and G=s*t, the one-slot identity is
+    # [s^i t^a, s^j t^b] =
+    # i/4 delta_ij eps_abc t^c + i/4 delta_ab eps_ijk s^k.
+    anticom_spin_coeff = Fraction(1, 2)
+    comm_flavor_coeff = Fraction(1)
+    comm_spin_coeff = Fraction(1)
+    anticom_flavor_coeff = Fraction(1, 2)
+    gg_to_isospin = Fraction(1, 2) * anticom_spin_coeff * comm_flavor_coeff
+    gg_to_spin = Fraction(1, 2) * comm_spin_coeff * anticom_flavor_coeff
+    assert_equal("contracted SU4 G-G to isospin coefficient", gg_to_isospin, Fraction(1, 4))
+    assert_equal("contracted SU4 G-G to spin coefficient", gg_to_spin, Fraction(1, 4))
+
+    # After X=G/N_c, the G-G commutator coefficient is divided by N_c^2.
+    # On a maximal-spin/isospin tower with J,I=O(N_c), the matrix-element
+    # scale is O(1/N_c).  On fixed-spin/isospin towers it is O(1/N_c^2).
+    for n_c in (3, 5, 7, 11):
+        maximal_spin_scale = Fraction(n_c, 2)
+        fixed_spin_scale = Fraction(1, 2)
+        max_matrix_scale = gg_to_spin * maximal_spin_scale / (n_c**2)
+        fixed_matrix_scale = gg_to_spin * fixed_spin_scale / (n_c**2)
+        assert_equal(
+            f"contracted SU4 maximal-tower scaling Nc={n_c}",
+            max_matrix_scale,
+            Fraction(1, 8 * n_c),
+        )
+        assert_equal(
+            f"contracted SU4 fixed-spin scaling Nc={n_c}",
+            fixed_matrix_scale,
+            Fraction(1, 8 * n_c**2),
+        )
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -772,6 +805,7 @@ def main() -> None:
     check_forward_compton_baldin_prefactor()
     check_forward_spin_gdh_prefactor()
     check_heavy_baryon_spin_average()
+    check_contracted_su4_spin_flavor_algebra()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 
