@@ -411,67 +411,102 @@ in Lorentzian signature, up to terms with more powers of
 therefore reduced to computing one coefficient in a gauge-invariant
 functional, rather than separately renormalizing gauge-fixed vertices.
 
-Figure~\ref{fig:qcd-background-field-beta} displays this background-field
-extraction: the coefficient of \(\widetilde F_{\mu\nu}\widetilde F^{\mu\nu}\)
-in the gauge-invariant effective action defines the running coupling used in
-the one-loop beta-function calculation.
+Figure~\ref{fig:qcd-background-field-beta} displays the actual coefficient
+extraction used below.  The useful object is not a separate renormalization of
+each gauge-fixed vertex, but the determinant-weighted coefficient of
+\(\int\widetilde F_{\mu\nu}^a\widetilde F^{a\mu\nu}\) in the background
+effective action.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.98\textwidth}{!}{%
-  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,2.45) {background-field extraction of \(g(\mu)\)};
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize},
+    gluon/.style={decorate,decoration={snake,amplitude=1.2pt,segment length=5pt},
+      line width=0.75pt},
+    ghost/.style={densely dashed,line width=0.75pt},
+    fermion/.style={line width=0.75pt}]
+    \node[font=\small] at (0,3.65)
+      {background-field one-loop coefficient ledger};
 
-    \begin{scope}[shift={(-5.25,0)}]
-      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
-      \node[align=center] at (0,0.42)
-        {\(A_\mu=\widetilde A_\mu+a_\mu\)};
-      \node[align=center,blue!70!black] at (0,-0.42)
-        {\(\widetilde D^\mu a_\mu=0\)};
-      \node[below] at (0,-1.25) {background split};
+    \begin{scope}[shift={(-5.85,1.18)}]
+      \node[align=center] at (0,1.75)
+        {external background\\fields \(\widetilde A\)};
+
+      \draw[gluon] (-1.65,0.20)--(-0.80,0.20);
+      \draw[gluon] (0.80,0.20)--(1.65,0.20);
+      \node[left] at (-1.70,0.20) {\(\widetilde A\)};
+      \node[right] at (1.70,0.20) {\(\widetilde A\)};
+      \draw[gluon] (0,0.20) circle (0.80);
+      \node at (0,0.20) {\(a_\mu\)};
+
+      \draw[gluon] (-1.65,-1.05)--(-0.80,-1.05);
+      \draw[gluon] (0.80,-1.05)--(1.65,-1.05);
+      \node[left] at (-1.70,-1.05) {\(\widetilde A\)};
+      \node[right] at (1.70,-1.05) {\(\widetilde A\)};
+      \draw[ghost] (0,-1.05) circle (0.80);
+      \draw[-{Latex[length=1.6mm]},ghost] (-0.55,-0.47) arc (135:45:0.78);
+      \node at (0,-1.05) {\(c\)};
+
+      \draw[gluon] (-1.65,-2.30)--(-0.80,-2.30);
+      \draw[gluon] (0.80,-2.30)--(1.65,-2.30);
+      \node[left] at (-1.70,-2.30) {\(\widetilde A\)};
+      \node[right] at (1.70,-2.30) {\(\widetilde A\)};
+      \draw[fermion,-{Latex[length=1.6mm]}] (0,-2.30) circle (0.80);
+      \node at (0,-2.30) {\(q\)};
     \end{scope}
 
-    \begin{scope}[shift={(-1.75,0)}]
-      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
-      \node[align=center] at (0,0.48)
-        {\(\delta\widetilde A_\mu=\widetilde D_\mu\zeta\)};
-      \node[align=center,blue!70!black] at (0,-0.42)
-        {\(\delta a_\mu,\delta c,\delta q\)\\homogeneous};
-      \node[below] at (0,-1.25) {background covariance};
-    \end{scope}
+    \draw[thick,rounded corners=2pt,fill=gray!6] (-3.45,2.38) rectangle (6.15,-2.50);
+    \draw[thick] (-3.45,1.55)--(6.15,1.55);
+    \draw[thick] (-3.45,0.30)--(6.15,0.30);
+    \draw[thick] (-3.45,-0.95)--(6.15,-0.95);
+    \draw[thick] (-3.45,-1.75)--(6.15,-1.75);
+    \draw[thick] (-0.30,2.38)--(-0.30,-2.50);
+    \draw[thick] (3.05,2.38)--(3.05,-2.50);
 
-    \begin{scope}[shift={(1.75,0)}]
-      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
-      \node[align=center] at (0,0.45)
-        {\(\displaystyle
-        \frac{(\det D_\psi)^{N_f}\det D_{\rm gh}}
-        {(\det D_A)^{1/2}}\)};
-      \node[align=center,blue!70!black] at (0,-0.46)
-        {quadratic fluctuations};
-      \node[below] at (0,-1.25) {one-loop determinants};
-    \end{scope}
+    \node[font=\scriptsize\bfseries] at (-1.90,1.96) {determinant weight};
+    \node[font=\scriptsize\bfseries] at (1.38,1.96) {coefficient in \(b\)};
+    \node[font=\scriptsize\bfseries,align=center] at (4.58,1.96)
+      {contribution to\\\(\beta_0=4b\)};
 
-    \begin{scope}[shift={(5.25,0)}]
-      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
-      \node[align=center] at (0,0.45)
-        {\(\displaystyle
-        \Gamma[\widetilde A]\supset
-        -\frac1{4g^2(\mu)}
-        \int \widetilde F^2\)};
-      \node[align=center,blue!70!black] at (0,-0.46)
-        {read off the coupling};
-      \node[below] at (0,-1.25) {gauge-invariant coefficient};
-    \end{scope}
+    \node[align=center] at (-1.90,0.93)
+      {\(-\frac12\operatorname{Tr}\log D_A\)\\vector fluctuation};
+    \node[align=center] at (1.38,0.93) {\(+\dfrac56 C_A\)};
+    \node[align=center] at (4.58,0.93) {\(+\dfrac{10}{3}C_A\)};
 
-    \draw[-{Latex[length=2mm]},thick] (-3.55,0.08)--(-2.03,0.08);
-    \draw[-{Latex[length=2mm]},thick] (-0.05,0.08)--(1.47,0.08);
-    \draw[-{Latex[length=2mm]},thick] (3.45,0.08)--(4.97,0.08);
+    \node[align=center] at (-1.90,-0.32)
+      {\(+\operatorname{Tr}\log D_{\rm gh}\)\\Faddeev--Popov ghosts};
+    \node[align=center] at (1.38,-0.32) {\(+\dfrac1{12}C_A\)};
+    \node[align=center] at (4.58,-0.32) {\(+\dfrac13 C_A\)};
+
+    \node[align=center] at (-1.90,-1.35)
+      {\(+N_f\operatorname{Tr}\log D_\psi\)\\Dirac quarks in \(R\)};
+    \node[align=center] at (1.38,-1.35) {\(-\dfrac13T_RN_f\)};
+    \node[align=center] at (4.58,-1.35) {\(-\dfrac43T_RN_f\)};
+
+    \node[align=center,font=\scriptsize\bfseries] at (-1.90,-2.12)
+      {sum};
+    \node[align=center,font=\scriptsize\bfseries] at (1.38,-2.12)
+      {\(\displaystyle b=\frac{11}{12}C_A-\frac13T_RN_f\)};
+    \node[align=center,font=\scriptsize\bfseries] at (4.58,-2.12)
+      {\(\displaystyle \beta_0=\frac{11}{3}C_A-\frac43T_RN_f\)};
+
+    \node[align=center,text width=10.3cm] at (0,-3.18)
+      {\(\displaystyle
+        \Gamma^{(1)}[\widetilde A]\supset
+        \frac{b}{8\pi^2}\frac{\mu^{-\epsilon}}{\epsilon}
+        \int\dd^Dx\,\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}\),
+        hence
+        \(\displaystyle
+        \mu\frac{\dd g}{\dd\mu}
+        =-\frac{g^3}{16\pi^2}\beta_0+O(g^5)\).};
   \end{tikzpicture}
   }
-  \caption{The background-field method keeps a gauge symmetry acting on
-  \(\widetilde A\).  The one-loop determinants then renormalize the single
-  invariant coefficient multiplying \(\widetilde F_{\mu\nu}^a
-  \widetilde F^{a\mu\nu}\).}
+  \caption{The background-field method keeps the effective action invariant
+  under gauge transformations of \(\widetilde A\), so the one-loop running is
+  read from the coefficient of \(\widetilde F^2\).  The table records the
+  determinant weights and the coefficient \(b\) used in
+  \eqref{eq:qcd-background-b-coefficient}; the usual one-loop coefficient is
+  \(\beta_0=4b\).}
   \label{fig:qcd-background-field-beta}
 \end{figure}
 

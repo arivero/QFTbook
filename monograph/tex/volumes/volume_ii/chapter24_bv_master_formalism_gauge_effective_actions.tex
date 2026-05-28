@@ -679,35 +679,83 @@ Different gauge choices correspond to different Lagrangian submanifolds.  They
 define equivalent physical cohomology when the BV integral has no boundary
 contribution and the quantum master equation is preserved.
 
-Figure~\ref{fig:bv-field-antifield-master-map} records the BV data used here:
-fields and ghosts are paired with antifields, the antibracket organizes the
-master equation, and gauge fixing chooses a Lagrangian submanifold.
+Figure~\ref{fig:bv-field-antifield-master-map} displays the geometric
+content of these formulae.  The BV space is an odd symplectic supermanifold
+with Darboux coordinates \((\Phi^A,\Phi^*_A)\).  A gauge-fixing fermion does
+not add a new dynamical variable; it chooses a Lagrangian submanifold on which
+the antifields are functions of the fields.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.92\textwidth}{!}{%
-  \begin{tikzpicture}[>=Stealth,thick,node distance=2.2cm]
-    \node[draw,rounded corners=2pt,fill=blue!8,align=center,minimum width=3.4cm,minimum height=1.1cm] (fields)
-      {fields and ghosts\\\(\Phi^A\)};
-    \node[draw,rounded corners=2pt,fill=purple!8,align=center,right=of fields,minimum width=3.4cm,minimum height=1.1cm] (anti)
-      {antifields\\\(\Phi^*_A\)};
-    \node[draw,rounded corners=2pt,fill=green!8,align=center,right=of anti,minimum width=3.6cm,minimum height=1.1cm] (master)
-      {master equation\\\((S_{\rm BV},S_{\rm BV})=0\)};
-    \node[draw,rounded corners=2pt,fill=orange!10,align=center,below=1.55cm of anti,minimum width=4.2cm,minimum height=1.1cm] (gf)
-      {gauge fixing\\\(\Phi^*=\delta\Psi/\delta\Phi\)};
-    \node[draw,rounded corners=2pt,fill=red!8,align=center,right=of gf,minimum width=4.2cm,minimum height=1.1cm] (eff)
-      {1PI/Wilsonian identities\\BV master equation};
-    \draw[->] (fields)--(anti) node[midway,above] {dualize};
-    \draw[->] (anti)--(master) node[midway,above] {antibracket};
-    \draw[->] (master)--(eff);
-    \draw[->] (anti)--(gf);
-    \draw[->] (gf)--(eff);
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.95)
+      {BV field--antifield geometry and gauge fixing};
+
+    \begin{scope}[shift={(-2.7,0)}]
+      \fill[blue!4] (-4.45,-2.25) rectangle (3.15,2.45);
+      \draw[thick] (-4.45,-2.25) rectangle (3.15,2.45);
+      \node[anchor=north west,align=left] at (-4.25,2.28)
+        {\(\mathcal E_{\rm BV}\)};
+      \draw[-{Latex[length=2mm]},thick] (-4.05,-1.75)--(2.75,-1.75)
+        node[below] {fields and ghosts \(\Phi^A\)};
+      \draw[-{Latex[length=2mm]},thick] (-3.75,-2.05)--(-3.75,2.05)
+        node[above] {\(\Phi^*_A\)};
+      \node[rotate=90,align=center] at (-4.18,0.0)
+        {antifields};
+      \node[align=center,text width=4.7cm] at (-0.45,2.05)
+        {\(\omega_{\rm BV}
+        =\delta\Phi^*_A\wedge\delta\Phi^A\),\\
+        \((F,G)=\iota_{X_F}\iota_{X_G}\omega_{\rm BV}\)};
+
+      \draw[very thick,blue!75!black]
+        (-3.85,-0.85) .. controls (-2.55,-0.18) and (-1.25,0.05) ..
+        (0.05,0.28) .. controls (1.15,0.48) and (2.00,0.88) .. (2.65,1.28);
+      \draw[very thick,orange!85!black]
+        (-3.85,-1.35) .. controls (-2.40,-0.98) and (-1.05,-0.70) ..
+        (0.20,-0.40) .. controls (1.25,-0.15) and (2.05,0.18) .. (2.65,0.62);
+      \node[blue!75!black,align=left] at (1.05,1.42)
+        {\(\mathcal L_{\Psi_1}\!:\;
+        \Phi^*_A=\dfrac{\delta^L\Psi_1}{\delta\Phi^A}\)};
+      \node[orange!85!black,align=left] at (0.95,-0.95)
+        {\(\mathcal L_{\Psi_2}\!:\;
+        \Phi^*_A=\dfrac{\delta^L\Psi_2}{\delta\Phi^A}\)};
+      \draw[-{Latex[length=2mm]},thick,gray!80]
+        (-2.05,-0.74)--(-2.05,-1.12)
+        node[midway,left,black] {\(\Psi_1\to\Psi_2\)};
+      \node[align=center,text width=5.6cm] at (-0.45,-2.62)
+        {on any \(\mathcal L_\Psi\), \(\omega_{\rm BV}|_{\mathcal L_\Psi}=0\)
+        and the integration coordinates are the \(\Phi^A\)};
+    \end{scope}
+
+    \begin{scope}[shift={(4.95,0)}]
+      \draw[thick,rounded corners=3pt,fill=green!7] (-2.05,1.45) rectangle (2.05,2.35);
+      \node[align=center] at (0,1.90)
+        {classical master equation\\
+        \((S_{\rm BV},S_{\rm BV})=0\)};
+      \draw[thick,rounded corners=3pt,fill=purple!7] (-2.05,0.10) rectangle (2.05,1.00);
+      \node[align=center] at (0,0.55)
+        {BV Hamiltonian vector field\\
+        \(Q=(S_{\rm BV},\,\cdot\,)\), \(Q^2=0\)};
+      \draw[thick,rounded corners=3pt,fill=red!7] (-2.05,-1.25) rectangle (2.05,-0.35);
+      \node[align=center] at (0,-0.80)
+        {gauge-fixed action\\
+        \(S_\Psi=S_{\rm BV}|_{\mathcal L_\Psi}\)};
+      \draw[thick,rounded corners=3pt,fill=yellow!12] (-2.05,-2.60) rectangle (2.05,-1.70);
+      \node[align=center] at (0,-2.15)
+        {quantum identity\\
+        \(\Delta e^{\ii S_{\rm BV}/\hbar}=0\)};
+      \draw[-{Latex[length=2mm]},thick] (0,1.45)--(0,1.00);
+      \draw[-{Latex[length=2mm]},thick] (0,0.10)--(0,-0.35);
+      \draw[-{Latex[length=2mm]},thick] (0,-1.25)--(0,-1.70);
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{BV replaces separate sources for nonlinear BRST variations by
-  antifields for all variables.  Gauge fixing is a choice of Lagrangian
-  submanifold, while effective actions are constrained by the same master
-  equation.}
+  \caption{The BV antibracket is the Poisson bracket associated with the odd
+  symplectic form on field--antifield space.  A gauge-fixing fermion
+  \(\Psi\) specifies the Lagrangian submanifold
+  \(\Phi_A^*=\delta^L\Psi/\delta\Phi^A\); restricting \(S_{\rm BV}\) to this
+  submanifold gives the gauge-fixed action.}
   \label{fig:bv-field-antifield-master-map}
 \end{figure}
 
