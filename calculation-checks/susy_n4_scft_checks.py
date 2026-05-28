@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from fractions import Fraction
+from math import comb, factorial
 
 
 def assert_equal(name: str, value: object, expected: object) -> None:
@@ -205,6 +206,90 @@ def check_planar_chiral_primary_ope_coefficients() -> None:
             )
 
 
+def series_divide(
+    numerator: list[Fraction],
+    denominator: list[Fraction],
+    order: int,
+) -> list[Fraction]:
+    if denominator[0] == 0:
+        raise ZeroDivisionError("series denominator has vanishing constant term")
+    quotient: list[Fraction] = []
+    for n in range(order + 1):
+        value = numerator[n]
+        for k in range(n):
+            value -= quotient[k] * denominator[n - k]
+        quotient.append(value / denominator[0])
+    return quotient
+
+
+def check_circular_wilson_loop_semicircle_series() -> None:
+    # The planar Gaussian density with potential 2 x^2/lambda has even
+    # moments C_n (lambda/4)^n, where C_n is the Catalan number.  Expanding
+    # exp(x) must reproduce 2 I_1(sqrt(lambda))/sqrt(lambda).
+    max_order = 8
+    for n in range(max_order + 1):
+        catalan = Fraction(comb(2 * n, n), n + 1)
+        moment_contribution = catalan / (4**n * factorial(2 * n))
+        bessel_coefficient = Fraction(1, 4**n * factorial(n) * factorial(n + 1))
+        assert_equal(
+            f"circular Wilson loop Bessel coefficient n={n}",
+            moment_contribution,
+            bessel_coefficient,
+        )
+
+    first_coefficients = [
+        Fraction(1),
+        Fraction(1, 8),
+        Fraction(1, 192),
+        Fraction(1, 9216),
+    ]
+    for n, expected in enumerate(first_coefficients):
+        coefficient = Fraction(1, 4**n * factorial(n) * factorial(n + 1))
+        assert_equal(f"circular Wilson loop weak coefficient n={n}", coefficient, expected)
+
+
+def check_bremsstrahlung_bessel_derivative_relation() -> None:
+    # With W(lambda)=2 I_1(sqrt(lambda))/sqrt(lambda), the Ward-identity
+    # algebra uses lambda d log(W)/d lambda = sqrt(lambda) I_2/(2 I_1).
+    max_order = 8
+    w_series = [
+        Fraction(1, 4**n * factorial(n) * factorial(n + 1))
+        for n in range(max_order + 1)
+    ]
+    lambda_w_prime = [Fraction(0)] + [
+        Fraction(n) * w_series[n] for n in range(1, max_order + 1)
+    ]
+    log_derivative = series_divide(lambda_w_prime, w_series, max_order)
+
+    i2_reduced = [
+        Fraction(1, 4**n * factorial(n) * factorial(n + 2))
+        for n in range(max_order + 1)
+    ]
+    ratio = series_divide(i2_reduced, w_series, max_order)
+    bessel_ratio_expression = [Fraction(0)] + [
+        Fraction(1, 4) * ratio[n - 1] for n in range(1, max_order + 1)
+    ]
+
+    assert_equal(
+        "Bremsstrahlung derivative/Bessel-ratio series",
+        log_derivative,
+        bessel_ratio_expression,
+    )
+
+    expected_first_terms = [
+        Fraction(0),
+        Fraction(1, 8),
+        Fraction(-1, 192),
+        Fraction(1, 3072),
+    ]
+    for n, expected in enumerate(expected_first_terms):
+        assert_equal(
+            f"lambda d log W coefficient n={n}",
+            log_derivative[n],
+            expected,
+        )
+
+
 def main() -> None:
     check_beta_function_cancellations()
     check_exact_marginal_coupling_chart()
@@ -213,6 +298,8 @@ def main() -> None:
     check_symmetric_traceless_projector()
     check_stress_tensor_multiplet_normalization()
     check_planar_chiral_primary_ope_coefficients()
+    check_circular_wilson_loop_semicircle_series()
+    check_bremsstrahlung_bessel_derivative_relation()
     print("All N=4 SYM SCFT foundation checks passed.")
 
 

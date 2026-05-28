@@ -659,6 +659,242 @@ on \(\mathbb C^2\).  The partition function reduces to the ordinary Gaussian
 \]
 \end{example}
 
+\begin{definition}[Circular Wilson-loop matrix-model coupling]
+\label{def:circular-wilson-loop-matrix-coupling}
+For \(G=U(N)\), let \(X\) denote the Hermitian matrix whose eigenvalues
+\(x_i\) are the dimensionless arguments that appear in the localized
+fundamental half-BPS circular Wilson loop,
+\[
+  W_{\square}(X)
+  =
+  \frac1N\operatorname{Tr}_{\square}\ee^{X}
+  =
+  \frac1N\sum_{i=1}^N\ee^{x_i}.
+  \label{eq:localized-circular-wilson-insertion}
+\]
+The circular-loop Gaussian coupling \(\lambda_{\rm circ}\) is defined by
+writing the \(\mathcal N=4\) localized \(U(N)\) Gaussian model in the form
+\[
+  \dd\mu_{\lambda_{\rm circ},N}(X)
+  =
+  \frac1{Z_{\lambda_{\rm circ},N}}
+  \exp\!\left(
+    -\frac{2N}{\lambda_{\rm circ}}\operatorname{Tr}_{\square}X^2
+  \right)\dd X ,
+  \label{eq:circular-wilson-gaussian-matrix-measure}
+\]
+or, after diagonalizing \(X\),
+\[
+  \dd\mu_{\lambda_{\rm circ},N}(x)
+  \propto
+  \prod_{i=1}^N dx_i\,
+  \exp\!\left(
+    -\frac{2N}{\lambda_{\rm circ}}\sum_{i=1}^Nx_i^2
+  \right)
+  \prod_{i<j}(x_i-x_j)^2 .
+  \label{eq:circular-wilson-eigenvalue-measure}
+\]
+This is a definition of the coupling that enters the exact circular-loop
+answer.  Converting it to a Lagrangian symbol such as \(g_{\rm YM}^2N\)
+requires using the same fundamental-matrix normalization for the scalar in
+the Wilson-loop exponent and for the quadratic form in the localized
+Gaussian.  Rescaling the Lie-algebra generators rescales both data; the
+matrix model \eqref{eq:circular-wilson-gaussian-matrix-measure} is the
+normalization-invariant statement.
+\end{definition}
+
+\begin{theorem}[Planar circular Wilson loop from the Gaussian model]
+\label{thm:planar-circular-wilson-bessel}
+In the large-\(N\) limit of
+\eqref{eq:circular-wilson-eigenvalue-measure}, with
+\(\lambda_{\rm circ}>0\) fixed, the normalized eigenvalue density is
+\[
+  \rho_{\lambda_{\rm circ}}(x)
+  =
+  \frac{2}{\pi\lambda_{\rm circ}}
+  \sqrt{\lambda_{\rm circ}-x^2}\,
+  \mathbf 1_{[-\sqrt{\lambda_{\rm circ}},\sqrt{\lambda_{\rm circ}}]}(x).
+  \label{eq:circular-wilson-semicircle-density}
+\]
+Consequently the planar fundamental circular Wilson loop is
+\[
+  \lim_{N\to\infty}
+  \left\langle
+    \frac1N\operatorname{Tr}_{\square}\ee^X
+  \right\rangle_{\lambda_{\rm circ},N}
+  =
+  \int dx\,\rho_{\lambda_{\rm circ}}(x)\ee^x
+  =
+  \frac{2}{\sqrt{\lambda_{\rm circ}}}
+  I_1\!\left(\sqrt{\lambda_{\rm circ}}\right),
+  \label{eq:planar-circular-wilson-bessel}
+\]
+where \(I_1\) is the modified Bessel function.
+\end{theorem}
+
+\begin{proof}
+For an empirical density \(\rho\) with \(\int\rho(x)dx=1\), the large-\(N\)
+functional obtained from \eqref{eq:circular-wilson-eigenvalue-measure} is,
+up to an additive constant,
+\[
+  \mathcal F[\rho]
+  =
+  \frac{2}{\lambda_{\rm circ}}\int x^2\rho(x)dx
+  -
+  \int\!\!\int
+  \rho(x)\rho(y)\log|x-y|\,dx\,dy .
+  \label{eq:circular-wilson-density-functional}
+\]
+Varying \(\rho\) under the normalization constraint gives, on the support of
+the minimizing density,
+\[
+  \frac{2}{\lambda_{\rm circ}}x^2
+  -
+  2\int\rho(y)\log|x-y|\,dy
+  =
+  \text{constant}.
+  \label{eq:circular-wilson-euler-lagrange}
+\]
+Differentiating inside the support gives the singular-integral equation
+\[
+  \frac{4x}{\lambda_{\rm circ}}
+  =
+  2\,\operatorname{p.v.}
+  \int\frac{\rho(y)}{x-y}\,dy .
+  \label{eq:circular-wilson-saddle-equation}
+\]
+The Cauchy transform of
+\eqref{eq:circular-wilson-semicircle-density} is
+\[
+  G(z)
+  =
+  \int
+  \frac{\rho_{\lambda_{\rm circ}}(y)}{z-y}\,dy
+  =
+  \frac{2}{\lambda_{\rm circ}}
+  \left(z-\sqrt{z^2-\lambda_{\rm circ}}\right),
+  \label{eq:circular-wilson-cauchy-transform}
+\]
+where the branch is chosen so that \(G(z)\sim z^{-1}\) at infinity.  The
+average of the boundary values on the cut is
+\[
+  \frac12\bigl(G(x+\ii0)+G(x-\ii0)\bigr)
+  =
+  \frac{2x}{\lambda_{\rm circ}},
+\]
+which is precisely the principal value integral in
+\eqref{eq:circular-wilson-saddle-equation}.  The normalization of
+\eqref{eq:circular-wilson-semicircle-density} follows from
+\(\int_{-a}^{a}\sqrt{a^2-x^2}\,dx=\pi a^2/2\), with
+\(a^2=\lambda_{\rm circ}\).
+Because the quadratic potential is strictly convex, the logarithmic-energy
+minimizer is unique.  The displayed density satisfies the Euler--Lagrange
+equation on its support.  Outside the support, differentiating the difference
+between the left side of
+\eqref{eq:circular-wilson-euler-lagrange} and its constant value gives
+\[
+  \frac{4}{\lambda_{\rm circ}}
+  \sqrt{x^2-\lambda_{\rm circ}}
+  \quad (x>\sqrt{\lambda_{\rm circ}})
+\]
+and the corresponding negative derivative on the left component
+\(x<-\sqrt{\lambda_{\rm circ}}\).  Hence the effective potential is larger
+off the support, so the candidate density is the equilibrium density.
+
+It remains to evaluate the loop insertion.  Put
+\(z=\sqrt{\lambda_{\rm circ}}\) and \(x=zt\).  Then
+\[
+  \int dx\,\rho_{\lambda_{\rm circ}}(x)\ee^x
+  =
+  \frac{2}{\pi}
+  \int_{-1}^{1}\ee^{zt}\sqrt{1-t^2}\,dt .
+  \label{eq:circular-wilson-bessel-integral-step}
+\]
+The integral representation
+\[
+  I_1(z)
+  =
+  \frac{z}{\pi}
+  \int_{-1}^{1}\ee^{zt}\sqrt{1-t^2}\,dt
+  \label{eq:bessel-i1-semicircle-representation}
+\]
+gives \eqref{eq:planar-circular-wilson-bessel}.  Equivalently, expanding
+\(\ee^x\) and using the even moments
+\[
+  \int dx\,\rho_{\lambda_{\rm circ}}(x)x^{2n}
+  =
+  \frac{1}{n+1}\binom{2n}{n}
+  \left(\frac{\lambda_{\rm circ}}{4}\right)^n
+  \label{eq:circular-wilson-semicircle-moments}
+\]
+gives the same series
+\[
+  \sum_{n=0}^{\infty}
+  \frac1{n!(n+1)!}
+  \left(\frac{\lambda_{\rm circ}}{4}\right)^n
+  =
+  \frac{2}{\sqrt{\lambda_{\rm circ}}}
+  I_1\!\left(\sqrt{\lambda_{\rm circ}}\right).
+  \label{eq:circular-wilson-bessel-series}
+\]
+\end{proof}
+
+\begin{proposition}[Bremsstrahlung derivative algebra]
+\label{prop:bremsstrahlung-derivative-algebra}
+Assume the protected circular-loop Ward identity
+\[
+  B(\lambda_{\rm circ})
+  =
+  \frac{1}{2\pi^2}
+  \lambda_{\rm circ}\frac{d}{d\lambda_{\rm circ}}
+  \log
+  \left\langle
+    \frac1N\operatorname{Tr}_{\square}\ee^X
+  \right\rangle_{\rm planar}.
+  \label{eq:bremsstrahlung-circular-loop-ward}
+\]
+Then Theorem~\ref{thm:planar-circular-wilson-bessel} gives
+\[
+  B(\lambda_{\rm circ})
+  =
+  \frac{\sqrt{\lambda_{\rm circ}}}{4\pi^2}
+  \frac{I_2(\sqrt{\lambda_{\rm circ}})}
+       {I_1(\sqrt{\lambda_{\rm circ}})} .
+  \label{eq:bremsstrahlung-bessel-from-loop}
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(z=\sqrt{\lambda_{\rm circ}}\) and
+\[
+  W_0(z)=\frac{2I_1(z)}{z}.
+\]
+Since \(\lambda_{\rm circ}\partial_{\lambda_{\rm circ}}
+=(z/2)\partial_z\),
+\[
+  \lambda_{\rm circ}\frac{d}{d\lambda_{\rm circ}}\log W_0
+  =
+  \frac z2
+  \left(
+    \frac{I_1'(z)}{I_1(z)}-\frac1z
+  \right).
+\]
+The modified-Bessel recurrence
+\[
+  I_1'(z)=I_2(z)+\frac1z I_1(z)
+  \label{eq:bessel-i1-derivative-recurrence}
+\]
+therefore gives
+\[
+  \lambda_{\rm circ}\frac{d}{d\lambda_{\rm circ}}\log W_0
+  =
+  \frac z2\frac{I_2(z)}{I_1(z)} .
+  \label{eq:circular-loop-log-derivative-bessel}
+\]
+Substitution into \eqref{eq:bremsstrahlung-circular-loop-ward} proves
+\eqref{eq:bremsstrahlung-bessel-from-loop}.
+\end{proof}
+
 \section{\texorpdfstring
   {\(S^3\) Localization In Three-Dimensional \(\mathcal N=2\) Theories}
   {S3 Localization In Three-Dimensional N=2 Theories}}

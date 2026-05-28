@@ -298,6 +298,11 @@ structure and the pair-of-pants-to-hexagons cut.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
   are checked in
   `calculation-checks/planar_n4_integrability_checks.py`.
+- The circular-loop derivation used for the planar Bremsstrahlung formula is
+  now cross-referenced to the localization chapter, where the Gaussian
+  matrix-model coupling, semicircle density, Bessel integral, and
+  derivative relation are derived.  The exact rational Bessel-series checks
+  are in `calculation-checks/susy_n4_scft_checks.py`.
 
 ## External References Used In Current Pass
 

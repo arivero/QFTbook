@@ -681,7 +681,9 @@ Current checks:
   exact-marginal coupling chart, theta-periodicity and \(SL(2,\mathbb Z)\)
   generator arithmetic, \(a=c=\dim\mathfrak g/4\), the \(SO(6)\)
   symmetric-traceless projector, stress-tensor-multiplet two-point
-  normalization, and planar half-BPS chiral OPE coefficients.
+  normalization, planar half-BPS chiral OPE coefficients, the semicircle
+  moments behind the circular Wilson-loop Bessel function, and the
+  derivative/Bessel-ratio algebra for the planar Bremsstrahlung function.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

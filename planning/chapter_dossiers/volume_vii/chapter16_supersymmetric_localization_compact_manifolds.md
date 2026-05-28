@@ -112,7 +112,12 @@
     \(S^4\) field-theoretic localized path integral is recorded as a
     field-theoretic matching hypothesis unless a regulator proves it.
 12. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
-   Gaussian matrix model with the Weyl/Vandermonde factor.
+   Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
+   defines the circular-loop Gaussian coupling, derives the planar
+   semicircle density, evaluates the half-BPS circular Wilson loop as
+   \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and derives
+   the Bessel algebra behind the Bremsstrahlung function from the protected
+   circular-loop Ward identity.
 13. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
 14. The round-\(S^3\) determinant can be written in \(\ell\)-function or
@@ -134,6 +139,11 @@
   derivative, finite double-sine reflection and chiral pole conventions, the
   \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
   round-\(S^3\) conjugate-chiral-pair integral.
+- `calculation-checks/susy_n4_scft_checks.py` verifies the exact rational
+  series consequences of the circular-loop derivation: the Catalan
+  semicircle moments reproduce the Bessel coefficients, and
+  \(\lambda d\log W/d\lambda\) agrees term by term with the
+  \(\sqrt{\lambda}I_2/(2I_1)\) Bessel-ratio expression.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
   dimension count, Uhlenbeck stratum codimension arithmetic, the one-box
   Gieseker tangent Euler-class specialization, and the \(SU(2)\)
