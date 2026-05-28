@@ -847,7 +847,8 @@ Current checks:
   two-state glueball/hybrid avoided-crossing algebra, and the quarkonium
   spin-centroid algebra for fine and hyperfine splittings, the Coulombic
   \(1S\) pNRQCD energy and
-  wavefunction-at-origin normalization, and the linear elastic-pole
+  wavefunction-at-origin normalization, the leading \(1S\) hyperfine contact
+  splitting, and the linear elastic-pole
   mass-width coordinate, plus the nucleon Sachs Dirac--Pauli coordinate
   transform, the stable-current three-point extraction ratio with
   excited-state suppression factors, the forward Compton/Baldin dispersion

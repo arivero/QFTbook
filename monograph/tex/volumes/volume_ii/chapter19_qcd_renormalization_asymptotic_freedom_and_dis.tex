@@ -4101,6 +4101,62 @@ differences defined by
 \eqref{eq:qcd-quarkonium-spin-orbit-eigenvalues}--\eqref{eq:qcd-quarkonium-hyperfine-centroid},
 rather than to a freestanding constituent-potential model.
 
+\begin{proposition}[Leading weak-coupling \(1S\) hyperfine coordinate]
+\label{prop:qcd-quarkonium-one-s-hyperfine-contact}
+In the weak-coupling \(1S\) chart of
+Proposition~\ref{prop:qcd-coulombic-quarkonium-one-s}, retain the leading
+chromomagnetic contact operator
+\begin{equation}
+  H_{\rm ss}^{1S}
+  =
+  \frac{8\pi\alpha_C\,c_F(\mu)^2}{3m_Q^2}\,
+  \mathbf S_Q\cdot\mathbf S_{\bar Q}\,
+  \delta^{(3)}(\mathbf r),
+  \label{eq:qcd-pnrqcd-contact-spin-spin}
+\end{equation}
+where \(c_F(\mu)\) is the chromomagnetic matching coefficient in the same
+short-distance mass and coupling scheme as \(m_Q\) and \(\alpha_C\).  To first
+order in this operator,
+\begin{equation}
+  M(^3S_1)-M(^1S_0)
+  =
+  \frac{8\pi\alpha_C\,c_F(\mu)^2}{3m_Q^2}
+  |\psi_{1S}(0)|^2
+  =
+  \frac{m_Q\,c_F(\mu)^2\,\alpha_C^4}{3}.
+  \label{eq:qcd-one-s-hyperfine-contact-result}
+\end{equation}
+The displayed number is a leading coordinate in the declared weak-coupling
+pNRQCD scheme.  It is not by itself a precision prediction for charmonium or
+bottomonium until the mass scheme, higher-order potentials, ultrasoft terms,
+nonperturbative corrections, and continuum-limit uncertainties have been
+specified.
+\end{proposition}
+
+\begin{proof}
+First-order perturbation theory in the normalized Coulombic \(1S\) state gives
+\[
+  \langle H_{\rm ss}^{1S}\rangle_{S}
+  =
+  \frac{8\pi\alpha_C\,c_F(\mu)^2}{3m_Q^2}
+  |\psi_{1S}(0)|^2\,
+  \langle\mathbf S_Q\cdot\mathbf S_{\bar Q}\rangle_S .
+\]
+For the triplet \(S=1\) the spin expectation value is \(1/4\), and for the
+singlet \(S=0\) it is \(-3/4\), as shown in
+\eqref{eq:qcd-quarkonium-spin-spin-eigenvalues}.  Their difference is one, so
+the triplet-singlet mass splitting is exactly the contact coefficient times
+\(|\psi_{1S}(0)|^2\).  Substituting
+\eqref{eq:qcd-coulombic-one-s-energy-origin},
+\[
+  |\psi_{1S}(0)|^2=\frac{(m_Q\alpha_C)^3}{8\pi},
+\]
+gives the second equality in
+\eqref{eq:qcd-one-s-hyperfine-contact-result}.  The proof uses only the
+declared pNRQCD contact operator and the Coulombic \(1S\) wavefunction; all
+other terms belong to the stated remainder of the weak-coupling chart.
+\end{proof}
+
 \begin{controlledapproximation}[Quarkonium scale separation]
 \label{ca:nrqcd-pnrqcd-scale-separation}
 Let \(v_{\rm rel}\) be the velocity coordinate assigned to a family of

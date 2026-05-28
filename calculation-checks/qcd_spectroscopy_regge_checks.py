@@ -570,6 +570,28 @@ def check_coulombic_quarkonium_ground_state() -> None:
     )
 
 
+def check_quarkonium_one_s_hyperfine_contact() -> None:
+    # The retained pNRQCD Fermi contact term is
+    # (8*pi*alpha_C*c_F^2/(3*m^2)) S_Q.S_Qbar delta^3(r).  After stripping the
+    # common displayed pi factors, |psi_1S(0)|^2=(m alpha_C)^3/(8*pi), so the
+    # triplet-singlet difference is m*c_F^2*alpha_C^4/3.
+    mass = Fraction(13, 5)
+    alpha_c = Fraction(7, 11)
+    c_f = Fraction(17, 13)
+    triplet_spin = Fraction(1, 4)
+    singlet_spin = Fraction(-3, 4)
+    spin_difference = triplet_spin - singlet_spin
+    psi_origin_without_pi = (mass * alpha_c) ** 3 / 8
+    prefactor_without_pi = 8 * alpha_c * c_f**2 / (3 * mass**2)
+    splitting = prefactor_without_pi * psi_origin_without_pi * spin_difference
+    assert_equal("1S hyperfine spin difference", spin_difference, Fraction(1))
+    assert_equal(
+        "1S hyperfine contact splitting",
+        splitting,
+        mass * c_f**2 * alpha_c**4 / 3,
+    )
+
+
 def check_linear_elastic_pole_coordinate() -> None:
     # With K^{-1}=A(s-M^2) and second-sheet denominator K^{-1}+i rho,
     # the pole is s_*=M^2-i rho/A.  The narrow width coordinate satisfies
@@ -799,6 +821,7 @@ def main() -> None:
     check_two_state_mixing_algebra()
     check_quarkonium_spin_centroid()
     check_coulombic_quarkonium_ground_state()
+    check_quarkonium_one_s_hyperfine_contact()
     check_linear_elastic_pole_coordinate()
     check_nucleon_sachs_coordinate_transform()
     check_stable_current_three_point_ratio()
