@@ -827,9 +827,10 @@ Current checks:
   hadron-spectroscopy and Regge sections, including the octet
   Gell-Mann--Okubo relation, decuplet equal spacing, Veneziano-residue
   polynomial degrees and coefficients, the rational coefficient in the
-  classical open-flux-tube Regge slope, the \(S\)-wave Luescher zeta
-  normalization, the \(\pi\pi\) isospin-crossing matrices and Roy-subtraction
-  polynomial slope ratios, and the one-channel Luescher/K-matrix sign
+  classical open-flux-tube Regge slope, triple-Regge exponent bookkeeping,
+  eikonal Poisson normalization, the \(S\)-wave Luescher zeta normalization,
+  the \(\pi\pi\) isospin-crossing matrices and Roy-subtraction polynomial
+  slope ratios, and the one-channel Luescher/K-matrix sign
   convention that maps finite-volume energies to a second-sheet pole
   equation, together with the coupled-channel determinant reduction,
   sheet-sign bookkeeping, and the quarkonium spin-centroid algebra for fine

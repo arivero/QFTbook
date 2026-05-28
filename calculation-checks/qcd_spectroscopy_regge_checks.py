@@ -107,6 +107,31 @@ def check_rotating_string_slope_coefficient() -> None:
     )
 
 
+def check_triple_regge_exponents_and_eikonal_poisson() -> None:
+    alpha_i = Fraction(4, 3)
+    alpha_j = Fraction(5, 4)
+    alpha_k = Fraction(7, 6)
+    gap_exponent = alpha_i + alpha_j - 2
+    missing_mass_exponent = alpha_k - 1
+    assert_equal("triple-Regge rapidity-gap exponent", gap_exponent, Fraction(7, 12))
+    assert_equal("triple-Regge missing-mass exponent", missing_mass_exponent, Fraction(1, 6))
+
+    delta = Fraction(1, 9)
+    slope_t = Fraction(-2, 15)
+    alpha_p_t = 1 + delta + slope_t
+    assert_equal("triple-Pomeron gap exponent", 2 * alpha_p_t - 2, 2 * (delta + slope_t))
+
+    # For a one-channel absorptive eikonal, the probabilities
+    # P_n=e^{-Omega} Omega^n/n! sum to one.  Equivalently, every positive
+    # coefficient in the formal product e^{-Omega} e^{Omega} vanishes.
+    for degree in range(1, 8):
+        coefficient = sum(
+            Fraction((-1) ** k, factorial(k) * factorial(degree - k))
+            for k in range(degree + 1)
+        )
+        assert_equal(f"eikonal Poisson normalization coefficient {degree}", coefficient, Fraction(0))
+
+
 def check_luscher_kmatrix_pole_algebra() -> None:
     # From delta + phi = n*pi, cot(delta) = -cot(phi).  With
     # K^{-1}=rho*cot(delta), finite-volume levels therefore sample
@@ -399,6 +424,7 @@ def main() -> None:
     check_decuplet_equal_spacing()
     check_veneziano_residue_degree()
     check_rotating_string_slope_coefficient()
+    check_triple_regge_exponents_and_eikonal_poisson()
     check_luscher_kmatrix_pole_algebra()
     check_swave_luscher_zeta_normalization()
     check_pipi_crossing_and_roy_subtractions()

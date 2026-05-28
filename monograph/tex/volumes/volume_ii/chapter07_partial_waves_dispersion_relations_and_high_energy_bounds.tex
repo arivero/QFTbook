@@ -1333,6 +1333,147 @@ input as the Froissart--Martin theorem; the eikonal estimate explains the
 impact-parameter dynamics behind saturation but does not replace the
 axiomatic bound.
 
+\begin{definition}[Inclusive triple-Regge kinematics]
+\label{def:inclusive-triple-regge-kinematics}
+For an inclusive reaction
+\[
+  a(p_a)+b(p_b)\longrightarrow c(p_c)+X,
+\]
+write
+\[
+  s=(p_a+p_b)^2,\qquad
+  t=(p_a-p_c)^2,\qquad
+  M_X^2=(p_a+p_b-p_c)^2 .
+\]
+The triple-Regge limit is the limiting regime
+\[
+  s\to\infty,\qquad
+  M_X^2\to\infty,\qquad
+  t\ {\rm fixed},\qquad
+  \xi:=\frac{M_X^2}{s}\to0.
+  \label{eq:triple-regge-limit-definition}
+\]
+The particle \(c\) is separated from the unobserved system \(X\) by the large
+rapidity interval \(\log(s/M_X^2)\), while the internal energy available to
+the inclusive subsystem \(X\) grows like \(M_X\).  Choose once and for all a
+positive mass scale \(s_0\) and define the dimensionless inclusive density
+\[
+  \mathcal D_{a b\to c X}(s,M_X^2,t)
+  :=
+  s_0^2\,\frac{\dd^2\sigma(a b\to c X)}{\dd t\,\dd M_X^2}.
+  \label{eq:triple-regge-dimensionless-density}
+\]
+\end{definition}
+
+\begin{hypothesis}[Triple-Regge factorization datum]
+\label{hyp:triple-regge-factorization-datum}
+For the inclusive density in
+\eqref{eq:triple-regge-dimensionless-density}, a triple-Regge datum on a
+domain \(t\in U\) consists of:
+\begin{enumerate}
+  \item Regge trajectories \(\alpha_i(t)\) for the two \(t\)-channel
+  exchanges adjacent to the measured transition \(a\to c\);
+  \item Regge trajectories \(\alpha_k(0)\) for the forward singularities
+  governing the inclusive \(b\)-to-\(X\) discontinuity;
+  \item coefficient functions \(G_{ijk}(t)\), including the two external
+  Regge residues and a local triple-Regge vertex, in a stated phase and
+  signature convention;
+  \item a background term \(B(s,M_X^2,t)\) whose growth in the variables
+  \(s/M_X^2\) and \(M_X^2/s_0\) is bounded by exponents strictly below the
+  retained trajectories on the chosen domain.
+\end{enumerate}
+The datum asserts the asymptotic representation
+\begin{equation}
+  \mathcal D_{a b\to c X}(s,M_X^2,t)
+  =
+  \sum_{i,j,k}
+  G_{ijk}(t)
+  \left(\frac{s}{M_X^2}\right)^{\alpha_i(t)+\alpha_j(t)-2}
+  \left(\frac{M_X^2}{s_0}\right)^{\alpha_k(0)-1}
+  +B(s,M_X^2,t)
+  \label{eq:triple-regge-factorization-formula}
+\end{equation}
+in the limit \eqref{eq:triple-regge-limit-definition}.  Equation
+\eqref{eq:triple-regge-factorization-formula} is a precise factorization
+hypothesis about a six-point discontinuity.  A derivation from local QFT
+requires the corresponding six-point analyticity, complex angular-momentum
+continuation, signature, and discontinuity hypotheses in addition to the
+two-body Sommerfeld--Watson representation.
+\end{hypothesis}
+
+\begin{proposition}[Exponent bookkeeping in a triple-Regge datum]
+\label{prop:triple-regge-exponent-bookkeeping}
+Assume the datum of Hypothesis~\ref{hyp:triple-regge-factorization-datum} and
+fix a single term \((i,j,k)\).  In the variables
+\[
+  Y:=\log\frac{s}{M_X^2},\qquad
+  Y_X:=\log\frac{M_X^2}{s_0},
+\]
+the contribution of that term to the dimensionless density is
+\begin{equation}
+  G_{ijk}(t)
+  \exp\!\left[
+    \bigl(\alpha_i(t)+\alpha_j(t)-2\bigr)Y
+    +\bigl(\alpha_k(0)-1\bigr)Y_X
+  \right].
+  \label{eq:triple-regge-rapidity-exponent-form}
+\end{equation}
+For the diffractive \(PPP\) contribution, where the same even-signature
+vacuum trajectory appears on all three Reggeon lines,
+\begin{equation}
+  \mathcal D^{PPP}
+  =
+  G_{PPP}(t)
+  \left(\frac{s}{M_X^2}\right)^{2\alpha_P(t)-2}
+  \left(\frac{M_X^2}{s_0}\right)^{\alpha_P(0)-1}
+  \label{eq:triple-pomeron-specialization}
+\end{equation}
+up to the declared background and lower trajectories.  If
+\(\alpha_P(t)=1+\Delta+\alpha'_P t+O(t^2)\), then at small fixed \(t\)
+the dependence on the rapidity gap is
+\[
+  \exp\!\left[2(\Delta+\alpha'_P t+O(t^2))Y\right].
+\]
+\end{proposition}
+
+\begin{proof}
+Taking logarithms of the two dimensionless ratios in
+\eqref{eq:triple-regge-factorization-formula} gives
+\[
+  \left(\frac{s}{M_X^2}\right)^{\alpha_i(t)+\alpha_j(t)-2}
+  \left(\frac{M_X^2}{s_0}\right)^{\alpha_k(0)-1}
+  =
+  \exp\!\left[
+    \bigl(\alpha_i(t)+\alpha_j(t)-2\bigr)Y
+    +\bigl(\alpha_k(0)-1\bigr)Y_X
+  \right].
+\]
+The \(PPP\) specialization is obtained by setting \(i=j=k=P\).  Expanding
+\(\alpha_P(t)\) near \(t=0\) gives the final displayed expression.
+\end{proof}
+
+\begin{remark}[AGK rules and what the eikonal argument proves]
+\label{rem:agk-eikonal-status}
+Abramovsky--Gribov--Kancheli cutting rules are statements about
+discontinuities of multi-Reggeon exchange diagrams after a definite
+Reggeon-field-theory or eikonal representation has been specified.  The
+minimal result that follows from the absorptive one-channel eikonal used
+above is the Poisson law for cut elementary exchanges at fixed impact
+parameter:
+\[
+  S(b)=\ee^{-\Omega(b)/2}
+  \quad\Longrightarrow\quad
+  P_n(b)=\ee^{-\Omega(b)}\frac{\Omega(b)^n}{n!},
+  \qquad
+  \sum_{n=0}^\infty P_n(b)=1.
+  \label{eq:eikonal-poisson-cut-exchanges}
+\]
+This identity is a consequence of unitarity for that eikonal model.  The full
+AGK cancellation pattern for general Reggeon diagrams requires additional
+analytic continuation, signature, and cutting hypotheses; in this monograph it
+will be used only after those hypotheses have been declared.
+\end{remark}
+
 \section{The Froissart--Martin Mechanism}
 
 Define the positive total weight
