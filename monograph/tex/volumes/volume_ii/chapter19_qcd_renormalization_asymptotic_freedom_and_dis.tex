@@ -5197,14 +5197,228 @@ the \(I=\frac32\), \(J^P=\frac32^+\) \(P\)-wave \(\pi N\) amplitude.  A
 Roper-type nucleon resonance is a pole in the \(I=\frac12\),
 \(J^P=\frac12^+\) channel, with residues into the retained \(\pi N\),
 \(\eta N\), and multi-hadron channels determined by the chosen coupled-channel
-datum.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
+amplitude.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
 \(J^P=\frac12^-\), and its minimal two-body description couples the
 \(\bar K N\) and \(\pi\Sigma\) \(S\)-wave channels.  In each case the QCD
 statement is the sheet-labeled pole of
 Definition~\ref{def:qcd-baryon-meson-resonance-datum}.  A finite-volume
-calculation supplies this datum through a generalized eigenvalue problem and
+calculation supplies this pole information through a generalized eigenvalue problem and
 a coupled-channel quantization condition; a dispersive calculation supplies
 it through the corresponding analyticity and crossing assumptions.
+
+\begin{definition}[Light-baryon spectroscopy charts]
+\label{def:qcd-light-baryon-spectroscopy-charts}
+Work with baryon number \(B=1\) and three light flavors
+\((u,d,s)\).  Let strangeness be denoted by \(S_{\rm str}\), so the
+hypercharge used in \eqref{eq:qcd-baryon-octet-gmo-chart} is
+\(Y=B+S_{\rm str}=1+S_{\rm str}\).  The ground-state flavor multiplet charts
+used below are:
+\begin{center}
+\small
+\begin{tabular}{c|c|c|c|c}
+\textbf{multiplet} & \textbf{entry} & \(\mathbf I\) & \(\mathbf Y\) & \(\mathbf J^P\)\\
+\hline
+\(\mathbf 8\) & \(N=(p,n)\) & \(\frac12\) & \(1\) & \(\frac12^+\)\\
+\(\mathbf 8\) & \(\Lambda\) & \(0\) & \(0\) & \(\frac12^+\)\\
+\(\mathbf 8\) & \(\Sigma=(\Sigma^+,\Sigma^0,\Sigma^-)\) & \(1\) & \(0\) & \(\frac12^+\)\\
+\(\mathbf 8\) & \(\Xi=(\Xi^0,\Xi^-)\) & \(\frac12\) & \(-1\) & \(\frac12^+\)\\
+\hline
+\(\mathbf {10}\) & \(\Delta\) & \(\frac32\) & \(1\) & \(\frac32^+\)\\
+\(\mathbf {10}\) & \(\Sigma^\ast\) & \(1\) & \(0\) & \(\frac32^+\)\\
+\(\mathbf {10}\) & \(\Xi^\ast\) & \(\frac12\) & \(-1\) & \(\frac32^+\)\\
+\(\mathbf {10}\) & \(\Omega^-\) & \(0\) & \(-2\) & \(\frac32^+\)
+\end{tabular}
+\end{center}
+The table is a chart of exact conserved quantum numbers and approximate
+flavor-\(SU(3)\) organization.  The masses are QCD spectral values obtained
+from the color-singlet Hamiltonian or from a regulator converging to it.
+Equation~\eqref{eq:qcd-baryon-gell-mann-okubo} and
+\eqref{eq:qcd-decuplet-equal-spacing} are first-order coordinates on these
+spectral values; they are not definitions of the baryons.
+\end{definition}
+
+\begin{definition}[Excited light-baryon channel chart]
+\label{def:qcd-excited-light-baryon-channel-chart}
+An excited light-baryon entry in this monograph is specified by:
+\begin{enumerate}[label=(\roman*)]
+\item exact charges \(B=1\), \(I\), \(S_{\rm str}\), \(J^P\), and any
+  additional exact discrete quantum numbers of the chosen mass convention;
+\item a finite list of two-body and effective multi-hadron channels retained
+  in the reconstruction of Definition~\ref{def:qcd-baryon-meson-resonance-datum};
+\item a sheet-labeled pole \(s_\ast\) of the corresponding color-singlet
+  amplitude, or an isolated stable level if the state lies below every open
+  channel in the stated volume and mass regime;
+\item the residue projective vector into the retained channels, when the
+  interpretation of the pole requires an overlap or composition coordinate.
+\end{enumerate}
+The following entries are the minimal light-baryon examples that must be
+carried through any concrete coupled-channel analysis:
+\begin{enumerate}[label=(\alph*)]
+\item \(\Delta(1232)\): charges
+  \((I,S_{\rm str},J^P)=(\frac32,0,\frac32^+)\); retained channel
+  \(\pi N\) in the \(P\)-wave; QCD output a nearby second-sheet pole of
+  \(t_{\pi N,\pi N}^{3/2^+}\).
+\item \(N(1440)\)-type channel: charges
+  \((\frac12,0,\frac12^+)\); retained channels
+  \(\pi N,\eta N,\pi\pi N\); QCD output a coupled-channel pole whose
+  radial-label interpretation comes from pole motion and source overlaps.
+\item \(N(1535)\)-type channel: charges
+  \((\frac12,0,\frac12^-)\); retained channels
+  \(\pi N,\eta N,K\Lambda,K\Sigma\); QCD output an \(S\)-wave pole with
+  residue data.
+\item \(\Sigma(1385)\): charges \((1,-1,\frac32^+)\); retained channels
+  \(\pi\Lambda,\pi\Sigma,\bar K N\); QCD output a strange \(P\)-wave pole.
+\item \(\Lambda(1405)\)-type channel: charges \((0,-1,\frac12^-)\);
+  retained channels \(\bar K N,\pi\Sigma\); QCD output one or more
+  sheet-labeled \(S\)-wave poles.
+\item \(\Lambda(1520)\): charges \((0,-1,\frac32^-)\); retained channels
+  \(\bar K N,\pi\Sigma\); QCD output a \(D\)-wave dominated pole coordinate.
+\end{enumerate}
+The words ``Roper'', ``\(\Lambda(1405)\)'', and similar labels are therefore
+shorthand for entries in this chart.  A lattice calculation supplies the
+finite-volume spectrum and operator overlaps; a dispersive or
+Hamiltonian-scattering analysis supplies an analytic continuation.  Without
+that continuation there is no invariant resonance mass or width.
+\end{definition}
+
+\begin{definition}[Heavy-baryon QCD/HQET chart]
+\label{def:qcd-heavy-baryon-hqet-chart}
+Let \(Q=c\) or \(b\), and consider one-heavy-quark baryons \(Qqq\).  After
+the heavy-quark velocity \(v^\mu\) and mass scheme for \(m_Q\) are fixed,
+the color-singlet Hilbert-space sector admits an HQET expansion in which the
+light degrees of freedom carry angular momentum \(j_\ell\) and flavor
+quantum numbers.  The basic entries are:
+\begin{center}
+\small
+\begin{tabular}{p{0.24\textwidth}|p{0.28\textwidth}|c|p{0.23\textwidth}}
+\textbf{family} & \textbf{light flavor} & \(\mathbf{j_\ell}\) &
+\textbf{\(J^P\) at leading order}\\
+\hline
+\(\Lambda_Q,\Xi_Q\) & \(\overline{\mathbf 3}\) of light flavor &
+\(0\) & \(\frac12^+\)\\
+\(\Sigma_Q,\Xi'_Q,\Omega_Q\) & \(\mathbf 6\) of light flavor &
+\(1\) & \(\frac12^+,\frac32^+\)
+\end{tabular}
+\end{center}
+The leading HQET statement is a spectral degeneracy at fixed \(j_\ell\) and
+light-flavor representation, before \(1/m_Q\) chromomagnetic terms are
+included.  Doubly heavy baryons such as \(\Xi_{cc}\), \(\Xi_{bc}\), and
+\(\Omega_{cc}\) are QCD sectors with two heavy fields and one light field.
+They may be organized by heavy-diquark variables only after a scale
+separation and color-\(\overline{\mathbf 3}\) matching calculation has been
+specified.
+\end{definition}
+
+\begin{definition}[Near-threshold heavy spectroscopy chart]
+\label{def:qcd-near-threshold-heavy-spectroscopy-chart}
+Heavy-flavor spectroscopy contains stable baryon sectors and resonance or
+near-threshold pole sectors.  The following chart fixes the QCD object before
+any model language is introduced:
+\begin{enumerate}[label=(\alph*)]
+\item \(\Xi_{cc},\Omega_{cc}\): exact charges \(B=1,\ C=2\); minimal
+  sources \(ccq\); QCD output isolated color-singlet masses when the levels
+  lie below the relevant strong thresholds.
+\item \(\Lambda_b,\Sigma_b,\Xi_b,\Omega_b\): exact charges \(B=1\) with
+  bottom flavor \(-1\); minimal sources \(bqq\); QCD output stable or narrow
+  levels organized by the HQET chart above.
+\item \(P_c\)-type hidden-charm baryon sector: exact charges \(B=1,\ C=0\)
+  with hidden \(c\bar c\); retained channels
+  \(J/\psi\,p,\Sigma_c\bar D,\Sigma_c\bar D^\ast,\ldots\); QCD output a
+  sheet-labeled baryon-meson pole.
+\item \(T_{cc}\)-type sector: exact charges \(B=0,\ C=2\); retained channels
+  \(DD^\ast,D^\ast D^\ast,\ldots\); QCD output a near-threshold meson-meson
+  pole or bound-state pole.
+\item \(X(6900)\)-type sector: exact charges \(B=0,\ C=0\) with hidden
+  \(c\bar c c\bar c\); retained channels
+  \(J/\psi\,J/\psi,\eta_c\eta_c,\ldots\); QCD output a coupled
+  heavy-quarkonium pole.
+\end{enumerate}
+The entries with \(B=0\) are included because they use the same pole-motion
+and effective-range machinery as the baryon-number-one pentaquark channels.
+Labels such as compact tetraquark, hadronic molecule, or diquark-antidiquark
+are then coordinates on residues, pole motion under quark-mass variation,
+large-\(N_c\) behavior, and source-overlap charts.  They are not primitive
+spectral definitions.
+\end{definition}
+
+\begin{proposition}[Heavy-baryon spin average removes the chromomagnetic coordinate]
+\label{prop:qcd-heavy-baryon-spin-average}
+Fix a one-heavy-quark baryon family with \(j_\ell>0\).  Suppose that, through
+order \(1/m_Q\), the only spin-dependent term in the effective Hamiltonian
+on the two-state multiplet \(J=j_\ell\pm\frac12\) is
+\[
+  H_{\rm mag}
+  =
+  \frac{2\kappa_{j_\ell}}{m_Q}\,
+  \mathbf S_Q\cdot\mathbf j_\ell ,
+  \label{eq:qcd-heavy-baryon-chromomagnetic-hamiltonian}
+\]
+where \(\mathbf S_Q^2=\frac34\) and
+\(\mathbf j_\ell^2=j_\ell(j_\ell+1)\).  Then the degeneracy-weighted
+spin average
+\begin{equation}
+  \overline M_{j_\ell}
+  :=
+  \frac{(2j_\ell)M_{j_\ell-\frac12}
+        +(2j_\ell+2)M_{j_\ell+\frac12}}
+       {4j_\ell+2}
+  \label{eq:qcd-heavy-baryon-spin-average}
+\end{equation}
+is independent of \(\kappa_{j_\ell}\) at this order.  In particular,
+for the \(\Sigma_Q,\Sigma_Q^\ast\)-type doublet, \(j_\ell=1\) and
+\[
+  \overline M_{\Sigma_Q}
+  =
+  \frac{M_{\Sigma_Q}+2M_{\Sigma_Q^\ast}}{3}
+  \label{eq:qcd-sigma-heavy-spin-average}
+\]
+has no chromomagnetic \(1/m_Q\) contribution in the stated scheme.
+\end{proposition}
+
+\begin{proof}
+On a state with total spin \(J\),
+\[
+  \mathbf S_Q\cdot\mathbf j_\ell
+  =
+  \frac12\left[J(J+1)-j_\ell(j_\ell+1)-\frac34\right].
+\]
+For \(J_-=j_\ell-\frac12\), this eigenvalue is
+\[
+  \frac12\left[(j_\ell-\tfrac12)(j_\ell+\tfrac12)
+  -j_\ell(j_\ell+1)-\frac34\right]
+  =
+  -\frac{j_\ell+1}{2}.
+\]
+For \(J_+=j_\ell+\frac12\), it is
+\[
+  \frac12\left[(j_\ell+\tfrac12)(j_\ell+\tfrac32)
+  -j_\ell(j_\ell+1)-\frac34\right]
+  =
+  \frac{j_\ell}{2}.
+\]
+The degeneracies are \(2J_-+1=2j_\ell\) and \(2J_++1=2j_\ell+2\).  Hence
+\[
+  (2j_\ell)\left(-\frac{j_\ell+1}{2}\right)
+  +(2j_\ell+2)\left(\frac{j_\ell}{2}\right)=0 .
+\]
+The spin-average \eqref{eq:qcd-heavy-baryon-spin-average} therefore cancels
+the coefficient \(\kappa_{j_\ell}\) independently of its value.  The remaining
+terms are the heavy-quark mass coordinate, the spin-independent light-sector
+energy, the kinetic \(1/m_Q\) coordinate, and higher-order corrections.
+\end{proof}
+
+\begin{remark}[Large-\(N_c\) baryon catalog coordinate]
+The large-\(N_c\) baryon discussion preceding
+\eqref{eq:qcd-large-n-baryon-pair-counting} gives a second controlled
+organization of baryon spectra.  Its invariant inputs are the QCD
+Hamiltonian, baryon number one, fixed \(N_f\), and the large-\(N_c\) scaling
+limit.  Under the Hartree and rotor hypotheses stated there, baryon masses
+have an \(O(N_c)\) common part and \(O(1/N_c)\) spin-flavor splittings.  The
+contracted \(SU(2N_f)\) algebra is a leading-order relation among baryon
+matrix elements in this limit.  It complements the finite-\(N_c\) spectral
+and coupled-channel charts above; it does not replace the QCD pole or
+eigenvalue definitions.
+\end{remark}
 
 \begin{definition}[Nucleon current-matrix-element datum]
 \label{def:qcd-nucleon-current-matrix-element-datum}

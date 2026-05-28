@@ -571,6 +571,31 @@ def check_forward_spin_gdh_prefactor() -> None:
     )
 
 
+def check_heavy_baryon_spin_average() -> None:
+    # For a one-heavy-quark baryon with light angular momentum j_l>0, the
+    # chromomagnetic eigenvalues of S_Q.j_l are -(j_l+1)/2 and j_l/2 for
+    # J=j_l-1/2 and J=j_l+1/2.  The degeneracy-weighted spin average must
+    # cancel them exactly.
+    for twice_j_l in range(2, 12, 2):
+        j_l = Fraction(twice_j_l, 2)
+        lower_degeneracy = 2 * j_l
+        upper_degeneracy = 2 * j_l + 2
+        lower_eigenvalue = -(j_l + 1) / 2
+        upper_eigenvalue = j_l / 2
+        weighted = lower_degeneracy * lower_eigenvalue + upper_degeneracy * upper_eigenvalue
+        assert_equal(f"heavy-baryon spin-average cancellation j_l={j_l}", weighted, Fraction(0))
+
+    # The Sigma_Q doublet has j_l=1, so the spin average is
+    # (M_{1/2}+2 M_{3/2})/3.  Insert a symbolic common mass A and
+    # chromomagnetic coordinate kappa/m_Q; the latter cancels.
+    common = Fraction(37, 5)
+    chromo = Fraction(11, 7)
+    m_half = common + 2 * chromo * Fraction(-1)
+    m_three_half = common + 2 * chromo * Fraction(1, 2)
+    average = (m_half + 2 * m_three_half) / 3
+    assert_equal("Sigma_Q spin average", average, common)
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -591,6 +616,7 @@ def main() -> None:
     check_stable_current_three_point_ratio()
     check_forward_compton_baldin_prefactor()
     check_forward_spin_gdh_prefactor()
+    check_heavy_baryon_spin_average()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

@@ -375,6 +375,17 @@ standard representation can be mathematically precise after definition.  What
 is forbidden is using them to hide hypotheses, domains, convergence,
 normalization, or proof obligations.
 
+Use the standard mathematical name when one exists.  Reserve "datum" for a
+genuinely novel structured input whose components must be declared together;
+otherwise prefer names such as representation, correspondence, functional,
+operator family, amplitude, chart, table, spectral problem, or theorem.  Use
+"ledger" only for an actual finite bookkeeping table whose entries are later
+checked, not as a synonym for discussion or list.  Use "certified" or
+"certification" only for source-coverage and calculation-check status, not as
+a decorative assurance in the reader-facing text.  High-density clusters of
+these terms should be treated as an audit finding even when every individual
+occurrence is locally defensible.
+
 ## Positive Formulation Rule
 
 The main text explains objects by their data, definitions, assumptions, and
