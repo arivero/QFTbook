@@ -276,6 +276,135 @@ the relevant cohomology classes to this compactification or to an equivalent
 smooth compactified model, with reducible strata and wall crossing treated
 separately when they occur.
 
+\section{Donaldson Series, Simple Type, And Uhlenbeck Boundary Terms}
+
+For the comparison formula it is useful to use the standard \(SO(3)\) or
+\(U(2)\) notation.  Fix an integral lift \(w\in H^2(X;\mathbb Z)\) of the
+second Stiefel--Whitney class of the adjoint bundle; the earlier \(SU(2)\)
+case is the special case \(w=0\).  Let \(x\in H_0(X;\mathbb Z)\) denote the
+positive generator represented by a point and let \(h\in H_2(X;\mathbb R)\).
+The Donaldson generating function is the degree-selected formal series
+\[
+  D_X^w(p,h)
+  =
+  \sum_{r,n\ge0}
+  \frac{p^r}{r!\,n!}
+  D_X^w(x^rh^n),
+  \label{eq:donaldson-generating-function}
+\]
+where terms whose total Donaldson degree does not equal the relevant virtual
+dimension are zero.  The point class has Donaldson degree four and a surface
+class has Donaldson degree two.
+
+\begin{definition}[Donaldson simple type and Donaldson series]
+\label{def:donaldson-simple-type-series}
+Assume \(b_1(X)=0\) and \(b_2^+(X)>1\), so that the Donaldson invariants are
+independent of the metric chamber after the orientation convention has been
+fixed.  The pair \((X,w)\) has Donaldson simple type if
+\[
+  D_X^w\bigl((x^2-4)z\bigr)=0
+  \label{eq:donaldson-simple-type-relation}
+\]
+for every homogeneous element \(z\) of the Donaldson homology algebra.  In
+that case the reduced Donaldson series is
+\[
+  \mathbb D_X^w(h)
+  =
+  D_X^w\left(\left(1+\frac{x}{2}\right)\exp(h)\right).
+  \label{eq:reduced-donaldson-series}
+\]
+The normalization \(x^2=4\) in
+\eqref{eq:donaldson-simple-type-relation} is part of the Donaldson-invariant
+convention used in this chapter; changing the normalization of the point
+observable rescales the numerical constant but not the structure of the
+comparison.
+\end{definition}
+
+\begin{quotedtheorem}[Donaldson simple-type structure theorem]
+\label{qt:donaldson-simple-type-structure}
+Let \(X\) be a closed connected oriented smooth four-manifold with
+\(b_1(X)=0\) and \(b_2^+(X)>1\).  If \((X,w)\) has Donaldson simple type, then
+there is a finite set
+\[
+  \mathcal B_D(X,w)\subset H^2(X;\mathbb Z)
+\]
+and rational coefficients \(a_K^w\) such that
+\[
+  \mathbb D_X^w(h)
+  =
+  \exp\!\left(\frac{1}{2}Q_X(h,h)\right)
+  \sum_{K\in\mathcal B_D(X,w)}
+  a_K^w\,\exp\!\bigl(\langle K,h\rangle\bigr).
+  \label{eq:donaldson-simple-type-exponential-form}
+\]
+The classes \(K\) are characteristic:
+\[
+  K\equiv w_2(TX)\pmod 2.
+  \label{eq:donaldson-basic-characteristic}
+\]
+They are called Donaldson basic classes.  The theorem is a theorem of the
+finite-dimensional Donaldson-invariant construction, not a theorem that the
+four-dimensional twisted QFT has been constructed non-perturbatively.
+\end{quotedtheorem}
+
+The exponential form in
+\eqref{eq:donaldson-simple-type-exponential-form} is not a slogan.  It says
+that all dependence on the ordinary intersection form is the universal
+Gaussian factor \(\exp(Q_X/2)\), while all differentiable information in the
+simple-type sector is carried by finitely many characteristic linear
+functionals \(K\).  A coefficient \(a_K^w\) is defined only after the
+orientation, lift \(w\), point-observable normalization, and compactification
+extension of the \(\mu\)-classes have been fixed.
+
+\begin{proposition}[Uhlenbeck boundary as BV boundary data]
+\label{prop:donaldson-uhlenbeck-bv-boundary}
+Let \(\mathcal M_k^{\rm sm}\) be a smooth irreducible ASD stratum in
+instanton number \(k\), and let
+\[
+  \overline{\mathcal M}_k^{\,U}
+  =
+  \mathcal M_k^{\rm sm}
+  \sqcup
+  \bigsqcup_{\ell\ge1}
+  \mathcal M_{k-\ell}^{\rm sm}\times{\rm Sym}^{\ell}(X)
+  \sqcup
+  \{\text{reducible and obstructed strata}\}
+  \label{eq:donaldson-uhlenbeck-strata}
+\]
+denote the relevant part of the Uhlenbeck compactification.  If the
+Donaldson-Witten path integral is represented as a BV pushforward over
+\(\mathcal M_k^{\rm sm}\), then the compactification strata contribute
+boundary functionals:
+\[
+  \Delta_{\rm res}(\pi_*^{\mathcal M_k^{\rm sm}}\rho)
+  =
+  -\sum_{\ell\ge1}
+  \mathcal B_{\mathcal M_{k-\ell}^{\rm sm}\times{\rm Sym}^{\ell}(X)}(\rho)
+  -\mathcal B_{\rm red/obs}(\rho).
+  \label{eq:donaldson-uhlenbeck-bv-boundary}
+\]
+Consequently a Donaldson invariant obtained from the compactified moduli
+space is a QME-preserving cohomological correlator only after the boundary
+terms in \eqref{eq:donaldson-uhlenbeck-bv-boundary} have been cancelled by
+codimension, by an extension of the insertion classes, by a chamber
+wall-crossing term, or by an explicitly supplied compactification datum.
+\end{proposition}
+
+\begin{proof}
+This is Proposition~\ref{prop:singular-stratum-obstruction-localized-qme}
+applied to the finite-dimensional localization locus of Donaldson-Witten
+theory.  The strata
+\(\mathcal M_{k-\ell}^{\rm sm}\times{\rm Sym}^{\ell}(X)\) are the
+small-instanton boundary strata: \(\ell\) units of second Chern number have
+left the smooth connection and are recorded as unordered points of \(X\).
+Reducible and obstructed strata are additional singular strata of the same
+BV-boundary type.  Removing collar neighborhoods of all these strata gives a
+manifold with boundary; BV Stokes produces exactly the right hand side of
+\eqref{eq:donaldson-uhlenbeck-bv-boundary}.  If the sum vanishes or is
+cancelled, the residual semidensity satisfies the QME; otherwise the
+formal localization expression is not yet a cohomological invariant.
+\end{proof}
+
 \section{Donaldson Observables And The \texorpdfstring{\(\mu\)}{mu}-Map}
 
 The basic degree-four gauge-invariant polynomial in the twisted scalar is
@@ -367,6 +496,74 @@ is characteristic:
 \[
   c_1(\mathfrak s)\equiv w_2(TX)\pmod2 .
 \]
+
+\begin{proposition}[\(\operatorname{Spin}^c\) structures as characteristic lifts]
+\label{prop:spinc-characteristic-lifts}
+On an oriented smooth four-manifold \(X\), the set
+\({\rm Spin}^c(X)\) of isomorphism classes of
+\(\operatorname{Spin}^c\) structures is a torsor for \(H^2(X;\mathbb Z)\).
+Tensoring \(\mathfrak s\) by a Hermitian line bundle \(M\to X\) gives a new
+\(\operatorname{Spin}^c\) structure \(\mathfrak s\otimes M\) with
+\[
+  c_1(\mathfrak s\otimes M)
+  =
+  c_1(\mathfrak s)+2c_1(M).
+  \label{eq:spinc-c1-tensor-line}
+\]
+The image of the map
+\[
+  c_1:{\rm Spin}^c(X)\longrightarrow H^2(X;\mathbb Z)
+\]
+is the affine set of integral characteristic classes
+\[
+  \{c\in H^2(X;\mathbb Z)\mid c\equiv w_2(TX)\pmod2\}.
+  \label{eq:spinc-characteristic-image}
+\]
+If \(H^2(X;\mathbb Z)\) has two-torsion, distinct
+\(\operatorname{Spin}^c\) structures can have the same first Chern class;
+the structure, not only \(c_1\), is then part of the data.
+\end{proposition}
+
+\begin{proof}
+Existence of \(\operatorname{Spin}^c\) structures on oriented smooth
+four-manifolds is the topological fact \(W_3(TX)=\beta(w_2(TX))=0\); this is
+equivalent to the existence of an integral characteristic lift of \(w_2(TX)\).
+The group \(\operatorname{Spin}^c(4)\) is
+\[
+  \operatorname{Spin}^c(4)
+  =
+  (\operatorname{Spin}(4)\times U(1))/\{\pm(1,1)\}.
+\]
+A \(\operatorname{Spin}^c\) structure lifting the oriented frame bundle can
+therefore be tensored by any principal \(U(1)\)-bundle, equivalently by a
+Hermitian line bundle \(M\).  This action is free and transitive because the
+difference between two lifts of the same oriented frame bundle is exactly a
+\(U(1)\)-bundle.  The determinant representation squares the additional
+\(U(1)\) factor, so tensoring by \(M\) changes the determinant line by
+\[
+  L_{\mathfrak s\otimes M}
+  =
+  L_{\mathfrak s}\otimes M^{\otimes2},
+\]
+which proves \eqref{eq:spinc-c1-tensor-line}.  The reduction of
+\(c_1(L_{\mathfrak s})\) modulo two is the obstruction \(w_2(TX)\) to a
+spin lift, so every \(c_1(\mathfrak s)\) is characteristic.  Conversely, if
+\(c\) is another integral lift of \(w_2(TX)\), then
+\(c-c_1(\mathfrak s)\) lies in the kernel of reduction modulo two.  The
+exact sequence associated to
+\[
+  0\longrightarrow \mathbb Z
+  \xrightarrow{\times2}
+  \mathbb Z
+  \longrightarrow \mathbb Z_2
+  \longrightarrow0
+\]
+identifies this kernel with \(2H^2(X;\mathbb Z)\), so
+\(c=c_1(\mathfrak s)+2c_1(M)\) for some line bundle \(M\).  If
+\(2c_1(M)=0\), tensoring by \(M\) leaves the first Chern class unchanged,
+which is the stated two-torsion caveat.
+\end{proof}
+
 For a unitary connection \(B\) on \(L_{\mathfrak s}\), the Dirac operator is
 \[
   \not D_B:\Gamma(S^+_{\mathfrak s})\longrightarrow
@@ -516,6 +713,168 @@ component modulo gauge.  This is the analytic source of compactness for the
 monopole moduli space after excluding reducible solutions by a generic
 perturbation when the usual chamber hypotheses allow it.
 
+\section{Seiberg-Witten Invariants And Basic Classes}
+
+Assume \(b_2^+(X)>1\), choose a homology orientation, and choose generic
+metric/perturbation data so that the monopole moduli spaces are cut out
+transversely and contain no reducible solutions in the relevant classes.  If
+\(\mathfrak s\) has expected dimension \(d_{\rm SW}(\mathfrak s)=0\), its
+Seiberg-Witten invariant is the signed count
+\[
+  {\rm SW}_X(\mathfrak s)
+  =
+  \#_{\rm or}\,\mathcal M_{\rm SW}(\mathfrak s,g,\eta^+).
+  \label{eq:sw-zero-dimensional-count}
+\]
+For positive expected dimension, the invariant pairs the fundamental cycle
+of the compact oriented monopole moduli space with the standard cohomology
+classes obtained from the universal \(U(1)\) bundle and, when \(b_1(X)>0\),
+from \(H_1(X)\).  In this chapter the zero-dimensional case is the main one
+because it is the simple-type sector appearing in Witten's comparison.
+
+\begin{definition}[Seiberg-Witten basic class and simple type]
+\label{def:sw-basic-class-simple-type}
+An integral class \(K\in H^2(X;\mathbb Z)\) is a Seiberg-Witten basic class
+if \(K=c_1(\mathfrak s)\) for a \(\operatorname{Spin}^c\) structure
+\(\mathfrak s\) whose Seiberg-Witten invariant is nonzero.  The four-manifold
+has Seiberg-Witten simple type if every basic class satisfies
+\[
+  d_{\rm SW}(\mathfrak s)=0,
+  \qquad\text{equivalently}\qquad
+  K^2=2\chi(X)+3\sigma(X).
+  \label{eq:sw-simple-type-condition}
+\]
+\end{definition}
+
+The adjective ``basic'' is not a synonym for ``allowed.''  Allowed
+\(\operatorname{Spin}^c\) structures are the characteristic lifts of
+Proposition~\ref{prop:spinc-characteristic-lifts}.  Basic classes are the
+much smaller subset detected by a nonzero monopole count or by the
+higher-dimensional monopole pairings.  The Weitzenbock estimate gives the
+compactness input for each fixed characteristic class; the finiteness of
+nonzero basic classes is a global theorem of the Seiberg-Witten invariant
+construction.
+
+\begin{example}[K3, elliptic surfaces, and blow-up bookkeeping]
+\label{ex:sw-basic-classes-k3-elliptic-blowup}
+For a K3 surface,
+\[
+  \chi=24,\qquad \sigma=-16,\qquad 2\chi+3\sigma=0.
+\]
+The only Seiberg-Witten basic class is \(K=0\), with invariant \(\pm1\) after
+a homology-orientation choice.  Hence the simple-type dimension condition is
+saturated exactly:
+\[
+  K^2=0=2\chi+3\sigma.
+\]
+
+For the relatively minimal simply connected elliptic surface \(E(n)\) with
+no multiple fibers and \(n\ge2\),
+\[
+  \chi(E(n))=12n,\qquad \sigma(E(n))=-8n,
+  \qquad 2\chi+3\sigma=0.
+\]
+Let \(F\) be the fiber class.  Since \(F^2=0\), the classes
+\[
+  K_j=(n-2-2j)F,\qquad j=0,\ldots,n-2,
+  \label{eq:elliptic-basic-classes}
+\]
+all have square zero.  With an orientation convention fixed, their
+Seiberg-Witten coefficients are encoded by
+\[
+  \sum_K {\rm SW}_{E(n)}(K)\,\ee^{K}
+  =
+  \bigl(\ee^F-\ee^{-F}\bigr)^{n-2}.
+  \label{eq:elliptic-sw-generating-function}
+\]
+The case \(n=2\) is K3.  The formula records both the location of the basic
+classes and their binomial coefficients; changing the homology orientation
+multiplies all coefficients by a common sign.
+
+If \(\widetilde X=X\#\overline{\mathbb{CP}}^{\,2}\) and \(E\) is the
+exceptional class with \(E^2=-1\), then
+\[
+  \chi(\widetilde X)=\chi(X)+1,
+  \qquad
+  \sigma(\widetilde X)=\sigma(X)-1.
+\]
+Thus \(2\chi+3\sigma\) decreases by one.  If \(K^2=2\chi(X)+3\sigma(X)\),
+then
+\[
+  (K\pm E)^2
+  =
+  K^2-1
+  =
+  2\chi(\widetilde X)+3\sigma(\widetilde X).
+  \label{eq:blowup-simple-type-square}
+\]
+The blow-up formula for Seiberg-Witten invariants gives
+\[
+  {\rm SW}_{\widetilde X}(K+E)
+  =
+  {\rm SW}_{\widetilde X}(K-E)
+  =
+  {\rm SW}_X(K)
+  \label{eq:sw-blowup-basic-classes}
+\]
+up to the same global orientation convention.  This example is a useful
+normalization check: the dimension formula, basic-class positions, and
+coefficient doubling are independent pieces of data.
+\end{example}
+
+\section{Stable Cohomotopy Refinement And Furuta's Constraint}
+
+The ordinary Seiberg-Witten invariant is an integer obtained after choosing
+perturbations and counting or pairing with a finite-dimensional moduli space.
+There is a sharper object before this integer is extracted.  After Sobolev
+completion and Coulomb-slice gauge fixing, the monopole equations define a
+Fredholm map with compact nonlinear part, called the monopole map.  Its
+finite-dimensional approximations define a stable cohomotopy class.  The
+ordinary Seiberg-Witten invariant is obtained from this stable cohomotopy
+class by applying the appropriate Hurewicz-type map and evaluating on the
+orientation class.
+
+\begin{quotedtheorem}[Bauer-Furuta refinement]
+\label{qt:bauer-furuta-refinement}
+For a closed oriented smooth four-manifold with a fixed
+\(\operatorname{Spin}^c\) structure, the finite-dimensional approximation
+of the Seiberg-Witten monopole map defines a stable cohomotopy invariant
+\[
+  {\rm BF}_X(\mathfrak s).
+  \label{eq:bauer-furuta-class}
+\]
+The ordinary Seiberg-Witten invariant is the image of
+{\rm BF}\({}_X(\mathfrak s)\) under the corresponding stable cohomotopy to
+cohomology map, with the usual orientation conventions.
+\end{quotedtheorem}
+
+\begin{quotedtheorem}[Furuta \(10/8+2\) inequality]
+\label{qt:furuta-ten-eight}
+Let \(X\) be a closed smooth spin four-manifold with \(b_2^+(X)>0\).  Then
+\[
+  b_2(X)\ge \frac{10}{8}\,|\sigma(X)|+2.
+  \label{eq:furuta-ten-eight}
+\]
+\end{quotedtheorem}
+
+The relevance for the present chapter is conceptual and structural.  The
+Donaldson-Witten path integral suggests that four-manifold invariants should
+arise from a cohomological field theory, but ordinary integer invariants can
+forget stable homotopy information in the monopole map.  The Bauer-Furuta
+class records part of that information.  Furuta's inequality is a theorem
+extracted from this stronger structure in the spin case; for K3,
+\[
+  b_2=22,\qquad |\sigma|=16,
+\]
+and \eqref{eq:furuta-ten-eight} is saturated:
+\[
+  22=\frac{10}{8}\cdot16+2.
+\]
+The monograph treats these as rigorous four-manifold theorems adjacent to
+the QFT comparison.  A future theorem-level QFT construction should explain
+which refinement of the twisted path integral sees the stable cohomotopy
+class rather than only its integer shadow.
+
 \section{The Coulomb-Branch Description}
 
 The Donaldson-Witten theory is the twist of pure \(\mathcal N=2\) Yang--Mills
@@ -554,6 +913,115 @@ For \(b_2^+(X)=1\), the \(u\)-plane contribution and wall crossing are part of
 the invariant.  The comparison requires the contact terms of the Abelian
 effective action because products of descent observables collide in the
 low-energy description.
+
+\section{Chambers, Reducibles, And Wall Crossing}
+
+When \(b_2^+(X)=1\), a metric \(g\) determines a ray
+\[
+  \mathbb R_{>0}\,\omega_g
+  \subset
+  \{v\in H^2(X;\mathbb R)\mid Q_X(v,v)>0\}
+  \label{eq:period-point-ray}
+\]
+by the self-dual harmonic line.  A chamber is a connected component of the
+positive cone after removing the walls on which reducible connections can
+occur.  To describe those walls without hiding the bundle data, take a
+rank-two Hermitian bundle \(E\to X\) with fixed determinant and write
+\[
+  w=c_1(E),\qquad
+  p=c_1(E)^2-4c_2(E)=p_1(\mathfrak{su}(E)).
+\]
+A reducible splitting has the form
+\[
+  E=L\oplus(\det E\otimes L^{-1}),
+\]
+and the associated characteristic wall class is
+\[
+  \lambda=2c_1(L)-c_1(E).
+  \label{eq:donaldson-wall-class}
+\]
+It satisfies
+\[
+  \lambda\equiv w\pmod2,\qquad \lambda^2=p.
+  \label{eq:donaldson-wall-class-constraints}
+\]
+The reducible connection is anti-self-dual precisely when the self-dual
+harmonic projection of \(\lambda\) vanishes, equivalently
+\[
+  \langle \lambda,\omega_g\rangle=0
+  \label{eq:donaldson-wall-equation}
+\]
+in the \(b_2^+=1\) chamber picture.
+
+\begin{quotedtheorem}[Donaldson wall crossing in link form]
+\label{qt:donaldson-wall-crossing-link-form}
+Let a generic one-parameter path of metrics cross exactly one wall
+\(W_\lambda\) transversely and let \(z\) be a homogeneous Donaldson insertion
+whose degree matches the virtual dimension.  The jump of Donaldson
+invariants is the oriented link pairing at the reducible stratum:
+\[
+  D_{X,+}^w(z)-D_{X,-}^w(z)
+  =
+  \varepsilon(\lambda)\,
+  \int_{\mathbb L_\lambda}
+  \mu_\lambda(z).
+  \label{eq:donaldson-wall-crossing-link}
+\]
+Here \(\mathbb L_\lambda\) is the link of the reducible in the
+parameterized compactified moduli space, \(\mu_\lambda(z)\) is the
+restriction of the universal \(\mu\)-class expression to this link, and
+\(\varepsilon(\lambda)\) is the orientation sign determined by the direction
+in which the period point crosses
+\(\langle\lambda,\omega\rangle=0\).  Equivalently, the right hand side is the
+Kotschick-Morgan wall-crossing polynomial
+\[
+  {\rm WC}_\lambda^X(z)
+  =
+  \varepsilon(\lambda)
+  \int_{\mathbb L_\lambda}\mu_\lambda(z),
+  \label{eq:kotschick-morgan-link-definition}
+\]
+whose coefficients are universal functions of the intersection form, the
+class \(\lambda\), the lift \(w\), and the degree of \(z\).
+\end{quotedtheorem}
+
+This is the form of the wall-crossing theorem that is most useful for QFT.
+It identifies the jump with an actual boundary integral.  In BV language, the
+two chamber invariants are the two sides of a one-parameter family of
+pushforwards, and the link \(\mathbb L_\lambda\) is the boundary component
+where the pushforward fails to be closed.  Thus wall crossing is not an
+exception to metric independence; it is the boundary term required by
+Proposition~\ref{prop:donaldson-uhlenbeck-bv-boundary}.
+
+\begin{proposition}[Chamber jump as a BV boundary term]
+\label{prop:donaldson-wall-crossing-bv-boundary}
+Let \(\rho_t\) be a regulated Donaldson-Witten BV semidensity along a generic
+metric path \(g_t\), \(t\in[-1,1]\), crossing a single reducible wall
+\(\lambda\) at \(t=0\).  Assume the parameterized moduli problem is smooth
+away from the reducible link and all insertion classes have been extended to
+the truncated compactification.  Then
+\[
+  D_{X,+}^w(z)-D_{X,-}^w(z)
+  =
+  \mathcal B_{\mathbb L_\lambda}(\rho z),
+  \label{eq:wall-crossing-bv-boundary}
+\]
+with the sign convention of
+\eqref{eq:donaldson-wall-crossing-link}.  If the path crosses several walls,
+the jump is the signed sum of the corresponding link functionals.
+\end{proposition}
+
+\begin{proof}
+Apply Stokes' theorem to the parameterized compactified moduli space with
+small collar neighborhoods of reducibles removed.  The ordinary boundary at
+\(t=1\) gives \(D_{X,+}^w(z)\), the ordinary boundary at \(t=-1\) gives
+\(-D_{X,-}^w(z)\), and the new boundary is the link
+\(\mathbb L_\lambda\).  The same calculation is the finite-dimensional BV
+boundary formula
+\eqref{eq:singular-stratum-localized-qme-obstruction} with the metric
+parameter included among residual variables.  The link orientation is exactly
+the sign \(\varepsilon(\lambda)\) in the wall-crossing theorem.
+\end{proof}
 
 \section{Observable Map And Contact Terms}
 
@@ -610,6 +1078,125 @@ monograph the displayed expression is treated as a target comparison datum:
 the rigorous QFT problem is to derive every term from a constructed twisted
 continuum theory and its Wilsonian flow, rather than to declare the formula
 from moduli-space geometry alone.
+
+\begin{hypothesis}[Witten simple-type comparison datum]
+\label{hyp:witten-simple-type-comparison-datum}
+Let \(X\) be a closed connected oriented smooth four-manifold with
+\(b_1(X)=0\), \(b_2^+(X)>1\), and Seiberg-Witten simple type.  Fix the lift
+\(w\), homology orientation, point-observable convention
+\eqref{eq:donaldson-simple-type-relation}, and the trace-delta gauge
+normalization used in this chapter.  The Donaldson-Seiberg-Witten comparison
+predicts that the reduced Donaldson series has the form
+\[
+  \mathbb D_X^w(h)
+  =
+  \exp\!\left(\frac{1}{2}Q_X(h,h)\right)
+  \sum_{K\in\mathcal B_{\rm SW}(X)}
+  A_X^w(K)\,
+  {\rm SW}_X(K)\,
+  \exp\!\bigl(\langle K,h\rangle\bigr),
+  \label{eq:witten-simple-type-comparison}
+\]
+where \(\mathcal B_{\rm SW}(X)\) is the set of Seiberg-Witten basic classes.
+The phase has the characteristic form
+\[
+  A_X^w(K)
+  =
+  C_X\,
+  (-1)^{\frac{1}{2}(w^2+\langle w,K\rangle)}
+  \label{eq:witten-comparison-phase}
+\]
+when \(w\) is chosen so that the exponent is integral.  The universal
+constant \(C_X\) depends only on the Euler characteristic, signature, and
+normalization of Donaldson observables; in the common Moore-Witten
+normalization it is written as
+\[
+  C_X=2^{\,2+(7\chi(X)+11\sigma(X))/4}.
+  \label{eq:moore-witten-common-constant}
+\]
+Equation \eqref{eq:witten-simple-type-comparison} is a theorem in the
+mathematical Donaldson/SW comparison under the hypotheses of the relevant
+comparison theorems, but in this monograph it is also a QFT target: a
+non-perturbative construction of the twisted four-dimensional gauge theory
+should derive the same coefficient, phase, contact, and boundary data from
+Wilsonian flow.
+\end{hypothesis}
+
+The distinction between
+\eqref{eq:donaldson-simple-type-exponential-form} and
+\eqref{eq:witten-simple-type-comparison} is important.  The first is the
+Donaldson simple-type structure: there are some Donaldson basic classes with
+some coefficients.  The second identifies those classes and coefficients with
+Seiberg-Witten monopole invariants.  The QFT explanation of that
+identification is the central RG statement.
+
+\section{The \texorpdfstring{\(u\)-Plane}{u-Plane} Integral And Boundary Contributions}
+
+For \(b_2^+(X)=1\), the Coulomb-branch contribution cannot be suppressed by
+the simple-type argument.  The low-energy path integral over the regular part
+of the \(u\)-plane has the schematic but normalization-sensitive form
+\[
+  Z_u^w(p,S;\omega)
+  =
+  \int_{\mathcal B_u^{\rm reg}}
+  da\wedge d\bar a\,
+  A(u)^{\chi(X)}B(u)^{\sigma(X)}
+  \Psi_{\Gamma,w,\omega}(\tau,\bar\tau;S)
+  \exp\!\left(2pu+S^2T(u)\right).
+  \label{eq:u-plane-integral-data}
+\]
+Here \(\mathcal B_u^{\rm reg}\) is the Coulomb branch with the singular
+fibers removed, \(a\) is a local special coordinate,
+\[
+  \tau(u)=\frac{da_D/du}{da/du},
+\]
+\(\Gamma=H^2(X;\mathbb Z)/{\rm torsion}\) with intersection pairing \(Q_X\),
+and \(\omega\) is the chamber period point in
+\eqref{eq:period-point-ray}.  The functions
+\[
+  A(u)=\alpha\left(\frac{du}{da}\right)^{1/2},
+  \qquad
+  B(u)=\beta\,\Delta(u)^{1/8}
+  \label{eq:u-plane-measure-factors}
+\]
+encode the gravitational measure factors of the Abelian twisted effective
+theory; \(\Delta(u)\) is the discriminant of the Seiberg-Witten family and
+\(\alpha,\beta\) are convention-dependent constants.  The factor
+\(\Psi_{\Gamma,w,\omega}\) is the Siegel-Narain theta kernel obtained by
+summing over Abelian fluxes shifted by \(w/2\), with the positive and
+negative projections defined by \(\omega\).  Its dependence on \(\omega\) is
+the analytic source of wall crossing.  The contact term \(T(u)\) is the same
+surface-observable collision term that appears in the observable map above.
+
+\begin{proposition}[Wall crossing from the \(u\)-plane boundary]
+\label{prop:u-plane-wall-crossing-boundary}
+Assume that the Abelian low-energy description is valid on
+\(\mathcal B_u^{\rm reg}\), that the singular-fiber contributions are
+computed by the corresponding monopole or dyon Seiberg-Witten theories, and
+that the theta kernel has the standard Gaussian decay away from walls.  When
+\(\omega\) crosses the wall \(\langle\lambda,\omega\rangle=0\), the
+discontinuity of \(Z_u^w\) is a boundary term supported by the flux sector
+\(\lambda\), and equals the link wall-crossing functional
+{\rm WC}\({}_\lambda^X\) after the contact normalization and determinant-line
+phase are matched.
+\end{proposition}
+
+\begin{proof}
+Only the positive/negative decomposition of the lattice vector in
+\(\Psi_{\Gamma,w,\omega}\) changes discontinuously at a wall.  Away from
+\(\lambda_+=0\), the Gaussian factor in the theta kernel gives a smooth
+\(\omega\)-dependent integral.  Crossing the wall changes the prescription
+for the sector with \(\lambda_+=0\); differentiating with respect to the
+period point produces a total \(\bar\partial\)-term on the \(u\)-plane.  By
+Stokes' theorem the change is therefore a sum of boundary contributions from
+the cusps and singular fibers.  The singular-fiber boundaries are precisely
+the monopole/dyon effective theories, while the cusp and reducible boundary
+combine into the Donaldson wall link.  Matching determinant-line orientations
+and the contact term \(T(u)\) identifies the result with
+\eqref{eq:kotschick-morgan-link-definition}.  This proves the conditional
+statement: the analytic equality rests on the stated validity of the Abelian
+Wilsonian description and on the matching of its measure factors.
+\end{proof}
 
 \section{Comparison As A QFT Statement}
 
