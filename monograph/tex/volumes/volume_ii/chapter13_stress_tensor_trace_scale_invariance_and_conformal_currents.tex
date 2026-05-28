@@ -340,73 +340,84 @@ Comparing this with the stress-tensor definition gives the bare trace identity
 \]
 modulo total derivatives and equation-of-motion operators.
 
-Figure~\ref{fig:volume-ii-scale-trace-engineering} draws the two scale
-exponents used in the derivation.  The first is the kinetic exponent as a
-function of the field scaling weight; its zero fixes
-\(\Delta_\phi=(D-2)/2\).  The second is the excess engineering dimension of an
-interaction operator over the volume weight \(D\); differentiating the
-corresponding scale factor at the identity produces the trace density.
+Figure~\ref{fig:volume-ii-scale-trace-engineering} records the scaling
+bookkeeping used in the derivation.  The kinetic term has three factors: the
+Jacobian of the measure, the two derivatives, and the two fields.  The
+interaction term has only the measure factor and the engineering dimension of
+the local operator.  Comparing the resulting first-order variation with
+\(\delta S=-\sigma\int T^\mu{}_\mu\) fixes the sign in the bare trace identity.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
-      axis/.style={-{Latex[length=2mm]},line width=0.65pt},
-      arr/.style={-{Latex[length=2mm]},line width=0.9pt}
+      cell/.style={draw,rounded corners=3pt,align=center,inner sep=3.2pt,
+        text width=2.05cm,fill=gray!4},
+      result/.style={draw,rounded corners=3pt,align=center,inner sep=4pt,
+        text width=4.3cm,fill=blue!5},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
-    \node[font=\small] at (-3.05,2.10)
-      {kinetic exponent};
-    \draw[axis] (-5.25,0)--(-0.85,0)
-      node[right] {\(\Delta-\Delta_\phi\)};
-    \draw[axis] (-3.05,-1.55)--(-3.05,1.55)
-      node[above] {\(w_{\rm kin}\)};
-    \draw[line width=1.1pt,blue!70!black] (-4.75,1.15)--(-1.35,-1.15);
-    \fill[blue!70!black] (-3.05,0) circle (2.0pt);
-    \node[below right] at (-3.05,0)
-      {\(\Delta=\Delta_\phi\)};
-    \node[align=center] at (-3.05,-2.15)
-      {\(\displaystyle
-      w_{\rm kin}(\Delta)=D-2-2\Delta\),\\
-      \(\displaystyle w_{\rm kin}(\Delta_\phi)=0\)};
-    \node[align=center,blue!70!black] at (-3.05,1.52)
-      {\(\displaystyle \Delta_\phi=\frac{D-2}{2}\)};
 
-    \node[font=\small] at (3.15,2.10)
-      {interaction excess dimension};
-    \draw[axis] (0.85,0)--(5.55,0)
-      node[right] {engineering dimension};
-    \draw[line width=0.8pt] (2.35,-0.10)--(2.35,0.10);
-    \draw[line width=0.8pt] (4.35,-0.10)--(4.35,0.10);
-    \node[above] at (2.35,0.10) {\(D\)};
-    \node[above] at (4.35,0.10) {\(D+\delta_I(\epsilon)\)};
-    \draw[decorate,decoration={brace,mirror,amplitude=5pt},line width=0.8pt]
-      (2.35,-0.35)--(4.35,-0.35)
-      node[midway,below=6pt] {\(\delta_I(\epsilon)\)};
-    \draw[arr,red!70!black] (4.35,0.55)--(2.35,0.55)
-      node[midway,above] {residual after volume cancellation};
-    \node[align=center] at (3.35,-1.42)
-      {\(\displaystyle
-      \int\dd^D x\,g_I^\epsilon O_I
-      \mapsto
-      e^{-\sigma\delta_I(\epsilon)}
-      \int\dd^D x\,g_I^\epsilon O_I\)};
-    \node[align=center,red!70!black] at (3.35,-2.35)
-      {\(\displaystyle
-      \left.\frac{\dd}{\dd\sigma}e^{-\sigma\delta_I(\epsilon)}
-      \right|_{\sigma=0}
-      =
-      -\delta_I(\epsilon)\)};
+    \begin{scope}[shift={(-3.55,0)}]
+      \node[font=\small] at (0,2.82)
+        {kinetic term};
+      \node[cell] (km) at (-2.25,1.80)
+        {measure\\\(\dd^D x'\)\\\({}=e^{D\sigma}\dd^D x\)};
+      \node[cell] (kd) at (0,1.80)
+        {two derivatives\\\(\partial'\partial'\)\\\({}=e^{-2\sigma}\partial\partial\)};
+      \node[cell] (kf) at (2.25,1.80)
+        {two fields\\\(\phi'\phi'\)\\\({}=e^{-2\Delta\sigma}\phi\phi\)};
+      \node[font=\large] at (-1.125,1.80) {\(\times\)};
+      \node[font=\large] at (1.125,1.80) {\(\times\)};
+      \node[result] (kres) at (0,0.46)
+        {\(\displaystyle
+        S_{\rm kin}\mapsto
+        e^{\sigma(D-2-2\Delta)}S_{\rm kin}\)};
+      \node[font=\large] at (0,1.14) {\(\Downarrow\)};
+      \node[align=center,blue!70!black] at (0,-0.72)
+        {\(\displaystyle \Delta=\Delta_\phi=\frac{D-2}{2}\)\\
+        \(\displaystyle\Longrightarrow\quad
+        \delta S_{\rm kin}=0\)};
+    \end{scope}
+
+    \begin{scope}[shift={(3.45,0)}]
+      \node[font=\small] at (0,2.82)
+        {interaction term};
+      \node[cell] (im) at (-1.25,1.80)
+        {measure\\\(\dd^D x'\)\\\({}=e^{D\sigma}\dd^D x\)};
+      \node[cell,text width=2.65cm] (io) at (1.25,1.80)
+        {operator\\\(\scriptstyle O_I'
+        =e^{-(D+\delta_I(\epsilon))\sigma}O_I\)};
+      \node[font=\large] at (0,1.80) {\(\times\)};
+      \node[result,fill=red!5,text width=4.75cm] (ires) at (0,0.46)
+        {\(\displaystyle
+        \int\dd^D x\,g_I^\epsilon O_I
+        \mapsto
+        e^{-\sigma\delta_I(\epsilon)}
+        \int\dd^D x\,g_I^\epsilon O_I\)};
+      \node[font=\large] at (0,1.14) {\(\Downarrow\)};
+      \node[align=center,red!70!black] at (0,-0.82)
+        {\(\displaystyle
+        \left.\frac{\dd}{\dd\sigma}
+        e^{-\sigma\delta_I(\epsilon)}\right|_{\sigma=0}
+        =-\delta_I(\epsilon)\)\\
+        \(\displaystyle
+        \delta S=-\sigma\!\int\!T^\mu{}_\mu
+        \Longrightarrow
+        T^\mu{}_\mu=\sum_I\delta_I(\epsilon) g_I^\epsilon O_I\)};
+    \end{scope}
   \end{tikzpicture}
   }
-  \caption{The two scale exponents entering the bare trace identity.  The
-  kinetic action scales by
-  \(e^{\sigma(D-2-2\Delta)}\), so invariance fixes
-  \(\Delta_\phi=(D-2)/2\).  A local interaction operator of dimension
-  \(D+\delta_I(\epsilon)\) scales by
-  \(e^{-\sigma\delta_I(\epsilon)}\) after the volume factor is included; its
-  infinitesimal variation is the local density that appears in
-  \(T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\).}
+  \caption{The bare trace identity follows from factor bookkeeping under a
+  constant scale transformation.  The kinetic term contributes the factor
+  \(e^{\sigma(D-2-2\Delta)}\) and is invariant at
+  \(\Delta_\phi=(D-2)/2\).  An interaction operator of engineering dimension
+  \(D+\delta_I(\epsilon)\) leaves the residual factor
+  \(e^{-\sigma\delta_I(\epsilon)}\); comparison with
+  \(\delta S=-\sigma\int T^\mu{}_\mu\) gives
+  \(T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\) modulo total
+  derivatives and equation-of-motion operators.}
   \label{fig:volume-ii-scale-trace-engineering}
 \end{figure}
 
