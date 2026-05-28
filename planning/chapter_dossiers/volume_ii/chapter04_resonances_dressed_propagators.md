@@ -55,8 +55,10 @@
 | \(a_\ell(s)\) | identical-boson partial-wave coordinate in the \(32\pi\), even-\(\ell\) convention |
 | \(S_\ell(s)\) | elastic partial-wave \(S\)-matrix element on the symmetric two-\(\phi_1\) channel |
 | \(F(s)\) | dressed inverse denominator of the \(s\)-channel exchange amplitude |
+| \(F_{\rm I},F_{\rm II}\) | first-sheet and adjacent second-sheet inverse denominators |
 | \(s_\ast\) | complex pole of the second-sheet continuation |
-| \(M_R,\Gamma_R\) | real resonance mass parameter and narrow-width decay rate |
+| \(M_R\) | real resonance mass parameter fixed by \(\operatorname{Re}F(M_R^2+i0)=0\) |
+| \(\Gamma_{\rm cut},\Gamma_{\rm line},\Gamma_{\rm pole},\Gamma_s\) | cut, line-shape, complex-energy pole, and \(s\)-plane imaginary width coordinates |
 | \(\mathfrak s\) | sheet of an analytically continued stable-channel amplitude |
 | \(R_{ab}\) | pole-residue kernel between stable channels \(a,b\) |
 | \(r_a,r_b\) | production and decay residue functionals, defined up to reciprocal rescaling |
@@ -125,21 +127,21 @@
   \[
     \Sigma^R(k)
     =
-    -{g^2\over 32\pi^2}
+    -\frac{g^2}{32\pi^2}
     \int_0^1\dd x\,
-    \log {k^2x(1-x)+m_1^2-\ii0\over m_1^2}.
+    \log \frac{k^2x(1-x)+m_1^2-\ii0}{m_1^2}.
   \]
 - For \(s>4m_1^2\),
   \[
     \operatorname{Im}\Sigma^R(K)\big|_{K^2=-s+\ii0}
     =
-    {g^2\over 32\pi}\sqrt{1-{4m_1^2\over s}} .
+    \frac{g^2}{32\pi}\sqrt{1-\frac{4m_1^2}{s}} .
   \]
 - In the narrow-width approximation,
   \[
     M_R\Gamma_R
     =
-    {g^2\over 32\pi}\sqrt{1-{4m_1^2\over M_R^2}}
+    \frac{g^2}{32\pi}\sqrt{1-\frac{4m_1^2}{M_R^2}}
     +O(g^4)
   \]
   up to the stated normalization convention for the cubic interaction.
@@ -150,7 +152,7 @@
   truncation and the chosen width function \(W(s)\); after this truncation,
   \[
     S_0^{\rm BW}(s)=
-    {M_R^2-s+iW(s)\over M_R^2-s-iW(s)}
+    \frac{M_R^2-s+iW(s)}{M_R^2-s-iW(s)}
   \]
   is exactly elastic-unitary on the real elastic interval because the numerator
   is the complex conjugate of the denominator.
@@ -176,6 +178,13 @@
   \(\mathcal M_{ab}^{\rm II}\) reached through the unitarity cut.  In the scalar
   model this is represented locally by
   \(F_{\rm II}(s)=M_R^2-s-iW(s)+O(g^4,g^2(s-M_R^2))\).
+- 2026-05-28 second-sheet formalization pass: promoted the adjacent-sheet
+  convention, first-sheet no-zero sign argument, Breit--Wigner unitarity
+  identity, width-coordinate distinctions, and narrow-pole Newton step to
+  explicit definitions/propositions with proofs.  Added
+  `calculation-checks/resonance_second_sheet_checks.py` to verify the
+  threshold interval, logarithmic discontinuity sign, denominator sign, pole
+  square-root conversion, and partial-wave unitarity-bound algebra.
 - 2026-05-25 issue #443 pass: moved the sheet convention to the preceding
   bound-state chapter before first use, changed early resonance uses to
   reference that definition, and recast the later "Second Sheet" section as the

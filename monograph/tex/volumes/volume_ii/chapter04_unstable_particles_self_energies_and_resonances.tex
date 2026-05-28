@@ -15,7 +15,17 @@ Continue the two-scalar model of the preceding chapter,
   -\frac12m_2^2\phi_2^2
   -\frac12g\phi_1^2\phi_2 ,
 \]
-with \(m_1,m_2>0\) and \(g\in\R\). Let
+with \(m_1,m_2>0\) and \(g\in\R\).
+
+\begin{definition}[Above-threshold scalar exchange datum]
+\label{def:above-threshold-scalar-exchange-datum}
+The above-threshold exchange datum consists of the preceding two-scalar local
+Lagrangian, stable external \(\phi_1\) one-particle states, the mass
+inequality
+\[
+  m_2>2m_1 ,
+\]
+and the mostly-plus Mandelstam invariant
 \[
   K=k_1+k_2,\qquad s=-K^2,
 \]
@@ -27,12 +37,11 @@ contribution to the connected invariant amplitude is
   =
   \frac{g^2}{m_2^2-s-\ii0}.
 \]
+\end{definition}
 
-Assume now
-\[
-  m_2>2m_1 .
-\]
-The value \(s=m_2^2\) lies in the two-\(\phi_1\) scattering region
+For the datum of
+Definition~\ref{def:above-threshold-scalar-exchange-datum},
+the value \(s=m_2^2\) lies in the two-\(\phi_1\) scattering region
 \(s\ge4m_1^2\). The relevant scattering problem is therefore a problem with
 stable external \(\phi_1\) states and an open two-particle continuum in the
 same channel as the exchanged \(\phi_2\) line. The exact physical-axis
@@ -105,12 +114,50 @@ With inelastic channels included on the same Hilbert space, the elastic
 matrix element instead obeys \(|S_\ell(s)|\le1\). Thus the exact physical-axis
 partial wave is finite. The divergence of
 \(\mathcal M_s^{\mathrm{tree}}\) at \(s=m_2^2\) records that the perturbative
-description has expanded around a stable bare line in a region where the
+description has expanded around a stable reference line in a region where the
 state couples to an open decay channel. The exact object is a resonance: a
 nearby pole of the continuation of \(S_\ell(s)\), or equivalently of
 \(a_\ell(s)\), through the threshold cut. On the physical sheet the
 same channel is represented by the continuum part of the spectral measure;
 an isolated real mass atom occurs only for a stable one-particle state.
+
+\begin{proposition}[Physical-axis unitarity excludes the resonance pole]
+\label{prop:physical-axis-unitarity-excludes-resonance-pole}
+Let \(I\subset(4m_1^2,\infty)\) be an elastic interval away from the threshold
+endpoint, and assume that the exact stable-channel partial-wave boundary value
+exists on \(I\).  If \(S_\ell(s)\) is unitary on \(I\), or if it is the elastic
+matrix element of a larger unitary channel matrix, then
+\[
+  |a_\ell(s)|
+  \le
+  \frac{1}{\rho_1(s)}
+  \qquad (s\in I).
+\]
+Consequently a resonance associated with this channel is not a pole of the
+physical upper-edge boundary value \(a_\ell(s+\ii0)\).  It is a pole of the
+analytic continuation through the channel cut.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:resonance-elastic-s-matrix-normalization} gives
+\[
+  a_\ell(s)=\frac{S_\ell(s)-1}{2\ii\rho_1(s)} .
+\]
+On \(I\), \(\rho_1(s)>0\).  If \(S_\ell\) is elastic unitary, then
+\(|S_\ell|=1\), while if it is the elastic component of a larger unitary
+matrix, then \(|S_\ell|\le1\).  In both cases
+\[
+  |a_\ell(s)|
+  \le
+  \frac{|S_\ell(s)|+1}{2\rho_1(s)}
+  \le
+  \frac{1}{\rho_1(s)} .
+\]
+The bound is finite on compact subintervals away from threshold.  Hence a
+simple divergence on the physical boundary is incompatible with exact
+stable-channel unitarity; the tree pole is a perturbative signal of a nearby
+singularity on an analytically continued sheet, not a physical-axis pole.
+\end{proof}
 
 \section{Outgoing Poles in a One-Dimensional Model}
 \label{sec:resonance-one-dimensional-outgoing-poles}
@@ -134,6 +181,25 @@ solution
   \qquad
   E=\frac{k^2}{2\mu}.
 \]
+
+\begin{definition}[Outgoing one-dimensional resonance pole]
+\label{def:outgoing-one-dimensional-resonance-pole}
+For the one-dimensional short-range Hamiltonian above, an outgoing resonance
+pole is a pole \(k_\ast\) of the meromorphic continuation of \(S(k)\) with
+\[
+  \operatorname{Re}k_\ast>0,
+  \qquad
+  \operatorname{Im}k_\ast<0,
+\]
+for which the corresponding continued solution satisfies the outgoing
+boundary condition at spatial infinity.  Its complex energy is
+\[
+  E_\ast=\frac{k_\ast^2}{2\mu}.
+\]
+\end{definition}
+
+\begin{proposition}[Outgoing pole gives decay in time and growth in space]
+\label{prop:outgoing-pole-time-decay-space-growth}
 If \(S(k)\) has a pole at \(k=k_\ast\), then the incoming coefficient
 vanishes at that analytically continued value and the asymptotic solution is
 purely outgoing. Write
@@ -153,8 +219,32 @@ the time dependence. The same wave grows in space along the outgoing
 direction. This spatial growth is forced by probability conservation for a
 state with only outgoing flux: a uniformly decaying packet cannot also be a
 normalizable stationary eigenvector of a self-adjoint Hamiltonian. The pole
-therefore defines a singular outgoing functional, often called a resonance or
-Gamow vector, associated with the analytically continued scattering function.
+therefore defines a singular outgoing functional, a resonance or Gamow
+functional, associated with the analytically continued scattering function.
+\end{proposition}
+
+\begin{proof}
+At a simple pole of \(S(k)\), the coefficient \(S(k)^{-1}\) of the incoming
+wave in the displayed outgoing solution vanishes.  The continued asymptotic
+solution is therefore proportional to
+\(\exp(\ii k_\ast x-\ii E_\ast t)\).  Write
+\[
+  k_\ast=a-\ii b,\qquad a>0,\quad b>0 .
+\]
+Then
+\[
+  E_\ast=\frac{a^2-b^2}{2\mu}-\ii\frac{ab}{\mu}
+  =
+  \omega-\ii\gamma,
+  \qquad
+  \gamma=\frac{ab}{\mu}>0.
+\]
+The time factor is \(\exp(-\ii\omega t)\exp(-\gamma t)\), while the spatial
+factor for \(x\to+\infty\) contains \(\exp(bx)\).  Thus the same analytic
+continuation that gives decay for \(t>0\) gives exponential growth in the
+outgoing spatial direction.  Such a function is not in \(L^2(\R)\), so it is
+not an eigenvector of the self-adjoint Hamiltonian on the Hilbert space.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9]
@@ -237,8 +327,10 @@ continuing through the scattering cut.
 
 \section{The Dressed Propagator}
 
-Return to the relativistic exchange model. Define the exact time-ordered
-two-point function of \(\phi_2\) in momentum space by
+Return to the relativistic exchange model.
+\begin{definition}[Dressed propagator and self-energy convention]
+\label{def:dressed-propagator-self-energy-convention}
+The exact time-ordered two-point function of \(\phi_2\) in momentum space is
 \[
   D_2(k)
   =
@@ -248,10 +340,11 @@ two-point function of \(\phi_2\) in momentum space by
 Let \(\Sigma(k)\) be the sum of amputated one-particle-irreducible two-point
 insertions for the \(\phi_2\) line, with the convention
 \[
-  D_2(k)=\frac{-\ii}{k^2+m_{2,\mathrm{bare}}^2-\ii0-\Sigma(k)} .
+  D_2(k)=\frac{-\ii}{k^2+m_{2,\Lambda}^2-\ii0-\Sigma(k)} .
 \]
 This is the geometric series obtained by inserting 1PI two-point kernels into
-the bare propagator.
+the regulated reference propagator.
+\end{definition}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.84,
@@ -365,7 +458,7 @@ In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\) and with
 \]
 The divergent part is independent of \(k\). Introduce
 \[
-  m_{2,\mathrm{bare}}^2=(m_2^R)^2+\delta m_2^2,
+  m_{2,\Lambda}^2=(m_2^R)^2+\delta m_2^2,
   \qquad
   \Sigma_1(k)=\Sigma_1^R(k)+\delta m_2^2 ,
 \]
@@ -437,6 +530,59 @@ relates the Euclidean Green function to the Lorentzian time-ordered Green
 function. For real positive energy above the two-particle threshold,
 \(k^0\) is reached by analytic continuation from the imaginary \(k^0\)-axis
 to the positive real axis through the upper half-plane.
+
+\begin{proposition}[Threshold discontinuity of the one-loop self-energy]
+\label{prop:threshold-discontinuity-one-loop-self-energy}
+For \(s>4m_1^2\), with the physical upper-edge boundary value specified
+above,
+\[
+  \operatorname{Im}\Sigma_1^R(K)\big|_{K^2=-s+\ii0}
+  =
+  \frac{g^2}{32\pi}\rho_1(s),
+  \qquad
+  \rho_1(s)=\sqrt{1-\frac{4m_1^2}{s}} .
+\]
+Equivalently, the imaginary part of the dressed inverse denominator on the
+first sheet is
+\[
+  \operatorname{Im}F_{\rm I}(s+\ii0)
+  =
+  -\frac{g^2}{32\pi}\rho_1(s)+O(0^+).
+\]
+\end{proposition}
+
+\begin{proof}
+The logarithm in \(F(s)\) is
+\[
+  \log\left[1-\frac{s\,x(1-x)}{m_1^2}-\ii0\right].
+\]
+Its argument is negative precisely when \(x\in[x_-,x_+]\), where
+\[
+  x_\pm=\frac12(1\pm\rho_1(s)).
+\]
+The interval length is \(x_+-x_-=\rho_1(s)\).  On the physical upper edge,
+\[
+  \log(-|a|-\ii0)=\log|a|-\ii\pi .
+\]
+Since
+\[
+  \Sigma_1^R(K)
+  =
+  -\frac{g^2}{32\pi^2}
+  \int_0^1\dd x\,
+  \log\left[
+    1-\frac{s\,x(1-x)}{m_1^2}-\ii0
+  \right],
+\]
+the imaginary part is
+\[
+  -\frac{g^2}{32\pi^2}(-\pi)\,(x_+-x_-)
+  =
+  \frac{g^2}{32\pi}\rho_1(s).
+\]
+The denominator \(F_{\rm I}=m_R^2-s-\ii0-\Sigma_1^R\) therefore has the
+opposite imaginary part, up to the infinitesimal boundary prescription.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.92]
@@ -512,10 +658,18 @@ the same letter \(\Gamma\).  In a narrow isolated resonance they agree to the
 order at which the local Breit--Wigner approximation is meaningful, but their
 definitions are distinct.
 
-First, the cut width \(\Gamma_{\rm cut}(M)\) is defined at a real energy
-\(M\) by the inclusive transition rate obtained from the discontinuity of the
-self-energy.  For a scalar resonance coupled to stable final channels \(X\),
-the perturbative expression has the form
+\begin{definition}[Width coordinates for an isolated resonance]
+\label{def:resonance-width-coordinates}
+Let a stable-channel amplitude have an isolated simple resonance pole
+\(s_\ast\) on a specified nonphysical sheet, and assume that a real energy
+window containing the corresponding line shape has been fixed.  The following
+four quantities are different coordinates on different data.
+
+\begin{enumerate}
+\item The cut width \(\Gamma_{\rm cut}(M)\) is defined at a real energy \(M\)
+by the inclusive transition rate obtained from the discontinuity of the
+self-energy at that real energy.  For a scalar resonance coupled to stable
+final channels \(X\), the perturbative expression has the form
 \[
   \Gamma_{\rm cut}(M)
   =
@@ -532,8 +686,8 @@ decoupled or lower-order theory as an interpolating state.  Once the channel is
 open, the exact theory has stable asymptotic states in the final channels, not
 an exact external one-resonance state.
 
-Second, the line-shape width \(\Gamma_{\rm line}\) is an observable extracted
-from a physical inclusive cross section or event distribution.  After a
+\item The line-shape width \(\Gamma_{\rm line}\) is an observable extracted
+from a specified physical inclusive cross section or event distribution.  After a
 specified smooth background subtraction and a specified resolution function,
 one may define it as the full width at half maximum in the energy variable
 \(E=\sqrt{s}\) of the resonant contribution.  This definition depends on the
@@ -541,7 +695,7 @@ chosen process, on the observable used to form the inclusive distribution, and
 on how nonresonant background is separated from the pole term.  It is therefore
 not an invariant analytic datum for a broad resonance.
 
-Third, the Gamow time width, or complex-energy pole width, is defined from the
+\item The Gamow time width, or complex-energy pole width, is defined from the
 second-sheet pole after choosing an energy square root.  If \(s_\ast\) is a
 simple resonance pole and the square-root branch is chosen so that
 \(\operatorname{Re}\sqrt{s_\ast}>0\) near the resonance, write
@@ -574,7 +728,7 @@ functional.  The statement concerns the pole contribution in the rigged-Hilbert
 analytic continuation; an exact normalizable state in a self-adjoint
 Hamiltonian does not have a purely exponential survival law for all times.
 
-Fourth, one can define an \(s\)-plane pole-imaginary width by
+\item The \(s\)-plane pole-imaginary width is defined by
 \[
   M_s=\sqrt{\operatorname{Re}s_\ast},
   \qquad
@@ -591,6 +745,8 @@ than the imaginary part of the energy \(E=\sqrt{s}\).  It agrees with
     1+O\!\left(\frac{\Gamma_{\rm pole}^2}{M_{\rm pole}^2}\right)
   \right].
 \]
+\end{enumerate}
+\end{definition}
 
 \begin{controlledapproximation}[Narrow-resonance comparison of widths]
 Suppose that, in the energy window
@@ -717,16 +873,40 @@ Breit--Wigner elastic approximant is therefore
   =
   \frac{g^2}{32\pi}\rho_1(s).
 \]
-For real \(s\) in the elastic interval, \(W(s)\) is real and the numerator is
-the complex conjugate of the denominator.  Hence
+
+\begin{proposition}[Elastic unitarity of the Breit--Wigner factor]
+\label{prop:breit-wigner-elastic-unitarity}
+On a real interval where only the elastic \(\phi_1\phi_1\) channel is retained
+and \(W(s)\in\R\), the model \(S\)-matrix element
+\[
+  S_0^{\rm BW}(s)=
+  \frac{M_R^2-s+\ii W(s)}{M_R^2-s-\ii W(s)}
+\]
+obeys
 \[
   |S_0^{\rm BW}(s)|=1
 \]
-exactly in this elastic model.  The physical partial wave differs from
-\(S_0^{\rm BW}\) by the omitted background, crossed-channel, inelastic, and
-higher-order corrections; these are corrections to the model, not violations
-of the algebraic unitarity of the Breit--Wigner factor itself.  The resonance
-is expressed as rapid phase motion. If
+wherever the denominator is nonzero.
+\end{proposition}
+
+\begin{proof}
+For real \(s\), the number \(A(s)=M_R^2-s\) is real and, by hypothesis,
+\(W(s)\) is real.  Hence \(A(s)+\ii W(s)\) is the complex conjugate of
+\(A(s)-\ii W(s)\).  Therefore
+\[
+  |S_0^{\rm BW}(s)|^2
+  =
+  \frac{(A+\ii W)(A-\ii W)}{(A-\ii W)(A+\ii W)}
+  =
+  1 .
+\]
+\end{proof}
+
+The physical partial wave differs from \(S_0^{\rm BW}\) by the omitted
+background, crossed-channel, inelastic, and higher-order corrections; these
+are corrections to the model, not violations of the algebraic unitarity of the
+Breit--Wigner factor itself.  The resonance is expressed as rapid phase
+motion. If
 \[
   S_0^{\rm BW}(s)=\ee^{2\ii\delta_0^{\rm BW}(s)},
 \]
@@ -771,33 +951,56 @@ second-sheet approximation.
 The sheet convention was fixed in
 Definition~\ref{def:stable-channel-sheet-convention}.  Here it is made
 explicit for the above-threshold exchange model.  The terminology applies to
-connected stable-channel scattering
-kernels.  After the identity term and the overall momentum-conservation delta
-function have been removed, let
+connected stable-channel scattering kernels.
+
+\begin{definition}[Adjacent second sheet in a single stable channel]
+\label{def:adjacent-second-sheet-single-channel}
+After the identity term and the overall momentum-conservation delta function
+have been removed, let
 \[
   \mathcal M_{ab}^{\rm I}(s)
 \]
 denote a connected invariant amplitude or partial-wave coordinate between
-stable channels \(a\) and \(b\) on the first sheet.  Its physical value on the
-real two-particle interval is the upper-edge boundary value
-\(\mathcal M_{ab}^{\rm I}(s+\ii0)\).  A resonance is not a pole of this
-physical boundary value and is not an additional normalizable asymptotic state.
-It is a pole of an analytically continued connected \(S\)-matrix element.
+stable channels \(a\) and \(b\) on the first sheet.  Let
+\(I\subset(4m_1^2,\infty)\) be an open interval on which the only cut being
+crossed is the \(\phi_1\phi_1\) threshold cut and on which the upper and lower
+first-sheet boundary values exist as distributions or as ordinary functions
+after smearing in the remaining variables.  The physical value on \(I\) is the
+upper-edge boundary value \(\mathcal M_{ab}^{\rm I}(s+\ii0)\).
+
+The adjacent second-sheet germ relative to the \(\phi_1\phi_1\) channel is the
+analytic germ obtained by continuing \(\mathcal M_{ab}^{\rm I}\) from the
+upper edge of \(I\) through the cut once.  Equivalently, in a local logarithmic
+coordinate for the cut, the second-sheet continuation replaces the lower
+first-sheet boundary value
+\[
+  \log(-r+\ii0)=\log r+\ii\pi,\qquad r>0,
+\]
+by the continued value
+\[
+  \log_{\rm II}(-r)=\log r-\ii\pi .
+\]
+For a square-root channel variable this is the same operation as changing the
+sign of the phase-space square root \(\rho_1\) relative to the first sheet.
+A resonance in this channel is a pole of this adjacent germ, not a pole of the
+physical upper-edge boundary value and not an additional normalizable
+asymptotic state.
+\end{definition}
 
 For the scalar model above the first-sheet exchange amplitude is
 \(\mathcal M_s^{\rm I}(s)=g^2/F_{\rm I}(s)\), with \(F_{\rm I}\) given by the
-Feynman boundary prescription in the preceding section.  The second sheet
-relative to the \(\phi_1\phi_1\) channel is the adjacent analytic germ obtained
-by continuing \(F_{\rm I}\), or equivalently \(\mathcal M_s^{\rm I}\), through
-the threshold cut.  Across this cut the square-root branch changes sign.
-Equivalently, the logarithm in \(F_{\rm I}(s)\) has the discontinuity
+Feynman boundary prescription in the preceding section.  The first sheet
+contains the physical branch cut beginning at \(4m_1^2\).  The denominator
+\(F_{\rm II}\) denotes the continuation of \(F_{\rm I}\) through this cut in
+the sense of
+Definition~\ref{def:adjacent-second-sheet-single-channel}.  On a real point
+of the cut, the logarithmic discontinuity is
 \[
   \log(-|a|-\ii0)-\log(-|a|+\ii0)=-2\pi\ii .
 \]
-The first sheet contains the physical branch cut beginning at \(4m_1^2\).
-The resonance pole is reached by continuing through this cut to the adjacent
-sheet; the notation \(F_{\rm II}\) below denotes precisely this continued
-denominator.  Near \(s=M_R^2\), the branch inherited by \(F_{\rm II}\) has
+Therefore the lower second-sheet boundary differs from the lower first-sheet
+boundary by the finite discontinuity generated by this logarithm.  Near
+\(s=M_R^2\), the branch inherited by \(F_{\rm II}\) has
 \[
   F_{\rm II}(s)
   =
@@ -807,30 +1010,108 @@ where \(W(s)=g^2\rho_1(s)/(32\pi)\).  This is the local analytic reason a pole
 can occur below the real axis on the adjacent sheet while no first-sheet pole
 appears at the same point.
 
-The first-sheet denominator has a useful sign property. Continue \(F_{\rm I}(s)\)
-from the real interval \(s<4m_1^2\) into the upper half-plane. For
-\(\operatorname{Im}s>0\),
+\begin{proposition}[No first-sheet resonance zero in the scalar model]
+\label{prop:no-first-sheet-resonance-zero-scalar-model}
+Use the first-sheet branch of
 \[
-  \operatorname{Im}\!\left[
-    \log\left(1-\frac{s\,x(1-x)}{m_1^2}\right)
-  \right]<0,
-  \qquad
-  \operatorname{Im}(-s)<0,
+  F_{\rm I}(s)
+  =
+  -s+(m_2^R)^2
+  +
+  \frac{g^2}{32\pi^2}
+  \int_0^1\dd x\,
+  \log\left(1-\frac{s\,x(1-x)}{m_1^2}\right)
 \]
-for \(0<x<1\). Hence \(\operatorname{Im}F_{\rm I}(s)<0\) on the upper half of the
-first sheet, so \(F_{\rm I}(s)\) has no zero there. The lower half-plane gives the
-conjugate sign statement. Thus the resonance associated with the dressed
-\(\phi_2\) exchange is not a pole of either half of the first sheet; its pole
-appears only after passing through the cut.
+defined by continuation from the real interval \(s<4m_1^2\), with the cut
+placed along \(s\ge4m_1^2\).  Then \(F_{\rm I}\) has no zero in the upper
+half of the first sheet and no zero in the lower half of the first sheet.
+\end{proposition}
 
-Near a narrow resonance, this continuation through the \(\phi_1\phi_1\)
-unitarity cut places the pole on the second sheet relative to that cut at
+\begin{proof}
+Let \(s=u+\ii v\) with \(v>0\).  For \(0<x<1\), set
+\(\alpha=x(1-x)/m_1^2>0\).  The logarithm has argument
+\[
+  1-\alpha s=(1-\alpha u)-\ii\alpha v,
+\]
+whose imaginary part is strictly negative.  On the branch reached from
+\(s<4m_1^2\), its argument lies in \((-\pi,0)\); hence
+\[
+  \operatorname{Im}\log(1-\alpha s)<0 .
+\]
+At the endpoints \(x=0,1\) the logarithm is zero; they do not affect the
+integral.  Also
+\[
+  \operatorname{Im}(-s)=-v<0 .
+\]
+Since \(g^2/(32\pi^2)>0\), every nonconstant contribution to
+\(\operatorname{Im}F_{\rm I}(s)\) has negative sign, and the integral is
+strictly negative.  Therefore \(\operatorname{Im}F_{\rm I}(s)<0\) in the
+upper half-plane, so \(F_{\rm I}(s)\neq0\) there.  The lower half-plane
+statement follows either by the same argument with \(v<0\), giving
+\(\operatorname{Im}F_{\rm I}(s)>0\), or by Schwarz reflection of the
+first-sheet branch.  Thus the zero associated with the resonance cannot lie
+on either half of the first sheet.
+\end{proof}
+
+\begin{proposition}[Narrow pole on the adjacent sheet]
+\label{prop:second-sheet-narrow-pole-newton}
+Let
+\[
+  W_R=M_R\Gamma_{\rm cut}(M_R)
+  =
+  \frac{g^2}{32\pi}
+  \sqrt{1-\frac{4m_1^2}{M_R^2}}
+  +O(g^4),
+\]
+and assume \(M_R^2>4m_1^2\) is separated from the threshold by a fixed
+positive amount.  Suppose that in a fixed neighborhood of \(M_R^2\) the
+second-sheet denominator has the weak-coupling expansion
+\[
+  F_{\rm II}(s)
+  =
+  M_R^2-s-\ii W_R
+  +(s-M_R^2)R_1(s,g)+R_0(g),
+  \qquad
+  R_1=O(g^2),\quad R_0=O(g^4),
+\]
+with \(R_1\) holomorphic and uniformly bounded with its first derivative.
+Then, for sufficiently small \(g\), there is a unique zero of
+\(F_{\rm II}\) in a disk \(|s-M_R^2|\le Cg^2\), and it is
 \[
   s_\ast
   =
-  M_R^2-\ii M_R\Gamma_{\rm cut}(M_R)+O(g^4),
+  M_R^2-\ii M_R\Gamma_{\rm cut}(M_R)+O(g^4).
 \]
-with \(\Gamma_{\rm cut}(M_R)>0\).  Equivalently, the pole width defined by
+\end{proposition}
+
+\begin{proof}
+Write \(s=M_R^2+\delta\).  The equation \(F_{\rm II}(s)=0\) is
+\[
+  \delta
+  =
+  -\ii W_R+\delta R_1(M_R^2+\delta,g)+R_0(g).
+\]
+For \(|\delta|\le Cg^2\) and \(C\) large enough, the right-hand side maps the
+disk to itself for all sufficiently small \(g\), because
+\(W_R=O(g^2)\), \(\delta R_1=O(g^4)\), and \(R_0=O(g^4)\).  Its derivative
+with respect to \(\delta\) is
+\[
+  R_1(M_R^2+\delta,g)
+  +
+  \delta\,\partial_s R_1(M_R^2+\delta,g),
+\]
+which is \(O(g^2)\) uniformly on the disk.  Thus the map is a contraction,
+and it has a unique fixed point.  The fixed-point equation immediately gives
+\[
+  \delta=-\ii W_R+O(g^4),
+\]
+which is the stated pole location.  Equivalently,
+\(F_{\rm II}(M_R^2)=-\ii W_R+O(g^4)\) and
+\(F_{\rm II}'(M_R^2)=-1+O(g^2)\), so the same result is the controlled
+one-step Newton approximation.
+\end{proof}
+
+Equivalently, the pole width defined by
 \(E_\ast=\sqrt{s_\ast}=M_{\rm pole}-\ii\Gamma_{\rm pole}/2\) obeys
 \[
   M_{\rm pole}\Gamma_{\rm pole}

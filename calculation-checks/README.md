@@ -703,6 +703,12 @@ Current checks:
   including mostly-plus invariant-denominator factorization, partial-fraction
   signs, per-leg amputation normalization, all-incoming momentum bookkeeping,
   and Lorentzian source-derivative phase compensation.
+- `resonance_second_sheet_checks.py`: finite checks for the Volume II
+  resonance chapter, including the two-particle threshold interval,
+  self-energy and inverse-denominator sign conventions, adjacent-sheet
+  logarithmic continuation, Breit--Wigner elastic unitarity, complex-energy
+  pole conversion, the narrow-pole Newton step, and the physical-axis
+  partial-wave bound.
 - `maxwell_gauge_checks.py`: exact checks for the Volume I Maxwell chapter,
   including axial-gauge and covariant-gauge quadratic inverses, the
   finite-dimensional Faddeev--Popov slice Jacobian, Gupta--Bleuler null
