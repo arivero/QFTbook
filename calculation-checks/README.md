@@ -75,7 +75,8 @@ Current checks:
   detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
   bosonic fluctuation--dissipation identity, and the
   \(\rho=-2\operatorname{Im}G^R\) retarded-sign convention entering the shear
-  Kubo formula.
+  Kubo formula, together with the shear, charge-diffusion, and sound pole
+  locations used in the hydrodynamic-pole figure.
 - `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,

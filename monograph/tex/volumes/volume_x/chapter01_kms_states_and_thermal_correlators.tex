@@ -518,29 +518,125 @@ where the subscript records the number of derivatives acting on
 requires hypotheses beyond the KMS boundary condition: it is a long-time,
 long-distance property of the QFT state.
 
-Figure~\ref{fig:thermal-hydrodynamic-variables} organizes the hydrodynamic
-variable map used in the derivative expansion: a KMS QFT state supplies
-equilibrium densities, which become slowly varying fields only under additional
-long-distance hypotheses.
+\begin{proposition}[First hydrodynamic poles from conservation]
+\label{prop:kms-hydrodynamic-poles-from-conservation}
+Let a homogeneous parity-even thermal state in \(D=d_s+1\) spacetime
+dimensions have enthalpy \(w=\varepsilon+p>0\), speed of sound
+\[
+  c_s^2=\left(\frac{\partial p}{\partial\varepsilon}\right)_{\!n_A/s},
+\]
+shear viscosity \(\eta_{\rm sh}\), bulk viscosity \(\zeta\), and a decoupled
+charge-diffusion channel with conductivity \(\sigma\) and susceptibility
+\(\chi>0\).  Linearizing the first-order constitutive relations around the
+homogeneous state gives the following small-\(|\mathbf k|\) hydrodynamic
+denominators, and therefore the corresponding retarded poles in every
+conserved-current correlator whose residue on the mode is nonzero:
+\[
+  \omega_{\rm shear}(\mathbf k)
+  =
+  -\,\ii\,\frac{\eta_{\rm sh}}{w}\,\mathbf k^2+O(|\mathbf k|^4),
+  \label{eq:kms-shear-pole}
+\]
+\[
+  \omega_{\rm charge}(\mathbf k)
+  =
+  -\,\ii\,\frac{\sigma}{\chi}\,\mathbf k^2+O(|\mathbf k|^4),
+  \label{eq:kms-charge-diffusion-pole}
+\]
+and
+\[
+  \omega_{\rm sound}^{\pm}(\mathbf k)
+  =
+  \pm c_s|\mathbf k|
+  -\frac{\ii}{2w}
+  \left(\zeta+\frac{2(d_s-1)}{d_s}\eta_{\rm sh}\right)
+  \mathbf k^2
+  +O(|\mathbf k|^3).
+  \label{eq:kms-sound-poles}
+\]
+\end{proposition}
+
+\begin{proof}
+Take \(\mathbf k\) in the \(x\)-direction and use the Fourier convention
+\(\ee^{-\ii\omega t+\ii kx}\).  In the shear channel a transverse velocity
+perturbation \(v_y\) obeys
+\[
+  -\ii\omega\,w\,v_y+\eta_{\rm sh}k^2v_y=0,
+\]
+which gives \eqref{eq:kms-shear-pole}.  In a decoupled charge channel,
+Fick's law \(J_A^x=-\sigma\,\partial_x(\delta\mu_A)\) and
+\(\delta n_A=\chi\,\delta\mu_A\) give
+\[
+  -\ii\omega\,\delta n_A+\frac{\sigma}{\chi}k^2\delta n_A=0,
+\]
+which gives \eqref{eq:kms-charge-diffusion-pole}.  For longitudinal sound,
+the linearized conservation equations are
+\[
+  -\ii\omega\,\delta\varepsilon+\ii k\,w\,v_x=0,
+\]
+\[
+  -\ii\omega\,w\,v_x+\ii k\,c_s^2\delta\varepsilon
+  +
+  \left(\zeta+\frac{2(d_s-1)}{d_s}\eta_{\rm sh}\right)k^2v_x=0 .
+\]
+Eliminating \(v_x\) gives
+\[
+  \omega^2-c_s^2k^2
+  +
+  \frac{\ii}{w}
+  \left(\zeta+\frac{2(d_s-1)}{d_s}\eta_{\rm sh}\right)
+  \omega k^2=0 .
+\]
+Solving this quadratic at small \(k\) gives \eqref{eq:kms-sound-poles}.
+The proposition identifies the hydrodynamic poles of the retarded functions
+once the linearized constitutive relations and the existence of the
+retarded correlators have been established.
+\end{proof}
+
+Figure~\ref{fig:thermal-hydrodynamic-variables} depicts this analytic
+content of the hydrodynamic limit.  The hydrodynamic variables are not new
+microscopic operators; they are the coordinates whose linearized equations
+describe the poles of retarded conserved-current correlators that approach
+the origin as \(|\mathbf k|\to0\).
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[>=Stealth,node distance=1.35cm,scale=0.95]
-  \node[draw,rounded corners=2pt,align=center,minimum width=3.3cm]
-    (qft) {KMS QFT state\\\(\omega,T^{\mu\nu},J_A^\mu\)};
-  \node[draw,rounded corners=2pt,align=center,right=of qft,minimum width=3.2cm]
-    (dens) {equilibrium densities\\\(\varepsilon,p,n_A\)};
-  \node[draw,rounded corners=2pt,align=center,right=of dens,minimum width=3.25cm]
-    (hydro) {slow fields\\\(T(x),\mu_A(x),u^\mu(x)\)};
-  \node[draw,rounded corners=2pt,align=center,below=of hydro,minimum width=3.35cm]
-    (const) {constitutive relations\\and transport};
-  \draw[->,thick] (qft) -- node[above] {one-point data} (dens);
-  \draw[->,thick] (dens) -- node[above] {state-family input} (hydro);
-  \draw[->,thick] (hydro) -- node[right] {derivative expansion} (const);
+\begin{tikzpicture}[>=Stealth,scale=1.0]
+  \draw[->] (-3.4,0) -- (3.6,0) node[right] {\(\operatorname{Re}\omega\)};
+  \draw[->] (0,-3.0) -- (0,1.05) node[above] {\(\operatorname{Im}\omega\)};
+  \fill[blue!70!black] (-1.75,-0.38) circle (2.1pt);
+  \fill[blue!70!black] (1.75,-0.38) circle (2.1pt);
+  \node[blue!70!black,above left] at (-1.75,-0.38)
+    {\(\omega^-_{\rm sound}\)};
+  \node[blue!70!black,above right] at (1.75,-0.38)
+    {\(\omega^+_{\rm sound}\)};
+  \fill[green!45!black] (0,-0.65) circle (2.1pt);
+  \node[green!45!black,right] at (0.08,-0.65)
+    {\(-\ii D_\eta\mathbf k^2\)};
+  \fill[orange!85!black] (0,-1.0) circle (2.1pt);
+  \node[orange!85!black,right] at (0.08,-1.0)
+    {\(-\ii D_c\mathbf k^2\)};
+  \draw[dashed] (-3.1,-1.55) -- (3.1,-1.55);
+  \node[anchor=west] at (0.15,-1.78)
+    {nonhydrodynamic gap};
+  \fill[red!70!black] (-1.45,-2.15) circle (2pt);
+  \fill[red!70!black] (1.25,-2.35) circle (2pt);
+  \fill[red!70!black] (0.35,-2.55) circle (2pt);
+  \node[red!70!black,below] at (0.0,-2.75)
+    {microscopic relaxation poles};
+  \draw[decorate,decoration={brace,amplitude=4pt}]
+    (2.85,-1.55) -- (2.85,0);
+  \node[right] at (2.95,-0.78) {\(O(\tau_{\rm micro}^{-1})\)};
+  \node[below left] at (0,0) {\(0\)};
+  \node[anchor=west] at (0.35,0.62)
+    {\(\operatorname{Im}\omega>0\): analytic};
 \end{tikzpicture}
-\caption{Hydrodynamic variables are not introduced as new microscopic
-operators.  They are coordinates on a long-wavelength family of states whose
-conserved densities are inherited from the QFT.}
+\caption{At fixed small \(|\mathbf k|\), hydrodynamics appears in retarded
+thermal correlators as poles that approach the origin: two sound poles, a
+shear-diffusion pole with \(D_\eta=\eta_{\rm sh}/w\), and charge-diffusion
+poles with \(D_c=\sigma/\chi\) in a decoupled channel.  Nonhydrodynamic
+relaxation poles remain separated by a microscopic gap in a regime where the
+derivative expansion is controlled.}
 \label{fig:thermal-hydrodynamic-variables}
 \end{figure}
 

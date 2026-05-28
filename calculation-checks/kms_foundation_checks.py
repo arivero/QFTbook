@@ -132,11 +132,72 @@ def check_retarded_sign_and_shear_slope() -> None:
         assert_close("minus imaginary slope", -gr.imag / omega, eta, tol=2.0e-5)
 
 
+def check_hydrodynamic_pole_locations_for_figure() -> None:
+    spatial_dim = 3
+    eta = 0.52
+    zeta = 0.17
+    enthalpy = 2.4
+    cs2 = 0.29
+    sigma = 0.81
+    chi = 1.7
+    k = 2.0e-4
+
+    shear = -1j * eta * k * k / enthalpy
+    assert_close(
+        "figure shear denominator",
+        -1j * shear * enthalpy + eta * k * k,
+        0.0,
+    )
+    assert shear.imag < 0.0
+
+    diffusion = sigma / chi
+    charge = -1j * diffusion * k * k
+    assert_close(
+        "figure charge denominator",
+        -1j * charge + diffusion * k * k,
+        0.0,
+    )
+    assert charge.imag < 0.0
+
+    attenuation = (zeta + 2.0 * eta * (spatial_dim - 1.0) / spatial_dim) / enthalpy
+    discriminant = 4.0 * cs2 * k * k - attenuation * attenuation * k**4
+    sound_plus = 0.5 * (cmath.sqrt(discriminant) - 1j * attenuation * k * k)
+    sound_minus = 0.5 * (-cmath.sqrt(discriminant) - 1j * attenuation * k * k)
+    cs = math.sqrt(cs2)
+    assert_close(
+        "figure sound plus expansion",
+        sound_plus,
+        cs * k - 0.5j * attenuation * k * k,
+        tol=1.0e-12,
+    )
+    assert_close(
+        "figure sound minus expansion",
+        sound_minus,
+        -cs * k - 0.5j * attenuation * k * k,
+        tol=1.0e-12,
+    )
+    for root in (sound_plus, sound_minus):
+        assert root.imag < 0.0
+        assert_close(
+            "figure sound quadratic",
+            root * root - cs2 * k * k + 1j * attenuation * root * k * k,
+            0.0,
+            tol=1.0e-20,
+        )
+
+    microscopic_gap = 0.05
+    hydro_imaginary_scales = [
+        abs(pole.imag) for pole in (shear, charge, sound_plus, sound_minus)
+    ]
+    assert max(hydro_imaginary_scales) < microscopic_gap
+
+
 def main() -> None:
     check_finite_trace_kms_boundary()
     check_detailed_balance_and_spectral_reconstruction()
     check_bosonic_fluctuation_dissipation()
     check_retarded_sign_and_shear_slope()
+    check_hydrodynamic_pole_locations_for_figure()
     print("All KMS foundation checks passed.")
 
 
