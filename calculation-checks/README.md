@@ -112,6 +112,11 @@ Current checks:
   scheme-change covariance, fixed-product rapidity-scale cancellation in
   two-hadron factorization, and GPD polynomiality from local twist-two
   contractions.
+- `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
+  exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
+  normalization, Gegenbauer normalization moments, leading ERBL anomalous
+  dimensions, and trace-delta versus half-trace conversion for the charged
+  pion form-factor coefficient.
 - `thooft_model_checks.py`: exact rational checks for the Volume II
   large-\(N\) two-dimensional QCD chapter, including trace-delta color
   normalization, the finite DLCQ quadratic-form identity for the subtracted

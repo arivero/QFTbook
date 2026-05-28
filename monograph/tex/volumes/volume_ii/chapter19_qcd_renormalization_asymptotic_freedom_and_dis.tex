@@ -3903,6 +3903,12 @@ rapidity scale \(\nu\).  The hard, jet, and soft functions have coupled
 logarithms of \(q_T/Q\).  The power remainder and the absence or treatment of
 Glauber exchanges are part of the factorization datum.
 
+Here and below \(\alpha_s(\mu):=g^2(\mu)/(4\pi)\) in the trace-delta gauge
+coordinate of this chapter.  Whenever a coefficient is proportional to
+\(\alpha_s C_F\), it is invariant under conversion to the common half-trace
+generator convention because \(g_{\rm ht}^2C_F^{\rm ht}=g^2C_F\), as in
+\eqref{eq:pnrqcd-tree-coulomb-potential}.
+
 \begin{proposition}[Tree-level collinear coefficient for the separated EEC]
 \label{prop:qcd-eec-tree-collinear-coefficient}
 Use the standard four-dimensional, azimuth-integrated, final-state collinear
@@ -5284,6 +5290,368 @@ factorization, the GPD itself is the renormalized hadronic light-ray matrix
 element.  The factorization theorem connecting it to a measured exclusive
 amplitude is an additional leading-power assertion with its own endpoint,
 Glauber, and power-remainder data.
+
+\section{Asymptotic Freedom and Exclusive Pion Amplitudes}
+\label{sec:qcd-exclusive-pion-asymptotic-freedom}
+
+Inclusive DIS uses forward light-ray matrix elements.  Exclusive pion
+amplitudes use light-ray matrix elements between the vacuum and a one-pion
+state.  This is the part of the pion \(S\)-matrix where asymptotic freedom
+gives a direct large-momentum prediction: the short-distance subgraph is a
+perturbatively renormalized quark-gluon amplitude, while the pion appears only
+through a renormalized gauge-invariant light-ray matrix element.  The statement
+is not that a pion is a weakly bound pair of on-shell quarks.  The pion datum is
+the same hadronic state defined by the nonperturbative QCD sector; only the
+coefficient multiplying its light-ray matrix element is perturbative.
+
+Let \(P^\mu\) be the momentum of a charged pion and let \(n^\mu\) be a
+future-directed lightlike vector with \(P\cdot n>0\).  In the isospin-symmetric
+two-flavor theory, define the charged-pion light-cone distribution amplitude
+by the renormalized bilocal matrix element
+\begin{equation}
+  \bra{\vac}
+  \left[
+  \bar d(\lambda n)\,
+  W_{\square}(\lambda n,0)\,
+  \gamma\cdot n\,\gamma_5\,u(0)
+  \right]_{\mu}
+  \ket{\pi^+(P)}
+  =
+  \ii f_\pi\,P\cdot n
+  \int_0^1\dd x\,
+  \ee^{-\ii x\lambda P\cdot n}\,
+  \varphi_\pi(x,\mu).
+  \label{eq:qcd-pion-lcda-definition}
+\end{equation}
+The Wilson transporter is the same path-ordered fundamental transporter used
+in \eqref{eq:qcd-quark-light-ray-operator}.  The normalization of \(f_\pi\) is
+the axial-current normalization of Chapter~\ref{ch:volume-ii-21},
+\[
+  \bra{\vac}A_a^\mu(0)\ket{\pi^b(P)}
+  =
+  \ii f_\pi P^\mu\delta_a{}^b .
+\]
+Setting \(\lambda=0\) in
+\eqref{eq:qcd-pion-lcda-definition} therefore fixes
+\begin{equation}
+  \int_0^1\dd x\,\varphi_\pi(x,\mu)=1 .
+  \label{eq:qcd-pion-lcda-normalization}
+\end{equation}
+The support interval \([0,1]\) is a property of the leading-twist light-ray
+operator between the vacuum and the one-pion state.  It is not a probability
+postulate.  The function \(\varphi_\pi\) is a renormalized distribution in
+\(x\), depending on the factorization scheme and scale.
+
+\begin{definition}[Exclusive pion factorization datum]
+\label{def:qcd-exclusive-pion-factorization-datum}
+An exclusive large-\(Q\) pion factorization statement consists of:
+\begin{enumerate}
+  \item a renormalized QCD matrix element whose external hadrons and currents
+  are gauge-invariant;
+  \item a light-ray operator basis, here represented at leading twist by
+  \(\varphi_\pi(x,\mu)\);
+  \item a hard coefficient \(T_H\), computed with external collinear partons
+  and subtracted in the same scheme as the light-ray operator;
+  \item a convolution prescription in the momentum fractions;
+  \item a topology for the remainder, for example
+  \(O(\Lambda_{\rm QCD}^2/Q^2)\) after excluding endpoint regions by the
+  stated hypotheses, together with the order in \(\alpha_s\) to which
+  \(T_H\) is known.
+\end{enumerate}
+The datum is part of the definition of the controlled approximation.  Without
+it, a formula involving a pion distribution amplitude is only notation.
+\end{definition}
+
+The one-loop renormalization of the light-ray operator in
+\eqref{eq:qcd-pion-lcda-definition} gives the Efremov--Radyushkin--Brodsky--
+Lepage evolution equation
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}\varphi_\pi(x,\mu)
+  =
+  \frac{\alpha_s(\mu)}{2\pi}
+  \int_0^1\dd y\,V(x,y)\varphi_\pi(y,\mu)
+  +O(\alpha_s^2),
+  \label{eq:qcd-erbl-evolution}
+\end{equation}
+where, in the trace-delta convention,
+\begin{align}
+  V(x,y)
+  &=
+  C_F
+  \left[
+  \theta(y-x)\frac{x}{y}
+  \left(1+\frac1{y-x}\right)
+  +
+  \theta(x-y)\frac{1-x}{1-y}
+  \left(1+\frac1{x-y}\right)
+  \right]_+ .
+  \label{eq:qcd-erbl-kernel}
+\end{align}
+The plus prescription acts on the \(x\)-variable:
+\begin{equation}
+  \int_0^1\dd x\,[K(x,y)]_+ f(x)
+  :=
+  \int_0^1\dd x\,K(x,y)\bigl(f(x)-f(y)\bigr),
+  \label{eq:qcd-erbl-plus-prescription}
+\end{equation}
+for test functions smooth near \(x=y\).  Equation
+\eqref{eq:qcd-erbl-plus-prescription} makes the conservation of the axial
+current normalization manifest:
+\[
+  \int_0^1\dd x\,V(x,y)=0 .
+\]
+
+\begin{proposition}[Diagonalization of the leading ERBL kernel]
+\label{prop:qcd-erbl-gegenbauer-diagonalization}
+For \(n\ge0\), let \(C_n^{3/2}\) be the Gegenbauer polynomial orthogonal on
+\([-1,1]\) with weight \((1-z^2)\).  The leading ERBL kernel preserves the
+basis
+\[
+  \varphi_n(x):=6x(1-x)C_n^{3/2}(2x-1),
+\]
+and
+\begin{equation}
+  \int_0^1\dd y\,V(x,y)\varphi_n(y)
+  =
+  -\gamma_n^{(0)}\,\varphi_n(x),
+  \label{eq:qcd-erbl-eigenvalue-equation}
+\end{equation}
+with
+\begin{equation}
+  \gamma_n^{(0)}
+  =
+  C_F\left[
+  1-\frac{2}{(n+1)(n+2)}
+  +4\sum_{k=2}^{n+1}\frac1k
+  \right].
+  \label{eq:qcd-erbl-anomalous-dimensions}
+\end{equation}
+In particular \(\gamma_0^{(0)}=0\) and
+\(\gamma_n^{(0)}>0\) for every \(n\ge1\).
+\end{proposition}
+
+\begin{proof}
+The collinear conformal group acting on two light-ray quark fields has
+\(SL(2,\mathbb R)\) quadratic Casimir diagonalized by
+\(x(1-x)C_n^{3/2}(2x-1)\).  The one-loop kernel
+\eqref{eq:qcd-erbl-kernel} commutes with this action after the plus
+subtraction, because the singular part depends only on the projective
+cross-ratio of the two light-ray insertion points and the endpoint factors are
+fixed by the quark collinear spin \(j=1\).  Thus the kernel is diagonal on the
+irreducible two-particle conformal-spin components.
+
+To compute the eigenvalue, insert the polynomial test function and split the
+integral into \(0<y<x\) and \(x<y<1\).  The plus prescription subtracts the
+same polynomial at \(y=x\), so the integrand is locally integrable.  Expanding
+\(C_n^{3/2}(2y-1)\) in powers of \(y\), each term reduces to beta-function
+integrals and harmonic sums.  The coefficient of the highest-degree monomial
+fixes the eigenvalue, because the kernel preserves polynomial degree.  The
+result is \eqref{eq:qcd-erbl-anomalous-dimensions}.  For \(n=0\), the first
+two terms cancel and the sum is empty; this is exactly the normalization
+identity \eqref{eq:qcd-pion-lcda-normalization}.  For \(n\ge1\), the harmonic
+sum dominates the negative rational term, so the anomalous dimension is
+positive.
+\end{proof}
+
+Therefore a pion LCDA may be expanded as
+\begin{equation}
+  \varphi_\pi(x,\mu)
+  =
+  6x(1-x)
+  \left[
+  1+\sum_{n=1}^{\infty}a_n(\mu)C_n^{3/2}(2x-1)
+  \right],
+  \label{eq:qcd-pion-lcda-gegenbauer-expansion}
+\end{equation}
+with odd \(a_n\) vanishing in the isospin-symmetric charge-conjugation
+channel.  At leading order
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}a_n(\mu)
+  =
+  -\frac{\alpha_s(\mu)}{2\pi}\gamma_n^{(0)}a_n(\mu)
+  +O(\alpha_s^2),
+  \label{eq:qcd-pion-gegenbauer-moment-rg}
+\end{equation}
+and asymptotic freedom drives all \(n\ge1\) moments to zero.  The ultraviolet
+fixed shape is consequently
+\begin{equation}
+  \varphi_\pi^{\rm as}(x)=6x(1-x).
+  \label{eq:qcd-pion-asymptotic-lcda}
+\end{equation}
+The approach to this shape is logarithmic and scheme dependent at finite
+scale.  The statement \eqref{eq:qcd-pion-asymptotic-lcda} is therefore an
+asymptotic consequence of the light-ray anomalous dimensions, not an empirical
+model for the pion at moderate momentum transfer.
+
+The spacelike charged-pion electromagnetic form factor is defined by
+\begin{equation}
+  \bra{\pi^+(P')}J^\mu_{\rm em}(0)\ket{\pi^+(P)}
+  =
+  (P+P')^\mu F_\pi(Q^2),
+  \qquad
+  Q^2:=-(P'-P)^2>0 .
+  \label{eq:qcd-pion-em-form-factor-definition}
+\end{equation}
+At leading twist and leading order in the hard coefficient,
+\begin{equation}
+  F_\pi(Q^2)
+  =
+  \frac{4\pi\alpha_s(\mu)C_F}{N_c}\,
+  \frac{f_\pi^2}{Q^2}
+  \left[
+  \int_0^1\dd x\,\frac{\varphi_\pi(x,\mu)}{x}
+  \right]
+  \left[
+  \int_0^1\dd y\,\frac{\varphi_\pi(y,\mu)}{y}
+  \right]
+  +O(\alpha_s^2,Q^{-4})_{\rm fac}.
+  \label{eq:qcd-pion-form-factor-factorization}
+\end{equation}
+The subscript ``fac'' means that the power remainder belongs to the
+factorization datum of Definition~\ref{def:qcd-exclusive-pion-factorization-datum};
+endpoint sensitivity can modify the practical convergence at accessible
+\(Q^2\) unless controlled by an additional Sudakov or nonperturbative input.
+
+\begin{proof}[Derivation of the leading hard coefficient]
+Project each pion onto the color-singlet leading-twist collinear pair defined
+by \eqref{eq:qcd-pion-lcda-definition}.  A single hard gluon must transfer
+large transverse momentum between the two collinear quark lines; without this
+exchange the electromagnetic current cannot convert the initial collinear
+color-singlet into the final one at fixed large \(Q^2\).  The tree hard
+subgraph contains one gluon propagator of virtuality \(O(Q^2)\) and one
+internal quark propagator of virtuality \(O(Q^2)\).  Contracting the spin
+projectors fixed by the axial matrix element gives the numerator
+proportional to \(P\cdot P'\), and the color-singlet projection gives
+\[
+  \frac1{N_c}\,t^a_{ij}t^a_{ji}
+  =
+  \frac{C_F}{N_c}.
+\]
+The two endpoint denominators are the light-cone momentum fractions carried by
+the active quarks.  With the LCDA normalization
+\eqref{eq:qcd-pion-lcda-normalization}, the sum of the two photon attachments
+to the charged pion gives
+\eqref{eq:qcd-pion-form-factor-factorization}.  No on-shell colored external
+state appears in the final formula; colored partons were only projectors used
+to compute the short-distance coefficient in the chosen factorization scheme.
+\end{proof}
+
+Substituting \(\varphi_\pi^{\rm as}\) gives
+\begin{equation}
+  Q^2F_\pi(Q^2)
+  \sim
+  \frac{36\pi\alpha_s(Q)C_F}{N_c}\,f_\pi^2 .
+  \label{eq:qcd-pion-form-factor-asymptotic-general}
+\end{equation}
+For \(N_c=3\), this is
+\[
+  Q^2F_\pi(Q^2)\sim 16\pi\alpha_{\rm ht}(Q) f_\pi^2
+\]
+in the common half-trace convention.  Equivalently, if one uses the
+phenomenological convention \(f_\pi^{(130)}=\sqrt2\,f_\pi\), the same statement
+is often written as \(Q^2F_\pi\sim
+8\pi\alpha_{\rm ht}(f_\pi^{(130)})^2\).  The monograph keeps the
+Chapter~\ref{ch:volume-ii-21} convention \(f_\pi\) fixed, so
+\eqref{eq:qcd-pion-form-factor-asymptotic-general} is the convention-safe
+formula.
+
+The neutral-pion transition form factor is defined by
+\begin{equation}
+  \ii\int\dd^4x\,\ee^{\ii q\cdot x}
+  \bra{\pi^0(P)}
+  \operatorname T\,J^\mu_{\rm em}(x)J^\nu_{\rm em}(0)
+  \ket{\vac}
+  =
+  \epsilon^{\mu\nu\rho\sigma}q_\rho k_\sigma\,
+  F_{\pi^0\gamma\gamma^*}(Q^2),
+  \label{eq:qcd-pion-transition-form-factor-definition}
+\end{equation}
+with \(k^2=0\), \(q^2=-Q^2\), and \(P=q+k\).  The low-energy endpoint is fixed
+by the anomaly calculation of Chapters~\ref{ch:volume-ii-20} and
+\ref{ch:volume-ii-21}:
+\begin{equation}
+  F_{\pi^0\gamma\gamma^*}(0)=\frac1{4\pi^2f_\pi}
+  \label{eq:qcd-pion-transition-anomaly-normalization}
+\end{equation}
+in the present \(f_\pi\) convention.  At large spacelike \(Q^2\), leading
+twist factorization gives
+\begin{equation}
+  F_{\pi^0\gamma\gamma^*}(Q^2)
+  =
+  \frac{f_\pi}{3Q^2}
+  \int_0^1\dd x\,\varphi_\pi(x,\mu)
+  \left(\frac1x+\frac1{1-x}\right)
+  +O(\alpha_s,Q^{-4})_{\rm fac}.
+  \label{eq:qcd-pion-transition-factorization}
+\end{equation}
+For the asymptotic LCDA,
+\begin{equation}
+  Q^2F_{\pi^0\gamma\gamma^*}(Q^2)\longrightarrow 2f_\pi .
+  \label{eq:qcd-pion-transition-asymptotic}
+\end{equation}
+In the \(f_\pi^{(130)}=\sqrt2 f_\pi\) convention this is
+\(\sqrt2 f_\pi^{(130)}\).  The anomaly value
+\eqref{eq:qcd-pion-transition-anomaly-normalization} and the asymptotic value
+\eqref{eq:qcd-pion-transition-asymptotic} constrain two different boundary
+regimes of the same form factor.  They do not imply a unique interpolation.
+Published high-\(Q^2\) measurements are therefore tests of the approach to the
+factorized regime and of LCDA shape assumptions, not independent definitions
+of the anomaly or of asymptotic freedom.
+
+The BaBar/Belle tension in the neutral-pion transition form factor is best
+formulated in exactly these terms.  A reported finite-\(Q^2\) trend can
+challenge a chosen LCDA model, a treatment of endpoint regions, or an estimate
+of power corrections.  It cannot by itself refute
+\eqref{eq:qcd-pion-transition-anomaly-normalization} or
+\eqref{eq:qcd-pion-transition-asymptotic}, because those two equations live at
+opposite ends of the form factor and rest on different controlled arguments:
+the first on the axial anomaly and the second on leading-twist factorization
+plus ERBL evolution.  Any quantitative comparison to data must therefore state
+the factorization scale, perturbative order, LCDA input, and power-correction
+model before it is a QCD statement.
+
+\begin{controlledapproximation}[Brodsky--Farrar scaling]
+\label{ca:qcd-brodsky-farrar-scaling-status}
+Consider a fixed-angle exclusive process
+\[
+  H_1+H_2\longrightarrow H_3+H_4
+\]
+whose leading Fock components contain \(n_i\) collinear elementary fields in
+the corresponding leading-twist light-ray operator, and set
+\(n=\sum_i n_i\).  If a leading-power exclusive factorization theorem holds,
+if endpoint configurations are power suppressed in the specified scheme, and
+if the hard coefficient is evaluated at momentum transfer of order
+\(\sqrt s\), then
+\begin{equation}
+  \mathcal M(s,t)\sim s^{\,2-n/2}
+  \quad\text{at fixed }t/s,
+  \qquad
+  \frac{\dd\sigma}{\dd t}\sim s^{\,2-n}.
+  \label{eq:qcd-brodsky-farrar-counting}
+\end{equation}
+The derivation is the power counting of the hard coefficient after all
+external hadrons have been replaced by their normalized leading-twist
+distribution amplitudes.  It is not a dimensional-analysis argument applied to
+hadron fields.  For example, a pion electromagnetic form factor has
+\(n=4\) across the two pion light-ray operators and therefore scales as
+\(F_\pi(Q^2)\sim Q^{-2}\), while fixed-angle
+\(\pi\pi\to\pi\pi\) has \(n=8\) and gives
+\(\dd\sigma/\dd t\sim s^{-6}\), up to logarithmic evolution and controlled
+power corrections.
+\end{controlledapproximation}
+
+The pion \(S\)-matrix is thus accessed by different controlled descriptions in
+different regions.  Chapter~\ref{ch:volume-ii-21} derives the chiral
+low-energy amplitudes and anomaly couplings; Chapter~\ref{ch:volume-ii-07}
+develops the analytic and dispersive language needed for the resonance
+region; the present section gives the asymptotic exclusive regime governed by
+light-ray factorization and asymptotic freedom.  These are not three theories.
+They are three coordinate systems on matrix elements of the same QCD
+operators, with different hypotheses controlling their errors.  A complete
+nonperturbative construction of QCD would define the relevant matrix elements
+first; chiral perturbation theory, dispersive methods, lattice calculations,
+and hard exclusive factorization are then approximation or reconstruction
+methods applied to that common object.
 
 \section{Local Twist-Two Operators and Integer Moments}
 
