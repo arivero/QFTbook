@@ -10,6 +10,7 @@ symmetry, analyticity, and factorization, and which pieces require a
 nonperturbative construction of the underlying local QFT.
 
 \section{Internal-Symmetry Scattering Data}
+\label{sec:integrable-scattering-data}
 
 Let \(G\) be a compact Lie group and let \(V\) be a finite-dimensional
 unitary representation.  A massive particle multiplet with rapidity
@@ -1967,17 +1968,179 @@ is obtained.  The change of variable \(r=\tanh\rho\) gives
 \eqref{eq:sausage-cylinder-limit}.
 \end{proof}
 
+\subsection{Repulsive-Domain Sausage Scattering Datum}
+\label{sec:repulsive-sausage-scattering-datum}
+
+The metric/RG data above are not themselves a factorized scattering theory.
+The commonly used massive sausage bootstrap datum is a one-parameter
+\(U(1)\)-invariant deformation of the \(O(3)\) triplet scattering theory.
+We record it because it is the datum against which any regulator-defined
+sausage sigma model must be matched.
+
+\begin{definition}[Repulsive massive sausage bootstrap datum]
+\label{def:repulsive-massive-sausage-bootstrap-datum}
+Let \(0\le\lambda<\frac12\).  The one-particle labels are
+\[
+  a\in\{+,0,-\},
+  \qquad Q(+)=1,\quad Q(0)=0,\quad Q(-)=-1,
+\]
+all with the same mass \(m>0\).  The two-particle scattering matrix preserves
+the total \(U(1)\) charge.  In the Zamolodchikov--Faddeev convention used in
+Section~\ref{sec:integrable-scattering-data}, the nonzero entries generated
+from charge conjugation and exchange by the following formulae are
+\begin{align}
+  S_{++}^{++}(\theta)
+  &=
+  S_{+-}^{+-}(\ii\pi-\theta)
+  =
+  \frac{\sinh\lambda(\theta-\ii\pi)}
+       {\sinh\lambda(\theta+\ii\pi)},
+  \label{eq:sausage-spp}\\
+  S_{+0}^{0+}(\theta)
+  &=
+  S_{+-}^{00}(\ii\pi-\theta)
+  =
+  \frac{-\ii\sin(2\pi\lambda)}
+       {\sinh\lambda(\theta-2\ii\pi)}
+  S_{++}^{++}(\theta),
+  \label{eq:sausage-sp0-flip}\\
+  S_{+0}^{+0}(\theta)
+  &=
+  \frac{\sinh(\lambda\theta)}
+       {\sinh\lambda(\theta-2\ii\pi)}
+  S_{++}^{++}(\theta),
+  \label{eq:sausage-sp0-direct}\\
+  S_{+-}^{-+}(\theta)
+  &=
+  -\frac{\sin(\pi\lambda)\sin(2\pi\lambda)}
+        {\sinh\lambda(\theta-2\ii\pi)\,
+         \sinh\lambda(\theta+\ii\pi)},
+  \label{eq:sausage-spm-exchange}\\
+  S_{00}^{00}(\theta)
+  &=
+  S_{+0}^{+0}(\theta)+S_{-+}^{+-}(\theta).
+  \label{eq:sausage-s00}
+\end{align}
+Here \(S_{-+}^{+-}=S_{+-}^{-+}\) and the remaining charge-conjugate entries
+are fixed by the simultaneous replacement \(+\leftrightarrow-\).  No other
+matrix element is nonzero in this datum.
+At \(\lambda=0\) the formula is understood as the meromorphic limit.  The
+parameter \(\lambda\) is a bootstrap coordinate.  A comparison with a
+metric-coordinate deformation such as \((h,q)\) in
+Definition~\ref{def:sausage-metric-datum} requires a separate matching map;
+the semiclassical and TBA/NLIE analyses suggest using a coordinate
+\(\nu\) satisfying
+\[
+  \frac{\nu}{4\pi}=\frac{\lambda}{1-2\lambda},
+  \label{eq:sausage-nu-lambda-ledger}
+\]
+but in this monograph \eqref{eq:sausage-nu-lambda-ledger} is a matching
+ledger, not a theorem identifying a constructed local QFT.
+\end{definition}
+
+\begin{proposition}[Elementary repulsive-sausage consistency checks]
+\label{prop:repulsive-sausage-elementary-checks}
+For \(0\le\lambda<\frac12\), the displayed denominator factors in
+\eqref{eq:sausage-spp}--\eqref{eq:sausage-spm-exchange} have no zeros in the
+open physical strip
+\[
+  \mathcal S_{\rm phys}=\{\theta\in\mathbb C:0<\operatorname{Im}\theta<\pi\}.
+\]
+Moreover, the charge \(+2\) block and the charge \(+1\) block obey
+two-particle unitarity on the real rapidity axis.  Explicitly, for real
+\(\theta\ne0\),
+\[
+  S_{++}^{++}(\theta)S_{++}^{++}(-\theta)=1,
+\]
+and, in the ordered charge-\(+1\) basis \((|+0\rangle,|0+\rangle)\), the
+matrix
+\[
+  S_{+1}(\theta)=
+  \begin{pmatrix}
+    A(\theta)&B(\theta)\\
+    B(\theta)&A(\theta)
+  \end{pmatrix},
+\]
+where
+\[
+  A(\theta)=S_{+0}^{+0}(\theta),
+  \qquad
+  B(\theta)=S_{+0}^{0+}(\theta),
+\]
+satisfies
+\[
+  S_{+1}(\theta)S_{+1}(-\theta)=I_2 .
+\]
+\end{proposition}
+
+\begin{proof}
+The possible zeros of \(\sinh\lambda(\theta+\ii\pi)\) occur at
+\[
+  \theta=\ii\pi\left(\frac n\lambda-1\right),
+  \qquad n\in\mathbb Z,
+\]
+when \(\lambda>0\).  For \(n\le0\) the imaginary part is at most \(-\pi\);
+for \(n\ge1\) it is at least \(\pi(1/\lambda-1)>\pi\).  Hence there is no
+zero in the open physical strip.  The possible zeros of
+\(\sinh\lambda(\theta-2\ii\pi)\) occur at
+\[
+  \theta=\ii\pi\left(\frac n\lambda+2\right).
+\]
+For \(n\ge0\) the imaginary part is at least \(2\pi\); for \(n\le-1\) it is
+at most \(2\pi-\pi/\lambda\le0\).  Thus these denominators also have no
+physical-strip zeros.  At \(\lambda=0\) the statement follows from the
+meromorphic limiting rational functions.
+
+Set \(x=\lambda\theta\) and \(a=\pi\lambda\).  The highest-charge block is
+\[
+  D(x)=\frac{\sinh(x-\ii a)}{\sinh(x+\ii a)}.
+\]
+Since \(D(-x)=D(x)^{-1}\), the charge \(+2\) unitarity relation follows.
+For the charge \(+1\) block,
+\[
+  A(x)=\frac{\sinh x}{\sinh(x-2\ii a)}D(x),
+  \qquad
+  B(x)=\frac{-\ii\sin(2a)}{\sinh(x-2\ii a)}D(x).
+\]
+Using \(D(-x)=D(x)^{-1}\),
+\[
+  A(-x)=\frac{\sinh x}{\sinh(x+2\ii a)}D(x)^{-1},
+  \qquad
+  B(-x)=\frac{\ii\sin(2a)}{\sinh(x+2\ii a)}D(x)^{-1}.
+\]
+Therefore
+\[
+  A(x)A(-x)+B(x)B(-x)
+  =
+  \frac{\sinh^2x+\sin^2(2a)}
+       {\sinh(x-2\ii a)\sinh(x+2\ii a)}
+  =1,
+\]
+because
+\(\sinh(x-2\ii a)\sinh(x+2\ii a)=\sinh^2x+\sin^2(2a)\).  Similarly
+\[
+  A(x)B(-x)+B(x)A(-x)=0.
+\]
+These two scalar identities are exactly
+\(S_{+1}(\theta)S_{+1}(-\theta)=I_2\).
+\end{proof}
+
 \begin{controlledapproximation}[Sausage bootstrap matching]
 \label{ca:sausage-bootstrap-matching}
 Equations \eqref{eq:sausage-metric}, \eqref{eq:sausage-ricci-flow-hq}, and
-\eqref{eq:sausage-cylinder-limit} are metric and one-loop RG data.  An exact
-factorized \(S\)-matrix description of the sausage model requires a separate
-bootstrap datum: particle labels, physical-strip pole assignments, CDD
-normalization, and a matching map from the regulator-defined sigma model to
-those rapidity-space coordinates.  This matching is especially delicate near
-the cylindrical endpoint, where the target develops an asymptotic circle and
-the relation to compact parafermion or noncompact cigar descriptions depends
-on the precise scaling limit.
+\eqref{eq:sausage-cylinder-limit} are metric and one-loop RG data, while
+Definition~\ref{def:repulsive-massive-sausage-bootstrap-datum} is a
+rapidity-space bootstrap datum.  A theorem identifying the two requires a
+regulator-defined local sigma model, conserved charges or an equivalent
+factorization construction, Haag--Ruelle scattering states, and a matching
+map from the regulator-defined couplings to the bootstrap coordinate
+\(\lambda\).  This matching is especially delicate near the cylindrical
+endpoint, where the target develops an asymptotic circle and the relation to
+compact parafermion or noncompact cigar descriptions depends on the precise
+scaling limit.  The elementary checks in
+Proposition~\ref{prop:repulsive-sausage-elementary-checks} are necessary
+bootstrap consistency tests; they do not replace the missing constructive
+identification.
 \end{controlledapproximation}
 
 \begin{definition}[Sigma-model family datum]

@@ -5,9 +5,10 @@ The checks cover the CP^{N-1} projector geometry, the CP^1/O(3) Pauli-matrix
 normalization ledger, the PCM Lax coefficient split, the Polyakov-Wiegmann WZ
 coefficient, WZW central charges, nonabelian-bosonization central-charge
 bookkeeping, the projective-model crossing tensors, the SU(N)
-sine-mass/fusion-angle and rational-matrix bootstrap blocks, the supertarget
-one-loop coefficient ledgers, and the curvature and one-loop Ricci-flow
-closure formulae for the sausage metric used in Volume VI.
+sine-mass/fusion-angle and rational-matrix bootstrap blocks, the repulsive
+sausage charged scattering ledgers, the supertarget one-loop coefficient
+ledgers, and the curvature and one-loop Ricci-flow closure formulae for the
+sausage metric used in Volume VI.
 """
 
 from __future__ import annotations
@@ -447,6 +448,65 @@ def check_supertarget_one_loop_ledgers() -> None:
         )
 
 
+def sausage_spp(theta: complex, lam: float) -> complex:
+    return complex(
+        mp.sinh(lam * (theta - 1j * math.pi))
+        / mp.sinh(lam * (theta + 1j * math.pi))
+    )
+
+
+def sausage_charge_one_matrix(theta: complex, lam: float) -> np.ndarray:
+    direct = (
+        mp.sinh(lam * theta)
+        / mp.sinh(lam * (theta - 2j * math.pi))
+        * sausage_spp(theta, lam)
+    )
+    exchange = (
+        -1j
+        * math.sin(2.0 * math.pi * lam)
+        / mp.sinh(lam * (theta - 2j * math.pi))
+        * sausage_spp(theta, lam)
+    )
+    return np.array([[direct, exchange], [exchange, direct]], dtype=complex)
+
+
+def check_sausage_repulsive_smatrix_ledgers() -> None:
+    for lam in (0.1, 0.25, 0.49):
+        for theta in (0.37, 1.11):
+            assert_close(
+                f"sausage ++ unitarity lambda={lam} theta={theta}",
+                sausage_spp(theta, lam) * sausage_spp(-theta, lam),
+                1.0,
+            )
+            matrix = sausage_charge_one_matrix(theta, lam)
+            inverse_matrix = sausage_charge_one_matrix(-theta, lam)
+            assert_close(
+                f"sausage charge-one unitarity lambda={lam} theta={theta}",
+                np.max(np.abs(matrix @ inverse_matrix - np.eye(2))),
+                0.0,
+            )
+
+        # Finite integer ledger for the denominator zeros.  The proof in the
+        # text gives the all-integer argument.
+        for n in range(-4, 6):
+            zero_plus = math.pi * (n / lam - 1.0)
+            zero_minus_two = math.pi * (n / lam + 2.0)
+            if 0.0 < zero_plus < math.pi:
+                raise AssertionError(f"sausage plus denominator physical pole: lambda={lam}, n={n}")
+            if 0.0 < zero_minus_two < math.pi:
+                raise AssertionError(f"sausage minus-two denominator physical pole: lambda={lam}, n={n}")
+
+    theta = 0.83
+    lam = 1.0e-7
+    o3_highest = (theta - 1j * math.pi) / (theta + 1j * math.pi)
+    o3_direct = theta / (theta - 2j * math.pi) * o3_highest
+    o3_exchange = -2j * math.pi / (theta - 2j * math.pi) * o3_highest
+    limiting_matrix = sausage_charge_one_matrix(theta, lam)
+    assert_close("sausage lambda->0 highest-charge limit", sausage_spp(theta, lam), o3_highest, 1.0e-6)
+    assert_close("sausage lambda->0 charge-one direct limit", limiting_matrix[0, 0], o3_direct, 1.0e-6)
+    assert_close("sausage lambda->0 charge-one exchange limit", limiting_matrix[0, 1], o3_exchange, 1.0e-6)
+
+
 def check_sausage_metric_curvature() -> None:
     r, h, q = sp.symbols("r h q", nonzero=True)
     e_metric = h / ((1 - r**2) * (1 + q * r**2))
@@ -526,6 +586,7 @@ def main() -> None:
     check_su_n_rational_block()
     check_scalar_cdd_and_su_n_gamma_ledgers()
     check_supertarget_one_loop_ledgers()
+    check_sausage_repulsive_smatrix_ledgers()
     check_sausage_metric_curvature()
     print("All sigma-model family checks passed.")
 

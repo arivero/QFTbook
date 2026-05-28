@@ -85,6 +85,9 @@ references/**/*.zip
 references/**/*.sty
 references/**/*.eps
 references/**/*.ps
+references/**/*.jpg
+references/**/*.jpeg
+references/**/*.png
 
 # Temporary local notes
 *.tmp
