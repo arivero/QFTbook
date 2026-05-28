@@ -2402,8 +2402,8 @@ conditions.  A \emph{regulated asymptotic-analysis datum} consists of:
 \end{enumerate}
 \end{definition}
 
-\begin{proposition}[What a regulated asymptotic datum does and does not prove]
-\label{prop:regulated-asymptotic-datum-status}
+\begin{remark}[Scope of a regulated asymptotic datum]
+\label{rem:regulated-asymptotic-datum-status}
 A datum in Definition~\ref{def:regulated-asymptotic-analysis-datum} proves a
 Borel--Laplace reconstruction of \(\mathcal X_R\) in a direction \(\theta\)
 only if the transform in item \(3\) satisfies the hypotheses of
@@ -2413,10 +2413,8 @@ subdomain of \(D_R\).  It proves a QFT statement only after the asserted
 regulator-removal limit in item \(5\) is established.  Without item \(5\), the
 datum is a theorem or approximation for the regulated problem, not for the
 continuum QFT.
-\end{proposition}
-
-\begin{proof}
-The first assertion is exactly the content of the Borel--Laplace definition:
+\par
+The first clause is exactly the content of the Borel--Laplace definition:
 Gevrey growth supplies a locally convergent Borel transform, analytic
 continuation and exponential bounds make the Laplace integral convergent, and
 Theorem~\ref{thm:watson-borel-laplace} supplies the asymptotic expansion of
@@ -2427,7 +2425,7 @@ domain by the identity theorem, or by equality of distributional boundary
 values when the observable is defined distributionally.  Removing the regulator
 is a separate limiting operation.  Thus a statement at fixed \(R\) cannot imply
 a continuum-QFT statement unless item \(5\) is supplied.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Positive-ray Borel control in the stable quartic model]
 \label{prop:zero-dimensional-quartic-positive-ray-borel-control}
@@ -2529,7 +2527,7 @@ the regulated field-theoretic observable and then passed through the
 regulator-removal limit.
 \end{proof}
 
-\begin{proposition}[Coefficient growth is not Borel summability]
+\begin{proposition}[Local Borel convergence from Gevrey-one growth]
 \label{prop:coefficient-growth-not-borel-summability}
 Suppose a formal series \(\sum_{r\ge0}a_rg^r\) obeys
 \(|a_r|\le C M^r r!\).  This bound alone implies convergence of the formal

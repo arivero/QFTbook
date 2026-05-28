@@ -219,6 +219,24 @@ the monograph that constructs it.  In particular:
 - a phrase such as "same continuum limit" must state the object that
   converges and the topology or correlation-function sense of convergence.
 
+Theorem-family environments must not be used for scope calibration,
+terminology policing, or absence-of-construction statements.  If the content
+is "this datum has only the following scope", "these are different kinds of
+data", "this construction does not by itself prove X", or "this is a warning
+about what a definition does not contain", use a remark, convention, status
+paragraph, or open problem.  A proposition or theorem with a negative-looking
+conclusion is allowed only when it proves a genuine mathematical fact, such as
+an explicit counterexample, obstruction, nonexistence theorem, positivity
+failure, or finite-dimensional lemma.  Its proof must do mathematical work
+beyond unpacking the definition.
+
+Long derivations should not be forced into theorem statements.  If the text
+constructs an object step by step, use a construction or derivation paragraph
+and reserve the theorem/proposition for the final checkable claim.  If a
+statement consists mostly of setup data with a short proof that applies an
+earlier theorem, move the setup into a definition or hypothesis and state the
+application as a proposition or corollary.
+
 Known proofs should be developed when they are part of the monograph's
 logical spine.  Highly technical proofs may be placed in chapter appendices or
 technical subsections, but the main text must point to the proof and state the

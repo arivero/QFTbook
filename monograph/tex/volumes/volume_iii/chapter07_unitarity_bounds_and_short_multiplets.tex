@@ -646,13 +646,15 @@ For \(\ell=1\) this is current conservation and
 \(\Delta_T=D\).
 
 \section{Short Multiplets as Operator Equations}
+\label{sec:short-multiplets-operator-equations}
 
-\begin{theorem}[Basic unitarity bounds and short multiplets]
-\label{thm:basic-unitarity-bounds-short-multiplets}
-Let \(D\ge3\), and assume reflection-positive radial quantization, the adjoint
-relation \(P_\mu^\dagger=K_\mu\), and the quotient of null states in the local
-operator space.  Then the following bounds and equality conditions hold for
-positive-norm primaries.
+The scalar, spinor, and symmetric-traceless calculations above give the
+following collected reference list.  The proof of each entry is the
+corresponding descendant Gram-matrix computation:
+Theorem~\ref{thm:scalar-unitarity-bound-shortening} for scalars,
+Theorem~\ref{thm:spinor-unitarity-bound} for spinors, and
+Theorem~\ref{thm:stt-unitarity-bound-shortening} for rank-\(\ell\)
+symmetric traceless tensors.
 \begin{enumerate}
   \item A scalar primary \(\phi\) either lies in the \(\Delta_\phi=0\)
   identity branch described in
@@ -683,24 +685,6 @@ positive-norm primaries.
     \partial^{\mu_1}\mathcal O_{\mu_1\mu_2\cdots\mu_\ell}=0.
   \]
 \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-The scalar statement is Theorem~\ref{thm:scalar-unitarity-bound-shortening},
-which uses the level-one scalar Gram matrix and the level-two trace-descendant
-norm \eqref{eq:scalar-laplacian-descendant-norm}.  The spinor statement is
-Theorem~\ref{thm:spinor-unitarity-bound}, obtained from the gamma-trace
-summand of the level-one descendant Gram matrix.  The symmetric-traceless
-statement is Theorem~\ref{thm:stt-unitarity-bound-shortening}, obtained from
-the divergence channel \(\mathcal H_{\ell-1}\) in
-\(\mathcal H_1\otimes\mathcal H_\ell\).  In all three cases, equality means
-that the displayed descendant has zero radial norm.  Reflection positivity
-therefore puts that descendant in the null radical, and the null quotient
-turns it into the corresponding local operator equation.
-\end{proof}
-
-\section{Short Multiplets as Operator Equations}
-\label{sec:short-multiplets-operator-equations}
 
 A short conformal multiplet is a primary multiplet for which a descendant has
 zero norm and is set to zero in the physical Hilbert space.  In local-operator

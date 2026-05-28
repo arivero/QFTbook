@@ -1555,32 +1555,21 @@ and a proof or controlled hypothesis that the observables under discussion are
 reproduced in the overlap regime.
 \end{definition}
 
-\begin{proposition}[Minimal-subtraction running does not supply a Wilsonian
-cutoff]
-\label{prop:sm-ms-running-not-wilsonian-cutoff}
-The RG continuation of
-Definition~\ref{def:sm-high-scale-rg-continuation-datum}, by itself, is not
-a Wilsonian effective theory with ultraviolet cutoff \(\mu_1\).  In
-particular it does not define a finite field-variable space, a path-integral
-measure or half-density, a Hilbert space, a gauge-invariant chiral regulator,
-or a local Wilsonian action at \(\mu_1\).
-\end{proposition}
-
-\begin{proof}
+\begin{remark}[Scope of minimal-subtraction running]
+\label{rem:sm-ms-running-and-wilsonian-data}
 The minimal-subtraction beta functions are obtained from the pole parts of
 renormalized 1PI coordinate changes in dimensional regularization.  Solving
 \eqref{eq:sm-high-scale-rg-continuation-ode} transports coordinates in this
 renormalized coupling chart.  A Wilsonian cutoff theory is different data: it
 requires a finite regulator or BV pushforward, a cutoff-dependent local
 action or half-density, and a statement that low-momentum observables are
-preserved by integrating out degrees of freedom.  None of these objects is
-constructed by the ordinary differential equation for minimal-subtraction
-coordinates.  Therefore any argument that treats the endpoint of the
-minimal-subtraction trajectory as a physical high-cutoff Wilsonian EFT has
-introduced an additional assumption.  In this monograph such an assumption
-must be written as part of the theory under discussion and cannot be used as
-a hidden premise.
-\end{proof}
+preserved by integrating out degrees of freedom.  The ordinary differential
+equation for minimal-subtraction coordinates supplies only the coordinate
+transport.  Treating the endpoint of that trajectory as a physical
+high-cutoff Wilsonian EFT is an additional assumption about the theory under
+discussion, and the assumption must be stated with its regulator or BV data
+and its matching map.
+\end{remark}
 
 \begin{remark}[Extensions beyond the Standard Model]
 A proposed extension of the Standard Model is an additional mathematical
@@ -1590,7 +1579,7 @@ with matching assumptions.  If it is claimed to be an ultraviolet completion,
 the claim requires a regulator or constructive framework at least as explicit
 as the ones demanded in
 Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum} and
-Proposition~\ref{prop:sm-ms-running-not-wilsonian-cutoff}.  A perturbative
+Remark~\ref{rem:sm-ms-running-and-wilsonian-data}.  A perturbative
 Lagrangian, a high-scale RG trajectory, or a phenomenological motivation is
 not by itself such a theory.
 \end{remark}
@@ -1718,32 +1707,25 @@ hypothesis, no finite truncation gives a controlled statement about the
 potential in that region.
 \end{proof}
 
-\begin{proposition}[No baseline large-field theorem in the hybrid definition]
-\label{prop:sm-no-baseline-large-field-conclusion}
-The hybrid Standard Model definition of
-Definition~\ref{def:hybrid-standard-model-datum}, without additional
-mathematical input beyond the listed nonperturbative QCD, perturbative
-electroweak, weak-EFT, and matching data, does not imply a nonperturbative
-large-field stability or metastability theorem for the Higgs coordinate.
-\end{proposition}
-
-\begin{proof}
+\begin{remark}[Large-field claims in the hybrid definition]
+\label{rem:sm-large-field-claims-hybrid-definition}
 The definition contains the electroweak sector as a renormalized perturbative
 chiral gauge theory and supplies matching maps to lower-energy EFTs and
-nonperturbative QCD inputs.  It does not contain a nonperturbative
-construction of a probability measure, Hilbert space, or operator algebra for
-the full chiral electroweak theory that would make arbitrary large Higgs-field
-regions into an object of theorem-level control.  Nor does a
-minimal-subtraction trajectory supply such an object, by
-Proposition~\ref{prop:sm-ms-running-not-wilsonian-cutoff}.  If one changes the
-problem to an EFT extension with higher-dimensional operators,
+nonperturbative QCD inputs.  A nonperturbative large-field stability or
+metastability theorem for the Higgs coordinate would require further data:
+a probability measure, Hilbert space, or operator algebra for the full chiral
+electroweak theory, or a Wilsonian/EFT construction with a declared field
+range and matching map.  Minimal-subtraction coordinate transport has the
+scope described in Remark~\ref{rem:sm-ms-running-and-wilsonian-data}.  If one
+changes the problem to an EFT extension with higher-dimensional operators,
 Proposition~\ref{prop:sm-radial-potential-dimension-six} shows that a
 large-field statement also samples the omitted operator coordinates unless the
-field range and matching assumptions control them.  Hence the baseline hybrid
-definition supports conditional perturbative statements about the chosen
-coupling chart or decay functional, but not an unconditional QFT theorem about
-Higgs large-field stability or metastability.
-\end{proof}
+field range and matching assumptions control them.  The baseline hybrid
+definition therefore supports conditional perturbative statements about a
+chosen coupling chart or decay functional; an unconditional QFT theorem about
+Higgs large-field stability or metastability is a separate construction
+problem.
+\end{remark}
 
 \begin{proposition}[One-loop source of downward quartic running]
 \label{prop:sm-top-source-downward-quartic}
@@ -2142,16 +2124,14 @@ A numerical precision claim is well defined only after these choices and
 their error estimates are specified.
 \end{definition}
 
-\begin{proposition}[Logical parts of the hybrid definition]
-\label{prop:sm-hybrid-logical-layers}
+\begin{remark}[Logical parts of the hybrid definition]
+\label{rem:sm-hybrid-logical-layers}
 Definition~\ref{def:hybrid-standard-model-datum} separates
 nonperturbative QCD input, perturbative electroweak definitions, their hybrid
 operator coupling, lower-energy effective theories, and observable-specific
 matching.  These parts cannot be replaced by one another without adding an
 extra theorem or hypothesis.
-\end{proposition}
-
-\begin{proof}
+\par
 First, the QCD sector is the nonperturbative part of the definition.  It is
 intended as a continuum Wightman QFT with gauge-invariant local and extended
 observables, while compact lattice link variables, Haar measure, and finite
@@ -2191,7 +2171,7 @@ the electroweak scale.  Precision electroweak observables use finite-order
 renormalized perturbation theory.  A cutoff parameter is not part of the
 prediction; any auxiliary regulator dependence has been removed or absorbed
 into the stated renormalized coordinates and operator scheme.
-\end{proof}
+\end{remark}
 
 \section{Chiral Lattice Status of the Electroweak Sector}
 
@@ -2228,16 +2208,14 @@ volume:
 \end{enumerate}
 \end{definition}
 
-\begin{proposition}[Local anomaly cancellation is necessary, not sufficient]
+\begin{proposition}[Local anomaly cancellation as determinant-line obstruction]
 \label{prop:sm-chiral-lattice-anomaly-necessity}
 For finite chiral-gauge regulator data in the sense of
 Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}, gauge
 invariance of the chiral determinant line requires the perturbative gauge
 anomaly coefficients of Proposition~\ref{prop:sm-generation-anomaly-cancellation}
 to vanish.  It also requires the finite \(SU(2)\) doublet-parity condition in
-that proposition.  These conditions do not by themselves construct the
-phase, prove locality of the phase choice, or prove a four-dimensional
-continuum limit.
+that proposition.
 \end{proposition}
 
 \begin{proof}
@@ -2259,31 +2237,32 @@ representations.
 There is also a global obstruction for an odd number of \(SU(2)\) doublets:
 transport around the nontrivial loop in the weak \(SU(2)\) gauge factor
 changes the sign of the fermion Pfaffian.  The Standard Model has four weak
-doublets per generation, hence avoids this obstruction.  The conclusion is only
-necessity.  A zero curvature class permits the local obstruction to be
-removed; it does not exhibit a local phase functional, prove reflection
-positivity, or control the continuum scaling limit.
+doublets per generation, hence avoids this obstruction.
 \end{proof}
 
-\begin{proposition}[Why lattice QCD is not a full Standard Model regulator]
-\label{prop:sm-lattice-qcd-not-full-sm-regulator}
+\begin{remark}[Scope of the anomaly-obstruction calculation]
+The vanishing of the local curvature obstruction and the \(SU(2)\) parity
+obstruction is necessary regulator data.  A complete finite chiral-gauge
+regulator still has to construct a gauge-invariant local phase functional,
+prove the required locality and reflection or reconstruction properties, and
+control the four-dimensional continuum scaling limit.
+\end{remark}
+
+\begin{remark}[Lattice QCD inside the hybrid Standard Model]
+\label{rem:sm-lattice-qcd-inside-hybrid-sm}
 The lattice regulators used to approximate the QCD component
 \(\mathfrak D_{\rm QCD}^{\rm W}\) in
 Definition~\ref{def:hybrid-standard-model-datum} supply nonperturbative
 definitions of gauge-invariant QCD matrix elements after the electroweak
 matching data have selected the relevant color-singlet operators.  They do
-not define the full Standard Model chiral gauge theory.
-\end{proposition}
-
-\begin{proof}
-Lattice QCD uses the color gauge group and quark fields as a vectorlike
-fermion system for the purpose of strong-interaction matrix elements.  Its
-finite Grassmann integral is an ordinary determinant, or a controlled product
-of determinants, coupled to compact \(SU(3)_c\) links.  The electroweak
-theory before matching is different: \(Q_L\) is an \(SU(2)_L\) doublet while
-the conjugate fields \(u^c,d^c\) are weak singlets with different
+so because lattice QCD uses the color gauge group and quark fields as a
+vectorlike fermion system for the purpose of strong-interaction matrix
+elements.  Its finite Grassmann integral is an ordinary determinant, or a
+controlled product of determinants, coupled to compact \(SU(3)_c\) links.
+The electroweak theory before matching has chiral assignments: \(Q_L\) is an
+\(SU(2)_L\) doublet while \(u^c,d^c\) are weak singlets with different
 hypercharges, and \(L_L,e^c\) have the analogous chiral electroweak
-assignment.  A finite regulator for this system must solve the determinant
+assignment.  A finite regulator for that system must solve the determinant
 line and phase problem in
 Definition~\ref{def:sm-finite-chiral-gauge-regulator-datum}.
 
@@ -2292,9 +2271,10 @@ observables, the weak fields are first matched onto gauge-invariant local
 operators such as four-quark, semileptonic, or electromagnetic-current
 operators.  The QCD lattice regulator then computes the matrix elements of
 those color-singlet operators.  This gives a valid matched prediction after
-the map \(\mathcal M\) is specified, but it is not a nonperturbative
-construction of the microscopic chiral electroweak gauge theory.
-\end{proof}
+the map \(\mathcal M\) is specified; a nonperturbative construction of the
+microscopic chiral electroweak gauge theory is the distinct finite-regulator
+problem described above.
+\end{remark}
 
 \begin{definition}[Standard Model prediction]
 \label{def:sm-hybrid-prediction}

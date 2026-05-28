@@ -13,9 +13,10 @@ Borel--Leroy, thimble, and renormalon foundations.
   QFT observable: regulator, complex domain, coefficient extraction,
   Borel-plane analyticity/growth data, nonperturbative sector data, and the
   regulator-removal statement.
-- Proposition `prop:regulated-asymptotic-datum-status` proves that
-  fixed-regulator Borel--Laplace reconstruction becomes a continuum QFT
-  statement only after the regulator-removal limit has been established.
+- Remark `rem:regulated-asymptotic-datum-status` states the scope of the
+  regulated asymptotic datum: fixed-regulator Borel--Laplace reconstruction
+  becomes a continuum QFT statement only after the regulator-removal limit has
+  been established.
 - Proposition `prop:zero-dimensional-quartic-positive-ray-borel-control`
   proves positive-ray Borel control for the stable zero-dimensional quartic
   integral from Euler's hypergeometric representation.

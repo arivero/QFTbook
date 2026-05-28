@@ -13,16 +13,17 @@
 
 - Promoted the spinor bound from proposition to theorem:
   `thm:spinor-unitarity-bound`.
-- Added Theorem `thm:basic-unitarity-bounds-short-multiplets`, collecting the
-  basic positive-norm primary bounds in \(D\ge3\):
+- Added a collected reference list for the basic positive-norm primary bounds
+  in \(D\ge3\):
   scalar \(\Delta_\phi\ge(D-2)/2\), spinor
   \(\Delta_\psi\ge(D-1)/2\), and symmetric-traceless
   \(\Delta_{\mathcal O}\ge\ell+D-2\).
 - Stated the equality conditions as null-descendant operator equations:
   \(\partial^2\phi=0\), \(\Gamma^\mu\partial_\mu\psi=0\), and
   \(\partial^{\mu_1}\mathcal O_{\mu_1\cdots\mu_\ell}=0\).
-- The proof of the summary theorem points back to the explicit Gram-matrix
-  derivations rather than replacing them with a citation or assertion.
+- A later theorem-form audit removed the summary theorem wrapper; the
+  collected list now points back directly to the explicit Gram-matrix
+  derivations.
 - Updated the chapter dossier to preserve the labeled theorem and the
   connection between saturation and null quotient.
 

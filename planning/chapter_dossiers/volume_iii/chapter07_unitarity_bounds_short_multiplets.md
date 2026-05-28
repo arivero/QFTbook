@@ -43,9 +43,9 @@ The chapter establishes:
 - the scalar Laplace shortening as the representation-theoretic source of the
   \(1-q^2\) subtraction in the free-scalar single-letter character of
   Chapter 4.
-- Theorem `thm:basic-unitarity-bounds-short-multiplets`, which collects the
-  scalar, spinor, and symmetric-traceless bounds and their saturation
-  equations in one labeled statement.
+- A collected reference list for the scalar, spinor, and symmetric-traceless
+  bounds and their saturation equations, pointing to the individual
+  Gram-matrix derivations rather than wrapping them in a duplicate theorem.
 - Section `sec:short-multiplets-operator-equations`, which records that
   saturated bounds become null-descendant operator equations in the quotient
   local-operator space.
