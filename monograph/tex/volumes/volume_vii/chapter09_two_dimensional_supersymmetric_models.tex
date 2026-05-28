@@ -377,6 +377,49 @@ an off-shell realization, the same statement is made after passing to
 gauge-invariant observables.
 \end{proof}
 
+\section{Gauged Linear Sigma-Model Datum}
+
+\begin{definition}[Abelian \(2D\) \(\mathcal N=(2,2)\) GLSM datum]
+\label{def:abelian-2d-glsm-datum}
+An abelian GLSM datum in this chapter consists of:
+\begin{enumerate}
+\item gauge group \(G=U(1)\);
+\item chiral multiplets \(\Phi_i\), \(i=1,\ldots,m\), with integer charges
+  \(Q_i\in\mathbb Z\);
+\item a \(U(1)\)-invariant holomorphic superpotential
+  \(W\in\C[\Phi_1,\ldots,\Phi_m]^{U(1)}\);
+\item a complexified FI-theta coordinate
+\[
+  t=\frac{\theta}{2\pi}+\ii r,
+  \qquad r\in\mathbb R,\quad \theta\in\mathbb R/2\pi\mathbb Z;
+\]
+\item a gauge coupling \(e>0\) and a specified ultraviolet regulator for the
+  gauge theory.
+\end{enumerate}
+The classical scalar potential contains
+\begin{equation}
+  \frac{e^2}{2}\left(\sum_{i=1}^m Q_i|\phi_i|^2-r\right)^2
+  +\sum_i|\partial_iW|^2
+  +|\sigma|^2\sum_i Q_i^2|\phi_i|^2 ,
+  \label{eq:abelian-glsm-classical-potential}
+\end{equation}
+where \(\sigma\) is the complex scalar in the vector multiplet.  Classical
+Higgs vacua with at least one charged scalar nonzero therefore solve the
+\(F\)-term equations, the \(D\)-term equation, and then are quotiented by
+\(U(1)\).
+\end{definition}
+
+The axial \(R\)-symmetry anomaly coefficient of this abelian datum is
+\begin{equation}
+  \mathcal A_A=\sum_{i=1}^m Q_i.
+  \label{eq:abelian-glsm-axial-anomaly}
+\end{equation}
+This coefficient is a finite charge ledger: each charged chiral multiplet
+contributes its charge to the axial rotation of the fermion measure.  When
+\(\mathcal A_A=0\), the FI coordinate is not shifted by the axial rotation at
+one loop.  This is a necessary condition for an axial \(R\)-symmetry in an
+infrared superconformal candidate, not a proof of conformality.
+
 The vector and axial \(R\)-symmetries have different anomaly requirements.
 The A twist is available only when \(F_V\) is a genuine symmetry of the
 regulated theory.  The B twist is available only when \(F_A\) is a genuine
@@ -722,49 +765,6 @@ calculation: compactness of the vortex moduli space, fermion zero-mode
 saturation, determinant-line orientation, and boundary control must be
 supplied before such terms are promoted from semiclassical input to a QFT
 statement.
-
-\section{Gauged Linear Sigma-Model Datum}
-
-\begin{definition}[Abelian \(2D\) \(\mathcal N=(2,2)\) GLSM datum]
-\label{def:abelian-2d-glsm-datum}
-An abelian GLSM datum in this chapter consists of:
-\begin{enumerate}
-\item gauge group \(G=U(1)\);
-\item chiral multiplets \(\Phi_i\), \(i=1,\ldots,m\), with integer charges
-  \(Q_i\in\mathbb Z\);
-\item a \(U(1)\)-invariant holomorphic superpotential
-  \(W\in\C[\Phi_1,\ldots,\Phi_m]^{U(1)}\);
-\item a complexified FI-theta coordinate
-\[
-  t=\frac{\theta}{2\pi}+\ii r,
-  \qquad r\in\mathbb R,\quad \theta\in\mathbb R/2\pi\mathbb Z;
-\]
-\item a gauge coupling \(e>0\) and a specified ultraviolet regulator for the
-  gauge theory.
-\end{enumerate}
-The classical scalar potential contains
-\begin{equation}
-  \frac{e^2}{2}\left(\sum_{i=1}^m Q_i|\phi_i|^2-r\right)^2
-  +\sum_i|\partial_iW|^2
-  +|\sigma|^2\sum_i Q_i^2|\phi_i|^2 ,
-  \label{eq:abelian-glsm-classical-potential}
-\end{equation}
-where \(\sigma\) is the complex scalar in the vector multiplet.  Classical
-Higgs vacua with at least one charged scalar nonzero therefore solve the
-\(F\)-term equations, the \(D\)-term equation, and then are quotiented by
-\(U(1)\).
-\end{definition}
-
-The axial \(R\)-symmetry anomaly coefficient of this abelian datum is
-\begin{equation}
-  \mathcal A_A=\sum_{i=1}^m Q_i.
-  \label{eq:abelian-glsm-axial-anomaly}
-\end{equation}
-This coefficient is a finite charge ledger: each charged chiral multiplet
-contributes its charge to the axial rotation of the fermion measure.  When
-\(\mathcal A_A=0\), the FI coordinate is not shifted by the axial rotation at
-one loop.  This is a necessary condition for an axial \(R\)-symmetry in an
-infrared superconformal candidate, not a proof of conformality.
 
 \section{Abelian GLSM Coulomb-Branch One-Loop Ledger}
 \label{sec:abelian-glsm-coulomb-one-loop-ledger}

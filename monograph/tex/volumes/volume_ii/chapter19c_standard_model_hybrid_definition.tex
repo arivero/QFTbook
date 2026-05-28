@@ -4,44 +4,6 @@
 
 \section{Gauge and Matter Data}
 
-\begin{definition}[Local Standard Model gauge datum]
-\label{def:local-standard-model-gauge-datum}
-The local Standard Model gauge algebra is
-\[
-  \mathfrak g_{\rm SM}
-  =
-  \mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y .
-\]
-The covering compact group is
-\[
-  \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_Y .
-\]
-A global form is a quotient
-\[
-  G_{\rm SM}=\widetilde G_{\rm SM}/\Gamma ,
-  \qquad
-  \Gamma\subset Z(\widetilde G_{\rm SM}),
-\]
-for which the local fields in
-Definitions~\ref{def:sm-one-generation-left-weyl} and
-\ref{def:sm-higgs-yukawa-datum} descend to representations of
-\(G_{\rm SM}\).  On a spin four-manifold \(M\), a finite-cutoff local Standard
-Model datum consists of a principal \(G_{\rm SM}\)-bundle \(P\to M\), a
-connection on \(P\), three copies of the chiral matter representation in
-Definition~\ref{def:sm-one-generation-left-weyl}, one Higgs scalar in
-Definition~\ref{def:sm-higgs-yukawa-datum}, and the local action functional
-obtained from the Yang--Mills, scalar, Yukawa, and gauge-fixing/BV data after
-a regulator has been specified.
-\end{definition}
-
-The quotient \(\Gamma\) is invisible in the Lie algebra and in local
-perturbative vertices, but it changes the allowed bundles, line operators,
-and higher-form backgrounds.  Those global questions belong to the
-generalized-symmetry analysis in
-Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses only
-the local representation-theoretic data unless a bundle or line operator is
-explicitly mentioned.
-
 \begin{convention}[Electroweak charge and trace normalizations]
 \label{conv:sm-electroweak-trace-normalization}
 The hypercharge coordinate is normalized by
@@ -122,6 +84,44 @@ by the invariant tensors of \(SU(3)_c\) and \(SU(2)_L\).  In components,
 \(Y_u,Y_d,Y_e\) are complex \(3\times3\) matrices of local coupling
 coordinates.
 \end{definition}
+
+\begin{definition}[Local Standard Model gauge datum]
+\label{def:local-standard-model-gauge-datum}
+The local Standard Model gauge algebra is
+\[
+  \mathfrak g_{\rm SM}
+  =
+  \mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y .
+\]
+The covering compact group is
+\[
+  \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_Y .
+\]
+A global form is a quotient
+\[
+  G_{\rm SM}=\widetilde G_{\rm SM}/\Gamma ,
+  \qquad
+  \Gamma\subset Z(\widetilde G_{\rm SM}),
+\]
+for which the local fields in
+Definitions~\ref{def:sm-one-generation-left-weyl} and
+\ref{def:sm-higgs-yukawa-datum} descend to representations of
+\(G_{\rm SM}\).  On a spin four-manifold \(M\), a finite-cutoff local Standard
+Model datum consists of a principal \(G_{\rm SM}\)-bundle \(P\to M\), a
+connection on \(P\), three copies of the chiral matter representation in
+Definition~\ref{def:sm-one-generation-left-weyl}, one Higgs scalar in
+Definition~\ref{def:sm-higgs-yukawa-datum}, and the local action functional
+obtained from the Yang--Mills, scalar, Yukawa, and gauge-fixing/BV data after
+a regulator has been specified.
+\end{definition}
+
+The quotient \(\Gamma\) is invisible in the Lie algebra and in local
+perturbative vertices, but it changes the allowed bundles, line operators,
+and higher-form backgrounds.  Those global questions belong to the
+generalized-symmetry analysis in
+Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses only
+the local representation-theoretic data unless a bundle or line operator is
+explicitly mentioned.
 
 \begin{proposition}[Gauge invariance of the minimal Yukawa datum]
 \label{prop:sm-yukawa-gauge-invariance}

@@ -550,9 +550,30 @@ then rewriting the resulting contact Ward identity in complex coordinates.
 
 \begin{proposition}[Four-dimensional \(C_T\) and \(c_{\rm W}\)]
 \label{prop:four-dimensional-ct-cw-normalization}
-With the two-point
-normalization of \eqref{eq:stress-tensor-two-point}, the Weyl-squared
-coefficient is fixed by the separated stress-tensor two-point coefficient:
+Use the following local normalization of the separated flat-space
+stress-tensor two-point function:
+\[
+  \left\langle T_{\mu\nu}(x)T_{\rho\sigma}(0)\right\rangle
+  =
+  \frac{C_T}{|x|^{2D}}
+  I_{\mu\nu,\rho\sigma}(x),
+\]
+where
+\[
+  I_{\mu\nu,\rho\sigma}(x)
+  =
+  \frac12\bigl(
+    I_{\mu\rho}(x)I_{\nu\sigma}(x)
+    +
+    I_{\mu\sigma}(x)I_{\nu\rho}(x)
+  \bigr)
+  -
+  \frac1D\delta_{\mu\nu}\delta_{\rho\sigma}.
+\]
+The same convention is developed systematically in
+Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames}.  With
+this normalization, the Weyl-squared coefficient is fixed by the separated
+stress-tensor two-point coefficient:
 \begin{equation}
   C_T=\frac{40}{\pi^4}\,c_{\rm W}.
   \label{eq:four-dimensional-ct-cw-relation}
@@ -561,19 +582,26 @@ This relation is a normalization statement.  It follows by taking two metric
 variations of the \(W^2\) term in
 \eqref{eq:four-dimensional-weyl-anomaly}, Fourier transforming the resulting
 quadratic curvature contact term, and matching the logarithmic scale
-dependence of the flat-space \(TT\) correlator to
-\eqref{eq:stress-tensor-two-point}.  The Euler term begins to contribute
-independent information at the next metric variation.
+dependence of the flat-space \(TT\) correlator to the displayed two-point
+normalization.  The Euler term begins to contribute independent information
+at the next metric variation.
 \end{proposition}
 
 \begin{proposition}[Four-dimensional anomaly map from \(TTT\) data]
 \label{prop:four-dimensional-anomaly-map-from-ttt}
-The parity-even separated \(TTT\) correlator in \(D=4\) is described in
-Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames} by three
-coefficients, denoted there by \(a,b,c\) in
-\eqref{eq:stress-tensor-three-point-structures}.  To avoid notation collision,
-call them \(a_{\rm OP},b_{\rm OP},c_{\rm OP}\) in this paragraph.  The Ward
-identity relation \eqref{eq:ttt-ward-ct-relation} gives, at \(D=4\),
+Use the local convention in which the parity-even separated \(TTT\) correlator
+in \(D=4\) is expanded in three Osborn--Petkou structures,
+\[
+  \langle T_{\mu\nu}(x_1)T_{\rho\sigma}(x_2)T_{\alpha\beta}(x_3)\rangle_{\rm even}
+  =
+  a_{\rm OP}\mathcal I^{(1)}
+  +b_{\rm OP}\mathcal I^{(2)}
+  +c_{\rm OP}\mathcal I^{(3)} .
+\]
+Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames} constructs
+these three separated tensor structures explicitly from conformal covariance,
+conservation, and permutation symmetry.  The small-sphere stress-tensor Ward
+identity gives, in this normalization and at \(D=4\),
 \begin{equation}
   C_T
   =
