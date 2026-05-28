@@ -3888,6 +3888,34 @@ be useful as a coordinate chart or mnemonic, but it is not an ab initio
 definition of the spectrum.
 \end{definition}
 
+\begin{definition}[Operator-sector spectroscopy chart]
+\label{def:qcd-operator-sector-spectroscopy-chart}
+Fix a finite-volume regulator and a symmetry channel \(\Gamma\).  Let
+\(\mathcal V_\Gamma\) be a finite-dimensional vector space of renormalized
+gauge-invariant interpolating operators in that channel, modulo operators
+whose matrix elements vanish on the finite-volume Hilbert subspace being
+sampled.  A spectroscopy chart is a choice of ordered basis
+\((\mathcal O_1,\ldots,\mathcal O_m)\) of \(\mathcal V_\Gamma\), together
+with any declared decomposition
+\[
+  \mathcal V_\Gamma
+  =
+  \mathcal V_{\rm loc}\oplus
+  \mathcal V_{\rm two\text{-}hadron}\oplus
+  \mathcal V_{\rm flux}\oplus\cdots .
+  \label{eq:qcd-spectroscopy-source-decomposition}
+\]
+The summands in \eqref{eq:qcd-spectroscopy-source-decomposition} are source
+subspaces, not Hilbert-space superselection sectors.  For example,
+\(\mathcal V_{\rm loc}\) may contain local \(q\bar q\), baryon, or pure-glue
+operators, \(\mathcal V_{\rm two\text{-}hadron}\) may contain products of
+separately projected hadron operators, and \(\mathcal V_{\rm flux}\) may
+contain point-split bilinears with field-strength insertions or extended
+Wilson-line paths.  The decomposition is part of the chart; it is not an
+invariant classification of states unless a regulator, renormalization
+scheme, and continuum matching prescription have also been supplied.
+\end{definition}
+
 For a finite spatial torus and a reflection-positive lattice regulator, the
 spectral decomposition has the same form as
 \eqref{eq:lattice-glueball-spectral-matrix}:
@@ -3921,6 +3949,80 @@ model of a resonance.  It is a finite-volume reconstruction theorem under
 elasticity, locality, and regulator hypotheses.  In realistic QCD channels
 one must use the coupled-channel determinant version, because cubic symmetry
 mixes partial waves and inelastic thresholds are often nearby.
+
+\begin{proposition}[Basis covariance of finite-volume spectral extraction]
+\label{prop:qcd-spectroscopy-basis-covariance}
+Let \(C(t)\) be the correlation matrix of a spectroscopy chart in a fixed
+finite-volume channel, and assume \(C(t_0)\) is positive definite on the
+chosen source space for some \(t_0>0\).  If
+\[
+  C(t)v_n(t,t_0)=\lambda_n(t,t_0)C(t_0)v_n(t,t_0)
+  \label{eq:qcd-spectroscopy-gevp-general}
+\]
+is the generalized eigenvalue problem, then every invertible change of source
+coordinates \(\mathcal O'_A=R_A{}^B\mathcal O_B\) sends
+\[
+  C(t)\longmapsto C'(t)=R\,C(t)\,R^\dagger
+  \label{eq:qcd-spectroscopy-source-basis-change}
+\]
+and leaves the multiset of generalized eigenvalues
+\(\{\lambda_n(t,t_0)\}\) unchanged.  Consequently the energies extracted from
+\(-\log\lambda_n/(t-t_0)\), when a controlled single-exponential window
+exists, are chart-independent regulator observables.  By contrast, an
+overlap statement such as ``mostly two-hadron'', ``mostly hybrid'', or
+``mostly glueball'' is invariant only after the source subspaces and the
+inner product used to project the overlap covector onto those subspaces have
+been specified.
+\end{proposition}
+
+\begin{proof}
+The transformed GEVP is
+\[
+  R C(t)R^\dagger v'_n
+  =
+  \lambda'_n R C(t_0)R^\dagger v'_n.
+  \label{eq:qcd-transformed-gevp}
+\]
+Multiplying by \(R^{-1}\) from the left and setting \(v_n=R^\dagger v'_n\)
+gives
+\[
+  C(t)v_n=\lambda'_n C(t_0)v_n.
+\]
+Thus every transformed generalized eigenvalue is an original generalized
+eigenvalue.  Applying the same argument to \(R^{-1}\) proves equality of the
+two multisets.  Equivalently,
+\[
+  C'(t_0)^{-1}C'(t)
+  =
+  (R^\dagger)^{-1}\,C(t_0)^{-1}C(t)\,R^\dagger,
+\]
+so the ordinary matrices are similar.
+
+For a finite-rank exact spectral representation
+\[
+  C(t)=Z\,\operatorname{diag}(\ee^{-E_1t},\ldots,\ee^{-E_mt})Z^\dagger,
+\]
+the overlap vector of state \(n\) is the \(n\)-th column of \(Z\).  Under a
+source-coordinate change it becomes \(RZ^{(n)}\).  Whether this vector is zero
+on a declared source subspace is coordinate invariant once the subspace is
+fixed.  A numerical fraction assigned to that subspace, however, requires a
+choice of positive form on the source space and a projection.  Different
+smearings, renormalization schemes, or source decompositions change that
+positive form and hence change the fraction without changing the extracted
+energy or pole datum.  This proves the final assertion.
+\end{proof}
+
+\begin{corollary}[Spectroscopic names as derived coordinates]
+\label{cor:qcd-spectroscopic-names-derived}
+In the finite-volume QCD framework above, the invariant output of a stable
+sector is an energy level and its quantum numbers, while the invariant output
+of a resonance sector is a sheet-labeled pole and residue data after a
+finite-volume-to-infinite-volume reconstruction.  Names such as conventional
+meson, glueball, hybrid, molecule, tetraquark, or flux-tube excitation are
+therefore derived coordinates on source overlaps, pole residues, large-\(N_c\)
+scaling, and deformation behavior.  They are not additional definitions of
+QCD states.
+\end{corollary}
 
 \begin{definition}[Periodic Green function and \(S\)-wave zeta coordinate]
 \label{def:qcd-periodic-green-zeta-coordinate}

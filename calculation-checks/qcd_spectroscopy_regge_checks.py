@@ -33,6 +33,26 @@ def mat_mul(a: Matrix, b: Matrix) -> Matrix:
     )
 
 
+def mat_transpose(a: Matrix) -> Matrix:
+    return tuple(tuple(a[i][j] for i in range(len(a))) for j in range(len(a[0])))
+
+
+def mat_inv_2(a: Matrix) -> Matrix:
+    det = a[0][0] * a[1][1] - a[0][1] * a[1][0]
+    return (
+        (a[1][1] / det, -a[0][1] / det),
+        (-a[1][0] / det, a[0][0] / det),
+    )
+
+
+def trace_2(a: Matrix) -> Fraction:
+    return a[0][0] + a[1][1]
+
+
+def det_2(a: Matrix) -> Fraction:
+    return a[0][0] * a[1][1] - a[0][1] * a[1][0]
+
+
 def identity_matrix(n: int) -> Matrix:
     return tuple(
         tuple(Fraction(1) if i == j else Fraction(0) for j in range(n))
@@ -322,6 +342,33 @@ def check_roy_steiner_unequal_mass_kinematics() -> None:
         assert_equal(f"unequal-mass partial-wave inverse ell={ell}", inverse_coefficient, Fraction(1))
 
 
+def check_gevp_basis_covariance() -> None:
+    c0: Matrix = (
+        (Fraction(5), Fraction(1)),
+        (Fraction(1), Fraction(3)),
+    )
+    ct: Matrix = (
+        (Fraction(7, 2), Fraction(2, 3)),
+        (Fraction(2, 3), Fraction(11, 5)),
+    )
+    r: Matrix = (
+        (Fraction(2), Fraction(-1)),
+        (Fraction(1), Fraction(1)),
+    )
+    rt = mat_transpose(r)
+    c0_prime = mat_mul(mat_mul(r, c0), rt)
+    ct_prime = mat_mul(mat_mul(r, ct), rt)
+    gevp_matrix = mat_mul(mat_inv_2(c0), ct)
+    gevp_matrix_prime = mat_mul(mat_inv_2(c0_prime), ct_prime)
+
+    # Generalized eigenvalues of (Ct,C0) are the eigenvalues of C0^{-1}Ct.
+    # Under C -> R C R^T this matrix is similar to the original one, so the
+    # 2x2 characteristic polynomial, represented by trace and determinant, is
+    # invariant.
+    assert_equal("GEVP trace basis covariance", trace_2(gevp_matrix_prime), trace_2(gevp_matrix))
+    assert_equal("GEVP determinant basis covariance", det_2(gevp_matrix_prime), det_2(gevp_matrix))
+
+
 def check_coupled_channel_determinant_reduction() -> None:
     # In an unmixed two-channel finite-volume determinant,
     # det(K^{-1}+F)=0 reduces channel by channel.  This pins down the sign of
@@ -517,6 +564,7 @@ def main() -> None:
     check_swave_luscher_zeta_normalization()
     check_pipi_crossing_and_roy_subtractions()
     check_roy_steiner_unequal_mass_kinematics()
+    check_gevp_basis_covariance()
     check_coupled_channel_determinant_reduction()
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()

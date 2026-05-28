@@ -831,7 +831,8 @@ Current checks:
   Regge slope, triple-Regge exponent bookkeeping, eikonal Poisson
   normalization, free-Reggeon trajectory signs, the eikonal AGK factorial
   moment cancellation, the \(S\)-wave Luescher zeta normalization, unequal-mass
-  Roy--Steiner kinematics and partial-wave normalization, the \(\pi\pi\)
+  Roy--Steiner kinematics and partial-wave normalization, GEVP basis
+  covariance for finite-volume spectral extraction, the \(\pi\pi\)
   isospin-crossing matrices and Roy-subtraction polynomial slope ratios, and
   the one-channel Luescher/K-matrix sign
   convention that maps finite-volume energies to a second-sheet pole
