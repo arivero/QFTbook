@@ -1178,9 +1178,11 @@ explicit cutoff logarithm cancels only for \(c_1=-b_1^2\).
       \draw[thick] (0.9,0)--(2.15,0);
       \draw[thick] (-0.9,0)..controls (-0.45,0.72) and (0.45,0.72)..(0.9,0);
       \draw[thick] (-0.9,0)..controls (-0.45,-0.72) and (0.45,-0.72)..(0.9,0);
-      \draw[orange!85!black, thick] (-0.45,0.35)..controls (-0.15,0.72) and
+      \draw[orange!85!black, thick, dash pattern=on 4pt off 2pt]
+        (-0.45,0.35)..controls (-0.15,0.72) and
         (0.15,0.72)..(0.45,0.35);
-      \draw[orange!85!black, thick] (-0.45,0.35)..controls (-0.15,0.02) and
+      \draw[orange!85!black, thick, dash pattern=on 4pt off 2pt]
+        (-0.45,0.35)..controls (-0.15,0.02) and
         (0.15,0.02)..(0.45,0.35);
       \node[blue!70!black] at (0,-1.0) {\(\sim c_1g_0^3L^2\)};
     \end{scope}
@@ -1195,7 +1197,7 @@ explicit cutoff logarithm cancels only for \(c_1=-b_1^2\).
       \draw[thick] (1.75,0.75)--(b)--(1.75,-0.75);
       \draw[thick] (a)..controls (-0.28,0.72) and (0.28,0.72)..(b);
       \draw[thick] (a)..controls (-0.28,-0.72) and (0.28,-0.72)..(b);
-      \draw[orange!85!black, thick] (0,0.72)
+      \draw[orange!85!black, thick, dash pattern=on 4pt off 2pt] (0,0.72)
         ..controls (0.45,1.25) and (-0.45,1.25)..(0,0.72);
       \fill (a) circle (1.8pt);
       \fill (b) circle (1.8pt);
@@ -1206,10 +1208,11 @@ explicit cutoff logarithm cancels only for \(c_1=-b_1^2\).
       {finite beta function\\requires\\\(c_1=-b_1^2\)};
   \end{tikzpicture}
   }
-  \caption{The double logarithm associated with nested one-loop subgraphs is
-  constrained by the one-loop beta function.  Its coefficient is fixed by the
-  requirement that the beta function, expressed in the renormalized coordinate,
-  have a finite cutoff-removal limit.}
+\caption{The double logarithm associated with nested one-loop subgraphs is
+constrained by the one-loop beta function.  Dashed inner loops mark the nested
+subgraph whose one-loop logarithm is reused.  Its coefficient is fixed by the
+requirement that the beta function, expressed in the renormalized coordinate,
+have a finite cutoff-removal limit.}
   \label{fig:volume-ii-double-log-consistency}
 \end{figure}
 

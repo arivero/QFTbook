@@ -1092,9 +1092,9 @@ CFT limit is taken.
       \draw[-{Latex[length=2mm]}, thick] (0,0)--(0,2.3) node[left] {\(f(r)\)};
       \draw[green!50!black, very thick]
         (0.15,2.02)..controls (0.85,1.72) and (1.75,1.48)..(3.55,1.46);
-      \draw[blue!75!black, very thick]
+      \draw[blue!75!black, very thick, dash pattern=on 5pt off 2.5pt]
         (0.15,2.02)..controls (0.55,1.28) and (1.25,0.70)..(3.35,0.28);
-      \draw[purple!75!black, very thick]
+      \draw[purple!75!black, very thick, densely dotted]
         (0.15,2.02)..controls (0.45,0.95) and (0.95,0.28)..(2.25,0.05);
       \node[green!50!black] at (2.85,1.78) {\(T<T_c\)};
       \node[blue!75!black] at (2.65,0.73) {\(T=T_c\)};
@@ -1105,7 +1105,8 @@ CFT limit is taken.
   \caption{The Ising fixed point is reached by tuning the temperature.  The
   finite lattice trace space defines the statistical ensemble, spontaneous
   magnetization appears for \(T<T_c\), and the critical two-point function has
-  power-law decay.}
+  power-law decay.  In the two-point plot the ordered, critical, and disordered
+  curves are solid, dashed, and dotted respectively.}
   \label{fig:cft-opening-ising-source-figures}
 \end{figure}
 

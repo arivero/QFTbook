@@ -1284,9 +1284,11 @@ interacting fixed point.
       \draw[-{Latex[length=2mm]}, purple!80!black, very thick]
         (\x,0.25)--++(0.48,0);
     }
-    \draw[-{Latex[length=2mm]}, red!75!black, very thick]
+    \draw[-{Latex[length=2mm]}, red!75!black, very thick,
+      dash pattern=on 4pt off 2pt]
       (1.15,0.12)--(1.15,1.05);
-    \draw[-{Latex[length=2mm]}, red!75!black, very thick]
+    \draw[-{Latex[length=2mm]}, red!75!black, very thick,
+      dash pattern=on 4pt off 2pt]
       (1.15,-0.12)--(1.15,-1.05);
     \node[red!75!black, align=center] at (2.35,1.15)
       {relevant\\mass direction};
@@ -1296,8 +1298,9 @@ interacting fixed point.
   \end{tikzpicture}
   }
   \caption{In the \(\mathbb Z_2\)-even finite chart, the massless endpoint
-  condition removes the relevant thermal direction.  The mass perturbation is
-  the direction dual to \([O_2]\), with eigenvalue
+  condition removes the relevant thermal direction.  The dashed transverse
+  arrows show the mass perturbation, the direction dual to \([O_2]\), with
+  eigenvalue
   \(y_t=D-\Delta_{\phi^2}\).}
   \label{fig:volume-ii-wilson-fisher-critical-surface}
 \end{figure}

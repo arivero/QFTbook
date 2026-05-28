@@ -561,7 +561,7 @@ analytic conjugation and multiplication by the elastic two-body phase.
     \fill[red!70!black] (6.55,0) circle (1.9pt);
     \node[red!70!black,below] at (2.2,-0.12) {\(s_{\rm th}\)};
     \node[red!70!black,below] at (6.55,-0.12) {\(s_{\rm inel}\)};
-    \node[red!70!black,above] at (4.38,0.15) {elastic cut};
+    \node[red!70!black,above] at (3.9,0.22) {elastic cut};
 
     \fill[blue!70!black] (4.55,0.55) circle (2pt);
     \fill[blue!70!black] (4.55,-0.55) circle (2pt);
@@ -572,14 +572,16 @@ analytic conjugation and multiplication by the elastic two-body phase.
     \node[blue!70!black,anchor=east] at (3.18,-1.12)
       {\(\mathcal F_A^-(s)=\mathcal F_A^+(s)^*\)};
 
-    \draw[green!45!black,->,line width=0.9pt,bend left=25]
+    \draw[green!45!black,->,line width=0.9pt,bend left=25,
+      dash pattern=on 4pt off 2pt]
       (5.0,-0.55) to (5.0,0.55);
-    \node[green!45!black,anchor=west,align=left] at (5.35,0)
+    \node[green!45!black,anchor=west,align=left] at (5.55,0.82)
       {multiply by\\\(S_A=\ee^{2\ii\delta_A}\)};
   \end{tikzpicture}
-  \caption{On a one-channel elastic cut, real analyticity relates the two
+  \caption[Watson theorem boundary values on an elastic cut]{On a
+  one-channel elastic cut, real analyticity relates the two
   boundary values by complex conjugation, while unitarity relates them by the
-  elastic scattering phase.  Together they imply Watson's theorem.}
+  dashed phase-multiplication arrow.  Together they imply Watson's theorem.}
   \label{fig:watson-elastic-form-factor-cut}
 \end{figure}
 

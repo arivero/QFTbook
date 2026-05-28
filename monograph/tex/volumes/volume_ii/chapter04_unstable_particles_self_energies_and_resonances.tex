@@ -258,7 +258,7 @@ Figure~\ref{fig:resonance-k-plane-outgoing-growth}.
       (0.25,1.75) .. controls (0.55,-0.95) and (1.08,-1.5) .. (1.48,-0.18)
       .. controls (1.85,0.92) and (2.18,0.78) .. (2.55,0.12)
       .. controls (3.1,-0.65) and (3.85,0.2) .. (5.2,0.05);
-    \draw[orange!90!black,line width=1.05pt]
+    \draw[orange!90!black,line width=1.05pt,dash pattern=on 5pt off 2.5pt]
       (1.05,0.36) .. controls (1.3,0.75) and (1.58,0.75) .. (1.82,0.28)
       .. controls (2.02,-0.12) and (2.32,0.04) .. (2.66,0.36)
       .. controls (3.08,0.7) and (3.72,0.28) .. (4.92,-0.18);
@@ -279,7 +279,7 @@ Figure~\ref{fig:resonance-k-plane-outgoing-growth}.
     \fill[red!75!black] (0,0.85) circle (2.3pt);
     \node[red!75!black,anchor=west,font=\small] at (0.18,0.86)
       {bound};
-    \fill[orange!90!black] (0.92,-0.62) circle (2.4pt);
+    \fill[orange!90!black] (0.84,-0.70) rectangle (1.00,-0.54);
     \node[orange!90!black,anchor=west,font=\small] at (1.08,-0.62)
       {\(k_\ast\)};
     \draw[orange!90!black,->,line width=0.8pt] (0.55,-0.18)--(0.86,-0.55);
@@ -287,9 +287,10 @@ Figure~\ref{fig:resonance-k-plane-outgoing-growth}.
   \end{scope}
 \end{tikzpicture}
 \caption{Outgoing Gamow behavior and the \(k\)-plane location of poles in the
-one-dimensional resonance model.  The left panel distinguishes temporary
-localization from outward flux; the right panel separates a bound-state pole on
-the positive imaginary \(k\)-axis from a resonance pole with
+one-dimensional resonance model.  The dashed packet in the left panel marks
+temporary localization and the arrow marks outward flux.  In the right panel a
+circular marker denotes a bound-state pole on the positive imaginary \(k\)-axis,
+while a square marker denotes a resonance pole with
 \(\operatorname{Im} k_\ast<0\).}
 \label{fig:resonance-k-plane-outgoing-growth}
 \end{figure}

@@ -520,14 +520,15 @@ matching the time-ordering terms in \(\Delta_F\).
   \draw[blue!65!black,thick]
     (-2.50,1.75) arc[start angle=145,end angle=180,radius=3.05];
   \node[blue!65!black] at (-2.35,2.05) {$x^0<0$};
-  \draw[green!45!black,thick,->]
+  \draw[green!45!black,thick,dash pattern=on 5pt off 2.5pt,->]
     (3.05,0) arc[start angle=0,end angle=-145,radius=3.05];
-  \draw[green!45!black,thick]
+  \draw[green!45!black,thick,dash pattern=on 5pt off 2.5pt]
     (-2.50,-1.75) arc[start angle=-145,end angle=-180,radius=3.05];
   \node[green!45!black] at (-2.35,-2.05) {$x^0>0$};
 \end{tikzpicture}
-\caption{Contour closures for the Feynman two-point kernel.  Closing below for
-\(x^0>0\) and above for \(x^0<0\) produces the time-ordered combination of
+\caption{Contour closures for the Feynman two-point kernel.  Closing below
+\((x^0>0)\) is drawn dashed, while closing above \((x^0<0)\) is drawn solid.
+Together the residues produce the time-ordered combination of
 positive-frequency two-point functions.}
 \label{fig:kallen-lehmann-feynman-contour-closures}
 \end{figure}
