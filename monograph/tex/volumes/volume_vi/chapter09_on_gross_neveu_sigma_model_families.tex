@@ -504,6 +504,113 @@ projective family has the same dimensional-transmutation structure as the
 round \(O(N)\) model.  What differs is the global topology, the \(U(1)\)
 quotient, the \(\theta\)-angle, and the particle multiplet structure.
 
+\subsection{The Projective Line and the Exact-Scattering Status}
+\label{subsec:cp1-o3-and-projective-status}
+
+The case \(N=2\) is a useful normalization check because
+\(\mathbb{CP}^1\) is the two-sphere.  Let \(\sigma_a\),
+\(a=1,2,3\), be Pauli matrices with
+\[
+  \operatorname{tr}(\sigma_a\sigma_b)=2\delta_{ab},\qquad
+  \operatorname{tr}(\sigma_a\sigma_b\sigma_c)=2\ii\epsilon_{abc}.
+\]
+For a unit vector \(n:\Sigma\to S^2\subset\R^3\), set
+\begin{equation}
+  P_n=\frac12(I+n_a\sigma_a).
+  \label{eq:cp1-projector-pauli}
+\end{equation}
+
+\begin{proposition}[\(\mathbb{CP}^1\) as the \(O(3)\) sigma model]
+\label{prop:cp1-o3-normalization-ledger}
+The map \(n\mapsto P_n\) identifies \(S^2\) with the rank-one Hermitian
+projectors in \(\mathbb C^2\) and obeys
+\begin{align}
+  \operatorname{tr}(\partial_\mu P_n\,\partial_\mu P_n)
+  &=
+  \frac12\,\partial_\mu n\cdot\partial_\mu n,
+  \label{eq:cp1-o3-kinetic-ledger}\\
+  -\ii\,\operatorname{tr}(P_n\,\dd P_n\wedge\dd P_n)
+  &=
+  \frac12\,\epsilon_{abc}n_a\,\dd n_b\wedge\dd n_c .
+  \label{eq:cp1-o3-charge-ledger}
+\end{align}
+Consequently the \(\mathbb{CP}^1\) action
+\[
+  \frac1{2g^2}\int_\Sigma\operatorname{tr}(\partial_\mu P\,\partial_\mu P)
+  +\ii\theta Q[P]
+\]
+is the \(O(3)\) action
+\[
+  \frac1{2g_{O(3)}^2}\int_\Sigma
+  \partial_\mu n\cdot\partial_\mu n+\ii\theta\,\deg(n),
+  \qquad
+  g_{O(3)}^2=2g^2,
+  \label{eq:cp1-o3-coupling-match}
+\]
+where
+\[
+  \deg(n)=\frac1{8\pi}\int_\Sigma
+  \epsilon_{abc}n_a\,\dd n_b\wedge\dd n_c .
+\]
+\end{proposition}
+
+\begin{proof}
+The matrix \(P_n\) is Hermitian and
+\[
+  P_n^2=\frac14(I+2n_a\sigma_a+n_an_b\sigma_a\sigma_b)
+  =\frac12(I+n_a\sigma_a)=P_n,
+\]
+because \(n_an_b\epsilon_{abc}=0\) and \(n_an_a=1\).  Its trace is one.
+Conversely every rank-one Hermitian projector in \(\mathbb C^2\) has the form
+\eqref{eq:cp1-projector-pauli}, since Hermitian \(2\times2\) matrices are
+spanned by \(I,\sigma_1,\sigma_2,\sigma_3\), the trace-one condition fixes the
+coefficient of \(I\), and \(P^2=P\) fixes \(n\cdot n=1\).
+
+Differentiating gives \(\partial_\mu P_n=\frac12(\partial_\mu n_a)\sigma_a\).
+Thus
+\[
+  \operatorname{tr}(\partial_\mu P_n\,\partial_\mu P_n)
+  =
+  \frac14\,\partial_\mu n_a\partial_\mu n_b
+  \operatorname{tr}(\sigma_a\sigma_b)
+  =
+  \frac12\,\partial_\mu n\cdot\partial_\mu n.
+  \]
+For the curvature form,
+\[
+  \operatorname{tr}(P_n\,\dd P_n\wedge\dd P_n)
+  =
+  \frac18 n_a\,\dd n_b\wedge\dd n_c\,
+  \operatorname{tr}(\sigma_a\sigma_b\sigma_c),
+\]
+because the term with \(\operatorname{tr}(\sigma_b\sigma_c)\) is symmetric in
+\((b,c)\) and hence vanishes after wedging.  The Pauli trace identity gives
+\eqref{eq:cp1-o3-charge-ledger}.  Substituting
+\eqref{eq:cp1-o3-kinetic-ledger} into the projector action gives the coupling
+match, and substituting \eqref{eq:cp1-o3-charge-ledger} into \(Q[P]\) gives
+the degree formula.
+\end{proof}
+
+For \(N=2\), the exact massive scattering problem is therefore the \(O(3)\)
+case of the vector sigma-model scattering problem described earlier in this
+chapter.
+For \(N>2\), one must keep a sharper distinction.  The classical
+\(\mathbb{CP}^{N-1}\) target is a compact symmetric space and has a classical
+zero-curvature description.  A quantum factorization theorem for the bosonic
+projective model requires additional data: quantum conserved charges or an
+equivalent factorizing construction, the particle spectrum, the scalar
+normalization, the crossed particle-antiparticle amplitudes, and the matching
+map from the regulator-defined model
+\eqref{eq:cpn-action-auxiliary-gauge} to the bootstrap mass coordinate.
+
+The \(N=(2,2)\) supersymmetric \(\mathbb{CP}^{N-1}\) model is a different
+local QFT.  Its scattering proposal factorizes an \(SU(N)\) chiral
+Gross--Neveu tensor part with an additional supersymmetric minimal factor and
+has an antisymmetric bound-state tower.  Those statements use the extra
+fermionic fields and supercharges of the supersymmetric theory; the bosonic
+projective action \eqref{eq:cpn-action-auxiliary-gauge} requires its own
+factorization and matching data.
+
 \subsection{Projective-Model Crossing Data}
 \label{subsec:projective-model-crossing-data}
 

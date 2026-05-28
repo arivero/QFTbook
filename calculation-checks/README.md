@@ -842,7 +842,8 @@ Current checks:
   \(\Delta\sigma=\sigma_{1/2}-\sigma_{3/2}\) convention.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
-  and topological-charge normalization on the \(\CP^1\) chart,
+  and topological-charge normalization on the \(\CP^1\) chart, the
+  \(\CP^1=O(3)\) Pauli-matrix kinetic and degree-normalization ledger,
   the algebraic equivalence between the principal-chiral-model and
   symmetric-space Lax flatness polynomials and their
   equation-of-motion/Maurer--Cartan systems, the Polyakov--Wiegmann boundary

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Exact finite checks for sigma-model family identities.
 
-The checks cover the CP^{N-1} projector geometry, the PCM Lax coefficient
-split, the Polyakov-Wiegmann WZ coefficient, WZW central charges,
-nonabelian-bosonization central-charge
+The checks cover the CP^{N-1} projector geometry, the CP^1/O(3) Pauli-matrix
+normalization ledger, the PCM Lax coefficient split, the Polyakov-Wiegmann WZ
+coefficient, WZW central charges, nonabelian-bosonization central-charge
 bookkeeping, the projective-model crossing tensors, the SU(N)
 sine-mass/fusion-angle and rational-matrix bootstrap blocks, the supertarget
 one-loop coefficient ledgers, and the curvature and one-loop Ricci-flow
@@ -69,6 +69,39 @@ def check_cp_projector() -> None:
         "CP1 projector curvature",
         -unit_i * sp.trace(p * (dtheta_p * dphi_p - dphi_p * dtheta_p)) - f_theta_phi,
     )
+
+
+def check_cp1_o3_pauli_ledger() -> None:
+    sx = sp.Matrix([[0, 1], [1, 0]])
+    sy = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+    sz = sp.Matrix([[1, 0], [0, -1]])
+    pauli = [sx, sy, sz]
+
+    n = sp.symbols("n1 n2 n3", real=True)
+    u = sp.symbols("u1 u2 u3", real=True)
+    v = sp.symbols("v1 v2 v3", real=True)
+
+    p = sp.eye(2) / 2
+    dp_u = sp.zeros(2)
+    dp_v = sp.zeros(2)
+    for coefficient, sigma in zip(n, pauli):
+        p += coefficient * sigma / 2
+    for coefficient, sigma in zip(u, pauli):
+        dp_u += coefficient * sigma / 2
+    for coefficient, sigma in zip(v, pauli):
+        dp_v += coefficient * sigma / 2
+
+    kinetic = sp.trace(dp_u * dp_u)
+    kinetic_expected = sum(component**2 for component in u) / 2
+    assert_zero("CP1/O3 kinetic trace", kinetic - kinetic_expected)
+
+    triple = -sp.I * sp.trace(p * (dp_u * dp_v - dp_v * dp_u))
+    cross = (
+        n[0] * (u[1] * v[2] - u[2] * v[1])
+        + n[1] * (u[2] * v[0] - u[0] * v[2])
+        + n[2] * (u[0] * v[1] - u[1] * v[0])
+    )
+    assert_zero("CP1/O3 topological trace", triple - cross / 2)
 
 
 def check_pcm_lax_coefficients() -> None:
@@ -457,6 +490,7 @@ def check_sausage_metric_curvature() -> None:
 
 def main() -> None:
     check_cp_projector()
+    check_cp1_o3_pauli_ledger()
     check_pcm_lax_coefficients()
     check_symmetric_space_lax_coefficients()
     check_polyakov_wiegmann_coefficient()
