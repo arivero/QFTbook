@@ -832,8 +832,9 @@ Current checks:
   second-sheet pole equation, together with the coupled-channel determinant
   reduction, sheet-sign bookkeeping, and the quarkonium spin-centroid
   algebra for fine and hyperfine splittings, plus the nucleon Sachs
-  Dirac--Pauli coordinate transform and the stable-current three-point
-  extraction ratio with excited-state suppression factors.
+  Dirac--Pauli coordinate transform, the stable-current three-point
+  extraction ratio with excited-state suppression factors, and the forward
+  Compton/Baldin dispersion prefactor.
 - `sigma_model_family_checks.py`: exact finite checks for the integrable
   sigma-model family chapter, including the \(\CP^{N-1}\) projector geometry
   and topological-charge normalization on the \(\CP^1\) chart,

@@ -228,6 +228,31 @@ def check_stable_current_three_point_ratio() -> None:
     assert_equal("stable-current excited-state bookkeeping", ratio, expected_ratio)
 
 
+def check_forward_compton_baldin_prefactor() -> None:
+    # In the convention Im f(omega)=omega sigma(omega)/(4*pi), the
+    # once-subtracted even dispersion relation gives the omega^2 coefficient
+    # (2/pi) int Im f(omega')/omega'^3.  The rational part of the prefactor is
+    # therefore 2*(1/4)=1/2, with the two displayed pi factors giving
+    # 1/(2*pi^2).
+    dispersion_rational = Fraction(2)
+    optical_rational = Fraction(1, 4)
+    assert_equal(
+        "Baldin rational prefactor",
+        dispersion_rational * optical_rational,
+        Fraction(1, 2),
+    )
+
+    # A finite spectral measure model: the coefficient obtained by expanding
+    # the dispersion kernel equals the Baldin sum over cross-section atoms.
+    atoms = [(Fraction(3, 5), Fraction(2, 7)), (Fraction(11, 6), Fraction(5, 13))]
+    dispersion_coeff_rational = sum(
+        dispersion_rational * optical_rational * sigma / (omega**2)
+        for omega, sigma in atoms
+    )
+    baldin_rational = Fraction(1, 2) * sum(sigma / (omega**2) for omega, sigma in atoms)
+    assert_equal("Baldin finite-atom expansion", dispersion_coeff_rational, baldin_rational)
+
+
 def main() -> None:
     check_gell_mann_okubo()
     check_decuplet_equal_spacing()
@@ -238,6 +263,7 @@ def main() -> None:
     check_quarkonium_spin_centroid()
     check_nucleon_sachs_coordinate_transform()
     check_stable_current_three_point_ratio()
+    check_forward_compton_baldin_prefactor()
     print("All QCD spectroscopy and Regge convention checks passed.")
 
 

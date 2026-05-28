@@ -4548,6 +4548,158 @@ in a ratio of Euclidean correlators is therefore evidence for the hypotheses
 of the proposition in a numerical calculation; it is not itself the definition
 of the form factor.
 
+\begin{definition}[Forward Compton and polarizability datum]
+\label{def:qcd-forward-compton-polarizability-datum}
+Let \(N\) be a stable proton or neutron state of mass \(M_N\) and spin
+\(\frac12\).  Work in the nucleon rest frame and let a real photon have energy
+\(\omega>0\), direction \(\mathbf n\in S^2\), and transverse polarization
+representatives \(\boldsymbol\epsilon,\boldsymbol\epsilon'\) satisfying
+\(\mathbf n\cdot\boldsymbol\epsilon
+=\mathbf n\cdot\boldsymbol\epsilon'=0\).  The forward real-Compton amplitude
+is the on-shell, connected, LSZ-reduced matrix element of two insertions of
+the renormalized electromagnetic current \(J_{\rm em}^\mu\), with the photon
+coupling and the one-nucleon state normalization fixed by the scattering
+chapters.  For a spin state with unit spin vector \(\mathbf s\), define the
+scalar forward amplitudes \(f_N(\omega)\) and \(g_N(\omega)\) by
+\begin{equation}
+  \mathcal A_{\gamma N\to\gamma N}^{\rm fwd}
+  =
+  \boldsymbol\epsilon'^{\,*}\!\cdot\boldsymbol\epsilon\, f_N(\omega)
+  +
+  \ii\,\mathbf s\cdot
+  \bigl(\boldsymbol\epsilon'^{\,*}\times\boldsymbol\epsilon\bigr)\,
+  g_N(\omega).
+  \label{eq:qcd-forward-compton-fg-definition}
+\end{equation}
+This equation is a definition of the normalization of \(f_N,g_N\).  Let
+\[
+  f_N^{\rm nb}(\omega):=f_N(\omega)-f_N^{\rm Born}(\omega)
+\]
+denote the non-Born amplitude after subtracting the one-nucleon pole
+contribution, whose normalization is specified in the low-energy expansion
+below.  With this normalization the optical-theorem convention for the
+absorptive non-Born amplitude is
+\begin{equation}
+  \operatorname{Im}f_N^{\rm nb}(\omega+\ii0)
+  =
+  \frac{\omega}{4\pi}\,
+  \sigma_{\gamma N}^{\rm abs}(\omega),
+  \qquad
+  \omega\ge\omega_{\rm th},
+  \label{eq:qcd-forward-compton-optical-theorem}
+\end{equation}
+where \(\omega_{\rm th}\) is the first inelastic threshold and
+\(\sigma_{\gamma N}^{\rm abs}\) is the total real-photon absorption cross
+section in the same convention, not the elastic Compton cross section.  The
+spin-dependent optical theorem similarly uses the helicity-difference
+absorption cross section
+\(\Delta\sigma_{\gamma N}:=\sigma_{1/2}-\sigma_{3/2}\):
+\begin{equation}
+  \operatorname{Im}g_N(\omega+\ii0)
+  =
+  \frac{\omega}{8\pi}\,
+  \Delta\sigma_{\gamma N}(\omega).
+  \label{eq:qcd-forward-spin-compton-optical-theorem}
+\end{equation}
+
+The spin-independent electric-plus-magnetic polarizability is the coefficient
+of the first non-Born term in the low-energy expansion
+\begin{equation}
+  f_N(\omega)
+  =
+  f_N^{\rm Born}(\omega)
+  +
+  \bigl(\alpha_E^N+\beta_M^N\bigr)\omega^2
+  +O(\omega^4).
+  \label{eq:qcd-forward-polarizability-definition}
+\end{equation}
+The Born amplitude is the one-nucleon pole contribution determined by the
+charge \(F_1^N(0)\), magnetic moment \(F_1^N(0)+F_2^N(0)\), and the same
+Compton Ward identity used in the QED external-state chapter.  Equation
+\eqref{eq:qcd-forward-polarizability-definition} defines only the sum
+\(\alpha_E^N+\beta_M^N\).  Separating \(\alpha_E^N\) from \(\beta_M^N\)
+requires either non-forward Compton amplitudes or a background-field
+definition with separately specified electric and magnetic external fields.
+\end{definition}
+
+\begin{proposition}[Baldin sum rule as a forward-dispersion theorem]
+\label{prop:qcd-baldin-forward-dispersion}
+Assume that the spin-independent forward Compton amplitude
+\(f_N^{\rm nb}(\omega)\) is an even function of \(\omega\) analytic in the
+complex \(\omega\)-plane cut along
+\((-\infty,-\omega_{\rm th}]\cup[\omega_{\rm th},\infty)\), real on the
+real interval \(|\omega|<\omega_{\rm th}\), and sufficiently bounded at
+infinity so that the once-subtracted Cauchy formula below has no boundary
+term.  Then
+\begin{equation}
+  f_N^{\rm nb}(\omega)-f_N^{\rm nb}(0)
+  =
+  \frac{2\omega^2}{\pi}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\operatorname{Im}f_N^{\rm nb}(\omega'+\ii0)}
+       {\omega'(\omega'^2-\omega^2)}
+  \,\dd\omega',
+  \qquad |\omega|<\omega_{\rm th}.
+  \label{eq:qcd-forward-compton-subtracted-dispersion}
+\end{equation}
+If the small-\(\omega\) expansion
+\eqref{eq:qcd-forward-polarizability-definition} exists and the integral may
+be expanded at \(\omega=0\), then
+\begin{equation}
+  \alpha_E^N+\beta_M^N
+  =
+  \frac{1}{2\pi^2}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\sigma_{\gamma N}^{\rm abs}(\omega')}{\omega'^2}\,\dd\omega' .
+  \label{eq:qcd-baldin-sum-rule}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Set \(F(\omega):=f_N^{\rm nb}(\omega)-f_N^{\rm nb}(0)\).  By crossing in the
+forward channel \(F\) is even.  Apply Cauchy's theorem to
+\(F(z)/(z^2-\omega^2)\) on a contour surrounding the two cuts and use the
+assumed large-\(|z|\) bound to drop the circle at infinity.  The discontinuity
+on the positive cut is
+\[
+  F(\omega'+\ii0)-F(\omega'-\ii0)
+  =
+  2\ii\,\operatorname{Im}f_N^{\rm nb}(\omega'+\ii0).
+\]
+The negative cut gives the same contribution after the change
+\(\omega'\mapsto-\omega'\), because \(F\) is even.  The residues at
+\(z=\pm\omega\) then give
+\eqref{eq:qcd-forward-compton-subtracted-dispersion}.  For
+\(|\omega|<\omega_{\rm th}\),
+\[
+  \frac{1}{\omega'^2-\omega^2}
+  =
+  \frac{1}{\omega'^2}
+  +O(\omega^2),
+\]
+under the stated integrability assumption.  Therefore the coefficient of
+\(\omega^2\) in \(F(\omega)\) is
+\[
+  \frac{2}{\pi}
+  \int_{\omega_{\rm th}}^\infty
+  \frac{\operatorname{Im}f_N^{\rm nb}(\omega'+\ii0)}{\omega'^3}\,\dd\omega' .
+\]
+Using the optical theorem
+\eqref{eq:qcd-forward-compton-optical-theorem} gives
+\eqref{eq:qcd-baldin-sum-rule}.  The proof shows precisely where the analytic
+and high-energy hypotheses enter; QCD supplies the current matrix elements,
+while the dispersion relation is an additional analyticity statement about the
+real-photon forward amplitude.
+\end{proof}
+
+The spin-dependent amplitude \(g_N\) is handled in the same way after the
+elastic pole term has been fixed by \(F_1^N(0)\) and \(F_2^N(0)\).  Its
+low-energy coefficients define forward spin polarizabilities, and its
+dispersion relations involve
+\(\Delta\sigma_{\gamma N}=\sigma_{1/2}-\sigma_{3/2}\).  The monograph keeps
+this as a statement about current-current matrix elements and their analytic
+continuation; it is not a model of the nucleon as a polarizable medium.
+
 The practical hierarchy of spectroscopic control is therefore:
 \begin{itemize}
   \item Stable mesons and baryons are isolated color-singlet mass eigenvalues;
