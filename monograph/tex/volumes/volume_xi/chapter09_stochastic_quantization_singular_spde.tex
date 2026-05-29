@@ -945,10 +945,9 @@ equal-time Wick-power limits, so the limiting process is precisely
 of \(\mathbb X_N\).
 \end{proof}
 
-\begin{proposition}[Heat-kernel smoothing estimate]
-\label{prop:spde-heat-kernel-smoothing}
-Let \(A=\Delta-m^2\) on \(\mathbb T^d\).  For \(r\in\R\), \(\theta\geq0\),
-and \(t>0\),
+\paragraph{Heat-kernel smoothing estimate.}
+Let \(A=\Delta-m^2\) on \(\mathbb T^d\).  The parabolic gain used below is the
+following Fourier estimate: for \(r\in\R\), \(\theta\geq0\), and \(t>0\),
 \begin{equation}
   \|e^{tA}u\|_{H^{r+2\theta}}
   \leq
@@ -965,10 +964,7 @@ Consequently, if \(F\in L^\infty([0,T];H^r)\), then
   \quad(0\leq\theta<1).
   \label{eq:spde-duhamel-smoothing}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-In Fourier coordinates,
+Indeed, in Fourier coordinates,
 \[
   \|e^{tA}u\|_{H^{r+2\theta}}^2
   =
@@ -986,7 +982,11 @@ gives \eqref{eq:spde-heat-kernel-smoothing}.  The Duhamel estimate follows
 by integrating
 \((t-s)^{-\theta}\) over \(0<s<t\), which is finite exactly for
 \(\theta<1\).
-\end{proof}
+The restriction \(\theta<1\) is therefore not a stochastic effect; it is the
+endpoint singularity of the deterministic heat kernel in this \(L^\infty_t\)
+estimate.  Sharper parabolic Besov--Holder versions distribute time
+regularity differently, but the fixed-point argument below only needs the
+displayed Sobolev form.
 
 \section{Da Prato--Debussche in Two Dimensions}
 
@@ -1603,7 +1603,8 @@ Let \(C_T H^r=C([0,T];H^r)\) and put \(A=\Delta-m^2\).  Define
 \]
 The forcing belongs to \(C_T H^{-\kappa}\) by
 Lemma~\ref{lem:spde-dpd-sobolev-products}.  To estimate the Duhamel term in
-\(H^\beta\), use Proposition~\ref{prop:spde-heat-kernel-smoothing} with
+\(H^\beta\), use the heat-kernel estimate
+\eqref{eq:spde-heat-kernel-smoothing} with
 \[
   r=-\kappa,\qquad
   r+2\theta=\beta,\qquad
@@ -4382,7 +4383,8 @@ The mild form of \eqref{eq:dpd-remainder-equation} is
 where \(\mathcal N\) is the cubic expression in
 \eqref{eq:dpd-remainder-equation}.  Parabolic Schauder estimates increase
 spatial regularity by two derivatives relative to the forcing; the Sobolev
-version is Proposition~\ref{prop:spde-heat-kernel-smoothing}, while the
+version is the heat-kernel estimate
+\eqref{eq:spde-heat-kernel-smoothing}, while the
 sharp Da Prato--Debussche proof uses the corresponding parabolic
 Besov--Holder estimates.  Proposition~\ref{prop:spde-two-dimensional-wick-powers}
 constructs the Wick powers in a Sobolev topology; the sharper statement used

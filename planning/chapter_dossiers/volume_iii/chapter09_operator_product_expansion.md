@@ -319,8 +319,9 @@ The chapter establishes:
   \(\sigma,\varepsilon\) mixed-correlator bootstrap datum for the
   three-dimensional Ising system, derived the five crossing equations and
   five-vector positivity packaging from the chapter's conformal-block
-  conventions, proved the finite-functional exclusion certificate, separated
-  numerical SDP islands as external/certification-boundary input, and added
+  conventions, recorded the finite-functional exclusion certificate as a
+  cone-separation criterion whose hard part is constructing and certifying
+  the functional, separated numerical SDP islands as external/certification-boundary input, and added
   `calculation-checks/ising_mixed_bootstrap_checks.py` for the exact
   prefactor/sign/PSD/vector-packing algebra.
 - 2026-05-27 companion-code follow-up: added

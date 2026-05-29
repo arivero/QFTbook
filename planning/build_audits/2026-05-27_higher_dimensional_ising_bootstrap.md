@@ -24,8 +24,8 @@ Chapter 9 now states the \(\mathbb Z_2\)-graded hypotheses on
 \(\sigma,\varepsilon\), derives the spin-\(\ell\) exchange sign, defines the
 \(\mathsf F_\pm^{ij,kl}\) crossing kernels, proves the five scalar crossing
 equations, packages them as the standard five-vector semidefinite-programming
-system, and proves the finite-functional exclusion certificate from reflection
-positivity.
+system, and records the finite-functional exclusion certificate as a
+cone-separation criterion from reflection positivity.
 
 The same section states the status boundary for the numerical Ising island:
 the crossing and positivity system is monograph-derived, while derivative

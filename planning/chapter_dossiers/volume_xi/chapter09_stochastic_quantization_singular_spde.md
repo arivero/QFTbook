@@ -274,8 +274,10 @@ data.
   Wick-power limit, this supplies the potential-convergence hypothesis in
   the common-potential comparison corollary; the remaining constructive
   burden is the uniform \(L^p\) stability of the exponential weights.
-- Proves the Fourier heat-kernel smoothing estimate used as the Sobolev
-  model for the parabolic Schauder estimates in the DPD fixed point.
+- Records and derives the Fourier heat-kernel smoothing estimate used as the
+  Sobolev model for the parabolic Schauder estimates in the DPD fixed point;
+  the endpoint \(\theta<1\) is identified as the deterministic Duhamel
+  singularity in the \(L^\infty_t\) estimate.
 - Proves the Sobolev product estimates used in the elementary DPD fixed point:
   \(H^\beta H^\beta\subset H^\beta\) and
   \(H^\beta H^{-\kappa}\subset H^{-\kappa}\), using a dyadic
@@ -720,7 +722,8 @@ data maps.
   the stationary stochastic convolution, normalization of the factor \(2\) in
   the white-noise covariance, negative-Sobolev regularity, smeared Wick-power
   convergence in two dimensions, and a Fourier heat-kernel smoothing
-  estimate.  The calculation-check companion verifies the OU variance,
+  estimate treated as deterministic estimate rather than theorem-family
+  wrapper.  The calculation-check companion verifies the OU variance,
   Sobolev threshold arithmetic, and heat-kernel optimization.
 - 2026-05-25 DPD fixed-point pass: the chapter now proves the deterministic
   Sobolev local fixed-point component of the DPD construction internally.
