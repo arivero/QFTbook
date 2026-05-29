@@ -14,7 +14,7 @@ from fractions import Fraction
 import numpy as np
 
 
-def assert_equal(name: str, lhs: int | Fraction, rhs: int | Fraction) -> None:
+def assert_equal(name: str, lhs: int | bool | Fraction, rhs: int | bool | Fraction) -> None:
     if lhs != rhs:
         raise AssertionError(f"{name}: got {lhs}, expected {rhs}")
 
@@ -146,6 +146,61 @@ def check_single_trace_and_quark_boundary_scaling() -> None:
         )
 
 
+def center_phase_exponents(word: list[tuple[int, int]], dimensions: int) -> tuple[int, ...]:
+    """Return the exponent of each independent EK center phase.
+
+    A reduced word ``[(mu, eps), ...]`` represents
+    ``V_mu^eps ...`` with ``eps`` equal to ``+1`` or ``-1``.  Under
+    ``V_mu -> z_mu V_mu`` its normalized trace is multiplied by
+    ``prod_mu z_mu^{n_mu}``; this function computes the integer vector
+    ``n_mu``.
+    """
+
+    charges = [0] * dimensions
+    for mu, eps in word:
+        if not 0 <= mu < dimensions:
+            raise ValueError("direction outside lattice dimension")
+        if eps not in (-1, 1):
+            raise ValueError("orientation must be +/-1")
+        charges[mu] += eps
+    return tuple(charges)
+
+
+def is_center_neutral(word: list[tuple[int, int]], dimensions: int, n_colors: int) -> bool:
+    if n_colors < 2:
+        raise ValueError("SU(N) center requires N >= 2")
+    return all(charge % n_colors == 0 for charge in center_phase_exponents(word, dimensions))
+
+
+def check_eguchi_kawai_center_selection() -> None:
+    plaquette = [(0, 1), (1, 1), (0, -1), (1, -1)]
+    open_corner = [(0, 1), (1, 1), (0, -1)]
+    reduced_polyakov_word = [(2, 1)] * 5
+
+    plaquette_charge = center_phase_exponents(plaquette, dimensions=3)
+    open_corner_charge = center_phase_exponents(open_corner, dimensions=3)
+
+    assert_equal("EK plaquette charge mu=0", plaquette_charge[0], 0)
+    assert_equal("EK plaquette charge mu=1", plaquette_charge[1], 0)
+    assert_equal("EK open word displacement mu=1", open_corner_charge[1], 1)
+
+    assert_equal("EK plaquette neutral modulo SU(5) center", is_center_neutral(plaquette, 3, 5), True)
+    assert_equal("EK open word charged modulo SU(5) center", is_center_neutral(open_corner, 3, 5), False)
+    assert_equal(
+        "EK length-N word neutral modulo SU(N) center",
+        is_center_neutral(reduced_polyakov_word, 3, 5),
+        True,
+    )
+
+    for n_colors in range(3, 9):
+        charge = center_phase_exponents(open_corner, dimensions=3)[1]
+        assert_equal(
+            f"EK charged open corner has nontrivial SU({n_colors}) center phase",
+            charge % n_colors != 0,
+            True,
+        )
+
+
 def check_baryon_large_n_scaling() -> None:
     # In the Hartree estimate, N quarks give N one-body terms while
     # N(N-1)/2 pairs interact through g^2 = lambda/N.  We check the exact
@@ -186,6 +241,7 @@ def main() -> None:
     check_theta_graph_suppression()
     check_half_trace_coupling_conversion()
     check_single_trace_and_quark_boundary_scaling()
+    check_eguchi_kawai_center_selection()
     check_baryon_large_n_scaling()
     print("All large-N color-topology checks passed.")
 

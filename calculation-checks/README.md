@@ -763,8 +763,9 @@ Current checks:
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, the half-trace coupling conversion
   \(g_{\rm ht}^2=2g^2\), normalized single-trace scaling, and fixed-\(N_f\)
-  versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
-  pair-counting and fixed-spin rotor \(1/N_c\) scaling.
+  versus Veneziano quark-boundary counting, Eguchi--Kawai reduced-word
+  center-charge selection, plus the displayed baryon Hartree pair-counting
+  and fixed-spin rotor \(1/N_c\) scaling.
 - `lattice_continuum_bridge_checks.py`: exact finite checks for the
   Volume XI lattice-to-continuum local-QFT chapter, including cell-average
   test-function arithmetic, the finite-graph random-walk resolvent,

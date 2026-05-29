@@ -1653,6 +1653,192 @@ consequence of the counting: it says that fluctuations of normalized
 single-trace observables are suppressed in the planar limit, provided the
 large-\(N_c\) limit of the regulated theory exists.
 
+\subsection{Eguchi--Kawai Volume Reduction}
+
+Large-\(N_c\) factorization suggests a further possibility: in some
+center-symmetric large-\(N_c\) regimes, single-trace Wilson-loop expectation
+values on a large lattice may be obtained from a reduced matrix model with
+fewer sites.  Double-line counting supplies factorization of normalized
+single traces; volume reduction additionally requires matching the
+finite-regulator loop equations in a center-symmetric sector.
+
+Let \(\Lambda_L=(\mathbb Z/L\mathbb Z)^d\) be a periodic hypercubic lattice,
+and let \(U_\mu(x)\in SU(N_c)\) be the link from \(x\) to
+\(x+\hat\mu\).  The pure-gauge Wilson measure is
+\[
+  \dd\nu_L(U)
+  =
+  Z_L^{-1}
+  \exp\left\{
+    bN_c\sum_{x\in\Lambda_L}\sum_{\mu<\nu}
+    \operatorname{Re}\operatorname{Tr}_{\square}
+    U_{\mu\nu}(x)
+  \right\}
+  \prod_{x,\mu}\dd U_\mu(x),
+\]
+where
+\[
+  U_{\mu\nu}(x)=
+  U_\mu(x)U_\nu(x+\hat\mu)
+  U_\mu(x+\hat\nu)^{-1}U_\nu(x)^{-1}.
+\]
+The one-site Eguchi--Kawai reduced model has \(d\) matrices
+\(V_\mu\in SU(N_c)\) and measure
+\begin{equation}
+  \dd\nu_{\rm EK}(V)
+  =
+  Z_{\rm EK}^{-1}
+  \exp\left\{
+    bN_c\sum_{\mu<\nu}
+    \operatorname{Re}\operatorname{Tr}_{\square}
+    V_\mu V_\nu V_\mu^{-1}V_\nu^{-1}
+  \right\}
+  \prod_\mu \dd V_\mu .
+  \label{eq:qcd-eguchi-kawai-reduced-measure}
+\end{equation}
+The parameter \(b\) is a lattice coupling coordinate.  The present discussion
+uses it at fixed regulator; continuum statements require a separate scaling
+limit.
+
+A path word in the reduced model is a sequence
+\[
+  p=((\mu_1,\epsilon_1),\ldots,(\mu_\ell,\epsilon_\ell)),
+  \qquad \epsilon_r=\pm1 ,
+\]
+with associated matrix
+\[
+  V(p)=V_{\mu_1}^{\epsilon_1}\cdots V_{\mu_\ell}^{\epsilon_\ell}
+\]
+and displacement vector
+\begin{equation}
+  n_\rho(p)=
+  \sum_{r=1}^{\ell}\epsilon_r\,\delta_{\rho\mu_r}.
+  \label{eq:qcd-ek-word-displacement}
+\end{equation}
+The normalized trace
+\[
+  W_{\rm red}(p)=\frac1{N_c}\operatorname{Tr}_{\square}V(p)
+\]
+is gauge invariant under simultaneous conjugation
+\(V_\mu\mapsto \Omega V_\mu\Omega^{-1}\) even when \(n(p)\ne0\).  This is
+precisely why the reduced model needs an additional center-selection rule:
+in the extended lattice theory, an open path is not a Wilson-loop observable,
+whereas its reduced trace would otherwise be an allowed matrix observable.
+
+The reduced action is invariant under the independent center transformations
+\begin{equation}
+  V_\mu\longmapsto z_\mu V_\mu,\qquad
+  z_\mu\in Z(SU(N_c))\simeq\mathbb Z_{N_c}.
+  \label{eq:qcd-ek-center-transformation}
+\end{equation}
+Under this transformation,
+\begin{equation}
+  W_{\rm red}(p)
+  \longmapsto
+  \left(\prod_{\rho=1}^{d}z_\rho^{\,n_\rho(p)}\right)
+  W_{\rm red}(p).
+  \label{eq:qcd-ek-open-word-center-charge}
+\end{equation}
+
+\begin{lemma}[Center selection for reduced open words]
+\label{lem:qcd-ek-center-selection}
+Assume the reduced finite-\(N_c\) state is invariant under
+\eqref{eq:qcd-ek-center-transformation}.  If the center charge of a word is
+nontrivial, namely if \(n_\rho(p)\not\equiv0\pmod{N_c}\) for at least one
+\(\rho\), then
+\[
+  \bigl\langle W_{\rm red}(p)\bigr\rangle_{\rm EK}=0 .
+\]
+Consequently, if a charged reduced word has a nonzero expectation value in a
+chosen large-\(N_c\) state, that state cannot implement ordinary
+Eguchi--Kawai volume reduction for Wilson loops.
+\end{lemma}
+
+\begin{proof}
+Choose a direction \(\rho\) for which
+\(n_\rho(p)\not\equiv0\pmod{N_c}\).  There exists
+\(z_\rho\in\mathbb Z_{N_c}\) such that \(z_\rho^{n_\rho(p)}\ne1\).  Invariance
+of the state gives
+\[
+  \langle W_{\rm red}(p)\rangle_{\rm EK}
+  =
+  z_\rho^{n_\rho(p)}
+  \langle W_{\rm red}(p)\rangle_{\rm EK},
+\]
+where all other \(z_\sigma\)'s are set to \(1\).  The prefactor differs from
+one, hence the expectation value is zero.  If a charged expectation is
+nonzero, the assumed center invariance is false.  Such an expectation is an
+extra reduced-model datum with no counterpart as a closed Wilson loop in the
+unreduced lattice theory, so the reduced loop equations cannot be identified
+with the unreduced Wilson-loop equations without further modification.
+\end{proof}
+
+The loop-equation form of volume reduction can now be stated cleanly.
+
+\begin{definition}[Volume-reduction datum for Wilson loops]
+\label{def:qcd-volume-reduction-datum}
+A volume-reduction datum for pure large-\(N_c\) lattice Yang--Mills Wilson
+loops consists of:
+\begin{enumerate}
+\item a sequence of finite-volume Wilson lattice measures with fixed lattice
+coupling coordinate \(b\), and a sequence of reduced measures such as
+\eqref{eq:qcd-eguchi-kawai-reduced-measure} or a twisted/quenched variant;
+\item a class \(\mathcal C\) of closed lattice paths whose normalized
+Wilson-loop expectations have large-\(N_c\) limits;
+\item translation invariance of the large-volume loop expectations and
+large-\(N_c\) factorization of normalized single-trace loop observables;
+\item unbroken reduced center symmetry strong enough to enforce the vanishing
+of all reduced open words that appear in the loop equations for
+\(\mathcal C\);
+\item uniqueness, in the selected center-symmetric sector, of the solution to
+the limiting Schwinger--Dyson loop equations with the specified boundary and
+reflection-positivity data.
+\end{enumerate}
+When these data are supplied, volume reduction means
+\begin{equation}
+  \lim_{N_c\to\infty}\lim_{L\to\infty}
+  \left\langle\frac1{N_c}\operatorname{Tr}U(C)\right\rangle_L
+  =
+  \lim_{N_c\to\infty}
+  \left\langle\frac1{N_c}\operatorname{Tr}V(C)\right\rangle_{\rm red}
+  \label{eq:qcd-volume-reduction-loop-equality}
+\end{equation}
+for every \(C\in\mathcal C\), where \(V(C)\) is obtained from the sequence of
+directions in the lattice path \(C\).  The equality concerns single-trace
+Wilson-loop coordinates at fixed regulator.  Colored local fields, baryons,
+finite-\(N_c\) spectra, and continuum limits require additional definitions
+and additional limiting statements.
+\end{definition}
+
+The content of the datum is not decorative.  In a Schwinger--Dyson equation
+for a Wilson loop, varying a link on the loop produces terms in which the loop
+splits at repeated visits to the varied link.  In the unreduced theory these
+split loops may be based at different lattice sites; translation invariance
+and large-\(N_c\) factorization replace their joint expectation by the product
+of one-loop expectations.  In the reduced model the corresponding matrix words
+are all based at the single site, and open words can appear algebraically.
+The center-selection rule of Lemma~\ref{lem:qcd-ek-center-selection}
+is what removes the charged open words.  The uniqueness clause in
+Definition~\ref{def:qcd-volume-reduction-datum} is also load-bearing: two
+different center-symmetric solutions of the same limiting loop equations would
+not be distinguished by the formal loop-equation matching alone.
+
+\begin{controlledapproximation}[Status of Eguchi--Kawai reduction]
+\label{ca:qcd-eguchi-kawai-status}
+The original one-site Eguchi--Kawai model is a valid reduced candidate only in
+regimes where its center symmetry is not spontaneously broken in the
+large-\(N_c\) limit.  At weak lattice coupling in dimensions larger than two,
+the center of the original one-site model breaks; the naive model then
+produces a reduced large-\(N_c\) state with charged reduced-word expectation
+values rather than the desired large-volume Wilson-loop theory.
+Quenched Eguchi--Kawai, twisted Eguchi--Kawai, partial reduction, and adjoint
+matter with periodic boundary conditions are different attempts to stabilize
+the needed center realization.  Each changes the finite-regulator datum and
+therefore requires its own loop-equation and symmetry analysis.  This
+monograph uses volume reduction only when the relevant center, factorization,
+and uniqueness hypotheses are explicitly part of the statement.
+\end{controlledapproximation}
+
 Fundamental quarks introduce boundaries rather than handles.  A closed quark
 loop carries one fundamental color sum and one flavor sum.  In the fixed-flavor
 't Hooft limit \(N_f\) is held fixed, and a graph with \(b_q\) quark-loop
