@@ -256,6 +256,12 @@ motivational checks, not foundations.
 - Records the strong-coupling BES status in the same normalization,
   `f(g)=4g-3 log(2)/pi+O(1/g)`, and warns that some Wilson-line conventions
   call half of this quantity `Gamma_cusp`.
+- Cross-links the planar large-spin function to the QCD Wilson-line cusp
+  construction in Vol II ch19, where the same operator mechanism gives
+  `P_ns,N=-Gamma_cusp^q log N+O(N^0)` for the DIS endpoint kernel.  The dossier
+  explicitly keeps this as a comparison of cusp mechanisms, not an
+  identification of QCD factorization with the planar N=4 integrable spectral
+  problem.
 
 ## Figure Ledger
 

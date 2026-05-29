@@ -100,6 +100,11 @@ Current checks:
   number conservation, quark/gluon momentum-column sum rules, the exact
   nonsinglet Mellin moment formula, and the trace-delta versus half-trace cusp
   coefficient conversion.
+- `qcd_cusp_large_spin_checks.py`: finite checks for the Volume II cusped
+  Wilson-line/large-spin section, including the Euclidean cusp angular
+  integral \(J(\phi)=\phi\cot\phi\), smooth-line subtraction, the Lorentzian
+  lightlike limit, \(D_0\) Mellin moments, the sign of the large-spin
+  nonsinglet kernel, and trace-normalization invariance of \(g^2C_R\).
 - `qcd_drell_yan_glauber_checks.py`: finite checks for the Volume II
   Drell--Yan/Glauber-status block, including leading-power rapidity
   kinematics, rapidity-scale product bookkeeping, time-reversal-odd staple

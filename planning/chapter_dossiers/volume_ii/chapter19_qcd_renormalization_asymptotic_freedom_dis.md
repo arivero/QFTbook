@@ -35,6 +35,11 @@
   `calculation-checks/energy_correlator_sudakov_checks.py` verifies the
   rational logarithmic integral in the back-to-back EEC Sudakov factor and
   the trace-delta/half-trace conversion of the one-loop cusp coefficient.
+- `SRC-CHECK-QCD-CUSP-LARGE-SPIN`:
+  `calculation-checks/qcd_cusp_large_spin_checks.py` verifies the Euclidean
+  cusped-Wilson-line angular integral, smooth-line subtraction, Lorentzian
+  lightlike limit, \(D_0\) Mellin harmonic-number identity, large-spin sign,
+  and trace-normalization invariance of \(g^2C_R\).
 
 ## Construction Task
 
@@ -213,7 +218,11 @@ The chapter must define and derive:
   small-\(q_\perp\) color-singlet TMD factorization data, GPDs as off-forward
   light-ray matrix elements, GPD polynomiality from local twist-two
   covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
-  boundary of the DIS factorization statement.
+  boundary of the DIS factorization statement, now anchored by an explicit
+  cusped-Wilson-line definition, one-loop angular-integral derivation, and
+  the relation
+  \(P_{{\rm ns},N}=-\Gamma_{\rm cusp}^q\log N+O(N^0)\) for the matrix-element
+  evolution eigenvalue.
 - Euclidean current sum rules as color-singlet current-correlator identities,
   including the subtracted dispersion representation, spacelike OPE input,
   Borel--Laplace functional, Borel transform of the dispersion kernel,

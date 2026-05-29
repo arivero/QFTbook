@@ -9904,7 +9904,8 @@ power \(\omega^N\) is the Bjorken-scaling kinematic dependence of a spin-\(N\)
 operator; asymptotic freedom turns exact scaling into logarithmic scaling
 violation.
 
-\section{Endpoint, Large Spin, and the Cusp Coefficient}
+\section{Cusped Wilson Lines, Large Spin, and the DIS Endpoint}
+\label{sec:qcd-cusped-wilson-lines-large-spin}
 
 The compact-\(x\) factorization statement in
 Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} deliberately does not
@@ -9918,6 +9919,144 @@ mass of the hadronic final state,
 is much smaller than \(Q^2\).  The short-distance coefficient functions then
 contain distributions supported near \(x=1\), such as
 \([\log^k(1-x)/(1-x)]_+\), and the perturbative expansion must be reorganized.
+The universal coefficient controlling the leading endpoint singularity is
+most cleanly defined by a cusped Wilson-line operator.  This definition is an
+operator statement, not a parton-model picture.
+
+Let \(R\) be a finite-dimensional unitary representation of \(SU(N_c)\), with
+quadratic Casimir \(C_R\) in the trace-delta convention
+\eqref{eq:qcd-casimir-definitions}.  In Euclidean signature choose two unit
+vectors \(e_1,e_2\) with \(e_1\cdot e_2=\cos\phi\), \(0<\phi<\pi\), and let
+\(\Gamma_{\phi,L,\epsilon}\) be the two-segment path
+\[
+  x(s)=-s e_1,\quad \epsilon\le s\le L,
+  \qquad
+  x(t)=t e_2,\quad \epsilon\le t\le L,
+\]
+joined at the origin after removing a ball of radius \(\epsilon\).  The
+regulated cusped line is the path-ordered transporter
+\[
+  W_R(\Gamma_{\phi,L,\epsilon})
+  =
+  \mathcal P
+  \exp\left\{\ii\int_{\Gamma_{\phi,L,\epsilon}}
+  A_\mu^a(x)t_R^a\,\dd x^\mu\right\}.
+\]
+The straight-line endpoint and perimeter renormalizations are fixed by the
+same regulator applied to a smooth line.  After these local smooth-line
+renormalizations are divided out, the remaining logarithmic singularity at
+the corner defines the Euclidean cusp coefficient \(K_R(\phi,g)\) by
+\begin{equation}
+  -\log\langle W_R(\Gamma_{\phi,L,\epsilon})\rangle_{\rm smooth-subtracted}
+  =
+  K_R(\phi,g)\log\frac{L}{\epsilon}+O(1).
+  \label{eq:qcd-euclidean-cusp-coefficient-definition}
+\end{equation}
+The minus sign in this definition is part of the convention: it combines with
+the \(i^2\) from expanding the Wilson transporter, so that the one-loop
+coefficient below is read directly from the positive Euclidean propagator.
+For timelike Wilson lines in Lorentzian signature we instead use the
+positive lightlike cusp anomalous dimension
+\[
+  \Gamma_{\rm cusp}^R(g)
+  :=
+  \lim_{\chi\to\infty}
+  \frac{\Gamma_{\rm cusp}^R(\chi,g)}{\chi},
+  \qquad
+  -v_1\cdot v_2=\cosh\chi,\quad v_1^2=v_2^2=-1,
+\]
+where \(\Gamma_{\rm cusp}^R(\chi,g)\) is obtained from the same local
+renormalization problem by the analytic continuation \(\phi=\ii\chi\).
+This convention is the one used in
+\eqref{eq:qcd-quark-cusp-one-loop-trace-delta}.
+
+At one loop the angular dependence follows from a single eikonal exchange.
+In Feynman gauge, with the connection normalization of this chapter, the
+Euclidean short-distance propagator is
+\[
+  \langle A_\mu^a(x)A_\nu^b(0)\rangle
+  =
+  \frac{g^2\delta^{ab}\delta_{\mu\nu}}{4\pi^2x^2}+O(g^4).
+\]
+The exchange between the two rays contributes, up to cutoff-independent
+finite terms, the following scale-invariant part of
+\(-\log\langle W_R\rangle\):
+\[
+  \frac{g^2C_R}{4\pi^2}
+  \int_\epsilon^L\dd s\int_\epsilon^L\dd t\,
+  \frac{e_1\cdot e_2}
+  {s^2+t^2+2st\,e_1\cdot e_2}.
+\]
+The coefficient of \(\log(L/\epsilon)\) is local at the cusp, so set
+\(t=sr\) in the scale-invariant part.  The angular integral is
+\begin{equation}
+  J(\phi)
+  :=
+  \int_0^\infty
+  \frac{\cos\phi\,\dd r}
+  {r^2+2r\cos\phi+1}
+  =
+  \phi\cot\phi .
+  \label{eq:qcd-cusp-angular-integral}
+\end{equation}
+Indeed,
+\[
+  r^2+2r\cos\phi+1
+  =
+  (r+\cos\phi)^2+\sin^2\phi,
+\]
+and the antiderivative is
+\[
+  \cot\phi\,
+  \arctan\frac{r+\cos\phi}{\sin\phi}.
+\]
+Taking \(r\) from \(0\) to \(\infty\) gives
+\(\cot\phi(\pi/2-\arctan(\cot\phi))=\phi\cot\phi\), with the principal branch
+of \(\arctan\) for \(0<\phi<\pi\).  A smooth straight line corresponds to
+\(\phi=0\), for which \(J(0)=1\).  Therefore the corner-specific logarithm is
+\begin{equation}
+  K_R^{(1)}(\phi,g)
+  =
+  \frac{g^2C_R}{4\pi^2}
+  \bigl(\phi\cot\phi-1\bigr).
+  \label{eq:qcd-euclidean-cusp-one-loop}
+\end{equation}
+Continuing \(\phi=\ii\chi\) gives the Lorentzian timelike cusp coefficient
+\begin{equation}
+  \Gamma_{\rm cusp}^R(\chi,g)
+  =
+  \frac{g^2C_R}{4\pi^2}
+  \bigl(\chi\coth\chi-1\bigr)+O(g^4),
+  \qquad
+  \Gamma_{\rm cusp}^R(g)
+  =
+  \frac{g^2C_R}{4\pi^2}+O(g^4).
+  \label{eq:qcd-lorentzian-cusp-one-loop}
+\end{equation}
+For \(R=\square\), this is exactly the quark coefficient in
+\eqref{eq:qcd-quark-cusp-one-loop-trace-delta}.
+
+The same coefficient appears in the endpoint renormalization of light-ray
+operators.  Near \(x=1\), the emitted radiation is soft compared with the
+parent quark momentum, and the Wilson transporter in the light-ray operator
+is approximated by eikonal propagation along the two nearly lightlike
+directions selected by the incoming hadron and the hard current.  The local
+renormalization of the resulting lightlike cusp supplies the coefficient of
+the plus distribution \(D_0=(1-x)^{-1}_+\) in the nonsinglet kernel:
+\begin{equation}
+  P_{\rm ns}(x,g)
+  =
+  \Gamma_{\rm cusp}^q(g)\,D_0(x)
+  +\text{terms with less singular Mellin growth as }x\to1 .
+  \label{eq:qcd-endpoint-kernel-cusp-coefficient}
+\end{equation}
+Equation \eqref{eq:qcd-endpoint-kernel-cusp-coefficient} is meant as a
+perturbative renormalization statement for the specified light-ray operator
+and subtraction scheme.  It is not a nonperturbative theorem about the full
+endpoint region of every DIS observable; threshold factorization also
+requires a hard coefficient, a jet function, a soft matrix element, a
+rapidity prescription when appropriate, and a controlled power remainder.
+
 The Mellin transform turns this endpoint problem into a large-spin problem.
 For a distribution \(K(x)\), define
 \[
@@ -9934,8 +10073,20 @@ exact moment
   \qquad N\ge1 .
   \label{eq:qcd-nonsinglet-moment-exact}
 \end{equation}
-This formula is a useful normalization check: at \(N=1\) it gives quark-number
-conservation, and at large \(N\)
+The harmonic number appears because
+\begin{equation}
+  \int_0^1\dd x\,x^{N-1}D_0(x)
+  =
+  \int_0^1\dd x\,
+  \frac{x^{N-1}-1}{1-x}
+  =
+  -H_{N-1}.
+  \label{eq:qcd-d0-mellin-harmonic}
+\end{equation}
+The last equality follows by writing
+\((1-x^{N-1})/(1-x)=1+x+\cdots+x^{N-2}\) before integration.  Thus
+\eqref{eq:qcd-nonsinglet-moment-exact} gives quark-number conservation at
+\(N=1\), and at large \(N\)
 \begin{equation}
   P_{{\rm ns},N}^{(0)}
   =
@@ -9944,18 +10095,34 @@ conservation, and at large \(N\)
   +O(N^{-1}).
   \label{eq:qcd-nonsinglet-large-n}
 \end{equation}
-Therefore, with the convention
-\(P=(g^2/8\pi^2)P^{(0)}+O(g^4)\), the large-\(N\) anomalous dimension contains
-\[
-  -\Gamma_{\rm cusp}(g)\log N,
-  \qquad
-  \Gamma_{\rm cusp}(g)
+Therefore, with \(P=(g^2/8\pi^2)P^{(0)}+O(g^4)\),
+\begin{equation}
+  P_{{\rm ns},N}(g)
   =
-  \frac{g^2C_F}{4\pi^2}+O(g^4)
+  -\Gamma_{\rm cusp}^q(g)\log N+O(N^0),
+  \qquad
+  \Gamma_{\rm cusp}^q(g)
+  =
+  \frac{g^2C_F}{4\pi^2}+O(g^4).
+  \label{eq:qcd-large-spin-dglap-cusp}
+\end{equation}
+This is the evolution eigenvalue for matrix elements in the convention
+\(\mu\,\dd a_N/\dd\mu=P_Na_N\).  If instead one writes the anomalous dimension
+of the local twist-two operator itself by
+\(\mu\,\dd\mathcal O_N/\dd\mu=-\gamma_N^{\mathcal O}\mathcal O_N+\cdots\),
+then
+\[
+  \gamma_N^{\mathcal O}(g)
+  =
+  \Gamma_{\rm cusp}^q(g)\log N+O(N^0).
 \]
-in the monograph's trace-delta normalization.  This is the same invariant
-coefficient as the one-loop lightlike Wilson-line cusp coefficient: if
-\(T^a\) denotes the common half-trace generator and
+The sign difference is bookkeeping: coefficient functions and operator
+matrix elements obey dual renormalization-group equations so that the
+physical hadronic tensor is independent of the factorization scale.
+
+The product \(g^2C_R\) in
+\eqref{eq:qcd-lorentzian-cusp-one-loop} is invariant under generator-coordinate
+changes.  If \(T^a\) denotes the common half-trace generator and
 \(g_{\rm ht}=\sqrt2\,g\), then
 \[
   g^2C_F=g_{\rm ht}^2C_F^{\rm ht}.
@@ -9970,9 +10137,16 @@ must specify the hard current coefficient, the jet function for the nearly
 collinear final-state radiation, the soft Wilson-line matrix element, the
 contour prescription for Mellin or Laplace inversion, and a remainder estimate
 in the joint limit \(Q\to\infty\), \(N\to\infty\).  The large-spin logarithm in
-\eqref{eq:qcd-nonsinglet-large-n} is the operator-renormalization side of that
-structure.  The small-\(x\) limit is a different boundary of the same DIS
-observable and is not obtained by continuing the threshold expansion.
+\eqref{eq:qcd-large-spin-dglap-cusp} is the operator-renormalization side of
+that structure.  The same Wilson-line cusp observable is the QCD analogue of
+the large-spin cusp scaling function studied in
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}, but the logical status is
+different: in QCD it is a perturbative Wilson-line anomalous dimension tied
+to factorization hypotheses, while in planar \(\mathcal N=4\) super
+Yang--Mills the BES equation gives an integrability construction of the
+planar large-spin function in a special conformal theory.  The small-\(x\)
+limit is a different boundary of the same DIS observable and is not obtained
+by continuing the threshold expansion.
 
 \section{\texorpdfstring{Small-\(x\) Boundary, Dipoles, and the BFKL Kernel}
 {Small-x Boundary, Dipoles, and the BFKL Kernel}}
