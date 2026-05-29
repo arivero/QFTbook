@@ -355,26 +355,30 @@ The double-cover rotation condition gives
   \(N_1=N_2=0\) and \(J_3\) acts by the scalar \(h\).
 \end{definition}
 
-\begin{proposition}[Continuous-spin alternative]
-\label{prop:continuous-spin-little-group-orbit}
-  If the joint spectrum of the commuting little-group translations contains
-  a point \((a,b)\) with \(a^2+b^2=\rho^2>0\), irreducibility under the
-  little group forces the whole circle of radius \(\rho\) in the
-  \((a,b)\)-plane to occur.  The corresponding massless representation has
-  infinitely many \(SO(2)\) Fourier modes at fixed momentum and is not a
-  finite-helicity representation.
-\end{proposition}
-
-\begin{proof}
-The commutators of Proposition~\ref{prop:massless-little-algebra-iso2} imply
-that \(J_3\) generates rotations of the joint translation spectrum.  Therefore
-the spectral point \((a,b)\) is accompanied by
-\((a\cos\theta-b\sin\theta,a\sin\theta+b\cos\theta)\) for every
-\(\theta\).  If \(\rho>0\), the orbit is a circle.  The Hilbert space on this
-circle carries the regular \(SO(2)\) action, whose Fourier decomposition has
-integer-spaced modes.  Hence the little-group representation contains an
-infinite tower of angular modes rather than a single helicity character.
-\end{proof}
+\paragraph{Continuous-spin alternative.}
+The commuting self-adjoint generators \(N_1,N_2\) have a joint spectral
+measure.  The commutators of
+Proposition~\ref{prop:massless-little-algebra-iso2} imply
+\[
+  \ee^{\ii\theta J_3}(N_1,N_2)\ee^{-\ii\theta J_3}
+  =
+  (N_1\cos\theta-N_2\sin\theta,\,
+   N_1\sin\theta+N_2\cos\theta).
+\]
+Consequently the support of the joint spectral measure is invariant under
+rotations of the \((a,b)\)-plane.  If it contains a point with
+\(a^2+b^2=\rho^2>0\), the little-group orbit contains the full circle
+\[
+  (a,b)\mapsto
+  (a\cos\theta-b\sin\theta,\,
+   a\sin\theta+b\cos\theta).
+\]
+On this circle the rotation generator acts by the regular \(SO(2)\) action,
+or by its double-cover lift, and the angular Fourier modes form an
+integer-spaced infinite tower.  This is the representation-theoretic
+continuous-spin alternative.  Finite-helicity representations are the
+\(\rho=0\) case in which the translation subgroup acts trivially and only the
+character of the rotation subgroup remains.
 
 \begin{remark}[Continuous-spin sectors]
 The alternative \(a^2+b^2=\rho^2>0\) gives the massless continuous-spin, or

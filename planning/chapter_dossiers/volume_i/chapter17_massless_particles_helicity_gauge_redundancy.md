@@ -82,9 +82,11 @@
   translation subgroup acts trivially.
 - Nonzero \((a,b)\) gives the continuous-spin class, while \(a=b=0\) gives
   the helicity sectors used for photons and the gauge fields developed here.
-- The continuous-spin alternative is now isolated as a proposition: a nonzero
+- The continuous-spin alternative is derived in prose from the joint spectral
+  measure of the commuting little-group translations: a nonzero
   translation-eigenvalue radius forces a full \(SO(2)\) orbit and an infinite
-  tower of angular modes.
+  tower of angular modes, while the finite-helicity sectors are the
+  \(\rho=0\) case.
 - The helicity label \(h\) is the eigenvalue of angular momentum along the
   momentum direction and lies in \(\frac12\mathbb Z\).
 - Delta-normalized and covariantly normalized massless states differ by the

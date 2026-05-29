@@ -222,17 +222,50 @@ spectral component outside \(\Hilb_1\) in that support window.
 \end{proposition}
 
 \begin{proof}
-For almost locality, truncate the
-spacetime integral to a double cone of radius \(R\), enlarged by the bounded
-localization region of \(A\).  The Schwartz decay of \(\chi\), together with
-\(\|A(x)\|=\|A\|\), gives the bound
-\(\|B-B_R\|\le C_N R^{-N}\) for every \(N\).  This property is sufficient for
-the locality estimates used below.  The spectral statement follows from the
-joint spectral theorem: the Fourier support of \(\chi\) restricts the
-energy-momentum transfer of \(B\), and the vacuum has zero four-momentum.
-Because the chosen support avoids the rest of \(\operatorname{Spec}(P)\), the
-only possible nonzero component of \(B\vac\) in that window lies in
-\(\Hilb_1\).
+Let \(O\) be contained in a double cone of radius \(R_0\).  Choose smooth
+cutoff functions \(\theta_R\) on spacetime, equal to \(1\) on
+\(\{x:|x^0|+|\vec x|\le R\}\), supported in
+\(\{x:|x^0|+|\vec x|\le 2R\}\), and with derivatives bounded uniformly after
+rescaling.  Define
+\[
+  B_R=\int \dd^Dx\,\theta_R(x)\chi(x)A(x).
+\]
+The integral is a norm-convergent Bochner integral because
+\(\chi\in\mathcal S(\mathbb R^D)\) and \(\|A(x)\|=\|A\|\).  Since
+\(\operatorname{supp}\theta_R\) is bounded and \(A(x)\) is localized in
+\(O+x\), the operator \(B_R\) belongs to the local algebra of a double cone
+whose radius is \(2R+R_0\).  Reindexing the cofinal family of double cones is
+irrelevant in the definition of almost locality.
+
+The tail is bounded in operator norm by
+\[
+  \|B-B_R\|
+  \le
+  \|A\|\int_{|x^0|+|\vec x|\ge R}\dd^Dx\,|\chi(x)|.
+\]
+For every \(N\), the Schwartz seminorm
+\(\sup_x(1+|x^0|+|\vec x|)^{N+D+1}|\chi(x)|\) is finite, and the last integral
+is bounded by \(C_N R^{-N}\).  Hence \(B\) is almost local.
+
+For the spectral statement, write the joint spectral measure of \(P^\mu\) as
+\(E(\cdot)\) and use the Fourier convention
+\[
+  \widehat\chi(p)=\int\dd^Dx\,\chi(x)\ee^{\ii x_\mu p^\mu}.
+\]
+Because \(U(x)\vac=\vac\),
+\[
+  B\vac
+  =
+  \int\dd^Dx\,\chi(x)U(x)A\vac
+  =
+  \int_{\operatorname{Spec}(P)}\widehat\chi(p)\,\dd E(p)A\vac ,
+\]
+where the last equality is the joint spectral theorem applied to the vector
+\(A\vac\).  Thus \(B\vac\) has spectral support contained in
+\(\operatorname{supp}\widehat\chi\cap\operatorname{Spec}(P)\).  If this set is
+contained in the isolated mass shell \(\Sigma_m^+\), the corresponding vector
+lies in \(E(\Sigma_m^+)\Hilb=\Hilb_1\), and all components outside
+\(\Hilb_1\) in the chosen support window vanish.
 \end{proof}
 
 Let \(h\in C_c^\infty(\mathbb R^d)\) be a smooth compactly supported momentum
@@ -385,14 +418,57 @@ with no continuum contribution.
 \end{proposition}
 
 \begin{proof}
-The first formula is the spectral resolution of \(P_1\hat\phi(0)\vac\)
-transported by translations, with the positive constant \(Z_\phi\) fixing the
-normalization of this field's one-particle pole.  Smearing by \(f\) pairs the
-spectral distribution with the Fourier transform \(\tilde f\).  If
-\(\operatorname{supp}\tilde f\) is contained in the isolated shell
-neighborhood and avoids the rest of the spectrum, the joint spectral
-projection kills every continuum component.  The remaining integral is
-therefore exactly the displayed one-particle mass-shell integral.
+The point-field expression is a distributional statement.  The actual Hilbert
+vectors are obtained after smearing in \(x\).  In the scalar multiplicity-one
+sector, define the one-particle form-factor distribution by
+\[
+  F_x(p)=\langle p|\hat\phi(x)\vac\rangle .
+\]
+Translation covariance and \(U(x)\vac=\vac\) give
+\[
+  F_x(p)
+  =
+  \langle p|U(x)\hat\phi(0)\vac\rangle
+  =
+  \ee^{-\ii p\cdot x}F_0(p),
+\]
+because \(U(x)|p\rangle=\ee^{\ii p\cdot x}|p\rangle\).  Scalar Lorentz
+covariance gives \(F_0(\Lambda p)=F_0(p)\) on the positive mass shell.  Since
+\(\Sigma_m^+\) is a single \(SO^+(1,d)\)-orbit and the multiplicity space is
+\(\mathbb C\), \(F_0\) is a constant distribution on the shell.  After fixing
+the phase of the interpolating field, write this constant as
+\(Z_\phi^{1/2}>0\); equivalently \(Z_\phi=|F_0|^2\) is the coefficient of the
+one-particle delta mass in the K\"all\'en--Lehmann measure of this field.
+
+Therefore, in the rigged-Hilbert notation,
+\[
+  P_1\hat\phi(x)\vac
+  =
+  Z_\phi^{1/2}
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,\ee^{-\ii p\cdot x}|p\rangle .
+\]
+For a Schwartz smearing function with
+\[
+  f(x)=\int\frac{\dd^D k}{(2\pi)^D}\tilde f(k)\ee^{\ii k\cdot x},
+\]
+pairing this distribution with \(f\) gives
+\[
+  P_1\hat\phi_f\vac
+  =
+  Z_\phi^{1/2}
+  \int_{\Sigma_m^+}\dd\mu_m(p)
+  \left(\int\dd^Dx\,f(x)\ee^{-\ii p\cdot x}\right)|p\rangle
+  =
+  Z_\phi^{1/2}
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,\tilde f(p)|p\rangle .
+\]
+The remaining spectral part of the smeared vector \(\hat\phi_f\vac\) is
+obtained by applying the joint spectral measure of \(P^\mu\) to the part of
+the field-created distribution supported away from the isolated shell.  If
+\(\operatorname{supp}\tilde f\) is contained in the chosen isolated-shell
+neighborhood and avoids the rest of the spectrum, that spectral projection is
+zero.  The displayed mass-shell integral is then the full vector
+\(\hat\phi_f\vac\).
 \end{proof}
 
 A Gaussian packet centered near a spacetime point \((t_*,\vec x_*)\) and a

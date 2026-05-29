@@ -135,6 +135,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Source-response kernel from .* differentiation|"
     r"Finite closed-time-path constraints|"
     r"Finite trace constraints|"
+    r"Continuous-spin alternative|"
+    r"Ramond zero-mode bound|"
     r"comparison algebra|"
     r"finite algebra of .*comparisons|"
     r"exact finite.*GEVP extraction|"

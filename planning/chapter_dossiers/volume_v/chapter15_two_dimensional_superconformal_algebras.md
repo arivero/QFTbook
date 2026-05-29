@@ -53,7 +53,8 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - Defines the `N=1` chiral superconformal datum by the `T T`, `T G`, and
   `G G` singular OPEs.
 - Derives the `N=1` mode algebra from contour residues.
-- Derives the Ramond zero-mode bound `L_0-c/24 >= 0` in unitary
+- Derives the Ramond zero-mode bound `L_0-c/24 >= 0` in prose from the
+  \(r=s=0\) Ramond anticommutator and positivity of \(G_0^2\) in unitary
   representations.
 - Defines the `N=2` chiral superconformal datum by the `T,J,G^pm` OPEs.
 - Derives the `N=2` mode algebra, including the mixed

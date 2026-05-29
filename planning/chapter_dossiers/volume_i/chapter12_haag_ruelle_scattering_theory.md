@@ -89,9 +89,9 @@
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
 - Definition `def:hr-spectrally-filtered-interpolating-creator` and
   Proposition `prop:hr-filtered-local-creators-almost-local` now isolate the
-  filtered local creator \(B=A(\chi)\), prove almost locality from Schwartz
-  truncation, and state the one-particle spectral selection by the joint
-  spectral theorem.
+  filtered local creator \(B=A(\chi)\), prove almost locality from an explicit
+  double-cone truncation and Schwartz tail estimate, and prove one-particle
+  spectral selection by applying the joint spectral theorem to \(B\Omega\).
 - Proposition `prop:hr-spectral-filter-time-independence` proves in the
   mass-shell spectral representation that the positive-energy phase in \(h_t\)
   cancels the translation phase of \(B(t,\vec x)\), so
@@ -100,8 +100,10 @@
 - In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
   the isolated mass shell with coefficient \(Z_\phi^{1/2}\tilde f\).
 - Proposition `prop:hr-point-field-isolated-shell-projection` now states and
-  proves this point-field mass-shell projection as a spectral theorem, with
-  the rigged-Hilbert notation explicitly separated from Hilbert vectors.
+  proves this point-field mass-shell projection as a spectral theorem: the
+  proof treats \(\hat\phi(x)\Omega\) distributionally, derives the constant
+  scalar one-particle form factor from translation and Lorentz covariance, and
+  only then obtains Hilbert vectors by smearing.
 - The family \(f^{(T)}\) preserves the one-particle vector while moving the
   spacetime support with group velocity \(\vec p/\omega_{\vec p}\).
 - Disjoint velocity supports imply asymptotic spacelike separation of the
