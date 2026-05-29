@@ -6048,9 +6048,10 @@ for every one of these Hilbert-valued chaos variables.  Combining this with
 dual-norm estimates.
 \end{proof}
 
-\begin{lemma}[Parabolic Taylor-subtraction gain]
-\label{lem:spde-parabolic-taylor-subtraction-gain}
-Let \(K_i\) be a dyadic kernel on \((\mathbb R^D,\mathfrak s)\) such that
+\paragraph{Parabolic Taylor-subtraction gain.}
+The local scale gain used below is an elementary \(L^1\) estimate, so it is
+recorded as a calculation.  Let \(K_i\) be a dyadic kernel on
+\((\mathbb R^D,\mathfrak s)\) such that
 \[
   \operatorname{supp}K_i\subset B_{\mathfrak s}(0,A2^{-i}),
   \qquad
@@ -6073,9 +6074,6 @@ for all \(h\) in that ball.  Then
   C_KH A^r2^{-(a+r)i}.
   \label{eq:spde-taylor-subtraction-gain}
 \end{equation}
-\end{lemma}
-
-\begin{proof}
 On the support of \(K_i\), the remainder hypothesis gives
 \[
   |F(h)-P(h)|\leq H A^r2^{-ri}.
@@ -6095,15 +6093,12 @@ Therefore
 The extra factor \(2^{-ri}\) is the gain produced by subtracting the local
 Taylor polynomial \(P\); without the subtraction the \(L^1\)-size of the
 kernel would only give the scale \(2^{-ai}\).
-\end{proof}
 
-Lemma~\ref{lem:spde-parabolic-taylor-subtraction-gain} is the elementary
-scale gain produced by replacing a local factor \(F\) by its Taylor
-remainder after subtraction of \(P\).  The lemma deliberately separates this
-gain from the harder BPHZ bookkeeping: one must still specify which
-polynomial is subtracted for each divergent subgraph, prove that the forest
-formula does not double count overlapping local parts, and combine the gain
-with the dyadic convolution bound in
+The estimate \eqref{eq:spde-taylor-subtraction-gain} deliberately separates
+this elementary local gain from the harder BPHZ bookkeeping: one must still
+specify which polynomial is subtracted for each divergent subgraph, prove
+that the forest formula does not double count overlapping local parts, and
+combine the gain with the dyadic convolution bound in
 Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
 
 \begin{proposition}[One-loop relative-scale gap for a local subtraction]
@@ -8323,8 +8318,7 @@ coordinate \(X^2Y\) has fifth-, third-, and locally subtracted first-chaos
 pieces.  The last line of
 \eqref{eq:spde-x2y-finite-cutoff-wick-decomposition} is the exact place
 where the local Taylor-subtraction gain of
-Lemma~\ref{lem:spde-parabolic-taylor-subtraction-gain} enters the
-multiscale estimate.
+\eqref{eq:spde-taylor-subtraction-gain} enters the multiscale estimate.
 \end{proposition}
 
 \begin{proof}

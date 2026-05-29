@@ -6,10 +6,10 @@
 
 ## Development
 
-- Added Lemma `lem:spde-parabolic-taylor-subtraction-gain`.
-- The lemma states the exact scale gain from pairing an order-\(a\) dyadic
+- Added the estimate `eq:spde-taylor-subtraction-gain`.
+- The estimate states the exact scale gain from pairing an order-\(a\) dyadic
   kernel with a local Taylor remainder bounded by \(H\|h\|_{\mathfrak s}^r\).
-- The proof is a direct \(L^1\)-kernel estimate on the support
+- The calculation is a direct \(L^1\)-kernel estimate on the support
   \(B_{\mathfrak s}(0,A2^{-i})\), giving the improved scale
   \(2^{-(a+r)i}\).
 - The surrounding text separates this local gain from the remaining BPHZ

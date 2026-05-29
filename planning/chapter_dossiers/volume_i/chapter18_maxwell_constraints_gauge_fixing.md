@@ -156,3 +156,8 @@ Status: rewritten and source-audited on 2026-05-22.
   spectral-data arguments into explicit proof blocks, added the exact
   `maxwell_gauge_checks.py` companion, and recorded the finite algebra checks
   needed to keep the mostly-plus gauge-fixing conventions stable.
+- 2026-05-29 eighth anti-wrapper pass: demoted the primary/Gauss constraint
+  Legendre-transform calculation and the first-class gauge-generator bracket
+  calculation from proposition form to canonical prose, preserving all
+  formulae while removing theorem-family wrappers from elementary Hamiltonian
+  algebra.

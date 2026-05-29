@@ -146,3 +146,7 @@ plots.
   bound on the eliminated \(Q\)-component, so the statement now records the
   estimate relevant to truncation control rather than only a block-matrix
   rearrangement.
+- 2026-05-29 eighth pass: demoted the finite residual spectral certificate
+  from proposition form to linear-algebra prose.  The residual-to-spectrum
+  and leakage bounds remain as numbered equations because they are useful
+  diagnostics, but their derivation is an elementary eigenbasis calculation.

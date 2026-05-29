@@ -50,8 +50,7 @@ Changing this ordering changes both numerator and denominator by the same
 sign in normalized correlation functions, but a fixed ordering must be
 chosen before signs in reflection positivity or anomalies are meaningful.
 
-\begin{proposition}[Finite Berezin Gaussian identities]
-\label{prop:lattice-fermion-berezin-gaussian}
+\paragraph{Finite Berezin Gaussian identities.}
 Let \(D\) be an invertible \(N\times N\) complex matrix and write
 \[
   S_D=\sum_{i,j=1}^N\bar\psi_iD_{ij}\psi_j .
@@ -74,9 +73,7 @@ For every \(i,j\),
 More generally, for equal numbers of \(\psi\)'s and \(\bar\psi\)'s,
 the normalized expectation is the determinant of the matrix of two-point
 functions, with the sign fixed by the displayed order of the insertions.
-\end{proposition}
 
-\begin{proof}
 Introduce independent odd sources \(\eta_i,\bar\eta_i\).  Completing the
 square is an identity in the finite Grassmann algebra:
 \[
@@ -99,7 +96,6 @@ Grassmann derivatives in the fixed order, gives the two-point identity.
 Higher identities follow by differentiating the same generating functional;
 the exponential is quadratic in sources, so the coefficient of a monomial is
 the corresponding determinant.
-\end{proof}
 
 \section{Naive Dirac Operator And Doublers}
 
@@ -565,7 +561,8 @@ Assume also \(\gamma_5\)-Hermiticity,
 
 \begin{proposition}[Exact lattice chiral symmetry and the finite Berezinian]
 \label{prop:lattice-gw-chiral-jacobian}
-Let \(D\) satisfy \eqref{eq:lattice-ginsparg-wilson}.  The finite action
+Let \(D\) satisfy \eqref{eq:lattice-ginsparg-wilson} and
+\(\gamma_5\)-Hermiticity.  The finite action
 \[
   S=\bar\psi D\psi
 \]
@@ -642,6 +639,48 @@ When \(\operatorname{Tr}\gamma_5=0\), this becomes
   \left(1-\frac a2D\right),
 \]
 which is the displayed formula.
+
+The integrality of the trace follows from a finite spectral argument.  Define
+\[
+  \widehat\gamma_5=\gamma_5(1-aD).
+\]
+\(\gamma_5\)-Hermiticity gives
+\[
+  \widehat\gamma_5^\dagger
+  =
+  (1-aD^\dagger)\gamma_5
+  =
+  (1-a\gamma_5D\gamma_5)\gamma_5
+  =
+  \gamma_5(1-aD)
+  =
+  \widehat\gamma_5 .
+\]
+Multiplying the Ginsparg--Wilson relation by \(\gamma_5\) on the left gives
+\[
+  D+\gamma_5D\gamma_5=a\gamma_5D\gamma_5D,
+\]
+and therefore
+\[
+  \widehat\gamma_5^2
+  =
+  (1-a\gamma_5D\gamma_5)(1-aD)
+  =
+  1 .
+\]
+Thus \(\widehat\gamma_5\) is a Hermitian involution on the finite spinor
+space.  Its eigenvalues are \(\pm1\), so
+\(\operatorname{Tr}\widehat\gamma_5=\dim E_+-\dim E_-\).  Since
+\(\operatorname{Tr}\gamma_5=0\), the finite spinor space is even-dimensional,
+and \(\dim E_+-\dim E_-\) is even.  Finally,
+\[
+  \operatorname{Tr}\gamma_5\left(1-\frac a2D\right)
+  =
+  \frac12\operatorname{Tr}(\gamma_5+\widehat\gamma_5)
+  =
+  \frac12\operatorname{Tr}\widehat\gamma_5
+  \in\mathbb Z .
+\]
 \end{proof}
 
 \section{Overlap Operator}

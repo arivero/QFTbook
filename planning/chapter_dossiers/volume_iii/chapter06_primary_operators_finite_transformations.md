@@ -95,3 +95,7 @@ The chapter establishes:
   source-coupling derivation, including the measure/source-weight cancellation,
   dual spin action, separated-point functional derivatives, and small-sphere
   charge orientation.
+- 2026-05-29 eighth anti-wrapper pass: demoted the translation-from-origin
+  descendant-field identity from proposition form to convention-level prose,
+  while keeping the distributional smearing qualification and radial-state
+  convergence caveat explicit.

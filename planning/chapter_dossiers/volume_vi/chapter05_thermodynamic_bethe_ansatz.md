@@ -49,6 +49,14 @@
    effective central charge from an explicit kernel integral and the
    Rogers-dilogarithm value \(L(\phi_{\rm g}^{-2})=\pi^2/15\).
 
+## Audit Notes
+
+- 2026-05-29 eighth anti-wrapper pass: retained the variational TBA statement
+  as substantive but expanded the proof to include the admissible density
+  variations, the hole-density variation, the kernel-transpose convention,
+  and the cancellation that converts the stationary free energy to the
+  one-particle state-density integral.
+
 ## Figures
 
 - Circle/worldline Bethe--Yang diagram may be added later.

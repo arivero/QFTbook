@@ -105,8 +105,7 @@ Equivalently,
 with all \(A\)-\(A\) and \(\Pi\)-\(\Pi\) brackets zero.
 \end{definition}
 
-\begin{proposition}[Primary constraint, Gauss constraint, and canonical Hamiltonian]
-\label{prop:maxwell-primary-gauss-canonical-hamiltonian}
+\paragraph{Primary constraint, Gauss constraint, and canonical Hamiltonian.}
 The canonical momenta are
 \[
   \Pi^\mu(\vec x)
@@ -151,13 +150,12 @@ hence the secondary constraint
   \chi_2(\vec x)=\partial_i\Pi^i(\vec x)=0 .
 \]
 This is Gauss' law in the absence of charges.
-\end{proposition}
 
-\begin{proof}
-The Lagrangian density contains \(\partial_0A_i\) only through
+These formulae are the canonical Legendre transform.  The Lagrangian density
+contains \(\partial_0A_i\) only through
 \(\partial_0A_i-\partial_iA_0\), and contains no \(\partial_0A_0\).  This
 gives the displayed momenta and the primary constraint \(\Pi^0=0\).  Solving
-\(\partial_0A_i=\Pi^i+\partial_iA_0\), the Legendre transform is
+\(\partial_0A_i=\Pi^i+\partial_iA_0\), the Legendre transform gives
 \[
   \Pi^i\partial_0A_i-\mathcal L
   =
@@ -172,10 +170,8 @@ Integrating the last term by parts gives \(H_{\rm c}\).  Finally,
   \partial_i\Pi^i(\vec x),
 \]
 so preservation of \(\Pi^0=0\) imposes Gauss' law.
-\end{proof}
 
-\begin{proposition}[First-class constraints generate Maxwell gauge transformations]
-\label{prop:maxwell-first-class-gauge-generator}
+\paragraph{Hamiltonian generator of Maxwell gauge transformations.}
 The constraints obey
 \[
   \{\chi_a(\vec x),\chi_b(\vec y)\}_{\mathrm P}=0,
@@ -211,10 +207,9 @@ Thus the first-class constraints generate
 on the vector-potential representative. The gauge-invariant phase space is
 obtained by restricting to the constraint surface and quotienting by these
 gauge orbits, or equivalently by choosing a regular slice through the orbits.
-\end{proposition}
 
-\begin{proof}
-The constraints depend only on momenta, hence their mutual Poisson brackets
+The bracket calculation is elementary but fixes an important convention.  The
+constraints depend only on momenta, hence their mutual Poisson brackets
 vanish.  For the generator \(G[\zeta]\),
 \[
   \{A_0(\vec x),G[\zeta]\}_{\rm P}
@@ -237,7 +232,6 @@ function:
 The transformed field strength is unchanged because mixed partial
 derivatives commute.  Thus the Hamiltonian first-class flow is precisely the
 Maxwell representative redundancy.
-\end{proof}
 
 \section{Axial Gauge and Reduced Phase Space}
 

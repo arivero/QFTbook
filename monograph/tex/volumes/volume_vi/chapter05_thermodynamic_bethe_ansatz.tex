@@ -124,14 +124,17 @@ above.
 \end{proposition}
 
 \begin{proof}
-Let \(\rho_a^t=\rho_a+\rho_a^h\).  A variation of \(\rho_a\) changes
-\(\rho_c^t\) through the density constraint by
+Work on the open cone where \(\rho_a>0\) and \(\rho_a^h>0\), and take compactly
+supported smooth variations of the particle densities.  The density
+constraint then determines the variation of the total density:
 \[
   \delta\rho_c^t(\theta)
   =
   \sum_a\int d\theta'\,
   \varphi_{ca}(\theta-\theta')\delta\rho_a(\theta').
 \]
+Since \(\rho_a^h=\rho_a^t-\rho_a\), the corresponding hole-density variation
+is \(\delta\rho_a^h=\delta\rho_a^t-\delta\rho_a\).
 The entropy variation is
 \[
   \delta s
@@ -143,10 +146,54 @@ The entropy variation is
   \log\frac{\rho_a^t}{\rho_a^h}\,\delta\rho_a^t
   \right].
 \]
-Using \(\log(\rho_a^t/\rho_a^h)=\log(1+e^{-\epsilon_a})\), substituting the
-constraint variation, and setting \(\delta f=0\) for arbitrary
-\(\delta\rho_a\) gives the displayed integral equation.  Inserting the
-stationary relation back into \(f\) gives the stated free energy.
+Let
+\[
+  L_a(\theta)=\log\frac{\rho_a^t(\theta)}{\rho_a^h(\theta)}
+  =
+  \log(1+e^{-\epsilon_a(\theta)}).
+\]
+Substituting the constraint variation into \(\delta f=\delta e-R^{-1}\delta s\)
+and collecting the coefficient of \(\delta\rho_a(\theta)\) gives
+\[
+  0
+  =
+  m_a\cosh\theta
+  -\frac1R\epsilon_a(\theta)
+  -\frac1R
+  \sum_c\int d\theta'\,
+  \varphi_{ca}(\theta'-\theta)L_c(\theta').
+\]
+With the diagonal-scattering convention
+\(\varphi_{ca}(\theta'-\theta)=\varphi_{ac}(\theta-\theta')\), this is exactly
+the displayed TBA equation.
+
+It remains to derive the compact expression for the stationary free energy.
+The entropy density identity
+\[
+  \rho_a^t\log\rho_a^t-\rho_a\log\rho_a-\rho_a^h\log\rho_a^h
+  =
+  \rho_a\,\epsilon_a+\rho_a^t L_a
+\]
+gives
+\[
+  Rf_\ast
+  =
+  \sum_a\int d\theta\,
+  \rho_a(Rm_a\cosh\theta-\epsilon_a)
+  -
+  \sum_a\int d\theta\,\rho_a^t L_a .
+\]
+Use the stationary equation for the first parenthesis and the density
+constraint for \(\rho_a^t\).  The convolution terms cancel after interchanging
+species labels and integration variables, leaving only the one-particle
+state-density term
+\[
+  Rf_\ast
+  =
+  -\sum_a\int d\theta\,
+  \frac{m_a}{2\pi}\cosh\theta\,L_a(\theta),
+\]
+which is the stated formula for \(f(R)\).
 \end{proof}
 
 \section{Finite-Size Ground-State Energy}

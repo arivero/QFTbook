@@ -435,3 +435,10 @@
   exact supersymmetric \(N=2\) coset chiral data are now developed in
   Volume V, Chapter 15, while the GLSM/mirror-flow construction remains a
   supersymmetric-QFT obligation.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29 eighth pass: demoted the symmetric-product Riemann--Hurwitz
+  genus ledger from proposition form to bookkeeping prose.  The finite tests
+  for monodromy product, transitivity, and nonnegative integer genus remain
+  explicit and paired with the existing calculation check.

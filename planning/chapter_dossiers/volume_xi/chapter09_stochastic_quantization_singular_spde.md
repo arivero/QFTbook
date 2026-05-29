@@ -1057,3 +1057,7 @@ data maps.
   covariance proof with the \(L^2\) construction, complex Fourier-mode
   covariance convention, finite-cutoff Parseval identity, and monotone
   convergence to the negative-Sobolev bound.
+- 2026-05-29 eighth anti-wrapper pass: demoted the parabolic
+  Taylor-subtraction \(L^1\) scale gain from lemma form to an explicit
+  calculation around `eq:spde-taylor-subtraction-gain`, and rewired later
+  references to the equation rather than to a theorem-family wrapper.

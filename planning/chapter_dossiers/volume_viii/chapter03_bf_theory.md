@@ -76,6 +76,14 @@
   projection, the finite partition-function identity, cellular Wilson gauge
   invariance, and the linking-phase sign in exact finite arithmetic.
 
+## Audit Notes
+
+- 2026-05-29 eighth anti-wrapper pass: retained the finite BF linking phase
+  as a substantive proposition but expanded the proof to state the
+  cohomological reason the linking integer is well defined on \(S^D\), to
+  identify the ratio inside the same finite path-integral sum, and to remove
+  any possible impression of a saddle approximation.
+
 ## Remaining Deepening Targets
 
 - Develop the full nonabelian BV action for BF theory in components after

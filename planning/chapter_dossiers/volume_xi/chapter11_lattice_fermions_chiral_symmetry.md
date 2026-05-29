@@ -37,8 +37,8 @@ reflection-positive for \(U\geq0\).
 
 - Defines the finite lattice fermion path integral as a Berezin functional,
   not as a Borel measure on a set of fermion configurations.
-- Proves the finite Berezin Gaussian determinant, propagator, and Wick
-  determinant identities.
+- Records the finite Berezin Gaussian determinant, propagator, and Wick
+  determinant identities with the fixed Berezin ordering.
 - Derives the naive massive propagator symbol and proves that the massless
   zeros at Brillouin-zone corners carry chirality signs whose sum vanishes.
 - Proves, in the translation-invariant \(D_f=\ii\gamma\cdot f\) setting, the
@@ -77,3 +77,15 @@ reflection-positive for \(U\geq0\).
   degeneracies, Ginsparg-Wilson/overlap algebra, Berezinian index
   normalization, reflection-positive crossing coefficients, and staggered
   phase signs.
+
+## Audit Notes
+
+- 2026-05-29 eighth anti-wrapper pass: strengthened the Ginsparg-Wilson
+  Berezinian proposition by adding \(\gamma_5\)-Hermiticity to the statement
+  and proving integrality from the Hermitian involution
+  \(\widehat\gamma_5=\gamma_5(1-aD)\), rather than leaving the trace formula
+  as a formal finite calculation.
+- 2026-05-29 eighth anti-wrapper pass: demoted the finite Berezin Gaussian
+  determinant/propagator/Wick identities from proposition form to algebra
+  prose, preserving the source-completion derivation and the ordering
+  convention.
