@@ -592,6 +592,13 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Connected torus covers"
     r"|Transfer-matrix extraction of the static potential"
     r"|Rational-block unitarity and Yang--Baxter equation"
+    r"|Morse residue pairing on the LG Jacobi algebra"
+    r"|Linking phase and mutual locality"
+    r"|Finite-lattice Wilson flow"
+    r"|Leading heavy-quark center-breaking term"
+    r"|Fermionic trace identity"
+    r"|Chern--Simons transgression under a finite gauge transformation"
+    r"|Chern--Weil transgression"
     r")\b",
     re.IGNORECASE,
 )
