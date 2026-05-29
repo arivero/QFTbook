@@ -20,9 +20,10 @@ Manuscript content:
   `U(N_c)/(U(N_c-2) x U(1))`.
 - Treated the `N_c=2` specialization separately as the usual
   `SU(2)/Z_2` orientation orbit, avoiding the meaningless `SU(0)` notation.
-- Added Corollary `cor:k-one-adhm-cone-small-instanton`, deriving the radial
-  cone volume factor `rho^{4N_c-5} d rho d Omega_{N_c}` and identifying
-  `rho=0` as the small-instanton boundary where the two-frame collapses.
+- Added the cone-structure calculation, later demoted from corollary form while
+  retaining the radial cone volume factor
+  `rho^{4N_c-5} d rho d Omega_{N_c}` and identifying `rho=0` as the
+  small-instanton boundary where the two-frame collapses.
 
 Companion checks:
 

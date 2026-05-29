@@ -314,29 +314,19 @@ nonscreened, the boundary cannot be removed by local endpoints.
 
 \begin{proposition}[Strong-coupling area mechanism]
 \label{prop:lattice-strong-coupling-area-law}
-Assume the strong-coupling polymer expansion converges absolutely and
-uniformly for a family of planar loops \(C_R\), and assume \(R_0\) has a
-nonscreened center-sensitive charge.  Let \(A_{\min}(C_R)\) be the minimal
-lattice area of a plaquette surface spanning \(C_R\).  If the smallest
-nontrivial coefficient needed to carry the \(R_0\)-flux obeys
-\(|q_{R_0}|<1\), then
-\[
-  -\log |\langle W_{R_0}(C_R)\rangle|
-  =
-  \sigma_{R_0}A_{\min}(C_R)+o(A_{\min}(C_R))
-\]
-with positive leading coefficient in the convergent strong-coupling domain.
-\end{proposition}
-
-\begin{proof}
-By the Haar-projection selection rule above, the first nonzero
-center-sensitive contributions are plaquette surfaces spanning \(C_R\).
-Every minimal spanning surface contributes a product of character ratios with
-absolute value bounded by a power of the largest relevant nontrivial
-\(|q_R|\).  The polymer expansion bounds all surfaces with extra handles,
-bubbles, or larger area by an absolutely convergent sum whose leading
-exponential rate is controlled by the minimal area.  More explicitly, for
-sufficiently small nontrivial \(q_R\) there are constants \(a,b>0\) such that
+Assume \(R_0\) has nonscreened center-sensitive charge.  For a family of
+planar loops \(C_R\), let \(A_{\min}(C_R)\) be the minimal lattice area of a
+plaquette surface spanning \(C_R\).  Suppose the strong-coupling polymer
+expansion of \(\langle W_{R_0}(C_R)\rangle\) satisfies the following uniform
+area estimates.  First, the Haar-projection selection rule permits no
+center-sensitive contribution of area \(<A_{\min}(C_R)\).  Second, the sum of
+all minimal-area contributions is nonzero and has magnitude at least
+\(m_0\exp[-\sigma_+ A_{\min}(C_R)]\) for constants \(m_0>0\),
+\(\sigma_+<\infty\).  Third, the total contribution of all larger decorated
+surfaces is bounded by
+\(M_0\exp[-(\sigma_++\delta)A_{\min}(C_R)]\) for some \(M_0,\delta>0\), after
+possibly restricting to a sufficiently small strong-coupling neighborhood.
+Then there are constants \(a,b>0\) such that
 \[
   e^{-b A_{\min}(C_R)}
   \le
@@ -344,14 +334,37 @@ sufficiently small nontrivial \(q_R\) there are constants \(a,b>0\) such that
   \le
   e^{-a A_{\min}(C_R)}
 \]
-up to subexponential factors from the number of minimal surfaces and from
-bounded local decorations.  Taking \(-A_{\min}^{-1}\log\) and using
-absolute convergence gives a positive area coefficient.  Its exact value is
-scheme- and action-dependent; the mechanism is the surface selection plus
-small character ratios.
+for all sufficiently large loops in the family, up to subexponential factors.
+Consequently every subsequential exponential rate
+\(-A_{\min}(C_R)^{-1}\log |\langle W_{R_0}(C_R)\rangle|\) is strictly
+positive and finite.
+\end{proposition}
+
+\begin{proof}
+The first hypothesis is the kinematic selection part: link integration forces
+the center-sensitive flux to be carried by a plaquette two-chain with boundary
+\(C_R\), so no term of smaller area can occur.  The third hypothesis gives the
+upper bound after choosing \(a<\sigma_+\) and absorbing the subexponential
+number of local decorations into the prefactor.  For the lower bound, write
+the expectation as \(M_R+E_R\), where \(M_R\) is the minimal-area sum and
+\(|E_R|\le M_0e^{-(\sigma_++\delta)A_{\min}}\).  The lower estimate on
+\(|M_R|\) gives
+\[
+  |M_R+E_R|
+  \ge
+  m_0e^{-\sigma_+A_{\min}}
+  \left(1-\frac{M_0}{m_0}e^{-\delta A_{\min}}\right),
+\]
+which is at least \(\frac12m_0e^{-\sigma_+A_{\min}}\) for sufficiently large
+loops.  This gives the lower exponential bound with any \(b>\sigma_+\), after
+absorbing constants into the allowed subexponential factors.  The logarithmic
+rate statement follows immediately.  The exact string tension is not obtained
+from these estimates alone; it depends on the complete convergent polymer
+sum and on the lattice action.
 \end{proof}
 
-This is a theorem about a controlled lattice regime.  Its continuum analogue
+This is a theorem about a controlled lattice regime only after the displayed
+area estimates have been proved for the chosen action.  Its continuum analogue
 requires a continuum limit, a mass gap or other infrared control, and
 renormalized line operators whose asymptotics survive the limit.
 
