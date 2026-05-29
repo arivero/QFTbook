@@ -74,7 +74,8 @@
 ## Claims To Establish
 
 - Expanding a regulated normalized Euclidean path integral gives a formal
-  power series in \(g\).
+  power series in \(g\); this is recorded as finite-dimensional algebra at
+  fixed regulator, not elevated to a separate proposition.
 - Wick's theorem converts Gaussian moments into sums over pairings.
 - Vacuum components cancel in normalized correlators, leaving components
   attached to external fields.

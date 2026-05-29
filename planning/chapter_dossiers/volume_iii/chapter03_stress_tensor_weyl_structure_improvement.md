@@ -33,9 +33,10 @@ The chapter establishes:
 - the trace-anomaly density \(\mathcal A[g]\), its sign convention relative to
   the metric-source stress tensor, and the fact that functional derivatives of
   \(\mathcal A[g]\) give contact terms in traced stress-tensor Ward identities;
-- the Wess--Zumino consistency condition for Weyl anomalies and the
-  parity-even local cohomological classification into type-A Euler-density
-  terms, type-B Weyl-invariant densities, and type-D counterterm variations;
+- the Wess--Zumino consistency condition for Weyl anomalies as
+  source-functional prose, and the parity-even local cohomological
+  classification into type-A Euler-density terms, type-B Weyl-invariant
+  densities, and type-D counterterm variations;
 - the two-dimensional normalization
   \(\mathcal A_2[g]=-c_{2d}R/(24\pi)\), tied to
   \(\langle T(z)T(0)\rangle=c_{2d}/(2z^4)\);

@@ -194,17 +194,14 @@ coefficientwise expansion of this expression in powers of the coupling \(g\),
 with the regulator kept fixed before renormalized limits are considered.
 \end{definition}
 
-\begin{proposition}[Coefficientwise perturbation at fixed regulator]
-\label{prop:fixed-regulator-coefficientwise-perturbation}
+\paragraph{Coefficientwise perturbation at fixed regulator.}
 At any finite regulator for which \(S_{\mathrm{int},E}\) is a polynomial on a
 finite-dimensional Gaussian space, the coefficient of \(g^V\) in
 \(G_{E,n,\Lambda}\) is obtained by expanding numerator and denominator in
 powers of \(S_{\mathrm{int},E}\), taking ordinary Gaussian moments, and then
 dividing the resulting formal power series by the denominator series.
-\end{proposition}
-
-\begin{proof}
-At finite regulator the Gaussian expectation is an ordinary normalized
+This is finite-dimensional formal power-series algebra.  At finite regulator
+the Gaussian expectation is an ordinary normalized
 finite-dimensional integral with positive covariance.  The exponential
 \(\exp[-S_{\mathrm{int},E}]\) is treated either as an honest integrable
 function for values of \(g\) where the integral converges, or as the formal
@@ -217,9 +214,9 @@ Since \(S_{\mathrm{int},E}\) is polynomial, each coefficient is a finite sum
 of Gaussian moments.  The denominator has constant term \(1\), so it has a
 unique inverse as a formal power series in \(g\).  Multiplication by that
 inverse gives the displayed normalized Green function coefficient by
-coefficient.  No infinite-dimensional measure or regulator-removal operation
-enters this algebraic step.
-\end{proof}
+coefficient.  This algebraic step uses only finite-dimensional Gaussian
+moments and the formal inverse of a series with constant term \(1\); regulator
+removal and renormalization enter later.
 
 \section{Wick Expansion and Connected Functions}
 
@@ -265,9 +262,9 @@ belong to one connected component.
 \begin{proof}
 The first displayed formula is Wick's theorem for the finite-dimensional
 Gaussian vector obtained by evaluating the regulated field at the indicated
-test functions or points.  Substituting the formal exponential expansion of
-Proposition~\ref{prop:fixed-regulator-coefficientwise-perturbation} expresses
-each coefficient as a finite sum over pairings of the \(n+4V\) field factors.
+test functions or points.  Substituting the fixed-regulator formal
+exponential expansion expresses each coefficient as a finite sum over pairings
+of the \(n+4V\) field factors.
 Every pair in a Wick pairing supplies one covariance \(C_\Lambda\); grouping
 the paired half-edges incident to the same interaction point gives precisely
 the graph description.

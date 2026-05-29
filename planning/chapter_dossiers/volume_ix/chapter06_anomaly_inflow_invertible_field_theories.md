@@ -37,7 +37,9 @@ boundary condition for an invertible bulk theory.
 - Proves the functorial cocycle condition for scalar anomaly representatives
   and the frame-change law under local counterterms.
 - Constructs the boundary anomaly line from an invertible bulk by comparing
-  fillings and proves that bulk gluing gives the line functor.
+  fillings and records the gluing argument as line-functor prose, with the
+  functorial bulk gluing law, filling/colimit input, and background-isomorphism
+  lift made explicit.
 - Derives the connected-symmetry descent variation from
   `dI_{D+1}^{(0)}=P_{D+2}`.
 - Derives Wess--Zumino consistency as the infinitesimal form of anomaly-line

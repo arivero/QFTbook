@@ -128,8 +128,9 @@ state the relation among them.
   pairing against test functions.
 - `prop:joint-translation-spectrum` constructs the single joint spectral
   measure of the translation generators from Stone--Naimark.
-- `prop:isolated-shell-one-particle-subrepresentation` proves that an isolated
-  mass shell gives a closed invariant one-particle subrepresentation.
+- An isolated mass shell gives a closed invariant one-particle
+  subrepresentation by spectral projection and covariance; this is kept as
+  prose because the substantive input is the isolation hypothesis.
 - Massive spinless one-particle states are realized as \(L^2\) functions on the
   positive mass shell with invariant measure.
 - Table `tab:wigner-classification-four-dimensional` separates the vacuum,

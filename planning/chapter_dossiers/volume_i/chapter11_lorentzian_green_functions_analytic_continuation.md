@@ -109,7 +109,8 @@
   convention after relabelling the contour source.
 - The Lorentzian time-ordered two-point free propagator has denominator
   \(k^2+m^2-i\epsilon\) and poles at
-  \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\).
+  \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\); the pole rule is
+  recorded as the two-point ordered-tube boundary-value dictionary.
 - For labelled quartic vertices the Lorentzian vertex rule is
   \(-ig(2\pi)^D\delta^D(\sum k_i)\).
 - For unlabelled four-field insertions direct expansion gives

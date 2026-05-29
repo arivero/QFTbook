@@ -16,7 +16,9 @@
 - BV quantum master equation at finite cutoff.
 - Admissible BV Wilsonian step: split odd symplectic spaces, Lagrangian
   integration cycle, convergence prescription, BV boundary condition, and
-  supersymmetry compatibility.
+  supersymmetry compatibility; the chapter now emphasizes that this hypothesis
+  is the load-bearing construction problem, while QME preservation is the BV
+  Stokes consequence.
 - Finite-cutoff Darboux-coordinate proof of BV Stokes for the integrated
   variables.
 - BV pushforward of half-densities and preservation of the quantum master

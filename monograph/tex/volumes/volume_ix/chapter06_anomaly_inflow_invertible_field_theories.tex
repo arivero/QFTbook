@@ -183,17 +183,17 @@ boundary theory assigns a vector in this line.  Multiplying the boundary
 vector by the bulk number for a filling gives an ordinary complex number, but
 only after the filling has been chosen.
 
-\begin{proposition}[Bulk gluing gives the anomaly line]
-\label{prop:bulk-gluing-anomaly-line}
+\paragraph{Bulk gluing and the anomaly line.}
 The construction above defines a line functor over the background groupoid of
 \(M\).  If the bulk invertible theory is trivializable, the line functor is
 trivializable; if a boundary theory has partition vectors in this line, then
 the combined bulk-boundary partition function on a closed glued manifold is
 an ordinary complex number invariant under background isomorphisms.
-\end{proposition}
-
-\begin{proof}
-Transitivity of the equivalence relation follows from the closed-manifold
+The mathematical content rests on the functorial gluing law of the bulk
+invertible theory, the existence of the allowed fillings or the corresponding
+colimit over fillings, and the lifting of background isomorphisms to the
+filling data.  Under these inputs, transitivity of the equivalence relation
+follows from the closed-manifold
 gluing axiom:
 \[
   \mathcal Z((-X)\cup_M X'')=
@@ -206,11 +206,10 @@ filling with boundary background identified by \(u\), hence gives a linear
 map between the corresponding quotient lines.  Functoriality of these maps is
 again the gluing axiom.  A trivialization of the bulk functor supplies
 canonical vectors in all boundary lines, and therefore trivializes the line
-functor.  Conversely, without such a choice the boundary partition function
-is a vector, and only the pairing with a compatible bulk filling produces a
-number.  Gauge covariance of the number follows because the bulk and boundary
-line transformations are inverse under this pairing.
-\end{proof}
+functor.  In the absence of such a trivialization, the boundary partition
+function is a vector in the anomaly line, and pairing with a compatible bulk
+filling produces a number.  Gauge covariance of the number follows because
+the bulk and boundary line transformations are inverse under this pairing.
 
 Figure~\ref{fig:inflow-boundary-line-gluing} records the gluing statement for
 anomaly inflow: a boundary partition vector pairs with a compatible bulk

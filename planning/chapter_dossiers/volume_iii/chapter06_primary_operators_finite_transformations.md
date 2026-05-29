@@ -37,6 +37,10 @@ The chapter establishes:
   from the infinitesimal contact operator, tensor index conventions, and the
   restriction to separated points;
 - inversion, including the extra representation choice needed for spin.
+- descendant transformation laws as direct consequences of the primary datum,
+  the conformal-algebra action on
+  \(\operatorname{Sym}^n(\mathbb C^D)\otimes V_\rho\), and decomposition into
+  irreducible rotation representations.
 
 ## Claims To Verify
 
