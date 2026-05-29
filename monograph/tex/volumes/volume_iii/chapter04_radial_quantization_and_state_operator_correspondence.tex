@@ -82,12 +82,12 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
     =
     \bigoplus_{\lambda<\infty}\ker(D_{\rm rad}-\lambda).
   \]
-  Equivalently, every finite-energy eigenvector admits the local radial
-  boundary-value data of
-  Definition~\ref{def:local-radial-boundary-value-state} below, and hence has
-  a representative as a local scaling field at the origin by
-  Theorem~\ref{thm:operator-from-state-radial-boundary-value}, unique modulo
-  null operators.
+  Equivalently, every finite-energy eigenvector is assumed to admit local
+  radial boundary-value data of the kind specified in
+  Definition~\ref{def:local-radial-boundary-value-state} below.  This is an
+  existence assertion about distributional extensions at the origin; the
+  theorem later in this chapter constructs the corresponding local-operator
+  class from such data.
   \item The Euclidean correlators are related to Lorentzian Wightman
   distributions by the standard tube-domain analytic continuation, with the
   Lorentzian distributions satisfying the spectrum condition and local
@@ -117,6 +117,16 @@ Under Hypothesis~\ref{hyp:radial-reconstruction-data}, radial reflection
 positivity gives the inner product, \(D_{\rm rad}\) gives the cylinder
 Hamiltonian, and local insertions at the origin give the complete
 finite-energy state space.
+
+The completeness clause is the load-bearing part of the state--operator
+correspondence.  Reflection positivity and the radial spectrum construct a
+Hilbert space and a Hamiltonian, but by themselves they only give an injection
+from local origin insertions into cylinder states.  Surjectivity requires the
+additional local boundary-value assertion above: a finite-energy state must
+determine distributional correlators with an insertion at the origin whose
+contact terms, covariance, scaling law, and descendant Ward identities are
+those of a local operator.  This condition is extra local distributional
+structure on top of the existence of a Hilbert-space vector.
 
 The nonnegativity of \(D_{\rm rad}\) in
 Hypothesis~\ref{hyp:radial-reconstruction-data} is the radial spectrum
@@ -878,12 +888,6 @@ correlators are the distributions
 Two representatives that give the same radial state differ by a null local
 operator, namely by an element whose radial two-point pairing with every local
 operator vanishes.
-
-Conversely, the radial-completeness clause of
-Hypothesis~\ref{hyp:radial-reconstruction-data} is exactly the assertion that
-every vector in each eigenspace \(\ker(D_{\rm rad}-\Delta)\) admits such local
-radial boundary-value data.  Under that clause, the operator-from-state map is
-surjective separately on every eigenspace.
 \end{theorem}
 
 \begin{proof}
@@ -913,12 +917,14 @@ vectors agree.  If two local insertions have the same radial state, their
 difference pairs to zero with every \(A\), hence with every local operator by
 radial reflection and density; this is precisely the null equivalence used in
 the definition of \(\mathcal V_{\rm loc}^{(\Delta)}\).
-
-The final assertion is a restatement of radial completeness with the
-existence condition made explicit: completeness supplies, for every
-finite-energy eigenvector, a local scaling field whose correlators furnish the
-boundary-value distributions above.
 \end{proof}
+
+Thus this theorem proves a conditional construction: local radial
+boundary-value data determine a local-operator class.  The separate
+radial-completeness clause of Hypothesis~\ref{hyp:radial-reconstruction-data}
+asserts that every finite-energy eigenspace vector has such data.  Only after
+that clause is imposed can one conclude that the operator-from-state map is
+surjective on each eigenspace.
 
 \begin{construction}[cylinder sewing and Heisenberg operators]
 \label{constr:cylinder-sewing-heisenberg}
