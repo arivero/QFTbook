@@ -46,10 +46,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
   instanton zero-mode saturation ledger, showing that separated
   \(S\)-correlators vanish for fewer than \(N_c\) insertions and that the
   first possible instanton test is the \(S^{N_c}\) correlator.
-- `prop:pure-sym-saturated-berezin-coefficient`: exterior-algebra
-  coefficient formula for the saturated \(N_c\)-insertion pure-SYM
+- Saturated pure-SYM Berezin coefficient convention: exterior-algebra
+  coefficient extraction for the saturated \(N_c\)-insertion pure-SYM
   instanton Berezin integral, including the canonical coefficient, the
-  identical-two-form \(N_c!\) convention, and the sign ledger.
+  identical-two-form \(N_c!\) convention, and the sign ledger.  This is
+  recorded as calculation prose rather than a theorem-family claim.
 - `prop:pure-sym-topological-sector-s-selection`: instanton-number selection
   rule showing that a charge-\(\nu\) self-dual sector requires
   \(\nu N_c\) separated \(S\)-insertions for zero-mode saturation, so the

@@ -123,6 +123,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Tree-level singlet color factor|"
     r"Color factor of one-gluon exchange between two quarks|"
     r"Dyson resummation of exact two-point insertions|"
+    r"NSVZ beta function as a coordinate identity|"
+    r"Saturated pure-SYM Berezin coefficient|"
     r"Two-dimensional conformal Killing fields|"
     r"Spectral meaning of the horizon functional|"
     r"Conformal Borel map for one negative cut|"

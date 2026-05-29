@@ -25,9 +25,11 @@
 - NSVZ coordinate formula from the holomorphic coupling, rescaling anomaly,
   canonical normalization, matter Konishi Jacobians, and the gauge-multiplet
   BV-complex rescaling Jacobian.
-- NSVZ beta function as a coordinate identity obtained by differentiating the
-  holomorphic-canonical gauge-coordinate relation in the stated
-  anomalous-dimension convention.
+- NSVZ beta function displayed as a coordinate identity obtained by
+  differentiating the holomorphic-canonical gauge-coordinate relation in the
+  stated anomalous-dimension convention; the nontrivial inputs are the
+  coordinate relation, the regulated rescaling anomaly, and the holomorphic
+  Wilsonian one-loop running, not the final algebraic differentiation.
 - Boundary between perturbative Wilsonian arguments and nonperturbative
   chiral dynamics.
 
@@ -68,10 +70,10 @@
    classical canonical coordinate \(8\pi^2/g^2\), the matter shifts
    \(-T(R_i)\log Z_i\), the adjoint gauge-complex shift
    \(C_2(G)\log g^2\), and a finite \(\mu\)-independent scheme constant.
-7. The NSVZ beta-function formula is a coordinate identity in the declared
-   canonical coupling and anomalous-dimension convention; finite canonical
-   reparametrizations change the displayed denominator by reparametrizing the
-   beta-vector field.
+7. The NSVZ beta-function formula is recorded as a coordinate identity in the
+   declared canonical coupling and anomalous-dimension convention, not as an
+   independent theorem; finite canonical reparametrizations change the
+   displayed denominator by reparametrizing the beta-vector field.
 
 ## Calculation Checks
 
