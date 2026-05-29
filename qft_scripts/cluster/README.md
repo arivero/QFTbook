@@ -29,3 +29,19 @@ The first SLURM vertical slice is `slurm/su3_small_pipeline.sbatch`.  It runs
 a small pure-gauge SU(3) HDF5 sampler, Wilson flow on the saved checkpoint,
 and static-potential extraction from the correlated Wilson-loop samples.  The
 job is a cluster smoke run, not a production continuum extrapolation.
+
+The first parameter-sweep wrapper is `slurm/su3_parameter_sweep_array.sbatch`.
+It uses `su3_sweep_grid.py` to resolve each `SLURM_ARRAY_TASK_ID` into a
+finite pair `(beta, seed)`, then runs the same sampler/flow/static-potential
+pipeline in a task-local results directory with a JSON manifest.  Override the
+default grid with comma-separated environment variables:
+
+```bash
+QFT_SWEEP_BETAS=5.7,5.85,6.0 \
+QFT_SWEEP_SEEDS=101,102,103,104 \
+sbatch --array=0-11 qft_scripts/cluster/slurm/su3_parameter_sweep_array.sbatch
+```
+
+The array wrapper is a reproducibility and bookkeeping layer.  It does not
+assert Markov-chain mixing, continuum scaling, or independence among nearby
+couplings; those are separate analysis claims.

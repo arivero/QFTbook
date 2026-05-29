@@ -37,6 +37,9 @@ python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 echo "[qft-scripts] glueball_gevp_from_correlators --smoke"
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 
+echo "[qft-scripts] cluster su3_sweep_grid"
+python3 qft_scripts/cluster/su3_sweep_grid.py --betas 5.7,5.9 --seeds 11,13 --task-id 3 --format json >/dev/null
+
 echo "[qft-scripts] tcsa_ising_energy_benchmark --smoke"
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 

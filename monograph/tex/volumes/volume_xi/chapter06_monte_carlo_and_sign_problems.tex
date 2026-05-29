@@ -865,6 +865,30 @@ execution wrappers only.  They do not change the finite Markov chain, do not
 prove mixing, and do not turn the small \(L=2\) smoke job into a continuum
 calculation.
 
+The array wrapper
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/cluster/slurm/}\\
+  \texttt{su3\_parameter\_sweep\_array.sbatch}
+  \end{gathered}
+\]
+adds only deterministic parameter bookkeeping.  Its helper
+\[
+  \texttt{qft\_scripts/cluster/su3\_sweep\_grid.py}
+\]
+maps a SLURM array index to a finite Cartesian-product coordinate
+\((\beta,\texttt{seed})\), writes that coordinate into the task manifest, and
+then runs the same finite-regulator sampler, Wilson-flow, and static-potential
+pipeline in a task-local directory.  The calculation check
+\[
+  \texttt{calculation-checks/cluster\_sweep\_grid\_checks.py}
+\]
+verifies the Cartesian ordering, out-of-range rejection, and shell-assignment
+output.  The array index is not a physical or statistical index: it is a
+reproducibility coordinate for a family of finite Markov chains.  Mixing,
+thermalization, and continuum scaling remain separate mathematical and
+statistical claims.
+
 \section{Hybrid Monte Carlo and Pseudofermions}
 \label{sec:hmc-pseudofermions-finite-regulator}
 

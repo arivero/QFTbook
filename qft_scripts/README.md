@@ -42,7 +42,11 @@ secrets.  The first vertical slice,
 `qft_scripts/cluster/slurm/su3_small_pipeline.sbatch`, runs the SU(3) HDF5
 sampler, Wilson flow, and static-potential extraction into one results
 directory.  It is a reproducibility wrapper for a small cluster smoke run, not
-a production lattice-QCD workflow or a continuum extrapolation.
+a production lattice-QCD workflow or a continuum extrapolation.  The companion
+array template, `qft_scripts/cluster/slurm/su3_parameter_sweep_array.sbatch`,
+uses `qft_scripts/cluster/su3_sweep_grid.py` to map SLURM array indices to a
+finite Cartesian product of beta values and random seeds, with one manifest
+per task.
 
 ## Scripts
 
