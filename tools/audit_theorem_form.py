@@ -656,6 +656,14 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Linking phase in finite BF theory"
     r"|Banks--Casher relation under a spectral-density hypothesis"
     r"|Single-channel finite-volume pole reconstruction"
+    r"|Automorphism denominator from Wick pairings"
+    r"|Pairing of positive-energy states"
+    r"|Flavor parameter counting"
+    r"|Field-content exhaustion at dimension six"
+    r"|Torus partition function of a finite orbifold"
+    r"|Topological cancellation for .*D"
+    r"|Baryon susceptibilities (?:are|as) baryon-number cumulants"
+    r"|Exchange symmetry and the CFL tensor"
     r")\b",
     re.IGNORECASE,
 )

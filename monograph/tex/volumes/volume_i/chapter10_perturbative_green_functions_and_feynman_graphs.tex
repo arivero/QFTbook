@@ -420,8 +420,7 @@ recovered by counting Wick contractions.
 
 \section{Symmetry Factors from Wick Pairings}
 
-\begin{proposition}[Automorphism denominator from Wick pairings]
-\label{prop:automorphism-denominator-from-wick-pairings}
+\paragraph{Automorphism denominator from Wick pairings.}
 The coefficient \( |\operatorname{Aut}\Gamma|^{-1} \) in the graph rule is
 the residual count left by the regulated Wick expansion. Consider a connected
 graph \(\Gamma\) with \(V\) quartic
@@ -445,9 +444,7 @@ Multiplying the two factors gives precisely
 Thus the graph automorphism factor is the quotient between the arbitrary
 labellings introduced by the expansion and the relabellings leaving the graph
 unchanged.
-\end{proposition}
 
-\begin{proof}
 Start with the \(V\)-th term of the regulated expansion, where the integration
 variables \(z_1,\ldots,z_V\) are ordered and the four field factors at each
 vertex are ordered by their position in \(\phi(z_a)^4\).  These choices give
@@ -461,7 +458,6 @@ relations and all external labels unchanged.  By the orbit-stabilizer
 identity, the number of labelled Wick contractions giving the same abstract
 \(\Gamma\) is \(V!(4!)^V/|\operatorname{Aut}\Gamma|\).  Multiplying by the
 expansion prefactor gives \((-g)^V/|\operatorname{Aut}\Gamma|\).
-\end{proof}
 
 For example, the order-\(g\) tadpole correction to the two-point function has
 one quartic vertex. The two external labels are fixed, while the two remaining
@@ -731,12 +727,11 @@ inside the radial expression. The second line uses
   \Sigma_E^{(1)}(k)=-g\,C_1(\Lambda,m).
 \]
 
-The coefficient \(-g/2\) is the symmetry factor computed in
-Proposition~\ref{prop:automorphism-denominator-from-wick-pairings}: the two
-unattached half-edges at the quartic vertex form one loop and may be
-interchanged.  No external momentum enters the loop propagator, so the
-amputated insertion is momentum independent and equals the displayed
-regulated integral.  In spherical coordinates the cutoff integral is
+The coefficient \(-g/2\) is the symmetry factor from the Wick-pairing
+automorphism count above: the two unattached half-edges at the quartic vertex
+form one loop and may be interchanged.  No external momentum enters the loop
+propagator, so the amputated insertion is momentum independent and equals the
+displayed regulated integral.  In spherical coordinates the cutoff integral is
 \[
   \frac12
   \frac{\operatorname{vol}(S^{D-1})}{(2\pi)^D}

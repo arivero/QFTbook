@@ -1944,8 +1944,7 @@ The continuum thermodynamic susceptibility \(\chi_n^B(T)\) is the limit of
 limit exists.
 \end{definition}
 
-\begin{proposition}[Baryon susceptibilities are baryon-number cumulants]
-\label{prop:qcd-baryon-cumulant-identities}
+\paragraph{Baryon susceptibilities as baryon-number cumulants.}
 At finite regulator and finite volume,
 \begin{equation}
   \chi_{1,a,V}^B
@@ -1975,9 +1974,7 @@ and
 \end{align}
 If charge conjugation is an exact symmetry at \(x=0\) and sends
 \(B\mapsto -B\), then all odd finite-volume cumulants vanish.
-\end{proposition}
 
-\begin{proof}
 Because \(B_{a,V}\) is conserved, \(H_{a,V}\) and \(B_{a,V}\) can be
 simultaneously decomposed by the spectral theorem, and differentiating
 \eqref{eq:qcd-baryon-finite-x-partition} with respect to \(x\) is the
@@ -1999,7 +1996,6 @@ satisfies
   Z(x)=Z(-x),
 \]
 so \(\log Z(x)\) is even near the origin and its odd derivatives vanish.
-\end{proof}
 
 \begin{definition}[Taylor expansion and critical diagnostic]
 \label{def:qcd-baryon-taylor-critical-diagnostic}
@@ -3316,8 +3312,7 @@ records terms outside leading-log accuracy.  The power of \(g\) multiplying
 next-to-leading data, not consequences of this proposition.
 \end{proof}
 
-\begin{proposition}[Exchange symmetry and the CFL tensor]
-\label{prop:qcd-cfl-exchange-symmetry}
+\paragraph{Exchange symmetry and the CFL tensor.}
 For a local \(s\)-wave spin-zero pairing of two left-handed Weyl quarks,
 the coefficient multiplying
 \[
@@ -3332,9 +3327,7 @@ color-antisymmetric channel must also be antisymmetric in flavor.  For
 \]
 is invariant precisely under the diagonal subgroup obtained by identifying
 color and flavor \(SU(3)\) rotations.
-\end{proposition}
 
-\begin{proof}
 The fermion fields anticommute, while
 \(\epsilon_{\alpha\beta}\) is antisymmetric.  Hence
 \[
@@ -3346,7 +3339,7 @@ The fermion fields anticommute, while
 \]
 where the last equality relabels \(\alpha\leftrightarrow\beta\) and uses
 \(\epsilon_{\beta\alpha}=-\epsilon_{\alpha\beta}\).  Thus the color-flavor
-  coefficient must be symmetric under simultaneous exchange.  Since the
+coefficient must be symmetric under simultaneous exchange.  Since the
 two-quark color calculation above identifies the attractive color channel as
 antisymmetric, the flavor tensor must be antisymmetric as well.
 
@@ -3357,7 +3350,6 @@ the flavor \(\overline{\square}\) carried by \(\wedge^2\square_{\rm flavor}\).
 It is preserved exactly when these two \(\overline{\square}\) actions agree,
 which is the diagonal \(SU(3)\) condition after the chosen color-flavor
 identification.  This is the color-flavor locking statement.
-\end{proof}
 
 \begin{definition}[CFL condensate data]
 \label{def:qcd-cfl-condensate-data}
@@ -3573,13 +3565,12 @@ proposition, span
   \mathfrak{su}(3)_L\oplus\mathfrak{su}(3)_R\oplus\mathfrak u(1)_B .
 \]
 The CFL tensor identifies a diagonal \(\mathfrak{su}(3)\) subgroup with the
-unbroken simultaneous flavor rotation, as shown in
-Proposition~\ref{prop:qcd-cfl-exchange-symmetry}.  The dimension of the
-broken global coset is therefore \(8+8+1-8=9\).  The conclusion is only a
-group-theoretic consequence of the source-selected CFL order.  Establishing
-which region of QCD realizes this order requires control of dense QCD, where
-direct lattice importance sampling is obstructed by the finite-density
-sign-problem mechanism described above.
+unbroken simultaneous flavor rotation, as shown in the exchange-symmetry
+calculation above.  The dimension of the broken global coset is therefore
+\(8+8+1-8=9\).  The conclusion is only a group-theoretic consequence of the
+source-selected CFL order.  Establishing which region of QCD realizes this
+order requires control of dense QCD, where direct lattice importance sampling
+is obstructed by the finite-density sign-problem mechanism described above.
 \end{remark}
 
 \begin{definition}[Gauge-invariant static screening diagnostics in dense QCD]

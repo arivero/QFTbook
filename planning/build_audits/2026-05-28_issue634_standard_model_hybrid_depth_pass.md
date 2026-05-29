@@ -17,11 +17,11 @@ matching datum.
 - Added the central `Z_6` kernel calculation for the minimal representation
   content using integer hypercharge `y=6Y`.  This calculation was later
   demoted from proposition form to prose in the anti-wrapper pass.
-- Added Definition `def:sm-ckm-matrix` and Propositions
-  `prop:sm-flavor-parameter-counting`,
-  `prop:sm-gim-tree-level-diagonality`, and the Jarlskog rephasing
-  calculation.  The latter was later demoted from proposition form to prose in
-  the anti-wrapper pass, while retaining the phase-cancellation and
+- Added Definition `def:sm-ckm-matrix`, the flavor-parameter-counting
+  calculation, Proposition `prop:sm-gim-tree-level-diagonality`, and the
+  Jarlskog rephasing calculation.  The flavor count and the Jarlskog
+  calculation were later demoted from proposition form to prose in the
+  anti-wrapper passes, while retaining the phase-cancellation and
   row/column-orthogonality derivation.
 - Added the Higgs radial mass coordinate calculation and custodial
   `rho_tree=1` calculation.  The latter was later demoted from proposition
