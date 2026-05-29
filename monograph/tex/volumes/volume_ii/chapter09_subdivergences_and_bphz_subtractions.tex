@@ -667,25 +667,50 @@ contracted.
 \end{lemma}
 
 \begin{proof}
-As the threshold is lowered, the set of lines above threshold only grows.
-Thus two threshold subgraphs are line-nested.  A connected component of the
-smaller threshold graph is either contained in a connected component of the
-larger threshold graph or is disjoint from it.  Passing to 1PI loop-containing
-components cannot create a partial overlap: it only removes trees, separates
-components at articulation lines, or keeps a subcomponent inside the same
-larger connected component.  Therefore any two retained components are
-disjoint or nested.
+Label the distinct momentum-size thresholds in the sector by
+\[
+  \rho_1\gg \rho_2\gg\cdots\gg \rho_N
+\]
+after subdividing the partition of unity if necessary so that the ratios
+\(\rho_{j+1}/\rho_j\) are the sector coordinates.  Let \(H_j\) be the
+subgraph spanned by the internal lines whose momenta have size at least
+\(\rho_j\).  Then
+\[
+  H_1\subset H_2\subset\cdots\subset H_N .
+\]
+For two indices \(i<j\), every connected component of \(H_i\) is either
+contained in a connected component of \(H_j\) or disjoint from it, because
+the edge set of \(H_i\) is a subset of the edge set of \(H_j\).
 
-The Hepp-sector coordinates separate the noncompact region into radial scale
-ratios.  Sending one scale ratio to infinity while keeping slower ratios fixed
-is precisely the operation of making the lines above the corresponding
-threshold large relative to the remaining lines.  If the component at such a
-boundary has nonnegative superficial degree, it is retained in \(F_S\).  If
-it has negative superficial degree, it is already power-counting convergent at
-that boundary.  After a retained component is contracted to a local vertex,
-the remaining large-scale boundary is the corresponding quotient graph.  This
-gives the stated representation of all superficially divergent sector
-boundaries.
+It remains to check that passing from connected components to 1PI
+loop-containing components does not introduce a crossing overlap.  Use the
+block decomposition of a connected graph into maximal one-particle-irreducible
+blocks, bridges, and tree attachments.  If \(B\) is a 1PI block of a smaller
+threshold graph \(H_i\), then any two lines of \(B\) lie on a common cycle in
+\(H_i\), hence still lie on a common cycle in the larger graph \(H_j\).
+Thus \(B\) is contained in a unique maximal 1PI block of the connected
+component of \(H_j\) that contains it.  Adding further high-momentum lines can
+merge old 1PI blocks, but it cannot split an old 1PI block.  Consequently two
+retained 1PI loop subgraphs obtained from different thresholds are either
+edge-disjoint, or one is contained in the other after the obvious inclusion
+of edge sets.  Discarding components with negative superficial degree removes
+vertices from this partially ordered set and therefore preserves the forest
+property.
+
+Now consider a boundary stratum of the sector at which a subset of sector
+ratios tends to zero, equivalently a nested collection of high-momentum
+scales is sent to infinity relative to the slower scales.  At the first
+nontrivial ratio the large lines form one of the components of some
+\(H_j\).  If its superficial degree is negative, the Taylor-subtracted
+integrand has a convergent power-counting exponent at that boundary, so the
+boundary is not superficially divergent.  If its degree is nonnegative, the
+corresponding 1PI loop block is one of the retained elements of \(F_S\).  For
+the next larger scale separation, the lines already represented by retained
+blocks are replaced by local vertices; the remaining divergent large-line
+configuration is therefore a divergent component of the quotient graph.  An
+induction over the ordered ratios gives a nested sequence of retained
+subgraphs and quotient divergences.  This is precisely the forest associated
+to the ultraviolet hierarchy in the Hepp sector.
 \end{proof}
 
 \begin{theorem}[BPHZ finiteness for massive Euclidean scalar graphs]
