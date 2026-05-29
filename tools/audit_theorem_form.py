@@ -693,6 +693,14 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Finite-regulator Wetterich equation"
     r"|Finite-size scaling from an RG chart"
     r"|Colored-partition growth and the string Hagedorn scale"
+    r"|Canonical entropy divergence with anomaly"
+    r"|Open flux-tube oscillator labels"
+    r"|Fused mirror kernels in stringbook orientation"
+    r"|Fused mirror kernels in the chosen orientation"
+    r"|Field-strength two-point function and photon helicity data"
+    r"|Finite-chaos kernels for tested nonlinear coordinates"
+    r"|Gauge-covariant HTL equations and transversality"
+    r"|Topological-sector selection for .*S.*correlators"
     r")\b",
     re.IGNORECASE,
 )

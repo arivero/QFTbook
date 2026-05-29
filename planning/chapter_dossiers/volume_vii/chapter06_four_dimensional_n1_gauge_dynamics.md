@@ -52,8 +52,8 @@ brane construction, or holographic interpretation is a premise of the chapter.
   instanton Berezin integral, including the canonical coefficient, the
   identical-two-form \(N_c!\) convention, and the sign ledger.  This is
   recorded as calculation prose rather than a theorem-family claim.
-- `prop:pure-sym-topological-sector-s-selection`: instanton-number selection
-  rule showing that a charge-\(\nu\) self-dual sector requires
+- The topological-sector selection paragraph gives the instanton-number
+  selection rule showing that a charge-\(\nu\) self-dual sector requires
   \(\nu N_c\) separated \(S\)-insertions for zero-mode saturation, so the
   \(N_c\)-point chiral correlator is a charge-one test.
 - `hyp:pure-sym-zero-mode-saturated-instanton-correlator`: analytic

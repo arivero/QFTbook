@@ -115,10 +115,10 @@ Status: rewritten and source-audited on 2026-05-22.
   reduced positive two-helicity Fock representation.
 - Field-strength two-point functions are independent of the representative
   gauge parameter because longitudinal terms vanish under antisymmetrization.
-- Proposition `prop:maxwell-field-strength-one-photon-spectral-data` proves
-  that the free one-photon field-strength spectral representation is
-  compatible with helicity completeness, that the auxiliary \(C_\mu\)-terms
-  cancel after antisymmetrization, and that the normalization is \(Z_A=1\).
+- The worked one-photon field-strength derivation shows that the spectral
+  representation is compatible with helicity completeness, that the auxiliary
+  \(C_\mu\)-terms cancel after antisymmetrization, and that the normalization
+  is \(Z_A=1\).
 - Companion check `calculation-checks/maxwell_gauge_checks.py` verifies the
   finite algebra behind the axial and covariant inverses, Faddeev--Popov
   slice Jacobian, Gupta--Bleuler null quotient, and longitudinal
