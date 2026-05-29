@@ -94,6 +94,12 @@ replacement for the QFT.
   `Psi(n_1,n_2)` with `Psi(n_2,n_1+L)` and then states the factorized
   `M`-magnon equation using the finite XXX transfer-matrix theorem from the
   integrability background chapter.
+- Adds the free-magnon/BMN entry point: the unquotiented finite chain,
+  cyclic projection, the fact that nonzero one-magnon states vanish after
+  single-trace projection, the relative two-impurity Fourier convention, and
+  the exact one-loop two-magnon quantization
+  `p=2 pi n/(L-1)` with
+  `gamma=(lambda/pi^2) sin^2(pi n/(L-1))`.
 - Carries the one-loop Konishi descendant calculation to
   `gamma_K^(1)=3 lambda/(4 pi^2)`.
 - Separates the asymptotic long-chain problem from finite-length wrapping.
@@ -122,6 +128,9 @@ single-trace word and the adjacent exchange interaction.
   of the chamber exchange coefficient, the inverse relation between that
   coefficient and the Bethe-Yang phase, and the finite length-four Konishi
   two-magnon eigenvector/cyclicity condition.
+- The same script verifies the exact two-magnon BMN Bethe phase, the
+  corresponding energy/gamma normalization, and the `J -> infinity` scaling
+  of the relative error with fixed `lambda'`.
 - The same script checks that the `SO(6)` trace operator vanishes on the
   holomorphic `X,Z` subsector.
 - Same script now also checks BMN scaling and bound-state dispersion

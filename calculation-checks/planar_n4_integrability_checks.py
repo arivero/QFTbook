@@ -144,6 +144,38 @@ def check_two_magnon_coordinate_matching() -> None:
     assert_close("Konishi two-magnon cyclicity", translation_residual, tol=1.0e-12)
 
 
+def check_two_magnon_bmn_quantization() -> None:
+    for length in (4, 7, 13, 31):
+        for mode in range(1, min(length - 1, 6)):
+            momentum = 2 * math.pi * mode / (length - 1)
+            rapidity = bethe_rapidity(momentum)
+            lhs = cmath.exp(1j * momentum * length)
+            rhs = (2 * rapidity + 1j) / (2 * rapidity - 1j)
+            assert_close("two-magnon BMN Bethe phase", lhs, rhs)
+
+            energy_from_roots = 2 / (rapidity * rapidity + 0.25)
+            energy_from_sine = 8 * math.sin(momentum / 2) ** 2
+            assert_close("two-magnon BMN energy", energy_from_roots, energy_from_sine)
+
+            gamma_over_lambda = energy_from_sine / (8 * math.pi * math.pi)
+            displayed = math.sin(math.pi * mode / (length - 1)) ** 2 / (math.pi * math.pi)
+            assert_close("two-magnon BMN gamma normalization", gamma_over_lambda, displayed)
+
+    lam_prime = 0.41
+    for charge in (512, 2048, 8192):
+        length = charge + 2
+        lam = lam_prime * charge * charge
+        for mode in (1, 3, 5):
+            gamma = lam * math.sin(math.pi * mode / (length - 1)) ** 2 / (math.pi * math.pi)
+            leading = lam_prime * mode * mode
+            scaled_error = charge * abs(gamma / leading - 1)
+            if scaled_error > 2.25:
+                raise AssertionError(
+                    "two-magnon BMN double-scaling error "
+                    f"J={charge}, mode={mode}: J-relative error {scaled_error}"
+                )
+
+
 def check_konishi_one_loop_roots() -> None:
     length = 4
     root = 1 / (2 * math.sqrt(3))
@@ -4987,6 +5019,7 @@ def main() -> None:
     check_so6_hamiltonian_reduces_to_su2()
     check_one_magnon_laplacian()
     check_two_magnon_coordinate_matching()
+    check_two_magnon_bmn_quantization()
     check_konishi_one_loop_roots()
     check_konishi_baxter_polynomial()
     check_twist_two_qsc_baxter_family()

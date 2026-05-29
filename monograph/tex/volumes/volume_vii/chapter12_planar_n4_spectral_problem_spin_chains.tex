@@ -912,6 +912,165 @@ different meaning: the long-range planar dilatation operator ceases to be
 finite-neighbor once the loop order grows, and finite trace length then
 requires wrapping corrections.
 
+\section{Free Magnons and BMN Double Scaling}
+\label{sec:planar-n4-free-magnons-bmn}
+
+The spin-chain excitation called a magnon is first a coordinate on the
+single-trace local-operator problem.  Temporarily work in the unquotiented
+length-\(L\) spin-chain space
+\[
+  \mathcal H_L=(\mathbb C Z\oplus\mathbb C X)^{\otimes L}
+\]
+and let \(\tau\) be the translation by one site.  The cyclic single-trace
+space is the quotient by \(\tau-1\), equivalently the image of the projection
+\[
+  \Pi_0=\frac1L\sum_{r=0}^{L-1}\tau^r
+\]
+when the planar two-point inner product is used.  A one-magnon Fourier vector
+\[
+  \ket{p}
+  =
+  \sum_{n=1}^L \ee^{\ii pn}\ket{n},
+  \qquad \ket{n}=Z\otimes\cdots\otimes X_n\otimes\cdots\otimes Z,
+\]
+has \(\tau\)-eigenvalue \(\ee^{-\ii p}\).  On the finite periodic chain
+\[
+  H_{XXX}\ket{p}
+  =
+  4\sin^2\frac p2\,\ket{p},
+  \qquad \ee^{\ii pL}=1 .
+\]
+Its cyclic projection vanishes unless \(p=0\) modulo \(2\pi\).  Thus a
+single nonzero-momentum magnon is not itself a physical single-trace local
+operator; it is the one-particle building block out of which total
+zero-momentum multi-magnon operators are assembled.
+
+For \(M\) impurities with \(M\) fixed and \(L\to\infty\), the integer
+\[
+  J=L-M
+\]
+counts the number of \(Z\)'s in the word.  A two-impurity relative Fourier
+coordinate, for example with distinguishable scalar letters \(A,B\) whose
+planar two-point pairing with \(Z\) vanishes, is represented before
+diagonalization by the local-operator class
+\[
+  \mathcal O_{n;A,B}^{(L)}
+  =
+  \sum_{\ell=0}^{J}
+  \exp\!\left(\frac{2\pi\ii n\ell}{J+1}\right)
+  \operatorname{tr}\!\left(A Z^\ell B Z^{J-\ell}\right).
+\]
+This formula fixes the relative-momentum convention.  Diagonalization of an
+interacting closed sector further requires the contact matching and the
+cyclic Bethe equations.  In the \(SU(2)\) chain those equations give an exact
+finite-\(L\) statement.
+
+\begin{proposition}[Two-magnon BMN quantization at one loop]
+\label{prop:planar-n4-two-magnon-bmn-quantization}
+Consider the \(SU(2)\) scalar sector at one loop with two magnons of momenta
+\(p\) and \(-p\) on a cyclic trace of length \(L\geq3\).  Let
+\[
+  u=\frac12\cot\frac p2 .
+\]
+The cyclic Bethe equations imply
+\[
+  \ee^{\ii p(L-1)}=1,
+  \qquad
+  p=\frac{2\pi n}{L-1},\quad n\in\mathbb Z/(L-1)\mathbb Z .
+\]
+For the non-protected modes \(n\not\equiv0\), the one-loop anomalous
+dimension is
+\begin{equation}
+  \gamma^{(1)}_{n,L}
+  =
+  \frac{\lambda}{8\pi^2}\,
+  8\sin^2\frac{\pi n}{L-1}
+  =
+  \frac{\lambda}{\pi^2}
+  \sin^2\frac{\pi n}{L-1}.
+  \label{eq:planar-n4-two-magnon-bmn-one-loop}
+\end{equation}
+Consequently, in the double scaling limit
+\[
+  J=L-2\to\infty,\qquad
+  \lambda'=\frac{\lambda}{J^2}\ \text{fixed},\qquad n\ \text{fixed},
+\]
+one obtains
+\[
+  \gamma^{(1)}_{n,L}
+  =
+  \lambda' n^2+O(J^{-1}).
+\]
+\end{proposition}
+
+\begin{proof}
+For the two roots \(u_1=u\), \(u_2=-u\), the cyclicity equation in
+\eqref{eq:planar-n4-one-loop-su2-bethe} is automatic:
+\[
+  \frac{u+\ii/2}{u-\ii/2}\,
+  \frac{-u+\ii/2}{-u-\ii/2}=1 .
+\]
+The first Bethe equation gives
+\[
+  \left(\frac{u+\ii/2}{u-\ii/2}\right)^L
+  =
+  \frac{2u+\ii}{2u-\ii}.
+\]
+Since \(u=\frac12\cot(p/2)\),
+\[
+  \frac{u+\ii/2}{u-\ii/2}
+  =
+  \frac{2u+\ii}{2u-\ii}
+  =
+  \ee^{\ii p},
+\]
+where the branch of \(p\) is understood modulo \(2\pi\).  Hence
+\(\ee^{\ii pL}=\ee^{\ii p}\), equivalently
+\(\ee^{\ii p(L-1)}=1\).  The second Bethe equation is the inverse of the
+first.
+
+The spin-chain energy is the sum of the two one-particle energies,
+\[
+  E
+  =
+  \frac{1}{u^2+1/4}+\frac{1}{u^2+1/4}
+  =
+  8\sin^2\frac p2 .
+\]
+Multiplication by the overall field-theory coefficient
+\(\lambda/(8\pi^2)\) gives
+\eqref{eq:planar-n4-two-magnon-bmn-one-loop}.  Finally set \(L=J+2\) and
+use
+\[
+  \sin\frac{\pi n}{J+1}
+  =
+  \frac{\pi n}{J+1}+O(J^{-3})
+\]
+for fixed \(n\).  Then
+\[
+  \frac{\lambda}{\pi^2}\sin^2\frac{\pi n}{J+1}
+  =
+  \frac{\lambda}{(J+1)^2}n^2+O(\lambda J^{-4})
+  =
+  \lambda'n^2+O(J^{-1})
+\]
+with \(\lambda'=\lambda/J^2\) fixed.
+\end{proof}
+
+The shift \(J\mapsto J+1\) in the exact one-loop two-magnon formula is the
+finite-chain scattering phase written in relative-coordinate language.  It
+disappears at leading order in the BMN double scaling limit but is essential
+for the finite-length normalization: the length-four Konishi state below is
+the case \(L=4\), \(n=1\), hence \(p=2\pi/3\), not \(p=\pi/2\).
+
+The all-loop dispersion relation in
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz} is a much stronger
+statement.  Its small-momentum limit reproduces the same one-loop
+normalization, but its derivation uses the centrally extended residual
+symmetry, crossing, and the dressing phase.  The BMN calculation above is
+therefore a normalization anchor for the gauge-theory spin chain, not an
+external definition of the spectral problem.
+
 \section{Konishi at One Loop}
 
 The shortest non-BPS state in this sector is the length-four two-magnon
