@@ -14,9 +14,9 @@ matching datum.
 
 ## Manuscript Changes
 
-- Added Proposition `prop:sm-zsix-global-form`, computing the central
-  `Z_6` kernel of the minimal representation content using integer
-  hypercharge `y=6Y`.
+- Added the central `Z_6` kernel calculation for the minimal representation
+  content using integer hypercharge `y=6Y`.  This calculation was later
+  demoted from proposition form to prose in the anti-wrapper pass.
 - Added Definition `def:sm-ckm-matrix` and Propositions
   `prop:sm-flavor-parameter-counting`,
   `prop:sm-gim-tree-level-diagonality`, and

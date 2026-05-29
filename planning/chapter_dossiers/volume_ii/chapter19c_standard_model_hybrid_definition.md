@@ -40,7 +40,8 @@
   perturbative electroweak quantum theory.
 - Computes the central \(\mathbb Z_6\) kernel of the minimal representation
   content using integer hypercharge \(y=6Y\), and records the four allowed
-  quotients by subgroups \(1,\mathbb Z_2,\mathbb Z_3,\mathbb Z_6\).
+  quotients by subgroups \(1,\mathbb Z_2,\mathbb Z_3,\mathbb Z_6\).  The
+  center-charge arithmetic is now prose rather than proposition form.
 - Reminds the reader of the monograph's trace-delta Yang--Mills convention and
   states the explicit electroweak coupling-coordinate conversion used for mass
   formulae.
@@ -122,7 +123,7 @@
   regime, regulator/EFT, operator, matching map, error class, and
   gauge/infrared requirements.
 - Derives the tree-level Fermi-theory matching
-  \(G_F/\sqrt2=1/(2v^2)\).
+  \(G_F/\sqrt2=1/(2v^2)\) as a low-energy coefficient calculation in prose.
 - Defines the muon \(g-2\) Pauli-coordinate observable as a low-energy
   matched prediction, derives the Schwinger term from the QED form-factor
   chapter, records the leading electroweak Pauli coefficient, and defines HVP
@@ -157,7 +158,8 @@
 
 1. The local SM representation content is defined in a left-handed Weyl basis.
 2. The central \(\mathbb Z_6\) quotient is computed from the actual minimal
-   field representations, not assumed from the Lie algebra.
+   field representations, not assumed from the Lie algebra; the calculation is
+   finite center arithmetic rather than a theorem-level claim.
 3. CKM mixing is the mismatch of left singular-vector coordinates in the
    quark Yukawa sector; the neutral currents are tree-level flavor diagonal
    by unitarity in generation space.
@@ -223,8 +225,10 @@
    line phase, locality, and reflection/reconstruction data beyond anomaly
    cancellation; lattice QCD matrix elements are nonperturbative inputs after
    electroweak matching, not a construction of the full SM.
-21. The Fermi operator coefficient is a tree-level matched EFT coefficient;
-   QCD matrix elements and radiative corrections are separate matching data.
+21. The Fermi operator coefficient is a tree-level matched EFT coefficient
+    obtained by solving the massive charged-vector equation in a derivative
+    expansion; QCD matrix elements and radiative corrections are separate
+    matching data.
 22. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
    specified matched computation; HVP and HLbL are QCD current-correlator
    inputs, not perturbative QCD expansions.

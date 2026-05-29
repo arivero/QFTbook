@@ -201,7 +201,10 @@
 - The text proves the local-functional identification: Wess--Zumino
   consistency gives the relative cocycle condition, local counterterms give
   relative coboundaries, and any relative cocycle gives a consistent local
-  anomalous variation after integration.
+  anomalous variation after integration.  The proof now makes explicit the
+  Chevalley--Eilenberg role of the ghost, the local variational-bicomplex
+  step turning integrated zero into a total derivative, and the boundary or
+  inflow hypotheses.
 - In four dimensions the local chiral gauge anomaly descends from the six-form
   polynomial \(I_6\propto \operatorname{tr}\mathsf F^3\).
 - The index-normalized anomaly polynomial for a left-handed Weyl fermion is

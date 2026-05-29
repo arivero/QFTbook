@@ -3795,7 +3795,10 @@ of the leading HQET action.
 \begin{proof}
 At \(v'=v\), the leading HQET action has a unitary flavor symmetry rotating
 the heavy labels \(Q\) and \(Q'\) while leaving the light fields and gauge
-field fixed.  Couple this symmetry to a smooth background matrix-valued
+field fixed.  This statement is made inside the leading static theory, before
+the short-distance matching coefficient \(C_{Q'Q}\) and before \(1/m_Q\)
+corrections are restored.  Couple this symmetry to a smooth background
+matrix-valued
 connection \(B_\mu{}^A{}_B\) by replacing
 \(D_\mu h_{v,A}\) with
 \((D_\mu\delta_A{}^B-\ii B_\mu{}^B{}_A)h_{v,B}\).  Differentiation of the
@@ -3808,11 +3811,19 @@ action with respect to \(B_\mu{}^Q{}_{Q'}\) defines the current
 \]
 is the generator of the heavy-flavor rotation on the one-heavy-particle
 sector.  Here \(n_\mu\) is the future unit normal covector to the quantization
-slice, and the state normalization above fixes the matrix element of
-\(Q_{Q'Q}\) between one-particle velocity states to be one.  Therefore
-\(Q_{Q'Q}|H_v^{(Q)}\rangle=|H_v^{(Q')}\rangle\) after the same phase convention
-for the two states is chosen.  Covariance in the fixed-velocity sector then
-gives
+slice.  Choose the isolated ground states in the same light-cloud channel with
+the same Hilbert-space norm and with phases fixed so that the flavor
+rotation maps one state to the other.  The Ward identity for the background
+flavor source then gives
+\[
+  Q_{Q'Q}|H_v^{(Q)}\rangle=|H_v^{(Q')}\rangle .
+\]
+Translation covariance in the fixed-velocity sector and the absence of any
+other vector built from a single velocity imply that the local current matrix
+element has the form \(A\,v^\mu\).  Integrating \(n_\mu A v^\mu\) over the
+normalization volume and using the preceding charge action fixes \(A=2\) in
+the velocity-state normalization used in \eqref{eq:hqet-isgur-wise-definition}.
+Equivalently,
 \[
   {}_{\rm HQET}\langle H_v^{(Q')}|
   \mathcal V^\mu_{Q'Q}(v,v)
@@ -7839,8 +7850,6 @@ quark cusp anomalous dimension is
 \end{equation}
 where \(C_F=(N_c^2-1)/N_c\).
 
-\begin{proposition}[Leading Sudakov factor in the back-to-back EEC]
-\label{prop:qcd-eec-leading-sudakov-factor}
 Assume the back-to-back factorization datum
 \eqref{eq:qcd-eec-back-to-back-factorization} for a color-singlet
 quark-current event shape, with the hard scale \(Q\), the impact-parameter
@@ -7868,10 +7877,9 @@ Equivalently, at one loop,
     +O(\alpha_s^2L_b^2)
   \right].
 \]
-\end{proposition}
-
-\begin{proof}
-The factorized expression is an impact-parameter representation of the
+Its content is the fixed-coupling leading-logarithmic component of the
+factorization formula.  The factorized expression is an impact-parameter
+representation of the
 recoil constraint.  The hard matching is naturally made at scale \(Q\), while
 the transverse-distance functions are naturally evaluated at scale
 \(\mu_b\).  Cusp evolution between these two scales gives the logarithmic
@@ -7899,21 +7907,22 @@ turns the integral into
   \frac12\,\Gamma_{\rm cusp}^q(g)L_b^2.
 \]
 The kernel in \eqref{eq:qcd-eec-back-to-back-factorization} is suppressed by
-the probability of no harder recoil between the two scales, hence the sign in
-\(\exp[-S_{\rm LL}]\).  Substituting
+the Sudakov no-resolved-recoil factor between the two scales; this fixes the
+minus sign in \(\exp[-S_{\rm LL}]\) in the chosen evolution convention.
+Substituting
 \eqref{eq:qcd-quark-cusp-one-loop-trace-delta} gives the displayed one-loop
 form.
-\end{proof}
 
 \begin{remark}[Scope of the Sudakov formula]
 \label{rem:qcd-eec-sudakov-scope}
-Proposition~\ref{prop:qcd-eec-leading-sudakov-factor} is not a replacement
-for the full back-to-back EEC theorem.  A complete perturbative prediction
-must specify the rapidity regulator, the hard, jet, and soft functions, their
-finite scheme constants, matching to the fixed separated-angle distribution,
-running-coupling improvement, and the leading power corrections in \(q_T/Q\).
-The proposition isolates the universal cusp-controlled double logarithm that
-any such consistent factorization scheme must reproduce.
+The fixed-coupling display above supplies only the cusp-controlled double
+logarithm inside a full back-to-back EEC theorem.  A complete perturbative
+prediction must specify the rapidity regulator, the hard, jet, and soft
+functions, their finite scheme constants, matching to the fixed
+separated-angle distribution, running-coupling improvement, and the leading
+power corrections in \(q_T/Q\).  The calculation isolates the universal
+cusp-controlled double logarithm that any such consistent factorization scheme
+must reproduce.
 \end{remark}
 
 \begin{proposition}[Tree-level collinear coefficient for the separated EEC]
@@ -8904,9 +8913,8 @@ where \(\otimes\) denotes the convolution appearing in
 \eqref{eq:dglap-evolution}.  Nonsinglet quark combinations evolve with the
 same \(P_{qq}^{(0)}\) and do not mix with the gluon at this order.
 
-\begin{proposition}[Number and momentum sum rules at one loop]
-\label{prop:qcd-lo-dglap-sum-rules}
-The kernels in \eqref{eq:lo-dglap-splitting-kernels} satisfy
+The kernels in \eqref{eq:lo-dglap-splitting-kernels} obey the following
+one-loop distributional sum-rule checks:
 \[
   \int_0^1\dd x\,P_{qq}^{(0)}(x)=0,
 \]
@@ -8920,9 +8928,6 @@ and the two momentum-column identities
 \]
 Thus nonsinglet quark number and the total light-cone momentum fraction are
 preserved by the leading-order evolution.
-\end{proposition}
-
-\begin{proof}
 For \(m\ge0\),
 \[
   \int_0^1\dd x\,x^mD_0(x)
@@ -8971,7 +8976,6 @@ and
   -\frac23T_RN_f .
 \]
 The two column sums therefore vanish.
-\end{proof}
 
 \section{Transverse-Momentum Dependent Distributions and Rapidity Renormalization}
 \label{sec:qcd-tmd-rapidity-renormalization}

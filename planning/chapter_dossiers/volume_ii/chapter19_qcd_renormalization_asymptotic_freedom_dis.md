@@ -187,7 +187,8 @@ The chapter must define and derive:
   convention \(b_{\rm F}=2e^{-\gamma_E}\), and the leading fixed-coupling
   Sudakov factor
   \(\exp[-\Gamma_{\rm cusp}^q L_b^2/2]\) with
-  \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\);
+  \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\), now presented as a
+  scoped endpoint calculation rather than theorem form;
 - the tree-level resolved collinear EEC coefficient, derived from the ordered
   detector weight \(2x(1-x)\) multiplying the real final-state splitting
   kernels, with exact coefficients
@@ -208,7 +209,8 @@ The chapter must define and derive:
   distributional power-remainder bound, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
-  sum-rule checks, the small-\(x\) boundary as a regulated Wilson-line dipole
+  sum-rule checks in prose rather than proposition form, the small-\(x\)
+  boundary as a regulated Wilson-line dipole
   problem with a leading BFKL kernel datum, transverse kernel covariance, and
   the Mellin eigenvalue
   \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
@@ -410,7 +412,8 @@ The chapter must define and derive:
 22b. The leading-order DGLAP kernels are written with the explicit
      \(D_0=(1-x)^{-1}_+\) distribution to avoid the ambiguous shorthand
      \((1+x^2)/(1-x)_+\).  With this convention the kernels obey quark-number
-     and momentum-column sum rules exactly, and the nonsinglet Mellin moment is
+     and momentum-column sum rules exactly; the calculation is retained as a
+     distributional check rather than theorem form.  The nonsinglet Mellin moment is
      \(C_F[-2H_{N-1}-1/N-1/(N+1)+3/2]\), giving the one-loop cusp coefficient
      \(g^2C_F/(4\pi^2)\) in the monograph trace normalization.
 22c. Inclusive DIS factorization is recorded as a leading-twist datum with a
@@ -625,7 +628,7 @@ The chapter must define and derive:
   definitions, explicit separation between nonperturbative operator
   definitions and colored parton-model language, convolution renormalization,
   compact-\(x\) factorization status with a distributional remainder, exact
-  \(D_0\)-based DGLAP sum-rule proof, and endpoint/large-spin cusp discussion.
+  \(D_0\)-based DGLAP sum-rule calculation, and endpoint/large-spin cusp discussion.
 - 2026-05-27 issue #630 TMD/GPD pass: added soft-subtracted TMD operator data,
   Collins--Soper scale-integrability condition, finite TMD scheme transformations,
   small-\(q_\perp\) color-singlet factorization data, off-forward GPD

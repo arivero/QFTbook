@@ -1339,16 +1339,26 @@ Write the anomalous variation as
   \delta_\zeta W[A]=\int_M a_4^{(1)}(\zeta,A).
 \]
 Replacing the even parameter \(\zeta\) by the odd ghost gives
-\(\int_M a_4^{(1)}(c,A)\).  Equation
-\eqref{eq:wess-zumino-consistency} is precisely the Chevalley--Eilenberg
-cocycle condition for this integrated functional, hence
+\(\int_M a_4^{(1)}(c,A)\).  The BRST differential \(s\) is the
+Chevalley--Eilenberg differential for infinitesimal gauge transformations,
+with the field-dependent term in \(s c=-\frac12[c,c]\) included.  Equation
+\eqref{eq:wess-zumino-consistency} is precisely the statement that this
+ghost-number-one integrated functional is a Chevalley--Eilenberg cocycle,
+hence
 \[
   s\int_M a_4^{(1)}=0 .
 \]
-For a local density this means \(s a_4^{(1)}\) is a total derivative,
-which is \eqref{eq:relative-anomaly-cocycle}.  If
-\(W[A]\) is changed by a local counterterm
-\(\int_M b_4^{(0)}\), its anomalous variation changes by
+For a local density this means that \(s a_4^{(1)}\) integrates to zero for all
+compactly supported field and ghost configurations.  In the local variational
+bicomplex, the algebraic Poincare lemma identifies such local top forms with
+total derivatives modulo globally topological terms fixed separately by the
+chosen bundle sector.  Thus there exists
+\(a_3^{(2)}\in\Omega_{\rm loc}^{3,2}\) with
+\[
+  s a_4^{(1)}=d a_3^{(2)},
+\]
+which is \eqref{eq:relative-anomaly-cocycle}.  If \(W[A]\) is changed by a
+local counterterm \(\int_M b_4^{(0)}\), its anomalous variation changes by
 \[
   s\int_M b_4^{(0)}
   =
@@ -1356,11 +1366,18 @@ which is \eqref{eq:relative-anomaly-cocycle}.  If
 \]
 and adding an identically integrated total derivative changes the local
 representative by \(d b_3^{(1)}\).  This is exactly the equivalence
-\eqref{eq:relative-anomaly-coboundary}.  Conversely, if
-\eqref{eq:relative-anomaly-cocycle} holds, then on a closed spacetime, or with
-boundary conditions for which the boundary integral is part of the specified
-inflow problem, the integrated BRST variation vanishes.  Unpacking \(s\) as
-the Lie-algebra differential gives \eqref{eq:wess-zumino-consistency}.
+\eqref{eq:relative-anomaly-coboundary}; it is the statement that a finite
+local counterterm changes the representative but not the relative cohomology
+class.
+
+Conversely, if \eqref{eq:relative-anomaly-cocycle} holds, then on a closed
+spacetime, or with boundary conditions for which the boundary integral is part
+of the specified inflow problem, the integrated BRST variation of
+\(\int_M a_4^{(1)}\) vanishes.  Expanding \(s\) in ghosts recovers the
+antisymmetrized commutator of two ordinary gauge variations, while
+\(s c=-\frac12[c,c]\) supplies the term with gauge parameter
+\([\zeta_1,\zeta_2]\).  This is exactly the infinitesimal
+Wess--Zumino consistency condition \eqref{eq:wess-zumino-consistency}.
 \end{proof}
 
 For four-dimensional chiral fermions, this relative cohomology class is
