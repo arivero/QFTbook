@@ -63,8 +63,7 @@ effective action contains at least one \(a\)-type field.  The positivity
 condition is the damping condition in the path-integral weight
 \(\exp(\ii I_{\rm SK})\).
 
-\begin{proposition}[Finite closed-time-path constraints]
-\label{prop:finite-closed-time-path-constraints}
+\paragraph{Finite trace constraints.}
 Suppose first that the Hilbert space is finite-dimensional, that
 \(\rho_0\ge0\) is a density matrix with \(\operatorname{Tr}\rho_0=1\), and
 that the branch evolutions \(U[A_s]\) are unitary.  Then
@@ -77,9 +76,7 @@ that the branch evolutions \(U[A_s]\) are unitary.  Then
 Consequently, on the branch of \(I_{\rm SK}=-\ii\log Z\) continuous from
 \(I_{\rm SK}[A_r,0]=0\), equations
 \eqref{eq:sk-hydro-unitarity-zero}--\eqref{eq:sk-hydro-positivity} follow.
-\end{proposition}
 
-\begin{proof}
 The diagonal identity is
 \[
   Z[A,A]=\operatorname{Tr}(U[A]\rho_0U[A]^\dagger)
@@ -113,7 +110,11 @@ Since \(Z=\exp(\ii I_{\rm SK})\), the last inequality is
 \(\operatorname{Im}I_{\rm SK}\ge0\).  The reality relation for
 \(I_{\rm SK}\) follows from \eqref{eq:finite-ctp-reality-proof} after
 rewriting branch exchange as \(A_a\mapsto -A_a\) at fixed \(A_r\).
-\end{proof}
+This is the same finite trace algebra as the microscopic
+Schwinger--Keldysh construction of
+Chapter~\ref{ch:thermal-schwinger-keldysh}.  In this hydrodynamic chapter it
+serves as the finite-system origin of the local effective-action constraints
+\eqref{eq:sk-hydro-unitarity-zero}--\eqref{eq:sk-hydro-positivity}.
 
 For continuum QFT the same algebra is first applied with an ultraviolet
 regulator and finite volume, and only then passed to the thermodynamic and

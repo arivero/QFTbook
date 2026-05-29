@@ -45,11 +45,11 @@ used later in transport and hydrodynamic effective actions.
    \(Z[J_+,J_-]^*=Z[J_-,J_+]\), and the positivity bound \(|Z|\le1\).
 5. Converts these constraints to \(W=-i\log Z\), including
    \(\operatorname{Im}W\ge0\) near the origin.
-6. Proves largest-time cancellation by factoring the common future evolution
-   and using trace cyclicity and unitarity.
+6. Derives largest-time cancellation in prose by factoring the common future
+   evolution and using trace cyclicity and unitarity.
 7. Defines \(r/a\) sources and proves that
    \(\delta W/\delta J_{\mathrm a}\) gives the physical one-point function.
-8. Proves that differentiating the one-point function with respect to the
+8. Derives that differentiating the one-point function with respect to the
    physical source \(J_r\) gives the causal source-response kernel
    \(K^R=i\Theta\langle[O(t),O(t')]\rangle\), which is the negative of the
    commutator-retarded convention \(G^{R,\mathrm{comm}}\).

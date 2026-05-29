@@ -29,9 +29,9 @@ matrix-valued hydrodynamic response kernels.
 
 ## Claim Ledger
 
-1. The SK generating functional obeys
+1. The finite closed-time-path trace algebra is recalled in prose and gives
    `I_SK[A_r,A_a=0]=0`, `I_SK[A_r,A_a]^*=-I_SK[A_r,-A_a]`, and
-   `Im I_SK >= 0`.
+   `Im I_SK >= 0` on the branch connected to the diagonal.
 2. The gauge-invariant hydrodynamic variables are
    \(B^A_{s\mu}=A^A_{s\mu}+\partial_\mu\varphi^A_s\).
 3. The leading quadratic diffusion action is
