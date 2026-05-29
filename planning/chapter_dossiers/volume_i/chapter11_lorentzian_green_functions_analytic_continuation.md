@@ -98,7 +98,7 @@
   restrictions of the same holomorphic functions under Wightman tube
   analyticity, while OS-admissible Schwinger data reconstructs Wightman
   boundary values by the reconstruction theorem.
-- The source-functional dictionary depends on the chosen Wick contour and
+- The worked source-functional derivation depends on the chosen Wick contour and
   Lorentzian source sign.  For the manuscript's lower-half-plane convention
   \(z^0=-i\tau\),
   \(i\,dz^0=+d\tau\), so the Euclidean convention \(+\int J_E\phi_E\)
@@ -107,7 +107,8 @@
   \(Z_L^{(+)}[-J]\) form belongs instead to the opposite Wick contour
   \(z^0=+i\tau\), or equivalently to the opposite Lorentzian source-sign
   convention after relabelling the contour source.
-- The Lorentzian time-ordered two-point free propagator has denominator
+- The worked boundary-value calculation for the Lorentzian time-ordered
+  two-point free propagator gives denominator
   \(k^2+m^2-i\epsilon\) and poles at
   \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\); the pole rule is
   recorded as the two-point ordered-tube boundary-value dictionary.
@@ -121,7 +122,10 @@
   divided only by the residual automorphism group fixing the external labels;
   the tadpole residual automorphism has order \(2\), giving the coefficient
   \(-ig/2\).
-- The one-loop tadpole contour rotation gives \(i\) times the Euclidean
+- The simultaneous-rotation graph phase is treated as signature and
+  convention bookkeeping, conditional on the absence of contour pinches; it is
+  not a theorem-family statement.
+- The worked one-loop tadpole contour rotation gives \(i\) times the Euclidean
   self-energy contribution with the sign convention of Chapter 10; for the
   chapter's orientation \(\ell^0=i\ell_E^D\), the Jacobian
   \(d\ell^0=i\,d\ell_E^D\) and the propagator numerator \(-i\) multiply to
@@ -195,3 +199,11 @@
 - 2026-05-24 issue #375 pass: derived the signature-independence of the
   tadpole symmetry factor by separating Wick combinatorics from Lorentzian
   vertex and propagator phases.
+- 2026-05-29 anti-wrapper pass: demoted four calculation-only theorem-family
+  wrappers to worked derivations: the free scalar Feynman boundary value, the
+  Wick-rotation source sign, the simultaneous-rotation graph phase, and the
+  tadpole contour-rotation/self-energy matching.  The compatibility of
+  time-ordered Wightman pieces, contact-term freedom, tube analyticity, loop
+  pinch obstruction, and spectral-threshold statements remain theorem-family
+  claims because their proofs carry distributional, analytic, or Landau-support
+  content rather than mere substitution.

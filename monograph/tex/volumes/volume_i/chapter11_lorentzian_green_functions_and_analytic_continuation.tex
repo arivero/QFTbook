@@ -188,8 +188,7 @@ restricts the coefficient distributions to derivatives of delta functions in
 relative diagonal variables.  These are precisely the contact terms.
 \end{proof}
 
-\begin{proposition}[Free scalar Feynman boundary value]
-\label{prop:free-scalar-feynman-boundary-value}
+\paragraph{Free scalar Feynman boundary value.}
 For the free scalar field of mass \(m>0\), the two-point time-ordered Green
 function has Fourier representation
 \[
@@ -212,9 +211,6 @@ the poles in the complex \(k^0\)-plane are
   k^0=+\omega_{\vec k}-\ii0 .
 \]
 This is the Feynman boundary value of the meromorphic function of \(k^0\).
-\end{proposition}
-
-\begin{proof}
 The positive-frequency Wightman two-point function is
 \[
   \Delta_+(x;m^2)
@@ -238,7 +234,6 @@ the contour in the upper half-plane; the pole at
 regions yields the displayed Fourier representation.  The pole placement is
 therefore not an independent rule: it is the boundary-value encoding of time
 ordering and positive energy.
-\end{proof}
 
 \section{Tube Analyticity From the Spectrum Condition}
 
@@ -469,8 +464,7 @@ Then
 \]
 \end{definition}
 
-\begin{proposition}[Source sign under Wick rotation]
-\label{prop:source-sign-under-wick-rotation}
+\paragraph{Source sign under Wick rotation.}
 The same dictionary fixes the sign in source functionals.  Let
 \[
   Z_L^{(+)}[J]
@@ -535,9 +529,6 @@ In that contour convention the Euclidean functional with
 \(Z_L^{(-)}[J_C]\), after setting \(J_E(\tau,\vec x)=-J_C(\ii\tau,\vec x)\).
 The two formulas describe different contour/source-sign conventions, not two
 different Green functions.
-\end{proposition}
-
-\begin{proof}
 Expand the contour-ordered exponential in powers of the source.  Each
 Lorentzian source insertion carries the factor \(\ii\,\dd z^0\).  On the
 lower imaginary-time contour \(z^0=-\ii\tau\), the one-dimensional volume form
@@ -549,7 +540,6 @@ contour \(z^0=+\ii\tau\), one instead has
 the opposite Euclidean sign unless the source is replaced by its negative.
 The calculation is termwise in the regulated source expansion, hence fixes
 all Euclidean \(n\)-point signs.
-\end{proof}
 
 Conversely, an OS-admissible Schwinger hierarchy reconstructs Wightman
 boundary values by the positive-time quotient and analytic-continuation
@@ -572,11 +562,11 @@ single distribution \(\Delta_F\).  This two-point pole rule is the momentum
 space encoding of the ordered tube boundary value above.
 The ordered tube prescription for \(x^0>0\) approaches the first field from a
 larger negative imaginary time than the second.  In Fourier variables this is
-the same damping choice as in
-Proposition~\ref{prop:free-scalar-feynman-boundary-value}, so the positive
-energy pole is passed below the real axis.  If \(x^0<0\), the operator order is
-reversed and the contour closure selects the negative-energy pole above the
-axis.  The two cases are precisely the two boundary values of the single
+the same damping choice as in the free two-point boundary-value calculation
+above, so the positive-energy pole is passed below the real axis.  If
+\(x^0<0\), the operator order is reversed and the contour closure selects the
+negative-energy pole above the axis.  The two cases are precisely the two
+boundary values of the single
 meromorphic denominator \(k^2+m^2\), hence the denominator is
 \(k^2+m^2-\ii0\).
 
@@ -639,8 +629,7 @@ coming from the interchange of the two internal half-edges forming the loop;
 this is why the tadpole coefficient is \(-\ii g/2\), not \(-\ii g\).
 \end{definition}
 
-\begin{proposition}[Lorentzian--Euclidean graph factor under simultaneous rotation]
-\label{prop:lorentzian-euclidean-graph-factor-simultaneous-rotation}
+\paragraph{Lorentzian--Euclidean graph factor under simultaneous rotation.}
 Consider a connected \(\phi^4\) graph contributing to a time-ordered
 \(n\)-point Green function with external propagators included.  Suppose the
 external momenta lie in the first-sheet Euclidean domain and the internal loop
@@ -659,9 +648,6 @@ boundary value at \(k_a^0=\ii k_{E,a}^D\) is
 times the corresponding Euclidean connected Green-function graph.  In
 particular, a connected two-point graph gives the factor \(-\ii\), while a
 connected four-point graph gives the factor \(+\ii\).
-\end{proposition}
-
-\begin{proof}
 The Lorentzian labelled graph contains one factor \(-\ii g\) for each quartic
 vertex, one factor
 \[
@@ -693,12 +679,10 @@ where \(L=I-V+1\) has been used.  The result is independent of the number of
 vertices and internal lines.  The assumption on contour deformation is what
 excludes threshold pinches; without it the graph is defined by boundary value
 on the cut rather than by this direct simultaneous rotation.
-\end{proof}
 
 \section{Loop Rotation and the Tadpole}
 
-\begin{proposition}[Tadpole contour rotation and self-energy matching]
-\label{prop:tadpole-contour-rotation-self-energy-matching}
+\paragraph{Tadpole contour rotation and self-energy matching.}
 The one-loop tadpole contribution to the Lorentzian two-point self-energy
 insertion is
 \[
@@ -804,9 +788,6 @@ Eq.~\eqref{eq:euclidean-self-energy}.  The factor \(\ii\) displayed above
 belongs to the Lorentzian two-point insertion in the Dyson series; it is not an
 extra sign in the scalar function \(\Sigma\) appearing in the denominator of
 \(\widetilde G(k)\).
-\end{proposition}
-
-\begin{proof}
 The coefficient \(-\ii g/2\) follows from
 Definition~\ref{def:lorentzian-labelled-graph-rules-green-functions}: the
 labelled quartic vertex supplies \(-\ii g\), and the loop made from the two
@@ -820,9 +801,8 @@ because no external energy flows through the loop.  The Jacobian gives
 \(\ii\) times the Euclidean tadpole insertion.  Since the Lorentzian
 two-point Green function is written with a global propagator numerator
 \(-\ii\), this extra \(\ii\) belongs to the insertion in the Dyson series and
-not to the denominator self-energy scalar itself.  This proves
+not to the denominator self-energy scalar itself.  This gives
 \eqref{eq:lorentzian-euclidean-self-energy-match}.
-\end{proof}
 
 \begin{proposition}[Loop rotation and pinch obstruction]
 \label{prop:loop-rotation-pinch-obstruction}
