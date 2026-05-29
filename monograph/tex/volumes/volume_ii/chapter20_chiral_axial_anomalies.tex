@@ -2651,6 +2651,143 @@ and adding center and size gives \(4N_c\).  The precise global quotient by
 the center and by stabilizers affects the coordinate range, not this local
 dimension count.
 
+\begin{proposition}[Charge-one ADHM chart and the instanton orientation orbit]
+\label{prop:k-one-adhm-chart-orientation-orbit}
+Let \(W\simeq\mathbb C^{N_c}\) with its Hermitian inner product and let
+\(K\simeq\mathbb C\).  The centered charge-one framed \(U(N_c)\) ADHM data
+are a pair
+\[
+  I\in\operatorname{Hom}(W,K),
+  \qquad
+  J\in\operatorname{Hom}(K,W),
+\]
+obeying
+\begin{equation}
+  IJ=0,
+  \qquad
+  II^\dagger-J^\dagger J=0,
+  \label{eq:k-one-adhm-moment-equations}
+\end{equation}
+with \((I,J)\ne(0,0)\), modulo the \(U(1)\) action
+\[
+  (I,J)\longmapsto(e^{\ii\alpha}I,e^{-\ii\alpha}J).
+\]
+After identifying \(I\) with a vector \(u\in W\) by the Hermitian metric and
+writing \(J\) as a vector \(v\in W\), the equations are
+\begin{equation}
+  \langle u,v\rangle=0,
+  \qquad
+  \|u\|=\|v\|=\rho>0 .
+  \label{eq:k-one-adhm-orthonormal-pair}
+\end{equation}
+For fixed \(\rho\), the quotient is the homogeneous space
+\begin{equation}
+  V_2(\mathbb C^{N_c})/U(1)
+  \simeq
+  U(N_c)/(U(N_c-2)\times U(1)),
+  \label{eq:k-one-adhm-orientation-orbit}
+\end{equation}
+where \(V_2(\mathbb C^{N_c})\) is the Stiefel manifold of ordered
+orthonormal two-frames, \(U(0)\) is interpreted as the trivial group when
+\(N_c=2\), and the \(U(1)\) in the quotient acts by the common phase of the
+two frame vectors.  Equivalently, for \(N_c\ge3\), after
+restricting to the special unitary framing, the connected orbit has the same
+local form
+\[
+  SU(N_c)/(SU(N_c-2)\times U(1))
+\]
+up to a finite central quotient.  For \(N_c=2\) this specialization is the
+usual \(SU(2)/\mathbb Z_2\) orientation orbit.  In every case the real
+dimension is \(4N_c-5\).  Adding the size \(\rho\) and the four center
+coordinates gives the local real dimension \(4N_c\) of the charge-one
+instanton moduli space.
+\end{proposition}
+
+\begin{proof}
+For \(K\simeq\mathbb C\), the ADHM endomorphisms \(B_1,B_2\in
+\operatorname{End}(K)\) are complex numbers.  They commute and therefore
+contribute no centered ADHM equation; their real and imaginary parts are the
+four center coordinates of the instanton.  The remaining ADHM equations are
+exactly \eqref{eq:k-one-adhm-moment-equations}: \(IJ=0\) is the complex
+moment-map equation and \(II^\dagger-J^\dagger J=0\) is the real moment-map
+equation for the \(U(1)\) acting on \(K\).
+
+Use the Hermitian metric to identify the row \(I\) with a vector \(u\in W\)
+by \(I(w)=\langle u,w\rangle\), and identify \(J\) with \(v=J(1)\).  Then
+\(IJ=I(v)=\langle u,v\rangle\), while
+\[
+  II^\dagger=\|u\|^2\operatorname{id}_{K},
+  \qquad
+  J^\dagger J=\|v\|^2\operatorname{id}_{K}.
+\]
+Thus \eqref{eq:k-one-adhm-moment-equations} is equivalent to
+\eqref{eq:k-one-adhm-orthonormal-pair}.  Since \((I,J)\ne(0,0)\), the common
+norm is a positive number \(\rho\).  Dividing by \(\rho\) gives an ordered
+orthonormal two-frame \((u/\rho,v/\rho)\).
+
+The \(U(1)\) ADHM quotient sends
+\((u,v)\mapsto(e^{-\ii\alpha}u,e^{-\ii\alpha}v)\), namely the common phase of
+the ordered frame.  The unitary group \(U(N_c)\) acts transitively on ordered
+orthonormal two-frames.  The stabilizer of the common-phase equivalence class
+of the reference frame \((e_1,e_2)\) consists of an arbitrary unitary
+transformation on the orthogonal complement together with a common phase on
+the two displayed vectors, hence is \(U(N_c-2)\times U(1)\).  This proves
+\eqref{eq:k-one-adhm-orientation-orbit}.  Its dimension is
+\[
+  \dim_\mathbb R U(N_c)
+  -
+  \dim_\mathbb R U(N_c-2)
+  -
+  \dim_\mathbb R U(1)
+  =
+  N_c^2-(N_c-2)^2-1
+  =
+  4N_c-5 .
+\]
+The size contributes one more dimension and the center contributes four.
+\end{proof}
+
+\begin{corollary}[Cone structure and the small-instanton boundary]
+\label{cor:k-one-adhm-cone-small-instanton}
+On the positive-size charge-one stratum, the centered ADHM quotient is the
+metric cone over the orientation orbit
+\[
+  \mathcal O_{N_c}
+  =
+  U(N_c)/(U(N_c-2)\times U(1)).
+\]
+With the quotient metric induced from the flat metric
+\(\|dI\|^2+\|dJ\|^2\), its volume density has the local radial form
+\begin{equation}
+  \rho^{4N_c-5}\,\dd\rho\,\dd\Omega_{N_c},
+  \label{eq:k-one-adhm-classical-cone-density}
+\end{equation}
+for an invariant density \(\dd\Omega_{N_c}\) on \(\mathcal O_{N_c}\).  The
+endpoint \(\rho=0\) is the small-instanton boundary: the two-frame collapses
+to \((I,J)=(0,0)\), the stabilizer jumps, and the positive-size quotient no
+longer supplies a smooth manifold chart.
+\end{corollary}
+
+\begin{proof}
+The equations \eqref{eq:k-one-adhm-orthonormal-pair} are homogeneous in
+\((u,v)\).  Hence every positive-size solution is uniquely written as
+\(\rho(\hat u,\hat v)\), with \((\hat u,\hat v)\in V_2(\mathbb C^{N_c})\)
+and \(\rho>0\), modulo the same common phase.  The flat metric on
+\((I,J)\) scales as
+\[
+  \|dI\|^2+\|dJ\|^2
+  =
+  c\,\dd\rho^2+\rho^2\,\dd s^2_{\mathcal O_{N_c}}
+\]
+for a positive constant \(c\) depending only on the normalization of
+\(\rho\).  A metric cone over a \(d\)-dimensional base has radial volume
+density proportional to \(\rho^d\dd\rho\) times the base density.  Here
+\(d=\dim_\mathbb R\mathcal O_{N_c}=4N_c-5\), giving
+\eqref{eq:k-one-adhm-classical-cone-density}.  At \(\rho=0\) the frame
+vectors vanish and no two-frame remains; this is precisely the
+finite-dimensional ADHM model of the small-instanton degeneration.
+\end{proof}
+
 The regulated collective-coordinate measure is the one constructed in
 Theorem~\ref{thm:collective-coordinate-morse-bott-measure}.  In a finite
 gauge-fixed regulator its local bosonic factor has the form

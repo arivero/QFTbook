@@ -132,6 +132,8 @@
 | \(\omega_\beta\) | local state associated with a selected theta branch |
 | \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
+| \(I,J,W,K\) | charge-one ADHM variables and vector spaces, with \(K\simeq\mathbb C\) and \(W\simeq\mathbb C^{N_c}\) |
+| \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
 | \(\dd\Omega_{N_c}\) | chosen invariant density on the embedded one-instanton orientation orbit |
@@ -291,6 +293,12 @@
 - The \(SU(2)\), \(k=1\) instanton has eight bosonic zero modes:
   translations, size, and \(SU(2)/\mathbb Z_2\) orientation.  The
   \(SU(N_c)\) embedded one-instanton moduli count is \(4N_c\).
+- The centered \(k=1\) ADHM quotient is derived directly from
+  \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
+  over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension
+  \(4N_c-5\), and has radial volume factor
+  \(\rho^{4N_c-5}\dd\rho\,\dd\Omega_{N_c}\).  The endpoint \(\rho=0\) is
+  identified as the small-instanton boundary where the two-frame collapses.
 - The universal one-loop scale and running-coupling dependence of the
   one-instanton density is
   \[
@@ -374,6 +382,10 @@
   \(C_{N_c,N_f}(\rho,\mu)\): the scale-invariant
   \(\dd^4a\,\dd\rho/\rho^5\) center-size measure, the \(4N_c\) zero-mode
   coupling power, and the RG determination of \((\mu\rho)^{b_0}\).
+- 2026-05-29 issue #597 ADHM pass: added the finite-dimensional \(k=1\)
+  ADHM quotient derivation, orientation orbit, cone-volume power, and
+  small-instanton boundary statement, with the BPST check script extended to
+  verify the dimension and radial-power arithmetic.
 - 2026-05-27 issue #630 theta pass: added the finite-regulator topological
   susceptibility datum and finite-volume cumulant proof, paired with
   `calculation-checks/qcd_theta_witten_veneziano_checks.py`.

@@ -15,6 +15,8 @@ relations
     S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2,
     d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
     one-loop scale/RG factors in the instanton density
+    the k=1 ADHM quotient has orientation dimension 4N-5 and cone
+    volume power rho^(4N-5)
 
 with g_ht = sqrt(2) g_YM.
 """
@@ -180,6 +182,46 @@ def check_one_instanton_density_scaling() -> None:
         assert_equal(f"one-loop RG exponent SU({n_c}) Nf={n_f}", leading_rg_derivative, 0)
 
 
+def check_k_one_adhm_dimension_and_cone_power() -> None:
+    for n_c in range(2, 9):
+        # k=1 ADHM data: B1,B2 are two complex center coordinates, while
+        # I,J contribute 4N real centered variables.
+        real_variables = 4 + 4 * n_c
+        real_equations = 3
+        gauge_quotient = 1
+        full_moduli_dim = real_variables - real_equations - gauge_quotient
+        assert_equal(f"k=1 ADHM full dimension SU({n_c})", full_moduli_dim, 4 * n_c)
+
+        centered_dim = full_moduli_dim - 4
+        fixed_size_orbit_dim = centered_dim - 1
+        assert_equal(f"k=1 ADHM centered cone dimension SU({n_c})", centered_dim, 4 * n_c - 4)
+        assert_equal(f"k=1 ADHM orientation dimension SU({n_c})", fixed_size_orbit_dim, 4 * n_c - 5)
+
+        u_n = n_c**2
+        u_n_minus_two = (n_c - 2) ** 2
+        homogeneous_orbit_dim = u_n - u_n_minus_two - 1
+        assert_equal(
+            f"U(N)/(U(N-2)xU(1)) dimension SU({n_c})",
+            homogeneous_orbit_dim,
+            fixed_size_orbit_dim,
+        )
+
+        if n_c == 2:
+            assert_equal("SU(2)/Z2 orientation dimension", 3, fixed_size_orbit_dim)
+        else:
+            su_n = n_c**2 - 1
+            su_n_minus_two = (n_c - 2) ** 2 - 1
+            su_homogeneous_orbit_dim = su_n - su_n_minus_two - 1
+            assert_equal(
+                f"SU(N)/(SU(N-2)xU(1)) dimension SU({n_c})",
+                su_homogeneous_orbit_dim,
+                fixed_size_orbit_dim,
+            )
+
+        cone_radial_power = centered_dim - 1
+        assert_equal(f"k=1 ADHM cone volume power SU({n_c})", cone_radial_power, 4 * n_c - 5)
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
@@ -187,6 +229,7 @@ def main() -> None:
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
+    check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
 
 
