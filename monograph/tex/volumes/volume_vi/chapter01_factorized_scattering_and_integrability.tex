@@ -171,14 +171,11 @@ the hypothesis used below; this sufficient condition is only a convenient
 checkable way to obtain it.
 \end{definition}
 
-\begin{lemma}[Support test by multiplication]
-\label{lem:support-test-by-multiplication}
+\paragraph{Support test by multiplication.}
 Let \(U\subset\R^n\) be open, let \(T\in\mathcal D'(U)\), and let
 \(f\in C^\infty(U)\).  If \(fT=0\) and \(f\) has no zero on an open set
 \(V\subset U\), then \(T\) vanishes on \(V\).
-\end{lemma}
 
-\begin{proof}
 For any test function \(\varphi\in C_c^\infty(V)\), the quotient
 \(\varphi/f\) is smooth with compact support in \(V\), because \(f\) is
 nowhere zero on \(V\).  Since \(fT=0\),
@@ -193,7 +190,6 @@ nowhere zero on \(V\).  Since \(fT=0\),
 \]
 Thus \(T\) pairs to zero with every test function supported in \(V\), which
 means \(T|_V=0\).
-\end{proof}
 
 \begin{proposition}[Factorization from conserved higher-spin charges]
 \label{prop:higher-spin-factorization-kinematic}
@@ -235,7 +231,7 @@ Commutation with \(Q_{s,\lambda}\) gives, in the sense of distributions,
   K_{N\to M}=0
 \]
 for every \((s,\lambda)\).  The following support property of distributions
-is being used: Lemma~\ref{lem:support-test-by-multiplication} implies that
+is being used: the support test above implies that
 the kernel vanishes on any open set where one of the displayed charge
 differences is nonzero.  Therefore the support of the kernel is contained in
 the common zero locus of all differences of charge eigenvalues.
@@ -334,16 +330,13 @@ a compact encoding of ordered asymptotic creation operators and their
 chamber-transition functions.  Local fields enter through form factors and
 operator reconstruction below.
 
-\begin{proposition}[Associativity of the ZF creation algebra]
-\label{prop:zf-associativity-yang-baxter}
+\paragraph{Associativity of the ZF creation algebra.}
 Assume two-particle unitarity.  The exchange rule
 \eqref{eq:zf-creation-exchange} gives an associative algebra of ordered
 creation symbols, independent of the sequence of adjacent re-orderings, if
 and only if the Yang--Baxter equation in
 Definition~\ref{def:elastic-factorized-scattering-system} holds.
-\end{proposition}
 
-\begin{proof}
 It is enough to compare the two ways of reordering three strictly ordered
 rapidities \(\theta_1>\theta_2>\theta_3\).  Starting from
 \[
@@ -374,7 +367,6 @@ well defined by two-particle unitarity, and disjoint moves commute because
 they involve disjoint creation symbols.  Hence the braid relations are
 equivalent to associativity and sequence independence of the exchange
 algebra.
-\end{proof}
 
 \begin{definition}[\(S\)-symmetric finite-particle wavefunctions]
 \label{def:s-symmetric-finite-particle-wavefunctions}

@@ -521,8 +521,7 @@ second fuses to its \(J\)-image.
 \label{prop:unitary-minimal-model-fusion-check}
 Assume the modular data of
 Theorem~\ref{qthm:unitary-minimal-model-modular-data}.  The Verlinde formula,
-stated and proved later in this chapter as
-Theorem~\ref{thm:verlinde-from-modular-diagonalization} and
+derived later in this chapter from modular diagonalization and displayed in
 \eqref{eq:verlinde-formula}, gives exactly
 \eqref{eq:unitary-minimal-model-fusion-rule}.  In particular the coefficients
 are nonnegative integers.
@@ -1178,8 +1177,7 @@ The genus formula \eqref{eq:sewing-graph-genus} follows because sewing two
 connected components adds genera, while sewing two punctures on the same
 connected component adds one independent cycle.
 
-\begin{proposition}[Finite-channel convergence criterion]
-\label{prop:finite-channel-sewing-convergence}
+\paragraph{Finite-channel sewing estimate.}
 Assume a rational unitary chiral theory with finitely many channel labels,
 and fix a sewing graph \(\Gamma\).  Suppose that for each edge \(e\),
 \(P_{a_e}(q_e)\) is trace class, and that every vertex block functional
@@ -1188,9 +1186,7 @@ incident channel modules.  Then the edge-basis sum
 \eqref{eq:sewing-graph-block} converges absolutely for the chosen
 \(\{q_e\}\).  Its value is independent of the orthonormal homogeneous bases
 used on internal edges.
-\end{proposition}
 
-\begin{proof}
 Insert finite-level projectors \(E_{a_e,\le N}\) on every internal edge.  For
 fixed cutoffs the sum is finite.  The continuous vertex functionals have
 finite operator norms on the tensor products of the incident Hilbert spaces.
@@ -1205,7 +1201,6 @@ The right hand side is finite by the trace-class hypotheses and independent
 of the cutoffs.  Monotone convergence applied to the absolute values of the
 finite basis sums gives absolute convergence.  Basis independence follows
 edge by edge from Proposition~\ref{prop:trace-class-estimate-one-channel-sewing}.
-\end{proof}
 
 \begin{hypothesis}[Analytic sewing theorem for rational chiral data]
 \label{hyp:rational-analytic-sewing-theorem}
@@ -1279,8 +1274,7 @@ The representation agrees with the modular data of the semisimple module
 category.
 \end{quotedtheorem}
 
-\begin{theorem}[Verlinde formula from modular diagonalization]
-\label{thm:verlinde-from-modular-diagonalization}
+\paragraph{Verlinde formula from modular diagonalization.}
 Assume the fusion matrices are simultaneously diagonalized by a unitary
 matrix \(S\) with \(S_{0m}\ne0\):
 \begin{equation}
@@ -1297,9 +1291,7 @@ Then
   \frac{S_{im}S_{jm}\overline{S_{km}}}{S_{0m}} .
   \label{eq:verlinde-formula}
 \end{equation}
-\end{theorem}
 
-\begin{proof}
 The coefficient \(N_{ij}{}^k\) is the \(j,k\) matrix element of \(N_i\):
 \[
   N_{ij}{}^k=(N_i)_j{}^k.
@@ -1319,9 +1311,8 @@ Since \(S\) is unitary, \(S^{-1}_{mk}=\overline{S_{km}}\).  Therefore
   \sum_m S_{jm}\frac{S_{im}}{S_{0m}}\overline{S_{km}},
 \]
 which is \eqref{eq:verlinde-formula}.
-\end{proof}
 
-The theorem separates the deep input from the algebra.  The deep input is
+This calculation separates the deep input from the algebra.  The deep input is
 that the same \(S\)-matrix obtained by the modular transformation of torus
 characters diagonalizes the fusion ring.  Once this is granted, the formula is
 linear algebra.
@@ -1374,8 +1365,7 @@ self-dual.  The quantum dimensions are
   \qquad
   \mathcal D^2=\sum_i d_i^2=4.
 \]
-Applying Theorem~\ref{thm:verlinde-from-modular-diagonalization} gives the
-fusion rules
+Applying \eqref{eq:verlinde-formula} gives the fusion rules
 \[
   \varepsilon\boxtimes\varepsilon=\mathbf 1,\qquad
   \varepsilon\boxtimes\sigma=\sigma,\qquad
@@ -1550,8 +1540,8 @@ ring displayed above.
 \end{proposition}
 
 \begin{proof}
-By Theorem~\ref{thm:verlinde-from-modular-diagonalization} and the explicit
-Ising \(S\)-matrix \eqref{eq:ising-modular-s}, the quantum dimensions are
+From the explicit Ising \(S\)-matrix \eqref{eq:ising-modular-s}, the quantum
+dimensions are
 \[
   d_{\mathbf 1}=1,\qquad d_\sigma=\sqrt2,\qquad d_\varepsilon=1.
 \]
