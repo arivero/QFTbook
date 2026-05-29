@@ -213,6 +213,11 @@ three-point functions.
   `pi C_D |omega|^3/6`, and the small-cusp profile
   `X(t)=varphi t Theta(t)` produces the logarithmic coefficient
   `C_D varphi^2/12`.
+- Derives the weak and strong expansions of the planar Bremsstrahlung
+  function from the exact Bessel ratio
+  `B(lambda)=sqrt(lambda) I_2(sqrt(lambda))/(4 pi^2 I_1(sqrt(lambda)))`,
+  including the weak series through `lambda^4` and the strong series through
+  `lambda^{-3/2}`.
 
 ## Figure Ledger
 
@@ -296,7 +301,8 @@ structure and the pair-of-pants-to-hexagons cut.
   measure, and the two frequency half-lines give the exact logarithmic
   coefficient `1/12`.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
-  are checked in
+  and the strong-series Bessel-ratio coefficients through `lambda^{-3/2}` are
+  checked in
   `calculation-checks/planar_n4_integrability_checks.py`.
 - The circular-loop derivation used for the planar Bremsstrahlung formula is
   now cross-referenced to the localization chapter, where the Gaussian

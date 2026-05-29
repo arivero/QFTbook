@@ -3726,7 +3726,7 @@ def check_pentagon_ope_resolution_bookkeeping() -> None:
 
 def check_bremsstrahlung_weak_series() -> None:
     # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
-    # Verify the first four coefficients using exact rational series division.
+    # Verify the weak coefficients using exact rational series division.
     i1 = {
         1: Fraction(1, 2),
         3: Fraction(1, 16),
@@ -3765,6 +3765,62 @@ def check_bremsstrahlung_weak_series() -> None:
     ]
     if b_coefficients != expected_b:
         raise AssertionError("B(lambda) weak-series coefficients failed")
+
+    # Strong expansion for I_nu(z), after the common exp(z)/sqrt(2 pi z) factor:
+    # sum_k (-1)^k prod_j(4 nu^2-(2j-1)^2)/(k! (8z)^k).
+    def modified_bessel_i_asymptotic(order: int, max_power: int) -> dict[int, Fraction]:
+        coefficients = {0: Fraction(1)}
+        mu = 4 * order * order
+        product = 1
+        factorial = 1
+        eight_power = 1
+        for power in range(1, max_power + 1):
+            product *= mu - (2 * power - 1) ** 2
+            factorial *= power
+            eight_power *= 8
+            coefficients[power] = Fraction((-1) ** power * product, factorial * eight_power)
+        return coefficients
+
+    def divide_inverse_power_series(
+        numerator: dict[int, Fraction], denominator: dict[int, Fraction], max_power: int
+    ) -> dict[int, Fraction]:
+        quotient: dict[int, Fraction] = {}
+        for power in range(max_power + 1):
+            known = sum(
+                denominator.get(j, 0) * quotient.get(power - j, 0)
+                for j in range(1, power + 1)
+            )
+            quotient[power] = numerator.get(power, 0) - known
+        return quotient
+
+    ratio_strong = divide_inverse_power_series(
+        modified_bessel_i_asymptotic(2, 4),
+        modified_bessel_i_asymptotic(1, 4),
+        4,
+    )
+    expected_strong_ratio = {
+        0: Fraction(1),
+        1: Fraction(-3, 2),
+        2: Fraction(3, 8),
+        3: Fraction(3, 8),
+        4: Fraction(63, 128),
+    }
+    if ratio_strong != expected_strong_ratio:
+        raise AssertionError(f"B(lambda) strong-ratio coefficients failed: {ratio_strong}")
+
+    # Multiplication by z/(4 pi^2) gives the displayed strong expansion.
+    strong_b_without_pi2 = {
+        1: Fraction(1, 4),
+        0: Fraction(-3, 8),
+        -1: Fraction(3, 32),
+        -2: Fraction(3, 32),
+        -3: Fraction(63, 512),
+    }
+    computed_strong_b = {
+        1 - power: coefficient / 4 for power, coefficient in ratio_strong.items()
+    }
+    if computed_strong_b != strong_b_without_pi2:
+        raise AssertionError("B(lambda) strong-series coefficients failed")
 
 
 def check_qsc_small_spin_bessel_slope() -> None:

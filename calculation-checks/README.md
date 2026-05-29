@@ -800,6 +800,8 @@ Current checks:
   normalization, planar half-BPS chiral OPE coefficients, the semicircle
   moments behind the circular Wilson-loop Bessel function, and the
   derivative/Bessel-ratio algebra for the planar Bremsstrahlung function.
+  The weak and strong Bremsstrahlung expansions used in the cusp chapter are
+  checked in `planar_n4_integrability_checks.py`.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

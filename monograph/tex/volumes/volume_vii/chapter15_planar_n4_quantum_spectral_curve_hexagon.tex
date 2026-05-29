@@ -2422,6 +2422,162 @@ descriptions of the cusped line reproduce the same function with
 cusp-specific asymptotic data, providing a stringent normalization check on
 \(g=\sqrt\lambda/(4\pi)\).
 
+\begin{proposition}[Weak and strong expansions of \(B(\lambda)\)]
+\label{prop:bremsstrahlung-weak-strong-expansions}
+Let \(z=\sqrt\lambda\) and use the planar convention
+\[
+  B(\lambda)
+  =
+  \frac{z}{4\pi^2}\frac{I_2(z)}{I_1(z)} .
+\]
+At weak coupling,
+\begin{equation}
+  B(\lambda)
+  =
+  \frac{\lambda}{16\pi^2}
+  -\frac{\lambda^2}{384\pi^2}
+  +\frac{\lambda^3}{6144\pi^2}
+  -\frac{\lambda^4}{92160\pi^2}
+  +O(\lambda^5).
+  \label{eq:bremsstrahlung-weak-lambda}
+\end{equation}
+Equivalently, in the spectral-problem coupling
+\(g=\sqrt\lambda/(4\pi)\),
+\begin{equation}
+  B(g)
+  =
+  g^2-\frac{2\pi^2}{3}g^4+\frac{2\pi^4}{3}g^6
+  -\frac{32\pi^6}{45}g^8+O(g^{10}).
+  \label{eq:bremsstrahlung-weak-g}
+\end{equation}
+At strong coupling,
+\begin{equation}
+  B(\lambda)
+  =
+  \frac{\sqrt\lambda}{4\pi^2}
+  -\frac{3}{8\pi^2}
+  +\frac{3}{32\pi^2\sqrt\lambda}
+  +\frac{3}{32\pi^2\lambda}
+  +\frac{63}{512\pi^2\lambda^{3/2}}
+  +O(\lambda^{-2}).
+  \label{eq:bremsstrahlung-strong-lambda}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The weak expansion follows from the defining power series
+\[
+  I_\nu(z)
+  =
+  \sum_{k=0}^{\infty}
+  \frac{1}{k!\,\Gamma(k+\nu+1)}
+  \left(\frac z2\right)^{2k+\nu}.
+\]
+For the required orders,
+\[
+\begin{aligned}
+  I_1(z)
+  &=
+  \frac z2+\frac{z^3}{16}+\frac{z^5}{384}
+  +\frac{z^7}{18432}+O(z^9),\\
+  I_2(z)
+  &=
+  \frac{z^2}{8}+\frac{z^4}{96}+\frac{z^6}{3072}
+  +\frac{z^8}{184320}+O(z^{10}).
+\end{aligned}
+\]
+Dividing the two series gives
+\[
+  \frac{I_2(z)}{I_1(z)}
+  =
+  \frac z4-\frac{z^3}{96}+\frac{z^5}{1536}
+  -\frac{z^7}{23040}+O(z^9).
+\]
+Multiplication by \(z/(4\pi^2)\) and \(z^2=\lambda\) gives
+\eqref{eq:bremsstrahlung-weak-lambda}; substituting
+\(\lambda=16\pi^2g^2\) gives \eqref{eq:bremsstrahlung-weak-g}.
+
+For the strong expansion use the large-positive-\(z\) asymptotic expansion
+\[
+  I_\nu(z)
+  \sim
+  \frac{\ee^z}{\sqrt{2\pi z}}
+  \sum_{k=0}^{\infty}
+  \frac{(-1)^k}{k!(8z)^k}
+  \prod_{j=1}^{k}\bigl(4\nu^2-(2j-1)^2\bigr).
+  \label{eq:modified-bessel-large-z-asymptotic}
+\]
+Let us recall the coefficient derivation, since the signs are a common
+source of normalization errors.  The modified Bessel equation is
+\[
+  I_\nu''(z)+\frac1z I_\nu'(z)
+  -\left(1+\frac{\nu^2}{z^2}\right)I_\nu(z)=0 .
+\]
+Insert
+\[
+  I_\nu(z)\sim \frac{\ee^z}{\sqrt{2\pi z}}
+  S_\nu(z),\qquad
+  S_\nu(z)=\sum_{k=0}^{\infty}a_k^{(\nu)}z^{-k},
+  \qquad a_0^{(\nu)}=1 .
+\]
+After cancellation of the leading exponential part, \(S_\nu\) must satisfy
+formally
+\[
+  2S_\nu'(z)+S_\nu''(z)
+  +\left(\frac14-\nu^2\right)z^{-2}S_\nu(z)=0 .
+\]
+Equating the coefficient of \(z^{-k-1}\), for \(k\geq 1\), gives
+\[
+  a_k^{(\nu)}
+  =
+  -\frac{4\nu^2-(2k-1)^2}{8k}\,
+  a_{k-1}^{(\nu)} ,
+\]
+which is precisely \eqref{eq:modified-bessel-large-z-asymptotic}.  The
+classical asymptotic theorem for this ordinary differential equation gives
+the corresponding remainder after truncation on every closed angular
+subsector containing the positive real axis and not crossing a Stokes ray; in
+this proposition only the positive real \(z=\sqrt\lambda\) ray is used.
+The common factor \(\ee^z/\sqrt{2\pi z}\) cancels in the ratio.  For
+\(\nu=1,2\),
+\[
+\begin{aligned}
+  I_1(z)&\sim
+  \frac{\ee^z}{\sqrt{2\pi z}}
+  \left(
+  1-\frac{3}{8z}-\frac{15}{128z^2}
+  -\frac{315}{3072z^3}-\frac{4725}{32768z^4}
+  +O(z^{-5})
+  \right),\\
+  I_2(z)&\sim
+  \frac{\ee^z}{\sqrt{2\pi z}}
+  \left(
+  1-\frac{15}{8z}+\frac{105}{128z^2}
+  +\frac{945}{3072z^3}+\frac{10395}{32768z^4}
+  +O(z^{-5})
+  \right).
+\end{aligned}
+\]
+Series division gives
+\[
+  \frac{I_2(z)}{I_1(z)}
+  =
+  1-\frac{3}{2z}+\frac{3}{8z^2}
+  +\frac{3}{8z^3}+\frac{63}{128z^4}
+  +O(z^{-5}).
+\]
+Multiplying by \(z/(4\pi^2)\) gives
+\eqref{eq:bremsstrahlung-strong-lambda}.
+\end{proof}
+
+These expansions describe a near-BPS Wilson-line observable.  The lightlike
+cusp coefficient of Section~\ref{sec:qcd-cusped-wilson-lines-large-spin} and
+the planar large-spin scaling function \(f(g)\) of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz} are cusp data in different
+analytic limits of the generalized cusp.  Their common normalization check is
+the line-defect definition \(C_D=12B(\lambda)\) together with the protected
+circular-loop Ward identity.
+
 \section{Wilson-Line Flux Tube as a Conformal Spectral Datum}
 \label{sec:planar-n4-wilson-line-flux-tube-problem}
 
