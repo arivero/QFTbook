@@ -74,24 +74,23 @@ provided no massless channel, threshold singularity, or nearby bound-state
 pole invalidates the contour deformation used to wrap virtual particles
 around the circle.
 
-\begin{proposition}[Bethe--Yang phase from moving one particle around the circle]
-\label{prop:bethe-yang-phase-around-circle}
+\begin{construction}[Bethe--Yang phase from diagonal finite-volume monodromy]
+\label{constr:bethe-yang-phase-around-circle}
 Assume the \(n\)-particle wave function is described away from collision
 hyperplanes by ordered plane waves, and that crossing a hyperplane
 \(x_j=x_k\) multiplies the ordered amplitude by the diagonal scattering phase
 \(S_{a_ja_k}(\theta_j-\theta_k)\).  Periodicity of particle \(j\) around the
 circle gives \eqref{eq:finite-volume-bethe-yang}.
-\end{proposition}
+\end{construction}
 
-\begin{proof}
-Move particle \(j\) once around the spatial circle while keeping the other
-particles fixed.  The free propagation of this particle contributes
+Indeed, moving particle \(j\) once around the spatial circle while keeping the
+other particles fixed contributes the free propagation phase
 \[
   \exp(\ii p_jL),
   \qquad
   p_j=m_{a_j}\sinh\theta_j .
 \]
-During the circuit it crosses each other particle once.  In the diagonal
+During the circuit it crosses each other particle once, so in the diagonal
 sector the ordered amplitude is multiplied by
 \[
   \prod_{k\ne j}S_{a_ja_k}(\theta_j-\theta_k)
@@ -109,7 +108,6 @@ Taking the logarithm on the chosen branch gives
   =
   2\pi I_j .
 \]
-\end{proof}
 
 \section{Gaudin Density And Normalization}
 
@@ -161,47 +159,80 @@ where \(\theta_{12}=\theta_1-\theta_2\).
 
 \begin{proposition}[State-counting measure]
 \label{prop:gaudin-state-counting-measure}
-Let \(U\subset\mathbb R^n\) be a rapidity region in which the Bethe--Yang map
-\(Q:U\to\mathbb R^n\) is one-to-one and \(\rho_n>0\).  For every smooth
-compactly supported test function \(f\) in \(U\),
+Let \(U\subset\mathbb R^n\) be a bounded rapidity region with piecewise
+\(C^1\) boundary, and suppose that on a neighborhood of \(\overline U\) the
+Bethe--Yang map \(Q_L\) is a \(C^2\) diffeomorphism onto its image and
+\(\rho_{n,L}=\det(\partial Q_{L,i}/\partial\theta_j)>0\).  Assume also that,
+for \(r=0,1,2\),
+\[
+  \|\partial^r Q_L\|_{C^0(\overline U)}\le C_rL,
+  \qquad
+  \|(\partial Q_L)^{-1}\|_{C^0(\overline U)}\le C_{-1}L^{-1},
+\]
+with constants independent of \(L\).  For every \(f\in C^1_c(U)\),
 \[
   \sum_{I:\,\theta(I)\in U}f(\theta(I))
   =
   \int_U
   \frac{\dd^n\theta}{(2\pi)^n}\,
-  \rho_n(\theta)f(\theta)
+  \rho_{n,L}(\theta)f(\theta)
   +
   O(L^{n-1})
 \]
-as \(L\to\infty\), with the boundary correction depending on \(f\) and \(U\).
+as \(L\to\infty\).  The implicit constant depends on \(U\), the displayed
+uniform bounds for \(Q_L\), and \(\|f\|_{C^1}\), but not on \(L\).
 \end{proposition}
 
 \begin{proof}
-The Bethe integers form the lattice \((2\pi)\mathbb Z^n\) or a translate of
-it in \(Q\)-space.  Since \(Q\) is one-to-one on \(U\), summing over Bethe
+The Bethe integers form a translate of the lattice \((2\pi)\mathbb Z^n\) in
+\(Q\)-space.  Since \(Q_L\) is one-to-one on \(U\), summing over Bethe
 solutions in \(U\) is summing the function
 \[
-  f(\theta(Q))
+  h_L(Q)=f(\theta_L(Q)),
+  \qquad
+  \theta_L=Q_L^{-1},
 \]
-over lattice points in \(Q(U)\).  The leading Euler--Maclaurin term is the
-Lebesgue integral in \(Q\)-space with lattice cell volume \((2\pi)^n\):
+over lattice points in \(Q_L(U)\).  Cover \(Q_L(U)\) by closed lattice cubes
+of side \(2\pi\).  For a cube \(C\) contained in \(Q_L(U)\) with lattice
+corner \(Q_C\),
+\[
+  \left|
+    (2\pi)^n h_L(Q_C)-\int_C h_L(Q)\,\dd^nQ
+  \right|
+  \le
+  C_n\sup_C|\nabla_Qh_L|.
+\]
+By the chain rule and the inverse-derivative bound,
+\[
+  |\nabla_Q h_L(Q)|
+  \le
+  \|(\partial Q_L)^{-1}\|\,|\nabla_\theta f(\theta_L(Q))|
+  \le
+  C L^{-1}\|f\|_{C^1}.
+\]
+The number of cubes meeting \(Q_L(\operatorname{supp}f)\) is \(O(L^n)\),
+because \(Q_L\) has \(O(L)\) diameter on the fixed region \(U\).  Hence the
+interior Riemann-sum error is \(O(L^{n-1})\).  Cubes crossing the boundary of
+\(Q_L(U)\) also contribute \(O(L^{n-1})\): the piecewise \(C^1\) boundary and
+the \(C^1\) bound on \(Q_L\) give \((n-1)\)-dimensional boundary measure
+\(O(L^{n-1})\), hence only \(O(L^{n-1})\) fixed-size cubes meet the boundary.
+Therefore
 \[
   \sum_I f(\theta(I))
   =
-  \int_{Q(U)}
+  \int_{Q_L(U)}
   \frac{\dd^nQ}{(2\pi)^n}\,
-  f(\theta(Q))
+  h_L(Q)
   +
-  O(\operatorname{area}\partial Q(U)).
+  O(L^{n-1}).
 \]
-Changing variables from \(Q\) to \(\theta\) gives
+Changing variables from \(Q\) back to \(\theta\) gives
 \[
   \dd^nQ=\det\left(\frac{\partial Q_i}{\partial\theta_j}\right)\dd^n\theta
   =
-  \rho_n(\theta)\dd^n\theta .
+  \rho_{n,L}(\theta)\dd^n\theta ,
 \]
-The boundary term is \(O(L^{n-1})\) because \(Q(U)\) has linear size
-\(O(L)\) in each direction for fixed \(U\).
+which proves the formula.
 \end{proof}
 
 The same determinant normalizes finite-volume states.  If
@@ -236,8 +267,8 @@ crossed form factor for an outgoing \(m\)-particle state and incoming
 with the branch specified by the rapidity ordering and by the crossing
 prescription of Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
 
-\begin{proposition}[Off-diagonal finite-volume form-factor formula]
-\label{prop:off-diagonal-finite-volume-form-factor}
+\begin{controlledapproximation}[Off-diagonal finite-volume form-factor formula]
+\label{ca:off-diagonal-finite-volume-form-factor}
 Assume the incoming and outgoing Bethe--Yang rapidity sets have no coincident
 rapidities after crossing, and assume that the crossed form factor is regular
 at the corresponding point.  Then
@@ -257,9 +288,10 @@ at the corresponding point.  Then
   O(\ee^{-\mu L}).
   \label{eq:off-diagonal-finite-volume-form-factor}
 \end{equation}
-\end{proposition}
+\end{controlledapproximation}
 
-\begin{proof}
+The derivation is a matching argument, not a theorem independent of the
+finite-volume construction.
 Smear the finite-volume Bethe states by packets whose rapidity widths are
 large compared with the level spacing \(L^{-1}\) and small compared with the
 distance to any kinematic or bound-state pole.  In that window the
@@ -272,11 +304,11 @@ between the corresponding infinite-volume packets is the crossed form factor
 by the crossing prescription.  Since the form factor is regular at the
 chosen point, shrinking the packets to the Bethe rapidities gives
 \eqref{eq:off-diagonal-finite-volume-form-factor}.  Virtual particles
-wrapping around the circle give the exponentially small correction.
-\end{proof}
+wrapping around the circle give the exponentially small correction when the
+corresponding contour deformation is valid with a positive mass scale \(\mu\).
 
-\begin{corollary}[Cancellation in the infinite-volume two-point sum]
-\label{cor:finite-volume-sum-integral-cancellation}
+\begin{remark}[Cancellation in the infinite-volume two-point sum]
+\label{rem:finite-volume-sum-integral-cancellation}
 For vacuum-to-\(n\)-particle matrix elements of a scalar operator,
 \[
   \sum_I
@@ -290,10 +322,10 @@ For vacuum-to-\(n\)-particle matrix elements of a scalar operator,
 \]
 on rapidity regions with no singularities, after the usual \(1/n!\) quotient
 for identical unordered particles.
-\end{corollary}
+\end{remark}
 
-\begin{proof}
-By Proposition~\ref{prop:off-diagonal-finite-volume-form-factor}, the squared
+By Controlled Approximation~\ref{ca:off-diagonal-finite-volume-form-factor},
+the squared
 matrix element contributes
 \[
   |F_n^{\mathcal O}(\theta(I))|^2/\rho_n(\theta(I))
@@ -308,7 +340,6 @@ The Gaudin determinant cancels.  If the rapidity ordering was used to label
 states, the ordered chamber gives one copy; if integration is over all
 \(\mathbb R^n\) for identical particles, the \(n!\) permutations must be
 divided out.
-\end{proof}
 
 \section{Diagonal Matrix Elements}
 
@@ -341,8 +372,8 @@ When the complement of \(A\) is denoted \(\bar A\), the symbol
 complement, not the Gaudin density of an isolated smaller-volume theory.
 \end{definition}
 
-\begin{proposition}[Diagonal finite-volume matrix element]
-\label{prop:diagonal-finite-volume-form-factor}
+\begin{controlledapproximation}[Diagonal finite-volume matrix element]
+\label{ca:diagonal-finite-volume-form-factor}
 Under the same massive diagonal assumptions and away from accidental
 degeneracies,
 \begin{equation}
@@ -360,9 +391,9 @@ degeneracies,
 \end{equation}
 Here \(F^{\mathcal O}_{0,c}\) is the infinite-volume vacuum expectation value
 \(\langle\mathcal O\rangle\).
-\end{proposition}
+\end{controlledapproximation}
 
-\begin{proof}
+The formula is obtained by a finite-volume subtraction of the kinematic poles.
 Start from the off-diagonal formula with outgoing rapidities
 \(\theta'_j\) distinct from the incoming rapidities, then approach
 \(\theta'_j=\theta_j\).  The crossed form factor develops kinematic poles.
@@ -383,7 +414,6 @@ The only analytic input beyond the off-diagonal case is the kinematic-pole
 residue equation of Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators},
 which ensures that the disconnected pieces are exactly the contractions
 enumerated by the subsets.
-\end{proof}
 
 For one particle this gives
 \[
@@ -438,7 +468,8 @@ Translation covariance gives
   \bigr|^2
   \exp(-\ii E_\alpha t+\ii P_\alpha x).
 \]
-Using Corollary~\ref{cor:finite-volume-sum-integral-cancellation} in each
+Using the cancellation mechanism of
+Remark~\ref{rem:finite-volume-sum-integral-cancellation} in each
 particle-number sector gives the infinite-volume Wightman expansion
 \begin{equation}
   C(x,t)
@@ -466,10 +497,10 @@ Euclidean time, as
   \exp\left[-r\sum_{j=1}^n m_{a_j}\cosh\theta_j\right].
 \]
 
-\begin{proposition}[A sufficient convergence criterion]
-\label{prop:form-factor-spectral-convergence-criterion}
-Fix \(r>0\).  Suppose there are constants \(A,B,c\ge0\) with \(c<m_\ast r\)
-such that, for every \(n\),
+The following comparison estimate is a practical convergence criterion rather
+than a theorem about any particular integrable model.  Fix \(r>0\).  If there
+are constants \(A,B,c\ge0\), with \(c<m_\ast r\), such that the absolute
+\(n\)-particle term satisfies
 \[
   \frac{1}{n!}
   \sum_{a_1,\ldots,a_n}
@@ -480,23 +511,16 @@ such that, for every \(n\),
   \le
   \frac{A B^n}{n!}e^{cn}.
 \]
-Then the Euclidean spectral series converges absolutely.
-\end{proposition}
-
-\begin{proof}
-The right hand side is summable in \(n\):
+for every \(n\), then the sum of absolute values is bounded by
 \[
   \sum_{n=0}^\infty \frac{A(B e^c)^n}{n!}
   =
   A\exp(Be^c).
 \]
-The hypothesis bounds the absolute value of the \(n\)-particle contribution
-by a summable sequence, so the series converges absolutely by comparison.
-The displayed condition is deliberately a sufficient condition; sharp
-convergence in specific integrable models is a model-dependent analytic
-problem involving the large-rapidity and large-particle-number behavior of
-the form factors.
-\end{proof}
+This proves absolute convergence by comparison.  The analytic work in a
+specific model lies in estimating the joint large-rapidity and
+large-particle-number behavior of the form factors strongly enough to obtain
+such a bound, or a sharper model-specific replacement for it.
 
 \section{Example: Free Majorana Energy Density}
 

@@ -9,6 +9,7 @@ mkdir -p build
 BUILD_LOG="$TEX_DIR/build/latexmk.out"
 "$ROOT/tools/audit_monograph_text.sh"
 "$ROOT/tools/audit_negative_scope_prose.py"
+"$ROOT/tools/audit_theorem_form.py"
 latexmk -xelatex -interaction=nonstopmode main.tex 2>&1 | tee "$BUILD_LOG"
 
 FINAL_LOG_ISSUE_PATTERN="(^!|LaTeX Error|Package [A-Za-z]+ Error|Package amsmath Warning: Foreign command|Package hyperref Warning: Token not allowed|Emergency stop|Fatal error|Undefined control sequence|LaTeX Warning: Reference .* undefined|LaTeX Warning: Citation .* undefined|Reference .* undefined|Citation .* undefined|Missing .* inserted|Overfull|Underfull|already defined|multiply defined|xdvipdfmx:warning)"

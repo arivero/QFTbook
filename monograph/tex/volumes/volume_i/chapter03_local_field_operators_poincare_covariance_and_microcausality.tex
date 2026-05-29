@@ -76,14 +76,16 @@ are required to be continuous multilinear functionals of the test functions
 for \(\psi,\chi\) in a stated dense domain.  This continuity is the analytic
 content behind point-field notation.
 
-\begin{proposition}[Distributional matrix elements]
-\label{prop:distributional-matrix-elements}
+\begin{remark}[Distributional matrix elements]
+\label{rem:distributional-matrix-elements}
   Suppose the smeared products above are defined on a common invariant field
   domain and the displayed matrix elements are continuous multilinear
-  functionals on \(C_c^\infty(\mathbb M^D)^n\).  Then for each pair
-  \(\psi,\chi\in\mathcal D\) and field labels \(A_1,\ldots,A_n\) there is a
-  distribution \(W_{\psi,\chi}^{A_1\cdots A_n}\in\mathcal D'((\mathbb M^D)^n)\)
-  such that
+  functionals on \(C_c^\infty(\mathbb M^D)^n\).  The Schwartz kernel theorem
+  identifies the completed projective tensor product
+  \(C_c^\infty(\mathbb M^D)^{\widehat\otimes n}\) with
+  \(C_c^\infty((\mathbb M^D)^n)\).  Thus the displayed matrix element is
+  equivalently a distribution
+  \(W_{\psi,\chi}^{A_1\cdots A_n}\in\mathcal D'((\mathbb M^D)^n)\) satisfying
   \[
     W_{\psi,\chi}^{A_1\cdots A_n}(f_1\otimes\cdots\otimes f_n)
     =
@@ -91,22 +93,13 @@ content behind point-field notation.
     \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\chi
     \right\rangle .
   \]
-\end{proposition}
-
-\begin{proof}
-The completed projective tensor product
-\(C_c^\infty(\mathbb M^D)^{\widehat\otimes n}\) is canonically
-\(C_c^\infty((\mathbb M^D)^n)\).  By hypothesis the displayed matrix element
-is a continuous \(n\)-linear functional of the test functions, hence it
-extends uniquely to a continuous linear functional on
-\(C_c^\infty((\mathbb M^D)^n)\).  This is exactly a distribution on
-\((\mathbb M^D)^n\).  The formula on decomposable test functions records the
-extension on a dense generating set.
-\end{proof}
+  This is the functional-analytic meaning of the stated continuity
+  hypothesis.
+\end{remark}
 
 \begin{remark}[Direction of point-field notation]
 \label{rem:point-field-notation-direction}
-The preceding proposition fixes the direction of logic: point-dependent
+The preceding remark fixes the direction of logic: point-dependent
 expressions are compact notation for continuous smeared matrix elements.
 Later analytic continuation, spectral representation, and LSZ extraction all
 act on these distributions or on their Fourier transforms.
@@ -234,21 +227,16 @@ point-field identity with \(f\) and integrating by parts gives the
 distributional version.
 \end{proof}
 
-\begin{corollary}[Covariance of localization regions]
-\label{cor:covariance-localization-regions}
+\paragraph{Covariance of localization regions.}
 If \(\operatorname{supp}f\subset\mathcal O\), then
 \(\operatorname{supp}f_g\subset g\mathcal O\). Therefore the covariant
 transform \(U(g)^{-1}\widehat\Phi_A(f)U(g)\) is localized in \(g\mathcal O\)
 whenever \(\widehat\Phi_A(f)\) is localized in \(\mathcal O\).
-\end{corollary}
-
-\begin{proof}
 The support identity \(\operatorname{supp}f_g=g\,\operatorname{supp}f\)
 follows from \(f_g(y)=f(g^{-1}y)\) and continuity of the homeomorphism \(g\).
 The covariance law then rewrites the transformed operator as a linear
 combination of fields smeared with test functions supported in
 \(g\mathcal O\).
-\end{proof}
 
 \begin{proposition}[Covariance of Wightman distributions]
 \label{prop:wightman-distribution-covariance-from-fields}
@@ -319,28 +307,21 @@ separated supports when \(K_1=\operatorname{supp}f\) and
 \(K_2=\operatorname{supp}g\) satisfy this condition.
 \end{definition}
 
-\begin{proposition}[Poincare invariance of spacelike support separation]
-\label{prop:poincare-invariance-spacelike-support-separation}
+\paragraph{Poincare invariance of spacelike support separation.}
 Let \(g=(a,\Lambda)\in\Poinc\). If \(K_1,K_2\subset\mathbb M^D\) are
-spacelike separated, then \(gK_1\) and \(gK_2\) are spacelike separated. If
-test functions \(f_1,f_2\) have spacelike separated supports, then the
-supports of \((f_1)_g\) and \((f_2)_g\) are also spacelike separated.
-\end{proposition}
-
-\begin{proof}
-For \(x\in K_1\) and \(y\in K_2\),
+spacelike separated, then \(gK_1\) and \(gK_2\) are spacelike separated:
+for \(x\in K_1\) and \(y\in K_2\),
 \[
   (gx-gy)^2=(\Lambda(x-y))^2=(x-y)^2>0,
 \]
 because translations cancel in differences and \(\Lambda\) preserves the
-Minkowski quadratic form. Hence \(gK_1\) and \(gK_2\) are spacelike separated.
-For test functions, \(\operatorname{supp}(f_g)=g\,\operatorname{supp}f\):
+Minkowski quadratic form.  For test functions,
+\(\operatorname{supp}(f_g)=g\,\operatorname{supp}f\):
 indeed \(f_g(y)=f(g^{-1}y)\) can be nonzero only when
 \(g^{-1}y\in\operatorname{supp}f\), equivalently
 \(y\in g\,\operatorname{supp}f\), and the reverse inclusion follows after
-taking closures. Applying the first part to the two supports proves the
-claim.
-\end{proof}
+taking closures.  Therefore Poincare transformation preserves spacelike
+separation of supports.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95,>=Stealth]
@@ -530,29 +511,19 @@ Point notation writes this distribution as
 \]
 \end{definition}
 
-\begin{proposition}[Field axioms inherited by Wightman distributions]
-\label{prop:wightman-inherits-covariance-and-locality}
+\paragraph{Field axioms inherited by Wightman distributions.}
 Assume the common-domain and continuity hypotheses of
-Proposition~\ref{prop:distributional-matrix-elements}. If the vacuum is
-Poincare invariant and the field multiplet is covariant, the Wightman
-distributions obey the covariance law of
-Proposition~\ref{prop:wightman-distribution-covariance-from-fields}. If the
-field multiplet satisfies microcausality, adjacent spacelike separated
-insertions obey the graded exchange relation of
-Proposition~\ref{prop:wightman-adjacent-spacelike-exchange}.
-\end{proposition}
-
-\begin{proof}
-Both statements are obtained by applying the corresponding operator identities
-to smeared products on the common domain and then using the defining
-continuity of the Wightman distributions.  Covariance follows by inserting
-\(U(g)U(g)^{-1}\) between neighboring factors and using vacuum invariance.
-Locality follows by applying the vanishing graded commutator to the two
-adjacent factors with spacelike separated supports.  Since the distributions
-are determined by their values on tensor-product test functions, these
-smeared identities are exactly the distributional covariance and exchange
-relations.
-\end{proof}
+Remark~\ref{rem:distributional-matrix-elements}.  If the vacuum is
+Poincare invariant and the field multiplet is covariant, inserting
+\(U(g)U(g)^{-1}\) between neighboring smeared factors and using vacuum
+invariance gives the covariance law of
+Proposition~\ref{prop:wightman-distribution-covariance-from-fields}.  If the
+field multiplet satisfies microcausality, applying the vanishing graded
+commutator to adjacent factors with spacelike separated supports gives the
+graded exchange relation of
+Proposition~\ref{prop:wightman-adjacent-spacelike-exchange}.  The continuity
+of the smeared matrix elements then extends these identities from tensor
+products of test functions to the corresponding Wightman distributions.
 
 Poincare covariance of the fields gives covariance of the Wightman
 distributions. Microcausality gives graded exchange relations when adjacent

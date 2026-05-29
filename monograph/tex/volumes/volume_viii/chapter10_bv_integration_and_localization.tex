@@ -110,8 +110,8 @@ In the same trivialization, if \(S\) obeys
 The classical limit of \eqref{eq:bv-quantum-observable} is
 \(\{S,\mathcal O\}=0\), the \(Q_S\)-closedness condition.
 
-\begin{proposition}[BV product identity]
-\label{prop:bv-product-identity}
+\begin{remark}[BV product identity]
+\label{rem:bv-product-identity}
 For a homogeneous function \(F\) and an action \(S\) satisfying
 \eqref{eq:finite-bv-qme-action},
 \[
@@ -119,9 +119,7 @@ For a homogeneous function \(F\) and an action \(S\) satisfying
   =
   \left(\Delta_\mu F+\hbar^{-1}\{S,F\}\right)\ee^{S/\hbar}.
 \]
-\end{proposition}
 
-\begin{proof}
 The defining second-order identity for \(\Delta_\mu\) is
 \[
   \Delta_\mu(FG)
@@ -140,7 +138,7 @@ The graded antisymmetry of the odd bracket converts the last term to
 \(\hbar^{-1}\{S,F\}\ee^{S/\hbar}\) with the displayed convention.  The term
 containing \(\Delta_\mu G\) vanishes by the quantum master equation for
 \(\ee^{S/\hbar}\mu^{1/2}\).  This proves the identity.
-\end{proof}
+\end{remark}
 
 \section{Lagrangian Cycles And BV Stokes}
 
@@ -196,8 +194,8 @@ semidensities is coordinate invariant.  For a Lagrangian with boundary the
 ordinary Stokes theorem gives exactly the boundary term.
 \end{proof}
 
-\begin{corollary}[Gauge-fixing independence]
-\label{cor:bv-gauge-fixing-independence}
+\begin{remark}[Gauge-fixing independence]
+\label{rem:bv-gauge-fixing-independence}
 Let \(\rho\) satisfy \(\Delta\rho=0\), and let
 \(\mathcal O\) satisfy \(\Delta(\mathcal O\rho)=0\).  Let
 \(\mathcal L_s\), \(s\in[0,1]\), be a smooth family of compact Lagrangian
@@ -208,16 +206,14 @@ cycles such that the swept chain has no boundary except
   =
   \int_{\mathcal L_0}(\mathcal O\rho)|_{\mathcal L_0}.
 \]
-\end{corollary}
-
-\begin{proof}
-The family \(\mathcal L_s\) sweeps a Lagrangian cobordism in the sense used
-by the BV Stokes theorem.  Applying
-Theorem~\ref{thm:finite-bv-stokes} to the closed semidensity
-\(\mathcal O\rho\) on this cobordism gives the difference of the two endpoint
-integrals.  Since the remaining boundary is absent by hypothesis, that
-difference is zero.
-\end{proof}
+The family \(\mathcal L_s\) sweeps a Lagrangian cobordism, so this is the
+direct finite-dimensional consequence of
+Theorem~\ref{thm:finite-bv-stokes} applied to the closed semidensity
+\(\mathcal O\rho\).  The hypotheses \(\Delta\rho=0\) and
+\(\Delta(\mathcal O\rho)=0\) are the finite-dimensional BV analogues of the
+quantum master equation and the observable Ward identity; they are exactly
+what makes the integrand closed for the Stokes argument.
+\end{remark}
 
 \section{BV Pushforward}
 
@@ -275,8 +271,15 @@ Therefore
   (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
 \]
 The last integral is zero by Theorem~\ref{thm:finite-bv-stokes} applied in
-the fluctuation variables.  The observable statement is the same calculation
-with \(\rho\) replaced by \(\mathcal O\rho\).
+the fluctuation variables.  If \(\Delta_{\mathcal F}(\mathcal O\rho)=0\),
+the identical decomposition gives
+\[
+  \Delta_{\rm res}\pi_*(\mathcal O\rho)
+  =
+  -\int_{\mathcal L_{\rm fluc}}
+  (\Delta_{\rm fluc}(\mathcal O\rho))|_{\mathcal L_{\rm fluc}},
+\]
+and the fluctuation BV Stokes theorem again makes the right hand side vanish.
 \end{proof}
 
 \begin{definition}[Boundary functional of a fluctuation cycle]
@@ -595,9 +598,7 @@ integral is
   \operatorname{sign}(a).
   \label{eq:rank-one-mq-integral}
 \end{equation}
-
-\begin{proof}
-Set \(u=\sqrt t\,|a|x\).  Then
+Indeed, setting \(u=\sqrt t\,|a|x\) gives
 \[
   \left(\frac{t}{2\pi}\right)^{1/2}
   a\,\dd x
@@ -611,7 +612,6 @@ and
 This proves \eqref{eq:rank-one-mq-integral}.  The sign is the local degree of
 the section at its zero \(x=0\), namely the orientation sign of the derivative
 \(\dd s_a=a\,\dd x\).
-\end{proof}
 
 For a rank-\(r\) oriented Euclidean vector bundle \(E\to M\) with connection
 \(\nabla\), section \(s\), and curvature \(R_\nabla\), the Mathai--Quillen

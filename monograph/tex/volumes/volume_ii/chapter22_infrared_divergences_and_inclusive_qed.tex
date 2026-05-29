@@ -1049,8 +1049,8 @@ leading logarithmic approximation.  The scale \(M\) separates hard and soft
 physics; dependence on it cancels once the hard finite correction is computed
 to the same order.
 
-\begin{proposition}[Coefficientwise Bloch--Nordsieck cancellation]
-\label{prop:coefficientwise-bloch-nordsieck}
+\begin{remark}[Coefficientwise Bloch--Nordsieck cancellation]
+\label{rem:coefficientwise-bloch-nordsieck}
 Let \(A_{\beta\alpha}\) be regarded as a formal quantity of order \(g^2\).
 At every fixed power \(A_{\beta\alpha}^L\), the coefficient of the inclusive
 leading-soft rate has a regulator-independent limit after the sum over
@@ -1082,9 +1082,7 @@ Thus the cancellation is not a statement about an individual fixed photon
 number.  It is a statement about the inclusive coefficient obtained after the
 degenerate real-emission terms and the virtual terms at the same perturbative
 order are combined.
-\end{proposition}
 
-\begin{proof}
 At fixed \(\mu>0\), the product of the virtual exponential and the real
 emission exponential is an identity of formal power series in
 \(A_{\beta\alpha}\).  The coefficient of \(A_{\beta\alpha}^L\) receives
@@ -1100,7 +1098,7 @@ Since
 \]
 all dependence on the auxiliary regulator cancels before the limit
 \(\mu\downarrow0\) is taken.
-\end{proof}
+\end{remark}
 
 For a fixed finite number \(N\) of photons, by contrast, the rate contains
 \[
@@ -1117,7 +1115,7 @@ soft photons are included.
 The coupling expansion and the infrared limit are therefore nonuniform in the
 exclusive fixed-\(N\) decomposition.  The perturbative statement is the
 coefficientwise one in
-Proposition~\ref{prop:coefficientwise-bloch-nordsieck}: coefficient extraction
+Remark~\ref{rem:coefficientwise-bloch-nordsieck}: coefficient extraction
 is performed at fixed regulator, all degenerate real and virtual terms at that
 coefficient are added, and only then is \(\mu\) removed.  The exponentiated
 leading-soft expression is a resummation of these coefficientwise
@@ -1142,8 +1140,8 @@ soft Bloch--Nordsieck sum is then only part of the required inclusive
 construction.  The finite-degeneracy statement behind the
 Kinoshita--Lee--Nauenberg prescription is the following.
 
-\begin{theorem}[Finite-degeneracy KLN cancellation]
-\label{thm:finite-degeneracy-kln}
+\begin{remark}[Finite-degeneracy KLN trace identity]
+\label{rem:finite-degeneracy-kln-trace-identity}
 Let \(\mathcal H_0\) be a Hilbert space with unperturbed Hamiltonian \(H_0\).
 Let \(P_A\) and \(P_B\) be the orthogonal projectors onto two
 finite-dimensional degenerate subspaces of \(H_0\), with
@@ -1190,9 +1188,7 @@ coefficientwise limit as the regulator \(\rho\downarrow0\).  Then
 exists coefficientwise.  The final-state sum removes the outgoing
 degenerate rotation \(U_B(\rho)\), and the initial-state average removes the
 incoming degenerate rotation \(U_A(\rho)\).
-\end{theorem}
 
-\begin{proof}
 The normalized incoming density matrix for an unresolved initial degeneracy
 class is
 \[
@@ -1240,7 +1236,7 @@ subspace, cyclicity of the finite-dimensional trace gives
 \]
 The assumed coefficientwise limit of \(S_{\rm fin}(\rho)\) therefore gives the
 claimed coefficientwise limit of the inclusive probability.
-\end{proof}
+\end{remark}
 
 The theorem is an abstract finite-regulator statement.  In a relativistic
 field theory the interaction is generally an unbounded operator-valued
@@ -1371,8 +1367,8 @@ this second statement.  The Wilson-line and Coulomb dressings needed for the
 first statement are formulated as a scattering-theory problem in
 Chapter~\ref{ch:volume-iv-haag-ruelle-mathematical-scattering}.
 
-\begin{theorem}[Buchholz infraparticle obstruction]
-\label{thm:buchholz-infraparticle-obstruction}
+\begin{quotedtheorem}[Buchholz infraparticle obstruction]
+\label{qthm:buchholz-infraparticle-obstruction}
 In a local relativistic quantum field theory satisfying Maxwell's equations
 and Gauss' law, a pure state carrying nonzero abelian gauge charge cannot be a
 Wigner one-particle state with a sharp mass shell.  More precisely, charged
@@ -1382,7 +1378,7 @@ equivalent.  In particular, the charged sector is not an ordinary tensor
 product of a Wigner electron one-particle representation with the vacuum
 photon Fock representation, and Lorentz boosts of a charged particle change
 the flux sector rather than acting inside one fixed Fock sector.
-\end{theorem}
+\end{quotedtheorem}
 
 The electron in four-dimensional QED is therefore an infraparticle.  The
 conclusion is an algebraic consequence of locality and Gauss'

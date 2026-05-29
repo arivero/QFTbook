@@ -168,8 +168,8 @@ Lee--Yang locus is
 \]
 \end{definition}
 
-\begin{proposition}[Zero-free neighborhoods exclude pressure singularities]
-\label{prop:qcd-lee-yang-zero-free-analytic-limit}
+\begin{remark}[Zero-free neighborhoods exclude pressure singularities]
+\label{rem:qcd-lee-yang-zero-free-analytic-limit}
 Let \(\mathcal U_{\mathbb C}\) be a complex neighborhood of a real point
 \(x_0\).  Suppose that, for all sufficiently large \(\Lambda\),
 \(Z_\Lambda\) has no zeros in \(\mathcal U_{\mathbb C}\), that the logarithm
@@ -179,16 +179,17 @@ compact subsets of \(\mathcal U_{\mathbb C}\).  Then the limiting pressure
 \(x_0\).  Therefore a pressure nonanalyticity at \(x_0\) requires either
 Lee--Yang zeros approaching \(x_0\) in every complex neighborhood, or failure
 of the stated uniform analytic convergence.
-\end{proposition}
-
-\begin{proof}
 By Proposition~\ref{prop:qcd-finite-regulator-analyticity}, each
 \(p_\Lambda\) is holomorphic on \(\mathcal U_{\mathbb C}\) after the stated
 choice of logarithm.  The uniform compact convergence hypothesis then makes
 the limit holomorphic by the Weierstrass theorem for holomorphic functions.
 Restricting a holomorphic function to the real slice gives a real-analytic
-function.  The contrapositive gives the final statement.
-\end{proof}
+function.  The contrapositive gives the final statement: if the real pressure
+has a nonanalyticity at \(x_0\), the hypotheses just listed cannot all hold on
+any complex neighborhood of \(x_0\).  Thus either zeros approach \(x_0\), or
+the finite-regulator analytic functions fail to converge in the compact-open
+holomorphic topology there.
+\end{remark}
 
 \begin{proposition}[Source curvature as an integrated connected correlator]
 \label{prop:qcd-source-curvature-susceptibility}
@@ -224,12 +225,25 @@ integrated connected correlator in the thermodynamic limit.
 \end{proposition}
 
 \begin{proof}
-Differentiating the finite integral gives
+At finite regulator \(X_\Lambda\) is an ordinary measurable function on the
+finite configuration space or finite lattice field space, and \(Z_\Lambda(h)\)
+is a finite-dimensional integral with positive radius of analyticity in \(h\)
+around any real value for which the weight is integrable.  Differentiating
+under the integral therefore gives
 \[
   \partial_h\log Z_\Lambda(h)=\langle X_\Lambda\rangle_h .
 \]
-A second derivative differentiates both the numerator and denominator of the
-normalized expectation value:
+For the second derivative, write
+\(\langle Y\rangle_h=Z_\Lambda(h)^{-1}\int Y\,e^{hX_\Lambda}d\mu_\Lambda\).
+Then
+\[
+  \partial_h\langle Y\rangle_h
+  =
+  \langle YX_\Lambda\rangle_h
+  -
+  \langle Y\rangle_h\langle X_\Lambda\rangle_h .
+\]
+Taking \(Y=X_\Lambda\) yields the connected two-point formula
 \[
   \partial_h^2\log Z_\Lambda(h)
   =
@@ -237,7 +251,10 @@ normalized expectation value:
 \]
 Multiplying by \(T/V_\Lambda\) and writing
 \(X_\Lambda=V_\Lambda\overline{\mathcal O}_\Lambda\) gives
-\eqref{eq:qcd-source-curvature-susceptibility}.
+\eqref{eq:qcd-source-curvature-susceptibility}.  Thus the possible
+thermodynamic singularity is not a pointwise singularity of
+\(\mathcal O_x\); it is the volume growth of the integrated connected
+correlator after the infrared limit is taken.
 \end{proof}
 
 For physical QCD with fundamental quarks of nonzero mass, the most familiar
@@ -297,17 +314,15 @@ change of the infinite-volume free energy across which this symmetry
 realization changes.
 \end{definition}
 
-\begin{proposition}[Center symmetry forces the finite-volume one-point loop]
-\label{prop:qcd-center-finite-volume-loop-zero}
+\begin{remark}[Center symmetry forces the finite-volume one-point loop]
+\label{rem:qcd-center-finite-volume-loop-zero}
 At finite spatial volume and zero center-breaking source in pure
 \(SU(N_c)\) Yang--Mills,
 \[
   \left\langle P_R(\mathbf x)\right\rangle=0
 \]
 for every representation \(R\) whose \(N\)-ality is nonzero.
-\end{proposition}
 
-\begin{proof}
 The finite-volume regulated measure and action are invariant under the
 thermal center transformation.  Averaging the expectation value over the
 finite group \(Z(SU(N_c))\) gives
@@ -321,7 +336,7 @@ If \(k_R\not\equiv0\pmod{N_c}\), the finite geometric sum vanishes.  Hence
 \(\langle P_R\rangle=0\).  A nonzero Polyakov-loop order parameter is
 therefore necessarily a spontaneous-symmetry-breaking limit, not a
 finite-volume one-point function.
-\end{proof}
+\end{remark}
 
 After multiplicative line renormalization, the one-point function has the
 static-source interpretation
@@ -1311,8 +1326,8 @@ For a conformal thermal state in four dimensions, \(\Delta=0\).  In QCD,
 \(\Delta\) measures the breaking of scale invariance by quark masses, by the
 running coupling, and by the thermal state itself.
 
-\begin{proposition}[Thermodynamic identities]
-\label{prop:qcd-thermodynamic-derivative-identities}
+\begin{remark}[Thermodynamic identities]
+\label{rem:qcd-thermodynamic-derivative-identities}
 Let \(p(T,\mu_B)\) be the thermodynamic pressure of a QCD phase on an open
 domain in which it is twice continuously differentiable.  Define
 \[
@@ -1351,9 +1366,7 @@ pressure is
 \]
 These formulae are definitions and thermodynamic consequences of the
 pressure; they are not model assumptions about quasiparticles.
-\end{proposition}
 
-\begin{proof}
 The first identity is the definition of \(s\) and \(n_B\) as derivatives of
 the limiting pressure.  Differentiating
 \(\epsilon=-p+Ts+\mu_Bn_B\) gives
@@ -1385,7 +1398,7 @@ that one-parameter equilibrium curve,
   \frac{dp}{dT}=\partial_Tp(T,0),
 \]
 which gives the sound-speed formula whenever the denominator is nonzero.
-\end{proof}
+\end{remark}
 
 \begin{example}[Conformal Stefan--Boltzmann benchmark]
 \label{ex:qcd-conformal-sb-thermodynamics}
@@ -1721,8 +1734,8 @@ shows that an imaginary part is present exactly when the equation
 kinematic origin.
 \end{proof}
 
-\begin{proposition}[Magnetic contribution first becomes nonperturbative at \(g^6T^4\)]
-\label{prop:qcd-linde-scale}
+\begin{remark}[Magnetic sector at \(g^6T^4\)]
+\label{rem:qcd-linde-scale}
 In four-dimensional high-temperature Yang--Mills theory, the static magnetic
 sector has three-dimensional coupling
 \[
@@ -1735,9 +1748,7 @@ contribution to the four-dimensional pressure begins at order
 \]
 The coefficient of this contribution is not determined by ordinary
 perturbation theory around the massless magnetic theory.
-\end{proposition}
 
-\begin{proof}
 After the nonzero Matsubara modes and the electric scale have been matched
 into a three-dimensional static effective theory, the remaining magnetic
 Yang--Mills action has the form
@@ -1754,10 +1765,10 @@ free-energy density, so the order is \(g^6T^4\).
 
 Perturbation theory cannot determine \(c\), because it expands around a
 massless three-dimensional gauge theory whose infrared behavior is precisely
-the magnetic theory being asked to generate the scale.  The proposition does
-not prove the magnetic mass gap; it identifies the order at which the
+the magnetic theory being asked to generate the scale.  This dimensional
+argument does not prove the magnetic mass gap; it identifies the order at which the
 nonperturbative magnetic input first enters the high-temperature expansion.
-\end{proof}
+\end{remark}
 
 \section{Transport and Quark--Gluon Plasma Observables}
 
@@ -2065,8 +2076,8 @@ inside its disk of convergence.  The Cauchy--Hadamard radius of this germ is
 \end{equation}
 \end{definition}
 
-\begin{proposition}[What a susceptibility radius establishes]
-\label{prop:qcd-baryon-radius-diagnostic-status}
+\begin{remark}[What a susceptibility radius establishes]
+\label{rem:qcd-baryon-radius-diagnostic-status}
 Assume that \(p(T,x)/T^4\) is the germ of a holomorphic function of complex
 \(x\) at the origin and has Taylor coefficients
 \(\chi_n^B(T)/n!\).  Then \(R(T)\) in
@@ -2077,9 +2088,7 @@ a positive real point \(x_c\), then \(x_c=R(T)\) and this singularity is the
 critical-point candidate seen by the Taylor expansion.  Without that
 location input, the nearest singularity may lie at complex \(x\) and the
 radius alone does not identify a real critical endpoint.
-\end{proposition}
 
-\begin{proof}
 The first two assertions are the Cauchy--Hadamard theorem applied to the
 power series \eqref{eq:qcd-baryon-pressure-taylor}.  A real critical point at
 positive \(x_c\) must be a singularity of the same analytic germ after the
@@ -2089,7 +2098,7 @@ origin is the convergence radius.  The final statement is the complementary
 case: a power series records distance to the nearest complex obstruction,
 whereas the physical critical endpoint is a statement about the real
 \((T,\mu_B)\) plane and the limiting Gibbs/KMS states.
-\end{proof}
+\end{remark}
 
 \begin{remark}[Ratio estimators]
 \label{rem:qcd-baryon-ratio-estimators}
@@ -2519,8 +2528,8 @@ which is \eqref{eq:qcd-leading-nfl-self-energy}.  The \(SU(3)\)
 specialization follows from \eqref{eq:qcd-trace-delta-fundamental-casimir}.
 \end{proof}
 
-\begin{corollary}[Logarithmic vanishing of the patch residue]
-\label{cor:qcd-nfl-quark-residue}
+\begin{remark}[Logarithmic vanishing of the patch residue]
+\label{rem:qcd-nfl-quark-residue}
 Under the assumptions of
 Proposition~\ref{prop:qcd-leading-nfl-self-energy}, the coefficient of
 \(ip_0\) in the inverse patch propagator behaves as
@@ -2543,15 +2552,17 @@ and hence the perturbative patch residue satisfies
   \label{eq:qcd-nfl-residue-limit}
 \]
 within the unpaired high-density regime.
-\end{corollary}
 
-\begin{proof}
 Insert \eqref{eq:qcd-leading-nfl-self-energy} into the inverse propagator of
 Definition~\ref{def:qcd-leading-nfl-self-energy}.  Analytic wave-function
 renormalizations change the \(O(1)\) part of
 \eqref{eq:qcd-nfl-residue} but cannot remove the logarithm.  Inverting the
 coefficient of \(ip_0\) gives \eqref{eq:qcd-nfl-residue-limit}.
-\end{proof}
+The statement is perturbative and patch-local: it identifies the logarithmic
+loss of a quasiparticle pole inside the unpaired high-density effective
+description, with pairing gaps, confinement-scale physics, and regulator
+matching held outside the displayed asymptotic regime.
+\end{remark}
 
 \begin{remark}[Relation to the superconducting gap]
 \label{rem:qcd-nfl-gap-relation}
@@ -3601,10 +3612,13 @@ factor is invariant.  The flavor contraction is likewise invariant under
 \[
   3\cdot\frac23=2 .
 \]
-The same argument applies to \(\mathcal B_R\).  Therefore a nonzero
-source-selected long-distance limit of the two-point function of
-\(\mathcal B_L\) or \(\mathcal B_R\) is a gauge-invariant statement that
-\(U(1)_B\) is spontaneously broken.
+For \(\mathcal B_R\), the right-handed color indices are contracted by the
+same \(\epsilon_{ABC}\) tensor and the flavor indices by the right-handed
+\(\epsilon^{ijk}\), so the operator is again an \(SU(3)_{\rm color}\)
+singlet of baryon charge \(2\).  Therefore a nonzero source-selected
+long-distance limit of the two-point function of \(\mathcal B_L\) or
+\(\mathcal B_R\) is a gauge-invariant statement that \(U(1)_B\) is
+spontaneously broken.
 
 For \(\Sigma\), the color anti-fundamental index of \(\varphi_R\) is
 contracted with the conjugate color index of \(\varphi_L^\dagger\), so the
@@ -3624,8 +3638,8 @@ price of using a nonlocal completion of a gauge-covariant field, not an
 additional physical symmetry.
 \end{proof}
 
-\begin{proposition}[Physical CFL Goldstone count]
-\label{prop:qcd-cfl-goldstone-count}
+\begin{remark}[Physical CFL Goldstone count]
+\label{rem:qcd-cfl-goldstone-count}
 Assume \(N_c=N_f=3\), ignore the anomalous axial \(U(1)\), and suppose the
 infinite-volume dense state has the gauge-invariant CFL long-distance order
 described in
@@ -3642,9 +3656,7 @@ are included is
 \[
   (8+8+1)-8=9.
 \]
-\end{proposition}
 
-\begin{proof}
 The color \(SU(3)\) is gauged.  Directions that rotate the condensate by a
 pure color transformation are Higgs directions of the gauge field, not
 generators of physical global particles.  The remaining exact global
@@ -3661,7 +3673,7 @@ group-theoretic consequence of the source-selected CFL order.  Establishing
 which region of QCD realizes this order requires control of dense QCD, where
 direct lattice importance sampling is obstructed by
 Proposition~\ref{prop:qcd-finite-density-sign-problem}.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Gauge-invariant static screening diagnostics in dense QCD]
 \label{def:qcd-gauge-invariant-static-screening}
@@ -3897,7 +3909,7 @@ Proposition~\ref{prop:qcd-cfl-higgs-screening-mass-matrix} shows that those
 coordinates are not gauge-invariant massless particles; they supply the
 longitudinal screening components of the eight color gauge sectors.  Thus
 the physical gapless count is \(8+1=9\), matching
-Proposition~\ref{prop:qcd-cfl-goldstone-count}.
+Remark~\ref{rem:qcd-cfl-goldstone-count}.
 \end{proof}
 
 \section{Anomaly Matching in the CFL Phase}
@@ -3929,7 +3941,7 @@ half-trace convention
   \operatorname{tr}_{\rm f}(t^at^b)=\frac12\delta^{ab},
 \]
 the same convention used in
-Proposition~\ref{prop:wzw-anomaly-matching}.  This is only a convention for
+Quoted Theorem~\ref{qthm:wzw-anomaly-matching}.  This is only a convention for
 anomaly traces; the trace-delta convention used elsewhere in this chapter is
 related by \(\tau^a=\sqrt2\,t^a\).
 \end{definition}
@@ -4063,7 +4075,7 @@ This is exactly the mixed \(U(1)_B\)-flavor term in
 \begin{proof}
 The field \(\Sigma\) has the same transformation law as the ordinary chiral
 field used in the anomaly-matching construction of
-Proposition~\ref{prop:wzw-anomaly-matching}.  The proof of that proposition
+Quoted Theorem~\ref{qthm:wzw-anomaly-matching}.  The anomaly-matching argument
 uses only the number of microscopic color copies and the
 \(SU(N_f)_L\) background anomaly coefficient; it does not use the
 zero-density chiral condensate as the microscopic order parameter.  Therefore

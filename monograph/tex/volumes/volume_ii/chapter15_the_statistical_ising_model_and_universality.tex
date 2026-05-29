@@ -187,8 +187,8 @@ equilibration in the idealized symmetric-rate case.
 
 \section{Spin Correlators and Phases}
 
-\begin{theorem}[Ferromagnetic thermodynamic limits and phase selection]
-\label{thm:ising-ferromagnetic-thermodynamic-limits}
+\begin{quotedtheorem}[Ferromagnetic thermodynamic limits and phase selection]
+\label{qthm:ising-ferromagnetic-thermodynamic-limits}
 Consider the finite-volume Ising model on boxes
 \(\Lambda\nearrow\mathbb Z^D\) with finite-range couplings
 \(J_{xy}=J_{yx}\geq0\), inverse temperature \(\beta\geq0\), and external
@@ -254,10 +254,13 @@ whenever they satisfy the clustering condition
 \]
 for all local \(F,G\), where \(\tau_a\) translates \(G\).  Clustering is the
 condition that makes the limiting Gibbs state extremal, hence pure.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}
-For the FKG assertion, order configurations by \(s\leq t\) when
+\noindent
+The FKG assertion in
+Quoted Theorem~\ref{qthm:ising-ferromagnetic-thermodynamic-limits} has the
+following elementary finite-volume mechanism.  Order configurations by
+\(s\leq t\) when
 \(s_x\leq t_x\) for all \(x\).  The one-edge factor
 \(\exp(\beta J_{xy}s_xs_y)\) is log-supermodular for \(J_{xy}\geq0\): on the
 four possible values at an edge, the only nontrivial check is
@@ -271,7 +274,8 @@ log-supermodularity.  The full finite-volume Boltzmann weight is a product of
 these factors, so it is log-supermodular, and the finite distributive-lattice
 FKG theorem gives positive association.
 
-The GKS and GHS inequalities are finite-volume correlation inequalities for
+The GKS and GHS inputs in the quoted theorem are nontrivial finite-volume
+correlation inequalities for
 ferromagnetic Ising measures.  GKS gives nonnegativity of the derivatives of
 spin correlations with respect to ferromagnetic couplings and nonnegative
 fields; GHS gives the displayed concavity of the magnetization in a uniform
@@ -294,11 +298,10 @@ combination of two distinct Gibbs states, correlations of distant translates
 would retain the variance of the conditional expectation onto the tail
 sigma-algebra and clustering would fail.  Thus a clustering plus or minus
 state is pure.
-\end{proof}
 
 The basic observables are spin correlation functions.  At \(h=0\), for
 translation-invariant infinite-volume limits supplied by
-Theorem~\ref{thm:ising-ferromagnetic-thermodynamic-limits}, write
+Quoted Theorem~\ref{qthm:ising-ferromagnetic-thermodynamic-limits}, write
 \[
   C_\beta(x_1,\ldots,x_n)
   =
@@ -314,7 +317,7 @@ The two-point function at large separation is often summarized by
 For \(D=2,3\) and ferromagnetic nearest-neighbor coupling, there is a critical
 temperature \(T_c\).  In the ordered region \(T<T_c\), when the plus and minus
 limits are clustering and therefore pure in the sense of
-Theorem~\ref{thm:ising-ferromagnetic-thermodynamic-limits}, boundary
+Quoted Theorem~\ref{qthm:ising-ferromagnetic-thermodynamic-limits}, boundary
 conditions or the one-sided field limits \(h\to0^\pm\) select states with
 nonzero magnetization
 \[
@@ -735,8 +738,8 @@ destroy the factorization into sums of squares.  Such models may still have
 the same formal RG relevant coordinates, but they do not automatically supply
 Osterwalder--Schrader positivity for a Lorentzian reconstruction.
 
-\begin{proposition}[Closedness of reflection positivity under scaling limits]
-\label{prop:reflection-positivity-closed-under-scaling-limits}
+\begin{remark}[Closedness of reflection positivity under scaling limits]
+\label{rem:reflection-positivity-closed-under-scaling-limits}
 Let \(a\downarrow0\) label reflection-positive lattice measures
 \(\mu_a\).  Let \(A_a^I(f)\) be renormalized smeared lattice observables whose
 linear normalizations are real and whose test functions are supported in the
@@ -754,19 +757,16 @@ every set of complex coefficients \(c_\alpha\), the reflected quadratic forms
 converge to the corresponding continuum quadratic form \(Q_\ast(c)\).  Then
 \(Q_\ast(c)\geq0\) for all such \(c_\alpha\); the limiting Schwinger
 distributions are reflection positive on this test-function domain.
-\end{proposition}
+For a fixed finite list of observables and coefficients, this is simply the
+closedness of the cone \([0,\infty)\subset\mathbb R\): finite-lattice
+reflection positivity gives \(Q_a(c)\geq0\), and the convergence hypothesis
+gives \(Q_\ast(c)=\lim_{a\downarrow0}Q_a(c)\).  The finite list and vector
+\(c\) are arbitrary, so every reflected finite Gram matrix built from the
+continuum smeared observables is positive semidefinite on the stated test
+domain.
+\end{remark}
 
-\begin{proof}
-For every \(a\), finite-lattice reflection positivity gives
-\(Q_a(c)\geq0\).  The assumed convergence of the quadratic forms gives
-\[
-  Q_\ast(c)=\lim_{a\downarrow0}Q_a(c),
-\]
-and the closedness of the cone \([0,\infty)\subset\mathbb R\) gives
-\(Q_\ast(c)\geq0\).
-\end{proof}
-
-The hypothesis in this proposition concerns reflected quadratic forms and
+The hypothesis in this remark concerns reflected quadratic forms and
 separated-point correlators together.  Source-local
 subtractions used to define a distributional generating functional must either
 arise from genuine lattice observables whose reflected quadratic forms
@@ -1356,8 +1356,8 @@ so
 The factor \(A_X\) is not fixed-point data.  The exponent
 \(y_t=D-\Delta_\varepsilon\) is.
 
-\begin{proposition}[Coordinate universality versus scaling-limit existence]
-\label{prop:coordinate-universality-versus-scaling-limit-existence}
+\begin{remark}[Coordinate universality versus scaling-limit existence]
+\label{rem:coordinate-universality-versus-scaling-limit-existence}
 Proposition~\ref{prop:local-universality-rg-coordinates} is a statement about
 convergence of finitely many projected RG coordinates at the reference scale
 \(\mu_R\).  It does not, by itself, construct a continuum probability measure,
@@ -1369,10 +1369,9 @@ renormalized lattice source functionals on a source domain large enough to
 determine the desired correlators.  The limiting Schwinger functions must also
 satisfy the positivity, covariance, locality, regularity, and clustering
 hypotheses needed for the intended reconstruction or structural theorem.
-\end{proposition}
+\par
 
-\begin{proof}
-The local RG proposition controls the finite vector
+Indeed, the local RG proposition controls the finite vector
 \(z(\mu_R;\Lambda_0)\) after projecting the exact cutoff action to the chosen
 coordinate chart.  A continuum measure or source functional contains
 infinitely many correlation data and their positivity properties.  Convergence
@@ -1382,7 +1381,7 @@ in the limit, locality of the reconstructed fields, or uniqueness of the
 continuum state.  Each of these is an additional analytic assertion about the
 regulated models.  Hence scaling-limit existence is an independent hypothesis
 or theorem, not a conclusion of the coordinate estimate.
-\end{proof}
+\end{remark}
 
 \begin{hypothesis}[Continuum universality data]
 \label{hyp:conditional-lattice-to-continuum-universality-data}
@@ -1589,8 +1588,9 @@ correlators from the local scaling spectrum, two-point pairings, OPE
 coefficients, and Ward data, with the contact chart fixed by the source
 functional.  For \(u_R\neq0\) in the stated source-functional neighborhood,
 the deformation by \(\sigma\) and \(\varepsilon\) is part of the constructed
-functional data, so the same argument gives the corresponding scaling
-functions with the relevant coordinates held fixed.  The last sentence lists
+functional data: differentiating the limiting deformed functional
+\(W_\ast(\eta;u_R)\) at fixed \(u_R\) gives the corresponding separated-point
+scaling functions with the relevant coordinates held fixed.  The last sentence lists
 parameters removed either by tuning, by field normalization, or by restriction
 to separated points; the preceding argument never identifies them with CFT
 data.

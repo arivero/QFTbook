@@ -1071,9 +1071,28 @@ Using
   =(d-1)\partial^2L+\partial_\mu J^\mu
   =(d-1)\partial^2L
 \]
-gives \(T'^\mu{}_\mu=0\).  Conservation of
-\(j^\mu_\xi=T'^{\mu\nu}\xi_\nu\) then follows from the conformal Killing
-equation by the computation in the preceding section.
+gives \(T'^\mu{}_\mu=0\).  For a conformal Killing field
+\(\xi\),
+\[
+  \partial_\mu\xi_\nu+\partial_\nu\xi_\mu
+  =
+  \frac{2}{d}(\partial\cdot\xi)\delta_{\mu\nu}.
+\]
+Using symmetry and conservation of \(T'\),
+\[
+\begin{aligned}
+  \partial_\mu(T'^{\mu\nu}\xi_\nu)
+  &=
+  T'^{\mu\nu}\partial_\mu\xi_\nu \\
+  &=
+  \frac12T'^{\mu\nu}(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu)\\
+  &=
+  \frac1d(\partial\cdot\xi)T'^\mu{}_\mu
+  =
+  0 .
+\end{aligned}
+\]
+Thus every conformal Killing vector defines a conserved current.
 \end{proof}
 
 \begin{definition}[Virial-improvement quotient]
@@ -1119,8 +1138,8 @@ the class
 \]
 \end{definition}
 
-\begin{proposition}[Necessary and sufficient scalar-improvement condition]
-\label{prop:virial-obstruction-iff}
+\begin{remark}[Scalar-improvement criterion]
+\label{rem:virial-obstruction-iff}
 Under the hypotheses of
 Theorem~\ref{thm:stress-tensor-criterion-conformal-currents}, and restricting
 to the scalar improvement displayed there, the scale current can be promoted to
@@ -1130,9 +1149,6 @@ conformal Killing currents by improving the stress tensor if and only if
   \quad\text{in}\quad
   \mathcal H_{\rm vir}^{\rm scal}.
 \]
-\end{proposition}
-
-\begin{proof}
 If the obstruction class vanishes, then by definition there exist
 \(L\in\mathfrak S\) and \(J_\mu\in\mathfrak J\) such that
 \[
@@ -1155,7 +1171,7 @@ in the same local-operator quotient.  Therefore
 \(J_\mu:=V_\mu-(d-1)\partial_\mu L\) lies in \(\mathfrak J\), and the class of
 \(V\) in
 \(\mathfrak V/(\mathfrak J+(d-1)\partial\mathfrak S)\) is zero.
-\end{proof}
+\end{remark}
 
 \begin{remark}[General improvements]
 \label{rem:general-improvement-obstruction}
@@ -1186,7 +1202,7 @@ boundaries used in this monograph.
   such hypotheses one proves
   \({\rm obs}_{\rm vir}^{\rm scal}(V)=0\), or the corresponding vanishing in
   the allowed improvement quotient, so
-  Proposition~\ref{prop:virial-obstruction-iff} applies.  This is a theorem
+  Remark~\ref{rem:virial-obstruction-iff} applies.  This is a theorem
   about the formulated implication under those hypotheses, not a statement
   about every object called a two-dimensional scale-invariant theory in the
   literature.

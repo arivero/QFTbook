@@ -892,8 +892,8 @@ pure SYM these analytic controls are not supplied by the elementary zero-mode
 count alone.
 \end{hypothesis}
 
-\begin{proposition}[Cluster extraction is a separate assumption]
-\label{prop:pure-sym-instanton-cluster-extraction}
+\begin{remark}[Cluster extraction is a separate assumption]
+\label{rem:pure-sym-instanton-cluster-extraction}
 Assume Hypothesis~\ref{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
 and assume the infinite-volume theory has a massive pure phase
 \(\omega_\ell\) with cluster decomposition and one-point value
@@ -912,9 +912,7 @@ Consequently the instanton \(N_c\)-point calculation can at most supply the
 root equation for the condensate.  The choice of a particular root and the
 existence of the massive pure phases require the anomaly, index, and
 massive-branch inputs stated in this section.
-\end{proposition}
 
-\begin{proof}
 Choose separated points \(x_1,\ldots,x_{N_c}\), and translate them so that
 their mutual distances go to infinity.  Cluster decomposition in the pure
 phase gives
@@ -933,7 +931,7 @@ only the \(N_c\)-th power.  Its \(N_c\) roots are then organized by the
 \(\mathbb Z_{2N_c}\) anomaly and the \(\theta\)-monodromy described in
 Proposition~\ref{prop:pure-sym-condensate-branches-source}; no
 single-instanton Berezin integral selects one branch by itself.
-\end{proof}
+\end{remark}
 
 The component condensate \(\langle\operatorname{tr}\lambda\lambda\rangle_k\)
 is obtained from \(\langle S\rangle_k\) by the fixed component convention in
@@ -1619,9 +1617,11 @@ Propositions~\ref{prop:ads-yukawa-lifting-berezin-determinant} and
 \begin{proof}
 If \(\det M\neq0\) in the diagonal patch, then
 \(\widetilde v_i v_i\neq0\) for every \(i\), hence each summand in \(H\) is
-strictly positive and \(H>0\).  The large-size convergence in
-\eqref{eq:ads-radial-higgs-model-integral} follows immediately from
-\(cH>0\).
+strictly positive and \(H>0\).  For \(\rho\ge1\), the radial integrand is
+bounded by \(\rho^{2p-1}\ee^{-(cH)\rho^2}\), and this function is integrable
+on \([1,\infty)\) because the exponential decay dominates every polynomial.
+Near \(\rho=0\), the integrand is \(\rho^{2p-1}(1+O(\rho^2))\,d\rho\), which
+is integrable because \(p\ge1\).  Thus the model radial integral is finite.
 
 Set \(u=cH\rho^2\).  Then
 \[
@@ -2339,15 +2339,12 @@ threshold gives
 which is exactly \eqref{eq:sqcd-qm-from-sconfining-decoupling}.
 \end{proof}
 
-\begin{proposition}[Checks on the \(N_f=N_c+1\) confining superpotential]
-\label{prop:sqcd-sconfining-superpotential-checks}
+\begin{remark}[Checks on the \(N_f=N_c+1\) confining superpotential]
+\label{rem:sqcd-sconfining-superpotential-checks}
 For \(N_f=N_c+1\), the two terms in
 \eqref{eq:sqcd-nc-plus-one-confining-superpotential} have the same
 engineering dimension and \(R\)-charge, and the prefactor makes
 \(W_{N_c+1}\) a dimension-three, \(R\)-charge-two chiral superpotential.
-\end{proposition}
-
-\begin{proof}
 At \(N_f=N_c+1\),
 \[
   R(Q)=R(\widetilde Q)=\frac1{N_c+1}.
@@ -2377,7 +2374,7 @@ Classically, \(\dim M=2\) and \(\dim B_I=\dim\widetilde B^J=N_c\).  Both
 Since \(\Lambda_+^{2N_c-1}\) has dimension \(2N_c-1\) and zero
 \(R\)-charge in the anomaly-free spurion convention, the quotient has
 dimension \(3\) and \(R\)-charge \(2\), as required.
-\end{proof}
+\end{remark}
 
 \section{Superconformal SQCD Bookkeeping}
 \label{sec:n1-superconformal-sqcd-bookkeeping}
@@ -3223,17 +3220,14 @@ which vanishes exactly at \(r=\frac12\).  The superpotential contains two
 to \(2\) exactly at \(r=\frac12\).
 \end{proof}
 
-\begin{proposition}[KW NSVZ numerator]
-\label{prop:kw-nsvz-numerator}
+\begin{remark}[KW NSVZ numerator]
+\label{rem:kw-nsvz-numerator}
 At the \(R\)-charge found in Proposition~\ref{prop:kw-r-charge-anomaly}, the
 chiral-multiplet anomalous dimensions in the superconformal convention are
 \[
   \gamma_A=\gamma_B=-\frac12 ,
 \]
 and the NSVZ numerator of each gauge factor vanishes.
-\end{proposition}
-
-\begin{proof}
 Equation~\eqref{eq:n1-gamma-from-r} gives
 \[
   \gamma_A=\gamma_B=3\cdot\frac12-2=-\frac12 .
@@ -3256,7 +3250,7 @@ The scalar dimension of each \(A_i\) and \(B_j\) is therefore
   =
   \frac32R(A_i).
 \]
-\end{proof}
+\end{remark}
 
 \begin{proposition}[KW beta-function rank count]
 \label{prop:kw-beta-function-rank-count}
@@ -3380,16 +3374,13 @@ symmetric one:
   R(A_i)=R(B_j)=\frac12 .
 \]
 
-\begin{proposition}[KW central charges]
-\label{prop:kw-central-charges}
+\begin{remark}[KW central charges]
+\label{rem:kw-central-charges}
 At the symmetric superconformal \(R\)-charge,
 \[
   a_{\mathrm{KW}}=\frac{27}{64}N^2-\frac38,\qquad
   c_{\mathrm{KW}}=\frac{27}{64}N^2-\frac14 .
 \]
-\end{proposition}
-
-\begin{proof}
 For a four-dimensional \(\mathcal N=1\) SCFT,
 \[
   a=\frac{3}{32}(3\operatorname{Tr}R_f^3-\operatorname{Tr}R_f),
@@ -3414,7 +3405,7 @@ and
   \frac32N^2-2 .
 \]
 Substitution gives the displayed values.
-\end{proof}
+\end{remark}
 
 The basic mesonic chiral operators are
 \[

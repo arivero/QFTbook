@@ -370,25 +370,20 @@ The complement residual is
 where \(A\) is the approximate inverse used in the
 Newton--Kantorovich estimate.
 
-\begin{proposition}[Projected zeros can be spurious]
-\label{prop:projected-rg-zero-spurious}
-There is no implication from
-\eqref{eq:projected-rg-fixed-point-equation} to \(F(V_N)=0\), even in finite
-dimension.  More precisely, take
+\begin{example}[Spurious projected zeros]
+Projection residuals must be controlled in the omitted directions.  The
+finite-dimensional model
 \(\mathcal B=\mathbb R^2\), \(P(x,y)=(x,0)\), and
 \[
   F(x,y)=(0,1).
 \]
-Then \(P F(x,0)=0\) for every \(x\in\mathbb R\), but \(F\) has no zero in
-\(\mathbb R^2\).
-\end{proposition}
-
-\begin{proof}
-For every \(x\), \(F(x,0)=(0,1)\) and hence \(P F(x,0)=(0,0)\).  Thus every
-point of the projected line solves the projected equation.  The second
-component of \(F(x,y)\) is identically one, so no point of the full space
-satisfies \(F(x,y)=0\).
-\end{proof}
+has \(P F(x,0)=0\) for every \(x\in\mathbb R\), while the second component of
+\(F(x,y)\) is identically one.  Thus the entire projected line solves
+\eqref{eq:projected-rg-fixed-point-equation}, and no point of the full space
+solves \(F(V)=0\).  The residual
+\(\epsilon_N(V_N;A)=\|AQ_NF(V_N)\|\) is the datum that detects this failure in
+the Newton--Kantorovich lifting problem.
+\end{example}
 
 \begin{corollary}[Lifting a projected RG zero]
 \label{cor:projected-rg-zero-lift}
@@ -480,20 +475,18 @@ stretched-exponential large-distance remainder controlled by the ultraviolet
 cutoff.
 \end{quotedtheorem}
 
-\begin{proof}[Status of the quoted theorem]
-This is the theorem-level output of Giuliani--Mastropietro--Rychkov and
-Giuliani--Mastropietro--Rychkov--Scola.  The proof is not a finite beta
-function calculation: it constructs \(V_\ast\) in an infinite-dimensional
+\paragraph{Status of the quoted theorem.}
+This is the theorem-level output of the GMR and GMRS constructive RG works
+just quoted.  Its proof constructs \(V_\ast\) in an infinite-dimensional
 kernel space and controls the irrelevant tail by a convergent multiscale tree
 expansion.  The theorem is quoted here as a state-of-the-art benchmark for
 what a nonperturbative Wilsonian fixed-point statement must contain.  The
-monograph does not import its estimates as black-box input for scalar or
-gauge theories; it uses the theorem to calibrate the form of a complete RG
-claim.
-\end{proof}
+monograph uses the theorem to calibrate the form of a complete RG claim, while
+separate scalar and gauge theory claims in this book require their own
+estimates.
 
-\begin{proposition}[Irrelevant tails are part of the theorem]
-\label{prop:irrelevant-tail-part-of-rg-theorem}
+\begin{remark}[Irrelevant tails are part of the theorem]
+\label{rem:irrelevant-tail-part-of-rg-theorem}
 Let \(\mathcal B=\mathbb R^m\oplus\mathcal K\), where \(\mathcal K\) is a
 Banach space of irrelevant kernels, and let \(P:\mathcal B\to\mathbb R^m\) be
 the coordinate projection.  A solution of the projected equation
@@ -506,9 +499,6 @@ does not define a fixed point of \(\mathcal R\) unless the irrelevant residual
 \]
 is either zero or is absorbed by a controlled graph \(K=h(g)\) satisfying the
 full fixed-point equation.
-\end{proposition}
-
-\begin{proof}
 Write \(Q=1-P\).  If \(V=(g,0)\) solves only the projected equation, then
 \[
   \mathcal R(V)-V=(0,Q(\mathcal R(V)-V)).
@@ -524,7 +514,7 @@ The second equation is the irrelevant-tail equation.  In a constructive RG
 proof it is solved by contraction, graph transform, or Newton validation in
 the norm of \(\mathcal K\); without such a bound, the projected equation is
 only a coordinate calculation.
-\end{proof}
+\end{remark}
 
 \section{Hierarchical Scalar Fixed-Point Benchmark}
 
@@ -677,7 +667,7 @@ and scaling estimates for the corresponding hierarchical or
 \(\phi^4_{3,\epsilon}\) observable data.
 \end{quotedtheorem}
 
-\begin{proof}[Status of the quoted theorem]
+\paragraph{Status of the quoted theorem.}
 The theorem is quoted as a benchmark, not as an imported proof for the
 ordinary short-range three-dimensional scalar fixed point.  Its mathematical
 content is that the non-Gaussian fixed point is an element of the specified
@@ -690,7 +680,6 @@ result is stronger than locating a zero of a finite beta function and weaker
 than a construction of the short-range \(\phi^4_3\) Wilson--Fisher CFT.
 That last comparison would require a theorem relating the short-range
 block-spin map and reconstruction data to one of these fixed-point systems.
-\end{proof}
 
 The companion calculation
 \[
@@ -804,8 +793,8 @@ reconstruction convergence, convergence of local couplings alone is not a
 QFT universality theorem.
 \end{definition}
 
-\begin{proposition}[Universality as an equivalence relation after reconstruction]
-\label{prop:universality-equivalence-relation}
+\begin{remark}[Universality as an equivalence relation after reconstruction]
+\label{rem:universality-equivalence-relation}
 Assume the data of Definition~\ref{def:wilsonian-universality-statement}, and
 suppose the displayed convergence to a common \(O_\ast\) holds.  Define
 \(i\sim j\) if there exist \(g_i,g_j\in G\) such that
@@ -817,9 +806,6 @@ suppose the displayed convergence to a common \(O_\ast\) holds.  Define
   \qquad\text{in }\mathcal O .
 \]
 Then \(\sim\) is an equivalence relation on \(I\).
-\end{proposition}
-
-\begin{proof}
 Reflexivity holds by taking the same normalization on both sides.  Symmetry
 is immediate by changing the sign of the displayed difference in the vector
 space \(\mathcal O\).
@@ -853,7 +839,7 @@ so
 Thus \(i\sim k\).  The proof uses the existence of a common reconstructed
 limit and therefore controls more than pairwise similarity of formal coupling
 lists.
-\end{proof}
+\end{remark}
 
 Thus a universality class may be summarized by a triple
 \[

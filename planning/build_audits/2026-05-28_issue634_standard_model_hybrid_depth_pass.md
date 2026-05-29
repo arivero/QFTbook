@@ -21,7 +21,7 @@ matching datum.
   `prop:sm-flavor-parameter-counting`,
   `prop:sm-gim-tree-level-diagonality`, and
   `prop:sm-jarlskog-rephasing`.
-- Added Propositions `prop:sm-higgs-radial-mass` and
+- Added the Higgs radial mass coordinate calculation and Proposition
   `prop:sm-custodial-rho`, deriving `m_h^2=2 lambda v^2` and
   `rho_tree=1`.
 - Added Definition `def:sm-b-l-charges`, Proposition

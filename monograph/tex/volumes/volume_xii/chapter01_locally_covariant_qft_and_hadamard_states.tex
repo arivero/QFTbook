@@ -131,17 +131,16 @@ the induced metric and orientations.  Let
 \]
 \end{definition}
 
-\begin{proposition}[Local net associated to a locally covariant theory]
-\label{prop:kinematic-net-from-lcqft}
+\begin{remark}[Local net associated to a locally covariant theory]
+\label{rem:kinematic-net-from-lcqft}
 For each fixed \(M\), the assignment
 \[
   O\longmapsto \mathfrak A^{\rm kin}(M;O)
 \]
 on causally convex globally hyperbolic open subsets is isotone and satisfies
 Einstein causality.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 If \(O_1\subset O_2\), the inclusion factors as
 \[
   O_1\stackrel{\iota_{O_2;O_1}}{\longrightarrow}O_2
@@ -159,7 +158,6 @@ so the image for \(O_1\) is contained in the image for \(O_2\).  If
 morphisms into \(M\) satisfy the hypothesis of Einstein causality in
 Definition~\ref{def:locally-covariant-qft}, and the commutator of the two
 image algebras vanishes.
-\end{proof}
 
 Locally covariant fields are defined by naturality.  Let
 \({\bf Test}_E\) be the functor assigning to \(M\) the vector space
@@ -562,16 +560,15 @@ singularity.  Changing \(\mu\) changes the subtraction by
 \]
 which is smooth near the diagonal because \(V\) is smooth.
 
-\begin{proposition}[State-independent singular part]
-\label{prop:hadamard-state-independent-subtraction}
+\begin{remark}[State-independent singular part]
+\label{rem:hadamard-state-independent-subtraction}
 Let \(\omega\) and \(\omega'\) be Hadamard quasifree states for the same
 operator \(P_M\) on the same globally hyperbolic spacetime.  Then
 \[
   \omega_2-\omega'_2\in C^\infty(M\times M).
 \]
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 On each convex normal neighborhood, Definition~\ref{def:hadamard-quasifree-state}
 gives
 \[
@@ -587,7 +584,6 @@ after taking the distributional boundary value.  The same
 \]
 is smooth on that neighborhood.  Smoothness is local on \(M\times M\), so the
 difference is smooth globally.
-\end{proof}
 
 \section{Microlocal Form And Wick Products}
 
@@ -611,7 +607,7 @@ For a Hadamard state, define the Wick square by point splitting:
   \left(\phi(x)\phi(y)-H_{\epsilon,\mu}(x,y)\mathbf 1\right)
   \dd\operatorname{vol}_g(x).
 \]
-Proposition~\ref{prop:hadamard-state-independent-subtraction} implies that
+Remark~\ref{rem:hadamard-state-independent-subtraction} implies that
 the subtraction removes the state-independent singularity.  The remaining
 freedom is finite and local.  In four dimensions,
 \[

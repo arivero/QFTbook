@@ -479,9 +479,11 @@ Multiplying by \(V_{kl}V_{il}^*\) and taking imaginary parts gives
   =
   -\operatorname{Im}(V_{in}V_{kl}V_{il}^*V_{kn}^*) .
 \]
-Repeating the same argument with column orthogonality relates all remaining
-choices, with signs determined by interchanging the ordered row or column
-pair.  For two generations,
+Column orthogonality gives the analogous relation for fixed column pair and
+varying rows.  Combining the row and column relations moves any quartet with
+distinct row labels and distinct column labels to any other such quartet;
+interchanging the ordered row pair or the ordered column pair changes the
+sign.  For two generations,
 Proposition~\ref{prop:sm-flavor-parameter-counting} shows that all phases in
 a \(2\times2\) unitary charged-current matrix are removable by quark-field
 rephasings.  A representative can therefore be chosen real, and every
@@ -629,8 +631,7 @@ Chapter~\ref{ch:vol2-classical-yang-mills-matter} applied to the
 \(R_\xi\) gauge they remain as unphysical fields paired by BRST, while in a
 unitary-gauge chart they are removed locally.
 
-\begin{proposition}[Higgs radial mass coordinate]
-\label{prop:sm-higgs-radial-mass}
+\paragraph{Higgs radial mass coordinate.}
 In the scalar chart of Definition~\ref{def:sm-electroweak-scalar-chart}, the
 potential restricted to the radial coordinate is
 \[
@@ -644,9 +645,6 @@ Consequently the radial scalar mass coordinate is
 \]
 The cubic and quartic self-interaction coefficients in the potential are
 \(\lambda v\) and \(\lambda/4\), respectively, in this field coordinate.
-\end{proposition}
-
-\begin{proof}
 In the unitary local chart \(H=(0,(v+h)/\sqrt2)^T\),
 \[
   H^\dagger H-\frac{v^2}{2}=vh+\frac{h^2}{2}.
@@ -655,7 +653,6 @@ Substitution into \(V(H)\) gives the displayed polynomial.  The Lorentzian
 Lagrangian contains \(-V\), while the standard real-scalar mass term is
 \(-\frac12m_h^2h^2\).  Comparing the quadratic coefficients gives
 \(m_h^2=2\lambda v^2\).
-\end{proof}
 
 \begin{proposition}[Custodial \(SU(2)\) and the tree-level \(\rho\) coordinate]
 \label{prop:sm-custodial-rho}
@@ -952,8 +949,8 @@ the neutral-lepton Majorana mass matrix in the electroweak scalar chart is
 \]
 \end{definition}
 
-\begin{proof}[Derivation of \eqref{eq:sm-weinberg-neutrino-mass}]
-At \(H=H_0\), the weak contraction
+To verify \eqref{eq:sm-weinberg-neutrino-mass}, set \(H=H_0\).  The weak
+contraction
 \(\epsilon_{ij}L^I_iH_j\) selects the neutral component of \(L^I\) and gives
 \[
   \epsilon_{ij}L^I_{\alpha i}H_{0,j}
@@ -974,7 +971,6 @@ which is the displayed Majorana mass coordinate.  The symmetry of
 fields is symmetric in the flavor labels after the anticommutation of the
 fields is combined with the antisymmetry of
 \(\epsilon^{\alpha\beta}\).
-\end{proof}
 
 \begin{proposition}[Integrating out singlet neutrinos at tree level]
 \label{prop:sm-type-i-seesaw-matching}
@@ -1435,8 +1431,8 @@ This is only a coordinate change.  The electroweak mass formulae in this
 chapter use the unrescaled \(g_1\).
 \end{remark}
 
-\begin{proposition}[One-loop top-Higgs subsystem]
-\label{prop:sm-one-loop-top-higgs-subsystem}
+\begin{quotedtheorem}[One-loop top-Higgs subsystem]
+\label{qthm:sm-one-loop-top-higgs-subsystem}
 Restrict the minimal Standard Model coupling chart to the invariant subspace in
 which the only nonzero Yukawa singular value is the top coordinate \(y_t\).
 In the same minimal-subtraction convention,
@@ -1467,9 +1463,9 @@ and
 \end{aligned}
   \label{eq:sm-one-loop-lambda-beta}
 \]
-\end{proposition}
+\end{quotedtheorem}
 
-\begin{proof}
+\noindent
 The restriction to one Yukawa singular value is a coordinate restriction, not
 an estimate: the one-loop matrix beta functions are polynomial in the Yukawa
 matrices and preserve the subspace where \(Y_d=Y_e=0\) and \(Y_u\) has only
@@ -1511,7 +1507,6 @@ boundary data.  It also is not the full physical Standard Model trajectory
 unless the remaining Yukawa singular values and all higher-dimensional
 coordinates are consistently set to zero in the chosen chart; its role here
 is to isolate the leading top-Higgs mechanism in the quartic running.
-\end{proof}
 
 \section{Higgs Quartic Running and Large-Field Claims}
 
@@ -1727,10 +1722,10 @@ Higgs large-field stability or metastability is a separate construction
 problem.
 \end{remark}
 
-\begin{proposition}[One-loop source of downward quartic running]
-\label{prop:sm-top-source-downward-quartic}
+\begin{remark}[One-loop source of downward quartic running]
+\label{rem:sm-top-source-downward-quartic}
 In the one-loop top-Higgs subsystem of
-Proposition~\ref{prop:sm-one-loop-top-higgs-subsystem}, the beta function at
+Quoted Theorem~\ref{qthm:sm-one-loop-top-higgs-subsystem}, the beta function at
 \(\lambda=0\) is
 \[
   (4\pi)^2\beta_\lambda\big|_{\lambda=0}
@@ -1742,21 +1737,20 @@ Proposition~\ref{prop:sm-one-loop-top-higgs-subsystem}, the beta function at
   \right].
   \label{eq:sm-lambda-beta-at-zero}
 \]
-Thus the top-Yukawa coordinate is the negative contribution that can drive
-the minimal-subtraction quartic coordinate through zero along the RG flow.
-This is a statement about the specified perturbative coupling chart.
-\end{proposition}
+Thus the top-Yukawa term supplies the negative entry in this
+minimal-subtraction quartic beta function.  The statement belongs to the
+specified perturbative coupling chart.
+\par
 
-\begin{proof}
 Set \(\lambda=0\) in \eqref{eq:sm-one-loop-lambda-beta}.  The terms
 \(24\lambda^2\), \(12\lambda y_t^2\), and
 \(-3\lambda(3g_2^2+g_1^2)\) vanish, leaving exactly
 \eqref{eq:sm-lambda-beta-at-zero}.  The negative sign of the top term is the
 closed-fermion-loop sign already identified in the proof of
-Proposition~\ref{prop:sm-one-loop-top-higgs-subsystem}.  No
+Quoted Theorem~\ref{qthm:sm-one-loop-top-higgs-subsystem}.  No
 scheme-independent observable is obtained until the matching inputs and the
 observable or decay functional have been specified.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Data required for a Higgs large-field claim]
 \label{def:sm-higgs-large-field-claim-data}
@@ -1871,8 +1865,8 @@ of the electroweak coupling chart, not on the full space of all possible
 four-fermion, vertex, and detector corrections.
 \end{definition}
 
-\begin{proposition}[What the \(T\) coordinate measures]
-\label{prop:sm-t-coordinate-rho}
+\begin{remark}[What the \(T\) coordinate measures]
+\label{rem:sm-t-coordinate-rho}
 Suppose the only low-momentum effect in the two-point chart is a shift of the
 charged and neutral weak mass coordinates,
 \[
@@ -1900,9 +1894,6 @@ is
   \delta\rho=\alpha_{\rm em}T+O(\delta^2).
   \label{eq:sm-t-rho-shift}
 \]
-\end{proposition}
-
-\begin{proof}
 The first equality is exactly the definition of \(T\) after the stated
 identification of the zero-momentum self-energies with mass-coordinate shifts.
 For the second, use the tree identity \(m_W^2=m_Z^2c_W^2\) and expand
@@ -1927,7 +1918,7 @@ The first-order Taylor expansion of \((1+x)^{-1}\) gives
 \]
 which proves \eqref{eq:sm-t-rho-shift}.  This is the precise sense in which
 \(T\) records custodial-symmetry breaking in a two-point electroweak chart.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Domain of the \(S,T,U\) projection]
 \label{prop:sm-stu-domain}
@@ -1960,7 +1951,7 @@ normalization used to define \(G_F\), and the reference neutral-pole mass.
 The combinations displayed in \eqref{eq:sm-stu-definitions} are a convenient
 basis of the remaining three-dimensional quotient.  The \(T\) coordinate is
 the residual custodial mass-ratio coordinate by
-Proposition~\ref{prop:sm-t-coordinate-rho}; the \(S\) coordinate is the
+Remark~\ref{rem:sm-t-coordinate-rho}; the \(S\) coordinate is the
 neutral-current derivative combination that remains after the photon charge
 normalization is removed; and \(U\) is the corresponding charged-minus-neutral
 derivative coordinate.  If nonanalytic thresholds, nonlocal detector
@@ -2463,8 +2454,8 @@ four-current contribution coupled to the muon line by photons; and
 separation-scheme convention.
 \end{definition}
 
-\begin{proposition}[Leading electroweak Pauli coefficient]
-\label{prop:sm-muon-leading-electroweak}
+\begin{controlledapproximation}[Leading electroweak Pauli coefficient]
+\label{ca:sm-muon-leading-electroweak}
 In the broken-phase electroweak coupling chart, and at leading order in
 \(m_\mu^2/m_W^2\), \(m_\mu^2/m_Z^2\), and \(m_\mu^2/m_h^2\), the one-loop weak
 contribution to the muon Pauli coordinate is
@@ -2481,9 +2472,7 @@ contribution to the muon Pauli coordinate is
 \]
 where \(s_W^2=g_1^2/(g_1^2+g_2^2)\) in the convention
 \(Q=T^3+Y\).
-\end{proposition}
-
-\begin{proof}
+\par
 The weak contribution is the coefficient of the dimension-five Pauli operator
 \[
   \frac{e}{4m_\mu}a_\mu\,
@@ -2527,7 +2516,12 @@ leading terms gives \eqref{eq:sm-muon-leading-electroweak}.  This is a
 short-distance matching statement in the electroweak EFT; higher weak loops
 and mixed electroweak-hadronic terms are separate entries in
 \(a_\mu^{\rm rem}\) unless explicitly included in the specified order.
-\end{proof}
+A complete proof in this monograph requires the explicit one-loop Pauli
+projection for the charged-vector, neutral-vector, Goldstone, and ghost
+representatives.  Until that appendix-level calculation is supplied, the
+displayed formula is used only as the convention-fixed leading matching
+coefficient, not as a theorem established here.
+\end{controlledapproximation}
 
 \begin{definition}[Hadronic vacuum polarization from QCD current data]
 \label{def:sm-muon-hvp-current-data}
@@ -2705,8 +2699,8 @@ when both are available, is a nontrivial matching statement about the same
 QCD-defined current correlator.
 \end{definition}
 
-\begin{proposition}[Data needed for the \(a_\mu\) prediction]
-\label{prop:sm-muon-gminus-two-prediction-inputs}
+\begin{remark}[Data needed for the \(a_\mu\) prediction]
+\label{rem:sm-muon-gminus-two-prediction-inputs}
 A value assigned to \(a_\mu^{\rm SM}\) is a Standard Model prediction in the
 sense of Definition~\ref{def:sm-hybrid-prediction} only after the following
 data have been specified:
@@ -2720,9 +2714,6 @@ data have been specified:
 \item the combination rule for correlations among input parameters and
       systematic uncertainties.
 \end{enumerate}
-\end{proposition}
-
-\begin{proof}
 Definition~\ref{def:sm-muon-gminus-two-observable} identifies \(a_\mu\) as a
 single Pauli-form-factor coordinate.  The decomposition
 \eqref{eq:sm-muon-gminus-two-hybrid-decomposition} is not a decomposition of
@@ -2736,7 +2727,7 @@ item in the list changes the coordinate map from the hybrid Standard Model
 definition to the number called \(a_\mu^{\rm SM}\).  Thus the listed data are
 necessary for the five requirements in
 Definition~\ref{def:sm-hybrid-prediction}.
-\end{proof}
+\end{remark}
 
 \begin{openproblem}[Constructive Standard Model]
 \label{op:constructive-standard-model}

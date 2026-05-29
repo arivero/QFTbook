@@ -308,8 +308,45 @@ Peter--Weyl theory expands it as
   \int_G K_\beta(V)\overline{\chi_\lambda(V)}\,\dd V .
   \label{eq:lattice-peter-weyl-crossing-kernel}
 \end{equation}
-For the Wilson plaquette kernel the coefficients entering the reflection
-plane decomposition are nonnegative.  Matrix-coefficient orthogonality rewrites
+For \(G=SU(N)\) with the fundamental Wilson kernel this positivity is
+explicit.  Write
+\[
+  K_\beta(V)
+  =
+  \exp\left[
+    \frac{\beta}{2N}
+    \bigl(\operatorname{tr}V+\operatorname{tr}V^{-1}\bigr)
+  \right]
+  =
+  \sum_{r,s\geq0}
+  \frac{(\beta/2N)^{r+s}}{r!\,s!}
+  (\operatorname{tr}V)^r(\operatorname{tr}V^{-1})^s .
+\]
+The product
+\((\operatorname{tr}V)^r(\operatorname{tr}V^{-1})^s\) is the character of
+\((\mathbb C^N)^{\otimes r}\otimes(\overline{\mathbb C^N})^{\otimes s}\).
+Decomposing this finite-dimensional representation into irreducibles gives
+\[
+  (\operatorname{tr}V)^r(\operatorname{tr}V^{-1})^s
+  =
+  \sum_{\lambda\in\widehat{SU(N)}}
+  m_{\lambda;r,s}\chi_\lambda(V),
+  \qquad
+  m_{\lambda;r,s}\in\mathbb Z_{\geq0}.
+\]
+The exponential series is absolutely and uniformly convergent on the compact
+group, so its character coefficients are
+\[
+  c_\lambda(\beta)
+  =
+  \sum_{r,s\geq0}
+  \frac{(\beta/2N)^{r+s}}{r!\,s!}\,m_{\lambda;r,s}
+  \geq0 .
+\]
+The same argument applies to a Wilson kernel built from a unitary
+representation \(R\) and its conjugate, with \(R^{\otimes r}\otimes
+\overline R^{\otimes s}\) replacing the fundamental tensor powers.
+Matrix-coefficient orthogonality rewrites
 each crossing contribution as a finite or absolutely convergent sum of terms
 \[
   c_\lambda(\beta)\,
@@ -881,9 +918,6 @@ has eigenvalues
   \lambda_n(t,t_0)=\ee^{-aE_n(t-t_0)}.
   \label{eq:lattice-glueball-gevp-eigenvalues}
 \end{equation}
-With higher-state overlap present, the same formula is the leading term in a
-large-\((t-t_0)\) expansion whose error is controlled by the first omitted
-energy gap and by the conditioning of the chosen operator basis.
 \end{proposition}
 
 \begin{proof}
@@ -899,12 +933,18 @@ Since \(Z\) is invertible,
   (Z^\dagger)^{-1}D(t_0)^{-1}D(t)Z^\dagger .
 \]
 This matrix is similar to \(D(t_0)^{-1}D(t)\), hence has eigenvalues
-\(\ee^{-aE_n(t-t_0)}\).  If higher states are present, write the correlation
-matrix as this finite-rank part plus a positive remainder bounded by the first
-omitted exponential in the chosen channel.  Standard perturbation estimates
-for generalized eigenvalues then give the stated controlled leading behavior
-whenever \(C(t_0)\) is well conditioned.
+\(\ee^{-aE_n(t-t_0)}\).
 \end{proof}
+
+When higher states have nonzero overlap with the chosen operator basis, the
+GEVP is no longer exactly diagonalized by the first \(m\) spectral terms.
+One then writes \(C(t)=Z_mD_m(t)Z_m^\dagger+R_m(t)\), where \(R_m(t)\) is a
+positive spectral remainder.  A quantitative extraction theorem requires an
+explicit operator norm bound on \(C(t_0)^{-1/2}R_m(t)C(t_0)^{-1/2}\) and the
+condition number of the retained overlap matrix; with such data, ordinary
+finite-dimensional perturbation estimates give corrections suppressed by the
+first omitted energy gap.  The present proposition states only the exact
+finite-basis algebra.
 
 The continuum spin labels \(J^{PC}\) are recovered only after the cubic
 lattice irreducible representations have been compared across lattice
@@ -1127,25 +1167,69 @@ drawn zeros into four inequivalent continuum cones.
   \label{fig:lattice-fermion-doubling}
 \end{figure}
 
-\begin{theorem}[Nielsen--Ninomiya obstruction, structural form]
-Let \(D(p)\) be a free lattice Dirac operator on a periodic hypercubic lattice
-which is local in position space, translationally invariant, has the correct
-single-particle continuum behavior near \(p=0\), anticommutes with a fixed
-\(\gamma_5\), and satisfies the usual Hermiticity condition giving a real
-spectrum for \(\gamma_5D\).  Then the zeros of \(D(p)\) in the Brillouin torus
-come with total chirality zero.  In particular, these hypotheses do not allow
-a single Weyl fermion.
+\begin{theorem}[Degree obstruction for chiral lattice symbols]
+\label{thm:lattice-degree-obstruction-chiral-symbol}
+Let \(f=(f_1,\ldots,f_D):\mathbb T^D\to\mathbb R^D\) be a smooth periodic map
+whose zeros are isolated and nondegenerate, and let
+\[
+  D_f(p)=\ii\sum_{\mu=1}^D\gamma_\mu f_\mu(p)
+\]
+with Euclidean gamma matrices satisfying
+\(\{\gamma_\mu,\gamma_\nu\}=2\delta_{\mu\nu}\).  This symbol anticommutes with
+the fixed chirality matrix \(\gamma_{D+1}\).  Assign to a zero \(p_*\) the
+chirality sign
+\[
+  \chi(p_*)=
+  \operatorname{sign}\det
+  \left(\frac{\partial f_\mu}{\partial p_\nu}(p_*)\right).
+\]
+Then
+\[
+  \sum_{f(p_*)=0}\chi(p_*)=0 .
+\]
+Consequently a chirally symmetric periodic symbol of this form cannot contain
+only one nondegenerate continuum Weyl cone.
 \end{theorem}
 
 \begin{proof}
-The normalized symbol of \(D(p)\) defines a map from the Brillouin torus with
-small balls around its zeros removed to a sphere of Dirac matrices.  The
-chirality of a zero is the local winding number of this map around that zero.
-The torus has no boundary.  Applying degree additivity to the boundary of the
-punctured torus gives that the sum of all local winding numbers is zero.  A
-single continuum Weyl fermion would contribute a nonzero total winding number,
-contradicting this identity.
+For a regular value \(y\in\mathbb R^D\) of \(f\), define the signed preimage
+count
+\[
+  I(y)
+  =
+  \sum_{f(p)=y}
+  \operatorname{sign}\det
+  \left(\frac{\partial f_\mu}{\partial p_\nu}(p)\right).
+\]
+Sard's theorem makes the regular values dense.  On a connected open set of
+regular values, \(I(y)\) is locally constant: if \(y(s)\) is a small path of
+regular values and \(f(p_0)=y(0)\), the inverse function theorem gives a
+unique smooth branch \(p(s)\) with \(f(p(s))=y(s)\), and the determinant sign
+cannot change along the branch because it never vanishes.
+
+The image \(f(\mathbb T^D)\) is compact, so there exists a regular value
+\(y_\infty\) outside the image; for it \(I(y_\infty)=0\).  Join \(0\) to
+\(y_\infty\) by a smooth path and perturb it, with endpoints fixed, so that it
+meets the critical-value set only in isolated birth--death crossings.  At such
+a crossing the local normal form creates or annihilates two simple preimages
+with opposite determinant signs.  Hence the signed count is unchanged across
+the crossing.  Therefore \(I(0)=I(y_\infty)=0\), which is the displayed
+chirality-sum identity.
+
+Near a nondegenerate zero, \(D_f(p)\) linearizes to
+\(\ii\gamma_\mu A^\mu{}_\nu(p-p_*)^\nu\).  The sign of \(\det A\) is exactly
+the orientation, hence chirality, of that continuum cone relative to the
+chosen gamma-matrix orientation.  A single Weyl cone would have total chirality
+\(\pm1\), contradicting the zero sum.
 \end{proof}
+
+The full Nielsen--Ninomiya theorem treats broader local,
+translation-invariant, chirally symmetric lattice Dirac operators by replacing
+\(f/|f|\) with the appropriate normalized symbol on the Brillouin torus with
+small neighborhoods of the zeros removed.  The obstruction is the same degree
+identity: a compact momentum torus has no boundary, so the local winding
+numbers of all zeros must sum to zero.  Later lattice-fermion chapters spell
+out how Wilson and Ginsparg--Wilson constructions evade different hypotheses.
 
 Standard lattice fermion constructions evade different hypotheses of this
 theorem.

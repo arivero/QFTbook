@@ -168,10 +168,12 @@
 - Four-point scattering output: after connected-part subtraction and
   stable-particle pole separation, LSZ boundary values in the physical
   \(s\)-, \(t\)-, and \(u\)-channel regions are boundary values of the same
-  primitive analytic germ wherever the LSZ limits exist.  The fixed-\(t\)
-  Jin--Martin domain remains a stronger retarded-commutator and
-  Lehmann--Martin theorem, not a corollary of primitive tube analyticity
-  alone.
+  primitive analytic germ wherever the LSZ limits exist.  This is recorded in
+  a remark rather than a theorem-family wrapper because it is a conditional
+  transfer of the proved primitive tube/Jost-edge results through the LSZ
+  boundary operation.  The fixed-\(t\) Jin--Martin domain remains a stronger
+  retarded-commutator and Lehmann--Martin theorem, not a corollary of
+  primitive tube analyticity alone.
 - Dyson/Jost--Lehmann representation: if \(C(x)\) is a Dyson-regular causal
   commutator matrix coefficient, then
   \[

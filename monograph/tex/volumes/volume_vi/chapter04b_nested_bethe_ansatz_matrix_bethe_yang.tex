@@ -118,15 +118,14 @@ chain in the Hamiltonian normalization of
   E=\sum_{j=1}^{M_1}\frac{1}{(u_j^{(1)})^2+1/4}.
 \]
 
-\begin{proposition}[Origin of the \(SU(N)\) nested equations]
-\label{prop:su-n-nested-origin}
+\begin{remark}[\(SU(N)\) nesting origin]
+\label{rem:su-n-nested-origin}
 The equations \eqref{eq:su-n-nested-bethe} are the pole-cancellation
 conditions for the nested transfer-matrix eigenvalue obtained by applying the
 algebraic Bethe ansatz successively to the residual internal
 \(SU(N-r)\)-color problem at levels \(r=1,\ldots,N-1\).
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 At the first level, the monodromy has one reference diagonal entry and an
 \((N-1)\times(N-1)\) block acting on the non-reference colors.  Commuting the
 reference diagonal entry through first-level creation operators produces the
@@ -141,12 +140,14 @@ share a simple root of \(A_{N-1}\), hence there is no factor.  Requiring every
 apparent pole in the nested eigenvalue to have zero residue gives exactly
 \eqref{eq:su-n-nested-bethe}.  The iteration terminates at \(r=N-1\), where
 there is no further auxiliary color.
-\end{proof}
 
-The proof is finite-dimensional algebra.  Completeness of the Bethe vectors
-for every chain length and every admissible representation is a separate
-problem; it depends on boundary conditions, singular roots, and the treatment
-of coincident solutions.
+The full proof is finite-dimensional algebra, but it requires the complete
+recursive nested monodromy construction and the corresponding transfer-matrix
+eigenvalue at every level.  The paragraph above records the origin of the
+displayed equations and the pole-cancellation mechanism; it is not a
+completeness theorem for Bethe vectors.  Completeness for every chain length
+and every admissible representation is a separate problem; it depends on
+boundary conditions, singular roots, and the treatment of coincident solutions.
 
 \section{Worked SU(3) Configuration}
 

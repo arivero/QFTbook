@@ -174,16 +174,11 @@ convention check on the gauge-theory spectral problem, not a proof of the
 all-coupling Bethe ansatz from string theory.
 \end{controlledapproximation}
 
-\begin{proposition}[Dispersion from shortening]
-\label{prop:planar-n4-dispersion-shortening}
+\paragraph{Dispersion from shortening.}
 Assuming the centrally extended residual symmetry acts on a one-magnon
 representation with central charges \(P=g(1-\ee^{\ii p})\) and
-\(K=g(1-\ee^{-\ii p})\), the shortening condition fixes the dispersion
-relation to \eqref{eq:planar-n4-magnon-dispersion}.
-\end{proposition}
-
-\begin{proof}
-Compute
+\(K=g(1-\ee^{-\ii p})\), the shortening condition gives the dispersion
+relation by the finite algebraic check
 \[
   PK
   =
@@ -197,7 +192,6 @@ Substitution into \(H^2-4PK=1\) gives
 \]
 The positive square root is selected because \(H=1\) at \(g=0\) for an
 elementary magnon.
-\end{proof}
 
 \section{Zhukovsky Variables}
 
@@ -1031,13 +1025,18 @@ particle is
 \end{proposition}
 
 \begin{proof}
-Apply Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation} to each
-of the four \(\chi\)-terms in the definition of
-\(\theta(x_1^\pm,x_2^\pm)\), with the first argument crossing inward and the
-second remaining in the outside chamber.  The four signs in
-\(\Delta_{\bar1}\theta\) are exactly the alternating signs in the BES
-combination \(+,-,-,+\), multiplied by the single-kernel correction
-\(-\Psi_x^+\).  Summing the four continued kernels gives
+The BES phase is the alternating four-kernel combination
+\[
+  \chi(x_1^+,x_2^+)-\chi(x_1^+,x_2^-)
+  -\chi(x_1^-,x_2^+)+\chi(x_1^-,x_2^-).
+\]
+Along the stated crossing path, only the first argument of each kernel crosses
+from the outside chamber to the inside chamber; the second argument stays
+outside.  The local DHM continuation formula for one kernel therefore adds
+the correction \(-\Psi_x^+\) to each crossed kernel.  Multiplying these four
+single-kernel corrections by the signs \(+,-,-,+\) in the BES combination
+gives exactly the four terms defining \(\Delta_{\bar1}\theta\).  The raw
+continued kernels give \(\theta_{\rm raw}^{-,+}\), so their sum is
 \eqref{eq:planar-n4-crossed-bes-theta-local}.
 \end{proof}
 
@@ -2009,8 +2008,12 @@ level-II defect, hence the two products in the first line.  The second
 equation transports the \(a\)-th level-II defect around the level-II chain.
 Crossing a physical magnon in the reverse direction contributes
 \(S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}\), while crossing a level-III defect
-contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third equation is the
-same argument one nesting level higher.  The three equations are therefore
+contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third equation
+transports the \(b\)-th level-III defect around the level-III chain: each
+level-II defect is crossed in the reverse direction, giving
+\(S^{{\rm III},{\rm II}}(w_b,y_a)^{-1}\), and each other level-III defect is
+crossed in the forward direction, giving
+\(S^{{\rm III},{\rm III}}(w_c,w_b)\).  The three equations are therefore
 the Bethe--Yang periodicity conditions for the three Zamolodchikov--Faddeev
 chains, not thermodynamic Bethe ansatz.  The formulas for
 \(K^{\rm I},K^{\rm II},K^{\rm III}\) follow from the nesting content of each

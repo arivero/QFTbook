@@ -556,8 +556,8 @@ as well.  These cases have a unique self-adjoint closure from the natural
 differential operator core, and the Trotter formula applies to that closure.
 \end{quotedtheorem}
 
-\begin{proposition}[A limit-circle failure of formal Hamiltonian data]
-\label{prop:cubic-potential-limit-circle-failure}
+\begin{example}[A limit-circle failure of formal Hamiltonian data]
+\label{ex:cubic-potential-limit-circle-failure}
 The lower-growth hypothesis in the Faris--Lavine criterion is substantive.  In
 one dimension, the symmetric differential operator
 \[
@@ -568,29 +568,25 @@ on \(\mathcal S(\mathbb R)\) is a concrete failure mode.  At
 \[
   \left(-\frac{\dd^2}{\dd q^2}+q^3\right)\psi_\pm=\pm\ii\,\psi_\pm
 \]
-have WKB solutions with leading behavior
+have two local solutions whose standard Liouville--Green asymptotics have
+leading behavior
 \[
   \psi_\pm(q)\sim |q|^{-3/4}
   \exp\left(\pm\ii\,\frac{2}{5}|q|^{5/2}\right).
 \]
-Both branches are square-integrable at that end because
-\(\int^\infty r^{-3/2}\dd r<\infty\).  The endpoint \(q=-\infty\) is therefore
-limit-circle, so the symmetric operator is not essentially self-adjoint on the
-Schwartz core.  A self-adjoint Hamiltonian requires an additional boundary
-condition at this singular endpoint at infinity, and different self-adjoint
-extensions give different unitary groups.  Thus the formal expression
+Both branches are square-integrable at that end because the squared amplitude
+is asymptotic to \(|q|^{-3/2}\) and
+\(\int^\infty r^{-3/2}\dd r<\infty\).  By the Weyl
+limit-point/limit-circle classification theorem for one-dimensional
+Sturm--Liouville operators, this places the endpoint \(q=-\infty\) in the
+limit-circle case.  The symmetric operator is therefore not essentially
+self-adjoint on the Schwartz core: a self-adjoint Hamiltonian requires an
+additional boundary condition at this singular endpoint at infinity, and
+different self-adjoint extensions give different unitary groups.  Thus the
+formal expression
 \(\widehat p^2/2m+V(\widehat q)\) does not by itself define the operator
 appearing in \(\exp(-\ii T\widehat H/\hbar)\).
-\end{proposition}
-
-\begin{proof}
-The WKB asymptotics displayed above solve the deficiency equations to leading
-order at the singular endpoint \(q=-\infty\).  Their common amplitude is
-\(|q|^{-3/4}\), so the squared amplitude is \(|q|^{-3/2}\), integrable at
-infinity.  Hence both local deficiency solutions are square-integrable at that
-endpoint.  Weyl's alternative classifies the endpoint as limit-circle, so a
-self-adjoint realization requires one additional boundary condition there.
-\end{proof}
+\end{example}
 
 For the standard Hamiltonian
 \[
@@ -806,8 +802,7 @@ functions.
 
 \section{Euclidean Traces and Periodic Boundary Conditions}
 
-\begin{proposition}[Trace imposes periodic Euclidean boundary conditions]
-\label{prop:trace-periodic-euclidean-boundary-conditions}
+\paragraph{Trace and periodic Euclidean boundary conditions.}
 Assume that \(\widehat H\) is semibounded and that
 \(\ee^{-\beta_{\mathrm T}\widehat H/\hbar}\) is trace class for
 \(\beta_{\mathrm T}>0\). The Euclidean thermal trace is
@@ -840,10 +835,11 @@ One may put the theory in a finite spatial box \(\Lambda\), form
 and then take thermodynamic limits of local observables.  Or one may define
 the infinite-volume thermal state directly as a KMS state on the quasilocal
 observable algebra, in the sense of
-Definition~\ref{def:kms-state}.  Formal traces per unit volume, or traces with the
-translation volume divided out, compute densities rather than the literal trace
-over the full infinite-volume Hilbert space.
-Inserting the position resolution of the identity gives
+Definition~\ref{def:kms-state}.  Formal traces per unit volume, or traces with
+the translation volume divided out, compute densities rather than the literal
+trace over the full infinite-volume Hilbert space.
+For a trace-class quantum-mechanical Hamiltonian, the trace of the heat
+operator is obtained by integrating its diagonal position kernel:
 \[
   Z(\beta_{\mathrm T})
   =
@@ -872,17 +868,6 @@ constraint
 \]
 Outside such hypotheses, the trace path integral remains a regulated or formal
 expression whose convergence must be specified separately.
-\end{proposition}
-
-\begin{proof}
-The trace of a trace-class operator is obtained by integrating its diagonal
-position kernel against \(\dd^dq_0\).  In the time-sliced kernel the left and
-right endpoint labels are therefore identified, \(q_N=q_0\).  Passing to
-Euclidean time gives precisely a loop condition
-\(q(\tau+\beta_{\mathrm T})=q(\tau)\).  When the Feynman--Kac theorem applies,
-conditioning Wiener measure on this endpoint equality gives the Brownian-loop
-form of the same trace.
-\end{proof}
 
 \section{Vacuum Projection}
 

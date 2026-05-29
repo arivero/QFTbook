@@ -39,8 +39,8 @@ dispersion in the infinite-volume mirror channel is
 The same function \(m_a\cosh\theta\) now appears in the Boltzmann weight
 \(\exp[-R\widetilde E_a(\theta)]\).
 
-\begin{proposition}[Vacuum energy from mirror pressure]
-\label{prop:mirror-pressure-vacuum-energy}
+\begin{remark}[Vacuum energy from mirror pressure]
+\label{rem:mirror-pressure-vacuum-energy}
 Assume that both torus decompositions exist at a common regulator, that the
 large-\(L\) limit of \(L^{-1}\log Z(R,L)\) exists in the direct channel, and
 that the mirror channel has a thermodynamic limit at inverse temperature
@@ -55,9 +55,8 @@ be the mirror free-energy density.  Then
 \[
   E_0(R)=R\,f_{\mathrm{mir}}(R).
 \]
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The two traces are the same torus functional written in two Hamiltonian
 channels.  Dividing the equality of traces by \(L\) after taking the logarithm
 gives
@@ -70,7 +69,6 @@ gives
 The direct-channel assumption gives the left-hand limit \(-E_0(R)\).  The
 mirror thermodynamic definition gives the right-hand limit
 \(-R f_{\mathrm{mir}}(R)\).  Equality of the two limits proves the formula.
-\end{proof}
 
 \section{Mirror TBA Functional}
 
@@ -171,7 +169,7 @@ mirror free-energy density gives
   \sum_a m_a\int_{\R}d\theta\,\cosh\theta
   \log(1+e^{-\epsilon_a(\theta)}).
 \]
-Proposition~\ref{prop:mirror-pressure-vacuum-energy} then gives the
+Remark~\ref{rem:mirror-pressure-vacuum-energy} then gives the
 subtracted direct-channel vacuum energy.  The additive
 \(\mathcal E_{\mathrm{bulk}}R\) is the local extensive coordinate fixed in
 Chapter~\ref{ch:integrable-rg-flows-perturbed-cft}.
@@ -447,8 +445,8 @@ and the product of amplitudes has sufficient decay for the contour integral
 below.
 \end{definition}
 
-\begin{proposition}[One-winding excited-state F-term]
-\label{prop:one-winding-excited-state-f-term}
+\begin{controlledapproximation}[One-winding excited-state F-term]
+\label{ca:one-winding-excited-state-f-term}
 Assume diagonal scattering, a declared F-term strip with no pole crossed by
 the real mirror contour, and a large-\(R\) cluster expansion of the torus trace
 in mirror occupation factors.  The one-mirror-particle correction to the
@@ -465,9 +463,8 @@ mirror loop, is
   -1
   \right).
 \]
-\end{proposition}
+\end{controlledapproximation}
 
-\begin{proof}
 In the mirror channel, the direct excited state is represented by operator
 insertions that a mirror particle crosses while winding around the cycle.  At
 one winding, the trace contribution of one mirror particle of species \(b\)
@@ -483,7 +480,6 @@ energy shift with the overall factor \(-m_b\cosh\theta\); the identical loop
 with no physical particles is the vacuum contribution and gives the
 subtraction by \(1\).  Summing over mirror species gives the displayed
 formula.
-\end{proof}
 
 If a pole is crossed while moving the contour to the declared F-term strip,
 the residue is a separate contribution.  A convenient residue ledger is

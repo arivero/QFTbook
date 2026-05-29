@@ -195,8 +195,7 @@ for the chosen automorphism \(\Omega\) of the chiral algebra.
 \end{proposition}
 
 \begin{proof}
-It suffices to prove the Virasoro statement; the current-algebra statement is
-the same calculation with \(L_n\) replaced by \(W^a_m\).  Let
+Let
 \[
   C_i=\sum_\alpha e_\alpha\otimes U_i e_\alpha
 \]
@@ -239,10 +238,12 @@ follows.  Taking \(A=L_n\) and using positive-energy unitarity
   (1\otimes \bar L_{-n})|i\rangle\!\rangle ,
 \]
 which is \eqref{eq:ishibashi-virasoro-gluing}.  For a spin-\(s_a\) current the
-same adjoint identity gives the \(-m\) mode in the reflected copy, while
-rotating a spin-\(s_a\) field through the boundary reflection contributes
-\((-1)^{s_a}\) and the preserved current may be composed with the automorphism
-\(\Omega\).  This gives \eqref{eq:ishibashi-current-gluing}.
+finite-level identity \eqref{eq:coevaluation-adjoint-identity}, applied to
+\(A=W^a_m\), gives the adjoint mode in the reflected copy.  The boundary
+reflection reverses the chiral coordinate and contributes the spin phase
+\((-1)^{s_a}\); the chosen preserved diagonal current is then allowed to act
+through the chiral-algebra automorphism \(\Omega\).  These three inputs give
+\eqref{eq:ishibashi-current-gluing}.
 \end{proof}
 
 The overlap of two Ishibashi states is diagonal:
@@ -507,8 +508,8 @@ Thus \eqref{eq:cardy-state-diagonal} determines a physical one-point
 function only after the Ishibashi overlap normalization and the bulk
 two-point metric have both been declared.
 
-\begin{proposition}[Direct sums and Chan--Paton matrix units]
-\label{prop:bcft-direct-sum-chan-paton}
+\begin{remark}[Direct sums and Chan--Paton matrix units]
+\label{rem:bcft-direct-sum-chan-paton}
 Let \(a,b\) be boundary conditions in a unitary BCFT, and suppose finite
 direct sums of boundary conditions are allowed.  For
 \[
@@ -538,24 +539,20 @@ Consequently
   g_{a^{\oplus n}}=n\,g_a .
   \label{eq:bcft-chan-paton-annulus-g}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-A direct sum boundary condition is a finite biproduct in the boundary
-category.  An interval with left boundary \(a^{\oplus n}\) and right
-boundary \(b^{\oplus m}\) therefore has one copy of \(\Hilb_{ab}\) for each
-ordered pair of summands.  Choosing the standard bases of the multiplicity
-spaces identifies this direct sum with
-\eqref{eq:bcft-chan-paton-hilbert-space}.  Locality on the boundary forces
-composition to match endpoint labels: an operator carrying the right endpoint
-index \(s\) can compose with a second operator whose left endpoint is \(t\)
-only when \(s=t\).  This is precisely the multiplication rule for matrix
-units, giving \eqref{eq:bcft-chan-paton-ope}.  Taking the graded trace over
-\(\Hilb_{ab}\otimes\operatorname{Mat}_{n\times m}(\mathbb C)\) gives the
-factor \(nm\) in the open annulus.  In the closed channel, the boundary state
-of \(a^{\oplus n}\) is the sum of \(n\) identical boundary states, so its
+Indeed, a direct sum boundary condition is a finite biproduct in the boundary
+category.  An interval with left boundary \(a^{\oplus n}\) and right boundary
+\(b^{\oplus m}\) therefore has one copy of \(\Hilb_{ab}\) for each ordered pair
+of summands.  Choosing the standard bases of the multiplicity spaces identifies
+this direct sum with \eqref{eq:bcft-chan-paton-hilbert-space}.  Locality on the
+boundary forces composition to match endpoint labels: an operator carrying the
+right endpoint index \(s\) can compose with a second operator whose left
+endpoint is \(t\) only when \(s=t\).  This is precisely the multiplication rule
+for matrix units, giving \eqref{eq:bcft-chan-paton-ope}.  Taking the graded
+trace over \(\Hilb_{ab}\otimes\operatorname{Mat}_{n\times m}(\mathbb C)\) gives
+the factor \(nm\) in the open annulus.  In the closed channel, the boundary
+state of \(a^{\oplus n}\) is the sum of \(n\) identical boundary states, so its
 vacuum overlap is \(n g_a\).
-\end{proof}
+\end{remark}
 
 \section{Compact Free Boson Boundaries}
 
@@ -864,8 +861,7 @@ entry in Cardy's rational formula: annulus consistency is expressed by
 integral kernels and hyperbolic identities, followed by an analytic
 statement about the resulting spectral measure.
 
-\begin{proposition}[Hyperbolic kernels behind Liouville annuli]
-\label{prop:liouville-bcft-hyperbolic-kernels}
+\paragraph{Hyperbolic kernels behind Liouville annuli.}
 For formal variables \(X,Y\) and for every \(n\in\mathbb Z_{>0}\),
 \begin{align}
   \cosh(X+Y)-\cosh(X-Y)
@@ -881,25 +877,17 @@ For formal variables \(X,Y\) and for every \(n\in\mathbb Z_{>0}\),
 The first identity is the exact algebra turning an imaginary FZZT difference
 into a ZZ wavefunction.  The second identity is the exact algebra turning
 degenerate Liouville annulus kernels into a finite sum of shifted
-nondegenerate characters.
-\end{proposition}
-
-\begin{proof}
-The first equation follows immediately from writing
-\(\cosh Z=(\ee^Z+\ee^{-Z})/2\).  For the second, multiply the right hand side
-by \(2\sinh X=\ee^X-\ee^{-X}\).  All interior terms cancel in the finite
-telescoping sum, leaving \(\ee^{nX}-\ee^{-nX}=2\sinh(nX)\).  Since both sides
-are meromorphic functions of \(X\), the quotient identity follows away from
-the zeros of \(\sinh X\) and then by removable continuation at nonsingular
-limits.
-\end{proof}
-
-The proposition is deliberately only the algebraic part of the story.  A
-complete Liouville BCFT construction must still specify the direct-integral
-topology, the domains of boundary-condition-changing fields, the treatment
-of poles encountered under contour motion, and the positivity or distribution
-interpretation of the annulus spectral density.  Those are analytic sewing
-requirements, not consequences of the finite hyperbolic identities alone.
+nondegenerate characters.  The verification is elementary algebra:
+\(\cosh Z=(\ee^Z+\ee^{-Z})/2\), and multiplying the finite sum in
+\eqref{eq:liouville-degenerate-shift-sum} by
+\(2\sinh X=\ee^X-\ee^{-X}\) leaves only the telescoping endpoints
+\(\ee^{nX}-\ee^{-nX}\).  The identities are deliberately only the algebraic
+part of the story.  A complete Liouville BCFT construction must still specify
+the direct-integral topology, the domains of boundary-condition-changing
+fields, the treatment of poles encountered under contour motion, and the
+positivity or distribution interpretation of the annulus spectral density.
+Those are analytic sewing requirements, not consequences of the finite
+hyperbolic identities alone.
 
 \section{Sewing, Boundary Entropy, and Defect Interfaces}
 

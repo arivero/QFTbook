@@ -335,8 +335,8 @@ dividing by \(1-\ee^{-\beta\omega}\).  This is the same mathematical issue
 that later appears as susceptibilities, hydrodynamic poles, and contact
 terms.
 
-\begin{proposition}[Bosonic fluctuation--dissipation identity]
-\label{prop:bosonic-fdt-kms}
+\begin{remark}[Bosonic fluctuation--dissipation identity]
+\label{rem:bosonic-fdt-kms}
 Assume \(A=A^\ast\), \(B=B^\ast\), and no singular zero-frequency term in the
 frequency window under consideration.  Define the symmetrized spectrum
 \[
@@ -354,10 +354,8 @@ Then
   \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}(\omega).
   \label{eq:bosonic-fluctuation-dissipation}
 \]
-\end{proposition}
-
-\begin{proof}
-Insert \eqref{eq:kms-greater-lesser-from-rho} into the definition of
+This identity follows directly from detailed balance.  Insert
+\eqref{eq:kms-greater-lesser-from-rho} into the definition of
 \(\widetilde G^{\rm sym}_{AB}\):
 \[
   \widetilde G^{\rm sym}_{AB}
@@ -369,7 +367,7 @@ Insert \eqref{eq:kms-greater-lesser-from-rho} into the definition of
 \]
 The stated zero-frequency hypothesis is precisely the condition that this
 division is an ordinary distributional operation in the chosen window.
-\end{proof}
+\end{remark}
 
 For odd operators in a \(\mathbb Z_2\)-graded theory, the KMS boundary
 condition includes the parity sign obtained by moving an odd operator around

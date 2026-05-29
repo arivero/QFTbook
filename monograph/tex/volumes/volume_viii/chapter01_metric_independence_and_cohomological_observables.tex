@@ -148,8 +148,7 @@ terms and the explicit variation of \(X_s\) are also \(Q\)-exact.  In
 examples, the latter terms are often where the nontrivial geometry of the
 observable enters.
 
-\begin{theorem}[Metric independence from a cohomological Ward system]
-\label{thm:metric-independence-from-ward-system}
+\paragraph{Metric independence from a cohomological Ward system.}
 Let \(g_s\), \(0\le s\le1\), be a smooth path of metrics on a closed
 manifold \(M\).  Suppose \(X_s\in\mathcal A_s^{\rm adm}\) satisfies
 \(\delta_QX_s=0\), the one-parameter metric response is defined for all
@@ -162,23 +161,19 @@ then
   =
   \langle X_0\rangle_{g_0}.
 \]
-\end{theorem}
-
-\begin{proof}
-By hypothesis,
+The derivation is the integration of the Ward identity along the path:
 \[
   \frac{\dd}{\dd s}\langle X_s\rangle_s
   =
   \langle\delta_QV_s\rangle_s .
 \]
-The Ward identity makes the right-hand side vanish pointwise in \(s\).
-Therefore the function \(s\mapsto\langle X_s\rangle_s\) is constant on the
-interval.  Integrating over \(s\) gives the equality of the endpoint
-correlators.
-\end{proof}
+The right-hand side vanishes pointwise in \(s\), so
+\(s\mapsto\langle X_s\rangle_s\) is constant on the interval.  The
+load-bearing hypotheses are the existence of the renormalized metric response,
+the construction of \(V_s\), and the Ward identity for that insertion.
 
-In local stress-tensor language, Theorem~\ref{thm:metric-independence-from-ward-system}
-is often summarized by saying that \(T_{\mu\nu}\) is \(Q\)-exact.  The
+In local stress-tensor language, this criterion is often summarized by saying
+that \(T_{\mu\nu}\) is \(Q\)-exact.  The
 precise statement is \eqref{eq:stress-response-q-exact-family}: the whole
 renormalized metric response, including contact terms and moving insertion
 representatives, must be \(Q\)-exact.
@@ -372,7 +367,7 @@ If \(\alpha\) is \(Q\)-closed and \(V_t\) is an odd family, then
 \]
 where \(Q\alpha=0\), \(Q(QV_t)=0\), and the graded Leibniz rule fix the
 sign.  This is the finite-dimensional prototype of
-Theorem~\ref{thm:metric-independence-from-ward-system}.  Infinite-dimensional
+the cohomological metric-independence criterion above.  Infinite-dimensional
 QFT applications require a regulator, a measure or BV half-density, and a
 proof that no boundary terms appear from noncompact field directions.
 

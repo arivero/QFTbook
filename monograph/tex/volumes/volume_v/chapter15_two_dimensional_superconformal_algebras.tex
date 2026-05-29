@@ -184,7 +184,10 @@ Set \(r=s=0\) in \eqref{eq:n1-gg-mode-algebra}.  Then
 \]
 If the representation is unitary, \(G_0^\dagger=G_0\), so the expectation
 value of \(\{G_0,G_0\}=2G_0^2\) on any vector is nonnegative.  Equality
-holds precisely on the kernel of \(G_0\).
+holds precisely on the kernel of \(G_0\), because
+\(\langle v,G_0^2v\rangle=\|G_0v\|^2\).  Hence the bottom of a unitary Ramond
+module is bounded by \(c/24\), and states at the bound are exactly the
+Ramond states annihilated by the zero mode.
 \end{proof}
 
 \section{\texorpdfstring{\(\mathcal N=2\)}{N=2} Superconformal Algebra}
@@ -417,8 +420,7 @@ the corresponding inequality is equivalent to the vanishing of the
 corresponding norm.
 \end{proof}
 
-\begin{corollary}[NS--R relation for chiral primaries]
-\label{cor:n2-chiral-primary-ramond-ground-state}
+\paragraph{NS--R relation for chiral primaries.}
 If \(v\) is an NS chiral primary with \(h=q/2\), then spectral flow by
 \(\eta=-1/2\) maps it to a Ramond state with
 \[
@@ -426,10 +428,7 @@ If \(v\) is an NS chiral primary with \(h=q/2\), then spectral flow by
   \label{eq:n2-chiral-to-ramond-ground}
 \]
 Thus it saturates the Ramond ground-state energy.
-\end{corollary}
-
-\begin{proof}
-Insert \(h=q/2\) and \(\eta=-1/2\) into
+This is obtained by inserting \(h=q/2\) and \(\eta=-1/2\) into
 \eqref{eq:n2-spectral-flow-hq}:
 \[
   h^{(-1/2)}
@@ -438,7 +437,6 @@ Insert \(h=q/2\) and \(\eta=-1/2\) into
   =
   \frac c{24}.
 \]
-\end{proof}
 
 \section{Extended \texorpdfstring{\(\mathcal N=2\)}{N=2} Spectral-Flow Operators}
 \label{sec:extended-n2-spectral-flow-operators}
@@ -714,8 +712,8 @@ to the trace.  Then
 for \(\lambda,\mu\in\mathbb Z\).  If all Ramond left \(R\)-charges in the
 trace are integral, the last multiplier is \(1\).
 
-\begin{proof}
-It suffices to prove the \(\lambda\)-shift.  Replacing \(z\) by
+Here is the trace-level derivation of the \(\lambda\)-shift.  Replacing \(z\)
+by
 \(z+\lambda\tau\) multiplies each state by \(q^{\lambda q_L}\).  Under left
 spectral flow by \(\lambda\),
 \begin{equation}
@@ -736,7 +734,6 @@ Reindexing the trace by the spectral-flow bijection gives
 \eqref{eq:elliptic-genus-elliptic-law}, since
 \(m_{\rm ell}=c/6\).  The \(\mu\)-shift is exactly the assumed
 charge-lattice scalar \(\zeta(\mu)\).
-\end{proof}
 
 \begin{quotedtheorem}[Elliptic genus as a Jacobi form]
 \label{qthm:elliptic-genus-jacobi-form}
@@ -1031,7 +1028,8 @@ For the weights, the bosonic \(SU(2)_{k-2}\) primary of spin \(j\) has
 Sugawara weight \(j(j+1)/k\), while the Cartan factor in
 \eqref{eq:compact-susy-coset-factorization} has holomorphic weight
 \(m^2/k\).  Subtracting the Cartan part gives the displayed \(h\), and the
-same argument gives \(\bar h\).  The \(R\)-charge follows by taking the
+antiholomorphic sector gives \(\bar h=(j(j+1)-\bar m^2)/k\) with \(\bar m\)
+in place of \(m\).  The \(R\)-charge follows by taking the
 simple pole of \(J_R\) with the coset factor after the \(K^3\)-vertex has
 been removed.  With the normalization above, this pole is
 \(-2m/k\) times the field; the antiholomorphic formula is identical.
@@ -1264,8 +1262,9 @@ Sugawara weight \(-j(j-1)/k\).  The Cartan boson in
 the noncompact bilinear form, so removing the Cartan factor adds \(m^2/k\)
 to the coset weight.  The \(R\)-charge is the simple-pole coefficient of
 the \(J_R\) OPE after the \(J^3\)-vertex has been factored out, giving
-\(2m/k\).  The barred formulas are the same calculation in the
-antiholomorphic sector.
+\(2m/k\).  The antiholomorphic sector uses \(\bar m\) in the same
+factorization and gives
+\(\bar h=(-j(j-1)+\bar m^2)/k\) and \(\bar q=2\bar m/k\).
 \end{proof}
 
 The noncompact spectrum is not determined by
@@ -1342,17 +1341,14 @@ translation quantum number \(n\), whereas the compact disc representative has
 only the finite \(\mathbb Z_k\) remnant in
 \eqref{eq:compact-susy-coset-zk-action}.
 
-\begin{proposition}[Spectral-flow derivation of the rank-one formulas]
-\label{prop:supersymmetric-rank-one-spectral-flow-check}
+\begin{remark}[Spectral-flow derivation of the rank-one formulas]
+\label{rem:supersymmetric-rank-one-spectral-flow-check}
 Equations~\eqref{eq:compact-susy-coset-flowed-hq} and
 \eqref{eq:noncompact-susy-coset-flowed-hq} follow from the general
 \(\mathcal N=2\) spectral-flow law
 \eqref{eq:n2-spectral-flow-hq} and the unflowed data
 \eqref{eq:compact-susy-coset-unflowed-hq},
 \eqref{eq:noncompact-susy-coset-unflowed-hq}.
-\end{proposition}
-
-\begin{proof}
 For the compact coset,
 \[
   h+\eta q+\frac{c_{\mathrm{comp}}\eta^2}{6}
@@ -1392,13 +1388,15 @@ and
   \frac{m^2+2m\eta}{k}
   +\frac{k+2}{2k}\eta^2.
 \]
-The charge shift is
+The charge formula follows from
 \[
+  q+\frac{c_{\mathrm{cig}}\eta}{3}
+  =
   \frac{2m}{k}+\frac{k+2}{k}\eta
   =
   \frac{2(m+\eta)}{k}+\eta .
 \]
-\end{proof}
+\end{remark}
 
 The mirror relation between the noncompact \(SL(2,\mathbb R)_k/U(1)\)
 coset and \(\mathcal N=2\) Liouville theory belongs at the interface between

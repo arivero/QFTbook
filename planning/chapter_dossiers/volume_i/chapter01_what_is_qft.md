@@ -116,8 +116,8 @@ Definitions must specify domains and support conditions.
 - Vacuum uniqueness identifies the zero-momentum projection with
   \(|\Omega\rangle\langle\Omega|\), and the translation convention gives
   \([P_\mu,\phi(x)]=i\partial_\mu\phi(x)\).
-  Status: proven in chapter. Certification:
-  `prop:opening-vacuum-projection-translation-convention`.
+  Status: convention and definition check in chapter prose. Certification:
+  paragraph "Vacuum projection and translation convention."
 - Fields in this framework are distributional coordinates on local data.
   Status: framework statement. Certification: Wightman comparison.
 - Contact terms are coincident-point/source-response data supported on

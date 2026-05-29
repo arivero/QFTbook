@@ -4,6 +4,7 @@
 .LSOverride
 .idea/
 .vscode/
+.claude/
 *.swp
 *.swo
 

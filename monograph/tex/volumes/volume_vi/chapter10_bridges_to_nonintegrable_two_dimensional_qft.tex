@@ -92,8 +92,7 @@ If \(Q_s=\int dx\,j_s^0(x)\), this is the integrated form of
 where \(\mathcal B_s\) is the local operator representing the charge-breaking
 density in the chosen operator chart.
 
-\begin{proposition}[Broken-charge matrix element identity]
-\label{prop:broken-charge-matrix-identity}
+\paragraph{Broken-charge matrix element identity.}
 Let \(\alpha\) and \(\beta\) be finite-particle scattering states of the
 integrable theory on which \(Q_s\) has eigenvalues \(q_s(\alpha)\) and
 \(q_s(\beta)\).  Then the first-order broken-charge matrix element obeys
@@ -103,9 +102,6 @@ integrable theory on which \(Q_s\) has eigenvalues \(q_s(\alpha)\) and
   \ii\bigl(q_s(\alpha)-q_s(\beta)\bigr)
   \langle\beta|V_b|\alpha\rangle .
 \]
-\end{proposition}
-
-\begin{proof}
 Since \(Q_s|\alpha\rangle=q_s(\alpha)|\alpha\rangle\) and
 \(\langle\beta|Q_s=q_s(\beta)\langle\beta|\),
 \[
@@ -118,7 +114,6 @@ Since \(Q_s|\alpha\rangle=q_s(\alpha)|\alpha\rangle\) and
   q_s(\beta)\langle\beta|V_b|\alpha\rangle .
 \]
 Subtracting the two identities and multiplying by \(\ii\) gives the formula.
-\end{proof}
 
 The equation is useful because the integrable charges give many independent
 kinematic tests.  A matrix element that changes any higher-spin charge
@@ -149,8 +144,8 @@ diagonal crossed form factor by
 Lorentz invariance makes this connected diagonal matrix element independent
 of \(\theta\) for a scalar operator; denote it by \(F_a^b\).
 
-\begin{proposition}[First-order mass shift from a diagonal form factor]
-\label{prop:ffpt-first-order-mass-shift}
+\begin{controlledapproximation}[First-order mass shift from a diagonal form factor]
+\label{ca:ffpt-first-order-mass-shift}
 Assume that the one-particle state remains an isolated stable particle under
 the deformation, and that the diagonal connected form factor \(F_a^b\) is
 finite in the declared crossing prescription.  For
@@ -161,9 +156,8 @@ the first-order shift of the squared mass is
 \[
   \delta m_a^2=2\epsilon F_a^b .
 \]
-\end{proposition}
+\end{controlledapproximation}
 
-\begin{proof}
 Place the theory on a circle of circumference \(L\).  The one-particle
 Bethe--Yang density is
 \[
@@ -201,7 +195,6 @@ then at fixed momentum
   \frac{\delta m_a^2}{2m_a\cosh\theta}.
 \]
 Comparing the two expressions gives \(\delta m_a^2=2\epsilon F_a^b\).
-\end{proof}
 
 \begin{definition}[Form-factor perturbation data]
 \label{def:form-factor-perturbation-data}
@@ -236,27 +229,25 @@ then gives the two-particle diagonal pole
   \left(1-\omega_{b,a}\right)\langle\mathcal O_b\rangle .
 \]
 
-\begin{proposition}[Semi-local pole obstruction to a particle mass shift]
-\label{prop:semilocal-pole-confinement-diagnostic}
+\begin{remark}[Semi-local pole obstruction to a particle mass shift]
+\label{rem:semilocal-pole-confinement-diagnostic}
 If \(\omega_{b,a}\ne1\) and
 \(\langle\mathcal O_b\rangle\ne0\), the first-order diagonal form factor
-entering Proposition~\ref{prop:ffpt-first-order-mass-shift} has a kinematic
+entering Controlled Approximation~\ref{ca:ffpt-first-order-mass-shift} has a kinematic
 pole at the required crossing point.  The perturbative one-particle mass
 shift is therefore replaced by a confinement or resonance problem in the
 deformed theory.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The displayed residue is nonzero under the stated hypotheses.  Hence the
 crossed two-particle form factor has a pole at
 \(\theta'=\theta+\ii\pi\), which is exactly the diagonal point used to define
 the connected one-particle matrix element.  The finite value \(F_a^b\) in
-Proposition~\ref{prop:ffpt-first-order-mass-shift} is absent.  Thus the
+Controlled Approximation~\ref{ca:ffpt-first-order-mass-shift} is absent.  Thus the
 assumption that the original one-particle state admits an ordinary first-order
 mass shift fails.  The deformed spectral problem must be formulated with the
 appropriate long-distance force, resonance pole, or finite-volume mixing
 included.
-\end{proof}
 
 \begin{example}[Ising magnetic perturbation and kink confinement]
 \label{ex:ising-magnetic-kink-confinement}
@@ -577,8 +568,8 @@ when the denominator is nonzero, and a logarithm when it vanishes.  With
 up to scheme-dependent constants and logarithmic replacement at exponent
 zero.
 
-\begin{proposition}[OPE origin of TCSA counterterm powers]
-\label{prop:tcsa-counterterm-power}
+\begin{remark}[OPE origin of TCSA counterterm powers]
+\label{rem:tcsa-counterterm-power}
 In a TCSA regulator whose high-energy cutoff corresponds to a short-distance
 resolution \(a\sim N^{-1}\), the contribution of the OPE channel
 \(\mathcal O_i\mathcal O_j\to\mathcal O_k\) to a local second-order
@@ -587,9 +578,8 @@ counterterm has cutoff power
   N^{\Delta_i+\Delta_j-\Delta_k-2}.
 \]
 If \(\Delta_i+\Delta_j-\Delta_k-2=0\), the power is replaced by \(\log N\).
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Second-order perturbation theory integrates the product
 \(\mathcal O_i(x)\mathcal O_j(0)\) over small Euclidean separations.  Replacing
 the product by its OPE channel gives the radial integral displayed above.  If
@@ -607,7 +597,6 @@ If the exponent vanishes, the radial integral is
 \(\int_a dr\,r^{-1}\), giving \(\log N\).  The coefficient is scheme
 dependent because the precise relation between \(a\) and \(N\), and the
 definition of the projection \(P_N\), are part of the regulator.
-\end{proof}
 
 \section{Comparison Objects}
 

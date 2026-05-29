@@ -89,10 +89,24 @@ gives
 \end{proposition}
 
 \begin{proof}
-The proof is the same variational calculation as
-Proposition~\ref{prop:tba-variational-derivation}, with a larger list of
-densities.  Let the full list be \(n_A\), where \(A\) runs over both physical
-and auxiliary labels, and let \(n_A^t=n_A+n_A^h\).  The entropy variation is
+Let \(A\) denote either a physical label \(a\) or an auxiliary label \(r\).
+Write \(n_A\) for the occupied density, \(n_A^h\) for the hole density, and
+\(n_A^t=n_A+n_A^h\) for the total density.  The density equations have the
+uniform form
+\begin{equation}
+  n_A^t=d_A+\sum_B K_{AB}*n_B,
+  \qquad
+  d_a=\frac1{2\pi}\frac{\dd p_a}{\dd\theta},
+  \qquad
+  d_r=0 ,
+  \label{eq:nested-tba-unified-density-proof}
+\end{equation}
+where the energy is \(E_a\) on physical labels and \(0\) on auxiliary labels.
+The entropy density of one fermionic occupancy species is
+\[
+  s_A=(n_A^t\log n_A^t-n_A\log n_A-n_A^h\log n_A^h),
+\]
+so, using \(n_A^h=n_A^t-n_A\),
 \[
   \delta s
   =
@@ -102,12 +116,40 @@ and auxiliary labels, and let \(n_A^t=n_A+n_A^h\).  The entropy variation is
     \log\frac{n_A^t}{n_A^h}\,\delta n_A^t
   \right].
 \]
-The linear density constraints express every \(\delta n_A^t\) as a convolution
-of kernels with variations of occupied densities.  Physical labels contribute
-\(\delta(RE_a n_a)\) to the energy variation; auxiliary labels do not.  Since
-the variations \(\delta\rho_a\) and \(\delta\sigma_r\) are independent, the
-coefficient of each variation must vanish.  Substituting
-\(\log(n_A^t/n_A^h)=\log(1+\ee^{-\epsilon_A})\) gives
+The dimensionless free-energy functional is
+\[
+  \mathcal F_R[n]
+  =
+  \sum_a\int R E_a\,\rho_a\,\dd\theta-\sum_A\int s_A\,\dd\theta .
+\]
+Varying \eqref{eq:nested-tba-unified-density-proof} gives
+\[
+  \delta n_A^t=\sum_BK_{AB}*\delta n_B .
+\]
+For test variations of compact support the convolution pairing satisfies
+\[
+  \int L_A(\theta)(K_{AB}*\delta n_B)(\theta)\,\dd\theta
+  =
+  \int (K_{AB}^{\dagger}*L_A)(u)\,\delta n_B(u)\,\dd u,
+  \qquad
+  K_{AB}^{\dagger}(x)=K_{AB}(-x).
+\]
+With
+\[
+  \epsilon_A=\log\frac{n_A^h}{n_A},
+  \qquad
+  L_A=\log\frac{n_A^t}{n_A^h}=\log(1+\ee^{-\epsilon_A}),
+\]
+stationarity of \(\mathcal F_R\) therefore gives, for every label \(B\),
+\[
+  0=
+  R E_B-\epsilon_B-\sum_A K_{AB}^{\dagger}*L_A ,
+  \qquad E_r=0 .
+  \label{eq:nested-tba-euler-lagrange-proof}
+\]
+Writing the adjoint-transposed kernels as \(K_{BA}\), separating physical and
+auxiliary labels, and substituting the definitions of
+\(\epsilon_a,\eta_r\) gives exactly
 \eqref{eq:nested-tba-epsilon}--\eqref{eq:nested-tba-eta}.
 \end{proof}
 
@@ -156,15 +198,12 @@ relation
   \label{eq:xxx-baxter-tq}
 \end{equation}
 
-\begin{proposition}[Bethe equations from the \(TQ\) relation]
-\label{prop:tq-pole-bethe-equations}
+\begin{remark}[Bethe equations from the \(TQ\) relation]
+\label{rem:tq-pole-bethe-equations}
 Let \(Q(u)=\prod_j(u-u_j)\) have simple roots.  Equation
 \eqref{eq:xxx-baxter-tq} has a polynomial \(\Lambda(u)\) if and only if the
 roots \(u_j\) obey the \(XXX_{1/2}\) Bethe equations
 \eqref{eq:aba-xxx-bethe-equations}.
-\end{proposition}
-
-\begin{proof}
 If \(\Lambda\) is polynomial, evaluating \eqref{eq:xxx-baxter-tq} at
 \(u=u_j\) gives
 \[
@@ -183,7 +222,7 @@ the displayed equality is precisely
 \eqref{eq:aba-xxx-bethe-equations}.  Conversely, if the Bethe equations hold,
 the numerator on the right side of \eqref{eq:xxx-baxter-tq} vanishes at every
 root of \(Q\), so division by \(Q\) produces a polynomial \(\Lambda\).
-\end{proof}
+\end{remark}
 
 For higher-rank symmetry, \(Q\)-functions are attached to nodes of the Dynkin
 diagram, and the scalar \(TQ\) relation is replaced by a system of functional

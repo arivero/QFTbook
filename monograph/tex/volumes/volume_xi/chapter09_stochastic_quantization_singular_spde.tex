@@ -17,6 +17,8 @@ Lorentzian QFT by reconstruction.
 
 \section{Finite-Dimensional Langevin Identity}
 
+\begin{proposition}[Finite-dimensional invariant density]
+\label{prop:finite-dimensional-langevin-invariant-density}
 Let \(S:\R^n\to\R\) be smooth and confining enough that
 \[
   Z=\int_{\R^n}\ee^{-S(x)}\,\dd x<\infty .
@@ -39,6 +41,7 @@ For smooth compactly supported \(f,g\),
 \end{equation}
 Therefore \(L\) is symmetric in \(L^2(\ee^{-S}\dd x)\), and the probability
 measure \(Z^{-1}\ee^{-S}\dd x\) is invariant.
+\end{proposition}
 
 \begin{proof}
 Integrating the drift term by parts gives
@@ -620,8 +623,8 @@ Since \(f\) is bounded, the displayed formula for
 \eqref{eq:spde-mixed-covariance-wick-coordinate-convergence}.
 \end{proof}
 
-\begin{corollary}[Common limits of finite Wick-coordinate vectors]
-\label{cor:spde-common-wick-coordinate-limits}
+\begin{remark}[Common limits of finite Wick-coordinate vectors]
+\label{rem:spde-common-wick-coordinate-limits}
 Fix finitely many pairs
 \[
   (n_j,f_j),\qquad 1\leq j\leq r,
@@ -675,9 +678,6 @@ For every bounded continuous \(F:\R^r\to\C\),
   \quad\hbox{in probability}.
   \label{eq:spde-common-wick-coordinate-observable-convergence}
 \]
-\end{corollary}
-
-\begin{proof}
 For the single Fourier cutoff sequence, each coordinate converges in
 \(L^2(\Omega)\) by
 Proposition~\ref{prop:spde-two-dimensional-wick-powers}.  Therefore
@@ -704,10 +704,10 @@ because the inverse image of the complement of any small neighborhood of
 \(F(\mathcal X)\) is controlled by continuity of \(F\) at the realized value
 of \(\mathcal X\); equivalently, every almost surely convergent subsequence
 has a further subsequence on which the conclusion follows pointwise.
-\end{proof}
+\end{remark}
 
-\begin{corollary}[Convergence of the Wick quartic potential]
-\label{cor:spde-wick-quartic-potential-convergence}
+\begin{remark}[Convergence of the Wick quartic potential]
+\label{rem:spde-wick-quartic-potential-convergence}
 Let \(\lambda\in\R\), and define the cutoff Wick quartic functional on the
 Gaussian probability space of
 Proposition~\ref{prop:spde-two-dimensional-wick-powers} by
@@ -736,17 +736,14 @@ Then \(V_N^A\to V\) and \(V_N^B\to V\) in \(L^2(\Omega)\).  Consequently,
 if the exponential weights \(e^{-V_N^\sigma}\) obey a uniform \(L^p\) bound
 for some \(p>1\) and if the cylinder coordinates are finite Wick-coordinate
 vectors satisfying
-Corollary~\ref{cor:spde-common-wick-coordinate-limits}, then the
+Remark~\ref{rem:spde-common-wick-coordinate-limits}, then the
 bounded-cylinder comparison conclusion of
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential} applies.
-\end{corollary}
-
-\begin{proof}
 The first statement is Proposition~\ref{prop:spde-two-dimensional-wick-powers}
 with \(n=4\) and with the smooth test function \(f\equiv1\).  Multiplication
 by the scalar \(\lambda/4\) preserves \(L^2\)-convergence.  The
-generalization to two cutoff approximations is the same argument applied to
-each sequence; because both sequences have the same \(L^2\) limit,
+two cutoff approximations are handled separately by the same Wick-power
+convergence proposition; because both sequences have the same \(L^2\) limit,
 \[
   \|V_N^\sigma-V\|_{L^2(\Omega)}\longrightarrow0,
   \qquad \sigma=A,B.
@@ -754,7 +751,7 @@ each sequence; because both sequences have the same \(L^2\) limit,
 The last assertion follows from
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, since
 \(L^2\)-convergence implies convergence in probability of the potentials.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Path-space convergence of the two-dimensional enhanced noise]
 \label{prop:spde-two-dimensional-enhanced-noise-path-convergence}
@@ -2904,8 +2901,8 @@ Applying Proposition~\ref{prop:spde-sobolev-compactness-tightness} with any
 positive \(r\) proves tightness in \(H^{-\kappa}\).
 \end{proof}
 
-\begin{corollary}[Density route to \(\Phi^4_2\) stationary-law tightness]
-\label{cor:spde-phi-four-two-density-tightness-route}
+\begin{remark}[Density route to \(\Phi^4_2\) stationary-law tightness]
+\label{rem:spde-phi-four-two-density-tightness-route}
 Let \(\mu_{0,N}\) be the massive Gaussian cutoff law in
 Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}, and
 let
@@ -2934,9 +2931,6 @@ satisfy
 \]
 then \(\{\mu_N\}\) is tight in \(H^{-\kappa}(\mathbb T^2)\) for every
 \(\kappa>0\).
-\end{corollary}
-
-\begin{proof}
 Choose any \(0<\eta<\kappa\).  The Gaussian reference law has a uniform
 \(H^{-\eta}\) second moment by
 Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.  The
@@ -2945,7 +2939,7 @@ assumed \(L^q\) density bound then gives a uniform interacting
 Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}, and
 Proposition~\ref{prop:spde-sobolev-compactness-tightness} turns that moment
 bound into tightness in \(H^{-\kappa}\).
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Nelson stability implies normalized \(L^q\) density bounds]
 \label{prop:spde-nelson-stability-implies-lq-density}
@@ -3015,7 +3009,7 @@ The right-hand side is bounded uniformly in \(N\) by
 \eqref{eq:spde-nelson-stability-exponential-input} with \(p=q\).  This
 proves the normalized \(L^q\) density bound.  The tightness conclusion is
 then exactly
-Corollary~\ref{cor:spde-phi-four-two-density-tightness-route}, or,
+Remark~\ref{rem:spde-phi-four-two-density-tightness-route}, or,
 equivalently, Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}
 followed by Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
 \end{proof}
@@ -3117,8 +3111,9 @@ side is at most \(\varepsilon\) for every \(N,\sigma\) whenever
 \(W_N^\sigma\) are uniformly bounded by the \(L^p\) hypothesis.  On the
 complement, the uniform-integrability estimate applies because the
 complement has \(\gamma\)-probability tending to zero.  Hence the first term
-tends to zero.  The same argument applies to \(\sigma=A\) and \(\sigma=B\),
-and the normalized limits follow from \(Z_N^\sigma\to Z>0\).
+tends to zero for each fixed regulator type \(\sigma\).  Applying this
+conclusion for \(\sigma=A\) and for \(\sigma=B\) gives the two unnormalized
+limits, and the normalized limits follow from \(Z_N^\sigma\to Z>0\).
 \end{proof}
 
 \begin{corollary}[Bounded-cylinder comparison from a common potential]
@@ -3296,7 +3291,7 @@ Then, for every bounded continuous \(G:\R^r\to\C\),
 \end{corollary}
 
 \begin{proof}
-Corollary~\ref{cor:spde-common-wick-coordinate-limits} gives
+Remark~\ref{rem:spde-common-wick-coordinate-limits} gives
 \[
   \mathcal X_N^\sigma\longrightarrow \mathcal X
   \quad\hbox{in probability},
@@ -3433,7 +3428,8 @@ Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}
 and
 Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, the finite
 Wick-coordinate vectors of the two smooth regulators have common \(L^2\)
-limits.  The same argument with \(n=4\) and \(f\equiv1\) gives
+limits.  Applying the fourth Wick-power convergence statement with
+\(f\equiv1\) gives
 \[
   V_N^\sigma\longrightarrow
   \frac{\lambda}{4}:\!X^4\!:(1)
@@ -4174,7 +4170,7 @@ Assume the following three further analytic facts.
   free massive Gaussian estimate is
   Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
   Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment} and
-  Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} give one
+  Remark~\ref{rem:spde-phi-four-two-density-tightness-route} gives one
   precise route: a cutoff-uniform \(L^q\) bound for the normalized
   Wick-ordered density with respect to the massive Gaussian reference law
   implies the required interacting negative-Sobolev moments.  If the cutoff
@@ -4210,11 +4206,11 @@ Assume the following three further analytic facts.
   Corollary~\ref{cor:spde-bounded-cylinder-common-potential}.  For the
   two-dimensional Wick quartic interaction, the potential convergence part
   of this condition follows from
-  Corollary~\ref{cor:spde-wick-quartic-potential-convergence}; the remaining
+  Remark~\ref{rem:spde-wick-quartic-potential-convergence}; the remaining
   regulator-specific input is the uniform exponential-weight stability.
   The common finite cylinder-coordinate convergence for smeared Wick
   polynomials is supplied by
-  Corollary~\ref{cor:spde-common-wick-coordinate-limits}.  Equivalently,
+  Remark~\ref{rem:spde-common-wick-coordinate-limits}.  Equivalently,
   under these common Wick-limit hypotheses and the uniform \(L^p\) stability
   bound, the bounded Wick-cylinder comparison is the direct conclusion of
   Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
@@ -4240,7 +4236,7 @@ the finite-cutoff Wick-ordered Schwinger functions, and \(\mu\) satisfies OS
 reflection positivity for cylinder observables.  If, in addition, the
 resulting Schwinger hierarchy satisfies the moment-continuity,
 positive-time semigroup, and corrected OS-II linear-growth hypotheses in
-Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}, then
+Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion}, then
 the hierarchy determines a two-dimensional Wightman theory by
 Theorem~\ref{thm:os-reconstruction}.
 \end{theorem}
@@ -4315,7 +4311,7 @@ give global compact-continuity of the DPD solution map; a cutoff-uniform
 negative-Sobolev moment strong enough to imply tightness by
 Proposition~\ref{prop:spde-sobolev-compactness-tightness}; for Wick
 \(\Phi^4_2\) this moment follows from the density criterion
-Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} once the
+Remark~\ref{rem:spde-phi-four-two-density-tightness-route} once the
 uniform Nelson-type \(L^q\) density bound is proved, and
 Proposition~\ref{prop:spde-nelson-stability-implies-lq-density} proves that
 bound from the Nelson exponential stability estimate; uniform integrability;
@@ -4334,11 +4330,11 @@ Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, the common
 renormalized interaction potentials plus a uniform \(L^p\) stability bound
 on the exponential weights.  For the Wick quartic potential, the convergence
 in probability is supplied by
-Corollary~\ref{cor:spde-wick-quartic-potential-convergence}, so the
+Remark~\ref{rem:spde-wick-quartic-potential-convergence}, so the
 remaining constructive estimate is the uniform \(L^p\) stability of the
 weights in the chosen regulator family.  The matching convergence of finite
 Wick-coordinate cylinder vectors is
-Corollary~\ref{cor:spde-common-wick-coordinate-limits}; combined with the
+Remark~\ref{rem:spde-common-wick-coordinate-limits}; combined with the
 stability estimate, these inputs give the bounded comparison statement in
 Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
 The common Wick-limit hypothesis is reduced to a covariance estimate by
@@ -6083,6 +6079,9 @@ Therefore
   C_KH A^r2^{-(a+r)i}.
 \end{aligned}
 \]
+The extra factor \(2^{-ri}\) is the gain produced by subtracting the local
+Taylor polynomial \(P\); without the subtraction the \(L^1\)-size of the
+kernel would only give the scale \(2^{-ai}\).
 \end{proof}
 
 Lemma~\ref{lem:spde-parabolic-taylor-subtraction-gain} is the elementary
@@ -6618,8 +6617,10 @@ For each edge level, \eqref{eq:spde-dyadic-net-increment-bound} gives
 \]
 Taking \(p\)-th roots and summing the geometric series gives
 \eqref{eq:spde-dyadic-net-supremum-bound}.  The cutoff-dependent statement
-is the same calculation after multiplying the base and edge hypotheses by
-\(2^{-\rho n p}\).
+uses the base and edge estimates with the additional factor
+\(2^{-\rho n p}\).  This factor is independent of the dyadic level \(\ell\),
+so it passes through the union bound, the \(p\)-th root, and the geometric
+series as the factor \(2^{-\rho n}\) in the final supremum estimate.
 \end{proof}
 
 Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} is the analytic bridge
@@ -7488,10 +7489,10 @@ and the edge set
 has cardinality no larger than \(|\mathcal X_{\Pi,m,\ell+1}|\).  Absorbing the
 extra factor \(2^{Q+1}\) into \(C_{\Pi,1}\) gives the displayed edge estimate.
 
-For \(\mathcal X_{\Gamma,m}\), the same argument applies to the product
-parameters \(z\in K\) and \(h\in A_{\mathfrak s}\).  A
-\(2^{-\ell}\)-ball in \(d_{\Gamma,m}\) requires resolution \(2^{-m-\ell}\) in
-\(z\) and \(2^{-\ell}\) in \(h\), so
+For \(\mathcal X_{\Gamma,m}\), cover \(K\) by \(O(2^{Q(m+\ell)})\) balls of
+radius \(2^{-m-\ell}\) and \(A_{\mathfrak s}\) by \(O(2^{Q\ell})\) balls of
+radius \(2^{-\ell}\).  The product cover has \(d_{\Gamma,m}\)-radius
+\(2^{-\ell}\), so
 \[
   N(\mathcal X_{\Gamma,m},d_{\Gamma,m};2^{-\ell})
   \leq
@@ -7744,7 +7745,7 @@ with \(2^{-\ell}\) replaced by that metric distance.  Since
 a modification that is \(\alpha\)-Holder continuous on
 \(\mathcal X_{\Pi,m}\).  This proves the required sample-path continuity.
 
-For a cutoff sequence, repeat the same argument with
+For a cutoff sequence, apply the preceding Kolmogorov-net construction to
 \[
   U_{\tau,m}^{(n+1)}-U_{\tau,m}^{(n)}
 \]
@@ -9076,8 +9077,10 @@ dyadic edge increments.  Since a summable nonnegative sequence tends to zero
 along the levels, the usual nearest-net telescoping sequence is almost surely
 Cauchy uniformly along every chain of nested approximants.  This defines a
 continuous modification on the compact metric space
-\(\mathcal X_{\Pi,m}\).  The same argument applies to \(V_{n,\tau,m}\).
-Hence all hypotheses needed for
+\(\mathcal X_{\Pi,m}\).  Applying the identical dyadic-edge summability
+estimate to \(V_{n,\tau,m}\), with the \(V\)-moment bounds in place of the
+\(U\)-moment bounds, gives the required continuous modification for the
+cutoff-difference field.  Hence all hypotheses needed for
 Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} are
 satisfied for the nonlinear \(\Pi\)-coordinates.
 \end{proof}
@@ -9472,15 +9475,15 @@ and the product \(X^2\mathcal I(X^3)\) has
 \[
   |X^2\mathcal I(X^3)|=-\frac12-5\kappa .
 \]
-The next proposition records exactly which cubic drift monomials have
+The next remark records exactly which cubic drift monomials have
 negative homogeneity in the first nonlinear expansion.  This finite
 drift-level ledger determines the one-loop and two-loop local mass
 coordinates in the equation displayed below; the full
 regularity-structure construction then adds the model, reexpansion, and
 analytic-coordinate estimates for these symbols.
 
-\begin{proposition}[Drift-level negative homogeneity ledger]
-\label{prop:spde-phi-four-three-negative-drift-ledger}
+\begin{remark}[Drift-level negative homogeneity ledger]
+\label{rem:spde-phi-four-three-negative-drift-ledger}
 Let \(0<\kappa<1/14\).  Put
 \[
   \alpha=-\frac12-\kappa,\qquad
@@ -9503,9 +9506,6 @@ The remaining two have positive homogeneity:
   |XY^2|=\frac12-7\kappa>0,\qquad
   |Y^3|=\frac32-9\kappa>0 .
 \]
-\end{proposition}
-
-\begin{proof}
 Homogeneity is additive under multiplication and is raised by \(2\) under
 \(\mathcal I\).  Therefore
 \[
@@ -9526,7 +9526,7 @@ The first two numbers are negative for every \(\kappa>0\).  The inequality
 \(\kappa<1/14\) gives \(1/2-7\kappa>0\), and the weaker inequality
 \(\kappa<1/6\) gives \(3/2-9\kappa>0\).  Hence the displayed list contains
 all and only the negative cubic drift monomials at this stage.
-\end{proof}
+\end{remark}
 
 The coordinate attached to \(X^3\) is the one-loop Wick contraction
 \(C_{1,\epsilon}\).  The coordinate attached to \(X^2\mathcal I(X^3)\) is
@@ -10236,7 +10236,7 @@ constructive estimates: the local rough-forcing estimate in
 \eqref{eq:spde-local-rough-forcing-estimate}, Nelson stability for the
 chosen Wick quartic cutoff family, and the moment-continuity, positive-time
 semigroup regularity, and corrected OS-II growth estimates needed by
-Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}.
+Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion}.
 
 For dynamic \(\Phi^4_3\), the self-contained proof boundary is still larger.
 The finite negative sector, its homogeneity ledger, its reexpansion
@@ -10279,7 +10279,7 @@ two-dimensional part requires: a proof of the rough-forcing estimate
 fully controlled comparison with a regulator for which Nelson stability has
 been proved, for the cutoff family used in the stochastic assembly; and the
 OS reconstruction inputs listed in
-Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}.
+Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion}.
 
 The three-dimensional part requires: construction of the BPHZ-renormalized
 dynamic \(\Phi^4_3\) model; proof of the coordinate moment and cutoff-Cauchy
@@ -10343,8 +10343,8 @@ counterterms.  Reflection positivity, however, is a property of the
 Euclidean field measure under physical time reflection; it is not automatic
 from Markov positivity in the auxiliary stochastic time.
 
-\begin{proposition}[SPDE invariant law as an OS reconstruction input]
-\label{prop:spde-invariant-law-os-reconstruction-criterion}
+\begin{remark}[SPDE invariant law as an OS reconstruction input]
+\label{rem:spde-invariant-law-os-reconstruction-criterion}
 Let \(E=\mathcal S'(\R^d)\) be the real tempered-distribution space,
 equipped with its Borel \(\sigma\)-algebra, and let \(\mu\) be a probability
 measure on \(E\).  For \(f\in\mathcal S(\R^d)\) write
@@ -10415,9 +10415,6 @@ If the hierarchy is clustering in the sense of
 Corollary~\ref{cor:os-reconstruction-vacuum-sector}, the reconstructed vacuum is
 unique; without clustering one obtains the corresponding phase-decomposed
 Wightman presentation.
-\end{proposition}
-
-\begin{proof}
 Condition (i) is the distributional regularity step.  Finite tensor sums are
 dense in the Schwartz tensor product, and the estimate
 \eqref{eq:spde-os-moment-continuity} makes the cylinder moment functional
@@ -10444,9 +10441,9 @@ Applying that theorem gives
 and the Wightman distributions obtained as boundary values of the analytic
 continuations of the \(S_n\).  The clustering statement is precisely
 Corollary~\ref{cor:os-reconstruction-vacuum-sector}.
-\end{proof}
+\end{remark}
 
-In stochastic quantization the proposition is a checklist, not an automatic
+In stochastic quantization the preceding remark is a checklist, not an automatic
 corollary of stationarity.  The Markov invariant law supplies a candidate
 \(\mu\).  The constructive proof must still establish moment continuity,
 physical-time reflection positivity, the OS-II positive-time semigroup
@@ -10473,7 +10470,7 @@ problem.
 \label{op:spde-to-wightman-construction}
 Starting from a renormalized singular SPDE construction of an interacting
 Euclidean field, prove the inputs of
-Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion},
+Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion},
 identify the resulting Wightman distributions, and compare the stochastic
 counterterms with Wilsonian local coordinates in a common renormalization
 chart.

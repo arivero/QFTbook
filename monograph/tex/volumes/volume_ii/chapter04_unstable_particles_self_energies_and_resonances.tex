@@ -899,8 +899,7 @@ Breit--Wigner elastic approximant is therefore
   \frac{g^2}{32\pi}\rho_1(s).
 \]
 
-\begin{proposition}[Elastic unitarity of the Breit--Wigner factor]
-\label{prop:breit-wigner-elastic-unitarity}
+\paragraph{Elastic unitarity of the Breit--Wigner factor.}
 On a real interval where only the elastic \(\phi_1\phi_1\) channel is retained
 and \(W(s)\in\R\), the model \(S\)-matrix element
 \[
@@ -912,9 +911,6 @@ obeys
   |S_0^{\rm BW}(s)|=1
 \]
 wherever the denominator is nonzero.
-\end{proposition}
-
-\begin{proof}
 For real \(s\), the number \(A(s)=M_R^2-s\) is real and, by hypothesis,
 \(W(s)\) is real.  Hence \(A(s)+\ii W(s)\) is the complex conjugate of
 \(A(s)-\ii W(s)\).  Therefore
@@ -925,7 +921,6 @@ For real \(s\), the number \(A(s)=M_R^2-s\) is real and, by hypothesis,
   =
   1 .
 \]
-\end{proof}
 
 The physical partial wave differs from \(S_0^{\rm BW}\) by the omitted
 background, crossed-channel, inelastic, and higher-order corrections; these
@@ -1071,11 +1066,12 @@ integral.  Also
 Since \(g^2/(32\pi^2)>0\), every nonconstant contribution to
 \(\operatorname{Im}F_{\rm I}(s)\) has negative sign, and the integral is
 strictly negative.  Therefore \(\operatorname{Im}F_{\rm I}(s)<0\) in the
-upper half-plane, so \(F_{\rm I}(s)\neq0\) there.  The lower half-plane
-statement follows either by the same argument with \(v<0\), giving
-\(\operatorname{Im}F_{\rm I}(s)>0\), or by Schwarz reflection of the
-first-sheet branch.  Thus the zero associated with the resonance cannot lie
-on either half of the first sheet.
+upper half-plane, so \(F_{\rm I}(s)\neq0\) there.  If \(v<0\), the argument
+of \(1-\alpha s=(1-\alpha u)-\ii\alpha v\) lies in \((0,\pi)\) on the same
+first-sheet branch, and \(\operatorname{Im}(-s)=-v>0\).  The two terms then
+have positive imaginary parts, so \(\operatorname{Im}F_{\rm I}(s)>0\) in the
+lower half-plane.  Thus the zero associated with the resonance cannot lie on
+either half of the first sheet.
 \end{proof}
 
 \begin{proposition}[Narrow pole on the adjacent sheet]
@@ -1302,8 +1298,7 @@ resonance slots and any remaining stable external data \(\gamma\).  The
 definition collapses when a threshold branch point, an anomalous threshold, or
 another pole intersects the same neighborhood.
 
-\begin{proposition}[Properties inherited from stable-channel scattering]
-\label{prop:resonance-residue-inherited-properties}
+\begin{remark}[Properties inherited from stable-channel scattering]
 Assume the stable-channel \(S\)-matrix is unitary on the physical boundary,
 Poincare covariant, and obtained from local fields satisfying the analyticity
 hypotheses used in the preceding chapters.  Let
@@ -1321,9 +1316,7 @@ regime through the discontinuity of the stable-channel amplitude.
 BRST-closed external operators, the residue kernel is independent of BRST-exact
 changes of those representatives.
 \end{enumerate}
-\end{proposition}
 
-\begin{proof}
 The residue kernel is obtained by applying the linear functional
 \(\operatorname{Res}_{s=s_\ast}\) to a meromorphic continuation of a
 stable-channel matrix element.  Field redefinitions that leave the
@@ -1342,7 +1335,7 @@ the discontinuity onto the pole term gives the same inclusive rate as the
 self-energy cut calculation of the previous section.  Finally, a BRST-exact
 change of a stable external representative changes a physical stable-channel
 matrix element by zero; applying the residue functional to zero gives zero.
-\end{proof}
+\end{remark}
 
 \section{Gamow Functionals and the Boundary of the Construction}
 

@@ -128,8 +128,7 @@ scheme:
 with additional contact insertions included in \(\delta_gX\) when the
 representative of \(X\) depends on the metric.
 
-\begin{theorem}[Cohomological metric independence]
-\label{thm:cohomological-metric-independence}
+\paragraph{Metric-independence criterion.}
 Let \(X_g\in\mathcal A_\Lambda^B\) be a smooth family of
 \(Q_\Lambda\)-closed insertions.  Suppose the normalized metric variation can
 be written as
@@ -144,14 +143,12 @@ for an admissible insertion \(Y_{\delta g}\).  If the Ward identity
 \[
   \delta_g\langle X_g\rangle_\Lambda=0.
 \]
-\end{theorem}
-
-\begin{proof}
-Equation~\eqref{eq:metric-variation-q-exact-insertion} reduces the metric
-variation to the expectation value of a \(Q_\Lambda\)-exact insertion.  The
-Ward identity \eqref{eq:regulated-q-ward-identity} sets that expectation
-value to zero.
-\end{proof}
+Indeed, equation~\eqref{eq:metric-variation-q-exact-insertion} identifies the
+metric derivative with \(\langle Q_\Lambda Y_{\delta g}\rangle_\Lambda\), and
+the regulated Ward identity evaluates this expectation value to zero.  The
+substantive part of using the criterion is constructing \(Y_{\delta g}\) with
+all contact terms and metric dependence of \(X_g\) included in the regulated
+insertion algebra.
 
 The familiar condition that the stress tensor is \(Q\)-exact is a sufficient
 local mechanism, not the full statement.  In the notation of
@@ -201,8 +198,18 @@ Since \(Q_\Lambda X=0\), \(Q_\Lambda S_\Lambda=0\), and
   -Q_\Lambda\!\left(VX\exp(-S_\Lambda-tQ_\Lambda V)\right).
 \]
 The Ward identity makes the derivative of \(I_t(X)\) vanish.  Applying the
-same argument to \(I_t(1)\) gives \(t\)-independence of the normalization,
-and therefore of the normalized expectation value.
+calculation above with \(X=1\) gives
+\[
+  \frac{\dd}{\dd t}I_t(1)
+  =
+  -\int_{\Gamma_\Lambda}
+  Q_\Lambda\!\left(V\exp(-S_\Lambda-tQ_\Lambda V)\right)
+  =
+  0,
+\]
+so the normalization is also \(t\)-independent.  The quotient
+\(\langle X\rangle_{\Lambda,t}=I_t(X)/I_t(1)\) is therefore independent of
+\(t\).
 \end{proof}
 
 This proposition is the algebraic part of localization.  It does not by
@@ -393,11 +400,8 @@ If \(\gamma_p\) is a closed \(p\)-cycle, then
   I_{\gamma_p}(\mathcal O)=\int_{\gamma_p}\mathcal O^{(p)}
   \label{eq:descent-integrated-observable}
 \]
-is \(Q\)-closed.
-\end{definition}
-
-\begin{proof}[Proof of \(Q\)-closedness]
-Using \eqref{eq:descent-equations} and \(\partial\gamma_p=0\),
+is \(Q\)-closed: using \eqref{eq:descent-equations} and
+\(\partial\gamma_p=0\),
 \[
   Q I_{\gamma_p}(\mathcal O)
   =
@@ -409,7 +413,7 @@ Using \eqref{eq:descent-equations} and \(\partial\gamma_p=0\),
   =
   0 .
 \]
-\end{proof}
+\end{definition}
 
 If \(\gamma_p\) is changed by a boundary,
 \(\gamma_p\mapsto\gamma_p+\partial C_{p+1}\), then

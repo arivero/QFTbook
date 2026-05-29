@@ -380,8 +380,7 @@ where
 \]
 \end{definition}
 
-\begin{proposition}[Abelian linear FP determinant]
-\label{prop:abelian-linear-gauge-fp-determinant}
+\paragraph{Abelian linear FP determinant.}
 For abelian Maxwell theory with a linear gauge condition, \(M_{\mathcal G}\)
 is independent of \(A_\mu\). Its determinant is then an overall
 normalization in the free theory. This special simplification is not a
@@ -391,9 +390,6 @@ later as a local coordinate system on gauge orbits. There the analogue of
 \(M_{\mathcal G}\) depends on the gauge potential, can acquire zero modes, and
 therefore cannot be promoted to a single global Faddeev--Popov chart without
 additional geometric data.
-\end{proposition}
-
-\begin{proof}
 If \(\mathcal G\) is linear, then
 \[
   \mathcal G(A+\partial\xi)=\mathcal G(A)+\mathcal G(\partial\xi).
@@ -402,7 +398,6 @@ Therefore the derivative with respect to \(s\) at \(s=0\) is simply
 \(M_{\mathcal G}\xi=\mathcal G(\partial\xi)\), independent of \(A\).  The
 determinant is consequently independent of the integration variable in the
 free abelian representative integral and factors from normalized correlators.
-\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=1.05]
@@ -910,22 +905,19 @@ condition
 \]
 \end{definition}
 
-\begin{proposition}[Weak Lorenz condition]
-\label{prop:gupta-bleuler-weak-lorenz-condition}
+\begin{remark}[Weak Lorenz condition]
+\label{rem:gupta-bleuler-weak-lorenz-condition}
 If \(\Phi,\Psi\in\mathcal K_{\rm GB}\), then
 \[
   \langle\Phi|B(x)|\Psi\rangle=0 .
 \]
-\end{proposition}
-
-\begin{proof}
-The positive-frequency part obeys \(B^{(+)}(x)\Psi=0\) by definition of
-\(\mathcal K_{\rm GB}\).  The negative-frequency part \(B^{(-)}(x)\) is the
-Krein adjoint of \(B^{(+)}(x)\), hence \(\langle\Phi|B^{(-)}(x)=0\) for
-\(\Phi\in\mathcal K_{\rm GB}\).  Since \(B=B^{(+)}+B^{(-)}\), the displayed
-matrix element vanishes.  Thus the Lorenz condition is imposed weakly, as a
-condition on matrix elements between physical vectors.
-\end{proof}
+Indeed \(B^{(+)}(x)\Psi=0\) by the definition of
+\(\mathcal K_{\rm GB}\), while \(B^{(-)}(x)\) is the Krein adjoint of
+\(B^{(+)}(x)\), so \(\langle\Phi|B^{(-)}(x)=0\) for
+\(\Phi\in\mathcal K_{\rm GB}\).  Since \(B=B^{(+)}+B^{(-)}\), the Lorenz
+condition is imposed weakly, as a condition on matrix elements between
+physical vectors.
+\end{remark}
 
 \begin{construction}[One-particle Gupta--Bleuler quotient]
 \label{cons:gupta-bleuler-one-particle-quotient}

@@ -995,7 +995,7 @@ geometry. I,'' Math. Proc. Cambridge Philos. Soc. 77 (1975), 43--69, with
 Parts II and III in Math. Proc. Cambridge Philos. Soc. 78 (1975), 405--432
 and 79 (1976), 71--99.}
 
-\begin{theorem}[Spin Dirac index theorem, four-dimensional form]
+\begin{quotedtheorem}[Spin Dirac index theorem, four-dimensional form]
 Let \(M\) be a smooth compact oriented Riemannian spin four-manifold without
 boundary.  Let \(S=S^+\oplus S^-\) be its complex spinor bundle, let
 \(E_R\to M\) be a smooth Hermitian vector bundle associated to the fermion
@@ -1026,7 +1026,7 @@ where \([\cdots]_4\) denotes the four-form part of the Chern--Weil form,
 bundle.  The operator \(\mathcal D_{A,-}\) is the opposite-chirality Dirac
 operator
 \(\Gamma(S^-\otimes E_R)\to\Gamma(S^+\otimes E_R)\).
-\end{theorem}
+\end{quotedtheorem}
 
 On a flat four-torus or on \(\mathbb R^4\) after compactification by a smooth
 finite-action connection for which no boundary contribution is present, the
@@ -1136,8 +1136,8 @@ gives \(\mathcal A=2\), so \eqref{eq:nonabelian-flavor-anomaly} reduces to the
 coefficient \(1/(16\pi^2)\) in \eqref{eq:abelian-axial-anomaly}.
 \end{definition}
 
-\begin{proposition}[Cubic gauge obstruction]
-\label{prop:cubic-gauge-anomaly-obstruction}
+\begin{quotedtheorem}[Cubic gauge obstruction]
+\label{qthm:cubic-gauge-anomaly-obstruction}
 For left-handed Weyl fermions in representations \(R_i\) of a gauge group,
 the cubic part of the one-loop local consistent gauge anomaly vanishes if and
 only if
@@ -1157,9 +1157,8 @@ Slavnov--Taylor identity in that background-field chart.  If the tensor
 vanishes, this cubic local obstruction is absent; maintaining the full
 Slavnov--Taylor identities then reduces to the absence of the remaining
 BRST-anomaly classes in the chosen theory and regulator scheme.
-\end{proposition}
+\end{quotedtheorem}
 
-\begin{proof}
 The cubic gauge part of the anomaly polynomial for a left-handed Weyl fermion
 in \(R_i\) is proportional to
 \(\operatorname{tr}_{R_i}(\mathsf F^3)\).  Expanding
@@ -1181,7 +1180,6 @@ If the tensor vanishes, this particular descent class has zero coefficient,
 which is exactly the asserted absence statement.  The last sentence is not an
 all-purpose nonperturbative existence theorem; it is the perturbative BRST
 consistency reduction in a specified gauge-fixed regularized framework.
-\end{proof}
 
 \section{Consistency Condition and Descent}
 
@@ -1716,8 +1714,8 @@ charge assignments; they do not follow from perturbative renormalizability
 alone.
 \end{example}
 
-\begin{proposition}[Anomaly matching as equality of anomaly lines]
-\label{prop:anomaly-matching-as-line-equality}
+\begin{remark}[Anomaly matching as equality of anomaly lines]
+\label{rem:anomaly-matching-as-line-equality}
 Consider an RG flow from a ultraviolet theory \(\mathcal Q_{\rm UV}\) to an
 infrared description \(\mathcal Q_{\rm IR}\), and suppose a background-field
 groupoid \(\mathcal B(M)\) for a global symmetry is defined along the flow.
@@ -1726,9 +1724,6 @@ background coupling up to local counterterms.  Then the UV and IR partition
 functions are sections of anomaly lines whose ratio is a local counterterm
 line.  Consequently the anomaly classes of \(\mathcal Q_{\rm UV}\) and
 \(\mathcal Q_{\rm IR}\) agree in the quotient by local counterterms.
-\end{proposition}
-
-\begin{proof}
 At a finite cutoff, splitting the fields into high- and low-energy variables
 is a change of variables in the regulated path integral, together with an
 ordinary integration over the high-energy variables.  Under a background gauge
@@ -1750,7 +1745,7 @@ Goldstone fields and Wess--Zumino--Witten functional provide one possible
 infrared section of the same line; if the infrared theory is topological, its
 invertible response supplies the section.  The statement does not assert a
 unique infrared realization, only equality of the background anomaly class.
-\end{proof}
+\end{remark}
 
 \section{Anomaly Inflow for Local Anomalies}
 
@@ -2084,8 +2079,8 @@ vacuum-energy density near \(\theta=0\) is
 where the logarithm is the branch continuous from \(\theta=0\).
 \end{definition}
 
-\begin{proposition}[Finite-volume susceptibility identity]
-\label{prop:finite-volume-topological-susceptibility}
+\begin{remark}[Finite-volume susceptibility identity]
+\label{rem:finite-volume-topological-susceptibility}
 For every finite-regulator theta data set,
 \[
   E_{\Lambda,V_4}''(0)
@@ -2102,9 +2097,6 @@ where the expectation is with respect to the positive weights
 \(Z_{\Lambda,V_4,Q}/Z_{\Lambda,V_4}(0)\).  If CP is preserved at
 \(\theta=0\), then \(\langle Q\rangle_{\Lambda,V_4,0}=0\), and the right hand
 side is \(V_4^{-1}\langle Q^2\rangle_{\Lambda,V_4,0}\).
-\end{proposition}
-
-\begin{proof}
 Differentiate \eqref{eq:finite-regulator-theta-partition-function}:
 \[
   Z'(0)=\ii\sum_Q Q Z_Q,
@@ -2125,7 +2117,7 @@ Multiplying by \(-1/V_4\) gives
 \eqref{eq:finite-volume-topological-susceptibility}.  CP sends
 \(Q\mapsto -Q\); if the \(\theta=0\) weights are CP invariant, the first
 moment vanishes.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Topological susceptibility]
 \label{def:topological-susceptibility}
@@ -2198,8 +2190,8 @@ relabeling when there is a bijection \(T:\mathcal B\to\mathcal B\) with
 \]
 \end{definition}
 
-\begin{proposition}[Thermodynamic branch selection]
-\label{prop:theta-thermodynamic-branch-selection}
+\begin{remark}[Thermodynamic branch selection]
+\label{rem:theta-thermodynamic-branch-selection}
 Assume a finite branch set and a fixed \(\theta\) at which the limiting branch
 energies \(E_\beta(\theta)\) exist.  If a unique branch \(\beta_*\) satisfies
 \[
@@ -2227,9 +2219,6 @@ uniformly over the finite branch set, then
   \quad(\beta\neq\beta_*).
   \label{eq:theta-branch-selection}
 \]
-\end{proposition}
-
-\begin{proof}
 For \(\beta\neq\beta_*\),
 \[
   \frac{Z_{\Lambda,V_4,\beta}(\theta)}
@@ -2242,10 +2231,10 @@ Since the branch set is finite, the sum of all nonminimal ratios tends to
 zero.  Dividing the branch weights by
 \(Z_{\Lambda,V_4,\beta_*}\) gives
 \eqref{eq:theta-branch-selection}.
-\end{proof}
+\end{remark}
 
-\begin{proposition}[Cluster test for mixtures of theta branches]
-\label{prop:theta-branch-mixture-cluster-test}
+\begin{remark}[Cluster test for mixtures of theta branches]
+\label{rem:theta-branch-mixture-cluster-test}
 Let \(\{\omega_\beta\}_{\beta\in\mathcal B}\) be translation-invariant pure
 states for gauge-invariant local observables, and assume each branch clusters:
 for local observables \(\mathcal O,\mathcal P\),
@@ -2281,9 +2270,6 @@ one has
 Thus the mixture clusters for all local observables only if the branch labels
 cannot be distinguished by local one-point functions on the support of
 \(p_\beta\), or if the mixture is supported on a single branch.
-\end{proposition}
-
-\begin{proof}
 Using the branch clustering assumption,
 \[
   \lim_{|a|\to\infty}
@@ -2301,7 +2287,7 @@ The product of the one-point functions in the mixed state is
   \]
 Their difference is precisely the covariance of the two branch-dependent
 one-point functions with respect to the probability distribution \(p\).
-\end{proof}
+\end{remark}
 
 \begin{remark}[Theta vacua as theorem, hypothesis, and convention]
 \label{rem:theta-vacua-status}

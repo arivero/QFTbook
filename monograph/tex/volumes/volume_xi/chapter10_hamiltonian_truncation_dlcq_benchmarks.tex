@@ -225,8 +225,8 @@ the direct sum
   H_N=\bigoplus_{r=1/2}^{N-1/2} H_r .
 \]
 
-\begin{proposition}[Finite-mode Majorana benchmark]
-\label{prop:ising-energy-tcsa-benchmark}
+\begin{remark}[Finite-mode Majorana benchmark]
+\label{rem:ising-energy-tcsa-benchmark}
 The eigenvalues of \(H_N\) are
 \[
   \left\{
@@ -234,9 +234,6 @@ The eigenvalues of \(H_N\) are
     r=\frac12,\frac32,\ldots,N-\frac12
   \right\}.
 \]
-\end{proposition}
-
-\begin{proof}
 For a fixed mode \(r\),
 \[
   \det(H_r-\lambda I)
@@ -248,15 +245,17 @@ For a fixed mode \(r\),
 Thus the two eigenvalues of \(H_r\) are
 \(\lambda=\pm\sqrt{p_r^2+m^2}\).  The matrix \(H_N\) is a direct sum of the
 blocks \(H_r\), so its characteristic polynomial is the product of the block
-characteristic polynomials.
-\end{proof}
+characteristic polynomials.  The benchmark is therefore exact at every finite
+cutoff \(N\); any numerical deviation from these values measures an
+implementation or diagonalization error rather than a truncation effect.
+\end{remark}
 
 The script
 \[
   \texttt{qft\_scripts/tcsa\_ising\_energy\_benchmark.py}
 \]
-diagonalizes \(H_N\) and checks Proposition
-\ref{prop:ising-energy-tcsa-benchmark}.  Its role is narrow and rigorous: it
+diagonalizes \(H_N\) and checks Remark
+\ref{rem:ising-energy-tcsa-benchmark}.  Its role is narrow and rigorous: it
 is a public finite-matrix benchmark for Hamiltonian-truncation conventions
 before nonintegrable perturbations, counterterm fitting, and cutoff
 extrapolation are introduced.  The magnetic-field Ising TCSA problem and the
@@ -446,17 +445,14 @@ contribution.  The omitted diagonal connected finite parts are singular
 crossed limits and require a separate diagonal finite-volume prescription.
 \end{definition}
 
-\begin{proposition}[Connected TFFSA block]
-\label{prop:zero-momentum-connected-tffsa-hermitian}
+\begin{remark}[Connected TFFSA block]
+\label{rem:zero-momentum-connected-tffsa-hermitian}
 The matrix in Definition~\ref{def:zero-momentum-connected-tffsa-block} is
 Hermitian.  If \(h=0\), its eigenvalues are
 \[
   0,\quad 2\omega_0,\quad 2\omega_1,\quad\ldots,\quad
   2\omega_{N_{\rm pair}-1}.
 \]
-\end{proposition}
-
-\begin{proof}
 The diagonal entries \(E_i^{(0)}+hL\bar\sigma\) are real.  For \(i<j\) the
 lower-triangular entry is defined to be \(\overline{V_{ij}}\), hence
 \[
@@ -465,7 +461,7 @@ lower-triangular entry is defined to be \(\overline{V_{ij}}\), hence
 for real \(h\) and \(L\).  Thus \(H^\dagger=H\).  At \(h=0\), all
 off-diagonal entries vanish and the matrix is diagonal with the displayed
 free finite-volume energies.
-\end{proof}
+\end{remark}
 
 The script
 \[
@@ -616,10 +612,15 @@ Since \(E\) is in the resolvent set of \(QHQ\), the second equation gives
   Q\psi=-(QHQ-E)^{-1}QHP\,P\psi .
 \]
 Substituting this into the first equation gives
-\eqref{eq:feshbach-schur-truncation-effective-hamiltonian}.  The converse is
-the same calculation in reverse: define \(\psi\) by the displayed formula,
-insert it into the two block equations, and use
-\((QHQ-E)(QHQ-E)^{-1}=Q\) on \(Q\Hilb\).
+\eqref{eq:feshbach-schur-truncation-effective-hamiltonian}.  Conversely,
+suppose \(u\in P\Hilb\) obeys the Schur-complement equation and define
+\[
+  \psi=u-(QHQ-E)^{-1}QHPu .
+\]
+Then \(P\psi=u\) and the second block equation is satisfied by construction,
+because \((QHQ-E)(QHQ-E)^{-1}=Q\) on \(Q\Hilb\).  Substituting the
+Schur-complement equation into the first block equation gives zero there as
+well.  Hence \(H\psi=E\psi\).
 \end{proof}
 
 Equation~\eqref{eq:feshbach-schur-truncation-effective-hamiltonian} is the
@@ -891,8 +892,8 @@ zero-mode errors.  For a Markov-chain computation, \(A_i\) itself is an
 estimator and \(\sigma_i\) must include autocorrelation.
 \end{definition}
 
-\begin{proposition}[Interpolation ambiguity of finite cutoff data]
-\label{prop:finite-data-do-not-determine-continuum-limit}
+\begin{remark}[Interpolation ambiguity of finite cutoff data]
+\label{rem:finite-data-do-not-determine-continuum-limit}
 Let \(K_1,\ldots,K_N\) be distinct positive regulator values and let
 \(A_1,\ldots,A_N\in\mathbb R\) be finite outputs.  For every proposed
 continuum value \(A_\infty\in\mathbb R\), there is a polynomial \(p(t)\) of
@@ -904,9 +905,6 @@ degree at most \(N\) such that
 \]
 Consequently finitely many cutoff values, by themselves, cannot prove a
 continuum limit or its value.
-\end{proposition}
-
-\begin{proof}
 The \(N+1\) points
 \[
   0,\quad K_1^{-1},\ldots,K_N^{-1}
@@ -915,8 +913,10 @@ are distinct.  Lagrange interpolation gives a unique polynomial of degree at
 most \(N\) taking the prescribed values \(A_\infty,A_1,\ldots,A_N\) at those
 points.  Since \(A_\infty\) was arbitrary, the same finite data are
 compatible with arbitrarily many candidate limits unless additional
-information is supplied.
-\end{proof}
+information is supplied.  The obstruction is the missing analytic ansatz,
+monotonicity estimate, remainder bound, or convergence theorem that would
+restrict the allowed interpolating functions near \(K^{-1}=0\).
+\end{remark}
 
 \begin{definition}[Power-law cutoff expansion with a remainder bound]
 \label{def:power-law-cutoff-expansion}

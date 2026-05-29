@@ -1527,8 +1527,8 @@ with \(y\) and \(\psi_\perp\) having zero average.  The finite-mode Gaussian
 calculation is performed around this zero-mode decomposition.
 \end{definition}
 
-\begin{proposition}[Periodic-fermion worldline index density]
-\label{prop:periodic-fermion-worldline-index-density}
+\begin{example}[Finite-mode periodic-fermion index density]
+\label{ex:periodic-fermion-worldline-index-density}
 For the preceding periodic worldline datum, the finite-mode nonzero-mode
 calculation and the fermion zero-mode Berezin integral give the local index
 density
@@ -1537,16 +1537,17 @@ density
     \widehat A(TM)\operatorname{ch}(E)
   \right]_{2n}.
 \]
-After integration over the bosonic zero mode, this gives
+When the heat-kernel proof of the McKean--Singer formula is supplied, integration
+over the bosonic zero mode gives
 \[
   \operatorname{ind}D_E
   =
   \int_M\widehat A(TM)\operatorname{ch}(E).
 \]
-\end{proposition}
+\end{example}
 
-\begin{proof}
-The finite-mode Gaussian calculation of the nonzero modes gives one factor
+The calculation is finite-dimensional after mode truncation.  The nonzero-mode
+Gaussian ratio gives one factor
 for each skew-eigenvalue
 \(r_j\) of the curvature two-form \(R/(2\pi\ii)\):
 \begin{equation}
@@ -1554,22 +1555,26 @@ for each skew-eigenvalue
   \frac{r_j/2}{\sinh(r_j/2)}.
   \label{eq:worldline-ahat-product}
 \end{equation}
-The derivation is the product identity
+Indeed, in a curvature two-plane the bosonic nonzero modes carry eigenvalues
+\((2\pi k)^2\) shifted by the curvature matrix, while the periodic fermionic
+nonzero modes carry first-order eigenvalues \(2\pi k\) shifted by the same
+skew-eigenvalue.  Taking the finite-mode determinant ratio and then the
+symmetric product limit gives
 \[
-  \frac{\sinh z}{z}
+  \frac{z}{\sinh z}
   =
   \prod_{k=1}^\infty
-  \left(1+\frac{z^2}{\pi^2k^2}\right)
+  \left(1+\frac{z^2}{\pi^2k^2}\right)^{-1}.
 \]
-applied to the ratio of the periodic bosonic and fermionic nonzero-mode
-determinants in each curvature two-plane.  The connection on \(E\) contributes
+With \(z=r_j/2\), this gives the factor in
+\eqref{eq:worldline-ahat-product}.  The connection on \(E\) contributes
 \[
   \operatorname{tr}_E\exp\!\left(\frac{F_E}{2\pi\ii}\right),
 \]
 because the fermion zero modes represent exterior multiplication by tangent
 one-forms and the Berezin integral over
 \(\psi_0^1,\ldots,\psi_0^{2n}\) extracts the top-degree component.  Therefore
-the local density produced by the worldline supertrace is
+the local density produced by the finite-mode worldline supertrace is
 \begin{equation}
   \left[
     \widehat A(TM)\operatorname{ch}(E)
@@ -1582,19 +1587,15 @@ the local density produced by the worldline supertrace is
   \operatorname{tr}_E\exp\!\left(\frac{F_E}{2\pi\ii}\right).
   \label{eq:worldline-index-density}
 \end{equation}
-Integrating over the bosonic zero mode \(x_0\) gives the
-Atiyah--Singer formula
+The equality with the Fredholm index of \(D_E\) additionally uses the
+McKean--Singer supertrace identity and the heat-kernel asymptotic expansion for
+\(D_E^2\) on a compact manifold.  With those analytic inputs established, the
+bosonic zero-mode integral gives
 \[
   \operatorname{ind}D_E
   =
   \int_M\widehat A(TM)\operatorname{ch}(E).
 \]
-\end{proof}
-
-The analytic content behind the last equality is the heat-kernel asymptotic
-expansion for \(D_E^2\) on a compact manifold and the McKean--Singer
-supertrace identity.  The path-integral calculation above identifies the
-local coefficient by finite-dimensional Gaussian and Berezinian operations.
 
 \section{Dirac Functional Integrals and Propagators}
 
@@ -1948,9 +1949,20 @@ numerator as the mass-shell projector together with the Jacobian
 the positive-energy shell gives the linear factor displayed before
 \eqref{eq:positive-energy-spinor-pole-residue}; substituting the projector
 identity gives the residue formula
-\eqref{eq:positive-energy-spinor-pole-residue}.  The negative-energy pole is
-the same calculation with the \(v\)-spin sum and
-\(k^0+\omega_{\vec k}-\ii0\).  Therefore no additional factor of
+\eqref{eq:positive-energy-spinor-pole-residue}.  At the negative-energy pole
+one expands
+\[
+  k^2+m^2-\ii0
+  =
+  (k^0+\omega_{\vec k}-\ii0)(k^0-\omega_{\vec k}+\ii0)
+\]
+near \(k^0=-\omega_{\vec k}\), and uses the \(v\)-spin completeness relation
+in \eqref{eq:spinor-sum-lsz-normalization}.  The factor
+\((k^0-\omega_{\vec k}+\ii0)\) evaluates to \(-2\omega_{\vec k}\) on this
+shell, while the \(v\)-spin sum carries the corresponding sign in the
+Dirac numerator.  This gives the antiparticle residue with the same
+external normalization convention as the particle residue.  Therefore no
+additional factor of
 \(2\omega_{\vec p}\) is inserted by hand in the external spinor; it has
 already appeared in the projector identity.  The remaining Fourier
 normalization of the delta-normalized one-particle wavefunction is
@@ -2091,6 +2103,21 @@ is the time-ordered two-point function, and every exchange of odd fields
 contributes its parity sign.
 \end{proposition}
 
+\begin{proof}
+At first order in \(g\), the interaction insertion is the local product
+\(-\frac g2(\bar\psi\psi)(\bar\psi\psi)\).  Contracting two incoming
+\(\psi\)-fields with two outgoing \(\bar\psi\)-fields gives two pairings.
+The first pairs \((\alpha,\gamma)\) and \((\beta,\delta)\) and gives
+\(\delta_\alpha{}^\gamma\delta_\beta{}^\delta\).  The second pairs
+\((\alpha,\delta)\) and \((\beta,\gamma)\).  To put the odd fields in that
+pairing order one transposes one pair of fermionic variables, producing the
+minus sign.  The factor \(1/2\) in the Lagrangian cancels the two identical
+ways of choosing the two \(\bar\psi\psi\) factors, leaving the displayed
+vertex normalization.  The external expression is obtained by contracting
+this local kernel with the spinorial LSZ residues from
+Definition~\ref{def:spinorial-lsz-pole-assignment}.
+\end{proof}
+
 \begin{figure}[!ht]
 \centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
@@ -2130,21 +2157,6 @@ outgoing spinor indices and by the Berezin sign from moving odd variables into
 the contracted order.}
 \label{fig:four-fermion-direct-exchange-vertex}
 \end{figure}
-
-\begin{proof}
-At first order in \(g\), the interaction insertion is the local product
-\(-\frac g2(\bar\psi\psi)(\bar\psi\psi)\).  Contracting two incoming
-\(\psi\)-fields with two outgoing \(\bar\psi\)-fields gives two pairings.
-The first pairs \((\alpha,\gamma)\) and \((\beta,\delta)\) and gives
-\(\delta_\alpha{}^\gamma\delta_\beta{}^\delta\).  The second pairs
-\((\alpha,\delta)\) and \((\beta,\gamma)\).  To put the odd fields in that
-pairing order one transposes one pair of fermionic variables, producing the
-minus sign.  The factor \(1/2\) in the Lagrangian cancels the two identical
-ways of choosing the two \(\bar\psi\psi\) factors, leaving the displayed
-vertex normalization.  The external expression is obtained by contracting
-this local kernel with the spinorial LSZ residues from
-Definition~\ref{def:spinorial-lsz-pole-assignment}.
-\end{proof}
 
 The next chapter turns to massless particles. The logical input will again be
 the one-particle representation theory, now with the massless little group and

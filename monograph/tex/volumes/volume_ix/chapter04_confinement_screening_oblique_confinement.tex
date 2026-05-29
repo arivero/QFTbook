@@ -259,12 +259,17 @@ potential.
 \end{proposition}
 
 \begin{proof}
-By Proposition~\ref{prop:transfer-matrix-static-potential-confinement},
-\(V_\gamma(L)\) is the bottom of the static-source spectrum when the transfer
-matrix construction applies.  The bottom of a spectrum is no larger than the
-energy expectation value of any normalized trial state in the sector.  The
-screened trial state has energy \(2M_{\rm scr}+o(1)\); taking \(L\to\infty\)
-gives the bound.  A function bounded along large \(L\) cannot satisfy
+In the transfer-matrix construction, \(V_\gamma(L)\) is the infimum of the
+static-source Hamiltonian spectrum in the sector with external charge
+\(\gamma\) at separation \(L\).  For any normalized trial state \(\Psi_L\) in
+that sector,
+\[
+  V_\gamma(L)\le
+  \langle \Psi_L,H_{\gamma,L}\Psi_L\rangle-E_{\rm vac}.
+\]
+The assumed screened trial state has the right charge at the endpoints and
+has energy \(2M_{\rm scr}+o(1)\) above the vacuum.  Taking the limsup gives
+the displayed bound.  A function bounded along large \(L\) cannot satisfy
 \(V_\gamma(L)=\sigma L+o(L)\) with \(\sigma>0\).
 \end{proof}
 

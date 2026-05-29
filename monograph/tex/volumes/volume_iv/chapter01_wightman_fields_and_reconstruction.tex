@@ -634,6 +634,7 @@ comparisons belong to the relation between Wightman fields and local nets
 described above and in Chapter
 \ref{ch:volume-iv-aqft-local-nets-states}.
 
+\begin{proof}
 The construction begins with formal vectors
 \[
   [\alpha_1,f_1;\ldots ;\alpha_n,f_n]
@@ -704,6 +705,35 @@ quotienting by \(\mathcal N_W\), this identity says precisely that
   \widehat\Phi(h)^*\supset \widehat\Phi(h^\dagger)
 \]
 on the dense finite-sequence domain.
+
+Covariance of \(\{W_n\}\) makes the induced Poincare action on
+\(\mathcal V/\mathcal N_W\) isometric.  Its completion gives the strongly
+continuous unitary representation \(U\).  Strong continuity follows because
+the Poincare action is strongly continuous on Schwartz test functions and the
+finite-sequence vectors are dense.  The spectral condition for \(U\) follows
+from the stated support condition on the Fourier transforms of the Wightman
+distributions: if \(F,G\) are finite sequences, the distribution
+\(a\mapsto\langle F,U(a)G\rangle_W\) has Fourier support in the closed forward
+cone after passing to translation-difference variables, hence the joint
+spectral measure of \(U\) is supported in \(\overline V_+\).
+
+Locality is also inherited at the finite-sequence level.  If the supports of
+two one-field test functions are spacelike separated, the locality axiom for
+the hierarchy equates the corresponding Wightman functionals after graded
+interchange.  Therefore the difference between the two graded-ordered field
+products has zero matrix element against every finite sequence.  Positivity
+then puts that difference in the null subspace, so the graded commutator
+vanishes as an operator on \(\mathcal D\).  The same argument applies to
+polynomial products by iterating the adjacent interchange.
+
+Finally, if two cyclic reconstructions are built from the same hierarchy, the
+map sending a finite test-function sequence in the first reconstruction to the
+class of the same sequence in the second preserves all inner products by
+\eqref{eq:wightman-reconstruction-inner-product}.  It descends through the
+same null quotient, has dense range, intertwines the fields and the Poincare
+action on finite sequences, and therefore extends uniquely to the canonical
+unitary equivalence.
+\end{proof}
 
 Figure~\ref{fig:wightman-reconstruction} organizes the reconstruction proof:
 finite test-function sequences are quotiented by null vectors, completed to

@@ -641,11 +641,32 @@ With this convention
 \end{proposition}
 
 \begin{proof}
-Expand both \(\Pi_{s,n}\) in
-Definition~\ref{def:bosonic-creation-operator-tensor-normalization}.  The
-factor \(n!\) from the two \(\sqrt{n!}\) normalizations cancels one of the two
-averages over \(S_n\), leaving exactly one permutation sum. Orthogonality of
-different tensor powers gives the factor \(\delta_{mn}\).
+Different tensor powers in the direct sum defining
+\(\mathcal F_s(\Hilb_1)\) are orthogonal, giving the factor \(\delta_{mn}\).
+For \(m=n\), Definition~\ref{def:bosonic-creation-operator-tensor-normalization}
+gives
+\[
+  \psi_1\odot\cdots\odot\psi_n
+  =
+  \frac1{\sqrt{n!}}\sum_{\sigma\in S_n}
+  \psi_{\sigma^{-1}(1)}\otimes\cdots\otimes\psi_{\sigma^{-1}(n)}
+\]
+and the analogous formula for the \(\chi\)'s.  Hence
+\[
+  \bigl\langle
+  \psi_1\odot\cdots\odot\psi_n,\,
+  \chi_1\odot\cdots\odot\chi_n
+  \bigr\rangle
+  =
+  \frac1{n!}\sum_{\sigma,\tau\in S_n}
+  \prod_{i=1}^n
+  \langle\psi_{\sigma^{-1}(i)},\chi_{\tau^{-1}(i)}\rangle_{\Hilb_1}.
+\]
+For each fixed \(\sigma\), set \(j=\sigma^{-1}(i)\) and
+\(\rho=\tau^{-1}\sigma\).  The product becomes
+\(\prod_{j=1}^n\langle\psi_j,\chi_{\rho(j)}\rangle_{\Hilb_1}\), and as
+\(\tau\) runs over \(S_n\), so does \(\rho\).  The sum over \(\sigma\) cancels
+the prefactor \(1/n!\), leaving the displayed permutation sum.
 \end{proof}
 
 \begin{definition}[Mass-shell Fock test domain and kernels]

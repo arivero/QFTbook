@@ -93,8 +93,8 @@ when the source transformations are also abelian.  Since
 \(\mathcal W[g,\lambda]\) is a functional, the commutator of its two Weyl
 variations must vanish.
 
-\begin{proposition}[Wess--Zumino consistency]
-\label{prop:curved-trace-wz-consistency}
+\begin{remark}[Wess--Zumino consistency]
+\label{rem:curved-trace-wz-consistency}
 Assume the Weyl variation of \(\mathcal W\) is local and has the form
 \eqref{eq:curved-trace-anomaly-definition}.  Then
 \[
@@ -115,9 +115,13 @@ If a finite local counterterm \(B[g,\lambda]\) is added to
 Therefore the intrinsic trace anomaly is a class in local Weyl cohomology:
 local solutions of \eqref{eq:curved-trace-wz-consistency} modulo local Weyl
 variations of counterterms.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
+The Weyl transformations are abelian on the metric-source space under the
+present hypotheses:
+\[
+  [\delta_{\sigma_1},\delta_{\sigma_2}]=0 .
+\]
 Using \(\delta_\sigma\mathcal W=-\mathbf A_\sigma\),
 \[
   0
@@ -137,9 +141,9 @@ This is \eqref{eq:curved-trace-wz-consistency}.  If
   -\mathbf A_\sigma+\delta_\sigma B,
 \]
 which gives \eqref{eq:curved-trace-counterterm-coboundary}.
-\end{proof}
 
-The proposition is formal only after locality has been supplied.  In
+The consistency condition is a local cohomological statement only after
+locality has been supplied.  In
 perturbation theory, locality follows from the locality of counterterms.  For
 free fields on curved backgrounds, it follows from the local Hadamard
 parametrix or, equivalently, from local heat-kernel coefficients.  In a
@@ -149,6 +153,8 @@ property of the background dependence.
 \section{Curvature Variations under Weyl Rescaling}
 
 The classification in low dimensions uses a few explicit Weyl variations.
+\begin{proposition}[Weyl variation of the \(R^2\) counterterm]
+\label{prop:curved-r-squared-weyl-variation}
 On a \(D\)-dimensional Riemannian manifold,
 \begin{align}
   \delta_\sigma\sqrt g
@@ -168,6 +174,7 @@ where \(\nabla^2=\nabla_\mu\nabla^\mu\).  In \(D=4\), these imply
   \label{eq:r-squared-counterterm-weyl-variation}
 \end{equation}
 on a closed manifold.
+\end{proposition}
 
 \begin{proof}
 The variation of the volume form follows from
@@ -293,15 +300,14 @@ the metric trace anomaly has the form
 \end{equation}
 plus terms involving other background fields when such sources are present.
 
-\begin{proposition}[Four-dimensional cohomology representatives]
-\label{prop:curved-four-dimensional-weyl-classes}
+\begin{remark}[Four-dimensional cohomology representatives]
+\label{rem:curved-four-dimensional-weyl-classes}
 Modulo local Weyl variations of dimension-four metric counterterms and total
 derivatives, the parity-even metric anomaly on a closed four-manifold has the
 two nontrivial representatives \(E_4\) and \(W^2\).  The term
 \(\nabla^2R\) is shifted by the local counterterm \(\int\sqrt g\,R^2\).
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The dimension-four parity-even scalar curvature basis is spanned by
 \[
   R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
@@ -321,7 +327,6 @@ invariant in four dimensions, so it also satisfies consistency.  The
 \eqref{eq:r-squared-counterterm-weyl-variation}.  These three directions
 span the basis modulo a choice of representative, leaving \(E_4\) and \(W^2\)
 as the nontrivial local cohomology classes in this sector.
-\end{proof}
 
 If background gauge fields are present, further type-B terms appear.  For a
 dimensionless background gauge field \(A\), the density

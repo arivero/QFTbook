@@ -165,20 +165,89 @@ one-loop Wilsonian coupling.
 
 \begin{proposition}[Integrability of the period coupling]
 \label{prop:sw-period-integrability}
-Assume that the period matrix \(\tau_{IJ}=\partial a_{D,I}/\partial a^J\)
-comes from a family of curves with symplectic intersection pairing and varies
-holomorphically on a simply connected patch where the \(a^I\) are coordinates.
-Then locally there is a holomorphic prepotential \(\mathcal F(a)\) satisfying
-\(a_{D,I}=\partial\mathcal F/\partial a^I\).
+Let \(U\) be a contractible Coulomb-branch patch on which the
+\(a^I\), \(I=1,\ldots,r\), are holomorphic coordinates.  Suppose
+\(\pi:\Sigma\to U\) is a holomorphic family of compact Riemann surfaces with a
+flat symplectic homology frame \((A_I,B^I)\), and suppose that the
+Seiberg-Witten differential \(\lambda_{\mathrm{SW}}\) is chosen so that
+\[
+  \omega_J:=\frac{\partial\lambda_{\mathrm{SW}}}{\partial a^J}
+\]
+is a holomorphic one-form on each fiber, with no residue contribution in the
+Riemann bilinear relation, and is normalized by
+\[
+  \frac1{2\pi}\oint_{A_I}\omega_J=\delta_{IJ}.
+\]
+Then the period matrix
+\[
+  \tau_{IJ}
+  :=
+  \frac{\partial a_{D,I}}{\partial a^J}
+  =
+  \frac1{2\pi}\oint_{B^I}\omega_J
+\]
+is symmetric.  Consequently there is a holomorphic prepotential
+\(\mathcal F\) on \(U\), unique up to an additive constant, such that
+\[
+  a_{D,I}=\frac{\partial\mathcal F}{\partial a^I}.
+\]
 \end{proposition}
 
 \begin{proof}
-The Riemann bilinear relation implies symmetry
-\(\partial a_{D,I}/\partial a^J=\partial a_{D,J}/\partial a^I\).  Therefore
-the holomorphic one-form \(\sum_I a_{D,I}\,da^I\) on the coordinate patch is
-closed.  On a simply connected patch every closed holomorphic one-form is
-exact, so there exists \(\mathcal F\) with
-\(d\mathcal F=\sum_I a_{D,I}\,da^I\).  This is the required prepotential.
+Because the homology frame is flat, differentiating a period at fixed cycle
+gives the period of the differentiated differential:
+\[
+  \frac{\partial a_{D,I}}{\partial a^J}
+  =
+  \frac1{2\pi}\oint_{B^I}\omega_J .
+\]
+Apply the Riemann bilinear relation on a fiber to the two holomorphic
+one-forms \(\omega_I\) and \(\omega_J\):
+\[
+  0
+  =
+  \sum_{K=1}^r
+  \left(
+    \oint_{A_K}\omega_I\,\oint_{B^K}\omega_J
+    -
+    \oint_{B^K}\omega_I\,\oint_{A_K}\omega_J
+  \right).
+\]
+The assumed \(A\)-period normalization gives
+\[
+  0
+  =
+  2\pi\oint_{B^I}\omega_J
+  -
+  2\pi\oint_{B^J}\omega_I,
+\]
+hence \(\tau_{IJ}=\tau_{JI}\).  The holomorphic one-form
+\[
+  \alpha=\sum_I a_{D,I}(a)\,\dd a^I
+\]
+therefore obeys
+\[
+  \dd\alpha
+  =
+  \sum_{I<J}
+  \left(
+    \frac{\partial a_{D,J}}{\partial a^I}
+    -
+    \frac{\partial a_{D,I}}{\partial a^J}
+  \right)
+  \dd a^I\wedge\dd a^J
+  =
+  0 .
+\]
+Since \(U\) is contractible, the ordinary Poincare lemma gives a holomorphic
+function
+\[
+  \mathcal F(a)=\int_{a_\ast}^{a}\alpha
+\]
+whose value is independent of the path in \(U\).  Then
+\(\dd\mathcal F=\alpha\), which is exactly
+\(a_{D,I}=\partial\mathcal F/\partial a^I\).  The additive constant depends
+on the chosen base point \(a_\ast\) and has no physical content.
 \end{proof}
 
 \section{Argument Types And Charge-Monodromy Conventions}

@@ -42,15 +42,13 @@ A six-dimensional vector multiplet can appear in an effective gauge-theory
 description on a tensor branch, but it is not a conformal gauge field at an
 interacting fixed point.
 
-\begin{proposition}[Dimension of the Yang--Mills coupling]
-\label{prop:six-d-yang-mills-coupling-dimension}
+\begin{remark}[Dimension of the Yang--Mills coupling]
+\label{rem:six-d-yang-mills-coupling-dimension}
 In a six-dimensional Yang--Mills presentation with canonical gauge field
 normalization, the gauge coupling has mass dimension \(-1\), equivalently
 \([g_6^2]=-2\).  Hence the local Yang--Mills interaction is not a marginal
 microscopic coupling of a six-dimensional conformal field theory.
-\end{proposition}
 
-\begin{proof}
 In \(d\) spacetime dimensions a canonically normalized vector field has mass
 dimension
 \[
@@ -70,7 +68,7 @@ Putting \(d=6\) gives \([g_6]=-1\) and \([g_6^2]=-2\).  A coupling with
 negative mass dimension is not a marginal conformal coordinate.  Thus any
 six-dimensional vector-multiplet gauge theory used below is an effective
 description on a branch, not a Lagrangian definition of the fixed point.
-\end{proof}
+\end{remark}
 
 \section{Multiplets And Self-Dual Fields}
 
@@ -371,8 +369,8 @@ construction of the \((2,0)\) theory must reproduce.  External geometric or
 string-theoretic derivations may motivate the formula, but they are not
 premises in the argument of this chapter.
 
-\begin{proposition}[ADE arithmetic in the \((2,0)\) anomaly coefficient]
-\label{prop:six-d-ade-anomaly-arithmetic}
+\begin{remark}[ADE arithmetic in the \((2,0)\) anomaly coefficient]
+\label{rem:six-d-ade-anomaly-arithmetic}
 For simply laced \(\mathfrak g\), the coefficient multiplying
 \(p_2(N_R)\) in \eqref{eq:six-d-two-zero-anomaly} is
 \[
@@ -393,9 +391,7 @@ For the ADE series this gives
 \]
 The \(A_{N-1}\) coefficient grows as \(N^3/24\) at large \(N\), while the
 number of free tensor multiplets on the generic branch is only \(N-1\).
-\end{proposition}
 
-\begin{proof}
 The entries use the standard simply laced Lie-algebra dimensions and dual
 Coxeter numbers:
 \[
@@ -418,7 +414,7 @@ For \(A_{N-1}\),
   \frac{N^3}{24}-\frac{N}{24},
 \]
 which displays the cubic scaling.
-\end{proof}
+\end{remark}
 
 \section{BPS Strings}
 
@@ -773,6 +769,10 @@ Lemma~\ref{lem:lie-degree-sum-dimension} gives
   =
   (g_C-1)d_{\mathfrak g}.
 \]
+The assumptions \(g_C>1\) and \(d_i\ge2\) are used in the Riemann--Roch
+lemma to remove the \(H^0(C,K_C^{1-d_i})\) term; punctures or genus zero/one
+surfaces require additional divisor data and obey different dimension
+formulae.
 \end{proof}
 
 \begin{example}[ADE degree checks]

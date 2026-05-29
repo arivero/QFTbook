@@ -103,15 +103,16 @@ Working framework:
   `prop:infinitesimal-translation-covariance`.
 - Covariant field transformations send fields localized in \(\mathcal O\)
   to fields localized in \(g\mathcal O\).
-  Status: proven in chapter. Certification:
-  `cor:covariance-localization-regions`.
+  Status: direct support check in chapter prose. Certification:
+  covariance-of-localization paragraph after the infinitesimal-translation
+  proposition.
 - Poincare covariance of fields and vacuum invariance imply covariance of all
   Wightman distributions.
   Status: proven in chapter. Certification:
   `prop:wightman-distribution-covariance-from-fields`.
 - Spacelike support separation is Poincare invariant.
-  Status: proven in chapter. Certification:
-  `prop:poincare-invariance-spacelike-support-separation`.
+  Status: direct support check in chapter prose. Certification:
+  paragraph "Poincare invariance of spacelike support separation."
 - Microcausality is a support condition on smeared commutators.
   Status: definition. Certification: chapter definition.
 - Adjacent spacelike-separated insertions in a Wightman distribution can be
@@ -123,8 +124,8 @@ Working framework:
   Status: proven in chapter. Certification:
   `prop:polynomial-field-algebra-isotony-graded-locality`.
 - Wightman distributions inherit field covariance and locality by smearing.
-  Status: proven in chapter. Certification:
-  `prop:wightman-inherits-covariance-and-locality`.
+  Status: consequence recorded in chapter prose. Certification:
+  paragraph "Field axioms inherited by Wightman distributions."
 - Local fields can coordinate local observable data but need not be the only
   primitive.
   Status: framework comparison. Certification: AQFT comparison.

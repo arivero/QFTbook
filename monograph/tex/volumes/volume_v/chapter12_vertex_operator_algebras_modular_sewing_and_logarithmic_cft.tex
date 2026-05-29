@@ -540,17 +540,64 @@ be the \(SU(2)_k\) sine matrix.  The finite sine orthogonality relation
   S^{(k)}_{ax}S^{(k)}_{bx}=\delta_{ab}
 \]
 is the ordinary orthogonality of sine functions on the finite interval.
-The \(SU(2)_k\) Verlinde calculation with this matrix gives precisely the
-integer rule defining \(n^{(k)}_{ab}{}^c\).  For the minimal model, the
-matrix \eqref{eq:unitary-minimal-model-s-matrix} is the signed product of
-the \(SU(2)_{m-2}\) and \(SU(2)_{m-1}\) sine matrices, followed by the
-fixed-point-free quotient by \(J\).  The signs are the simple-current
-selection rule; in the Verlinde sum they enforce the Kac-table orbit
-projection.  Therefore the parent product fusion coefficient must be summed
-over the two representatives \(c\) and \(Jc\) of the target orbit.  Written in
-triangular labels, this is exactly
+Put
+\[
+  \theta_x=\frac{\pi(x+1)}{k+2},
+  \qquad
+  \chi_a(\theta)=\frac{\sin((a+1)\theta)}{\sin\theta}.
+\]
+Then \(S^{(k)}_{ax}=S^{(k)}_{0x}\chi_a(\theta_x)\), and the Verlinde
+coefficient is the finite inner product
+\[
+  n^{(k)}_{ab}{}^c
+  =
+  \sum_{x=0}^k
+  \bigl(S^{(k)}_{0x}\bigr)^2\,
+  \chi_a(\theta_x)\chi_b(\theta_x)\chi_c(\theta_x).
+  \label{eq:su2-finite-character-inner-product}
+\]
+The ordinary \(SU(2)\) character identity gives
+\[
+  \chi_a\chi_b
+  =
+  \sum_{\substack{|a-b|\le d\le a+b\\ a+b+d\ {\rm even}}}\chi_d .
+  \label{eq:ordinary-su2-character-product}
+\]
+On the finite grid \(\theta_x\) there are the affine-wall relations
+\[
+  \chi_{k+1}(\theta_x)=0,\qquad
+  \chi_{k+1+r}(\theta_x)=-\chi_{k+1-r}(\theta_x)
+  \quad (r\ge1),
+  \label{eq:su2-affine-wall-character-relation}
+\]
+which follow from \((k+2)\theta_x=\pi(x+1)\).  Substituting
+\eqref{eq:ordinary-su2-character-product} in
+\eqref{eq:su2-finite-character-inner-product}, reducing all terms by
+\eqref{eq:su2-affine-wall-character-relation}, and using finite
+orthogonality gives
+\[
+  n^{(k)}_{ab}{}^c
+  =
+  \begin{cases}
+  1,& |a-b|\le c\le \min(a+b,2k-a-b),\quad a+b+c\in2\mathbb Z,\\
+  0,& \text{otherwise}.
+  \end{cases}
+  \label{eq:su2k-fusion-from-finite-grid}
+\]
+Indeed, if \(a+b\le k\) no wall term occurs and this is the ordinary
+\(SU(2)\) tensor-product interval.  If \(a+b>k\), the reflected terms across
+the wall \(k+1\) cancel exactly the labels \(c>2k-a-b\), leaving the truncated
+alcove interval displayed above.
+
+For the minimal model, the matrix
+\eqref{eq:unitary-minimal-model-s-matrix} is the signed product of the
+\(SU(2)_{m-2}\) and \(SU(2)_{m-1}\) sine matrices, followed by the
+fixed-point-free quotient by \(J\).  The sign is the simple-current selection
+rule in the Verlinde sum.  Therefore the quotient coefficient is obtained from
+the parent product by summing over the two representatives \(c\) and \(Jc\) of
+the target orbit.  Written in triangular labels, this gives exactly
 \eqref{eq:unitary-minimal-model-fusion-rule}.  Each summand is a product of
-\(0\)-\(1\) \(SU(2)\) fusion coefficients, so the result is a nonnegative
+\(0\)-\(1\) \(SU(2)_k\) fusion coefficients, so the result is a nonnegative
 integer.
 \end{proof}
 
@@ -1054,8 +1101,8 @@ product \(\langle u_1,P_a(q)u_2\rangle\), changing the orthonormal basis
 does not change the scalar.
 \end{proof}
 
-\begin{proposition}[Torus trace from self-sewing]
-\label{prop:torus-trace-from-self-sewing}
+\begin{remark}[Torus trace from self-sewing]
+\label{rem:torus-trace-from-self-sewing}
 Let \(M_a\) be a unitary positive-energy module and let \(v\) be a chiral
 state whose vertex operator \(Y(v,1)\) preserves the common domain of
 \(P_a(q)\).  Sewing the two punctures of the sphere two-point block
@@ -1076,10 +1123,7 @@ For \(v=\mathbf 1\), this is the character
   \operatorname{Tr}_{M_a}q^{L_0-c/24}.
   \label{eq:character-from-self-sewing}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-Let \(\{e_\alpha\}\) be a homogeneous orthonormal basis.  The self-sewn
+Indeed, if \(\{e_\alpha\}\) is a homogeneous orthonormal basis, the self-sewn
 block is
 \[
   \sum_\alpha
@@ -1090,7 +1134,7 @@ which is exactly the trace of
 \(Y(v,1)q^{L_0-c/24}\) on finite-level truncations and hence, whenever the
 trace is convergent, the operator trace.  Setting \(v=\mathbf 1\) gives
 \(Y(\mathbf 1,1)=\operatorname{id}_{M_a}\).
-\end{proof}
+\end{remark}
 
 \begin{definition}[Sewing graph for a chiral block]
 \label{def:chiral-sewing-graph}
@@ -1337,9 +1381,8 @@ fusion rules
   \varepsilon\boxtimes\sigma=\sigma,\qquad
   \sigma\boxtimes\sigma=\mathbf 1\oplus\varepsilon .
 \]
-
-\begin{proof}
-The identity \(S^2=1\) is a direct matrix multiplication using
+The verification is pure Verlinde algebra.  The identity \(S^2=1\) is a direct
+matrix multiplication using
 \((\sqrt2)^2=2\).  The vacuum row gives the quantum dimensions by
 \(d_i=S_{i0}/S_{00}\).  For example,
 \[
@@ -1364,7 +1407,6 @@ The same substitution gives
 \(N_{\varepsilon\varepsilon}{}^{\mathbf 1}=1\), and
 \(N_{\varepsilon\sigma}{}^\sigma=1\), with all other coefficients fixed by
 commutativity and the unit object.
-\end{proof}
 
 \section{Operator-Algebraic Conformal Nets}
 \label{sec:operator-algebraic-conformal-nets}
@@ -2001,8 +2043,8 @@ obtained only after choosing measurable bases of intertwiners in the fibers
 \(\mathcal K_x\).  The Plancherel measure and the multiplicity fields are
 therefore part of the CFT data.
 
-\begin{proposition}[Direct-integral OPE identity]
-\label{prop:direct-integral-ope-identity}
+\begin{remark}[Direct-integral OPE identity]
+\label{rem:direct-integral-ope-identity}
 Let \(A,B,C,D\in\mathcal D_{\rm loc}\) and assume that the radial products
 \(\Phi_{BA}(r,\theta)\) and \(\Phi_{CD}(\rho,\varphi)\) have spectral radial
 product data using a common direct-integral decomposition
@@ -2031,10 +2073,7 @@ If the measure is counting measure on a finite set this is the rational
 finite sum over intermediate states.  If the measure has a continuous part,
 the same formula is an \(L^2\)-inner product, not a pointwise sum over
 delta-normalized states.
-\end{proposition}
-
-\begin{proof}
-Choose the unitary map
+Indeed, choose the unitary map
 \[
   U:\mathcal H_{ABCD}\longrightarrow
   \int_X^{\oplus}\mathcal K_x\,\dd\mu(x)
@@ -2050,10 +2089,10 @@ identity
     \langle
       (U\Phi_{CD})(x),(U\Phi_{BA})(x)
     \rangle_{\mathcal K_x}\dd\mu(x),
-  \]
+\]
 which is \eqref{eq:direct-integral-four-point}.  No assumption about a
 discrete basis of normalizable primaries has entered the argument.
-\end{proof}
+\end{remark}
 
 The usual OPE notation is a compressed way of writing
 \eqref{eq:direct-integral-four-point}.  For a continuous spectrum it should
@@ -2101,18 +2140,17 @@ unitarity condition
 in distributional notation.
 \end{definition}
 
-\begin{proposition}[Plancherel crossing]
-\label{prop:crossing-as-plancherel-identity}
+\paragraph{Plancherel form of crossing.}
 Assume the hypotheses of Definition~\ref{def:measurable-fusing-transform}.
-Let \(v_s,w_s\) be the two \(s\)-channel square-integrable coefficient
-fields whose inner product gives the four-point function in an \(s\)-channel
-radial domain, and let \(v_t,w_t\) be the corresponding \(t\)-channel
-coefficient fields.  If
+Let \(v_s,w_s\) be the two \(s\)-channel square-integrable coefficient fields
+whose inner product gives the four-point function in an \(s\)-channel radial
+domain, and let \(v_t,w_t\) be the corresponding \(t\)-channel coefficient
+fields.  If
 \[
   v_t=\mathbb F_{st}v_s,\qquad w_t=\mathbb F_{st}w_s,
   \label{eq:coefficient-fields-fusing-transform}
 \]
-then the two channel decompositions agree:
+then unitarity of the fusing transform gives
 \begin{equation}
   \int_{X_s}
     \langle w_s(x),v_s(x)\rangle_{\mathcal K_x^{(s)}}\,\dd\mu_s(x)
@@ -2121,29 +2159,15 @@ then the two channel decompositions agree:
     \langle w_t(y),v_t(y)\rangle_{\mathcal K_y^{(t)}}\,\dd\mu_t(y).
   \label{eq:direct-integral-crossing}
 \end{equation}
-Thus crossing in a nonrational CFT is a unitarity statement for the fusing
-transform together with an equality of coefficient fields.  In a rational
-CFT this reduces to a finite matrix identity.  In Liouville theory the
-label spaces are continuous and the same statement becomes the Ponsot--Teschner
-Virasoro fusion-kernel identity, together with the DOZZ coefficient
-relation.
-\end{proposition}
-
-\begin{proof}
-Equation \eqref{eq:direct-integral-crossing} follows immediately from the
-unitarity of \(\mathbb F_{st}\):
-\[
-  \langle w_s,v_s\rangle_s
-  =
-  \langle \mathbb F_{st}w_s,\mathbb F_{st}v_s\rangle_t
-  =
-  \langle w_t,v_t\rangle_t .
-\]
-The analytic content is not this Hilbert-space equality but the construction
-of the direct-integral decompositions, the proof that the conformal blocks
-admit the unitary transform \(\mathbb F_{st}\), and the verification of
+In this formulation the displayed Hilbert-space identity is the final
+Plancherel step.  The mathematical content is the construction of the
+direct-integral decompositions, the proof that the conformal blocks admit the
+unitary transform \(\mathbb F_{st}\), and the verification of
 \eqref{eq:coefficient-fields-fusing-transform} for the actual OPE kernels.
-\end{proof}
+In a rational CFT the same statement reduces to a finite matrix identity.  In
+Liouville theory the label spaces are continuous and the identity becomes the
+Ponsot--Teschner Virasoro fusion-kernel identity, together with the DOZZ
+coefficient relation.
 
 \begin{definition}[Nonrational genus-zero bootstrap problem]
 \label{def:nonrational-genus-zero-bootstrap-problem}

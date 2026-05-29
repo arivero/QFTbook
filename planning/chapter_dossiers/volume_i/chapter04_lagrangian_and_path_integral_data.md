@@ -104,8 +104,8 @@ Working framework:
   Gaussian momentum integration.
 - `def:finite-slice-time-ordered-insertions-source`: source-dependent
   generating functional at finite cutoff.
-- `prop:trace-periodic-euclidean-boundary-conditions`: Euclidean trace
-  boundary condition for bosonic paths.
+- Paragraph "Trace and periodic Euclidean boundary conditions": Euclidean
+  trace boundary condition for bosonic paths.
 - `prop:euclidean-long-time-ground-state-projection`: vacuum projection by
   Euclidean time evolution.
 
@@ -133,8 +133,8 @@ Working framework:
   determinant measure for quadratic momentum dependence.
 - `def:finite-slice-time-ordered-insertions-source` records how source
   derivatives generate time-ordered insertions.
-- `prop:trace-periodic-euclidean-boundary-conditions` proves that a bosonic
-  Euclidean trace identifies \(q_N=q_0\), hence periodic paths.
+- The trace-boundary-condition paragraph derives that a bosonic Euclidean trace
+  identifies \(q_N=q_0\), hence periodic paths.
 - Under Feynman--Kac hypotheses, the Euclidean trace path integral is a
   Brownian-loop integral with endpoint constraint \(q(\beta_{\mathrm T})=q(0)\).
 - Infinite-volume thermal equilibrium is formulated by the KMS analytic

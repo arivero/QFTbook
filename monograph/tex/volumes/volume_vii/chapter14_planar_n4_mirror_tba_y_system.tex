@@ -52,8 +52,7 @@ the mirror dispersion is not the same function of \(\widetilde p\) as the
 physical dispersion.  This is the first major difference from relativistic
 two-dimensional QFT, where the mirror transformation is a rapidity shift.
 
-\begin{proposition}[Mirror dispersion from double Wick rotation]
-\label{prop:planar-n4-mirror-dispersion}
+\paragraph{Mirror dispersion from double Wick rotation.}
 For a \(Q\)-magnon bound state with physical dispersion
 \[
   E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2},
@@ -70,9 +69,6 @@ the mirror dispersion obtained from
   \label{eq:planar-n4-mirror-dispersion}
 \end{equation}
 The positive branch is chosen for real mirror momentum.
-\end{proposition}
-
-\begin{proof}
 Set \(p=\ii\widetilde E\) and \(E_Q=\ii\widetilde p\) in the physical
 dispersion relation.  Since
 \(\sin(\ii\widetilde E/2)=\ii\sinh(\widetilde E/2)\), one obtains
@@ -89,7 +85,6 @@ Thus
 \]
 The mirror energy is positive on the real mirror line, which selects
 \eqref{eq:planar-n4-mirror-dispersion}.
-\end{proof}
 
 Equivalently one continues the Zhukovsky variables through a specified
 sequence of cuts.  On the physical sheet a real magnon has
@@ -386,18 +381,27 @@ local cancellation recursion remains finite by acquiring a pole from a second
 \]
 If this second root lies outside the unit circle, the divergence of
 \(F(y_2)\) is canceled by the zero of the same \(w_1\)-factor and the string
-closes.  If it lies inside, the same argument continues and creates the next
-\(w\)-root.  Iteration fixes the displayed imaginary spacings.  The real
+closes.  If it lies inside, \(F(y_2)\) again decays exponentially and the
+second auxiliary equation must acquire another compensating pole, now from a
+neighboring \(w\)-root.  Alternating these zero-pole cancellations creates
+the sequence
+\[
+  v(y_{j+1})=v(y_j)-2\eta,\qquad
+  w_j=v(y_j)-\eta ,
+\]
+until the terminal \(y\)-root lies on the opposite support side.  This
+iteration fixes the displayed imaginary spacings.  The real
 center is the thermodynamic string-hypothesis input: the mirror densities are
 assigned to real centers, while the roots in the complex plane are the
 regular arrays above those centers.
 
-The \(w\)-only strings are obtained by applying the same valuation argument to
-the second line of \eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} when the
-background \(y\)-roots are on \(\lvert y\rvert=1\).  A finite elementary
-density is supported on real \(w\).  A complex \(w\)-root must be accompanied
-by neighbouring \(w\)-roots separated by \(2\eta=\ii/g\), which gives the
-array \(w_j=w_0+(M+1-2j)\eta\).
+For the \(w\)-only strings, set the background \(y\)-roots on
+\(\lvert y\rvert=1\), so their elementary factors have unit magnitude and do
+not supply exponential growth.  A complex \(w\)-root in the second line of
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} then produces an uncanceled
+large-volume factor unless a neighboring \(w\)-root sits at distance
+\(2\eta=\ii/g\).  Repeating the cancellation in both directions gives the
+finite array \(w_j=w_0+(M+1-2j)\eta\) with real center \(w_0\).
 \end{proof}
 
 \section{Thermodynamic Bethe Ansatz}
@@ -1149,9 +1153,18 @@ Multiplying it by the last expression in
 \]
 For \(m\neq n\) the two geometric tails cancel.  For \(m=n\) the remaining
 jump is one.  Equations \eqref{eq:planar-n4-a-inverse-kmn} and
-\eqref{eq:planar-n4-a-inverse-kn} follow by subtracting the identity kernel
-from \(A\) and by applying the same calculation to the one-index kernel
-\(\widehat K_n=q^n\).
+\eqref{eq:planar-n4-a-inverse-kn} follow as follows.  For
+\eqref{eq:planar-n4-a-inverse-kmn}, replace \(A_{mn}\) by
+\((A-I)_{mn}\) in the Fourier identity just proved and transform back from
+\(\omega\)-space.  For the one-index kernel, multiplication by the
+tridiagonal inverse gives
+\[
+  q^m-\frac{q}{1+q^2}\bigl(q^{m+1}+q^{m-1}\bigr)=0
+  \quad (m>1),
+\]
+while for \(m=1\) the missing \(m=0\) term leaves
+\(q/(1+q^2)=\widehat{\mathsf s}\).  This is
+\eqref{eq:planar-n4-a-inverse-kn}.
 \end{proof}
 
 \begin{proposition}[One auxiliary wing of the Y-system]
@@ -1401,8 +1414,7 @@ definition of the theory discards the information that distinguishes physical
 states.
 \end{warning}
 
-\begin{proposition}[Local source factor from a shifted zero-pole pair]
-\label{prop:planar-n4-local-y-source-factor}
+\paragraph{Local source factor from a shifted zero-pole pair.}
 Let \(\alpha\in\C\), and define the elementary shifted source factor
 \[
   B_\alpha(u)=\frac{u-\alpha+\ii/2}{u-\alpha-\ii/2}.
@@ -1425,10 +1437,7 @@ where \(\widehat Y_{a,s}\) has no zero or pole crossed by the two shifts
 For a finite set of shifted zero-pole pairs, the source factor is the product
 of the corresponding powers of
 \((u-\alpha+\ii)/(u-\alpha-\ii)\).
-\end{proposition}
-
-\begin{proof}
-The claim is the algebra of the shift operation.  Directly,
+This is the algebra of the shift operation.  Directly,
 \[
   B_\alpha^+(u)
   =
@@ -1448,9 +1457,8 @@ Raising to the integer power \(\nu\) and multiplying by
 \(\widehat Y_{a,s}^+\widehat Y_{a,s}^-\) proves
 \eqref{eq:planar-n4-local-y-source-factor}.  A finite product follows by
 commutativity.
-\end{proof}
 
-This proposition is the local algebraic shadow of contour deformation.  The
+This local calculation is the algebraic shadow of contour deformation.  The
 homogeneous Y-system records what happens after \(\mathsf s^{-1}\) is applied
 in a strip free of singularities.  If a zero, pole, or logarithmic branch point
 crosses one of the two strip boundaries, the remaining regular part
@@ -1520,7 +1528,7 @@ are related by
 \end{equation}
 Finally, every zero or pole introduced by an excited-state contour deformation
 is part of the data and must be recorded by a finite product of local factors
-of the form in Proposition~\ref{prop:planar-n4-local-y-source-factor}.
+of the form \eqref{eq:planar-n4-local-y-source-factor}.
 \end{assumption}
 
 The strip statement is an analytic input extracted from the mirror TBA and its

@@ -297,7 +297,7 @@ develop zero modes and a single gauge condition can meet an orbit more than
 once.  Those issues are not QED Feynman-rule details; they belong to the
 nonabelian local-coordinate and BRST analysis of
 Chapter~\ref{ch:volume-ii-18}, especially
-Theorem~\ref{thm:singer-gribov-obstruction}.
+Quoted Theorem~\ref{thm:singer-gribov-obstruction}.
 
 \begin{definition}[Regulated gauge-fixed QED source functional]
 \label{def:qed-gauge-fixed-source-functional}
@@ -827,19 +827,21 @@ Chapters~\ref{ch:spinor-fields-fermionic-path-integrals} and
 \end{corollary}
 
 \begin{proof}
-This is the sharp-kernel event-probability formula of
-Chapter~\ref{ch:cross-sections-unitarity} applied to the reduced kernel
-\(\mathcal M\) in Proposition~\ref{prop:qed-tree-compton-hard-kernel}.  The
-delta distribution imposes the four-momentum conservation already factored
-out of the \(S\)-matrix element, and the sum runs over the final physical
-spin and helicity labels.  The incoming spin and helicity are held fixed, so
-there is no incoming average in the displayed expression.
+The reduced Compton kernel \(\mathcal M\) is the connected on-shell
+matrix element after removal of the total momentum-conservation delta
+distribution.  In the sharp-kernel event-probability formula, the final
+electron and photon momenta are integrated with the normalization used in the
+external-state chapters, while the remaining
+\((2\pi)^4\delta^{(4)}(k+p-k'-p')\) imposes energy-momentum conservation on
+the event.  Summing over \(h'\) and \(\sigma'\) implements the inclusive
+measurement over final physical helicity and spin labels.  The incoming spin
+and helicity are specified rather than averaged, so no factor averaging over
+initial labels appears.
 \end{proof}
 
 \section{Infrared Boundary of Charged Scattering}
 
-\begin{proposition}[Infrared boundary of charged QED scattering]
-\label{prop:qed-charged-scattering-infrared-boundary}
+\begin{remark}[Infrared boundary of charged QED scattering]
 The perturbative rules above are rules for hard Green-function residues. They
 are valid order by order once an infrared regulator or an inclusive
 prescription has been specified. The exact long-range theory has an additional
@@ -854,9 +856,7 @@ This boundary is already visible in the charged dressing
 \(\Psi_{C_x}(x)\). A dressing that retains nonzero electric charge extends to
 infinity. In scattering, the same long-range field is represented
 perturbatively by arbitrarily soft photons.
-\end{proposition}
 
-\begin{proof}
 For a gauge parameter that approaches a nonzero constant on a large sphere,
 Gauss' law relates the total electric charge inside the sphere to the
 asymptotic electric flux.  Thus a charged vector cannot be created from the
@@ -870,7 +870,7 @@ isolated one-particle mass shell separated by a gap from the rest of the
 charged spectrum.  This is precisely the hypothesis ordinary massive
 Haag--Ruelle and the pole form of LSZ require, so the representative hard
 kernel must be completed by an infrared-aware construction.
-\end{proof}
+\end{remark}
 
 The physical completions are inclusive transition probabilities, where soft
 photons below a resolution threshold are summed over, or dressed asymptotic

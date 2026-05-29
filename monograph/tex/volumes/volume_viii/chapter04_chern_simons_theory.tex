@@ -119,18 +119,21 @@ where
 is the winding number with the chosen normalization.  The sign in this
 formula is tied to the displayed right-action convention for \(A^g\).
 
-\begin{proposition}[Gauge invariance of the exponentiated action]
-\label{prop:cs-level-quantization}
+\begin{remark}[Gauge invariance of the exponentiated action]
+\label{rem:cs-level-quantization}
 With the integral normalization above, \(\exp(\ii S_{\rm CS})\) is invariant
 under all gauge transformations on closed \(M\) if \(k\in\mathbb Z\).
-\end{proposition}
 
-\begin{proof}
 The transformation formula gives
 \(\exp(\ii S_{\rm CS}(A^g))=\exp(\ii S_{\rm CS}(A))\exp(2\pi\ii k n(g))\).
 This equals \(\exp(\ii S_{\rm CS}(A))\) for all \(n(g)\in\mathbb Z\) exactly
-when \(k\) is integral in the normalization used for the bilinear form.
-\end{proof}
+when \(k\) is integral in the normalization used for the bilinear form.  The
+closed-manifold hypothesis removes boundary terms from the gauge-variation
+formula.  With a boundary, the gauge-variation formula contains the boundary
+term obtained by restricting the transgression form to \(\partial M\); its
+cancellation requires boundary degrees of freedom, boundary conditions, or a
+specified anomalous boundary theory together with the integral level.
+\end{remark}
 
 \section{Phase Space on a Surface}
 
@@ -195,16 +198,14 @@ These are the integrable highest weights of the affine algebra
 The matrix \(S\) is the modular \(S\)-transformation on the torus state
 space in the basis determined by core Wilson lines in a solid torus.
 
-\begin{proposition}[Orthogonality of the \(SU(2)_k\) modular \(S\)-matrix]
-\label{prop:su2k-s-matrix-orthogonality}
+\begin{remark}[Orthogonality of the \(SU(2)_k\) modular \(S\)-matrix]
+\label{rem:su2k-s-matrix-orthogonality}
 The matrix \eqref{eq:su2k-modular-s-matrix} is real, symmetric, and
 orthogonal:
 \[
   \sum_{b=0}^k S_{ab}S_{cb}=\delta_{ac}.
 \]
-\end{proposition}
 
-\begin{proof}
 Put \(r=a+1\), \(s=c+1\), and \(K=k+2\).  The required identity is
 \[
   \frac{2}{K}\sum_{m=1}^{K-1}
@@ -218,7 +219,7 @@ Using \(2\sin x\sin y=\cos(x-y)-\cos(x+y)\), the sum reduces to finite
 geometric sums of \(K\)-th roots of unity.  For \(r=s\), it gives
 \(\sum_{m=1}^{K-1}\sin^2(rm\pi/K)=K/2\).  For \(r\ne s\), the two cosine
 sums cancel.  This proves the orthogonality relation.
-\end{proof}
+\end{remark}
 
 The quantum dimension of the label \(a\) is
 \begin{equation}
@@ -306,8 +307,8 @@ and \(N_{ab}^{\phantom{ab}c}=0\) otherwise.  The truncation
 \(c\le2k-a-b\) is the finite-level effect: tensor products that would exceed
 the affine alcove are reflected back by the quantum Weyl symmetry.
 
-\begin{proposition}[Verlinde dimensions]
-\label{prop:su2k-verlinde-dimensions}
+\begin{remark}[Verlinde dimensions from the modular-functor input]
+\label{rem:su2k-verlinde-dimensions}
 Let \(\Sigma_g\) be a closed oriented genus-\(g\) surface.  The
 \(SU(2)_k\) Chern--Simons state-space dimension assigned by the modular
 functor is
@@ -323,9 +324,7 @@ In particular,
   \qquad
   \dim\mathcal H(T^2)=k+1 .
 \]
-\end{proposition}
 
-\begin{proof}
 The dimension formula is the zero-puncture specialization of the Verlinde
 formula for conformal blocks,
 \[
@@ -339,7 +338,9 @@ For \(g=0,n=0\), orthogonality of the first row of \(S\) gives
 has \(k+1\) terms.  Higher genus follows from pair-of-pants gluing: each
 handle contraction inserts a sum over an intermediate label weighted by the
 inverse square of \(S_{0x}\), which is exactly the displayed exponent.
-\end{proof}
+This paragraph records the modular-functor consequence used below; it is not
+a derivation of the modular functor from the Chern--Simons path integral.
+\end{remark}
 
 \section{Boundary Theory}
 

@@ -41,8 +41,8 @@ wedge product.  The action is
 The coefficient is fixed so that the compact abelian specialization below has
 integer periods in the exponent.
 
-\begin{proposition}[Euler--Lagrange equations]
-\label{prop:bf-euler-lagrange}
+\begin{remark}[Euler--Lagrange equations]
+\label{rem:bf-euler-lagrange}
 On a closed \(M\), the stationary equations of
 \eqref{eq:bf-action-nonabelian} are
 \[
@@ -50,9 +50,7 @@ On a closed \(M\), the stationary equations of
   \qquad
   \dd_A B=0 .
 \]
-\end{proposition}
 
-\begin{proof}
 Let \(\alpha\in\Omega^1(M,\operatorname{ad}P)\) and
 \(\beta\in\Omega^{D-2}(M,\operatorname{ad}P^*)\) be variations of \(A\) and
 \(B\).  The curvature variation is
@@ -88,7 +86,7 @@ The integral of the left side vanishes on a closed manifold, so
   (-1)^{D-1}\int_M\langle\dd_A B\wedge\alpha\rangle .
 \]
 Since \(\alpha\) is arbitrary, \(\dd_A B=0\).
-\end{proof}
+\end{remark}
 
 \section{Gauge Symmetry And Reducibility}
 
@@ -117,8 +115,8 @@ define
   \delta_\eta B=\dd_A\eta .
 \]
 
-\begin{proposition}[Invariance of the shift symmetry]
-\label{prop:bf-shift-invariance}
+\begin{remark}[Invariance of the shift symmetry]
+\label{rem:bf-shift-invariance}
 On a closed manifold,
 \[
   S_{\rm BF}[A,B+\dd_A\eta]-S_{\rm BF}[A,B]
@@ -130,9 +128,7 @@ produces the boundary term
 \[
   2\pi\ii\int_{\partial M}\langle\eta\wedge F_A\rangle .
 \]
-\end{proposition}
 
-\begin{proof}
 The change in the action is
 \[
   2\pi\ii\int_M\langle\dd_A\eta\wedge F_A\rangle .
@@ -147,7 +143,11 @@ The covariant Leibniz rule and Bianchi identity \(\dd_A F_A=0\) give
   \langle\dd_A\eta\wedge F_A\rangle .
 \]
 This proves the formula.
-\end{proof}
+On a closed manifold the integral of this exact top form is zero by Stokes'
+theorem.  When \(\partial M\neq\varnothing\), the same Stokes calculation gives
+the displayed boundary functional, which is the datum that must be cancelled
+or coupled to boundary degrees of freedom in a theory with boundary.
+\end{remark}
 
 The shift symmetry is reducible.  If
 \(\eta=\dd_A\eta_1\), then
@@ -374,8 +374,8 @@ additional data:
 If the metric variation of the gauge-fixed integrand is BV-exact and if the
 BV Stokes boundary term vanishes, then the corresponding BV-closed
 correlators are metric independent by
-Corollary~\ref{cor:bv-gauge-fixing-independence}.  On a manifold with
-boundary, Proposition~\ref{prop:bf-shift-invariance} shows that the shift
+Remark~\ref{rem:bv-gauge-fixing-independence}.  On a manifold with
+boundary, Remark~\ref{rem:bf-shift-invariance} shows that the shift
 symmetry produces boundary phase-space data.  The boundary fields are the
 restrictions of \(A\) and \(B\), and the boundary symplectic pairing is
 obtained from the boundary term in the variation:

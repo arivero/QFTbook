@@ -103,13 +103,11 @@ five-cochain on the fundamental class and then embedding
 integer lifts and keeps the result modulo \(N\); changing the lift changes the
 exponent by an integral multiple of \(2\pi i\).
 
-\begin{proposition}[Closed-manifold gauge invariance]
-\label{prop:zn-one-form-symtft-gauge-invariance}
+\begin{remark}[Closed-manifold gauge invariance]
+\label{rem:zn-one-form-symtft-gauge-invariance}
 If \(X\) is closed, \eqref{eq:zn-one-form-symtft-action} is invariant under
 the gauge transformations above.
-\end{proposition}
 
-\begin{proof}
 The transformation \(c\mapsto c+\delta\kappa\) does not change \(\delta c\),
 because \(\delta^2=0\).  Under \(b\mapsto b+\delta\lambda\), the exponent
 changes by
@@ -128,7 +126,7 @@ Since \(\deg\lambda=1\),
 Thus the change is the integral of a coboundary.  Evaluation of a coboundary on
 the fundamental cycle of a closed triangulated manifold is zero modulo \(N\).
 The exponent is therefore unchanged.
-\end{proof}
+\end{remark}
 
 If \(X\) has boundary \(M=\partial X\), the last computation leaves the
 boundary term
@@ -524,8 +522,8 @@ two-cocycles on \(M\), weighted by the Pontryagin-square phase and by the
 corresponding magnetic one-form symmetry surface network.  Thus the fusion
 coefficient is a three-dimensional TQFT or finite state sum, not a number.
 
-\begin{theorem}[QED noninvertible chiral defects]
-\label{thm:qed-noninvertible-chiral-defects}
+\begin{controlledapproximation}[QED noninvertible chiral defects]
+\label{ca:qed-noninvertible-chiral-defects}
 In compact unit-charge massless QED on oriented spin four-manifolds, with no
 dynamical monopoles and with the magnetic one-form symmetry retained as part
 of the QFT datum, every rational axial angle \(2\pi p/N\) with
@@ -536,10 +534,10 @@ lines by \eqref{eq:qed-chiral-defect-action-on-thooft-line}, and is
 noninvertible because
 \(D_{N,p}D_{N,p}^{\dagger}\) is a magnetic condensation defect rather than the
 invisible defect.
-\end{theorem}
+\end{controlledapproximation}
 
-This theorem is a theorem of the compact path-integral construction just
-given.  A fully axiomatic version would still require constructing compact
+This statement is the compact path-integral construction just given.  A fully
+axiomatic theorem would still require constructing compact
 QED, its charged line sectors, and the defect Hilbert spaces in a
 nonperturbative reconstruction framework.  If dynamical monopoles are added,
 the magnetic one-form symmetry has endpoints and the half-space gauging step

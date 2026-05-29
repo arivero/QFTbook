@@ -687,8 +687,8 @@ corresponding Jost domain, with the Koszul sign included for graded fields.
 \end{enumerate}
 \end{definition}
 
-\begin{proposition}[Tempered boundary values from polynomial tube bounds]
-\label{prop:polynomial-tube-bounds-boundary-values}
+\begin{quotedtheorem}[Tempered boundary values from polynomial tube bounds]
+\label{qthm:polynomial-tube-bounds-boundary-values}
 Let \(C\subset\mathbb R^d\) be an open convex cone and let
 \[
   T_C=\mathbb R^d+\ii C
@@ -719,20 +719,15 @@ carried by the dual closed cone
 \]
 then the Fourier transform of
 \(\operatorname{bv}F\) is carried by \(C^*\).
-\end{proposition}
+\end{quotedtheorem}
 
-\begin{proof}
 This is a mathematical input from the theory of analytic functionals and
-tempered distributions.  One proves it by applying Cauchy's estimates in
-subtubes to obtain uniform finite-order distribution bounds, representing the
-tested functions by Fourier transforms, and using the Vladimirov
-boundary-value theorem for holomorphic functions of polynomial growth in tube
-domains.  The carrier-cone statement is the Paley--Wiener--Schwartz cone
-theorem.  These are several-complex-variable and distribution-theoretic
-theorems; the QFT-specific work in OS reconstruction is to prove their
-hypotheses for the holomorphic functions constructed from the Schwinger
-hierarchy.
-\end{proof}
+tempered distributions: Cauchy estimates in subtubes give uniform finite-order
+distribution bounds, the Vladimirov boundary-value theorem supplies the
+tempered limit, and the carrier-cone statement is the
+Paley--Wiener--Schwartz cone theorem.  The QFT-specific work in OS
+reconstruction is to prove these hypotheses for the holomorphic functions
+constructed from the Schwinger hierarchy.
 
 \begin{proposition}[OS-II analytic route to the boundary-value package]
 \label{prop:os-ii-analytic-route-to-boundary-package}
@@ -810,8 +805,8 @@ right hand side is a finite Schwartz seminorm, and the dependence on the
 distance to the cone boundary is polynomial.  Therefore the family of
 functionals \(f\mapsto\langle S_k(\cdot+\ii y),f\rangle\) is bounded in a
 fixed finite-order tempered-distribution topology on each closed subtube.
-	Proposition~\ref{prop:polynomial-tube-bounds-boundary-values} then gives
-	tempered boundary values as \(y\to0\) inside the cone.
+Quoted Theorem~\ref{qthm:polynomial-tube-bounds-boundary-values} then gives
+tempered boundary values as \(y\to0\) inside the cone.
 
 For a permutation of insertions, item (vi) gives the corresponding permuted
 tube.  Euclidean permutation symmetry says that the permuted holomorphic
@@ -1529,8 +1524,8 @@ the same operations on test sequences, hence
 \[
   VU_1(g)=U_2(g)V
 \]
-on a dense domain and therefore on the Hilbert spaces.  The same argument
-applies to field insertions:
+on a dense domain and therefore on the Hilbert spaces.  Field insertions are
+also defined by the same operation on the common quotient:
 \[
   V\widehat\Phi^{(1)}_\alpha(f)[F]_1
   =

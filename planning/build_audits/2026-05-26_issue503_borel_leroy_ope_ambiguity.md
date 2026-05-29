@@ -22,10 +22,12 @@ thimble, and renormalon-model material.
   loop coefficients alone are not enough; the chart, Borel--Leroy parameter,
   singularity location, Borel-plane analyticity domain, and error procedure are
   part of the theorem or approximation.
-- Proposition `prop:ope-renormalon-ambiguity-cancellation` states and proves
-  the algebraic cancellation condition for a two-term OPE lateral ambiguity:
-  \(\Delta C_0+Q^{-p}C_p\Delta M_p=0\).  This prevents the common sloppy
-  reading of a renormalon ambiguity as a standalone physical observable.
+- Remark `rem:ope-renormalon-ambiguity-cancellation` records the algebraic
+  cancellation condition for a two-term OPE lateral ambiguity:
+  \(\Delta C_0+Q^{-p}C_p\Delta M_p=0\).  It is intentionally not a
+  theorem-family wrapper: the algebra is immediate, while a QFT application
+  still has to construct the factorization scheme, the operator matrix element,
+  and the lateral sums.
 
 ## Calculation Checks
 

@@ -647,8 +647,7 @@ S_E[\phi]
 \]
 \end{definition}
 
-\begin{proposition}[Euclidean scalar action]
-\label{prop:euclidean-scalar-action}
+\paragraph{Euclidean scalar action.}
 For the real scalar field with
 \[
   \mathcal L
@@ -667,9 +666,6 @@ this gives
   +
   V(\phi).
 \]
-\end{proposition}
-
-\begin{proof}
 With mostly-plus Lorentzian metric,
 \[
   -\frac12\eta^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi
@@ -690,7 +686,6 @@ Substitution of \(\partial_0=\ii\partial_\tau\) gives
 \]
 The definition \(\mathcal L_E=-\mathcal L|_{\partial_0=\ii\partial_\tau}\)
 then gives the displayed positive kinetic terms.
-\end{proof}
 
 \begin{definition}[Regulated Euclidean scalar Green function]
 \label{def:regulated-euclidean-scalar-green-function}
@@ -1067,12 +1062,20 @@ contributes \(a_d(A)/(s\Gamma(s))\) to \(\zeta_A(s)\) near \(s=0\).  Since
 \(s=0\).  The remaining subtracted terms are either regular and vanish at
 \(s=0\) after multiplication by \(\Gamma(s)^{-1}\), or have poles away from
 \(s=0\) under the stated no-log hypothesis.  This gives
-\(\zeta_A(0)=a_d(A)\).  The scale-dependence formula follows immediately from
+\(\zeta_A(0)=a_d(A)\).  Substituting
+\((\ee^\sigma\mu)^r=\ee^{r\sigma}\mu^r\) into the defining formula gives
+\[
+  \log\det\nolimits_{\zeta}\left(\frac{A}{(\ee^\sigma\mu)^r}\right)
+  =
+  -\zeta_A'(0)-\zeta_A(0)(\log\mu^r+r\sigma),
+\]
+and subtracting
 \[
   \log\det\nolimits_{\zeta}\left(\frac{A}{\mu^r}\right)
   =
-  -\zeta_A'(0)-\zeta_A(0)\log\mu^r .
+  -\zeta_A'(0)-\zeta_A(0)\log\mu^r
 \]
+leaves \(-r\sigma\zeta_A(0)=-r\sigma a_d(A)\).
 \end{proof}
 
 This is the determinant counterpart of the regulator/subtraction distinction

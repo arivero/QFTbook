@@ -71,8 +71,8 @@ Thus
 The scalar \(\alpha_M\) is not itself the anomaly; it is the anomaly written
 in a chosen local trivialization.
 
-\begin{proposition}[Functorial cocycle condition]
-\label{prop:anomaly-line-functorial-cocycle}
+\begin{remark}[Functorial cocycle condition]
+\label{rem:anomaly-line-functorial-cocycle}
 Let \(u:A\to A'\) and \(v:A'\to A''\) be composable morphisms in
 \(\mathcal B(M)\).  In any choice of nonzero local frame \(s_A\) for the
 anomaly line,
@@ -91,9 +91,6 @@ then
   =
   c(A')^{-1}\alpha_M(u;A)c(A).
 \]
-\end{proposition}
-
-\begin{proof}
 Functoriality gives
 \[
   \mathcal L_M(vu)
@@ -115,7 +112,7 @@ which is the stated cocycle identity.  If \(s'_A=c(A)s_A\), then
   c(A)\alpha_M(u;A)c(A')^{-1}s'_{A'}.
 \]
 This is exactly the displayed transformation law.
-\end{proof}
+\end{remark}
 
 A local counterterm is a choice of local functional \(K_M(A)\) whose
 exponential changes the frame:
@@ -388,12 +385,12 @@ After choosing the standard descent representative, the closed \(D\)-form in
 parentheses is a descent coboundary.  Its integral on a closed \(M\) is
 therefore zero modulo the counterterm ambiguity.  The displayed consistency
 condition follows.  It is the functorial cocycle condition of
-Proposition~\ref{prop:anomaly-line-functorial-cocycle} written
+Remark~\ref{rem:anomaly-line-functorial-cocycle} written
 infinitesimally.
 \end{proof}
 
-\begin{proposition}[Cocycle ambiguity and local counterterms]
-\label{prop:inflow-cocycle-counterterm}
+\begin{remark}[Cocycle ambiguity and local counterterms]
+\label{rem:inflow-cocycle-counterterm}
 Changing \(I_{D+1}^{(0)}\) by
 \[
   I_{D+1}^{(0)}\longmapsto I_{D+1}^{(0)}+dK_D(A)
@@ -406,9 +403,7 @@ changes the boundary anomaly by the variation of the local
 Thus the anomaly invariant is the cohomology class of the bulk invertible
 theory, while a representative anomaly current depends on a boundary
 counterterm coordinate.
-\end{proposition}
 
-\begin{proof}
 On a manifold with boundary,
 \[
   \int_X dK_D=\int_M K_D .
@@ -418,8 +413,8 @@ exactly the variation of this \(D\)-dimensional local functional.  Hence two
 bulk cocycles differing by a coboundary define anomaly representatives that
 are related by a local counterterm.  The same statement in the anomaly-line
 language is the frame change in
-Proposition~\ref{prop:anomaly-line-functorial-cocycle}.
-\end{proof}
+Remark~\ref{rem:anomaly-line-functorial-cocycle}.
+\end{remark}
 
 \section{Finite Higher-Form Inflow}
 
@@ -442,7 +437,7 @@ natural under subdivision and pullback.  Its value is
 \]
 If \(X\) is closed and \(\omega\) is a cocycle on the classifying space
 \(B^{p+1}A\), gauge invariance follows by the same evaluation-on-cycles
-argument as Proposition~\ref{prop:discrete-theta-coboundary-invariance}.  If
+argument as Remark~\ref{rem:discrete-theta-coboundary-invariance}.  If
 \(X\) has boundary, gauge variation leaves a boundary cochain.  The boundary
 QFT is then a section of the corresponding finite anomaly line.
 
@@ -479,8 +474,8 @@ has been attached.  This is the cochain model behind one-form gauging,
 duality interfaces, and the symmetry-TQFT discussion in
 Chapter~\ref{ch:global-higher-group-symmetry-tft}.
 
-\begin{proposition}[Finite bulk variation]
-\label{prop:finite-higher-form-bulk-variation}
+\begin{remark}[Finite bulk variation]
+\label{rem:finite-higher-form-bulk-variation}
 For the five-dimensional action
 \[
   \frac{2\pi\ii}{N}\int_X b\smile\delta c,
@@ -492,9 +487,7 @@ and equals
 \]
 when \(X\) has boundary.  The variation under
 \(c\mapsto c+\delta\kappa\) is zero.
-\end{proposition}
 
-\begin{proof}
 Since \(\delta^2=0\), changing \(c\) by \(\delta\kappa\) does not change
 \(\delta c\).  Under \(b\mapsto b+\delta\lambda\), the exponent changes by
 \[
@@ -512,7 +505,7 @@ The cup-product differential satisfies
 because \(\deg\lambda=1\).  Evaluation of a coboundary on a closed
 fundamental cycle is zero.  On a manifold with boundary, the cochain Stokes
 formula gives the displayed boundary term.
-\end{proof}
+\end{remark}
 
 \section{Weyl-Fermion Inflow}
 \label{sec:four-dimensional-weyl-five-dimensional-inflow}
@@ -698,8 +691,8 @@ on the wall, fusion of \(D_g\) with its orientation reverse contains a sum
 over the gauged sectors.  That fusion is not a single copy of the identity
 defect, and \(D_g\) is noninvertible.
 
-\begin{proposition}[Wall trivialization criterion]
-\label{prop:wall-trivialization-criterion}
+\begin{remark}[Wall trivialization criterion]
+\label{rem:wall-trivialization-criterion}
 Assume the transformation wall \(\mathcal D_g\) and the auxiliary wall theory
 \(\mathcal T_\Sigma\) are topological away from their anomaly lines.  The
 tensor product \(D_g=\mathcal D_g\otimes\mathcal T_\Sigma\) is a genuine
@@ -707,9 +700,7 @@ topological defect exactly when the tensor product of their anomaly-line
 functors is trivializable.  If the trivializing wall theory contains a
 nontrivial finite gauge sum, then \(D_g\otimes D_g^\vee\) contains the
 corresponding condensation projector and need not be the identity defect.
-\end{proposition}
 
-\begin{proof}
 Topological invariance of a defect means that its correlation functional is a
 number invariant under isotopy, with no uncancelled dependence on a choice of
 background-field frame.  The product wall has anomaly line
@@ -724,7 +715,7 @@ reverse performs the finite gauge sum on the wall twice with the dual
 orientation.  The result is the projector onto invariant wall sectors, not
 necessarily the invisible wall.  This is the categorical source of
 noninvertibility.
-\end{proof}
+\end{remark}
 
 \begin{example}[Axial defects in compact QED]
 \label{ex:qed-noninvertible-defect-from-inflow}
@@ -814,8 +805,8 @@ a coboundary in the chosen background-field cohomology theory.  A second QFT
 sector can also supply the inverse line; this is anomaly cancellation by
 tensor product.
 
-\begin{proposition}[Gauging requires a trivialized anomaly line]
-\label{prop:gauging-requires-trivialized-anomaly-line}
+\begin{remark}[Gauging requires a trivialized anomaly line]
+\label{rem:gauging-requires-trivialized-anomaly-line}
 Let a finite global symmetry have background groupoid \(\mathcal B(M)\).
 The gauged partition function
 \[
@@ -828,9 +819,7 @@ is canonically defined only after the anomaly line \(\mathcal L_M\) has been
 trivialized compatibly with morphisms in \(\mathcal B(M)\).  If two
 trivializations differ by a local counterterm, the two gauged theories differ
 by that counterterm before summation.
-\end{proposition}
 
-\begin{proof}
 The summation formula adds complex numbers.  If \(Z_M(A)\) lies in
 \(\mathcal L_M(A)\), then terms belonging to different isomorphism classes
 live in unrelated one-dimensional vector spaces.  A trivialization identifies
@@ -841,7 +830,7 @@ summand is frame dependent.  A second trivialization differs from the first
 by a nowhere-zero function on the background groupoid.  If this function is
 the exponential of a local cochain, it is exactly a local counterterm, and it
 weights each background sector before the groupoid sum is performed.
-\end{proof}
+\end{remark}
 
 \begin{openproblem}[Operator-level inflow]
 \label{op:operator-level-inflow}

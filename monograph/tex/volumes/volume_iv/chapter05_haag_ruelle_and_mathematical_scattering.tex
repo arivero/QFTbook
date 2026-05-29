@@ -629,6 +629,27 @@ massive Haag--Ruelle theorem under the displayed vacuum-net, isolated-shell,
 and regular-creator hypotheses.  No perturbative pole expansion or
 Lagrangian formalism enters this construction.
 
+\begin{proof}[Proof of Theorem~\ref{thm:algebraic-haag-ruelle-scattering}]
+Choose regular creators \(B_j\) whose one-particle projections are the desired
+wave packets and whose velocity supports are pairwise disjoint after the usual
+finite partition of momentum space.  Spectral isolation of the mass shell gives
+\(B_{j,t}\vac=P_1B_{j,t}\vac\) independent of \(t\), and excludes
+\(B_{j,t}^*\vac\) by the support condition against the forward spectrum.
+Lemma~\ref{lem:hr-stationary-phase-velocity-localization} and almost locality
+give the rapid commutator bound through
+Proposition~\ref{prop:almost-locality-gives-hr-commutator}.  The remaining
+contraction and Cook bounds are supplied by
+Proposition~\ref{prop:origin-of-remaining-haag-ruelle-estimates}; hence the
+family satisfies Definition~\ref{def:haag-ruelle-estimate-package}.  Applying
+Proposition~\ref{prop:estimate-package-implies-haag-ruelle} gives the outgoing
+and incoming Hilbert-norm limits and the Fock scalar product.  The scalar
+product identifies vectors obtained from different interpolating creators with
+the same one-particle projection and extends the wave maps by completion from
+the algebraic symmetric Fock domain.  The assumed density of regular creators
+in \(\Hilb_1\) gives the stated wave operators on
+\(\mathcal F_s(\Hilb_1)\).
+\end{proof}
+
 \section{Gauge Charges and Nonlocal Charged Creators}
 
 The ordinary theorem uses local creators \(B\in\Obs(\mathcal O)\) whose
@@ -1061,30 +1082,59 @@ ordinary LSZ chapter.
 \end{theorem}
 
 \begin{proof}
-The proof is the LSZ proof with \(\Psi_a\) as the interpolating operator.
-The pole decomposition \eqref{eq:dressed-two-point-pole} identifies the
-one-particle projection:
+The hypotheses put the dressed fields in exactly the analytic position in
+which LSZ is a residue calculation on the one-particle spectral summand.  We
+spell out the reduction because the fields \(\Psi_a\) are not assumed to be
+localized in bounded spacetime regions.  Choose a positive-frequency
+Klein--Gordon wave packet \(f\) whose Fourier transform is supported in the
+isolating neighborhood of the shell \(p^2+m^2=0\).  The pole decomposition
+\eqref{eq:dressed-two-point-pole} says that the distribution
+\(\langle\vac|\Psi_b^\dagger(g)\Psi_a(f)|\vac\rangle\) has one-particle
+part
 \[
+  \sum_{c,d}
+  \langle g,c|f,d\rangle\, Z_{ad}\,\delta_{cb},
+\]
+in the mass-shell representation, with the regular part contributing a smooth
+function of the external invariant.  Equivalently,
+\begin{equation}
   P_1\Psi_a(f)\vac
   =
-  \sum_b (Z^{1/2})_a{}^b\,|f,b\rangle
-\]
-in the mass-shell spectral representation, after restricting the Fourier
-support of \(f\) to the isolating neighborhood.  Multiplication by
-\((p^2+m^2)\) in momentum space is the Fourier transform of applying the
-Klein--Gordon operator to the external coordinate.  In position space,
-integrating this differential operator against a positive-frequency
-wave-packet converts the time-ordered derivative into boundary terms at
-large positive or negative times; interior terms either cancel against the
-equation of motion away from contact supports or are regular at the external
-mass shell and vanish after multiplication by \((p^2+m^2)\).  The assumed
-large-time limits identify the boundary terms with the incoming and outgoing
-dressed wave operators.  Finally \(Z^{-1/2}\) changes from the dressed
-interpolating coordinates to orthonormal one-particle coordinates.  This gives
-\eqref{eq:finite-regulator-dressed-lsz-formula}.  Locality of bounded-region
-observables is not used to turn \(\Psi_a\) into an ordinary local observable;
-all nonlocal dressing information is carried by the hypotheses on the dressed
-wave operators and correlators.
+  \sum_b (Z^{1/2})_a{}^b\,|f,b\rangle ,
+  \label{eq:dressed-one-particle-projection-in-proof}
+\end{equation}
+after choosing the positive square root on the finite multiplicity space.
+
+For one incoming external leg, multiplication of the Fourier transform by
+\((p^2+m^2)\) is the Fourier transform of
+\((-\Box+m^2)\) in the corresponding coordinate, in the present mostly-plus
+Lorentzian convention.  Pair this differentiated coordinate with the wave
+packet \(f\) and integrate over the time slab \([-T,T]\).  On every open time
+ordering chamber the differentiated time-ordered correlator is the
+Klein--Gordon operator applied to the corresponding distributional matrix
+element.  The spectral regularity assumption implies that the part orthogonal
+to the isolated one-particle summand remains regular at the shell; after the
+external factor \((p^2+m^2)\) is taken to the shell, that regular part gives
+zero.  The integrations by parts therefore leave only the slab boundaries
+and the standard equal-time contact terms.  The latter are local in the
+external time variable and are again regular functions of the external
+invariant after wave-packet smearing, so they disappear in the simultaneous
+mass-shell residue.
+
+The boundary term at \(t=-T\) is, by the assumed existence of the dressed
+Haag--Ruelle limit, the incoming wave operator applied to the one-particle
+vector \eqref{eq:dressed-one-particle-projection-in-proof}; the boundary term
+at \(t=+T\) gives the outgoing wave operator.  Repeating the argument for all
+external legs, with the usual induction over time orderings and with
+disconnected vacuum components subtracted after the total momentum delta
+distribution is removed, gives the scattering matrix element written in the
+dressed one-particle coordinates.  Multiplication by \(Z^{-1/2}\) on every
+external multiplicity index converts those coordinates to the orthonormal
+mass-shell basis, and yields
+\eqref{eq:finite-regulator-dressed-lsz-formula}.  No step requires
+\(\Psi_a\) to be a bounded-region local observable; the required substitute
+for locality is exactly the assumed existence and regularity of the dressed
+large-time limits.
 \end{proof}
 
 The theorem is useful because it isolates what is known from what remains
@@ -1405,8 +1455,10 @@ After summing over the two physical polarizations,
     \right)
   \right|^2 ,
 \]
-which proves \eqref{eq:soft-coherent-velocity-log-norm}.  Nonnegativity is
-immediate from the displayed square.
+which proves \eqref{eq:soft-coherent-velocity-log-norm}.  The integrand in
+\(\mathcal A(\mathbf v,\mathbf w)\) is the squared norm of a transverse
+vector for each \(\mathbf n\), and the sphere measure is positive, so
+\(\mathcal A(\mathbf v,\mathbf w)\ge0\).
 
 It remains to characterize the zero set.  If
 \(\mathcal A(\mathbf v,\mathbf w)=0\), continuity implies that the displayed
@@ -1830,8 +1882,8 @@ measurable structure, define
   \label{eq:charged-soft-direct-integral-representation}
 \]
 
-\begin{proposition}[Soft photon algebra preserves the velocity fibers]
-\label{prop:soft-weyl-algebra-preserves-velocity-fibers}
+\begin{remark}[Soft photon algebra preserves the velocity fibers]
+\label{rem:soft-weyl-algebra-preserves-velocity-fibers}
 In the direct-integral representation
 \eqref{eq:charged-soft-direct-integral-representation}, let
 \(P_E\) be multiplication by the characteristic function of a Borel set
@@ -1852,12 +1904,10 @@ Consequently, if \(E\cap E'=\varnothing\), then
 \]
 Thus the soft photon Weyl algebra is diagonal in the charged velocity label.
 Any charged scattering operator that changes the massive particle momentum
-must include additional charged-sector dynamics; it is not an operator of the
-soft photon algebra alone.
-\end{proposition}
-
-\begin{proof}
-For \(\Psi\in\mathcal H_{q,\nu}^{\rm soft}\),
+must include additional charged-sector dynamics supplied by operators beyond
+the soft photon algebra alone.
+Indeed, by the definition of the direct-integral action, for
+\(\Psi\in\mathcal H_{q,\nu}^{\rm soft}\),
 \[
   (P_E\pi_{q,\nu}(A)\Psi)(\mathbf v)
   =
@@ -1865,9 +1915,8 @@ For \(\Psi\in\mathcal H_{q,\nu}^{\rm soft}\),
   =
   (\pi_{q,\nu}(A)P_E\Psi)(\mathbf v)
 \]
-for \(\nu\)-almost every \(\mathbf v\).  This proves
-\eqref{eq:velocity-projection-commutes-soft-algebra}.  If
-\(E\cap E'=\varnothing\), then \(P_EP_{E'}=0\), and
+for \(\nu\)-almost every \(\mathbf v\).  If \(E\cap E'=\varnothing\), then
+\(P_EP_{E'}=0\), and therefore
 \[
   \langle P_E\xi,\pi_{q,\nu}(A)P_{E'}\eta\rangle
   =
@@ -1877,7 +1926,7 @@ for \(\nu\)-almost every \(\mathbf v\).  This proves
   =
   0 .
   \]
-\end{proof}
+\end{remark}
 
 This fibered construction is the algebraic form of the velocity
 superselection conclusion.  It also states a precise target for the still

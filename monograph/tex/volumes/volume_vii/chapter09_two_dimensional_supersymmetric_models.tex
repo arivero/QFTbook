@@ -324,8 +324,8 @@ and the B twist uses
 \end{equation}
 \end{definition}
 
-\begin{proposition}[Scalar supercharges after the A and B twists]
-\label{prop:two-dimensional-ab-twist-scalar-supercharges}
+\begin{remark}[Twist bookkeeping: scalar supercharges]
+\label{rem:two-dimensional-ab-twist-scalar-supercharges}
 Assume the charge convention of
 Definition~\ref{def:two-dimensional-ab-twist-convention} and assume that
 there are no central charges in the local-sector supersymmetry algebra.
@@ -342,9 +342,7 @@ gauge-invariant local observables, while
 \end{equation}
 is scalar for the B-twisted rotation action and satisfies \(Q_B^2=0\) on
 gauge-invariant local observables.
-\end{proposition}
 
-\begin{proof}
 Using \eqref{eq:a-twist-spin-shift}, the A-twisted spins are
 \[
 \begin{array}{c|rrrr}
@@ -375,7 +373,7 @@ among these generators.  Therefore
 in the central-charge-free local sector.  If gauge transformations appear in
 an off-shell realization, the same statement is made after passing to
 gauge-invariant observables.
-\end{proof}
+\end{remark}
 
 \section{Gauged Linear Sigma-Model Presentations}
 
@@ -712,8 +710,8 @@ and gives the Legendre-dual K\"ahler potential
 \end{equation}
 \end{definition}
 
-\begin{proposition}[Hessian inversion in abelian \(\mathcal N=(2,2)\) duality]
-\label{prop:n22-abelian-duality-hessian-inversion}
+\begin{remark}[Hessian inversion in local abelian duality]
+\label{rem:n22-abelian-duality-hessian-inversion}
 Assume Definition~\ref{def:n22-abelian-duality-legendre-setup}.  Then
 \begin{equation}
   \widetilde K''(u)=\frac{1}{K''(\mathcal B(u))}.
@@ -729,9 +727,7 @@ is dual to
 \]
 the supersymmetric version of the radius inversion
 \(R^2\mapsto R^{-2}\).
-\end{proposition}
 
-\begin{proof}
 Differentiate \eqref{eq:n22-abelian-duality-legendre-transform}.  Since
 \(u=K'(\mathcal B(u))\),
 \[
@@ -753,7 +749,7 @@ and hence
 \(\mathcal B=u/R^2\), and
 \eqref{eq:n22-abelian-duality-legendre-transform} gives
 \(\widetilde K(u)=u^2/(2R^2)\).
-\end{proof}
+\end{remark}
 
 For a charged chiral field in an abelian GLSM, the same local dualization
 couples the dual twisted-chiral variable linearly to the abelian field
@@ -962,9 +958,12 @@ transformation \(\zeta\in U(1)\) preserves a nonzero value of \(P\) exactly
 when \(\zeta^{-d}=1\), equivalently \(\zeta\in\mu_d\).  The transverse
 coordinates are the \(X_i\), and the residual superpotential is \(G_d(X)\).
 
-The statement at \(r=0\) is immediate from
-\eqref{eq:hypersurface-glsm-d-term}: the origin satisfies the \(D\)-term
-equation and has unbroken \(U(1)\), so the quotient has a singular stratum.
+At \(r=0\), substituting \(X=0\) and \(P=0\) into
+\eqref{eq:hypersurface-glsm-d-term} gives \(0=0\), and the \(F\)-term
+equations are also satisfied.  The whole \(U(1)\) gauge group fixes this
+point, so the quotient contains a positive-dimensional stabilizer stratum.
+That stabilizer stratum is the singular locus of the classical quotient at
+the phase boundary.
 \end{proof}
 
 \begin{example}[The quintic GLSM as intrinsic two-dimensional QFT data]

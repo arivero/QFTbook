@@ -182,7 +182,7 @@
   `def:susy-qm-witten-index-datum`,
   `prop:harmonic-susy-oscillator-index`,
   `def:twisted-dirac-index-periodic-worldline-datum`,
-  `prop:periodic-fermion-worldline-index-density`,
+  `ex:periodic-fermion-worldline-index-density`,
   `def:free-dirac-functional-integral-datum`,
   `prop:free-dirac-propagator-feynman-inverse`,
   `def:isolated-spinor-one-particle-pole-datum`,

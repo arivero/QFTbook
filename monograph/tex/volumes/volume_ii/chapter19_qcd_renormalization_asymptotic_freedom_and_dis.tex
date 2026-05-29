@@ -3761,8 +3761,7 @@ coordinate system.  Its coefficient is a matching coefficient; it is not
 deduced from the leading Schrödinger action alone.
 \end{definition}
 
-\begin{proposition}[Free NRQCD dispersion]
-\label{prop:nrqcd-free-dispersion}
+\paragraph{Free NRQCD dispersion.}
 The free equation following from the leading quark term in
 \eqref{eq:nrqcd-leading-action} has plane-wave solutions
 \[
@@ -3775,9 +3774,6 @@ with
 Thus \eqref{eq:nrqcd-leading-action} realizes the leading term of the
 relativistic residual-energy expansion
 \eqref{eq:hqet-free-dispersion}.
-\end{proposition}
-
-\begin{proof}
 Substitution of the plane wave gives
 \[
   \left(E-\frac{|\mathbf p|^2}{2m_Q}\right)u=0,
@@ -3785,7 +3781,6 @@ Substitution of the plane wave gives
 because \(\nabla^2\ee^{\ii\mathbf p\cdot\mathbf x}
 =-|\mathbf p|^2\ee^{\ii\mathbf p\cdot\mathbf x}\).  A nonzero spinor
 amplitude \(u\) therefore requires the displayed dispersion relation.
-\end{proof}
 
 Gauge-invariant quarkonium operators are bilocal at nonzero separation.  Let
 \[
@@ -3819,7 +3814,7 @@ An octet bilocal with a color label based at \(\mathbf R\) is represented by
 The octet transforms in the adjoint representation at \(\mathbf R\); the
 singlet is gauge invariant.
 
-\begin{proof}[Gauge covariance of the bilocals]
+\paragraph{Gauge covariance of the bilocals.}
 Under a gauge transformation \(U(t,\mathbf x)\),
 \[
   \psi(\mathbf x_1)\mapsto U(\mathbf x_1)\psi(\mathbf x_1),
@@ -3837,7 +3832,6 @@ The endpoint matrices cancel in \eqref{eq:pnrqcd-singlet-bilocal}.  In
 \eqref{eq:pnrqcd-octet-bilocal} the endpoint matrices again cancel, while the
 generator at \(\mathbf R\) transforms by conjugation,
 \(t^a\mapsto U(\mathbf R)t^aU(\mathbf R)^{-1}\), which is the adjoint action.
-\end{proof}
 
 Potential NRQCD is obtained by integrating out the relative-momentum scale
 \(m_Qv_{\rm rel}\) while retaining the lower energy scale
@@ -4216,8 +4210,8 @@ where \(m_{\rm sd}\) is a short-distance heavy-quark mass coordinate,
 The auxiliary scale \(\mu_f\) separates contributions assigned to the mass
 coordinate from contributions assigned to the potential coordinate.
 
-\begin{proposition}[Constant mass-coordinate transformations]
-\label{prop:qcd-heavy-mass-potential-shift}
+\begin{remark}[Constant mass-coordinate transformations]
+\label{rem:qcd-heavy-mass-potential-shift}
 Let \(\delta m\) be a finite scheme change independent of \(r\).  The
 coordinate transformation
 \begin{equation}
@@ -4231,9 +4225,7 @@ unchanged when \(\Delta_{\rm us}\) is held fixed.  If a pNRQCD Hamiltonian is
 shifted by \(V_{\rm sd}\mapsto V_{\rm sd}-2\delta m\), every singlet
 eigenvalue \(E_n\) is shifted by \(-2\delta m\), and
 \(2m_{\rm sd}+E_n\) is unchanged.
-\end{proposition}
-
-\begin{proof}
+\par
 Substitution into \eqref{eq:qcd-static-energy-sd-decomposition} gives
 \[
   2(m_{\rm sd}+\delta m)+(V_{\rm sd}-2\delta m)+\Delta_{\rm us}
@@ -4250,7 +4242,7 @@ For a Hamiltonian \(H_{\rm sd}=T+V_{\rm sd}\), the transformed Hamiltonian is
 The statement is finite-dimensional spectral algebra applied to the
 regularized Hamiltonian, and then to any limit in which the relevant
 eigenvalue exists.
-\end{proof}
+\end{remark}
 
 One useful short-distance coordinate is the potential-subtracted mass.  Start
 from a formal perturbative pole coordinate \(m_{\rm pole}\) and define
@@ -4282,7 +4274,6 @@ Consequently
 In the common half-trace convention this is the same expression because
 \(g_{\rm ht}^2C_F^{\rm ht}=g^2C_F\).
 
-\begin{proof}
 Using spherical coordinates in momentum space,
 \[
   \int_{|\mathbf q|<\mu_f}
@@ -4296,7 +4287,6 @@ Multiplying by \(g^2C_F/2\), as dictated by
 \eqref{eq:qcd-ps-mass-definition} and
 \(\widetilde V^{(0)}=-g^2C_F/|\mathbf q|^2\), gives
 \eqref{eq:qcd-ps-leading-subtraction}.
-\end{proof}
 
 \begin{remark}[Renormalon language in the heavy-quark sector]
 \label{rem:qcd-heavy-renormalon-status}
@@ -4576,8 +4566,15 @@ gives
   C(t)v_n=\lambda'_n C(t_0)v_n.
 \]
 Thus every transformed generalized eigenvalue is an original generalized
-eigenvalue.  Applying the same argument to \(R^{-1}\) proves equality of the
-two multisets.  Equivalently,
+eigenvalue.  Conversely, if \(C(t)v_n=\lambda_nC(t_0)v_n\), then
+\(v'_n=(R^\dagger)^{-1}v_n\) satisfies
+\[
+  R C(t)R^\dagger v'_n
+  =
+  \lambda_n R C(t_0)R^\dagger v'_n .
+\]
+The two generalized spectra therefore contain each other with multiplicity.
+Equivalently,
 \[
   C'(t_0)^{-1}C'(t)
   =
@@ -4599,8 +4596,8 @@ positive form and hence change the fraction without changing the extracted
 energy or pole data.  This proves the final assertion.
 \end{proof}
 
-\begin{corollary}[Spectroscopic names as derived coordinates]
-\label{cor:qcd-spectroscopic-names-derived}
+\begin{remark}[Spectroscopic names as derived coordinates]
+\label{rem:qcd-spectroscopic-names-derived}
 In the finite-volume QCD framework above, the invariant output of a stable
 sector is an energy level and its quantum numbers, while the invariant output
 of a resonance sector is a sheet-labeled pole and residue data after a
@@ -4609,7 +4606,7 @@ meson, glueball, hybrid, molecule, tetraquark, or flux-tube excitation are
 therefore derived coordinates on source overlaps, pole residues, large-\(N_c\)
 scaling, and deformation behavior.  They are not additional definitions of
 QCD states.
-\end{corollary}
+\end{remark}
 
 \begin{definition}[Periodic Green function and \(S\)-wave zeta coordinate]
 \label{def:qcd-periodic-green-zeta-coordinate}
@@ -5514,11 +5511,11 @@ Finally,
 Comparing the imaginary part with
 \(\operatorname{Im}s_\ast=-\rho_0/A+O(\rho_0^2/A^2M_0^2)\) gives
 \eqref{eq:qcd-linear-elastic-width-coordinate}; the real part then gives the
-stated correction to \(M_\ast\).  The proof is only a coordinate
+stated correction to \(M_\ast\).  The calculation supplies a coordinate
 linearization of the pole equation.  It is appropriate for a narrow
-\(\rho\)-type vector pole in an elastic window; it is not appropriate for a
-broad scalar such as the \(f_0(500)\), where the pole coordinate itself, not
-a real-axis mass and width pair, is the invariant output.
+\(\rho\)-type vector pole in an elastic window.  For a broad scalar such as
+the \(f_0(500)\), the pole coordinate itself is the invariant output and a
+real-axis mass-width pair is a secondary chart, if it is used at all.
 \end{proof}
 
 \begin{remark}[How the chart is used]
@@ -5739,9 +5736,14 @@ defines
 and similarly defines \(K_{\ell\ell'}^{ab}\) and
 \(G_{\ell\ell'}^{ac}\) as the same projection of \(R_{\ell'}^{ab}\) and
 \(H_{\ell'}^{ac}\).  This gives
-\eqref{eq:qcd-roy-steiner-s-channel-equation}.  Repeating the same argument
-with a crossed-channel scattering angle and the crossed-channel partial-wave
-normalization gives \eqref{eq:qcd-roy-steiner-t-channel-equation}.  No
+\eqref{eq:qcd-roy-steiner-s-channel-equation}.  For the \(t\)-channel, use
+the crossed-channel angle \(z_t\), the \(t\)-channel partial-wave
+normalization, and the crossed basis of amplitudes before projection.  The
+same subtracted Cauchy denominators then project to
+\(\widetilde G_{\ell\ell'}^{cd}\) and
+\(\widetilde K_{\ell\ell'}^{cd}\), while the polynomial part projects to
+\(\widetilde k_\ell^c(t)\).  This gives
+\eqref{eq:qcd-roy-steiner-t-channel-equation}.  No
 additional dynamical assumption enters at the projection stage; all dynamical
 input is already contained in the analytic domain, crossing matrices,
 absorptive parts, and subtraction constants of the input.
@@ -6294,8 +6296,8 @@ where \(x\) is a declared deformation coordinate, such as a quark mass or
 \(1/N_c\).
 \end{controlledapproximation}
 
-\begin{proposition}[Avoided crossing in a two-state spectroscopy chart]
-\label{prop:qcd-two-state-avoided-crossing}
+\begin{remark}[Avoided crossing in a two-state spectroscopy chart]
+\label{rem:qcd-two-state-avoided-crossing}
 In the controlled approximation
 \ref{ca:qcd-two-state-glueball-hybrid-mixing}, the two projected energies are
 \begin{equation}
@@ -6315,9 +6317,7 @@ diagonalization angle \(\theta(x)\) may be chosen so that
   \tan 2\theta(x)=\frac{2h(x)}{M_M(x)-M_G(x)}.
   \label{eq:qcd-two-state-mixing-angle}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
+\par
 The characteristic polynomial of
 \eqref{eq:qcd-two-state-mixing-hamiltonian} is
 \[
@@ -6334,7 +6334,7 @@ Setting it to zero gives
 \((M_M-M_G)\sin2\theta=2h\cos2\theta\), which is
 \eqref{eq:qcd-two-state-mixing-angle} when the denominator is nonzero.  At
 degeneracy the diagonalizing angle is \(\theta=\pi/4\) modulo basis signs.
-\end{proof}
+\end{remark}
 
 The proposition explains why an eigenstate cannot be assigned an invariant
 glueball or hybrid percentage from a two-by-two table alone.  The invariant
@@ -6473,8 +6473,8 @@ matrix-element method, excited-state removal, and analytic continuation or
 fit ansatz used to obtain the functions of \(Q^2\).
 \end{definition}
 
-\begin{proposition}[Sachs and Dirac--Pauli coordinates]
-\label{prop:qcd-nucleon-sachs-coordinate-transform}
+\begin{remark}[Sachs and Dirac--Pauli coordinates]
+\label{rem:qcd-nucleon-sachs-coordinate-transform}
 For \(\tau\ne -1\), the coordinate change
 \eqref{eq:qcd-nucleon-sachs-form-factors} is invertible:
 \begin{equation}
@@ -6492,9 +6492,7 @@ At \(Q^2=0\),
   G_E^N(0)=F_1^N(0),\qquad
   G_M^N(0)=F_1^N(0)+F_2^N(0).
 \]
-\end{proposition}
-
-\begin{proof}
+\par
 The two equations in \eqref{eq:qcd-nucleon-sachs-form-factors} form the
 linear system
 \[
@@ -6508,7 +6506,7 @@ The determinant is \(1+\tau\).  Inverting the matrix gives
 gives the stated zero-transfer normalizations.  No model of nucleon
 substructure enters this argument; it is only a change of coordinates on the
 same current matrix element.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Isovector axial form factors]
 \label{def:qcd-nucleon-axial-form-factors}
@@ -8544,8 +8542,8 @@ derivative of \eqref{eq:qcd-collins-soper-kernel-one-loop} is
 normalization.
 \end{proof}
 
-\begin{proposition}[Finite TMD scheme changes]
-\label{prop:qcd-tmd-finite-scheme-change}
+\begin{remark}[Finite TMD scheme changes]
+\label{rem:qcd-tmd-finite-scheme-change}
 Let \(R(b_\perp;\mu,\zeta)\) be a finite scalar function and set
 \(F'=\ee^R F\).  Then
 \[
@@ -8557,9 +8555,7 @@ The consistency relation
 \eqref{eq:qcd-collins-soper-integrability} is preserved.  Therefore the
 separation of a rapidity-sensitive cross section into hard, TMD, and soft
 coordinates is scheme dependent, whereas the final cross section is not.
-\end{proposition}
-
-\begin{proof}
+\par
 Take logarithms of \(F'=\ee^R F\) and differentiate with respect to
 \(\ell_\zeta\) and \(\ell_\mu\).  The displayed transformations follow.  Taking
 \(\partial_{\ell_\mu}\) of the first transformation and
@@ -8567,7 +8563,7 @@ Take logarithms of \(F'=\ee^R F\) and differentiate with respect to
 \(\partial_{\ell_\mu}\partial_{\ell_\zeta}R\).  Hence the difference between
 the two sides of
 \eqref{eq:qcd-collins-soper-integrability} is unchanged.
-\end{proof}
+\end{remark}
 
 \begin{hypothesis}[Small-\(q_\perp\) color-singlet TMD factorization hypothesis]
 \label{hyp:qcd-tmd-factorization-hypothesis}
@@ -8759,6 +8755,11 @@ Use cyclicity of the full trace and
 \]
 which is
 \eqref{eq:qcd-finite-glauber-unitarity-identity}.
+Equivalently, the partial trace over the unobserved Hilbert space is invariant
+under unitary conjugation on that same unobserved factor.  The finite model
+therefore isolates the algebraic input used in inclusive Glauber-cancellation
+arguments: the observed measurement must be insensitive to the unitary acting
+on the summed-over sector.
 \end{proof}
 
 \begin{controlledapproximation}[What the Glauber lemma proves]
@@ -8985,8 +8986,8 @@ current normalization manifest:
   \int_0^1\dd x\,V(x,y)=0 .
 \]
 
-\begin{proposition}[Diagonalization of the leading ERBL kernel]
-\label{prop:qcd-erbl-gegenbauer-diagonalization}
+\begin{quotedtheorem}[Diagonalization of the leading ERBL kernel]
+\label{qthm:qcd-erbl-gegenbauer-diagonalization}
 For \(n\ge0\), let \(C_n^{3/2}\) be the Gegenbauer polynomial orthogonal on
 \([-1,1]\) with weight \((1-z^2)\).  The leading ERBL kernel preserves the
 basis
@@ -9012,30 +9013,19 @@ with
 \end{equation}
 In particular \(\gamma_0^{(0)}=0\) and
 \(\gamma_n^{(0)}>0\) for every \(n\ge1\).
-\end{proposition}
+\end{quotedtheorem}
 
-\begin{proof}
-The collinear conformal group acting on two light-ray quark fields has
-\(SL(2,\mathbb R)\) quadratic Casimir diagonalized by
-\(x(1-x)C_n^{3/2}(2x-1)\).  The one-loop kernel
-\eqref{eq:qcd-erbl-kernel} commutes with this action after the plus
-subtraction, because the singular part depends only on the projective
-cross-ratio of the two light-ray insertion points and the endpoint factors are
-fixed by the quark collinear spin \(j=1\).  Thus the kernel is diagonal on the
-irreducible two-particle conformal-spin components.
-
-To compute the eigenvalue, insert the polynomial test function and split the
-integral into \(0<y<x\) and \(x<y<1\).  The plus prescription subtracts the
-same polynomial at \(y=x\), so the integrand is locally integrable.  Expanding
-\(C_n^{3/2}(2y-1)\) in powers of \(y\), each term reduces to beta-function
-integrals and harmonic sums.  The coefficient of the highest-degree monomial
-fixes the eigenvalue, because the kernel preserves polynomial degree.  The
-result is \eqref{eq:qcd-erbl-anomalous-dimensions}.  For \(n=0\), the first
-two terms cancel and the sum is empty; this is exactly the normalization
-identity \eqref{eq:qcd-pion-lcda-normalization}.  For \(n\ge1\), the harmonic
-sum dominates the negative rational term, so the anomalous dimension is
-positive.
-\end{proof}
+The diagonal basis has a transparent origin: the collinear conformal group
+acting on two light-ray quark fields has \(SL(2,\mathbb R)\) quadratic
+Casimir diagonalized by \(x(1-x)C_n^{3/2}(2x-1)\), and the one-loop kernel
+\eqref{eq:qcd-erbl-kernel} is compatible with this action after the plus
+subtraction.  The eigenvalue formula is the remaining finite one-loop
+integral calculation: one inserts the polynomial test function, splits the
+integral into \(0<y<x\) and \(x<y<1\), expands the Gegenbauer polynomial, and
+reduces the coefficients to beta integrals and harmonic sums.  This chapter
+uses \eqref{eq:qcd-erbl-anomalous-dimensions} as the one-loop light-ray
+renormalization input; a later calculation-check pass should record the
+coefficient computation explicitly rather than hiding it in a proof shell.
 
 Therefore a pion LCDA may be expanded as
 \begin{equation}
@@ -9096,7 +9086,7 @@ factorization scheme of Definition~\ref{def:qcd-exclusive-pion-factorization-sch
 endpoint sensitivity can modify the practical convergence at accessible
 \(Q^2\) unless controlled by an additional Sudakov or nonperturbative input.
 
-\begin{proof}[Derivation of the leading hard coefficient]
+\paragraph{Derivation of the leading hard coefficient.}
 Project each pion onto the color-singlet leading-twist collinear pair defined
 by \eqref{eq:qcd-pion-lcda-definition}.  A single hard gluon must transfer
 large transverse momentum between the two collinear quark lines; without this
@@ -9118,7 +9108,6 @@ to the charged pion gives
 \eqref{eq:qcd-pion-form-factor-factorization}.  No on-shell colored external
 state appears in the final formula; colored partons were only projectors used
 to compute the short-distance coefficient in the chosen factorization scheme.
-\end{proof}
 
 Substituting \(\varphi_\pi^{\rm as}\) gives
 \begin{equation}

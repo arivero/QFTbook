@@ -267,8 +267,7 @@ canonical construction; the scalar field path integral is introduced later.
 
 \section{Canonical Hamiltonian Formalism}
 
-\begin{proposition}[Canonical phase-space variables and Hamiltonian density]
-\label{prop:scalar-canonical-phase-space-hamiltonian}
+\begin{construction}[Canonical phase-space variables and Hamiltonian density]
 Let
 \[
   L(t)=\int\dd^{D-1}\vec x\,\mathcal L.
@@ -323,23 +322,7 @@ for the free scalar field. The Hamiltonian is
 \[
   H=\int\dd^{D-1}\vec x\,\mathcal H.
 \]
-\end{proposition}
-
-\begin{proof}
-For the free scalar Lagrangian,
-\(\partial\mathcal L/\partial(\partial_t\phi)=\partial_t\phi\), so
-\(\Pi=\partial_t\phi\).  The Legendre transform gives
-\[
-  \Pi\partial_t\phi-\mathcal L
-  =
-  \frac12\Pi^2
-  +
-  \frac12\sum_i(\partial_i\phi)^2
-  +
-  \frac12m^2\phi^2,
-\]
-which is the displayed Hamiltonian density.
-\end{proof}
+\end{construction}
 
 This is a classical Hamiltonian density.  After quantization
 \(\widehat\phi(t,\vec x)\) and \(\widehat\Pi(t,\vec x)\) are
@@ -380,12 +363,7 @@ equation is
 \]
 \end{definition}
 
-\begin{proposition}[Hamilton equations reproduce Klein--Gordon]
-\label{prop:scalar-hamilton-equations-kg}
-Applied to \(\phi\) and \(\Pi\), it reproduces the Klein--Gordon equation.
-\end{proposition}
-
-\begin{proof}
+\paragraph{Hamilton equations for the scalar field.}
 Using the functional derivatives of \(H\),
 \[
   \frac{\delta H}{\delta\Pi(\vec x)}=\Pi(\vec x),
@@ -405,7 +383,6 @@ where the spatial derivative term has been integrated by parts.  Hence
 Eliminating \(\Pi\) gives
 \(\partial_t^2\phi-\nabla^2\phi+m^2\phi=0\), equivalently
 \((\partial^\mu\partial_\mu-m^2)\phi=0\) with the mostly-plus convention.
-\end{proof}
 
 \section{Equal-Time Quantization}
 

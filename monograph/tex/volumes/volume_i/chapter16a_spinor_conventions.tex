@@ -830,15 +830,22 @@ It satisfies
 \end{proposition}
 
 \begin{proof}
-The Clifford relation follows from the same Pauli algebra as in three
-dimensions.  With \(\epsilon^{01}=+1\), the two nonzero traces are
+The Clifford relation follows from
+\((\ii\sigma^2)^2=-\mathbf1\), \((\sigma^1)^2=\mathbf1\), and
+\(\sigma^2\sigma^1=-\sigma^1\sigma^2\), so
+\(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\) in mostly-plus signature.  Also
+\[
+  \gamma^0\gamma^1=\ii\sigma^2\sigma^1=\sigma^3 .
+\]
+With \(\epsilon^{01}=+1\), the two nonzero traces are
 \[
   \operatorname{tr}(\gamma^0\gamma\gamma^1)=-2,
   \qquad
   \operatorname{tr}(\gamma^1\gamma\gamma^0)=2,
 \]
 which equal \(2\epsilon^{10}\) and \(2\epsilon^{01}\), respectively; repeated
-indices vanish by anticommutation and tracelessness.
+indices vanish because \(\gamma^\nu\gamma\gamma^\nu\) is proportional to
+\(\gamma\), whose trace is zero.
 \end{proof}
 
 \begin{definition}[Two-dimensional chiral-component Majorana convention]

@@ -85,10 +85,13 @@ where the positive measure \(\nu_\phi\) is
   \widehat\phi(0)E(\dd p)\widehat\phi(0)
   |\vac\rangle.
 \]
-Positivity is immediate from the spectral theorem: for a Borel set
-\(\Delta\),
+For a Borel set \(\Delta\), \(E(\Delta)\) is an orthogonal projection and
+commutes with the spectral integral.  Hence
 \[
   \nu_\phi(\Delta)
+  =
+  \langle E(\Delta)\widehat\phi(0)\vac,
+  E(\Delta)\widehat\phi(0)\vac\rangle
   =
   \|E(\Delta)\widehat\phi(0)\vac\|^2
   \ge0.
@@ -353,15 +356,41 @@ function.
 \end{proposition}
 
 \begin{proof}
-Substitute the disintegration of
-Definition~\ref{def:kallen-lehmann-spectral-measure} into the spectral
-Fourier representation of
-Proposition~\ref{prop:kallen-lehmann-two-point-spectral-measure}.  The inner
-mass-shell integral is exactly
-Definition~\ref{def:positive-frequency-massive-scalar-distribution}.  The
-result follows first against Schwartz test functions in \(x\), where Fubini's
-theorem applies to the positive measure after inserting a rapidly decreasing
-test function, and then by equality of tempered distributions.
+Let \(f\in\mathcal S(\mathbb M^D)\).  The spectral Fourier representation of
+Proposition~\ref{prop:kallen-lehmann-two-point-spectral-measure} gives
+\[
+  W_2(f)
+  =
+  \int_{\overline V_+}\dd\nu(p)\,\widetilde f(-p),
+\]
+with \(\nu\) the positive translation-spectral measure carried by the vacuum
+two-point vector.  By
+Definition~\ref{def:kallen-lehmann-spectral-measure}, \(\nu\) disintegrates
+over the invariant mass coordinate \(s=-p^2\ge0\) as
+\[
+  \dd\nu(p)
+  =
+  \int_{[0,\infty)}\dd\rho(\mu^2)\,
+  \frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+\mu^2).
+\]
+Pairing with \(\widetilde f(-p)\) is legitimate because \(f\) is Schwartz and
+the spectral measure is tempered by the Wightman distribution hypothesis.  The
+positive measure permits Tonelli for nonnegative test majorants, and the
+Schwartz decay supplies the finite signed/complex integrals by decomposing
+\(\widetilde f\) into real and imaginary parts.  Hence
+\[
+  W_2(f)
+  =
+  \int_{[0,\infty)}\dd\rho(\mu^2)
+  \int\frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+\mu^2)\,\widetilde f(-p).
+\]
+The inner integral is precisely the distributional pairing
+\(\Delta_+(\,\cdot\,;\mu^2)(f)\) in
+Definition~\ref{def:positive-frequency-massive-scalar-distribution}.
+Therefore the displayed formula holds as an identity on every Schwartz test
+function, hence as an identity of tempered distributions.
 \end{proof}
 
 \begin{proposition}[Spacelike symmetry of the scalar two-point function]

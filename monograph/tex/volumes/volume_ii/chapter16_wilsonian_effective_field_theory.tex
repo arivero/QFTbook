@@ -1661,7 +1661,7 @@ perturbative renormalization.
 
 This finite-coordinate estimate should not be mistaken for a constructive
 existence theorem for a non-Gaussian four-dimensional scalar continuum limit.
-Theorem~\ref{thm:standard-four-dimensional-scalar-triviality} states that,
+Quoted Theorem~\ref{qthm:standard-four-dimensional-scalar-triviality} states that,
 for the positive lattice \(\lambda\phi^4_4\) and nearest-neighbor
 ferromagnetic Ising-type scaling-limit problems covered by the rigorous
 triviality results cited there, the critical or near-critical continuum limits
@@ -1737,10 +1737,10 @@ irrelevant eigenvalues, while existence of the cutoff-removal limit requires
 control of the generated integral and of the tuning used to hold \(u(t_R)\)
 fixed.
 
-\begin{proposition}[Suppression of irrelevant boundary memory]
-Assume \eqref{eq:irrelevant-backward-semigroup-bound}.  If the irrelevant bare
-coordinate satisfies \(\|v(t_0)\|\leq M\) uniformly in \(t_0\), then the direct
-boundary contribution to \(v(t_R)\) obeys
+The direct boundary-memory estimate follows by applying
+\eqref{eq:irrelevant-backward-semigroup-bound} with \(\tau=t_R-t_0\leq0\).
+If the irrelevant bare coordinate satisfies \(\|v(t_0)\|\leq M\) uniformly in
+\(t_0\), then the direct boundary contribution to \(v(t_R)\) obeys
 \[
   \|e^{A(t_R-t_0)}v(t_0)\|
   \leq
@@ -1748,16 +1748,11 @@ boundary contribution to \(v(t_R)\) obeys
   \left(\frac{\Lambda_R}{\Lambda_0}\right)^\omega .
 \]
 If the first omitted irrelevant coordinate has exponent \(\omega_{\rm min}\),
-then the same estimate begins with the power
-\((\Lambda_R/\Lambda_0)^{\omega_{\rm min}}\).
-\end{proposition}
-
-\begin{proof}
-Set \(\tau=t_R-t_0\leq0\) in
-\eqref{eq:irrelevant-backward-semigroup-bound}.  Since
-\(\exp[\omega(t_R-t_0)]=(\Lambda_R/\Lambda_0)^\omega\), the displayed
-estimate follows immediately.
-\end{proof}
+the same computation begins with the power
+\((\Lambda_R/\Lambda_0)^{\omega_{\rm min}}\).  This estimate controls the
+homogeneous boundary-memory term in
+\eqref{eq:irrelevant-coordinate-variation-of-constants}; the generated
+inhomogeneous term remains the analytic part of the continuum-limit problem.
 
 The generated term in
 \eqref{eq:irrelevant-coordinate-variation-of-constants} is the part that
@@ -1922,7 +1917,7 @@ View}, second edition, Springer, 1987, for the constructive scalar-field
 framework and references to the original constructions.}  By contrast, the
 standard positive four-dimensional scalar and nearest-neighbor Ising-type
 families covered by
-Theorem~\ref{thm:standard-four-dimensional-scalar-triviality} have Gaussian
+Quoted Theorem~\ref{qthm:standard-four-dimensional-scalar-triviality} have Gaussian
 scaling limits.  Therefore later use of a Wilsonian continuum-limit estimate
 must say which semigroup, tuning, and convergence estimates have been proved
 in the chosen framework and which are being imposed as assumptions.

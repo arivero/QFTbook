@@ -261,6 +261,33 @@ statement consists mostly of setup data with a short proof that applies an
 earlier theorem, move the setup into a definition or hypothesis and state the
 application as a proposition or corollary.
 
+Theorem-family environments must also pass a substance test.  A proposition,
+theorem, lemma, or corollary is inappropriate when the proof merely repeats
+the statement, substitutes one displayed formula into another, checks a
+definition already present in the statement, or records a comparison-test
+bound whose proof is the comparison test itself.  Such material belongs in
+prose, a definition, an example, a criterion, or an estimate unless the
+surrounding text supplies a genuinely load-bearing proof: construction of an
+object, verification of hypotheses in a nontrivial framework, an estimate
+with explicit constants and dependencies, a counterexample whose mechanism is
+analyzed, or a reduction to an earlier theorem in the monograph with all
+hypotheses checked.  Short proofs are allowed only when the mathematical
+content is genuinely concentrated, not when a trivial observation has been
+promoted to theorem status.
+
+Proof audits must read the mathematical substance of each proof under review:
+the statement, hypotheses, dependencies, and proof body must be checked
+together.  Text searches for phrases such as "immediate" or length scans may
+only build a review queue; they do not certify a proof.  A proof passes the
+audit only when the reader can identify the exact construction, estimate,
+algebraic computation, or theorem reduction that carries the stated conclusion.
+
+A `proof` environment may not be attached directly to a definition,
+convention, status paragraph, or explanatory calculation.  If a convention
+has a coordinate check, place the check in prose.  If a definition has a
+nontrivial consequence, state a separate lemma or proposition and prove that
+claim.
+
 Known proofs should be developed when they are part of the monograph's
 logical spine.  Highly technical proofs may be placed in chapter appendices or
 technical subsections, but the main text must point to the proof and state the

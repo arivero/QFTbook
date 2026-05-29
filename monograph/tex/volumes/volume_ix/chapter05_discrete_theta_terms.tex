@@ -61,17 +61,15 @@ Here
 \]
 is evaluation on the fundamental cycle.
 
-\begin{proposition}[Coboundary invariance on closed manifolds]
-\label{prop:discrete-theta-coboundary-invariance}
+\begin{remark}[Coboundary invariance on closed manifolds]
+\label{rem:discrete-theta-coboundary-invariance}
 If two finite topological Lagrangians differ by a coboundary,
 \[
   \omega'(a)-\omega(a)=\delta\alpha(a),
 \]
 then their exponentiated actions agree on every closed \(D\)-manifold for
 every flat finite background field \(a\).
-\end{proposition}
 
-\begin{proof}
 Let \(c_M\) be a fundamental \(D\)-cycle of \(M\).  Since \(M\) is closed,
 \[
   \partial c_M=0.
@@ -91,10 +89,17 @@ Therefore
   =
   \exp\left(2\pi\ii\int_M\omega(a)\right).
 \]
-For a manifold with boundary the same calculation leaves the boundary
-evaluation \(\int_{\partial M}\alpha(a)\), which is the boundary datum used in
-anomaly inflow.
-\end{proof}
+For a manifold with boundary, \(\partial c_M=c_{\partial M}\), so the
+coboundary contribution is
+\[
+  \langle\delta\alpha(a),c_M\rangle
+  =
+  \langle\alpha(a),c_{\partial M}\rangle
+  =
+  \int_{\partial M}\alpha(a).
+\]
+This boundary evaluation is the boundary datum used in anomaly inflow.
+\end{remark}
 
 \section{Two-Form \texorpdfstring{\(\mathbb Z_N\)}{ZN} Fields}
 
@@ -175,8 +180,8 @@ where \(1/2\) denotes the inverse of \(2\) in \(\mathbb Z_N\).  Thus the
 spacetime category is part of the definition of the available counterterm
 group.
 
-\begin{proposition}[Quadratic refinement phase]
-\label{prop:pontryagin-square-quadratic-phase}
+\begin{remark}[Quadratic refinement phase]
+\label{rem:pontryagin-square-quadratic-phase}
 Let \(B,B'\in H^2(M,\mathbb Z_N)\).  The ratio of counterterms obeys
 \[
   \frac{S_p[B+B']}{S_p[B]S_p[B']}
@@ -186,9 +191,7 @@ Let \(B,B'\in H^2(M,\mathbb Z_N)\).  The ratio of counterterms obeys
     \int_M B\smile B'
   \right).
 \]
-\end{proposition}
 
-\begin{proof}
 Use the defining identity of the Pontryagin square:
 \[
   \mathcal P(B+B')-\mathcal P(B)-\mathcal P(B')
@@ -205,7 +208,11 @@ Substituting this into the exponent gives
   \int_M B\smile B' .
 \]
 Exponentiation gives the stated ratio.
-\end{proof}
+Thus \(S_p\) is a quadratic refinement of the bilinear pairing
+\((B,B')\mapsto\exp[(2\pi\ii p/N)\int_M B\smile B']\).  The formula is
+independent of the chosen cochain representatives because the Pontryagin
+square identity is a cohomological identity modulo \(2N\).
+\end{remark}
 
 \section{Global Form And Obstruction Classes}
 
@@ -344,8 +351,8 @@ holds because
 \]
 Thus \(p\) is naturally a class in \(\mathbb Z_k\).
 
-\begin{proposition}[Discrete theta tilt and maximal locality]
-\label{prop:discrete-theta-line-tilt}
+\begin{remark}[Discrete theta tilt and maximal locality]
+\label{rem:discrete-theta-line-tilt}
 For each \(p\in\mathbb Z_k\), the line lattice
 \[
   L_{N,k,p}
@@ -362,9 +369,7 @@ is maximal isotropic for the finite Dirac pairing
 \]
 Changing \(p\) changes the electric charge of the minimal magnetic line by a
 Witten-effect shift.
-\end{proposition}
 
-\begin{proof}
 The isotropy and maximality are proved in
 Proposition~\ref{prop:su-n-finite-line-lattices}.  The new point is the
 interpretation of \(p\).  The minimal magnetic generator has magnetic
@@ -379,7 +384,7 @@ coordinates this sends
   p\longmapsto p+1
   \quad\text{in }\mathbb Z_k .
 \]
-\end{proof}
+\end{remark}
 
 For \(N=2\) this gives the familiar three finite line spectra:
 \[

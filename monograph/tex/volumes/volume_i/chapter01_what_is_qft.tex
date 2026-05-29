@@ -333,32 +333,22 @@ covariance law above uses the same passive coordinate convention: conjugating
 an observable by \(U(g)^{-1}\), with \(g=(a,\Lambda)\), sends its localization
 region to \(g\mathcal O=\pi(\Lambda)\mathcal O+a\).
 
-\begin{proposition}[Vacuum projection and translation convention]
-\label{prop:opening-vacuum-projection-translation-convention}
-In the framework of Definition~\ref{def:vacuum-minkowski-local-qft}, the
-projection onto translation-invariant vectors is
-\(|\vac\rangle\langle\vac|\).  For a scalar field satisfying the stated
-translation covariance,
+\paragraph{Vacuum projection and translation convention.}
+The vacuum-uniqueness clause in
+Definition~\ref{def:vacuum-minkowski-local-qft} says
+\(E_P(\{0\})\Hilb=\mathbb C\vac\), with \(\|\vac\|=1\).  Hence the projection
+onto translation-invariant vectors is \(|\vac\rangle\langle\vac|\).  If a
+scalar field satisfies
 \[
   U(a,1)^{-1}\widehat\phi(x)U(a,1)=\widehat\phi(x+a),
 \]
-the distributional infinitesimal relation is
+then differentiating
+\(e^{-\ii a^\mu P_\mu}\widehat\phi(x)e^{\ii a^\mu P_\mu}=\widehat\phi(x+a)\)
+at \(a=0\), as an identity of smeared distributions on the common invariant
+domain, gives
 \[
   [P_\mu,\widehat\phi(x)]=\ii\,\partial_\mu\widehat\phi(x).
 \]
-\end{proposition}
-
-\begin{proof}
-The first assertion is the vacuum-uniqueness clause in the definition:
-\(E_P(\{0\})\Hilb=\mathbb C\vac\), and the vector \(\vac\) has unit norm.
-Thus \(E_P(\{0\})\) is the rank-one projection
-\(|\vac\rangle\langle\vac|\).  For the second assertion, differentiate
-\(e^{-\ii a^\mu P_\mu}\widehat\phi(x)e^{\ii a^\mu P_\mu}
-=\widehat\phi(x+a)\) at \(a=0\).  The left derivative is
-\(-\ii[P_\mu,\widehat\phi(x)]\), and the right derivative is
-\(\partial_\mu\widehat\phi(x)\).  Multiplication by \(\ii\) gives the stated
-commutator.
-\end{proof}
 
 In this opening convention \(\Obs(\mathcal O)\) is a concrete algebra of
 bounded observables on the chosen Hilbert space and is not assumed to be norm

@@ -332,8 +332,8 @@ point-split Wick square in state \(\omega\) is the distribution defined by
 \]
 \end{definition}
 
-\begin{proposition}[State dependence and subtraction dependence]
-\label{prop:point-splitting-smooth-change}
+\begin{remark}[State dependence and subtraction dependence]
+\label{rem:point-splitting-smooth-change}
 Fix a normal convex neighborhood in which the Hadamard parametrix \(H\) is
 defined.  If \(\omega\) and \(\omega'\) are Hadamard states of the same
 Klein--Gordon field, then
@@ -361,9 +361,8 @@ biscalar, then
   \int_M f(x)S(x,x)\,d{\rm vol}_g(x)\,\mathbf 1
 \]
 as a relation between expectation values in every Hadamard state.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The defining property of a Hadamard two-point function is that, in each
 normal convex neighborhood, its singular part is the universal local
 parametrix \(H\), while the remainder is smooth.  Thus
@@ -383,7 +382,6 @@ Taking the diagonal limit and smearing with \(f\) subtracts
 \(\int f(x)S(x,x)d{\rm vol}_g(x)\), independent of the state.  A
 state-independent scalar multiple of every expectation value is represented
 by the same scalar multiple of the identity field.
-\end{proof}
 
 For higher Wick powers, one subtracts the parametrix in every contraction.
 The result is an operator-valued distribution in perturbative algebraic QFT
@@ -576,7 +574,9 @@ derivatives, by
 \]
 Their metric Euler derivatives are symmetric conserved tensors because the
 corresponding integrated counterterms are diffeomorphism invariant.  The
-four-dimensional Gauss--Bonnet combination
+dimensionless parameter \(\xi\) in the scalar stress tensor can change the
+constants multiplying these local tensors but cannot create a new
+dimension-four covariant tensor.  The four-dimensional Gauss--Bonnet combination
 \[
   E_4
   =
@@ -593,7 +593,8 @@ precisely \(I_{\mu\nu}\) and \(J_{\mu\nu}\) in
 \eqref{eq:ij-curvature-tensors-definition}.
 
 No further independent local covariant conserved tensor of this dimension is
-available: terms with explicit derivatives, such as
+available inside the stated finite local freedom: terms with explicit
+derivatives, such as
 \(\nabla_\mu\nabla_\nu R\), \(g_{\mu\nu}\Box R\), and \(\Box R_{\mu\nu}\),
 occur exactly in the Euler derivatives just described; total derivative
 scalar counterterms give boundary contributions under compactly supported
@@ -666,8 +667,19 @@ After two integrations by parts with compactly supported metric variation,
   \right)\delta g^{\mu\nu},
 \]
 which is the first line of
-\eqref{eq:curvature-squared-euler-tensor-formulas}.  The same calculation
-for \(\int\sqrt{|g|}R_{\alpha\beta}R^{\alpha\beta}\), using
+\eqref{eq:curvature-squared-euler-tensor-formulas}.  For
+\(\int\sqrt{|g|}R_{\alpha\beta}R^{\alpha\beta}\), the variation starts from
+\[
+  \delta\!\left(\sqrt{|g|}R_{\alpha\beta}R^{\alpha\beta}\right)
+  =
+  \sqrt{|g|}
+  \left(
+    -\frac12 g_{\mu\nu}R_{\alpha\beta}R^{\alpha\beta}
+    +2R_{\mu\alpha}R_\nu{}^\alpha
+  \right)\delta g^{\mu\nu}
+  +2\sqrt{|g|}R^{\mu\nu}\delta R_{\mu\nu},
+\]
+using
 \[
   \delta R_{\mu\nu}
   =
@@ -712,65 +724,6 @@ the trace of the two displayed formulas and using
 \]
 Setting \(D=4\) gives
 \eqref{eq:curvature-squared-euler-tensor-traces}.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}]
-By the state-dependence condition in
-Definition~\ref{def:point-split-stress-tensor-prescription}, the difference
-between two prescriptions cannot depend on the smooth part of the Hadamard
-two-point function: the state-dependent diagonal bidifferential term is the
-same for \(T\) and \(T'\).  Hence the difference is a c-number tensor
-\(C'_{\mu\nu}[g]-C_{\mu\nu}[g]\).
-
-Local covariance implies that this tensor is a natural local expression
-formed from \(g_{\mu\nu}\), \(m^2\), \(\xi\), the curvature, and covariant
-derivatives.  The engineering dimension-four condition restricts the
-possible scalar densities whose metric variation can contribute to
-\[
-  \sqrt{|g|}\,m^4,\qquad
-  \sqrt{|g|}\,m^2R,\qquad
-  \sqrt{|g|}\,R^2,\qquad
-  \sqrt{|g|}\,R_{\mu\nu}R^{\mu\nu},\qquad
-  \sqrt{|g|}\,R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
-  \label{eq:dimension-four-local-gravity-densities}
-\]
-up to total derivatives such as \(\sqrt{|g|}\Box R\).  The dimensionless
-parameter \(\xi\) can enter only through the constants \(a_i\).
-
-The divergence-free condition is automatic for metric variations of
-diffeomorphism-invariant local actions: if
-\(\mathcal F[g]\) is invariant under compactly supported infinitesimal
-diffeomorphisms, then
-\[
-  0
-  =
-  \delta_\zeta\mathcal F
-  =
-  \int\sqrt{|g|}\,
-  \mathcal E_{\mu\nu}[g](\nabla^\mu\zeta^\nu+\nabla^\nu\zeta^\mu)\,\dd^4x
-  =
-  -2\int\sqrt{|g|}\,
-  (\nabla^\mu\mathcal E_{\mu\nu})\zeta^\nu\,\dd^4x,
-\]
-so \(\nabla^\mu\mathcal E_{\mu\nu}=0\).  Conversely, within the above
-dimension-four local basis, imposing conservation gives exactly the metric
-variations of these invariant densities.
-
-In four dimensions the variation of the Euler density
-\[
-  E_4
-  =
-  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
-  -4R_{\mu\nu}R^{\mu\nu}
-  +R^2
-\]
-is a boundary term.  Therefore the \(R_{\mu\nu\rho\sigma}^2\) variation is
-linearly dependent on the \(R^2\) and \(R_{\mu\nu}^2\) variations in local
-stress-tensor freedom.  The variations of the first two densities in
-\eqref{eq:dimension-four-local-gravity-densities} give \(m^4g_{\mu\nu}\)
-and \(m^2G_{\mu\nu}\), up to constants absorbed into \(a_0,a_1\).  The
-remaining two independent curvature-squared variations are precisely
-\(I_{\mu\nu}\) and \(J_{\mu\nu}\).
 \end{proof}
 
 \section{Stress Tensor by Bidifferential Operator}

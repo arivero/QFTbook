@@ -216,7 +216,7 @@ algebra is the fixed-point algebra
   \Obs_{\rm qloc}=\mathcal F^G .
 \]
 
-\begin{theorem}[Doplicher--Roberts reconstruction]
+\begin{quotedtheorem}[Doplicher--Roberts reconstruction]
 \label{thm:doplicher-roberts-reconstruction}
 \emph{Proof references.}\footnote{The DHR sector analysis is developed in
 S.~Doplicher, R.~Haag, and J.~E.~Roberts, ``Local observables and particle
@@ -268,9 +268,9 @@ Doplicher--Roberts field-algebra reconstruction, there is a \(C^*\)-algebra
 The irreducible DHR sectors correspond to irreducible finite-dimensional
 unitary representations of \(G\), and charged field multiplets in
 \(\mathcal F\) transform according to these representations.
-\end{theorem}
+\end{quotedtheorem}
 
-In this theorem, the word gauge means a reconstruction of charged field
+In this quoted theorem, the word gauge means a reconstruction of charged field
 coordinates from the neutral observable category; physical observables remain
 the \(G\)-invariant elements.  The compact group description is therefore not
 an input at this stage.  It is a conclusion from locality, transportability,
@@ -352,7 +352,7 @@ automorphism group is
   \sigma_t(A)=\Delta^{\ii t}A\Delta^{-\ii t}.
 \]
 
-\begin{theorem}[Tomita--Takesaki modular automorphisms]
+\begin{quotedtheorem}[Tomita--Takesaki modular automorphisms]
 \emph{Proof references.}\footnote{A complete proof of Tomita's theorem and
 the modular automorphism theorem is given in M.~Takesaki,
 \emph{Tomita's Theory of Modular Hilbert Algebras and Its Applications},
@@ -375,7 +375,7 @@ the modular conjugation identifies the algebra with its commutant:
 \]
 where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
-\end{theorem}
+\end{quotedtheorem}
 
 \section{KMS States and Modular Equilibrium}
 \label{sec:kms-states-modular-equilibrium}
@@ -658,7 +658,7 @@ The algebraic definition is therefore not a new thermodynamic convention; it
 is the continuation of the density-matrix expression to algebras for which no
 density matrix exists.
 
-\begin{theorem}[Connes cocycle derivative]
+\begin{quotedtheorem}[Connes cocycle derivative]
 \label{thm:connes-cocycle-derivative}
 \emph{Proof references.}\footnote{The cocycle derivative and Radon--Nikodym
 theorem for faithful normal weights are proved in A.~Connes,
@@ -689,9 +689,9 @@ Moreover the modular flows of the two states are related by
   \qquad A\in\mathcal R .
   \label{eq:connes-cocycle-implements-flow}
 \end{equation}
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}
+\begin{remark}[Finite type-I check for the cocycle formula]
 In the finite type-I standard representation the formula is explicit:
 \[
   u_t=\rho_\psi^{\ii t}\rho_\omega^{-\ii t},
@@ -729,9 +729,9 @@ noncommutative Radon--Nikodym theorem of Connes.  Once membership in
 \(\mathcal R\) is known, the cocycle identity follows from uniqueness of the
 unitary implementing the modular flow change in the standard form, and the
 finite-dimensional calculation above gives the algebraic form of the proof.
-\end{proof}
+\end{remark}
 
-For local QFT this theorem is a calculational device.  Changing the state in a
+For local QFT this quoted theorem is a calculational device.  Changing the state in a
 bounded region is encoded not by dividing density matrices, but by a unitary
 cocycle inside the local algebra.  In perturbative algebraic QFT this is the
 operator-algebraic structure behind relative Cauchy evolution and local
@@ -790,7 +790,7 @@ replacement for saying that only finitely many independent localized states
 are visible below energy scale \(1/\beta\).  It is not an ultraviolet cutoff:
 it is a phase-space compactness estimate in the continuum theory.
 
-\begin{theorem}[Phase-space consequences of nuclearity]
+\begin{quotedtheorem}[Phase-space consequences of nuclearity]
 \label{thm:nuclearity-split-type-iii-consequences}
 \emph{Proof references.}\footnote{The phase-space condition and split
 property are developed in D.~Buchholz and E.~H.~Wichmann,
@@ -817,9 +817,9 @@ assumptions used to exclude classical centers and finite local components,
 the sharply local algebras are factors in the type-\(\mathrm{III}\) class; in
 known models satisfying the full relativistic phase-space and scaling
 regularity hypotheses, they are type \(\mathrm{III}_1\).
-\end{theorem}
+\end{quotedtheorem}
 
-The theorem has two distinct messages.  The split inclusion says that a
+The quoted theorem has two distinct messages.  The split inclusion says that a
 positive collar between regions allows a type-I interpolant and hence an
 approximate tensor product.  The type-\(\mathrm{III}\) statement says that the
 collar cannot be shrunk to zero without losing the type-I description.  In
@@ -1000,7 +1000,7 @@ let \(\Omega\) be cyclic and separating for both.  Let
 and left half-sided modular if the same inclusion holds for \(t\le0\).
 \end{definition}
 
-\begin{theorem}[Borchers--Wiesbrock structure]
+\begin{quotedtheorem}[Borchers--Wiesbrock structure]
 \label{thm:borchers-wiesbrock-half-sided-inclusion}
 \emph{Proof references.}\footnote{Borchers' commutation relations and
 Wiesbrock's reconstruction theorem are proved in H.-J.~Borchers,
@@ -1030,12 +1030,13 @@ Equivalently, with \(K_{\mathcal M}=-\log\Delta_{\mathcal M}\),
   [K_{\mathcal M},P]=-2\pi\ii P
 \]
 on the common invariant core of analytic vectors.
-\end{theorem}
+\end{quotedtheorem}
 
 \begin{proof}[Derivation of the displayed commutator]
-The existence of \(T(a)\) and the positivity \(P\ge0\) are the content of the
-Borchers--Wiesbrock theorem; they are not formal consequences of ordinary
-isotony alone.  Once \eqref{eq:borchers-commutation-relation} is known, the
+The existence of \(T(a)\) and the positivity \(P\ge0\) require the full
+half-sided modular inclusion result, Quoted
+Theorem~\ref{thm:borchers-wiesbrock-half-sided-inclusion}.  Once
+\eqref{eq:borchers-commutation-relation} is known, the
 commutator follows by differentiating twice.  First differentiate in \(a\) at
 \(a=0\):
 \[
@@ -1048,8 +1049,10 @@ derivative at \(t=0\) gives
 \[
   -\ii[K_{\mathcal M},P]=-2\pi P,
 \]
-and hence \([K_{\mathcal M},P]=-2\pi\ii P\).  The same calculation in the
-opposite half-sided convention reverses the sign of the dilation parameter.
+and hence \([K_{\mathcal M},P]=-2\pi\ii P\).  In the opposite half-sided
+convention the Borchers relation has \(\ee^{+2\pi t}a\) in place of
+\(\ee^{-2\pi t}a\), so the differentiated commutator carries the opposite
+sign.
 \end{proof}
 
 For the standard right wedge, take \(\mathcal M=\mathcal R(W_R)\) and let
@@ -1165,7 +1168,8 @@ PCT theorem of Theorem~\ref{thm:wightman-pct}.
 \begin{proof}
 The antiunitarity of \(\Theta_{\rm PCT}\) follows from antiunitarity of the
 modular conjugation \(J_{W_R}\) and unitarity of \(U(R_\perp(\pi))\).  The
-Bisognano--Wichmann theorem identifies \(J_{W_R}\) with the geometric wedge
+Quoted Theorem~\ref{thm:bisognano-wichmann-wedges} identifies
+\(J_{W_R}\) with the geometric wedge
 reflection \(j_R\) on the net.  Conjugating afterward by the proper spatial
 rotation \(R_\perp(\pi)\) changes the geometric action from \(j_R\) to the
 total inversion \(x\mapsto -x\), proving
@@ -1191,7 +1195,7 @@ The cyclic and separating hypotheses needed for the modular data of wedge
 algebras are supplied in the Wightman setting by Reeh--Schlieder applied to
 wedge regions.  In a purely algebraic formulation not assumed to arise from
 Wightman fields, the conclusion of
-Theorem~\ref{thm:bisognano-wichmann-wedges} is not automatic; it is an explicit
+Quoted Theorem~\ref{thm:bisognano-wichmann-wedges} is not automatic; it is an explicit
 modular-covariance hypothesis on the vacuum net unless it has been proved from
 the chosen AQFT assumptions.  Under this theorem or hypothesis, modular flow is
 geometric Lorentz boost flow.  The result connects locality, positivity of

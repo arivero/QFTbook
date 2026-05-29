@@ -70,8 +70,8 @@ infinitesimal Ward identity has the form
 \]
 where \(\nu_t\) is the scalar normal velocity of the deformation.
 
-\begin{proposition}[Displacement criterion for topological defects]
-\label{prop:displacement-criterion-topological-defect}
+\begin{remark}[Displacement criterion for topological defects]
+\label{rem:displacement-criterion-topological-defect}
 Assume the displacement Ward identity
 \eqref{eq:defect-displacement-ward-identity} holds for a renormalized defect
 label \(a\).  The defect is topological in the sense of
@@ -81,9 +81,6 @@ Definition~\ref{def:topological-defect-correlation-datum} if
 supported normal variations and separated test insertions, then
 \(\mathfrak D_{\perp,a}\) is zero in the defect-operator quotient by
 correlation functions.
-\end{proposition}
-
-\begin{proof}
 If \(\mathfrak D_{\perp,a}\) is zero in all defect correlation functions, the
 right hand side of
 \eqref{eq:defect-displacement-ward-identity} vanishes for every normal
@@ -102,7 +99,7 @@ defined by inserting \(\mathfrak D_{\perp,a}\) has zero pairing with every
 test function and every exterior insertion.  Therefore
 \(\mathfrak D_{\perp,a}\) lies in the null subspace of defect local
 operators, which is the asserted quotient statement.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Physical defect category]
 \label{def:physical-defect-category-null-quotient}
@@ -187,8 +184,8 @@ the defect category is the common domain on which these limits exist for the
 defects under discussion.
 \end{definition}
 
-\begin{proposition}[Fusion acts by composition]
-\label{prop:defect-fusion-acts-by-composition}
+\begin{remark}[Fusion acts by composition]
+\label{rem:defect-fusion-acts-by-composition}
 Assume \(D_1,D_2\) and \(D_1\otimes D_2\) have shrinking limits on a common
 local-operator domain in the sense of
 Definition~\ref{def:defect-action-on-local-operators}.  Then
@@ -197,9 +194,6 @@ Definition~\ref{def:defect-action-on-local-operators}.  Then
   \label{eq:defect-fusion-action-composition}
 \]
 on that domain.
-\end{proposition}
-
-\begin{proof}
 Choose radii \(0<r_1<r_2\), put \(D_2\) on \(S_{r_1}^{D-1}\) and \(D_1\) on
 \(S_{r_2}^{D-1}\).  Because the defects are topological, any deformation of
 the two spheres through configurations avoiding separated insertions leaves
@@ -211,7 +205,7 @@ fixed small separation and collapse the annular slab between them to the
 fused defect \(D_1\otimes D_2\), then take the common shrinking limit.  The
 two procedures give the same correlation seminorms with every separated test
 configuration, hence the same element of \(\mathcal V_{\rm loc}(0)\).
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Reflection adjoint of a topological-defect action]
 \label{prop:defect-action-reflection-adjoint}
@@ -573,16 +567,14 @@ Kramers--Wannier duality defect.  Their fusion rules are
 The last line is the decisive one: \(\mathcal N\) has no inverse, because
 fusing it with itself gives two simple summands rather than the identity.
 
-\begin{proposition}[Quantum dimensions of the Ising defects]
-\label{prop:ising-defect-quantum-dimensions}
+\begin{remark}[Quantum dimensions of the Ising defects]
+\label{rem:ising-defect-quantum-dimensions}
 The Frobenius--Perron dimensions of
 \(\mathbf 1,\eta,\mathcal N\) are
 \[
   d_{\mathbf 1}=1,\qquad d_\eta=1,\qquad d_{\mathcal N}=\sqrt2 .
 \]
-\end{proposition}
 
-\begin{proof}
 Frobenius--Perron dimension is the positive homomorphism from the fusion
 semiring to \(\mathbb R_{>0}\).  Thus \(d_{\mathbf 1}=1\), and
 \(\eta^2=\mathbf 1\) with positivity gives \(d_\eta=1\).  The last fusion
@@ -591,7 +583,11 @@ rule in \eqref{eq:ising-kw-fusion-rules} gives
   d_{\mathcal N}^2=d_{\mathbf 1}+d_\eta=2,
 \]
 hence \(d_{\mathcal N}=\sqrt2\).
-\end{proof}
+The negative square root is excluded by the defining positivity of the
+Frobenius--Perron dimension.  These dimensions also solve the eigenvector
+equation for fusion by \(\mathcal N\), whose matrix has Perron eigenvalue
+\(\sqrt2\).
+\end{remark}
 
 The defect is therefore noninvertible in a quantitative sense: surrounding
 an insertion by \(\mathcal N\) is not an automorphism of the local-operator
@@ -633,8 +629,8 @@ For \(a=\mathcal N\), this gives
 The zero on the spin sector is not a paradox: a noninvertible defect need not
 act as a bijection on local fields.
 
-\begin{proposition}[Fusion action on Ising local sectors]
-\label{prop:ising-defect-action-fusion}
+\begin{remark}[Fusion action on Ising local sectors]
+\label{rem:ising-defect-action-fusion}
 The eigenvalues \eqref{eq:ising-line-eigenvalues} furnish a representation
 of the fusion algebra:
 \[
@@ -643,9 +639,7 @@ of the fusion algebra:
   \sum_c N_{ab}^{\ \ c}\lambda_c(i)
 \]
 for every defect label \(a,b\) and every primary sector \(i\).
-\end{proposition}
 
-\begin{proof}
 For \(\eta\) the eigenvalues are
 \[
   \lambda_\eta(\mathbf 1)=1,\qquad
@@ -670,7 +664,7 @@ so \(\lambda_\eta^2=1\), matching
 which is exactly the action of
 \(\mathbf 1\oplus\eta\).  These identities are the three fusion rules
 \eqref{eq:ising-kw-fusion-rules} evaluated on local sectors.
-\end{proof}
+\end{remark}
 
 \begin{remark}[Duality defect from gauging interface]
 Let \(\mathcal N_{\mathbb Z_2}\) be the interface that gauges the spin-flip

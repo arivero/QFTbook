@@ -46,8 +46,8 @@ The real number \(\xi(B_Y)\) depends on the metric and connection, but
 \(\exp(2\pi\ii\xi(B_Y))\) is the natural phase variable: when eigenvalues
 cross through zero, \(\xi\) changes by an integer.
 
-\begin{lemma}[Integer jump at a simple crossing]
-\label{lem:eta-integer-jump}
+\begin{remark}[Integer jump at a simple crossing]
+\label{rem:eta-integer-jump}
 Let \(B_t\), \(t\in(-\varepsilon,\varepsilon)\), be a smooth one-parameter
 family of self-adjoint Dirac-type operators.  Suppose exactly one simple
 eigenvalue \(\lambda(t)\) crosses zero, with
@@ -55,16 +55,16 @@ eigenvalue \(\lambda(t)\) crosses zero, with
 eigenvalues stay away from zero.  Then the contribution of this eigenvalue to
 \(\xi(B_t)\) jumps by \(+1\).  A crossing in the opposite direction gives a
 jump by \(-1\).
-\end{lemma}
-
-\begin{proof}
 Away from the crossing the eigenvalue contributes
 \(\operatorname{sign}(\lambda)/2\) to
 \((\eta(0)+h)/2\).  Just before the crossing this contribution is
 \(-1/2\), at the crossing it is \(1/2\) because \(h=1\), and just after the
 crossing it is \(1/2\).  Thus the one-sided jump from \(t<0\) to \(t>0\) is
-\(+1\).  The reverse crossing is the same calculation with signs reversed.
-\end{proof}
+\(+1\).  If the eigenvalue crosses from positive to negative, the
+contribution changes from \(+1/2\) before the crossing to \(-1/2\) after the
+crossing, again with \(h=1\) at the crossing instant, so the one-sided jump is
+\(-1\).
+\end{remark}
 
 \begin{definition}[Spectral flow]
 For a smooth path \(B_t\), \(0\leq t\leq1\), whose endpoints are invertible,
@@ -75,7 +75,7 @@ or uses the APS convention below; the resulting quantity is well-defined
 modulo the endpoint-kernel bookkeeping appearing in \(\xi\).
 \end{definition}
 
-Lemma~\ref{lem:eta-integer-jump} is the elementary reason that global
+Remark~\ref{rem:eta-integer-jump} is the elementary reason that global
 anomalies are naturally phases rather than real-valued functions of
 \(\eta(0)\) alone.  The smooth part of \(\xi\) is local; the integer jumps
 record spectral flow.
@@ -279,12 +279,20 @@ function on the quotient by that gauge transformation.
 
 \begin{proof}
 Parallel transport along \(A_t\) identifies
-\(\operatorname{Det}D_A\) with \(\operatorname{Det}D_{A^g}\).  Gauge
-equivariance identifies \(\operatorname{Det}D_{A^g}\) with
-\(\operatorname{Det}D_A\).  The composition is transport around a closed loop
-in the quotient background groupoid.  The geometric representative of this
-loop is precisely the mapping torus \(Y_g\), and the holonomy is therefore
-\eqref{eq:bismut-freed-holonomy}.
+\(\operatorname{Det}D_A\) with \(\operatorname{Det}D_{A^g}\) by the
+Bismut--Freed connection on the determinant line bundle over background
+fields.  The gauge transformation \(g\) gives a canonical pullback
+identification of \(D_{A^g}\) with \(D_A\), hence of their determinant lines.
+Composing the parallel transport with this gauge identification gives an
+automorphism of the one-dimensional line \(\operatorname{Det}D_A\), so it is
+multiplication by a phase.  The corresponding closed path in the quotient
+background groupoid is represented geometrically by gluing the two ends of
+\([0,1]\times M\) with \(g\), namely by the mapping torus \(Y_g\).  The
+Bismut--Freed holonomy formula applied to this closed family gives
+\eqref{eq:bismut-freed-holonomy}.  A phase different from \(1\) means that
+the determinant vector changes when the same quotient background is described
+by the two representatives \(A\) and \(A^g\); hence the chiral fermion measure
+does not descend to a function on the quotient.
 \end{proof}
 
 \section{Pfaffian Lines and Mod-Two Indices}
@@ -310,16 +318,13 @@ real skew structure.  The mod-two index is
   \label{eq:mod-two-index-definition}
 \]
 The parity is stable under continuous deformations preserving the real
-structure.
-\end{definition}
-
-\begin{proof}[Proof of deformation invariance]
-Eigenvalues away from zero occur in pairs \(\lambda,-\lambda\) for the real
+structure.  The reason is that eigenvalues away from zero occur in pairs
+\(\lambda,-\lambda\) for the real
 skew structure relevant to the Pfaffian.  Under a deformation, nonzero
 eigenvalues can enter or leave the kernel only through such paired crossings.
 Thus the dimension of the kernel can change only by an even integer, and
 \(\dim\ker B_Y\) modulo \(2\) is invariant.
-\end{proof}
+\end{definition}
 
 For such a Pfaffian line the Dai--Freed holonomy specializes to
 \[

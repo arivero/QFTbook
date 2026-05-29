@@ -149,11 +149,10 @@
 - Proposition `prop:lsz-tree-phi-four-after-reduction` labels this
   perturbative example as a calculation after the nonperturbative
   Haag--Ruelle/LSZ construction.
-- Proposition `prop:lsz-scope-stable-massive-local-fields` states the exact
-  scope boundary: the scalar formula applies only to stable massive isolated
-  local-field poles; massless gauge, infraparticle, confinement, resonance,
-  and conformal cases require their own asymptotic data and reduction
-  theorems.
+- The closing scope remark records the exact boundary of the scalar formula:
+  it applies only to stable massive isolated local-field poles; massless
+  gauge, infraparticle, confinement, resonance, and conformal cases require
+  their own asymptotic data and reduction theorems.
 - 2026-05-24 issue #393 pass: standardized the one-particle residue in the
   LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
   \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.

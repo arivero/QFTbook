@@ -583,8 +583,7 @@ which supplies a gauge-independent integral and a boundary-condition
 category.  Finally, possible anomaly lines must either be trivialized or kept
 as relative data.
 
-\begin{proposition}[Functorial extraction criterion]
-\label{prop:functorial-extraction-criterion}
+\paragraph{Functorial extraction criterion.}
 Let a regulated local QFT assign, for each collared \(\xi\)-bordism
 \(M:\Sigma_0\to\Sigma_1\), a multilinear amplitude
 \[
@@ -609,20 +608,13 @@ depending on a regulator and auxiliary geometric choices.  Suppose:
   tensor product.
 \end{enumerate}
 Then the limiting amplitudes define an honest or relative Atiyah--Segal TQFT,
-according to whether the anomaly line has been trivialized.
-\end{proposition}
-
-\begin{proof}
-The limiting assignments are defined on objects by
-\(\Sigma\mapsto\mathcal H(\Sigma)\) and on morphisms by
-\(M\mapsto Z(M)\).  Hypothesis (iii) is exactly preservation of composition;
-hypothesis (iv) is exactly preservation of identities and the symmetric
-monoidal product.  Hypothesis (ii) says that the assignment is independent of
-representatives inside the allowed bordism class, or that its representative
-dependence is precisely the stated relative anomaly.  These are the axioms of
-Definition~\ref{def:atiyah-segal-tqft} and
-Definition~\ref{def:anomalous-relative-tqft}.
-\end{proof}
+according to whether the anomaly line has been trivialized.  Indeed, the
+limiting assignments are \(\Sigma\mapsto\mathcal H(\Sigma)\) on objects and
+\(M\mapsto Z(M)\) on morphisms; the four hypotheses are precisely the
+well-definedness, composition, identity, and symmetric monoidal requirements
+in Definition~\ref{def:atiyah-segal-tqft}, with the representative dependence
+recorded as the relative anomaly of
+Definition~\ref{def:anomalous-relative-tqft} when the anomaly line is kept.
 
 \begin{openproblem}[Functorial extraction from interacting QFT]
 \label{op:functorial-extraction-from-qft}

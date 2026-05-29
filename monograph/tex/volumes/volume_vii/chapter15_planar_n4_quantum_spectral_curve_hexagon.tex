@@ -1137,8 +1137,7 @@ consistently through a long cut, and the one-step shifted sheet obeys
 \end{lemma}
 
 \begin{proof}
-The proof is the dual copy of the \(P\mu\) calculation, but it is worth
-displaying because the sign is fixed by the long-cut convention.  Write
+Write
 \[
   \widetilde Q_i=\omega_{ij}Q^j .
 \]
@@ -1517,10 +1516,24 @@ gives
 \end{aligned}
 \]
 Since \(1/2-\ii u=-\ii(u+\ii/2)\), this is the first identity in
-\eqref{eq:qsc-digamma-primitive-shift-defects}.  The second identity is the
-same calculation with \(u\) replaced by \(u-\ii\), or equivalently with the
-two digamma arguments interchanged.  Subtracting the two one-step identities
-gives \eqref{eq:qsc-digamma-primitive-second-difference}.
+\eqref{eq:qsc-digamma-primitive-shift-defects}.  For the second identity,
+write
+\[
+\begin{aligned}
+  \Phi(u-\ii)
+  &=
+  \psi\!\left(-\frac12-\ii u\right)
+  +\psi\!\left(\frac32+\ii u\right)\\
+  &=
+  \psi\!\left(\frac12-\ii u\right)
+  -\frac{1}{-1/2-\ii u}
+  +\psi\!\left(\frac12+\ii u\right)
+  +\frac{1}{1/2+\ii u},
+\end{aligned}
+\]
+which is the second displayed defect formula after rewriting the denominators
+as shifts of \(u\).  Subtracting the two one-step identities gives
+\eqref{eq:qsc-digamma-primitive-second-difference}.
 
 If \(G\) has the same one-step defects, then
 \[
@@ -2097,8 +2110,8 @@ bridge lengths are
   \ell_{31}=\frac{L_3+L_1-L_2}{2}.
 \]
 
-\begin{proposition}[Planar bridge-length bookkeeping]
-\label{prop:planar-n4-hexagon-bridge-lengths}
+\begin{remark}[Planar bridge-length bookkeeping]
+\label{rem:planar-n4-hexagon-bridge-lengths}
 Consider the planar tree-level pair-of-pants skeleton for three cyclic
 single-trace operators of lengths \(L_1,L_2,L_3\).  Let \(\ell_{ij}=\ell_{ji}\)
 be the number of adjacent Wick-contraction slots shared by operators \(i\)
@@ -2112,9 +2125,7 @@ and \(j\).  Then the bridge lengths are forced to be
 Conversely, a nonnegative integer planar skeleton of this type exists exactly
 when \(L_1+L_2+L_3\) is even and the three triangle inequalities
 \(L_i+L_j\geq L_k\) hold.
-\end{proposition}
 
-\begin{proof}
 In the planar skeleton each trace is cut at two cyclic splitting points.  The
 letters of operator \(1\) are divided into the bridge shared with operator
 \(2\) and the bridge shared with operator \(3\), and similarly for the other
@@ -2132,7 +2143,7 @@ triangle inequalities.  Conversely, if these conditions hold, the three
 numbers in \eqref{eq:planar-n4-hexagon-bridge-lengths-derived} define
 nonnegative integer arcs on the three cyclic words satisfying the displayed
 length-balance equations, which is the required pair-of-pants skeleton.
-\end{proof}
+\end{remark}
 
 Asymptotically, the structure constant is a sum over partitions of magnons
 between the two hexagons:
@@ -2404,7 +2415,7 @@ relating the circular loop to the small-angle cusp gives
 \]
 The algebraic step from the circular-loop answer
 \(2I_1(\sqrt\lambda)/\sqrt\lambda\) to this expression is
-Proposition~\ref{prop:bremsstrahlung-derivative-algebra}.  The genuinely
+Remark~\ref{rem:bremsstrahlung-derivative-algebra}.  The genuinely
 field-theoretic input is the protected Ward identity
 \eqref{eq:bremsstrahlung-circular-loop-ward}; the QSC and mirror-TBA
 descriptions of the cusped line reproduce the same function with
@@ -2460,8 +2471,8 @@ null-cusp frame, while the generalized scaling function and pentagon OPE data
 are higher spectral coordinates of the same defect system.
 \end{definition}
 
-\begin{proposition}[Cusp anomalous dimension as defect ground-state energy]
-\label{prop:cusp-as-defect-ground-state-energy}
+\begin{remark}[Cusp anomalous dimension as defect ground-state energy]
+\label{rem:cusp-as-defect-ground-state-energy}
 Assume the null-cusp Wilson line admits a defect Hamiltonian description on a
 strip of length \(L=\log(R/\epsilon)\), where \(R\) and \(\epsilon\) are the
 infrared and ultraviolet scales used in the cusp renormalization.  If
@@ -2486,9 +2497,7 @@ growth
 \]
 in the normalization of
 Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
-\end{proposition}
 
-\begin{proof}
 The renormalized cusped-line expectation value has the defining logarithmic
 form
 \[
@@ -2524,7 +2533,7 @@ renormalization of the lightlike Wilson line that appears in the factorized
 soft-collinear limit of twist-two operators; in the planar integrability
 description this coefficient is reproduced by the BES equation and by the
 large-spin limit of the asymptotic Bethe equations.
-\end{proof}
+\end{remark}
 
 \subsection{Pentagon Channel Expansion as a Defect Spectral Resolution}
 

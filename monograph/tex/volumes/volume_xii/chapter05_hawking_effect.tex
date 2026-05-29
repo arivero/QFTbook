@@ -100,8 +100,8 @@ argument therefore fixes
   T_H=\frac{\kappa}{2\pi}.
 \]
 
-\begin{proposition}[What Euclidean regularity proves]
-\label{prop:hawking-euclidean-regularity-scope}
+\begin{remark}[What Euclidean regularity proves]
+\label{rem:hawking-euclidean-regularity-scope}
 Assume a Euclidean QFT has been constructed on the smooth Euclidean black-hole
 section, the analytic continuation to stationary Lorentzian correlators
 exists, and the Euclidean time circle is the continuation of the normalized
@@ -109,9 +109,8 @@ Killing time.  Then the analytically continued stationary correlation
 functions satisfy the KMS periodicity at inverse temperature
 \(\beta_H=2\pi/\kappa\).  This statement does not by itself prove existence
 of an interacting Lorentzian Hadamard state on a collapse spacetime.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Smoothness at \(\rho=0\) identifies \(\kappa\tau\) as an angle.  Hence the
 Euclidean Schwinger functions are periodic under
 \(\tau\mapsto\tau+2\pi/\kappa\), with the usual ordering around the Euclidean
@@ -122,7 +121,6 @@ The final sentence records an implication that is not part of the argument:
 Euclidean smoothness constructs a stationary thermal object, whereas collapse
 requires a state empty on \(\mathcal I^-\), regular at the future horizon,
 and propagated through a time-dependent geometry.
-\end{proof}
 
 \section{Exponential Ray Tracing in Collapse}
 
@@ -157,15 +155,32 @@ or equivalently
 \end{lemma}
 
 \begin{proof}
-For an escaping ray close to the horizon, \(U<0\).  The two displayed
-relations give
+For an escaping ray close to the horizon, \(U<0\).  Put \(s=v_0-v>0\).  The
+smoothness assumption at the last escaping ray gives
+\[
+  U=-As+O(s^2),
+\]
+with \(A>0\).  The horizon coordinate relation gives the same \(U\) as
 \[
   -C_H e^{-\kappa u}
   =
-  A(v-v_0)+O((v-v_0)^2).
+  -As+O(s^2).
 \]
-Solving this smooth equation for \(v_0-v\) gives the asserted expansion.  The
-logarithmic expression is the inverse expansion.
+Multiplying by \(-1/A\) gives
+\[
+  s-\frac{C_H}{A}e^{-\kappa u}=O(s^2).
+\]
+For sufficiently late \(u\), \(s\) is small and the inverse-function theorem
+applied to \(s\mapsto s+O(s^2)\) yields
+\[
+  s=\frac{C_H}{A}e^{-\kappa u}+O(e^{-2\kappa u}).
+\]
+Taking the logarithm of
+\(s=C e^{-\kappa u}(1+O(e^{-\kappa u}))\), with \(C=C_H/A\), gives
+\[
+  u=-\frac1\kappa\log\frac{s}{C}+O(s),
+\]
+which is the stated inverse expansion.
 \end{proof}
 
 The constants \(A,C_H,C\) are nonuniversal; the exponential rate \(\kappa\)

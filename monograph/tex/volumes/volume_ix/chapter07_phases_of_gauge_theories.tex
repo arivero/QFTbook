@@ -126,9 +126,11 @@ the component being averaged, Haar orthogonality gives
   \int_G dh\,\rho(h)=0
 \]
 on that component.  Therefore the group average of \(O\) is zero, and so is
-its expectation value.  The same argument applies to any finite collection of
-gauge-variant insertions unless their product contains a gauge singlet at
-every site.
+its expectation value.  For a finite collection of gauge-variant insertions,
+perform the Haar average independently at each site touched by the product.
+The integral at a given site projects the tensor product of the local
+representation factors onto its invariant subspace.  The expectation can
+survive only if this projection is nonzero at every site.
 \end{proof}
 
 Consequently a Higgs regime must be described by gauge-invariant data:
@@ -418,8 +420,7 @@ closed flux sheet.  The resulting ratio asks whether the open charged
 configuration has nonzero overlap with the vacuum or with a charged
 superselection sector after the universal flux cost has been divided out.
 
-\begin{proposition}[Exponential scaling of the ratio]
-\label{prop:fm-ratio-exponential-scaling}
+\paragraph{Exponential scaling of the ratio.}
 Suppose a family of paths has size \(R\), and suppose
 \[
   -\log |G_R(\gamma_R)|=aR+o(R),
@@ -435,10 +436,7 @@ with \(b\geq0\).  Then
 In particular the ratio has a nonzero exponential limit only when the
 endpoint-open-line decay matches one half of the closed-loop decay at leading
 order.
-\end{proposition}
-
-\begin{proof}
-Take the logarithm of the definition:
+This is the logarithm of the definition:
 \[
   -\log|\rho_R|
   =
@@ -448,8 +446,7 @@ Substituting the two assumed asymptotic formulas gives
 \[
   aR+o(R)-\frac b2R+o(R),
 \]
-which is the claimed expression.
-\end{proof}
+which is the displayed expression.
 
 The ratio is therefore not a slogan for ``Higgs'' or ``confinement'' without
 the accompanying limit definition.  Its interpretation depends on the matter

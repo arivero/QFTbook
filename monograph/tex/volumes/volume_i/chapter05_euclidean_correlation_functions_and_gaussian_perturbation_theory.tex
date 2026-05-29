@@ -221,8 +221,7 @@ For the displayed metric kinetic energy, this gives
 \]
 \end{definition}
 
-\begin{proposition}[Sign of the Wick-rotated weight]
-\label{prop:wick-rotated-mechanical-weight}
+\paragraph{Sign of the Wick-rotated weight.}
 Under \(t=-\ii\tau\), with the orientation of the integration contour rotated
 accordingly, the Lorentzian phase transforms formally as
 \[
@@ -234,10 +233,7 @@ accordingly, the Lorentzian phase transforms formally as
     -\frac{1}{\hbar}\int L_E(q,q')\,\dd\tau
   \right].
 \]
-\end{proposition}
-
-\begin{proof}
-Along the rotated contour \(\dd t=-\ii\,\dd\tau\) and
+Indeed, along the rotated contour \(\dd t=-\ii\,\dd\tau\) and
 \(\dot q=\dd q/\dd t=\ii\,\dd q/\dd\tau=\ii q'\).  Therefore
 \[
   \frac{\ii}{\hbar}L(q,\dot q)\,\dd t
@@ -252,7 +248,6 @@ Exponentiating the integrated identity gives the stated weight.  This is an
 identity of the formal action density after choosing the contour; analytic
 existence of the path-integral limit is a separate assertion supplied only in
 the regulated cases below.
-\end{proof}
 
 \begin{proposition}[Euclidean long-time projection onto the vacuum]
 \label{prop:euclidean-long-time-vacuum-projection}
@@ -1429,11 +1424,20 @@ contains both external insertions.
 \end{proposition}
 
 \begin{proof}
-In the perturbative expansion, every Wick contraction splits uniquely into
-the connected component containing the two external insertions and a product
-of vacuum components. The sum of the vacuum components is \(Z_g\), and is
-cancelled by the normalization. Thus \(G(\tau)\) is the sum of connected
-two-point diagrams.
+At fixed cutoff every coefficient of the formal series is a finite Gaussian
+moment, hence Wick's theorem expresses it as a finite sum over pairings.
+View a pairing as a graph whose vertices are the two external insertions and
+the interaction insertions, with an edge for each Wick contraction.  Every
+such graph decomposes uniquely into connected components.  The component
+containing the two external vertices carries all dependence on the external
+points; the remaining components contain interaction vertices only and are
+vacuum graphs.  Conversely, a connected two-point graph together with an
+unordered finite collection of vacuum components determines a unique
+disconnected graph of the normalized numerator, with the exponential
+generating-function factors.  Summing over all vacuum components therefore
+produces the same formal power series \(Z_g\) that appears in the denominator.
+Division by \(Z_g\) cancels this vacuum factor coefficientwise, leaving exactly
+the Wick graphs whose connected component contains both external insertions.
 \end{proof}
 
 \begin{center}
@@ -2133,8 +2137,7 @@ The pole of the regulated two-point function,
   =
   \frac{\hbar}{k^2+1-\Sigma_\Lambda(k)},
 \]
-\begin{corollary}[Finite gap after choosing the finite local term]
-\label{cor:derivative-oscillator-finite-gap-counterterm}
+\paragraph{Finite gap after choosing the finite local term.}
 After the counterterm choice of
 Proposition~\ref{prop:derivative-interaction-local-counterterm-gap}, the
 first energy gap is
@@ -2147,9 +2150,6 @@ first energy gap is
   \right)
   +O(g^2).
 \]
-\end{corollary}
-
-\begin{proof}
 Setting \(k=\ii\omega_1\) in the denominator of
 \(\widetilde G_\Lambda(k)\) and expanding to first
 order in \(g\) gives
@@ -2168,7 +2168,6 @@ order in \(g\) gives
   \right)
   +O(g^2).
 \]
-\end{proof}
 Thus the finite part of the local counterterm is not a removable notation
 choice; it fixes which quantum Hamiltonian, within the ordering ambiguity of
 the derivative-coupled classical expression, the path integral represents.

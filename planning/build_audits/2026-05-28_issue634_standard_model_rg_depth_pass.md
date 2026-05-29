@@ -20,12 +20,15 @@ change.
   `(4 pi)^2 beta_g3 = -7 g3^3` from the Standard Model representation sums.
 - Added a hypercharge-normalization remark converting to
   `b_1^GUT = 41/10`.
-- Added Proposition `prop:sm-one-loop-top-higgs-subsystem`, stating the
+- Added Quoted Theorem `qthm:sm-one-loop-top-higgs-subsystem`, stating the
   one-loop minimal-subtraction top-Yukawa and Higgs-quartic subsystem on the
   invariant source subspace where only `y_t` is nonzero among Yukawa singular
   values.
-- The proof text keeps the RG equations explicitly perturbative and avoids
-  claims about selecting ultraviolet boundary data.
+- The surrounding text keeps the RG equations explicitly perturbative and
+  avoids claims about selecting ultraviolet boundary data.  The proof-substance
+  audit marked the one-loop top-Higgs coefficients as quoted one-loop input
+  rather than a self-contained derivation, since the previous proof explained
+  group-factor origins but did not evaluate the loop integrals.
 
 ## Calculation Check
 

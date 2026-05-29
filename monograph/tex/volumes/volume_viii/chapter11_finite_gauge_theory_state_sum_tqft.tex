@@ -73,6 +73,9 @@ The isomorphism classes are the orbits \(\mathcal O\subset X\).  For
   \frac{|X|}{|H|},
 \]
 where the orbit-stabilizer theorem was used in the second equality.
+This calculation is the finite model for dividing by gauge volume: summing
+one over each object and then weighting by automorphisms gives the same result
+as averaging over the acting group before passing to orbits.
 \end{proof}
 
 \section{Fields as Principal-Bundle Groupoids}
@@ -137,6 +140,9 @@ where \(G\) acts by conjugation.  The stabilizer of \(\rho\) is
 \(C_G(\rho)\), which is the automorphism group of the corresponding bundle.
 Lemma~\ref{lem:action-groupoid-cardinality} gives
 \eqref{eq:finite-gauge-connected-formula}.
+This argument uses connectedness to choose one basepoint and identify every
+flat finite \(G\)-bundle with a homomorphism \(\pi_1(M,m)\to G\) modulo
+change of trivialization at the basepoint, namely conjugation by \(G\).
 \end{proof}
 
 For a disconnected \(M=\bigsqcup_{\alpha=1}^c M_\alpha\), groupoid
@@ -251,8 +257,11 @@ An object on the right is a bundle \(P_{01}\to M_{01}\), a bundle
 \]
 Gluing the total spaces along this isomorphism gives a principal bundle on
 the glued manifold.  Conversely, restricting a bundle on the glued manifold
-gives such data.  The same argument on bundle isomorphisms gives equivalence
-of groupoids, including the morphisms.
+gives such data.  A bundle isomorphism on the glued manifold restricts to a
+pair of isomorphisms on \(M_{01}\) and \(M_{12}\) compatible with the chosen
+boundary identification; conversely, any compatible pair glues uniquely to an
+isomorphism of the glued bundles.  Thus the equivalence includes the
+morphism groupoids, not only the object sets.
 
 For the linear maps, composition of spans is represented by the homotopy
 fiber product in \eqref{eq:bun-gluing-homotopy-pullback}.  It remains only
@@ -416,10 +425,12 @@ the ratio of the two products of \(D\)-simplex weights is exactly
 \((\delta\omega)(g_1,\ldots,g_{D+1})\), with the signs determined by whether
 the \(D\)-face is incoming or outgoing in the boundary orientation.  The
 cocycle condition \eqref{eq:dw-cocycle-condition} makes the ratio \(1\).
-The same calculation with \(\omega\delta\lambda\) leaves only the product of
-\(\lambda\)-weights on the boundary of \(M\).  If \(M\) is closed, every
-\((D-1)\)-face is counted twice with opposite signs, so the coboundary
-factor cancels.
+If \(\omega\) is replaced by \(\omega\delta\lambda\), the additional
+\(\delta\lambda\) factors telescope over the triangulation: every interior
+\((D-1)\)-face occurs in exactly two adjacent \(D\)-simplices with opposite
+induced orientations.  The uncanceled factors are precisely the
+\(\lambda\)-weights on \(\partial M\).  If \(M\) is closed, this boundary
+product is empty, so the coboundary factor cancels.
 \end{proof}
 
 The intrinsic form of the same definition is the following.  A bundle

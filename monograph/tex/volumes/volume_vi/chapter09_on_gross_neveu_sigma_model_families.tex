@@ -243,14 +243,16 @@ The elementary identity
 again cancels \eqref{eq:on-sigma-sigma2-unitarity-factor}.  This proves
 channel unitarity.
 
-Crossing for \(\sigma_2\) is immediate from
+For crossing of \(\sigma_2\), set
 \[
   -\frac{\ii(\ii\pi-\theta)}{2\pi}
   =
   \frac12-z,
 \]
-which interchanges the two numerator gamma factors with the two denominator
-gamma factors in \eqref{eq:on-sigma-sigma2} exactly as displayed.  The
+in the gamma-function expression \eqref{eq:on-sigma-sigma2}.  This
+substitution sends each numerator gamma factor at \(z\) to the corresponding
+numerator factor at \(\frac12-z\), and likewise for the denominators, so the
+ratio is unchanged in precisely the displayed way.  The
 relations between \(\sigma_1\) and \(\sigma_3\) then follow from their
 definitions in \eqref{eq:on-sigma-sigma1-sigma3}.
 \end{proof}
@@ -896,8 +898,8 @@ eigenvalues of \(S_{V\bar V}\) are therefore \(S_{\rm sing}\) and
 \(S_{\rm adj}\), giving \eqref{eq:projective-vbarv-unitarity-eigenvalues}.
 \end{proof}
 
-\begin{proposition}[Pole assignment in the projective rank-one block]
-\label{prop:projective-pole-assignment-rule}
+\begin{remark}[Pole assignment in the projective rank-one block]
+\label{rem:projective-pole-assignment-rule}
 Suppose the \(VV\) tensor part is the rational block
 \(\mathcal R_N(\theta)\) of \eqref{eq:su-n-rational-r-block}, multiplied by a
 scalar factor \(X_{\mathbb{CP}}(\theta)\).  If the projective bootstrap system
@@ -909,9 +911,8 @@ has a zero at \(\theta=2\pi\ii/N\) of at least the order of the pole of
 \(\mathcal R_N\) there.  If instead that pole is assigned to a listed stable
 bound state, the residue must be projected onto \(\wedge^2 V\) and must obey
 the positive-residue convention of the Hilbert-space normalization.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The symmetric and antisymmetric eigenvalues of \(\mathcal R_N\) are
 \[
   1,\qquad
@@ -925,7 +926,6 @@ no stable direct-channel state to that tensor channel, the pole of the matrix
 block must be canceled by a zero of the scalar factor.  If the pole is kept,
 its residue is precisely the projection onto the stated bound-state channel,
 with its normalization fixed by the Hilbert-space inner product.
-\end{proof}
 
 \begin{controlledapproximation}[Projective scattering status]
 \label{ca:cpn-exact-scattering-status}
@@ -995,7 +995,10 @@ Multiplying the curvature by \(1-\zeta^2\) gives
 \]
 Vanishing for all \(\zeta\) is therefore equivalent to the vanishing of the
 constant and linear coefficients, which are precisely the Maurer--Cartan
-identity and the equation of motion.
+identity and the equation of motion.  Conversely, if those two relations hold,
+both coefficients vanish and the curvature of \(L_\pm(\zeta)\) vanishes for
+all \(\zeta\neq\pm1\).  The poles at \(\zeta=\pm1\) are part of the auxiliary
+spectral-parameter family and do not add additional equations of motion.
 \end{proof}
 
 The Wess--Zumino deformation is defined by extending \(U\) to a three-manifold
@@ -1352,8 +1355,8 @@ fermion flavors in the trace of the short-distance contraction: for example,
 the color-current two-point singularity receives \(N_f\) identical flavor
 contractions and hence has level \(N_f\).
 
-\begin{proposition}[Central-charge check for nonabelian bosonization]
-\label{prop:nonabelian-bosonization-central-charge}
+\begin{remark}[Central-charge check for nonabelian bosonization]
+\label{rem:nonabelian-bosonization-central-charge}
 With the current normalization in which
 \[
   c\bigl(\widehat{\mathfrak{su}}(N)_k\bigr)
@@ -1371,9 +1374,8 @@ charge as \(N_cN_f\) free complex left-moving fermions:
   N_cN_f .
   \label{eq:nonabelian-bosonization-central-charge-identity}
 \end{equation}
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Bring the two nonabelian terms to the common denominator \(N_c+N_f\):
 \[
   \frac{
@@ -1388,7 +1390,6 @@ Adding the \(\widehat{\mathfrak u}(1)\) boson gives \(N_cN_f\).  The identity
 is only the central-charge compatibility check; the operator equivalence also
 requires equality of the affine OPEs, the stress tensor, and the compact
 \(U(1)\) radius.
-\end{proof}
 
 For \(N_f=1\) the flavor affine factor is absent and a set of \(N_c\) complex
 fermions decomposes into \(SU(N_c)_1\) WZW data plus a compact \(U(1)\) boson.
@@ -1440,8 +1441,8 @@ choice of the global form of the symmetry and the quotient by common centers
 is part of the family specification; it affects which line operators and twisted
 sectors exist, although not the local sine-mass formula itself.
 
-\begin{proposition}[Fusing-angle consistency of the sine spectrum]
-\label{prop:su-n-sine-mass-fusing-angle}
+\begin{remark}[Fusing-angle consistency of the sine spectrum]
+\label{rem:su-n-sine-mass-fusing-angle}
 For \(1\le a,b\) and \(a+b<N\), the mass formula
 \eqref{eq:su-n-sine-mass-spectrum} is compatible with a direct-channel bound
 state \(V_a\otimes V_b\to V_{a+b}\) at rapidity
@@ -1457,9 +1458,8 @@ Indeed,
   m_a^2+m_b^2+2m_am_b\cos u_{ab}^{a+b}.
   \label{eq:su-n-sine-mass-fusion-identity}
 \end{equation}
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Set \(A=\pi a/N\), \(B=\pi b/N\), and suppress the common positive factor
 \(M/\sin(\pi/N)\).  The required identity is
 \[
@@ -1484,7 +1484,6 @@ and \(\cos^2A=1-\sin^2A\), \(\cos^2B=1-\sin^2B\), the two expressions agree.
 The restriction \(a+b<N\) selects the antisymmetric tensor before conjugation;
 fusion channels with \(a+b\ge N\) are equivalently described after replacing
 \(V_c^\ast\) by \(V_{N-c}\) and keeping track of crossed-channel conventions.
-\end{proof}
 
 The fundamental rational \(SU(N)\) matrix block acts on \(V\otimes V\).  Let
 \[
@@ -1532,7 +1531,7 @@ on \(V^{\otimes3}\).
 \end{proposition}
 
 \begin{proof}
-Unitarity is immediate from \(P^2=I\):
+The permutation \(P\) satisfies \(P^2=I\), so the numerator product is
 \[
   (\theta I-\ii\lambda_NP)(-\theta I-\ii\lambda_NP)
   =
@@ -1667,9 +1666,12 @@ on \(V\otimes V\), away from its poles.
 \end{proposition}
 
 \begin{proof}
-The first identity follows immediately from
-\eqref{eq:su-n-cgn-a-scalar}: replacing \(x\) by \(-x\) interchanges the two
-gamma-function products, while the two overall signs multiply to \(1\).
+In \eqref{eq:su-n-cgn-a-scalar}, replacing \(x\) by \(-x\) interchanges the
+two gamma-function products:
+the factors \(\Gamma(1-x)\Gamma(1/N+x)\) in \(A_N(\theta)\) become the
+denominator factors of \(A_N(-\theta)\), and the denominator factors
+\(\Gamma(1+x)\Gamma(1/N-x)\) become the numerator factors.  The two explicit
+minus signs multiply to \(1\).  Thus \(A_N(\theta)A_N(-\theta)=1\).
 For the component matrix, write \(S=bP+cI\) with
 \(c=-(\ii\lambda_N/\theta)b\).  At \(-\theta\),
 \[
@@ -2327,8 +2329,8 @@ Thus \(\frac{\dd}{\dd\tau}\arctan(\beta h(\tau))=-\beta\), and integration
 gives \eqref{eq:sausage-positive-integrated-flow}.
 \end{proof}
 
-\begin{proposition}[Round and cylindrical endpoints of the metric family]
-\label{prop:sausage-metric-endpoints}
+\begin{remark}[Round and cylindrical endpoints of the metric family]
+\label{rem:sausage-metric-endpoints}
 The branch \(q=-\kappa^2\), \(0\le\kappa<1\), interpolates at the metric level
 between the round two-sphere and a flat cylinder.  More precisely,
 \(\kappa=0\) gives \(S^2\) of radius \(\sqrt h\), while the limiting metric
@@ -2338,9 +2340,8 @@ as \(\kappa\to1\) is
   \qquad r=\tanh\rho,\quad \rho\in\mathbb R .
   \label{eq:sausage-cylinder-limit}
 \]
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 The case \(\kappa=0\) is the calculation already displayed in
 Definition~\ref{def:sausage-metric-specification}.  For \(\kappa\to1\), set
 \(q=-1\) in \eqref{eq:sausage-metric}.  Then
@@ -2353,7 +2354,6 @@ is obtained.  The change of variable \(r=\tanh\rho\) gives
 \(\dd r=(1-\tanh^2\rho)\dd\rho=(1-r^2)\dd\rho\), hence
 \(\dd r^2/(1-r^2)^2=\dd\rho^2\).  This proves
 \eqref{eq:sausage-cylinder-limit}.
-\end{proof}
 
 \subsection{Repulsive-Domain Fateev--Onofri--Zamolodchikov Sausage Scattering}
 \label{sec:repulsive-sausage-scattering}
@@ -2698,8 +2698,8 @@ identity for the displayed meromorphic matrix.  It is not a construction of
 the local sausage sigma model, nor a proof that the regulator-defined metric
 family has scattering matrix \(S_\lambda\).
 
-\begin{proposition}[Rational \(O(3)\) limit of the repulsive sausage matrix]
-\label{prop:sausage-o3-rational-limit}
+\begin{remark}[Rational \(O(3)\) limit of the repulsive sausage matrix]
+\label{rem:sausage-o3-rational-limit}
 At fixed rapidity away from the displayed poles, the limit
 \(\lambda\to0\) of the repulsive sausage matrix exists.  The highest-charge
 and charge-\(+1\) entries become
@@ -2725,9 +2725,8 @@ Definition~\ref{def:repulsive-massive-sausage-scattering}.  Thus the
 repulsive deformation is normalized so that its \(\lambda=0\) endpoint is the
 same rational \(O(3)\) triplet block used in the round sigma-model bootstrap
 coordinate.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Use
 \[
   \sinh(\lambda z)=\lambda z+O(\lambda^3)
@@ -2743,7 +2742,6 @@ already computed highest-charge limit, gives
 the same meromorphic crossing prescriptions that define them at nonzero
 \(\lambda\), so their limits follow by applying those prescriptions to the
 three displayed rational functions.
-\end{proof}
 
 \begin{definition}[Massless \(\theta=\pi\) endpoint problem]
 \label{def:sausage-theta-pi-endpoint-problem}

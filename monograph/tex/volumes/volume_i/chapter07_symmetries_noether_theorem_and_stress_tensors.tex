@@ -155,8 +155,7 @@ In particular, on every classical solution,
 \end{proposition}
 
 \begin{proof}
-Apply Proposition~\ref{prop:first-variational-identity} to the variation
-\(\delta_R\phi^A=R^A\):
+For the variation \(\delta_R\phi^A=R^A\), the first variational identity gives
 \[
   \delta_R\mathcal L
   =
@@ -263,8 +262,8 @@ the asymptotic domain; it is not implied by the local equation
 \(\partial_\mu j_R^\mu=0\) alone.
 \end{definition}
 
-\begin{proposition}[Charge balance in a spacetime slab]
-\label{prop:charge-balance-spacetime-slab}
+\begin{remark}[Charge balance in a spacetime slab]
+\label{rem:charge-balance-spacetime-slab}
 Let \(V\subset\mathbb R^{D-1}\) be a spatial region with piecewise smooth
 boundary, and assume \(j_R^\mu\) is smooth on
 \([t_1,t_2]\times V\) with \(\partial_\mu j_R^\mu=0\).  Then
@@ -278,16 +277,14 @@ where \(\dd S_i=n_i\,\dd S\), \(n_i\) is the outward unit normal to
 \(\partial V\), and \(\dd S\) is the Euclidean surface measure on
 \(\partial V\).  Hence \(Q_R(t)\) is time independent whenever the boundary
 flux tends to zero in the limit \(V\nearrow\mathbb R^{D-1}\).
-\end{proposition}
-
-\begin{proof}
-Integrate \(\partial_0 j_R^0+\partial_i j_R^i=0\) over
-\([t_1,t_2]\times V\).  The time derivative integrates to
-\(Q_R^V(t_2)-Q_R^V(t_1)\), and the spatial divergence integrates by the
-ordinary divergence theorem to
-\(\int_{t_1}^{t_2}\dd x^0\int_{\partial V}\dd S_i\,j_R^i\).  Moving this
-boundary term to the other side gives the stated identity.
-\end{proof}
+It follows by integrating
+\(\partial_0 j_R^0+\partial_i j_R^i=0\) over the slab and applying the
+ordinary divergence theorem.  The sign follows from using the outward
+spatial normal: positive outward flux reduces the charge remaining inside
+\(V\).  For an exhaustion \(V_R\nearrow\mathbb R^{D-1}\), the
+infinite-volume charge is conserved provided \(Q_R^{V_R}(t)\) has a limit
+and the corresponding boundary-flux integral tends to zero.
+\end{remark}
 
 Figure~\ref{fig:current-conservation-boundary-flux} records the slab geometry
 behind the charge-conservation identity: time-slice charges differ exactly by
@@ -752,7 +749,11 @@ and the corresponding charges, when the spatial integrals exist, are
 \end{proposition}
 
 \begin{proof}
-Differentiate \(M^{\mu,\rho\sigma}\):
+The current is obtained by contracting the antisymmetric Lorentz parameter
+with the antisymmetric tensor \(M^{\mu,\rho\sigma}\).  The factor \(1/2\)
+compensates for the double counting of the ordered pairs
+\((\rho,\sigma)\) and \((\sigma,\rho)\).  To verify conservation, differentiate
+\(M^{\mu,\rho\sigma}\) as an ordinary distribution:
 \[
   \partial_\mu M^{\mu,\rho\sigma}
   =
@@ -761,9 +762,12 @@ Differentiate \(M^{\mu,\rho\sigma}\):
   T^{\sigma\rho}-x^\sigma\partial_\mu T^{\mu\rho}.
 \]
 Stress-tensor conservation removes the terms proportional to \(x\), and
-symmetry of \(T^{\mu\nu}\) removes the remaining difference.  The current
-\(j^\mu_\omega\) is therefore conserved for every constant antisymmetric
-\(\omega_{\rho\sigma}\).
+symmetry of \(T^{\mu\nu}\) removes the remaining difference.  Therefore
+\(\partial_\mu M^{\mu,\rho\sigma}=0\), and contraction with the constant
+\(\omega_{\rho\sigma}\) gives \(\partial_\mu j^\mu_\omega=0\).  If the spatial
+integral of \(M^{0,\rho\sigma}\) exists after the boundary conditions or
+smearing prescription have been specified, this conserved current defines
+the charge \(J^{\rho\sigma}\).
 \end{proof}
 
 \begin{remark}[Spin terms and Belinfante improvement]
@@ -889,8 +893,7 @@ translations the covariance convention of the earlier chapters is
 \]
 \end{definition}
 
-\begin{proposition}[Translation commutator convention]
-\label{prop:translation-commutator-convention}
+\paragraph{Translation commutator convention.}
 The convention in Definition~\ref{def:quantum-generator-convention} is
 equivalent to
 \[
@@ -899,9 +902,6 @@ equivalent to
   \ii\hbar\,\partial_\nu\widehat\Phi_A(x)
 \]
 in distributional notation.
-\end{proposition}
-
-\begin{proof}
 Differentiate
 \[
   U(a)^{-1}\widehat\Phi_A(x)U(a)=\widehat\Phi_A(x+a)
@@ -919,7 +919,6 @@ is
 The derivative of the right hand side is
 \(\partial_\nu\widehat\Phi_A(x)\).  Multiplying by \(\ii\hbar\) gives the
 claimed commutator.
-\end{proof}
 
 \begin{definition}[Stress-tensor charges in the quantum theory]
 \label{def:quantum-stress-tensor-charges}

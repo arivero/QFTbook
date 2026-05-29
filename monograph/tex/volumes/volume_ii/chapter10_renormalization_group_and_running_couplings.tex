@@ -618,8 +618,8 @@ existence or nonexistence of a continuum scalar theory at arbitrarily short
 distances requires additional nonperturbative input.
 \end{remark}
 
-\begin{theorem}[Triviality of the standard scalar scaling limits]
-\label{thm:standard-four-dimensional-scalar-triviality}
+\begin{quotedtheorem}[Triviality of the standard scalar scaling limits]
+\label{qthm:standard-four-dimensional-scalar-triviality}
 For nearest-neighbor ferromagnetic four-dimensional Ising-type spin systems at
 or near the critical point, and for four-dimensional \(\lambda\phi^4\) fields
 with a lattice ultraviolet cutoff in the infinite-volume and vanishing-lattice
@@ -640,13 +640,14 @@ doi:10.1016/0550-3213(82)90088-8; M.~Aizenman and H.~Duminil-Copin,
 ``Marginal triviality of the scaling limits of critical 4D Ising and
 \(\phi^4_4\) models,'' \emph{Ann. of Math.} \textbf{194} (2021) 163--235,
 doi:10.4007/annals.2021.194.1.3.}
-\end{theorem}
+\end{quotedtheorem}
 
-The theorem is not a derivation from the one-loop beta function.  Its proofs
-use constructive probabilistic representations and correlation inequalities;
-in the four-dimensional marginal case the decisive estimate is a logarithmic
-improvement of the tree-diagram bound in the random-current representation.
-Its role here is to mark the boundary between two questions.  For the
+This quoted theorem is not a derivation from the one-loop beta function.  Its
+proofs use constructive probabilistic representations and correlation
+inequalities; in the four-dimensional marginal case the decisive estimate is a
+logarithmic improvement of the tree-diagram bound in the random-current
+representation.  Its role here is to mark the boundary between two questions.
+For the
 specified positive lattice scalar and Ising-type scaling-limit problems,
 removing the cutoff at criticality does not produce a non-Gaussian scalar QFT
 in four dimensions.  By contrast, the broader question whether there exists
@@ -1357,10 +1358,8 @@ Thus the quadratic beta-function jet is not, in general, a tensorial invariant
 of the renormalization scheme.  It is changed by the second derivative of the
 coordinate map whenever the linear term \(M\) is present.  The invariant
 linear data at a fixed point are the similarity class of \(M\), and hence its
-eigenvalues.
-
-\begin{proof}
-The beta function transforms as a vector field:
+eigenvalues.  The coordinate calculation is the following.  The beta function
+transforms as a vector field:
 \[
   \widetilde\beta^A(\widetilde\lambda)
   =
@@ -1387,7 +1386,6 @@ Substituting this inverse expansion and
 into the vector-field transformation law and collecting the terms quadratic in
 \(\widetilde\lambda\) gives
 \eqref{eq:multicoupling-quadratic-beta-transform}.
-\end{proof}
 
 There is an important special case.  If all displayed couplings are
 classically marginal at the reference point and the coordinate origin is the
@@ -1761,8 +1759,8 @@ formal series and a rule for how \(\sigma\) changes when the summation
 direction crosses a Stokes ray.
 \end{definition}
 
-\begin{proposition}[Algebra of the first Stokes cancellation]
-\label{prop:first-stokes-cancellation-algebra}
+\begin{remark}[Algebra of the first Stokes cancellation]
+\label{rem:first-stokes-cancellation-algebra}
 Assume that the lateral sums of \(\widehat\Phi_0\) and \(\widehat\Phi_1\)
 exist on a ray and satisfy
 \[
@@ -1793,9 +1791,7 @@ imaginary, the median choice
 \]
 gives a common real value whenever the two lateral boundary values are complex
 conjugates.
-\end{proposition}
-
-\begin{proof}
+\par
 Using \eqref{eq:first-stokes-cancellation-hypothesis},
 \[
 \begin{aligned}
@@ -1815,7 +1811,7 @@ case the same equation is the natural continuous extension.  The median
 choice is the symmetric solution of this affine relation.  Under the stated
 reality hypothesis the two lateral values are conjugate, so their common
 symmetric value is real.
-\end{proof}
+\end{remark}
 
 \begin{example}[Zero-dimensional stable quartic integral]
 \label{ex:zero-dimensional-quartic-large-order}
@@ -2303,8 +2299,8 @@ theory for a Wilson coefficient and the definition of the corresponding
 long-distance matrix element are not separately physical, and their
 scheme/factorization ambiguities must cancel in the full observable.
 
-\begin{proposition}[Algebraic form of OPE ambiguity cancellation]
-\label{prop:ope-renormalon-ambiguity-cancellation}
+\begin{remark}[Algebraic form of OPE ambiguity cancellation]
+\label{rem:ope-renormalon-ambiguity-cancellation}
 Let \(Q\gg\mu\), and suppose a dimensionless Euclidean observable is represented
 in a specified factorization scheme by the truncated operator product expansion
 \[
@@ -2350,9 +2346,7 @@ then cancellation at this order requires
   \label{eq:operator-matrix-element-required-ambiguity}
 \]
 in the normalization used in \eqref{eq:renormalon-ope-two-term-model}.
-\end{proposition}
-
-\begin{proof}
+\par
 Subtract the two lateral definitions of \(\mathcal X\) in
 \eqref{eq:renormalon-ope-two-term-model}.  The remainder contributes only
 \(O(Q^{-p-\delta})\), and the displayed leading difference is
@@ -2365,10 +2359,10 @@ This vanishes by \eqref{eq:ope-ambiguity-cancellation-condition}, proving
 \eqref{eq:ope-ambiguity-cancellation-result}.  Substituting
 \eqref{eq:identity-coefficient-power-ambiguity} into
 \eqref{eq:ope-ambiguity-cancellation-condition} gives
-\eqref{eq:operator-matrix-element-required-ambiguity}.  The proposition is
+\eqref{eq:operator-matrix-element-required-ambiguity}.  The cancellation is
 algebraic; a QFT application still has to construct the factorization scheme,
 the operator \(M_p\), and the lateral sums.
-\end{proof}
+\end{remark}
 
 An ultraviolet renormalon is associated with the large-\(k\) region of the
 corresponding expansion.  In theories whose perturbative coordinate grows
@@ -2540,7 +2534,7 @@ and growth in a sector containing the positive Borel ray, and the
 Borel--Laplace integral in that direction equals \(E_n(g)\) for \(g>0\).
 \end{quotedtheorem}
 
-\begin{proof}[Status of the quoted theorem]
+\paragraph{Status of the quoted theorem.}
 This is a theorem of Graffi--Grecchi--Simon for even polynomial anharmonic
 oscillators.  Its proof uses sectorial analyticity and resolvent estimates
 for the operator family \(H(g)\), not diagram counting.  The theorem is
@@ -2550,18 +2544,12 @@ ordinary differential operators.  The monograph uses it only as a controlled
 comparison example: in QFT the corresponding estimates must be supplied for
 the regulated field-theoretic observable and then passed through the
 regulator-removal limit.
-\end{proof}
 
-\begin{proposition}[Local Borel convergence from Gevrey-one growth]
-\label{prop:coefficient-growth-not-borel-summability}
-Suppose a formal series \(\sum_{r\ge0}a_rg^r\) obeys
-\(|a_r|\le C M^r r!\).  This bound alone implies convergence of the formal
-Borel transform near \(\xi=0\), but it does not imply Borel summability of a
-named observable.
-\end{proposition}
-
-\begin{proof}
-The estimate gives
+\begin{remark}[Local Borel convergence from Gevrey-one growth]
+\label{rem:coefficient-growth-not-borel-summability}
+Suppose \(\sum_{r\ge0}a_rg^r\) satisfies \(|a_r|\le C M^r r!\).
+Then the formal Borel transform converges near \(\xi=0\).  This local
+convergence is weaker than Borel summability of a specified observable.
 \[
   \left|\frac{a_r}{r!}\xi^r\right|
   \le C(M|\xi|)^r ,
@@ -2570,11 +2558,11 @@ so the Borel series converges for \(|\xi|<M^{-1}\).  Definition
 \ref{def:gevrey-one-directional-borel-sum} requires more: analytic
 continuation of the Borel transform to a sector containing the summation ray,
 an exponential-growth bound there, existence of the Laplace integral, and an
-identity between that Laplace integral and the observable on a nonempty
-domain.  None of these follows from the local coefficient bound.  Thus
-large-order estimates are evidence for a possible summation mechanism, but
-not the mechanism itself.
-\end{proof}
+identity between that Laplace integral and the observable on a nonempty domain.
+None of these follows from the local coefficient bound.  Thus large-order
+estimates are evidence for a possible summation mechanism, but not the
+mechanism itself.
+\end{remark}
 
 \begin{definition}[Instanton-sector transseries]
 \label{def:instanton-sector-transseries}
@@ -2609,8 +2597,7 @@ collective-coordinate measure, zero-mode insertions, and boundary
 contributions only if these have been specified by the regulator.
 \end{definition}
 
-\begin{proposition}[Algebraic constraints on an instanton-sector transseries]
-\label{prop:instanton-transseries-algebra}
+\paragraph{Algebraic constraints on an instanton-sector transseries.}
 For a transseries of the form
 \eqref{eq:instanton-sector-transseries}, the \(\theta\)-dependence is
 \(2\pi\)-periodic.  If the regulated observable is real at \(\theta=0\) and
@@ -2636,9 +2623,6 @@ is real and equals
   \right].
   \label{eq:instanton-pair-real-combination}
 \]
-\end{proposition}
-
-\begin{proof}
 Since \(k\in\mathbb Z\),
 \[
   \ee^{\ii k(\theta+2\pi)}=\ee^{\ii k\theta}.
@@ -2647,7 +2631,6 @@ This proves the periodicity.  The stated conjugation rule makes the
 \(-k\)-sector term the complex conjugate of the \(k\)-sector term for real
 \(\theta\) and \(g>0\).  Adding the two terms gives twice the real part,
 which is \eqref{eq:instanton-pair-real-combination}.
-\end{proof}
 
 \begin{proposition}[BPST sector in the trace-delta convention]
 \label{prop:bpst-sector-trace-delta-weight}

@@ -941,8 +941,8 @@ renormalization convention.
 
 \section{Connected Four-Point Function}
 
-\begin{proposition}[Four-point moment-cumulant decomposition]
-\label{prop:four-point-moment-cumulant-decomposition}
+\begin{remark}[Four-point moment-cumulant decomposition]
+\label{rem:four-point-moment-cumulant-decomposition}
 For four insertions, the normalized Green function decomposes into pairwise
 products of two-point functions and a connected part:
 \[
@@ -958,16 +958,14 @@ products of two-point functions and a connected part:
   +G_{E,4}^{\mathrm{conn}}(x_1,x_2,x_3,x_4).
 \end{aligned}
 \]
-\end{proposition}
-
-\begin{proof}
-Apply the moment-cumulant identity to four fields.  If the theory is
+The identity is not a separate theorem: applying the moment-cumulant identity
+to four fields gives it directly.  If the theory is
 \(\mathbb Z_2\)-invariant, as the regulated \(\phi^4\) theory is, all odd
 cumulants vanish.  The partitions of four labels therefore contribute either
 one four-label cumulant or one of the three partitions into two pairs.  The
 pair cumulants are the full two-point functions \(G_E\), and the four-label
 cumulant is, by definition, \(G_{E,4}^{\mathrm{conn}}\).
-\end{proof}
+\end{remark}
 
 Figure~\ref{fig:four-point-wick-connected-decomposition} displays the three pair
 partitions and the connected four-point cumulant that appear in the
@@ -1078,8 +1076,7 @@ scattering requires the nonperturbative one-particle subspace, asymptotic
 states, and the LSZ limiting operation developed later.
 \end{definition}
 
-\begin{proposition}[Tree-level amputated Euclidean four-point kernel]
-\label{prop:tree-level-amputated-euclidean-four-point-kernel}
+\paragraph{Tree-level four-point kernel.}
 With the convention of
 Definition~\ref{def:euclidean-amputation-connected-four-point}, the leading
 amputated connected four-point kernel is
@@ -1089,12 +1086,8 @@ amputated connected four-point kernel is
   -(2\pi)^D g\,\delta^{(D)}(k_1+k_2+k_3+k_4)
   +O(g^2).
 \]
-\end{proposition}
-
-\begin{proof}
-Multiply the leading connected Green function in
+This is obtained by multiplying the leading connected Green function in
 Proposition~\ref{prop:leading-connected-four-point-green-function} by
 \(\prod_i(k_i^2+m^2)\).  The four free external propagators cancel
 coefficientwise, leaving the momentum-conserving delta distribution and the
 quartic vertex coefficient \(-g\).
-\end{proof}

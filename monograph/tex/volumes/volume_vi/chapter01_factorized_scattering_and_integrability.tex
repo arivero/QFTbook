@@ -42,8 +42,8 @@ permuting rapidities and then relating the corresponding scattering bases by
 two-body scattering operators.
 \end{definition}
 
-\begin{proposition}[Two-particle kinematics in rapidity variables]
-\label{prop:two-particle-rapidity-kinematics}
+\begin{remark}[Two-particle kinematics in rapidity variables]
+\label{rem:two-particle-rapidity-kinematics}
 In the rapidity chart of
 Definition~\ref{def:integrable-rapidity-chart-ordered-chambers},
 \[
@@ -55,9 +55,8 @@ Definition~\ref{def:integrable-rapidity-chart-ordered-chambers},
 The Lorentz-invariant two-body kinematics of massive particles in
 \(1+1\) dimensions is therefore encoded by the rapidity difference
 \(\theta\), together with the species labels.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 With mostly-plus metric,
 \[
   p_a(\theta_1)\cdot p_b(\theta_2)
@@ -78,7 +77,6 @@ A proper orthochronous Lorentz boost of rapidity \(\lambda\) sends
 Conversely, once the masses and the total invariant mass are fixed,
 \(\cosh(\theta_1-\theta_2)\) is fixed; the sign of
 \(\theta_1-\theta_2\) records the ordering of the two momenta.
-\end{proof}
 
 \section{Factorized Scattering Datum}
 
@@ -412,14 +410,17 @@ path.
 \end{proposition}
 
 \begin{proof}
-This is the dual wavefunction form of
-Proposition~\ref{prop:scattering-chamber-consistency}.  The adjoint
-transition across a wall is invertible by two-particle unitarity.  Two
-different paths between the same pair of chambers differ by the local
-relations \(\mathsf T_i^2=1\), disjoint commutation, and the braid relation.
-The first two relations are implemented by unitarity and disjoint tensor
-support, while the braid relation is implemented by Yang--Baxter.  Therefore
-all path choices give the same continuation.
+Crossing a wall that exchanges adjacent rapidities applies the adjoint
+two-body scattering matrix to the corresponding tensor factors.  Two-particle
+unitarity makes this wall-crossing map invertible and implements
+\(\mathsf T_i^2=1\).  Wall crossings involving disjoint adjacent pairs act on
+disjoint tensor factors, hence commute.  The only remaining ambiguity in a
+path through adjacent chambers is the braid move
+\(\mathsf T_i\mathsf T_{i+1}\mathsf T_i=
+\mathsf T_{i+1}\mathsf T_i\mathsf T_{i+1}\), and this is exactly the
+Yang--Baxter equation for the three involved tensor factors.  Therefore every
+word representing the same permutation gives the same continuation from the
+fundamental chamber.
 \end{proof}
 
 \section{Local Operators and Form Factors}
@@ -437,8 +438,8 @@ factor is
 Changing the ordered rapidity chamber changes the scattering basis by the
 two-body \(S\)-matrix.
 
-\begin{proposition}[Watson exchange from ordered asymptotic bases]
-\label{prop:watson-exchange-ordered-bases}
+\begin{remark}[Watson exchange from ordered asymptotic bases]
+\label{rem:watson-exchange-ordered-bases}
 For adjacent rapidities in a regular chamber, the form-factor boundary values
 obey
 \[
@@ -452,9 +453,8 @@ scattering normalization of ordered asymptotic bases.  The role of locality
 of \(\mathcal O\) begins with the cyclicity and semi-locality conditions
 developed in
 Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
 Take the defining matrix element in the chamber
 \(\theta_1>\cdots>\theta_i>\theta_{i+1}>\cdots>\theta_n\).  Applying the ZF
 exchange relation \eqref{eq:zf-creation-exchange} to the adjacent pair gives
@@ -470,7 +470,6 @@ element on the right is exactly the boundary value in the neighboring chamber
 with the adjacent rapidities interchanged.  This gives the displayed Watson
 equation.  No commutation of \(\mathcal O\) through the ZF operator has been
 used.
-\end{proof}
 
 Together with Watson exchange, form-factor bootstrap uses crossing,
 cyclicity, and residue equations at bound-state poles.  The exchange equation

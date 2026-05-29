@@ -20,7 +20,7 @@ inside the monograph, not left as literature imports.
   - `thm:jost-edge-gluing-primitive-tubes`, proving Jost-edge equality from
     graded local commutativity and applying edge-of-the-wedge as the
     complex-analysis tool that generates the primitive BEG envelope.
-  - `cor:primitive-domain-output-for-scattering`, explaining exactly what
+  - `rem:primitive-domain-output-for-scattering`, explaining exactly what
     this primitive domain theorem supplies for connected four-point LSZ
     scattering amplitudes.
   - `def:dyson-regular-causal-commutator`, separating the six-dimensional
@@ -85,9 +85,11 @@ inside the monograph, not left as literature imports.
     definition now uses this proposition to state the pushforward
     normalization and the restriction \(\iota^*F=\widehat C\) without hidden
     Fourier-normalization conventions.
-  - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
-    to LSZ source-current commutators and separating finite contact
-    polynomials.
+  - `rem:jld-input-for-lsz-retarded-commutator`, recording the conditional
+    application of the representation to LSZ source-current commutators and
+    separating finite contact polynomials.  This was deliberately kept as a
+    remark rather than a corollary because it packages hypotheses already
+    proved or stated elsewhere instead of proving a new mathematical claim.
 - Updated `monograph/tex/volumes/volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex`
   so the Jin--Martin proof stack now records the primitive Wightman and
   Jost-edge steps as proved, and records the causal-commutator/JLD theorem as
