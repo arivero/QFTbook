@@ -80,7 +80,19 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Dual net and the Haag-duality gap|"
     r"Mass-shell support of free solutions|"
     r"Functoriality of finite Berezin pushforward|"
-    r"Octet and decuplet first-order mass relations"
+    r"Octet and decuplet first-order mass relations|"
+    r"Free residual dispersion and the kinetic operator|"
+    r"Gauge invariance of the spatial bilocal|"
+    r"Gauge invariance of the subtracted TMD operator|"
+    r"Euclidean recursion preserves the Clifford relations|"
+    r"Tree-level GIM diagonality|"
+    r"IRC safety of generalized|"
+    r"Component RTT relation|"
+    r"Determinantal solution of the QQ-system|"
+    r"Hirota from Pluecker identities|"
+    r"Baxter product wavefunctions|"
+    r"Field-strength matrix element descends to the helicity line|"
+    r"Auxiliary-vector polarization projector"
     r")\b",
     re.IGNORECASE,
 )

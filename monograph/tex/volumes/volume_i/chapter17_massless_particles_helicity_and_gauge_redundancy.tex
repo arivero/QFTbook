@@ -696,33 +696,6 @@ leaves this expression unchanged because
 \[
   k_\mu k_\nu-k_\nu k_\mu=0.
 \]
-The local photon observable at this stage is therefore the field strength,
-while the potential is a representative used to write local equations,
-actions, and perturbative Green functions.
-
-\begin{proposition}[Field-strength matrix element descends to the helicity line]
-\label{prop:field-strength-descends-helicity-line}
-  The one-photon field-strength matrix element
-  \[
-    \langle k,h|\,\widehat F_{\mu\nu}(x)\,\ket{\vac}
-    =
-    C_h\ee^{-\ii k\cdot x}
-    \left(
-      -\ii k_\mu\epsilon_\nu^{h*}(k)
-      +\ii k_\nu\epsilon_\mu^{h*}(k)
-    \right)
-  \]
-  is independent of the representative
-  \(\epsilon_\mu^h(k)\) inside its equivalence class
-  \(\epsilon_\mu^h(k)\sim\epsilon_\mu^h(k)+c\,k_\mu\).
-\end{proposition}
-
-\begin{proof}
-Under the representative change, the extra contribution to the bracketed
-tensor is proportional to
-\[
-  -\ii k_\mu k_\nu+\ii k_\nu k_\mu=0 .
-\]
 Thus the antisymmetric field strength is well-defined on the quotient of
 vector representatives by the null direction.  Equivalently, the linear map
 \[
@@ -732,7 +705,9 @@ has the null line \(\mathbb C k_\mu\) in its kernel and therefore descends to
 the quotient polarization line used for helicity-one states.  The
 \(x\)-dependence and the normalization \(C_h\) are unaffected because the
 representative change acts only on \(\epsilon_\mu^h(k)\).
-\end{proof}
+The local photon observable at this stage is therefore the field strength,
+while the potential is a representative used to write local equations,
+actions, and perturbative Green functions.
 
 \begin{remark}
 This statement is made in the physical positive-metric Hilbert space and its
@@ -845,9 +820,7 @@ then
 is independent of the representative choice. This is the form in which
 polarization sums will enter gauge-invariant scattering calculations.
 
-\begin{proposition}[Auxiliary-vector polarization projector]
-\label{prop:auxiliary-vector-polarization-projector}
-  Let \(k^2=0\) and \(n\cdot k\ne0\).  The tensor
+Let \(k^2=0\) and \(n\cdot k\ne0\).  The tensor
   \[
     \Pi_{\mu\nu}(k;n)
     =
@@ -860,9 +833,6 @@ polarization sums will enter gauge-invariant scattering calculations.
   annihilates \(k^\mu\) and \(n^\mu\).  If \(M^\mu k_\mu=0\), then the
   contraction \(M^\mu\Pi_{\mu\nu}(k;n)M^{\nu *}\) is unchanged under a change
   of polarization representatives by \(k_\mu\)-shifts.
-\end{proposition}
-
-\begin{proof}
 Contracting with \(k^\mu\) gives
 \[
   k_\nu-\frac{k^2 n_\nu+(k\cdot n)k_\nu}{k\cdot n}
@@ -876,7 +846,6 @@ using \(k^2=0\).  Contracting with \(n^\mu\) gives
 If the representative basis is changed, the projector changes only by terms
 with at least one factor \(k_\mu\) or \(k_\nu\).  Such terms vanish in
 \(M^\mu\Pi_{\mu\nu}M^{\nu *}\) when \(M^\mu k_\mu=0\).
-\end{proof}
 
 \section{Four-Dimensional Spinor-Helicity Variables}
 \label{sec:spinor-helicity-variables}

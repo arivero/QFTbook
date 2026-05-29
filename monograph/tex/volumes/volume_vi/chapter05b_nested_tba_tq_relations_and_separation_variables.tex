@@ -303,8 +303,6 @@ of a Bäcklund step: one removes one simple color direction from the auxiliary
 problem, exactly as the nested monodromy removes one residual color space at
 each level.
 
-\begin{proposition}[Determinantal solution of the QQ-system]
-\label{prop:determinantal-qq-solution}
 Let \(q_1(u),\ldots,q_N(u)\) be functions for which the determinants below
 are defined.  For an ordered subset \(A=\{a_1<\cdots<a_m\}\), set
 \[
@@ -317,9 +315,6 @@ are defined.  For an ordered subset \(A=\{a_1<\cdots<a_m\}\), set
 \]
 and \(Q_\varnothing=1\).  Then the functions \(Q_A\) obey
 \eqref{eq:qq-system}.
-\end{proposition}
-
-\begin{proof}
 Fix \(A\) of size \(m\) and two indices \(a,b\notin A\).  Form the
 \((m+2)\times(m+2)\) matrix whose columns are the shifted columns
 corresponding to \(A,a,b\).  Apply the Desnanot--Jacobi identity to the
@@ -330,7 +325,6 @@ precisely \(Q_{Aab}Q_A\), \(Q_{Aa}^{+}Q_{Ab}^{-}\), and
 This gives \eqref{eq:qq-system}.  The identity is purely determinant
 algebra; no analytic assumption on the \(q_i\)'s is used beyond existence of
 the displayed values.
-\end{proof}
 
 \section{Fusion and the Hirota T-System}
 
@@ -357,15 +351,10 @@ with boundary data \(T_{0,s}=T_{a,0}=1\) in the simplest normalization and
 depend on twist, inhomogeneity, and representation; the local bilinear
 identity is the invariant content.
 
-\begin{proposition}[Hirota from Pluecker identities]
-\label{prop:hirota-from-pluecker}
 Suppose the fused eigenvalues \(T_{a,s}\) are written in a Wronskian gauge as
 minors of a matrix of shifted Q-functions.  Then
 \eqref{eq:nested-hirota-t-system} follows from the Pluecker relation among
 adjacent minors.
-\end{proposition}
-
-\begin{proof}
 In the Wronskian gauge, \(T_{a,s}\) is an \(a\times a\) minor whose columns
 are shifts separated by \(\ii\).  The shifts of \(T_{a,s}^{+}\) and
 \(T_{a,s}^{-}\) differ by moving the left and right boundary columns of this
@@ -376,7 +365,6 @@ the product of the two side minors.  These four minors are, respectively,
 \(T_{a,s}^{+}T_{a,s}^{-}\),
 \(T_{a+1,s}T_{a-1,s}\), and \(T_{a,s+1}T_{a,s-1}\).  This is exactly
 \eqref{eq:nested-hirota-t-system}.
-\end{proof}
 
 The associated Y-functions are gauge-invariant ratios of neighboring
 T-functions:
@@ -648,8 +636,6 @@ Vandermonde-type product.  That explicit formula is representation-dependent,
 but \eqref{eq:sov-resolution-identity} is the invariant finite-dimensional
 statement.
 
-\begin{proposition}[Baxter product wavefunctions]
-\label{prop:sov-product-wavefunction}
 Under the hypotheses of Theorem~\ref{thm:sov-baxter-reduction}, suppose a
 function \(Q(u)\) solves the one-variable Baxter equation at every separated
 coordinate value appearing in \(\mathcal X\).  Then
@@ -661,9 +647,6 @@ solves the separated transfer-matrix eigenvalue equations on
 of one-coordinate spectra and the one-coordinate Baxter equation has a
 one-dimensional solution space after the boundary conditions are imposed,
 then every separated eigenfunction factorizes in this form.
-\end{proposition}
-
-\begin{proof}
 Equation~\eqref{eq:sov-coordinate-baxter} shifts only one coordinate.  If
 \(\Psi_Q=\prod_\beta Q(x_\beta)\), the common factors
 \(\prod_{\beta\ne\alpha}Q(x_\beta)\) cancel from the \(\alpha\)-th separated
@@ -673,7 +656,6 @@ for different coordinates commute and act on distinct variables.  The stated
 one-dimensionality of the one-coordinate solution space fixes each factor up
 to a scalar; the product of those scalars is one overall normalization of
 the eigenvector.
-\end{proof}
 
 \section{Continuum Status}
 

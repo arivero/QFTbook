@@ -3559,8 +3559,6 @@ The Wilson-line form of the propagator makes the same statement in correlator
 language: at leading power the heavy source transports color, while its spin
 and heavy-flavor labels are parallel spectators.
 
-\begin{proposition}[Free residual dispersion and the kinetic operator]
-\label{prop:hqet-residual-dispersion}
 For a free heavy particle with \(p^\mu=m_Qv^\mu+k^\mu\) and \(p^2+m_Q^2=0\),
 the residual momentum obeys
 \begin{equation}
@@ -3582,10 +3580,7 @@ Thus the first correction to the static theory is the transverse kinetic
 energy.  Gauge covariance promotes the transverse momentum to \(D_\perp\),
 giving the operator \(\mathcal O_{\rm kin}\) in
 \eqref{eq:hqet-dimension-five-operators}.
-\end{proposition}
-
-\begin{proof}
-Substituting \(p=m_Qv+k\) and \(v^2=-1\) into \(p^2+m_Q^2=0\) gives
+Indeed, substituting \(p=m_Qv+k\) and \(v^2=-1\) into \(p^2+m_Q^2=0\) gives
 \eqref{eq:hqet-onshell-residual}.  In the rest frame,
 \(p=(m_Q+E_{\rm res},\mathbf k)\), so the positive-energy solution is
 \(m_Q+E_{\rm res}=\sqrt{m_Q^2+|\mathbf k|^2}\).  Expanding the square root in
@@ -3595,7 +3590,6 @@ the transverse covariant derivative in the local Wilsonian expansion; the
 coefficient is fixed by matching the free dispersion and, in an interacting
 reparametrization-compatible scheme, by the invariance of the momentum split
 \eqref{eq:hqet-momentum-split}.
-\end{proof}
 
 \begin{controlledapproximation}[Meaning of the heavy-mass expansion]
 \label{ca:hqet-heavy-mass-expansion}
@@ -8538,16 +8532,11 @@ linear length divergence, endpoint divergences, and finite subtraction are
 part of the operator-renormalization datum; they are not part of the
 definition of the light-ray PDF.
 
-\begin{proposition}[Gauge invariance of the spatial bilocal]
-\label{prop:qcd-spatial-bilocal-gauge-invariance}
 At finite gauge-covariant regulator, the operator
 \(\mathcal Q_\Gamma(z;\Lambda)\) is gauge invariant as a color-singlet
 bilocal.  A background-gauge-covariant finite-part prescription therefore
 produces a gauge-invariant renormalized spatial-bilocal matrix element.
-\end{proposition}
-
-\begin{proof}
-The proof is the endpoint-cancellation argument of
+This is the endpoint-cancellation argument of
 Proposition~\ref{prop:qcd-light-ray-gauge-covariance} with the lightlike path
 \(s n\) replaced by the spatial path \(s z e_3\), \(0\le s\le1\).  The
 parallel transporter transforms as
@@ -8561,7 +8550,6 @@ The factor \(U(0)^{-1}\) cancels the transformation of \(q(0)\), the factor
 acts only on spinor indices.  The finite-part map changes regulator
 coordinates and operator coordinates but carries no free color index when it
 is background gauge covariant.
-\end{proof}
 
 Let
 \begin{equation}
@@ -9112,16 +9100,11 @@ time-reversal odd TMDs may change sign between future- and past-pointing
 staples, as in semi-inclusive DIS versus Drell--Yan kinematics.
 \end{definition}
 
-\begin{proposition}[Gauge invariance of the subtracted TMD operator]
-\label{prop:qcd-tmd-gauge-invariance}
 At finite regulator, the numerator and soft factor in
 \eqref{eq:qcd-renormalized-tmd-definition} are gauge invariant after taking
 the color trace and endpoint fields into account.  Hence a background
 gauge-covariant finite-part prescription produces a gauge-invariant
 renormalized TMD matrix element.
-\end{proposition}
-
-\begin{proof}
 Every Wilson segment transforms by multiplication with the gauge
 transformation at its endpoints, as in
 Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.  Along a staple, the
@@ -9132,7 +9115,6 @@ inside a trace, so the residual base-point factor is removed by cyclicity of
 the trace.  The finite-part map changes only regulator and scale coordinates;
 if it is background gauge covariant, it cannot introduce an uncanceled color
 index.
-\end{proof}
 
 Rapidity evolution is the statement that changing the auxiliary rapidity
 scale changes the coordinate description of the same physical transverse
