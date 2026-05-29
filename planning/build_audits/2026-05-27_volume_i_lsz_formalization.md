@@ -28,9 +28,10 @@ Feynman-graph scattering before Haag--Ruelle and LSZ.
   residues and that nonzero interpolating-field coordinate changes cancel
   against the corresponding \(Z_{\phi'}^{-1/2}\) factors.  This was later
   demoted from proposition form in the anti-wrapper audit.
-- Added Proposition `prop:lsz-large-time-pole-selector`, recording the
-  incoming/outgoing contour calculation that selects the relevant Feynman
-  pole in the large-time limit.
+- Added the large-time pole-selector paragraph recording the incoming/outgoing
+  contour calculation that selects the relevant Feynman pole in the large-time
+  limit.  This was later demoted from proposition form in the anti-wrapper
+  audit.
 
 ## Companion Checks
 

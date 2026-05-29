@@ -26,9 +26,10 @@ conditional theorem with explicit spectral and LSZ hypotheses.
          {M_B^2-s-\ii0}
     +\mathcal M^{\rm reg}_{fi}.
   \]
-- Added Proposition `prop:bound-state-spin-from-angular-residue`, deriving
-  the partial-wave spin selection from rotational covariance and the
-  spherical-harmonic addition theorem.
+- Added the angular-residue/spin paragraph deriving the partial-wave spin
+  selection from rotational covariance and the spherical-harmonic addition
+  theorem.  This was later demoted from proposition form in the anti-wrapper
+  audit.
 - Preserved the existing caveat that these are conditional pole consequences,
   not a proof that an arbitrary attractive channel contains a stable bound
   state.

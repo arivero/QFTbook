@@ -123,9 +123,9 @@
   from external one-particle amputation.
 - The large-time Haag--Ruelle matrix element becomes an oscillatory integral
   whose nonzero limit is precisely the external one-particle pole residue.
-- Proposition `prop:lsz-large-time-pole-selector` records the contour
-  calculation that selects the incoming negative-energy and outgoing
-  positive-energy Feynman poles in the large-time limit.
+- The large-time pole-selector paragraph records the contour calculation that
+  selects the incoming negative-energy and outgoing positive-energy Feynman
+  poles in the large-time limit.
 - Disconnected two-point factors reproduce the identity part of the
   S-operator.
 - The identity kernel for identical scalar particles is the symmetric

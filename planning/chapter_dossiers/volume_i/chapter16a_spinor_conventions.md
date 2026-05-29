@@ -57,9 +57,9 @@
 - `def:four-dimensional-mostly-plus-spinor-convention` fixes the metric,
   explicit gamma basis, Dirac adjoint, Dirac density, and Hermitian current
   normalization.
-- `prop:basic-clifford-adjoint-current-identities` proves the slash-square,
-  beta-pairing, and current-Hermiticity identities from the explicit
-  Clifford data.
+- The basic Clifford/adjoint/current paragraph derives the slash-square,
+  beta-pairing, and current-Hermiticity identities from the explicit Clifford
+  data.
 - `def:spin-representation-and-chirality` fixes
   \(S^{\mu\nu}\), \(R(\Lambda)\), \(\gamma_5\), chiral projectors, and the
   \(\gamma_5\) trace convention.
