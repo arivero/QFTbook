@@ -566,6 +566,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Electric-magnetic anomaly matching"
     r"|IRC classification of soft-drop outputs"
     r"|Classical chambers for the hypersurface GLSM"
+    r"|Finite-regulator Schwinger--Dyson identity"
+    r"|Quadratic Green--Schwarz descent"
+    r"|Regular algebra identities"
+    r"|Higher-form Ward action"
+    r"|Basic Schwinger--Keldysh constraints"
+    r"|Index of the fixed-domain deformation complex"
+    r"|Preserved Virasoro algebra"
+    r"|Conjugate-pair and real-representation cancellation"
+    r"|Scattering-normalized DOZZ representative"
+    r"|Compact coset central charge and primary data"
+    r"|Cigar central charge and primary data"
     r")\b",
     re.IGNORECASE,
 )

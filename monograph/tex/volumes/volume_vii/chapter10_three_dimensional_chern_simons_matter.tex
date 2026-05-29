@@ -337,12 +337,21 @@ Multiplication by the kernel coefficient \(2\pi/k_{\rm eff}=2\pi\lambda/N\)
 then makes the first term order \(N\) and the trace-subtraction term order
 \(N^0\).
 
-\begin{proposition}[Finite-regulator Schwinger--Dyson identity]
-\label{prop:cs-vector-finite-regulator-sd}
-At finite regulator, let \(S_{\rm reg}[\Psi,\overline\Psi]\) be the matter
+\paragraph{Finite-regulator Schwinger--Dyson identity and large-\(N\) closure.}
+At finite regulator, with \(S_{\rm reg}[\Psi,\overline\Psi]\) the matter
 action after the light-cone gauge field has been integrated out as in
-\eqref{eq:cs-light-cone-effective-current}.  For an ordinary complex bosonic
-fundamental vector, integration by parts gives
+\eqref{eq:cs-light-cone-effective-current}, the Schwinger--Dyson identity is
+the finite-dimensional integration-by-parts identity.  For an ordinary
+complex bosonic fundamental vector,
+\[
+  0
+  =
+  \int d\Psi\,d\overline\Psi\,
+  \frac{\partial}{\partial\Psi_i^A}
+  \left(\mathcal O\,\ee^{-S_{\rm reg}}\right),
+\]
+with boundary terms removed by regulator damping or by compact contour
+deformation.  Expanding the derivative gives
 \begin{equation}
   \left\langle
   \frac{\partial \mathcal O}{\partial \Psi_i^A}
@@ -356,39 +365,24 @@ fundamental vector, integration by parts gives
 for every polynomial singlet observable \(\mathcal O\).  For a Grassmann
 fundamental vector the same equation holds with the ordinary derivative
 replaced by the left Berezin derivative and with the standard graded sign
-when the derivative crosses \(\mathcal O\).  If the large-\(N\) singlet sector
-has factorization
+when the derivative crosses \(\mathcal O\).
+
+The part that matters for the planar vector model is not the integration by
+parts itself but the closure of the leading equations.  After the gauge field
+has been integrated out, the bilocal color reduction above shows that the
+order-\(N\) interaction is a functional only of \(B\).  If the large-\(N\)
+singlet sector has factorization
 \begin{equation}
   \langle B_1\cdots B_r\rangle_{\rm conn}=O(N^{1-r}),
   \label{eq:cs-vector-factorization}
 \end{equation}
 then the leading equations obtained from
 \eqref{eq:cs-vector-bosonic-sd} close on the one-bilocal expectation
-\(G^A{}_{B}:=\langle B^A{}_{B}\rangle\).
-\end{proposition}
-
-\begin{proof}
-At finite regulator the bosonic statement is the divergence theorem applied to
-the finite-dimensional integral over the variables \(\Psi_i^A\), with boundary
-terms removed by the regulator damping or by compact contour deformation:
-\[
-  0
-  =
-  \int d\Psi\,d\overline\Psi\,
-  \frac{\partial}{\partial\Psi_i^A}
-  \left(\mathcal O\,\ee^{-S_{\rm reg}}\right).
-\]
-Expanding the derivative gives
-\eqref{eq:cs-vector-bosonic-sd}.  The Grassmann version is the corresponding
-translation identity for the Berezin integral.  After the gauge field has
-been integrated out, the bilocal color reduction above shows that the
-order-\(N\) interaction is a functional only of \(B\).  Taking
-\(\mathcal O\) to be a product of singlet bilocals therefore gives equations
-whose leading terms contain products of \(B\)'s.  The factorization estimate
-\eqref{eq:cs-vector-factorization} replaces those products, at leading order,
-by products of \(G\).  Thus no nonsinglet correlator enters the leading
-large-\(N\) Schwinger--Dyson equation.
-\end{proof}
+\(G^A{}_{B}:=\langle B^A{}_{B}\rangle\).  Indeed, taking \(\mathcal O\) to be
+a product of singlet bilocals gives equations whose leading terms contain
+products of \(B\)'s, and \eqref{eq:cs-vector-factorization} replaces those
+products, at leading order, by products of \(G\).  Thus no nonsinglet
+correlator enters the leading large-\(N\) Schwinger--Dyson equation.
 
 \subsection{Planar Bilocal Saddle and Self-Energy Equation}
 

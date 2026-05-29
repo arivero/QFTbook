@@ -24,7 +24,7 @@ compressed.
 - Added Definition `def:six-d-tensor-branch-effective-datum`, listing the
   data of a tensor-branch EFT and making the chamber/tensionless-wall boundary
   explicit.
-- Added Proposition `prop:six-d-green-schwarz-descent`, deriving the descent
+- Added the quadratic Green-Schwarz descent calculation, deriving the descent
   of the quadratic Green-Schwarz polynomial
   `(1/2) Omega^{IJ} X_I^{(4)} X_J^{(4)}` and explaining the factor of `1/2`.
 - Added Proposition `prop:six-d-ade-anomaly-arithmetic`, displaying the ADE
