@@ -81,34 +81,11 @@ The plaquette variables and Wilson loop variables
 \]
 for closed lattice contours \(C\) are gauge invariant.
 
-\begin{proposition}[Finite \(\mathbb Z_2\) character expansion]
-\label{prop:z2-gauge-character-expansion}
-Let \(t=\tanh\beta\).  For a closed contour \(C\), regard \(C\) as a
-\(\mathbb Z_2\)-one-chain, and regard a subset \(A\subset P\) as a
-\(\mathbb Z_2\)-two-chain with boundary \(\partial A\).  Then
-\[
-  Z_\Lambda(\beta)
-  =
-  2^{|E|}(\cosh\beta)^{|P|}
-  \sum_{\substack{A\subset P\\ \partial A=0}} t^{|A|},
-\]
-and
-\[
-  \langle W(C)\rangle_{\Lambda,\beta}
-  =
-  \frac{\displaystyle
-  \sum_{\substack{A\subset P\\ \partial A=C}}t^{|A|}}
-  {\displaystyle
-  \sum_{\substack{A\subset P\\ \partial A=0}}t^{|A|}} .
-\]
-The sums are finite sums over plaquette subsets.  Thus the strong-coupling
-area mechanism in this model is not an analogy: at finite cutoff the Wilson
-loop numerator is exactly a weighted sum over lattice surfaces whose
-boundary is the loop.
-\end{proposition}
-
-\begin{proof}
-For each plaquette variable \(U_p=\pm1\),
+The finite \(\mathbb Z_2\) character expansion is an exact algebraic
+rewriting of this finite gauge integral.  Let \(t=\tanh\beta\).  For a closed
+contour \(C\), regard \(C\) as a \(\mathbb Z_2\)-one-chain, and regard a
+subset \(A\subset P\) as a \(\mathbb Z_2\)-two-chain with boundary
+\(\partial A\).  For each plaquette variable \(U_p=\pm1\),
 \[
   e^{\beta U_p}=\cosh\beta\,(1+tU_p)
   =
@@ -128,13 +105,33 @@ Summing over a single link variable gives
 Therefore the partition function keeps precisely those plaquette subsets for
 which every link appears an even number of times, namely
 \(\partial A=0\), and contributes the overall factor \(2^{|E|}\).
+Thus
+\begin{equation}
+  Z_\Lambda(\beta)
+  =
+  2^{|E|}(\cosh\beta)^{|P|}
+  \sum_{\substack{A\subset P\\ \partial A=0}} t^{|A|}.
+  \label{eq:z2-gauge-character-expansion-partition}
+\end{equation}
 
 For the Wilson-loop numerator, the additional factor
 \(\prod_{e\in C}U_e\) changes the parity condition on each link from
 \((\partial A)_e=0\) to \((\partial A)_e=C_e\).  Dividing the resulting
 finite numerator by the finite partition function gives the displayed
 expectation value.
-\end{proof}
+\begin{equation}
+  \langle W(C)\rangle_{\Lambda,\beta}
+  =
+  \frac{\displaystyle
+  \sum_{\substack{A\subset P\\ \partial A=C}}t^{|A|}}
+  {\displaystyle
+  \sum_{\substack{A\subset P\\ \partial A=0}}t^{|A|}} .
+  \label{eq:z2-gauge-character-expansion-wilson}
+\end{equation}
+The sums are finite sums over plaquette subsets.  Thus the strong-coupling
+area mechanism in this model is a finite-cutoff identity: the Wilson-loop
+numerator is exactly a weighted sum over lattice surfaces whose boundary is
+the loop.
 
 The companion script
 \[
@@ -147,8 +144,8 @@ confinement statement requires additional limiting hypotheses and estimates.
 
 \section{Surface Counting and the Strong-Coupling Area Bound}
 
-The exact formula in
-Proposition~\ref{prop:z2-gauge-character-expansion} becomes an area-law
+The exact finite character expansion
+\eqref{eq:z2-gauge-character-expansion-wilson} becomes an area-law
 estimate only after one controls how many surfaces of a given area have the
 same boundary.  This counting step is often hidden in the phrase
 ``strong-coupling expansion.''  We spell out the finite statement.
@@ -207,8 +204,7 @@ with \(0\leq\rho t<1\), then
 \end{proposition}
 
 \begin{proof}
-The numerator in
-Proposition~\ref{prop:z2-gauge-character-expansion} is a finite sum over
+The numerator in \eqref{eq:z2-gauge-character-expansion-wilson} is a finite sum over
 plaquette subsets satisfying \(\partial A=C\).  Grouping these subsets by
 the excess area \(n=|A|-A_{\min}(C)\) gives the numerator
 \[

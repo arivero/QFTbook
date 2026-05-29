@@ -102,8 +102,9 @@ Status: revised, source-audited, and formalized on 2026-05-27.
   matrix element in a parity-preserving theory.  The chapter's \((F,G)\) basis
   is related to the Dirac--Pauli basis by \(F_1^{\rm DP}=F+G\) and
   \(F_2^{\rm DP}=-G\).
-- `prop:qed-electron-charge-normalization` proves that charge normalization
-  gives \(F(0)+G(0)=1\).
+- Charge normalization is now written as a distributional plane-wave
+  normalization calculation in prose: \(\widehat Q|\vec p,\sigma\rangle=q|\vec
+  p,\sigma\rangle\) is equivalent to \(F(0)+G(0)=1\).
 - `prop:qed-magnetic-factor-from-form-factor` proves that, in a weak magnetic
   background, \(g_{\mathrm{mag}}=2F(0)=2(1-G(0))\).
 - The tree current vertex plus photon self-energy chain contributes only to

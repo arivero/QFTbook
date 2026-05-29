@@ -391,27 +391,10 @@ Complex conjugation exchanges the chiral and antichiral components:
 \]
 \end{definition}
 
-\begin{proposition}[Two-component sign and contraction identities]
-\label{prop:two-component-sign-contraction-identities}
-With the epsilon conventions of
-Definition~\ref{def:two-component-block-epsilon-conventions},
-\[
-  (\rho^\mu_{+-})_a{}^{\dot b}
-  =
-  -\epsilon^{\dot b\dot c}
-  (\rho^\mu_{-+})_{\dot c}{}^d
-  \epsilon_{da},
-\]
-and
-\[
-  (\rho_\mu)_{a\dot b}(\rho_\nu)^{a\dot b}
-  =
-  2\eta_{\mu\nu}.
-\]
-\end{proposition}
-
-\begin{proof}
-Let
+The two-component sign relation is a convention check rather than an
+independent structural theorem.  It is nevertheless worth recording explicitly
+because it fixes the minus sign that often changes when formulae are copied
+between spinor conventions.  Let
 \[
   \epsilon=
   \begin{pmatrix}0&1\\-1&0\end{pmatrix}.
@@ -443,7 +426,6 @@ Direct multiplication of the four displayed \(2\times2\) matrices gives
   =
   2\eta_{\mu\nu}.
 \]
-\end{proof}
 
 \section{Majorana Conjugation}
 
@@ -630,9 +612,9 @@ abstract Hermitian pairing after the basis change:
 The displayed matrix in the last expression is the Wess-Bagger-basis matrix
 for the same invariant pairing.
 
-\begin{proposition}[Same-metric Wess-Bagger phase translation]
-\label{prop:same-metric-wess-bagger-phase-translation}
-At the fixed metric \(\eta=\operatorname{diag}(-,+,+,+)\), the matrix
+At the fixed metric \(\eta=\operatorname{diag}(-,+,+,+)\), the
+Wess--Bagger-type matrices used here are related to the Weinberg-compatible
+matrices by a finite chiral phase change.  The matrix
 \[
   U_{\rm ch}=\begin{pmatrix}I_2&0\\0&\ii I_2\end{pmatrix}
 \]
@@ -645,9 +627,6 @@ The chirality operator is unchanged as an endomorphism of the abstract
 spinor module, while the antichiral coordinate column is multiplied by
 \(\ii\).  Hence any formula imported from Wess-Bagger-type notation must
 translate both the gamma matrices and the epsilon-index convention.
-\end{proposition}
-
-\begin{proof}
 Since \(U_{\rm ch}^{-1}=\operatorname{diag}(I_2,-\ii I_2)\), direct block
 multiplication gives
 \[
@@ -675,8 +654,7 @@ relation \(s=U_{\rm ch}s_{\rm WB}\) gives
 \((\chi,\widetilde\chi)^T=(\chi_{\rm WB},\ii\widetilde\chi_{\rm WB})^T\),
 which is the stated antichiral phase.  The epsilon symbols determine how
 lowered and raised two-component indices are identified; therefore the
-matrix phase alone is not a complete translation of two-component formulae.
-\end{proof}
+matrix phase alone is insufficient for translating two-component formulae.
 
 \section{Dimensional Continuation and \texorpdfstring{\(\gamma_5\)}{gamma5}}
 

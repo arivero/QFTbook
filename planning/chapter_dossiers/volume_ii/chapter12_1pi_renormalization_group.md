@@ -115,7 +115,8 @@ The chapter must define:
 - the zero-dimensional stable quartic integral as a worked large-order
   example, including its exact coefficients and hypergeometric Borel
   transform, together with positive-ray Borel control from Euler's
-  hypergeometric integral.
+  hypergeometric integral.  The positive-ray calculation is now presented as
+  a model computation in prose rather than theorem form.
 - the conformal-Borel map for the case in which the Borel transform is
   holomorphic on a plane cut from the first negative singularity; the chapter
   states explicitly that numerical conformal-Borel use is conditional on the
@@ -385,7 +386,7 @@ The chapter must define:
 - 2026-05-27 issue #503 application-layer pass: added the regulated
   asymptotic-analysis datum, the status proposition distinguishing
   fixed-regulator reconstruction from continuum-QFT claims, the positive-ray
-  Borel-control proposition for the stable zero-dimensional quartic model, and
+  Borel-control model calculation for the stable zero-dimensional quartic model, and
   the instanton-sector transseries ledger with theta-periodicity and conjugate
   sector pairing; expanded `calculation-checks/borel_laplace_checks.py`.
 - 2026-05-27 issue #503 oscillator/instanton pass: replaced the loose

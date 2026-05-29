@@ -599,19 +599,16 @@ Thus the charge normalization below, \(F(0)+G(0)=1\), is precisely
 \(F_2^{\rm DP}(0)=-G(0)\).
 \end{definition}
 
-\begin{proposition}[Charge normalization of the electron current]
-\label{prop:qed-electron-charge-normalization}
 With the plane-wave normalization and current normalization used in
-Definition~\ref{def:qed-electron-electromagnetic-form-factors}, the charge
-operator acts by
-\(\widehat Q|\vec p,\sigma\rangle=q|\vec p,\sigma\rangle\) if and only if
-\[
+Definition~\ref{def:qed-electron-electromagnetic-form-factors}, charge
+normalization fixes one combination at zero momentum transfer.  The condition
+\(\widehat Q|\vec p,\sigma\rangle=q|\vec p,\sigma\rangle\), where
+\(\widehat Q=\int\dd^3\vec x\,\widehat j^0(x)\), is equivalent to
+\begin{equation}
   F(0)+G(0)=1 .
-\]
-\end{proposition}
-
-\begin{proof}
-Charge normalization fixes one combination at zero momentum transfer. Taking
+  \label{eq:qed-electron-charge-normalization}
+\end{equation}
+Indeed, taking
 \(p'\to p\), using
 \[
   \bar u^{\sigma'}(\vec p)u^\sigma(\vec p)
@@ -648,7 +645,6 @@ The equality is a distributional momentum-state identity: after smearing the
 external plane waves by a common wave packet and then removing the smearing,
 the spatial integral supplies the same
 \(\delta^{(3)}(\vec p'-\vec p)\) on both sides.
-\end{proof}
 
 \section{Magnetic Moment from the Form Factor}
 

@@ -68,16 +68,17 @@
   algebra, and \(4\ii\epsilon^{\mu\nu\rho\sigma}\) trace normalization.
 - `def:two-component-block-epsilon-conventions` records the chiral gamma
   blocks, raising/lowering conventions, and complex-conjugation convention.
-- `prop:two-component-sign-contraction-identities` proves the minus sign in
-  the \(\rho_{+-}/\rho_{-+}\) relation and the
-  \(2\eta_{\mu\nu}\) contraction.
+- The \(\rho_{+-}/\rho_{-+}\) minus sign and the
+  \(2\eta_{\mu\nu}\) contraction are retained as an explicit convention check
+  in prose rather than theorem form.
 - `def:majorana-conjugation-weinberg-basis` and
   `prop:majorana-conjugation-lorentz-covariant` fix and prove the Lorentz
   covariance of the anti-linear Majorana real structure, including the
   corrected infinitesimal sign
   \((S^{\mu\nu})^*=-B S^{\mu\nu}B^{-1}\).
-- `prop:same-metric-wess-bagger-phase-translation` proves the chiral phase
-  relation between the Wess-Bagger-type basis and the monograph basis.
+- The same-metric Wess--Bagger phase translation is retained as an explicit
+  basis-change calculation in prose, with the warning that the gamma-matrix
+  phase and the two-component epsilon conventions must both be translated.
 - `def:dimensional-reduction-chiral-trace-prescription` states the
   four-dimensional \(\gamma_5\) trace prescription used in perturbative
   anomaly calculations.

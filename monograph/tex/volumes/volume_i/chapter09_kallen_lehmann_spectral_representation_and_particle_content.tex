@@ -741,6 +741,9 @@ two-point function is the convergent Stieltjes transform
 \]
 Integrating back determines \(F\) only up to a polynomial of degree \(N\),
 which is the momentum-space ambiguity of contact terms at coincident points.
+Under inverse Fourier transform this polynomial is precisely a finite linear
+combination of derivatives of the delta distribution supported at the
+coincident diagonal.
 \end{proposition}
 
 \begin{proof}
@@ -758,11 +761,18 @@ characterized by its \((N+1)\)-st derivative,
   (-1)^{N+1}(N+1)!
   \int_{[0,\infty)}\frac{\dd\rho(s)}{(z+s)^{N+2}} .
 \]
-The right-hand side is holomorphic on the same cut plane.  Integrating this
-equation back determines a representative \(F(z)\) only up to a polynomial of
-degree \(N\), which is exactly the freedom to add contact terms.  The
-discontinuity across the cut, and therefore the spectral measure away from
-contact terms, is unaffected by this polynomial ambiguity.
+The right-hand side is holomorphic on the same cut plane.  If \(F_1\) and
+\(F_2\) are two distributional momentum-space representatives with this same
+\((N+1)\)-st derivative, their difference \(P=F_1-F_2\) satisfies
+\(\partial_z^{N+1}P=0\) on the cut plane.  On every simply connected
+subdomain this implies that \(P\) is a polynomial of degree at most \(N\);
+the polynomial pieces agree on overlaps, so the same polynomial ambiguity is
+global.  In momentum space a polynomial in \(p_E^2\) and, in the nonscalar
+case, polynomial tensor structures, Fourier-transform to finite linear
+combinations of derivatives of \(\delta(x)\).  These are exactly
+coincident-point contact terms.  They have no discontinuity across the cut,
+and therefore do not change the spectral measure away from coincident-point
+ambiguities.
 \end{proof}
 
 \section{Canonical Normalization and Spectral Weight}

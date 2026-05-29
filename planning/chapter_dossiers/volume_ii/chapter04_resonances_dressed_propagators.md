@@ -117,7 +117,9 @@
   outgoing analytically continued solution. Its time decay and spatial growth
   are linked by probability conservation; the object is a singular outgoing
   functional rather than a normalizable eigenvector of the self-adjoint
-  Hamiltonian.
+  Hamiltonian.  The 2026-05-29 anti-wrapper audit keeps this as explanatory
+  resonance-pole prose, while reserving theorem form for analytic continuation
+  and contraction-mapping statements.
 - The nonrelativistic energy-plane figure records that resonance poles lie on
   the sheet reached through the positive-energy cut.
 - The one-loop self-energy derivation now includes the shifted loop-energy

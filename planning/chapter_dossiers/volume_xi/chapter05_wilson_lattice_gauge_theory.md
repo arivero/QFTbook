@@ -16,7 +16,8 @@
   gauge benchmark.
 - Exact finite \(\mathbb Z_2\) character expansion: partition function as
   closed plaquette surfaces and Wilson-loop expectation as surfaces with
-  prescribed boundary.
+  prescribed boundary.  The 2026-05-29 anti-wrapper audit keeps this as an
+  exact finite algebraic expansion in prose rather than proposition form.
 - Exact finite surface-counting refinement of the strong-coupling expansion,
   including the minimal lattice area \(A_{\min}(C)\), excess-area counts
   \(N_C(n)\), the entropy-corrected area bound, and the one-cube polynomial
