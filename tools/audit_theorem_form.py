@@ -61,7 +61,15 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Schwartz triple and weak delta kernels|"
     r"Null-translation matrices|"
     r"Inversion is conformal|"
-    r"GKO coset stress tensor and central charge"
+    r"GKO coset stress tensor and central charge|"
+    r"Regulated meaning of the configuration path integral|"
+    r"Universal-cover necessity|"
+    r"Noncoincident insertions and contact coordinates|"
+    r"\\(SU\\(2\\)\\) subgroups generate \\(SU\\(3\\)\\)|"
+    r"Projective-channel unitarity identities|"
+    r"Large-\\(N\\) glueball width counting|"
+    r"Leading connected four-point Green function|"
+    r"Tree Compton cross-section functional"
     r")\b",
     re.IGNORECASE,
 )
