@@ -146,9 +146,9 @@
   the four external scalar propagator numerators \((-\ii)^4\) and four LSZ
   multipliers \(\ii^4\) multiply to one before the vertex factor is converted
   to the invariant amplitude.
-- Proposition `prop:lsz-tree-phi-four-after-reduction` labels this
-  perturbative example as a calculation after the nonperturbative
-  Haag--Ruelle/LSZ construction.
+- Paragraph `par:lsz-tree-phi-four-after-reduction` records this perturbative
+  example as a worked calculation after the nonperturbative
+  Haag--Ruelle/LSZ construction, not as a separate theorem.
 - The closing scope remark records the exact boundary of the scalar formula:
   it applies only to stable massive isolated local-field poles; massless
   gauge, infraparticle, confinement, resonance, and conformal cases require

@@ -42,8 +42,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Pure-SYM condensate branch/source-normalization calculation: derivation of
   the branch values, source identity, and theta-angle monodromy as consequences
   of the stated glueball \(F\)-term hypothesis.
-- `prop:pure-sym-one-instanton-zero-mode-test`: pure-SYM charge-one
-  instanton zero-mode saturation ledger, showing that separated
+- `par:pure-sym-one-instanton-zero-mode-test`: pure-SYM charge-one
+  instanton zero-mode saturation ledger, now kept as a worked calculation
+  rather than a proposition; it shows that separated
   \(S\)-correlators vanish for fewer than \(N_c\) insertions and that the
   first possible instanton test is the \(S^{N_c}\) correlator.
 - Saturated pure-SYM Berezin coefficient convention: exterior-algebra

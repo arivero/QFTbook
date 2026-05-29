@@ -673,8 +673,8 @@ as an identity of formal power series.
 \quad+\cdots .
 \]
 
-\begin{proposition}[One-loop tadpole self-energy and cutoff growth]
-\label{prop:one-loop-tadpole-self-energy-cutoff-growth}
+\paragraph{One-loop tadpole self-energy and cutoff growth.}
+\label{par:one-loop-tadpole-self-energy-cutoff-growth}
 The order-\(g\) tadpole is
 \[
 \begin{tikzpicture}[baseline=-0.45ex,scale=0.75,>=Stealth]
@@ -735,9 +735,7 @@ inside the radial expression. The second line uses
 \[
   \Sigma_E^{(1)}(k)=-g\,C_1(\Lambda,m).
 \]
-\end{proposition}
 
-\begin{proof}
 The coefficient \(-g/2\) is the symmetry factor computed in
 Proposition~\ref{prop:automorphism-denominator-from-wick-pairings}: the two
 unattached half-edges at the quartic vertex form one loop and may be
@@ -756,10 +754,8 @@ For \(D\ge3\), subtract the leading asymptotic term
 growth is \(\Lambda^{D-2}/(D-2)\) with the displayed prefactor.  The Dyson
 sign convention of Definition~\ref{def:euclidean-self-energy} then gives
 \(\Sigma_E^{(1)}=-gC_1\).
-\end{proof}
 
-\begin{proposition}[Two-loop sunset insertion]
-\label{prop:two-loop-sunset-insertion}
+\paragraph{Two-loop sunset insertion.}
 The order-\(g^2\) sunset insertion is
 \[
 \begin{aligned}
@@ -788,9 +784,7 @@ This formula is a Euclidean integral.  Its Lorentzian boundary values are
 obtained by analytic continuation with contour-deformation control; for
 timelike external momentum the three-particle Landau threshold of this graph
 prevents a naive independent Wick rotation of the loop energies.
-\end{proposition}
 
-\begin{proof}
 The graph has two quartic vertices and three internal lines joining them.
 After the two external half-edges are fixed, the remaining three internal
 edges may be permuted, giving the automorphism factor \(3!\).  Thus the
@@ -804,7 +798,6 @@ obtained by continuing external energy and deforming loop-energy contours
 without crossing singularities.  At the three-particle threshold the Landau
 equations allow simultaneous on-shell internal lines, so this deformation
 cannot be represented as an independent rotation of each loop energy.
-\end{proof}
 
 \section{Pole Mass and Counterterm Bookkeeping}
 
@@ -843,8 +836,8 @@ uses those data to project external legs onto the asymptotic one-particle
 states.
 \end{definition}
 
-\begin{proposition}[One-loop pole shift and mass-coordinate prescription]
-\label{prop:one-loop-pole-shift-mass-coordinate-prescription}
+\paragraph{One-loop pole shift and mass-coordinate prescription.}
+\label{par:one-loop-pole-shift-mass-coordinate-prescription}
 Using
 \[
   \widetilde G_E(k)
@@ -908,12 +901,10 @@ coefficient in the expansion in \(g\). The physical statement is made after
 Green functions are expressed in terms of the chosen finite parameters, such as
 the pole mass \(m_*\). In the on-shell mass prescription the finite terms are
 chosen so that \(m_R=m_*\) order by order.
-\end{proposition}
 
-\begin{proof}
 To first order, insert
 \(\Sigma_E^{(1)}(k)=-gC_1(\Lambda,m)\) from
-Proposition~\ref{prop:one-loop-tadpole-self-energy-cutoff-growth} into the
+the tadpole calculation above into the
 Dyson denominator:
 \[
   k^2+m^2-\Sigma_E(k)
@@ -928,7 +919,6 @@ two-valent interaction vertex with the sign displayed above.  Requiring the
 pole to sit at \(m_R^2\) through order \(g\) forces the order-\(g\) part of
 \(\delta m^2\) to cancel \(C_1(\Lambda,m_R)\), up to the chosen finite
 renormalization convention.
-\end{proof}
 
 \section{Connected Four-Point Function}
 

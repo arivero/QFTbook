@@ -103,6 +103,18 @@ NEGATIVE_SCOPE_TITLE_RE = re.compile(
 CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"\b("
     r"check|checks|bookkeeping|"
+    r"One-loop tadpole self-energy and cutoff growth|"
+    r"Two-loop sunset insertion|"
+    r"One-loop pole shift and mass-coordinate prescription|"
+    r"Tree-level .*phi.* amplitude after LSZ|"
+    r"Representative QED Feynman rules|"
+    r"Tree-level Compton hard kernel|"
+    r"One-instanton test of the ADS numerator and denominator|"
+    r"Pure-SYM one-instanton zero-mode test|"
+    r"Constant-seed covering-count test|"
+    r"Leading Konishi wrapping integral|"
+    r"One-loop dimension from the weak QSC|"
+    r"Finite-cutoff local counterterm calculation|"
     r"comparison algebra|"
     r"finite algebra of .*comparisons|"
     r"exact finite.*GEVP extraction|"
@@ -458,14 +470,37 @@ def main() -> int:
 
         lines = text.splitlines()
         for idx, line_text in enumerate(lines):
-            if not re.search(r"\\begin\{proof\}", line_text):
+            proof_match = re.search(r"\\begin\{proof\}(?:\[([^\]]*)\])?", line_text)
+            if not proof_match:
                 continue
             prev = idx - 1
             while prev >= 0 and not lines[prev].strip():
                 prev -= 1
-            if prev >= 0 and lines[prev].strip() == r"\end{definition}":
+            prev_text = lines[prev].strip() if prev >= 0 else ""
+            forbidden_statement_endings = {
+                r"\end{definition}": "definition",
+                r"\end{controlledapproximation}": "controlled approximation",
+                r"\end{quotedtheorem}": "quoted theorem",
+            }
+            if prev_text in forbidden_statement_endings:
                 failures.append(
-                    f"{path}:{idx + 1}: proof environment follows a definition"
+                    f"{path}:{idx + 1}: proof environment follows a "
+                    f"{forbidden_statement_endings[prev_text]}"
+                )
+            if (
+                proof_match.group(1) is None
+                and prev_text
+                and prev_text
+                not in {
+                    r"\end{theorem}",
+                    r"\end{proposition}",
+                    r"\end{lemma}",
+                    r"\end{corollary}",
+                }
+            ):
+                failures.append(
+                    f"{path}:{idx + 1}: unnamed proof is not attached directly "
+                    "to a theorem-family statement"
                 )
 
         statements: list[tuple[int, str, str]] = []
