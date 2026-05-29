@@ -1916,8 +1916,7 @@ Euclidean sigma-model functional is
 understood as a local expression in the supercoordinate sheaf.  The ordinary
 round sphere is recovered at \(n=0\), \(m=N\).
 
-\begin{proposition}[Supersphere Ricci coefficient]
-\label{prop:supersphere-one-loop-curvature-identity}
+\paragraph{Supersphere Ricci coefficient.}
 In the standard constant-curvature normalization of
 \eqref{eq:supersphere-sigma-action}, the Ricci tensor entering the one-loop
 sigma-model beta tensor is
@@ -1936,9 +1935,7 @@ Thus the scalar coupling has leading perturbative running
 \end{equation}
 The family \(S^{2n+1|2n}=OSp(2n+2|2n)/OSp(2n+1|2n)\) has vanishing one-loop
 coefficient.
-\end{proposition}
 
-\begin{proof}
 For a bosonic round sphere \(S^{m-1}\), the constant-curvature tensor gives
 \(\operatorname{Ric}=(m-2)h\): the tangent space has \(m-1\) dimensions and
 the Ricci contraction counts all tangent directions except the distinguished
@@ -1969,7 +1966,6 @@ one-loop sigma-model beta tensor
 \]
 and \(h_{ab}=g^{-2}h^{\rm unit}_{ab}\) gives
 \eqref{eq:supersphere-leading-beta}.  Setting \(m=2n+2\) gives zero.
-\end{proof}
 
 The projective supermodel is the quotient analogue.  Let
 \[
@@ -2006,8 +2002,7 @@ local functions.  The gauge-invariant superprojector is
 \]
 where \(\operatorname{str}\) is the supertrace.
 
-\begin{proposition}[Projective-supermodel one-loop identity]
-\label{prop:projective-supermodel-one-loop-identity}
+\paragraph{Projective-supermodel one-loop identity.}
 For the Fubini--Study supermetric on \(\mathbb{CP}^{p|q}\), the one-loop
 Ricci coefficient is
 \begin{equation}
@@ -2017,9 +2012,7 @@ Ricci coefficient is
 Consequently \(\mathbb{CP}^{N-1|N}\) has zero one-loop beta coefficient in
 this normalization, while the ordinary \(\mathbb{CP}^{N-1}\) coefficient is
 \(N\).
-\end{proposition}
 
-\begin{proof}
 In a holomorphic coordinate patch, the Fubini--Study Kähler potential is the
 even function
 \[
@@ -2041,7 +2034,6 @@ odd block enters the Berezinian inversely.  Applying
 \(-\ii\partial\bar\partial\log\) gives
 \eqref{eq:projective-super-ricci-coefficient}.  The two special cases follow
 by setting \(q=0\), \(p=N-1\), and by setting \(p=N-1\), \(q=N\).
-\end{proof}
 
 Finally, let \(G\) be a Lie supergroup whose Lie superalgebra
 \(\mathfrak g\) carries a nondegenerate even invariant bilinear form
@@ -2119,8 +2111,7 @@ quantum \(S\)-matrix proposal for the sausage family is a separate
 rapidity-space object that must be matched to this coordinate choice.
 \end{definition}
 
-\begin{proposition}[Curvature of the sausage target]
-\label{prop:sausage-curvature}
+\paragraph{Curvature of the sausage target.}
 For the metric \eqref{eq:sausage-metric}, the scalar curvature is
 \begin{equation}
   R_{h,q}(r)
@@ -2131,9 +2122,7 @@ For the metric \eqref{eq:sausage-metric}, the scalar curvature is
 \end{equation}
 In particular \(R_{h,0}=2/h\), as required for the round two-sphere of radius
 \(\sqrt h\).
-\end{proposition}
 
-\begin{proof}
 Write the metric as \(E(r)\dd r^2+G(r)\dd\phi^2\), where
 \[
   E(r)=\frac{h}{(1-r^2)(1+qr^2)},
@@ -2155,10 +2144,8 @@ Substitution of \(E\) and \(G\) into
 \eqref{eq:sausage-scalar-curvature}.  At \(q=0\), the formula becomes the
 constant \(2/h\), agreeing with the standard scalar curvature of the round
 sphere.
-\end{proof}
 
-\begin{proposition}[Closure under one-loop Ricci flow]
-\label{prop:sausage-ricci-flow-closure}
+\paragraph{Closure under one-loop Ricci flow.}
 Let \(g_{h,q}\) denote the metric \eqref{eq:sausage-metric}.  Under the
 geometric Ricci flow
 \begin{equation}
@@ -2180,9 +2167,7 @@ Equivalently, for the physical sausage branch \(q=-\kappa^2\), \(0\le\kappa<1\),
   \label{eq:sausage-ricci-flow-kappa}
 \end{equation}
 The ratio \(q/h^2\) is constant along \eqref{eq:sausage-ricci-flow-hq}.
-\end{proposition}
 
-\begin{proof}
 In two dimensions \(\operatorname{Ric}_{ij}=\frac12 R g_{ij}\).  Write
 \[
   g_{rr}=\frac{h}{(1-r^2)(1+qr^2)},
@@ -2222,10 +2207,8 @@ Substituting \(\dot h=-(1+q)\) gives
   =
   \frac{\dot q}{h^2}-\frac{2q\dot h}{h^3}=0.
 \]
-\end{proof}
 
-\begin{proposition}[Integrated sausage Ricci trajectory]
-\label{prop:sausage-integrated-ricci-trajectory}
+\paragraph{Integrated sausage Ricci trajectory.}
 Fix a solution of \eqref{eq:sausage-ricci-flow-hq} with initial value
 \((h_0,q_0)\) at \(\tau=\tau_0\).  If \(q_0=0\), then
 \begin{equation}
@@ -2262,12 +2245,10 @@ On the positive branch \(q>0\), write \(q/h^2=\beta^2\), \(\beta>0\).  Then
   \label{eq:sausage-positive-integrated-flow}
 \end{equation}
 up to the first zero or pole of the tangent chart.
-\end{proposition}
 
-\begin{proof}
-Proposition~\ref{prop:sausage-ricci-flow-closure} proves that \(q/h^2\) is
-constant.  For \(q_0=0\), the equation for \(h\) reduces to \(\dot h=-1\),
-which gives \eqref{eq:sausage-round-integrated-flow}.
+The preceding Ricci-flow calculation gives the invariant \(q/h^2\).  For
+\(q_0=0\), the equation for \(h\) reduces to \(\dot h=-1\), which gives
+\eqref{eq:sausage-round-integrated-flow}.
 
 On the negative branch, substitute \(q=-\alpha^2h^2\) into
 \eqref{eq:sausage-ricci-flow-hq}.  The scalar equation is
@@ -2301,7 +2282,6 @@ and
 \]
 Thus \(\frac{\dd}{\dd\tau}\arctan(\beta h(\tau))=-\beta\), and integration
 gives \eqref{eq:sausage-positive-integrated-flow}.
-\end{proof}
 
 \begin{remark}[Round and cylindrical endpoints of the metric family]
 \label{rem:sausage-metric-endpoints}

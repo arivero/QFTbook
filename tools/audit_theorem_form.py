@@ -136,6 +136,13 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Soliton--breather unitarity, crossing, and pole locations"
     r"|Gross--Neveu scalar unitarity identity"
     r"|Principal-chiral scalar unitarity identity"
+    r"|Neutral scalar block"
+    r"|Fermi exchange from the Mandelstam line"
+    r"|Supersphere Ricci coefficient"
+    r"|Projective-supermodel one-loop identity"
+    r"|Curvature of the sausage target"
+    r"|Closure under one-loop Ricci flow"
+    r"|Integrated sausage Ricci trajectory"
     r")\b",
     re.IGNORECASE,
 )

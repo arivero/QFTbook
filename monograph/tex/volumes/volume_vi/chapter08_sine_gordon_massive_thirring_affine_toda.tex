@@ -558,8 +558,7 @@ It is useful to isolate the scalar factor
 Then \(S_{11}(\theta)=F_\xi(\theta)\).  The block records both the direct pole
 and its crossed image in a way that makes the residue sign visible.
 
-\begin{proposition}[Neutral scalar block]
-\label{prop:sine-gordon-neutral-block}
+\paragraph{Neutral scalar block.}
 For real \(0<a<1\),
 \[
   F_a(\theta)F_a(-\theta)=1,
@@ -585,9 +584,7 @@ The corresponding residues obey
 Thus, for \(0<a<1/2\), the pole at \(\theta=\ii\pi a\) has the positive
 direct-channel residue sign, while the pole at \(\theta=\ii\pi(1-a)\) is its
 crossed-channel partner.
-\end{proposition}
 
-\begin{proof}
 Unitarity follows by replacing \(\sinh\theta\) by \(-\sinh\theta\), and
 crossing follows from \(\sinh(\ii\pi-\theta)=\sinh\theta\).  The denominator
 vanishes at \(\theta=\ii\pi a\) and \(\theta=\ii\pi(1-a)\).  At
@@ -601,7 +598,6 @@ derivative of the denominator is \(\cosh\theta_0=\cos(\pi a)\).  Therefore
 At \(\theta_1=\ii\pi(1-a)\), the numerator is again
 \(2\ii\sin(\pi a)\), but the derivative is
 \(\cos(\pi(1-a))=-\cos(\pi a)\), giving the second residue formula.
-\end{proof}
 
 The minimal diagonal scattering amplitude of breathers \(B_m\) and \(B_n\),
 when both labels and every displayed fused label lie in the stable range
@@ -648,9 +644,9 @@ and the bound-state kinematics at this pole gives the mass \(m_{m+n}\).
 \begin{proof}
 The pole is supplied by the first factor
 \(F_{(m+n)\xi/2}(\theta)\).  Since \((m+n)\xi<1\), its parameter
-\((m+n)\xi/2\) lies in \((0,1/2)\), so Proposition
-\ref{prop:sine-gordon-neutral-block} gives the positive direct-channel
-residue sign at the displayed rapidity.  Let
+\((m+n)\xi/2\) lies in \((0,1/2)\), so the neutral-block residue computation
+above gives the positive direct-channel residue sign at the displayed
+rapidity.  Let
 \[
   \alpha=\frac{\pi\xi}{2},
   \qquad
@@ -916,8 +912,7 @@ residue, \(\mathcal K_\pm\) are Klein factors implementing the two chiral
 Clifford generators, and the displayed vertex is normal ordered in the same
 UV scheme as the sine-Gordon perturbation.
 
-\begin{proposition}[Fermi exchange from the Mandelstam line]
-\label{prop:sg-thirring-mandelstam-exchange}
+\paragraph{Fermi exchange from the Mandelstam line.}
 For
 \[
   I(t,x)=\int_{-\infty}^{x}\dd y\,\Pi(t,y),
@@ -935,9 +930,7 @@ The exponential part of \(\psi_\pm\) in
 \eqref{eq:sine-gordon-mandelstam-fermion} has \(ab=\pm\pi\).  Hence two
 identical Mandelstam fields anticommute at separated equal-time points; the
 Klein factors supply the anticommutation between the two chiral labels.
-\end{proposition}
 
-\begin{proof}
 The canonical commutator gives
 \[
   [\varphi(t,x),I(t,y)]=\ii\Theta(y-x),
@@ -967,7 +960,6 @@ the product formula.  In
 and therefore \(ab=\pm\pi\).  Since
 \(\exp(\pm\ii\pi\,\operatorname{sgn}(x-y))=-1\), the separated equal-time
 exchange is fermionic.
-\end{proof}
 
 The scaling dimension of the Mandelstam exponential follows from the local
 field and dual-field two-point functions:
