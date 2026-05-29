@@ -1926,6 +1926,30 @@ def check_sl2_large_spin_cusp_resolvent() -> None:
         )
 
 
+def check_one_cut_spectral_curve_bookkeeping() -> None:
+    """Check the two-sheeted curve behind the one-loop cusp resolvent."""
+
+    for z in (0.8 + 0.3j, -1.4 + 0.2j, 2.0):
+        y = cmath.sqrt(4 * z * z - 1)
+        if abs(y - 2 * z) > abs(-y - 2 * z):
+            y = -y
+        if abs(y * y - (4 * z * z - 1)) > 1.0e-12:
+            raise AssertionError("one-cut spectral curve equation failed")
+
+        exp_i_g = (y + 1j) / (y - 1j)
+        exp_i_g_flipped = (-y + 1j) / (-y - 1j)
+        assert_close(
+            "one-cut sheet exchange inverts exp(iG)",
+            exp_i_g * exp_i_g_flipped,
+            1,
+            tol=1.0e-12,
+        )
+
+    for endpoint in (-0.5, 0.5):
+        y = cmath.sqrt(4 * endpoint * endpoint - 1)
+        assert_close("one-cut branch endpoint", y, 0, tol=1.0e-12)
+
+
 def check_bes_zhukovsky_fourier_transform_signs() -> None:
     """Check the signed-t Bessel convention in the BES Fourier transform."""
 
@@ -5166,6 +5190,7 @@ def main() -> None:
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
+    check_one_cut_spectral_curve_bookkeeping()
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
     check_bes_strong_scaling_function_normalization()

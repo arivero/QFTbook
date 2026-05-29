@@ -806,6 +806,9 @@ Current checks:
   normalization conversion used in Volume VII, including the shifted variable
   \(g_{\rm s}=g-3\log(2)/(4\pi)\) and the Catalan, \(\zeta(3)\), and
   \(\beta_{\rm D}(4)\) coefficients displayed there.
+- The same planar integrability check verifies the one-cut finite-density
+  spectral-curve bookkeeping behind the large-spin cusp resolvent:
+  \(y^2=4z^2-1\), sheet exchange, and branch endpoints.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

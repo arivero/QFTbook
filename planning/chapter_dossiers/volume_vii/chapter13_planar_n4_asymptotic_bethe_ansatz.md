@@ -240,6 +240,12 @@ motivational checks, not foundations.
   `G_0(z)=-i log((sqrt(4z^2-1)+i)/(sqrt(4z^2-1)-i))`, derives the density,
   and extracts `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from
   `G_0(i/(2S))`.
+- Starts the finite-gap/algebraic-curve development from gauge-theory
+  finite-density Bethe roots: defines the empirical root measure, Cauchy
+  transform, finite-density Bethe-root curve, meromorphic differential and
+  filling periods, proves the Plemelj jump-to-quasimomentum gluing formula,
+  and identifies the large-spin one-cut curve `y^2=4z^2-1` with sheet
+  exchange `exp(iG)->exp(-iG)`.
 - Adds the all-loop large-spin BES bridge from the `SL(2)` ABA: states the
   fixed-twist/large-spin assumptions, defines the inner-density fluctuation
   `hat sigma(t)`, gives the rational and dressing BES kernels in the
@@ -364,6 +370,9 @@ crossed Zhukovsky sheets.
   bridge: exact Bessel recurrence, contour phase for the upper branch, lower
   branch conjugation, and the even-`m` parity failure of the absolute-value
   rewrite.
+- It checks the one-cut finite-density spectral-curve bookkeeping: the curve
+  equation `y^2=4z^2-1`, sheet exchange inversion of `exp(iG)`, and branch
+  endpoint locations.
 - It checks the weak BES scaling-function expansion: the `sigma_0`,
   `sigma_1`, and `sigma_2` density coefficients, the Bose-integral
   coefficients `A_0=pi^2/24`, `A_1=-11 pi^4/360`, and

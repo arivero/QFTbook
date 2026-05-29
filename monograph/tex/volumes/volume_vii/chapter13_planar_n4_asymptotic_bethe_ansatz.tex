@@ -2423,6 +2423,133 @@ one obtains
   8g^2\log S+O(S^0g^2,g^4).
   \label{eq:planar-n4-sl2-one-loop-cusp-log}
 \end{equation}
+
+\section{Finite-Density Bethe Roots and Spectral Curves}
+\label{sec:planar-n4-finite-density-spectral-curves}
+
+The phrase ``finite gap'' will be used here in a precise Bethe-ansatz sense.
+It is the statement that, in a large-charge limit, Bethe roots condense on
+finitely many arcs and that the Cauchy transform of the limiting measure
+extends to a meromorphic object on a finite-sheeted Riemann surface.  This
+surface is the spectral curve of the state.
+
+\begin{definition}[Finite-density Bethe-root curve]
+\label{def:finite-density-bethe-root-curve}
+Let \(N\) be a scaling parameter and let
+\(\{u_{j,N}\}_{j=1}^{M_N}\subset\mathbb C\) be Bethe roots with
+\(M_N\to\infty\).  Suppose that, after a scaling
+\(u_{j,N}=N\bar u_{j,N}\), the empirical measures
+\[
+  \mu_N=\frac1{M_N}\sum_{j=1}^{M_N}\delta_{\bar u_{j,N}}
+\]
+converge weakly to an absolutely continuous measure
+\[
+  \dd\mu(u)=\rho(u)\,\dd s
+\]
+supported on a finite union of oriented analytic arcs
+\(\mathcal C=\bigcup_{a=1}^r\mathcal C_a\).  The Cauchy transform is
+\[
+  G(z)=\int_{\mathcal C}\frac{\rho(u)\,\dd s(u)}{z-u},
+  \qquad z\in\mathbb C\setminus\mathcal C .
+\]
+A finite-density Bethe-root curve is the data
+\[
+  \left(\Sigma,\pi:\Sigma\to\mathbb P^1_z,\lambda,\{A_a,B_a\}\right)
+\]
+where \(\Sigma\) is a compact Riemann surface obtained by gluing sheets across
+the arcs \(\mathcal C_a\), \(\lambda\) is a meromorphic differential whose
+physical-sheet primitive contains \(G(z)\dd z\), and the cycles \(A_a\)
+encircle the cuts.  The filling fractions are the periods
+\[
+  \mathcal S_a=\frac{1}{2\pi\ii}\oint_{A_a}\lambda .
+\]
+\end{definition}
+
+The definition separates three pieces of information that are often blurred.
+The measure \(\rho\) is the continuum limit of roots.  The Riemann surface
+\(\Sigma\) records analytic continuation across root cuts.  The meromorphic
+differential \(\lambda\) records the logarithmic Bethe equation: mode numbers
+are period data, not decorations on a drawing of cuts.
+
+\begin{proposition}[Jump data from the Cauchy transform]
+\label{prop:finite-density-cauchy-jump}
+Let \(G\) be the Cauchy transform in
+Definition~\ref{def:finite-density-bethe-root-curve}, and assume that
+\(\rho\) is Hölder continuous on the interior of a cut \(\mathcal C_a\).
+For \(u\in\mathcal C_a^\circ\), denote by \(G_+(u)\) and \(G_-(u)\) the
+boundary values from the two sides of the oriented arc.  Then
+\[
+  G_+(u)-G_-(u)=-2\pi\ii\,\rho(u),
+  \qquad
+  \frac{G_+(u)+G_-(u)}2
+  =
+  \operatorname{p.v.}\int_{\mathcal C}
+  \frac{\rho(v)\,\dd s(v)}{u-v}.
+  \label{eq:finite-density-cauchy-jump}
+\]
+Consequently, whenever the continuum logarithmic Bethe equation has the form
+\[
+  2\,\operatorname{p.v.}\int_{\mathcal C}
+  \frac{\rho(v)\,\dd s(v)}{u-v}
+  =
+  V'(u)-2\pi n_a,\qquad u\in\mathcal C_a^\circ,
+  \label{eq:finite-density-continuum-bethe}
+\]
+with integer mode number \(n_a\) on \(\mathcal C_a\), the quasimomentum
+\[
+  p(z)=\frac12V'(z)-G(z)
+  \label{eq:finite-density-quasimomentum}
+\]
+satisfies the gluing condition
+\[
+  p_+(u)+p_-(u)=2\pi n_a .
+  \label{eq:finite-density-quasimomentum-gluing}
+\]
+\end{proposition}
+
+\begin{proof}
+The two boundary-value identities are the Plemelj formulas for the Cauchy
+transform on a smooth oriented arc.  Substituting the second identity into
+\eqref{eq:finite-density-continuum-bethe} gives
+\[
+  G_+(u)+G_-(u)=V'(u)-2\pi n_a .
+\]
+Using \(p_\pm(u)=V'(u)/2-G_\pm(u)\) gives
+\[
+  p_+(u)+p_-(u)
+  =
+  V'(u)-\bigl(G_+(u)+G_-(u)\bigr)
+  =
+  2\pi n_a .
+\]
+\end{proof}
+
+For the large-spin one-loop cusp density above, the spectral curve is already
+visible.  Put
+\[
+  y^2=4z^2-1,
+  \qquad
+  G_0(z)
+  =
+  -\ii
+  \log\frac{y+\ii}{y-\ii},
+  \qquad y\sim2z\quad(z\to\infty).
+\]
+The two sheets are exchanged by \(y\mapsto -y\).  Under this exchange,
+\[
+  \exp\!\bigl(\ii G_0\bigr)
+  =
+  \frac{y+\ii}{y-\ii}
+  \quad\longmapsto\quad
+  \frac{y-\ii}{y+\ii}
+  =
+  \exp\!\bigl(-\ii G_0\bigr),
+\]
+so the cut \([-1/2,1/2]\) is the branch locus of the two-sheeted curve.  The
+density \eqref{eq:planar-n4-sl2-cusp-density} is precisely the discontinuity
+of this primitive across the cut, and the endpoint square-root behavior is
+the local branch structure of \(\Sigma\).
+
 The all-loop ABA refines this large-spin calculation rather than replacing
 it.  The macroscopic roots at \(|u|\sim S\) still produce the logarithmic
 enhancement, but the all-loop phase induces an \(O(\log S)\) fluctuation of
