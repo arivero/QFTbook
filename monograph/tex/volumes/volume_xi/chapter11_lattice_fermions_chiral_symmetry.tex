@@ -523,14 +523,23 @@ reflection.
 \end{proposition}
 
 \begin{proof}
-The kinetic and mass terms have the mid-link crossing form described above.
-The interaction terms entirely inside one half are assigned to \(S_+\) and
-\(\Theta(S_+)\).  The only interaction terms crossing the reflection plane
-are, for \(x\) on the positive boundary,
+The free staggered kinetic and mass terms have the mid-link crossing form
+already described for the nearest-neighbor fermion functional: all terms
+strictly on the positive half-lattice are placed in \(S_+\), their reflected
+partners are placed in \(\Theta(S_+)\), and the hopping terms crossing the
+reflection plane have a positive crossing-factor expansion.
+
+It remains to check the quartic interaction at the reflection plane.  Links
+entirely inside one half again belong to \(S_+\) or to \(\Theta(S_+)\).  The
+only interaction terms crossing the plane are, for \(x\) on the positive
+boundary,
 \[
   U\,\bar\eta(\vartheta x)\eta(x)\bar\eta(x)\eta(\vartheta x).
 \]
-Using the displayed reflection rule and the order reversal,
+Using the displayed reflection rule and the order reversal, this monomial is
+the reflected-positive bilinear in the even positive-side generator
+\(F_x=\eta(x)\bar\eta(x)\).  More explicitly, with the fixed ordering of the
+positive generators,
 \[
   e^{-\Delta S_{\times}}
   =
@@ -540,8 +549,13 @@ Using the displayed reflection rule and the order reversal,
   \right),
 \]
 because the square of each Grassmann quartic monomial vanishes.  The
-coefficients are nonnegative precisely when \(U\geq0\).  The finite
-reflection-positivity criterion then applies.
+different boundary links involve distinct Grassmann generators, so the finite
+product expands into a sum
+\(\sum_I U^{|I|}\Theta(F_I)F_I\) with nonnegative coefficients precisely when
+\(U\geq0\).  The full Boltzmann factor is therefore in the form required by
+Definition~\ref{def:lattice-fermion-rp-crossing-factor}, and the finite
+reflection-positivity criterion,
+Proposition~\ref{prop:lattice-fermion-finite-rp-criterion}, applies.
 \end{proof}
 
 \section{Ginsparg--Wilson Relation}

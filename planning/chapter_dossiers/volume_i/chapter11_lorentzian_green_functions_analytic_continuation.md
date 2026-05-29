@@ -207,3 +207,8 @@
   pinch obstruction, and spectral-threshold statements remain theorem-family
   claims because their proofs carry distributional, analytic, or Landau-support
   content rather than mere substitution.
+- 2026-05-29 continuing anti-wrapper audit: expanded the compatibility proof
+  for time-ordered Wightman pieces to use local chamber covers, adjacent
+  spacelike transpositions, and the sheaf property of distributions, making
+  explicit why this is a distributional gluing statement rather than a
+  notation check.

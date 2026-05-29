@@ -541,9 +541,9 @@ The chapter must define and derive:
   calorimetric measures, smeared correlators, contact terms, soft/collinear
   continuity estimates, \(e^+e^-\) EEC normalization, and energy-flow
   polynomial definitions.
-- 2026-05-26 issue #519 pass: added the eventwise EEC sum-rule proposition
-  and exact finite-event calculation check for zeroth moment, first moment,
-  and contact weight.
+- 2026-05-26 issue #519 pass: added the eventwise EEC moment identities and
+  exact finite-event calculation check for zeroth moment, first moment, and
+  contact weight.
 - 2026-05-27 issue #519 collinear pass: added the tree-level resolved
   collinear EEC coefficient derivation, clarified the status of the result
   relative to the full small-angle light-ray/OPE theorem, and added
@@ -552,6 +552,10 @@ The chapter must define and derive:
   leading Sudakov factor for the back-to-back EEC in impact-parameter space,
   separated its scope from the full endpoint theorem, and added
   `calculation-checks/energy_correlator_sudakov_checks.py`.
+- 2026-05-29 continuing anti-wrapper audit: demoted the eventwise EEC
+  sum-rule proposition to detector-observable prose.  The identities remain
+  exact and nonperturbative, but their derivation is energy-momentum
+  conservation plus the definition of the calorimetric distribution.
 - 2026-05-28 issue #630 small-\(x\) pass: added the regulated dipole datum,
   gauge-invariance proof, leading-logarithmic BFKL/BK status statement,
   transverse kernel covariance proof, Mellin-eigenvalue derivation by analytic

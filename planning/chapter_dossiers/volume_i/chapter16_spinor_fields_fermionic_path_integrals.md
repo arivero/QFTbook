@@ -163,13 +163,17 @@
   `prop:free-dirac-locality-selects-car`,
   `def:finite-fermionic-configuration-superspace`,
   `prop:finite-berezin-gaussian-contractions`,
-  `prop:fermionic-coherent-state-resolution`, and the fermionic trace
-  endpoint-sign calculation, with the purely odd Berezinian transformation
-  recorded as coefficient-extraction prose.
+  and the fermionic trace endpoint-sign calculation.  The purely odd
+  Berezinian transformation and the one-mode coherent-state resolution are now
+  recorded as coefficient-extraction/time-slicing prose rather than
+  theorem-family claims.
 - The 2026-05-29 anti-wrapper audit demoted the free Dirac equation and
   oscillator charge convention from theorem form to explanatory prose, because
   it is a direct consequence of the defining intertwiners and charge
   commutators rather than an independent result.
+- The 2026-05-29 continuing anti-wrapper audit demoted the one-mode
+  coherent-state resolution from proposition form to construction prose; the
+  finite two-state Berezin calculation remains in the text.
 - `calculation-checks/spinor_grassmann_checks.py` verifies the finite sign
   algebra behind the Dirac phase equations, \(U(1)\) charge convention, CAR
   locality sign, odd Dirac bracket, Berezinian inverse determinant, one-pair

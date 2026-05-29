@@ -114,3 +114,8 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   reconstruction proof with explicit dependencies on the semigroup theorem,
   corrected OS-II growth input, boundary-value package, and edge-of-the-wedge
   locality argument.
+- 2026-05-29 anti-wrapper audit: demoted the path-integral-to-Wightman
+  Schwinger-limit corollary to prose.  The theorem-level content is OS
+  reconstruction itself; the path-integral sentence is the application that
+  continuum Schwinger limits must first satisfy the OS-admissibility
+  hypotheses.

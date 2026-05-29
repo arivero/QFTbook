@@ -112,7 +112,10 @@
   \(|S_\ell|=1\) in a one-channel elastic interval and \(|S_\ell|\le1\) for
   the elastic component of a larger unitary matrix. The tree-level divergence
   is therefore a perturbative expansion signal, not an exact physical-axis
-  singularity.
+  singularity.  The 2026-05-29 continuing anti-wrapper audit records this as
+  explanatory boundedness/second-sheet prose rather than a proposition, since
+  the proof is the elementary partial-wave normalization and triangle
+  inequality.
 - A one-dimensional outgoing resonance pole is represented by a purely
   outgoing analytically continued solution. Its time decay and spatial growth
   are linked by probability conservation; the object is a singular outgoing

@@ -362,8 +362,21 @@ be obtained from a gauge-invariant polynomial by descent.  Then
 \end{proposition}
 
 \begin{proof}
-Gauge transformations act on the Chern--Simons representative by the Lie
-algebra action:
+Introduce a ghost \(c\) valued in the Lie algebra and the BRST differential
+\(\mathsf s A=D_Ac\), \(\mathsf sc=-\frac12[c,c]\).  Gauge invariance of
+\(P(F)\) and the Chern--Weil transgression give a local descent tower
+\[
+  \mathsf s I_{D+1}^{(0)}+dI_D^{(1)}=0,
+  \qquad
+  \mathsf s I_D^{(1)}+dI_{D-1}^{(2)}=0,
+\]
+after the sign convention in the definition of \(I_D^{(1)}\) is fixed.  The
+component of the first equation linear in a ghost value \(\alpha\) is the
+descent relation
+\(\delta_\alpha I_{D+1}^{(0)}=dI_D^{(1)}(\alpha,A)\).
+
+Equivalently, gauge transformations act on the Chern--Simons representative by
+the Lie algebra action:
 \[
   [\delta_\alpha,\delta_\beta]I_{D+1}^{(0)}
   =
@@ -380,12 +393,13 @@ Using
     I_D^{(1)}([\alpha,\beta],A)
   \right)=0.
 \]
-After choosing the standard descent representative, the closed \(D\)-form in
-parentheses is a descent coboundary.  Its integral on a closed \(M\) is
-therefore zero modulo the counterterm ambiguity.  The displayed consistency
-condition follows.  It is the functorial cocycle condition of
-Remark~\ref{rem:anomaly-line-functorial-cocycle} written
-infinitesimally.
+The second descent equation identifies the \(D\)-form in parentheses as
+\(-dI_{D-1}^{(2)}(\alpha,\beta,A)\), up to the standard freedom of changing
+\(I_D^{(1)}\) by a local counterterm coboundary.  Its integral on a closed
+\(M\) therefore vanishes modulo that counterterm convention.  Substituting the
+definition of \(\delta W_M\) gives the displayed Wess--Zumino consistency
+condition.  It is the functorial cocycle condition of
+Remark~\ref{rem:anomaly-line-functorial-cocycle} written infinitesimally.
 \end{proof}
 
 \begin{remark}[Cocycle ambiguity and local counterterms]

@@ -259,3 +259,8 @@
   spelling out the single-quark axial rotation, anomalous Jacobian, multi-quark
   singular-value decomposition, determinant phase, and the nonsingular-mass
   chart boundary.
+- 2026-05-29 continuing anti-wrapper audit: demoted the equation-of-motion
+  coordinate-change proposition to prose.  The content remains the local
+  field-redefinition calculation plus the regulator/Jacobian caveat; theorem
+  form was inappropriate because the conclusion is the coordinate convention
+  built into the SMEFT quotient.

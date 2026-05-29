@@ -68,7 +68,10 @@ gauge theory.
   and determinant-line phases.
 - Defines \(b_2^+=1\) chambers, reducible wall classes, the wall equation,
   the link form of Kotschick-Morgan wall crossing, and the BV boundary
-  interpretation of chamber jumps.
+  interpretation of chamber jumps.  The 2026-05-29 continuing anti-wrapper
+  audit demoted the chamber-jump BV-boundary statement from proposition form
+  to conditional explanatory prose, since the mathematical work is carried by
+  the compactified parameterized moduli problem and Stokes theorem.
 - States the Witten simple-type comparison datum and separates the
   Donaldson structure theorem from the SW-identification/QFT RG problem.
 - Gives the normalization-sensitive \(u\)-plane integral data with

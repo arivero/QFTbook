@@ -60,9 +60,12 @@ of backgrounds, anomalies, gauging, and condensation.
   line-charge duality.
 - Defines a triangulated finite higher-gauging defect from a closed
   two-cochain sum over topological symmetry surfaces.
-- Proves the finite cochain fusion mechanism: two condensation defects fuse to
+- Gives the finite cochain fusion mechanism: two condensation defects fuse to
   the original condensation defect tensored with a three-dimensional finite
-  `Z_N` two-form gauge-theory state sum.
+  `Z_N` two-form gauge-theory state sum.  The 2026-05-29 continuing
+  anti-wrapper audit records this as cochain calculation prose rather than a
+  proposition, because the QFT burden is constructing the surface networks and
+  junctions.
 - Records the source-lineage theorem boundary for higher-gauging
   noninvertible condensation defects in four-dimensional QFT: the finite
   cochain mechanism is proved here, while the continuum surface-operator

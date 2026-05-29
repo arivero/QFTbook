@@ -5,8 +5,10 @@ observable program.
 
 ## Manuscript Changes
 
-Volume II, Chapter 19 now includes Proposition
-`prop:qcd-eec-sum-rules`.
+Volume II, Chapter 19 now includes the eventwise EEC sum-rule paragraph.  The
+2026-05-29 anti-wrapper audit demoted the original proposition label because
+the identities are exact detector-observable bookkeeping consequences of
+energy-momentum conservation.
 
 - Defines the eventwise EEC distribution \(E_{2,X}(\zeta)\) in
   \(\zeta=\cos\chi\) for a physical hadronic final state.

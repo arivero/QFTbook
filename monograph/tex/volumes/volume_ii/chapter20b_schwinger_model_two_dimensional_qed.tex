@@ -152,10 +152,15 @@ of the classical massless Dirac action.
 \end{proposition}
 
 \begin{proof}
-  The Maxwell equation obtained from \eqref{eq:schwinger-lagrangian} is
+  The Maxwell equation obtained from \eqref{eq:schwinger-lagrangian} is the
+  renormalized local operator identity
   \[
     \partial_\nu F^{\nu\mu}+eJ^\mu=0 .
   \]
+  Here it is tested in the sector with no external line insertion.  With
+  external Wilson lines, the right side would acquire the corresponding
+  distributional endpoint or worldline current, and the homogeneous equation
+  below would be replaced by an inhomogeneous screened-field equation.
   Since \(F^{10}=E\) and \(F^{01}=-E\), its two components are
   \[
     \partial_xE+eJ^0=0,
@@ -179,8 +184,9 @@ of the classical massless Dirac action.
     =
     \frac1e\Box E .
   \]
-  Comparing this consequence of Maxwell's equation with the anomaly
-  \eqref{eq:schwinger-axial-anomaly} gives
+  Comparing this distributional consequence of Maxwell's equation with the
+  anomaly identity \eqref{eq:schwinger-axial-anomaly}, with the same local
+  contact-term convention for the axial current, gives
   \(\Box E/e=eE/\pi\), which is \eqref{eq:schwinger-electric-field-mass-equation}.
 \end{proof}
 
