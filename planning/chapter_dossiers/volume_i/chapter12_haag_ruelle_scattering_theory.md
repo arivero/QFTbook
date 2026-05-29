@@ -92,8 +92,7 @@
   filtered local creator \(B=A(\chi)\), prove almost locality from an explicit
   double-cone truncation and Schwartz tail estimate, and prove one-particle
   spectral selection by applying the joint spectral theorem to \(B\Omega\).
-- Proposition `prop:hr-spectral-filter-time-independence` proves in the
-  mass-shell spectral representation that the positive-energy phase in \(h_t\)
+- The mass-shell spectral calculation proves that the positive-energy phase in \(h_t\)
   cancels the translation phase of \(B(t,\vec x)\), so
   \(P_1B_t(h)\Omega=W_1(bh)\) and
   \(P_1\frac{d}{dt}B_t(h)\Omega=0\).
@@ -145,10 +144,9 @@
   delta-function normalization.
 - The S-operator is \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) when the
   incoming and outgoing ranges coincide.
-- Definition `def:hr-scattering-operator-massive-sector` and Proposition
-  `prop:hr-scattering-operator-unitarity-matrix-elements` now separate the
-  definition of \(S\) from the proof of unitarity and the matrix-element
-  formula.
+- Definition `def:hr-scattering-operator-massive-sector` and the following
+  Hilbert-space calculation separate the definition of \(S\) from unitarity
+  and the matrix-element formula.
 - The chapter separates three range statements: equality of incoming and
   outgoing ranges for the selected species; completeness of a specified closed
   massive scattering sector; and full asymptotic completeness of the physical

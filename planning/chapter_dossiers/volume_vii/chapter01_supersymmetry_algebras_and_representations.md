@@ -24,9 +24,9 @@
   spectral-subspace representation.
 - Field-variable supersymmetry representation as an action on superfields,
   component variables, antifields, or local functionals.
-- Proposition that off-shell component fields are not particle states and
-  that auxiliary fields contribute no independent one-particle oscillators in
-  the free theory.
+- Explanation that off-shell component fields are not particle states and that
+  auxiliary fields contribute no independent one-particle oscillators in the
+  free theory.
 - Rest-frame oscillator construction for massive representations.
 - Massive \(\mathcal N=1\) oscillator module
   \(V_j\otimes\Lambda^\bullet\mathbb C^2\), including dimensions and

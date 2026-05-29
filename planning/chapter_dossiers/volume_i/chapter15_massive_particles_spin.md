@@ -104,7 +104,7 @@
   `def:massive-one-particle-spin-datum`,
   `def:massive-standard-rest-momentum-normalization`,
   `def:massive-wigner-rotation`, `prop:massive-wigner-transformation-law`,
-  `prop:massive-cover-spin-labels`, `def:massive-spin-frame`,
+  the massive-cover spin-label calculation, `def:massive-spin-frame`,
   `prop:massive-wigner-cocycle-spin-frame-change`,
   `prop:covariant-field-intertwiner-equivariance`, and
   `prop:massive-dirac-projectors-spin-sums`.

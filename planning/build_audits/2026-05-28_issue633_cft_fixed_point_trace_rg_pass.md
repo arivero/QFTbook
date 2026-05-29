@@ -19,7 +19,7 @@ linearized RG relation \(y=D-\Delta\).
   \(T^\mu{}_\mu=\beta_I[O_I]_\mu+\partial_\mu V^\mu\) with contact terms tied
   to the renormalized source chart and the sign convention
   \(\mu\,dg_I/d\mu=\beta_I\).
-- Added Proposition `prop:cft-opening-virial-improvement-currents`, proving
+- Added the virial-improvement current calculation, showing
   that \(T^\mu{}_\mu=\partial_\mu V^\mu\) gives a conserved dilatation current,
   that \(V^\mu=(D-1)\partial^\mu L+J^\mu\) with \(\partial_\mu J^\mu=0\)
   gives a conserved traceless improved stress tensor, and that the improved

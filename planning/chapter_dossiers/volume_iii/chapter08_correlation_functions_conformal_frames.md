@@ -30,9 +30,9 @@ The chapter establishes:
   three-point exponents from conformal-frame transitivity and inversion
   weights;
 - spinning tensor structures with stated representation data;
-- Definition `def:inversion-stt-parallel-transport` and Proposition
-  `prop:spinning-two-point-structures`, formalizing inversion transport and
-  the vector/STT two-point structures;
+- Definition `def:inversion-stt-parallel-transport` and the spinning
+  two-point-structure derivation, formalizing inversion transport and the
+  vector/STT two-point structures;
 - the Osborn--Petkou parity-even stress-tensor three-point basis, including
   the explicit \(h^1,\ldots,h^5\) tensors, the three \(D\ge4\) structures,
   the conservation equations fixing dependent coefficients, and the

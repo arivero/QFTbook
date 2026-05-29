@@ -10,9 +10,8 @@ that theorem.
 
 ## Manuscript Changes
 
-- Added Proposition `prop:hr-spectral-filter-time-independence`, proving in
-  the mass-shell spectral representation that the phase in \(h_t\) cancels the
-  translation phase and gives \(P_1B_t(h)\Omega=W_1(bh)\).
+- Added the mass-shell spectral calculation proving that the phase in \(h_t\)
+  cancels the translation phase and gives \(P_1B_t(h)\Omega=W_1(bh)\).
 - Added Proposition `prop:hr-velocity-tube-separation`, proving rapid
   off-tube decay by nonstationary integration by parts and linear spacelike
   separation for disjoint velocity-support tubes.
