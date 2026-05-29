@@ -209,6 +209,12 @@ bordism is nondegenerate, and the coevaluation vector is its inverse tensor.
 \end{proposition}
 
 \begin{proof}
+Put \(V=Z(\Sigma)\) and \(W=Z(\bar\Sigma)\).  The evaluation bordism gives a
+bilinear form \(e:W\otimes V\to\Bbbk\), and the coevaluation bordism gives an
+element \(c\in V\otimes W\).  The point of the cap/cylinder argument is that
+\((e,c)\) is not arbitrary bordism data; it obeys the categorical triangle
+identities.
+
 The two zig-zag composites
 \[
   \Sigma
@@ -227,9 +233,28 @@ and
 \]
 are diffeomorphic to the corresponding cylinders.  Applying \(Z\), and using
 the cylinder axiom, gives the triangular identities for a dual pair in
-\({\bf Vect}^{\rm fd}_{\Bbbk}\).  In finite dimension those triangular
-identities are equivalent to nondegeneracy of the evaluation pairing and to
-the assertion that the coevaluation vector is the inverse of that pairing.
+\({\bf Vect}^{\rm fd}_{\Bbbk}\):
+\[
+  (\id_V\otimes e)(c\otimes\id_V)=\id_V,
+  \qquad
+  (e\otimes\id_W)(\id_W\otimes c)=\id_W .
+\]
+Write \(c=\sum_\alpha v_\alpha\otimes w_\alpha\).  If
+\(v\in V\) is annihilated by every functional \(e(w,\cdot)\), then the first
+triangle identity gives
+\[
+  v
+  =
+  \sum_\alpha v_\alpha e(w_\alpha,v)
+  =
+  0 .
+\]
+Thus the induced map \(W\to V^\vee\) is injective.  The second triangle
+identity similarly shows that \(V\to W^\vee\) is injective.  Since
+\(\dim W\leq\dim V\) and \(\dim V\leq\dim W\), both maps are isomorphisms.
+Under the resulting identification \(W\simeq V^\vee\), the tensor \(c\) is
+the canonical inverse tensor to the pairing \(e\), as expressed by the same
+two triangle identities.
 \end{proof}
 
 A unitary topological theory requires more than the bilinear pairing above.

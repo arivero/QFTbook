@@ -88,6 +88,14 @@
    moduli-space theorems, finite-dimensional localization or gluing inputs, and
    still-unproved QFT RG statements.
 
+## Anti-Wrapper Audit
+
+- 2026-05-29 ninth pass: retained the cap/cup state-space duality proposition
+  because it is a structural consequence of the Atiyah-Segal gluing law, but
+  expanded the proof from the phrase "triangular identities" to the explicit
+  finite-dimensional maps \(W\otimes V\to\Bbbk\), \(1\mapsto c\in V\otimes W\),
+  injectivity arguments, dimension comparison, and inverse-tensor conclusion.
+
 ## Figures
 
 - Collar-gluing diagram for \(M_{12}\circ M_{01}\).

@@ -498,6 +498,11 @@ Equality holds if and only if \(L_r(f)=G_r(f)\) for every reaction with
 \end{proposition}
 
 \begin{proof}
+The finite state space lets us work entirely inside the open domain
+\(\mathcal D\), where every factor in \(L_r\) and \(G_r\) is positive.  Thus
+the logarithms below are honest finite-dimensional functions, and the
+boundary of \(\mathcal D\) is not used in the argument.
+
 For the conserved quantity,
 \[
   \frac{d}{dt}Q_A(f)
@@ -508,7 +513,17 @@ For the conserved quantity,
 and the bracket vanishes by
 \eqref{eq:finite-collision-additive-conservation}.
 
-For the entropy, differentiate the one-cell entropy:
+For the entropy, differentiate the one-cell entropy.  The same formula covers
+the classical, Bose, and Fermi signs because
+\[
+  \frac{\dd}{\dd f}
+  \left[
+    -f\log f+\eta(1+\eta f)\log(1+\eta f)
+  \right]
+  =
+  -\log\!\left(\frac f{1+\eta f}\right),
+\]
+with the \(\eta=0\) case understood by taking the limit.  Hence
 \begin{equation}
   \frac{\partial S}{\partial f_i}
   =
@@ -527,12 +542,14 @@ For \(r=(i,j;k,l)\),
   \log\!\left(\frac{L_r}{G_r}\right).
   \]
 Substitution into \(\dot S=\nabla S\cdot\dot f\) gives
-\eqref{eq:finite-collision-entropy-production}.  The inequality is the
-elementary monotonicity of the logarithm:
+\eqref{eq:finite-collision-entropy-production}.  The sign is fixed reaction
+by reaction: for \(x,y>0\),
 \[
   (x-y)\log(x/y)\ge0,\qquad x>0,\quad y>0 .
   \]
-It is strict unless \(x=y\), which gives the equality condition.
+Indeed \(x>y\) implies \(\log x-\log y>0\), while \(x<y\) makes both factors
+negative.  Equality in the sum holds exactly when every positive-weight
+reaction has \(L_r=G_r\), because all summands are nonnegative.
 \end{proof}
 
 \begin{definition}[Finite local equilibrium and collision invariants]
@@ -609,11 +626,27 @@ Therefore
   \chi_i+\chi_j-\chi_k-\chi_l .
   \]
 Since \(L_r=G_r=M_r\) at equilibrium, this is equivalent to
-\eqref{eq:finite-collision-linearized-rate}.  Expanding
-\((L_r-G_r)\log(L_r/G_r)\) to second order gives
-\eqref{eq:finite-collision-linearized-entropy-production}.  The last two
-claims are then just the condition for every square in that sum to vanish,
-together with the stated connectivity hypothesis.
+\eqref{eq:finite-collision-linearized-rate}: if \(R_r=L_r/G_r\), then
+\[
+  \delta(L_r-G_r)
+  =
+  M_r\,\delta\log R_r .
+\]
+The second variation of the entropy-production summand is obtained from
+\[
+  (L_r-G_r)\log(L_r/G_r)
+  =
+  M_r(\delta\log R_r)^2+O(\chi^3),
+\]
+because both \(L_r-G_r\) and \(\log(L_r/G_r)\) vanish to first order at
+equilibrium with the same linear coefficient \(M_r^{-1}\delta(L_r-G_r)\).
+Summing the reactions gives
+\eqref{eq:finite-collision-linearized-entropy-production}.  Its null space
+is the intersection of the kernels of the linear forms
+\(\chi_i+\chi_j-\chi_k-\chi_l\), which is precisely the space of collision
+invariants by Definition~\ref{def:finite-local-equilibrium-collision-invariants}.
+Under the stated connectivity hypothesis this space is the span of the
+constant invariant and the additive conserved quantities \(A(P_i)\).
 \end{proof}
 
 The continuum \(2\to2\) formulas are obtained from

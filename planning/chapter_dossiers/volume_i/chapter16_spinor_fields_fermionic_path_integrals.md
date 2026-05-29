@@ -162,10 +162,10 @@
   `def:free-charged-dirac-field-car`,
   `prop:free-dirac-locality-selects-car`,
   `def:finite-fermionic-configuration-superspace`,
-  `prop:purely-odd-berezinian-transformation`,
   `prop:finite-berezin-gaussian-contractions`,
   `prop:fermionic-coherent-state-resolution`, and the fermionic trace
-  endpoint-sign calculation.
+  endpoint-sign calculation, with the purely odd Berezinian transformation
+  recorded as coefficient-extraction prose.
 - The 2026-05-29 anti-wrapper audit demoted the free Dirac equation and
   oscillator charge convention from theorem form to explanatory prose, because
   it is a direct consequence of the defining intertwiners and charge
@@ -200,6 +200,10 @@
   proposition/proof to a worked paragraph.  The sign derivation remains
   explicit because it is useful for fermionic Feynman rules, but it is a local
   first-order Wick-contraction calculation rather than theorem-level material.
+- 2026-05-29 ninth pass: demoted the purely odd Berezinian
+  inverse-determinant transformation from proposition form to algebra prose,
+  keeping the locally super-ringed-space interpretation and the finite
+  coefficient-extraction calculation explicit.
 
 ## Figure Requirements
 

@@ -331,3 +331,7 @@ GitHub issue #628.
   paragraph.  The calculation remains because it fixes the shell density of
   states and the exponential scale, but it is the elementary mean-field
   Fermi-surface integral once the model gap equation has been assumed.
+- 2026-05-29 ninth pass: demoted the dense-matter mass/chemical-potential
+  mismatch expansion from proposition form to a worked Fermi-surface
+  expansion.  The formulas remain numbered because the strange-light stress
+  scale is used in the subsequent controlled BCS comparison.

@@ -46,8 +46,8 @@ cohomological gauge theory.
   two-form supercharges.
 - Decomposes the `N=2` vector multiplet into Donaldson-Witten differential
   forms.
-- States the Donaldson-Witten `Q` transformations and proves off-shell
-  closure `Q^2=delta_{-phi}`.
+- States the Donaldson-Witten `Q` transformations and records the off-shell
+  closure calculation `Q^2=delta_{-phi}`.
 - Constructs the Mathai-Quillen gauge-fermion term that localizes to
   `F_A^+=0` and links it to the ASD deformation complex.
 - Derives the Donaldson descent package from the universal equivariant
@@ -63,6 +63,12 @@ cohomological gauge theory.
   `SU(2)` Clebsch-Gordan arithmetic for the Donaldson twist, the twisted
   gaugino form dimensions, the two-dimensional A/B scalar-supercharge charge
   bookkeeping, and the Donaldson-Witten `Q^2=delta_{-phi}` closure ledger.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29 ninth pass: demoted the Donaldson-Witten off-shell closure check
+  from proposition form to a transformation-by-transformation calculation.
+  The auxiliary-field role and gauge-convention dependence remain explicit.
 
 ## Figure Ledger
 

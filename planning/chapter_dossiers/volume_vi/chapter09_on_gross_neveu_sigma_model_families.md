@@ -50,6 +50,14 @@ symmetry.
   finite-dimensional Yang-Baxter component identity, and the large-`N` cutoff
   gap equation and beta-function algebra.
 
+## Anti-Wrapper Audit
+
+- 2026-05-29 ninth pass: demoted the projective crossing tensor identity from
+  proposition form to component-convention prose.  The crossing functions and
+  tensor identifications remain explicit because they fix the later
+  projective-channel unitarity checks, but the proof is only an index
+  substitution once the convention is declared.
+
 ## Figure Ledger
 
 No figure is included in this pass.  Future figures should include the

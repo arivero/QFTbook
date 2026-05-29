@@ -64,6 +64,15 @@ arise from the inverse linearized collision operator.
     soft collective gauge fields, and ultrasoft hydrodynamic modes in a
     common regulator and source convention.
 
+## Anti-Wrapper Audit
+
+- 2026-05-29 ninth pass: retained the finite collision H-theorem and
+  linearized collision propositions as substantive finite models, but expanded
+  the proofs to state the open-domain hypothesis for logarithms, the
+  Bose/Fermi/classical derivative convention, the reactionwise positivity
+  argument, and the exact identification of the linearized null space with
+  collision invariants.
+
 ## Calculation Checks
 
 - `calculation-checks/kinetic_theory_checks.py` verifies detailed balance,
