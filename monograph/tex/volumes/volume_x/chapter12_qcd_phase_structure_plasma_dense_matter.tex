@@ -118,8 +118,7 @@ non-polynomial fermion prescriptions are not included in this setup unless a
 separate branch and locality construction has been supplied.
 \end{definition}
 
-\begin{proposition}[Finite-regulator analyticity]
-\label{prop:qcd-finite-regulator-analyticity}
+\paragraph{Finite-regulator analyticity.}
 For the setup of Definition~\ref{def:qcd-finite-lattice-thermal-gauge-setup},
 \(Z_\Lambda(\kappa,m,\zeta)\) is entire in the gauge couplings and masses
 and Laurent-polynomial in the fugacity \(\zeta\).  Consequently the finite
@@ -131,11 +130,10 @@ pressure
 \]
 is holomorphic on every simply connected parameter domain that does not meet
 the zero locus of \(Z_\Lambda\), after a branch of the logarithm has been
-chosen.
-\end{proposition}
-
-\begin{proof}
-The lattice has finitely many links, and \(G^{E(\Lambda)}\) is compact.  For
+chosen.  This finite-dimensional analytic fact becomes a statement about a
+thermodynamic or continuum pressure only after a separate compact-convergence
+input.  The lattice has finitely many links, and \(G^{E(\Lambda)}\) is
+compact.  For
 each fixed gauge field \(U\), the determinant factors are polynomials in the
 masses and Laurent polynomials in \(\zeta\).  The exponential of the gauge
 action has an absolutely and uniformly convergent power series in
@@ -146,7 +144,6 @@ Thus the integral defines an entire function in \(\kappa\) and \(m\), with
 only finitely many positive and negative fugacity powers.  Wherever this
 function is nonzero on a simply connected domain, a holomorphic logarithm
 exists, and the displayed finite pressure is holomorphic there.
-\end{proof}
 
 \begin{definition}[Thermodynamic phase transition and Lee--Yang obstruction]
 \label{def:qcd-thermodynamic-phase-transition}
@@ -179,10 +176,10 @@ compact subsets of \(\mathcal U_{\mathbb C}\).  Then the limiting pressure
 \(x_0\).  Therefore a pressure nonanalyticity at \(x_0\) requires either
 Lee--Yang zeros approaching \(x_0\) in every complex neighborhood, or failure
 of the stated uniform analytic convergence.
-By Proposition~\ref{prop:qcd-finite-regulator-analyticity}, each
-\(p_\Lambda\) is holomorphic on \(\mathcal U_{\mathbb C}\) after the stated
-choice of logarithm.  The uniform compact convergence hypothesis then makes
-the limit holomorphic by the Weierstrass theorem for holomorphic functions.
+By the finite-regulator analyticity discussion above, each \(p_\Lambda\) is
+holomorphic on \(\mathcal U_{\mathbb C}\) after the stated choice of
+logarithm.  The uniform compact convergence hypothesis then makes the limit
+holomorphic by the Weierstrass theorem for holomorphic functions.
 Restricting a holomorphic function to the real slice gives a real-analytic
 function.  The contrapositive gives the final statement: if the real pressure
 has a nonanalyticity at \(x_0\), the hypotheses just listed cannot all hold on
@@ -2256,8 +2253,7 @@ relative energy.  In coordinate space, residual momentum acts as
 \(i\mathbf v\cdot\mathbf D\) and \(D_\perp^2/(2\mu_q)\), with the sign
 fixed by the displayed momentum-space inverse propagator.
 
-\begin{proposition}[Hard-dense-loop Debye mass at zero temperature]
-\label{prop:qcd-hdl-debye-zero-temperature}
+\paragraph{Hard-dense-loop Debye mass at zero temperature.}
 At \(T=0\), for \(N_f\) massless Dirac quarks with common quark chemical
 potential \(\mu_q\), the static dense-quark contribution to the electric
 screening mass is
@@ -2271,11 +2267,9 @@ For \(SU(N_c)\) fundamentals in the monograph trace convention
 \[
   m_{D,\mu}^2=g^2N_f\frac{\mu_q^2}{\pi^2}.
 \]
-\end{proposition}
-
-\begin{proof}
-The static electric response is the color susceptibility of occupied quark
-states.  At \(T=0\), differentiating the occupation number
+This is the one-line susceptibility calculation entering the HDL
+approximation.  The static electric response is the color susceptibility of
+occupied quark states.  At \(T=0\), differentiating the occupation number
 \(\Theta(\mu_q-p)\) with respect to a color chemical potential localizes the
 response on the Fermi surface:
 \[
@@ -2295,7 +2289,6 @@ The two positive-energy spin states of a Dirac quark give
 number of flavors gives the displayed result.  Antiquark states are far
 from the positive-\(\mu_q\) Fermi surface and do not contribute to this
 leading \(T=0\) dense response.
-\end{proof}
 
 \section{Dense Non-Fermi-Liquid Scaling}
 \label{sec:qcd-non-fermi-liquid-self-energy}
@@ -2337,8 +2330,8 @@ Landau-damped region
   \left(1+o(1)\right),
   \label{eq:qcd-nfl-landau-damped-propagator}
 \end{equation}
-with \(m_{D,\mu}\) given by
-Proposition~\ref{prop:qcd-hdl-debye-zero-temperature}.  Electric exchange,
+with \(m_{D,\mu}\) given by the zero-temperature HDL susceptibility
+calculation above.  Electric exchange,
 non-collinear transverse exchange, and hard matching contributions are kept
 only to the extent that they define the finite matching scale
 \(\Lambda_{\rm NFL}\); they do not affect the coefficient of the logarithm
@@ -3109,8 +3102,7 @@ In this region the Euclidean transverse propagator has the form
   \left(1+o(1)\right),
   \label{eq:qcd-hdl-transverse-landau-damped}
 \end{equation}
-where \(m_{D,\mu}\) is the dense HDL Debye mass of
-Proposition~\ref{prop:qcd-hdl-debye-zero-temperature}.  Electric exchange
+where \(m_{D,\mu}\) is the dense HDL Debye mass computed above.  Electric exchange
 and non-collinear magnetic exchange are not discarded; in the leading-log
 problem they contribute to the matching scale and to the prefactor, not to
 the coefficient of the \(1/g\) exponent.

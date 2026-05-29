@@ -64,8 +64,7 @@ with transverse coordinates fixed.  For complex \(\eta=t+\ii s\), write
 \(\operatorname{Im}\Lambda_\eta x\) for the imaginary part of the complex
 vector \(\Lambda_\eta x\).
 
-\begin{lemma}[Imaginary part of a complex boost]
-\label{lem:unruh-complex-boost-geometry}
+\paragraph{Imaginary part of a complex boost.}
 If \(y\in W_R\) and \(\eta=t+\ii s\), then
 \[
 \begin{aligned}
@@ -86,10 +85,8 @@ left wedge
   W_L=\{x\in\mathbb M^D:x^1<-|x^0|\}.
 \]
 Every point of \(W_R\) is spacelike separated from every point of \(W_L\).
-\end{lemma}
-
-\begin{proof}
-The formulas follow from
+These are elementary hyperbolic-function identities, recorded here because
+they fix the tube domain used in the KMS strip.  The formulas follow from
 \[
   \cosh(t+\ii s)=\cosh t\cos s+\ii\sinh t\sin s,\qquad
   \sinh(t+\ii s)=\sinh t\cos s+\ii\cosh t\sin s .
@@ -107,7 +104,6 @@ At \(s=\pi\), \(\cosh(t+\ii\pi)=-\cosh t\) and
   x^1-\ell^1>|x^0|+|\ell^0|\ge |x^0-\ell^0|.
 \]
 Thus \(x-\ell\) is spacelike.
-\end{proof}
 
 \section{Quoted Bisognano--Wichmann Theorem}
 
@@ -209,8 +205,8 @@ For real \(\eta\), change variables in \(g_\eta\) to write
   \iint f(x)g(y)\Delta_+^{(m)}(x-\Lambda_\eta y)\,\dd x\,\dd y .
   \label{eq:unruh-free-two-point-lower-boundary}
 \end{equation}
-For \(0<\operatorname{Im}\eta<\pi\), Lemma~\ref{lem:unruh-complex-boost-geometry}
-implies that
+For \(0<\operatorname{Im}\eta<\pi\), the complex-boost geometry above implies
+that
 \[
   \operatorname{Im}(x-\Lambda_\eta y)
   =
@@ -227,7 +223,7 @@ compact sub-strips.  Thus
 \]
 is holomorphic for \(0<\operatorname{Im}\eta<\pi\).
 
-For \(\pi<\operatorname{Im}\eta<2\pi\), the same lemma says that
+For \(\pi<\operatorname{Im}\eta<2\pi\), the same geometry says that
 \(\operatorname{Im}\Lambda_\eta y\in V_-\).  Hence
 \[
   F^{(2)}_{f,g}(\eta)
@@ -238,7 +234,7 @@ is holomorphic on the upper half of the strip.
 
 It remains to glue the two holomorphic functions across
 \(\operatorname{Im}\eta=\pi\).  At \(\eta=t+\ii\pi\), the point
-\(\Lambda_\eta y\) lies in \(W_L\).  Lemma~\ref{lem:unruh-complex-boost-geometry}
+\(\Lambda_\eta y\) lies in \(W_L\).  The complex-boost geometry above
 therefore makes \(x\) and \(\Lambda_\eta y\) spacelike separated.  The free
 scalar commutator is
 \[

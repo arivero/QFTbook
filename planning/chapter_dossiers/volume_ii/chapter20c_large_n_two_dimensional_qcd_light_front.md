@@ -32,8 +32,8 @@ The chapter establishes:
   zero-mode caveat;
 - light-front gauge \(A_-=0\), the nondynamical \(A_+\) action, and the
   Gauss-law constraint;
-- Proposition `prop:qcd2-gauss-law-reduction`, proving the finite-regulator
-  Gaussian reduction to an instantaneous Coulomb Hamiltonian;
+- a finite-regulator Gauss-law reduction paragraph that performs the
+  nonzero-mode Gaussian square completion and isolates the zero-mode caveat;
 - the leading large-\(N_c\) color-singlet meson state;
 - Definition `def:qcd2-subtracted-thooft-operator`, using the subtracted
   principal-value kernel
@@ -47,8 +47,7 @@ The chapter establishes:
   principal-value convention;
 - a remark separating the subtracted positive-kernel convention from the
   unsubtracted mass-coordinate convention common in the literature;
-- Proposition `prop:qcd2-thooft-positive-form`, proving the positive
-  quadratic form
+- a positive-kernel paragraph deriving the quadratic form identity
   \[
     \frac12\int_0^1\dd x\int_0^1\dd y
     {(\phi(x)-\phi(y))^2\over (x-y)^2};

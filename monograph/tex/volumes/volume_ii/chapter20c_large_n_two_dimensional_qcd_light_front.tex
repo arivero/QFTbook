@@ -125,16 +125,12 @@ instantaneous Coulomb Hamiltonian
 \end{equation}
 with the zero-mode sector understood as above.
 
-\begin{proposition}[Finite-regulator Gauss-law reduction]
-\label{prop:qcd2-gauss-law-reduction}
+\paragraph{Finite-regulator Gauss-law reduction.}
 At finite light-front regulator, after the \(A_+\) zero mode has been either
 fixed by the color-neutral Gauss-law constraint or kept as a separate compact
 degree of freedom, the nonzero-mode integration over \(A_+\) is an ordinary
-Gaussian integration and is equivalent to the instantaneous Hamiltonian
-\eqref{eq:qcd2-instantaneous-hamiltonian}.
-\end{proposition}
-
-\begin{proof}
+Gaussian integration.  The equivalence with the instantaneous Hamiltonian
+\eqref{eq:qcd2-instantaneous-hamiltonian} is the following square completion.
 On the nonzero-mode regulated space, \(-\partial_-^2\) is a positive
 invertible symmetric operator.  Integrating \eqref{eq:qcd2-a-plus-action} by
 parts in \(x^-\) gives
@@ -156,7 +152,6 @@ Hamiltonian \(P^-\), the latter appears with the positive kernel \(G\) as in
 \eqref{eq:qcd2-instantaneous-hamiltonian}.  The completion of the square does
 not determine the zero mode; that mode is exactly the global Gauss-law
 constraint and must be part of the regulator datum.
-\end{proof}
 
 \section{Planar Color-Singlet Mesons}
 
@@ -215,8 +210,8 @@ For \(\gamma_2>0\) and endpoint masses \(m_1^2,m_2^2\geq0\), define
   \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y .
   \label{eq:qcd2-subtracted-thooft-operator}
 \end{equation}
-The principal value is best defined by the quadratic form in
-Proposition~\ref{prop:qcd2-thooft-positive-form}.  For smooth test functions,
+The principal value is best defined by the quadratic form
+\eqref{eq:qcd2-thooft-positive-form}.  For smooth test functions,
 it is the finite part obtained by applying the same cutoff to real exchange
 and self-energy terms before removing the cutoff.  In the large-\(N_c\) QCD
 normalization of this chapter,
@@ -314,9 +309,8 @@ monograph.
 
 \section{Quadratic Form, Positivity, and the Chiral Limit}
 
-\begin{proposition}[Positive form of the subtracted kernel]
-\label{prop:qcd2-thooft-positive-form}
-Let \(\phi\) be a real smooth function on \([0,1]\).  Then
+\paragraph{Positive form of the subtracted kernel.}
+For a real smooth function \(\phi\) on \([0,1]\),
 \begin{equation}
   \int_0^1\dd x\,\phi(x)
   \operatorname{PV}\int_0^1
@@ -327,13 +321,9 @@ Let \(\phi\) be a real smooth function on \([0,1]\).  Then
   \frac{(\phi(x)-\phi(y))^2}{(x-y)^2}.
   \label{eq:qcd2-thooft-positive-form}
 \end{equation}
-Consequently, for \(m_1^2,m_2^2,\gamma_2\geq0\), the quadratic form of
-\(\mathcal M^2\) is nonnegative on its form domain.
-\end{proposition}
-
-\begin{proof}
-Regulate the singularity by deleting \(|x-y|<\epsilon\).  The regulated
-bilinear expression is
+This identity is an elementary symmetrization of the principal-value kernel,
+but it is the useful way to remember the sign.  Regulate the singularity by
+deleting \(|x-y|<\epsilon\).  The regulated bilinear expression is
 \[
   I_\epsilon
   =
@@ -353,7 +343,8 @@ For smooth \(\phi\), the numerator is \(O((x-y)^2)\) near the diagonal, so
 the right hand side has a finite \(\epsilon\downarrow0\) limit.  This proves
 \eqref{eq:qcd2-thooft-positive-form}.  Adding the endpoint mass terms gives
 nonnegative contributions when \(m_i^2\geq0\).
-\end{proof}
+Thus, for \(m_1^2,m_2^2,\gamma_2\geq0\), the quadratic form of
+\(\mathcal M^2\) is nonnegative on its form domain.
 
 In the equal-mass chiral limit \(m_1=m_2=0\), the constant wavefunction
 \[

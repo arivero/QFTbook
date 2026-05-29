@@ -167,8 +167,7 @@ For \(n\geq0\), let
 \end{equation}
 Similarly let \(N_0(n)\) count closed plaquette subsets of area \(n\).
 
-\begin{proposition}[Finite surface expansion and area estimate]
-\label{prop:z2-surface-counting-area-bound}
+\paragraph{Finite surface expansion and area estimate.}
 Let \(\beta\geq0\) and \(t=\tanh\beta\).  If \(C\) is a boundary, then
 \begin{equation}
   \langle W(C)\rangle_{\Lambda,\beta}
@@ -201,15 +200,14 @@ with \(0\leq\rho t<1\), then
   \exp\{-[-\log t]A_{\min}(C)\}.
   \label{eq:z2-entropy-area-bound}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-The numerator in \eqref{eq:z2-gauge-character-expansion-wilson} is a finite sum over
-plaquette subsets satisfying \(\partial A=C\).  Grouping these subsets by
-the excess area \(n=|A|-A_{\min}(C)\) gives the numerator
+This estimate is a reorganization of the finite character expansion followed
+by a geometric-series bound.  The numerator in
+\eqref{eq:z2-gauge-character-expansion-wilson} is a finite sum over
+plaquette subsets satisfying \(\partial A=C\).  Grouping these subsets by the
+excess area \(n=|A|-A_{\min}(C)\) gives the numerator
 \[
   t^{A_{\min}(C)}\sum_{n\geq0}N_C(n)t^n .
-  \]
+\]
 The same grouping with \(C=0\) gives the denominator.  For
 \(\beta\geq0\), all terms in the denominator are nonnegative and the empty
 closed surface gives the term \(1\); hence the denominator is at least
@@ -221,8 +219,7 @@ is the geometric-series bound
   K(C)\sum_{n\geq0}(\rho t)^n
   =
   \frac{K(C)}{1-\rho t}.
-  \]
-\end{proof}
+\]
 
 For a rectangular loop \(C_{R,T}\) in a coordinate plane,
 \(A_{\min}(C_{R,T})=RT/a^2\) when the rectangle is smaller than the chosen
@@ -300,8 +297,7 @@ weight with the irrelevant constant removed one may take
   \label{eq:compact-wilson-plaquette-weight}
 \end{equation}
 
-\begin{proposition}[Compact-group spin-foam expansion at finite cutoff]
-\label{prop:compact-group-spin-foam-expansion}
+\paragraph{Compact-group spin-foam expansion at finite cutoff.}
 On a finite lattice, replace each plaquette Boltzmann factor by a smooth
 class function \(K(U_p)\).  Then the finite-volume partition function is
 represented by
@@ -330,17 +326,14 @@ and \(\epsilon(p,\ell)=-1\) if it uses \(U_\ell^{-1}\).  A Wilson loop in
 representation \(S\) is represented by inserting the additional boundary
 tensor \(D_S(U_\ell)^{\pm1}\) on each link of the loop before taking the
 same Haar projectors.
-\end{proposition}
-
-\begin{proof}
-Insert the character expansion
-\eqref{eq:compact-character-expansion} independently for every plaquette.
-After choosing bases of the representation spaces, every plaquette character
-is a cyclic contraction of four matrix factors, one for each link in its
-boundary.  Each link variable appears only in the factors associated to
-plaquettes incident on that link, and in the Wilson-loop insertion if the
-link belongs to the loop.  Integrating over this link gives precisely the
-Haar average
+The derivation is the Peter--Weyl expansion performed link by link.  Insert
+the character expansion \eqref{eq:compact-character-expansion} independently
+for every plaquette.  After choosing bases of the representation spaces,
+every plaquette character is a cyclic contraction of four matrix factors, one
+for each link in its boundary.  Each link variable appears only in the factors
+associated to plaquettes incident on that link, and in the Wilson-loop
+insertion if the link belongs to the loop.  Integrating over this link gives
+precisely the Haar average
 \eqref{eq:compact-link-haar-projector}.  Performing the finitely many link
 integrals leaves a finite tensor contraction for each plaquette-label
 assignment.  Truncating the representation labels gives finite tensor
@@ -350,7 +343,6 @@ decay rapidly enough that the truncated sums converge to the original
 finite-dimensional integral.  The \(L^2\) Peter--Weyl statement gives the
 same formula for less regular class functions after the corresponding
 convergence mode has been specified.
-\end{proof}
 
 For \(G=SU(N)\), \(N\ge3\), with \(R\) the fundamental representation and
 with the conventional Wilson weight
