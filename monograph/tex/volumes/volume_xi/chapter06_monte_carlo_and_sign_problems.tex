@@ -184,8 +184,7 @@ The energy difference is local:
   2s_x\left(J\sum_{y:\langle xy\rangle}s_y+h\right).
 \]
 
-\begin{proposition}[Detailed balance for the finite Ising Metropolis chain]
-\label{prop:ising-metropolis-detailed-balance}
+\paragraph{Detailed balance for the finite Ising Metropolis chain.}
 The transition kernel \(P\) defined by the preceding update satisfies
 \[
   \pi_\beta(s)P(s,s')=\pi_\beta(s')P(s',s)
@@ -195,9 +194,7 @@ irreducible.  If additionally \((J,h)\neq(0,0)\), it is aperiodic on the
 finite set \(\{-1,+1\}^{\Lambda_L}\).  For the degenerate infinite-temperature
 Hamiltonian \(J=h=0\), adding a nonzero holding probability gives the usual
 lazy aperiodic variant without changing the stationary measure.
-\end{proposition}
 
-\begin{proof}
 If \(s'\) is not equal to \(s\) or to a one-spin flip of \(s\), both sides of
 the detailed-balance identity vanish.  For \(s'=s^x\), write
 \(\Delta H=H_L(s^x)-H_L(s)\).  The off-diagonal transition probabilities are
@@ -230,7 +227,6 @@ self-loop forces every state to have period one.  When \(J=h=0\), every
 proposal is accepted and the one-spin-flip walk on the hypercube is bipartite;
 the standard lazy modification inserts a holding probability and restores
 aperiodicity.
-\end{proof}
 
 The companion script
 \[
@@ -274,8 +270,7 @@ The single-link Metropolis chain chooses a link uniformly and accepts
   a(U,e)=\min\{1,\exp(\beta[Q(U^e)-Q(U)])\}.
 \]
 
-\begin{proposition}[Detailed balance for the finite \(\mathbb Z_2\) gauge chain]
-\label{prop:z2-gauge-metropolis-detailed-balance}
+\paragraph{Detailed balance for the finite \(\mathbb Z_2\) gauge chain.}
 The preceding single-link update satisfies
 \[
   \pi_\beta(U)P(U,U')
@@ -288,9 +283,7 @@ Gauge-invariant observables may be averaged either on this full space or
 after quotienting by gauge transformations; the full-space chain preserves
 the gauge-invariant expectation values because \(\pi_\beta\) is gauge
 invariant.
-\end{proposition}
 
-\begin{proof}
 If \(U'\) differs from \(U\) by more than one link, the off-diagonal
 transition probabilities in both directions vanish.  If \(U'=U^e\), set
 \(\Delta Q=Q(U^e)-Q(U)\).  The off-diagonal transition probabilities are
@@ -320,7 +313,6 @@ closed Wilson loop is unchanged under \(U_{xy}\mapsto g_xU_{xy}g_y\).
 Therefore averaging over the full link space includes gauge orbits with equal
 weights and gives the same gauge-invariant expectations as any exact
 gauge-orbit average with the corresponding orbit weights.
-\end{proof}
 
 The companion script
 \[
@@ -725,8 +717,7 @@ conditional density on \(H_\alpha\) is
 \end{equation}
 where \(dh\) is normalized Haar measure on the embedded \(SU(2)\).
 
-\begin{proposition}[Finite \(SU(3)\) subgroup-update invariance]
-\label{prop:su3-subgroup-update-invariance}
+\paragraph{Finite \(SU(3)\) subgroup-update invariance.}
 At fixed finite lattice and finite \(\beta\), an exact heat-bath draw from
 \eqref{eq:su3-subgroup-conditional-density} satisfies detailed balance for the
 finite \(SU(3)\) Wilson measure restricted to the selected subgroup orbit.
@@ -735,9 +726,7 @@ measure is invariant under inversion \(h\mapsto h^{-1}\) and whose acceptance
 probability is computed from the local score
 \eqref{eq:su3-local-staple-score}.  A random scan over finitely many links and
 over the three subgroups preserves the finite Wilson measure.
-\end{proposition}
 
-\begin{proof}
 The heat-bath statement is exactly the detailed-balance argument for
 \eqref{eq:heat-bath-kernel} applied to the coordinate \(h\in H_\alpha\) on
 the subgroup orbit \(hU_e\).  The conditional
@@ -755,24 +744,22 @@ with \(r(A)=r(A^{-1})\).  From a present subgroup coordinate \(h_0\), propose
   \min\{1,\exp[\beta(Q_e(h'h_0U_e)-Q_e(h_0U_e))]\}.
 \]
 The off-diagonal pairwise detailed-balance identity is the same two-case
-identity as in the proof of
-Proposition~\ref{prop:ising-metropolis-detailed-balance}, with the symmetric
-proposal measure supplied by inversion invariance of \(r\) and Haar measure.
-Rejected proposals provide the diagonal holding term.  Finally, finite
-compositions and random convex combinations of invariant kernels preserve the
-measure.
-\end{proof}
+identity as in the finite Ising Metropolis calculation above, with the
+symmetric proposal measure supplied by inversion invariance of \(r\) and Haar
+measure.  Rejected proposals provide the diagonal holding term.  Finally,
+finite compositions and random convex combinations of invariant kernels
+preserve the measure.
 
 \begin{controlledapproximation}[Status of subgroup algorithms]
 \label{ca:su3-subgroup-algorithm-status}
-Proposition~\ref{prop:su3-subgroup-update-invariance} is an exact
-finite-cutoff invariant-measure statement.  It is not a proof of rapid mixing,
-of small autocorrelation time, of absence of topological freezing, or of a
-continuum extrapolation.  The subgroup Lie-algebra calculation above explains
-why subgroup moves have the correct local group-theoretic reach, but
-ergodicity of a concrete Markov chain still depends on the proposal support,
-the scan schedule, boundary conditions, and the gauge-redundant directions of
-the finite lattice system.
+The subgroup update calculation above proves exact finite-cutoff invariance
+of the Wilson measure for the specified heat-bath or Metropolis kernels.  The
+algorithmic performance questions require additional data: proposal support,
+scan schedule, boundary conditions, autocorrelation estimates, possible
+topological-sector barriers, and a continuum-extrapolation analysis.  The
+subgroup Lie-algebra calculation supplies the local group-theoretic reach; the
+ergodicity and mixing assertions for a concrete Markov chain are separate
+finite-state or compact-state Markov-chain problems.
 \end{controlledapproximation}
 
 The calculation check
@@ -942,8 +929,7 @@ Indeed \eqref{eq:hmc-reversible-volume-preserving} gives
   G^2=R\Phi R\Phi=\Phi^{-1}\Phi=1 .
 \]
 
-\begin{proposition}[HMC Metropolis correction at finite regulator]
-\label{prop:hmc-metropolis-correction}
+\paragraph{HMC Metropolis correction at finite regulator.}
 Assume that \(\Phi\) is reversible and volume preserving in the sense of
 Definition~\ref{def:hmc-reversible-volume-preserving}.  Let
 \begin{equation}
@@ -961,9 +947,7 @@ and define the Markov kernel
 \end{equation}
 for measurable \(B\subset\Gamma_\Lambda\).  Then \(K\) satisfies detailed
 balance with respect to \(d\mu_H\).  Consequently \(d\mu_H\) is invariant.
-\end{proposition}
 
-\begin{proof}
 Since \(G\) is an involution and preserves \(d\lambda\), every nontrivial
 proposed move is paired with its reverse.  It is enough to prove the
 pairwise identity
@@ -988,7 +972,6 @@ calculation with \(z\) and \(Gz\) interchanged.  Multiplying
 points gives detailed balance for the moving part of the kernel.  The
 holding part is diagonal and is therefore symmetric with respect to
 \(d\mu_H\).  This proves detailed balance for \(K\).
-\end{proof}
 
 The usual HMC transition first refreshes \(p\) from its Gaussian conditional
 distribution and then applies \eqref{eq:hmc-metropolis-kernel}.  Momentum
@@ -1381,8 +1364,7 @@ and
   \label{eq:nonlinear-block-jackknife-variance}
 \end{equation}
 
-\begin{proposition}[Correlated delete-one-block jackknife for smooth ratios]
-\label{prop:correlated-delete-one-block-jackknife}
+\paragraph{Correlated delete-one-block jackknife for smooth ratios.}
 Assume \(B\ge2\).  Let \(g=DF_{\overline Y}\) be the differential of \(F\) at
 \(\overline Y\), regarded as a row vector.  Suppose that the operator norm of
 the Hessian satisfies
@@ -1412,9 +1394,7 @@ Then
   \frac{B-1}{B}(2AE+E^2).
   \label{eq:nonlinear-jackknife-taylor-bound}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Taylor's theorem gives
 \[
   F(\overline Y_{(j)})
@@ -1462,7 +1442,6 @@ Also
 \]
 Substituting these two bounds proves
 \eqref{eq:nonlinear-jackknife-taylor-bound}.
-\end{proof}
 
 For the static potential, the elementary block vector contains the positive
 Wilson-loop coordinates \(W(n,m)\) needed for a chosen finite list of

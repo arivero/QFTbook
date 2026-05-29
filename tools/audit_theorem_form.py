@@ -121,7 +121,12 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Conditional determination by complete .*data|"
     r"Separated universality|"
     r"Local universality from RG coordinates|"
-    r"Conditional .*universality"
+    r"Conditional .*universality|"
+    r"Detailed balance for the finite Ising Metropolis chain|"
+    r"Detailed balance for the finite .*Z_2.* gauge chain|"
+    r"Finite .*SU\\(3\\).* subgroup-update invariance|"
+    r"HMC Metropolis correction at finite regulator|"
+    r"Correlated delete-one-block jackknife for smooth ratios"
     r")\b",
     re.IGNORECASE,
 )
