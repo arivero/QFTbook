@@ -16,8 +16,9 @@
   phase-space path-integral data, and finite-slice sources.
 - Added propositions with proofs for the finite phase-space time-sliced
   kernel, a limit-circle failure of formal Hamiltonian data, Gaussian
-  elimination of quadratic momenta, trace-induced periodic Euclidean boundary
-  conditions, and Euclidean long-time projection to a gapped ground state.
+  elimination of quadratic momenta, and trace-induced periodic Euclidean
+  boundary conditions; the Euclidean long-time projection step is now recorded
+  as spectral-projection prose rather than theorem-family content.
 - Classified the Trotter product formula and Faris--Lavine criterion as
   quoted theorems, because the chapter uses these functional-analytic results
   rather than proving them from first principles.

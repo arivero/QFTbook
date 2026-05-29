@@ -43,8 +43,10 @@ about ambiguity.
 - Gives the instantaneous frequency-jump example as a normalization check.
 - Derives the exact Riccati equation for the adiabatic frequency and records
   the second-order solution.
-- Proves positivity of the switched detector response from positive type of
-  the two-point function.
+- Records positivity of the switched detector response as direct
+  positive-type smearing of the two-point function, with the pointlike
+  worldline smearing understood as a limit of ordinary spacetime test
+  functions.
 - Derives the de Sitter \(\nu\) parameter and gives normalized
   Bunch--Davies Hankel modes with their past positive-frequency asymptotic.
 - States the backreaction boundary: particle production is a diagnostic of a

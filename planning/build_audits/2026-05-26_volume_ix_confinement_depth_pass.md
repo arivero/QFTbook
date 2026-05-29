@@ -17,9 +17,9 @@ confinement from line-operator data rather than slogans.
 - Defined area, perimeter, zero-tension, and static-potential laws for
   renormalized line operators with the line renormalization scheme and order
   of limits explicit.
-- Proved transfer-matrix extraction of the static potential and a screening
-  bound showing that finite-mass endpoint screening rules out a positive
-  asymptotic linear potential for the screened charge.
+- Proved transfer-matrix extraction of the static potential and recorded the
+  variational screening bound showing that finite-mass endpoint screening
+  rules out a positive asymptotic linear potential for the screened charge.
 - Strengthened the strong-coupling lattice area-law mechanism with an
   explicit Haar-projection surface-selection lemma and a convergent-polymer
   proposition.

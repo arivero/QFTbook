@@ -867,8 +867,7 @@ expression whose convergence must be specified separately.
 
 \section{Vacuum Projection}
 
-\begin{proposition}[Euclidean long-time projection to a gapped ground state]
-\label{prop:euclidean-long-time-ground-state-projection}
+\paragraph{Euclidean long-time projection to a gapped ground state.}
 Assume \(\widehat H\) has a normalized ground state \(\ket{0}\), with energy
 \(E_0\), and that a vector \(\ket\psi\in\Hilb_{\mathcal Q}\) satisfies
 \(\braket{0}{\psi}\ne0\). If the spectrum above \(E_0\) is separated by a
@@ -888,10 +887,8 @@ therefore be obtained from long Euclidean-time evolution:
 \]
 is the normalized long-time limit of the corresponding transition amplitude
 with insertions, after the Euclidean projection has been applied.
-\end{proposition}
-
-\begin{proof}
-By the spectral theorem for \(\widehat H\), write
+This is the elementary spectral projection mechanism behind Euclidean vacuum
+boundary conditions.  By the spectral theorem for \(\widehat H\), write
 \(\ket\psi=c_0\ket0+\eta\) with \(c_0=\braket0\psi\ne0\) and \(\eta\)
 orthogonal to the ground-state subspace.  The gap assumption gives
 \[
@@ -904,7 +901,10 @@ for some \(\Delta>0\).  Therefore the normalized Euclidean evolution tends to
 and final wave packets in a transition amplitude with time-ordered insertions
 selects the vacuum matrix element after the common exponential normalization is
 removed.
-\end{proof}
+The substantive hypotheses are the existence of the normalized ground state,
+the nonzero overlap of the boundary vector with it, and the gap.  Without a
+gap the same formula can fail in norm, and one must specify the weaker
+spectral or distributional limit being used.
 
 The next chapter will analyze the analytic continuation and Gaussian
 integrals that make this construction computationally useful. The present

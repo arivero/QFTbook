@@ -23,9 +23,9 @@
   explicit.
 - Proves transfer-matrix extraction of the static potential from a positive
   spectral measure.
-- Proves that endpoint screening by finite-mass dynamical particles bounds
-  the large-separation static energy and rules out a positive asymptotic
-  linear potential for the screened charge.
+- Records the variational endpoint-screening bound: finite-mass screened
+  endpoint trial states bound the large-separation static energy and rule out
+  a positive asymptotic linear potential for the screened charge.
 - Proves the strong-coupling lattice area mechanism from character expansion,
   Haar projection, surface selection, and the convergent-polymer hypothesis.
 - Defines the finite condensate diagnostic \(K^\perp\), proves the finite

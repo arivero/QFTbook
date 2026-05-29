@@ -25,6 +25,25 @@ THEOREM_ENV_RE = re.compile(
     r"\\begin\{(theorem|proposition|lemma|corollary)\}(?:\[([^\]]*)\])?",
 )
 
+STATEMENT_ENV_RE = re.compile(
+    r"\\begin\{(assumption|theorem|proposition|lemma|corollary)\}(?:\[([^\]]*)\])?",
+)
+
+REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
+    (
+        "volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex",
+        "Large-spin BES scaling regime",
+        "proposition",
+        "Zhukovsky Fourier transform",
+    ),
+    (
+        "volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex",
+        r"Weak-coupling regularity of the \(SL(2)\) QSC",
+        "lemma",
+        "Half-integer digamma primitive",
+    ),
+}
+
 NEGATIVE_SCOPE_TITLE_RE = re.compile(
     r"\b("
     r"does not|do not|is not|are not|cannot|"
@@ -234,6 +253,10 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Heat-kernel smoothing estimate"
     r"|Finite functional exclusion certificate"
     r"|Positivity criterion for a BRST doublet sector"
+    r"|Euclidean long-time projection to a gapped ground state"
+    r"|Endpoint screening bounds the static energy"
+    r"|Diffeomorphism Ward identity for metric stress tensors"
+    r"|Positivity of the switched detector response"
     r"|Conditional finite-coordinate Wilsonian continuum limit"
     r"|Two-winding expansion of the vacuum energy"
     r"|Crossing scalar convention algebra"
@@ -373,6 +396,33 @@ def main() -> int:
                 failures.append(
                     f"{path}:{idx + 1}: proof environment follows a definition"
                 )
+
+        statements: list[tuple[int, str, str]] = []
+        for idx, line_text in enumerate(lines, 1):
+            if match := STATEMENT_ENV_RE.search(line_text):
+                statements.append((idx, match.group(1), match.group(2) or ""))
+
+        relpath = str(path.relative_to(ROOT))
+        for current, following in zip(statements, statements[1:]):
+            line, env, title = current
+            next_line, next_env, next_title = following
+            if env != "assumption" or next_env not in {
+                "theorem",
+                "proposition",
+                "lemma",
+                "corollary",
+            }:
+                continue
+            if next_line - line > 140:
+                continue
+            key = (relpath, title, next_env, next_title)
+            if key in REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS:
+                continue
+            failures.append(
+                f"{path}:{line}: assumption [{title}] is followed {next_line - line} "
+                f"lines later by {next_env} [{next_title}]; read the substance and "
+                "demote, separate, or add a reviewed exception"
+            )
 
     if failures:
         print("Theorem-form audit failures:", file=sys.stderr)

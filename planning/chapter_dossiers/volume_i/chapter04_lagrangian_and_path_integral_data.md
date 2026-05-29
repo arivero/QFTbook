@@ -106,8 +106,9 @@ Working framework:
   generating functional at finite cutoff.
 - Paragraph "Trace and periodic Euclidean boundary conditions": Euclidean
   trace boundary condition for bosonic paths.
-- `prop:euclidean-long-time-ground-state-projection`: vacuum projection by
-  Euclidean time evolution.
+- Paragraph "Euclidean long-time projection to a gapped ground state": vacuum
+  projection by Euclidean time evolution, treated as spectral-projection
+  prose rather than theorem-family content.
 
 ## Claim Ledger
 
@@ -140,13 +141,14 @@ Working framework:
 - Infinite-volume thermal equilibrium is formulated by the KMS analytic
   boundary condition on the quasilocal algebra, not by a literal full-Hilbert
   trace.
-- `prop:euclidean-long-time-ground-state-projection` proves ground-state
-  projection under a spectral gap and nonzero overlap.
+- The Euclidean long-time projection paragraph derives ground-state
+  projection under a spectral gap and nonzero overlap, and records that the
+  substantive hypotheses are the ground state, overlap, and gap.
 
 The formalized version labels the time-slicing, Kato/Feynman--Kac,
-essential-self-adjointness, ordering, Gaussian momentum, trace, and vacuum
-projection statements so later chapters can cite hypotheses rather than
-informal path-integral slogans.
+essential-self-adjointness, ordering, Gaussian momentum, and trace statements,
+while the vacuum-projection step is kept as prose because the argument is the
+spectral theorem plus a gap estimate.
 
 ## Audit Notes
 

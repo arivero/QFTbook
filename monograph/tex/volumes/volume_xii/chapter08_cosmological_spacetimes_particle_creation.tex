@@ -468,18 +468,16 @@ detector energy gap \(E\), first-order perturbation theory gives
 \end{equation}
 where \(W\) is the Wightman two-point function of the state.
 
-\begin{proposition}[Positivity of the switched detector response]
-\label{prop:detector-response-positive-type}
+\paragraph{Positivity of the switched detector response.}
 If \(W\) is a positive-type two-point function, then
 \[
   P(E)\geq0
   \]
 for every real \(E\) and every smooth compactly supported switching function
 \(\chi\).
-\end{proposition}
-
-\begin{proof}
-Define the test function on spacetime
+The content is the positive-type property of the state applied to the detector
+smearing.  Define the test function on
+spacetime
 \[
   f_E(x)
   =
@@ -496,11 +494,14 @@ Positive type of the quasifree state is precisely the condition
 \(W(\overline f,f)\geq0\) for every test function \(f\).  The worldline
 smearing can be obtained as the limit of ordinary compactly supported
 spacetime test functions in a tubular neighborhood of the curve, so the same
-positivity applies.
-\end{proof}
+positivity applies.  The approximation by ordinary test functions is part of
+the mathematical meaning of the idealized pointlike detector; a finite-size
+detector replaces the delta distribution by a smooth spatial profile and
+satisfies positivity directly.
 
 Detector response is therefore a local operational probe of a chosen state.
-It does not require a global out-Fock space.
+Its definition uses the state two-point distribution, the detector trajectory,
+and the switching/profile data.
 
 \section{The Bunch--Davies State in de Sitter Space}
 

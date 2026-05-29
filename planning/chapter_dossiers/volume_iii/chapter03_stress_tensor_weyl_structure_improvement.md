@@ -100,6 +100,10 @@ The chapter establishes:
 - 2026-05-24 issue #423 pass: tied the derivative contact term in the local
   stress-tensor Ward identity to the Chapter 6 primary spin contact operator,
   making clear that the scalar Ward identity is only the spinless special case.
+- 2026-05-29 anti-wrapper audit: demoted the background-diffeomorphism Ward
+  identity from proposition form to source-Noether prose, preserving the
+  conservation equation while making explicit that coincident insertions carry
+  contact terms depending on operator transformations and contact extensions.
 - 2026-05-25 issue #473 pass: split the anomaly-density/contact-Ward material
   from the conformal-anomaly classification, added the Wess--Zumino consistency
   condition, type-A/type-B/type-D definitions, and explicit \(D=2,4,6\)
