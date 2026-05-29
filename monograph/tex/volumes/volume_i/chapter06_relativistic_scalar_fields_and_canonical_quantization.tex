@@ -423,8 +423,7 @@ variables by \(b_{\vec k}^{(\hbar=1)}=\hbar^{-1/2}b_{\vec k}^{(\hbar)}\).
 
 \section{Oscillator Variables and the Hamiltonian}
 
-\begin{proposition}[Equal-time oscillator variables and the CCR]
-\label{prop:equal-time-scalar-oscillator-variables-ccr}
+\paragraph{Equal-time oscillator variables and the CCR.}
 Let \(\nu_{\vec k}>0\) be a positive even function of \(\vec k\). Define
 operator-valued distributions \(b_{\vec k}\) and \(b^\dagger_{\vec k}\) by the
 equal-time expansion
@@ -460,9 +459,6 @@ The equal-time commutation relations are equivalent to
   =
   (2\pi)^{D-1}\delta^{(D-1)}(\vec k-\vec q).
 \]
-\end{proposition}
-
-\begin{proof}
 Substitute the mode expansions into the smeared equal-time commutator and use
 \[
   \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
@@ -479,10 +475,8 @@ commutator against plane waves recovers the oscillator commutator.  The
 \(\phi\)-\(\phi\) and \(\Pi\)-\(\Pi\) commutators vanish because the
 \(b\)-\(b\) and \(b^\dagger\)-\(b^\dagger\) commutators vanish and the
 remaining terms cancel by \(\vec k\mapsto-\vec k\).
-\end{proof}
 
-\begin{proposition}[Bogoliubov reparametrizations preserve the CCR]
-\label{prop:scalar-bogoliubov-reparametrizations-preserve-ccr}
+\paragraph{Bogoliubov reparametrizations of oscillator variables.}
 This algebra holds for every positive choice of \(\nu_{\vec k}\). The
 notation \(b_{\vec k}\), \(b^\dagger_{\vec k}\) should therefore not yet be
 read as a particle interpretation. If \(\lambda_{\vec k}>0\) is another even
@@ -509,9 +503,6 @@ The \(c\)'s obey the same canonical oscillator algebra. If a vector is
 annihilated by every \(b_{\vec k}\), it is not annihilated by every
 \(c_{\vec k}\) unless \(\lambda_{\vec k}=1\). The Hamiltonian is the datum
 that selects the oscillator normalization.
-\end{proposition}
-
-\begin{proof}
 Write \(u_{\vec k}=(\lambda_{\vec k}+\lambda_{\vec k}^{-1})/2\) and
 \(v_{\vec k}=(\lambda_{\vec k}-\lambda_{\vec k}^{-1})/2\).  Evenness of
 \(\lambda\) gives \(u_{-\vec k}=u_{\vec k}\) and \(v_{-\vec k}=v_{\vec k}\).
@@ -533,10 +524,8 @@ by the same cancellation.  Finally, if \(b_{\vec k}\vac_b=0\), then
 \]
 which vanishes for all \(\vec k\) only when \(v_{\vec k}=0\), equivalently
 \(\lambda_{\vec k}=1\).
-\end{proof}
 
-\begin{proposition}[Free Hamiltonian selects \(\nu_{\vec k}=\omega_{\vec k}\)]
-\label{prop:free-hamiltonian-selects-omega-normalization}
+\paragraph{Free Hamiltonian diagonalization.}
 Let
 \[
   \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
@@ -567,9 +556,6 @@ The off-diagonal terms vanish precisely for
 \[
   \nu_{\vec k}=\omega_{\vec k}.
 \]
-\end{proposition}
-
-\begin{proof}
 Insert the equal-time oscillator expansion into
 \[
   H_0=\frac12\int\dd^{D-1}\vec x\,
@@ -587,7 +573,6 @@ the terms gives the displayed Hamiltonian.  Since \(\nu_{\vec k}>0\), the
 off-diagonal coefficient vanishes if and only if
 \(\nu_{\vec k}^2=\omega_{\vec k}^2\), hence
 \(\nu_{\vec k}=\omega_{\vec k}\).
-\end{proof}
 
 \begin{definition}[Free scalar Fock representation]
 \label{def:free-scalar-fock-representation}

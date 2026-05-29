@@ -9,7 +9,11 @@ from the regulated Lagrangian path-integral construction; tightened on
 2026-05-24 so the Lorentzian finite-regulator path-integral object is
 classified as oscillatory; tightened on 2026-05-24 for issue #371 by spelling
 out the mostly-plus index-raising sign in the canonical momentum
-\(\Pi=\partial_t\phi\).
+\(\Pi=\partial_t\phi\).  The 2026-05-29 anti-wrapper pass demoted the
+equal-time oscillator algebra, Bogoliubov reparametrization, and Hamiltonian
+diagonalization checks from proposition/proof wrappers to worked derivations,
+while leaving the covariance and microcausality result as a genuine structural
+proposition.
 
 ## Logical Role
 
@@ -104,9 +108,9 @@ Working framework:
 | For the mostly-plus covariant Lagrangian, the free canonical momentum is \(\Pi=-\partial^0\phi=\partial_0\phi=\partial_t\phi\). | Derived | 2026-05-24 issue #371 index-raising pass |
 | The Lagrangian field path-integral symbol denotes a specified limit or asymptotic expansion of regulated integrals over \((\mathcal C_R,\dd\mu_R,S_R)\). | Framework statement | 2026-05-23 rigor pass |
 | With Lorentzian phase, a finite-regulator Lagrangian path-integral expression is an oscillatory integral/distribution; the quadratic case is a Fresnel integral with determinant magnitude and signature phase. | Definition/framework statement | 2026-05-24 issue #301 pass; expanded in Chapter 8 Definition `def:lorentzian-oscillatory-path-integral` |
-| Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Derived | Fourier inversion |
-| The free Hamiltonian selects \(\omega_{\vec k}=\sqrt{\vec k^2+m^2}\) as the diagonal oscillator frequency. | Derived | Substitution into \(H_0\) |
-| Oscillator algebras related by Bogoliubov transformations do not by themselves determine the vacuum. | Derived/construction | 2026-05-22 source audit of handwritten Bogoliubov remark |
+| Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Worked derivation | Fourier inversion; demoted from proposition wrapper on 2026-05-29 |
+| The free Hamiltonian selects \(\omega_{\vec k}=\sqrt{\vec k^2+m^2}\) as the diagonal oscillator frequency. | Worked derivation | Substitution into \(H_0\); demoted from proposition wrapper on 2026-05-29 |
+| Oscillator algebras related by Bogoliubov transformations do not by themselves determine the vacuum. | Worked derivation/construction | 2026-05-22 source audit of handwritten Bogoliubov remark; demoted from proposition wrapper on 2026-05-29 |
 | The free scalar field is an operator-valued distribution on finite-particle vectors. | Construction | Fock-space formula |
 | The Pauli-Jordan distribution vanishes at spacelike separation. | Derived | Lorentz invariance and equal-time reduction |
 

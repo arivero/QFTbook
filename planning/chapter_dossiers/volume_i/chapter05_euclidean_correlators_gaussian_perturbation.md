@@ -18,6 +18,10 @@ regulator or perturbative construction.  Tightened again for issue #315 by
 making the finite-mode cutoff removal explicit: the free oscillator has an
 actual Gaussian moment limit, while interacting uses are coefficientwise
 formal perturbation theory unless counterterms/subtractions are specified.
+The 2026-05-29 anti-wrapper pass demoted the vacuum-factor cancellation and
+derivative-interaction one-loop counterterm calculation from proposition/proof
+wrappers to worked paragraphs, since their value is the explicit finite-cutoff
+bookkeeping rather than a separate theorem.
 
 ## Logical Role
 
@@ -142,11 +146,11 @@ Working framework:
 | The anharmonic first-order vacuum contraction uses the coincident-field Wick count \((4-1)!!=3\), distinct from the \(4!\) labeled half-edge assignment count. | Derived | Issue #383 combinatorics clarification |
 | The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived; source-certified 2026-05-22 | Component-counting formula with \(m_\ell\), linked-cluster exponentiation, and counted three-vertex topology |
-| Normalized two-point functions retain diagrams connected to the external insertions. | Derived; source-certified 2026-05-22 | Vacuum factor cancellation in \(Z_g^{-1}\langle q(\tau)q(0)\cdots\rangle_0\) |
+| Normalized two-point functions retain diagrams connected to the external insertions. | Worked finite-cutoff algebra; source-certified 2026-05-22 | Vacuum factor cancellation in \(Z_g^{-1}\langle q(\tau)q(0)\cdots\rangle_0\); kept as prose after the 2026-05-29 anti-wrapper pass |
 | The first anharmonic vacuum graph gives \(\log(Z_g/Z_0)/T_{\rm tot}=-(g/8)G_0(0)^2+O(g^2)\), and \(E_0=-T_{\rm tot}^{-1}\log Z\) converts this into \(\Delta E_0=+(g/8)G_0(0)^2+O(g^2)\). | Derived | Issue #380 sign-chain pass |
 | The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived; source-certified 2026-05-22 | Amputated 1PI convention, second-order topologies, and \(\widetilde G(k)=1/(k^2+1-\Sigma(k))\) |
 | In the anharmonic self-energy, the order-\(g^2\) constant \(g^2/32\) is the tadpole-bubble/double-bubble insertion, while \((g^2/8)(k^2+9)^{-1}\) is the sunset insertion with singularities \(k=\pm3i\), equivalently \(k^2=-9\), from the three-quantum intermediate energy. | Derived | 2026-05-24 issue #376 topology-identification pass |
-| Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction | Explicit cutoff computation; 2026-05-22 handwritten source/figure audit |
+| Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction plus worked one-loop calculation | Explicit cutoff computation; 2026-05-22 handwritten source/figure audit; demoted from proposition wrapper on 2026-05-29 |
 
 ## Figure Ledger
 

@@ -1408,14 +1408,10 @@ Equivalently, at the regulated level,
     \left(-\frac{g}{4!}\int q(\tau')^4\,\dd\tau'\right)^n
   \right\rangle_0 .
 \]
-\begin{proposition}[Vacuum components cancel in normalized two-point functions]
-\label{prop:vacuum-components-cancel-normalized-two-point}
+\paragraph{Vacuum components in normalized two-point functions.}
 At fixed cutoff and as a formal power series in \(g\), the normalized
 two-point function is the sum of Wick diagrams whose connected component
 contains both external insertions.
-\end{proposition}
-
-\begin{proof}
 At fixed cutoff every coefficient of the formal series is a finite Gaussian
 moment, hence Wick's theorem expresses it as a finite sum over pairings.
 View a pairing as a graph whose vertices are the two external insertions and
@@ -1430,7 +1426,6 @@ generating-function factors.  Summing over all vacuum components therefore
 produces the same formal power series \(Z_g\) that appears in the denominator.
 Division by \(Z_g\) cancels this vacuum factor coefficientwise, leaving exactly
 the Wick graphs whose connected component contains both external insertions.
-\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95]
@@ -2044,8 +2039,7 @@ the corresponding finite product Lebesgue measure.  The interaction is
 expanded before \(\Lambda\to\infty\).
 \end{definition}
 
-\begin{proposition}[Local counterterm required by the derivative interaction]
-\label{prop:derivative-interaction-local-counterterm-gap}
+\paragraph{Local counterterm for the derivative interaction.}
 After restoring \(\hbar\), the first-order self-energy has the form
 \[
   \Sigma_\Lambda(k)
@@ -2084,9 +2078,6 @@ Choosing
 defines a finite limiting two-point function as \(\Lambda\to\infty\). The
 finite constant \(C_{\mathrm{fin}}\) is part of the quantum definition of the
 Hamiltonian represented by this regulated Lagrangian path integral.
-\end{proposition}
-
-\begin{proof}
 The contraction with two derivatives acting on the loop gives
 \[
   \frac{g}{4}
@@ -2113,17 +2104,17 @@ denominator convention used for \(\Sigma\).  Hence it shifts
 \(\Sigma_\Lambda(k)\) by \(-Cg\hbar\).  Choosing
 \(C=\Lambda/(4\pi)+C_{\rm fin}\) removes the linearly divergent local part.
 The remaining finite family is the one displayed above.
-\end{proof}
 
-The pole of the regulated two-point function,
+The pole of the regulated two-point function is read from the denominator of
 \[
   \widetilde G_\Lambda(k)
   =
-  \frac{\hbar}{k^2+1-\Sigma_\Lambda(k)},
+  \frac{\hbar}{k^2+1-\Sigma_\Lambda(k)}.
 \]
+
 \paragraph{Finite gap after choosing the finite local term.}
-After the counterterm choice of
-Proposition~\ref{prop:derivative-interaction-local-counterterm-gap}, the
+After the counterterm choice
+\(C=\Lambda/(4\pi)+C_{\mathrm{fin}}\), the
 first energy gap is
 \[
   \omega_1
