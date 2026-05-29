@@ -10,8 +10,11 @@ public calculation-check companion.
 
 ## Edits
 
-- Added Proposition `prop:su2-wilson-positive-character-coefficients` to
+- Added the \(SU(2)\) Wilson-character coefficient calculation to
   `monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positivity.tex`.
+  This calculation was later demoted from proposition form to prose in the
+  anti-wrapper pass; the coefficient identity and positivity derivation remain
+  in the text.
 - Derived the \(SU(2)\) Wilson coefficients from normalized Haar
   class-function orthogonality:
   \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta>0\).
