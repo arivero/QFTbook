@@ -295,6 +295,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Degree sum for a simple Lie algebra"
     r"|Ising net .*mu.*index and DHR fusion"
     r"|Finite large-.*K.* fit with an explicit remainder amplifier"
+    r"|Cardy solution for the diagonal invariant"
+    r"|Operator implementation of spectral flow"
+    r"|Shear and sound poles"
+    r"|Thermal susceptibility integrals"
+    r"|Index of the anti-self-dual complex"
+    r"|Index of the monopole deformation problem"
+    r"|Monopole condensation from the local .*F.*terms"
+    r"|Non-abelian Chern--Simons auxiliary elimination"
+    r"|Wilson lifting of the naive species"
+    r"|Overlap operator satisfies Ginsparg--Wilson"
+    r"|Overlap index as spectral asymmetry"
     r")\b",
     re.IGNORECASE,
 )

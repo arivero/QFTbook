@@ -62,8 +62,7 @@ For \(SU(N)\) with the fundamental trace convention
 \(\operatorname{tr}_{\mathbf N}(T^aT^b)=\delta^{ab}\), this means
 \(C_A=2N\) and \(T_{\mathbf N}=1\).
 
-\begin{lemma}[Thermal susceptibility integrals]
-\label{lem:thermal-susceptibility-integrals}
+\paragraph{Thermal susceptibility integrals.}
 For \(n_B(x)=(e^x-1)^{-1}\) and \(n_F(x)=(e^x+1)^{-1}\),
 \begin{align}
   \frac1T\int\frac{\dd^3p}{(2\pi)^3}
@@ -77,9 +76,7 @@ For \(n_B(x)=(e^x-1)^{-1}\) and \(n_F(x)=(e^x+1)^{-1}\),
   \frac{T^2}{12}.
   \label{eq:thermal-fermion-susceptibility-integral}
 \end{align}
-\end{lemma}
 
-\begin{proof}
 Set \(x=|p|/T\).  Then
 \[
   \frac1T\int\frac{\dd^3p}{(2\pi)^3}
@@ -113,7 +110,6 @@ and
 Substitution gives
 \eqref{eq:thermal-boson-susceptibility-integral} and
 \eqref{eq:thermal-fermion-susceptibility-integral}.
-\end{proof}
 
 \begin{proposition}[One-loop origin and coefficient of the Debye mass term]
 \label{prop:debye-mass-origin}
@@ -199,7 +195,7 @@ A complex scalar has two real thermal degrees of freedom in \(R\), and hence
 contributes \(T^2T_R\delta^{ab}/3\).  A Dirac fermion has two spin
 polarizations and particle/antiparticle excitations.  The anti-periodic
 Matsubara sum gives the fermionic integral in
-Lemma~\ref{lem:thermal-susceptibility-integrals}, so
+the susceptibility calculation above, so
 \begin{equation}
   \chi_{\rm Dirac}^{ab}
   =
