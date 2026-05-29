@@ -1991,17 +1991,39 @@ Then
 \end{proposition}
 
 \begin{proof}
-First assume no two vertices have equal time coordinate; the general
-distributional statement follows by smearing and partitioning the test
-function support away from equal-time hyperplanes, then taking the finite
-sum of limits.  Let \(x_k^0\) be the largest vertex time.  Pair the term
-\(G_\sigma\) with the term obtained by replacing \(\sigma(k)\) by
-\(1-\sigma(k)\) and leaving all other circling labels fixed.  For every line
-from \(x_k\) to an earlier vertex, the displayed decompositions give the same
-positive-frequency Wightman factor in the two paired terms.  The remaining
-factors in the graph are identical.  The two vertex factors at \(x_k\) differ
-by the circled-vertex minus sign.  The pair therefore cancels.  Summing over
-all circlings proves \eqref{eq:largest-time-equation}.
+First smear the vertex variables with a test function whose support avoids
+all equal-time hyperplanes \(x_a^0=x_b^0\).  The complement is a finite union
+of open time-ordering chambers, so it suffices to prove the identity on one
+such chamber.  The general smeared distribution is then obtained by a finite
+partition of unity and by taking the limit as the partition is refined; the
+equal-time hyperplanes have no independent contribution because the
+regularized boundary values are distributions and the displayed theta
+decomposition is used only after smearing.
+
+Fix a chamber and let \(k\) be the unique vertex with largest time.  Split
+the sum over circlings into pairs \((\sigma,\sigma^{(k)})\), where
+\(\sigma^{(k)}\) differs from \(\sigma\) only at \(k\).  Lines not incident
+on \(k\) have identical factors in the two paired graphs.  If a line joins
+\(x_k\) to an earlier vertex \(x_j\), then \(x_k^0-x_j^0>0\).  The four
+possible circling assignments give
+\[
+\begin{array}{c|c}
+  \text{circling at }k,j & \text{line factor from }k\text{ to }j\\ \hline
+  0,0 & \Delta_F(x_k-x_j)=\Delta^+(x_k-x_j)\\
+  1,1 & \Delta_F(x_k-x_j)^*=\Delta^-(x_k-x_j)\\
+  0,1 & \Delta^+(x_k-x_j)\\
+  1,0 & \Delta^-(x_k-x_j).
+\end{array}
+\]
+Thus changing only the circling of the largest-time vertex leaves every
+incident line factor fixed: the factor is \(\Delta^+\) if the earlier vertex
+is uncircled and \(\Delta^-\) if it is circled.  The local interaction factor
+at \(x_k\), however, is multiplied by \(-1\) when \(x_k\) is circled,
+because complex conjugation of the perturbative \(i\)-weighted Hermitian
+vertex changes \(i\mathcal L_{\rm int}\) to \(-i\mathcal L_{\rm int}\).
+Each pair \((G_\sigma,G_{\sigma^{(k)}})\) therefore cancels.  Summing the
+pairs over all circlings proves \eqref{eq:largest-time-equation} on the
+chamber, and hence as the regularized distribution.
 \end{proof}
 
 Subtract from \eqref{eq:largest-time-equation} the all-uncircled and

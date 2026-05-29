@@ -413,8 +413,9 @@ variation \(a\) and an infinitesimal gauge parameter \(\zeta\) to
 \[
   a+d_A\zeta .
 \]
-The Coulomb condition imposes \(d_A^*a=0\).  Elliptic Fredholm theory gives the
-orthogonal decomposition
+The tangent space to the proposed slice is \(\ker d_A^*\), because the
+Coulomb condition \(d_A^*(B-A)=0\) linearizes to \(d_A^*a=0\).  Elliptic
+Fredholm theory gives the Hodge-type decomposition
 \[
   L^2_k(T^*X\otimes\operatorname{ad}P)
   =
@@ -422,16 +423,39 @@ orthogonal decomposition
   \oplus
   \operatorname{im}d_A
 \]
-after the finite-dimensional kernel of \(d_A\) has been removed.  The inverse
-on the orbit directions is obtained by solving
+after the finite-dimensional kernel of \(d_A\) has been removed.  The
+orthogonality follows from the adjoint relation
+\(\langle a,d_A\zeta\rangle=\langle d_A^*a,\zeta\rangle\), and closedness of
+\(\operatorname{im}d_A\) follows from ellipticity of \(d_A^*d_A\) on the
+stabilizer-free gauge algebra.
+
+The inverse on the orbit directions is obtained explicitly.  Given a
+one-form \(u\), solve
 \[
   d_A^*d_A\zeta=d_A^*u
 \]
-for the longitudinal part of a one-form \(u\).  The operator \(d_A^*d_A\) is
-elliptic and invertible on the separated gauge algebra, so the derivative is a
-Banach-space isomorphism.  The Sobolev inequality \(k>\dim X/2+1\) makes the
-gauge action smooth in the relevant Hilbert-manifold category, and the inverse
-function theorem supplies the stated local product chart.
+for \(\zeta\); invertibility of \(\mathcal M_A=d_A^*d_A\) is precisely the
+irreducibility condition with stabilizer directions removed.  Then
+\[
+  u=(u-d_A\zeta)+d_A\zeta,
+  \qquad
+  d_A^*(u-d_A\zeta)=0,
+\]
+so the derivative
+\[
+  \ker d_A^*\oplus L^2_{k+1}(\operatorname{ad}P)_{\rm free}
+  \longrightarrow
+  L^2_k(T^*X\otimes\operatorname{ad}P)
+\]
+is a Banach-space isomorphism.  The Sobolev condition
+\(k>\dim X/2+1\) makes \(L^2_{k+1}\) gauge transformations at least
+\(C^1\) and makes multiplication/composition smooth in the Hilbert-manifold
+category.  The Banach inverse function theorem therefore gives a local
+diffeomorphism from a neighborhood of \((A,\id)\) in
+\(\mathcal S_A(\epsilon)\times\mathcal U_{\id}\) onto a neighborhood of the
+orbit of \(A\).  In this chart the linearization of the gauge condition along
+the orbit is \(d_A^*d_A\), hence the background Coulomb Faddeev--Popov
+operator is \(\mathcal M_A\).
 \end{proof}
 
 The word ``local'' in the Faddeev--Popov formulae below means precisely this

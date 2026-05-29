@@ -1655,18 +1655,67 @@ Equality holds if and only if the Bogomolny equation
 \end{proposition}
 
 \begin{proof}
-Equation \eqref{eq:bogomolny-square} is an algebraic identity.  The square
-term is nonnegative because the trace form is positive on the compact gauge
-algebra.  The remaining term is a surface integral by the Bianchi identity,
-as shown above.  For \(SU(2)\to U(1)\), choose two patches on \(S^2_\infty\)
-in which \(\Phi_\infty\) is gauge rotated to a fixed Cartan generator.  The
-transition function on the equator is a map \(S^1\to U(1)\) of winding
-\(n\).  Stokes' theorem on the two patches expresses
-\(\int_{S^2_\infty}\dd S_i\,\operatorname{tr}(\Phi B_i)\) as the trace
-pairing of the fixed Higgs value with the first Chern flux of this \(U(1)\)
-bundle.  This is \(4\pi v_{\mathrm m}n\) by the definition of the primitive
-magnetic normalization.  Equality in the square completion holds exactly when
-the square vanishes pointwise.
+The square completion
+\eqref{eq:bogomolny-square} gives, for either sign,
+\[
+  E
+  =
+  \frac{1}{2g_{\mathrm{YM}}^2}
+  \int_{\mathbb R^3}\dd^3x\,
+  \operatorname{tr}(B_i\mp D_i\Phi)^2
+  \pm
+  \frac{1}{g_{\mathrm{YM}}^2}
+  \int_{\mathbb R^3}\dd^3x\,
+  \operatorname{tr}(B_iD_i\Phi).
+\]
+The first term is nonnegative because the trace form is positive on the
+compact real Lie algebra.  For the second term,
+\[
+  \operatorname{tr}(B_iD_i\Phi)
+  =
+  \partial_i\operatorname{tr}(B_i\Phi)
+  -
+  \operatorname{tr}((D_iB_i)\Phi).
+\]
+The covariant Bianchi identity gives \(D_iB_i=0\), so the cross term is the
+surface integral in \eqref{eq:bogomolny-bound-surface}.
+
+It remains to identify that surface integral with the magnetic cocharacter.
+Finite energy implies that, on the sphere at infinity, \(\Phi\) has fixed
+length and \(D_i\Phi\to0\).  Hence the structure group of the asymptotic
+bundle reduces to the stabilizer \(U(1)\) of the limiting Higgs direction.
+Choose northern and southern patches on \(S^2_\infty\) in which
+\(\Phi_\infty\) is gauge rotated to a fixed Cartan element \(H\).  On their
+equatorial overlap the transition map is
+\[
+  g_{NS}(\varphi)=\exp(\ii n\varphi H_{\rm m})
+\]
+for the primitive magnetic generator \(H_{\rm m}\) and an integer winding
+\(n\).  In these patches the asymptotic connection is Abelian in the same
+Cartan direction, and Stokes' theorem gives a flux proportional to this
+winding:
+\[
+  \frac{1}{4\pi}
+  \int_{S^2_\infty}\dd S_i\,\operatorname{tr}(\Phi B_i)
+  =
+  \left[
+  \frac{1}{4\pi}
+  \int_{S^2_\infty}^{\text{primitive}}
+  \dd S_i\,\operatorname{tr}(\Phi B_i)
+  \right] n
+  =
+  v_{\mathrm m}n .
+\]
+The bracketed primitive flux is the normalization called \(v_{\mathrm m}\)
+in the statement.  This form keeps the trace-form convention explicit rather
+than hiding a generator normalization in \(H_{\rm m}\).  Choosing the sign in
+the square completion to match the sign of \(n\) gives the lower bound
+\[
+  E\ge \frac{4\pi v_{\mathrm m}}{g_{\mathrm{YM}}^2}|n|.
+\]
+Equality can hold only if the nonnegative square term vanishes almost
+everywhere.  Smoothness makes this equivalent to the pointwise Bogomolny
+equation \(B_i=\pm D_i\Phi\), with the same sign as the magnetic charge.
 \end{proof}
 
 An explicit unit monopole is obtained from the hedgehog ansatz.  To avoid

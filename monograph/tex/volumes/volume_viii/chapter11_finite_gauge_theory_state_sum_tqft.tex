@@ -409,18 +409,38 @@ manifolds it depends only on the cohomology class
 \end{proposition}
 
 \begin{proof}
-A Pachner move replaces one triangulation of the boundary of a
-\((D+1)\)-simplex by the complementary triangulation.  For a flat labeling,
-the ratio of the two products of \(D\)-simplex weights is exactly
-\((\delta\omega)(g_1,\ldots,g_{D+1})\), with the signs determined by whether
-the \(D\)-face is incoming or outgoing in the boundary orientation.  The
-cocycle condition \eqref{eq:dw-cocycle-condition} makes the ratio \(1\).
-If \(\omega\) is replaced by \(\omega\delta\lambda\), the additional
-\(\delta\lambda\) factors telescope over the triangulation: every interior
-\((D-1)\)-face occurs in exactly two adjacent \(D\)-simplices with opposite
-induced orientations.  The uncanceled factors are precisely the
-\(\lambda\)-weights on \(\partial M\).  If \(M\) is closed, this boundary
-product is empty, so the coboundary factor cancels.
+A flat edge labeling of a branched triangulation is equivalently a simplicial
+map from the triangulation to the nerve model of \(BG\): the ordered edge
+labels on a simplex are composable group elements, and flatness says that
+the label on a longer edge is their product.  The factor
+\(\omega_\sigma(g)\) is therefore the pullback of the normalized
+\(D\)-cochain \(\omega\) evaluated on the oriented \(D\)-simplex \(\sigma\).
+
+A branching-preserving Pachner move replaces a collection of oriented
+\(D\)-faces in the boundary of one branched \((D+1)\)-simplex by the
+complementary collection of \(D\)-faces.  For a fixed flat labeling, all
+boundary labels are restrictions of one \((D+1)\)-simplex label
+\((g_1,\ldots,g_{D+1})\).  The ratio between the two products of
+\(\omega\)-weights is the alternating product over the \(D\)-faces of this
+\((D+1)\)-simplex, namely
+\[
+  (\delta\omega)(g_1,\ldots,g_{D+1}),
+\]
+where the exponent sign records whether the face orientation agrees with the
+boundary orientation.  The cocycle condition
+\eqref{eq:dw-cocycle-condition} makes this ratio equal to \(1\).  Since a
+Pachner move is local and gives a bijection between flat labelings that
+agree outside the moved ball, the whole state-sum is unchanged.
+
+Now replace \(\omega\) by \(\omega\,\delta\lambda\), with \(\lambda\) a
+\((D-1)\)-cochain on \(G\).  On each \(D\)-simplex the extra factor is the
+alternating product of the \(\lambda\)-weights on its \((D-1)\)-faces.  When
+one multiplies over all \(D\)-simplices, every interior \((D-1)\)-face
+appears twice with opposite induced orientations and cancels.  The surviving
+product is supported on \(\partial M\).  Thus a closed \(M\) has no residual
+factor, while a manifold with boundary changes by exactly the boundary
+coboundary term.  The closed state-sum therefore depends only on
+\([\omega]\in H^D(BG,U(1))\).
 \end{proof}
 
 The intrinsic form of the same definition is the following.  A bundle

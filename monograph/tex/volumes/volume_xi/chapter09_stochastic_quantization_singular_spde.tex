@@ -2633,9 +2633,18 @@ uniformly in \(n\).  Then \(\mu\) is invariant for \(P_t\):
 \end{proposition}
 
 \begin{proof}
-Fix \(f\in C_b(E)\), \(t\geq0\), and \(\eta>0\).  By tightness, choose a
-compact set \(K\subset E\) with \(\mu_n(K)\geq1-\eta\) for all sufficiently
-large \(n\).  Then
+Fix \(f\in C_b(E)\), \(t\geq0\), and \(\eta>0\).  Choose a compact set
+\(K\subset E\) such that \(\mu_n(K)\ge 1-\eta\) for all sufficiently large
+\(n\) and such that the convergence \(P_t^{(n)}f\to P_tf\) is uniform on
+this same \(K\).  The latter requirement is not implied by tightness alone;
+it is the high-probability compact-set convergence hypothesis in the
+statement.  Since Markov semigroups are contractions on bounded functions,
+\[
+  \|P_t^{(n)}f\|_\infty\le \|f\|_\infty,
+  \qquad
+  \|P_tf\|_\infty\le \|f\|_\infty .
+\]
+Therefore
 \[
   \left|
     \int P_t^{(n)}f\,\dd\mu_n
@@ -2654,11 +2663,25 @@ gives
   \int P_tf\,\dd\mu_n
   \longrightarrow0 .
 \]
-Since \(P_tf\) is bounded and continuous, weak convergence of \(\mu_n\)
-gives \(\int P_tf\,\dd\mu_n\to\int P_tf\,\dd\mu\).  Invariance of
-\(\mu_n\) gives \(\int P_t^{(n)}f\,\dd\mu_n=\int f\,\dd\mu_n\), and weak
-convergence also gives \(\int f\,\dd\mu_n\to\int f\,\dd\mu\).  Combining
-these limits proves the assertion.
+The limiting semigroup is assumed to map \(C_b(E)\) to \(C_b(E)\), so weak
+convergence of \(\mu_n\) gives
+\[
+  \int P_tf\,\dd\mu_n\longrightarrow \int P_tf\,\dd\mu .
+\]
+The cutoff invariance gives
+\[
+  \int P_t^{(n)}f\,\dd\mu_n=\int f\,\dd\mu_n,
+\]
+and weak convergence also gives
+\[
+  \int f\,\dd\mu_n\longrightarrow \int f\,\dd\mu .
+\]
+Combining the three limits yields
+\[
+  \int P_tf\,\dd\mu=\int f\,\dd\mu .
+\]
+Since \(f\) and \(t\) were arbitrary, \(\mu\) is invariant for the limiting
+Markov semigroup.
 \end{proof}
 
 For singular SPDE, the hypotheses of

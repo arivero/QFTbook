@@ -475,14 +475,25 @@ there is a unique strongly continuous unitary representation
 \end{proposition}
 
 \begin{proof}
-On the dense subspace
-\(\pi_{\omega_0}(\Obs_{\rm qloc})\Omega_{\omega_0}\), define
+On the algebraic cyclic subspace
+\(\mathcal D_0=\pi_{\omega_0}(\Obs_{\rm qloc})\Omega_{\omega_0}\), define
 \[
   U_{\omega_0}(g)\pi_{\omega_0}(A)\Omega_{\omega_0}
   =
   \pi_{\omega_0}(\alpha_g(A))\Omega_{\omega_0}.
 \]
-This map preserves inner products because
+This is well defined on the GNS quotient.  If
+\(\pi_{\omega_0}(A)\Omega_{\omega_0}=0\), then
+\(\omega_0(A^*A)=0\); invariance gives
+\[
+  \omega_0(\alpha_g(A)^*\alpha_g(A))
+  =
+  \omega_0(\alpha_g(A^*A))
+  =
+  \omega_0(A^*A)=0,
+\]
+so \(\pi_{\omega_0}(\alpha_g(A))\Omega_{\omega_0}=0\).  The same
+calculation shows preservation of inner products:
 \[
   \langle\pi_{\omega_0}(\alpha_g(A))\Omega_{\omega_0},
   \pi_{\omega_0}(\alpha_g(B))\Omega_{\omega_0}\rangle
@@ -491,11 +502,36 @@ This map preserves inner products because
   =
   \omega_0(A^*B).
 \]
-It therefore extends to a unitary.  The group law follows from the group law
-for \(\alpha_g\), and \eqref{eq:vacuum-unitary-implementation} follows on the
-dense cyclic subspace.  Strong continuity is inherited from the assumed
-strong continuity of the automorphic action in the GNS norm
-\(\|[A]\|_{\omega_0}^2=\omega_0(A^*A)\).
+Thus \(U_{\omega_0}(g)\) extends from \(\mathcal D_0\) to an isometry on
+\(\Hilb_{\omega_0}\).  Applying the same construction to \(g^{-1}\) gives
+the inverse isometry, so \(U_{\omega_0}(g)\) is unitary.  The group law holds
+on \(\mathcal D_0\):
+\[
+  U_{\omega_0}(g)U_{\omega_0}(h)\pi_{\omega_0}(A)\Omega_{\omega_0}
+  =
+  \pi_{\omega_0}(\alpha_{gh}(A))\Omega_{\omega_0},
+\]
+and hence holds on the Hilbert-space completion.  The covariance relation in
+\eqref{eq:vacuum-unitary-implementation} is checked on
+\(\mathcal D_0\) and extended by boundedness.
+
+For strong continuity, it is enough to test vectors in the dense
+\(\mathcal D_0\), uniformly boundedness then extends the result to all
+vectors.  For \(A\in\Obs_{\rm qloc}\),
+\[
+  \|U_{\omega_0}(g)\pi_{\omega_0}(A)\Omega_{\omega_0}
+      -\pi_{\omega_0}(A)\Omega_{\omega_0}\|^2
+  =
+  \omega_0\!\left(
+    (\alpha_g(A)-A)^*(\alpha_g(A)-A)
+  \right),
+\]
+which tends to zero by the assumed strong continuity of the automorphic
+action in the GNS norm.  Finally, if a unitary representation satisfying
+\eqref{eq:vacuum-unitary-implementation} and fixing \(\Omega_{\omega_0}\)
+exists, its value on every vector
+\(\pi_{\omega_0}(A)\Omega_{\omega_0}\) is forced by the covariance relation;
+density gives uniqueness.
 \end{proof}
 
 When the vacuum representation is fixed, we write \(\mathcal R(\mathcal O)\)

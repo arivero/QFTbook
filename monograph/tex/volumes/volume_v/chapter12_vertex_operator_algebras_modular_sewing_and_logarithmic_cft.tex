@@ -1082,10 +1082,15 @@ Choose the homogeneous basis orthonormal.  With
   =
   \langle u_1,P_a(q)u_2\rangle
 \]
-when the finite-level partial sums are taken first.  Since \(P_a(q)\) is
-trace class, it is bounded and
-\(|\langle u_1,P_a(q)u_2\rangle|\le\|u_1\|\,\|P_a(q)\|\,\|u_2\|\le
-\|u_1\|\,\|P_a(q)\|_1\,\|u_2\|\).  Absolute convergence follows from
+when the finite-level partial sums are taken first.  Trace class implies
+compactness and boundedness, with
+\(\|P_a(q)\|\le\|P_a(q)\|_1\).  Hence
+\[
+  |\langle u_1,P_a(q)u_2\rangle|
+  \le
+  \|u_1\|\,\|P_a(q)\|_1\,\|u_2\|.
+\]
+Absolute convergence of the displayed basis expansion follows directly from
 \[
   \sum_\alpha
   |\langle u_1,e_\alpha\rangle|\,|\lambda_\alpha|\,
@@ -1098,9 +1103,20 @@ trace class, it is bounded and
   \le
   \|u_1\|\,\|u_2\|\sum_\alpha|\lambda_\alpha|.
 \]
-The last sum is \(\|P_a(q)\|_1\).  Since the value is the Hilbert inner
-product \(\langle u_1,P_a(q)u_2\rangle\), changing the orthonormal basis
-does not change the scalar.
+The last sum is the trace norm in this diagonal homogeneous basis.  If
+\(P_a(q)\) is not diagonal in the chosen orthonormal basis, apply the same
+argument to its singular-value decomposition
+\[
+  P_a(q)=\sum_r s_r\,|v_r\rangle\langle w_r|,
+  \qquad
+  s_r\ge0,\qquad
+  \sum_r s_r=\|P_a(q)\|_1,
+\]
+which gives the same estimate by Cauchy--Schwarz in the \(r\)-sum.  The
+finite-level partial sums converge in trace norm to \(P_a(q)\), so their
+matrix elements converge to \(\langle u_1,P_a(q)u_2\rangle\).  Since this
+inner product is an operator-theoretic scalar, not a coordinate expression,
+changing the orthonormal homogeneous basis does not change the sewn block.
 \end{proof}
 
 \begin{remark}[Torus trace from self-sewing]

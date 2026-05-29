@@ -374,7 +374,7 @@ Set
 \[
   \Psi=e^{-S_+}O .
 \]
-Expanding the crossing factor gives
+Because the \(F_j\) have a fixed order, expanding the crossing factor gives
 \[
   B_\times=
   \sum_{I\subset\{1,\ldots,M\}}
@@ -383,7 +383,9 @@ Expanding the crossing factor gives
   c_I=\prod_{j\in I}c_j\geq0,
 \]
 where the ordered monomial \(F_I\) includes the sign convention needed to
-put \(\Theta(F_I)F_I\) in reflected-positive order.  Therefore
+put \(\Theta(F_I)F_I\) in reflected-positive order.  The factorization of
+the Berezin volume into negative and positive halves and the anti-linear
+reflection convention give
 \[
   \int d\mu_-\,d\mu_+\,
   \Theta(\Psi)\,B_\times\,\Psi
@@ -392,11 +394,29 @@ put \(\Theta(F_I)F_I\) in reflected-positive order.  Therefore
   \int d\mu_-\,d\mu_+\,
   \Theta(F_I\Psi)\,F_I\Psi .
 \]
-For each \(I\), the last integral extracts the top coefficient of a
-Grassmann monomial together with its reflected complex conjugate.  In the
-ordered basis of \(\mathcal A_+\), it is a sum of absolute squares of the
-coefficients of \(F_I\Psi\).  Hence every summand is nonnegative, and the
-finite sum is nonnegative.
+To see the sign and positivity explicitly, choose the ordered monomial basis
+\(\{e_A\}\) of \(\mathcal A_+\) normalized so that
+\[
+  \int d\mu_-\,d\mu_+\,\Theta(e_A)e_B=\delta_{AB}.
+\]
+This normalization is exactly the finite Grassmann analogue of choosing an
+orthonormal basis in the positive-time algebra; it is fixed once the order of
+the generators and of their reflected partners has been fixed.  Write
+\[
+  F_I\Psi=\sum_A z_{I,A}e_A .
+\]
+Anti-linearity of \(\Theta\) gives
+\[
+  \int d\mu_-\,d\mu_+\,
+  \Theta(F_I\Psi)\,F_I\Psi
+  =
+  \sum_A |z_{I,A}|^2 .
+\]
+All possible signs from moving negative-time reflected generators past
+positive-time generators have already been absorbed into the definition of
+the ordered monomial \(F_I\); no further indefinite form appears.  Since
+each \(c_I\ge0\), the finite sum is nonnegative.  Division by the positive
+normalization \(Z\) preserves the inequality.
 \end{proof}
 
 \begin{proposition}[Free nearest-neighbor fermion: only the mid-link cut]

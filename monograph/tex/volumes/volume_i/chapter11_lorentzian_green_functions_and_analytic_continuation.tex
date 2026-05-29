@@ -176,21 +176,36 @@ The two extensions agree by hypothesis on the open set
 \[
   M^n\setminus \bigcup_{a<b}\{x_a=x_b\}.
 \]
-The support of their difference is therefore contained in the closed
-complement, which is the union of the partial diagonals displayed above.
-The local structure statement is the standard distribution theorem for
-distributions supported on an embedded submanifold: in coordinates
-\((u,v)\), where \(u\) are coordinates along the diagonal and \(v\) are normal
-coordinates, a distribution supported on \(v=0\) has finite order in the
-normal directions and can be written locally as
+Let \(T=G_n-G_n'\).  If a test function is supported in this open set, both
+extensions evaluate it by \(G_n^\circ\), hence \(T\) vanishes on such test
+functions.  Therefore
+\[
+  \operatorname{supp}T
+  \subset
+  \bigcup_{a<b}\{x_a=x_b\}.
+\]
+Refining this closed cover by the coincidence pattern of the labels gives
+the displayed union over partitions \(\mathcal P\): the block structure
+records exactly which variables are forced to coincide.
+
+For the local normal form, fix one such stratum and choose coordinates
+\((u,v)\), where \(u\) are coordinates along the diagonal and \(v\) are
+normal relative coordinates.  A distribution supported on \(v=0\) has finite
+transverse order on every compact coordinate chart.  Equivalently, there are
+an integer \(N\) and distributions \(T_\alpha\) along the diagonal such that
+locally
 \[
   \sum_{|\alpha|\le N} T_\alpha(u)\,\partial_v^\alpha\delta(v).
 \]
-The finite order follows from continuity of the distribution on compact
-coordinate charts.  Translation invariance removes dependence on the common
-center-of-mass coordinate, and locality of the renormalization prescription
-restricts the coefficient distributions to derivatives of delta functions in
-relative diagonal variables.  These are precisely the contact terms.
+The finite order follows from the seminorm estimate defining continuity of a
+distribution on compactly supported tests; Taylor expansion in the normal
+variables reduces the action of \(T\) to finitely many normal derivatives at
+\(v=0\).  Translation invariance removes dependence on the common
+center-of-mass coordinate in flat space.  Locality of the renormalization
+prescription further restricts the coefficient distributions to derivatives
+of delta functions in relative diagonal variables, with numerical
+coupling-dependent coefficients.  These supported delta-derivative
+contributions are precisely the contact terms.
 \end{proof}
 
 \paragraph{Free scalar Feynman boundary value.}
@@ -845,10 +860,18 @@ Chapter~\ref{ch:volume-ii-analyticity-crossing-landau}.
 
 \begin{proof}
 For Euclidean external energies, every external energy entering a propagator
-has imaginary value, so the propagator poles in each loop-energy variable
-remain separated from the deformation from the real cycle to the imaginary
-cycle.  A deformation theorem for meromorphic integrands then identifies the
-Lorentzian integral with the Euclidean integral on that first-sheet domain.
+has imaginary value.  For fixed spatial loop momenta, the pole locations in
+each loop-energy variable remain a positive distance away from the rotating
+contour on compact subsets of the Euclidean external domain.  The Feynman
+\(i0\) prescription places the positive- and negative-energy poles on
+opposite sides of the original real contour, and the imaginary external
+energies prevent a pole from crossing the homotopy from the real contour to
+the imaginary contour.  Cauchy's theorem for the regularized meromorphic
+integrand identifies the Lorentzian integral with the Euclidean integral on
+this first-sheet domain.  Equivalently, insert a rapidly decreasing
+regulator, perform the contour deformation with vanishing large arcs, and
+remove the regulator inside the common analytic domain.
+
 For real timelike \(k\), the sunset denominators admit the simultaneous
 on-shell solution
 \[
@@ -856,11 +879,17 @@ on-shell solution
   \qquad
   q_1^0,q_2^0,k^0-q_1^0-q_2^0>0
 \]
-when \(k^0\ge3m\) in the rest frame.  At such a point poles approach the
-integration cycle from opposite sides in the two loop-energy variables, so
-the cycle is pinched and cannot be deformed without crossing a singularity.
-The Lorentzian value above threshold is therefore a boundary value on a cut of
-the first-sheet analytic function, not an ordinary Euclidean rotation.
+when \(k^0\ge3m\) in the rest frame.  At threshold the three internal spatial
+momenta may be zero; above threshold they may share the total energy
+\(k^0\).  The Landau stationarity condition says that the gradients of the
+three on-shell denominators are linearly dependent with nonnegative
+coefficients, so the singular hypersurfaces meet the integration cycle in a
+trapping configuration.  In the \(q_1^0,q_2^0\) variables, poles
+approach from opposite sides as the external energy is continued to the
+physical value.  No deformation to the imaginary cycle exists without
+crossing a pole.  The Lorentzian value above threshold is therefore a
+specified boundary value on the cut of the first-sheet analytic function, not
+the result of an independent Euclidean rotation of each loop energy.
 \end{proof}
 
 \section{Full Two-Point Function and First Sheet}

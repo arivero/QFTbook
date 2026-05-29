@@ -1519,16 +1519,60 @@ Consequently the coefficient of \(\kappa^N\) in
 \end{lemma}
 
 \begin{proof}
-For finite-rank \(\rho=\sum_{a=1}^r s_a\,|\psi_a\rangle\langle\phi_a|\),
-the identity is the Cauchy--Binet expansion of the finite determinant
-\(\det(\delta_{ab}+\kappa s_a\langle\phi_a,\psi_b\rangle)\).  Approximate a
-trace-class operator in trace norm by finite-rank operators.  The Fredholm
-determinant is continuous in trace norm, and the Fredholm minors converge in
-the same expansion because the exterior powers satisfy
-\(\|\wedge^N\rho\|_1\le \|\rho\|_1^N/N!\).  This gives
-\eqref{eq:fredholm-minor-expansion}.  Applying
+For finite-rank
+\[
+  \rho=\sum_{a=1}^r s_a\,|\psi_a\rangle\langle\phi_a|
+\]
+with \(\psi_a,\phi_a\in L^2(\mathbb R)\), the nonzero spectrum of \(\rho\)
+is the spectrum of the \(r\times r\) matrix
+\[
+  M_{ab}=s_a\langle\phi_a,\psi_b\rangle .
+\]
+Thus \(\det(1+\kappa\rho)=\det_r(1+\kappa M)\).  On the other hand the
+\(N\)-th integral minor is the trace of the exterior power
+\(\wedge^N\rho\):
+\[
+  \operatorname{Tr}(\wedge^N\rho)
+  =
+  \frac1{N!}
+  \int_{\mathbb R^N}\prod_{i=1}^N dq_i\,
+  \det_{i,j}\rho(q_i,q_j).
+\]
+Indeed, expanding \(\det_{i,j}\rho(q_i,q_j)\) in the displayed finite-rank
+decomposition and integrating the alternating products gives exactly the
+Cauchy--Binet formula for the \(N\times N\) principal exterior minors of
+\(M\).  Summing these exterior traces gives the characteristic-polynomial
+identity
+\[
+  \det(1+\kappa\rho)
+  =
+  \sum_{N=0}^r \kappa^N \operatorname{Tr}(\wedge^N\rho).
+\]
+
+For a general trace-class \(\rho\), choose finite-rank
+\(\rho_m\to\rho\) in trace norm.  The Fredholm determinant is defined by the
+absolutely convergent series
+\[
+  \det(1+\kappa\rho)
+  =
+  \sum_{N=0}^\infty \kappa^N\operatorname{Tr}(\wedge^N\rho),
+  \qquad
+  |\operatorname{Tr}(\wedge^N\rho)|
+  \le \frac{\|\rho\|_1^N}{N!},
+\]
+and the same estimate, applied to multilinear differences of exterior
+powers, gives
+\[
+  \operatorname{Tr}(\wedge^N\rho_m)\to
+  \operatorname{Tr}(\wedge^N\rho)
+\]
+for each \(N\), with a locally uniform majorant in \(\kappa\).  Hence the
+finite-rank identities pass to the trace-norm limit and yield
+\eqref{eq:fredholm-minor-expansion}.  For the ABJM kernel, the unitary
+conjugation used above leaves all minors invariant and
 Quoted Theorem~\ref{qt:abjm-fermi-gas-representation} identifies the
-coefficients with the localized ABJM integrals.
+\(N\)-th coefficient with the localized \(S^3\) integral
+\(Z^{\rm ABJM}_{S^3}(N,k)\).
 \end{proof}
 
 \paragraph{Leading phase-space coefficient.}
