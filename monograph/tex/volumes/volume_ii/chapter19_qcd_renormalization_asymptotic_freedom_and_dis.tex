@@ -8142,6 +8142,213 @@ TMDs or other observables with unresolved transverse momentum, an additional
 rapidity renormalization is required; it is not part of the integrated PDF
 definition used in inclusive DIS.
 
+\subsection{Euclidean Spatial Bilocals and Large-Momentum Matching}
+\label{subsec:qcd-euclidean-bilocals-quasi-pdfs}
+
+Lattice access to the light-ray definitions
+\eqref{eq:pdf-light-ray-definition}--\eqref{eq:qcd-gluon-pdf-definition}
+uses different operator coordinates.  The basic object is a spacelike
+equal-time bilocal, not a lightlike bilocal.  Let \(e_3\) be a fixed unit
+spatial vector and let \(P^\mu=(E_P,0,0,P_3)\), \(P_3>0\), be a one-hadron
+momentum in a finite-volume regulator with a transfer matrix and a
+gauge-invariant Hilbert space.  For a Dirac matrix \(\Gamma\) and a real
+spatial separation \(z\), define the regulated spatial Wilson-line operator
+\begin{equation}
+  \mathcal Q_\Gamma(z;\Lambda)
+  :=
+  \left[
+    \bar q(z e_3)\,
+    W_{\square}(z e_3,0)\,
+    \Gamma\,q(0)
+  \right]_{\Lambda}.
+  \label{eq:qcd-spatial-bilocal-operator}
+\end{equation}
+Here \(\Lambda\) denotes the complete ultraviolet and finite-volume regulator
+data, including the lattice spacing and box when the operator is realized on a
+lattice.  The Wilson transporter is along the straight spatial segment.  Its
+linear length divergence, endpoint divergences, and finite subtraction are
+part of the operator-renormalization datum; they are not part of the
+definition of the light-ray PDF.
+
+\begin{proposition}[Gauge invariance of the spatial bilocal]
+\label{prop:qcd-spatial-bilocal-gauge-invariance}
+At finite gauge-covariant regulator, the operator
+\(\mathcal Q_\Gamma(z;\Lambda)\) is gauge invariant as a color-singlet
+bilocal.  A background-gauge-covariant finite-part prescription therefore
+produces a gauge-invariant renormalized spatial-bilocal matrix element.
+\end{proposition}
+
+\begin{proof}
+The proof is the endpoint-cancellation argument of
+Proposition~\ref{prop:qcd-light-ray-gauge-covariance} with the lightlike path
+\(s n\) replaced by the spatial path \(s z e_3\), \(0\le s\le1\).  The
+parallel transporter transforms as
+\[
+  W_{\square}(z e_3,0)
+  \longmapsto
+  U(z e_3)W_{\square}(z e_3,0)U(0)^{-1}.
+\]
+The factor \(U(0)^{-1}\) cancels the transformation of \(q(0)\), the factor
+\(U(z e_3)\) cancels the transformation of \(\bar q(z e_3)\), and \(\Gamma\)
+acts only on spinor indices.  The finite-part map changes regulator
+coordinates and operator coordinates but carries no free color index when it
+is background gauge covariant.
+\end{proof}
+
+Let
+\begin{equation}
+  \mathcal M_{\Gamma/H}^{\mathcal R}(z,P_3)
+  :=
+  \frac{1}{2P_3}
+  \bra{P,H}\mathcal Q_\Gamma^{\mathcal R}(z)\ket{P,H},
+  \qquad
+  \nu:=P_3z ,
+  \label{eq:qcd-spatial-bilocal-matrix-element}
+\end{equation}
+where \(\mathcal R\) denotes a specified finite-part prescription.  A quasi-PDF
+coordinate is the Fourier transform
+\begin{equation}
+  \widetilde f_{\Gamma/H}^{\mathcal R}(x,P_3)
+  :=
+  P_3\int_{\mathbb R}\frac{\dd z}{2\pi}\,
+  \ee^{\ii xP_3z}\,
+  \mathcal M_{\Gamma/H}^{\mathcal R}(z,P_3),
+  \label{eq:qcd-quasi-pdf-coordinate}
+\end{equation}
+understood as a tempered distribution in \(x\) after smearing.  The prefactor
+\(P_3\) fixes the inverse convention
+\[
+  \mathcal M_{\Gamma/H}^{\mathcal R}(z,P_3)
+  =
+  \int_{\mathbb R}\dd x\,
+  \ee^{-\ii xP_3z}
+  \widetilde f_{\Gamma/H}^{\mathcal R}(x,P_3)
+\]
+for distributions for which the Fourier inversion is valid.  A pseudo-PDF or
+Ioffe-time coordinate instead regards the same matrix element as a function,
+or distribution, of the Ioffe time \(\nu=P_3z\) and spacelike length
+\(z^2>0\) in Euclidean notation:
+\begin{equation}
+  \mathfrak M_{\Gamma/H}^{\mathcal R}(\nu,z^2)
+  :=
+  \mathcal M_{\Gamma/H}^{\mathcal R}(z,P_3).
+  \label{eq:qcd-pseudo-itd-coordinate}
+\end{equation}
+When \(\mathfrak M_{\Gamma/H}^{\mathcal R}(0,z^2)\ne0\), the reduced
+Ioffe-time coordinate
+\[
+  \mathfrak M_{\rm red}(\nu,z^2)
+  :=
+  \frac{\mathfrak M_{\Gamma/H}^{\mathcal R}(\nu,z^2)}
+       {\mathfrak M_{\Gamma/H}^{\mathcal R}(0,z^2)}
+\]
+cancels any multiplicative Wilson-line factor depending only on \(z^2\) in
+that scheme.  It does not remove matching coefficients, target-mass effects,
+or higher-twist matrix elements.
+
+\begin{controlledapproximation}[Large-momentum matching datum]
+\label{ca:qcd-large-momentum-quasi-pdf-matching}
+Fix a renormalized spatial-bilocal scheme \(\mathcal R\), a light-ray
+factorization scheme at scale \(\mu\), and a test function
+\(h\in C_c^\infty(\mathbb R)\).  A large-momentum matching statement for
+\eqref{eq:qcd-quasi-pdf-coordinate} consists of kernels
+\(C_{\Gamma a}^{\mathcal R}\), with \(a\) running over the light-ray operator
+basis, such that
+\begin{align}
+  \left\langle
+  \widetilde f_{\Gamma/H}^{\mathcal R}(\,\cdot\,,P_3),h
+  \right\rangle
+  &=
+  \sum_a\int_0^1\dd y\, f_{a/H}(y,\mu)
+  \int_{\mathbb R}\dd x\,h(x)\,
+  \frac1y
+  C_{\Gamma a}^{\mathcal R}
+  \left(\frac{x}{y},\frac{\mu}{P_3}\right)
+  \notag\\
+  &\hspace{1.0cm}
+  +R_{\Gamma,H}^{\mathcal R}[h;P_3,\mu].
+  \label{eq:qcd-quasi-pdf-matching-distributional}
+\end{align}
+The statement is controlled only after the topology of the remainder has been
+specified.  A typical leading-power version requires, for fixed compact
+support of \(h\),
+\begin{equation}
+  |R_{\Gamma,H}^{\mathcal R}[h;P_3,\mu]|
+  \le
+  C_h
+  \left(
+    \frac{M_H^2}{P_3^2}
+    +\frac{\Lambda_{\rm had}^2}{P_3^2}
+  \right)
+  +
+  R_{\rm reg}[h;a,L,P_3],
+  \label{eq:qcd-quasi-pdf-power-remainder}
+\end{equation}
+where \(M_H\) is the hadron mass, \(\Lambda_{\rm had}\) is a hadronic scale
+attached to higher-twist matrix elements, and \(R_{\rm reg}\) records finite
+lattice-spacing, finite-volume, and finite-operator-length errors before the
+continuum and infinite-volume limits are taken.  Endpoint regions, small
+\(x\), and threshold \(x\to1\) require additional test-function restrictions
+or separate factorization data.
+\end{controlledapproximation}
+
+The kernels in
+Controlled Approximation~\ref{ca:qcd-large-momentum-quasi-pdf-matching} are
+short-distance coordinates.  In perturbation theory they are determined by
+matching matrix elements of the spatial bilocal and the light-ray operator in
+the same infrared state, so the infrared dependence cancels in the difference.
+That perturbative statement is not, by itself, a nonperturbative theorem about
+the large-\(P_3\) limit of QCD.  A theorem-level version would need a
+renormalized construction of the spatial Wilson-line operator, a spacelike
+short-distance OPE with remainder estimates uniform after hadron matrix
+elements, and a proof that the large-momentum limit converts the spacelike
+operator coordinates to the light-ray coordinates in the stated distributional
+topology.
+
+\begin{lemma}[Scheme covariance of finite matching kernels]
+\label{lem:qcd-quasi-pdf-scheme-covariance}
+Let \(f\) denote the column vector of light-ray PDFs in a convolution algebra,
+and suppose a quasi-PDF coordinate satisfies
+\(\widetilde f=C\otimes f\) at leading power.  If a finite light-ray scheme
+change is \(f'=R\otimes f\), where \(R\) has a convolution inverse, then the
+same quasi-PDF coordinate is written in the primed scheme as
+\[
+  \widetilde f=C'\otimes f',
+  \qquad
+  C'=C\otimes R^{-1}.
+\]
+If a linear charge functional \(N(f)=\sum_a n_a\int_0^1 f_a(y)\,\dd y\) is
+preserved by \(R\) and the matching kernel satisfies
+\[
+  \sum_i m_i\int_{\mathbb R} C_{ia}(\xi)\,\dd\xi=n_a
+\]
+for the corresponding quasi-PDF charge weights \(m_i\), then the matched
+quasi-PDF has the same charge \(N\) at leading power.
+\end{lemma}
+
+\begin{proof}
+Associativity of convolution gives
+\[
+  (C\otimes R^{-1})\otimes(R\otimes f)
+  =
+  C\otimes(R^{-1}\otimes R)\otimes f
+  =
+  C\otimes f.
+\]
+For the charge statement, integrate the matching formula over \(x\) with
+weights \(m_i\).  The change of variables \(x=y\xi\), \(y>0\), gives
+\[
+  \sum_i m_i\int_{\mathbb R}\dd x\,\frac1y C_{ia}(x/y)
+  =
+  \sum_i m_i\int_{\mathbb R}\dd\xi\,C_{ia}(\xi)
+  =
+  n_a.
+\]
+The remaining \(y\)-integral is exactly \(N(f)\).  The assumed preservation of
+\(N\) by \(R\) says that the same value is obtained in the primed light-ray
+coordinates.
+\end{proof}
+
 Figure~\ref{fig:qcd-dis-ope-light-ray-factorization} records the operator
 factorization used for inclusive DIS: the short-distance current product is
 matched to renormalized light-ray operators whose convolutional

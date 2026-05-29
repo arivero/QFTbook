@@ -115,6 +115,11 @@ Current checks:
   scheme-change covariance, fixed-product rapidity-scale cancellation in
   two-hadron factorization, and GPD polynomiality from local twist-two
   contractions.
+- `qcd_quasi_pdf_matching_checks.py`: exact finite checks for the Volume II
+  quasi-/pseudo-PDF block, including the large-momentum Fourier prefactor
+  convention, cancellation of a multiplicative spatial-Wilson-line factor in a
+  reduced Ioffe-time ratio, finite matching-kernel scheme covariance, and
+  charge preservation from matching-kernel column sums.
 - `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
   exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
   normalization, Gegenbauer normalization moments, leading ERBL anomalous

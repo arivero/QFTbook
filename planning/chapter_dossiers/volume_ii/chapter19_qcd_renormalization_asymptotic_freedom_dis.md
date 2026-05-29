@@ -196,7 +196,10 @@ The chapter must define and derive:
   the regulated gauge-invariant matrix-element principle for QCD quantities,
   the gauge-covariance proof for open light-ray operators, integrated quark and
   gluon PDF definitions with Wilson-line dressing, convolution
-  renormalization, factorization assumptions with a compact-\(x_B\)
+  renormalization, Euclidean equal-time spatial bilocals and quasi-/pseudo-PDF
+  coordinates as matching observables rather than definitions of PDFs,
+  large-momentum matching as a distributional controlled approximation with
+  finite-regulator error terms, factorization assumptions with a compact-\(x_B\)
   distributional power-remainder bound, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
@@ -400,6 +403,15 @@ The chapter must define and derive:
      distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
      threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
      not consequences of the compact-\(x\) statement.
+22ca. Euclidean equal-time spatial bilocals are gauge-invariant Wilson-line
+      matrix elements in a finite regulator.  Their quasi-PDF Fourier
+      transforms and pseudo-Ioffe-time coordinates are matching observables for
+      light-ray PDFs, not alternate definitions of those PDFs.  The
+      large-momentum relation is stated distributionally against test functions
+      and carries explicit hadron-mass, higher-twist, lattice-spacing,
+      finite-volume, and endpoint qualifications.  Finite scheme changes of
+      light-ray PDFs act by inverse transformation on the matching kernel, and
+      charge preservation is a column-sum condition on that kernel.
 22cc. The small-\(x\) boundary is grounded in regulated Wilson-line dipole
       matrix elements rather than colored parton scattering states.  The
       leading fixed-coupling BFKL kernel is written with the monograph
