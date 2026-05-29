@@ -807,6 +807,138 @@ Since \(n\) is odd, \(1-(-1)^n=2\), giving the claimed kinematic-pole
 equation.
 \end{proof}
 
+\begin{proposition}[Separated Euclidean spectral series for the Ising branch fields]
+\label{prop:ising-spin-separated-euclidean-series}
+Use the free Majorana one-particle normalization of
+Proposition~\ref{prop:majorana-energy-two-particle-reconstruction}, and
+consider Euclidean time separation \(r>0\).  Define
+\[
+  I_m(r)
+  =
+  \int_{\R}\frac{\dd\theta}{2\pi}\,e^{-mr\cosh\theta}
+  =
+  \frac{1}{\pi}K_0(mr).
+  \label{eq:ising-one-particle-euclidean-majorant}
+\]
+The even spin-field form factors
+\eqref{eq:ising-spin-even-form-factors} determine an absolutely convergent
+separated-point Euclidean spectral series
+\begin{equation}
+  G_{\sigma_+}(r)
+  =
+  \sum_{k=0}^{\infty}\frac{1}{(2k)!}
+  \int_{\R^{2k}}\prod_{j=1}^{2k}\frac{\dd\theta_j}{2\pi}\,
+  \left|F_{2k}^{\sigma_+}(\theta_1,\ldots,\theta_{2k})\right|^2
+  e^{-mr\sum_{j=1}^{2k}\cosh\theta_j}.
+  \label{eq:ising-spin-even-spectral-series}
+\end{equation}
+For every \(r>0\),
+\[
+  |G_{\sigma_+}(r)|
+  \le
+  |\bar\sigma|^2\cosh I_m(r).
+  \label{eq:ising-spin-even-majorant}
+\]
+After removing the \(k=0\) term, the connected series is bounded by
+\(|\bar\sigma|^2(\cosh I_m(r)-1)\).
+
+The odd product family \eqref{eq:ising-order-form-factors} similarly gives
+\begin{equation}
+  G_{\Sigma}(r)
+  =
+  \sum_{k=0}^{\infty}\frac{1}{(2k+1)!}
+  \int_{\R^{2k+1}}\prod_{j=1}^{2k+1}\frac{\dd\theta_j}{2\pi}\,
+  \left|F_{2k+1}^{\Sigma}(\theta_1,\ldots,\theta_{2k+1})\right|^2
+  e^{-mr\sum_{j=1}^{2k+1}\cosh\theta_j},
+  \label{eq:ising-spin-odd-spectral-series}
+\end{equation}
+with
+\[
+  |G_{\Sigma}(r)|
+  \le
+  |v|^2\sinh I_m(r).
+  \label{eq:ising-spin-odd-majorant}
+\]
+Both series converge uniformly with all \(r\)-derivatives on compact subsets
+of \((0,\infty)\).  Hence they define smooth separated Euclidean two-point
+functions on the temporal ray; Euclidean covariance then gives the
+corresponding separated radial functions.  This proposition is a
+separated-point reconstruction statement for this free model.  The full
+local-reconstruction problem for a general factorizing \(S\)-matrix is the
+open problem stated below.
+\end{proposition}
+
+\begin{proof}
+The finite-particle identity resolution gives
+\eqref{eq:ising-spin-even-spectral-series} and
+\eqref{eq:ising-spin-odd-spectral-series} exactly as in the energy-density
+derivation, with the factorial compensating for integration over labelled
+rapidity variables of identical Majorana particles.  For real rapidities,
+\[
+  \left|\tanh\!\left(\frac{\theta_i-\theta_j}{2}\right)\right|
+  \le 1 .
+\]
+Therefore
+\[
+  \left|F_{2k}^{\sigma_+}(\theta_1,\ldots,\theta_{2k})\right|^2
+  \le
+  |\bar\sigma|^2,
+  \qquad
+  \left|F_{2k+1}^{\Sigma}(\theta_1,\ldots,\theta_{2k+1})\right|^2
+  \le
+  |v|^2.
+  \label{eq:ising-form-factor-product-majorant}
+\]
+The factorized exponential then gives the termwise bounds
+\[
+  \frac{1}{(2k)!}
+  \int_{\R^{2k}}\prod_{j=1}^{2k}
+  \frac{\dd\theta_j}{2\pi}\,
+  |\bar\sigma|^2 e^{-mr\sum_j\cosh\theta_j}
+  =
+  |\bar\sigma|^2\frac{I_m(r)^{2k}}{(2k)!}
+  \label{eq:ising-even-term-majorant}
+\]
+and
+\[
+  \frac{1}{(2k+1)!}
+  \int_{\R^{2k+1}}\prod_{j=1}^{2k+1}
+  \frac{\dd\theta_j}{2\pi}\,
+  |v|^2 e^{-mr\sum_j\cosh\theta_j}
+  =
+  |v|^2\frac{I_m(r)^{2k+1}}{(2k+1)!}.
+  \label{eq:ising-odd-term-majorant}
+\]
+Summing the even and odd majorants gives
+\eqref{eq:ising-spin-even-majorant} and
+\eqref{eq:ising-spin-odd-majorant}.  The identity
+\eqref{eq:ising-one-particle-euclidean-majorant} follows from the integral
+definition of \(K_0\) and evenness in \(\theta\).
+
+Let \(0<r_0<r_1<\infty\).  A derivative of order \(q\) with respect to
+\(r\) inserts a finite sum of factors bounded by
+\[
+  m^q\left(\sum_j\cosh\theta_j\right)^q
+  e^{-mr\sum_j\cosh\theta_j}.
+\]
+For \(r\in[r_0,r_1]\), split
+\[
+  e^{-mr\sum_j\cosh\theta_j}
+  =
+  e^{-(mr_0/2)\sum_j\cosh\theta_j}
+  e^{-m(r-r_0/2)\sum_j\cosh\theta_j}.
+\]
+The polynomial factor in \(\cosh\theta_j\) is dominated by a constant
+depending on \(q,r_0,m\) times the first exponential, and the remaining
+integrals are bounded by the same exponential series with \(r_0/2\) in place
+of \(r\).  The Weierstrass test therefore applies to every derivative order
+on \([r_0,r_1]\).  The resulting functions are smooth for \(r>0\), and the
+spectral construction gives the separated Euclidean two-point functions on
+the temporal ray.  Contact terms at coincident points are outside this
+separated-point estimate and belong to the extension problem on the
+collision diagonal.
+\end{proof}
+
 \section{Bound-State Poles and Operator Couplings}
 
 Suppose species \(a\) and \(b\) have a bound state \(c\).  If the

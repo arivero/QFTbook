@@ -1065,14 +1065,26 @@ distribution with mass parameter \(\mu\):
   \int\frac{\dd^Dk}{(2\pi)^D}\,
   \frac{\ee^{\ii k\cdot x}}{k^2+\mu^2-\ii\epsilon},
 \]
-where the limit is taken in the sense of tempered distributions.  This is only
-a notation-setting definition at this point; its relation to time ordering and
-spectral measures is derived in Chapter~\ref{ch:kallen-lehmann}.
+where the limit is taken in the sense of tempered distributions.  The
+prefactor \(-\ii\) and the denominator \(k^2+\mu^2-\ii\epsilon\) are part of
+the mostly-plus Lorentzian Feynman convention used throughout this opening
+volume, with Fourier factor \(\ee^{\ii k\cdot x}\).  With these conventions
+\(\Delta_F\) is the vacuum time-ordered two-point distribution of a free
+scalar field.  This is only a notation-setting definition at this point; its
+relation to spectral measures is derived in Chapter~\ref{ch:kallen-lehmann}.
 For a scalar Wightman field in the vacuum Hilbert-space framework, positivity
 of the Hilbert-space inner product, translation invariance, and the spectrum
 condition imply that the two-point function admits a positive spectral
 measure on invariant mass.  Let \(\dd\rho(\mu^2)\) denote this positive Borel
-measure on \([0,\infty)\).  The time-ordered two-point function has the form
+measure on \([0,\infty)\).  For two scalar fields at separated times,
+\(T\{\widehat\phi(x)\widehat\phi(y)\}\) means
+\[
+  \theta(x^0-y^0)\widehat\phi(x)\widehat\phi(y)
+  +
+  \theta(y^0-x^0)\widehat\phi(y)\widehat\phi(x),
+\]
+with the extension across equal-time coincidences fixed by the distributional
+Feynman prescription.  The time-ordered two-point function has the form
 \[
   \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
   =

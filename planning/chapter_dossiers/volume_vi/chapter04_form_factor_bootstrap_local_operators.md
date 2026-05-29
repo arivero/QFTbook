@@ -23,8 +23,9 @@
 - Free Majorana examples: the energy-density two-particle form factor, its
   explicit two-particle Wightman spectral density and Euclidean Bessel-kernel
   reconstruction, the even semi-local Ising spin-field family, its crossed
-  mixed bra/ket product formula, and the odd Ising order/twist form-factor
-  family.
+  mixed bra/ket product formula, the odd Ising order/twist form-factor
+  family, and separated Euclidean convergence estimates for the infinite
+  spin/twist spectral series.
 - Form-factor datum for a scalar local operator.
 - Reconstruction boundary for Wightman distributions from spectral series.
 
@@ -45,6 +46,7 @@
 | \(\bar\sigma\) | spin-field vacuum expectation value in the ordered massive-Ising convention |
 | \(F_n^{\sigma_+}\) | even semi-local spin-field form-factor family |
 | \(F_n^\Sigma\) | odd Ising order/twist form-factor family |
+| \(I_m(r)\) | one-particle Euclidean majorant \(K_0(mr)/\pi\) for the free Majorana mass \(m\) |
 
 ## Claim Ledger
 
@@ -82,7 +84,14 @@
    \(F_{2k+1}^{\Sigma}=v i^k\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\)
    satisfies Watson exchange, cyclicity, and the kinematic annihilation
    recursion; the \(i^k\) factor is fixed by the residue equation.
-10. Form-factor axioms do not by themselves complete local reconstruction;
+10. The infinite even and odd Ising product families reconstruct separated
+   Euclidean two-point functions on the temporal ray by absolutely convergent
+   finite-particle spectral series.  The proof uses the explicit bound
+   \(|\tanh((\theta_i-\theta_j)/2)|\le1\), the one-particle integral
+   \(I_m(r)=K_0(mr)/\pi\), and the even/odd exponential majorants
+   \(\cosh I_m(r)\) and \(\sinh I_m(r)\), with uniform convergence of
+   \(r\)-derivatives on compact subsets of \(r>0\).
+11. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 
@@ -94,7 +103,8 @@
   two-particle invariant-mass identity, the spectral-density normalization
   after the identical-particle cancellation, the Euclidean Bessel-reduction
   prefactor, the even spin-field semi-local cyclicity phase, the crossed
-  \(\coth\) matrix element, and the semi-local kinematic residue.
+  \(\coth\) matrix element, the semi-local kinematic residue, and the
+  even/odd spectral-series majorants.
 
 ## Figures
 

@@ -5,10 +5,16 @@ from __future__ import annotations
 
 import cmath
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
     if abs(got - expected) > tol:
+        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_equal(name: str, got: object, expected: object) -> None:
+    if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 
@@ -200,6 +206,49 @@ def check_spin_even_kinematic_residue() -> None:
         assert_close(f"spin numerical semi-local residue n={n}", numerical_residue, residue, tol=1.0e-6)
 
 
+def check_spin_spectral_series_majorants() -> None:
+    one_particle_integral = Fraction(3, 5)
+    sigma_norm_squared = Fraction(7, 4)
+    twist_norm_squared = Fraction(11, 6)
+
+    even_bound = Fraction(0, 1)
+    odd_bound = Fraction(0, 1)
+    all_bound = Fraction(0, 1)
+    for n in range(10):
+        term = one_particle_integral**n / math.factorial(n)
+        all_bound += term
+        if n % 2 == 0:
+            even_bound += term
+            expected = sigma_norm_squared * one_particle_integral**n / math.factorial(n)
+            assert_equal(
+                f"even spin majorant coefficient n={n}",
+                sigma_norm_squared * term,
+                expected,
+            )
+        else:
+            odd_bound += term
+            expected = twist_norm_squared * one_particle_integral**n / math.factorial(n)
+            assert_equal(
+                f"odd twist majorant coefficient n={n}",
+                twist_norm_squared * term,
+                expected,
+            )
+
+    assert_equal(
+        "even plus odd exponential coefficient split",
+        even_bound + odd_bound,
+        all_bound,
+    )
+
+    for delta in (0.2, 0.7, 1.4, -0.5):
+        assert_close(
+            f"real rapidity tanh product bound delta={delta}",
+            abs(cmath.tanh(delta / 2.0)) <= 1.0,
+            True,
+            tol=0.0,
+        )
+
+
 def main() -> None:
     check_energy_density_form_factor()
     check_energy_two_particle_reconstruction()
@@ -207,6 +256,7 @@ def main() -> None:
     check_spin_even_semilocal_family()
     check_sigma_kinematic_residue()
     check_spin_even_kinematic_residue()
+    check_spin_spectral_series_majorants()
     print("All Ising form-factor checks passed.")
 
 

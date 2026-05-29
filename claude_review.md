@@ -1,6 +1,6 @@
 # QFT Monograph — Active Review
 
-Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-28)**: **22 open issues**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit cleanup, depth-pass-B work on previously-closed lanes, and substantive chapter additions remain.
+Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **21 open issues**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers and the #691 trivial-wrapper cleanup. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain.
 
 This document holds items that are either (a) not well-captured in individual issues, (b) cross-cutting in a way the tracker can't surface, or (c) strategic decisions / planning recommendations / standing directives. For completed work and per-issue history, see `git log` and the GitHub issue threads.
 
@@ -76,7 +76,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 
 ---
 
-## Open backlog (22 GitHub issues)
+## Open backlog (21 GitHub issues)
 
 ### Substantial chapter-additions still owed
 
@@ -89,7 +89,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 | [#594](https://github.com/xiyin137/QFT/issues/594) | Conformal manifolds + exactly marginal deformations | III/V |
 | [#596](https://github.com/xiyin137/QFT/issues/596) | **Block M** — partial: **new chapter Vol II ch20c "Large-N 2D QCD light-front" (462L)** delivered (regulated theory + light-front coords, Gauss-law reduction, planar 't Hooft equation in subtracted positive form, DLCQ benchmark, honest scope); 't Hooft derivation verified correct. Remaining: 3D CS-matter in 't Hooft limit; broader light-front-quantization chapter | I/II/VII |
 | [#597](https://github.com/xiyin137/QFT/issues/597) | **Block N**: monopole + instanton chapters still owed (soliton collective-coordinate measure started) | II |
-| [#505](https://github.com/xiyin137/QFT/issues/505) | Wilsonian RG — partial: hierarchical scalar RG benchmark added (Vol XI ch07, 692/10 → 873/13, calc-check passes). Remaining: broader nonperturbative fixed-point theory + rigorous RG state of the art | II |
+| [#505](https://github.com/xiyin137/QFT/issues/505) | Wilsonian RG — partial: hierarchical scalar RG benchmark, theorem-level fixed-point definition, stable critical-surface/tuning map, finite-depth linear tuning estimate, Newton validation, universality datum, RG-map taxonomy/comparison datum, gauge-compatible BV/lattice RG datum, distributional reconstruction estimates, and source-extended RG/contact-term theorem added in Vol XI ch07. Remaining: ordinary short-range scalar reconstruction theorem; deeper gauge-specific constructive examples; stronger model-by-model state-of-the-art synthesis | II |
 
 ### Vol XI constructive depth
 
@@ -115,10 +115,8 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 | Issue | Remaining work |
 |---|---|
 | [#561](https://github.com/xiyin137/QFT/issues/561) | Per-chapter calc-check companions: 153 scripts, ≈85%+ coverage; close remaining gaps |
-| [#562](https://github.com/xiyin137/QFT/issues/562) | Assertion-passing-as-derivation pattern |
-| [#564](https://github.com/xiyin137/QFT/issues/564) | Promised examples / computations never delivered |
-| [#579](https://github.com/xiyin137/QFT/issues/579) | Exhaustive proof-by-proof scrutiny completion record |
-
+| [#562](https://github.com/xiyin137/QFT/issues/562) | Assertion-passing-as-derivation pattern — continued reduction by Vol VI ch04 Ising spin/twist separated Euclidean spectral-series proof |
+| [#564](https://github.com/xiyin137/QFT/issues/564) | Promised examples / computations never delivered — partial: Vol VI ch04 now carries the infinite Ising spin/twist form-factor families through separated Euclidean spectral convergence with paired calc-checks |
 ---
 
 ## Strategic items not captured as individual issues

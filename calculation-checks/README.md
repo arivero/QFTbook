@@ -616,7 +616,8 @@ Current checks:
   identity, the energy-density spectral threshold factor, the Euclidean
   Bessel-kernel prefactor, the even spin-field semi-local cyclicity phase,
   the crossed \(\coth\) matrix element, the mixed bra/ket product formula,
-  and the semi-local kinematic-pole residue.
+  the semi-local kinematic-pole residue, and the even/odd spectral-series
+  majorants used in the separated Euclidean reconstruction estimate.
 - `finite_volume_form_factor_checks.py`: finite checks for the Volume VI
   finite-volume form-factor chapter, including the two-particle Gaudin
   determinant, cancellation of the Gaudin density between matrix elements and

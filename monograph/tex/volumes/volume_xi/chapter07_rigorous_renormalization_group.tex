@@ -31,6 +31,172 @@ then gives an RG map
 The definition contains three inputs: covariance decomposition, integration
 domain, and rescaling convention.
 
+\section{Several RG Maps And Their Mathematical Objects}
+
+The name ``renormalization group'' is used for several closely related, but
+mathematically distinct, maps.  In this chapter the object being transformed
+is always part of the statement.  Let \(C_\Lambda\) be a regulated covariance
+and let \(C_{\Lambda_1}-C_{\Lambda_0}\) be positive for
+\(\Lambda_1>\Lambda_0\) in the chosen cutoff ordering.  The exact Wilsonian
+pushforward from \(\Lambda_1\) to \(\Lambda_0\) is the identity
+\[
+  e^{-V_{\Lambda_0}(\phi)}
+  =
+  \int d\mu_{C_{\Lambda_1}-C_{\Lambda_0}}(\zeta)\,
+  e^{-V_{\Lambda_1}(\phi+\zeta)} ,
+  \label{eq:exact-wilsonian-pushforward-comparison}
+\]
+with additive normalization fixed separately.  Its semigroup property is the
+Gaussian convolution identity:
+\[
+  \int d\mu_{\Gamma_1}(\zeta_1)
+  \int d\mu_{\Gamma_2}(\zeta_2)\,
+  F(\phi+\zeta_1+\zeta_2)
+  =
+  \int d\mu_{\Gamma_1+\Gamma_2}(\zeta)\,
+  F(\phi+\zeta),
+  \label{eq:gaussian-convolution-semigroup-rg}
+\]
+valid whenever \(\Gamma_1\), \(\Gamma_2\), and
+\(\Gamma_1+\Gamma_2\) are the corresponding positive covariances.  Thus the
+exact Wilsonian map transforms interactions or measures.
+
+The Wilson--Polchinski equation is the infinitesimal form of the same
+Gaussian pushforward in a smooth-cutoff coordinate chart.  Let \(t\) be a
+cutoff parameter such that lowering \(t\) by \(\delta t>0\) integrates the
+positive shell covariance \(\delta t\,\dot C_t+O(\delta t^2)\), where
+\(\dot C_t=\partial_t C_t\).  Thus
+\[
+  e^{-V_{t-\delta t}[\phi]}
+  =
+  \left(1+\frac{\delta t}{2}\Delta_{\dot C_t}\right)
+  e^{-V_t[\phi]}+O(\delta t^2).
+  \label{eq:infinitesimal-gaussian-pushforward-taxonomy}
+\]
+Writing
+\[
+  \Delta_{\dot C_t}
+  =
+  \int_{x,y}\dot C_t(x,y)
+  \frac{\delta}{\delta\phi(x)}
+  \frac{\delta}{\delta\phi(y)} ,
+\]
+one obtains, equivalently, at finite regulator
+\[
+  \partial_t e^{-V_t[\phi]}
+  =
+  -\frac12\,\Delta_{\dot C_t} e^{-V_t[\phi]} ,
+  \label{eq:polchinski-exponential-form-rg-taxonomy}
+\]
+or, equivalently,
+\[
+  \partial_t V_t
+  =
+  \frac12\langle \delta V_t,\dot C_t\,\delta V_t\rangle
+  -\frac12\operatorname{Tr}(\dot C_t\,\delta^2 V_t),
+  \label{eq:polchinski-action-form-rg-taxonomy}
+\]
+with this convention for \(t\).  Reparametrizing the scale variable multiplies
+both sides by the corresponding chain-rule factor.  The equation is a
+differential equation for the Wilsonian interaction.  Its theorem-level use
+requires a function space, bounds on the functional derivatives, and a
+construction of the trajectory.
+
+The effective-average-action or Wetterich flow transforms a different
+functional.  At finite regulator, introduce an infrared quadratic term
+\[
+  \Delta S_k[\phi]=\frac12\langle \phi,R_k\phi\rangle
+\]
+and define
+\[
+  W_k[J]=\log\int d\mu(\phi)\,
+  \exp\!\left(\langle J,\phi\rangle-\Delta S_k[\phi]-V[\phi]\right).
+\]
+For \(\varphi=\delta W_k/\delta J\), the effective average action is the
+modified Legendre transform
+\[
+  \Gamma_k[\varphi]
+  =
+  \langle J,\varphi\rangle-W_k[J]-\Delta S_k[\varphi].
+  \label{eq:effective-average-action-rg-taxonomy}
+\]
+Where the finite-dimensional Hessians are invertible, direct
+differentiation gives
+\[
+  \partial_t\Gamma_k[\varphi]
+  =
+  \frac12\operatorname{Tr}\!\left[
+    \bigl(\Gamma_k^{(2)}[\varphi]+R_k\bigr)^{-1}\partial_tR_k
+  \right].
+  \label{eq:wetterich-rg-taxonomy}
+\]
+This is an exact identity for a regulated Legendre transform.  A fixed point
+of a finite truncation of \(\Gamma_k\) is a computational approximation to
+this functional flow; a theorem-level statement requires an embedding of the
+truncation into a complete function space and a bound on the omitted
+directions.
+
+Constructive polymer RG transforms a pair consisting of local coordinates and
+polymer activities.  Its single step has the form
+\[
+  (g,K)\longmapsto (g',K')
+\]
+where \(g'\) is obtained by a localization map extracting finitely many local
+Taylor coefficients, while \(K'\) is the remaining nonlocal activity measured
+in a polymer norm.  The decisive estimate is a contraction or summability
+bound for \(K'\), together with Lipschitz dependence on \(g\).  This is the
+form in which many rigorous scalar and fermionic constructions are proved.
+
+Tensor RG starts from a tensor-network representation of a partition
+function or state sum.  Its map acts on local tensors \(T\) rather than on a
+continuum interaction:
+\[
+  T\longmapsto \mathcal T(T),
+  \label{eq:tensor-rg-map-taxonomy}
+\]
+with blocking, truncation or disentangling, and a declared Hilbert,
+Hilbert--Schmidt, or Banach topology on the tensor space.  A tensor-RG fixed
+point theorem therefore proves contraction or stable-manifold estimates for
+\(\mathcal T\) in that tensor topology, plus a reconstruction map if the
+claim concerns continuum QFT observables.
+
+\begin{definition}[Comparison of two RG descriptions]
+\label{def:comparison-of-rg-descriptions}
+Let \((\mathcal B_1,\mathcal R_1)\) and
+\((\mathcal B_2,\mathcal R_2)\) be two RG descriptions, each with its own
+domain, norm, and reconstruction maps.  A comparison from the first to the
+second consists of maps \(\Phi:\mathcal U_1\to\mathcal B_2\) and
+\(\Psi:\mathcal O_1\to\mathcal O_2\), where \(\mathcal O_i\) are locally
+convex spaces of observables with declared seminorm families
+\(\mathfrak P_i\), together with estimates
+\[
+  \|\Phi(\mathcal R_1 V)-\mathcal R_2(\Phi V)\|_{\mathcal B_2}
+  \leq E_{\mathrm{RG}}(V),
+  \label{eq:rg-description-intertwining-error}
+\]
+and
+\[
+  p\!\left(
+    \Psi\,\operatorname{Rec}^{(1)}_k(V),
+    \operatorname{Rec}^{(2)}_k(\Phi V)
+  \right)
+  \leq E_{\mathrm{obs},p}(k,V),
+  \label{eq:rg-description-observable-error}
+\]
+for every \(p\in\mathfrak P_2\), where \(E_{\mathrm{RG}}\) and
+\(E_{\mathrm{obs},p}\) are explicitly bounded errors in the stated domains.
+An exact equivalence is the special case in which both errors vanish and
+\(\Phi\) identifies the relevant stable
+manifold neighborhoods.  A controlled approximation is the case in which the
+errors are shown to vanish in the continuum or long-distance limit relevant
+to the claim.
+\end{definition}
+
+This definition is the standard used below when relating a perturbative
+Polchinski trajectory, a BPHZ coordinate system, a functional-RG truncation,
+or a tensor-network calculation to a Wilsonian fixed point.  The comparison
+map and its error estimates are part of the mathematical claim.
+
 \section{Banach Space Of Interactions}
 
 Let \(\mathcal B\) be a Banach space of local functionals with norm
@@ -202,6 +368,179 @@ Therefore \(h\) is Lipschitz.  Since \(DF(0)=0\), the Lipschitz constant
 point.  Forward invariance is built into the recurrence, and the
 \(\gamma\)-weighted bound gives convergence to the fixed point.
 \end{proof}
+
+\section{Critical Surfaces And Continuum Tuning}
+
+The local stable graph is the mathematical object behind continuum tuning.
+Let the hypotheses and notation of
+Theorem~\ref{thm:rg-local-stable-manifold} hold.  Write
+\[
+  \Pi_u:\mathcal B=E_u\oplus E_s\longrightarrow E_u,
+  \qquad
+  \Pi_s:\mathcal B=E_u\oplus E_s\longrightarrow E_s
+\]
+for the continuous projections.  In a sufficiently small neighborhood of
+\(V_\ast\), define the local critical surface
+\[
+  \mathcal W^s_{\rm loc}(V_\ast)
+  =
+  \left\{
+    V_\ast+h(s)+s:\ s\in E_s,\ \|s\|\ {\rm small}
+  \right\}.
+  \label{eq:local-critical-surface-rg}
+\]
+The word ``critical'' here means attraction to the fixed point under the
+declared RG map.  It is a property of the pair
+\((\mathcal R,\mathcal B)\), together with the reconstruction maps if a
+continuum QFT limit is claimed.
+
+\begin{definition}[Tuning map]
+\label{def:rg-tuning-map}
+In the setting above, the local tuning map is
+\[
+  \tau(V)
+  =
+  \Pi_u(V-V_\ast)-h\!\left(\Pi_s(V-V_\ast)\right),
+  \label{eq:rg-tuning-map}
+\]
+defined for \(V\) in the local product neighborhood on which the graph
+\(h\) exists.  A point \(V\) is tuned to the local critical surface precisely
+when
+\[
+  \tau(V)=0 .
+  \label{eq:rg-tuning-equation}
+\]
+If \(\dim E_u=r\) and a basis of \(E_u\) has been chosen, this is an
+\(r\)-component equation.  The components of \(\tau\), rather than a chosen
+list of formal Lagrangian coefficients, are the intrinsic relevant tuning
+coordinates in this RG chart.
+\end{definition}
+
+\begin{proposition}[Finite-codimension critical surface]
+\label{prop:finite-codimension-critical-surface}
+Assume the stable graph \(h:E_s\to E_u\) in
+Theorem~\ref{thm:rg-local-stable-manifold} is \(C^1\) on a neighborhood of
+the origin in \(E_s\), and let \(r=\dim E_u<\infty\).  Then
+\(\mathcal W^s_{\rm loc}(V_\ast)\) is a \(C^1\) submanifold of
+\(\mathcal B\) of codimension \(r\).  Equivalently, the equation
+\(\tau(V)=0\) cuts out the local critical surface by \(r\) independent
+conditions.
+
+Let \(P\) be a finite-dimensional \(C^1\) parameter manifold of microscopic
+finite-regulator theories, and let
+\[
+  \iota:P\longrightarrow\mathcal B
+\]
+be a \(C^1\) chart map into the RG Banach space.  If \(p_0\in P\) satisfies
+\(\tau(\iota(p_0))=0\) and
+\[
+  D(\tau\circ\iota)_{p_0}:T_{p_0}P\longrightarrow E_u
+  \label{eq:rg-tuning-transversality}
+\]
+has rank \(r\), then the tuned microscopic parameters near \(p_0\),
+\[
+  P_{\rm tuned}
+  =
+  \{p\in P:\tau(\iota(p))=0\},
+  \label{eq:tuned-microscopic-parameter-surface}
+\]
+form a \(C^1\) submanifold of \(P\) of codimension \(r\).
+\end{proposition}
+
+\begin{proof}
+For \(V=V_\ast+u+s\), with \(u\in E_u\) and \(s\in E_s\), the derivative of
+\(\tau\) in the \(E_u\)-direction is the identity map on \(E_u\):
+\[
+  D_u\tau(V_\ast+u+s)=1_{E_u}.
+  \label{eq:tuning-map-submersion}
+\]
+Thus \(\tau\) is a \(C^1\) submersion onto the finite-dimensional space
+\(E_u\).  Its zero set is exactly
+\[
+  \{V_\ast+u+s:\ u=h(s)\},
+\]
+which is the graph \eqref{eq:local-critical-surface-rg}.  The submersion
+theorem for Banach spaces with finite-dimensional target gives a \(C^1\)
+submanifold of codimension \(\dim E_u=r\).  In this product chart the
+submanifold statement is also direct: the map
+\[
+  s\longmapsto V_\ast+h(s)+s
+\]
+parametrizes the zero set, and the transverse coordinates are precisely
+\(\tau\in E_u\).
+
+For the microscopic parameter space, apply the finite-dimensional implicit
+function theorem to \(\tau\circ\iota:P\to E_u\).  The rank condition
+\eqref{eq:rg-tuning-transversality} makes \(0\in E_u\) a regular value near
+\(p_0\).  Hence the inverse image
+\((\tau\circ\iota)^{-1}(0)\) is a \(C^1\) submanifold of \(P\) of codimension
+\(r\), which is \eqref{eq:tuned-microscopic-parameter-surface}.
+\end{proof}
+
+\begin{proposition}[Linear finite-scale tuning exponents]
+\label{prop:linear-finite-scale-tuning-exponents}
+Let \(E_u\) be a finite-dimensional normed vector space with basis
+\(\{e_a\}_{a=1}^r\).  Suppose the linearized unstable map is diagonal in this
+basis,
+\[
+  A e_a=\lambda_a e_a,
+  \qquad |\lambda_a|>1 .
+\]
+For the linear RG map
+\[
+  \mathcal R_{\rm lin}(u,s)=(Au,Bs),
+\]
+the unstable component of an initial condition
+\[
+  u_0=\sum_{a=1}^r u_a(0)e_a
+\]
+stays in the coordinate box
+\[
+  |u_a(n)|\leq \rho
+  \qquad (a=1,\ldots,r,\ 0\leq n\leq N)
+  \label{eq:finite-scale-unstable-box}
+\]
+if and only if
+\[
+  |u_a(0)|\leq \rho\,|\lambda_a|^{-N}
+  \qquad (a=1,\ldots,r).
+  \label{eq:finite-scale-tuning-precision}
+\]
+Writing \(\lambda_a=L^{y_a}\), this finite-depth accuracy is
+\(\rho L^{-Ny_a}\) in the \(a\)-th relevant coordinate.
+\end{proposition}
+
+\begin{proof}
+The linear recurrence gives
+\[
+  u_n=A^n u_0
+  =
+  \sum_{a=1}^r \lambda_a^n u_a(0)e_a .
+\]
+Therefore
+\[
+  |u_a(n)|=|\lambda_a|^n |u_a(0)|.
+\]
+Since \(|\lambda_a|>1\), the maximum over \(0\leq n\leq N\) occurs at
+\(n=N\).  The bound \eqref{eq:finite-scale-unstable-box} is therefore
+equivalent to
+\[
+  |\lambda_a|^N |u_a(0)|\leq\rho
+\]
+for every \(a\), which is
+\eqref{eq:finite-scale-tuning-precision}.  The notation
+\(\lambda_a=L^{y_a}\) gives \(|\lambda_a|^{-N}=L^{-Ny_a}\) when
+\(\lambda_a>0\); for complex or negative eigenvalues the same estimate uses
+\(|\lambda_a|=L^{y_a}\).
+\end{proof}
+
+For a nonlinear RG map,
+Proposition~\ref{prop:linear-finite-scale-tuning-exponents} is the linear
+model for the precision required before \(N\) RG steps.  The stable graph
+replaces the coordinate plane \(u=0\) by the intrinsic equation
+\(\tau(V)=0\).  A theorem assigning the same exponents beyond the linear
+approximation must provide normal-form or graph-transform estimates
+controlling the nonlinear remainder.
 
 \section{Polymer Representation}
 
@@ -746,6 +1085,477 @@ coordinates and critical exponents order by order, while a nonperturbative
 fixed-point theorem additionally proves existence, stability, and
 reconstruction.
 
+\section{Gauge-Compatible RG And Reconstruction Estimates}
+
+A Wilsonian RG theorem for a scalar probability measure can be formulated as
+a pushforward of measures, followed by a localization step and a rescaling.
+Gauge theories require a richer datum, because the variables used in a
+calculation contain redundancy.  The theorem-level object is therefore an RG
+map on gauge-invariant lattice data, or an RG map in the BV category whose
+effective actions and observable complexes satisfy the quantum master
+equation at every scale.  The BV framework used here is developed in
+Chapter~\ref{ch:bv-master-formalism}; the lattice Yang--Mills and reflection
+positivity inputs are developed in
+Chapters~\ref{ch:lattice-yang-mills-nonperturbative-definition},
+\ref{ch:lattice-reflection-positivity}, and
+\ref{ch:constructive-wilson-lattice-gauge-theory}.
+
+\begin{definition}[Gauge-compatible Wilsonian RG datum]
+\label{def:gauge-compatible-wilsonian-rg-datum}
+Fix a spacetime dimension \(D\), a scale factor \(L>1\), and a regulator
+sequence indexed by \(k\in\mathbb Z_{\geq0}\).  A gauge-compatible Wilsonian
+RG datum is one of the following two structures.
+\begin{enumerate}
+  \item In the lattice form, one has finite cell complexes
+  \(\Lambda_k\), a compact Lie group \(G_k\), configuration spaces
+  \(\mathcal A_k=G_k^{E(\Lambda_k)}\) of link variables, gauge groups
+  \(\mathcal G_k=G_k^{V(\Lambda_k)}\) acting on \(\mathcal A_k\), and finite
+  measures \(\dd\mu_k\) on \(\mathcal A_k\).  The observables are functions or
+  distributions on \(\mathcal A_k\) invariant under \(\mathcal G_k\), with a
+  declared norm controlling Wilson loops, local plaquette fields, and any
+  matter insertions with their Wilson-line connectors.  The RG step is a
+  gauge-equivariant blocking kernel
+  \[
+    B_{k,k-1}(A_{k-1},A_k)\,\dd\mu_k(A_k)
+  \]
+  whose pushforward gives a measure \(\dd\mu_{k-1}\) on
+  \(\mathcal A_{k-1}\), followed by a localization map into a Banach chart of
+  gauge-invariant polymer activities.  Reflection positivity, when claimed,
+  is part of the datum and is expressed as positivity of the blocked
+  quadratic form on the positive-time observable algebra.
+  \item In the BV form, one has finite-regulator graded vector spaces
+  \(\mathcal F_k\) of fields, ghosts, antifields, and possible sources; odd
+  symplectic forms of degree \(-1\); BV Laplacians \(\Delta_k\) associated
+  with the chosen finite-dimensional Berezin-Lebesgue density; and actions
+  \(S_k\) satisfying the quantum master equation
+  \[
+    \frac12(S_k,S_k)_k-\hbar\,\Delta_k S_k=0 ,
+    \label{eq:gauge-compatible-qme-at-scale}
+  \]
+  or equivalently \(\Delta_k e^{-S_k/\hbar}=0\).  The RG step is BV
+  pushforward along a fluctuation subspace with gauge-fixing Lagrangian
+  \(\mathcal L_k\):
+  \[
+    e^{-S_{k-1}(\phi_{k-1})/\hbar}
+    =
+    \int_{\mathcal L_k}
+      e^{-S_k(\phi_{k-1}+\xi_k)/\hbar}\,\dd\xi_k ,
+    \label{eq:bv-rg-pushforward}
+  \]
+  together with a localization map into a Banach space of local BV
+  functionals.  The induced observable map
+  \(P_{k,k-1}\) sends \(Q_{S_k}\)-closed observables to
+  \(Q_{S_{k-1}}\)-closed observables, where
+  \(Q_{S_k}=(S_k,\cdot)_k-\hbar\Delta_k\).
+\end{enumerate}
+In either form, a fixed point or continuum limit also includes reconstruction
+maps for gauge-invariant local and extended observables.  A flow of finitely
+many gauge-fixed coefficients is a coordinate shadow of this datum; the
+theorem-level statement is the lattice or BV structure together with its
+norm estimates.
+\end{definition}
+
+The definition deliberately includes Wilson-line and loop observables.  A
+colored field variable in a gauge-fixed calculation is useful for local
+coordinate work, but a nonperturbative observable statement is formulated in
+terms of gauge-invariant insertions or BV cohomology classes.  Thus a
+charged-particle or partonic reconstruction theorem must specify the line,
+asymptotic dressing, or cohomology class used to define the observable before
+one speaks of an RG limit.
+
+\begin{definition}[RG reconstruction estimate]
+\label{def:rg-reconstruction-estimate}
+Let \(\mathcal S_n=\mathcal S((\mathbb R^D)^n)\) be the Schwartz space and
+let \(\mathcal S_n'\) be its continuous dual.  For a bounded set
+\(B\subset\mathcal S_n\), write
+\[
+  p_B(T)=\sup_{f\in B}|\langle T,f\rangle|,
+  \qquad T\in\mathcal S_n' .
+\]
+Let \(\mathcal R:\mathcal U\to\mathcal B\) be an RG map with fixed point
+\(V_\ast\).  An \(n\)-point reconstruction estimate consists of distributions
+\(\mathcal S_{n,\ast}\in\mathcal S_n'\), maps
+\[
+  \operatorname{Rec}_{n,k}:\mathcal U\longrightarrow\mathcal S_n',
+  \qquad k\in\mathbb Z_{\geq0},
+  \label{eq:rg-reconstruction-map}
+  \]
+and constants \(C_B<\infty\), \(0<\theta<1\), and
+\(\varepsilon_{B,k}\to0\), such that every tuned initial point \(V\) in the
+declared stable manifold satisfies
+\[
+  p_B\!\left(
+    \operatorname{Rec}_{n,k}(V)-\mathcal S_{n,\ast}
+  \right)
+  \leq
+  C_B\,\theta^k\,\|V-V_\ast\|_{\mathcal B}
+  +\varepsilon_{B,k}
+  \label{eq:rg-reconstruction-estimate}
+\]
+for all bounded \(B\subset\mathcal S_n\).  The maps
+\(\operatorname{Rec}_{n,k}\) include the lattice spacing, coordinate
+rescaling, field-strength normalization, source normalization, and possible
+Wilson-line or BV-observable representative.
+\end{definition}
+
+\begin{proposition}[Reconstruction estimates produce distributional limits]
+\label{prop:rg-reconstruction-estimates-give-limits}
+Assume Definition~\ref{def:rg-reconstruction-estimate} for every
+\(n\geq1\) and every bounded set \(B\subset\mathcal S_n\).  Then the
+renormalized \(n\)-point functions
+\(\operatorname{Rec}_{n,k}(V)\) converge to
+\(\mathcal S_{n,\ast}\) in the strong dual topology of
+\(\mathcal S_n'\).  If, at each finite regulator, the reconstructed
+Schwinger functions are symmetric, Euclidean covariant, and reflection
+positive, and if these properties are expressed by continuous linear or
+closed positive-semidefinite inequalities in the seminorms \(p_B\), then the
+limits \(\mathcal S_{n,\ast}\) satisfy the same properties.
+\end{proposition}
+
+\begin{proof}
+Strong convergence in \(\mathcal S_n'\) means convergence with respect to the
+seminorms \(p_B\) as \(B\) ranges over bounded subsets of \(\mathcal S_n\).
+The estimate \eqref{eq:rg-reconstruction-estimate} gives
+\[
+  p_B(\operatorname{Rec}_{n,k}(V)-\mathcal S_{n,\ast})\longrightarrow0
+\]
+because \(\theta^k\to0\) and \(\varepsilon_{B,k}\to0\).  This proves
+distributional convergence in the stated topology.
+
+For symmetry and Euclidean covariance, let \(U\) denote a permutation or
+Euclidean transformation acting continuously on \(\mathcal S_n\).  If the
+finite-regulator distributions satisfy
+\(\langle \operatorname{Rec}_{n,k}(V),f\rangle
+=\langle \operatorname{Rec}_{n,k}(V),Uf\rangle\), then passing to the limit
+in the two scalar sequences gives the same identity for
+\(\mathcal S_{n,\ast}\).
+
+For reflection positivity, take a finite family of positive-time test
+functions \(f_i\) and coefficients \(c_i\).  At finite regulator the
+corresponding quadratic expression has the form
+\[
+  Q_k(c,f)=
+  \sum_{i,j}\bar c_i c_j\,
+  \bigl\langle
+    \operatorname{Rec}_{m_i+m_j,k}(V),
+    \Theta f_i\otimes f_j
+  \bigr\rangle
+  \geq0 ,
+  \label{eq:rg-reflection-positivity-closed-limit}
+\]
+where \(\Theta\) is Euclidean time reflection.  Each term converges by the
+already proved distributional convergence, hence \(Q_k(c,f)\to Q_\ast(c,f)\).
+The cone \([0,\infty)\subset\mathbb R\) is closed, so \(Q_\ast(c,f)\geq0\).
+Thus the limiting Schwinger functions inherit reflection positivity in the
+declared test-function domain.  The same closed-cone argument applies to any
+positivity statement explicitly formulated as a finite positive-semidefinite
+quadratic form continuous in the seminorms \(p_B\).
+\end{proof}
+
+\section{Source-Extended RG, Scaling Operators, And Contact Terms}
+
+A fixed interaction is not yet a QFT spectrum.  Scaling operators are
+obtained by extending the RG map to sources and by reconstructing the
+resulting functional derivatives as distributions.  This section records the
+minimal theorem-level structure, because otherwise the phrase ``operator
+dimension'' may mean only an eigenvalue of a finite list of couplings.
+
+Let \(A\) be a set of source labels.  For each \(\alpha\in A\), let
+\(\mathcal J_\alpha\) be a locally convex space of test sources on
+\(\mathbb R^D\), for instance \(C_c^\infty(\mathbb R^D)\) or
+\(\mathcal S(\mathbb R^D)\).  A regulated source-dependent generating
+functional has the form
+\[
+  Z_k(V;J)
+  =
+  \int
+  \exp\!\left(
+    -S_k(\phi;V)
+    +\sum_{\alpha\in A}\langle J_\alpha,\mathcal O_{\alpha,k}(\phi)\rangle
+  \right)\,\dd\mu_k(\phi),
+  \label{eq:source-extended-rg-generating-functional}
+\]
+where \(\langle J_\alpha,\mathcal O_{\alpha,k}\rangle\) denotes the pairing
+between a test source and a regulated insertion.  In a gauge theory, the
+source direction must either couple to a gauge-invariant lattice observable,
+to a Wilson-line or Wilson-loop observable with its path data included, or
+to a class in the BV observable cohomology.  A source coupled to a
+gauge-fixed colored field variable is not, by itself, a nonperturbative
+observable.
+
+\begin{definition}[Source-extended RG datum]
+\label{def:source-extended-rg-datum}
+A source-extended RG datum near a fixed point \(V_\ast\) consists of:
+\begin{enumerate}
+  \item a Banach RG chart \(\mathcal B\), an RG map
+  \(\mathcal R:\mathcal U\to\mathcal B\), and a fixed point
+  \(\mathcal R(V_\ast)=V_\ast\);
+  \item a locally convex source space
+  \(\mathcal J=\bigoplus_{\alpha\in A}\mathcal J_\alpha\);
+  \item a map
+  \[
+    \widehat{\mathcal R}:\mathcal U\times\mathcal V_J
+    \longrightarrow \mathcal B\times\mathcal J,
+    \qquad
+    \widehat{\mathcal R}(V,J)=
+    \bigl(\mathcal R(V),\,\mathcal M_VJ+\mathcal N_V(J)\bigr),
+    \label{eq:source-extended-rg-map}
+  \]
+  where \(\mathcal V_J\) is a neighborhood of \(0\in\mathcal J\),
+  \(\mathcal M_V\) is linear in \(J\), and
+  \(\mathcal N_V(J)=O(J^2)\) in the declared source topology;
+  \item an exact finite-regulator identity
+  \[
+    Z_k(V;J)
+    =
+    e^{A_k(V;J)}
+    Z_{k-1}\!\left(\widehat{\mathcal R}(V,J)\right),
+    \label{eq:source-rg-exact-identity}
+  \]
+  with \(A_k(V;J)\) a local normalization functional in the sources;
+  \item reconstruction maps taking \(n\) source derivatives of
+  \(\log Z_k(V;J)\) at \(J=0\) to connected distributions on
+  \((\mathbb R^D)^n\), or to distributions on configuration space away from
+  collision diagonals.
+\end{enumerate}
+The local functional \(A_k(V;J)\) is part of the datum.  Its source
+derivatives are precisely where contact terms generated by the RG step are
+recorded.
+\end{definition}
+
+At a fixed point, the linear source map
+\[
+  \mathcal M_\ast=\mathcal M_{V_\ast}
+  =
+  D_J\widehat{\mathcal R}(V_\ast,0)
+  \label{eq:linear-source-rg-map}
+\]
+contains the scaling data.  If a source \(J_\alpha\) couples to a local field
+whose scaling dimension is \(\Delta_\alpha\), then the constant-source
+coordinate has RG exponent
+\[
+  y_\alpha=D-\Delta_\alpha .
+  \label{eq:source-exponent-operator-dimension}
+\]
+This relation is fixed by the invariant pairing
+\(\int J_\alpha(x)\mathcal O_\alpha(x)\,\dd^Dx\): under
+\(x=Lx'\), a field with
+\(\mathcal O_\alpha(Lx')=L^{-\Delta_\alpha}\mathcal O_\alpha(x')\) requires
+\[
+  J'_\alpha(x')=L^{D-\Delta_\alpha}J_\alpha(Lx').
+  \label{eq:source-rescaling-from-pairing}
+\]
+Thus the dimension is not assigned to a formal monomial alone; it is read
+from the source direction after redundant directions, null fields, and
+contact redefinitions have been quotiented as appropriate.
+
+\begin{definition}[Scaling source and scaling field]
+\label{def:scaling-source-and-field}
+Let \(\mathcal M_\ast\) be the linearized source RG map.  A scaling source
+direction is a nonzero equivalence class \([j_\alpha]\) in the source space
+modulo null source directions and source redefinitions whose functional
+derivatives vanish at separated points, such that
+\[
+  \mathcal M_\ast [j_\alpha]
+  =
+  L^{D-\Delta_\alpha}[j_\alpha].
+  \label{eq:scaling-source-eigenvalue}
+\]
+The corresponding scaling field is the distribution-valued functional
+derivative of the connected generating functional in the direction
+\([j_\alpha]\), reconstructed in the continuum limit.  In a BV formulation,
+the equivalence class is taken in \(Q_{S_\ast}\)-cohomology of observables;
+in a lattice gauge formulation, it is taken among gauge-invariant source
+directions.
+\end{definition}
+
+The quotient in Definition~\ref{def:scaling-source-and-field} is not a
+matter of taste.  If two source directions differ by a local source
+counterterm, their separated-point connected correlators agree while their
+extensions across coincident points may differ.  The following definition
+fixes the vocabulary used in the rest of the monograph.
+
+\begin{definition}[Contact term]
+\label{def:rg-contact-term}
+Let \(n\geq2\), and let
+\[
+  \mathfrak D_n
+  =
+  \bigcup_{1\leq i<j\leq n}
+  \{(x_1,\ldots,x_n)\in(\mathbb R^D)^n:\ x_i=x_j\}
+  \label{eq:collision-diagonal-union}
+\]
+be the union of pairwise collision diagonals.  A contact term in an
+\(n\)-point distribution is a distribution
+\[
+  C\in\mathcal D'((\mathbb R^D)^n)
+  \]
+whose support is contained in \(\mathfrak D_n\).  Equivalently,
+\(\langle C,f\rangle=0\) for every
+\(f\in C_c^\infty((\mathbb R^D)^n)\) whose support is disjoint from
+\(\mathfrak D_n\).  Contact terms are not ordinary separated-point
+functions.  In a source formalism they are generated by local functionals of
+the sources and their derivatives.
+\end{definition}
+
+Let
+\[
+  \operatorname{Conf}_n(\mathbb R^D)
+  =
+  (\mathbb R^D)^n\setminus\mathfrak D_n
+  \label{eq:configuration-space-distinct-points}
+\]
+be the configuration space of ordered distinct points.  For
+\(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\), define the dilation
+of the test function by
+\[
+  (S_Lf)(x_1,\ldots,x_n)
+  =
+  L^{-nD}
+  f(L^{-1}x_1,\ldots,L^{-1}x_n).
+  \label{eq:test-function-dilation-for-correlators}
+\]
+This convention is chosen so that
+\[
+  \langle G,S_Lf\rangle
+  =
+  \int G(Ly_1,\ldots,Ly_n)f(y_1,\ldots,y_n)\,
+       \dd^Dy_1\cdots\dd^Dy_n
+  \label{eq:test-dilation-change-of-variables}
+\]
+whenever \(G\) is represented by an integrable function on the support of
+the test function.
+
+\begin{proposition}[Separated-point scaling from source-extended RG]
+\label{prop:source-rg-separated-point-scaling}
+Fix labels \(\alpha_1,\ldots,\alpha_n\) with source eigenvalues
+\(L^{D-\Delta_{\alpha_i}}\).  Suppose that the source-extended RG datum gives
+connected finite-regulator distributions
+\[
+  G_{k;\alpha_1\ldots\alpha_n}
+  \in
+  \mathcal D'(\operatorname{Conf}_n(\mathbb R^D))
+  \]
+which converge to
+\[
+  G_{\ast;\alpha_1\ldots\alpha_n}
+  \in
+  \mathcal D'(\operatorname{Conf}_n(\mathbb R^D))
+  \]
+in the usual distribution topology on every compact subset of
+\(\operatorname{Conf}_n(\mathbb R^D)\).  Assume moreover that for every
+\(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\) the finite-scale RG
+identity implies
+\[
+  \left|
+  \langle G_{k;\alpha_1\ldots\alpha_n},S_Lf\rangle
+  -
+  L^{-\sum_i\Delta_{\alpha_i}}
+  \langle G_{k-1;\alpha_1\ldots\alpha_n},f\rangle
+  \right|
+  \leq \varepsilon_k(f),
+  \label{eq:finite-scale-separated-source-scaling}
+\]
+with \(\varepsilon_k(f)\to0\).  Then the limiting separated-point
+distribution is homogeneous under scale \(L\):
+\[
+  \langle G_{\ast;\alpha_1\ldots\alpha_n},S_Lf\rangle
+  =
+  L^{-\sum_i\Delta_{\alpha_i}}
+  \langle G_{\ast;\alpha_1\ldots\alpha_n},f\rangle
+  \label{eq:limiting-separated-source-scaling}
+\]
+for every \(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\).
+
+If \(T_{\ast;\alpha_1\ldots\alpha_n}\in
+\mathcal D'((\mathbb R^D)^n)\) is any extension of
+\(G_{\ast;\alpha_1\ldots\alpha_n}\) to all of \((\mathbb R^D)^n\), then the
+distribution
+\[
+  H_L(f)
+  =
+  \langle T_{\ast;\alpha_1\ldots\alpha_n},S_Lf\rangle
+  -
+  L^{-\sum_i\Delta_{\alpha_i}}
+  \langle T_{\ast;\alpha_1\ldots\alpha_n},f\rangle
+  \label{eq:scaling-violation-contact-distribution}
+\]
+is a contact term.
+\end{proposition}
+
+\begin{proof}
+The dilation \(S_L\) maps
+\(C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\) continuously to itself.
+By distributional convergence on configuration space,
+\[
+  \langle G_{k;\alpha_1\ldots\alpha_n},S_Lf\rangle
+  \longrightarrow
+  \langle G_{\ast;\alpha_1\ldots\alpha_n},S_Lf\rangle
+\]
+and
+\[
+  \langle G_{k-1;\alpha_1\ldots\alpha_n},f\rangle
+  \longrightarrow
+  \langle G_{\ast;\alpha_1\ldots\alpha_n},f\rangle .
+\]
+Taking \(k\to\infty\) in
+\eqref{eq:finite-scale-separated-source-scaling} gives
+\eqref{eq:limiting-separated-source-scaling}, because
+\(\varepsilon_k(f)\to0\).
+
+For the last assertion, let \(f\in
+C_c^\infty((\mathbb R^D)^n)\) have support disjoint from
+\(\mathfrak D_n\).  Then \(f\) and \(S_Lf\) are test functions on
+\(\operatorname{Conf}_n(\mathbb R^D)\), and the extension
+\(T_{\ast;\alpha_1\ldots\alpha_n}\) agrees with
+\(G_{\ast;\alpha_1\ldots\alpha_n}\) on both of them.  Therefore
+\eqref{eq:limiting-separated-source-scaling} gives \(H_L(f)=0\).  A
+distribution that vanishes on every test function supported in the open set
+\((\mathbb R^D)^n\setminus\mathfrak D_n\) has support contained in
+\(\mathfrak D_n\), by the definition of support of a distribution.  Hence
+\(H_L\) is a contact term in the sense of
+Definition~\ref{def:rg-contact-term}.
+\end{proof}
+
+The proposition explains the logical order.  Source eigenvalues determine
+candidate scaling dimensions.  Reconstruction estimates make the source
+derivatives into distributions.  The finite-scale RG identity then proves
+homogeneity at separated points.  Extension across collision diagonals is an
+additional renormalization problem; different extensions differ by contact
+terms, and local source counterterms change precisely those contact terms.
+This is why anomalous dimensions, OPE coefficients at separated points, and
+contact terms must be kept as distinct pieces of data.
+
+\begin{remark}[Status of short-range scalar and gauge targets]
+\label{rem:short-range-scalar-gauge-rg-status}
+Constructive massive \(\phi^4_3\) and related superrenormalizable models give
+Wightman QFTs after their Euclidean constructions and OS reconstruction are
+completed.  That achievement is logically distinct from constructing the
+critical Wilson--Fisher CFT as a non-Gaussian fixed point of a short-range
+block-spin map with stable manifold, operator spectrum, and reconstruction
+estimates of the form
+\eqref{eq:rg-reconstruction-estimate}.  Hierarchical scalar models,
+fractional long-range models, fermionic small-parameter models, and rigorous
+tensor RG supply theorem-level benchmarks for parts of this structure.
+
+For gauge theories the corresponding theorem must be formulated through
+Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}.  A lattice proof
+would construct the RG map on gauge-invariant measures and Wilson-line
+observables with reflection-positivity control.  A continuum perturbative
+proof would construct the same flow in a regularized BV complex, prove the
+quantum master equation after each RG step, and identify the physical
+observables as cohomology classes before reconstruction.  These are stronger
+requirements than the computation of beta functions for a finite list of
+local coefficients.
+
+In four-dimensional scalar \(\phi^4\), perturbation theory supplies a formal
+renormalized coordinate system.  Existing triviality results and expectations
+belong to particular regulator classes and limiting procedures.  The
+existence of a UV-complete nonperturbative QFT whose short-distance
+expansion agrees with four-dimensional \(\phi^4\) perturbation theory to all
+orders remains outside the theorem-level results recorded here.
+\end{remark}
+
 \section{Relation To Universality Classes}
 
 In this monograph, the phrase \emph{universality class} is not used as a
@@ -856,5 +1666,10 @@ and reconstruction statement.
 Construct non-Gaussian Wilsonian fixed points in three and four dimensions as
 fixed points of explicit RG maps on Banach spaces of interactions, with
 stable manifolds, operator spectra, and reconstruction of the associated
-local QFT data.
+local QFT data.  The open directions include: short-range scalar critical
+fixed points with distributional reconstruction; gauge-compatible fixed
+points in the lattice or BV sense of
+Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}; and estimates that
+identify the limiting local, extended, and cohomological observables rather
+than only the local coordinate flow.
 \end{openproblem}

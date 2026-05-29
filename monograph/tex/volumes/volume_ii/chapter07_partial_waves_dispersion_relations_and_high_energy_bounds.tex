@@ -184,7 +184,13 @@ It is useful to parametrize these ellipses before using them.  Write
   R=\ee^\eta,\qquad \eta>0,
 \]
 and define the ellipse \(E_R\) by \(|\zeta(x)|=R\), where
-\(\zeta(x)=x+\sqrt{x^2-1}\) is specified below.  Its right endpoint is
+\[
+  \zeta(z)=z+\sqrt{z^2-1},
+  \qquad
+  \zeta(z)\sim2z\quad(z\to\infty),
+  \label{eq:lehmann-zeta-branch-first-use}
+\]
+with branch cut on \([-1,1]\).  Its right endpoint is
 \[
   x_R=\frac12(R+R^{-1})=\cosh\eta .
 \]
@@ -208,11 +214,7 @@ domain and enclosing \([-1,1]\).  For \(x\) inside \(\gamma_s\),
   \oint_{\gamma_s}\frac{\dd z}{2\pi\ii}\,
   \frac{\mathcal M(s,z)}{z-x}.
 \]
-Choose the branch of
-\[
-  \zeta(z)=z+\sqrt{z^2-1}
-\]
-for which \(\zeta(z)\sim2z\) at infinity.  The level sets
+Use the branch \eqref{eq:lehmann-zeta-branch-first-use}.  The level sets
 \(|\zeta(z)|=R>1\) are ellipses with foci at \(z=\pm1\), and the physical
 interval is the degenerate ellipse \(R=1\).  On the level set \(R=\ee^\eta\)
 one may write
