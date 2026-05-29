@@ -40,7 +40,7 @@ boundaries.
   structure, Gauss-law projection, trivial discrete-flux sector, exact
   regulated supersymmetry, trace-class heat operator, and finite zero-energy
   space.
-- Added `prop:pure-sym-finite-volume-graded-trace`, proving the
+- Added the finite-volume graded-trace calculation, deriving the
   positive-energy boson-fermion pairing and stating the spectral leakage
   caveat for deformation invariance.
 - Added `hyp:pure-sym-small-circle-affine-toda-input`, recording the

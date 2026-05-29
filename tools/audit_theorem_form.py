@@ -264,6 +264,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Fermionic-node asymptotics"
     r"|Local T-hook algebra behind the .*P.*mu.* bridge"
     r"|Dimension exponent of .*mu"
+    r"|Dual .*Q.*omega.* transport"
     r"|Large-.*u.* power balance"
     r"|Large-.*u.* characteristic determinant"
     r"|Large-.*u.* coefficient products"
@@ -272,6 +273,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Consistency of the .*P.*mu.* discontinuity"
     r"|Monodromy recursion for .*mu"
     r"|Unimodular .*P.*Q.* bridge"
+    r"|Finite-density ABA counting equation"
+    r"|Associativity of finite defect fusion"
+    r"|Origin of the Wick coefficients"
+    r"|Finite Gibbs traces are KMS"
+    r"|Finite-volume spectral detailed balance"
+    r"|Weyl variation of the .*R.*2.* counterterm"
+    r"|Finite-volume graded-trace identity"
+    r"|Finite-volume symmetry basis versus cluster branches"
+    r"|Conformal anomaly coefficients"
+    r"|Pure .*SU\\(2\\).* one-instanton coefficient"
+    r"|Coefficient of abelian inflow"
     r")\b",
     re.IGNORECASE,
 )

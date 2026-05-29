@@ -1077,10 +1077,10 @@ select the physical solution among many formal solutions of the same
 finite-difference equations.  They play the same role as contour data in the
 mirror TBA.
 
-\begin{lemma}[Dual \(Q\omega\) transport]
-\label{lem:qsc-qomega-transport}
+\paragraph{Dual \(Q\omega\) transport.}
 Assume the local \(Q\omega\) equations displayed above and the null
-contraction \(Q_iQ^i=0\).  Then the \(\omega\)-Pfaffian is transported
+contraction \(Q_iQ^i=0\).  Then, as a local algebraic consequence of these
+equations, the \(\omega\)-Pfaffian is transported
 consistently through a long cut, and the one-step shifted sheet obeys
 \begin{equation}
   \omega_{ij}(u+\ii)
@@ -1090,9 +1090,7 @@ consistently through a long cut, and the one-step shifted sheet obeys
   -Q_j(u)\omega_{ik}(u)Q^k(u).
   \label{eq:qsc-qomega-monodromy-recursion}
 \end{equation}
-\end{lemma}
 
-\begin{proof}
 Write
 \[
   \widetilde Q_i=\omega_{ij}Q^j .
@@ -1132,10 +1130,10 @@ equation give
 \]
 Substituting \(\widetilde Q_j=\omega_{jk}Q^k\) gives
 \eqref{eq:qsc-qomega-monodromy-recursion}.
-\end{proof}
 
-The lemma is not a proof of the global \(Q\omega\) Riemann--Hilbert problem.
-It is the local transport rule after the long-cut gauge has been chosen.  In
+The scope of the calculation is the local transport rule after the long-cut
+gauge has been chosen.  A global \(Q\omega\) Riemann--Hilbert construction
+requires the cut structure, gluing data, asymptotics, and gauge fixing.  In
 particular, changing the antisymmetric tensor \(\eta\), reversing the tilde
 continuation, or using the opposite \(u\mapsto u-\ii\) shift convention changes
 the displayed signs unless the same convention change is made everywhere in

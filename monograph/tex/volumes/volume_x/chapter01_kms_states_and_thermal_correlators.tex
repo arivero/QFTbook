@@ -159,8 +159,7 @@ moving \(B\) past the thermal state.}
 \label{fig:kms-strip}
 \end{figure}
 
-\begin{proposition}[Finite Gibbs traces are KMS]
-\label{prop:gibbs-trace-kms-volume-x}
+\paragraph{Finite Gibbs traces as KMS states.}
 Let \(\Hilb\) be finite dimensional, let \(H=H^\ast\), and let
 \(\alpha_t(A)=\ee^{\ii Ht}A\ee^{-\ii Ht}\) on
 \(\Obs=\operatorname{End}(\Hilb)\).  For
@@ -171,12 +170,9 @@ Let \(\Hilb\) be finite dimensional, let \(H=H^\ast\), and let
        {\operatorname{Tr}(\ee^{-\beta H})},
   \label{eq:finite-gibbs-state}
 \end{equation}
-\(\omega_\beta\) is a \(\beta\)-KMS state.
-\end{proposition}
-
-\begin{proof}
-Choose an orthonormal eigenbasis \(H\ket m=E_m\ket m\), and write
-\(A_{mn}=\bra mA\ket n\), \(B_{mn}=\bra mB\ket n\).  The function
+\(\omega_\beta\) is a \(\beta\)-KMS state.  To see the strip function
+explicitly, choose an orthonormal eigenbasis \(H\ket m=E_m\ket m\), and write
+\(A_{mn}=\bra mA\ket n\), \(B_{mn}=\bra mB\ket n\).  Then
 \begin{equation}
   F_{A,B}(z)
   =
@@ -210,10 +206,13 @@ Relabeling \(m\leftrightarrow n\) gives
   B_{mn}A_{nm}\,
   \ee^{\ii(E_m-E_n)t}
   =
-  \omega_\beta(\alpha_t(B)A).
+  \omega_\beta(\alpha_t(B)A),
 \]
-This proves the boundary condition \eqref{eq:volume-x-kms-boundary-condition}.
-\end{proof}
+which is the boundary condition
+\eqref{eq:volume-x-kms-boundary-condition}.  This finite-dimensional
+calculation is the model for the general KMS definition.  Infinite-volume
+thermal states require the strip analyticity and boundary condition to be
+verified in the chosen operator-algebraic or distributional framework.
 
 \begin{remark}[Chemical potentials]
 \label{rem:kms-chemical-potential-evolution}
@@ -263,16 +262,11 @@ or equivalently the frequency-space detailed-balance relation
   \label{eq:kms-detailed-balance}
 \end{equation}
 
-\begin{proposition}[Finite-volume spectral detailed balance]
-\label{prop:finite-volume-spectral-detailed-balance}
-In the finite-dimensional setting of
-Proposition~\ref{prop:gibbs-trace-kms-volume-x}, the distributions
+\paragraph{Finite-volume spectral detailed balance.}
+In the same finite-dimensional setting, the distributions
 \(\widetilde G^{>}_{AB}\) and \(\widetilde G^{<}_{AB}\) are finite sums of
-delta functions and obey \eqref{eq:kms-detailed-balance}.
-\end{proposition}
-
-\begin{proof}
-Using the same eigenbasis as above,
+delta functions and obey \eqref{eq:kms-detailed-balance}.  Using the
+eigenbasis above,
 \[
   G_{AB}^{>}(t)
   =
@@ -305,7 +299,6 @@ where the second formula follows by relabeling the indices in
 \(\omega(BA(t))\).  On the support of the displayed delta function,
 \(\ee^{-\beta E_n}=\ee^{-\beta\omega}\ee^{-\beta E_m}\), proving
 \eqref{eq:kms-detailed-balance}.
-\end{proof}
 
 Define the thermal spectral distribution
 \begin{equation}

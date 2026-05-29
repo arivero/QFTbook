@@ -65,12 +65,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `hyp:pure-sym-finite-volume-index-problem`: finite-volume Hamiltonian,
   Gauss-law, spin-structure, global-form, and trace-class assumptions for the
   `SU(N_c)` Witten index.
-- `prop:pure-sym-finite-volume-graded-trace`: positive-energy pairing and
+- Finite-volume graded-trace calculation: positive-energy pairing and
   finite-volume index identity.
-- `prop:pure-sym-index-cluster-basis-lemma`: finite-dimensional
-  linear-algebra lemma distinguishing finite-volume discrete-symmetry
-  eigenstates from infinite-volume cluster branch states with nonzero
-  condensate.
+- Finite-volume symmetry-basis calculation: finite-dimensional
+  linear algebra distinguishing finite-volume discrete-symmetry eigenstates
+  from infinite-volume cluster branch states with nonzero condensate.
 - `hyp:pure-sym-small-circle-affine-toda-input`: assumptions behind the
   small-circle monopole-instanton affine-Toda superpotential.
 - Affine-Toda critical-point count: constrained affine-Toda

@@ -62,9 +62,9 @@ After smearing against a test function, the Wick power
 \(\int f(x):\!\phi_\varepsilon(x)^k\!:\,\dd^dx\) when that limit exists.
 \end{definition}
 
-\begin{lemma}[Origin of the Wick coefficients]
-\label{lem:constructive-wick-coefficients}
-For a centered Gaussian variable \(X\) with variance \(c\),
+\paragraph{Origin of the Wick coefficients.}
+For a centered Gaussian variable \(X\) with variance \(c\), the Wick
+polynomial is
 \[
   :\!X^n\!:
   =
@@ -76,9 +76,6 @@ where \(H_n\) is the probabilists' Hermite polynomial.  In particular,
   :\!X^3\!:=X^3-3cX,\qquad
   :\!X^4\!:=X^4-6cX^2+3c^2.
 \]
-\end{lemma}
-
-\begin{proof}
 The generating function
 \[
   \exp(tX-\tfrac12ct^2)
@@ -98,7 +95,6 @@ Thus the coefficient of \(t^n\) is orthogonal to all polynomials of degree
 less than \(n\) and has leading term \(X^n\), which is the defining
 orthogonality property of the Hermite polynomial.  Expanding the generating
 function through order four gives the displayed coefficients.
-\end{proof}
 
 The calculation-check companion
 \path{calculation-checks/constructive_scalar_spde_checks.py} verifies
