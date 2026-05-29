@@ -708,6 +708,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Regulator comparison criterion for OS-positive stochastic limits"
     r"|Polynomial OS observables from exponential moments"
     r"|Kernel criterion for projective dual-norm bounds"
+    r"|Fusion of a Bethe string"
+    r"|First Seeley--DeWitt coefficients"
     r"|\\(A_\\{N_c-1\\}\\) sine profile and normalized tensions"
     r"|Sharp spatial cutoff one-loop coordinate"
     r"|Relation of the mass notions"

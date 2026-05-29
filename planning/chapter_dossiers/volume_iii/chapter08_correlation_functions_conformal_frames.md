@@ -26,7 +26,7 @@ The chapter establishes:
   one-point selection rule from translations and dilatations;
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
-- Theorem `thm:scalar-three-point-kinematics`, deriving the scalar
+- Proposition `prop:scalar-three-point-kinematics`, deriving the scalar
   three-point exponents from conformal-frame transitivity and inversion
   weights;
 - spinning tensor structures with stated representation data;
@@ -39,7 +39,7 @@ The chapter establishes:
   three-dimensional Schouten degeneration to two parity-even structures;
 - radial conjugation and BPZ-type bra construction from cylinder-time limits;
 - Definition `def:ordered-four-point-conformal-frame`, Theorem
-  `thm:four-point-cross-ratio-completeness`, and the scalar four-point
+  `prop:four-point-cross-ratio-completeness`, and the scalar four-point
   prefactor covariance calculation, giving the ordered four-point frame, the
   residual stabilizer dimension count, and the prefactor weights;
 - conformal frames and residual stabilizer groups;
