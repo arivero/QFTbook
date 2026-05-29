@@ -56,11 +56,12 @@ the three demoted titles:
 
 I also read nearby cue-heavy candidates before editing:
 
-- `prop:relation-of-mass-notions` is retained because it distinguishes
-  spectral pole mass, finite 1PI subtraction coordinates, MS running
-  coordinates, and lattice gap scaling in one place; the proof connects a
-  Kallen--Lehmann atom, the finite inverse propagator, and OS/lattice
-  transfer-matrix interpretation.
+- `prop:relation-of-mass-notions` was read here and temporarily retained
+  because it distinguishes spectral pole mass, finite 1PI subtraction
+  coordinates, MS running coordinates, and lattice gap scaling in one place.
+  This was superseded by the next wrapper pass, which demoted the statement
+  to `rem:relation-of-mass-notions` after recognizing that the proof was
+  explanatory bookkeeping around definitions and the pole equation.
 - `cor:fixed-loop-bphz-polchinski-renormalizability` is retained because it
   is the fixed-loop comparison theorem requested in the BPHZ/Polchinski
   discussion, with explicit finite-order matching hypotheses and a recursive

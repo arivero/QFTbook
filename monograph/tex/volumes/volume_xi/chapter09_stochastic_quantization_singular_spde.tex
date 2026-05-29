@@ -5452,8 +5452,8 @@ point \(u_x(s)\) measured by
 estimates that the tree-by-tree BPHZ analysis must prove for the six
 \(\Pi\)-coordinates in the strict negative sector.
 
-\begin{proposition}[Dyadic parabolic convolution bound]
-\label{prop:spde-dyadic-parabolic-convolution-bound}
+\begin{lemma}[Dyadic parabolic convolution bound]
+\label{lem:spde-dyadic-parabolic-convolution-bound}
 Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with
 homogeneous dimension
 \[
@@ -5507,7 +5507,7 @@ Consequently
   \label{eq:spde-dyadic-convolution-lone}
 \end{equation}
 for a constant \(C'\) depending only on \(A,V,a,b,Q\).
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 For fixed \(i,j\), the convolution is supported in
@@ -5562,7 +5562,7 @@ gives \eqref{eq:spde-dyadic-convolution-lone}.
 \end{proof}
 
 The exponents in
-Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound} are the
+Lemma~\ref{lem:spde-dyadic-parabolic-convolution-bound} are the
 deterministic scale arithmetic behind many model-coordinate estimates.  A
 kernel of order \(a\) has scale-\(i\) size \(2^{(Q-a)i}\) and \(L^1\)-size
 \(2^{-ai}\).  After convolution with an order-\(b\) kernel, the output scale
@@ -6113,7 +6113,7 @@ this elementary local gain from the harder BPHZ bookkeeping: one must still
 specify which polynomial is subtracted for each divergent subgraph, prove
 that the forest formula does not double count overlapping local parts, and
 combine the gain with the dyadic convolution bound in
-Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
+Lemma~\ref{lem:spde-dyadic-parabolic-convolution-bound}.
 
 \paragraph{One-loop relative-scale estimate.}
 The preceding local gain becomes a usable dyadic estimate only after the two
@@ -6284,7 +6284,7 @@ where
 For dynamic \(\Phi^4_3\), \(Q=5\).  The heat kernel in the retarded edge has
 order \(a=2\).  Each stationary covariance edge has order \(4\): it is the
 time convolution of two order-\(2\) heat edges, so
-Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound} gives the
+Lemma~\ref{lem:spde-dyadic-parabolic-convolution-bound} gives the
 order \(2+2=4\) dyadic bound.  Thus \(b=c=4\) and
 \[
   \eta_K=3,\qquad \eta_L=\eta_M=1,
@@ -8757,7 +8757,7 @@ in parabolic balls of radius \(O(\delta)\) satisfies a power bound
   \label{eq:spde-xy-graph-log-loss-bound}
 \end{equation}
 provided the dyadic heat and covariance blocks satisfy the support and size
-bounds used in Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
+bounds used in Lemma~\ref{lem:spde-dyadic-parabolic-convolution-bound}.
 \end{proposition}
 
 \begin{proof}
@@ -9568,8 +9568,8 @@ schemes change \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and \(c_{\rm fin}\)
 separately, but not the statement that only the local linear drift and
 vacuum-energy coordinates are needed in this superrenormalizable model.
 
-\begin{proposition}[Sharp spatial cutoff one-loop coordinate]
-\label{prop:spde-phi-four-three-c1-fourier-growth}
+\begin{example}[Sharp spatial cutoff one-loop coordinate]
+\label{ex:spde-phi-four-three-c1-fourier-growth}
 Work on \(\mathbb T^3=(\mathbb R/2\pi\mathbb Z)^3\) with Fourier basis
 \[
   e_n(x)=(2\pi)^{-3/2}e^{in\cdot x},\qquad n\in\mathbb Z^3 .
@@ -9611,9 +9611,8 @@ Consequently, for dyadic cutoffs \(M_N=2^N\),
   0\leq C_1(M_{N+1})-C_1(M_N)\leq C_m'2^N
 \]
 with \(C_m'<\infty\).
-\end{proposition}
+\end{example}
 
-\begin{proof}
 For a fixed Fourier mode \(n\), the linear equation is the
 Ornstein--Uhlenbeck equation
 \[
@@ -9663,12 +9662,11 @@ adjusting \(c_m\) to cover the finite initial range.  The dyadic increment
 bound follows from the upper shell estimate applied to
 \(M_N<|n|_\infty\leq M_{N+1}\), whose shell radii are
 \(M_N+1,\ldots,M_{N+1}\).
-\end{proof}
 
 \begin{proposition}[Spatial Fourier cutoff two-loop coordinate]
 \label{prop:spde-phi-four-three-c2-fourier-log-growth}
 Use the notation of
-Proposition~\ref{prop:spde-phi-four-three-c1-fourier-growth}, and put
+Example~\ref{ex:spde-phi-four-three-c1-fourier-growth}, and put
 \[
   a_n=|n|^2+m^2,\qquad n\in\mathbb Z^3 .
 \]
