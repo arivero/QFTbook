@@ -3522,9 +3522,9 @@ to \(\theta(s_2-s_1)W_v(s_2,s_1)P_v^+\) gives only the derivative of the step
 function, because the covariant derivative annihilates the transporter for
 \(s_2\ne s_1\).  This is the delta distribution on the oriented line.  The
 projector \(P_v^+\) records the spinor components retained in the heavy field.
-Gauge covariance follows from the endpoint transformation law of the same
-Wilson transporter proven for light-ray operators in
-Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.
+Gauge covariance follows from the same Wilson-transporter endpoint
+transformation law displayed in
+\eqref{eq:qcd-wilson-transporter-gauge-transformation}.
 
 Consider \(N_h\) heavy flavors whose masses have been removed by separate
 phases and whose residual dynamics are described by the leading HQET action at
@@ -8322,8 +8322,7 @@ chapter, with \(D_\mu=\partial_\mu-\ii A_\mu\) and
 \(-\frac1{4g^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\).  The symbol
 \(\mathcal P\) orders factors with larger parameter \(s\) to the left.
 
-\begin{proposition}[Gauge covariance of the open light-ray operator]
-\label{prop:qcd-light-ray-gauge-covariance}
+\paragraph{Gauge covariance of the open light-ray operator.}
 Let \(U(x)\) be a smooth gauge transformation in the fundamental
 representation, and let \(U_R(x)\) be its image in a representation \(R\).
 With the transformation law
@@ -8333,11 +8332,12 @@ With the transformation law
   q(x)\longmapsto U(x)q(x),
 \]
 the transporter satisfies
-\[
+\begin{equation}
   W_R(\lambda n,0)
   \longmapsto
   U_R(\lambda n)W_R(\lambda n,0)U_R(0)^{-1}.
-\]
+  \label{eq:qcd-wilson-transporter-gauge-transformation}
+\end{equation}
 Consequently
 \[
   \bar q(\lambda n)W_{\square}(\lambda n,0)\gamma\cdot n\,q(0)
@@ -8345,9 +8345,7 @@ Consequently
 is a color-singlet bilocal operator before renormalization, and its
 renormalized descendants remain gauge invariant if the regularization and
 subtraction scheme preserve background gauge covariance.
-\end{proposition}
 
-\begin{proof}
 Let \(W_R(s,0)\) denote the partial transporter from \(0\) to \(sn\).  It is the
 solution of
 \[
@@ -8364,7 +8362,6 @@ solutions to this finite-dimensional linear ordinary differential equation
 gives the stated transformation law.  The endpoint factors cancel against the
 transformations of \(\bar q(\lambda n)\) and \(q(0)\), because the gamma matrix
 acts on spinor indices and is the identity in color space.
-\end{proof}
 
 For an unpolarized target, write
 \[
@@ -8488,7 +8485,7 @@ At finite gauge-covariant regulator, the operator
 bilocal.  A background-gauge-covariant finite-part prescription therefore
 produces a gauge-invariant renormalized spatial-bilocal matrix element.
 This is the endpoint-cancellation argument of
-Proposition~\ref{prop:qcd-light-ray-gauge-covariance} with the lightlike path
+the Wilson-transporter covariance calculation above, with the lightlike path
 \(s n\) replaced by the spatial path \(s z e_3\), \(0\le s\le1\).  The
 parallel transporter transforms as
 \[
@@ -9049,7 +9046,7 @@ gauge-covariant finite-part prescription produces a gauge-invariant
 renormalized TMD matrix element.
 Every Wilson segment transforms by multiplication with the gauge
 transformation at its endpoints, as in
-Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.  Along a staple, the
+\eqref{eq:qcd-wilson-transporter-gauge-transformation}.  Along a staple, the
 factors at internal junctions cancel between adjacent segments.  The remaining
 endpoint factors at \(0\) and \(z\) cancel the gauge transformations of
 \(q(0)\) and \(\bar q(z)\).  In the soft factor all Wilson lines are multiplied

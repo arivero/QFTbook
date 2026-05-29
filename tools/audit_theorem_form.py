@@ -588,6 +588,10 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Covariance of the Abelian Dirac coupling"
     r"|One-particle residue bound for a canonically normalized field"
     r"|Leading Coulombic .*1S.* quarkonium level"
+    r"|Gauge covariance of the open light-ray operator"
+    r"|Connected torus covers"
+    r"|Transfer-matrix extraction of the static potential"
+    r"|Rational-block unitarity and Yang--Baxter equation"
     r")\b",
     re.IGNORECASE,
 )
