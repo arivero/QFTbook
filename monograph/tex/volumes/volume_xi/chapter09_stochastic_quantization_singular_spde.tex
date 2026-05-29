@@ -3246,8 +3246,7 @@ satisfied, and its conclusion is exactly
 \eqref{eq:spde-common-potential-cylinder-limit}.
 \end{proof}
 
-\begin{corollary}[Bounded Wick-cylinder comparison for stable quartic cutoffs]
-\label{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
+\paragraph{Bounded Wick-cylinder comparison for stable quartic cutoffs.}
 Let \(X_N^A\) and \(X_N^B\) be two cutoff approximations of the same massive
 two-dimensional Gaussian field on a common probability space
 \((\Omega,\mathcal F,\gamma)\).  Fix \(\lambda\in\R\) and define
@@ -3304,9 +3303,7 @@ Then, for every bounded continuous \(G:\R^r\to\C\),
        {\int e^{-V_N^B}\,\dd\gamma}.
   \label{eq:spde-stable-quartic-bounded-cylinder-comparison}
 \end{equation}
-\end{corollary}
 
-\begin{proof}
 Remark~\ref{rem:spde-common-wick-coordinate-limits} gives
 \[
   \mathcal X_N^\sigma\longrightarrow \mathcal X
@@ -3338,7 +3335,6 @@ All hypotheses of
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential} are satisfied,
 and its conclusion is precisely
 \eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
-\end{proof}
 
 \begin{proposition}[Smooth regulator consequences of Nelson stability]
 \label{prop:spde-smooth-regulator-nelson-consequences}
@@ -3453,9 +3449,10 @@ limits.  Applying the fourth Wick-power convergence statement with
   \qquad \sigma=A,B .
 \]
 The stability input \eqref{eq:spde-smooth-regulator-nelson-input} supplies
-the uniform \(L^p\) bound on \(e^{-V_N^\sigma}\).  Hence
-Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
-applies and gives the stated bounded Wick-cylinder comparison.
+the uniform \(L^p\) bound on \(e^{-V_N^\sigma}\).  Hence the bounded
+Wick-cylinder comparison
+\eqref{eq:spde-stable-quartic-bounded-cylinder-comparison} applies and gives
+the stated comparison.
 \end{proof}
 
 In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
@@ -3470,9 +3467,10 @@ gives the common route used in cutoff constructions: it is enough to prove
 that the renormalized interaction functionals converge in probability to the
 same limiting potential and that their exponential weights obey a uniform
 \(L^p\) stability estimate.  In the Wick quartic case,
-Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
-packages the corresponding bounded cylinder comparison once the common Wick
-coordinate limits and exponential-weight stability have been proved.
+the comparison
+\eqref{eq:spde-stable-quartic-bounded-cylinder-comparison} is obtained once
+the common Wick-coordinate limits and exponential-weight stability have been
+proved.
 For smooth Fourier multiplier regulators satisfying the Nelson stability
 input, Proposition~\ref{prop:spde-smooth-regulator-nelson-consequences}
 derives the normalized \(L^q\) density bounds, tightness, and bounded
@@ -4228,8 +4226,8 @@ Assume the following three further analytic facts.
   polynomials is supplied by
   Remark~\ref{rem:spde-common-wick-coordinate-limits}.  Equivalently,
   under these common Wick-limit hypotheses and the uniform \(L^p\) stability
-  bound, the bounded Wick-cylinder comparison is the direct conclusion of
-  Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
+  bound, the bounded Wick-cylinder comparison is precisely
+  \eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
   The common Wick-limit hypothesis itself can be checked from mixed
   covariance convergence by
   Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}; for
@@ -4351,8 +4349,8 @@ remaining constructive estimate is the uniform \(L^p\) stability of the
 weights in the chosen regulator family.  The matching convergence of finite
 Wick-coordinate cylinder vectors is
 Remark~\ref{rem:spde-common-wick-coordinate-limits}; combined with the
-stability estimate, these inputs give the bounded comparison statement in
-Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
+stability estimate, these inputs give the bounded comparison statement
+\eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
 The common Wick-limit hypothesis is reduced to a covariance estimate by
 Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, and for
 smooth Fourier multiplier cutoffs the needed covariance estimate follows

@@ -651,6 +651,11 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Linearized RG eigenvalues and operator dimensions"
     r"|Improved central charge and Liouville weights"
     r"|Finite linearized collision operator"
+    r"|Mass gap from Euclidean clustering"
+    r"|Bounded Wick-cylinder comparison for stable quartic cutoffs"
+    r"|Linking phase in finite BF theory"
+    r"|Banks--Casher relation under a spectral-density hypothesis"
+    r"|Single-channel finite-volume pole reconstruction"
     r")\b",
     re.IGNORECASE,
 )
