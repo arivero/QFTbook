@@ -107,7 +107,21 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Pair-of-pants selection rule|"
     r"Residual quotient symmetry after normal-subgroup gauging|"
     r"Finite condensate criterion|"
-    r"Finite condensate confinement criterion"
+    r"Finite condensate confinement criterion|"
+    r"Elementary .*BF_2.* boundary states|"
+    r"ADHM dimension count|"
+    r"One-box fixed points from the tangent character|"
+    r"Parity criterion for .*SU|"
+    r".*N=4.*pure.*N=2.*matching|"
+    r".*N=4.*pure.*N=1.*matching|"
+    r"Finite .*SU.*heat-bath.*overrelaxation invariance|"
+    r"Parity and the opposite levels|"
+    r"Abelian Chern--Simons boundary algebra|"
+    r"KW anomaly and superpotential .*R.*charge|"
+    r"Conditional determination by complete .*data|"
+    r"Separated universality|"
+    r"Local universality from RG coordinates|"
+    r"Conditional .*universality"
     r")\b",
     re.IGNORECASE,
 )

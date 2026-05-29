@@ -604,8 +604,7 @@ has the same real trace as its inverse.  The map preserves Haar measure
 because it is a composition of inversion and left/right multiplication by
 fixed group elements.
 
-\begin{proposition}[Finite \(SU(2)\) heat-bath and overrelaxation invariance]
-\label{prop:su2-heat-bath-overrelaxation-invariance}
+\paragraph{Finite \(SU(2)\) heat-bath and overrelaxation invariance.}
 At fixed finite lattice and finite \(\beta\), an exact single-link heat-bath
 update with conditional density \eqref{eq:su2-link-conditional} satisfies
 detailed balance for \eqref{eq:su2-finite-wilson-probability}.  The
@@ -613,11 +612,8 @@ single-link overrelaxation map \eqref{eq:su2-overrelaxation-map} preserves
 \eqref{eq:su2-finite-wilson-probability}.  If used as a deterministic
 involutive kernel, it is reversible with respect to the conditional measure
 at fixed staple.  Any finite composition or random mixture of these updates
-with Metropolis updates preserves the finite Wilson measure.
-\end{proposition}
-
-\begin{proof}
-The heat-bath statement is the detailed-balance argument for
+with Metropolis updates preserves the finite Wilson measure.  Indeed, the
+heat-bath statement is the detailed-balance argument for
 \eqref{eq:heat-bath-kernel} applied with \(X=SU(2)\) equal to the selected
 link and \(Y\) equal to all other links.  The local
 conditional density is \eqref{eq:su2-link-conditional} because every
@@ -633,7 +629,6 @@ Because the map is an involution, the measure on pairs
 the deterministic conditional kernel.  Integrating over \(U_{\widehat e}\)
 gives preservation of the full finite Wilson measure.  Compositions and
 random mixtures of invariant kernels remain invariant.
-\end{proof}
 
 Overrelaxation alone is not an ergodic sampling algorithm: it preserves the
 local score and is deterministic at fixed staple.  Its role in practice is to

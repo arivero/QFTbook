@@ -275,6 +275,17 @@ hypotheses checked.  Short proofs are allowed only when the mathematical
 content is genuinely concentrated, not when a trivial observation has been
 promoted to theorem status.
 
+Hypothesis-loaded conclusions obey the same rule.  If a statement assumes the
+existence of the scaling limit, the universal source functional, the complete
+OPE convergence package, or the common limiting CFT data, and the conclusion
+only unpacks those assumptions, use a hypothesis followed by a conditional
+consequence/status paragraph.  Reserve theorem-family form for the additional
+mathematical work: constructing the limit, proving tightness or positivity,
+verifying a contraction estimate, deriving a reconstruction theorem, or
+showing that concrete microscopic models satisfy the hypotheses.  In
+particular, Ising or RG ``universality'' statements whose substance is in the
+universality hypothesis are not theorem-level claims in this monograph.
+
 Finite comparison algebra, such as sine-law/Casimir ratio identities or
 large-\(N\) Taylor expansions used only as reference curves, belongs in prose
 or in an example unless the surrounding statement derives an actual spectral,

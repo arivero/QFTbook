@@ -894,7 +894,7 @@ local source self-contractions.  It has no effect on separated normalized
 correlators, but it is part of the definition of the full distributional
 generating functional.
 
-\begin{proposition}[Separated universality]
+\paragraph{Separated kernels in a source-dependent scaling limit.}
 Assume the source-dependent scaling limit
 \eqref{eq:ising-source-dependent-scaling-limit} exists for two microscopic
 realizations \(X\) and \(Y\) and that their continuum source coordinates have
@@ -902,10 +902,9 @@ been identified by the same fixed-point operator normalization.  Then their
 noncoincident continuum correlators of the corresponding scaling fields agree.
 Their contact-term extensions may differ by local distributions supported on
 collision diagonals.
-\end{proposition}
 
-\begin{proof}
-Functional derivatives of
+The point is a consequence of the source-functional definition.  Functional
+derivatives of
 \eqref{eq:ising-source-dependent-scaling-limit} at \(\eta=0\) give the
 scaling limits of smeared inserted correlators.  Restricting the resulting
 distributions to the configuration space of distinct insertion points removes
@@ -916,7 +915,6 @@ source jet contributes on this configuration space.  Once the linear jet has
 been fixed by the common operator normalization, the two realizations have the
 same separated-point correlators.  Higher source jets and the local
 polynomials \(P_a\) change only the extension across collision diagonals.
-\end{proof}
 
 Thus microscopic observables enter the continuum theory through renormalized
 source derivatives whose limits are operator-valued distributions.  The
@@ -1275,8 +1273,7 @@ In the \(\mathbb Z_2\)-even one-parameter case this is the precise version of
 tuning the temperature: if \(p_X=T\), then the condition at criticality is
 \(\lambda_t(\mu_R;\Lambda_0,T)=0\).
 
-\begin{proposition}[Local universality from RG coordinates]
-\label{prop:local-universality-rg-coordinates}
+\paragraph{Local RG-coordinate consequence.}
 Fix a finite local RG chart near the Ising fixed point and a target relevant
 coordinate \(u_R\).  Suppose that, for every sufficiently large
 \(\Lambda_0\) and for each microscopic realization \(X\) under consideration,
@@ -1307,10 +1304,9 @@ on the chosen RG coordinates but not on the microscopic label \(X\), such that
 \]
 for some \(\kappa>0\) determined by the irrelevant exponents and by the
 convergence rate of the generated integral.
-\end{proposition}
 
-\begin{proof}
-Apply Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
+This follows by applying
+Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
 to the RG trajectory whose relevant endpoint coordinate is fixed to be
 \(u_R\).  The irrelevant part of the bare coordinate contributes at order
 \((\mu_R/\Lambda_0)^\omega\), where \(\omega\) is the smallest retained
@@ -1320,10 +1316,9 @@ cutoff limit and a convergence rate, say \(\omega_F\).  Taking
 graph is independent of \(X\) because all dependence on \(X\) has been placed
 either in the solved relevant-coordinate tuning or in bounded irrelevant
 bare data whose direct memory is power-suppressed.
-\end{proof}
 
-This proposition is a coordinate form of universality.  It separates three
-kinds of data.  First, the fixed point and its scaling operators determine
+This coordinate form of universality separates three kinds of data.  First,
+the fixed point and its scaling operators determine
 \(\Delta_\sigma\), \(\Delta_\varepsilon\), \(y_h\), \(y_t\), and the limiting
 operator algebra.  Second, the microscopic model determines nonuniversal
 coordinate maps, such as
@@ -1358,10 +1353,10 @@ The factor \(A_X\) is not fixed-point data.  The exponent
 
 \begin{remark}[Coordinate universality versus scaling-limit existence]
 \label{rem:coordinate-universality-versus-scaling-limit-existence}
-Proposition~\ref{prop:local-universality-rg-coordinates} is a statement about
-convergence of finitely many projected RG coordinates at the reference scale
-\(\mu_R\).  It does not, by itself, construct a continuum probability measure,
-a Euclidean source functional, or a Wightman theory.  To upgrade the coordinate
+The local RG-coordinate consequence above is a statement about convergence of
+finitely many projected RG coordinates at the reference scale \(\mu_R\).  It
+does not, by itself, construct a continuum probability measure, a Euclidean
+source functional, or a Wightman theory.  To upgrade the coordinate
 statement to a continuum universality theorem one must additionally establish
 the existence of the scaling limit of the relevant Schwinger functions or,
 equivalently in a source-functional formulation, convergence of the
@@ -1392,7 +1387,7 @@ coordinate at the reference scale \(\mu_R\) is the same fixed value \(u_R\).
 Assume the following hypotheses.
 \begin{enumerate}[label=(\roman*)]
   \item The finite-coordinate RG hypotheses of
-  Proposition~\ref{prop:local-universality-rg-coordinates} hold uniformly for
+  the local RG-coordinate consequence above hold uniformly for
   the class \(X\), so that the retained Wilsonian coordinates satisfy
   \[
     z_X(a,u_R)\longrightarrow z_\ast(u_R):=(u_R,V_{\mu_R}(u_R)).
@@ -1423,8 +1418,7 @@ Assume the following hypotheses.
 \end{enumerate}
 \end{hypothesis}
 
-\begin{theorem}[Conditional lattice-to-continuum universality]
-\label{thm:conditional-lattice-to-continuum-universality}
+\paragraph{Consequence of the continuum-universality data.}
 Under Hypothesis~\ref{hyp:conditional-lattice-to-continuum-universality-data},
 the continuum separated-point Schwinger functions of the normalized
 scaling fields are independent of \(X\).  More precisely, functional
@@ -1441,10 +1435,9 @@ observable sector generated by these fields.  At \(u_R=0\), if the additional
 stress-tensor hypothesis stated after
 Hypothesis~\ref{hyp:ising-separated-spin-scaling-limit} holds, this common
 fixed point is the corresponding Ising CFT.
-\end{theorem}
 
-\begin{proof}
-By Hypothesis~\ref{hyp:conditional-lattice-to-continuum-universality-data}\textup{(i)},
+Here the substance is in the hypothesis.  By
+Hypothesis~\ref{hyp:conditional-lattice-to-continuum-universality-data}\textup{(i)},
 all tuned microscopic realizations approach the same retained-coordinate point
 \(z_\ast(u_R)\) at the reference scale.
 Hypothesis~\ref{hyp:conditional-lattice-to-continuum-universality-data}\textup{(ii)}
@@ -1467,7 +1460,6 @@ is precisely the additional closedness and
 regularity input needed to pass from equality of separated kernels to a
 common reconstructed Euclidean/Lorentzian theory; it is not supplied by the
 finite-dimensional RG coordinate estimate.
-\end{proof}
 
 \begin{hypothesis}[Ising lattice-to-CFT universality data]
 \label{hyp:conditional-ising-universality-lattice-to-cft-data}
@@ -1480,12 +1472,12 @@ so that their leading scaling fields are \(\sigma\) and \(\varepsilon\).
 Assume the following data and hypotheses.
 \begin{enumerate}[label=(\roman*)]
   \item The tuned finite-coordinate Wilsonian hypotheses of
-  Proposition~\ref{prop:local-universality-rg-coordinates} hold uniformly for
+  the local RG-coordinate consequence above hold uniformly for
   \(\mathfrak U\), with relevant endpoint coordinate
   \(u_R=(\lambda_{h,R},\lambda_{t,R})\).  In the \(\mathbb Z_2\)-even critical
   slice this means \(\lambda_{h,R}=\lambda_{t,R}=0\).
   \item The source-dependent scaling-limit hypotheses of
-  Theorem~\ref{thm:conditional-lattice-to-continuum-universality} hold for the
+  the continuum-universality data above hold for the
   source coordinates coupled to \(A^X_{\sigma,a}\), \(A^X_{\varepsilon,a}\),
   and the other selected scaling observables.  The reflected OS quadratic
   forms converge on the positive-time test-function domain.
@@ -1515,8 +1507,7 @@ Assume the following data and hypotheses.
 \end{enumerate}
 \end{hypothesis}
 
-\begin{theorem}[Conditional Ising universality from lattice data to CFT data]
-\label{thm:conditional-ising-universality-lattice-to-cft-data}
+\paragraph{Conditional Ising scaling functions.}
 Under Hypothesis~\ref{hyp:conditional-ising-universality-lattice-to-cft-data},
 for every \(X\in\mathfrak U\), every list of selected microscopic
 observables, and every configuration of pairwise distinct continuum points
@@ -1551,22 +1542,19 @@ magnetic field to \(\lambda_{t,R}\) and \(\lambda_{h,R}\), the constants
 \(b^X_I\), finite-cutoff corrections, and contact-term extensions are not
 part of the universal separated-point functions
 \eqref{eq:conditional-ising-universality-scaling-functions}.
-\end{theorem}
 
-\begin{proof}
-The thermodynamic limit supplies the infinite-volume lattice state for each
+The argument should be read as an unpacking of the hypotheses.  The
+thermodynamic limit supplies the infinite-volume lattice state for each
 fixed cutoff and tuned microscopic parameter.
 Hypothesis~\ref{hyp:conditional-ising-universality-lattice-to-cft-data}\textup{(i)},
-by
-Proposition~\ref{prop:local-universality-rg-coordinates}, sends every tuned
+by the local RG-coordinate consequence above, sends every tuned
 microscopic realization to the same retained Wilsonian coordinate
 \[
   z_\ast(u_R)=(u_R,V_{\mu_R}(u_R))
 \]
 at the reference scale.
 Hypothesis~\ref{hyp:conditional-ising-universality-lattice-to-cft-data}\textup{(ii)},
-by
-Theorem~\ref{thm:conditional-lattice-to-continuum-universality}, upgrades that
+by the continuum-universality consequence above, upgrades that
 coordinate convergence to convergence of the renormalized source functionals:
 after the local source maps and source-local vacuum subtractions are applied,
 all \(X\in\mathfrak U\) have the same limiting functional
@@ -1594,7 +1582,6 @@ scaling functions with the relevant coordinates held fixed.  The last sentence l
 parameters removed either by tuning, by field normalization, or by restriction
 to separated points; the preceding argument never identifies them with CFT
 data.
-\end{proof}
 
 The same separation applies to observables.  Let \(A^X_{\rm spin}\) be a
 microscopic odd lattice observable and \(A^X_{\rm eng}\) a microscopic even

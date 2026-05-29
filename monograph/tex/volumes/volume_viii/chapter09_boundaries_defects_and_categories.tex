@@ -81,8 +81,6 @@ irreducible complex representation \(\rho\) of \(G\), with character
   \label{eq:finite-bf-two-idempotent}
 \end{equation}
 
-\begin{proposition}[Elementary \(BF_2\) boundary states]
-\label{prop:finite-bf-two-boundary-states}
 The elements \(e_\rho\), as \(\rho\) ranges over irreducible representations
 of \(G\), are the primitive central idempotents of \(\C[G]\):
 \[
@@ -103,9 +101,6 @@ elementary modules over the closed Frobenius algebra \(Z(\C[G])\) are
   0, & \rho\ne\sigma .
   \end{cases}
 \]
-\end{proposition}
-
-\begin{proof}
 The regular representation decomposes as
 \[
   \C[G]\cong \bigoplus_{\rho\in\operatorname{Irr}(G)}
@@ -117,9 +112,8 @@ Schur orthogonality gives the central projector onto that summand as
 orthogonal and their sum is the identity.  Since \(Z(\C[G])\) is a finite
 direct product of copies of \(\C\), its simple modules are exactly the
 one-dimensional summands \(e_\rho Z(\C[G])\), with the displayed Hom spaces.
-\end{proof}
 
-This proposition is deliberately a closed-sector statement.  A fully extended
+This calculation is deliberately a closed-sector statement.  A fully extended
 finite-gauge theory has a richer boundary classification by module categories
 over \(\operatorname{Rep}(G)\), and twisted theories replace
 \(\operatorname{Rep}(G)\) by the corresponding cocycle-twisted tensor
@@ -291,8 +285,7 @@ A subgroup \(L\subset A_K\) is Lagrangian if \(q|_L=0\) and
 \]
 \end{definition}
 
-\begin{proposition}[Abelian Chern--Simons boundary algebra]
-\label{prop:abelian-cs-lagrangian-boundary}
+\paragraph{Abelian Chern--Simons boundary algebra.}
 In the pointed modular category of an abelian Chern--Simons theory, a
 Lagrangian subgroup \(L\subset A_K\) determines a commutative separable
 algebra object
@@ -301,11 +294,9 @@ algebra object
 \]
 The condition \(q|_L=0\) is exactly the condition that the summands have
 trivial topological spin, and \(L=L^\perp\) is the condition that no nontrivial
-bulk line has trivial monodromy with every condensed line.
-\end{proposition}
-
-\begin{proof}
-In a pointed modular category the simple objects form an abelian group under
+bulk line has trivial monodromy with every condensed line.  This follows from
+the finite semisimple algebra of the pointed category: the simple objects form
+an abelian group under
 fusion, here \(A_K\).  The braiding monodromy of charges \(\ell,\ell'\) is
 \(\exp(2\pi\ii b(\ell,\ell'))\), and the twist of \(\ell\) is
 \(\exp(2\pi\ii q(\ell))\).  The direct sum over a subgroup carries
@@ -320,7 +311,6 @@ group \(L\).  A line \(a\) can pass through the boundary condensate without
 monodromy precisely when \(a\in L^\perp\).  If \(L=L^\perp\), the only such
 transparent bulk lines are the condensed ones, so the boundary is a boundary
 to the trivial bulk rather than to another residual topological order.
-\end{proof}
 
 \begin{example}[Toric-code boundary subgroups]
 \label{ex:toric-code-lagrangian-boundaries}
