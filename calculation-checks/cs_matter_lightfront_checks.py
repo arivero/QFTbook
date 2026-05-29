@@ -100,12 +100,136 @@ def check_bilocal_saddle_scaling() -> None:
     assert_equal("CS bilocal leading/subleading ratio", leading_without_pi / subtraction_without_pi, n)
 
 
+def matmul(left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
+    size = len(left)
+    return tuple(
+        tuple(sum(left[i][k] * right[k][j] for k in range(size)) for j in range(size))
+        for i in range(size)
+    )
+
+
+def mat_sub(left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
+    size = len(left)
+    return tuple(tuple(left[i][j] - right[i][j] for j in range(size)) for i in range(size))
+
+
+def identity(size: int) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(tuple(Fraction(1 if i == j else 0) for j in range(size)) for i in range(size))
+
+
+def inverse_2x2(matrix: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+    (a, b), (c, d) = matrix
+    det = a * d - b * c
+    if det == 0:
+        raise AssertionError("singular test matrix")
+    return ((d / det, -b / det), (-c / det, a / det))
+
+
+def bilocal_interaction(
+    g: tuple[tuple[Fraction, ...], ...],
+    v_plus: tuple[tuple[Fraction, ...], ...],
+    kernel: tuple[tuple[Fraction, ...], ...],
+    v_perp: tuple[tuple[Fraction, ...], ...],
+    coeff: Fraction,
+) -> Fraction:
+    size = len(g)
+    total = Fraction(0)
+    for a in range(size):
+        for b in range(size):
+            for c in range(size):
+                for d in range(size):
+                    for e in range(size):
+                        total += v_plus[a][b] * g[b][c] * kernel[c][d] * v_perp[d][e] * g[e][a]
+    return -coeff * total
+
+
+def self_energy_from_variation(
+    g: tuple[tuple[Fraction, ...], ...],
+    v_plus: tuple[tuple[Fraction, ...], ...],
+    kernel: tuple[tuple[Fraction, ...], ...],
+    v_perp: tuple[tuple[Fraction, ...], ...],
+    coeff: Fraction,
+) -> tuple[tuple[Fraction, ...], ...]:
+    size = len(g)
+    sigma = [[Fraction(0) for _ in range(size)] for _ in range(size)]
+    for c_index in range(size):
+        for m in range(size):
+            first = Fraction(0)
+            for a in range(size):
+                for d in range(size):
+                    for e in range(size):
+                        first += v_plus[a][m] * kernel[c_index][d] * v_perp[d][e] * g[e][a]
+            second = Fraction(0)
+            for b in range(size):
+                for d in range(size):
+                    for e in range(size):
+                        second += v_plus[c_index][b] * g[b][d] * kernel[d][e] * v_perp[e][m]
+            sigma[c_index][m] = -coeff * (first + second)
+    return tuple(tuple(row) for row in sigma)
+
+
+def replace_entry(
+    matrix: tuple[tuple[Fraction, ...], ...],
+    row: int,
+    col: int,
+    delta: Fraction,
+) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(
+        tuple(value + (delta if i == row and j == col else 0) for j, value in enumerate(row_values))
+        for i, row_values in enumerate(matrix)
+    )
+
+
+def check_bilocal_self_energy_variation() -> None:
+    g = (
+        (Fraction(2), Fraction(1), Fraction(-1)),
+        (Fraction(0), Fraction(3), Fraction(2)),
+        (Fraction(1), Fraction(-2), Fraction(1)),
+    )
+    v_plus = (
+        (Fraction(1), Fraction(2), Fraction(0)),
+        (Fraction(-1), Fraction(1), Fraction(3)),
+        (Fraction(2), Fraction(0), Fraction(1)),
+    )
+    kernel = (
+        (Fraction(0), Fraction(1), Fraction(-1)),
+        (Fraction(2), Fraction(0), Fraction(1)),
+        (Fraction(1), Fraction(-2), Fraction(0)),
+    )
+    v_perp = (
+        (Fraction(2), Fraction(-1), Fraction(1)),
+        (Fraction(0), Fraction(1), Fraction(2)),
+        (Fraction(3), Fraction(1), Fraction(-1)),
+    )
+    coeff = Fraction(5, 7)
+    sigma = self_energy_from_variation(g, v_plus, kernel, v_perp, coeff)
+
+    # The manuscript defines Sigma^C_M = dI/dG^M_C.  A centered finite
+    # difference extracts the linear coefficient of I(G+t E_{M C}).
+    for c_index in range(3):
+        for m in range(3):
+            forward = bilocal_interaction(replace_entry(g, m, c_index, Fraction(1)), v_plus, kernel, v_perp, coeff)
+            backward = bilocal_interaction(replace_entry(g, m, c_index, Fraction(-1)), v_plus, kernel, v_perp, coeff)
+            derivative = (forward - backward) / 2
+            assert_equal(f"bilocal self-energy derivative C={c_index} M={m}", sigma[c_index][m], derivative)
+
+
+def check_planar_dyson_index_convention() -> None:
+    g = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    sigma = ((Fraction(3), Fraction(-1)), (Fraction(2), Fraction(4)))
+    q = mat_sub(inverse_2x2(g), sigma)
+    lhs = matmul(g, tuple(tuple(q[i][j] + sigma[i][j] for j in range(2)) for i in range(2)))
+    assert_equal("planar Dyson equation index convention", lhs, identity(2))
+
+
 def main() -> None:
     check_light_cone_quadratic_factor()
     check_first_order_gaussian_sign()
     check_trace_delta_color_scaling()
     check_t_hooft_coordinate_dimensionless()
     check_bilocal_saddle_scaling()
+    check_bilocal_self_energy_variation()
+    check_planar_dyson_index_convention()
     print("All Chern-Simons-matter light-front checks passed.")
 
 

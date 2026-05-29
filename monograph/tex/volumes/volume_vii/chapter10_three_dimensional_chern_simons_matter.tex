@@ -407,6 +407,171 @@ by products of \(G\).  Thus no nonsinglet correlator enters the leading
 large-\(N\) Schwinger--Dyson equation.
 \end{proof}
 
+\subsection{Planar Bilocal Saddle and Self-Energy Equation}
+
+The preceding closure becomes computational only after the leading planar
+equation is written as an equation for the exact two-point function.  We give
+the finite-regulator derivation because it is the step often hidden behind
+the phrase ``rainbow resummation'' in the Chern--Simons vector-model
+literature.
+
+Let \(Q^A{}_{B}\) be the regulated inverse free propagator of the fundamental
+matter variable in the gauge-fixed theory, including all spinor, flavor,
+momentum, and regulator labels but no color index.  Thus the quadratic part
+of the action is
+\[
+  S_0=\overline\Psi^i_A Q^A{}_{B}\Psi_i^B .
+\]
+Keeping the \(O(N)\) term of
+Proposition~\ref{prop:cs-vector-bilocal-color-reduction} and placing the
+\(O(N^0)\) trace-subtraction in the \(1/N\) expansion, the leading
+light-cone interaction is
+\begin{equation}
+  S_{\rm int}^{(0)}
+  =
+  N\,I_{\rm LC}[B],
+  \qquad
+  I_{\rm LC}[B]
+  =
+  -2\pi\lambda\,
+  (V^+)^A{}_{B}B^B{}_{C}
+  K^C{}_{D}
+  (V^\perp)^D{}_{E}B^E{}_{A},
+  \label{eq:cs-vector-leading-bilocal-interaction}
+\end{equation}
+where \(K=\partial_-^{-1}\) with the same zero-mode prescription as in
+\eqref{eq:cs-light-cone-effective-current}.  Define the color-normalized
+two-point bilocal
+\[
+  G^A{}_{B}
+  =
+  \left\langle B^A{}_{B}\right\rangle
+  =
+  \frac1N\left\langle\overline\Psi^i_B\Psi_i^A\right\rangle .
+\]
+
+\begin{proposition}[Planar self-energy equation from the bilocal action]
+\label{prop:cs-vector-planar-self-energy-equation}
+Assume the finite-regulator planar vector-model datum of
+Definition~\ref{def:planar-cs-vector-model-datum}, the leading interaction
+\eqref{eq:cs-vector-leading-bilocal-interaction}, and large-\(N\) singlet
+factorization in the form
+\eqref{eq:cs-vector-factorization}.  For ordinary complex bosonic fundamental
+variables, the leading large-\(N\) two-point function obeys
+\begin{equation}
+  G^A{}_{C}\,
+  \bigl(Q^C{}_{B}+\Sigma^C{}_{B}[G]\bigr)
+  =
+  \delta^A{}_{B},
+  \label{eq:cs-vector-planar-dyson-equation}
+\end{equation}
+where the self-energy is the functional derivative of the leading bilocal
+interaction:
+\begin{equation}
+  \Sigma^C{}_{M}[G]
+  =
+  \frac{\partial I_{\rm LC}}{\partial G^M{}_{C}}
+  =
+  -2\pi\lambda
+  \left[
+    (V^+)^A{}_{M}K^C{}_{D}(V^\perp)^D{}_{E}G^E{}_{A}
+    +
+    (V^+)^C{}_{B}G^B{}_{D}K^D{}_{E}(V^\perp)^E{}_{M}
+  \right].
+  \label{eq:cs-vector-planar-self-energy-functional}
+\end{equation}
+For fermionic vector models the same color and bilocal derivative formula is
+read in the declared graded order; the additional signs are those of the
+Berezin Schwinger--Dyson identity and of the spinor current matrices
+\(V^\mu\).
+\end{proposition}
+
+\begin{proof}
+Apply the finite-regulator Schwinger--Dyson identity
+\eqref{eq:cs-vector-bosonic-sd} with
+\(\mathcal O=\Psi_i^A\).  Summing over the color label and dividing by \(N\)
+gives
+\[
+  \delta^A{}_{M}
+  =
+  \frac1N
+  \left\langle
+    \Psi_i^A
+    \frac{\partial S_{\rm reg}}{\partial\Psi_i^M}
+  \right\rangle .
+\]
+The quadratic action contributes
+\[
+  \frac1N
+  \left\langle\Psi_i^A\overline\Psi^i_C\right\rangle Q^C{}_{M}
+  =
+  G^A{}_{C}Q^C{}_{M}.
+\]
+Here the displayed equality uses that the variables in the proposition are
+ordinary bosonic complex variables, so the two fields in the finite
+regulator integral may be interchanged without a Koszul sign.
+For the leading planar interaction, the chain rule and the definition of
+\(B\) give
+\[
+  \frac{\partial}{\partial\Psi_i^M}
+  \bigl(NI_{\rm LC}[B]\bigr)
+  =
+  \overline\Psi^i_C
+  \frac{\partial I_{\rm LC}}{\partial B^M{}_{C}} .
+\]
+Therefore the interaction contribution is
+\[
+  \frac1N
+  \left\langle
+    \Psi_i^A\overline\Psi^i_C
+    \frac{\partial I_{\rm LC}}{\partial B^M{}_{C}}
+  \right\rangle .
+\]
+Large-\(N\) factorization replaces the product of the bilocal and the
+bilocal polynomial
+\(\partial I_{\rm LC}/\partial B^M{}_{C}\) by the same expression evaluated
+at \(B=G\), up to \(O(N^{-1})\) corrections in this normalization.  This gives
+\[
+  \delta^A{}_{M}
+  =
+  G^A{}_{C}
+  \left(
+    Q^C{}_{M}
+    +
+    \left.
+    \frac{\partial I_{\rm LC}}{\partial B^M{}_{C}}
+    \right|_{B=G}
+  \right),
+\]
+which is \eqref{eq:cs-vector-planar-dyson-equation}.
+
+It remains only to compute the derivative of
+\eqref{eq:cs-vector-leading-bilocal-interaction}.  Differentiating the first
+and second occurrence of \(B\) gives respectively
+\[
+  -2\pi\lambda
+  (V^+)^A{}_{M}K^C{}_{D}(V^\perp)^D{}_{E}G^E{}_{A},
+  \qquad
+  -2\pi\lambda
+  (V^+)^C{}_{B}G^B{}_{D}K^D{}_{E}(V^\perp)^E{}_{M}.
+\]
+Their sum is \eqref{eq:cs-vector-planar-self-energy-functional}.  The
+fermionic statement follows from the finite-regulator Berezin
+Schwinger--Dyson identity with the same color contraction; one must not infer
+the graded signs from the bosonic display without fixing the fermion-current
+ordering.
+\end{proof}
+
+In a translation-invariant continuum chart, the labels \(A,B\) include
+momenta and spin.  Equation~\eqref{eq:cs-vector-planar-dyson-equation} then
+becomes the familiar planar Schwinger--Dyson integral equation for the exact
+fundamental propagator.  Solving it requires the regulator-dependent mass and
+contact counterterms that tune the theory to the conformal point.  The
+mathematical point of the derivation above is that the planar self-energy is
+the leading finite-regulator Schwinger--Dyson equation for gauge-invariant
+singlet bilocals after the light-cone Chern--Simons constraint has been
+integrated out.
+
 \begin{controlledapproximation}[Planar light-front closure]
 \label{ca:planar-cs-vector-light-front-closure}
 In the datum of Definition~\ref{def:planar-cs-vector-model-datum}, the
