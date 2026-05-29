@@ -464,18 +464,40 @@ for the string of root charge \(\alpha\).
 \end{proposition}
 
 \begin{proof}
-The supersymmetry algebra in a sector containing a straight static string has
-an anticommutator whose right hand side is the sum of the string tension
-times the identity on the preserved two-dimensional worldsheet directions and
-a central-charge term valued in the R-symmetry vector carried by the
-tensor-multiplet scalars.  Positivity of
-\(\{Q+uQ^\dagger,Q+uQ^\dagger\}\) for arbitrary spinor/R-symmetry parameter
-is equivalent to the statement that the tension dominates the norm of the
-central-charge vector.  Equality is precisely the condition that a nonzero
-linear combination of supercharges annihilates the string state.  With the
-normalization above this gives \(T_q=|Z_q|\).  In the \((2,0)\) ADE theory
-the charged strings on a generic tensor branch are labeled by roots, hence
-\(q=\alpha\) gives the displayed formula.
+Work per unit length for a straight static string oriented, say, along
+\(x^5\).  Translation invariance along the string replaces the energy by a
+tension \(T_q\), and the tensor-multiplet central charge appears in the
+supercharge anticommutator as an R-symmetry vector \(Z_q^A\).  Choose the
+positive normalization of the supercharges so that the coefficient of the
+tension term in the anticommutator is \(T_q\).  After choosing a unit vector
+\(\widehat Z^A=Z_q^A/|Z_q|\), the relevant Hermitian anticommutator on the
+subspace of spinor/R-symmetry parameters is
+\[
+  \{Q(\varepsilon),Q(\varepsilon)^\dagger\}
+  =
+  \varepsilon^\dagger
+  \bigl(T_q\,{\bf 1}-|Z_q|\,\Gamma_{\rm str}\Gamma_{\widehat Z}\bigr)
+  \varepsilon .
+\]
+Here \(\Gamma_{\rm str}\) is the chirality matrix determined by the oriented
+two-plane swept out by the static string, and \(\Gamma_{\widehat Z}\) is the
+unit R-symmetry Clifford multiplication in the direction \(\widehat Z\).  The
+two matrices square to \(1\) on the relevant spinor space and their product
+has eigenvalues \(\pm1\).  Positivity of the Hilbert-space norm of
+\(Q(\varepsilon)^\dagger|\text{string}\rangle\) for every \(\varepsilon\)
+therefore requires
+\[
+  T_q-|Z_q|\ge0 .
+\]
+If equality holds, the eigenspace with
+\(\Gamma_{\rm str}\Gamma_{\widehat Z}=+1\) is annihilated by a nonzero
+linear combination of supercharges; conversely, preservation of a nonzero
+supercharge forces the smallest eigenvalue of the displayed matrix to
+vanish.  This is the BPS saturation condition.  With the scalar-coordinate
+normalization in the statement, \(Z_q^A=q_I\phi^{IA}\), hence
+\(T_q=|Z_q|=|q_I\phi^I|\) for a saturated string.  In the \((2,0)\) ADE
+theory the charged strings on a generic tensor branch are labeled by roots,
+so \(q=\alpha\) gives \(T_\alpha=|\alpha(\phi)|\).
 \end{proof}
 
 The worldsheet theory of a BPS string carries anomalies determined by inflow

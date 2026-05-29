@@ -148,10 +148,12 @@ The chapter must define and derive:
 - the fact that a codimension statement about a critical surface requires a
   specified \(C^k\) Banach RG chart and a differentiable endpoint map, not
   merely the linearized eigenvalue calculation;
-- the finite-reference critical-surface theorem: if the relevant-coordinate
-  endpoint map is \(C^k\) and its derivative in the relevant block is
-  invertible, its zero set is a \(C^k\) embedded Banach submanifold of
-  codimension equal to the number of relevant coordinates;
+- the finite-reference critical-surface construction: if the
+  relevant-coordinate endpoint map is \(C^k\) and its derivative in the
+  relevant block is invertible, the Banach implicit-function theorem makes its
+  zero set a \(C^k\) embedded Banach submanifold of codimension equal to the
+  number of relevant coordinates; the dossier records this as an
+  implicit-function consequence, not as an independent QFT theorem;
 - the \(D=4\) massless scalar toy truncation
   \(L_\Lambda=\int(g_4\phi^4+g_6\phi^6)\), with
   \(\lambda_4=g_4\), \(\lambda_6=\Lambda^2g_6\);

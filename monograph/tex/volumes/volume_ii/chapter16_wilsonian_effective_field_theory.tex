@@ -1171,10 +1171,9 @@ inside \(\mathfrak U\).  In coordinates write
 for the coordinate RG map and relevant projection.
 \end{definition}
 
-\begin{theorem}[Finite-reference critical surface]
-\label{thm:finite-reference-critical-surface}
-Let \((\mathfrak U,\psi,\Phi_s)\) be a \(C^k\) Banach RG chart and fix a
-finite RG time \(s_R=\log(\Lambda_0/\Lambda_R)>0\).  Let
+\paragraph{Finite-reference critical surface from an implicit-function chart.}
+Let \((\mathfrak U,\psi,\Phi_s)\) be a \(C^k\) Banach RG chart and fix a finite
+RG time \(s_R=\log(\Lambda_0/\Lambda_R)>0\).  Let
 \[
   E_{s_R}(z)=\pi_{\rm rel}\bigl(\varphi_{s_R}(z)\bigr),
   \qquad
@@ -1198,14 +1197,11 @@ coordinates it is the graph
   u=G_{s_R}(w)
 \]
 for a \(C^k\) map \(G_{s_R}\) defined on an open subset of \(X_{\rm rest}\).
-\end{theorem}
-
-\begin{proof}
-The hypotheses make \(E_{s_R}(u,w)=0\) an equation in the finite-dimensional
-relevant block \(X_{\rm rel}\), with \(C^k\) dependence on the remaining
-Banach variable \(w\).  Since \(D_uE_{s_R}(z_*)\) is invertible, the
-Banach-space implicit function theorem gives a neighborhood of \(z_*\) and a
-unique \(C^k\) map \(G_{s_R}\) such that
+This is the Banach-space implicit function theorem applied to the endpoint
+map \(E_{s_R}\): the hypotheses make \(E_{s_R}(u,w)=0\) an equation in the
+finite-dimensional relevant block \(X_{\rm rel}\), with \(C^k\) dependence on
+the remaining Banach variable \(w\), and the invertibility of
+\(D_uE_{s_R}(z_*)\) supplies a unique \(C^k\) graph satisfying
 \[
   E_{s_R}(u,w)=0
   \quad\Longleftrightarrow\quad
@@ -1213,11 +1209,14 @@ unique \(C^k\) map \(G_{s_R}\) such that
 \]
 inside that neighborhood.  A graph over the closed complemented subspace
 \(X_{\rm rest}\) is an embedded \(C^k\) Banach submanifold, and its
-codimension is \(\dim X_{\rm rel}=r\).
-\end{proof}
+codimension is \(\dim X_{\rm rel}=r\).  The nontrivial QFT burden in any
+application is the construction of the chart, the differentiability of the
+RG endpoint map in the chosen norm, and the invertibility of the relevant
+block derivative; once those have been established, the graph statement is
+ordinary functional analysis.
 
-The theorem is a finite-reference statement.  The infinite-time critical
-surface consisting of trajectories that remain in the fixed-point
+The construction above is a finite-reference statement.  The infinite-time
+critical surface consisting of trajectories that remain in the fixed-point
 neighborhood and converge to the fixed point as \(\Lambda\to0\) requires a
 stable- or center-stable-manifold theorem for the chosen Banach RG flow, with
 the corresponding spectral-gap, smoothness, and existence hypotheses.  The

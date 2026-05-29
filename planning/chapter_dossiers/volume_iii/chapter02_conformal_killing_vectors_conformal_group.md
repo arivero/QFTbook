@@ -29,6 +29,9 @@ The chapter establishes:
   \(\mathbb R^{D,2}\), with explicit ambient representatives for the
   Poincare patch and the finite translation, Lorentz, dilatation, and special
   conformal transformations;
+- the Euclidean point-stabilizer calculation identifying the parabolic
+  stabilizer \(SO(D)\times\mathbb R_+\ltimes K\), now presented as
+  representation-theoretic setup rather than as a theorem-family proof;
 - the Lorentzian Einstein-cylinder coordinates, identifying the universal
   cover of the compactification with \(\mathbb R_T\times S^{D-1}\);
 - the distinction between the projective spacetime group \(PO_0(D,2)\) and

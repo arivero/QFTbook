@@ -59,7 +59,7 @@ resonances.
   Haag--Ruelle creators.
 - Derives the abelian Wilson-line boundary-charge transformation and the
   nonabelian parallel-transporter transformation law.
-- Proves the finite-ray abelian identity that a Wilson-line dressed charged
+- Gives the finite-ray abelian calculation that a Wilson-line dressed charged
   coordinate is the ordinary charged coordinate on the axial gauge slice
   \(u^\mu A_\mu=0\), under explicit endpoint and decay assumptions, and
   derives the associated \((k\cdot u-\ii0)^{-1}\) line denominator from the
@@ -68,7 +68,7 @@ resonances.
   dressings as the core unsolved Haag--Ruelle replacement.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.
-- Shows that compact dressing changes with fixed asymptotic flux are
+- Shows in prose that compact dressing changes with fixed asymptotic flux are
   coordinate changes at the level of LSZ residues, while changes of the
   asymptotic flux change the charged sector.
 - Derives the half-line worldline-current Fourier transform and the eikonal
@@ -148,3 +148,7 @@ resonances.
   proposition/proof to a worked Fourier-transform paragraph.  The calculation
   remains because it fixes the charged-dressing endpoint prescription, but its
   proof is a regulated half-line integral.
+- 2026-05-29: strengthened the Gauss-law obstruction proof by spelling out
+  the smeared large-sphere charge limit and domain pairing, and demoted the
+  ray-dressing/axial-gauge and compact-dressing/LSZ-coordinate calculations
+  from proposition/proof form to worked prose.

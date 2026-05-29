@@ -198,7 +198,7 @@ The chapter must define and derive:
   =3-\epsilon/2-\epsilon^2/108+O(\epsilon^3)\), explaining that the
   one-tuning-condition statement is inside the \(\mathbb Z_2\)-even subspace,
   while a codimension-one submanifold statement requires the Banach-chart
-  endpoint theorem from the Wilsonian chapter;
+  endpoint construction from the Wilsonian chapter;
 - the scaling of two-point functions in momentum and position space;
 - the point-splitting interpretation of the properly renormalized
   \(\phi^2\) operator;
@@ -234,8 +234,8 @@ The chapter must define and derive:
   \(y_A=D-\Delta_A\), irrelevant eigenvalues
   \(\omega_\rho=\Delta_\rho-D\), and the endpoint-map definition of the
   critical surface, with a cross-reference to the finite-reference
-  critical-surface theorem that supplies smooth codimension only under an
-  explicit endpoint-map submersion hypothesis.
+  implicit-function construction that supplies smooth codimension only under
+  an explicit endpoint-map submersion hypothesis.
 - dangerously irrelevant coordinates as properties of an irrelevant RG
   coordinate together with a specified observable and scaling sector, including
   the observable scaling form whose \(w\to0\) limit is singular;
@@ -325,9 +325,10 @@ The chapter must define and derive:
 12. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
    needed to reach that fixed point.
 13. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
-    local RG chart.  Its codimension is a theorem only when the endpoint map
-    is \(C^k\) and submersive in the relevant coordinates; the linearized
-    eigenvalue count alone is not that theorem.
+    local RG chart.  Its codimension follows from the implicit-function
+    theorem only when the endpoint map is \(C^k\) and submersive in the
+    relevant coordinates; the linearized eigenvalue count alone does not
+    establish the nonlinear chart statement.
 13a. An irrelevant coordinate can be dangerously irrelevant only relative to
      a specified observable and scaling sector.  In the scalar/Ising
      equation of state above four dimensions, the quartic coordinate flows to
@@ -452,8 +453,8 @@ The chapter must define and derive:
 - 2026-05-24 issue pass: addressed #230 by replacing unqualified
   codimension-one critical-surface language with a linearized endpoint
   condition plus a cross-reference to the Banach-chart finite-reference
-  critical-surface theorem.  The dossier now records that smoothness and
-  codimension require a \(C^k\) endpoint map and submersion hypothesis.
+  implicit-function construction.  The dossier now records that smoothness
+  and codimension require a \(C^k\) endpoint map and submersion hypothesis.
 - 2026-05-24 issue #238 pass: added provenance for the nonperturbative entries
   in the low-lying-dimension comparison table.  The \(d=3\) row now records
   numerical conformal-bootstrap origins and identifies the third column

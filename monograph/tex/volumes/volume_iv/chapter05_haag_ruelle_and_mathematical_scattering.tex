@@ -680,14 +680,33 @@ bounded-region gauge-invariant observable to the vacuum.
 \end{theorem}
 
 \begin{proof}
-Choose \(R\) so large that the sphere \(S_R\) is spacelike separated from the
-bounded region \(\mathcal O\) at the time used to define \(Q_R\), after the
-usual smooth smearing of the surface integral.  Locality gives
+The surface charge must be read as a limit of smeared operators.  Choose a
+smooth function \(\rho_R(r)\) supported in a shell \(R<r<2R\), normalized so
+that it represents the outward flux through a large sphere, and define the
+smeared Gauss operator \(Q_R(\rho)\) on the common invariant domain.  For
+\(R\) larger than the spatial diameter of \(\mathcal O\), the support of the
+electric-field smearing is spacelike to \(\mathcal O\) at the chosen time
+slice.  Locality of the observable net with the electric-field algebra gives
 \[
-  [Q_R,A]=0
+  [Q_R(\rho),A]=0
 \]
-on the common domain.  Taking the Gauss-law limit gives \([Q,A]=0\) on
-vectors for which the limit defining \(Q\) exists.  Therefore
+on that domain.  The statement is insensitive to the particular smooth
+representative of the large sphere: changing \(\rho_R\) inside the exterior
+region changes \(Q_R(\rho)\) by an operator localized spacelike to
+\(\mathcal O\), plus terms that vanish in the assumed Gauss-law limit.
+
+By hypothesis the strong graph limit of \(Q_R(\rho)\) on vectors generated
+from the vacuum by local observables exists and is the charge \(Q\).  Hence
+for every vector \(\Phi\) in the common domain,
+\[
+  \langle \Phi,(QA-AQ)\vac\rangle
+  =
+  \lim_{R\to\infty}\langle \Phi,[Q_R(\rho),A]\vac\rangle
+  =
+  0 .
+\]
+Thus \(QA\vac=AQ\vac\) as a vector identity on the charge domain.  Since the
+vacuum is neutral,
 \[
   Q A\vac=AQ\vac=0 .
 \]
@@ -871,8 +890,7 @@ Hence
 \end{equation}
 is invariant under gauge transformations that are trivial at the ray endpoint.
 
-\begin{proposition}[Ray dressing and axial gauge]
-\label{prop:ray-dressing-axial-gauge-coordinate}
+\paragraph{Ray dressing as an axial-gauge coordinate.}
 For every \(A\) in the class above, set
 \[
   A_\mu^{[u]}(x)=A_\mu(x)+\partial_\mu\chi_u[A](x),
@@ -891,10 +909,8 @@ perturbative path integral for which this gauge slice and the corresponding
 change of variables have been defined with their regulator and
 Faddeev--Popov factors, as the ordinary charged field inserted in the gauge
 \(u^\mu A_\mu=0\) with the same endpoint prescription.
-\end{proposition}
-
-\begin{proof}
-Differentiate \eqref{eq:ray-dressing-line-functional} in the ray direction:
+Indeed, differentiating \eqref{eq:ray-dressing-line-functional} in the ray
+direction gives
 \[
 \begin{aligned}
   u^\nu\partial_\nu\chi_u[A](x)
@@ -921,7 +937,6 @@ The second identity in
 \(\psi_q^{[u]}\) together with \eqref{eq:ray-dressed-charged-coordinate}.
 The preceding transformation law for \(\chi_u\) shows that this construction
 is constant on gauge orbits once the boundary gauge value has been fixed.
-\end{proof}
 
 The perturbative singularities produced by the ray are also fixed at this
 elementary level.  Insert an endpoint regulator
@@ -1153,8 +1168,7 @@ replacement of one short-distance dressing by another with the same
 asymptotic flux, changes the interpolating coordinate used to reach the same
 charged state.
 
-\begin{proposition}[Compact dressing changes and LSZ coordinates]
-\label{prop:compact-dressing-change-lsz-coordinate}
+\paragraph{Compact dressing changes as LSZ-coordinate changes.}
 In the finite-regulator setting of
 Theorem~\ref{thm:finite-regulator-dressed-charged-lsz}, let
 \(\Psi_a\) and \(\Psi'_a\) be two families of dressed charged interpolating
@@ -1169,9 +1183,6 @@ their one-particle matrix elements are related by an invertible matrix \(M\),
 for all wave packets \(f\) supported near the shell.  Then the LSZ residues
 computed with \(\Psi'\) give the same scattering matrix after the external
 normalization matrix \(Z'^{-1/2}\) is used.
-\end{proposition}
-
-\begin{proof}
 The singular part of the two-point function transforms as
 \[
   Z' = M Z M^\dagger .
@@ -1183,18 +1194,16 @@ matrix elements between orthonormal one-particle vectors, not between the raw
 operator labels.  After multiplying by \(Z'^{-1/2}\), this coordinate change
 is removed on every external leg.  Contributions orthogonal to \(\Hilb_1\)
 are regular at the isolated shell and vanish in the external residue.
-\end{proof}
 
 For Wilson lines, a compact path deformation with fixed endpoints multiplies
 the operator by a neutral Wilson loop spanning the narrow surface between the
-two paths, up to regulator choices.  Proposition
-\ref{prop:compact-dressing-change-lsz-coordinate} explains the limited sense
-in which such a deformation can leave a finite-regulator \(S\)-matrix
-unchanged.  It does not prove independence under changes of the asymptotic
-ray, because those changes modify the electric flux at infinity.  In massless
-QED the asymptotic ray or Coulomb profile is tied to the charged velocity, and
-changing it changes the infrared representation rather than merely the
-interpolating coordinate.
+two paths, up to regulator choices.  The preceding coordinate calculation is
+the limited sense in which such a deformation can leave a finite-regulator
+\(S\)-matrix unchanged.  It does not prove independence under changes of the
+asymptotic ray, because those changes modify the electric flux at infinity.  In
+massless QED the asymptotic ray or Coulomb profile is tied to the charged
+velocity, and changing it changes the infrared representation rather than
+merely the interpolating coordinate.
 
 \subsection{Asymptotic Wilson Lines, Flux, and Eikonal Data}
 

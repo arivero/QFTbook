@@ -70,8 +70,10 @@ Reviewed source spine:
   including the `A_{N-1}` cubic scaling.
 - Defines BPS string charges, tensions, and inflow data, including
   root-lattice strings for `(2,0)` theories.
-- Derives the BPS string tension from the tensor-branch central charge and
-  states explicitly that this does not construct the tensionless limit.
+- Derives the BPS string tension from the tensor-branch central charge using
+  positivity of the string-sector supercharge anticommutator and its
+  \(\pm|Z_q|\) eigenvalues, and states explicitly that this does not
+  construct the tensionless limit.
 - Proves the trace-delta compactification normalization
   `g_5^2 = 4 pi^2 R` from the BPST instanton mass and KK momentum.
 - Derives the wrapped-string/W-boson mass matching and the scalar
@@ -113,6 +115,9 @@ Reviewed source spine:
   ADE anomaly-coefficient arithmetic, BPS tension derivation, and
   wrapped-string/W-boson compactification matching.  Extended
   `calculation-checks/susy_abjm_6d_checks.py` accordingly.
+- 2026-05-29 anti-wrapper pass: strengthened the BPS string tension proof by
+  writing the positive supercharge anticommutator matrix and showing how the
+  BPS inequality and saturation condition follow from its eigenvalues.
 
 ## Figure Ledger
 
