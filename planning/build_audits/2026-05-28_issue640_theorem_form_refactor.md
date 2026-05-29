@@ -25,15 +25,17 @@ application of an earlier result.
   `thm:phi-four-two-spde-main-theorem` now states only the assembly conclusion.
 - Refactored the finite-sector SPDE model-convergence application in Volume XI,
   Chapter 9: the coordinate-control data are now Hypothesis
-  `hyp:spde-finite-sector-coordinate-control-data`; the result is now a
-  corollary carrying the existing label
+  `hyp:spde-finite-sector-coordinate-control-data`; the result has now been
+  demoted from theorem-family form to a coordinate-control consequence carrying
+  the existing label
   `thm:spde-coordinate-estimates-model-convergence`.
 - Refactored the negative-sector \(\Phi^4_3\) model-convergence application in
   Volume XI, Chapter 9: the scale-summed coordinate scheme is now Hypothesis
   `hyp:spde-negative-sector-scale-summed-coordinate-scheme`; the convergence
-  result is now a corollary carrying the existing label
+  result has now been demoted from theorem-family form to a coordinate-control
+  consequence carrying the existing label
   `thm:spde-phi-four-three-negative-sector-model-convergence`, and textual
-  references now call it a corollary.
+  references now call it a consequence rather than a corollary.
 - Refactored the finite-order BPHZ--Wilsonian comparison in Volume II, Chapter
   16: the setup data are now Definition
   `def:finite-order-bphz-wilsonian-matching-context`, the estimates are

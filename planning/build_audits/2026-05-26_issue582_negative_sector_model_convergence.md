@@ -2,23 +2,23 @@
 
 ## Manuscript Change
 
-- Volume XI, Chapter 9 now proves a negative-sector model convergence theorem
-  for dynamic \(\Phi^4_3\) at
+- Volume XI, Chapter 9 now records a negative-sector coordinate-control
+  consequence for dynamic \(\Phi^4_3\) at
   `thm:spde-phi-four-three-negative-sector-model-convergence`.
-- The theorem fixes the strict sector
+- The consequence fixes the strict sector
   \[
     \mathcal T_-=\{\mathbf1,\Xi,X,X^2,X^3,XY,X^2Y\},
   \]
   names the six \(\Pi\)-coordinate functions and the single \(c_n\)
   reexpansion coordinate, and states scale-by-scale compact-parameter entropy
   hypotheses for each coordinate.
-- The proof applies the scale-summed dyadic-net theorem coordinate by
+- The derivation applies the scale-summed dyadic-net theorem coordinate by
   coordinate, inserts the finite negative-sector coordinate domination
   proposition, and then invokes the dyadic random-model Cauchy theorem.
 
 ## Constants Checked
 
-- For each coordinate \(i\), the theorem defines
+- For each coordinate \(i\), the consequence defines
   \[
     S_i^{\rm sc}
     =

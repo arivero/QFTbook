@@ -5635,7 +5635,7 @@ Consequently, for the Gaussian coordinates
   \Xi,\quad X,\quad X^2,\quad X^3
 \]
 in the strict negative sector, the physical scale slack appearing in
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} is
+the negative-sector coordinate-control consequence is
 \[
   \sigma_\Xi=\kappa,\qquad
   \sigma_{X^k}=k\kappa\quad(k=1,2,3),
@@ -6837,7 +6837,7 @@ Define
 \]
 \end{hypothesis}
 
-\begin{corollary}[Finite-sector model convergence from coordinate estimates]
+\paragraph{Finite-sector model convergence from coordinate estimates.}
 \label{thm:spde-coordinate-estimates-model-convergence}
 Under Hypothesis~\ref{hyp:spde-finite-sector-coordinate-control-data},
 \[
@@ -6865,9 +6865,7 @@ Consequently, \(Z_n\) satisfies
 \]
 Thus the limiting random model and the convergence estimates of
 Theorem~\ref{thm:spde-random-model-cauchy-criterion} follow.
-\end{corollary}
 
-\begin{proof}
 Apply Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to each
 \(U_{n,i}\).  The hypotheses for \(U_{n,i}\) give
 \[
@@ -6903,9 +6901,8 @@ Together with \eqref{eq:spde-coordinate-controls-model-distance}, this gives
 \(L^p\) bounds to the \(p\)-th power gives the constants \(C_N\) and \(C_D\)
 in \eqref{eq:spde-random-model-cauchy-hypotheses}.  The final assertion is
 exactly Theorem~\ref{thm:spde-random-model-cauchy-criterion}.
-\end{proof}
 
-Corollary~\ref{thm:spde-coordinate-estimates-model-convergence} fixes the
+The finite-sector coordinate-control consequence fixes the
 logical boundary of the remaining BPHZ task.  A finite-dimensional
 reexpansion component or a finite basis component of \(T_\alpha\) is included
 by enlarging the finite index set \(I\).  The model construction for
@@ -7261,7 +7258,7 @@ and
 \]
 \end{hypothesis}
 
-\begin{corollary}[Negative-sector model convergence from scale-summed coordinates]
+\paragraph{Negative-sector model convergence from scale-summed coordinates.}
 \label{thm:spde-phi-four-three-negative-sector-model-convergence}
 Under Hypothesis~\ref{hyp:spde-negative-sector-scale-summed-coordinate-scheme},
 \[
@@ -7289,9 +7286,7 @@ in the model distance \(d_{K;\gamma_-}\), to a limiting random model on
   }
   {1-2^{-\rho}}\,2^{-\rho n}.
 \]
-\end{corollary}
 
-\begin{proof}
 For a fixed coordinate label \(i\), the entropy hypothesis
 \eqref{eq:spde-negative-sector-scale-entropy} and the four moment hypotheses
 are exactly the hypotheses of
@@ -7343,7 +7338,6 @@ therefore satisfied with
 \]
 Applying that theorem on the finite sector \(\mathcal T_-\) gives the limiting
 model and the stated \(L^p\) tail estimate.
-\end{proof}
 
 \begin{proposition}[Physical parameter entropy for the strict negative sector]
 \label{prop:spde-negative-sector-physical-parameter-entropy}
@@ -7590,7 +7584,7 @@ Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}, the
 fields \(U_{\tau,m}\), \(\tau\in\mathfrak C_{\rm G}\), have continuous
 modifications on each \(\mathcal X_{\Pi,m}\) and satisfy the
 \(\Pi\)-coordinate hypotheses of
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+the negative-sector coordinate-control consequence with
 \[
   D_\tau=Q,\qquad d_\tau=Q+1,
 \]
@@ -7632,7 +7626,7 @@ increments of the corresponding fields \(U_{\tau,m}^{(n+1)}-U_{\tau,m}^{(n)}\),
 with an additional factor \(2^{-\rho n}\) in \(L^p\) for some \(\rho>0\),
 then the associated cutoff-difference variables satisfy the \(V\)-hypotheses
 of
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+the negative-sector coordinate-control consequence with
 the same \(D_\tau,d_\tau,\sigma_\tau,\varepsilon_\tau\) and with that
 convergence rate \(\rho\).
 \end{proposition}
@@ -7660,7 +7654,7 @@ which is \(|\mathcal X_{k,(z,\delta)}(\varphi)|\).  Taking the supremum over
 the support convention used in the dual-norm proposition, gives
 \eqref{eq:spde-gaussian-pi-coordinate-fields}.  This is the promised map from
 physical \(\Pi\)-coordinates to the abstract coordinate fields of
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+the negative-sector coordinate-control consequence.
 
 Set \(\delta=2^{-m}a\) with \(a\in[1/2,1]\).  The factor \(a\) is bounded
 above and below by numerical constants, hence
@@ -7728,7 +7722,7 @@ implies
 \]
 and it also implies \(\varepsilon_\tau>0\).  These are precisely the
 scale-slack and edge-slack inequalities required in
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+the negative-sector coordinate-control consequence.
 
 It remains only to justify the continuity hypothesis.  The same edge estimate,
 before restriction to the dyadic edge set, holds for arbitrary
@@ -8109,7 +8103,7 @@ and
   \label{eq:spde-gamma-coordinate-input-fields}
 \end{equation}
 Then the \(\mathfrak g\)-coordinate hypotheses of
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold
+the negative-sector coordinate-control consequence hold
 with
 \begin{equation}
   D_{\mathfrak g}=5,
@@ -8245,7 +8239,7 @@ precisely that
   \varepsilon_{\mathfrak g}=p\theta-d_{\mathfrak g}>0 .
 \]
 Thus the scale-slack and edge-slack hypotheses in
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold.
+the negative-sector coordinate-control consequence hold.
 The deterministic Holder estimate
 \eqref{eq:spde-gamma-coordinate-input-pointwise-edge} also gives continuous
 sample paths whenever the norm \(\|T_n\|_{-3/2;U,r}\) is finite, which proves
@@ -8935,7 +8929,7 @@ and the cutoff increments obey
 \end{equation}
 Then the nonlinear coordinates \(XY\) and \(X^2Y\) satisfy the
 \(\Pi\)-coordinate hypotheses of
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+the negative-sector coordinate-control consequence with
 \begin{equation}
   D_\tau=5,\qquad d_\tau=6,\qquad
   \varepsilon_\tau=p\theta-6 .
@@ -9081,7 +9075,7 @@ continuous modification on the compact metric space
 estimate to \(V_{n,\tau,m}\), with the \(V\)-moment bounds in place of the
 \(U\)-moment bounds, gives the required continuous modification for the
 cutoff-difference field.  Hence all hypotheses needed for
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} are
+the negative-sector coordinate-control consequence are
 satisfied for the nonlinear \(\Pi\)-coordinates.
 \end{proof}
 
@@ -10244,9 +10238,9 @@ coordinates, and the scale-summed criterion that would imply convergence of
 that sector have been proved in
 Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
 and
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+the negative-sector coordinate-control consequence.
 What remains is to prove, for the actual BPHZ-renormalized model, the
-coordinate estimates required by that theorem for
+coordinate estimates required by that scale-summed criterion for
 \[
   \Xi,\quad X,\quad X^2,\quad X^3,\quad XY,\quad X^2Y,
   \quad\text{and}\quad c_n(z,z'),
@@ -10284,7 +10278,7 @@ Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion}.
 The three-dimensional part requires: construction of the BPHZ-renormalized
 dynamic \(\Phi^4_3\) model; proof of the coordinate moment and cutoff-Cauchy
 estimates in
-Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence};
+the negative-sector coordinate-control consequence;
 extension of those estimates from the strict negative sector to the full
 sector used in the fixed-point problem; verification that the concrete BPHZ
 model satisfies the Schauder and product estimates required by

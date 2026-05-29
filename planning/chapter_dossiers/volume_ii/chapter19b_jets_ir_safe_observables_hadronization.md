@@ -40,9 +40,10 @@ The chapter establishes:
   blocks, soft Wilson lines, matched currents, renormalized jet/soft matrix
   elements, zero-bin/overlap subtraction, rapidity data, and Glauber-sector
   status;
-- Proposition `prop:scet-soft-wilson-line-decoupling`, proving the finite
-  algebraic identity that a soft Wilson-line change of variables removes the
-  leading \(n\cdot D_s\) soft connection from the collinear kinetic term;
+- a prose derivation of the finite algebraic identity that a soft Wilson-line
+  change of variables removes the leading \(n\cdot D_s\) soft connection from
+  the collinear kinetic term, with the factorization content kept in the
+  subsequent hypothesis rather than hidden in the identity;
 - controlled-approximation statements for perturbative jet predictions and
   parton-shower logarithmic accuracy;
 - the soft-drop grooming definition and an IRC classification that separates
