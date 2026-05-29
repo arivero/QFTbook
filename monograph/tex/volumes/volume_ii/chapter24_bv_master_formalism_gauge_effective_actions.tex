@@ -1682,10 +1682,39 @@ Definition~\ref{def:bv-prefactorization-algebra} are cochain maps.
 \end{proposition}
 
 \begin{proof}
-Apply \(Q_\Lambda\) twice:
+Let \(\operatorname{ad}_{S_\Lambda}(\mathcal O)=(S_\Lambda,\mathcal O)_\Lambda\).
+The regulated odd Laplacian is assumed to be square-zero on the finite
+regulator algebra, and it generates the regulated antibracket:
+\[
+\Delta_\Lambda(F,G)_\Lambda
+ =
+(\Delta_\Lambda F,G)_\Lambda
+-(-1)^{|F|}(F,\Delta_\Lambda G)_\Lambda .
+\]
+Since \(S_\Lambda\) is even, this identity gives
+\[
+  \Delta_\Lambda(S_\Lambda,\mathcal O)_\Lambda
+  +(S_\Lambda,\Delta_\Lambda\mathcal O)_\Lambda
+  =
+  (\Delta_\Lambda S_\Lambda,\mathcal O)_\Lambda .
+\]
+The odd Jacobi identity gives
+\[
+  \operatorname{ad}_{S_\Lambda}^2\mathcal O
+  =
+  \frac12\bigl((S_\Lambda,S_\Lambda)_\Lambda,\mathcal O\bigr)_\Lambda .
+\]
+Therefore, using \(\Delta_\Lambda^2=0\),
 \[
 \begin{aligned}
   Q_\Lambda^2\mathcal O
+  &=
+  \operatorname{ad}_{S_\Lambda}^2\mathcal O
+  -\ii\hbar\,
+  \bigl[
+    \Delta_\Lambda(S_\Lambda,\mathcal O)_\Lambda
+    +(S_\Lambda,\Delta_\Lambda\mathcal O)_\Lambda
+  \bigr] \\
   &=
   \left(
     \frac12(S_\Lambda,S_\Lambda)_\Lambda
@@ -1695,11 +1724,8 @@ Apply \(Q_\Lambda\) twice:
   \right)_\Lambda .
 \end{aligned}
 \]
-The equality follows from the odd Jacobi identity, the second-order identity
-for \(\Delta_\Lambda\), and \(\Delta_\Lambda^2=0\); the terms in which
-\(\Delta_\Lambda\) hits the bracket cancel the terms in which one bracket
-comes from each application of \(Q_\Lambda\).  The displayed quantum master
-equation sets the right hand side to zero.
+The quantum master equation sets the Hamiltonian in the final bracket to zero,
+so \(Q_\Lambda^2=0\).
 
 For disjoint supports, the regulated bracket and Laplacian have no
 coincident-point contraction between two different factors except the
