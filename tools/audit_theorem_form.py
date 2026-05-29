@@ -152,6 +152,18 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Finite-volume golden-rule limit"
     r"|Two-particle decay width in .*1\\+1.* dimensions"
     r"|Linear potential in the induced two-dimensional gauge sector"
+    r"|Zhukovsky form of the dispersion"
+    r"|Zhukovsky monodromy along the crossing path"
+    r"|Dressing unitarity from charge antisymmetry"
+    r"|DHM pole lattice and admissible local continuations"
+    r"|Local crossing of the BES phase"
+    r"|Jump data from the Cauchy transform"
+    r"|Mirror Zhukovsky sheet parametrization"
+    r"|One auxiliary wing of the Y-system"
+    r"|Data lost by the .*s.*kernel inverse"
+    r"|.*T.*gauge compatibility with the magic row"
+    r"|Consistency of the .*P.*mu.* discontinuity"
+    r"|Monodromy recursion for .*mu"
     r")\b",
     re.IGNORECASE,
 )

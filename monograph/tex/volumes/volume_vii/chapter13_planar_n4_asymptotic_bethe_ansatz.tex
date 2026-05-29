@@ -260,16 +260,13 @@ charges used in the dressing phase are
   \qquad r\geq2 .
 \]
 
-\begin{lemma}[Zhukovsky form of the dispersion]
-\label{lem:planar-n4-zhukovsky-dispersion}
+\paragraph{Zhukovsky form of the dispersion.}
 Let \(x^\pm\) obey \eqref{eq:planar-n4-xpm-definition} on the physical sheet.
 Then \eqref{eq:planar-n4-energy-xpm} is equal to
 \[
   \sqrt{1+16g^2\sin^2\frac p2}.
 \]
-\end{lemma}
 
-\begin{proof}
 For a physical real magnon write
 \[
   x^\pm
@@ -289,7 +286,6 @@ solution of \eqref{eq:planar-n4-xpm-definition}.  The inverse difference is
 Equation~\eqref{eq:planar-n4-energy-xpm} therefore reproduces
 \eqref{eq:planar-n4-magnon-dispersion}.  The equality extends to the
 physical sheet by analytic continuation away from the branch points.
-\end{proof}
 
 \begin{warning}[Sheet data in crossing]
 \label{warn:planar-n4-crossing-sheet-data}
@@ -330,8 +326,7 @@ crossings described in
 Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}.
 \end{definition}
 
-\begin{proposition}[Zhukovsky monodromy along the crossing path]
-\label{prop:planar-n4-zhukovsky-crossing-monodromy}
+\paragraph{Zhukovsky monodromy along the crossing path.}
 Analytic continuation of \(x^\pm(u)\) along a path with the winding data of
 Definition~\ref{def:planar-n4-crossing-path} gives
 \[
@@ -347,9 +342,7 @@ Consequently,
 \]
 where \(H(x^\pm)=1+2\ii g(1/x^+-1/x^-)\) is the physical-sheet energy
 continued as a meromorphic function of \(x^\pm\).
-\end{proposition}
 
-\begin{proof}
 Write
 \[
   x(u)=\frac12\left(\frac{u}{g}
@@ -382,7 +375,6 @@ on the physical sheet, the crossed value is
   =
   -H(x^\pm).
 \]
-\end{proof}
 
 \section{Two-Body S-Matrix}
 
@@ -764,8 +756,7 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
 \]
 
-\begin{proposition}[Dressing unitarity from charge antisymmetry]
-\label{prop:planar-n4-dressing-unitarity-from-antisymmetry}
+\paragraph{Dressing unitarity from charge antisymmetry.}
 Work in a domain of the physical sheet where the charge expansion for
 \(\theta_{12}=\theta(x_1^\pm,x_2^\pm)\) is either finite after truncation or
 absolutely convergent, and use the same branch of the phase for the exchanged
@@ -780,9 +771,7 @@ asymptotic Bethe equation also satisfies
 \[
   \sigma_{12}^2\sigma_{21}^2=1 .
 \]
-\end{proposition}
 
-\begin{proof}
 For each pair \(r<s\) with \(r+s\) odd, define
 \[
   A_{r,s}(1,2)
@@ -809,11 +798,10 @@ whole series changes sign under \(1\leftrightarrow2\), proving
   1.
 \]
 Squaring gives the last statement.
-\end{proof}
 
 This is only the scalar dressing part of physical two-body unitarity.  The
 rational scalar factor and the matrix part must obey their own unitarity
-relations in the same frame.  The proposition also does not replace crossing:
+relations in the same frame.  The computation also does not replace crossing:
 after analytic continuation around Zhukovsky cuts the charge expansion must be
 continued with its prescribed monodromy, and that monodromy is precisely the
 additional crossing datum discussed below.
@@ -930,8 +918,7 @@ the DHM kernel, including the failure that occurs if the contact term is
 omitted.
 \end{proof}
 
-\begin{proposition}[DHM pole lattice and admissible local continuations]
-\label{prop:planar-n4-dhm-pole-lattice}
+\paragraph{DHM pole lattice and admissible local continuations.}
 Let
 \[
   \Delta(z,w)=z+z^{-1}-w-w^{-1}.
@@ -964,11 +951,9 @@ each of the four pairs \((x_1^\alpha,x_2^\beta)\),
 \(\alpha,\beta\in\{+,-\}\), except for the Cauchy-pole crossings already
 accounted for in
 Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}, then
-Proposition~\ref{prop:planar-n4-bes-phase-local-crossing} applies with no
-additional Gamma-pole residue terms.
-\end{proposition}
+the local BES-continuation formula below applies with no additional
+Gamma-pole residue terms.
 
-\begin{proof}
 The Gamma function has poles at \(0,-1,-2,\ldots\).  The numerator in
 \(\mathcal L_g\) is singular only when
 \[
@@ -987,10 +972,8 @@ Away from those divisors the integrands are holomorphic in the external
 variables and the contour deformations are ordinary Cauchy deformations.
 Thus a path that crosses only the specified Cauchy poles has exactly the
 residue contributions listed above, with no further Gamma-kernel terms.
-\end{proof}
 
-\begin{proposition}[Local crossing of the BES phase]
-\label{prop:planar-n4-bes-phase-local-crossing}
+\paragraph{Local crossing of the BES phase.}
 Assume \(x_1^\pm\) and \(x_2^\pm\) lie in the physical DHM chamber
 \(|x_1^\pm|>1\), \(|x_2^\pm|>1\), and continue the first magnon along the
 crossing path of Definition~\ref{def:planar-n4-crossing-path}, so that
@@ -1023,9 +1006,7 @@ particle is
   \Delta_{\bar1}\theta .
   \label{eq:planar-n4-crossed-bes-theta-local}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 The BES phase is the alternating four-kernel combination
 \[
   \chi(x_1^+,x_2^+)-\chi(x_1^+,x_2^-)
@@ -1039,9 +1020,8 @@ single-kernel corrections by the signs \(+,-,-,+\) in the BES combination
 gives exactly the four terms defining \(\Delta_{\bar1}\theta\).  The raw
 continued kernels give \(\theta_{\rm raw}^{-,+}\), so their sum is
 \eqref{eq:planar-n4-crossed-bes-theta-local}.
-\end{proof}
 
-This proposition is local contour algebra.  It fixes how the DHM
+This local contour computation fixes how the DHM
 residue terms enter the four-kernel BES phase in the stringbook convention,
 but it does not by itself prove the scalar crossing equation
 \eqref{eq:planar-n4-crossing-scalar-factor}.  That equation also requires the
@@ -2464,8 +2444,7 @@ The measure \(\rho\) is the continuum limit of roots.  The Riemann surface
 differential \(\lambda\) records the logarithmic Bethe equation: mode numbers
 are period data, not decorations on a drawing of cuts.
 
-\begin{proposition}[Jump data from the Cauchy transform]
-\label{prop:finite-density-cauchy-jump}
+\paragraph{Jump data from the Cauchy transform.}
 Let \(G\) be the Cauchy transform in
 Definition~\ref{def:finite-density-bethe-root-curve}, and assume that
 \(\rho\) is Hölder continuous on the interior of a cut \(\mathcal C_a\).
@@ -2498,9 +2477,7 @@ satisfies the gluing condition
   p_+(u)+p_-(u)=2\pi n_a .
   \label{eq:finite-density-quasimomentum-gluing}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 The two boundary-value identities are the Plemelj formulas for the Cauchy
 transform on a smooth oriented arc.  Substituting the second identity into
 \eqref{eq:finite-density-continuum-bethe} gives
@@ -2515,7 +2492,6 @@ Using \(p_\pm(u)=V'(u)/2-G_\pm(u)\) gives
   =
   2\pi n_a .
 \]
-\end{proof}
 
 For the large-spin one-loop cusp density above, the spectral curve is already
 visible.  Put

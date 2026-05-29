@@ -326,8 +326,7 @@ The first displayed discontinuity relation is the analytic-Y-system input
 from the mirror TBA; the proof here supplies its T-gauge form.
 \end{proof}
 
-\begin{proposition}[\(\mathbb T\)-gauge compatibility with the magic row]
-\label{prop:qsc-mathbb-t-magic-row-compatibility}
+\paragraph{\(\mathbb T\)-gauge compatibility.}
 Under Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges} and
 Proposition~\ref{prop:qsc-magic-sheet-one-row-gauge},
 \[
@@ -339,9 +338,7 @@ Proposition~\ref{prop:qsc-magic-sheet-one-row-gauge},
 \]
 Thus the two-row Wronskian reconstruction used below may be normalized in the
 \(\mathbb T\)-gauge without changing the one-row magic-sheet algebra.
-\end{proposition}
 
-\begin{proof}
 Substitute
 \(\widehat{\mathcal T}_{2,m}
 =\widehat{\mathcal T}_{1,1}^{[m]}
@@ -369,7 +366,6 @@ Using \eqref{eq:qsc-mathbb-t-cal-t-row-one} at arguments \(u+\ii m/2\) and
 Multiplication gives the claim.  The statement is local in the chosen
 analytic gauge; zeros of \(\widehat h\) or Wronskian degeneracies are handled
 by analytic continuation on the neighboring patch.
-\end{proof}
 
 \section{Pmu System}
 
@@ -982,17 +978,14 @@ and the same factorization with
 \((J-S+2,J+S)\) replaced by \((J-S,J+S-2)\).
 \end{proof}
 
-\begin{lemma}[Consistency of the \(P\mu\) discontinuity]
-\label{lem:planar-n4-pmu-pfaffian-consistency}
+\paragraph{Consistency of the \(P\mu\) discontinuity.}
 The discontinuity equation
 \eqref{eq:planar-n4-pmu-two} preserves the Pfaffian normalization
 \eqref{eq:planar-n4-pmu-pfaffian} if the \(P\)-functions satisfy
 \[
   P_aP^a=0 .
 \]
-\end{lemma}
 
-\begin{proof}
 Use the rank-two Pfaffian identity
 \[
   \operatorname{Pf}(M+v\wedge w)
@@ -1016,10 +1009,8 @@ for an invertible antisymmetric \(4\times4\) matrix \(M\).  Here
 because \(\chi^{ab}\) is antisymmetric.  Therefore crossing the cut does not
 change \(\operatorname{Pf}\mu\), so the normalization can be imposed on one
 sheet and transported consistently.
-\end{proof}
 
-\begin{lemma}[Monodromy recursion for \(\mu\)]
-\label{lem:planar-n4-pmu-monodromy-recursion}
+\paragraph{Monodromy recursion for \(\mu\).}
 The \(P\mu\) equations imply the one-step continuation formula
 \begin{equation}
   \mu_{ab}(u+\ii)
@@ -1032,9 +1023,7 @@ The \(P\mu\) equations imply the one-step continuation formula
 Consequently, once the functions in one strip and the continued \(P\)-sheet
 are known, the shifted \(\mu\)-sheets are generated recursively by algebraic
 substitution.
-\end{lemma}
 
-\begin{proof}
 Use the pseudo-periodicity equation
 \eqref{eq:planar-n4-pmu-period} and the discontinuity equation
 \eqref{eq:planar-n4-pmu-two}:
@@ -1047,10 +1036,9 @@ Substituting \(\widetilde P_b=\mu_{bc}P^c\) from
 \eqref{eq:planar-n4-pmu-one} gives
 \eqref{eq:planar-n4-pmu-monodromy-recursion}.  Applying the same identity at
 successively shifted arguments gives the recursion through the tower of
-short cuts.  The lemma is algebraic; it does not by itself prove that the
+short cuts.  The recursion is algebraic; it does not by itself prove that the
 regularity, gluing, and large-\(u\) conditions select a unique physical
 solution.
-\end{proof}
 
 \begin{quotedtheorem}[Quantum spectral curve spectral problem]
 \label{qthm:planar-n4-qsc-status}
