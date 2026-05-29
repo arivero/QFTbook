@@ -6,7 +6,10 @@ Current status: source-block certified against 253a pp. 63--71 on
 2026-05-22. The chapter has been rebuilt and visually audited in the rendered
 PDF after adding the local-parameter current derivation, the explicit
 canonical-generator check, the finite Poincare scalar transformation, and the
-localized-translation stress-tensor derivation.
+localized-translation stress-tensor derivation.  The 2026-05-29 anti-wrapper
+pass demoted the Lorentz-current conservation check from a proposition to a
+worked paragraph, while retaining the localized-parameter Noether identity as
+a structural proposition.
 
 ## Logical Role
 
@@ -110,7 +113,7 @@ Working framework:
 | For a scalar field, the finite Poincare law \(\phi'(x')=\phi(x)\) gives fixed-coordinate infinitesimal variation \(-\left(a^\mu+\omega^\mu{}_\nu x^\nu\right)\partial_\mu\phi\). | Derived | First-order expansion of \(x'=\Lambda x+a\) |
 | The stress tensor \(T^\mu{}_\nu\) is the coefficient of \(\partial_\mu\xi^\nu\) in a compactly supported localized translation. | Derived | Localized translation variation after the total derivative is separated |
 | The free scalar stress tensor gives \(T^{00}=\mathcal H\). | Derived | Substitution of the scalar Lagrangian |
-| Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Derived | Antisymmetry of Lorentz parameter |
+| Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Worked algebra | Antisymmetry of Lorentz parameter; demoted from proposition wrapper on 2026-05-29 |
 | In quantum theory, local currents and stress tensors must be defined as renormalized operator-valued distributions in the chosen framework. | Framework statement | Local operator construction, not an automatic consequence of Poincare invariance alone |
 | Quantum Noether identities in correlation functions include insertion contact terms and possible local terms from the regulated integration density and source-chart counterterms. | Framework statement | Equation `eq:quantum-noether-ward-regulated`; cross-reference to CFT source-functional Ward identities |
 

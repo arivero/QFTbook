@@ -304,15 +304,37 @@ Definition~\ref{def:poincare-covariant-vacuum-hilbert-datum} to the
 translation subgroup.  The subgroup is abelian and locally compact, and the
 restriction is strongly continuous and unitary.  The Stone--Naimark spectral
 theorem therefore gives the single projection-valued measure \(E\) displayed
-above.  Its coordinate multiplication operators are the Stone generators
-\(P^\mu\), so their spectral projections commute.  This strong commutativity
-is stronger than the formal infinitesimal relation
+above.  Explicitly, the equality
+\[
+  U(a,\mathbf 1)
+  =
+  \int_{\mathbb R^D}\ee^{\ii a^\mu p_\mu}\,\dd E(p)
+\]
+is an equality of bounded operators for every \(a\in\mathbb R^D\), and
+uniqueness follows because Fourier transforms of finite complex Borel
+measures on \(\mathbb R^D\) determine those measures.  Differentiating the
+one-parameter subgroup \(s\mapsto U(se_\mu,\mathbf1)\) in Stone's sense gives
+the coordinate multiplication operator \(p^\mu\) in this joint spectral
+representation, namely
+\[
+  P^\mu\psi=\int_{\mathbb R^D}p^\mu\,\dd E(p)\,\psi
+\]
+on its natural domain
+\[
+  \{\psi\in\Hilb:\int_{\mathbb R^D}|p^\mu|^2\,\dd\|E(p)\psi\|^2<\infty\}.
+\]
+All spectral projections obtained from \(E\) commute because they are
+projections in the same countably additive projection-valued measure.  This
+strong commutativity is stronger than the formal infinitesimal relation
 \([P^\mu,P^\nu]=0\) on a common invariant domain: for unbounded operators,
 commutation on a core does not by itself imply that the spectral projections
 commute.  The displayed Lie-algebra commutator is therefore the differential
-shadow of the joint functional calculus.  The spectrum condition is exactly
-the assertion that this joint spectral measure is supported in
-\(\overline V_+\).
+shadow of the joint functional calculus.  Finally, the operator-valued
+support statement
+\(E(\mathbb R^D\setminus\overline V_+)=0\) is equivalent to saying that every
+scalar spectral measure \(\mu_\psi(\Delta)=\|E(\Delta)\psi\|^2\) is supported
+in \(\overline V_+\); this is the precise spectral-measure form of the
+spectrum condition.
 \end{proof}
 
 \begin{definition}[Invariant mass spectral measure]
@@ -606,8 +628,7 @@ For \(\psi_1,\ldots,\psi_n\in\Hilb_1\) define
 \end{equation}
 \end{definition}
 
-\begin{proposition}[Bosonic Fock inner product]
-\label{prop:bosonic-fock-inner-product}
+\paragraph{Bosonic Fock inner product in creation-operator normalization.}
 With this convention
 \begin{equation}
   \bigl\langle
@@ -621,9 +642,6 @@ With this convention
   \langle\psi_j,\chi_{\sigma(j)}\rangle_{\Hilb_1}.
   \label{eq:bosonic-fock-odot-inner-product}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 Different tensor powers in the direct sum defining
 \(\mathcal F_s(\Hilb_1)\) are orthogonal, giving the factor \(\delta_{mn}\).
 For \(m=n\), Definition~\ref{def:bosonic-creation-operator-tensor-normalization}
@@ -650,7 +668,6 @@ For each fixed \(\sigma\), set \(j=\sigma^{-1}(i)\) and
 \(\prod_{j=1}^n\langle\psi_j,\chi_{\rho(j)}\rangle_{\Hilb_1}\), and as
 \(\tau\) runs over \(S_n\), so does \(\rho\).  The sum over \(\sigma\) cancels
 the prefactor \(1/n!\), leaving the displayed permutation sum.
-\end{proof}
 
 \begin{definition}[Mass-shell Fock test domain and kernels]
 \label{def:mass-shell-fock-test-domain-kernels}
@@ -975,10 +992,8 @@ where the Pauli--Jordan distribution is
     \ee^{\ii p\cdot x}-\ee^{-\ii p\cdot x}
   \right).
 \]
-The distribution \(\Delta(x)\) is Lorentz invariant and vanishes for spacelike
-\(x\). For a spacelike vector \(x\), Lorentz invariance puts \(x\) in the form
-\((0,\vec r)\). The two terms in the integral are then exchanged by
-\(\vec p\mapsto-\vec p\), so the integral vanishes. Hence
+The distribution \(\Delta\) is Lorentz invariant and its restriction to the
+spacelike region vanishes. Consequently
 \[
   [\widehat\phi(f),\widehat\phi(g)]=0
 \]
@@ -988,14 +1003,27 @@ when the supports of \(f\) and \(g\) are spacelike separated.
 \begin{proof}
 The canonical commutation relation in
 Definition~\ref{def:mass-shell-fock-test-domain-kernels} gives the displayed
-Pauli--Jordan commutator on the common domain \(\mathcal D_0\).  Lorentz
-invariance of the mass-shell measure makes \(\Delta\) Lorentz invariant.  A
-spacelike displacement can therefore be transformed to \((0,\vec r)\); in that
-frame the two exponentials in \(\Delta\) are exchanged by
-\(\vec p\mapsto-\vec p\), and the integral vanishes.  Smearing with
-compactly-supported test functions whose supports are spacelike separated
-keeps all differences \(x-y\) spacelike, so the smeared commutator vanishes as
-a distribution.
+Pauli--Jordan commutator on the common domain \(\mathcal D_0\).  In smeared
+form, for \(f,g\in C_c^\infty(\mathbb M^D)\),
+\[
+  [\widehat\phi(f),\widehat\phi(g)]
+  =
+  \ii\int \dd^Dx\,\dd^Dy\, f(x)g(y)\Delta(x-y)
+\]
+as a scalar multiple of the identity on \(\mathcal D_0\).  The mass-shell
+measure and the two exponentials are invariant under the connected Lorentz
+group, so \(\Delta(\Lambda x)=\Delta(x)\) as a distribution.  On the open
+spacelike region \(x^2>0\), the mass-shell Fourier integral defines a smooth
+solution of the Klein--Gordon equation.  For each spacelike \(x\) choose a
+proper orthochronous Lorentz transformation sending it to \((0,\vec r)\).
+At equal time the two exponentials in the defining integral are exchanged by
+the measure-preserving map \(\vec p\mapsto-\vec p\), hence the smooth
+restriction of \(\Delta\) to that point is zero.  Since the spacelike region
+is open and every point in it is covered by this argument, \(\Delta\) vanishes
+there as a distribution.  If the supports of \(f\) and \(g\) are spacelike
+separated, then \(x-y\) remains in this open spacelike region on
+\(\operatorname{supp}f\times\operatorname{supp}g\); the displayed smeared
+commutator therefore vanishes.
 \end{proof}
 
 \begin{remark}

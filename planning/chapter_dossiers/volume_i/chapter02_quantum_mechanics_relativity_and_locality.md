@@ -5,7 +5,10 @@
 Current status: certified against handwritten 253a pp. 3--9 in the
 2026-05-22 source pass, with rendered checks of the new causal figure and
 free-field normalization/covariance material.  Formalization upgraded on
-2026-05-27 for issue #615.
+2026-05-27 for issue #615.  The 2026-05-29 anti-wrapper pass retained the
+joint translation spectrum and free-scalar microcausality as structural
+propositions, strengthened their proof text, and demoted the bosonic Fock
+inner-product permutation algebra to a worked normalization formula.
 
 ## Logical Role
 
@@ -127,7 +130,9 @@ state the relation among them.
   identities for \(\ket{x}\), \(\ket{p}\), and weak resolutions of identity by
   pairing against test functions.
 - `prop:joint-translation-spectrum` constructs the single joint spectral
-  measure of the translation generators from Stone--Naimark.
+  measure of the translation generators from Stone--Naimark, including the
+  distinction between strong commutativity and formal commutation on a common
+  domain.
 - An isolated mass shell gives a closed invariant one-particle
   subrepresentation by spectral projection and covariance; this is kept as
   prose because the substantive input is the isolation hypothesis.
@@ -140,9 +145,9 @@ state the relation among them.
   antisymmetric tensor powers.
 - The bosonic symbol \(\odot\) denotes the creation-operator normalization
   \(\sqrt{n!}\Pi_{s,n}(\otimes_j\psi_j)\).
-- `prop:bosonic-fock-inner-product` proves the corresponding permutation-sum
-  inner product; it is also checked by
-  `calculation-checks/haag_ruelle_fock_inner_product_checks.py`.
+- Equation `eq:bosonic-fock-odot-inner-product` records the corresponding
+  permutation-sum inner product as worked normalization algebra; it is also
+  checked by `calculation-checks/haag_ruelle_fock_inner_product_checks.py`.
 - The noncovariant creation/annihilation normalization with
   \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell
   normalization.
@@ -152,7 +157,8 @@ state the relation among them.
 - The free scalar covariance calculation is prose because it is the
   second-quantized one-particle covariance check, not a theorem-level
   interacting-field result.  `prop:free-scalar-microcausality-chapter-two`
-  labels the locality calculation for later citation.
+  labels the locality calculation for later citation and now makes the
+  smeared-distribution support argument explicit.
 
 ## Required Revisions
 
