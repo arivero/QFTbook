@@ -48,22 +48,74 @@ are regular null coordinates through the future horizon \(U=0\), and
 \end{lemma}
 
 \begin{proof}
-Near a nondegenerate zero of \(\chi^2=g(\chi,\chi)\) transverse to the
-horizon, choose \(\rho\ge0\) so that the proper distance from the horizon on
-a static slice is \(\rho\).  The norm of the Killing field has the expansion
+Choose a smooth cross-section \(\Sigma\subset\mathcal H\).  In a neighborhood
+of \(\Sigma\) one may use Gaussian null coordinates
 \[
-  -\chi^2=\kappa^2\rho^2+O(\rho^4),
+  (v,r,y^A),
+  \qquad
+  \mathcal H=\{r=0\},
+  \qquad
+  \chi=\partial_v ,
 \]
-which is another form of \eqref{eq:hawking-surface-gravity-definition}.  The
-orthogonal two-plane metric therefore has the stated Rindler form to leading
-order; smoothness across the bifurcate extension is expressed by the regular
-coordinates \(U,V\), for which
+where \(y^A\) are coordinates on \(\Sigma\), \(v\) is the Killing parameter
+along the generators, and \(r\) is an affine parameter on null geodesics
+transverse to the horizon.  The metric has the form
 \[
-  -\kappa^2\rho^2dt^2+d\rho^2=-dU\,dV
+  g
+  =
+  2\,dv\,dr
+  -2\kappa r\,dv^2
+  +2r h_A(r,y)\,dv\,dy^A
+  +\gamma_{AB}(r,y)\,dy^A dy^B .
 \]
-up to the harmless convention-dependent factor in the null product.  Terms
-from the angular metric and higher even powers of \(\rho\) are smooth in
-\(UV=-\rho^2\).
+The coefficient of \(r\,dv^2\) is fixed by
+\eqref{eq:hawking-surface-gravity-definition}: on \(r=0\),
+\(\nabla_\chi\chi=\kappa\chi\), and nonextremality means \(\kappa>0\).
+Thus the normal two-dimensional part, at fixed \(y\), is
+\[
+  ds_\perp^2=2\,dv\,dr-2\kappa r\,dv^2+O(r^2dv^2)+O(r\,dv\,dy).
+\]
+Put
+\[
+  r=\frac{\kappa}{2}\rho^2,
+  \qquad
+  t=v-\frac{1}{2\kappa}\log r
+  =
+  v-\frac1\kappa\log\rho+\text{constant}.
+\]
+Then
+\[
+  dv=dt+\frac{dr}{2\kappa r}
+  =
+  dt+\frac{d\rho}{\kappa\rho},
+\]
+and the leading normal metric becomes
+\[
+\begin{aligned}
+  2\,dv\,dr-2\kappa r\,dv^2
+  &=
+  2\left(dt+\frac{d\rho}{\kappa\rho}\right)\kappa\rho\,d\rho
+  -\kappa^2\rho^2
+   \left(dt+\frac{d\rho}{\kappa\rho}\right)^2  \\
+  &=
+  -\kappa^2\rho^2dt^2+d\rho^2 .
+\end{aligned}
+\]
+The omitted coefficients are smooth functions of \(r=\kappa\rho^2/2\) and of
+\(y\), so the correction terms are smooth in \(\rho^2\) in the
+Killing-adapted chart.  Finally define
+\[
+  U=-\rho e^{-\kappa t},
+  \qquad
+  V=\rho e^{\kappa t}.
+\]
+Then \(UV=-\rho^2\) and
+\[
+  -\kappa^2\rho^2dt^2+d\rho^2=-\,dU\,dV ,
+\]
+up to the conventional factor used in writing a symmetric null product.
+Thus \(U,V\) extend smoothly through \(U=0\), the future horizon, and
+\(\partial_t=\partial_v=\chi\).
 \end{proof}
 
 For Schwarzschild of mass \(M\) in units \(G=\hbar=c=k_B=1\),

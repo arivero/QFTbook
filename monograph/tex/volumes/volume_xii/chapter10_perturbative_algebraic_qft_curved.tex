@@ -439,24 +439,62 @@ canonical relative \(S\)-matrix isomorphism of the two cutoff theories.
 \end{proposition}
 
 \begin{proof}
-Write \(V'=V+A+B\), where \(A\) is supported to the future of
-\(\operatorname{supp}F\) and \(B\) is supported to its past; a partition of
-unity built from a Cauchy time function gives such a decomposition after
-shrinking to the region where \(V=V'\) near the causal hull.  Causal
-factorization gives
+Let \(C=V'-V\).  By hypothesis \(C\) vanishes on a neighborhood of
+\(J(\operatorname{supp}F)\).  Choose two Cauchy surfaces, one to the past of
+\(\operatorname{supp}F\) and one to its future, both lying inside the region on
+which \(V=V'\) near the causal hull.  A smooth partition of unity in the
+corresponding time slabs decomposes
+\[
+  C=A+B,
+\]
+where \(\operatorname{supp}A\) is later than \(\operatorname{supp}F\) and
+\(\operatorname{supp}B\) is earlier than \(\operatorname{supp}F\).  The
+separation is meant in the causal sense used by the time-ordered products:
+every point of \(\operatorname{supp}A\) lies outside the causal past of
+\(\operatorname{supp}F\), and every point of \(\operatorname{supp}B\) lies
+outside its causal future, after the supports have been slightly enlarged to
+open neighborhoods.  Causal factorization gives
 \[
   S(V+A+B+\lambda F)
   =
   S(A)\star S(V+\lambda F)\star S(B)
 \]
 in the corresponding ordered region, and similarly with \(\lambda=0\).
-After forming
+Thus
 \[
-  S_{V'}(\lambda F)=S(V')^{-1}\star S(V'+\lambda F),
+  S(V')=S(A)\star S(V)\star S(B)
 \]
-the future and past factors cancel up to conjugation by a relative
-\(\star\)-unitary depending only on \(A\) and \(B\).  Differentiating at
-\(\lambda=0\) gives the claimed canonical identification.
+and, using the inverse in the formal \(\star\)-algebra,
+\[
+  S(V')^{-1}
+  =
+  S(B)^{-1}\star S(V)^{-1}\star S(A)^{-1}.
+\]
+Substitution in
+\[
+  S_{V'}(\lambda F)=S(V')^{-1}\star S(V'+\lambda F)
+\]
+therefore gives
+\[
+  S_{V'}(\lambda F)
+  =
+  S(B)^{-1}\star S_V(\lambda F)\star S(B).
+\]
+The conjugation
+\[
+  \alpha_B(X)=S(B)^{-1}\star X\star S(B)
+\]
+is precisely the relative \(S\)-matrix isomorphism between the two time-cutoff
+choices in the causal domain of \(F\).  Differentiating the displayed identity
+at \(\lambda=0\) gives
+\[
+  R_{V'}(F)=\alpha_B(R_V(F)),
+\]
+which is the claimed canonical identification.  The construction is
+independent of the auxiliary partition because two choices differ by factors
+supported entirely in the past or future of \(\operatorname{supp}F\), and the
+same causal-factorization computation gives the corresponding inner
+identification.
 \end{proof}
 
 \section{Renormalization Group}

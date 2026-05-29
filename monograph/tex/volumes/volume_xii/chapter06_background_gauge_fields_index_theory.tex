@@ -150,26 +150,71 @@ For the coupled Dirac operator \(D_A=\gamma^a\nabla_a^{S\otimes E}\),
 
 \begin{proof}
 At a chosen point \(p\), take an oriented orthonormal frame whose Levi-Civita
-connection coefficients vanish at \(p\).  At \(p\),
+connection coefficients vanish at \(p\).  Write \(\nabla\) for the coupled
+connection on \(S\otimes E\).  Since the antisymmetric part of
+\(\gamma^a\gamma^b\) is \(\gamma^{ab}\),
 \[
+\begin{aligned}
   D_A^2
-  =
-  \gamma^a\gamma^b\nabla_a\nabla_b
-  =
+  &=
+  \gamma^a\gamma^b\nabla_a\nabla_b                                      \\
+  &=
+  g^{ab}\nabla_a\nabla_b
+  +\gamma^{ab}\nabla_a\nabla_b                                          \\
+  &=
   g^{ab}\nabla_a\nabla_b
   +\frac12\gamma^{ab}[\nabla_a,\nabla_b].
+\end{aligned}
 \]
-Restoring the invariant expression changes \(g^{ab}\nabla_a\nabla_b\) into
-the connection Laplacian with the sign convention in
-\((\nabla)^\ast\nabla\).  The bundle-curvature term gives
-\(\frac12\gamma^{ab}F^E_{ab}\).  The spin-curvature term gives
+Restoring the Christoffel term away from the chosen normal frame gives the
+connection Laplacian \((\nabla^{S\otimes E})^\ast\nabla^{S\otimes E}\) in the
+sign convention of this chapter.  The curvature of the coupled connection is
+\[
+  [\nabla_a,\nabla_b]
+  =
+  \frac14R_{ab cd}\gamma^{cd}+F^E_{ab}.
+\]
+The \(E\)-bundle curvature therefore contributes
+\[
+  \frac12\gamma^{ab}F^E_{ab}.
+\]
+The spin-curvature contribution is
 \[
   \frac12\gamma^{ab}\frac14R_{ab cd}\gamma^{cd}.
 \]
-The Clifford relations and the first Bianchi identity reduce this contraction
-to \({\rm Scal}/4\): all four-gamma terms cancel by the cyclic Bianchi
-identity, while the two possible metric contractions give the scalar
-curvature with total coefficient \(1/4\).  This proves
+It remains to evaluate the Clifford contraction.  With
+\(\gamma^{abcd}:=\gamma^{[a}\gamma^b\gamma^c\gamma^{d]}\), the Clifford
+relations give
+\[
+  \gamma^{ab}\gamma^{cd}
+  =
+  \gamma^{abcd}
+  +g^{bc}\gamma^{ad}
+  -g^{ac}\gamma^{bd}
+  -g^{bd}\gamma^{ac}
+  +g^{ad}\gamma^{bc}
+  +g^{ac}g^{bd}
+  -g^{ad}g^{bc}.
+\]
+The coefficient of \(\gamma^{abcd}\) is the total antisymmetrization of
+\(R_{abcd}\), hence vanishes by the first Bianchi identity
+\(R_{[abc]d}=0\).  The terms with one remaining \(\gamma^{pq}\) reduce to
+Ricci contractions, for example \(R_{ab cd}g^{bc}\gamma^{ad}\), and vanish
+because the Ricci tensor is symmetric while \(\gamma^{ad}\) is antisymmetric.
+The scalar terms give
+\[
+  R_{ab cd}(g^{ac}g^{bd}-g^{ad}g^{bc})
+  =
+  2\,{\rm Scal}
+\]
+with the curvature and Clifford conventions stated above.  Thus the
+spin-curvature piece is
+\[
+  \frac18\,R_{ab cd}\gamma^{ab}\gamma^{cd}
+  =
+  \frac14{\rm Scal}.
+\]
+Combining the connection Laplacian, spin curvature, and bundle curvature gives
 \eqref{eq:index-lichnerowicz}.
 \end{proof}
 

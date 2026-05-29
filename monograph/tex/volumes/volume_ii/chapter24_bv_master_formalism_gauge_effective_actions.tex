@@ -864,12 +864,27 @@ integration cycle has boundary behavior that kills total derivatives, then
 \end{proposition}
 
 \begin{proof}
-In an adapted Darboux chart the stated restriction formula gives a Berezin
-density on the coordinates of \(L\).  Under a change of adapted Darboux
-coordinates, the half-density coefficient transforms by the square root of
-the Berezinian on the full odd symplectic space, and the Lagrangian condition
-identifies this factor with the Berezinian transformation of the induced
-coordinates on \(L\).  Hence the local formula glues to an intrinsic density.
+In an adapted Darboux chart the coordinates on the Lagrangian are the
+\(\Phi^A\)'s, and setting \(\Phi_A^*=0\) leaves the Berezin density
+\[
+  f(\Phi,0)|D\Phi|.
+\]
+Consider another adapted Darboux chart
+\((\widehat\Phi,\widehat\Phi^*)\).  On \(L\), the transformation has the block
+form
+\[
+  \widehat\Phi=\widehat\Phi(\Phi),
+  \qquad
+  \widehat\Phi^*=
+  \left(\frac{\partial \Phi}{\partial\widehat\Phi}\right)\Phi^*
+  +O((\Phi^*)^2),
+\]
+with the displayed linear term forced by preservation of the odd symplectic
+form.  Therefore the Berezinian of the full adapted transformation restricts
+to the square of the Berezinian of the induced transformation on \(L\).  The
+half-density transformation law on \(\mathcal E\) consequently becomes exactly
+the Berezin-density transformation law on \(L\).  The local prescription thus
+glues to an intrinsic density \(\iota_L^*\sigma\).
 
 For the Stokes statement, write
 \(\eta=h(\Phi,\Phi^*)|D\Phi\,D\Phi^*|^{1/2}\) in an adapted chart.  Restricting
@@ -883,9 +898,21 @@ For the Stokes statement, write
   \right|_{\Phi^*=0}
   |D\Phi|,
 \]
-a total divergence on \(L\).  Its integral vanishes under the compact-support
-or boundary hypothesis.  A partition of unity gives the general finite
-dimensional statement.
+because the Darboux expression for \(\Delta_{1/2}\) differentiates once in a
+field direction and once in its antifield partner.  The displayed density is
+the divergence, on \(L\), of the compactly supported Berezin vector-density
+whose \(A\)-component is
+\[
+  (-1)^{\epsilon_A}
+  \left.
+  \frac{\partial^R h}{\partial\Phi_A^*}
+  \right|_{\Phi^*=0}
+  |D\Phi|.
+\]
+Its integral vanishes by the ordinary Berezin-Stokes theorem under the stated
+compact-support or boundary-decay hypothesis.  A finite partition of unity by
+adapted Darboux charts gives the finite-dimensional statement for an arbitrary
+Lagrangian.
 \end{proof}
 
 \section{The Quantum Master Equation}
