@@ -63,7 +63,7 @@
 - `def:spin-representation-and-chirality` fixes
   \(S^{\mu\nu}\), \(R(\Lambda)\), \(\gamma_5\), chiral projectors, and the
   \(\gamma_5\) trace convention.
-- `prop:spin-covariance-and-chirality-trace` derives the spin-generator
+- The spin covariance and chirality trace paragraph derives the spin-generator
   commutator, Clifford covariance, beta-pairing invariance, chirality
   algebra, and \(4\ii\epsilon^{\mu\nu\rho\sigma}\) trace normalization.
 - `def:two-component-block-epsilon-conventions` records the chiral gamma

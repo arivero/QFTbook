@@ -26,8 +26,8 @@ matching datum.
 - Added the Higgs radial mass coordinate calculation and custodial
   `rho_tree=1` calculation.  The latter was later demoted from proposition
   form to a worked paragraph in the anti-wrapper pass.
-- Added Definition `def:sm-b-l-charges`, Proposition
-  `prop:sm-baryon-lepton-anomaly`, and the sphaleron-selection-rule remark.
+- Added Definition `def:sm-b-l-charges`, the `B+L` and `B-L` anomaly
+  coefficient calculation, and the sphaleron-selection-rule remark.
 - Added Definition `def:sm-smeft-coupling-chart`, Definition
   `def:sm-weinberg-operator`, and the type-I singlet-neutrino tree-matching
   calculation.  The matching calculation was later demoted from proposition

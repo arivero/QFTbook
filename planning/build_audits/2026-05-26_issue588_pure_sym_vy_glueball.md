@@ -29,9 +29,9 @@ derivation, and the Witten-index consistency check.
 
 ## Substantive Changes
 
-- Added Proposition `prop:pure-sym-discrete-chiral-anomaly`, deriving the
-  anomalous reduction to `Z_{2N_c}` and the condensate breaking
-  `Z_{2N_c}->Z_2`.
+- Added the pure-SYM discrete chiral-anomaly derivation, later demoted from
+  proposition form to prose while retaining the anomalous reduction to
+  `Z_{2N_c}` and the condensate breaking `Z_{2N_c}->Z_2`.
 - Added Hypothesis `hyp:pure-sym-glueball-f-term-description`, stating the
   one-coordinate glueball \(F\)-term assumptions, source normalization, and
   finite-normalization caveat.

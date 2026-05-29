@@ -180,7 +180,7 @@
   Berezin Gaussian, and coherent-state trace endpoint signs.
 - The 2026-05-28 follow-up formalized the remaining long prose blocks:
   `def:dirac-weyl-majorana-local-spinor-data`,
-  `prop:weyl-majorana-covariant-reductions`,
+  the chiral/Majorana Lorentz-covariance reduction paragraph,
   `def:finite-odd-first-order-mechanics`,
   `prop:odd-second-class-dirac-brackets`,
   `def:finite-grassmann-algebra-berezin-derivative`,

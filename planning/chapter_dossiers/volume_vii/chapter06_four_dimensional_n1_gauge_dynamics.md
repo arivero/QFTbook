@@ -31,7 +31,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `W_VY`: pure-SYM Veneziano-Yankielowicz glueball superpotential
   `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` in the standard finite
   normalization.
-- `prop:pure-sym-discrete-chiral-anomaly`: derivation of the pure-SYM
+- Pure-SYM discrete chiral-anomaly paragraph: derivation of the pure-SYM
   anomalous `Z_{2N_c}` gaugino phase symmetry and its breaking to `Z_2` by a
   nonzero glueball condensate.
 - `hyp:pure-sym-glueball-f-term-description`: Wilsonian chiral-sector
