@@ -17,10 +17,9 @@ chapter, because it is the first chapter after LSZ where the nonperturbative
 - Added Proposition `prop:sharp-momentum-density-limit-cross-section`, proving
   the regulated delta-square density limit used by the plane-wave
   cross-section formula.
-- Added Definition `def:invariant-final-state-phase-space`, Proposition
-  `prop:invariant-two-particle-flux`, and Definition
-  `def:differential-cross-section-invariant-data`, separating phase-space
-  measure, flux, and cross-section data.
+- Added Definition `def:invariant-final-state-phase-space`, an invariant-flux
+  derivation, and Definition `def:differential-cross-section-invariant-data`,
+  separating phase-space measure, flux, and cross-section data.
 - Added the two-body phase-space reduction derivation,
   deriving the \(D=4\) two-body phase-space coefficient and \(2\to2\)
   differential cross section.

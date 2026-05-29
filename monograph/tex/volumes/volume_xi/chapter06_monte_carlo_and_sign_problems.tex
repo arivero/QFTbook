@@ -982,8 +982,7 @@ preserves \(d\nu\).  Ergodicity, mixing time, acceptance rate, and scaling
 toward a continuum limit are separate claims; they do not follow from
 detailed balance alone.
 
-\begin{proposition}[Leapfrog reversibility and volume preservation]
-\label{prop:leapfrog-reversible-volume-preserving}
+\paragraph{Leapfrog reversibility and volume preservation.}
 Let \(Q_\Lambda=\mathbb R^n\), let \(S\in C^2(\mathbb R^n)\), and let
 \(M\) be a positive definite symmetric matrix.  Define the kick and drift
 maps
@@ -1006,10 +1005,8 @@ Then \(L_\epsilon\) preserves \(dq\,dp\) and satisfies
 \end{equation}
 Every finite power \(L_\epsilon^N\), \(N\in\mathbb Z_{\geq0}\), has the same
 two properties.
-\end{proposition}
-
-\begin{proof}
-The Jacobian matrix of \(K_a\) is block triangular,
+These properties are the finite-dimensional algebra needed by the HMC
+Metropolis step.  The Jacobian matrix of \(K_a\) is block triangular,
 \[
   \begin{pmatrix}
     1 & 0\\
@@ -1044,7 +1041,6 @@ needed for HMC, because
 \[
   R L_\epsilon^N R=(R L_\epsilon R)^N=L_\epsilon^{-N}.
 \]
-\end{proof}
 
 For a compact gauge field, the same proof is expressed on the cotangent
 bundle of a compact Lie group product.  The drift is group multiplication by

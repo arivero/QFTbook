@@ -63,7 +63,7 @@
 - Definition `def:invariant-final-state-phase-space` fixes the positive-energy
   one-particle measure, the \(m\)-body measure, and identical-particle
   resolution-of-identity factors.
-- Proposition `prop:invariant-two-particle-flux` proves the equivalence of
+- The invariant-flux paragraph derives the equivalence of
   \(4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}\), \(4E_1E_2v_{\rm rel}\), and
   \(4\sqrt{s}|\vec p_*|\) in the center-of-mass frame.
 - Identical-particle factors are derived from the resolution of the identity

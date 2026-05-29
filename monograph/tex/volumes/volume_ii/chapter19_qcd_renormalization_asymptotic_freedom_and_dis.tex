@@ -1740,8 +1740,7 @@ Under this transformation,
   \label{eq:qcd-ek-open-word-center-charge}
 \end{equation}
 
-\begin{lemma}[Center selection for reduced open words]
-\label{lem:qcd-ek-center-selection}
+\paragraph{Center selection for reduced open words.}
 Assume the reduced finite-\(N_c\) state is invariant under
 \eqref{eq:qcd-ek-center-transformation}.  If the center charge of a word is
 nontrivial, namely if \(n_\rho(p)\not\equiv0\pmod{N_c}\) for at least one
@@ -1752,9 +1751,6 @@ nontrivial, namely if \(n_\rho(p)\not\equiv0\pmod{N_c}\) for at least one
 Consequently, if a charged reduced word has a nonzero expectation value in a
 chosen large-\(N_c\) state, that state cannot implement ordinary
 Eguchi--Kawai volume reduction for Wilson loops.
-\end{lemma}
-
-\begin{proof}
 Choose a direction \(\rho\) for which
 \(n_\rho(p)\not\equiv0\pmod{N_c}\).  There exists
 \(z_\rho\in\mathbb Z_{N_c}\) such that \(z_\rho^{n_\rho(p)}\ne1\).  Invariance
@@ -1771,7 +1767,6 @@ nonzero, the assumed center invariance is false.  Such an expectation is an
 extra reduced-model datum with no counterpart as a closed Wilson loop in the
 unreduced lattice theory, so the reduced loop equations cannot be identified
 with the unreduced Wilson-loop equations without further modification.
-\end{proof}
 
 The loop-equation form of volume reduction can now be stated cleanly.
 
@@ -1817,8 +1812,8 @@ split loops may be based at different lattice sites; translation invariance
 and large-\(N_c\) factorization replace their joint expectation by the product
 of one-loop expectations.  In the reduced model the corresponding matrix words
 are all based at the single site, and open words can appear algebraically.
-The center-selection rule of Lemma~\ref{lem:qcd-ek-center-selection}
-is what removes the charged open words.  The uniqueness clause in
+The center-selection rule above is what removes the charged open words.  The
+uniqueness clause in
 Definition~\ref{def:qcd-volume-reduction-datum} is also load-bearing: two
 different center-symmetric solutions of the same limiting loop equations would
 not be distinguished by the formal loop-equation matching alone.
@@ -3494,8 +3489,7 @@ The leading HQET equation is the equation for parallel transport along the
 heavy-quark worldline.  This is the precise sense in which an infinitely heavy
 quark becomes a Wilson line.
 
-\begin{proposition}[Static propagator as a Wilson line]
-\label{prop:hqet-static-propagator-wilson-line}
+\paragraph{Static propagator as a Wilson line.}
 Let \(x(s)=x_0+sv\), and let
 \begin{equation}
   W_v(s_2,s_1)=\mathcal P\exp\left\{
@@ -3514,10 +3508,8 @@ up to the conventional overall factor fixed by the normalization of the
 first-order inverse.  In particular, every gauge-invariant heavy-light or
 heavy-heavy correlator at leading power contains the Wilson line carried by
 the heavy source.
-\end{proposition}
-
-\begin{proof}
-The transporter satisfies the initial-value problem
+The calculation is the Green-kernel inversion of the first-order covariant
+derivative.  The transporter satisfies the initial-value problem
 \[
   \frac{\dd}{\dd s_2}W_v(s_2,s_1)
   =
@@ -3533,7 +3525,6 @@ projector \(P_v^+\) records the spinor components retained in the heavy field.
 Gauge covariance follows from the endpoint transformation law of the same
 Wilson transporter proven for light-ray operators in
 Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.
-\end{proof}
 
 Consider \(N_h\) heavy flavors whose masses have been removed by separate
 phases and whose residual dynamics are described by the leading HQET action at
@@ -3606,11 +3597,10 @@ estimate of the form
 for the chosen smeared matrix elements, after the QCD operator and the HQET
 operator have been matched in the same renormalization scheme.  The constant
 \(C_{\mathcal O,N}\), the topology in which the estimate is meant, and the
-range of \(\mu\) are part of the assertion.  The Wilson-line limit
-Proposition~\ref{prop:hqet-static-propagator-wilson-line} supplies the
-leading operator structure; the existence of a uniform heavy-mass expansion
-for a specified family of hadronic matrix elements is additional dynamical and
-renormalization information.
+  range of \(\mu\) are part of the assertion.  The Wilson-line limit derived
+above supplies the leading operator structure; the existence of a uniform
+heavy-mass expansion for a specified family of hadronic matrix elements is
+additional dynamical and renormalization information.
 \end{controlledapproximation}
 
 \section{Heavy-Light Currents and Heavy-Quark Symmetry}

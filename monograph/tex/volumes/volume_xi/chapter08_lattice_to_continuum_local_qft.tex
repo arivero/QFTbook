@@ -130,8 +130,7 @@ supported in a compact set \(K\), a typical seminorm is
   p_{K,r}(f)=\max_{|\alpha|\leq r}\sup_{x\in K}|\partial^\alpha f(x)|.
 \]
 
-\begin{proposition}[Dense-test convergence plus uniform seminorm control]
-\label{prop:dense-test-seminorm-convergence}
+\paragraph{Dense-test convergence plus uniform seminorm control.}
 Let \(T_a\) be a family of \(n\)-linear functionals on \(\mathcal D\), and
 let \(D_0\subset\mathcal D\) be dense in the seminorm used below.  Assume
 there are a constant \(C\) and a continuous seminorm \(p\) such that
@@ -149,9 +148,6 @@ converges for all \(g_i\in D_0\).  Then there is a unique continuous
   \qquad(f_i\in\mathcal D).
   \label{eq:dense-test-extension-limit}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 For \(g_i\in D_0\), define \(T(g_1,\ldots,g_n)\) as the limit.  The bound
 \eqref{eq:uniform-multilinear-seminorm-bound} passes to the limit on \(D_0\),
 so \(T\) is uniformly continuous with respect to \(p\) on \(D_0^n\).  It
@@ -171,11 +167,10 @@ uniformly in \(a\),
 after replacing one entry at a time.  The same estimate holds for \(T\).
 Taking first \(a\to0\) on the dense tuple \(g_1,\ldots,g_n\), and then
 \(\epsilon\to0\), proves \eqref{eq:dense-test-extension-limit}.
-\end{proof}
 
-This proposition isolates the countability step after the uniform seminorm
-bound has been proved: convergence may be checked on a countable dense family
-of test functions.  The hard constructive work is the bound
+This argument isolates the countability step after the uniform seminorm bound
+has been proved: convergence may be checked on a countable dense family of
+test functions.  The hard constructive work is the bound
 \eqref{eq:uniform-multilinear-seminorm-bound}, not the extension argument.
 
 \section{Random-Walk Representation of a Massive Lattice Covariance}
@@ -191,8 +186,7 @@ adjacency matrix, and let \(m^2>0\).  Define
 For vertices \(x,y\), let \(N_n(x,y)\) be the number of length-\(n\) nearest
 neighbor paths from \(x\) to \(y\), equivalently \(N_n(x,y)=(A^n)_{xy}\).
 
-\begin{proposition}[Finite-graph random-walk resolvent]
-\label{prop:finite-graph-random-walk-resolvent}
+\paragraph{Finite-graph random-walk resolvent.}
 The matrix \(K_m\) is positive definite and
 \begin{equation}
   (K_m^{-1})_{xy}
@@ -212,9 +206,6 @@ then
   \frac1{m^2+r}\sum_{n=0}^{\infty}\rho^n P^n(x,y).
   \label{eq:finite-graph-random-walk-probability-form}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 For any vector \(u\),
 \begin{equation}
   u^*K_m u
@@ -241,7 +232,6 @@ The Neumann series converges absolutely in operator norm:
 Taking the \((x,y)\) matrix entry gives
 \eqref{eq:finite-graph-random-walk-resolvent}.  Replacing \(A^n\) by
 \(r^nP^n\) gives \eqref{eq:finite-graph-random-walk-probability-form}.
-\end{proof}
 
 For a cubic lattice with spacing \(a\), the free covariance is obtained from
 the same formula after the replacement
@@ -258,10 +248,9 @@ The path expansion then weights an \(n\)-step path by
 in the covariance matrix \(K_{m,a}^{-1}\).  In an interacting scalar
 construction the free path expansion is replaced by a random-walk or polymer
 expansion with local weights.  The proof obligations are the same in
-structure as in Proposition~\ref{prop:finite-graph-random-walk-resolvent}:
-identify a positive reference operator, expand the perturbation in local
-objects, and prove a norm or polymer-sum bound that survives the intended
-limit.
+structure as in the finite-graph resolvent calculation above: identify a
+positive reference operator, expand the perturbation in local objects, and
+prove a norm or polymer-sum bound that survives the intended limit.
 
 \section{Reflection Positivity And OS Reconstruction}
 

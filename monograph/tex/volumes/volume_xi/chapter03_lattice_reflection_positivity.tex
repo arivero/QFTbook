@@ -407,8 +407,7 @@ each summand is the modulus square of the same half-lattice integral:
 Since \(C_\alpha\geq0\), the full sum is nonnegative.
 \end{proof}
 
-\begin{corollary}[Wilson plaquette action]
-\label{cor:wilson-plaquette-reflection-positivity}
+\paragraph{Wilson plaquette action.}
 For \(G=SU(N)\) or \(U(N)\), the Wilson plaquette weight
 \[
   w_W(g)
@@ -417,10 +416,9 @@ For \(G=SU(N)\) or \(U(N)\), the Wilson plaquette weight
   \qquad \beta\geq0,
 \]
 is reflection positive.
-\end{corollary}
-
-\begin{proof}
-Let \(F\) be the defining representation and write
+This is the character-expansion check required by
+Theorem~\ref{thm:osterwalder-seiler-character-criterion}.  Let \(F\) be the
+defining representation and write
 \(\chi_{\overline F}(g)=\overline{\chi_F(g)}=\chi_F(g^{-1})\).  Then
 \[
   w_W(g)
@@ -447,7 +445,6 @@ Hence the Wilson weight has nonnegative character coefficients.  Absolute
 convergence follows from the uniform convergence of the exponential series
 on compact \(G\), so Theorem~\ref{thm:osterwalder-seiler-character-criterion}
 applies.
-\end{proof}
 
 For \(G=U(1)\), the same statement is the elementary Fourier expansion
 \[
@@ -545,7 +542,7 @@ has strictly positive terms when \(\beta>0\), the coefficient
 the \(U(1)\) Bessel coefficients, the \(SU(2)\) coefficient identity
 \eqref{eq:su2-wilson-positive-character-coefficient}, and finite
 \(SU(2)\) tensor-product character multiplicities used in the proof of
-Corollary~\ref{cor:wilson-plaquette-reflection-positivity}.
+the Wilson plaquette positivity statement above.
 
 The proof also explains why reflection positivity is not an automatic
 consequence of gauge invariance.  Gauge fixing may destroy the product-Haar
