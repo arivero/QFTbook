@@ -3499,8 +3499,8 @@ input, Proposition~\ref{prop:spde-smooth-regulator-nelson-consequences}
 derives the normalized \(L^q\) density bounds, tightness, and bounded
 Wick-cylinder comparison in one statement.
 Unbounded polynomial observables still require the separate
-uniform-integrability argument stated in
-Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.
+uniform-integrability argument in
+Remark~\ref{rem:spde-polynomial-os-uniform-integrability}.
 
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
 \label{prop:spde-brascamp-lieb-convex-cutoff-moment}
@@ -3694,8 +3694,8 @@ Multiplying by \((1+\lambda_{N,\alpha})^{-\eta}\) and summing over
 \eqref{eq:spde-convex-cutoff-hminus-moment-bound}.
 \end{proof}
 
-\begin{proposition}[Closedness of OS reflection positivity under weak convergence]
-\label{prop:spde-os-positivity-closed-under-weak-convergence}
+\begin{remark}[Closedness of OS reflection positivity under weak convergence]
+\label{rem:spde-os-positivity-closed-under-weak-convergence}
 Let \(E\) be a Hausdorff locally convex real vector space of Euclidean
 fields, let \(\Theta:E\to E\) be a continuous involution, and let
 \(\mu_N\Rightarrow\mu\) be weak convergence of Borel probability measures
@@ -3726,9 +3726,6 @@ holds provided the random variables
 are uniformly integrable under \(\{\mu_N\}\) and integrable under \(\mu\),
 and \(F\) is approximated by bounded continuous cylinder cutoffs in
 \(\mathcal A_+\).
-\end{proposition}
-
-\begin{proof}
 For \(F\in\mathcal A_+\), define
 \[
   Q_F(\phi)=\overline{F(\Theta\phi)}\,F(\phi).
@@ -3742,13 +3739,13 @@ is a bounded continuous function on \(E\).  Weak convergence therefore gives
 \]
 Each term in the sequence on the right is nonnegative by
 \eqref{eq:spde-finite-cutoff-os-positivity}; the limit is therefore
-nonnegative, proving \eqref{eq:spde-limit-os-positivity}.
+nonnegative, giving \eqref{eq:spde-limit-os-positivity}.
 
 For an unbounded polynomial cylinder observable, choose bounded continuous
 functions \(\chi_R\) on the finite-dimensional cylinder coordinate space
 such that \(\chi_R=1\) on the radius-\(R\) ball, \(\chi_R=0\) outside the
 radius-\(2R\) ball, and \(0\leq\chi_R\leq1\).  Set \(F_R=\chi_R F\).
-The bounded part of the proposition gives
+The bounded part of this observation gives
 \[
   \int_E \overline{F_R(\Theta\phi)}\,F_R(\phi)\,\dd\mu\geq0 .
 \]
@@ -3757,9 +3754,9 @@ Uniform integrability of
 integrability under \(\mu\), permits \(R\to\infty\) in the cutoff
 quadratic form.  Hence the unbounded polynomial cylinder inequality follows
 whenever the stated moment hypothesis is available.  This final step is
-not formal: in constructive field theory it is exactly where uniform moment
+substantive: in constructive field theory it is exactly where uniform moment
 or exponential-integrability estimates for the cutoff measures enter.
-\end{proof}
+\end{remark}
 
 \begin{remark}[Fourier cutoffs and reflection-positive regulators]
 \label{rem:spde-fourier-cutoff-os-regulator-separation}
@@ -3864,16 +3861,16 @@ to the two halves before the cross-plane kernel is expanded.
 
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator} proves the
 finite-cutoff OS-positivity input for a concrete lattice Euclidean regulator.
-It does not identify that lattice family with the Fourier-Galerkin family
-used in the stochastic convolution estimates above.  The missing comparison
-theorem is therefore precise: after matching the relevant local coordinates,
-one must prove convergence of the lattice and Fourier-Galerkin Schwinger
-functions, or construct a single regulator whose Langevin estimates and OS
-positivity are both available.  This is a regulator-comparison theorem, not a
-formal consequence of either weak convergence or stochastic stationarity.
+Identifying that lattice family with the Fourier-Galerkin family used in the
+stochastic convolution estimates above is a separate comparison theorem.
+After matching the relevant local coordinates, one must prove convergence of
+the lattice and Fourier-Galerkin Schwinger functions, or construct a single
+regulator whose Langevin estimates and OS positivity are both available.  Such
+a theorem must supply analytic estimates beyond either weak convergence or
+stochastic stationarity.
 
-\begin{proposition}[Regulator comparison criterion for OS-positive stochastic limits]
-\label{prop:spde-regulator-comparison-os-criterion}
+\begin{remark}[Regulator comparison criterion for OS-positive stochastic limits]
+\label{rem:spde-regulator-comparison-os-criterion}
 Let \(E\) be a Hausdorff locally convex real vector space of Euclidean
 fields, let \(\Theta:E\to E\) be a continuous involution, and let
 \(\{\mu_N^{\mathrm F}\}\) and \(\{\mu_N^{\mathrm L}\}\) be two cutoff
@@ -3939,9 +3936,6 @@ with respect to \(\mu\), then both cutoff limits exist and
 holds.  If, in addition, \(F\) is a positive-time polynomial observable and
 \(|\overline{F\circ\Theta}F|\) has the same uniform-integrability property,
 then the OS inequality also holds for \(F\).
-\end{proposition}
-
-\begin{proof}
 For bounded \(F\in\mathcal A_+\), set
 \[
   Q_F(\phi)=\overline{F(\Theta\phi)}\,F(\phi).
@@ -4006,21 +4000,22 @@ Cauchy's inequality.  Dominated convergence gives
 Schwinger-function limits.  Applying the same truncation argument to
 \(P=Q_F=\overline{F\circ\Theta}F\), after using the bounded part for each
 truncated \(F_R\), gives the polynomial OS inequality.
-\end{proof}
+\end{remark}
 
-The proposition does not prove the analytic comparison
-\eqref{eq:spde-bounded-cylinder-regulator-comparison}; it says exactly what
-such a comparison must deliver.  In \(\Phi^4_2\), the comparison is a
-constructive statement about two renormalized cutoff families in the same
-finite-volume local-coordinate chart.  It must identify the mass and vacuum
-coordinates, prove convergence of bounded smeared-field observables, and
-provide the uniform-integrability estimates needed to remove the bounded
-truncations.  Once these estimates are proved, lattice reflection positivity
-from Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}
-transfers to the stochastic Fourier-Galerkin limit by the proposition above.
+The analytic comparison
+\eqref{eq:spde-bounded-cylinder-regulator-comparison} is a separate
+constructive estimate; the criterion records what such a comparison must
+deliver.  In \(\Phi^4_2\), the comparison is a constructive statement about
+two renormalized cutoff families in the same finite-volume local-coordinate
+chart.  It must identify the mass and vacuum coordinates, prove convergence
+of bounded smeared-field observables, and provide the uniform-integrability
+estimates needed to remove the bounded truncations.  Once these estimates are
+proved, lattice reflection positivity from
+Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator} transfers to
+the stochastic Fourier-Galerkin limit by the criterion above.
 
-\begin{proposition}[Polynomial OS observables from exponential moments]
-\label{prop:spde-polynomial-os-uniform-integrability}
+\begin{remark}[Polynomial OS observables from exponential moments]
+\label{rem:spde-polynomial-os-uniform-integrability}
 Let \(E\) be a Hausdorff locally convex real vector space, and let
 \(\mu_N\Rightarrow\mu\) be Borel probability measures on \(E\).  Let
 \(\ell_1,\ldots,\ell_r\) be continuous real linear functionals on \(E\), and
@@ -4041,12 +4036,10 @@ Then for every polynomial \(P\in\C[u_1,\ldots,u_r]\), the random variables
 \]
 are uniformly integrable with respect to \(\{\mu_N\}\) and integrable with
 respect to \(\mu\).  Hence the unbounded polynomial-cylinder step in
-Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}
+Remark~\ref{rem:spde-os-positivity-closed-under-weak-convergence}
 follows for such \(P\) whenever the bounded-cylinder reflection-positivity
 inequality is available.
-\end{proposition}
 
-\begin{proof}
 There is a constant \(C_P<\infty\) such that, for all \(u\in\R^r\),
 \begin{equation}
   |P(u)|^2\leq C_P
@@ -4085,9 +4078,9 @@ Integrating and using
 \]
 This is uniform integrability.  The same estimate with \(\mu\) instead of
 \(\mu_N\) gives integrability under the limiting measure.  Applying
-Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence} to
+Remark~\ref{rem:spde-os-positivity-closed-under-weak-convergence} to
 bounded truncations of \(P(\ell_1,\ldots,\ell_r)\) proves the final claim.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Finite lattice quartic tails]
 \label{prop:spde-finite-lattice-quartic-tails}
@@ -4117,7 +4110,7 @@ finite cutoff.  A uniform version of
 \eqref{eq:spde-finite-lattice-quartic-exponential-tail} along a continuum
 cutoff family is a separate estimate; if it is available for the smeared
 coordinates entering an OS polynomial cylinder observable, then
-Proposition~\ref{prop:spde-polynomial-os-uniform-integrability} supplies the
+Remark~\ref{rem:spde-polynomial-os-uniform-integrability} supplies the
 uniform integrability needed to pass that observable to the limit.
 \end{proposition}
 
@@ -4154,8 +4147,8 @@ because the density is positive on a set of positive Lebesgue measure.
 Dividing by \(Z\) proves
 \eqref{eq:spde-finite-lattice-quartic-exponential-tail}.  Polynomial
 moments follow because every power of \(|u|\) is bounded by a constant times
-\(e^{\delta u^4}\) for any fixed \(\delta>0\).  The final sentence is
-exactly Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}
+\(e^{\delta u^4}\) for any fixed \(\delta>0\).  The final sentence is exactly
+Remark~\ref{rem:spde-polynomial-os-uniform-integrability}
 applied to the finite list of smeared cylinder coordinates.
 \end{proof}
 
@@ -4219,9 +4212,9 @@ Assume the following three further analytic facts.
   bounded cylinder observables depending on positive Euclidean time, and
   the polynomial Wick observables used to identify Schwinger functions obey
   the uniform-integrability bounds needed for the truncation step in
-  Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}.
-  This is a property of the chosen Euclidean regulator, not an automatic
-  consequence of the Fourier-Galerkin cutoff.  For the lattice scalar
+  Remark~\ref{rem:spde-os-positivity-closed-under-weak-convergence}.
+  This is a property of the chosen Euclidean regulator and must be proved for
+  the regulator used in the limiting construction.  For the lattice scalar
   regulator of
   Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}, the
   bounded-observable positivity statement is proved at finite cutoff, and
@@ -4229,11 +4222,11 @@ Assume the following three further analytic facts.
   finite-cutoff polynomial integrability.  Passing polynomial observables
   uniformly through the continuum limit requires the exponential moment
   criterion of
-  Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.  Using
+  Remark~\ref{rem:spde-polynomial-os-uniform-integrability}.  Using
   lattice positivity in the present Fourier-Galerkin stochastic assembly
   requires the bounded-cylinder and uniform-integrability comparison
   hypotheses stated in
-  Proposition~\ref{prop:spde-regulator-comparison-os-criterion}.  A
+  Remark~\ref{rem:spde-regulator-comparison-os-criterion}.  A
   sufficient condition for the bounded-cylinder comparison part is the
   common \(L^1\) density-limit criterion of
   Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}; a
@@ -4326,7 +4319,7 @@ finite-cutoff reflection-positivity assumption gives
 \[
   \int \overline{\Theta F}\,F\,\dd\mu_N\geq0 .
 \]
-Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}
+Remark~\ref{rem:spde-os-positivity-closed-under-weak-convergence}
 passes this inequality to the weak limit, so
 \[
   \int \overline{\Theta F}\,F\,\dd\mu\geq0 .
@@ -4357,7 +4350,7 @@ a regulator-comparison theorem relating it to the
 OS-positive lattice regulator of
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 abstract form of the latter implication is
-Proposition~\ref{prop:spde-regulator-comparison-os-criterion}; the bounded
+Remark~\ref{rem:spde-regulator-comparison-os-criterion}; the bounded
 cylinder comparison follows from
 Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} if the two
 regulators have a common \(L^1\) interaction-density limit and identical
@@ -4379,9 +4372,9 @@ Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, and for
 smooth Fourier multiplier cutoffs the needed covariance estimate follows
 from
 Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
-The uniform-integrability input can be supplied by the exponential cylinder-moment
-criterion in
-Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
+The uniform-integrability input can be supplied by the exponential
+cylinder-moment criterion in
+Remark~\ref{rem:spde-polynomial-os-uniform-integrability}; finite
 quartic tails at each lattice cutoff are proved by
 Proposition~\ref{prop:spde-finite-lattice-quartic-tails}, while uniformity
 as the cutoff is removed remains part of the constructive estimate.  These
@@ -5326,8 +5319,8 @@ test-function ball.  It is to prove projective tensor bounds for the
 \(E_r'\)-valued BPHZ kernels and then apply the dual-norm chaos estimate
 above.
 
-\begin{proposition}[Kernel criterion for projective dual-norm bounds]
-\label{prop:spde-projective-kernel-dual-norm-criterion}
+\begin{lemma}[Projective kernel estimate for dual-norm bounds]
+\label{lem:spde-projective-kernel-dual-norm-estimate}
 Let \(E\) be a separable Banach space, let \(H\) be a Hilbert space, and let
 \((S,\mu)\) be a \(\sigma\)-finite measure space.  Fix \(q\geq0\).  Suppose
 that \(f:S\to H^{\odot q}\) is strongly measurable and that
@@ -5376,7 +5369,7 @@ where
 \[
   F_x=\int_S f_x(s)\otimes\ell_x(s)\,\dd\mu(s).
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The algebraic tensor norm is a crossnorm:
@@ -6662,8 +6655,8 @@ therefore include not only a moment bound for each fixed coordinate, but also
 the increment bound \eqref{eq:spde-dyadic-net-increment-bound} in the
 parameters that enter the model seminorm.
 
-\begin{theorem}[Scale-summed dyadic-net coordinate upgrade]
-\label{thm:spde-scale-summed-coordinate-upgrade}
+\begin{corollary}[Scale-summed dyadic-net coordinate upgrade]
+\label{cor:spde-scale-summed-coordinate-upgrade}
 Let \(p\geq1\).  For every \(m\in\mathbb N=\{0,1,2,\ldots\}\), let
 \((\mathcal X_m,d_m)\) be a compact metric space with finite nets
 \(\mathcal X_{m,\ell}\), \(\ell\geq0\), projections
@@ -6721,7 +6714,7 @@ If \(Y_m=Y_{n,m}\) depends on a cutoff index \(n\) and the two moment
 hypotheses are multiplied by \(2^{-p\rho n}\), with \(\rho>0\), then the
 right-hand side of \eqref{eq:spde-scale-summed-supremum-bound} is multiplied
 by \(2^{-\rho n}\).
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
 Fix \(m\).  Apply
@@ -6759,7 +6752,7 @@ follows by carrying the factor \(2^{-\rho n}\) through the same inequalities.
 \end{proof}
 
 The parameter \(m\) in
-Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade} is the physical
+Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade} is the physical
 testing scale, \(\delta\simeq2^{-m}\), in a model seminorm.  The exponent
 \(D\) is the entropy cost of resolving base points and test functions at
 that scale.  The exponent \(\sigma\) is the regularity slack between the
@@ -7319,7 +7312,7 @@ in the model distance \(d_{K;\gamma_-}\), to a limiting random model on
 For a fixed coordinate label \(i\), the entropy hypothesis
 \eqref{eq:spde-negative-sector-scale-entropy} and the four moment hypotheses
 are exactly the hypotheses of
-Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade}, first for
+Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade}, first for
 \(U_{n,i,m}\) and then for \(V_{n,i,m}\).  Hence
 \[
   \left\|
@@ -7410,7 +7403,7 @@ Equip \(\mathcal X_{\Pi,m}\) with
   2^m\|z-z'\|_{\mathfrak s}+|a-a'|.
 \]
 There are finite nets and projections as in
-Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade} for which
+Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade} for which
 \begin{equation}
   |\mathcal X_{\Pi,m,0}|\leq C_{\Pi,0}2^{Qm},
   \qquad

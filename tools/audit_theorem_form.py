@@ -704,6 +704,10 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Observable-type preservation under a controlled threshold"
     r"|Domain of the .*S,T,U.* projection"
     r"|Strong-coupling area mechanism"
+    r"|Closedness of OS reflection positivity under weak convergence"
+    r"|Regulator comparison criterion for OS-positive stochastic limits"
+    r"|Polynomial OS observables from exponential moments"
+    r"|Kernel criterion for projective dual-norm bounds"
     r")\b",
     re.IGNORECASE,
 )
