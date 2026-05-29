@@ -110,9 +110,10 @@
   \(S_\ell(E)-1\), before converting to the invariant amplitude convention.
 - Elastic unitarity gives \(S_\ell=e^{2i\delta_\ell}\) and
   \(\operatorname{Im}a_\ell=\beta|a_\ell|^2\).
-- Proposition `prop:partial-wave-unitarity-circle` proves the elastic
-  unitarity circle, the inelastic disk, and the partial-wave optical-theorem
-  deficit \((1-\eta_\ell^2)/4\).
+- The partial-wave unitarity circle calculation records the elastic circle,
+  the inelastic disk, and the partial-wave optical-theorem deficit
+  \((1-\eta_\ell^2)/4\) without presenting this algebra as a separate
+  theorem-level result.
 - Companion check `calculation-checks/cross_section_partial_wave_checks.py`
   verifies the finite algebra behind the Kallen formula, invariant flux,
   phase-space coefficient, identical \(\phi^4\) tree coefficient, and

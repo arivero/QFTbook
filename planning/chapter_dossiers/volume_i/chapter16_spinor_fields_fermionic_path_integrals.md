@@ -165,8 +165,8 @@
   `def:finite-fermionic-configuration-superspace`,
   `prop:purely-odd-berezinian-transformation`,
   `prop:finite-berezin-gaussian-contractions`,
-  `prop:fermionic-coherent-state-resolution`, and
-  `prop:fermionic-trace-boundary-signs`.
+  `prop:fermionic-coherent-state-resolution`, and the fermionic trace
+  endpoint-sign calculation.
 - `calculation-checks/spinor_grassmann_checks.py` verifies the finite sign
   algebra behind the Dirac phase equations, \(U(1)\) charge convention, CAR
   locality sign, odd Dirac bracket, Berezinian inverse determinant, one-pair
@@ -180,7 +180,7 @@
   `def:finite-berezin-pushforward`,
   `prop:finite-berezin-pushforward-functoriality`,
   `def:susy-qm-witten-index-datum`,
-  `prop:harmonic-susy-oscillator-index`,
+  harmonic supersymmetric oscillator index calculation,
   `def:twisted-dirac-index-periodic-worldline-datum`,
   `ex:periodic-fermion-worldline-index-density`,
   `def:free-dirac-functional-integral-datum`,

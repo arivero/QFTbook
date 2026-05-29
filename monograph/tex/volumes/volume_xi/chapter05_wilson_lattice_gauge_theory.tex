@@ -621,8 +621,7 @@ It has the same covariance law as a link, but it is generally a complex
 matrix rather than an element of \(SU(N)\).  A projection back to the group
 is therefore part of the regulator definition.
 
-\begin{proposition}[Equivariance of polar link projection]
-\label{prop:polar-link-projection-equivariance}
+\paragraph{Equivariance of polar link projection.}
 Let \(X\in GL(N,\mathbb C)\), and write its polar decomposition as
 \[
   X=U_XH_X,\qquad
@@ -642,9 +641,6 @@ Consequently the locally defined special-unitary projection
 \end{equation}
 is gauge covariant on any open set where a branch of the \(N\)-th root is
 chosen continuously.
-\end{proposition}
-
-\begin{proof}
 Since
 \[
   (gXh^{-1})^\dagger(gXh^{-1})
@@ -667,7 +663,6 @@ unitary and the second is positive.  This proves
 equals \(\det U_X\), since \(g,h\in SU(N)\), so the determinant-normalized
 projection has the same covariance law whenever the root branch is fixed on
 the chosen connected domain.
-\end{proof}
 
 The projection map is smooth on \(GL(N,\mathbb C)\) after choosing the
 determinant branch, and it becomes singular when \(X\) loses rank or crosses
@@ -694,15 +689,11 @@ inner product, onto anti-Hermitian traceless matrices.  Define
   \label{eq:stout-smearing-definition}
 \end{equation}
 
-\begin{proposition}[Stout smearing is a smooth gauge-covariant link map]
-\label{prop:stout-smearing-gauge-covariance}
+\paragraph{Stout smearing is a smooth gauge-covariant link map.}
 For every real \(\rho\), the map
 \eqref{eq:stout-smearing-definition} is a smooth map
 \(\mathcal U_\Lambda\to SU(N)^E\) and satisfies the gauge-covariance law
 \eqref{eq:smearing-gauge-covariance}.
-\end{proposition}
-
-\begin{proof}
 The staple covariance \eqref{eq:staple-link-covariance} gives
 \[
   \Omega_\ell(g\cdot U)
@@ -731,7 +722,6 @@ Because \(Q_\ell\) is anti-Hermitian and traceless, \(e^{Q_\ell}\in SU(N)\),
 and therefore \(e^{Q_\ell}U_\ell\in SU(N)\).  Smoothness follows from the
 polynomial staple map, the linear projection
 \eqref{eq:suN-algebra-projection}, and the matrix exponential.
-\end{proof}
 
 Hypercubic smearing is an iterated local construction in which staples are
 restricted to lower-dimensional faces before the next level is formed.  Its

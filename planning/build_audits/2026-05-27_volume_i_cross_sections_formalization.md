@@ -27,8 +27,9 @@ chapter, because it is the first chapter after LSZ where the nonperturbative
 - Added Theorem `thm:sharp-kernel-unitarity-optical-theorem`, proving the
   amplitude-level unitarity relation and optical theorem with the correct
   Hilbert-space adjunction ordering.
-- Added Proposition `prop:partial-wave-unitarity-circle`, proving the elastic
-  unitarity circle and inelastic disk in \(b_\ell=\beta a_\ell\).
+- Added the partial-wave unitarity circle calculation, deriving the elastic
+  circle and inelastic disk in \(b_\ell=\beta a_\ell\) as normalization
+  algebra rather than a separate theorem-level statement.
 
 ## Companion Checks
 

@@ -306,6 +306,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Wilson lifting of the naive species"
     r"|Overlap operator satisfies Ginsparg--Wilson"
     r"|Overlap index as spectral asymmetry"
+    r"|Peierls bracket from the pAQFT star commutator"
+    r"|Lifting a projected RG zero"
+    r"|Level-two Liouville null vector"
+    r"|Dual level-two null vector and BPZ equation"
+    r"|Equivariance of polar link projection"
+    r"|Stout smearing is a smooth gauge-covariant link map"
+    r"|Borel transform of the subtracted dispersion kernel"
+    r"|Partial-wave unitarity circle"
+    r"|Tree-level high-density quark action"
+    r"|Fermionic trace endpoint signs"
+    r"|Harmonic supersymmetric oscillator index"
     r")\b",
     re.IGNORECASE,
 )
