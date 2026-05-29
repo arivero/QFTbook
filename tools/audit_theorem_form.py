@@ -117,6 +117,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Finite-cutoff local counterterm calculation|"
     r"Mass-source and Konishi identities in massive SQCD|"
     r"BES equation from the large-spin ABA|"
+    r"Collapsed-cut digamma package|"
+    r"Small-spin QSC slope|"
     r"comparison algebra|"
     r"finite algebra of .*comparisons|"
     r"exact finite.*GEVP extraction|"

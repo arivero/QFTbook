@@ -1495,8 +1495,8 @@ on a vertical fundamental strip, periodicity bounds it on all of
 \(\mathbb C\); Liouville's theorem makes it constant.
 \end{proof}
 
-\begin{lemma}[Collapsed-cut digamma package]
-\label{lem:qsc-collapsed-cut-digamma-package}
+\paragraph{Collapsed-cut digamma package.}
+\label{par:qsc-collapsed-cut-digamma-package}
 Let \(Q(u)\) be a polynomial with \(Q(\ii/2)\neq0\), and set
 \[
   r_0=Q'(\ii/2)-Q'(-\ii/2).
@@ -1547,11 +1547,10 @@ Finally, for the meromorphic quotient \(F_{\rm sing}(u)=R_{\rm sing}(u)/Q(u)\),
   -\frac{2r_0}{Q(\ii/2)(u-\ii/2)} .
   \label{eq:qsc-digamma-singular-shift-defects}
 \end{equation}
-\end{lemma}
 
-\begin{proof}
-The digamma function has simple poles at \(0,-1,-2,\ldots\), each with
-residue \(-1\).  The factor
+The residue formulas follow from the pole structure of \(\psi\).  The
+digamma function has simple poles at \(0,-1,-2,\ldots\), each with residue
+\(-1\).  The factor
 \(\psi(1/2+\ii u)\) therefore has a pole at
 \(u=\ii(n+1/2)\); since
 \[
@@ -1582,7 +1581,6 @@ with the branch inherited from the QSC large-\(u\) sheet.  This proves the
 logarithmic coefficient.  The quotient shift identities
 \eqref{eq:qsc-digamma-singular-shift-defects} follow by multiplying
 \eqref{eq:qsc-digamma-primitive-shift-defects} by \(\ii r_0/Q(\ii/2)\).
-\end{proof}
 
 \paragraph{One-loop dimension from the weak QSC.}
 \label{par:qsc-one-loop-dimension}
@@ -1629,8 +1627,8 @@ It remains to extract the coefficient of \(g^2\) in \(\Delta\).  Since
 \]
 The collapsed square-root cuts force the singular part of the \(g^2\)
 correction to \(\mu_{12}(u+\ii/2)\) to be
-\eqref{eq:qsc-digamma-singular-package}.  By
-Lemma~\ref{lem:qsc-collapsed-cut-digamma-package}, this expression has the
+\eqref{eq:qsc-digamma-singular-package}.  The collapsed-cut calculation above
+shows that this expression has the
 prescribed simple poles at the collapsed cuts, with residues fixed by the
 branch-point relation and cyclic endpoint condition.  More precisely, after
 division by the leading Baxter polynomial, the singular quotient has the
@@ -1641,9 +1639,8 @@ the non-regular meromorphic primitive up to an entire \(\ii\)-periodic
 ambiguity.  In the weak-coupling regularity class of
 Assumption~\ref{ass:qsc-weak-coupling-regularity}, that ambiguity belongs to
 the regular polynomial/asymptotic-power part of \(R\), and it carries no
-\(\log u\) term.  Comparing the logarithmic coefficient in
-Lemma~\ref{lem:qsc-collapsed-cut-digamma-package} with the large-\(u\)
-expansion of \(\mu_{12}/Q\) gives
+\(\log u\) term.  Comparing the logarithmic coefficient in the collapsed-cut
+calculation with the large-\(u\) expansion of \(\mu_{12}/Q\) gives
 \[
   \Delta-J-S
   =
@@ -1907,12 +1904,18 @@ inside the finite functional system \eqref{eq:planar-n4-pmu-one}--\eqref{eq:plan
 \section{Small Spin Expansion}
 
 The QSC gives a controlled analytic expansion near \(S=0\), where the state
-approaches the protected vacuum.  At leading order the \(\mu\)-matrix may be
-chosen, up to QSC gauge transformations, so that
+approaches the protected vacuum.  The finite coefficient calculation below
+begins after the following local analytic germ has been supplied.
+
+\begin{assumption}[Small-spin QSC germ]
+\label{ass:qsc-small-spin-germ}
+Fix the twist \(J\in\mathbb Z_{>0}\) and let \(S\) be a complex spin parameter
+near \(0\).  Assume that the physical QSC solution admits a gauge in which the
+\(S=0\) limit is the protected vacuum and the first nonzero deformation has
+\(\epsilon^2=O(S)\).  In this gauge the leading \(\mu\)-matrix is
 \[
   \mu_{12}=-1,\quad \mu_{13}=0,\quad
-  \mu_{14}=\mu_{23}=1,\quad
-  \mu_{24}=-\sinh(2\pi u),\quad \mu_{34}=0 .
+  \mu_{14}=\mu_{23}=1,\quad \mu_{24}=-\sinh(2\pi u),\quad \mu_{34}=0 .
 \]
 Writing
 \[
@@ -1924,11 +1927,11 @@ with the short-cut branch, the leading solution has
   \qquad
   P_3=\epsilon(x^{-J/2}-x^{J/2}),
 \]
-where \(\epsilon^2=O(S)\).  The remaining two \(P\)-functions are fixed, in
-this small-spin germ, by solving the \(P\mu\) equations with the above
-\(\mu\)-matrix and imposing the single-short-cut regularity condition.  The
-calculation reduces to splitting the Laurent expansion of \(\sinh(2\pi u)\)
-into the powers allowed in \(P_2\) and \(P_4\).  Since
+and the remaining two \(P\)-functions are obtained by solving the local
+\(P\mu\) equations with the displayed \(\mu\)-matrix and imposing
+single-short-cut regularity.  Equivalently, the Laurent expansion of
+\(\sinh(2\pi u)\) is split into the powers allowed in \(P_2\) and \(P_4\).
+Since
 \[
   u=g(x+x^{-1}),
 \]
@@ -1952,27 +1955,32 @@ large-\(x\) coefficients produced by the regularity split are
   -\epsilon I_{J-1}(4\pi g)x^{J/2-1}
   +O(x^{J/2-3}).
 \]
-Thus, in the large-\(u\) normalization of the coefficient-product calculation
-above,
+In the large-\(u\) normalization of the coefficient-product calculation above,
 \[
   A_1=\epsilon g^{J/2},\quad
   A_2=-\epsilon g^{J/2+1}I_{J+1}(4\pi g),\quad
   A_3=-\epsilon g^{-J/2},\quad
   A_4=-\epsilon g^{-J/2+1}I_{J-1}(4\pi g).
 \]
+The corresponding large-\(u\) charge relations are
+\[
+  \Delta-J=-\ii(A_1A_4-A_2A_3)+O(S^2),
+  \qquad
+  S=-\ii(A_1A_4+A_2A_3)+O(S^2).
+\]
+\end{assumption}
 
-\begin{proposition}[Small-spin QSC slope]
-\label{prop:qsc-small-spin-bessel-slope}
-For the small-spin QSC germ above, the leading anomalous dimension satisfies
+\paragraph{Small-spin QSC slope extraction.}
+\label{par:qsc-small-spin-bessel-slope}
+Under Assumption~\ref{ass:qsc-small-spin-germ}, the leading anomalous
+dimension satisfies
 \[
   \Delta-J-S
   =
-  \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}\,S+O(S^2),
+  \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}\,S+O(S^2).
 \]
-\end{proposition}
 
-\begin{proof}
-First prove the Laurent identity
+The finite calculation is as follows.  First prove the Laurent identity
 \eqref{eq:qsc-small-spin-bessel-laurent}.  The generating function
 \[
   \exp\left(\frac{z}{2}(t+t^{-1})\right)
@@ -1991,14 +1999,8 @@ The displayed leading coefficients then give
   \qquad
   A_2A_3=\epsilon^2 g\,I_{J+1}(4\pi g).
 \]
-Linearizing the large-\(u\) QSC coefficient relations at small spin gives
-the two charge equations
-\[
-  \Delta-J=-\ii(A_1A_4-A_2A_3)+O(S^2),
-  \qquad
-  S=-\ii(A_1A_4+A_2A_3)+O(S^2).
-\]
-Substitution yields
+Substituting these products into the large-\(u\) charge relations in
+Assumption~\ref{ass:qsc-small-spin-germ} yields
 \[
   \Delta-J
   =
@@ -2029,8 +2031,7 @@ Therefore
   =
   \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}S+O(S^2),
 \]
-which is the claimed slope.
-\end{proof}
+which is the stated slope.
 
 Continuing the resulting strong-coupling expansion to \(J=2,S=2\) gives the
 Konishi estimate
