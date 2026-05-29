@@ -6,10 +6,12 @@
 The algebraic Bethe ansatz of
 Chapter~\ref{ch:integrable-algebraic-bethe-ansatz-transfer-matrices}
 diagonalizes a transfer matrix by turning the Yang--Baxter equation into
-commuting finite-dimensional operators.  This chapter applies the same
-mechanism to non-diagonal finite-volume scattering.  The physical rapidities
-are fixed by Bethe--Yang quantization, while auxiliary roots diagonalize the
-internal transfer matrix.
+commuting finite-dimensional operators.  This chapter develops the
+higher-rank version needed for non-diagonal finite-volume scattering.  The
+physical rapidities are fixed by Bethe--Yang quantization, while auxiliary
+Bethe roots diagonalize the internal transfer matrix.  The auxiliary roots
+are not extra particles: they are spectral coordinates for the internal
+wavefunction of a multiparticle state.
 
 \section{Matrix Bethe--Yang Quantization}
 
@@ -32,9 +34,8 @@ this ordered product is an internal transfer matrix
 \]
 The hat means that \(\theta_j\) is omitted from the list of spectator
 rapidities.  The Yang--Baxter equation implies that the different
-\(\mathcal T_j\)'s commute on the common domain where the scattering maps are
-defined, after the usual care with identical particles and ordering
-conventions.
+\(\mathcal T_j\)'s commute on the common meromorphic domain after the
+ordering convention for identical particles has been fixed.
 
 \begin{definition}[Matrix Bethe--Yang state]
 \label{def:matrix-bethe-yang-state}
@@ -59,22 +60,187 @@ Bethe--Yang equation in
 Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}.  In the non-diagonal
 case the eigenvalue \(\tau_j\) is obtained by an auxiliary Bethe ansatz.
 
-\section{Nested Roots for SU(N)}
+\section{RTT Algebra and Yangian Evaluation Data}
 
-Consider a homogeneous rational \(SU(N)\) chain with local space
-\(V=\C^N\) in the fundamental representation and rational \(R\)-matrix
+Let \(V=\C^N\) and let \(E_{ab}\in\operatorname{End}(V)\) be the elementary
+matrix with \(E_{ab}e_c=\delta_{bc}e_a\).  For the rational \(SU(N)\) chain
+we use
 \[
-  R(u)=u\,\id+\ii P .
+  R(u)=u\,\id+\ii P,\qquad
+  P=\sum_{a,b=1}^{N}E_{ab}\otimes E_{ba}.
 \]
-Choose a reference color \(1\).  A state with colors different from \(1\)
-contains \(M_1\) first-level excitations.  If more than one non-reference
-color is present, diagonalization of their internal scattering requires
-further auxiliary roots.  For \(SU(N)\) there are \(N-1\) levels of roots
+The monodromy
 \[
-  \{u_j^{(r)}\}_{j=1}^{M_r},\qquad r=1,\ldots,N-1 .
+  T_0(u)=R_{0L}(u-\xi_L)\cdots R_{01}(u-\xi_1)
 \]
-The nested Bethe equations in the normalization compatible with
-\eqref{eq:aba-xxx-bethe-equations} are
+is written as
+\[
+  T_0(u)=\sum_{a,b=1}^{N}E_{ab}^{(0)}\otimes T_{ab}(u),
+  \qquad T_{ab}(u)\in\operatorname{End}(\mathcal H_L),
+\]
+where \(\mathcal H_L=(\C^N)^{\otimes L}\).  The RTT relation
+\[
+  R_{00'}(u-v)T_0(u)T_{0'}(v)
+  =
+  T_{0'}(v)T_0(u)R_{00'}(u-v)
+\]
+is the defining finite-dimensional representation of the rational Yangian
+RTT algebra.  Equivalently, the matrix entries obey the component relation
+\begin{equation}
+  (u-v)[T_{ab}(u),T_{cd}(v)]
+  =
+  \ii\bigl(
+    T_{cb}(v)T_{ad}(u)-T_{cb}(u)T_{ad}(v)
+  \bigr).
+  \label{eq:rational-yangian-rtt-components}
+\end{equation}
+
+\begin{proposition}[Component RTT relation]
+\label{prop:component-rtt-relation}
+For \(R(u)=u+\ii P\), the operator identity RTT is equivalent to
+\eqref{eq:rational-yangian-rtt-components} for all
+\(a,b,c,d=1,\ldots,N\).
+\end{proposition}
+
+\begin{proof}
+Insert \(P=\sum_{p,q}E_{pq}^{(0)}E_{qp}^{(0')}\) and
+\(T_0(u)=\sum E_{ab}^{(0)}T_{ab}(u)\),
+\(T_{0'}(v)=\sum E_{cd}^{(0')}T_{cd}(v)\) into RTT.  The coefficient of
+\(E_{ab}^{(0)}E_{cd}^{(0')}\) in the term proportional to \(u-v\) is
+\((u-v)(T_{ab}(u)T_{cd}(v)-T_{cd}(v)T_{ab}(u))\).  The coefficient in the
+permutation terms is
+\(\ii(T_{cb}(v)T_{ad}(u)-T_{cb}(u)T_{ad}(v))\).  Equality of the coefficients
+is exactly \eqref{eq:rational-yangian-rtt-components}, and the converse is
+obtained by summing these coefficient identities.
+\end{proof}
+
+Expanding \(T_{ab}(u)\) for large \(u\) gives level-zero and higher Yangian
+charges.  For a finite chain the representation is not an additional
+postulate: it is the evaluation representation produced by the concrete
+monodromy above.  The Yangian language is nevertheless useful because the
+nested roots are organized by the simple roots of \(\mathfrak{sl}_N\), and
+the recursive auxiliary monodromy below is the same RTT construction applied
+to smaller residual color spaces.
+
+\section{Recursive Nested Monodromy}
+
+Choose the reference vector
+\[
+  \Omega_L=e_1^{\otimes L}.
+\]
+With the shifted \(L\)-operator convention of
+Chapter~\ref{ch:integrable-algebraic-bethe-ansatz-transfer-matrices},
+\[
+  T_{11}(u)\Omega_L=\left(u+\frac{\ii}{2}\right)^L\Omega_L,
+  \qquad
+  T_{aa}(u)\Omega_L=\left(u-\frac{\ii}{2}\right)^L\Omega_L
+  \quad(a=2,\ldots,N),
+\]
+and the lower-left entries annihilate \(\Omega_L\).  The first-level
+creation operators are the entries \(B_\alpha(u)=T_{1,\alpha+1}(u)\),
+\(\alpha=1,\ldots,N-1\).  A first-level Bethe vector has the form
+\[
+  \Psi^{(1)}
+  =
+  \sum_{\alpha_1,\ldots,\alpha_{M_1}=1}^{N-1}
+  F^{\alpha_1\cdots\alpha_{M_1}}\,
+  B_{\alpha_1}(u_1^{(1)})\cdots B_{\alpha_{M_1}}(u_{M_1}^{(1)})\Omega_L .
+\]
+The coefficient tensor \(F\) is not arbitrary.  RTT relations among the
+\(B_\alpha\)'s show that exchanging two first-level roots acts on their color
+indices by the rational \(R\)-matrix on \(\C^{N-1}\).  Therefore the
+unwanted terms in the action of the full transfer matrix are controlled by
+an auxiliary \(SU(N-1)\) transfer matrix on
+\((\C^{N-1})^{\otimes M_1}\).  This is the origin of nesting.
+
+\begin{construction}[Nested auxiliary monodromy]
+\label{con:nested-auxiliary-monodromy}
+Let \(V^{(r)}\simeq\C^{N-r}\) be the residual color space at nesting level
+\(r\), with \(r=1,\ldots,N-1\).  Put \(M_0=L\), and let
+\(\{u_j^{(0)}\}\) denote the physical inhomogeneities in the spin-chain
+problem or the physical rapidities after conversion to the rational
+auxiliary variable.  Given roots
+\(\{u_j^{(r-1)}\}_{j=1}^{M_{r-1}}\), define the level-\(r\) auxiliary
+monodromy by
+\[
+  T^{(r)}_0(u)
+  =
+  R^{(N-r+1)}_{0M_{r-1}}(u-u_{M_{r-1}}^{(r-1)})
+  \cdots
+  R^{(N-r+1)}_{01}(u-u_1^{(r-1)}),
+\]
+where \(R^{(m)}(u)=u+\ii P\) acts on \(\C^m\otimes\C^m\).  The level-\(r\)
+transfer matrix is \(t^{(r)}(u)=\operatorname{tr}_0T^{(r)}_0(u)\).  The roots
+\(\{u_j^{(r)}\}_{j=1}^{M_r}\) are the Bethe roots used to diagonalize
+\(t^{(r)}\) by the same pseudovacuum construction, now with residual rank
+smaller by one.
+\end{construction}
+
+\begin{theorem}[Recursive origin of the nested equations]
+\label{thm:recursive-nested-bethe-origin}
+For the rational fundamental \(SU(N)\) chain with generic inhomogeneities and
+generic roots, the repeated construction
+\ref{con:nested-auxiliary-monodromy} gives an eigenvector of the transfer
+matrix whenever the roots satisfy the pole-cancellation equations
+\begin{equation}
+  \left(
+    \frac{u_j^{(r)}+\frac{\ii}{2}\delta_{r1}}
+         {u_j^{(r)}-\frac{\ii}{2}\delta_{r1}}
+  \right)^L
+  =
+  \prod_{s=1}^{N-1}
+  \prod_{\substack{k=1\\(s,k)\ne(r,j)}}^{M_s}
+  \frac{u_j^{(r)}-u_k^{(s)}+\frac{\ii}{2}A_{rs}}
+       {u_j^{(r)}-u_k^{(s)}-\frac{\ii}{2}A_{rs}},
+  \label{eq:su-n-nested-bethe-cartan}
+\end{equation}
+where \(A_{rs}=2\delta_{rs}-\delta_{r,s+1}-\delta_{r,s-1}\) is the
+\(A_{N-1}\) Cartan matrix.  The energy in the nearest-neighbor rational
+Hamiltonian normalization depends only on first-level roots:
+\begin{equation}
+  E=\sum_{j=1}^{M_1}\frac{1}{(u_j^{(1)})^2+1/4}.
+  \label{eq:su-n-rational-energy-first-level}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The proof is an induction on \(N\).  The case \(N=2\) is precisely
+Theorem~\ref{thm:aba-xxx-bethe}: the transfer eigenvalue is meromorphic with
+possible simple poles at first-level roots, and the residue at
+\(u=u_j^{(1)}\) vanishes exactly when the \(SU(2)\) Bethe equation holds.
+
+Assume the statement for residual rank \(N-r\).  At level \(r\), the RTT
+commutation relations move the diagonal entries of \(T^{(r)}(u)\) through the
+creation operators \(B^{(r)}_\alpha(u_j^{(r)})\).  The wanted term is the one
+in which no spectral parameter is exchanged.  The unwanted terms replace one
+creation operator by \(B^{(r)}_\alpha(u)\) and carry coefficients that are
+matrix elements of the next auxiliary transfer matrix \(t^{(r+1)}\) on
+\((V^{(r+1)})^{\otimes M_r}\).  By the induction hypothesis those matrix
+coefficients are diagonal exactly when the roots at levels
+\(r+1,\ldots,N-1\) obey their own pole-cancellation equations.
+
+Only three kinds of factors can appear in the residue at a root
+\(u_j^{(r)}\).  First, exchanging \(u_j^{(r)}\) with another root at the same
+level uses the two-body rational \(R\)-matrix on the same residual color
+space and contributes the shifts \(\pm\ii\), which are the entries
+\(\pm\ii A_{rr}/2\).  Second, the next auxiliary transfer matrix contributes
+only adjacent Dynkin-node factors, because after one nesting step the root
+\(u^{(r)}\) is an inhomogeneity for the \(SU(N-r)\) residual problem; this
+gives the shifts \(\mp\ii/2\) for \(s=r\pm1\), namely
+\(\pm\ii A_{rs}/2\).  Third, the vacuum diagonal eigenvalues of the original
+monodromy enter only at \(r=1\), giving the source factor
+\(((u+\ii/2)/(u-\ii/2))^L\).  Non-adjacent nodes correspond to commuting
+residual color sectors and give \(A_{rs}=0\), hence the factor \(1\).
+Setting every residue to zero is exactly
+\eqref{eq:su-n-nested-bethe-cartan}.  The Hamiltonian is the logarithmic
+derivative of the first-level transfer matrix at the regular point, so the
+same calculation as in the \(SU(2)\) case gives
+\eqref{eq:su-n-rational-energy-first-level}; auxiliary levels select the
+internal eigenvector but carry no direct nearest-neighbor energy.
+\end{proof}
+
+Expanding \eqref{eq:su-n-nested-bethe-cartan} gives the familiar displayed
+form
 \begin{equation}
 \begin{aligned}
   \left(
@@ -111,43 +277,123 @@ The nested Bethe equations in the normalization compatible with
 \end{aligned}
   \label{eq:su-n-nested-bethe}
 \end{equation}
-Products over an empty set are \(1\).  The energy of the fundamental rational
-chain in the Hamiltonian normalization of
-\eqref{eq:aba-xxx-energy-momentum} depends only on the first-level roots:
+Products over an empty set are \(1\).
+
+\section{Dressed-Vacuum Transfer Eigenvalue}
+
+The nested equations are most useful when one keeps track of the transfer
+eigenvalue that produced them.  We record the expression in a gauge in which
+the pole-cancellation calculation is transparent.  Let
 \[
-  E=\sum_{j=1}^{M_1}\frac{1}{(u_j^{(1)})^2+1/4}.
+  Q_r(u)=\prod_{j=1}^{M_r}(u-u_j^{(r)}),\qquad
+  Q_0(u)=Q_N(u)=1,
 \]
+and use the half-shift notation
+\[
+  f^{[k]}(u)=f\!\left(u+\frac{\ii k}{2}\right).
+\]
+For the homogeneous fundamental chain define
+\[
+  \phi_1(u)=(u+\ii)^L,\qquad
+  \phi_a(u)=u^L\quad(a=2,\ldots,N).
+\]
+With a diagonal twist \(g=\operatorname{diag}(g_1,\ldots,g_N)\) the
+fundamental transfer eigenvalue can be written, after an overall scalar
+normalization and a harmless shift of the spectral coordinate, as
+\begin{equation}
+  \Lambda(u)
+  =
+  \sum_{a=1}^{N}
+  g_a\,\phi_a(u)\,
+  \frac{Q_{a-1}^{[a+1]}(u)}{Q_{a-1}^{[a-1]}(u)}
+  \frac{Q_a^{[a-2]}(u)}{Q_a^{[a]}(u)} .
+  \label{eq:su-n-dressed-vacuum-eigenvalue}
+\end{equation}
+This is the dressed-vacuum form of the eigenvalue.  The adjective means only
+that the vacuum diagonal eigenvalues \(\phi_a\) are multiplied by rational
+``dressing'' factors built from the \(Q\)-functions; it is not an additional
+physical vacuum.
 
-\begin{remark}[\(SU(N)\) nesting origin]
-\label{rem:su-n-nested-origin}
-The equations \eqref{eq:su-n-nested-bethe} are the pole-cancellation
-conditions for the nested transfer-matrix eigenvalue obtained by applying the
-algebraic Bethe ansatz successively to the residual internal
-\(SU(N-r)\)-color problem at levels \(r=1,\ldots,N-1\).
-\end{remark}
+\begin{proposition}[Pole cancellation gives the nested equations]
+\label{prop:dressed-vacuum-pole-cancellation}
+Assume the roots are generic and the twist eigenvalue ratios are finite.  The
+meromorphic function \eqref{eq:su-n-dressed-vacuum-eigenvalue} has no pole at
+the would-be pole associated with \(u_j^{(r)}\) if and only if
+\begin{equation}
+  \frac{g_r}{g_{r+1}}
+  \frac{\phi_r(u_j^{(r)}-\frac{\ii r}{2})}
+       {\phi_{r+1}(u_j^{(r)}-\frac{\ii r}{2})}
+  =
+  \prod_{s=1}^{N-1}
+  \prod_{\substack{k=1\\(s,k)\ne(r,j)}}^{M_s}
+  \frac{u_j^{(r)}-u_k^{(s)}+\frac{\ii}{2}A_{rs}}
+       {u_j^{(r)}-u_k^{(s)}-\frac{\ii}{2}A_{rs}} .
+  \label{eq:twisted-su-n-dva-bethe}
+\end{equation}
+For the untwisted homogeneous chain this reduces to
+\eqref{eq:su-n-nested-bethe-cartan}.
+\end{proposition}
 
-At the first level, the monodromy has one reference diagonal entry and an
-\((N-1)\times(N-1)\) block acting on the non-reference colors.  Commuting the
-reference diagonal entry through first-level creation operators produces the
-first product in the first line of \eqref{eq:su-n-nested-bethe}.  The
-unwanted terms are not scalars because the non-reference colors still scatter
-among themselves.  Their coefficients are entries of an auxiliary transfer
-matrix whose local space is \(\C^{N-1}\).  Diagonalizing this auxiliary
-transfer matrix repeats the same construction with one fewer color.  At level
-\(r\), roots at the same level repel with shift \(\pm\ii\), while roots at
-adjacent levels couple with shift \(\pm\ii/2\).  Non-adjacent levels do not
-share a simple root of \(A_{N-1}\), hence there is no factor.  Requiring every
-apparent pole in the nested eigenvalue to have zero residue gives exactly
-\eqref{eq:su-n-nested-bethe}.  The iteration terminates at \(r=N-1\), where
-there is no further auxiliary color.
+\begin{proof}
+The root \(u_j^{(r)}\) appears as a pole of \(\Lambda(u)\) at the common
+point \(u=u_j^{(r)}-\ii r/2\) in precisely two neighboring summands,
+namely the \(a=r\) and \(a=r+1\) summands.  All other summands are regular
+there because their denominator \(Q\)-functions have different node labels.
+Multiplying the residue equation by the nonzero common factors gives
+\[
+\begin{aligned}
+0
+&=
+g_r\phi_r
+  \frac{Q_{r-1}^{[r+1]}}{Q_{r-1}^{[r-1]}}
+  Q_r^{[r-2]}
+\\
+&\quad+
+g_{r+1}\phi_{r+1}
+  Q_r^{[r+2]}
+  \frac{Q_{r+1}^{[r-1]}}{Q_{r+1}^{[r+1]}}
+\end{aligned}
+\]
+evaluated at \(u=u_j^{(r)}-\ii r/2\); the omitted common denominator is the
+same derivative \(Q_r'(u_j^{(r)})\).  Solving for the ratio of the two vacuum
+terms gives
+\[
+  \frac{g_r\phi_r}{g_{r+1}\phi_{r+1}}
+  =
+  -\frac{Q_r(u_j^{(r)}+\ii)}{Q_r(u_j^{(r)}-\ii)}
+  \frac{Q_{r-1}(u_j^{(r)}-\ii/2)}
+       {Q_{r-1}(u_j^{(r)}+\ii/2)}
+  \frac{Q_{r+1}(u_j^{(r)}-\ii/2)}
+       {Q_{r+1}(u_j^{(r)}+\ii/2)} .
+\]
+The factor involving \(Q_r\) contains the root \(u_j^{(r)}\) itself:
+\[
+  -\frac{Q_r(u_j^{(r)}+\ii)}{Q_r(u_j^{(r)}-\ii)}
+  =
+  \prod_{\substack{k=1\\k\ne j}}^{M_r}
+  \frac{u_j^{(r)}-u_k^{(r)}+\ii}
+       {u_j^{(r)}-u_k^{(r)}-\ii}.
+\]
+Combining this same-node factor with the two adjacent-node factors is exactly
+the Cartan-matrix product in \eqref{eq:twisted-su-n-dva-bethe}.  For the
+homogeneous untwisted chain,
+\[
+  \frac{\phi_1(u_j^{(1)}-\ii/2)}
+       {\phi_2(u_j^{(1)}-\ii/2)}
+  =
+  \left(\frac{u_j^{(1)}+\ii/2}{u_j^{(1)}-\ii/2}\right)^L,
+  \qquad
+  \frac{\phi_r}{\phi_{r+1}}=1\quad(r\ge2),
+\]
+which gives \eqref{eq:su-n-nested-bethe-cartan}.
+\end{proof}
 
-The full proof is finite-dimensional algebra, but it requires the complete
-recursive nested monodromy construction and the corresponding transfer-matrix
-eigenvalue at every level.  The paragraph above records the origin of the
-displayed equations and the pole-cancellation mechanism; it is not a
-completeness theorem for Bethe vectors.  Completeness for every chain length
-and every admissible representation is a separate problem; it depends on
-boundary conditions, singular roots, and the treatment of coincident solutions.
+Formula \eqref{eq:su-n-dressed-vacuum-eigenvalue} is often the cleanest way
+to compare the algebraic Bethe ansatz, functional \(TQ/QQ\) systems, and
+separation of variables.  The finite-dimensional transfer matrix is
+polynomial after all pole residues vanish; polynomiality, not a separate
+appeal to a formal Bethe equation, is the algebraic reason the spectrum is
+well-defined.
 
 \section{Worked SU(3) Configuration}
 
@@ -163,6 +409,8 @@ For \(SU(3)\) there are first-level roots \(u_j\) and second-level roots
   \label{eq:su3-first-level}\\
   1
   &=
+  \prod_{\substack{\beta=1\\ \beta\neq\alpha}}^{M_2}
+  \frac{v_\alpha-v_\beta+\ii}{v_\alpha-v_\beta-\ii}
   \prod_{j=1}^{M_1}
   \frac{v_\alpha-u_j-\ii/2}{v_\alpha-u_j+\ii/2}.
   \label{eq:su3-second-level}
@@ -193,12 +441,51 @@ For the first root \(u_2\), the right side of
   z\,z^{-1}=1,
 \]
 and the left side is \(z^6=1\).  The equation for \(u_1\) is the inverse of
-the same equality.  The energy is
+the same equality.  The energy is \(E=2\).  This example is deliberately
+small: every phase can be checked exactly, and the second-level root is
+essential even though it carries no direct energy.
+
+\section{Trigonometric Nesting}
+
+The relativistic sine-Gordon and affine-Toda families use trigonometric
+matrix parts rather than the rational \(R(u)=u+\ii P\).  A convenient
+\(\mathfrak{sl}_N\) trigonometric normalization is
 \[
-  E=2\frac{1}{3/4+1/4}=2 .
+\begin{aligned}
+  R_\eta(u)
+  &=
+  \sinh(u+\eta)\sum_a E_{aa}\otimes E_{aa}
+  +
+  \sinh u\sum_{a\ne b}E_{aa}\otimes E_{bb}
+\\
+  &\quad
+  +
+  \sinh\eta
+  \sum_{a\ne b}\ee^{\operatorname{sgn}(a-b)u}
+  E_{ab}\otimes E_{ba}.
+\end{aligned}
 \]
-This example is deliberately small: every phase can be checked exactly, and
-the second-level root is essential even though it carries no direct energy.
+It solves the Yang--Baxter equation and degenerates to the rational matrix
+after \(u,\eta\to0\) with \(u/\eta\) fixed, up to scalar normalization.  The
+nested pole-cancellation equations become
+\begin{equation}
+  \left(
+    \frac{\sinh(u_j^{(r)}+\frac{\eta}{2}\delta_{r1})}
+         {\sinh(u_j^{(r)}-\frac{\eta}{2}\delta_{r1})}
+  \right)^L
+  =
+  \prod_{s=1}^{N-1}
+  \prod_{\substack{k=1\\(s,k)\ne(r,j)}}^{M_s}
+  \frac{\sinh(u_j^{(r)}-u_k^{(s)}+\frac{\eta}{2}A_{rs})}
+       {\sinh(u_j^{(r)}-u_k^{(s)}-\frac{\eta}{2}A_{rs})}.
+  \label{eq:trigonometric-nested-bethe-cartan}
+\end{equation}
+The proof is the same recursive RTT proof as
+Theorem~\ref{thm:recursive-nested-bethe-origin}, with rational functions
+replaced by hyperbolic functions.  The scalar factor multiplying
+\(R_\eta\) is not fixed by the Yang--Baxter equation; in a relativistic QFT it
+is fixed separately by unitarity, crossing, bound-state residues, and
+normalization of asymptotic states.
 
 \section{Relativistic SU(N)-Symmetric Scattering}
 
@@ -220,11 +507,12 @@ transfer-matrix eigenvalue:
   2\pi I_j .
   \label{eq:relativistic-nested-bethe-yang}
 \end{equation}
-The auxiliary roots \(\{u^{(r)}\}\) obey equations of the form
-\eqref{eq:su-n-nested-bethe}, with rapidity-dependent shifts determined by
-the matrix part \(\widehat R\).  The precise shift convention is part of the
-chosen \(S\)-matrix normalization; changing it is a reparametrization of
-auxiliary rapidities, not a change of physical content.
+The auxiliary roots \(\{u^{(r)}\}\) obey rational or trigonometric equations
+of the form \eqref{eq:su-n-nested-bethe-cartan} or
+\eqref{eq:trigonometric-nested-bethe-cartan}, with the map from physical
+rapidity \(\theta\) to auxiliary spectral parameter determined by
+\(\widehat R\).  Changing this map by a meromorphic reparametrization changes
+the displayed coordinate form but not the transfer-matrix eigenvalue.
 
 \begin{controlledapproximation}[Large-volume Bethe--Yang regime]
 \label{ca:matrix-bethe-yang-large-volume}
@@ -235,6 +523,38 @@ exponentially small in \(mL\) for a massive theory without massless channels,
 provided no bound-state pole is pinched by the finite-volume contour.  Power
 corrections and wrapping corrections require the TBA or mirror-channel
 formalism of later chapters.
+\end{controlledapproximation}
+
+\section{Nested Strings and Thermodynamic Input}
+
+In a thermodynamic limit the roots of nested equations often organize into
+strings.  In the rational normalization, an \(m\)-string at node \(r\) with
+real center \(x\) has the asymptotic form
+\begin{equation}
+  u_{\ell}^{(r,m)}
+  =
+  x+\frac{\ii}{2}(m+1-2\ell)+\varepsilon_\ell(L),
+  \qquad \ell=1,\ldots,m,
+  \label{eq:nested-string-pattern}
+\end{equation}
+with \(\varepsilon_\ell(L)\to0\) in the regime where the string hypothesis is
+valid.  The string center becomes the variable in the thermodynamic density
+equations; the string length \(m\) and Dynkin node \(r\) become species
+labels.
+
+\begin{controlledapproximation}[Nested string hypothesis]
+\label{ca:nested-string-hypothesis}
+The replacement of finite-volume roots by exact string species is not a
+formal consequence of the Bethe equations alone.  It is a model-dependent
+thermodynamic hypothesis requiring control of singular strings, deviations
+\(\varepsilon_\ell(L)\), possible holes, and the order of limits.  When used
+below, the input is: for the thermodynamic states under consideration, all
+roots not on real physical rapidity lines can be partitioned into families of
+the form \eqref{eq:nested-string-pattern}, with deviations whose contribution
+to intensive free energy vanishes in the limit.  This is the precise
+assumption that converts the finite nested Bethe equations into the
+multi-species TBA equations of
+Chapter~\ref{ch:integrable-nested-tba-tq-separation-variables}.
 \end{controlledapproximation}
 
 \section{Principal Chiral Model and Gross--Neveu Families}
@@ -249,19 +569,51 @@ Bethe equations therefore contain physical rapidities together with auxiliary
 roots attached to the Dynkin diagram of the relevant symmetry algebra.
 
 The important conceptual point is that auxiliary roots are not additional
-particles in the Hilbert space.  They parametrize the internal wavefunction of
-a multiparticle state.  The energy and momentum are functions of the physical
-rapidities; the auxiliary roots enter by selecting the transfer-matrix
-eigenvalue that appears in the quantization condition.
+particles in the Hilbert space.  They parametrize the internal wavefunction
+of a multiparticle state.  The energy and momentum are functions of the
+physical rapidities; the auxiliary roots enter by selecting the
+transfer-matrix eigenvalue that appears in the quantization condition.
 
-\section{Status of Completeness and Continuum QFT}
+\section{Completeness and Its Precise Scope}
 
-For a finite chain, the algebraic Bethe ansatz constructs a large commuting
-family of operators and many simultaneous eigenvectors.  Showing that these
-vectors form a basis requires additional work.  For a continuum QFT the
-logical burden is larger: one must also prove that the finite-volume spectrum
-is approximated by the matrix Bethe--Yang equations in a controlled regime
-and then control the thermodynamic or infinite-volume limit.  This monograph
-therefore treats nested Bethe equations as exact algebraic data of the
-factorized scattering framework and states explicitly whenever a spectral
-completeness assertion is used as an additional theorem or assumption.
+\begin{quotedtheorem}[Generic finite-chain completeness]
+\label{qthm:generic-nested-bethe-completeness}
+For the inhomogeneous rational \(SU(N)\) fundamental chain with a generic
+diagonal twist whose eigenvalue ratios are not roots of unity, and with
+generic inhomogeneities, the nested Bethe equations have a set of admissible
+solutions whose Bethe vectors form a basis of \((\C^N)^{\otimes L}\).  The
+transfer-matrix spectrum is simple on a Zariski-open set of the twist and
+inhomogeneity parameters.
+\end{quotedtheorem}
+
+The theorem is a finite-dimensional algebraic statement.  It does not by
+itself prove completeness for the periodic homogeneous chain, because taking
+the twist to the identity and the inhomogeneities to equal values can create
+singular roots and degeneracies.  It also does not prove that a continuum QFT
+finite-volume Hamiltonian is approximated by matrix Bethe--Yang equations.
+For continuum use we therefore separate three assertions:
+\[
+\begin{array}{ll}
+\text{algebraic completeness} & \text{basis theorem for a finite transfer matrix,}\\
+\text{Bethe--Yang control} & \text{large-volume approximation to QFT levels,}\\
+\text{thermodynamic control} & \text{existence of the density/string limit.}
+\end{array}
+\]
+Each assertion has different hypotheses.  The monograph uses the generic
+finite-chain theorem as an algebraic guide, but it states explicitly whenever
+periodic homogeneous completeness, continuum spectral control, or the string
+hypothesis is being assumed rather than proved.
+
+\section{Interface with Later Volumes}
+
+The relativistic integrable-QFT use of nested TBA differs from planar
+gauge-theory integrability.  In the present volume, physical particles have
+relativistic dispersion \(E=m\cosh\theta\) and finite-size effects are
+organized by the mirror channel of a two-dimensional QFT.  In the planar
+\(\mathcal N=4\) SYM volume, magnons have a non-relativistic dispersion on a
+spin chain, wrapping effects arise from trace cyclicity and finite operator
+length, and the quantum spectral curve replaces the finite-rank Baxter
+polynomial by a system of analytic \(Q\)-functions.  The algebraic bridge is
+the RTT, nested monodromy, \(TQ\), \(QQ\), and Hirota logic developed here
+and in Chapter~\ref{ch:integrable-nested-tba-tq-separation-variables}; the
+physical interpretation is different.

@@ -6,9 +6,11 @@
 Diagonal TBA converts scalar Bethe--Yang equations into density and
 pseudoenergy equations.  Non-diagonal scattering adds auxiliary roots.  The
 thermodynamic limit then contains physical densities and magnonic auxiliary
-densities.  This chapter records the precise structure needed later for
-factorized relativistic models and for the planar gauge-theory integrability
-volume.
+densities.  This chapter develops the finite-dimensional functional
+relations that control those auxiliary roots: Baxter \(TQ\) equations,
+\(QQ\)-systems, Hirota \(T\)-systems, and separation of variables.  These are
+algebraic objects first; their use in a continuum QFT requires the separate
+large-volume and thermodynamic hypotheses stated below.
 
 \section{Nested Densities}
 
@@ -104,7 +106,7 @@ uniform form
 where the energy is \(E_a\) on physical labels and \(0\) on auxiliary labels.
 The entropy density of one fermionic occupancy species is
 \[
-  s_A=(n_A^t\log n_A^t-n_A\log n_A-n_A^h\log n_A^h),
+  s_A=n_A^t\log n_A^t-n_A\log n_A-n_A^h\log n_A^h,
 \]
 so, using \(n_A^h=n_A^t-n_A\),
 \[
@@ -155,8 +157,8 @@ auxiliary labels, and substituting the definitions of
 
 \section{Constant A2 Magnonic Example}
 
-The ultraviolet limit of many nested systems reduces to constant equations for
-the plateau values \(Y_A=\ee^{\epsilon_A}\).  A minimal \(A_2\) magnonic
+The ultraviolet limit of many nested systems reduces to constant equations
+for the plateau values \(Y_A=\ee^{\epsilon_A}\).  A minimal \(A_2\) magnonic
 example has two auxiliary nodes and incidence matrix
 \[
   I_{rs}=
@@ -180,6 +182,61 @@ central-charge evaluations.  To turn it into a central-charge theorem for a
 specific QFT one must also justify the scaling limit, the kernel reduction to
 the constant Y-system, and the absence or subtraction of bulk-energy terms.
 
+\section{An SU(3) Nested Density System}
+
+The finite \(SU(3)\) equations
+\eqref{eq:su3-first-level}--\eqref{eq:su3-second-level} give a useful
+nontrivial density example.  Define
+\[
+  \varphi_\alpha(u)
+  =
+  \ii\log\frac{u+\ii\alpha}{u-\ii\alpha},
+  \qquad
+  a_\alpha(u)=\frac{1}{2\pi}\varphi_\alpha'(u)
+  =
+  \frac{1}{2\pi}\frac{2\alpha}{u^2+\alpha^2}.
+\]
+The logarithmic branches are fixed continuously along the real root lines.
+For first-level roots \(u_j\) and second-level roots \(v_\alpha\), the
+counting functions may be chosen as
+\[
+\begin{aligned}
+  Z_u(u)
+  &=
+  L\varphi_{1/2}(u)
+  -\sum_k\varphi_1(u-u_k)
+  +\sum_\beta\varphi_{1/2}(u-v_\beta),\\
+  Z_v(v)
+  &=
+  -\sum_\beta\varphi_1(v-v_\beta)
+  +\sum_j\varphi_{1/2}(v-u_j).
+\end{aligned}
+\]
+Differentiating and passing to densities gives
+\begin{align}
+  \rho+\rho^h
+  &=
+  a_{1/2}-a_1*\rho+a_{1/2}*\sigma ,
+  \label{eq:su3-nested-density-first}\\
+  \sigma+\sigma^h
+  &=
+  a_{1/2}*\rho-a_1*\sigma .
+  \label{eq:su3-nested-density-second}
+\end{align}
+The signs are not arbitrary: they are the logarithmic derivatives of the
+same-level scattering factors and adjacent-node inverse factors in
+\eqref{eq:su3-first-level}--\eqref{eq:su3-second-level}.  If
+\(\widehat f(\omega)=\int_\R \ee^{\ii\omega u}f(u)\,\dd u\), then
+\[
+  \widehat a_\alpha(\omega)=\ee^{-\alpha|\omega|},
+\]
+so the coupled linear density constraints are diagonalized in Fourier space.
+This elementary calculation is the finite-rank shadow of the nested TBA
+kernel manipulations used in principal chiral and Gross--Neveu models: the
+Cartan matrix controls which auxiliary species couple, while the analytic
+input lies in the physical scalar factors and in the thermodynamic string
+hypothesis.
+
 \section{Baxter TQ Relation}
 
 For the \(XXX_{1/2}\) transfer eigenvalue
@@ -198,12 +255,15 @@ relation
   \label{eq:xxx-baxter-tq}
 \end{equation}
 
-\begin{remark}[Bethe equations from the \(TQ\) relation]
-\label{rem:tq-pole-bethe-equations}
+\begin{proposition}[Bethe equations from the \(TQ\) relation]
+\label{prop:tq-pole-bethe-equations}
 Let \(Q(u)=\prod_j(u-u_j)\) have simple roots.  Equation
 \eqref{eq:xxx-baxter-tq} has a polynomial \(\Lambda(u)\) if and only if the
 roots \(u_j\) obey the \(XXX_{1/2}\) Bethe equations
 \eqref{eq:aba-xxx-bethe-equations}.
+\end{proposition}
+
+\begin{proof}
 If \(\Lambda\) is polynomial, evaluating \eqref{eq:xxx-baxter-tq} at
 \(u=u_j\) gives
 \[
@@ -222,32 +282,243 @@ the displayed equality is precisely
 \eqref{eq:aba-xxx-bethe-equations}.  Conversely, if the Bethe equations hold,
 the numerator on the right side of \eqref{eq:xxx-baxter-tq} vanishes at every
 root of \(Q\), so division by \(Q\) produces a polynomial \(\Lambda\).
-\end{remark}
+\end{proof}
 
-For higher-rank symmetry, \(Q\)-functions are attached to nodes of the Dynkin
-diagram, and the scalar \(TQ\) relation is replaced by a system of functional
-relations.  The simplest form is a \(T\)-system or Hirota equation
+\section{QQ-System and Bäcklund Flow}
+
+For higher-rank systems it is more efficient to work with a family of
+Q-functions indexed by subsets.  Let \(I=\{1,\ldots,N\}\).  For every subset
+\(A\subset I\) introduce a meromorphic function \(Q_A(u)\), with
+\(Q_\varnothing(u)=1\).  Write
 \[
-  T_{a,s}(u+\tfrac{\ii}{2})T_{a,s}(u-\tfrac{\ii}{2})
+  f^{\pm}(u)=f\!\left(u\pm\frac{\ii}{2}\right).
+\]
+The rational \(\mathfrak{gl}_N\) QQ-system is
+\begin{equation}
+  Q_{Aab}(u)Q_A(u)
+  =
+  Q_{Aa}^{+}(u)Q_{Ab}^{-}(u)
+  -
+  Q_{Aa}^{-}(u)Q_{Ab}^{+}(u),
+  \label{eq:qq-system}
+\end{equation}
+for \(a,b\notin A\), \(a\ne b\).  Here \(Aa=A\cup\{a\}\) and
+\(Aab=A\cup\{a,b\}\).  Repeated use of \eqref{eq:qq-system} reconstructs
+all multi-index Q-functions from a flag of one-index functions together with
+normalization data.  Moving from \(Q_A\) to \(Q_{Aa}\) is the functional form
+of a Bäcklund step: one removes one simple color direction from the auxiliary
+problem, exactly as the nested monodromy removes one residual color space at
+each level.
+
+\begin{proposition}[Determinantal solution of the QQ-system]
+\label{prop:determinantal-qq-solution}
+Let \(q_1(u),\ldots,q_N(u)\) be functions for which the determinants below
+are defined.  For an ordered subset \(A=\{a_1<\cdots<a_m\}\), set
+\[
+  Q_A(u)
+  =
+  \det_{1\le r,s\le m}
+  q_{a_r}^{[m+1-2s]}(u),
+  \qquad
+  f^{[k]}(u)=f\!\left(u+\frac{\ii k}{2}\right),
+\]
+and \(Q_\varnothing=1\).  Then the functions \(Q_A\) obey
+\eqref{eq:qq-system}.
+\end{proposition}
+
+\begin{proof}
+Fix \(A\) of size \(m\) and two indices \(a,b\notin A\).  Form the
+\((m+2)\times(m+2)\) matrix whose columns are the shifted columns
+corresponding to \(A,a,b\).  Apply the Desnanot--Jacobi identity to the
+minor obtained by deleting the two columns associated with the outer shifts.
+With the shifts ordered as \(m+2,m,\ldots,-m,-m-2\), the four minors are
+precisely \(Q_{Aab}Q_A\), \(Q_{Aa}^{+}Q_{Ab}^{-}\), and
+\(Q_{Aa}^{-}Q_{Ab}^{+}\), with the relative sign fixed by the column order.
+This gives \eqref{eq:qq-system}.  The identity is purely determinant
+algebra; no analytic assumption on the \(q_i\)'s is used beyond existence of
+the displayed values.
+\end{proof}
+
+\section{Fusion and the Hirota T-System}
+
+The transfer matrix with a fundamental auxiliary space is only the first
+member of a fused family.  In a rational \(SU(N)\) chain, one obtains
+commuting transfer matrices \(T_{a,s}(u)\) by taking auxiliary spaces whose
+highest weights are rectangular Young diagrams: \(a\) rows and \(s\) columns,
+with \(1\le a\le N-1\) and \(s\ge0\).  Fusion is implemented by projecting
+products of fundamental monodromies at shifted spectral parameters onto the
+corresponding irreducible auxiliary component.  The Yang--Baxter equation
+ensures that the projected transfer matrices commute.
+
+The local functional identity is the Hirota equation
+\begin{equation}
+  T_{a,s}^{+}(u)T_{a,s}^{-}(u)
   =
   T_{a+1,s}(u)T_{a-1,s}(u)
   +
   T_{a,s+1}(u)T_{a,s-1}(u),
-\]
-with boundary conditions determined by the representation and by the physical
-model.  The associated Y-functions are ratios of neighboring \(T\)'s.  These
-functional equations organize both relativistic nested TBA systems and the
-mirror-TBA/Y-system machinery used later in planar gauge theory.
+  \label{eq:nested-hirota-t-system}
+\end{equation}
+with boundary data \(T_{0,s}=T_{a,0}=1\) in the simplest normalization and
+\(T_{N,s}\) fixed by the quantum determinant.  The precise boundary factors
+depend on twist, inhomogeneity, and representation; the local bilinear
+identity is the invariant content.
 
-\section{Q-Operators and Separation Variables}
+\begin{proposition}[Hirota from Pluecker identities]
+\label{prop:hirota-from-pluecker}
+Suppose the fused eigenvalues \(T_{a,s}\) are written in a Wronskian gauge as
+minors of a matrix of shifted Q-functions.  Then
+\eqref{eq:nested-hirota-t-system} follows from the Pluecker relation among
+adjacent minors.
+\end{proposition}
+
+\begin{proof}
+In the Wronskian gauge, \(T_{a,s}\) is an \(a\times a\) minor whose columns
+are shifts separated by \(\ii\).  The shifts of \(T_{a,s}^{+}\) and
+\(T_{a,s}^{-}\) differ by moving the left and right boundary columns of this
+minor outward.  The Desnanot--Jacobi identity for the corresponding
+\((a+1)\times(a+1)\) matrix states that the product of the two adjacent
+\(a\times a\) minors equals the product of the inner and outer minors plus
+the product of the two side minors.  These four minors are, respectively,
+\(T_{a,s}^{+}T_{a,s}^{-}\),
+\(T_{a+1,s}T_{a-1,s}\), and \(T_{a,s+1}T_{a,s-1}\).  This is exactly
+\eqref{eq:nested-hirota-t-system}.
+\end{proof}
+
+The associated Y-functions are gauge-invariant ratios of neighboring
+T-functions:
+\begin{equation}
+  Y_{a,s}(u)
+  =
+  \frac{T_{a,s+1}(u)T_{a,s-1}(u)}
+       {T_{a+1,s}(u)T_{a-1,s}(u)}.
+  \label{eq:t-to-y-definition}
+\end{equation}
+Using Hirota gives the local Y-system identity
+\begin{equation}
+  Y_{a,s}^{+}(u)Y_{a,s}^{-}(u)
+  =
+  \frac{(1+Y_{a,s+1})(1+Y_{a,s-1})}
+       {(1+Y_{a+1,s}^{-1})(1+Y_{a-1,s}^{-1})},
+  \label{eq:hirota-to-y-system}
+\end{equation}
+where all functions are evaluated at \(u\) unless shifted.  This is an
+algebraic identity once the same Hirota gauge is used at the four adjacent
+nodes; analytic continuation, strip domains, source terms, and asymptotics
+are additional model-specific data.
+
+\section{Q-Operators}
 
 A \(Q\)-operator is an operator-valued function \(Q(u)\) commuting with the
 transfer matrix and satisfying an operator \(TQ\) relation whose eigenvalue
-version is \eqref{eq:xxx-baxter-tq}.  Constructing \(Q(u)\) requires extra
-auxiliary representations; the construction is model-dependent.  The
-important logical point is that the Bethe roots are zeros of an eigenvalue of
-an operator.  Their status comes from the spectral problem of the transfer
-matrix.
+version is \eqref{eq:xxx-baxter-tq}.  Operator construction requires an
+auxiliary representation in which the trace, or a regulated trace, is
+defined.  In rank one this can be described as follows.
+
+\begin{construction}[Rank-one Baxter operator datum]
+\label{con:rank-one-q-operator-datum}
+Let \(\mathcal A\) be an auxiliary representation of the RTT algebra for the
+same \(R\)-matrix, not necessarily finite dimensional.  Let
+\(\mathcal L_{\mathcal A,j}(u)\in
+\operatorname{End}(\mathcal A\otimes\C^2_j)\) satisfy the mixed RTT relation
+with the fundamental \(L\)-operator.  If the regularized auxiliary trace
+\[
+  Q(u)=\operatorname{Tr}_{\mathcal A}^{\rm reg}
+  \bigl(
+    \mathcal L_{\mathcal A,L}(u)\cdots
+    \mathcal L_{\mathcal A,1}(u)
+  \bigr)
+\]
+exists and is cyclic on the products used in the RTT proof, then
+\([Q(u),t(v)]=0\).  If the tensor product of the fundamental auxiliary space
+with \(\mathcal A\) has a short exact sequence whose quotient and submodule
+shift the spectral parameter by \(\pm\ii\), the transfer-matrix trace over
+that sequence gives the operator \(TQ\) relation.
+\end{construction}
+
+\begin{theorem}[Exact-sequence proof of an operator \(TQ\) relation]
+\label{thm:exact-sequence-tq-proof}
+Assume the data of Construction~\ref{con:rank-one-q-operator-datum}.  Assume
+further that, for every spectral parameter \(u\), there is a short exact
+sequence of auxiliary RTT modules
+\begin{equation}
+  0\longrightarrow
+  \mathcal A(u-\ii)
+  \stackrel{\iota}{\longrightarrow}
+  \C^2(u)\otimes\mathcal A(u)
+  \stackrel{\pi}{\longrightarrow}
+  \mathcal A(u+\ii)
+  \longrightarrow0 ,
+  \label{eq:q-operator-short-exact-sequence}
+\end{equation}
+and that the corresponding monodromy on
+\(\C^2(u)\otimes\mathcal A(u)\otimes\mathcal H_L\) is block triangular in a
+basis adapted to \(\iota,\pi\), with diagonal blocks
+\(a(u)\,M_{\mathcal A}(u-\ii)\) and
+\(d(u)\,M_{\mathcal A}(u+\ii)\).  Then
+\begin{equation}
+  t(u)\,Q(u)
+  =
+  a(u)Q(u-\ii)+d(u)Q(u+\ii)
+  \label{eq:operator-tq-from-exact-sequence}
+\end{equation}
+as operators on the quantum chain.
+\end{theorem}
+
+\begin{proof}
+The product \(t(u)Q(u)\) is the regularized trace over
+\(\C^2(u)\otimes\mathcal A(u)\) of the product monodromy, because the mixed
+RTT relation permits the fundamental and auxiliary monodromies to be ordered
+inside one common auxiliary trace.  Adapt the auxiliary vector space to the
+short exact sequence \eqref{eq:q-operator-short-exact-sequence}.  The
+monodromy matrix is block triangular, hence its trace is the sum of the
+traces of the two diagonal blocks.  The scalar diagonal factors are exactly
+the vacuum propagation factors \(a(u)\) and \(d(u)\), while the remaining
+block traces are the regularized traces defining \(Q(u-\ii)\) and
+\(Q(u+\ii)\).  Cyclicity of the regularized trace is the only analytic input
+in this finite-chain argument.  This gives
+\eqref{eq:operator-tq-from-exact-sequence}.
+\end{proof}
+
+The construction displays the logical ingredients rather than hiding them in
+the phrase ``Baxter operator'': a mixed RTT relation, a trace functional with
+cyclicity, and an exact sequence of auxiliary representations.  In rational
+finite chains one may realize \(\mathcal A\) as a limiting highest-weight
+module.  In trigonometric rank-one chains one uses a q-oscillator Fock
+module.  For \(q\in\C^\times\) not a root of unity, one convenient
+q-oscillator algebra is generated by \(D,\mathsf a,\mathsf a^\dagger\) with
+\[
+  q^D\mathsf a q^{-D}=q^{-1}\mathsf a,\qquad
+  q^D\mathsf a^\dagger q^{-D}=q\mathsf a^\dagger,\qquad
+  \mathsf a^\dagger\mathsf a=1-q^{2D},\qquad
+  \mathsf a\mathsf a^\dagger=1-q^{2D+2}.
+\]
+On the Fock module \(\mathcal F=\bigoplus_{n\ge0}\C\ket n\),
+\[
+  D\ket n=n\ket n,\qquad
+  \mathsf a\ket n=(1-q^{2n})\ket{n-1},\qquad
+  \mathsf a^\dagger\ket n=\ket{n+1}.
+\]
+The regularized trace is first defined by
+\[
+  \operatorname{Tr}^{\rm reg}_{\mathcal F}(X)
+  =
+  \operatorname*{mer.cont.}_{z=1}\operatorname{Tr}_{\mathcal F}(z^D X),
+  \qquad |z|<1,
+\]
+whenever the meromorphic continuation exists and is finite after the scalar
+normalization of the \(Q\)-operator has been fixed.  The q-oscillator
+\(L\)-operator is the image of the same six-vertex RTT algebra in this Fock
+module; verifying the construction means checking three concrete statements:
+the mixed RTT relation, cyclicity of the regularized trace on the monodromy
+products, and the short exact sequence
+\eqref{eq:q-operator-short-exact-sequence}.  Once these are checked, the
+operator identity \eqref{eq:operator-tq-from-exact-sequence} is a theorem of
+block-triangular algebra plus the stated trace regularization.  The
+eigenvalue statement used in this chapter is the consequence of this
+construction, not its replacement.
+
+\section{Separation of Variables}
 
 Separation of variables uses a different complete set of commuting objects.
 For the \(2\times2\) monodromy
@@ -258,36 +529,181 @@ For the \(2\times2\) monodromy
     C(u)&D(u)
   \end{pmatrix},
 \]
-one diagonalizes the commuting family \(B(u)\) in a representation where this
-is possible.  If
+RTT implies \([B(u),B(v)]=0\).  Suppose we are in a finite-dimensional
+representation for which the commuting coefficients of \(B(u)\) are
+simultaneously diagonalizable with simple joint spectrum.  On a joint
+eigenvector,
 \[
-  B(u)=B_0\prod_{\alpha=1}^{L-1}(u-x_\alpha)
+  B(u)=B_0\prod_{\alpha=1}^{L-1}(u-x_\alpha).
 \]
-on a separated eigenvector, the variables \(x_\alpha\) are separated
-coordinates.  The transfer-matrix eigenvalue problem becomes a finite
-difference equation in each \(x_\alpha\), whose one-variable form is the
-Baxter equation.  The advantage is that a pseudovacuum need not exist.  The
-cost is that the functional-analytic construction of the separated basis is
-more delicate and depends on the representation.
+The numbers \(x_\alpha\) are separated coordinates.
 
-\begin{openproblem}[Completeness beyond the pseudovacuum construction]
-\label{op:bethe-completeness-sov}
-Develop, for each integrable QFT family used in this monograph, a precise
-finite-volume Hilbert-space theorem comparing algebraic Bethe ansatz,
-\(Q\)-operator, and separation-of-variables bases.  The theorem should state
-the representation space, boundary conditions, allowed singular roots, and the
-topology in which the large-volume limit is taken.
-\end{openproblem}
+\begin{theorem}[Finite-chain SoV reduction under simple-spectrum hypotheses]
+\label{thm:sov-baxter-reduction}
+Assume the coefficients of \(B(u)\) have a simple joint eigenbasis
+\(\{\ket{\boldsymbol x}\}\), and assume the RTT relations act on that basis
+by shifting one separated coordinate at a time.  Then a transfer-matrix
+eigenvector with wavefunction
+\(\Psi(\boldsymbol x)=\langle\boldsymbol x|\Psi\rangle\) satisfies, for each
+\(\alpha=1,\ldots,L-1\), a one-variable Baxter equation
+\begin{equation}
+  \Lambda(x_\alpha)\Psi(\boldsymbol x)
+  =
+  a(x_\alpha)\Psi(\boldsymbol x-\ii e_\alpha)
+  +
+  d(x_\alpha)\Psi(\boldsymbol x+\ii e_\alpha),
+  \label{eq:sov-coordinate-baxter}
+\end{equation}
+where \(a(u)\) and \(d(u)\) are the vacuum diagonal eigenvalue functions of
+\(A(u)\) and \(D(u)\), and \(e_\alpha\) shifts only the coordinate
+\(x_\alpha\).
+\end{theorem}
 
-\section{Interface with Later Volumes}
+\begin{proof}
+At a zero \(x_\alpha\) of \(B(u)\), the RTT relations imply that \(A(x_\alpha)\)
+and \(D(x_\alpha)\) map a joint \(B\)-eigenvector to vectors whose \(B\)-zeros
+are the same except for the single shifted coordinate
+\(x_\alpha\mapsto x_\alpha-\ii\) or \(x_\alpha\mapsto x_\alpha+\ii\),
+respectively.  This follows by commuting \(B(v)\) through \(A(x_\alpha)\) and
+\(D(x_\alpha)\) and then using \(B(x_\alpha)\ket{\boldsymbol x}=0\).  Acting
+with \(t(u)=A(u)+D(u)\) on an eigenvector and evaluating at \(u=x_\alpha\)
+therefore gives exactly \eqref{eq:sov-coordinate-baxter}.  The simple-spectrum
+hypothesis ensures that the shifted vectors are identified by their separated
+coordinates rather than by a nontrivial Jordan block.
+\end{proof}
 
-The relativistic integrable-QFT use of nested TBA differs from planar
-gauge-theory integrability.  In the present volume, physical particles have
-relativistic dispersion \(E=m\cosh\theta\) and finite-size effects are
-organized by the mirror channel of a two-dimensional QFT.  In the planar
-\(\mathcal N=4\) SYM volume, magnons have a non-relativistic dispersion on a
-spin chain, wrapping effects arise from trace cyclicity and finite operator
-length, and the quantum spectral curve replaces the finite-rank Baxter
-polynomial by a system of analytic \(Q\)-functions.  The algebraic bridge is
-the same RTT, transfer-matrix, and \(TQ\) logic developed here; the physical
-interpretation is different.
+When both the algebraic Bethe ansatz and SoV are valid, the Bethe polynomial
+\(Q(u)\) is the one-variable factor whose values solve
+\eqref{eq:sov-coordinate-baxter} at every separated coordinate.  The
+pseudovacuum construction builds eigenvectors from zeros of \(Q\); SoV builds
+the same spectral problem by diagonalizing \(B(u)\).  Their equality is not a
+slogan about roots: it is a comparison theorem between two bases of the same
+finite-dimensional representation.
+
+\begin{theorem}[Finite-chain ABA--Q--SoV comparison, scoped form]
+\label{thm:aba-q-sov-comparison-scoped}
+For a finite rational \(SU(2)\) chain with generic diagonal twist and generic
+inhomogeneities, assume the following finite-dimensional properties:
+\begin{enumerate}
+\item the transfer matrix has simple spectrum;
+\item the algebraic Bethe ansatz produces one nonzero Bethe vector for every
+transfer eigenvalue;
+\item a Baxter \(Q\)-operator satisfying the operator \(TQ\) relation exists;
+\item the coefficients of \(B(u)\) have a simple SoV spectrum.
+\end{enumerate}
+Then the ABA Bethe roots, the zeros of the \(Q\)-operator eigenvalue, and the
+one-variable SoV Baxter wavefunction determine the same transfer-matrix
+eigenline.
+\end{theorem}
+
+\begin{proof}
+By the operator \(TQ\) relation, the eigenvalue \(Q_\Psi(u)\) of \(Q(u)\) on a
+transfer eigenvector \(\Psi\) satisfies \eqref{eq:xxx-baxter-tq} with the
+same \(\Lambda(u)\).  Proposition~\ref{prop:tq-pole-bethe-equations} says
+that the zeros of \(Q_\Psi\), when simple, obey the ABA Bethe equations.
+Assumption 2 then gives an ABA vector with the same transfer eigenvalue
+\(\Lambda\).  Simplicity of the transfer spectrum identifies the two vectors
+up to scalar.  The SoV wavefunction satisfies
+\eqref{eq:sov-coordinate-baxter}; the polynomial \(Q_\Psi\) gives a solution
+of each one-coordinate equation by evaluation at \(x_\alpha\).  Simplicity of
+the SoV joint spectrum identifies the resulting wavefunction with the same
+eigenline.  Thus all three constructions label the same line, under the
+stated hypotheses.
+\end{proof}
+
+\section{The SoV Measure Is Part of the Construction}
+
+The word ``measure'' in finite-chain SoV does not mean a Borel measure on a
+classical configuration space.  It is the weight in the resolution of the
+identity for a finite-dimensional joint spectral problem.  Let
+\(\mathcal X\) be the finite joint spectrum of the commuting coefficients of
+\(B(u)\), and let \(\ket{\boldsymbol x}\),
+\(\bra{\widetilde{\boldsymbol x}}\) be right and left eigenvectors normalized
+so that
+\[
+  \braket{\widetilde{\boldsymbol x}}{\boldsymbol y}=0
+  \qquad(\boldsymbol x\ne\boldsymbol y).
+\]
+If the joint spectrum is simple and complete, define
+\[
+  \mu(\boldsymbol x)
+  =
+  \braket{\widetilde{\boldsymbol x}}{\boldsymbol x}^{-1}.
+\]
+Then
+\begin{equation}
+  \id_{\mathcal H}
+  =
+  \sum_{\boldsymbol x\in\mathcal X}
+  \mu(\boldsymbol x)
+  \ket{\boldsymbol x}\bra{\widetilde{\boldsymbol x}} .
+  \label{eq:sov-resolution-identity}
+\end{equation}
+For two vectors \(\Phi,\Psi\), their scalar product is therefore
+\[
+  \braket{\Phi}{\Psi}
+  =
+  \sum_{\boldsymbol x\in\mathcal X}
+  \mu(\boldsymbol x)\,
+  \braket{\Phi}{\boldsymbol x}
+  \braket{\widetilde{\boldsymbol x}}{\Psi},
+\]
+with the obvious conjugations when the left basis is chosen as the Hermitian
+dual of the right basis in a unitary representation.  In concrete
+inhomogeneous spin chains this weight can be written as a determinant or
+Vandermonde-type product.  That explicit formula is representation-dependent,
+but \eqref{eq:sov-resolution-identity} is the invariant finite-dimensional
+statement.
+
+\begin{proposition}[Baxter product wavefunctions]
+\label{prop:sov-product-wavefunction}
+Under the hypotheses of Theorem~\ref{thm:sov-baxter-reduction}, suppose a
+function \(Q(u)\) solves the one-variable Baxter equation at every separated
+coordinate value appearing in \(\mathcal X\).  Then
+\[
+  \Psi_Q(\boldsymbol x)=\prod_{\alpha=1}^{L-1}Q(x_\alpha)
+\]
+solves the separated transfer-matrix eigenvalue equations on
+\(\mathcal X\).  Conversely, if the separated spectrum is a Cartesian product
+of one-coordinate spectra and the one-coordinate Baxter equation has a
+one-dimensional solution space after the boundary conditions are imposed,
+then every separated eigenfunction factorizes in this form.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:sov-coordinate-baxter} shifts only one coordinate.  If
+\(\Psi_Q=\prod_\beta Q(x_\beta)\), the common factors
+\(\prod_{\beta\ne\alpha}Q(x_\beta)\) cancel from the \(\alpha\)-th separated
+equation, leaving exactly the one-variable Baxter equation for \(Q\) at
+\(x_\alpha\).  Conversely, on a Cartesian separated spectrum the equations
+for different coordinates commute and act on distinct variables.  The stated
+one-dimensionality of the one-coordinate solution space fixes each factor up
+to a scalar; the product of those scalars is one overall normalization of
+the eigenvector.
+\end{proof}
+
+\section{Continuum Status}
+
+The finite-chain comparison theorem does not close the continuum QFT problem.
+For a relativistic integrable QFT one must additionally prove that
+finite-volume energy levels are approximated by matrix Bethe--Yang equations
+in the large-\(L\) regime, that the nested string hypothesis used in
+Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang} is valid
+for the thermodynamic states under consideration, and that the integral
+operators in the TBA equations have the required analytic and Fredholm
+properties.  These are model-dependent mathematical statements.  They are not
+part of the finite RTT algebra, and this monograph keeps them separate from
+the algebraic construction.
+
+\section{Interface with Planar Gauge-Theory Integrability}
+
+In the planar \(\mathcal N=4\) SYM volume, magnons have a non-relativistic
+dispersion on a spin chain, wrapping effects arise from trace cyclicity and
+finite operator length, and the quantum spectral curve replaces the
+finite-rank Baxter polynomial by a system of analytic \(Q\)-functions.  The
+algebraic bridge is now explicit: the Q-system
+\eqref{eq:qq-system}, the Hirota equation
+\eqref{eq:nested-hirota-t-system}, and the \(TQ\)/SoV comparison theorems of
+this chapter are the finite-rank prototypes.  Planar gauge theory changes the
+analytic domain, asymptotics, grading, and boundary conditions; it does not
+change the local determinant identities.
