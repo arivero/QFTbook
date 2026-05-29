@@ -8,14 +8,16 @@
 ## Manuscript Changes
 
 - `monograph/tex/volumes/volume_i/chapter08_scalar_path_integrals_and_euclidean_green_functions.tex`
-  now contains Proposition `prop:scalar-regulator-trotter-status`.
-- The proposition states the precise finite-dimensional regulator hypotheses
+  now contains a finite-dimensional Schrödinger-regulator criterion.
+- The paragraph states the precise finite-dimensional regulator hypotheses
   under which Chapter 4's Trotter--Kato/Feynman--Kac theorem applies:
   `E_\Lambda\simeq\mathbb R^{M_\Lambda}`, positive constant-coefficient
   kinetic quadratic form, and a locally Kato bounded-below potential
   `U_\Lambda` defining a closed semibounded Friedrichs form.
-- The proof reduces the regulator Hamiltonian to the finite-dimensional
-  Schrödinger theorem of Chapter 4 by a linear change of variables.
+- The accompanying explanation reduces the regulator Hamiltonian to the
+  finite-dimensional Schrödinger theorem of Chapter 4 by a linear change of
+  variables.  This is deliberately not presented as an independent proposition:
+  the mathematical theorem is the Chapter 4 Trotter--Kato/Feynman--Kac result.
 - The chapter now names finite spatial lattices in finite boxes and genuine
   finite-mode stable polynomial truncations as examples where the theorem can
   be invoked.

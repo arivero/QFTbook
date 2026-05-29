@@ -208,13 +208,12 @@ finite-dimensional construction of
 Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.
 \end{definition}
 
-The following proposition records the precise finite-dimensional regulator
-class for which the Trotter theorem may be imported.
-
-\begin{proposition}[Finite-dimensional Schr\"odinger regulators inherit Trotter--Kato]
-\label{prop:scalar-regulator-trotter-status}
-Assume that the spatial regulator \(\Lambda\) has the following properties.
-The configuration space is a finite-dimensional real vector space
+\paragraph{Finite-dimensional Schr\"odinger regulators and Trotter--Kato.}
+The finite-dimensional Trotter--Kato and Feynman--Kac theorems recalled in
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals} apply to a
+spatial regulator only after the regulator has actually reduced the theory to a
+finite-dimensional Schr\"odinger problem.  The regulator must have the following
+properties.  The configuration space is a finite-dimensional real vector space
 \(E_\Lambda\simeq\mathbb R^{M_\Lambda}\), the kinetic energy is a positive
 constant-coefficient quadratic form in the conjugate momenta, and the
 Hamiltonian on \(L^2(E_\Lambda,\dd_\Lambda\varphi)\) is the Friedrichs
@@ -235,9 +234,8 @@ Hamiltonian associated to
 \]
 where \(G_\Lambda^{AB}\) is positive definite and
 \(U_\Lambda:E_\Lambda\to\mathbb R\) is locally Kato and bounded from below.
-Then the finite-dimensional Trotter--Kato and Feynman--Kac statements of
-Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals} apply to
-\(H_\Lambda\).  In particular, the Euclidean fixed-\(\Lambda\) transition
+Under these hypotheses the fixed-\(\Lambda\) transition kernels are exactly the
+objects governed by the finite-dimensional theorem: the Euclidean transition
 kernel is a Wiener or Brownian-bridge expectation on
 \(C([0,\tau],E_\Lambda)\) with potential weight
 \(\exp[-\int_0^\tau U_\Lambda(\Phi(s))\dd s]\), after the linear change of
@@ -251,27 +249,9 @@ degrees of freedom, nor by a formal rule that only modifies the propagator in
 a functional integral.  In those cases the phrase ``the Trotter limit for
 \(H_\Lambda\)'' has no content until the Hilbert space, domain, closed
 quadratic form, and limiting topology have been specified.
-\end{proposition}
 
-\begin{proof}
-Choose linear coordinates on \(E_\Lambda\) that diagonalize
-\(G_\Lambda^{AB}\) and absorb its eigenvalues into the coordinates.  The form
-\(Q_\Lambda\) is then the finite-dimensional Schr\"odinger form of
-Theorem~\ref{thm:wiener-feynman-kac-qm}, with \(\hbar=m=1\) after the chosen
-normalization.  Local Kato regularity and the lower bound on \(U_\Lambda\)
-give a closed semibounded form and hence a Friedrichs Hamiltonian.  The
-Trotter--Kato product formula and the Feynman--Kac representation are exactly
-the theorem of Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}
-applied to the finite-dimensional vector space \(E_\Lambda\).  Stable
-polynomial lattice and finite-mode potentials are smooth and bounded below,
-so they obey these hypotheses.  A continuum smooth cutoff with infinitely many
-remaining modes does not reduce the problem to a finite-dimensional
-Schr\"odinger operator; a separate constructive or perturbative definition is
-then required.
-\end{proof}
-
-Under the hypotheses of
-Proposition~\ref{prop:scalar-regulator-trotter-status}, the Lorentzian
+Under the finite-dimensional Schr\"odinger-regulator hypotheses just stated,
+the Lorentzian
 time-sliced kernels of
 Definition~\ref{def:finite-regulator-time-sliced-scalar-kernel} have the
 corresponding strong operator or distributional limits after smearing boundary
@@ -300,8 +280,7 @@ spacetime lattice action introduced directly, or a purely perturbative cutoff,
 the construction requires its own definition: a Gaussian measure with an
 interaction, a finite lattice integral, a transfer-matrix or Hamiltonian
 construction, a constructive limit, or a formal asymptotic expansion.
-At fixed finite-dimensional \(\Lambda\), the hypotheses of
-Proposition~\ref{prop:scalar-regulator-trotter-status} identify the
+At fixed finite-dimensional \(\Lambda\), the same hypotheses identify the
 time-sliced kernels with the Trotter products for the self-adjoint Hamiltonian
 \(H_\Lambda\).  The strong operator convergence acts on square-integrable
 wavefunctions.  Pairing the resulting operator kernel with Schwartz test

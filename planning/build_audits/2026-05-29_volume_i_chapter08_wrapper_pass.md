@@ -7,10 +7,11 @@ path-integral and Green-function chapter.
 
 ## Decisions
 
-- `prop:scalar-regulator-trotter-status` remains a proposition because it is a
-  precise conditional import of the finite-dimensional Trotter--Kato and
-  Feynman--Kac theorems.  Its title was changed to the positive formulation
-  "Finite-dimensional Schrödinger regulators inherit Trotter--Kato".
+- The finite-dimensional Schrödinger-regulator criterion was initially retained
+  as a proposition because it precisely records when the finite-dimensional
+  Trotter--Kato and Feynman--Kac theorems may be used.  A later proof-status
+  pass demoted it to framework prose because the theorem-level work is the
+  Chapter 4 theorem, not the matching of hypotheses in this chapter.
 - The zeta determinant scale-dependence formula was demoted to a worked
   paragraph.  The calculation is useful and remains fully displayed, but its
   proof is the Mellin-transform bookkeeping following from the determinant

@@ -155,9 +155,9 @@ Working framework:
 
 | Claim | Status | Certification |
 | --- | --- | --- |
-| The field path-integral kernel is obtained from time-sliced quantum mechanics only after choosing a finite-dimensional Schrödinger spatial regulator satisfying closed-form hypotheses. | Conditional theorem/application | Proposition `prop:scalar-regulator-trotter-status`; Chapter 4 theorem applied to \(E_\Lambda\) |
+| The field path-integral kernel is obtained from time-sliced quantum mechanics only after choosing a finite-dimensional Schrödinger spatial regulator satisfying closed-form hypotheses. | Conditional application of prior theorem | Finite-dimensional Schrödinger-regulator paragraph; Chapter 4 theorem applied to \(E_\Lambda\) |
 | Field-configuration eigenvectors are represented by functional delta distributions after a finite spatial regulator is imposed. | Framework construction | Direct regulated field-coordinate basis |
-| Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Proposition | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
+| Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Worked regulator classification | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
 | Continuum smooth cutoffs that leave infinitely many spatial modes, formal covariance cutoffs, and direct Euclidean spacetime lattice actions without transfer matrices do not inherit the finite-dimensional Trotter theorem. | Framework distinction | Chapter text requires separate Hilbert-space/domain/constructive/perturbative data |
 | The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory, and does not imply a Borel measure. | Framework statement | Regulator dependence stated explicitly; positive Borel measures restricted to some bosonic Euclidean scalar regimes |
 | In a finite-dimensional bosonic scalar regulator, \(D_\Lambda^{\rm ref}\phi\), \(\dd\mu_{C_\Lambda}\), and \(\dd\rho_{\Lambda,S}\) are distinct objects related by explicit Radon--Nikodym factors. | Definition | Definition `def:regulated-scalar-integration-conventions`; equations `eq:gaussian-reference-measure-from-density` and `eq:full-density-reference-versus-gaussian` |
@@ -206,16 +206,17 @@ Rendered check:
 
 ## Audit Notes
 
-- 2026-05-24, issue #299: added
-  `prop:scalar-regulator-trotter-status`, separating finite lattice/finite-mode
-  Schrödinger regulators from continuum smooth cutoffs, covariance cutoffs,
-  direct Euclidean spacetime lattice actions without transfer matrices, and
-  formal perturbative cutoffs.
+- 2026-05-24, issue #299: added the finite-dimensional Schrödinger-regulator
+  criterion separating finite lattice/finite-mode Schrödinger regulators from
+  continuum smooth cutoffs, covariance cutoffs, direct Euclidean spacetime
+  lattice actions without transfer matrices, and formal perturbative cutoffs.
 - 2026-05-29 anti-wrapper pass: retitled
-  `prop:scalar-regulator-trotter-status` as "Finite-dimensional
-  Schrödinger regulators inherit Trotter--Kato"; demoted the zeta determinant
-  scale-dependence calculation and free Feynman boundary-value pole tracking
-  to worked paragraphs.
+  the finite-dimensional Schrödinger-regulator criterion in positive language;
+  demoted it on the later proof-status pass from proposition to framework
+  paragraph because the mathematical work is the Chapter 4 Trotter--Kato
+  theorem.  The same pass demoted the zeta determinant scale-dependence
+  calculation and free Feynman boundary-value pole tracking to worked
+  paragraphs.
 - 2026-05-24, issue #300: added
   `tab:constructive-qft-status-catalog`, a named catalog of constructive
   scalar/gauge models, scalar triviality regimes, and the open four-dimensional

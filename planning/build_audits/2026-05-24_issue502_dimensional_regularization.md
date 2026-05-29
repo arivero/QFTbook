@@ -22,9 +22,12 @@
 - Stated the \(\gamma_5\) and Levi-Civita scheme data, including the
   Breitenlohner--Maison/'t Hooft--Veltman prescription and the
   dimensional-reduction bookkeeping used for anomaly calculations.
-- Added Proposition `prop:dimreg-st-control`, identifying locality of pole
-  parts, the local Slavnov--Taylor breaking cocycle, the exact-cohomology
-  counterterm restoration case, and the nonzero-cohomology anomaly obstruction.
+- Added the locality and Slavnov--Taylor control paragraph, identifying
+  locality of pole parts, the quantum-action-principle input that makes the
+  Slavnov--Taylor breaking a local cocycle, the exact-cohomology counterterm
+  restoration case, and the nonzero-cohomology anomaly obstruction.  A later
+  proof-status pass demoted this from proposition form because the theorem-level
+  content is the all-order restoration theorem with explicit hypotheses.
 - Separated regularization, renormalization, and operator-insertion/source
   regularization.
 

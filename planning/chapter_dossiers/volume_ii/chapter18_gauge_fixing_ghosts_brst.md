@@ -282,10 +282,11 @@
   \(D\)-dimensional \(\gamma_5\) prescription and directs the anomaly
   computation to the four-dimensional chiral data retained in the anomaly
   chapter.
-- Proposition `prop:dimreg-st-control` states the order-by-order
-  algebraic-renormalization control theorem needed here: pole parts of
-  superficially divergent subgraphs are local functionals of fields, sources,
-  and evanescent coordinates; the Slavnov--Taylor breaking is a local
+- The locality and Slavnov--Taylor control paragraph states the
+  algebraic-renormalization mechanism needed here without a separate
+  theorem-family wrapper: pole parts of superficially divergent subgraphs are
+  local functionals of fields, sources, and evanescent coordinates; the quantum
+  action principle identifies the Slavnov--Taylor breaking as a local
   ghost-number-one cocycle; exact cocycles are removed by local counterterms,
   while nonzero cohomology classes are gauge anomalies.
 - Theorem `thm:all-order-slavnov-taylor-restoration` states the all-order

@@ -597,6 +597,11 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Finite-lattice Wilson flow"
     r"|Leading heavy-quark center-breaking term"
     r"|Fermionic trace identity"
+    r"|Finite-dimensional Schr.*odinger regulators inherit Trotter--Kato"
+    r"|Finite-volume Lehmann representation"
+    r"|Locality and Slavnov--Taylor control"
+    r"|Spectral thresholds and first-sheet cuts"
+    r"|Cylinder variation of the reduced eta invariant"
     r"|Chern--Simons transgression under a finite gauge transformation"
     r"|Chern--Weil transgression"
     r")\b",
