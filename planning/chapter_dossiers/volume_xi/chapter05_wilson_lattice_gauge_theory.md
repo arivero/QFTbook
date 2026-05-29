@@ -45,6 +45,11 @@
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
   cancellation, with a companion CSV analysis script for effective-mass and
   Creutz-ratio extraction.
+- Glueball correlator matrices as finite transfer-matrix spectral objects,
+  including vacuum-subtracted gauge-invariant sources, cubic-channel
+  projection, exact finite-state GEVP extraction, a whitened residual
+  criterion for controlled time windows, and a companion GEVP analysis
+  script.
 - Wilson/gradient flow as a finite-dimensional ODE on the compact link
   manifold, including link-gradient definition, global existence,
   gauge covariance, action monotonicity, continuum linearized heat-kernel
@@ -99,6 +104,11 @@
 | \(W_S(n,m)\) | normalized rectangular Wilson loop in representation \(S\) |
 | \(V_{a,S}(n)\) | finite-cutoff static potential in a static-source sector |
 | \(\chi(n,m)\) | Creutz ratio |
+| \(O_i,\widetilde O_i\) | glueball time-slice source and its vacuum-subtracted version |
+| \(C_{ij}(n)\) | finite-lattice glueball correlator matrix |
+| \(Z_i^{(\alpha)}\) | source overlap with a transfer-matrix eigenvector |
+| \(\Lambda_\alpha(n,n_0)\) | generalized eigenvalue of the GEVP |
+| \(B(n,n_0)\) | whitened GEVP matrix \(C(n_0)^{-1/2}C(n)C(n_0)^{-1/2}\) |
 
 ## Claim Ledger
 
@@ -156,28 +166,33 @@
 17. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
-18. Wilson flow at finite lattice spacing is the negative-gradient ODE on
+18. Glueball spectroscopy at finite cutoff is a transfer-matrix spectral
+    problem for gauge-invariant time-slice sources.  In an exact finite-state
+    source subspace, the GEVP eigenvalues are exactly
+    \(e^{-a(n-n_0)E_\alpha}\); with higher-state contamination, a plateau
+    claim requires a residual bound after whitening by \(C(n_0)\).
+19. Wilson flow at finite lattice spacing is the negative-gradient ODE on
    \(G^E\); compactness gives global existence, gauge invariance gives
    covariance, and the chain rule gives
    \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
-19. Positive physical flow time damps ultraviolet Fourier modes in the
+20. Positive physical flow time damps ultraviolet Fourier modes in the
    linearized continuum equation, but flowed scale coordinates and topological
    charge plateaux acquire continuum meaning only after a scaling trajectory
    and a regulator-level topological-charge definition are specified.
-20. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
+21. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
    bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
    differential.
-21. For finite \(SU(3)\) Wilson links, the force
+22. For finite \(SU(3)\) Wilson links, the force
     \(Z_\mu(x;U)=-\frac13[U_\mu(x)C_\mu(x;U)]_{\mathfrak{su}(3)}\) is the
     left-gradient of the normalized plaquette score \(Q\), and the normalized
     score-flow equation satisfies
     \(\frac{d}{dt}Q(V_t)=\sum_{x,\mu}\|Z_\mu(x;V_t)\|^2\ge0\).
-22. The clover curvature \(F_{\mu\nu}^{\rm cl}\) transforms by conjugation at
+23. The clover curvature \(F_{\mu\nu}^{\rm cl}\) transforms by conjugation at
     its base point, so \(Q_{\rm clover}\), \(e_{\rm clover}\), and
     \(\max_p\|1-U_p\|\) are gauge-invariant finite-regulator diagnostics.
     They are not integer topological charges without a separate admissible
     geometric or index-theoretic construction.
-23. Chiral gauge theories require additional determinant-phase and anomaly
+24. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -189,6 +204,10 @@
   Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
   ratios from positive rectangular-loop data, including a sample-level
   correlated jackknife/bootstrap mode for CSV or HDF5 sampler output.
+- `qft_scripts/glueball_gevp_from_correlators.py --smoke`: finite
+  correlator-matrix GEVP analysis tool.  The smoke mode uses an exact
+  two-state transfer-matrix spectral matrix and verifies that whitening by
+  \(C(n_0)\) recovers the input energies.
 - `qft_scripts/su3_wilson_flow_hdf5.py --smoke`: finite \(SU(3)\)
   Wilson-score gradient-flow evolution for hot/cold links or HDF5
   checkpoints, with trajectory output when `h5py` is available.
@@ -241,6 +260,10 @@
   correlated delete-one jackknife errors for nonlinear Wilson-loop ratios;
   it also checks the HDF5 bridge from
   `measurements/wilson_loops[sample,R-1,T-1]`.
+- `calculation-checks/qcd_glueball_spectrum_checks.py` verifies the exact
+  finite GEVP trace/determinant invariants, large-\(N\) glueball counting,
+  and the cubic-group dimension split used in the glueball extraction
+  discussion.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -286,3 +309,7 @@
 - 2026-05-27 issue #631 pass: connected the static-potential analysis
   directly to the HDF5 SU(3) sampler dataset
   `measurements/wilson_loops[sample,R-1,T-1]`, with an HDF5 calculation check.
+- 2026-05-29 issue #631 pass: added a finite transfer-matrix GEVP treatment
+  for glueball correlator matrices, including exact finite-state extraction,
+  a whitened residual criterion, and a theorem-anchored correlator-matrix
+  analysis script.

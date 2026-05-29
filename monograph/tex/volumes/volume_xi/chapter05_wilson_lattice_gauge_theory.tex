@@ -1125,6 +1125,198 @@ Proposition~\ref{prop:correlated-delete-one-block-jackknife}.  The optional
 elementary error propagation in aggregate mode is only the independent-error
 algebra of the displayed logarithms.
 
+\section{Glueball Correlator Matrices and the GEVP}
+\label{sec:lattice-glueball-correlator-gevp}
+
+Pure Yang--Mills spectroscopy on a lattice begins with gauge-invariant
+time-slice operators, not with constituent gluons.  Fix a finite spatial
+lattice, a reflection-positive Euclidean-time regulator, and a symmetry
+channel \(\mathfrak c\) for the finite lattice symmetry group.  On a cubic
+lattice \(\mathfrak c\) may include an irreducible representation of the
+octahedral group, parity, and charge conjugation.  A glueball source in this
+channel is a gauge-invariant function \(O_i[U(\tau)]\) of the spatial links
+on a time slice, usually built from traced closed Wilson loops after
+smearing and projection to \(\mathfrak c\).  Its vacuum-subtracted version is
+\[
+  \widetilde O_i(\tau)
+  =
+  O_i(\tau)-\langle O_i\rangle_\Lambda .
+  \label{eq:lattice-glueball-vacuum-subtracted-source}
+\]
+The connected correlator matrix is
+\[
+  C_{ij}(n)
+  =
+  \langle \widetilde O_i(n a)\,
+  \widetilde O_j(0)^\dagger\rangle_\Lambda ,
+  \qquad n\in\mathbb Z_{\ge0}.
+  \label{eq:lattice-glueball-correlator-matrix}
+\]
+If the transfer matrix \(T=e^{-aH_\Lambda}\) exists in the sector selected
+by the channel, reflection positivity identifies vectors
+\(\psi_i=\widetilde O_i\Omega_\Lambda\) and gives
+\[
+  C_{ij}(n)=\langle \psi_i,T^n\psi_j\rangle .
+  \label{eq:lattice-glueball-transfer-matrix-correlator}
+\]
+Thus \(C(n)\) is a finite-regulator spectral object.  The continuum glueball
+statement is obtained only after the thermodynamic, continuum, and channel
+identification limits have been controlled.
+
+The spectral resolution in finite volume gives
+\[
+  C_{ij}(n)
+  =
+  \sum_{\alpha}
+  Z_i^{(\alpha)}\overline{Z_j^{(\alpha)}}\,
+  \lambda_\alpha^n,
+  \qquad
+  Z_i^{(\alpha)}=\langle\psi_i,\alpha\rangle ,
+  \qquad
+  \lambda_\alpha=e^{-aE_\alpha}.
+  \label{eq:volxi-glueball-spectral-matrix}
+\]
+The finite cubic channel is part of the regulator.  For example, a continuum
+\(J=0\) channel restricts to an \(A_1\) channel, while a continuum \(J=2\)
+channel restricts to the \(E\oplus T_2\) channels.  Degeneracy across the
+split lattice channels is therefore a continuum-restoration test, not an
+input to the finite calculation.
+
+\begin{proposition}[Exact finite-state GEVP extraction]
+\label{prop:lattice-glueball-exact-gevp}
+Let \(\mathcal S\) be an \(r\)-dimensional source space in a fixed finite
+lattice channel.  Suppose that, on this source space, the correlator matrix
+has the exact finite spectral form
+\[
+  C(n)=Z\,\operatorname{diag}
+  (\lambda_1^n,\ldots,\lambda_r^n)\,Z^\dagger ,
+  \qquad
+  1>\lambda_1>\cdots>\lambda_r>0,
+  \label{eq:lattice-glueball-exact-finite-spectrum}
+\]
+where \(Z\) is an invertible \(r\times r\) matrix.  Then for every
+\(n>n_0\ge0\) the generalized eigenvalue problem
+\[
+  C(n)v_\alpha(n,n_0)
+  =
+  \Lambda_\alpha(n,n_0)\,C(n_0)v_\alpha(n,n_0)
+  \label{eq:volxi-glueball-gevp}
+\]
+has generalized eigenvalues
+\[
+  \Lambda_\alpha(n,n_0)=\lambda_\alpha^{\,n-n_0}
+  =
+  e^{-a(n-n_0)E_\alpha}.
+  \label{eq:lattice-glueball-gevp-exact-eigenvalues}
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(Z\) is invertible and all \(\lambda_\alpha\) are positive,
+\(C(n_0)\) is positive definite.  Multiplying
+\eqref{eq:volxi-glueball-gevp} by \(C(n_0)^{-1}\) reduces the generalized
+problem to the ordinary eigenvalue problem for
+\[
+  C(n_0)^{-1}C(n)
+  =
+  (Z^\dagger)^{-1}
+  \operatorname{diag}
+  (\lambda_1^{n-n_0},\ldots,\lambda_r^{n-n_0})
+  Z^\dagger .
+  \label{eq:lattice-glueball-gevp-similar-diagonal}
+\]
+The displayed matrix is similar to the diagonal matrix of
+\(\lambda_\alpha^{n-n_0}\).  Its eigenvalues are therefore precisely the
+numbers in \eqref{eq:lattice-glueball-gevp-exact-eigenvalues}, with
+multiplicity.
+\end{proof}
+
+\begin{controlledapproximation}[Whitened residual criterion for a GEVP window]
+\label{ca:lattice-glueball-whitened-residual-criterion}
+Fix \(n>n_0\) and suppose \(C(n_0)\) is positive definite.  Define the
+Hermitian whitened matrix
+\[
+  B(n,n_0)
+  =
+  C(n_0)^{-1/2}C(n)C(n_0)^{-1/2}.
+  \label{eq:lattice-glueball-whitened-matrix}
+\]
+Assume that in the selected time window
+\[
+  B(n,n_0)=B_{\rm low}(n,n_0)+R(n,n_0),
+  \qquad
+  \|R(n,n_0)\|_{\rm op}\le \epsilon ,
+  \label{eq:lattice-glueball-whitened-residual}
+\]
+where \(B_{\rm low}\) has eigenvalues
+\(\lambda_\alpha^{n-n_0}=e^{-a(n-n_0)E_\alpha}\) for the states intended to
+be resolved.  Let \(\widehat\Lambda_\alpha\) be the corresponding eigenvalues
+of \(B\), ordered decreasingly.  Weyl's finite-dimensional eigenvalue
+inequality gives
+\[
+  |\widehat\Lambda_\alpha-\lambda_\alpha^{n-n_0}|
+  \le \epsilon .
+  \label{eq:lattice-glueball-weyl-gevp-bound}
+\]
+If \(\epsilon<\lambda_\alpha^{n-n_0}\), then the effective energy
+\[
+  \widehat E_\alpha(n,n_0)
+  =
+  -\frac{1}{a(n-n_0)}\log\widehat\Lambda_\alpha
+  \label{eq:lattice-glueball-effective-gevp-energy}
+\]
+obeys
+\[
+  |\widehat E_\alpha(n,n_0)-E_\alpha|
+  \le
+  \frac{1}{a(n-n_0)}
+  \max\!\left\{
+  \log\frac{\lambda_\alpha^{n-n_0}}
+           {\lambda_\alpha^{n-n_0}-\epsilon},
+  \log\frac{\lambda_\alpha^{n-n_0}+\epsilon}
+           {\lambda_\alpha^{n-n_0}}
+  \right\}.
+  \label{eq:lattice-glueball-effective-energy-error}
+\]
+A quoted GEVP plateau is therefore a controlled finite-matrix statement only
+after such a residual bound, or a stronger replacement, has been supplied for
+the selected operator basis and time window.
+\end{controlledapproximation}
+
+\begin{proof}
+The matrix \(B(n,n_0)\) is Hermitian because \(C(n)\) and \(C(n_0)\) are
+Hermitian and \(C(n_0)^{-1/2}\) is Hermitian.  Weyl's inequality for
+Hermitian matrices gives
+\[
+  |\widehat\Lambda_\alpha-\Lambda_\alpha^{\rm low}|
+  \le
+  \|R(n,n_0)\|_{\rm op}
+  \le\epsilon ,
+\]
+with \(\Lambda_\alpha^{\rm low}=\lambda_\alpha^{n-n_0}\), after matching the
+ordered eigenvalues.  The map \(x\mapsto-(a(n-n_0))^{-1}\log x\) is smooth
+and monotone on the positive interval
+\((\lambda_\alpha^{n-n_0}-\epsilon,
+  \lambda_\alpha^{n-n_0}+\epsilon)\).  Evaluating the largest possible
+logarithmic displacement at the interval endpoints gives
+\eqref{eq:lattice-glueball-effective-energy-error}.
+\end{proof}
+
+The companion script
+\[
+  \texttt{qft\_scripts/glueball\_gevp\_from\_correlators.py}
+\]
+implements exactly the finite matrix problem
+\eqref{eq:volxi-glueball-gevp}.  It reads Hermitian correlator matrices
+from a CSV table with columns \(\texttt{t,i,j,C}\) or
+\(\texttt{t,i,j,real,imag}\), whitens by \(C(n_0)\), solves the ordinary
+Hermitian eigenvalue problem for
+\eqref{eq:lattice-glueball-whitened-matrix}, and reports
+\eqref{eq:lattice-glueball-effective-gevp-energy}.  Its smoke test uses an
+exact two-state correlator matrix of the form
+\eqref{eq:lattice-glueball-exact-finite-spectrum}; it is a check of the
+finite algebra, not a glueball-mass computation.
+
 \section{Wilson Flow, Smoothing, and Topological Charge}
 \label{sec:lattice-wilson-flow-smoothing-topology}
 

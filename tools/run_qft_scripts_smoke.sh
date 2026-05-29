@@ -34,6 +34,9 @@ python3 qft_scripts/autocorrelation_resampling.py --smoke
 echo "[qft-scripts] static_potential_from_wilson_loops --smoke"
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 
+echo "[qft-scripts] glueball_gevp_from_correlators --smoke"
+python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
+
 echo "[qft-scripts] tcsa_ising_energy_benchmark --smoke"
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 

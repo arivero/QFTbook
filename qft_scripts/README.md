@@ -23,6 +23,7 @@ python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
 python3 qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke
 python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
+python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
@@ -100,6 +101,12 @@ a production lattice-QCD workflow or a continuum extrapolation.
   dataset `measurements/wilson_loops` with index convention
   `wilson_loops[sample,R-1,T-1]`.  The smoke test uses synthetic
   area-plus-perimeter data.
+- `glueball_gevp_from_correlators.py`: finite-regulator GEVP analysis tool
+  for Hermitian correlator matrices with CSV columns `t,i,j,C` or
+  `t,i,j,real,imag`.  It solves `C(t) v = lambda C(t0) v` by positive
+  whitening of `C(t0)` and reports effective energies
+  `-log(lambda)/(a(t-t0))`.  The smoke test uses an exact two-state
+  spectral matrix, so any deviation is a finite linear-algebra error.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.
