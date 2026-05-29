@@ -633,6 +633,228 @@ gauge-invariant variables, patched local slices, a lattice formulation before
 gauge fixing, or a Gribov-region/fundamental-domain restriction with the
 additional boundary and BRST questions that such a restriction creates.
 
+\subsection{The Gribov--Zwanziger Horizon Functional}
+
+The first Gribov region gives a precise finite-regulator coordinate domain for
+Landau gauge, but it is still a domain with a boundary in field space.  The
+Gribov--Zwanziger construction is a way of representing the influence of that
+boundary by a nonlocal functional built from the inverse Faddeev--Popov
+operator.  The construction is used here as a controlled gauge-fixed infrared
+model and as a diagnostic of the failure of global covariant BRST assumptions.
+The gauge-invariant lattice construction remains the nonperturbative
+definition of Yang--Mills theory used in this volume.
+
+Work on a compact Euclidean torus of volume \(V\), remove the constant gauge
+zero modes, and impose Landau gauge.  Let
+\[
+  \mathcal M_L(A)=-\partial^\mu D_\mu(A)
+\]
+act on the zero-mode-removed adjoint scalar test functions.  In the interior
+of the first Gribov region, \(\mathcal M_L(A)\) is strictly positive and has a
+bounded inverse on this finite-regulator space.  Define
+\[
+  B_{\mu,c}^a(x;A):=f^a{}_{bc}A_\mu^b(x),
+  \qquad
+  f^a{}_{cd}f^b{}_{cd}=C_A\delta^{ab}.
+\]
+For \(G=SU(N_c)\) in the trace-delta convention of this monograph,
+\(C_A=2N_c\).  The horizon functional is
+\begin{equation}
+  H(A)
+  :=
+  \sum_{\mu,c}
+  \left\langle
+    B_{\mu,c}(A),
+    \mathcal M_L(A)^{-1}B_{\mu,c}(A)
+  \right\rangle_{L^2}.
+  \label{eq:gribov-zwanziger-horizon-functional}
+\end{equation}
+Equivalently,
+\[
+  H(A)
+  =
+  \int_{M\times M}\dd^d x\,\dd^d y\,
+  f^a{}_{bc}A_\mu^b(x)\,
+  [\mathcal M_L(A)^{-1}]^{ad}(x,y)\,
+  f^d{}_{ec}A_\mu^e(y),
+\]
+where the inverse is taken after the separated zero modes have been removed.
+The functional is finite on \(\Omega_{\rm G}^{\circ}\) and becomes singular
+along directions that approach the horizon with a nonzero projection onto a
+vanishing Faddeev--Popov eigenmode.
+
+\begin{lemma}[Spectral meaning of the horizon functional]
+\label{lem:gz-horizon-spectral-meaning}
+Let \(A\in\Omega_{\rm G}^{\circ}\) at finite regulator, and let
+\(\{e_j\}\) be an \(L^2\)-orthonormal eigenbasis of
+\(\mathcal M_L(A)\) with eigenvalues \(\lambda_j(A)>0\).  Then
+\begin{equation}
+  H(A)
+  =
+  \sum_{\mu,c}\sum_j
+  \frac{|\langle e_j,B_{\mu,c}(A)\rangle_{L^2}|^2}{\lambda_j(A)}.
+  \label{eq:gz-horizon-spectral-sum}
+\end{equation}
+If a path \(A(s)\in\Omega_{\rm G}^{\circ}\) approaches a horizon point and one
+eigenvalue satisfies \(\lambda_0(A(s))\downarrow0\), while
+\[
+  \liminf_s
+  \sum_{\mu,c}
+  |\langle e_0(s),B_{\mu,c}(A(s))\rangle|^2
+  >0,
+\]
+then \(H(A(s))\to+\infty\).
+\end{lemma}
+
+\begin{proof}
+Strict positivity of \(\mathcal M_L(A)\) gives the spectral decomposition
+\[
+  \mathcal M_L(A)^{-1}u
+  =
+  \sum_j\lambda_j(A)^{-1}\langle e_j,u\rangle e_j .
+\]
+Substituting \(u=B_{\mu,c}(A)\) and summing over the displayed Lorentz and
+spectator color labels gives \eqref{eq:gz-horizon-spectral-sum}.  The
+divergence statement follows from the single \(j=0\) term and positivity of
+all the other terms.
+\end{proof}
+
+Introduce a nonnegative mass parameter \(\gamma_{\rm G}\).  The nonlocal
+horizon-modified Landau-gauge Euclidean action is
+\begin{equation}
+  S_{\rm GZ}^{\rm nl}
+  =
+  S_{\rm FP}^{\xi=0}
+  +\gamma_{\rm G}^4 H(A)
+  -\gamma_{\rm G}^4\,d\,(\dim G)\,V,
+  \label{eq:gz-nonlocal-action}
+\end{equation}
+where \(d=\dim M\), \(S_{\rm FP}^{\xi=0}\) is the Landau-gauge
+Faddeev--Popov action, and the final term fixes the usual horizon
+normalization.  The gap condition obtained by stationarity of the regulated
+vacuum functional with respect to \(\gamma_{\rm G}^4\) is
+\begin{equation}
+  \langle H(A)\rangle_{\gamma_{\rm G}}
+  =
+  d\,(\dim G)\,V .
+  \label{eq:gz-horizon-condition}
+\end{equation}
+Equation \eqref{eq:gz-horizon-condition} is a condition selecting the
+horizon parameter inside a specified finite-regulator gauge-fixed model.  Its
+continuum and infinite-volume uses require a limiting construction for the
+corresponding gauge-fixed correlation functions.
+
+The nonlocal factor \(\exp[-\gamma_{\rm G}^4H(A)]\) has a local
+finite-regulator representation.  Introduce complex commuting fields
+\(\varphi_\mu^{ac},\bar\varphi_\mu^{ac}\) and Grassmann-odd fields
+\(\omega_\mu^{ac},\bar\omega_\mu^{ac}\), where the first adjoint index is
+acted on by \(\mathcal M_L(A)\) and the second adjoint index is the spectator
+index \(c\) in \(B_{\mu,c}\).  With the contour for the bosonic fields chosen
+so that the Gaussian is convergent,
+\begin{equation}
+\begin{aligned}
+ &\int D\bar\varphi\,D\varphi\,D\bar\omega\,D\omega\,
+  \exp\Bigl[
+  -\bar\varphi\,\mathcal M_L(A)\varphi
+  +\bar\omega\,\mathcal M_L(A)\omega
+  -\ii\gamma_{\rm G}^2 B(A)(\varphi+\bar\varphi)
+  \Bigr]
+\\
+ &\hspace{3.5cm}
+  =
+  \mathcal N\,
+  \exp[-\gamma_{\rm G}^4H(A)] .
+\end{aligned}
+  \label{eq:gz-localization-gaussian}
+\end{equation}
+Here the products mean the \(L^2\) pairing together with the sums over
+\(\mu,a,c\), and \(\mathcal N\) is independent of \(A\).  The factor
+\(\bar\omega\mathcal M_L\omega\) cancels the determinant from the
+commuting \(\varphi\)-Gaussian, leaving only the shifted source term.  The
+factor of \(\ii\) records the contour convention that localizes a positive
+horizon functional in the Euclidean action.
+
+The localized action at \(\gamma_{\rm G}=0\) admits the doublet assignment
+\[
+  s\varphi=\omega,\qquad s\omega=0,\qquad
+  s\bar\omega=\bar\varphi,\qquad s\bar\varphi=0,
+\]
+after adding the standard \(s\mathcal M_L(A)\) term generated by applying
+\(s\) to \(\bar\omega\mathcal M_L(A)\varphi\).  Hence the auxiliary quartet
+does not change the local BRST cohomology when \(\gamma_{\rm G}=0\).  The
+horizon source
+\[
+  \ii\gamma_{\rm G}^2 B(A)(\varphi+\bar\varphi)
+\]
+has a nonzero \(s\)-variation for \(\gamma_{\rm G}>0\).  Therefore the
+Gribov--Zwanziger horizon implementation and the perturbative local BRST
+charge are compatible only after one specifies an enlarged nonperturbative
+BRST or BV datum.  The elementary Kugo--Ojima assumptions below, which require
+a global covariant BRST charge in Landau gauge, are consequently independent
+hypotheses rather than consequences of the horizon-restricted integral.
+
+At the quadratic level around \(A=0\), the inverse Faddeev--Popov operator is
+\((-\partial^2)^{-1}\).  The color contraction above gives
+\[
+  \sum_{a,c} f^a{}_{bc}f^a{}_{dc}=C_A\delta_{bd}.
+\]
+After projecting to transverse gauge fields, the quadratic action has the
+form
+\begin{equation}
+  S_{{\rm GZ},2}
+  =
+  \frac12
+  \int\frac{\dd^d p}{(2\pi)^d}\,
+  A_\mu^a(-p)
+  \left[
+    \frac{p^2}{g_{\rm YM}^2}
+    +\frac{\lambda_{\rm G}^4}{g_{\rm YM}^2p^2}
+  \right]
+  P_{\mu\nu}(p)\,
+  A_\nu^a(p),
+  \label{eq:gz-quadratic-kernel}
+\end{equation}
+where
+\[
+  P_{\mu\nu}(p)=\delta_{\mu\nu}-\frac{p_\mu p_\nu}{p^2}
+\]
+and \(\lambda_{\rm G}^4\) is the positive horizon scale obtained from
+\(\gamma_{\rm G}^4 C_A\) with the normalization of the quadratic action
+absorbed into its definition.  The corresponding tree-level transverse
+two-point kernel is
+\begin{equation}
+  \langle A_\mu^a(p)A_\nu^b(-p)\rangle_{{\rm GZ},2}
+  =
+  \delta^{ab}g_{\rm YM}^2
+  \frac{p^2}{p^4+\lambda_{\rm G}^4}\,
+  P_{\mu\nu}(p).
+  \label{eq:gz-tree-transverse-propagator}
+\end{equation}
+The denominator has complex \(p^2\)-plane poles at
+\[
+  p^2=\pm \ii\lambda_{\rm G}^2 .
+\]
+Thus the elementary tree-level horizon model already prevents the transverse
+gauge potential from having a positive Källén--Lehmann spectral measure.
+This statement concerns the gauge-fixed potential two-point function.
+Gauge-invariant color-singlet correlators and Wilson-loop observables remain
+the objects used for physical spectral questions.
+
+\begin{controlledapproximation}[Status of the Gribov--Zwanziger construction]
+\label{ca:gribov-zwanziger-status}
+The Gribov--Zwanziger action is a finite-regulator Landau-gauge construction
+that encodes a restriction to the first Gribov region through the horizon
+functional \eqref{eq:gribov-zwanziger-horizon-functional}.  It supplies a
+precise infrared ansatz for gauge-fixed Green functions and a concrete test of
+covariant BRST assumptions.  A proof that it is equivalent to the
+gauge-invariant Yang--Mills continuum theory requires a separate comparison
+of gauge-invariant observables or a construction of the gauge-fixed measure as
+a pushforward of the lattice continuum limit.  Refined Gribov--Zwanziger
+models add condensates of dimension-two local fields; those refinements change
+the gauge-fixed infrared ansatz and require their own renormalization and
+BRST/BV analysis.
+\end{controlledapproximation}
+
 The determinant in \eqref{eq:fp-gauge-fixed-integral} is represented by
 Grassmann-odd variables \(b_A\) and \(c^\alpha\):
 \begin{equation}

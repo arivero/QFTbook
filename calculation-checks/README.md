@@ -566,6 +566,12 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `gribov_zwanziger_checks.py`: exact finite checks for the Volume II
+  Gribov--Zwanziger horizon-functional subsection, including spectral
+  growth near a soft Faddeev--Popov eigenmode, the imaginary-source sign in
+  the local Gaussian representation, the tree-level transverse propagator as
+  the inverse of the horizon-modified kernel, and the complex \(p^2\)-plane
+  pole locations.
 - `gauge_phase_diagnostics_checks.py`: finite checks for the gauge-theory
   phases chapter, including electric, magnetic, and dyonic condensate
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
