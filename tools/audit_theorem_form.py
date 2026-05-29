@@ -701,6 +701,9 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Finite-chaos kernels for tested nonlinear coordinates"
     r"|Gauge-covariant HTL equations and transversality"
     r"|Topological-sector selection for .*S.*correlators"
+    r"|Observable-type preservation under a controlled threshold"
+    r"|Domain of the .*S,T,U.* projection"
+    r"|Strong-coupling area mechanism"
     r")\b",
     re.IGNORECASE,
 )

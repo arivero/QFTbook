@@ -244,10 +244,11 @@ charge \(m\), and \(\mathcal H_{\rm def}\) is the defect Hilbert space of
 Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem}.
 \end{definition}
 
-\begin{proposition}[Observable-type preservation under a controlled threshold]
-\label{prop:observable-type-threshold-preservation}
+\begin{controlledapproximation}[Observable-type comparison across a controlled threshold]
+\label{ca:observable-type-threshold-comparison}
 Consider a relevant mass deformation with threshold \(M\) between two
-supersymmetric Yang--Mills cousins.  Assume:
+supersymmetric Yang--Mills cousins.  The following comparison is meaningful
+only after the threshold problem is supplied with:
 \begin{enumerate}[label=(\roman*)]
 \item a Wilsonian description exists above and below \(M\) in a common
   regulator or in compatible holomorphic schemes;
@@ -258,14 +259,15 @@ supersymmetric Yang--Mills cousins.  Assume:
 \item the line-operator sector is kept fixed by declaring the global form and
   allowed electric and magnetic charges before the deformation.
 \end{enumerate}
-Then chiral local sources match by holomorphic threshold coordinates, local
-nonchiral correlators match after adding local higher-dimension Wilsonian
-operators, and center-charge labels of line operators are preserved as
-labels.  The numerical masses, string tensions, and line-defect excitation
-energies are dynamical functions of the deformation parameters.
-\end{proposition}
+Under these hypotheses, chiral local sources match by holomorphic threshold
+coordinates, local nonchiral correlators match after adding local
+higher-dimension Wilsonian operators, and center-charge labels of line
+operators are transported as declared labels.  The spectrum is a separate
+dynamical problem: numerical masses, string tensions, and line-defect
+excitation energies are functions of the deformation parameters and require
+the corresponding Hilbert-space, transfer-matrix, or line-defect spectral
+analysis.
 
-\begin{proof}
 For chiral local sources, the supersymmetric Wilsonian action separates the
 holomorphic \(F\)-terms from \(D\)-terms.  The threshold contribution of a
 massive chiral multiplet to the holomorphic gauge coupling is one-loop exact
@@ -290,7 +292,7 @@ charges.  Therefore the center or charge label can be transported through the
 comparison problem.  The area-law coefficient or defect excitation energy is
 obtained from the Hilbert-space or transfer-matrix problem in the deformed
 theory, so it remains a dynamical spectral quantity.
-\end{proof}
+\end{controlledapproximation}
 
 \section[Center Strings and k-String Tension Comparisons]{Center Strings and \(k\)-String Tension Comparisons}
 \label{sec:susy-ym-family-k-string-tensions}

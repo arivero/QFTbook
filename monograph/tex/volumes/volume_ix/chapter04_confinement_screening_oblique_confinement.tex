@@ -312,21 +312,28 @@ Repeating this for every link on the contour forces a two-chain of plaquettes
 whose boundary is \(C\), up to screened charges.  If the charge is
 nonscreened, the boundary cannot be removed by local endpoints.
 
-\begin{proposition}[Strong-coupling area mechanism]
-\label{prop:lattice-strong-coupling-area-law}
-Assume \(R_0\) has nonscreened center-sensitive charge.  For a family of
+\begin{controlledapproximation}[Area mechanism]
+\label{ca:lattice-strong-coupling-area-law}
+\leavevmode\par\noindent
+Let \(R_0\) have nonscreened center-sensitive charge.  For a family of
 planar loops \(C_R\), let \(A_{\min}(C_R)\) be the minimal lattice area of a
-plaquette surface spanning \(C_R\).  Suppose the strong-coupling polymer
-expansion of \(\langle W_{R_0}(C_R)\rangle\) satisfies the following uniform
-area estimates.  First, the Haar-projection selection rule permits no
-center-sensitive contribution of area \(<A_{\min}(C_R)\).  Second, the sum of
-all minimal-area contributions is nonzero and has magnitude at least
-\(m_0\exp[-\sigma_+ A_{\min}(C_R)]\) for constants \(m_0>0\),
-\(\sigma_+<\infty\).  Third, the total contribution of all larger decorated
-surfaces is bounded by
-\(M_0\exp[-(\sigma_++\delta)A_{\min}(C_R)]\) for some \(M_0,\delta>0\), after
-possibly restricting to a sufficiently small strong-coupling neighborhood.
-Then there are constants \(a,b>0\) such that
+plaquette surface spanning \(C_R\).  A strong-coupling proof of an area
+mechanism consists of the following uniform polymer-expansion estimates.
+First, the Haar-projection selection rule permits no center-sensitive
+contribution of area \(<A_{\min}(C_R)\).  Second, the sum of all minimal-area
+contributions is nonzero and has magnitude at least
+\[
+  m_0\exp[-\sigma_+ A_{\min}(C_R)]
+\]
+for some \(m_0>0\) and finite \(\sigma_+\).  Third, the total contribution of
+all larger decorated surfaces is bounded by
+\[
+  M_0\exp[-(\sigma_++\delta)A_{\min}(C_R)]
+\]
+for some \(M_0>0\) and \(\delta>0\), after possibly restricting to a
+sufficiently small strong-coupling neighborhood.
+Once these estimates have actually been proved for the chosen lattice action,
+there are constants \(a,b>0\) such that
 \[
   e^{-b A_{\min}(C_R)}
   \le
@@ -338,9 +345,7 @@ for all sufficiently large loops in the family, up to subexponential factors.
 Consequently every subsequential exponential rate
 \(-A_{\min}(C_R)^{-1}\log |\langle W_{R_0}(C_R)\rangle|\) is strictly
 positive and finite.
-\end{proposition}
 
-\begin{proof}
 The first hypothesis is the kinematic selection part: link integration forces
 the center-sensitive flux to be carried by a plaquette two-chain with boundary
 \(C_R\), so no term of smaller area can occur.  The third hypothesis gives the
@@ -361,12 +366,12 @@ absorbing constants into the allowed subexponential factors.  The logarithmic
 rate statement follows immediately.  The exact string tension is not obtained
 from these estimates alone; it depends on the complete convergent polymer
 sum and on the lattice action.
-\end{proof}
+\end{controlledapproximation}
 
-This is a theorem about a controlled lattice regime only after the displayed
-area estimates have been proved for the chosen action.  Its continuum analogue
-requires a continuum limit, a mass gap or other infrared control, and
-renormalized line operators whose asymptotics survive the limit.
+This becomes a theorem about a controlled lattice regime only when the
+displayed area estimates are proved for the chosen action.  Its continuum
+analogue requires a continuum limit, a mass gap or other infrared control,
+and renormalized line operators whose asymptotics survive the limit.
 
 \section{Condensation and Oblique Confinement}
 
@@ -490,7 +495,8 @@ screening quotient.  The dynamical input is the assertion that a particular
 subgroup \(K\) is condensed and that nontrivial braiding with \(K\) forces an
 area law.  In a lattice strong-coupling domain the dynamical input can be
 verified by a convergent expansion, as in
-Proposition~\ref{prop:lattice-strong-coupling-area-law}.  In a continuum
+the controlled strong-coupling estimate
+\ref{ca:lattice-strong-coupling-area-law}.  In a continuum
 four-dimensional Yang--Mills theory it is a major theorem-level target rather
 than a definition.
 
