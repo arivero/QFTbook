@@ -317,6 +317,12 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Tree-level high-density quark action"
     r"|Fermionic trace endpoint signs"
     r"|Harmonic supersymmetric oscillator index"
+    r"|Large-field EFT expansion requires a field-domain hypothesis"
+    r"|Adjacent spacelike exchange in Wightman functions"
+    r"|Charge algebra from the vector-field bracket"
+    r"|Global conformal Ward identity from surface deformation"
+    r"|K-S data give OS Schwinger functions on flat space"
+    r"|Flat-space comparison with OS Schwinger functions"
     r")\b",
     re.IGNORECASE,
 )

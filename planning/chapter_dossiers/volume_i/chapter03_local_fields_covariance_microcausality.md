@@ -117,8 +117,9 @@ Working framework:
   Status: definition. Certification: chapter definition.
 - Adjacent spacelike-separated insertions in a Wightman distribution can be
   exchanged with the Koszul sign.
-  Status: proven in chapter. Certification:
-  `prop:wightman-adjacent-spacelike-exchange`.
+  Status: direct consequence of the microcausality definition and common-domain
+  hypothesis, now recorded as a paragraph calculation rather than a separate
+  proposition.
 - Local polynomial field algebras obey isotony and graded locality on the
   common domain.
   Status: proven in chapter. Certification:
