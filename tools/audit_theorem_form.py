@@ -602,6 +602,11 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Locality and Slavnov--Taylor control"
     r"|Spectral thresholds and first-sheet cuts"
     r"|Cylinder variation of the reduced eta invariant"
+    r"|CFT-internal Cardy growth"
+    r"|BCFW recursion with boundary term"
+    r"|Detailed balance from the KMS boundary relation"
+    r"|Universal late-time ray tracing"
+    r"|Local operators preserve pure vacuum sectors"
     r"|Chern--Simons transgression under a finite gauge transformation"
     r"|Chern--Weil transgression"
     r")\b",

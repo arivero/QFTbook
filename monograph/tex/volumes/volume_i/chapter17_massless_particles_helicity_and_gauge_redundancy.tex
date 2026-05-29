@@ -1098,8 +1098,8 @@ negative-helicity leg and one positive-helicity leg:
   \widetilde\lambda_1+z\widetilde\lambda_n,\qquad
   \widehat\lambda_n=\lambda_n-z\lambda_1 .
 \]
-The boundary term in Theorem~\ref{thm:bcfw-recursion-with-boundary} vanishes
-by hypothesis.  The helicity selection rules of the three-point amplitudes
+The boundary term in the BCFW residue formula below vanishes by hypothesis.
+The helicity selection rules of the three-point amplitudes
 imply that all recursive channels vanish except the channel
 \[
   A_{n-1}(\widehat1^-,2^-,3^+,\ldots,(n-2)^+,-\widehat P^+)
@@ -1237,8 +1237,7 @@ nonzero boundary term, equation \eqref{eq:bcfw-recursion-with-boundary} remains
 true but is not a closed recursion until \(B_\infty\) is determined by other
 input.
 
-\begin{theorem}[BCFW recursion with boundary term]
-\label{thm:bcfw-recursion-with-boundary}
+\paragraph{BCFW residue formula with boundary term.}
   Let \(A_n(z)\) be a tree-level color-ordered Yang--Mills partial amplitude
   under a BCFW shift.  Suppose its only finite singularities are simple
   factorization poles where an adjacent shifted momentum sum becomes null, and
@@ -1259,9 +1258,6 @@ input.
   \]
   where \(B_\infty\) is minus the residue of \(A_n(z)/z\) at infinity.  If
   \(A_n(z)\to0\) as \(z\to\infty\), then \(B_\infty=0\).
-\end{theorem}
-
-\begin{proof}
 The meromorphic one-form \(A_n(z)\,dz/z\) on the Riemann sphere has total
 residue zero.  Its residue at \(z=0\) is \(A_n(0)\).  A finite pole occurs
 when \(\widehat P_I(z)^2=P_I^2+z\,2P_I\cdot q\) vanishes, so
@@ -1281,7 +1277,6 @@ is
 \(-A_L(z_I)A_R(z_I)/P_I^2\), summed over internal helicities.  Moving all
 finite-pole residues and the residue at infinity to the other side gives the
 displayed recursion formula.
-\end{proof}
 
 Figure~\ref{fig:bcfw-factorization} records the finite-pole factorization
 geometry used in the recursion formula: the shifted amplitude splits into left

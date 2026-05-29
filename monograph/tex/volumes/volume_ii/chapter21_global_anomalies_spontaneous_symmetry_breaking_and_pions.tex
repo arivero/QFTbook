@@ -670,54 +670,18 @@ For spacelike separation, locality gives
   \sum_k A_{ik}B_{kj}=\sum_k B_{ik}A_{kj}
 \]
 for all local \(\mathcal A,\mathcal B\).  The commuting family of vacuum
-matrices may be diagonalized simultaneously.  In that basis, local operators
-do not connect distinct pure phases:
+matrices is equivalently decomposed into its characters.  In a character
+representation every element of the vacuum-sector algebra acts by a scalar.  If
+a local observable had an off-diagonal matrix element between two distinct
+characters, multiplication by another element of the algebra would give
+different left and right scalar actions unless the two characters were equal.
+Thus, in the pure-sector basis, local operators do not connect distinct phases:
 \[
   \bra{\Omega_i}\mathcal A(x)\ket{\Omega_j}=0
   \qquad (i\ne j).
 \]
-
-\begin{proposition}[Local operators preserve pure vacuum sectors]
-\label{prop:local-operators-preserve-pure-vacua}
-Assume an infinite-volume relativistic QFT has a set of translation-invariant
-pure vacua \(\{\ket{\Omega_i}\}\) satisfying cluster decomposition inside each
-pure phase.  Assume also spacelike commutativity for the local observable
-algebra.  Then the vacuum-sector matrices
-\[
-  A_{ij}:=\bra{\Omega_i}\mathcal A(0)\ket{\Omega_j}
-\]
-of all local observables \(\mathcal A\) generate a commutative algebra.
-After decomposing this commutative algebra into its characters, local
-observables have no matrix elements between distinct pure sectors:
-\[
-  \bra{\Omega_i}\mathcal A(x)\ket{\Omega_j}=0,
-  \qquad i\ne j .
-\]
-\end{proposition}
-
-\begin{proof}
-For two local observables \(\mathcal A,\mathcal B\), place
-\(\mathcal A(x)\) and \(\mathcal B(y)\) at large spacelike separation.
-Inserting the vacuum-sector resolution in the large-distance channel and
-using clustering in each pure phase gives
-\[
-  \bra{\Omega_i}\mathcal A(x)\mathcal B(y)\ket{\Omega_j}
-  =
-  \sum_k A_{ik}B_{kj}+o(1)
-\]
-as the separation tends to infinity.  Reversing the order gives
-\(\sum_kB_{ik}A_{kj}+o(1)\).  Spacelike locality makes the two correlators
-equal before the limit, hence \(AB=BA\) for every pair of vacuum-sector
-matrices.  Passing to the pure-sector decomposition is precisely the
-decomposition of this commutative vacuum-sector algebra into characters.  In a
-character representation every element of the algebra acts by a scalar.  If a
-local observable had an off-diagonal matrix element between two distinct
-characters, multiplication by a second element of the algebra would give
-different left and right scalar actions unless the two characters were equal.
-Thus local observables preserve the phase label.  The statement is
-superselection by locality and clustering, not a finite-volume level splitting
-statement.
-\end{proof}
+This is superselection by locality and clustering, not a finite-volume level
+splitting statement.
 
 \section{Spontaneous Symmetry Breaking}
 
@@ -807,6 +771,21 @@ nonzero order parameter
   \label{eq:goldstone-order-parameter}
 \end{equation}
 where \(Q_A\) is obtained as the infinite-volume limit of smeared charges.
+Assume also that local contact ambiguities in the time-ordered product have
+been fixed so that the nonlocal part of the mixed current-operator distribution
+has the Lorentz-covariant scalar spectral form near \(p=0\): modulo a local
+polynomial in \(p\),
+\[
+  \widehat G_A^\mu(p)_{\rm nonloc}
+  =
+  p^\mu F_A(p^2)
+  +
+  \widehat G_{A,\perp}^\mu(p),
+  \qquad
+  p_\mu\widehat G_{A,\perp}^\mu(p)=0,
+\]
+where \(F_A\) is a scalar boundary-value distribution with a
+K\"all\'en--Lehmann representation in the broken channel.
 The Ward identity for the time-ordered distribution is
 \begin{equation}
   \partial_\mu
@@ -822,31 +801,42 @@ Fourier transforming gives a distribution \(\widehat G_A^\mu(p)\) satisfying
   =
   \langle\vac,\delta_A\mathcal O(0)\vac\rangle .
 \]
-Lorentz covariance implies that the singular part of
-\(\widehat G_A^\mu(p)\) is of the form \(p^\mu F_A(p^2)\).  Since the
-right-hand side is nonzero at \(p=0\), \(F_A(p^2)\) must contain a
-\(1/p^2\) singularity.  In the K\"all\'en--Lehmann language this singularity is a
-massless contribution to the current-operator spectral measure.
+Since the right-hand side is nonzero at \(p=0\), \(F_A(p^2)\) must contain a
+\(1/(p^2-\ii0)\)-type massless singularity.  In the K\"all\'en--Lehmann
+language this singularity is a massless contribution to the
+current-operator spectral measure.
 \end{proposition}
 
 \begin{proof}
-Integrating the Ward identity
-\eqref{eq:goldstone-ward-distribution} against a test function equal to one
-near the origin gives the nonzero broken-charge matrix element
-\eqref{eq:goldstone-order-parameter}.  Fourier transformation converts the
-divergence into multiplication by \(p_\mu\).  A Lorentz-covariant vector
-distribution whose support singularity is controlled by the scalar variable
-\(p^2\) has singular part \(p^\mu F_A(p^2)\).  The identity
+Let \(c_A=\langle\vac,\delta_A\mathcal O(0)\vac\rangle\neq0\).
+Integrating \eqref{eq:goldstone-ward-distribution} against a test function
+equal to one near the origin gives the broken-charge matrix element
+\eqref{eq:goldstone-order-parameter}; Fourier transformation converts the
+distributional divergence into multiplication by \(p_\mu\).  After the chosen
+local contact polynomial has been separated, the transverse part drops out and
+the Ward identity reads, for the nonlocal scalar channel,
 \[
-  p_\mu\widehat G_A^\mu(p)
-  =
-  \langle\vac,\delta_A\mathcal O(0)\vac\rangle
+  p^2F_A(p^2)+p_\mu P_A^\mu(p)=c_A ,
 \]
-has a nonzero right hand side at \(p=0\).  A regular \(F_A(p^2)\) would make
-\(p^2F_A(p^2)\) vanish at \(p=0\); hence the distribution must contain the
-massless pole \(F_A(p^2)\sim c/p^2\).  The spectral representation of a
-current-operator two-point distribution identifies this pole with massless
-spectral weight.
+where \(P_A^\mu(p)\) is the remaining local polynomial vector contribution.
+The contraction \(p_\mu P_A^\mu(p)\) has no constant term at \(p=0\).  If
+\(F_A\) were regular at \(p^2=0\), then \(p^2F_A(p^2)\) would also vanish at
+the origin as a boundary-value distribution modulo higher-order local
+polynomial terms, contradicting \(c_A\neq0\).  Thus the nonlocal scalar channel
+contains
+\[
+  F_A(p^2)=\frac{c_A}{p^2-\ii0}+\text{less singular terms}
+\]
+up to the sign fixed by the Fourier convention.  In a scalar spectral
+representation
+\[
+  F_A(p^2)=
+  \int_{0}^{\infty}\frac{\dd\nu_A(\mu^2)}{p^2+\mu^2-\ii0}
+  +\text{local polynomial},
+\]
+such an inverse \(p^2\) boundary value is precisely an atom of \(\dd\nu_A\) at
+\(\mu^2=0\).  This is the massless Goldstone contribution to the spectral
+measure.
 \end{proof}
 
 Equivalently, for each broken direction there are zero-mass one-particle

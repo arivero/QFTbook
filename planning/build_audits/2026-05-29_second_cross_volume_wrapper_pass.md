@@ -39,10 +39,10 @@ needed more detail.
 
 - `CFT-internal Cardy growth`, `Largest-time identity for a scalar graph`,
   and the fermionic coherent-state path-integral construction were read as
-  candidates but not demoted in this pass.  They contain genuine analytic,
-  perturbative-unitarity, or path-integral construction content and should be
-  judged in a later proof-strengthening pass rather than removed by title
-  heuristic alone.
+  candidates but not demoted in this pass.  Later manual reading demoted the
+  Cardy-growth statement to a Tauberian-consequence paragraph, while the
+  largest-time identity and the fermionic coherent-state construction remain
+  retained as reusable mechanisms.
 
 ## Recurrence Guard
 
