@@ -19,8 +19,10 @@ matching datum.
   demoted from proposition form to prose in the anti-wrapper pass.
 - Added Definition `def:sm-ckm-matrix` and Propositions
   `prop:sm-flavor-parameter-counting`,
-  `prop:sm-gim-tree-level-diagonality`, and
-  `prop:sm-jarlskog-rephasing`.
+  `prop:sm-gim-tree-level-diagonality`, and the Jarlskog rephasing
+  calculation.  The latter was later demoted from proposition form to prose in
+  the anti-wrapper pass, while retaining the phase-cancellation and
+  row/column-orthogonality derivation.
 - Added the Higgs radial mass coordinate calculation and custodial
   `rho_tree=1` calculation.  The latter was later demoted from proposition
   form to a worked paragraph in the anti-wrapper pass.

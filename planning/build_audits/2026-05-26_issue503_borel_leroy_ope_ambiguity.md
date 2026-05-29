@@ -12,10 +12,10 @@ thimble, and renormalon-model material.
 - Definition `def:borel-leroy-conformal-approximants` defines the
   Borel--Leroy transform, Borel--Leroy sum, conformal-Borel--Leroy truncation,
   and the data \((A,b,N)\) that must be declared in numerical use.
-- Proposition `prop:conformal-borel-leroy-coefficient-preservation` proves that
-  the conformal-Borel--Leroy truncation preserves the input perturbative
-  coefficients through the stated order.  The proof uses the local biholomorphic
-  coordinate \(w(\xi)\) at the Borel origin and the exact
+- The conformal-Borel--Leroy truncation calculation records that the input
+  perturbative coefficients are preserved through the stated order.  This was
+  later demoted from proposition form to prose in the anti-wrapper pass because
+  the content is local-coordinate Taylor truncation plus the exact
   \(\Gamma(n+b+1)\) normalization of the Borel--Leroy Laplace kernel.
 - Remark `rem:critical-exponent-borel-practice-status` records the rigorous
   status of Wilson--Fisher and fixed-dimension critical-exponent resummations:
