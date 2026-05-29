@@ -210,17 +210,38 @@ quotient local-operator space obeys
 \end{theorem}
 
 \begin{proof}
-The level-one Gram matrix for a scalar is
-\(2\Delta_\phi\delta_{\mu\nu}\braket{\phi}{\phi}\).  Thus
-\(\Delta_\phi\ge0\), and if \(\Delta_\phi=0\) then every first descendant is
-null, giving \(\widehat P_\mu\ket{\phi}=0\) in the quotient Hilbert space.
-For \(\Delta_\phi>0\), positivity of the level-two scalar descendant
-\(\widehat P^2\ket{\phi}\) gives
-\eqref{eq:scalar-laplacian-descendant-norm}; hence
-\(2\Delta_\phi+2-D\ge0\), which is
-\eqref{eq:scalar-unitarity-bound}.  At equality the norm in
-\eqref{eq:scalar-laplacian-descendant-norm} vanishes, so the corresponding
-local descendant is the Laplace equation \eqref{eq:scalar-shortening-laplace}.
+In radial quantization \(\widehat K_\mu=\widehat P_\mu^\dagger\).  The
+level-one descendant Gram matrix is therefore
+\[
+  \langle\phi|\widehat K_\mu\widehat P_\nu|\phi\rangle
+  =
+  2\Delta_\phi\delta_{\mu\nu}\braket{\phi}{\phi},
+\]
+using the scalar-primary condition \(\widehat K_\mu|\phi\rangle=0\) and the
+commutator \eqref{eq:radial-pk-commutator}.  Positivity gives
+\(\Delta_\phi\ge0\).  If \(\Delta_\phi=0\), every first descendant has zero
+norm.  After quotienting the radical of the reflection-positive form this
+means \(\widehat P_\mu|\phi\rangle=0\), so the state is translation-invariant
+and belongs to the identity branch under the vacuum assumptions stated in the
+preceding section.
+
+Assume now \(\Delta_\phi>0\).  The scalar trace descendant
+\(\widehat P^2|\phi\rangle=\delta^{\mu\nu}\widehat P_\mu\widehat P_\nu|\phi\rangle\)
+is a vector in the level-two descendant space, hence its norm is nonnegative.
+The explicit Gram computation in
+\eqref{eq:scalar-laplacian-descendant-norm} gives
+\[
+  0
+  \leq
+  4D\,\Delta_\phi(2\Delta_\phi+2-D)\braket{\phi}{\phi}.
+\]
+Because \(D>2\), \(\Delta_\phi>0\), and \(\braket{\phi}{\phi}>0\), this is
+equivalent to \(2\Delta_\phi+2-D\ge0\), namely
+\eqref{eq:scalar-unitarity-bound}.  At equality the trace descendant is a
+null vector.  In the Hilbert-space quotient by null descendants, the local
+state-field map sends that null relation to the operator equation
+\(\partial^2\phi(x)=0\) inside separated-point correlators; contact terms at
+coincident insertions are separate local-extension data.
 \end{proof}
 
 The \(\Delta_\phi=0\) branch was identified above as the identity
@@ -626,16 +647,33 @@ The level-one descendant space decomposes as
   =
   \mathcal H_{\ell+1}\oplus\mathcal H_{\ell,1}\oplus\mathcal H_{\ell-1}.
 \]
-By the level-one Gram calculation \eqref{eq:level-one-gram-general}, the Gram
-operator is positive on each irreducible summand.  The Casimir computation
+This is an orthogonal decomposition for the \(SO(D)\)-invariant radial Gram
+form, because the Gram operator commutes with rotations.  On each irreducible
+summand, Schur's lemma makes the level-one Gram operator a scalar.  Formula
+\eqref{eq:level-one-gram-general} identifies that scalar as
+\[
+  2\left[
+  \Delta_{\mathcal O}
+  +\frac12(C_Q-C_1-C_\ell)
+  \right],
+\]
+where \(Q\) is the corresponding irreducible summand.  The Casimir computation
 above gives the three inequalities in
-\eqref{eq:spin-level-one-three-inequalities}; for
-\(\ell\ge1\), the strongest is
-\(\Delta_{\mathcal O}-\ell-D+2\ge0\).  The corresponding summand is
-\(\mathcal H_{\ell-1}\), obtained by taking the divergence of the symmetric
-traceless tensor.  Saturation therefore makes precisely the divergence
-descendant null, giving \eqref{eq:spin-ell-conservation-shortening} in the
-quotient local-operator space.
+\eqref{eq:spin-level-one-three-inequalities}; for \(\ell\ge1\), the strongest
+is
+\[
+  \Delta_{\mathcal O}-\ell-D+2\ge0.
+\]
+The representation that carries this eigenvalue is
+\(\mathcal H_{\ell-1}\).  At the level of tensor fields this projection is
+the trace-free part of the divergence
+\(\partial^{\mu_1}\mathcal O_{\mu_1\mu_2\cdots\mu_\ell}\); because the
+original operator is symmetric traceless, the displayed divergence is already
+the relevant \(\mathcal H_{\ell-1}\) descendant.  At saturation the entire
+\(\mathcal H_{\ell-1}\) descendant subspace is null.  Passing to the quotient
+by the null radical gives the separated-point local-operator equation
+\eqref{eq:spin-ell-conservation-shortening}; contact terms in Ward identities
+are additional coincident-point extension data.
 \end{proof}
 
 For \(\ell=1\) this is current conservation and

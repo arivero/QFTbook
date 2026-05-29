@@ -84,3 +84,7 @@ screening quotient, condensate subgroup, and topological sector.
   proposition form to prose.  The calculation is the finite-regulator Haar
   projection; continuum phase claims remain tied to the phase datum and
   thermodynamic-limit hypotheses.
+- 2026-05-29 seventh pass: demoted the large-time spectral extraction lemma
+  to a worked Laplace-principle paragraph.  The real phase-diagnostic input is
+  the reflection-positive static-source transfer-matrix sector and its
+  renormalized Wilson-loop spectral measure.

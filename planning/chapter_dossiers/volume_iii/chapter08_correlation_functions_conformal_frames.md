@@ -102,3 +102,7 @@ The chapter establishes:
   `calculation-checks/cft_correlator_kinematics_checks.py` to guard the
   three-point exponent algebra, four-point inversion weights, and residual
   four-point quotient dimension.
+- 2026-05-29 seventh anti-wrapper pass: strengthened the
+  special-conformal-vacuum lemma proof by making the common-domain hypothesis,
+  spectral-measure contradiction, and nonnegative radial Hamiltonian input
+  explicit.

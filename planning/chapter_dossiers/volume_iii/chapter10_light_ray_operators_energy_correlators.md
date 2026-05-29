@@ -110,3 +110,7 @@ The chapter establishes:
 - Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`.
+- 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
+  inequality proof so the \(SO(2)\) helicity decomposition, Schur
+  diagonalization of the quadratic form, and three polarization eigenvalues
+  are visible rather than hidden in a substitution.

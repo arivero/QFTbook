@@ -370,8 +370,8 @@ different spin sectors.
 
 \begin{proposition}[NS unitarity bound and chiral primaries]
 \label{prop:n2-chiral-primary-bound}
-Let \(v\) be a simultaneous \(L_0,J_0\) eigenvector in a unitary NS
-representation, with
+Let \(v\) be a simultaneous \(L_0,J_0\) eigenvector in the common domain of
+the four NS modes \(G^\pm_{\pm1/2}\) in a unitary NS representation, with
 \[
   L_0v=hv,\qquad J_0v=qv.
 \]
@@ -382,37 +382,61 @@ Then
 \end{equation}
 If \(q\ge0\), equality \(h=q/2\) holds precisely when
 \begin{equation}
-  G^+_{-1/2}v=0.
+  G^+_{-1/2}v=0,
+  \qquad
+  G^-_{1/2}v=0.
   \label{eq:n2-chiral-primary-condition}
 \end{equation}
 If \(q\le0\), equality \(h=-q/2\) holds precisely when
 \begin{equation}
-  G^-_{-1/2}v=0.
+  G^-_{-1/2}v=0,
+  \qquad
+  G^+_{1/2}v=0.
   \label{eq:n2-antichiral-primary-condition}
 \end{equation}
+In particular, if \(v\) is an NS superconformal primary, so all positive
+supercurrent modes annihilate it, the first equality condition reduces to
+\(G^+_{-1/2}v=0\) and the second to \(G^-_{-1/2}v=0\).
 \end{proposition}
 
 \begin{proof}
-Unitarity gives \((G^\pm_{-1/2})^\dagger=G^\mp_{1/2}\).  Taking expectation
-values of \eqref{eq:n2-gplus-gminus-mode-algebra} gives
+Unitarity gives \((G^\pm_r)^\dagger=G^\mp_{-r}\) on the common invariant
+domain.  With \(r=1/2\) and \(s=-1/2\),
+\eqref{eq:n2-gplus-gminus-mode-algebra} gives
 \[
+  \{G^-_{1/2},G^+_{-1/2}\}
+  =
+  2L_0-J_0,
+\]
+because the central term vanishes at \(r=\pm1/2\).  Taking the expectation
+value in \(v\) gives the positive-operator identity
+\[
+  (2h-q)\|v\|^2
+  =
   \|G^+_{-1/2}v\|^2
-  =
-  \langle v,\{G^-_{1/2},G^+_{-1/2}\}v\rangle
-  =
-  (2h-q)\|v\|^2,
+  +
+  \|G^-_{1/2}v\|^2 .
 \]
-and
+Similarly,
 \[
-  \|G^-_{-1/2}v\|^2
+  \{G^+_{1/2},G^-_{-1/2}\}
   =
-  \langle v,\{G^+_{1/2},G^-_{-1/2}\}v\rangle
-  =
-  (2h+q)\|v\|^2.
+  2L_0+J_0
 \]
-Both norms are nonnegative, so \(2h\ge q\) and \(2h\ge -q\).  Equality in
-the corresponding inequality is equivalent to the vanishing of the
-corresponding norm.
+and hence
+\[
+  (2h+q)\|v\|^2
+  =
+  \|G^-_{-1/2}v\|^2
+  +
+  \|G^+_{1/2}v\|^2 .
+\]
+Both right-hand sides are nonnegative, so \(2h\ge q\) and \(2h\ge -q\).
+If \(q\ge0\), saturation of \(h=q/2\) is equivalent to the vanishing of both
+summands in the first displayed identity.  If \(q\le0\), saturation of
+\(h=-q/2\) is equivalent to the vanishing of both summands in the second
+identity.  The primary-state reduction follows by imposing the positive-mode
+annihilation conditions \(G^\pm_{1/2}v=0\).
 \end{proof}
 
 \paragraph{NS--R relation for chiral primaries.}
@@ -539,7 +563,8 @@ For \(\eta=\pm1\), write
 \]
 These fields, when present as local chiral fields, are the integer
 spectral-flow generators of the extended \(\mathcal N=2\) algebra.  They
-are obtained from the vacuum by spectral flow, hence
+are obtained from the vacuum by spectral flow and are NS highest-weight
+states, hence
 \begin{equation}
   h(X^\pm)=\frac c6,
   \qquad
@@ -670,13 +695,33 @@ In the right Ramond sector the zero-mode relation is
   \label{eq:right-ramond-zero-mode-elliptic-genus}
 \end{equation}
 Differentiating \eqref{eq:elliptic-genus-definition} with respect to
-\(\bar\tau\) inserts \(\bar L_0-c/24\).  By
-\eqref{eq:right-ramond-zero-mode-elliptic-genus}, the derivative is a
-supertrace of a right-moving supercommutator.  Cyclicity of the convergent
-supertrace makes this vanish.  Equivalently, states with
-\(\bar L_0>c/24\) are paired by the right zero modes with opposite fermion
-parity and identical left quantum numbers, so their contributions cancel.
-The unpaired states are precisely the right Ramond ground states.
+\(\bar\tau\) inserts the operator \(\bar L_0-c/24\), up to the scalar factor
+\(-2\pi\ii\).  By \eqref{eq:right-ramond-zero-mode-elliptic-genus} this
+insertion is one half of the anticommutator
+\(\{\bar G^+_0,\bar G^-_0\}\).  The zero modes are odd and commute with the
+left-moving factors \(y^{J_0}q^{L_0-c/24}\).  The trace-class cyclicity
+hypothesis therefore gives
+\[
+  \operatorname{Str}_{\Hilb_{\rm RR}}
+  y^{J_0}q^{L_0-c/24}\bar q^{\bar L_0-c/24}
+  \{\bar G^+_0,\bar G^-_0\}
+  =
+  0,
+\]
+because it is the supertrace of a supercommutator.  Hence
+\(\partial_{\bar\tau}\varphi_{\mathcal C}=0\).
+
+The same identity gives the state-by-state localization.  On an eigenspace
+with \(\bar E:=\bar L_0-c/24>0\), the odd operator
+\[
+  \bar Q_{\rm R}=\frac{\bar G^+_0+\bar G^-_0}{\sqrt{2\bar E}}
+\]
+is an involution after restricting to that finite-multiplicity eigenspace,
+because \(\bar Q_{\rm R}^2=1\).  It reverses right-moving fermion parity and
+preserves the left-moving quantum numbers appearing in the trace.  Thus the
+positive-\(\bar E\) eigenspaces cancel in the supertrace.  The only unpaired
+states are the kernel of \(\bar L_0-c/24\), namely the right Ramond ground
+states.
 \end{proof}
 
 The elliptic variable \(z\) remembers left \(R\)-charge, so spectral flow

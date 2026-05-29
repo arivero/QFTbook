@@ -110,3 +110,10 @@ analysis before invoking the identities here.
 No figure is included in this pass.  Future figures should include
 Lagrangian-cycle deformation, fixed-locus normal complex, and boundary-term
 flow diagrams.
+
+## Audit Notes
+
+- 2026-05-29 seventh anti-wrapper pass: expanded the BV pushforward with
+  fluctuation boundary proof, and narrowed the observable version to
+  finite-dimensional quantum observables satisfying
+  \(\Delta_{\mathcal F}(\mathcal O\rho)=0\).

@@ -225,3 +225,6 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-29: demoted the boundary Euler equation to a worked variational
   paragraph.  The boundary condition remains explicit, but the proof is the
   direct fixed-metric first variation of the boundary action.
+- 2026-05-29 seventh pass: expanded the BPZ-equation proof to display the
+  \(L_{-1}\) insertion, the \(L_{-2}\) contour move, the primary OPE residue,
+  and the separated-point scope before inserting the degenerate null vector.

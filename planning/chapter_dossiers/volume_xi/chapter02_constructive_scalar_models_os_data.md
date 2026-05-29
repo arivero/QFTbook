@@ -179,3 +179,8 @@
   the abstract multiscale phase-cell summability theorem.  The open problem
   has been narrowed to the model-specific derivation of the actual
   phase-cell activities and the scale-decay polymer bound.
+- 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
+  normal-ordered polynomial stability bound from proposition form to worked
+  prose.  The lower bound remains as the first elementary stability estimate,
+  but the theorem-level burden is the later multiscale phase-cell summability
+  and model-specific activity bounds.

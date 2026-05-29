@@ -173,20 +173,17 @@ By the spectral theorem this has the form
 \]
 for a positive finite spectral measure \(\rho_{R,L}\).
 
-\begin{lemma}[Large-time spectral extraction]
-\label{lem:large-time-spectral-extraction}
-Let \(\rho\) be a nonzero finite positive measure on \([E_\ast,\infty)\) and
-assume every interval \([E_\ast,E_\ast+\varepsilon]\) has positive
-\(\rho\)-measure.  Then
+\paragraph{Large-time spectral extraction.}
+The static-potential limit uses the elementary Laplace principle for a
+positive spectral measure.  Let \(\rho\) be a nonzero finite positive measure
+on \([E_\ast,\infty)\), and assume every interval
+\([E_\ast,E_\ast+\varepsilon]\) has positive \(\rho\)-measure.  Then
 \[
   -\lim_{T\to\infty}\frac1T
   \log\int e^{-TE}\,d\rho(E)
   =
   E_\ast .
 \]
-\end{lemma}
-
-\begin{proof}
 Since \(E\geq E_\ast\),
 \[
   \int e^{-TE}\,d\rho(E)
@@ -202,7 +199,9 @@ Thus the liminf of the left side is at least \(E_\ast\).  For every
 \]
 The measure factor is positive and independent of \(T\), so the limsup is at
 most \(E_\ast+\varepsilon\).  Letting \(\varepsilon\to0\) proves the claim.
-\end{proof}
+This calculation supplies only the last step after a reflection-positive
+transfer-matrix sector and a renormalized Wilson-loop spectral measure have
+already been constructed.
 
 Thus \(V_R(L)\) is the bottom of the static-source spectrum in the chosen
 sector.  Its large-\(L\) behavior gives several distinct responses:

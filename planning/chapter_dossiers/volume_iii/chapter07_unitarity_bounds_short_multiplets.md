@@ -115,3 +115,7 @@ The chapter establishes:
 - 2026-05-24 issue #422 pass: labeled the short-multiplet operator-equation
   discussion so the conformal-block construction can reference the precise
   source of the null descendants that must be subtracted level-by-level.
+- 2026-05-29 seventh anti-wrapper pass: expanded the scalar and
+  symmetric-traceless unitarity-bound proofs so the radial adjointness,
+  irreducible level-one Gram eigenvalues, null-radical quotient, and
+  separated-point operator-equation scope are explicit.

@@ -48,8 +48,7 @@ test function
   \label{eq:piecewise-constant-test-function}
 \end{equation}
 
-\begin{proposition}[Cell averages approximate test functions]
-\label{prop:cell-average-test-function-convergence}
+\paragraph{Cell averages approximate test functions.}
 Let \(K\subset\mathbb R^d\) be compact and let \(f,h\in C_c^1(\mathbb R^d)\)
 have support contained in \(K\).  Then
 \begin{equation}
@@ -65,9 +64,6 @@ have support contained in \(K\).  Then
 \end{equation}
 where \(C_K\) depends only on a fixed compact enlargement of \(K\).  In
 particular \(f_a\to f\) in \(L^2_{\mathrm{loc}}\).
-\end{proposition}
-
-\begin{proof}
 On each cell \(Q_a(x)\),
 \[
   |(I_af)(x)-f(u)|\leq c_d a\|f\|_{C^1},
@@ -83,10 +79,9 @@ for all \(u\in Q_a(x)\), by the mean-value theorem and
   \bigl(\|f\|_{C^1}\|h\|_{C^0}+\|f\|_{C^0}\|h\|_{C^1}\bigr)
   +
   c''_d a^2\|f\|_{C^1}\|h\|_{C^1}.
-  \]
+\]
 Integrating this estimate over the cells meeting the compact enlargement of
 \(K\) gives \eqref{eq:cell-average-product-error}, after increasing \(C_K\).
-\end{proof}
 
 \begin{definition}[Scaling-limit datum]
 \label{def:scaling-limit-datum}

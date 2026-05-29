@@ -94,8 +94,11 @@ extra invariance assumption.
 \end{lemma}
 
 \begin{proof}
-Let \(\psi_\mu=\widehat K_\mu\ket{\vac}\).  By the domain hypothesis and
-\eqref{eq:radial-d-k-vacuum-commutator},
+Let \(\psi_\mu=\widehat K_\mu\ket{\vac}\).  The domain hypothesis is included
+so that both \(\widehat K_\mu\ket{\vac}\) and
+\(\widehat D_{\rm rad}\widehat K_\mu\ket{\vac}\) are honest Hilbert-space
+vectors.  On this common domain,
+\eqref{eq:radial-d-k-vacuum-commutator} gives
 \[
   \widehat D_{\rm rad}\psi_\mu
   =
@@ -107,9 +110,13 @@ Let \(\psi_\mu=\widehat K_\mu\ket{\vac}\).  By the domain hypothesis and
   =
   -\psi_\mu .
 \]
-If \(\psi_\mu\ne0\), this would be an eigenvector of the nonnegative
-self-adjoint operator \(\widehat D_{\rm rad}\) with eigenvalue \(-1\), which is
-impossible.  Hence \(\psi_\mu=0\).
+Thus, if \(\psi_\mu\ne0\), the spectral measure of \(\psi_\mu\) for the
+nonnegative self-adjoint operator \(\widehat D_{\rm rad}\) would be supported
+at the single point \(-1\).  The spectral theorem gives
+\(\langle\psi_\mu,\widehat D_{\rm rad}\psi_\mu\rangle\ge0\) for every vector in
+the quadratic-form domain, while the displayed eigenvalue equation gives the
+same expectation value as \(-\|\psi_\mu\|^2\).  Hence
+\(\|\psi_\mu\|=0\), and \(\widehat K_\mu\ket{\vac}=0\).
 \end{proof}
 
 Equivalently, for a finite conformal transformation \(f:x\mapsto \widetilde x\)

@@ -418,20 +418,37 @@ direction \(\mathbf n\).  Then
 \begin{proof}
 Fix \(\mathbf n=(0,0,1)\).  The little group \(SO(2)\) decomposes symmetric
 traceless polarizations into helicity \(2\), helicity \(1\), and helicity
-\(0\) sectors.  For a helicity \(2\) polarization, for instance
-\(\varepsilon_{11}=-\varepsilon_{22}\) and
-\(\varepsilon_{12}=0=\varepsilon_{i3}\), both ratios in
-\eqref{eq:hm-energy-one-point} equal \(0\).  Positivity gives
+\(0\) sectors.  Since the energy detector is assumed positive as a quadratic
+form in \(\varepsilon_{ij}\), it is enough to test one nonzero vector in each
+irreducible \(SO(2)\) sector; Schur diagonalizes the quadratic form on these
+sectors.  For a helicity \(2\) polarization, for instance
+\(\varepsilon_{11}=-\varepsilon_{22}\), \(\varepsilon_{12}=0\), and
+\(\varepsilon_{i3}=0\).  Then both ratios in
+\eqref{eq:hm-energy-one-point} vanish, so positivity gives
 \[
   1-\frac13t_2-\frac{2}{15}t_4\geq0.
 \]
-For a helicity \(1\) polarization, for instance
-\(\varepsilon_{13}=\varepsilon_{31}\neq0\), the first ratio equals
-\(\frac12\) and the second equals \(0\), giving the second inequality.  For a
-helicity \(0\) polarization proportional to
-\(\operatorname{diag}(1,1,-2)\), the first and second ratios both equal
-\(\frac23\), giving the third inequality.  Rotational covariance transports
-the same conditions to every detector direction.
+For a helicity \(1\) polarization, for instance the symmetric tensor with
+\(\varepsilon_{13}=\varepsilon_{31}\ne0\) and all other independent components
+zero, one has
+\[
+  \frac{\varepsilon^*_{ij}\varepsilon_{ik}n^jn^k}
+       {\varepsilon^*_{ij}\varepsilon_{ij}}
+  =
+  \frac12,
+  \qquad
+  \frac{|\varepsilon_{ij}n^in^j|^2}
+       {\varepsilon^*_{ij}\varepsilon_{ij}}
+  =
+  0,
+\]
+which gives the second inequality.  For the helicity \(0\) polarization
+proportional to \(\operatorname{diag}(1,1,-2)\), the two ratios are
+\[
+  \frac23,\qquad \frac23,
+\]
+and positivity gives the third inequality.  Rotational covariance transports
+the same three eigenvalue conditions to every detector direction.
 \end{proof}
 
 The derivation of the normal form

@@ -348,13 +348,20 @@ that \(\rho\) obeys the full finite-dimensional QME
 \end{equation}
 Thus BV pushforward preserves the QME if and only if the displayed boundary
 functional vanishes or is cancelled by an additional boundary, residue, or
-regulator contribution.  The same formula holds with \(\rho\) replaced by
-\(\mathcal O\rho\) for quantum observables.
+regulator contribution.  If \(\mathcal O\) is a quantum observable in the
+finite-dimensional sense that
+\(\Delta_{\mathcal F}(\mathcal O\rho)=0\), the same formula holds with
+\(\rho\) replaced by \(\mathcal O\rho\).
 \end{proposition}
 
 \begin{proof}
-As in Theorem~\ref{thm:bv-pushforward-qme-preservation},
-\(\Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}\).  Therefore
+As in Theorem~\ref{thm:bv-pushforward-qme-preservation}, the product
+Darboux/Berezinian convention gives
+\[
+  \Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}.
+\]
+The residual BV Laplacian differentiates only the residual variables, so the
+convergence hypothesis permits it to pass through the fluctuation integral:
 \begin{equation}
   \Delta_{\rm res}\pi_*\rho
   =
@@ -365,10 +372,14 @@ As in Theorem~\ref{thm:bv-pushforward-qme-preservation},
   (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
   \label{eq:bv-boundary-pushforward-proof}
 \end{equation}
-Definition~\ref{def:bv-fluctuation-boundary-functional} identifies the last
-integral with the boundary functional.  This proves
-\eqref{eq:bv-pushforward-boundary-obstruction}.  The observable statement is
-identical after replacing \(\rho\) by \(\mathcal O\rho\).
+The second equality uses the full QME to replace
+\(\Delta_{\rm res}\rho\) by \(-\Delta_{\rm fluc}\rho\).
+Definition~\ref{def:bv-fluctuation-boundary-functional} identifies the last integral
+with the fluctuation-boundary functional, including its Darboux-coordinate
+Stokes expression and its coordinate-independent semidensity meaning.  This
+proves \eqref{eq:bv-pushforward-boundary-obstruction}.  The observable
+statement is identical after replacing \(\rho\) by \(\mathcal O\rho\) and
+using \(\Delta_{\mathcal F}(\mathcal O\rho)=0\).
 \end{proof}
 
 In field theory this theorem is the finite-dimensional model for Wilsonian

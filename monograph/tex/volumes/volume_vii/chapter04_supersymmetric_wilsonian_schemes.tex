@@ -122,12 +122,12 @@ language this condition is where the regulator, gauge fixing, contour, and
 large-field behavior of the effective integration cycle enter.  Supersymmetry
 at the cutoff is an extra compatibility datum in item (v): the regulated
 supercharges must act on the full BV complex and preserve the admissible cycle
-up to a BV-exact deformation with vanishing boundary term.  The proposition
-below is therefore a BV Stokes consequence of these data; the construction of
+up to a BV-exact deformation with vanishing boundary term.  The construction of
 such data is the substantive problem in a supersymmetric Wilsonian scheme.
+The local coordinate calculation behind item (iv) is the following
+finite-dimensional BV Stokes calculation.
 
-\begin{lemma}[BV Stokes in a finite-cutoff Darboux chart]
-\label{lem:finite-cutoff-bv-stokes}
+\paragraph{BV Stokes in a finite-cutoff Darboux chart.}
 Let \(K\) be a finite-dimensional odd symplectic space with Darboux
 coordinates \(x^i,\xi_i\) and BV Laplacian
 \[
@@ -149,10 +149,7 @@ In particular, the integral vanishes for compact boundaryless cycles and for
 noncompact cycles on which the boundary term at infinity is zero.  The same
 statement in another Darboux chart follows by the invariance of the BV
 Laplacian on half-densities under canonical coordinate changes.
-\end{lemma}
-
-\begin{proof}
-On \(\xi=0\),
+Indeed, on \(\xi=0\),
 \[
   \left.\Delta_K\alpha\right|_{\xi=0}
   =
@@ -163,11 +160,13 @@ On \(\xi=0\),
   \right|_{\xi=0}.
 \]
 Integration over the \(x\)-cycle converts this ordinary divergence into the
-displayed boundary integral.  The vanishing criterion is therefore the usual
-Stokes theorem applied to the integration cycle.  Since half-density BV
-integration is defined invariantly, a general Lagrangian chart gives the
-same formula after a canonical change of Darboux coordinates.
-\end{proof}
+displayed boundary integral.  The vanishing criterion is the usual Stokes
+theorem applied to the integration cycle, expressed in BV half-density
+coordinates.  Since half-density BV integration is defined invariantly, a
+general Lagrangian chart gives the same formula after a canonical change of
+Darboux coordinates.  Thus the real input in an admissible Wilsonian step is
+the existence of a cycle and regulator for which this boundary functional
+vanishes.
 
 The Wilsonian pushforward associated to these data is
 \begin{equation}
@@ -199,7 +198,16 @@ For an admissible BV Wilsonian step,
 \end{proposition}
 
 \begin{proof}
-Using the split BV Laplacian,
+Write the high variables as \(K_{\Lambda\Lambda'}\), so that the admissible
+step supplies a factorization
+\[
+  \Delta_\Lambda
+  =
+  \Delta_{\Lambda'}+\Delta_{K_{\Lambda\Lambda'}}
+\]
+on half-densities in the chosen finite-cutoff Darboux atlas.  The residual
+operator \(\Delta_{\Lambda'}\) differentiates only the unintegrated variables,
+so it commutes with the convergent fiber integral:
 \[
   \Delta_{\Lambda'}(p_{\Lambda\Lambda'})_*\rho_\Lambda
   =
@@ -209,12 +217,15 @@ Using the split BV Laplacian,
   \int_{\mathcal L_{\Lambda\Lambda'}}
   \left(\Delta_\Lambda-\Delta_{K_{\Lambda\Lambda'}}\right)\rho_\Lambda .
 \]
-The first term vanishes by the quantum master equation at scale
-\(\Lambda\).  The second term vanishes by the BV boundary condition
-\eqref{eq:admissible-bv-boundary-condition}.  This is the finite-cutoff form
-of BV Stokes: a BV Laplacian in the integrated variables is a total
-divergence on the Lagrangian cycle, and the declared class of cycles has no
-boundary contribution.
+The term containing \(\Delta_\Lambda\rho_\Lambda\) vanishes by the quantum
+master equation at scale \(\Lambda\).  The remaining term is a BV divergence
+in the integrated variables.  In a Darboux chart it is exactly the boundary
+functional displayed above, and the coordinate-independent form of this
+vanishing is the admissibility condition
+\eqref{eq:admissible-bv-boundary-condition}.  Hence no residual boundary
+semidensity is left on the low variables.  The proposition proves preservation
+of the QME for a declared admissible step; it does not construct the regulator
+or the supersymmetric integration cycle.
 \end{proof}
 
 For gauge theories, this BV compatibility or a lattice blocking construction

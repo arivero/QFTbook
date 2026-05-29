@@ -677,3 +677,7 @@ The chapter must define and derive:
   algebra to a worked paragraph.  The algebra remains explicit, but the proof
   is finite Pauli-matrix bookkeeping plus large-\(N_c\) scaling of matrix
   elements, not a standalone theorem-level claim.
+- 2026-05-29 seventh anti-wrapper pass: demoted the pseudoscalar-meson--baryon
+  partial-wave \(J^P\) rule to representation-theory prose and expanded the
+  smeared energy-flow continuity lemma so the soft and collinear bounds are
+  stated as continuity of finite-energy calorimetric measures.

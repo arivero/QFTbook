@@ -28,7 +28,7 @@ and local-algebra comparison layer.
 ## Claim Ledger
 
 - Defines scaling maps from lattice fields to continuum distributions.
-- Proves that cell averages approximate continuum test functions and thereby
+- Derives that cell averages approximate continuum test functions and thereby
   fix the normalization of lattice smearing maps.
 - Defines the scaling-limit datum: regulator states, trajectory, test spaces,
   operator maps, normalizations, and convergence topology.
@@ -61,3 +61,9 @@ the OS reconstruction pipeline.
   cell-average product arithmetic, finite-graph random-walk resolvent,
   reflection-positive Gram-matrix limit, and tensor-product locality for
   disjoint spin factors.
+
+## Audit Notes
+
+- 2026-05-29 seventh anti-wrapper pass: demoted the cell-average approximation
+  estimate from proposition form to worked prose.  It is a normalization and
+  Riemann-sum estimate, not a theorem-level continuum-limit result.

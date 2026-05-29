@@ -17,8 +17,7 @@ Lorentzian QFT by reconstruction.
 
 \section{Finite-Dimensional Langevin Identity}
 
-\begin{proposition}[Finite-dimensional invariant density]
-\label{prop:finite-dimensional-langevin-invariant-density}
+\paragraph{Finite-dimensional invariant density.}
 Let \(S:\R^n\to\R\) be smooth and confining enough that
 \[
   Z=\int_{\R^n}\ee^{-S(x)}\,\dd x<\infty .
@@ -41,10 +40,7 @@ For smooth compactly supported \(f,g\),
 \end{equation}
 Therefore \(L\) is symmetric in \(L^2(\ee^{-S}\dd x)\), and the probability
 measure \(Z^{-1}\ee^{-S}\dd x\) is invariant.
-\end{proposition}
-
-\begin{proof}
-Integrating the drift term by parts gives
+The calculation is ordinary finite-dimensional integration by parts:
 \[
   \int (-\partial_iS)(\partial_i f)g\,\ee^{-S}\dd x
   =
@@ -61,7 +57,6 @@ Adding the Laplacian contribution and integrating by parts once more,
 Summing over \(i\) gives \eqref{eq:finite-dimensional-dirichlet-form}.  With
 \(g=1\), the right-hand side vanishes, so the adjoint generator annihilates
 \(\ee^{-S}\dd x\); this is invariance.
-\end{proof}
 
 \section{Regularized Field Equation}
 
@@ -176,22 +171,42 @@ covariance \((-\Delta+m^2)^{-1}\), and
 \end{lemma}
 
 \begin{proof}
-For the one-dimensional Ornstein--Uhlenbeck equation
-\(\dd Z_t=-aZ_t\dd t+\sqrt2\,\dd B_t\), stationarity gives
+For the real one-dimensional Ornstein--Uhlenbeck equation
+\(\dd Z_t=-aZ_t\dd t+\sqrt2\,\dd B_t\), \(a>0\), the stationary solution is
+obtained by solving from time \(-\infty\):
 \[
   Z_t=\sqrt2\int_{-\infty}^{t}e^{-a(t-r)}\,\dd B_r,
-  \qquad
+\]
+where the integral is well-defined in \(L^2(\Omega)\) because
+\(\int_0^\infty e^{-2au}\dd u<\infty\).  Ito isometry gives
+\[
   \mathbb E|Z_t|^2
   =
   2\int_0^\infty e^{-2au}\,\dd u
   =
   a^{-1}.
 \]
-Taking \(a=|k|^2+m^2\) gives
-\eqref{eq:spde-stationary-fourier-covariance}.  The Sobolev expectation is
-the displayed Fourier sum.  In two dimensions the large-\(|k|\) summand is
-comparable to \(|k|^{-2-2s}\), whose lattice sum converges exactly when
-\(s>0\).
+For the complex Fourier mode \(X_k\) one applies the same calculation to the
+paired real and imaginary coordinates, with the covariance convention in
+\eqref{eq:spde-fourier-ou-mode} chosen so that
+\(\mathbb E[X_k\overline{X_\ell}]=0\) for \(k\ne\ell\) and
+\(\mathbb E|X_k|^2=(|k|^2+m^2)^{-1}\).  Taking
+\(a=|k|^2+m^2\) gives \eqref{eq:spde-stationary-fourier-covariance}.
+
+For a finite Fourier cutoff \(N\), Parseval gives
+\[
+  \mathbb E\|P_NX(\tau)\|_{H^{-s}}^2
+  =
+  \sum_{|k|\le N}
+  \frac{(1+|k|^2)^{-s}}{|k|^2+m^2}.
+\]
+The summands are nonnegative, so monotone convergence passes to the infinite
+sum.  In two dimensions the large-\(|k|\) summand is comparable to
+\(|k|^{-2-2s}\), and the lattice count
+\(\#\{k\in\mathbb Z^2: R\le |k|<R+1\}=O(R)\) reduces convergence to
+\(\sum_R R^{-1-2s}<\infty\), namely \(s>0\).  Thus the stationary field is an
+\(H^{-s}\)-valued Gaussian random distribution for every \(s>0\), with
+covariance \((-\Delta+m^2)^{-1}\).
 \end{proof}
 
 Let \(P_N\) be the Fourier projection to \(|k|\leq N\), set \(X_N=P_NX\),

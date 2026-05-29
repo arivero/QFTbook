@@ -225,3 +225,8 @@
   local-observable/factorization-algebra boundary, and the companion
   `bv_master_algebra_checks.py` script for ghost-number, nilpotency, and
   doublet-homotopy algebra.
+- 2026-05-29 seventh anti-wrapper pass: expanded the finite-dimensional BV
+  pushforward proof so it explicitly treats the low/high semidensity split,
+  commutation of the low BV Laplacian with the convergent high integral, and
+  the no-boundary hypothesis as the condition that removes the high BV
+  divergence.

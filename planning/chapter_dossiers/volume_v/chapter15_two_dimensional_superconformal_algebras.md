@@ -224,3 +224,9 @@ map without turning into a supersymmetric dynamics chapter.
   weights to deriving the protected `A`-series ring
   `C[x]/(x^(K+1))`, with exact checks of multiplication, associativity,
   nilpotence, and Ramond charge matching.
+- 2026-05-29 seventh anti-wrapper pass: corrected and strengthened the
+  `N=2` NS chiral-primary bound by stating the common-domain hypothesis and
+  the full equality condition; for primary states the condition reduces to the
+  usual single lowering-mode shortening.  The elliptic-genus right-moving
+  localization proof now displays the supertrace cyclicity and positive-energy
+  Ramond zero-mode pairing explicitly.

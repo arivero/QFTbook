@@ -19,8 +19,10 @@
   supersymmetry compatibility; the chapter now emphasizes that this hypothesis
   is the load-bearing construction problem, while QME preservation is the BV
   Stokes consequence.
-- Finite-cutoff Darboux-coordinate proof of BV Stokes for the integrated
-  variables.
+- Finite-cutoff Darboux-coordinate BV Stokes calculation for the integrated
+  variables, kept as worked prose because the substantive datum is the
+  boundaryless admissible cycle rather than the coordinate divergence
+  identity.
 - BV pushforward of half-densities and preservation of the quantum master
   equation by BV Stokes.
 - Composable BV Wilsonian tower and semigroup property of BV pushforward.
@@ -88,3 +90,7 @@
   tower to a worked paragraph.  The content is the Fubini/product-cycle
   consequence of the composability definition; the genuinely nontrivial
   material is the construction and admissibility of that BV tower.
+- 2026-05-29 seventh pass: demoted the finite-cutoff Darboux BV Stokes
+  coordinate calculation from lemma form to worked prose, and expanded QME
+  preservation to show the split Laplacian, commutation with the fiber
+  integral, and vanishing boundary functional explicitly.

@@ -1226,9 +1226,35 @@ satisfies
 \end{proposition}
 
 \begin{proof}
-The \(L_{-1}\) insertion at \(z\) is \(\partial_z\).  The Ward identity for a
-stress-tensor contour around \(z\), moved to contours around the other marked
-points, gives
+The proof uses only two inputs: the degenerate quotient in the Verma module of
+\(V_{-b/2}\), and the separated-point Virasoro Ward identity.  The
+state-field relation gives
+\[
+  \left\langle
+    (L_{-1}^2V_{-b/2})(z)\prod_iV_{\alpha_i}(z_i)
+  \right\rangle
+  =
+  \partial_z^2 F .
+\]
+For the \(L_{-2}\) insertion, write
+\[
+  (L_{-2}V_{-b/2})(z)
+  =
+  \oint_z\frac{\dd w}{2\pi\ii}\,
+  \frac{T(w)V_{-b/2}(z)}{w-z}.
+\]
+The contour may be moved, inside the separated-point domain, to the contours
+around the other insertions and the contour at infinity.  The latter vanishes
+for the sphere correlator after the usual Ward identity falloff.  Around
+\(z_i\),
+\[
+  T(w)V_{\alpha_i}(z_i)
+  \sim
+  \frac{h_i}{(w-z_i)^2}V_{\alpha_i}(z_i)
+  +
+  \frac{1}{w-z_i}\partial_{z_i}V_{\alpha_i}(z_i),
+\]
+and expanding \(1/(w-z)\) at \(w=z_i\) gives
 \[
   \left\langle
     (L_{-2}V_{-b/2})(z)\prod_iV_{\alpha_i}(z_i)
@@ -1237,14 +1263,18 @@ points, gives
   \sum_i
   \left(
     \frac{h_i}{(z-z_i)^2}
-    +\frac1{z-z_i}\partial_{z_i}
-  \right)F.
+      +\frac1{z-z_i}\partial_{z_i}
+    \right)F.
 \]
-Inserting the null-vector equation
-\((L_{-1}^2+b^2L_{-2})V_{-b/2}=0\) gives
-\eqref{eq:liouville-bpz-equation}.  This is an identity for
-separated-point correlators; coincident-point limits require the OPE and
-contact-term renormalization.
+The null-vector equation in the degenerate quotient,
+\[
+  (L_{-1}^2+b^2L_{-2})V_{-b/2}=0,
+\]
+can now be inserted into the correlator.  Combining the two displayed
+insertions gives \eqref{eq:liouville-bpz-equation}.  This is an identity for
+separated-point correlators in the specified Ward-identity domain; coincident
+limits require the OPE and contact-term renormalization rather than evaluation
+of the differential equation on the collision diagonals.
 \end{proof}
 
 The BPZ equation constrains correlators recursively because fusing

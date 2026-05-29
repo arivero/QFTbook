@@ -110,3 +110,8 @@ The chapter establishes:
   condition, type-A/type-B/type-D definitions, and explicit \(D=2,4,6\)
   parity-even bulk lists, with a calculation check for the finite
   dimension-counting and \(R^2\)-counterterm arithmetic.
+- 2026-05-29 seventh anti-wrapper pass: demoted the four-dimensional
+  parity-even Weyl-anomaly specialization from proposition form to prose tied
+  directly to the Deser-Schwimmer quoted theorem.  The \(D=4\) formula remains
+  explicit, but the proof wrapper was only the specialization of the local
+  anomaly classification plus the \(R^2\)-counterterm variation.

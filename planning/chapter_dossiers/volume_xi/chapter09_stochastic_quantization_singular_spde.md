@@ -1051,3 +1051,9 @@ data maps.
   second-chaos covariance graphs; the calculation-check companion verifies
   both that graph arithmetic and the sample nonlinear entropy/slack
   arithmetic.
+- 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
+  Langevin invariant-density identity from proposition form to an integration
+  by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck
+  covariance proof with the \(L^2\) construction, complex Fourier-mode
+  covariance convention, finite-cutoff Parseval identity, and monotone
+  convergence to the negative-Sobolev bound.
