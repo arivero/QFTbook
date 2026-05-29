@@ -92,8 +92,7 @@ Expanding and collecting terms gives
 \]
 which is \eqref{eq:qsc-t-gauge-two-row-factorization}.
 
-\begin{proposition}[Magic-sheet continuation of the one-row gauge]
-\label{prop:qsc-magic-sheet-one-row-gauge}
+\paragraph{Magic-sheet continuation algebra.}
 Assume the one-row gauge of Assumption~\ref{ass:qsc-one-row-t-gauge}.  Suppose
 that, across the mirror cut in the strip under consideration, the analytic
 Y-system gluing condition
@@ -125,9 +124,7 @@ Then, on the continued sheet,
   \qquad m\geq2.
   \label{eq:qsc-magic-sheet-t-gauge}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 The boundary relation says precisely that the upper branch \(G\) and the
 negative of the lower branch \(-\overline G\) glue with the same boundary
 value across the mirror cut.  Thus \(\widehat G\) is a single continued Cauchy
@@ -157,10 +154,9 @@ and its second factor becomes
   =
   \widehat{\mathcal T}_{1,1}^{[-m]}.
 \]
-Multiplying the two factors proves the second formula.  The proof is local in
+Multiplying the two factors gives the second formula.  This calculation is local in
 the strip: if a pole or endpoint is crossed, the missing information is an
 extra source term rather than a failure of the algebra.
-\end{proof}
 
 The hats emphasize that these are not new functions on the same sheet but
 analytic continuations through the Zhukovsky cut.  In the strip
@@ -226,8 +222,7 @@ The gauge transformation leaves the local Y-functions unchanged; its role is
 to put the central row and the two horizontal wings in a form adapted to
 single-short-cut Wronskians.
 
-\begin{proposition}[Fermionic product and central-row telescope]
-\label{prop:qsc-fermionic-discontinuity-telescope}
+\paragraph{Fermionic product and central-row telescope.}
 In the \(\mathbf T\)-gauge of
 Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges},
 \begin{equation}
@@ -270,9 +265,7 @@ is equivalently written as
   } .
   \label{eq:qsc-fermionic-discontinuity-bold-t}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Use the local T-system definition
 \[
   Y_{a,s}
@@ -323,12 +316,11 @@ numerator and once in the denominator.  The surviving boundary terms are
 \eqref{eq:qsc-central-row-telescope}.  Taking logarithmic discontinuities
 along the central cut gives \eqref{eq:qsc-fermionic-discontinuity-bold-t}.
 The first displayed discontinuity relation is the analytic-Y-system input
-from the mirror TBA; the proof here supplies its T-gauge form.
-\end{proof}
+from the mirror TBA; the telescope above supplies its T-gauge form.
 
 \paragraph{\(\mathbb T\)-gauge compatibility.}
 Under Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges} and
-Proposition~\ref{prop:qsc-magic-sheet-one-row-gauge},
+the magic-sheet continuation algebra above,
 \[
   \widehat{\mathbb T}_{2,m}
   =
@@ -456,8 +448,7 @@ is not identically zero; any isolated zeros are handled by analytic
 continuation of the resulting identities.
 \end{assumption}
 
-\begin{proposition}[Local T-hook algebra behind the \(P\mu\) bridge]
-\label{prop:qsc-local-t-hook-pmu-bridge}
+\paragraph{Local T-hook algebra behind the \(P\mu\) bridge.}
 Under Assumption~\ref{ass:qsc-two-row-t-hook-reconstruction}, regularity of
 the T-hook functions across the central short cut forces
 \begin{equation}
@@ -478,9 +469,13 @@ Moreover
   \frac{P_1\widetilde P_2-P_2\widetilde P_1}{\mu_{12}}.
   \label{eq:qsc-local-y11-y22-bridge}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
+The preceding assumption is the nontrivial analytic input: it asserts that a
+two-row Wronskian reconstruction by single-short-cut \(P\)-functions exists
+in the strip, and that the relevant central T-hook nodes are regular there.
+The displayed formulae below are the local Pluecker calculation extracted
+from that input.
+
 Write \(P_a^+=P_a^{[+2]}\), \(P_a^-=P_a^{[-2]}\), and
 \[
   D=P_1^+P_2^- - P_2^+P_1^- .
@@ -554,7 +549,6 @@ which proves the first equality in
 \eqref{eq:qsc-local-y11-y22-bridge}.  The second equality is the same
 statement after substituting
 \eqref{eq:qsc-local-mu12-discontinuity}.
-\end{proof}
 
 \begin{proposition}[Fermionic-node asymptotics]
 \label{prop:qsc-fermionic-node-large-u-ratio}
@@ -653,7 +647,7 @@ single-trace state of twist \(J\), Lorentz spin \(S\), and total physical
 momentum zero.  Let \(Y_{1,1}\) and \(Y_{2,2}\) denote the two fermionic
 T-hook nodes adjacent to the central strip in this gauge.  The local
 reconstruction algebra in
-Proposition~\ref{prop:qsc-local-t-hook-pmu-bridge} supplies the \(P\mu\)
+the local T-hook algebra above supplies the \(P\mu\)
 expression for \(Y_{1,1}Y_{2,2}\).  The remaining framework input is the
 energy normalization inherited from the excited-state mirror TBA:
 \[
@@ -673,8 +667,7 @@ global TBA contour formula for \(Y_{1,1}Y_{2,2}\), not an independent sign
 choice in the QSC.
 \end{assumption}
 
-\begin{lemma}[Dimension exponent of \(\mu_{12}\)]
-\label{lem:qsc-mu12-dimension-exponent}
+\paragraph{Dimension exponent of \(\mu_{12}\).}
 Under Assumption~\ref{ass:qsc-t-hook-charge-bridge} and the \(P\mu\)
 equations,
 \begin{equation}
@@ -687,9 +680,7 @@ If \(\mu_{12}\) has power-law large-\(u\) behavior on this sheet, then
 \[
   \mu_{12}(u)\sim u^{\Delta-J}.
 \]
-\end{lemma}
 
-\begin{proof}
 The \((1,2)\) component of the \(P\mu\) discontinuity equation gives
 \[
   \widetilde\mu_{12}(u)-\mu_{12}(u)
@@ -716,7 +707,6 @@ Pseudo-periodicity \eqref{eq:planar-n4-pmu-period} then gives
 Comparison with the large-\(u\) energy normalization in
 Assumption~\ref{ass:qsc-t-hook-charge-bridge} gives
 \(\alpha=\Delta-J\).
-\end{proof}
 
 State quantum numbers also enter through large-\(u\) asymptotics of \(P_a\)
 and the remaining \(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\),
@@ -733,7 +723,7 @@ powers of the \(P\)-functions are
   \sim
   (A_1u^{-J/2},A_2u^{-J/2-1},A_3u^{J/2},A_4u^{J/2-1}).
 \]
-Together with Lemma~\ref{lem:qsc-mu12-dimension-exponent}, the leading
+Together with the dimension-exponent calculation above, the leading
 terms in
 \[
   \widetilde P_a=\mu_{ab}P^b,\qquad
@@ -915,8 +905,7 @@ above is included because it is a common source of sign errors:
 the products \(A_1A_4\) and \(A_2A_3\) carry the sign convention for
 \(\chi\), for \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), and for the short-cut sheet.
 
-\begin{proposition}[Large-\(u\) coefficient products]
-\label{prop:qsc-large-u-coefficient-products}
+\paragraph{Large-\(u\) coefficient products.}
 Under Assumption~\ref{ass:qsc-large-u-characteristic-roots}, the leading
 coefficient products are
 \[
@@ -933,9 +922,7 @@ coefficient products are
        {16J(J+1)}.
 \end{aligned}
 \]
-\end{proposition}
 
-\begin{proof}
 Put \(\beta=S-1\).  Since \(\Phi(\Delta)=\Phi(\beta)=0\), subtracting the
 two equations cancels the term proportional to \(Y\) and gives
 \[
@@ -976,7 +963,6 @@ gives the displayed formula for \(A_2A_3=Y\).  The formula for
 \]
 and the same factorization with
 \((J-S+2,J+S)\) replaced by \((J-S,J+S-2)\).
-\end{proof}
 
 \paragraph{Consistency of the \(P\mu\) discontinuity.}
 The discontinuity equation
@@ -1206,8 +1192,18 @@ antisymmetric forms and the same lower vector is contracted with itself.  They
 are nevertheless displayed because they are exactly what makes the choice of
 \(+\) or \(-\) shift harmless in the contraction formulae.
 
-\begin{proposition}[Unimodular \(P\)-\(Q\) bridge]
-\label{prop:qsc-local-pq-unimodular-bridge}
+The assumption above is not a harmless notational convention.  Its
+nontrivial content is the existence, in a chosen analytic strip and a chosen
+local Q-system gauge, of an invertible auxiliary matrix \(Q_{a|i}\) whose
+finite-difference jump has rank one and whose projections reproduce the
+short-cut \(P_a\) and long-cut \(Q_i\) functions.  In the global QSC this
+datum is part of the Riemann--Hilbert problem: one must specify the cut
+structure, gluing conditions, large-\(u\) asymptotics, possible zeros of
+\(\det Q_{a|i}\), and the residual \(\ii\)-periodic gauge transformations.
+The local algebra below only records consequences of that datum after those
+analytic choices have been made.
+
+\paragraph{Unimodular \(P\)-\(Q\) bridge algebra.}
 Under Assumption~\ref{ass:qsc-local-pq-bridge}, the contraction identities are
 independent of the shift:
 \begin{equation}
@@ -1220,9 +1216,7 @@ Moreover
   \det(Q_{a|i}^+)=\det(Q_{a|i}^-).
   \label{eq:qsc-local-pq-determinant-preserved}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Contract \eqref{eq:qsc-local-pq-rank-one-shift} with \(-P^a\).  Using
 \eqref{eq:qsc-local-pq-contractions} and \(P_aP^a=0\) gives
 \[
@@ -1267,12 +1261,11 @@ The matrix-determinant lemma gives
   1.
 \]
 Thus \(\det(Q_{a|i}^+)=\det M=\det(Q_{a|i}^-)\).
-\end{proof}
 
-This proposition is only local algebra.  It does not prove the existence of
+This calculation is only local algebra.  It does not prove the existence of
 global \(Q_{a|i}\) functions with the required cut structure, nor does it fix
-the physical gluing conditions.  It does explain why the QSC can be written in
-a unimodular \(Q_{a|i}\) gauge and why the formulae
+the physical gluing conditions.  It explains why the QSC can be written in a
+unimodular \(Q_{a|i}\) gauge and why the formulae
 \(Q_i=-P^aQ_{a|i}^{\pm}\), \(P_a=-Q^iQ_{a|i}^{\pm}\) are conventionally quoted
 without specifying the shift: the rank-one difference has zero contraction in
 both null directions.  Nonconstant \(\ii\)-periodic changes of \(Q_{a|i}\)
@@ -1326,8 +1319,7 @@ produced only by the short cuts \([-2g,2g]+\ii n\) collapsing to the points
 \(\ii n\).  The defining sheet has no additional poles.
 \end{assumption}
 
-\begin{proposition}[Weak \(P\mu\) elimination before the Baxter equation]
-\label{prop:qsc-weak-mu12-mu24-elimination}
+\paragraph{Weak \(P\mu\) elimination before the Baxter equation.}
 Work in the weak-coupling regularity class of
 Assumption~\ref{ass:qsc-weak-coupling-regularity}.  To leading order in
 \(g\), neglect the \(P_2P_3\) terms in the \((1,2)\) and \((2,4)\)
@@ -1361,9 +1353,7 @@ and eliminating \(\mu_{24}\) gives
 \end{aligned}
   \label{eq:qsc-weak-mu12-pre-baxter}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Use \(P^1=-P_4\), \(P^4=P_1\), and discard terms proportional to \(P_2\)
 or \(P_3\).  The \((1,2)\) component of
 \eqref{eq:planar-n4-pmu-monodromy-recursion} gives
@@ -1389,12 +1379,10 @@ substitute both expressions into
 \eqref{eq:qsc-weak-mu24-recursion}.  After shifting the resulting equation by
 \(u\mapsto u-\ii/2\), the terms proportional to
 \(\mu_{12}^{[+1]}\) collect exactly into the coefficient displayed in
-\eqref{eq:qsc-weak-mu12-pre-baxter}.  This proves the claim.
-\end{proof}
+\eqref{eq:qsc-weak-mu12-pre-baxter}.  This gives the stated elimination formula.
 
 The Baxter equation obtained in this degeneration is the following.  Assume
-the hypotheses of
-Proposition~\ref{prop:qsc-weak-mu12-mu24-elimination}.  Normalize \(P_1\) so
+the hypotheses of the weak \(P\mu\) elimination above.  Normalize \(P_1\) so
 that, at \(g=0\),
 \[
   \frac{1}{(P_1^{[\pm1]}(u))^2}=(u\pm\ii/2)^J,
@@ -1981,8 +1969,8 @@ large-\(x\) coefficients produced by the regularity split are
   -\epsilon I_{J-1}(4\pi g)x^{J/2-1}
   +O(x^{J/2-3}).
 \]
-Thus, in the large-\(u\) normalization of
-Proposition~\ref{prop:qsc-large-u-coefficient-products},
+Thus, in the large-\(u\) normalization of the coefficient-product calculation
+above,
 \[
   A_1=\epsilon g^{J/2},\quad
   A_2=-\epsilon g^{J/2+1}I_{J+1}(4\pi g),\quad

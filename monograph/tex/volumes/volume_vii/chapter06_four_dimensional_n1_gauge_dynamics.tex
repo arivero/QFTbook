@@ -80,8 +80,7 @@ the invariant tests in later sections are the numerator condition, anomaly
 matching, holomorphic scale matching, and protected chiral data.
 \end{hypothesis}
 
-\begin{proposition}[SQCD specialization of the NSVZ coordinate relation]
-\label{prop:sqcd-nsvz-coordinate-audit}
+\paragraph{SQCD specialization of the NSVZ coordinate relation.}
 Assume Hypothesis~\ref{hyp:sqcd-nsvz-coordinate-specialization}.  In the
 flavor-symmetric SQCD coordinate chart,
 \begin{equation}
@@ -102,9 +101,7 @@ where \(\kappa\) is independent of \(\mu\).  Consequently
   } .
   \label{eq:sqcd-nsvz-beta-specialized}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 The general relation of
 Proposition~\ref{prop:nsvz-coordinate-relation-derived} gives
 \[
@@ -143,7 +140,6 @@ Moving the anomalous-dimension term to the right hand side yields the
 NSVZ numerator \(3N_c-N_f(1-\gamma_Q)\).  Solving the displayed linear
 equation for \(\beta_g=\mu\,dg/d\mu\) gives
 \eqref{eq:sqcd-nsvz-beta-specialized}.
-\end{proof}
 
 Equivalently, inserting
 \[
@@ -303,8 +299,7 @@ constant in the final condensate but not the number of vacua or their
 relative phases.
 \end{hypothesis}
 
-\begin{proposition}[VY glueball superpotential]
-\label{prop:pure-sym-vy-superpotential}
+\paragraph{VY glueball superpotential from the chiral-sector hypothesis.}
 Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}.  Up to the
 finite normalization just described, the pure-SYM glueball superpotential may
 be written as
@@ -323,9 +318,7 @@ obey
   S^{N_c}=\Lambda_h^{3N_c}.
   \label{eq:pure-sym-vy-critical-equation}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Set \(L=\Lambda_h^{3N_c}\).  The only dimensionless holomorphic combination
 of \(S\) and \(L\) is
 \[
@@ -372,7 +365,6 @@ so the \(F_S=0\) equation is
 \eqref{eq:pure-sym-vy-critical-equation}.  Finally, both \(S\) and
 \(\Lambda_h^3\) have dimension \(3\), and the logarithm is dimensionless;
 therefore \(W_{\mathrm{VY}}\) has dimension \(3\).
-\end{proof}
 
 Choosing a branch of \(\Lambda_h^3\), the solutions of
 \eqref{eq:pure-sym-vy-critical-equation} are
@@ -397,16 +389,15 @@ statement with invariant content is the existence of a nonzero chiral
 condensate with these relative phases in a scheme where the low-energy
 theory has a mass gap and isolated vacua.
 
-\begin{proposition}[Condensate branches and source normalization]
-\label{prop:pure-sym-condensate-branches-source}
-Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description} and assume
+\paragraph{Condensate branches and source normalization.}
+Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}, and assume
 that the isolated critical points of
 \eqref{eq:pure-sym-vy-critical-equation} are realized as massive chiral
-branches of the pure \(SU(N_c)\) theory.  Let
+branches of the pure \(SU(N_c)\) theory.  With
 \[
   L=\Lambda_h^{3N_c}.
 \]
-On the \(k\)-th branch,
+the \(k\)-th branch has
 \[
   W_k(L)=N_c\,C\,L^{1/N_c}\ee^{2\pi\ii k/N_c},
   \qquad
@@ -422,10 +413,7 @@ The source identity gives
 Analytic continuation of \(L\) once around the origin sends
 \(k\mapsto k+1\).  Thus the \(N_c\) branches form one orbit under the
 anomalous chiral symmetry and under a \(2\pi\) theta-angle loop.
-\end{proposition}
-
-\begin{proof}
-At a VY critical point the logarithm in
+The calculation is the following.  At a VY critical point the logarithm in
 \eqref{eq:pure-sym-vy-superpotential} vanishes, so the critical value of the
 standard representative is \(W_k=N_cS_k\).  The finite normalization
 constant \(C\) records the allowed rescaling of \(S\) and of the chosen
@@ -447,7 +435,6 @@ if \(L\) is carried around a positively oriented loop about the origin, then
 label by one.  The same shift is produced by the generator
 \(\alpha=\pi/N_c\) of the anomaly-preserving \(\mathbb Z_{2N_c}\), since
 \(S\) has gaugino-phase charge \(2\).
-\end{proof}
 
 \section{Protected and Spectral Data in Pure SYM}
 \label{sec:pure-sym-protected-spectral-data}
@@ -471,7 +458,7 @@ spectral problem for pure \(\mathcal N=1\) \(SU(N_c)\) Yang--Mills consists of:
   smeared components of gauge-invariant superfields;
 \item a supersymmetric vacuum state \(\omega_k\) with GNS triple
   \((\mathcal H_k,\Omega_k,\pi_k)\), where \(k\in\mathbb Z/N_c\mathbb Z\)
-  labels the branch of Proposition~\ref{prop:pure-sym-condensate-branches-source};
+  labels the chiral branch in the VY/source-normalization discussion above;
 \item a strongly continuous translation representation
   \(U_k(a)=\exp(\ii a^\mu P^{(k)}_\mu)\) with joint spectral measure
   \(E_k(\cdot)\), vacuum vector \(P^{(k)}_\mu\Omega_k=0\), and mass operator
@@ -929,7 +916,7 @@ If this large-separation limit is the protected chiral correlator
 \eqref{eq:pure-sym-cluster-root-equation} follows.  The equation determines
 only the \(N_c\)-th power.  Its \(N_c\) roots are then organized by the
 \(\mathbb Z_{2N_c}\) anomaly and the \(\theta\)-monodromy described in
-Proposition~\ref{prop:pure-sym-condensate-branches-source}; no
+the VY/source-normalization discussion above; no
 single-instanton Berezin integral selects one branch by itself.
 \end{remark}
 
@@ -1164,8 +1151,7 @@ The constraint is
   x_1x_2\cdots x_{N_c}=\eta .
 \]
 
-\begin{proposition}[Affine-Toda critical-point count]
-\label{prop:pure-sym-affine-toda-critical-count}
+\paragraph{Affine-Toda critical-point count.}
 Assume Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input} and
 \(\eta\neq0\).  The critical equations of \(W_{\mathrm{aff}}\) on the
 constraint hypersurface
@@ -1180,9 +1166,7 @@ Equivalently, if \(x\) is the common value, then
 \[
   x^{N_c}=\eta .
 \]
-\end{proposition}
 
-\begin{proof}
 Write variations tangent to the constraint as
 \[
   \delta x_i=x_i\,\delta y_i,
@@ -1207,7 +1191,6 @@ The solutions are isolated.  On the tangent hyperplane
 Since \(x\neq0\), the bilinear form \(\sum_i(\delta y_i)^2\) is
 nondegenerate on the hyperplane.  Thus each critical point is Morse in the
 complex holomorphic sense.
-\end{proof}
 
 \begin{proposition}[Local index of a nondegenerate chiral critical point]
 \label{prop:pure-sym-local-chiral-critical-index}
@@ -1284,8 +1267,7 @@ Confinement and a mass gap require the separate spectral construction
 described in Section~\ref{sec:pure-sym-protected-spectral-data}.
 \end{hypothesis}
 
-\begin{proposition}[Pure \(SU(N_c)\) index and condensate relation]
-\label{prop:pure-sym-index-condensate-relation}
+\paragraph{Pure \(SU(N_c)\) index and condensate relation.}
 Assume Hypotheses~\ref{hyp:pure-sym-finite-volume-index-problem},
 \ref{hyp:pure-sym-small-circle-affine-toda-input}, and
 \ref{hyp:pure-sym-index-continuation-massive-branch}.  Then
@@ -1303,9 +1285,7 @@ then the \(N_c\) branches have condensates
 \]
 and the discrete chiral symmetry is broken as
 \(\mathbb Z_{2N_c}\to\mathbb Z_2\) in each pure phase.
-\end{proposition}
 
-\begin{proof}
 The affine-Toda computation gives \(N_c\) isolated supersymmetric critical
 points in the small-circle chamber.  The finite-volume graded-trace identity
 turns this critical-point count into the index in that chamber, because the
@@ -1318,11 +1298,10 @@ finite-volume index.
 
 The condensate statement uses an input beyond the index: the additional
 glueball \(F\)-term hypothesis.  Under that hypothesis,
-Proposition~\ref{prop:pure-sym-condensate-branches-source} gives precisely
+the VY/source-normalization branch analysis gives precisely
 the displayed \(N_c\)-fold orbit of \(\langle S\rangle\).  Since \(S\) has
 gaugino-phase charge \(2\), a nonzero value of \(\langle S\rangle_k\) leaves
 only the \(\alpha=\pi\) subgroup unbroken, namely \(\mathbb Z_2\).
-\end{proof}
 
 For a simple simply connected gauge group \(G\), the expected index is the
 dual Coxeter number \(h^\vee_G\).  The monograph does not use that general
@@ -2235,8 +2214,7 @@ holomorphic decoupling; they do not construct the full Hilbert space metric
 or prove confinement from a microscopic regulator.
 \end{hypothesis}
 
-\begin{proposition}[Uniqueness of the quantum modification]
-\label{prop:sqcd-quantum-modification-uniqueness}
+\paragraph{Uniqueness of the field-independent quantum modification.}
 Assume the \(N_f=N_c\) chiral-sector part of
 Hypothesis~\ref{hyp:sqcd-quantum-modified-confining-input}.  If the
 classical constraint is deformed by a field-independent holomorphic scale
@@ -2245,9 +2223,7 @@ deformation is
 \[
   \det M-B\widetilde B=\Lambda_h^{2N_c}.
 \]
-\end{proposition}
 
-\begin{proof}
 For \(N_f=N_c\), the anomaly-free assignment gives
 \[
   R(Q)=R(\widetilde Q)=0 .
@@ -2268,7 +2244,6 @@ combination
 No other field-independent monomial in the holomorphic scale has the required
 dimension.  Absorbing the nonzero numerical coefficient into the definition
 of \(\Lambda_h^{2N_c}\) gives the displayed constraint.
-\end{proof}
 
 \begin{proposition}[Mass decoupling from \(N_f=N_c+1\) to \(N_f=N_c\)]
 \label{prop:sqcd-confining-to-quantum-modified-decoupling}
@@ -2472,8 +2447,7 @@ anomaly and NSVZ calculations below test these assumptions; they do not by
 themselves construct the fixed point.
 \end{hypothesis}
 
-\begin{proposition}[SQCD central charges and free-field comparison]
-\label{prop:sqcd-conformal-window-central-charges}
+\paragraph{SQCD central charges and free-field comparison.}
 Assume Hypothesis~\ref{hyp:n1-scft-bookkeeping-input} and suppose
 \(\frac32N_c<N_f<3N_c\).  For the candidate SQCD superconformal
 \(R\)-current displayed above,
@@ -2523,9 +2497,7 @@ comparison between a free ultraviolet fixed point and the candidate
 infrared SCFT.  It is not a proof of a monotonicity theorem or of the
 existence of the flow; those remain part of the independent continuum and
 SCFT hypotheses.
-\end{proposition}
 
-\begin{proof}
 The traces are over Weyl fermions.  The gaugino contributes
 \[
   \operatorname{Tr}R_{\lambda}=N_c^2-1,
@@ -2596,7 +2568,6 @@ For \(y>0\) this expression is nonnegative and it is zero only when \(y=3\).
 In the interacting window \(3/2<y<3\), it is strictly positive.  The proof
 has established this finite anomaly comparison; it has not established the
 general \(a\)-theorem.
-\end{proof}
 
 \section{Seiberg Duality And The SQCD Phase Ledger}
 \label{sec:n1-seiberg-duality-sqcd}
@@ -3143,12 +3114,11 @@ bifundamental matrices can be simultaneously reduced to diagonal
 representatives.  Statements about protected dimensions use
 Hypothesis~\ref{hyp:n1-scft-bookkeeping-input}.  Claims about the full
 continuum conformal manifold are isolated in
-Hypothesis~\ref{hyp:kw-exact-marginality-input} and
-Proposition~\ref{prop:kw-local-conformal-manifold-rank-one}.
+Hypothesis~\ref{hyp:kw-exact-marginality-input} and in the
+exact-marginality rank calculation below.
 \end{hypothesis}
 
-\begin{proposition}[KW \(F\)-term equations]
-\label{prop:kw-f-term-equations}
+\paragraph{KW \(F\)-term equations.}
 The \(F\)-term equations of \(W_{\mathrm{KW}}\) are
 \begin{equation}
   A_1B_jA_2=A_2B_jA_1,\qquad j=1,2,
@@ -3159,9 +3129,7 @@ and
   B_1A_iB_2=B_2A_iB_1,\qquad i=1,2 .
   \label{eq:kw-f-term-b}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Expanding the antisymmetric tensors and using cyclicity of the trace gives
 \[
   W_{\mathrm{KW}}
@@ -3186,7 +3154,6 @@ same equation with \(A_1\) and \(A_2\) exchanged.  Varying with respect to
 \]
 which is exactly \eqref{eq:kw-f-term-a}.  These are matrix equations in the
 appropriate bifundamental Hom-spaces.
-\end{proof}
 
 \paragraph{KW anomaly and superpotential \(R\)-charge.}
 Assume the \(SU(2)_A\times SU(2)_B\) symmetry and the exchange symmetry, so
@@ -3520,16 +3487,12 @@ assume the common defect
 has nonzero differential at the symmetric point in the chosen source chart.
 \end{hypothesis}
 
-\begin{proposition}[KW local conformal manifold from rank one]
-\label{prop:kw-local-conformal-manifold-rank-one}
+\paragraph{KW local conformal manifold from rank one.}
 Assume Hypothesis~\ref{hyp:kw-exact-marginality-input}.  In the
 \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source chart, the
-Klebanov--Witten conformal locus is locally a complex two-dimensional
-submanifold of the three-dimensional source space with coordinates
-\((\tau_1,\tau_2,h)\).
-\end{proposition}
+Klebanov--Witten conformal locus is locally a complex surface in the
+source space with coordinates \((\tau_1,\tau_2,h)\).
 
-\begin{proof}
 Proposition~\ref{prop:kw-beta-function-rank-count} gives, in this chart,
 \[
   \mathcal B_1=N E,\qquad
@@ -3554,7 +3517,6 @@ are exactly those isolated in
 Hypothesis~\ref{hyp:kw-exact-marginality-input}: existence of the continuum
 SCFT chart, completeness of the beta-function analysis, and absence of hidden
 current or contact-term obstructions in the preserved-symmetry sector.
-\end{proof}
 
 The result is a conditional field-theoretic reconstruction of the
 Leigh--Strassler rank count for this example.  The chapter has proved the
@@ -3610,8 +3572,7 @@ neighborhood being used.  These duality assumptions are recorded again in
 Quoted Theorem~\ref{qt:ks-seiberg-duality-input}.
 \end{hypothesis}
 
-\begin{proposition}[Cascade rank step]
-\label{prop:ks-cascade-rank-step}
+\paragraph{Cascade rank step.}
 Assume the Seiberg-duality transformation for the first gauge factor while
 the second gauge factor is treated as a weakly gauged flavor symmetry during
 the dualization.  Then
@@ -3622,9 +3583,7 @@ the dualization.  Then
 \]
 up to relabeling of the two factors and matching of the quartic
 superpotential.
-\end{proposition}
 
-\begin{proof}
 The first gauge factor \(SU(N+M)\) sees two \(A\)-fields and two \(B\)-fields.
 Because each carries an \(SU(N)\) index of the second gauge group, it has
 \[
@@ -3666,7 +3625,6 @@ superpotential proportional to
 \]
 with a coefficient depending on the normalization of \(M_{ij}\) and
 \(\mu_*\).
-\end{proof}
 
 Thus the rank difference remains \(M\), while the common rank parameter
 drops by \(M\).  If

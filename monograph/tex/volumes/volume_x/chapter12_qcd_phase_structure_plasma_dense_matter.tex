@@ -469,8 +469,7 @@ cluster or hopping expansion, or by a separately stated numerical error
 estimate.
 \end{controlledapproximation}
 
-\begin{proposition}[Leading strong-coupling tube in pure Yang--Mills]
-\label{prop:qcd-polyakov-strong-coupling-tube}
+\paragraph{Leading strong-coupling tube in pure Yang--Mills.}
 Let the pure-gauge lattice action have a plaquette character expansion whose
 fundamental coefficient is \(u_{\square}\), normalized so that
 \(u_{\square}=0\) at zero plaquette coupling.  In a finite lattice
@@ -495,9 +494,7 @@ with
 \]
 in the same expansion.  The displayed term is center neutral and therefore
 compatible with Proposition~\ref{prop:qcd-polyakov-character-coordinates}.
-\end{proposition}
 
-\begin{proof}
 Expand each plaquette Boltzmann factor in irreducible characters.  A
 nonzero contribution to the Polyakov-loop marginal measure must leave no
 unpaired spatial link after Haar integration.  For two neighboring spatial
@@ -517,7 +514,6 @@ character coefficients; in the fundamental channel the first plaquette
 decorations occur at the indicated higher order.  The product has total
 \(N\)-ality \(1-1=0\), so it is invariant under the simultaneous center
 transformation.
-\end{proof}
 
 \begin{proposition}[Leading heavy-quark center-breaking term]
 \label{prop:qcd-polyakov-heavy-quark-term}
@@ -610,8 +606,7 @@ static sectors discussed in
 Section~\ref{sec:qcd-phase-hard-thermal-loops-linde} below.
 \end{controlledapproximation}
 
-\begin{theorem}[One-loop Polyakov-holonomy potential]
-\label{thm:qcd-weiss-potential}
+\paragraph{One-loop Polyakov-holonomy potential.}
 For pure \(SU(N_c)\) Yang--Mills, the one-loop gluonic free-energy density
 as a function of the holonomy \(P\) is
 \begin{equation}
@@ -639,9 +634,7 @@ fermion contribution is
   \right).
   \label{eq:qcd-weiss-quark-potential}
 \end{equation}
-\end{theorem}
 
-\begin{proof}
 Consider first one bosonic oscillator with thermal phase \(\varphi\), meaning
 that its Matsubara frequencies are shifted by the holonomy eigenvalue
 \(e^{\ii\varphi}\).  Its thermal free-energy density is
@@ -696,7 +689,6 @@ is the antiperiodic thermal boundary condition.  Expanding
 \(\log(1+x)=\sum_{n\ge1}(-1)^{n+1}x^n/n\), using
 \eqref{eq:qcd-weiss-thermal-momentum-integral}, and summing over colors and
 flavors gives \eqref{eq:qcd-weiss-quark-potential}.
-\end{proof}
 
 \begin{proposition}[Perturbative center-broken minima in pure Yang--Mills]
 \label{prop:qcd-weiss-center-broken-minima}
@@ -1453,8 +1445,7 @@ polarization tensors in this kinematic regime.  A calculation outside this
 scale separation is not an HTL calculation.
 \end{controlledapproximation}
 
-\begin{proposition}[Static HTL polarization and Debye mass]
-\label{prop:qcd-static-htl-debye-mass}
+\paragraph{Static HTL polarization and Debye mass.}
 Let \(a_0=a_0^aT^a\) be a slowly varying canonically normalized temporal
 gauge potential, and normalize the generators by
 \[
@@ -1490,9 +1481,7 @@ To leading static order the longitudinal electric propagator is screened as
 \]
 with the understanding that this formula is the static electric HTL limit,
 not a gauge-invariant definition of a particle pole.
-\end{proposition}
 
-\begin{proof}
 The statement is a color-susceptibility calculation for hard particles.
 Let a hard excitation of momentum \(p=|\mathbf p|\) and color weight \(w\)
 couple to the soft potential by the energy shift
@@ -1554,7 +1543,6 @@ The resummed static longitudinal propagator is the geometric series obtained
 by inserting this static self-energy into the soft electric propagator.  The
 derivation has used only the HTL separation between hard loop momentum and
 soft external field; it does not determine the magnetic sector.
-\end{proof}
 
 \begin{definition}[Retarded HTL induced-current kernel]
 \label{def:qcd-retarded-htl-induced-current-kernel}
@@ -1592,7 +1580,7 @@ kernel is normalized so that
 \[
   \mathcal K_R^{00,ab}(0,\mathbf k)=\delta^{ab}m_D^2,
 \]
-matching Proposition~\ref{prop:qcd-static-htl-debye-mass}.
+matching the static HTL calculation above.
 \end{definition}
 
 \begin{proposition}[Gauge-covariant HTL equations and transversality]
@@ -2173,8 +2161,7 @@ recovered by refining the partition inside the scale separation
 \(\Lambda_{\rm H}\ll\mu_q\).
 \end{definition}
 
-\begin{proposition}[Fermi-surface measure and density of states]
-\label{prop:qcd-hdet-fermi-surface-measure}
+\paragraph{Fermi-surface measure and density of states.}
 For functions supported in the shell
 \(|\boldsymbol\ell|\le\Lambda_{\rm H}\ll\mu_q\),
 \[
@@ -2196,9 +2183,7 @@ Including the two spin states of a massless Dirac quark gives
 \[
   N_{\rm Dirac}(0)=\frac{\mu_q^2}{\pi^2}.
 \]
-\end{proposition}
 
-\begin{proof}
 Write \(\mathbf p=(\mu_q+\ell_\parallel)\mathbf v+\boldsymbol\ell_\perp\)
 inside a patch.  To leading order in \(\Lambda_{\rm H}/\mu_q\), the radial
 Jacobian is
@@ -2222,7 +2207,6 @@ measure over \(S^2\) gives
 \]
 per spin and internal state.  A massless Dirac quark has two spin states on
 the positive-energy branch, giving the final formula.
-\end{proof}
 
 \begin{proposition}[Tree-level high-density quark action]
 \label{prop:qcd-hdet-tree-action}
@@ -2395,8 +2379,7 @@ dependent HDET counterterms and are not included in
 \(\Sigma_{\rm NFL}\).
 \end{definition}
 
-\begin{proposition}[Leading logarithmic cold dense quark self-energy]
-\label{prop:qcd-leading-nfl-self-energy}
+\paragraph{Leading logarithmic cold dense quark self-energy.}
 In Controlled Approximation~\ref{ca:qcd-hdl-non-fermi-liquid-regime}, the
 on-Fermi-surface Euclidean self-energy has the leading nonanalytic form
 \begin{equation}
@@ -2418,9 +2401,7 @@ For \(SU(3)\) in the monograph trace convention,
   \lambda_{\rm NFL}=\frac{2g^2}{9\pi^2}.
   \label{eq:qcd-leading-nfl-self-energy-su3}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 The one-loop patch self-energy from transverse exchange is obtained by
 contracting the patch quark current with the transverse HDL propagator.  The
 color projection gives \(C_F\).  Choose the patch normal
@@ -2517,12 +2498,11 @@ in \(p_0\), written with \(|p_0|\), gives
   \]
 which is \eqref{eq:qcd-leading-nfl-self-energy}.  The \(SU(3)\)
 specialization follows from \eqref{eq:qcd-trace-delta-fundamental-casimir}.
-\end{proof}
 
 \begin{remark}[Logarithmic vanishing of the patch residue]
 \label{rem:qcd-nfl-quark-residue}
 Under the assumptions of
-Proposition~\ref{prop:qcd-leading-nfl-self-energy}, the coefficient of
+the leading logarithmic self-energy calculation above, the coefficient of
 \(ip_0\) in the inverse patch propagator behaves as
 \begin{equation}
   Z^{-1}(p_0)
@@ -2984,8 +2964,7 @@ onset of stress; it is not a complete variational analysis of CFL, gapless
 CFL, meson-condensed phases, or crystalline phases.
 \end{controlledapproximation}
 
-\begin{proposition}[Clogston scale in the controlled two-species model]
-\label{prop:qcd-clogston-scale-two-species}
+\paragraph{Clogston scale in the controlled two-species model.}
 In Controlled Approximation~\ref{ca:qcd-two-species-stressed-bcs}, the
 zero-temperature grand-potential difference between the homogeneous paired
 state and the split normal state has the leading form
@@ -3006,9 +2985,7 @@ state in this model when
   \delta_{\rm C}=\frac{\Delta_0}{\sqrt2}.
   \label{eq:qcd-clogston-scale}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 At \(\delta=0\), the BCS condensation energy in the constant-density shell is
 \[
   \Omega_{\rm pair}(\delta=0)-\Omega_{\rm normal}(\delta=0)
@@ -3034,7 +3011,6 @@ state remains unsplit, its grand potential relative to the split normal state
 is shifted upward by \(N(0)\delta^2\), giving
 \eqref{eq:qcd-clogston-potential-difference}.  Setting the leading
 difference to zero gives \eqref{eq:qcd-clogston-scale}.
-\end{proof}
 
 \begin{remark}[Use of the stress scale in dense QCD]
 \label{rem:qcd-stress-scale-status}
@@ -3056,8 +3032,7 @@ through channels that can be attractive.  The BCS mechanism is then a
 controlled weak-coupling instability of the Fermi surface, though the
 precise gap prefactor is sensitive to magnetic gluon exchange and screening.
 
-\begin{proposition}[Color factor of one-gluon exchange between two quarks]
-\label{prop:qcd-one-gluon-qq-color-factor}
+\paragraph{Color factor of one-gluon exchange between two quarks.}
 Let the \(SU(N_c)\) fundamental generators be normalized as throughout the
 monograph,
 \[
@@ -3093,9 +3068,7 @@ the two-index antisymmetric channel is attractive and the symmetric channel
 is repulsive.  For \(SU(3)\), the attractive channel is
 \(\wedge^2\square=\overline{\square}\), with color factor \(-4/3\), while
 the symmetric sextet has color factor \(2/3\).
-\end{proposition}
 
-\begin{proof}
 Let \(C_2(R)\) denote the quadratic Casimir in the present trace convention.
 On an irreducible summand \(R\subset\square\otimes\square\),
 \[
@@ -3137,7 +3110,6 @@ and
   -\frac{N_c+1}{N_c}.
 \]
 The sign statement follows from the displayed exchange-energy convention.
-\end{proof}
 
 \begin{controlledapproximation}[Leading-log magnetic gap problem]
 \label{ca:qcd-leading-log-magnetic-gap}
@@ -3172,12 +3144,11 @@ problem they contribute to the matching scale and to the prefactor, not to
 the coefficient of the \(1/g\) exponent.
 \end{controlledapproximation}
 
-\begin{proposition}[HDL magnetic leading-log gap equation]
-\label{prop:qcd-hdl-magnetic-leading-log-gap-equation}
-In the regime of
-Controlled Approximation~\ref{ca:qcd-leading-log-magnetic-gap}, the
-frequency-dependent gap in the attractive antisymmetric quark-quark channel
-obeys, to leading logarithmic accuracy,
+\paragraph{HDL magnetic leading-log gap equation.}
+In the regime specified by
+Controlled Approximation~\ref{ca:qcd-leading-log-magnetic-gap}, the gap in the
+attractive antisymmetric quark-quark channel obeys, to leading logarithmic
+accuracy,
 \begin{equation}
   \Delta(p_0)
   =
@@ -3213,9 +3184,7 @@ For \(SU(3)\) in the monograph trace convention,
 The scale \(\Lambda_{\rm M}\) is a matching scale of order \(\mu_q\) times
 powers of \(g\) and numerical constants fixed only by next-to-leading
 matching.  It is not determined by the leading-log equation alone.
-\end{proposition}
 
-\begin{proof}
 The gap equation is the off-diagonal Schwinger--Dyson equation in
 Nambu--Gorkov variables, restricted to the shell of
 Definition~\ref{def:qcd-hdet-patch-decomposition}.  The radial residual
@@ -3277,8 +3246,8 @@ energy integral is
   =
   \frac{g^2 C_{\rm qq}}{12\pi^2}.
 \]
-The color factor is not an independent convention: by
-Proposition~\ref{prop:qcd-one-gluon-qq-color-factor},
+The color factor is not an independent convention: by the two-quark color
+calculation above,
 \[
   C_{\rm qq}
   =
@@ -3291,7 +3260,6 @@ For \(N_c=3\) this gives \(C_{\rm qq}=4/3\), hence
 from non-collinear transverse exchange, and from quark self-energy do not
 change this leading collinear logarithm; they are included in
 \(\mathcal R\) and in the matching scale.
-\end{proof}
 
 \begin{proposition}[Leading exponent of the magnetic color-superconducting gap]
 \label{prop:qcd-leading-magnetic-gap-exponent}
@@ -3429,10 +3397,9 @@ The fermion fields anticommute, while
 \]
 where the last equality relabels \(\alpha\leftrightarrow\beta\) and uses
 \(\epsilon_{\beta\alpha}=-\epsilon_{\alpha\beta}\).  Thus the color-flavor
-coefficient must be symmetric under simultaneous exchange.  Since
-Proposition~\ref{prop:qcd-one-gluon-qq-color-factor} identifies the
-attractive color channel as antisymmetric, the flavor tensor must be
-antisymmetric as well.
+  coefficient must be symmetric under simultaneous exchange.  Since the
+two-quark color calculation above identifies the attractive color channel as
+antisymmetric, the flavor tensor must be antisymmetric as well.
 
 Let \(U\in SU(3)_{\rm color}\) and \(V\in SU(3)_{\rm flavor}\).  The tensor
 \(\epsilon^{abA}\epsilon_{ijA}\) may be viewed as the identity map from the
@@ -3749,8 +3716,7 @@ the dense medium.  Symmetry fixes the tensor structure of
 value of \(F_H\) or \(v_H\).
 \end{controlledapproximation}
 
-\begin{proposition}[CFL Higgs screening mass matrix]
-\label{prop:qcd-cfl-higgs-screening-mass-matrix}
+\paragraph{CFL Higgs screening mass matrix.}
 In the CFL Higgs-screening effective action, the color-flavor-locked
 background gives equal screening masses to all eight color gauge fields.  More
 precisely, within
@@ -3765,9 +3731,7 @@ one has
 These masses are coefficients in the gauge-fixed quadratic effective action
 whose gauge-invariant content is the exponential screening described by
 Definition~\ref{def:qcd-gauge-invariant-static-screening}.
-\end{proposition}
 
-\begin{proof}
 Use the gauge freedom to set \(U=1\) locally; this is unitary gauge for the
 Higgs-coordinate chart, not a definition of a gauge-invariant operator.
 Then
@@ -3794,7 +3758,6 @@ operator is an invariant bilinear form on the adjoint.  Since the adjoint of
 \(SU(3)\) is simple, this invariant form is proportional to
 \(\delta^{ab}\), and the direct computation fixes the proportionality
 constant.
-\end{proof}
 
 \begin{definition}[CFL collective fields]
 \label{def:qcd-cfl-collective-fields}
@@ -3853,9 +3816,9 @@ quadratic order their dispersion relations are
 \end{equation}
 The eight color-orientation modes are not additional physical
 Nambu--Goldstone particles; in the screening effective action they are the
-fields removed by the Higgs mechanism and are represented physically by
-the eight screened color gauge sectors of
-Proposition~\ref{prop:qcd-cfl-higgs-screening-mass-matrix}.
+fields removed by the Higgs mechanism and are represented physically by the
+eight screened color gauge sectors of the CFL Higgs-screening calculation
+above.
 \end{proposition}
 
 \begin{proof}
@@ -3895,8 +3858,8 @@ and therefore the second dispersion relation in
 Finally, the color orientation \(U\) in
 Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action}
 has eight local coordinates, but it transforms under local color.  The
-unitary-gauge computation in
-Proposition~\ref{prop:qcd-cfl-higgs-screening-mass-matrix} shows that those
+unitary-gauge computation in the CFL Higgs-screening calculation above shows
+that those
 coordinates are not gauge-invariant massless particles; they supply the
 longitudinal screening components of the eight color gauge sectors.  Thus
 the physical gapless count is \(8+1=9\), matching

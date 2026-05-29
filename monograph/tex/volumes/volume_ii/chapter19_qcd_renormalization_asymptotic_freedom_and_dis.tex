@@ -4018,15 +4018,12 @@ this chapter.  This formula is invariant under conversion to the common
 half-trace convention because \(g_{\rm ht}^2=2g^2\) and
 \(C_F^{\rm ht}=C_F/2\).
 
-\begin{proposition}[Tree-level singlet color factor]
-\label{prop:pnrqcd-singlet-color-factor}
+\paragraph{Tree-level singlet color factor.}
 In the trace convention of \eqref{eq:qcd-casimir-definitions}, the color
 factor for one-gluon exchange in a normalized quark-antiquark singlet is
 \(-C_F\).  Hence the attractive Coulomb potential is
 \eqref{eq:pnrqcd-tree-coulomb-potential}.
-\end{proposition}
 
-\begin{proof}
 The normalized singlet color tensor is
 \(\delta^i{}_j/\sqrt{N_c}\).  The antiquark generator is the negative
 transpose of the quark generator.  Acting with \(t^a\otimes(-t^{aT})\) on the
@@ -4045,7 +4042,6 @@ The spatial Fourier transform of the Coulomb kernel is
 \]
 so the product of the exchange kernel \(g^2/|\mathbf q|^2\) with the singlet
 color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
-\end{proof}
 
 \begin{proposition}[Leading Coulombic \(1S\) quarkonium level]
 \label{prop:qcd-coulombic-quarkonium-one-s}
@@ -6492,8 +6488,7 @@ quantities are the QCD energies or pole positions and the declared matrix
 elements.  The percentages are coordinates depending on the finite source
 space, normalization, and deformation path.
 
-\begin{proposition}[Heavy-baryon spin average removes the chromomagnetic coordinate]
-\label{prop:qcd-heavy-baryon-spin-average}
+\paragraph{Heavy-baryon spin average removes the chromomagnetic coordinate.}
 Fix a one-heavy-quark baryon family with \(j_\ell>0\).  Suppose that, through
 order \(1/m_Q\), the only spin-dependent term in the effective Hamiltonian
 on the two-state multiplet \(J=j_\ell\pm\frac12\) is
@@ -6524,9 +6519,7 @@ for the \(\Sigma_Q,\Sigma_Q^\ast\)-type doublet, \(j_\ell=1\) and
   \label{eq:qcd-sigma-heavy-spin-average}
 \end{equation}
 has no chromomagnetic \(1/m_Q\) contribution in the stated scheme.
-\end{proposition}
 
-\begin{proof}
 On a state with total spin \(J\),
 \[
   \mathbf S_Q\cdot\mathbf j_\ell
@@ -6556,7 +6549,6 @@ The spin-average \eqref{eq:qcd-heavy-baryon-spin-average} therefore cancels
 the coefficient \(\kappa_{j_\ell}\) independently of its value.  The remaining
 terms are the heavy-quark mass coordinate, the spin-independent light-sector
 energy, the kinetic \(1/m_Q\) coordinate, and higher-order corrections.
-\end{proof}
 
 \begin{remark}[Large-\(N_c\) baryon catalog coordinate]
 The large-\(N_c\) baryon discussion preceding
@@ -7460,11 +7452,16 @@ satisfies
   \widehat{\mathcal E}(1)=H_{\mathrm{out}}
 \]
 on outgoing scattering states, where \(H_{\mathrm{out}}\) is the outgoing
-Hamiltonian restricted to the physical scattering Hilbert space.
+Hamiltonian restricted to the physical scattering Hilbert space.  Finally,
+for every angular patch \(U\subset S^2\), the quadratic form obtained by
+testing \(\widehat{\mathcal E}(f)\) with \(\operatorname{supp}f\subset U\)
+is the \(R\to\infty\) limit of a family of complete null-generator energy
+integrals with nonnegative transverse smearings whenever \(f\ge0\).  This
+last clause is the geometric detector/ANEC bridge; without it, ANEC and
+calorimetric positivity are statements about different limiting operators.
 \end{hypothesis}
 
-\begin{theorem}[Detector positivity from ANEC]
-\label{thm:qcd-energy-detector-positivity-from-anec}
+\paragraph{Detector positivity from ANEC.}
 Assume Hypothesis~\ref{hyp:qcd-energy-flow-detector}.  Assume in addition
 that the stress tensor satisfies the averaged null energy condition as a
 quadratic-form statement on the same scattering domain: for every future null
@@ -7478,9 +7475,7 @@ direction \(n^\mu\), every nonnegative transverse smearing
 \]
 Then the self-adjoint closure of \(\widehat{\mathcal E}(f)\) is positive for
 every \(f\geq0\).
-\end{theorem}
 
-\begin{proof}
 Write a nonnegative smooth angular test function as a finite sum of functions
 supported in coordinate patches on \(S^2\), using a partition of unity.  In
 each patch, the large-\(R\) detector limit is the conformal or asymptotic
@@ -7496,7 +7491,6 @@ values for each patch.  Summing the patch contributions gives
 Since the operator has a unique self-adjoint closure by
 Hypothesis~\ref{hyp:qcd-energy-flow-detector}, positivity of the quadratic
 form on a core implies positivity of the closure by the spectral theorem.
-\end{proof}
 
 \begin{remark}[Status in QCD and in conformal theories]
 \label{rem:qcd-energy-flow-status}
@@ -8661,8 +8655,7 @@ elements, and a proof that the large-momentum limit converts the spacelike
 operator coordinates to the light-ray coordinates in the stated distributional
 topology.
 
-\begin{lemma}[Scheme covariance of finite matching kernels]
-\label{lem:qcd-quasi-pdf-scheme-covariance}
+\paragraph{Scheme covariance of finite matching kernels.}
 Let \(f\) denote the column vector of light-ray PDFs in a convolution algebra,
 and suppose a quasi-PDF coordinate satisfies
 \(\widetilde f=C\otimes f\) at leading power.  If a finite light-ray scheme
@@ -8680,9 +8673,7 @@ preserved by \(R\) and the matching kernel satisfies
 \]
 for the corresponding quasi-PDF charge weights \(m_i\), then the matched
 quasi-PDF has the same charge \(N\) at leading power.
-\end{lemma}
 
-\begin{proof}
 Associativity of convolution gives
 \[
   (C\otimes R^{-1})\otimes(R\otimes f)
@@ -8703,7 +8694,6 @@ weights \(m_i\).  The change of variables \(x=y\xi\), \(y>0\), gives
 The remaining \(y\)-integral is exactly \(N(f)\).  The assumed preservation of
 \(N\) by \(R\) says that the same value is obtained in the primed light-ray
 coordinates.
-\end{proof}
 
 Figure~\ref{fig:qcd-dis-ope-light-ray-factorization} records the operator
 factorization used for inclusive DIS: the short-distance current product is
@@ -9373,8 +9363,7 @@ semi-inclusive DIS and Drell--Yan, once the relevant antiunitary
 transformation and spin conventions are specified.
 \end{hypothesis}
 
-\begin{proposition}[Finite unitarity model for Glauber cancellation]
-\label{prop:qcd-finite-glauber-cancellation-model}
+\paragraph{Finite unitarity model for Glauber cancellation.}
 Let \(\mathcal H_{\rm obs}\) be a finite-dimensional observed Hilbert space,
 let \(\mathcal H_{\rm un}\) be an unobserved Hilbert space, let
 \(\rho\) be a trace-class density matrix on
@@ -9395,9 +9384,7 @@ unitary \(U_G\) acting only on \(\mathcal H_{\rm un}\), then
   \right].
   \label{eq:qcd-finite-glauber-unitarity-identity}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Use cyclicity of the full trace and
 \((\mathbf1\otimes U_G^\dagger)(M\otimes\mathbf1)(\mathbf1\otimes U_G)
 =M\otimes\mathbf1\).  The result is
@@ -9417,16 +9404,15 @@ under unitary conjugation on that same unobserved factor.  The finite model
 therefore isolates the algebraic input used in inclusive Glauber-cancellation
 arguments: the observed measurement must be insensitive to the unitary acting
 on the summed-over sector.
-\end{proof}
 
-\begin{controlledapproximation}[What the Glauber lemma proves]
+\begin{controlledapproximation}[What the finite Glauber calculation proves]
 \label{ca:qcd-glauber-cancellation-status}
-Proposition~\ref{prop:qcd-finite-glauber-cancellation-model} is the algebraic
-unitarity identity that a Drell--Yan factorization proof must realize after
-the leading regions, color flow, rapidity regulator, and measurement topology
-have been fixed.  It does not prove by itself that QCD Glauber exchanges act
-only on an unobserved tensor factor, nor that the contour deformations needed
-to isolate the leading regions are valid.  Those statements are part of the
+The finite unitarity calculation above is the algebraic identity that a
+Drell--Yan factorization proof must realize after the leading regions, color
+flow, rapidity regulator, and measurement topology have been fixed.  It does
+not prove by itself that QCD Glauber exchanges act only on an unobserved
+tensor factor, nor that the contour deformations needed to isolate the
+leading regions are valid.  Those statements are part of the
 Glauber item in Hypothesis~\ref{hyp:qcd-drell-yan-tmd-factorization-hypothesis}.  If the
 observable measures hadronic radiation in a way that resolves the spectator
 sector, or if a color exchange remains entangled with the measured hard
@@ -10412,8 +10398,7 @@ multi-trace operators; replacing them by the product in
 theorem about continuum QCD.
 \end{hypothesis}
 
-\begin{proposition}[Conformal covariance of the transverse kernel]
-\label{prop:qcd-bfkl-kernel-conformal-covariance}
+\paragraph{Conformal covariance of the transverse kernel.}
 The measure
 \[
   \dd^2\mathbf z\,M_{\mathbf x\mathbf y\mathbf z}
@@ -10423,9 +10408,7 @@ is invariant under translations, rotations, uniform scalings, and inversion
 avoid the inversion center.  Thus the leading fixed-coupling transverse
 kernel is covariant under the real Mobius transformations generated by these
 maps.
-\end{proposition}
 
-\begin{proof}
 Translations and rotations preserve all distances and \(\dd^2\mathbf z\).
 Under the scaling \(\mathbf u\mapsto\lambda\mathbf u\), the kernel
 \(M_{\mathbf x\mathbf y\mathbf z}\) scales as \(\lambda^{-2}\), while
@@ -10458,7 +10441,6 @@ Substituting these identities gives
   M_{\mathbf x\mathbf y\mathbf z}\,\dd^2\mathbf z.
 \]
 This proves the stated covariance.
-\end{proof}
 
 \begin{proposition}[Mellin eigenvalue of the leading BFKL kernel]
 \label{prop:qcd-bfkl-mellin-eigenvalue}

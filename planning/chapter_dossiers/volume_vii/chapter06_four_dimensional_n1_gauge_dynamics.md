@@ -37,10 +37,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `hyp:pure-sym-glueball-f-term-description`: Wilsonian chiral-sector
   assumptions under which a one-coordinate glueball \(F\)-term description is
   used.
-- `prop:pure-sym-vy-superpotential`: derivation of the VY representative and
+- VY glueball-superpotential derivation: derivation of the VY representative and
   the critical equation `S^N_c=Lambda_h^(3N_c)`.
-- `prop:pure-sym-condensate-branches-source`: branch/source-normalization
-  ledger for the pure-SYM condensate values and theta-angle monodromy.
+- Pure-SYM condensate branch/source-normalization calculation: derivation of
+  the branch values, source identity, and theta-angle monodromy as consequences
+  of the stated glueball \(F\)-term hypothesis.
 - `prop:pure-sym-one-instanton-zero-mode-test`: pure-SYM charge-one
   instanton zero-mode saturation ledger, showing that separated
   \(S\)-correlators vanish for fewer than \(N_c\) insertions and that the
@@ -72,7 +73,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   condensate.
 - `hyp:pure-sym-small-circle-affine-toda-input`: assumptions behind the
   small-circle monopole-instanton affine-Toda superpotential.
-- `prop:pure-sym-affine-toda-critical-count`: constrained affine-Toda
+- Affine-Toda critical-point count: constrained affine-Toda
   critical-point count giving `N_c` isolated solutions.
 - `prop:pure-sym-local-chiral-critical-index`: finite-dimensional
   holomorphic oscillator calculation showing that each nondegenerate chiral
@@ -119,10 +120,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
   `<M^a_j> m_i^j = <S> delta_i^a`.
 - `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
   the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
-- `prop:sqcd-nsvz-coordinate-audit`: derivation of
+- SQCD NSVZ coordinate specialization: derivation of
   `X_h=X_c+N_c log g^2-N_f log Z_Q+kappa` and the specialized SQCD NSVZ
   beta function.
-- `prop:sqcd-conformal-window-central-charges`: SQCD conformal-window
+- SQCD central-charge bookkeeping: SQCD conformal-window
   `Tr R`, `Tr R^3`, \(a\), \(c\), and conditional free-field
   \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison under the SCFT-input
   hypothesis.
@@ -170,7 +171,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `hyp:kw-exact-marginality-input`: KW continuum, source-chart,
   beta-completeness, contact-term, and nondegeneracy assumptions for the
   local exact-marginality statement.
-- `prop:kw-local-conformal-manifold-rank-one`: conditional derivation of the
+- KW rank-one exact-marginality calculation: conditional derivation of the
   two-complex-dimensional KW local conformal locus from the rank-one beta map.
 - `M`: fractional-rank difference in the Klebanov-Strassler cascade.
 - `B_1`, `B_2` or `mathcal B_1`, `mathcal B_2`: NSVZ numerators for

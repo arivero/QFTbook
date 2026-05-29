@@ -31,9 +31,10 @@ boundaries.
 
 ## Substantive Changes
 
-- Added `prop:pure-sym-condensate-branches-source`, deriving the branch
-  values, source identity `L dW_k/dL=<S>_k`, and theta-loop/chiral-generator
-  branch monodromy.
+- Added the pure-SYM condensate branch/source-normalization calculation,
+  deriving the branch values, source identity `L dW_k/dL=<S>_k`, and
+  theta-loop/chiral-generator branch monodromy under the stated glueball
+  \(F\)-term hypothesis.
 - Added `hyp:pure-sym-finite-volume-index-problem`, spelling out the
   finite-volume Hilbert-space assumptions: `T^3_L`, periodic gaugino spin
   structure, Gauss-law projection, trivial discrete-flux sector, exact
@@ -45,7 +46,7 @@ boundaries.
 - Added `hyp:pure-sym-small-circle-affine-toda-input`, recording the
   small-circle assumptions, root/affine-root data, monopole-instanton
   two-zero-mode input, and instanton-weight product coordinate `eta`.
-- Added `prop:pure-sym-affine-toda-critical-count`, proving directly that
+- Added the affine-Toda critical-point count, proving directly that
   `x_1...x_N=eta` and stationarity of `sum_i x_i` force
   `x_1=...=x_N`, hence `x^N=eta`, with a nondegenerate constrained Hessian.
 - Added `hyp:pure-sym-index-continuation-massive-branch` and

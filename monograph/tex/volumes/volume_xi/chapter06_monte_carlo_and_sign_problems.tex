@@ -1191,8 +1191,7 @@ when the sum converges.  The variance of the sample mean is then
 Critical slowing down is the growth of \(\tau_{\mathrm{int}}\) along a scaling
 trajectory toward a continuum limit.
 
-\begin{proposition}[Exact finite-\(N\) variance identity]
-\label{prop:markov-autocorrelation-variance-identity}
+\paragraph{Exact finite-\(N\) variance identity.}
 Assume the chain is stationary and \(O\) is real with \(C_O(0)>0\).  Then
 \begin{equation}
   \operatorname{Var}(\overline O_N)
@@ -1215,9 +1214,7 @@ then
   \frac{2\tau_{\mathrm{int}}(O)}{N}\,C_O(0)+o(N^{-1}).
   \label{eq:asymptotic-autocorrelation-variance}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Write \(O_n=O(\Phi_n)\) and
 \(\mu_O=\langle O\rangle\).  Stationarity gives
 \[
@@ -1240,7 +1237,6 @@ and using absolute summability to replace
 \]
 by its infinite sum gives
 \eqref{eq:asymptotic-autocorrelation-variance}.
-\end{proof}
 
 \section{Blocking, Jackknife, and Bootstrap Error Coordinates}
 \label{sec:blocking-jackknife-bootstrap-error-coordinates}
@@ -1530,8 +1526,7 @@ independent samples growing as \(\exp[2V\Delta f]\) for fixed relative error,
 unless the numerator and denominator are computed by a method that avoids
 phase reweighting.
 
-\begin{proposition}[Finite-volume phase-reweighting variance bound]
-\label{prop:finite-volume-sign-problem-variance}
+\paragraph{Finite-volume phase-reweighting variance bound.}
 Let
 \[
   m=\langle e^{\ii\Theta}\rangle_R\neq0 .
@@ -1555,9 +1550,7 @@ estimation of the denominator with relative mean-square error at most
   \delta^{-2}\left(e^{2V\Delta f}-1\right).
   \label{eq:sign-problem-sample-lower-bound}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Since \(|e^{\ii\Theta}|=1\),
 \[
   \mathbb E_R|e^{\ii\Theta}-m|^2
@@ -1574,7 +1567,6 @@ denominator alone.  A ratio estimator for \(\langle O\rangle\) can have
 additional covariance between numerator and denominator, but it cannot remove
 the need to determine a denominator of exponentially small magnitude unless
 the method changes the representation of the finite-regulator integral.
-\end{proof}
 
 \section{Fermion Determinants}
 

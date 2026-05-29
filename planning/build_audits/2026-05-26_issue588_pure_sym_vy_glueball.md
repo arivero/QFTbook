@@ -35,7 +35,7 @@ derivation, and the Witten-index consistency check.
 - Added Hypothesis `hyp:pure-sym-glueball-f-term-description`, stating the
   one-coordinate glueball \(F\)-term assumptions, source normalization, and
   finite-normalization caveat.
-- Added Proposition `prop:pure-sym-vy-superpotential`, deriving the standard
+- Added the VY glueball-superpotential derivation, deriving the standard
   VY representative
   `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` from the dimensionless holomorphic
   ratio and the source identity.

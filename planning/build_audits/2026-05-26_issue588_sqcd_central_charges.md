@@ -30,7 +30,7 @@ the free ultraviolet \(a\)-value with the candidate infrared SCFT value.
 
 ## Substantive Changes
 
-- Added Proposition `prop:sqcd-conformal-window-central-charges`.
+- Added the SQCD central-charge bookkeeping calculation.
 - Derived the SQCD superconformal traces
   `Tr R=-N_c^2-1` and `Tr R^3=N_c^2-1-2N_c^4/N_f^2`.
 - Derived the corresponding central charges using the \(N=1\) formulas
