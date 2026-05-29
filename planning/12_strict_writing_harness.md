@@ -275,6 +275,22 @@ hypotheses checked.  Short proofs are allowed only when the mathematical
 content is genuinely concentrated, not when a trivial observation has been
 promoted to theorem status.
 
+Finite comparison algebra, such as sine-law/Casimir ratio identities or
+large-\(N\) Taylor expansions used only as reference curves, belongs in prose
+or in an example unless the surrounding statement derives an actual spectral,
+operator, or path-integral object.  A theorem-family title advertising
+``comparison algebra'' is a failed wrapper: the reader needs to know the
+finite identities and the dynamical status separately, not see them packaged
+as a proved physical result.
+
+Formula-verification wrappers obey the same rule.  Exact finite-basis GEVP
+diagonalization, Richardson cancellation, finite normal Gaussian factors,
+basic \(Q\)-exact deformation identities, heat-kernel substitutions, thermal
+free-kernel Fourier inversions, and BCFW on-shell preservation are useful
+derivation steps, but they are not theorem-family claims unless the statement
+adds a genuine estimate, construction, or nontrivial hypothesis verification
+beyond the displayed algebra.
+
 Proof audits must read the mathematical substance of each proof under review:
 the statement, hypotheses, dependencies, and proof body must be checked
 together.  Text searches for phrases such as "immediate" or length scans may

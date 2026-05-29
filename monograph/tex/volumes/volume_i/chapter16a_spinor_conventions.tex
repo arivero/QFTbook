@@ -749,18 +749,15 @@ are symmetric in \(a,b\).  For two Grassmann-even Majorana spinors
 \]
 \end{definition}
 
-\begin{proposition}[Three-dimensional Clifford and symmetric block identities]
-\label{prop:three-dimensional-clifford-symmetric-block-identities}
+\begin{remark}[Three-dimensional Clifford and symmetric block identities]
+\label{rem:three-dimensional-clifford-symmetric-block-identities}
 The matrices in
 Definition~\ref{def:three-dimensional-mostly-plus-majorana-convention} obey
 \[
   \{\Gamma^\mu,\Gamma^\nu\}=2\eta^{\mu\nu},
 \]
 and \(\Gamma^\mu_{ab}=(\Gamma^\mu)_a{}^c\epsilon_{cb}\) is symmetric in
-\(a,b\).
-\end{proposition}
-
-\begin{proof}
+\(a,b\).  This is a finite convention check:
 The Pauli identities
 \(\sigma_i\sigma_j+\sigma_j\sigma_i=2\delta_{ij}\) give
 \((\ii\sigma^2)^2=-1\), \((\sigma^1)^2=(\sigma^3)^2=1\), and zero
@@ -773,7 +770,7 @@ anticommutators between distinct displayed matrices.  With
   \Gamma^2\epsilon=\begin{pmatrix}0&1\\1&0\end{pmatrix},
 \]
 which are all symmetric.
-\end{proof}
+\end{remark}
 
 \section{Two-Dimensional Lorentzian Spinors}
 
@@ -811,11 +808,9 @@ As in four dimensions, \(\bar\psi=\ii\psi^\dagger\gamma^0\) in the
 mostly-plus convention.
 \end{definition}
 
-\begin{proposition}[Two-dimensional chirality trace]
-\label{prop:two-dimensional-chirality-trace}
-The two-dimensional convention of
-Definition~\ref{def:two-dimensional-mostly-plus-spinor-trace-convention}
-is realized by
+\begin{remark}[Two-dimensional chirality trace]
+\label{rem:two-dimensional-chirality-trace}
+The convention in the preceding definition is realized by
 \[
   \gamma^0=\ii\sigma^2,\qquad
   \gamma^1=\sigma^1,\qquad
@@ -827,9 +822,6 @@ It satisfies
   =
   2\epsilon^{\rho\nu}.
 \]
-\end{proposition}
-
-\begin{proof}
 The Clifford relation follows from
 \((\ii\sigma^2)^2=-\mathbf1\), \((\sigma^1)^2=\mathbf1\), and
 \(\sigma^2\sigma^1=-\sigma^1\sigma^2\), so
@@ -846,7 +838,7 @@ With \(\epsilon^{01}=+1\), the two nonzero traces are
 which equal \(2\epsilon^{10}\) and \(2\epsilon^{01}\), respectively; repeated
 indices vanish because \(\gamma^\nu\gamma\gamma^\nu\) is proportional to
 \(\gamma\), whose trace is zero.
-\end{proof}
+\end{remark}
 
 \begin{definition}[Two-dimensional chiral-component Majorana convention]
 \label{def:two-dimensional-chiral-component-majorana-convention}
@@ -907,10 +899,10 @@ structures that are outside the fixed-surface two-dimensional QFT/CFT
 framework being recorded here.
 \end{definition}
 
-\begin{proposition}[Compatibility of the two-dimensional spinor bases]
+\begin{remark}[Compatibility of the two-dimensional spinor bases]
 \label{prop:two-dimensional-chiral-component-dirac-compatibility}
 The Dirac-anomaly basis of
-Proposition~\ref{prop:two-dimensional-chirality-trace} and the
+Remark~\ref{rem:two-dimensional-chirality-trace} and the
 Majorana basis of
 Definition~\ref{def:two-dimensional-chiral-component-majorana-convention} are
 similar representations of the same mostly-plus Clifford algebra.  Explicitly,
@@ -933,9 +925,6 @@ coordinate realizations of that algebra.  The monograph uses the
 Dirac-anomaly basis when evaluating spinor traces and uses the
 chiral-component Majorana basis when comparing to two-dimensional CFT
 component conventions.
-\end{proposition}
-
-\begin{proof}
 Direct multiplication gives
 \[
   U_2(\ii\sigma^2)U_2^{-1}=-\ii\sigma^1,
@@ -964,7 +953,7 @@ Thus the light-cone components have the stated chiral-component
 normalization.  Since \(U_2\) is invertible, all Clifford, chirality, and
 trace identities are transported between the two bases after transforming the
 coordinate components of the spinors.
-\end{proof}
+\end{remark}
 
 \section{Euclidean Spinors}
 

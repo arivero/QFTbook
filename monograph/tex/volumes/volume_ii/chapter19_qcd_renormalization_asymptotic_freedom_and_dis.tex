@@ -2269,14 +2269,12 @@ generator trace cancels in the ratio, but it is displayed because this
 chapter uses the trace-delta normalization throughout.
 \end{proof}
 
-\begin{proposition}[Sine comparison algebra]
-\label{prop:qcd-k-string-sine-algebra}
 For \(1\le k\le N_c-1\), the sine comparison function
-\eqref{eq:qcd-k-string-sine-ratio} satisfies charge conjugation,
+\eqref{eq:qcd-k-string-sine-ratio} has the charge-conjugation symmetry
 \[
   R_k^{\rm sine}(N_c)=R_{N_c-k}^{\rm sine}(N_c),
 \]
-strict subadditivity,
+the strict subadditivity property
 \begin{equation}
   R_{k+\ell}^{\rm sine}(N_c)
   <
@@ -2293,51 +2291,35 @@ and the fixed-\(k\), large-\(N_c\) expansion
   +O(N_c^{-4}).
   \label{eq:qcd-sine-large-n}
 \end{equation}
-The Casimir comparison function obeys the same charge conjugation symmetry,
-but its fixed-\(k\) expansion begins as
+The first identity is
+\(\sin(\pi(N_c-k)/N_c)=\sin(\pi k/N_c)\).  The inequality follows from
+\[
+  \sin a+\sin b-\sin(a+b)
+  =
+  4\sin\frac a2\sin\frac b2\sin\frac{a+b}{2}>0,
+  \qquad
+  a=\frac{\pi k}{N_c},\quad b=\frac{\pi\ell}{N_c},
+\]
+in the range \(0<a,b\) and \(a+b<\pi\).  The expansion is the quotient of
+the Taylor series for \(\sin(\pi k/N_c)\) and \(\sin(\pi/N_c)\).  These
+identities are finite comparison algebra; the dynamical question is whether a
+continuum gauge theory has flux-sector transfer-matrix eigenvalues whose
+ratios approach one of these comparison functions.
+
+The Casimir comparison function obeys the same charge-conjugation symmetry,
+and its fixed-\(k\) expansion begins as
 \begin{equation}
   R_k^{\rm Casimir}(N_c)
   =
   k-\frac{k(k-1)}{N_c}+O(N_c^{-2}).
   \label{eq:qcd-casimir-large-n}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-Charge conjugation for the sine function is
-\[
-  \sin\frac{\pi(N_c-k)}{N_c}
-  =
-  \sin\left(\pi-\frac{\pi k}{N_c}\right)
-  =
-  \sin\frac{\pi k}{N_c}.
-\]
-For subadditivity set \(a=\pi k/N_c\) and \(b=\pi\ell/N_c\).  Since
-\(0<a,b\) and \(a+b<\pi\),
-\[
-  \sin a+\sin b-\sin(a+b)
-  =
-  4\sin\frac a2\sin\frac b2\sin\frac{a+b}{2}>0,
-\]
-and division by the positive number \(\sin(\pi/N_c)\) gives
-\eqref{eq:qcd-sine-subadditivity}.  The expansion
-\eqref{eq:qcd-sine-large-n} follows by dividing
-\[
-  \sin\frac{\pi k}{N_c}
-  =
-  \frac{\pi k}{N_c}
-  -
-  \frac{\pi^3k^3}{6N_c^3}
-  +O(N_c^{-5})
-\]
-by the corresponding expansion with \(k=1\).  The Casimir symmetry and
-\eqref{eq:qcd-casimir-large-n} follow directly from
+This is the expansion of
 \[
   \frac{k(N_c-k)}{N_c-1}
   =
   k\frac{1-k/N_c}{1-1/N_c}.
 \]
-\end{proof}
 
 The different \(1/N_c\) behavior in
 \eqref{eq:qcd-sine-large-n} and \eqref{eq:qcd-casimir-large-n} is one reason
@@ -5047,7 +5029,7 @@ finite-volume resonance extraction.  A concrete determination of
 \(K_\ell^{-1}\), regulator and volume limits for the input energies, and
 separate bounds for neglected partial waves and inelastic channels.
 
-\begin{proposition}[Coupled-channel determinant and sheet bookkeeping]
+\begin{proposition}[Coupled-channel \(K\)-matrix determinant and sheet continuation]
 \label{prop:qcd-coupled-channel-kmatrix-sheet}
 Let \(a,b=1,\ldots,N\) label finitely many stable two-particle
 color-singlet channels in a fixed set of conserved quantum numbers, and let
@@ -7418,15 +7400,13 @@ question about the exact spectral measure, judged by stability under \(M^2\),
 \(s_0\), current choice, OPE truncation, and comparison with regulator
 observables such as lattice spectra.
 
-\begin{lemma}[Mass estimator as a spectral weighted average]
-\label{lem:qcd-borel-mass-estimator}
-Let
+For a finite retained spectral model
 \[
   \mathcal S(\tau)=\sum_{r=1}^N Z_r e^{-\tau m_r^2},
   \qquad
   Z_r>0,\quad \tau:=1/M^2 .
 \]
-Then
+the logarithmic derivative used as a mass estimator is
 \begin{equation}
   -\frac{\dd}{\dd\tau}\log\mathcal S(\tau)
   =
@@ -7434,22 +7414,10 @@ Then
        {\sum_r Z_r e^{-\tau m_r^2}} .
   \label{eq:qcd-borel-effective-mass-weighted-average}
 \end{equation}
-In particular, the logarithmic derivative equals \(m_R^2\) for a single atom
-and otherwise gives a positive weighted average of the squared masses present
-in the retained spectral model.
-\end{lemma}
-
-\begin{proof}
-Differentiate:
-\[
-  -\mathcal S'(\tau)
-  =
-  \sum_r Z_r m_r^2e^{-\tau m_r^2}.
-\]
-Dividing by \(\mathcal S(\tau)\) gives
-\eqref{eq:qcd-borel-effective-mass-weighted-average}.  Positivity of the
-weights \(Z_r e^{-\tau m_r^2}\) gives the weighted-average statement.
-\end{proof}
+because the numerator is \(-\mathcal S'(\tau)\).  The right side is a
+normalized average with positive weights \(Z_r e^{-\tau m_r^2}\).  It equals
+\(m_R^2\) for a single retained atom and otherwise averages the squared masses
+present in the retained spectral model.
 
 Thus a Borel plateau diagnoses the weighted average in
 \eqref{eq:qcd-borel-effective-mass-weighted-average} changes slowly over the
@@ -10627,10 +10595,8 @@ Dividing by \(2\pi\) proves
 \eqref{eq:qcd-bfkl-eigenvalue-equation}.
 \end{proof}
 
-\begin{corollary}[Fixed-coupling leading intercept and diffusion coefficient]
-\label{cor:qcd-bfkl-intercept-diffusion}
-For the leading fixed-coupling kernel in
-\eqref{eq:qcd-coordinate-bfkl-equation},
+The leading fixed-coupling kernel in
+\eqref{eq:qcd-coordinate-bfkl-equation} has
 \[
   \chi\!\left(\frac12\right)=4\log2,
   \qquad
@@ -10638,7 +10604,15 @@ For the leading fixed-coupling kernel in
   =
   4\log2-14\zeta(3)\nu^2+O(\nu^4).
 \]
-Thus a Mellin component near \(\gamma=\frac12\) evolves as
+These values follow from
+\[
+  \psi\!\left(\frac12\right)=-\gamma_{\rm E}-2\log2,
+  \qquad
+  \psi''\!\left(\frac12\right)=-14\zeta(3),
+\]
+inserted into \eqref{eq:qcd-bfkl-characteristic-function}; in particular
+\(\chi'(\frac12)=0\) and \(\chi''(\frac12)=28\zeta(3)\).  A Mellin component
+near \(\gamma=\frac12\) therefore evolves as
 \[
   \exp\!\left[
     \bar\alpha_{\rm s}\,4\log2\,Y
@@ -10647,22 +10621,6 @@ Thus a Mellin component near \(\gamma=\frac12\) evolves as
   \right]
 \]
 inside the fixed-coupling leading-logarithmic setup.
-\end{corollary}
-
-\begin{proof}
-The reflection identities for the polygamma function give
-\[
-  \psi\!\left(\frac12\right)=-\gamma_{\rm E}-2\log2,
-  \qquad
-  \psi''\!\left(\frac12\right)=-14\zeta(3).
-\]
-Substitution into
-\eqref{eq:qcd-bfkl-characteristic-function} gives the value at
-\(\gamma=\frac12\).  Differentiating
-\(\chi(\gamma)\) shows \(\chi'(\frac12)=0\) and
-\(\chi''(\frac12)=28\zeta(3)\).  Expanding at
-\(\gamma=\frac12+\ii\nu\) gives the displayed sign.
-\end{proof}
 
 \begin{controlledapproximation}[Status of small-\(x\) resummation]
 \label{ca:qcd-small-x-status}

@@ -901,9 +901,8 @@ The integer \(t\) is Euclidean time in lattice units.  The connected
 subtraction removes the vacuum term; without it the scalar \(0^{++}\) channel
 would be dominated by the identity.
 
-\begin{proposition}[Exact finite-basis GEVP extraction]
-\label{prop:lattice-glueball-gevp-exact}
-Assume that, for \(n=1,\ldots,m\), the overlap matrix
+In the ideal finite-basis case one obtains an exact algebraic extraction of
+the energies.  Assume that, for \(n=1,\ldots,m\), the overlap matrix
 \(Z_i^{(n)}\) is invertible and that the operator subspace has zero overlap
 with all higher states.  Then the generalized eigenvalue problem
 \begin{equation}
@@ -918,10 +917,7 @@ has eigenvalues
   \lambda_n(t,t_0)=\ee^{-aE_n(t-t_0)}.
   \label{eq:lattice-glueball-gevp-eigenvalues}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-Under the stated finite-basis hypothesis,
+Indeed, under the stated finite-basis hypothesis,
 \[
   C(t)=Z\,D(t)\,Z^\dagger,\qquad
   D(t)=\operatorname{diag}(\ee^{-aE_1t},\ldots,\ee^{-aE_mt}).
@@ -934,7 +930,6 @@ Since \(Z\) is invertible,
 \]
 This matrix is similar to \(D(t_0)^{-1}D(t)\), hence has eigenvalues
 \(\ee^{-aE_n(t-t_0)}\).
-\end{proof}
 
 When higher states have nonzero overlap with the chosen operator basis, the
 GEVP is no longer exactly diagonalized by the first \(m\) spectral terms.

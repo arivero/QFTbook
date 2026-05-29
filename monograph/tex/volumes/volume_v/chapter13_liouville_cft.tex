@@ -613,7 +613,7 @@ The first terms are
 \end{equation}
 \end{definition}
 
-\begin{proposition}[First conversion from \(z\)-coefficients to \(q\)-coefficients]
+\begin{remark}[First conversion from \(z\)-coefficients to \(q\)-coefficients]
 \label{prop:liouville-z-to-q-block-coefficients}
 Let the normalized block be as in
 Definition~\ref{def:virasoro-block-coefficients}, and set
@@ -643,9 +643,6 @@ Then
   256f_2-128(1+a)f_1+32a^2+12a .
   \label{eq:liouville-q-block-g2}
 \end{align}
-\end{proposition}
-
-\begin{proof}
 Equation~\eqref{eq:liouville-lambda-q-expansion} gives
 \[
   \lambda(q)=16q(1-8q+44q^2+O(q^3)).
@@ -667,7 +664,7 @@ The nonleading part of the \(z\)-block contributes
 \]
 Multiplying these two displayed series gives
 \eqref{eq:liouville-q-block-g1}--\eqref{eq:liouville-q-block-g2}.
-\end{proof}
+\end{remark}
 
 \begin{quotedtheorem}[Zamolodchikov elliptic recursion]
 \label{qthm:zamolodchikov-elliptic-recursion}
@@ -1051,7 +1048,7 @@ difference
 \end{equation}
 \end{definition}
 
-\begin{proposition}[ZZ wavefunction in FZZT normalization]
+\begin{remark}[ZZ wavefunction in FZZT normalization]
 \label{prop:zz-wavefunction-fzzt-normalization}
 The boundary state \(\langle ZZ_{m,n}|\) has the momentum-space expansion
 \begin{equation}
@@ -1070,9 +1067,6 @@ where
   \sinh(2\pi nbP).
   \label{eq:zz-wavefunction}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 Insert \(s_{m,n}^{\pm}\) into \(\cos(2\pi sP)\).  Since
 \(\cos(\ii X)=\cosh X\),
 \[
@@ -1094,7 +1088,7 @@ Insert \(s_{m,n}^{\pm}\) into \(\cos(2\pi sP)\).  Since
 using \(\cosh(X+Y)-\cosh(X-Y)=2\sinh X\sinh Y\).  The same identity is
 verified as an exact Laurent-polynomial equality in
 \texttt{calculation-checks/bcft\_cardy\_checks.py}.
-\end{proof}
+\end{remark}
 
 The discrete labels \((m,n)\) are therefore not new rational-Cardy labels.
 They are residues or finite differences inside a continuous boundary family.

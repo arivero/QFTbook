@@ -946,9 +946,8 @@ from endpoint and zero-mode analysis.  A fit without
 \eqref{eq:power-law-cutoff-remainder-bound} is a diagnostic, not a theorem.
 \end{definition}
 
-\begin{proposition}[Two-cutoff Richardson cancellation]
-\label{prop:two-cutoff-richardson-cancellation}
-Assume
+For a two-cutoff Richardson extrapolant, the leading correction cancels only
+under a stated asymptotic expansion with a controlled remainder.  Assume
 \[
   A_K=A_\infty+cK^{-\omega}+r_K,
   \qquad
@@ -971,9 +970,6 @@ Then
   C K^{-\eta}.
   \label{eq:two-cutoff-richardson-bound}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 Substitute the assumed expansion into
 \eqref{eq:two-cutoff-richardson-estimator}:
 \[
@@ -996,7 +992,6 @@ The two terms proportional to \(c\) cancel because
 \]
 Using \(|r_{2K}|\le C(2K)^{-\eta}\) gives
 \eqref{eq:two-cutoff-richardson-bound}.
-\end{proof}
 
 \begin{proposition}[Integer-power extrapolation with explicit weights]
 \label{prop:integer-power-extrapolation-weights}

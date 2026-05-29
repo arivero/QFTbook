@@ -255,16 +255,10 @@ relation
   \label{eq:xxx-baxter-tq}
 \end{equation}
 
-\begin{proposition}[Bethe equations from the \(TQ\) relation]
-\label{prop:tq-pole-bethe-equations}
 Let \(Q(u)=\prod_j(u-u_j)\) have simple roots.  Equation
-\eqref{eq:xxx-baxter-tq} has a polynomial \(\Lambda(u)\) if and only if the
-roots \(u_j\) obey the \(XXX_{1/2}\) Bethe equations
-\eqref{eq:aba-xxx-bethe-equations}.
-\end{proposition}
-
-\begin{proof}
-If \(\Lambda\) is polynomial, evaluating \eqref{eq:xxx-baxter-tq} at
+\eqref{eq:xxx-baxter-tq} is regular at the zeros of \(Q\) precisely when
+the roots \(u_j\) obey the \(XXX_{1/2}\) Bethe equations
+\eqref{eq:aba-xxx-bethe-equations}.  Evaluating the numerator at
 \(u=u_j\) gives
 \[
   \left(u_j+\frac{\ii}{2}\right)^L Q(u_j-\ii)
@@ -282,7 +276,6 @@ the displayed equality is precisely
 \eqref{eq:aba-xxx-bethe-equations}.  Conversely, if the Bethe equations hold,
 the numerator on the right side of \eqref{eq:xxx-baxter-tq} vanishes at every
 root of \(Q\), so division by \(Q\) produces a polynomial \(\Lambda\).
-\end{proof}
 
 \section{QQ-System and Bäcklund Flow}
 
@@ -599,8 +592,8 @@ eigenline.
 \begin{proof}
 By the operator \(TQ\) relation, the eigenvalue \(Q_\Psi(u)\) of \(Q(u)\) on a
 transfer eigenvector \(\Psi\) satisfies \eqref{eq:xxx-baxter-tq} with the
-same \(\Lambda(u)\).  Proposition~\ref{prop:tq-pole-bethe-equations} says
-that the zeros of \(Q_\Psi\), when simple, obey the ABA Bethe equations.
+same \(\Lambda(u)\).  Regularity of the scalar \(TQ\) relation at the simple
+zeros of \(Q_\Psi\) gives the ABA Bethe equations.
 Assumption 2 then gives an ABA vector with the same transfer eigenvalue
 \(\Lambda\).  Simplicity of the transfer spectrum identifies the two vectors
 up to scalar.  The SoV wavefunction satisfies

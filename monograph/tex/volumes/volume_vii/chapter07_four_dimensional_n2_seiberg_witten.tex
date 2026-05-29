@@ -163,9 +163,8 @@ The differential is fixed up to exact terms by requiring that
 on \(\Sigma_u\) and that the large-field asymptotics reproduce the
 one-loop Wilsonian coupling.
 
-\begin{proposition}[Integrability of the period coupling]
-\label{prop:sw-period-integrability}
-Let \(U\) be a contractible Coulomb-branch patch on which the
+The period coupling is integrable on a contractible Coulomb-branch patch
+under the following geometric hypotheses.  Let \(U\) be a patch on which the
 \(a^I\), \(I=1,\ldots,r\), are holomorphic coordinates.  Suppose
 \(\pi:\Sigma\to U\) is a holomorphic family of compact Riemann surfaces with a
 flat symplectic homology frame \((A_I,B^I)\), and suppose that the
@@ -178,7 +177,7 @@ Riemann bilinear relation, and is normalized by
 \[
   \frac1{2\pi}\oint_{A_I}\omega_J=\delta_{IJ}.
 \]
-Then the period matrix
+The period matrix
 \[
   \tau_{IJ}
   :=
@@ -191,9 +190,6 @@ is symmetric.  Consequently there is a holomorphic prepotential
 \[
   a_{D,I}=\frac{\partial\mathcal F}{\partial a^I}.
 \]
-\end{proposition}
-
-\begin{proof}
 Because the homology frame is flat, differentiating a period at fixed cycle
 gives the period of the differentiated differential:
 \[
@@ -248,7 +244,6 @@ whose value is independent of the path in \(U\).  Then
 \(\dd\mathcal F=\alpha\), which is exactly
 \(a_{D,I}=\partial\mathcal F/\partial a^I\).  The additive constant depends
 on the chosen base point \(a_\ast\) and has no physical content.
-\end{proof}
 
 \section{Argument Types And Charge-Monodromy Conventions}
 \label{sec:sw-argument-ledger-charge-monodromy}
@@ -992,8 +987,6 @@ hypermultiplet fields whose charges have nonzero Dirac pairing in that same
 polarization.
 \end{proof}
 
-\begin{proposition}[Scaling dimensions in the cusp model]
-\label{prop:ad-cusp-scaling-dimensions}
 For the local model \eqref{eq:ad-a1-a2-local-curve} with differential
 \eqref{eq:ad-local-differential}, the scaling dimensions are
 \begin{equation}
@@ -1005,9 +998,6 @@ For the local model \eqref{eq:ad-a1-a2-local-curve} with differential
 \end{equation}
 Thus the Coulomb-branch operator has dimension \(6/5\), and the unfolding
 parameter \(v\) has dimension \(4/5\).
-\end{proposition}
-
-\begin{proof}
 Quasi-homogeneity of \(y^2=x^3+v x+u\) gives
 \[
   2[y]=3[x]=[u].
@@ -1020,7 +1010,6 @@ The period of the Seiberg-Witten differential has mass dimension one, and
 Solving these equations gives \([x]=2/5\), \([y]=3/5\), and
 \([u]=6/5\).  The term \(v x\) has the same dimension as \(u\), so
 \([v]+[x]=6/5\), and therefore \([v]=4/5\).
-\end{proof}
 
 This calculation is intentionally local.  It does not claim that every
 collision of singular fibers produces a continuum QFT, nor does it replace

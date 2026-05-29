@@ -147,8 +147,8 @@ Chapter~\ref{ch:tqft-cohomological-field-theories}.  In a supersymmetric
 twist, the required metric-response statement is supplied by the
 supercurrent multiplet together with the chosen curved-background coupling.
 
-\begin{proposition}[Twisted metric-independence criterion]
-\label{prop:twist-metric-independence}
+\begin{remark}[Regulator-level metric-independence criterion]
+\label{rem:twist-metric-independence}
 Assume the regulator-level twist datum above satisfies:
 \begin{enumerate}[label=(\roman*)]
 \item the \(Q_\Lambda\)-Ward identity has no boundary anomaly on
@@ -176,9 +176,6 @@ Then \(Z_g^\rho(\mathcal O_1,\ldots,\mathcal O_n)\) is locally constant in
 the metric \(g\) at the regulator scale.  If the continuum limit exists and
 the hypotheses are stable under that limit, the limiting correlator is
 locally metric independent.
-\end{proposition}
-
-\begin{proof}
 Differentiating the regulated path integral gives
 \[
   \delta_g Z_g^\rho
@@ -197,12 +194,12 @@ Insert \eqref{eq:twist-metric-response}.  The term with
 \(\mathcal V_{\Lambda,\delta g}\prod_i\mathcal O_i\).  The Ward identity
 sets its expectation value to zero.  The remaining contact representative is
 zero by hypothesis.  Hence the first variation vanishes.
-\end{proof}
 
-The proposition is deliberately stated at regulator level.  A formal identity
+The criterion is deliberately stated at regulator level.  A formal identity
 \(\delta_gS=Q(\cdots)\) in a continuum Lagrangian is one ingredient; it
 becomes a theorem about a QFT only after the regulated Ward identity,
 contact terms, and boundary behavior are controlled.
+\end{remark}
 
 \section{\texorpdfstring{Four-Dimensional \(\mathcal N=2\) Supercharges}{Four-Dimensional N=2 Supercharges}}
 
@@ -564,7 +561,7 @@ The twist provides a representation-theoretic and geometric conversion:
 It also identifies candidate scalar supercharges and candidate descent
 complexes.  A theorem-level cohomological QFT requires the additional
 regulator-level closure statement \eqref{eq:twist-q-square-general} and
-Proposition~\ref{prop:twist-metric-independence}: \(Q\)-invariant
+Remark~\ref{rem:twist-metric-independence}: \(Q\)-invariant
 regularization, anomaly cancellation, off-shell closure or BV closure,
 contact representatives, compactification of fixed loci, and gluing.
 

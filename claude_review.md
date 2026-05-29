@@ -1,6 +1,6 @@
 # QFT Monograph — Active Review
 
-Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **22 open issues after the #693 cross-reference repair**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers and the #691 trivial-wrapper cleanup. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
+Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **23 open issues after reopening #691 for the continuing anti-wrapper proof audit**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers; #691 remains open until surviving trivial theorem-family wrappers are demoted or strengthened after reading the actual proof substance. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
 
 This document holds items that are either (a) not well-captured in individual issues, (b) cross-cutting in a way the tracker can't surface, or (c) strategic decisions / planning recommendations / standing directives. For completed work and per-issue history, see `git log` and the GitHub issue threads.
 
@@ -76,7 +76,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 
 ---
 
-## Open backlog (21 GitHub issues)
+## Open backlog (23 GitHub issues)
 
 ### Substantial chapter-additions still owed
 
@@ -139,7 +139,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 
 **Figure audit**: COMPLETE. 114 figures across all 12 volumes / 2514 PDF pages examined per-figure against Xi's criterion ("each figure must contain information not in or easily missed from the text"). 43 issues filed (#649–#690), all closed by codex with substantive figure replacements (function plots, complex-plane pole diagrams, spectral pictures, Drude-vs-regular decompositions, etc.) backed by new propositions + calc-checks. Pattern of failure (labeled-box-with-named-arrows flowchart restating prose) eradicated.
 
-**Proof-level / slogan / definition-locality audit**: COMPLETE across all 12 volumes / ~156 chapters. Zero substantive proof-level errors found; uniform symbol-definition + no-slogan discipline; forward references are overwhelmingly the allowed deferred-development type.
+**Proof-level / slogan / definition-locality audit**: ACTIVE.  The slogan and definition-locality passes are still useful, but the previous "zero proof-level errors" verdict was too strong: #691 is open because several theorem-family environments survived whose proofs were only formula checks or elementary algebra.  Current rule: each flagged proof must be read as a statement-hypothesis-proof unit and either strengthened into a genuine theorem-family claim or demoted into prose, remark, example, or calculation.
 
 **Substance audit** (Xi 2026-05-28: "quality and depth are essential"): COMPLETE. Methodology: actually read each chapter for substance content (not env-count). Findings: substance is **uniformly at unprecedented depth across the entire monograph**. No additional substance-gap GH issues warranted beyond the existing depth-pass-B + literature-sloppy backlog above. Representative anti-slogan / unprecedented-depth markers documented in `git log` and individual issue threads.
 

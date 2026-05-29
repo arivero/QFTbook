@@ -24,8 +24,8 @@ on a neighborhood of \(C\), and \(C\) is assumed to be either compact without
 boundary or equipped with boundary conditions for which the displayed
 Stokes term vanishes.
 
-\begin{proposition}[Localization deformation identity]
-\label{prop:susy-localization-deformation-identity}
+\begin{remark}[Localization deformation identity]
+\label{rem:susy-localization-deformation-identity}
 Let \(S,V,\mathcal O\) be functions on \(X\) with parities
 \(|S|=|\mathcal O|=0\), \(|V|=1\).  Suppose
 \[
@@ -39,9 +39,6 @@ and suppose the Berezinian density is \(Q\)-invariant:
 \]
 If \(Q(\mu\,\mathcal O\,V\,\exp\{-S-tQV\})\) has zero integral over \(C\),
 then \(I(t)\) is independent of \(t\).
-\end{proposition}
-
-\begin{proof}
 Because \(Q\) is an odd derivation and \(Q^2V=BV=0\),
 \[
   \frac{dI}{dt}
@@ -63,7 +60,7 @@ The hypotheses \(QS=0\), \(Q\mathcal O=0\), and \(Q(QV)=0\) give
 \]
 Using \(\mathcal L_Q\mu=0\), the right hand side integrates to the assumed
 zero Stokes term.  Hence \(dI/dt=0\).
-\end{proof}
+\end{remark}
 
 \begin{definition}[Clean fixed locus and normal complex]
 \label{def:clean-fixed-locus-normal-complex}
@@ -84,8 +81,8 @@ with orientation and square-root branches inherited from the integration
 cycle.
 \end{definition}
 
-Assume, in addition to
-Proposition~\ref{prop:susy-localization-deformation-identity}, that
+Assume, in addition to the deformation identity in
+Remark~\ref{rem:susy-localization-deformation-identity}, that
 \(\operatorname{Re}(QV)\ge0\) on the bosonic body of \(C\), that \(F\) is
 compact and clean, and that the large-\(t\) integral is dominated by a
 tubular neighborhood of \(F\).  In local coordinates \(y\) along \(F\),
@@ -125,9 +122,9 @@ normal factor is therefore
   \label{eq:finite-normal-localization-factor}
 \end{equation}
 
-\begin{proposition}[Finite normal Gaussian factor]
-\label{prop:finite-normal-gaussian-localization-factor}
-Let \(A\) be an invertible real symmetric matrix whose real part is positive
+The finite normal Gaussian factor is fixed by the ordinary Gaussian integral
+and the defining coefficient of the Pfaffian.  Let \(A\) be an invertible real
+symmetric matrix whose real part is positive
 on the chosen bosonic normal cycle, and let \(\mathsf F\) be an invertible
 antisymmetric \(2m\times2m\) matrix.  With the Berezin orientation
 \(d\vartheta_{2m}\cdots d\vartheta_1\),
@@ -153,9 +150,6 @@ normalization of the bosonic measure,
 If \(A\) or \(\mathsf F\) has a zero mode, that direction must be split off
 and integrated on the fixed locus or saturated by insertions; it is not part
 of the one-loop determinant.
-\end{proposition}
-
-\begin{proof}
 The Berezin integral extracts the coefficient of the ordered monomial
 \(\vartheta^1\cdots\vartheta^{2m}\).  By definition of the Pfaffian,
 this coefficient in
@@ -180,7 +174,6 @@ missing odd variable.  Thus zero modes are coordinates on \(F\), insertions
 to be saturated, or obstructions showing that the proposed localized
 observable vanishes.  A determinant formula without this zero-mode statement
 is not a localization theorem.
-\end{proof}
 
 Equation~\eqref{eq:finite-normal-localization-factor} is the finite model for
 the one-loop determinants in the compact-space QFT examples below.
@@ -1164,8 +1157,8 @@ background-field couplings remain part of the QFT datum.
 
 Equations~\eqref{eq:pestun-s4-localization} and
 \eqref{eq:kwy-s3-localization} have different mathematical status from
-Proposition~\ref{prop:susy-localization-deformation-identity}.  The
-proposition is a finite-dimensional deformation identity under stated
+Remark~\ref{rem:susy-localization-deformation-identity}.  That
+remark records the finite-dimensional deformation identity under stated
 hypotheses.  The compact-space QFT formulae additionally require:
 \[
 \begin{array}{ll}

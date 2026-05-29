@@ -33,6 +33,22 @@ NEGATIVE_SCOPE_TITLE_RE = re.compile(
     re.IGNORECASE,
 )
 
+CALCULATION_WRAPPER_TITLE_RE = re.compile(
+    r"\b("
+    r"check|checks|bookkeeping|"
+    r"comparison algebra|"
+    r"finite algebra of .*comparisons|"
+    r"exact finite.*GEVP extraction|"
+    r"Richardson cancellation|"
+    r"finite normal Gaussian factor|"
+    r"localization deformation identity|"
+    r"two-dimensional Wess--Zumino action|"
+    r"free scalar thermal Green function|"
+    r"BCFW shift preserves"
+    r")\b",
+    re.IGNORECASE,
+)
+
 
 def main() -> int:
     failures: list[str] = []
@@ -45,6 +61,11 @@ def main() -> int:
             if NEGATIVE_SCOPE_TITLE_RE.search(title):
                 line = text.count("\n", 0, match.start()) + 1
                 failures.append(f"{path}:{line}: {match.group(1)} [{title}]")
+            if CALCULATION_WRAPPER_TITLE_RE.search(title):
+                line = text.count("\n", 0, match.start()) + 1
+                failures.append(
+                    f"{path}:{line}: calculation-only wrapper {match.group(1)} [{title}]"
+                )
 
         lines = text.splitlines()
         for idx, line_text in enumerate(lines):

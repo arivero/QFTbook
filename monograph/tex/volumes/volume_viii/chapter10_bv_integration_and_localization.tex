@@ -169,29 +169,54 @@ boundary integral on \(\partial\mathcal L\).
 \end{theorem}
 
 \begin{proof}
-Work in Darboux coordinates for which
-\(\mathcal L=\{\xi_i=0\}\) on a coordinate patch.  Write
+Cover the compact support of \(\sigma|_{\mathcal L}\) by Darboux--Weinstein
+charts adapted to \(\mathcal L\).  In such a chart the coordinates are
+\((x^i,\xi_i)\), the odd symplectic form is
+\(\sum_i\dd x^i\,\dd\xi_i\), and
+\(\mathcal L\) is given by \(\xi_i=0\).  Write the semidensity as
 \[
   \sigma=f(x,\xi)\,\mu^{1/2}.
 \]
-The restriction of \(\Delta\sigma\) to \(\mathcal L\) is represented by
+In this chart the canonical BV operator on semidensities is
 \[
+  \Delta\sigma
+  =
+  \left(
+    \sum_i(-1)^{|x^i|}
+    \frac{\partial^2 f}{\partial x^i\,\partial\xi_i}
+  \right)\mu^{1/2}.
+\]
+After restriction to \(\mathcal L\), this is the ordinary divergence of the
+vector density
+\[
+  V
+  =
+  \sum_i
+  (-1)^{|x^i|}
+  \left.
+    \frac{\partial f}{\partial\xi_i}
+  \right|_{\xi=0}
+  \iota_{\partial/\partial x^i}\,\dd x ,
+\]
+because
+\[
+  \dd_{\mathcal L}V
+  =
   \left.
   \sum_i(-1)^{|x^i|}
   \frac{\partial^2 f}{\partial x^i\,\partial\xi_i}
-  \right|_{\xi=0}
-  \dd x .
+  \right|_{\xi=0}\dd x .
 \]
-This is the ordinary divergence on \(\mathcal L\) of the vector density with
-components
-\[
-  (-1)^{|x^i|}
-  \left.\frac{\partial f}{\partial\xi_i}\right|_{\xi=0}.
-\]
-Its integral over a boundaryless compact patch is zero by Stokes' theorem,
-and the patchwise statements glue because the canonical operator on
-semidensities is coordinate invariant.  For a Lagrangian with boundary the
-ordinary Stokes theorem gives exactly the boundary term.
+Choose a partition of unity on \(\mathcal L\) subordinate to the adapted
+charts.  Applying the preceding calculation to each partitioned semidensity
+gives an ordinary divergence on each chart.  The local boundary
+contributions on chart overlaps cancel because the canonical BV operator on
+semidensities and the restricted density are invariant under adapted
+canonical coordinate changes.  Hence the only remaining boundary term is the
+geometric boundary of \(\mathcal L\).  If \(\partial\mathcal L=\varnothing\)
+the integral vanishes.  If \(\partial\mathcal L\) is present, the same
+calculation gives the induced ordinary Stokes integral
+\(\int_{\partial\mathcal L}V\).
 \end{proof}
 
 \begin{remark}[Gauge-fixing independence]
@@ -484,15 +509,12 @@ odd.  Define
   I(t)=\int_M \mathcal O\,\ee^{-S-tQV}.
 \]
 
-\begin{theorem}[\(Q\)-exact deformation invariance]
-\label{thm:q-exact-localization-invariance}
+\begin{remark}[\(Q\)-exact deformation identity]
+\label{rem:q-exact-localization-invariance}
 Under the hypotheses above,
 \[
   \frac{dI}{dt}=0 .
 \]
-\end{theorem}
-
-\begin{proof}
 Differentiate under the integral:
 \[
   \frac{dI}{dt}
@@ -507,12 +529,12 @@ Since \(Q\mathcal O=QS=Q^2V=0\), the graded Leibniz rule gives
 \]
 Thus \(dI/dt\) is minus the integral of a \(Q\)-exact term, and
 \eqref{eq:localization-q-stokes} gives the result.
-\end{proof}
 
-The theorem has content only after \eqref{eq:localization-q-stokes} has been
+The identity has content only after \eqref{eq:localization-q-stokes} has been
 verified.  For compact \(M\) and \(Q=\dd\), it is Stokes' theorem.  For
 noncompact cycles it is a decay estimate.  For contour prescriptions it is a
 statement about the chosen relative homology class.
+\end{remark}
 
 \section{One-Loop Normal Form}
 
@@ -721,7 +743,7 @@ identity.
 \section{Boundary And Noncompact Terms}
 
 If the integration cycle has boundary or noncompact ends, the derivative in
-Theorem~\ref{thm:q-exact-localization-invariance} is the corresponding
+Remark~\ref{rem:q-exact-localization-invariance} is the corresponding
 boundary integral:
 \[
   \frac{dI}{dt}

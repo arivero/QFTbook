@@ -427,7 +427,7 @@ free abelian representative integral and factors from normalized correlators.
 \end{tikzpicture}
 \end{center}
 
-\begin{proposition}[Finite-dimensional gauge-slice independence model]
+\begin{example}[Finite-dimensional gauge-slice independence model]
 \label{prop:finite-dimensional-fp-slice-independence-model}
 A finite-dimensional model isolates the logic. Let
 \[
@@ -461,9 +461,6 @@ For a gauge-invariant observable \(O(x,y)=O(x+\alpha,y+\alpha)\),
 is independent of \(a,b\). This is the finite-dimensional form of
 gauge-slice independence for gauge-invariant quantities in a region where the
 slice is regular.
-\end{proposition}
-
-\begin{proof}
 On the slice \(y=-ax-b\), the gauge-invariant coordinate is
 \[
   u=x-y=(1+a)x+b .
@@ -473,7 +470,7 @@ The measure changes by \(\dd u=|1+a|\dd x\).  The factor
 denominator.  Because \(O\) is constant on gauge orbits, \(O(x,-ax-b)\)
 depends only on \(u\).  Both normalized integrals are thus the same Gaussian
 average in \(u\), independent of \(a,b\).
-\end{proof}
+\end{example}
 
 \section{Axial-Gauge Gaussian and Propagator}
 
@@ -647,7 +644,7 @@ so the abelian Faddeev--Popov operator is \(M_{\mathrm L}=\Box\). In the
 free abelian theory its determinant is field independent.
 \end{definition}
 
-\begin{proposition}[Gaussian averaging of the Lorenz gauge condition]
+\begin{remark}[Gaussian averaging of the Lorenz gauge condition]
 \label{prop:lorenz-gauge-gaussian-averaging}
 Instead of imposing \(\partial_\mu A^\mu=0\) sharply, introduce an auxiliary
 function \(\varphi\) and average the condition
@@ -690,9 +687,6 @@ The Euclidean gauge-fixing term is therefore
   \frac{1}{2\xi_{\mathrm g}}
   \int\dd^4x_E\,(\partial_\mu A^\mu)^2 .
 \]
-\end{proposition}
-
-\begin{proof}
 The delta-functional sets \(\varphi=\partial_\mu A^\mu\).  Integrating first
 over \(\lambda\) implements this constraint, and the remaining Gaussian
 weight in \(\varphi\) becomes exactly the displayed quadratic term in
@@ -700,7 +694,7 @@ weight in \(\varphi\) becomes exactly the displayed quadratic term in
 completes the square and produces the same local quadratic functional of the
 Lagrange multiplier; the two orders express the same finite-mode Gaussian
 identity before the regulator is removed.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[Covariant-gauge quadratic inverse]
 \label{prop:covariant-gauge-quadratic-inverse}
