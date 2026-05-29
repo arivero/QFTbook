@@ -13,29 +13,29 @@ define composite local fields.
 
 Throughout this chapter the scalar operator is the one fixed in
 Chapter~\ref{ch:locally-covariant-qft-hadamard},
-\[
+\begin{equation}
   P_M=-\nabla^\mu\nabla_\mu+m^2+\xi R[g],
   \qquad m^2\ge0,\qquad \xi\in\mathbb R .
   \label{eq:point-splitting-kg-operator}
-\]
+\end{equation}
 Let \(\mathcal U\subset M\) be a geodesically convex normal neighborhood.
 For \(x,y\in\mathcal U\), let \(\sigma(x,y)\) be Synge's world function:
 one half of the signed squared geodesic distance from \(x\) to \(y\).  Choose
 a smooth time function \(T\) on \(\mathcal U\) and put
-\[
+\begin{equation}
   \sigma_\epsilon(x,y)
   =
   \sigma(x,y)+\ii\epsilon\bigl(T(x)-T(y)\bigr)+\epsilon^2,
   \qquad \epsilon>0 .
   \label{eq:point-splitting-sigma-epsilon}
-\]
+\end{equation}
 The limit \(\epsilon\downarrow0\) is always distributional.
 
 \begin{definition}[Hadamard subtraction]
 \label{def:local-hadamard-subtraction}
 In four dimensions, a Hadamard subtraction for \(P_M\) on
 \(\mathcal U\) is the distributional boundary value
-\[
+\begin{equation}
   H_{\epsilon,\mu}(x,y)
   =
   \frac{1}{8\pi^2}
@@ -45,7 +45,7 @@ In four dimensions, a Hadamard subtraction for \(P_M\) on
   \right],
   \qquad \mu>0,
   \label{eq:point-splitting-hadamard-subtraction}
-\]
+\end{equation}
 where \(U_H=\Delta^{1/2}\), \(\Delta\) is the van Vleck determinant, and
 \(V_H\) is a smooth representative of the Hadamard coefficient whose jet at
 the diagonal is determined recursively by \(P_M\).  Different smooth
@@ -58,25 +58,25 @@ The word ``determined'' in
 Definition~\ref{def:local-hadamard-subtraction} means a local transport
 construction of the jet of \(V_H\) at the diagonal.  It is not a global
 Green-function prescription.  To spell out the local object, write
-\[
+\begin{equation}
   V_H(x,y)\sim \sum_{j\ge0}v_j(x,y)\sigma(x,y)^j
   \label{eq:hadamard-v-asymptotic-expansion}
-\]
+\end{equation}
 as an asymptotic expansion of smooth biscalars in a normal neighborhood.
 For each integer \(N\ge0\), the partial sum
-\[
+\begin{equation}
   V_H^{[N]}(x,y)=\sum_{j=0}^{N}v_j(x,y)\sigma(x,y)^j
   \label{eq:hadamard-v-partial-sum}
-\]
+\end{equation}
 is chosen so that
-\[
+\begin{equation}
   P_{M,x}\left[
     \frac{U_H(x,y)}{\sigma(x,y)}
     +
     V_H^{[N]}(x,y)\log\!\bigl(\mu^2\sigma(x,y)\bigr)
   \right]
   \label{eq:hadamard-recursion-condition}
-\]
+\end{equation}
 has no negative powers of \(\sigma\) and no logarithmic terms through the
 order fixed by \(N\).  Expanding
 \eqref{eq:hadamard-recursion-condition} in powers of \(\sigma\) gives
@@ -93,24 +93,24 @@ allowed smooth local biscalar is precisely a finite renormalization choice.
 \label{prop:leading-hadamard-transport-equation}
 The coefficient \(U_H\) in
 \eqref{eq:point-splitting-hadamard-subtraction} is fixed by
-\[
+\begin{equation}
   2\sigma^{;\mu}\nabla_\mu U_H
   +
   (\Box_g\sigma-4)U_H=0,
   \qquad U_H(x,x)=1 .
   \label{eq:point-splitting-u-transport}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 The calculation is local and may be performed for \(x\ne y\), before taking
 the distributional boundary value.  The defining identities of Synge's
 function in a normal neighborhood are
-\[
+\begin{equation}
   \sigma^{;\mu}\sigma_{;\mu}=2\sigma,\qquad
   \Box_g\sigma=4+O(\sigma).
   \label{eq:point-splitting-synge-identities}
-\]
+\end{equation}
 For a smooth biscalar \(U\),
 \[
   \nabla_\mu(\sigma^{-1})=-\sigma_{;\mu}\sigma^{-2},
@@ -144,43 +144,43 @@ solution is \(\Delta^{1/2}\).
 \label{prop:first-logarithmic-hadamard-coefficient}
 Let \(V_H=v_0+O(\sigma)\).  With the operator convention
 \eqref{eq:point-splitting-kg-operator}, the first coefficient is fixed by
-\[
+\begin{equation}
   2\sigma^{;\mu}\nabla_\mu v_0
   +
   (\Box_g\sigma-2)v_0
   =
   P_{M,x}U_H .
   \label{eq:point-splitting-v0-transport}
-\]
+\end{equation}
 In particular,
-\[
+\begin{equation}
   v_0(x,x)
   =
   \frac12\left(m^2+\left(\xi-\frac16\right)R[g](x)\right).
   \label{eq:point-splitting-v0-coincidence}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 After Proposition~\ref{prop:leading-hadamard-transport-equation}, the
 \(\sigma^{-2}\) coefficient in \(P_{M,x}(U_H/\sigma)\) vanishes.  The next
 singular term is therefore
-\[
+\begin{equation}
   \frac{P_{M,x}U_H}{\sigma}.
   \label{eq:point-splitting-pu-over-sigma}
-\]
+\end{equation}
 For a smooth biscalar \(v\),
-\[
+\begin{equation}
   \nabla_\mu\log\sigma=\frac{\sigma_{;\mu}}{\sigma},
   \qquad
   \Box_g\log\sigma
   =
   \frac{\Box_g\sigma-2}{\sigma},
   \label{eq:point-splitting-box-log-sigma}
-\]
+\end{equation}
 where the second identity uses
 \(\sigma^{;\mu}\sigma_{;\mu}=2\sigma\).  Hence
-\[
+\begin{equation}
   P_{M,x}\bigl(v\log\sigma\bigr)
   =
   (P_{M,x}v)\log\sigma
@@ -190,7 +190,7 @@ where the second identity uses
     +(\Box_g\sigma-2)v
   }{\sigma}.
   \label{eq:point-splitting-p-vlog}
-\]
+\end{equation}
 The zeroth-order part of \(P_M\) multiplies \(v\log\sigma\) and contributes
 only the displayed logarithmic term, not a negative power of \(\sigma\).
 Canceling the coefficient of \(\sigma^{-1}\) between
@@ -198,11 +198,11 @@ Canceling the coefficient of \(\sigma^{-1}\) between
 \eqref{eq:point-splitting-p-vlog} gives
 \eqref{eq:point-splitting-v0-transport}.  Taking the coincidence limit,
 \(\sigma^{;\mu}=0\) and \(\Box_g\sigma=4\).  Also
-\[
+\begin{equation}
   U_H(x,x)=1,\qquad
   \left.\Box_{g,x}U_H(x,y)\right|_{y=x}=\frac16R[g](x),
   \label{eq:point-splitting-delta-box-coincidence}
-\]
+\end{equation}
 which follows from the normal-coordinate expansion of
 \(\Delta^{1/2}\).  Therefore
 \[
@@ -223,27 +223,27 @@ be the local Hadamard logarithmic coefficient in four dimensions.  After
 \(U_H\) has been fixed by
 \eqref{eq:point-splitting-u-transport}, the coefficients \(v_j\) are
 determined recursively along the geodesic from \(y\) to \(x\) by
-\[
+\begin{equation}
   \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma-2\bigr)v_0
   =
   P_{M,x}U_H,
   \label{eq:hadamard-recursion-v0}
-\]
+\end{equation}
 and, for \(j\ge0\),
-\[
+\begin{equation}
   \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma+2j\bigr)v_{j+1}
   =
   \frac{1}{j+1}\,P_{M,x}v_j .
   \label{eq:hadamard-recursion-vj}
-\]
+\end{equation}
 At coincidence this gives
-\[
+\begin{equation}
   v_{j+1}(x,x)
   =
   \frac{1}{2(j+1)(j+2)}
   \left.P_{M,x}v_j(x,y)\right|_{y=x}.
   \label{eq:hadamard-recursion-coincidence}
-\]
+\end{equation}
 The recursion fixes the complete diagonal jet of \(V_H\).  Choosing a smooth
 representative with that jet is a Borel-extension choice and changes the
 parametrix only by a smooth biscalar flat at the diagonal, hence only by a
@@ -253,7 +253,7 @@ finite local subtraction in point-split composite fields.
 \begin{proof}
 Write \(s=\sigma(x,y)\) and compute away from the diagonal.  For a smooth
 biscalar \(v\),
-\[
+\begin{equation}
   P_{M,x}(v\,s^k\log s)
   =
   \bigl(P_{M,x}(v\,s^k)\bigr)\log s
@@ -264,7 +264,7 @@ biscalar \(v\),
     +(\Box_g\sigma+4k-2)v
   \bigr).
   \label{eq:hadamard-recursion-basic-identity}
-\]
+\end{equation}
 This follows by applying the product rule and
 \(\sigma^{;\mu}\sigma_{;\mu}=2\sigma\), exactly as in the proof of
 Proposition~\ref{prop:first-logarithmic-hadamard-coefficient}.  The
@@ -308,10 +308,10 @@ Changing the time function in \eqref{eq:point-splitting-sigma-epsilon}
 changes only the boundary-value prescription for the same local positive
 frequency singularity.  Changing \(\mu\) changes the subtraction by the
 smooth local biscalar
-\[
+\begin{equation}
   \frac{1}{8\pi^2}V_H(x,y)\log(\mu'^2/\mu^2).
   \label{eq:point-splitting-scale-change}
-\]
+\end{equation}
 Thus the singular part is state-independent, while the scale and smooth
 local terms are renormalization coordinates.
 
@@ -429,18 +429,18 @@ two Hadamard states \(\omega,\omega'\), the difference
 by applying a fixed local bidifferential operator to the smooth biscalar
 \(\omega_2-\omega'_2\) and then restricting to the diagonal.
 \item \emph{Conservation.}  The distributional divergence vanishes,
-\[
+\begin{equation}
   \nabla^\mu\omega(T_{\mu\nu}^{\rm ren})=0 ,
   \label{eq:wald-type-conservation}
-\]
+\end{equation}
 for all Hadamard states in the declared state class.
 \item \emph{Metric dimension and almost homogeneous scaling.}  In local
 formulae we assign engineering dimensions
-\[
+\begin{equation}
   [\nabla]=1,\qquad [m]=1,\qquad [R_{\mu\nu\rho\sigma}]=2,\qquad
   [g_{\mu\nu}]=0 .
   \label{eq:stress-tensor-engineering-dimensions}
-\]
+\end{equation}
 The state-independent local terms in \(T_{\mu\nu}^{\rm ren}\) have total
 dimension four.  A change of the Hadamard length scale is allowed to produce
 only local logarithmic terms of the same dimension; this is the curved-space
@@ -468,12 +468,12 @@ conditions.
 
 \begin{enumerate}
 \item It is obtained locally from
-\[
+\begin{equation}
   \lim_{y\to x}\mathcal D_{\mu\nu}(x,y)
   \bigl(\omega_2(x,y)-H_{\epsilon,\mu}(x,y)\bigr)
   +C_{\mu\nu}[g](x),
   \label{eq:point-splitting-prescription-template}
-\]
+\end{equation}
 where \(\mathcal D_{\mu\nu}\) is the bidifferential operator obtained by
 polarizing the classical Hilbert stress tensor and \(C_{\mu\nu}[g]\) is a
 state-independent local curvature tensor.
@@ -488,10 +488,10 @@ has stress-tensor expectation equal to the pullback of the \(N\)-expectation.
 \(\mathcal D_{\mu\nu}\) to \(\omega_2-\omega'_2\) and then taking the
 diagonal limit.
 \item It is conserved after the finite local tensor has been fixed:
-\[
+\begin{equation}
   \nabla^\mu\omega(T_{\mu\nu})=0
   \label{eq:point-splitting-stress-conservation-condition}
-\]
+\end{equation}
 for all Hadamard states in the declared state space.
 \item It has engineering dimension four under constant rescaling of the
 metric and fields in the sense of
@@ -506,7 +506,7 @@ cosmological term is set to zero.
 Let \(T_{\mu\nu}\) and \(T'_{\mu\nu}\) be two prescriptions satisfying
 Definition~\ref{def:point-split-stress-tensor-prescription}.  In four
 dimensions their difference is state-independent and has the form
-\[
+\begin{equation}
   T'_{\mu\nu}-T_{\mu\nu}
   =
   a_0m^4g_{\mu\nu}
@@ -514,14 +514,14 @@ dimensions their difference is state-independent and has the form
   +a_2I_{\mu\nu}
   +a_3J_{\mu\nu},
   \label{eq:stress-tensor-finite-local-freedom}
-\]
+\end{equation}
 with real constants \(a_i\).  Here
-\[
+\begin{equation}
   G_{\mu\nu}=R_{\mu\nu}-\frac12Rg_{\mu\nu},
   \label{eq:einstein-tensor-definition-local-freedom}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   I_{\mu\nu}
   =
   \frac{1}{\sqrt{|g|}}
@@ -534,7 +534,7 @@ and
   \frac{\delta}{\delta g^{\mu\nu}}
   \int \sqrt{|g|}\,R_{\alpha\beta}R^{\alpha\beta}\,\dd^4x,
   \label{eq:ij-curvature-tensors-definition}
-\]
+\end{equation}
 with compactly supported metric variations and boundary terms discarded.
 \end{proposition}
 
@@ -608,7 +608,7 @@ four-parameter form.
 With the convention of
 \eqref{eq:ij-curvature-tensors-definition}, the two independent
 curvature-squared Euler tensors are
-\[
+\begin{equation}
 \begin{aligned}
   I_{\mu\nu}
   &=
@@ -625,24 +625,24 @@ curvature-squared Euler tensors are
   -\frac12g_{\mu\nu}\Box_gR .
 \end{aligned}
   \label{eq:curvature-squared-euler-tensor-formulas}
-\]
+\end{equation}
 They are conserved,
-\[
+\begin{equation}
   \nabla^\mu I_{\mu\nu}=0,\qquad
   \nabla^\mu J_{\mu\nu}=0,
   \label{eq:curvature-squared-euler-tensor-conservation}
-\]
+\end{equation}
 and in four dimensions their traces are
-\[
+\begin{equation}
   g^{\mu\nu}I_{\mu\nu}=6\Box_gR,\qquad
   g^{\mu\nu}J_{\mu\nu}=-2\Box_gR .
   \label{eq:curvature-squared-euler-tensor-traces}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 For the \(R^2\) functional, use
-\[
+\begin{equation}
   \delta\sqrt{|g|}
   =
   -\frac12\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu},
@@ -653,7 +653,7 @@ For the \(R^2\) functional, use
   +g_{\mu\nu}\Box_g\delta g^{\mu\nu}
   -\nabla_\mu\nabla_\nu\delta g^{\mu\nu}.
   \label{eq:variation-scalar-curvature-inverse-metric}
-\]
+\end{equation}
 After two integrations by parts with compactly supported metric variation,
 \[
   \delta\int\sqrt{|g|}R^2
@@ -680,7 +680,7 @@ which is the first line of
   +2\sqrt{|g|}R^{\mu\nu}\delta R_{\mu\nu},
 \]
 using
-\[
+\begin{equation}
   \delta R_{\mu\nu}
   =
   \frac12g_{\mu\alpha}g_{\nu\beta}\Box_g\delta g^{\alpha\beta}
@@ -688,7 +688,7 @@ using
   -\frac12g_{\mu\alpha}\nabla_\beta\nabla_\nu\delta g^{\alpha\beta}
   -\frac12g_{\nu\alpha}\nabla_\beta\nabla_\mu\delta g^{\alpha\beta},
   \label{eq:variation-ricci-inverse-metric}
-\]
+\end{equation}
 commuting covariant derivatives where needed, gives the second line.  These
 are ordinary variational identities for compactly supported variations; no
 field equation is used.

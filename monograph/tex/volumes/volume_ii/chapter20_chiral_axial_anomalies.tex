@@ -1683,7 +1683,7 @@ and
   0.
 \]
 The cubic and mixed gravitational hypercharge sums are
-\[
+\begin{equation}
 \begin{aligned}
   \sum_{\rm Weyl}Y^3
   &=
@@ -1706,7 +1706,7 @@ The cubic and mixed gravitational hypercharge sums are
   0 .
 \end{aligned}
   \label{eq:standard-model-hypercharge-anomaly-sums}
-\]
+\end{equation}
 The same field list contains \(3+1=4\) weak doublets, so the finite
 \(SU(2)\) anomaly discussed in Chapter~\ref{ch:volume-ii-21} is absent for
 each generation.  These cancellations are arithmetic consequences of the
@@ -2061,28 +2061,28 @@ Fix a gauge-invariant Euclidean regulator on an oriented four-volume \(V_4\).
 Finite-regulator theta data consist of nonnegative sector weights
 \(Z_{\Lambda,V_4,Q}\), \(Q\in\mathbb Z\), for the vectorlike theory at
 \(\theta=0\), such that
-\[
+\begin{equation}
   Z_{\Lambda,V_4}(\theta)
   =
   \sum_{Q\in\mathbb Z}
   \ee^{\ii\theta Q}Z_{\Lambda,V_4,Q}
   \label{eq:finite-regulator-theta-partition-function}
-\]
+\end{equation}
 is finite for \(\theta\) in a neighborhood of zero.  The finite-regulator
 vacuum-energy density near \(\theta=0\) is
-\[
+\begin{equation}
   E_{\Lambda,V_4}(\theta)
   =
   -\frac1{V_4}\log Z_{\Lambda,V_4}(\theta),
   \label{eq:finite-regulator-theta-energy}
-\]
+\end{equation}
 where the logarithm is the branch continuous from \(\theta=0\).
 \end{definition}
 
 \begin{remark}[Finite-volume susceptibility identity]
 \label{rem:finite-volume-topological-susceptibility}
 For every finite-regulator theta data set,
-\[
+\begin{equation}
   E_{\Lambda,V_4}''(0)
   =
   \frac1{V_4}
@@ -2092,7 +2092,7 @@ For every finite-regulator theta data set,
     \langle Q\rangle_{\Lambda,V_4,0}^2
   \right),
   \label{eq:finite-volume-topological-susceptibility}
-\]
+\end{equation}
 where the expectation is with respect to the positive weights
 \(Z_{\Lambda,V_4,Q}/Z_{\Lambda,V_4}(0)\).  If CP is preserved at
 \(\theta=0\), then \(\langle Q\rangle_{\Lambda,V_4,0}=0\), and the right hand
@@ -2123,13 +2123,13 @@ moment vanishes.
 \label{def:topological-susceptibility}
 The topological susceptibility of a continuum theory in a specified phase and
 regulator class is the limit
-\[
+\begin{equation}
   \chi_{\rm top}
   =
   \lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
   E_{\Lambda,V_4}''(0),
   \label{eq:topological-susceptibility-limit}
-\]
+\end{equation}
 when this limit exists and is independent of the allowed regulator choices
 after the local counterterm convention for the theta term has been fixed.
 For pure Yang--Mills we write the corresponding quantity as
@@ -2163,7 +2163,7 @@ consists of a finite or countable branch set \(\mathcal B\), branch partition
 functions \(Z_{\Lambda,V_4,\beta}(\theta)\), and local normalized states
 \(\omega_{\Lambda,V_4,\beta,\theta}\) on gauge-invariant observables, such
 that
-\[
+\begin{equation}
   Z_{\Lambda,V_4}(\theta)
   =
   \sum_{\beta\in\mathcal B}Z_{\Lambda,V_4,\beta}(\theta),
@@ -2173,44 +2173,44 @@ that
   \frac{Z_{\Lambda,V_4,\beta}(\theta)}
        {Z_{\Lambda,V_4}(\theta)} .
   \label{eq:theta-branch-partition-decomposition}
-\]
+\end{equation}
 When the limits exist, write
-\[
+\begin{equation}
   E_\beta(\theta)
   =
   -\lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
   \frac1{V_4}\log Z_{\Lambda,V_4,\beta}(\theta)
   \label{eq:theta-branch-energy-density}
-\]
+\end{equation}
 for the branch energy density.  The data are \(2\pi\)-periodic by branch
 relabeling when there is a bijection \(T:\mathcal B\to\mathcal B\) with
-\[
+\begin{equation}
   E_{T\beta}(\theta+2\pi)=E_\beta(\theta).
   \label{eq:theta-branch-periodic-relabeling}
-\]
+\end{equation}
 \end{definition}
 
 \begin{remark}[Thermodynamic branch selection]
 \label{rem:theta-thermodynamic-branch-selection}
 Assume a finite branch set and a fixed \(\theta\) at which the limiting branch
 energies \(E_\beta(\theta)\) exist.  If a unique branch \(\beta_*\) satisfies
-\[
+\begin{equation}
   E_{\beta_*}(\theta)
   <
   E_\beta(\theta)
   \qquad
   \hbox{for every }\beta\neq\beta_*,
   \label{eq:unique-theta-branch-minimum}
-\]
+\end{equation}
 and if each branch partition function has the form
-\[
+\begin{equation}
   Z_{\Lambda,V_4,\beta}(\theta)
   =
   \exp\{-V_4E_\beta(\theta)+o(V_4)\}
   \label{eq:branch-free-energy-asymptotics}
-\]
+\end{equation}
 uniformly over the finite branch set, then
-\[
+\begin{equation}
   \lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
   p_{\Lambda,V_4,\beta_*}(\theta)=1,
   \qquad
@@ -2218,7 +2218,7 @@ uniformly over the finite branch set, then
   p_{\Lambda,V_4,\beta}(\theta)=0
   \quad(\beta\neq\beta_*).
   \label{eq:theta-branch-selection}
-\]
+\end{equation}
 For \(\beta\neq\beta_*\),
 \[
   \frac{Z_{\Lambda,V_4,\beta}(\theta)}
@@ -2238,24 +2238,24 @@ zero.  Dividing the branch weights by
 Let \(\{\omega_\beta\}_{\beta\in\mathcal B}\) be translation-invariant pure
 states for gauge-invariant local observables, and assume each branch clusters:
 for local observables \(\mathcal O,\mathcal P\),
-\[
+\begin{equation}
   \lim_{|a|\to\infty}
   \omega_\beta(\mathcal O(a)\mathcal P(0))
   =
   \omega_\beta(\mathcal O)\omega_\beta(\mathcal P).
   \label{eq:branch-clustering-assumption}
-\]
+\end{equation}
 For a convex combination
-\[
+\begin{equation}
   \omega=\sum_{\beta\in\mathcal B}p_\beta\omega_\beta,
   \qquad
   p_\beta\ge0,
   \qquad
   \sum_\beta p_\beta=1,
   \label{eq:theta-branch-mixture-state}
-\]
+\end{equation}
 one has
-\[
+\begin{equation}
   \lim_{|a|\to\infty}
   \left[
     \omega(\mathcal O(a)\mathcal P(0))
@@ -2266,7 +2266,7 @@ one has
   \operatorname{Cov}_{p}
   \bigl(\omega_\beta(\mathcal O),\omega_\beta(\mathcal P)\bigr).
   \label{eq:theta-branch-cluster-covariance}
-\]
+\end{equation}
 Thus the mixture clusters for all local observables only if the branch labels
 cannot be distinguished by local one-point functions on the support of
 \(p_\beta\), or if the mixture is supported on a single branch.
@@ -2446,7 +2446,7 @@ half-trace component convention,
 \]
 Completing the square gives, for any finite-action field in the sector of
 charge \(k\),
-\[
+\begin{equation}
   S_E^{\rm ht}
   =
   \frac1{8g_{\rm ht}^2}
@@ -2457,7 +2457,7 @@ charge \(k\),
   \ge
   \frac{8\pi^2}{g_{\rm ht}^2}|k|.
   \label{eq:instanton-action-bound-half-trace}
-\]
+\end{equation}
 Equality holds precisely for self-dual fields when \(k>0\) and anti-self-dual
 fields when \(k<0\).  For \eqref{eq:bpst-regular-gauge-curvature},
 \[
@@ -2863,14 +2863,14 @@ and of the invariant volume on the orientation orbit.
 Use the common half-trace coupling \(g_{\rm ht}(\mu)\) in the BPST
 subsection, and suppose the one-instanton density is renormalized in a
 mass-independent scheme through one loop.  Let
-\[
+\begin{equation}
   \mu\frac{\dd g_{\rm ht}}{\dd\mu}
   =
   -\frac{b_0}{16\pi^2}g_{\rm ht}^3+O(g_{\rm ht}^5),
   \qquad
   b_0=\frac{11}{3}N_c-\frac23N_f .
   \label{eq:instanton-density-beta0-definition}
-\]
+\end{equation}
 Then the part of the one-instanton measure fixed by scale covariance,
 zero-mode normalization, and one-loop RG invariance is
 \begin{equation}
@@ -2933,12 +2933,12 @@ regularized determinant and measure normalization.
 Fermion zero modes are controlled by the index theorem already stated in
 \eqref{eq:dirac-index-anomaly}.  In the conventional half-trace notation, a
 left-handed Weyl fermion in representation \(R\) has
-\[
+\begin{equation}
   n_+-n_-=2T_R\,k,
   \qquad
   \operatorname{tr}_R(T_R^aT_R^b)=T_R\delta^{ab}.
   \label{eq:instanton-index-dynkin}
-\]
+\end{equation}
 For a fundamental Weyl fermion of \(SU(N_c)\), \(T_\square=1/2\), so a
 \(k=1\) instanton has one normalizable zero mode of the chirality selected by
 the self-dual background.  The anti-instanton has the opposite chirality.  In

@@ -1577,12 +1577,12 @@ be a formal power series.  It is \emph{Gevrey-one} if there are constants
   \qquad(n\ge0).
 \]
 Its formal Borel transform is
-\[
+\begin{equation}
   \mathcal B\widehat A(\xi)
   =
   \sum_{n\ge0}\frac{a_n}{n!}\xi^n .
   \label{eq:formal-borel-transform}
-\]
+\end{equation}
 Fix a direction \(\theta\in\mathbb R/2\pi\mathbb Z\).  The direction is
 admissible for \(\widehat A\) if the series
 \(\mathcal B\widehat A\) converges near \(\xi=0\), continues holomorphically
@@ -1593,12 +1593,12 @@ to a sector
   \{\xi\ne0:\ |\arg\xi-\theta|<\eta\}
 \]
 for some \(\eta>0\), and obeys an exponential bound
-\[
+\begin{equation}
   |\mathcal B\widehat A(\xi)|
   \le C_\eta \exp(|\xi|/R_\eta)
   \qquad(\xi\in\Sigma_{\theta,\eta})
   \label{eq:borel-exponential-bound}
-\]
+\end{equation}
 for some \(C_\eta,R_\eta>0\).  For \(g\) satisfying
 \[
   |\arg g-\theta|<\frac\pi2-\delta,
@@ -1606,13 +1606,13 @@ for some \(C_\eta,R_\eta>0\).  For \(g\) satisfying
   |g|<R_\eta\cos\delta
 \]
 with \(0<\delta<\pi/2\), the directional Borel sum is
-\[
+\begin{equation}
   \mathcal S_\theta \widehat A(g)
   =
   \frac1g\int_0^{\ee^{i\theta}\infty}
   \ee^{-\xi/g}\,\mathcal B\widehat A(\xi)\,\dd\xi ,
   \label{eq:directional-borel-sum}
-\]
+\end{equation}
 where the ray is oriented from \(0\) to infinity.
 \end{definition}
 
@@ -1622,14 +1622,14 @@ Under the hypotheses of Definition~\ref{def:gevrey-one-directional-borel-sum},
 \(\mathcal S_\theta\widehat A(g)\) is holomorphic in the indicated sector of
 the \(g\)-plane and has \(\widehat A(g)\) as its asymptotic expansion there:
 for every \(N\ge0\) and every closed subsector strictly inside the domain,
-\[
+\begin{equation}
   \mathcal S_\theta\widehat A(g)
   -
   \sum_{n=0}^N a_n g^n
   =
   O(g^{N+1}).
   \label{eq:borel-watson-remainder}
-\]
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -1683,14 +1683,14 @@ limits as \(\epsilon\downarrow0\), the limits are the lateral sums
   \mathcal S_{\theta^-}\widehat A(g).
 \]
 Their difference
-\[
+\begin{equation}
   \operatorname{Disc}_\theta \widehat A(g)
   =
   \mathcal S_{\theta^+}\widehat A(g)
   -
   \mathcal S_{\theta^-}\widehat A(g)
   \label{eq:borel-stokes-discontinuity}
-\]
+\end{equation}
 is the Stokes discontinuity across the ray.  This definition is a statement
 about boundary values of a named Borel transform; it is not a prescription
 unless the analytic continuation, growth bounds, and lateral limits have been
@@ -1701,24 +1701,24 @@ established.
 \label{prop:simple-pole-stokes-jump}
 Let \(A>0\), and suppose that in a neighborhood of \(\xi=A\) the Borel
 transform has the form
-\[
+\begin{equation}
   \mathcal B\widehat A(\xi)
   =
   \frac{r}{\xi-A}+H(\xi),
   \label{eq:simple-borel-pole-local-form}
-\]
+\end{equation}
 where \(H\) is holomorphic.  Assume that away from this singularity the
 lateral Borel integrals along the positive ray satisfy the hypotheses of
 Definition~\ref{def:lateral-borel-sums-stokes-discontinuity}.  Then the
 contribution of this pole to the upper-minus-lower discontinuity is
-\[
+\begin{equation}
   \operatorname{Disc}_{0}\widehat A(g)
   =
   \frac{2\pi\ii r}{g}\,\ee^{-A/g}
   +
   \operatorname{Disc}_{0}^{\rm other}\widehat A(g),
   \label{eq:simple-pole-stokes-jump}
-\]
+\end{equation}
 where the last term denotes contributions from other singularities on the
 same ray.
 \end{proposition}
@@ -1744,14 +1744,14 @@ local contribution.
 Fix \(A>0\), \(\beta\in\mathbb C\), and a sector in the \(g\)-plane.  A
 one-parameter transseries system at the first exponential scale is a formal
 object
-\[
+\begin{equation}
   \widehat F(g;\sigma)
   =
   \widehat\Phi_0(g)
   +
   \sigma\,\ee^{-A/g}g^\beta\widehat\Phi_1(g),
   \label{eq:one-parameter-transseries-system}
-\]
+\end{equation}
 where \(\widehat\Phi_0\) and \(\widehat\Phi_1\) are formal power series and
 \(\sigma\in\mathbb C\) is a parameter.  A summation of
 \eqref{eq:one-parameter-transseries-system} requires summation data for both
@@ -1763,7 +1763,7 @@ direction crosses a Stokes ray.
 \label{rem:first-stokes-cancellation-algebra}
 Assume that the lateral sums of \(\widehat\Phi_0\) and \(\widehat\Phi_1\)
 exist on a ray and satisfy
-\[
+\begin{equation}
   \mathcal S_{+}\widehat\Phi_0
   -
   \mathcal S_{-}\widehat\Phi_0
@@ -1772,23 +1772,23 @@ exist on a ray and satisfy
   \qquad
   \mathcal S_{+}\widehat\Phi_1=\mathcal S_{-}\widehat\Phi_1,
   \label{eq:first-stokes-cancellation-hypothesis}
-\]
+\end{equation}
 for a constant \(C\).  Then the two lateral sums of
 \(\widehat F(g;\sigma)\) agree if and only if
-\[
+\begin{equation}
   \sigma_-=\sigma_+ + C .
   \label{eq:transseries-parameter-stokes-jump}
-\]
+\end{equation}
 If the data are real on the two sides of a real Stokes ray and \(C\) is purely
 imaginary, the median choice
-\[
+\begin{equation}
   \sigma_+=\sigma_{\rm R}-\frac{C}{2},
   \qquad
   \sigma_-=\sigma_{\rm R}+\frac{C}{2},
   \qquad
   \sigma_{\rm R}\in\mathbb R,
   \label{eq:median-transseries-parameter}
-\]
+\end{equation}
 gives a common real value whenever the two lateral boundary values are complex
 conjugates.
 \par
@@ -1816,7 +1816,7 @@ symmetric value is real.
 \begin{example}[Zero-dimensional stable quartic integral]
 \label{ex:zero-dimensional-quartic-large-order}
 The normalized integral
-\[
+\begin{equation}
   I(g)
   =
   \frac1{\sqrt{2\pi}}
@@ -1824,18 +1824,18 @@ The normalized integral
   \exp\left(-\frac{x^2}{2}-\frac{g x^4}{4!}\right)\,\dd x
   \qquad(\Re g>0)
   \label{eq:zero-dimensional-quartic-integral}
-\]
+\end{equation}
 is a finite-dimensional model of the distinction between coefficientwise
 perturbation theory and analytic reconstruction.  Termwise expansion at
 \(g=0\) gives
-\[
+\begin{equation}
   I(g)\sim\sum_{n\ge0}a_n g^n,
   \qquad
   a_n
   =
   (-1)^n\frac{(4n)!}{n!\,96^n(2n)!}.
   \label{eq:zero-dimensional-quartic-coefficients}
-\]
+\end{equation}
 Indeed
 \[
   \frac1{\sqrt{2\pi}}\int_{\mathbb R}x^{4n}\ee^{-x^2/2}\,\dd x
@@ -1845,20 +1845,20 @@ Indeed
   \frac{(4n)!}{2^{2n}(2n)!},
 \]
 and the extra factor is \((-1)^n/(n!(4!)^n)\).  Stirling's formula gives
-\[
+\begin{equation}
   \frac{a_{n+1}}{(n+1)a_n}\longrightarrow -\frac23 ,
   \label{eq:zero-dimensional-quartic-ratio}
-\]
+\end{equation}
 so the perturbative series has zero radius of convergence.  Dividing by
 \(n!\) gives the Borel series
-\[
+\begin{equation}
   \mathcal B I(\xi)
   =
   \sum_{n\ge0}\frac{a_n}{n!}\xi^n
   =
   {}_2F_1\left(\frac14,\frac34;1;-\frac{2\xi}{3}\right)
   \label{eq:zero-dimensional-quartic-borel-hypergeometric}
-\]
+\end{equation}
 near the origin.  The hypergeometric function has its first finite singularity
 at argument \(1\), hence at \(\xi=-3/2\) in this normalization.  Along the
 positive \(g\)-axis the integral is nevertheless well-defined and its
@@ -1872,14 +1872,14 @@ cycle.
 \label{prop:conformal-borel-negative-cut-map}
 Let \(A>0\), and suppose a Borel transform \(B(\xi)\) is holomorphic on the
 cut plane \(\mathbb C\setminus(-\infty,-A]\).  The map
-\[
+\begin{equation}
   w(\xi)
   =
   \frac{\sqrt{1+\xi/A}-1}{\sqrt{1+\xi/A}+1},
   \qquad
   \xi(w)=\frac{4Aw}{(1-w)^2},
   \label{eq:conformal-borel-negative-cut-map}
-\]
+\end{equation}
 with the square root chosen positive at \(\xi=0\), maps the cut plane
 biholomorphically to the unit disk.  It sends \(\xi=0\) to \(w=0\), the first
 branch point \(\xi=-A\) to \(w=-1\), and the positive real \(\xi\)-axis to
@@ -1918,17 +1918,17 @@ by itself defines it.
 Let
 \(\widehat A(g)=\sum_{n\ge0}a_n g^n\) be a formal series and let \(b>-1\).
 The Borel--Leroy transform with parameter \(b\) is
-\[
+\begin{equation}
   \mathcal B_b\widehat A(\xi)
   =
   \sum_{n\ge0}\frac{a_n}{\Gamma(n+b+1)}\xi^n .
   \label{eq:borel-leroy-transform}
-\]
+\end{equation}
 If \(\mathcal B_b\widehat A\) satisfies the same analytic-continuation and
 growth hypotheses as in Definition~\ref{def:gevrey-one-directional-borel-sum},
 with the branch of \(\xi^b\) fixed on the chosen ray, the corresponding
 Borel--Leroy sum is
-\[
+\begin{equation}
   \mathcal S_{\theta,b}\widehat A(g)
   =
   \frac1{g^{b+1}}
@@ -1936,7 +1936,7 @@ Borel--Leroy sum is
   \ee^{-\xi/g}\xi^b
   \mathcal B_b\widehat A(\xi)\,\dd\xi .
   \label{eq:borel-leroy-sum}
-\]
+\end{equation}
 For the one-cut hypothesis of
 Proposition~\ref{prop:conformal-borel-negative-cut-map}, write
 \[
@@ -1945,14 +1945,14 @@ Proposition~\ref{prop:conformal-borel-negative-cut-map}, write
   \sum_{m\ge0}c_m w^m
 \]
 near \(w=0\), and let
-\[
+\begin{equation}
   \mathcal B_{b,N}^{\rm conf}(\xi)
   =
   \sum_{m=0}^N c_m w(\xi)^m .
   \label{eq:truncated-conformal-borel-transform}
-\]
+\end{equation}
 The \(N\)-th conformal-Borel--Leroy approximant on the positive ray is
-\[
+\begin{equation}
   \mathcal S_{N}^{(A,b)}\widehat A(g)
   =
   \frac1{g^{b+1}}
@@ -1961,7 +1961,7 @@ The \(N\)-th conformal-Borel--Leroy approximant on the positive ray is
   \mathcal B_{b,N}^{\rm conf}(\xi)\,\dd\xi ,
   \qquad g>0,
   \label{eq:conformal-borel-leroy-approximant}
-\]
+\end{equation}
 when the integral converges.  The data \((A,b,N)\) are part of the
 approximation, not hidden conventions.
 \end{definition}
@@ -1972,7 +1972,7 @@ Assume the notation of
 Definition~\ref{def:borel-leroy-conformal-approximants}.  Suppose
 \(\mathcal B_b\widehat A\) is holomorphic at the origin, and \(w(\xi)\) is the
 map of Proposition~\ref{prop:conformal-borel-negative-cut-map}.  Then
-\[
+\begin{equation}
   \mathcal B_{b,N}^{\rm conf}(\xi)
   -
   \mathcal B_b\widehat A(\xi)
@@ -1980,18 +1980,18 @@ map of Proposition~\ref{prop:conformal-borel-negative-cut-map}.  Then
   O(\xi^{N+1})
   \qquad(\xi\to0).
   \label{eq:conformal-borel-truncation-order}
-\]
+\end{equation}
 Consequently the formal small-\(g\) expansion of
 \(\mathcal S_N^{(A,b)}\widehat A(g)\) reproduces the coefficients
 \(a_0,\ldots,a_N\):
-\[
+\begin{equation}
   \mathcal S_N^{(A,b)}\widehat A(g)
   \sim
   \sum_{n=0}^N a_n g^n
   +
   O(g^{N+1})
   \label{eq:conformal-borel-leroy-reproduces-input}
-\]
+\end{equation}
 in the same Watson-lemma sense as
 Theorem~\ref{thm:watson-borel-laplace}, provided the positive-ray integral has
 a uniform exponential-growth bound.
@@ -2012,7 +2012,7 @@ by \(O(w^{N+1})\), hence by \(O(\xi^{N+1})\).  This proves
 For each \(0\le n\le N\), the coefficient of \(\xi^n\) in
 \(\mathcal B_{b,N}^{\rm conf}\) is therefore
 \(a_n/\Gamma(n+b+1)\).  Termwise integration of the polynomial part gives
-\[
+\begin{equation}
   \frac1{g^{b+1}}
   \int_0^\infty
   \ee^{-\xi/g}\xi^{n+b}\,\dd\xi
@@ -2020,7 +2020,7 @@ For each \(0\le n\le N\), the coefficient of \(\xi^n\) in
   g^n\Gamma(n+b+1),
   \qquad b>-1,
   \label{eq:borel-leroy-gamma-normalization}
-\]
+\end{equation}
 and hence recovers \(a_n g^n\).  The remainder estimate is the same small-ray
 and tail estimate used in
 Theorem~\ref{thm:watson-borel-laplace}, with \(\xi^{N+1+b}\) replacing
@@ -2055,10 +2055,10 @@ This is the point of the Lefschetz-thimble formulation.
 Let \(X\) be a complex \(n\)-manifold with holomorphic volume form \(\Omega\),
 let \(S:X\to\mathbb C\) be a holomorphic Morse function, and let
 \(\Gamma\) be a real \(n\)-cycle on which
-\[
+\begin{equation}
   I_\Gamma(g)=\int_\Gamma \ee^{-S(z)/g}a(z)\,\Omega
   \label{eq:holomorphic-oscillatory-integral}
-\]
+\end{equation}
 converges for \(g=|g|\ee^{i\theta}\).  Here \(a\) is holomorphic, or more
 generally has controlled analytic growth compatible with the convergence of
 the integral.  Set
@@ -2073,14 +2073,14 @@ out of \(p_\sigma\) along the gradient flow of \(h_\theta\), so that
 \(h_\theta\to+\infty\) at the ends.  Its dual downward thimble
 \(\mathcal K_\sigma^\theta\) is defined with the opposite flow.  Along either
 flow,
-\[
+\begin{equation}
   \frac{\dd h_\theta}{\dd t}
   =
   \|\partial(\ee^{-i\theta}S)\|^2,
   \qquad
   \frac{\dd\varphi_\theta}{\dd t}=0
   \label{eq:thimble-flow-monotonicity}
-\]
+\end{equation}
 for the upward convention.  Thus the phase of the exponential is constant on
 each thimble.
 \end{definition}
@@ -2092,7 +2092,7 @@ Assume that \(h_\theta\) is proper on the relative cycle problem defined by
 \(\ee^{-i\theta}S(p_\sigma)\) have distinct imaginary parts, and that the
 flows have no escape at finite flow time.  Then the relative homology class of
 \(\Gamma\) decomposes as
-\[
+\begin{equation}
   [\Gamma]
   =
   \sum_\sigma n_\sigma(\theta)
@@ -2100,9 +2100,9 @@ flows have no escape at finite flow time.  Then the relative homology class of
   \qquad
   n_\sigma(\theta)=\langle \Gamma,\mathcal K_\sigma^\theta\rangle\in\mathbb Z,
   \label{eq:thimble-homology-decomposition}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   I_\Gamma(g)
   =
   \sum_\sigma n_\sigma(\theta)
@@ -2112,9 +2112,9 @@ and
   \int_{\mathcal J_\sigma^\theta}
   \ee^{-S(z)/g}a(z)\,\Omega .
   \label{eq:thimble-integral-decomposition}
-\]
+\end{equation}
 Near \(g=0\), each \(I_\sigma(g)\) has a saddle expansion
-\[
+\begin{equation}
   I_\sigma(g)
   \sim
   \ee^{-S(p_\sigma)/g}
@@ -2123,7 +2123,7 @@ Near \(g=0\), each \(I_\sigma(g)\) has a saddle expansion
        {\sqrt{\det H_\sigma}}
   \left(1+\sum_{m\ge1}c_{\sigma,m}g^m\right),
   \label{eq:thimble-saddle-expansion}
-\]
+\end{equation}
 after choosing the square-root phase determined by the oriented thimble; here
 \(H_\sigma\) is the Hessian of \(S\) at \(p_\sigma\) in holomorphic local
 coordinates.  When two critical values have the same
@@ -2205,23 +2205,23 @@ prescription.
 \begin{proposition}[Factorial moment in a running-coupling model]
 \label{prop:renormalon-factorial-moment-model}
 For \(p>0\) and \(n\ge0\),
-\[
+\begin{equation}
   \int_0^1 x^{p-1}\bigl(-\log x\bigr)^n\,\dd x
   =
   \frac{n!}{p^{n+1}} .
   \label{eq:renormalon-factorial-moment}
-\]
+\end{equation}
 Consequently, if a controlled approximation to an observable contains
-\[
+\begin{equation}
   R(\alpha)
   =
   \alpha\int_0^1
   \frac{x^{p-1}\,\dd x}
        {1-\beta_0\alpha(-\log x)}
   \label{eq:renormalon-model-integral}
-\]
+\end{equation}
 and the geometric expansion is used before the integral is performed, then
-\[
+\begin{equation}
   R(\alpha)
   \sim
   \alpha\sum_{n\ge0}
@@ -2229,7 +2229,7 @@ and the geometric expansion is used before the integral is performed, then
   \qquad
   \mathcal B_R(u)=\frac{1}{p-\beta_0 u}
   \label{eq:renormalon-model-borel-pole}
-\]
+\end{equation}
 for the Borel transform of \(R(\alpha)/\alpha\).  The model therefore has a
 positive-axis Borel pole at \(u=p/\beta_0\) when \(\beta_0>0\).
 \end{proposition}
@@ -2303,7 +2303,7 @@ scheme/factorization ambiguities must cancel in the full observable.
 \label{rem:ope-renormalon-ambiguity-cancellation}
 Let \(Q\gg\mu\), and suppose a dimensionless Euclidean observable is represented
 in a specified factorization scheme by the truncated operator product expansion
-\[
+\begin{equation}
   \mathcal X_\pm(Q)
   =
   C_{0,\pm}(Q,\mu)
@@ -2312,39 +2312,39 @@ in a specified factorization scheme by the truncated operator product expansion
   +
   O(Q^{-p-\delta})
   \label{eq:renormalon-ope-two-term-model}
-\]
+\end{equation}
 with \(p,\delta>0\).  Here \(C_{0,\pm}\) are the two lateral Borel sums of the
 perturbative coefficient function for the identity operator, \(M_{p,\pm}\) are
 the correspondingly defined matrix elements of an operator of mass dimension
 \(p\), and \(C_p\) is assumed to have no lateral ambiguity at this order.  If
-\[
+\begin{equation}
   C_{0,+}(Q,\mu)-C_{0,-}(Q,\mu)
   =
   -
   \frac{1}{Q^p} C_p(Q,\mu)
   \bigl(M_{p,+}(\mu)-M_{p,-}(\mu)\bigr),
   \label{eq:ope-ambiguity-cancellation-condition}
-\]
+\end{equation}
 then
-\[
+\begin{equation}
   \mathcal X_+(Q)-\mathcal X_-(Q)=O(Q^{-p-\delta}).
   \label{eq:ope-ambiguity-cancellation-result}
-\]
+\end{equation}
 If the identity-coefficient ambiguity has the form
-\[
+\begin{equation}
   C_{0,+}-C_{0,-}
   =
   K(\mu)\left(\frac{\Lambda_{\rm RG}}{Q}\right)^p ,
   \label{eq:identity-coefficient-power-ambiguity}
-\]
+\end{equation}
 then cancellation at this order requires
-\[
+\begin{equation}
   M_{p,+}-M_{p,-}
   =
   -
   \frac{K(\mu)\Lambda_{\rm RG}^p}{C_p(Q,\mu)}
   \label{eq:operator-matrix-element-required-ambiguity}
-\]
+\end{equation}
 in the normalization used in \eqref{eq:renormalon-ope-two-term-model}.
 \par
 Subtract the two lateral definitions of \(\mathcal X\) in
@@ -2471,7 +2471,7 @@ Use Euler's hypergeometric integral with
   a=\frac14,\qquad b=\frac34,\qquad c=1,\qquad z=-\frac{2\xi}{3}.
 \]
 Since \(\operatorname{Re}c>\operatorname{Re}b>0\),
-\[
+\begin{equation}
   B(\xi)
   =
   \frac{1}{\Gamma(3/4)\Gamma(1/4)}
@@ -2479,7 +2479,7 @@ Since \(\operatorname{Re}c>\operatorname{Re}b>0\),
   t^{-1/4}(1-t)^{-3/4}
   \left(1+\frac{2\xi t}{3}\right)^{-1/4}\dd t .
   \label{eq:quartic-borel-euler-representation}
-\]
+\end{equation}
 For \(\xi\ge0\) the last factor is real, positive, and bounded above by
 \(1\).  The remaining beta integral is finite.  Thus \(B\) is bounded on the
 positive ray and has no positive-ray singularity.  The Borel--Laplace integral
@@ -2493,14 +2493,14 @@ in Example~\ref{ex:zero-dimensional-quartic-large-order}.
 \label{def:quartic-oscillator-spectral-borel-problem}
 Let \(g\ge0\), and let \(H(g)\) be the Friedrichs realization on
 \(L^2(\mathbb R,\dd x)\) of
-\[
+\begin{equation}
   H(g)
   =
   -\frac12\frac{\dd^2}{\dd x^2}
   +\frac12x^2
   +g x^4 .
   \label{eq:quartic-oscillator-hamiltonian}
-\]
+\end{equation}
 The domain is determined by the closed quadratic form
 \[
   q_g[\psi]
@@ -2512,10 +2512,10 @@ The domain is determined by the closed quadratic form
 Its spectrum is discrete and simple; write \(E_n(g)\), \(n=0,1,\ldots\), for
 the increasing eigenvalues.  The Rayleigh--Schr\"odinger perturbative series at
 the \(n\)-th harmonic-oscillator level is
-\[
+\begin{equation}
   \widehat E_n(g)=\sum_{r\ge0}E_{n,r}g^r .
   \label{eq:quartic-oscillator-perturbation-series}
-\]
+\end{equation}
 A Borel-summability statement for
 \eqref{eq:quartic-oscillator-perturbation-series} means that this particular
 spectral branch \(E_n(g)\) is recovered by a Borel--Laplace transform
@@ -2569,18 +2569,18 @@ mechanism itself.
 Consider a regulated Euclidean gauge-theory path integral whose configuration
 space has connected components indexed by an integer topological charge
 \(k\in\mathbb Z\).  Assume the Euclidean action in sector \(k\) has the form
-\[
+\begin{equation}
   S_{E,R}[A,\Psi]
   =
   \frac{1}{4g^2}\int \operatorname{tr}_\Delta(F\wedge *F)
   -\ii\theta k
   +S_{R,\mathrm{matter}}[A,\Psi],
   \label{eq:instanton-sector-action}
-\]
+\end{equation}
 where \(\operatorname{tr}_\Delta\) is the trace normalization fixed in the
 gauge-theory convention dictionary of this monograph.  An instanton-sector
 transseries for a regulated observable is a formal expansion
-\[
+\begin{equation}
   \widehat{\mathcal X}_R(g,\theta)
   =
   \sum_{k\in\mathbb Z}
@@ -2590,7 +2590,7 @@ transseries for a regulated observable is a formal expansion
   g^{\beta_{R,k,\alpha}}\,
   \widehat\Phi_{R,k,\alpha}(g),
   \label{eq:instanton-sector-transseries}
-\]
+\end{equation}
 where \(\alpha\) labels the regulated saddle or quasi-saddle data inside the
 charge-\(k\) sector.  The notation includes the fluctuation determinant,
 collective-coordinate measure, zero-mode insertions, and boundary
@@ -2613,7 +2613,7 @@ the sector data obey the conjugation rule
   \]
 for \(g>0\), then the paired \(k\) and \(-k\) contribution at real \(\theta\)
 is real and equals
-\[
+\begin{equation}
   2\,\operatorname{Re}
   \left[
     \ee^{-A_{R,k,\alpha}/g^2}
@@ -2622,7 +2622,7 @@ is real and equals
     \widehat\Phi_{R,k,\alpha}(g)
   \right].
   \label{eq:instanton-pair-real-combination}
-\]
+\end{equation}
 Since \(k\in\mathbb Z\),
 \[
   \ee^{\ii k(\theta+2\pi)}=\ee^{\ii k\theta}.
@@ -2635,7 +2635,7 @@ which is \eqref{eq:instanton-pair-real-combination}.
 \begin{proposition}[BPST sector in the trace-delta convention]
 \label{prop:bpst-sector-trace-delta-weight}
 In the trace-delta Yang--Mills convention of this monograph,
-\[
+\begin{equation}
   S_{\rm YM,E}
   =
   \frac{1}{4g_{\rm YM}^2}
@@ -2643,21 +2643,21 @@ In the trace-delta Yang--Mills convention of this monograph,
   (F_{\mu\nu}F_{\mu\nu})\,\dd^4x
   -\ii\theta Q[A],
   \label{eq:bpst-action-trace-delta}
-\]
+\end{equation}
 the \(SU(2)\) BPST one-instanton sector contributes the exponential sector
 factor
-\[
+\begin{equation}
   \exp\left(-\frac{4\pi^2}{g_{\rm YM}^2}+\ii\theta\right)
   \label{eq:bpst-sector-factor-trace-delta}
-\]
+\end{equation}
 to any regulated observable whose insertions have nonzero projection onto
 that sector.  In the common half-trace convention
 \(\operatorname{tr}(T_aT_b)=\delta_{ab}/2\), this same factor is written
 \(\exp[-8\pi^2/g_{\rm ht}^2+\ii\theta]\), with
-\[
+\begin{equation}
   g_{\rm ht}=\sqrt2\,g_{\rm YM}.
   \label{eq:half-trace-trace-delta-coupling-relation}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}

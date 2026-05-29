@@ -25,7 +25,7 @@ Let \(Y\) be a closed oriented Riemannian spin manifold of odd dimension
 is self-adjoint on \(L^2(Y,S_Y\otimes E)\) when the Clifford action is chosen
 skew-Hermitian in Euclidean signature.  Its spectrum is real, discrete, and
 has finite-dimensional eigenspaces.  The eta function is initially defined by
-\[
+\begin{equation}
   \eta_{B_Y}(s)
   =
   \sum_{\lambda\in\operatorname{Spec}(B_Y)\setminus\{0\}}
@@ -33,15 +33,15 @@ has finite-dimensional eigenspaces.  The eta function is initially defined by
   \qquad
   \operatorname{Re}s\gg1 .
   \label{eq:eta-function-definition}
-\]
+\end{equation}
 For a Dirac-type operator the heat-kernel expansion gives a meromorphic
 continuation to \(s\in\mathbb C\), regular at \(s=0\).  We define
-\[
+\begin{equation}
   h(B_Y)=\dim\ker B_Y,
   \qquad
   \xi(B_Y)=\frac{\eta_{B_Y}(0)+h(B_Y)}2 .
   \label{eq:reduced-eta-invariant}
-\]
+\end{equation}
 The real number \(\xi(B_Y)\) depends on the metric and connection, but
 \(\exp(2\pi\ii\xi(B_Y))\) is the natural phase variable: when eigenvalues
 cross through zero, \(\xi\) changes by an integer.
@@ -87,22 +87,22 @@ Let \(X\) be a compact oriented Riemannian spin manifold of even dimension
 \((-\epsilon,0]\times Y\), the metric and the connection have product form.
 Let \(u\) be the inward normal coordinate.  In this collar the chiral Dirac
 operator has the form
-\[
+\begin{equation}
   D_X^+
   =
   c(\nu)\bigl(\partial_u+B_Y\bigr)
   \quad\hbox{up to the standard chiral identification,}
   \label{eq:aps-collar-dirac-form}
-\]
+\end{equation}
 where \(\nu\) is the outward unit normal and \(B_Y\) is the self-adjoint
 tangential Dirac operator on \(Y\).
 
 The APS boundary condition keeps the boundary values of spinors in the
 negative spectral subspace of \(B_Y\):
-\[
+\begin{equation}
   P_{\geq0}\bigl(\psi|_Y\bigr)=0,
   \label{eq:aps-boundary-condition}
-\]
+\end{equation}
 where \(P_{\geq0}\) is the orthogonal projection onto the span of eigenvectors
 with eigenvalue \(\geq0\).  Including the zero eigenspace in \(P_{\geq0}\) is
 the convention paired with the reduced invariant \(\xi=(\eta+h)/2\).
@@ -111,7 +111,7 @@ the convention paired with the reduced invariant \(\xi=(\eta+h)/2\).
 \label{qthm:aps-index-formula}
 For the product-collar data above, the chiral Dirac operator with APS
 boundary condition is Fredholm and
-\[
+\begin{equation}
   \operatorname{Ind}(D_X^{+,\mathrm{APS}})
   =
   \int_X
@@ -119,7 +119,7 @@ boundary condition is Fredholm and
   -
   \xi(B_Y).
   \label{eq:aps-index-formula}
-\]
+\end{equation}
 For non-product data one first deforms to product form near the boundary or
 adds the corresponding local transgression term.  The sum of bulk density,
 local boundary transgression, and eta term is the invariant integer.
@@ -138,14 +138,14 @@ fixed closed odd-dimensional spin manifold \(Y\).  Let
   X=[0,1]\times Y
 \]
 carry the interpolating product-near-boundary data.  Then
-\[
+\begin{equation}
   \xi(B_1)-\xi(B_0)
   \equiv
   \int_X
   \bigl[\widehat A(TX)\operatorname{ch}(E)\bigr]_{2n+2}
   \pmod{\mathbb Z}.
   \label{eq:eta-cylinder-variation}
-\]
+\end{equation}
 If the path has no zero crossings and the endpoint kernels have constant
 dimension, differentiating this formula gives the usual local descent
 variation of \(\xi\).
@@ -214,14 +214,14 @@ chiral Dirac operators
   \qquad b\in\mathcal B,
 \]
 defines the determinant line
-\[
+\begin{equation}
   \operatorname{Det}D_b
   =
   \bigwedge\nolimits^{\mathrm{top}}\ker D_b^+
   \otimes
   \left(\bigwedge\nolimits^{\mathrm{top}}\ker D_b^-\right)^* .
   \label{eq:det-line-fiber}
-\]
+\end{equation}
 Where kernels jump this formula is not a literal vector bundle chart, but the
 Quillen determinant construction glues these local descriptions to a smooth
 complex line bundle over \(\mathcal B\).  The regulated chiral fermion
@@ -229,12 +229,12 @@ functional integral is a section of this line, not a function, until a
 trivialization is chosen.
 
 Let \(\gamma:S^1\to\mathcal B\) be a loop of backgrounds.  The mapping torus
-\[
+\begin{equation}
   Y_\gamma
   =
   ([0,1]\times M)/\bigl((1,x)\sim(0,x)\hbox{ using }\gamma\bigr)
   \label{eq:mapping-torus-background-loop}
-\]
+\end{equation}
 is a closed odd-dimensional spin manifold with the induced bundle and
 connection.  The Dirac operator on \(Y_\gamma\) will be denoted
 \(B_{Y_\gamma}\).
@@ -244,12 +244,12 @@ connection.  The Dirac operator on \(Y_\gamma\) will be denoted
 With the determinant-line and chirality conventions of
 \eqref{eq:det-line-fiber}, the natural Bismut--Freed connection on
 \(\operatorname{Det}D\) has holonomy
-\[
+\begin{equation}
   \operatorname{Hol}_\gamma(\operatorname{Det}D)
   =
   \exp\!\left(-2\pi\ii\,\xi(B_{Y_\gamma})\right).
   \label{eq:bismut-freed-holonomy}
-\]
+\end{equation}
 Its curvature is the fiber integral over \(M\) of the degree
 \((\dim M+2)\) component of
 \(\widehat A(TM)\operatorname{ch}(E)\).
@@ -267,12 +267,12 @@ Let \(g\) be a gauge transformation of a background bundle on \(M\), and let
 \(A_t\), \(0\leq t\leq1\), be a path from \(A\) to \(A^g\).  The ratio between
 the transported determinant at \(A^g\) and the determinant at \(A\) is
 computed by \eqref{eq:bismut-freed-holonomy} on the mapping torus
-\[
+\begin{equation}
   Y_g
   =
   ([0,1]\times M)/\bigl((1,x)\sim(0,gx)\bigr).
   \label{eq:gauge-mapping-torus}
-\]
+\end{equation}
 If this phase is not \(1\), the chiral fermion measure does not descend to a
 function on the quotient by that gauge transformation.
 \end{proposition}
@@ -310,13 +310,13 @@ anomaly is a sign.
 Let \(Y\) be a closed spin manifold of dimension \(8k+5\), and let \(E\) be a
 pseudoreal bundle for which the coupled Dirac operator has the corresponding
 real skew structure.  The mod-two index is
-\[
+\begin{equation}
   \operatorname{Ind}_2(B_Y)
   =
   \dim\ker B_Y
   \pmod 2 .
   \label{eq:mod-two-index-definition}
-\]
+\end{equation}
 The parity is stable under continuous deformations preserving the real
 structure.  The reason is that eigenvalues away from zero occur in pairs
 \(\lambda,-\lambda\) for the real
@@ -327,12 +327,12 @@ Thus the dimension of the kernel can change only by an even integer, and
 \end{definition}
 
 For such a Pfaffian line the Dai--Freed holonomy specializes to
-\[
+\begin{equation}
   \operatorname{Hol}_\gamma(\operatorname{Pf}D)
   =
   (-1)^{\operatorname{Ind}_2(B_{Y_\gamma})}.
   \label{eq:pfaffian-mod-two-holonomy}
-\]
+\end{equation}
 This formula is the sign analogue of
 \eqref{eq:bismut-freed-holonomy}.
 
@@ -345,22 +345,22 @@ Let \(M=S^4\), and let \(g:S^4\to SU(2)\) represent the nontrivial element of
 Form the mapping torus \(Y_g\) as in \eqref{eq:gauge-mapping-torus}.  A
 single left-handed Weyl fermion in the fundamental representation of
 \(SU(2)\) has Pfaffian holonomy
-\[
+\begin{equation}
   \operatorname{Hol}_g(\operatorname{Pf}D)=-1 .
   \label{eq:witten-su2-fundamental-sign}
-\]
+\end{equation}
 Equivalently,
-\[
+\begin{equation}
   \operatorname{Ind}_2(B_{Y_g,\square})=1 .
   \label{eq:witten-su2-fundamental-mod-two-index}
-\]
+\end{equation}
 
 \begin{quotedtheorem}[Mod-two index theorem for the Witten mapping torus]
 \label{qthm:witten-su2-mod-two-index}
 Let \(R_j\) be the irreducible \(SU(2)\) representation of isospin
 \(j\in\frac12\mathbb Z_{\geq0}\), and set \(n=2j\).  With the trace-delta
 normalization of Chapter~\ref{ch:curved-background-gauge-fields-index-theory},
-\[
+\begin{equation}
   \operatorname{tr}_{R_j}(t^a t^b)
   =
   T_\Delta(R_j)\delta^{ab},
@@ -369,15 +369,15 @@ normalization of Chapter~\ref{ch:curved-background-gauge-fields-index-theory},
   =
   \frac{n(n+1)(n+2)}6 .
   \label{eq:su2-trace-delta-dynkin-index}
-\]
+\end{equation}
 For the mapping torus of the generator of \(\pi_4(SU(2))\),
-\[
+\begin{equation}
   \operatorname{Ind}_2(B_{Y_g,R_j})
   \equiv
   T_\Delta(R_j)
   \pmod2 .
   \label{eq:witten-su2-index-parity-dynkin}
-\]
+\end{equation}
 \end{quotedtheorem}
 
 The theorem is a five-dimensional mod-two index theorem.  The algebraic
@@ -389,12 +389,12 @@ content of the anomaly criterion is elementary once
 The isospin-\(j\) Weyl fermion has the original spin \(SU(2)\) global anomaly
 precisely when \(2j\equiv1\pmod4\).  A collection of Weyl fermions in
 representations \(R_{j_\alpha}\) is free of this anomaly precisely when
-\[
+\begin{equation}
   \sum_\alpha T_\Delta(R_{j_\alpha})
   \equiv0
   \pmod2 .
   \label{eq:su2-global-anomaly-cancellation-condition}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -439,12 +439,12 @@ anomaly line over the background groupoid.  A \((d+1)\)-dimensional
 invertible field theory trivializes this line when its boundary variation is
 the inverse of the fermion-line variation.  In the free-fermion model the
 closed \((d+1)\)-manifold partition function is the eta phase
-\[
+\begin{equation}
   Z_{\mathrm{DF}}(Y)
   =
   \exp\!\left(2\pi\ii\,\xi(B_Y)\right)
   \label{eq:dai-freed-closed-phase}
-\]
+\end{equation}
 for a complex chiral determinant, with the corresponding mod-two sign in the
 real Pfaffian case.
 

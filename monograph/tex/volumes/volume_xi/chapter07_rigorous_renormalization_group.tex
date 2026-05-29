@@ -39,16 +39,16 @@ is always part of the statement.  Let \(C_\Lambda\) be a regulated covariance
 and let \(C_{\Lambda_1}-C_{\Lambda_0}\) be positive for
 \(\Lambda_1>\Lambda_0\) in the chosen cutoff ordering.  The exact Wilsonian
 pushforward from \(\Lambda_1\) to \(\Lambda_0\) is the identity
-\[
+\begin{equation}
   e^{-V_{\Lambda_0}(\phi)}
   =
   \int d\mu_{C_{\Lambda_1}-C_{\Lambda_0}}(\zeta)\,
   e^{-V_{\Lambda_1}(\phi+\zeta)} ,
   \label{eq:exact-wilsonian-pushforward-comparison}
-\]
+\end{equation}
 with additive normalization fixed separately.  Its semigroup property is the
 Gaussian convolution identity:
-\[
+\begin{equation}
   \int d\mu_{\Gamma_1}(\zeta_1)
   \int d\mu_{\Gamma_2}(\zeta_2)\,
   F(\phi+\zeta_1+\zeta_2)
@@ -56,7 +56,7 @@ Gaussian convolution identity:
   \int d\mu_{\Gamma_1+\Gamma_2}(\zeta)\,
   F(\phi+\zeta),
   \label{eq:gaussian-convolution-semigroup-rg}
-\]
+\end{equation}
 valid whenever \(\Gamma_1\), \(\Gamma_2\), and
 \(\Gamma_1+\Gamma_2\) are the corresponding positive covariances.  Thus the
 exact Wilsonian map transforms interactions or measures.
@@ -66,13 +66,13 @@ Gaussian pushforward in a smooth-cutoff coordinate chart.  Let \(t\) be a
 cutoff parameter such that lowering \(t\) by \(\delta t>0\) integrates the
 positive shell covariance \(\delta t\,\dot C_t+O(\delta t^2)\), where
 \(\dot C_t=\partial_t C_t\).  Thus
-\[
+\begin{equation}
   e^{-V_{t-\delta t}[\phi]}
   =
   \left(1+\frac{\delta t}{2}\Delta_{\dot C_t}\right)
   e^{-V_t[\phi]}+O(\delta t^2).
   \label{eq:infinitesimal-gaussian-pushforward-taxonomy}
-\]
+\end{equation}
 Writing
 \[
   \Delta_{\dot C_t}
@@ -82,20 +82,20 @@ Writing
   \frac{\delta}{\delta\phi(y)} ,
 \]
 one obtains, equivalently, at finite regulator
-\[
+\begin{equation}
   \partial_t e^{-V_t[\phi]}
   =
   -\frac12\,\Delta_{\dot C_t} e^{-V_t[\phi]} ,
   \label{eq:polchinski-exponential-form-rg-taxonomy}
-\]
+\end{equation}
 or, equivalently,
-\[
+\begin{equation}
   \partial_t V_t
   =
   \frac12\langle \delta V_t,\dot C_t\,\delta V_t\rangle
   -\frac12\operatorname{Tr}(\dot C_t\,\delta^2 V_t),
   \label{eq:polchinski-action-form-rg-taxonomy}
-\]
+\end{equation}
 with this convention for \(t\).  Reparametrizing the scale variable multiplies
 both sides by the corresponding chain-rule factor.  The equation is a
 differential equation for the Wilsonian interaction.  Its theorem-level use
@@ -114,22 +114,22 @@ and define
 \]
 For \(\varphi=\delta W_k/\delta J\), the effective average action is the
 modified Legendre transform
-\[
+\begin{equation}
   \Gamma_k[\varphi]
   =
   \langle J,\varphi\rangle-W_k[J]-\Delta S_k[\varphi].
   \label{eq:effective-average-action-rg-taxonomy}
-\]
+\end{equation}
 Where the finite-dimensional Hessians are invertible, direct
 differentiation gives
-\[
+\begin{equation}
   \partial_t\Gamma_k[\varphi]
   =
   \frac12\operatorname{Tr}\!\left[
     \bigl(\Gamma_k^{(2)}[\varphi]+R_k\bigr)^{-1}\partial_tR_k
   \right].
   \label{eq:wetterich-rg-taxonomy}
-\]
+\end{equation}
 This is an exact identity for a regulated Legendre transform.  A fixed point
 of a finite truncation of \(\Gamma_k\) is a computational approximation to
 this functional flow; a theorem-level statement requires an embedding of the
@@ -150,10 +150,10 @@ form in which many rigorous scalar and fermionic constructions are proved.
 Tensor RG starts from a tensor-network representation of a partition
 function or state sum.  Its map acts on local tensors \(T\) rather than on a
 continuum interaction:
-\[
+\begin{equation}
   T\longmapsto \mathcal T(T),
   \label{eq:tensor-rg-map-taxonomy}
-\]
+\end{equation}
 with blocking, truncation or disentangling, and a declared Hilbert,
 Hilbert--Schmidt, or Banach topology on the tensor space.  A tensor-RG fixed
 point theorem therefore proves contraction or stable-manifold estimates for
@@ -169,20 +169,20 @@ second consists of maps \(\Phi:\mathcal U_1\to\mathcal B_2\) and
 \(\Psi:\mathcal O_1\to\mathcal O_2\), where \(\mathcal O_i\) are locally
 convex spaces of observables with declared seminorm families
 \(\mathfrak P_i\), together with estimates
-\[
+\begin{equation}
   \|\Phi(\mathcal R_1 V)-\mathcal R_2(\Phi V)\|_{\mathcal B_2}
   \leq E_{\mathrm{RG}}(V),
   \label{eq:rg-description-intertwining-error}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   p\!\left(
     \Psi\,\operatorname{Rec}^{(1)}_k(V),
     \operatorname{Rec}^{(2)}_k(\Phi V)
   \right)
   \leq E_{\mathrm{obs},p}(k,V),
   \label{eq:rg-description-observable-error}
-\]
+\end{equation}
 for every \(p\in\mathfrak P_2\), where \(E_{\mathrm{RG}}\) and
 \(E_{\mathrm{obs},p}\) are explicitly bounded errors in the stated domains.
 An exact equivalence is the special case in which both errors vanish and
@@ -239,29 +239,29 @@ fixed point \(V_\ast\).  Translate \(V_\ast\) to the origin and suppose
 \]
 where \(E_u\) is finite dimensional and \(E_s\) is closed.  In product norm
 write
-\[
+\begin{equation}
   \mathcal R(u,s)
   =
   (Au+F_u(u,s),\,Bs+F_s(u,s)),
   \label{eq:rg-stable-map-splitting}
-\]
+\end{equation}
 where \(A:E_u\to E_u\) is invertible, \(B:E_s\to E_s\), \(F(0)=0\),
 and \(DF(0)=0\).  Assume that, on a closed ball of radius \(r\),
-\[
+\begin{equation}
   \|A^{-1}\|\leq a<1,\qquad
   \|B\|\leq b<1,\qquad
   \|F(x)-F(y)\|\leq \kappa\|x-y\|.
   \label{eq:rg-stable-spectral-gap-constants}
-\]
+\end{equation}
 Choose \(\gamma\) with \(\max(a,b)<\gamma<1\) and suppose
-\[
+\begin{equation}
   q_u:=\frac{\kappa a}{1-a\gamma}<1,
   \qquad
   q_s:=\frac{b+\kappa}{\gamma}<1,
   \qquad
   q:=\max(q_u,q_s)<1 .
   \label{eq:rg-stable-contraction-constants}
-\]
+\end{equation}
 Then, after possibly decreasing \(r\), for every sufficiently small
 \(s_0\in E_s\) there is a unique forward orbit
 \((u_n,s_n)_{n\geq0}\) satisfying \(s_0\) as its stable coordinate,
@@ -302,22 +302,22 @@ the Lyapunov--Perron map \(\mathcal T_{s_0}\) by
       \label{eq:rg-stable-lp-u-part}
 \end{align}
 The series in \eqref{eq:rg-stable-lp-u-part} converges absolutely because
-\[
+\begin{equation}
   \gamma^{-n}
   \sum_{j\geq0}
   \|A^{-(j+1)}\|\,\|F_u(u_{n+j},s_{n+j})\|
   \leq
   \frac{\kappa a}{1-a\gamma}\|x\|_\gamma .
   \label{eq:rg-stable-u-series-bound}
-\]
+\end{equation}
 Here \(F(0)=0\) was used.  Similarly,
-\[
+\begin{equation}
   \gamma^{-(n+1)}
   \|B s_n+F_s(u_n,s_n)\|
   \leq
   \frac{b+\kappa}{\gamma}\|x\|_\gamma .
   \label{eq:rg-stable-s-recursion-bound}
-\]
+\end{equation}
 Equations \eqref{eq:rg-stable-contraction-constants},
 \eqref{eq:rg-stable-u-series-bound}, and
 \eqref{eq:rg-stable-s-recursion-bound} show that
@@ -326,12 +326,12 @@ for every \(\rho\leq r\) with \(\|s_0\|\leq\rho\).
 
 For two sequences \(x,y\in\mathcal X_{\gamma,\rho}(s_0)\), the same
 estimates applied to differences give
-\[
+\begin{equation}
   \|\mathcal T_{s_0}x-\mathcal T_{s_0}y\|_\gamma
   \leq
   q\|x-y\|_\gamma ,
   \label{eq:rg-stable-lp-contraction}
-\]
+\end{equation}
 with \(q<1\).  Banach's fixed-point theorem gives a unique fixed sequence
 \(x(s_0)\).  The \(s\)-part of the fixed-point equation is exactly the
 stable coordinate recurrence.  The \(u\)-part is equivalent to the unstable
@@ -354,12 +354,12 @@ coordinates, the fixed-point equations give
   \|s_0-t_0\|+q\|x(s_0)-x(t_0)\|_\gamma ,
 \]
 and hence
-\[
+\begin{equation}
   \|x(s_0)-x(t_0)\|_\gamma
   \leq
   \frac{1}{1-q}\|s_0-t_0\|.
   \label{eq:rg-stable-graph-lipschitz-bound}
-\]
+\end{equation}
 Therefore \(h\) is Lipschitz.  Since \(DF(0)=0\), the Lipschitz constant
 \(\kappa\) for \(F\) on a ball of radius \(\rho\) tends to zero as
 \(\rho\downarrow0\).  The bound
@@ -381,14 +381,14 @@ Theorem~\ref{thm:rg-local-stable-manifold} hold.  Write
 \]
 for the continuous projections.  In a sufficiently small neighborhood of
 \(V_\ast\), define the local critical surface
-\[
+\begin{equation}
   \mathcal W^s_{\rm loc}(V_\ast)
   =
   \left\{
     V_\ast+h(s)+s:\ s\in E_s,\ \|s\|\ {\rm small}
   \right\}.
   \label{eq:local-critical-surface-rg}
-\]
+\end{equation}
 The word ``critical'' here means attraction to the fixed point under the
 declared RG map.  It is a property of the pair
 \((\mathcal R,\mathcal B)\), together with the reconstruction maps if a
@@ -397,19 +397,19 @@ continuum QFT limit is claimed.
 \begin{definition}[Tuning map]
 \label{def:rg-tuning-map}
 In the setting above, the local tuning map is
-\[
+\begin{equation}
   \tau(V)
   =
   \Pi_u(V-V_\ast)-h\!\left(\Pi_s(V-V_\ast)\right),
   \label{eq:rg-tuning-map}
-\]
+\end{equation}
 defined for \(V\) in the local product neighborhood on which the graph
 \(h\) exists.  A point \(V\) is tuned to the local critical surface precisely
 when
-\[
+\begin{equation}
   \tau(V)=0 .
   \label{eq:rg-tuning-equation}
-\]
+\end{equation}
 If \(\dim E_u=r\) and a basis of \(E_u\) has been chosen, this is an
 \(r\)-component equation.  The components of \(\tau\), rather than a chosen
 list of formal Lagrangian coefficients, are the intrinsic relevant tuning
@@ -433,27 +433,27 @@ finite-regulator theories, and let
 \]
 be a \(C^1\) chart map into the RG Banach space.  If \(p_0\in P\) satisfies
 \(\tau(\iota(p_0))=0\) and
-\[
+\begin{equation}
   D(\tau\circ\iota)_{p_0}:T_{p_0}P\longrightarrow E_u
   \label{eq:rg-tuning-transversality}
-\]
+\end{equation}
 has rank \(r\), then the tuned microscopic parameters near \(p_0\),
-\[
+\begin{equation}
   P_{\rm tuned}
   =
   \{p\in P:\tau(\iota(p))=0\},
   \label{eq:tuned-microscopic-parameter-surface}
-\]
+\end{equation}
 form a \(C^1\) submanifold of \(P\) of codimension \(r\).
 \end{proposition}
 
 \begin{proof}
 For \(V=V_\ast+u+s\), with \(u\in E_u\) and \(s\in E_s\), the derivative of
 \(\tau\) in the \(E_u\)-direction is the identity map on \(E_u\):
-\[
+\begin{equation}
   D_u\tau(V_\ast+u+s)=1_{E_u}.
   \label{eq:tuning-map-submersion}
-\]
+\end{equation}
 Thus \(\tau\) is a \(C^1\) submersion onto the finite-dimensional space
 \(E_u\).  Its zero set is exactly
 \[
@@ -495,17 +495,17 @@ the unstable component of an initial condition
   u_0=\sum_{a=1}^r u_a(0)e_a
 \]
 stays in the coordinate box
-\[
+\begin{equation}
   |u_a(n)|\leq \rho
   \qquad (a=1,\ldots,r,\ 0\leq n\leq N)
   \label{eq:finite-scale-unstable-box}
-\]
+\end{equation}
 if and only if
-\[
+\begin{equation}
   |u_a(0)|\leq \rho\,|\lambda_a|^{-N}
   \qquad (a=1,\ldots,r).
   \label{eq:finite-scale-tuning-precision}
-\]
+\end{equation}
 Writing \(\lambda_a=L^{y_a}\), this finite-depth accuracy is
 \(\rho L^{-Ny_a}\) in the \(a\)-th relevant coordinate.
 \end{proposition}
@@ -626,12 +626,12 @@ there are constants \(\eta,\rho,L\geq0\) with
        \label{eq:nk-lipschitz-bound}
 \end{align}
 If there is \(r\leq R\) such that
-\[
+\begin{equation}
   \eta+\rho r+\frac{L}{2}r^2\leq r,
   \qquad
   \rho+Lr<1,
   \label{eq:nk-ball-condition}
-\]
+\end{equation}
 then \(F(V)=0\) has a unique solution \(V_\ast\) in the closed ball
 \(\overline B_r(V_0)\).  Equivalently, \(\mathcal R(V_\ast)=V_\ast\).
 \end{theorem}
@@ -695,17 +695,17 @@ projection onto a finite-dimensional subspace and put \(Q_N=1-P_N\).  For
   F(V)=\mathcal R(V)-V ,
 \]
 the projected fixed-point equation is
-\[
+\begin{equation}
   P_NF(V_N)=0,\qquad V_N\in\mathcal B_N .
   \label{eq:projected-rg-fixed-point-equation}
-\]
+\end{equation}
 The complement residual is
-\[
+\begin{equation}
   \epsilon_N(V_N;A)
   =
   \|A Q_NF(V_N)\|,
   \label{eq:rg-complement-residual}
-\]
+\end{equation}
 where \(A\) is the approximate inverse used in the
 Newton--Kantorovich estimate.
 
@@ -731,12 +731,12 @@ Let \(V_N\in\mathcal B_N\) solve
 Theorem~\ref{thm:newton-kantorovich-rg-fixed-point} hold with \(V_0=V_N\).
 Then a true fixed point \(V_\ast\) of \(\mathcal R\) exists in
 \(\overline B_r(V_N)\) whenever
-\[
+\begin{equation}
   \epsilon_N(V_N;A)+\rho r+\frac{L}{2}r^2\le r,
   \qquad
   \rho+Lr<1 .
   \label{eq:projected-rg-lift-condition}
-\]
+\end{equation}
 \end{corollary}
 
 \begin{proof}
@@ -882,7 +882,7 @@ A one-component hierarchical scalar RG system consists of:
   norm controlling a complex strip or disk and large-field growth;
   \item the nonlinear map \(\mathcal R_{\rm hier}\) defined, whenever the
   integral is finite and analytic in the chosen domain, by
-  \[
+  \begin{equation}
     e^{-(\mathcal R_{\rm hier}V)(\Phi)}
     =
     Z_V^{-1}
@@ -890,7 +890,7 @@ A one-component hierarchical scalar RG system consists of:
       \exp\!\left[-b\,V(a\Phi+\zeta)\right]\,
       \frac{e^{-\zeta^2/(2\gamma)}}{\sqrt{2\pi\gamma}}\,\dd\zeta ,
     \label{eq:hierarchical-scalar-rg-map}
-  \]
+  \end{equation}
   where \(Z_V\) is fixed by the normalization
   \((\mathcal R_{\rm hier}V)(0)=0\).
 \end{enumerate}
@@ -912,33 +912,33 @@ Let \(0<a<1\), \(\gamma>0\), and
 \]
 For \(n\geq0\), define the Wick polynomial
 \(:x^n:_{c_\ast}\) by
-\[
+\begin{equation}
   \exp\!\left(tx-\frac{c_\ast t^2}{2}\right)
   =
   \sum_{n=0}^\infty \frac{t^n}{n!}\,:x^n:_{c_\ast}.
   \label{eq:hierarchical-wick-generating-function}
-\]
+\end{equation}
 The derivative of \(\mathcal R_{\rm hier}\) at \(V=0\), before quotienting
 the additive constant, acts on the nonconstant Wick coordinates by
-\[
+\begin{equation}
   D\mathcal R_{\rm hier}|_0\bigl(:\Phi^n:_{c_\ast}\bigr)
   =
   b\,a^n :\Phi^n:_{c_\ast},
   \qquad n\geq1 .
   \label{eq:hierarchical-wick-eigenvalue}
-\]
+\end{equation}
 In the canonical scalar bookkeeping
 \[
   \Delta=\frac{D-2}{2},
   \qquad b=L^D,
 \]
 the even local coordinate \(:\Phi^{2r}:\) has engineering eigenvalue
-\[
+\begin{equation}
   \lambda_{2r}=L^{y_{2r}},
   \qquad
   y_{2r}=D-r(D-2).
   \label{eq:hierarchical-scalar-engineering-exponent}
-\]
+\end{equation}
 Thus \(y_2=2\), \(y_4=4-D\), and \(y_6=6-2D\).
 \end{proposition}
 
@@ -946,13 +946,13 @@ Thus \(y_2=2\), \(y_4=4-D\), and \(y_6=6-2D\).
 For the first variation of \eqref{eq:hierarchical-scalar-rg-map}, additive
 normalization affects only the constant coordinate.  Hence for a
 nonconstant test direction \(f\),
-\[
+\begin{equation}
   D\mathcal R_{\rm hier}|_0 f
   =
   b\int_{\mathbb R} f(a\Phi+\zeta)\,\dd\mu_\gamma(\zeta)
   \quad\text{mod constants},
   \label{eq:hierarchical-linearized-map}
-\]
+\end{equation}
 where \(\dd\mu_\gamma\) is the centered Gaussian measure of variance
 \(\gamma\).  Apply this to the generating function
 \eqref{eq:hierarchical-wick-generating-function}.  Since
@@ -1128,20 +1128,20 @@ RG datum is one of the following two structures.
   symplectic forms of degree \(-1\); BV Laplacians \(\Delta_k\) associated
   with the chosen finite-dimensional Berezin-Lebesgue density; and actions
   \(S_k\) satisfying the quantum master equation
-  \[
+  \begin{equation}
     \frac12(S_k,S_k)_k-\hbar\,\Delta_k S_k=0 ,
     \label{eq:gauge-compatible-qme-at-scale}
-  \]
+  \end{equation}
   or equivalently \(\Delta_k e^{-S_k/\hbar}=0\).  The RG step is BV
   pushforward along a fluctuation subspace with gauge-fixing Lagrangian
   \(\mathcal L_k\):
-  \[
+  \begin{equation}
     e^{-S_{k-1}(\phi_{k-1})/\hbar}
     =
     \int_{\mathcal L_k}
       e^{-S_k(\phi_{k-1}+\xi_k)/\hbar}\,\dd\xi_k ,
     \label{eq:bv-rg-pushforward}
-  \]
+  \end{equation}
   together with a localization map into a Banach space of local BV
   functionals.  The induced observable map
   \(P_{k,k-1}\) sends \(Q_{S_k}\)-closed observables to
@@ -1175,15 +1175,15 @@ let \(\mathcal S_n'\) be its continuous dual.  For a bounded set
 Let \(\mathcal R:\mathcal U\to\mathcal B\) be an RG map with fixed point
 \(V_\ast\).  An \(n\)-point reconstruction estimate consists of distributions
 \(\mathcal S_{n,\ast}\in\mathcal S_n'\), maps
-\[
+\begin{equation}
   \operatorname{Rec}_{n,k}:\mathcal U\longrightarrow\mathcal S_n',
   \qquad k\in\mathbb Z_{\geq0},
   \label{eq:rg-reconstruction-map}
-  \]
+  \end{equation}
 and constants \(C_B<\infty\), \(0<\theta<1\), and
 \(\varepsilon_{B,k}\to0\), such that every tuned initial point \(V\) in the
 declared stable manifold satisfies
-\[
+\begin{equation}
   p_B\!\left(
     \operatorname{Rec}_{n,k}(V)-\mathcal S_{n,\ast}
   \right)
@@ -1191,7 +1191,7 @@ declared stable manifold satisfies
   C_B\,\theta^k\,\|V-V_\ast\|_{\mathcal B}
   +\varepsilon_{B,k}
   \label{eq:rg-reconstruction-estimate}
-\]
+\end{equation}
 for all bounded \(B\subset\mathcal S_n\).  The maps
 \(\operatorname{Rec}_{n,k}\) include the lattice spacing, coordinate
 rescaling, field-strength normalization, source normalization, and possible
@@ -1233,7 +1233,7 @@ in the two scalar sequences gives the same identity for
 For reflection positivity, take a finite family of positive-time test
 functions \(f_i\) and coefficients \(c_i\).  At finite regulator the
 corresponding quadratic expression has the form
-\[
+\begin{equation}
   Q_k(c,f)=
   \sum_{i,j}\bar c_i c_j\,
   \bigl\langle
@@ -1242,7 +1242,7 @@ corresponding quadratic expression has the form
   \bigr\rangle
   \geq0 ,
   \label{eq:rg-reflection-positivity-closed-limit}
-\]
+\end{equation}
 where \(\Theta\) is Euclidean time reflection.  Each term converges by the
 already proved distributional convergence, hence \(Q_k(c,f)\to Q_\ast(c,f)\).
 The cone \([0,\infty)\subset\mathbb R\) is closed, so \(Q_\ast(c,f)\geq0\).
@@ -1265,7 +1265,7 @@ Let \(A\) be a set of source labels.  For each \(\alpha\in A\), let
 \(\mathbb R^D\), for instance \(C_c^\infty(\mathbb R^D)\) or
 \(\mathcal S(\mathbb R^D)\).  A regulated source-dependent generating
 functional has the form
-\[
+\begin{equation}
   Z_k(V;J)
   =
   \int
@@ -1274,7 +1274,7 @@ functional has the form
     +\sum_{\alpha\in A}\langle J_\alpha,\mathcal O_{\alpha,k}(\phi)\rangle
   \right)\,\dd\mu_k(\phi),
   \label{eq:source-extended-rg-generating-functional}
-\]
+\end{equation}
 where \(\langle J_\alpha,\mathcal O_{\alpha,k}\rangle\) denotes the pairing
 between a test source and a regulated insertion.  In a gauge theory, the
 source direction must either couple to a gauge-invariant lattice observable,
@@ -1293,25 +1293,25 @@ A source-extended RG datum near a fixed point \(V_\ast\) consists of:
   \item a locally convex source space
   \(\mathcal J=\bigoplus_{\alpha\in A}\mathcal J_\alpha\);
   \item a map
-  \[
+  \begin{equation}
     \widehat{\mathcal R}:\mathcal U\times\mathcal V_J
     \longrightarrow \mathcal B\times\mathcal J,
     \qquad
     \widehat{\mathcal R}(V,J)=
     \bigl(\mathcal R(V),\,\mathcal M_VJ+\mathcal N_V(J)\bigr),
     \label{eq:source-extended-rg-map}
-  \]
+  \end{equation}
   where \(\mathcal V_J\) is a neighborhood of \(0\in\mathcal J\),
   \(\mathcal M_V\) is linear in \(J\), and
   \(\mathcal N_V(J)=O(J^2)\) in the declared source topology;
   \item an exact finite-regulator identity
-  \[
+  \begin{equation}
     Z_k(V;J)
     =
     e^{A_k(V;J)}
     Z_{k-1}\!\left(\widehat{\mathcal R}(V,J)\right),
     \label{eq:source-rg-exact-identity}
-  \]
+  \end{equation}
   with \(A_k(V;J)\) a local normalization functional in the sources;
   \item reconstruction maps taking \(n\) source derivatives of
   \(\log Z_k(V;J)\) at \(J=0\) to connected distributions on
@@ -1324,27 +1324,27 @@ recorded.
 \end{definition}
 
 At a fixed point, the linear source map
-\[
+\begin{equation}
   \mathcal M_\ast=\mathcal M_{V_\ast}
   =
   D_J\widehat{\mathcal R}(V_\ast,0)
   \label{eq:linear-source-rg-map}
-\]
+\end{equation}
 contains the scaling data.  If a source \(J_\alpha\) couples to a local field
 whose scaling dimension is \(\Delta_\alpha\), then the constant-source
 coordinate has RG exponent
-\[
+\begin{equation}
   y_\alpha=D-\Delta_\alpha .
   \label{eq:source-exponent-operator-dimension}
-\]
+\end{equation}
 This relation is fixed by the invariant pairing
 \(\int J_\alpha(x)\mathcal O_\alpha(x)\,\dd^Dx\): under
 \(x=Lx'\), a field with
 \(\mathcal O_\alpha(Lx')=L^{-\Delta_\alpha}\mathcal O_\alpha(x')\) requires
-\[
+\begin{equation}
   J'_\alpha(x')=L^{D-\Delta_\alpha}J_\alpha(Lx').
   \label{eq:source-rescaling-from-pairing}
-\]
+\end{equation}
 Thus the dimension is not assigned to a formal monomial alone; it is read
 from the source direction after redundant directions, null fields, and
 contact redefinitions have been quotiented as appropriate.
@@ -1355,12 +1355,12 @@ Let \(\mathcal M_\ast\) be the linearized source RG map.  A scaling source
 direction is a nonzero equivalence class \([j_\alpha]\) in the source space
 modulo null source directions and source redefinitions whose functional
 derivatives vanish at separated points, such that
-\[
+\begin{equation}
   \mathcal M_\ast [j_\alpha]
   =
   L^{D-\Delta_\alpha}[j_\alpha].
   \label{eq:scaling-source-eigenvalue}
-\]
+\end{equation}
 The corresponding scaling field is the distribution-valued functional
 derivative of the connected generating functional in the direction
 \([j_\alpha]\), reconstructed in the continuum limit.  In a BV formulation,
@@ -1378,13 +1378,13 @@ fixes the vocabulary used in the rest of the monograph.
 \begin{definition}[Contact term]
 \label{def:rg-contact-term}
 Let \(n\geq2\), and let
-\[
+\begin{equation}
   \mathfrak D_n
   =
   \bigcup_{1\leq i<j\leq n}
   \{(x_1,\ldots,x_n)\in(\mathbb R^D)^n:\ x_i=x_j\}
   \label{eq:collision-diagonal-union}
-\]
+\end{equation}
 be the union of pairwise collision diagonals.  A contact term in an
 \(n\)-point distribution is a distribution
 \[
@@ -1399,30 +1399,30 @@ the sources and their derivatives.
 \end{definition}
 
 Let
-\[
+\begin{equation}
   \operatorname{Conf}_n(\mathbb R^D)
   =
   (\mathbb R^D)^n\setminus\mathfrak D_n
   \label{eq:configuration-space-distinct-points}
-\]
+\end{equation}
 be the configuration space of ordered distinct points.  For
 \(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\), define the dilation
 of the test function by
-\[
+\begin{equation}
   (S_Lf)(x_1,\ldots,x_n)
   =
   L^{-nD}
   f(L^{-1}x_1,\ldots,L^{-1}x_n).
   \label{eq:test-function-dilation-for-correlators}
-\]
+\end{equation}
 This convention is chosen so that
-\[
+\begin{equation}
   \langle G,S_Lf\rangle
   =
   \int G(Ly_1,\ldots,Ly_n)f(y_1,\ldots,y_n)\,
        \dd^Dy_1\cdots\dd^Dy_n
   \label{eq:test-dilation-change-of-variables}
-\]
+\end{equation}
 whenever \(G\) is represented by an integrable function on the support of
 the test function.
 
@@ -1446,7 +1446,7 @@ in the usual distribution topology on every compact subset of
 \(\operatorname{Conf}_n(\mathbb R^D)\).  Assume moreover that for every
 \(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\) the finite-scale RG
 identity implies
-\[
+\begin{equation}
   \left|
   \langle G_{k;\alpha_1\ldots\alpha_n},S_Lf\rangle
   -
@@ -1455,23 +1455,23 @@ identity implies
   \right|
   \leq \varepsilon_k(f),
   \label{eq:finite-scale-separated-source-scaling}
-\]
+\end{equation}
 with \(\varepsilon_k(f)\to0\).  Then the limiting separated-point
 distribution is homogeneous under scale \(L\):
-\[
+\begin{equation}
   \langle G_{\ast;\alpha_1\ldots\alpha_n},S_Lf\rangle
   =
   L^{-\sum_i\Delta_{\alpha_i}}
   \langle G_{\ast;\alpha_1\ldots\alpha_n},f\rangle
   \label{eq:limiting-separated-source-scaling}
-\]
+\end{equation}
 for every \(f\in C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\).
 
 If \(T_{\ast;\alpha_1\ldots\alpha_n}\in
 \mathcal D'((\mathbb R^D)^n)\) is any extension of
 \(G_{\ast;\alpha_1\ldots\alpha_n}\) to all of \((\mathbb R^D)^n\), then the
 distribution
-\[
+\begin{equation}
   H_L(f)
   =
   \langle T_{\ast;\alpha_1\ldots\alpha_n},S_Lf\rangle
@@ -1479,7 +1479,7 @@ distribution
   L^{-\sum_i\Delta_{\alpha_i}}
   \langle T_{\ast;\alpha_1\ldots\alpha_n},f\rangle
   \label{eq:scaling-violation-contact-distribution}
-\]
+\end{equation}
 is a contact term.
 \end{proposition}
 

@@ -650,23 +650,23 @@ that its Matsubara frequencies are shifted by the holonomy eigenvalue
   \log\left(1-e^{-\beta |\mathbf p|+\ii\varphi}\right).
 \]
 Expanding the logarithm and integrating term by term gives
-\[
+\begin{equation}
   -T\sum_{n\ge1}\frac{e^{\ii n\varphi}}{n}
   \int\frac{d^3p}{(2\pi)^3}e^{-n\beta|\mathbf p|}
   =
   -\frac{1}{\pi^2\beta^4}
   \sum_{n\ge1}\frac{e^{\ii n\varphi}}{n^4},
   \label{eq:qcd-weiss-boson-oscillator}
-\]
+\end{equation}
 because
-\[
+\begin{equation}
   \int\frac{d^3p}{(2\pi)^3}e^{-n\beta|\mathbf p|}
   =
   \frac{1}{2\pi^2}\int_0^\infty p^2e^{-n\beta p}\,dp
   =
   \frac{1}{\pi^2n^3\beta^3}.
   \label{eq:qcd-weiss-thermal-momentum-integral}
-\]
+\end{equation}
 In background gauge, ghosts and unphysical vector polarizations cancel so
 that two physical bosonic polarizations remain for each adjoint weight.
 Summing \eqref{eq:qcd-weiss-boson-oscillator} over adjoint weights gives the
@@ -703,19 +703,19 @@ flavors gives \eqref{eq:qcd-weiss-quark-potential}.
 For pure \(SU(N_c)\) Yang--Mills, the one-loop potential
 \eqref{eq:qcd-weiss-gluon-potential} is minimized exactly at center
 holonomies
-\[
+\begin{equation}
   P=z\,\mathbf1_{N_c},
   \qquad
   z^{N_c}=1 .
   \label{eq:qcd-weiss-center-minima}
-\]
+\end{equation}
 At these minima
-\[
+\begin{equation}
   f_g(z\mathbf1)
   =
   -\frac{\pi^2T^4}{45}(N_c^2-1),
   \label{eq:qcd-weiss-broken-free-energy}
-\]
+\end{equation}
 which is the free gluon free-energy density.
 \end{proposition}
 
@@ -755,7 +755,7 @@ with an overall phase chosen so that \(P_{\rm cs}\in SU(N_c)\).  Then
   \quad(N_c\mid n).
 \]
 Therefore
-\[
+\begin{equation}
   f_g(P_{\rm cs})
   =
   \frac{\pi^2T^4}{45}\left(1-\frac1{N_c^2}\right),
@@ -764,7 +764,7 @@ Therefore
   =
   \frac{\pi^2T^4}{45}\left(N_c^2-\frac1{N_c^2}\right).
   \label{eq:qcd-weiss-center-symmetric-cost}
-\]
+\end{equation}
 The perturbative high-temperature gluon determinant therefore energetically
 selects a center sector rather than the uniformly distributed holonomy.
 \end{example}
@@ -779,12 +779,12 @@ under \(P\mapsto zP\).  The quark potential
 \]
 Thus dynamical fundamental quarks supply an explicit center-breaking source.
 At \(P=\mathbf1\), \eqref{eq:qcd-weiss-quark-potential} gives
-\[
+\begin{equation}
   f_q(\mathbf1)
   =
   -\frac{7\pi^2T^4}{180}N_cN_f,
   \label{eq:qcd-weiss-free-quark-free-energy}
-\]
+\end{equation}
 the negative of the free massless Dirac-quark pressure in
 Proposition~\ref{prop:qcd-stefan-boltzmann-pressure}.
 \end{remark}
@@ -1227,13 +1227,13 @@ Since \(M_\pi^2=2Bm\), the pion contribution to the per-flavor condensate is
   \frac{1}{\omega_k}\frac{1}{e^{\beta\omega_k}-1}.
 \]
 In the chiral limit the integral is
-\[
+\begin{equation}
   \int\frac{d^3k}{(2\pi)^3}
   \frac{1}{|k|}\frac{1}{e^{\beta |k|}-1}
   =
   \frac{T^2}{12}.
   \label{eq:qcd-massless-pion-tadpole}
-\]
+\end{equation}
 Thus
 \[
   \Sigma(T)
@@ -2104,7 +2104,7 @@ whereas the physical critical endpoint is a statement about the real
 \label{rem:qcd-baryon-ratio-estimators}
 For a charge-conjugation invariant theory the odd susceptibilities vanish at
 \(x=0\), and one often forms even-order estimators
-\[
+\begin{equation}
   R_{2n}(T)
   =
   \sqrt{
@@ -2112,7 +2112,7 @@ For a charge-conjugation invariant theory the odd susceptibilities vanish at
          {\chi_{2n+2}^B(T)}
   }.
   \label{eq:qcd-baryon-ratio-estimator}
-\]
+\end{equation}
 If the even Taylor coefficients are eventually positive and have a single
 dominant singular scale, these estimators can converge to the radius.  The
 positivity and single-scale hypotheses are part of the diagnostic; they are
@@ -2360,13 +2360,13 @@ Definition~\ref{def:qcd-hdet-patch-decomposition}, with
 \]
 Use the trace-delta color convention
 \(\operatorname{tr}_{\square}(T^aT^b)=\delta^{ab}\), so that
-\[
+\begin{equation}
   C_F=T^aT^a=\frac{N_c^2-1}{N_c}
   \label{eq:qcd-trace-delta-fundamental-casimir}
-\]
+\end{equation}
 on a fundamental quark.  Retain the HDL transverse propagator in the
 Landau-damped region
-\[
+\begin{equation}
   |\omega|\ll k_\perp\ll\mu_q,
   \qquad
   D_T(\omega,k_\perp)
@@ -2377,7 +2377,7 @@ Landau-damped region
   }
   \left(1+o(1)\right),
   \label{eq:qcd-nfl-landau-damped-propagator}
-\]
+\end{equation}
 with \(m_{D,\mu}\) given by
 Proposition~\ref{prop:qcd-hdl-debye-zero-temperature}.  Electric exchange,
 non-collinear transverse exchange, and hard matching contributions are kept
@@ -2408,7 +2408,7 @@ dependent HDET counterterms and are not included in
 \label{prop:qcd-leading-nfl-self-energy}
 In Controlled Approximation~\ref{ca:qcd-hdl-non-fermi-liquid-regime}, the
 on-Fermi-surface Euclidean self-energy has the leading nonanalytic form
-\[
+\begin{equation}
   \Sigma_{\rm NFL}(ip_0,0)
   =
   ip_0\,\lambda_{\rm NFL}
@@ -2419,14 +2419,14 @@ on-Fermi-surface Euclidean self-energy has the leading nonanalytic form
   =
   \frac{g^2C_F}{12\pi^2}.
   \label{eq:qcd-leading-nfl-self-energy}
-\]
+\end{equation}
 For \(SU(3)\) in the monograph trace convention,
-\[
+\begin{equation}
   C_F=\frac83,
   \qquad
   \lambda_{\rm NFL}=\frac{2g^2}{9\pi^2}.
   \label{eq:qcd-leading-nfl-self-energy-su3}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -2449,7 +2449,7 @@ With the external residual momentum set to \(\ell_\parallel=0\), subtract
 \(\Sigma(0,0)\) and integrate first over the normal residual momentum of the
 internal quark.  For \(p_0>0\), the residue theorem gives the reduced
 singular expression
-\[
+\begin{equation}
   \Sigma_{\rm sing}(ip_0,0)-\Sigma_{\rm sing}(0,0)
   =
   i\,\frac{g^2C_F}{4\pi^2}
@@ -2457,7 +2457,7 @@ singular expression
   \mathcal L(\nu)
   +O(ip_0),
   \label{eq:qcd-nfl-reduced-patch-integral}
-\]
+\end{equation}
 where \(\nu\) is the Euclidean energy carried by the nearly on-shell
 internal quark and \(\mathcal L(\nu)\) is the remaining transverse
 Landau-damped logarithm.  The prefactor in
@@ -2477,7 +2477,7 @@ at
   k_{\perp,{\rm max}}\asymp\mu_q ,
 \]
 and therefore
-\[
+\begin{equation}
   \int_{k_{\perp,{\rm min}}}^{k_{\perp,{\rm max}}}
   \frac{dk_\perp}{k_\perp}
   =
@@ -2486,18 +2486,18 @@ and therefore
   \qquad
   \Omega_{\rm NFL}\asymp\frac{\mu_q^3}{m_{D,\mu}^2}.
   \label{eq:qcd-nfl-collinear-log}
-\]
+\end{equation}
 The \(O(1)\) part and the precise constant in \(\Omega_{\rm NFL}\) are
 absorbed into the matching scale \(\Lambda_{\rm NFL}\).  Equivalently,
-\[
+\begin{equation}
   \mathcal L(\nu)
   =
   \frac13\log\frac{\Lambda_{\rm NFL}}{|\nu|}
   +O(1).
   \label{eq:qcd-nfl-transverse-log-function}
-\]
+\end{equation}
 Substitution into \eqref{eq:qcd-nfl-reduced-patch-integral} gives
-\[
+\begin{equation}
   \Sigma_{\rm NFL}(ip_0,0)
   =
   i\,\frac{g^2C_F}{4\pi^2}
@@ -2507,7 +2507,7 @@ Substitution into \eqref{eq:qcd-nfl-reduced-patch-integral} gives
   \right)
   +O(ip_0).
   \label{eq:qcd-nfl-reduced-energy-integral}
-\]
+\end{equation}
 The endpoint singularity is integrable and
 \[
   \int_0^{p_0}d\nu\,
@@ -2533,15 +2533,15 @@ specialization follows from \eqref{eq:qcd-trace-delta-fundamental-casimir}.
 Under the assumptions of
 Proposition~\ref{prop:qcd-leading-nfl-self-energy}, the coefficient of
 \(ip_0\) in the inverse patch propagator behaves as
-\[
+\begin{equation}
   Z^{-1}(p_0)
   =
   1+\lambda_{\rm NFL}\log\frac{\Lambda_{\rm NFL}}{|p_0|}
   +O(1),
   \label{eq:qcd-nfl-residue}
-\]
+\end{equation}
 and hence the perturbative patch residue satisfies
-\[
+\begin{equation}
   Z(p_0)\sim
   \left[
     \lambda_{\rm NFL}\log\frac{\Lambda_{\rm NFL}}{|p_0|}
@@ -2550,7 +2550,7 @@ and hence the perturbative patch residue satisfies
   \qquad
   (p_0\to0)
   \label{eq:qcd-nfl-residue-limit}
-\]
+\end{equation}
 within the unpaired high-density regime.
 
 Insert \eqref{eq:qcd-leading-nfl-self-energy} into the inverse propagator of
@@ -2669,7 +2669,7 @@ group of time-independent gauge transformations.  Write
 for the normalized Haar projector onto gauge-invariant states.  If
 \(Q_A\) are mutually commuting conserved global charges which commute with
 \(\mathcal G_{\Lambda}\), the finite-regulator grand partition function is
-\[
+\begin{equation}
   Z_{\Lambda}(\boldsymbol\mu)
   =
   \operatorname{Tr}_{\mathcal H_{\Lambda}}
@@ -2681,16 +2681,16 @@ for the normalized Haar projector onto gauge-invariant states.  If
     \right)
   \right].
   \label{eq:qcd-global-charge-grand-canonical}
-\]
+\end{equation}
 The intensive charge density conjugate to \(\mu_A\) is
-\[
+\begin{equation}
   n_A
   =
   \frac{1}{\beta V}
   \frac{\partial}{\partial\mu_A}
   \log Z_{\Lambda}(\boldsymbol\mu),
   \label{eq:qcd-global-charge-density}
-\]
+\end{equation}
 with the thermodynamic and continuum limits taken only after the finite
 quantity has been defined.
 \end{definition}
@@ -2700,18 +2700,18 @@ quantity has been defined.
 Let \(G_{\Lambda}(f)\) be the infinitesimal generator of a one-parameter
 family of gauge transformations \(U(e^{tf})\subset\mathcal G_{\Lambda}\).
 Then
-\[
+\begin{equation}
   G_{\Lambda}(f)\Pi_{\rm phys}=0,
   \qquad
   \Pi_{\rm phys}G_{\Lambda}(f)=0.
   \label{eq:qcd-gauss-projector-annihilation}
-\]
+\end{equation}
 Consequently every finite-regulator state defined by
 \eqref{eq:qcd-global-charge-grand-canonical} has zero gauge charge:
-\[
+\begin{equation}
   \left\langle G_{\Lambda}(f)\right\rangle_{\boldsymbol\mu}=0.
   \label{eq:qcd-gauge-charge-expectation-zero}
-\]
+\end{equation}
 Thus a color charge cannot be assigned an independent physical chemical
 potential in the same sense as baryon number or another gauge-invariant
 global charge.
@@ -2739,10 +2739,10 @@ coordinates on the gauge-field zero mode left after gauge fixing.  If
 \(\Omega_{\rm gf}(A_0)\) is the gauge-fixed finite-volume effective
 potential obtained after the nonzero modes have been integrated out, a
 homogeneous saddle representing a physical bulk state must obey
-\[
+\begin{equation}
   \frac{\partial\Omega_{\rm gf}}{\partial A_0^a}=0
   \label{eq:qcd-color-neutrality-stationarity}
-\]
+\end{equation}
 for every retained Cartan component.  Equation
 \eqref{eq:qcd-color-neutrality-stationarity} is the saddle form of the
 Gauss-law constraint.  Its content is color neutrality; it is not the
@@ -2756,14 +2756,14 @@ respect to color, for example the electromagnetic charge after coupling QCD
 matter to a nondynamical or dynamical \(U(1)\) gauge field.  If the bulk
 state is required to be neutral with respect to this charge, introduce a
 source \(\mu_{\rm ext}\) in the finite-regulator ensemble and solve
-\[
+\begin{equation}
   n_{\rm ext}(T,\mu_B,\mu_{\rm ext},\ldots)
   =
   \frac{\partial p}{\partial\mu_{\rm ext}}
   =
   0
   \label{eq:qcd-global-neutrality-equation}
-\]
+\end{equation}
 after all charged species included in the physical problem, such as
 electrons in electrically neutral matter, have been included in the
 pressure.  If \(Q_{\rm ext}\) is itself gauged and long-ranged in the phase
@@ -2779,7 +2779,7 @@ Assume \(N_c=N_f=3\), massless \(u,d,s\) quarks, a common quark chemical
 potential \(\mu_q\), and the ideal CFL symmetry realization described below:
 the gauge-invariant long-distance order preserves the diagonal vector
 \(SU(3)\) flavor symmetry.  Let
-\[
+\begin{equation}
   Q_{\rm em}
   =
   \operatorname{diag}
@@ -2788,13 +2788,13 @@ the gauge-invariant long-distance order preserves the diagonal vector
   \right)
   \in\mathfrak{su}(3)_V
   \label{eq:qcd-em-charge-matrix}
-\]
+\end{equation}
 act on the three flavor labels.  Then the electric charge density conjugate
 to a source \(\mu_Q Q_{\rm em}\) satisfies
-\[
+\begin{equation}
   n_Q(T,\mu_B,\mu_Q=0)=0
   \label{eq:qcd-ideal-cfl-electric-neutrality}
-\]
+\end{equation}
 inside the ideal CFL effective theory.  Moreover the CFL orientation
 \(U=1\) in
 Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action}
@@ -2874,13 +2874,13 @@ potentials \(\mu_i,\mu_j\).  Assume
 \]
 For momenta in a common patch near \(p=\bar\mu\), define the residual
 single-particle energies
-\[
+\begin{equation}
   \xi_a(p)=\sqrt{p^2+m_a^2}-\mu_a,
   \qquad a=i,j.
   \label{eq:qcd-mass-stressed-xi}
-\]
+\end{equation}
 The average residual energy and half-mismatch are
-\[
+\begin{equation}
   \bar\xi_{ij}(p)
   =
   \frac{\xi_i(p)+\xi_j(p)}{2},
@@ -2890,14 +2890,14 @@ The average residual energy and half-mismatch are
   \frac{\xi_i(p)-\xi_j(p)}{2}
   \quad\text{evaluated to leading order at }p=\bar\mu .
   \label{eq:qcd-effective-mismatch-definition}
-\]
+\end{equation}
 \end{definition}
 
 \begin{proposition}[Mass and chemical-potential contribution to mismatch]
 \label{prop:qcd-mass-chemical-potential-mismatch}
 In the regime of
 Definition~\ref{def:qcd-effective-fermi-surface-mismatch},
-\[
+\begin{equation}
   p_{F,a}
   =
   \sqrt{\mu_a^2-m_a^2}
@@ -2905,9 +2905,9 @@ Definition~\ref{def:qcd-effective-fermi-surface-mismatch},
   \mu_a-\frac{m_a^2}{2\mu_a}
   +O\!\left(\frac{m_a^4}{\mu_a^3}\right),
   \label{eq:qcd-mass-shifted-fermi-momentum}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \delta_{ij}^{\rm eff}
   =
   -\frac{\mu_i-\mu_j}{2}
@@ -2918,9 +2918,9 @@ and
     \frac{|\mu_i-\mu_j|\,m^2}{\bar\mu^2}
   \right).
   \label{eq:qcd-effective-mismatch-formula}
-\]
+\end{equation}
 Equivalently, the leading Fermi-momentum splitting is
-\[
+\begin{equation}
   p_{F,i}-p_{F,j}
   =
   (\mu_i-\mu_j)
@@ -2931,24 +2931,24 @@ Equivalently, the leading Fermi-momentum splitting is
     \frac{|\mu_i-\mu_j|\,m^2}{\bar\mu^2}
   \right).
   \label{eq:qcd-fermi-momentum-splitting}
-\]
+\end{equation}
 For a strange quark paired with a massless light quark at common chemical
 potential \(\mu_q\), the Fermi-momentum splitting scale is
-\[
+\begin{equation}
   |p_{F,s}-p_{F,\ell}|
   =
   \frac{m_s^2}{2\mu_q}
   +O(m_s^4/\mu_q^3),
   \label{eq:qcd-strange-fermi-surface-stress}
-\]
+\end{equation}
 while the pairwise half-mismatch is
-\[
+\begin{equation}
   |\delta_{s\ell}^{\rm eff}|
   =
   \frac{m_s^2}{4\mu_q}
   +O(m_s^4/\mu_q^3).
   \label{eq:qcd-strange-half-mismatch}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -2998,7 +2998,7 @@ CFL, meson-condensed phases, or crystalline phases.
 In Controlled Approximation~\ref{ca:qcd-two-species-stressed-bcs}, the
 zero-temperature grand-potential difference between the homogeneous paired
 state and the split normal state has the leading form
-\[
+\begin{equation}
   \Omega_{\rm pair}-\Omega_{\rm normal}
   =
   -\frac12N(0)\Delta_0^2
@@ -3006,15 +3006,15 @@ state and the split normal state has the leading form
   N(0)\delta^2
   +O(\Delta_0^4/\Lambda_{\rm H}^2).
   \label{eq:qcd-clogston-potential-difference}
-\]
+\end{equation}
 Thus the homogeneous paired state ceases to win against the split normal
 state in this model when
-\[
+\begin{equation}
   |\delta|>\delta_{\rm C},
   \qquad
   \delta_{\rm C}=\frac{\Delta_0}{\sqrt2}.
   \label{eq:qcd-clogston-scale}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -3164,7 +3164,7 @@ and transverse momentum \(k_\perp\) satisfying
   |\omega|\ll k_\perp\ll \mu_q .
 \]
 In this region the Euclidean transverse propagator has the form
-\[
+\begin{equation}
   D_T(\omega,k_\perp)
   =
   \frac{1}{
@@ -3173,7 +3173,7 @@ In this region the Euclidean transverse propagator has the form
   }
   \left(1+o(1)\right),
   \label{eq:qcd-hdl-transverse-landau-damped}
-\]
+\end{equation}
 where \(m_{D,\mu}\) is the dense HDL Debye mass of
 Proposition~\ref{prop:qcd-hdl-debye-zero-temperature}.  Electric exchange
 and non-collinear magnetic exchange are not discarded; in the leading-log
@@ -3187,7 +3187,7 @@ In the regime of
 Controlled Approximation~\ref{ca:qcd-leading-log-magnetic-gap}, the
 frequency-dependent gap in the attractive antisymmetric quark-quark channel
 obeys, to leading logarithmic accuracy,
-\[
+\begin{equation}
   \Delta(p_0)
   =
   \lambda_{\rm mag}
@@ -3197,10 +3197,10 @@ obeys, to leading logarithmic accuracy,
   \log\frac{\Lambda_{\rm M}}{|p_0-q_0|}
   +\mathcal R(p_0),
   \label{eq:qcd-hdl-leading-log-gap-equation}
-\]
+\end{equation}
 where \(\mathcal R\) has no additional large collinear logarithm.  The
 leading-log coefficient is
-\[
+\begin{equation}
   \lambda_{\rm mag}
   =
   \frac{g^2 C_{\rm qq}}{12\pi^2},
@@ -3211,14 +3211,14 @@ leading-log coefficient is
   =
   \frac{N_c+1}{N_c}.
   \label{eq:qcd-magnetic-gap-lambda-general}
-\]
+\end{equation}
 For \(SU(3)\) in the monograph trace convention,
-\[
+\begin{equation}
   C_{\rm qq}=\frac43,
   \qquad
   \lambda_{\rm mag}=\frac{g^2}{9\pi^2}.
   \label{eq:qcd-magnetic-gap-lambda-su3}
-\]
+\end{equation}
 The scale \(\Lambda_{\rm M}\) is a matching scale of order \(\mu_q\) times
 powers of \(g\) and numerical constants fixed only by next-to-leading
 matching.  It is not determined by the leading-log equation alone.
@@ -3305,7 +3305,7 @@ change this leading collinear logarithm; they are included in
 \begin{proposition}[Leading exponent of the magnetic color-superconducting gap]
 \label{prop:qcd-leading-magnetic-gap-exponent}
 Consider the leading-log integral equation
-\[
+\begin{equation}
   \Delta(p)
   =
   \lambda
@@ -3316,25 +3316,25 @@ Consider the leading-log integral equation
   \qquad
   \Delta_0\ll p,q\ll\Lambda,
   \label{eq:qcd-abstract-leading-log-gap-equation}
-\]
+\end{equation}
 with \(\lambda>0\).  If the solution is nontrivial and varies only on the
 logarithmic scale, then
-\[
+\begin{equation}
   \log\frac{\Lambda}{\Delta_0}
   =
   \frac{\pi}{2\sqrt{\lambda}}
   +O(1).
   \label{eq:qcd-leading-log-gap-general-exponent}
-\]
+\end{equation}
 Applying this to the \(SU(3)\) HDL magnetic kernel in the monograph
 trace-delta convention gives the leading exponent
-\[
+\begin{equation}
   \Delta_0
   =
   \Lambda_{\rm M}
   \exp\!\left[-\frac{3\pi^2}{2g}+O(1)\right].
   \label{eq:qcd-leading-magnetic-gap-su3-trace-delta}
-\]
+\end{equation}
 Equivalently, if \(g_{\rm ht}=\sqrt2\,g\) denotes the coupling in the
 common half-trace convention, the exponent is
 \[
@@ -3495,7 +3495,7 @@ Let
 \]
 denote the antisymmetric spin-zero diquark composite obtained from two
 left-handed or two right-handed quark fields:
-\[
+\begin{equation}
   (\varphi_L)^A{}_{I}(x)
   =
   \frac12
@@ -3508,7 +3508,7 @@ left-handed or two right-handed quark fields:
   \epsilon^{A}{}_{ab}\epsilon_{\bar I}{}^{ij}\,
   q^a_{R i}(x)Cq^b_{R j}(x).
   \label{eq:qcd-cfl-diquark-varphi}
-\]
+\end{equation}
 Here \(A\) is an anti-fundamental color index, \(I\) is an
 anti-fundamental \(SU(3)_L\) flavor index, and \(\bar I\) is an
 anti-fundamental \(SU(3)_R\) flavor index.  Each quark has baryon charge
@@ -3516,7 +3516,7 @@ anti-fundamental \(SU(3)_R\) flavor index.  Each quark has baryon charge
 
 The following operators are gauge invariant and carry the physical symmetry
 information of the CFL phase:
-\[
+\begin{equation}
   \mathcal B_L
   =
   \frac1{3!}
@@ -3530,15 +3530,15 @@ information of the CFL phase:
   (\varphi_R)^A{}_{\bar I}(\varphi_R)^B{}_{\bar J}
   (\varphi_R)^C{}_{\bar K},
   \label{eq:qcd-cfl-baryon-superfluid-composites}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \Sigma^{I}{}_{\bar J}
   =
   (\varphi_L^\dagger)^{I}{}_{A}
   (\varphi_R)^A{}_{\bar J}.
   \label{eq:qcd-cfl-chiral-composite}
-\]
+\end{equation}
 The operators \(\mathcal B_L,\mathcal B_R\) are color and flavor singlets
 with baryon charge \(2\).  The operator \(\Sigma\) is color invariant,
 baryon neutral, and transforms as
@@ -3549,7 +3549,7 @@ baryon neutral, and transforms as
 \]
 Finally, for a path \(\gamma\) from \(y\) to \(x\), the Wilson-line
 completion
-\[
+\begin{equation}
   G_L^{I}{}_{J}(x,y;\gamma)
   =
   \left\langle
@@ -3558,7 +3558,7 @@ completion
   (\varphi_L)^B{}_{J}(y)
   \right\rangle
   \label{eq:qcd-cfl-wilson-line-diquark-correlator}
-\]
+\end{equation}
 is gauge invariant but path dependent.  It is not a new local order
 parameter; it is a gauge-invariant way to test the long-distance order
 encoded by a gauge-covariant diquark field.
@@ -3694,7 +3694,7 @@ completed static electric and magnetic correlators
     W_{\square}(\gamma)^{-1}
   \right]\right\rangle_{\rm conn},
 \]
-\[
+\begin{equation}
   C_M(r;\gamma)
   =
   \frac12\sum_{i,j=1}^3
@@ -3708,16 +3708,16 @@ completed static electric and magnetic correlators
   \qquad
   r=|\mathbf x-\mathbf y|.
   \label{eq:qcd-cfl-screening-correlators}
-\]
+\end{equation}
 The static electric and magnetic screening exponents are the leading
 large-\(r\) exponential decay rates, when they exist after the
 thermodynamic and continuum limits,
-\[
+\begin{equation}
   m_E=-\lim_{r\to\infty}\frac1r\log |C_E(r;\gamma_r)|,
   \qquad
   m_M=-\lim_{r\to\infty}\frac1r\log |C_M(r;\gamma_r)|,
   \label{eq:qcd-cfl-screening-exponents}
-\]
+\end{equation}
 for a specified family of paths \(\gamma_r\).  In weakly coupled phases
 these exponents are computed by a gauge-fixed long-distance effective
 action, but equations
@@ -3736,7 +3736,7 @@ global locked flavor transformation \(g\), it transforms as
   U(x)\longmapsto h(x)U(x)g^{-1}.
 \]
 The leading static screening part of the long-distance effective action is
-\[
+\begin{equation}
   \mathcal L_{\rm H}
   =
   \frac{F_H^2}{2}
@@ -3745,7 +3745,7 @@ The leading static screening part of the long-distance effective action is
   \frac{F_H^2v_H^2}{2}
   \operatorname{tr}\!\left[(D_iU)^\dagger D_iU\right],
   \label{eq:qcd-cfl-higgs-screening-action}
-\]
+\end{equation}
 where
 \[
   D_\mu U=\partial_\mu U-i g\,a_\mu^aT^aU,
@@ -3765,12 +3765,12 @@ background gives equal screening masses to all eight color gauge fields.  More
 precisely, within
 Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action},
 one has
-\[
+\begin{equation}
   (m_E^2)^{ab}=g^2F_H^2\,\delta^{ab},
   \qquad
   (m_M^2)^{ab}=g^2F_H^2v_H^2\,\delta^{ab}.
   \label{eq:qcd-cfl-higgs-screening-masses}
-\]
+\end{equation}
 These masses are coefficients in the gauge-fixed quadratic effective action
 whose gauge-invariant content is the exponential screening described by
 Definition~\ref{def:qcd-gauge-invariant-static-screening}.
@@ -3822,7 +3822,7 @@ for the chiral octet, and
 \]
 for the baryon superfluid phase.  The leading real-time effective
 Lagrangian in the rest frame of the dense medium is
-\[
+\begin{equation}
   \mathcal L_{\rm CFL,NGB}
   =
   \frac{F_\pi^2}{4}
@@ -3840,7 +3840,7 @@ Lagrangian in the rest frame of the dense medium is
   \right]
   +\cdots .
   \label{eq:qcd-cfl-ngb-effective-action}
-\]
+\end{equation}
 The constants \(F_\pi,F_B,v_\pi,v_B\) are dense-medium low-energy
 coefficients.  The ellipsis contains higher derivatives, mass-source terms,
 and anomaly-suppressed effects.
@@ -3852,14 +3852,14 @@ Under the assumptions of
 Definition~\ref{def:qcd-cfl-collective-fields}, the ideal CFL phase has
 eight chiral Nambu--Goldstone modes and one baryon superfluid phonon.  To
 quadratic order their dispersion relations are
-\[
+\begin{equation}
   \omega^2=v_\pi^2\mathbf k^2
   \quad\text{for the chiral octet},
   \qquad
   \omega^2=v_B^2\mathbf k^2
   \quad\text{for the baryon phonon}.
   \label{eq:qcd-cfl-ngb-dispersions}
-\]
+\end{equation}
 The eight color-orientation modes are not additional physical
 Nambu--Goldstone particles; in the screening effective action they are the
 fields removed by the Higgs mechanism and are represented physically by
@@ -3953,7 +3953,7 @@ Definition~\ref{def:qcd-cfl-anomaly-backgrounds}, the local six-form anomaly
 polynomial of the massless quarks, restricted to
 \(SU(3)_L\times SU(3)_R\times U(1)_B\) backgrounds and omitting purely
 gravitational terms, is
-\[
+\begin{equation}
   I_6^{\rm UV}
   =
   \frac{N_c}{6(2\pi)^3}
@@ -3971,13 +3971,13 @@ gravitational terms, is
     \operatorname{tr}_{\rm f}(F_R^2)
   \right],
   \label{eq:qcd-cfl-uv-anomaly-polynomial-general}
-\]
+\end{equation}
 where \(F_L,F_R,F_B\) are the corresponding curvatures.  For
 \(N_c=3\) and \(q_B=1/3\), the mixed coefficient is
-\[
+\begin{equation}
   N_cq_B/2=\frac12.
   \label{eq:qcd-cfl-mixed-anomaly-coefficient}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -3986,12 +3986,12 @@ left-handed Weyl fermion in the fundamental representation of \(SU(3)_L\)
 with baryon charge \(q_B\).  For a single left-handed Weyl fermion in a
 flavor bundle with connection \(A\), tensored with a \(U(1)\) line of charge
 \(q_B\), the relevant degree-six Chern-character terms are
-\[
+\begin{equation}
   \frac{1}{6(2\pi)^3}\operatorname{tr}_{\rm f}(F^3)
   +
   \frac{q_B}{2(2\pi)^3}F_B\wedge\operatorname{tr}_{\rm f}(F^2).
   \label{eq:qcd-cfl-single-weyl-anomaly-character}
-\]
+\end{equation}
 The terms proportional to
 \(F_B^2\operatorname{tr}_{\rm f}F\) vanish because the flavor connection is
 \(SU(3)\)-valued, and the pure \(F_B^3\) term cancels between the left- and
@@ -4011,22 +4011,22 @@ Definition~\ref{def:qcd-cfl-collective-fields}: a chiral field
 \(\Sigma\mapsto g_L\Sigma g_R^{-1}\), and a compact baryon phase
 \(\phi_B\) which transforms under a \(U(1)_B\) background gauge
 transformation by
-\[
+\begin{equation}
   B\mapsto B+d\lambda_B,
   \qquad
   \phi_B\mapsto\phi_B+\lambda_B .
   \label{eq:qcd-cfl-baryon-background-gauge-transformation}
-\]
+\end{equation}
 Then the CFL infrared effective action can represent the full local anomaly
 polynomial \eqref{eq:qcd-cfl-uv-anomaly-polynomial-general} as follows.
 
 First, the gauged Wess--Zumino--Witten functional of \(\Sigma\) has level
-\[
+\begin{equation}
   n=N_c=3
   \label{eq:qcd-cfl-wzw-level}
-\]
+\end{equation}
 and matches the pure nonabelian chiral part
-\[
+\begin{equation}
   \frac{N_c}{6(2\pi)^3}
   \left[
     \operatorname{tr}_{\rm f}(F_L^3)
@@ -4034,15 +4034,15 @@ and matches the pure nonabelian chiral part
     \operatorname{tr}_{\rm f}(F_R^3)
   \right].
   \label{eq:qcd-cfl-pure-chiral-anomaly-piece}
-\]
+\end{equation}
 Second, define the invariant one-form
-\[
+\begin{equation}
   D_B\phi_B=d\phi_B-B .
   \label{eq:qcd-cfl-baryon-goldstone-covariant-one-form}
-\]
+\end{equation}
 On a five-dimensional extension \(X_5\) of spacetime, the local inflow
 representative
-\[
+\begin{equation}
   \omega_{5,B}^{\rm CFL}
   =
   -
@@ -4054,9 +4054,9 @@ representative
     \operatorname{tr}_{\rm f}(F_R^2)
   }{2(2\pi)^2}
   \label{eq:qcd-cfl-baryon-mixed-anomaly-representative}
-\]
+\end{equation}
 satisfies
-\[
+\begin{equation}
   d\omega_{5,B}^{\rm CFL}
   =
   \frac{F_B}{2\pi}
@@ -4067,7 +4067,7 @@ satisfies
     \operatorname{tr}_{\rm f}(F_R^2)
   }{2(2\pi)^2}.
   \label{eq:qcd-cfl-baryon-mixed-anomaly-derivative}
-\]
+\end{equation}
 This is exactly the mixed \(U(1)_B\)-flavor term in
 \eqref{eq:qcd-cfl-uv-anomaly-polynomial-general} for \(N_cq_B=1\).
 \end{proposition}
@@ -4090,10 +4090,10 @@ class \eqref{eq:qcd-cfl-pure-chiral-anomaly-piece}.
 It remains to check the terms involving the baryon background.  Under
 \eqref{eq:qcd-cfl-baryon-background-gauge-transformation}, the combination
 \(D_B\phi_B=d\phi_B-B\) is invariant.  Its exterior derivative is
-\[
+\begin{equation}
   d(D_B\phi_B)=-F_B .
   \label{eq:qcd-cfl-d-dbphi}
-\]
+\end{equation}
 The Bianchi identities for the background flavor curvatures give
 \[
   d\,\operatorname{tr}_{\rm f}(F_L^2)=0,

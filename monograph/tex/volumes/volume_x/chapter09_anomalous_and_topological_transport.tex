@@ -124,25 +124,25 @@ consistent current is the variational current
   \frac{1}{\sqrt{-g(x)}}\frac{\delta W}{\delta A_\mu(x)}.
 \]
 With the sign convention
-\[
+\begin{equation}
   \delta_\alpha W
   =
   -\int\dd^4x\,\sqrt{-g}\,\alpha\,\mathcal A_{\rm cons},
   \qquad
   \delta_\alpha A_\mu=\nabla_\mu\alpha ,
   \label{eq:transport-consistent-anomaly-sign}
-\]
+\end{equation}
 integration by parts gives
 \[
   \nabla_\mu J_{\rm cons}^\mu=\mathcal A_{\rm cons}.
 \]
 A covariant current is a shifted local current
-\[
+\begin{equation}
   J_{\rm cov}^\mu
   =
   J_{\rm cons}^\mu+J_{\rm BZ}^\mu,
   \label{eq:transport-bz-current-shift}
-\]
+\end{equation}
 where \(J_{\rm BZ}^\mu\) is a local Bardeen--Zumino polynomial in the
 background fields chosen so that \(J_{\rm cov}\) transforms covariantly under
 the background gauge symmetry being represented.  The shift
@@ -220,7 +220,7 @@ functional and its gauge-variation convention are fixed.
 Let \(\Sigma_3\) be closed, and let \(A\) and \(a\) be ordinary spatial
 one-forms on \(\Sigma_3\).  For constant coefficients \(c_{AA}\), \(c_{Aa}\),
 and \(c_{aa}\), set
-\[
+\begin{equation}
   W_{\rm CS}[A,a]
   =
   \int_{\Sigma_3}
@@ -230,16 +230,16 @@ and \(c_{aa}\), set
     +c_{aa} a\wedge\dd a
   \right].
   \label{eq:hydrostatic-cs-functional-general}
-\]
+\end{equation}
 In local coordinates with orientation
 \(\dd^3x\) and \(\epsilon^{123}=1\), define
-\[
+\begin{equation}
   B_A^i=\epsilon^{ijk}\partial_j A_k,\qquad
   B_a^i=\epsilon^{ijk}\partial_j a_k .
   \label{eq:hydrostatic-magnetic-vectors}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   \frac{\delta W_{\rm CS}}{\delta A_i}
   =
   2c_{AA}B_A^i+c_{Aa}B_a^i,
@@ -248,7 +248,7 @@ Then
   =
   c_{Aa}B_A^i+2c_{aa}B_a^i .
   \label{eq:hydrostatic-cs-variation-formula}
-\]
+\end{equation}
 If the coefficients are functions of \(A_0\) or of thermodynamic scalars,
 \eqref{eq:hydrostatic-cs-variation-formula} is the part of the variation
 with respect to the spatial one-forms at fixed scalar sources; variations of
@@ -429,30 +429,30 @@ of any derivative expansion.
 \begin{proposition}[Canonical entropy divergence with anomaly]
 \label{prop:canonical-entropy-divergence-anomaly}
 Let
-\[
+\begin{equation}
   T^{\mu\nu}
   =
   \epsilon u^\mu u^\nu+p\Delta^{\mu\nu}+\tau^{\mu\nu},
   \qquad
   J^\mu=nu^\mu+\nu^\mu,
   \label{eq:anomalous-transport-dissipative-decomposition}
-\]
+\end{equation}
 with \(u_\mu\tau^{\mu\nu}=0\) and \(u_\mu\nu^\mu=0\).  Assume the
 thermodynamic relations
-\[
+\begin{equation}
   \dd p=s\,\dd T+n\,\dd\mu,\qquad
   \epsilon+p=Ts+\mu n.
   \label{eq:anomalous-transport-thermodynamics}
-\]
+\end{equation}
 Then the canonical entropy current satisfies
-\[
+\begin{equation}
   \nabla_\mu S^\mu_{\rm can}
   =
   -\tau^{\mu\nu}\nabla_\mu\beta_\nu
   -\nu^\mu\left(\nabla_\mu\alpha-\beta^\nu F_{\mu\nu}\right)
   -\alpha\,\mathcal A .
   \label{eq:canonical-entropy-divergence-anomaly}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -461,7 +461,7 @@ Differentiate
   S^\mu_{\rm can}=p\beta^\mu-\beta_\nu T^{\mu\nu}-\alpha J^\mu .
 \]
 Using the anomalous Ward identities gives
-\[
+\begin{equation}
 \begin{aligned}
   \nabla_\mu S^\mu_{\rm can}
   &=
@@ -473,14 +473,14 @@ Using the anomalous Ward identities gives
   -\alpha\mathcal A .
 \end{aligned}
   \label{eq:entropy-divergence-before-ideal-cancel}
-\]
+\end{equation}
 The last source term can be rewritten as
-\[
+\begin{equation}
   -J^\mu\nabla_\mu\alpha-\beta_\nu F^{\nu\lambda}J_\lambda
   =
   -J^\mu\left(\nabla_\mu\alpha-\beta^\nu F_{\mu\nu}\right),
   \label{eq:entropy-force-combination}
-\]
+\end{equation}
 using antisymmetry of \(F_{\mu\nu}\).  It remains to show that the ideal
 part cancels.  Substituting
 \[
@@ -489,13 +489,13 @@ part cancels.  Substituting
 \]
 and \(\beta^\mu=u^\mu/T\), \(\alpha=\mu/T\), the ideal contribution to
 \eqref{eq:entropy-divergence-before-ideal-cancel} is
-\[
+\begin{equation}
   \frac{u^\mu\nabla_\mu p}{T}
   +p\nabla_\mu\left(\frac{u^\mu}{T}\right)
   -T^{\mu\nu}_{\rm id}\nabla_\mu\left(\frac{u_\nu}{T}\right)
   -nu^\mu\nabla_\mu\left(\frac{\mu}{T}\right).
   \label{eq:entropy-ideal-cancellation-line}
-\]
+\end{equation}
 Since \(u^\nu u_\nu=-1\), \(u^\nu\nabla_\mu u_\nu=0\).  A direct expansion
 of \eqref{eq:entropy-ideal-cancellation-line} reduces it to
 \[

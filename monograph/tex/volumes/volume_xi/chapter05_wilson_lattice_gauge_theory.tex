@@ -155,55 +155,55 @@ same boundary.  This counting step is often hidden in the phrase
 
 Fix a finite lattice and a closed contour \(C\) which is a boundary in the
 \(\mathbb Z_2\) plaquette chain complex.  Define the lattice area
-\[
+\begin{equation}
   A_{\min}(C)
   =
   \min\{|A|:A\subset P,\ \partial A=C\}.
   \label{eq:z2-minimal-lattice-area}
-\]
+\end{equation}
 For \(n\geq0\), let
-\[
+\begin{equation}
   N_C(n)
   =
   \#\{A\subset P:\partial A=C,\ |A|=A_{\min}(C)+n\}.
   \label{eq:z2-surface-counting-number}
-\]
+\end{equation}
 Similarly let \(N_0(n)\) count closed plaquette subsets of area \(n\).
 
 \begin{proposition}[Finite surface expansion and area estimate]
 \label{prop:z2-surface-counting-area-bound}
 Let \(\beta\geq0\) and \(t=\tanh\beta\).  If \(C\) is a boundary, then
-\[
+\begin{equation}
   \langle W(C)\rangle_{\Lambda,\beta}
   =
   t^{A_{\min}(C)}
   \frac{\sum_{n\geq0}N_C(n)t^n}
        {\sum_{n\geq0}N_0(n)t^n}.
   \label{eq:z2-surface-counting-expansion}
-\]
+\end{equation}
 In particular, since the denominator is at least \(1\),
-\[
+\begin{equation}
   0\leq
   \langle W(C)\rangle_{\Lambda,\beta}
   \leq
   t^{A_{\min}(C)}
   \sum_{n\geq0}N_C(n)t^n .
   \label{eq:z2-area-bound-before-entropy}
-\]
+\end{equation}
 If, for a family of contours, the surface entropy obeys
-\[
+\begin{equation}
   N_C(n)\leq K(C)\rho^n
   \qquad(n\geq0)
   \label{eq:z2-surface-entropy-hypothesis}
-\]
+\end{equation}
 with \(0\leq\rho t<1\), then
-\[
+\begin{equation}
   \langle W(C)\rangle_{\Lambda,\beta}
   \leq
   \frac{K(C)}{1-\rho t}\,
   \exp\{-[-\log t]A_{\min}(C)\}.
   \label{eq:z2-entropy-area-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -252,12 +252,12 @@ face.  There are exactly two plaquette subsets with boundary \(C\): the face
 itself, with area \(1\), and the complementary five faces, with area \(5\).
 The closed subsets are the empty surface and the six-face cube boundary.
 Therefore
-\[
+\begin{equation}
   \langle W(C)\rangle
   =
   \frac{t+t^5}{1+t^6}.
   \label{eq:z2-one-cube-wilson-polynomial}
-\]
+\end{equation}
 This example shows explicitly why the leading strong-coupling term is the
 minimal spanning surface and why closed surfaces correct both numerator and
 denominator.
@@ -283,52 +283,52 @@ representations.  For \(\lambda\in\widehat G\), write
 \]
 Let \(K:G\to\mathbb C\) be a continuous class function.  Its character
 coefficients are
-\[
+\begin{equation}
   c_\lambda[K]
   =
   \int_G dU\,K(U)\overline{\chi_\lambda(U)} .
   \label{eq:compact-character-coefficients}
-\]
+\end{equation}
 Peter--Weyl orthogonality gives the \(L^2(G)\) expansion
-\[
+\begin{equation}
   K(U)=\sum_{\lambda\in\widehat G}c_\lambda[K]\chi_\lambda(U),
   \label{eq:compact-character-expansion}
-\]
+\end{equation}
 with rapid coefficient decay when \(K\) is smooth.  For the Wilson plaquette
 weight with the irrelevant constant removed one may take
-\[
+\begin{equation}
   K_\beta(U)=
   \exp\!\left(
     \frac{\beta}{\dim R}\operatorname{Re}\operatorname{Tr}_R U
   \right).
   \label{eq:compact-wilson-plaquette-weight}
-\]
+\end{equation}
 
 \begin{proposition}[Compact-group spin-foam expansion at finite cutoff]
 \label{prop:compact-group-spin-foam-expansion}
 On a finite lattice, replace each plaquette Boltzmann factor by a smooth
 class function \(K(U_p)\).  Then the finite-volume partition function is
 represented by
-\[
+\begin{equation}
   Z_\Lambda[K]
   =
   \sum_{\lambda:P\to\widehat G}
   \left(\prod_{p\in P}c_{\lambda_p}[K]\right)
   \mathcal A_\Lambda(\{\lambda_p\}),
   \label{eq:compact-spin-foam-partition}
-\]
+\end{equation}
 where \(\mathcal A_\Lambda(\{\lambda_p\})\) is the tensor contraction
 obtained by assigning \(V_{\lambda_p}\) or \(V_{\lambda_p}^*\) to the four
 oriented sides of each plaquette and, for every link \(\ell\), inserting
 the Haar projector
-\[
+\begin{equation}
   P_\ell(\{\lambda_p\}_{p\supset\ell})
   =
   \int_G dU_\ell
   \bigotimes_{p\supset\ell}
   D_{\lambda_p}(U_\ell)^{\epsilon(p,\ell)} ,
   \label{eq:compact-link-haar-projector}
-\]
+\end{equation}
 with \(\epsilon(p,\ell)=+1\) if the plaquette orientation uses \(U_\ell\)
 and \(\epsilon(p,\ell)=-1\) if it uses \(U_\ell^{-1}\).  A Wilson loop in
 representation \(S\) is represented by inserting the additional boundary
@@ -358,19 +358,19 @@ convergence mode has been specified.
 
 For \(G=SU(N)\), \(N\ge3\), with \(R\) the fundamental representation and
 with the conventional Wilson weight
-\[
+\begin{equation}
   K_\beta(U)=
   \exp\!\left(\frac{\beta}{N}\operatorname{Re}\operatorname{Tr}U\right),
   \label{eq:suN-fundamental-wilson-weight}
-\]
+\end{equation}
 the small-\(\beta\) coefficients of the fundamental and antifundamental
 characters are
-\[
+\begin{equation}
   c_F[K_\beta]=c_{\overline F}[K_\beta]
   =
   \frac{\beta}{2N}+O(\beta^2).
   \label{eq:suN-fundamental-character-coefficient}
-\]
+\end{equation}
 This follows by expanding \(K_\beta=1+\frac{\beta}{2N}(\chi_F+\chi_{\bar F})
  +O(\beta^2)\) and using character orthogonality.  The coefficient changes
 for \(SU(2)\), because the fundamental representation is self-conjugate and
@@ -385,7 +385,7 @@ For \(N\ge3\), let
 At \(\beta=0\), the plaquette holonomy \(U_p\) is Haar distributed, so
 \(\langle w_p\rangle_{\beta=0}=0\).  Differentiating the normalized
 expectation at \(\beta=0\) gives
-\[
+\begin{equation}
   \left.\frac{\dd}{\dd\beta}\langle w_p\rangle_\beta\right|_{\beta=0}
   =
   \int_G dU\,
@@ -394,14 +394,14 @@ expectation at \(\beta=0\) gives
   =
   \frac{1}{2N^2}.
   \label{eq:suN-one-plaquette-slope}
-\]
+\end{equation}
 Thus, for \(SU(3)\),
-\[
+\begin{equation}
   \langle w_p\rangle_\beta
   =
   \frac{\beta}{18}+O(\beta^2).
   \label{eq:su3-one-plaquette-slope}
-\]
+\end{equation}
 The calculation fixes the normalization used in the nonabelian
 strong-coupling expansion.  Higher-area Wilson loops are obtained by the
 same Haar-projector contractions, but a theorem-level area estimate also
@@ -454,7 +454,7 @@ For \(G=SU(N)\) in the fundamental trace convention used above, let
 \(U_{\mu\nu}^{1\times2}(x)\) denote the oriented rectangle with side lengths
 \(a\) and \(2a\) in the \(\mu,\nu\) plane.  The plaquette-plus-rectangle
 family is
-\[
+\begin{equation}
   S_{c_0,c_1}[U]
   =
   \frac{\beta}{N}
@@ -465,15 +465,15 @@ family is
      \bigl(N-\operatorname{Re}\operatorname{Tr}U_\rho^{1\times2}(x)\bigr)
   \right].
   \label{eq:plaquette-rectangle-gauge-action}
-\]
+\end{equation}
 The two rectangles in the last sum have their long side in the first or
 second direction of the ordered pair.  Since a \(1\times2\) rectangle has
 twice the area of a plaquette, its leading \(F_{\mu\nu}^2\) contribution is
 four times the plaquette contribution.  Thus the continuum normalization is
-\[
+\begin{equation}
   c_0+8c_1=1.
   \label{eq:plaquette-rectangle-continuum-normalization}
-\]
+\end{equation}
 The Wilson action is \(c_0=1,c_1=0\).
 
 \begin{proposition}[Tree-level rectangle improvement]
@@ -481,16 +481,16 @@ The Wilson action is \(c_0=1,c_1=0\).
 In the plaquette-plus-rectangle family
 \eqref{eq:plaquette-rectangle-gauge-action}, the tree-level cancellation of
 the abelian quadratic \(O(a^2)\) derivative artifact is equivalent to
-\[
+\begin{equation}
   c_0+20c_1=0.
   \label{eq:plaquette-rectangle-derivative-cancellation}
-\]
+\end{equation}
 Together with \eqref{eq:plaquette-rectangle-continuum-normalization}, this
 gives
-\[
+\begin{equation}
   c_1=-\frac{1}{12},\qquad c_0=\frac{5}{3}.
   \label{eq:tree-level-symanzik-gauge-coefficients}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -506,7 +506,7 @@ consider a rectangle centered at \(x\) with side lengths \(ra\) in the
   F(x+u\hat\mu+v\hat\nu).
 \]
 Taylor expansion around the center gives
-\[
+\begin{equation}
   \Phi_{r,s}
   =
   r s a^2 F
@@ -515,11 +515,11 @@ Taylor expansion around the center gives
   \left(r^2\partial_\mu^2+s^2\partial_\nu^2\right)F
   +O(a^6).
   \label{eq:rectangle-flux-expansion}
-\]
+\end{equation}
 The small-field loop weight is proportional to \(\frac12\Phi_{r,s}^2\).
 After summing over lattice sites, the \(F\partial^2F\) term may be integrated
 by parts up to boundary terms or finite-volume periodic identities:
-\[
+\begin{equation}
   \frac12\Phi_{r,s}^2
   =
   \frac12r^2s^2a^4F^2
@@ -530,7 +530,7 @@ by parts up to boundary terms or finite-volume periodic identities:
   \right]
   +O(a^8).
   \label{eq:rectangle-flux-square-expansion}
-\]
+\end{equation}
 For the plaquette \((r,s)=(1,1)\), the derivative coefficient in one
 \(\mu\nu\)-plane is proportional to \(1\).  For the two \(1\times2\)
 rectangles, \((r,s)=(1,2)\) and \((2,1)\), the corresponding coefficients
@@ -555,10 +555,10 @@ algebraic equations above.  The full Luescher--Weisz class also allows chair and
 parallelogram six-link loops; with coefficients
 \((c_0,c_1,c_2,c_3)\) in the standard orientation-counting convention, the
 leading normalization is
-\[
+\begin{equation}
   c_0+8c_1+16c_2+8c_3=1,
   \label{eq:luescher-weisz-normalization}
-\]
+\end{equation}
 where the numerical factors count orientations and leading squared areas in
 one coordinate plane.  The commonly used Iwasaki one-parameter action belongs
 to the plaquette-plus-rectangle subfamily with \(c_1\simeq -0.331\) and
@@ -587,12 +587,12 @@ mathematical datum is a map
 \]
 with a locality radius and a gauge-covariance law.  For a link
 \(\ell=(x,y)\), gauge covariance means
-\[
+\begin{equation}
   \mathcal S_\ell(g\cdot U)
   =
   g(x)\mathcal S_\ell(U)g(y)^{-1}.
   \label{eq:smearing-gauge-covariance}
-\]
+\end{equation}
 When a Wilson loop is built from \(\mathcal S(U)\), it is a different
 regularized line operator from the loop built from \(U\).  When an action is
 built from \(\mathcal S(U)\), it is a different regulator action.  The
@@ -603,12 +603,12 @@ Let \(G=SU(N)\).  The oriented staple sum \(C_\ell(U)\) associated with a
 link \(\ell=(x,y)\) is the sum over the \(2(D-1)\) shortest three-link paths
 from \(x\) to \(y\) that, together with \(\ell^{-1}\), form an elementary
 plaquette.  It transforms as a link:
-\[
+\begin{equation}
   C_\ell(g\cdot U)=g(x)C_\ell(U)g(y)^{-1}.
   \label{eq:staple-link-covariance}
-\]
+\end{equation}
 The APE preprojection matrix is
-\[
+\begin{equation}
   X_\ell(U)
   =
   (1-\alpha)U_\ell
@@ -616,7 +616,7 @@ The APE preprojection matrix is
   \frac{\alpha}{2(D-1)}C_\ell(U),
   \qquad \alpha\in\mathbb R .
   \label{eq:ape-preprojection}
-\]
+\end{equation}
 It has the same covariance law as a link, but it is generally a complex
 matrix rather than an element of \(SU(N)\).  A projection back to the group
 is therefore part of the regulator definition.
@@ -629,17 +629,17 @@ Let \(X\in GL(N,\mathbb C)\), and write its polar decomposition as
   U_X\in U(N),\qquad H_X=(X^\dagger X)^{1/2}>0.
 \]
 For \(g,h\in SU(N)\),
-\[
+\begin{equation}
   U_{gXh^{-1}}=gU_Xh^{-1}.
   \label{eq:polar-unitary-equivariance}
-\]
+\end{equation}
 Consequently the locally defined special-unitary projection
-\[
+\begin{equation}
   \Pi_{SU(N)}(X)
   =
   (\det U_X)^{-1/N}U_X
   \label{eq:suN-polar-projection}
-\]
+\end{equation}
 is gauge covariant on any open set where a branch of the \(N\)-th root is
 chosen continuously.
 \end{proposition}
@@ -675,24 +675,24 @@ a branch cut.  This is why differentiable algorithms often use stout
 smearing, which stays on the group without a polar projection.
 
 Let
-\[
+\begin{equation}
   \Pi_{\mathfrak{su}(N)}(M)
   =
   \frac12(M-M^\dagger)
   -
   \frac{1}{2N}\operatorname{Tr}(M-M^\dagger)\mathbf 1 .
   \label{eq:suN-algebra-projection}
-\]
+\end{equation}
 This is the orthogonal projection, with respect to the real Hilbert--Schmidt
 inner product, onto anti-Hermitian traceless matrices.  Define
-\[
+\begin{equation}
   \Omega_\ell(U)=C_\ell(U)U_\ell^{-1},
   \qquad
   Q_\ell(U)=\rho\,\Pi_{\mathfrak{su}(N)}(\Omega_\ell(U)),
   \qquad
   \mathcal S_\ell^{\rm stout}(U)=e^{Q_\ell(U)}U_\ell .
   \label{eq:stout-smearing-definition}
-\]
+\end{equation}
 
 \begin{proposition}[Stout smearing is a smooth gauge-covariant link map]
 \label{prop:stout-smearing-gauge-covariance}
@@ -766,21 +766,21 @@ itself.
 Perturbation theory on a compact gauge lattice begins after choosing a chart
 near the trivial connection.  For \(G=SU(N)\), use Hermitian generators
 \(t^a\) normalized by
-\[
+\begin{equation}
   \operatorname{tr}(t^a t^b)=\delta^{ab},
   \label{eq:lattice-perturbative-trace-normalization}
-\]
+\end{equation}
 and write a link near the identity as
-\[
+\begin{equation}
   U_\mu(x)
   =
   \exp\{-\ii g_0 a A_\mu(x+\tfrac a2\widehat\mu)\},
   \qquad
   A_\mu=A_\mu^a t^a .
   \label{eq:lattice-link-perturbative-coordinate}
-\]
+\end{equation}
 With the Wilson action in the convention
-\[
+\begin{equation}
   S_W[U]
   =
   \frac{\beta}{N}
@@ -789,7 +789,7 @@ With the Wilson action in the convention
   \qquad
   \beta=\frac{N}{g_0^2},
   \label{eq:lattice-perturbative-wilson-beta}
-\]
+\end{equation}
 the parameter \(g_0\) is the lattice coupling coordinate matching the
 continuum trace-delta convention
 \(\frac{1}{4g_0^2}\int\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\) at tree
@@ -800,45 +800,45 @@ Let
   \nabla_\mu^+ f(x)=\frac{f(x+a\widehat\mu)-f(x)}{a}
 \]
 be the forward difference.  The linearized lattice curvature is
-\[
+\begin{equation}
   f_{\mu\nu}(x)
   =
   \nabla_\mu^+ A_\nu(x+\tfrac a2\widehat\nu)
   -
   \nabla_\nu^+ A_\mu(x+\tfrac a2\widehat\mu).
   \label{eq:lattice-linearized-curvature}
-\]
+\end{equation}
 Expanding the plaquette gives
-\[
+\begin{equation}
   U_{\mu\nu}(x)
   =
   \exp\{-\ii g_0 a^2 f_{\mu\nu}(x)+O(g_0a^3A,g_0^2a^3A^2)\}.
   \label{eq:lattice-plaquette-perturbative-expansion}
-\]
+\end{equation}
 Therefore the quadratic Wilson action is
-\[
+\begin{equation}
   S_W^{(2)}[A]
   =
   \frac12
   \sum_x a^D\sum_{\mu<\nu}
   \operatorname{tr}\bigl(f_{\mu\nu}(x)f_{\mu\nu}(x)\bigr).
   \label{eq:lattice-quadratic-wilson-action}
-\]
+\end{equation}
 All higher vertices come from the same compact-link exponential and from the
 Baker--Campbell--Hausdorff expansion of the plaquette.  The finite-regulator
 definition remains the Haar integral; the perturbative chart is a local
 coordinate system for asymptotic expansion around \(U_\ell=\mathbf 1\).
 
 On a periodic lattice, use Fourier modes with lattice momentum
-\[
+\begin{equation}
   \widehat p_\mu=\frac{2}{a}\sin\frac{ap_\mu}{2},
   \qquad
   \widehat p^2=\sum_\rho \widehat p_\rho^2.
   \label{eq:lattice-hat-momentum}
-\]
+\end{equation}
 After absorbing the harmless mid-link phases into the Fourier components,
 \eqref{eq:lattice-quadratic-wilson-action} becomes
-\[
+\begin{equation}
   S_W^{(2)}
   =
   \frac12
@@ -849,11 +849,11 @@ After absorbing the harmless mid-link phases into the Fourier components,
   \right]
   A_\nu^a(p).
   \label{eq:lattice-transverse-quadratic-kernel}
-\]
+\end{equation}
 The zero modes and gauge orbits are treated by a finite-volume gauge-fixing
 or by restricting to gauge-invariant observables.  In a covariant perturbative
 calculation one adds the lattice gauge-fixing quadratic form
-\[
+\begin{equation}
   S_{\rm gf}^{(2)}
   =
   \frac{1}{2\xi}
@@ -861,18 +861,18 @@ calculation one adds the lattice gauge-fixing quadratic form
   A_\mu^a(-p)\,\widehat p_\mu\widehat p_\nu\,A_\nu^a(p),
   \qquad \xi>0 .
   \label{eq:lattice-covariant-gauge-fixing-quadratic}
-\]
+\end{equation}
 The resulting kernel is
-\[
+\begin{equation}
   K_{\mu\nu}^{(\xi)}(p)
   =
   \delta_{\mu\nu}\widehat p^2
   -
   \left(1-\frac1\xi\right)\widehat p_\mu\widehat p_\nu,
   \label{eq:lattice-gauge-fixed-kernel}
-\]
+\end{equation}
 with inverse on nonzero momenta
-\[
+\begin{equation}
   D_{\mu\nu}^{ab}(p)
   =
   \delta^{ab}
@@ -883,14 +883,14 @@ with inverse on nonzero momenta
     (1-\xi)\frac{\widehat p_\mu\widehat p_\nu}{\widehat p^2}
   \right].
   \label{eq:lattice-tree-propagator}
-\]
+\end{equation}
 As \(a\to0\) at fixed physical \(p\),
-\[
+\begin{equation}
   \widehat p^2
   =
   p^2-\frac{a^2}{12}\sum_\mu p_\mu^4+O(a^4p^6).
   \label{eq:lattice-hat-momentum-expansion}
-\]
+\end{equation}
 This displayed artifact is one elementary source of the tree-level Symanzik
 corrections discussed above.
 
@@ -899,12 +899,12 @@ corrections discussed above.
 For every nonzero lattice momentum, the tensor
 \eqref{eq:lattice-tree-propagator} is the inverse of
 \eqref{eq:lattice-gauge-fixed-kernel}:
-\[
+\begin{equation}
   K_{\mu\rho}^{(\xi)}(p)D_{\rho\nu}^{ab}(p)
   =
   \delta^{ab}\delta_{\mu\nu}.
   \label{eq:lattice-propagator-inverse-identity}
-\]
+\end{equation}
 Let \(P_L\) be the rank-one projector
 \[
   (P_L)_{\mu\nu}=\frac{\widehat p_\mu\widehat p_\nu}{\widehat p^2},
@@ -926,20 +926,20 @@ Mean-link or tadpole normalization is best understood as a finite coordinate
 change for perturbative expansions of link observables and action
 coefficients.  Define the plaquette mean link, when the expectation is
 positive, by
-\[
+\begin{equation}
   u_0(\beta)
   =
   \left\langle
     \frac1N\operatorname{Re}\operatorname{tr}U_p
   \right\rangle_\beta^{1/4}.
   \label{eq:plaquette-mean-link-definition}
-\]
+\end{equation}
 If a Wilson-line observable contains \(L\) elementary links, its
 plaquette-tadpole-normalized coordinate is
-\[
+\begin{equation}
   O_{\rm TI}=u_0^{-L}O .
   \label{eq:tadpole-normalized-line-operator}
-\]
+\end{equation}
 For the Wilson plaquette action, the same bookkeeping rewrites the plaquette
 coefficient as
 \[
@@ -949,10 +949,10 @@ coefficient as
   \operatorname{Re}\operatorname{tr}\bigl(u_0^{-4}U_p\bigr),
   \]
 so the boosted coupling coordinate is
-\[
+\begin{equation}
   g_{\rm TI}^2=\frac{g_0^2}{u_0^4}.
   \label{eq:tadpole-boosted-coupling}
-\]
+\end{equation}
 Equations \eqref{eq:tadpole-normalized-line-operator} and
 \eqref{eq:tadpole-boosted-coupling} define a perturbative coordinate
 convention.  They acquire predictive content only after specifying which
@@ -962,21 +962,21 @@ being compared.
 \begin{example}[First terms of the boosted coupling]
 \label{ex:tadpole-boosted-coupling-series}
 Suppose the mean plaquette has a weak-coupling expansion
-\[
+\begin{equation}
   \left\langle
     \frac1N\operatorname{Re}\operatorname{tr}U_p
   \right\rangle_\beta
   =
   1-c_P g_0^2+O(g_0^4).
   \label{eq:mean-plaquette-weak-coupling}
-\]
+\end{equation}
 Then \(u_0^4=1-c_Pg_0^2+O(g_0^4)\) and
-\[
+\begin{equation}
   g_{\rm TI}^2
   =
   g_0^2\left(1+c_Pg_0^2+O(g_0^4)\right).
   \label{eq:tadpole-boosted-coupling-series}
-\]
+\end{equation}
 The coefficient \(c_P\) depends on the action, gauge group, and regulator
 volume used to define the expectation value.  The formula itself is the
 finite algebra of the coordinate change.
@@ -999,7 +999,7 @@ Their continuum limit requires line renormalization and an operator scheme.
 A rectangular Wilson loop has a Hamiltonian meaning when the transfer matrix
 exists.  Let \(C_{n,m}\) be a rectangle with spatial side \(R=na\) and
 Euclidean time side \(T=ma\).  Use the normalized loop
-\[
+\begin{equation}
   W_S(n,m)
   =
   \frac{1}{\dim S}
@@ -1007,20 +1007,20 @@ Euclidean time side \(T=ma\).  Use the normalized loop
     \operatorname{Tr}_S\prod_{\ell\in C_{n,m}}U_\ell
   \right\rangle .
   \label{eq:normalized-rectangular-wilson-loop}
-\]
+\end{equation}
 In the transfer-matrix Hilbert space, the spatial transporter between two
 static sources defines a vector \(\Psi_{S,n}\) in the sector containing a
 source and an antisource separated by \(n\) lattice spacings.  Reflection
 positivity gives
-\[
+\begin{equation}
   W_S(n,m)=
   \langle \Psi_{S,n},T^m\Psi_{S,n}\rangle .
   \label{eq:rectangular-wilson-loop-transfer-matrix}
-\]
+\end{equation}
 If the spectral measure of \(\Psi_{S,n}\) for \(T=e^{-aH}\) has an isolated
 largest transfer-matrix eigenvalue \(e^{-aE_0(n,S)}\) with nonzero weight,
 then
-\[
+\begin{equation}
   aV_{a,S}(n)
   =
   -\lim_{m\to\infty}
@@ -1028,7 +1028,7 @@ then
   =
   aE_0(n,S).
   \label{eq:lattice-static-potential-effective-mass}
-\]
+\end{equation}
 This is the finite-cutoff static potential in the chosen static-source
 sector.  In a continuum limit it contains an additive line self-energy:
 the force, potential differences, or a specified subtraction scheme must be
@@ -1037,20 +1037,20 @@ used before comparing continuum quantities.
 \begin{proposition}[Spectral extraction of the finite-lattice static energy]
 \label{prop:spectral-static-potential-extraction}
 Assume
-\[
+\begin{equation}
   W_m=\sum_{\alpha=0}^{r}A_\alpha e^{-amE_\alpha},
   \qquad
   A_0>0,\quad A_\alpha\ge0,\quad
   E_0<E_1\le\cdots\le E_r .
   \label{eq:finite-static-spectral-sum}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   -\log\frac{W_{m+1}}{W_m}
   =
   aE_0+O(e^{-am(E_1-E_0)}).
   \label{eq:finite-static-effective-mass-error}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1071,30 +1071,30 @@ constant times \(e^{-am(E_1-E_0)}\).  Taking the logarithm gives
 The Creutz ratio is a finite-difference observable designed to cancel the
 leading perimeter and constant terms in a rectangular Wilson-loop ansatz.
 For positive Wilson loops define
-\[
+\begin{equation}
   \chi(n,m)
   =
   -\log
   \frac{W(n,m)W(n-1,m-1)}
        {W(n,m-1)W(n-1,m)} .
   \label{eq:lattice-creutz-ratio}
-\]
+\end{equation}
 If, over a range of lattice sizes,
-\[
+\begin{equation}
   W(n,m)=
   \exp\{-\sigma_{\rm lat}nm-\mu_{\rm lat}(n+m)-c_{\rm lat}
        +\varepsilon(n,m)\},
   \label{eq:creutz-area-perimeter-ansatz}
-\]
+\end{equation}
 then
-\[
+\begin{equation}
   \chi(n,m)=
   \sigma_{\rm lat}
   -
   \varepsilon(n,m)-\varepsilon(n-1,m-1)
   +\varepsilon(n,m-1)+\varepsilon(n-1,m).
   \label{eq:creutz-ratio-error-combination}
-\]
+\end{equation}
 Thus an observed Creutz-ratio plateau is a statement about a controlled
 two-dimensional finite difference of the correction term \(\varepsilon\).
 A continuum string-tension theorem requires control of the scaling trajectory,
@@ -1137,34 +1137,34 @@ octahedral group, parity, and charge conjugation.  A glueball source in this
 channel is a gauge-invariant function \(O_i[U(\tau)]\) of the spatial links
 on a time slice, usually built from traced closed Wilson loops after
 smearing and projection to \(\mathfrak c\).  Its vacuum-subtracted version is
-\[
+\begin{equation}
   \widetilde O_i(\tau)
   =
   O_i(\tau)-\langle O_i\rangle_\Lambda .
   \label{eq:lattice-glueball-vacuum-subtracted-source}
-\]
+\end{equation}
 The connected correlator matrix is
-\[
+\begin{equation}
   C_{ij}(n)
   =
   \langle \widetilde O_i(n a)\,
   \widetilde O_j(0)^\dagger\rangle_\Lambda ,
   \qquad n\in\mathbb Z_{\ge0}.
   \label{eq:lattice-glueball-correlator-matrix}
-\]
+\end{equation}
 If the transfer matrix \(T=e^{-aH_\Lambda}\) exists in the sector selected
 by the channel, reflection positivity identifies vectors
 \(\psi_i=\widetilde O_i\Omega_\Lambda\) and gives
-\[
+\begin{equation}
   C_{ij}(n)=\langle \psi_i,T^n\psi_j\rangle .
   \label{eq:lattice-glueball-transfer-matrix-correlator}
-\]
+\end{equation}
 Thus \(C(n)\) is a finite-regulator spectral object.  The continuum glueball
 statement is obtained only after the thermodynamic, continuum, and channel
 identification limits have been controlled.
 
 The spectral resolution in finite volume gives
-\[
+\begin{equation}
   C_{ij}(n)
   =
   \sum_{\alpha}
@@ -1175,7 +1175,7 @@ The spectral resolution in finite volume gives
   \qquad
   \lambda_\alpha=e^{-aE_\alpha}.
   \label{eq:volxi-glueball-spectral-matrix}
-\]
+\end{equation}
 The finite cubic channel is part of the regulator.  For example, a continuum
 \(J=0\) channel restricts to an \(A_1\) channel, while a continuum \(J=2\)
 channel restricts to the \(E\oplus T_2\) channels.  Degeneracy across the
@@ -1187,28 +1187,28 @@ input to the finite calculation.
 Let \(\mathcal S\) be an \(r\)-dimensional source space in a fixed finite
 lattice channel.  Suppose that, on this source space, the correlator matrix
 has the exact finite spectral form
-\[
+\begin{equation}
   C(n)=Z\,\operatorname{diag}
   (\lambda_1^n,\ldots,\lambda_r^n)\,Z^\dagger ,
   \qquad
   1>\lambda_1>\cdots>\lambda_r>0,
   \label{eq:lattice-glueball-exact-finite-spectrum}
-\]
+\end{equation}
 where \(Z\) is an invertible \(r\times r\) matrix.  Then for every
 \(n>n_0\ge0\) the generalized eigenvalue problem
-\[
+\begin{equation}
   C(n)v_\alpha(n,n_0)
   =
   \Lambda_\alpha(n,n_0)\,C(n_0)v_\alpha(n,n_0)
   \label{eq:volxi-glueball-gevp}
-\]
+\end{equation}
 has generalized eigenvalues
-\[
+\begin{equation}
   \Lambda_\alpha(n,n_0)=\lambda_\alpha^{\,n-n_0}
   =
   e^{-a(n-n_0)E_\alpha}.
   \label{eq:lattice-glueball-gevp-exact-eigenvalues}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1216,7 +1216,7 @@ Since \(Z\) is invertible and all \(\lambda_\alpha\) are positive,
 \(C(n_0)\) is positive definite.  Multiplying
 \eqref{eq:volxi-glueball-gevp} by \(C(n_0)^{-1}\) reduces the generalized
 problem to the ordinary eigenvalue problem for
-\[
+\begin{equation}
   C(n_0)^{-1}C(n)
   =
   (Z^\dagger)^{-1}
@@ -1224,7 +1224,7 @@ problem to the ordinary eigenvalue problem for
   (\lambda_1^{n-n_0},\ldots,\lambda_r^{n-n_0})
   Z^\dagger .
   \label{eq:lattice-glueball-gevp-similar-diagonal}
-\]
+\end{equation}
 The displayed matrix is similar to the diagonal matrix of
 \(\lambda_\alpha^{n-n_0}\).  Its eigenvalues are therefore precisely the
 numbers in \eqref{eq:lattice-glueball-gevp-exact-eigenvalues}, with
@@ -1235,38 +1235,38 @@ multiplicity.
 \label{ca:lattice-glueball-whitened-residual-criterion}
 Fix \(n>n_0\) and suppose \(C(n_0)\) is positive definite.  Define the
 Hermitian whitened matrix
-\[
+\begin{equation}
   B(n,n_0)
   =
   C(n_0)^{-1/2}C(n)C(n_0)^{-1/2}.
   \label{eq:lattice-glueball-whitened-matrix}
-\]
+\end{equation}
 Assume that in the selected time window
-\[
+\begin{equation}
   B(n,n_0)=B_{\rm low}(n,n_0)+R(n,n_0),
   \qquad
   \|R(n,n_0)\|_{\rm op}\le \epsilon ,
   \label{eq:lattice-glueball-whitened-residual}
-\]
+\end{equation}
 where \(B_{\rm low}\) has eigenvalues
 \(\lambda_\alpha^{n-n_0}=e^{-a(n-n_0)E_\alpha}\) for the states intended to
 be resolved.  Let \(\widehat\Lambda_\alpha\) be the corresponding eigenvalues
 of \(B\), ordered decreasingly.  Weyl's finite-dimensional eigenvalue
 inequality gives
-\[
+\begin{equation}
   |\widehat\Lambda_\alpha-\lambda_\alpha^{n-n_0}|
   \le \epsilon .
   \label{eq:lattice-glueball-weyl-gevp-bound}
-\]
+\end{equation}
 If \(\epsilon<\lambda_\alpha^{n-n_0}\), then the effective energy
-\[
+\begin{equation}
   \widehat E_\alpha(n,n_0)
   =
   -\frac{1}{a(n-n_0)}\log\widehat\Lambda_\alpha
   \label{eq:lattice-glueball-effective-gevp-energy}
-\]
+\end{equation}
 obeys
-\[
+\begin{equation}
   |\widehat E_\alpha(n,n_0)-E_\alpha|
   \le
   \frac{1}{a(n-n_0)}
@@ -1277,7 +1277,7 @@ obeys
            {\lambda_\alpha^{n-n_0}}
   \right\}.
   \label{eq:lattice-glueball-effective-energy-error}
-\]
+\end{equation}
 A quoted GEVP plateau is therefore a controlled finite-matrix statement only
 after such a residual bound, or a stronger replacement, has been supplied for
 the selected operator basis and time window.

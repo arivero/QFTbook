@@ -133,10 +133,10 @@ For each \(j<M\), the form-norm density of \(\bigcup_\Lambda\Hilb_\Lambda\)
 implies the approximation hypothesis in
 Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian} for the first
 \(j+1\) eigenspaces; hence
-\[
+\begin{equation}
   E_j(\Lambda)\downarrow E_j .
   \label{eq:fixed-H-ritz-eigenvalue-convergence}
-\]
+\end{equation}
 If \(j<r\), then \(E_j<a\), and
 \eqref{eq:fixed-H-ritz-eigenvalue-convergence} gives
 \[
@@ -314,14 +314,14 @@ The same physical family admits a second truncation.  Treat the thermal
 deformation exactly.  For \(\tau\ne0\), the unperturbed theory is the free
 massive Majorana theory with mass \(m\) proportional to \(\tau\) in the chosen
 normalization.  The magnetic perturbation is then
-\[
+\begin{equation}
   H_{\rm IFT}(L)
   =
   H_{\rm Maj}(m,L)
   +
   h\int_0^L\sigma(0,x)\,\dd x .
   \label{eq:ising-tffsa-hamiltonian}
-\]
+\end{equation}
 Truncating \eqref{eq:ising-tffsa-hamiltonian} in the finite-volume fermion
 Fock space is the truncated free-fermion-space approach.  Its advantage is
 not a new definition of the continuum theory; rather, it moves the relevant
@@ -364,7 +364,7 @@ nontrivial matrix is the spin perturbation.
 \label{def:tffsa-spin-matrix-element}
 For two finite-volume fermion states \(I,J\), the connected infinite-volume
 asymptotic spin matrix element is
-\[
+\begin{equation}
   V_{IJ}^{\rm conn}
   =
   hL\,\delta_{P_I,P_J}\,
@@ -376,7 +376,7 @@ asymptotic spin matrix element is
   \qquad
   \rho_I=\prod_{i\in I}mL\cosh\theta_i .
   \label{eq:tffsa-connected-spin-matrix-element}
-\]
+\end{equation}
 Here \(F_{\rm conn}^{\sigma}\) is the crossed spin-field form factor derived
 in Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}, and
 \(\rho_I\) is the free Bethe-state density of states.  The full finite-volume
@@ -426,7 +426,7 @@ where \(E_0^{(0)}=0\), \(E_n^{(0)}=2\omega_n\) for \(n\geq1\), and
   V_{ii}=\bar\sigma .
 \]
 For \(i<j\), \(V_{ij}\) is defined by the crossed connected form factor
-\[
+\begin{equation}
   V_{ij}
   =
   \frac{
@@ -438,7 +438,7 @@ For \(i<j\), \(V_{ij}\) is defined by the crossed connected form factor
   \qquad
   V_{ji}=\overline{V_{ij}},
   \label{eq:zero-momentum-tffsa-block}
-\]
+\end{equation}
 with \(\rho_0=1\) and \(I_0=\varnothing\).  The diagonal convention
 \(V_{ii}=\bar\sigma\) keeps only the disconnected vacuum-expectation
 contribution.  The omitted diagonal connected finite parts are singular
@@ -477,34 +477,34 @@ magnetic-Ising spectrum.
 \begin{proposition}[Finite TFFSA spectral-flow derivative]
 \label{prop:finite-tffsa-hellmann-feynman}
 Let
-\[
+\begin{equation}
   H(h)=H_0+hW,\qquad H_0=H_0^\dagger,\quad W=W^\dagger ,
   \label{eq:finite-affine-hermitian-flow}
-\]
+\end{equation}
 be a finite Hermitian matrix family, with \(h\in\mathbb R\).  Suppose
 \(\lambda_*(h_*)\) is a simple eigenvalue of \(H(h_*)\), and let \(u_*\) be a
 normalized eigenvector.  If
-\[
+\begin{equation}
   g=\operatorname{dist}\bigl(\lambda_*(h_*),
       \operatorname{spec}H(h_*)\setminus\{\lambda_*(h_*)\}\bigr)>0 ,
   \label{eq:finite-spectral-flow-gap}
-\]
+\end{equation}
 then for \(|h-h_*|\|W\|<g/2\) there is a unique eigenvalue branch
 \(\lambda_*(h)\) near \(\lambda_*(h_*)\), counted with its normalized
 eigenvector \(u(h)\) after fixing a differentiable phase.  Its derivative at
 \(h=h_*\) is
-\[
+\begin{equation}
   \frac{\dd\lambda_*}{\dd h}(h_*)
   =
   u_*^\dagger W u_* .
   \label{eq:finite-hellmann-feynman-derivative}
-\]
+\end{equation}
 If all eigenvalues of \(H(h_*)\) are simple and
 \(\lambda_a'(h_*)=u_a^\dagger W u_a\), then
-\[
+\begin{equation}
   \sum_a\lambda_a'(h_*)=\operatorname{tr} W .
   \label{eq:finite-spectral-flow-trace-identity}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -578,7 +578,7 @@ matrix and let \(\Hilb=P\Hilb\oplus Q\Hilb\), where \(P\) is an orthogonal
 projection and \(Q=1-P\).  Suppose \(E\) is not an eigenvalue of the
 finite matrix \(QHQ:Q\Hilb\to Q\Hilb\).  Then \(E\) is an eigenvalue of
 \(H\) with \(P\psi\ne0\) only if
-\[
+\begin{equation}
   \left[
     PHP
     -
@@ -587,7 +587,7 @@ finite matrix \(QHQ:Q\Hilb\to Q\Hilb\).  Then \(E\) is an eigenvalue of
   =
   E\,P\psi .
   \label{eq:feshbach-schur-truncation-effective-hamiltonian}
-\]
+\end{equation}
 Conversely, if \(u\in P\Hilb\) satisfies
 \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, then
 \[
@@ -648,11 +648,11 @@ therefore record the minimal certificate used by the companion scripts.
 Let \(A=A^\dagger\) be a finite Hermitian matrix on a finite-dimensional
 Hilbert space \(V\).  A residual certificate for a proposed eigenpair is a
 triple
-\[
+\begin{equation}
   (\lambda,u,\rho),\qquad \|u\|=1,\qquad
   \rho=\|(A-\lambda)u\|.
   \label{eq:finite-matrix-residual-certificate}
-\]
+\end{equation}
 It is a certificate for the finite matrix \(A\) only.  The number
 \(\lambda\) becomes a QFT energy or invariant mass only after the regulator
 label, counterterm prescription, symmetry sector, finite-volume convention,
@@ -664,22 +664,22 @@ and continuum-extrapolation hypothesis have also been supplied.
 Let \(A=A^\dagger\) be a finite Hermitian matrix, let
 \(\|u\|=1\), and set \(\rho=\|(A-\lambda)u\|\).
 Then
-\[
+\begin{equation}
   \operatorname{dist}(\lambda,\operatorname{spec}A)\leq \rho .
   \label{eq:residual-distance-to-spectrum}
-\]
+\end{equation}
 More generally, let \(S\subset\operatorname{spec}A\) and let \(P_S\) be the
 orthogonal spectral projection onto the span of eigenvectors whose
 eigenvalues lie in \(S\).  If
-\[
+\begin{equation}
   g=\operatorname{dist}\bigl(\lambda,\operatorname{spec}A\setminus S\bigr)>0,
   \label{eq:finite-spectral-gap-from-complement}
-\]
+\end{equation}
 then
-\[
+\begin{equation}
   \|(1-P_S)u\|\leq \frac{\rho}{g}.
   \label{eq:finite-projector-leakage-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -688,14 +688,14 @@ Choose an orthonormal eigenbasis \(e_a\) of \(A\),
   Ae_a=E_a e_a,\qquad u=\sum_a c_a e_a,\qquad \sum_a |c_a|^2=1.
 \]
 Then
-\[
+\begin{equation}
   \rho^2
   =
   \|(A-\lambda)u\|^2
   =
   \sum_a |c_a|^2 |E_a-\lambda|^2 .
   \label{eq:residual-spectral-expansion}
-\]
+\end{equation}
 If every eigenvalue obeyed \(|E_a-\lambda|>\rho\), the right hand side of
 \eqref{eq:residual-spectral-expansion} would be strictly larger than
 \(\rho^2\), a contradiction.  This proves
@@ -724,18 +724,18 @@ counterterm matching, and to the extrapolation bounds below.
 For a Hermitian block decomposition \(V=PV\oplus QV\), the same finite
 linear algebra gives a practical diagnostic for a truncation counterterm.
 At a chosen low-energy value \(E\), the omitted-space correction is exactly
-\[
+\begin{equation}
   \Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP .
   \label{eq:finite-schur-self-energy}
-\]
+\end{equation}
 Approximating \(\Sigma_P(E)\) by a low-dimensional local counterterm is a
 separate approximation; the identity itself is exact only before this
 replacement is made.  A controlled truncation must therefore state a norm,
 an energy window, and a bound on
-\[
+\begin{equation}
   \Sigma_P(E)-\Sigma_P^{\rm ct}(E)
   \label{eq:schur-counterterm-remainder}
-\]
+\end{equation}
 in that window.
 
 The companion check
@@ -924,7 +924,7 @@ Let \(K\) be a positive regulator parameter tending to infinity.  A
 deterministic sequence \(A_K\) has an \(m\)-term power-law cutoff expansion
 with base exponent \(\omega>0\) and controlled remainder if there are real
 numbers \(A_\infty,c_1,\ldots,c_m\), a constant \(C\), and \(K_0\) such that
-\[
+\begin{equation}
   \left|
     A_K
     -
@@ -936,7 +936,7 @@ numbers \(A_\infty,c_1,\ldots,c_m\), a constant \(C\), and \(K_0\) such that
   C K^{-(m+1)\omega},
   \qquad K\ge K_0 .
   \label{eq:power-law-cutoff-remainder-bound}
-\]
+\end{equation}
 The same definition applies to a subsequence, for example
 \(K,Ks_1,\ldots,Ks_m\), provided these are admissible regulator labels and
 the displayed bound holds on that subsequence.  In a TCSA computation the
@@ -957,20 +957,20 @@ Assume
   \eta>\omega>0 ,
 \]
 for \(K\ge K_0\).  Define
-\[
+\begin{equation}
   R_K
   =
   \frac{2^\omega A_{2K}-A_K}{2^\omega-1}.
   \label{eq:two-cutoff-richardson-estimator}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   |R_K-A_\infty|
   \le
   \frac{2^\omega 2^{-\eta}+1}{2^\omega-1}\,
   C K^{-\eta}.
   \label{eq:two-cutoff-richardson-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1004,13 +1004,13 @@ Let \(s_0,\ldots,s_m\) be distinct positive real numbers and suppose
 \(A_K\) satisfies \eqref{eq:power-law-cutoff-remainder-bound} on the
 subsequence \(s_jK\), \(j=0,\ldots,m\).  Let \(w_0,\ldots,w_m\) be the unique
 solution of
-\[
+\begin{equation}
   \sum_{j=0}^m w_j=1,
   \qquad
   \sum_{j=0}^m w_j s_j^{-a\omega}=0,
   \quad a=1,\ldots,m .
   \label{eq:extrapolation-weight-moments}
-\]
+\end{equation}
 Then the extrapolated value
 \[
   R_K^{(m)}
@@ -1018,13 +1018,13 @@ Then the extrapolated value
   \sum_{j=0}^m w_j A_{s_jK}
 \]
 satisfies
-\[
+\begin{equation}
   |R_K^{(m)}-A_\infty|
   \le
   C K^{-(m+1)\omega}
   \sum_{j=0}^m |w_j|\,s_j^{-(m+1)\omega}.
   \label{eq:integer-power-extrapolation-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1068,11 +1068,11 @@ resolutions \(K_1<\cdots<K_N\), a base exponent \(\omega>0\), and an integer
   r=1,\ldots,N,\quad a=0,\ldots,p .
 \]
 The least-squares polynomial fit is
-\[
+\begin{equation}
   \widehat c=(X^T X)^{-1}X^T A,\qquad
   A=(A_{K_1},\ldots,A_{K_N})^T ,
   \label{eq:dlcq-large-K-least-squares-fit}
-\]
+\end{equation}
 provided \(X\) has full column rank.  The reported continuum diagnostic is
 \(\widehat c_0\), the fitted intercept at \(q=0\).
 
@@ -1080,24 +1080,24 @@ provided \(X\) has full column rank.  The reported continuum diagnostic is
 \label{prop:finite-large-K-fit-remainder-amplifier}
 Assume that the finite data used in
 \eqref{eq:dlcq-large-K-least-squares-fit} have the form
-\[
+\begin{equation}
   A_{K_r}
   =
   A_\infty+\sum_{a=1}^p c_a K_r^{-a\omega}+\rho_r ,
   \qquad r=1,\ldots,N ,
   \label{eq:large-K-fit-model-with-remainder}
-\]
+\end{equation}
 with \(X\) of full column rank.  Let
 \[
   B=(X^T X)^{-1}X^T .
 \]
 Then the fitted intercept satisfies
-\[
+\begin{equation}
   |\widehat c_0-A_\infty|
   \leq
   \left(\sum_{r=1}^N |B_{0r}|\right)\max_{1\leq r\leq N}|\rho_r| .
   \label{eq:large-K-intercept-remainder-amplification}
-\]
+\end{equation}
 In particular, if all \(\rho_r\) vanish, the fit recovers \(A_\infty\)
 exactly, independently of the overdetermination \(N>p+1\).
 \end{proposition}

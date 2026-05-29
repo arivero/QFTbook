@@ -64,7 +64,7 @@ and chiral superfields \(\Phi^I\) whose scalar components are \(a^I\).  Once
 the two-derivative \(\mathcal N=2\) action is assumed to exist, its scalar
 metric and gauge kinetic coefficients are not independent data.  They are
 encoded by the same holomorphic prepotential:
-\[
+\begin{equation}
   K_{\mathcal F}(a,\overline a)
   =
   \frac1{2\pi}\operatorname{Im}
@@ -72,7 +72,7 @@ encoded by the same holomorphic prepotential:
   \qquad
   \tau_{IJ}(a)=\frac{\partial^2\mathcal F}{\partial a^I\partial a^J}.
   \label{eq:rigid-special-kahler-potential}
-\]
+\end{equation}
 The factor \(1/(2\pi)\) is the superspace normalization used in this volume.
 It can be absorbed into the definition of the Abelian fields, but it must not
 be silently dropped when comparing instanton, period, and component-action
@@ -83,13 +83,13 @@ conventions.
 Let \(U\subset\mathbb C^r\) be a coordinate patch with holomorphic
 coordinates \(a^I\), and let \(\mathcal F\) be holomorphic on \(U\).  Define
 \(K_{\mathcal F}\) by \eqref{eq:rigid-special-kahler-potential}.  Then
-\[
+\begin{equation}
   g_{I\bar J}:=
   \frac{\partial^2K_{\mathcal F}}{\partial a^I\partial\overline a^{\,J}}
   =
   \frac1{2\pi}\operatorname{Im}\tau_{IJ}.
   \label{eq:rigid-special-kahler-metric}
-\]
+\end{equation}
 Consequently the scalar kinetic metric is positive exactly on those
 Wilsonian patches where \(\operatorname{Im}\tau_{IJ}\) is positive definite.
 Linear terms in \(\mathcal F\) change \(K_{\mathcal F}\) by a K\"ahler
@@ -303,12 +303,12 @@ In rank one the electromagnetic charge lattice is
 \]
 with central charge \(Z_\gamma=n_m a_D+n_e a\).  For two charges
 \(\delta=(m_m,m_e)\) and \(\gamma=(n_m,n_e)\), use the antisymmetric pairing
-\[
+\begin{equation}
   \langle \delta,\gamma\rangle
   =
   m_m n_e-m_e n_m .
   \label{eq:rank-one-em-pairing}
-\]
+\end{equation}
 This is the Dirac pairing in the period basis \(\Pi=(a_D,a)^T\).
 
 \begin{proposition}[Rank-one hypermultiplet monodromy]
@@ -327,11 +327,11 @@ monodromy acting on periods is
   \label{eq:sw-picard-lefschetz-charge-monodromy}
 \end{equation}
 Equivalently, for every test charge \(\delta\),
-\[
+\begin{equation}
   Z_\delta\longmapsto
   Z_\delta+2\langle\delta,\gamma\rangle Z_\gamma .
   \label{eq:rank-one-pl-central-charge-action}
-\]
+\end{equation}
 The matrix \(M_\gamma\) is integral symplectic and unipotent.
 \end{proposition}
 
@@ -378,12 +378,12 @@ coordinate is
   u=\left\langle \operatorname{tr}\phi^2\right\rangle .
 \]
 The Weyl group identifies \(a\sim -a\), and the large-field relation is
-\[
+\begin{equation}
   u=\frac12a^2+O(\Lambda^4/a^2),
   \qquad
   a(u)\sim\sqrt{2u}.
   \label{eq:sw-large-u-a-u}
-\]
+\end{equation}
 The perturbative Wilsonian prepotential in the pure theory has the one-loop
 form
 \begin{equation}
@@ -397,14 +397,14 @@ form
 \end{equation}
 The polynomial terms change \(a_D\) by an integral affine electric
 redefinition and do not change the monodromy class.  Thus
-\[
+\begin{equation}
   a_D=\frac{\partial\mathcal F}{\partial a}
   =
   \frac{\ii}{\pi}a
   \log\frac{a^2}{\Lambda^2}
   +O(a).
   \label{eq:sw-large-u-ad}
-\]
+\end{equation}
 When \(u\) circles infinity once counterclockwise, the square root in
 \eqref{eq:sw-large-u-a-u} gives \(a\mapsto -a\), while the logarithm in
 \eqref{eq:sw-large-u-ad} shifts by \(2\pi\ii\).  Therefore the period vector
@@ -912,15 +912,15 @@ consequences of the local special-geometry model.
 \begin{definition}[Rank-one cusp model]
 \label{def:rank-one-ad-cusp-model}
 The simplest rank-one Argyres-Douglas local period model is the cusp
-\[
+\begin{equation}
   \Sigma_{u,v}:\qquad y^2=x^3+v x+u ,
   \label{eq:ad-a1-a2-local-curve}
-\]
+\end{equation}
 with local Seiberg-Witten differential
-\[
+\begin{equation}
   \lambda_{\rm AD}=\frac{u\,dx}{y} .
   \label{eq:ad-local-differential}
-\]
+\end{equation}
 The parameter \(u\) is the Coulomb-branch deformation of the cusp and \(v\)
 is the relevant deformation that unfolds the collision.  The normalization is
 chosen so that a period of \(\lambda_{\rm AD}\) has mass dimension one.
@@ -933,10 +933,10 @@ For the local curve
   y^2=x^3+v x+u ,
 \]
 the finite discriminant is
-\[
+\begin{equation}
   \Delta_{\rm cusp}(u,v)=-4v^3-27u^2 .
   \label{eq:ad-cusp-discriminant}
-\]
+\end{equation}
 Thus the two nodal singularities in the \(u\)-plane collide at
 \((u,v)=(0,0)\).  At \(v=0\), the singular fiber is a cusp rather than a
 node.
@@ -968,10 +968,10 @@ points coincide and the singularity is cuspidal.
 Let \(\Gamma\) be a rank-two electromagnetic charge lattice with symplectic
 pairing \(\langle\,\cdot,\cdot\,\rangle\).  If two primitive charges
 \(\gamma_1,\gamma_2\in\Gamma\) obey
-\[
+\begin{equation}
   \langle\gamma_1,\gamma_2\rangle\ne0,
   \label{eq:ad-mutually-nonlocal-pairing}
-\]
+\end{equation}
 then no symplectic change of basis can make both charges purely electric.
 Consequently a neighborhood in which both central charges vanish cannot be
 described as a weakly coupled Abelian vector multiplet coupled only to
@@ -996,13 +996,13 @@ polarization.
 \label{prop:ad-cusp-scaling-dimensions}
 For the local model \eqref{eq:ad-a1-a2-local-curve} with differential
 \eqref{eq:ad-local-differential}, the scaling dimensions are
-\[
+\begin{equation}
   [x]=\frac25,\qquad
   [y]=\frac35,\qquad
   [u]=\frac65,\qquad
   [v]=\frac45 .
   \label{eq:ad-cusp-scaling-dimensions}
-\]
+\end{equation}
 Thus the Coulomb-branch operator has dimension \(6/5\), and the unfolding
 parameter \(v\) has dimension \(4/5\).
 \end{proposition}
@@ -1046,19 +1046,19 @@ chiral multiplets of opposite dual electric charge.  Let \(U(A_D)\) denote the
 chiral coordinate whose lowest component is the Coulomb-branch coordinate
 \(u\) expressed in the local dual frame.  Add a small
 \(\mathcal N=1\)-preserving deformation
-\[
+\begin{equation}
   W_{\mathrm{def}}=\mu\,U(A_D),
   \qquad
   \mu\in\mathbb C,\qquad |\mu|\ll |\Lambda|,
   \label{eq:sw-small-mass-deformation}
-\]
+\end{equation}
 so that the local superpotential is
-\[
+\begin{equation}
   W_{\mathrm{loc},\mu}
   =
   \sqrt2\,A_D M\widetilde M+\mu\,U(A_D).
   \label{eq:sw-local-superpotential-with-mass}
-\]
+\end{equation}
 The smallness assumption keeps the analysis inside the Abelian neighborhood
 where the monopole hypermultiplet is the only additional light charged
 field.
@@ -1068,17 +1068,17 @@ field.
 Assume \(U'(0)\neq0\) at the monopole point \(A_D=0\), and work on the local
 patch described by \eqref{eq:sw-local-superpotential-with-mass}.  The
 \(F\)-term equations have a branch
-\[
+\begin{equation}
   A_D=0,\qquad
   M\widetilde M=-\frac{\mu}{\sqrt2}\,U'(0).
   \label{eq:sw-monopole-condensate-local}
-\]
+\end{equation}
 When the \(U(1)_D\) \(D\)-term equation is imposed with vanishing real
 Fayet--Iliopoulos parameter,
-\[
+\begin{equation}
   |M|^2-|\widetilde M|^2=0,
   \label{eq:sw-local-d-term}
-\]
+\end{equation}
 the dual gauge group is Higgsed for \(\mu U'(0)\neq0\).
 \end{proposition}
 
@@ -1122,10 +1122,10 @@ consists of:
   coupling \(e_D\);
 \item monopole fields \(M,\widetilde M\) of dual charges \(+1\) and \(-1\);
 \item the complex parameter
-  \[
+  \begin{equation}
     \xi_{\mathbb C}=-\frac{\mu}{\sqrt2}\,U'(0),
     \label{eq:sw-complex-fi-parameter}
-  \]
+  \end{equation}
   defined by the local \(F\)-term equation \(M\widetilde M=\xi_{\mathbb C}\);
 \item a flux sector \(n\in\mathbb Z\) with
   \[
@@ -1145,25 +1145,25 @@ fixed flux sector.
 If the local theory is approximated by an \(\mathcal N=2\) Abelian Higgs model
 with Fayet--Iliopoulos triplet of magnitude
 \(|\xi|=|\xi_{\mathbb C}|\) in the normalization
-\[
+\begin{equation}
   \mathcal E
   =
   \frac{1}{2e_D^2}B_D^2+|D_1q|^2+|D_2q|^2
   +\frac{e_D^2}{2}(|q|^2-|\xi|)^2 ,
   \label{eq:sw-local-abelian-higgs-energy}
-\]
+\end{equation}
 then a vortex of flux \(2\pi n\) obeys
-\[
+\begin{equation}
   T_n\ge 2\pi |n|\,|\xi|,
   \label{eq:sw-local-vortex-bound}
-\]
+\end{equation}
 and saturation is equivalent to the first-order vortex equations
-\[
+\begin{equation}
   (D_1+\ii\,\operatorname{sgn}(n)D_2)q=0,
   \qquad
   B_D=\operatorname{sgn}(n)e_D^2(|\xi|-|q|^2).
   \label{eq:sw-local-vortex-equations}
-\]
+\end{equation}
 \end{controlledapproximation}
 
 \begin{proof}

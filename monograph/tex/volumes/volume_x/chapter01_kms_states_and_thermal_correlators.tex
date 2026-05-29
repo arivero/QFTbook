@@ -51,13 +51,13 @@ dense, \(\alpha_t\)-invariant, and consists of entire analytic elements.
 \label{lem:kms-gaussian-analytic-elements}
 Let \((\Obs,\alpha)\) be a \(C^\ast\)-dynamical system.  For
 \(A\in\Obs\) and \(n>0\), define
-\[
+\begin{equation}
   A_n
   =
   \sqrt{\frac{n}{\pi}}
   \int_{\mathbb R}\dd t\,\ee^{-nt^2}\alpha_t(A),
   \label{eq:kms-gaussian-analytic-smearing}
-\]
+\end{equation}
 where the integral is the Bochner integral in the norm of \(\Obs\).  Then
 \(A_n\) is entire analytic and \(A_n\to A\) in norm as \(n\to\infty\).  Hence
 entire analytic elements form a norm-dense \(\ast\)-subalgebra.
@@ -117,12 +117,12 @@ on the open strip
   S_\beta=\{z\in\mathbb C:0<\operatorname{Im}z<\beta\},
 \]
 continuous and bounded on the closed strip, and satisfies
-\[
+\begin{equation}
   F_{A,B}(t)=\omega\!\left(A\alpha_t(B)\right),
   \qquad
   F_{A,B}(t+\ii\beta)=\omega\!\left(\alpha_t(B)A\right)
   \label{eq:volume-x-kms-boundary-condition}
-\]
+\end{equation}
 for all \(t\in\mathbb R\).  The analytic core may be replaced by any
 norm-dense analytic core; the resulting condition extends by continuity to
 the usual KMS condition on \(\Obs\).
@@ -164,20 +164,20 @@ moving \(B\) past the thermal state.}
 Let \(\Hilb\) be finite dimensional, let \(H=H^\ast\), and let
 \(\alpha_t(A)=\ee^{\ii Ht}A\ee^{-\ii Ht}\) on
 \(\Obs=\operatorname{End}(\Hilb)\).  For
-\[
+\begin{equation}
   \omega_\beta(A)
   =
   \frac{\operatorname{Tr}(\ee^{-\beta H}A)}
        {\operatorname{Tr}(\ee^{-\beta H})},
   \label{eq:finite-gibbs-state}
-\]
+\end{equation}
 \(\omega_\beta\) is a \(\beta\)-KMS state.
 \end{proposition}
 
 \begin{proof}
 Choose an orthonormal eigenbasis \(H\ket m=E_m\ket m\), and write
 \(A_{mn}=\bra mA\ket n\), \(B_{mn}=\bra mB\ket n\).  The function
-\[
+\begin{equation}
   F_{A,B}(z)
   =
   \frac{1}{Z_\beta}
@@ -188,7 +188,7 @@ Choose an orthonormal eigenbasis \(H\ket m=E_m\ket m\), and write
   \qquad
   Z_\beta=\sum_m\ee^{-\beta E_m},
   \label{eq:finite-kms-strip-function}
-\]
+\end{equation}
 is entire because the sum is finite.  At \(z=t\) it equals
 \(\omega_\beta(A\alpha_t(B))\).  At \(z=t+\ii\beta\),
 \[
@@ -231,37 +231,37 @@ mixed without declaring which automorphism defines equilibrium.
 \section{Spectral Form of Detailed Balance}
 
 In this section the Fourier transform of a tempered distribution \(G(t)\) is
-\[
+\begin{equation}
   \widetilde G(\omega)
   =
   \int_{\mathbb R}\dd t\,\ee^{\ii\omega t}G(t).
   \label{eq:thermal-fourier-convention}
-\]
+\end{equation}
 With this convention, positive \(\omega\) is the energy absorbed by the
 operator insertion in the finite-volume spectral formulas below.
 
 Let \(A,B\) be observables whose time-dependent correlation functions have
 tempered boundary values.  Define
-\[
+\begin{equation}
   G_{AB}^{>}(t)=\omega(A(t)B),
   \qquad
   G_{AB}^{<}(t)=\omega(BA(t)),
   \qquad
   A(t)=\alpha_t(A).
   \label{eq:thermal-greater-lesser-definitions}
-\]
+\end{equation}
 The KMS condition implies, in the distributional boundary-value sense,
-\[
+\begin{equation}
   G_{AB}^{>}(t-\ii\beta)=G_{AB}^{<}(t),
   \label{eq:kms-greater-lesser-boundary}
-\]
+\end{equation}
 or equivalently the frequency-space detailed-balance relation
-\[
+\begin{equation}
   \widetilde G_{AB}^{<}(\omega)
   =
   \ee^{-\beta\omega}\widetilde G_{AB}^{>}(\omega).
   \label{eq:kms-detailed-balance}
-\]
+\end{equation}
 
 \begin{proposition}[Finite-volume spectral detailed balance]
 \label{prop:finite-volume-spectral-detailed-balance}
@@ -282,7 +282,7 @@ Using the same eigenbasis as above,
   \ee^{\ii(E_m-E_n)t}.
 \]
 Therefore
-\[
+\begin{equation}
   \widetilde G_{AB}^{>}(\omega)
   =
   \frac{2\pi}{Z_\beta}
@@ -290,9 +290,9 @@ Therefore
   \ee^{-\beta E_m}A_{mn}B_{nm}
   \delta(\omega-E_n+E_m).
   \label{eq:finite-volume-greater-spectral}
-\]
+\end{equation}
 Similarly,
-\[
+\begin{equation}
   \widetilde G_{AB}^{<}(\omega)
   =
   \frac{2\pi}{Z_\beta}
@@ -300,7 +300,7 @@ Similarly,
   \ee^{-\beta E_n}A_{mn}B_{nm}
   \delta(\omega-E_n+E_m),
   \label{eq:finite-volume-lesser-spectral}
-\]
+\end{equation}
 where the second formula follows by relabeling the indices in
 \(\omega(BA(t))\).  On the support of the displayed delta function,
 \(\ee^{-\beta E_n}=\ee^{-\beta\omega}\ee^{-\beta E_m}\), proving
@@ -308,17 +308,17 @@ where the second formula follows by relabeling the indices in
 \end{proof}
 
 Define the thermal spectral distribution
-\[
+\begin{equation}
   \rho_{AB}(\omega)
   =
   \widetilde G_{AB}^{>}(\omega)
   -
   \widetilde G_{AB}^{<}(\omega).
   \label{eq:thermal-spectral-density-definition}
-\]
+\end{equation}
 When \(1-\ee^{-\beta\omega}\) is invertible as a multiplier on the relevant
 test-function class, detailed balance gives
-\[
+\begin{equation}
   \widetilde G_{AB}^{>}(\omega)
   =
   \frac{\rho_{AB}(\omega)}{1-\ee^{-\beta\omega}},
@@ -328,7 +328,7 @@ test-function class, detailed balance gives
   \frac{\ee^{-\beta\omega}\rho_{AB}(\omega)}
        {1-\ee^{-\beta\omega}} .
   \label{eq:kms-greater-lesser-from-rho}
-\]
+\end{equation}
 For conserved densities, the \(\omega=0\) sector may contain delta functions
 or derivatives of delta functions.  Those pieces have to be separated before
 dividing by \(1-\ee^{-\beta\omega}\).  This is the same mathematical issue
@@ -348,12 +348,12 @@ frequency window under consideration.  Define the symmetrized spectrum
   \right).
 \]
 Then
-\[
+\begin{equation}
   \widetilde G^{\rm sym}_{AB}(\omega)
   =
   \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}(\omega).
   \label{eq:bosonic-fluctuation-dissipation}
-\]
+\end{equation}
 This identity follows directly from detailed balance.  Insert
 \eqref{eq:kms-greater-lesser-from-rho} into the definition of
 \(\widetilde G^{\rm sym}_{AB}\):
@@ -385,18 +385,18 @@ writing Fermi factors.
 \section{Linear Response and Retarded Correlators}
 
 Let \(B(t)\) be coupled to a compactly supported real source \(f(t)\) by
-\[
+\begin{equation}
   H_f(t)=H-f(t)B(t)
   \label{eq:thermal-source-coupling}
-\]
+\end{equation}
 in a finite system, or by the corresponding time-dependent derivation on an
 analytic algebra.  In the interaction picture,
-\[
+\begin{equation}
   U_f(t,-\infty)
   =
   1+\ii\int_{-\infty}^{t}\dd s\,f(s)B(s)+O(f^2).
   \label{eq:linear-response-interaction-evolution}
-\]
+\end{equation}
 Thus
 \[
   U_f(t,-\infty)^{-1}A(t)U_f(t,-\infty)
@@ -406,7 +406,7 @@ Thus
   +O(f^2).
 \]
 Stationarity of \(\omega\) gives
-\[
+\begin{equation}
   \delta\omega(A(t))
   =
   \int_{-\infty}^{t}\dd s\,f(s)\,
@@ -416,7 +416,7 @@ Stationarity of \(\omega\) gives
   =
   -\ii\,\theta(t)\,\omega([A(t),B(0)]) .
   \label{eq:thermal-linear-response-retarded}
-\]
+\end{equation}
 The retarded distribution is causal: its support in the time variable lies in
 \(t\geq0\).  Consequently, under the usual polynomial-growth hypotheses for
 tempered distributions, its Fourier transform is the boundary value from the
@@ -446,22 +446,22 @@ upper-half-plane analyticity of \(G^R(\omega)\).}
 
 For translation-invariant thermal QFT, the retarded two-point function of
 local densities is
-\[
+\begin{equation}
   G^R_{AB}(\omega,\mathbf k)
   =
   -\ii\int_0^\infty \dd t\int \dd^{D-1}x\,
   \ee^{\ii\omega t-\ii\mathbf k\cdot\mathbf x}
   \omega([A(t,\mathbf x),B(0,\mathbf0)]) .
   \label{eq:thermal-retarded-qft-definition}
-\]
+\end{equation}
 With the Fourier convention \eqref{eq:thermal-fourier-convention}, the
 spectral function associated to \(G^R\) is
-\[
+\begin{equation}
   \rho_{AB}(\omega,\mathbf k)
   =
   -2\,\operatorname{Im}G^R_{AB}(\omega+\ii0,\mathbf k).
   \label{eq:thermal-rho-retarded-sign}
-\]
+\end{equation}
 For Hermitian \(A=B\), positivity of the finite-volume spectral weights gives
 \(\rho_{AA}(\omega,\mathbf k)\geq0\) for \(\omega>0\) before the thermodynamic
 limit.  The infinite-volume statement is obtained by distributional limits,
@@ -472,16 +472,16 @@ provided the local algebra and state have been constructed.
 Hydrodynamics begins with conserved local currents in the microscopic theory.
 Let \(T^{\mu\nu}\) be the stress tensor and let \(J_A^\mu\) be conserved
 currents for ordinary internal symmetries:
-\[
+\begin{equation}
   \partial_\mu T^{\mu\nu}=0,
   \qquad
   \partial_\mu J_A^\mu=0 .
   \label{eq:thermal-conservation-laws}
-\]
+\end{equation}
 In a homogeneous isotropic thermal state with unit future-timelike vector
 \(u^\mu\), temperature \(T=\beta^{-1}\), and chemical potentials \(\mu_A\),
 the one-point functions define thermodynamic densities by
-\[
+\begin{equation}
   \omega(T^{\mu\nu})
   =
   \varepsilon u^\mu u^\nu+p\Delta^{\mu\nu},
@@ -490,7 +490,7 @@ the one-point functions define thermodynamic densities by
   \qquad
   \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu .
   \label{eq:thermal-homogeneous-one-point-functions}
-\]
+\end{equation}
 Here \(\varepsilon\) is the energy density, \(p\) the pressure, and \(n_A\) the
 charge densities.  These are numbers attached to a homogeneous equilibrium
 state.  They become hydrodynamic fields only after one assumes a family of
@@ -501,7 +501,7 @@ controlled by slowly varying local values of
 \]
 
 The derivative expansion is a statement about constitutive relations:
-\[
+\begin{equation}
   T^{\mu\nu}
   =
   T^{\mu\nu}_{(0)}+T^{\mu\nu}_{(1)}+T^{\mu\nu}_{(2)}+\cdots,
@@ -510,7 +510,7 @@ The derivative expansion is a statement about constitutive relations:
   =
   J_{A,(0)}^\mu+J_{A,(1)}^\mu+J_{A,(2)}^\mu+\cdots,
   \label{eq:thermal-hydrodynamic-derivative-expansion}
-\]
+\end{equation}
 where the subscript records the number of derivatives acting on
 \(T,\mu_A,u^\mu\) and on background sources.  Existence of such an expansion
 requires hypotheses beyond the KMS boundary condition: it is a long-time,
@@ -529,20 +529,20 @@ charge-diffusion channel with conductivity \(\sigma\) and susceptibility
 homogeneous state gives the following small-\(|\mathbf k|\) hydrodynamic
 denominators, and therefore the corresponding retarded poles in every
 conserved-current correlator whose residue on the mode is nonzero:
-\[
+\begin{equation}
   \omega_{\rm shear}(\mathbf k)
   =
   -\,\ii\,\frac{\eta_{\rm sh}}{w}\,\mathbf k^2+O(|\mathbf k|^4),
   \label{eq:kms-shear-pole}
-\]
-\[
+\end{equation}
+\begin{equation}
   \omega_{\rm charge}(\mathbf k)
   =
   -\,\ii\,\frac{\sigma}{\chi}\,\mathbf k^2+O(|\mathbf k|^4),
   \label{eq:kms-charge-diffusion-pole}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \omega_{\rm sound}^{\pm}(\mathbf k)
   =
   \pm c_s|\mathbf k|
@@ -551,7 +551,7 @@ and
   \mathbf k^2
   +O(|\mathbf k|^3).
   \label{eq:kms-sound-poles}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -649,7 +649,7 @@ charge-conductivity data.  In the shear channel, couple a metric perturbation
   \]
 with the factor \(1/2\) inherited from the metric coupling
 \(\frac12\int T^{ij}h_{ij}\).  Comparing with the constitutive relation fixes
-\[
+\begin{equation}
   \eta_{\rm sh}
   =
   \lim_{\omega\downarrow0}
@@ -658,7 +658,7 @@ with the factor \(1/2\) inherited from the metric coupling
   -\lim_{\omega\downarrow0}
   \frac{\operatorname{Im}G^R_{T^{xy}T^{xy}}(\omega,\mathbf0)}{\omega}.
   \label{eq:thermal-shear-kubo}
-\]
+\end{equation}
 This is a definition of the transport coefficient in terms of QFT correlators
 once the zero-frequency limit exists.  Later chapters derive the
 constitutive relations, entropy-current constraints, Schwinger--Keldysh

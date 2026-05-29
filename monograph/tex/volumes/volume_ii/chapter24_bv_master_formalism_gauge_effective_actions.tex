@@ -94,7 +94,7 @@ For a local functional
 \]
 the left Euler--Lagrange derivative is the coefficient of
 \(\delta\Phi^A\) after moving derivatives off the variation:
-\[
+\begin{equation}
   \frac{\delta^L F}{\delta\Phi^A}
   =
   \sum_{|\alpha|\leq r}
@@ -102,7 +102,7 @@ the left Euler--Lagrange derivative is the coefficient of
   \frac{\partial^L f}
        {\partial(\partial_\alpha\Phi^A)} .
   \label{eq:bv-euler-operator}
-\]
+\end{equation}
 Here \(\alpha\) is a multi-index and
 \((-\partial)_\alpha=(-1)^{|\alpha|}\partial_\alpha\).  Boundary conditions or
 compact support are part of the definition whenever the integration by parts
@@ -823,12 +823,12 @@ A finite-dimensional quantum BV regulator contains, in addition to
   \Delta_{1/2}\sigma_0=0 .
 \]
 For normal half-density data, the BV Laplacian on functions is the divergence operator
-\[
+\begin{equation}
   \Delta_{\sigma_0}F
   :=
   \sigma_0^{-1}\Delta_{1/2}(F\sigma_0).
   \label{eq:function-bv-laplacian-from-half-density}
-\]
+\end{equation}
 In a Darboux chart in which \(\sigma_0=|D\Phi\,D\Phi^*|^{1/2}\), this becomes
 \begin{equation}
   \Delta_{\sigma_0}
@@ -862,10 +862,10 @@ Berezin density \(\iota_L^*\sigma\) on \(L\).  In a Darboux chart adapted to
 \]
 If \(\eta\) is a compactly supported half-density, or if the chosen
 integration cycle has boundary behavior that kills total derivatives, then
-\[
+\begin{equation}
   \int_L \iota_L^*(\Delta_{1/2}\eta)=0 .
   \label{eq:bv-stokes-half-density}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -956,14 +956,14 @@ This identity follows by applying
 \eqref{eq:bv-laplacian} to the product \(FG\) and collecting the two
 terms in which one derivative hits each factor.  Since \(S\) is even,
 induction using \eqref{eq:bv-laplacian-second-order-identity} gives
-\[
+\begin{equation}
   \Delta_{\sigma_0}S^n
   =
   nS^{n-1}\Delta_{\sigma_0}S
   +
   \frac{n(n-1)}{2}S^{n-2}(S,S).
   \label{eq:bv-laplacian-power-even-action}
-\]
+\end{equation}
 Expanding the exponential and summing the power series yields
 \[
   \Delta_{\sigma_0}\ee^{\ii S/\hbar}

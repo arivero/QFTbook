@@ -186,15 +186,15 @@ The sums are finite on each pair \(a,b\) by lower truncation.  Let
 \begin{definition}[Zhu algebra]
 \label{def:zhu-algebra}
 The Zhu algebra of a VOA \(V\) is the quotient vector space
-\[
+\begin{equation}
   A(V)=V/O(V)
   \label{eq:zhu-algebra-quotient}
-\]
+\end{equation}
 with product
-\[
+\begin{equation}
   [a]\,[b]:=[a*b].
   \label{eq:zhu-product-on-classes}
-\]
+\end{equation}
 The formal identities below imply that this product is independent of the
 chosen representatives and is associative; they are the same component-Jacobi
 residue identities used in Proposition~\ref{prop:zhu-top-level-action}.  We
@@ -214,32 +214,32 @@ weight \(h_M\), so that
   M=\bigoplus_{n\ge0}M_{h_M+n}.
 \]
 For a homogeneous \(a\in V\), set
-\[
+\begin{equation}
   o_M(a):=a_{\Delta_a-1}\big|_{M_{h_M}} .
   \label{eq:zhu-zero-mode-action}
-\]
+\end{equation}
 Then \(o_M(a\circ b)=0\) on \(M_{h_M}\), and
-\[
+\begin{equation}
   o_M(a*b)=o_M(a)o_M(b).
   \label{eq:zhu-top-product}
-\]
+\end{equation}
 Thus \(M_{h_M}\) is an \(A(V)\)-module.
 \end{proposition}
 
 \begin{proof}
 The mode \(a_n\) sends an \(L_0\)-eigenvector of weight \(\lambda\) to weight
-\[
+\begin{equation}
   \lambda+\Delta_a-n-1.
   \label{eq:voa-mode-weight-shift}
-\]
+\end{equation}
 Thus every lowest-weight vector \(v\in M_{h_M}\) is killed by \(u_n\) whenever
 \(u\) is homogeneous and \(n>\Delta_u-1\).  Equivalently,
-\[
+\begin{equation}
   M_{h_M}\subset
   \Omega(M):=\{v\in M\mid u_n v=0
   \text{ for all homogeneous }u\in V,\ n>\Delta_u-1\}.
   \label{eq:zhu-omega-subspace}
-\]
+\end{equation}
 The remaining step is a finite component calculation from the module Jacobi
 identity.  In mode form, that identity says
 \begin{align}
@@ -260,11 +260,11 @@ vanishes for \(v\in M_{h_M}\).  Substituting \(n=j-1\) and summing with the
 coefficients in \eqref{eq:zhu-star-product} leaves exactly the term
 \(a_{\Delta_a-1}b_{\Delta_b-1}v\); the remaining terms again contain a mode
 killing \(\Omega(M)\).  Therefore
-\[
+\begin{equation}
   o_M(a\circ b)v=0,\qquad
   o_M(a*b)v=o_M(a)o_M(b)v
   \label{eq:zhu-top-level-identities}
-\]
+\end{equation}
 for every \(v\in M_{h_M}\).  This proves that \(O(V)\) is in the kernel of
 the top-level action and that the induced action is multiplicative.
 \end{proof}
@@ -305,13 +305,13 @@ weights
   0,\qquad \frac1{16},\qquad \frac12 .
 \]
 Equivalently, the semisimple Zhu algebra is the quotient
-\[
+\begin{equation}
   A(L(1/2,0))
   \cong
   \mathbb C[x]\Big/
   \left(x\left(x-\frac1{16}\right)\left(x-\frac12\right)\right),
   \label{eq:ising-zhu-polynomial}
-\]
+\end{equation}
 where \(x\) acts as \(L_0\) on the top level.  The idempotents of this
 three-dimensional algebra are the Lagrange polynomials
 \begin{align}
@@ -427,10 +427,10 @@ for integers
   1\le r\le m-1,\qquad 1\le s\le m.
 \]
 The identification
-\[
+\begin{equation}
   h_{r,s}^{(m)}=h_{m-r,m+1-s}^{(m)}
   \label{eq:kac-table-identification}
-\]
+\end{equation}
 leaves \(m(m-1)/2\) distinct irreducible modules.  The rational unitary
 Virasoro minimal model \(\mathcal M(m,m+1)\) has precisely these simple
 chiral modules.
@@ -548,34 +548,34 @@ Put
 \]
 Then \(S^{(k)}_{ax}=S^{(k)}_{0x}\chi_a(\theta_x)\), and the Verlinde
 coefficient is the finite inner product
-\[
+\begin{equation}
   n^{(k)}_{ab}{}^c
   =
   \sum_{x=0}^k
   \bigl(S^{(k)}_{0x}\bigr)^2\,
   \chi_a(\theta_x)\chi_b(\theta_x)\chi_c(\theta_x).
   \label{eq:su2-finite-character-inner-product}
-\]
+\end{equation}
 The ordinary \(SU(2)\) character identity gives
-\[
+\begin{equation}
   \chi_a\chi_b
   =
   \sum_{\substack{|a-b|\le d\le a+b\\ a+b+d\ {\rm even}}}\chi_d .
   \label{eq:ordinary-su2-character-product}
-\]
+\end{equation}
 On the finite grid \(\theta_x\) there are the affine-wall relations
-\[
+\begin{equation}
   \chi_{k+1}(\theta_x)=0,\qquad
   \chi_{k+1+r}(\theta_x)=-\chi_{k+1-r}(\theta_x)
   \quad (r\ge1),
   \label{eq:su2-affine-wall-character-relation}
-\]
+\end{equation}
 which follow from \((k+2)\theta_x=\pi(x+1)\).  Substituting
 \eqref{eq:ordinary-su2-character-product} in
 \eqref{eq:su2-finite-character-inner-product}, reducing all terms by
 \eqref{eq:su2-affine-wall-character-relation}, and using finite
 orthogonality gives
-\[
+\begin{equation}
   n^{(k)}_{ab}{}^c
   =
   \begin{cases}
@@ -583,7 +583,7 @@ orthogonality gives
   0,& \text{otherwise}.
   \end{cases}
   \label{eq:su2k-fusion-from-finite-grid}
-\]
+\end{equation}
 Indeed, if \(a+b\le k\) no wall term occurs and this is the ordinary
 \(SU(2)\) tensor-product interval.  If \(a+b>k\), the reflected terms across
 the wall \(k+1\) cancel exactly the labels \(c>2k-a-b\), leaving the truncated
@@ -1283,12 +1283,12 @@ category.
 \label{thm:verlinde-from-modular-diagonalization}
 Assume the fusion matrices are simultaneously diagonalized by a unitary
 matrix \(S\) with \(S_{0m}\ne0\):
-\[
+\begin{equation}
   (N_i S)_{jm}
   =
   \frac{S_{im}}{S_{0m}}S_{jm}.
   \label{eq:fusion-diagonalization-by-s}
-\]
+\end{equation}
 Then
 \begin{equation}
   N_{ij}{}^k
@@ -1592,10 +1592,10 @@ one constructs a torus partition function from left and right characters:
 \end{equation}
 The matrix \(M\) must have nonnegative integer entries, \(M_{00}=1\), and must
 commute with the modular representation:
-\[
+\begin{equation}
   MS=SM,\qquad MT=TM .
   \label{eq:modular-invariant-matrix}
-\]
+\end{equation}
 These are genus-one sewing constraints.  Higher-genus sewing imposes further
 compatibility between \(M\), chiral blocks, duality moves, and the pairing of
 left and right chiral sectors.
@@ -1615,12 +1615,12 @@ with \(M_{\mathbf 1\mathbf 1}=1\).  If \(M\) satisfies
 \eqref{eq:ising-modular-s} and \eqref{eq:ising-modular-t}, then \(M=I_3\).
 Thus the only genus-one modular invariant with one vacuum in this chiral
 Ising label set is the diagonal invariant
-\[
+\begin{equation}
   Z_{\rm Ising}(\tau,\bar\tau)
   =
   |\chi_{\mathbf 1}|^2+|\chi_\sigma|^2+|\chi_\varepsilon|^2 .
   \label{eq:ising-diagonal-torus-partition-function}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1698,13 +1698,13 @@ simple modules \(M_i\).  For each homogeneous \(v\in V\), the finite vector
 \((F_i(v;\tau))_i\) spans a representation of \(SL_2(\mathbb Z)\).  If \(v\)
 is Virasoro primary of weight \(h_v\), then for
 \(\gamma=\begin{psmallmatrix}a&b\\ c&d\end{psmallmatrix}\)
-\[
+\begin{equation}
   F_i\!\left(v;\frac{a\tau+b}{c\tau+d}\right)
   =
   (c\tau+d)^{h_v}
   \sum_j \rho_v(\gamma)_{ij}F_j(v;\tau).
   \label{eq:zhu-one-point-modular-covariance}
-\]
+\end{equation}
 For \(v=\mathbf 1\), \(\rho_v\) is the character modular representation
 used above.
 \end{quotedtheorem}
@@ -1746,10 +1746,10 @@ The denominator is nonzero in a unitary modular tensor category because
 \begin{proposition}[Verlinde defect fusion and modular covariance]
 \label{prop:verlinde-defect-fusion-modular-covariance}
 For the diagonal rational full CFT above,
-\[
+\begin{equation}
   D_aD_b=\sum_c N_{ab}{}^cD_c .
   \label{eq:verlinde-defect-fusion}
-\]
+\end{equation}
 Moreover, the torus trace with \(D_a\) wrapping the Euclidean-time cycle is
 \begin{equation}
   Z_a^{\rm time}(\tau,\bar\tau)
@@ -2010,12 +2010,12 @@ following data.
   generated by all \(\Phi_{BA}(r,\theta)\) and by the action of the two
   Virasoro algebras.  The representation of the commuting spectral observables
   used to label intermediate sectors is represented as a direct integral
-  \[
+  \begin{equation}
     \mathcal H_{BA}
     \simeq
     \int_{X_{BA}}^{\oplus}\mathcal K_x\,\dd\mu_{BA}(x),
     \label{eq:direct-integral-ba}
-  \]
+  \end{equation}
   where \(X_{BA}\) is a standard Borel space, \(\mu_{BA}\) is a positive
   measure, and \(x\mapsto\mathcal K_x\) is a measurable field of Hilbert
   spaces carrying the descendant and multiplicity degrees of freedom.
@@ -2111,32 +2111,32 @@ For fixed ordered external fields \(A,B,C,D\), let
 be the direct-integral Hilbert spaces obtained from the \(s\)-channel
 radial grouping \((BA)(DC)\) and the \(t\)-channel grouping \((CB)(DA)\).
 A measurable fusing transform is a unitary operator
-\[
+\begin{equation}
   \mathbb F_{st}:
   \int_{X_s}^{\oplus}\mathcal K_x^{(s)}\,\dd\mu_s(x)
   \longrightarrow
   \int_{X_t}^{\oplus}\mathcal K_y^{(t)}\,\dd\mu_t(y)
   \label{eq:measurable-fusing-transform}
-\]
+\end{equation}
 which intertwines the two analytic continuations of the same chiral
 four-point block from the \(s\)- and \(t\)-channel radial domains.  When the
 fibers are finite-dimensional and a measurable basis has been chosen, this
 operator is represented by a kernel
-\[
+\begin{equation}
   (\mathbb F_{st} f)(y)
   =
   \int_{X_s}
   F_{st}(y,x)f(x)\,\dd\mu_s(x),
   \label{eq:fusing-kernel-direct-integral}
-\]
+\end{equation}
 understood as an equality in the direct-integral Hilbert space, with the
 unitarity condition
-\[
+\begin{equation}
   \int_{X_t} F_{st}(y,x)^\dagger F_{st}(y,x')\,\dd\mu_t(y)
   =
   \delta_{\mu_s}(x,x')\,\mathbf 1
   \label{eq:fusing-kernel-unitarity}
-\]
+\end{equation}
 in distributional notation.
 \end{definition}
 
@@ -2146,10 +2146,10 @@ Let \(v_s,w_s\) be the two \(s\)-channel square-integrable coefficient fields
 whose inner product gives the four-point function in an \(s\)-channel radial
 domain, and let \(v_t,w_t\) be the corresponding \(t\)-channel coefficient
 fields.  If
-\[
+\begin{equation}
   v_t=\mathbb F_{st}v_s,\qquad w_t=\mathbb F_{st}w_s,
   \label{eq:coefficient-fields-fusing-transform}
-\]
+\end{equation}
 then unitarity of the fusing transform gives
 \begin{equation}
   \int_{X_s}

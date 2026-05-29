@@ -27,13 +27,13 @@ coordinates.  A nonzero covector \(k\in T_x^*X\) is a regular direction for
 \(u\) if there exist \(\chi\in C_c^\infty(U)\), \(\chi(x)\ne0\), and an open
 conic neighborhood \(\Gamma\subset\mathbb R^D\setminus\{0\}\) of the
 coordinate representative of \(k\) such that, for every \(N\),
-\[
+\begin{equation}
   |\widehat{\chi u}(\xi)|
   \leq C_N(1+|\xi|)^{-N},
   \qquad
   \xi\in\Gamma .
   \label{eq:microlocal-rapid-decay-direction}
-\]
+\end{equation}
 The wavefront set \(\operatorname{WF}(u)\) is the complement, in
 \(T^*X\setminus0\), of the regular directions.
 \end{definition}
@@ -48,15 +48,15 @@ closed conic subset of \(T^*X\setminus0\).
 \begin{theorem}[Product criterion for distributions]
 \label{thm:microlocal-product-criterion}
 Let \(u,v\in\mathcal D'(X)\).  Suppose that there is no
-\[
+\begin{equation}
   (x,k)\in\operatorname{WF}(u)
   \quad\hbox{and}\quad
   (x,-k)\in\operatorname{WF}(v).
   \label{eq:microlocal-no-opposite-covectors}
-\]
+\end{equation}
 Then the pointwise product \(uv\) has a unique distributional extension
 which agrees with the ordinary product when one factor is smooth.  Moreover
-\[
+\begin{equation}
 \begin{aligned}
   \operatorname{WF}(uv)
   \subset&
@@ -66,7 +66,7 @@ which agrees with the ordinary product when one factor is smooth.  Moreover
         (x,\ell)\in\operatorname{WF}(v),\ k+\ell\ne0\}.
 \end{aligned}
   \label{eq:microlocal-product-wavefront-bound}
-\]
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -74,12 +74,12 @@ The statement is local, so work in one coordinate chart and multiply by a
 cutoff equal to \(1\) near the point.  If \(u\) and \(v\) are compactly
 supported distributions, the formal Fourier transform of the product is the
 convolution
-\[
+\begin{equation}
   \widehat{uv}(\xi)
   =
   (2\pi)^{-D}\int \widehat u(\eta)\widehat v(\xi-\eta)\,\dd\eta .
   \label{eq:microlocal-product-convolution}
-\]
+\end{equation}
 The obstruction to defining this integral distributionally at large
 \(|\eta|\) is simultaneous non-decay of \(\widehat u(\eta)\) and
 \(\widehat v(\xi-\eta)\).  As \(|\eta|\to\infty\), the second direction is
@@ -113,10 +113,10 @@ time-ordered products require subtraction before coincident points are taken.
 
 Let \(M\) be a globally hyperbolic Lorentzian spacetime and let \(\phi\) be a
 real scalar field satisfying
-\[
+\begin{equation}
   P_M\phi=0,\qquad P_M=-\nabla^\mu\nabla_\mu+m^2+\xi R[g] .
   \label{eq:microlocal-kg-operator}
-\]
+\end{equation}
 A quasifree state is determined by its two-point function
 \[
   \omega_2(x,y)=\omega(\phi(x)\phi(y)).
@@ -170,7 +170,7 @@ belongs to \(\Gamma_n(M)\) if there is a finite directed graph with vertex
 set \(\{1,\ldots,n\}\) such that each edge \(e:i\to j\) is assigned a
 future-directed causal covector field \(p_e\) parallel transported along a
 future-directed causal curve from \(x_i\) to \(x_j\), and
-\[
+\begin{equation}
   k_i
   =
   \sum_{e:i\to j}p_e(x_i)
@@ -178,7 +178,7 @@ future-directed causal curve from \(x_i\) to \(x_j\), and
   \sum_{e:j\to i}p_e(x_i)
   \qquad (i=1,\ldots,n).
   \label{eq:microlocal-spectrum-graph-balance}
-\]
+\end{equation}
 The empty graph gives the zero tuple, which is omitted from
 \(T^*M^n\setminus0\).
 \end{definition}
@@ -193,10 +193,10 @@ spectrum condition when all \(n\)-point distributions
   \omega(\phi(f_1)\cdots\phi(f_n))
 \]
 obey
-\[
+\begin{equation}
   \operatorname{WF}(\omega_n)\subset\Gamma_n(M).
   \label{eq:microlocal-spectrum-condition-all-n}
-\]
+\end{equation}
 \end{definition}
 
 For \(n=2\), a graph with one edge \(1\to2\) gives
@@ -224,33 +224,33 @@ joined by a unique geodesic lying in \(\mathcal U\).
 Let \(\sigma(x,y)\) be Synge's world function, one half of the signed squared
 geodesic distance from \(y\) to \(x\).  Choose a smooth time function \(T\) on
 \(\mathcal U\) and set
-\[
+\begin{equation}
   \sigma_\epsilon(x,y)
   =
   \sigma(x,y)+\ii\epsilon(T(x)-T(y))+\epsilon^2,
   \qquad \epsilon>0 .
   \label{eq:microlocal-sigma-epsilon}
-\]
+\end{equation}
 All formulas involving negative powers or logarithms of \(\sigma_\epsilon\)
 are understood as distributional boundary values as \(\epsilon\downarrow0\).
 \end{definition}
 
 The basic coincidence identities are
-\[
+\begin{equation}
   \sigma^{;\mu}\sigma_{;\mu}=2\sigma,\qquad
   [\sigma]=0,\qquad
   [\sigma_{;\mu}]=0,\qquad
   [\sigma_{;\mu\nu}]=g_{\mu\nu},\qquad
   [\Box_g\sigma]=4 ,
   \label{eq:microlocal-synge-coincidence}
-\]
+\end{equation}
 where brackets denote the coincidence limit \(y\to x\).  The dimension four
 enters only through the last identity.
 
 \begin{definition}[Van Vleck determinant]
 \label{def:microlocal-van-vleck}
 The van Vleck determinant is the biscalar density ratio
-\[
+\begin{equation}
   \Delta(x,y)
   =
   \frac{
@@ -259,7 +259,7 @@ The van Vleck determinant is the biscalar density ratio
   |g(x)|^{1/2}|g(y)|^{1/2}
   },
   \label{eq:microlocal-van-vleck}
-\]
+\end{equation}
 written in any pair of local coordinates and interpreted invariantly by the
 density factors.  It satisfies \(\Delta(x,x)=1\).
 \end{definition}
@@ -268,34 +268,34 @@ density factors.  It satisfies \(\Delta(x,x)=1\).
 \label{prop:microlocal-u-transport}
 The coefficient multiplying \(\sigma_\epsilon^{-1}\) in the four-dimensional
 Hadamard parametrix is
-\[
+\begin{equation}
   U(x,y)=\Delta(x,y)^{1/2}.
   \label{eq:microlocal-u-delta}
-\]
+\end{equation}
 Equivalently, \(U\) is the unique smooth biscalar along each geodesic from
 \(y\) to \(x\) satisfying
-\[
+\begin{equation}
   2\sigma^{;\mu}\nabla_\mu U+(\Box_g\sigma-4)U=0,
   \qquad U(x,x)=1 .
   \label{eq:microlocal-u-transport}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 For a smooth biscalar \(U\), use
 \(\sigma^{;\mu}\sigma_{;\mu}=2\sigma\) to compute
-\[
+\begin{equation}
   \Box_g(\sigma^{-1})=(4-\Box_g\sigma)\sigma^{-2}.
   \label{eq:microlocal-box-sigma-inverse}
-\]
+\end{equation}
 Since \(P_M=-\Box_g+m^2+\xi R[g]\), the \(\sigma^{-2}\) term in
 \(P_{M,x}(U/\sigma)\) is
-\[
+\begin{equation}
   \frac{
   2\sigma^{;\mu}\nabla_\mu U+(\Box_g\sigma-4)U
   }{\sigma^2}.
   \label{eq:microlocal-u-singular-coefficient}
-\]
+\end{equation}
 The zeroth-order term \(m^2+\xi R[g]\) contributes only order
 \(\sigma^{-1}\).  Therefore the most singular coefficient vanishes exactly
 when \eqref{eq:microlocal-u-transport} holds.
@@ -304,12 +304,12 @@ It remains to identify the solution.  Along the geodesic parameterized by
 \(s\), the operator \(\sigma^{;\mu}\nabla_\mu\) is the radial derivative
 weighted by squared geodesic distance.  The Jacobi-field equation for the
 geodesic exponential map gives
-\[
+\begin{equation}
   \sigma^{;\mu}\nabla_\mu\log\Delta
   =
   4-\Box_g\sigma .
   \label{eq:microlocal-delta-transport}
-\]
+\end{equation}
 Taking one half of this equation gives
 \eqref{eq:microlocal-u-transport} for \(U=\Delta^{1/2}\), and the coincidence
 normalization follows from the normal-coordinate expansion of the exponential
@@ -320,12 +320,12 @@ along the geodesic.
 \begin{definition}[Hadamard parametrix in four dimensions]
 \label{def:microlocal-hadamard-parametrix}
 Let
-\[
+\begin{equation}
   V(x,y)\sim\sum_{j\geq0}v_j(x,y)\sigma(x,y)^j
   \label{eq:microlocal-v-expansion}
-\]
+\end{equation}
 be a formal expansion by smooth biscalars.  The local Hadamard parametrix is
-\[
+\begin{equation}
   H_{\epsilon,\ell}(x,y)
   =
   \frac1{8\pi^2}
@@ -336,7 +336,7 @@ be a formal expansion by smooth biscalars.  The local Hadamard parametrix is
   \right],
   \qquad \ell>0,
   \label{eq:microlocal-hadamard-parametrix}
-\]
+\end{equation}
 where \(U\) is fixed by Proposition~\ref{prop:microlocal-u-transport} and the
 jet of \(V\) at the diagonal is fixed by the recursion below.
 \end{definition}
@@ -345,34 +345,34 @@ jet of \(V\) at the diagonal is fixed by the recursion below.
 \label{thm:microlocal-hadamard-recursion}
 With \(P_M\) as in \eqref{eq:microlocal-kg-operator}, the logarithmic
 coefficient is determined recursively by
-\[
+\begin{equation}
   \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma-2\bigr)v_0
   =
   P_{M,x}U ,
   \label{eq:microlocal-v0-transport}
-\]
+\end{equation}
 and, for \(j\geq0\),
-\[
+\begin{equation}
   \bigl(2\sigma^{;\mu}\nabla_\mu+\Box_g\sigma+2j\bigr)v_{j+1}
   =
   \frac1{j+1}P_{M,x}v_j .
   \label{eq:microlocal-vj-transport}
-\]
+\end{equation}
 At coincidence,
-\[
+\begin{equation}
   v_0(x,x)
   =
   \frac12\left(m^2+\left(\xi-\frac16\right)R[g](x)\right),
   \label{eq:microlocal-v0-coincidence}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   v_{j+1}(x,x)
   =
   \frac{1}{2(j+1)(j+2)}
   \left.P_{M,x}v_j(x,y)\right|_{y=x}.
   \label{eq:microlocal-vj-coincidence}
-\]
+\end{equation}
 For every finite \(N\), the partial parametrix built from
 \(\sum_{j=0}^{N}v_j\sigma^j\) satisfies \(P_{M,x}H_{\epsilon,\ell}^{[N]}\)
 smooth up to the order fixed by the omitted coefficient; a smooth \(V\) with
@@ -383,7 +383,7 @@ representative changes \(H_{\epsilon,\ell}\) only by a smooth biscalar.
 \begin{proof}
 The calculation is performed for \(x\neq y\) before the boundary value is
 taken.  Put \(s=\sigma(x,y)\).  For a smooth biscalar \(v\),
-\[
+\begin{equation}
   P_{M,x}(v\log s)
   =
   (P_{M,x}v)\log s
@@ -392,7 +392,7 @@ taken.  Put \(s=\sigma(x,y)\).  For a smooth biscalar \(v\),
   2\sigma^{;\mu}\nabla_\mu v+(\Box_g\sigma-2)v
   }{s}.
   \label{eq:microlocal-p-v-log}
-\]
+\end{equation}
 Together with Proposition~\ref{prop:microlocal-u-transport}, the remaining
 \(s^{-1}\) term in \(P_{M,x}(U/s+v_0\log s)\) is canceled precisely by
 \eqref{eq:microlocal-v0-transport}.
@@ -406,22 +406,22 @@ has two contributions.  The term \(v_j s^j\) contributes
   s^jP_{M,x}v_j .
 \]
 The lower-derivative part of \(P_{M,x}(v_{j+1}s^{j+1})\) contributes
-\[
+\begin{equation}
   -(j+1)s^j
   \left(
   2\sigma^{;\mu}\nabla_\mu v_{j+1}
   +(\Box_g\sigma+2j)v_{j+1}
   \right).
   \label{eq:microlocal-log-coefficient-step}
-\]
+\end{equation}
 Vanishing of this coefficient gives
 \eqref{eq:microlocal-vj-transport}.  Taking \(y\to x\) in
 \eqref{eq:microlocal-v0-transport} and using
 \(\sigma^{;\mu}=0\), \(\Box_g\sigma=4\), \(U(x,x)=1\), and
-\[
+\begin{equation}
   \left.\Box_{g,x}U(x,y)\right|_{y=x}=\frac16R[g](x)
   \label{eq:microlocal-box-u-coincidence}
-\]
+\end{equation}
 gives \eqref{eq:microlocal-v0-coincidence}.  Taking the coincidence limit of
 \eqref{eq:microlocal-vj-transport} gives
 \eqref{eq:microlocal-vj-coincidence}.
@@ -438,17 +438,17 @@ smooth biscalar flat at the diagonal, hence by a smooth contribution to
 \label{rem:microlocal-hadamard-smooth-remainder}
 A quasifree two-point function \(\omega_2\) is locally Hadamard in
 \(\mathcal U\) precisely when
-\[
+\begin{equation}
   \omega_2(x,y)-H_{\epsilon,\ell}(x,y)
   \label{eq:microlocal-hadamard-smooth-remainder}
-\]
+\end{equation}
 extends to a smooth biscalar on \(\mathcal U\times\mathcal U\), after taking
 the distributional boundary value.  Changing \(\ell\) changes the subtraction
 by the smooth local term
-\[
+\begin{equation}
   -\frac{1}{4\pi^2}V(x,y)\log(\ell'/\ell).
   \label{eq:microlocal-hadamard-scale-change}
-\]
+\end{equation}
 \end{remark}
 
 The singular terms in \eqref{eq:microlocal-hadamard-parametrix} are fixed by
@@ -485,12 +485,12 @@ The Hamiltonian vector field on \(T^*M\) is
   \frac{\partial p}{\partial x^\mu}\frac{\partial}{\partial k_\mu}.
 \]
 Thus its integral curves satisfy
-\[
+\begin{equation}
   \dot x^\mu=2g^{\mu\nu}(x)k_\nu,
   \qquad
   \dot k_\mu=-(\partial_\mu g^{\alpha\beta})(x)k_\alpha k_\beta .
   \label{eq:microlocal-kg-hamilton-equations}
-\]
+\end{equation}
 Let \(v^\mu=\dot x^\mu\).  Then
 \[
   v^\mu=2k^{\sharp\mu},

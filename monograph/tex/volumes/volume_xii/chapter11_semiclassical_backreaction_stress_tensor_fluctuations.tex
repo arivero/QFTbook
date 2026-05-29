@@ -15,7 +15,7 @@ stress-tensor fluctuation data needed for stochastic backreaction.
 \section{Metric Variation And Curvature Convention}
 
 The curvature convention in this chapter is
-\[
+\begin{equation}
   [\nabla_\mu,\nabla_\nu]X^\rho
   =
   R^\rho{}_{\sigma\mu\nu}X^\sigma,
@@ -24,17 +24,17 @@ The curvature convention in this chapter is
   \qquad
   G_{\mu\nu}=R_{\mu\nu}-\frac12Rg_{\mu\nu}.
   \label{eq:semiclassical-curvature-convention}
-\]
+\end{equation}
 Metric variations are taken with respect to \(g^{\mu\nu}\).  For a
 renormalized source functional \(W[g]\), define the stress tensor by
-\[
+\begin{equation}
   \delta W[g]
   =
   -\frac12
   \int_M \dd\operatorname{vol}_g\,
   \langle T_{\mu\nu}^{\rm ren}\rangle_g\,\delta g^{\mu\nu}.
   \label{eq:semiclassical-stress-source-definition}
-\]
+\end{equation}
 The minus sign is the same sign that gives
 \(\delta S_{\rm matter}=-(1/2)\int T_{\mu\nu}\delta g^{\mu\nu}\) in the
 classical limit with mostly-plus metric.
@@ -44,10 +44,10 @@ classical limit with mostly-plus metric.
 Suppose \(W[g]\) is invariant under compactly supported diffeomorphisms and
 has metric variation of the form
 \eqref{eq:semiclassical-stress-source-definition}.  Then
-\[
+\begin{equation}
   \nabla^\mu\langle T_{\mu\nu}^{\rm ren}\rangle_g=0
   \label{eq:semiclassical-stress-conservation}
-\]
+\end{equation}
 as a distribution.
 \end{proposition}
 
@@ -115,7 +115,7 @@ time-ordered-product renormalization of
 Chapter~\ref{ch:curved-perturbative-algebraic-qft}.
 
 The finite ambiguity in four spacetime dimensions has the form
-\[
+\begin{equation}
   \langle T_{\mu\nu}^{\rm ren}\rangle
   \longmapsto
   \langle T_{\mu\nu}^{\rm ren}\rangle
@@ -128,7 +128,7 @@ The finite ambiguity in four spacetime dimensions has the form
   +
   c_3H^{(2)}_{\mu\nu},
   \label{eq:semiclassical-stress-finite-ambiguity}
-\]
+\end{equation}
 for a massive scalar model, with the evident modifications when additional
 background couplings are present.  The tensors \(H^{(i)}_{\mu\nu}\) are
 local conserved curvature tensors defined in the next section.  Thus
@@ -139,7 +139,7 @@ are not independent operations.
 
 In four dimensions, take the local gravitational part of the renormalized
 effective action to be
-\[
+\begin{equation}
   \Gamma_{\rm grav}[g]
   =
   \int_M\dd\operatorname{vol}_g
@@ -151,10 +151,10 @@ effective action to be
     \frac{\beta}{2}R_{\rho\sigma}R^{\rho\sigma}
   \right],
   \label{eq:semiclassical-gravitational-action}
-\]
+\end{equation}
 up to boundary terms and topological combinations.  The factor \(1/2\) in
 the curvature-squared terms fixes the normalization
-\[
+\begin{equation}
   E_{\mu\nu}^{\rm grav}
   :=
   \frac{2}{\sqrt{|g|}}\frac{\delta\Gamma_{\rm grav}}{\delta g^{\mu\nu}}
@@ -165,12 +165,12 @@ the curvature-squared terms fixes the normalization
   +
   \beta H^{(2)}_{\mu\nu}.
   \label{eq:semiclassical-gravitational-euler-tensor}
-\]
+\end{equation}
 \begin{proposition}[Curvature-squared Euler tensors]
 \label{prop:semiclassical-curvature-squared-euler-tensors}
 With the curvature convention
 \eqref{eq:semiclassical-curvature-convention},
-\[
+\begin{equation}
 \begin{aligned}
   H^{(1)}_{\mu\nu}
   &=
@@ -192,13 +192,13 @@ With the curvature convention
   \frac12g_{\mu\nu}\Box R .
 \end{aligned}
   \label{eq:semiclassical-H-tensors}
-\]
+\end{equation}
 Here \(\Box=g^{\rho\sigma}\nabla_\rho\nabla_\sigma\).
 \end{proposition}
 
 \begin{proof}[Derivation of the curvature-squared variations]
 The basic first variations are
-\[
+\begin{equation}
   \delta\sqrt{|g|}
   =
   -\frac12\sqrt{|g|}\,g_{\mu\nu}\delta g^{\mu\nu},
@@ -211,13 +211,13 @@ The basic first variations are
   -
   \nabla_\mu\nabla_\nu\delta g^{\mu\nu},
   \label{eq:semiclassical-basic-metric-variations}
-\]
+\end{equation}
 after discarding boundary terms.  Applying these identities to
 \(\frac12\int\sqrt{|g|}R^2\) gives the first line of
 \eqref{eq:semiclassical-H-tensors}.
 
 For \(\frac12\int\sqrt{|g|}R_{\rho\sigma}R^{\rho\sigma}\), use
-\[
+\begin{equation}
   \delta R_{\mu\nu}
   =
   \frac12\left(
@@ -229,7 +229,7 @@ For \(\frac12\int\sqrt{|g|}R_{\rho\sigma}R^{\rho\sigma}\), use
     \nabla^\rho\nabla_\nu\delta g_{\rho\mu}
   \right),
   \label{eq:semiclassical-ricci-variation}
-\]
+\end{equation}
 convert \(\delta g_{\mu\nu}\) to
 \(-g_{\mu\rho}g_{\nu\sigma}\delta g^{\rho\sigma}\), integrate derivatives
 off \(\delta g^{\mu\nu}\), and commute derivatives on \(R_{\mu\nu}\).  The
@@ -243,12 +243,12 @@ The tensors \(H^{(1)}\) and \(H^{(2)}\) are conserved.  This follows without
 component calculation: each is the Euler tensor of a diffeomorphism-invariant
 local functional, so Proposition~\ref{prop:semiclassical-diffeomorphism-ward}
 applies with the functional replacing \(W\).  Their traces in \(D=4\) are
-\[
+\begin{equation}
   g^{\mu\nu}H^{(1)}_{\mu\nu}=6\Box R,
   \qquad
   g^{\mu\nu}H^{(2)}_{\mu\nu}=-2\Box R,
   \label{eq:semiclassical-H-traces}
-\]
+\end{equation}
 using the convention in \eqref{eq:semiclassical-H-tensors}.  These traces
 are total derivatives, as required by the constant-Weyl-scale invariance of
 the curvature-squared actions in four dimensions.
@@ -258,14 +258,14 @@ the curvature-squared actions in four dimensions.
 A semiclassical solution is not only a metric.  It is a pair \((g,\omega)\)
 such that \(\omega\) is an admissible Hadamard state of the QFT constructed
 on \((M,g)\) and
-\[
+\begin{equation}
   E_{\mu\nu}^{\rm grav}[g]
   =
   \langle T_{\mu\nu}^{\rm ren}\rangle_{\omega,g}.
   \label{eq:semiclassical-einstein-equation-expanded}
-\]
+\end{equation}
 Written out,
-\[
+\begin{equation}
   \frac1{8\pi G_N}(G_{\mu\nu}+\Lambda g_{\mu\nu})
   +
   \alpha H^{(1)}_{\mu\nu}
@@ -274,7 +274,7 @@ Written out,
   =
   \langle T_{\mu\nu}^{\rm ren}\rangle_{\omega,g}.
   \label{eq:semiclassical-einstein-equation}
-\]
+\end{equation}
 The left side is conserved by diffeomorphism invariance.  Therefore the
 right side must be the conserved stress tensor of the same renormalization
 scheme.  A change of stress-tensor scheme of the form
@@ -311,16 +311,16 @@ reconstructed as part of the problem.
 Let \(g_{\mu\nu}\mapsto g_{\mu\nu}+h_{\mu\nu}\), with \(h\) compactly
 supported in the region where the response is tested.  The metric
 perturbation couples to the stress tensor through
-\[
+\begin{equation}
   \delta S_{\rm source}
   =
   -\frac12
   \int_M\dd\operatorname{vol}_g\,
   h^{\rho\sigma}T_{\rho\sigma}^{\rm ren}.
   \label{eq:semiclassical-metric-source-coupling}
-\]
+\end{equation}
 The first variation of the stress-tensor expectation has the form
-\[
+\begin{equation}
   \delta\langle T_{\mu\nu}(x)\rangle
   =
   \frac12\int_M\dd\operatorname{vol}_g(y)\,
@@ -328,9 +328,9 @@ The first variation of the stress-tensor expectation has the form
   +
   \delta T_{\mu\nu}^{\rm loc}(x).
   \label{eq:semiclassical-linear-response}
-\]
+\end{equation}
 The separated-point retarded kernel is
-\[
+\begin{equation}
   G^{\rm ret}_{\mu\nu,\rho\sigma}(x,y)
   =
   -\ii\,\Theta(x\succ y)\,
@@ -338,7 +338,7 @@ The separated-point retarded kernel is
     [T_{\mu\nu}^{\rm ren}(x),T_{\rho\sigma}^{\rm ren}(y)]
   \right),
   \label{eq:semiclassical-retarded-stress-kernel}
-\]
+\end{equation}
 where \(x\succ y\) means \(x\in J^+(y)\).  The local term
 \(\delta T_{\mu\nu}^{\rm loc}\) contains variations of the point-splitting
 subtraction, curvature counterterms, and contact terms in the definition of
@@ -371,7 +371,7 @@ separated, and the retarded prescription removes points not in the past of
 \end{proof}
 
 The linearized semiclassical equation is therefore
-\[
+\begin{equation}
   \delta E_{\mu\nu}^{\rm grav}[h]
   -
   \frac12\int_M\dd\operatorname{vol}_g(y)\,
@@ -381,7 +381,7 @@ The linearized semiclassical equation is therefore
   +
   \delta T_{\mu\nu}^{\rm loc}.
   \label{eq:semiclassical-linearized-equation}
-\]
+\end{equation}
 The term \(\delta\langle T\rangle_{\rm state}\) denotes an independent
 change of state at fixed metric; it is absent if the state is transported by
 the chosen metric perturbation prescription.
@@ -390,7 +390,7 @@ the chosen metric perturbation prescription.
 
 Stress-tensor fluctuations are encoded by the symmetrized connected
 two-point distribution
-\[
+\begin{equation}
   N_{\mu\nu,\rho\sigma}(x,y)
   =
   \frac12\,
@@ -398,13 +398,13 @@ two-point distribution
     \{T_{\mu\nu}^{\rm ren}(x),T_{\rho\sigma}^{\rm ren}(y)\}
   \right)_{\rm conn}.
   \label{eq:semiclassical-noise-kernel}
-\]
+\end{equation}
 Equivalently, for a real compactly supported test tensor \(f^{\mu\nu}\), set
 \[
   T(f)=\int_M\dd\operatorname{vol}_g\,f^{\mu\nu}T_{\mu\nu}^{\rm ren}.
 \]
 Then
-\[
+\begin{equation}
   N(f,f)
   =
   \frac12\omega(\{T(f)-\omega(T(f)),T(f)-\omega(T(f))\})
@@ -412,17 +412,17 @@ Then
   \omega\!\left((T(f)-\omega(T(f)))^2\right)
   \ge0 .
   \label{eq:semiclassical-noise-positivity}
-\]
+\end{equation}
 Thus \(N\) is a positive semidefinite distributional covariance kernel on
 the real test-tensor space where the renormalized product is defined.
 
 Conservation is the distributional Ward identity
-\[
+\begin{equation}
   \nabla_x^\mu N_{\mu\nu,\rho\sigma}(x,y)=0,
   \qquad
   \nabla_y^\rho N_{\mu\nu,\rho\sigma}(x,y)=0,
   \label{eq:semiclassical-noise-conservation}
-\]
+\end{equation}
 including diagonal contact terms fixed by the same local covariance
 conditions that define the stress-tensor product.  Away from the diagonal it
 follows immediately from
@@ -442,20 +442,20 @@ stress-tensor observables \(A\) and \(B\), define
   \rho_{AB}(t)=\omega([A(t),B]).
 \]
 Let tildes denote Fourier transforms in \(t\).  The KMS condition gives
-\[
+\begin{equation}
   \widetilde C_{BA}(-\omega)
   =
   e^{-\beta\omega}\widetilde C_{AB}(\omega).
   \label{eq:semiclassical-kms-spectral-relation}
-\]
+\end{equation}
 Therefore the symmetrized spectrum and the commutator spectrum obey
-\[
+\begin{equation}
   \widetilde N_{AB}(\omega)
   =
   \frac12\coth\!\left(\frac{\beta\omega}{2}\right)
   \widetilde\rho_{AB}(\omega),
   \label{eq:semiclassical-fdt}
-\]
+\end{equation}
 where
 \[
   \widetilde N_{AB}(\omega)
@@ -475,12 +475,12 @@ and symmetrized kernels.
 
 A stochastic semiclassical approximation introduces a real Gaussian
 generalized random tensor \(\xi_{\mu\nu}\) with
-\[
+\begin{equation}
   \mathbb E[\xi_{\mu\nu}(f^{\mu\nu})]=0,
   \qquad
   \mathbb E[\xi(f)\xi(k)]=N(f,k).
   \label{eq:semiclassical-random-source-definition}
-\]
+\end{equation}
 The existence of this Gaussian generalized random field follows from the
 positivity \eqref{eq:semiclassical-noise-positivity}: \(N\) is a covariance
 form on a nuclear test-function space, so the Bochner--Minlos theorem
@@ -488,7 +488,7 @@ constructs the corresponding Gaussian measure on distributions.
 
 After gauge fixing the linearized gravitational operator, the
 Einstein--Langevin equation is
-\[
+\begin{equation}
   \mathcal L_{\mu\nu}{}^{\rho\sigma}h_{\rho\sigma}
   -
   \frac12\int_M\dd\operatorname{vol}_g(y)\,
@@ -496,12 +496,12 @@ Einstein--Langevin equation is
   =
   \xi_{\mu\nu}(x),
   \label{eq:semiclassical-einstein-langevin}
-\]
+\end{equation}
 where \(\mathcal L\) is the gauge-fixed variation of
 \(E_{\mu\nu}^{\rm grav}\) plus the local stress-tensor response.  If
 \(\mathcal G_{\rm ret}\) is a retarded inverse for the full linear operator,
 then the induced metric covariance is
-\[
+\begin{equation}
   \mathbb E[h_{\mu\nu}(x)h_{\rho\sigma}(y)]
   =
   \int
@@ -509,7 +509,7 @@ then the induced metric covariance is
   N_{\alpha\beta,\gamma\delta}(u,v)
   \mathcal G_{{\rm ret}\,\rho\sigma}{}^{\gamma\delta}(y,v).
   \label{eq:semiclassical-metric-covariance}
-\]
+\end{equation}
 This equation is meaningful only after the state, stress-tensor
 renormalization, contact terms, gauge condition, and stochastic test space
 have all been specified.
@@ -521,57 +521,57 @@ covariance \(N\) is defined, and let \(\mathcal E'\) be its distributional
 dual.  Suppose the gauge-fixed linear operator in
 \eqref{eq:semiclassical-einstein-langevin} has a continuous retarded
 solution map
-\[
+\begin{equation}
   \mathcal G_{\rm ret}:\mathcal E'\longrightarrow \mathcal H ,
   \label{eq:semiclassical-retarded-solution-map}
-\]
+\end{equation}
 where \(\mathcal H\) is the chosen linear metric-perturbation distribution
 space.  If \(\xi\) is the centered Gaussian generalized random tensor with
 covariance \(N\), then \(h=\mathcal G_{\rm ret}\xi\) is a centered Gaussian
 random metric perturbation.  For any real linear observables
 \(\ell_1,\ell_2\in\mathcal H^*\),
-\[
+\begin{equation}
   \mathbb E[\ell_1(h)\ell_2(h)]
   =
   N(\mathcal G_{\rm ret}^*\ell_1,\mathcal G_{\rm ret}^*\ell_2),
   \label{eq:semiclassical-pushforward-covariance-abstract}
-\]
+\end{equation}
 where \(\mathcal G_{\rm ret}^*:\mathcal H^*\to\mathcal E\) is the transpose.
 In kernel notation this is exactly
 \eqref{eq:semiclassical-metric-covariance}.  The resulting covariance is
 positive semidefinite on metric observables:
-\[
+\begin{equation}
   \mathbb E[\ell(h)^2]\ge0 .
   \label{eq:semiclassical-metric-covariance-positivity}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 For a centered Gaussian generalized random tensor, the characteristic
 functional on \(\mathcal E\) is
-\[
+\begin{equation}
   \mathbb E[e^{\ii\xi(f)}]
   =
   \exp\!\left[-\frac12N(f,f)\right].
   \label{eq:semiclassical-noise-characteristic-functional}
-\]
+\end{equation}
 For \(\ell\in\mathcal H^*\),
-\[
+\begin{equation}
   \ell(h)=\ell(\mathcal G_{\rm ret}\xi)
   =
   \xi(\mathcal G_{\rm ret}^*\ell).
   \label{eq:semiclassical-observable-pullback}
-\]
+\end{equation}
 Thus the finite collection
 \((\ell_1(h),\ldots,\ell_n(h))\) has characteristic function
-\[
+\begin{equation}
   \exp\!\left[
     -\frac12
     \sum_{a,b}t_at_b\,
     N(\mathcal G_{\rm ret}^*\ell_a,\mathcal G_{\rm ret}^*\ell_b)
   \right],
   \label{eq:semiclassical-pushforward-characteristic-function}
-\]
+\end{equation}
 which is Gaussian with covariance
 \eqref{eq:semiclassical-pushforward-covariance-abstract}.  Positivity
 follows by setting \(\ell_1=\ell_2=\ell\) and using positivity of \(N\).
@@ -593,7 +593,7 @@ analysis.
 
 The semiclassical approximation requires more than small curvature.  A
 controlled statement includes
-\[
+\begin{equation}
 \begin{gathered}
   \ell_{\rm curv}\gg \ell_{\rm UV},\\
   |\langle T_{\mu\nu}^{\rm ren}\rangle|
@@ -604,7 +604,7 @@ controlled statement includes
   \text{hyperbolic well-posedness after higher-curvature terms are treated}.
 \end{gathered}
   \label{eq:semiclassical-validity-conditions}
-\]
+\end{equation}
 Curvature-squared terms contain four derivatives of the metric.  Treated as
 exact equations, they introduce additional modes at the cutoff scale.  In a
 low-energy gravitational EFT these modes are not new physical initial data.

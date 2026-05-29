@@ -184,12 +184,12 @@ It is useful to parametrize these ellipses before using them.  Write
   R=\ee^\eta,\qquad \eta>0,
 \]
 and define the ellipse \(E_R\) by \(|\zeta(x)|=R\), where
-\[
+\begin{equation}
   \zeta(z)=z+\sqrt{z^2-1},
   \qquad
   \zeta(z)\sim2z\quad(z\to\infty),
   \label{eq:lehmann-zeta-branch-first-use}
-\]
+\end{equation}
 with branch cut on \([-1,1]\).  Its right endpoint is
 \[
   x_R=\frac12(R+R^{-1})=\cosh\eta .
@@ -1145,13 +1145,13 @@ Thus \(\tau=+1\) keeps the even-spin part and \(\tau=-1\) keeps the odd-spin
 part.
 
 Suppose that \(a_\tau(J,t)\) has a simple Regge pole
-\[
+\begin{equation}
   a_\tau(J,t)
   =
   \frac{r_\tau(t)}{J-\alpha(t)}
   +a_\tau^{\rm reg}(J,t),
   \label{eq:regge-pole-partial-wave}
-\]
+\end{equation}
 and that the contour in \eqref{eq:sommerfeld-watson-signature} may be moved
 past this pole, with the remaining background contour lying to the left of
 \(\operatorname{Re}\alpha(t)\).  The pole contribution is then
@@ -1286,17 +1286,17 @@ positions.  It is not a statement about a constituent potential.
 \begin{proposition}[Veneziano residue and finite-spin exchange]
 \label{prop:veneziano-residue-finite-spin}
 Let
-\[
+\begin{equation}
   A(s,t)=g^2
   \frac{\Gamma(-\alpha(s))\Gamma(-\alpha(t))}
        {\Gamma(-\alpha(s)-\alpha(t))},
   \qquad
   \alpha(x)=\alpha_0+\alpha' x,\quad \alpha'>0 .
   \label{eq:veneziano-beta-amplitude}
-\]
+\end{equation}
 At \(\alpha(s)=n\in\mathbb Z_{\ge0}\), \(A(s,t)\) has a simple pole whose
 residue is a polynomial of degree \(n\) in \(\alpha(t)\).  Explicitly,
-\[
+\begin{equation}
   A(s,t)
   =
   -\,\frac{g^2}{n!}\,
@@ -1304,7 +1304,7 @@ residue is a polynomial of degree \(n\) in \(\alpha(t)\).  Explicitly,
        {\alpha(s)-n}
   +O(1).
   \label{eq:veneziano-residue-polynomial}
-\]
+\end{equation}
 Thus the \(n\)-th pole contains crossed-channel angular dependence no higher
 than spin \(n\), in the same sense that a polynomial of degree \(n\) in the
 crossed scattering variable decomposes into partial waves with
@@ -1353,10 +1353,10 @@ relations
   J=\frac{\pi\sigma}{2\omega^2}
 \]
 give
-\[
+\begin{equation}
   J=\frac{E^2}{2\pi\sigma}.
   \label{eq:open-flux-tube-regge-slope}
-\]
+\end{equation}
 This explains the frequently quoted slope
 \(\alpha'_{\rm open}=1/(2\pi\sigma)\) as a long-string approximation.  It is
 not a nonperturbative derivation of the QCD hadron spectrum.  Endpoint masses,
@@ -1412,23 +1412,23 @@ write
   M_X^2=(p_a+p_b-p_c)^2 .
 \]
 The triple-Regge limit is the limiting regime
-\[
+\begin{equation}
   s\to\infty,\qquad
   M_X^2\to\infty,\qquad
   t\ {\rm fixed},\qquad
   \xi:=\frac{M_X^2}{s}\to0.
   \label{eq:triple-regge-limit-definition}
-\]
+\end{equation}
 The particle \(c\) is separated from the unobserved system \(X\) by the large
 rapidity interval \(\log(s/M_X^2)\), while the internal energy available to
 the inclusive subsystem \(X\) grows like \(M_X\).  Choose once and for all a
 positive mass scale \(s_0\) and define the dimensionless inclusive density
-\[
+\begin{equation}
   \mathcal D_{a b\to c X}(s,M_X^2,t)
   :=
   s_0^2\,\frac{\dd^2\sigma(a b\to c X)}{\dd t\,\dd M_X^2}.
   \label{eq:triple-regge-dimensionless-density}
-\]
+\end{equation}
 \end{definition}
 
 \begin{hypothesis}[Triple-Regge factorization system]
@@ -1521,14 +1521,14 @@ Reggeon-field-theory or eikonal representation has been specified.  The
 minimal result that follows from the absorptive one-channel eikonal used
 above is the Poisson law for cut elementary exchanges at fixed impact
 parameter:
-\[
+\begin{equation}
   S(b)=\ee^{-\Omega(b)/2}
   \quad\Longrightarrow\quad
   P_n(b)=\ee^{-\Omega(b)}\frac{\Omega(b)^n}{n!},
   \qquad
   \sum_{n=0}^\infty P_n(b)=1.
   \label{eq:eikonal-poisson-cut-exchanges}
-\]
+\end{equation}
 This identity is a consequence of unitarity for that eikonal model.  The full
 AGK cancellation pattern for general Reggeon diagrams requires additional
 analytic continuation, signature, and cutting hypotheses; in this monograph it
@@ -1546,7 +1546,7 @@ singularity is retained.  A minimal Reggeon field-theory model consists of:
   \(\widetilde\phi\) is the response field used to write a retarded
   evolution problem;
 \item a quadratic action
-  \[
+  \begin{equation}
     S_0[\widetilde\phi,\phi]
     =
     \int\dd Y\,\dd^2 b\,
@@ -1555,7 +1555,7 @@ singularity is retained.  A minimal Reggeon field-theory model consists of:
     \qquad
     \alpha'_P>0,
     \label{eq:minimal-rft-quadratic-action}
-  \]
+  \end{equation}
   with retarded boundary condition in \(Y\);
 \item a list of interaction vertices, for example a triple-Reggeon vertex
   \(g_{3P}\int\dd Y\,\dd^2b\,(\widetilde\phi\phi^2-\widetilde\phi^2\phi)\),
@@ -1570,31 +1570,31 @@ declared.
 \begin{proposition}[Free Reggeon diffusion kernel]
 \label{prop:free-reggeon-diffusion-kernel}
 The retarded Green kernel of
-\[
+\begin{equation}
   \bigl(\partial_Y-\alpha'_P\nabla_b^2-\Delta_P\bigr)G(Y,b)
   =
   \delta(Y)\delta^{(2)}(b)
   \label{eq:free-reggeon-green-equation}
-\]
+\end{equation}
 is
-\[
+\begin{equation}
   G(Y,b)
   =
   \Theta(Y)\,
   \frac{\exp(\Delta_P Y)}{4\pi\alpha'_P Y}
   \exp\!\left(-\frac{|b|^2}{4\alpha'_P Y}\right).
   \label{eq:free-reggeon-diffusion-kernel}
-\]
+\end{equation}
 Equivalently, in transverse momentum \(q\),
-\[
+\begin{equation}
   \widehat G(Y,q)=\Theta(Y)\exp\!\bigl((\Delta_P-\alpha'_P q^2)Y\bigr).
   \label{eq:free-reggeon-momentum-kernel}
-\]
+\end{equation}
 Thus a pole contribution generated by the quadratic model has trajectory
-\[
+\begin{equation}
   \alpha_P(t)=1+\Delta_P+\alpha'_P t
   \label{eq:rft-free-pomeron-trajectory}
-\]
+\end{equation}
 when \(t=-q^2\).
 \end{proposition}
 
@@ -1723,19 +1723,19 @@ cut, or an effective fit to a restricted energy window.
 \label{def:absorptive-eikonal-cut-generator}
 At fixed impact parameter \(b\), let \(\Omega(s,b)\ge0\) be the opacity of a
 one-channel absorptive eikonal model and write
-\[
+\begin{equation}
   S(s,b)=\exp\!\left[-\frac12\Omega(s,b)\right].
   \label{eq:absorptive-eikonal-s-matrix}
-\]
+\end{equation}
 The cut-exchange generating function is
-\[
+\begin{equation}
   Z_b(z)
   =
   \exp[-\Omega(s,b)(1-z)].
   \label{eq:eikonal-cut-generating-function}
-\]
+\end{equation}
 The coefficient of \(z^n\),
-\[
+\begin{equation}
   P_n(s,b)
   =
   [z^n]Z_b(z)
@@ -1743,7 +1743,7 @@ The coefficient of \(z^n\),
   \ee^{-\Omega(s,b)}
   \frac{\Omega(s,b)^n}{n!},
   \label{eq:eikonal-cut-poisson-probability}
-\]
+\end{equation}
 is the fixed-\(b\) topological weight for \(n\) cut elementary exchanges in
 this model.
 \end{definition}
@@ -1752,26 +1752,26 @@ this model.
 \label{prop:eikonal-agk-factorial-moment-identity}
 For the cut generator of
 Definition~\ref{def:absorptive-eikonal-cut-generator},
-\[
+\begin{equation}
   \sum_{n=0}^\infty P_n(s,b)=1,
   \qquad
   \sum_{n=0}^\infty n\,P_n(s,b)=\Omega(s,b).
   \label{eq:eikonal-cut-normalization-and-mean}
-\]
+\end{equation}
 More generally, for the falling factorial
-\[
+\begin{equation}
   (n)_r=n(n-1)\cdots(n-r+1),
   \qquad r\ge1,
   \label{eq:falling-factorial-definition}
-\]
+\end{equation}
 one has
-\[
+\begin{equation}
   \sum_{n=0}^\infty (n)_rP_n(s,b)=\Omega(s,b)^r.
   \label{eq:eikonal-factorial-moment}
-\]
+\end{equation}
 Equivalently, if every \(P_n\) is expanded in powers of \(\Omega\), the
 coefficient of \(\Omega^m\) in the \(r\)-th factorial moment is
-\[
+\begin{equation}
   \sum_{n=r}^{m}
   \frac{(n)_r(-1)^{m-n}}{n!\,(m-n)!}
   =
@@ -1780,7 +1780,7 @@ coefficient of \(\Omega^m\) in the \(r\)-th factorial moment is
     0,& m\ne r.
   \end{cases}
   \label{eq:eikonal-agk-binomial-cancellation}
-\]
+\end{equation}
 This is the precise cancellation supplied by the one-channel absorptive
 eikonal.  It is an AGK-type cancellation for inclusive factorial moments, not
 a theorem about arbitrary Reggeon-field-theory diagrams.
@@ -1801,13 +1801,13 @@ is \(\sum_n(n)_rP_n(s,b)\).  This proves
 \eqref{eq:eikonal-factorial-moment}; the case \(r=1\) gives the mean.
 
 For the coefficient form, expand
-\[
+\begin{equation}
   P_n=\sum_{q=0}^\infty
   \frac{(-1)^q}{q!\,n!}\Omega^{q+n}.
   \label{eq:eikonal-pn-power-expansion}
-\]
+\end{equation}
 The coefficient of \(\Omega^m\) in the factorial moment is therefore
-\[
+\begin{equation}
   \sum_{n=r}^{m}
   \frac{n!}{(n-r)!}
   \frac{(-1)^{m-n}}{(m-n)!\,n!}
@@ -1815,7 +1815,7 @@ The coefficient of \(\Omega^m\) in the factorial moment is therefore
   \sum_{j=0}^{m-r}
   \frac{(-1)^{m-r-j}}{j!\,(m-r-j)!}.
   \label{eq:eikonal-agk-binomial-proof}
-\]
+\end{equation}
 This is the coefficient of \(x^{m-r}\) in
 \(\ee^x\ee^{-x}=1\).  It is one when \(m=r\) and zero otherwise.
 \end{proof}
@@ -2136,7 +2136,7 @@ handled explicitly by their Cauchy residues in the dispersion formula.
 \label{prop:subtracted-cauchy-transform-tempered-cut}
 Let \(T\in\mathcal S'(\mathbb R_\sigma)\), and choose
 \(C_T,r_T,N_T\) such that
-\[
+\begin{equation}
   |\langle T,\psi\rangle|
   \le
   C_T
@@ -2144,18 +2144,18 @@ Let \(T\in\mathcal S'(\mathbb R_\sigma)\), and choose
   \sup_{\sigma\in\mathbb R}
   \langle \sigma\rangle^{N_T}|\partial_\sigma^j\psi(\sigma)|
   \label{eq:tempered-cut-order-data}
-\]
+\end{equation}
 for all \(\psi\in\mathcal S(\mathbb R)\).  Fix
 \(z_0\in\mathbb C\setminus\mathbb R\) and an integer \(q>N_T\).  For
 \(z\in\mathbb C\setminus\mathbb R\), set
-\[
+\begin{equation}
   K_q(\sigma;z,z_0)
   =
   \frac{(z-z_0)^q}{(\sigma-z)(\sigma-z_0)^q},
   \qquad
   F_q(z)=\langle T,K_q(\cdot;z,z_0)\rangle .
   \label{eq:subtracted-cauchy-kernel-tempered-cut}
-\]
+\end{equation}
 Then \(F_q\) is holomorphic in the upper and lower half-planes, and for
 \(y=|\operatorname{Im}z|>0\),
 \begin{equation}
@@ -2186,23 +2186,23 @@ lower half-planes.
 
 It remains to prove the displayed bound.  By Leibniz' rule,
 \(\partial_\sigma^jK_q\) is a finite sum of terms
-\[
+\begin{equation}
   (z-z_0)^q
   \frac{c_{a,b}}
   {(\sigma-z)^{a+1}(\sigma-z_0)^{q+b}},
   \qquad a+b=j,\qquad c_{a,b}\in\mathbb Z .
   \label{eq:subtracted-cauchy-kernel-derivative-term}
-\]
+\end{equation}
 Because \(z_0\notin\mathbb R\), and because \(q>N_T\),
-\[
+\begin{equation}
   \sup_{\sigma\in\mathbb R}
   \langle\sigma\rangle^{N_T}|\sigma-z_0|^{-q-b}
   \le C_{q,z_0,N_T}.
   \label{eq:z0-subtraction-decay-bound}
-\]
+\end{equation}
 Also \(|\sigma-z|^{-a-1}\le y^{-a-1}\le y^{-r_T-1}\) for
 \(0\le a\le j\le r_T\).  Therefore
-\[
+\begin{equation}
   \max_{0\le j\le r_T}
   \sup_{\sigma\in\mathbb R}
   \langle\sigma\rangle^{N_T}
@@ -2210,7 +2210,7 @@ Also \(|\sigma-z|^{-a-1}\le y^{-a-1}\le y^{-r_T-1}\) for
   \le
   C_{q,z_0,N_T,r_T}\,|z-z_0|^q\,y^{-r_T-1}.
   \label{eq:subtracted-cauchy-kernel-seminorm-bound}
-\]
+\end{equation}
 Combining this with \eqref{eq:tempered-cut-order-data} and
 \(|z-z_0|\le C_{z_0}(1+|z|)\) gives
 \eqref{eq:subtracted-cauchy-tempered-pointwise-bound}.
@@ -2218,7 +2218,7 @@ Combining this with \eqref{eq:tempered-cut-order-data} and
 For the final assertion, apply the same estimate to each cut distribution
 after translating the cut coordinate to \(\sigma\).  A \(q\)-subtracted
 Cauchy representation has the form
-\[
+\begin{equation}
   \mathcal M_{\rm reg}(z,t)
   =
   P_{q-1}(z;t)
@@ -2229,7 +2229,7 @@ Cauchy representation has the form
     \frac{(z-z_0)^q}{(\sigma-z)(\sigma-z_0)^q}
   \right\rangle .
   \label{eq:fixed-t-subtracted-cauchy-tempered-cuts}
-\]
+\end{equation}
 On a contour whose distance from all cuts is bounded below by a positive
 number, the factor \(y^{-r_T-1}\) and its translated analogues are bounded by
 contour-dependent constants.  The subtraction polynomial and the finite sum
@@ -2242,7 +2242,7 @@ In a massive Wightman theory with stable external scalar particles,
 tempered LSZ boundary values and the subtracted-Cauchy Proposition
 \ref{prop:subtracted-cauchy-transform-tempered-cut} prove only the following
 conditional implication:
-\[
+\begin{equation}
   \begin{gathered}
   \text{fixed-}t\text{ first-sheet cut plane}
   +\text{ finite-subtraction Cauchy formula}\\
@@ -2251,7 +2251,7 @@ conditional implication:
   \text{pointwise cut-plane polynomial growth.}
   \end{gathered}
   \label{eq:jin-martin-location-implication}
-\]
+\end{equation}
 The genuinely QFT-specific theorem is the preceding line's input: locality,
 the spectrum condition, LSZ pole separation, and the
 Jost--Lehmann--Dyson/Bros--Epstein--Glaser domain analysis must supply the
@@ -2356,7 +2356,7 @@ finite polynomial order.
 For boundary values, test against a compactly supported smooth function
 \(\varphi(s)\) on a real edge.  The polynomial-growth hypothesis permits the
 boundary-value map to commute with the compact Cauchy integrals:
-\[
+\begin{equation}
   \langle \operatorname{bv}\mathcal M_t,\varphi\rangle
   =
   \frac{1}{(2\pi\ii)^4}
@@ -2368,7 +2368,7 @@ boundary-value map to commute with the compact Cauchy integrals:
   \right\rangle
   \frac{\dd^4\zeta}{\zeta_1\zeta_2\zeta_3\zeta_4}.
   \label{eq:fixed-t-lsz-boundary-cauchy-commutation}
-\]
+\end{equation}
 Taking the difference of the upper and lower boundary values gives the same
 formula for the discontinuity.  If the off-shell discontinuities are tempered
 with seminorm orders independent of \(\zeta\) on the chosen tori, the right
@@ -2400,7 +2400,7 @@ An admissible exhaustion of \(\Omega\) is a family of bounded domains
 oriented boundaries are piecewise \(C^1\) and have the following structure.
 For each fixed \(\epsilon>0\) and all sufficiently large
 \(\mathcal R\), the boundary decomposes as
-\[
+\begin{equation}
   \partial\Omega_{\mathcal R,\epsilon}
   =
   \Gamma^\infty_{\mathcal R,\epsilon}
@@ -2415,32 +2415,32 @@ For each fixed \(\epsilon>0\) and all sufficiently large
   \cup
   E_{\mathcal R,\epsilon}.
   \label{eq:fixed-t-admissible-boundary-decomposition}
-\]
+\end{equation}
 The large part \(\Gamma^\infty_{\mathcal R,\epsilon}\) lies in the annulus
 \(\mathcal R-c_\epsilon\le |w|\le \mathcal R+c_\epsilon\) and obeys
-\[
+\begin{equation}
   \operatorname{length}\Gamma^\infty_{\mathcal R,\epsilon}
   \le c_\epsilon\mathcal R .
   \label{eq:fixed-t-admissible-large-length}
-\]
+\end{equation}
 The right lips are parameterized, up to endpoint smoothings contained in
 \(E_{\mathcal R,\epsilon}\), by
-\[
+\begin{equation}
   w=\sigma+\ii\epsilon,\qquad
   w=\sigma-\ii\epsilon,
   \qquad
   a+\epsilon\le \sigma\le \mathcal R ,
   \label{eq:fixed-t-admissible-right-lips}
-\]
+\end{equation}
 with the induced orientation upper minus lower.  The left lips are similarly
 parameterized by
-\[
+\begin{equation}
   w=\sigma+\ii\epsilon,\qquad
   w=\sigma-\ii\epsilon,
   \qquad
   -\mathcal R\le \sigma\le b-\epsilon ,
   \label{eq:fixed-t-admissible-left-lips}
-\]
+\end{equation}
 again with upper-minus-lower orientation after writing the integral in the
 increasing real variable \(\sigma\).  The connector set
 \(E_{\mathcal R,\epsilon}\) consists of finitely many smooth arcs joining the
@@ -2475,10 +2475,10 @@ Let \(b<a\) be real numbers and set
 \]
 Let \(F\) be meromorphic in \(\Omega\), with only finitely many simple poles
 \(p_\nu\in\Omega\), and write its local pole part as
-\[
+\begin{equation}
   F(w)=\frac{A_\nu}{p_\nu-w}+\text{holomorphic near }p_\nu .
   \label{eq:fixed-t-cauchy-pole-convention}
-\]
+\end{equation}
 Assume that \(F\) has polynomial boundary growth at the two cuts, so that the
 upper and lower boundary values on each cut exist as tempered distributions,
 and denote the discontinuities by
@@ -2494,12 +2494,12 @@ the real line.  Suppose also that, for some \(A\ge0\), the large circular
 parts \(\Gamma^\infty_{\mathcal R,\epsilon}\) of an admissible two-cut
 exhaustion in the sense of
 Definition~\ref{def:admissible-fixed-t-two-cut-exhaustion} obey
-\[
+\begin{equation}
   \sup_{w\in\Gamma^\infty_{\mathcal R,\epsilon}}
   |F(w)|\le C_\epsilon \mathcal R^A
   \qquad(\mathcal R\to\infty)
   \label{eq:fixed-t-large-circle-polynomial-bound}
-\]
+\end{equation}
 for every fixed slit-opening regulator \(\epsilon>0\), with constants
 independent of \(\mathcal R\).
 Choose distinct subtraction points
@@ -2509,12 +2509,12 @@ with
   q>\max\{A,N_R,N_L\}.
 \]
 Define
-\[
+\begin{equation}
   B_q(w,z)=\prod_{j=1}^q\frac{z-s_j}{w-s_j},
   \qquad
   L_j(z)=\prod_{k\ne j}\frac{z-s_k}{s_j-s_k}.
   \label{eq:fixed-t-cauchy-subtraction-kernels}
-\]
+\end{equation}
 Then, for \(z\in\Omega\) not equal to a pole,
 \begin{align}
   F(z)
@@ -2538,10 +2538,10 @@ Then, for \(z\in\Omega\) not equal to a pole,
   \label{eq:fixed-t-finite-subtraction-cauchy-theorem}
 \end{align}
 where
-\[
+\begin{equation}
   P_{q-1}(z)=\sum_{j=1}^qF(s_j)L_j(z)
   \label{eq:fixed-t-cauchy-interpolation-polynomial}
-\]
+\end{equation}
 is the degree at most \(q-1\) interpolation polynomial at the subtraction
 points.  Endpoint singularities at \(a\) or \(b\), if present as boundary
 distributions, are included in \(T_R\) or \(T_L\).  Thus no separate
@@ -2551,15 +2551,15 @@ distributionally.
 
 \begin{proof}
 For fixed \(z\in\Omega\), consider
-\[
+\begin{equation}
   \Phi(w;z)=\frac{F(w)}{w-z}B_q(w,z).
   \label{eq:fixed-t-cauchy-integrand}
-\]
+\end{equation}
 Write
-\[
+\begin{equation}
   K_z(w)=\frac{B_q(w,z)}{w-z}.
   \label{eq:fixed-t-cauchy-proof-kernel}
-\]
+\end{equation}
 On a large circle \(|w|=\mathcal R\), away from the slit regulators,
 \[
   |\Phi(w;z)|
@@ -2582,20 +2582,20 @@ the poles \(p_\nu\) of \(F\).  They are
 \[
   \operatorname*{Res}_{w=z}\Phi(w;z)=F(z),
 \]
-\[
+\begin{equation}
   \operatorname*{Res}_{w=s_j}\Phi(w;z)
   =
   -F(s_j)L_j(z),
   \label{eq:fixed-t-cauchy-subtraction-residue}
-\]
+\end{equation}
 and, using the pole convention
 \eqref{eq:fixed-t-cauchy-pole-convention},
-\[
+\begin{equation}
   \operatorname*{Res}_{w=p_\nu}\Phi(w;z)
   =
   -\,\frac{A_\nu}{p_\nu-z}B_q(p_\nu,z).
   \label{eq:fixed-t-cauchy-stable-pole-residue}
-\]
+\end{equation}
 The admissible boundary has the standard upper-minus-lower orientation on
 each cut by
 \eqref{eq:fixed-t-admissible-right-lips} and
@@ -2625,7 +2625,7 @@ each cut by
 up to the connector arcs already described.  After the limits
 \(\mathcal R\to\infty\) and \(\epsilon\downarrow0\), this lip contribution
 becomes
-\[
+\begin{equation}
   \frac{1}{2\pi\ii}
   \left[
   \int_{C_R}\!\dd\sigma\,
@@ -2635,7 +2635,7 @@ becomes
   \frac{F(\sigma+\ii0)-F(\sigma-\ii0)}{\sigma-z}B_q(\sigma,z)
   \right].
   \label{eq:fixed-t-cauchy-cut-boundary-integral}
-\]
+\end{equation}
 The finite-endpoint connector arcs are small circles around \(a\) and \(b\).
 They are not discarded pointwise; their limits are part of the
 distributional boundary values at threshold.  Thus any threshold-supported
@@ -3226,12 +3226,12 @@ The angular-tube estimate gives exponential suppression of partial-wave
 coefficients up to powers of \(\ell\).  More explicitly, after changing the
 constants to match the optical-theorem normalization, the physical absorptive
 weights obey a bound of the form
-\[
+\begin{equation}
   w_\ell(s)
   \le
   B\min\{1,\,s^N(1+\ell)^q\ee^{-\ell\eta_*(s)}\},
   \label{eq:higher-d-froissart-min-bound}
-\]
+\end{equation}
 where the first entry is unitarity and the second entry is the Cauchy estimate
 in Hypothesis~\ref{hyp:higher-dimensional-angular-tube}.  Put
 \[

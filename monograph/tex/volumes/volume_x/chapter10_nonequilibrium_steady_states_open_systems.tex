@@ -134,7 +134,7 @@ A finite reservoir jump datum consists of:
   \(i\to j\) induced by reservoir \(\alpha\).
 \end{enumerate}
 The rates obey local detailed balance when
-\[
+\begin{equation}
   W^{(\alpha)}_{ij}>0
   \quad\Longleftrightarrow\quad
   W^{(\alpha)}_{ji}>0,
@@ -146,9 +146,9 @@ The rates obey local detailed balance when
     E_j-E_i-\mu_\alpha(Q_j-Q_i)
   \right].
   \label{eq:finite-local-detailed-balance}
-\]
+\end{equation}
 The master equation is
-\[
+\begin{equation}
   \dot p_i
   =
   \sum_{\alpha}\sum_{j\ne i}
@@ -157,28 +157,28 @@ The master equation is
   \right],
   \qquad p_i\ge0,\qquad \sum_i p_i=1 .
   \label{eq:finite-reservoir-master-equation}
-\]
+\end{equation}
 \end{definition}
 
 \begin{proposition}[Finite entropy-production theorem]
 \label{prop:finite-ness-entropy-production}
 For a finite reservoir jump datum satisfying
 \eqref{eq:finite-local-detailed-balance}, define the Shannon entropy
-\[
+\begin{equation}
   S_{\rm sys}(p)=-\sum_i p_i\log p_i .
   \label{eq:finite-ness-system-entropy}
-\]
+\end{equation}
 The reservoir entropy-production rate is
-\[
+\begin{equation}
   \dot S_{\rm res}
   =
   \sum_{\alpha}\sum_{i\ne j}
   p_iW^{(\alpha)}_{ij}
   \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}},
   \label{eq:finite-ness-reservoir-entropy-rate}
-\]
+\end{equation}
 and the total entropy-production rate is
-\[
+\begin{equation}
   \dot S_{\rm tot}
   =
   \frac12\sum_{\alpha}\sum_{i\ne j}
@@ -192,12 +192,12 @@ and the total entropy-production rate is
        {p_jW^{(\alpha)}_{ji}}
   \ge0 .
   \label{eq:finite-ness-total-entropy-production}
-\]
+\end{equation}
 Moreover
-\[
+\begin{equation}
   \dot S_{\rm tot}=\frac{d}{dt}S_{\rm sys}(p)+\dot S_{\rm res}.
   \label{eq:finite-ness-system-plus-reservoir}
-\]
+\end{equation}
 At a stationary distribution \(p^{\rm ss}\), the system entropy derivative
 vanishes, hence \(\dot S_{\rm res}=\dot S_{\rm tot}\ge0\).
 \end{proposition}
@@ -205,7 +205,7 @@ vanishes, hence \(\dot S_{\rm res}=\dot S_{\rm tot}\ge0\).
 \begin{proof}
 The local detailed-balance relation says that a jump \(i\to j\) changes the
 reservoir entropy by
-\[
+\begin{equation}
   -\beta_\alpha
   \left[
     E_j-E_i-\mu_\alpha(Q_j-Q_i)
@@ -213,18 +213,18 @@ reservoir entropy by
   =
   \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}},
   \label{eq:finite-ness-jump-reservoir-entropy}
-\]
+\end{equation}
 which gives \eqref{eq:finite-ness-reservoir-entropy-rate} after averaging
 over jumps.  Differentiating \(S_{\rm sys}\) and using
 \(\sum_i\dot p_i=0\) gives
-\[
+\begin{equation}
   \frac{dS_{\rm sys}}{dt}
   =
   -\sum_i\dot p_i\log p_i .
   \label{eq:finite-ness-system-entropy-derivative}
-\]
+\end{equation}
 Substituting the master equation and symmetrizing over \(i,j\),
-\[
+\begin{equation}
   \frac{dS_{\rm sys}}{dt}
   =
   \frac12\sum_{\alpha}\sum_{i\ne j}
@@ -235,9 +235,9 @@ Substituting the master equation and symmetrizing over \(i,j\),
   \right)
   \log\frac{p_i}{p_j}.
   \label{eq:finite-ness-system-entropy-current-form}
-\]
+\end{equation}
 Similarly, \eqref{eq:finite-ness-reservoir-entropy-rate} can be written as
-\[
+\begin{equation}
   \dot S_{\rm res}
   =
   \frac12\sum_{\alpha}\sum_{i\ne j}
@@ -248,14 +248,14 @@ Similarly, \eqref{eq:finite-ness-reservoir-entropy-rate} can be written as
   \right)
   \log\frac{W^{(\alpha)}_{ij}}{W^{(\alpha)}_{ji}} .
   \label{eq:finite-ness-reservoir-current-form}
-\]
+\end{equation}
 Adding the last two equations gives
 \eqref{eq:finite-ness-total-entropy-production}.  Each summand is
 nonnegative because
-\[
+\begin{equation}
   (x-y)\log(x/y)\ge0,\qquad x>0,\quad y>0 .
   \label{eq:finite-ness-log-monotonicity}
-\]
+\end{equation}
 Terms with \(x=y=0\) are omitted by continuity.  This proves both
 \eqref{eq:finite-ness-system-plus-reservoir} and the inequality.
 \end{proof}

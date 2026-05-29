@@ -68,12 +68,12 @@ condition is the damping condition in the path-integral weight
 Suppose first that the Hilbert space is finite-dimensional, that
 \(\rho_0\ge0\) is a density matrix with \(\operatorname{Tr}\rho_0=1\), and
 that the branch evolutions \(U[A_s]\) are unitary.  Then
-\[
+\begin{equation}
   Z[A,A]=1,\qquad
   Z[A_1,A_2]^*=Z[A_2,A_1],\qquad
   |Z[A_1,A_2]|\le1 .
   \label{eq:finite-ctp-constraints}
-\]
+\end{equation}
 Consequently, on the branch of \(I_{\rm SK}=-\ii\log Z\) continuous from
 \(I_{\rm SK}[A_r,0]=0\), equations
 \eqref{eq:sk-hydro-unitarity-zero}--\eqref{eq:sk-hydro-positivity} follow.
@@ -86,14 +86,14 @@ The diagonal identity is
   =\operatorname{Tr}\rho_0=1 .
 \]
 Complex conjugation gives
-\[
+\begin{equation}
   Z[A_1,A_2]^*
   =
   \operatorname{Tr}\!\left(
   U[A_2]\rho_0U[A_1]^\dagger
   \right)=Z[A_2,A_1],
   \label{eq:finite-ctp-reality-proof}
-\]
+\end{equation}
 where cyclicity of the finite trace and \(\rho_0^\dagger=\rho_0\) are used.
 For the bound, introduce the Hilbert--Schmidt inner product
 \((X,Y)_{\rm HS}=\operatorname{Tr}(X^\dagger Y)\) and set
@@ -102,12 +102,12 @@ For the bound, introduce the Hilbert--Schmidt inner product
   Y=U[A_1]\rho_0^{1/2}.
 \]
 Then \(Z[A_1,A_2]=(X,Y)_{\rm HS}\).  Cauchy--Schwarz gives
-\[
+\begin{equation}
   |Z[A_1,A_2]|^2
   \le
   \operatorname{Tr}(\rho_0)\operatorname{Tr}(\rho_0)=1 .
   \label{eq:finite-ctp-cauchy-schwarz}
-\]
+\end{equation}
 Since \(Z=\exp(\ii I_{\rm SK})\), the last inequality is
 \(\exp(-\operatorname{Im}I_{\rm SK})\le1\), hence
 \(\operatorname{Im}I_{\rm SK}\ge0\).  The reality relation for
@@ -157,20 +157,20 @@ to \(\varphi^A_a\) is equivalent to the corresponding Ward identity because
 Let \(I_{\rm eff}\) be a local functional of the gauge-invariant variables
 \(B^A_{r\mu},B^A_{a\mu}\).  Define the expectation-value current on the
 physical slice \(A_a=\varphi_a=0\) by
-\[
+\begin{equation}
   J_A^\mu(x)
   =
   \left.
   \frac{\delta I_{\rm eff}}{\delta A^A_{a\mu}(x)}
   \right|_{A_a=\varphi_a=0}.
   \label{eq:sk-hydro-current-functional-derivative}
-\]
+\end{equation}
 Then the Euler--Lagrange equation for \(\varphi^A_a\) is the distributional
 Ward identity
-\[
+\begin{equation}
   \partial_\mu J_A^\mu=0
   \label{eq:sk-hydro-current-ward-identity}
-\]
+\end{equation}
 in the absence of external anomaly terms.  Equivalently, the \(a\)-phase is
 not an additional physical scalar; it is the doubled-field implementation of
 current conservation.
@@ -178,7 +178,7 @@ current conservation.
 On the physical slice, \(B_{a\mu}^A=A_{a\mu}^A+\partial_\mu\varphi_a^A\).
 Thus the variation of the action under a compactly supported
 \(\delta\varphi_a^A\) is
-\[
+\begin{equation}
   \delta I_{\rm eff}
   =
   \int dt\,d^dx\,
@@ -187,7 +187,7 @@ Thus the variation of the action under a compactly supported
   -\int dt\,d^dx\,
   (\partial_\mu J_A^\mu)\delta\varphi_a^A ,
   \label{eq:sk-hydro-ward-variation-proof}
-\]
+\end{equation}
 with no boundary term.  Since \(\delta\varphi_a^A\) is arbitrary, the
 Euler--Lagrange equation is \(\partial_\mu J_A^\mu=0\).  If the microscopic
 current is anomalous, the branch gauge transformation of the regulated
@@ -219,38 +219,38 @@ diffusion endomorphism acting on densities is
 \label{prop:sk-hydro-diffusion-matrix-stability}
 Assume \(\chi\) is real symmetric positive definite and \(\Sigma\) is real
 symmetric positive semidefinite.  Then
-\[
+\begin{equation}
   D=\Sigma\chi^{-1}
   \label{eq:sk-hydro-diffusion-endomorphism-matrix}
-\]
+\end{equation}
 is diagonalizable over \(\mathbb R\) and all its eigenvalues are
 nonnegative.  It is self-adjoint for the density inner product
-\[
+\begin{equation}
   \langle u,v\rangle_{\chi^{-1}}
   =
   u_A(\chi^{-1})^{AB}v_B .
   \label{eq:sk-hydro-density-inner-product}
-\]
+\end{equation}
 If \(\Sigma\) is positive definite, all eigenvalues of \(D\) are positive.
 \end{proposition}
 
 \begin{proof}
 Let \(\chi^{1/2}\) be the positive square root of \(\chi\).  The matrix
-\[
+\begin{equation}
   S=\chi^{-1/2}\Sigma\chi^{-1/2}
   \label{eq:sk-hydro-symmetric-diffusion-similarity}
-\]
+\end{equation}
 is real symmetric positive semidefinite.  Moreover
-\[
+\begin{equation}
   D=\Sigma\chi^{-1}
   =
   \chi^{1/2}S\chi^{-1/2},
   \label{eq:sk-hydro-diffusion-similar-to-symmetric}
-\]
+\end{equation}
 so \(D\) is similar to \(S\).  Therefore \(D\) has the same spectrum as
 \(S\), is diagonalizable over \(\mathbb R\), and has nonnegative
 eigenvalues.  For self-adjointness,
-\[
+\begin{equation}
   \langle u,Dv\rangle_{\chi^{-1}}
   =
   u^T\chi^{-1}\Sigma\chi^{-1}v
@@ -259,7 +259,7 @@ eigenvalues.  For self-adjointness,
   =
   \langle Du,v\rangle_{\chi^{-1}},
   \label{eq:sk-hydro-diffusion-self-adjoint-proof}
-\]
+\end{equation}
 because \(\chi^{-1}\) and \(\Sigma\) are symmetric.  If \(\Sigma\) is
 positive definite then \(S\) is positive definite, so its eigenvalues, and
 hence the eigenvalues of \(D\), are strictly positive.
@@ -474,16 +474,16 @@ from the same matrix that governs the dissipative current.
 \label{thm:sk-hydro-density-fdt-from-action}
 Assume \(\chi\) is positive definite and \(\Sigma\) is positive semidefinite.
 For real \(\omega\), \(\mathbf k\), let
-\[
+\begin{equation}
   M(\omega,\mathbf k)=
   (Dk^2-\ii\omega\mathbf 1)^{-1},
   \qquad k^2=\mathbf k\cdot\mathbf k ,
   \label{eq:sk-hydro-diffusion-resolvent}
-\]
+\end{equation}
 on the subspace where the inverse exists.  The Langevin equation
 \eqref{eq:sk-hydro-langevin-diffusion} at zero external source gives the
 symmetrized density correlator
-\[
+\begin{equation}
   G^{S}_{nn}(\omega,\mathbf k)
   =
   2T\,k^2\,
@@ -491,24 +491,24 @@ symmetrized density correlator
   \Sigma\,
   M(-\omega,\mathbf k)^T .
   \label{eq:sk-hydro-density-symmetrized-correlator}
-\]
+\end{equation}
 This matrix is positive semidefinite as a Hermitian kernel.  If
-\[
+\begin{equation}
   K^A_{nn}(\omega,\mathbf k)
   =
   K^R_{nn}(-\omega,\mathbf k)^T
   =
   k^2\Sigma\,M(-\omega,\mathbf k)^T ,
   \label{eq:sk-hydro-density-advanced-kernel}
-\]
+\end{equation}
 then, for \(\omega\ne0\),
-\[
+\begin{equation}
   G^{S}_{nn}(\omega,\mathbf k)
   =
   \frac{2T}{\omega}\,
   \frac{K^R_{nn}(\omega,\mathbf k)-K^A_{nn}(\omega,\mathbf k)}{2\ii}.
   \label{eq:sk-hydro-density-classical-fdt}
-\]
+\end{equation}
 The equality is the classical low-frequency form of the KMS
 fluctuation--dissipation relation in the density sector.
 \end{theorem}
@@ -517,81 +517,81 @@ fluctuation--dissipation relation in the density sector.
 Set the external source to zero.  With the Fourier convention fixed at the
 beginning of the chapter,
 \eqref{eq:sk-hydro-langevin-diffusion} becomes
-\[
+\begin{equation}
   (Dk^2-\ii\omega\mathbf 1)\,\mathbf n
   =
   -\ii k_i\,\boldsymbol\xi_i .
   \label{eq:sk-hydro-langevin-fourier-saddle}
-\]
+\end{equation}
 Thus \(\mathbf n=-\ii k_iM\boldsymbol\xi_i\).  Using
 \eqref{eq:sk-hydro-noise-correlator} and summing over the spatial noise
 index gives exactly
 \eqref{eq:sk-hydro-density-symmetrized-correlator}.  For real \(\omega\) and
 real \(D,\Sigma\), \(M(-\omega)^T=M(\omega)^\dagger\) after lowering and
 raising only ordinary finite charge indices, so
-\[
+\begin{equation}
   u^\dagger G^S_{nn}u
   =
   2Tk^2\,(M^\dagger u)^\dagger\Sigma(M^\dagger u)\ge0
   \label{eq:sk-hydro-density-correlator-positivity}
-\]
+\end{equation}
 for every complex vector \(u\).
 
 It remains to prove the matrix fluctuation--dissipation identity without
 assuming that \(D\) and \(\Sigma\) commute.  The response kernel from
 \eqref{eq:sk-hydro-density-response-kernel} is
-\[
+\begin{equation}
   K^R_{nn}=M k^2\Sigma .
   \label{eq:sk-hydro-density-retarded-matrix-proof}
-\]
+\end{equation}
 Since \(D=\Sigma\chi^{-1}\) and \(\chi,\Sigma\) are symmetric,
-\[
+\begin{equation}
   (Dk^2-\ii\omega)\chi=k^2\Sigma-\ii\omega\chi,
   \qquad
   \chi(D^Tk^2+\ii\omega)=k^2\Sigma+\ii\omega\chi .
   \label{eq:sk-hydro-fdt-chi-intertwining}
-\]
+\end{equation}
 Therefore
-\[
+\begin{equation}
   K^R_{nn}
   =
   M\bigl[(Dk^2-\ii\omega)\chi+\ii\omega\chi\bigr]
   =
   \chi+\ii\omega M\chi ,
   \label{eq:sk-hydro-fdt-retarded-rewrite}
-\]
+\end{equation}
 and similarly
-\[
+\begin{equation}
   K^A_{nn}
   =
   \bigl[\chi(D^Tk^2+\ii\omega)-\ii\omega\chi\bigr]M(-\omega)^T
   =
   \chi-\ii\omega\chi M(-\omega)^T .
   \label{eq:sk-hydro-fdt-advanced-rewrite}
-\]
+\end{equation}
 Subtracting gives
-\[
+\begin{equation}
   K^R_{nn}-K^A_{nn}
   =
   \ii\omega\bigl(M\chi+\chi M(-\omega)^T\bigr).
   \label{eq:sk-hydro-fdt-difference-first}
-\]
+\end{equation}
 Multiplying
 \eqref{eq:sk-hydro-fdt-chi-intertwining} on the left and right by the two
 resolvents gives
-\[
+\begin{equation}
   M\chi+\chi M(-\omega)^T
   =
   2k^2M\Sigma M(-\omega)^T .
   \label{eq:sk-hydro-fdt-resolvent-identity}
-\]
+\end{equation}
 Combining the last two displays yields
-\[
+\begin{equation}
   \frac{K^R_{nn}-K^A_{nn}}{2\ii}
   =
   \omega k^2M\Sigma M(-\omega)^T ,
   \label{eq:sk-hydro-fdt-spectral-density}
-\]
+\end{equation}
 which is equivalent to
 \eqref{eq:sk-hydro-density-classical-fdt} after using
 \eqref{eq:sk-hydro-density-symmetrized-correlator}.

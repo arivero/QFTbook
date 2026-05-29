@@ -56,16 +56,16 @@ A compactly supported smooth functional \(F\) is local if there are an
 integer \(r\) and a compactly supported smooth density-valued function \(L\)
 on the finite jet bundle \(J^rM\), polynomial in the highest derivatives in
 the usual local-coordinate presentation, such that
-\[
+\begin{equation}
   F(\phi)=\int_M L\bigl(x,j_x^r\phi\bigr),
   \label{eq:paqft-local-functional-jet-form}
-\]
+\end{equation}
 and such that \(F^{(n)}(\phi)\) is supported on the thin diagonal
 \[
   \Delta_n=\{(x,\ldots,x):x\in M\}
 \]
 for every \(n\ge2\).  Equivalently, after integrations by parts,
-\[
+\begin{equation}
   F^{(n)}(\phi)(x_1,\ldots,x_n)
   =
   \sum_{|\alpha_2|+\cdots+|\alpha_n|\le N}
@@ -73,7 +73,7 @@ for every \(n\ge2\).  Equivalently, after integrations by parts,
   \partial^{\alpha_2}\delta(x_1,x_2)\cdots
   \partial^{\alpha_n}\delta(x_1,x_n)
   \label{eq:paqft-local-functional-diagonal-kernel}
-\]
+\end{equation}
 in each coordinate chart, with coefficients depending locally and smoothly
 on a finite jet of \(\phi\).
 \end{definition}
@@ -93,14 +93,14 @@ whose functional derivatives are compactly supported distributions,
   F^{(n)}(\phi)\in\mathcal E'(M^n)
 \]
 for all \(n\).  The functional is microcausal if
-\[
+\begin{equation}
   \operatorname{WF}(F^{(n)}(\phi))
   \cap
   \left((\overline V_+^*)^n\cup(\overline V_-^*)^n\right)
   =
   \varnothing .
   \label{eq:paqft-microcausal-cone-condition}
-\]
+\end{equation}
 Here \(\overline V_\pm^*\subset T^*M\setminus0\) are the closed future and
 past causal covector cones, using the convention of
 Chapter~\ref{ch:curved-microlocal-spectrum-condition}.  The vector space of
@@ -125,7 +125,7 @@ Choose a Hadamard two-point function \(H\) whose antisymmetric part is
 where \(\Delta=\Delta_{\rm ret}-\Delta_{\rm adv}\) is the causal propagator
 of the Klein--Gordon operator.  For \(F,G\in\mathcal F_{\mu{\rm c}}(M)\),
 define
-\[
+\begin{equation}
   F\star_H G
   =
   \sum_{n=0}^{\infty}
@@ -134,15 +134,15 @@ define
     F^{(n)}(\phi), H^{\otimes n}G^{(n)}(\phi)
   \right\rangle .
   \label{eq:paqft-star-product-expanded}
-\]
+\end{equation}
 The \(n\)-th summand means
-\[
+\begin{equation}
   \int_{M^{2n}}
     F^{(n)}(\phi)(x_1,\ldots,x_n)
     \prod_{j=1}^n H(x_j,y_j)
     G^{(n)}(\phi)(y_1,\ldots,y_n),
   \label{eq:paqft-star-product-kernel}
-\]
+\end{equation}
 with the integral interpreted as the pairing of distributions.  The
 microcausal cone condition and the Hadamard wavefront set make this pairing
 well-defined.  For polynomial functionals the sum is finite; in general the
@@ -153,7 +153,7 @@ product is understood in the completed formal space
 \label{prop:paqft-star-associativity}
 The product \(\star_H\) is associative on polynomial microcausal
 functionals.  Its first-order commutator is
-\[
+\begin{equation}
   [F,G]_{\star_H}
   =
   \ii\hbar\,\{F,G\}_{\rm P}
@@ -163,7 +163,7 @@ functionals.  Its first-order commutator is
   =
   \left\langle F^{(1)},\Delta G^{(1)}\right\rangle ,
   \label{eq:paqft-peierls-first-order}
-\]
+\end{equation}
 where \(\{\,\cdot\,,\,\cdot\,\}_{\rm P}\) is the Peierls bracket of the free
 field.
 \end{proposition}
@@ -228,10 +228,10 @@ is smooth.  Define
   \right).
 \]
 Then
-\[
+\begin{equation}
   \alpha_w(F\star_H G)=\alpha_w(F)\star_{H'}\alpha_w(G).
   \label{eq:paqft-hadamard-change-isomorphism}
-\]
+\end{equation}
 Thus the abstract algebra is independent of the particular Hadamard
 parametrix up to a canonical isomorphism determined by the smooth difference.
 \end{proposition}
@@ -244,23 +244,23 @@ Let
 Because \(w\) is smooth, \(\Delta_w\) maps microcausal polynomial
 functionals to microcausal polynomial functionals.  The second-order
 operator \(\Delta_w\) satisfies
-\[
+\begin{equation}
   \Delta_w(FG)
   =
   (\Delta_wF)G+F(\Delta_wG)
   +
   2\left\langle F^{(1)},wG^{(1)}\right\rangle .
   \label{eq:paqft-laplacian-product-rule}
-\]
+\end{equation}
 Equivalently,
-\[
+\begin{equation}
   e^{\frac{\hbar}{2}\Delta_w}\circ m
   =
   m\circ e^{\hbar\Gamma_w}
     \left(e^{\frac{\hbar}{2}\Delta_w}\otimes
           e^{\frac{\hbar}{2}\Delta_w}\right),
   \label{eq:paqft-alpha-coproduct-identity}
-\]
+\end{equation}
 where \(\Gamma_w\) is the cross-contraction with kernel \(w\).  Therefore
 \[
 \begin{aligned}
@@ -291,13 +291,13 @@ not defined on diagonals.  Thus time ordering is not a pointwise operation on
 local fields; it is an extension problem for distributions.
 
 A system of time-ordered products is a family of maps
-\[
+\begin{equation}
   T_n:\mathcal F_{\rm loc}(M)^{\otimes n}
   \longrightarrow
   \mathcal F_{\mu{\rm c}}(M)[[\hbar]],
   \qquad n\ge1,
   \label{eq:paqft-time-ordered-products-maps}
-\]
+\end{equation}
 with \(T_1=\operatorname{id}\), symmetric in the \(n\) entries, equal to the
 Feynman contraction formula away from partial diagonals, and satisfying:
 \[
@@ -334,11 +334,11 @@ Then \(t^0\) has an extension \(t\in\mathcal D'(\mathbb R^N)\) with
 \(\operatorname{sd}(t)=\operatorname{sd}(t^0)\).  If
 \(\operatorname{sd}(t^0)<N\), this extension is unique.  If
 \(\operatorname{sd}(t^0)\ge N\), two such extensions differ by
-\[
+\begin{equation}
   \sum_{|\alpha|\le \operatorname{sd}(t^0)-N}
   c_\alpha\,\partial^\alpha\delta_0 ,
   \label{eq:paqft-extension-ambiguity}
-\]
+\end{equation}
 with the upper bound understood as its integer part.
 \end{theorem}
 
@@ -350,20 +350,20 @@ at the origin through degree
   r=\lfloor\operatorname{sd}(t^0)\rfloor-N
 \]
 when \(r\ge0\):
-\[
+\begin{equation}
   f_R(x)=
   f(x)-
   \rho(x)\sum_{|\alpha|\le r}\frac{x^\alpha}{\alpha!}
   (\partial^\alpha f)(0).
   \label{eq:paqft-taylor-subtracted-test-function}
-\]
+\end{equation}
 The subtracted test function vanishes to order \(r+1\) at the origin.  The
 definition of scaling degree then implies that \(t^0(f_R)\) is finite and
 independent of how \(f_R\) is represented away from the origin.  Set
-\[
+\begin{equation}
   t(f)=t^0(f_R)+\sum_{|\alpha|\le r}c_\alpha(\partial^\alpha f)(0).
   \label{eq:paqft-extension-by-taylor-subtraction}
-\]
+\end{equation}
 The constants \(c_\alpha\) are arbitrary finite renormalization constants.
 The subtraction raises the vanishing order of the test function precisely
 enough to preserve the original scaling degree, and the additional
@@ -478,13 +478,13 @@ perturbative algebraic form of local counterterm freedom.
 
 More explicitly, \(Z\) is a formal diffeomorphism of the space of local
 functionals:
-\[
+\begin{equation}
   Z(F)
   =
   F+
   \sum_{n\ge2}\frac1{n!}Z_n(F^{\otimes n}),
   \label{eq:paqft-z-expansion}
-\]
+\end{equation}
 where each \(Z_n\) is symmetric, local, and supported on the thin diagonal in
 the \(n\)-fold product.  The defining identity
 \(\widetilde S(F)=S(Z(F))\) implies that changing the extension of
@@ -502,10 +502,10 @@ ghosts, antifields, and a differential.  Consistency is the statement that
 the interacting quantum BV differential squares to zero, or equivalently
 that the renormalized time-ordered products can be chosen so that the
 quantum master equation holds:
-\[
+\begin{equation}
   \frac12(S_{\rm BV},S_{\rm BV})-\ii\hbar\,\Delta_{\rm BV}S_{\rm BV}=0
   \label{eq:paqft-bv-qme-curved}
-\]
+\end{equation}
 in the renormalized algebra.  Here \((\,\cdot\,,\,\cdot\,)\) is the BV
 antibracket and \(\Delta_{\rm BV}\) denotes the renormalized second-order
 operator measuring the short-distance contraction of fields with antifields.

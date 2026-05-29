@@ -288,22 +288,22 @@ Let \(\mathcal L_{\rm fluc}\) be a fluctuation Lagrangian cycle with boundary.
 For a semidensity \(\sigma=f\,\mu^{1/2}\) on
 \(\mathcal F_{\rm fluc}\), define
 \(\mathcal B_{\partial\mathcal L_{\rm fluc}}(\sigma)\) by
-\[
+\begin{equation}
   \int_{\mathcal L_{\rm fluc}}(\Delta_{\rm fluc}\sigma)|_{\mathcal L_{\rm fluc}}
   =
   \mathcal B_{\partial\mathcal L_{\rm fluc}}(\sigma).
   \label{eq:bv-boundary-functional-definition}
-\]
+\end{equation}
 In a Darboux chart in which
 \(\mathcal L_{\rm fluc}=\{\xi_i=0\}\), this boundary functional is the
 ordinary Stokes boundary integral of the vector density with components
-\[
+\begin{equation}
   (-1)^{|x^i|}
   \left.
   \frac{\partial f}{\partial \xi_i}
   \right|_{\xi=0}.
   \label{eq:bv-boundary-vector-density}
-\]
+\end{equation}
 The coordinate-independence is precisely the boundary version of
 Theorem~\ref{thm:finite-bv-stokes}.
 \end{definition}
@@ -315,12 +315,12 @@ Let \(\mathcal F=\mathcal F_{\rm res}\times\mathcal F_{\rm fluc}\) and let
 Lagrangian cycle with boundary.  Assume that all integrations converge and
 that \(\rho\) obeys the full finite-dimensional QME
 \(\Delta_{\mathcal F}\rho=0\).  Then the pushed semidensity satisfies
-\[
+\begin{equation}
   \Delta_{\rm res}(\pi_*\rho)
   =
   -\mathcal B_{\partial\mathcal L_{\rm fluc}}(\rho).
   \label{eq:bv-pushforward-boundary-obstruction}
-\]
+\end{equation}
 Thus BV pushforward preserves the QME if and only if the displayed boundary
 functional vanishes or is cancelled by an additional boundary, residue, or
 regulator contribution.  The same formula holds with \(\rho\) replaced by
@@ -330,7 +330,7 @@ regulator contribution.  The same formula holds with \(\rho\) replaced by
 \begin{proof}
 As in Theorem~\ref{thm:bv-pushforward-qme-preservation},
 \(\Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}\).  Therefore
-\[
+\begin{equation}
   \Delta_{\rm res}\pi_*\rho
   =
   \int_{\mathcal L_{\rm fluc}}
@@ -339,7 +339,7 @@ As in Theorem~\ref{thm:bv-pushforward-qme-preservation},
   -\int_{\mathcal L_{\rm fluc}}
   (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
   \label{eq:bv-boundary-pushforward-proof}
-\]
+\end{equation}
 Definition~\ref{def:bv-fluctuation-boundary-functional} identifies the last
 integral with the boundary functional.  This proves
 \eqref{eq:bv-pushforward-boundary-obstruction}.  The observable statement is
@@ -359,12 +359,12 @@ class rather than producing a solution of the quantum master equation.
 Gauge-theoretic localization often integrates over a smooth moduli stratum
 whose natural compactification has additional strata.  Let
 \(\mathcal M^{\rm sm}\) denote the smooth locus and let
-\[
+\begin{equation}
   \overline{\mathcal M}
   =
   \mathcal M^{\rm sm}\sqcup\bigsqcup_\alpha S_\alpha
   \label{eq:moduli-compactification-strata}
-\]
+\end{equation}
 be a stratified compactification.  In applications \(S_\alpha\) may be a
 reducible-connection stratum, a singular-monopole stratum, or the
 small-instanton stratum of an Uhlenbeck compactification.  A BV localization
@@ -390,7 +390,7 @@ consists of one of the following:
 \end{enumerate}
 In the resolution case the necessary equality is the identity of pushed
 residual semidensities
-\[
+\begin{equation}
   \pi_*^{\widetilde{\mathcal M}}\widetilde\rho
   =
   \pi_*^{\mathcal M^{\rm sm}}\rho
@@ -401,7 +401,7 @@ residual semidensities
   =
   \mathcal B_{S_\alpha}(\rho),
   \label{eq:resolved-boundary-cancellation-data}
-\]
+\end{equation}
 where \(C_\alpha\) is the contribution supported over the exceptional or
 relative piece replacing \(S_\alpha\).  Equation
 \eqref{eq:resolved-boundary-cancellation-data} is data to be proved from
@@ -416,12 +416,12 @@ full regulated semidensity obeys the QME before the limiting
 compactification is taken.  If the compactification of
 \(\mathcal M^{\rm sm}\) contains strata \(S_\alpha\), then the residual
 localized semidensity obeys
-\[
+\begin{equation}
   \Delta_{\rm res}(\pi_*^{\mathcal M^{\rm sm}}\rho)
   =
   -\sum_\alpha \mathcal B_{S_\alpha}(\rho).
   \label{eq:singular-stratum-localized-qme-obstruction}
-\]
+\end{equation}
 Therefore the localized expression is a BV pushforward satisfying the QME
 only after boundary-cancellation data in the sense of
 Definition~\ref{def:boundary-cancellation-data} have been supplied and
@@ -434,13 +434,13 @@ moduli problem and remove a tubular neighborhood of radius \(\epsilon\).
 The resulting truncated fixed locus
 \(\mathcal M_\epsilon^{\rm sm}\) is a manifold with boundary.  Applying
 Proposition~\ref{prop:bv-pushforward-boundary-obstruction} gives
-\[
+\begin{equation}
   \Delta_{\rm res}(\pi_*^{\mathcal M_\epsilon^{\rm sm}}\rho)
   =
   -\sum_\alpha
   \mathcal B_{\partial_\alpha\mathcal M_\epsilon^{\rm sm}}(\rho).
   \label{eq:singular-stratum-truncated-boundary}
-\]
+\end{equation}
 If the limit \(\epsilon\to0\) exists as a distributional or semidensity
 limit, the boundary functionals converge to the stratum functionals
 \(\mathcal B_{S_\alpha}(\rho)\), giving

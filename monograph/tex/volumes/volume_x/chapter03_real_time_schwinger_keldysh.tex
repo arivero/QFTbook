@@ -57,19 +57,19 @@ by a single contour-ordered expression.  This notation is shorthand for an
 operator identity, not an additional axiom.  Let \(\mathcal C\) be the
 oriented contour that runs from \(t_i\) to \(t_f\) on the \(+\) branch and
 then from \(t_f\) back to \(t_i\) on the \(-\) branch.  Define
-\[
+\begin{equation}
   \int_{\mathcal C} dt_{\mathcal C}\, J_{\mathcal C}^\alpha O_\alpha
   =
   \int_{t_i}^{t_f}dt\,J_+^\alpha(t)O_\alpha(t)
   -
   \int_{t_i}^{t_f}dt\,J_-^\alpha(t)O_\alpha(t).
   \label{eq:sk-contour-source-orientation}
-\]
+\end{equation}
 The minus sign is the orientation of the backward branch.  The contour
 ordering operator \(\operatorname{T}_{\mathcal C}\) orders later contour
 points to the left.  With the interaction-picture convention determined by
 the unperturbed Hamiltonian,
-\[
+\begin{equation}
   Z[J_+,J_-]
   =
   \operatorname{Tr}\!\left(
@@ -80,7 +80,7 @@ the unperturbed Hamiltonian,
       J_{\mathcal C}^\alpha(t_{\mathcal C})O_\alpha(t_{\mathcal C})
     \right]\right).
   \label{eq:sk-contour-ordered-generating-functional}
-\]
+\end{equation}
 Expanding the contour exponential reproduces the four derivative rules below
 because insertions on the backward branch are anti-time ordered and carry the
 orientation sign in \eqref{eq:sk-contour-source-orientation}.

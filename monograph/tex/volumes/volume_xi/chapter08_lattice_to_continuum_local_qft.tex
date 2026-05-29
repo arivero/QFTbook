@@ -30,29 +30,29 @@ The operator basis and normalization are part of the continuum-limit datum.
 A useful way to remove a common normalization ambiguity is to use cell
 averages.  Let \(Q_a(x)\) be the half-open cube of side \(a\) centered at
 \(x\in a\mathbb Z^d\), and define
-\[
+\begin{equation}
   (I_af)(x)=a^{-d}\int_{Q_a(x)} f(u)\,d^du .
   \label{eq:cell-average-map}
-\]
+\end{equation}
 The smeared lattice field is then
-\[
+\begin{equation}
   \Phi_a(f)
   =
   Z_a^{1/2}a^d\sum_{x\in a\mathbb Z^d}(I_af)(x)\phi_a(x).
   \label{eq:cell-average-smeared-field}
-\]
+\end{equation}
 This is exactly the pairing of the lattice field with the piecewise-constant
 test function
-\[
+\begin{equation}
   f_a(u)=\sum_{x\in a\mathbb Z^d}(I_af)(x)\mathbf 1_{Q_a(x)}(u).
   \label{eq:piecewise-constant-test-function}
-\]
+\end{equation}
 
 \begin{proposition}[Cell averages approximate test functions]
 \label{prop:cell-average-test-function-convergence}
 Let \(K\subset\mathbb R^d\) be compact and let \(f,h\in C_c^1(\mathbb R^d)\)
 have support contained in \(K\).  Then
-\[
+\begin{equation}
   \left|
   a^d\sum_{x\in a\mathbb Z^d}(I_af)(x)(I_ah)(x)
   -
@@ -62,7 +62,7 @@ have support contained in \(K\).  Then
   C_K a
   \bigl(\|f\|_{C^1}\|h\|_{C^0}+\|f\|_{C^0}\|h\|_{C^1}\bigr),
   \label{eq:cell-average-product-error}
-\]
+\end{equation}
 where \(C_K\) depends only on a fixed compact enlargement of \(K\).  In
 particular \(f_a\to f\) in \(L^2_{\mathrm{loc}}\).
 \end{proposition}
@@ -140,20 +140,20 @@ supported in a compact set \(K\), a typical seminorm is
 Let \(T_a\) be a family of \(n\)-linear functionals on \(\mathcal D\), and
 let \(D_0\subset\mathcal D\) be dense in the seminorm used below.  Assume
 there are a constant \(C\) and a continuous seminorm \(p\) such that
-\[
+\begin{equation}
   |T_a(f_1,\ldots,f_n)|
   \leq
   C\,p(f_1)\cdots p(f_n)
   \label{eq:uniform-multilinear-seminorm-bound}
-\]
+\end{equation}
 for all sufficiently small \(a\), and assume \(T_a(g_1,\ldots,g_n)\)
 converges for all \(g_i\in D_0\).  Then there is a unique continuous
 \(n\)-linear functional \(T\) satisfying
-\[
+\begin{equation}
   \lim_{a\to0}T_a(f_1,\ldots,f_n)=T(f_1,\ldots,f_n)
   \qquad(f_i\in\mathcal D).
   \label{eq:dense-test-extension-limit}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -189,46 +189,46 @@ The most concrete bridge from lattice locality to continuum estimates is the
 path expansion of a massive lattice Green function.  Let \(G=(V,E)\) be a
 finite undirected \(r\)-regular graph without self-loops, let \(A\) be its
 adjacency matrix, and let \(m^2>0\).  Define
-\[
+\begin{equation}
   K_m=(m^2+r)I-A .
   \label{eq:massive-finite-graph-operator}
-\]
+\end{equation}
 For vertices \(x,y\), let \(N_n(x,y)\) be the number of length-\(n\) nearest
 neighbor paths from \(x\) to \(y\), equivalently \(N_n(x,y)=(A^n)_{xy}\).
 
 \begin{proposition}[Finite-graph random-walk resolvent]
 \label{prop:finite-graph-random-walk-resolvent}
 The matrix \(K_m\) is positive definite and
-\[
+\begin{equation}
   (K_m^{-1})_{xy}
   =
   \sum_{n=0}^{\infty}
   \frac{N_n(x,y)}{(m^2+r)^{n+1}} .
   \label{eq:finite-graph-random-walk-resolvent}
-\]
+\end{equation}
 Equivalently, if \(P=A/r\) is the simple-random-walk transition matrix and
 \[
   \rho=\frac{r}{m^2+r}<1,
 \]
 then
-\[
+\begin{equation}
   (K_m^{-1})_{xy}
   =
   \frac1{m^2+r}\sum_{n=0}^{\infty}\rho^n P^n(x,y).
   \label{eq:finite-graph-random-walk-probability-form}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
 For any vector \(u\),
-\[
+\begin{equation}
   u^*K_m u
   =
   m^2\sum_x |u_x|^2
   +
   \frac12\sum_{x\sim y}|u_x-u_y|^2 ,
   \label{eq:finite-graph-positive-quadratic-form}
-\]
+\end{equation}
 where each unoriented edge is counted once.  Thus \(K_m\) is positive
 definite.  Since the operator norm of \(A\) on \(\ell^2(V)\) is at most \(r\),
 \[
@@ -250,12 +250,12 @@ Taking the \((x,y)\) matrix entry gives
 
 For a cubic lattice with spacing \(a\), the free covariance is obtained from
 the same formula after the replacement
-\[
+\begin{equation}
   K_{m,a}=m^2I-a^{-2}\sum_{\mu=1}^{d}(T_\mu+T_\mu^{-1}-2I)
   =
   (m^2+2da^{-2})I-a^{-2}A .
   \label{eq:massive-cubic-lattice-operator}
-\]
+\end{equation}
 The path expansion then weights an \(n\)-step path by
 \[
   a^{-2n}\bigl(m^2+2da^{-2}\bigr)^{-(n+1)}
@@ -287,17 +287,17 @@ verified for the limiting distributions.
 Let \(S_a\) be reflection-positive Schwinger functionals on a common
 positive-time test algebra \(\mathfrak A_+\).  Suppose that, for every
 finite list \(F_1,\ldots,F_N\in\mathfrak A_+\), the limits
-\[
+\begin{equation}
   \lim_{a\to0} S_a(F_i^\Theta F_j)
   =
   S(F_i^\Theta F_j)
   \label{eq:reflection-positive-matrix-entry-limit}
-\]
+\end{equation}
 exist.  Then the limiting functional \(S\) is reflection positive:
-\[
+\begin{equation}
   \sum_{i,j=1}^{N}\overline c_i c_j\,S(F_i^\Theta F_j)\geq0
   \label{eq:limit-reflection-positivity}
-\]
+\end{equation}
 for all \(c_i\in\mathbb C\).
 \end{proposition}
 
@@ -335,10 +335,10 @@ boundary.
 
 For spin systems the algebraic limit can be stated directly.  Let
 \(\mathcal H_x\) be a finite-dimensional Hilbert space at each site and set
-\[
+\begin{equation}
   \mathcal A_a(X)=\bigotimes_{x\in X}\operatorname{End}(\mathcal H_x)
   \label{eq:finite-region-spin-algebra}
-\]
+\end{equation}
 for a finite set \(X\subset\Lambda_a\).  If \(X\subset Y\), the inclusion is
 \[
   A\longmapsto A\otimes \mathbf 1_{Y\setminus X}.

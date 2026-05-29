@@ -537,7 +537,7 @@ and the representation ratios
   x_i^+=\ii d_i/b_i,\qquad x_i^-=-\ii a_i/c_i,\qquad a_id_i-b_ic_i=1
 \]
 are used, the finite linear system has the following row-echelon chart:
-\[
+\begin{equation}
 \begin{gathered}
   B_{12}=\beta_{12}A_{12},\qquad
   C_{12}=\gamma_{12}A_{12},\qquad
@@ -550,9 +550,9 @@ are used, the finite linear system has the following row-echelon chart:
   L_{12}=\ell_{12}A_{12},
 \end{gathered}
 \label{eq:planar-n4-su2c-row-chart}
-\]
+\end{equation}
 where
-\[
+\begin{equation}
 \begin{aligned}
   \beta_{12}
   &=
@@ -600,7 +600,7 @@ where
   \frac{x_2^- -x_1^-}{n_{12}} .
 \end{aligned}
 \label{eq:planar-n4-su2c-row-coefficients}
-\]
+\end{equation}
 Consequently the solution space of the finite intertwining equations is
 one-dimensional on this open set.  Choosing
 \[
@@ -996,7 +996,7 @@ Assume \(x_1^\pm\) and \(x_2^\pm\) lie in the physical DHM chamber
 crossing path of Definition~\ref{def:planar-n4-crossing-path}, so that
 \(\bar x_1^\pm=1/x_1^\pm\) lie in the inside radial chamber.  Suppose the
 path avoids the Gamma-function poles of the DHM kernel.  Define
-\[
+\begin{equation}
 \begin{aligned}
   \theta_{\rm raw}^{-,+}(\bar x_1^\pm,x_2^\pm)
   &=
@@ -1012,7 +1012,7 @@ path avoids the Gamma-function poles of the DHM kernel.  Define
   -\Psi_x^{+}(\bar x_1^-,x_2^-).
 \end{aligned}
   \label{eq:planar-n4-crossed-bes-theta-local-residue}
-\]
+\end{equation}
 Then the local DHM continuation of the BES phase for the crossed first
 particle is
 \begin{equation}
@@ -1153,7 +1153,7 @@ coefficient of \(x^{1-r}y^{1-s}\) is the displayed constant times
 It remains to evaluate the Laurent coefficient.  Put
 \(a=r-1\) and \(b=s-1\).  Expanding first in the number \(\ell\) of
 \((-w-w^{-1})\) factors gives the finite convolution
-\[
+\begin{equation}
   R^{(N)}_{r,s}
   =
   \sum_{\ell=0}^{N}
@@ -1162,7 +1162,7 @@ It remains to evaluate the Laurent coefficient.  Put
   \binom{N-\ell}{(N-\ell+a)/2}
   \binom{\ell}{(\ell+b)/2},
   \label{eq:planar-n4-dhm-residue-binomial-sum}
-\]
+\end{equation}
 where a binomial coefficient is declared zero unless its lower entry is an
 integer between \(0\) and the upper entry.  This convention records the parity
 and support restrictions.
@@ -2211,12 +2211,12 @@ Assume a \(Q\)-string is formed by the adjacent-pole conditions
 \]
 and that the path to this pole does not cross a dressing-phase branch
 singularity.  Then the total momentum and physical energy of the string are
-\[
+\begin{equation}
   \ee^{\ii p}=\frac{x_1^+}{x_Q^-},
   \qquad
   H_Q(u)=Q+2\ii g\left(\frac1{x_Q^+(u)}-\frac1{x_Q^-(u)}\right),
   \label{eq:planar-n4-bound-state-momentum-energy}
-\]
+\end{equation}
 and the shortening identity gives
 \begin{equation}
   H_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
@@ -2478,7 +2478,7 @@ Definition~\ref{def:finite-density-bethe-root-curve}, and assume that
 \(\rho\) is Hölder continuous on the interior of a cut \(\mathcal C_a\).
 For \(u\in\mathcal C_a^\circ\), denote by \(G_+(u)\) and \(G_-(u)\) the
 boundary values from the two sides of the oriented arc.  Then
-\[
+\begin{equation}
   G_+(u)-G_-(u)=-2\pi\ii\,\rho(u),
   \qquad
   \frac{G_+(u)+G_-(u)}2
@@ -2486,25 +2486,25 @@ boundary values from the two sides of the oriented arc.  Then
   \operatorname{p.v.}\int_{\mathcal C}
   \frac{\rho(v)\,\dd s(v)}{u-v}.
   \label{eq:finite-density-cauchy-jump}
-\]
+\end{equation}
 Consequently, whenever the continuum logarithmic Bethe equation has the form
-\[
+\begin{equation}
   2\,\operatorname{p.v.}\int_{\mathcal C}
   \frac{\rho(v)\,\dd s(v)}{u-v}
   =
   V'(u)-2\pi n_a,\qquad u\in\mathcal C_a^\circ,
   \label{eq:finite-density-continuum-bethe}
-\]
+\end{equation}
 with integer mode number \(n_a\) on \(\mathcal C_a\), the quasimomentum
-\[
+\begin{equation}
   p(z)=\frac12V'(z)-G(z)
   \label{eq:finite-density-quasimomentum}
-\]
+\end{equation}
 satisfies the gluing condition
-\[
+\begin{equation}
   p_+(u)+p_-(u)=2\pi n_a .
   \label{eq:finite-density-quasimomentum-gluing}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -2771,7 +2771,7 @@ and the scalar factor contributes
 The \(O(S)\) bulk roots are described by the one-cut density
 \eqref{eq:planar-n4-sl2-cusp-density}; expanding their contribution for
 fixed \(u\) produces the driving term
-\[
+\begin{equation}
   \partial_u\left[
   \frac1{2g}\left(\frac1{x^+(u)}+\frac1{x^-(u)}\right)
   +
@@ -2780,7 +2780,7 @@ fixed \(u\) produces the driving term
   \left(\frac1{x^+(u)^{2n}}-\frac1{x^-(u)^{2n}}\right)
   \right].
   \label{eq:planar-n4-bes-inner-driving}
-\]
+\end{equation}
 The explicit \(L\)-dependent terms in the logarithmic Bethe equation are
 smaller than this driving term in the scaling regime \(\log S\gg L\), so they
 affect the \(O(S^0)\) part rather than \(f(g)\).

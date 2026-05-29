@@ -25,12 +25,12 @@ Let \(m>0\), let
 \]
 be the massive Euclidean covariance on \(\R^d\), and let \(\mu_C\) be the
 centered Gaussian generalized field with covariance
-\[
+\begin{equation}
   \mathbb E_{\mu_C}[\phi(f)\phi(g)]
   =
   \int_{\R^d\times\R^d} f(x)C(x-y)g(y)\,\dd^dx\,\dd^dy .
   \label{eq:constructive-gaussian-covariance}
-\]
+\end{equation}
 The field \(\phi\) is not a pointwise function.  The expression
 \(\phi(x)^k\) is therefore not defined until a regularization and a limiting
 procedure have been supplied.
@@ -113,14 +113,14 @@ Let \(\Lambda\subset\R^2\) be a square or torus, and let
 \]
 be bounded below.  Wick ordering is always relative to the Gaussian
 covariance used in the finite regulator.  The regulated interaction is
-\[
+\begin{equation}
   V_{\varepsilon,\Lambda}(\phi)
   =
   \int_\Lambda :\!P(\phi_\varepsilon(x))\!:\,\dd^2x .
   \label{eq:p-phi-two-regulated-interaction}
-\]
+\end{equation}
 The finite-volume Schwinger functional is
-\[
+\begin{equation}
   S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
   =
   \frac{1}{Z_{\varepsilon,\Lambda}}
@@ -128,7 +128,7 @@ The finite-volume Schwinger functional is
   \prod_{i=1}^n\phi_\varepsilon(f_i)\,
   \exp[-V_{\varepsilon,\Lambda}(\phi)]\,\dd\mu_C(\phi).
   \label{eq:p-phi-two-schwinger-regulated}
-\]
+\end{equation}
 This formula is meaningful because the cutoff field is a finite-variance
 Gaussian process after smearing.  The theorem is the existence and
 identification of the limits in which \(\varepsilon\downarrow0\) and
@@ -597,7 +597,7 @@ is
   V(g)=\lambda\int g(x):\!\phi(x)^4\!:\,\dd x .
 \]
 The decisive estimates are number-operator bounds of the form
-\[
+\begin{equation}
   \|(N+1)^{-2}V(g)(N+1)^{-2}\|
   \leq C_g|\lambda|,
   \qquad
@@ -605,7 +605,7 @@ The decisive estimates are number-operator bounds of the form
   \leq
   \alpha\|H_0\psi\|+\beta\|\psi\|
   \label{eq:constructive-number-operator-bound}
-\]
+\end{equation}
 with \(\alpha<1\) after localization and choice of constants.  These
 estimates imply self-adjointness and lower boundedness of
 \[
@@ -1224,13 +1224,13 @@ model-specific multiscale estimate producing their hypotheses.
 \section{OS Data Produced by a Construction}
 
 The output of a constructive scalar theorem is a hierarchy
-\[
+\begin{equation}
   S_n(f_1,\ldots,f_n)
   =
   \lim_{\Lambda\uparrow\R^d,\ \varepsilon\downarrow0}
   S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
   \label{eq:constructive-schwinger-output}
-\]
+\end{equation}
 on Schwartz test functions or on a declared nuclear test space.  The data
 must include the following.
 

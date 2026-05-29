@@ -388,13 +388,13 @@ so that the mixed and cutoff covariances are translation invariant kernels
   \frac{\mu^\sigma(k/N)^2}{|k|^2+m^2}e^{ik\cdot z}.
 \]
 Then, for every \(1\leq p<\infty\),
-\[
+\begin{equation}
   C_N^{\sigma\infty}\longrightarrow C,
   \qquad
   C_N^{\sigma\sigma}\longrightarrow C
   \quad\hbox{in }L^p(\mathbb T^2).
   \label{eq:spde-smooth-fourier-multiplier-covariance-lp}
-\]
+\end{equation}
 Consequently the hypotheses of
 Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits} hold for
 every finite Wick order \(n\).
@@ -447,12 +447,12 @@ support, derivatives of \(\nu_N\) satisfy
 \]
 Together with the corresponding derivative bounds for
 \(\chi_j\) and \((|\xi|^2+m^2)^{-1}\), this gives
-\[
+\begin{equation}
   |\partial^\alpha q_{j,N}^{\nu}(\xi)|
   \leq
   C_\alpha\,2^{-2j}2^{-j|\alpha|}.
   \label{eq:spde-smooth-multiplier-symbol-derivatives}
-\]
+\end{equation}
 Let \(\check q_{j,N}^{\nu}\) be the inverse Fourier transform on
 \(\mathbb R^2\).  Integrating by parts in the oscillatory integral and
 using \eqref{eq:spde-smooth-multiplier-symbol-derivatives} gives
@@ -470,14 +470,14 @@ only finitely many lattice modes.
 
 Summing \eqref{eq:spde-smooth-multiplier-dyadic-kernel-bound} over \(j\)
 with \(M>2\) gives the logarithmic majorant
-\[
+\begin{equation}
   \left|
     \sum_{j\geq-1}K_{j,N}^{\nu}(z)
   \right|
   \leq
   C\bigl(1+|\log d_{\mathbb T^2}(z,0)|\bigr),
   \label{eq:spde-smooth-multiplier-log-majorant}
-\]
+\end{equation}
 where the right side is interpreted as a bounded function away from
 \(z=0\).  The logarithmic singularity belongs to
 \(L^p(\mathbb T^2)\) for every finite \(p\), because in polar coordinates
@@ -542,14 +542,14 @@ functions in \(L^n(\mathbb T^2\times\mathbb T^2)\) and that, for
   \label{eq:spde-mixed-covariance-common-wick-limits}
 \end{equation}
 Then, for every real \(f\in C^\infty(\mathbb T^2)\),
-\[
+\begin{equation}
   :\!(X_N^\sigma)^n\!:(f)
   \longrightarrow
   :\!X^n\!:(f)
   \quad\hbox{in }L^2(\Omega),
   \qquad \sigma=A,B,
   \label{eq:spde-mixed-covariance-wick-coordinate-convergence}
-\]
+\end{equation}
 where each Wick product is normal ordered with respect to the covariance of
 the Gaussian field appearing in it.
 \end{proposition}
@@ -650,13 +650,13 @@ More generally, suppose \(X_N^A\) and \(X_N^B\) are two cutoff
 approximations of the same massive Gaussian field on a common probability
 space, and suppose that, for every \(j\) and
 \(\sigma\in\{A,B\}\),
-\[
+\begin{equation}
   :\!(X_N^\sigma)^{n_j}\!:(f_j)
   \longrightarrow
   :\!X^{n_j}\!:(f_j)
   \quad\hbox{in }L^2(\Omega).
   \label{eq:spde-common-wick-coordinate-l2-hypothesis}
-\]
+\end{equation}
 Then the coordinate vectors
 \[
   \mathcal X_N^\sigma
@@ -665,19 +665,19 @@ Then the coordinate vectors
         :\!(X_N^\sigma)^{n_r}\!:(f_r)\bigr)
 \]
 satisfy
-\[
+\begin{equation}
   \mathcal X_N^\sigma\longrightarrow\mathcal X
   \quad\hbox{in }L^2(\Omega;\R^r)
   \quad\hbox{and in probability},
   \qquad \sigma=A,B .
   \label{eq:spde-common-wick-coordinate-vector-convergence}
-\]
+\end{equation}
 For every bounded continuous \(F:\R^r\to\C\),
-\[
+\begin{equation}
   F(\mathcal X_N^\sigma)\longrightarrow F(\mathcal X)
   \quad\hbox{in probability}.
   \label{eq:spde-common-wick-coordinate-observable-convergence}
-\]
+\end{equation}
 For the single Fourier cutoff sequence, each coordinate converges in
 \(L^2(\Omega)\) by
 Proposition~\ref{prop:spde-two-dimensional-wick-powers}.  Therefore
@@ -1256,12 +1256,12 @@ If \(\beta<0\), then the low-frequency sum satisfies
 \]
 because \(\sum_{i<j}2^{-i\beta}\leq C2^{-j\beta}\).  Thus, for
 \(\alpha>0\) and \(\beta<0\),
-\[
+\begin{equation}
   \|g\prec f\|_{\mathcal C^{\alpha+\beta}}
   \leq
   C\|g\|_{\mathcal C^\beta}\|f\|_{\mathcal C^\alpha}.
   \label{eq:spde-besov-right-paraproduct}
-\]
+\end{equation}
 For the resonant term, the block \(\Delta_\ell(f\circ g)\) receives only
 indices \(i,j\geq \ell-C_1\) with \(|i-j|\leq1\).  Therefore
 \[
@@ -1926,7 +1926,7 @@ It remains to prove the time-derivative bound.  Let
 \]
 Testing the smooth equation against \(v\) therefore gives, in the dual
 space \(H^{-1}\),
-\[
+\begin{equation}
 \begin{aligned}
   \|\partial_tY_n\|_{H^{-1}}
   \leq C\Big(
@@ -1940,7 +1940,7 @@ space \(H^{-1}\),
   \Big).
   \label{eq:spde-dpd-time-derivative-pointwise-bound}
 \end{aligned}
-\]
+\end{equation}
 Here and below the spatial norms are taken on \(\mathbb T^2\) at the fixed
 time under consideration.  Taking the \(L^{4/3}\)-norm in time and using
 Hölder's inequality on \(Q_T\) gives
@@ -2219,11 +2219,11 @@ Let \(Y\) be the Besov--Holder mild solution obtained from
 Theorem~\ref{thm:spde-dpd-besov-local-fixed-point} for the data
 \((Y_0,\mathbb X)\).  Then there is a time \(T\in(0,T_0]\), depending only
 on a bounded neighborhood of the convergent data, such that
-\[
+\begin{equation}
   Y_n\longrightarrow Y
   \qquad\text{in }C([0,T];\mathcal C^\alpha).
   \label{eq:spde-dpd-besov-energy-compatibility-local-convergence}
-\]
+\end{equation}
 
 Assume in addition that, on \(Q_T=[0,T]\times\mathbb T^2\),
 \[
@@ -2476,7 +2476,7 @@ Theorem~\ref{thm:spde-dpd-besov-local-fixed-point}, and put
 \]
 Let \(C_0\) and \(C_1\) be constants such that, for all
 \(0\leq t\leq1\) and all intervals \(I\) of length at most \(1\),
-\[
+\begin{equation}
   \|e^{tA}f\|_{\mathcal C^\alpha}
   \leq C_0\|f\|_{\mathcal C^\alpha},
   \qquad
@@ -2485,7 +2485,7 @@ Let \(C_0\) and \(C_1\) be constants such that, for all
   \leq
   C_1 |I|^{1-\theta}\|F\|_{C(I;\mathcal C^{-\kappa})}.
   \label{eq:spde-rough-forcing-bootstrap-semigroup}
-\]
+\end{equation}
 Let \(Y\in C([0,T];\mathcal C^\alpha)\) solve the Besov mild equation
 \eqref{eq:spde-dpd-besov-mild-equation} on \([0,T]\).  Choose a partition
 \[
@@ -2502,10 +2502,10 @@ a local rough-forcing estimate
   \label{eq:spde-local-rough-forcing-estimate}
 \end{equation}
 with \(A_\ell\geq0\) and
-\[
+\begin{equation}
   |\lambda|C_1\delta^{1-\theta}\varepsilon\leq \frac12 .
   \label{eq:spde-rough-forcing-absorption-condition}
-\]
+\end{equation}
 Then, writing
 \[
   D_0=
@@ -2520,13 +2520,13 @@ and recursively
   \qquad 1\leq \ell\leq M-1,
 \]
 one has
-\[
+\begin{equation}
   \|Y\|_{C(I_\ell;\mathcal C^\alpha)}\leq D_\ell,
   \qquad 0\leq\ell\leq M-1.
   \label{eq:spde-rough-forcing-bootstrap-recursive-bound}
-\]
+\end{equation}
 Equivalently,
-\[
+\begin{equation}
   \|Y\|_{C([0,T];\mathcal C^\alpha)}
   \leq
   (2C_0)^M\|Y(0)\|_{\mathcal C^\alpha}
@@ -2534,7 +2534,7 @@ Equivalently,
   2|\lambda|C_1\delta^{1-\theta}
   \sum_{j=0}^{M-1}(2C_0)^{M-1-j}A_j .
   \label{eq:spde-rough-forcing-bootstrap-explicit-bound}
-\]
+\end{equation}
 In particular, if the numbers \(A_\ell\) are bounded uniformly on a compact
 set of enhanced noises and initial conditions, and if the same
 \(\delta,\varepsilon\) satisfy
@@ -2545,7 +2545,7 @@ Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion} follows.
 
 \begin{proof}
 For \(t\in I_\ell\), the mild equation restarted at time \(t_\ell\) is
-\[
+\begin{equation}
   Y(t)
   =
   e^{(t-t_\ell)A}Y(t_\ell)
@@ -2555,7 +2555,7 @@ For \(t\in I_\ell\), the mild equation restarted at time \(t_\ell\) is
   e^{(t-s)A}
   \mathcal N_{\mathcal C}(Y(s),\mathbb X(s))\,\dd s .
   \label{eq:spde-rough-forcing-restarted-mild}
-\]
+\end{equation}
 Taking the \(C(I_\ell;\mathcal C^\alpha)\) norm and using
 \eqref{eq:spde-rough-forcing-bootstrap-semigroup} gives
 \[
@@ -2571,13 +2571,13 @@ Taking the \(C(I_\ell;\mathcal C^\alpha)\) norm and using
 Insert the rough-forcing estimate
 \eqref{eq:spde-local-rough-forcing-estimate}.  The absorption condition
 \eqref{eq:spde-rough-forcing-absorption-condition} implies
-\[
+\begin{equation}
   R_\ell
   \leq
   2C_0\|Y(t_\ell)\|_{\mathcal C^\alpha}
   +2|\lambda|C_1\delta^{1-\theta}A_\ell .
   \label{eq:spde-rough-forcing-single-step}
-\]
+\end{equation}
 For \(\ell=0\) this is exactly \(R_0\leq D_0\).  If \(\ell\geq1\), then
 \(\|Y(t_\ell)\|_{\mathcal C^\alpha}\leq R_{\ell-1}\).  Induction using
 \eqref{eq:spde-rough-forcing-single-step} proves
@@ -2683,14 +2683,14 @@ is compact in \(H^{-\kappa}(\mathbb T^2)\), and
 Write the Fourier coefficients of \(\phi\) as \(\widehat\phi(k)\),
 \(k\in\mathbb Z^2\), and set
 \(\langle k\rangle=(1+|k|^2)^{1/2}\).  The Sobolev norms are
-\[
+\begin{equation}
   \|\phi\|_{H^{-\rho}}^2
   =
   \sum_{k\in\mathbb Z^2}
   \langle k\rangle^{-2\rho}|\widehat\phi(k)|^2 ,
   \qquad \rho\geq0 .
   \label{eq:spde-negative-sobolev-fourier-norm}
-\]
+\end{equation}
 Let \(P_M\) be the projection to Fourier modes \(|k|\leq M\), and write
 \(\langle M\rangle=(1+M^2)^{1/2}\).  If \(\phi\in K_R\), then
 \[
@@ -2783,14 +2783,14 @@ By definition of the Hilbert Sobolev norm associated with the Laplacian,
   |(\phi_N,e_\alpha)_{L^2}|^2 .
 \]
 Taking expectation and using \(\mathbb E g_\alpha^2=1\) gives
-\[
+\begin{equation}
   \mathbb E\|\phi_N\|_{H^{-\eta}}^2
   =
   \sum_{\alpha\in\mathcal I_N}
   (1+\lambda_\alpha)^{-\eta}
   (\lambda_\alpha+m^2)^{-1}.
   \label{eq:spde-free-gaussian-hminus-eta-second-moment}
-\]
+\end{equation}
 There is a constant \(c_m<\infty\) such that
 \((\lambda+m^2)^{-1}\leq c_m(1+\lambda)^{-1}\) for all \(\lambda\geq0\).
 Thus the right hand side of
@@ -2855,7 +2855,7 @@ Consequently \(\{\mu_N\}\) is tight in \(H^{-\kappa}(\mathbb T^2)\).
 
 \begin{proof}
 Let \(a=q/(q-1)\).  Holder's inequality gives
-\[
+\begin{equation}
   \int\|\phi\|_{H^{-\eta}}^r\,\dd\mu_N(\phi)
   =
   \int\|\phi\|_{H^{-\eta}}^r\rho_N(\phi)\,\dd\gamma_N(\phi)
@@ -2865,7 +2865,7 @@ Let \(a=q/(q-1)\).  Holder's inequality gives
     \int\|\phi\|_{H^{-\eta}}^{ar}\,\dd\gamma_N(\phi)
   \right)^{1/a}.
   \label{eq:spde-lq-density-holder}
-\]
+\end{equation}
 It remains to bound the Gaussian moment uniformly.  Since \(\gamma_N\) is a
 finite-dimensional centered Gaussian law on the Hilbert space
 \(H^{-\eta}\), its covariance operator is a nonnegative symmetric operator
@@ -2987,7 +2987,7 @@ and hence, by Fubini in the finite-dimensional cutoff space,
   \int V_N(\phi)\,\dd\mu_{0,N}(\phi)=0 .
 \]
 Jensen's inequality for the convex function \(u\mapsto e^{-u}\) gives
-\[
+\begin{equation}
   Z_N
   =
   \int e^{-V_N}\,\dd\mu_{0,N}
@@ -2995,7 +2995,7 @@ Jensen's inequality for the convex function \(u\mapsto e^{-u}\) gives
   \exp\!\left[-\int V_N\,\dd\mu_{0,N}\right]
   =1 .
   \label{eq:spde-wick-quartic-partition-lower-bound}
-\]
+\end{equation}
 Therefore, for \(q\geq1\),
 \[
   \|\rho_N\|_{L^q(\mu_{0,N})}^q
@@ -3035,19 +3035,19 @@ Let \((\Omega,\mathcal F,\gamma)\) be a probability space.  For
 \]
 be measurable, and let \(X:\Omega\to\R^r\), \(W:\Omega\to[0,\infty)\) be
 measurable limits.  Assume
-\[
+\begin{equation}
   X_N^\sigma\longrightarrow X
   \quad\hbox{in }\gamma\hbox{-probability},
   \qquad
   W_N^\sigma\longrightarrow W
   \quad\hbox{in }L^1(\gamma)
   \label{eq:spde-common-density-limit-hypotheses}
-\]
+\end{equation}
 for \(\sigma=A,B\).  Assume also that there is \(p>1\) such that
-\[
+\begin{equation}
   \sup_{N,\sigma}\|W_N^\sigma\|_{L^p(\gamma)}<\infty .
   \label{eq:spde-common-density-limit-uniform-integrability}
-\]
+\end{equation}
 Set
 \[
   Z_N^\sigma=\int W_N^\sigma\,\dd\gamma,
@@ -3056,7 +3056,7 @@ Set
 \]
 and suppose \(Z>0\).  Then, for every bounded continuous
 \(F:\R^r\to\C\),
-\[
+\begin{equation}
   \lim_{N\to\infty}
   \frac{\int F(X_N^A)W_N^A\,\dd\gamma}{Z_N^A}
   =
@@ -3065,7 +3065,7 @@ and suppose \(Z>0\).  Then, for every bounded continuous
   \lim_{N\to\infty}
   \frac{\int F(X_N^B)W_N^B\,\dd\gamma}{Z_N^B}.
   \label{eq:spde-bounded-cylinder-common-density-limit}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -3131,23 +3131,23 @@ be measurable real-valued interaction functionals, put
   W_N^\sigma=e^{-V_N^\sigma},\qquad W=e^{-V},
 \]
 and assume
-\[
+\begin{equation}
   X_N^\sigma\longrightarrow X,
   \qquad
   V_N^\sigma\longrightarrow V
   \quad\hbox{in }\gamma\hbox{-probability}
   \label{eq:spde-common-potential-convergence}
-\]
+\end{equation}
 for \(\sigma=A,B\).  Assume further that, for some \(p>1\),
-\[
+\begin{equation}
   \sup_{N,\sigma}\|e^{-V_N^\sigma}\|_{L^p(\gamma)}<\infty,
   \qquad
   Z:=\int e^{-V}\,\dd\gamma>0 .
   \label{eq:spde-common-potential-lp-stability}
-\]
+\end{equation}
 Then the normalized bounded cylinder expectations of the two regulators
 have the common limit
-\[
+\begin{equation}
   \lim_{N\to\infty}
   \frac{\int F(X_N^\sigma)e^{-V_N^\sigma}\,\dd\gamma}
        {\int e^{-V_N^\sigma}\,\dd\gamma}
@@ -3157,7 +3157,7 @@ have the common limit
   \qquad
   \sigma=A,B,
   \label{eq:spde-common-potential-cylinder-limit}
-\]
+\end{equation}
 for every bounded continuous \(F:\R^r\to\C\).
 \end{corollary}
 
@@ -3248,21 +3248,21 @@ Assume that the finite Wick coordinates
 \]
 converge in \(L^2(\Omega)\), for both \(\sigma=A,B\), to common limits
 \(:\!X^{n_j}\!:(f_j)\), and that
-\[
+\begin{equation}
   V_N^\sigma
   \longrightarrow
   V:=\frac{\lambda}{4}\,:\!X^4\!:(1)
   \quad\hbox{in }L^2(\Omega),
   \qquad \sigma=A,B.
   \label{eq:spde-stable-quartic-comparison-potential-l2}
-\]
+\end{equation}
 Assume also that there is \(p>1\) such that
-\[
+\begin{equation}
   \sup_{N,\sigma}
   \left\|e^{-V_N^\sigma}\right\|_{L^p(\gamma)}
   <\infty .
   \label{eq:spde-stable-quartic-comparison-lp}
-\]
+\end{equation}
 Let
 \[
   \mathcal X_N^\sigma
@@ -3275,7 +3275,7 @@ Let
   \bigl(:\!X^{n_1}\!:(f_1),\ldots,:\!X^{n_r}\!:(f_r)\bigr).
 \]
 Then, for every bounded continuous \(G:\R^r\to\C\),
-\[
+\begin{equation}
   \lim_{N\to\infty}
   \frac{\int G(\mathcal X_N^A)e^{-V_N^A}\,\dd\gamma}
        {\int e^{-V_N^A}\,\dd\gamma}
@@ -3287,7 +3287,7 @@ Then, for every bounded continuous \(G:\R^r\to\C\),
   \frac{\int G(\mathcal X_N^B)e^{-V_N^B}\,\dd\gamma}
        {\int e^{-V_N^B}\,\dd\gamma}.
   \label{eq:spde-stable-quartic-bounded-cylinder-comparison}
-\]
+\end{equation}
 \end{corollary}
 
 \begin{proof}
@@ -3343,12 +3343,12 @@ and let
 \]
 with Wick ordering taken with respect to the cutoff covariance of
 \(X_N^\sigma\).  Assume the Nelson stability input
-\[
+\begin{equation}
   \sup_{N,\sigma}
   \int \exp[-pV_N^\sigma]\,\dd\gamma<\infty
   \qquad\hbox{for every finite }p\geq1 .
   \label{eq:spde-smooth-regulator-nelson-input}
-\]
+\end{equation}
 Set
 \[
   Z_N^\sigma=\int e^{-V_N^\sigma}\,\dd\gamma,
@@ -3360,11 +3360,11 @@ Set
 Then the following statements hold.
 \begin{enumerate}
 \item For every finite \(q\geq1\),
-\[
+\begin{equation}
   \sup_{N,\sigma}
   \|\rho_N^\sigma\|_{L^q(\gamma)}<\infty .
   \label{eq:spde-smooth-regulator-density-lq}
-\]
+\end{equation}
 \item For every \(\kappa>0\), the two families
 \(\{\nu_N^A\}\) and \(\{\nu_N^B\}\) are tight in
 \(H^{-\kappa}(\mathbb T^2)\).
@@ -3494,14 +3494,14 @@ Suppose in addition that \(L_N\) is a nonnegative self-adjoint operator with
 orthonormal eigenvectors \(e_{N,\alpha}\) and eigenvalues
 \(\lambda_{N,\alpha}\), that \(A_N\geq L_N+m^2{\bf 1}\) for some \(m^2>0\),
 and that \(\nu_N\) is invariant under \(\phi\mapsto-\phi\).  Define
-\[
+\begin{equation}
   \|\phi\|_{H_N^{-\eta}}^2
   =
   \sum_\alpha
   (1+\lambda_{N,\alpha})^{-\eta}
   |(\phi,e_{N,\alpha})_{H_N}|^2 .
   \label{eq:spde-discrete-negative-sobolev-norm}
-\]
+\end{equation}
 Then, for every \(\eta>0\),
 \begin{equation}
   \int\|\phi\|_{H_N^{-\eta}}^2\,\dd\nu_N(\phi)
@@ -3538,31 +3538,31 @@ We first prove the covariance estimate.  Write
 \]
 This operator is symmetric in \(L^2(\nu_N)\) on smooth compactly supported
 functions, and
-\[
+\begin{equation}
   -\int f\,\mathcal Lg\,\dd\nu_N
   =
   \int(\nabla f,\nabla g)_{H_N}\,\dd\nu_N .
   \label{eq:spde-finite-log-concave-dirichlet-form}
-\]
+\end{equation}
 Let \(f\) be a smooth centered test function.  On the centered subspace of
 \(L^2(\nu_N)\), let \(u_\varepsilon=(\varepsilon-\mathcal L)^{-1}f\),
 \(\varepsilon>0\), where the inverse is the Friedrichs resolvent of the
 closed Dirichlet form in
 \eqref{eq:spde-finite-log-concave-dirichlet-form}.  The resolvent satisfies
-\[
+\begin{equation}
   \varepsilon u_\varepsilon-\mathcal L u_\varepsilon=f .
   \label{eq:spde-bl-resolvent-equation}
-\]
+\end{equation}
 Pairing \eqref{eq:spde-bl-resolvent-equation} with \(f\) and using
 \eqref{eq:spde-finite-log-concave-dirichlet-form} gives
-\[
+\begin{equation}
   \int f^2\,\dd\nu_N
   =
   \varepsilon\int fu_\varepsilon\,\dd\nu_N
   +
   \int(\nabla f,\nabla u_\varepsilon)_{H_N}\,\dd\nu_N .
   \label{eq:spde-bl-resolvent-pairing}
-\]
+\end{equation}
 The spectral calculus of the nonnegative operator
 \(-\mathcal L\) on centered \(L^2(\nu_N)\) gives
 \(\varepsilon u_\varepsilon\to0\) and
@@ -3572,34 +3572,34 @@ on the right of \eqref{eq:spde-bl-resolvent-pairing} vanishes as
 
 For smooth compactly supported \(u\), differentiating \(\mathcal L u\) and
 integrating by parts gives the finite-dimensional Bochner identity
-\[
+\begin{equation}
   \int(\mathcal L u)^2\,\dd\nu_N
   =
   \int\|\nabla^2u\|_{\mathrm{HS}}^2\,\dd\nu_N
   +
   \int(\nabla u,\nabla^2S_N\,\nabla u)_{H_N}\,\dd\nu_N .
   \label{eq:spde-finite-bochner-identity}
-\]
+\end{equation}
 Indeed, expanding
 \(\int(\Delta u-\nabla S_N\cdot\nabla u)^2e^{-S_N}\dd\phi\), moving one
 derivative from each second-derivative term, and collecting the mixed terms
 leaves precisely the Hessian term displayed above.  Applying
 \eqref{eq:spde-finite-bochner-identity} to resolvent approximants and using
 \eqref{eq:spde-brascamp-lieb-hessian-lower-bound} yields
-\[
+\begin{equation}
   \int(\nabla u_\varepsilon,A_N\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
   \leq
   \int(\mathcal L u_\varepsilon)^2\,\dd\nu_N .
   \label{eq:spde-bl-gradient-resolvent-bound}
-\]
+\end{equation}
 Taking \(\varepsilon\downarrow0\) gives
-\[
+\begin{equation}
   \limsup_{\varepsilon\downarrow0}
   \int(\nabla u_\varepsilon,A_N\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
   \leq
   \int f^2\,\dd\nu_N .
   \label{eq:spde-bl-gradient-limsup}
-\]
+\end{equation}
 Therefore
 \[
 \begin{aligned}
@@ -3628,12 +3628,12 @@ Therefore
 \]
 Dividing by \((\int f^2\,\dd\nu_N)^{1/2}\), and then applying this estimate
 to \(f-\int f\,\dd\nu_N\), gives
-\[
+\begin{equation}
   \operatorname{Var}_{\nu_N}(f)
   \leq
   \int(\nabla f,A_N^{-1}\nabla f)_{H_N}\,\dd\nu_N .
   \label{eq:spde-brascamp-lieb-general-bound}
-\]
+\end{equation}
 Linear functions are obtained by multiplying \(\ell_v\) by smooth radial
 cutoffs and sending the cutoff radius to infinity; the quadratic lower bound
 following from \eqref{eq:spde-brascamp-lieb-hessian-lower-bound} supplies the
@@ -3853,13 +3853,13 @@ First, suppose that
 Second, let \(\mathcal A_+\) be an algebra of bounded continuous cylinder
 observables supported in nonnegative Euclidean time, and assume finite-cutoff
 OS positivity for the lattice family:
-\[
+\begin{equation}
   \int_E \overline{F(\Theta\phi)}\,F(\phi)\,
   \dd\mu_N^{\mathrm L}(\phi)
   \geq0,
   \qquad F\in\mathcal A_+.
   \label{eq:spde-lattice-family-os-positive}
-\]
+\end{equation}
 Third, assume comparison of bounded cylinder observables in the following
 literal sense: for every bounded continuous cylinder function \(G\) in the
 algebra generated by \(\mathcal A_+\) and its reflected observables,
@@ -3872,11 +3872,11 @@ algebra generated by \(\mathcal A_+\) and its reflected observables,
 \end{equation}
 Then the Fourier-Galerkin limiting measure \(\mu\) is OS reflection positive
 on \(\mathcal A_+\):
-\[
+\begin{equation}
   \int_E \overline{F(\Theta\phi)}\,F(\phi)\,\dd\mu(\phi)\geq0,
   \qquad F\in\mathcal A_+.
   \label{eq:spde-regulator-comparison-limit-os-positive}
-\]
+\end{equation}
 
 Let now \(P\) be a polynomial cylinder observable in finitely many continuous
 linear coordinates.  Assume that bounded continuous cutoffs \(P_R\) of
@@ -4011,12 +4011,12 @@ inequality is available.
 
 \begin{proof}
 There is a constant \(C_P<\infty\) such that, for all \(u\in\R^r\),
-\[
+\begin{equation}
   |P(u)|^2\leq C_P
   \exp\!\left(\frac{\alpha}{2}
     \left[1+\sum_{j=1}^r|u_j|^q\right]\right).
   \label{eq:spde-polynomial-by-exponential-bound}
-\]
+\end{equation}
 This is the elementary domination of polynomial growth by exponential
 growth: each monomial is bounded by a constant times
 \(\exp[(\alpha/4r)|u_j|^q]\) in each variable appearing in it, and the
@@ -4063,10 +4063,10 @@ scalar lattice measure
 \]
 where \(K(\phi)\geq0\).  Suppose that, for constants \(a_x>0\),
 \(b_x\geq0\), and \(d_x\in\R\),
-\[
+\begin{equation}
   V_x(u)\geq a_xu^4-b_xu^2-d_x .
   \label{eq:spde-finite-lattice-quartic-coercivity}
-\]
+\end{equation}
 Then \(Z<\infty\), and for every \(0<\varepsilon<1\),
 \begin{equation}
   \int
@@ -4419,18 +4419,18 @@ and the cubic Wick power has the formal Sobolev regularity
 \]
 If the remainder \(Y\) is sought in \(H^\beta\), then even the minimal
 Sobolev multiplier requirement for the product \(YX\) is
-\[
+\begin{equation}
   \beta>\frac12+\kappa .
   \label{eq:spde-three-dpd-minimal-multiplier-threshold}
-\]
+\end{equation}
 The Duhamel map from the cubic forcing
 \(:\!X^3\!:\) to \(H^\beta\) would require
-\[
+\begin{equation}
   \theta
   =
   \frac{\beta+\frac32+3\kappa}{2}>1 .
   \label{eq:spde-three-dpd-duhamel-obstruction}
-\]
+\end{equation}
 But the heat-kernel Duhamel estimate
 \eqref{eq:spde-duhamel-smoothing} is locally integrable at the upper time
 endpoint only for \(\theta<1\).  Therefore the two-dimensional Sobolev DPD
@@ -5007,12 +5007,12 @@ For \(q\geq1\) and \(f\in H^{\odot q}\), let \(I_q(f)\) denote the
 \]
 where \(H_q\) is the probabilists' Hermite polynomial and extension to
 \(H^{\odot q}\) is by polarization and completion.  Set \(I_0(c)=c\).  Then
-\[
+\begin{equation}
   \mathbb E\,I_q(f)I_{q'}(g)
   =
   \delta_{q q'}q!\,\langle f,g\rangle_{H^{\otimes q}} .
   \label{eq:spde-wiener-chaos-isometry}
-\]
+\end{equation}
 For every integer \(m\geq1\) there is a finite constant \(C_{q,m}\),
 depending only on \(q\) and \(m\), such that
 \begin{equation}
@@ -5317,13 +5317,13 @@ Let \(X\) be a parameter set.  Suppose \(f_x:S\to H^{\odot q}\) and
 \(\ell_x:S\to E'\) satisfy the preceding hypotheses for every \(x\in X\).
 If deterministic functions \(\Sigma:X\to[0,\infty)\) and
 \(\Omega:X\times X\to[0,\infty)\) obey
-\[
+\begin{equation}
   \int_S\|f_x(s)\|\,\|\ell_x(s)\|\,\dd\mu(s)
   \leq B\Sigma(x)
   \label{eq:spde-projective-kernel-base-hypothesis}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
 \begin{aligned}
   &\int_S\|f_x(s)-f_y(s)\|\,\|\ell_x(s)\|\,\dd\mu(s)        \\
   &\qquad
@@ -5331,7 +5331,7 @@ and
   \leq B_{\rm ed}\Omega(x,y),
 \end{aligned}
   \label{eq:spde-projective-kernel-edge-hypothesis}
-\]
+\end{equation}
 then
 \[
   \|F_x\|_\pi\leq B\Sigma(x),
@@ -5395,14 +5395,14 @@ the point-evaluation functional
 \]
 has \(\|\delta_u\|_{E_r'}\leq1\).  If
 \(0<\theta\leq\min\{r,1\}\), then
-\[
+\begin{equation}
   \|\delta_u-\delta_v\|_{E_r'}
   =
   \sup_{\|\varphi\|_{C^r}\leq1}|\varphi(u)-\varphi(v)|
   \leq
   C_r\|u-v\|_{\mathfrak s}^{\theta}.
   \label{eq:spde-evaluation-difference-dual-bound}
-\]
+\end{equation}
 The same bound holds for a finite sum of derivative evaluations
 \(\partial^a\delta_u\) whenever \(|a|_{\mathfrak s}+\theta\leq r\), after
 replacing \(C_r\) by a constant depending on \(r\) and \(a\).  Thus a
@@ -5559,28 +5559,28 @@ let
   (\delta^2t,\delta x_1,\delta x_2,\delta x_3),
 \]
 write
-\[
+\begin{equation}
   \psi_x^\varphi(u)
   =
   \delta^{-Q}\varphi(\mathsf D_{\delta}^{-1}(u-z)),
   \qquad
   \varphi\in E_r,\quad \|\varphi\|_{C^r}\leq1 .
   \label{eq:spde-gaussian-test-kernel}
-\]
+\end{equation}
 
 First let \(\xi\) be white noise on \(\R^{1+3}\), normalized by
 \[
   \mathbb E\,\xi(f)\xi(g)=\int f(u)g(u)\,\dd u .
 \]
 Then
-\[
+\begin{equation}
   \left\|
     \delta^{Q/2+\kappa}\xi(\psi_x^\varphi)
   \right\|_{L^{2m}(\Omega)}
   \leq
   C_{m,r}\delta^\kappa
   \label{eq:spde-white-noise-coordinate-scale}
-\]
+\end{equation}
 uniformly in \(x\) and \(\varphi\).  If \(x=(z,\delta)\) and
 \(y=(z',\delta')\) have \(\delta,\delta'\in[2^{-M-1},2^{-M}]\) and
 \[
@@ -5589,7 +5589,7 @@ uniformly in \(x\) and \(\varphi\).  If \(x=(z,\delta)\) and
   \leq1 ,
 \]
 then
-\[
+\begin{equation}
   \left\|
     \delta^{Q/2+\kappa}\xi(\psi_x^\varphi)
     -
@@ -5598,14 +5598,14 @@ then
   \leq
   C_{m,r,\kappa}\,2^{-\kappa M}\eta^\theta .
   \label{eq:spde-white-noise-coordinate-edge}
-\]
+\end{equation}
 
 Next let \(X\) be a centered Gaussian field with covariance \(C(u,v)\) such
 that, on the one-neighborhood of the compact region under consideration,
-\[
+\begin{equation}
   |C(u,v)|\leq A\|u-v\|_{\mathfrak s}^{-1}.
   \label{eq:spde-x-covariance-singularity}
-\]
+\end{equation}
 For \(k=1,2,3\), let \(:X^k:\) be the Wick power defined by this covariance.
 Then
 \begin{equation}
@@ -5666,7 +5666,7 @@ and multiplication by \(\delta^{Q/2+\kappa}\) proves
 For the edge estimate, compare the two rescaled test functions on the common
 parabolic ball of radius \(C2^{-M}\) containing their supports.  The
 \(C^r\)-bound and \(r>\theta\) give
-\[
+\begin{equation}
   \left\|
     \delta^{Q/2+\kappa}\psi_x^\varphi
     -
@@ -5675,7 +5675,7 @@ parabolic ball of radius \(C2^{-M}\) containing their supports.  The
   \leq
   C_{r,\kappa}2^{-\kappa M}\eta^\theta .
   \label{eq:spde-white-noise-edge-ltwo}
-\]
+\end{equation}
 Indeed, in the scale \(2^{-M}\) variables the normalized amplitudes are
 bounded, the displacement of the arguments is \(\leq C\eta\), and the
 prefactor \(\delta^{Q/2+\kappa}\delta^{-Q}\) has \(L^2\)-size comparable to
@@ -5683,7 +5683,7 @@ prefactor \(\delta^{Q/2+\kappa}\delta^{-Q}\) has \(L^2\)-size comparable to
 proves \eqref{eq:spde-white-noise-coordinate-edge}.
 
 For the Wick powers, Wick covariance gives, for every test function \(\psi\),
-\[
+\begin{equation}
   \mathbb E
   \left|
     \langle :X^k:,\psi\rangle
@@ -5693,7 +5693,7 @@ For the Wick powers, Wick covariance gives, for every test function \(\psi\),
   \iint
   \psi(u)\psi(v)C(u,v)^k\,\dd u\,\dd v .
   \label{eq:spde-wick-coordinate-covariance}
-\]
+\end{equation}
 Because \(k\leq3<Q=5\), the kernel
 \(\|u-v\|_{\mathfrak s}^{-k}\) is locally integrable in parabolic dimension
 \(Q\).  Using \eqref{eq:spde-x-covariance-singularity} and changing variables
@@ -5701,7 +5701,7 @@ Because \(k\leq3<Q=5\), the kernel
   u=z+\mathsf D_\delta a,\qquad v=z+\mathsf D_\delta b,
 \]
 one obtains
-\[
+\begin{equation}
 \begin{aligned}
   \iint
   |\psi_x^\varphi(u)|\,|\psi_x^\varphi(v)|
@@ -5715,7 +5715,7 @@ one obtains
   C_{k,r,A}\delta^{-k}.
 \end{aligned}
   \label{eq:spde-wick-coordinate-variance-scale}
-\]
+\end{equation}
 Thus the \(L^2(\Omega)\)-norm of
 \(\delta^{k/2+k\kappa}\langle :X^k:,\psi_x^\varphi\rangle\) is bounded by
 \(C\delta^{k\kappa}\).  Lemma~\ref{lem:spde-finite-wiener-chaos-moment-bound}
@@ -5732,12 +5732,12 @@ For the edge estimate, apply the same covariance identity to
 \]
 In scale \(2^{-M}\) variables, the two supports lie in a fixed parabolic ball,
 and the \(C^r\)-bound gives
-\[
+\begin{equation}
   |\Psi_{x,y}^\varphi(u)|
   \leq
   C_{r,k,\kappa}\,2^{M(Q-k/2-k\kappa)}\eta^\theta .
   \label{eq:spde-wick-edge-test-difference}
-\]
+\end{equation}
 Changing variables as above and using local integrability of
 \(\|a-b\|_{\mathfrak s}^{-k}\) gives
 \[
@@ -5792,14 +5792,14 @@ and, for \(k=1,2,3\),
   \langle :X^k:,\psi_x^\varphi\rangle .
 \]
 Then, for every integer \(m\geq1\),
-\[
+\begin{equation}
   \left\|\|\mathcal W_x\|_{E_r'}\right\|_{L^{2m}(\Omega)}
   \leq C\delta^\kappa ,
   \qquad
   \left\|\|\mathcal X_{k,x}\|_{E_r'}\right\|_{L^{2m}(\Omega)}
   \leq C\delta^{k\kappa}.
   \label{eq:spde-gaussian-dual-norm-uniform}
-\]
+\end{equation}
 If \(x=(z,\delta)\), \(y=(z',\delta')\),
 \(\delta,\delta'\in[2^{-M-1},2^{-M}]\), and
 \[
@@ -5807,19 +5807,19 @@ If \(x=(z,\delta)\), \(y=(z',\delta')\),
   2^M\|z-z'\|_{\mathfrak s}+2^M|\delta-\delta'|\leq1,
 \]
 then
-\[
+\begin{equation}
   \left\|\|\mathcal W_x-\mathcal W_y\|_{E_r'}\right\|_{L^{2m}(\Omega)}
   \leq
   C2^{-\kappa M}\eta^\theta ,
   \label{eq:spde-gaussian-dual-norm-white-edge}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \left\|\|\mathcal X_{k,x}-\mathcal X_{k,y}\|_{E_r'}\right\|_{L^{2m}(\Omega)}
   \leq
   C2^{-k\kappa M}\eta^\theta .
   \label{eq:spde-gaussian-dual-norm-wick-edge}
-\]
+\end{equation}
 The constants depend on the compact region, the chosen wavelet system,
 \(r,s,\theta,\kappa,m\), and on the covariance constant \(A\) for the Wick
 powers, but not on \(x,y\), \(\delta,\delta'\), or the particular test
@@ -5837,7 +5837,7 @@ system has finite overlap,
   |\Lambda_j|\leq C2^{Qj}\qquad(j\geq0),
 \]
 and the coefficient estimate
-\[
+\begin{equation}
   \sum_{\lambda\in\Lambda_{-1}}
     |\langle\varphi,e_\lambda\rangle|^2
   +
@@ -5846,7 +5846,7 @@ and the coefficient estimate
   \leq
   C\|\varphi\|_{C^r}^2
   \label{eq:spde-wavelet-cr-to-hs}
-\]
+\end{equation}
 for \(0<s<r\).  For a distribution \(T\) supported in a fixed enlargement of
 the unit ball set
 \[
@@ -5859,14 +5859,14 @@ the unit ball set
     2^{-2sj}|\langle T,e_\lambda\rangle|^2 .
 \]
 By Cauchy--Schwarz and \eqref{eq:spde-wavelet-cr-to-hs},
-\[
+\begin{equation}
   \|T\|_{E_r'}
   =
   \sup_{\|\varphi\|_{C^r}\leq1}|T(\varphi)|
   \leq
   C\|T\|_{-s,*}.
   \label{eq:spde-hminus-controls-er-dual}
-\]
+\end{equation}
 It is therefore enough to estimate the weighted wavelet coefficient norm.
 
 For white noise, put \(T=\mathcal W_x\).  For every \(L^2\)-normalized
@@ -5877,7 +5877,7 @@ unit-domain wavelet \(e_\lambda\),
   \delta^{2\kappa}.
 \]
 Consequently
-\[
+\begin{equation}
   \mathbb E\|T\|_{-s,*}^2
   \leq
   C\delta^{2\kappa}
@@ -5887,7 +5887,7 @@ Consequently
   \leq
   C\delta^{2\kappa},
   \label{eq:spde-white-dual-ltwo}
-\]
+\end{equation}
 because \(s>Q/2\).
 
 For the edge estimate, the coefficient tested against a scale-\(j\) wavelet
@@ -5901,7 +5901,7 @@ Rescale the common physical ball of radius \(C2^{-M}\) to unit size.  The
 unit-domain wavelet has \(C^\theta\)-size \(O(2^{j(Q/2+\theta)})\), while
 its \(L^2\)-size is one; translation and dilation of the outer parameter by
 \(\eta\) therefore give
-\[
+\begin{equation}
   \left\|
     \delta^{Q/2+\kappa}\psi_x^{e_\lambda}
     -
@@ -5910,7 +5910,7 @@ its \(L^2\)-size is one; translation and dilation of the outer parameter by
   \leq
   C2^{-\kappa M}\min\{1,2^{j\theta}\eta^\theta\}.
   \label{eq:spde-white-dual-coefficient-edge}
-\]
+\end{equation}
 The finite set \(\Lambda_{-1}\) obeys the same bound with \(j=0\) after
 changing the constant.  Hence
 \[
@@ -5940,13 +5940,13 @@ again because \(2s-Q>2\theta\).  This proves the \(L^2(\Omega)\) version of
 \eqref{eq:spde-gaussian-dual-norm-white-edge}.
 
 For the Wick powers, let \(T=\mathcal X_{k,x}\).  Wick covariance gives
-\[
+\begin{equation}
   \mathbb E|\langle T,e_\lambda\rangle|^2
   \leq
   C\delta^{2k\kappa}2^{(k-Q)j},
   \qquad \lambda\in\Lambda_j,\quad j\geq0.
   \label{eq:spde-wick-dual-coefficient-scale}
-\]
+\end{equation}
 Indeed, after the outer scale \(u=z+\mathsf D_\delta a\) is removed, the
 coefficient is tested by the unit-domain wavelet \(e_\lambda\), and
 \[
@@ -5959,7 +5959,7 @@ coefficient is tested by the unit-domain wavelet \(e_\lambda\), and
 The right-hand side follows from the support diameter \(O(2^{-j})\), the
 \(L^\infty\)-size \(O(2^{Qj/2})\), and the local integrability of
 \(\|a-b\|_{\mathfrak s}^{-k}\).  Summing the weighted coefficients gives
-\[
+\begin{equation}
   \mathbb E\|T\|_{-s,*}^2
   \leq
   C\delta^{2k\kappa}
@@ -5969,13 +5969,13 @@ The right-hand side follows from the support diameter \(O(2^{-j})\), the
   \leq
   C\delta^{2k\kappa},
   \label{eq:spde-wick-dual-ltwo}
-\]
+\end{equation}
 because \(s>Q/2\geq k/2\) for \(k\leq3\).
 
 For \(x,y\) in the same dyadic annulus, apply the covariance identity to the
 difference of the two normalized test functions.  The same rescaling used in
 \eqref{eq:spde-white-dual-coefficient-edge} gives
-\[
+\begin{equation}
   \mathbb E
   \left|
     \langle\mathcal X_{k,x}-\mathcal X_{k,y},e_\lambda\rangle
@@ -5984,7 +5984,7 @@ difference of the two normalized test functions.  The same rescaling used in
   C2^{-2k\kappa M}2^{(k-Q)j}
   \min\{1,2^{j\theta}\eta^\theta\}^2 .
   \label{eq:spde-wick-dual-coefficient-edge}
-\]
+\end{equation}
 Therefore
 \[
   \mathbb E\|\mathcal X_{k,x}-\mathcal X_{k,y}\|_{-s,*}^2
@@ -6648,13 +6648,13 @@ and edge sets
   \{(\pi_{m,\ell}x,\pi_{m,\ell+1}x):x\in\mathcal X_m\}.
 \]
 Assume
-\[
+\begin{equation}
   |\mathcal X_{m,0}|\leq C_0 2^{D m},
   \qquad
   |\mathcal E_{m,\ell}|\leq C_1 2^{D m}2^{d\ell}
   \quad(m,\ell\geq0),
   \label{eq:spde-scale-net-entropy}
-\]
+\end{equation}
 for constants \(C_0,C_1,D,d\geq0\).  Let \(Y_m:\mathcal X_m\to
 L^p(\Omega)\) have almost surely continuous sample paths.  Suppose there are
 constants \(B_0,B,\sigma,\varepsilon>0\) such that
@@ -6670,10 +6670,10 @@ and
   \quad((u,v)\in\mathcal E_{m,\ell}).
 \]
 If
-\[
+\begin{equation}
   \sigma>\frac{D}{p},
   \label{eq:spde-scale-slack-condition}
-\]
+\end{equation}
 then
 \begin{equation}
   \left\|
@@ -6935,10 +6935,10 @@ Put
 \]
 Among the monomials \(X^aY^b\) with \(a+b\leq3\), the non-polynomial
 symbols of homogeneity \(<\gamma_-\) are
-\[
+\begin{equation}
   X,\quad X^2,\quad X^3,\quad XY,\quad X^2Y .
   \label{eq:spde-negative-sector-monomial-list}
-\]
+\end{equation}
 Together with the noise symbol \(\Xi\) and the constant symbol \(\mathbf 1\),
 these form the finite sector
 \[
@@ -6968,12 +6968,12 @@ and is therefore not part of the strict sector \(T_{<\gamma_-}\).
 Let \(Z_n=(\Pi^{(n)},\Gamma^{(n)})\) be cutoff models whose restriction to
 \(\mathcal T_-\) is multiplicative and whose reexpansion of \(Y\), modulo
 terms of homogeneity \(\geq\gamma_-\), has the form
-\[
+\begin{equation}
   \Gamma_{zz'}^{(n)}Y
   =
   Y+c_n(z,z')\mathbf 1 .
   \label{eq:spde-y-reexpansion-coefficient}
-\]
+\end{equation}
 Then, on \(\mathcal T_-\), the only strict lower stochastic reexpansion
 coefficients are
 \begin{equation}
@@ -7270,12 +7270,12 @@ Under Hypothesis~\ref{hyp:spde-negative-sector-scale-summed-coordinate-scheme},
   A_-\left(1+\sum_{i\in\mathfrak C}S_i^{\rm sc}\right),
 \]
 and
-\[
+\begin{equation}
   \|D_n^-\|_{L^p(\Omega)}
   \leq
   A_-\left(\sum_{i\in\mathfrak C}\widetilde S_i^{\rm sc}\right)2^{-\rho n}.
   \label{eq:spde-negative-sector-model-cauchy-bound}
-\]
+\end{equation}
 Consequently \(Z_n|_{\mathcal T_-}\) converges in \(L^p\) and almost surely,
 in the model distance \(d_{K;\gamma_-}\), to a limiting random model on
 \(\mathcal T_-\).  More precisely,
@@ -7552,13 +7552,13 @@ For \(m\geq0\) and \(a\in[1/2,1]\) set
 \]
 and define the random fields on
 \(\mathcal X_{\Pi,m}=K\times[1/2,1]\) by
-\[
+\begin{equation}
   U_{\Xi,m}(z,a)=\|\mathcal W_x\|_{E_r'},
   \qquad
   U_{X^k,m}(z,a)=\|\mathcal X_{k,x}\|_{E_r'},
   \quad k=1,2,3,
   \label{eq:spde-gaussian-pi-coordinate-fields}
-\]
+\end{equation}
 where \(\mathcal W_x\) and \(\mathcal X_{k,x}\) are the \(E_r'\)-valued
 functionals of
 Proposition~\ref{prop:spde-gaussian-wick-dual-norm-coordinate-estimates}.
@@ -7594,26 +7594,26 @@ Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
 \[
   D_\tau=Q,\qquad d_\tau=Q+1,
 \]
-\[
+\begin{equation}
   \sigma_\Xi=\kappa,
   \qquad
   \sigma_{X^k}=k\kappa,
   \qquad
   \varepsilon_\tau=p\theta-(Q+1)>0 .
   \label{eq:spde-gaussian-negative-input-slacks}
-\]
+\end{equation}
 More explicitly, there are constants \(B_{\tau,0},B_\tau<\infty\) such that,
 for every \(m,\ell\geq0\),
-\[
+\begin{equation}
   \mathbb E|U_{\tau,m}(u)|^p
   \leq
   B_{\tau,0}^{\,p}2^{-p\sigma_\tau m}
   \qquad
   (u\in\mathcal X_{\Pi,m,0})
   \label{eq:spde-gaussian-negative-input-base}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \mathbb E|U_{\tau,m}(v)-U_{\tau,m}(u)|^p
   \leq
   B_\tau^{\,p}2^{-p\sigma_\tau m}
@@ -7621,7 +7621,7 @@ and
   \qquad
   ((u,v)\in\mathcal E_{\Pi,m,\ell}).
   \label{eq:spde-gaussian-negative-input-edge}
-\]
+\end{equation}
 Consequently the Gaussian coordinate labels \(\Xi,X,X^2,X^3\) already feed
 into the scale-summed negative-sector model theorem without an additional
 stochastic supremum argument.
@@ -7678,12 +7678,12 @@ Let \((u,v)\in\mathcal E_{\Pi,m,\ell}\), say
 \]
 The nearest-net construction in
 Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy} gives
-\[
+\begin{equation}
   2^m\|z-z'\|_{\mathfrak s}+|a-a'|
   \leq
   C_{\Pi}2^{-\ell}.
   \label{eq:spde-gaussian-negative-input-edge-distance}
-\]
+\end{equation}
 With \(x=(z,2^{-m}a)\) and \(y=(z',2^{-m}a')\), the parameter
 \(\eta\) of
 Proposition~\ref{prop:spde-gaussian-wick-dual-norm-coordinate-estimates}
@@ -8101,17 +8101,17 @@ Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  For
        {\|z-z_h\|_{\mathfrak s}^{\,\beta}},
 \]
 and
-\[
+\begin{equation}
   V_{n,\mathfrak g,m}(z,h)
   =
   \frac{|(c_{n+1}-c_n)(z,z_h)|}
        {\|z-z_h\|_{\mathfrak s}^{\,\beta}} .
   \label{eq:spde-gamma-coordinate-input-fields}
-\]
+\end{equation}
 Then the \(\mathfrak g\)-coordinate hypotheses of
 Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold
 with
-\[
+\begin{equation}
   D_{\mathfrak g}=5,
   \qquad
   d_{\mathfrak g}=10,
@@ -8120,19 +8120,19 @@ with
   \qquad
   \varepsilon_{\mathfrak g}=p\theta-10>0 .
   \label{eq:spde-gamma-coordinate-input-slacks}
-\]
+\end{equation}
 More explicitly, after choosing the nets of
 Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}, there
 are constants \(C_0,C_1\), independent of \(n,m,\ell\), such that
-\[
+\begin{equation}
   \mathbb E|U_{n,\mathfrak g,m}(u)|^p
   \leq
   C_0^pB_{\mathfrak g}^{\,p}2^{-3p\kappa m}
   \qquad
   (u\in\mathcal X_{\Gamma,m,0}),
   \label{eq:spde-gamma-coordinate-input-base}
-\]
-\[
+\end{equation}
+\begin{equation}
   \mathbb E|U_{n,\mathfrak g,m}(v)-U_{n,\mathfrak g,m}(u)|^p
   \leq
   C_1^pB_{\mathfrak g}^{\,p}2^{-3p\kappa m}
@@ -8140,7 +8140,7 @@ are constants \(C_0,C_1\), independent of \(n,m,\ell\), such that
   \qquad
   ((u,v)\in\mathcal E_{\Gamma,m,\ell}),
   \label{eq:spde-gamma-coordinate-input-edge}
-\]
+\end{equation}
 and the same two estimates hold for \(V_{n,\mathfrak g,m}\) with
 \(B_{\mathfrak g}^{\,p}\) replaced by
 \(\widetilde B_{\mathfrak g}^{\,p}2^{-p\rho n}\).
@@ -8167,33 +8167,33 @@ Let \((z,h)\in\mathcal X_{\Gamma,m}\) and put
   h_m=\|z-z_h\|_{\mathfrak s}.
 \]
 Since \(h\in A_{\mathfrak s}\), one has
-\[
+\begin{equation}
   2^{-m-1}\leq h_m\leq 2^{-m}.
   \label{eq:spde-gamma-coordinate-input-annular-scale}
-\]
+\end{equation}
 Apply
 \eqref{eq:spde-reexpansion-normalized-scale-slack} with
 \(T=T_n\), \(\beta=1/2-3\kappa\), and \(\sigma=3\kappa\).  This gives
-\[
+\begin{equation}
   U_{n,\mathfrak g,m}(z,h)
   \leq
   C\|T_n\|_{-3/2;U,r}h_m^{3\kappa}
   \leq
   C\|T_n\|_{-3/2;U,r}2^{-3\kappa m}.
   \label{eq:spde-gamma-coordinate-input-pointwise-base}
-\]
+\end{equation}
 Taking \(L^p\)-norms and using
 \eqref{eq:spde-gamma-coordinate-input-x3-uniform} proves
 \eqref{eq:spde-gamma-coordinate-input-base}.
 
 Let \(u=(z,h)\) and \(v=(z',h')\) be an edge in
 \(\mathcal E_{\Gamma,m,\ell}\).  The net construction gives
-\[
+\begin{equation}
   2^m\|z-z'\|_{\mathfrak s}+\|h-h'\|_{\mathfrak s}
   \leq
   C2^{-\ell}.
   \label{eq:spde-gamma-coordinate-input-edge-distance}
-\]
+\end{equation}
 Set
 \[
   a=z,\quad b=z+\mathsf D_{2^{-m}}h,\qquad
@@ -8217,12 +8217,12 @@ is bounded by \(C2^{-\ell}\).  The normalized edge estimate
   C_\theta\|T_n\|_{-3/2;U,r}2^{-3\kappa m}2^{-\theta\ell}.
 \]
 Since \(\bigl||A|-|B|\bigr|\leq |A-B|\), this implies
-\[
+\begin{equation}
   |U_{n,\mathfrak g,m}(v)-U_{n,\mathfrak g,m}(u)|
   \leq
   C_\theta\|T_n\|_{-3/2;U,r}2^{-3\kappa m}2^{-\theta\ell}.
   \label{eq:spde-gamma-coordinate-input-pointwise-edge}
-\]
+\end{equation}
 After taking the \(p\)-th moment, this is exactly
 \eqref{eq:spde-gamma-coordinate-input-edge}, because
 \[
@@ -8832,12 +8832,12 @@ and set
   |\!XY\!|=-4\kappa,\qquad
   |X^2Y|=-\frac12-5\kappa,
 \]
-\[
+\begin{equation}
   \sigma_{XY}=4\kappa-\zeta_{XY},
   \qquad
   \sigma_{X^2Y}=5\kappa-\zeta_{X^2Y} .
   \label{eq:spde-nonlinear-pi-coordinate-slacks}
-\]
+\end{equation}
 The loss \(\zeta_{XY}\) is optional: it may be set to zero only after the
 concrete \(XY\) projective kernel estimate proves that the marginal
 overall-scale logarithm in
@@ -8936,11 +8936,11 @@ and the cutoff increments obey
 Then the nonlinear coordinates \(XY\) and \(X^2Y\) satisfy the
 \(\Pi\)-coordinate hypotheses of
 Corollary~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
-\[
+\begin{equation}
   D_\tau=5,\qquad d_\tau=6,\qquad
   \varepsilon_\tau=p\theta-6 .
   \label{eq:spde-nonlinear-pi-coordinate-entropy-data}
-\]
+\end{equation}
 In particular, if
 \[
   U_{n,\tau,m}(u)=\|Y_{n,\tau,m}(u)\|_{E_r'}
@@ -8970,7 +8970,7 @@ and
   2^{-(6+\varepsilon_\tau)\ell}
 \]
 for all \((u,v)\in\mathcal E_{\Pi,m,\ell}\).  The constants are
-\[
+\begin{equation}
   A_{\tau,i}=
   \sum_{q\in\mathcal Q_\tau}C_{q,m_0}B_{\tau,q,i},
   \qquad
@@ -8978,7 +8978,7 @@ for all \((u,v)\in\mathcal E_{\Pi,m,\ell}\).  The constants are
   \sum_{q\in\mathcal Q_\tau}C_{q,m_0}\widetilde B_{\tau,q,i},
   \qquad i=0,1,
   \label{eq:spde-nonlinear-pi-coordinate-moment-constants}
-\]
+\end{equation}
 where \(C_{q,m_0}\) is the finite-chaos constant in
 Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate}.
 \end{proposition}
@@ -9003,7 +9003,7 @@ the analogous statement holds for cutoff differences.
 Apply Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} to
 \eqref{eq:spde-nonlinear-pi-coordinate-er-chaos}.  The projective base bound
 \eqref{eq:spde-nonlinear-pi-coordinate-projective-base} gives
-\[
+\begin{equation}
   \|U_{n,\tau,m}(u)\|_{L^p(\Omega)}
   \leq
   \sum_{q\in\mathcal Q_\tau}
@@ -9011,7 +9011,7 @@ Apply Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} to
   =
   A_{\tau,0}2^{-\sigma_\tau m}.
   \label{eq:spde-nonlinear-pi-coordinate-lp-base-proof}
-\]
+\end{equation}
 The cutoff base estimate follows in the same way from
 \eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-base}.  For
 increments, use
@@ -9026,12 +9026,12 @@ and then apply the finite-chaos estimate to
   I_q(F_{n,\tau,q,m}(v)-F_{n,\tau,q,m}(u)).
 \]
 This proves
-\[
+\begin{equation}
   \|U_{n,\tau,m}(v)-U_{n,\tau,m}(u)\|_{L^p}
   \leq
   A_{\tau,1}2^{-\sigma_\tau m}d_{\Pi,m}(u,v)^\theta,
   \label{eq:spde-nonlinear-pi-coordinate-lp-edge-proof}
-\]
+\end{equation}
 and the cutoff edge estimate follows from
 \eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-edge}.
 
@@ -9384,7 +9384,7 @@ Write
   u'=\mathsf D_{2^s}h'.
 \]
 Then
-\[
+\begin{equation}
 \begin{aligned}
   \Delta_{h,h'}C_s(a,a')
   =
@@ -9393,7 +9393,7 @@ Then
   &\quad -c_s(r-u')+c_s(r)\}.
 \end{aligned}
   \label{eq:spde-rescaled-covariance-double-difference}
-\]
+\end{equation}
 The uniform \(C^2\) bound gives the scale-one finite-difference estimate
 \begin{equation}
   |c_s(r+u-u')-c_s(r+u)-c_s(r-u')+c_s(r)|
@@ -9575,7 +9575,7 @@ normalization
   2\delta(\tau-\tau')\delta(x-x').
 \]
 Then the one-loop local coordinate is
-\[
+\begin{equation}
   C_1(M)
   =
   \mathbb E X_M(\tau,x)^2
@@ -9584,7 +9584,7 @@ Then the one-loop local coordinate is
   \sum_{\substack{n\in\mathbb Z^3\\ |n|_\infty\leq M}}
   \frac{1}{|n|^2+m^2},
   \label{eq:spde-c1-sharp-fourier-cutoff}
-\]
+\end{equation}
 independent of \((\tau,x)\).  There are constants \(0<c_m<C_m<\infty\)
 such that, for all \(M\geq1\),
 \[
@@ -9881,14 +9881,14 @@ linearized cutoff equation and write
 \]
 Let \(K_\epsilon\) denote the retarded heat kernel with the same ultraviolet
 mollification and define the local constants
-\[
+\begin{equation}
   C_{1,\epsilon}=G_\epsilon(z,z),
   \qquad
   C_{2,\epsilon}
   =
   2\int K_\epsilon(z,w)G_\epsilon(z,w)^2\,\dd w ,
   \label{eq:spde-c1-c2-local-definitions}
-\]
+\end{equation}
 where translation invariance on the spacetime torus makes the right-hand
 sides independent of \(z\).  Consider the perturbative fixed-point expansion
 \[

@@ -443,13 +443,13 @@ Use the shift notation
 In the physical or magic T-hook gauge, assume that the two horizontal rows
 adjacent to the central node are reconstructed from two single-short-cut
 functions \(P_1,P_2\) by
-\[
+\begin{equation}
   \mathbb T_{1,m}
   =
   P_1^{[m]}P_2^{[-m]}-P_2^{[m]}P_1^{[-m]},
   \qquad m\geq1,
   \label{eq:qsc-two-row-wronskian}
-\]
+\end{equation}
 and that Hirota continuation extends this expression to the central nodes.
 Let
 \[
@@ -470,14 +470,14 @@ continuation of the resulting identities.
 \label{prop:qsc-local-t-hook-pmu-bridge}
 Under Assumption~\ref{ass:qsc-two-row-t-hook-reconstruction}, regularity of
 the T-hook functions across the central short cut forces
-\[
+\begin{equation}
   \widetilde\mu_{12}-\mu_{12}
   =
   P_1\widetilde P_2-P_2\widetilde P_1.
   \label{eq:qsc-local-mu12-discontinuity}
-\]
+\end{equation}
 Moreover
-\[
+\begin{equation}
   \mathbb T_{1,0}=\mu_{12}\widetilde\mu_{12},
   \qquad
   Y_{1,1}Y_{2,2}
@@ -487,7 +487,7 @@ Moreover
   1+
   \frac{P_1\widetilde P_2-P_2\widetilde P_1}{\mu_{12}}.
   \label{eq:qsc-local-y11-y22-bridge}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -687,12 +687,12 @@ choice in the QSC.
 \label{lem:qsc-mu12-dimension-exponent}
 Under Assumption~\ref{ass:qsc-t-hook-charge-bridge} and the \(P\mu\)
 equations,
-\[
+\begin{equation}
   Y_{1,1}(u)Y_{2,2}(u)
   =
   \frac{\mu_{12}(u+\ii)}{\mu_{12}(u)}.
   \label{eq:qsc-y11-y22-mu-ratio}
-\]
+\end{equation}
 If \(\mu_{12}\) has power-law large-\(u\) behavior on this sheet, then
 \[
   \mu_{12}(u)\sim u^{\Delta-J}.
@@ -843,7 +843,7 @@ Insert the \(SL(2)\) \(P\)-powers and the trial \(\mu\)-powers
 \eqref{eq:qsc-mu-leading-powers-alpha} into the one-step monodromy recursion
 \eqref{eq:planar-n4-pmu-monodromy-recursion}.  For a nonzero leading vector
 with \(\alpha\neq0\), the characteristic equation is
-\[
+\begin{equation}
   \Phi(\alpha)
   =
   (J+1)^2\alpha^2
@@ -855,7 +855,7 @@ with \(\alpha\neq0\), the characteristic equation is
   =
   0 .
   \label{eq:qsc-large-u-characteristic-polynomial}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -871,7 +871,7 @@ at leading order, and use
 \(\mu_{ab}=m_{ab}u^{e_{ab}}+\cdots\), then
 \(\mu_{ab}(u+\ii)-\mu_{ab}(u)=\ii e_{ab}m_{ab}u^{e_{ab}-1}+\cdots\).
 Keeping the leading power in each component gives the finite linear system
-\[
+\begin{equation}
 \begin{aligned}
   \ii(\alpha-J)m_{12}
   &=(X-Y)m_{12}+A_2^2m_{13}-A_1A_2m_{14}
@@ -893,7 +893,7 @@ Keeping the leading power in each component gives the finite linear system
     -A_3^2m_{24}+(-X+Y)m_{34}.
 \end{aligned}
   \label{eq:qsc-large-u-characteristic-linear-system}
-\]
+\end{equation}
 Let \(\mathcal M_\alpha\) be the coefficient matrix obtained by moving the
 right-hand side to the left.  Expanding the determinant and collecting only
 the invariant products \(X=A_1A_4\) and \(Y=A_2A_3\) gives
@@ -1027,14 +1027,14 @@ sheet and transported consistently.
 \begin{lemma}[Monodromy recursion for \(\mu\)]
 \label{lem:planar-n4-pmu-monodromy-recursion}
 The \(P\mu\) equations imply the one-step continuation formula
-\[
+\begin{equation}
   \mu_{ab}(u+\ii)
   =
   \mu_{ab}(u)
   +P_a(u)\mu_{bc}(u)P^c(u)
   -P_b(u)\mu_{ac}(u)P^c(u).
   \label{eq:planar-n4-pmu-monodromy-recursion}
-\]
+\end{equation}
 Consequently, once the functions in one strip and the continued \(P\)-sheet
 are known, the shifted \(\mu\)-sheets are generated recursively by algebraic
 substitution.
@@ -1126,14 +1126,14 @@ mirror TBA.
 Assume the local \(Q\omega\) equations displayed above and the null
 contraction \(Q_iQ^i=0\).  Then the \(\omega\)-Pfaffian is transported
 consistently through a long cut, and the one-step shifted sheet obeys
-\[
+\begin{equation}
   \omega_{ij}(u+\ii)
   =
   \omega_{ij}(u)
   +Q_i(u)\omega_{jk}(u)Q^k(u)
   -Q_j(u)\omega_{ik}(u)Q^k(u).
   \label{eq:qsc-qomega-monodromy-recursion}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -1228,16 +1228,16 @@ are nevertheless displayed because they are exactly what makes the choice of
 \label{prop:qsc-local-pq-unimodular-bridge}
 Under Assumption~\ref{ass:qsc-local-pq-bridge}, the contraction identities are
 independent of the shift:
-\[
+\begin{equation}
   Q_i=-P^a Q_{a|i}^+,\qquad
   P_a=-Q^i Q_{a|i}^+ .
   \label{eq:qsc-local-pq-shift-independent}
-\]
+\end{equation}
 Moreover
-\[
+\begin{equation}
   \det(Q_{a|i}^+)=\det(Q_{a|i}^-).
   \label{eq:qsc-local-pq-determinant-preserved}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1474,19 +1474,19 @@ As a meromorphic function of \(u\), \(\Phi\) has only simple poles at
   u=\pm\ii\left(n+\frac12\right),\qquad n\in\mathbb Z_{\ge0}.
 \]
 It satisfies the one-step shift identities
-\[
+\begin{equation}
   \Phi(u+\ii)-\Phi(u)=\frac{2\ii}{u+\ii/2},
   \qquad
   \Phi(u)-\Phi(u-\ii)=\frac{2\ii}{u-\ii/2},
   \label{eq:qsc-digamma-primitive-shift-defects}
-\]
+\end{equation}
 and hence the central second-difference identity
-\[
+\begin{equation}
   \Phi(u+\ii)-2\Phi(u)+\Phi(u-\ii)
   =
   \frac{2}{u^2+1/4}.
   \label{eq:qsc-digamma-primitive-second-difference}
-\]
+\end{equation}
 Moreover, if \(G\) is another meromorphic function with the same two
 one-step defects in \eqref{eq:qsc-digamma-primitive-shift-defects}, then
 \(G-\Phi\) is \(\ii\)-periodic wherever both functions are holomorphic.  If
@@ -1551,7 +1551,7 @@ Let \(Q(u)\) be a polynomial with \(Q(\ii/2)\neq0\), and set
   r_0=Q'(\ii/2)-Q'(-\ii/2).
 \]
 Define
-\[
+\begin{equation}
   R_{\rm sing}(u)
   =
   \ii r_0\,\frac{Q(u)}{Q(\ii/2)}
@@ -1561,7 +1561,7 @@ Define
   \right),
   \qquad \psi=\Gamma'/\Gamma .
   \label{eq:qsc-digamma-singular-package}
-\]
+\end{equation}
 Then \(R_{\rm sing}\) has only simple poles at
 \[
   u=\pm\ii\left(n+\frac12\right),\qquad n\in\mathbb Z_{\ge0},
@@ -1586,7 +1586,7 @@ sector used for the \(SL(2)\) asymptotics,
   2\ii\,\frac{r_0}{Q(\ii/2)}\log u+O(u^{-1}).
 \]
 Finally, for the meromorphic quotient \(F_{\rm sing}(u)=R_{\rm sing}(u)/Q(u)\),
-\[
+\begin{equation}
   F_{\rm sing}(u+\ii)-F_{\rm sing}(u)
   =
   -\frac{2r_0}{Q(\ii/2)(u+\ii/2)},
@@ -1595,7 +1595,7 @@ Finally, for the meromorphic quotient \(F_{\rm sing}(u)=R_{\rm sing}(u)/Q(u)\),
   =
   -\frac{2r_0}{Q(\ii/2)(u-\ii/2)} .
   \label{eq:qsc-digamma-singular-shift-defects}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -1842,13 +1842,13 @@ It remains to prove the logarithmic-derivative identity.  Since
 \]
 we must compute the endpoint logarithmic derivatives of \(\widehat Q_S\).
 First,
-\[
+\begin{equation}
   \widehat Q'_S(0)
   =
   \sum_{k=1}^{S}
   \frac{(-S)_k(S+1)_k}{(k!)^2\,k}.
   \label{eq:qsc-twist-two-derivative-zero-sum}
-\]
+\end{equation}
 Indeed \(d(z)_k/dz|_{z=0}=(k-1)!\).  The same sum may be written as
 \[
   \widehat Q'_S(0)
@@ -2116,12 +2116,12 @@ Consider the planar tree-level pair-of-pants skeleton for three cyclic
 single-trace operators of lengths \(L_1,L_2,L_3\).  Let \(\ell_{ij}=\ell_{ji}\)
 be the number of adjacent Wick-contraction slots shared by operators \(i\)
 and \(j\).  Then the bridge lengths are forced to be
-\[
+\begin{equation}
   \ell_{12}=\frac{L_1+L_2-L_3}{2},\qquad
   \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
   \ell_{31}=\frac{L_3+L_1-L_2}{2}.
   \label{eq:planar-n4-hexagon-bridge-lengths-derived}
-\]
+\end{equation}
 Conversely, a nonnegative integer planar skeleton of this type exists exactly
 when \(L_1+L_2+L_3\) is even and the three triangle inequalities
 \(L_i+L_j\geq L_k\) hold.
@@ -2165,12 +2165,12 @@ belong to one external operator: \(\ell\) is the bridge crossed by the subset
 The phase is the spin-chain translation phase.  Moving a magnon of momentum
 \(p_j\) through \(\ell\) vacuum letters multiplies the coordinate Bethe wave
 by \(\ee^{\ii p_j\ell}\), and moving all magnons in \(\bar\alpha\) gives
-\[
+\begin{equation}
   \prod_{u_j\in\bar\alpha}\ee^{\ii p_j\ell}
   =
   \ee^{\ii p(\bar\alpha)\ell}.
   \label{eq:planar-n4-hexagon-bridge-translation-phase}
-\]
+\end{equation}
 The factor \(\mathcal N\) is the Gaudin norm factor of the Bethe state.
 Mirror particles on the bridges add finite-size corrections, analogous in
 spirit to wrapping corrections in the spectral problem.
@@ -2199,7 +2199,7 @@ where the denominators below do not vanish, and write
 \(\sigma_{ij}=\sigma(x_i^\pm,x_j^\pm)\).  Assume scalar dressing unitarity
 \(\sigma_{12}\sigma_{21}=1\) on this domain.  If \(h_{12}=h(u_1,u_2)\) is
 defined by \eqref{eq:planar-n4-hexagon-scalar-factor}, then
-\[
+\begin{equation}
   \frac{h_{12}}{h_{21}}
   =
   S^{\rm hex}_{\rm scal}(1,2),
@@ -2210,7 +2210,7 @@ defined by \eqref{eq:planar-n4-hexagon-scalar-factor}, then
   \frac{1-1/(x_1^+x_2^-)}{1-1/(x_1^-x_2^+)}
   \frac{1}{\sigma_{12}^2}.
   \label{eq:planar-n4-hexagon-watson-scalar}
-\]
+\end{equation}
 On the weak physical branch
 \[
   x_i^\pm=\frac{u_i\pm\ii/2}{g}+O(g),
@@ -2218,13 +2218,13 @@ On the weak physical branch
   \sigma_{12}=1+O(g^6),
 \]
 with \(u_1-u_2\neq\ii\), this becomes
-\[
+\begin{equation}
   S^{\rm hex}_{\rm scal}(1,2)
   =
   \frac{u_1-u_2+\ii}{u_1-u_2-\ii}
   +O(g^2).
   \label{eq:planar-n4-hexagon-watson-weak-limit}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -2498,7 +2498,7 @@ Multiplication by \(z/(4\pi^2)\) and \(z^2=\lambda\) gives
 \(\lambda=16\pi^2g^2\) gives \eqref{eq:bremsstrahlung-weak-g}.
 
 For the strong expansion use the large-positive-\(z\) asymptotic expansion
-\[
+\begin{equation}
   I_\nu(z)
   \sim
   \frac{\ee^z}{\sqrt{2\pi z}}
@@ -2506,7 +2506,7 @@ For the strong expansion use the large-positive-\(z\) asymptotic expansion
   \frac{(-1)^k}{k!(8z)^k}
   \prod_{j=1}^{k}\bigl(4\nu^2-(2j-1)^2\bigr).
   \label{eq:modified-bessel-large-z-asymptotic}
-\]
+\end{equation}
 Let us recall the coefficient derivation, since the signs are a common
 source of normalization errors.  The modified Bessel equation is
 \[
@@ -2607,7 +2607,7 @@ flux-tube datum consists of:
   operators \(\mathbb D_i(t)\), scalar insertions, fermion insertions, and
   covariant derivatives along the line;
 \item a spectral resolution of connected defect two-point functions,
-  \[
+  \begin{equation}
     \langle\mathbb O_a(t)\mathbb O_b(0)\rangle_{\rm conn}
     =
     \sum_\alpha
@@ -2615,7 +2615,7 @@ flux-tube datum consists of:
     F_{a,\alpha}(u)F_{b,\alpha}(u)^*
     \ee^{-E_\alpha(u)|t|+\ii p_\alpha(u)t},
     \label{eq:planar-n4-defect-spectral-resolution}
-  \]
+  \end{equation}
   where \(u\) denotes rapidity-type spectral coordinates when the
   integrability description is available;
 \item transition data, such as pentagon form factors or mirror-TBA kernels,
@@ -2634,23 +2634,23 @@ strip of length \(L=\log(R/\epsilon)\), where \(R\) and \(\epsilon\) are the
 infrared and ultraviolet scales used in the cusp renormalization.  If
 \(E_0(\varphi,\theta)\) denotes the extensive ground-state energy in this
 strip normalization, then
-\[
+\begin{equation}
   E_0(\varphi,\theta)
   =
   \Gamma_{\rm cusp}(\varphi,\theta)\,L+O(1).
   \label{eq:cusp-ground-state-energy}
-\]
+\end{equation}
 For the lightlike cusp, the coefficient of \(L\) is the lightlike cusp
 anomalous dimension \(\Gamma_{\rm cusp}(\lambda)\).  In the large-spin
 operator problem, the same coefficient controls the leading logarithmic
 growth
-\[
+\begin{equation}
   \Delta(S)-S
   =
   \Gamma_{\rm cusp}(\lambda)\log S+O(S^0)
   \qquad (S\to\infty)
   \label{eq:large-spin-cusp-growth}
-\]
+\end{equation}
 in the normalization of
 Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
 
@@ -2704,14 +2704,14 @@ by \((\tau,\sigma,\phi)\).  Here \(\tau\) is the Euclidean propagation length
 in the chosen flux-tube channel, \(\sigma\) is the translation coordinate
 along the defect, and \(\phi\) is the angle conjugate to the transverse
 rotation charge.  The channel evolution operator is
-\[
+\begin{equation}
   U(\tau,\sigma,\phi)
   =
   \exp\{-\tau H_{\rm def}
         +\ii\sigma P_{\rm def}
         +\ii\phi J_{\rm def}\},
   \label{eq:n4-flux-tube-channel-evolution}
-\]
+\end{equation}
 where \(H_{\rm def}\), \(P_{\rm def}\), and \(J_{\rm def}\) are the energy,
 longitudinal momentum, and transverse angular-momentum generators of
 Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem}.  Let
@@ -2719,14 +2719,14 @@ Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem}.  Let
 right and left boundary states prepared by the adjacent Wilson-line segments
 in this channel, after the local cusp and edge renormalizations have been
 fixed.  The channel contribution is the matrix element
-\[
+\begin{equation}
   \mathcal W_{\rm ch}(\tau,\sigma,\phi)
   =
   \langle\mathcal P_{\rm R}|
   U(\tau,\sigma,\phi)
   |\mathcal P_{\rm L}\rangle .
   \label{eq:n4-pentagon-channel-matrix-element}
-\]
+\end{equation}
 
 \begin{proposition}[Pentagon OPE from the defect spectral resolution]
 \label{prop:pentagon-ope-defect-resolution}
@@ -2734,7 +2734,7 @@ Assume the planar Wilson-line defect datum of
 Definition~\ref{def:planar-n4-wilson-line-flux-tube-problem} and assume that,
 in the channel under consideration, the identity on \(\mathcal H_{\rm def}\)
 admits the generalized multiparticle resolution
-\[
+\begin{equation}
   \mathbf 1_{\rm def}
   =
   |0\rangle\langle0|
@@ -2747,7 +2747,7 @@ admits the generalized multiparticle resolution
   \frac{\dd u_r}{2\pi}\,\mu_{a_r}(u_r)\,
   |\mathbf a,\mathbf u\rangle\langle\mathbf a,\mathbf u| ,
   \label{eq:n4-flux-tube-identity-resolution}
-\]
+\end{equation}
 where \(a_r\) labels the one-particle species, \(u_r\) is its rapidity
 coordinate, \(\mu_a(u)\) is the one-particle spectral measure in this
 normalization, and
@@ -2828,12 +2828,12 @@ In the integrability solution, the overlaps
 functions.  For a diagonal scalar component of two ordered one-particle
 excitations in a fixed rapidity normalization, Watson consistency is the
 identity
-\[
+\begin{equation}
   P_{a|b}(u|v)
   =
   S_{ab}(u,v)\,P_{b|a}(v|u),
   \label{eq:n4-pentagon-watson-diagonal}
-\]
+\end{equation}
 with \(S_{ab}\) the flux-tube scattering phase or matrix element in the same
 rapidity normalization.  Mirror moves relate a particle crossing an edge of
 the pentagon to an excitation in the adjacent channel.  These relations are

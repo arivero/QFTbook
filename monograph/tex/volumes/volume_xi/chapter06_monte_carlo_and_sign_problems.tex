@@ -63,28 +63,28 @@ for one, hence every, state \(x\).
 Let \(P\) be an irreducible and aperiodic stochastic matrix on a finite set
 \(\Omega\).  Then \(P\) has a unique stationary probability distribution
 \(\pi\) with strictly positive entries, and
-\[
+\begin{equation}
   \lim_{n\to\infty}P^n(x,y)=\pi(y)
   \qquad (x,y\in\Omega).
   \label{eq:finite-chain-pointwise-convergence}
-\]
+\end{equation}
 For every function \(f:\Omega\to\mathbb C\) and every initial state \(X_0\),
-\[
+\begin{equation}
   \frac1N\sum_{n=0}^{N-1}f(X_n)
   \longrightarrow
   \sum_{x\in\Omega}\pi(x)f(x)
   \label{eq:finite-chain-time-average-convergence}
-\]
+\end{equation}
 in probability.  If the chain is run in stationarity, the same convergence
 holds in \(L^2\).
 \end{proposition}
 
 \begin{proof}
 For an irreducible aperiodic finite chain there is an integer \(m\) for which
-\[
+\begin{equation}
   P^m(x,y)>0\qquad\text{for all }x,y\in\Omega .
   \label{eq:finite-chain-primitive-power}
-\]
+\end{equation}
 Indeed, irreducibility gives closed walks based at any state, and
 aperiodicity makes the semigroup of return times have greatest common divisor
 one; adding fixed paths from \(x\) to a reference state and from that
@@ -103,14 +103,14 @@ For probability vectors \(\mu,\nu\), write \(\alpha=\mu-\nu\), so
   \sum_y R(x,y)=1-|\Omega|\epsilon .
 \]
 The constant part drops out after multiplication by \(\alpha\), and therefore
-\[
+\begin{equation}
   \|\alpha P^m\|_1
   =
   \|\alpha R\|_1
   \leq
   (1-|\Omega|\epsilon)\|\alpha\|_1 .
   \label{eq:finite-chain-l1-contraction}
-\]
+\end{equation}
 Thus \(P^m\) is a strict contraction on the affine space of probability
 vectors modulo total mass.  It has a unique fixed probability vector
 \(\pi\), and every \(\mu P^{km}\) converges to \(\pi\).  Since \(\pi P\) is
@@ -130,13 +130,13 @@ separately.  Set \(g=f-\sum_x\pi(x)f(x)\).  Since
   C_g(n)=\sum_{x,y}\pi(x)g(x)P^n(x,y)g(y)
 \]
 tends to zero.  Hence
-\[
+\begin{equation}
   \mathbb E_\pi\left|\frac1N\sum_{n=0}^{N-1}g(X_n)\right|^2
   =
   \frac1{N^2}\sum_{r,s=0}^{N-1} C_g(|r-s|)
   \longrightarrow0,
   \label{eq:finite-chain-l2-average-proof}
-\]
+\end{equation}
 because a Cesaro average of a sequence tending to zero tends to zero.  This
 gives \(L^2\) convergence in stationarity.  For a nonstationary initial
 state, discard a fixed burn-in time \(M\); by
@@ -355,21 +355,21 @@ The product Haar measure is finite and normalized.  For an oriented plaquette
   U^{-1}_{x+\hat\nu,\mu}U^{-1}_{x,\nu},
 \]
 define the finite Wilson score
-\[
+\begin{equation}
   Q(U)
   =
   \sum_{x}\sum_{\mu<\nu}
   \frac12\operatorname{Re}\operatorname{tr}U_{x;\mu\nu}.
   \label{eq:su2-finite-wilson-score}
-\]
+\end{equation}
 The probability measure used by the companion script is
-\[
+\begin{equation}
   d\nu_{\beta,\Lambda}(U)
   =
   Z_{\beta,\Lambda}^{-1}\exp[\beta Q(U)]
   \prod_{(x,\mu)}dU_{x,\mu},
   \label{eq:su2-finite-wilson-probability}
-\]
+\end{equation}
 where \(dU\) is normalized Haar measure on \(SU(2)\).  This is the finite
 probability problem corresponding to the Wilson action convention; continuum
 Yang--Mills normalization and the \(a\to0\) scaling trajectory are separate
@@ -382,10 +382,10 @@ element \(R\in SU(2)\), and replaces
 \]
 Let \(\kappa(dR)\) be the proposal law.  The crucial algebraic hypothesis is
 inversion symmetry,
-\[
+\begin{equation}
   \kappa(dR)=\kappa(dR^{-1}).
   \label{eq:su2-proposal-inversion-symmetry}
-\]
+\end{equation}
 For example, representing \(SU(2)\) by unit quaternions
 \[
   R=\cos\alpha\,1+\ii\sin\alpha\,\hat n\cdot\sigma,
@@ -401,12 +401,12 @@ For the finite measure \eqref{eq:su2-finite-wilson-probability}, suppose the
 link proposal chooses \(e\) uniformly and \(R\) with a law
 \(\kappa(dR)=\kappa(dR^{-1})\).  Accept the proposed configuration \(U'\) with
 probability
-\[
+\begin{equation}
   a(U\to U')
   =
   \min\{1,\exp[\beta(Q(U')-Q(U))]\}.
   \label{eq:su2-link-metropolis-acceptance}
-\]
+\end{equation}
 Then the resulting transition kernel satisfies detailed balance with respect
 to \(d\nu_{\beta,\Lambda}\).  If the support of \(\kappa\) generates
 \(SU(2)\) as a closed subgroup, the chain is irreducible with respect to the
@@ -452,7 +452,7 @@ transform by conjugation:
   U_{x;\mu\nu}\longmapsto g_xU_{x;\mu\nu}g_x^{-1}.
 \]
 The rectangular Wilson-loop observable in the \((\mu,\nu)\)-plane is
-\[
+\begin{equation}
   W_{R,T}(x;\mu,\nu)
   =
   \frac12\operatorname{Re}\operatorname{tr}
@@ -460,7 +460,7 @@ The rectangular Wilson-loop observable in the \((\mu,\nu)\)-plane is
     \prod_{\ell\in \partial \mathcal R_{R,T}(x;\mu,\nu)} U_\ell
   \right],
   \label{eq:su2-rectangular-wilson-loop}
-\]
+\end{equation}
 with inverse links used when the path orientation is opposite to the positive
 lattice orientation.  The companion script averages
 \eqref{eq:su2-rectangular-wilson-loop} over translations and coordinate
@@ -488,20 +488,20 @@ certified by this example.
 
 Heat-bath and overrelaxation updates are most cleanly defined as statements
 about conditional probability measures at fixed regulator.  Let
-\[
+\begin{equation}
   \Omega=X\times Y,\qquad
   d\nu(x,y)=d\nu(x\mid y)\,d\nu_Y(y)
   \label{eq:conditional-factorization}
-\]
+\end{equation}
 be a probability space with regular conditional probability
 \(d\nu(x\mid y)\).  A heat-bath update of the \(X\)-coordinate leaves \(y\)
 fixed and samples \(x'\) from \(d\nu(x'\mid y)\):
-\[
+\begin{equation}
   K_{\mathrm{HB}}\bigl((x,y),d x' d y'\bigr)
   =
   d\nu(x'\mid y)\,\delta_y(dy').
   \label{eq:heat-bath-kernel}
-\]
+\end{equation}
 
 \begin{proposition}[Exact heat-bath detailed balance]
 \label{prop:exact-heat-bath-detailed-balance}
@@ -513,10 +513,10 @@ independent of the present configuration, also preserves \(d\nu\).
 
 \begin{proof}
 The measure on pairs of configurations generated by one heat-bath move is
-\[
+\begin{equation}
   d\nu_Y(y)\,d\nu(x\mid y)\,d\nu(x'\mid y)\,\delta_y(dy').
   \label{eq:heat-bath-pair-measure}
-\]
+\end{equation}
 This expression is symmetric under \(x\leftrightarrow x'\).  That is exactly
 the detailed-balance identity.  A convex linear combination of invariant
 kernels is invariant, so a random scan preserves \(d\nu\).
@@ -525,13 +525,13 @@ kernels is invariant, so a random scan preserves \(d\nu\).
 For the finite \(SU(2)\) Wilson measure \eqref{eq:su2-finite-wilson-probability},
 fix every link except one link \(U_e\).  The part of the score depending on
 \(U_e\) can be written
-\[
+\begin{equation}
   Q(U)
   =
   \frac12\operatorname{Re}\operatorname{tr}(U_e V_e)
   + Q_{\widehat e}(U_{\widehat e}),
   \label{eq:su2-local-staple-score}
-\]
+\end{equation}
 where \(U_{\widehat e}\) denotes all links other than \(U_e\), and \(V_e\) is
 the sum of oriented staples multiplying \(U_e\) in the plaquettes that
 contain \(e\).  In the fundamental representation of \(SU(2)\), the set of
@@ -542,15 +542,15 @@ matrices
 \]
 is closed under addition and multiplication.  Hence, if \(V_e\neq0\), there
 are unique \(c_e>0\) and \(W_e\in SU(2)\) such that
-\[
+\begin{equation}
   V_e=c_e W_e .
   \label{eq:su2-staple-polar-form}
-\]
+\end{equation}
 If \(V_e=0\), the conditional distribution of \(U_e\) is Haar measure.
 
 For \(V_e\neq0\), left or right Haar invariance reduces the conditional
 density to the one-parameter form
-\[
+\begin{equation}
   d\nu(U_e\mid U_{\widehat e})
   =
   Z_e^{-1}
@@ -558,7 +558,7 @@ density to the one-parameter form
     \beta c_e\frac12\operatorname{Re}\operatorname{tr}(U_e W_e)
   \right]dU_e .
   \label{eq:su2-link-conditional}
-\]
+\end{equation}
 Writing
 \[
   X=U_e W_e=x_0\,1+\ii\,\vec x\cdot\vec\sigma,
@@ -566,36 +566,36 @@ Writing
   x_0^2+\|\vec x\|^2=1,
 \]
 the Haar measure on \(SU(2)\simeq S^3\) gives the marginal density
-\[
+\begin{equation}
   p_{\beta c_e}(x_0)\,dx_0
   =
   \mathcal N_{\beta c_e}^{-1}
   \sqrt{1-x_0^2}\,e^{\beta c_e x_0}\,dx_0,
   \qquad -1\leq x_0\leq1,
   \label{eq:su2-heatbath-x0-density}
-\]
+\end{equation}
 and, conditional on \(x_0\), the direction
 \(\vec x/\sqrt{1-x_0^2}\) is uniformly distributed on \(S^2\).  An exact
 \(SU(2)\) heat-bath update is precisely an exact sampler of
 \eqref{eq:su2-heatbath-x0-density} and this uniform direction, followed by
-\[
+\begin{equation}
   U_e'=X W_e^{-1}.
   \label{eq:su2-heatbath-reconstruction}
-\]
+\end{equation}
 Different practical heat-bath algorithms are different exact or approximate
 ways of sampling \eqref{eq:su2-heatbath-x0-density}; the invariant-measure
 statement is the conditional-sampling theorem above.
 
 Overrelaxation is deterministic rather than heat-bath sampling.  At fixed
 staple \(W_e\), define
-\[
+\begin{equation}
   \mathcal O_{W_e}(U_e)
   =
   W_e^{-1}U_e^{-1}W_e^{-1}.
   \label{eq:su2-overrelaxation-map}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   \mathcal O_{W_e}(\mathcal O_{W_e}(U_e))=U_e,
   \qquad
   \frac12\operatorname{Re}\operatorname{tr}
@@ -603,7 +603,7 @@ Then
   =
   \frac12\operatorname{Re}\operatorname{tr}(U_eW_e).
   \label{eq:su2-overrelaxation-involution-score}
-\]
+\end{equation}
 The first identity says that the map is an involution.  The second follows
 because \(\mathcal O_{W_e}(U_e)W_e=(U_eW_e)^{-1}\), and an \(SU(2)\) matrix
 has the same real trace as its inverse.  The map preserves Haar measure
@@ -811,13 +811,13 @@ The companion data-generator
 implements the finite subgroup-update Metropolis kernel described above for
 the periodic four-dimensional pure \(SU(3)\) Wilson lattice model.  Its
 normalized plaquette score is
-\[
+\begin{equation}
   Q(U)=\sum_p\frac13\operatorname{Re}\operatorname{Tr}_3 U_p,
   \qquad
   d\nu_\beta(U)=Z_{\beta,\Lambda}^{-1}e^{\beta Q(U)}
   \prod_{\ell}dU_\ell .
   \label{eq:su3-script-wilson-measure}
-\]
+\end{equation}
 The script writes, when the optional package \(\texttt{h5py}\) is available,
 an HDF5 file containing the run parameters, per-sweep plaquette and
 rectangular Wilson-loop measurements, the final link field, and the state of
@@ -872,14 +872,14 @@ Hybrid Monte Carlo is a finite-regulator construction before it is a
 continuum algorithm.  The construction begins with a finite-dimensional
 configuration manifold \(Q_\Lambda\), a positive reference measure \(dq\),
 and a target probability density
-\[
+\begin{equation}
   d\nu(q)
   =
   Z^{-1}e^{-S(q)}\,dq ,
   \qquad
   Z=\int_{Q_\Lambda}e^{-S(q)}\,dq<\infty .
   \label{eq:hmc-target-measure}
-\]
+\end{equation}
 For a scalar finite lattice, \(Q_\Lambda\) is typically \(\mathbb R^n\) or a
 torus.  For a compact gauge lattice, \(Q_\Lambda\) is a finite product of
 compact Lie groups and \(dq\) is product Haar measure.  The following theorem
@@ -889,12 +889,12 @@ part of HMC that is independent of the chosen regulator.
 Let \((\Gamma_\Lambda,d\lambda)\) be a finite-dimensional phase space with a
 positive reference measure, let \(H:\Gamma_\Lambda\to\mathbb R\) be a
 measurable Hamiltonian for which
-\[
+\begin{equation}
   d\mu_H(z)
   =
   Z_H^{-1}e^{-H(z)}\,d\lambda(z)
   \label{eq:hmc-extended-measure}
-\]
+\end{equation}
 is a probability measure, and let \(R:\Gamma_\Lambda\to\Gamma_\Lambda\) be
 an involution preserving \(d\lambda\).  In the usual cotangent-bundle example
 \[
@@ -902,12 +902,12 @@ an involution preserving \(d\lambda\).  In the usual cotangent-bundle example
   \qquad R(q,p)=(q,-p).
 \]
 For \(Q_\Lambda=\mathbb R^n\) with a positive mass matrix \(M\),
-\[
+\begin{equation}
   H(q,p)=S(q)+\frac12 p^T M^{-1}p,
   \qquad
   d\lambda=dq\,dp .
   \label{eq:hmc-euclidean-hamiltonian}
-\]
+\end{equation}
 The \(q\)-marginal of \(d\mu_H\) is then \eqref{eq:hmc-target-measure} after
 normalizing the Gaussian momentum integral.
 
@@ -915,17 +915,17 @@ normalizing the Gaussian momentum integral.
 \label{def:hmc-reversible-volume-preserving}
 A numerical trajectory map \(\Phi:\Gamma_\Lambda\to\Gamma_\Lambda\) is
 called reversible and volume preserving, with respect to \(R\), if
-\[
+\begin{equation}
   \Phi_*(d\lambda)=d\lambda,
   \qquad
   R\Phi R=\Phi^{-1}.
   \label{eq:hmc-reversible-volume-preserving}
-\]
+\end{equation}
 The corresponding Metropolis proposal is
-\[
+\begin{equation}
   G=R\Phi .
   \label{eq:hmc-involutive-proposal}
-\]
+\end{equation}
 \end{definition}
 
 The explicit momentum flip in \(G\) is not a convention with physical
@@ -939,19 +939,19 @@ Indeed \eqref{eq:hmc-reversible-volume-preserving} gives
 \label{prop:hmc-metropolis-correction}
 Assume that \(\Phi\) is reversible and volume preserving in the sense of
 Definition~\ref{def:hmc-reversible-volume-preserving}.  Let
-\[
+\begin{equation}
   a(z)
   =
   \min\{1,\exp[-H(Gz)+H(z)]\}
   \label{eq:hmc-acceptance}
-\]
+\end{equation}
 and define the Markov kernel
-\[
+\begin{equation}
   K(z,B)
   =
   a(z)\mathbf 1_B(Gz)+(1-a(z))\mathbf 1_B(z)
   \label{eq:hmc-metropolis-kernel}
-\]
+\end{equation}
 for measurable \(B\subset\Gamma_\Lambda\).  Then \(K\) satisfies detailed
 balance with respect to \(d\mu_H\).  Consequently \(d\mu_H\) is invariant.
 \end{proposition}
@@ -960,10 +960,10 @@ balance with respect to \(d\mu_H\).  Consequently \(d\mu_H\) is invariant.
 Since \(G\) is an involution and preserves \(d\lambda\), every nontrivial
 proposed move is paired with its reverse.  It is enough to prove the
 pairwise identity
-\[
+\begin{equation}
   e^{-H(z)}a(z)=e^{-H(Gz)}a(Gz).
   \label{eq:hmc-pairwise-balance}
-\]
+\end{equation}
 Write \(\Delta H=H(Gz)-H(z)\).  If \(\Delta H\geq0\), then
 \[
   e^{-H(z)}a(z)
@@ -997,23 +997,23 @@ detailed balance alone.
 Let \(Q_\Lambda=\mathbb R^n\), let \(S\in C^2(\mathbb R^n)\), and let
 \(M\) be a positive definite symmetric matrix.  Define the kick and drift
 maps
-\[
+\begin{equation}
   K_a(q,p)=(q,p-a\nabla S(q)),
   \qquad
   D_\epsilon(q,p)=(q+\epsilon M^{-1}p,p),
   \label{eq:hmc-kick-drift}
-\]
+\end{equation}
 and the one-step leapfrog map
-\[
+\begin{equation}
   L_\epsilon=K_{\epsilon/2}D_\epsilon K_{\epsilon/2}.
   \label{eq:hmc-leapfrog-map}
-\]
+\end{equation}
 Then \(L_\epsilon\) preserves \(dq\,dp\) and satisfies
-\[
+\begin{equation}
   R L_\epsilon R=L_\epsilon^{-1},
   \qquad R(q,p)=(q,-p).
   \label{eq:hmc-leapfrog-reversibility}
-\]
+\end{equation}
 Every finite power \(L_\epsilon^N\), \(N\in\mathbb Z_{\geq0}\), has the same
 two properties.
 \end{proposition}
@@ -1080,13 +1080,13 @@ following finite-dimensional Gaussian integral.
 \begin{proposition}[Pseudofermion determinant identity]
 \label{prop:pseudofermion-determinant-identity}
 If \(A>0\) is Hermitian, then
-\[
+\begin{equation}
   \int_{\mathbb C^N}
   \exp[-\phi^\dagger A^{-1}\phi]\,d^{2N}\phi
   =
   \pi^N\det A .
   \label{eq:pseudofermion-determinant-identity}
-\]
+\end{equation}
 Consequently a positive determinant factor \(\det A\) in a finite Euclidean
 integral may be represented, up to the \(A\)-independent constant \(\pi^N\),
 by the pseudofermion action \(\phi^\dagger A^{-1}\phi\).
@@ -1134,14 +1134,14 @@ and the exact pseudofermion action would contain the matrix function
 spectral interval \([\lambda_-,\lambda_+]\) containing the spectrum of
 \(A(U)\) by a positive rational function \(r_m(x)\).  At finite regulator
 this replacement defines the exactly sampled determinant
-\[
+\begin{equation}
   \pi^{-N}
   \int_{\mathbb C^N}
   \exp[-\phi^\dagger r_m(A)\phi]\,d^{2N}\phi
   =
   \frac{1}{\det r_m(A)}.
   \label{eq:rhmc-rationalized-determinant}
-\]
+\end{equation}
 It equals \(\det A^\alpha\) only if \(r_m(A)=A^{-\alpha}\) on the spectrum,
 or if an additional exact correction or reweighting factor is included.
 Thus RHMC is not a slogan for ``fractional fermions''; it is an exact
@@ -1151,19 +1151,19 @@ desired determinant.
 
 The elementary spectral error estimate used in such a comparison is
 pointwise.  If
-\[
+\begin{equation}
   \|r_m(A)-A^{-\alpha}\|_{\mathrm{op}}\leq\delta ,
   \label{eq:rhmc-spectral-error}
-\]
+\end{equation}
 then for every pseudofermion vector \(\phi\),
-\[
+\begin{equation}
   \left|
     \phi^\dagger\bigl(r_m(A)-A^{-\alpha}\bigr)\phi
   \right|
   \leq
   \delta\,\|\phi\|^2 .
   \label{eq:rhmc-action-error-bound}
-\]
+\end{equation}
 This bound controls the error in the pseudofermion action for a fixed
 configuration and a fixed pseudofermion vector.  Turning it into a uniform
 observable bound requires further hypotheses, for example a uniform spectral
@@ -1210,7 +1210,7 @@ trajectory toward a continuum limit.
 \begin{proposition}[Exact finite-\(N\) variance identity]
 \label{prop:markov-autocorrelation-variance-identity}
 Assume the chain is stationary and \(O\) is real with \(C_O(0)>0\).  Then
-\[
+\begin{equation}
   \operatorname{Var}(\overline O_N)
   =
   \frac{1}{N^2}
@@ -1218,19 +1218,19 @@ Assume the chain is stationary and \(O\) is real with \(C_O(0)>0\).  Then
     NC_O(0)+2\sum_{t=1}^{N-1}(N-t)C_O(t)
   \right].
   \label{eq:finite-n-autocorrelation-variance}
-\]
+\end{equation}
 If
-\[
+\begin{equation}
   \sum_{t=1}^{\infty}|C_O(t)|<\infty ,
   \label{eq:autocorrelation-absolute-summability}
-\]
+\end{equation}
 then
-\[
+\begin{equation}
   \operatorname{Var}(\overline O_N)
   =
   \frac{2\tau_{\mathrm{int}}(O)}{N}\,C_O(0)+o(N^{-1}).
   \label{eq:asymptotic-autocorrelation-variance}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1268,11 +1268,11 @@ thermalization.  Choose a block length \(b\) and write
   B=\left\lfloor\frac{N}{b}\right\rfloor .
 \]
 Discarding the final incomplete block for definiteness, define block means
-\[
+\begin{equation}
   Y_j=\frac1b\sum_{r=0}^{b-1}O_{jb+r},
   \qquad j=0,\ldots,B-1,
   \label{eq:block-mean-definition}
-\]
+\end{equation}
 and
 \[
   \overline Y=\frac1B\sum_{j=0}^{B-1}Y_j .
@@ -1286,25 +1286,25 @@ and by comparing independent chains.
 \begin{remark}[Delete-one-block jackknife for the mean]
 \label{rem:block-jackknife-mean-identity}
 Assume \(B\ge2\).  Let
-\[
+\begin{equation}
   s_Y^2=\frac{1}{B-1}\sum_{j=0}^{B-1}(Y_j-\overline Y)^2 .
   \label{eq:block-sample-variance}
-\]
+\end{equation}
 The blocked standard-error coordinate for \(\overline Y\) is
-\[
+\begin{equation}
   \operatorname{se}_{\rm block}(\overline Y)=\sqrt{\frac{s_Y^2}{B}}.
   \label{eq:block-standard-error}
-\]
+\end{equation}
 Let \(\overline Y_{(j)}\) be the mean of the \(B-1\) block means with the
 \(j\)-th block removed:
-\[
+\begin{equation}
   \overline Y_{(j)}
   =
   \frac{1}{B-1}\sum_{k\ne j}Y_k .
   \label{eq:delete-one-block-mean}
-\]
+\end{equation}
 Then the delete-one-block jackknife variance for the mean,
-\[
+\begin{equation}
   \operatorname{Var}_{\rm jack}(\overline Y)
   =
   \frac{B-1}{B}\sum_{j=0}^{B-1}
@@ -1314,7 +1314,7 @@ Then the delete-one-block jackknife variance for the mean,
     \frac1B\sum_{k=0}^{B-1}\overline Y_{(k)}
   \right)^2,
   \label{eq:delete-one-block-jackknife-variance}
-\]
+\end{equation}
 equals \(s_Y^2/B\).
 Since
 \[
@@ -1349,21 +1349,21 @@ The preceding remark is the scalar case of the error-coordinate needed
 for Wilson-loop ratios, flowed-energy couplings, and hadron effective masses.
 Let \(Y_j\in\mathbb R^m\) be block means for \(m\) elementary observables,
 let
-\[
+\begin{equation}
   \overline Y=\frac1B\sum_{j=0}^{B-1}Y_j,
   \qquad
   d_j=Y_j-\overline Y,
   \qquad
   S_Y=\frac{1}{B-1}\sum_{j=0}^{B-1}d_jd_j^{\mathsf T},
   \label{eq:block-vector-covariance}
-\]
+\end{equation}
 and let
-\[
+\begin{equation}
   \overline Y_{(j)}
   =
   \frac{B\overline Y-Y_j}{B-1}.
   \label{eq:vector-delete-one-block-mean}
-\]
+\end{equation}
 For a smooth scalar analysis function \(F:U\to\mathbb R\), where
 \(U\subset\mathbb R^m\) is open and contains the convex hull of the
 \(\overline Y_{(j)}\), define
@@ -1373,12 +1373,12 @@ For a smooth scalar analysis function \(F:U\to\mathbb R\), where
   \widehat F_\bullet=\frac1B\sum_{j=0}^{B-1}F_{(j)},
 \]
 and
-\[
+\begin{equation}
   \widehat V_{\rm jack}(F)
   =
   \frac{B-1}{B}\sum_{j=0}^{B-1}(F_{(j)}-\widehat F_\bullet)^2 .
   \label{eq:nonlinear-block-jackknife-variance}
-\]
+\end{equation}
 
 \begin{proposition}[Correlated delete-one-block jackknife for smooth ratios]
 \label{prop:correlated-delete-one-block-jackknife}
@@ -1401,7 +1401,7 @@ and
   E=\frac{M D_4}{(B-1)^2}.
 \]
 Then
-\[
+\begin{equation}
   \left|
     \widehat V_{\rm jack}(F)
     -
@@ -1410,7 +1410,7 @@ Then
   \le
   \frac{B-1}{B}(2AE+E^2).
   \label{eq:nonlinear-jackknife-taylor-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1466,21 +1466,21 @@ Substituting these two bounds proves
 For the static potential, the elementary block vector contains the positive
 Wilson-loop coordinates \(W(n,m)\) needed for a chosen finite list of
 rectangles.  The analysis functions are
-\[
+\begin{equation}
   F^{\rm eff}_{n,m}(W)
   =
   -a^{-1}\log\frac{W(n,m+1)}{W(n,m)}
   \label{eq:effective-mass-analysis-function}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   F^\chi_{n,m}(W)
   =
   -\log
   \frac{W(n,m)W(n-1,m-1)}
        {W(n,m-1)W(n-1,m)} .
   \label{eq:creutz-analysis-function}
-\]
+\end{equation}
 They are smooth on the positive orthant.  Applying the jackknife to
 \(F^{\rm eff}_{n,m}\) or \(F^\chi_{n,m}\) after deleting an entire Monte Carlo
 block is therefore a correlated calculation: the covariance among the
@@ -1541,10 +1541,10 @@ Here
   \langle e^{\ii\Theta}\rangle_R=\frac{Z}{Z_R},
 \]
 and \(\Delta f\) is the real number defined by
-\[
+\begin{equation}
   \Delta f=-\frac1V\log\left|\frac{Z}{Z_R}\right|.
   \label{eq:phase-quenched-free-energy-difference}
-\]
+\end{equation}
 Estimating a ratio with a denominator of this size requires a number of
 independent samples growing as \(\exp[2V\Delta f]\) for fixed relative error,
 unless the numerator and denominator are computed by a method that avoids
@@ -1561,20 +1561,20 @@ For \(N\) independent samples from \(d\nu_R\), the unbiased estimator
   \widehat m_N=\frac1N\sum_{j=1}^{N}e^{\ii\Theta(\Phi_j)}
 \]
 satisfies
-\[
+\begin{equation}
   \frac{\mathbb E_R|\widehat m_N-m|^2}{|m|^2}
   =
   \frac{1-|m|^2}{N|m|^2}.
   \label{eq:average-phase-relative-variance}
-\]
+\end{equation}
 Consequently, if \(|m|=\exp[-V\Delta f]\), any direct phase-reweighting
 estimation of the denominator with relative mean-square error at most
 \(\delta^2\) requires
-\[
+\begin{equation}
   N\geq
   \delta^{-2}\left(e^{2V\Delta f}-1\right).
   \label{eq:sign-problem-sample-lower-bound}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1619,17 +1619,17 @@ single-flavor statement and the paired-flavor statement are different.
 \label{rem:gamma5-hermiticity-determinant-positivity}
 Let \(D\) be a finite lattice Dirac matrix and let \(\Gamma\) be an
 involution with \(\Gamma^\dagger=\Gamma\) and \(\Gamma^2=1\).  If
-\[
+\begin{equation}
   \Gamma D\Gamma=D^\dagger ,
   \label{eq:finite-gamma5-hermiticity}
-\]
+\end{equation}
 then \(\det D\in\mathbb R\).  For two degenerate flavors with fermion
 integral \((\det D)^2\), the finite weight is nonnegative because the real
 determinant is squared.  For a conjugate pair of flavors with determinant
-\[
+\begin{equation}
   \det D\,\det D^\dagger=|\det D|^2,
   \label{eq:paired-flavor-positive-determinant}
-\]
+\end{equation}
 the finite-regulator weight is nonnegative before possible zero-mode
 subtleties.  Thus a positivity claim must state the actual flavor and
 operator pairing together with the formal \(\gamma_5\)-Hermiticity relation.

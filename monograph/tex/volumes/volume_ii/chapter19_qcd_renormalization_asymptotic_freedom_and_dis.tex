@@ -1711,14 +1711,14 @@ usual order needed to define particle states.  If a baryon state created by
 which each quark moves in an \(N_c\)-independent mean field, then its leading
 mass is \(O(N_c)\).  Indeed there are \(N_c\) one-body contributions, while
 the two-body estimate gives
-\[
+\begin{equation}
   \binom{N_c}{2}\,g^2
   =
   \frac{N_c(N_c-1)}2\,\frac{\lambda}{N_c}
   =
   \frac{\lambda}{2}(N_c-1),
   \label{eq:qcd-large-n-baryon-pair-counting}
-\]
+\end{equation}
 which is also \(O(N_c)\) at fixed \(\lambda\).  The Hartree statement is a
 controlled large-\(N_c\) organization only after the existence of such
 color-singlet baryon states has been assumed or established in a regulator.
@@ -1728,12 +1728,12 @@ Spin and flavor splittings are subleading in the same limit.  If the baryon is
 described at low energy by a slowly rotating spin-flavor collective coordinate
 with moment of inertia \(I_{\rm rot}=O(N_c)\), then the rotor contribution has
 the form
-\[
+\begin{equation}
   \Delta M_J
   =
   \frac{J(J+1)}{2I_{\rm rot}},
   \label{eq:qcd-large-n-baryon-rotor-splitting}
-\]
+\end{equation}
 so fixed-spin splittings are \(O(N_c^{-1})\).  In theories with chiral
 symmetry breaking, the same scaling is compatible with a soliton description
 in the mesonic effective theory: \(F_\pi^2=O(N_c)\), meson interaction
@@ -1834,14 +1834,14 @@ and isospin matrices commute with each other,
   \frac12[s^i,s^j]\{t^a,t^b\}.
 \]
 Substituting the Pauli relations gives
-\[
+\begin{equation}
   [s^i t^a,s^j t^b]
   =
   \frac{\ii}{4}\delta^{ij}\varepsilon^{abc}t^c
   +
   \frac{\ii}{4}\delta^{ab}\varepsilon^{ijk}s^k .
   \label{eq:qcd-one-slot-gg-commutator}
-\]
+\end{equation}
 Summing \eqref{eq:qcd-one-slot-gg-commutator} over the \(N_c\) quark slots
 gives \eqref{eq:qcd-spin-flavor-g-commutator}.  The remaining commutators
 follow in the same way from the facts that \(s^i\) transforms as a spin vector
@@ -2031,14 +2031,14 @@ and hence
 
 \begin{proof}
 The trace-delta Fierz identity in the fundamental representation is
-\[
+\begin{equation}
   \sum_a (t^a)^i{}_j(t^a)^m{}_n
   =
   \delta^i{}_n\delta^m{}_j
   -
   \frac1{N_c}\delta^i{}_j\delta^m{}_n .
   \label{eq:qcd-trace-delta-fierz}
-\]
+\end{equation}
 Contracting \(j=n\) and summing over \(j\) gives
 \[
   \sum_a (t^a t^a)^i{}_m
@@ -2091,30 +2091,30 @@ For \(1\le k\le N_c-1\), the sine comparison function
   R_k^{\rm sine}(N_c)=R_{N_c-k}^{\rm sine}(N_c),
 \]
 strict subadditivity,
-\[
+\begin{equation}
   R_{k+\ell}^{\rm sine}(N_c)
   <
   R_k^{\rm sine}(N_c)+R_\ell^{\rm sine}(N_c),
   \qquad
   k,\ell\ge1,\quad k+\ell\le N_c-1,
   \label{eq:qcd-sine-subadditivity}
-\]
+\end{equation}
 and the fixed-\(k\), large-\(N_c\) expansion
-\[
+\begin{equation}
   R_k^{\rm sine}(N_c)
   =
   k-\frac{\pi^2}{6}\frac{k(k^2-1)}{N_c^2}
   +O(N_c^{-4}).
   \label{eq:qcd-sine-large-n}
-\]
+\end{equation}
 The Casimir comparison function obeys the same charge conjugation symmetry,
 but its fixed-\(k\) expansion begins as
-\[
+\begin{equation}
   R_k^{\rm Casimir}(N_c)
   =
   k-\frac{k(k-1)}{N_c}+O(N_c^{-2}).
   \label{eq:qcd-casimir-large-n}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -2778,12 +2778,12 @@ oscillator generating function is
 \]
 As \(\varepsilon\downarrow0\), comparison with the corresponding Riemann sum,
 or equivalently the modular transformation of the Dedekind eta function, gives
-\[
+\begin{equation}
   \log\prod_{n=1}^{\infty}(1-\ee^{-n\varepsilon})^{-c}
   =
   \frac{\pi^2 c}{6\varepsilon}+O(\log\varepsilon).
   \label{eq:qcd-string-partition-small-epsilon}
-\]
+\end{equation}
 Cauchy's coefficient formula writes \(p_c(N)\) as the contour integral of
 \(q^{-N-1}\prod_n(1-q^n)^{-c}\).  The exponential part of the integrand on the
 positive saddle is
@@ -3994,7 +3994,7 @@ where \(A_{nL},B_{nL},C_{nL}\) are radial matrix elements or matching
 coefficients in the chosen scheme, and \(\mathcal T_{LS}\) is the rotational
 scalar obtained by coupling a traceless rank-two orbital tensor to a
 traceless rank-two spin tensor.  Then
-\[
+\begin{equation}
   \mathbf S_Q\cdot\mathbf S_{\bar Q}
   =
   \begin{cases}
@@ -4002,7 +4002,7 @@ traceless rank-two spin tensor.  Then
   \frac14, & S=1,
   \end{cases}
   \label{eq:qcd-quarkonium-spin-spin-eigenvalues}
-\]
+\end{equation}
 and, on the triplet \(S=1\) states,
 \begin{equation}
   \mathbf L\cdot\mathbf S
@@ -4474,14 +4474,14 @@ whose matrix elements vanish on the finite-volume Hilbert subspace being
 sampled.  A spectroscopy chart is a choice of ordered basis
 \((\mathcal O_1,\ldots,\mathcal O_m)\) of \(\mathcal V_\Gamma\), together
 with any declared decomposition
-\[
+\begin{equation}
   \mathcal V_\Gamma
   =
   \mathcal V_{\rm loc}\oplus
   \mathcal V_{\rm two\text{-}hadron}\oplus
   \mathcal V_{\rm flux}\oplus\cdots .
   \label{eq:qcd-spectroscopy-source-decomposition}
-\]
+\end{equation}
 The summands in \eqref{eq:qcd-spectroscopy-source-decomposition} are source
 subspaces, not Hilbert-space superselection sectors.  For example,
 \(\mathcal V_{\rm loc}\) may contain local \(q\bar q\), baryon, or pure-glue
@@ -4532,16 +4532,16 @@ mixes partial waves and inelastic thresholds are often nearby.
 Let \(C(t)\) be the correlation matrix of a spectroscopy chart in a fixed
 finite-volume channel, and assume \(C(t_0)\) is positive definite on the
 chosen source space for some \(t_0>0\).  If
-\[
+\begin{equation}
   C(t)v_n(t,t_0)=\lambda_n(t,t_0)C(t_0)v_n(t,t_0)
   \label{eq:qcd-spectroscopy-gevp-general}
-\]
+\end{equation}
 is the generalized eigenvalue problem, then every invertible change of source
 coordinates \(\mathcal O'_A=R_A{}^B\mathcal O_B\) sends
-\[
+\begin{equation}
   C(t)\longmapsto C'(t)=R\,C(t)\,R^\dagger
   \label{eq:qcd-spectroscopy-source-basis-change}
-\]
+\end{equation}
 and leaves the multiset of generalized eigenvalues
 \(\{\lambda_n(t,t_0)\}\) unchanged.  Consequently the energies extracted from
 \(-\log\lambda_n/(t-t_0)\), when a controlled single-exponential window
@@ -4554,12 +4554,12 @@ been specified.
 
 \begin{proof}
 The transformed GEVP is
-\[
+\begin{equation}
   R C(t)R^\dagger v'_n
   =
   \lambda'_n R C(t_0)R^\dagger v'_n.
   \label{eq:qcd-transformed-gevp}
-\]
+\end{equation}
 Multiplying by \(R^{-1}\) from the left and setting \(v_n=R^\dagger v'_n\)
 gives
 \[
@@ -4727,13 +4727,13 @@ Expanding this expression at small \(r\) gives
   \right].
 \]
 Thus the ratio of the regular coefficient to the \(1/r\) coefficient is
-\[
+\begin{equation}
   \frac{A\cos\delta_0(k)}
        {A\sin\delta_0(k)/k}
   =
   k\cot\delta_0(k).
   \label{eq:qcd-swave-boundary-ratio}
-\]
+\end{equation}
 On the other hand, the finite-volume exterior solution proportional to
 \eqref{eq:qcd-periodic-helmholtz-green} has expansion
 \[
@@ -5557,10 +5557,10 @@ Mandelstam variables in the physical elastic region are
   \label{eq:qcd-unequal-mass-elastic-kinematics}
 \end{equation}
 The identity
-\[
+\begin{equation}
   s+t+u=2(m_1^2+m_2^2)
   \label{eq:qcd-pik-mandelstam-sum}
-\]
+\end{equation}
 is part of the kinematic convention.  For \(\pi K\) scattering one takes
 \((m_1,m_2)=(m_\pi,m_K)\).
 \end{definition}
@@ -5755,12 +5755,12 @@ A neutral heavy quarkonium entry is a color-singlet \(Q\bar Q\) spectral
 coordinate with flavor \(Q=c\) or \(Q=b\), radial label \(n\), orbital angular
 momentum \(L=0,1,2,\ldots\), total heavy-quark spin \(S=0,1\), and total
 angular momentum \(J\).  The spectroscopic notation is
-\[
+\begin{equation}
   n\,{}^{2S+1}L_J,
   \qquad
   L=S,P,D,F,\ldots\quad\hbox{for}\quad L=0,1,2,3,\ldots .
   \label{eq:qcd-quarkonium-spectroscopic-notation}
-\]
+\end{equation}
 For hidden flavor, charge conjugation is an exact quantum number in the
 isospin-symmetric QCD-plus-QED-decoupled convention.  The low-lying chart is:
 \[
@@ -5843,11 +5843,11 @@ mechanics problem imposed from outside.  For \(N_f=3\) light flavors, the
 lowest baryons organize approximately into flavor \(SU(3)\) octet and
 decuplet representations when the quark masses are close.  To first order in
 an octet symmetry-breaking Hamiltonian, the octet masses may be written as
-\[
+\begin{equation}
   M(Y,I)=M_0+aY
   +b\left(I(I+1)-\frac{Y^2}{4}\right),
   \label{eq:qcd-baryon-octet-gmo-chart}
-\]
+\end{equation}
 where \(Y\) is hypercharge and \(I\) is isospin.  This coordinate chart gives
 the Gell-Mann--Okubo relation
 \begin{equation}
@@ -5865,14 +5865,14 @@ Assume that first-order \(SU(3)\)-breaking baryon masses are described by
 \eqref{eq:qcd-baryon-octet-gmo-chart} in the octet and by
 \(M_{10}(Y)=M_{10,0}+cY\) in the decuplet.  Then
 \eqref{eq:qcd-baryon-gell-mann-okubo} holds and
-\[
+\begin{equation}
   M_{\Sigma^\ast}-M_\Delta
   =
   M_{\Xi^\ast}-M_{\Sigma^\ast}
   =
   M_\Omega-M_{\Xi^\ast}.
   \label{eq:qcd-decuplet-equal-spacing}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -6347,13 +6347,13 @@ space, normalization, and deformation path.
 Fix a one-heavy-quark baryon family with \(j_\ell>0\).  Suppose that, through
 order \(1/m_Q\), the only spin-dependent term in the effective Hamiltonian
 on the two-state multiplet \(J=j_\ell\pm\frac12\) is
-\[
+\begin{equation}
   H_{\rm mag}
   =
   \frac{2\kappa_{j_\ell}}{m_Q}\,
   \mathbf S_Q\cdot\mathbf j_\ell ,
   \label{eq:qcd-heavy-baryon-chromomagnetic-hamiltonian}
-\]
+\end{equation}
 where \(\mathbf S_Q^2=\frac34\) and
 \(\mathbf j_\ell^2=j_\ell(j_\ell+1)\).  Then the degeneracy-weighted
 spin average
@@ -6367,12 +6367,12 @@ spin average
 \end{equation}
 is independent of \(\kappa_{j_\ell}\) at this order.  In particular,
 for the \(\Sigma_Q,\Sigma_Q^\ast\)-type doublet, \(j_\ell=1\) and
-\[
+\begin{equation}
   \overline M_{\Sigma_Q}
   =
   \frac{M_{\Sigma_Q}+2M_{\Sigma_Q^\ast}}{3}
   \label{eq:qcd-sigma-heavy-spin-average}
-\]
+\end{equation}
 has no chromomagnetic \(1/m_Q\) contribution in the stated scheme.
 \end{proposition}
 
@@ -7582,26 +7582,26 @@ Set
 \]
 Define the eventwise two-point calorimetric distribution in
 \(\zeta=\cos\chi\) by
-\[
+\begin{equation}
   E_{2,X}(\zeta)
   =
   \sum_{r,s\in X}z_r z_s\,\delta(\zeta-\zeta_{rs}) .
   \label{eq:eventwise-eec-zeta-distribution}
-\]
+\end{equation}
 Then, as distributional moments on \([-1,1]\),
-\[
+\begin{equation}
   \int_{-1}^{1} E_{2,X}(\zeta)\,\dd\zeta=1,
   \qquad
   \int_{-1}^{1}\zeta\,E_{2,X}(\zeta)\,\dd\zeta=0 .
   \label{eq:eventwise-eec-first-sum-rules}
-\]
+\end{equation}
 The coincident-detector contact part at \(\zeta=1\) has weight
-\[
+\begin{equation}
   E_{2,X}^{\rm contact}(\zeta)
   =
   \left(\sum_{r\in X}z_r^2\right)\delta(\zeta-1).
   \label{eq:eventwise-eec-contact-weight}
-\]
+\end{equation}
 Consequently the cross-section averaged EEC of
 \eqref{eq:qcd-eec-definition}, including the \(r=s\) terms, satisfies the same
 zeroth and first moment sum rules after division by \(\sigma_{\rm tot}\).
@@ -10281,13 +10281,13 @@ In the common half-trace convention,
 For a large-\(N_c\) dipole-factorization truncation of the Balitsky hierarchy,
 the corresponding nonlinear equation for \(N_Y=1-S_Y\) has the additional
 term
-\[
+\begin{equation}
   -\frac{g^2 C_A}{8\pi^3}
   \int\dd^2\mathbf z\,
   M_{\mathbf x\mathbf y\mathbf z}\,
   N_Y(\mathbf x,\mathbf z)N_Y(\mathbf z,\mathbf y).
   \label{eq:qcd-bk-nonlinear-term}
-\]
+\end{equation}
 At finite \(N_c\), the exact Wilson-line rapidity hierarchy contains higher
 multi-trace operators; replacing them by the product in
 \eqref{eq:qcd-bk-nonlinear-term} is an additional closure assumption, not a
@@ -10380,7 +10380,7 @@ By translation and scaling it suffices to set
 \(\mathbf y=0\), \(r_{xy}=1\), and \(\mu_\perp=1\).  The singular terms in
 the three brackets are regulated in \(d=2-2\epsilon\) transverse dimensions.
 The Euclidean beta integral
-\[
+\begin{equation}
   \int\dd^d\mathbf z\,
   \frac1{(\mathbf z^2)^a((\mathbf z-\mathbf x)^2)^b}
   =
@@ -10392,7 +10392,7 @@ The Euclidean beta integral
   }
   (\mathbf x^2)^{d/2-a-b}
   \label{eq:qcd-bfkl-beta-integral}
-\]
+\end{equation}
 is first valid in its convergence domain and then analytically continued.
 Applying \eqref{eq:qcd-bfkl-beta-integral} to the three pieces gives
 \[

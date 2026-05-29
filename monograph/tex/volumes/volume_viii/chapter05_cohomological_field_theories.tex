@@ -48,10 +48,10 @@ Regulated cohomological QFT data consist of:
 \item a declared integration cycle \(\Gamma_\Lambda\), contour, BV
   Lagrangian, or Hilbert-space trace;
 \item an even derivation \(B_\Lambda\) such that
-  \[
+  \begin{equation}
     Q_\Lambda^2=B_\Lambda
     \label{eq:cohomological-q-square-b}
-  \]
+  \end{equation}
   on \(\mathcal A_\Lambda\);
 \item a \(B_\Lambda\)-invariant subalgebra
   \[
@@ -61,10 +61,10 @@ Regulated cohomological QFT data consist of:
   \]
   on which \(Q_\Lambda^2=0\);
 \item the Ward identity
-  \[
+  \begin{equation}
     \langle Q_\Lambda Y\rangle_\Lambda=0
     \label{eq:regulated-q-ward-identity}
-  \]
+  \end{equation}
   for every admissible insertion \(Y\) used in the argument.
 \end{enumerate}
 The regulated cohomological observables are the classes
@@ -115,7 +115,7 @@ Let \(g\) be a background metric, and write
 \(\delta_g\) for a tangent vector to the space of metrics.  A metric
 variation formula is a statement in a fixed renormalization and contact-term
 scheme:
-\[
+\begin{equation}
   \delta_g\langle X\rangle_\Lambda
   =
   \left\langle
@@ -124,7 +124,7 @@ scheme:
   -
   \langle X\rangle_\Lambda\langle-\delta_gS_\Lambda\rangle_\Lambda,
   \label{eq:cohomological-normalized-metric-variation}
-\]
+\end{equation}
 with additional contact insertions included in \(\delta_gX\) when the
 representative of \(X\) depends on the metric.
 
@@ -132,12 +132,12 @@ representative of \(X\) depends on the metric.
 Let \(X_g\in\mathcal A_\Lambda^B\) be a smooth family of
 \(Q_\Lambda\)-closed insertions.  Suppose the normalized metric variation can
 be written as
-\[
+\begin{equation}
   \delta_g\langle X_g\rangle_\Lambda
   =
   \langle Q_\Lambda Y_{\delta g}\rangle_\Lambda
   \label{eq:metric-variation-q-exact-insertion}
-\]
+\end{equation}
 for an admissible insertion \(Y_{\delta g}\).  If the Ward identity
 \eqref{eq:regulated-q-ward-identity} holds for \(Y_{\delta g}\), then
 \[
@@ -161,10 +161,10 @@ the condition expressed by
 \section{Exact Deformations and Localization}
 
 Let \(V\in\mathcal A_\Lambda\) be odd and \(B_\Lambda\)-invariant.  If
-\[
+\begin{equation}
   S_{\Lambda,t}=S_\Lambda+t\,Q_\Lambda V
   \label{eq:q-exact-deformed-action}
-\]
+\end{equation}
 is an allowed family of regulated actions and \(X\) is
 \(Q_\Lambda\)-closed, then \(t\)-independence is the same Ward identity.
 
@@ -242,12 +242,12 @@ odd vector field \(Q\).  Suppose:
 \end{enumerate}
 Then the integral of \(X\exp(-S-tQV)\) is independent of \(t\), and its
 large-\(t\) value is
-\[
+\begin{equation}
   \int_F
   \frac{X|_F\,\exp(-S|_F)}
        {e_{Q^2}(N_F)}
   \label{eq:cohomological-localization-fixed-locus-formula}
-\]
+\end{equation}
 with the orientation line and equivariant Euler class determined by the
 normal quadratic complex.
 \end{theorem}
@@ -296,11 +296,11 @@ The zero locus is
 Introduce local even coordinates \(x^i\), odd tangent variables \(\psi^i\)
 representing \(dx^i\), odd fiber variables \(\chi_a\), and even auxiliary
 fiber variables \(H_a\).  The cohomological differential is
-\[
+\begin{equation}
   Qx^i=\psi^i,\qquad Q\psi^i=0,\qquad
   Q\chi_a=H_a,\qquad QH_a=0
   \label{eq:mq-q-rules-flat}
-\]
+\end{equation}
 in a local trivialization.  The connection-covariant version adds the
 standard connection terms so that the expression below globalizes.
 
@@ -311,14 +311,14 @@ Choose the standard oscillatory auxiliary-field representative
   \frac12(\chi,H)_E+\ii(\chi,s)_E .
 \]
 Then
-\[
+\begin{equation}
   QV_{\rm MQ}
   =
   \frac12(H,H)_E+\ii(H,s)_E
   -\ii(\chi,\nabla_\psi^E s)_E
   +\text{curvature term}.
   \label{eq:mq-qv}
-\]
+\end{equation}
 With the real Gaussian contour for \(H\), completing the square gives
 \[
   \int \dd H\,
@@ -388,18 +388,18 @@ A descent package is a sequence of local \(p\)-form insertions
   0\le p\le D,
 \]
 such that
-\[
+\begin{equation}
   Q\mathcal O^{(0)}=0,
   \qquad
   Q\mathcal O^{(p)}+\dd\mathcal O^{(p-1)}=0
   \quad (1\le p\le D).
   \label{eq:descent-equations}
-\]
+\end{equation}
 If \(\gamma_p\) is a closed \(p\)-cycle, then
-\[
+\begin{equation}
   I_{\gamma_p}(\mathcal O)=\int_{\gamma_p}\mathcal O^{(p)}
   \label{eq:descent-integrated-observable}
-\]
+\end{equation}
 is \(Q\)-closed: using \eqref{eq:descent-equations} and
 \(\partial\gamma_p=0\),
 \[
@@ -417,25 +417,25 @@ is \(Q\)-closed: using \eqref{eq:descent-equations} and
 
 If \(\gamma_p\) is changed by a boundary,
 \(\gamma_p\mapsto\gamma_p+\partial C_{p+1}\), then
-\[
+\begin{equation}
   I_{\gamma_p+\partial C_{p+1}}(\mathcal O)-I_{\gamma_p}(\mathcal O)
   =
   \int_{C_{p+1}}\dd\mathcal O^{(p)}
   =
   -Q\int_{C_{p+1}}\mathcal O^{(p+1)} .
   \label{eq:descent-homology-q-exact-shift}
-\]
+\end{equation}
 Thus integrated descendants depend only on the homology class of the cycle in
 \(Q\)-cohomology, subject to the specified contact-term qualification when
 cycles collide with other insertions.
 
 In Donaldson--Witten theory, the descent package is generated from invariant
 polynomials in the universal equivariant curvature.  With
-\[
+\begin{equation}
   QA=\psi,\qquad Q\psi=-d_A\phi,\qquad Q\phi=0,
   \qquad Q^2=\delta_{\rm gauge}(-\phi),
   \label{eq:dw-universal-q-rules}
-\]
+\end{equation}
 gauge-invariant polynomials of \(\phi\) define local \(Q\)-classes, and their
 descendants give observables integrated over cycles in the four-manifold.
 The detailed four-dimensional field content, instanton moduli space, and
@@ -452,17 +452,17 @@ manifold \(X\) with infinitesimal vector fields \(v_\xi\),
   \alpha:\mathfrak k\to\Omega^\bullet(X)
 \]
 define
-\[
+\begin{equation}
   d_K\alpha(\xi)
   =
   d\alpha(\xi)-\iota_{v_\xi}\alpha(\xi).
   \label{eq:cartan-equivariant-differential}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   d_K^2\alpha(\xi)=-\mathcal L_{v_\xi}\alpha(\xi),
   \label{eq:cartan-square}
-\]
+\end{equation}
 so \(d_K^2=0\) on invariant forms.
 
 \begin{example}[Hamiltonian \(S^1\) model]
@@ -497,15 +497,15 @@ master equation.  In finite-dimensional notation, let
 \((\mathcal F,\omega_{\rm BV})\) be an odd symplectic supermanifold, let
 \((\,\cdot\,,\,\cdot\,)\) be the BV bracket, and let \(\Delta\) be the
 regulated BV Laplacian.  A quantum BV action satisfies
-\[
+\begin{equation}
   \frac12(S,S)-\hbar\Delta S=0.
   \label{eq:cohomological-qme}
-\]
+\end{equation}
 The corresponding BV differential on insertions is
-\[
+\begin{equation}
   \widehat Q X=(S,X)-\hbar\Delta X.
   \label{eq:bv-quantum-differential}
-\]
+\end{equation}
 If \(X=\widehat QY\) and the BV Stokes theorem holds on the chosen
 Lagrangian integration cycle \(\mathcal L\), then
 \[

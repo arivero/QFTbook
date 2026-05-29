@@ -91,39 +91,39 @@ compact and clean, and that the large-\(t\) integral is dominated by a
 tubular neighborhood of \(F\).  In local coordinates \(y\) along \(F\),
 bosonic normal coordinates \(x^i\), and fermionic normal coordinates
 \(\vartheta^A\), the even quadratic normal model has the form
-\[
+\begin{equation}
   (QV)_{\rm quad}
   =
   \frac12 x^i A_{ij}(y)x^j
   -
   \frac12\vartheta^A\mathsf F_{AB}(y)\vartheta^B .
   \label{eq:finite-normal-quadratic-model}
-\]
+\end{equation}
 Here \(A\) is symmetric and positive on the declared real normal cycle, and
 \(\mathsf F\) is antisymmetric.  The differential in the normal
 \(Q\)-complex is encoded in the fermion-fermion matrix \(\mathsf F\), not in
 an odd-even term: an ordinary even quadratic action cannot contain a term
 linear in one fermionic normal coordinate and one bosonic normal coordinate
 with an even numerical coefficient.  If, after choosing splittings,
-\[
+\begin{equation}
   \mathsf F=
   \begin{pmatrix}
     0&D\\
     -D^T&0
   \end{pmatrix},
   \label{eq:normal-complex-fermion-block}
-\]
+\end{equation}
 then the corresponding Pfaffian is \(\pm\det D\), with the sign fixed by the
 orientation of the odd variables.  With the conventional
 finite-dimensional Gaussian normalization absorbed into \(\mu\), the local
 normal factor is therefore
-\[
+\begin{equation}
   Z_{\rm normal}(y)
   =
   \frac{\operatorname{Pf}\mathsf F(y)}
        {\sqrt{\det A(y)}} .
   \label{eq:finite-normal-localization-factor}
-\]
+\end{equation}
 
 \begin{proposition}[Finite normal Gaussian factor]
 \label{prop:finite-normal-gaussian-localization-factor}
@@ -131,16 +131,16 @@ Let \(A\) be an invertible real symmetric matrix whose real part is positive
 on the chosen bosonic normal cycle, and let \(\mathsf F\) be an invertible
 antisymmetric \(2m\times2m\) matrix.  With the Berezin orientation
 \(d\vartheta_{2m}\cdots d\vartheta_1\),
-\[
+\begin{equation}
   \int d^{2m}\vartheta\,
   \exp\!\left(\frac12\vartheta^A\mathsf F_{AB}\vartheta^B\right)
   =
   \operatorname{Pf}\mathsf F .
   \label{eq:finite-normal-pfaffian-integral}
-\]
+\end{equation}
 After absorbing the ordinary factor \((2\pi)^{n/2}\) into the local
 normalization of the bosonic measure,
-\[
+\begin{equation}
   \int dx\,d\vartheta\,
   \exp\!\left(
     -\frac12x^iA_{ij}x^j
@@ -149,7 +149,7 @@ normalization of the bosonic measure,
   =
   \frac{\operatorname{Pf}\mathsf F}{\sqrt{\det A}} .
   \label{eq:finite-normal-gaussian-integral}
-\]
+\end{equation}
 If \(A\) or \(\mathsf F\) has a zero mode, that direction must be split off
 and integrated on the fixed locus or saturated by insertions; it is not part
 of the one-loop determinant.
@@ -241,14 +241,14 @@ With \((a,a):=\operatorname{tr}_{\square}(a^2)\) for \(a\in\mathfrak t\), the
 round \(S^4_r\) localization variable is the constant adjoint scalar
 \(a\in\mathfrak t\) on the Coulomb locus.  The classical Gaussian in this
 trace-delta convention is
-\[
+\begin{equation}
   Z_{\rm cl}(a)
   =
   \exp\!\left\{
     -\frac{4\pi^2r^2}{g_{\rm YM}^2}(a,a)
   \right\}.
   \label{eq:s4-localization-classical-gaussian}
-\]
+\end{equation}
 The coefficient equals the familiar half-trace coefficient because
 \(t^a=\sqrt2\,T^a\) and \(g_{\rm ht}^2=2g_{\rm YM}^2\), so
 \[
@@ -264,13 +264,13 @@ connection \(A_\mu\), complex adjoint scalars \(\phi,\bar\phi\), gaugini
 auxiliary fields \(D_{AB}=D_{BA}\).  The chosen supercharge is specified by a
 pair of conformal Killing spinors \((\xi_A,\bar\xi_A)\).  Its square has the
 form
-\[
+\begin{equation}
   Q^2
   =
   \mathcal L_v+\delta_{\rm gauge}(\Lambda)
   +\delta_{SU(2)_R}(\Theta)+\delta_{\rm flavor}(m),
   \label{eq:s4-q-square-data}
-\]
+\end{equation}
 where \(v^\mu=\xi^A\sigma^\mu\bar\xi_A\) is a Killing vector on \(S^4_r\),
 \(\Lambda\) is an adjoint-valued gauge parameter, \(\Theta\) is an
 \(SU(2)_R\) rotation, and \(m\) denotes background flavor masses when present.
@@ -281,13 +281,13 @@ The bosonic fixed-locus statement used in the matrix model is the following
 field-theoretic reduction.  After choosing the real integration cycle for
 which the localizing term is nonnegative, all smooth bulk fields on the
 trivial bundle are gauge-equivalent to
-\[
+\begin{equation}
   A_\mu=0,\qquad
   \phi,\bar\phi\hbox{ constant with real-cycle coordinate }a,\qquad
   D_{AB}=D_{AB}(a),
   \qquad a\in\mathfrak t ,
   \label{eq:s4-bulk-fixed-locus}
-\]
+\end{equation}
 with the auxiliary field determined algebraically by the Killing-spinor
 background.  Nonzero instanton number is not represented by a smooth global
 bulk deformation of \eqref{eq:s4-bulk-fixed-locus}; in the large-localizing
@@ -299,21 +299,21 @@ factor.  This is why the compactification or contour defining
 than an optional interpretation added after the formula.
 
 Define the even entire function
-\[
+\begin{equation}
   H(x)
   =
   \prod_{n=1}^{\infty}
   \left(1+\frac{x^2}{n^2}\right)^n
   \exp\!\left(-\frac{x^2}{n}\right),
   \label{eq:pestun-H-function}
-\]
+\end{equation}
 where the product is taken in the displayed counterterm convention.
 
 \begin{lemma}[The \(H\)-function convention]
 \label{lem:s4-H-function-convention}
 The product in \eqref{eq:pestun-H-function} converges locally uniformly on
 the complex \(x\)-plane, defines an even entire function, and satisfies
-\[
+\begin{equation}
   \frac{d}{dx}\log H(x)
   =
   \sum_{n=1}^{\infty}
@@ -321,16 +321,16 @@ the complex \(x\)-plane, defines an even entire function, and satisfies
     \frac{2nx}{n^2+x^2}-\frac{2x}{n}
   \right)
   \label{eq:H-log-derivative}
-\]
+\end{equation}
 away from its zeros.  If \(G_B\) is the Barnes \(G\)-function normalized by
 \(G_B(1)=1\) and \(G_B(z+1)=\Gamma(z)G_B(z)\), then
-\[
+\begin{equation}
   H(x)
   =
   \exp\!\bigl(-(1+\gamma_{\mathrm E})x^2\bigr)\,
   G_B(1+\ii x)G_B(1-\ii x).
   \label{eq:H-Barnes-G-convention}
-\]
+\end{equation}
 Changing the exponential prefactor \(\exp(c x^2)\) is a local quadratic
 counterterm for the background vector multiplet or the gauge coupling; it is
 therefore a convention that must be kept fixed when comparing Gaussian
@@ -356,7 +356,7 @@ between common physics normalizations is the displayed exponential quadratic.
 
 For a vector multiplet and hypermultiplets of masses \(m_\ell\) in
 representations \(R_\ell\), the perturbative determinant on the round sphere is
-\[
+\begin{equation}
   Z_{1{\rm -loop}}^{S^4}(a)
   =
   \prod_{\alpha\in\Delta_+}
@@ -364,7 +364,7 @@ representations \(R_\ell\), the perturbative determinant on the round sphere is
   \prod_\ell\prod_{\rho\in{\rm wt}(R_\ell)}
   H\!\left(r\,\rho(a)+r\,m_\ell\right)^{-1}.
   \label{eq:s4-localization-one-loop}
-\]
+\end{equation}
 The factor \(\prod_{\alpha>0}\alpha(a)^2\) is the Cartan gauge-fixing
 Jacobian.  If the representation is real or pseudoreal, the weights are
 counted with the multiplicity appropriate to a full hypermultiplet in the
@@ -386,12 +386,12 @@ massless adjoint hypermultiplet, with the hypermultiplet mass coordinate
 tuned to the point where the field content is an \(\mathcal N=4\) vector
 multiplet.  Then the non-polynomial \(H\)-factors cancel identically and the
 one-loop factor is only the Cartan gauge-fixing Jacobian:
-\[
+\begin{equation}
   Z_{1{\rm -loop}}^{\mathcal N=4}(a)
   =
   \prod_{\alpha\in\Delta_+}\alpha(a)^2 .
   \label{eq:s4-n4-one-loop-cancellation}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -455,14 +455,14 @@ Let \(\mathcal M_{k,N}^{\rm sm}\) be the framed smooth \(U(N)\)
 \(k\)-instanton moduli space on \(\mathbb C^2\).
 \begin{enumerate}
   \item The Uhlenbeck compactification is stratified by
-  \[
+  \begin{equation}
     \overline{\mathcal M}_{k,N}^{\,U}
     =
     \bigsqcup_{\ell=0}^{k}
     \mathcal M_{k-\ell,N}^{\rm sm}\times
     {\rm Sym}^{\ell}(\mathbb C^2).
     \label{eq:uhlenbeck-stratification-c2}
-  \]
+  \end{equation}
   The integer \(\ell\) is the amount of instanton number carried by ideal
   point instantons.
   \item The Gieseker, or framed torsion-free-sheaf, compactification
@@ -495,10 +495,10 @@ points in \eqref{eq:uhlenbeck-stratification-c2} has complex dimension
 \]
 Hence its complex codimension inside the top-dimensional instanton
 component is
-\[
+\begin{equation}
   2\ell(N-1).
   \label{eq:uhlenbeck-stratum-codimension}
-\]
+\end{equation}
 For \(N=2\) and \(\ell=1\), this is real codimension four.
 
 The ADHM dimension count in
@@ -548,18 +548,18 @@ that the singular stratum is replaced by the Gieseker resolution.
 Let \(K\) and \(W\) be Hermitian vector spaces and let
 \((B_1,B_2,I,J)\in{\rm End}(K)^{\oplus2}\oplus{\rm Hom}(W,K)
 \oplus{\rm Hom}(K,W)\) obey the ADHM equations
-\[
+\begin{equation}
   [B_1,B_2]+IJ=0,
   \label{eq:positive-adhm-complex-moment-map}
-\]
-\[
+\end{equation}
+\begin{equation}
   [B_1,B_1^\dagger]+[B_2,B_2^\dagger]
   +II^\dagger-J^\dagger J
   =
   \zeta\,{\bf 1}_K ,
   \qquad \zeta>0 .
   \label{eq:adhm-real-moment-map-positive}
-\]
+\end{equation}
 Then the ADHM configuration is stable in the sense of
 Definition~\ref{def:adhm-stability-small-instanton}.  Equivalently, the
 positive real moment-map parameter forbids a quotient \(K/S\) that is
@@ -580,7 +580,7 @@ with respect to \(K=S\oplus T\):
   \end{pmatrix}.
 \]
 The \(T\)-trace of the commutator block is
-\[
+\begin{equation}
   \operatorname{Tr}_T\!\bigl([B_i,B_i^\dagger]_{TT}\bigr)
   =
   \operatorname{Tr}(D_iD_i^\dagger)
@@ -588,18 +588,18 @@ The \(T\)-trace of the commutator block is
   =
   -\operatorname{Tr}(C_i^\dagger C_i).
   \label{eq:adhm-stability-tt-commutator-trace}
-\]
+\end{equation}
 Since \(I(W)\subset S\), the \(T\)-block of \(II^\dagger\) is zero.  The
 \(T\)-trace of \(-J^\dagger J\) is
 \(-\operatorname{Tr}_T(J^\dagger J)\le0\).  Taking the trace over \(T\) in
 \eqref{eq:adhm-real-moment-map-positive} therefore gives
-\[
+\begin{equation}
   -\sum_{i=1}^2\operatorname{Tr}(C_i^\dagger C_i)
   -\operatorname{Tr}_T(J^\dagger J)
   =
   \zeta\,\dim T .
   \label{eq:adhm-positive-fi-contradiction}
-\]
+\end{equation}
 The left hand side is nonpositive and the right hand side is positive
 because \(\zeta>0\) and \(T\ne0\).  This contradiction proves stability.
 \end{proof}
@@ -629,7 +629,7 @@ arm and relative leg lengths by
 \]
 With Coulomb weights \(a_\alpha\) and rotation weights
 \(\epsilon_1,\epsilon_2\), use the orientation convention
-\[
+\begin{equation}
 \begin{aligned}
   e_T(T_{\vec Y}\mathfrak M_{k,N}^{G})
   &=
@@ -645,7 +645,7 @@ With Coulomb weights \(a_\alpha\) and rotation weights
   -\epsilon_2A_{Y_\alpha}(s)\Bigr).
   \label{eq:nekrasov-tangent-euler-class}
 \end{aligned}
-\]
+\end{equation}
 The pure vector fixed-point contribution is
 \[
   Z_{\vec Y}^{\rm vec}
@@ -743,7 +743,7 @@ boundary functional has vanished or has been cancelled by a specified
 resolution, relative cycle, or residue datum.
 
 The localized partition function is
-\[
+\begin{equation}
   Z_{S^4}^{\mathcal N=2}
   =
   \frac1{|W_G|}
@@ -753,7 +753,7 @@ The localized partition function is
   Z_{\rm inst}\!\left(a,\tau;\frac1r,\frac1r\right)
   Z_{\rm inst}\!\left(a,\bar\tau;\frac1r,\frac1r\right).
   \label{eq:pestun-s4-localization}
-\]
+\end{equation}
 The north pole contributes instantons and the south pole contributes
 anti-instantons.  The two factors are complex conjugates only when the
 integration cycle and masses are chosen so that reflection positivity gives
@@ -778,13 +778,13 @@ remaining matrix model is
 \]
 For \(G=U(1)\) there is no root factor and no finite-action instanton sector
 on \(\mathbb C^2\).  The partition function reduces to the ordinary Gaussian
-\[
+\begin{equation}
   \int_{-\infty}^{\infty} da\,
   \exp\!\left(-\frac{4\pi^2r^2}{g_{\rm YM}^2}a^2\right)
   =
   \frac{g_{\rm YM}}{2\sqrt{\pi}\,r}.
   \label{eq:s4-u1-gaussian-localization}
-\]
+\end{equation}
 \end{example}
 
 \begin{definition}[Circular Wilson-loop matrix-model coupling]
@@ -792,17 +792,17 @@ on \(\mathbb C^2\).  The partition function reduces to the ordinary Gaussian
 For \(G=U(N)\), let \(X\) denote the Hermitian matrix whose eigenvalues
 \(x_i\) are the dimensionless arguments that appear in the localized
 fundamental half-BPS circular Wilson loop,
-\[
+\begin{equation}
   W_{\square}(X)
   =
   \frac1N\operatorname{Tr}_{\square}\ee^{X}
   =
   \frac1N\sum_{i=1}^N\ee^{x_i}.
   \label{eq:localized-circular-wilson-insertion}
-\]
+\end{equation}
 The circular-loop Gaussian coupling \(\lambda_{\rm circ}\) is defined by
 writing the \(\mathcal N=4\) localized \(U(N)\) Gaussian model in the form
-\[
+\begin{equation}
   \dd\mu_{\lambda_{\rm circ},N}(X)
   =
   \frac1{Z_{\lambda_{\rm circ},N}}
@@ -810,9 +810,9 @@ writing the \(\mathcal N=4\) localized \(U(N)\) Gaussian model in the form
     -\frac{2N}{\lambda_{\rm circ}}\operatorname{Tr}_{\square}X^2
   \right)\dd X ,
   \label{eq:circular-wilson-gaussian-matrix-measure}
-\]
+\end{equation}
 or, after diagonalizing \(X\),
-\[
+\begin{equation}
   \dd\mu_{\lambda_{\rm circ},N}(x)
   \propto
   \prod_{i=1}^N dx_i\,
@@ -821,7 +821,7 @@ or, after diagonalizing \(X\),
   \right)
   \prod_{i<j}(x_i-x_j)^2 .
   \label{eq:circular-wilson-eigenvalue-measure}
-\]
+\end{equation}
 This is a definition of the coupling that enters the exact circular-loop
 answer.  Converting it to a Lagrangian symbol such as \(g_{\rm YM}^2N\)
 requires using the same fundamental-matrix normalization for the scalar in
@@ -836,16 +836,16 @@ normalization-invariant statement.
 In the large-\(N\) limit of
 \eqref{eq:circular-wilson-eigenvalue-measure}, with
 \(\lambda_{\rm circ}>0\) fixed, the normalized eigenvalue density is
-\[
+\begin{equation}
   \rho_{\lambda_{\rm circ}}(x)
   =
   \frac{2}{\pi\lambda_{\rm circ}}
   \sqrt{\lambda_{\rm circ}-x^2}\,
   \mathbf 1_{[-\sqrt{\lambda_{\rm circ}},\sqrt{\lambda_{\rm circ}}]}(x).
   \label{eq:circular-wilson-semicircle-density}
-\]
+\end{equation}
 Consequently the planar fundamental circular Wilson loop is
-\[
+\begin{equation}
   \lim_{N\to\infty}
   \left\langle
     \frac1N\operatorname{Tr}_{\square}\ee^X
@@ -856,7 +856,7 @@ Consequently the planar fundamental circular Wilson loop is
   \frac{2}{\sqrt{\lambda_{\rm circ}}}
   I_1\!\left(\sqrt{\lambda_{\rm circ}}\right),
   \label{eq:planar-circular-wilson-bessel}
-\]
+\end{equation}
 where \(I_1\) is the modified Bessel function.
 \end{theorem}
 
@@ -864,7 +864,7 @@ where \(I_1\) is the modified Bessel function.
 For an empirical density \(\rho\) with \(\int\rho(x)dx=1\), the large-\(N\)
 functional obtained from \eqref{eq:circular-wilson-eigenvalue-measure} is,
 up to an additive constant,
-\[
+\begin{equation}
   \mathcal F[\rho]
   =
   \frac{2}{\lambda_{\rm circ}}\int x^2\rho(x)dx
@@ -872,28 +872,28 @@ up to an additive constant,
   \int\!\!\int
   \rho(x)\rho(y)\log|x-y|\,dx\,dy .
   \label{eq:circular-wilson-density-functional}
-\]
+\end{equation}
 Varying \(\rho\) under the normalization constraint gives, on the support of
 the minimizing density,
-\[
+\begin{equation}
   \frac{2}{\lambda_{\rm circ}}x^2
   -
   2\int\rho(y)\log|x-y|\,dy
   =
   \text{constant}.
   \label{eq:circular-wilson-euler-lagrange}
-\]
+\end{equation}
 Differentiating inside the support gives the singular-integral equation
-\[
+\begin{equation}
   \frac{4x}{\lambda_{\rm circ}}
   =
   2\,\operatorname{p.v.}
   \int\frac{\rho(y)}{x-y}\,dy .
   \label{eq:circular-wilson-saddle-equation}
-\]
+\end{equation}
 The Cauchy transform of
 \eqref{eq:circular-wilson-semicircle-density} is
-\[
+\begin{equation}
   G(z)
   =
   \int
@@ -902,7 +902,7 @@ The Cauchy transform of
   \frac{2}{\lambda_{\rm circ}}
   \left(z-\sqrt{z^2-\lambda_{\rm circ}}\right),
   \label{eq:circular-wilson-cauchy-transform}
-\]
+\end{equation}
 where the branch is chosen so that \(G(z)\sim z^{-1}\) at infinity.  The
 average of the boundary values on the cut is
 \[
@@ -931,32 +931,32 @@ off the support, so the candidate density is the equilibrium density.
 
 It remains to evaluate the loop insertion.  Put
 \(z=\sqrt{\lambda_{\rm circ}}\) and \(x=zt\).  Then
-\[
+\begin{equation}
   \int dx\,\rho_{\lambda_{\rm circ}}(x)\ee^x
   =
   \frac{2}{\pi}
   \int_{-1}^{1}\ee^{zt}\sqrt{1-t^2}\,dt .
   \label{eq:circular-wilson-bessel-integral-step}
-\]
+\end{equation}
 The integral representation
-\[
+\begin{equation}
   I_1(z)
   =
   \frac{z}{\pi}
   \int_{-1}^{1}\ee^{zt}\sqrt{1-t^2}\,dt
   \label{eq:bessel-i1-semicircle-representation}
-\]
+\end{equation}
 gives \eqref{eq:planar-circular-wilson-bessel}.  Equivalently, expanding
 \(\ee^x\) and using the even moments
-\[
+\begin{equation}
   \int dx\,\rho_{\lambda_{\rm circ}}(x)x^{2n}
   =
   \frac{1}{n+1}\binom{2n}{n}
   \left(\frac{\lambda_{\rm circ}}{4}\right)^n
   \label{eq:circular-wilson-semicircle-moments}
-\]
+\end{equation}
 gives the same series
-\[
+\begin{equation}
   \sum_{n=0}^{\infty}
   \frac1{n!(n+1)!}
   \left(\frac{\lambda_{\rm circ}}{4}\right)^n
@@ -964,13 +964,13 @@ gives the same series
   \frac{2}{\sqrt{\lambda_{\rm circ}}}
   I_1\!\left(\sqrt{\lambda_{\rm circ}}\right).
   \label{eq:circular-wilson-bessel-series}
-\]
+\end{equation}
 \end{proof}
 
 \begin{remark}[Bremsstrahlung derivative algebra]
 \label{rem:bremsstrahlung-derivative-algebra}
 Assume the protected circular-loop Ward identity
-\[
+\begin{equation}
   B(\lambda_{\rm circ})
   =
   \frac{1}{2\pi^2}
@@ -980,16 +980,16 @@ Assume the protected circular-loop Ward identity
     \frac1N\operatorname{Tr}_{\square}\ee^X
   \right\rangle_{\rm planar}.
   \label{eq:bremsstrahlung-circular-loop-ward}
-\]
+\end{equation}
 Then Theorem~\ref{thm:planar-circular-wilson-bessel} gives
-\[
+\begin{equation}
   B(\lambda_{\rm circ})
   =
   \frac{\sqrt{\lambda_{\rm circ}}}{4\pi^2}
   \frac{I_2(\sqrt{\lambda_{\rm circ}})}
        {I_1(\sqrt{\lambda_{\rm circ}})} .
   \label{eq:bremsstrahlung-bessel-from-loop}
-\]
+\end{equation}
 
 Let \(z=\sqrt{\lambda_{\rm circ}}\) and
 \[
@@ -1006,17 +1006,17 @@ Since \(\lambda_{\rm circ}\partial_{\lambda_{\rm circ}}
   \right).
 \]
 The modified-Bessel recurrence
-\[
+\begin{equation}
   I_1'(z)=I_2(z)+\frac1z I_1(z)
   \label{eq:bessel-i1-derivative-recurrence}
-\]
+\end{equation}
 therefore gives
-\[
+\begin{equation}
   \lambda_{\rm circ}\frac{d}{d\lambda_{\rm circ}}\log W_0
   =
   \frac z2\frac{I_2(z)}{I_1(z)} .
   \label{eq:circular-loop-log-derivative-bessel}
-\]
+\end{equation}
 Substitution into \eqref{eq:bremsstrahlung-circular-loop-ward} proves
 \eqref{eq:bremsstrahlung-bessel-from-loop}.
 \end{remark}
@@ -1032,7 +1032,7 @@ Chern--Simons level \(k\), FI parameter \(\zeta\in\mathfrak t^\ast\), chiral
 multiplets \(\Phi\) in representations \(R_\Phi\), real masses \(m_\Phi\),
 and \(R\)-charges \(\Delta_\Phi\), the Kapustin--Willett--Yaakov matrix
 integral is
-\[
+\begin{equation}
   Z_{S^3}
   =
   \frac1{|W_G|}
@@ -1042,7 +1042,7 @@ integral is
   4\sinh^2\!\bigl(\pi r\,\alpha(\sigma)\bigr)
   \prod_{\Phi}Z_{\Phi}^{S^3}(\sigma),
   \label{eq:kwy-s3-localization}
-\]
+\end{equation}
 where
 \[
   Z_{\Phi}^{S^3}(\sigma)
@@ -1054,7 +1054,7 @@ where
 \]
 The function \(\ell\) is fixed, up to an additive constant that changes the
 overall normalization of \(Z_{S^3}\), by
-\[
+\begin{equation}
   \ell'(z)=-\pi z\cot(\pi z),
   \qquad
   \ell\!\left(\frac12+\ii x\right)
@@ -1063,10 +1063,10 @@ overall normalization of \(Z_{S^3}\), by
   =
   -\log\!\bigl(2\cosh(\pi x)\bigr).
   \label{eq:kwy-ell-identity}
-\]
+\end{equation}
 Equivalently, the round-sphere determinant is the \(b=1\) specialization of
 the double-sine convention
-\[
+\begin{equation}
   s_b(x)
   =
   \prod_{m,n\ge0}
@@ -1074,25 +1074,25 @@ the double-sine convention
        {mb+nb^{-1}+\frac{Q_b}{2}+\ii x},
   \qquad Q_b=b+b^{-1},
   \label{eq:double-sine-definition}
-\]
+\end{equation}
 defined by zeta regularization or by the corresponding meromorphic
 continuation.  In the convention of \eqref{eq:kwy-s3-localization},
-\[
+\begin{equation}
   \exp\!\left[\ell(1-\Delta+\ii x)\right]
   =
   s_1\!\left(\ii(1-\Delta)-x\right),
   \qquad x\in\mathbb R,
   \label{eq:ell-double-sine-round}
-\]
+\end{equation}
 after fixing the same \(x\)-independent normalization on both sides.  The
 reflection identity used for a conjugate \(R\)-charge \(1/2\) pair is
-\[
+\begin{equation}
   s_1\!\left(\frac{\ii}{2}-x\right)
   s_1\!\left(\frac{\ii}{2}+x\right)
   =
   \frac1{2\cosh(\pi x)} .
   \label{eq:double-sine-hyper-identity}
-\]
+\end{equation}
 
 The integration contour is the real Cartan in the displayed unitary
 normalization.  This statement includes a convergence hypothesis.  If the
@@ -1121,13 +1121,13 @@ For pure \(U(1)_k\) Chern--Simons theory on \(S^3\) with FI parameter
 \]
 With the contour obtained by rotating the positive quadratic direction by the
 usual \(\ii0\) prescription, completing the square gives
-\[
+\begin{equation}
   Z_{U(1)_k}(\zeta)
   =
   \frac{\ee^{\ii\pi\,{\rm sgn}(k)/4}}{\sqrt{|k|}}\,
   \exp\!\left(-\frac{\ii\pi\zeta^2}{k}\right).
   \label{eq:s3-u1-cs-fresnel}
-\]
+\end{equation}
 The phase depends on the framing convention of the Chern--Simons theory; the
 absolute value and FI dependence follow from the declared contour.
 \end{example}
@@ -1147,13 +1147,13 @@ on the \(U(1)\) Coulomb parameter is
   \frac1{2\cosh(\pi\sigma)}.
 \]
 The elementary integral
-\[
+\begin{equation}
   \int_{-\infty}^{\infty}
   \frac{d\sigma}{2\cosh(\pi\sigma)}
   =
   \frac12
   \label{eq:s3-chiral-pair-integral}
-\]
+\end{equation}
 is a finite check on the determinant normalization in
 \eqref{eq:kwy-s3-localization}.  It is not by itself a definition of a gauge
 theory; the gauge quotient, possible Chern--Simons contact terms, and

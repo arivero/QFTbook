@@ -17,36 +17,36 @@ behavior, and detector response.
 \section{Spatially Flat Robertson--Walker Metrics}
 
 Let \(M=I\times\mathbb R^{d-1}\), with \(d\geq2\), and let
-\[
+\begin{equation}
   g=-dt^2+a(t)^2d\mathbf x^2
   =
   a(\eta)^2(-d\eta^2+d\mathbf x^2),
   \qquad
   d\eta=\frac{dt}{a(t)}.
   \label{eq:flrw-conformal-metric}
-\]
+\end{equation}
 Assume \(a(\eta)>0\) is smooth on the conformal-time interval under
 consideration.  We write
-\[
+\begin{equation}
   \mathcal H(\eta)=\frac{a'(\eta)}{a(\eta)}
   \label{eq:conformal-hubble-definition}
-\]
+\end{equation}
 for the conformal Hubble function.  The scalar curvature of
 \eqref{eq:flrw-conformal-metric} is
-\[
+\begin{equation}
   R
   =
   (d-1)a^{-2}\bigl(2\mathcal H'+(d-2)\mathcal H^2\bigr).
   \label{eq:flrw-scalar-curvature}
-\]
+\end{equation}
 
 Consider a real scalar field satisfying
-\[
+\begin{equation}
   (\Box_g-m^2-\xi R)\phi=0.
   \label{eq:curved-scalar-klein-gordon}
-\]
+\end{equation}
 The Fourier convention is
-\[
+\begin{equation}
   \phi(\eta,\mathbf x)
   =
   \int\frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
@@ -54,36 +54,36 @@ The Fourier convention is
   \qquad
   k=|\mathbf k|.
   \label{eq:flrw-fourier-convention}
-\]
+\end{equation}
 
 \begin{remark}[Robertson--Walker mode equation]
 \label{rem:flrw-mode-equation}
 Let
-\[
+\begin{equation}
   p=\frac{d-2}{2},
   \qquad
   \chi_{\mathbf k}(\eta)=a(\eta)^p\phi_{\mathbf k}(\eta).
   \label{eq:flrw-rescaled-mode}
-\]
+\end{equation}
 Then \(\chi_{\mathbf k}\) obeys
-\[
+\begin{equation}
   \chi_{\mathbf k}''+\Omega_k(\eta)^2\chi_{\mathbf k}=0,
   \label{eq:flrw-chi-mode-equation}
-\]
+\end{equation}
 where
-\[
+\begin{equation}
   \Omega_k^2
   =
   k^2+a^2(m^2+\xi R)-p\mathcal H'-p^2\mathcal H^2 .
   \label{eq:flrw-effective-frequency}
-\]
+\end{equation}
 For a massless conformally coupled scalar, with
-\[
+\begin{equation}
   m=0,
   \qquad
   \xi=\xi_c=\frac{d-2}{4(d-1)},
   \label{eq:conformal-coupling-d-dimensions}
-\]
+\end{equation}
 one has \(\Omega_k^2=k^2\).
 \end{remark}
 
@@ -99,13 +99,13 @@ For the metric \eqref{eq:flrw-conformal-metric},
 \]
 Substituting \eqref{eq:flrw-fourier-convention} into
 \eqref{eq:curved-scalar-klein-gordon} gives
-\[
+\begin{equation}
   \phi_{\mathbf k}''
   +(d-2)\mathcal H\phi_{\mathbf k}'
   +
   \bigl(k^2+a^2(m^2+\xi R)\bigr)\phi_{\mathbf k}=0.
   \label{eq:flrw-unrescaled-mode-equation}
-\]
+\end{equation}
 Writing \(\phi_{\mathbf k}=a^{-p}\chi_{\mathbf k}\), with
 \(2p=d-2\), gives
 \[
@@ -147,7 +147,7 @@ conformal covariance of the classical wave equation.
 Let \(\mathcal S\) be the real vector space of smooth solutions of
 \eqref{eq:curved-scalar-klein-gordon} with compact Cauchy data.  On any
 Cauchy surface \(\Sigma\), define
-\[
+\begin{equation}
   \sigma(\phi_1,\phi_2)
   =
   \int_\Sigma d\Sigma^\mu\,
@@ -157,7 +157,7 @@ Cauchy surface \(\Sigma\), define
   \phi_2\nabla_\mu\phi_1
   \bigr).
   \label{eq:covariant-symplectic-form}
-\]
+\end{equation}
 The current inside the integral is conserved whenever both fields satisfy
 the equation of motion, so \(\sigma\) is independent of \(\Sigma\).
 
@@ -165,7 +165,7 @@ the equation of motion, so \(\sigma\) is independent of \(\Sigma\).
 \label{def:compatible-complex-structure-cosmology}
 A compatible complex structure on \((\mathcal S,\sigma)\) is a real linear
 map \(J:\mathcal S\to\mathcal S\) such that
-\[
+\begin{equation}
   J^2=-1,
   \qquad
   \sigma(Ju,Jv)=\sigma(u,v),
@@ -173,14 +173,14 @@ map \(J:\mathcal S\to\mathcal S\) such that
   \sigma(u,Ju)>0
   \quad (u\neq0).
   \label{eq:compatible-complex-structure}
-\]
+\end{equation}
 It defines a one-particle inner product
-\[
+\begin{equation}
   \langle u,v\rangle_J
   =
   \sigma(u,Jv)+\ii\sigma(u,v).
   \label{eq:one-particle-inner-product-J}
-\]
+\end{equation}
 Completing \((\mathcal S,\langle\cdot,\cdot\rangle_J)\) gives the
 one-particle Hilbert space \(\mathcal H_J\), and the symmetric Fock space
 \(\mathcal F_J=\operatorname{Sym}\mathcal H_J\) gives the associated
@@ -196,19 +196,19 @@ inequivalent in infinite volume.
 \label{qthm:shale-stinespring-diagonal}
 For two homogeneous quasifree representations whose positive-frequency modes
 are related mode-by-mode by Bogoliubov coefficients
-\[
+\begin{equation}
   u_{\mathbf k}^{(1)}
   =
   \alpha_k u_{\mathbf k}^{(2)}
   +
   \beta_k\overline{u_{-\mathbf k}^{(2)}},
   \label{eq:diagonal-bogoliubov-relation}
-\]
+\end{equation}
 the two Fock representations are unitarily equivalent precisely when
-\[
+\begin{equation}
   \int d^{d-1}\mathbf k\,|\beta_k|^2<\infty
   \label{eq:shale-stinespring-diagonal-condition}
-\]
+\end{equation}
 with the corresponding finite-volume sum in a box.  In that case the
 Bogoliubov transformation is implemented by a unitary operator on Fock
 space.
@@ -223,21 +223,21 @@ global Fock representations.
 
 Assume now that the scale factor and curvature approach static limits as
 \(\eta\to\pm\infty\), so that
-\[
+\begin{equation}
   \Omega_k(\eta)\longrightarrow
   \omega_k^{\mathrm{in/out}}>0
   \qquad
   (\eta\to\mp\infty).
   \label{eq:in-out-frequency-limits}
-\]
+\end{equation}
 The in and out positive-frequency modes are normalized by the Wronskian
 condition
-\[
+\begin{equation}
   \chi_k\overline{\chi_k'}-\chi_k'\overline{\chi_k}=\ii
   \label{eq:mode-wronskian-normalization}
-\]
+\end{equation}
 and by
-\[
+\begin{equation}
   \chi_k^{\mathrm{in/out}}(\eta)
   \sim
   \frac{e^{-\ii\omega_k^{\mathrm{in/out}}\eta}}
@@ -245,34 +245,34 @@ and by
   \qquad
   \hbox{in the corresponding asymptotic region.}
   \label{eq:in-out-positive-frequency-asymptotics}
-\]
+\end{equation}
 
 \begin{proposition}[Bogoliubov normalization and particle number]
 \label{prop:bogoliubov-particle-number}
 Let
-\[
+\begin{equation}
   \chi_k^{\mathrm{in}}
   =
   \alpha_k\chi_k^{\mathrm{out}}
   +
   \beta_k\overline{\chi_k^{\mathrm{out}}}.
   \label{eq:cosmological-bogoliubov-expansion}
-\]
+\end{equation}
 Then
-\[
+\begin{equation}
   |\alpha_k|^2-|\beta_k|^2=1.
   \label{eq:cosmological-bogoliubov-normalization}
-\]
+\end{equation}
 If \(\ket{0,\mathrm{in}}\) is the in-vacuum, the expected out-particle number
 in the \(\mathbf k\)-mode is
-\[
+\begin{equation}
   \langle0,\mathrm{in}|
   a_{\mathbf k}^{\mathrm{out}\,*}a_{\mathbf k}^{\mathrm{out}}
   |0,\mathrm{in}\rangle
   =
   |\beta_k|^2
   \label{eq:cosmological-particle-number}
-\]
+\end{equation}
 in finite volume, with the usual delta-function density normalization in
 infinite volume.
 \end{proposition}
@@ -313,14 +313,14 @@ The field mode admits both decompositions
   a_{-\mathbf k}^{\mathrm{in}\,*}\overline{\chi_k^{\mathrm{in}}}.
   \]
 Comparing coefficients gives
-\[
+\begin{equation}
   a_{\mathbf k}^{\mathrm{out}}
   =
   \overline{\alpha_k}\,a_{\mathbf k}^{\mathrm{in}}
   +
   \overline{\beta_k}\,a_{-\mathbf k}^{\mathrm{in}\,*},
   \label{eq:out-annihilator-in-terms-of-in}
-\]
+\end{equation}
 with the phase convention induced by
 \eqref{eq:cosmological-bogoliubov-expansion}.  Since
 \(a_{\mathbf k}^{\mathrm{in}}\ket{0,\mathrm{in}}=0\) and
@@ -333,7 +333,7 @@ finite volume, \eqref{eq:cosmological-particle-number} follows.
 For a single oscillator mode whose frequency changes suddenly from
 \(\omega_i\) to \(\omega_f\), continuity of \(\chi\) and \(\chi'\) at the
 jump gives
-\[
+\begin{equation}
   \alpha
   =
   \frac12\left(
@@ -350,14 +350,14 @@ jump gives
   \sqrt{\frac{\omega_i}{\omega_f}}
   \right),
   \label{eq:sudden-quench-bogoliubov}
-\]
+\end{equation}
 and therefore
-\[
+\begin{equation}
   |\beta|^2
   =
   \frac{(\omega_f-\omega_i)^2}{4\omega_i\omega_f}.
   \label{eq:sudden-quench-particle-number}
-\]
+\end{equation}
 The example is not a smooth cosmological spacetime; it is a normalization
 check and a limiting model for a transition fast compared with the mode
 period.
@@ -368,7 +368,7 @@ period.
 When no static asymptotic regions exist, one can still impose a
 high-momentum condition on the positive-frequency modes.  The adiabatic
 ansatz is
-\[
+\begin{equation}
   \chi_k(\eta)
   =
   \frac{1}{\sqrt{2W_k(\eta)}}
@@ -376,20 +376,20 @@ ansatz is
   \qquad
   W_k(\eta)>0.
   \label{eq:adiabatic-mode-ansatz}
-\]
+\end{equation}
 
 \begin{remark}[Riccati equation for the adiabatic frequency]
 \label{rem:adiabatic-frequency-riccati}
 The ansatz \eqref{eq:adiabatic-mode-ansatz} solves
 \eqref{eq:flrw-chi-mode-equation} exactly if and only if
-\[
+\begin{equation}
   W_k^2
   =
   \Omega_k^2
   -\frac12\frac{W_k''}{W_k}
   +\frac34\left(\frac{W_k'}{W_k}\right)^2 .
   \label{eq:adiabatic-riccati-equation}
-\]
+\end{equation}
 \end{remark}
 
 Write
@@ -430,7 +430,7 @@ The adiabatic expansion is obtained by assigning one derivative of
 \(a(\eta)\) one adiabatic order and solving
 \eqref{eq:adiabatic-riccati-equation} recursively.  To second adiabatic
 order, if \(\omega_k=\Omega_k\) denotes the zeroth-order positive frequency,
-\[
+\begin{equation}
   W_k
   =
   \omega_k
@@ -440,7 +440,7 @@ order, if \(\omega_k=\Omega_k\) denotes the zeroth-order positive frequency,
   \frac{3(\omega_k')^2}{8\omega_k^3}
   +O(\partial_\eta^4).
   \label{eq:adiabatic-second-order-frequency}
-\]
+\end{equation}
 An adiabatic state of sufficiently high order is Hadamard for the scalar
 field on Robertson--Walker spacetime.  Conversely, the point-splitting
 subtraction for \(\langle T_{\mu\nu}\rangle\) has the same ultraviolet
@@ -456,7 +456,7 @@ Let \(x(\tau)\) be a timelike worldline parametrized by proper time, and let
 \(\lambda\chi(\tau)\mu(\tau)\widehat\phi(x(\tau))\) be an Unruh--DeWitt
 coupling with compactly supported switching function \(\chi\).  For a
 detector energy gap \(E\), first-order perturbation theory gives
-\[
+\begin{equation}
   P(E)
   =
   \lambda^2
@@ -465,7 +465,7 @@ detector energy gap \(E\), first-order perturbation theory gives
   \chi(\tau)\chi(\tau')
   W(x(\tau),x(\tau')),
   \label{eq:cosmological-detector-response}
-\]
+\end{equation}
 where \(W\) is the Wightman two-point function of the state.
 
 \begin{proposition}[Positivity of the switched detector response]
@@ -505,17 +505,17 @@ It does not require a global out-Fock space.
 \section{The Bunch--Davies State in de Sitter Space}
 
 In the spatially flat patch of \(d\)-dimensional de Sitter space,
-\[
+\begin{equation}
   a(\eta)=\frac{-1}{H\eta},
   \qquad
   \eta<0,
   \qquad
   H>0,
   \label{eq:de-sitter-flat-patch-scale-factor}
-\]
+\end{equation}
 and \(R=d(d-1)H^2\).  Equation
 \eqref{eq:flrw-effective-frequency} becomes
-\[
+\begin{equation}
   \Omega_k^2
   =
   k^2
@@ -530,37 +530,37 @@ and \(R=d(d-1)H^2\).  Equation
   -
   \xi d(d-1).
   \label{eq:de-sitter-nu-definition}
-\]
+\end{equation}
 
 \begin{remark}[Bunch--Davies mode functions]
 \label{rem:bunch-davies-hankel-modes}
 The mode
-\[
+\begin{equation}
   \chi_k^{\mathrm{BD}}(\eta)
   =
   \sqrt{\frac{-\pi\eta}{4}}\,
   \exp\!\left[\ii\pi\left(\frac{\nu}{2}+\frac14\right)\right]
   H_\nu^{(1)}(-k\eta)
   \label{eq:bunch-davies-hankel-mode}
-\]
+\end{equation}
 solves the de Sitter mode equation and obeys
-\[
+\begin{equation}
   \chi_k^{\mathrm{BD}}(\eta)
   \sim
   \frac{e^{-\ii k\eta}}{\sqrt{2k}}
   \qquad
   \eta\to-\infty .
   \label{eq:bunch-davies-past-asymptotic}
-\]
+\end{equation}
 It is normalized by
-\[
+\begin{equation}
   \chi_k^{\mathrm{BD}}\overline{(\chi_k^{\mathrm{BD}})'}
   -
   (\chi_k^{\mathrm{BD}})'\overline{\chi_k^{\mathrm{BD}}}
   =
   \ii.
   \label{eq:bunch-davies-wronskian}
-\]
+\end{equation}
 \end{remark}
 
 With \(z=-k\eta>0\), equation
@@ -606,12 +606,12 @@ The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state
 is defined by the renormalized stress-tensor prescription of
 Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.  The
 semiclassical Einstein equation
-\[
+\begin{equation}
   G_{\mu\nu}+\Lambda g_{\mu\nu}
   =
   8\pi G\,\langle T_{\mu\nu}\rangle_{\mathrm{ren}}
   \label{eq:semiclassical-einstein-cosmology}
-\]
+\end{equation}
 is an equation for a classical metric and a quantum state.  The right-hand
 side depends on the state, on the finite curvature counterterms, and on the
 renormalization convention for the cosmological constant and Newton

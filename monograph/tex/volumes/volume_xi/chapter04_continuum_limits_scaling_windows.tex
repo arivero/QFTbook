@@ -104,14 +104,14 @@ field
 \begin{proposition}[Massive free lattice scalar continuum limit]
 \label{prop:free-lattice-scalar-continuum-limit}
 If \(m_a\to m>0\), then for every \(f,g\in C_c^\infty(\mathbb R^D)\),
-\[
+\begin{equation}
   \lim_{a\downarrow0}
   \langle\phi_a(f)\phi_a(g)\rangle_a
   =
   \int_{\mathbb R^D}\frac{d^Dp}{(2\pi)^D}\,
   \frac{\widehat f(-p)\widehat g(p)}{p^2+m^2}.
   \label{eq:continuum-limit-free-scalar-limit}
-\]
+\end{equation}
 All higher Schwinger functions converge to the Gaussian Wick contractions of
 this covariance.
 \end{proposition}
@@ -176,7 +176,7 @@ renormalized observable coordinates \(O_a^I(f)\).  A Symanzik expansion to
 order \(a^r\) for a class of smeared correlators is a finite list of
 continuum local distributions \(S_{(n)}\), built from local operators
 allowed by the lattice symmetries, such that
-\[
+\begin{equation}
   \left\langle
     O_a^{I_1}(f_1)\cdots O_a^{I_k}(f_k)
   \right\rangle_a
@@ -186,7 +186,7 @@ allowed by the lattice symmetries, such that
   +
   R_{r,a}(f_1,\ldots,f_k),
   \label{eq:symanzik-expansion-data}
-\]
+\end{equation}
 with a stated seminorm \(q\) on the test functions and constants
 \(C,a_0>0\) such that
 \[
@@ -211,12 +211,12 @@ For the free lattice scalar of
   \hat p_a^2=\sum_{\mu=1}^D\hat p_{\mu,a}^2 .
 \]
 Assume
-\[
+\begin{equation}
   m_a^2=m^2+a^2\delta m_2+O(a^4)
   \label{eq:symanzik-free-mass-trajectory}
-\]
+\end{equation}
 with \(m>0\).  Then for every \(f,g\in C_c^\infty(\mathbb R^D)\),
-\[
+\begin{equation}
   \langle\phi_a(f)\phi_a(g)\rangle_a
   =
   \int_{\mathbb R^D}\frac{\dd^Dp}{(2\pi)^D}\,
@@ -229,7 +229,7 @@ with \(m>0\).  Then for every \(f,g\in C_c^\infty(\mathbb R^D)\),
        {(p^2+m^2)^2}
   +O(a^4),
   \label{eq:free-scalar-tree-level-symanzik-propagator}
-\]
+\end{equation}
 where the \(O(a^4)\) remainder is bounded by a finite Schwartz seminorm of
 \(f\) and \(g\).  The term \(\sum_\mu p_\mu^4\) is hypercubic invariant but
 not \(O(D)\)-invariant for \(D>1\); it is the leading rotation-breaking
@@ -238,13 +238,13 @@ cutoff artifact of the nearest-neighbor action.
 
 \begin{proof}
 The Taylor expansion of the lattice momentum is
-\[
+\begin{equation}
   \hat p_{\mu,a}^2
   =
   p_\mu^2-\frac{a^2}{12}p_\mu^4
   +\frac{a^4}{360}p_\mu^6+O(a^6p_\mu^8)
   \label{eq:lattice-momentum-symanzik-expansion}
-\]
+\end{equation}
 on every compact momentum set.  Hence the inverse kernel has the form
 \[
   \hat p_a^2+m_a^2
@@ -281,20 +281,20 @@ Schwartz seminorm.
 \begin{remark}[Tree-level scalar improvement]
 \label{rem:tree-level-scalar-symanzik-improvement}
 Define an improved free scalar quadratic kernel by
-\[
+\begin{equation}
   K_a^{\rm imp}(p)
   =
   m_a^2+\hat p_a^2+\frac{a^2}{12}
   \sum_{\mu=1}^D\hat p_{\mu,a}^4 .
   \label{eq:tree-level-improved-scalar-kernel}
-\]
+\end{equation}
 If \(m_a^2=m^2+O(a^4)\), then
-\[
+\begin{equation}
   K_a^{\rm imp}(p)
   =
   m^2+p^2+O(a^4(1+|p|^6))
   \label{eq:tree-level-improved-scalar-kernel-expansion}
-\]
+\end{equation}
 on compact momentum sets.  Consequently the \(O(a^2)\) correction in
 \eqref{eq:free-scalar-tree-level-symanzik-propagator} is canceled for the
 two-point function.
@@ -442,7 +442,7 @@ coordinates, but not on \(N\).
 \label{prop:finite-size-scaling-from-rg-chart}
 Assume the finite-size scaling data of
 Definition~\ref{def:finite-size-scaling-data}.  Then
-\[
+\begin{equation}
   N^{\Delta_{I_1}+\cdots+\Delta_{I_k}}\,
   G_{N,t,w}^{I_1\ldots I_k}(z_1,\ldots,z_k)
   =
@@ -451,7 +451,7 @@ Definition~\ref{def:finite-size-scaling-data}.  Then
   +
   O(N^{-\omega})
   \label{eq:finite-size-scaling-rg-chart}
-\]
+\end{equation}
 uniformly for \(tN^{y_t}\in\mathcal K\).  If the continuum massive
 coordinate is parameterized by a physical mass \(M\) through
 \[
@@ -459,10 +459,10 @@ coordinate is parameterized by a physical mass \(M\) through
 \]
 for some \(\epsilon>0\), then the scaling variable has the continuum
 finite-volume limit
-\[
+\begin{equation}
   t(a)N^{y_t}\to (ML)^{y_t}.
   \label{eq:finite-size-scaling-physical-variable}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -508,7 +508,7 @@ injective normalization map
 \]
 on an interval of couplings.  For \(s>1\), the continuum step-scaling
 function associated to this coordinate is
-\[
+\begin{equation}
   \sigma_s(u)
   =
   \lim_{a/L\to0}
@@ -516,17 +516,17 @@ function associated to this coordinate is
   \quad
   \text{with }g_L(a)=u,
   \label{eq:step-scaling-coordinate-definition}
-\]
+\end{equation}
 provided the tuning \(g_L(a)=u\) and the continuum limit exist.  If the
 cutoff effects are described by a Symanzik expansion, the numerical
 extrapolation has the form
-\[
+\begin{equation}
   g_{sL}(a)=\sigma_s(u)+
   \sum_{j=1}^{r-1} c_j(u,s)(a/L)^{\omega_j}
   +
   R_{r,a}(u,s),
   \label{eq:step-scaling-symanzik-extrapolation}
-\]
+\end{equation}
 with explicitly stated exponents and a stated bound on \(R_{r,a}\).
 \end{definition}
 

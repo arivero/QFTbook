@@ -296,11 +296,11 @@ system, \(A_L,B_L\) are regulated extensive or density operators with their
 normalization declared, \(\mathcal R\) is the prescription for subtracting
 local contact terms and conserved-density projections, and \(\mathcal O\) is
 the order of limits.  For ordinary dc transport the order is
-\[
+\begin{equation}
   L\to\infty,\qquad \mathbf k\to\mathbf0\ \text{in the channel specified by
   symmetry},\qquad \omega\downarrow0 .
   \label{eq:kubo-transport-order-of-limits}
-\]
+\end{equation}
 Changing \(\mathcal O\) can change the answer; for example static
 susceptibilities and dc conductivities use different zero-frequency limits.
 \end{definition}
@@ -311,33 +311,33 @@ the total current in direction \(i\) in finite volume \(V\), and let
 \(\bar I_i=I_i-\langle I_i\rangle_\beta\).  Suppose
 \(\{Q_a\}_{a=1}^N\) are Hermitian conserved operators with zero thermal
 expectation and positive covariance matrix
-\[
+\begin{equation}
   C_{ab}
   =
   \frac1{2V}\langle Q_aQ_b+Q_bQ_a\rangle_\beta .
   \label{eq:kubo-conserved-covariance}
-\]
+\end{equation}
 Define the current--charge overlap vector
-\[
+\begin{equation}
   v_{ia}
   =
   \frac1{2V}\langle \bar I_iQ_a+Q_a\bar I_i\rangle_\beta .
   \label{eq:kubo-current-charge-overlap}
-\]
+\end{equation}
 The projection of \(\bar I_i\) onto the span of conserved charges is
-\[
+\begin{equation}
   P\bar I_i
   =
   Q_a(C^{-1})^{ab}v_{ib}.
   \label{eq:kubo-mazur-projection}
-\]
+\end{equation}
 
 \begin{proposition}[Finite-volume Mazur projection]
 \label{prop:kubo-mazur-projection}
 In the finite-dimensional Gibbs setting above, for every real vector \(u_i\),
 the infinite-time averaged connected symmetrized current autocorrelation
 satisfies
-\[
+\begin{equation}
   \lim_{T\to\infty}\frac1T\int_0^T dt\,
   \frac1{2V}
   \left\langle
@@ -346,7 +346,7 @@ satisfies
   \geq
   u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
   \label{eq:kubo-mazur-bound}
-\]
+\end{equation}
 If the right hand side has a nonzero thermodynamic limit, the conductivity
 has a zero-frequency singular contribution and the ordinary dc limit is not
 a finite dissipative number.
@@ -379,13 +379,13 @@ at least
 \]
 If this quantity survives per unit volume as \(V\to\infty\), the symmetrized
 current spectrum contains a term
-\[
+\begin{equation}
   \frac{2\pi}{\beta}D_{ij}\delta(\omega),
   \qquad
   D_{ij}=\beta\lim_{t\to\infty}\lim_{V\to\infty}
   \frac1{2V}\langle\{\bar I_i(t),\bar I_j(0)\}\rangle_\beta ,
   \label{eq:kubo-drude-weight-definition}
-\]
+\end{equation}
 in the convention of \eqref{eq:kubo-fluctuation-dissipation}.  Equivalently
 \(\operatorname{Re}\sigma_{ij}\) contains
 \(\pi D_{ij}\delta(\omega)\).  This is a singular transport sector, not the
@@ -395,7 +395,7 @@ regular slope appearing in the finite dc Kubo formula.
 After the thermodynamic limit has been taken, the low-frequency real
 conductivity in a fixed tensor channel must be regarded as a distribution.
 The separation used below is
-\[
+\begin{equation}
   \operatorname{Re}\sigma_{ij}(\omega)
   =
   \pi D_{ij}\delta(\omega)+\sigma^{\rm reg}_{ij}(\omega),
@@ -405,11 +405,11 @@ The separation used below is
   \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0)
   \quad(\omega\ne0),
   \label{eq:kubo-drude-regular-decomposition}
-\]
+\end{equation}
 where \(D_{ij}\) is the Drude matrix produced by conserved projections and
 \(\sigma^{\rm reg}_{ij}\) is locally integrable near \(\omega=0\).  The
 ordinary dissipative dc coefficient is
-\[
+\begin{equation}
   \sigma^{\rm dc}_{ij}
   =
   \lim_{\omega\downarrow0}\sigma^{\rm reg}_{ij}(\omega)
@@ -417,7 +417,7 @@ ordinary dissipative dc coefficient is
   \lim_{\omega\downarrow0}
   \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0),
   \label{eq:kubo-regular-dc-from-regular-spectral-slope}
-\]
+\end{equation}
 when this limit exists.  The singular term is not a large value of
 \(\sigma^{\rm reg}\); it is a separate distributional summand.  This is the
 mathematical content of the order-of-limits prescription.

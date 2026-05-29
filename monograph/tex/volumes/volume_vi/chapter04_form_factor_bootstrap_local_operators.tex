@@ -64,13 +64,13 @@ for the rapidity difference
 The ordered scattering-state convention says that the corresponding
 finite-particle boundary vectors are related by the adjacent two-body
 scattering operator,
-\[
+\begin{equation}
   \ket{\ldots;\theta_i,a_i;\theta_{i+1},a_{i+1};\ldots}_{+}
   =
   S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})
   \ket{\ldots;\theta_{i+1},c;\theta_i,b;\ldots}_{-}.
   \label{eq:ordered-state-boundary-exchange}
-\]
+\end{equation}
 This relation is the rapidity-space form of the scattering theorem for
 ordered Haag--Ruelle states in a factorizing theory; locality is used
 upstream in constructing the asymptotic fields and their scattering
@@ -812,14 +812,14 @@ equation.
 Use the free Majorana one-particle normalization of
 Proposition~\ref{prop:majorana-energy-two-particle-reconstruction}, and
 consider Euclidean time separation \(r>0\).  Define
-\[
+\begin{equation}
   I_m(r)
   =
   \int_{\R}\frac{\dd\theta}{2\pi}\,e^{-mr\cosh\theta}
   =
   \frac{1}{\pi}K_0(mr).
   \label{eq:ising-one-particle-euclidean-majorant}
-\]
+\end{equation}
 The even spin-field form factors
 \eqref{eq:ising-spin-even-form-factors} determine an absolutely convergent
 separated-point Euclidean spectral series
@@ -833,12 +833,12 @@ separated-point Euclidean spectral series
   \label{eq:ising-spin-even-spectral-series}
 \end{equation}
 For every \(r>0\),
-\[
+\begin{equation}
   |G_{\sigma_+}(r)|
   \le
   |\bar\sigma|^2\cosh I_m(r).
   \label{eq:ising-spin-even-majorant}
-\]
+\end{equation}
 After removing the \(k=0\) term, the connected series is bounded by
 \(|\bar\sigma|^2(\cosh I_m(r)-1)\).
 
@@ -853,12 +853,12 @@ The odd product family \eqref{eq:ising-order-form-factors} similarly gives
   \label{eq:ising-spin-odd-spectral-series}
 \end{equation}
 with
-\[
+\begin{equation}
   |G_{\Sigma}(r)|
   \le
   |v|^2\sinh I_m(r).
   \label{eq:ising-spin-odd-majorant}
-\]
+\end{equation}
 Both series converge uniformly with all \(r\)-derivatives on compact subsets
 of \((0,\infty)\).  Hence they define smooth separated Euclidean two-point
 functions on the temporal ray; Euclidean covariance then gives the
@@ -879,7 +879,7 @@ rapidity variables of identical Majorana particles.  For real rapidities,
   \le 1 .
 \]
 Therefore
-\[
+\begin{equation}
   \left|F_{2k}^{\sigma_+}(\theta_1,\ldots,\theta_{2k})\right|^2
   \le
   |\bar\sigma|^2,
@@ -888,9 +888,9 @@ Therefore
   \le
   |v|^2.
   \label{eq:ising-form-factor-product-majorant}
-\]
+\end{equation}
 The factorized exponential then gives the termwise bounds
-\[
+\begin{equation}
   \frac{1}{(2k)!}
   \int_{\R^{2k}}\prod_{j=1}^{2k}
   \frac{\dd\theta_j}{2\pi}\,
@@ -898,9 +898,9 @@ The factorized exponential then gives the termwise bounds
   =
   |\bar\sigma|^2\frac{I_m(r)^{2k}}{(2k)!}
   \label{eq:ising-even-term-majorant}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
   \frac{1}{(2k+1)!}
   \int_{\R^{2k+1}}\prod_{j=1}^{2k+1}
   \frac{\dd\theta_j}{2\pi}\,
@@ -908,7 +908,7 @@ and
   =
   |v|^2\frac{I_m(r)^{2k+1}}{(2k+1)!}.
   \label{eq:ising-odd-term-majorant}
-\]
+\end{equation}
 Summing the even and odd majorants gives
 \eqref{eq:ising-spin-even-majorant} and
 \eqref{eq:ising-spin-odd-majorant}.  The identity

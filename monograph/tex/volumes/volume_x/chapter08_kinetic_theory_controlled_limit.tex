@@ -90,18 +90,18 @@ a phase-space equation.
 \label{ca:kinetic-force-free-quasiparticle-projection}
 Consider one scalar species in flat spacetime, with constant mass and a
 single narrow positive-energy peak.  Let
-\[
+\begin{equation}
   F(p)=(p^0)^2-E(\mathbf p)^2,\qquad
   E(\mathbf p)=\sqrt{\mathbf p^2+m^2},
   \label{eq:kinetic-free-mass-shell-function}
-\]
+\end{equation}
 and assume that the leading-gradient Kadanoff--Baym equation has the form
-\[
+\begin{equation}
   \frac12\{F,G^<\}_{\rm kin}=I^<[G],
   \label{eq:kinetic-leading-kb-force-free}
-\]
+\end{equation}
 where \(I^<\) is the collision functional and
-\[
+\begin{equation}
   \{A,B\}_{\rm kin}
   =
   \partial_{p^0}A\,\partial_tB
@@ -109,12 +109,12 @@ where \(I^<\) is the collision functional and
   -\partial_{\mathbf p}A\cdot\nabla_{\mathbf x}B
   +\nabla_{\mathbf x}A\cdot\nabla_{\mathbf p}B .
   \label{eq:kinetic-poisson-bracket-convention}
-\]
+\end{equation}
 Use the positive-energy ansatz
-\[
+\begin{equation}
   G^<(X,p)=2\pi Z(\mathbf p)f(X,\mathbf p)\delta(p^0-E(\mathbf p))
   \label{eq:kinetic-positive-energy-lesser-ansatz}
-\]
+\end{equation}
 with \(Z\) independent of \(X\) at this order.  Terms from mean-field
 forces, Berry curvature, spatially varying masses, and off-shell memory
 kernels are omitted in this controlled approximation; each of them modifies
@@ -127,47 +127,47 @@ Under
 Controlled Approximation~\ref{ca:kinetic-force-free-quasiparticle-projection},
 the positive-energy shell projection of
 \eqref{eq:kinetic-leading-kb-force-free} is
-\[
+\begin{equation}
   p^\mu\partial_\mu f(X,\mathbf p)=\mathcal C[f](X,\mathbf p),
   \qquad
   p^\mu=(E(\mathbf p),\mathbf p),
   \label{eq:kinetic-projected-boltzmann-equation}
-\]
+\end{equation}
 with
-\[
+\begin{equation}
   \mathcal C[f](X,\mathbf p)
   =
   \frac{1}{Z(\mathbf p)}
   \int_0^\infty\frac{dp^0}{2\pi}\,I^<[G](X,p).
   \label{eq:kinetic-projected-collision-functional}
-\]
+\end{equation}
 
 Since \(F\) is independent of \(X\),
-\[
+\begin{equation}
   \{F,G^<\}_{\rm kin}
   =
   2p^0\partial_tG^<
   +2\mathbf p\cdot\nabla_{\mathbf x}G^< .
   \label{eq:kinetic-free-bracket}
-\]
+\end{equation}
 Using \eqref{eq:kinetic-positive-energy-lesser-ansatz} and the
 \(X\)-independence of \(Z\) and \(E\),
-\[
+\begin{equation}
   \frac12\{F,G^<\}_{\rm kin}
   =
   2\pi Z(\mathbf p)
   \bigl(p^0\partial_t+\mathbf p\cdot\nabla_{\mathbf x}\bigr)
   f(X,\mathbf p)\,\delta(p^0-E(\mathbf p)).
   \label{eq:kinetic-projected-bracket-before-integral}
-\]
+\end{equation}
 Integrating over \(p^0>0\) and dividing by \(Z(\mathbf p)\) gives
-\[
+\begin{equation}
   E(\mathbf p)\partial_tf+\mathbf p\cdot\nabla_{\mathbf x}f
   =
   \frac{1}{Z(\mathbf p)}
   \int_0^\infty\frac{dp^0}{2\pi}I^<[G](X,p),
   \label{eq:kinetic-projected-bracket-after-integral}
-\]
+\end{equation}
 which is \eqref{eq:kinetic-projected-boltzmann-equation}.  Dividing by
 \(E\) gives the coordinate-time form
 \((\partial_t+\mathbf v\cdot\nabla_{\mathbf x})f=C^{(t)}[f]\) with
@@ -435,31 +435,31 @@ A finite reversible collision datum consists of:
   \(w_r>0\);
 \item additive labels \(P_i\) taking values in a real vector space
   \(\mathcal P\), such that
-  \[
+  \begin{equation}
     P_i+P_j=P_k+P_l
     \label{eq:finite-collision-additive-conservation}
-  \]
+  \end{equation}
   for every reaction \(r=(i,j;k,l)\).
 \end{enumerate}
 For \(f\in\mathcal D\), define
-\[
+\begin{equation}
   L_r(f)=f_if_j(1+\eta_k f_k)(1+\eta_l f_l),
   \qquad
   G_r(f)=f_kf_l(1+\eta_i f_i)(1+\eta_j f_j),
   \label{eq:finite-collision-loss-gain-products}
-\]
+\end{equation}
 and the stoichiometric vector
-\[
+\begin{equation}
   \nu_r=-e_i-e_j+e_k+e_l\in\mathbb R^I .
   \label{eq:finite-collision-stoichiometric-vector}
-\]
+\end{equation}
 The collision vector field is
-\[
+\begin{equation}
   \dot f
   =
   \sum_{r\in\mathcal R}w_r\bigl(L_r(f)-G_r(f)\bigr)\nu_r .
   \label{eq:finite-collision-vector-field}
-\]
+\end{equation}
 \end{definition}
 
 \begin{proposition}[Finite collision conservation and entropy production]
@@ -467,13 +467,13 @@ The collision vector field is
 For every finite reversible collision datum, the vector field
 \eqref{eq:finite-collision-vector-field} preserves every additive conserved
 quantity
-\[
+\begin{equation}
   Q_A(f)=\sum_{i\in I}A(P_i)f_i,
   \qquad A\in\mathcal P^* .
   \label{eq:finite-collision-additive-charge}
-\]
+\end{equation}
 Moreover the entropy
-\[
+\begin{equation}
   S(f)
   =
   -\sum_{i\in I}
@@ -482,9 +482,9 @@ Moreover the entropy
     -\eta_i(1+\eta_if_i)\log(1+\eta_if_i)
   \right]
   \label{eq:finite-collision-entropy}
-\]
+\end{equation}
 satisfies
-\[
+\begin{equation}
   \dot S(f)
   =
   \sum_{r\in\mathcal R}
@@ -492,7 +492,7 @@ satisfies
   \log\!\left(\frac{L_r(f)}{G_r(f)}\right)
   \ge0 .
   \label{eq:finite-collision-entropy-production}
-\]
+\end{equation}
 Equality holds if and only if \(L_r(f)=G_r(f)\) for every reaction with
 \(w_r>0\).
 \end{proposition}
@@ -509,12 +509,12 @@ and the bracket vanishes by
 \eqref{eq:finite-collision-additive-conservation}.
 
 For the entropy, differentiate the one-cell entropy:
-\[
+\begin{equation}
   \frac{\partial S}{\partial f_i}
   =
   -\log\!\left(\frac{f_i}{1+\eta_if_i}\right).
   \label{eq:finite-collision-entropy-derivative}
-\]
+\end{equation}
 For \(r=(i,j;k,l)\),
 \[
   \nu_r\cdot\nabla S
@@ -538,50 +538,50 @@ It is strict unless \(x=y\), which gives the equality condition.
 \begin{definition}[Finite local equilibrium and collision invariants]
 \label{def:finite-local-equilibrium-collision-invariants}
 A state \(f^{(0)}\in\mathcal D\) is a finite equilibrium for the datum when
-\[
+\begin{equation}
   \frac{f_i^{(0)}}{1+\eta_i f_i^{(0)}}
   =
   \exp[-\alpha-A(P_i)]
   \label{eq:finite-collision-equilibrium-form}
-\]
+\end{equation}
 for some \(\alpha\in\mathbb R\) and \(A\in\mathcal P^*\).  A function
 \(\chi:I\to\mathbb R\) is a collision invariant when
-\[
+\begin{equation}
   \chi_i+\chi_j-\chi_k-\chi_l=0
   \label{eq:finite-collision-invariant}
-\]
+\end{equation}
 for every reaction \(i+j\rightleftarrows k+l\).
 \end{definition}
 
 \begin{proposition}[Finite linearized collision operator]
 \label{prop:finite-linearized-collision-positive}
 Let \(f^{(0)}\) be a finite equilibrium.  Write
-\[
+\begin{equation}
   f_i=f_i^{(0)}+f_i^{(0)}(1+\eta_i f_i^{(0)})\chi_i .
   \label{eq:finite-collision-linearization}
-\]
+\end{equation}
 To first order in \(\chi\),
-\[
+\begin{equation}
   L_r(f)-G_r(f)
   =
   M_r
   \bigl(\chi_i+\chi_j-\chi_k-\chi_l\bigr)+O(\chi^2),
   \label{eq:finite-collision-linearized-rate}
-\]
+\end{equation}
 where
-\[
+\begin{equation}
   M_r=L_r(f^{(0)})=G_r(f^{(0)})>0 .
   \label{eq:finite-collision-equilibrium-weight}
-\]
+\end{equation}
 Consequently the linearized entropy production is
-\[
+\begin{equation}
   \dot S^{(2)}
   =
   \sum_{r\in\mathcal R}
   w_rM_r
   \bigl(\chi_i+\chi_j-\chi_k-\chi_l\bigr)^2\ge0.
   \label{eq:finite-collision-linearized-entropy-production}
-\]
+\end{equation}
 Its null space is precisely the space of collision invariants.  If the
 reaction graph is connected enough that every collision invariant is of the
 form \(\chi_i=\alpha+A(P_i)\), then the only zero modes are the conserved

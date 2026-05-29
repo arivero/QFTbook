@@ -340,31 +340,31 @@ The family is said to satisfy the Haag--Ruelle estimate package on
   \item The vectors \(B_{j,t}\vac=\psi_j\) are independent of \(t\), and
   \(B_{j,t}^*\vac=0\).
   \item For every \(N\ge1\) and every pair with disjoint velocity supports,
-  \[
+  \begin{equation}
     \|[B_{i,t}^{\#},B_{j,t}^{\#}]\|
     \le C_N(1+|t|)^{-N},
     \qquad B^\#\in\{B,B^*\}.
     \label{eq:hr-estimate-package-commutator}
-  \]
+  \end{equation}
   The same estimate holds on the finite-energy vectors obtained from the
   family when one entry is replaced by its strong time derivative.  This
   derivative is the derivative of the smooth translation-smearing parameter;
   no norm differentiability of an unsmeared local operator is assumed.
   \item For every pair of regular creators \(B,C\) with packets \(h,g\),
-  \[
+  \begin{equation}
     B_t(h)^*C_t(g)\vac
     =
     \langle B_t(h)\vac,C_t(g)\vac\rangle\,\vac
     +
     r_t(B,h;C,g),
     \label{eq:hr-estimate-package-contraction}
-  \]
+  \end{equation}
   where for every \(N\ge1\),
   \(\|r_t(B,h;C,g)\|\le C_N(1+|t|)^{-N}\).
   \item For two velocity-separated lists
   \(B_1,\ldots,B_n\) and \(C_1,\ldots,C_m\), the scalar products obey the
   recursive contraction estimate
-  \[
+  \begin{equation}
   \begin{aligned}
   &
   \left\langle
@@ -382,17 +382,17 @@ The family is said to satisfy the Haag--Ruelle estimate package on
   +O_N((1+|t|)^{-N})
   \end{aligned}
   \label{eq:hr-estimate-package-recursive-contraction}
-  \]
+  \end{equation}
   for every \(N\ge1\), with the convention that the sum is empty when
   \(m=0\).
   \item For each velocity-separated product
   \(\Psi_t=B_{1,t}\cdots B_{n,t}\vac\), there is an integrable nonnegative
   function \(R(t)\) on \([T_0,\infty)\) and on
   \((-\infty,-T_0]\) such that
-  \[
+  \begin{equation}
     \left\|\frac{\dd}{\dd t}\Psi_t\right\|\le R(t)
     \label{eq:hr-estimate-package-cook}
-  \]
+  \end{equation}
   on the finite vector domain under discussion.
 \end{enumerate}
 \end{definition}
@@ -404,7 +404,7 @@ Definition~\ref{def:haag-ruelle-estimate-package} for every finite
 velocity-separated family of regular creators.  Then the limits in
 Theorem~\ref{thm:algebraic-haag-ruelle-scattering} exist, depend only on the
 one-particle vectors, and satisfy the bosonic Fock inner product formula
-\[
+\begin{equation}
 \begin{aligned}
 &
 \left\langle
@@ -420,7 +420,7 @@ one-particle vectors, and satisfy the bosonic Fock inner product formula
 \langle\psi_j,\varphi_{\sigma(j)}\rangle_{\Hilb_1}.
 \end{aligned}
 \label{eq:hr-fock-inner-product-from-estimates}
-\]
+\end{equation}
 The same statement holds for incoming limits.  Hence the wave operators are
 isometries from \(\mathcal F_s(\Hilb_1)\) into \(\Hilb\).
 \end{proposition}
@@ -711,13 +711,13 @@ carry flux to infinity.  In an abelian convention
   \psi_q(x)\longmapsto \ee^{\ii q\alpha(x)}\psi_q(x),
 \]
 a path \(\gamma\) from \(x\) to spatial infinity gives the formal dressing
-\[
+\begin{equation}
   \Psi_{q,\gamma}(x)
   =
   \psi_q(x)\,
   \exp\!\left\{\ii q\int_\gamma A\right\}.
   \label{eq:charged-wilson-line-dressed-field}
-\]
+\end{equation}
 For gauge functions with \(\alpha(\infty)=0\), the exponential transforms by
 \(\ee^{-\ii q\alpha(x)}\), so \(\Psi_{q,\gamma}(x)\) is gauge invariant.  For
 a gauge function with nonzero boundary value, it transforms by the boundary
@@ -880,12 +880,12 @@ For every \(A\) in the class above, set
   \psi_q^{[u]}(x)=\ee^{\ii q\chi_u[A](x)}\psi_q(x).
 \]
 Then
-\[
+\begin{equation}
   u^\mu A_\mu^{[u]}(x)=0,
   \qquad
   \psi_q^{[u]}(x)=\Psi_{q,u}(x).
   \label{eq:ray-dressing-axial-coordinate-equality}
-\]
+\end{equation}
 Thus a dressed charged insertion may be computed, in any finite regularized
 perturbative path integral for which this gauge slice and the corresponding
 change of variables have been defined with their regulator and
@@ -991,7 +991,7 @@ operators \(\Psi_{\Gamma,t}(h)\) with dressing datum
 or threshold spectral component with the desired charge and velocity support;
 \item the commutator of two velocity-separated dressed creators has an
 explicit large-time form
-\[
+\begin{equation}
   [\Psi_{\Gamma_i,t}(h_i),\Psi_{\Gamma_j,t}(h_j)]
   =
   \ii\,\Theta_{ij}(t)\,
@@ -1000,7 +1000,7 @@ explicit large-time form
   \qquad
   \int^\infty \|R_{ij}(t)\|\,\dd t<\infty ,
   \label{eq:dressed-hr-commutator-template}
-\]
+\end{equation}
 or a mathematically equivalent Dollard/Faddeev--Kulish modification of the
 large-time dynamics;
 \item the phase \(\Theta_{ij}(t)\), when present, is determined by the
@@ -1038,7 +1038,7 @@ gauge-invariant dressed operator \(\Psi_a(x)\) of the form
 smearing is defined on a common dense domain;
 \item the dressed two-point distribution has, in a neighborhood of
 \(\Sigma_m^+\), the pole decomposition
-\[
+\begin{equation}
   \widehat G_{ab}(p)
   =
   \int \dd^D x\,\ee^{\ii p\cdot x}
@@ -1047,7 +1047,7 @@ smearing is defined on a common dense domain;
   \frac{\ii Z_{ab}}{p^2+m^2-\ii0}
   +\widehat G^{\rm reg}_{ab}(p),
   \label{eq:dressed-two-point-pole}
-\]
+\end{equation}
 where \(Z=(Z_{ab})\) is a positive matrix on the one-particle multiplicity
 space and \(\widehat G^{\rm reg}\) is less singular at the shell;
 \item the large-time wave operators built from these dressed creators exist,
@@ -1058,7 +1058,7 @@ Let \(Z^{-1/2}\) be the positive inverse square root on
 \(\operatorname{Ran}Z\).  Then the simultaneous external residue of the dressed
 time-ordered \((m+n)\)-point function equals the matrix element of the
 scattering operator between the dressed asymptotic charged states:
-\[
+\begin{equation}
 \begin{aligned}
 &\prod_{r=1}^m
   \bigl[(Z^{-1/2})_{a'_r b'_r}(p'_r{}^2+m_r^2)\bigr]
@@ -1075,7 +1075,7 @@ scattering operator between the dressed asymptotic charged states:
   \rangle_{\rm conn},
   \label{eq:finite-regulator-dressed-lsz-formula}
 \end{aligned}
-\]
+\end{equation}
 after wave-packet smearing and removal of the total momentum-conservation
 delta distribution, with the same connected/disconnected convention as in the
 ordinary LSZ chapter.
@@ -1233,13 +1233,13 @@ With the Fourier convention
   \widehat J^\mu(k)=\int\dd^4y\,\ee^{\ii k\cdot y}J^\mu(y),
 \]
 the regulated current \eqref{eq:regulated-asymptotic-worldline-current} has
-\[
+\begin{equation}
   \widehat J_{q,u,\epsilon}^\mu(k;x)
   =
   q\,u^\mu\,\ee^{\ii k\cdot x}
   \frac{1}{\epsilon-\ii k\cdot u}.
   \label{eq:worldline-current-fourier-transform}
-\]
+\end{equation}
 For an on-shell soft photon of momentum \(k\) and physical polarization
 \(e_h(k)\), the homogeneous soft factor carried by the dressing is therefore
 \begin{equation}
@@ -1302,13 +1302,13 @@ on a one-particle charged asymptotic datum with velocity \(\mathbf v\).
 \begin{proposition}[Velocity-labelled flux sectors]
 \label{prop:velocity-labelled-flux-sectors}
 For \(|\mathbf v|<1\),
-\[
+\begin{equation}
   \int_{S^2}\dd\Omega(\mathbf n)\,
   \mathcal E_{q,\mathbf v}(\mathbf n)
   =
   q .
   \label{eq:boosted-coulomb-flux-integral}
-\]
+\end{equation}
 If \(q\ne0\), the function
 \(\mathcal E_{q,\mathbf v}(\mathbf n)\) determines \(\mathbf v\).  Thus
 different charged velocities carry different sharp angular flux data.
@@ -1395,7 +1395,7 @@ Minkowski product.
 \label{prop:soft-coherent-velocity-separation}
 For two velocities \(\mathbf v,\mathbf w\in B_1(0)\subset\mathbb R^3\) and the
 same nonzero charge \(q\),
-\[
+\begin{equation}
   \left\|
     F_{q,\mathbf v,\lambda,\Lambda}
     -
@@ -1406,9 +1406,9 @@ same nonzero charge \(q\),
   \log\frac{\Lambda}{\lambda}\,
   \mathcal A(\mathbf v,\mathbf w),
   \label{eq:soft-coherent-velocity-log-norm}
-\]
+\end{equation}
 where
-\[
+\begin{equation}
   \mathcal A(\mathbf v,\mathbf w)
   =
   \int_{S^2}\dd\Omega(\mathbf n)\,
@@ -1421,7 +1421,7 @@ where
     \right)
   \right|^2 .
   \label{eq:soft-coherent-angular-coefficient}
-\]
+\end{equation}
 The coefficient obeys \(\mathcal A(\mathbf v,\mathbf w)\ge0\), and
 \(\mathcal A(\mathbf v,\mathbf w)=0\) if and only if
 \(\mathbf v=\mathbf w\).
@@ -1871,7 +1871,7 @@ GNS representation of \(\omega_{\mathbf v}\).  If \(\nu\) is a Borel measure
 on \(B_1(0)\) for which the field
 \(\mathbf v\mapsto(\mathcal H_{\mathbf v},\pi_{\mathbf v})\) has been given a
 measurable structure, define
-\[
+\begin{equation}
   \mathcal H_{q,\nu}^{\rm soft}
   =
   \int_{B_1(0)}^{\oplus}\mathcal H_{\mathbf v}\,\dd\nu(\mathbf v),
@@ -1880,7 +1880,7 @@ measurable structure, define
   =
   \pi_{\mathbf v}(A)\Psi(\mathbf v).
   \label{eq:charged-soft-direct-integral-representation}
-\]
+\end{equation}
 
 \begin{remark}[Soft photon algebra preserves the velocity fibers]
 \label{rem:soft-weyl-algebra-preserves-velocity-fibers}
@@ -1888,20 +1888,20 @@ In the direct-integral representation
 \eqref{eq:charged-soft-direct-integral-representation}, let
 \(P_E\) be multiplication by the characteristic function of a Borel set
 \(E\subset B_1(0)\).  Then
-\[
+\begin{equation}
   [P_E,\pi_{q,\nu}(A)]=0
   \qquad
   \text{for all }A\in\mathfrak W_{\rm reg}.
   \label{eq:velocity-projection-commutes-soft-algebra}
-\]
+\end{equation}
 Consequently, if \(E\cap E'=\varnothing\), then
-\[
+\begin{equation}
   \langle P_E\xi,\pi_{q,\nu}(A)P_{E'}\eta\rangle=0
   \qquad
   \text{for all }\xi,\eta\in\mathcal H_{q,\nu}^{\rm soft},
   \quad A\in\mathfrak W_{\rm reg}.
   \label{eq:soft-algebra-no-velocity-transition}
-\]
+\end{equation}
 Thus the soft photon Weyl algebra is diagonal in the charged velocity label.
 Any charged scattering operator that changes the massive particle momentum
 must include additional charged-sector dynamics supplied by operators beyond
@@ -1976,14 +1976,14 @@ represented by regular creators \(B_j\) and packets \(h_j\), the vector family
 converges in the Hilbert norm of \(\Hilb\).  Second, after these vector limits
 are packaged as maps from the algebraic velocity-separated Fock domain to
 \(\Hilb\), the same assertion is strong convergence of the approximating maps:
-\[
+\begin{equation}
   \Omega_{{\rm out},t}^{\rm HR}F
   \longrightarrow
   \Omega_{\rm out}F
   \quad\text{in }\Hilb
   \quad\text{for every fixed }F.
   \label{eq:algebraic-haag-ruelle-strong-operator-limit}
-\]
+\end{equation}
 The incoming map is obtained by the same statement with \(t\to-\infty\).
 Weak convergence of matrix elements follows from this norm convergence for
 each \(F\), while weak convergence alone would not determine the isometric

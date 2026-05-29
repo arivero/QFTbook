@@ -174,14 +174,14 @@ Gauss-law degree of freedom.  On the zero-mode-free subspace write
 At finite regulator, the light-cone-gauge integration over \(A_+\) and
 \(A_\perp\) is an ordinary Gaussian integration on the nonzero-mode subspace.
 With the source convention
-\[
+\begin{equation}
   S[A_+,A_\perp;J]
   =
   \int d^3x\left[
   \frac{k}{2\pi}A_+^a\partial_-A_\perp^a
   -A_+^aJ^{+a}-A_\perp^aJ^{\perp a}\right],
   \label{eq:cs-light-cone-source-action}
-\]
+\end{equation}
 substitution of the classical solution gives the effective current interaction
 \begin{equation}
   S_{\rm eff}[J]
@@ -375,10 +375,10 @@ fundamental vector the same equation holds with the ordinary derivative
 replaced by the left Berezin derivative and with the standard graded sign
 when the derivative crosses \(\mathcal O\).  If the large-\(N\) singlet sector
 has factorization
-\[
+\begin{equation}
   \langle B_1\cdots B_r\rangle_{\rm conn}=O(N^{1-r}),
   \label{eq:cs-vector-factorization}
-\]
+\end{equation}
 then the leading equations obtained from
 \eqref{eq:cs-vector-bosonic-sd} close on the one-bilocal expectation
 \(G^A{}_{B}:=\langle B^A{}_{B}\rangle\).
@@ -597,7 +597,7 @@ integrated out before solving the planar singlet equations.
 \section{Supersymmetric Chern--Simons--Matter Action}
 
 The supersymmetric Chern--Simons action contains
-\[
+\begin{equation}
   S_{\mathrm{CS}}^{\mathcal N=2}
   =
   \frac{k}{4\pi}\int
@@ -608,28 +608,28 @@ The supersymmetric Chern--Simons action contains
     +2D\sigma
   \right),
   \label{eq:three-d-susy-cs-vector-action}
-\]
+\end{equation}
 with the displayed signs defining the convention of this chapter.  Let
 chiral multiplets \(\Phi_i\) take values in a unitary representation \(R\) of
 \(G\).  Their scalar fields are \(\phi_i\).  With real mass parameters
 \(m_i\), FI coordinate \(\zeta\) for an abelian factor, and superpotential
 \(W\), the bosonic potential contains
-\[
+\begin{equation}
   \sum_i\left|(\sigma+m_i)\phi_i\right|^2
   +
   \frac12\left(\mu(\phi)+\frac{k}{2\pi}\sigma-\zeta\right)^2
   +
   |dW(\phi)|^2,
   \label{eq:three-d-n2-bosonic-potential}
-\]
+\end{equation}
 in an abelian normalization where \(\mu\) is the matter moment map.
 Supersymmetric classical vacua solve
-\[
+\begin{equation}
   dW=0,\qquad
   (\sigma+m_i)\phi_i=0,\qquad
   \mu(\phi)+\frac{k}{2\pi}\sigma-\zeta=0,
   \label{eq:three-d-n2-vacuum-equations}
-\]
+\end{equation}
 modulo gauge transformations.
 
 \begin{remark}[Auxiliary-field origin of the shifted D-term]
@@ -676,7 +676,7 @@ coordinates.
 Then the local non-derivative bosonic component terms involving the
 Chern--Simons auxiliary scalar \(\sigma=\sigma^a t^a\) and the auxiliary
 field \(D=D^a t^a\) may be written as
-\[
+\begin{equation}
   \mathcal L_{\mathrm{bos,aux}}
   =
   \frac{k}{2\pi}D^a\sigma^a
@@ -686,14 +686,14 @@ field \(D=D^a t^a\) may be written as
   \sigma^a\sigma^b\,
   \overline\phi\, t_R^a t_R^b\phi .
   \label{eq:three-d-n2-nonabelian-auxiliary-lagrangian}
-\]
+\end{equation}
 Eliminating \(D\) imposes
-\[
+\begin{equation}
   \sigma^a=-\frac{2\pi}{k}\mu^a(\phi),
   \label{eq:three-d-n2-cs-sigma-solution}
-\]
+\end{equation}
 and the remaining scalar interaction is
-\[
+\begin{equation}
   \mathcal L_{\mathrm{bos,on\text{-}shell}}
   =
   -\frac{4\pi^2}{k^2}
@@ -701,7 +701,7 @@ and the remaining scalar interaction is
   \bigl(\overline\phi\,t_R^b\phi\bigr)
   \bigl(\overline\phi\,t_R^a t_R^b\phi\bigr).
   \label{eq:three-d-n2-cs-sextic-scalar}
-\]
+\end{equation}
 Equivalently, the scalar potential contains the positive contribution
 \[
   V_{\mathrm{sextic}}
@@ -879,7 +879,7 @@ In \(\mathcal N=2\) language the matter consists of four chiral multiplets
   \qquad a,\dot a=1,2 .
 \]
 The classical superpotential is
-\[
+\begin{equation}
   W_{\rm ABJM}
   =
   \frac{2\pi}{k}
@@ -887,7 +887,7 @@ The classical superpotential is
   \operatorname{Tr}
   \bigl(A_aB_{\dot a}A_bB_{\dot b}\bigr).
   \label{eq:abjm-superpotential}
-\]
+\end{equation}
 The trace is over the first \(U(N)\) gauge indices, so every product in
 \eqref{eq:abjm-superpotential} is an endomorphism of the first gauge factor.
 The displayed coefficient fixes the convention in which the Yukawa and
@@ -1086,12 +1086,12 @@ parameter.  Put
 \]
 On a closed three-manifold the abelian Chern--Simons term is, up to the
 declared boundary convention,
-\[
+\begin{equation}
   \frac{k}{4\pi}\int(A\wedge dA-\widehat A\wedge d\widehat A)
   =
   \frac{k}{4\pi}\int B\wedge dA_D .
   \label{eq:abjm-abelian-bf-term}
-\]
+\end{equation}
 Thus the diagonal gauge field acts as a Lagrange multiplier for the
 anti-diagonal flux, while the anti-diagonal gauge field is the one seen by
 the matter.  Dualizing the flat diagonal connection gives a periodic scalar.
@@ -1136,7 +1136,7 @@ For Cartan variables
   \lambda_i,\mu_j\in\mathbb R,\qquad i,j=1,\ldots,N,
 \]
 associated respectively to the two \(U(N)\) factors, the matrix integral is
-\[
+\begin{equation}
 \begin{aligned}
   Z^{\rm ABJM}_{S^3}(N,k)
   &=
@@ -1155,7 +1155,7 @@ associated respectively to the two \(U(N)\) factors, the matrix integral is
   } .
 \end{aligned}
   \label{eq:abjm-s3-matrix-model}
-\]
+\end{equation}
 The numerator is the product of the two vector-multiplet determinants.  The
 denominator is the product of two conjugate bifundamental chiral pairs:
 each pair contributes
@@ -1192,12 +1192,12 @@ counterterm scheme.  Its round-sphere partition function at radius \(r\) is
 denoted \(Z_{S^3_r}(\mathcal T)\).  At a conformal fixed point, after
 removing power divergences by the declared local counterterms, the
 renormalized sphere free energy is
-\[
+\begin{equation}
   F(\mathcal T)
   =
   -\log\left|Z_{S^3}(\mathcal T)\right|.
   \label{eq:s3-free-energy-definition}
-\]
+\end{equation}
 The absolute value removes pure phases produced by framing and background
 Chern--Simons contact terms.  It does not remove the obligation to declare
 the real local counterterm scheme used to define the finite partition
@@ -1209,12 +1209,12 @@ matrix integral only after the \(S^3\) localization input of
 Chapter~\ref{ch:susy-localization-compact-manifolds} has been supplied:
 Cartan contour, parity-anomaly regulator, framing phase, real-mass and FI
 coordinates, and background Chern--Simons counterterms.  For ABJM,
-\[
+\begin{equation}
   F_{\rm ABJM}(N,k)
   =
   -\log\left|Z^{\rm ABJM}_{S^3}(N,k)\right|
   \label{eq:abjm-sphere-free-energy}
-\]
+\end{equation}
 with \(Z^{\rm ABJM}_{S^3}\) defined by
 \eqref{eq:abjm-s3-matrix-model}.  This is a protected observable of the
 declared QFT specification; changing the line-operator lattice or contact terms can
@@ -1227,20 +1227,20 @@ between ultraviolet and infrared conformal fixed points, and assume the
 stress tensor, vacuum state, ball entanglement entropy, and continuum limit
 are controlled so that strong subadditivity and the Casini--Huerta
 renormalized-entanglement construction apply.  Define
-\[
+\begin{equation}
   \mathcal F(R)=R\,\frac{dS(R)}{dR}-S(R),
   \label{eq:renormalized-entanglement-f}
-\]
+\end{equation}
 where \(S(R)\) is the vacuum entanglement entropy of a disk of radius \(R\).
 Then \(\mathcal F(R)\) is monotone nonincreasing as \(R\) increases.  At a
 conformal fixed point, the conformal map from the causal development of the
 disk to the hyperbolic thermal problem identifies \(\mathcal F\) with the
 renormalized sphere free energy \(F\).  Consequently a nontrivial flow
 satisfying these hypotheses obeys
-\[
+\begin{equation}
   F_{\rm UV}>F_{\rm IR},
   \label{eq:f-theorem-inequality}
-\]
+\end{equation}
 with equality only for a trivial flow modulo decoupled topological/contact
 data.
 \end{quotedtheorem}
@@ -1271,10 +1271,10 @@ numbers obey
 \]
 for a nontrivial flow.  For a product of decoupled fixed points
 \(\mathcal T_1\otimes\mathcal T_2\), the sphere free energy is additive:
-\[
+\begin{equation}
   F(\mathcal T_1\otimes\mathcal T_2)=F(\mathcal T_1)+F(\mathcal T_2).
   \label{eq:s3-free-energy-additivity}
-\]
+\end{equation}
 
 The first assertion is the inequality
 \eqref{eq:f-theorem-inequality} after identifying the endpoint \(F\)'s with
@@ -1300,12 +1300,12 @@ also add because they are local functionals of the external fields.
 For a free \(\mathcal N=2\) chiral multiplet of \(R\)-charge \(1/2\) and no
 background mass, the round-sphere determinant convention of
 Chapter~\ref{ch:susy-localization-compact-manifolds} gives
-\[
+\begin{equation}
   Z_{\rm chiral}=\exp\ell\!\left(\frac12\right)=2^{-1/2},
   \qquad
   F_{\rm chiral}=\frac12\log2 .
   \label{eq:free-chiral-f-value}
-\]
+\end{equation}
 Giving this chiral multiplet a supersymmetric real mass and flowing to
 energies much smaller than \(|m|\) leaves the empty gapped theory, whose
 non-topological sphere free energy is \(0\) in the same normalization.  The
@@ -1323,12 +1323,12 @@ compared.
 With the oscillatory contour and framing convention implicit in
 \eqref{eq:abjm-s3-matrix-model}, the \(N=1\) ABJM matrix integral evaluates
 distributionally to
-\[
+\begin{equation}
   Z^{\rm ABJM}_{S^3}(1,k)=\frac{1}{4|k|},
   \qquad
   F_{\rm ABJM}(1,k)=\log(4|k|).
   \label{eq:rank-one-abjm-s3-value}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1396,14 +1396,14 @@ Let \(\hbar=2\pi k\), let \(q\) denote multiplication on
   v(p)=\frac1{2\cosh(p/2)}.
 \]
 The ABJM one-particle density operator is
-\[
+\begin{equation}
   \rho_k
   =
   u(q)\,v(p)\,u(q).
   \label{eq:abjm-density-operator}
-\]
+\end{equation}
 Equivalently, in the \(q\)-representation,
-\[
+\begin{equation}
   \rho_k(q,q')
   =
   \frac1{2\pi k}\,
@@ -1411,16 +1411,16 @@ Equivalently, in the \(q\)-representation,
   \frac1{2\cosh\!\left(\frac{q-q'}{2k}\right)}\,
   \frac1{\sqrt{2\cosh(q'/2)}} .
   \label{eq:abjm-fermi-gas-kernel}
-\]
+\end{equation}
 
 \begin{lemma}[Trace-class normalization of the ABJM kernel]
 \label{lem:abjm-kernel-trace-class}
 The operator \(\rho_k\) in \eqref{eq:abjm-density-operator} is positive and
 trace class.  Its first trace is
-\[
+\begin{equation}
   \operatorname{Tr}_{\mathcal H}\rho_k=\frac1{4k}.
   \label{eq:abjm-rho-first-trace}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -1472,13 +1472,13 @@ the trace is \(1/(4k)\).
 \label{qt:abjm-fermi-gas-representation}
 For \(k>0\), the ABJM localization integral
 \eqref{eq:abjm-s3-matrix-model} is equal to
-\[
+\begin{equation}
   Z^{\rm ABJM}_{S^3}(N,k)
   =
   \frac1{N!}\int_{\mathbb R^N}\prod_{i=1}^N dq_i\,
   \det_{1\le i,j\le N}\rho_k(q_i,q_j).
   \label{eq:abjm-canonical-fermi-gas}
-\]
+\end{equation}
 \end{quotedtheorem}
 
 \begin{remark}[What enters the finite identity]
@@ -1490,14 +1490,14 @@ change of variables
   x_i=2\pi\lambda_i,\qquad y_i=2\pi\mu_i .
 \]
 The main determinant step is the hyperbolic Cauchy identity
-\[
+\begin{equation}
   \frac{\prod_{i<j}2\sinh\!\left(\frac{x_i-x_j}{2}\right)
         \prod_{i<j}2\sinh\!\left(\frac{y_i-y_j}{2}\right)}
        {\prod_{i,j}2\cosh\!\left(\frac{x_i-y_j}{2}\right)}
   =
   \det_{i,j}\frac1{2\cosh\!\left(\frac{x_i-y_j}{2}\right)} .
   \label{eq:hyperbolic-cauchy-abjm}
-\]
+\end{equation}
 It follows from the ordinary Cauchy identity after setting
 \(X_i=\ee^{x_i}\), \(Y_j=\ee^{y_j}\) and extracting monomials from rows and
 columns.  Squaring \eqref{eq:hyperbolic-cauchy-abjm} rewrites the
@@ -1523,19 +1523,19 @@ Proposition~\ref{prop:rank-one-abjm-s3-integral}.
 \begin{definition}[ABJM grand partition function]
 \label{def:abjm-grand-partition-function}
 The grand partition function attached to the ABJM Fermi-gas operator is
-\[
+\begin{equation}
   \Xi_k(\kappa)
   =
   \det_{\mathcal H}(1+\kappa\rho_k),
   \qquad
   \kappa=\ee^\mu ,
   \label{eq:abjm-grand-partition-function}
-\]
+\end{equation}
 and its logarithm
-\[
+\begin{equation}
   J_k(\mu)=\log\Xi_k(\ee^\mu)
   \label{eq:abjm-grand-potential}
-\]
+\end{equation}
 is the grand potential.
 \end{definition}
 
@@ -1543,14 +1543,14 @@ is the grand potential.
 \label{lem:fredholm-canonical-coefficients}
 Let \(\rho\) be a trace-class operator on \(L^2(\mathbb R,dq)\) with
 integral kernel \(\rho(q,q')\).  Then
-\[
+\begin{equation}
   \det(1+\kappa\rho)
   =
   \sum_{N=0}^{\infty}\kappa^N
   \frac1{N!}\int_{\mathbb R^N}\prod_{i=1}^N dq_i\,
   \det_{i,j}\rho(q_i,q_j).
   \label{eq:fredholm-minor-expansion}
-\]
+\end{equation}
 Consequently the coefficient of \(\kappa^N\) in
 \(\Xi_k(\kappa)\) is the ABJM sphere partition function
 \(Z^{\rm ABJM}_{S^3}(N,k)\).
@@ -1572,17 +1572,17 @@ coefficients with the localized ABJM integrals.
 \begin{proposition}[Leading phase-space coefficient]
 \label{prop:abjm-leading-phase-space-coefficient}
 The leading Weyl coefficient of the ABJM Fermi gas is
-\[
+\begin{equation}
   C_k=\frac{2}{\pi^2 k}.
   \label{eq:abjm-Ck-coefficient}
-\]
+\end{equation}
 Equivalently, the leading large-\(\mu\) contribution to the grand potential
 is
-\[
+\begin{equation}
   J_k(\mu)=\frac{C_k}{3}\mu^3+\text{lower powers of }\mu
   \qquad (\mu\to+\infty)
   \label{eq:abjm-leading-grand-potential}
-\]
+\end{equation}
 at fixed \(k\).
 \end{proposition}
 
@@ -1629,7 +1629,7 @@ which gives \eqref{eq:abjm-Ck-coefficient}.
 \label{qt:abjm-perturbative-grand-potential}
 For the trace-class operator \(\rho_k\) above, the part of \(J_k(\mu)\)
 which is polynomial in \(\mu\) in the large-\(\mu\) spectral expansion is
-\[
+\begin{equation}
   J_k^{\rm pert}(\mu)
   =
   \frac{C_k}{3}\mu^3+B_k\mu+A_k,
@@ -1638,7 +1638,7 @@ which is polynomial in \(\mu\) in the large-\(\mu\) spectral expansion is
   \qquad
   B_k=\frac{k}{24}+\frac1{3k}.
   \label{eq:abjm-perturbative-grand-potential}
-\]
+\end{equation}
 The remaining terms in \(J_k(\mu)\) are exponentially small in \(\mu\)
 within the spectral expansion and encode nonperturbative corrections to the
 canonical large-\(N\) answer.  The coefficient \(A_k\) is independent of
@@ -1648,37 +1648,37 @@ canonical large-\(N\) answer.  The coefficient \(A_k\) is independent of
 \begin{theorem}[Airy transform of a cubic grand potential]
 \label{thm:airy-transform-cubic-grand-potential}
 Assume a grand potential has perturbative part
-\[
+\begin{equation}
   J^{\rm pert}(\mu)=\frac C3\mu^3+B\mu+A,
   \qquad C>0.
   \label{eq:cubic-grand-potential-general}
-\]
+\end{equation}
 Define the perturbative canonical coefficient by the inverse Laplace
 transform
-\[
+\begin{equation}
   Z_N^{\rm pert}
   =
   \int_{\mathcal C}\frac{d\mu}{2\pi\ii}\,
   \exp\!\left(J^{\rm pert}(\mu)-N\mu\right),
   \label{eq:perturbative-canonical-inverse-laplace}
-\]
+\end{equation}
 where \(\mathcal C\) is the standard Airy contour.  Then
-\[
+\begin{equation}
   Z_N^{\rm pert}
   =
   \ee^A\,C^{-1/3}\,
   \operatorname{Ai}\!\left(C^{-1/3}(N-B)\right).
   \label{eq:airy-transform-result}
-\]
+\end{equation}
 For ABJM this gives
-\[
+\begin{equation}
   Z_{S^3}^{\rm ABJM,pert}(N,k)
   =
   \ee^{A_k}\,
   C_k^{-1/3}\,
   \operatorname{Ai}\!\left(C_k^{-1/3}(N-B_k)\right),
   \label{eq:abjm-perturbative-airy}
-\]
+\end{equation}
 with \(C_k,B_k\) as in
 \eqref{eq:abjm-perturbative-grand-potential}.
 \end{theorem}

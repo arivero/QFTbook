@@ -163,12 +163,12 @@ where \(\mathcal A\) is the quadratic fluctuation operator and \(L_i\) is
 the first variation density.  Ignoring zero modes and using a regulator for
 the determinant, the Gaussian part of
 \eqref{eq:nlsm-source-defined-effective-action} has
-\[
+\begin{equation}
   \langle\xi\rangle_J
   =
   \mathcal A^{-1}(J-L).
   \label{eq:nlsm-gaussian-mean-field}
-\]
+\end{equation}
 Thus the condition \(\langle\xi\rangle_J=0\) fixes \(J=L\), and the one-loop
 effective action is
 \begin{equation}
@@ -417,7 +417,7 @@ Thus the free covariance is \(2\pi\alpha'(-\partial^2)^{-1}\).  Introduce an
 auxiliary mass \(m\) only to separate the ultraviolet pole from the infrared
 zero mode.  The coincident scalar Green kernel has the local heat-kernel
 representation
-\[
+\begin{equation}
 \begin{aligned}
   (-\partial^2+m^2)^{-1}(\sigma_0,\sigma_0)
   &=
@@ -430,7 +430,7 @@ representation
   \frac1{2\pi\epsilon}+O(\epsilon^0).
 \end{aligned}
   \label{eq:nlsm-local-heat-kernel-pole}
-\]
+\end{equation}
 Restoring covariance gives the singular part
 \begin{equation}
   \langle \xi^k(\sigma)\xi^\ell(\sigma)\rangle_{\mathrm{div}}
@@ -604,23 +604,23 @@ the vanishing of the matter-plus-ghost scalar anomaly.
 
 \begin{proof}
 For the \(B\)-variation, use
-\[
+\begin{equation}
   \delta H_{ijk}
   =
   \nabla_i\delta B_{jk}
   +\nabla_j\delta B_{ki}
   +\nabla_k\delta B_{ij}.
   \label{eq:nlsm-delta-h}
-\]
+\end{equation}
 Because \(H\) is antisymmetric,
-\[
+\begin{equation}
   \delta(H_{ijk}H^{ijk})
   =
   2H^{ijk}\delta H_{ijk}
   =
   6H^{ijk}\nabla_i\delta B_{jk}.
   \label{eq:nlsm-delta-h-squared}
-\]
+\end{equation}
 Thus
 \[
   \delta_B\mathcal I_0
@@ -1006,12 +1006,12 @@ representatives by
 In particular, the dilaton-gradient terms in
 \eqref{eq:nlsm-one-loop-hatted-beta-g}--\eqref{eq:nlsm-one-loop-hatted-beta-b}
 are the one-loop representative obtained from
-\[
+\begin{equation}
   W^i=\alpha'\nabla^i\Phi+O(\alpha'^2),
   \qquad
   \Lambda_i=O(\alpha'^2).
   \label{eq:nlsm-dilaton-gradient-redundant-vector}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -1080,7 +1080,7 @@ Bianchi identity \(\dd H=0\) are preserved simultaneously.
 Let \(K^k{}_{ij}=-H^k{}_{ij}/2\), so that
 \(\Gamma^{-\,k}_{ij}=\Gamma^k_{ij}+K^k{}_{ij}\).  Since \(H^k{}_{ik}=0\),
 the Ricci tensor of \(\nabla^-\) is
-\[
+\begin{equation}
   R^-_{ij}
   =
   R_{ij}
@@ -1088,7 +1088,7 @@ the Ricci tensor of \(\nabla^-\) is
   +K^k{}_{k\ell}K^\ell{}_{ij}
   -K^k{}_{j\ell}K^\ell{}_{ik}.
   \label{eq:nlsm-ricci-with-contorsion}
-\]
+\end{equation}
 The trace term vanishes and the derivative term is
 \(-\frac12\nabla^kH_{kij}\).  The quadratic term is
 \[
@@ -1147,26 +1147,26 @@ statement.
 \begin{proposition}[RG time versus Hamilton Ricci flow]
 \label{prop:nlsm-rg-time-ricci-flow}
 Let \(B=\Phi=0\), and restrict to the one-loop metric flow
-\[
+\begin{equation}
   \frac{\partial G_{ij}}{\partial \tau}
   =
   \alpha'R_{ij}(G),
   \qquad
   \tau=\log\mu .
   \label{eq:nlsm-one-loop-rg-time}
-\]
+\end{equation}
 If
-\[
+\begin{equation}
   t=-\frac{\alpha'}2\tau ,
   \label{eq:nlsm-ricci-flow-time}
-\]
+\end{equation}
 then \(G(t)\) satisfies Hamilton's Ricci-flow equation
-\[
+\begin{equation}
   \frac{\partial G_{ij}}{\partial t}
   =
   -2R_{ij}(G).
   \label{eq:nlsm-hamilton-ricci-flow}
-\]
+\end{equation}
 Thus the ultraviolet sigma-model flow, in the convention
 \(\tau=\log\mu\), is backward relative to the usual increasing Ricci-flow
 time \(t\).  This is a statement about the one-loop local beta-vector field
@@ -1204,14 +1204,14 @@ Let \(M\) have dimension \(n\ge2\), and let \(\gamma\) be a metric of
 constant sectional curvature \(\sigma\), where
 \(\sigma=+1\) for the unit sphere and \(\sigma=-1\) for the unit hyperbolic
 metric.  Put
-\[
+\begin{equation}
   G_{ij}=r^2\gamma_{ij},
   \qquad
   \lambda=\frac{\alpha'}{r^2},
   \qquad
   B=\Phi=0 .
   \label{eq:nlsm-constant-curvature-ansatz}
-\]
+\end{equation}
 In the pure-metric minimal-subtraction representative
 \eqref{eq:nlsm-two-loop-metric-beta}, the radius parameter obeys
 \begin{equation}
@@ -1233,20 +1233,20 @@ and the dimensionless large-radius coupling obeys
   \label{eq:nlsm-constant-curvature-lambda-beta}
 \end{equation}
 In particular, for the sphere,
-\[
+\begin{equation}
   \frac{\dd\lambda}{\dd\log\mu}
   =
   -(n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4),
   \label{eq:nlsm-sphere-coupling-beta}
-\]
+\end{equation}
 which is the asymptotic-freedom sign in the convention
 \(\lambda=\alpha'/r^2\).  For the hyperbolic sign,
-\[
+\begin{equation}
   \frac{\dd\lambda}{\dd\log\mu}
   =
   (n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4).
   \label{eq:nlsm-hyperbolic-coupling-beta}
-\]
+\end{equation}
 The hyperbolic formula is a local curvature check of signs and scaling; it
 is not a claim that an arbitrary noncompact hyperbolic target, without
 additional infrared and spectral data, defines a full CFT.
@@ -1255,23 +1255,23 @@ additional infrared and spectral data, defines a full CFT.
 \begin{proof}
 For the scaled constant-curvature metric \(G=r^2\gamma\), the sectional
 curvature is \(K=\sigma/r^2\).  Hence
-\[
+\begin{equation}
   R_{ij}
   =
   (n-1)K\,G_{ij}
   =
   (n-1)\sigma\,\gamma_{ij},
   \label{eq:nlsm-constant-curvature-ricci}
-\]
+\end{equation}
 and the standard constant-curvature contraction gives
-\[
+\begin{equation}
   R_{ik\ell m}R_j{}^{k\ell m}
   =
   2(n-1)K^2G_{ij}
   =
   \frac{2(n-1)}{r^2}\gamma_{ij}.
   \label{eq:nlsm-constant-curvature-riemann-square}
-\]
+\end{equation}
 Substituting these identities into
 \eqref{eq:nlsm-two-loop-metric-beta} gives
 \[
@@ -3025,7 +3025,7 @@ In both cases the one-loop metric Weyl-anomaly equation
 \]
 holds identically on the coordinate patch.  The scalar combination entering
 \eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop} is constant:
-\[
+\begin{equation}
   |\nabla\Phi|^2-\frac12\nabla^2\Phi
   =
   \begin{cases}
@@ -3033,7 +3033,7 @@ holds identically on the coordinate patch.  The scalar combination entering
     -K^{-1}, & \text{bell}.
   \end{cases}
   \label{eq:bell-cigar-scalar-anomaly-constant}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -3199,12 +3199,12 @@ partition function is
   \label{eq:orbifold-torus-partition-function}
 \end{equation}
 The modular generators act on the labels by
-\[
+\begin{equation}
   S:(g,h)\mapsto(h^{-1},g),
   \qquad
   T:(g,h)\mapsto(g,gh),
   \label{eq:orbifold-modular-label-action}
-\]
+\end{equation}
 with the cocycle \(\epsilon\) supplying the corresponding discrete-torsion
 phases.
 \end{proposition}
@@ -3479,10 +3479,10 @@ integers
   a,d>0,\qquad ad=m,\qquad 0\le b<d .
 \]
 The covering torus has modulus
-\[
+\begin{equation}
   \tau'=\frac{a\tau+b}{d},
   \label{eq:symmetric-product-connected-cover-modulus}
-\]
+\end{equation}
 and the number of such marked connected covers is
 \begin{equation}
   \sigma_1(m)=\sum_{d\mid m}d .
@@ -3604,7 +3604,7 @@ before conjugacy-class averaging.  The orbifold local operators are obtained
 by summing such endpoints over conjugacy classes and projecting to
 centralizer-invariant states.  If a transposition joins two disjoint cycles
 of lengths \(K\) and \(L\), the leading bare-twist exponent is controlled by
-\[
+\begin{equation}
   h_{K+L}-h_K-h_L
   =
   \frac{c_0}{24}
@@ -3614,7 +3614,7 @@ of lengths \(K\) and \(L\), the leading bare-twist exponent is controlled by
     -L+\frac1L
   \right],
   \label{eq:symmetric-product-join-weight-shift}
-\]
+\end{equation}
 with the analogous antiholomorphic formula.  A transposition acting inside a
 single cycle splits it into two cycles.  The covering surface of the
 correlator determines the numerical OPE coefficient after the seed
@@ -3628,10 +3628,10 @@ correlator with branch points \(z_1,\ldots,z_n\).  Choose monodromies
   \gamma_1,\ldots,\gamma_n\in S_N
 \]
 acting transitively on the active sheets and ordered so that
-\[
+\begin{equation}
   \gamma_1\gamma_2\cdots\gamma_n=1.
   \label{eq:symmetric-product-sphere-monodromy-product}
-\]
+\end{equation}
 Let \(c(\gamma_a)\) denote the number of cycles of \(\gamma_a\) on those
 active sheets, including fixed points.  If the corresponding covering surface
 has genus \(g_{\mathrm{cov}}\), then
@@ -3652,12 +3652,12 @@ the generated subgroup is transitive on the active sheets, and the integer
 The monodromies specify the connected covering of the punctured sphere.  A
 cycle of length \(r\) over \(z_a\) contributes ramification \(r-1\).  Summing
 over all cycles of \(\gamma_a\) gives
-\[
+\begin{equation}
   \sum_{\text{cycles }C\subset\gamma_a}(|C|-1)
   =
   N-c(\gamma_a).
   \label{eq:symmetric-product-local-ramification}
-\]
+\end{equation}
 Riemann--Hurwitz for a degree-\(N\) map
 \(\widehat\Sigma\to\mathbb P^1\) says
 \[
@@ -3681,22 +3681,22 @@ For a normalized two-point function of length-\(K\) twists, take active degree
   \gamma^{-1}.
 \]
 Both have one cycle on the active sheets, so
-\[
+\begin{equation}
   g_{\mathrm{cov}}
   =
   1-K+\frac12\bigl((K-1)+(K-1)\bigr)=0.
   \label{eq:symmetric-product-two-point-cover-genus}
-\]
+\end{equation}
 
 For a primitive connected three-point joining component, let
-\[
+\begin{equation}
   \alpha=(1\,2\,\cdots\,K),
   \qquad
   \beta=(K\,K+1\,\cdots\,K+L-1),
   \qquad
   \gamma=(\alpha\beta)^{-1},
   \label{eq:symmetric-product-primitive-join-monodromies}
-\]
+\end{equation}
 where \(K,L\ge2\).  The active degree is \(N=K+L-1\).  The product is
 \(\alpha\beta\gamma=1\), and \(\alpha,\beta\) overlap on the sheet \(K\), so
 the generated subgroup is transitive.  The product \(\alpha\beta\) is a single
@@ -3708,12 +3708,12 @@ cycle of length \(K+L-1\).  Hence
 \]
 where fixed points on the active sheets are included.  Formula
 \eqref{eq:symmetric-product-twist-riemann-hurwitz} gives
-\[
+\begin{equation}
   g_{\mathrm{cov}}
   =
   1-(K+L-1)+\frac12\bigl((K-1)+(L-1)+(K+L-2)\bigr)=0.
   \label{eq:symmetric-product-primitive-join-genus}
-\]
+\end{equation}
 This genus-zero ledger fixes the covering topology.  It does not determine
 the OPE coefficient without the seed correlator, local coordinate choices at
 the branch points, and the normalization of the twist fields.

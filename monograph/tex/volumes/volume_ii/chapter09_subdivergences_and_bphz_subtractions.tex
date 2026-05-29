@@ -414,14 +414,14 @@ following identity.
 \label{thm:zimmermann-forest-formula}
 For the BPHZ recursion of
 Proposition~\ref{prop:bogoliubov-preparation-recursion},
-\[
+\begin{equation*}
   R_\Gamma I_\Gamma
   =
   \sum_{F\in\mathfrak F(\Gamma)}
   (-1)^{|F|}\,t_F I_\Gamma ,
 \tag{\(\ast\)}
 \label{eq:zimmermann-forest-formula}
-\]
+\end{equation*}
 with \(t_\emptyset=1\).  The identity is an identity of formal graph
 integrands before loop integrations are performed.  In a nested chain,
 Taylor operators are ordered from smaller subgraphs to larger subgraphs; for
@@ -445,7 +445,7 @@ which is the sum over the two forests
 Assume the statement for every proper connected divergent subgraph of
 \(\Gamma\).  Expanding the counterterm of a proper connected divergent
 subgraph \(\gamma\) gives
-\[
+\begin{equation}
   C_\gamma I_\gamma
   =
   -t_\gamma \overline R_\gamma I_\gamma
@@ -454,7 +454,7 @@ subgraph \(\gamma\) gives
                   \gamma\in F_\gamma}}
   (-1)^{|F_\gamma|}t_{F_\gamma}I_\gamma .
   \label{eq:bphz-counterterm-as-forests-ending-at-gamma}
-\]
+\end{equation}
 Indeed, by the induction hypothesis, \(\overline R_\gamma\) is the forest sum
 over forests of \(\gamma\) not containing \(\gamma\); multiplying by
 \(-t_\gamma\) appends \(\gamma\) as the largest element and changes the sign.
@@ -476,13 +476,13 @@ corresponding \(F_\gamma\)'s.  The product of the signs in the spinney
 expansion is
 \((-1)^{\sum_{\gamma\in S}|F_\gamma|}=(-1)^{|F|}\).
 Therefore
-\[
+\begin{equation}
   \overline R_\Gamma I_\Gamma
   =
   \sum_{\substack{F\in\mathfrak F(\Gamma)\\\Gamma\notin F}}
   (-1)^{|F|}t_F I_\Gamma .
   \label{eq:bphz-prepared-as-forests-not-containing-gamma}
-\]
+\end{equation}
 
 If \(\Gamma\) is superficially convergent, \(R_\Gamma=\overline R_\Gamma\)
 and this is the desired formula.  If \(\Gamma\) is superficially divergent,
@@ -718,7 +718,7 @@ The elementary estimate is the following Taylor-remainder bound.  Let
 \(\rho\ge1\) scale loop momenta internal to \(\gamma\) while the external
 variables \(p_\gamma\) of \(\gamma\) are kept on a slower scale.  Write
 \(p_\gamma=p_\gamma^\ast+a\).  Taylor's formula with integral remainder gives
-\[
+\begin{equation}
   f(p_\gamma)-t_\gamma f(p_\gamma)
   =
   \sum_{|\alpha|=\omega(\gamma)+1}
@@ -727,7 +727,7 @@ variables \(p_\gamma\) of \(\gamma\) are kept on a slower scale.  Write
     (1-u)^{\omega(\gamma)}
     \bigl(\partial_a^\alpha f\bigr)(p_\gamma^\ast+u a)\,\dd u .
   \label{eq:bphz-taylor-integral-remainder}
-\]
+\end{equation}
 Here \(f\) denotes the prepared integrand of \(\gamma\), with all proper
 subdivergences already replaced by their renormalized expressions or local
 counterterm vertices.  A derivative with respect to an external momentum of
@@ -746,21 +746,21 @@ rule because differentiating a polynomial lowers its degree, and derivatives
 falling on counterterm vertices only differentiate polynomials in slower
 external variables.  Consequently, including the internal loop measure of
 \(\gamma\),
-\[
+\begin{equation}
   \dd^{D L(\gamma)}\ell_\gamma\,
   \partial_a^\alpha f(\rho\ell_\gamma,p_\gamma)
   =
   O\!\left(\rho^{\omega(\gamma)-|\alpha|}\right)
   \dd^{D L(\gamma)}\ell_\gamma .
   \label{eq:bphz-derivative-lowers-degree}
-\]
+\end{equation}
 For \(|\alpha|=\omega(\gamma)+1\), the \(\gamma\)-scale exponent is at most
 \(-1\).  In radial sector coordinates this means that the corresponding
 boundary integral is bounded by
-\[
+\begin{equation}
   C\int_R^\infty \rho^{-1}\,\frac{\dd\rho}{\rho}<\infty .
   \label{eq:bphz-one-boundary-integral}
-\]
+\end{equation}
 If \(\gamma\) has negative superficial degree, the same estimate holds without
 applying \(1-t_\gamma\), because then the exponent is already at most \(-1\).
 
@@ -779,7 +779,7 @@ the counterterm produced by a smaller member is viewed as a local vertex in
 the quotient graph.  Applying
 \eqref{eq:bphz-taylor-integral-remainder} successively from the innermost
 members outward gives, on the sector \(S\), a bound of the form
-\[
+\begin{equation}
   |R_\Gamma I_\Gamma(\ell,p)|\,\dd^{D L(\Gamma)}\ell
   \le
   C_S
@@ -789,7 +789,7 @@ members outward gives, on the sector \(S\), a bound of the form
     \sigma_b^{-1}\frac{\dd\sigma_b}{\sigma_b}
   \dd\Omega_S .
   \label{eq:bphz-sector-product-bound}
-\]
+\end{equation}
 The additional variables \(\sigma_b\) correspond to superficially convergent
 subgraphs or quotient subgraphs; their exponents are already negative by power
 counting.  The angular variables \(\Omega_S\) range over a compact part of the
@@ -908,14 +908,14 @@ one insertion of \(O\), the difference between the BPHZ-renormalized
 insertion with subtraction degree \(\delta'\) and the one with subtraction
 degree \(\delta\) is a finite sum of BPHZ-renormalized insertions of the
 \(O_A\)'s:
-\[
+\begin{equation}
   N_{\delta'}[O](x)
   =
   N_\delta[O](x)
   +
   \sum_A c_A\,N_{\delta'}[O_A](x).
   \label{eq:zimmermann-normal-product-identity}
-\]
+\end{equation}
 The coefficients \(c_A\) are finite functions of the subtraction points,
 finite subtraction prescription, masses, and renormalized couplings.  They
 are local scheme-change coordinates; they are not new nonlocal dynamical data.
@@ -926,14 +926,14 @@ Work graph by graph.  For a marked subgraph \(\gamma\) containing the
 insertion vertex, write \(t_\gamma^{(\delta)}\) and
 \(t_\gamma^{(\delta')}\) for the two Taylor operators.  Their difference is
 the finite Taylor polynomial
-\[
+\begin{equation}
   t_\gamma^{(\delta')}-t_\gamma^{(\delta)}
   =
   \sum_{\delta<|\alpha|\le\delta'}
   \frac{a^\alpha}{\alpha!}
   \left.\partial_a^\alpha\right|_{a=0}
   \label{eq:zimmermann-finite-taylor-difference}
-\]
+\end{equation}
 in the external variables of the marked subgraph, with all lower
 subdivergences prepared in the same forest order as above.  After the marked
 subgraph is contracted, each monomial \(a^\alpha\) is a local derivative

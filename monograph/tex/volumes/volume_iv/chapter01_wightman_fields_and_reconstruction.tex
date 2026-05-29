@@ -384,11 +384,11 @@ let
   \chi=(1-P_0)B\vac .
 \]
 For every spacelike vector \(a\),
-\[
+\begin{equation}
   \lim_{\lambda\to+\infty}
   \langle \psi,U(\lambda a)\chi\rangle=0 .
   \label{eq:jost-cluster-local-vector-limit}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -402,10 +402,10 @@ Set
   B(x)=U(x)BU(x)^{-1}.
 \]
 Equivalently,
-\[
+\begin{equation}
   F_+(x)=\langle A^\dagger\vac,U(x)(1-P_0)B\vac\rangle .
   \label{eq:cluster-forward-coefficient}
-\]
+\end{equation}
 The joint spectral theorem gives a finite complex measure
 \[
   \dd\mu_{\psi,\chi}(p)=\langle\psi,E_P(\dd p)\chi\rangle,
@@ -415,10 +415,10 @@ The joint spectral theorem gives a finite complex measure
 and \(F_+\) is its Fourier transform in the translation variable, with the
 Fourier sign convention fixed by \(U(x)=\exp(\ii x\cdot P)\).  The subtraction
 by \(P_0\) is exactly the assertion
-\[
+\begin{equation}
   \mu_{\psi,\chi}(\{0\})=0 .
   \label{eq:cluster-zero-atom-removed}
-\]
+\end{equation}
 
 Let
 \[
@@ -430,7 +430,7 @@ Let
 This is an open real set, and for every spacelike \(a\) there is
 \(\lambda_0\) such that \(\lambda a\in\mathcal C_{A,B}\) for
 \(\lambda>\lambda_0\).  On \(\mathcal C_{A,B}\), locality gives
-\[
+\begin{equation}
   F_+(x)=\varepsilon_{AB}F_-(x),
   \qquad
   F_-(x)=
@@ -438,7 +438,7 @@ This is an open real set, and for every spacelike \(a\) there is
   -
   \langle\vac,B\vac\rangle\langle\vac,A\vac\rangle ,
   \label{eq:jost-edge-locality}
-\]
+\end{equation}
 where \(\varepsilon_{AB}=(-1)^{|A||B|}\).  The spectral condition gives a
 holomorphic function \(\mathcal F_+\) in the forward tube whose boundary value
 is \(F_+\).  The same condition applied to the reversed matrix element gives a
@@ -477,13 +477,13 @@ tempered local matrix coefficient \(F_+\) satisfying:
 \item absence of the zero-momentum spectral atom after vacuum subtraction
 \end{enumerate}
 has the following Rajchman property on every spacelike ray:
-\[
+\begin{equation}
   \lim_{\lambda\to+\infty}
   \int_{\mathbb R} \ee^{\ii\lambda q}\,\dd\nu_a(q)=0,
   \qquad
   \dd\nu_a=(a\cdot p)_*\dd\mu_{\psi,\chi}.
   \label{eq:jost-rajchman-property}
-\]
+\end{equation}
 The proof of this one-parameter theorem is a carrier-cone argument.  Localize
 the edge to a compact set of spacelike points and apply the
 edge-of-the-wedge continuation to the forward and backward tubes.  The

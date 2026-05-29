@@ -69,14 +69,14 @@ by \(-1\) on \(S^-\).  The heat operator \(e^{-tD_A^2}\) is trace class for
 \begin{proposition}[McKean--Singer identity]
 \label{prop:index-mckean-singer}
 For every \(t>0\),
-\[
+\begin{equation}
   \operatorname{Str}\,e^{-tD_A^2}
   :=
   \operatorname{Tr}\!\left(\Gamma e^{-tD_A^2}\right)
   =
   \operatorname{Ind}(D_A^+).
   \label{eq:index-mckean-singer}
-\]
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -130,14 +130,14 @@ The curvature of the spin connection is
 \begin{lemma}[Lichnerowicz formula]
 \label{lem:index-lichnerowicz}
 For the coupled Dirac operator \(D_A=\gamma^a\nabla_a^{S\otimes E}\),
-\[
+\begin{equation}
   D_A^2
   =
   (\nabla^{S\otimes E})^\ast\nabla^{S\otimes E}
   +\frac14{\rm Scal}
   +\frac12\gamma^{ab}F^E_{ab}.
   \label{eq:index-lichnerowicz}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -169,36 +169,36 @@ curvature with total coefficient \(1/4\).  This proves
 \label{def:index-laplace-type-heat-coefficients}
 A Laplace-type operator on a Hermitian vector bundle \(V\to M^d\) is written
 in the form
-\[
+\begin{equation}
   P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+\mathcal E),
   \label{eq:index-laplace-type-convention}
-\]
+\end{equation}
 where \(\nabla\) is a connection on \(V\) and
 \(\mathcal E\in\Gamma({\rm End}\,V)\).  Its curvature is
 \(\Omega_{\mu\nu}=[\nabla_\mu,\nabla_\nu]\).  The local heat coefficients
 \(a_{2r}(P;x)\) are defined by
-\[
+\begin{equation}
   {\rm Tr}\!\left(f e^{-tP}\right)
   \sim
   (4\pi t)^{-d/2}
   \sum_{r\geq0}t^r
   \int_M f(x)\,{\rm tr}_V a_{2r}(P;x)\,d{\rm vol}_g
   \label{eq:index-heat-coeff-definition}
-\]
+\end{equation}
 for every test function \(f\).
 \end{definition}
 
 \begin{proposition}[First Seeley--DeWitt coefficients]
 \label{prop:index-seeley-dewitt-coefficients}
 For the convention \eqref{eq:index-laplace-type-convention},
-\[
+\begin{equation}
   a_0={\bf 1}_V,
   \qquad
   a_2=\mathcal E+\frac16{\rm Scal}\,{\bf 1}_V,
   \label{eq:index-a0-a2}
-\]
+\end{equation}
 and
-\[
+\begin{equation}
 \begin{aligned}
   a_4
   =
@@ -213,41 +213,41 @@ and
   \Big].
   \label{eq:index-a4-seeley-dewitt}
 \end{aligned}
-\]
+\end{equation}
 On a closed manifold the last line integrates to zero after taking a trace.
 \end{proposition}
 
 \begin{proof}
 Work in a normal convex neighborhood and write Synge's world function as
 \(\sigma(x,y)\).  The heat kernel parametrix has the form
-\[
+\begin{equation}
   K_t(x,y)
   \sim
   (4\pi t)^{-d/2}e^{-\sigma(x,y)/2t}\Delta(x,y)^{1/2}
   \sum_{r\geq0}t^r b_r(x,y),
   \qquad b_0(x,x)={\bf 1}_V,
   \label{eq:index-heat-parametrix}
-\]
+\end{equation}
 where \(\Delta\) is the van Vleck determinant and \(b_r\) is parallel
 transported in the bundle indices at leading order.  Inserting
 \eqref{eq:index-heat-parametrix} into \((\partial_t+P_x)K_t=0\) and comparing
 powers of \(t\) gives the transport recursion
-\[
+\begin{equation}
   (\sigma^{;\mu}\nabla_\mu+r)b_r
   =
   -\Delta^{-1/2}
   P_x\!\left(\Delta^{1/2}b_{r-1}\right),
   \qquad r\geq1.
   \label{eq:index-heat-transport-recursion}
-\]
+\end{equation}
 The coincidence limits needed below are
-\[
+\begin{equation}
   [\sigma^{;\mu}]=0,\qquad
   [\sigma^{;\mu}{}_{\nu}]=\delta^\mu{}_\nu,\qquad
   [\nabla_\mu\nabla_\nu\Delta^{1/2}]
   =\frac16{\rm Ric}_{\mu\nu},
   \label{eq:index-world-function-coincidence}
-\]
+\end{equation}
 with brackets denoting \(y\to x\).  Setting \(r=1\) in
 \eqref{eq:index-heat-transport-recursion} immediately gives
 \[
@@ -280,13 +280,13 @@ Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
 \begin{theorem}[Local index density by Getzler rescaling]
 \label{thm:index-atiyah-singer-local}
 For the chiral Dirac operator coupled to \(E\),
-\[
+\begin{equation}
   \operatorname{Ind}(D_A^+)
   =
   \int_M
   \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}.
   \label{eq:index-atiyah-singer}
-\]
+\end{equation}
 Equivalently, the local heat-kernel density of the supertrace has
 \[
   \lim_{t\to0^+}{\rm str}\,K_t(x,x)\,d{\rm vol}_g
@@ -301,7 +301,7 @@ local supertrace.  Fix \(p\in M\).  Choose geodesic normal coordinates,
 synchronous orthonormal frame, and radial gauges for \(S\) and \(E\).  In these
 coordinates the Taylor expansions of the two connections begin with their
 curvatures:
-\[
+\begin{equation}
   \nabla_a^S
   =
   \partial_a+\frac14 R_{ab cd}(p)x^b\gamma^{cd}+O(|x|^2),
@@ -310,7 +310,7 @@ curvatures:
   =
   \partial_a+\frac12F^E_{ab}(p)x^b+O(|x|^2).
   \label{eq:index-radial-gauge-expansion}
-\]
+\end{equation}
 Rescale \(x=t^{1/2}y\).  Under Getzler scaling the differential operator
 keeps the terms whose combined degree in \(t^{1/2}\), derivatives, and
 Clifford variables can contribute to the top Clifford degree \(2n\); all
@@ -318,7 +318,7 @@ higher Taylor coefficients are suppressed by positive powers of \(t^{1/2}\)
 in the diagonal heat kernel.  Lemma
 \ref{lem:index-lichnerowicz} then gives the constant-curvature model
 operator
-\[
+\begin{equation}
   H_p
   =
   -\sum_a
@@ -328,7 +328,7 @@ operator
   \right)^2
   +\frac12\gamma^{ab}F^E_{ab}(p),
   \label{eq:index-getzler-model-operator}
-\]
+\end{equation}
 where \(R_{ab}(p)\) is viewed as the skew endomorphism of \(T_pM\) with
 matrix entries \(R_{ab cd}(p)\gamma^{cd}\) in the Clifford factor.  The
 ordinary scalar-curvature term in \eqref{eq:index-lichnerowicz} has Clifford
@@ -340,7 +340,7 @@ The heat kernel of \eqref{eq:index-getzler-model-operator} is the Mehler
 kernel for a constant magnetic oscillator, tensored with the finite
 endomorphism exponential \(\exp(-\frac12\gamma^{ab}F^E_{ab})\).  Diagonalizing
 the skew curvature into two-planes gives the pointwise supertrace
-\[
+\begin{equation}
   \lim_{t\to0^+}{\rm str}\,K_t(p,p)\,d{\rm vol}_g(p)
   =
   \left[
@@ -350,7 +350,7 @@ the skew curvature into two-planes gives the pointwise supertrace
   \exp\!\left(\frac{\ii F_E}{2\pi}\right)
   \right]_{2n}.
   \label{eq:index-getzler-mehler-density}
-\]
+\end{equation}
 The determinant factor is the product over the curvature two-planes of the
 Mehler ratio
 \[
@@ -384,12 +384,12 @@ In four dimensions the formula becomes
   \label{eq:index-four-dimensional-formula}
 \end{equation}
 For an \(SU(N)\) bundle \(E_R\) associated to a representation \(R\),
-\[
+\begin{equation}
   c_1(E_R)=0,
   \qquad
   \int_M\operatorname{ch}_2(E_R)=T_\Delta(R)\,k .
   \label{eq:index-trace-delta-instanton-number}
-\]
+\end{equation}
 Here \(k\in\mathbb Z\) is the instanton number in the fundamental bundle and
 \(T_\Delta(R)\) is the quadratic index in the monograph's trace-delta
 normalization
@@ -429,14 +429,14 @@ On \(T^4\) with \(p_1(TT^4)=0\), take integral two-forms \(a,b\) with
   \qquad a\wedge a=b\wedge b=0,
 \]
 and \(x=m_1a+m_2b\).  Then
-\[
+\begin{equation}
   \operatorname{Ind}(D_{L^q}^+)
   =
   \int_{T^4}\frac12q^2x^2
   =
   q^2m_1m_2 .
   \label{eq:index-u1-t4-example}
-\]
+\end{equation}
 This example is useful because it is completely Abelian: the index is the
 intersection pairing of magnetic fluxes through complementary two-tori.
 
@@ -499,12 +499,12 @@ For an infinitesimal background gauge transformation with parameter
   \delta_\alpha I_{2n+1}=dI_{2n}^{(1)}(\alpha).
 \]
 The local anomalous variation of the Euclidean effective action is
-\[
+\begin{equation}
   \delta_\alpha W[A,g]
   =
   2\pi\ii\int_M I_{2n}^{(1)}(\alpha),
   \label{eq:index-local-descent-variation}
-\]
+\end{equation}
 with an overall sign changed if the opposite chirality convention is chosen.
 The sign is not independent data; it is fixed by the orientation of
 \(D_A^+\), the definition of \(W=-\log Z\), and the chirality assignment of
