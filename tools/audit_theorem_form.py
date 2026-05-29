@@ -50,7 +50,18 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Hirota factorization in the one-row T-gauge|"
     r"Veneziano residue and finite-spin exchange|"
     r"ambient transformations and Poincare-patch formulae|"
-    r"rank-one conifold quotient"
+    r"rank-one conifold quotient|"
+    r"connected Green functions are source cumulants|"
+    r"little-group translations are polarization shifts|"
+    r"identification with .*so|"
+    r"Einstein-cylinder cover|"
+    r"First QED term|"
+    r"Exact heat-bath detailed balance|"
+    r"Euler--Lagrange equation for a scalar field|"
+    r"Schwartz triple and weak delta kernels|"
+    r"Null-translation matrices|"
+    r"Inversion is conformal|"
+    r"GKO coset stress tensor and central charge"
     r")\b",
     re.IGNORECASE,
 )

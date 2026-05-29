@@ -250,24 +250,19 @@ parameters \((\alpha,\beta,\theta)\) is
   T(\alpha,\beta)R_3(\theta).
 \]
 
-\begin{proposition}[Null-translation matrices]
-\label{prop:null-translation-matrices}
-  The matrix \(T(\alpha,\beta)\) satisfies
-  \[
-    T(\alpha,\beta)^T\eta\,T(\alpha,\beta)=\eta,\qquad
-    T(\alpha,\beta)q=q ,
-  \]
-  and the product law
-  \[
-    T(\alpha,\beta)T(\alpha',\beta')
-    =
-    T(\alpha+\alpha',\beta+\beta').
-  \]
-  The rotation \(R_3(\theta)\) acts on the pair
-  \((\alpha,\beta)\) by the ordinary rotation of the transverse plane.
-\end{proposition}
-
-\begin{proof}
+The matrix \(T(\alpha,\beta)\) satisfies
+\[
+  T(\alpha,\beta)^T\eta\,T(\alpha,\beta)=\eta,\qquad
+  T(\alpha,\beta)q=q ,
+\]
+and the product law
+\[
+  T(\alpha,\beta)T(\alpha',\beta')
+  =
+  T(\alpha+\alpha',\beta+\beta').
+\]
+The rotation \(R_3(\theta)\) acts on the pair \((\alpha,\beta)\) by the
+ordinary rotation of the transverse plane.
 The displayed \(T(\alpha,\beta)\) is the exponential of
 \(\ii\alpha A+\ii\beta B\).  Since \(A\) and \(B\) are Lorentz Lie-algebra
 matrices, the exponential preserves \(\eta\).  Multiplication of the displayed
@@ -276,7 +271,6 @@ matrix by \((\kappa,0,0,\kappa)^T\) gives \((\kappa,0,0,\kappa)^T\), so
 exponentials multiply by adding parameters.  The commutators
 \([M_{12},A]=\ii B\) and \([M_{12},B]=-\ii A\) give the stated rotational
 action on the null-translation parameters.
-\end{proof}
 
 The vector-space commutators
 \[
@@ -640,22 +634,10 @@ defined modulo the null direction:
   \epsilon_\mu^\pm(k)\sim \epsilon_\mu^\pm(k)+c\,k_\mu .
 \]
 
-\begin{proposition}[Little-group translations are polarization shifts]
-\label{prop:little-group-translation-polarization-shift}
-  For helicity \(h=\pm1\), the null-translation subgroup of the massless
-  little group acts on the covariant vector representative by
-  \[
-    W(\alpha,\beta,0)^\nu{}_\mu\epsilon_\nu^\pm(q)
-    =
-    \epsilon_\mu^\pm(q)
-    -
-    \frac{\alpha\mp\ii\beta}{\sqrt2\,\kappa}\,q_\mu .
-  \]
-  Therefore the vector representative of a helicity-one state is naturally an
-  equivalence class modulo \(k_\mu\)-shifts.
-\end{proposition}
-
-\begin{proof}
+For helicity \(h=\pm1\), the null-translation subgroup of the massless little
+group acts on the covariant vector representative by the displayed
+\(q_\mu\)-shift, and therefore the vector representative of a helicity-one
+state is naturally an equivalence class modulo \(k_\mu\)-shifts.
 Multiplying \(T(\alpha,\beta)\) by \(\epsilon_\nu^\pm(q)\) gives the
 four-component column displayed above.  Since
 \(q_\mu=(-\kappa,0,0,\kappa)\), the difference between that column and
@@ -663,7 +645,6 @@ four-component column displayed above.  Since
 \(-(\alpha\mp\ii\beta)q_\mu/(\sqrt2\,\kappa)\).  For a general null momentum
 \(k=L(k)q\), applying \(L(k)\) transports the same statement to a shift
 proportional to \(k_\mu\).
-\end{proof}
 
 For general \(k\), choose
 \[
