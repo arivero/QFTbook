@@ -238,8 +238,7 @@ The covariance law then rewrites the transformed operator as a linear
 combination of fields smeared with test functions supported in
 \(g\mathcal O\).
 
-\begin{proposition}[Covariance of Wightman distributions]
-\label{prop:wightman-distribution-covariance-from-fields}
+\paragraph{Covariance of Wightman distributions.}
 Assume that \(\widehat\Phi_A\) is a covariant field multiplet on the common
 invariant domain of Definition~\ref{def:common-invariant-field-domain}, and
 that the vacuum is Poincare invariant:
@@ -266,10 +265,8 @@ where \((f_i)_g(y)=f_i(g^{-1}y)\).  In point-field notation this is
   S(\Lambda)_{A_1}{}^{B_1}\cdots S(\Lambda)_{A_n}{}^{B_n}
   W_{B_1\cdots B_n}(gx_1,\ldots,gx_n),
 \]
-with the same distributional meaning as the smeared formula.
-\end{proposition}
-
-\begin{proof}
+with the same distributional meaning as the smeared formula.  The derivation
+uses only the stated field covariance and vacuum invariance.
 By vacuum invariance and unitarity,
 \[
   \bra{\vac}\widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\ket{\vac}
@@ -290,7 +287,6 @@ Definition~\ref{def:covariant-field-multiplet} for every field gives
 Multiplying these identities in the given operator order yields the smeared
 covariance formula.  The point-field formula is exactly the same identity
 paired with tensor-product test functions.
-\end{proof}
 
 \section{Spacelike Separation Of Supports}
 
@@ -440,8 +436,7 @@ the adjoints preserve the chosen domain. This algebra records local unbounded
 field coordinates.
 \end{definition}
 
-\begin{proposition}[Isotony and graded locality for polynomial field algebras]
-\label{prop:polynomial-field-algebra-isotony-graded-locality}
+\paragraph{Isotony and graded locality for polynomial field algebras.}
 If \(\mathcal O_1\subset\mathcal O_2\), then
 \(\mathcal P(\mathcal O_1)\subset\mathcal P(\mathcal O_2)\). If
 \(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated and the fields
@@ -453,9 +448,6 @@ monomials \(X\in\mathcal P(\mathcal O_1)\) and
 \]
 on the common invariant domain, after expanding \(X\) and \(Y\) into ordered
 products of homogeneous smeared fields.
-\end{proposition}
-
-\begin{proof}
 The isotony statement follows directly from support inclusion: every test
 function supported in \(\mathcal O_1\) is also supported in \(\mathcal O_2\).
 For locality, every generating smeared field from
@@ -466,7 +458,6 @@ therefore permits each generator in \(X\) to be moved past each generator in
 \((-1)^{|A||B|}\). Multiplying these signs over all crossings gives the total
 Koszul sign \((-1)^{|X||Y|}\), where \(|X|\) and \(|Y|\) are the sums of the
 parities of their constituent fields modulo \(2\).
-\end{proof}
 
 The observable algebra \(\Obs(\mathcal O)\subset\mathcal B(\Hilb)\) is the
 bounded local algebra used in the opening framework. The relation between
@@ -512,8 +503,8 @@ Assume the common-domain and continuity hypotheses of
 Remark~\ref{rem:distributional-matrix-elements}.  If the vacuum is
 Poincare invariant and the field multiplet is covariant, inserting
 \(U(g)U(g)^{-1}\) between neighboring smeared factors and using vacuum
-invariance gives the covariance law of
-Proposition~\ref{prop:wightman-distribution-covariance-from-fields}.  If the
+invariance gives the covariance law displayed in the covariance paragraph
+above.  If the
 field multiplet satisfies microcausality, applying the vanishing graded
 commutator to adjacent factors with spacelike separated supports gives the
 graded exchange relation displayed above.  The continuity of the smeared

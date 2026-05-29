@@ -33,8 +33,7 @@ When the boundary term is not part of the question, \(\delta\phi^A\) is
 assumed to have compact support in \(M^\circ\), the interior of \(M\).
 \end{definition}
 
-\begin{proposition}[First variational identity]
-\label{prop:first-variational-identity}
+\paragraph{First variational identity.}
 For the datum of
 Definition~\ref{def:first-derivative-classical-field-datum}, define the
 Euler--Lagrange expression
@@ -69,9 +68,7 @@ where repeated component and spacetime indices are summed.  Consequently
 \]
 where \(\dd\Sigma_\mu\) is the oriented hypersurface measure on
 \(\partial M\).
-\end{proposition}
 
-\begin{proof}
 The chain rule gives
 \[
   \delta\mathcal L
@@ -99,7 +96,6 @@ Apply the product rule to the second term:
 Combining the two non-divergence terms gives \(E_A(\mathcal L)\delta\phi^A\).
 Integrating the pointwise identity over \(M\) and applying Stokes' theorem
 gives the displayed formula for \(\delta S_M\).
-\end{proof}
 
 \begin{definition}[Classical solution]
 \label{def:classical-solution-euler-lagrange}
@@ -348,8 +344,7 @@ field this condition reads
 \]
 \end{definition}
 
-\begin{proposition}[First-order Noether charges as phase-space generators]
-\label{prop:first-order-noether-charge-generator}
+\paragraph{First-order Noether charges as phase-space generators.}
 Assume \(K_R^0=0\), and assume \(R^A\) depends on the canonical coordinates
 and their spatial derivatives but not on the velocities or momenta.  If the
 Noether charge is represented on phase space by
@@ -363,9 +358,7 @@ up to spatial-divergence improvements whose boundary integrals vanish, then
 More generally, if \(R^A\) or \(K_R^0\) contains velocities, the current
 obtained from the Lagrangian calculation must first be expressed as a
 functional on phase space before the generator statement is tested.
-\end{proposition}
 
-\begin{proof}
 Under the stated hypotheses the functional derivative of \(Q_R\) with respect
 to \(\Pi_A(\vec x)\) is \(R^A(\vec x)\).  The equal-time bracket in
 Definition~\ref{def:equal-time-poisson-generator} therefore gives
@@ -381,7 +374,6 @@ boundary condition.  If velocities occur, the expression
 \(\int j_R^0\) is not yet a function on canonical phase space; the Legendre
 map must be used first, and the displayed derivative calculation is then
 performed on the resulting phase-space functional.
-\end{proof}
 
 \begin{example}[Time translation]
 \label{ex:time-translation-noether-generator}
@@ -428,8 +420,7 @@ two independent parameters \(a^\mu\) and \(\omega_{\mu\nu}\).
 
 \section{Translation Symmetry and the Stress Tensor}
 
-\begin{proposition}[Canonical stress tensor from translations]
-\label{prop:canonical-stress-tensor-translations}
+\paragraph{Canonical stress tensor from translations.}
 Assume that \(\mathcal L\) has no explicit dependence on \(x\).  For a
 constant vector \(\xi^\nu\), use the fixed-coordinate field variation
 \[
@@ -461,9 +452,7 @@ Equivalently, for compactly supported \(\xi^\nu(x)\),
 \]
 after the compactly supported total derivative has been separated.  Thus
 \(T^\mu{}_\nu\) is the response coefficient for a localized translation.
-\end{proposition}
 
-\begin{proof}
 For constant \(\xi^\nu\), the density has no explicit coordinate dependence.
 Translation invariance of the scalar local density gives
 \[
@@ -505,7 +494,6 @@ The first term is
 The coefficient of \(\partial_\mu\xi^\nu\) is therefore precisely
 \(T^\mu{}_\nu\).  Integration over \(M\) gives the localized-translation
 formula because the total derivative has compact support.
-\end{proof}
 
 \begin{definition}[Translation charges]
 \label{def:translation-charges}
@@ -564,7 +552,7 @@ The derivative of the Lagrangian with respect to \(\partial_\mu\phi\) is
   =
   -\partial^\mu\phi .
 \]
-Substitution into Proposition~\ref{prop:canonical-stress-tensor-translations}
+Substitution into the translation-current formula above
 gives the displayed \(T^\mu{}_\nu\).  Since
 \[
   T^{\mu\nu}

@@ -108,8 +108,8 @@ Working framework:
   proposition.
 - Poincare covariance of fields and vacuum invariance imply covariance of all
   Wightman distributions.
-  Status: proven in chapter. Certification:
-  `prop:wightman-distribution-covariance-from-fields`.
+  Status: derived in chapter prose. Certification:
+  paragraph "Covariance of Wightman distributions."
 - Spacelike support separation is Poincare invariant.
   Status: direct support check in chapter prose. Certification:
   paragraph "Poincare invariance of spacelike support separation."
@@ -122,8 +122,9 @@ Working framework:
   proposition.
 - Local polynomial field algebras obey isotony and graded locality on the
   common domain.
-  Status: proven in chapter. Certification:
-  `prop:polynomial-field-algebra-isotony-graded-locality`.
+  Status: direct support and microcausality consequence in chapter prose.
+  Certification: paragraph "Isotony and graded locality for polynomial field
+  algebras."
 - Wightman distributions inherit field covariance and locality by smearing.
   Status: consequence recorded in chapter prose. Certification:
   paragraph "Field axioms inherited by Wightman distributions."
