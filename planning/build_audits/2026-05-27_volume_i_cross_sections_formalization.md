@@ -21,7 +21,7 @@ chapter, because it is the first chapter after LSZ where the nonperturbative
   `prop:invariant-two-particle-flux`, and Definition
   `def:differential-cross-section-invariant-data`, separating phase-space
   measure, flux, and cross-section data.
-- Added Proposition `prop:two-body-phase-space-reduction-four-dimensions`,
+- Added the two-body phase-space reduction derivation,
   deriving the \(D=4\) two-body phase-space coefficient and \(2\to2\)
   differential cross section.
 - Added Theorem `thm:sharp-kernel-unitarity-optical-theorem`, proving the

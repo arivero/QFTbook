@@ -184,7 +184,7 @@
   `def:twisted-dirac-index-periodic-worldline-datum`,
   `ex:periodic-fermion-worldline-index-density`,
   `def:free-dirac-functional-integral-datum`,
-  `prop:free-dirac-propagator-feynman-inverse`,
+  paragraph "Free Dirac propagator as Feynman inverse",
   `def:isolated-spinor-one-particle-pole-datum`,
   `prop:locality-fixes-conjugate-spinor-pole-residue`,
   `prop:spinor-mass-shell-residue-external-factors`,

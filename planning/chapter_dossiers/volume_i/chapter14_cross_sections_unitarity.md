@@ -80,7 +80,7 @@
   \]
   before specializing the outgoing identity resolution to identical-particle
   sectors.
-- Proposition `prop:two-body-phase-space-reduction-four-dimensions` proves
+- Paragraph "Two-body phase-space reduction in four dimensions" derives
   the two-body phase-space reduction and the \(2\to2\) differential
   cross-section formula.
 - Unitarity gives the amplitude-level cutting relation and the optical

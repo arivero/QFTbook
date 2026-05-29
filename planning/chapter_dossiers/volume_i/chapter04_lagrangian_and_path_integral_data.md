@@ -100,7 +100,7 @@ Working framework:
   essential-self-adjointness criterion.
 - `def:regulated-phase-space-path-integral-datum`: ordering-dependent symbols
   and local \(O(\hbar)\) counterterms.
-- `prop:gaussian-elimination-quadratic-momenta`: Lagrangian form after
+- Paragraph "Gaussian elimination of quadratic momenta": Lagrangian form after
   Gaussian momentum integration.
 - `def:finite-slice-time-ordered-insertions-source`: source-dependent
   generating functional at finite cutoff.
@@ -129,7 +129,7 @@ Working framework:
   broader typed path-integral taxonomy.
 - Distinct time-lattice orderings define distinct symbols \(h\) and \(h'\),
   differing by local \(O(\hbar)\) terms.
-- `prop:gaussian-elimination-quadratic-momenta` derives the Lagrangian form and
+- Paragraph "Gaussian elimination of quadratic momenta" derives the Lagrangian form and
   determinant measure for quadratic momentum dependence.
 - `def:finite-slice-time-ordered-insertions-source` records how source
   derivatives generate time-ordered insertions.
