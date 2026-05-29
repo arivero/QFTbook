@@ -17,7 +17,9 @@ The chapter establishes:
   formed;
 - the null-state quotient and its interpretation as operator equations;
 - the level-one Gram form
-  \(\langle\mathcal O|K_\mu P_\nu|\mathcal O\rangle\);
+  \(\langle\mathcal O|K_\mu P_\nu|\mathcal O\rangle\), recorded as a
+  calculation rather than a theorem-family wrapper because it is the norm
+  identity plus the conformal commutator;
 - the relation between finite descendant Gram matrices and the Shapovalov form
   on conformal generalized Verma modules, with the finite conformal-algebra
   Kac determinant locating singular vectors;

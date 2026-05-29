@@ -125,6 +125,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Dyson resummation of exact two-point insertions|"
     r"NSVZ beta function as a coordinate identity|"
     r"Saturated pure-SYM Berezin coefficient|"
+    r"Level-one descendant Gram positivity|"
     r"Two-dimensional conformal Killing fields|"
     r"Spectral meaning of the horizon functional|"
     r"Conformal Borel map for one negative cut|"

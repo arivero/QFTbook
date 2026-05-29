@@ -60,12 +60,11 @@ representation \(\rho\), normalized so that
   \widehat K_\mu\ket{\mathcal O_a}=0.
 \]
 
-\begin{theorem}[Level-one descendant Gram positivity]
-\label{thm:level-one-descendant-gram-positivity}
+\paragraph{Level-one descendant Gram calculation.}
 Assume reflection positivity in radial quantization, the adjoint relation
 \(\widehat P_\mu^\dagger=\widehat K_\mu\), and a primary multiplet
 \(V_\rho=\operatorname{span}\{\ket{\mathcal O_a}\}\) of dimension
-\(\Delta\).  Then the level-one descendant Gram matrix
+\(\Delta\).  The level-one descendant Gram matrix
 \begin{equation}
   G_{\mu a,\nu b}^{(1)}
   =
@@ -81,9 +80,7 @@ is positive semidefinite and is given by
   (\delta_{\mu\nu}\widehat D_{\rm rad}-\widehat J_{\nu\mu})
   \ket{\mathcal O_b}.
 \end{equation}
-\end{theorem}
 
-\begin{proof}
 For any finite array \(c^{\mu a}\),
 \[
   \overline c^{\mu a}G^{(1)}_{\mu a,\nu b}c^{\nu b}
@@ -99,7 +96,6 @@ which is the positivity assertion.  Since
   \bra{\mathcal O_a}[\widehat K_\mu,\widehat P_\nu]\ket{\mathcal O_b}.
 \]
 Substituting \eqref{eq:radial-pk-commutator} gives the displayed formula.
-\end{proof}
 
 This equation is a representation-theoretic constraint.  Positivity of
 \(G^{(1)}\) gives lower bounds on \(\Delta\) once the \(SO(D)\) representation
@@ -630,9 +626,10 @@ The level-one descendant space decomposes as
   =
   \mathcal H_{\ell+1}\oplus\mathcal H_{\ell,1}\oplus\mathcal H_{\ell-1}.
 \]
-By Theorem~\ref{thm:level-one-descendant-gram-positivity}, the Gram operator is
-positive on each irreducible summand.  The Casimir computation above gives the
-three inequalities in \eqref{eq:spin-level-one-three-inequalities}; for
+By the level-one Gram calculation \eqref{eq:level-one-gram-general}, the Gram
+operator is positive on each irreducible summand.  The Casimir computation
+above gives the three inequalities in
+\eqref{eq:spin-level-one-three-inequalities}; for
 \(\ell\ge1\), the strongest is
 \(\Delta_{\mathcal O}-\ell-D+2\ge0\).  The corresponding summand is
 \(\mathcal H_{\ell-1}\), obtained by taking the divergence of the symmetric
