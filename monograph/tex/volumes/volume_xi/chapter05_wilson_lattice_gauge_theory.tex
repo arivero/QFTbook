@@ -464,11 +464,11 @@ four times the plaquette contribution.  Thus the continuum normalization is
 \end{equation}
 The Wilson action is \(c_0=1,c_1=0\).
 
-\begin{proposition}[Tree-level rectangle improvement]
-\label{prop:tree-level-rectangle-gauge-improvement}
-In the plaquette-plus-rectangle family
-\eqref{eq:plaquette-rectangle-gauge-action}, the tree-level cancellation of
-the abelian quadratic \(O(a^2)\) derivative artifact is equivalent to
+\begin{lemma}[Rectangle coefficients]
+\label{lem:tree-level-rectangle-gauge-improvement}
+For the family \eqref{eq:plaquette-rectangle-gauge-action}, the tree-level
+cancellation of the abelian quadratic \(O(a^2)\) derivative artifact is
+equivalent to
 \begin{equation}
   c_0+20c_1=0.
   \label{eq:plaquette-rectangle-derivative-cancellation}
@@ -479,7 +479,7 @@ gives
   c_1=-\frac{1}{12},\qquad c_0=\frac{5}{3}.
   \label{eq:tree-level-symanzik-gauge-coefficients}
 \end{equation}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 It suffices for the tree-level quadratic calculation to work in an abelian
@@ -534,7 +534,7 @@ normalization \(c_0+8c_1=1\) gives
 \eqref{eq:tree-level-symanzik-gauge-coefficients}.
 \end{proof}
 
-The preceding proposition is deliberately a tree-level statement.  In a
+The preceding lemma is deliberately a tree-level statement.  In a
 nonabelian interacting theory, the dimension-six gauge-invariant operator
 basis contains covariant-derivative and cubic-curvature terms, modulo Bianchi
 identities and field redefinitions.  Loop-level improvement is therefore a

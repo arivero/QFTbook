@@ -2867,8 +2867,8 @@ Proposition~\ref{prop:spde-sobolev-compactness-tightness} with \(p=2\) now
 gives tightness in \(H^{-\kappa}\).
 \end{proof}
 
-\begin{proposition}[\(L^q\)-density criterion for interacting negative-Sobolev moments]
-\label{prop:spde-lq-density-negative-sobolev-moment}
+\begin{lemma}[\(L^q\)-density criterion for interacting negative-Sobolev moments]
+\label{lem:spde-lq-density-negative-sobolev-moment}
 Let \(0<\eta<\kappa\).  For each \(N\), let \(\gamma_N\) be a centered
 Gaussian probability measure carried by a finite-dimensional subspace of
 \(H^{-\eta}(\mathbb T^2)\), and assume
@@ -2890,7 +2890,7 @@ Then, for every \(r<\infty\),
   <\infty .
 \]
 Consequently \(\{\mu_N\}\) is tight in \(H^{-\kappa}(\mathbb T^2)\).
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Let \(a=q/(q-1)\).  Holder's inequality gives
@@ -2975,7 +2975,7 @@ Choose any \(0<\eta<\kappa\).  The Gaussian reference law has a uniform
 Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.  The
 assumed \(L^q\) density bound then gives a uniform interacting
 \(H^{-\eta}\) moment by
-Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}, and
+Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment}, and
 Proposition~\ref{prop:spde-sobolev-compactness-tightness} turns that moment
 bound into tightness in \(H^{-\kappa}\).
 \end{remark}
@@ -3049,7 +3049,7 @@ The right-hand side is bounded uniformly in \(N\) by
 proves the normalized \(L^q\) density bound.  The tightness conclusion is
 then exactly
 Remark~\ref{rem:spde-phi-four-two-density-tightness-route}, or,
-equivalently, Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}
+equivalently, Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment}
 followed by Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
 \end{proof}
 
@@ -3447,7 +3447,7 @@ in Fourier modes gives
 \]
 and the higher moments are bounded by the same Gaussian Hilbert-norm
 argument used in
-Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}.  Holder's
+Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment}.  Holder's
 inequality with the uniform \(L^q\) bound for \(\rho_N^\sigma\) gives
 \[
   \sup_{N,\sigma}
@@ -4082,8 +4082,8 @@ Remark~\ref{rem:spde-os-positivity-closed-under-weak-convergence} to
 bounded truncations of \(P(\ell_1,\ldots,\ell_r)\) proves the final claim.
 \end{remark}
 
-\begin{proposition}[Finite lattice quartic tails]
-\label{prop:spde-finite-lattice-quartic-tails}
+\begin{lemma}[Finite lattice quartic tails]
+\label{lem:spde-finite-lattice-quartic-tails}
 Let \(\Lambda\) be a finite set and let \(\mu\) be a finite-dimensional
 scalar lattice measure
 \[
@@ -4112,7 +4112,7 @@ cutoff family is a separate estimate; if it is available for the smeared
 coordinates entering an OS polynomial cylinder observable, then
 Remark~\ref{rem:spde-polynomial-os-uniform-integrability} supplies the
 uniform integrability needed to pass that observable to the limit.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Since \(K\geq0\), the density is bounded above by
@@ -4199,7 +4199,7 @@ Assume the following three further analytic facts.
   bound before the weak-convergence passage is invoked.  The corresponding
   free massive Gaussian estimate is
   Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
-  Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment} and
+  Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment} and
   Remark~\ref{rem:spde-phi-four-two-density-tightness-route} gives one
   precise route: a cutoff-uniform \(L^q\) bound for the normalized
   Wick-ordered density with respect to the massive Gaussian reference law
@@ -4218,7 +4218,7 @@ Assume the following three further analytic facts.
   regulator of
   Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}, the
   bounded-observable positivity statement is proved at finite cutoff, and
-  Proposition~\ref{prop:spde-finite-lattice-quartic-tails} proves
+  Lemma~\ref{lem:spde-finite-lattice-quartic-tails} proves
   finite-cutoff polynomial integrability.  Passing polynomial observables
   uniformly through the continuum limit requires the exponential moment
   criterion of
@@ -4376,7 +4376,7 @@ The uniform-integrability input can be supplied by the exponential
 cylinder-moment criterion in
 Remark~\ref{rem:spde-polynomial-os-uniform-integrability}; finite
 quartic tails at each lattice cutoff are proved by
-Proposition~\ref{prop:spde-finite-lattice-quartic-tails}, while uniformity
+Lemma~\ref{lem:spde-finite-lattice-quartic-tails}, while uniformity
 as the cutoff is removed remains part of the constructive estimate.  These
 inputs are listed explicitly in
 Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}.

@@ -69,7 +69,7 @@ REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
     (
         "volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex",
         "Large-spin BES scaling regime",
-        "proposition",
+        "lemma",
         "Zhukovsky Fourier transform",
     ),
     (
