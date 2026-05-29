@@ -295,6 +295,11 @@ Current checks:
   conservation, cancellation of real splitting-kernel endpoint poles by the
   ordered EEC weight \(2x(1-x)\), and the resolved real-kernel integrals
   \(\frac32 C_F\), \(\frac{14}{5}C_A\), and \(\frac15T_F\).
+- `energy_correlator_sudakov_checks.py`: exact rational checks for the
+  back-to-back EEC leading Sudakov factor, including
+  \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for
+  \(\exp[-\Gamma_{\rm cusp}^qL_b^2/2]\), and trace-delta versus half-trace
+  invariance of the one-loop cusp coefficient \(g^2C_F/(4\pi^2)\).
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), finite Wiener-chaos isometry and

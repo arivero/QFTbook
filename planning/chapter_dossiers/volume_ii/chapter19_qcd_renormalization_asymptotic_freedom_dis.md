@@ -31,6 +31,10 @@
   control terminology and examples; the chapter gives its own detector
   definition from the stress tensor and its own soft/collinear continuity
   estimate.
+- `SRC-CHECK-EEC-SUDAKOV`:
+  `calculation-checks/energy_correlator_sudakov_checks.py` verifies the
+  rational logarithmic integral in the back-to-back EEC Sudakov factor and
+  the trace-delta/half-trace conversion of the one-loop cusp coefficient.
 
 ## Construction Task
 
@@ -174,6 +178,11 @@ The chapter must define and derive:
   zero opening angle;
 - the eventwise EEC zeroth and first moment sum rules in the center-of-mass
   frame, including the exact coincident-detector contact weight;
+- the back-to-back EEC factorization datum in impact-parameter space, the
+  convention \(b_{\rm F}=2e^{-\gamma_E}\), and the leading fixed-coupling
+  Sudakov factor
+  \(\exp[-\Gamma_{\rm cusp}^q L_b^2/2]\) with
+  \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\);
 - the tree-level resolved collinear EEC coefficient, derived from the ordered
   detector weight \(2x(1-x)\) multiplying the real final-state splitting
   kernels, with exact coefficients
@@ -356,6 +365,14 @@ The chapter must define and derive:
      \(\Gamma_q^{\rm EEC}=\frac32C_F\),
      \(\Gamma_{g\to gg}^{\rm EEC}=\frac{14}{5}C_A\), and
      \(\Gamma_{g\to q\bar q}^{\rm EEC}=\frac15T_F\) per flavor.
+19c. In the back-to-back endpoint, the impact-parameter factorization datum
+     yields the leading fixed-coupling Sudakov factor
+     \(W_{\rm LL}(b,Q)=W(b,\mu_b)
+     \exp[-\Gamma_{\rm cusp}^qL_b^2/2]\), where
+     \(L_b=\log(Q^2b^2/b_{\rm F}^2)\),
+     \(b_{\rm F}=2e^{-\gamma_E}\), and
+     \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\) in the trace-delta
+     convention.
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -494,6 +511,10 @@ The chapter must define and derive:
   collinear EEC coefficient derivation, clarified the status of the result
   relative to the full small-angle light-ray/OPE theorem, and added
   `calculation-checks/energy_correlator_collinear_checks.py`.
+- 2026-05-29 issue #519 back-to-back pass: added the cusp-controlled
+  leading Sudakov factor for the back-to-back EEC in impact-parameter space,
+  separated its scope from the full endpoint theorem, and added
+  `calculation-checks/energy_correlator_sudakov_checks.py`.
 - 2026-05-28 issue #630 small-\(x\) pass: added the regulated dipole datum,
   gauge-invariance proof, leading-logarithmic BFKL/BK status statement,
   transverse kernel covariance proof, Mellin-eigenvalue derivation by analytic
