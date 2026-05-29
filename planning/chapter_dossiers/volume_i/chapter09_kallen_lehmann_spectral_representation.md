@@ -2,7 +2,11 @@
 
 ## Status
 
-Current status: certified against 253a pp. 80--99 on 2026-05-22.
+Current status: certified against 253a pp. 80--99 on 2026-05-22.  The
+2026-05-29 anti-wrapper pass demoted the spacelike \(\Delta_+\) parity check
+to a worked paragraph and strengthened the isolated scalar-shell matrix
+element proposition by making the selected spin-zero channel and possible
+multiplicity-space interpretation explicit.
 
 ## Logical Role
 
@@ -93,7 +97,7 @@ Working framework:
 | The two-point Wightman function is the Fourier transform of a positive measure supported in the forward cone. | Theorem/construction | Joint spectral theorem and spectrum condition |
 | Scalar covariance makes the spectral measure a positive measure over invariant masses. | Derived | Lorentz invariance of the vacuum and scalar field |
 | \(W_2(x)=\int d\rho(\mu^2)\Delta_+(x;\mu^2)\). | Derived | Mackey--Effros disintegration after explicit verification of the Lorentz-orbit hypotheses |
-| \(\Delta_+(x;\mu^2)=\Delta_+(-x;\mu^2)\) for spacelike \(x\). | Derived | Lorentz frame with \(x^0=0\) and \(\vec p\mapsto-\vec p\) |
+| \(\Delta_+(x;\mu^2)=\Delta_+(-x;\mu^2)\) for spacelike \(x\). | Worked calculation | Lorentz frame with \(x^0=0\) and \(\vec p\mapsto-\vec p\); demoted from proposition wrapper on 2026-05-29 |
 | \(G_T(x)=\int d\rho(\mu^2)\Delta_F(x;\mu^2)\). | Derived | Definition of time ordering and linearity |
 | The \(i\epsilon\) prescription places the positive-energy pole below and the negative-energy pole above the real \(k^0\)-axis. | Derived | Explicit contour closure for \(x^0>0\) and \(x^0<0\) |
 | \(G_E(x_E)=\int d\rho(\mu^2)\Delta_E(x_E;\mu^2)\) under analytic continuation. | Framework statement/derived from Chapter 8 conditions | Spectral positivity and Euclidean continuation |
@@ -102,7 +106,7 @@ Working framework:
 | An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\,\delta_{m^2}(\dd\mu^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell; issue #379 notation pass |
 | For a single stable massive scalar channel with no massless particle, no lighter particles or bound-state atoms, and two-particle continuum onset, \(\operatorname{supp}d\rho_\phi\subset\{m^2\}\cup[4m^2,\infty)\). | Conditional support hypothesis | Issue #382 pass; support remark before Haag--Ruelle/LSZ dependence |
 | The existence of a stable one-particle species is the nonzero isolated spectral projection \(E(\Sigma_m^+)\Hilb\ne0\), not a consequence of the Kallen-Lehmann formula itself. | Clarified assumption/status statement | Joint spectral theorem plus atom criterion |
-| \(Z\) depends on the local field normalization and is intrinsic once the field is fixed. | Definition/consequence | Matrix element normalization |
+| \(Z\) depends on the local field normalization and is intrinsic once the field and the selected scalar channel or multiplicity-space overlap are fixed. | Definition/consequence | Matrix element normalization; 2026-05-29 multiplicity clarification |
 
 ## Figure Ledger
 

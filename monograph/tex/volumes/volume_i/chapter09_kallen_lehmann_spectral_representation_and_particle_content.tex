@@ -393,8 +393,7 @@ Therefore the displayed formula holds as an identity on every Schwartz test
 function, hence as an identity of tempered distributions.
 \end{proof}
 
-\begin{proposition}[Spacelike symmetry of the scalar two-point function]
-\label{prop:kallen-lehmann-spacelike-symmetry}
+\paragraph{Spacelike symmetry of the scalar two-point function.}
 For each \(\mu^2\), the distribution \(\Delta_+(x;\mu^2)\) is even at
 spacelike separation:
 \[
@@ -403,9 +402,6 @@ spacelike separation:
 \]
 and hence \(W_2(x)=W_2(-x)\) for spacelike \(x\).  No such equality follows
 from the spectral representation for timelike \(x\).
-\end{proposition}
-
-\begin{proof}
 For \(x^2>0\), choose a proper orthochronous Lorentz transformation carrying
 \(x\) to \((0,\vec r)\).  The mass-shell measure in
 Definition~\ref{def:positive-frequency-massive-scalar-distribution} is
@@ -421,7 +417,6 @@ gives
 \(\Delta_+(0,\vec r;\mu^2)=\Delta_+(0,-\vec r;\mu^2)\), which is
 \(\Delta_+(-x;\mu^2)\).  Integrating this equality against the positive
 measure \(d\rho(\mu^2)\) gives the statement for \(W_2\).
-\end{proof}
 
 \section{Time-Ordered and Euclidean Forms}
 
@@ -1228,8 +1223,11 @@ for which
 
 \begin{proposition}[Scalar field matrix element on an isolated scalar shell]
 \label{prop:kallen-lehmann-scalar-field-one-particle-matrix-element}
-If \(\widehat\phi\) is a scalar local field and the vacuum is invariant, then
-the matrix element
+Work in a selected spin-zero isolated one-particle channel with the
+delta-normalized and invariantly normalized states of
+Proposition~\ref{prop:kallen-lehmann-one-particle-state-normalization}.  If
+\(\widehat\phi\) is a scalar local field and the vacuum is invariant, then the
+matrix element
 \[
   A(\vec k)
   =
@@ -1253,6 +1251,13 @@ or equivalently
 \end{proposition}
 
 \begin{proof}
+The point notation is distributional: equivalently one may smear
+\(\widehat\phi\) in a small neighborhood of the origin and then read the
+coefficient of the isolated shell.  The isolated-shell projection removes
+continuum contributions, and the assumption of a selected spin-zero channel
+means that the little group acts trivially on the rest vector up to the phase
+already fixed in
+Proposition~\ref{prop:kallen-lehmann-one-particle-state-normalization}.
 The scalar covariance equation
 \(U(\Lambda)\widehat\phi(0)U(\Lambda)^{-1}=\widehat\phi(0)\), vacuum
 invariance, and
@@ -1266,10 +1271,16 @@ the transformation law
 \]
 Taking
 \(\Lambda=L(\vec k)^{-1}\) reduces the matrix element to its rest-frame value
-and gives \(A(\vec k)=N(\vec k)A(\vec0)\).  Choosing the phase of the
-one-particle states fixes \(A(\vec0)\ge0\).  Writing
+and gives \(A(\vec k)=N(\vec k)A(\vec0)\).  If \(A(\vec0)=0\), then the field
+has zero overlap with this channel and \(Z=0\).  Otherwise the remaining phase
+freedom of the one-particle states fixes \(A(\vec0)\ge0\).  Writing
 \(Z=(2\pi)^{D-1}2m\,|A(\vec0)|^2\) gives the delta-normalized formula, and
-the invariant normalization removes the kinematic factor.
+the invariant normalization removes the kinematic factor.  If several
+spin-zero channels of the same mass are present, the same argument applies to
+the vector of rest-frame overlaps in the finite or direct-integral
+multiplicity space; choosing a normalized component gives the scalar formula
+above, while \(Z\) for the full field is the squared norm of that overlap
+vector.
 \end{proof}
 
 \section{One-Particle Atoms}

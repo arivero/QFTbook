@@ -22,6 +22,10 @@ states that it is not used as a default path-integral construction.
 Issue #478 added a self-contained spectral zeta determinant section with the
 one-loop quadratic-fluctuation formula, the thermal harmonic-oscillator
 determinant, and the circle Casimir finite part.
+The 2026-05-29 anti-wrapper pass retitled the finite-dimensional regulator
+proposition positively, demoted the zeta-scale calculation and the free
+Feynman pole-placement check to worked paragraphs, and kept the determinant
+and boundary-value formulas in place for later reference.
 
 ## Logical Role
 
@@ -162,13 +166,14 @@ Working framework:
 | A Lorentzian finite-regulator path-integral expression is classified as an oscillatory integral/distribution; the continuum Lorentzian symbol is an oscillatory pseudo-integral specified by compatible finite-regulator boundary values or stationary-phase expansions. | Definition/framework statement | Definition `def:lorentzian-oscillatory-path-integral`; Fresnel formula with signature phase, Maslov-index note, and references to Hörmander and Albeverio--Høegh-Krohn frameworks |
 | \(P(\phi)_2\), \(\phi^4_3\), selected low-dimensional superrenormalizable scalar--fermion models, and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems and broad four-dimensional interacting scalar/gauge construction remains open. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph and Open Problem `op:four-dimensional-constructive-qft` |
 | Spectral zeta regularization defines a determinant of suitable positive elliptic operators by \(-\zeta_A'(0)-\zeta_A(0)\log\mu^r\), after zero modes are separated. | Definition | Definition `def:spectral-zeta-determinant` |
+| The determinant scale change \(\mu\mapsto e^\sigma\mu\) shifts \(\log\det_\zeta(A/\mu^r)\) by \(-r\sigma a_d(A)\) under the stated heat-kernel hypotheses. | Worked calculation | Mellin transform of the heat trace; demoted from proposition wrapper on 2026-05-29 |
 | A positive quadratic bosonic fluctuation operator contributes \(\frac12\log\det_\zeta(A/\mu^r)\) to the one-loop effective action, modulo zero modes and vacuum normalization. | Proposition | Proposition `prop:zeta-one-loop-quadratic-fluctuation` |
 | For \(A_\omega=-\dd_\tau^2+\omega^2\) on the thermal circle, \(\det_\zeta A_\omega=4\sinh^2(\beta\omega/2)\), giving the canonical oscillator partition function. | Worked example | Example `ex:zeta-thermal-harmonic-oscillator`; calculation check `zeta_determinant_checks.py` |
 | The zeta finite part of the massless real scalar circle vacuum energy is \(-\pi/(6L)\) after zero-mode separation. | Worked example | Example `ex:zeta-circle-casimir-energy`; calculation check `zeta_determinant_checks.py` |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
-| Rotating the Euclidean momentum contour gives the Feynman denominator \(k^2+m^2-i\epsilon\). | Derived in free theory | Pole tracking |
+| Rotating the Euclidean momentum contour gives the Feynman denominator \(k^2+m^2-i\epsilon\). | Worked free-theory derivation | Pole tracking; demoted from proposition wrapper on 2026-05-29 |
 | Wightman, time-ordered, and Euclidean Green functions are distinct distributions related by ordering and analytic continuation. | Definition plus framework statement | Explicit definitions |
 
 ## Figure Ledger
@@ -206,6 +211,11 @@ Rendered check:
   Schrödinger regulators from continuum smooth cutoffs, covariance cutoffs,
   direct Euclidean spacetime lattice actions without transfer matrices, and
   formal perturbative cutoffs.
+- 2026-05-29 anti-wrapper pass: retitled
+  `prop:scalar-regulator-trotter-status` as "Finite-dimensional
+  Schrödinger regulators inherit Trotter--Kato"; demoted the zeta determinant
+  scale-dependence calculation and free Feynman boundary-value pole tracking
+  to worked paragraphs.
 - 2026-05-24, issue #300: added
   `tab:constructive-qft-status-catalog`, a named catalog of constructive
   scalar/gauge models, scalar triviality regimes, and the open four-dimensional

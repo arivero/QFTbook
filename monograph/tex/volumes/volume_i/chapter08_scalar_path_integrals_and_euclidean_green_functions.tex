@@ -208,10 +208,10 @@ finite-dimensional construction of
 Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.
 \end{definition}
 
-The following proposition records the precise sense in which the
-finite-dimensional Trotter theorem may be imported.
+The following proposition records the precise finite-dimensional regulator
+class for which the Trotter theorem may be imported.
 
-\begin{proposition}[Trotter status depends on the spatial regulator]
+\begin{proposition}[Finite-dimensional Schr\"odinger regulators inherit Trotter--Kato]
 \label{prop:scalar-regulator-trotter-status}
 Assume that the spatial regulator \(\Lambda\) has the following properties.
 The configuration space is a finite-dimensional real vector space
@@ -1013,8 +1013,7 @@ For a reference scale \(\mu\) of mass dimension \(1\), define
 \end{equation}
 \end{definition}
 
-\begin{proposition}[Scale dependence of a zeta determinant]
-\label{prop:zeta-determinant-scale-dependence}
+\paragraph{Scale dependence of a zeta determinant.}
 In the setting of Definition~\ref{def:spectral-zeta-determinant}, suppose
 \[
   \operatorname{Tr}\ee^{-tA}
@@ -1037,9 +1036,6 @@ Consequently a change \(\mu\mapsto \ee^\sigma\mu\) changes the determinant by
 \]
 Thus the \(\mu\)-dependence of the one-loop determinant is controlled by the
 local heat-kernel coefficient \(a_d(A)\).
-\end{proposition}
-
-\begin{proof}
 The Mellin representation
 \[
   \zeta_A(s)=\frac1{\Gamma(s)}
@@ -1066,7 +1062,6 @@ and subtracting
   -\zeta_A'(0)-\zeta_A(0)\log\mu^r
 \]
 leaves \(-r\sigma\zeta_A(0)=-r\sigma a_d(A)\).
-\end{proof}
 
 This is the determinant counterpart of the regulator/subtraction distinction
 recorded in Table~\ref{tab:regulator-integration-status-catalog}: changing
@@ -1306,8 +1301,7 @@ Lorentzian Feynman positions
 \label{fig:feynman-prescription-from-wick-rotation}
 \end{figure}
 
-\begin{proposition}[Feynman boundary value]
-\label{prop:feynman-propagator-wick-rotation-boundary-value}
+\paragraph{Feynman boundary value from pole rotation.}
 The limiting Lorentzian distribution is therefore
 \[
   \Delta_F(x;m^2)
@@ -1326,9 +1320,6 @@ where
 \]
 The limit \(\epsilon\to0^+\) is taken after the distribution has been paired
 with test functions or after the contour integral has been evaluated.
-\end{proposition}
-
-\begin{proof}
 Definition~\ref{def:wick-rotated-free-propagator-poles} shows that the
 positive-frequency pole approaches the real \(k^0\)-axis from below and the
 negative-frequency pole approaches it from above.  The denominator
@@ -1349,7 +1340,6 @@ The prefactor \(-\ii\) is the Jacobian and orientation factor obtained from
 the rotation \(k_\tau=\ii\ee^{\ii\alpha}k^0\).  The limit is a boundary value
 of meromorphic functions in \(k^0\), hence is interpreted only after pairing
 with test functions or after an equivalent contour evaluation.
-\end{proof}
 
 \section{Three Green Functions}
 
