@@ -120,6 +120,10 @@ Current checks:
   convention, cancellation of a multiplicative spatial-Wilson-line factor in a
   reduced Ioffe-time ratio, finite matching-kernel scheme covariance, and
   charge preservation from matching-kernel column sums.
+- `qcd_sum_rule_checks.py`: symbolic checks for the Volume II current
+  sum-rule block, including the Borel transform of the dispersion kernel,
+  annihilation of subtraction polynomials, inverse-power OPE terms, and the
+  logarithmic Borel mass estimator as a spectral weighted average.
 - `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
   exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
   normalization, Gegenbauer normalization moments, leading ERBL anomalous

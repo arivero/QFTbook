@@ -214,6 +214,11 @@ The chapter must define and derive:
   light-ray matrix elements, GPD polynomiality from local twist-two
   covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
   boundary of the DIS factorization statement.
+- Euclidean current sum rules as color-singlet current-correlator identities,
+  including the subtracted dispersion representation, spacelike OPE input,
+  Borel--Laplace functional, Borel transform of the dispersion kernel,
+  inverse-power OPE terms, the controlled Borel-window datum, and the
+  logarithmic mass estimator as a spectral weighted average.
 
 ## Claim Ledger
 
@@ -448,6 +453,14 @@ The chapter must define and derive:
     massless Goldstone modes when chiral limits are taken, and prove that
     detector observables such as energy flow are limits on the same scattering
     domain.
+24. QCD current sum rules are linear functionals of color-singlet current
+    correlators.  The Borel transform kills subtraction polynomials, maps
+    \((s+Q^2)^{-1}\) to \(M^{-2}e^{-s/M^2}\), and maps
+    \((Q^2)^{-m}\) to \(((m-1)!(M^2)^m)^{-1}\).  A pole-plus-continuum
+    extraction is a controlled approximation only after the OPE truncation,
+    spectral ansatz, and Borel-window error estimates are stated; the
+    logarithmic mass estimator is exactly a weighted average over the retained
+    spectral atoms.
 
 ## Figure Requirements
 
