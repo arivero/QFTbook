@@ -1868,8 +1868,6 @@ same analytic formula must then be understood only after choosing a complex
 cycle.
 \end{example}
 
-\begin{proposition}[Conformal Borel map for one negative cut]
-\label{prop:conformal-borel-negative-cut-map}
 Let \(A>0\), and suppose a Borel transform \(B(\xi)\) is holomorphic on the
 cut plane \(\mathbb C\setminus(-\infty,-A]\).  The map
 \begin{equation}
@@ -1884,9 +1882,6 @@ with the square root chosen positive at \(\xi=0\), maps the cut plane
 biholomorphically to the unit disk.  It sends \(\xi=0\) to \(w=0\), the first
 branch point \(\xi=-A\) to \(w=-1\), and the positive real \(\xi\)-axis to
 \(0\le w<1\).
-\end{proposition}
-
-\begin{proof}
 Set \(y=\sqrt{1+\xi/A}\).  The cut plane is mapped by \(y\) to the right half
 plane \(\Re y>0\).  The Cayley transform \(w=(y-1)/(y+1)\) maps the right
 half plane to \(|w|<1\).  Solving \(y=(1+w)/(1-w)\) gives
@@ -1896,12 +1891,11 @@ half plane to \(|w|<1\).  Solving \(y=(1+w)/(1-w)\) gives
   \xi=\frac{4Aw}{(1-w)^2}.
 \]
 The stated images of \(0\), \(-A\), and the positive real ray are immediate.
-\end{proof}
 
 \begin{remark}[Status of conformal-Borel numerics]
 \label{rem:conformal-borel-numerics-status}
 The conformal map in
-Proposition~\ref{prop:conformal-borel-negative-cut-map} is a rigorous
+\eqref{eq:conformal-borel-negative-cut-map} is a rigorous
 acceleration device only when the analytic domain of the Borel transform is
 known.  In many applications to critical exponents one assumes, from
 finite-dimensional saddle analysis or from additional field-theoretic input,
@@ -1938,7 +1932,7 @@ Borel--Leroy sum is
   \label{eq:borel-leroy-sum}
 \end{equation}
 For the one-cut hypothesis of
-Proposition~\ref{prop:conformal-borel-negative-cut-map}, write
+\eqref{eq:conformal-borel-negative-cut-map}, write
 \[
   \mathcal B_b\widehat A(\xi(w))
   =
@@ -1971,7 +1965,7 @@ approximation, not hidden conventions.
 Assume the notation of
 Definition~\ref{def:borel-leroy-conformal-approximants}.  Suppose
 \(\mathcal B_b\widehat A\) is holomorphic at the origin, and \(w(\xi)\) is the
-map of Proposition~\ref{prop:conformal-borel-negative-cut-map}.  Then
+map \eqref{eq:conformal-borel-negative-cut-map}.  Then
 \begin{equation}
   \mathcal B_{b,N}^{\rm conf}(\xi)
   -

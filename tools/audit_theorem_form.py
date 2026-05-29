@@ -69,7 +69,18 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Projective-channel unitarity identities|"
     r"Large-\\(N\\) glueball width counting|"
     r"Leading connected four-point Green function|"
-    r"Tree Compton cross-section functional"
+    r"Tree Compton cross-section functional|"
+    r"Dyson resummation of exact two-point insertions|"
+    r"Two-dimensional conformal Killing fields|"
+    r"Spectral meaning of the horizon functional|"
+    r"Conformal Borel map for one negative cut|"
+    r"Static spin and flavor symmetry|"
+    r"Gauge invariance of the dipole matrix element|"
+    r"Stress-tensor insertion from a small metric perturbation|"
+    r"Dual net and the Haag-duality gap|"
+    r"Mass-shell support of free solutions|"
+    r"Functoriality of finite Berezin pushforward|"
+    r"Octet and decuplet first-order mass relations"
     r")\b",
     re.IGNORECASE,
 )

@@ -3540,8 +3540,6 @@ Wilson transporter proven for light-ray operators in
 Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.
 \end{proof}
 
-\begin{proposition}[Static spin and flavor symmetry]
-\label{prop:hqet-static-spin-flavor}
 Consider \(N_h\) heavy flavors whose masses have been removed by separate
 phases and whose residual dynamics are described by the leading HQET action at
 the same velocity \(v\).  The leading action
@@ -3552,9 +3550,6 @@ is invariant under unitary rotations of the heavy-flavor labels and under
 unitary rotations of the projected spin components commuting with \(P_v^+\).
 These symmetries act on the heavy variables alone and leave the gauge and
 light-quark fields fixed.
-\end{proposition}
-
-\begin{proof}
 The operator \(\ii v\cdot D\) is scalar in the heavy-flavor labels and
 contains no gamma matrix acting inside the projected spin space.  If
 \(h_{v,A}\mapsto U_A{}^B Sh_{v,B}\), where \(U\) is a unitary matrix on flavor
@@ -3563,7 +3558,6 @@ labels and \(S\) is unitary on the image of \(P_v^+\), then
 The Wilson-line form of the propagator makes the same statement in correlator
 language: at leading power the heavy source transports color, while its spin
 and heavy-flavor labels are parallel spectators.
-\end{proof}
 
 \begin{proposition}[Free residual dispersion and the kinetic operator]
 \label{prop:hqet-residual-dispersion}
@@ -3724,8 +3718,8 @@ Then the leading HQET matching of the axial current gives
   \label{eq:hqet-decay-constant-scaling}
 \end{equation}
 The analogous vector-meson relation has the same static reduced matrix
-element up to the spin rotation dictated by
-Proposition~\ref{prop:hqet-static-spin-flavor}.
+element up to the spin rotation dictated by the leading static symmetry
+described above.
 \end{proposition}
 
 \begin{proof}
@@ -6027,8 +6021,6 @@ hypercharge ladder.  These relations are symmetry consequences of a stated
 approximation; the actual QCD masses require lattice, dispersive, and chiral
 extrapolation inputs.
 
-\begin{proposition}[Octet and decuplet first-order mass relations]
-\label{prop:qcd-baryon-first-order-mass-relations}
 Assume that first-order \(SU(3)\)-breaking baryon masses are described by
 \eqref{eq:qcd-baryon-octet-gmo-chart} in the octet and by
 \(M_{10}(Y)=M_{10,0}+cY\) in the decuplet.  Then
@@ -6041,9 +6033,6 @@ Assume that first-order \(SU(3)\)-breaking baryon masses are described by
   M_\Omega-M_{\Xi^\ast}.
   \label{eq:qcd-decuplet-equal-spacing}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
 For the octet,
 \[
   (Y,I)_N=(1,\tfrac12),\quad
@@ -6061,7 +6050,6 @@ Substitution in \eqref{eq:qcd-baryon-octet-gmo-chart} gives
 which implies \eqref{eq:qcd-baryon-gell-mann-okubo}.  For the decuplet the
 hypercharges are \(1,0,-1,-2\).  A linear function of \(Y\) has equal
 successive differences, giving \eqref{eq:qcd-decuplet-equal-spacing}.
-\end{proof}
 
 In the large-\(N_c\) limit with \(N_f\) fixed, the baryon operator
 \eqref{eq:qcd-baryon-local-source} contains \(N_c\) quark fields.  The
@@ -10376,17 +10364,12 @@ factorization statement with its own impact factor, rapidity subtraction, and
 power-remainder data.
 \end{definition}
 
-\begin{proposition}[Gauge invariance of the dipole matrix element]
-\label{prop:qcd-small-x-dipole-gauge-invariance}
 At finite regulator, the trace in
 \eqref{eq:qcd-small-x-dipole-definition} is gauge invariant after the
 endpoint closures or boundary conditions of
 Definition~\ref{def:qcd-small-x-dipole-setup} are included.  A background
 gauge-covariant finite-part prescription therefore gives a gauge-invariant
 renormalized dipole matrix element.
-\end{proposition}
-
-\begin{proof}
 Each Wilson transporter transforms by multiplication with the gauge
 transformation at its two endpoints.  Along a closed contour the adjacent
 endpoint factors cancel and the residual base-point factor is removed by the
@@ -10396,7 +10379,6 @@ boundary condition is part of the setup and supplies the same endpoint
 cancellation.  The finite-part map changes only regulator and scale
 coordinates and is assumed background gauge covariant; hence it cannot
 introduce an uncanceled color index.
-\end{proof}
 
 \begin{hypothesis}[Leading-logarithmic dipole/BFKL evolution setup]
 \label{hyp:qcd-leading-log-small-x-setup}
