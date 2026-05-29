@@ -1504,13 +1504,12 @@ functions can be expressed in terms of the Wilsonian coordinates
 of \(\Lambda_0\) so that selected physical coordinates at \(\Lambda_R\) are
 held fixed and the remaining Wilsonian coordinates at \(\Lambda_R\) approach
 limits.
-The theorem-level statement of this assertion is
-Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
-below.  It is conditional: it assumes the tuning problem, the irrelevant
-semigroup estimate, and the convergence of the generated integral in a
-specified finite coordinate projection.  The Wilsonian mechanism is the proof
-that these hypotheses imply a cutoff-independent reference-scale point, not a
-proof that the hypotheses hold in every regulated model.
+The finite-coordinate estimate below makes precise what is meant in a local
+projection.  Its inputs are the endpoint tuning problem, the irrelevant
+semigroup estimate, a uniform bound on the retained irrelevant bare
+coordinates, and convergence of the generated integral.  The Wilsonian
+mechanism is the estimate showing how these inputs produce a
+cutoff-independent reference-scale point.
 
 In the quartic-sextic projection, impose the ultraviolet boundary condition
 \[
@@ -1791,8 +1790,7 @@ For finite \(\Lambda_0\), define the generated-integral remainder
   V_R(u_R).
 \]
 
-\begin{theorem}[Conditional finite-coordinate Wilsonian continuum limit]
-\label{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
+\paragraph{Finite-coordinate cutoff-removal estimate.}
 Fix \(u_R\) and suppose that, for every sufficiently large \(t_0\), the
 retained bare coordinates can be tuned so that \(u(t_R)=u_R\).  Assume:
 \begin{enumerate}[label=(\roman*)]
@@ -1850,55 +1848,51 @@ of \((u_R,V_R(u_R))\), then
 If \(Q\) is Lipschitz in the chosen coordinate norm, the same power gives an
 error bound for this convergence, with a constant multiplied by the Lipschitz
 constant of \(Q\).
-\end{theorem}
 
-\begin{proof}
-Equation \eqref{eq:irrelevant-coordinate-variation-of-constants} writes
+Indeed, equation \eqref{eq:irrelevant-coordinate-variation-of-constants} writes
 \(v(t_R)\) as the sum of the boundary contribution and the generated
-contribution.  The preceding proposition bounds the boundary contribution by
-\((\Lambda_R/\Lambda_0)^\omega\).  The generated contribution is
-\(V_R(u_R)+R_F(t_0;u_R)\), with \(R_F\) bounded by the fourth hypothesis.
-Combining the two estimates gives the stated asymptotic form.
-The relevant coordinate is fixed by the tuning condition
-\(u(t_R;t_0,u_R)=u_R\), so the full retained coordinate vector converges to
-\((u_R,V_R(u_R))\).  The final assertion follows by continuity of \(Q\), and
-the quantitative estimate follows from the Lipschitz bound applied to the
-coordinate difference.
-\end{proof}
+contribution.  The semigroup bound and the uniform bound on \(v(t_0)\) give
+\[
+  \|e^{A(t_R-t_0)}v(t_0)\|
+  \leq
+  K_A M\left(\frac{\Lambda_R}{\Lambda_0}\right)^\omega .
+\]
+The generated contribution is \(V_R(u_R)+R_F(t_0;u_R)\), with \(R_F\)
+bounded by the fourth hypothesis.  Combining the two estimates gives the
+displayed asymptotic form.  The relevant coordinate is fixed by the tuning
+condition \(u(t_R;t_0,u_R)=u_R\), so the full retained coordinate vector
+converges to \((u_R,V_R(u_R))\).  The assertion for \(Q\) follows from
+continuity; the quantitative version follows from applying the Lipschitz
+bound of \(Q\) to the coordinate difference.
 
-The hypotheses of
-Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit} are
-the mathematical content of a
-Wilsonian continuum-limit argument in a chosen local projection.  The tuning
-condition \(u(t_R)=u_R\) is a statement about the endpoint map from bare
-coordinates at \(\Lambda_0\) to renormalized coordinates at \(\Lambda_R\).
-In perturbation theory this endpoint map is usually solved order by order.
-When the linearized endpoint map in the retained coordinates is invertible,
-the implicit function theorem gives the local tuning functions at finite
-\(\Lambda_0\).  The remaining task is to prove estimates, uniform in
+The four hypotheses above are the mathematical content of a Wilsonian
+continuum-limit argument in a chosen local projection.  The tuning condition
+\(u(t_R)=u_R\) is a statement about the endpoint map from bare coordinates at
+\(\Lambda_0\) to renormalized coordinates at \(\Lambda_R\).  In perturbation
+theory this endpoint map is usually solved order by order.  When the
+linearized endpoint map in the retained coordinates is invertible, the
+implicit function theorem gives the local tuning functions at finite
+\(\Lambda_0\).  The remaining analytic task is to prove estimates, uniform in
 \(\Lambda_0\), that keep the trajectory in the assumed coordinate
 neighborhood and make the generated integral converge.
 
 \begin{remark}[Status of the cutoff-removal hypotheses]
-The finite-coordinate continuum-limit theorem is conditional.  It proves
-the displayed asymptotic estimate from the four listed hypotheses; it does not
-prove those hypotheses for an arbitrary quantum field theory, nor even for an
-arbitrary finite projection of a regulated action.  Hypothesis (ii) is a
-backward semigroup estimate for the irrelevant part of the linearized
-projected RG equation in a chosen norm.  It is immediate in a diagonal
-finite-dimensional toy model with strictly negative irrelevant exponents, but
-in an actual Wilsonian space it is an analytic estimate about the chosen
-Banach or Fr\'echet space of functionals and the linearized cutoff-flow
-operator.  Hypothesis (iv) is still stronger: it is the uniform convergence,
-after the retained coordinates are tuned, of the generated irrelevant
-coordinate.  This is one form of the cutoff-removal problem itself.
+The finite-coordinate estimate derives the displayed reference-scale
+convergence from the four listed hypotheses.  Hypothesis (ii) is a backward
+semigroup estimate for the irrelevant part of the linearized projected RG
+equation in a chosen norm.  It is immediate in a diagonal finite-dimensional
+toy model with strictly negative irrelevant exponents; in an actual Wilsonian
+space it is an analytic estimate about the chosen Banach or Fr\'echet space
+of functionals and the linearized cutoff-flow operator.  Hypothesis (iv) is
+the uniform convergence, after the retained coordinates are tuned, of the
+generated irrelevant coordinate.  This is one form of the cutoff-removal
+problem itself.
 
 Several rigorous results prove analogues of these estimates only after adding
 substantial structure.  Polchinski's smooth-cutoff argument proves
 perturbative renormalizability order by order for renormalizable Euclidean
 Lagrangians by deriving inductive bounds on cutoff-dependent vertices after
-the relevant parts are fixed; it is not a nonperturbative construction of an
-interacting continuum measure.\footnote{J.~Polchinski, \emph{Nucl. Phys. B}
+the relevant parts are fixed.\footnote{J.~Polchinski, \emph{Nucl. Phys. B}
 \textbf{231} (1984) 269--295.}  Salmhofer's rigorous RG framework proves
 perturbative flow estimates, especially for fermionic systems, in specified
 norms and small-coupling regimes.\footnote{M.~Salmhofer,
@@ -1919,8 +1913,8 @@ standard positive four-dimensional scalar and nearest-neighbor Ising-type
 families covered by
 Quoted Theorem~\ref{qthm:standard-four-dimensional-scalar-triviality} have Gaussian
 scaling limits.  Therefore later use of a Wilsonian continuum-limit estimate
-must say which semigroup, tuning, and convergence estimates have been proved
-in the chosen framework and which are being imposed as assumptions.
+must identify which semigroup, tuning, and convergence estimates are
+available in the chosen framework.
 \end{remark}
 
 \begin{remark}[Renormalons and Wilsonian data]
@@ -1945,7 +1939,7 @@ separation \(T=t_0-t_R=\log(\Lambda_0/\Lambda_R)\) suppresses direct memory of
 the irrelevant boundary coordinate by \(e^{-\omega T}\).  After the relevant
 coordinates are tuned at \(t_R\), endpoints obtained from different bounded
 irrelevant boundary values therefore approach the same continuum graph value
-up to the generated integral assumed to converge in the theorem.
+up to the convergence rate of the generated integral.
 
 \begin{figure}[H]
   \centering
@@ -2009,8 +2003,8 @@ up to the generated integral assumed to converge in the theorem.
   cutoff-removal estimate.  If the irrelevant semigroup satisfies
   \(\|e^{A(t_R-t_0)}\|\le M e^{-\omega(t_0-t_R)}\), direct memory of a bounded
   irrelevant boundary coordinate is suppressed by
-  \((\Lambda_R/\Lambda_0)^\omega\).  The theorem assumes uniform convergence
-  of the generated integral; under that assumption, all tuned endpoints with
+  \((\Lambda_R/\Lambda_0)^\omega\).  The estimate uses uniform convergence
+  of the generated integral; with that input, all tuned endpoints with
   bounded irrelevant bare coordinates converge to the same graph
   \(v=V_R(u_R)\) at the physical scale.}
   \label{fig:finite-coordinate-cutoff-removal-estimate}
@@ -2019,9 +2013,9 @@ up to the generated integral assumed to converge in the theorem.
 For a lattice regulator with lattice spacing \(a=\Lambda_0^{-1}\), a bounded
 dimensionless irrelevant bare coordinate \(v^\rho(t_0)\) corresponds to a
 dimensionful coefficient multiplied by the appropriate positive power of
-\(a\).  Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
-explains the resulting universality statement in this local projection: after
-the retained coordinates are tuned at
+\(a\).  The finite-coordinate cutoff-removal estimate explains the resulting
+universality statement in this local projection: after the retained
+coordinates are tuned at
 \(\Lambda_R\), bounded changes of microscopic irrelevant lattice couplings
 alter \(v(t_R)\) only by powers of \(\Lambda_R/\Lambda_0\), while the limiting
 value belongs to the continuum graph selected by the flow.

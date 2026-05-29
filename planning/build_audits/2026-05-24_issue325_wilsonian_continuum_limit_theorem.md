@@ -1,21 +1,24 @@
-# Issue #325 Audit: Wilsonian Continuum-Limit Existence Theorem
+# Issue #325 Audit: Wilsonian Finite-Coordinate Cutoff-Removal Estimate
 
 ## Concern
 
 The Wilsonian chapter described continuum-limit removal as a dynamical
-mechanism and gave an irrelevant-coordinate suppression estimate, but it did
-not contain a labeled theorem stating that, under explicit hypotheses, the
-tuned reference-scale Wilsonian coordinates have a limit as
+mechanism and gave an irrelevant-coordinate suppression estimate, but it had
+to state precisely which hypotheses imply a retained-coordinate limit as
 \(\Lambda_0\to\infty\).
+
+May 29 anti-wrapper audit update: the estimate is deliberately no longer a
+numbered theorem.  Its substance is the displayed variation-of-constants
+estimate from explicit tuning, semigroup, boundedness, and generated-integral
+convergence hypotheses.  Presenting it as a theorem hid too much of the
+cutoff-removal problem inside the hypotheses.
 
 ## Manuscript Changes
 
 - Added a forward reference in the `Renormalizability as a Continuum Limit`
-  section to the theorem-level statement, separating the Wilsonian mechanism
-  from the proof of its hypotheses.
-- Upgraded the finite-coordinate cutoff-removal estimate to
-  `Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}`.
-- The theorem assumes:
+  section to the finite-coordinate estimate, separating the Wilsonian
+  mechanism from the proof of its hypotheses.
+- The estimate assumes:
   - existence of tuning of retained bare coordinates so that
     \(u(t_R)=u_R\);
   - the solution remains in the finite-coordinate RG chart;
@@ -27,9 +30,9 @@ tuned reference-scale Wilsonian coordinates have a limit as
   \[
     z_R(t_0;u_R)\to (u_R,V_R(u_R)).
   \]
-- The proof derives the limit from variation of constants, the boundary-memory
-  suppression proposition, and the generated-integral remainder bound.
-- The theorem also records that every continuous finite-coordinate projected
+- The derivation uses variation of constants, the boundary-memory suppression
+  estimate, and the generated-integral remainder bound.
+- The estimate also records that every continuous finite-coordinate projected
   low-energy quantity \(Q(z_R)\) converges, with the same power estimate when
   \(Q\) is Lipschitz.
 
@@ -38,12 +41,12 @@ tuned reference-scale Wilsonian coordinates have a limit as
 The monograph now distinguishes:
 
 1. The finite-regulator Wilsonian flow identity.
-2. The conditional finite-coordinate continuum-limit theorem, whose proof is
+2. The finite-coordinate cutoff-removal estimate, whose derivation is
    self-contained once the stated estimates are assumed.
 3. The separate analytic or constructive task of proving those estimates in a
    specific model and norm.
 
 Thus the continuum-limit statement is no longer only a mechanism in prose; it
-is a theorem with explicit hypotheses and a proof, while still avoiding the
-false claim that arbitrary four-dimensional scalar Lagrangians have
-non-Gaussian continuum limits.
+is a precise estimate with explicit hypotheses, while avoiding the false
+impression that the hypotheses themselves are automatic theorem-level
+consequences of an arbitrary regulated Lagrangian.

@@ -127,6 +127,15 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Finite .*SU\\(3\\).* subgroup-update invariance|"
     r"HMC Metropolis correction at finite regulator|"
     r"Correlated delete-one-block jackknife for smooth ratios"
+    r"|Conditional finite-coordinate Wilsonian continuum limit"
+    r"|Two-winding expansion of the vacuum energy"
+    r"|Crossing scalar convention algebra"
+    r"|Mirror-TBA node and source inventory"
+    r"|Finite-chain ABA--Q--SoV comparison, scoped form"
+    r"|Matrix unitarity and the breather pole locations"
+    r"|Soliton--breather unitarity, crossing, and pole locations"
+    r"|Gross--Neveu scalar unitarity identity"
+    r"|Principal-chiral scalar unitarity identity"
     r")\b",
     re.IGNORECASE,
 )

@@ -188,11 +188,22 @@ The large-\(R\) expansion is an expansion in mirror occupation factors
 first winding is universal; later windings also contain the scattering
 kernels.
 
-\begin{proposition}[Two-winding expansion of the vacuum energy]
-\label{prop:two-winding-vacuum-expansion}
+\paragraph{Two-winding expansion of the vacuum energy.}
 Assume that the kernel convolution operator is bounded in a weighted
 \(L^\infty\) norm for which all \(q_a\) are small, so that the TBA equation is
-solved by iteration.  Then
+solved by iteration.  The TBA equation is
+\[
+  \epsilon_a=d_a-\sum_b\varphi_{ab}*L_b .
+\]
+If \(L_b=q_b+O(q^2)\), then
+\[
+  e^{-\epsilon_a}
+  =
+  e^{-d_a}\exp\!\left(\sum_b\varphi_{ab}*L_b\right)
+  =
+  q_a\left(1+\sum_b\varphi_{ab}*q_b\right)+O(q^3).
+\]
+Using \(\log(1+x)=x-x^2/2+O(x^3)\) gives
 \[
   L_a(\theta)
   =
@@ -222,26 +233,6 @@ Consequently
   +O(q^3).
 \end{split}
 \]
-\end{proposition}
-
-\begin{proof}
-The TBA equation is
-\[
-  \epsilon_a=d_a-\sum_b\varphi_{ab}*L_b .
-\]
-If \(L_b=q_b+O(q^2)\), then
-\[
-  e^{-\epsilon_a}
-  =
-  e^{-d_a}\exp\!\left(\sum_b\varphi_{ab}*L_b\right)
-  =
-  q_a\left(1+\sum_b\varphi_{ab}*q_b\right)+O(q^3).
-\]
-Using \(\log(1+x)=x-x^2/2+O(x^3)\) gives the displayed expression for
-\(L_a\).  Substitution into the energy formula of
-Proposition~\ref{prop:mirror-tba-variational-equation} gives the stated
-energy expansion term by term.
-\end{proof}
 
 \begin{proposition}[Vacuum Luescher term with a remainder bound]
 \label{prop:vacuum-luscher-term-remainder}
