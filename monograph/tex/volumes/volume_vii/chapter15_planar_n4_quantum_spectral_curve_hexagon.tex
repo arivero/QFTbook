@@ -550,8 +550,7 @@ which proves the first equality in
 statement after substituting
 \eqref{eq:qsc-local-mu12-discontinuity}.
 
-\begin{proposition}[Fermionic-node asymptotics]
-\label{prop:qsc-fermionic-node-large-u-ratio}
+\paragraph{Fermionic-node asymptotics.}
 Let \(x_{\rm f}(u)\) be the fermionic-node Zhukovsky sheet used in the
 large-\(u\) expansion of \(Y_{1,1}Y_{2,2}\), normalized by
 \[
@@ -576,7 +575,7 @@ Define the fermionic-node scattering-ratio factor
   \frac{x_{\rm f}(u)-a}{x_{\rm f}(u)-b}\,
   \frac{x_{\rm f}(u)^{-1}-b}{x_{\rm f}(u)^{-1}-a}.
 \]
-Then, on the branch of \(\log R_Q\) which tends to
+On the branch of \(\log R_Q\) which tends to
 \(\log(a/b)\) at \(u=\infty\),
 \begin{equation}
   \log R_Q(u,v)
@@ -593,10 +592,8 @@ becomes
   =
   \ii p(u_j)+\frac{\ii E(u_j)}{u}+O(u^{-2}).
 \]
-\end{proposition}
 
-\begin{proof}
-Set \(x=x_{\rm f}(u)\).  Since \(x=g/u+O(u^{-3})\),
+Indeed, set \(x=x_{\rm f}(u)\).  Since \(x=g/u+O(u^{-3})\),
 \[
   \frac{x-a}{x-b}
   =
@@ -633,11 +630,10 @@ It implies
   -\widetilde p_Q,
 \]
 where the last equality is
-\eqref{eq:qsc-mirror-momentum-from-xpm}.  Taking the logarithm proves
+\eqref{eq:qsc-mirror-momentum-from-xpm}.  Taking the logarithm gives
 \eqref{eq:qsc-fermionic-node-ratio-expansion}.  The physical expansion is
 the same identity written with the stringbook double-Wick convention
 \(\widetilde E=-\ii p\), \(\widetilde p=-\ii E\).
-\end{proof}
 
 \begin{assumption}[Fermionic-product energy normalization]
 \label{ass:qsc-t-hook-charge-bridge}
@@ -657,7 +653,7 @@ energy normalization inherited from the excited-state mirror TBA:
   \qquad u\to\infty
 \]
 in the upper-half-plane sector used for the \(SL(2)\) large-\(u\)
-asymptotics.  Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio} is the
+asymptotics.  The fermionic-node asymptotics calculation above is the
 local sheet calculation behind this normalization: in the standard
 excited-state mirror-TBA formula, the fermionic product is assembled from the
 ratio \(R_Q\), and its \(u^{-1}\) coefficient is the same mirror-momentum
@@ -742,8 +738,7 @@ trial exponent \(\alpha\) and write
 provided the leading terms do not undergo accidental cancellations.  The
 physical branch later has \(\alpha=\Delta\).
 
-\begin{proposition}[Large-\(u\) power balance for the \(P\mu\) sheet equation]
-\label{prop:qsc-mu-power-balance}
+\paragraph{Large-\(u\) power balance for the \(P\mu\) sheet equation.}
 Fix the \(SL(2)\) \(P\)-powers displayed above and use
 \((P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)\).  Suppose that in the trial
 large-\(u\) sector \(\widetilde P_a\) has the common sheet exponent shift
@@ -760,9 +755,7 @@ and that the \(\mu_{12}\) exponent is \(\alpha-J\).  If no leading row of
 kept in the leading monodromy system
 \eqref{eq:qsc-large-u-characteristic-linear-system} has the same power as
 \(\mu_{ab}(u+\ii)-\mu_{ab}(u)\) in its component.
-\end{proposition}
 
-\begin{proof}
 Let \(e_{ab}=e_{ba}\) be the large-\(u\) exponent of \(\mu_{ab}\), and let
 \[
   (q_1,q_2,q_3,q_4)=
@@ -811,10 +804,8 @@ A direct substitution of the exponents above gives
 \]
 for the six pairs \((12),(13),(14),(23),(24),(34)\).  Hence the leading
 linear system is homogeneous in powers of \(u\), as required.
-\end{proof}
 
-\begin{proposition}[Large-\(u\) characteristic determinant]
-\label{prop:qsc-large-u-characteristic-determinant}
+\paragraph{Large-\(u\) characteristic determinant.}
 Let
 \[
   X=A_1A_4,\qquad Y=A_2A_3 .
@@ -836,9 +827,7 @@ with \(\alpha\neq0\), the characteristic equation is
   0 .
   \label{eq:qsc-large-u-characteristic-polynomial}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Write
 \[
   P_1=A_1u^{-J/2},\quad
@@ -884,7 +873,6 @@ The factor \(\alpha^2\) records a degenerate zero-exponent subspace of this
 redundant six-coordinate leading system before imposing the Pfaffian and gauge
 reductions.  The nonzero characteristic exponents used below therefore obey
 \(\Phi(\alpha)=0\).
-\end{proof}
 
 \begin{assumption}[Physical QSC characteristic roots]
 \label{ass:qsc-large-u-characteristic-roots}

@@ -126,15 +126,7 @@ part is first order and quadratic:
 \end{equation}
 up to boundary terms and zero-mode data.
 
-\begin{proposition}[Quadratic Chern--Simons action in light-cone gauge]
-\label{prop:cs-light-cone-quadratic-action}
-With the conventions
-\eqref{eq:cs-light-cone-coordinates}--\eqref{eq:cs-light-cone-gauge}, the
-non-abelian cubic term in \(S_{\rm CS}\) vanishes and the quadratic part reduces
-to \eqref{eq:cs-light-cone-quadratic-action}.
-\end{proposition}
-
-\begin{proof}
+\paragraph{Component check of the light-cone Chern--Simons action.}
 The component form of the local Chern--Simons density is
 \[
   \frac{k}{4\pi}\epsilon^{\mu\nu\rho}
@@ -156,9 +148,8 @@ quadratic terms with no \(A_-\) are
 because \(\epsilon^{+-\perp}=+1\) and
 \(\epsilon^{\perp-+}=-1\).  Integrating the second term by parts in \(x^-\)
 and dropping the boundary term gives twice
-\(\operatorname{Tr}(A_+\partial_-A_\perp)\), proving
+\(\operatorname{Tr}(A_+\partial_-A_\perp)\), giving
 \eqref{eq:cs-light-cone-quadratic-action}.
-\end{proof}
 
 Let matter in a representation \(R\) of \(G\) define the gauge current
 \[
@@ -169,8 +160,7 @@ regulator, remove the \(\partial_-\) zero mode or keep it as a separate
 Gauss-law degree of freedom.  On the zero-mode-free subspace write
 \(\partial_-^{-1}\) for the inverse with the declared prescription.
 
-\begin{proposition}[Light-cone Chern--Simons current kernel]
-\label{prop:cs-light-cone-current-kernel}
+\paragraph{Light-cone Chern--Simons current kernel.}
 At finite regulator, the light-cone-gauge integration over \(A_+\) and
 \(A_\perp\) is an ordinary Gaussian integration on the nonzero-mode subspace.
 With the source convention
@@ -192,9 +182,7 @@ substitution of the classical solution gives the effective current interaction
   \label{eq:cs-light-cone-effective-current}
 \end{equation}
 with the ordering and zero-mode prescription displayed.
-\end{proposition}
 
-\begin{proof}
 Set \(a=k/(2\pi)\) and \(D=\partial_-\).  The equations following from
 \eqref{eq:cs-light-cone-source-action} are
 \[
@@ -219,7 +207,6 @@ finite-dimensional completion of the square after the regulator has replaced
 the nonzero-mode function space by a finite or Hilbert-space Gaussian problem.
 The zero mode is not determined by this inverse; it is the global Gauss-law
 constraint and must be supplied as part of the light-front regulator.
-\end{proof}
 
 This is the three-dimensional analogue of the simplification used in the
 two-dimensional large-\(N\) 't Hooft model of
@@ -294,8 +281,7 @@ the color contraction and its \(N\)-scaling are identical, while signs coming
 from moving Grassmann variables belong to the spinor and kernel convention of
 the particular Schwinger--Dyson equation rather than to the color algebra.
 
-\begin{proposition}[Planar color reduction of the light-cone kernel]
-\label{prop:cs-vector-bilocal-color-reduction}
+\paragraph{Planar color reduction of the light-cone kernel.}
 Let \(K\) be any regulator kernel acting on the non-color labels; in the
 light-cone Chern--Simons problem \(K=\partial_-^{-1}\) with the zero-mode
 prescription already declared.  With the normalization
@@ -326,9 +312,7 @@ Consequently the light-cone interaction
   O(N^0)
 \]
 at fixed \(\lambda=N/k_{\rm eff}\).
-\end{proposition}
 
-\begin{proof}
 Insert the current expression and use
 \eqref{eq:cs-vector-fundamental-completeness}:
 \[
@@ -352,7 +336,6 @@ The trace-subtraction term gives the second line of
 Multiplication by the kernel coefficient \(2\pi/k_{\rm eff}=2\pi\lambda/N\)
 then makes the first term order \(N\) and the trace-subtraction term order
 \(N^0\).
-\end{proof}
 
 \begin{proposition}[Finite-regulator Schwinger--Dyson identity]
 \label{prop:cs-vector-finite-regulator-sd}
@@ -423,7 +406,7 @@ of the action is
   S_0=\overline\Psi^i_A Q^A{}_{B}\Psi_i^B .
 \]
 Keeping the \(O(N)\) term of
-Proposition~\ref{prop:cs-vector-bilocal-color-reduction} and placing the
+the planar color reduction above and placing the
 \(O(N^0)\) trace-subtraction in the \(1/N\) expansion, the leading
 light-cone interaction is
 \begin{equation}
@@ -1312,8 +1295,7 @@ normalization used when more complicated localized matrix integrals are
 compared.
 \end{example}
 
-\begin{proposition}[Rank-one ABJM sphere integral]
-\label{prop:rank-one-abjm-s3-integral}
+\paragraph{Rank-one ABJM sphere integral.}
 With the oscillatory contour and framing convention implicit in
 \eqref{eq:abjm-s3-matrix-model}, the \(N=1\) ABJM matrix integral evaluates
 distributionally to
@@ -1323,9 +1305,7 @@ distributionally to
   F_{\rm ABJM}(1,k)=\log(4|k|).
   \label{eq:rank-one-abjm-s3-value}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 For \(N=1\), the vector Vandermonde factors are absent and
 \eqref{eq:abjm-s3-matrix-model} becomes
 \[
@@ -1360,7 +1340,6 @@ Therefore
 \]
 Taking the absolute value and then \(-\log\) gives the displayed
 free energy.
-\end{proof}
 
 \section{ABJM Fermi-Gas Form and Airy Asymptotics}
 \label{sec:abjm-fermi-gas-airy}
@@ -1511,7 +1490,7 @@ The Fourier normalization is the one displayed in the proof of
 Lemma~\ref{lem:abjm-kernel-trace-class}.  For \(N=1\),
 \eqref{eq:abjm-canonical-fermi-gas} gives
 \(\operatorname{Tr}\rho_k=1/(4k)\), agreeing with
-Proposition~\ref{prop:rank-one-abjm-s3-integral}.
+the rank-one sphere-integral calculation above.
 \end{remark}
 
 \begin{definition}[ABJM grand partition function]
@@ -1563,8 +1542,7 @@ Quoted Theorem~\ref{qt:abjm-fermi-gas-representation} identifies the
 coefficients with the localized ABJM integrals.
 \end{proof}
 
-\begin{proposition}[Leading phase-space coefficient]
-\label{prop:abjm-leading-phase-space-coefficient}
+\paragraph{Leading phase-space coefficient.}
 The leading Weyl coefficient of the ABJM Fermi gas is
 \begin{equation}
   C_k=\frac{2}{\pi^2 k}.
@@ -1578,9 +1556,7 @@ is
   \label{eq:abjm-leading-grand-potential}
 \end{equation}
 at fixed \(k\).
-\end{proposition}
 
-\begin{proof}
 The classical symbol of \(\rho_k^{-1}\) is
 \[
   \exp H(q,p),
@@ -1617,7 +1593,6 @@ At zero temperature the leading grand potential is
   \frac{2}{3\pi^2 k}\mu^3+\text{lower powers},
 \]
 which gives \eqref{eq:abjm-Ck-coefficient}.
-\end{proof}
 
 \begin{quotedtheorem}[Perturbative ABJM grand potential]
 \label{qt:abjm-perturbative-grand-potential}

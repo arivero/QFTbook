@@ -202,11 +202,11 @@ small-\(g\) expansion gives \eqref{eq:planar-n4-mirror-weak-boltzmann}.
 
 The same mirror sheet parametrization fixes the large-rapidity fermionic-node
 ratio used later to identify the \(Y_{1,1}Y_{2,2}\) energy exponent in the QSC
-bridge; see Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio}.  This is a
-good example of the convention burden in this subject: the sign comes from the
-inside/outside assignment just checked here, but the ratio itself belongs to
-the later TBA-to-QSC asymptotic bridge rather than to the definition of the
-mirror kernel.
+bridge; the corresponding local expansion is written in the QSC chapter.  This
+is a good example of the convention burden in this subject: the sign comes
+from the inside/outside assignment just checked here, but the ratio itself
+belongs to the later TBA-to-QSC asymptotic bridge rather than to the definition
+of the mirror kernel.
 
 \begin{definition}[Mirror-kernel datum]
 \label{def:planar-n4-mirror-kernel-datum}
@@ -1722,8 +1722,7 @@ is \(B_Q^\pm(q)/144\).  Substituting these three elementary identities in
 \]
 which simplifies to \eqref{eq:konishi-yq0-rationalized}.
 
-\begin{lemma}[Pole structure of the Konishi weak density]
-\label{lem:konishi-weak-density-poles}
+\paragraph{Pole structure of the Konishi weak density.}
 Let \(Q\geq1\), and let \(Y_Q^{(0)}(q/2)\) be the rational function in
 \eqref{eq:konishi-yq0-rationalized}.  Then
 \[
@@ -1752,9 +1751,7 @@ and, for \(Q>1\), the simple poles
 \]
 For \(Q=1\) the latter two points are real removable points, not contour
 poles.
-\end{lemma}
 
-\begin{proof}
 For any real \(a\),
 \[
   \prod_{\sigma=\pm1}
@@ -1778,7 +1775,6 @@ removable.  Finally, before this cancellation the numerator has degree
 \(4\) and the denominator has degree \(16\).  For \(Q=1\), after cancellation
 the numerator has degree \(0\) and the denominator has degree \(12\).  In both
 cases the decay is \(q^{-12}\).
-\end{proof}
 
 \begin{lemma}[Residue reduction for the Konishi summand]
 \label{lem:konishi-residue-reduction}
@@ -1794,7 +1790,7 @@ and
   I_Q=-\int_{\mathbb R}\frac{\dd q}{2\pi}\,\mathcal Y_Q(q),
 \]
 with the \(Q=1\) removable real points understood as in
-Lemma~\ref{lem:konishi-weak-density-poles}.  Then
+the pole-structure calculation above.  Then
 \begin{equation}
   I_Q=R_Q+\frac{864}{Q^3}-\frac{1440}{Q^5},
   \label{eq:konishi-iq-summand}
@@ -1825,7 +1821,7 @@ Write
 \[
   \mathcal N_Q(q)=147456Q^2(3q^2+3Q^2-4)^2 .
 \]
-By Lemma~\ref{lem:konishi-weak-density-poles}, the upper contour encloses
+By the pole-structure calculation above, the upper contour encloses
 the fourth-order pole at \(q=\ii Q\), the two simple poles with
 \(a=Q+1\), and, when \(Q>1\), the two simple poles with \(a=Q-1\).  Hence
 \[
@@ -1859,7 +1855,7 @@ convention \(B_Q^{+1}=B_Q^+\), \(B_Q^{-1}=B_Q^-\).  When \(a_\eta>0\),
         \partial_q B_Q^\eta(q_{\sigma,\eta})}.
 \]
 The derivative in the denominator is not an implicit convention.  The
-factorization in Lemma~\ref{lem:konishi-weak-density-poles} gives
+factorization in the pole-structure calculation above gives
 \[
   \partial_qB_Q^\eta(q_{\sigma,\eta})
   =
