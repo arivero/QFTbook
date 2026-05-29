@@ -2060,6 +2060,42 @@ def check_bes_weak_scaling_function() -> None:
         raise AssertionError("BES dressing contribution should first enter f(g) at g^8")
 
 
+def check_bes_strong_scaling_function_normalization() -> None:
+    """Check the algebra converting the strong BES expansion to f(g)."""
+
+    # Conventional BES cusp: Gamma_BES(g)=4 g^2+...
+    # Monograph scaling function: f(g)=8 g^2+..., hence f=2 Gamma_BES.
+    if 2 * 4 != 8:
+        raise AssertionError("BES weak normalization comparison failed")
+
+    # Shifted strong variable g_s = g - c1.
+    # c1 = 3 log(2)/(4 pi), so 4 c1 = 3 log(2)/pi in f(g)=4 g_s+...
+    c1_log2_over_pi = Fraction(3, 4)
+    if 4 * c1_log2_over_pi != 3:
+        raise AssertionError("BES strong coupling shift normalization failed")
+
+    # c2 = K/(16 pi^2), c3 = 27 zeta(3)/(2^11 pi^3),
+    # c4 = 21 beta_D(4)/(2^10 pi^4).
+    c2_k_over_pi2 = Fraction(1, 16)
+    c3_zeta3_over_pi3 = Fraction(27, 2**11)
+    c4_beta4_over_pi4 = Fraction(21, 2**10)
+
+    # f(g)=4 g_s - 4 c2/g_s - 4 c3/g_s^2 - 4(c4+2 c2^2)/g_s^3+...
+    f_inverse_1_k = -4 * c2_k_over_pi2
+    f_inverse_2_zeta3 = -4 * c3_zeta3_over_pi3
+    f_inverse_3_beta4 = -4 * c4_beta4_over_pi4
+    f_inverse_3_k_squared = -8 * c2_k_over_pi2 * c2_k_over_pi2
+
+    if f_inverse_1_k != -Fraction(1, 4):
+        raise AssertionError("BES strong Catalan 1/g coefficient failed")
+    if f_inverse_2_zeta3 != -Fraction(27, 512):
+        raise AssertionError("BES strong zeta(3) shifted coefficient failed")
+    if f_inverse_3_beta4 != -Fraction(21, 256):
+        raise AssertionError("BES strong beta(4) shifted coefficient failed")
+    if f_inverse_3_k_squared != -Fraction(1, 32):
+        raise AssertionError("BES strong Catalan-squared shifted coefficient failed")
+
+
 def check_bound_state_dispersion() -> None:
     for coupling in (0.1, 0.4):
         for charge in (1, 2, 5):
@@ -5132,6 +5168,7 @@ def main() -> None:
     check_sl2_large_spin_cusp_resolvent()
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
+    check_bes_strong_scaling_function_normalization()
     check_bound_state_dispersion()
     check_bound_state_fusion_telescoping()
     check_mirror_double_wick_dispersion()

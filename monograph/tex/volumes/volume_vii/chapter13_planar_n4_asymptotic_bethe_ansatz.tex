@@ -2849,10 +2849,99 @@ Substitution into
 which is \eqref{eq:planar-n4-bes-weak-scaling-function}.
 \end{proof}
 
-The strong-coupling solution of the same BES equation gives
+\begin{quotedtheorem}[Strong solution of the BES equation]
+\label{qt:planar-n4-bes-strong-solution}
+Let \(\Gamma_{\rm BES}(g)\) denote the conventional BES cusp function whose
+weak expansion begins \(\Gamma_{\rm BES}(g)=4g^2+O(g^4)\).  Define the
+Dirichlet beta values
 \[
-  f(g)=4g-\frac{3\log2}{\pi}+O(g^{-1}).
+  \beta_{\rm D}(s)=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)^s},
+  \qquad
+  \mathrm K=\beta_{\rm D}(2),
 \]
+where \(\mathrm K\) is Catalan's constant, and set
+\[
+  c_1=\frac{3\log2}{4\pi},\qquad
+  c_2=\frac{\mathrm K}{16\pi^2},\qquad
+  c_3=\frac{27\zeta(3)}{2^{11}\pi^3},\qquad
+  c_4=\frac{21\,\beta_{\rm D}(4)}{2^{10}\pi^4}.
+\]
+The strong-coupling solution of the BES Riemann--Hilbert problem gives, as a
+Poincare asymptotic expansion on the positive real \(g\)-axis,
+\begin{equation}
+  \Gamma_{\rm BES}(g)
+  =
+  2g_{\rm s}
+  \left[
+    1-\frac{c_2}{g_{\rm s}^2}
+    -\frac{c_3}{g_{\rm s}^3}
+    -\frac{c_4+2c_2^2}{g_{\rm s}^4}
+    +O(g_{\rm s}^{-5})
+  \right],
+  \qquad
+  g_{\rm s}=g-c_1 .
+  \label{eq:planar-n4-bes-quoted-strong-gamma}
+\end{equation}
+The quoted theorem is a theorem about the analytic solution of the BES
+integral equation.  Its use in the spectral problem is conditional on the
+large-spin BES bridge of
+Assumption~\ref{ass:planar-n4-bes-scaling-regime}.
+\end{quotedtheorem}
+
+\begin{proposition}[Strong BES expansion in the monograph normalization]
+\label{prop:planar-n4-bes-strong-monograph-normalization}
+With \(f(g)\) defined by
+\[
+  \Delta-S-L=f(g)\log S+O(S^0)
+\]
+in \eqref{eq:planar-n4-bes-scaling-function}, the strong-coupling expansion
+corresponding to
+Quoted Theorem~\ref{qt:planar-n4-bes-strong-solution} is
+\begin{equation}
+  f(g)
+  =
+  4g_{\rm s}
+  -\frac{4c_2}{g_{\rm s}}
+  -\frac{4c_3}{g_{\rm s}^2}
+  -\frac{4(c_4+2c_2^2)}{g_{\rm s}^3}
+  +O(g_{\rm s}^{-4}),
+  \qquad
+  g_{\rm s}=g-\frac{3\log2}{4\pi}.
+  \label{eq:planar-n4-bes-strong-shifted-f}
+\end{equation}
+In particular, expanded in the unshifted coupling,
+\begin{equation}
+  f(g)
+  =
+  4g-\frac{3\log2}{\pi}
+  -\frac{\mathrm K}{4\pi^2g}
+  +O(g^{-2}).
+  \label{eq:planar-n4-bes-strong-unshifted-f}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The weak expansion in
+Proposition~\ref{prop:planar-n4-bes-weak-scaling-function} begins
+\[
+  f(g)=8g^2+O(g^4),
+\]
+whereas \(\Gamma_{\rm BES}(g)=4g^2+O(g^4)\).  Therefore the present
+normalization is
+\[
+  f(g)=2\Gamma_{\rm BES}(g).
+\]
+Multiplying \eqref{eq:planar-n4-bes-quoted-strong-gamma} by \(2\) gives
+\eqref{eq:planar-n4-bes-strong-shifted-f}.  The first two unshifted terms are
+obtained from \(4g_{\rm s}=4g-4c_1\), and
+\[
+  4c_1=\frac{3\log2}{\pi},\qquad
+  4c_2=\frac{\mathrm K}{4\pi^2}.
+\]
+All further displayed terms are \(O(g^{-2})\) or smaller in the unshifted
+coupling, giving \eqref{eq:planar-n4-bes-strong-unshifted-f}.
+\end{proof}
+
 This is the convention in which the large-spin anomalous dimension has
 coefficient \(f(g)\).  Some Wilson-line literature denotes by
 \(\Gamma_{\rm cusp}\) half of this quantity; Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}

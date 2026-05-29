@@ -254,9 +254,13 @@ motivational checks, not foundations.
   -(584 pi^6/315+64 zeta(3)^2)g^8+O(g^10)` from the BES equation,
   including the explicit `sigma_2` density coefficient that gives the first
   dressing-sensitive `zeta(3)^2` term.
-- Records the strong-coupling BES status in the same normalization,
-  `f(g)=4g-3 log(2)/pi+O(1/g)`, and warns that some Wilson-line conventions
-  call half of this quantity `Gamma_cusp`.
+- Adds a status-labeled strong-coupling BES theorem for the conventional
+  `Gamma_BES(g)=4g^2+...` normalization, defines the shifted strong variable
+  `g_s=g-3 log(2)/(4 pi)` and the coefficients involving Catalan's constant,
+  `zeta(3)`, and `beta_D(4)`, then proves the algebraic conversion to the
+  monograph scaling function
+  `f(g)=4g_s-4c_2/g_s-4c_3/g_s^2-4(c_4+2c_2^2)/g_s^3+O(g_s^-4)`,
+  in particular `f(g)=4g-3 log(2)/pi-K/(4 pi^2 g)+O(g^-2)`.
 - Cross-links the planar large-spin function to the QCD Wilson-line cusp
   construction in Vol II ch19, where the same operator mechanism gives
   `P_ns,N=-Gamma_cusp^q log N+O(N^0)` for the DIS endpoint kernel.  The dossier
@@ -366,6 +370,10 @@ crossed Zhukovsky sheets.
   `A_2=73 pi^6/2520+zeta(3)^2`, and the resulting
   `8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45
   -(584 pi^6/315+64 zeta(3)^2)g^8` scaling function.
+- It checks the strong BES normalization conversion: `f=2 Gamma_BES`, the
+  shift `4c_1=3 log(2)/pi`, the Catalan `-K/(4 pi^2 g_s)` coefficient, and
+  the shifted `zeta(3)`, `beta_D(4)`, and `K^2` coefficients displayed in the
+  strong expansion.
 
 ## External References Used In Current Pass
 

@@ -802,6 +802,10 @@ Current checks:
   derivative/Bessel-ratio algebra for the planar Bremsstrahlung function.
   The weak and strong Bremsstrahlung expansions used in the cusp chapter are
   checked in `planar_n4_integrability_checks.py`.
+- `planar_n4_integrability_checks.py` also verifies the BES strong-coupling
+  normalization conversion used in Volume VII, including the shifted variable
+  \(g_{\rm s}=g-3\log(2)/(4\pi)\) and the Catalan, \(\zeta(3)\), and
+  \(\beta_{\rm D}(4)\) coefficients displayed there.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
