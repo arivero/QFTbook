@@ -417,8 +417,7 @@ shift the spectral parameter by \(\pm\ii\), the transfer-matrix trace over
 that sequence gives the operator \(TQ\) relation.
 \end{construction}
 
-\begin{theorem}[Exact-sequence proof of an operator \(TQ\) relation]
-\label{thm:exact-sequence-tq-proof}
+\paragraph{Exact-sequence derivation of an operator \(TQ\) relation.}
 Assume the data of Construction~\ref{con:rank-one-q-operator-datum}.  Assume
 further that, for every spectral parameter \(u\), there is a short exact
 sequence of auxiliary RTT modules
@@ -444,9 +443,7 @@ basis adapted to \(\iota,\pi\), with diagonal blocks
   \label{eq:operator-tq-from-exact-sequence}
 \end{equation}
 as operators on the quantum chain.
-\end{theorem}
 
-\begin{proof}
 The product \(t(u)Q(u)\) is the regularized trace over
 \(\C^2(u)\otimes\mathcal A(u)\) of the product monodromy, because the mixed
 RTT relation permits the fundamental and auxiliary monodromies to be ordered
@@ -459,7 +456,6 @@ block traces are the regularized traces defining \(Q(u-\ii)\) and
 \(Q(u+\ii)\).  Cyclicity of the regularized trace is the only analytic input
 in this finite-chain argument.  This gives
 \eqref{eq:operator-tq-from-exact-sequence}.
-\end{proof}
 
 The construction displays the logical ingredients rather than hiding them in
 the phrase ``Baxter operator'': a mixed RTT relation, a trace functional with
@@ -519,8 +515,7 @@ eigenvector,
 \]
 The numbers \(x_\alpha\) are separated coordinates.
 
-\begin{theorem}[Finite-chain SoV reduction under simple-spectrum hypotheses]
-\label{thm:sov-baxter-reduction}
+\paragraph{Finite-chain SoV reduction under simple-spectrum hypotheses.}
 Assume the coefficients of \(B(u)\) have a simple joint eigenbasis
 \(\{\ket{\boldsymbol x}\}\), and assume the RTT relations act on that basis
 by shifting one separated coordinate at a time.  Then a transfer-matrix
@@ -538,9 +533,7 @@ eigenvector with wavefunction
 where \(a(u)\) and \(d(u)\) are the vacuum diagonal eigenvalue functions of
 \(A(u)\) and \(D(u)\), and \(e_\alpha\) shifts only the coordinate
 \(x_\alpha\).
-\end{theorem}
 
-\begin{proof}
 At a zero \(x_\alpha\) of \(B(u)\), the RTT relations imply that \(A(x_\alpha)\)
 and \(D(x_\alpha)\) map a joint \(B\)-eigenvector to vectors whose \(B\)-zeros
 are the same except for the single shifted coordinate
@@ -551,7 +544,6 @@ with \(t(u)=A(u)+D(u)\) on an eigenvector and evaluating at \(u=x_\alpha\)
 therefore gives exactly \eqref{eq:sov-coordinate-baxter}.  The simple-spectrum
 hypothesis ensures that the shifted vectors are identified by their separated
 coordinates rather than by a nontrivial Jordan block.
-\end{proof}
 
 When both the algebraic Bethe ansatz and SoV are valid, the Bethe polynomial
 \(Q(u)\) is the one-variable factor whose values solve
@@ -633,7 +625,7 @@ Vandermonde-type product.  That explicit formula is representation-dependent,
 but \eqref{eq:sov-resolution-identity} is the invariant finite-dimensional
 statement.
 
-Under the hypotheses of Theorem~\ref{thm:sov-baxter-reduction}, suppose a
+Under the simple-spectrum SoV hypotheses above, suppose a
 function \(Q(u)\) solves the one-variable Baxter equation at every separated
 coordinate value appearing in \(\mathcal X\).  Then
 \[

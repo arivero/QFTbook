@@ -143,6 +143,15 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Curvature of the sausage target"
     r"|Closure under one-loop Ricci flow"
     r"|Integrated sausage Ricci trajectory"
+    r"|Well-defined chamber extension"
+    r"|Three-particle consistency"
+    r"|Exact-sequence proof of an operator .*TQ.* relation"
+    r"|Finite-chain SoV reduction under simple-spectrum hypotheses"
+    r"|Trace sum rule"
+    r"|Form-factor version of the trace sum rule"
+    r"|Finite-volume golden-rule limit"
+    r"|Two-particle decay width in .*1\\+1.* dimensions"
+    r"|Linear potential in the induced two-dimensional gauge sector"
     r")\b",
     re.IGNORECASE,
 )
