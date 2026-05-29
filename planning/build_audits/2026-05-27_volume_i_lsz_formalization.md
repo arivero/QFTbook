@@ -23,10 +23,11 @@ Feynman-graph scattering before Haag--Ruelle and LSZ.
   pass.
 - Added Proposition `prop:lsz-pole-spectral-projection`, proving the
   Hilbert-space spectral-projection identity behind the one-particle pole.
-- Added Proposition `prop:lsz-contact-interpolating-field-stability`, proving
-  that local contact terms and zero-overlap field components do not contribute
-  to external LSZ residues and that nonzero interpolating-field coordinate
-  changes cancel against the corresponding \(Z_{\phi'}^{-1/2}\) factors.
+- Added the external-pole stability calculation, recording that local contact
+  terms and zero-overlap field components do not contribute to external LSZ
+  residues and that nonzero interpolating-field coordinate changes cancel
+  against the corresponding \(Z_{\phi'}^{-1/2}\) factors.  This was later
+  demoted from proposition form in the anti-wrapper audit.
 - Added Proposition `prop:lsz-large-time-pole-selector`, recording the
   incoming/outgoing contour calculation that selects the relevant Feynman
   pole in the large-time limit.

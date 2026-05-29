@@ -17,9 +17,10 @@ compressed.
 - Added Definition `def:six-d-abelian-self-dual-tensor-datum`, distinguishing
   local two-form variables from the global differential-cohomology and charge
   lattice data needed for a self-dual tensor sector.
-- Added Proposition `prop:six-d-chiral-two-form-degrees`, proving that a
+- Added the chiral two-form degree-of-freedom calculation, recording that a
   chiral two-form in six dimensions has three physical polarizations and that
   a free `(2,0)` tensor multiplet has eight bosonic on-shell polarizations.
+  This was later demoted from proposition form in the anti-wrapper audit.
 - Added Definition `def:six-d-tensor-branch-effective-datum`, listing the
   data of a tensor-branch EFT and making the chamber/tensionless-wall boundary
   explicit.

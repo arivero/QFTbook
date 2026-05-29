@@ -51,9 +51,9 @@ Reviewed source spine:
 - Defines the abelian self-dual tensor datum using a local two-form gauge
   field, differential-cohomology/global-period caveat, integral string-charge
   lattice, and Dirac pairing.
-- Proves that a six-dimensional chiral two-form has three physical
-  polarizations and that a free `(2,0)` tensor multiplet has eight bosonic
-  on-shell polarizations.
+- Records the little-group degree-of-freedom calculation showing that a
+  six-dimensional chiral two-form has three physical polarizations and that a
+  free `(2,0)` tensor multiplet has eight bosonic on-shell polarizations.
 - Defines tensor-branch coordinates, the chamber structure, and
   Green-Schwarz couplings as effective data rather than a fixed-point
   construction.
@@ -111,7 +111,7 @@ Reviewed source spine:
 
 - 2026-05-28 issue #633 reading audit pass: expanded the chapter with an
   abelian self-dual tensor datum, chiral two-form degree-of-freedom
-  proposition, tensor-branch effective datum, Green-Schwarz descent proof,
+  calculation, tensor-branch effective datum, Green-Schwarz descent proof,
   ADE anomaly-coefficient arithmetic, BPS tension derivation, and
   wrapped-string/W-boson compactification matching.  Extended
   `calculation-checks/susy_abjm_6d_checks.py` accordingly.

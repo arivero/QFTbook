@@ -15,10 +15,12 @@ BPHZ--Wilsonian/Polchinski matching theorem in
     source-dependent Wilsonian action \(L_{\Lambda,J}^{\rm src}\) and states
     that a separate theorem would need source-vertex coordinates or an
     explicit leakage estimate.
-- Added Lemma `lem:plateau-low-source-identity`, proving the finite-regulator
+- Added the plateau low-source identity, deriving the finite-regulator
   identity \(W_\Lambda^{\rm low}[J]=W_{\Lambda_0}[J]\) from Gaussian
   convolution and the vanishing of
-  \(\langle J,C_>J\rangle\) on the plateau-supported source space.
+  \(\langle J,C_>J\rangle\) on the plateau-supported source space.  This was
+  later demoted from lemma form in the anti-wrapper audit because it is the
+  finite-regulator identity already displayed immediately before it.
 - Defined the low 1PI object as the Legendre transform after restriction of
   the connected functional to the finite low-source space \(\mathcal E_<\);
   the text now explicitly avoids identifying it with the restriction of a

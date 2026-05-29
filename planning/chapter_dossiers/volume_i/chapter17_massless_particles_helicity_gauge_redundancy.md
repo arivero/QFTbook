@@ -94,8 +94,8 @@
 - The standard transformation \(L(k)\) is a helicity-frame choice; changing it
   conjugates the Wigner cocycle and multiplies one-particle wavefunction
   components by the inverse helicity character.
-- The Wigner cocycle identity and the frame-change law are proven as a
-  proposition.
+- The Wigner cocycle identity and the frame-change law are recorded as explicit
+  frame algebra rather than theorem-family content.
 - For helicity \(\pm1\), the vector polarization representative shifts by a
   multiple of \(k_\mu\) under the null-translation part of the little group.
 - The little-group null-translation polarization shift is proven explicitly

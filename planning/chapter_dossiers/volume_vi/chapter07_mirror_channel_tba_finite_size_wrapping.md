@@ -27,7 +27,9 @@ language.
 - Proves the relation between direct-channel vacuum energy and mirror-channel
   pressure from equality of torus decompositions.
 - Derives the mirror TBA functional from the density constraint and entropy
-  extremization.
+  extremization; the mirror variational equation is recorded as the same
+  calculation in the mirror channel rather than a separate theorem-family
+  result.
 - Extracts the first large-circumference vacuum correction as a one-mirror
   occupation contribution.
 - Proves the vacuum Luescher coefficient

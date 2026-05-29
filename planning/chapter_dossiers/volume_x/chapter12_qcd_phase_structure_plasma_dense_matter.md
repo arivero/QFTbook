@@ -152,7 +152,8 @@ GitHub issue #628.
 - Defines the retarded HTL induced-current kernel in the mostly-plus
   convention, derives it from the gauge-covariant auxiliary kinetic equation
   `(v.D)W=v^i F_{i0}`, proves transversality, and evaluates the longitudinal
-  angular integral with its Landau cut.
+  angular integral with its Landau cut as worked prose rather than
+  theorem-family content.
 - Defines transport coefficients through Kubo spectral limits rather than
   phenomenological language.
 - Proves the origin of the finite-density sign problem from loss of

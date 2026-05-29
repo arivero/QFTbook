@@ -105,10 +105,11 @@
 - Connected scattering kernels are obtained by applying
   \(Z_\phi^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
   boundary value.
-- Proposition `prop:lsz-contact-interpolating-field-stability` proves that
-  contact terms and zero-overlap field components do not contribute to
-  external LSZ poles, and that nonzero interpolating-field coordinate changes
-  cancel against the corresponding \(Z_{\phi'}^{-1/2}\) factors.
+- The external-pole stability paragraph records that contact terms and
+  zero-overlap field components do not contribute to external LSZ poles, and
+  that nonzero interpolating-field coordinate changes cancel against the
+  corresponding \(Z_{\phi'}^{-1/2}\) factors.  This is boundary-value and
+  field-coordinate bookkeeping, not a theorem-level result.
 - With \(x^0=-i\tau\), the Lorentzian source term
   \(i\int dx^0\,J_L\phi\) becomes \(+\int d\tau\,J_E\phi_E\) for
   \(J_E(\tau,\vec x)=J_L(-i\tau,\vec x)\); the factor \(i^{-N}\) in the

@@ -87,9 +87,9 @@
   one-loop gauge Weyl-anomaly representative with its dilaton-gradient
   redundant direction.
 - Derives the \(\mathcal N=(2,2)\) one-loop Kähler beta tensor
-  `beta_{I Jbar}=alpha' R_{I Jbar}` from the Kähler Ricci formula and states
-  higher-loop supersymmetric beta functions as a quoted large-radius status
-  boundary.
+  `beta_{I Jbar}=alpha' R_{I Jbar}` from the Kähler Ricci formula as a worked
+  specialization, and states higher-loop supersymmetric beta functions as a
+  quoted large-radius status boundary.
 - Defines even integral and unimodular lattices of signature
   \((n_L,n_R)\), lattice vertex operators, cocycle operators, and their
   conformal weights.

@@ -57,10 +57,11 @@
   smoothing, flowed energy-density scale coordinates \(t_0,w_0\), and the
   distinction between geometric/index topological charge definitions and
   numerical flow plateaux.
-- Explicit finite \(SU(3)\) Wilson-score gradient force, including the
+- Explicit finite \(SU(3)\) Wilson-score gradient calculation, including the
   staple formula, anti-Hermitian traceless projection, monotonicity identity
   for the normalized plaquette score, and an HDF5 companion flow script for
-  saved finite configurations.
+  saved finite configurations.  The finite derivative check is recorded as
+  worked prose rather than theorem-family content.
 - Clover curvature and clover topological-charge diagnostics, with oriented
   plaquette conventions, gauge-invariance proof, admissibility-distance
   diagnostic, and an HDF5 companion script for raw or flowed configurations.
