@@ -245,3 +245,9 @@
   phenomenological assumptions to a mathematical definition of the theory, and
   do not treat an auxiliary cutoff as a parameter of a Standard Model
   prediction.
+- 2026-05-29 anti-wrapper pass: demoted the custodial \(SU(2)\)
+  \(\rho_{\rm tree}=1\) calculation and the type-I singlet-neutrino
+  tree-matching calculation from proposition form to worked paragraphs.  Both
+  remain important convention-fixing electroweak/EFT computations, but their
+  proof bodies were direct invariant/mass-substitution and algebraic
+  tree-level matching calculations.

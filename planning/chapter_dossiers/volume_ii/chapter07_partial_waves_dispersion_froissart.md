@@ -482,3 +482,9 @@ hypotheses:
   codimension-two trace nonuniqueness example for the six-dimensional wave
   equation, so the remaining support-pruning theorem is not merely a
   bookkeeping refinement.
+- 2026-05-29 anti-wrapper pass: demoted the eikonal AGK factorial-moment
+  identity from proposition form to a worked paragraph.  The cancellation is
+  useful and remains displayed, but the proof is the direct differentiation
+  of a Poisson generating function; the substantive warning is its restricted
+  one-channel eikonal status, not a new theorem about general Reggeon
+  diagrams.

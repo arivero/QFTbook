@@ -660,3 +660,13 @@ The chapter must define and derive:
   function, zero-recoil normalization from the heavy-flavor charge, controlled
   subleading-current status, and
   `calculation-checks/qcd_hqet_current_checks.py`.
+- 2026-05-29 anti-wrapper pass: demoted three QCD spectroscopy/kinematics
+  wrappers to worked paragraphs: the leading weak-coupling \(1S\) hyperfine
+  contact coordinate, the unequal-mass elastic partial-wave projection, and
+  the quarkonium \(J^{PC}\) rule.  The formulas remain because they fix
+  conventions and coordinates, but the removed proof environments were
+  first-order perturbation, Legendre-projection, or Clebsch--Gordan/parity
+  calculations rather than theorem-level arguments.  The one-loop instanton
+  density factor and subtracted \('t Hooft\)-kernel positivity statements were
+  retained for later strengthening rather than demotion, since their content
+  involves RG covariance and quadratic-form positivity.

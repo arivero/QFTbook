@@ -21,14 +21,15 @@ matching datum.
   `prop:sm-flavor-parameter-counting`,
   `prop:sm-gim-tree-level-diagonality`, and
   `prop:sm-jarlskog-rephasing`.
-- Added the Higgs radial mass coordinate calculation and Proposition
-  `prop:sm-custodial-rho`, deriving `m_h^2=2 lambda v^2` and
-  `rho_tree=1`.
+- Added the Higgs radial mass coordinate calculation and custodial
+  `rho_tree=1` calculation.  The latter was later demoted from proposition
+  form to a worked paragraph in the anti-wrapper pass.
 - Added Definition `def:sm-b-l-charges`, Proposition
   `prop:sm-baryon-lepton-anomaly`, and the sphaleron-selection-rule remark.
 - Added Definition `def:sm-smeft-coupling-chart`, Definition
-  `def:sm-weinberg-operator`, and Proposition
-  `prop:sm-type-i-seesaw-matching`.
+  `def:sm-weinberg-operator`, and the type-I singlet-neutrino tree-matching
+  calculation.  The matching calculation was later demoted from proposition
+  form to a worked paragraph in the anti-wrapper pass.
 - Added Proposition `prop:sm-strong-cp-phase` with the invariant
   `theta_bar = theta_3 + arg det(M_u M_d)` and the massless-quark caveat.
 - Added Definition `def:sm-hybrid-matching-data`, expanding the contents of
