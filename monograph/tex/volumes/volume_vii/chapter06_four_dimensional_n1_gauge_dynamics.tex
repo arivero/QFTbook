@@ -1795,8 +1795,7 @@ power \(5\) is \(3N_c-N_f\), the denominator has dimension \(2\), and
 \(R(M)=-2\), so \(M^{-1}\) supplies the required superpotential
 \(R\)-charge \(2\).
 
-\begin{proposition}[Holomorphic decoupling equation]
-\label{prop:susy-holomorphic-decoupling}
+\paragraph{Holomorphic scale matching across a massive threshold.}
 Give the \(N_f\)-flavor theory a mass \(m\) for the last flavor.  If the
 low-energy \((N_f-1)\)-flavor Wilsonian theory is reached by integrating out
 that massive chiral pair, then the holomorphic scales obey
@@ -1805,9 +1804,7 @@ that massive chiral pair, then the holomorphic scales obey
   =
   m\,\Lambda_{N_f}^{3N_c-N_f}.
 \]
-\end{proposition}
 
-\begin{proof}
 Match the holomorphic gauge coordinate at the threshold \(\mu=m\).  Above the
 threshold the one-loop coefficient is \(3N_c-N_f\); below it is
 \(3N_c-(N_f-1)\).  The invariant combinations
@@ -1819,7 +1816,12 @@ threshold the one-loop coefficient is \(3N_c-N_f\); below it is
 are equal at \(\mu=m\) after the massive determinant is included in the
 Wilsonian chiral coordinate.  Eliminating the common value of \(\tau(m)\)
 gives the displayed equation.
-\end{proof}
+
+This is a coordinate-matching calculation inside the holomorphic Wilsonian
+scheme.  The dynamical assumption is the preceding sentence: the massive
+pair must be integrated out in a scheme whose chiral gauge coordinate and
+threshold determinant have been specified.  The displayed equation is not by
+itself a proof that the infrared description exists.
 
 \begin{proposition}[ADS decoupling recursion]
 \label{prop:ads-holomorphic-decoupling-recursion}
@@ -1839,7 +1841,7 @@ with \(C_{n+1}\neq0\).  Add a holomorphic mass term
   W_{\mathrm{mass}}=m\,\mathcal M^L{}_L,\qquad L=n+1,
 \]
 and assume the Wilsonian threshold is described by
-Proposition~\ref{prop:susy-holomorphic-decoupling}.  On the light branch
+the holomorphic scale matching above.  On the light branch
 \(\mathcal M^a{}_L=\mathcal M^L{}_a=0\), \(a=1,\ldots,n\), the effective
 \(n\)-flavor superpotential is
 \begin{equation}
@@ -1936,8 +1938,8 @@ Using \eqref{eq:ads-recursion-y-power}, this becomes
     \frac{m\Lambda_{+}^{3N_c-(n+1)}}{\det M}
   \right)^{\frac1d}.
 \]
-The scale matching in Proposition~\ref{prop:susy-holomorphic-decoupling}
-turns the numerator into \(\Lambda_-^{3N_c-n}\), proving
+The holomorphic scale matching above turns the numerator into
+\(\Lambda_-^{3N_c-n}\), proving
 \eqref{eq:ads-decoupling-recursion-result} and
 \eqref{eq:ads-coefficient-recursion}.
 
@@ -2994,8 +2996,8 @@ status from the duality entries.  The \(N_f=N_c-1\) ADS term was derived
 above from an explicit one-instanton zero-mode and symmetry calculation under
 Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  The cases
 \(N_f<N_c-1\) are then reached by holomorphic decoupling using
-Propositions~\ref{prop:susy-holomorphic-decoupling} and
-\ref{prop:ads-holomorphic-decoupling-recursion}.  Thus the nonzero
+the scale matching above and
+Proposition~\ref{prop:ads-holomorphic-decoupling-recursion}.  Thus the nonzero
 superpotential in the runaway range is not inferred from Seiberg duality; it
 is a chiral \(F\)-term result whose direct semiclassical anchor,
 finite-dimensional elimination step, and decoupling assumptions are

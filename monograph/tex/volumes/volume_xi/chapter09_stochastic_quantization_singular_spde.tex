@@ -5101,8 +5101,7 @@ applied to that subsequence gives the same \(2m\)-moment bound for the
 limit.  This proves \eqref{eq:spde-wiener-chaos-even-moment-bound}.
 \end{proof}
 
-\begin{corollary}[Kernel bounds imply stochastic coordinate moments]
-\label{cor:spde-chaos-kernel-coordinate-moments}
+\paragraph{Kernel bounds imply stochastic coordinate moments.}
 Let \(\mathcal A\) be an index set and let
 \(\sigma:\mathcal A\to(0,\infty)\) be a deterministic scale weight.  Suppose
 that random variables \(Y_n(a)\), \(a\in\mathcal A\), have finite chaos
@@ -5129,9 +5128,7 @@ kernel constants, such that
   \leq
   \widetilde M_m2^{-2m\rho n}\sigma(a)^{2m}.
 \]
-\end{corollary}
 
-\begin{proof}
 Use the elementary convexity inequality
 \[
   \left|\sum_{q=0}^Q x_q\right|^{2m}
@@ -5150,10 +5147,9 @@ component.  The deterministic \(q=0\) component is included with
 and the same expression with \(B_q\) replaced by \(\widetilde B_q\) for
 \(\widetilde M_m\).  The factor \(2^{-2m\rho n}\) comes from raising the
 dyadic kernel-difference estimate to the \(2m\)-th power.
-\end{proof}
 
-Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments} is the stochastic
-part of a BPHZ model estimate.  A concrete tree calculation must still prove
+The kernel-to-moment calculation above is the stochastic part of a BPHZ model
+estimate.  A concrete tree calculation must still prove
 the deterministic kernel bounds for every tested model coordinate and must
 upgrade the resulting pointwise coordinate estimates to the full model
 seminorm by spatial and scale regularity estimates.  Once those deterministic
@@ -6446,8 +6442,7 @@ Consequently, for any isonormal Gaussian process
   Y_n(a)=\sum_{q=0}^Q I_q(f_{n,a,q})
 \]
 satisfy the hypotheses of
-Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments} with the
-replacement
+the kernel-to-moment calculation above with the replacement
 \[
   B_q\mapsto B_qG,\qquad
   \widetilde B_q\mapsto B_q\widetilde G,\qquad
@@ -6501,7 +6496,7 @@ is obtained by comparing
 \eqref{eq:spde-sector-uniform-kernel-bound} and
 \eqref{eq:spde-sector-kernel-increment-bound} with the deterministic kernel
 hypotheses of
-Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments}.
+the kernel-to-moment calculation above.
 \end{proof}
 
 Theorem~\ref{thm:spde-multiscale-sector-kernel-summability} is the

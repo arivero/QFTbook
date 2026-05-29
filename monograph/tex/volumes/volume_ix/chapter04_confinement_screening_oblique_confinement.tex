@@ -303,16 +303,13 @@ The key algebraic fact is Haar projection: an integral over a link vanishes
 unless the tensor product of all representation matrices incident on that
 link contains the trivial representation.
 
-\begin{lemma}[Surface selection by Haar projection]
-\label{lem:strong-coupling-surface-selection}
+\paragraph{Surface selection by Haar projection.}
 In the character expansion of a Wilson-loop expectation, every nonzero term
 contains a collection of plaquettes whose oriented boundary carries the
 representation flux inserted by the Wilson loop.  In particular a Wilson loop
 with nonscreened charge cannot be saturated by plaquettes supported away from
 a spanning surface.
-\end{lemma}
 
-\begin{proof}
 Expand each plaquette weight in characters and integrate link by link.  A
 link on the Wilson contour carries one matrix factor in \(R_0\) or
 \(R_0^*\).  Haar integration over that link is the projection onto the
@@ -323,7 +320,6 @@ invariant vector in the center-sensitive sector and the integral is zero.
 Repeating this for every link on the contour forces a two-chain of plaquettes
 whose boundary is \(C\), up to screened charges.  If the charge is
 nonscreened, the boundary cannot be removed by local endpoints.
-\end{proof}
 
 \begin{proposition}[Strong-coupling area mechanism]
 \label{prop:lattice-strong-coupling-area-law}
@@ -342,7 +338,7 @@ with positive leading coefficient in the convergent strong-coupling domain.
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{lem:strong-coupling-surface-selection}, the first nonzero
+By the Haar-projection selection rule above, the first nonzero
 center-sensitive contributions are plaquette surfaces spanning \(C_R\).
 Every minimal spanning surface contributes a product of character ratios with
 absolute value bounded by a power of the largest relevant nontrivial

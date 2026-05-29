@@ -11,8 +11,8 @@
   \(I_q(f)\), derives the \(q!\) chaos isometry from the Wick exponential
   generating function, and bounds even moments by finite Wick-pairing
   combinatorics.
-- Added Corollary `cor:spde-chaos-kernel-coordinate-moments`.
-- The corollary turns deterministic Hilbert-kernel bounds for finite chaos
+- Added the kernel-to-moment calculation for finite chaos coordinates.
+- The calculation turns deterministic Hilbert-kernel bounds for finite chaos
   expansions into pointwise stochastic moment bounds and dyadic increment
   bounds for model coordinates.
 - The surrounding text now separates the stochastic chaos estimate from the
