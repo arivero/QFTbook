@@ -104,7 +104,7 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   `N-d`, equal to the axial anomaly coefficient, so the anomaly-free case
   gives a FI-theta singular-locus condition rather than isolated Coulomb
   roots.
-- Proves the classical chamber analysis for the hypersurface GLSM with
+- Derives the classical chamber analysis for the hypersurface GLSM with
   charges `(1,...,1,-d)`, including the `r>0` hypersurface quotient, the
   `r<0` Landau-Ginzburg finite-quotient chamber, and the singular status of
   `r=0`.

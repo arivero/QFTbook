@@ -26,10 +26,46 @@ THEOREM_ENV_RE = re.compile(
 )
 
 STATEMENT_ENV_RE = re.compile(
-    r"\\begin\{(assumption|theorem|proposition|lemma|corollary)\}(?:\[([^\]]*)\])?",
+    r"\\begin\{(assumption|hypothesis|theorem|proposition|lemma|corollary)\}(?:\[([^\]]*)\])?",
 )
 
 REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
+    (
+        "volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex",
+        "Higher-dimensional angular tube",
+        "proposition",
+        r"Conditional angular counting in \(D\) spacetime dimensions",
+    ),
+    (
+        "volume_ii/chapter15_the_statistical_ising_model_and_universality.tex",
+        "Separated spin scaling limit",
+        "proposition",
+        "Ferromagnetic nearest-neighbor models are reflection positive",
+    ),
+    (
+        "volume_ii/chapter16_wilsonian_effective_field_theory.tex",
+        "Finite-order BPHZ--Wilsonian matching estimates",
+        "theorem",
+        "Finite-order BPHZ--Wilsonian matching",
+    ),
+    (
+        "volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex",
+        "Leading-logarithmic dipole/BFKL evolution setup",
+        "proposition",
+        "Mellin eigenvalue of the leading BFKL kernel",
+    ),
+    (
+        "volume_iii/chapter05_conformal_charges_and_ward_identities.tex",
+        "Vacuum and large-boundary behavior",
+        "proposition",
+        "Local conformal-current Ward identity",
+    ),
+    (
+        "volume_vii/chapter06_four_dimensional_n1_gauge_dynamics.tex",
+        "Small-circle affine-Toda input",
+        "proposition",
+        "Local index of a nondegenerate chiral critical point",
+    ),
     (
         "volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex",
         "Large-spin BES scaling regime",
@@ -41,6 +77,18 @@ REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
         r"Weak-coupling regularity of the \(SL(2)\) QSC",
         "lemma",
         "Half-integer digamma primitive",
+    ),
+    (
+        "volume_vii/chapter16_supersymmetric_localization_compact_manifolds.tex",
+        "Field-theoretic matching to the Gieseker integral",
+        "theorem",
+        "Planar circular Wilson loop from the Gaussian model",
+    ),
+    (
+        "volume_xi/chapter09_stochastic_quantization_singular_spde.tex",
+        r"\(\Phi^4_2\) stochastic-quantization assembly inputs on the torus",
+        "theorem",
+        r"\(\Phi^4_2\) stochastic-quantization assembly on the torus",
     ),
 }
 
@@ -378,6 +426,14 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|KW beta-function rank count"
     r"|Rank-one abelian quotient"
     r"|Local descent as the infinitesimal limit of inflow"
+    r"|Uniqueness of an admissible angular-momentum interpolation"
+    r"|Free Reggeon diffusion kernel"
+    r"|Two-Reggeon cut in the free diffusion model"
+    r"|Higgs-patch collective-coordinate calculation"
+    r"|Yukawa-lifting Berezin determinant on the Higgs patch"
+    r"|Electric-magnetic anomaly matching"
+    r"|IRC classification of soft-drop outputs"
+    r"|Classical chambers for the hypersurface GLSM"
     r")\b",
     re.IGNORECASE,
 )
@@ -421,7 +477,7 @@ def main() -> int:
         for current, following in zip(statements, statements[1:]):
             line, env, title = current
             next_line, next_env, next_title = following
-            if env != "assumption" or next_env not in {
+            if env not in {"assumption", "hypothesis"} or next_env not in {
                 "theorem",
                 "proposition",
                 "lemma",
@@ -434,7 +490,7 @@ def main() -> int:
             if key in REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS:
                 continue
             failures.append(
-                f"{path}:{line}: assumption [{title}] is followed {next_line - line} "
+                f"{path}:{line}: {env} [{title}] is followed {next_line - line} "
                 f"lines later by {next_env} [{next_title}]; read the substance and "
                 "demote, separate, or add a reviewed exception"
             )

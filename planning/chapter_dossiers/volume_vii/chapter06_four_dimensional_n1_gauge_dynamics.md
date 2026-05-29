@@ -91,13 +91,12 @@ brane construction, or holographic interpretation is a premise of the chapter.
   derivation.
 - `eq:ads-diagonal-higgs-patch`: local diagonal Higgs-patch coordinates for
   the explicit `N_f=N_c-1` instanton calculation.
-- `prop:ads-higgs-patch-collective-coordinate-ledger`: explicit
-  Higgs-patch gauge-breaking, bosonic-moduli, fermion-zero-mode, and
-  Yukawa-lifting ledger for the ADS instanton calculation.
-- `prop:ads-yukawa-lifting-berezin-determinant`: finite-dimensional
-  diagonal-patch Berezin determinant for the Yukawa lifting matrix,
-  separating the zero-mode saturation algebra from the later holomorphic
-  `1/det M` argument.
+- Higgs-patch collective-coordinate calculation: explicit local
+  gauge-breaking, bosonic-moduli, fermion-zero-mode, and exact gaugino-mode
+  ledger for the ADS instanton calculation.
+- Yukawa-lifting Berezin determinant calculation: finite-dimensional
+  diagonal-patch Berezin determinant for the lifting matrix, separating the
+  zero-mode saturation algebra from the later holomorphic `1/det M` argument.
 - Radial Higgs-cutoff calculation: finite radial-integral check
   showing exactly how the Higgs expectation values cut off the instanton size
   integral on the maximal-rank ADS patch, while separating that real
