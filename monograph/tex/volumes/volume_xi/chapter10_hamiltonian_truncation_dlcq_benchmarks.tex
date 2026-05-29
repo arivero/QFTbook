@@ -1071,8 +1071,7 @@ The least-squares polynomial fit is
 provided \(X\) has full column rank.  The reported continuum diagnostic is
 \(\widehat c_0\), the fitted intercept at \(q=0\).
 
-\begin{proposition}[Finite large-\(K\) fit with an explicit remainder amplifier]
-\label{prop:finite-large-K-fit-remainder-amplifier}
+\paragraph{\texorpdfstring{Finite large-\(K\) fit with an explicit remainder amplifier}{Finite large-K fit with an explicit remainder amplifier}.}
 Assume that the finite data used in
 \eqref{eq:dlcq-large-K-least-squares-fit} have the form
 \begin{equation}
@@ -1095,9 +1094,7 @@ Then the fitted intercept satisfies
 \end{equation}
 In particular, if all \(\rho_r\) vanish, the fit recovers \(A_\infty\)
 exactly, independently of the overdetermination \(N>p+1\).
-\end{proposition}
 
-\begin{proof}
 Let
 \[
   c=(A_\infty,c_1,\ldots,c_p)^T,
@@ -1127,7 +1124,6 @@ Taking the zeroth component gives
 The triangle inequality gives
 \eqref{eq:large-K-intercept-remainder-amplification}.  If \(\rho=0\), then
 \(\widehat c=c\) and the intercept is exact.
-\end{proof}
 
 The companion script
 \[
@@ -1159,7 +1155,7 @@ The companion calculation
   \texttt{calculation-checks/hamiltonian\_truncation\_dlcq\_checks.py}
 \]
 also verifies the exact-intercept and constant-sequence cases of
-Proposition~\ref{prop:finite-large-K-fit-remainder-amplifier}.
+the finite large-\(K\) fit calculation above.
 
 \section{Light-Front Hamiltonian}
 

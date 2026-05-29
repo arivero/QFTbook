@@ -556,8 +556,7 @@ so that
 compactification tests, instanton-soliton masses, and Yang--Mills kinetic
 terms use the same coupling coordinate.
 
-\begin{proposition}[Wrapped strings and Coulomb-branch masses]
-\label{prop:six-d-wrapped-string-w-boson-mass}
+\paragraph{Wrapped strings and Coulomb-branch masses.}
 Compactify a \((2,0)\) theory of type \(\mathfrak g\) on a circle of radius
 \(R\), and work on a generic tensor branch.  A BPS string of root charge
 \(\alpha\) wrapped once on the circle gives a five-dimensional BPS particle
@@ -574,9 +573,7 @@ five-dimensional Coulomb scalar coordinate is normalized by
 so that \(M_\alpha^{W}=|\alpha(\phi_{5d})|\).  This is a compactification
 matching condition; it is not an independent six-dimensional Lagrangian
 definition.
-\end{proposition}
 
-\begin{proof}
 A static string of tension \(T_\alpha\) wrapped on a circle of circumference
 \(2\pi R\) has rest energy
 \[
@@ -589,7 +586,6 @@ Coulomb branch, the mass of the vector multiplet associated with a root
 Coulomb scalar.  Equating the wrapped-string particle with this \(W\)-boson
 therefore fixes the scalar normalization
 \(\phi_{5d}=2\pi R\,\phi_{6d}\).
-\end{proof}
 
 \section{Compactification On Riemann Surfaces}
 
@@ -652,17 +648,14 @@ structures.  The Hitchin base records the Coulomb chiral ring coordinates
 visible in the twisted protected sector.
 \end{remark}
 
-\begin{lemma}[Riemann--Roch count for Hitchin differentials]
-\label{lem:hitchin-differential-riemann-roch-count}
+\paragraph{Riemann--Roch count for Hitchin differentials.}
 Let \(C\) be a closed Riemann surface of genus \(g_C>1\).  For every integer
 \(d\ge2\),
 \begin{equation}
   \dim_{\mathbb C}H^0(C,K_C^d)=(2d-1)(g_C-1).
   \label{eq:hitchin-differential-dimension}
 \end{equation}
-\end{lemma}
 
-\begin{proof}
 The degree of \(K_C\) is \(2g_C-2\), hence
 \[
   \deg K_C^d=d(2g_C-2).
@@ -683,10 +676,8 @@ no nonzero holomorphic sections.  Therefore
   =
   (2d-1)(g_C-1).
 \]
-\end{proof}
 
-\begin{lemma}[Degree sum for a simple Lie algebra]
-\label{lem:lie-degree-sum-dimension}
+\paragraph{Degree sum for a simple Lie algebra.}
 For a complex simple Lie algebra \(\mathfrak g_{\mathbb C}\) with invariant
 polynomial degrees \(d_i=m_i+1\),
 \begin{equation}
@@ -694,9 +685,7 @@ polynomial degrees \(d_i=m_i+1\),
   \label{eq:lie-degree-sum-dimension}
 \end{equation}
 where \(d_{\mathfrak g}=\dim_{\mathbb C}\mathfrak g_{\mathbb C}\).
-\end{lemma}
 
-\begin{proof}
 The exponents \(m_i\) satisfy
 \begin{equation}
   \sum_{i=1}^{r_{\mathfrak g}}m_i=|\Delta_+|,
@@ -727,7 +716,6 @@ we obtain
   =
   d_{\mathfrak g}.
 \]
-\end{proof}
 
 \paragraph{Unpunctured class-\(S\) Coulomb-base dimension.}
 For the unpunctured genus-\(g_C>1\) compactification above, the protected
@@ -746,15 +734,14 @@ has complex dimension
   \label{eq:class-s-coulomb-dimension}
 \end{equation}
 
-By Lemma~\ref{lem:hitchin-differential-riemann-roch-count},
+By the Riemann--Roch calculation above,
 \begin{equation}
   \dim_{\mathbb C}\mathcal B_{\mathfrak g,C}
   =
   \sum_i(2d_i-1)(g_C-1).
   \label{eq:hitchin-base-dimension-sum}
 \end{equation}
-Factoring out \(g_C-1\) and using
-Lemma~\ref{lem:lie-degree-sum-dimension} gives
+Factoring out \(g_C-1\) and using the degree-sum calculation above gives
 \[
   \dim_{\mathbb C}\mathcal B_{\mathfrak g,C}
   =

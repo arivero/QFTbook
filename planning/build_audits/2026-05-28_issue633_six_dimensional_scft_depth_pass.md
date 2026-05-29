@@ -32,7 +32,7 @@ compressed.
 - Added Proposition `prop:six-d-bps-string-tension-central-charge`, deriving
   the BPS string tension from the tensor-branch central charge with an
   explicit status remark about the tensionless limit.
-- Added Proposition `prop:six-d-wrapped-string-w-boson-mass`, deriving the
+- Added the wrapped-string/Coulomb-branch mass-matching calculation, deriving the
   wrapped-string/W-boson matching and the scalar normalization
   `phi_5d = 2 pi R phi_6d`.
 

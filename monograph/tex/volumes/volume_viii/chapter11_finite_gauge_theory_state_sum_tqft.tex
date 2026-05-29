@@ -47,8 +47,7 @@ The factor \(1/|\operatorname{Aut}(x)|\) is the finite gauge-volume factor.
 It is forced by gluing.  Omitting it gives the wrong cylinder and the wrong
 answer for a quotient with stabilizers.
 
-\begin{lemma}[Action groupoid cardinality]
-\label{lem:action-groupoid-cardinality}
+\paragraph{Action groupoid cardinality.}
 Let a finite group \(H\) act on a finite set \(X\).  The action groupoid
 \(X//H\) has objects \(X\) and morphisms \(x\to h x\) labeled by
 \(h\in H\).  Its groupoid cardinality is
@@ -56,9 +55,7 @@ Let a finite group \(H\) act on a finite set \(X\).  The action groupoid
   |X//H|=\frac{|X|}{|H|}.
   \label{eq:action-groupoid-cardinality}
 \end{equation}
-\end{lemma}
 
-\begin{proof}
 The isomorphism classes are the orbits \(\mathcal O\subset X\).  For
 \(x\in\mathcal O\), the automorphism group is the stabilizer \(H_x\).  Thus
 \[
@@ -76,7 +73,6 @@ where the orbit-stabilizer theorem was used in the second equality.
 This calculation is the finite model for dividing by gauge volume: summing
 one over each object and then weighting by automorphisms gives the same result
 as averaging over the acting group before passing to orbits.
-\end{proof}
 
 \section{Fields as Principal-Bundle Groupoids}
 
@@ -133,7 +129,7 @@ The groupoid \(\operatorname{Bun}_G(M)\) is equivalent to the action groupoid
 \]
 where \(G\) acts by conjugation.  The stabilizer of \(\rho\) is
 \(C_G(\rho)\), which is the automorphism group of the corresponding bundle.
-Lemma~\ref{lem:action-groupoid-cardinality} gives
+The action-groupoid cardinality calculation gives
 \eqref{eq:finite-gauge-connected-formula}.
 This argument uses connectedness to choose one basepoint and identify every
 flat finite \(G\)-bundle with a homomorphism \(\pi_1(M,m)\to G\) modulo

@@ -289,6 +289,12 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Magnetic .*R.*charge and NSVZ consistency"
     r"|KS .*R.*anomaly remnant"
     r"|Radial Higgs cutoff in the ADS instanton patch"
+    r"|Action groupoid cardinality"
+    r"|Wrapped strings and Coulomb-branch masses"
+    r"|Riemann--Roch count for Hitchin differentials"
+    r"|Degree sum for a simple Lie algebra"
+    r"|Ising net .*mu.*index and DHR fusion"
+    r"|Finite large-.*K.* fit with an explicit remainder amplifier"
     r")\b",
     re.IGNORECASE,
 )
