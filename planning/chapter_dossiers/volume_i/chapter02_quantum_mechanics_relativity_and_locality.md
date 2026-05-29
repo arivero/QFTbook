@@ -149,9 +149,10 @@ state the relation among them.
 - A formal \(H_0+H_{\mathrm{int}}\) in Fock kernels is interaction data only
   together with Poincare generators and locality.
 - Local observable assignments are additional local data.
-- `prop:free-scalar-field-covariance-chapter-two` and
-  `prop:free-scalar-microcausality-chapter-two` label the free scalar
-  covariance and locality calculations for later citation.
+- The free scalar covariance calculation is prose because it is the
+  second-quantized one-particle covariance check, not a theorem-level
+  interacting-field result.  `prop:free-scalar-microcausality-chapter-two`
+  labels the locality calculation for later citation.
 
 ## Required Revisions
 

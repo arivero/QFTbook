@@ -931,8 +931,7 @@ In the noncovariant normalization this is equivalently
 \]
 \end{definition}
 
-\begin{proposition}[Covariance of the free scalar field]
-\label{prop:free-scalar-field-covariance-chapter-two}
+\paragraph{Covariance of the free scalar field.}
 The free scalar field is covariant.  Let \(g=(b,\Lambda)\in \Poinc\), and let
 \(U_1(g)\) be the one-particle scalar representation on \(\Hilb_1\).  The
 free Fock representation is its second quantization \(U_0(g)=\Gamma(U_1(g))\),
@@ -945,25 +944,17 @@ so
 for \(\psi\in\mathcal S_m\) on \(\mathcal D_0\).  Since \(U_1(g)\mathcal S_m
 \subset\mathcal S_m\), this identity preserves the common test domain; the
 closed operators give the corresponding Hilbert-space identity for arbitrary
-\(\psi\in\Hilb_1\).  Applying the test-space identity to the distributional
-creation and annihilation kernels, and using invariance of the mass-shell
-measure, gives
+\(\psi\in\Hilb_1\).  The adjoint identity gives the annihilation part.
+Applying these identities to the distributional creation and annihilation
+kernels in Definition~\ref{def:free-scalar-field-mass-shell-kernels}, followed
+by the invariant change of variables on \(\Sigma_m^+\), gives
 \[
   U_0(b,\Lambda)\widehat\phi(x)U_0(b,\Lambda)^{-1}
   =
   \widehat\phi(\Lambda x+b).
 \]
-\end{proposition}
-
-\begin{proof}
-The one-particle scalar representation preserves the mass-shell measure and
-maps the dense test space \(\mathcal S_m\) to itself.  Second quantization
-therefore maps \(a^\dagger(\psi)\) to \(a^\dagger(U_1(g)\psi)\) on
-\(\mathcal D_0\).  Applying this identity to the distributional creation and
-annihilation kernels in
-Definition~\ref{def:free-scalar-field-mass-shell-kernels} gives the displayed
-covariance law after the invariant change of variables on \(\Sigma_m^+\).
-\end{proof}
+Thus the calculation checks compatibility of the free kernel definition with
+the chosen one-particle representation.
 
 \begin{proposition}[Free scalar microcausality]
 \label{prop:free-scalar-microcausality-chapter-two}

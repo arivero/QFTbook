@@ -99,8 +99,8 @@ Working framework:
   `calculation-checks/local_field_covariance_checks.py`.
 - Scalar infinitesimal translations obey
   \([P_\mu,\Phi(f)]=-i\Phi(\partial_\mu f)\).
-  Status: proven in chapter. Certification:
-  `prop:infinitesimal-translation-covariance`.
+  Status: infinitesimal form of the covariance definition, derived in chapter
+  prose by differentiating the finite transformation law.
 - Covariant field transformations send fields localized in \(\mathcal O\)
   to fields localized in \(g\mathcal O\).
   Status: direct support check in chapter prose. Certification:

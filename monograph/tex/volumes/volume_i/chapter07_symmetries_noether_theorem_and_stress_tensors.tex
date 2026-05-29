@@ -144,6 +144,11 @@ obeys the off-shell identity
 \[
   E_A(\mathcal L)R^A+\partial_\mu j_R^\mu=0.
 \]
+This identity is an equality in the algebra of local functions on the finite
+jet bundle used by the Lagrangian; it is not an equality only after integrating
+over spacetime.  The current is defined modulo an identically conserved
+improvement \(\partial_\nu B^{[\nu\mu]}\), and the identity is unchanged by
+such a replacement.
 In particular, on every classical solution,
 \[
   \partial_\mu j_R^\mu=0 .
@@ -151,7 +156,11 @@ In particular, on every classical solution,
 \end{proposition}
 
 \begin{proof}
-For the variation \(\delta_R\phi^A=R^A\), the first variational identity gives
+The first variational identity from the preceding section is the load-bearing
+input.  It separates the variation of the Lagrangian density into the
+Euler--Lagrange part and a total derivative before imposing any equation of
+motion.  For the variation \(\delta_R\phi^A=R^A\), it gives the pointwise jet
+identity
 \[
   \delta_R\mathcal L
   =
@@ -162,10 +171,25 @@ For the variation \(\delta_R\phi^A=R^A\), the first variational identity gives
     \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A
   \right).
 \]
-The variational-symmetry condition says that the left hand side is
-\(\partial_\mu K_R^\mu\).  Moving this total derivative to the right gives the
-displayed off-shell identity.  Setting \(E_A(\mathcal L)=0\) gives current
-conservation on solutions.
+The variational-symmetry condition is the second independent input:
+there exists a local \(K_R^\mu\) such that
+\(\delta_R\mathcal L=\partial_\mu K_R^\mu\) as an off-shell local identity.
+Subtracting this total derivative from the preceding display gives
+\[
+  0
+  =
+  E_A(\mathcal L)R^A
+  +
+  \partial_\mu
+  \left(
+    \frac{\partial\mathcal L}{\partial(\partial_\mu\phi^A)}R^A-K_R^\mu
+  \right),
+\]
+which is the stated Noether identity.  On a classical solution the
+Euler--Lagrange term vanishes componentwise, and the current is conserved.
+The improvement statement follows because
+\(\partial_\mu\partial_\nu B^{[\nu\mu]}=0\) by antisymmetry and commutativity of
+ordinary partial derivatives.
 \end{proof}
 
 \begin{proposition}[Localized-parameter form of Noether's theorem]

@@ -772,8 +772,7 @@ different and the spatial momentum on the cylinder acquires the corresponding
 vacuum shift.
 \end{remark}
 
-\begin{lemma}[Infinitesimal stress-tensor transformation]
-\label{lem:infinitesimal-stress-tensor-transformation}
+\paragraph{Infinitesimal stress-tensor transformation.}
 With the contour-charge convention
 \eqref{eq:chiral-contour-charge-vector-field} and the stress-tensor OPE
 \eqref{eq:stress-tensor-tt-ope}, a holomorphic vector field
@@ -788,10 +787,8 @@ This is an equality of insertions on any annulus on which the contour for
 \(Q_v\) can be chosen without crossing other operators.  The formula is
 therefore a separated-point Ward identity; contact extensions at collisions
 are fixed by the source convention for the stress tensor.
-\end{lemma}
 
-\begin{proof}
-By definition,
+The contour calculation is local around \(w\).  By definition,
 \[
   \delta_vT(w)=Q_v(C)T(w)
   =
@@ -815,10 +812,8 @@ The overall minus sign in \(Q_v\) gives
   \right),
 \]
 which is \eqref{eq:infinitesimal-stress-tensor-transform}.
-\end{proof}
 
-\begin{lemma}[Schwarzian cocycle]
-\label{lem:schwarzian-cocycle}
+\paragraph{Schwarzian cocycle.}
 For locally univalent holomorphic maps \(f\) and \(g\), the Schwarzian
 derivative
 \[
@@ -842,9 +837,7 @@ Moreover, if \(f_s(z)=z+s v(z)+O(s^2)\), then
   v'''(z).
   \label{eq:schwarzian-linearization}
 \end{equation}
-\end{lemma}
 
-\begin{proof}
 Set
 \[
   A_f(z)=\frac{f''(z)}{f'(z)}=\partial_z\log f'(z).
@@ -882,7 +875,6 @@ Since \(A_f=f''/f'\), the last two terms cancel.  This proves
 Substitution into the definition of the Schwarzian gives
 \(\{f_s,z\}=s v'''(z)+O(s^2)\), proving
 \eqref{eq:schwarzian-linearization}.
-\end{proof}
 
 \begin{proposition}[Schwarzian transformation and plane-cylinder shift]
 \label{prop:schwarzian-transformation-plane-cylinder-shift}
@@ -985,7 +977,7 @@ If \(f_s(z)=z+s v(z)+O(s^2)\), then
   T(z)=T(z_s-sv(z_s))+O(s^2)
 \]
 at the fixed final point \(z_s=f_s(z)\).  Together with
-Lemma~\ref{lem:schwarzian-cocycle},
+\eqref{eq:schwarzian-linearization},
 \[
   \mathcal T_{f_s}(z_s)
   =
@@ -1009,7 +1001,7 @@ It remains to check compatibility with finite composition.  Applying first
   \right],
 \]
 which equals the transformation for \(g\circ f\) precisely by
-Lemma~\ref{lem:schwarzian-cocycle}.  Thus the displayed formula is a
+\eqref{eq:schwarzian-cocycle}.  Thus the displayed formula is a
 projective cocycle for the connected local conformal group whose tangent
 action is the stress-tensor Ward action.  On a simply connected
 neighborhood of the identity this characterizes the integrated action

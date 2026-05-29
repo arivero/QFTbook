@@ -843,8 +843,7 @@ The covariance is the inverse map
 \]
 \end{definition}
 
-\begin{proposition}[Finite-dimensional Gaussian source functional]
-\label{prop:finite-dimensional-gaussian-source-functional}
+\paragraph{Finite-dimensional Gaussian source functional.}
 For sources \(J\in F_\Lambda^\vee\), completing the square gives
 \[
   -\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda
@@ -877,10 +876,8 @@ Differentiating at \(J=0\) gives, for \(f,g\in F_\Lambda^\vee\),
 \]
 and all higher moments are sums over pairings with this covariance.  This is
 Wick's theorem as a finite-dimensional Gaussian identity.
-\end{proposition}
 
-\begin{proof}
-The completion-of-the-square identity displayed above follows from
+The completion-of-the-square identity follows from
 \(A_\Lambda C_\Lambda=\id_{F_\Lambda^\vee}\).  Translation invariance of the
 Lebesgue density gives
 \[
@@ -897,7 +894,10 @@ after the shift \(\phi\mapsto\phi+C_\Lambda J\).  Dividing by
 \(s=t=0\) gives the two-point formula.  Repeated differentiation gives the
 sum over pairings because the exponent is quadratic in \(J\); odd derivatives
 vanish at \(J=0\), and even derivatives contract derivatives in pairs.
-\end{proof}
+This finite-dimensional calculation is the regulator-level meaning of the free
+Euclidean Gaussian path integral.  The nontrivial continuum questions are the
+choice of regulator, the topology in which \(C_\Lambda\) converges, and the
+existence of limiting distributions after the test functions have been fixed.
 
 \begin{definition}[Continuum free scalar Euclidean covariance]
 \label{def:continuum-free-scalar-euclidean-covariance}
