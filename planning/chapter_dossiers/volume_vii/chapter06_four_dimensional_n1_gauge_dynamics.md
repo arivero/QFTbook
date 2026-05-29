@@ -97,7 +97,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   diagonal-patch Berezin determinant for the Yukawa lifting matrix,
   separating the zero-mode saturation algebra from the later holomorphic
   `1/det M` argument.
-- `prop:ads-radial-higgs-cutoff`: finite radial-integral calculation
+- Radial Higgs-cutoff calculation: finite radial-integral check
   showing exactly how the Higgs expectation values cut off the instanton size
   integral on the maximal-rank ADS patch, while separating that real
   convergence estimate from the holomorphic `1/det M` denominator.

@@ -284,6 +284,11 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Conformal anomaly coefficients"
     r"|Pure .*SU\\(2\\).* one-instanton coefficient"
     r"|Coefficient of abelian inflow"
+    r"|Cardy boundary fields from fusion"
+    r"|Mass decoupling from .*N_f=N_c\\+1.* to .*N_f=N_c"
+    r"|Magnetic .*R.*charge and NSVZ consistency"
+    r"|KS .*R.*anomaly remnant"
+    r"|Radial Higgs cutoff in the ADS instanton patch"
     r")\b",
     re.IGNORECASE,
 )

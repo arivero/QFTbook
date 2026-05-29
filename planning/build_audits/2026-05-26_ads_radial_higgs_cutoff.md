@@ -24,9 +24,9 @@
 
 ## Substantive Changes
 
-- Added `prop:ads-radial-higgs-cutoff`, a finite radial-integral calculation
+- Added the radial Higgs-cutoff calculation, a finite radial-integral check
   for the instanton-size coordinate in the `N_f=N_c-1` ADS Higgs patch.
-- The proposition defines
+- The calculation defines
   `H(v, tilde v)=sum_i(|v_i|^2+|tilde v_i|^2)` and proves
   `int_0^infty rho^(2p-1) exp(-c H rho^2) d rho
   = (p-1)!/(2(cH)^p)` for `p > 0`, `c > 0`, and `H > 0`.
