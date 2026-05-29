@@ -199,7 +199,7 @@ three-point functions.
   the schematic asymptotic hexagon partition sum.
 - Adds the elementary scalar hexagon factor `h(u,v)` and its crossing-path
   caveat.
-- Proves the local scalar Watson identity
+- Derives the local scalar Watson identity
   `h(u_1,u_2)/h(u_2,u_1)=S_hex^scal(1,2)`, including the
   `1/sigma_12^2` dressing orientation and the weak compact one-loop limit
   `(u_1-u_2+i)/(u_1-u_2-i)`.  The text warns that this should not be
@@ -213,7 +213,8 @@ three-point functions.
   `pi C_D |omega|^3/6`, and the small-cusp profile
   `X(t)=varphi t Theta(t)` produces the logarithmic coefficient
   `C_D varphi^2/12`.
-- Derives the weak and strong expansions of the planar Bremsstrahlung
+- Derives, as calculation prose rather than proposition-level content, the weak
+  and strong expansions of the planar Bremsstrahlung
   function from the exact Bessel ratio
   `B(lambda)=sqrt(lambda) I_2(sqrt(lambda))/(4 pi^2 I_1(sqrt(lambda)))`,
   including the weak series through `lambda^4` and the strong series through

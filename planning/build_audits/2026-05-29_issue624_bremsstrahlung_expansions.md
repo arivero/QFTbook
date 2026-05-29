@@ -9,7 +9,7 @@ normalizations are explicit and checkable.
 
 ## Manuscript Changes
 
-- Added Proposition `prop:bremsstrahlung-weak-strong-expansions` to
+- Added the weak/strong Bremsstrahlung expansion derivation to
   `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`.
 - Starting from
 
