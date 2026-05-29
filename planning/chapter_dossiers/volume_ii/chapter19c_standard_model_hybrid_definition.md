@@ -251,3 +251,7 @@
   remain important convention-fixing electroweak/EFT computations, but their
   proof bodies were direct invariant/mass-substitution and algebraic
   tree-level matching calculations.
+- 2026-05-29 follow-up: expanded the strong-CP invariant-coordinate proof by
+  spelling out the single-quark axial rotation, anomalous Jacobian, multi-quark
+  singular-value decomposition, determinant phase, and the nonsingular-mass
+  chart boundary.

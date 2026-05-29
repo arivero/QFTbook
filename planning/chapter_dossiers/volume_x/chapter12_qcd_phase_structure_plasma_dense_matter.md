@@ -324,3 +324,10 @@ GitHub issue #628.
   for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
   statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly
   inflow representative.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the BCS logarithm from proposition/proof to a worked
+  paragraph.  The calculation remains because it fixes the shell density of
+  states and the exponential scale, but it is the elementary mean-field
+  Fermi-surface integral once the model gap equation has been assumed.

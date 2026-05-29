@@ -219,3 +219,9 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 dual-screening pass: added the formal dual Coulomb-gas
   screening computation for the `V_{-1/(2b)}` shift channel, with the
   `tilde_mu` hypothesis and exact gamma-argument checks.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the boundary Euler equation to a worked variational
+  paragraph.  The boundary condition remains explicit, but the proof is the
+  direct fixed-metric first variation of the boundary action.

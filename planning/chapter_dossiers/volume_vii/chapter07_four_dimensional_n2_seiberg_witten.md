@@ -150,3 +150,10 @@ Wilsonian dynamics are available for later use.
 No figure is included in this pass.  Future figures should include the
 two-singularity \(u\)-plane with monodromy loops and a branch-cut picture of
 the elliptic curve cycle degeneration.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the cusp discriminant calculation to a worked paragraph.
+  The discriminant formula is still shown because it identifies the collision
+  of two nodal fibers, but the proof is elementary cubic algebra rather than a
+  theorem-level QFT or special-geometry result.

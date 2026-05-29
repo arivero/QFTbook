@@ -81,3 +81,10 @@
 ## Figures
 
 - None in this chapter.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the semigroup property of a composable BV Wilsonian
+  tower to a worked paragraph.  The content is the Fubini/product-cycle
+  consequence of the composability definition; the genuinely nontrivial
+  material is the construction and admissibility of that BV tower.

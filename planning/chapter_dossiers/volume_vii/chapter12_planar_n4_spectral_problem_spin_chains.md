@@ -160,3 +160,7 @@ single-trace word and the adjacent exchange interaction.
   explicit because it fixes the ordered-chamber exchange convention and the
   inverse relation to the Bethe-Yang phase, but it is not theorem-level
   material.
+- 2026-05-29 follow-up: demoted the planar chiral-primary normalization
+  statement to a worked convention calculation.  It fixes two-point and
+  extremal three-point normalizations by planar Wick counting, but the proof is
+  not a substantive theorem about the interacting theory.

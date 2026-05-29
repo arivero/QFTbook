@@ -188,8 +188,15 @@
   `def:isolated-spinor-one-particle-pole-datum`,
   `prop:locality-fixes-conjugate-spinor-pole-residue`,
   paragraph "Spinor mass-shell residue and external factors",
-  `def:spinorial-lsz-pole-assignment`, and
-  `prop:first-four-fermion-direct-minus-exchange-vertex`.
+  `def:spinorial-lsz-pole-assignment`, and the worked paragraph
+  "First four-fermion direct-minus-exchange vertex".
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the first four-fermion direct-minus-exchange vertex from
+  proposition/proof to a worked paragraph.  The sign derivation remains
+  explicit because it is useful for fermionic Feynman rules, but it is a local
+  first-order Wick-contraction calculation rather than theorem-level material.
 
 ## Figure Requirements
 

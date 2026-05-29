@@ -245,3 +245,8 @@
 - 2026-05-24 issue #435 pass: recorded that the resonance invariant
   \(s=-K^2\) is the mostly-plus Mandelstam variable inherited from the
   part-wide scattering convention.
+- 2026-05-29 anti-wrapper pass: demoted the one-loop threshold
+  discontinuity from proposition/proof to a worked boundary-value calculation.
+  The discontinuity remains explicit because it fixes the first-sheet sign and
+  second-sheet continuation convention, but the proof is the elementary
+  logarithm branch-cut interval calculation.

@@ -141,3 +141,10 @@ resonances.
   paper's loop-level singularity claims, perturbative-gravity claims, and
   finite-reference-system discussion were not imported as monograph results;
   they remain possible prompts for future derivations if needed.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the worldline-dressing eikonal denominator from
+  proposition/proof to a worked Fourier-transform paragraph.  The calculation
+  remains because it fixes the charged-dressing endpoint prescription, but its
+  proof is a regulated half-line integral.

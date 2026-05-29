@@ -670,3 +670,7 @@ The chapter must define and derive:
   density factor and subtracted \('t Hooft\)-kernel positivity statements were
   retained for later strengthening rather than demotion, since their content
   involves RG covariance and quadratic-form positivity.
+- 2026-05-29 follow-up: demoted the two-flavor contracted baryon spin-flavor
+  algebra to a worked paragraph.  The algebra remains explicit, but the proof
+  is finite Pauli-matrix bookkeeping plus large-\(N_c\) scaling of matrix
+  elements, not a standalone theorem-level claim.

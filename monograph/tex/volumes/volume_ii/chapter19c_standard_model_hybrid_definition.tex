@@ -1285,19 +1285,52 @@ chiral flavor-coordinate changes shifts the coefficient of
 \end{proposition}
 
 \begin{proof}
-The determinant phase of the quark mass term changes under anomalous chiral
-flavor rotations.  For a single Dirac quark of mass \(m\ee^{\ii\varphi}\), an
-axial rotation by angle \(-\varphi/2\) makes the mass real.  The same
-rotation changes the fermion measure by the four-dimensional chiral anomaly
-and shifts the QCD theta angle by \(+\varphi\) in the convention of
-Chapter~\ref{ch:volume-ii-20}.  For several quarks the phases
-add, because the anomalous Jacobian is additive over left-handed Weyl
-components in the fundamental color representation.  The total phase removed
-from the quark mass matrices is \(\arg\det(M_uM_d)\).  Therefore the
-combination \(\theta_3+\arg\det(M_uM_d)\) is invariant under the
-mass-diagonalizing chiral coordinate choice.  If one quark mass matrix has a
-zero singular value, the determinant phase is not a coordinate on the mass
-chart and the theta dependence must be reconsidered separately.
+Work first with one massive Dirac quark in the fundamental color
+representation and write its mass as \(m\ee^{\ii\varphi}\), \(m>0\).  The
+field redefinition
+\[
+  q\longmapsto \exp\!\left(-\frac{\ii\varphi}{2}\gamma_5\right)q
+\]
+changes the mass term to \(m\bar q q\).  In the path integral this field
+redefinition is an anomalous axial rotation whose Jacobian is fixed by the
+chiral anomaly.  With the anomaly convention fixed in
+Chapter~\ref{ch:volume-ii-20},
+the above rotation shifts the coefficient of the QCD topological density by
+\[
+  \theta_3\longmapsto \theta_3+\varphi .
+\]
+Thus removing the phase of the mass increases the theta coordinate by exactly
+that phase.
+
+For several quarks, choose nonsingular complex mass matrices and perform
+singular-value decompositions
+\[
+  M_u=U_{uL}^{-1}D_uU_{uR},
+  \qquad
+  M_d=U_{dL}^{-1}D_dU_{dR},
+\]
+with \(D_u,D_d\) positive diagonal.  The vector parts of these flavor
+coordinate changes have no QCD anomaly.  The anomalous part is the product of
+the axial determinant phases, and the anomalous Jacobian is additive over the
+left-handed Weyl components in the fundamental color representation.  The
+total phase removed from the two mass matrices is
+\[
+  \arg\det M_u+\arg\det M_d=\arg\det(M_uM_d)
+  \qquad \text{mod }2\pi .
+\]
+Therefore the mass-diagonalizing coordinate change sends
+\[
+  \theta_3\longmapsto \theta_3+\arg\det(M_uM_d),
+\]
+while the transformed positive diagonal mass matrices have zero determinant
+phase.  The value assigned to the pair \((\theta_3,M_u,M_d)\) by
+\(\theta_3+\arg\det(M_uM_d)\) is therefore unchanged by this coordinate
+choice.  Conversely, any further nonsingular chiral flavor coordinate change
+shifts \(\theta_3\) by the phase removed from the determinant of
+\(M_uM_d\), so the same combination is the invariant coordinate on this mass
+chart.  If one quark mass matrix has a zero singular value, the determinant
+phase is not a coordinate on the chart and the theta dependence is a different
+question; the proposition does not assume such a chart exists.
 \end{proof}
 
 The empirical bound on \(\overline\theta\) is a bound on the coefficient of a
