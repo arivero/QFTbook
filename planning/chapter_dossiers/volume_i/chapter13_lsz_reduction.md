@@ -93,9 +93,9 @@
   Kallen--Lehmann atom, the invariant-denominator coefficient, and the
   external multiplier \(Z_\phi^{-1/2}i(k^2+m^2)\) before the residue
   propositions.
-- Proposition `prop:lsz-invariant-denominator-linear-residues` proves the
-  mostly-plus factorization and the relation between invariant-denominator
-  coefficient and the two linear \(k^0\)-pole residues.
+- Paragraph "Invariant denominator coefficient and linear pole residues"
+  records the mostly-plus partial-fraction calculation relating the
+  invariant-denominator coefficient to the two linear \(k^0\)-pole residues.
 - Proposition `prop:lsz-pole-spectral-projection` proves that the external
   pole is the one-particle spectral projection \(P_1\) multiplied by the
   field-state overlap factors.

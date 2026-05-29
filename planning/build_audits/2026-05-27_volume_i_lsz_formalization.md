@@ -16,9 +16,11 @@ Feynman-graph scattering before Haag--Ruelle and LSZ.
 - Added a proof block for Theorem `thm:lsz-wave-packet`, with the steps
   separated into Haag--Ruelle approximants, locality/time-ordering,
   large-time pole selection, and on-shell wave-packet pairing.
-- Added Proposition `prop:lsz-invariant-denominator-linear-residues`, proving
-  the mostly-plus denominator factorization and the relation between the
-  invariant coefficient \(-iZ_\phi\) and the two linear \(k^0\)-pole residues.
+- Added the invariant-denominator/linear-residue calculation, recording the
+  mostly-plus denominator factorization and the relation between the invariant
+  coefficient \(-iZ_\phi\) and the two linear \(k^0\)-pole residues.  This was
+  later demoted from a proposition to a worked paragraph in the anti-wrapper
+  pass.
 - Added Proposition `prop:lsz-pole-spectral-projection`, proving the
   Hilbert-space spectral-projection identity behind the one-particle pole.
 - Added Proposition `prop:lsz-contact-interpolating-field-stability`, proving

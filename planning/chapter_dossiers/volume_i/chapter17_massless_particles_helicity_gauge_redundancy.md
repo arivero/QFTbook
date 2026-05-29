@@ -73,9 +73,9 @@
 - The massless little group is \(ISO(2)\), or its double cover.
 - The \(ISO(2)\) structure is exhibited by explicit four-vector matrices for
   \(M_{12}\), \(A\), \(B\), and \(T(\alpha,\beta)\).
-- The Lie algebra of the future-null little group is proven from the Lorentz
-  algebra, and the null-translation matrices are checked to preserve \(\eta\),
-  fix \(q\), and add parameters under multiplication.
+- The Lie algebra of the future-null little group is computed from the
+  Lorentz algebra in prose, and the null-translation matrices are checked to
+  preserve \(\eta\), fix \(q\), and add parameters under multiplication.
 - Since \(N_1,N_2\) commute, fixed-reference-momentum generalized states may
   be labeled by their eigenvalues \((a,b)\); \(J_3\) rotates these labels.
 - The helicity sectors used here are the irreducible sectors in which the

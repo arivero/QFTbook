@@ -187,7 +187,7 @@
   paragraph "Free Dirac propagator as Feynman inverse",
   `def:isolated-spinor-one-particle-pole-datum`,
   `prop:locality-fixes-conjugate-spinor-pole-residue`,
-  `prop:spinor-mass-shell-residue-external-factors`,
+  paragraph "Spinor mass-shell residue and external factors",
   `def:spinorial-lsz-pole-assignment`, and
   `prop:first-four-fermion-direct-minus-exchange-vertex`.
 
