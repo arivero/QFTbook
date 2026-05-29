@@ -126,9 +126,10 @@ GitHub issue #628.
   `2m chi_pi^{ab}=-<bar q {tau^a,tau^b} q>` in trace-delta flavor
   normalization and derives the flavor-symmetric consequence
   `m chi_pi^{ab}=delta^{ab} Sigma_m`.
-- Derives the finite-temperature GMOR relation as a pole-saturation
-  consequence with the normalization conversion between trace-delta and
-  half-trace flavor generators stated explicitly.
+- Records the finite-temperature GMOR relation as a conditional
+  pole-saturation consequence of the integrated axial Ward identity, with the
+  normalization conversion between trace-delta and half-trace flavor
+  generators stated explicitly.
 - Defines the leading low-temperature chiral effective datum, proves
   `Sigma=F^2 B` and `M_pi^2=2Bm`, and derives the one-loop pion-gas
   correction

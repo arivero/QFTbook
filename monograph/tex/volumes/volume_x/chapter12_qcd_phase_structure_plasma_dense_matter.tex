@@ -1008,9 +1008,10 @@ the anticommutator.  Substitution gives
 \eqref{eq:qcd-flavor-symmetric-pseudoscalar-ward}.
 \end{proof}
 
-\begin{proposition}[GMOR as a pole-saturation consequence]
-\label{prop:qcd-thermal-gmor-pole-saturation}
-Suppose, in addition to the hypotheses of
+\paragraph{GMOR as a pole-saturation consequence.}
+The integrated Ward identity becomes the finite-temperature GMOR relation
+only after one supplies a spectral hypothesis about the small-mass broken
+phase.  Suppose, in addition to the hypotheses of
 Proposition~\ref{prop:qcd-integrated-axial-ward}, that for small \(m>0\) the
 zero-spatial-momentum pseudoscalar susceptibility in a broken phase is
 saturated at leading order by an isolated pion pole of mass \(M_\pi(T,m)\).
@@ -1033,7 +1034,27 @@ representative is used.  If the pole obeys the axial Ward relation
   \label{eq:qcd-pcac-pole-relation}
 \end{equation}
 and the non-pole part of \(\chi_\pi^{aa}\) is \(O(1)\) as
-\(m\downarrow0\), then
+\(m\downarrow0\), then pole saturation gives
+\[
+  \chi_\pi^{ab}(T,m)
+  =
+  \delta^{ab}\frac{G_\pi(T,m)^2}{M_\pi(T,m)^2}+O(1).
+\]
+The Ward identity \eqref{eq:qcd-flavor-symmetric-pseudoscalar-ward} gives the
+same susceptibility as
+\[
+  \chi_\pi^{ab}(T,m)
+  =
+  \delta^{ab}\frac{\Sigma(T)}{m}+o(m^{-1})
+\]
+when \(\Sigma_m(T)\to\Sigma(T)\).  Combining these two leading terms with
+\eqref{eq:qcd-pcac-pole-relation},
+\[
+  \frac{G_\pi^2}{M_\pi^2}
+  =
+  \frac{f_{t,\delta}^2M_\pi^2}{4m^2},
+\]
+and equating the coefficients of \(1/m\) gives
 \begin{equation}
   f_{t,\delta}(T,m)^2M_\pi(T,m)^2
   =
@@ -1049,37 +1070,12 @@ smaller by \(\sqrt2\) and the same statement is
   2m\Sigma(T)+o(m).
   \label{eq:qcd-thermal-gmor-half-normalization}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-Pole saturation gives
-\[
-  \chi_\pi^{ab}(T,m)
-  =
-  \delta^{ab}\frac{G_\pi(T,m)^2}{M_\pi(T,m)^2}+O(1).
-\]
-The Ward identity \eqref{eq:qcd-flavor-symmetric-pseudoscalar-ward} says that
-the same susceptibility has leading behavior
-\[
-  \chi_\pi^{ab}(T,m)
-  =
-  \delta^{ab}\frac{\Sigma(T)}{m}+o(m^{-1})
-\]
-when \(\Sigma_m(T)\to\Sigma(T)\).  Using
-\eqref{eq:qcd-pcac-pole-relation} to replace \(G_\pi\) gives
-\[
-  \frac{G_\pi^2}{M_\pi^2}
-  =
-  \frac{f_{t,\delta}^2M_\pi^2}{4m^2}.
-\]
-Equating the coefficients of \(1/m\) yields
-\eqref{eq:qcd-thermal-gmor-delta-normalization}.  Rescaling the generators
-from \(\operatorname{tr}_f(\tau^a\tau^b)=\delta^{ab}\) to
+Here rescaling the generators from
+\(\operatorname{tr}_f(\tau^a\tau^b)=\delta^{ab}\) to
 \(\operatorname{tr}_f(t^at^b)=\frac12\delta^{ab}\) rescales both the current
 and the pseudoscalar density by \(1/\sqrt2\), hence
 \(f_{t,1/2}=f_{t,\delta}/\sqrt2\), giving
 \eqref{eq:qcd-thermal-gmor-half-normalization}.
-\end{proof}
 
 \subsection{Low-Temperature Chiral Effective Theory}
 \label{subsec:qcd-low-temperature-chiral-effective-theory}
@@ -1119,8 +1115,8 @@ parameterize the pion fields by
   \label{eq:qcd-chiral-field-parameterization}
 \end{equation}
 With this convention \(F\) is the decay constant in the half-trace flavor
-normalization; the trace-delta decay constant used in
-Proposition~\ref{prop:qcd-thermal-gmor-pole-saturation} is
+normalization; the trace-delta decay constant used in the pole-saturation
+discussion above is
 \(f_{t,\delta}=\sqrt2F+O(m,T^2)\).
 \end{definition}
 

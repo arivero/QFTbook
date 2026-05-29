@@ -145,10 +145,11 @@ three-point functions.
   finite-difference relation `Q_{a|i}^+-Q_{a|i}^-=P_a Q_i`, the contraction
   formulae `Q_i=-P^a Q_{a|i}^-`, `P_a=-Q^i Q_{a|i}^-`, and the null
   contractions `P_a P^a=Q_i Q^i=0`.
-- Proves that the `P-Q` contraction formulae are shift-independent and that
-  the rank-one update preserves `det Q_{a|i}`.  This records the local
-  algebraic reason for the unimodular `Q_{a|i}` gauge while keeping global
-  cut/gluing existence as a QSC framework input.
+- Derives in prose, under the local bridge assumption, that the `P-Q`
+  contraction formulae are shift-independent and that the rank-one update
+  preserves `det Q_{a|i}`.  This records only the local algebraic reason for
+  the unimodular `Q_{a|i}` gauge while keeping global cut/gluing existence as
+  a QSC framework input.
 - Derives the weak-QSC `mu_12` pre-Baxter finite-difference equation by
   eliminating `mu_24` from the leading `(1,2)` and `(2,4)` components of the
   Pmu monodromy recursion, explicitly using `P^1=-P_4`, `P^4=P_1`, and the

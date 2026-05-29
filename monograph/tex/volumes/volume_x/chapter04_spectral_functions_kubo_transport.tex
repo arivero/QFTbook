@@ -111,11 +111,11 @@ Subtracting \(G^<\) from \(G^>\) gives
 nonpositive.  This is exactly \(\omega\rho_{AA}\ge0\).
 \end{proof}
 
-\begin{proposition}[Retarded boundary value and sign convention]
-\label{prop:kubo-retarded-spectral-sign}
+\paragraph{Retarded boundary value and sign convention.}
 Assume the finite-volume spectral measure above has a thermodynamic limit for
 which the displayed integrals remain meaningful as tempered boundary values.
-Then
+With the retarded convention \eqref{eq:kubo-retarded-definition}, the nonlocal
+part of the retarded function is
 \begin{equation}
   G^R_{AA}(z,\mathbf k)
   =
@@ -125,19 +125,17 @@ Then
   \operatorname{Im}z>0,
   \label{eq:kubo-retarded-spectral-representation}
 \end{equation}
-up to real polynomial contact terms, and therefore
+up to real polynomial contact terms.  The corresponding boundary-value
+convention is
 \begin{equation}
   \rho_{AA}(\omega,\mathbf k)
   =
   -2\,\operatorname{Im}G^R_{AA}(\omega+\ii0,\mathbf k)
   \label{eq:kubo-rho-minus-two-im-gr}
 \end{equation}
-for the nonlocal part of the response.
-\end{proposition}
-
-\begin{proof}
-Write the inverse Fourier representation of \(\rho\) in
-\eqref{eq:kubo-retarded-definition}.  For \(\operatorname{Im}z>0\),
+for the nonlocal part of the response.  This sign is fixed by writing the
+inverse Fourier representation of \(\rho\) in
+\eqref{eq:kubo-retarded-definition}: for \(\operatorname{Im}z>0\),
 \[
   -\ii\int_0^\infty dt\,e^{\ii zt}e^{-\ii\omega't}
   =
@@ -156,7 +154,6 @@ gives \eqref{eq:kubo-rho-minus-two-im-gr}.  Local source counterterms add
 real polynomials in \(\omega\) and \(\mathbf k\) to the real-time kernel in
 the absence of dissipation; they are not part of the commutator spectral
 measure.
-\end{proof}
 
 \section{KMS and Fluctuation--Dissipation}
 

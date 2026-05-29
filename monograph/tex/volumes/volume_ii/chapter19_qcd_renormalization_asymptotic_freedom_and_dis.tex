@@ -9122,9 +9122,11 @@ matrix element is nonzero and obeys
 The first equation defines the Collins--Soper kernel
 \(\mathcal D_q\) in the chosen convention.
 
-\begin{proposition}[Collins--Soper consistency]
-\label{prop:qcd-collins-soper-consistency}
-If the derivatives in
+\paragraph{Collins--Soper consistency condition.}
+The two scale variables \(\ell_\mu\) and \(\ell_\zeta\) are coordinates on the
+renormalized TMD scheme, so a differentiable TMD whose mixed scale derivatives
+commute obeys the corresponding integrability condition.  Explicitly, if the
+derivatives in
 \eqref{eq:qcd-collins-soper-equation}--\eqref{eq:qcd-tmd-mu-evolution}
 commute on the renormalized TMD distribution, then
 \begin{equation}
@@ -9148,7 +9150,7 @@ this gives
   -2\Gamma_{\rm cusp}^q(g(\mu)).
   \label{eq:qcd-collins-soper-cusp}
 \end{equation}
-At small \(b_\perp\), the one-loop solution compatible with the cusp
+At small \(b_\perp\), the one-loop kernel compatible with the cusp
 normalization of \eqref{eq:qcd-nonsinglet-large-n} is
 \begin{equation}
   \mathcal D_q(b_\perp;\mu)
@@ -9159,25 +9161,17 @@ normalization of \eqref{eq:qcd-nonsinglet-large-n} is
   \label{eq:qcd-collins-soper-kernel-one-loop}
 \end{equation}
 up to a finite \(b_\perp\)-dependent scheme term independent of \(\mu\).
-\end{proposition}
-
-\begin{proof}
-Apply
-\(\partial_{\ell_\mu}\partial_{\ell_\zeta}
-=\partial_{\ell_\zeta}\partial_{\ell_\mu}\)
-to \(\log F_{q/H}^{[\eta]}\).  The left order differentiates
-\eqref{eq:qcd-collins-soper-equation}; the right order differentiates
-\eqref{eq:qcd-tmd-mu-evolution}.  This proves
-\eqref{eq:qcd-collins-soper-integrability}.  Substituting the displayed form
-of \(\gamma_F^q\) gives
-\eqref{eq:qcd-collins-soper-cusp}.  Finally,
-\(\partial_{\log\mu}\log(\mu^2b_\perp^2\ee^{2\gamma_{\rm E}}/4)=2\), so the
-derivative of \eqref{eq:qcd-collins-soper-kernel-one-loop} is
-\(-g^2C_F/(2\pi^2)+O(g^4)\), equal to
+The last display is a normalization check on the one-loop result:
+\(\partial_{\log\mu}\log(\mu^2b_\perp^2\ee^{2\gamma_{\rm E}}/4)=2\), so
+differentiating \eqref{eq:qcd-collins-soper-kernel-one-loop} gives
+\(-g^2C_F/(2\pi^2)+O(g^4)\), which is
 \(-2\Gamma_{\rm cusp}^q(g)+O(g^4)\) with
 \(\Gamma_{\rm cusp}^q(g)=g^2C_F/(4\pi^2)+O(g^4)\) in the trace-delta
-normalization.
-\end{proof}
+normalization.  The substantive QCD input is the regulated Wilson-line
+operator definition, the existence and scheme dependence of rapidity
+renormalization, and the perturbative or nonperturbative determination of
+\(\Gamma_{\rm cusp}^q\) and \(\mathcal D_q\); the displayed consistency
+relation only records the integrability of the chosen scale coordinates.
 
 \begin{remark}[Finite TMD scheme changes]
 \label{rem:qcd-tmd-finite-scheme-change}

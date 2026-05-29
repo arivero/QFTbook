@@ -15,7 +15,8 @@
 - Finite-volume Lehmann representation with explicit Boltzmann weights and
   distributional positivity \(\omega\rho_{AA}\ge0\).
 - Retarded spectral representation with the chapter's sign convention
-  \(\rho=-2\operatorname{Im}G^R\).
+  \(\rho=-2\operatorname{Im}G^R\), recorded as boundary-value convention
+  rather than theorem-family content.
 - KMS fluctuation--dissipation relation.
 - Linear response from Schwinger--Keldysh contour difference, with the
   source-response sign separated from the commutator-retarded convention.
@@ -61,7 +62,8 @@
    \(\omega\rho_{AA}\ge0\).
 3. With the chapter's Fourier and retarded-sign conventions,
    \(\rho_{AA}=-2\operatorname{Im}G^R_{AA}\) for the nonlocal part of the
-   response.
+   response; the substantive assumption is the thermodynamic tempered
+   boundary value and the separation of real contact polynomials.
 4. KMS implies detailed balance and the fluctuation--dissipation relation.
 5. Local source contacts are part of the full background response but not of
    the commutator spectral measure at nonzero frequency.

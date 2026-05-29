@@ -627,10 +627,15 @@ The chapter must define and derive:
   compact-\(x\) factorization status with a distributional remainder, exact
   \(D_0\)-based DGLAP sum-rule proof, and endpoint/large-spin cusp discussion.
 - 2026-05-27 issue #630 TMD/GPD pass: added soft-subtracted TMD operator data,
-  Collins--Soper consistency, finite TMD scheme transformations,
+  Collins--Soper scale-integrability condition, finite TMD scheme transformations,
   small-\(q_\perp\) color-singlet factorization data, off-forward GPD
   definitions, a proof of GPD polynomiality from local twist-two covariance,
   and `calculation-checks/qcd_tmd_gpd_checks.py`.
+- 2026-05-29 anti-wrapper audit: demoted the Collins--Soper consistency
+  calculation from proposition form to coordinate-integrability prose, making
+  explicit that the substantive QCD input is the regulated Wilson-line TMD
+  definition, rapidity renormalization, the cusp anomalous dimension, and the
+  kernel calculation.
 - 2026-05-27 QCD HQET pass: added heavy-quark effective theory as a
   Wilson-line limit after the QCD-string/static-source discussion, with
   explicit mostly-plus velocity and projector conventions, the HQET regulator
