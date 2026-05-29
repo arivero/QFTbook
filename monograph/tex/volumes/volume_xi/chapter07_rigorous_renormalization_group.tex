@@ -1417,9 +1417,12 @@ This convention is chosen so that
 whenever \(G\) is represented by an integrable function on the support of
 the test function.
 
-\begin{proposition}[Separated-point scaling from source-extended RG]
-\label{prop:source-rg-separated-point-scaling}
-Fix labels \(\alpha_1,\ldots,\alpha_n\) with source eigenvalues
+\paragraph{Separated-point scaling from source-extended RG.}
+The nontrivial step in a source-extended RG construction is proving the
+finite-scale identity below for actual source derivatives of the regulated
+theory.  Once that identity is available with a vanishing error, its
+separated-point consequence is a distributional limit statement.  Fix labels
+\(\alpha_1,\ldots,\alpha_n\) with source eigenvalues
 \(L^{D-\Delta_{\alpha_i}}\).  Suppose that the source-extended RG datum gives
 connected finite-regulator distributions
 \[
@@ -1472,9 +1475,9 @@ distribution
   \label{eq:scaling-violation-contact-distribution}
 \end{equation}
 is a contact term.
-\end{proposition}
 
-\begin{proof}
+The verification is a support calculation for distributions, not a separate
+RG theorem.
 The dilation \(S_L\) maps
 \(C_c^\infty(\operatorname{Conf}_n(\mathbb R^D))\) continuously to itself.
 By distributional convergence on configuration space,
@@ -1506,9 +1509,8 @@ distribution that vanishes on every test function supported in the open set
 \(\mathfrak D_n\), by the definition of support of a distribution.  Hence
 \(H_L\) is a contact term in the sense of
 Definition~\ref{def:rg-contact-term}.
-\end{proof}
 
-The proposition explains the logical order.  Source eigenvalues determine
+This is the logical order.  Source eigenvalues determine
 candidate scaling dimensions.  Reconstruction estimates make the source
 derivatives into distributions.  The finite-scale RG identity then proves
 homogeneity at separated points.  Extension across collision diagonals is an

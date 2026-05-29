@@ -6101,11 +6101,12 @@ that the forest formula does not double count overlapping local parts, and
 combine the gain with the dyadic convolution bound in
 Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
 
-\begin{proposition}[One-loop relative-scale gap for a local subtraction]
-\label{prop:spde-one-loop-relative-scale-gap}
-Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with
-homogeneous dimension \(Q=|\mathfrak s|\).  Let \(a,b,\theta>0\).  Suppose
-that dyadic kernels \(K_i,L_j\), \(i,j\geq0\), obey
+\paragraph{One-loop relative-scale estimate.}
+The preceding local gain becomes a usable dyadic estimate only after the two
+relative-scale sectors are separated.  Let
+\((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with homogeneous
+dimension \(Q=|\mathfrak s|\), and let \(a,b,\theta>0\).  Suppose that dyadic
+kernels \(K_i,L_j\), \(i,j\geq0\), obey
 \[
   \operatorname{supp}K_i\subset B_{\mathfrak s}(0,A2^{-i}),\qquad
   |K_i(h)|\leq C_K2^{(Q-a)i},\qquad
@@ -6138,7 +6139,7 @@ and
   \int K_i(h)L_j(h)\,\dd h
   \quad(j>i).
 \]
-Then
+Then the following two sector estimates hold:
 \begin{equation}
   |T_{i,j}^{\rm loc}|
   \leq
@@ -6160,11 +6161,11 @@ where
 \[
   V_A=\sup_{0<\rho\leq A}|B_{\mathfrak s}(0,\rho)|\,\rho^{-Q}.
 \]
-\end{proposition}
 
-\begin{proof}
-Assume first that \(j\leq i\).  On the support of \(K_i\), the Holder-scale
-bound \eqref{eq:spde-one-loop-holder-scale-bound} applies.  Therefore
+These bounds are the explicit scale bookkeeping.  In the local sector
+\(j\leq i\), the Holder-scale bound
+\eqref{eq:spde-one-loop-holder-scale-bound} applies on the support of \(K_i\),
+and therefore
 \[
 \begin{aligned}
   |T_{i,j}^{\rm loc}|
@@ -6177,10 +6178,8 @@ bound \eqref{eq:spde-one-loop-holder-scale-bound} applies.  Therefore
   C_K'C_L'2^{(Q-a-b)j}2^{-(a+\theta)(i-j)} .
 \end{aligned}
 \]
-This is \eqref{eq:spde-one-loop-local-sector-gap}.
-
-Assume next that \(j>i\).  The integrand is supported where \(L_j\) is
-supported.  Hence
+This is \eqref{eq:spde-one-loop-local-sector-gap}.  In the off-diagonal sector
+\(j>i\), the integrand is supported where \(L_j\) is supported, so
 \[
 \begin{aligned}
   |T_{i,j}^{\rm off}|
@@ -6194,14 +6193,16 @@ supported.  Hence
   C_KC_LV_A2^{(Q-a-b)i}2^{-b(j-i)} .
 \end{aligned}
 \]
-This proves \eqref{eq:spde-one-loop-off-sector-gap}.
-\end{proof}
+This is \eqref{eq:spde-one-loop-off-sector-gap}.  The estimate isolates the
+relative-scale summability gain; the nontrivial BPHZ content is the subsequent
+forest organization of all local subtractions, not this one-loop norm
+calculation.
 
 For the one-loop dynamic \(\Phi^4_3\) contraction, \(Q=5\) and the heat and
 covariance kernels both have order \(2\), so \(a=b=2\).  The base factor
 \(2^{(Q-a-b)k}=2^k\), where \(k=\min(i,j)\), is the local mass-coordinate
-divergence.  Proposition~\ref{prop:spde-one-loop-relative-scale-gap} proves
-that the two relative-scale sectors have strictly positive gap exponents:
+divergence.  The estimates above show that the two relative-scale sectors have
+strictly positive gap exponents:
 \(2+\theta\) in the subtracted sector \(j\leq i\) and \(2\) in the
 off-diagonal sector \(j>i\).  Thus the relative scales are summable once the
 local coordinate has been separated.

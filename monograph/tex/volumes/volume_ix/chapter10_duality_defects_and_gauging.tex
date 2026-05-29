@@ -306,9 +306,10 @@ the regular algebra defect \(A_G\) rather than a single copy of the invisible
 defect.  The construction is especially transparent when a gauged theory is
 equivalent to the original theory.
 
-\begin{proposition}[Self-dual gauging produces a noninvertible defect]
-\label{prop:self-dual-gauging-noninvertible-defect}
-Let \(H\) be finite.  Assume that \(H\) acts internally on a QFT
+\paragraph{Self-dual gauging and the resulting defect.}
+The substantial input in this construction is the existence of a fully
+specified self-duality of the gauged theory.  Let \(H\) be finite, assume that
+\(H\) acts internally on a QFT
 \(\mathcal Q\) and can be gauged without an anomaly.  Suppose there is an
 equivalence
 \[
@@ -330,10 +331,9 @@ is a topological defect of \(\mathcal Q\) satisfying
 \end{equation}
 If \(H\) is nontrivial and the \(D_h\) are distinct simple invertible defects,
 then \(D_H\) is noninvertible and has quantum dimension \(\sqrt{|H|}\).
-\end{proposition}
 
-\begin{proof}
-The equivalence \(\Phi\) is invertible as an interface, so
+This last conclusion is finite defect algebra once the self-duality equivalence
+has been supplied.  The equivalence \(\Phi\) is invertible as an interface, so
 \[
   \Phi^\dagger\circ\Phi\simeq\mathbf 1_{\mathcal Q/H}.
 \]
@@ -366,14 +366,13 @@ sum.  Since each \(D_h\) is invertible, \(d(D_h)=1\).  Hence
   |H|.
 \]
 Positivity gives \(d(D_H)=\sqrt{|H|}\).
-\end{proof}
 
 \begin{example}[The Ising Kramers--Wannier defect]
 \label{ex:ising-kw-as-self-dual-gauging}
 At the critical Ising point the anomaly-free spin-flip symmetry is
 \(H=\mathbb Z_2=\{e,\eta\}\).  The gauged theory is equivalent to the original
 critical Ising CFT after the Kramers--Wannier self-duality identification is
-chosen.  Proposition~\ref{prop:self-dual-gauging-noninvertible-defect} gives
+chosen.  The construction above gives
 \[
   \mathcal N^\dagger\otimes\mathcal N
   \simeq

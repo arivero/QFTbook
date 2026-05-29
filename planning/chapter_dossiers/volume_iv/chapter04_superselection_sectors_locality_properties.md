@@ -1,5 +1,42 @@
 # Volume IV Chapter 04 — Superselection Sectors and Locality Properties
 
+## Source Position
+
+This chapter develops the operator-algebraic meaning of sectors, split
+inclusions, relative entropy, modular localization, and locality refinements
+inside the foundational nonperturbative volume.  It is a bridge from local-net
+axioms to charge-sector structure and sharp-algebra diagnostics.
+
+## Notation Inventory
+
+- `\mathcal A(O)`: local von Neumann algebra attached to a spacetime region.
+- `\Omega`: vacuum vector for the represented net.
+- `\rho`, `\sigma`: normal states or sector endomorphisms, depending on the
+  subsection context.
+- `S(\rho|\sigma)`: Araki relative entropy.
+- `\Delta`, `J`: modular operator and modular conjugation.
+- `DHR`: Doplicher--Haag--Roberts localized transportable sector datum.
+
+## Claim Ledger
+
+- Separates superselection-sector statements from perturbative particle
+  language.
+- Treats relative entropy as a sharp-algebra quantity rather than a finite
+  cutoff entropy slogan.
+- Keeps split inclusions and regulator approximations logically distinct.
+- Uses modular-localization statements only under their stated algebraic
+  hypotheses.
+
+## Figure Ledger
+
+- No figure obligations are currently recorded for this dossier beyond the
+  chapter's manuscript figures.
+
+## Calculation Checks
+
+- No standalone calculation-check companion is attached to this chapter.  The
+  verification burden is proof-ledger review, text audit, and LaTeX build.
+
 ## Audit Notes
 
 - 2026-05-29 eighth anti-wrapper pass: demoted the finite-dimensional

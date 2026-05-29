@@ -24,9 +24,11 @@ linearized RG relation \(y=D-\Delta\).
   that \(V^\mu=(D-1)\partial^\mu L+J^\mu\) with \(\partial_\mu J^\mu=0\)
   gives a conserved traceless improved stress tensor, and that the improved
   tensor supplies conserved currents for every conformal Killing vector.
-- Added Proposition `prop:cft-opening-linearized-rg-dimensions`, deriving
-  \(y_a=D-\Delta_a\) from the linearized RG equation and the scaling of
-  \(\int d^D x\,O_a\), with a Jordan-block/logarithmic-mixing caveat.
+- Added the linearized-RG derivation paragraph deriving \(y_a=D-\Delta_a\)
+  from the linearized RG equation and the scaling of
+  \(\int d^D x\,O_a\), with a Jordan-block/logarithmic-mixing caveat.  This was
+  later demoted from proposition form during the anti-wrapper audit because the
+  calculation is a local scaling check rather than theorem-level machinery.
 
 ## Calculation Check
 
