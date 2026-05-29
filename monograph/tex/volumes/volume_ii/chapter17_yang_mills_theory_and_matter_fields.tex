@@ -1813,16 +1813,158 @@ the vacuum orbit at infinity, and the gauge profile decays to the unbroken
 
 The monopole also has collective coordinates.  Translating the solution gives
 three zero modes.  A global \(U(1)\) rotation at infinity gives an angular
-coordinate conjugate to electric charge; quantizing this coordinate produces
-dyonic sectors.  For \(n\) BPS monopoles, the moduli space is a
-\(4|n|\)-dimensional hyperk\"ahler manifold after removing the center-of-mass
-and overall phase coordinates in the standard way.  The moduli-space statement
-is a theorem about the BPS equations and describes the low-velocity classical
-dynamics obtained by restricting the kinetic energy to the zero-mode manifold.
-The corresponding quantum construction requires a Hilbert space of
-fluctuations and collective-coordinate wave functions, possible fermion zero
-modes, and a determination of which
-semiclassical sectors survive in the continuum quantum theory being studied.
+coordinate; its quantization supplies the electric tower of dyonic sectors.
+For \(n\) BPS monopoles, the moduli space is a \(4|n|\)-dimensional
+hyperk\"ahler manifold after removing the center-of-mass and overall phase
+coordinates in the standard way.  The moduli-space statement is a theorem
+about the BPS equations and describes the low-velocity classical dynamics
+obtained by restricting the kinetic energy to the zero-mode manifold.  The
+corresponding quantum construction requires a Hilbert space of fluctuations
+and collective-coordinate wave functions, possible fermion zero modes, and a
+determination of which semiclassical sectors survive in the continuum quantum
+theory being studied.
+
+\subsection{Phase Coordinate, Dyonic Charge, and the Theta Angle}
+\label{subsec:monopole-phase-coordinate-dyons-witten-effect}
+
+The unit BPS monopole has an \(S^1\)-valued phase coordinate
+\[
+  \chi\in \mathbb R/2\pi\mathbb Z .
+\]
+The normalization used here is that \(\chi\mapsto\chi+2\pi\) is the primitive
+loop of the unbroken \(U(1)\) gauge transformations at spatial infinity.  Let
+\(n_{\mathrm m}\in\mathbb Z\) be the magnetic charge in the same primitive
+cocharacter normalization.  The phase coordinate is the finite-dimensional
+part of the gauge field which becomes electric after time dependence is
+allowed.
+
+The theta density \eqref{eq:ym-theta-density} contributes a total derivative
+on a path in the monopole moduli space.  With the orientation convention in
+which a positive phase loop of a positive monopole obeys
+\begin{equation}
+  \frac{1}{8\pi^2}
+  \int_{\mathbb R_t\times\mathbb R^3}
+  \operatorname{tr}(F\wedge F)
+  =
+  -\frac{n_{\mathrm m}}{2\pi}
+  \int \dot\chi\,\dd t ,
+  \label{eq:monopole-phase-topological-term}
+\end{equation}
+the phase-sector effective Lagrangian has the form
+\begin{equation}
+  L_\chi
+  =
+  \frac12 I_\chi\dot\chi^2
+  -
+  \frac{\theta n_{\mathrm m}}{2\pi}\dot\chi ,
+  \qquad I_\chi>0 .
+  \label{eq:monopole-phase-effective-lagrangian}
+\end{equation}
+The positive constant \(I_\chi\) is the \(\chi\chi\)-component of the monopole
+moduli-space metric.  Its value is determined by the zero-mode inner product
+of Corollary~\ref{cor:monopole-moduli-space-kinetic-metric}; the charge-lattice
+shift below uses only the periodicity of \(\chi\) and the topological
+coefficient in \eqref{eq:monopole-phase-topological-term}.
+
+\begin{proposition}[Dyonic tower from the monopole phase coordinate]
+\label{prop:monopole-phase-dyonic-tower-witten-effect}
+Quantize the phase coordinate \(\chi\) with Hilbert space
+\(L^2(S^1,\dd\chi/2\pi)\).  The operator
+\[
+  \widehat n_{\mathrm e}:=-\ii\frac{\partial}{\partial\chi}
+\]
+has spectrum \(\mathbb Z\).  For a state
+\(\psi_{n_{\mathrm e}}(\chi)=e^{\ii n_{\mathrm e}\chi}\), the phase-sector
+Hamiltonian derived from
+\eqref{eq:monopole-phase-effective-lagrangian} is
+\begin{equation}
+  H_\chi(n_{\mathrm e},n_{\mathrm m};\theta)
+  =
+  \frac{1}{2I_\chi}
+  \left(
+    n_{\mathrm e}
+    +
+    \frac{\theta n_{\mathrm m}}{2\pi}
+  \right)^2 .
+  \label{eq:monopole-phase-dyon-hamiltonian}
+\end{equation}
+Thus the electric field carried by a charge-\(n_{\mathrm m}\) monopole is
+graded by the shifted real coordinate
+\begin{equation}
+  q_{\mathrm E}
+  =
+  n_{\mathrm e}
+  +
+  \frac{\theta n_{\mathrm m}}{2\pi}.
+  \label{eq:witten-effect-shifted-electric-coordinate}
+\end{equation}
+The periodicity \(\theta\mapsto\theta+2\pi\) preserves \(q_{\mathrm E}\) after
+the integer electric label is relabelled by
+\[
+  n_{\mathrm e}\longmapsto n_{\mathrm e}-n_{\mathrm m}.
+  \label{eq:witten-effect-charge-relabeling}
+\]
+\end{proposition}
+
+\begin{proof}
+The canonical momentum conjugate to \(\chi\) is
+\begin{equation}
+  p_\chi
+  =
+  \frac{\partial L_\chi}{\partial\dot\chi}
+  =
+  I_\chi\dot\chi-\frac{\theta n_{\mathrm m}}{2\pi}.
+  \label{eq:monopole-phase-canonical-momentum}
+\end{equation}
+The Legendre transform gives
+\begin{equation}
+  H_\chi
+  =
+  p_\chi\dot\chi-L_\chi
+  =
+  \frac{1}{2I_\chi}
+  \left(
+    p_\chi+\frac{\theta n_{\mathrm m}}{2\pi}
+  \right)^2 .
+  \label{eq:monopole-phase-legendre-transform}
+\end{equation}
+Because \(\chi\) is a coordinate on \(S^1\), single-valued wave functions are
+expanded in the orthonormal Fourier basis \(e^{\ii n\chi}\), \(n\in\mathbb Z\).
+Replacing \(p_\chi\) by the self-adjoint generator
+\(-\ii\partial_\chi\) therefore gives
+\eqref{eq:monopole-phase-dyon-hamiltonian}.  The combination multiplying
+\(I_\chi^{-1/2}\) in the Hamiltonian is the electric-field coordinate
+\eqref{eq:witten-effect-shifted-electric-coordinate}.  Under
+\(\theta\mapsto\theta+2\pi\), the relabelling
+\eqref{eq:witten-effect-charge-relabeling} leaves this real coordinate and
+hence the spectrum of \(H_\chi\) unchanged.
+
+It remains to justify the topological term used in
+\eqref{eq:monopole-phase-effective-lagrangian}.  On a slab
+\([t_0,t_1]\times\mathbb R^3\), the Chern--Weil identity gives
+\[
+  \frac{1}{8\pi^2}\int\operatorname{tr}(F\wedge F)
+  =
+  N_{\mathrm{CS}}[A(t_1)]-N_{\mathrm{CS}}[A(t_0)]
+  \quad
+  \text{plus the boundary contribution at }S^2_\infty .
+  \label{eq:monopole-phase-cs-boundary}
+\]
+For a path which changes only the asymptotic \(U(1)\) phase, this boundary
+contribution is the pairing of the magnetic transition function on
+\(S^2_\infty\) with the \(U(1)\) loop
+\(\chi(t_0)\to\chi(t_1)\).  In the primitive normalization of this subsection
+that pairing is
+\[
+  -\,n_{\mathrm m}\,\frac{\chi(t_1)-\chi(t_0)}{2\pi}.
+\]
+Differentiating in time gives
+\eqref{eq:monopole-phase-topological-term}.  The sign follows from the chosen
+orientation convention for a positive phase loop; reversing either the
+magnetic-charge orientation or the phase orientation reverses both sides and
+leaves \eqref{eq:witten-effect-shifted-electric-coordinate} as the invariant
+charge-lattice statement.
+\end{proof}
 
 \subsection{Collective Coordinates and the Regularized Semiclassical Measure}
 \label{subsec:collective-coordinate-regularized-measure}

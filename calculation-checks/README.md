@@ -184,7 +184,8 @@ Current checks:
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
-  equations, the coordinate transformation of
+  equations, the monopole phase-coordinate Legendre transform and
+  theta-angle charge-lattice relabelling, the coordinate transformation of
   \(\sqrt{\det G_{ab}}\,d^mz\), and the \(4N_c\) local dimension count of the
   embedded one-instanton moduli.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and

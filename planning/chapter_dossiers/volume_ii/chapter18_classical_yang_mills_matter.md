@@ -112,6 +112,10 @@ The chapter must define and derive:
 - the hedgehog ansatz for the unit 't Hooft--Polyakov/Prasad--Sommerfield
   monopole, the radial BPS ODEs, and the explicit
   \(K(\rho)=\rho/\sinh\rho\), \(H(\rho)=\coth\rho-\rho^{-1}\) solution;
+- the monopole \(S^1\) phase coordinate, its primitive periodicity, the
+  theta-angle total-derivative term on the phase path, quantization of
+  \(-i\partial_\chi\), the dyonic tower Hamiltonian, and the Witten-effect
+  shifted electric coordinate \(n_{\mathrm e}+\theta n_{\mathrm m}/2\pi\);
 - the distinction between topologically stable monopoles and vortices versus
   unstable sphaleron saddle points;
 - the Abelian-Higgs Nielsen--Olesen vortex energy, BPS flux bound, and
@@ -181,17 +185,22 @@ The chapter must define and derive:
 18. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
     provides a smooth nonabelian core for the unit 't Hooft--Polyakov
     monopole.
-19. Nielsen--Olesen vortices arise from the same finite-energy logic in
+19. Quantizing the primitive \(S^1\) phase coordinate of a BPS monopole gives
+    integer electric labels; the theta-angle term shifts the electric-field
+    coordinate to \(n_{\mathrm e}+\theta n_{\mathrm m}/2\pi\), with
+    \(\theta\mapsto\theta+2\pi\) compensated by
+    \(n_{\mathrm e}\mapsto n_{\mathrm e}-n_{\mathrm m}\).
+20. Nielsen--Olesen vortices arise from the same finite-energy logic in
     codimension two, with flux quantization and a first-order BPS system at
     critical coupling.
-20. The sphaleron is an unstable finite-energy saddle classified by its
+21. The sphaleron is an unstable finite-energy saddle classified by its
     position relative to Chern--Simons number and by its negative fluctuation
     mode.
-21. QCD uses the fundamental and anti-fundamental representations for quarks
+22. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-22. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+23. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -268,3 +277,8 @@ The chapter must define and derive:
   ghost/Goldstone gauge-dependent masses, the nonabelian mass matrix and
   \(SU(2)\to U(1)\) pattern, and the BRST/power-counting role of \(R_\xi\)
   gauges.  The Goldstone-theorem chapter now cross-references this section.
+- 2026-05-29 issue #597 pass: expanded the monopole collective-coordinate
+  discussion by deriving the phase-coordinate dyon tower and Witten-effect
+  charge-lattice shift from a finite-dimensional \(S^1\) quantum mechanics
+  with the theta-angle total derivative fixed by the Chern--Weil boundary
+  pairing.

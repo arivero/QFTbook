@@ -6,6 +6,8 @@ gauge-Higgs soliton discussion:
 
 * the Bogomolny and Abelian-Higgs square completions,
 * the Prasad-Sommerfield profile equations,
+* the monopole phase-coordinate Legendre transform and theta-angle
+  charge-lattice relabelling,
 * the coordinate invariance of the zero-mode density sqrt(det G) d^m z, and
 * the local dimension count of the one-instanton orientation orbit.
 
@@ -56,6 +58,20 @@ def check_prasad_sommerfield_profiles() -> None:
     assert_zero("Prasad-Sommerfield H equation", sp.together(second))
 
 
+def check_monopole_phase_legendre_and_theta_shift() -> None:
+    I, theta, nm, ne, chidot = sp.symbols("I theta nm ne chidot", nonzero=True)
+    lagrangian = sp.Rational(1, 2) * I * chidot**2 - theta * nm * chidot / (2 * sp.pi)
+    momentum = sp.diff(lagrangian, chidot)
+    solved_chidot = sp.solve(sp.Eq(ne, momentum), chidot)[0]
+    hamiltonian = sp.simplify(ne * solved_chidot - lagrangian.subs(chidot, solved_chidot))
+    expected = (ne + theta * nm / (2 * sp.pi)) ** 2 / (2 * I)
+    assert_zero("monopole phase Legendre transform", sp.together(hamiltonian - expected))
+
+    shifted_charge = (ne - nm) + (theta + 2 * sp.pi) * nm / (2 * sp.pi)
+    original_charge = ne + theta * nm / (2 * sp.pi)
+    assert_zero("theta-periodic dyon charge relabelling", sp.together(shifted_charge - original_charge))
+
+
 def check_zero_mode_density_coordinate_change() -> None:
     G = sp.Matrix([[3, 1], [1, 2]])
     jac = sp.Matrix([[2, 0], [1, 3]])
@@ -81,6 +97,7 @@ def main() -> None:
     check_bogomolny_square_completion()
     check_vortex_square_completion()
     check_prasad_sommerfield_profiles()
+    check_monopole_phase_legendre_and_theta_shift()
     check_zero_mode_density_coordinate_change()
     check_one_instanton_orientation_dimension()
     print("All soliton collective-coordinate checks passed.")
