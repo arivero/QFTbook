@@ -2679,6 +2679,120 @@ in a specified renormalization scheme.  What is scheme independent at this
 stage is the topological sector, the zero-mode count, the finite-regulator
 construction of the measure, and the exponential action.
 
+\subsection{Scale and Running-Coupling Content of the One-Instanton Density}
+\label{subsec:one-instanton-density-rg-content}
+
+The preceding finite-regulator formula separates the zero-mode Jacobian from
+the determinant on nonzero fluctuations.  The continuum one-instanton density
+contains three universal pieces which can be fixed before computing the
+scheme-dependent determinant constant.  First, the moduli
+\[
+  a^\mu\in\mathbb R^4,\qquad \rho\in\mathbb R_{>0}
+\]
+are the center and size of the instanton, while the remaining
+\(4N_c-5\) coordinates are dimensionless orientation coordinates on the
+embedded \(SU(2)\) orbit.  The translation-size part of a scale-covariant
+local density must therefore be
+\[
+  \frac{\dd^4a\,\dd\rho}{\rho^5}.
+\]
+Indeed \(a\) and \(\rho\) both have length dimension one, so
+\(\dd^4a\,\dd\rho/\rho^5\) is dimensionless and is invariant under the
+simultaneous dilation \(a\mapsto\lambda a\), \(\rho\mapsto\lambda\rho\).
+The power \(\rho^{-5}\) is the four-dimensional center plus one-dimensional
+scale volume element.  It is the product of the zero-mode Jacobian and the
+nonzero-mode determinant after their regulator-dependent powers of \(\rho\)
+have been combined.
+
+Second, the number of bosonic zero modes is \(m=4N_c\).  In the
+semiclassical expansion of an action \(S[A]/g_{\rm ht}^2\), replacing the
+zero-mode amplitudes by collective coordinates contributes one factor
+\(g_{\rm ht}^{-1}\) for each bosonic zero mode.  Equivalently, after absorbing
+normalization constants independent of \(g_{\rm ht}\) into the orientation
+measure and determinant convention, the zero-mode normalization supplies
+\[
+  g_{\rm ht}^{-4N_c}
+  =
+  \left(\frac{8\pi^2}{g_{\rm ht}^2}\right)^{2N_c}
+  \times
+  \hbox{constant}.
+\]
+This is the origin of the power multiplying the one-instanton density.  The
+constant depends on the precise normalization of the path-integral density
+and of the invariant volume on the orientation orbit.
+
+\begin{proposition}[One-loop running factor in the one-instanton density]
+\label{prop:one-instanton-rg-density-factor}
+Use the common half-trace coupling \(g_{\rm ht}(\mu)\) in the BPST
+subsection, and suppose the one-instanton density is renormalized in a
+mass-independent scheme through one loop.  Let
+\[
+  \mu\frac{\dd g_{\rm ht}}{\dd\mu}
+  =
+  -\frac{b_0}{16\pi^2}g_{\rm ht}^3+O(g_{\rm ht}^5),
+  \qquad
+  b_0=\frac{11}{3}N_c-\frac23N_f .
+  \label{eq:instanton-density-beta0-definition}
+\]
+Then the part of the one-instanton measure fixed by scale covariance,
+zero-mode normalization, and one-loop RG invariance is
+\begin{equation}
+  \dd\mu_{1}^{\rm univ}
+  =
+  C_{\mathcal S,N_c,N_f}\,
+  \frac{\dd^4a\,\dd\rho}{\rho^5}\,
+  \dd\Omega_{N_c}\,
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  (\mu\rho)^{b_0}
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}+\ii\theta\right]
+  \left(1+O(g_{\rm ht}^2)\right).
+  \label{eq:one-instanton-universal-density}
+\end{equation}
+Here \(\dd\Omega_{N_c}\) is a chosen invariant density on the local
+orientation orbit
+\[
+  SU(N_c)/(SU(N_c-2)\times U(1)),
+\]
+with the evident \(SU(2)/\mathbb Z_2\) specialization when \(N_c=2\).
+The coefficient \(C_{\mathcal S,N_c,N_f}\) is a finite constant depending on
+the regulator, subtraction convention, and normalization of
+\(\dd\Omega_{N_c}\); obtaining it requires the full renormalized determinant
+calculation in the chosen scheme.
+\end{proposition}
+
+\begin{proof}
+The factors
+\(\dd^4a\,\dd\rho/\rho^5\), \(\dd\Omega_{N_c}\), and
+\((8\pi^2/g_{\rm ht}^2)^{2N_c}\) have just been fixed by dimension,
+orientation invariance, and the \(4N_c\) bosonic zero modes.  It remains to
+determine the power of \(\mu\rho\) at one loop.  Write the unknown power as
+\(\alpha\) and apply \(\mu\dd/\dd\mu\) to the logarithm of the density factor
+\[
+  g_{\rm ht}^{-4N_c}
+  (\mu\rho)^\alpha
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right].
+\]
+The derivative is
+\[
+  \alpha
+  -4N_c\,\frac{\beta(g_{\rm ht})}{g_{\rm ht}}
+  +
+  \frac{16\pi^2}{g_{\rm ht}^3}\,\beta(g_{\rm ht}) .
+\]
+Substituting \eqref{eq:instanton-density-beta0-definition} gives
+\[
+  \alpha-b_0+O(g_{\rm ht}^2).
+\]
+RG invariance of a physical one-instanton contribution through one loop
+therefore fixes \(\alpha=b_0\).  The derivative of the zero-mode power
+starts at order \(g_{\rm ht}^2\), so it belongs to the next perturbative order
+and is absorbed into the higher-loop correction multiplying
+\eqref{eq:one-instanton-universal-density}.  The finite constant
+\(C_{\mathcal S,N_c,N_f}\) is outside this argument because RG invariance
+fixes scale dependence, while the constant term is set by the actual
+regularized determinant and measure normalization.
+\end{proof}
+
 Fermion zero modes are controlled by the index theorem already stated in
 \eqref{eq:dirac-index-anomaly}.  In the conventional half-trace notation, a
 left-handed Weyl fermion in representation \(R\) has
@@ -2737,14 +2851,20 @@ products of \(N_f\) bilinears.  At one loop
 \[
   C_{N_c,N_f}(\rho,\mu)
   =
-  C^{(0)}_{N_c,N_f}(\rho\mu)^{b_0}
+  C^{(0)}_{N_c,N_f}
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  (\rho\mu)^{b_0}
   \left(1+O(g_{\rm ht}^2(\mu))\right),
   \qquad
   b_0=\frac{11}{3}N_c-\frac23N_f,
 \]
 where \(b_0\) is defined by
 \(\mu\,\dd g_{\rm ht}/\dd\mu=-b_0g_{\rm ht}^3/(16\pi^2)+O(g_{\rm ht}^5)\).
-The dimensionless factors \(\rho^3\bar\psi_R\psi_L\) in
+The scale and coupling dependence is the universal content derived in
+Proposition~\ref{prop:one-instanton-rg-density-factor}; the constant
+\(C^{(0)}_{N_c,N_f}\) is fixed only after choosing the determinant and
+orientation-volume normalization.  The dimensionless factors
+\(\rho^3\bar\psi_R\psi_L\) in
 \eqref{eq:qcd-thooft-vertex-leading-local} record the normalization of the
 external zero-mode wavefunctions in the local limit; changing the
 regularization scheme changes \(C^{(0)}_{N_c,N_f}\) and higher-loop factors,

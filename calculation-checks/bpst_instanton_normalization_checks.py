@@ -12,7 +12,9 @@ relations
 
     int F^a_{mu nu} F^a_{mu nu} d^4x = 32 pi^2,
     Q = 1,
-    S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2
+    S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2,
+    d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
+    one-loop scale/RG factors in the instanton density
 
 with g_ht = sqrt(2) g_YM.
 """
@@ -157,12 +159,34 @@ def check_radial_cumulative_profile() -> None:
     assert_equal("BPST cumulative derivative", derivative, density_with_measure(u))
 
 
+def check_one_instanton_density_scaling() -> None:
+    # Translation and size coordinates have dimensions L^4 and L respectively;
+    # rho^{-5} makes the center/scale measure dimensionless.
+    measure_length_dimension = 4 + 1 - 5
+    assert_equal("one-instanton center-size measure dimension", measure_length_dimension, 0)
+
+    for n_c, n_f in [(2, 0), (3, 0), (3, 2), (5, 4)]:
+        zero_modes = 4 * n_c
+        # (8*pi^2/g^2)^(2 N_c) carries g-power -4 N_c, one g^{-1}
+        # per bosonic zero mode.
+        displayed_g_power = -2 * (2 * n_c)
+        assert_equal(f"zero-mode g-power SU({n_c})", displayed_g_power, -zero_modes)
+
+        b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+        alpha = b0
+        # For log[g^{-4N_c} (mu rho)^alpha exp(-8*pi^2/g^2)],
+        # beta=-b0 g^3/(16*pi^2) gives the leading RG derivative alpha-b0.
+        leading_rg_derivative = alpha - b0
+        assert_equal(f"one-loop RG exponent SU({n_c}) Nf={n_f}", leading_rg_derivative, 0)
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
     check_eta_quadratic_identity()
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
+    check_one_instanton_density_scaling()
     print("All BPST instanton normalization checks passed.")
 
 

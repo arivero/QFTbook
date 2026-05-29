@@ -46,7 +46,9 @@
   `calculation-checks/bpst_instanton_normalization_checks.py`, verifies the
   self-dual 't Hooft symbol identities, the quadratic identity entering the
   curvature calculation, the radial integral, topological charge, and
-  coupling-coordinate conversion used there.
+  coupling-coordinate conversion used there, as well as the
+  scale-invariant one-instanton center-size measure, zero-mode coupling
+  power, and one-loop RG exponent.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
@@ -131,6 +133,8 @@
 | \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
+| \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
+| \(\dd\Omega_{N_c}\) | chosen invariant density on the embedded one-instanton orientation orbit |
 | \(\psi_{0,\alpha},\xi_\alpha\) | fermion zero-mode wavefunction and its Grassmann coefficient |
 
 ## Issue-Pass Notes
@@ -287,6 +291,16 @@
 - The \(SU(2)\), \(k=1\) instanton has eight bosonic zero modes:
   translations, size, and \(SU(2)/\mathbb Z_2\) orientation.  The
   \(SU(N_c)\) embedded one-instanton moduli count is \(4N_c\).
+- The universal one-loop scale and running-coupling dependence of the
+  one-instanton density is
+  \[
+    \frac{\dd^4a\,\dd\rho}{\rho^5}\,\dd\Omega_{N_c}
+    \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+    (\mu\rho)^{b_0}
+    \exp[-8\pi^2/g_{\rm ht}^2(\mu)+i\theta],
+  \]
+  up to the finite determinant/orientation-volume constant and higher-loop
+  corrections in the chosen scheme.
 - The Dirac index gives \(2T_Rk\) chiral zero modes for a Weyl fermion in
   representation \(R\) in common half-trace notation.  For a fundamental Weyl
   fermion of \(SU(N_c)\) at \(k=1\), this is one zero mode.
@@ -355,6 +369,11 @@
   action saturation with the half-trace/trace-delta coupling comparison,
   bosonic and fermionic zero-mode counts, the QCD and electroweak 't Hooft
   vertices, and a BPST normalization calculation-check script.
+- 2026-05-29 issue #597 pass: derived the universal one-loop
+  one-instanton density factors that had previously been compressed into
+  \(C_{N_c,N_f}(\rho,\mu)\): the scale-invariant
+  \(\dd^4a\,\dd\rho/\rho^5\) center-size measure, the \(4N_c\) zero-mode
+  coupling power, and the RG determination of \((\mu\rho)^{b_0}\).
 - 2026-05-27 issue #630 theta pass: added the finite-regulator topological
   susceptibility datum and finite-volume cumulant proof, paired with
   `calculation-checks/qcd_theta_witten_veneziano_checks.py`.
