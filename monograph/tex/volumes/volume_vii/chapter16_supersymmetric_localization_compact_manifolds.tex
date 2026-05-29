@@ -302,7 +302,7 @@ Define the even entire function
 \end{equation}
 where the product is taken in the displayed counterterm convention.
 
-\begin{lemma}[The \(H\)-function convention]
+\begin{lemma}[Local uniform convergence and Barnes representation of \(H\)]
 \label{lem:s4-H-function-convention}
 The product in \eqref{eq:pestun-H-function} converges locally uniformly on
 the complex \(x\)-plane, defines an even entire function, and satisfies
@@ -331,20 +331,64 @@ coefficients.
 \end{lemma}
 
 \begin{proof}
-For \(x\) in a compact subset of \(\mathbb C\), the logarithm of the
-\(n\)-th factor is
+Let \(K\subset\mathbb C\) be compact and choose \(N\) so that
+\(|x|^2/n^2\leq 1/2\) for \(x\in K\) and \(n\geq N\).  For \(n\geq N\), the
+logarithm of the \(n\)-th factor is
 \[
   n\log\!\left(1+\frac{x^2}{n^2}\right)-\frac{x^2}{n}
   =
-  -\frac{x^4}{2n^3}+O(n^{-5}),
+  -\frac{x^4}{2n^3}+R_n(x),
+  \qquad
+  |R_n(x)|\leq C_K n^{-5},
 \]
-uniformly on the compact set.  The Weierstrass \(M\)-test gives local uniform
-convergence of the logarithm after deleting the displayed zeros, hence an
-entire even product.  Differentiating the locally uniformly convergent
-logarithmic series gives \eqref{eq:H-log-derivative}.  Formula
-\eqref{eq:H-Barnes-G-convention} follows by substituting \(z=\ii x\) in the
-standard Weierstrass product for the Barnes \(G\)-function; the only mismatch
-between common physics normalizations is the displayed exponential quadratic.
+uniformly on \(K\).  The series of logarithms therefore converges uniformly on
+\(K\) after the finitely many initial factors are separated.  The resulting
+Weierstrass product converges locally uniformly and defines an entire
+function.  Each factor depends only on \(x^2\), so the function is even; its
+zeros are at \(x=\pm \ii n\) with the multiplicities encoded by the exponent
+\(n\).
+
+On a compact set avoiding these zeros, the differentiated logarithmic series
+is uniformly convergent because
+\[
+  \frac{d}{dx}
+  \left[
+    n\log\!\left(1+\frac{x^2}{n^2}\right)-\frac{x^2}{n}
+  \right]
+  =
+  \frac{2nx}{n^2+x^2}-\frac{2x}{n}
+  =
+  O_K(n^{-3}) .
+\]
+Termwise differentiation is then justified by the Weierstrass theorem for
+locally uniformly convergent holomorphic series and gives
+\eqref{eq:H-log-derivative}.
+
+For the Barnes representation, use the standard Weierstrass product
+\[
+  G_B(1+z)
+  =
+  (2\pi)^{z/2}
+  \exp\!\left[-\frac12\bigl(z+(1+\gamma_{\rm E})z^2\bigr)\right]
+  \prod_{n=1}^\infty
+  \left(1+\frac zn\right)^n
+  \exp\!\left(\frac{z^2}{2n}-z\right),
+\]
+which fixes the normalization \(G_B(1)=1\) and the functional equation
+\(G_B(z+1)=\Gamma(z)G_B(z)\).  Multiplying the products for \(z=\ii x\) and
+\(z=-\ii x\), the factors \((2\pi)^{\pm \ii x/2}\) and \(\exp(\mp \ii x/2)\)
+cancel, while
+\[
+  \left(1+\frac{\ii x}{n}\right)^n
+  \left(1-\frac{\ii x}{n}\right)^n
+  \exp\!\left(-\frac{x^2}{n}\right)
+  =
+  \left(1+\frac{x^2}{n^2}\right)^n
+  \exp\!\left(-\frac{x^2}{n}\right).
+\]
+The remaining exponential is \(\exp((1+\gamma_{\rm E})x^2)\), which gives
+\eqref{eq:H-Barnes-G-convention}.  Multiplying \(H\) by
+\(\exp(c x^2)\) changes only this local quadratic prefactor.
 \end{proof}
 
 For a vector multiplet and hypermultiplets of masses \(m_\ell\) in

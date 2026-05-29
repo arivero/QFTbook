@@ -59,3 +59,11 @@ recording fluctuation data required for controlled backreaction.
 No figure is included in this pass.  Future figures should show the
 stress-tensor response kernel, the noise-kernel pairing, and the hierarchy of
 curvature, microscopic, and EFT scales.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: expanded the stress-tensor linear-response proof into a
+  separated-point retarded-response derivation with explicit source-sign
+  convention, causal support, microcausality, and the local diagonal terms
+  coming from metric variation of composite fields and time-ordered-product
+  extensions.

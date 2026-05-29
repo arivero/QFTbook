@@ -13,7 +13,8 @@ an informal substitute for IRC safety.
   loss rate \(\Gamma_i=\sum_{j,k}\int dz\,K_{i\to jk}\).
 - The nonlinear evolution equation is written with the charged-fraction
   addition law \(x=zx_1+(1-z)x_2\).
-- Proposition `prop:track-function-normalization-moment` proves that paired
+- A later anti-wrapper pass demoted the finite-kernel moment calculation from
+  a proposition to a worked paragraph.  The paragraph proves that paired
   evolution preserves \(\int_0^1 dx\,T_i(x,\mu)=1\) and derives the first
   charged-energy moment equation
   \[

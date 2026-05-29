@@ -80,8 +80,12 @@ For every \(t>0\),
 \end{proposition}
 
 \begin{proof}
-The nonzero spectrum of \(D_A^2\) on \(S^+\otimes E\) is paired with the
-nonzero spectrum on \(S^-\otimes E\).  Indeed, if
+Because \(M\) is compact and \(D_A\) is elliptic and self-adjoint, \(D_A^2\)
+has discrete spectrum with finite-dimensional eigenspaces and
+\(e^{-tD_A^2}\) is trace class for \(t>0\).  The chirality operator anticommutes
+with \(D_A\), so \(D_A\) exchanges \(S^+\otimes E\) and \(S^-\otimes E\).  The
+nonzero spectrum of \(D_A^2\) on \(S^+\otimes E\) is paired with the nonzero
+spectrum on \(S^-\otimes E\).  Indeed, if
 \(\psi_+\in\Gamma(S^+\otimes E)\) satisfies
 \[
   D_A^-D_A^+\psi_+=\lambda\psi_+,\qquad \lambda>0,
@@ -90,16 +94,20 @@ then \(D_A^+\psi_+\neq0\) and
 \[
   D_A^+D_A^-(D_A^+\psi_+)=\lambda(D_A^+\psi_+).
 \]
-The inverse pairing is \(\psi_-\mapsto D_A^-\psi_-\).  Hence the positive
-eigenvalue contributions to
+The inverse map on the \(\lambda\)-eigenspace is \(\lambda^{-1}D_A^-\), so the
+pairing preserves multiplicities.  Hence the positive eigenvalue
+contributions to
 \[
   \operatorname{Tr}_{S^+}e^{-tD_A^-D_A^+}
   -
   \operatorname{Tr}_{S^-}e^{-tD_A^+D_A^-}
 \]
-cancel.  The zero eigenspaces are precisely \(\ker D_A^+\) and
-\(\ker D_A^-\), so the supertrace is
-\(\dim\ker D_A^+-\dim\ker D_A^-\).
+cancel term by term, with absolute convergence supplied by the heat trace.
+The zero eigenspaces are precisely \(\ker D_A^+\) and \(\ker D_A^-\).  Their
+contribution is independent of \(t\) and equals
+\[
+  \dim\ker D_A^+-\dim\ker D_A^-=\operatorname{Ind}(D_A^+).
+\]
 \end{proof}
 
 This proof is finite-dimensional after elliptic spectral theory supplies the

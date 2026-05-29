@@ -302,11 +302,14 @@ reconstructed as part of the problem.
 
 \section{Linear Response}
 
-\begin{proposition}[Retarded stress-tensor linear response]
+\begin{proposition}[Retarded stress-tensor response at separated points]
 \label{prop:semiclassical-retarded-stress-linear-response}
-Let \(g_{\mu\nu}\mapsto g_{\mu\nu}+h_{\mu\nu}\), with \(h\) compactly
-supported in the region where the response is tested.  The metric
-perturbation couples to the stress tensor through
+Let the locally covariant theory be fixed on a globally hyperbolic background
+\((M,g)\), let \(\omega\) be an admissible Hadamard state, and let the
+renormalized stress tensor and its time-ordered square be chosen in one
+renormalization scheme.  Vary the inverse metric by a compactly supported
+smooth tensor \(h^{\mu\nu}=\delta g^{\mu\nu}\).  The metric perturbation
+couples to the stress tensor through
 \begin{equation}
   \delta S_{\rm source}
   =
@@ -329,7 +332,7 @@ The separated-point retarded kernel is
 \begin{equation}
   G^{\rm ret}_{\mu\nu,\rho\sigma}(x,y)
   =
-  -\ii\,\Theta(x\succ y)\,
+  \ii\,\Theta(x\succ y)\,
   \omega\!\left(
     [T_{\mu\nu}^{\rm ren}(x),T_{\rho\sigma}^{\rm ren}(y)]
   \right),
@@ -342,28 +345,44 @@ the time-ordered stress-tensor product.
 \end{proposition}
 
 \begin{proof}[Derivation of the retarded commutator]
-In the interaction picture with source
-\eqref{eq:semiclassical-metric-source-coupling}, the first-order change of
-the expectation of an observable \(A(x)\) is
+The clean statement is first made for a smeared observable
+\(A(f)=\int A(x)f(x)\) whose support is disjoint from the support of the
+local counterterm extension of the stress-tensor product.  In the
+interaction-picture or pAQFT notation, the relative \(S\)-matrix for the
+source \(V=\delta S_{\rm source}\) gives, to first order,
 \[
-  \delta\langle A(x)\rangle
+  \delta\omega(A(f))
   =
-  \ii\,
-  \omega\!\left(
-    \left[
-      \int_{J^-(x)}\delta S_{\rm source}(y),A(x)
-    \right]
-  \right)
+  \ii\,\omega\!\left([V_{J^-(\operatorname{supp}f)},A(f)]\right)
   +
-  \hbox{contact terms from the definition of }A .
+  \delta_{\rm loc}\omega(A(f)).
 \]
-Taking \(A=T_{\mu\nu}^{\rm ren}\) and substituting
-\eqref{eq:semiclassical-metric-source-coupling} gives
-\eqref{eq:semiclassical-linear-response} and
-\eqref{eq:semiclassical-retarded-stress-kernel}.  Causality follows from
-microcausality: the commutator vanishes when \(x\) and \(y\) are spacelike
-separated, and the retarded prescription removes points not in the past of
-\(x\).
+Only the part of \(V\) in the causal past of \(\operatorname{supp}f\)
+appears; this is the retarded prescription.  The local term
+\(\delta_{\rm loc}\) records two effects that cannot be read from separated
+points: the explicit variation of the composite field \(A\) with the metric
+and the chosen extension of time-ordered products to the diagonal.
+
+Set \(A=T_{\mu\nu}^{\rm ren}\) and insert
+\eqref{eq:semiclassical-metric-source-coupling}.  For \(y\in J^-(x)\),
+\[
+  \ii\left[
+    -\frac12 h^{\rho\sigma}(y)T_{\rho\sigma}^{\rm ren}(y),
+    T_{\mu\nu}^{\rm ren}(x)
+  \right]
+  =
+  \frac12 h^{\rho\sigma}(y)\,
+  \ii\,[T_{\mu\nu}^{\rm ren}(x),T_{\rho\sigma}^{\rm ren}(y)] .
+\]
+After unsmearing away from the diagonal, this gives
+\eqref{eq:semiclassical-linear-response} with the kernel
+\eqref{eq:semiclassical-retarded-stress-kernel}.  Microcausality makes the
+commutator vanish for spacelike separated \(x,y\); the restriction
+\(\Theta(x\succ y)\) removes the advanced part and is therefore the unique
+causal linear response compatible with the sign convention
+\(\delta W=-(1/2)\int T_{\rho\sigma}\delta g^{\rho\sigma}\).  The remaining
+diagonal ambiguity is exactly the local term
+\(\delta T_{\mu\nu}^{\rm loc}\).
 \end{proof}
 
 The linearized semiclassical equation is therefore

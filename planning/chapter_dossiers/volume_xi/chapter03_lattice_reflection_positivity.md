@@ -91,3 +91,10 @@
 
 - Reflected lattice halves and cross-plane links.
 - Transfer-matrix construction diagram.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: expanded scalar reflection positivity to state the reflection
+  invariance and finite-volume integrability hypotheses, then prove positivity
+  by half-lattice factorization, nonnegative crossing-kernel expansion,
+  Fubini/monotone convergence, and a sum of reflected absolute squares.

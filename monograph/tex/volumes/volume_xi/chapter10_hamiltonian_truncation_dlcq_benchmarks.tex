@@ -571,7 +571,7 @@ certificate: comparison with the continuum magnetic-Ising spectrum requires
 the cutoff, finite-volume, diagonal-form-factor, and counterterm estimates
 described around \eqref{eq:tffsa-connected-spin-matrix-element}.
 
-\begin{proposition}[Schur complement form of truncation error]
+\begin{proposition}[Feshbach--Schur reduction with resolvent control]
 \label{prop:hamiltonian-truncation-schur-complement}
 In a finite regulated Hilbert space, let \(H=H^\dagger\) be a Hermitian
 matrix and let \(\Hilb=P\Hilb\oplus Q\Hilb\), where \(P\) is an orthogonal
@@ -598,6 +598,17 @@ Conversely, if \(u\in P\Hilb\) satisfies
   (QHQ-E)^{-1}QHPu
 \]
 is an eigenvector of \(H\) with eigenvalue \(E\).
+Moreover, if
+\[
+  d(E)=\operatorname{dist}(E,\operatorname{spec}(QHQ))>0,
+\]
+then the eliminated component obeys the finite-cutoff estimate
+\begin{equation}
+  \|Q\psi\|
+  \leq
+  d(E)^{-1}\,\|QHP\,P\psi\|.
+  \label{eq:feshbach-q-component-bound}
+\end{equation}
 \end{proposition}
 
 \begin{proof}
@@ -612,8 +623,10 @@ Since \(E\) is in the resolvent set of \(QHQ\), the second equation gives
   Q\psi=-(QHQ-E)^{-1}QHP\,P\psi .
 \]
 Substituting this into the first equation gives
-\eqref{eq:feshbach-schur-truncation-effective-hamiltonian}.  Conversely,
-suppose \(u\in P\Hilb\) obeys the Schur-complement equation and define
+\eqref{eq:feshbach-schur-truncation-effective-hamiltonian}.  This proves that
+any eigenvector with nonzero \(P\)-projection gives a vector in the kernel of
+the energy-dependent effective operator on \(P\Hilb\).  Conversely, suppose
+\(u\in P\Hilb\) obeys the Schur-complement equation and define
 \[
   \psi=u-(QHQ-E)^{-1}QHPu .
 \]
@@ -621,6 +634,16 @@ Then \(P\psi=u\) and the second block equation is satisfied by construction,
 because \((QHQ-E)(QHQ-E)^{-1}=Q\) on \(Q\Hilb\).  Substituting the
 Schur-complement equation into the first block equation gives zero there as
 well.  Hence \(H\psi=E\psi\).
+
+Since \(QHQ\) is a finite Hermitian matrix, the spectral theorem gives
+\[
+  \|(QHQ-E)^{-1}\|=d(E)^{-1}.
+\]
+Applying this to the explicit formula for \(Q\psi\) gives
+\eqref{eq:feshbach-q-component-bound}.  This estimate is the part of the
+finite-dimensional identity that survives as useful information in truncation
+theory: a high-energy block can be eliminated only together with control of
+the resolvent distance and the coupling \(QHP\).
 \end{proof}
 
 Equation~\eqref{eq:feshbach-schur-truncation-effective-hamiltonian} is the

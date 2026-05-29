@@ -168,3 +168,10 @@
 - No figure is included in this pass.  Future figures may display the
   \(S^4\) north/south fixed-point geometry and the \(S^3\) Coulomb-contour
   hyperplane arrangement.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: retitled and expanded the \(H\)-function lemma so it proves
+  local uniform convergence, the logarithmic derivative, and the Barnes
+  \(G\)-representation directly from the Weierstrass product rather than
+  presenting the determinant convention as a thin normalization box.

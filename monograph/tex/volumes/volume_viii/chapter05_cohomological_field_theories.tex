@@ -330,7 +330,7 @@ Mathai--Quillen Thom form.  Pulling this Thom form back by the section
 transverse, the large-deformation limit localizes the integral to \(Z(s)\),
 with sign determined by the orientation of \(\det(ds)\).
 
-\begin{proposition}[Finite-dimensional zero-locus interpretation]
+\begin{proposition}[Mathai--Quillen localization for a transverse section]
 \label{prop:mq-zero-locus-interpretation}
 Let \(X\) be compact and \(s\) transverse to the zero section.  For any
 closed differential form \(\alpha\) on \(X\) of degree
@@ -349,16 +349,61 @@ induced by \(ds\) and by the given orientations of \(X\) and \(E\).  When
 \end{proposition}
 
 \begin{proof}
-The Mathai--Quillen form is a Thom form for \(E\), hence its pullback by
-\(s\) represents \(e(E)\).  The deformation \(s\mapsto t^{1/2}s\) changes
-the representative by a \(Q\)-exact term, so the integral of closed
-\(\alpha\) is independent of \(t\).  As \(t\to+\infty\), the Gaussian
-\(\exp(-t\|s\|^2/2)\) localizes to the transverse zero locus.  In normal
-coordinates the derivative \(ds:N_{Z(s)/X}\to E|_{Z(s)}\) identifies the
-normal bundle with \(E\), and this identification supplies the orientation
-used on \(Z(s)\).  The normal Gaussian and Berezin integrations cancel the
-Jacobian of \(ds\) with its orientation sign, leaving precisely the integral
-of \(\alpha\) over the oriented zero locus.
+Let \(\tau_{\rm MQ}\in\Omega^{\operatorname{rank}E}_{\rm cpt}(E)\) denote the
+Mathai--Quillen Thom form in the convention described above.  Its pullback
+\(s^*\tau_{\rm MQ}\) represents \(e(E)\).  Replacing \(s\) by \(t^{1/2}s\)
+does not change this cohomology class: differentiating the Gaussian
+representative with respect to \(t\) gives an exact form, equivalently a
+\(Q\)-exact variation in the finite-dimensional supersymmetric notation.
+Since \(X\) is compact and \(\alpha\) is closed,
+\[
+  I(t):=\int_X\alpha\wedge (t^{1/2}s)^*\tau_{\rm MQ}
+\]
+is independent of \(t>0\).
+
+It remains to identify the common value by the limit \(t\to+\infty\).
+Transversality makes \(Z(s)\) a compact submanifold of codimension
+\(\operatorname{rank}E\), and
+\[
+  ds:N_{Z(s)/X}\longrightarrow s^*E
+\]
+is a vector-bundle isomorphism.  Choose a tubular neighborhood of \(Z(s)\)
+with base coordinate \(y\in Z(s)\) and normal coordinate \(n\in N_{Z(s)/X,y}\).
+In this neighborhood
+\[
+  s(y,n)=ds_y(n)+O(|n|^2).
+\]
+On the complement of any smaller tubular neighborhood, \(\|s\|\) is bounded
+below by a positive constant, so the Gaussian part of the pulled-back
+Mathai--Quillen form is exponentially small in \(t\).  Thus only
+\(|n|=O(t^{-1/2})\) contributes.  Put \(n=t^{-1/2}\xi\).  The leading normal
+part of the Mathai--Quillen density is
+\[
+  (2\pi)^{-r/2}
+  \exp\!\left[-\frac12\|ds_y(\xi)\|^2\right]
+  \det(ds_y)\,d^r\xi,
+  \qquad r=\operatorname{rank}E,
+\]
+where the determinant is computed after oriented bases of \(N_{Z(s)/X,y}\)
+and \(E_y\) are chosen.  The ordinary Gaussian integral contributes
+\(|\det(ds_y)|^{-1}\), while the Berezin fiber integration contributes
+\(\det(ds_y)\).  Their quotient is the sign of \(ds_y\).  The orientation on
+\(Z(s)\) is exactly the orientation for which the decomposition
+\[
+  T_xX\simeq T_xZ(s)\oplus N_{Z(s)/X,x}
+  \simeq T_xZ(s)\oplus E_x
+\]
+has the prescribed orientations of \(X\) and \(E\).  With this convention the
+sign is absorbed into the oriented integration over \(Z(s)\).  The
+terms omitted in \(s(y,t^{-1/2}\xi)\) and in the pulled-back form give
+negative powers of \(t^{1/2}\) after the rescaling and vanish by the Gaussian
+bound.  Therefore
+\[
+  \lim_{t\to+\infty} I(t)=\int_{Z(s)}\alpha|_{Z(s)} .
+\]
+The equality follows because \(I(t)\) is independent of \(t\).  When
+\(\operatorname{rank}E=\dim X\), \(Z(s)\) is a finite oriented zero-manifold,
+so the last integral is the signed sum over its points.
 \end{proof}
 
 The proposition is the finite-dimensional ancestor of statements such as

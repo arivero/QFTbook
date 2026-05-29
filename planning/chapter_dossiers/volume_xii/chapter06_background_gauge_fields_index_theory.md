@@ -70,3 +70,9 @@ index-theoretic anomaly lines.
 No figure is included.  Future render work should add a determinant-line
 diagram over a loop in background-field moduli space and an index-density
 flow from `I_{2n+2}` to descent.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: expanded the McKean-Singer proof to state the elliptic spectral
+  inputs, heat-trace absolute convergence, multiplicity-preserving nonzero
+  spectral pairing, and zero-mode contribution to the analytic index.

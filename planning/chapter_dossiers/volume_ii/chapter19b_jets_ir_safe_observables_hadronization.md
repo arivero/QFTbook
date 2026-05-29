@@ -49,10 +49,9 @@ The chapter establishes:
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
-- a finite-kernel track-function evolution datum and Proposition
-  `prop:track-function-normalization-moment`, proving normalization
-  preservation and the first-moment evolution formula under paired real--virtual
-  track-function RG;
+- a finite-kernel track-function evolution datum and a worked moment-coordinate
+  derivation proving normalization preservation and the first-moment evolution
+  formula under paired real--virtual track-function RG;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -158,6 +157,11 @@ The chapter establishes:
 - 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
   RG datum, proved normalization preservation and first-moment evolution, and
   added `calculation-checks/track_function_moment_checks.py`.
+- 2026-05-29 anti-wrapper pass: demoted the track-function normalization and
+  first-moment proposition to a worked paragraph because the proof is the
+  finite-kernel moment algebra; the substantive QFT datum remains the
+  nonperturbative operator coordinate and the real--virtual paired evolution
+  definition.
 - 2026-05-27 issue #630 SCET pass: upgraded the factorization/resummation
   section with a two-jet SCET operator datum, finite soft Wilson-line decoupling
   proof, explicit overlap/zero-bin and rapidity-regulator requirements, and

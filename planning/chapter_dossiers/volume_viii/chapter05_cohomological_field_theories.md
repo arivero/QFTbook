@@ -91,3 +91,11 @@
   finite Cartan-model algebra, Hamiltonian equivariant closure,
   Mathai-Quillen Gaussian square completion, and rank-one zero-locus
   orientation.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: strengthened the Mathai-Quillen zero-locus statement by
+  replacing the compressed Thom-form slogan with a transverse-section
+  localization proof: \(t^{1/2}s\) deformation, exponential suppression away
+  from the zero locus, tubular normal coordinates, \(t^{-1/2}\) rescaling, and
+  cancellation of the Gaussian Jacobian against the Berezin determinant.

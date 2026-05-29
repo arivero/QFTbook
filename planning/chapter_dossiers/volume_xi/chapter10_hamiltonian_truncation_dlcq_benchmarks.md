@@ -138,3 +138,11 @@ plots.
   block normalization, finite Ising TFFSA spectral-flow derivative identities,
   finite large-`K` fit algebra, finite residual certification,
   spectral-projector leakage, and the Feshbach determinant identity.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: strengthened the Schur-complement proposition into a
+  Feshbach-Schur reduction with an explicit resolvent-distance
+  bound on the eliminated \(Q\)-component, so the statement now records the
+  estimate relevant to truncation control rather than only a block-matrix
+  rearrangement.

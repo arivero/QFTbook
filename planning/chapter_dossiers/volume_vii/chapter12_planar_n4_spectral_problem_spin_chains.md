@@ -152,3 +152,11 @@ single-trace word and the adjacent exchange interaction.
 - Scope boundary: this chapter uses the stringbook conventions only as QFT
   convention guidance.  String compactification, AdS/CFT, and superstring
   dynamics are not part of the monograph argument here.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the two-magnon one-loop contact matching from a
+  proposition to a worked calculation paragraph.  The calculation remains
+  explicit because it fixes the ordered-chamber exchange convention and the
+  inverse relation to the Bethe-Yang phase, but it is not theorem-level
+  material.
