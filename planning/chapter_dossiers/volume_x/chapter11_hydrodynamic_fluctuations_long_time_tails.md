@@ -49,7 +49,9 @@ the nonequilibrium/open-system chapter.
    \[
      \Gamma(1-d/2)(4\pi)^{-d/2}(2D)^{-d/2}z^{d/2-1},
    \]
-   with logarithmic replacement in even spatial dimension.
+   with logarithmic replacement in even spatial dimension.  The
+   Schwinger-parameter derivation is recorded as a worked calculation rather
+   than a proposition.
 8. In \(d=3\), an explicit cutoff integral separates the analytic
    \(\Lambda_{\rm hyd}\) term from the universal
    \(-z^{1/2}/(4\pi(2D)^{3/2})\) term.

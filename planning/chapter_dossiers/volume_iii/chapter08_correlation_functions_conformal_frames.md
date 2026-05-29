@@ -39,10 +39,9 @@ The chapter establishes:
   three-dimensional Schouten degeneration to two parity-even structures;
 - radial conjugation and BPZ-type bra construction from cylinder-time limits;
 - Definition `def:ordered-four-point-conformal-frame`, Theorem
-  `thm:four-point-cross-ratio-completeness`, and Proposition
-  `prop:scalar-four-point-prefactor-covariance`, giving the ordered
-  four-point frame, the residual stabilizer dimension count, and the scalar
-  four-point prefactor covariance proof;
+  `thm:four-point-cross-ratio-completeness`, and the scalar four-point
+  prefactor covariance calculation, giving the ordered four-point frame, the
+  residual stabilizer dimension count, and the prefactor weights;
 - conformal frames and residual stabilizer groups;
 - positivity conditions on two-point coefficient matrices.
 

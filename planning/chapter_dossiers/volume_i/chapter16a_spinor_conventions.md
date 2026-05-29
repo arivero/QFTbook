@@ -71,11 +71,10 @@
 - The \(\rho_{+-}/\rho_{-+}\) minus sign and the
   \(2\eta_{\mu\nu}\) contraction are retained as an explicit convention check
   in prose rather than theorem form.
-- `def:majorana-conjugation-weinberg-basis` and
-  `prop:majorana-conjugation-lorentz-covariant` fix and prove the Lorentz
-  covariance of the anti-linear Majorana real structure, including the
-  corrected infinitesimal sign
-  \((S^{\mu\nu})^*=-B S^{\mu\nu}B^{-1}\).
+- `def:majorana-conjugation-weinberg-basis` fixes the anti-linear Majorana
+  real structure.  Its Lorentz covariance and the corrected infinitesimal sign
+  \((S^{\mu\nu})^*=-B S^{\mu\nu}B^{-1}\) are recorded as an explicit
+  convention calculation in prose rather than theorem-family content.
 - The same-metric Wess--Bagger phase translation is retained as an explicit
   basis-change calculation in prose, with the warning that the gamma-matrix
   phase and the two-component epsilon conventions must both be translated.

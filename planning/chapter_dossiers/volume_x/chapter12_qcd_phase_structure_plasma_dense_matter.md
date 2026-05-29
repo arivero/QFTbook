@@ -136,7 +136,8 @@ GitHub issue #628.
   `Sigma(T)/Sigma(0)=1-(N_f^2-1)T^2/(12N_f F^2)+O(T^4/F^4)` with its
   domain of validity stated.
 - Derives the massless free QCD pressure at zero and nonzero baryon chemical
-  potential.
+  potential as a worked free-gas calculation rather than theorem-family
+  content.
 - Derives the thermodynamic derivative identities used to turn the QCD
   pressure into entropy density, baryon density, energy density, interaction
   measure, fixed-`mu_B/T` trace-anomaly diagnostic, and the `mu_B=0`
