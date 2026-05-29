@@ -281,11 +281,23 @@ The same statement holds for observables:
 \end{theorem}
 
 \begin{proof}
-For the product odd symplectic form,
+Work in product Darboux coordinates
+\[
+  (x^i,\xi_i;y^a,\eta_a)
+\]
+adapted to
+\(\mathcal F_{\rm res}\times\mathcal F_{\rm fluc}\), with
+\((x^i,\xi_i)\) residual and \((y^a,\eta_a)\) fluctuation coordinates.  The
+canonical BV semidensity Laplacian is local in these coordinates, and the
+product Berezinian contains no mixed residual-fluctuation term.  Hence
 \[
   \Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}.
 \]
-Therefore
+The residual Laplacian differentiates only \((x,\xi)\), so, under the compact
+support or decay hypothesis, it may be moved through the fluctuation
+integral.  In a local trivialization of the semidensity line this is ordinary
+differentiation under the integral sign; coordinate independence follows from
+the transformation law of the BV Laplacian on semidensities.  Therefore
 \[
   \Delta_{\rm res}\pi_*\rho
   =
@@ -295,9 +307,18 @@ Therefore
   -\int_{\mathcal L_{\rm fluc}}
   (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
 \]
-The last integral is zero by Theorem~\ref{thm:finite-bv-stokes} applied in
-the fluctuation variables.  If \(\Delta_{\mathcal F}(\mathcal O\rho)=0\),
-the identical decomposition gives
+The last integral is zero by Theorem~\ref{thm:finite-bv-stokes} applied to
+the fluctuation BV manifold and the cycle
+\(\mathcal L_{\rm fluc}\).  The hypotheses in the statement are exactly the
+conditions needed for this Stokes step: either there is no boundary
+contribution because the fluctuation support is compact, or the chosen
+noncompact cycle has decay strong enough for the boundary functional to
+vanish.
+
+If \(\Delta_{\mathcal F}(\mathcal O\rho)=0\), the same argument is applied to
+the semidensity \(\mathcal O\rho\).  No new algebraic input is used:
+\(\mathcal O\rho\) is simply the semidensity being pushed forward, and the
+product decomposition gives
 \[
   \Delta_{\rm res}\pi_*(\mathcal O\rho)
   =

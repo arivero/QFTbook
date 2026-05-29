@@ -282,8 +282,7 @@ double pole and the derivative term combine as
   (r-s)J_{r+s}.
 \]
 
-\begin{proposition}[Spectral flow automorphism]
-\label{prop:n2-spectral-flow}
+\paragraph{Spectral-flow algebra check.}
 For any \(\eta\in\frac12\mathbb Z\), the assignment
 \begin{align}
   L_n^{(\eta)}
@@ -302,10 +301,9 @@ For any \(\eta\in\frac12\mathbb Z\), the assignment
 preserves the \(\mathcal N=2\) mode algebra, with the same central charge
 \(c\).  Integer \(\eta\) preserves NS and R sectors separately; half-integer
 \(\eta\) exchanges them.
-\end{proposition}
 
-\begin{proof}
-It is enough to check the brackets in
+This is an automorphism of the displayed abstract mode algebra.  Checking it
+is a finite residue calculation in
 \eqref{eq:n2-lj-mode-algebra}--\eqref{eq:n2-same-sign-g-mode-algebra}.  For
 example,
 \[
@@ -346,7 +344,6 @@ Substituting
 the \(J\)-coefficient becomes \(r-s\), and the central coefficient reduces
 to \(\frac c3(r^2-1/4)\).  The remaining brackets are checked in the same
 residue algebra.
-\end{proof}
 
 If a simultaneous \(L_0,J_0\) eigenstate has eigenvalues \(h,q\), then
 spectral flow sends them to
@@ -456,10 +453,10 @@ This is obtained by inserting \(h=q/2\) and \(\eta=-1/2\) into
 \section{Extended \texorpdfstring{\(\mathcal N=2\)}{N=2} Spectral-Flow Operators}
 \label{sec:extended-n2-spectral-flow-operators}
 
-Proposition~\ref{prop:n2-spectral-flow} is a statement about the abstract
-mode algebra.  It does not say that spectral flow is implemented by a local
-operator in a particular CFT.  That extra assertion needs a charge lattice
-and locality hypothesis.  This distinction is small in notation and large in
+The spectral-flow algebra check above is a statement about the abstract mode
+algebra.  It does not say that spectral flow is implemented by a local
+operator in a particular CFT.  That extra assertion needs a charge lattice and
+locality hypothesis.  This distinction is small in notation and large in
 logic: the extended \(\mathcal N=2\) algebra is an additional chiral-algebra
 structure requiring more than the singular OPEs in
 Definition~\ref{def:n2-superconformal-algebra}.

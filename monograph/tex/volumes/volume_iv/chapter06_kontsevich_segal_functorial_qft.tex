@@ -429,11 +429,11 @@ boundary values are the unitary Lorentzian propagators
 \end{theorem}
 
 \begin{proof}
-The null space of the reflection-positive form is invariant under
-\(T_Y(\tau)\): if \(u\) has zero norm, Cauchy--Schwarz for the positive
-semidefinite doubled form gives
-\(\langle u,w\rangle_Y=0\) for every positive-side state \(w\).  Taking
-\(w=T_Y(2\tau)u\) and using the semigroup law and self-adjointness gives
+Let \(N_Y=\{u:\langle u,u\rangle_Y=0\}\).  Since the doubled form is positive
+semidefinite, Cauchy--Schwarz gives \(u\in N_Y\) precisely when
+\(\langle u,w\rangle_Y=0\) for every positive-side state \(w\).  We first
+check that the cylinder operator is compatible with quotienting by this null
+space.  If \(u\in N_Y\), then reflection and sewing give
 \[
   \|T_Y(\tau)u\|_Y^2
   =
@@ -443,13 +443,44 @@ semidefinite doubled form gives
   =
   0 .
 \]
-Therefore
-\(T_Y(\tau)\) descends to the quotient and then to the Hilbert completion.
-The sewing axiom gives the semigroup law on the quotient.  Reflection gives
-self-adjointness.  The doubled-cylinder positivity gives positivity.  The
-normalization and continuity hypothesis give a strongly continuous
-contraction semigroup.  Proposition~\ref{prop:ks-one-dimensional-positive-energy}
-then supplies \(H_Y\ge0\) and the unitary boundary values.
+Thus \(T_Y(\tau)N_Y\subset N_Y\), and \(T_Y(\tau)\) descends to
+\(E_+(Y)/N_Y\).  The contraction hypothesis is part of the analytic input:
+after the vacuum-energy normalization,
+\[
+  \|T_Y(\tau)[u]\|_{\Hilb_Y}\leq \|[u]\|_{\Hilb_Y},
+\]
+so the descended operator extends uniquely to a bounded contraction on the
+Hilbert completion.  Sewing descends to the semigroup law
+\(T_Y(\tau+\sigma)=T_Y(\tau)T_Y(\sigma)\).  Reflection gives symmetry on the
+dense quotient:
+\[
+  \langle [u],T_Y(\tau)[v]\rangle_Y
+  =
+  \langle T_Y(\tau)[u],[v]\rangle_Y .
+\]
+Boundedness then extends this symmetry to all of \(\Hilb_Y\), so
+\(T_Y(\tau)\) is self-adjoint.  Doubled-cylinder positivity gives
+\(\langle\psi,T_Y(\tau)\psi\rangle\ge0\) first on the dense quotient and then
+by continuity on the Hilbert space.
+
+We now apply the Hilbert-space semigroup statement isolated in
+Proposition~\ref{prop:ks-one-dimensional-positive-energy}.  A strongly
+continuous self-adjoint contraction semigroup with positive operators has a
+unique self-adjoint generator \(H_Y\) satisfying
+\[
+  T_Y(\tau)=e^{-\tau H_Y}.
+\]
+The spectrum of \(H_Y\) lies in \([0,\infty)\), because otherwise
+\(\|e^{-\tau H_Y}\|\leq1\) would fail for \(\tau>0\).  If the K-S functor is
+holomorphic on the corresponding complex cylinder semigroup, spectral calculus
+gives the strong boundary values
+\[
+  \lim_{\epsilon\downarrow0}e^{-(\epsilon+\ii t)H_Y}
+  =
+  e^{-\ii tH_Y}.
+\]
+These boundary values are unitary since \(|e^{-\ii t\lambda}|=1\) for
+\(\lambda\in\operatorname{spec}(H_Y)\).
 \end{proof}
 
 This theorem is the precise point at which functorial gluing becomes positive
