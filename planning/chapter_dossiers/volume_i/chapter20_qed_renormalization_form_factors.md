@@ -73,9 +73,10 @@ Status: revised, source-audited, and formalized on 2026-05-27.
   representative variables, the explicit-coupling normalization, and the
   distinction between field-residue constants and the electric charge
   coordinate.
-- `prop:qed-ward-organization-current` proves that gauge-covariant local
+- The Ward-organization paragraph records that gauge-covariant local
   counterterms organize the electron kinetic and QED vertex counterterms
-  through the Abelian Ward identity \(Z_1=Z_\psi\).
+  through the Abelian Ward identity \(Z_1=Z_\psi\); it is coordinate
+  bookkeeping in the explicit-coupling convention, not theorem-level content.
 - The current entering form factors is consequently
   \(j^\mu=-iZ_A^{-1}eZ_\psi\bar\psi\gamma^\mu\psi\), as follows from the
   renormalized Maxwell equation.
@@ -90,6 +91,14 @@ Status: revised, source-audited, and formalized on 2026-05-27.
   insertions represented by external BRST sources.
 - Lorentz covariance then gives
   \(\Pi^{\mu\nu}=(\eta^{\mu\nu}k^2-k^\mu k^\nu)\pi(k^2)\).
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: demoted the Ward-organization current statement from
+  proposition/proof form to convention and current-normalization prose.  The
+  substance is the Abelian Ward identity and the chosen explicit-coupling
+  coordinate system; the displayed current follows by varying the single
+  regulated Lagrangian with respect to \(A_\mu\).
 - The photon pole normalization condition is \(\pi(0)=0\), fixing \(Z_A\) at
   one loop.
 - `prop:qed-one-loop-vacuum-polarization` gives the one-loop pole

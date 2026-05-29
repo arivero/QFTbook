@@ -90,3 +90,8 @@ The chapter establishes:
   `eq:primary-spin-current-ward` and identifies the stress-tensor derivative
   contact term that becomes the spin rotation term in this chapter's primary
   Ward identity.
+- 2026-05-29 anti-wrapper pass: expanded the spinful local conformal-current
+  Ward-identity proof from a compressed differentiation statement into the
+  source-coupling derivation, including the measure/source-weight cancellation,
+  dual spin action, separated-point functional derivatives, and small-sphere
+  charge orientation.

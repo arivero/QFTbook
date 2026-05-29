@@ -34,7 +34,9 @@ global anomaly as an explicit mod-two-index example.
   \(\xi(-B)=-\xi(B)+h(B)\).
 - Defines determinant-line fibers and states the Bismut--Freed holonomy
   theorem for mapping tori.
-- Derives finite gauge-transformation phases as determinant-line holonomies.
+- Explains finite gauge-transformation phases as determinant-line holonomies,
+  as a direct application of the quoted Bismut--Freed holonomy theorem to the
+  mapping torus of the gauge transformation.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
@@ -70,3 +72,6 @@ global anomaly as an explicit mod-two-index example.
   proposition form to derivation prose.  The result is an APS-transgression
   consequence inside the Dai--Freed construction; theorem-family status
   remains with the quoted APS/Bismut--Freed/global-index inputs.
+- 2026-05-29 anti-wrapper pass: demoted finite gauge transformation as
+  determinant-line transport from proposition/proof form to application prose,
+  because the theorem-level input is the quoted Bismut--Freed holonomy formula.

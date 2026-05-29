@@ -213,3 +213,7 @@ current QFT scope.
   hypotheses, diagonal Verlinde defect operators, the temporal/spatial defect
   modular \(S\)-move, Ising spin-flip and Kramers--Wannier examples, and exact
   defect-line arithmetic checks.
+- 2026-05-29 anti-wrapper pass: strengthened the proof that VOA locality gives
+  the chiral OPE by spelling out lower truncation, formal residue extraction
+  of the singular coefficients, regularity after multiplication by
+  \((z-w)^N\), and matrix-element equality in the \(|z|>|w|\) expansion.

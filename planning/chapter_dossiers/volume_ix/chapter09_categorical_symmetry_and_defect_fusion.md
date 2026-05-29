@@ -79,3 +79,10 @@ anomaly obstruction.
 No figure is included in this pass.  Future figures should include defect
 spheres acting on local operators, junction bases, pentagon moves, and
 condensation networks.
+
+## Anti-Wrapper Audit
+
+- 2026-05-29: strengthened the reflection-positivity-to-dagger-category proof
+  by spelling out half-ball states, order reversal under radial reflection,
+  null-junction quotienting, and unitarity of isotopy maps in orthonormal
+  junction bases.

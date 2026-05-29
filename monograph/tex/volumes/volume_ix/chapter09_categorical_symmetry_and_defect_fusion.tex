@@ -322,18 +322,31 @@ unitary matrices.
 \end{proposition}
 
 \begin{proof}
-Reflection reverses the order of vertical composition of junctions, because
-the reflected time direction in radial quantization is reversed.  This gives
-the first identity in \eqref{eq:defect-dagger-composition}; reflecting twice
-returns the original oriented ball and gives the second identity.  The scalar
-\(\langle\psi,\psi\rangle_{\rm jun}\) is precisely the reflection-positivity
-norm of the half-ball state produced by \(\psi\).  Reflection positivity
-therefore makes it nonnegative, and quotienting by null states makes the
-pairing positive definite.  If two junction bases are related by a
-topological isotopy in the ball, the isotopy preserves the full ball
-correlator and hence preserves
-\eqref{eq:junction-reflection-pairing}.  The change-of-basis matrix between
-orthonormal bases is therefore unitary.
+Place the junction network in a ball cut by the reflection hyperplane into
+incoming and outgoing half-balls.  Vertical composition of junctions is
+gluing of such half-balls in the radial time direction.  Reflection exchanges
+the two halves and reverses that gluing order; hence the reflected adjoint of
+\(\chi\circ\psi\) is \(\psi^\dagger\circ\chi^\dagger\).  Applying the same
+reflection a second time restores the original oriented ball and the original
+defect-sheet orientations, which gives \((\psi^\dagger)^\dagger=\psi\).
+
+For positivity, let \(|\psi\rangle\) denote the state on the equatorial
+boundary Hilbert space produced by the lower half-ball with junction
+\(\psi\).  The pairing
+\eqref{eq:junction-reflection-pairing} is exactly
+\(\langle\psi|\psi\rangle\) in the reflection-positive Hilbert space obtained
+from the ball.  Reflection positivity gives
+\(\langle\psi,\psi\rangle_{\rm jun}\ge0\).  The null junctions are precisely
+those whose half-ball state has zero Hilbert norm; quotienting by them and
+using the assumed nondegeneracy on the junction spaces gives a positive
+definite Hermitian pairing.
+
+Finally, an isotopy of a topological junction network inside the ball changes
+the chosen basis vector but not the ball correlation function with reflected
+adjoint boundary conditions.  Therefore the linear isotopy map preserves the
+Hermitian form \eqref{eq:junction-reflection-pairing}.  In bases orthonormal
+for that form, preservation of the Hermitian form is exactly the matrix
+identity \(U^\dagger U=1\).
 \end{proof}
 
 \section{Gauging A Categorical Symmetry}

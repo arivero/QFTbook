@@ -80,19 +80,26 @@ where for each matrix element only finitely many positive powers of
 \end{proposition}
 
 \begin{proof}
-By lower truncation, \(a_m b=0\) for all sufficiently large \(m\).  Locality
-gives \(N\) such that
+Fix \(a,b\in V\).  Lower truncation says that \(a_m b=0\) for all sufficiently
+large \(m\); hence the singular part of the candidate expansion has only
+finitely many negative powers of \(z-w\) in every matrix element.  Locality
+gives an integer \(N\) such that
 \[
-  (z-w)^N Y(a,z)Y(b,w)=(z-w)^N Y(b,w)Y(a,z).
+  (z-w)^N Y(a,z)Y(b,w)=(z-w)^N Y(b,w)Y(a,z)
 \]
-Taking the formal residue
+as formal distributions.  The coefficient of \((z-w)^{-m-1}\) in the singular
+part is determined by the formal residue
 \[
-  a_m b=\operatorname{Res}_{z-w}(z-w)^mY(a,z)b
+  a_m b=\operatorname{Res}_{z-w}(z-w)^mY(a,z)b .
 \]
-defines the coefficient of \((z-w)^{-m-1}\).  Multiplying the proposed OPE by
-\((z-w)^N\), both sides become the same formal Laurent series because the
-residues of all principal parts agree and the remaining part is regular at
-\(z=w\).  The truncation of \(a_m b\) gives the stated finiteness.
+For \(m<N\), these residues specify the complete principal part at \(z=w\).
+Subtract the finite sum of principal parts from \(Y(a,z)Y(b,w)\).  After
+multiplication by \((z-w)^N\), locality makes the difference regular at
+\(z=w\), so the remaining term is the Taylor expansion in nonnegative powers
+of \(z-w\) in the region \(|z|>|w|\).  Equivalently, all matrix elements
+against graded-dual vectors agree as Laurent series in that region.  This is
+the displayed OPE, and lower truncation gives the finiteness of its singular
+part.
 \end{proof}
 
 \section{Modules, Characters, and Chiral Blocks}

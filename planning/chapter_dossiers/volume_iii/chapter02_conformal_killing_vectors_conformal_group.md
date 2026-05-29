@@ -74,3 +74,7 @@ The chapter establishes:
   derived later from source Ward identities and radial module data.
 - Keep \(\eta_{\mu\nu}\) reserved for Lorentzian or source labels; Euclidean
   metric components in this chapter are \(\delta_{\mu\nu}\).
+- 2026-05-29 anti-wrapper pass: strengthened the null-quotient/unitarity proof
+  by spelling out the contravariant anti-involution, the radical-as-submodule
+  argument, the cyclic Hilbert-sector qualification, and the finite-level Gram
+  matrix positivity test.

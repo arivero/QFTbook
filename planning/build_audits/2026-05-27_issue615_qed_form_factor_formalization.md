@@ -12,7 +12,9 @@
 ## Manuscript Changes
 
 - Added `def:qed-regulated-explicit-coupling-coordinates`.
-- Added `prop:qed-ward-organization-current`.
+- Added Ward-organization current material; later anti-wrapper audit demoted
+  it from proposition/proof form to convention prose because the statement is
+  coordinate bookkeeping around \(Z_1=Z_\psi\), not an independent theorem.
 - Added `prop:qed-photon-self-energy-transversality`.
 - Added `prop:qed-one-loop-vacuum-polarization`.
 - Added `def:qed-electron-electromagnetic-form-factors`.

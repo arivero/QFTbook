@@ -116,6 +116,8 @@ Wilsonian dynamics are available for later use.
   `y^2=x^3+v x+u` with `lambda_AD=u dx/y`, proves the scaling dimensions
   `[x]=2/5`, `[y]=3/5`, `[u]=6/5`, `[v]=4/5`, and records the status boundary
   separating local special-geometry scaling from a full QFT construction.
+- Explains, in prose, the rank-two symplectic-lattice obstruction to putting
+  mutually nonlocal light charges into a single electric polarization.
 - Records the theorem boundary for turning Seiberg-Witten dynamics into a
   nonperturbative construction of four-dimensional supersymmetric QFT.
 
@@ -157,3 +159,7 @@ the elliptic curve cycle degeneration.
   The discriminant formula is still shown because it identifies the collision
   of two nodal fibers, but the proof is elementary cubic algebra rather than a
   theorem-level QFT or special-geometry result.
+- 2026-05-29: demoted the mutually nonlocal electric-frame obstruction from
+  proposition/proof form to conceptual linear-algebra prose.  The obstruction
+  remains explicit because it is the local reason an Argyres-Douglas collision
+  is not described by a single weakly coupled electric Abelian frame.
