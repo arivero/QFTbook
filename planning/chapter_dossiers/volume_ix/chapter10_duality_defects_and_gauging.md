@@ -38,7 +38,8 @@ gauging, and electric-magnetic line-lattice duality walls.
 3. Proves disjoint-union multiplicativity of the groupoid gauging convention.
 4. Defines Dijkgraaf-Witten twists and distinguishes degree-\(D\) twists from
    degree-\(D+1\) anomaly cancellation/trivialization.
-5. Constructs the gauging interface and proves the slab fusion relation
+5. Constructs the gauging interface and derives the slab fusion relation by
+   a finite groupoid-sum calculation,
    \(\mathcal N_G^\dagger\mathcal N_G\simeq\oplus_{g\in G}D_g\).
 6. Defines the regular algebra defect \(A_G\) and proves
    \(A_G\otimes A_G\simeq |G|A_G\).
@@ -79,3 +80,6 @@ actions; the present chapter keeps the examples algebraic and proof-focused.
 - 2026-05-26 depth pass: rewrote the chapter from a thin sketch into a
   theorem-led finite construction chapter, directly addressing the
   promised-example gap flagged for categorical symmetry and duality defects.
+- 2026-05-29 anti-wrapper pass: demoted the gauging-interface slab fusion
+  from proposition form to derivation prose, because the real inputs are the
+  anomaly-trivialized gauging datum and compatible groupoid normalization.

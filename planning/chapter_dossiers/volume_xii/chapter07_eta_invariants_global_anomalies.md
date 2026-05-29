@@ -39,7 +39,7 @@ global anomaly as an explicit mod-two-index example.
   the real skew setting.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
   derives the parity criterion \(2j\equiv1\pmod4\) using exact binomial parity.
-- Explains Dai--Freed inflow as a boundary-line trivialization and proves the
+- Explains Dai--Freed inflow as a boundary-line trivialization and derives the
   descent limit for contractible loops.
 - Records the interacting-QFT anomaly-line construction as an open problem.
 
@@ -66,3 +66,7 @@ global anomaly as an explicit mod-two-index example.
 - A later interacting-anomaly chapter should replace the free-fermion
   determinant-line model by a general construction of anomaly lines for
   interacting QFTs.
+- 2026-05-29 anti-wrapper pass: demoted the local-descent limit from
+  proposition form to derivation prose.  The result is an APS-transgression
+  consequence inside the Dai--Freed construction; theorem-family status
+  remains with the quoted APS/Bismut--Freed/global-index inputs.

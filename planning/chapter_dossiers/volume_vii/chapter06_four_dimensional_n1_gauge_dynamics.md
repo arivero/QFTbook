@@ -162,7 +162,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   `q_B(A)=+1`, `q_B(B)=-1`.
 - `W_ij=A_i B_j`: mesonic conifold coordinates.
 - `a_KW`, `c_KW`: KW central charges from Weyl-fermion R traces.
-- `prop:kw-beta-function-rank-count`: KW necessary beta-function rank-count
+- KW necessary beta-function rank-count calculation
   check showing the two gauge NSVZ numerators and quartic-superpotential
   marginality defect are proportional to `1+gamma_A+gamma_B`.
 - `hyp:n1-local-exact-marginality-chart`: finite-dimensional
@@ -393,7 +393,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   superpotential has R-charge 2.
 - Proves the KW NSVZ numerator cancellation at
   `R(A)=R(B)=1/2`, using `gamma_A=gamma_B=-1/2` in the monograph convention.
-- Proves the KW beta-function rank count in the
+- Derives the KW beta-function rank count in the
   `SU(2)_A x SU(2)_B x U(1)_B` source chart:
   `B_1=B_2=N(1+gamma_A+gamma_B)` and the quartic-superpotential marginality
   defect is `1+gamma_A+gamma_B`.
@@ -474,3 +474,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
 No figure is included.  Future diagrams should show the \(N_f<N_c\),
 `N_f=N_c`, pure SYM, KW conifold branch, and KS cascade stairway as
 chiral-coordinate spaces with their assumptions and anomaly data.
+
+## Audit Notes
+
+- 2026-05-29 anti-wrapper pass: demoted the KW beta-function rank count from
+  proposition form to derivation prose.  The calculation remains as the
+  local NSVZ/superpotential arithmetic used by the exact-marginality
+  hypothesis; the existence and smoothness of the conformal locus remain
+  explicit hypotheses.

@@ -27,7 +27,7 @@ necessary beta-function rank-count arithmetic that the theorem must satisfy.
 
 ## Substantive Changes
 
-- Added Proposition `prop:kw-beta-function-rank-count`.
+- Added the KW beta-function rank-count calculation.
 - Derived
   `B_1=B_2=N(1+gamma_A+gamma_B)` for the two KW gauge-factor NSVZ
   numerators.

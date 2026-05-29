@@ -369,6 +369,15 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Global conformal Ward identity from surface deformation"
     r"|K-S data give OS Schwinger functions on flat space"
     r"|Flat-space comparison with OS Schwinger functions"
+    r"|Local source-coordinate changes produce contact terms"
+    r"|QED as the Abelian Faddeev--Popov specialization"
+    r"|Surface deformation of a conserved conformal charge"
+    r"|Finite-volume gauge averaging"
+    r"|Slab derivation of the gauging-interface fusion"
+    r"|Polynomial free-field wedge algebra"
+    r"|KW beta-function rank count"
+    r"|Rank-one abelian quotient"
+    r"|Local descent as the infinitesimal limit of inflow"
     r")\b",
     re.IGNORECASE,
 )

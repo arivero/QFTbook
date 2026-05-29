@@ -41,7 +41,7 @@ and topological sectors fit together.
 - Defines phases as connected regions over which thermodynamic-limit states,
   local spectra, correlators, extended operators, symmetry realization, and
   topological sectors extend continuously.
-- Proves finite-volume gauge averaging: gauge-variant local fields have zero
+- Derives finite-volume gauge averaging: gauge-variant local fields have zero
   expectation with gauge-invariant finite-volume boundary conditions.
 - Defines static potentials from renormalized rectangular Wilson loops.
 - Derives large-time extraction of the bottom static-source spectral energy
@@ -77,3 +77,10 @@ and topological sectors fit together.
 No figure is included in this pass.  A later diagram may show the observable
 dependency of phase diagnostics: local correlators, line asymptotics,
 screening quotient, condensate subgroup, and topological sector.
+
+## Audit Notes
+
+- 2026-05-29 anti-wrapper pass: demoted finite-volume gauge averaging from
+  proposition form to prose.  The calculation is the finite-regulator Haar
+  projection; continuum phase claims remain tied to the phase datum and
+  thermodynamic-limit hypotheses.

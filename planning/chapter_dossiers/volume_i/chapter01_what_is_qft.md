@@ -127,7 +127,7 @@ Definitions must specify domains and support conditions.
 - Local finite source-coordinate changes alter only collision-diagonal
   supported distributions.
   Status: proven in chapter. Certification:
-  `prop:local-source-chart-changes-contact-terms`.
+  local source-coordinate calculation following `def:contact-terms-source-chart`.
 - Wightman/OS data for selected fields do not by themselves fix composite
   products, time-ordered products, nonlinear source couplings, or repeated
   source derivatives on diagonals.
@@ -197,8 +197,12 @@ Definitions must specify domains and support conditions.
   verification in physically central examples.
 - Completed: 2026-05-27 #615 follow-up labeled the principal presentation
   definitions, added the vacuum-projection/translation-sign proposition,
-  proved local source-chart changes produce contact terms, and formalized the
-  first derived objects whose hypotheses enter only later.
+  derived in prose that local source-coordinate changes produce contact terms,
+  and formalized the first derived objects whose hypotheses enter only later.
+- Completed: 2026-05-29 anti-wrapper pass removed proposition/proof packaging
+  from the local source-coordinate contact-term calculation; the result is now
+  part of the foundational distributional explanation rather than a standalone
+  theorem-family claim.
 
 ## Figure Ledger
 

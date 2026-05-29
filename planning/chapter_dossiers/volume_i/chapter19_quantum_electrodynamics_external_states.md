@@ -134,3 +134,11 @@ calculation-check companion added on 2026-05-27.
 - No soft-photon exponentiation or Bloch--Nordsieck/Kulish--Faddeev
   construction beyond naming the boundary.
 - No nonabelian ghosts or BRST cohomology.
+
+## Audit Notes
+
+- 2026-05-29 anti-wrapper pass: demoted the Abelian Faddeev--Popov
+  specialization from proposition form to derivation prose.  The general
+  orbit-measure construction remains the theorem-level input; the QED
+  specialization is the direct calculation \(\mathcal M=\Box\) and field
+  independence of \(\det{}'\Box\).

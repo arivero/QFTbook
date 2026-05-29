@@ -171,9 +171,12 @@ across a small transverse interval.  The orientation convention is
   D_g\otimes D_h\simeq D_{gh}.
 \]
 
-\begin{proposition}[Slab derivation of the gauging-interface fusion]
-\label{prop:gauging-interface-slab-fusion}
-With compatible groupoid normalizations for the two interfaces,
+\paragraph{Slab fusion calculation.}
+Assume the anomaly of the \(G\)-symmetry has been trivialized, so that the
+gauging interface is an honest defect rather than a section of an anomaly
+line, and use the groupoid normalization of
+Definition~\ref{def:finite-gauging-groupoid-sum} for both interfaces.  Then
+the fused defect on the ungauged side is
 \begin{equation}
   \mathcal N_G^\dagger\circ\mathcal N_G
   \simeq
@@ -181,9 +184,7 @@ With compatible groupoid normalizations for the two interfaces,
   \label{eq:gauging-interface-slab-fusion}
 \end{equation}
 as defects of \(\mathcal Q\).
-\end{proposition}
 
-\begin{proof}
 Fuse \(\mathcal N_G\) with \(\mathcal N_G^\dagger\) and separate the two
 interfaces by a thin slab \(Y\times[0,\epsilon]\).  Inside the slab the
 \(G\)-field is flat.  Choose trivializations on the two boundary components
@@ -199,7 +200,9 @@ normalization induced from Definition~\ref{def:finite-gauging-groupoid-sum},
 these factors cancel between the two sides of the cut, leaving one copy of
 each holonomy sector.  Hence the fused interface is
 \(\oplus_{g\in G}D_g\).
-\end{proof}
+Its scope is the finite groupoid-sum calculation after the gauging datum and
+normalization have been chosen; existence of the interface is part of the
+gauging construction itself.
 
 The opposite fusion
 \[
@@ -342,8 +345,8 @@ Therefore
   \simeq
   \mathcal N_H^\dagger\circ\mathcal N_H .
 \]
-Proposition~\ref{prop:gauging-interface-slab-fusion} identifies the last
-defect with \(\oplus_{h\in H}D_h=A_H\), proving
+The slab fusion calculation \eqref{eq:gauging-interface-slab-fusion}
+identifies the last defect with \(\oplus_{h\in H}D_h=A_H\), proving
 \eqref{eq:self-dual-gauging-defect-fusion}.
 
 If \(D_H\) were invertible, \(D_H^\dagger\otimes D_H\) would be a single copy

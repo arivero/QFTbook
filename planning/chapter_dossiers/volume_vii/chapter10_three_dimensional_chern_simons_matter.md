@@ -99,7 +99,7 @@ Reviewed source spine:
   fixed `(N,k)` is zero-dimensional: `k` is integral, `h_ABJM=2 pi/k` is then
   fixed, real masses/FI coordinates are dimension-one deformations, and
   Yang-Mills kinetic terms are dimensionful regulator/UV-completion data.
-- Proves the rank-one abelian ABJM branch quotient `C^4/Z_k` from the abelian BF
+- Derives the rank-one abelian ABJM branch quotient `C^4/Z_k` from the abelian BF
   reduction and residual finite gauge transformation.
 - States the general commuting-branch moduli space
   `((C^4/Z_k)^N)/S_N` and `N=8` enhancement for `k=1,2` as a quoted theorem,
@@ -162,3 +162,11 @@ Reviewed source spine:
 No figure is included in this pass.  Future figures should include monopole
 flux spheres, CS Gauss-law dressing, the ABJM diagonal/anti-diagonal abelian
 quotient, and the two-matrix `S^3` localization contour.
+
+## Audit Notes
+
+- 2026-05-29 anti-wrapper pass: demoted the rank-one abelian quotient from
+  proposition form to derivation prose.  The result fixes the classical
+  \(k\)-dependent orbifold convention; the full commuting-branch and
+  enhancement statements remain quoted theorem status because monopole and
+  global-form data enter.

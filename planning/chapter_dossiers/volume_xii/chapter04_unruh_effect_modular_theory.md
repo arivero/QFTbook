@@ -58,3 +58,10 @@
 ## Figures
 
 - Rindler wedge diagram may be added later.
+
+## Audit Notes
+
+- 2026-05-29 anti-wrapper pass: demoted the polynomial wedge-algebra KMS
+  corollary to prose.  The analytic theorem is the two-point strip/KMS result;
+  the polynomial extension is the Wick expansion and termwise boundary-value
+  calculation.

@@ -75,3 +75,8 @@ The chapter establishes:
   Schwarzian/cylinder shift, and the state--operator density caveat; added
   `calculation-checks/virasoro_mode_checks.py` for the finite residue
   arithmetic.
+- 2026-05-29 anti-wrapper pass: demoted the conserved-charge surface
+  deformation from proposition form to derivation prose.  The argument is the
+  Stokes/distributional-conservation step used before the later Ward identity,
+  while theorem-family status is reserved for the local current Ward identity
+  and Virasoro calculation.

@@ -100,8 +100,7 @@ Gauge-variant local fields cannot be order parameters for a gauge theory
 unless a gauge has been fixed and the residual meaning of the statement has
 been specified.  The finite-regulator reason is elementary.
 
-\begin{proposition}[Finite-volume gauge averaging]
-\label{prop:finite-volume-elitzur-averaging}
+\paragraph{Finite-volume gauge averaging.}
 Let a finite lattice gauge theory have compact gauge group \(G\), gauge
 invariant action, and gauge invariant measure.  Let \(O\) be an observable
 which transforms nontrivially under the gauge transformation at one site
@@ -110,9 +109,7 @@ which transforms nontrivially under the gauge transformation at one site
   \langle O\rangle_\Lambda=0
 \]
 in finite volume with gauge-invariant boundary conditions.
-\end{proposition}
 
-\begin{proof}
 Average over gauge transformations supported at \(x\).  Gauge invariance of
 the measure and action gives
 \[
@@ -131,7 +128,11 @@ perform the Haar average independently at each site touched by the product.
 The integral at a given site projects the tensor product of the local
 representation factors onto its invariant subspace.  The expectation can
 survive only if this projection is nonzero at every site.
-\end{proof}
+The load-bearing input here is the finite-regulator Haar projection with
+gauge-invariant boundary conditions; the calculation is the local averaging
+step used in Elitzur-type statements.  Continuum phase statements require the
+separate limiting data specified in
+Definition~\ref{def:declared-phase-problem}.
 
 Consequently a Higgs regime must be described by gauge-invariant data:
 screening of external charges, massive vector states in gauge-invariant

@@ -9,7 +9,7 @@ Scope addressed:
 
 Manuscript changes:
 
-- Added Proposition `prop:qed-abelian-faddeev-popov-specialization` deriving
+- Added the Abelian Faddeev--Popov specialization deriving
   the QED Faddeev--Popov operator for
   \(F_\varphi[A]=\partial_\mu A^\mu-\varphi\):
   \[
