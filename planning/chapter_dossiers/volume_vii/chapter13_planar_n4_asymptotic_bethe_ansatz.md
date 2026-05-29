@@ -250,9 +250,10 @@ motivational checks, not foundations.
   sign loses the parity factor in the `x^-` transform.
 - Defines the monograph scaling-function normalization
   `Delta-S-L=f(g) log S+O(S^0)` and derives
-  `f(g)=8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45+O(g^8)` from the BES equation,
-  including the power-counting reason that the dressing kernel first affects
-  the scaling function at order `g^8`.
+  `f(g)=8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45
+  -(584 pi^6/315+64 zeta(3)^2)g^8+O(g^10)` from the BES equation,
+  including the explicit `sigma_2` density coefficient that gives the first
+  dressing-sensitive `zeta(3)^2` term.
 - Records the strong-coupling BES status in the same normalization,
   `f(g)=4g-3 log(2)/pi+O(1/g)`, and warns that some Wilson-line conventions
   call half of this quantity `Gamma_cusp`.
@@ -359,11 +360,12 @@ crossed Zhukovsky sheets.
   bridge: exact Bessel recurrence, contour phase for the upper branch, lower
   branch conjugation, and the even-`m` parity failure of the absolute-value
   rewrite.
-- It checks the weak BES scaling-function expansion: the `sigma_0` and
-  `sigma_1` density coefficients, the Bose-integral coefficients
-  `A_0=pi^2/24` and `A_1=-11 pi^4/360`, the resulting
-  `8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45` scaling function, and the `g^8`
-  onset of the dressing-kernel contribution.
+- It checks the weak BES scaling-function expansion: the `sigma_0`,
+  `sigma_1`, and `sigma_2` density coefficients, the Bose-integral
+  coefficients `A_0=pi^2/24`, `A_1=-11 pi^4/360`, and
+  `A_2=73 pi^6/2520+zeta(3)^2`, and the resulting
+  `8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45
+  -(584 pi^6/315+64 zeta(3)^2)g^8` scaling function.
 
 ## External References Used In Current Pass
 

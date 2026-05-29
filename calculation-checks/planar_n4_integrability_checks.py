@@ -1975,14 +1975,16 @@ def check_bes_zhukovsky_fourier_transform_signs() -> None:
 
 
 def check_bes_weak_scaling_function() -> None:
-    """Check the weak BES scaling-function expansion through g^6."""
+    """Check the weak BES scaling-function expansion through g^8."""
 
     # BES equation in the normalization used in Chapter 13:
     # sigma = t/(e^t-1) [K(2gt,0) - 4 g^2 int K(2gt,2gt') sigma(t') dt'].
-    # K(2gt,0) = 1/2 - g^2 t^2/4 + O(g^4),
-    # K(2gt,2gt') = 1/2 + O(g^2).
+    # K_0(2gt,0) = 1/2 - g^2 t^2/4 + g^4 t^4/24 + O(g^6),
+    # K_0(2gt,2gt') = 1/2 - g^2(t^2-t t'+t'^2)/4 + O(g^4).
     integral_t_over_bose = Fraction(1, 1)  # coefficient of pi^2: int t/(e^t-1)=pi^2/6
+    integral_t2_over_bose_zeta3 = Fraction(2, 1)  # int t^2/(e^t-1)=2 zeta(3)
     integral_t3_over_bose = Fraction(1, 1)  # coefficient of pi^4: int t^3/(e^t-1)=pi^4/15
+    integral_t5_over_bose = Fraction(8, 63)  # coefficient of pi^6
 
     sigma0_integral_coeff_pi2 = Fraction(1, 2) * Fraction(1, 6) * integral_t_over_bose
     if sigma0_integral_coeff_pi2 != Fraction(1, 12):
@@ -2010,13 +2012,41 @@ def check_bes_weak_scaling_function() -> None:
     if a1_coeff_pi4 != -Fraction(11, 360):
         raise AssertionError(f"BES A1 coefficient failed: {a1_coeff_pi4}")
 
+    # sigma_2=t/(e^t-1)(t^4/24 + pi^2 t^2/12 + zeta(3)t + 11 pi^4/90).
+    sigma2_half_pi6 = (
+        Fraction(1, 48) * integral_t5_over_bose
+        + Fraction(1, 24) * Fraction(1, 15) * integral_t3_over_bose
+        + Fraction(11, 180) * Fraction(1, 6) * integral_t_over_bose
+    )
+    sigma2_half_zeta3sq = Fraction(1, 2) * integral_t2_over_bose_zeta3
+
+    minus_t2_sigma1_over4_pi6 = (
+        Fraction(1, 16) * integral_t5_over_bose
+        + Fraction(1, 24) * Fraction(1, 15) * integral_t3_over_bose
+    )
+    sigma0_t4_over24_pi6 = Fraction(1, 48) * integral_t5_over_bose
+    a2_coeff_pi6 = (
+        sigma2_half_pi6
+        + minus_t2_sigma1_over4_pi6
+        + sigma0_t4_over24_pi6
+    )
+    a2_coeff_zeta3sq = sigma2_half_zeta3sq
+    if (a2_coeff_pi6, a2_coeff_zeta3sq) != (Fraction(73, 2520), Fraction(1)):
+        raise AssertionError(
+            f"BES A2 coefficient failed: pi6={a2_coeff_pi6}, zeta3sq={a2_coeff_zeta3sq}"
+        )
+
     f_g2 = Fraction(8)
     f_g4_coeff_pi2 = -64 * a0_coeff_pi2
     f_g6_coeff_pi4 = -64 * a1_coeff_pi4
-    if (f_g2, f_g4_coeff_pi2, f_g6_coeff_pi4) != (
+    f_g8_coeff_pi6 = -64 * a2_coeff_pi6
+    f_g8_coeff_zeta3sq = -64 * a2_coeff_zeta3sq
+    if (f_g2, f_g4_coeff_pi2, f_g6_coeff_pi4, f_g8_coeff_pi6, f_g8_coeff_zeta3sq) != (
         Fraction(8),
         -Fraction(8, 3),
         Fraction(88, 45),
+        -Fraction(584, 315),
+        -Fraction(64),
     ):
         raise AssertionError("BES weak scaling-function coefficients failed")
 

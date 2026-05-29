@@ -2682,32 +2682,39 @@ The BES equation \eqref{eq:planar-n4-bes-equation} implies
 \begin{equation}
   f(g)
   =
-  8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+  8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6
+  -
+  \left(\frac{584\pi^6}{315}+64\zeta(3)^2\right)g^8
+  +O(g^{10}).
   \label{eq:planar-n4-bes-weak-scaling-function}
 \end{equation}
-The first dressing-phase contribution enters at order \(g^8\).
+The first dressing-phase contribution enters at order \(g^8\) and supplies
+the \(\zeta(3)^2\) term in this normalization.
 \end{proposition}
 
 \begin{proof}
-For the terms through \(g^6\), the dressing kernel may be omitted: from
-\(c_{2,3}(g)=4\zeta(3)g^3+O(g^5)\),
-\(J_2(2gt)=O(g^2)\), and the \(1/t\) factor in \(K_{\rm BES}(2gt,0)\), the
-driving dressing term starts at \(O(g^4)\) in \(\widehat\sigma\), hence at
-order \(g^8\) in \(f(g)\).
-
 Write
 \[
-  \widehat\sigma(t)=\sigma_0(t)+g^2\sigma_1(t)+O(g^4).
+  \widehat\sigma(t)=\sigma_0(t)+g^2\sigma_1(t)+g^4\sigma_2(t)+O(g^6).
 \]
 Since
 \[
   \frac{J_1(2gt)}{2gt}
   =
-  \frac12-\frac{g^2t^2}{4}+O(g^4),
+  \frac12-\frac{g^2t^2}{4}+\frac{g^4t^4}{24}+O(g^6),
   \qquad
-  K_0(2gt,0)=\frac12-\frac{g^2t^2}{4}+O(g^4),
+  K_0(2gt,0)=\frac12-\frac{g^2t^2}{4}+\frac{g^4t^4}{24}+O(g^6),
 \]
-and \(K_0(2gt,2gt')=\frac12+O(g^2)\), the BES equation gives
+and
+\[
+  K_0(2gt,2gt')
+  =
+  \frac12
+  -
+  \frac{g^2}{4}(t^2-tt'+t'^2)
+  +O(g^4),
+\]
+the first two density coefficients are
 \[
   \sigma_0(t)=\frac{t}{2(\ee^t-1)}
 \]
@@ -2728,13 +2735,65 @@ because
 \[
   \int_0^\infty\frac{t\,\dd t}{\ee^t-1}=\frac{\pi^2}{6}.
 \]
+For the \(g^4\) density coefficient the dressing source is now required.
+Using
+\[
+  c_{2,3}(g)=4\zeta(3)g^3+O(g^5),
+  \qquad
+  J_2(2gt)=\frac{g^2t^2}{2}+O(g^4),
+\]
+and the prefactor \(2/(2gt)\) in \(K_{\rm BES}(2gt,0;g)\), one obtains
+\[
+  K_{\rm dr}(2gt,0;g)
+  =
+  2\zeta(3)g^4t+O(g^6).
+\]
+The \(g^4\) part of the BES equation is therefore
+\[
+\begin{aligned}
+  \sigma_2(t)
+  &=
+  \frac{t}{\ee^t-1}
+  \left[
+    \frac{t^4}{24}+2\zeta(3)t
+    -4\int_0^\infty\dd t'\,
+    \left(
+      \frac12\sigma_1(t')
+      -\frac{t^2-tt'+t'^2}{4}\sigma_0(t')
+    \right)
+  \right].
+\end{aligned}
+\]
+The required moments are
+\[
+\begin{gathered}
+  \int_0^\infty\sigma_0(t')\,\dd t'=\frac{\pi^2}{12},
+  \qquad
+  \int_0^\infty t'\sigma_0(t')\,\dd t'=\zeta(3),
+  \qquad
+  \int_0^\infty t'^2\sigma_0(t')\,\dd t'=\frac{\pi^4}{30},\\
+  \int_0^\infty\sigma_1(t')\,\dd t'=-\frac{2\pi^4}{45}.
+\end{gathered}
+\]
+Substitution gives the explicit coefficient
+\[
+  \sigma_2(t)
+  =
+  \frac{t}{\ee^t-1}
+  \left(
+    \frac{t^4}{24}
+    +\frac{\pi^2t^2}{12}
+    +\zeta(3)t
+    +\frac{11\pi^4}{90}
+  \right).
+\]
 Put
 \[
   A(g)=
   \int_0^\infty\dd t\,
   \widehat\sigma(t)\frac{J_1(2gt)}{2gt}
   =
-  A_0+g^2A_1+O(g^4).
+  A_0+g^2A_1+g^4A_2+O(g^6).
 \]
 The two coefficients are
 \[
@@ -2759,10 +2818,33 @@ using
 \[
   \int_0^\infty\frac{t^3\,\dd t}{\ee^t-1}=\frac{\pi^4}{15}.
 \]
+The next coefficient is
+\[
+  A_2
+  =
+  \int_0^\infty\dd t\,
+  \left(
+    \frac12\sigma_2(t)
+    -\frac{t^2}{4}\sigma_1(t)
+    +\frac{t^4}{24}\sigma_0(t)
+  \right).
+\]
+Using
+\[
+  \int_0^\infty\frac{t^2\,\dd t}{\ee^t-1}=2\zeta(3),
+  \qquad
+  \int_0^\infty\frac{t^5\,\dd t}{\ee^t-1}
+  =
+  \frac{8\pi^6}{63},
+\]
+one finds
+\[
+  A_2=\frac{73\pi^6}{2520}+\zeta(3)^2.
+\]
 Substitution into
 \eqref{eq:planar-n4-bes-scaling-function} gives
 \[
-  f(g)=8g^2-64g^4A_0-64g^6A_1+O(g^8),
+  f(g)=8g^2-64g^4A_0-64g^6A_1-64g^8A_2+O(g^{10}),
 \]
 which is \eqref{eq:planar-n4-bes-weak-scaling-function}.
 \end{proof}
