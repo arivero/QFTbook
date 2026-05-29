@@ -311,12 +311,41 @@ The elementary distributional limit is
   \longrightarrow
   2\pi\delta(\Delta E).
 \]
+This last arrow is not a pointwise limit at finite volume.  If \(L\) is fixed,
+the spectrum is discrete: away from exact degeneracies the expression
+oscillates with total weight \(O(T^{-1})\), while exact degeneracies give
+terms growing linearly in \(T\).  The delta function notation means weak
+convergence of the kernels
+\[
+  K_T(\omega)=\frac{4\sin^2(\omega T/2)}{T\omega^2}
+\]
+against smooth spectral test functions:
+\[
+  \lim_{T\to\infty}\int_{\mathbb R}d\omega\,K_T(\omega)f(\omega)
+  =
+  2\pi f(0),
+  \qquad f\in C_c^\infty(\mathbb R).
+\]
+For a finite-volume regulator this weak limit must be paired with the
+\(L\to\infty\) limit that turns the discrete Bethe--Yang spectrum into an
+absolutely continuous rapidity measure.
 
 \paragraph{Finite-volume golden-rule limit.}
-Assume that the \(L\to\infty\) limit of the finite-volume spectral sum exists
-after the Bethe--Yang density of states is inserted and that the relevant
-crossed form factors are regular on the energy-conserving contour.  For a
-channel
+For each \(L\), let \(\nu_{A,L}\) be the finite positive spectral measure
+obtained from the unperturbed finite-volume states by
+\[
+  \int F(\omega,p)\,d\nu_{A,L}(\omega,p)
+  =
+  \sum_n
+  |\langle n,L|V_b(L)|A,L\rangle|^2
+  F(E_n(L)-E_A(L),P_n(L)-P_A(L)).
+\]
+Assume that, after inserting the Bethe--Yang state-counting measure and the
+finite-volume form-factor normalization, \(\nu_{A,L}\) converges weakly on
+smooth compactly supported test functions in the channel under consideration
+to the absolutely continuous rapidity measure determined by the connected
+crossed form factors.  Assume also that the crossed form factors are regular
+on the joint energy-momentum conserving contour.  For a channel
 \[
   \beta=(b_1,\theta_1;\ldots;b_n,\theta_n)
 \]
@@ -352,15 +381,25 @@ normalizable states
   |\langle n,L|V_b(L)|A,L\rangle|^2
   +O(\epsilon^3).
 \]
-First take \(T\to\infty\) in the distributional sense against smooth spectral
-test functions, obtaining \(2\pi\delta(E_n-E_A)\).  Then use the
-Bethe--Yang state-counting measure of
-Chapter~\ref{ch:integrable-finite-volume-form-factors} to replace the sum by
-rapidity integrals.  The spatial integral in \(V_b(L)\) gives finite-volume
-momentum conservation; in the infinite-volume limit this gives the delta
+The continuum golden-rule rate is the iterated weak limit
+\[
+  \Gamma_A
+  =
+  \epsilon^2\lim_{T\to\infty}\lim_{L\to\infty}
+  \int K_T(\omega)\,d\nu_{A,L}(\omega,p),
+\]
+with the momentum component restricted by the spatial integral in
+\(V_b(L)\).  Equivalently, one may use a joint large-\(L\), large-\(T\) limit
+in which the time window is long compared with microscopic scales but does not
+resolve the finite-volume recurrence structure before the continuum spectral
+measure has formed.  The spatial integral in \(V_b(L)\) gives finite-volume
+momentum conservation; in the infinite-volume limit this becomes the delta
 function contained in \(d\Phi_\beta\).  The finite-volume matrix-element
 normalization converges to the connected crossed form factor by the same
-Gaudin-density cancellation.  This proves the displayed inclusive rate.
+Gaudin-density cancellation used in
+Chapter~\ref{ch:integrable-finite-volume-form-factors}.  Applying the weak
+kernel limit \(K_T\to2\pi\delta\) to the limiting absolutely continuous
+spectral measure gives the displayed inclusive rate.
 
 \section{Two-Particle Phase Space In Two Dimensions}
 

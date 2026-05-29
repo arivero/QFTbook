@@ -28,8 +28,11 @@ and near two-dimensional CFT perturbations.
 - Derives the first-order breaking of higher-charge conservation.
 - Derives the translation-covariant form-factor expression for transition
   matrix elements.
-- Derives the finite-volume route to a decay width by the large-time
-  distributional limit.
+- Derives the finite-volume route to a decay width by a weak spectral-measure
+  limit: the \(T\to\infty\) golden-rule kernel is applied only after the
+  finite-volume spectral sums converge to an absolutely continuous
+  infinite-volume rapidity measure, avoiding the false pointwise
+  \(T\to\infty\) limit at fixed \(L\).
 - Evaluates the two-particle \(1+1\)-dimensional phase-space integral from
   the rapidity measure, including the Jacobian, threshold condition, and
   identical-particle counting convention.
