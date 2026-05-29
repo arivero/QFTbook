@@ -267,8 +267,7 @@ the blocks partition all incoming and outgoing labels. Define
   S^{\mathrm c}(\beta_B|\alpha_B).
 \]
 
-\begin{proposition}[Connected scattering kernels]
-\label{prop:connected-scattering-kernels}
+\paragraph{Connected scattering kernels.}
 For fixed incoming and outgoing labels, the full scattering kernel has a unique
 expansion
 \begin{equation}
@@ -309,9 +308,7 @@ as the connected kernel for a block with one incoming and one outgoing label:
 In a translationally invariant vacuum without external backgrounds, the
 nontrivial one-particle amplitude vanishes for a stable isolated species, and
 the identity term remains.
-\end{proposition}
 
-\begin{proof}
 Order the finite label sets by their total number of external labels.  For one
 block the statement defines \(S^{\mathrm c}\).  Suppose the connected kernels
 have been defined for every proper subcollection.  Then
@@ -323,9 +320,8 @@ uniqueness follows because every other solution would have a difference whose
 highest-size nonzero component appears only in the one-block term and hence
 must vanish.  This is the moment-cumulant recursion for scattering kernels,
 with process partitions replacing ordinary set partitions.
-\end{proof}
 
-Proposition~\ref{prop:connected-scattering-kernels} is algebraic: it defines
+This recursion is algebraic: it defines
 connected kernels once the full kernel is known.  The physical cluster
 property is the large-separation theorem below.  Its hypotheses are additional
 Hilbert-space and locality hypotheses, not consequences of the recursion.
@@ -441,8 +437,8 @@ The kernel statement follows by testing the distributional kernel against
 wave packets whose velocity supports realize the two translated clusters.  If
 the connected kernel contained a component with separate momentum conservation
 inside a proper subprocess, its wave-packet pairing would survive the
-large-separation limit as a product contribution.  The recursion in
-Proposition~\ref{prop:connected-scattering-kernels} subtracts exactly those
+large-separation limit as a product contribution.  The recursion defining
+connected scattering kernels subtracts exactly those
 proper-subprocess products.  Therefore only the total momentum-conservation
 delta distribution remains in \(S^{\mathrm c}\).
 \end{proof}

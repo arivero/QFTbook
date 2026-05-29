@@ -12,9 +12,9 @@ Files changed:
 
 Resolution:
 
-- Added `prop:finite-regulator-gaussian-pushforward`, a finite-regulator
-  theorem for Gaussian pushforward on finite-dimensional mode spaces.
-- Proved the proposition by characteristic functions of independent Gaussian
+- Added the finite-regulator Gaussian pushforward calculation, a finite-regulator
+  measure identity for Gaussian pushforward on finite-dimensional mode spaces.
+- Verified the calculation by characteristic functions of independent Gaussian
   random variables with covariances \(C_{\Lambda'}\) and
   \(\widehat C_{\Lambda,\Lambda'}\).
 - Added `hyp:wilsonian-pushforward-continuum-interpretation`, which separates

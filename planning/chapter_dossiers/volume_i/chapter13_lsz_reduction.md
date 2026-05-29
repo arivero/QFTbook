@@ -138,9 +138,9 @@
   the next chapter.
 - The full scattering kernel decomposes into products of connected kernels
   over compatible partitions of incoming and outgoing labels.
-- Proposition `prop:lsz-connected-scattering-partition-formula` states this
-  partition formula as the scattering-kernel analogue of moment-cumulant
-  inversion, with a proof from cluster factorization.
+- Paragraph "Partition formula for connected scattering kernels" gives this
+  scattering-kernel analogue of moment-cumulant inversion and explains its
+  relation to cluster factorization.
 - Perturbative \(\phi^4\) Green functions yield
   \(\mathcal M=-g+O(g^2)\) for tree-level \(2\to2\) scattering after LSZ;
   the four external scalar propagator numerators \((-\ii)^4\) and four LSZ
