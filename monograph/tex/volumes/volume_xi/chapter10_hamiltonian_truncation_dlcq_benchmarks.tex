@@ -812,11 +812,10 @@ The normalization of \(\gamma\) depends on the convention for
 \(g^2N/\pi\).  The finite object above is sufficient to illustrate harmonic
 resolution, positivity, and extrapolation obligations.
 
-\begin{proposition}[Positivity of the finite principal-value matrix]
-\label{prop:thooft-dlcq-finite-positivity}
+\paragraph{Finite principal-value quadratic form.}
 For \(m_1^2,m_2^2,\gamma>0\) and any
 \(v=(v_1,\ldots,v_{K-1})\in\mathbb R^{K-1}\),
-\[
+\begin{equation}
   v^T M_K^2 v
   =
   \sum_{n=1}^{K-1}
@@ -829,11 +828,10 @@ For \(m_1^2,m_2^2,\gamma>0\) and any
   \gamma K
   \sum_{1\leq n<m\leq K-1}
   \frac{(v_n-v_m)^2}{(n-m)^2}.
-\]
+  \label{eq:thooft-dlcq-finite-quadratic-form}
+\end{equation}
 In particular \(M_K^2\) is positive definite.
-\end{proposition}
 
-\begin{proof}
 Substitute the definition of \(M_K^2\) into \(v^TM_K^2v\).  The mass terms
 give the first displayed sum.  The off-diagonal kernel gives
 \[
@@ -853,7 +851,9 @@ Pair the term \((n,m)\) with \((m,n)\).  For each unordered pair
 \]
 This gives the stated quadratic form.  Since \(0<x_n<1\), the mass
 coefficients are positive; hence \(v^TM_K^2v>0\) for \(v\neq0\).
-\end{proof}
+The calculation is a finite-regulator algebra check: it proves positivity of
+the displayed matrix.  Positivity and self-adjointness of the continuum
+principal-value operator require a separate continuum-domain construction.
 
 The script
 \[
@@ -993,8 +993,7 @@ The two terms proportional to \(c\) cancel because
 Using \(|r_{2K}|\le C(2K)^{-\eta}\) gives
 \eqref{eq:two-cutoff-richardson-bound}.
 
-\begin{proposition}[Integer-power extrapolation with explicit weights]
-\label{prop:integer-power-extrapolation-weights}
+\paragraph{Integer-power extrapolation with explicit weights.}
 Let \(s_0,\ldots,s_m\) be distinct positive real numbers and suppose
 \(A_K\) satisfies \eqref{eq:power-law-cutoff-remainder-bound} on the
 subsequence \(s_jK\), \(j=0,\ldots,m\).  Let \(w_0,\ldots,w_m\) be the unique
@@ -1020,9 +1019,7 @@ satisfies
   \sum_{j=0}^m |w_j|\,s_j^{-(m+1)\omega}.
   \label{eq:integer-power-extrapolation-bound}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
 Set \(q_j=s_j^{-\omega}\).  The numbers \(q_0,\ldots,q_m\) are distinct,
 so the Vandermonde matrix \((q_j^a)_{0\le a,j\le m}\) is invertible.  Hence
 \eqref{eq:extrapolation-weight-moments} has a unique solution.  Insert
@@ -1037,12 +1034,16 @@ triangle inequality:
   \sum_{j=0}^m |w_j|\,C(s_jK)^{-(m+1)\omega}.
 \]
 This is \eqref{eq:integer-power-extrapolation-bound}.
-\end{proof}
+The finite algebra is exact, but its use in a continuum claim is only as good
+as the expansion and remainder estimate in
+Definition~\ref{def:power-law-cutoff-expansion}.  The weights cancel declared
+integer powers; the QFT problem separately supplies the evidence that these
+powers are the correct cutoff expansion.
 
 \paragraph{\texorpdfstring{Large-\(K\) diagnostic for the finite 't Hooft matrices}{Large-K diagnostic for the finite 't Hooft matrices}.}
-For the finite matrices \(M_K^2\) in
-Proposition~\ref{prop:thooft-dlcq-finite-positivity}, write their eigenvalues
-in nondecreasing order as
+For the finite matrices \(M_K^2\) whose quadratic form is displayed in
+\eqref{eq:thooft-dlcq-finite-quadratic-form}, write their eigenvalues in
+nondecreasing order as
 \[
   \lambda_0(K)\leq\lambda_1(K)\leq\cdots\leq\lambda_{K-2}(K).
 \]

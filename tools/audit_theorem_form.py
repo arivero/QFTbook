@@ -129,6 +129,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Infinitesimal stress-tensor transformation|"
     r"Schwarzian cocycle|"
     r"Inversion of scalar and spin primaries|"
+    r"Positivity of the finite principal-value matrix|"
+    r"Integer-power extrapolation with explicit weights|"
     r"comparison algebra|"
     r"finite algebra of .*comparisons|"
     r"exact finite.*GEVP extraction|"

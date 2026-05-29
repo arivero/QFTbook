@@ -80,15 +80,17 @@ numerics.
   obligation for replacing it by a local counterterm.
 - Defines DLCQ kinematics and the role of harmonic resolution.
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
-  meson equation and proves positivity of its quadratic form.
+  meson equation and records the finite quadratic-form identity that gives
+  regulator-level positivity.
 - Defines finite-regulator observable data, separating finite observables,
   statistical errors, and systematic cutoff-error models.
 - Proves by Lagrange interpolation that finitely many cutoff values do not
   determine a continuum value without an analytic error model.
 - Defines a power-law cutoff expansion with an explicit remainder bound.
 - Proves two-cutoff Richardson cancellation with a displayed error bound.
-- Proves integer-power multi-cutoff extrapolation by exact Vandermonde
-  weights and a displayed remainder estimate.
+- Records integer-power multi-cutoff extrapolation by exact Vandermonde
+  weights and a displayed remainder estimate, with theorem status reserved for
+  the separate cutoff-expansion hypothesis.
 - Defines a fixed-label large-`K` diagnostic for the finite large-N QCD DLCQ
   matrix sequence, explicitly separating the numerical label convention from
   any continuum-state claim.
