@@ -682,6 +682,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Rigid special-K.*ahler metric from the prepotential"
     r"|Conformal current from a traceless stress tensor"
     r"|Virial class, improvement, and conformal currents"
+    r"|Massive Wigner transformation law"
+    r"|Associativity and commutator"
+    r"|Component form of the quantum master equation"
+    r"|Finite entropy-production theorem"
+    r"|Component form of the Wess--Zumino model"
+    r"|Finite circle-Darboux model of BV pushforward"
+    r"|Pushforward covariance of the Einstein--Langevin source"
+    r"|Entropy production fixes positivity"
+    r"|Finite-regulator Wetterich equation"
+    r"|Finite-size scaling from an RG chart"
+    r"|Colored-partition growth and the string Hagedorn scale"
     r")\b",
     re.IGNORECASE,
 )
