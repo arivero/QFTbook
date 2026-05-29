@@ -44,7 +44,13 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"localization deformation identity|"
     r"two-dimensional Wess--Zumino action|"
     r"free scalar thermal Green function|"
-    r"BCFW shift preserves"
+    r"BCFW shift preserves|"
+    r"spectral extraction of the finite-lattice static energy|"
+    r"Airy transform of a cubic grand potential|"
+    r"Hirota factorization in the one-row T-gauge|"
+    r"Veneziano residue and finite-spin exchange|"
+    r"ambient transformations and Poincare-patch formulae|"
+    r"rank-one conifold quotient"
     r")\b",
     re.IGNORECASE,
 )
