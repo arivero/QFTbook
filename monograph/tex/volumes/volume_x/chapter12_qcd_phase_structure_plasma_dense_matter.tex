@@ -1805,16 +1805,11 @@ shifted by \(-\mu_q\), and on the lattice forward and backward temporal hops
 are weighted asymmetrically.  The determinant need not be real and
 nonnegative.
 
-\begin{proposition}[Origin of the finite-density sign problem]
-\label{prop:qcd-finite-density-sign-problem}
 At \(\mu_B=0\), a vectorlike pair of equal-mass quark flavors gives a
 nonnegative Euclidean determinant.  At real \(\mu_B\ne0\), the same
 positivity argument fails because the Dirac operator loses the
 \(\gamma_5\)-Hermiticity relation that pairs eigenvalues into complex
 conjugates at fixed gauge field.
-\end{proposition}
-
-\begin{proof}
 At \(\mu_B=0\), the lattice or continuum Euclidean Dirac operator obeys
 \[
   \gamma_5(D_E+m)\gamma_5=(D_E+m)^\dagger
@@ -1832,7 +1827,6 @@ Equivalently, the lattice temporal hopping factors \(e^{a\mu_q}\) and
 a relation connecting \(\mu_q\) to \(-\mu_q\).  At fixed real \(\mu_q\) the
 determinant is generally complex, so it cannot be used directly as a
 positive probability weight.
-\end{proof}
 
 \subsection{Imaginary Chemical Potential and Roberge--Weiss Periodicity}
 \label{subsec:qcd-imaginary-mu-roberge-weiss}
@@ -3668,8 +3662,8 @@ Proposition~\ref{prop:qcd-cfl-exchange-symmetry}.  The dimension of the
 broken global coset is therefore \(8+8+1-8=9\).  The conclusion is only a
 group-theoretic consequence of the source-selected CFL order.  Establishing
 which region of QCD realizes this order requires control of dense QCD, where
-direct lattice importance sampling is obstructed by
-Proposition~\ref{prop:qcd-finite-density-sign-problem}.
+direct lattice importance sampling is obstructed by the finite-density
+sign-problem mechanism described above.
 \end{remark}
 
 \begin{definition}[Gauge-invariant static screening diagnostics in dense QCD]

@@ -92,7 +92,22 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Hirota from Pluecker identities|"
     r"Baxter product wavefunctions|"
     r"Field-strength matrix element descends to the helicity line|"
-    r"Auxiliary-vector polarization projector"
+    r"Auxiliary-vector polarization projector|"
+    r"Nilpotency from the master equation|"
+    r"Origin of the finite-density sign problem|"
+    r"Supercharge decomposition in the Donaldson twist|"
+    r"Power counting for .*Phi|"
+    r"Cutoff behavior of the tadpole|"
+    r"Scalar one-point selection rule|"
+    r"Principal-chiral Lax equivalence|"
+    r"Vertex OPE and scaling dimension|"
+    r"Constant-map A-model algebra|"
+    r"Descent of Wilson charges|"
+    r"Connected-manifold formula|"
+    r"Pair-of-pants selection rule|"
+    r"Residual quotient symmetry after normal-subgroup gauging|"
+    r"Finite condensate criterion|"
+    r"Finite condensate confinement criterion"
     r")\b",
     re.IGNORECASE,
 )

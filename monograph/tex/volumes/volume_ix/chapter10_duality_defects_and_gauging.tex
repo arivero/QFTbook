@@ -265,8 +265,6 @@ Thus the local operator space of the gauged theory is
   \label{eq:orbifold-local-operator-space}
 \end{equation}
 
-\begin{proposition}[Pair-of-pants selection rule]
-\label{prop:orbifold-pair-of-pants-selection}
 In a two-dimensional orbifold by a finite group \(G\), an OPE coefficient
 between twisted sectors can receive a contribution from a flat bundle on a
 pair of pants only if, after choosing compatible base paths,
@@ -276,9 +274,6 @@ pair of pants only if, after choosing compatible base paths,
 \end{equation}
 Equivalently, the outgoing holonomy is the product \(g_3=g_1g_2\), up to
 simultaneous conjugation.
-\end{proposition}
-
-\begin{proof}
 The fundamental group of a pair of pants has generators represented by the
 three boundary circles with the relation
 \[
@@ -294,10 +289,9 @@ must satisfy \(g_1g_2g_3^{-1}=e\).  Conversely any triple satisfying this
 relation defines a flat bundle on the pair of pants after choosing a
 trivialization at the base point.  Changing the base trivialization conjugates
 all three holonomies simultaneously.
-\end{proof}
 
 Formula \eqref{eq:orbifold-local-operator-space} and
-Proposition~\ref{prop:orbifold-pair-of-pants-selection} give the finite
+the pair-of-pants monodromy condition \eqref{eq:orbifold-pair-of-pants-monodromy} give the finite
 topological part of the orbifold OPE.  The analytic OPE coefficients inside
 each allowed twisted sector are still QFT data; they are not determined by
 the group \(G\) alone.
@@ -400,16 +394,11 @@ be a normal subgroup.  Assume the \(H\)-symmetry is anomaly-free after the
 restriction of all anomaly and counterterm data has been fixed.  Gauging \(H\)
 produces \(\mathcal Q/H\).
 
-\begin{proposition}[Residual quotient symmetry after normal-subgroup gauging]
-\label{prop:normal-subgroup-residual-symmetry}
 If the \(G\)-action on \(\mathcal Q\) is anomaly-compatible with the chosen
 \(H\)-gauging, then \(\mathcal Q/H\) has a residual ordinary symmetry
 \[
   G/H .
 \]
-\end{proposition}
-
-\begin{proof}
 For \(g\in G\), conjugation maps an \(H\)-bundle \(P\) to another \(H\)-bundle
 \[
   P^g:=P\times_{H,c_g}H,
@@ -423,7 +412,6 @@ gauge transformation of the summed \(H\)-field and hence acts trivially on
 gauge-invariant observables of the gauged theory.  The action therefore
 factors through \(G/H\).  Compatibility of the anomaly and counterterm choices
 ensures that the factorized action is associative rather than projective.
-\end{proof}
 
 \begin{example}[Normal-subgroup interface and a finite test case]
 \label{ex:normal-subgroup-gauging-defect}

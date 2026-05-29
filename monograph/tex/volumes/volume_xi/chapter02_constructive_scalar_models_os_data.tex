@@ -649,8 +649,6 @@ coordinates of the regulated action.  They are not a second Lagrangian and
 are not optional decorations.  Their values are fixed by the renormalization
 conditions or by the constructive normalization scheme.
 
-\begin{lemma}[Power counting for \(\Phi^4_d\)]
-\label{lem:phi-four-power-counting}
 For connected scalar \(\phi^4\) graphs in \(d\) Euclidean dimensions with
 \(E\) external legs, \(V\) quartic vertices, and \(L\) loops, the superficial
 degree of divergence is
@@ -665,9 +663,6 @@ degree of divergence is
 In \(d=3\), only finitely many local divergences occur: vacuum-energy and
 two-point local counterterms.  The four-point and higher connected kernels
 are superficially convergent after subdivergences are removed.
-\end{lemma}
-
-\begin{proof}
 The graph identities are
 \[
   4V=2I+E,\qquad L=I-V+1 .
@@ -684,10 +679,7 @@ For \(d=3\), this is \(3-E/2-V\).  At fixed \(E\), only finitely many \(V\)
 can satisfy \(\omega_3\geq0\), and \(E\geq4\) is convergent except for
 subdivergences.  Thus all primitive local divergences are proportional to
 the identity or to \(\phi^2\).
-\end{proof}
 
-\begin{lemma}[Cutoff behavior of the tadpole]
-\label{lem:constructive-tadpole-cutoff-asymptotics}
 With sharp momentum cutoff \(|p|\leq\Lambda\),
 \[
   I_d(\Lambda,m)
@@ -706,9 +698,6 @@ satisfies
   \frac{\Lambda}{2\pi^2}+O(1).
   \label{eq:tadpole-cutoff-asymptotics}
 \end{equation}
-\end{lemma}
-
-\begin{proof}
 In polar coordinates,
 \[
   I_d(\Lambda,m)
@@ -720,7 +709,6 @@ For \(d=2\), \(|S^1|=2\pi\) and the radial integral is
 \(\frac12\log(\Lambda^2+m^2)-\frac12\log m^2\), giving the coefficient
 \((2\pi)^{-1}\).  For \(d=3\), \(|S^2|=4\pi\) and the radial integral is
 \(\Lambda-m\arctan(\Lambda/m)\), giving the coefficient \((2\pi^2)^{-1}\).
-\end{proof}
 
 In the normalization \(\lambda\phi^4\), Wick ordering the quartic interaction
 produces
@@ -1070,8 +1058,8 @@ configurations are separated into small-field regions, where perturbative
 Taylor expansion is controlled, and large-field regions, where the positive
 quartic term and local regulators give stability.
 
-Second, all local divergent pieces allowed by
-Lemma~\ref{lem:phi-four-power-counting} are extracted into the two
+Second, all local divergent pieces allowed by the power-counting formula
+\eqref{eq:phi-four-superficial-degree} are extracted into the two
 coordinates \(a_\varepsilon\) and \(b_\varepsilon\).  The remaining polymer
 activities satisfy bounds of the type
 \begin{equation}
