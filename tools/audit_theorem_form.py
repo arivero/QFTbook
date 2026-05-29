@@ -577,6 +577,17 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Scattering-normalized DOZZ representative"
     r"|Compact coset central charge and primary data"
     r"|Cigar central charge and primary data"
+    r"|Hatted beta functions and redundant directions"
+    r"|Parafermion central charge, weights, and identification"
+    r"|Cyclic permutation twist weight"
+    r"|Free-boson rotation twist weight"
+    r"|Nilpotent Taylor coefficient of a chiral .*F.*term"
+    r"|Source curvature as an integrated connected correlator"
+    r"|Direct fusion pole in the breather amplitudes"
+    r"|Finite BF partition function"
+    r"|Covariance of the Abelian Dirac coupling"
+    r"|One-particle residue bound for a canonically normalized field"
+    r"|Leading Coulombic .*1S.* quarkonium level"
     r")\b",
     re.IGNORECASE,
 )
