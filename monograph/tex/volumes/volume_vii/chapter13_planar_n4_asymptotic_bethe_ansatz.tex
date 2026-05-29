@@ -631,8 +631,8 @@ special loci are the bound-state and pole analyses, not the generic
 two-magnon scattering case.
 \end{proof}
 
-\begin{proposition}[Local intertwining and block-unitarity constraints]
-\label{prop:planar-n4-su2c-local-amplitude-checks}
+\paragraph{Local intertwining and block-unitarity checks.}
+\label{par:planar-n4-su2c-local-amplitude-checks}
 Assume the denominators in
 \eqref{eq:planar-n4-su2c-ten-amplitudes} are non-zero.  The amplitudes above
 satisfy the highest-weight \(Q\)-intertwining relation
@@ -683,11 +683,10 @@ Equivalently, the matrix part has the correct inverse when the two magnons are
 exchanged; the scalar unitarity condition is the separate condition
 \(\mathcal S_{12}\mathcal S_{21}=1\), or, for the full two-copy scalar split,
 \(S_{0,12}S_{0,21}=1\).
-\end{proposition}
 
-\begin{proof}
-The first identity is the direct result of applying \(Q^\alpha{}_a\) to the
-symmetric boson state and comparing the independent
+The finite check is local in the chosen dynamic frame.  The first identity is
+the result of applying \(Q^\alpha{}_a\) to the symmetric boson state and
+comparing the independent
 \(\ket{\psi_2\phi_1}\) and \(\ket{\phi_2\psi_1}\) components.  Substituting
 \eqref{eq:planar-n4-su2c-ten-amplitudes} gives
 \[
@@ -718,7 +717,6 @@ blocks explicitly from \eqref{eq:planar-n4-su2c-ten-amplitudes} and verifies
 \(R_{12}R_{21}=1\) on nonsingular physical-branch samples.  This check is not
 a substitute for crossing or Yang--Baxter factorization; it certifies the
 local frame and amplitude algebra used by the nested Bethe derivation below.
-\end{proof}
 
 The convenient scalar split used in the stringbook is
 \[
@@ -1854,8 +1852,8 @@ exchange sign is accounted for, the level-III vacuum scattering is trivial.
 This is the local sign convention behind the sentence that the
 \(\psi_1\)-vacuum has \(S^{{\rm II},{\rm II}}=1\).
 
-\begin{proposition}[Single level-III nesting step]
-\label{prop:planar-n4-single-level-iii-nesting-step}
+\paragraph{Single level-III nesting step.}
+\label{par:planar-n4-single-level-iii-nesting-step}
 Assume \(g\neq0\), \(v(y_1)-v(y_2)+\ii/g\neq0\), and the denominators below
 are nonzero.  In the graded convention just described, a single level-III
 excitation with spectral parameter \(w\) has one-body coefficient
@@ -1871,10 +1869,10 @@ and level-III/level-II scattering factor
        {w-v(y)+\ii/(2g)}.
   \label{eq:planar-n4-level-iii-level-ii-factor}
 \end{equation}
-\end{proposition}
 
-\begin{proof}
-Put \(\eta=\ii/(2g)\), \(v_i=v(y_i)\), \(D=v_1-v_2\), and
+This is a two-site compatibility calculation after the level-II matrix,
+contact-term convention, and graded exchange sign have been fixed.  Put
+\(\eta=\ii/(2g)\), \(v_i=v(y_i)\), \(D=v_1-v_2\), and
 \(a_i=w-v_i\).  Then \(a_2=a_1+D\), and
 \eqref{eq:planar-n4-level-ii-mn-eigenvalues} is equivalent to
 \[
@@ -1916,7 +1914,6 @@ The second reduces to
 \]
 Both identities follow immediately from \(a_2=a_1+D\).  Therefore the
 one-level-III ansatz is compatible with every adjacent level-II exchange.
-\end{proof}
 
 A pair of level-III roots scatters by
 \[
@@ -2065,8 +2062,8 @@ Bethe--Yang phase, because there the scattering phase is the inverse of the
 ordered-chamber exchange coefficient.  The two statements are compatible,
 but only after the orientation is named.
 
-\begin{proposition}[Weak limit of the rank-one ABA orientation]
-\label{prop:planar-n4-rank-one-aba-weak-limit}
+\paragraph{Weak limit of the rank-one ABA orientation.}
+\label{par:planar-n4-rank-one-aba-weak-limit}
 Let \(u_j,u_k\) stay away from the shifted branch points and from each other
 as \(g\to0\), and take the physical outside branch
 \[
@@ -2115,10 +2112,9 @@ the \(SL(2)\)-orientation also used in
 degeneration of Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
 The reciprocal factor \(\mathcal R_{jk}^{-1}\) gives the compact \(SU(2)\)
 one-loop phase of \eqref{eq:planar-n4-one-loop-su2-bethe}.
-\end{proposition}
 
-\begin{proof}
-The outside branch of \(x+x^{-1}=U/g\) has the expansion
+The convention check is an ordinary weak-branch expansion.  The outside branch
+of \(x+x^{-1}=U/g\) has the expansion
 \[
   x(U)=\frac{U}{g}-\frac{g}{U}+O(g^3),
 \]
@@ -2145,7 +2141,6 @@ weak charges give \(q_2q_3-q_3q_2=O(g^3)\); the dressing phase therefore
 cannot affect the one-loop equation.  Substituting the limits into
 \eqref{eq:planar-n4-rank-one-stringbook-aba} gives
 \eqref{eq:planar-n4-rank-one-sl2-weak-bethe}.
-\end{proof}
 
 Using \(g^2=\lambda/(16\pi^2)\), the leading energy term in
 \eqref{eq:planar-n4-rank-one-energy-weak-limit} agrees with the one-loop
