@@ -86,3 +86,12 @@ condensation networks.
   by spelling out half-ball states, order reversal under radial reflection,
   null-junction quotienting, and unitarity of isotopy maps in orthonormal
   junction bases.
+- 2026-05-30 proof-substance pass: retained `Reflection adjoint of a
+  topological-defect action` as proposition-level material, but expanded the
+  proof so it is an actual Hilbert-space/domain argument.  The proof now
+  introduces finite-radius defect actions, takes the shrinking-limit inside
+  the BPZ pairing on the dense local domain, reflects the finite-radius ball
+  correlator to the \(D^\dagger\) insertion, uses topological isotopy before
+  passing to the limit, and only then extends by boundedness to
+  \(\mathcal H_{\rm loc}\).  The text also separates reflection
+  self-adjointness from invertible-defect unitarity.

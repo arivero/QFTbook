@@ -229,22 +229,79 @@ unitary operator unless the defect is invertible.
 \end{proposition}
 
 \begin{proof}
-It is enough to prove the identity on the dense local domain.  Represent
-\(\langle \rho_D v,w\rangle_{\rm BPZ}\) by a ball correlation function with
-the state \(v\) inserted at the origin, the conjugate state \(w\) inserted at
-infinity after reflection, and the defect \(D\) placed on a small sphere
-around the origin.  Reflection positivity identifies the reflected
-configuration with the BPZ inner product.  Reflecting the whole ball reverses
-the orientation of the defect sheet and sends \(D\) to \(D^\dagger\).  Since
-the defect is topological, the reflected sheet can be deformed to a small
-sphere surrounding the reflected insertion without crossing any operator.
-The resulting correlation function is precisely
-\(\langle v,\rho_{D^\dagger}w\rangle_{\rm BPZ}\).  Boundedness extends the
-identity from \(\mathcal D_{\rm loc}\) to the Hilbert completion.  If
-\(D\simeq D^\dagger\) the operator is self-adjoint.  Unitarity would require
-\(\rho_{D^\dagger}\rho_D=\mathbf 1\), which is the action of
-\(D^\dagger\otimes D\); a noninvertible defect has a direct-sum fusion product
-instead and therefore is not forced, or expected, to act unitarily.
+It is enough first to prove the identity on
+\(\mathcal D_{\rm loc}\).  Choose local-operator representatives
+\(\mathcal O_v,\mathcal O_w\) of \(v,w\), with all insertions placed in the
+unit ball and with the BPZ inner product written as the reflection-positive
+pairing
+\[
+  \langle v,w\rangle_{\rm BPZ}
+  =
+  \lim_{R\to\infty}
+  \left\langle
+    \Theta_R\mathcal O_w(R)\,\mathcal O_v(0)
+  \right\rangle ,
+\]
+where \(\Theta_R\) denotes radial reflection together with the anti-linear
+adjunction on operator labels.  For \(\epsilon>0\) small, let
+\(\rho_{D,\epsilon}\) be the operation of inserting \(D\) on the sphere
+\(S_\epsilon^{D-1}\) around the origin.  By the definition of the shrinking
+action,
+\[
+  \rho_{D,\epsilon}v\longrightarrow \rho_D v
+  \quad\text{and}\quad
+  \rho_{D^\dagger,\epsilon}w\longrightarrow \rho_{D^\dagger}w
+\]
+in the Hilbert topology on the common domain.  Hence
+\[
+  \langle \rho_Dv,w\rangle_{\rm BPZ}
+  =
+  \lim_{\epsilon\downarrow0}
+  \langle \rho_{D,\epsilon}v,w\rangle_{\rm BPZ}.
+\]
+The finite-\(\epsilon\) inner product is the ball correlator with \(D\) on
+\(S_\epsilon^{D-1}\), \(\mathcal O_v\) inside it, and the reflected insertion
+representing \(w\) outside it.  Radial reflection reverses the coorientation
+of the defect sheet, so the reflected defect label is \(D^\dagger\).  The
+reflected sphere surrounds the reflected \(w\)-insertion and no other
+operator.  Because the defect is topological, this sphere may be isotoped,
+inside the complement of all operator insertions, to the standard small sphere
+used in Definition~\ref{def:defect-action-on-local-operators} for the action
+of \(D^\dagger\) on \(w\).  Therefore, at fixed \(\epsilon\),
+\[
+  \langle \rho_{D,\epsilon}v,w\rangle_{\rm BPZ}
+  =
+  \langle v,\rho_{D^\dagger,\epsilon}w\rangle_{\rm BPZ},
+\]
+with the same orientation convention as in the definition of \(D^\dagger\).
+Taking \(\epsilon\downarrow0\) gives
+\[
+  \langle \rho_Dv,w\rangle_{\rm BPZ}
+  =
+  \langle v,\rho_{D^\dagger}w\rangle_{\rm BPZ}
+\]
+for \(v,w\in\mathcal D_{\rm loc}\).  Since
+\(\mathcal D_{\rm loc}\) is dense and both \(\rho_D\) and
+\(\rho_{D^\dagger}\) are bounded by hypothesis, the identity extends
+uniquely to all of \(\mathcal H_{\rm loc}\), which is precisely
+\(\rho_{D^\dagger}=\rho_D^*\).
+
+If \(D\simeq D^\dagger\) through the chosen reflection structure, the
+operator is self-adjoint.  Unitarity is stronger: it would require
+\[
+  \rho_D^*\rho_D
+  =
+  \rho_{D^\dagger}\rho_D
+  =
+  \rho_{D^\dagger\otimes D}
+  =
+  \mathbf 1
+\]
+on the Hilbert space, where the middle equality is the fusion-action
+identity \eqref{eq:defect-fusion-action-composition}.  Thus unitarity follows
+from an invertible defect with \(D^\dagger\otimes D\simeq\mathbf 1\).
+Reflection symmetry by itself gives self-adjointness; invertibility supplies
+the inverse required for unitarity.
 \end{proof}
 
 When \(D\) is not invertible, \(\rho_D\) may be a projection, a sum of
