@@ -20,7 +20,8 @@
 - Null-mode Klein-Gordon product and singular Bogoliubov coefficient
   calculation.
 - Wave-packet definition with frequency bin `j` and retarded-time bin `n`.
-- Late-time packet occupation theorem giving the Planck-bin average.
+- Late-time packet occupation controlled approximation giving the Planck-bin
+  average in the stationary late-time regime.
 - Closed-form Planck-bin average and regression check for the sign of the
   logarithm.
 - Two-dimensional stress-tensor flux from the Schwarzian derivative of the

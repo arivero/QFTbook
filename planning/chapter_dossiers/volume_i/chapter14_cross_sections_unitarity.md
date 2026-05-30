@@ -51,8 +51,8 @@
 - The sharp-momentum delta-square derivation is included as a regulated check:
   \((2\pi)^D\delta^D(0)=V\mathcal T\) and
   \(\delta^{(d)}(0)=V/(2\pi)^d\).
-- Proposition `prop:sharp-momentum-density-limit-cross-section` proves the
-  regulated density limit that converts the sharp connected kernel into the
+- Example `ex:sharp-momentum-density-limit-cross-section` records the
+  regulated density check that converts the sharp connected kernel into the
   plane-wave cross-section density.
 - The notation table now separates \(M_\delta\), the
   \(\delta^{(d)}\)-normalized connected sharp-momentum kernel, from

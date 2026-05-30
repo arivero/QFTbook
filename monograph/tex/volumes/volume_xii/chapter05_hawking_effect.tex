@@ -361,8 +361,8 @@ Fix a frequency resolution \(\varepsilon>0\).  For integers \(j\ge0\) and
 The integer \(j\) labels a frequency bin and \(n\) labels retarded-time
 localization, with center approximately \(u_n=2\pi n/\varepsilon\).
 
-\begin{proposition}[Late-time packet occupation]
-\label{prop:hawking-wave-packet-occupation}
+\begin{controlledapproximation}[Late-time packet occupation]
+\label{ca:hawking-wave-packet-occupation}
 In the stationary late-time approximation determined by
 the exponential ray-tracing relation above, the number of incoming-vacuum
 quanta in the outgoing packet \((j,n)\) is
@@ -385,9 +385,7 @@ on which the Planck factor varies, this is
   +O(\varepsilon\,\partial_\omega n_\omega),
   \qquad \omega_j=(j+\tfrac12)\varepsilon .
 \]
-\end{proposition}
 
-\begin{proof}
 The packet Bogoliubov coefficient is
 \[
   \beta_{jn,\omega'}
@@ -423,7 +421,7 @@ and the remaining diagonal coefficient is exactly the Planck factor in
 the \(O(e^{-2\kappa u})\) part of the ray-tracing map and from the smooth
 part of the traced mode give the \(o(1)\) term for packets moved to late
 retarded time.
-\end{proof}
+\end{controlledapproximation}
 
 The exact bin average in \eqref{eq:hawking-packet-bin-average} can be written
 without approximation:
