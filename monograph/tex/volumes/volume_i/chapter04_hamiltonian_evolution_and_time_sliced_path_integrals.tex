@@ -329,6 +329,89 @@ The Euclidean version is the semigroup limit
 when the corresponding semibounded form construction applies.
 \end{quotedtheorem}
 
+\paragraph{Mechanism of the product limit.}
+The theorem is a statement in \(\Hilb_{\mathcal Q}\), not a pointwise
+identity between formal path-integral densities.  In the bounded case the
+mechanism can be seen without domain issues.  If \(A\) and \(B\) are bounded
+self-adjoint operators and \(t\) is fixed, Taylor expansion in operator norm
+gives, uniformly for \(0\le\delta\le t\),
+\[
+  \ee^{-\delta A}\ee^{-\delta B}
+  =
+  1-\delta(A+B)+O(\delta^2),
+  \qquad
+  \ee^{-\delta(A+B)}
+  =
+  1-\delta(A+B)+O(\delta^2).
+\]
+Hence
+\[
+  \bigl\|\ee^{-\delta A}\ee^{-\delta B}
+  -\ee^{-\delta(A+B)}\bigr\|\le C_t\delta^2 .
+\]
+The telescoping identity
+\[
+  X^N-Y^N
+  =
+  \sum_{j=0}^{N-1}X^{N-1-j}(X-Y)Y^j
+\]
+with \(X=\ee^{-tA/N}\ee^{-tB/N}\) and
+\(Y=\ee^{-t(A+B)/N}\) then gives
+\[
+  \|X^N-Y^N\|
+  \le
+  N\,\|X-Y\|\,\max_{j,k\le N}\|X^j\|\,\|Y^k\|
+  =
+  O(N^{-1}).
+\]
+Thus the noncommutativity of \(A\) and \(B\) first appears in terms of order
+\(\delta^2\), and the accumulated error over \(N=t/\delta\) time slices
+vanishes.
+
+For Schr\"odinger Hamiltonians \(T+V\) the same calculation cannot be read as
+a proof, because \(T\) and \(V\) are unbounded and may not have a useful
+operator-domain intersection.  The semibounded Euclidean statement is instead
+form-theoretic.  After adding constants to make \(A\) and \(B\) nonnegative
+if necessary--which only multiplies the product formula by the corresponding
+scalar exponential factors--one starts from closed semibounded quadratic forms
+\[
+  \mathfrak a[\psi]=\langle A^{1/2}\psi,A^{1/2}\psi\rangle,\qquad
+  \mathfrak b[\psi]=\langle B^{1/2}\psi,B^{1/2}\psi\rangle ,
+\]
+with common form domain
+\(\operatorname{Dom}\mathfrak a\cap\operatorname{Dom}\mathfrak b\).  If
+\(\mathfrak h=\mathfrak a+\mathfrak b\) is closed and semibounded, the
+representation theorem for closed forms defines the self-adjoint form sum
+\(H=A\dotplus B\) by
+\[
+  \mathfrak h(\varphi,\psi)=\langle\varphi,H\psi\rangle,
+  \qquad
+  \psi\in\operatorname{Dom} H,\quad
+  \varphi\in\operatorname{Dom}\mathfrak h .
+\]
+The Trotter--Kato form theorem proves that the alternating bounded
+contractions
+\[
+  \bigl(\ee^{-tA/N}\ee^{-tB/N}\bigr)^N
+\]
+converge strongly to \(\ee^{-tH}\).  Its proof replaces the norm Taylor
+argument by resolvent and form convergence: the resolvent of \(H\) is
+characterized by the variational equation
+\[
+  \mathfrak h(\varphi,u)+\lambda\langle\varphi,u\rangle
+  =
+  \langle\varphi,f\rangle,
+  \qquad
+  \varphi\in\operatorname{Dom}\mathfrak h,
+\]
+and the product approximants have resolvents whose variational problems
+converge to this one on the common form domain.  Strong resolvent convergence
+then gives strong semigroup convergence by the spectral theorem.  The
+real-time unitary product formula is a separate Stone--Chernoff statement:
+one verifies the infinitesimal generator on a core or invokes the corresponding
+self-adjoint-sum theorem.  It should not be inferred by simply substituting
+\(t\mapsto\ii t\) into an uncontrolled kernel expression.
+
 \begin{definition}[Kato Schrodinger Euclidean datum]
 \label{def:kato-schrodinger-euclidean-datum}
 For Schr\"odinger operators the words ``suppose the hypotheses hold'' can be

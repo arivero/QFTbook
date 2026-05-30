@@ -92,7 +92,8 @@ Working framework:
   phase-space construction and discrete phase-space action, recorded as a
   regulated insertion calculation rather than proposition-level content.
 - `qthm:trotter-product-formula-qm`: operator-level Trotter formula used to
-  interpret continuum limits.
+  interpret continuum limits, now accompanied by the bounded norm proof
+  mechanism and the unbounded closed-form/resolvent mechanism.
 - `def:kato-schrodinger-euclidean-datum`: Kato/local Kato hypotheses and
   Friedrichs Schrödinger Hamiltonian.
 - `thm:wiener-feynman-kac-qm`: Wiener measure, Brownian bridge, and
@@ -129,6 +130,12 @@ Working framework:
   limiting procedure.
 - `thm:wiener-feynman-kac-qm` constructs the Wiener-measure/Feynman--Kac
   representation under locally Kato bounded-below Schrödinger hypotheses.
+- The Trotter theorem boundary is expanded in place: the bounded case is
+  explained by norm Taylor expansion plus telescoping, while the unbounded
+  Schrödinger case is identified as a closed-form theorem whose proof passes
+  through variational characterization of the resolvent and strong semigroup
+  convergence, with real-time convergence requiring the corresponding
+  Stone--Chernoff/self-adjoint-sum input.
 - The Feynman--Kac theorem supplies one positive-measure bosonic entry in a
   broader typed path-integral taxonomy.
 - Distinct time-lattice orderings define distinct symbols \(h\) and \(h'\),
@@ -170,6 +177,10 @@ spectral theorem plus a gap estimate.
   The formulas and regulator assumptions were preserved, while the status now
   correctly reflects that the step is insertion of finite resolutions of
   identity and symbol bookkeeping.
+- 2026-05-30 quoted-theorem pass: expanded the Trotter product formula
+  boundary with the bounded telescoping proof mechanism and the unbounded
+  closed-form/resolvent mechanism, emphasizing that the theorem is an
+  operator statement rather than a pointwise kernel identity.
 
 ## Figure Ledger
 
