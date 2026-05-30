@@ -9,6 +9,14 @@ Gromov--Witten and B-model outputs obtained after localization.
 
 ## Notation Inventory
 
+- `mathfrak A_X`: A-model cohomological sigma-model datum, including
+  source surface, almost Kahler target, locally super-ringed field space,
+  `Q_A`, localization section, virtual integration package, Novikov
+  completion, and contact-term prescription.
+- `mathfrak B_X`: closed B-model cohomological sigma-model datum, including
+  Calabi-Yau target, holomorphic volume form, polyvector complex, trace
+  pairing, anomaly-free twist, regulated integration cycle, and contact-term
+  prescription.
 - `Sigma`, `j_Sigma`: compact Riemann surface and its complex structure.
 - `X`: compact target manifold; almost Kahler for the A-model, Calabi-Yau
   complex manifold for the closed B-model.
@@ -28,9 +36,13 @@ Gromov--Witten and B-model outputs obtained after localization.
 - `eta_ab`: Poincare pairing on `H^*(X)`.
 - `star`: genus-zero small quantum product.
 - `PV^{p,q}(X)`: Dolbeault polyvector complex for the B-model.
+- `c_A`, `c_B`: A- and B-model source/collision/contact-term prescriptions.
 
 ## Claim Ledger
 
+- States upfront hypotheses for the closed A-model and B-model data, making
+  explicit which pieces belong to the cohomological QFT layer and which
+  finite-dimensional packages enter after localization.
 - Defines the mapping field space as a Frechet manifold together with
   locally super-ringed fermionic directions.
 - Defines the A-model local scalar complex and proves

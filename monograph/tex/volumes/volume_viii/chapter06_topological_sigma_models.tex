@@ -20,6 +20,81 @@ regulator, integration cycle, compactification, anomaly line, and gluing maps
 have been specified.  Those data are part of the QFT problem surrounding the
 enumerative formula.
 
+\begin{hypothesis}[A-model cohomological sigma-model datum]
+\label{hyp:a-model-cohomological-sigma-datum}
+A closed A-model datum is a tuple
+\[
+  \mathfrak A_X
+  =
+  \bigl(
+    \Sigma,j_\Sigma; X,\omega,J,g_X; [B+\ii\omega];
+    \mathcal F_{\Sigma,X},Q_A,\bar\partial_J,
+    \mathfrak V_X,\Lambda_{\rm Nov},\mathfrak c_A
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \((\Sigma,j_\Sigma)\) is a compact marked Riemann surface, and
+  \((X,\omega,J,g_X)\) is compact almost K\"ahler.
+\item \(\mathcal F_{\Sigma,X}\) is the locally super-ringed mapping field
+  space whose bosonic body is \(C^\infty(\Sigma,X)\) and whose odd
+  directions are the twisted fermionic section spaces.
+\item \(Q_A\) is an odd cohomological vector field whose scalar local
+  observable complex is identified with \((\Omega^\bullet(X),d)\), and
+  \(\bar\partial_J\phi=0\) is the localization equation for the bosonic
+  zero modes.
+\item The action splits into a \(Q_A\)-exact nonnegative term plus the
+  complexified K\"ahler weight
+  \(Q^\beta=\exp(2\pi\ii\int_\beta(B+\ii\omega))\) on each curve class
+  \(\beta\in H_2(X;\mathbb Z)\).
+\item \(\mathfrak V_X\) is a virtual integration package for the stable-map
+  compactifications \(\overline{\mathcal M}_{g,n}(X,\beta)\), including
+  evaluation maps, forgetful maps, deformation identifications, and gluing
+  compatibility.
+\item \(\Lambda_{\rm Nov}\) is the Novikov completion in which the instanton
+  sum is interpreted, and \(\mathfrak c_A\) is the source, collision, and
+  contact-term prescription used to define products of local insertions.
+\end{enumerate}
+The datum is a hypothesis about the cohomological QFT layer.  The
+finite-dimensional Gromov--Witten package \(\mathfrak V_X\) is an output
+expected from localization once this datum is constructed.  The continuum QFT
+construction itself is the separate problem recorded in
+Open Problem~\ref{op:topological-sigma-model-continuum-qft}.
+\end{hypothesis}
+
+\begin{hypothesis}[Closed B-model cohomological sigma-model datum]
+\label{hyp:b-model-cohomological-sigma-datum}
+A closed B-model datum is a tuple
+\[
+  \mathfrak B_X
+  =
+  \bigl(
+    \Sigma,j_\Sigma; X,J_X,\Omega_X;
+    \mathcal F_{\Sigma,X},Q_B,{\rm PV}^{\bullet,\bullet}(X),
+    {\rm Tr}_{\Omega_X},\mathfrak c_B
+  \bigr)
+\]
+where \(X\) is a compact complex \(m\)-fold with trivial canonical bundle,
+\(\Omega_X\) is a nowhere-vanishing holomorphic volume form,
+\({\rm PV}^{p,q}(X)=\Omega^{0,q}(X,\wedge^pT^{1,0}X)\), \(Q_B=\bar\partial\)
+on scalar local observables, and
+\[
+  {\rm Tr}_{\Omega_X}(\mu)
+  =
+  \int_X \Omega_X\wedge\iota_\mu\Omega_X
+\]
+is the trace pairing when the total polyvector and Dolbeault degrees make the
+integrand top degree.  The datum also includes the anomaly-free axial twist,
+the regulated \(Q_B\)-invariant integration cycle, and the contact-term
+prescription \(\mathfrak c_B\).  Its first-order deformation complex is the
+Dolbeault polyvector differential graded Lie algebra
+\[
+  \bigl({\rm PV}^{1,\bullet}(X),\bar\partial,[\cdot,\cdot]\bigr),
+\]
+with Maurer--Cartan equation
+\(\bar\partial\mu+\frac12[\mu,\mu]=0\).
+\end{hypothesis}
+
 \section{The Mapping Field Space}
 
 \begin{definition}[Mapping space and fermionic directions]
@@ -49,15 +124,18 @@ rather than elements of the underlying bosonic mapping space.  Fermionic field
 operators in Lorentzian QFT are linear operators on a Hilbert-space domain and
 are different objects.
 
-For the A-model, the target datum is an almost K\"ahler manifold
+For the A-model datum of
+Hypothesis~\ref{hyp:a-model-cohomological-sigma-datum}, the target is an
+almost K\"ahler manifold
 \((X,\omega,J,g_X)\), where \(J^2=-1\),
 \[
   \omega(u,v)=g_X(Ju,v),
   \qquad
   d\omega=0,
 \]
-and \(J\) is compatible with \(\omega\).  For the B-model, the target datum is
-a compact complex manifold \(X\) with trivial canonical bundle and a choice of
+and \(J\) is compatible with \(\omega\).  For the B-model datum of
+Hypothesis~\ref{hyp:b-model-cohomological-sigma-datum}, the target is a
+compact complex manifold \(X\) with trivial canonical bundle and a choice of
 nowhere-vanishing holomorphic volume form \(\Omega_X\); a K\"ahler metric is
 used to write a Lagrangian representative, but the cohomological observables
 depend on complex-structure data.
@@ -291,7 +369,9 @@ in the algebraic case.  The present chapter records exactly which properties
 of this object enter the QFT formulas.
 
 \paragraph{Virtual integration package used below.}
-The symbol
+The virtual integration entry \(\mathfrak V_X\) in
+Hypothesis~\ref{hyp:a-model-cohomological-sigma-datum} is the following
+package.  The symbol
 \([\overline{\mathcal M}_{g,n}(X,\beta)]^{\rm vir}\) denotes more than a
 homology class attached to a space.  The formulas below require the following
 finite-dimensional package.
