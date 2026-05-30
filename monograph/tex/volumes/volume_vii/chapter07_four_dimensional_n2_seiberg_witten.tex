@@ -8,6 +8,61 @@ gauge dynamics.  The emphasis is the Wilsonian low-energy description on the
 Coulomb branch, where the exact two-derivative Abelian action is encoded by a
 holomorphic prepotential and by periods of a family of curves.
 
+\begin{hypothesis}[Seiberg--Witten Coulomb-branch datum]
+\label{hyp:seiberg-witten-coulomb-branch-datum}
+A Seiberg--Witten Coulomb-branch datum of rank \(r\) is the following
+collection attached to an assumed four-dimensional \(\mathcal N=2\) local
+QFT \(\mathfrak T\).
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item A connected complex analytic vacuum branch
+  \(\mathcal B\) and a discriminant locus
+  \(\Delta\subset\mathcal B\) such that the low-energy theory over
+  \(\mathcal B^\circ=\mathcal B\setminus\Delta\) contains \(r\) Abelian
+  vector multiplets and no additional massless charged hypermultiplets.
+\item A locally constant electromagnetic charge lattice
+  \(\Gamma\to\mathcal B^\circ\) with a nondegenerate integral
+  antisymmetric Dirac pairing
+  \(\langle\cdot,\cdot\rangle:\Gamma\otimes\Gamma\to\mathbb Z\).  A local electric
+  polarization is a symplectic frame
+  \((\alpha^I,\beta_I)_{I=1}^r\) of \(\Gamma\).
+\item A holomorphic period section
+  \[
+    \Pi=(a_{D,I},a^I)
+  \]
+  in the dual local system, with monodromy in
+  \(Sp(2r,\mathbb Z)\), such that
+  \[
+    Z_\gamma=\langle\gamma,\Pi\rangle+\sum_\alpha s_\alpha m_\alpha
+  \]
+  is the central charge of a state of electromagnetic charge
+  \(\gamma\) and flavor charges \(s_\alpha\).
+\item On each simply connected electric patch, a holomorphic prepotential
+  \(\mathcal F(a)\) satisfying
+  \[
+    a_{D,I}=\frac{\partial\mathcal F}{\partial a^I},\qquad
+    \tau_{IJ}=\frac{\partial^2\mathcal F}
+      {\partial a^I\partial a^J},\qquad
+    \operatorname{Im}\tau>0 ,
+  \]
+  and the corresponding two-derivative Abelian Wilsonian action with the
+  superspace normalization used in this volume.
+\item Local singularity data along \(\Delta\): the primitive charges of
+  massless BPS states, the associated Picard--Lefschetz monodromies, and the
+  convention for the BPS inequality
+  \(M_\gamma\ge\sqrt2\,|Z_\gamma|\).
+\item When a curve realization is used, a holomorphic family of compact
+  Riemann surfaces \(\Sigma_u\), meromorphic differentials
+  \(\lambda_{\mathrm{SW}}\), and symplectic one-cycle frames whose periods
+  reproduce the section \(\Pi\).  This curve realization is auxiliary data
+  for computing the special geometry; it is not by itself a construction of
+  the four-dimensional QFT \(\mathfrak T\).
+\end{enumerate}
+All dynamical conclusions in this chapter are conditional on the existence of
+\(\mathfrak T\) and of such a datum.  The open problem of constructing
+\(\mathfrak T\) from a regulator and deriving these data as theorems of QFT
+is recorded in Open Problem~\ref{op:theorem-level-seiberg-witten-construction}.
+\end{hypothesis}
+
 \section{Coulomb-Branch Coordinates}
 
 Let \(G\) be a compact connected gauge group with Lie algebra \(\mathfrak g\).
@@ -20,6 +75,10 @@ polynomial functions of \(\phi\), for example
 \[
   u_k=\left\langle \operatorname{tr}(\phi^k)\right\rangle .
 \]
+In the notation of Hypothesis~\ref{hyp:seiberg-witten-coulomb-branch-datum},
+these \(u_k\) are local coordinates on the branch \(\mathcal B\) only after
+one has chosen the microscopic gauge theory and restricted to the component
+where the Abelian rank is \(r\).
 The trace convention is the convention fixed in the gauge chapters: the
 Yang--Mills kinetic term uses
 \[
@@ -29,12 +88,13 @@ with the chosen invariant bilinear form.
 
 \section{Special Coordinates And Prepotential}
 
-On a smooth patch of the Coulomb branch, choose electric special coordinates
+On a smooth patch of \(\mathcal B^\circ\), choose electric special coordinates
 \[
   a^I,\qquad I=1,\ldots,r .
 \]
-The two-derivative Wilsonian action is determined by a holomorphic function
-\(\mathcal F(a)\), the prepotential, through
+The two-derivative Abelian Wilsonian action in
+Hypothesis~\ref{hyp:seiberg-witten-coulomb-branch-datum} is determined by a
+holomorphic function \(\mathcal F(a)\), the prepotential, through
 \[
   a_{D,I}=\frac{\partial\mathcal F}{\partial a^I},
   \qquad
@@ -145,9 +205,11 @@ real and symmetric, then \(\operatorname{Im}\tau\) is unchanged and
 
 \section{Seiberg-Witten Period Data}
 
-A Seiberg-Witten period datum consists of a family of compact Riemann surfaces
-\(\Sigma_u\), a meromorphic differential \(\lambda_{\mathrm{SW}}\), and a
-symplectic basis of one-cycles \((A_I,B^I)\) such that
+The curve realization in
+Hypothesis~\ref{hyp:seiberg-witten-coulomb-branch-datum} consists of a family
+of compact Riemann surfaces \(\Sigma_u\), a meromorphic differential
+\(\lambda_{\mathrm{SW}}\), and a symplectic basis of one-cycles
+\((A_I,B^I)\) such that
 \[
   a^I(u)=\frac{1}{2\pi}\oint_{A_I}\lambda_{\mathrm{SW}},
   \qquad

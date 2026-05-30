@@ -11,6 +11,11 @@ Wilsonian dynamics are available for later use.
 ## Notation Inventory
 
 - `G`, `g`, `r`: compact gauge group, Lie algebra, and rank.
+- `T`, `B`, `Delta`, `B^circ`: assumed four-dimensional `N=2` QFT,
+  Coulomb branch, discriminant locus, and smooth Abelian locus in the
+  Seiberg-Witten Coulomb-branch datum.
+- `Gamma`, `<-,->`: electromagnetic charge local system and integral Dirac
+  pairing in the defining datum.
 - `phi`, `u_k`: vector-multiplet scalar and gauge-invariant Coulomb
   coordinates.
 - `a^I`, `a_{D,I}`, `F(a)`, `tau_IJ`: special coordinates, dual periods,
@@ -25,8 +30,8 @@ Wilsonian dynamics are available for later use.
   `special-geometry theorem`, `constraint-derived`, `consistency check`,
   `status boundary`: argument-status labels used in the Seiberg-Witten
   ledger.
-- `Gamma`, `<delta,gamma>`: rank-one electromagnetic charge lattice and
-  antisymmetric Dirac pairing.
+- `<delta,gamma>`: rank-one specialization of the antisymmetric Dirac
+  pairing.
 - `M_{Lambda^2}`, `M_{-Lambda^2}`, `M_infty`: monodromy matrices in the
   pure gauge-algebra `su(2)` example.
 - `M_gamma`: Picard-Lefschetz monodromy associated to a massless
@@ -53,6 +58,11 @@ Wilsonian dynamics are available for later use.
 
 ## Claim Ledger
 
+- States the Seiberg-Witten Coulomb-branch datum as an upfront hypothesis:
+  assumed `N=2` local QFT, vacuum branch and discriminant, electromagnetic
+  charge local system with Dirac pairing, period section, local prepotential,
+  Abelian Wilsonian action, singularity data, BPS convention, and optional
+  curve realization.
 - Defines Coulomb-branch coordinates and repeats the monograph gauge-coupling
   convention at the first use of `N=2` gauge dynamics.
 - Defines special coordinates, the prepotential, electric-magnetic duality,
