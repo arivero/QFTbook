@@ -26,6 +26,11 @@ later lower-dimensional examples, protected sectors, and localization.
 - `K_A`, `M_gap(p)`, `E_EFT(q,R)`: branch isometry vector fields, transverse
   mass scale of the branch EFT, and fixed-charge energy computed from the
   branch effective action.
+- `Wightman-type data`: local operator-valued distributions, Hilbert spaces,
+  vacuum sectors, correlation distributions, spectrum, locality, and
+  covariance.
+- `Kontsevich-Segal-type data`: geometric amplitudes, boundary state spaces,
+  sewing maps, reflection pairings, and background-field dependence.
 - `Q^a_i`, `tilde Q_a^i`, `M^i_j`: SQCD quarks, antiquarks, and mesons.
 - `P_a^I`, `V^{IJ}`: \(SU(2)\), \(N_f=2\) doublet fields and antisymmetric
   meson/baryon Plucker coordinates.
@@ -83,6 +88,9 @@ later lower-dimensional examples, protected sectors, and localization.
   fixed-charge energy eigenstates, so the Hellerman large-charge expansion
   supplies asymptotic charged-sector information about the branch EFT rather
   than a full construction of the quantum vacuum datum.
+- Reframes Open Problem 93.3 as a special supersymmetric test case of the
+  larger reconstruction problem from Wightman-type local QFT data to
+  Kontsevich-Segal-type geometric amplitude and sewing data.
 - Records `N=1` SQCD branch behavior and `N=2` Coulomb/Higgs/mixed branch
   structures, while explicitly marking the SQCD table as an orientation
   ledger rather than a proof.
@@ -138,3 +146,6 @@ local models.
   Problem~93.3 so it explicitly distinguishes chiral-ring reconstruction of
   reduced holomorphic coordinates from fixed-charge/large-charge
   reconstruction of asymptotic branch EFT data.
+- 2026-05-30 Wightman-to-KS refinement: sharpened Open Problem~93.3 so the
+  moduli-space datum is treated as an output of the structural passage from
+  local Wightman data to KS-style boundary/sewing/amplitude data.

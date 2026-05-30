@@ -65,6 +65,10 @@ boundaries rather than importing the appendix exposition.
   inequality.
 - Defines the GMC measure used in the probabilistic construction and states
   the GKRV probabilistic construction as a `quotedtheorem`.
+- Expands the constant-mode reduction of the probabilistic construction with
+  the explicit normalization map
+  `gamma=2b`, `alpha_i^prob=2 alpha_i`, the random GMC functional `Z_g`, and
+  the gamma-function zero-mode integral producing the Seiberg inequality.
 - Defines the reflection relation as a meromorphic identification of
   correlation functions.
 - Adds the canonical asymptotic scattering basis on the cylinder and the
@@ -93,6 +97,10 @@ boundaries rather than importing the appendix exposition.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
   conventional `alpha`-basis formula and records the external-leg phase
   convention.
+- Adds the pole-normalization derivation of the Liouville reflection phase
+  `S(P)` from the `epsilon=Q/2+i(P1+P2+P3)` pole of the
+  scattering-normalized DOZZ constant and the weak-coupling zero-mode
+  integral.
 - Adds the boundary Liouville action with the `Q K_g phi/(2 pi)` curvature
   term and derives the boundary Euler equation
   `nabla_n phi + Q K_g + 2 pi b mu_B exp(b phi)=0`.
@@ -181,6 +189,12 @@ boundaries rather than importing the appendix exposition.
   conventions.  The monograph text rederives the variational boundary
   equation and the hyperbolic identities locally, while treating the boundary
   bootstrap solution as a theorem boundary.
+- Local stringbook source consulted:
+  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, lines
+  around `\label{liouvillecftsec}` and the `c=1` FZZT/ZZ discussion.  Used to
+  check the scattering-normalized \(V_P\) convention, two-point normalization
+  `pi delta(P-P')`, the `P`-basis DOZZ representative, the pole extraction of
+  `S(P)`, and the special \(b=1,c=25\) boundary-state normalization.
 
 ## Audit Notes
 
@@ -228,3 +242,7 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-29 seventh pass: expanded the BPZ-equation proof to display the
   \(L_{-1}\) insertion, the \(L_{-2}\) contour move, the primary OPE residue,
   and the separated-point scope before inserting the degenerate null vector.
+- 2026-05-30 stringbook Liouville check: reopened the stringbook Liouville
+  appendix and boundary-state passage, tightened the probabilistic zero-mode
+  normalization map, and added the reflection-phase extraction from the
+  scattering-normalized DOZZ pole.

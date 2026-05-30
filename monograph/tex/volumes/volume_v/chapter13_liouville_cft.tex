@@ -218,6 +218,74 @@ higher-genus boundary operations is recorded below as a separate boundary
 problem.
 \end{quotedtheorem}
 
+\paragraph{Constant-mode reduction of the probabilistic construction.}
+The theorem just quoted has a concrete core.  Let
+\[
+  \gamma=2b,\qquad
+  s(\boldsymbol\alpha,\Sigma)
+  =
+  2\sum_{i=1}^n\alpha_i-Q\chi(\Sigma).
+\]
+After separating the constant mode, write the mean-zero field in the
+probabilistic normalization as \(X_g\), with chaos parameter \(\gamma\).  The
+local covariance used in
+Convention~\ref{conv:liouville-free-field-normalization} is
+\(-\frac12\log |z-w|^2=-\log |z-w|\), so it has the same logarithmic
+coefficient as the probabilistic GFF.  The only notation change is that a
+physics vertex \(V_{\alpha_i}=\mathopen{:}\ee^{2\alpha_i\phi}\mathclose{:}\)
+is the probabilistic insertion with exponent
+\[
+  \alpha_i^{\mathrm{prob}}=2\alpha_i .
+\]
+The \(c\)-dependent part of an \(n\)-point function has the form
+\[
+  \int_{-\infty}^{\infty}
+  \exp\!\left(
+    s(\boldsymbol\alpha,\Sigma)c
+    -\mu\,\ee^{\gamma c}
+       Z_g(X_g;\boldsymbol x,\boldsymbol\alpha)
+  \right)\dd c,
+\]
+where the random functional multiplying the exponential potential is
+\begin{equation}
+  Z_g(X_g;\boldsymbol x,\boldsymbol\alpha)
+  =
+  \int_\Sigma
+  \prod_{i=1}^n
+    \exp\!\bigl(\gamma \alpha_i^{\mathrm{prob}}\,G_g(y,x_i)\bigr)\,
+  M_{\gamma,g}(\dd y).
+  \label{eq:liouville-gmc-insertion-functional}
+\end{equation}
+The Green kernel \(G_g\) records the singularity of the GFF conditioned by
+the vertex insertions; all coincident-point self-contractions are absorbed
+into the renormalized exponential fields.  For \(s>0\), the elementary
+change of variable \(t=\mu Z_g\ee^{\gamma c}\) gives
+\begin{equation}
+  \int_{\mathbb R}
+  \ee^{s c-\mu Z_g\ee^{\gamma c}}\,\dd c
+  =
+  \frac1\gamma\,
+  \mu^{-s/\gamma}\,
+  \Gamma(s/\gamma)\,
+  Z_g^{-s/\gamma}.
+  \label{eq:liouville-zero-mode-gamma-integral}
+\end{equation}
+This identity is the source of the global Seiberg inequality
+\(s(\boldsymbol\alpha,\Sigma)>0\).  The local inequalities
+\(\alpha_i<Q/2\) are the corresponding local integrability conditions for
+the random measure \eqref{eq:liouville-gmc-insertion-functional} near the
+marked points.  Thus the probabilistic correlation function in the initial
+domain is the expectation of the explicit negative moment
+\[
+  \mathbb E\!\left[
+    Z_g(X_g;\boldsymbol x,\boldsymbol\alpha)^{-s/\gamma}
+  \right],
+\]
+multiplied by the deterministic Green-function and gamma-function factors
+fixed above.  The analytic theorem boundary supplies existence of these
+negative moments, Weyl covariance of the renormalized expression, and
+meromorphic continuation away from the initial domain.
+
 \begin{definition}[Reflection relation]
 \label{def:liouville-reflection-relation}
 The Liouville spectrum is parametrized by
@@ -785,6 +853,46 @@ role here is to fix the normalization whose reflection and shift consequences
 are checked in the representation-theoretic calculations below.
 \end{quotedtheorem}
 
+\paragraph{Shift-equation uniqueness mechanism.}
+The DOZZ theorem boundary combines a construction theorem with a bootstrap
+uniqueness statement.  The local part of the uniqueness argument is visible
+from the two degenerate fields developed later in this chapter.  Fusing
+\(V_{-b/2}\) with a generic \(V_\alpha\) gives the two channels
+\(\alpha-b/2\) and \(\alpha+b/2\); the BPZ equation and hypergeometric
+connection matrix give the \(b\)-shift ratio
+\[
+  \frac{C_b(\alpha_1+b/2,\alpha_2,\alpha_3)}
+       {C_b(\alpha_1-b/2,\alpha_2,\alpha_3)}
+  =
+  \mathcal R_b(\alpha_1;\alpha_2,\alpha_3)
+\]
+displayed explicitly in
+\eqref{eq:liouville-dozz-b-shift-ratio}.  The dual degenerate insertion
+\(V_{-1/(2b)}\) gives the same statement with \(b\) replaced by \(b^{-1}\).
+Thus any meromorphic three-point constant in the same normalization obeys two
+independent finite-difference equations:
+\[
+  C(\alpha_1+b,\alpha_2,\alpha_3)
+  =
+  A_b(\alpha_1;\alpha_2,\alpha_3)\,
+  C(\alpha_1,\alpha_2,\alpha_3),
+\]
+\[
+  C(\alpha_1+b^{-1},\alpha_2,\alpha_3)
+  =
+  A_{1/b}(\alpha_1;\alpha_2,\alpha_3)\,
+  C(\alpha_1,\alpha_2,\alpha_3),
+\]
+with \(A_b\) and \(A_{1/b}\) fixed by the degenerate OPE coefficients and
+connection matrices.  The ratio of two solutions is therefore invariant under
+translations by \(b\) and \(b^{-1}\) in each momentum.  For irrational
+\(b^2\), these translations generate a dense subgroup of the real line; with
+the standard analyticity and growth hypotheses the ratio is constant.  The
+reflection relation and the residue normalization at the screening poles fix
+that constant.  The probabilistic theorem supplies an independently
+constructed solution satisfying these properties, and the special-function
+formula \eqref{eq:dozz-structure-constant} is the explicit representative.
+
 The shift relations \eqref{eq:upsilon-b-shift-b}--\eqref{eq:upsilon-b-shift-binverse}
 are the convention-sensitive part of \eqref{eq:dozz-structure-constant}.  They
 are what make the degenerate-field shift equations compatible with the
@@ -839,6 +947,68 @@ by
 leg phases just mentioned.  The remaining \(\mu\)-dependent power is a
 zero-mode convention for the origin of \(\phi_0\), so it is absent from this
 representative.
+
+\paragraph{Pole normalization and the reflection phase.}
+The scattering normalization also determines the phase \(S(P)\) in
+Definition~\ref{def:liouville-scattering-basis}.  Let
+\[
+  \epsilon=\frac Q2+\ii(P_1+P_2+P_3).
+\]
+When \(\epsilon\to0\), the pole of
+\(\Upsilon_b(\epsilon)^{-1}\) in
+\eqref{eq:liouville-p-basis-dozz} gives
+\begin{equation}
+  C(P_1,P_2,P_3)
+  \sim
+  \frac1{\epsilon}
+  \prod_{j=1}^3
+  \left(
+    \frac{\Upsilon_b(2\ii P_j)}
+         {\Upsilon_b(-2\ii P_j)}
+  \right)^{1/2}.
+  \label{eq:liouville-dozz-pole-reflection-product}
+\end{equation}
+The same pole can be read in the weak-coupling region
+\(\phi_0\ll0\) from the linear-dilaton zero-mode integral.  Introduce a
+reference cutoff by integrating the zero mode over
+\(\phi<\phi_{\mathrm{ref}}-\frac1{2b}\log\mu\).  Since the background charge
+contributes \(\ee^{-2Q\phi}\) in the three-point sphere computation, the
+asymptotic integral is
+\[
+  \int^{\phi_{\mathrm{ref}}-\frac1{2b}\log\mu}
+  \dd\phi\,
+  \ee^{-2Q\phi}
+  \prod_{j=1}^3
+  S(P_j)^{-1/2}\ee^{(Q+2\ii P_j)\phi}
+  \sim
+  \frac1\epsilon
+  \left(\mu\ee^{2b\phi_{\mathrm{ref}}}\right)^{-\epsilon/b}
+  \prod_{j=1}^3 S(P_j)^{-1/2}.
+\]
+Comparison with
+\eqref{eq:liouville-dozz-pole-reflection-product}, for arbitrary triples
+approaching the pole hyperplane, gives
+\begin{equation}
+  S(P)
+  =
+  \left(\mu\ee^{2b\phi_{\mathrm{ref}}}\right)^{-2\ii P/b}
+  \frac{\Upsilon_b(-2\ii P)}{\Upsilon_b(2\ii P)} .
+  \label{eq:liouville-reflection-phase-upsilon}
+\end{equation}
+Using the two \(\Upsilon_b\) shift relations reduces this to the gamma-ratio
+form
+\begin{equation}
+  S(P)
+  =
+  \left(\mu\ee^{2b\phi_{\mathrm{ref}}} b^{2b^2-2}\right)^{-2\ii P/b}
+  \frac{\gamma(2\ii P/b)}
+       {b^2\,\gamma(-2\ii bP)} .
+  \label{eq:liouville-reflection-phase-gamma}
+\end{equation}
+The factor containing \(\phi_{\mathrm{ref}}\) is the origin convention for the
+zero mode; changing it multiplies \(V_P^{\mathrm{in}}\) by a momentum-dependent
+phase and leaves the direct-integral four-point function unchanged when the
+two-point normalization is transformed simultaneously.
 
 \section{Boundary Liouville States}
 \label{sec:liouville-boundary-states}
