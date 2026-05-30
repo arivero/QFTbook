@@ -937,6 +937,111 @@ model estimates.  The example is therefore an interacting AQFT object: it
 supplies concrete local von Neumann algebras and also identifies which
 algebraic properties require additional theorems beyond the OS axioms.
 
+\begin{lemma}[Analytic-vector route to strong locality]
+\label{lem:analytic-vector-strong-locality}
+Let \(X\) and \(Y\) be symmetric operators on a Hilbert space \(\Hilb\), with
+a common dense invariant domain \(\mathcal D\).  Assume:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \(X\) and \(Y\) are essentially self-adjoint on \(\mathcal D\);
+\item every vector in \(\mathcal D\) is jointly entire analytic for the
+ordered pair \((X,Y)\), meaning that, for every \(\xi\in\mathcal D\) and
+every \(r,s\geq0\),
+\[
+  \sum_{m,n\geq0}\frac{r^m s^n}{m!\,n!}\,\|X^mY^n\xi\|<\infty ;
+\]
+\item \([X,Y]\xi=0\) for every \(\xi\in\mathcal D\).
+\end{enumerate}
+Then the self-adjoint closures \(\overline X\) and \(\overline Y\) strongly
+commute, equivalently all spectral projections of \(\overline X\) commute with
+all spectral projections of \(\overline Y\).
+\end{lemma}
+
+\begin{proof}
+Because \(\mathcal D\) is invariant under \(X\) and \(Y\), the commutator
+assumption implies \(X^mY^n\xi=Y^nX^m\xi\) for all \(m,n\geq 0\) and
+\(\xi\in\mathcal D\), by induction.  The joint analyticity assumption implies
+separate analyticity for \(X\) and \(Y\), and also gives absolute convergence
+of the double series below.  Let \(U(t)=\exp(\ii t\overline X)\) and
+\(V(s)=\exp(\ii s\overline Y)\).  For \(\xi\in\mathcal D\), the joint
+analytic-vector hypothesis gives norm-convergent power series
+\[
+  U(t)\xi=\sum_{m\geq0}\frac{(\ii t)^m}{m!}X^m\xi,\qquad
+  V(s)\xi=\sum_{n\geq0}\frac{(\ii s)^n}{n!}Y^n\xi .
+\]
+The Cauchy product is legitimate because
+\[
+  \sum_{m,n\geq0}
+  \frac{|t|^m|s|^n}{m!\,n!}\,\|X^mY^n\xi\|<\infty ,
+\]
+and gives
+\[
+  U(t)V(s)\xi
+  =
+  \sum_{m,n\geq0}\frac{(\ii t)^m(\ii s)^n}{m!\,n!}X^mY^n\xi
+  =
+  \sum_{m,n\geq0}\frac{(\ii t)^m(\ii s)^n}{m!\,n!}Y^nX^m\xi
+  =
+  V(s)U(t)\xi .
+\]
+Since \(\mathcal D\) is dense and \(U(t),V(s)\) are bounded unitaries, the
+equality holds on all of \(\Hilb\).  The spectral theorem then implies
+commutation of the projection-valued measures of \(\overline X\) and
+\(\overline Y\).
+\end{proof}
+
+For the constructive net
+\(\mathcal O\mapsto\mathcal F_P(\mathcal O)\), this lemma states exactly
+which analytic estimate must accompany Wightman locality.  If
+\(f,g\in C_c^\infty(M,\mathbb R)\) have spacelike separated supports,
+Wightman locality gives
+\[
+  [\Phi_P(f),\Phi_P(g)]\xi=0,\qquad \xi\in\mathcal D_P .
+\]
+The bounded local algebras in
+\eqref{eq:p-phi-two-constructive-local-field-net} are local only after the
+specific construction supplies a common core on which the smeared fields are
+essentially self-adjoint and analytic-vector estimates hold.  In Hamiltonian
+constructions these estimates usually come from comparison of
+smeared fields with powers of the finite-volume Hamiltonian, followed by
+uniform bounds in the infinite-volume and ultraviolet limits.  In Euclidean
+constructions the same information is encoded in hypercontractive or
+Nelson-type bounds for polynomial fields on the OS Hilbert space.  The
+resulting strong commutation is a bounded-algebra statement; it is stronger
+than the formal vanishing of a commutator on the polynomial domain.
+
+The structural information obtained from the model should therefore be read
+in the following order.  The OS hierarchy first gives the Hilbert space,
+vacuum, translation representation, Wightman distributions, and polynomial
+field domain.  Essential self-adjointness and analytic-vector estimates then
+turn real smeared fields into spectral projection generators.  Strong
+commutation of these generators gives locality of
+\(\mathcal F_P\).  Internal fixed points give the observable net
+\(\mathcal R_P=\mathcal F_P^\Gamma\).  Further AQFT properties are separate:
+nuclearity is an estimate on
+\[
+  \Theta_{\beta,\mathcal O}\colon
+  \mathcal F_P(\mathcal O)\to\Hilb_P,\qquad
+  A\longmapsto \exp(-\beta H_P)A\Omega_P ,
+\]
+split inclusions follow only after such maps are trace-class or nuclear with
+the appropriate local bounds, Haag duality is a statement about equality of a
+local algebra with a commutant of an exterior algebra, and DHR reconstruction
+requires a tensor category of transportable localized endomorphisms.  None of
+these conclusions is contained in the symbol \(P(\phi)_2\) itself.  The
+constructive example is valuable precisely because each assertion can be
+attached to a named estimate or representation-theoretic construction.
+
+This separation is also the right language for phase structure.  In an
+unbroken finite-symmetry phase the fixed-point observable net has sectors
+created by localized charged fields in the larger field net, when such fields
+are available.  In a broken phase the natural kink Hilbert spaces are built
+with different asymptotic boundary conditions at spatial infinity.  A kink
+cannot be treated as an ordinary DHR charge in the vacuum representation
+unless one proves an additional localization/transportability statement that
+turns the boundary-condition sector into an endomorphism localized in bounded
+regions.  Thus the example exhibits both the power and the limitations of the
+standard local-endomorphism formulation of superselection theory.
+
 \begin{remark}[Field coordinates as a Wightman presentation]
 \label{rem:aqft-to-wightman-fields}
 Let
