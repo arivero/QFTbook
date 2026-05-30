@@ -49,8 +49,11 @@ the `volume_iv` framework cluster.
   are supplied.
 - Derives the route from K-S data to OS Schwinger functions under explicit
   temperedness, covariance, and spectral clustering assumptions.
-- States the Lorentzian-boundary theorem as a quoted theorem, with precise
-  dependence on Kontsevich--Segal analytic hypotheses.
+- Recasts the Lorentzian-boundary statement as a construction problem rather
+  than a quoted theorem: admissible approach metrics, Hilbert boundary
+  completions, amplitude boundary limits, approach independence, sewing,
+  reflection/unitarity, and local insertion commutativity are listed as the
+  data and estimates that must be proved in examples.
 - Derives OPE from sewing under a stated annular spectral/nuclear expansion
   hypothesis.
 - Records open construction problems for free fields, \(P(\phi)_2\),
@@ -81,3 +84,7 @@ the `volume_iv` framework cluster.
 - 2026-05-27 depth pass: added the one-dimensional positive-energy semigroup
   theorem, the K-S cylinder-to-Hamiltonian theorem, the collared bordism and
   topological-target refinements, and the finite Gaussian Mehler-kernel check.
+- 2026-05-30 quoted-theorem proof-debt pass: removed the K-S Lorentzian
+  boundary `quotedtheorem` wrapper and replaced it by an explicit construction
+  problem with the limit, sewing, reflection, unitarity, and spacelike
+  commutativity mechanisms separated from the still-open analytic estimates.

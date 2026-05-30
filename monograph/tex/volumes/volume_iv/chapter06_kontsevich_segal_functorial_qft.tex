@@ -530,21 +530,84 @@ separated or decays in the topology used for the state spaces.  Under that
 spectral hypothesis, inserting a long cylinder between two groups of
 observables projects to the vacuum state, giving the OS cluster property.
 
-\begin{quotedtheorem}[K-S Lorentzian boundary construction]
-\label{thm:ks-lorentzian-boundary}
-For a K-S theory on admissible complex metrics with the analytic dependence,
-reflection structure, and boundedness assumptions required by
-Kontsevich--Segal, real-analytic globally hyperbolic Lorentzian bordisms are
-obtained as boundary values of admissible complex bordisms.  Time-symmetric
-hypersurfaces acquire Hilbert spaces, globally hyperbolic Lorentzian
-bordisms induce unitary maps between them, and local fields obtained from
-insertion germs satisfy spacelike commutativity.  This is the content of the
-Lorentzian-boundary construction in Kontsevich--Segal's
-\emph{Wick Rotation and the Positivity of Energy in Quantum Field Theory},
-with Witten's \emph{A Note on Complex Spacetime Metrics} giving a detailed
-analysis of the finite-dimensional allowability criterion and gravitational
-examples.
-\end{quotedtheorem}
+\begin{construction}[K-S Lorentzian boundary problem]
+\label{cons:ks-lorentzian-boundary}
+Let \(M_L:\Sigma_0\to\Sigma_1\) be a real-analytic globally hyperbolic
+Lorentzian bordism with real-analytic Cauchy collars.  A K-S Lorentzian
+boundary construction for \(M_L\) consists of the following data and
+estimates.
+\begin{enumerate}[label=(\roman*)]
+\item An admissible family of complex metrics \(g_\epsilon\), \(\epsilon>0\),
+      on the same collared bordism, with \(g_\epsilon\) in the K-S allowable
+      domain pointwise and \(g_\epsilon\to g_L\) as a boundary value of
+      complex metrics on compact subsets of the collars and interior.
+\item Hilbert spaces \(\Hilb_{\Sigma_i}\) obtained from the reflection
+      positive pairing on the time-symmetric boundary germs \(\Sigma_i\),
+      including the null-space quotient and completion.
+\item Continuous amplitude maps
+      \[
+        Z(M,g_\epsilon):\Hilb_{\Sigma_0}^{\rm core}
+        \longrightarrow \Hilb_{\Sigma_1}
+      \]
+      on a dense reflection-positive core, together with a topology in which
+      the limit
+      \[
+        U(M_L)=\lim_{\epsilon\downarrow0}Z(M,g_\epsilon)
+      \]
+      exists on that core and extends to a bounded operator
+      \(\Hilb_{\Sigma_0}\to\Hilb_{\Sigma_1}\).
+\item Independence of \(U(M_L)\) from the admissible approach
+      \(g_\epsilon\) to \(g_L\), within a specified approach class.
+\item Compatibility with sewing: if \(M_L=M_{2,L}\circ_\Sigma M_{1,L}\), then
+      the boundary limits obey
+      \[
+        U(M_L)=U(M_{2,L})U(M_{1,L})
+      \]
+      on the common dense domain and hence on Hilbert completions.
+\item Reflection compatibility:
+      \[
+        U(\bar M_L)=U(M_L)^* .
+      \]
+      For a slab whose reflected reverse is the inverse Lorentzian evolution,
+      this identity and sewing imply that \(U(M_L)\) is unitary.
+\item Local insertion limits.  If two insertion germs have spacelike separated
+      Lorentzian supports and can be represented on a common admissible
+      complex slice without crossing singular diagonals, then the two
+      boundary operators commute, with the Koszul sign for graded fields.
+\end{enumerate}
+\end{construction}
+
+Construction~\ref{cons:ks-lorentzian-boundary} is deliberately not stated as
+a theorem about all K-S functors.  The finite-dimensional metric allowability
+criterion is Theorem~\ref{thm:ks-allowability-argument}; the product-cylinder
+positive-energy statement is Theorem~\ref{thm:ks-cylinder-positive-energy}.
+The passage from an arbitrary admissible complex slab to a Lorentzian
+globally hyperbolic slab requires additional analysis: uniform bounds for the
+amplitudes, existence and approach-independence of boundary values, stability
+of the null-space quotient under the limiting maps, and sewing estimates
+strong enough to pass through Hilbert completion.
+
+The mechanism is nevertheless precise.  Reflection positivity supplies the
+Hilbert spaces on time-symmetric cuts.  Holomorphic dependence on admissible
+complex metrics gives a candidate family \(Z(M,g_\epsilon)\).  If the limit
+exists and is independent of the approach, reflection gives
+\[
+  U(M_L)^*=U(\bar M_L).
+\]
+When \(\bar M_L\circ M_L\) and \(M_L\circ\bar M_L\) are the identity
+cylinders after Lorentzian boundary limiting, sewing gives
+\[
+  U(M_L)^*U(M_L)=\mathbf1_{\Hilb_{\Sigma_0}},
+  \qquad
+  U(M_L)U(M_L)^*=\mathbf1_{\Hilb_{\Sigma_1}},
+\]
+so the boundary evolution is unitary.  For insertions, spacelike
+commutativity is the same sewing statement applied to two punctures: if the
+punctures can be exchanged inside the admissible complex configuration space
+without crossing the diagonal, functoriality identifies the two sewn
+amplitudes.  Thus the open analytic work is not the algebraic conclusion
+once the limits exist; it is proving the boundary limits and their stability
+for a given infinite-dimensional QFT.
 
 Combining this flat-space compatibility statement with OS reconstruction gives
 the route
