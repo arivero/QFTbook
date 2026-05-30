@@ -41,20 +41,44 @@ matrix elements are ordinary Hilbert-space pairings.
 \begin{proposition}[Two-point spectral measure of a scalar field]
 \label{prop:kallen-lehmann-two-point-spectral-measure}
 In the datum of
-Definition~\ref{def:kallen-lehmann-centered-scalar-spectral-datum}, define
+Definition~\ref{def:kallen-lehmann-centered-scalar-spectral-datum}, the
+centered two-point distribution determines a unique positive tempered Borel
+measure \(\nu_\phi\) on \(\mathbb R^D\) by
+\begin{equation}
+  W_2(f)
+  =
+  \int_{\mathbb R^D}\widetilde f(-p)\,\dd\nu_\phi(p),
+  \qquad
+  f\in\mathcal S(\mathbb M^D),
+  \label{eq:kallen-lehmann-two-point-measure-characterization}
+\end{equation}
+where
+\[
+  \widetilde f(p)=\int\dd^D x\,f(x)\ee^{-\ii p\cdot x}.
+\]
+Equivalently, for smeared fields,
+\begin{equation}
+  \langle\widehat\phi(f)\vac,\widehat\phi(g)\vac\rangle
+  =
+  \int_{\mathbb R^D}
+    \overline{\widetilde f(p)}\,\widetilde g(p)\,
+    \dd\nu_\phi(p),
+  \qquad f,g\in\mathcal S(\mathbb M^D).
+  \label{eq:kallen-lehmann-smeared-inner-product}
+\end{equation}
+The measure is supported in \(\overline V_+\).  If \(\widehat\phi\) is
+Lorentz scalar and the vacuum is Lorentz invariant, \(\nu_\phi\) is invariant
+under \(SO^+(1,D-1)\).  In formal point-field notation one writes
 \[
   \nu_\phi(\Delta)
   =
   \langle\vac|
   \widehat\phi(0)E(\Delta)\widehat\phi(0)
-  |\vac\rangle
+  |\vac\rangle ,
 \]
-for Borel \(\Delta\subset\mathbb R^D\), in the distributional sense explained
-there.  Then \(\nu_\phi\) is a positive measure supported in
-\(\overline V_+\), and
-if \(\widehat\phi\) is Lorentz scalar and the vacuum is Lorentz invariant,
-\(\nu_\phi\) is invariant under \(SO^+(1,D-1)\).  The Wightman two-point
-distribution is the Fourier--Stieltjes transform
+but this line is shorthand for the smeared characterization above, not a
+literal assertion that \(\widehat\phi(0)\vac\) is a Hilbert-space vector.  The
+Wightman two-point distribution is the Fourier--Stieltjes transform
 \[
   W_2(x-y)
   =
@@ -63,60 +87,48 @@ distribution is the Fourier--Stieltjes transform
 \end{proposition}
 
 \begin{proof}
-The Wightman two-point distribution is
+The centered Wightman distribution
 \[
-  W_2(x-y)
-  =
-  \langle\vac|
-  \widehat\phi(x)\widehat\phi(y)
-  |\vac\rangle.
+  W_2(x-y)=
+  \langle\vac|\widehat\phi(x)\widehat\phi(y)|\vac\rangle
 \]
-Translation covariance gives
+is a tempered distribution of positive type.  Indeed, for every
+\(f\in\mathcal S(\mathbb M^D)\),
 \[
-  W_2(x-y)
+  \int\dd^D x\,\dd^D y\,
+    \overline{f(x)}\,f(y)\,W_2(x-y)
   =
-  \int_{\overline V_+}\ee^{\ii p\cdot(x-y)}\,\dd\nu_\phi(p),
+  \|\widehat\phi(f)\vac\|^2
+  \ge0 .
 \]
-where the positive measure \(\nu_\phi\) is
-\[
-  \dd\nu_\phi(p)
-  =
-  \langle\vac|
-  \widehat\phi(0)E(\dd p)\widehat\phi(0)
-  |\vac\rangle.
-\]
-For a Borel set \(\Delta\), \(E(\Delta)\) is an orthogonal projection and
-commutes with the spectral integral.  Hence
-\[
-  \nu_\phi(\Delta)
-  =
-  \langle E(\Delta)\widehat\phi(0)\vac,
-  E(\Delta)\widehat\phi(0)\vac\rangle
-  =
-  \|E(\Delta)\widehat\phi(0)\vac\|^2
-  \ge0.
-\]
-The support condition follows from
-\(E(\mathbb R^D\setminus\overline V_+)=0\).  With the translation convention
+The Bochner--Schwartz theorem for positive-type tempered distributions
+therefore gives a unique positive tempered Borel measure \(\nu_\phi\) whose
+Fourier--Stieltjes transform is \(W_2\), namely
+\eqref{eq:kallen-lehmann-two-point-measure-characterization}.  Positivity is
+thus a Hilbert-space positivity statement before it is a statement about a
+measure.
+
+The support is fixed by the spectrum condition.  In the present translation
+convention,
 \[
   U(a)^{-1}\widehat\phi(0)U(a)=\widehat\phi(a),
   \qquad
   U(a)=\ee^{\ii a^\mu P_\mu},
 \]
-and \(U(a)\vac=\vac\), the two-point function is
-\[
-\begin{aligned}
-  \langle\vac|\widehat\phi(x)\widehat\phi(y)|\vac\rangle
-  &=
-  \langle\vac|\widehat\phi(0)U(x-y)\widehat\phi(0)|\vac\rangle  \\
-  &=
-  \int_{\overline V_+}\ee^{\ii p\cdot(x-y)}\,\dd\nu_\phi(p).
-\end{aligned}
-\]
-If \(U(\Lambda)\widehat\phi(0)U(\Lambda)^{-1}=\widehat\phi(0)\) and
-\(U(\Lambda)\vac=\vac\), then covariance of the joint spectral measure,
-\(U(\Lambda)E(\Delta)U(\Lambda)^{-1}=E(\Lambda\Delta)\), gives
-\(\nu_\phi(\Lambda\Delta)=\nu_\phi(\Delta)\).
+so \(W_2(x)\) has spectral Fourier transform supported in
+\(\operatorname{Spec}(P)\).  Since
+\(E(\mathbb R^D\setminus\overline V_+)=0\), this support lies in
+\(\overline V_+\).  Equivalently, after smearing, the spectral theorem gives
+the same measure by the identity
+\eqref{eq:kallen-lehmann-smeared-inner-product}; the unsmeared expression
+\(\langle\vac|\widehat\phi(0)E(\Delta)\widehat\phi(0)|\vac\rangle\) is the
+customary notation for the corresponding spectral-measure matrix element.
+
+Finally suppose the field is a scalar and the vacuum is Lorentz invariant.
+Then \(W_2(\Lambda x)=W_2(x)\) for every
+\(\Lambda\in SO^+(1,D-1)\).  Applying this equality to test functions and
+using uniqueness in the Bochner--Schwartz representation gives
+\(\nu_\phi(\Lambda\Delta)=\nu_\phi(\Delta)\) for every Borel set \(\Delta\).
 \end{proof}
 
 Equivalently, if one writes the same statement in generalized

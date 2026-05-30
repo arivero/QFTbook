@@ -167,6 +167,13 @@ Figures to include:
   measurable normalized shell measures \(\sigma_s\), and absorption of the
   conditional-measure scalar \(c(s)\) into the Kallen--Lehmann measure
   \(d\rho(s)\).
+- 2026-05-30 anti-wrapper audit pass: strengthened the first spectral-measure
+  proposition so the measure is characterized by smeared Wightman
+  distributions and the Bochner--Schwartz positive-measure representation,
+  while the conventional
+  \(\langle\vac|\widehat\phi(0)E(\Delta)\widehat\phi(0)|\vac\rangle\)
+  notation is explicitly identified as shorthand rather than a literal point
+  vector.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.
