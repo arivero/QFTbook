@@ -179,10 +179,13 @@
 - Singer's theorem is stated in structural form: the irreducible-connection
   bundle over nonabelian gauge-orbit space is not globally trivial in the
   standard continuum setting, so no single smooth gauge condition supplies an
-  everywhere transverse one-representative slice.  The chapter defines the
-  first Gribov region, the Gribov horizon, and the fundamental modular domain,
-  and states that perturbative Faddeev--Popov/BRST formulae are local near a
-  chosen background.
+  everywhere transverse one-representative slice.  The theorem-boundary
+  mechanism identifies a global section with a bundle trivialization, uses the
+  universal-bundle homotopy type of the free connection space, and invokes
+  nonzero homotopy of the based nonabelian gauge group.  The chapter defines
+  the first Gribov region, the Gribov horizon, and the fundamental modular
+  domain, and states that perturbative Faddeev--Popov/BRST formulae are local
+  near a chosen background.
 - The chapter now derives the Landau-gauge Gribov-free regime from the orbit
   norm functional \(N_A(g)=\|A^g\|^2\): Landau gauge is the stationarity
   condition, the Hessian is \(2\mathcal M_L(A)\), the interior
@@ -408,6 +411,11 @@
   adding a Sobolev Coulomb-slice local-chart theorem, deriving the Landau
   first Gribov region from the norm-functional Hessian, adding the
   Gribov/FMD figure, and making the abelian Maxwell contrast explicit.
+- 2026-05-30 quoted-theorem pass: expanded the Singer obstruction theorem
+  boundary.  The manuscript now explains the section-trivialization
+  equivalence, the universal-bundle homotopy mechanism for the based gauge
+  action on irreducible connections, and the nonzero homotopy of nonabelian
+  based gauge groups that obstructs a global smooth Faddeev--Popov slice.
 - 2026-05-24 issue #320 pass: declared \(B\) to be an integrated
   Nakanishi--Lautrup auxiliary variable and added the explicit Gaussian
   elimination formula in the covariant-gauge path integral.

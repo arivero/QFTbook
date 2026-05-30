@@ -486,13 +486,64 @@ orbits more than once, or by requiring multiple coordinate charts on orbit
 space.
 \end{quotedtheorem}
 
-This quoted theorem is a global topological statement, not a perturbative loop
-calculation.\footnote{See I.~M.~Singer, ``Some remarks on the Gribov
-ambiguity,'' \emph{Commun. Math. Phys.} \textbf{60} (1978) 7--12, and
-V.~N.~Gribov, ``Quantization of non-Abelian gauge theories,'' \emph{Nucl.
-Phys. B} \textbf{139} (1978) 1--19.}  It is the mathematical reason why
-\eqref{eq:fp-gauge-fixed-integral} is not a single global definition of the
-nonperturbative gauge-field integral for a nonabelian gauge theory.
+This quoted theorem is a global topological statement rather than a
+perturbative loop calculation.\footnote{See I.~M.~Singer, ``Some remarks on
+the Gribov ambiguity,'' \emph{Commun. Math. Phys.} \textbf{60} (1978) 7--12,
+and V.~N.~Gribov, ``Quantization of non-Abelian gauge theories,''
+\emph{Nucl. Phys. B} \textbf{139} (1978) 1--19.}  The proof mechanism is the
+following.  A smooth global gauge condition selecting exactly one point on
+each orbit is a smooth section
+\[
+  \sigma:\mathcal A_{\rm irr}/\mathcal G_\ast\longrightarrow \mathcal A_{\rm irr}
+\]
+of the quotient map.  Such a section is equivalent to a trivialization of the
+principal bundle:
+\begin{equation}
+  \Theta_\sigma:
+  (\mathcal A_{\rm irr}/\mathcal G_\ast)\times\mathcal G_\ast
+  \longrightarrow
+  \mathcal A_{\rm irr},
+  \qquad
+  ([A],g)\longmapsto \sigma([A])^g .
+  \label{eq:singer-section-trivialization-map}
+\end{equation}
+Conversely, a trivialization gives a section by setting \(g=\id\).  Thus the
+existence of a global transverse gauge slice is exactly the triviality problem
+for the principal \(\mathcal G_\ast\)-bundle of connections.
+
+In the Sobolev completions used for the local slice theorem, the full space of
+connections is affine and contractible.  After removing stabilizers by passing
+to the irreducible locus and by using the based gauge group, Singer's standard
+Yang--Mills cases give the same universal-bundle homotopy mechanism:
+\(\mathcal A_{\rm irr}\) is a free model for \(E\mathcal G_\ast\) in the
+range relevant to the obstruction, and
+\(\mathcal A_{\rm irr}/\mathcal G_\ast\) is the corresponding model for
+\(B\mathcal G_\ast\).  A principal \(H\)-bundle with contractible total space
+is trivial only if \(H\) is weakly contractible.  Indeed, if
+\[
+  P\cong B\times H
+\]
+and \(P\) is contractible, then \(H\) is a homotopy retract of the
+contractible space \(P\) by fixing a point of \(B\), hence all homotopy groups
+of \(H\) vanish.
+
+The based gauge group in nonabelian Yang--Mills theory has nonzero homotopy.
+For the trivial bundle over a compactified four-dimensional patch one sees the
+essential source already in
+\begin{equation}
+  \mathcal G_\ast\simeq \operatorname{Map}_\ast(S^4,G),
+  \qquad
+  \pi_r(\mathcal G_\ast)\cong \pi_{r+4}(G),
+  \label{eq:based-gauge-group-homotopy-shift}
+\end{equation}
+with the displayed equivalence replaced by the corresponding section space for
+a nontrivial bundle.  Compact nonabelian Lie groups have nonvanishing higher
+homotopy groups, for instance by Bott periodicity in the classical families.
+Thus \(\mathcal G_\ast\) is not weakly contractible in the cases at issue, and
+the orbit bundle cannot be globally trivial.  This is the mathematical reason
+why \eqref{eq:fp-gauge-fixed-integral} gives a local Faddeev--Popov coordinate
+formula rather than a single global nonperturbative definition of the
+nonabelian gauge-field integral.
 
 \begin{definition}[Gribov region and fundamental modular domain]
 \label{def:gribov-region-fundamental-domain}
