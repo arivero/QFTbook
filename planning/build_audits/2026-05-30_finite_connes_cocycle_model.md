@@ -31,3 +31,10 @@ finite standard-form model is now fully derived, so the reader sees the
 algebra element constructed by the theorem and the order of the noncommuting
 density-matrix factors before the type-\(\mathrm{III}\) statement is used in
 local QFT.
+
+## 2026-05-30 Anti-Wrapper Follow-Up
+
+This finite type-I cocycle calculation was later demoted from proposition
+form to example form.  The order-sensitive derivation and noncommuting
+density-matrix calculation check remain, but the manuscript no longer
+presents the finite normalization check as a theorem-family result.

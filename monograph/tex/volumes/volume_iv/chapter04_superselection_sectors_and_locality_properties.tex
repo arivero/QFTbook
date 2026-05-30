@@ -610,8 +610,8 @@ where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
 \end{quotedtheorem}
 
-\begin{proposition}[Finite standard form of a faithful matrix state]
-\label{prop:finite-tomita-standard-form}
+\begin{example}[Finite standard form of a faithful matrix state]
+\label{ex:finite-tomita-standard-form}
 Let \(K\simeq\mathbb C^n\), let
 \(\mathcal R=\mathcal B(K)\), and let
 \(\rho\in\mathcal B(K)\) be a positive definite matrix with
@@ -649,9 +649,9 @@ With the boundary-value convention used below for KMS states,
   ={\rm Tr}_K(\rho A)
 \]
 is a \(1\)-KMS state for \(\alpha_t=\sigma_{-t}\).
-\end{proposition}
+\end{example}
 
-\begin{proof}
+\paragraph{Verification of the finite model.}
 Every \(X\in\Hilb_{\rm HS}\) has the form
 \[
   X=(X\rho^{-1/2})\Omega,
@@ -713,7 +713,6 @@ trace,
 \]
 Thus \(\omega\) satisfies the \(1\)-KMS boundary condition for
 \(\alpha_t=\sigma_{-t}\).
-\end{proof}
 
 \paragraph{Proof mechanism and local role.}
 The theorem is a statement about a standard von Neumann algebra
@@ -1145,8 +1144,8 @@ cocycle as the replacement for a density-matrix quotient in type-III local
 algebras.  The finite type-I calculation below is a normalization check; the
 operator-algebraic theorem supplies the type-III object used by local QFT.
 
-\begin{proposition}[Finite standard-form Connes cocycle]
-\label{prop:finite-standard-form-connes-cocycle}
+\begin{example}[Finite standard-form Connes cocycle]
+\label{ex:finite-standard-form-connes-cocycle}
 Let \(\rho_\omega,\rho_\psi\) be positive definite density matrices on
 \(\mathcal K\), and represent
 \(\mathcal R=\mathcal B(\mathcal K)\) on the Hilbert--Schmidt standard
@@ -1173,9 +1172,9 @@ and implements the change of modular flow,
   \qquad
   \sigma_t^\psi(A)=\rho_\psi^{\ii t}A\rho_\psi^{-\ii t}.
 \]
-\end{proposition}
+\end{example}
 
-\begin{proof}
+\paragraph{Verification of the finite cocycle.}
 On the Hilbert--Schmidt space, the relative and reference modular unitaries
 act by
 \[
@@ -1229,7 +1228,6 @@ This is exactly \(\sigma_t^\psi(A)\).  The finite calculation shows the
 algebraic object that the general theorem constructs: an algebra unitary
 whose cocycle law records the change of state and keeps the implementer
 inside \(\mathcal R\).
-\end{proof}
 
 For local QFT this quoted theorem is a calculational device.  Changing the state in a
 bounded region is encoded not by dividing density matrices, but by a unitary

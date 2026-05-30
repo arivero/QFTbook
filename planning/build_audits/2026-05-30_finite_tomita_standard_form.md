@@ -31,3 +31,10 @@ finite matrix-algebra case is now constructed directly from Hilbert-Schmidt
 linear algebra.  This gives the reader a concrete standard-form calculation
 before the infinite-dimensional theorem boundary and fixes the modular/KMS
 sign convention by an explicit trace identity.
+
+## 2026-05-30 Anti-Wrapper Follow-Up
+
+This finite calculation was later demoted from proposition form to example
+form.  The derivation and calculation check remain intact, but the manuscript
+now presents the block as a finite type-I normalization model rather than a
+theorem-family claim about local QFT algebras.

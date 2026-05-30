@@ -42,12 +42,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Constructs the finite pointed field-algebra core as a crossed product
   \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
   involution, gauge action, fixed algebra, and sector implementation.
-- Proves the finite-dimensional Tomita--Takesaki standard form for a faithful
-  matrix state, including cyclic/separating standardness, the explicit
-  Tomita polar decomposition, commutant identification, modular
-  automorphisms, and the sign relating modular flow to the chapter's KMS
-  convention.
-- Proves the finite-dimensional Connes cocycle model:
+- Works out the finite-dimensional Tomita--Takesaki standard form for a
+  faithful matrix state as an example, including cyclic/separating
+  standardness, the explicit Tomita polar decomposition, commutant
+  identification, modular automorphisms, and the sign relating modular flow
+  to the chapter's KMS convention.
+- Works out the finite-dimensional Connes cocycle model as an example:
   \(\Delta_{\psi|\omega}^{it}\Delta_\omega^{-it}\) is left multiplication by
   \(u_t=\rho_\psi^{it}\rho_\omega^{-it}\), and this algebra unitary satisfies
   the cocycle law and implements the change of modular flow.
@@ -138,3 +138,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   `tomita_standard_form_checks.py` to verify the relative modular product,
   cocycle law, and modular-flow implementation in a noncommuting density
   example.
+- 2026-05-30 modular finite-example anti-wrapper pass: demoted the finite
+  Tomita standard-form and finite Connes cocycle blocks from proposition form
+  to examples.  The calculations and companion checks remain, but the text
+  now presents them as finite type-I normalization models for the quoted
+  operator-algebraic theorems rather than theorem-level QFT results.

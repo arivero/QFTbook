@@ -218,6 +218,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"GKO coset stress tensor and central charge|"
     r"Regulated meaning of the configuration path integral|"
     r"Finite phase-space time-sliced kernel|"
+    r"Finite standard form of a faithful matrix state|"
+    r"Finite standard-form Connes cocycle|"
     r"Universal-cover necessity|"
     r"Noncoincident insertions and contact coordinates|"
     r"\\(SU\\(2\\)\\) subgroups generate \\(SU\\(3\\)\\)|"
