@@ -8,9 +8,69 @@ chapter formulates Hamiltonian truncation, light-front discretization, and
 benchmark scripts as controlled approximations with explicitly declared
 Hilbert spaces, cutoffs, counterterms, and convergence tests.
 
+\begin{definition}[Hamiltonian truncation regulator datum]
+\label{def:hamiltonian-truncation-regulator-datum}
+A Hamiltonian truncation regulator datum is a tuple
+\[
+  \mathfrak H_{\rm trunc}
+  =
+  \bigl(
+    \Hilb,\mathcal Q_H,
+    \{\Hilb_\Lambda,P_\Lambda\}_{\Lambda\in I},
+    \mathcal B_\Lambda,
+    \{\mathcal O_a,c_a(\Lambda)\}_{a\in\mathcal A_{\rm ct}},
+    \mathcal O_{\rm obs},
+    \mathcal E_{\rm sys}
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(\Hilb\) is the target Hilbert space and \(\mathcal Q_H\) is a
+  lower-bounded closed quadratic form on a dense form domain
+  \(\operatorname{Dom}\mathcal Q_H\).  When the limiting Hamiltonian is known
+  as a self-adjoint operator \(H\), \(\mathcal Q_H\) is its associated form.
+\item \(I\) is a directed cutoff set.  For each \(\Lambda\in I\),
+  \(\Hilb_\Lambda\subset\operatorname{Dom}\mathcal Q_H\) is a
+  finite-dimensional trial space and \(P_\Lambda\) is the Hilbert-space
+  projection onto \(\Hilb_\Lambda\).  The datum specifies whether the intended
+  density statement is strong, form-norm, graph-norm, or another declared
+  topology.
+\item \(\mathcal B_\Lambda\) is the ordered computational basis used to build
+  finite matrices.  The basis choice includes inner-product conventions,
+  quantum-number sectors, symmetry projections, and normalization of finite
+  volume states.
+\item \(\mathcal O_a\) are local counterterm or improvement operators admitted
+  by the regulator, and \(c_a(\Lambda)\) are their cutoff-dependent
+  coordinates in a declared scheme.  The finite Hamiltonian matrix is
+  \[
+    H_\Lambda^{\rm ren}
+    =
+    P_\Lambda H P_\Lambda
+    +
+    \sum_{a\in\mathcal A_{\rm ct}}
+    c_a(\Lambda)P_\Lambda\mathcal O_aP_\Lambda
+  \]
+  when the formal operator expression is meaningful; otherwise the same
+  formula denotes the finite quadratic form specified in the basis
+  \(\mathcal B_\Lambda\).
+\item \(\mathcal O_{\rm obs}\) is the list of finite-regulator observables to
+  be extracted from \(H_\Lambda^{\rm ren}\), together with their normalization
+  and symmetry-sector labels.
+\item \(\mathcal E_{\rm sys}\) is the systematic-error model: cutoff
+  extrapolation ansatz, finite-volume correction model, counterterm-fitting
+  prescription, residual-certificate tolerance, and benchmark scripts used to
+  check finite-matrix algebra.
+\end{enumerate}
+The datum records a regulator family.  A continuum or infinite-volume claim
+requires an additional convergence theorem or controlled approximation that
+states the topology, the limiting quadratic form or observable, and an error
+bound.
+\end{definition}
+
 \section{Projected Hamiltonian Datum}
 
-Let \(H\) be a self-adjoint Hamiltonian on a Hilbert space \(\Hilb\), bounded
+The elementary version of Definition~\ref{def:hamiltonian-truncation-regulator-datum}
+starts with a known self-adjoint Hamiltonian \(H\) on \(\Hilb\), bounded
 below.  Choose finite-dimensional subspaces
 \[
   \Hilb_\Lambda\subset\Hilb,\qquad P_\Lambda:\Hilb\to\Hilb_\Lambda,
@@ -793,6 +853,30 @@ fixed \(K\) consists of partitions of \(K\) among partons, with transverse and
 internal cutoffs added as needed.  Zero modes with \(n=0\) are constrained
 variables or additional degrees of freedom depending on the theory; their
 treatment is part of the regulator.
+
+\begin{definition}[DLCQ regulator datum]
+\label{def:dlcq-regulator-datum}
+A DLCQ regulator datum is a Hamiltonian truncation regulator datum together
+with the following light-front entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item The spatial light-front coordinate is compactified as
+  \(x^-\sim x^-+2\pi R\), and the total longitudinal momentum sector is fixed
+  by \(P^+=K/R\) with harmonic resolution \(K\in\mathbb Z_{>0}\).
+\item The finite basis consists of all declared parton partitions
+  \(K=n_1+\cdots+n_N\), with \(n_i>0\), together with the transverse,
+  internal, gauge, and statistics labels kept by the regulator.
+\item The zero-mode sector is specified as part of the datum: constrained
+  variables, eliminated modes, residual global constraints, and additional
+  zero-mode degrees of freedom are all recorded before diagonalization.
+\item The finite operator is the light-front Hamiltonian \(P^-_K\), or
+  equivalently the invariant mass operator
+  \(M_K^2=2P^+P^-_K-P_\perp^2\), with counterterms and principal-value
+  prescriptions stated in the same regulator scheme.
+\item The continuum diagnostic specifies the ordered finite labels followed as
+  \(K\to\infty\), the extrapolation variable, and the remainder model used to
+  interpret finite-\(K\) data.
+\end{enumerate}
+\end{definition}
 
 \section{\texorpdfstring{Large-\(N\) Two-Dimensional QCD: A Finite DLCQ Matrix}{Large-N Two-Dimensional QCD: A Finite DLCQ Matrix}}
 

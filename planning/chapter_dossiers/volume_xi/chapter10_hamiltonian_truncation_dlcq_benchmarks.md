@@ -8,10 +8,16 @@ numerics.
 
 ## Notation Inventory
 
+- `mathfrak H_trunc`: Hamiltonian truncation regulator datum.
+- `Q_H`: lower-bounded closed quadratic form underlying the target
+  Hamiltonian when a limiting operator is known.
 - `H`, `Hilb`, `Hilb_Lambda`, `P_Lambda`: Hamiltonian, Hilbert space,
   truncated subspace, and projection.
+- `B_Lambda`: ordered computational basis, including inner-product and
+  sector conventions.
 - `H_Lambda^ren`, `c_a`: renormalized projected Hamiltonian and local
   counterterm coordinates.
+- `O_obs`, `E_sys`: finite-regulator observables and systematic-error model.
 - `E_n(Lambda)`: variational finite-subspace eigenvalue.
 - `N_H(c)`: exact spectral-counting function below the energy `c` for a
   fixed lower-bounded self-adjoint Hamiltonian below its essential spectrum.
@@ -44,7 +50,12 @@ numerics.
 
 ## Claim Ledger
 
-- Defines projected Hamiltonian regulator data with counterterms.
+- Defines the Hamiltonian truncation regulator datum before finite-matrix
+  estimates are used, including the target quadratic form, cutoff net,
+  computational bases, counterterms, finite observables, and systematic-error
+  model.
+- Defines projected Hamiltonian regulator data with counterterms as the
+  elementary fixed-Hamiltonian specialization of the full datum.
 - Derives the Rayleigh-Ritz upper bound for discrete eigenvalues at fixed
   regulated Hamiltonian.
 - Proves gap-stable Ritz counting for a fixed lower-bounded self-adjoint
@@ -78,7 +89,10 @@ numerics.
 - Records the exact finite Schur self-energy
   `Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP` and isolates the separate norm-bound
   obligation for replacing it by a local counterterm.
-- Defines DLCQ kinematics and the role of harmonic resolution.
+- Defines DLCQ kinematics and the role of harmonic resolution, then packages
+  the light-front compactification, parton partitions, zero-mode treatment,
+  finite \(P^-\) or \(M^2\) operator, and finite-\(K\) continuum diagnostic
+  into a DLCQ regulator datum.
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
   meson equation and records the finite quadratic-form identity that gives
   regulator-level positivity.
