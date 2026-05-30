@@ -15,7 +15,8 @@
   monodromy product one site at a time.
 - Transfer matrix as an auxiliary trace.
 - Transfer-matrix commutativity from RTT and finite-dimensional trace
-  cyclicity.
+  cyclicity, with partial trace over auxiliary spaces separated from the
+  noncommutative quantum-space operator product.
 - Rational \(SU(2)\) \(R(u)=u\,1+iP\) normalization.
 - \(XXX_{1/2}\) algebraic Bethe ansatz, including the \(A,B,C,D\)
   decomposition, pseudovacuum actions, corrected \(AB/DB\) exchange signs in
@@ -45,7 +46,8 @@
 1. The RTT relation follows directly from the Yang--Baxter equation applied at
    each quantum site.
 2. Transfer matrices commute because RTT permits conjugation inside the
-   auxiliary trace.
+   auxiliary trace; the proof uses cyclicity only in \(V_0\otimes V_{0'}\),
+   not in the quantum space \(\mathcal H_L\).
 3. The rational \(SU(2)\) \(R\)-matrix satisfies the Yang--Baxter equation by
    symmetric-group flip relations.
 4. The component RTT relations give
@@ -69,3 +71,12 @@
 ## Figures
 
 - None in this chapter.
+
+## Audit Notes
+
+- 2026-05-30 partial-trace proof pass: retained transfer-matrix
+  commutativity as proposition-level finite-dimensional integrability
+  machinery, but expanded the proof so that the equality
+  \(t(u)t(v)=\operatorname{tr}_{0,0'}T_0(u)T_{0'}(v)\), auxiliary-only trace
+  cyclicity, and meromorphic continuation off the invertibility locus are
+  explicit.

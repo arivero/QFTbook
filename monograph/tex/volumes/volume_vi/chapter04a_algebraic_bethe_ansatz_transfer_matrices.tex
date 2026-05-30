@@ -107,10 +107,41 @@ generic \(u\).  Then, for all \(u,v\) in the common domain of meromorphy,
 \end{proposition}
 
 \begin{proof}
-Take the trace over \(V_0\otimes V_{0'}\) in the RTT relation.  On the open
-set where \(R_{00'}(u-v)\) is invertible, multiply
-\eqref{eq:aba-rtt-relation} on the left by \(R_{00'}(u-v)^{-1}\) and use
-cyclicity of the finite-dimensional trace in the auxiliary factors:
+The trace in \eqref{eq:aba-transfer-matrix} is a partial trace.  If
+\[
+  X\in\operatorname{End}(V_0\otimes V_{0'}\otimes\mathcal H_L),
+\]
+then \(\operatorname{tr}_{0,0'}X\) is the unique endomorphism of
+\(\mathcal H_L\) satisfying
+\[
+  \operatorname{tr}_{\mathcal H_L}
+  \bigl(Y\,\operatorname{tr}_{0,0'}X\bigr)
+  =
+  \operatorname{tr}_{0,0',\mathcal H_L}
+  \bigl((1_{0,0'}\otimes Y)X\bigr)
+\]
+for finite-rank test operators \(Y\) on \(\mathcal H_L\).  In components this
+definition preserves the order of the quantum-space endomorphisms, so
+\[
+  t(u)t(v)
+  =
+  \operatorname{tr}_{0,0'}\!\left(T_0(u)T_{0'}(v)\right),
+  \qquad
+  t(v)t(u)
+  =
+  \operatorname{tr}_{0,0'}\!\left(T_{0'}(v)T_0(u)\right).
+\]
+The proof therefore uses cyclicity only in the finite auxiliary trace, never
+cyclicity in the quantum space.
+
+On the open set where \(R_{00'}(u-v)\) is invertible, the RTT relation gives
+\[
+  T_0(u)T_{0'}(v)
+  =
+  R_{00'}(u-v)^{-1}T_{0'}(v)T_0(u)R_{00'}(u-v).
+\]
+Since \(R_{00'}(u-v)\) acts trivially on \(\mathcal H_L\), it may be moved
+cyclically inside the finite trace over \(V_0\otimes V_{0'}\):
 \[
 \begin{aligned}
   t(u)t(v)
@@ -126,8 +157,10 @@ cyclicity of the finite-dimensional trace in the auxiliary factors:
   t(v)t(u).
 \end{aligned}
 \]
-Both sides are meromorphic in \(u,v\), hence equality on the invertibility
-domain extends as a meromorphic identity.
+Both sides are meromorphic \(\operatorname{End}(\mathcal H_L)\)-valued
+functions of \(u,v\).  The complement of the auxiliary invertibility locus is
+a proper analytic subset, so equality on the nonempty open invertibility
+domain extends as a meromorphic identity on the common domain of meromorphy.
 \end{proof}
 
 The proposition is the algebraic source of the conservation laws used in
