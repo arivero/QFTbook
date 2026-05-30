@@ -14,6 +14,97 @@ they are consequences of a localization datum in the sense of
 Definition~\ref{def:susy-localization-data}, together with the determinant
 and instanton-sector prescriptions explicitly stated here.
 
+\begin{definition}[Compact supersymmetric localization datum]
+\label{def:compact-supersymmetric-localization-datum}
+A compact supersymmetric localization datum is a tuple
+\[
+  \mathfrak L_M
+  =
+  \bigl(
+    M,\mathfrak B,
+    \{(\mathfrak F_\Lambda,C_\Lambda,\mu_\Lambda)\}_{\Lambda\in I},
+    Q_\Lambda,B_\Lambda,V_\Lambda,
+    S_\Lambda,\mathcal O_\Lambda,
+    \mathfrak F^{\rm fix}_\Lambda,
+    \mathcal N^{\bullet}_\Lambda,
+    \mathfrak R_\Lambda,
+    \mathcal C_\Lambda
+  \bigr)
+\]
+with the following meaning.
+\begin{enumerate}[label=(\roman*)]
+\item \(M\) is the compact oriented Riemannian manifold on which the QFT is
+placed, and \(\mathfrak B\) denotes the chosen rigid-supergravity background:
+spin or spin-\(c\) structure, \(R\)-symmetry and flavor bundles, background
+connections, masses, and any metric or framing data used by the preserved
+supercharge.
+\item \(I\) is a directed regulator set.  For each \(\Lambda\in I\),
+\(\mathfrak F_\Lambda\) is the regulated super field-variable space, including
+gauge-fixing or BV variables when gauge symmetry is present; \(C_\Lambda\) is
+the declared integration cycle, including orientation, boundary, singular
+strata, and gauge quotient; and \(\mu_\Lambda\) is the regulated Berezinian
+density or BV half-density.  Fermionic variables are understood as coordinates
+on a locally super-ringed space, so \(\mu_\Lambda\) is not a Borel measure.
+\item \(Q_\Lambda\) is an odd derivation of the regulated algebra of
+observables, and
+\[
+  B_\Lambda:=Q_\Lambda^2
+  =
+  \mathcal L_{v_\Lambda}
+  +\delta_{\rm gauge}(\Lambda_Q)
+  +\delta_R(\Theta_R)+\delta_F(\Theta_F)
+\]
+is the specified even transformation: an isometry of \(M\), a gauge
+transformation, and \(R\)- or flavor rotations.  In a gauge theory this
+statement is made in the BV complex; compatibility means that \(Q_\Lambda\)
+commutes with the gauge-fixed BV differential up to \(B_\Lambda\)-symmetry and
+that the regulated quantum master equation has the residual boundary terms
+specified below.
+\item \(S_\Lambda\) is the regulated action and \(\mathcal O_\Lambda\) is the
+regulated protected insertion.  They obey
+\[
+  Q_\Lambda S_\Lambda=0,\qquad
+  Q_\Lambda\mathcal O_\Lambda=0,\qquad
+  \mathcal L_{Q_\Lambda}\mu_\Lambda=0
+\]
+in the regulated theory, or else the anomaly term is stated explicitly as a
+defect of these equations.
+\item \(V_\Lambda\) is an odd localizing functional such that
+\(\operatorname{Re}(Q_\Lambda V_\Lambda)\ge 0\) on the bosonic body of
+\(C_\Lambda\), with equality precisely on a stated fixed locus
+\(\mathfrak F^{\rm fix}_\Lambda\).  The \(Q_\Lambda\)-Stokes boundary term
+\[
+  \int_{\partial C_\Lambda}
+  \mu_\Lambda\,\mathcal O_\Lambda V_\Lambda
+  \exp\{-S_\Lambda-tQ_\Lambda V_\Lambda\}
+\]
+is either proved to vanish, canceled by a declared relative-cycle or boundary
+counterterm, or recorded as an open obstruction.
+\item \(\mathcal N_\Lambda^\bullet\) is the normal \(Q_\Lambda\)-complex to
+the smooth part of \(\mathfrak F^{\rm fix}_\Lambda\), with zero modes split
+off as coordinates or insertion modes.  The one-loop determinant is the
+Berezin Gaussian/Euler class of the acyclic part of this complex, with
+orientation, phase, zeta or heat-kernel regularization, framing, and local
+counterterm conventions included in the datum.
+\item \(\mathfrak R_\Lambda\) is the residual finite-dimensional integration
+or summation prescription after normal integration: Cartan contour, residue
+chamber, Jeffrey--Kirwan vector, instanton compactification, polarization,
+or equivariant pushforward.  Singular fixed strata such as zero-size
+instantons are part of \(\mathfrak R_\Lambda\), not automatic consequences of
+the notation \(\int\mathcal D\Phi\).
+\item \(\mathcal C_\Lambda\) is the continuum comparison datum: topology on
+protected observables, renormalization and contact-term scheme, convergence
+or matching statement for the limit \(\Lambda\to\infty\), and the precise
+status of any equality between the regulated localization formula and the
+underlying QFT observable.
+\end{enumerate}
+All localization formulae in this chapter are statements about consequences
+of a datum \(\mathfrak L_M\).  If one of the entries is supplied only by a
+standard prescription rather than by a regulator theorem, the corresponding
+formula is a controlled prescription or hypothesis at that entry, even when
+the finite-dimensional localization identity itself is a theorem.
+\end{definition}
+
 \section{Finite-Dimensional Deformation Identity}
 
 Let \(X\) be an oriented finite-dimensional supermanifold equipped with an
@@ -184,18 +275,16 @@ For a supersymmetric QFT on a compact Riemannian manifold \(M\), the symbol
 \[
   Z_M=\int_{\mathfrak F}\mathcal D\Phi\,\ee^{-S[\Phi]}
 \]
-will be used only as shorthand for a regulated datum:
+is shorthand for the regulated data in
+Definition~\ref{def:compact-supersymmetric-localization-datum}.  In the
+minimal notation one keeps only
 \[
   (\mathfrak F_\Lambda,C_\Lambda,\mu_\Lambda,S_\Lambda,Q_\Lambda,V_\Lambda)
 \]
-together with a limiting prescription \(\Lambda\to\infty\).  Here
-\(\mathfrak F_\Lambda\) is a finite-mode, lattice, heat-kernel, BV, or other
-regulated field-variable space; \(C_\Lambda\) is the declared integration
-cycle; \(\mu_\Lambda\) is the regulated Berezinian density; \(Q_\Lambda\) is
-an odd symmetry whose square is a combination of an isometry, gauge
-transformation, \(R\)-symmetry, and flavor transformation; and \(V_\Lambda\)
-is the chosen localizing functional.  The localized expression is justified
-when the following conditions are verified or retained as hypotheses:
+together with the limiting prescription \(\Lambda\to\infty\), but the omitted
+entries of \(\mathfrak L_M\) remain logically present.  Thus the localized
+expression is justified only when the following conditions are verified or
+retained as hypotheses:
 \[
 \begin{gathered}
   Q_\Lambda S_\Lambda=0,\qquad
