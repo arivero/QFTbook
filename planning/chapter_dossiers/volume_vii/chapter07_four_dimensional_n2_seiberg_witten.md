@@ -70,7 +70,9 @@ Wilsonian dynamics are available for later use.
   theorems, constraint-derived ansatz choices, consistency checks, and status
   boundaries.
 - Defines the rank-one electromagnetic pairing and proves the
-  Picard-Lefschetz hypermultiplet monodromy formula, including its
+  Picard-Lefschetz hypermultiplet monodromy formula from the local
+  \(\mathcal N=2\) hypermultiplet threshold
+  `tau_sing=-(i/pi) log z`, including the origin of the factor two, its
   central-charge action, symplecticity, and unipotence.
 - Derives the weak-coupling monodromy at infinity from the one-loop
   prepotential and the Weyl action `a -> -a`.
@@ -125,7 +127,8 @@ Wilsonian dynamics are available for later use.
 
 - `calculation-checks/sw_su2_periods.py` verifies the monodromy matrices, the
   finite-monodromy product, Picard-Lefschetz central-charge action and
-  symplecticity, the rigid special-Kahler metric identity and real
+  symplecticity, the local hypermultiplet threshold shift that produces the
+  factor two, the rigid special-Kahler metric identity and real
   theta-shift invariance, the minimal-curve discriminant, the Picard-Fuchs
   equation for the displayed hypergeometric periods, the large-\(u\)
   asymptotic of \(a(u)\), logarithmic growth of \(a_D(u)\), linear vanishing

@@ -119,6 +119,40 @@ def check_picard_lefschetz_action_and_symplecticity() -> None:
                 )
 
 
+def check_local_hyper_threshold_shift() -> None:
+    # In the local electric frame z=Z_gamma, z_D=Z_eta, the singular
+    # hypermultiplet threshold is z_D^sing=-(i/pi) z log z up to single-valued
+    # linear terms. A positive loop z -> exp(2*pi*i) z shifts z_D by 2z.
+    shift_coefficient = -(1j / mp.pi) * (2 * mp.pi * 1j)
+    assert_close("local hyper threshold monodromy coefficient", shift_coefficient, 2, mp.mpf("1e-50"))
+
+    for gamma in ((1, 0), (1, -1), (2, 1), (1, 3)):
+        # Find a small integral eta with <eta,gamma>=1 when gamma is primitive.
+        eta = None
+        for m in range(-5, 6):
+            for e in range(-5, 6):
+                if symplectic_pair((m, e), gamma) == 1:
+                    eta = (m, e)
+                    break
+            if eta is not None:
+                break
+        if eta is None:
+            raise AssertionError(f"could not find symplectic complement for {gamma}")
+
+        for delta in ((0, 1), (1, 0), (1, 2), (-2, 3)):
+            k = symplectic_pair(delta, gamma)
+            remainder = (delta[0] - k * eta[0], delta[1] - k * eta[1])
+            if symplectic_pair(remainder, gamma) != 0:
+                raise AssertionError("local symplectic decomposition failed")
+            transformed = (
+                delta[0] + 2 * k * gamma[0],
+                delta[1] + 2 * k * gamma[1],
+            )
+            monodromy_coeffs = row_times_matrix(delta, charge_monodromy(*gamma))
+            if transformed != monodromy_coeffs:
+                raise AssertionError("local hyper threshold shift does not match PL matrix")
+
+
 def check_rigid_special_kahler_metric() -> None:
     # Work in units where the common factor 1/(2 pi) in K has been stripped.
     # The exact algebra behind K=Im(bar a^I F_I) is
@@ -240,6 +274,7 @@ def check_argyres_douglas_discriminant_and_nonlocality() -> None:
 def main() -> None:
     check_monodromies()
     check_picard_lefschetz_action_and_symplecticity()
+    check_local_hyper_threshold_shift()
     check_rigid_special_kahler_metric()
     check_minimal_curve_discriminant()
     check_picard_fuchs()

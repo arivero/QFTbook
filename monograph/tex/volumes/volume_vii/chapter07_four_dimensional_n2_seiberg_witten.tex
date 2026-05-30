@@ -301,6 +301,49 @@ with central charge \(Z_\gamma=n_m a_D+n_e a\).  For two charges
 \end{equation}
 This is the Dirac pairing in the period basis \(\Pi=(a_D,a)^T\).
 
+\paragraph{The local coefficient in a hypermultiplet monodromy.}
+The phrase ``Picard--Lefschetz monodromy of a massless hypermultiplet''
+contains two logically separate inputs.  The geometric input is the
+Picard--Lefschetz transvection for the vanishing one-cycle of the period
+family.  The physical normalization of that transvection is fixed by the
+singular Wilsonian threshold of the light charged hypermultiplet.  Let
+\(\gamma\in\Gamma\) be primitive and choose an auxiliary charge
+\(\eta\in\Gamma\) with \(\langle\eta,\gamma\rangle=1\).  In the local
+electric frame
+\[
+  z=Z_\gamma,\qquad z_D=Z_\eta ,
+\]
+the additional light field is an ordinary \(\mathcal N=2\) hypermultiplet of
+electric charge one.  Its singular holomorphic coupling is
+\begin{equation}
+  \tau_{\rm sing}(z)
+  =
+  \frac{\partial z_D}{\partial z}
+  =
+  -\frac{\ii}{\pi}\log z
+  + \hbox{single-valued holomorphic terms}.
+  \label{eq:local-hyper-singular-coupling}
+\end{equation}
+Equivalently,
+\[
+  z_D^{\rm sing}
+  =
+  -\frac{\ii}{\pi}z\log z
+  + \hbox{single-valued holomorphic linear terms}.
+\]
+The coefficient in \eqref{eq:local-hyper-singular-coupling} is the
+one-loop Wilsonian threshold of the two oppositely charged chiral multiplets
+inside a full hypermultiplet, in the Abelian normalization of this volume.
+A positive small loop around \(z=0\) therefore leaves \(z\) fixed and sends
+\begin{equation}
+  z_D\longmapsto z_D+2z .
+  \label{eq:local-hyper-dual-period-shift}
+\end{equation}
+Reversing the loop orientation reverses the sign.  The factor two is not a
+decorative convention: it is the local threshold coefficient of a full
+hypermultiplet and is the same factor that appears in the finite
+Seiberg--Witten monodromies below.
+
 \begin{lemma}[Rank-one hypermultiplet monodromy]
 \label{lem:rank-one-hyper-pl-monodromy}
 Suppose that a primitive charge \(\gamma=(n_m,n_e)\) is represented by a
@@ -326,33 +369,61 @@ The matrix \(M_\gamma\) is integral symplectic and unipotent.
 \end{lemma}
 
 \begin{proof}
-The special-geometry Picard-Lefschetz transformation says that a cycle
-\(\delta\) transported around a nodal degeneration is shifted by its
-intersection with the vanishing cycle.  In the physical period convention a
-massless hypermultiplet contributes twice the primitive Picard-Lefschetz
-shift, giving \eqref{eq:rank-one-pl-central-charge-action}.  Writing
-\(\gamma=(p,q)\) and \(\Pi=(a_D,a)^T\), the displayed matrix gives
+Choose \(\eta\in\Gamma\) with \(\langle\eta,\gamma\rangle=1\).  Every
+\(\delta\in\Gamma\) can be written uniquely as
 \[
-\begin{aligned}
-  a_D'&=(1+2pq)a_D+2q^2a,\\
-  a'&=-2p^2a_D+(1-2pq)a .
-\end{aligned}
+  \delta=k\eta+\ell\gamma,\qquad k=\langle\delta,\gamma\rangle ,
 \]
-For \(\delta=(m,e)\),
+because \((\eta,\gamma)\) is an integral symplectic basis of the rank-two
+lattice.  The local hypermultiplet calculation
+\eqref{eq:local-hyper-dual-period-shift} gives
 \[
-\begin{aligned}
-  m a_D'+e a'
-  &=
-  ma_D+ea
-  +2(mq-ep)(p a_D+q a)  \\
-  &=
-  Z_\delta+2\langle\delta,\gamma\rangle Z_\gamma .
-\end{aligned}
+  Z_\gamma\longmapsto Z_\gamma,\qquad
+  Z_\eta\longmapsto Z_\eta+2Z_\gamma .
 \]
-Thus \eqref{eq:rank-one-pl-central-charge-action} holds.  The same formula
-implies preservation of the antisymmetric pairing because
-\(\langle\gamma,\gamma\rangle=0\) and the two added rank-one terms cancel.
-Equivalently, \(M_\gamma^T J M_\gamma=J\) for
+Therefore
+\[
+  Z_\delta=kZ_\eta+\ell Z_\gamma
+  \longmapsto
+  k(Z_\eta+2Z_\gamma)+\ell Z_\gamma
+  =
+  Z_\delta+2\langle\delta,\gamma\rangle Z_\gamma ,
+\]
+which proves \eqref{eq:rank-one-pl-central-charge-action}.  The geometric
+Picard--Lefschetz theorem supplies the existence of the transvection around
+the vanishing cycle; the preceding Wilsonian threshold fixes its coefficient
+in the physical electromagnetic lattice.
+
+Now write \(\gamma=(p,q)\) in the original basis and apply the central-charge
+action to the two basis charges.  For \(\delta=(1,0)\),
+\(\langle\delta,\gamma\rangle=q\), hence
+\[
+  a_D'\equiv Z_{(1,0)}'
+  =
+  a_D+2q(pa_D+qa)
+  =
+  (1+2pq)a_D+2q^2a .
+\]
+For \(\delta=(0,1)\), \(\langle\delta,\gamma\rangle=-p\), hence
+\[
+  a'\equiv Z_{(0,1)}'
+  =
+  a-2p(pa_D+qa)
+  =
+  -2p^2a_D+(1-2pq)a .
+\]
+These two equations are exactly \eqref{eq:sw-picard-lefschetz-charge-monodromy}.
+The same central-charge formula implies preservation of the antisymmetric
+pairing:
+\[
+  \langle\delta_1+2\langle\delta_1,\gamma\rangle\gamma,
+          \delta_2+2\langle\delta_2,\gamma\rangle\gamma\rangle
+  =
+  \langle\delta_1,\delta_2\rangle,
+\]
+because the two cross terms cancel and
+\(\langle\gamma,\gamma\rangle=0\).  Equivalently,
+\(M_\gamma^T J M_\gamma=J\) for
 \[
   J=\begin{pmatrix}0&1\\ -1&0\end{pmatrix}.
 \]
