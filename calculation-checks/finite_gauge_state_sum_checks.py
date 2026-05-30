@@ -11,6 +11,9 @@ places.  This script verifies:
 * the standard Z_n Dijkgraaf-Witten 3-cocycle condition;
 * the spanning-tree gauge-fixing count for graph presentations of free
   groups.
+* finite-groupoid Fubini for one-object groupoids, including non-injective
+  homomorphisms where the automorphism denominator splits into image and
+  kernel factors.
 
 All checks are finite and exact.
 """
@@ -194,6 +197,59 @@ def check_spanning_tree_gauge_count() -> None:
                 )
 
 
+def cyclic_hom_image_kernel_sizes(source_order: int, target_order: int, generator_image: int) -> tuple[int, int]:
+    """Return image and kernel sizes for C_source_order -> C_target_order.
+
+    The generator of the source is sent to ``generator_image`` mod
+    ``target_order``.  The caller must provide a genuine homomorphism, i.e.
+    source_order * generator_image is zero mod target_order.
+    """
+
+    if (source_order * generator_image) % target_order != 0:
+        raise AssertionError("not a cyclic-group homomorphism")
+    image = {(j * generator_image) % target_order for j in range(source_order)}
+    kernel = [j for j in range(source_order) if (j * generator_image) % target_order == 0]
+    assert_equal("cyclic homomorphism image-kernel size", len(image) * len(kernel), source_order)
+    return len(image), len(kernel)
+
+
+def check_groupoid_fubini_one_object_groupoids() -> None:
+    """Check the automorphism factors for BK -> BH -> BL.
+
+    For a homomorphism phi: K -> H, the homotopy fiber over the unique object
+    of BH has |H|/|im(phi)| isomorphism classes, each with automorphism group
+    ker(phi).  Thus pushforward from BK to BH multiplies a constant function by
+    |H|/|K|.  The equality (psi o phi)_! = psi_! phi_! is the finite-groupoid
+    Fubini identity in the simplest case where the image and kernel factors
+    are both visible.
+    """
+
+    homomorphisms = [
+        (2, 4, 2, 8, 2),
+        (4, 8, 2, 16, 4),
+        (6, 6, 1, 12, 2),
+        (8, 4, 1, 4, 1),
+        (9, 6, 2, 18, 3),
+    ]
+    for source, middle, phi_gen, target, psi_gen in homomorphisms:
+        phi_image, phi_kernel = cyclic_hom_image_kernel_sizes(source, middle, phi_gen)
+        psi_image, psi_kernel = cyclic_hom_image_kernel_sizes(middle, target, psi_gen)
+        composite_gen = (phi_gen * psi_gen) % target
+        composite_image, composite_kernel = cyclic_hom_image_kernel_sizes(source, target, composite_gen)
+
+        fiber_phi = Fraction(middle, phi_image * phi_kernel)
+        assert_equal("BK -> BH fiber cardinality", fiber_phi, Fraction(middle, source))
+        fiber_psi = Fraction(target, psi_image * psi_kernel)
+        assert_equal("BH -> BL fiber cardinality", fiber_psi, Fraction(target, middle))
+        fiber_composite = Fraction(target, composite_image * composite_kernel)
+        assert_equal("BK -> BL fiber cardinality", fiber_composite, Fraction(target, source))
+
+        for value in [Fraction(1), Fraction(3, 5), Fraction(-7, 2)]:
+            iterated_pushforward = fiber_psi * (fiber_phi * value)
+            composite_pushforward = fiber_composite * value
+            assert_equal("one-object groupoid Fubini", iterated_pushforward, composite_pushforward)
+
+
 def check_torus_commuting_pairs() -> None:
     group = s3()
     commuting_pairs = sum(1 for a, b in product(group, repeat=2) if compose(a, b) == compose(b, a))
@@ -211,6 +267,7 @@ def main() -> None:
     check_class_function_convolution()
     check_zn_dw_3cocycle()
     check_spanning_tree_gauge_count()
+    check_groupoid_fubini_one_object_groupoids()
     check_torus_commuting_pairs()
     print("All finite gauge state-sum checks passed.")
 

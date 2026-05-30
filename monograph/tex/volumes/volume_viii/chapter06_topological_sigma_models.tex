@@ -290,10 +290,77 @@ polyfold Fredholm structure, or derived geometric perfect obstruction theory
 in the algebraic case.  The present chapter records exactly which properties
 of this object enter the QFT formulas.
 
+\paragraph{Virtual integration package used below.}
+The symbol
+\([\overline{\mathcal M}_{g,n}(X,\beta)]^{\rm vir}\) denotes more than a
+homology class attached to a space.  The formulas below require the following
+finite-dimensional package.
+\[
+  \mathfrak V_X
+  =
+  \bigl(
+  [\overline{\mathcal M}_{g,n}(X,\beta)]^{\rm vir},
+  {\rm ev}_a,\pi,\rho,\iota_{\Gamma}
+  \bigr)_{g,n,\beta,\Gamma}.
+\]
+Here \({\rm ev}_a\) are the evaluation maps, \(\pi\) denotes the forgetful
+maps that drop marked points and stabilize the curve, \(\rho\) denotes
+deformation identifications for smooth families of targets or almost complex
+structures, and \(\iota_{\Gamma}\) denotes gluing maps associated to nodal
+boundary strata labelled by stable graphs \(\Gamma\).  The package is
+required to satisfy:
+\[
+  \dim_{\mathbb R}
+  [\overline{\mathcal M}_{g,n}(X,\beta)]^{\rm vir}
+  =
+  2\left((1-g)(m-3)+n+\int_\beta c_1(TX)\right),
+\]
+compatibility with pullback of cohomology classes by the evaluation and
+forgetful maps, invariance under the deformation identifications \(\rho\),
+and compatibility with gluing.  In genus zero, the gluing compatibility used
+for associativity is the following boundary-stratum identity.  For a
+four-point splitting \(S\) and a decomposition
+\(\beta=\beta_1+\beta_2\), let
+\[
+  \mathcal D_S(\beta_1,\beta_2)
+  =
+  \overline{\mathcal M}_{0,3}(X,\beta_1)
+  \times_X
+  \overline{\mathcal M}_{0,3}(X,\beta_2),
+\]
+where the fiber product uses the two evaluation maps at the node.  The
+virtual class on this boundary stratum is required to be
+\begin{equation}
+  [\mathcal D_S(\beta_1,\beta_2)]^{\rm vir}
+  =
+  \Delta_X^!\!\left(
+  [\overline{\mathcal M}_{0,3}(X,\beta_1)]^{\rm vir}
+  \times
+  [\overline{\mathcal M}_{0,3}(X,\beta_2)]^{\rm vir}
+  \right),
+  \label{eq:gw-virtual-splitting-package}
+\end{equation}
+where \(\Delta_X^!\) is the refined pullback along the diagonal
+\(\Delta_X:X\to X\times X\).  If
+\(\iota_S:\mathcal D_S(\beta_1,\beta_2)\to
+\overline{\mathcal M}_{0,4}(X,\beta)\) is the gluing map, then
+\[
+  (\iota_S)_*
+  \sum_{\beta_1+\beta_2=\beta}
+  [\mathcal D_S(\beta_1,\beta_2)]^{\rm vir}
+\]
+is the virtual class of the boundary fiber over the corresponding boundary
+point of
+\(\overline{\mathcal M}_{0,4}\cong\mathbb P^1\).  The two boundary points of
+\(\overline{\mathcal M}_{0,4}\) used in the WDVV comparison are linearly
+equivalent divisors on \(\mathbb P^1\).  This is the nontrivial input from
+virtual geometry; it is not derived from the formal algebra of the QFT path
+integral in this chapter.
+
 \begin{definition}[Primary Gromov--Witten functional]
-Assume a virtual integration theory satisfying orientation, pullback,
-gluing, and deformation-invariance axioms.  For cohomology classes
-\(\alpha_a\in H^\bullet(X;\mathbb C)\), define
+Given a virtual integration package \(\mathfrak V_X\) with the properties
+specified above, the primary Gromov--Witten functional is the multilinear map
+defined for cohomology classes \(\alpha_a\in H^\bullet(X;\mathbb C)\) by
 \[
   \left\langle \alpha_1,\ldots,\alpha_n\right\rangle_{g,n,\beta}^{X}
   =
@@ -355,9 +422,11 @@ where \((\cdot,\cdot)\) is the Poincar\'e pairing.  Equivalently,
 \end{definition}
 
 \paragraph{Associativity from the splitting axiom.}
-Assume the genus-zero virtual fundamental classes satisfy the standard
-splitting axiom along boundary divisors of
-\(\overline{\mathcal M}_{0,4}(X,\beta)\).  Then \(\star\) is associative.
+With the genus-zero splitting identity
+\eqref{eq:gw-virtual-splitting-package} as part of the virtual integration
+package, the product \(\star\) is associative.  This is a conditional
+consequence of the virtual package, not an independent construction of that
+package from continuum QFT.
 
 It is enough to prove
 \[
@@ -480,7 +549,7 @@ is the gravitational descendant class.  The descendant invariant is
   \prod_{a=1}^n
   \psi_a^{k_a}\,{\rm ev}_a^\ast\alpha_a .
 \]
-In the fixed-worldsheet cohomological field theory, descendants arise from
+In the fixed-source-surface cohomological field theory, descendants arise from
 the descent equations of Chapter~\ref{ch:tqft-cohomological-field-theories}.
 After coupling to topological gravity, the \(\psi_a\)-classes are the
 finite-dimensional remnants of the marked-point cotangent directions.  These
@@ -602,9 +671,9 @@ ends, and a treatment of contact terms for colliding insertions.
 \section{Continuum QFT Status}
 
 The A-model has a mathematically rich finite-dimensional output in
-Gromov--Witten theory.  The B-model has a finite-dimensional classical
-closed-string sector expressed through polyvector Dolbeault cohomology and,
-at higher genus, through the Kodaira--Spencer/BCOV effective theory.  These
+Gromov--Witten theory.  The B-model has a finite-dimensional classical closed
+sector expressed through polyvector Dolbeault cohomology and, at higher
+genus, through the Kodaira--Spencer/BCOV effective theory.  These
 outputs are indispensable, and the continuum sigma-model QFT still demands a
 field-theoretic construction.
 
@@ -613,7 +682,7 @@ field-theoretic construction.
 Construct A- and B-models as continuum cohomological QFTs with explicit
 regulated field spaces, \(Q\)-invariant integration cycles, anomaly lines,
 compactified zero-mode spaces, compatible virtual integration, and gluing
-maps for cutting and sewing worldsheets.  The construction should recover the
+maps for cutting and sewing source surfaces.  The construction should recover the
 Gromov--Witten and B-model finite-dimensional formulas as theorems rather
 than as definitions of the path integral.
 \end{openproblem}

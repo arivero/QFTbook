@@ -43,8 +43,12 @@ Gromov--Witten and B-model outputs obtained after localization.
 - Defines stable maps, evaluation maps, primary GW functionals, and the
   degree-selection rule while explicitly separating virtual integration
   input from continuum QFT construction.
-- Defines the small quantum product and proves associativity from the
-  splitting axiom on `Mbar_{0,4}`.
+- Specifies the finite-dimensional virtual integration package used by the
+  A-model formulas, including the diagonal refined-pullback identity on
+  genus-zero boundary strata.
+- Defines the small quantum product and derives associativity as a
+  conditional consequence of the splitting identity on `Mbar_{0,4}`, without
+  treating virtual geometry as a formal corollary of the path integral.
 - Works out the projective-space relation
   `QH^*(P^m)=C[H,Q]/(H^{m+1}-Q)`.
 - Defines descendants through cotangent-line classes on the universal curve

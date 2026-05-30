@@ -211,6 +211,86 @@ where \(\operatorname{Bun}_G(M)_{Q_1}\) is the groupoid of pairs
 \((P,\alpha)\) with \(P\in\operatorname{Bun}_G(M)\) and an isomorphism
 \(\alpha:r_1P\simeq Q_1\).
 
+\begin{lemma}[Finite groupoid Fubini with automorphism weights]
+\label{lem:finite-groupoid-fubini}
+Let
+\[
+  p:E\to B
+\]
+be a functor between finite groupoids, and let \(F:E\to\C\) be constant on
+isomorphism classes.  For \(b\in B\), let \(E_b\) be the homotopy fiber
+groupoid whose objects are pairs \((e,\phi)\), with \(e\in E\) and
+\(\phi:p(e)\simeq b\) in \(B\).  Then
+\begin{equation}
+  \int_E F
+  =
+  \int_{b\in B}\int_{E_b} F.
+  \label{eq:finite-groupoid-fubini}
+\end{equation}
+Consequently, if \(X\xrightarrow{f}Y\xrightarrow{g}Z\) are finite groupoids,
+then
+\begin{equation}
+  (g\circ f)_!F=g_!f_!F.
+  \label{eq:finite-groupoid-pushforward-composition}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Choose representatives \(b\) for the isomorphism classes of \(B\).  The
+right hand side of \eqref{eq:finite-groupoid-fubini} is
+\[
+  \sum_{[b]\in\pi_0B}
+  \frac{1}{|\operatorname{Aut}_B(b)|}
+  \sum_{[(e,\phi)]\in\pi_0E_b}
+  \frac{F(e)}{|\operatorname{Aut}_{E_b}(e,\phi)|}.
+\]
+We compare the contribution of one isomorphism class \([e]\in\pi_0E\).
+After replacing \(b\) by an isomorphic representative, assume
+\[
+  b=p(e).
+\]
+Let
+\[
+  I_e=\operatorname{im}\bigl(\operatorname{Aut}_E(e)\to
+  \operatorname{Aut}_B(p(e))\bigr),
+  \qquad
+  K_e=\ker\bigl(\operatorname{Aut}_E(e)\to
+  \operatorname{Aut}_B(p(e))\bigr).
+\]
+The possible identifications \(\phi:p(e)\simeq b\) form a torsor for
+\(\operatorname{Aut}_B(b)\).  Passing to the homotopy fiber divides this
+torsor by the image \(I_e\).  Hence the class \([e]\) gives
+\[
+  \frac{|\operatorname{Aut}_B(b)|}{|I_e|}
+\]
+isomorphism classes in \(E_b\), and the automorphism group of each such
+fiber object is \(K_e\).  Its total contribution to the iterated integral is
+\[
+  \frac{1}{|\operatorname{Aut}_B(b)|}
+  \frac{|\operatorname{Aut}_B(b)|}{|I_e|}
+  \frac{F(e)}{|K_e|}
+  =
+  \frac{F(e)}{|I_e|\,|K_e|}
+  =
+  \frac{F(e)}{|\operatorname{Aut}_E(e)|}.
+\]
+This is exactly the contribution of \([e]\) to \(\int_EF\).  Summing over
+\(\pi_0E\) proves \eqref{eq:finite-groupoid-fubini}.
+
+For pushforwards, the homotopy fiber of \(g\circ f\) over \(z\in Z\) is
+equivalent to the homotopy fiber product
+\[
+  X\times_Y Y_z.
+\]
+Applying \eqref{eq:finite-groupoid-fubini} to the projection
+\[
+  X\times_Y Y_z\to Y_z
+\]
+gives the equality between integration over this single homotopy fiber and
+the iterated integration first over \(X_y\) and then over \(Y_z\).  This is
+\eqref{eq:finite-groupoid-pushforward-composition}.
+\end{proof}
+
 \begin{theorem}[Finite groupoid gluing]
 \label{thm:finite-groupoid-gluing}
 Let \(M_{01}:\Sigma_0\to\Sigma_1\) and
@@ -253,25 +333,20 @@ boundary identification; conversely, any compatible pair glues uniquely to an
 isomorphism of the glued bundles.  Thus the equivalence includes the
 morphism groupoids, not only the object sets.
 
-For the linear maps, composition of spans is represented by the homotopy
-fiber product in \eqref{eq:bun-gluing-homotopy-pullback}.  It remains only
-to check the measure factors.  Let \(X\xrightarrow{f}Y\xrightarrow{g}Z\) be
-finite groupoids and \(F\) a function on \(X\).  By definition,
+The bordism operator is the linear map associated to the restriction span.
+Composition of such span operators is composition of finite-groupoid
+pullbacks and pushforwards.  By Lemma~\ref{lem:finite-groupoid-fubini}, the
+pushforward along a composite finite-groupoid map is the iterated
+pushforward, with the automorphism denominators matching by the
+image-kernel calculation in the lemma.  Combining this Fubini identity with
+the descent equivalence \eqref{eq:bun-gluing-homotopy-pullback} gives
 \[
-  (g_!f_!F)(z)
+  Z_G(M_{12}\circ M_{01})
   =
-  \int_{y\in Y_z}\int_{x\in X_y}F(x).
+  Z_G(M_{12})\,Z_G(M_{01}),
 \]
-An object counted by the iterated integral is an object \(x\in X\), an
-isomorphism \(g(fx)\simeq z\), and the compatible automorphism data.  This is
-exactly an object of the homotopy fiber \(X_z\) of \(g\circ f\).  The
-automorphism group is the same stabilizer in the two descriptions, so the
-weights \(1/|\operatorname{Aut}|\) agree term by term.  Hence
-\[
-  (g\circ f)_!F=g_!f_!F.
-\]
-Applying this Fubini identity to the two restriction spans proves
-\eqref{eq:finite-gauge-gluing}.
+as an equality of linear maps
+\(\mathcal H_G(\Sigma_0)\to\mathcal H_G(\Sigma_2)\).
 \end{proof}
 
 Figure~\ref{fig:finite-gauge-gluing-span} records the span-level gluing proof:

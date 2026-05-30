@@ -40,8 +40,9 @@ bordism-functoriality chapter.
    `Z_G(M)=|Hom(pi_1(M),G)|/|G|`.
 5. Defines boundary state spaces as functions on boundary bundle groupoids and
    bordism maps as push-pull along spans.
-6. Proves finite groupoid gluing by descent for principal bundles and Fubini
-   over finite homotopy fibers.
+6. Proves finite groupoid Fubini with explicit image/kernel automorphism
+   weights, then proves finite groupoid gluing by descent for principal
+   bundles and Fubini over finite homotopy fibers.
 7. Defines the triangulated flat-connection state sum and derives its equality
    with groupoid cardinality through the action groupoid
    `Flat_G(K)//G^{K_0}`.
@@ -67,5 +68,6 @@ bordism-functoriality chapter.
 - `calculation-checks/finite_gauge_state_sum_checks.py` verifies with exact
   arithmetic: action-groupoid cardinality, surface partition formulas for
   cyclic groups and `S_3`, class-function convolution, the standard
-  `Z_n` Dijkgraaf-Witten `3`-cocycle condition, tree gauge-fixing counts, and
-  torus commuting-pair counts.
+  `Z_n` Dijkgraaf-Witten `3`-cocycle condition, tree gauge-fixing counts,
+  one-object finite-groupoid Fubini with image/kernel automorphism factors,
+  and torus commuting-pair counts.
