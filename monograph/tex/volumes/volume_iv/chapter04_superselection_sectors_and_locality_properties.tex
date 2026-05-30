@@ -464,6 +464,73 @@ where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
 \end{quotedtheorem}
 
+\paragraph{Proof mechanism and local role.}
+The theorem is a statement about a standard von Neumann algebra
+\((\mathcal R,\Hilb,\vac)\), where standard means that \(\vac\) is cyclic and
+separating for \(\mathcal R\).  The proof begins with the second antilinear
+operator
+\[
+  F_0(B\vac)=B^*\vac,\qquad B\in\mathcal R' .
+\]
+The commutation of \(\mathcal R\) and \(\mathcal R'\) gives the adjoint
+identity for antilinear operators on the two algebraic cores,
+\[
+  \langle S_0(A\vac),B\vac\rangle
+  =
+  \langle A^*\vac,B\vac\rangle
+  =
+  \langle B^*\vac,A\vac\rangle
+  =
+  \langle F_0(B\vac),A\vac\rangle ,
+  \qquad A\in\mathcal R,\ B\in\mathcal R' ,
+\]
+using \(AB=BA\).  Hence \(S_0\subset F_0^*\) and \(F_0\subset S_0^*\).
+Cyclicity of \(\vac\) for \(\mathcal R\) and \(\mathcal R'\) supplies dense
+domains, and the two inclusions imply closability.  Denote the closures by
+\(S\) and \(F\).  The same adjoint identity upgrades to
+\[
+  S^*=F,\qquad F^*=S .
+\]
+The polar decomposition of the closed antilinear operator \(S\) gives
+\[
+  S=J\Delta^{1/2},
+  \qquad
+  F=J\Delta^{-1/2},
+  \qquad
+  J\Delta J=\Delta^{-1}.
+\]
+
+The substantive step is the Tomita invariance theorem for the left Hilbert
+algebra \(\mathfrak A=\mathcal R\vac\).  The product and involution on the
+core are
+\[
+  (A\vac)(B\vac)=AB\vac,\qquad
+  (A\vac)^\#=A^*\vac .
+\]
+Left multiplication by \(A\in\mathcal R\) is bounded on the Hilbert-space
+completion.  The closure of the involution is precisely \(S\).  Tomita's
+analytic argument shows that the closed left Hilbert algebra is stable under
+the modular unitaries \(\Delta^{\ii t}\), and therefore
+\(\Delta^{\ii t}A\Delta^{-\ii t}\) is again a bounded left multiplier of
+\(\mathfrak A\).  Bounded left multipliers of the closed algebra are exactly
+the elements of \(\mathcal R\).  This proves
+\[
+  \Delta^{\ii t}\mathcal R\Delta^{-\ii t}\subset \mathcal R .
+\]
+Applying the same argument at time \(-t\) gives equality.  The commutant
+identity follows from the polar part of the same closed involution: \(J A J\)
+acts as right multiplication by \(A^*\) on the core and hence commutes with
+all left multipliers, while the symmetric argument starting from
+\(\mathcal R'\) gives the reverse inclusion.
+
+For the QFT applications in this chapter the theorem supplies an abstract
+modular flow for any local algebra whose vacuum vector is standard.  The QFT
+work begins after this theorem: one must prove Reeh--Schlieder or another
+standardness criterion for the local algebra, and one must separately identify
+the abstract modular flow with a geometric flow when such an identification is
+claimed.  The Bisognano--Wichmann theorem below is precisely that additional
+QFT theorem for wedges.
+
 \section{KMS States and Modular Equilibrium}
 \label{sec:kms-states-modular-equilibrium}
 
@@ -777,6 +844,55 @@ Moreover the modular flows of the two states are related by
   \label{eq:connes-cocycle-implements-flow}
 \end{equation}
 \end{quotedtheorem}
+
+\paragraph{Proof mechanism and local role.}
+The cocycle theorem is the Radon--Nikodym theorem for faithful normal states
+in standard form.  The standard-form data are
+\[
+  (\mathcal R,\Hilb,J,\mathcal P),
+\]
+where \(J\) is the modular conjugation and \(\mathcal P\) is the natural
+positive cone.  Each faithful normal state has a unique vector representative
+in \(\mathcal P\); write these representatives as \(\Omega\) for \(\omega\)
+and \(\Psi\) for \(\psi\).  The relative Tomita operator is initially defined
+on the dense core \(\mathcal R\Omega\) by
+\[
+  S_{\Psi|\Omega}(A\Omega)=A^*\Psi,\qquad A\in\mathcal R .
+\]
+Its closure has polar data
+\[
+  S_{\Psi|\Omega}=J_{\Psi|\Omega}\Delta_{\psi|\omega}^{1/2}.
+\]
+The positive operator \(\Delta_{\psi|\omega}\) is the noncommutative
+Radon--Nikodym derivative at the modular level.  The crucial assertion is that
+the relative modular unitaries differ from the reference modular unitaries by
+a unitary belonging to the algebra:
+\[
+  \Delta_{\psi|\omega}^{\ii t}\Delta_\omega^{-\ii t}\in\mathcal R .
+\]
+One proves this by testing the product against \(\mathcal R'\Omega\), using
+the relative Tomita adjoint relation to show that it commutes with the
+commutant, and then applying \((\mathcal R')'=\mathcal R\).  The same
+relative-modular calculation gives
+\[
+  \Delta_{\psi|\omega}^{\ii(t+s)}\Delta_\omega^{-\ii(t+s)}
+  =
+  \bigl(\Delta_{\psi|\omega}^{\ii t}\Delta_\omega^{-\ii t}\bigr)
+  \Delta_\omega^{\ii t}
+  \bigl(\Delta_{\psi|\omega}^{\ii s}\Delta_\omega^{-\ii s}\bigr)
+  \Delta_\omega^{-\ii t},
+\]
+which is exactly the cocycle relation
+\eqref{eq:connes-cocycle-relation}.  Conjugating \(A\in\mathcal R\) by the
+relative modular unitary and inserting the preceding factorization gives
+\eqref{eq:connes-cocycle-implements-flow}.
+
+The theorem's role in QFT is to compare modular Hamiltonians associated with
+different states while staying inside the same local algebra.  Relative
+entropy, modular energy, and the algebraic proof of monotonicity use this
+cocycle as the replacement for a density-matrix quotient in type-III local
+algebras.  The finite type-I calculation below is a normalization check; the
+operator-algebraic theorem supplies the type-III object used by local QFT.
 
 \begin{remark}[Finite type-I check for the cocycle formula]
 In the finite type-I standard representation the formula is explicit:

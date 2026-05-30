@@ -72,3 +72,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   modular-dilation condition on those subspaces, and separated the deep
   construction of the positive translation group from the elementary
   differentiation that gives the displayed commutator.
+- 2026-05-30 modular-theory quoted-theorem expansion pass: expanded the
+  Tomita--Takesaki and Connes cocycle quoted-theorem boundaries.  The chapter
+  now records the two-core \(S_0/F_0\) adjoint mechanism, the left Hilbert
+  algebra multiplier route to modular invariance and \(J\mathcal R J\), and
+  the relative-Tomita/standard-form mechanism behind Connes' cocycle relation.

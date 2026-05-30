@@ -29,6 +29,19 @@ attach a `proof` environment unless the proof is actually reproduced.  A
 footnote is acceptable as bibliographic support, but the reader-facing text
 must still say whose theorem or theorem-lineage is being quoted.
 
+Every `quotedtheorem` is an active proof-debt marker until the surrounding
+text gives a detailed mechanism in the monograph's notation.  The minimum
+acceptable expansion is: identify the primitive objects, state the analytic or
+algebraic lemma that carries the proof, explain how the hypotheses enter,
+verify the local hypotheses used by the chapter, and spell out which part of
+the conclusion is imported rather than derived.  A bare theorem statement plus
+reference, even to standard mathematics, is not a finished treatment.  For
+pure mathematical infrastructure the full proof may remain external, but the
+reader must see the proof mechanism and the exact local role.  For theorem
+claims whose conclusion is a QFT construction, observable, phase statement,
+or anomaly, the final standard is a self-contained proof or an explicitly
+marked proof obligation/status statement.
+
 For theorem-level claims specifically about QFT, `quotedtheorem` is an
 interim honesty boundary, not the final monograph standard.  Such a theorem
 must either receive a self-contained proof somewhere in the monograph
