@@ -254,13 +254,15 @@ energy-momentum spectrum contains an isolated finite-multiplicity
 one-particle mass shell of mass \(M_B\), with spectral projection
 \(\Pi_B\), and that this shell is separated by a positive gap from the
 continuum in a neighborhood of total momentum \(P\).  Assume also that the
-matrix elements of \(A\) and \(B\) on this shell are nonzero and that the
-remaining spectral measure is locally finite across \(P^2=-M_B^2\).  Then
+matrix elements of \(A\) and \(B\) on this shell are nonzero, that their
+finite-rank product admits a holomorphic local off-shell extension in the
+complexified total momentum variables, and that the remaining spectral
+measure is locally finite across \(P^2=-M_B^2\).  Then
 the Fourier transform of the connected time-ordered two-point function
 \[
   G_{AB}(P)
   =
-  \int \dd^4x\,\ee^{\ii P\cdot x}
+  \int \dd^4x\,\ee^{-\ii P\cdot x}
   \bra{\vac}\operatorname T A(x)B(0)\ket{\vac}_{\rm conn}
 \]
 has, in the mostly-plus Feynman convention of this volume, the local form
@@ -274,7 +276,8 @@ has, in the mostly-plus Feynman convention of this volume, the local form
   \label{eq:bound-state-spectral-atom-pole}
 \end{equation}
 where \(G_{AB}^{\rm reg}\) is analytic in a sufficiently small first-sheet
-neighborhood of the pole and
+neighborhood of the pole.  The numerator \(R_{AB}(P)\) is any local
+holomorphic off-shell extension of the on-shell finite-rank matrix
 \begin{equation}
   R_{AB}(P)
   =
@@ -283,31 +286,96 @@ neighborhood of the pole and
   \bra{B,P,\lambda}B(0)\ket{\vac}.
   \label{eq:bound-state-spectral-residue}
 \end{equation}
-Here \(\lambda\) labels an orthonormal basis of the finite spin/internal
-degeneracy space of the isolated shell.
+defined for \(P^2=-M_B^2\), \(P^0>0\).  Here \(\lambda\) labels an
+orthonormal basis of the finite spin/internal degeneracy space of the
+isolated shell.  The pole residue is independent of the chosen holomorphic
+off-shell extension; changing the extension changes only the analytic term
+in \eqref{eq:bound-state-spectral-atom-pole}.
 \end{theorem}
 
 \begin{proof}
-Insert the spectral resolution of the translation generators between the two
-operators in the Wightman function
-\(\bra{\vac}A(x)B(0)\ket{\vac}\).  The isolated one-particle shell contributes
+Let \(U(a)\) be the translation representation and let \(E(\dd q)\) be the
+joint projection-valued spectral measure of its self-adjoint generators, in
+the mostly-plus convention \(q^2=-(q^0)^2+|\vec q|^2\).  Translation
+covariance gives
+\[
+  \bra{\vac}A(x)B(0)\ket{\vac}
+  =
+  \int_{\overline V_+}
+    \ee^{\ii q\cdot x}\,
+    \dd\mu_{AB}(q),
+  \qquad
+  \dd\mu_{AB}(q)
+  :=
+  \bra{\vac}A(0)E(\dd q)B(0)\ket{\vac}.
+\]
+The connected subtraction removes only the vacuum atom at \(q=0\), so it
+does not affect a positive-mass shell with \(M_B>0\).  On the isolated shell
+the spectral measure has the finite-rank form
 \[
   \sum_{\lambda}
   \int\frac{\dd^3\vec p}{(2\pi)^3\,2E_{\vec p}}\,
-  \ee^{-\ii p\cdot x}
+  \ee^{\ii p\cdot x}
   \bra{\vac}A(0)\ket{B,p,\lambda}
   \bra{B,p,\lambda}B(0)\ket{\vac},
   \qquad
   E_{\vec p}=\sqrt{|\vec p|^2+M_B^2}.
   \]
-The negative-time ordering gives the corresponding opposite-energy boundary
-value.  Combining the two time orderings and Fourier transforming gives the
-standard scalar Feynman denominator in the chapter convention,
-\(-\ii/(P^2+M_B^2-\ii0)\), multiplied by the finite-rank residue
-\eqref{eq:bound-state-spectral-residue}.  The gap hypothesis separates this
-mass shell from the rest of the spectral support.  The remaining spectral
-integral is therefore analytic in a neighborhood of the isolated pole on the
-first sheet.  This proves \eqref{eq:bound-state-spectral-atom-pole}.
+This is the restriction of \(E(\dd q)\) to the finite-dimensional range of
+\(\Pi_B\), written in the standard covariant normalization of one-particle
+vectors.
+
+The time-ordered distribution contributed by this shell is obtained by
+adding the reversed ordering for \(x^0<0\).  The scalar contour identity in
+the present convention is
+\[
+  \int\frac{\dd P^0}{2\pi}\,
+    \ee^{-\ii P^0 t}
+    \frac{-\ii}{P^2+M_B^2-\ii0}
+  =
+  \frac{1}{2E_{\vec P}}
+  \bigl[
+    \theta(t)\ee^{-\ii E_{\vec P}t}
+    +
+    \theta(-t)\ee^{\ii E_{\vec P}t}
+  \bigr],
+  \qquad
+  E_{\vec P}=(|\vec P|^2+M_B^2)^{1/2}.
+\]
+Indeed \(P^2+M_B^2-\ii0=-((P^0)^2-E_{\vec P}^2+\ii0)\), so the poles in
+the \(P^0\)-plane lie at \(E_{\vec P}-\ii0\) and \(-E_{\vec P}+\ii0\).
+Closing the contour below for \(t>0\) and above for \(t<0\) gives the two
+displayed boundary values.  Fourier transformation of the shell part of
+the time-ordered correlator therefore gives
+\[
+  G^{B}_{AB}(P)
+  =
+  \frac{-\ii\,R_{AB}(P)}
+       {P^2+M_B^2-\ii0}
+\]
+in a neighborhood of the chosen shell, where the numerator is the finite
+sum of matrix elements displayed in
+\eqref{eq:bound-state-spectral-residue}.  If \(R_{AB}\) is extended off the
+mass shell in two different holomorphic ways, their difference vanishes on
+the complex hypersurface \(P^2+M_B^2=0\).  Since the differential of
+\(P\mapsto P^2+M_B^2\) is nonzero on the positive-energy mass shell, this
+function may be used as one local holomorphic coordinate.  The difference
+of the two extensions is therefore \((P^2+M_B^2)\) times a holomorphic
+function, and after division by the Feynman denominator it changes only the
+analytic remainder.  The pole residue is the on-shell class.
+
+It remains to check that the rest of the spectral measure cannot create a
+singularity at the same first-sheet point.  By hypothesis there is a
+neighborhood \(\mathcal U\) of the chosen real mass-shell point such that
+the support of \(E(\dd q)(1-\Pi_B)\) is separated from
+\(\{P\in\mathcal U:P^2=-M_B^2,\ P^0>0\}\) by a positive spectral gap.  For
+complex \(P\) in a smaller first-sheet neighborhood, the denominators
+arising from the contour representation of the time-ordered distribution
+are then bounded away from zero on this remaining support.  Local finiteness
+of \(\dd\mu_{AB}\) permits differentiation under the spectral integral
+against compactly supported test functions, so the continuum contribution
+is holomorphic there.  This holomorphic contribution, together with the
+off-shell-extension ambiguity just described, is \(G_{AB}^{\rm reg}\).
 \end{proof}
 
 \begin{theorem}[LSZ factorization of an isolated bound-state pole]

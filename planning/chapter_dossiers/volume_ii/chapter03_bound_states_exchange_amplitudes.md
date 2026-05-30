@@ -144,6 +144,14 @@
   proposition identifying the spin from the angular residue.  Added
   `calculation-checks/bound_state_pole_checks.py` for finite-rank residue,
   Legendre-projection, scalar-QED \(P_1\), and mostly-plus denominator checks.
+- 2026-05-30 anti-wrapper audit pass: strengthened the proof of the isolated
+  spectral-atom theorem.  The manuscript now writes the translation spectral
+  measure explicitly, separates the finite-dimensional shell from the
+  continuum, derives the mostly-plus scalar Feynman denominator by the
+  \(P^0\)-contour identity, and records that the pole residue is an on-shell
+  finite-rank object whose off-shell representative must be chosen
+  holomorphically; different representatives alter only the analytic
+  remainder.
 
 ## Figure Requirements
 
