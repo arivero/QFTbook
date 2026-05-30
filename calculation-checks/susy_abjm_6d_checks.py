@@ -566,6 +566,44 @@ def check_class_s_hitchin_base_degrees() -> None:
             )
 
 
+def check_class_s_anomaly_pushforward_coefficients() -> None:
+    # In the twist e(N_2)=x+eta t, the terms linear in t are
+    # [I_8(1)]_t = eta x t (x^2 - p + 3u)/48 and
+    # [(d h/24) p_2(N)]_t = eta d h x u t / 12.
+    # Represent a polynomial by coefficients of x^3, x p, x u after removing
+    # the common factor eta t.
+    free_tensor = {
+        "x^3": Fraction(1, 48),
+        "x p": Fraction(-1, 48),
+        "x u": Fraction(3, 48),
+    }
+    assert_equal("free tensor twist x^3 coefficient", free_tensor["x^3"], Fraction(1, 48))
+    assert_equal("free tensor twist xp coefficient", free_tensor["x p"], Fraction(-1, 48))
+    assert_equal("free tensor twist xu coefficient", free_tensor["x u"], Fraction(1, 16))
+
+    # Check a few ADE inputs after multiplying by r_g and adding the
+    # interacting excess.
+    data = [
+        ("A1", 1, 3, 2),
+        ("A2", 2, 8, 3),
+        ("D4", 4, 28, 6),
+        ("E6", 6, 78, 12),
+        ("E7", 7, 133, 18),
+        ("E8", 8, 248, 30),
+    ]
+    for name, rank, dimension, dual_coxeter in data:
+        x3 = Fraction(rank, 48)
+        xp = Fraction(-rank, 48)
+        xu = Fraction(rank, 16) + Fraction(dimension * dual_coxeter, 12)
+        assert_equal(f"{name} class-S x^3 coefficient", x3, Fraction(rank, 48))
+        assert_equal(f"{name} class-S xp coefficient", xp, Fraction(-rank, 48))
+        assert_equal(
+            f"{name} class-S xu coefficient",
+            xu,
+            Fraction(rank, 16) + Fraction(dimension * dual_coxeter, 12),
+        )
+
+
 def main() -> None:
     check_abjm_superpotential_r_charge()
     check_abjm_standard_conformal_locus_dimension()
@@ -589,6 +627,7 @@ def main() -> None:
     check_two_zero_defect_group_orders()
     check_cyclic_finite_flux_polarization()
     check_class_s_hitchin_base_degrees()
+    check_class_s_anomaly_pushforward_coefficients()
     print("All ABJM and six-dimensional SUSY convention checks passed.")
 
 

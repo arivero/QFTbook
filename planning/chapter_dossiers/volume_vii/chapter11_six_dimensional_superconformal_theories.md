@@ -99,6 +99,11 @@ Reviewed source spine:
   normalization `phi_5d = 2 pi R phi_6d`.
 - Records compactification on Riemann surfaces as a test requiring twist,
   defect, anomaly, and descendant data.
+- Defines the smooth unpunctured class-\(S\) twist datum by decomposing
+  \(SO(5)_R\) as \(SO(2)_r\oplus SO(3)_R\), setting
+  \(e(N_2)=x+\eta t\), and pushing forward the six-dimensional anomaly
+  polynomial to the four-dimensional six-form
+  `I_6 = eta chi(C) x [ r_g (x^2-p+3u)/48 + d_g h_g^vee u/12 ]`.
 
 ## Calculation Checks
 
@@ -111,7 +116,8 @@ Reviewed source spine:
   normalization, ADE defect-group orders from Cartan determinants, and the
   cyclic finite-flux polarization model.  It also checks the simply laced
   root-system second-moment identities for the \(A\) and \(D\) series and the
-  ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\).
+  ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\),
+  as well as the class-\(S\) twist anomaly-pushforward coefficients.
 
 ## Proof Obligations And Boundaries
 
@@ -126,8 +132,8 @@ Reviewed source spine:
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.
 - Future passes should add line/surface defect categories, anomaly descent
-  calculations for string worldsheets, global forms/discrete quotients of the
-  `(2,0)` theories, and class-`S` anomaly reductions.
+  calculations for BPS string two-dimensional supports, global forms/discrete
+  quotients of the `(2,0)` theories, and class-`S` anomaly reductions.
 
 ## Development Log
 
@@ -149,6 +155,11 @@ Reviewed source spine:
   anomaly excess, deriving the root-system second-moment and dimension-count
   arithmetic used by tensor-branch Green-Schwarz matching, and extending the
   finite convention checks accordingly.
+- 2026-05-30 class-\(S\) anomaly-pushforward pass: replaced the abstract
+  compactification checklist by an explicit smooth unpunctured twist datum and
+  anomaly-integration calculation, with the twist sign \(\eta\), surface Euler
+  class \(t\), \(SO(2)_r\) Euler class \(x\), \(SO(3)_R\) Pontryagin class
+  \(u\), and exact finite coefficient checks.
 
 ## Figure Ledger
 

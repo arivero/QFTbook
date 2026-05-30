@@ -823,6 +823,102 @@ The compactification is a test with substantial content.  It must specify:
 Supplying only a Seiberg--Witten curve in four dimensions does not by itself
 construct the six-dimensional parent theory.
 
+\paragraph{Twist datum and anomaly pushforward.}
+Here is the local anomaly calculation behind the preceding list in the
+unpunctured case.  Let
+\[
+  M_6=M_4\times C
+\]
+with \(C\) a closed oriented Riemann surface.  Denote by
+\[
+  t=e(TC)\in H^2(C;\mathbb Z),
+  \qquad
+  \int_C t=\chi(C)=2-2g_C,
+\]
+the Euler class of \(C\).  Decompose the rank-five \(SO(5)_R\) background
+bundle as
+\[
+  N_R=N_2\oplus N_3 ,
+\]
+where \(N_2\) is an oriented real rank-two bundle for the \(SO(2)_r\)
+subgroup and \(N_3\) is an oriented real rank-three bundle for the
+four-dimensional \(SO(3)_R\simeq SU(2)_R/\mathbb Z_2\) background.  Write
+\[
+  x=e(N_2|_{M_4}),\qquad u=p_1(N_3|_{M_4}).
+\]
+The twist chooses a sign \(\eta=\pm1\), equivalently one of the two
+conjugate scalar supercharges after the compactification, and sets the
+rank-two Euler class on \(M_4\times C\) to
+\begin{equation}
+  e(N_2)=x+\eta\,t .
+  \label{eq:six-d-class-s-twist-euler-class}
+\end{equation}
+The sign is a convention tied to the orientation of \(C\) and to the choice
+of \(SO(2)_r\) weight.  The formula below keeps \(\eta\) visible so that no
+physical conclusion is hidden in an unstated sign convention.
+
+The characteristic classes entering
+\eqref{eq:six-d-two-zero-anomaly} are then, modulo terms of degree too high
+on \(C\),
+\begin{align}
+  p_1(N_R)
+  &=
+  (x+\eta t)^2+u
+   =
+  x^2+u+2\eta x\,t, \label{eq:six-d-twisted-p1-nr}\\
+  p_2(N_R)
+  &=
+  (x+\eta t)^2u
+   =
+  x^2u+2\eta x\,u\,t . \label{eq:six-d-twisted-p2-nr}
+\end{align}
+For the tangent bundle,
+\[
+  p_1(T(M_4\times C))=p_1(TM_4),
+  \qquad
+  p_2(T(M_4\times C))=p_2(TM_4),
+\]
+after integration over \(C\), because \(t^2\) has no component on the
+two-dimensional surface.  Let \(p=p_1(TM_4)\).  The coefficient of \(t\) in
+the free tensor polynomial \eqref{eq:six-d-free-tensor-anomaly} is
+\begin{equation}
+  \bigl[I_8(1)\bigr]_{t}
+  =
+  \frac{\eta x\,t}{48}\,
+  \bigl(x^2-p+3u\bigr),
+  \label{eq:six-d-free-tensor-twist-linear-term}
+\end{equation}
+and the coefficient of \(t\) in the interacting excess is
+\begin{equation}
+  \left[
+    \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{24}p_2(N_R)
+  \right]_{t}
+  =
+  \frac{\eta d_{\mathfrak g}h^\vee_{\mathfrak g}}{12}\,
+  x\,u\,t .
+  \label{eq:six-d-excess-twist-linear-term}
+\end{equation}
+Therefore the six-form anomaly polynomial of the smooth unpunctured
+four-dimensional compactification, in this normalization of \(x\) and \(u\),
+is
+\begin{equation}
+  I_6^{\rm class\,S}(\mathfrak g,C;\eta)
+  =
+  \eta\,\chi(C)\,x
+  \left[
+    \frac{r_{\mathfrak g}}{48}(x^2-p+3u)
+    +
+    \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{12}u
+  \right].
+  \label{eq:six-d-class-s-anomaly-pushforward}
+\end{equation}
+If one rewrites the \(SO(3)_R\) class as
+\(u=-4c_2(SU(2)_R)\), this becomes the conventional
+four-dimensional \(\mathcal N=2\) anomaly-polynomial coordinate system, up to
+the same \(\eta\) and orientation convention.  Punctures, codimension-two
+defects, and irregular singularities add localized contributions; they are
+not contained in the smooth pushforward \eqref{eq:six-d-class-s-anomaly-pushforward}.
+
 \section{Hitchin-Base Coulomb Operators In Class-\texorpdfstring{\(S\)}{S} Compactification}
 \label{sec:six-d-class-s-hitchin-base}
 
