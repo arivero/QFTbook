@@ -1099,15 +1099,41 @@ multiplication representation
   \qquad
   m(A\otimes B')=AB' .
 \]
-The inclusion \(\mathcal M_1\subset\mathcal M_2\) is split precisely when this
-representation extends normally to the von Neumann tensor product
+If the inclusion is split, the normal tensor-product representation can be
+seen directly.  A type-I factor
+\(\mathcal N\) with
+\(\mathcal M_1\subset\mathcal N\subset\mathcal M_2\) is spatial: there are
+Hilbert spaces \(\mathcal K,\mathcal L\) and a unitary
+\(U:\Hilb\to\mathcal K\otimes\mathcal L\) such that
+\[
+  U\mathcal N U^*=\mathcal B(\mathcal K)\otimes\mathbf 1 .
+\]
+Then
+\[
+  U\mathcal M_1U^*\subset\mathcal B(\mathcal K)\otimes\mathbf 1,
+  \qquad
+  U\mathcal M_2'U^*\subset U\mathcal N'U^*
+  =
+  \mathbf 1\otimes\mathcal B(\mathcal L).
+\]
+Therefore the product map is the restriction of the spatial normal
+representation
 \begin{equation}
-  \mathcal M_1\bar\otimes\mathcal M_2' .
+  \mathcal M_1\bar\otimes\mathcal M_2'
+  \longrightarrow
+  \mathcal B(\mathcal K\otimes\mathcal L),
+  \qquad
+  A\otimes B'\longmapsto
+  UAU^*\,UB'U^* .
   \label{eq:split-tensor-product-criterion}
 \end{equation}
-Equivalently, after a unitary identification of the Hilbert space with a
-tensor product \(\mathcal K\otimes\mathcal L\), the two commuting algebras act
-as
+The converse implication, from normal extendability of the multiplication
+representation to the existence of an interpolating type-I factor, is the
+Doplicher--Longo split criterion.  It is part of the operator-algebraic input
+in Quoted
+Theorem~\ref{thm:nuclearity-split-type-iii-consequences}, not a consequence
+of algebraic commutativity alone.  When the criterion applies, the unitary
+identification can be chosen so that the two commuting algebras act as
 \[
   \mathcal M_1\subset\mathcal B(\mathcal K)\otimes\mathbf 1,
   \qquad

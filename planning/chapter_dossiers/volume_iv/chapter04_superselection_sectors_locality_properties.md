@@ -84,6 +84,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   analytic imaginary-time translation, the distinction between one-scale
   nuclearity and uniform small-\(\beta\) phase-space bounds, and the separate
   hypotheses behind type-\(\mathrm{III}_1\) sharp local algebras.
+- 2026-05-30 split-criterion boundary tightening: separated the elementary
+  direction from a type-I interpolant to a normal tensor-product
+  representation from the deep Doplicher--Longo converse used by the
+  nuclearity-to-split theorem.
 - 2026-05-30 Borchers--Wiesbrock proof-mechanism pass: clarified
   standardness for half-sided modular inclusions, introduced the associated
   standard real subspaces, explained how half-sidedness becomes an invariant
