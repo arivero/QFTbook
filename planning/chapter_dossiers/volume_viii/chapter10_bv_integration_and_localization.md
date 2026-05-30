@@ -133,3 +133,9 @@ flow diagrams.
   \(\mathcal B_{S_\alpha}(\rho)\), added the asymptotic exponent criterion for
   vanishing, finite residue, and divergence, and extended the calculation check
   accordingly.
+- 2026-05-30 anti-wrapper follow-up: demoted the singular-stratum obstruction
+  from proposition/proof form to a named obstruction-formula paragraph.  The
+  mathematical content is the collar-truncated BV Stokes identity
+  \(\Delta_{\rm res}\pi_*\rho=-\sum_\alpha\mathcal B_{S_\alpha}(\rho)\);
+  it is a direct consequence of the preceding boundary-pushforward formula,
+  not an independent theorem.
