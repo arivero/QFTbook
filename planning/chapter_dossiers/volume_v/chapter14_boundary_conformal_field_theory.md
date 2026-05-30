@@ -60,9 +60,11 @@
 - Adds Liouville as the nonrational boundary-state test case: continuous
   direct-integral closed spectrum, FZZT wavefunctions, ZZ finite differences,
   and the hyperbolic kernels replacing finite modular `S`-matrix entries.
-- States Cardy-Lewellen sewing status as a `quotedtheorem`, records the
-  boundary `g`-theorem as a quoted monotonicity theorem, and adds an
-  `openproblem` for nonrational/continuous-spectrum BCFT sewing.
+- States Cardy-Lewellen sewing status as a `quotedtheorem`, replaces the vague
+  boundary `g`-theorem statement by the boundary entropy gradient formula with
+  explicit trace, entropy, metric, and positivity hypotheses, derives
+  \(g_{\rm UV}\ge g_{\rm IR}\) from it, and adds an `openproblem` for
+  nonrational/continuous-spectrum BCFT sewing.
 - Expands the algebraic core of the rational boundary construction:
   symmetric special Frobenius algebra object \(A\) in the chiral tensor
   category, left \(A\)-module boundary conditions, open multiplicities
@@ -107,8 +109,9 @@
    continuous spectrum; their finite-difference and degenerate-annulus
    simplifications are hyperbolic algebra, not a substitute for an analytic
    sewing theorem.
-14. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
-   rederived in full here.
+14. Cardy-Lewellen sewing and the boundary entropy gradient formula are theorem
+   inputs; monotonicity of \(g\) is derived from the positive gradient formula,
+   not quoted as an independent endpoint-classification statement.
 15. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
    boundary sewing into module associativity and chiral associator pentagon
    identities; analytic all-surface sewing remains the external theorem
@@ -170,3 +173,8 @@
   theorem boundary by deriving the open-sector and boundary-OPE algebraic
   mechanism from symmetric special Frobenius algebra objects and their
   modules, with an exact Ising \(A=1\) module-multiplicity check.
+- 2026-05-30 boundary entropy pass: replaced the vague boundary \(g\)-theorem
+  block by the precise boundary entropy gradient formula.  The chapter now
+  defines the boundary trace equation, the finite-temperature entropy
+  \(s=(1-L\partial_L)\log z\), the positive susceptibility metric \(G_{ab}\),
+  and derives \(d s/d\log L=-B^aG_{ab}B^b\le0\).
