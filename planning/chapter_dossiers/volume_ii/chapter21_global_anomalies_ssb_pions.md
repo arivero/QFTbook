@@ -301,6 +301,8 @@
   global-structure volume.
 - The complete gauged WZW functional is not expanded term by term here; only
   the defining variation and the neutral-pion two-photon coefficient are used.
+  The WZW level matching itself is now derived in the manuscript as coefficient
+  matching in the fixed flavor-trace convention, not left as a quoted theorem.
 - A rigorous theorem proving the QCD chiral condensate pattern is not supplied;
   the pattern is an explicit dynamical input for the effective theory.
 - The manuscript uses the self-consistent convention \(U\mapsto LUR^{-1}\) in
@@ -345,6 +347,11 @@
   trivial symmetric gapped candidate absent an additional anomaly-carrying
   sector, vector-subgroup anomaly cancellation, and
   `calculation-checks/anomaly_matching_wzw_checks.py`.
+- 2026-05-30 issue #696 pass: removed the WZW-level matching quoted theorem.
+  The chapter now states the flavor trace convention and derives \(n=N_c\) by
+  comparing the \(SU(N_f)_L\) descent coefficient of one color copy with the
+  unit-level gauged WZW variation; Wess--Zumino consistency is identified as
+  the reason the higher-background terms are fixed in the same cocycle class.
 - 2026-05-25 issue #472 pass: added a named chiral perturbation theory section
   with Weinberg power counting, the full three-flavor Gasser--Leutwyler
   \(L_1,\ldots,L_{10}\) even-parity \(O(p^4)\) basis plus \(H_1,H_2\), the

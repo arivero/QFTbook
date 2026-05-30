@@ -2350,20 +2350,20 @@ is independent of the extension precisely when \(n\in\mathbb Z\).  This
 integer is the Wess--Zumino level.
 \end{definition}
 
-\begin{quotedtheorem}[WZW level fixed by the quark flavor anomaly]
-\label{qthm:wzw-anomaly-matching}
-For massless QCD with \(N_c\) colors and \(N_f\ge3\) light flavors, matching
-the infinitesimal \(SU(N_f)_L\) background anomaly forces the Goldstone
-Wess--Zumino--Witten level to be
-\[
-  n=N_c .
-\]
-\end{quotedtheorem}
-
-It is enough to gauge a left flavor background \(A=A_\mu\dd x^\mu\), set the
-right background to zero, and retain the part quadratic in \(A\).  Matrix
-multiplication and wedge product are implicit in the following formulas.  A
-single left-handed quark multiplet gives the consistent variation
+\paragraph{WZW level matching from the flavor descent coefficient.}
+\label{par:wzw-anomaly-matching}
+The equality between the QCD Wess--Zumino--Witten level and the number of
+colors is not an additional imported theorem.  It is the coefficient matching
+of two representatives of the same infinitesimal background-anomaly class,
+after the flavor trace convention
+\(\operatorname{Tr}(T^aT^b)=\frac12\delta^{ab}\) and the unit-level
+normalization of \(\Gamma_{\mathrm{WZ}}\) in
+\eqref{eq:wess-zumino-functional} have been fixed.  For massless QCD with
+\(N_c\) colors and \(N_f\ge3\) light flavors, gauge a left flavor background
+\(A=A_\mu\dd x^\mu\), set the right background to zero, and first retain the
+part quadratic in \(A\).  Matrix multiplication and wedge product are
+implicit in the following formulas.  A single left-handed quark multiplet
+gives the consistent variation
 \[
   \delta_\alpha\Gamma_{\mathrm{1\,color}}[A]
   =
@@ -2392,16 +2392,18 @@ Goldstone variation
   \bigl(\alpha\,\dd A\,\dd A\bigr)
   +O(A^3).
 \]
-Equality of the anomaly phases for arbitrary infinitesimal
-\(\alpha\) and background \(A\) gives
+Equality of the anomaly phases for arbitrary infinitesimal \(\alpha\) and
+background \(A\) gives
 \[
   n=N_c .
 \]
-
-When the flavor symmetry is coupled to background gauge fields, the
-Wess--Zumino functional is completed by local four-dimensional terms involving
-\(U,\ell_\mu,r_\mu\).  The completed Wess--Zumino--Witten functional
-\(\Gamma_{\mathrm{WZW}}[U;\ell,r]\) satisfies
+The comparison of the displayed quadratic term fixes the integer coefficient
+of the generator of the descent class.  The higher powers of \(A\) are then
+not independent choices: Wess--Zumino consistency fixes them inside the same
+local cocycle class, up to local counterterms.  When the flavor symmetry is
+coupled to background gauge fields, the Wess--Zumino functional is completed
+by local four-dimensional terms involving \(U,\ell_\mu,r_\mu\).  The completed
+Wess--Zumino--Witten functional \(\Gamma_{\mathrm{WZW}}[U;\ell,r]\) satisfies
 \[
   \delta_{\alpha_L,\alpha_R}
   \Gamma_{\mathrm{WZW}}[U;\ell,r]
