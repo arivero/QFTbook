@@ -22,6 +22,13 @@ theories before kinetic theory and anomalous transport.
 ## Claim Ledger
 
 - Defines static screening masses through gauge-invariant static correlators.
+- Corrects and derives the unprojected static Yukawa asymptotic:
+  an isolated scalar pole in \(d\) spatial dimensions contributes
+  \(e^{-Mr}/r^{(d-1)/2}\), while transverse projection gives the pure
+  transfer-matrix exponential \(Ze^{-M|z|}/(2M)\).
+- Separates physical screening masses, defined by gauge-invariant static
+  transfer-matrix channels, from the perturbative Debye pole/matching
+  coefficient of a gauge-fixed static effective theory.
 - Derives the one-loop Debye mass in the monograph trace and coupling
   convention, including gauge, Dirac, complex-scalar, and real-scalar
   coefficients and the `SU(N)` fundamental-trace conversion.
@@ -40,3 +47,17 @@ theories before kinetic theory and anomalous transport.
 No figure is included in this pass.  Future figures should show the thermal
 circle, a Polyakov loop pair, and the hierarchy of static scales
 `T`, `gT`, and `g^2 T`.
+
+## Calculation Checks
+
+- `calculation-checks/thermal_screening_checks.py` verifies the static
+  Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
+  the trace-convention conversion of the Debye coefficient.
+
+## Audit Notes
+
+- 2026-05-30 full-development pass: corrected the static correlator power
+  from \(r^{-(d-2)/2}\) to \(r^{-(d-1)/2}\), added the Bessel-function
+  derivation and spatial-transfer-matrix interpretation, and made explicit
+  that gauge-invariant screening masses are not the same object as the
+  gauge-fixed perturbative Debye pole.

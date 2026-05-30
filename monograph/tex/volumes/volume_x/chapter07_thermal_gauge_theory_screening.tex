@@ -4,9 +4,11 @@
 \ConventionsMixed
 
 This chapter studies gauge theories at nonzero temperature through static
-correlators and their long-distance screening behavior.  The coupling and
-trace conventions are those of the gauge chapters: the Yang--Mills action is
-written with
+correlators and their long-distance screening behavior.  Let \(d\) denote
+the number of spatial dimensions, so the thermal Euclidean spacetime is
+\(S^1_\beta\times\mathbb R^d\) before spatial infrared regularization.  The
+coupling and trace conventions are those of the gauge chapters: the
+Yang--Mills action is written with
 \[
   \frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu}),
 \]
@@ -26,10 +28,64 @@ The screening masses are inverse correlation lengths extracted from
   \left\langle \mathcal O_0(\mathbf x)\mathcal O_0(0)\right\rangle_c
   \sim
   \sum_\alpha C_\alpha
-  \frac{e^{-M_\alpha |\mathbf x|}}{|\mathbf x|^{(d-2)/2}}
+  \frac{e^{-M_\alpha |\mathbf x|}}{|\mathbf x|^{(d-1)/2}}
 \]
 when the static transfer matrix has isolated lowest eigenvalues in the chosen
 channel.
+
+The power of \(|\mathbf x|\) in this formula is fixed by the continuum
+spatial Fourier transform, not by a convention for the operator.  If the
+static momentum-space correlator has an isolated scalar pole
+\[
+  \widetilde C(\mathbf k)
+  =
+  \frac{Z}{\mathbf k^2+M^2}
+  +\text{terms less singular at }\mathbf k^2=-M^2 ,
+\]
+then
+\begin{equation}
+  C(\mathbf x)
+  =
+  Z\,\frac{M^{d/2-1}}{(2\pi)^{d/2}|\mathbf x|^{d/2-1}}\,
+  K_{d/2-1}(M|\mathbf x|)
+  +\cdots ,
+  \label{eq:thermal-screening-yukawa-bessel}
+\end{equation}
+and the large-distance asymptotic of the modified Bessel function gives
+\[
+  C(\mathbf x)
+  \sim
+  Z\,\frac{M^{(d-3)/2}}{2(2\pi)^{(d-1)/2}}\,
+  \frac{e^{-M|\mathbf x|}}{|\mathbf x|^{(d-1)/2}} .
+\]
+If instead one projects to zero momentum in the transverse directions and
+keeps a single separation coordinate \(z\), the same pole gives
+\[
+  C_{\rm proj}(z)
+  =
+  \int d^{d-1}x_\perp\,C(z,\mathbf x_\perp)
+  =
+  \frac{Z}{2M}e^{-M|z|}
+  +\cdots .
+\]
+This projected form is the one most directly read from a spatial transfer
+matrix.  With spatial volume first regulated in a box transverse to the
+\(z\)-direction, reflection positivity in \(z\) gives a Hilbert space on the
+slice \(S^1_\beta\times\mathbb T^{d-1}\), a positive transfer Hamiltonian
+\(H_z\), and
+\[
+  C_{\rm proj}(z)
+  =
+  \sum_{\alpha\ne0}
+  |\langle\Omega_z,\widehat{\mathcal O}_0\alpha\rangle|^2
+  e^{-M_\alpha |z|},
+  \qquad
+  M_\alpha=E_\alpha^{(z)}-E_0^{(z)} .
+\]
+The sum is over states in the static, gauge-invariant channel created by
+\(\mathcal O_0\).  In infinite transverse volume the isolated eigenvalues may
+become thresholds, but the leading exponential rate is still a property of
+gauge-invariant static correlators, not of gauge-fixed propagator poles.
 
 \section{Electric Screening}
 
@@ -38,6 +94,16 @@ behaves in the static sector as an adjoint scalar.  The electric screening
 mass is defined perturbatively by the pole of the static longitudinal
 propagator, or nonperturbatively by the lowest gauge-invariant state in the
 electric channel after the relevant operator has been specified.
+
+These two definitions should not be conflated.  The perturbative Debye mass
+is a matching coefficient of the static effective theory in a specified
+gauge, regulator, and operator convention.  A physical screening mass is
+extracted from a gauge-invariant static correlator, for example from
+operators built from \(A_0\) inside the dimensionally reduced theory or from
+renormalized Polyakov loops in the original thermal theory.  At weak coupling
+the Debye coefficient controls the electric scale \(gT\) and organizes the
+gauge-invariant spectrum, but the spectrum itself is defined by the transfer
+matrix construction above.
 
 Choose a basis \(T^a_R\) for each representation \(R\) such that
 \[
