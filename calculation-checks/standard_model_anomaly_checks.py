@@ -292,6 +292,37 @@ def check_top_higgs_subsystem_coefficients() -> None:
     expanded = Fraction(9, 8) * g2**4 + Fraction(3, 4) * g1**2 * g2**2 + Fraction(3, 8) * g1**4
     assert_equal("lambda gauge-quartic compact/expanded form", compact, expanded)
 
+    yt = Fraction(11, 13)
+    lam = Fraction(5, 7)
+    g3 = Fraction(3, 5)
+    ty = 3 * yt**2
+    qy = 3 * yt**4
+    gu = 8 * g3**2 + Fraction(9, 4) * g2**2 + Fraction(17, 12) * g1**2
+    top_from_matrix = yt * (Fraction(3, 2) * yt**2 + ty - gu)
+    top_specialized = yt * (
+        Fraction(9, 2) * yt**2
+        - 8 * g3**2
+        - Fraction(9, 4) * g2**2
+        - Fraction(17, 12) * g1**2
+    )
+    assert_equal("top Yukawa rank-one matrix specialization", top_from_matrix, top_specialized)
+
+    lambda_from_matrix = (
+        24 * lam**2
+        - 3 * lam * (3 * g2**2 + g1**2)
+        + compact
+        + 4 * lam * ty
+        - 2 * qy
+    )
+    lambda_specialized = (
+        24 * lam**2
+        + 12 * lam * yt**2
+        - 6 * yt**4
+        - 3 * lam * (3 * g2**2 + g1**2)
+        + compact
+    )
+    assert_equal("lambda beta rank-one matrix specialization", lambda_from_matrix, lambda_specialized)
+
 
 def check_higgs_large_field_coupling_chart_identities() -> None:
     lam = Fraction(5, 7)

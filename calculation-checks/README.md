@@ -46,7 +46,8 @@ Current checks:
   finite obstruction checks used in the chiral-lattice regulator discussion,
   strong-CP phase invariance, one-loop gauge beta-function coefficients, GUT
   hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
-  coefficients, the Higgs large-field coupling-chart radial-potential,
+  coefficients and rank-one matrix-beta specialization, the Higgs
+  large-field coupling-chart radial-potential,
   higher-operator ratio, and \(\beta_\lambda|_{\lambda=0}\) identities, and
   basic oblique-parameter identities for the \(S,T,U\) two-point
   coordinates.  It also checks the

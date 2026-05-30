@@ -1414,8 +1414,8 @@ This is only a coordinate change.  The electroweak mass formulae in this
 chapter use the unrescaled \(g_1\).
 \end{remark}
 
-\begin{quotedtheorem}[One-loop top-Higgs subsystem]
-\label{qthm:sm-one-loop-top-higgs-subsystem}
+\begin{controlledapproximation}[One-loop top-Higgs subsystem]
+\label{cap:sm-one-loop-top-higgs-subsystem}
 Restrict the minimal Standard Model coupling chart to the invariant subspace in
 which the only nonzero Yukawa singular value is the top coordinate \(y_t\).
 In the same minimal-subtraction convention,
@@ -1446,43 +1446,97 @@ and
 \end{aligned}
   \label{eq:sm-one-loop-lambda-beta}
 \end{equation}
-\end{quotedtheorem}
+\end{controlledapproximation}
 
 \noindent
 The restriction to one Yukawa singular value is a coordinate restriction, not
-an estimate: the one-loop matrix beta functions are polynomial in the Yukawa
-matrices and preserve the subspace where \(Y_d=Y_e=0\) and \(Y_u\) has only
-one nonzero singular value.  The displayed equations are the corresponding
-one-loop minimal-subtraction pole coefficients for the \(Q_3Hu^c_3\) Yukawa
-vertex and the four-Higgs 1PI vertex.  Their group factors are fixed as
-follows.
+an estimate.  In the left-handed matrix coordinates \(Y_u,Y_d,Y_e\), the
+one-loop pole coefficients needed here are
+\begin{align}
+  (4\pi)^2\beta_{Y_u}
+  &=
+  Y_u\left[
+    \frac32\left(Y_u^\dagger Y_u-Y_d^\dagger Y_d\right)
+    +T_Y
+    -G_u
+  \right],
+  \label{eq:sm-one-loop-yukawa-matrix-beta}\\
+  T_Y
+  &:=
+  \operatorname{tr}\!\left(
+    3Y_u^\dagger Y_u+3Y_d^\dagger Y_d+Y_e^\dagger Y_e
+  \right),
+  \qquad
+  G_u:=8g_3^2+\frac94g_2^2+\frac{17}{12}g_1^2 ,
+  \notag
+\end{align}
+and
+\begin{align}
+  (4\pi)^2\beta_\lambda
+  &=
+  24\lambda^2
+  -3\lambda(3g_2^2+g_1^2)
+  +\frac38\!\left[2g_2^4+(g_2^2+g_1^2)^2\right]
+  +4\lambda T_Y-2Q_Y,
+  \label{eq:sm-one-loop-lambda-matrix-beta}\\
+  Q_Y
+  &:=
+  \operatorname{tr}\!\left(
+    3(Y_u^\dagger Y_u)^2
+    +3(Y_d^\dagger Y_d)^2
+    +(Y_e^\dagger Y_e)^2
+  \right).
+  \notag
+\end{align}
+Their scope is the one-loop minimal-subtraction pole calculation for the
+renormalizable electroweak coordinate chart with the active fields stated
+above.  The primitive pole integrals are the logarithmic one-loop two-,
+three-, and four-point integrals already used in the renormalization
+chapters; the present chapter needs the group and multiplicity ledger in this
+particular chart.
 
-For the top Yukawa term, the \(SU(3)\) gauge correction sees the fundamental
-quadratic Casimir \(C_F=4/3\) on each of the two colored fermion legs and
-gives \(-6C_Fg_3^2=-8g_3^2\).  The \(SU(2)\) correction sees the doublet
-Casimir \(3/4\) on the \(Q_3\) and \(H\) legs in the Yukawa vertex and gives
-the coefficient \(-9g_2^2/4\).  The hypercharge coefficient is the sum of the
-corresponding vertex and wave-function pole factors in the convention
-\(Q=T^3+Y\), giving
+The coefficient ledger is as follows.  The self-Yukawa part of
+\eqref{eq:sm-one-loop-yukawa-matrix-beta} is the sum of the Yukawa vertex
+pole and the external-field pole terms.  Gauge exchange and gauge
+wave-function pole terms give \(G_u\).  In the unrescaled
+\(Q=T^3+Y\) convention, those pole factors assemble to
 \[
-  -\frac{17}{12}g_1^2 .
+  G_u=8g_3^2+\frac94g_2^2+\frac{17}{12}g_1^2 .
 \]
-The positive self-Yukawa coefficient \(9y_t^2/2\) is the sum of the
-color-multiplicity vertex pole and the three external-field pole
-renormalizations on this one-singular-value subspace.
+For \(\beta_\lambda\), the scalar fish graphs give \(24\lambda^2\); the
+gauge corrections linear in \(\lambda\) give
+\(-3\lambda(3g_2^2+g_1^2)\); the pure gauge four-Higgs pole gives the
+positive polynomial
+\[
+  \frac38\left[2g_2^4+(g_2^2+g_1^2)^2\right];
+\]
+the Yukawa wave-function and vertex poles give \(4\lambda T_Y\); and the
+closed-fermion box gives \(-2Q_Y\), with the minus sign from the fermion
+loop.
 
-For the scalar quartic, the \(24\lambda^2\) term is the one-loop four-Higgs
-fish contribution in the normalization
-\(V=\lambda(H^\dagger H-v^2/2)^2\).  The top loop gives \(-6y_t^4\), with
-the minus sign from the closed fermion loop and the factor \(3\) from color;
-the mixed scalar-Yukawa wave-function and vertex terms give
-\(12\lambda y_t^2\).  Gauge corrections linear in \(\lambda\) multiply the
-Higgs doublet quadratic Casimirs and hypercharge to give
-\(-3\lambda(3g_2^2+g_1^2)\).  The pure gauge box and exchange diagrams give
-the positive quartic polynomial
+Equations \eqref{eq:sm-one-loop-yukawa-matrix-beta}--%
+\eqref{eq:sm-one-loop-lambda-matrix-beta} immediately show preservation of
+the one-singular-value subspace.  If \(Y_d=Y_e=0\), their beta functions are
+proportional to \(Y_d\) and \(Y_e\) in the full matrix equations, so they
+remain zero.  If \(Y_u\) has only one nonzero singular value, unitary flavor
+coordinates put it in the form
 \[
-  \frac{3}{8}\left[2g_2^4+(g_2^2+g_1^2)^2\right].
+  Y_u=\operatorname{diag}(0,0,y_t).
 \]
+Then \(T_Y=3y_t^2\), \(Q_Y=3y_t^4\), and
+\eqref{eq:sm-one-loop-yukawa-matrix-beta} gives
+\[
+  (4\pi)^2\beta_{y_t}
+  =
+  y_t\left[
+    \frac32y_t^2+3y_t^2
+    -8g_3^2-\frac94g_2^2-\frac{17}{12}g_1^2
+  \right],
+\]
+which is \eqref{eq:sm-one-loop-top-yukawa-beta}.  Substituting the same
+\(T_Y\) and \(Q_Y\) in \eqref{eq:sm-one-loop-lambda-matrix-beta} gives
+\eqref{eq:sm-one-loop-lambda-beta}.
+
 The statement is an equation for renormalized perturbative coordinates.  It
 does not assert a nonperturbative electroweak continuum limit, and it does
 not turn the running of \(\lambda\) into a principle for choosing ultraviolet
@@ -1702,8 +1756,8 @@ metastability is a separate construction problem.
 \begin{remark}[One-loop source of downward quartic running]
 \label{rem:sm-top-source-downward-quartic}
 In the one-loop top-Higgs subsystem of
-Quoted Theorem~\ref{qthm:sm-one-loop-top-higgs-subsystem}, the beta function at
-\(\lambda=0\) is
+Controlled Approximation~\ref{cap:sm-one-loop-top-higgs-subsystem}, the beta
+function at \(\lambda=0\) is
 \begin{equation}
   (4\pi)^2\beta_\lambda\big|_{\lambda=0}
   =
@@ -1723,8 +1777,8 @@ Set \(\lambda=0\) in \eqref{eq:sm-one-loop-lambda-beta}.  The terms
 \(24\lambda^2\), \(12\lambda y_t^2\), and
 \(-3\lambda(3g_2^2+g_1^2)\) vanish, leaving exactly
 \eqref{eq:sm-lambda-beta-at-zero}.  The negative sign of the top term is the
-closed-fermion-loop sign already identified in the proof of
-Quoted Theorem~\ref{qthm:sm-one-loop-top-higgs-subsystem}.  No
+closed-fermion-loop sign recorded in the coefficient ledger of
+Controlled Approximation~\ref{cap:sm-one-loop-top-higgs-subsystem}.  No
 scheme-independent observable is obtained until the matching inputs and the
 observable or decay functional have been specified.
 \end{remark}

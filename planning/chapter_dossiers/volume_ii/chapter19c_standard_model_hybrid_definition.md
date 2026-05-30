@@ -85,8 +85,9 @@
 - Derives the one-loop gauge beta coefficients
   \(b_1=41/6\), \(b_2=-19/6\), \(b_3=-7\) in the unrescaled
   \(Q=T^3+Y\) hypercharge convention, records the GUT-rescaled conversion,
-  and states the invariant one-loop top-Higgs subsystem for
-  \((y_t,\lambda)\).
+  and gives the one-loop top-Higgs subsystem as a controlled perturbative
+  calculation with the matrix Yukawa/quartic pole equations and their
+  rank-one specialization to \((y_t,\lambda)\).
 - States that the displayed beta functions are mass-independent
   minimal-subtraction equations in an unbroken-representation chart with
   specified active field content; threshold matching and higher-dimensional
@@ -149,7 +150,8 @@
   one-generation basis counts and field-content dimensions, strong-CP phase
   invariance, local and finite chiral-lattice obstruction cancellations,
   one-loop gauge beta coefficients, GUT hypercharge conversion,
-  top-Higgs subsystem coefficient algebra, Higgs large-field coupling-chart
+  top-Higgs subsystem coefficient algebra and rank-one matrix-beta
+  specialization, Higgs large-field coupling-chart
   and higher-operator identities, and elementary \(S,T,U\)
   two-point-coordinate identities, plus the muon \(g-2\) Schwinger coefficient,
   leading electroweak coefficient normalization, and HVP kernel algebra.
@@ -269,3 +271,11 @@
   but the text now identifies the result as the Pauli-kernel insertion plus the
   once-subtracted current spectral representation, with all nonperturbative
   QCD dynamics contained in the gauge-invariant current-current data.
+- 2026-05-30 quoted-theorem pass: demoted the one-loop top-Higgs subsystem
+  from `quotedtheorem` to `controlledapproximation`, because the object is a
+  one-loop minimal-subtraction calculation in a fixed perturbative coupling
+  chart rather than a theorem imported from the literature.  The manuscript
+  now displays the matrix one-loop pole equations for \(Y_u\) and \(\lambda\),
+  defines \(T_Y,Q_Y,G_u\), explains the diagram-class coefficient ledger, and
+  specializes the matrix equations to the rank-one top subspace.  The
+  Standard Model calculation check now verifies this rank-one specialization.
