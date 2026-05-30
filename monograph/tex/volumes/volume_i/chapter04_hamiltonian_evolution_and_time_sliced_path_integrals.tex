@@ -291,17 +291,19 @@ object.
 
 \section{Trotter Limits, Wiener Measure, and Kernel Convergence}
 
-\begin{quotedtheorem}[Trotter product formula in the form used here]
+\begin{theorem}[Trotter product formula in the form used here]
 \label{qthm:trotter-product-formula-qm}
 The passage from the finite product to a continuum path integral is a
 convergence statement about operators before it is a statement about kernels.
-Let
+Let \(\widehat A\) and \(\widehat B\) be self-adjoint operators on
+\(\Hilb_{\mathcal Q}\).  For the real-time statement, assume that
+\(\operatorname{Dom}\widehat A\cap\operatorname{Dom}\widehat B\) is dense and
+that the algebraic sum
 \[
-  \widehat H=\widehat A+\widehat B
+  \widehat A+\widehat B
 \]
-be a self-adjoint Hamiltonian obtained from two self-adjoint pieces on a
-specified common form domain.  Suppose the hypotheses of the Trotter product
-formula hold for this sum.  Then, for real time,
+on this domain is essentially self-adjoint, with self-adjoint closure
+\(\widehat H\).  Then
 \[
   \exp\left(-\frac{\ii T}{\hbar}\widehat H\right)
   =
@@ -314,7 +316,17 @@ formula hold for this sum.  Then, for real time,
   \epsilon=\frac{T}{N},
 \]
 where the limit is in the strong operator topology on \(\Hilb_{\mathcal Q}\).
-The Euclidean version is the semigroup limit
+For the Euclidean statement, assume instead that \(\widehat A\) and
+\(\widehat B\) are lower-semibounded and that their closed quadratic forms
+\(\mathfrak a\) and \(\mathfrak b\) have dense common form domain
+\[
+  \mathcal Q_{\mathfrak h}
+  =
+  \operatorname{Dom}\mathfrak a\cap\operatorname{Dom}\mathfrak b ,
+\]
+with \(\mathfrak h=\mathfrak a+\mathfrak b\) closed and lower-semibounded on
+\(\mathcal Q_{\mathfrak h}\).  If \(\widehat H=\widehat A\dotplus\widehat B\)
+is the self-adjoint form sum associated to \(\mathfrak h\), then
 \[
   \exp\left(-\frac{\tau}{\hbar}\widehat H\right)
   =
@@ -326,11 +338,11 @@ The Euclidean version is the semigroup limit
   \qquad
   \delta=\frac{\tau}{N},
 \]
-when the corresponding semibounded form construction applies.
-\end{quotedtheorem}
+again in the strong operator topology.
+\end{theorem}
 
-\paragraph{Mechanism of the product limit.}
-The theorem is a statement in \(\Hilb_{\mathcal Q}\), not a pointwise
+\begin{proof}
+The product formula is a statement in \(\Hilb_{\mathcal Q}\), not a pointwise
 identity between formal path-integral densities.  In the bounded case the
 mechanism can be seen without domain issues.  If \(A\) and \(B\) are bounded
 self-adjoint operators and \(t\) is fixed, Taylor expansion in operator norm
@@ -406,11 +418,27 @@ characterized by the variational equation
 \]
 and the product approximants have resolvents whose variational problems
 converge to this one on the common form domain.  Strong resolvent convergence
-then gives strong semigroup convergence by the spectral theorem.  The
-real-time unitary product formula is a separate Stone--Chernoff statement:
-one verifies the infinitesimal generator on a core or invokes the corresponding
-self-adjoint-sum theorem.  It should not be inferred by simply substituting
-\(t\mapsto\ii t\) into an uncontrolled kernel expression.
+then gives strong semigroup convergence by the spectral theorem.
+
+For the real-time statement, define
+\[
+  F(s)=\exp\left(-\frac{\ii s}{\hbar}A\right)
+       \exp\left(-\frac{\ii s}{\hbar}B\right).
+\]
+On the dense algebraic core
+\(\operatorname{Dom}A\cap\operatorname{Dom}B\),
+\[
+  \lim_{s\to0}\frac{F(s)\psi-\psi}{s}
+  =
+  -\frac{\ii}{\hbar}(A+B)\psi .
+\]
+The factors are unitary, hence \(\|F(s)\|\le1\).  Chernoff's product theorem
+then identifies the strong limit of \(F(T/N)^N\) with the unitary group whose
+generator is the closure of \(-\ii(A+B)/\hbar\), namely
+\(\exp(-\ii T H/\hbar)\).  This real-time conclusion is therefore a theorem
+about self-adjoint generators; it should not be inferred by simply
+substituting \(t\mapsto\ii t\) into an uncontrolled kernel expression.
+\end{proof}
 
 \begin{definition}[Kato Schrodinger Euclidean datum]
 \label{def:kato-schrodinger-euclidean-datum}
@@ -620,7 +648,7 @@ used: a measure, an oscillatory integral, a Berezin functional, a
 gauge-fixed/BV construction, a lattice regularization, a holonomy
 construction, or a formal perturbative expansion.
 
-\begin{quotedtheorem}[Faris--Lavine criterion]
+\begin{theorem}[Faris--Lavine criterion]
 \label{qthm:faris-lavine-essential-self-adjointness}
 Essential self-adjointness on the algebraic core \(C_c^\infty(\mathbb R^d)\)
 is a separate issue.  One convenient sufficient theorem is the Faris--Lavine
@@ -635,9 +663,9 @@ Every smooth potential bounded below satisfies this growth-from-below
 hypothesis, and polynomial oscillator potentials with positive leading part do
 as well.  These cases have a unique self-adjoint closure from the natural
 differential operator core, and the Trotter formula applies to that closure.
-\end{quotedtheorem}
+\end{theorem}
 
-\paragraph{Mechanism of the Faris--Lavine estimate.}
+\begin{proof}
 The criterion is a statement about the closure of a symmetric differential
 operator determined on the algebraic core \(C_c^\infty(\mathbb R^d)\).
 Write \(p_j=-\ii\partial_j\), \(p^2=-\Delta\), and first reduce by rescaling
@@ -725,6 +753,7 @@ and the commutator inequality to obtain a uniform Gronwall bound on the
 \((A_0^*\mp\ii)\eta=0\) admit no nonzero \(L^2\) solutions.  This is the
 operator-theoretic reason that the quadratic lower bound prevents a boundary
 condition at infinity from being part of the Hamiltonian data.
+\end{proof}
 
 \begin{example}[A limit-circle failure of formal Hamiltonian data]
 \label{ex:cubic-potential-limit-circle-failure}

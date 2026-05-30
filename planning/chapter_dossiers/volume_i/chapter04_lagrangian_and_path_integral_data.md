@@ -91,16 +91,18 @@ Working framework:
 - Paragraph `par:finite-phase-space-time-sliced-kernel`: finite time-sliced
   phase-space construction and discrete phase-space action, recorded as a
   regulated insertion calculation rather than proposition-level content.
-- `qthm:trotter-product-formula-qm`: operator-level Trotter formula used to
-  interpret continuum limits, now accompanied by the bounded norm proof
-  mechanism and the unbounded closed-form/resolvent mechanism.
+- `qthm:trotter-product-formula-qm`: local theorem-level operator Trotter
+  formula used to interpret continuum limits, now with explicit real-time
+  essential-self-adjoint-sum hypotheses, Euclidean closed-form-sum hypotheses,
+  and the bounded norm plus unbounded closed-form/resolvent proof mechanisms.
 - `def:kato-schrodinger-euclidean-datum`: Kato/local Kato hypotheses and
   Friedrichs Schrödinger Hamiltonian.
 - `thm:wiener-feynman-kac-qm`: Wiener measure, Brownian bridge, and
   Feynman--Kac representation.
-- `qthm:faris-lavine-essential-self-adjointness`: sufficient
-  essential-self-adjointness criterion, now accompanied by the
-  comparison-Hamiltonian and Nelson commutator mechanism.
+- `qthm:faris-lavine-essential-self-adjointness`: local theorem-level
+  sufficient essential-self-adjointness criterion, with the
+  comparison-Hamiltonian and Nelson commutator mechanism included in the
+  proof.
 - `def:regulated-phase-space-path-integral-datum`: ordering-dependent symbols
   and local \(O(\hbar)\) counterterms.
 - Paragraph "Gaussian elimination of quadratic momenta": Lagrangian form after
@@ -176,7 +178,7 @@ spectral theorem plus a gap estimate.
   construction, lattice or holonomy construction, or formal perturbative
   expansion.
 - 2026-05-27, issue #615: upgraded the chapter with labeled definitions,
-  propositions, and quoted theorems for the Hamiltonian, rigging,
+  propositions, and theorem-boundary entries for the Hamiltonian, rigging,
   time-slicing, Trotter/Kato, Feynman--Kac, ordering, Gaussian momentum,
   source, trace, and vacuum-projection steps.
 - 2026-05-30 anti-wrapper pass: demoted the finite phase-space time-sliced
@@ -184,13 +186,15 @@ spectral theorem plus a gap estimate.
   The formulas and regulator assumptions were preserved, while the status now
   correctly reflects that the step is insertion of finite resolutions of
   identity and symbol bookkeeping.
-- 2026-05-30 quoted-theorem pass: expanded the Trotter product formula
-  boundary with the bounded telescoping proof mechanism and the unbounded
-  closed-form/resolvent mechanism, emphasizing that the theorem is an
-  operator statement rather than a pointwise kernel identity.
-- 2026-05-30 quoted-theorem pass: expanded the Faris--Lavine boundary with
-  the comparison-Hamiltonian proof mechanism and the Nelson commutator
-  estimate that prevents hidden boundary conditions at infinity.
+- 2026-05-30 dequotation pass: promoted the Trotter product formula from a
+  quoted wrapper to local theorem/proof form, replaced the vague hypothesis
+  "suppose the hypotheses hold" by explicit real-time essential-self-adjoint
+  algebraic-sum hypotheses and Euclidean closed-form-sum hypotheses, and kept
+  the bounded telescoping and unbounded form/resolvent mechanisms in the proof.
+- 2026-05-30 dequotation pass: promoted the Faris--Lavine criterion from a
+  quoted wrapper to local theorem/proof form, with the comparison-Hamiltonian
+  and Nelson commutator estimate kept as the proof mechanism preventing hidden
+  boundary conditions at infinity.
 
 ## Figure Ledger
 
