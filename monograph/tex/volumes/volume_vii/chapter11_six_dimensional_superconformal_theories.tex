@@ -15,6 +15,83 @@ formalism, because these are the supersymmetric field theories that most
 sharply test the distinction between protected data and construction of a
 local QFT.
 
+\begin{hypothesis}[\((2,0)\) theory of ADE type]
+\label{hyp:six-d-two-zero-ade-qft}
+Let \(\mathfrak g\) be a simply laced complex simple Lie algebra of type
+\(A\), \(D\), or \(E\), with Cartan algebra
+\(\mathfrak t_{\mathfrak g}\), Weyl group \(W_{\mathfrak g}\), root lattice
+\(Q_{\mathfrak g}\), weight lattice \(P_{\mathfrak g}\), rank
+\(r_{\mathfrak g}\), dimension \(d_{\mathfrak g}\), and dual Coxeter number
+\(h^\vee_{\mathfrak g}\).  In this chapter the symbol
+\[
+  \mathfrak T_{6d}[\mathfrak g]
+\]
+denotes an assumed six-dimensional local QFT with the following defining
+properties.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item It is a positive-energy \((2,0)\) superconformal QFT with
+superconformal algebra \(OSp(8^\ast|4)\) and \(USp(4)_R\simeq
+\operatorname{Spin}(5)_R\) R-symmetry.
+\item Its generic tensor branch, after removing a decoupled center-of-mass
+free tensor multiplet when present, has scalar coordinate space
+\[
+  \bigl(\mathbb R^5\otimes\mathfrak t_{\mathfrak g}\bigr)/W_{\mathfrak g},
+\]
+and its low-energy abelian tensor fields are quantized with string-charge
+lattice \(Q_{\mathfrak g}\) and Cartan pairing.
+\item Its anomaly polynomial is
+\[
+  I_8[\mathfrak g]
+  =
+  r_{\mathfrak g}I_8(1)
+  +
+  \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{24}p_2(N_R),
+\]
+where \(N_R\) is the rank-five \(SO(5)_R\) background bundle and
+\(I_8(1)\) is as in
+\eqref{eq:six-d-free-tensor-anomaly}.  This is the protected anomaly datum
+used below; the quoted-theorem boundary is stated at
+Quoted Theorem~\ref{qt:six-d-two-zero-anomaly-polynomial}.
+\item Its BPS string charges on a generic tensor branch are the roots
+\(\alpha\in Q_{\mathfrak g}\), with central-charge/tension normalization
+\[
+  T_\alpha=|\alpha(\phi)|
+\]
+for \(\phi\in\mathbb R^5\otimes\mathfrak t_{\mathfrak g}\).
+\item Its finite surface-defect charge group is the discriminant group
+\[
+  A_{\mathfrak g}=P_{\mathfrak g}/Q_{\mathfrak g},
+\]
+with finite Dirac pairing
+\[
+  b_{\mathfrak g}([\lambda],[\mu])
+  =
+  (\lambda,\mu)\bmod\mathbb Z .
+\]
+On a closed six-manifold \(Y\), the corresponding finite flux sector is a
+self-dual finite Heisenberg system built from \(H^3(Y;A_{\mathfrak g})\) and
+therefore requires a polarization before it gives a numerical partition
+function.
+\item Circle compactification on a circle of radius \(R\), on a branch where
+the compactified low-energy description is valid, gives five-dimensional
+maximally supersymmetric Yang--Mills with gauge algebra \(\mathfrak g\) and
+trace-delta coupling
+\[
+  g_5^2=4\pi^2R.
+\]
+\item Riemann-surface compactification is used only with the partial twist
+and codimension-two defect data specified in
+Hypothesis~\ref{hyp:class-s-compactification-datum}, and only conditioned on
+existence of the resulting four-dimensional local QFT.
+\end{enumerate}
+All subsequent uses of \(\mathfrak T_{6d}[\mathfrak g]\) in this chapter are
+conditional on the existence of a local QFT with these properties.  The
+chapter derives consistency checks and protected consequences from the listed
+data; it does not construct the interacting six-dimensional local QFT.
+Open Problem~\ref{op:six-dimensional-construction} records the missing
+construction problem.
+\end{hypothesis}
+
 \section{Six-Dimensional Supersymmetry Data}
 
 Let the Lorentz group be \(\operatorname{Spin}(1,5)\).  A chiral spinor has
@@ -873,14 +950,73 @@ therefore fixes the scalar normalization
 \(\phi_{5d}=2\pi R\,\phi_{6d}\).
 
 \section{Compactification On Riemann Surfaces}
+\label{sec:six-d-class-s-compactification-data}
 
 For compactification on a Riemann surface \(C\), partial twists use an
 embedding of the spin connection of \(C\) into \(G_R\).  The resulting
-four-dimensional theory must have matching anomalies, flavor symmetries,
-defect descendants, and moduli-space dimensions.  For \((2,0)\) theories this
-is the field-theory origin of class-\(S\) constructions: the input is a
-six-dimensional theory of type \(\mathfrak g\), a punctured or unpunctured
-Riemann surface, and boundary conditions or defects at punctures.
+four-dimensional theory, when it exists, must have matching anomalies, flavor
+symmetries, defect descendants, and moduli-space dimensions.  The following
+hypothesis records the compactification datum used below and gives the
+class-\(S\) notation a precise conditional meaning.
+
+\begin{hypothesis}[Class-\(S\) compactification datum]
+\label{hyp:class-s-compactification-datum}
+Fix a six-dimensional theory
+\(\mathfrak T_{6d}[\mathfrak g]\) satisfying
+Hypothesis~\ref{hyp:six-d-two-zero-ade-qft}.  A class-\(S\)
+compactification datum is a tuple
+\[
+  \mathcal C_{\rm S}
+  =
+  \bigl(C,\{(p_a,\mathfrak D_a)\}_{a\in A},\eta\bigr)
+\]
+with the following constituents.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \(C\) is a connected oriented smooth surface equipped with a complex
+structure.  The marked points \(p_a\in C\) are pairwise distinct.  The
+unpunctured case is \(A=\emptyset\).
+\item The sign \(\eta=\pm1\) specifies the embedding of the
+\(\operatorname{Spin}(2)_C\) connection into the \(SO(2)_r\subset SO(5)_R\)
+R-symmetry factor used in the partial twist.  In characteristic-class
+language this is the convention
+\[
+  e(N_2)=x+\eta\,t
+\]
+of \eqref{eq:six-d-class-s-twist-euler-class}.
+\item Each \(\mathfrak D_a\) is a codimension-two defect or boundary
+condition for \(\mathfrak T_{6d}[\mathfrak g]\) at \(p_a\).  At the level
+used in this chapter, such a datum must specify at least its preserved
+four-dimensional supersymmetry, flavor symmetry \(F_a\), contribution to the
+four-dimensional anomaly polynomial, its allowed defect descendants, and,
+when a Hitchin-system description is invoked, the corresponding allowed
+singularity or boundary condition for the Hitchin field at \(p_a\).
+\item The compactification is assumed to have a four-dimensional
+\(\mathcal N=2\) local QFT limit, denoted
+\[
+  \mathfrak T_{\mathfrak g}[C,\{(p_a,\mathfrak D_a)\};\eta],
+\]
+with local operator algebra, stress tensor multiplet, Hilbert-space
+radial-quantization data, and extended operators descending from the
+six-dimensional defect and finite-flux sectors after a choice of global
+polarization when such a choice is required.
+\item The protected data of this four-dimensional QFT agree with the
+six-dimensional reduction data: the preserved supercharges are those
+annihilated by the twist; the flavor symmetry includes the defect flavor
+groups and any continuous symmetry left by the compactification; the anomaly
+six-form is the fiber integral of \(I_8[\mathfrak g]\) plus the local defect
+contributions; and the Coulomb-branch chiral coordinates are modeled by the
+appropriate Hitchin base associated with
+\((\mathfrak g,C,\{\mathfrak D_a\})\).
+\end{enumerate}
+The notation
+\(\mathfrak T_{\mathfrak g}[C,\{(p_a,\mathfrak D_a)\};\eta]\) is therefore
+conditional: it denotes the four-dimensional QFT whose existence and
+properties are asserted in this hypothesis.  The Hitchin base, anomaly
+pushforward, or Seiberg--Witten curve is not by itself a construction of the
+QFT.  In the smooth unpunctured calculation below, \(A=\emptyset\), \(C\) is
+closed, and the only compactification datum beyond \(\mathfrak g\) is the
+twist sign \(\eta\).
+\end{hypothesis}
 
 The compactification is a test with substantial content.  It must specify:
 \[
@@ -893,7 +1029,8 @@ The compactification is a test with substantial content.  It must specify:
 \end{gathered}
 \]
 Supplying only a Seiberg--Witten curve in four dimensions does not by itself
-construct the six-dimensional parent theory.
+construct either the six-dimensional parent theory or the four-dimensional
+local QFT denoted by the class-\(S\) compactification symbol.
 
 \paragraph{Twist datum and anomaly pushforward.}
 Here is the local anomaly calculation behind the preceding list in the
@@ -994,10 +1131,11 @@ not contained in the smooth pushforward \eqref{eq:six-d-class-s-anomaly-pushforw
 \section{Hitchin-Base Coulomb Operators In Class-\texorpdfstring{\(S\)}{S} Compactification}
 \label{sec:six-d-class-s-hitchin-base}
 
-Consider the \((2,0)\) theory of simply laced type \(\mathfrak g\)
-compactified on a closed Riemann surface \(C\) of genus \(g_C>1\), with the
-standard partial twist that preserves four-dimensional \(\mathcal N=2\)
-supersymmetry and with no punctures.  Let
+Assume Hypotheses~\ref{hyp:six-d-two-zero-ade-qft} and
+\ref{hyp:class-s-compactification-datum} in the smooth unpunctured case:
+\(C\) is a closed Riemann surface of genus \(g_C>1\), \(A=\emptyset\), and
+the partial twist preserves four-dimensional \(\mathcal N=2\) supersymmetry.
+Let
 \[
   d_1,\ldots,d_{r_{\mathfrak g}}
 \]
@@ -1099,7 +1237,8 @@ we obtain
 \]
 
 \paragraph{Unpunctured class-\(S\) Coulomb-base dimension.}
-For the unpunctured genus-\(g_C>1\) compactification above, the protected
+For the conditional unpunctured genus-\(g_C>1\) compactification datum above,
+the protected
 Coulomb base modeled by the Hitchin base
 \begin{equation}
   \mathcal B_{\mathfrak g,C}
@@ -1170,7 +1309,17 @@ respectively.
 
 \section{Status Ledger}
 
-Six-dimensional SCFT data in this monograph consist of:
+The assumed \((2,0)\) fixed-point object used in this chapter is
+\(\mathfrak T_{6d}[\mathfrak g]\) of
+Hypothesis~\ref{hyp:six-d-two-zero-ade-qft}.  The class-\(S\)
+four-dimensional object used in the compactification discussion is
+\(\mathfrak T_{\mathfrak g}[C,\{(p_a,\mathfrak D_a)\};\eta]\) of
+Hypothesis~\ref{hyp:class-s-compactification-datum}.  The substantive
+six-dimensional data are therefore not reconstructed retrospectively from
+this ledger; they are the named assumptions at the beginning of the relevant
+arguments.
+
+For orientation, the data invoked in this chapter are:
 \[
 \begin{gathered}
   \text{superconformal representation category},\\
@@ -1189,10 +1338,20 @@ strings, the discriminant group
 \(A_{\mathfrak g}=P_{\mathfrak g}/Q_{\mathfrak g}\) with finite pairing
 \eqref{eq:six-d-defect-group-pairing}, and the five-dimensional
 compactification normalization \(g_5^2=4\pi^2R\) in trace-delta variables.
+For class-\(S\) compactifications it includes the surface \(C\), the marked
+points \(p_a\), their defect data \(\mathfrak D_a\), the twist sign \(\eta\),
+the anomaly pushforward with defect contributions, the protected Hitchin-base
+description of Coulomb coordinates when available, and the descended extended
+operators and finite-flux polarization data.
 
 No item in this list is dispensable.  A proposed fixed point that supplies
 only a branch EFT is incomplete; a proposed non-Lagrangian object that
-supplies only protected indices is also incomplete.
+supplies only protected indices is also incomplete.  Likewise, a phrase such
+as ``the class-\(S\) theory'' has no standing in this chapter unless the
+tuple of compactification data in
+Hypothesis~\ref{hyp:class-s-compactification-datum} has been supplied and the
+existence of the resulting four-dimensional local QFT is being assumed or
+constructed.
 
 \begin{openproblem}[Six-dimensional construction]
 \label{op:six-dimensional-construction}

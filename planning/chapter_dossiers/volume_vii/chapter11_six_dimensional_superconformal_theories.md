@@ -31,6 +31,13 @@ Reviewed source spine:
 - `B^I`, `H^I`: two-form gauge potentials and self-dual field strengths.
 - `mathfrak g`, `mathfrak t_g`, `W_g`: simply laced Lie algebra, Cartan
   algebra, and Weyl group of a `(2,0)` theory.
+- `mathfrak T_{6d}[g]`: conditional six-dimensional `(2,0)` local QFT object
+  satisfying the chapter's ADE defining-property hypothesis.
+- `mathcal C_S=(C,{(p_a,D_a)},eta)`: class-`S` compactification datum:
+  Riemann surface, marked points with codimension-two defect data, and twist
+  sign.
+- `mathfrak T_g[C,{(p_a,D_a)};eta]`: conditional four-dimensional
+  class-`S` local QFT associated with the compactification datum.
 - `I_8`, `I_8(1)`: interacting and free-tensor anomaly polynomials.
 - `N_R`: rank-five `SO(5)_R` background bundle for `(2,0)` anomalies.
 - `Omega^{IJ}`, `X_I^{(4)}`: tensor pairing and Green-Schwarz four-forms.
@@ -50,6 +57,11 @@ Reviewed source spine:
 
 - Separates six-dimensional superconformal representation data from
   branch-EFT field variables.
+- Adds Hypothesis `hyp:six-d-two-zero-ade-qft`, aggregating the defining
+  properties of the assumed ADE `(2,0)` QFT: positive-energy
+  `OSp(8^*|4)` representation, tensor-branch quotient, anomaly polynomial,
+  BPS root-lattice strings, finite defect group, circle compactification, and
+  conditional class-`S` compactification functoriality.
 - Proves that a six-dimensional Yang-Mills coupling has negative mass
   dimension and therefore is not a marginal conformal coordinate.
 - Defines `(1,0)` and `(2,0)` tensor multiplet variables while marking
@@ -100,6 +112,10 @@ Reviewed source spine:
   normalization `phi_5d = 2 pi R phi_6d`.
 - Records compactification on Riemann surfaces as a test requiring twist,
   defect, anomaly, and descendant data.
+- Adds Hypothesis `hyp:class-s-compactification-datum`, defining the
+  conditional class-`S` object by the tuple
+  `(C,{(p_a,D_a)},eta)` and the required four-dimensional QFT data, rather
+  than using the phrase "class-S theory" as an undefined shorthand.
 - Defines the smooth unpunctured class-\(S\) twist datum by decomposing
   \(SO(5)_R\) as \(SO(2)_r\oplus SO(3)_R\), setting
   \(e(N_2)=x+\eta t\), and pushing forward the six-dimensional anomaly
@@ -123,7 +139,13 @@ Reviewed source spine:
 ## Proof Obligations And Boundaries
 
 - The interacting `(2,0)` theory remains a non-Lagrangian object; the chapter
-  gives protected and effective data, not a construction.
+  now states a defining-property hypothesis for the assumed QFT and gives
+  protected/effective consequences from that hypothesis, not a construction.
+- Class-`S` theories are conditional four-dimensional local QFTs in this
+  chapter.  The compactification datum and the resulting QFT assumptions are
+  aggregated in `hyp:class-s-compactification-datum`; the Hitchin base,
+  anomaly pushforward, and Seiberg-Witten curve data are protected
+  consequences or tests, not standalone definitions of the QFT.
 - The `(2,0)` anomaly polynomial is quoted theorem status because a
   first-principles construction of the interacting six-dimensional local QFT
   and its anomaly functional is not reproduced here.  External geometric or
@@ -166,6 +188,11 @@ Reviewed source spine:
   anomaly language by a local derivation from the charged surface insertion,
   Green-Schwarz descent, global-angular-form regularization of the tubular
   neighborhood, and the normal-bundle Euler inflow coefficient.
+- 2026-05-30 issue #700 defining-property pass: added explicit hypotheses for
+  the ADE `(2,0)` QFT object and for class-`S` compactification data, rewrote
+  the class-`S` Hitchin-base discussion to depend on those hypotheses, and
+  changed the status ledger from a retrospective definition into a reference
+  to the named conditional objects.
 
 ## Figure Ledger
 

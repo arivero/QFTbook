@@ -417,6 +417,16 @@ tensor-branch effective theory, an anomaly polynomial, compactification data,
 or an extended-operator diagnostic; none of these is automatically a
 Lagrangian definition of the theory.
 
+For every non-Lagrangian or non-axiomatically constructed central object, the
+first substantial use must be preceded by a Definition or Hypothesis block
+aggregating its defining properties.  This applies in particular to
+six-dimensional \((2,0)\) theories, class-\(S\) compactifications,
+non-Lagrangian SCFTs, categorical-symmetry QFTs, and TQFTs specified by
+category or bordism data.  A status ledger at the end of a chapter is not a
+definition of the object.  Downstream computations must refer back to the
+named block, and the text must state whether existence as a local QFT is
+assumed, constructed, or an open problem.
+
 Supersymmetric localization claims require a localization datum.  Before a
 localized integral, JK residue, saddle determinant, instanton contribution, or
 zero-size-instanton term is used, the text must state the integration cycle,
