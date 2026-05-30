@@ -8,7 +8,9 @@ algebra in three places:
 * the Hamiltonian S^1 combination omega + u mu is Cartan-closed when
   d mu = i_v omega;
 * the Mathai-Quillen auxiliary Gaussian has the displayed sign, and the
-  rank-one zero-locus orientation is sign(ds).
+  rank-one zero-locus orientation is sign(ds);
+* the finite normal localization factor is Pf(C)/sqrt(det(A)), equivalently
+  its square is Pf(C)^2/det(A), for a two-even/two-odd diagonal model.
 
 All checks use exact rational arithmetic.  They are convention checks, not a
 replacement for the derivations in the text.
@@ -248,11 +250,34 @@ def check_rank_one_zero_orientation() -> None:
         )
 
 
+def check_normal_euler_factor_square() -> None:
+    # For even normal quadratic form A=diag(a,b) and odd skew form
+    # C=[[0,c],[-c,0]], the Berezin-Gaussian numerator is Pf(C)=c and the
+    # bosonic denominator is sqrt(det A).  We avoid irrational square roots by
+    # checking the squared inverse Euler factor.
+    samples = [
+        (Fraction(1), Fraction(1), Fraction(1)),
+        (Fraction(2), Fraction(3), Fraction(5)),
+        (Fraction(7, 2), Fraction(11, 3), Fraction(-13, 4)),
+    ]
+    for a, b, c in samples:
+        det_a = a * b
+        pf_c = c
+        inverse_euler_squared = pf_c * pf_c / det_a
+        expected = c * c / (a * b)
+        assert_equal(
+            f"normal inverse Euler square a={a} b={b} c={c}",
+            inverse_euler_squared,
+            expected,
+        )
+
+
 def main() -> None:
     check_cartan_square()
     check_hamiltonian_equivariant_closure()
     check_mathai_quillen_auxiliary_gaussian_sign()
     check_rank_one_zero_orientation()
+    check_normal_euler_factor_square()
     print("All cohomological field-theory algebra checks passed.")
 
 

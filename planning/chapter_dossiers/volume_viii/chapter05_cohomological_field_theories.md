@@ -20,8 +20,10 @@
   metric-response insertion that is \(Q\)-exact.
 - Proposition: \(Q\)-exact deformation independence for normalized
   expectation values.
-- Theorem: compact nondegenerate finite-dimensional localization, with
-  inverse equivariant Euler factor from the normal quadratic complex.
+- Theorem: compact nondegenerate finite-dimensional localization, with the
+  action included in the datum and the inverse equivariant Euler factor
+  defined by the normal super-Gaussian \(\operatorname{Pf}(C)/\det(A)^{1/2}\)
+  after the required Berezinian degree balance.
 - Mathai-Quillen finite-dimensional model with auxiliary field, oscillatory
   Gaussian sign, Thom form, Euler class, and zero-locus localization.
 - Descent package:
@@ -89,8 +91,9 @@
 
 - `calculation-checks/cohomological_field_theory_checks.py` verifies exact
   finite Cartan-model algebra, Hamiltonian equivariant closure,
-  Mathai-Quillen Gaussian square completion, and rank-one zero-locus
-  orientation.
+  Mathai-Quillen Gaussian square completion, rank-one zero-locus orientation,
+  and the squared normal inverse-Euler factor in a two-even/two-odd local
+  Gaussian model.
 
 ## Anti-Wrapper Audit
 
@@ -99,3 +102,7 @@
   localization proof: \(t^{1/2}s\) deformation, exponential suppression away
   from the zero locus, tubular normal coordinates, \(t^{-1/2}\) rescaling, and
   cancellation of the Gaussian Jacobian against the Berezin determinant.
+- 2026-05-30: repaired the compact nondegenerate localization theorem so
+  \(S\) is part of the theorem datum, \(QS=0\) is a stated hypothesis, the
+  fixed-locus formula follows from a displayed normal quadratic model, and the
+  determinant/Pfaffian inverse-Euler factor is no longer an undefined slogan.

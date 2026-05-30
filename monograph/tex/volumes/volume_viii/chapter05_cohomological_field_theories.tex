@@ -223,21 +223,60 @@ that are checkable in finite dimension.
 \label{thm:compact-nondegenerate-cohomological-localization}
 Let \(\mathcal X\) be an oriented finite-dimensional supermanifold with
 compact even integration cycle \(\Gamma\), Berezinian density \(\mu\), and an
-odd vector field \(Q\).  Suppose:
+odd vector field \(Q\).  Let \(S\in C^\infty(\mathcal X)_{\bar 0}\) be an
+even action, \(X\in C^\infty(\mathcal X)\) an insertion, and
+\(V\in C^\infty(\mathcal X)_{\bar 1}\) an odd deformation functional.
+Suppose:
 \begin{enumerate}[label=(\roman*)]
 \item \(Q^2\) generates a compact even symmetry whose invariant subalgebra is
   used for observables;
 \item \(L_Q\mu=0\) and \(Q\) has no boundary flux through \(\partial\Gamma\);
-\item \(X\) is \(Q\)-closed and invariant under \(Q^2\);
-\item \(V\) is odd and invariant under \(Q^2\);
+\item \(QS=0\), \(QX=0\), and \(S\) and \(X\) are invariant under \(Q^2\);
+\item \(V\) is invariant under \(Q^2\);
 \item the even part \(h=(QV)_{\rm bos}\) satisfies \(h\ge0\), and
-  \(h^{-1}(0)=F\) is a compact smooth fixed locus;
-\item the Hessian of \(h\) in the normal directions to \(F\) is
-  nondegenerate, and the odd quadratic form pairs with this normal Hessian
-  to give an invertible equivariant Euler factor.
+  \(F=h^{-1}(0)\subset\Gamma_{\rm red}\) is a compact smooth submanifold;
+\item in a tubular neighborhood of \(F\), the normal expansion of \(QV\)
+  has a nondegenerate quadratic normal super-Gaussian whose local inverse
+  Euler factors patch to a smooth density-valued section
+  \(e_{Q^2}(N_F)^{-1}\) on \(F\).
 \end{enumerate}
-Then the integral of \(X\exp(-S-tQV)\) is independent of \(t\), and its
-large-\(t\) value is
+More explicitly, the last condition means the following.  For each
+\(y\in F\), after choosing even normal coordinates \(u\in N_{\bar 0,y}\) and
+odd normal coordinates \(\eta\in N_{\bar 1,y}\), the quadratic normal part is
+\begin{equation}
+  (QV)_2(y;u,\eta)
+  =
+  \frac12 u^iA_{ij}(y)u^j
+  +
+  \frac12 \eta^\alpha C_{\alpha\beta}(y)\eta^\beta ,
+  \label{eq:cohomological-normal-quadratic-model}
+\end{equation}
+where \(A_y\) is positive definite on the chosen real normal contour and
+\(C_y\) is nondegenerate on the odd normal variables.  The leading
+Berezinian degree is assumed to be balanced: after the normal rescaling
+\(u=t^{-1/2}\xi\), \(\eta=t^{-1/2}\zeta\), the product of the even Jacobian,
+the odd Berezinian, and the degree of the normal Berezin polynomial has a
+finite \(t^0\) limit.  If this balance fails, the right large-\(t\) statement
+is a different asymptotic expansion rather than the simple fixed-locus
+formula below.  Under this balance condition, the normal Gaussian
+\begin{equation}
+  \mathcal G(y)
+  =
+  \int_{N_y}
+  \exp\!\left[-(QV)_2(y;u,\eta)\right]\,D u\,D\eta
+  =
+  (2\pi)^{\dim N_{\bar0}/2}
+  \frac{\operatorname{Pf}(C_y)}{\det(A_y)^{1/2}}
+  \label{eq:cohomological-normal-gaussian-euler-factor}
+\end{equation}
+with the chosen orientation and square-root convention is the local value of
+\(e_{Q^2}(N_F)^{-1}\).  Changes of normal coordinates act on the numerator,
+denominator, and Berezinian in the compensating way, so the patched object is
+a density on \(F\).  Then
+\[
+  I_t(X)=\int_{\Gamma}X\exp(-S-tQV)\,\mu
+\]
+is independent of \(t\ge0\), and its large-\(t\) value is
 \begin{equation}
   \int_F
   \frac{X|_F\,\exp(-S|_F)}
@@ -251,27 +290,57 @@ normal quadratic complex.
 \begin{proof}
 The \(t\)-independence is the \(Q\)-exact deformation calculation above in
 finite dimension, with \(\langle QY\rangle=0\) following from Stokes'
-theorem for the divergence-free odd vector field \(Q\).  Because
-\(\Gamma\) is compact and \(h\ge0\), the contribution from
-\(\Gamma\setminus U\) is exponentially suppressed as \(t\to+\infty\) for
-every neighborhood \(U\) of \(F\).
-
-Choose coordinates \((y,n)\) near \(F\), where \(y\) are coordinates on
-\(F\) and \(n\) are even and odd normal coordinates.  By the
-nondegeneracy hypothesis,
+theorem for the divergence-free odd vector field \(Q\).  In detail,
 \[
-  QV
+  \frac{\dd I_t(X)}{\dd t}
   =
-  h_2(y,n)+\text{terms of total normal degree } \ge3,
+  -\int_\Gamma X(QV)e^{-S-tQV}\,\mu
+  =
+  -\int_\Gamma Q\!\left(VXe^{-S-tQV}\right)\mu
+  =
+  0,
 \]
-where \(h_2\) is a nondegenerate quadratic expression in the normal
-coordinates.  Rescale normal even variables and their paired odd variables
-by \(t^{-1/2}\) in the Gaussian directions.  A term of total normal degree
-\(r>2\) is multiplied by \(t^{1-r/2}\) and vanishes in the limit.  The
-Berezinian of the rescaling combines with the bosonic Gaussian determinant
-and fermionic Pfaffian to give the inverse equivariant Euler factor
-\(e_{Q^2}(N_F)^{-1}\).  The remaining integral is the integral over \(F\) of
-the restricted observable and action multiplied by this normal factor.
+because \(QS=0\), \(QX=0\), \(Q^2V=0\) on the invariant subalgebra, and the
+boundary flux of \(Q\) through \(\partial\Gamma\) vanishes.
+
+It remains to identify the common value by the limit \(t\to+\infty\).  Since
+\(\Gamma_{\rm red}\) is compact and \(h^{-1}(0)=F\), for every sufficiently
+small tubular neighborhood \(U\) of \(F\) there is a constant \(c_U>0\) with
+\(h\ge c_U\) on \(\Gamma_{\rm red}\setminus U\).  The even body of
+the integrand outside \(U\) is therefore bounded by
+\(\exp(-tc_U)\) times a fixed smooth density, and the odd part is a finite
+polynomial.  Hence the complement of \(U\) does not contribute to the limit.
+
+Work in one coordinate patch of the tubular neighborhood and write a point as
+\((y,u,\eta)\), with \(y\in F\), even normal coordinate \(u\), and odd normal
+coordinate \(\eta\).  Taylor expansion gives
+\[
+  QV=(QV)_2+R_3,
+\]
+where \((QV)_2\) is the quadratic expression
+\eqref{eq:cohomological-normal-quadratic-model} and \(R_3\) has total normal
+degree at least three.  Put \(u=t^{-1/2}\xi\) and
+\(\eta=t^{-1/2}\zeta\).  In Berezin integration the odd change of variables
+contributes the inverse determinant of the odd scaling, while the even
+change of variables contributes the ordinary Jacobian; these are exactly the
+factors included in the super-Gaussian density
+\eqref{eq:cohomological-normal-gaussian-euler-factor}.  The remainder
+satisfies
+\[
+  t\,R_3(y,t^{-1/2}\xi,t^{-1/2}\zeta)=O(t^{-1/2})
+\]
+on every bounded normal set, and the positive quadratic form \(A_y\) gives a
+uniform Gaussian majorant after shrinking the tubular neighborhood and using
+a finite cover of \(F\).  Dominated convergence therefore replaces the
+normal integral by the fiberwise Gaussian \(\mathcal G(y)\).
+
+The local Gaussian factors transform by the Berezinian of changes of normal
+coordinates, so they glue to the inverse Euler density
+\(e_{Q^2}(N_F)^{-1}\).  Summing the finite partition of unity on \(F\)
+gives \eqref{eq:cohomological-localization-fixed-locus-formula}.  The
+orientation line and the square root of \(\det A_y\) are not decoration:
+without these choices the local Gaussian factors do not define a global
+integrand on \(F\).
 \end{proof}
 
 \section{Mathai--Quillen Form of a Cohomological Theory}
