@@ -17,6 +17,15 @@ later lower-dimensional examples, protected sectors, and localization.
   quotient.
 - `M`, `H_p`, `A_p`, `G_p`: quantum moduli space, Hilbert space, local
   operator algebra, and background response in vacuum `p`.
+- `mathfrak M`: full quantum supersymmetric moduli-space datum, consisting of
+  the stratified reduced vacuum space, holomorphic branch-coordinate sheaf,
+  Hilbert spaces, low-energy operator algebras, branch EFT data, and
+  background-response data.
+- `O_M^hol`: holomorphic coordinate sheaf of a branch, generated where valid
+  by protected chiral expectation values.
+- `E_p`: effective branch data in vacuum sector `p`, including massless
+  fields, metric, Wess-Zumino terms, superselection sectors, and domain of
+  validity.
 - `R_ch`, `ev_p`: chiral ring and evaluation homomorphism at a vacuum.
 - `F`, `j_A^mu`, `Q_A`, `q_A`, `Hilb_q`: compact internal global symmetry,
   conserved currents, commuting charge operators, fixed charge vector, and
@@ -76,8 +85,10 @@ later lower-dimensional examples, protected sectors, and localization.
 - Works out the rank-one abelian quotient
   `C[x,y]^{C^*}=C[xy]` and its moment-map quotient, fixing the quotient
   convention used later in rank-one gauge-theory examples.
-- Defines quantum moduli spaces as vacuum families together with low-energy
-  Hilbert, operator, metric, and background-response data.
+- Defines the quantum supersymmetric moduli-space datum as a stratified
+  family of supersymmetric vacuum sectors with holomorphic coordinate sheaf,
+  Hilbert spaces, low-energy operator algebras, branch EFT data, and
+  background-response/anomaly data.
 - Relates chiral rings to holomorphic functions under explicit separation and
   reducedness hypotheses.
 - Adds the fixed-charge/large-charge probe of a branch: defines charge

@@ -9,6 +9,49 @@ is only the first coordinate chart; the physical object includes quotienting,
 singular strata, massless fields, chiral rings, metrics, and quantum
 corrections.
 
+\begin{definition}[Quantum supersymmetric moduli-space datum]
+\label{def:quantum-supersymmetric-moduli-space-datum}
+Fix a supersymmetric local QFT with supercharges \(Q_\alpha\) acting on a
+common invariant domain in each vacuum representation.  A quantum
+supersymmetric moduli-space datum is a tuple
+\[
+  \mathfrak M
+  =
+  \bigl(
+  \mathcal M,\mathcal O_{\mathcal M}^{\mathrm{hol}},
+  \{\mathcal H_p,\mathcal A_p,\mathcal E_p,\mathcal G_p\}_{p\in\mathcal M}
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}
+\item \(\mathcal M\) is a reduced stratified analytic space whose points
+label equivalence classes of supersymmetric vacuum sectors.  A representative
+vacuum sector is a translation-invariant positive-energy representation with
+vacuum vector or vacuum state annihilated by the preserved supercharges,
+modulo unitary equivalence preserving the local operator net and background
+couplings.
+\item \(\mathcal O_{\mathcal M}^{\mathrm{hol}}\) is the sheaf of holomorphic
+branch-coordinate functions generated, where valid, by expectation values of
+protected chiral operators.  Nilpotent or derived structure is extra data; if
+it affects operator products or low-energy dynamics it must be retained
+rather than replaced by the reduced space.
+\item \(\mathcal H_p\) is the Hilbert space of fluctuations in the vacuum
+sector \(p\), and \(\mathcal A_p\) is the local operator algebra or field
+presentation of the low-energy QFT in that sector.
+\item \(\mathcal E_p\) records the effective branch data: massless fields,
+two-derivative metric, Wess--Zumino terms, superselection sectors, and the
+energy range on which the branch effective theory is valid.
+\item \(\mathcal G_p\) records background responses, anomaly lines, and
+global-form or extended-operator data in the vacuum sector.
+\end{enumerate}
+On a smooth stratum, \(T_p\mathcal M\) is represented by supersymmetric
+massless scalar directions in \(\mathcal H_p\).  A singular stratum is a locus
+where this representation, the effective theory \(\mathcal E_p\), or the
+background-response datum \(\mathcal G_p\) changes.  A classical quotient of
+scalar zero modes is therefore a coordinate construction for one approximation
+to \(\mathfrak M\), not the definition of the quantum moduli-space datum.
+\end{definition}
+
 \section{Vacuum Equations}
 
 For four-dimensional \(\mathcal N=1\) chiral multiplets \(\Phi^i\) with
@@ -123,16 +166,13 @@ expectation values.
 
 \section{Quantum Moduli Space Datum}
 
-A quantum moduli space is a tuple
-\[
-  (\mathcal M,\mathcal H_p,\mathcal A_p,\mathcal G_p)_{p\in\mathcal M},
-\]
-where \(\mathcal M\) is the parameter space of supersymmetric vacua,
-\(\mathcal H_p\) is the Hilbert space of the theory in vacuum \(p\),
-\(\mathcal A_p\) is the algebra of local operators in the low-energy theory,
-and \(\mathcal G_p\) records background responses and anomaly data.  On a
-smooth branch with massless scalar coordinates \(z^i\), the two-derivative
-effective action determines a metric
+For the quantum moduli-space datum
+\(\mathfrak M\) of
+Definition~\ref{def:quantum-supersymmetric-moduli-space-datum}, a smooth
+branch is a stratum on which the massless field content, preserved
+supersymmetry algebra, and background-response datum are locally constant.
+If \(z^i\) are massless scalar coordinates on such a branch, the
+two-derivative effective action determines a metric
 \[
   ds^2=g_{i\bar j}(z,\bar z)\,dz^i d\bar z^{\bar j}
 \]
