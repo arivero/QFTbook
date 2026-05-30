@@ -157,9 +157,13 @@
 - Finite-dimensional BV pushforward preserves the quantum master equation;
   this is the regulated core of the Wilsonian BV identity.
 - A BV-compatible infinitesimal exact-RG step has
-  \(\partial_t\rho_t=\Delta_{1/2}(R_t\rho_t)\); \(\Delta_{1/2}^2=0\) then
-  proves preservation of the quantum master equation.  In action coordinates
-  this gives \(\partial_tS_t=(S_t,R_t)-\ii\hbar\Delta_{\sigma_0}R_t\).
+  \(\partial_t\rho_t=\Delta_{1/2}(R_t\rho_t)\).  The 2026-05-30
+  anti-wrapper pass demoted the resulting preservation of the quantum master
+  equation from a lemma to the cohomological tangent identity
+  \(\partial_t\Delta_{1/2}\rho_t=0\), because the real mathematical content is
+  the construction of the BV-compatible velocity \(R_t\), not the subsequent
+  nilpotency calculation.  In action coordinates the same identity gives
+  \(\partial_tS_t=(S_t,R_t)-\ii\hbar\Delta_{\sigma_0}R_t\).
 - Continuum Wilsonian gauge-theory flow must preserve the gauge-fixed
   BV-consistency datum by BV pushforward of the cutoff half-density.
 - Gauge-theory Wilsonian claims are routed through either BV finite-cutoff

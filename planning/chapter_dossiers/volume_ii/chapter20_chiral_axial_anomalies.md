@@ -36,8 +36,15 @@
   inputs: Atiyah--Singer, "The index of elliptic operators. I" for the closed
   spin Dirac index theorem, and Atiyah--Patodi--Singer, "Spectral asymmetry
   and Riemannian geometry" I--III for the boundary spectral correction.  The
-  manuscript states the hypotheses and formulas used; it does not reproduce
-  the analytic proof of either theorem.
+  manuscript states the hypotheses and formulas used.  The 2026-05-30
+  quoted-theorem expansion now exposes the part of the closed-index mechanism
+  used by the anomaly calculation: McKean--Singer cancellation, the
+  heat-kernel/local-index coefficient boundary, and the four-form
+  normalization
+  \(\operatorname{tr}_R(F\wedge F)/(8\pi^2)
+  =\epsilon^{\mu\nu\rho\sigma}\operatorname{tr}_R(F_{\mu\nu}F_{\rho\sigma})\,d^4x/(32\pi^2)\).
+  It still does not reproduce the full analytic proof of the closed
+  Atiyah--Singer or APS theorems.
 - The chapter states the descent formulas used for four-dimensional chiral
   fermions but does not reproduce the full proof of the local BRST cohomology
   classification.
@@ -57,9 +64,10 @@
   power, and one-loop RG exponent.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
-  the six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
-  \(2\pi i\) inflow conversion, Standard Model hypercharge sums, and
-  \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
+  the closed four-dimensional Dirac-index coefficient, the six-form
+  \(\widehat A\,\operatorname{ch}\) coefficients, the \(2\pi i\) inflow
+  conversion, Standard Model hypercharge sums, and \(SU(N)\)
+  fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 
 ## Framework
 
@@ -168,7 +176,8 @@
   heat-kernel limit of finite-mode Berezinian traces and gives the local
   anomaly density.  Its integral is identified with a Fredholm index only
   under the closed spin Dirac hypotheses of the Atiyah--Singer theorem; in the
-  flat tangent specialization this gives
+  flat tangent specialization this is tied to the McKean--Singer supertrace
+  and the Chern--Weil normalization
   \[
     \operatorname{index}\mathcal D_{A,+}
     =

@@ -6,6 +6,9 @@ inflow sections:
 
 * the degree-six expansion
   [A-hat(T) ch(E)]_6 = ch_3(E) - p_1(T) ch_1(E)/24;
+* the closed four-dimensional Dirac-index normalization
+  [ch(E)]_4 = tr(F wedge F)/(8 pi^2)
+  = epsilon tr(F F) d^4x/(32 pi^2);
 * the conversion 2 pi i * F^3/[6(2 pi)^3] -> i F^3/(24 pi^2);
 * the Chern-Weil transgression coefficients in the universal
   Chern-Simons representative;
@@ -45,6 +48,26 @@ def check_index_polynomial_expansion() -> None:
 
     assert_equal("degree-six ch_3 coefficient", cubic, Fraction(1, 6))
     assert_equal("degree-six p_1 ch_1 coefficient", mixed, Fraction(-1, 24))
+
+
+def check_four_dimensional_index_density() -> None:
+    # In the convention ch(E)=tr exp(F/(2 pi)), the four-form part is
+    # (1/2)(F/(2 pi))^2 = tr(F wedge F)/(8 pi^2).  Since
+    # F wedge F = epsilon^{mu nu rho sigma} F_{mu nu} F_{rho sigma} d^4x / 4,
+    # the component coefficient is 1/(32 pi^2).
+    ch2_form_coefficient = Fraction(1, 2) * Fraction(1, 4)
+    component_wedge_factor = Fraction(1, 4)
+
+    assert_equal(
+        "closed four-dimensional ch_2 wedge coefficient",
+        ch2_form_coefficient,
+        Fraction(1, 8),
+    )
+    assert_equal(
+        "closed four-dimensional index component coefficient",
+        ch2_form_coefficient * component_wedge_factor,
+        Fraction(1, 32),
+    )
 
 
 def check_effective_action_conversion() -> None:
@@ -105,6 +128,7 @@ def check_su_n_bookkeeping() -> None:
 
 def main() -> None:
     check_index_polynomial_expansion()
+    check_four_dimensional_index_density()
     check_effective_action_conversion()
     check_chern_weil_transgression_coefficients()
     check_standard_model_hypercharge_sums()

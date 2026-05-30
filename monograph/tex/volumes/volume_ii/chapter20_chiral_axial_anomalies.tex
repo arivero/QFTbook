@@ -996,6 +996,7 @@ Parts II and III in Math. Proc. Cambridge Philos. Soc. 78 (1975), 405--432
 and 79 (1976), 71--99.}
 
 \begin{quotedtheorem}[Spin Dirac index theorem, four-dimensional form]
+\label{qthm:spin-dirac-index-four-dimensional}
 Let \(M\) be a smooth compact oriented Riemannian spin four-manifold without
 boundary.  Let \(S=S^+\oplus S^-\) be its complex spinor bundle, let
 \(E_R\to M\) be a smooth Hermitian vector bundle associated to the fermion
@@ -1027,6 +1028,70 @@ bundle.  The operator \(\mathcal D_{A,-}\) is the opposite-chirality Dirac
 operator
 \(\Gamma(S^-\otimes E_R)\to\Gamma(S^+\otimes E_R)\).
 \end{quotedtheorem}
+
+\paragraph{Index mechanism and four-form normalization.}
+The quoted theorem imports the global equality between a Fredholm index and a
+characteristic number.  The part used by the anomaly calculation can be made
+more explicit.  Let
+\[
+  \mathcal D_A
+  =
+  \begin{pmatrix}
+    0&\mathcal D_{A,-}\\
+    \mathcal D_{A,+}&0
+  \end{pmatrix}
+\]
+be the self-adjoint Dirac operator on \(S\otimes E_R\), and let
+\(\Gamma_5\) denote the Euclidean chirality operator, acting by \(+1\) on
+\(S^+\) and by \(-1\) on \(S^-\).  For every \(t>0\), elliptic heat-kernel
+theory makes \(\Gamma_5\ee^{-t\mathcal D_A^2}\) trace class, and the
+McKean--Singer cancellation gives
+\begin{equation}
+  \operatorname{Tr}\!\left(\Gamma_5\ee^{-t\mathcal D_A^2}\right)
+  =
+  \dim\ker\mathcal D_{A,+}
+  -
+  \dim\ker\mathcal D_{A,-}.
+  \label{eq:dirac-index-mckean-singer-anomaly}
+\end{equation}
+Indeed, every positive eigenvector of
+\(\mathcal D_{A,-}\mathcal D_{A,+}\) is paired by \(\mathcal D_{A,+}\) with a
+positive eigenvector of \(\mathcal D_{A,+}\mathcal D_{A,-}\), with the same
+eigenvalue and opposite chirality contribution.  The heat supertrace is
+therefore independent of \(t\), and the index is the small-\(t\) integral of
+the local supertrace coefficient.
+
+The local coefficient is the difficult analytic part of the index theorem.
+In the heat-kernel proof it is obtained from the Lichnerowicz formula,
+Chern--Weil invariance, and Getzler rescaling of the Clifford variables.  With
+the chapter's anti-Hermitian curvature convention
+\(\mathsf F_R=-\ii F_R\), the Chern character appearing in
+Theorem~\ref{qthm:spin-dirac-index-four-dimensional} is
+\[
+  \operatorname{ch}(E_R,\nabla^E)
+  =
+  \operatorname{tr}_R
+  \exp\!\left(\frac{\ii\mathsf F_R}{2\pi}\right)
+  =
+  \operatorname{tr}_R
+  \exp\!\left(\frac{F_R}{2\pi}\right).
+\]
+Consequently the gauge part of the four-form is
+\begin{equation}
+  \bigl[\operatorname{ch}(E_R,\nabla^E)\bigr]_4
+  =
+  \frac1{2(2\pi)^2}\operatorname{tr}_R(F_R\wedge F_R)
+  =
+  \frac1{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_R(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x .
+  \label{eq:dirac-index-four-form-normalization}
+\end{equation}
+The first equality is Chern--Weil algebra; the second uses
+\(F_R=\frac12F_{\mu\nu}\dd x^\mu\wedge\dd x^\nu\) and the orientation
+\(\epsilon^{0123}=+1\).  This explains why the local Berezinian density
+\eqref{eq:heat-kernel-anomaly-density} and the global Fredholm index have the
+same coefficient once the closed spin hypotheses of the theorem are imposed.
 
 On a flat four-torus or on \(\mathbb R^4\) after compactification by a smooth
 finite-action connection for which no boundary contribution is present, the

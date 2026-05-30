@@ -1320,40 +1320,26 @@ change of covariance, splitting, or gauge-fixing cycle after the regulator has
 made these words finite.
 \end{definition}
 
-\begin{lemma}[Infinitesimal BV RG preserves the QME]
-\label{lem:infinitesimal-bv-rg-preserves-qme}
-Assume \(\Delta_{1/2}\rho_{t_0}=0\) at one value \(t_0\), and assume
-\eqref{eq:bv-infinitesimal-rg-density} holds on an interval with the same
-normal half-density data.  Then
-\[
-  \Delta_{1/2}\rho_t=0
-\]
-for all \(t\) in that interval.  In action coordinates, whenever \(S_t\) is
-defined by \(\rho_t=\exp(\ii S_t/\hbar)\sigma_0\), the evolution is
-\begin{equation}
-  \partial_t S_t
-  =
-  (S_t,R_t)-\ii\hbar\,\Delta_{\sigma_0}R_t ,
-  \label{eq:bv-infinitesimal-rg-action}
-\end{equation}
-provided \(S_t\) satisfies the quantum master equation.
-\end{lemma}
-
-\begin{proof}
-Apply \(\Delta_{1/2}\) to
-\eqref{eq:bv-infinitesimal-rg-density}.  Since the canonical operator on
-half-densities obeys \(\Delta_{1/2}^2=0\),
+\paragraph{Infinitesimal BV-compatible RG identity.}
+The condition in Definition~\ref{def:bv-compatible-infinitesimal-rg-step} is
+the substantive hypothesis: it says that the velocity of the regulated
+half-density is \(\Delta_{1/2}\)-exact.  Once this has been established by a
+finite cutoff construction, preservation of the quantum master equation is the
+cohomological tangent identity
 \[
   \partial_t(\Delta_{1/2}\rho_t)
   =
   \Delta_{1/2}^2(R_t\rho_t)=0 .
 \]
-Thus \(\Delta_{1/2}\rho_t\) is constant in \(t\), and the assumed vanishing at
-\(t_0\) gives the result.
+Hence, if \(\Delta_{1/2}\rho_{t_0}=0\) at one value \(t_0\), then
+\(\Delta_{1/2}\rho_t=0\) throughout the same interval, provided the same
+normal half-density data are used.
 
-For the action form, write \(\rho_t=\ee^{\ii S_t/\hbar}\sigma_0\) and use the
-function Laplacian induced by the normal half-density.  Since \(R_t\) is odd,
-the second-order identity gives
+The action-coordinate form is a bookkeeping consequence of the same
+finite-regulator identity.  Write
+\(\rho_t=\ee^{\ii S_t/\hbar}\sigma_0\), use the function Laplacian induced by
+the normal half-density, and use that \(R_t\) is odd.  The second-order
+identity gives
 \[
   \Delta_{\sigma_0}(R_t\ee^{\ii S_t/\hbar})
   =
@@ -1376,8 +1362,12 @@ because \(S_t\) is even.  Dividing
   \Delta_{\sigma_0}(R_t\ee^{\ii S_t/\hbar})
 \]
 by \(\ee^{\ii S_t/\hbar}\) and multiplying by \(\hbar/\ii\) gives
-\eqref{eq:bv-infinitesimal-rg-action}.
-\end{proof}
+\begin{equation}
+  \partial_t S_t
+  =
+  (S_t,R_t)-\ii\hbar\,\Delta_{\sigma_0}R_t .
+  \label{eq:bv-infinitesimal-rg-action}
+\end{equation}
 
 The equation is a quantum canonical flow, not an arbitrary beta-function
 ansatz.  It is the differential version of BV pushforward: the right hand side
