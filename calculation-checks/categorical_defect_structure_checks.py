@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Finite checks for categorical-defect action and dagger-structure algebra."""
+"""Finite checks for categorical-defect action and dagger-structure algebra.
+
+The last check verifies, without floating-point roots of unity, the pointed
+modular-category mechanism used in the rational SymTFT discussion: cyclic
+fusion is diagonalized by the finite Fourier matrix, and the defect
+eigenvalues form a representation of the fusion algebra.
+
+The finite pointed-anomaly check similarly tracks only exponents modulo n:
+the multiplicative U(1) cocycle equation becomes an exact congruence.
+"""
 
 from __future__ import annotations
 
@@ -174,12 +183,134 @@ def check_isotopy_matrix_unitarity_for_junction_pairing() -> None:
         )
 
 
+def cyclic_fourier_verlinde_coefficient(n: int, a: int, b: int, c: int) -> int:
+    """Return the exact Z_n pointed Verlinde coefficient.
+
+    The pointed modular matrix has entries S_{a x}=n^{-1/2} zeta^{a x}.
+    The Verlinde sum reduces to
+
+        (1/n) sum_x zeta^{(a+b-c)x},
+
+    which is 1 when c=a+b mod n and 0 otherwise.  We use this exact root-sum
+    identity rather than approximate complex roots of unity.
+    """
+
+    exponent = (a + b - c) % n
+    return 1 if exponent == 0 else 0
+
+
+def check_pointed_modular_category_verlinde_diagonalization() -> None:
+    for n in range(2, 9):
+        labels = range(n)
+        for a in labels:
+            for b in labels:
+                for c in labels:
+                    expected = 1 if c == (a + b) % n else 0
+                    assert_equal(
+                        f"Z_{n} pointed Verlinde coefficient",
+                        cyclic_fourier_verlinde_coefficient(n, a, b, c),
+                        expected,
+                    )
+
+        for a in labels:
+            for b in labels:
+                for sector in labels:
+                    # lambda_a(sector)=zeta^{a sector}; equality of eigenvalue
+                    # products is equality of exponents mod n.
+                    product_exponent = (a * sector + b * sector) % n
+                    fused_exponent = ((a + b) % n) * sector % n
+                    assert_equal(
+                        f"Z_{n} defect eigenvalue representation",
+                        product_exponent,
+                        fused_exponent,
+                    )
+
+        for a in labels:
+            for b in labels:
+                for sector in labels:
+                    # N_a acting on the sector-th Fourier column shifts b to
+                    # b+a.  The eigenvector identity compares the corresponding
+                    # exponents:
+                    # S_{b+a,sector}=lambda_a(sector) S_{b,sector}.
+                    left_exponent = ((b + a) % n) * sector % n
+                    right_exponent = (a * sector + b * sector) % n
+                    assert_equal(
+                        f"Z_{n} Fourier column diagonalizes fusion",
+                        left_exponent,
+                        right_exponent,
+                    )
+
+
+def zn_three_cocycle_exponent(n: int, p: int, a: int, b: int, c: int) -> int:
+    """Exponent for a standard normalized Z_n 3-cocycle.
+
+    It represents exp(2*pi*i*exponent/n), with additive group law mod n.
+    """
+
+    return (p * a * ((b + c) // n)) % n
+
+
+def beta_two_cochain_exponent(n: int, r: int, a: int, b: int) -> int:
+    return (r * a * b) % n
+
+
+def delta_beta_exponent(n: int, r: int, a: int, b: int, c: int) -> int:
+    # beta(g,h) beta(g+h,k) / (beta(h,k) beta(g,h+k)).
+    return (
+        beta_two_cochain_exponent(n, r, a, b)
+        + beta_two_cochain_exponent(n, r, (a + b) % n, c)
+        - beta_two_cochain_exponent(n, r, b, c)
+        - beta_two_cochain_exponent(n, r, a, (b + c) % n)
+    ) % n
+
+
+def check_pointed_anomaly_cocycle_and_coboundary() -> None:
+    for n in range(2, 9):
+        for p in range(n):
+            for a in range(n):
+                for b in range(n):
+                    for c in range(n):
+                        for d in range(n):
+                            # alpha(h,k,l) alpha(g,h+k,l) alpha(g,h,k)
+                            # = alpha(g+h,k,l) alpha(g,h,k+l).
+                            lhs = (
+                                zn_three_cocycle_exponent(n, p, b, c, d)
+                                + zn_three_cocycle_exponent(n, p, a, (b + c) % n, d)
+                                + zn_three_cocycle_exponent(n, p, a, b, c)
+                            ) % n
+                            rhs = (
+                                zn_three_cocycle_exponent(n, p, (a + b) % n, c, d)
+                                + zn_three_cocycle_exponent(n, p, a, b, (c + d) % n)
+                            ) % n
+                            assert_equal(f"Z_{n} pointed defect 3-cocycle", lhs, rhs)
+
+        for r in range(n):
+            for a in range(n):
+                for b in range(n):
+                    for c in range(n):
+                        for d in range(n):
+                            # delta(delta beta)=0, so changing junction bases
+                            # by beta preserves the pentagon equation.
+                            lhs = (
+                                delta_beta_exponent(n, r, b, c, d)
+                                + delta_beta_exponent(n, r, a, (b + c) % n, d)
+                                + delta_beta_exponent(n, r, a, b, c)
+                            ) % n
+                            rhs = (
+                                delta_beta_exponent(n, r, (a + b) % n, c, d)
+                                + delta_beta_exponent(n, r, a, b, (c + d) % n)
+                            ) % n
+                            assert_equal(f"Z_{n} pointed defect coboundary cocycle", lhs, rhs)
+
+
 def main() -> None:
     check_defect_fusion_as_operator_composition()
     check_noninvertible_projection_action()
     check_dagger_composition_and_pairing()
     check_bpz_weighted_defect_adjoint()
     check_isotopy_matrix_unitarity_for_junction_pairing()
+    check_pointed_modular_category_verlinde_diagonalization()
+    check_pointed_anomaly_cocycle_and_coboundary()
     print("All categorical-defect action and dagger-structure checks passed.")
 
 

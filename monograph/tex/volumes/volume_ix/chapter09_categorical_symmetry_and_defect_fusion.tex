@@ -748,8 +748,8 @@ then gives
   \mathbf 1\oplus\eta ,
 \]
 which is the noninvertible fusion rule above.  Thus the noninvertibility is
-not a slogan about duality; it is the algebraic memory of summing over
-\(\mathbb Z_2\)-bundles in the gauging interface.
+the algebraic memory of summing over \(\mathbb Z_2\)-bundles in the gauging
+interface.
 \end{remark}
 
 \section{SymTFT Interpretation In The Rational Example}
@@ -778,6 +778,69 @@ The first arrow is the boundary endpoint operation, and the second is the
 surrounding action on local operators.  The Ising computation above verifies
 the last map explicitly on the three primary sectors.
 
+\paragraph{Semisimple modular-category mechanism.}
+Here is the precise finite mechanism behind the rational examples.  Let
+\(\mathcal C\) be a semisimple modular tensor category with finite set
+\(\mathcal I\) of simple labels, vacuum label \(\mathbf 1\), fusion
+coefficients \(N_{ab}^{\ \ c}\), and modular matrix \(S_{ai}\).  When a
+Cardy diagonal full CFT with chiral category \(\mathcal C\) has been
+constructed, the topological defects preserving the chosen chiral algebra are
+labelled by the same simple objects \(a\in\mathcal I\).  The defect \(D_a\)
+acts diagonally on the bulk sector labelled by \(i\in\mathcal I\) by
+\begin{equation}
+  \lambda_a(i)=\frac{S_{ai}}{S_{\mathbf 1 i}} .
+  \label{eq:modular-defect-eigenvalue-general}
+\end{equation}
+The content of this formula is not that every categorical symmetry must be
+modular.  It is the finite semisimple mechanism by which the rational
+SymTFT comparison map becomes a computable operator on local sectors.
+
+The compatibility with fusion is the Verlinde diagonalization.  For each
+simple label \(a\), let \(N_a\) be the matrix
+\[
+  (N_a)_b{}^c=N_{ab}^{\ \ c}.
+\]
+The Verlinde formula says
+\begin{equation}
+  N_{ab}^{\ \ c}
+  =
+  \sum_{x\in\mathcal I}
+  \frac{S_{ax}S_{bx}S_{c^\vee x}}{S_{\mathbf 1 x}},
+  \label{eq:modular-verlinde-defect-diagonalization}
+\end{equation}
+where \(c^\vee\) is the dual label and the displayed convention assumes the
+standard unitary normalization of \(S\), so
+\(S_{c^\vee x}=S_{cx}^\ast\).  Multiplying
+\eqref{eq:modular-verlinde-defect-diagonalization} by \(S_{ci}\) and summing
+over \(c\), unitarity of \(S\) gives
+\begin{equation}
+  \sum_c N_{ab}^{\ \ c}S_{ci}
+  =
+  \frac{S_{ai}}{S_{\mathbf 1 i}}\,S_{bi}.
+  \label{eq:modular-n-matrix-eigenvector}
+\end{equation}
+Thus the \(i\)-th column of \(S\) is an eigenvector of \(N_a\) with
+eigenvalue \(\lambda_a(i)\).  Equivalently,
+\begin{equation}
+  \lambda_a(i)\lambda_b(i)
+  =
+  \sum_c N_{ab}^{\ \ c}\lambda_c(i).
+  \label{eq:modular-defect-eigenvalues-fusion-representation}
+\end{equation}
+This is the general version of the Ising calculation
+\eqref{eq:ising-line-eigenvalues}: the surrounding action is a representation
+of the fusion algebra because the modular \(S\)-matrix diagonalizes fusion.
+
+The boundary endpoint step is separate.  A three-dimensional Reshetikhin--
+Turaev theory built from \(\mathcal C\) supplies bulk topological lines
+labelled by \(\mathcal I\).  A choice of rational boundary condition supplies
+endpoint data turning those bulk lines into CFT defects.  The formula
+\eqref{eq:modular-defect-eigenvalue-general} describes the Cardy diagonal
+case after this endpoint functor has been chosen.  A non-diagonal modular
+invariant, a logarithmic theory, or an interacting continuum QFT without a
+known semisimple modular category requires different boundary and defect
+data; its defect category must be constructed from those data directly.
+
 \section{Anomaly As Obstruction To Condensation}
 
 An anomaly of a categorical symmetry is an obstruction to defining the defect
@@ -791,6 +854,70 @@ If the anomaly is cancelled by coupling to an invertible bulk, a defect
 network on the boundary is evaluated together with a bulk topological term.
 If the anomaly is trivialized by a local counterterm, the defect category can
 be modified by an equivalent associator or braiding datum.
+
+\paragraph{Pointed finite mechanism.}
+For ordinary finite invertible defects this obstruction is completely
+visible.  Let \(G\) be a finite group and let \(D_g\) be invertible defects
+with
+\[
+  D_g\otimes D_h\simeq D_{gh}.
+\]
+Choose junction isomorphisms
+\[
+  \mu_{g,h}:D_g\otimes D_h\to D_{gh}.
+\]
+The two ways of identifying
+\(((D_g\otimes D_h)\otimes D_k)\otimes D_l\) with \(D_{ghkl}\) can differ by
+a phase.  Equivalently, the associator is a function
+\[
+  \alpha(g,h,k)\in U(1)
+\]
+defined by
+\begin{equation}
+  \mu_{gh,k}\circ(\mu_{g,h}\otimes{\rm id}_{D_k})
+  =
+  \alpha(g,h,k)\,
+  \mu_{g,hk}\circ({\rm id}_{D_g}\otimes\mu_{h,k}).
+  \label{eq:pointed-defect-associator-phase}
+\end{equation}
+Coherent evaluation of a four-fold junction requires the pentagon identity.
+Substituting \eqref{eq:pointed-defect-associator-phase} into the pentagon
+gives
+\begin{equation}
+  \alpha(h,k,l)\,\alpha(g,hk,l)\,\alpha(g,h,k)
+  =
+  \alpha(gh,k,l)\,\alpha(g,h,kl).
+  \label{eq:pointed-defect-3-cocycle}
+\end{equation}
+This is precisely the inhomogeneous \(3\)-cocycle condition
+\(\delta\alpha=1\).  Thus the anomaly class of the pointed defect symmetry is
+\[
+  [\alpha]\in H^3(G,U(1))
+\]
+for a two-dimensional QFT, or more generally the corresponding degree
+\(D+1\) class for a \(D\)-dimensional finite symmetry defect network.
+
+The dependence on the choice of junction basis is also explicit.  Replacing
+\[
+  \mu_{g,h}\longmapsto \beta(g,h)\,\mu_{g,h},
+  \qquad \beta(g,h)\in U(1),
+\]
+changes the associator by
+\begin{equation}
+  \alpha(g,h,k)\longmapsto
+  \alpha(g,h,k)\,
+  \frac{\beta(g,h)\beta(gh,k)}
+       {\beta(h,k)\beta(g,hk)} .
+  \label{eq:pointed-defect-associator-coboundary}
+\end{equation}
+Hence only the cohomology class is invariant.  A local counterterm or
+redefinition of junction normalization can remove the anomaly exactly when
+\([\alpha]=0\).  If the class is nonzero, the same local formulas define a
+relative defect theory: the missing phase is supplied by an invertible bulk
+whose boundary variation is the cocycle \(\alpha\).  This finite pointed
+calculation is the model for the higher categorical obstruction, but it does
+not prove that a general interacting continuum QFT has finite junction spaces
+or a finite cohomological anomaly representative.
 
 \section{Beyond The Rational Example}
 

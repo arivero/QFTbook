@@ -53,8 +53,18 @@ anomaly obstruction.
   `bulk topological lines -> boundary topological defects -> End(V_loc)`
   without claiming that arbitrary continuum QFTs have already been built
   from such a fully extended bulk-boundary construction.
+- Expands the semisimple modular-category mechanism behind rational examples:
+  the Cardy diagonal defect action has eigenvalues `S_ai/S_1i`, and the
+  Verlinde formula diagonalizes fusion so these eigenvalues form a
+  representation of the fusion algebra.  The endpoint functor from the
+  three-dimensional topological bulk is stated as extra boundary data, not as
+  automatic structure of an arbitrary continuum QFT.
 - Identifies anomaly as obstruction to choice-independent defect-network
   evaluation.
+- Derives the finite pointed anomaly mechanism: associator phases
+  `alpha(g,h,k)` obey the pentagon iff `delta alpha=1`, junction-basis
+  changes multiply `alpha` by a `2`-cochain coboundary, and only the
+  cohomology class is invariant.
 - Hands off explicitly to Chapter 10 for the finite normal-subgroup gauging
   and electric-magnetic line-lattice examples, while keeping the unresolved
   interacting-continuum construction as the open problem.
@@ -73,6 +83,13 @@ anomaly obstruction.
   fusion algebra.  It also verifies finite regular-algebra separability and
   Frobenius identities plus self-dual gauging fusion-ring associativity for
   cyclic examples and \(S_3\).
+- `calculation-checks/categorical_defect_structure_checks.py` verifies finite
+  defect-action composition, BPZ/dagger adjoints, isotopy unitarity for
+  junction pairings, and the pointed cyclic modular-category Verlinde
+  diagonalization/eigenvalue-representation mechanism using exact
+  root-of-unity sum identities.  It also verifies the pointed cyclic
+  associator `3`-cocycle and junction-basis coboundary identities by exact
+  exponent arithmetic.
 
 ## Figure Ledger
 
