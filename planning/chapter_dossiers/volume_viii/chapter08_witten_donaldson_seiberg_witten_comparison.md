@@ -48,7 +48,10 @@ gauge theory.
   Atiyah-Singer.
 - Defines Donaldson simple type, the reduced Donaldson series, Donaldson
   basic classes, and the exponential simple-type structure theorem with
-  status separated from QFT construction.
+  status separated from QFT construction; the theorem boundary now separates
+  the finite-dimensional Donaldson input from the algebraic consequence that
+  the Gaussian-reduced series is a finite exponential sum obeying
+  constant-coefficient ODEs along every surface direction.
 - Recasts Uhlenbeck small-instanton, reducible, and obstructed strata as BV
   boundary functionals using the finite BV pushforward obstruction theorem.
 - Defines the Donaldson descent observables, their degrees, and the
@@ -96,7 +99,8 @@ gauge theory.
   characteristic-lift parity, K3 and elliptic-surface simple-type arithmetic,
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
   examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
-  and the trace-delta instanton action coefficient.
+  Donaldson finite-exponential moment reconstruction, and the trace-delta
+  instanton action coefficient.
 
 ## Figure Ledger
 
@@ -119,3 +123,8 @@ the Abelian monopole theory.
   boundary, deriving the chamber jump by Stokes' theorem, and identifying the
   reducible splitting/off-diagonal normal complex as the source of the link
   and the universal polynomial variables.
+- 2026-05-30 Donaldson simple-type proof-boundary pass: expanded the structure
+  theorem boundary by identifying the point-operator minimal-polynomial input,
+  the geometric content of finite characteristic exponential weights after the
+  Gaussian factor is removed, and the purely algebraic finite-exponential ODE
+  and moment-reconstruction consequences.

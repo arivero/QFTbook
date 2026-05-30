@@ -11,6 +11,32 @@ def assert_equal(lhs, rhs, message: str) -> None:
         raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
 
 
+def solve_linear_system(matrix: list[list[Fraction]], rhs: list[Fraction]) -> list[Fraction]:
+    size = len(rhs)
+    augmented = [row[:] + [rhs_entry] for row, rhs_entry in zip(matrix, rhs)]
+    for pivot_col in range(size):
+        pivot_row = next(
+            row for row in range(pivot_col, size) if augmented[row][pivot_col] != 0
+        )
+        augmented[pivot_col], augmented[pivot_row] = (
+            augmented[pivot_row],
+            augmented[pivot_col],
+        )
+        pivot = augmented[pivot_col][pivot_col]
+        augmented[pivot_col] = [entry / pivot for entry in augmented[pivot_col]]
+        for row in range(size):
+            if row == pivot_col:
+                continue
+            factor = augmented[row][pivot_col]
+            if factor == 0:
+                continue
+            augmented[row] = [
+                entry - factor * pivot_entry
+                for entry, pivot_entry in zip(augmented[row], augmented[pivot_col])
+            ]
+    return [augmented[row][-1] for row in range(size)]
+
+
 def chi(b1: int, b2_plus: int, b2_minus: int) -> int:
     return 2 - 2 * b1 + b2_plus + b2_minus
 
@@ -289,6 +315,23 @@ def check_donaldson_blowup_cosh_bookkeeping() -> None:
         assert_equal(combined_coeff, cosh_coeff, "Donaldson blow-up cosh coefficient")
 
 
+def check_donaldson_exponential_moment_reconstruction() -> None:
+    # If F(t)=sum_i a_i exp(lambda_i t), the first N moments recover the
+    # coefficients once the distinct weights lambda_i are known.
+    weights = [Fraction(-2), Fraction(1), Fraction(3)]
+    coefficients = [Fraction(5), Fraction(-7), Fraction(11)]
+    moments = [
+        sum(coefficient * (weight**power) for coefficient, weight in zip(coefficients, weights))
+        for power in range(len(weights))
+    ]
+    vandermonde = [
+        [weight**power for weight in weights]
+        for power in range(len(weights))
+    ]
+    recovered = solve_linear_system(vandermonde, moments)
+    assert_equal(recovered, coefficients, "Donaldson finite exponential moments")
+
+
 def factorial(n: int) -> int:
     value = 1
     for k in range(2, n + 1):
@@ -318,6 +361,7 @@ def main() -> None:
     check_moore_witten_constants_for_tables()
     check_kotschick_morgan_degree_bookkeeping()
     check_donaldson_blowup_cosh_bookkeeping()
+    check_donaldson_exponential_moment_reconstruction()
     check_trace_delta_action_normalization()
     print("Donaldson-Witten and Seiberg-Witten comparison checks passed.")
 
