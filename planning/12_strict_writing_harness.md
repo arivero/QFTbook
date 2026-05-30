@@ -334,6 +334,16 @@ finite-matrix estimates, algorithmic equations, and residual criteria belong
 in the methodological chapter; a specialized chapter earns their reappearance
 only by carrying out an actual model-specific calculation or comparison.
 
+This is a hard rejection criterion.  A concrete result means a stated
+observable, spectral datum, bound, coefficient, pole location, susceptibility,
+matrix element, continuum extrapolation, or controlled numerical/analytic
+comparison whose definition uses the model-specific field content,
+regularization, symmetry channel, and limit.  A future plan, a generic route,
+or the statement that the method could be applied later is not a concrete
+result.  In such a case the specialized chapter may keep at most a compact
+cross-reference to the methodological chapter and a list of the model-specific
+inputs that would be required before the method can be used there.
+
 Proof audits must read the mathematical substance of each proof under review:
 the statement, hypotheses, dependencies, and proof body must be checked
 together.  Text searches for phrases such as "immediate" or length scans may
