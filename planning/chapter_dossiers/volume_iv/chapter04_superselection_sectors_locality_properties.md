@@ -16,6 +16,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `S(\rho|\sigma)`: Araki relative entropy.
 - `\Delta`, `J`: modular operator and modular conjugation.
 - `DHR`: Doplicher--Haag--Roberts localized transportable sector datum.
+- `X_q`, `\mu_N`, `\mathcal F_q`: pointed finite-sector object, recovered
+  finite compact group, and charged degree in the finite DR diagnostic.
 
 ## Claim Ledger
 
@@ -26,6 +28,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Keeps split inclusions and regulator approximations logically distinct.
 - Uses modular-localization statements only under their stated algebraic
   hypotheses.
+- Anchors the Doplicher--Roberts compact-group output in a finite pointed
+  sector calculation: tensor automorphisms of the fiber functor are characters
+  and averaging over the reconstructed group projects to neutral degree.
 
 ## Figure Ledger
 
@@ -34,8 +39,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 
 ## Calculation Checks
 
-- No standalone calculation-check companion is attached to this chapter.  The
-  verification burden is proof-ledger review, text audit, and LaTeX build.
+- `calculation-checks/dhr_dr_reconstruction_checks.py` verifies the finite
+  pointed \(\mathbb Z/N\mathbb Z\) diagnostic for Doplicher--Roberts
+  reconstruction: tensor automorphisms form \(\mu_N\) and the fixed-degree
+  projection keeps exactly degree zero.
 
 ## Audit Notes
 
@@ -52,6 +59,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   Cuntz-type relations, and records why long-range Gauss-law, Wilson-line,
   infraparticle, and confining sectors require localization categories beyond
   bounded-region DHR sectors.
+- 2026-05-30 finite pointed DR diagnostic pass: added the
+  \(\mathbb Z/N\mathbb Z\) pointed category calculation after the
+  Doplicher--Roberts theorem boundary and paired it with an exact modular
+  arithmetic calculation check.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost
