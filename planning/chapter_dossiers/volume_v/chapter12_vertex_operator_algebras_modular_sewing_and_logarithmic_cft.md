@@ -151,8 +151,11 @@ current QFT scope.
   invariance constraints \(MS=SM\), \(MT=TM\).
 - Defines chiral torus one-point trace blocks, states Zhu modular covariance
   with the primary weight factor and explicit rationality/\(C_2\)-cofiniteness
-  hypotheses, and explains why full-CFT torus one-point functions constrain
-  OPE tensors beyond the scalar partition function.
+  hypotheses, expands the one-point modular mechanism through coordinate
+  transport on the once-punctured torus, primary versus descendant mixing,
+  finite \(C_2\)-cofinite trace systems, and explains why full-CFT torus
+  one-point functions constrain OPE tensors beyond the scalar partition
+  function.
 - Defines diagonal Verlinde topological defects \(D_a\), proves their fusion
   from the simultaneous diagonalization form of the Verlinde formula, proves
   the temporal-defect to spatial-defect modular \(S\)-move, and works the
@@ -279,3 +282,8 @@ current QFT scope.
   common-domain commutators to von Neumann locality, and spelling out the
   finite-energy vector-to-field reconstruction mechanism; added an exact
   smooth-smearing tail check.
+- 2026-05-30 torus one-point modular mechanism pass: expanded the
+  Zhu one-point modular covariance theorem boundary by spelling out
+  zero-mode trace finiteness, primary coordinate weight, descendant
+  quasimodular mixing, the finite marked-state trace system from
+  \(C_2\)-cofiniteness, and the remaining analytic modular-closure input.

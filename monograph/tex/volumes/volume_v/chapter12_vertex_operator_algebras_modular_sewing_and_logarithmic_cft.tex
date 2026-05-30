@@ -2014,17 +2014,61 @@ For \(v=\mathbf 1\), \(\rho_v\) is the character modular representation
 used above.
 \end{quotedtheorem}
 
-The factor \((c\tau+d)^{h_v}\) is just the conformal weight factor for the
+The factor \((c\tau+d)^{h_v}\) is the conformal weight factor for the
 change of torus coordinate.  The theorem input is the finite-dimensionality
-and holomorphic modular closure of the trace functions.  A full-CFT torus
-one-point function of a bulk primary \(\Phi\) of weights
+and holomorphic modular closure of the trace functions.
+
+\paragraph{Mechanism behind torus one-point covariance.}
+The one-point theorem is the genus-one version of transporting a conformal
+block on a once-punctured torus.  The point of the zero mode \(o(v)\) is that
+it preserves \(L_0\)-eigenspaces; hence the trace
+\[
+  F_i(v;\tau)=
+  {\rm Tr}_{M_i}o(v)q^{L_0-c/24}
+\]
+is a genuine finite-energy trace after summing over each \(L_0\)-eigenspace.
+In Zhu's square-bracket coordinate, the inserted state is transported by the
+coordinate change at the puncture.  For a Virasoro primary \(v\), this
+transport is scalar:
+\[
+  v\longmapsto (c\tau+d)^{h_v}v
+\]
+under the modular coordinate change
+\[
+  (z,\tau)\longmapsto
+  \left(\frac{z}{c\tau+d},\frac{a\tau+b}{c\tau+d}\right).
+\]
+For descendants, the same coordinate change also produces lower-descendant
+terms involving the Schwarzian and the square-bracket Virasoro modes; those
+terms are the source of the quasimodular \(G_2\)-mixing in genus-one Ward
+recursions.  The primary hypothesis in
+Theorem~\ref{qthm:zhu-one-point-modular-covariance} is exactly the condition
+that this coordinate transport has a single leading weight factor.
+
+The finite-dimensional closure is the same \(C_2\)-cofinite trace-recursion
+mechanism used for characters, but with \(v\) kept as a marked insertion.
+Moving a square-bracket field around the torus expresses traces with
+\([-2]\)-descendants in terms of traces with finitely many lower
+square-bracket descendants and modular forms.  Rationality identifies the
+simple ordinary modules as a finite set of sectors, while \(C_2\)-cofiniteness
+keeps the marked-state quotient finite.  Therefore the traces
+\[
+  \{F_i(w;\tau):\ i\in I,\ w\in W_v\}
+\]
+for the finite descendant span \(W_v\) determined by \(v\) satisfy a finite
+modular differential system.  Zhu's analytic theorem supplies convergence on
+\(\mathbb H\), continuation of this finite solution space, and its invariance
+under \(S\) and \(T\).  Formula
+\eqref{eq:zhu-one-point-modular-covariance} is the primary, one-marked-state
+component of that finite system.
+
+A full-CFT torus one-point function of a bulk primary \(\Phi\) of weights
 \((h,\bar h)\) is a sesquilinear pairing of the corresponding chiral
 one-point-block vectors.  Modular covariance therefore requires an invariant
 coefficient tensor for
 \(\rho_\Phi(\gamma)\otimes \overline{\rho_\Phi(\gamma)}\), together with the
 weight factor \((c\tau+d)^h(c\bar\tau+d)^{\bar h}\).  Thus torus one-point
-functions constrain bulk OPE data; they are not determined by the scalar
-partition function alone.
+functions constrain bulk OPE data beyond the scalar partition function.
 
 Topological defect lines give a second genus-one probe.  In a diagonal
 rational full CFT built from a unitary modular tensor category
