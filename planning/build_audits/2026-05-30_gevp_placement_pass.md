@@ -21,6 +21,12 @@ supersymmetric gauge theory.
   channel-specific application:
   \(C_+(t)\), \(C_-(t)\), and \(C_F(t)\) define the sources whose extracted
   pole locations are compared for supersymmetry restoration.
+- Follow-up after Xi flagged Proposition 92.10: demoted "Common pole
+  extraction in a restored massive multiplet" from a proposition/proof to an
+  explicitly framed application of the general spectral estimator.  The text
+  now says the bound is not a theorem special to \(\mathcal N=1\) SYM; the
+  only pure-SYM content is the channel choice and the continuum-restoration
+  diagnostic.
 - Removed the duplicated finite-state GEVP diagonalization proof from the
   pure-SYM proposition and redirected that general linear-algebra analysis to
   the Volume XI finite-volume GEVP section.

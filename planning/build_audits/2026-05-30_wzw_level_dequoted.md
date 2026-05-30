@@ -34,3 +34,20 @@ chapter.  The chapter uses the defining variation and the neutral-pion
 two-photon coefficient.  Issue #696 remains open for finite \(SU(2)\) global
 anomaly phases, determinant/Pfaffian-line holonomy, APS/eta bridges, and other
 anomaly theorem-boundary blocks.
+
+## Same-Day Continuation: Finite \(SU(2)\)
+
+A second #696 pass in the same chapter removed the finite \(SU(2)\) doublet
+anomaly `quotedtheorem`.  The QFT conclusion now appears as a local
+proposition proved from:
+
+- Dai--Freed/Pfaffian-line holonomy for one pseudoreal Weyl doublet;
+- multiplicativity of holonomy under tensor product for \(n\) independent
+  doublets;
+- the five-dimensional mod-two index input for the Witten mapping torus over
+  \(S^4\);
+- descent of the fermion measure to the quotient by gauge transformations.
+
+The remaining boundary is now narrower: the pure index-theoretic result itself
+and the general determinant/Pfaffian-line holonomy formulas still require the
+Volume XII proof-status pass before #696 can close.

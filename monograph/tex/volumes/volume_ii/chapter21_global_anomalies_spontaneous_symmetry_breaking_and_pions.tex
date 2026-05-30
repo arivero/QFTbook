@@ -398,19 +398,16 @@ by
   \label{eq:su2-global-anomaly-pfaffian}
 \end{equation}
 For \(M=S^4\) and \(g\) representing the nontrivial class in
-\(\pi_4(SU(2))\simeq\mathbb Z_2\), the mod-two index is \(1\) for one
-fundamental Weyl doublet.  Thus an odd number of such doublets has a finite
-\(SU(2)\) anomaly.  The local cubic anomaly vanishes because \(SU(2)\) has no
-independent symmetric cubic invariant; equation
-\eqref{eq:su2-global-anomaly-pfaffian} detects an obstruction invisible to the
-infinitesimal descent calculation.
+\(\pi_4(SU(2))\simeq\mathbb Z_2\), the five-dimensional mod-two index theorem
+gives \(\zeta(X_g,\sigma_g,E_g)=1\) for one fundamental Weyl doublet.  The
+following proposition is the QFT consequence of this index-theoretic input.
 
-\begin{quotedtheorem}[Finite \(SU(2)\) anomaly of doublets]
-\label{qthm:finite-su2-anomaly-doublets}
+\begin{proposition}[Finite \(SU(2)\) anomaly criterion for doublets]
+\label{prop:finite-su2-anomaly-doublets}
 Let \(n\) left-handed Weyl fermions transform as fundamental doublets of a
-background \(SU(2)\) symmetry on a compact spin four-manifold.  For a closed
-loop of backgrounds represented by the mapping torus
-\((X_g,\sigma_g,E_g)\), the Pfaffian line has holonomy
+background \(SU(2)\) symmetry on a compact spin four-manifold
+\((M,\sigma_M)\).  For a closed loop of backgrounds represented by the mapping
+torus \((X_g,\sigma_g,E_g)\), the product Pfaffian line has holonomy
 \[
   \operatorname{Hol}(X_g,\sigma_g,E_g)
   =
@@ -418,30 +415,51 @@ loop of backgrounds represented by the mapping torus
 \]
 For the test family \(M=S^4\) with \(g\) the generator of
 \(\pi_4(SU(2))\simeq\mathbb Z_2\), one has
-\(\zeta(X_g,\sigma_g,E_g)=1\).  Hence an odd number of doublets has a genuine
-finite \(SU(2)\) anomaly, while this particular obstruction cancels for an
-even number.
-\end{quotedtheorem}
+\(\zeta(X_g,\sigma_g,E_g)=1\).  Hence an odd number of doublets has a finite
+\(SU(2)\) anomaly.  This obstruction is not detected by the local cubic
+descent calculation, because \(SU(2)\) has no independent symmetric cubic
+invariant.
+\end{proposition}
 
-The fermionic functional integral for one pseudoreal Weyl doublet is a
-Pfaffian rather than an ordinary complex determinant.  Along a loop of
-backgrounds, parallel transport of the Pfaffian line is computed by the
-Dai--Freed holonomy.  In the pseudoreal five-dimensional problem the relevant
-eta-invariant reduces mod \(2\) to the real Dirac index
-\(\zeta(X_g,\sigma_g,E_g)\), giving the sign
-\eqref{eq:su2-global-anomaly-pfaffian}.  For \(n\) independent doublets the
-Pfaffian line is the tensor product of \(n\) copies, so the holonomy is the
-\(n\)-th power of the one-doublet sign.  The Witten test family on \(S^4\)
-evaluates the mod-two index to \(1\).  Therefore the sign around the
-nontrivial loop is \((-1)^n\).  A gauge theory requires the fermion measure to
-descend to a single-valued function on the quotient by background gauge
-transformations; a loop with holonomy \(-1\) prevents this descent.
+\begin{proof}
+For one pseudoreal Weyl doublet the fermionic functional integral is not an
+ordinary complex determinant function on the space of backgrounds; it is a
+section of the real Pfaffian line associated with
+\(D_{B,\sigma_M}^+\).  Equation~\eqref{eq:su2-global-anomaly-pfaffian} states
+that parallel transport of this line around the background loop represented
+by \((X_g,\sigma_g,E_g)\) multiplies the Pfaffian by
+\((-1)^{\zeta(X_g,\sigma_g,E_g)}\).  This is the Dai--Freed holonomy
+specialized to the pseudoreal \(SU(2)\) doublet, where the eta phase reduces
+to the mod-two index sign.
 
-If this \(SU(2)\) symmetry is gauged, the sign in
-\eqref{eq:su2-global-anomaly-pfaffian} prevents the fermion measure from
-descending to a function on gauge-equivalence classes of backgrounds.  If the
-same \(SU(2)\) is kept as a global symmetry, the sign is an anomaly class that
-must be reproduced by the infrared theory.
+For \(n\) independent doublets the Grassmann integral factors before the
+fermions are coupled by any \(SU(2)\)-invariant mass term, and the anomaly
+line is the tensor product of the \(n\) one-doublet Pfaffian lines.  Holonomy
+is multiplicative under tensor product, so the sign is the \(n\)-th power of
+the one-doublet sign:
+\[
+  \operatorname{Hol}(X_g,\sigma_g,E_g)
+  =
+  \bigl((-1)^{\zeta(X_g,\sigma_g,E_g)}\bigr)^n
+  =
+  (-1)^{n\,\zeta(X_g,\sigma_g,E_g)} .
+\]
+For the Witten mapping torus over \(S^4\), the mod-two index input gives
+\(\zeta=1\).  The holonomy around the nontrivial loop is therefore
+\((-1)^n\).
+
+If the \(SU(2)\) is gauged, the fermion measure must descend from the space
+of connections to the quotient by gauge transformations.  A loop in the
+quotient whose lifted Pfaffian line has holonomy \(-1\) prevents such a
+single-valued descent: after going around the loop, a putative gauge-invariant
+partition function would have to equal its negative.  Thus odd \(n\) is
+inconsistent with gauging this \(SU(2)\) symmetry.  If the same \(SU(2)\) is
+kept as a background global symmetry, the same sign is an anomaly class that
+must be reproduced by any infrared description.  Since the local cubic
+invariant \(d^{abc}=\operatorname{tr}(t^a\{t^b,t^c\})\) vanishes for
+\(\mathfrak{su}(2)\), this anomaly is a finite global obstruction rather than
+an infinitesimal local descent anomaly.
+\end{proof}
 
 \section{Anomaly Inflow and Mapping Tori}
 

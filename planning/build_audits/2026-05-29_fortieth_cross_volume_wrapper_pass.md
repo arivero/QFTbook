@@ -46,14 +46,17 @@ The theorem-form audit now rejects any reintroduction of the three SPDE
 transport criteria, and the old projective-kernel criterion title, as numbered
 theorem-family wrappers.
 
-## Read and Retained
+## Read, Retained, or Later Corrected
 
-The following short candidates were read and retained because their proof
-content is mathematical rather than wrapper-like:
+The following short candidates were read during this pass.  Later audit
+corrections are recorded here rather than left as stale retention claims:
 
-- `Common pole extraction in a restored massive multiplet`, whose proof uses a
-  spectral decomposition, a generalized eigenvalue problem, and an explicit
-  exponentially small excited-state remainder.
+- `Common pole extraction in a restored massive multiplet` was initially
+  retained here, but Xi later flagged that it was still misleadingly placed as
+  a proposition in the \(\mathcal N=1\) SYM section.  The 2026-05-30
+  follow-up demoted it to an application of the general finite-volume
+  spectral estimator; the quantitative bound remains, but no longer carries a
+  theorem-family wrapper.
 
 - `Forward spin-polarizability and GDH sum rules`, whose proof uses odd
   forward-dispersion analyticity, a subtraction condition, the optical theorem,
@@ -95,4 +98,3 @@ not be treated as closure; every proof still needs to be read semantically.
 - `tools/audit_chapter_dossiers.sh`
 - `tools/build_monograph.sh`
 - `pdfinfo monograph/tex/main.pdf | rg '^Pages:'` gives `Pages: 2592`
-

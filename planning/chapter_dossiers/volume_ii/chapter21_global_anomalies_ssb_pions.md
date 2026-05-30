@@ -352,6 +352,13 @@
   comparing the \(SU(N_f)_L\) descent coefficient of one color copy with the
   unit-level gauged WZW variation; Wess--Zumino consistency is identified as
   the reason the higher-background terms are fixed in the same cocycle class.
+- 2026-05-30 issue #696 finite-\(SU(2)\) pass: removed the finite-doublet
+  anomaly quoted theorem from the chapter.  The QFT conclusion is now a local
+  proposition proved from Dai--Freed/Pfaffian-line holonomy, tensor-product
+  multiplicativity for \(n\) doublets, and the five-dimensional mod-two index
+  input for the Witten mapping torus; the proof explicitly separates gauged
+  inconsistency from global-symmetry anomaly matching and explains why the
+  obstruction is invisible to cubic local descent.
 - 2026-05-25 issue #472 pass: added a named chiral perturbation theory section
   with Weinberg power counting, the full three-flavor Gasser--Leutwyler
   \(L_1,\ldots,L_{10}\) even-parity \(O(p^4)\) basis plus \(H_1,H_2\), the
