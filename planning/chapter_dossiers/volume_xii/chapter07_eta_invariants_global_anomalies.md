@@ -44,9 +44,11 @@ global anomaly as an explicit mod-two-index example.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
-  derives the parity criterion \(2j\equiv1\pmod4\) using exact binomial
-  parity, while explicitly separating the five-dimensional real-index theorem
-  from the subsequent trace-convention arithmetic.
+  derives the trace-delta Dynkin index for spin-\(j\) representations from
+  the \(J_3\)-weight sum, then derives the parity criterion
+  \(2j\equiv1\pmod4\) using exact binomial parity, while explicitly separating
+  the five-dimensional real-index theorem from the subsequent
+  trace-convention arithmetic.
 - Explains Dai--Freed inflow as a boundary-line trivialization and derives the
   descent limit for contractible loops.
 - Records the interacting-QFT anomaly-line construction as an open problem.
@@ -87,3 +89,8 @@ global anomaly as an explicit mod-two-index example.
   what QFT conclusions are derived from it.  The remaining debt is a possible
   later global-analysis appendix proving APS/Bismut--Freed/mod-two index
   infrastructure rather than a hidden QFT anomaly claim.
+- 2026-05-30 SU(2) trace-delta arithmetic pass: expanded the Witten anomaly
+  theorem boundary by deriving \(T_\Delta(R_j)\) from finite-dimensional
+  \(SU(2)\) weights in the monograph's \(t_a=\sqrt2 J_a\) normalization and
+  isolating the \(2j\equiv1\pmod4\) parity criterion from the quoted
+  five-dimensional mod-two index input.

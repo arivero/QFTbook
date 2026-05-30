@@ -424,6 +424,63 @@ For the mapping torus of the generator of \(\pi_4(SU(2))\),
 \end{equation}
 \end{quotedtheorem}
 
+\paragraph{Trace-delta normalization in the \(SU(2)\) representation ring.}
+The arithmetic in Theorem~\ref{qthm:witten-su2-mod-two-index} uses the same
+trace convention as the instanton index formula
+\eqref{eq:index-trace-delta-instanton-number}.  Let \(J_a\) be the usual
+Hermitian spin-\(j\) generators with
+\([J_a,J_b]=\ii\epsilon^c{}_{ab}J_c\) and \(J_3\)-weights
+\[
+  m=-j,-j+1,\ldots,j .
+\]
+Rotational invariance of the irreducible representation gives
+\[
+  \operatorname{tr}_{R_j}(J_aJ_b)=C_j\delta_{ab}.
+\]
+Taking \(a=b=3\) fixes
+\begin{equation}
+  C_j
+  =
+  \sum_{m=-j}^{j}m^2
+  =
+  \frac13j(j+1)(2j+1).
+  \label{eq:su2-spin-j-half-trace-index}
+\end{equation}
+The monograph's trace-delta basis is \(t_a=\sqrt2\,J_a\), since the
+fundamental spin-\(\frac12\) representation then has
+\(\operatorname{tr}_{\square}(t_at_b)=\delta_{ab}\).  Therefore
+\begin{equation}
+  T_\Delta(R_j)
+  =
+  2C_j
+  =
+  \frac23j(j+1)(2j+1)
+  =
+  \frac{n(n+1)(n+2)}6,
+  \qquad n=2j .
+  \label{eq:su2-spin-j-trace-delta-derived}
+\end{equation}
+This derivation fixes the normalization of the integer that appears in the
+mod-two index theorem; it is not an independent anomaly calculation.
+
+The parity of \eqref{eq:su2-spin-j-trace-delta-derived} is equally explicit:
+\[
+  T_\Delta(R_j)=\binom{n+2}{3}.
+\]
+Lucas' binary criterion for binomial coefficients modulo \(2\) says that
+\(\binom N3\) is odd exactly when the two lowest binary digits of \(N\) are
+both \(1\).  With \(N=n+2\), this is
+\begin{equation}
+  n+2\equiv3\pmod4,
+  \qquad\hbox{equivalently}\qquad
+  n=2j\equiv1\pmod4 .
+  \label{eq:su2-witten-parity-arithmetic}
+\end{equation}
+Thus the quoted global-analysis input is the mod-two-index equality
+\eqref{eq:witten-su2-index-parity-dynkin}; the representation normalization
+and the \(2j\equiv1\pmod4\) criterion are ordinary finite-dimensional
+\(SU(2)\) arithmetic in the chapter's trace convention.
+
 \paragraph{Topological content of the mapping-torus index.}
 The theorem is the point where topology enters the four-dimensional anomaly.
 The gauge transformation \(g\) representing the nontrivial element of
