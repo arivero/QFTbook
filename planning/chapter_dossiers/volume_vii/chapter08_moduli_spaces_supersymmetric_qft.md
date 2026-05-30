@@ -18,6 +18,14 @@ later lower-dimensional examples, protected sectors, and localization.
 - `M`, `H_p`, `A_p`, `G_p`: quantum moduli space, Hilbert space, local
   operator algebra, and background response in vacuum `p`.
 - `R_ch`, `ev_p`: chiral ring and evaluation homomorphism at a vacuum.
+- `F`, `j_A^mu`, `Q_A`, `q_A`, `Hilb_q`: compact internal global symmetry,
+  conserved currents, commuting charge operators, fixed charge vector, and
+  the corresponding joint charge sector.
+- `mu^A`, `H_mu`: chemical potentials and the Hamiltonian variational
+  operator \(H-\mu^AQ_A\).
+- `K_A`, `M_gap(p)`, `E_EFT(q,R)`: branch isometry vector fields, transverse
+  mass scale of the branch EFT, and fixed-charge energy computed from the
+  branch effective action.
 - `Q^a_i`, `tilde Q_a^i`, `M^i_j`: SQCD quarks, antiquarks, and mesons.
 - `P_a^I`, `V^{IJ}`: \(SU(2)\), \(N_f=2\) doublet fields and antisymmetric
   meson/baryon Plucker coordinates.
@@ -67,6 +75,14 @@ later lower-dimensional examples, protected sectors, and localization.
   Hilbert, operator, metric, and background-response data.
 - Relates chiral rings to holomorphic functions under explicit separation and
   reducedness hypotheses.
+- Adds the fixed-charge/large-charge probe of a branch: defines charge
+  sectors, chemical potentials, homogeneous charged saddles on the cylinder,
+  and the Noether map from branch EFT data to fixed-charge energy.
+- States the conformal bridge precisely: via the state-operator theorem,
+  large-charge local operators of definite scaling dimension encode
+  fixed-charge energy eigenstates, so the Hellerman large-charge expansion
+  supplies asymptotic charged-sector information about the branch EFT rather
+  than a full construction of the quantum vacuum datum.
 - Records `N=1` SQCD branch behavior and `N=2` Coulomb/Higgs/mixed branch
   structures, while explicitly marking the SQCD table as an orientation
   ledger rather than a proof.
@@ -118,3 +134,7 @@ local models.
   the Wilsonian input \(\operatorname{Pf}(V)=\Lambda_h^4\); smoothness,
   Darboux reduction, the two-vacuum solution, and threshold matching are
   finite algebraic consequences and are now presented as such.
+- 2026-05-30 moduli-construction clarification: expanded Open
+  Problem~93.3 so it explicitly distinguishes chiral-ring reconstruction of
+  reduced holomorphic coordinates from fixed-charge/large-charge
+  reconstruction of asymptotic branch EFT data.
