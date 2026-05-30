@@ -1668,6 +1668,71 @@ class vanishes.  If it does not vanish, no local counterterm restores the
 quantum master equation in this perturbative local cohomology.
 \end{quotedtheorem}
 
+\paragraph{QME-to-descent mechanism.}
+Let the loop expansion of the regulated 1PI effective action be
+\[
+  \Gamma_\Lambda
+  =
+  S_\Lambda+\sum_{\ell\ge1}\hbar^\ell\Gamma_{\Lambda,\ell}.
+\]
+Set \(\Gamma_{\Lambda,0}=S_\Lambda\).
+The quantum master defect at the first loop order \(\ell_0\) where it is
+nonzero has the local form
+\[
+  \mathcal B_{\ell_0}
+  =
+  \frac12\sum_{\ell_1+\ell_2=\ell_0}
+  (\Gamma_{\Lambda,\ell_1},\Gamma_{\Lambda,\ell_2})
+  -\ii\Delta_\Lambda\Gamma_{\Lambda,\ell_0-1}
+  =
+  \int_M a_4^{(1)} ,
+\]
+where the BV antibracket has ghost number \(1\) and the density
+\(a_4^{(1)}\) is a local four-form of ghost number \(1\).  Applying the
+linearized classical BV differential \(s_{\rm BV}=(S_\Lambda,-)\) to the QME
+and using the Jacobi identity gives
+\[
+  s_{\rm BV} a_4^{(1)}=\dd a_3^{(2)} .
+\]
+Adding a local counterterm \(B_4^{(0)}\) to
+\(\Gamma_{\Lambda,\ell_0}\) changes the density by
+\[
+  a_4^{(1)}
+  \longmapsto
+  a_4^{(1)}+s_{\rm BV}B_4^{(0)}+\dd B_3^{(1)} ,
+\]
+so the obstruction to restoring the QME at this order is a class of
+\(H^{1,4}(s_{\rm BV}\mid\dd)\).
+
+For the chiral Yang--Mills field content, the BV--BRST comparison map sends
+this class to the ordinary consistent gauge-anomaly class described in
+Chapter~\ref{ch:volume-ii-20}.  In the anti-Hermitian descent convention that
+chapter uses,
+\[
+  I_6
+  =
+  \frac{\ii}{24\pi^2}
+  \sum_i\operatorname{Tr}_{R_i}(\mathsf F^3)
+\]
+is closed and gauge invariant, and
+\[
+  I_6=\dd I_5^{(0)},\qquad sI_5^{(0)}=\dd I_4^{(1)}
+\]
+produces the representative \(I_4^{(1)}\).  Since \(\mathsf F^a\) are
+two-forms, their products commute, and the coefficient multiplying
+\(\mathsf F^a\mathsf F^b\mathsf F^c\) is exactly the symmetric invariant
+tensor
+\[
+  \sum_i d_{R_i}^{abc}
+  =
+  \sum_i\operatorname{Tr}_{R_i}(t^{(a}t^bt^{c)}).
+\]
+The local cohomology theorem identifies these degree-three invariant
+polynomials with the cubic gauge part of the relative group
+\(H^{1,4}(s_{\rm BV}\mid\dd)\).  Hence a vanishing total tensor gives the
+zero class in this sector, while a nonzero total tensor gives a QME defect
+whose class is invariant under local counterterm changes.
+
 Equation~\eqref{eq:qme-anomaly-defect} and the consistency identity
 \eqref{eq:qme-defect-consistency} show that the first nonzero QME defect is a
 ghost-number-one \(s_{\rm BV}\)-cocycle modulo total derivatives.  The

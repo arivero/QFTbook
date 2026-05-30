@@ -183,6 +183,11 @@
   by descent from \(\frac{\ii}{24\pi^2}\operatorname{Tr}_R\mathsf F^3\), and
   vanishes exactly when the total symmetric tensor \(d_R^{abc}\) vanishes in
   the chiral matter content.
+- 2026-05-30 quoted-theorem expansion: the ghost-number-one anomaly theorem
+  boundary now displays the QME-to-relative-cohomology mechanism: first
+  nonzero QME defect, Jacobi/consistency step, counterterm shift, BV--BRST
+  comparison, descent from \(I_6\), and the local cohomology theorem that
+  identifies the cubic invariant tensor as the obstruction.
 - The local-observable side of perturbative BV is expressed as a regulated
   prefactorization algebra \(U\mapsto\operatorname{Obs}_\Lambda(U)\).  The
   QME implies \(Q_\Lambda^2=0\), disjoint-support products are cochain maps,

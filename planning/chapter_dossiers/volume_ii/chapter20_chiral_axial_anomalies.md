@@ -41,6 +41,12 @@
 - The chapter states the descent formulas used for four-dimensional chiral
   fermions but does not reproduce the full proof of the local BRST cohomology
   classification.
+- 2026-05-30 quoted-theorem expansion: the cubic gauge-obstruction block now
+  exposes the local descent mechanism in the chapter's conventions: the
+  symmetric tensor from \(\operatorname{tr}_R(\mathsf F^3)\), the
+  ghost-number-one representative \(I_4^{(1)}\), the local counterterm shift,
+  and the exact local cohomology input used to turn a nonzero tensor into a
+  nontrivial obstruction class.
 - The BPST instanton section is a direct in-manuscript derivation.  A
   public-facing check script,
   `calculation-checks/bpst_instanton_normalization_checks.py`, verifies the
