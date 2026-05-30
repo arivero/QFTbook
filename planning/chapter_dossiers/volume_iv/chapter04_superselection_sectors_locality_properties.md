@@ -66,3 +66,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   analytic imaginary-time translation, the distinction between one-scale
   nuclearity and uniform small-\(\beta\) phase-space bounds, and the separate
   hypotheses behind type-\(\mathrm{III}_1\) sharp local algebras.
+- 2026-05-30 Borchers--Wiesbrock proof-mechanism pass: clarified
+  standardness for half-sided modular inclusions, introduced the associated
+  standard real subspaces, explained how half-sidedness becomes an invariant
+  modular-dilation condition on those subspaces, and separated the deep
+  construction of the positive translation group from the elementary
+  differentiation that gives the displayed commutator.
