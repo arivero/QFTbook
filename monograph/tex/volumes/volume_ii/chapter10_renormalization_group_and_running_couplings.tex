@@ -2595,14 +2595,78 @@ Borel--Laplace integral in that direction equals \(E_n(g)\) for \(g>0\).
 
 \paragraph{Status of the quoted theorem.}
 This is a theorem of Graffi--Grecchi--Simon for even polynomial anharmonic
-oscillators.  Its proof uses sectorial analyticity and resolvent estimates
-for the operator family \(H(g)\), not diagram counting.  The theorem is
-quoted here as a well-established one-dimensional spectral result rather than
-reproved, because its proof belongs to analytic perturbation theory of
-ordinary differential operators.  The monograph uses it only as a controlled
-comparison example: in QFT the corresponding estimates must be supplied for
-the regulated field-theoretic observable and then passed through the
-regulator-removal limit.
+oscillators.\footnote{S.~Graffi, V.~Grecchi, and B.~Simon, ``Borel
+summability: Application to the anharmonic oscillator,'' \emph{Phys. Lett. B}
+\textbf{32} (1970) 631--634, doi:10.1016/0370-2693(70)90564-2; see also
+B.~Simon, ``Coupling constant analyticity for the anharmonic oscillator,''
+\emph{Ann. Phys.} \textbf{58} (1970) 76--136,
+doi:10.1016/0003-4916(70)90240-X.}  The local mechanism has three layers.
+First, for complex \(g\) near the positive axis one treats \(H(g)\) as an
+analytic family of sectorial closed forms.  Equivalently, after the complex
+dilation \(x=\ee^{\ii\theta}y\), the quadratic form becomes
+\[
+  q_{g,\theta}[\psi]
+  =
+  \frac12\ee^{-2\ii\theta}\|\psi'\|^2
+  +\frac12\ee^{2\ii\theta}\|y\psi\|^2
+  +g\,\ee^{4\ii\theta}\|y^2\psi\|^2 .
+\]
+For \(g\) in a sector around the positive real axis one chooses \(\theta\) so
+that the numerical range of this form lies in a fixed acute sector and the
+real part controls \(\|\psi'\|^2+\|y\psi\|^2+|g|\|y^2\psi\|^2\).  The
+associated operators are \(m\)-sectorial with compact resolvent, and isolated
+eigenvalue branches are defined by the Riesz projection
+\[
+  P_n(g)
+  =
+  -\frac{1}{2\pi\ii}
+  \oint_{\Gamma_n}(H(g)-z)^{-1}\,\dd z ,
+\]
+where \(\Gamma_n\) surrounds the \(n\)-th harmonic-oscillator eigenvalue and
+no other one when \(g\) is small in the chosen sector.  The eigenvalue
+\[
+  E_n(g)=\operatorname{tr}\bigl(H(g)P_n(g)\bigr)
+\]
+is therefore an analytic function on this sectorial perturbation domain.
+
+Second, the resolvent expansion around \(H(0)\), combined with oscillator
+matrix-element estimates for \(x^4\), gives a strong Gevrey-one remainder:
+for each closed subsector of the positive direction there are
+\(C_n,A_n<\infty\) such that
+\begin{equation}
+  \left|
+    E_n(g)-\sum_{r=0}^{N-1}E_{n,r}g^r
+  \right|
+  \le
+  C_n A_n^N N! |g|^N ,
+  \qquad N\ge1 .
+  \label{eq:quartic-oscillator-strong-borel-remainder}
+\end{equation}
+The factorial comes from the repeated unbounded perturbation \(x^4\) and the
+energy-denominator combinatorics; the estimate is a bound on the spectral
+branch \(E_n(g)\) itself and therefore ties the formal
+Rayleigh--Schr\"odinger coefficients to an analytic eigenvalue function.
+
+Third, the analytic sector together with
+\eqref{eq:quartic-oscillator-strong-borel-remainder} is a
+Nevanlinna--Watson Borel datum.  It implies that the formal Borel transform
+\[
+  \mathcal B\widehat E_n(\xi)
+  =
+  \sum_{r\ge0}\frac{E_{n,r}}{r!}\xi^r
+\]
+continues through a sector containing \(\xi\ge0\), obeys the exponential
+growth needed for the Laplace integral, and satisfies
+\[
+  E_n(g)
+  =
+  \frac1g\int_0^\infty
+  \ee^{-\xi/g}\mathcal B\widehat E_n(\xi)\,\dd\xi ,
+  \qquad g>0 .
+\]
+The monograph uses this theorem as a controlled comparison example: in QFT
+the same kind of analytic-domain, factorial-remainder, Borel-growth, and
+regulator-removal data must be supplied for the named regulated observable.
 
 \begin{remark}[Local Borel convergence from Gevrey-one growth]
 \label{rem:coefficient-growth-not-borel-summability}

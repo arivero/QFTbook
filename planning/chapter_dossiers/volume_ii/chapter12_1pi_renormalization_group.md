@@ -311,11 +311,14 @@ The chapter must define:
     ray; therefore the positive-ray Borel--Laplace integral exists and has the
     displayed perturbative series as its asymptotic expansion.
 27. The quartic oscillator has a genuine spectral Borel-summability theorem
-    for its eigenvalue branches, but that theorem rests on sectorial
-    analyticity and resolvent estimates.  A factorial or Gevrey-one
-    coefficient bound only gives local convergence of the Borel transform; it
-    does not prove analytic continuation, Laplace convergence, or equality
-    with a specified observable.
+    for its eigenvalue branches.  The theorem-level mechanism is an analytic
+    family of sectorial closed forms, compact-resolvent Riesz projections for
+    eigenvalue branches, strong Gevrey-one spectral remainder estimates, and
+    the Nevanlinna--Watson step identifying the Borel--Laplace integral with
+    the eigenvalue.  A factorial or Gevrey-one coefficient bound only gives
+    local convergence of the Borel transform; it does not prove analytic
+    continuation, Laplace convergence, or equality with a specified
+    observable.
 28. An instanton-sector transseries ledger has integer topological charge and
     hence theta periodicity, but the ledger is not a derivation of instanton
     calculus unless the regulator, zero-mode measure, determinant
@@ -408,6 +411,12 @@ The chapter must define:
   Gevrey-one growth alone is insufficient for Borel summability, and linked
   the instanton ledger to the concrete BPST trace-delta exponential factor;
   expanded `calculation-checks/borel_laplace_checks.py`.
+- 2026-05-30 quoted-theorem pass: expanded the quartic-oscillator Borel
+  theorem boundary.  The manuscript now states the local analytic-operator
+  mechanism: complex-dilated sectorial forms, compact-resolvent Riesz
+  projections, spectral Gevrey-one remainder estimates, and the
+  Nevanlinna--Watson implication from those estimates to the positive-ray
+  Borel--Laplace reconstruction.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from
