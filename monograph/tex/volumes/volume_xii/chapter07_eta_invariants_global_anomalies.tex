@@ -125,9 +125,30 @@ adds the corresponding local transgression term.  The sum of bulk density,
 local boundary transgression, and eta term is the invariant integer.
 \end{quotedtheorem}
 
-The theorem is a theorem of global analysis.  In QFT it is used as the
-mathematical statement that separates local anomaly density from spectral
-boundary data.
+\paragraph{Analytic mechanism behind the boundary term.}
+The theorem is used below through three precise pieces of analytic structure.
+First, product form near the boundary identifies the normal part of the Dirac
+operator with the first-order operator
+\eqref{eq:aps-collar-dirac-form}.  The spectral projection
+\(P_{\geq0}\) then makes the boundary problem elliptic in the
+pseudodifferential sense: boundary values in the forbidden spectral subspace
+are removed, while the remaining components give a Fredholm operator.  Second,
+the small-time heat-kernel expansion of the APS problem has the same interior
+coefficient \([\widehat A(TX)\operatorname{ch}(E)]_{2n+2}\) as the closed
+index theorem.  This is the local part of the formula and is the source of the
+usual anomaly polynomial.  Third, the APS boundary condition is nonlocal along
+\(Y\), and its nonlocal contribution is exactly the reduced spectral
+asymmetry \(\xi(B_Y)\).  The integer on the left side of
+\eqref{eq:aps-index-formula} is the compatibility condition tying these local
+and nonlocal terms together.
+
+In this chapter the APS theorem functions as the global-analysis bridge
+between two objects already defined above: the local index density on \(X\) and
+the spectral invariant of the boundary Dirac operator \(B_Y\).  The QFT
+statement extracted from it is the following: local anomaly density determines
+the infinitesimal variation of the fermion phase, while eta invariants retain
+the integral spectral-flow data that can survive after the local curvature has
+vanished.
 
 \paragraph{Cylinder variation of the reduced eta invariant.}
 Let \(B_t\), \(0\leq t\leq1\), be a smooth path of odd-dimensional Dirac
@@ -251,11 +272,31 @@ Its curvature is the fiber integral over \(M\) of the degree
 \(\widehat A(TM)\operatorname{ch}(E)\).
 \end{quotedtheorem}
 
-The curvature statement is the local anomaly polynomial.  The holonomy
-statement is the global anomaly.  Therefore cancellation of the local anomaly
-is the vanishing of the curvature of the total anomaly line, while
-cancellation of the global anomaly is the triviality of the holonomy of that
-flat line around every closed loop in background-field space.
+\paragraph{Mechanism of determinant-line transport.}
+The determinant line over \(\mathcal B\) has local trivializations obtained by
+choosing a spectral cut for \(D_b^-D_b^+\) and zeta-regularizing the nonzero
+eigenvalue product.  Changing the cut changes the trivialization by the finite
+determinant of the eigenmodes crossing the cut, so these local charts glue to
+the Quillen determinant line.  The Bismut--Freed connection is the connection
+whose local connection form is the finite part of the variation of this
+regularized determinant, corrected by the heat-kernel counterterm that makes
+the answer independent of the spectral cut.  Its curvature is therefore local:
+it is the degree-two form on \(\mathcal B\) obtained by integrating
+\([\widehat A(TM)\operatorname{ch}(E)]_{\dim M+2}\) over the physical
+manifold \(M\).
+
+For a loop \(\gamma\), the holonomy problem is converted into an index problem
+on the odd-dimensional mapping torus \(Y_\gamma\).  One stretches the circle
+direction adiabatically.  The local curvature contribution becomes the
+transgression of the family index density, while the finite part left by the
+adiabatic limit is the reduced eta invariant of the Dirac operator on
+\(Y_\gamma\).  This is the content of
+\eqref{eq:bismut-freed-holonomy}.  Thus the local anomaly polynomial is the
+curvature of the anomaly line, and a global anomaly is the holonomy of the
+same line around a closed path in the background groupoid.  Cancellation of
+the local anomaly means that the total anomaly line is flat; cancellation of
+the global anomaly requires the holonomy of that flat line to be \(1\) on
+every closed loop.
 
 \paragraph{Finite gauge transformation as determinant-line transport.}
 Let \(g\) be a gauge transformation of a background bundle on \(M\), and let
@@ -327,6 +368,18 @@ For such a Pfaffian line the Dai--Freed holonomy specializes to
 This formula is the sign analogue of
 \eqref{eq:bismut-freed-holonomy}.
 
+\paragraph{From determinant phases to Pfaffian signs.}
+The Pfaffian line is a real line, and its holonomy has values in
+\(\{\pm1\}\).  In a real skew Fredholm family, the nonzero spectrum of the
+self-adjoint representative obtained by multiplying the skew operator by
+\(\ii\) is symmetric about zero.  Along a closed path, the orientation of the
+Pfaffian line changes precisely when an odd number of eigenvalue pairs passes
+through zero.  The parity of this crossing number is the mod-two index of the
+Dirac operator on the mapping torus.  Formula
+\eqref{eq:pfaffian-mod-two-holonomy} is therefore the real-line analogue of
+the Bismut--Freed eta phase: the exponent is no longer a reduced eta invariant
+modulo integers, but a \(\mathbb Z_2\)-valued index.
+
 \section{\texorpdfstring{The Witten \(SU(2)\) Global Anomaly}{The Witten SU(2) Global Anomaly}}
 
 Let \(M=S^4\), and let \(g:S^4\to SU(2)\) represent the nontrivial element of
@@ -371,9 +424,24 @@ For the mapping torus of the generator of \(\pi_4(SU(2))\),
 \end{equation}
 \end{quotedtheorem}
 
-The theorem is a five-dimensional mod-two index theorem.  The algebraic
-content of the anomaly criterion is elementary once
-\eqref{eq:witten-su2-index-parity-dynkin} is known.
+\paragraph{Topological content of the mapping-torus index.}
+The theorem is the point where topology enters the four-dimensional anomaly.
+The gauge transformation \(g\) representing the nontrivial element of
+\(\pi_4(SU(2))\) produces a spin five-manifold \(Y_g\) equipped with an
+\(SU(2)\) bundle, and the pair \((Y_g,E_{R_j})\) defines an element tested by
+the mod-two Dirac index.  For the fundamental representation this element has
+odd mod-two index; this is the genuinely global datum invisible to the local
+four-dimensional cubic anomaly polynomial.  The theorem further identifies the
+parity for a general irreducible representation with the trace-delta Dynkin
+index modulo \(2\), giving \eqref{eq:witten-su2-index-parity-dynkin}.  Its
+proof uses the naturality of the coupled Dirac operator under representation
+operations together with a five-dimensional real-index computation for the
+generator of the \(\pi_4(SU(2))\) mapping torus.  The QFT analysis below uses
+the result only through the explicit parity formula displayed in the theorem.
+
+Once \eqref{eq:witten-su2-index-parity-dynkin} is fixed, the remaining anomaly
+criterion is ordinary arithmetic in the same trace convention used for the
+local anomaly polynomial.
 
 The isospin-\(j\) Weyl fermion has the original spin \(SU(2)\) global anomaly
 precisely when \(2j\equiv1\pmod4\).  A collection of Weyl fermions in

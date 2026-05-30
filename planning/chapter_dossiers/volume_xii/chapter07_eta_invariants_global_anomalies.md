@@ -28,19 +28,25 @@ global anomaly as an explicit mod-two-index example.
 - Defines the eta function and reduced eta invariant for self-adjoint
   Dirac-type operators, including the integer jump at zero crossings.
 - States the APS formula as an external global-analysis theorem with explicit
-  product-collar and boundary-projection conventions.
+  product-collar and boundary-projection conventions, and now explains the
+  Fredholm boundary-condition mechanism, the heat-kernel/local-density input,
+  and the eta boundary term used by the QFT anomaly argument.
 - Proves the cylinder variation formula for \(\xi\) modulo integers from the
   APS theorem, including the orientation-reversal bookkeeping
   \(\xi(-B)=-\xi(B)+h(B)\).
 - Defines determinant-line fibers and states the Bismut--Freed holonomy
-  theorem for mapping tori.
+  theorem for mapping tori, with an expanded mechanism explaining local
+  zeta-determinant charts, the Bismut--Freed connection, curvature as the
+  family index density, and holonomy as the adiabatic eta invariant.
 - Explains finite gauge-transformation phases as determinant-line holonomies,
   as a direct application of the quoted Bismut--Freed holonomy theorem to the
   mapping torus of the gauge transformation.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
-  derives the parity criterion \(2j\equiv1\pmod4\) using exact binomial parity.
+  derives the parity criterion \(2j\equiv1\pmod4\) using exact binomial
+  parity, while explicitly separating the five-dimensional real-index theorem
+  from the subsequent trace-convention arithmetic.
 - Explains Dai--Freed inflow as a boundary-line trivialization and derives the
   descent limit for contractible loops.
 - Records the interacting-QFT anomaly-line construction as an open problem.
@@ -75,3 +81,9 @@ global anomaly as an explicit mod-two-index example.
 - 2026-05-29 anti-wrapper pass: demoted finite gauge transformation as
   determinant-line transport from proposition/proof form to application prose,
   because the theorem-level input is the quoted Bismut--Freed holonomy formula.
+- 2026-05-30 anomaly proof-boundary pass: expanded the APS,
+  Bismut--Freed, Pfaffian-line, and Witten mapping-torus theorem boundaries.
+  The chapter now states what analytic/topological machinery is imported and
+  what QFT conclusions are derived from it.  The remaining debt is a possible
+  later global-analysis appendix proving APS/Bismut--Freed/mod-two index
+  infrastructure rather than a hidden QFT anomaly claim.
