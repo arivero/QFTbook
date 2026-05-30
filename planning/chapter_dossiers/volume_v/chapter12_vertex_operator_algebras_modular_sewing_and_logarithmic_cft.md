@@ -20,8 +20,17 @@ current QFT scope.
 - `O(V)`: Zhu subspace spanned by \(a\circ b\).
 - `A(V)`: Zhu algebra \(V/O(V)\) with product induced by `*`.
 - `Omega(M)`: subspace killed by modes above their zero-mode threshold.
+- `g(V)`, `a[m]`: mode Lie algebra used in the induction mechanism behind
+  Zhu classification, with degree \(\Delta_a-m-1\).
+- `M_ind(U)`: induced graded module generated from a simple Zhu-algebra
+  module `U`.
 - `C_2(V)`: span of \(a_{-2}b\), used in the explicit cofiniteness
   hypothesis for character modularity.
+- `Y[a,z]`, `a[n]`: Zhu square-bracket field and modes.
+- `Z_i(v,tau)`: torus trace function
+  \(\operatorname{Tr}_{M_i}o(v)q^{L_0-c/24}\).
+- `wp(z,tau)`, `G_{2k}(tau)`: Weierstrass kernel and Eisenstein series
+  entering the genus-one trace recursion.
 - `M(c,h)`: Virasoro Verma module with central charge `c` and highest weight
   `h`.
 - `c_m`: unitary minimal-model central charge `1 - 6/(m(m+1))`.
@@ -69,6 +78,10 @@ current QFT scope.
   \(o_M(a*b)=o_M(a)o_M(b)\) there, and states the classification theorem with
   explicit CFT-type, ordinary-module, rationality, and \(C_2\)-cofiniteness
   hypotheses.
+- Spells out the induction mechanism behind Zhu classification: the mode Lie
+  algebra, triangular degree, top-level positive-mode annihilation, induced
+  module from an \(A(V)\)-module, Jacobi-relation quotient, and irreducible
+  ordinary quotient boundary.
 - Works the Ising Zhu algebra as
   \(\mathbb C[x]/(x(x-1/16)(x-1/2))\), matching the vacuum, spin, and energy
   top weights.
@@ -87,6 +100,10 @@ current QFT scope.
   tensor category language.
 - States character modularity as a quoted theorem, separating the theorem
   input from the linear-algebraic Verlinde derivation.
+- Adds the finite trace-recursion mechanism behind character modularity:
+  square-bracket fields, the Weierstrass kernel, the genus-one Ward recursion
+  for \(Z_i(a[-2]b,\tau)\), and the role of \(C_2\)-cofiniteness in producing
+  finite modular differential systems before the analytic theorem boundary.
 - Proves the Verlinde formula from simultaneous diagonalization by the
   modular \(S\)-matrix.
 - Works the Ising chiral theory explicitly: \(c=1/2\), three simple modules,
@@ -217,3 +234,8 @@ current QFT scope.
   the chiral OPE by spelling out lower truncation, formal residue extraction
   of the singular coefficients, regularity after multiplication by
   \((z-w)^N\), and matrix-element equality in the \(|z|>|w|\) expansion.
+- 2026-05-30 quoted-theorem proof-debt pass: expanded the local mechanisms
+  behind Zhu classification and rational-character modularity.  The chapter
+  now displays the mode Lie algebra/induction construction and the
+  genus-one trace recursion that make the quoted analytic theorem boundaries
+  concrete.
