@@ -58,6 +58,15 @@ current QFT scope.
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
 - `mu_A`: complete-rational conformal-net `mu`-index.
+- `rho,sigma`: DHR localized endomorphisms representing finite-index chiral
+  net sectors.
+- `Hom(rho,sigma)`: DHR intertwiner space.
+- `epsilon_{rho,sigma}`: charge-transporter braiding intertwiner from
+  `rho sigma` to `sigma rho`.
+- `d_rho`: DHR statistical dimension, the square root of the Jones index of
+  `rho(A(I)) subset A(I)`.
+- `mathcal D`: square root of the categorical global dimension
+  `sum_lambda d_lambda^2`.
 - `C,D`: states forming a rank-two logarithmic Virasoro pair of weight `h`.
 - `mathcal C, mathcal D`: corresponding chiral fields.
 - `N`: nilpotent operator on the logarithmic pair, with `ND=C` and `NC=0`.
@@ -116,6 +125,12 @@ current QFT scope.
   and complete rationality.
 - States the complete-rational conformal-net representation-category theorem
   as a quoted theorem and records `mu_A=sum d_rho^2`.
+- Expands the local DHR mechanism behind the complete-rationality theorem:
+  localized endomorphisms, intertwiner spaces, tensor product by composition,
+  statistical dimensions from Jones index, conjugate equations,
+  charge-transporter braiding, the two-interval index, categorical trace
+  formula for the modular \(S\)-matrix, and the transparent-sector
+  nondegeneracy criterion.
 - States the Carpi--Kawahigashi--Longo--Weiner strongly-local-VOA-to-net
   theorem and the Fredenhagen--Joerss converse under polynomial-energy-bound
   and FJ-field hypotheses.
@@ -156,8 +171,9 @@ current QFT scope.
 
 - `calculation-checks/cft_voa_modular_checks.py` verifies the Ising modular
   \(S\)-matrix, Verlinde fusion coefficients, quantum dimensions, the
-  conformal-net `mu`-index/global-dimension relation, character exponent
-  shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
+  conformal-net `mu`-index/global-dimension relation, the DHR categorical
+  \(S\)-matrix vacuum row and trivial Ising transparent sector, character
+  exponent shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
   vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
   \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
@@ -239,3 +255,9 @@ current QFT scope.
   now displays the mode Lie algebra/induction construction and the
   genus-one trace recursion that make the quoted analytic theorem boundaries
   concrete.
+- 2026-05-30 conformal-net DHR proof-debt pass: expanded the
+  complete-rational-net theorem boundary by defining DHR localized
+  endomorphisms, intertwiners, finite-index dimensions, conjugates,
+  charge-transporter braiding, categorical \(S\)-matrix normalization, and
+  the transparent-sector criterion; added an exact Ising DHR
+  nondegeneracy check.

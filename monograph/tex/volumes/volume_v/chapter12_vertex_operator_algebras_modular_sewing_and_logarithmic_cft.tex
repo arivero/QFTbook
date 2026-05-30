@@ -1614,6 +1614,109 @@ The proof uses subfactor index theory and DHR localization, and is not
 reproduced here.
 \end{quotedtheorem}
 
+\paragraph{DHR mechanism behind the conformal-net theorem.}
+The quoted theorem is not only a finiteness statement; it identifies the
+operator-algebraic origin of the braiding and of the modular \(S\)-matrix.
+Fix an interval \(I_0\).  A DHR sector localized in \(I_0\) is represented,
+after Haag duality, by a normal unital endomorphism \(\rho\) of the
+quasilocal algebra such that
+\begin{equation}
+  \rho(A)=A,\qquad A\in\mathcal A(I_0'),
+  \label{eq:dhr-localized-endomorphism}
+\end{equation}
+where \(I_0'\) is the interior of the complement.  If \(\rho,\sigma\) are
+two such endomorphisms, the morphism space is
+\begin{equation}
+  \operatorname{Hom}(\rho,\sigma)
+  =
+  \{T:T\rho(A)=\sigma(A)T\ {\rm for\ all\ local}\ A\}.
+  \label{eq:dhr-intertwiner-space}
+\end{equation}
+The tensor product is composition of endomorphisms,
+\(\rho\otimes\sigma:=\rho\circ\sigma\), with tensoring of intertwiners
+defined by \(S\otimes T=S\rho(T)\) for
+\(S\in\operatorname{Hom}(\rho,\rho')\) and
+\(T\in\operatorname{Hom}(\sigma,\sigma')\).  Finite Jones index of the
+subfactor \(\rho(\mathcal A(I))\subset\mathcal A(I)\), for an interval
+\(I\supset I_0\), gives the statistical dimension
+\begin{equation}
+  d_\rho
+  =
+  [\mathcal A(I):\rho(\mathcal A(I))]^{1/2},
+  \label{eq:dhr-statistical-dimension-index}
+\end{equation}
+independent of \(I\) in the finite-index sector.  Conjugate sectors are
+endomorphisms \(\bar\rho\) equipped with intertwiners
+\[
+  R\in\operatorname{Hom}(\operatorname{id},\bar\rho\rho),
+  \qquad
+  \bar R\in\operatorname{Hom}(\operatorname{id},\rho\bar\rho),
+\]
+obeying the conjugate equations
+\begin{equation}
+  \bar R^*\rho(R)=\operatorname{id}_\rho,
+  \qquad
+  R^*\bar\rho(\bar R)=\operatorname{id}_{\bar\rho},
+  \label{eq:dhr-conjugate-equations}
+\end{equation}
+after the conventional normalization that minimizes
+\(\|R\|\,\|\bar R\|\).  This is the \(C^*\)-tensor-categorical form of
+particle-antiparticle pairing in the chiral net.
+
+The braiding is constructed from charge transporters.  Move \(\rho\) and
+\(\sigma\), by unitary intertwiners, to disjoint intervals with a specified
+cyclic order on \(S^1\).  Locality says that the transported
+endomorphisms commute on all local algebras.  Transporting back gives a
+unitary intertwiner
+\begin{equation}
+  \varepsilon_{\rho,\sigma}
+  \in
+  \operatorname{Hom}(\rho\sigma,\sigma\rho).
+  \label{eq:dhr-braiding-intertwiner}
+\end{equation}
+Changing the transporters changes the intermediate representative but not
+the resulting natural braiding morphism.  Naturality and the hexagon
+identities are therefore consequences of isotony, locality, and the
+composition law for charge transporters.  The two possible cyclic orders on
+the circle give the braiding and its opposite.
+
+Complete rationality supplies the missing finiteness and nondegeneracy.
+For two disjoint intervals \(E=I_1\cup I_3\), the finite index
+\[
+  \mu_{\mathcal A}=[\mathcal A(E')':\mathcal A(E)]
+\]
+is the two-interval index measuring the failure of additivity across the two
+gaps.  The subfactor analysis shows that only finitely many irreducible
+finite-index DHR sectors occur and that
+\begin{equation}
+  \mu_{\mathcal A}
+  =
+  \sum_{\rho\in\operatorname{Irr}(\mathcal A)}d_\rho^2 .
+  \label{eq:dhr-mu-index-global-dimension}
+\end{equation}
+The categorical \(S\)-matrix is the normalized trace of monodromy:
+\begin{equation}
+  S_{\rho\sigma}
+  =
+  \frac{1}{\mathcal D}\,
+  \operatorname{Tr}_{\rho\sigma}
+  \bigl(\varepsilon_{\sigma,\rho}\varepsilon_{\rho,\sigma}\bigr),
+  \qquad
+  \mathcal D=\sqrt{\sum_\lambda d_\lambda^2}.
+  \label{eq:dhr-categorical-s-matrix}
+\end{equation}
+Here \(\operatorname{Tr}_{\rho\sigma}\) is the standard categorical trace
+coming from the conjugate equations.  The vacuum row is
+\(S_{\operatorname{id},\rho}=d_\rho/\mathcal D\).  Nondegeneracy means that
+the only sector whose double braiding with every sector is the identity is
+the vacuum sector; equivalently the matrix
+\((S_{\rho\sigma})\) is invertible.  This is the precise operator-algebraic
+content of the word ``modular'' in the theorem.  The full proof that the
+two-interval index forces this nondegeneracy remains the subfactor-theoretic
+theorem boundary, but the objects entering the statement are the concrete
+endomorphisms, intertwiners, dimensions, and charge-transporter braidings
+defined above.
+
 The comparison with VOAs is therefore a comparison of two different
 coordinates on chiral locality.  A VOA gives formal fields and mode algebra;
 a net gives bounded interval algebras.  Passing from one to the other is an

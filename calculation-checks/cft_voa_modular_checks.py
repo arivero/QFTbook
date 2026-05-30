@@ -128,6 +128,33 @@ def check_quantum_dimensions() -> None:
     )
 
 
+def check_ising_dhr_modular_non_degeneracy() -> None:
+    """Check the Ising net's categorical S data has trivial transparent sector."""
+    dimensions = [S[i][0] / S[0][0] for i in range(3)]
+    global_dimension = Qsqrt2(Fraction(2))
+    for index, label in enumerate(LABELS):
+        assert_equal(
+            f"categorical S vacuum row from DHR dimension for {label}",
+            dimensions[index] / global_dimension,
+            S[0][index],
+        )
+
+    transparent_labels = []
+    for a, label in enumerate(LABELS):
+        transparent_against_all = True
+        for b in range(len(LABELS)):
+            # Transparency would force S_{ab}=d_a d_b / D, equivalently
+            # S_{ab} S_{00}=S_{a0} S_{0b}.
+            lhs = S[a][b] * S[0][0]
+            rhs = S[a][0] * S[0][b]
+            if lhs != rhs:
+                transparent_against_all = False
+                break
+        if transparent_against_all:
+            transparent_labels.append(label)
+    assert_equal("Ising DHR transparent sectors", transparent_labels, ["1"])
+
+
 def check_character_exponents() -> None:
     central_charge = Fraction(1, 2)
     shifted = {
@@ -542,6 +569,7 @@ def main() -> None:
     check_s_squared_identity()
     check_verlinde_fusion()
     check_quantum_dimensions()
+    check_ising_dhr_modular_non_degeneracy()
     check_character_exponents()
     check_ising_t_spin_selection_and_diagonal_invariant()
     check_ising_verlinde_defect_lines()
@@ -549,7 +577,7 @@ def main() -> None:
     check_logarithmic_jordan_cell_two_point_ward_identities()
     check_logarithmic_jordan_trace_invisibility()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, and conformal-net index checks passed.")
+    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, and conformal-net DHR checks passed.")
 
 
 if __name__ == "__main__":
