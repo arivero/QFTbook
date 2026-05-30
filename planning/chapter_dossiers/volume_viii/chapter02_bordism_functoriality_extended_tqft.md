@@ -30,11 +30,14 @@
 - Extended TQFT as a higher functor from an extended bordism category.
 - Cobordism hypothesis through fully \(D\)-dualizable objects: duals,
   adjoints for evaluation/coevaluation, and iterated adjoints through level
-  \(D\), marked as a `quotedtheorem` rather than a theorem proved in the
-  monograph.
-- Morita \(2\)-category example: finite-dimensional separable algebras as
-  fully dualizable objects, Calabi-Yau trace for oriented structure, and
-  \(HH_0(A)\) as the circle value.
+  \(D\), recorded as an external classification boundary rather than a local
+  theorem.
+- Defines the finite-dimensional Morita \(2\)-category and proves that a
+  finite-dimensional separable algebra is fully \(2\)-dualizable there, using
+  the separability idempotent to split \(A^e\to A\).
+- Semisimple Morita example: \(A=\Bbbk^r\), separability element
+  \(\sum_\alpha p_\alpha\otimes p_\alpha\), Calabi-Yau trace
+  \(\epsilon(p_\alpha)=\lambda_\alpha\), and \(HH_0(A)=A\).
 - Functorial extraction criterion from regulated local QFT amplitudes.
 - Extraction problem from local QFT protected sectors.
 - Witten--Donaldson theory as a four-dimensional cohomological gauge-theory
@@ -61,6 +64,8 @@
 | \(E\) | Euler/handle element \(m\Delta(1_A)\) |
 | \(\mathcal C\) | higher-categorical target for extended theories |
 | \(X\) | fully \(D\)-dualizable object classifying a framed extended TQFT |
+| \(A^e\) | enveloping algebra \(A\otimes A^{\rm op}\) |
+| \(e=\sum_r x_r\otimes y_r\) | separability idempotent |
 | \(HH_0(A)\) | Hochschild trace \(A/[A,A]\), the circle value in Morita \(2D\) examples |
 | \(u\) | Coulomb-branch Wilsonian coordinate in the Seiberg--Witten comparison |
 | \(\tau(u)\) | low-energy Abelian gauge coupling coordinate |
@@ -77,9 +82,9 @@
    cylinder inverse-pairing identity and Frobenius neck exchange.
 5. Extended theories assign data to lower-dimensional strata and require a
    higher-categorical target.
-6. The cobordism hypothesis is quoted only with its target-category,
-   full-dualizability, and source-lineage hypotheses stated; the monograph
-   does not present it as a locally proved theorem.
+6. The cobordism hypothesis is an external classification boundary; the
+   chapter locally proves the finite Morita \(2\)-dualizability mechanism used
+   by the semisimple example.
 7. A local QFT gives a TQFT only after state-space limits, metric-choice
    independence/anomaly-line data, gluing convergence, and cylinder/tensor
    laws are proved.
@@ -101,6 +106,11 @@
   TQFT/Frobenius classification proof, but the dual-basis verification is now
   presented as supporting algebra rather than as a standalone theorem-family
   result.
+- 2026-05-30 cobordism-boundary pass: removed the cobordism-hypothesis
+  `quotedtheorem` wrapper, retained the fully extended classification theorem
+  as an external boundary, and proved the finite-dimensional Morita
+  two-dualizability statement for separable algebras that the chapter actually
+  uses.
 
 ## Figures
 
@@ -113,4 +123,6 @@
 - `calculation-checks/tqft_frobenius_gluing_checks.py` verifies the
   semisimple Frobenius algebra formulas with exact rational arithmetic:
   cylinder identity, neck-exchange identity, associativity/commutativity, and
-  \(\Sigma_g\) partition function.
+  \(\Sigma_g\) partition function; it also checks the semisimple
+  separability idempotent, the splitting of \(A^e\to A\), and
+  \(HH_0(\Bbbk^r)=\Bbbk^r\).

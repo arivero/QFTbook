@@ -536,55 +536,171 @@ The phrase ``locality at all codimensions'' means that cutting along corners,
 defects, junctions, and points is represented by composition in
 \(\mathcal C\).
 
-\begin{quotedtheorem}[Cobordism hypothesis, framed fully extended form]
-\label{thm:cobordism-hypothesis-boundary}
-Let \(\mathcal C\) be a symmetric monoidal \((\infty,D)\)-category with the
-duals and adjoints needed to evaluate framed bordisms.  An object
-\(X\in\mathcal C\) is fully \(D\)-dualizable when \(X\) has a dual, the
-evaluation and coevaluation \(1\)-morphisms admit left and right adjoints,
-those adjunction data admit the required adjoints one categorical level
-higher, and this iterated adjointability continues through level \(D\).
-Under these hypotheses, fully extended framed \(D\)-dimensional topological
-field theories with target \(\mathcal C\) are classified by fully
-\(D\)-dualizable objects of \(\mathcal C\), with equivalence understood as
-equivalence of symmetric monoidal higher functors.
-\end{quotedtheorem}
+\begin{remark}[Framed cobordism-hypothesis boundary]
+\label{rem:cobordism-hypothesis-boundary}
+The fully general framed cobordism hypothesis is an external
+higher-categorical classification theorem.  In one standard formulation, for a
+symmetric monoidal \((\infty,D)\)-category \(\mathcal C\) with the duals and
+adjoints required by framed bordism composition, framed fully extended
+\(D\)-dimensional TQFTs valued in \(\mathcal C\) are classified by fully
+\(D\)-dualizable objects of \(\mathcal C\).  Here fully \(D\)-dualizable means
+that the object has a dual, its evaluation and coevaluation \(1\)-morphisms
+have left and right adjoints, those adjunction data have the corresponding
+adjoints one level higher, and the same adjointability condition continues
+through level \(D\).  This theorem fixes the target data that must be named in
+a fully extended example: the target higher category, the point object, all
+duals and adjoints, the tangential-structure action, and any anomaly or
+boundary decoration.  The local calculation below is the part of this
+structure used in the present chapter.
+\end{remark}
 
-Theorem~\ref{thm:cobordism-hypothesis-boundary} is quoted as a boundary
-statement.  Its proof is not reproduced in this monograph.  Its role here is
-to fix the kind of target data that must be supplied when an example is said
-to be fully extended: the target higher category, the object assigned to a
-point, the required duals and adjoints, the tangential-structure action, and
-any anomaly or boundary decoration.
+\begin{definition}[Finite-dimensional Morita \(2\)-category]
+\label{def:fd-morita-two-category}
+Let \({\bf Alg}_2^{\rm fd}\) denote the Morita \(2\)-category over \(\Bbbk\).
+Its objects are finite-dimensional associative unital \(\Bbbk\)-algebras.  A
+\(1\)-morphism \(A\to B\) is a finite-dimensional \((B,A)\)-bimodule.  A
+\(2\)-morphism is a bimodule homomorphism.  Composition is relative tensor
+product over the intermediate algebra, and the symmetric monoidal product is
+\(\otimes_{\Bbbk}\).
+\end{definition}
 
-\begin{example}[The extended refinement of the semisimple \(2\)-dimensional model]
-\label{ex:extended-semisimple-2d-tqft}
-Let \({\bf Alg}_2^{\rm fd}\) be the Morita \(2\)-category whose objects are
-finite-dimensional \(\Bbbk\)-algebras, whose \(1\)-morphisms are finite
-bimodules, and whose \(2\)-morphisms are bimodule maps.  A finite-dimensional
-separable algebra \(A\) is fully dualizable in this \(2\)-category.  A
-separability idempotent is an element
+\begin{theorem}[Separable algebras are two-dualizable Morita objects]
+\label{thm:separable-algebra-two-dualizable}
+Let \(A\) be a finite-dimensional separable \(\Bbbk\)-algebra.  Thus there is
+an element
 \[
   e=\sum_r x_r\otimes y_r\in A\otimes A^{\rm op}
 \]
 such that
-\[
+\begin{equation}
   \sum_r x_ry_r=1_A,
   \qquad
   \sum_r ax_r\otimes y_r=\sum_r x_r\otimes y_ra
-  \quad\hbox{for all }a\in A.
+  \quad\hbox{for every }a\in A .
+  \label{eq:separability-idempotent-identities}
+\end{equation}
+In the Morita \(2\)-category
+Definition~\ref{def:fd-morita-two-category}, \(A\) has dual \(A^{\rm op}\),
+and the evaluation and coevaluation bimodules have both left and right
+adjoints.  Hence \(A\) is fully \(2\)-dualizable.  If, in addition,
+\(\epsilon:A\to\Bbbk\) is a symmetric Frobenius trace, meaning that
+\[
+  \epsilon(ab)=\epsilon(ba),
+  \qquad
+  (a,b)\mapsto \epsilon(ab)
 \]
-These two identities give the coevaluation and evaluation bimodules their
-adjoints.  If \(A\) also has a symmetric nondegenerate trace
-\(\epsilon:A\to\Bbbk\), then the oriented structure is supplied by the
-Calabi--Yau trace.  The value on the circle is the Hochschild trace
+is nondegenerate, then \(\epsilon\) is the Calabi--Yau trace datum for the
+oriented two-dimensional refinement.  The circle trace of the Morita object is
 \[
   HH_0(A)=A/[A,A].
 \]
-For the commutative semisimple algebra \(A=\Bbbk^r\), this is \(A\) itself,
+\end{theorem}
+
+\begin{proof}
+The dual object of \(A\) is \(A^{\rm op}\).  The evaluation \(1\)-morphism
+\[
+  {\rm ev}:A^{\rm op}\otimes A\longrightarrow \Bbbk
+\]
+is the vector space \(A\), regarded as a
+\((\Bbbk,A^{\rm op}\otimes A)\)-bimodule by
+\[
+  z\cdot(a^{\rm op}\otimes b)=azb.
+\]
+The coevaluation
+\[
+  {\rm coev}:\Bbbk\longrightarrow A\otimes A^{\rm op}
+\]
+is the same vector space \(A\), now regarded as an
+\((A\otimes A^{\rm op},\Bbbk)\)-bimodule by
+\[
+  (a\otimes b^{\rm op})\cdot z=azb.
+\]
+The two zig-zag composites reduce to the canonical associativity
+isomorphisms
+\[
+  A\otimes_A M\simeq M,
+  \qquad
+  M\otimes_A A\simeq M
+\]
+for finite bimodules \(M\).  Thus \(A^{\rm op}\) is a Morita dual of \(A\).
+
+It remains to justify adjointability of the evaluation and coevaluation
+bimodules.  Put \(A^e=A\otimes A^{\rm op}\).  The multiplication map
+\[
+  \mu:A^e\to A,\qquad \mu(a\otimes b^{\rm op})=ab
+\]
+is a homomorphism of \(A\)-bimodules, equivalently of left \(A^e\)-modules.
+The separability element defines an \(A^e\)-linear splitting
+\begin{equation}
+  s:A\to A^e,
+  \qquad
+  s(a)=\sum_r ax_r\otimes y_r
+      =\sum_r x_r\otimes y_ra .
+  \label{eq:separability-splitting}
+\end{equation}
+The equality of the two displayed expressions is precisely the centrality
+identity in \eqref{eq:separability-idempotent-identities}, and
+\[
+  \mu s(a)=\sum_r ax_ry_r=a
+\]
+uses the normalization identity in
+\eqref{eq:separability-idempotent-identities}.  Hence \(A\) is a direct
+summand of the free \(A^e\)-module \(A^e\).  In particular \(A\) is finite
+projective as a left \(A^e\)-module.  Applying the same argument to
+\(A^{\rm op}\), equivalently using the right-module splitting determined by
+the second expression in \eqref{eq:separability-splitting}, gives finite
+projectivity as a right \(A^e\)-module as well.  These are exactly the
+enveloping-algebra projectivity statements needed by the coevaluation and
+evaluation bimodules.
+
+For a finite projective bimodule \(M\) representing a \(1\)-morphism
+\(R\to S\), the usual dual modules
+\[
+  M^R=\operatorname{Hom}_{S}(M,S),
+  \qquad
+  M^L=\operatorname{Hom}_{R}(M,R)
+\]
+carry the opposite bimodule structures and furnish right and left adjoints;
+the units and counits are the finite dual-basis coevaluation and evaluation
+maps.  Applying this to the evaluation and coevaluation bimodules above gives
+their adjoints, so \(A\) is fully \(2\)-dualizable.
+
+A symmetric Frobenius trace identifies the left and right \(A\)-module duals
+by the nondegenerate pairing \((a,b)\mapsto\epsilon(ab)\).  This is the
+finite-dimensional Calabi--Yau trace datum: it trivializes the Nakayama
+automorphism and supplies the oriented structure on the Morita object.  The
+value assigned to the circle by the Morita trace is the shadow of the identity
+\((A,A)\)-bimodule, namely
+\[
+  A\otimes_{A^e}A\simeq A/\langle ab-ba:\ a,b\in A\rangle=HH_0(A).
+\]
+\end{proof}
+
+\begin{example}[The extended refinement of the semisimple \(2\)-dimensional model]
+\label{ex:extended-semisimple-2d-tqft}
+For \(A=\Bbbk^r\) with primitive idempotents \(p_\alpha\), the separability
+element is
+\[
+  e=\sum_{\alpha=1}^r p_\alpha\otimes p_\alpha .
+\]
+Indeed,
+\[
+  \sum_\alpha p_\alpha p_\alpha=1_A,
+  \qquad
+  ap_\alpha\otimes p_\alpha=p_\alpha\otimes p_\alpha a
+\]
+for every \(a\in A\).  Choosing nonzero weights
+\(\lambda_\alpha\in\Bbbk^\times\) and
+\[
+  \epsilon(p_\alpha)=\lambda_\alpha
+\]
+gives the symmetric Frobenius trace of
+Example~\ref{ex:semisimple-2d-tqft}.  Since \(A\) is commutative,
+\[
+  HH_0(A)=A/[A,A]=A,
+\]
 and the ordinary theory obtained by forgetting point and interval data is the
-Frobenius-algebra TQFT of
-Example~\ref{ex:semisimple-2d-tqft}.
+Frobenius-algebra TQFT of Example~\ref{ex:semisimple-2d-tqft}.
 \end{example}
 
 This example illustrates the conceptual difference between an ordinary and a

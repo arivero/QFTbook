@@ -10,6 +10,9 @@ for the semisimple idempotent model A = k^r:
 * the adjoint comultiplication obeys the Frobenius neck-exchange identity;
 * pair-of-pants gluing gives associativity;
 * the genus-g closed-surface value is sum_alpha lambda_alpha^(1-g).
+* the semisimple separability idempotent e = sum_alpha p_alpha tensor p_alpha
+  splits the multiplication map A^e -> A and gives HH_0(A)=A in the
+  commutative case.
 
 All arithmetic is exact rational arithmetic.  The script does not replace the
 proof in the text; it is a reproducible check of the displayed formulas.
@@ -74,6 +77,34 @@ def multiply_tensor(n: int, tensor: Tensor2) -> Vector:
     return tuple(out)
 
 
+def tensor_product_mul(n: int, left: Tensor2, right: Tensor2) -> Tensor2:
+    out = [Fraction(0) for _ in range(n * n)]
+    for i in range(n):
+        for j in range(n):
+            out[tensor_index(n, i, j)] = (
+                left[tensor_index(n, i, j)] * right[tensor_index(n, i, j)]
+            )
+    return tuple(out)
+
+
+def left_tensor_action(a: Vector, tensor: Tensor2) -> Tensor2:
+    n = len(a)
+    out = [Fraction(0) for _ in range(n * n)]
+    for i in range(n):
+        for j in range(n):
+            out[tensor_index(n, i, j)] = a[i] * tensor[tensor_index(n, i, j)]
+    return tuple(out)
+
+
+def right_tensor_action(tensor: Tensor2, a: Vector) -> Tensor2:
+    n = len(a)
+    out = [Fraction(0) for _ in range(n * n)]
+    for i in range(n):
+        for j in range(n):
+            out[tensor_index(n, i, j)] = tensor[tensor_index(n, i, j)] * a[j]
+    return tuple(out)
+
+
 def tensor_pairing(weights: Vector, tensor: Tensor2, b: Vector, c: Vector) -> Fraction:
     n = len(weights)
     total = Fraction(0)
@@ -132,6 +163,21 @@ def euler_element(weights: Vector) -> Vector:
     return tuple(Fraction(1, 1) / w for w in weights)
 
 
+def separability_idempotent(n: int) -> Tensor2:
+    out = [Fraction(0) for _ in range(n * n)]
+    for i in range(n):
+        out[tensor_index(n, i, i)] = Fraction(1)
+    return tuple(out)
+
+
+def separability_split(a: Vector) -> Tensor2:
+    n = len(a)
+    out = [Fraction(0) for _ in range(n * n)]
+    for i in range(n):
+        out[tensor_index(n, i, i)] = a[i]
+    return tuple(out)
+
+
 def pointwise_power(a: Vector, power: int) -> Vector:
     return tuple(x**power for x in a)
 
@@ -143,6 +189,21 @@ def genus_value_by_handles(weights: Vector, genus: int) -> Fraction:
 
 def genus_value_closed_form(weights: Vector, genus: int) -> Fraction:
     return sum(w ** (1 - genus) for w in weights)
+
+
+def check_separability_and_hh0(weights: Vector, samples: list[Vector]) -> None:
+    n = len(weights)
+    e = separability_idempotent(n)
+    assert_equal("separability normalization", multiply_tensor(n, e), unit(n))
+    assert_equal("separability idempotent", tensor_product_mul(n, e, e), e)
+
+    for a in samples:
+        assert_equal("separability centrality", left_tensor_action(a, e), right_tensor_action(e, a))
+        assert_equal("separability splitting", multiply_tensor(n, separability_split(a)), a)
+
+    for a, b in product(samples, repeat=2):
+        commutator = add(mul(a, b), scalar_mul(Fraction(-1), mul(b, a)))
+        assert_equal("HH0 commutator vanishes for k^r", commutator, tuple(Fraction(0) for _ in range(n)))
 
 
 def check_frobenius_identities(weights: Vector) -> None:
@@ -175,6 +236,8 @@ def check_frobenius_identities(weights: Vector) -> None:
             genus_value_by_handles(weights, genus),
             genus_value_closed_form(weights, genus),
         )
+
+    check_separability_and_hh0(weights, samples)
 
 
 def main() -> None:

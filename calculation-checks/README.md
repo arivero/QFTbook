@@ -505,7 +505,9 @@ Current checks:
   bordism-functoriality chapter, including the inverse-pairing cylinder
   identity, Frobenius neck-exchange relation, pair-of-pants associativity, and
   the semisimple genus-\(g\) partition function
-  \(\sum_\alpha\lambda_\alpha^{1-g}\).
+  \(\sum_\alpha\lambda_\alpha^{1-g}\), together with the semisimple
+  separability idempotent, the splitting of \(A^e\to A\), and the
+  \(HH_0(\Bbbk^r)=\Bbbk^r\) commutator check.
 - `donaldson_sw_comparison_checks.py`: exact arithmetic checks for the
   Witten-Donaldson and Seiberg-Witten comparison chapter, including the
   anti-self-dual deformation-complex index, the monopole expected-dimension
