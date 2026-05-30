@@ -92,3 +92,10 @@
 
 - Figure `fig:kubo-order-of-limits`: thermodynamic limit, zero-frequency
   limit, and prior separation of Drude/conserved singular sectors.
+
+## Audit Notes
+
+- 2026-05-30 figure semantic audit: added the missing body callout for
+  `fig:kubo-order-of-limits` and rewrote the caption/body text to state the
+  positive distributional decomposition into a singular Drude sector and a
+  locally integrable regular part.

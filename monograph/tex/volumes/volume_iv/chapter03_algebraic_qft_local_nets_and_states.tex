@@ -81,7 +81,7 @@ Hilbert-space state or weak operator closure has been chosen.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.90\textwidth}{!}{%
+  \resizebox{0.94\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
       region/.style={draw,ellipse,line width=0.9pt,fill=blue!5,
@@ -90,27 +90,38 @@ Hilbert-space state or weak operator closure has been chosen.
         minimum width=2.6cm,minimum height=0.75cm,align=center},
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
-    \node[region,minimum width=3.4cm,minimum height=1.8cm] (o2) at (-3.2,1.0) {\(\mathcal O_2\)};
-    \node[region,minimum width=1.7cm,minimum height=0.92cm] (o1) at (-3.2,1.0) {\(\mathcal O_1\)};
-    \node[alg] (a1) at (0.65,1.45) {\(\Obs(\mathcal O_1)\)};
-    \node[alg] (a2) at (3.85,1.45) {\(\Obs(\mathcal O_2)\)};
-    \draw[arrow] (o2.east)--(a1.west);
-    \draw[arrow] (a1)--(a2);
-    \node at (2.25,1.95) {inclusion};
-    \node at (-3.2,-0.05) {\(\mathcal O_1\subset \mathcal O_2\)};
-    \node[region] (s1) at (-1.55,-1.25) {\(\mathcal O\)};
-    \node[region] (s2) at (2.15,-1.25) {\(\mathcal O'\)};
-    \node[alg] (b1) at (-1.55,-2.65) {\(\Obs(\mathcal O)\)};
-    \node[alg] (b2) at (2.15,-2.65) {\(\Obs(\mathcal O')\)};
+    \begin{scope}[shift={(-3.85,1.25)}]
+      \node[region,minimum width=3.35cm,minimum height=1.75cm] (o2) at (0,0) {};
+      \node[region,minimum width=1.65cm,minimum height=0.88cm] (o1) at (-0.25,-0.03) {};
+      \node at (-0.42,-0.03) {\(\mathcal O_1\)};
+      \node at (1.02,0.58) {\(\mathcal O_2\)};
+      \node[below] at (0,-1.02) {\(\mathcal O_1\subset\mathcal O_2\)};
+    \end{scope}
+    \node[alg] (a1) at (0.35,1.52) {\(\Obs(\mathcal O_1)\)};
+    \node[alg] (a2) at (3.80,1.52) {\(\Obs(\mathcal O_2)\)};
+    \draw[arrow] (-2.10,1.52)--(a1.west) node[midway,above] {assignment};
+    \draw[arrow] (a1)--(a2)
+      node[midway,above] {\(\iota_{\mathcal O_1\mathcal O_2}\)};
+    \node[align=center] at (2.08,0.82)
+      {injective \(*\)-homomorphism\\implementing isotony};
+
+    \node[region] (s1) at (-2.55,-1.50) {\(\mathcal O\)};
+    \node[region] (s2) at (1.40,-1.50) {\(\widetilde{\mathcal O}\)};
+    \draw[densely dashed,line width=0.75pt] (-0.48,-2.15)--(-0.48,-0.85);
+    \node[above] at (-0.48,-0.82) {spacelike separated};
+    \node[alg] (b1) at (-2.55,-2.95) {\(\Obs(\mathcal O)\)};
+    \node[alg] (b2) at (1.40,-2.95) {\(\Obs(\widetilde{\mathcal O})\)};
     \draw[arrow] (s1)--(b1);
     \draw[arrow] (s2)--(b2);
-    \draw[<->,line width=0.8pt] (b1)--(b2);
-    \node[align=center] at (0.3,-3.30) {commuting algebras for spacelike
-      separated regions};
+    \draw[<->,line width=0.85pt] (b1)--(b2)
+      node[midway,above] {\([A,B]=0\)};
   \end{tikzpicture}
   }
-  \caption{AQFT assigns algebras to regions; inclusion of regions gives
-  inclusion of algebras, and spacelike separation gives commutativity.}
+  \caption{The local net is an isotone assignment from suitable spacetime
+  regions to abstract \(C^*\)-algebras.  Inclusion of regions is represented
+  by the isotony morphism \(\iota_{\mathcal O_1\mathcal O_2}\), while
+  spacelike separation is represented algebraically by commutation of the
+  corresponding observable algebras.}
   \label{fig:aqft-local-net}
 \end{figure}
 
@@ -479,26 +490,43 @@ the represented algebra, uniquely up to unitary equivalence.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.88\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
       box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
-        minimum width=3.2cm,minimum height=0.86cm,align=center},
+        minimum width=2.95cm,minimum height=0.88cm,align=center},
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
-    \node[box] (alg) at (-4.3,0.85) {abstract algebra\\\(\Obs\)};
-    \node[box] (state) at (0,0.85) {state\\\(\omega\)};
-    \node[box] (gns) at (4.3,0.85) {GNS triple\\\((\Hilb_\omega,\pi_\omega,\Omega_\omega)\)};
-    \node[box,fill=green!7] (local) at (0,-1.25)
+    \node[box] (alg) at (-5.7,1.25) {abstract algebra\\\(\Obs\)};
+    \node[box,fill=yellow!10] (state) at (-5.7,-0.55)
+      {state functional\\\(\omega:\Obs\to\mathbb C\)};
+    \node[box] (null) at (-2.45,1.25)
+      {null left ideal\\\(\mathcal N_\omega=\{A:\omega(A^*A)=0\}\)};
+    \node[box] (quot) at (1.10,1.25)
+      {pre-Hilbert quotient\\\(\Obs/\mathcal N_\omega\)\\
+      \(\langle[A],[B]\rangle=\omega(A^*B)\)};
+    \node[box] (hilb) at (4.82,1.25)
+      {completion\\\(\Hilb_\omega\), \(\Omega_\omega=[1]\)};
+    \node[box,fill=green!7] (rep) at (1.10,-1.25)
+      {left multiplication\\\(\pi_\omega(A)[B]=[AB]\)};
+    \node[box,fill=green!7] (local) at (4.82,-1.25)
       {represented local algebras\\\(\pi_\omega(\Obs(\mathcal O))''\)};
-    \draw[arrow] (alg)--(state);
-    \draw[arrow] (state)--(gns);
-    \draw[arrow] (gns)--(local);
-    \draw[arrow] (alg)--(local);
+    \draw[arrow] (alg)--(null);
+    \draw[arrow] (state)--(null)
+      node[midway,below,sloped] {positivity};
+    \draw[arrow] (null)--(quot);
+    \draw[arrow] (quot)--(hilb);
+    \draw[arrow] (alg.south east) to[out=-25,in=180] (rep.west);
+    \draw[arrow] (quot)--(rep);
+    \draw[arrow] (rep)--(local);
+    \draw[arrow] (hilb)--(local);
   \end{tikzpicture}
   }
-  \caption{A state turns the abstract local net into Hilbert-space operator
-  algebras through the GNS construction.}
+  \caption{The GNS representation is obtained by quotienting the abstract
+  algebra by the null ideal determined by the state, completing the resulting
+  inner-product space, and representing the algebra by left multiplication.
+  Local \(C^*\)-algebras become represented von Neumann algebras only after
+  this state-dependent Hilbert space has been constructed.}
   \label{fig:gns-representation}
 \end{figure}
 

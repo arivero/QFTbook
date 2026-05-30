@@ -71,5 +71,6 @@
 
 ## Figures
 
-- The chapter includes a TikZ figure showing tubular-neighborhood support,
-  defect fusion, and a linking configuration.
+- The chapter includes a TikZ figure showing tubular-neighborhood support, a
+  defect-local insertion on \(\Sigma\), defect fusion, and a linking
+  configuration.

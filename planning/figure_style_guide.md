@@ -12,6 +12,14 @@ of the figure: the construction it fixes, the comparison it displays, the
 convention it records, or the calculation it organizes.  A figure whose only
 role is decorative should be removed.
 
+The drawn objects must match the mathematical objects named in the callout and
+caption.  For example, an open Wilson segment should not be drawn or labeled
+as a Wilson loop, a quotient construction should show the quotient or null
+object when that is the point of the figure, and a caption that names a
+defect-local insertion should mark that insertion on the defect.  A figure
+that merely gestures at a construction while omitting its load-bearing datum is
+to be repaired or removed.
+
 Inline `tikzpicture` diagrams are allowed only when they function as notation:
 small Feynman-rule glyphs, local operator-product schematics, or one-line
 commutative diagrams placed next to the formula they abbreviate.  A nontrivial
