@@ -218,18 +218,18 @@
    additional structure: mixed correlators are formal electroweak expansions
    whose coefficients are QCD Wightman distributions with specified
    gauge-invariant local operator insertions and contact-term schemes.
-19. Beyond-Standard-Model extensions are optional mathematical hypotheses on
+20. Beyond-Standard-Model extensions are optional mathematical hypotheses on
    the hybrid definition, not accepted ultraviolet completions unless supplied
    with a robust nonperturbative regulator or constructive framework.
-20. A full electroweak chiral-gauge lattice regulator requires determinant
+21. A full electroweak chiral-gauge lattice regulator requires determinant
    line phase, locality, and reflection/reconstruction data beyond anomaly
    cancellation; lattice QCD matrix elements are nonperturbative inputs after
    electroweak matching, not a construction of the full SM.
-21. The Fermi operator coefficient is a tree-level matched EFT coefficient
+22. The Fermi operator coefficient is a tree-level matched EFT coefficient
     obtained by solving the massive charged-vector equation in a derivative
     expansion; QCD matrix elements and radiative corrections are separate
     matching data.
-22. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
+23. The muon \(g-2\) number is a Pauli-form-factor coordinate produced by a
    specified matched computation; HVP and HLbL are QCD current-correlator
    inputs, not perturbative QCD expansions.
 
@@ -264,3 +264,8 @@
   field-redefinition calculation plus the regulator/Jacobian caveat; theorem
   form was inappropriate because the conclusion is the coordinate convention
   built into the SMEFT quotient.
+- 2026-05-30 anti-wrapper pass: demoted `Dispersive form of leading HVP` from
+  lemma form to a derivation paragraph.  The formula and kernel labels remain,
+  but the text now identifies the result as the Pauli-kernel insertion plus the
+  once-subtracted current spectral representation, with all nonperturbative
+  QCD dynamics contained in the gauge-invariant current-current data.

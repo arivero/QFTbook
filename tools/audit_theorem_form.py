@@ -737,6 +737,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Sharp spatial cutoff one-loop coordinate"
     r"|Relation of the mass notions"
     r"|Ideal CFL is electrically neutral at zero electric source"
+    r"|Dispersive form of leading HVP"
     r"|Fixed-order finiteness criterion for IRC-safe measurements"
     r"|Algebraic Yang--Baxter identity for the displayed sausage matrix"
     r"|Scheme equivalence for matched physical observables"

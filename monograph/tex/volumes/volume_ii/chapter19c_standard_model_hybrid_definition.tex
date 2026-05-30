@@ -2518,8 +2518,7 @@ The charge-subtracted coordinate is
 where the subtraction is part of the electromagnetic input normalization.
 \end{definition}
 
-\begin{lemma}[Dispersive form of leading HVP]
-\label{lem:sm-muon-hvp-dispersive}
+\paragraph{Dispersive leading-HVP formula.}
 Assume the hadronic current two-point function has a positive spectral
 representation and no massless hadronic state in the electromagnetic channel.
 Let
@@ -2531,7 +2530,7 @@ Let
 \end{equation}
 be the spectral density in the standard electromagnetic normalization.  QED
 vacuum-polarization effects are removed according to the same input scheme.
-Then the leading HVP contribution is
+The leading HVP contribution is then
 \begin{equation}
   a_\mu^{\rm HVP,LO}
   =
@@ -2549,10 +2548,9 @@ where \(s_0\) is the hadronic threshold and
        {x^2+(1-x)s/m_\mu^2}.
   \label{eq:sm-hvp-kernel}
 \end{equation}
-\end{lemma}
-
-\begin{proof}
-The photon-line insertion in the one-loop Pauli form-factor calculation gives
+This is a formula derived from two inputs, not an independent theorem about
+QCD.  First, the photon-line insertion in the one-loop Pauli form-factor
+calculation gives
 the Euclidean-momentum representation
 \begin{equation}
   a_\mu^{\rm HVP,LO}
@@ -2575,7 +2573,7 @@ spectral representation of the hadronic current correlator is
   \frac{Q^2}{s(s+Q^2)}R_{\rm had}(s).
   \label{eq:sm-hvp-subtracted-dispersion}
 \end{equation}
-Substitute \(Q^2=Q_x^2\) into
+Substituting \(Q^2=Q_x^2\) into
 \eqref{eq:sm-hvp-feynman-parameter}, interchange the positive \(x\)- and
 \(s\)-integrals, and use
 \[
@@ -2588,7 +2586,6 @@ This gives \eqref{eq:sm-hvp-dispersive}.  The formula is therefore not a
 perturbative expansion of QCD: all hadronic dynamics is in the spectral
 function \(R_{\rm had}\), equivalently in the current-current correlator of
 Definition~\ref{def:sm-muon-hvp-current-data}.
-\end{proof}
 
 \begin{definition}[Euclidean lattice HVP coordinate]
 \label{def:sm-muon-lattice-hvp-coordinate}
