@@ -33,8 +33,8 @@ regulator datum.
 
 \section{Rayleigh--Ritz Bound}
 
-\begin{proposition}[Rayleigh--Ritz bound at fixed Hamiltonian]
-\label{prop:rayleigh-ritz-fixed-hamiltonian}
+\begin{lemma}[Rayleigh--Ritz bound at fixed Hamiltonian]
+\label{lem:rayleigh-ritz-fixed-hamiltonian}
 Let \(H\) be a self-adjoint operator on \(\Hilb\), bounded below, and suppose
 that
 \[
@@ -63,7 +63,7 @@ and, for some orthonormal eigenbasis
 \]
 for a constant \(c<\inf\operatorname{spec}H\), then
 \(E_n(\Lambda)\downarrow E_n\).
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The min--max characterization of the \(n\)-th discrete eigenvalue gives
@@ -100,7 +100,7 @@ cutoff-error estimates.
 \begin{proposition}[Gap-stable Ritz counting for a fixed Hamiltonian]
 \label{prop:gap-stable-ritz-counting-fixed-hamiltonian}
 Let \(H\) and \(\mathcal Q_H\) be as in
-Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian}.  Let
+Lemma~\ref{lem:rayleigh-ritz-fixed-hamiltonian}.  Let
 \(\{\Hilb_\Lambda\}\) be an increasing net of finite-dimensional subspaces of
 \(\operatorname{Dom}\mathcal Q_H\) which is dense in the form norm.  Let
 \[
@@ -131,7 +131,7 @@ are only finitely many eigenvalues below \(b\).  Put
 \]
 For each \(j<M\), the form-norm density of \(\bigcup_\Lambda\Hilb_\Lambda\)
 implies the approximation hypothesis in
-Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian} for the first
+Lemma~\ref{lem:rayleigh-ritz-fixed-hamiltonian} for the first
 \(j+1\) eigenspaces; hence
 \begin{equation}
   E_j(\Lambda)\downarrow E_j .
@@ -147,7 +147,7 @@ for all sufficiently large \(\Lambda\).  If \(r\leq j<M\), then
   a<E_j<b .
 \]
 The lower inequality \(E_j(\Lambda)\geq E_j>a\) follows from
-Proposition~\ref{prop:rayleigh-ritz-fixed-hamiltonian}; convergence gives
+Lemma~\ref{lem:rayleigh-ritz-fixed-hamiltonian}; convergence gives
 \[
   E_j(\Lambda)<b
 \]

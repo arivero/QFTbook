@@ -9663,8 +9663,8 @@ bound follows from the upper shell estimate applied to
 \(M_N<|n|_\infty\leq M_{N+1}\), whose shell radii are
 \(M_N+1,\ldots,M_{N+1}\).
 
-\begin{proposition}[Spatial Fourier cutoff two-loop coordinate]
-\label{prop:spde-phi-four-three-c2-fourier-log-growth}
+\begin{lemma}[Spatial Fourier cutoff two-loop coordinate]
+\label{lem:spde-phi-four-three-c2-fourier-log-growth}
 Use the notation of
 Example~\ref{ex:spde-phi-four-three-c1-fourier-growth}, and put
 \[
@@ -9715,7 +9715,7 @@ and
   C_2(M)\geq c_m\log M
   \qquad(M\geq16).
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Substituting the Fourier series for \(K_M\) and \(G_M\) into
@@ -9820,7 +9820,7 @@ the lower bound follows after decreasing \(c_m\).
 \begin{proposition}[Dyadic shell bound for the two-loop coordinate]
 \label{prop:spde-phi-four-three-c2-dyadic-shell-bound}
 Let \(C_2(M)\) be the sharp spatial Fourier-cutoff two-loop coordinate in
-Proposition~\ref{prop:spde-phi-four-three-c2-fourier-log-growth}, and set
+Lemma~\ref{lem:spde-phi-four-three-c2-fourier-log-growth}, and set
 \[
   M_N=2^N,\qquad N\in\mathbb N .
 \]
@@ -9841,7 +9841,7 @@ The summand in \eqref{eq:spde-c2-fourier-cutoff-sum} is non-negative, and
 \(D_N\subset D_{N+1}\), so the increment is non-negative.
 
 Use the dyadic annuli \(B_\ell\) from the proof of
-Proposition~\ref{prop:spde-phi-four-three-c2-fourier-log-growth}.  The same
+Lemma~\ref{lem:spde-phi-four-three-c2-fourier-log-growth}.  The same
 block estimate gives a constant \(A_m<\infty\) such that, for every
 \(\ell,s\geq0\), the contribution of
 \[
