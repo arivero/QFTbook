@@ -90,7 +90,9 @@
   \(C_c^\infty\) test functions are Schwartz.
 - The edge-of-the-wedge step uses holomorphic tube functions with polynomial
   growth near the real edge and equal distributional boundary values on an
-  open spacelike real set.
+  open spacelike real set.  The theorem is recorded as analytic infrastructure:
+  the chapter's QFT-specific work is verifying the tube bounds and boundary
+  equality hypotheses used by the several-complex-variables gluing theorem.
 - Ordered imaginary shifts
   \(\epsilon_1>\cdots>\epsilon_n>0\) give the time-ordered boundary value of
   the holomorphic Wightman function.
@@ -186,6 +188,10 @@
   Fourier-Laplace transform, and \(\mathcal S'\) boundary-value limit
   explicitly, and adding the distributional edge-of-the-wedge theorem with
   growth and boundary-agreement hypotheses.
+- 2026-05-30 issue #695/EOW status pass: made the theorem-boundary status of
+  the distributional edge-of-the-wedge theorem explicit.  It remains quoted as
+  pure analytic infrastructure, while the local QFT burden is identified as
+  spectral tube growth plus distributional boundary equality from locality.
 - 2026-05-24 issue #372 pass: displayed the equality of Euclidean and
   Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
   corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)
