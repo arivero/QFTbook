@@ -52,3 +52,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   Cuntz-type relations, and records why long-range Gauss-law, Wilson-line,
   infraparticle, and confining sectors require localization categories beyond
   bounded-region DHR sectors.
+- 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
+  polynomial-core/Tomita-operator setup, the complex-boost strip function,
+  the spectral-condition tube input, the locality step at imaginary boost
+  \(\ii\pi\), the \(2\pi\)-KMS boundary relation for wedge boosts, and the
+  polar-decomposition route to the modular conjugation.  This strengthens the
+  quoted theorem boundary without claiming that the full BW theorem has been
+  reproved from bare AQFT axioms.
