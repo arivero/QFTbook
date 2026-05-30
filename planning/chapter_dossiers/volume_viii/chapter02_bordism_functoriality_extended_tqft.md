@@ -95,6 +95,12 @@
   expanded the proof from the phrase "triangular identities" to the explicit
   finite-dimensional maps \(W\otimes V\to\Bbbk\), \(1\mapsto c\in V\otimes W\),
   injectivity arguments, dimension comparison, and inverse-tensor conclusion.
+- 2026-05-30 anti-wrapper pass: demoted the former "Cylinder and Frobenius
+  identities" lemma to a calculation paragraph.  The cylinder and neck
+  equations remain labelled because they are used in the \(2D\)
+  TQFT/Frobenius classification proof, but the dual-basis verification is now
+  presented as supporting algebra rather than as a standalone theorem-family
+  result.
 
 ## Figures
 

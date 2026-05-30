@@ -323,10 +323,10 @@ adjointness property is
   \label{eq:delta-adjoint-to-m}
 \end{equation}
 
-\begin{lemma}[Cylinder and Frobenius identities]
-\label{lem:frobenius-cylinder-and-neck}
-For a commutative Frobenius algebra \(A\), the tensor \(C=\sum_i e_i\otimes
-e^i\) and the comultiplication \(\Delta\) satisfy:
+\paragraph{Cylinder and neck identities.}
+For a commutative Frobenius algebra \(A\), the inverse-pairing tensor
+\(C=\sum_i e_i\otimes e^i\) and the comultiplication \(\Delta\) give the two
+elementary algebraic relations used in the surface-cutting construction:
 \begin{align}
   \sum_i e_i\,\epsilon(e^i a)&=a,
   \label{eq:frobenius-cylinder-identity}\\
@@ -337,10 +337,10 @@ e^i\) and the comultiplication \(\Delta\) satisfy:
   (\id_A\otimes m)(\Delta\otimes\id_A).
   \label{eq:frobenius-neck-identity}
 \end{align}
-\end{lemma}
-
-\begin{proof}
-For any \(b\in A\),
+These identities are not separate structure on \(A\); they are the algebraic
+form of gluing a cap to a cup and sliding a pair-of-pants critical level past
+another one.  For the cylinder identity, pair the left side with an arbitrary
+\(b\in A\):
 \[
   \epsilon\!\left(b\sum_i e_i\,\epsilon(e^i a)\right)
   =
@@ -352,8 +352,8 @@ because \(\{e_i\}\) and \(\{e^i\}\) are dual bases for the pairing
 \(\eta\).  Nondegeneracy of \(\eta\) gives
 \eqref{eq:frobenius-cylinder-identity}.
 
-For the first equality in \eqref{eq:frobenius-neck-identity}, evaluate both
-sides on \(a\otimes b\).  The left side is
+For the first equality in \eqref{eq:frobenius-neck-identity}, the left side on
+\(a\otimes b\) is
 \[
   (m\otimes\id)(a\otimes\Delta(b))
   =
@@ -375,7 +375,6 @@ and the second with an arbitrary \(y\in A\).  The two pairings give
 again by the dual-basis identity.  Nondegeneracy of
 \(\eta\otimes\eta\) proves the equality.  The second equality is identical,
 or follows by commutativity.
-\end{proof}
 
 \begin{theorem}[Oriented \(2\)-dimensional TQFTs and Frobenius algebras]
 \label{thm:2d-oriented-tqft-frobenius}
