@@ -276,6 +276,93 @@ the \(G\)-invariant elements.  The compact group description is therefore not
 an input at this stage.  It is a conclusion from locality, transportability,
 Haag duality, symmetric exchange, and finite statistics.
 
+\paragraph{Reconstruction logic and theorem boundary.}
+The reconstruction has two logically separate components.  The first is the
+QFT-specific passage from localized representations to a rigid symmetric
+\(C^*\)-tensor category.  Haag duality is the step that permits a DHR
+representation localized in \(\mathcal O\) to be represented by an
+endomorphism \(\rho\) of the vacuum quasilocal algebra acting trivially on
+\(\Obs(\mathcal O^\perp)\).  Transportability makes the localization region a
+choice of representative rather than part of the sector.  Locality and the
+path-connectedness of spacelike configurations in \(D\ge3\) give a symmetric
+exchange isomorphism, while finite statistics supplies conjugates and finite
+statistical dimension.  These are the hypotheses that must be verified in a
+model before the theorem applies.
+
+The second component is categorical duality.  Once the category
+\(\mathcal C\) has the properties listed in
+Theorem~\ref{thm:doplicher-roberts-reconstruction}, the compact group
+\[
+  G=\operatorname{Aut}^{\otimes,*}(\omega_{\rm fib})
+\]
+is obtained as the group of unitary tensor automorphisms of a faithful fiber
+functor \(\omega_{\rm fib}\).  Its topology is the compact topology inherited
+from the product of the unitary groups
+\(\prod_{\rho\in{\rm Obj}(\mathcal C)}U(\omega_{\rm fib}(\rho))\), with the
+closed conditions expressing naturality and tensor compatibility.  The
+equivalence \(\mathcal C\simeq{\rm Rep}_{\rm fd}(G)\) is therefore a
+Tannakian output of the observable sector category.
+
+The field algebra reconstructed from \(\mathcal C\) can be recognized
+locally by its charged multiplets.  For an irreducible sector \(\rho\) with
+statistical dimension \(d(\rho)\), which is the dimension of the corresponding
+irreducible representation after the Doplicher--Roberts equivalence, the
+reconstructed algebra contains a finite-dimensional Hilbert space of charged
+operators
+\[
+  \mathcal H_\rho^{\rm ch}
+  =
+  \operatorname{span}\{\psi_{\rho,1},\ldots,\psi_{\rho,d(\rho)}\}
+  \subset\mathcal F
+\]
+whose elements satisfy the intertwining relation
+\begin{equation}
+  \rho(A)\psi_{\rho,i}=\psi_{\rho,i}A,
+  \qquad A\in\Obs_{\rm qloc}.
+  \label{eq:dr-charged-field-intertwining}
+\end{equation}
+After choosing an orthonormal multiplet, one has the Cuntz-type normalization
+\begin{equation}
+  \psi_{\rho,i}^*\psi_{\rho,j}=\delta_{ij}\mathbf 1,
+  \qquad
+  \sum_{i=1}^{d(\rho)}\psi_{\rho,i}\psi_{\rho,i}^*=\mathbf 1,
+  \label{eq:dr-charged-field-cuntz-relations}
+\end{equation}
+in the finite-statistics case, and the observable endomorphism is recovered
+from the charged fields by
+\begin{equation}
+  \rho(A)=\sum_{i=1}^{d(\rho)}\psi_{\rho,i}A\psi_{\rho,i}^* .
+  \label{eq:dr-endomorphism-from-charged-fields}
+\end{equation}
+The \(G\)-action rotates the multiplet by the representation corresponding to
+\(\rho\):
+\begin{equation}
+  \alpha_g(\psi_{\rho,i})
+  =
+  \sum_{j=1}^{d(\rho)}
+  \psi_{\rho,j}\,D_\rho(g)_{ji},
+  \qquad
+  g\in G .
+  \label{eq:dr-compact-group-acts-on-charged-multiplet}
+\end{equation}
+Equations
+\eqref{eq:dr-charged-field-intertwining}--\eqref{eq:dr-compact-group-acts-on-charged-multiplet}
+are not additional assumptions on observables; they are the operator form of
+the reconstructed charged coordinates.  The observable algebra remains the
+fixed algebra \(\mathcal F^G\), and the physical sector information is already
+present in \(\mathcal C\).
+
+This theorem therefore applies to charges whose sector representatives are
+localized in bounded regions and satisfy the finite-statistics DHR
+hypotheses.  Charged sectors controlled by long-range Gauss laws, by
+Wilson-line or spacelike-cone localization, by infraparticle clouds, or by
+confining dynamics require different localization categories and additional
+analytic input.  Such sectors are not failures of the reconstruction theorem;
+they lie outside the DHR category to which the theorem is attached.  For them
+one must first define the relevant charged operators and localization
+structure before asking for an analogue of field-algebra reconstruction or of
+Haag--Ruelle scattering.
+
 \section{Split Property and Local Tensor Factorization}
 
 Let \(\mathcal O_1\Subset \mathcal O_2\) mean that the closure of

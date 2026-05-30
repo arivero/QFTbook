@@ -44,3 +44,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   calculation paragraph.  The AQFT substance remains the regulator/split
   inclusion passage and the insistence that Araki relative entropy is the
   primary sharp-algebra object.
+- 2026-05-30 DHR/DR proof-boundary pass: expanded the reconstruction
+  discussion after the Doplicher--Roberts quoted theorem.  The chapter now
+  separates the QFT-specific burden (DHR localization, transportability, Haag
+  duality, symmetric exchange, conjugates, finite statistics) from the
+  Tannakian compact-group output, displays the charged-field intertwining and
+  Cuntz-type relations, and records why long-range Gauss-law, Wilson-line,
+  infraparticle, and confining sectors require localization categories beyond
+  bounded-region DHR sectors.
