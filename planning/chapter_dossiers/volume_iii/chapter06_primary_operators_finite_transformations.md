@@ -34,8 +34,8 @@ The chapter establishes:
 - infinitesimal transformations for translations, rotations, dilatations, and
   special conformal transformations;
 - finite transformation laws, including the one-parameter-flow verification
-  from the infinitesimal contact operator, tensor index conventions, and the
-  restriction to separated points;
+  from the infinitesimal contact operator, elementary-generator sign checks,
+  tensor index conventions, and the restriction to separated points;
 - inversion, including the extra representation choice needed for spin.
 - descendant transformation laws as direct consequences of the primary datum,
   the conformal-algebra action on
@@ -99,3 +99,8 @@ The chapter establishes:
   descendant-field identity from proposition form to convention-level prose,
   while keeping the distributional smearing qualification and radial-state
   convergence caveat explicit.
+- 2026-05-30 anti-wrapper pass: demoted the elementary finite conformal
+  transformation list and the tensor-primary finite transformation rewrite
+  from theorem-family form to paragraph-level derivations.  The finite primary
+  transformation theorem remains because it integrates the infinitesimal Ward
+  action; the demoted material is coordinate/sign bookkeeping derived from it.
