@@ -69,7 +69,9 @@ The chapter must define:
 - the rigorous triviality theorem for the standard four-dimensional positive
   lattice \(\lambda\phi^4\) and nearest-neighbor ferromagnetic Ising-type
   scaling-limit problems, separated from the perturbative Landau-scale
-  argument and from broader UV-completion questions;
+  argument and from broader UV-completion questions, with the cumulant,
+  random-current, tree-diagram, and logarithmic-improvement mechanism stated
+  locally;
 - general 1PI coordinates \(g_I(\mu)\) from Taylor coefficients of 1PI
   vertices;
 - dimensionless coordinates
@@ -204,6 +206,17 @@ The chapter must define:
     Landau-scale equation, and it does not by itself rule out an exotic
     ultraviolet-complete local QFT agreeing with formal \(\phi^4_4\)
     perturbation theory to all orders.
+9b. The local theorem-boundary mechanism is: normalize lattice fields to
+    smeared variables \(X_a(f)\), characterize Gaussian scaling limits by
+    vanishing cumulants, use the random-current switching representation to
+    control the four-point Ursell function by tree diagrams, and use the
+    four-dimensional logarithmic improvement
+    \[
+      \frac{\sum_{B_R^4}|U_4|}{(\sum_{B_R^2}G)^2}
+      \le \varepsilon(R),\qquad \varepsilon(R)\to0,
+    \]
+    to force the normalized fourth cumulant, and then all higher cumulants,
+    to vanish.
 10. For a general local operator \(O_I\) with mass dimension \(d_I\), the
    dimensionless coordinate \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\) can have an
    autonomous beta function once explicit dimensionful ratios are encoded in
@@ -399,6 +412,13 @@ The chapter must define:
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from
   broader UV-completion questions.
+- 2026-05-30 quoted-theorem pass: expanded the scalar triviality boundary.
+  The chapter now gives the local proof mechanism from normalized smeared
+  lattice fields, cumulants, the random-current expression for the
+  four-point Ursell function, the tree-diagram comparison, the
+  Aizenman--Duminil-Copin logarithmic four-dimensional improvement, and the
+  cumulant criterion for Gaussian scaling limits.  The footnote now also
+  records the Annals corrigendum.
 - 2026-05-24 issue #234 pass: added the mass-data distinction.  The manuscript
   now defines the spectral pole mass from an isolated Kallen--Lehmann atom,
   separates it from finite-subtraction, MS/running, and lattice bare mass

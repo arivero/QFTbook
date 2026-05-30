@@ -639,22 +639,112 @@ doi:10.1103/PhysRevLett.47.1; J.~Fr\"ohlich, ``On the triviality of
 doi:10.1016/0550-3213(82)90088-8; M.~Aizenman and H.~Duminil-Copin,
 ``Marginal triviality of the scaling limits of critical 4D Ising and
 \(\phi^4_4\) models,'' \emph{Ann. of Math.} \textbf{194} (2021) 163--235,
-doi:10.4007/annals.2021.194.1.3.}
+doi:10.4007/annals.2021.194.1.3, and the corrigendum in
+\emph{Ann. of Math.} \textbf{199} (2024) 479,
+doi:10.4007/annals.2024.199.1.7.}
 \end{quotedtheorem}
 
-This quoted theorem is not a derivation from the one-loop beta function.  Its
-proofs use constructive probabilistic representations and correlation
-inequalities; in the four-dimensional marginal case the decisive estimate is a
-logarithmic improvement of the tree-diagram bound in the random-current
-representation.  Its role here is to mark the boundary between two questions.
-For the
-specified positive lattice scalar and Ising-type scaling-limit problems,
-removing the cutoff at criticality does not produce a non-Gaussian scalar QFT
-in four dimensions.  By contrast, the broader question whether there exists
-some ultraviolet-complete
-four-dimensional local QFT whose small-coupling expansion agrees with formal
-\(\phi^4_4\) perturbation theory to all orders, while differing by effects
-invisible to perturbation theory, is not settled by this theorem.
+\paragraph{Proof mechanism and logical scope.}
+The theorem concerns a concrete sequence of reflection-positive lattice
+models whose finite-cutoff observables are honest random variables.  Let
+\(a\downarrow0\) be the lattice spacing along a critical or near-critical
+trajectory, let \(\Phi_a(x)\) be the lattice spin or scalar field, and choose
+a field normalization \(Z_a\) such that the smeared variables
+\[
+  X_a(f)
+  =
+  Z_a\,a^4\sum_{x\in a\mathbb Z^4}f(x)\Phi_a(x),
+  \qquad f\in C_c^\infty(\mathbb R^4),
+\]
+have nonzero finite two-point limits.  Denote their joint cumulants by
+\[
+  \kappa_{a,n}(f_1,\ldots,f_n)
+  =
+  \operatorname{cum}\bigl(X_a(f_1),\ldots,X_a(f_n)\bigr).
+\]
+Any subsequential scaling limit is Gaussian exactly when its covariance
+\(\lim_{a\downarrow0}\kappa_{a,2}\) exists and all limiting cumulants
+\(\lim_{a\downarrow0}\kappa_{a,n}\) with \(n\ge3\) vanish.  This is the
+ordinary cumulant characterization of a Gaussian probability law: the
+logarithm of the characteristic function contains only its quadratic term.
+
+For ferromagnetic even Ising and \(\lambda\phi^4\) lattice measures, the
+\(\Phi\mapsto-\Phi\) symmetry removes the odd cumulants.  The load-bearing
+estimate is therefore the four-point truncated function
+\[
+  U_4(x_1,x_2,x_3,x_4)
+  =
+  \langle\Phi_{x_1}\Phi_{x_2}\Phi_{x_3}\Phi_{x_4}\rangle
+  -
+  \sum_{\text{pairings }P}
+  \prod_{\{i,j\}\in P}\langle\Phi_{x_i}\Phi_{x_j}\rangle .
+\]
+The random-current switching lemma rewrites \(U_4\), up to a sign fixed by
+the ferromagnetic convention, as a two-current connection/intersection
+probability multiplied by two-point functions.  A direct consequence is the
+tree-diagram comparison
+\[
+  |U_4(x_1,x_2,x_3,x_4)|
+  \le
+  C\sum_{z\in\Lambda_a}
+  \prod_{i=1}^4 G_a(x_i,z),
+  \qquad
+  G_a(x,y)=\langle\Phi_x\Phi_y\rangle .
+\]
+In dimensions \(d>4\) this bound already makes the normalized block-field
+fourth cumulant vanish, because the corresponding random walks are
+transient enough.  In \(d=4\) the bound is scale-marginal.  The theorem of
+Aizenman--Duminil-Copin supplies the missing logarithmic gain: for
+macroscopic boxes of lattice radius \(R\),
+\begin{equation}
+  \frac{
+    \sum_{x_1,x_2,x_3,x_4\in B_R}
+    |U_4(x_1,x_2,x_3,x_4)|
+  }{
+    \left(\sum_{x,y\in B_R}G_a(x,y)\right)^2
+  }
+  \le \varepsilon(R),
+  \qquad
+  \varepsilon(R)\xrightarrow[R\to\infty]{}0 .
+  \label{eq:adc-four-point-cumulant-gain}
+\end{equation}
+The proof of this estimate is the deep multiscale part: the random-current
+intersection event is decomposed by scales and is shown to carry an extra
+logarithmic smallness at the upper critical dimension.
+
+Equation~\eqref{eq:adc-four-point-cumulant-gain} implies, after replacing
+box indicators by smooth test functions and using standard approximation
+from above and below,
+\[
+  \kappa_{a,4}(f_1,f_2,f_3,f_4)\longrightarrow0 .
+\]
+Ferromagnetic correlation inequalities and the random-current cumulant
+expansion then bound each higher even cumulant by finite sums in which at
+least one factor is a four-point current-intersection block and all remaining
+factors are two-point functions.  The two-point factors have finite scaling
+limits by the chosen normalization, while the four-point block tends to zero
+by \eqref{eq:adc-four-point-cumulant-gain}.  Hence
+\(\kappa_{a,n}\to0\) for every \(n\ge4\).  Uniform moment bounds supplied by
+the same current representation make the moment problem determinate for the
+smeared variables, so every subsequential scaling limit has characteristic
+function
+\[
+  \exp\!\left[
+    -\frac12
+    \sum_{i,j}t_i t_j
+    \lim_{a\downarrow0}\kappa_{a,2}(f_i,f_j)
+  \right].
+\]
+This is precisely Wick factorization of the limiting Schwinger functions.
+
+The theorem therefore separates two logically different statements.  For the
+specified positive lattice scalar and nearest-neighbor ferromagnetic
+Ising-type scaling-limit problems, the continuum limits covered by the
+random-current estimates are Gaussian.  The separate problem of constructing
+an exotic ultraviolet-complete four-dimensional local QFT whose
+small-coupling expansion agrees with formal \(\phi^4_4\) perturbation theory
+to all orders but differs by effects invisible to perturbation theory remains
+open.
 
 \section{General 1PI Coordinates}
 
