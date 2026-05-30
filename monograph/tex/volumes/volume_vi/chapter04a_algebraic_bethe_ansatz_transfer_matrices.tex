@@ -199,17 +199,35 @@ needed to compute \(t(u)=A(u)+D(u)\) on a Bethe vector are
   \label{eq:aba-bb-commutes}\\
   A(u)B(v)
   &=
-  \frac{u-v+\ii}{u-v}B(v)A(u)
-  -
+  \frac{u-v-\ii}{u-v}B(v)A(u)
+  +
   \frac{\ii}{u-v}B(u)A(v),
   \label{eq:aba-ab-relation}\\
   D(u)B(v)
   &=
-  \frac{u-v-\ii}{u-v}B(v)D(u)
-  +
+  \frac{u-v+\ii}{u-v}B(v)D(u)
+  -
   \frac{\ii}{u-v}B(u)D(v).
   \label{eq:aba-db-relation}
 \end{align}
+The signs in \eqref{eq:aba-ab-relation}--\eqref{eq:aba-db-relation} are tied
+to the convention \(T_0(u)=\begin{psmallmatrix}A&B\\ C&D\end{psmallmatrix}\),
+\(R(u)=u\,1+\ii P\), and \(L(u)=R(u-\ii/2)\).  In this convention \(B\) lowers
+one spin relative to the ferromagnetic vector, \(A(u)\Omega_L=(u+\ii/2)^L
+\Omega_L\), and \(D(u)\Omega_L=(u-\ii/2)^L\Omega_L\).  For a single site the
+relations reduce to
+\[
+  A(u)B=(u-\ii/2)B,\qquad
+  BA(u)=(u+\ii/2)B,
+\]
+and similarly \(D(u)B=(u+\ii/2)B\), \(BD(u)=(u-\ii/2)B\); this one-site check
+already fixes the displayed signs.  For general \(L\) the same relations are
+the component form of RTT, obtained by inserting auxiliary matrix units
+\(E_{ab}^{(0)}E_{cd}^{(0')}\) in
+\eqref{eq:aba-rtt-relation} and comparing the corresponding
+\(\operatorname{End}(\mathcal H_L)\)-valued coefficients.  The apparent poles
+at \(u=v\) are not singularities of the operator identity after multiplication
+by \(u-v\); they encode the rational \(R\)-matrix normalization.
 For complex numbers \(u_1,\ldots,u_M\), define
 \[
   \ket{u_1,\ldots,u_M}
@@ -247,25 +265,78 @@ eigenvalue
 \end{theorem}
 
 \begin{proof}
-Use \eqref{eq:aba-ab-relation} and \eqref{eq:aba-db-relation} to move
-\(A(u)\) and \(D(u)\) through the product \(B(u_1)\cdots B(u_M)\) until they
-act on \(\Omega_L\).  The terms in which \(A(u)\) or \(D(u)\) passes every
-\(B(u_j)\) without changing its spectral parameter give exactly
-\eqref{eq:aba-xxx-transfer-eigenvalue}.  The remaining terms have one
-\(B(u_j)\) replaced by \(B(u)\).  Because the \(B\)'s commute, the coefficient
-of
+Let
+\[
+  a(u)=\left(u+\frac{\ii}{2}\right)^L,\qquad
+  d(u)=\left(u-\frac{\ii}{2}\right)^L .
+\]
+The exact normal-ordering identities needed below are
+\begin{equation}
+\begin{aligned}
+  A(u)\prod_{k=1}^M B(u_k)\Omega_L
+  &=
+  a(u)\prod_{k=1}^M\frac{u-u_k-\ii}{u-u_k}
+  \prod_{k=1}^M B(u_k)\Omega_L
+  \\
+  &\quad
+  +\sum_{j=1}^M
+  \frac{\ii\,a(u_j)}{u-u_j}
+  \prod_{\substack{k=1\\k\ne j}}^M
+    \frac{u_j-u_k-\ii}{u_j-u_k}
+  \left(
+    B(u)\prod_{\substack{k=1\\k\ne j}}^M B(u_k)\Omega_L
+  \right).
+\end{aligned}
+\label{eq:aba-a-on-bethe-vector-recursion}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+  D(u)\prod_{k=1}^M B(u_k)\Omega_L
+  &=
+  d(u)\prod_{k=1}^M\frac{u-u_k+\ii}{u-u_k}
+  \prod_{k=1}^M B(u_k)\Omega_L
+  \\
+  &\quad
+  -\sum_{j=1}^M
+  \frac{\ii\,d(u_j)}{u-u_j}
+  \prod_{\substack{k=1\\k\ne j}}^M
+    \frac{u_j-u_k+\ii}{u_j-u_k}
+  \left(
+    B(u)\prod_{\substack{k=1\\k\ne j}}^M B(u_k)\Omega_L
+  \right).
+\end{aligned}
+\label{eq:aba-d-on-bethe-vector-recursion}
+\end{equation}
+For \(M=1\) these are exactly \eqref{eq:aba-ab-relation} and
+\eqref{eq:aba-db-relation} applied to \(\Omega_L\).  The induction step moves
+\(A(u)\), respectively \(D(u)\), through the leftmost \(B\)-factor.  The
+wanted part gives the first displayed product factor.  The unwanted part
+changes the moving diagonal entry to \(A(u_j)\), respectively \(D(u_j)\), and
+the remaining \(B\)-factors are then passed only by wanted moves; if two
+unwanted moves are chosen in opposite orders, the two normally ordered terms
+cancel by the rational identity obtained from the same RTT component relation
+that gives \(B(u)B(v)=B(v)B(u)\).  Thus the induction produces exactly one
+replaced rapidity in the final normal form and no terms with two replaced
+rapidities.
+
+Adding \eqref{eq:aba-a-on-bethe-vector-recursion} and
+\eqref{eq:aba-d-on-bethe-vector-recursion}, the wanted terms give the
+eigenvalue in \eqref{eq:aba-xxx-transfer-eigenvalue}.  The coefficient of
 \[
   B(u)\prod_{\substack{k=1\\ k\neq j}}^M B(u_k)\Omega_L
 \]
-is proportional to
+is
 \[
-  -\ii\left(u_j+\frac{\ii}{2}\right)^L
+  \frac{\ii}{u-u_j}
+  \left[
+  \left(u_j+\frac{\ii}{2}\right)^L
   \prod_{\substack{k=1\\ k\neq j}}^M
     \frac{u_j-u_k-\ii}{u_j-u_k}
-  +
-  \ii\left(u_j-\frac{\ii}{2}\right)^L
+  -
+  \left(u_j-\frac{\ii}{2}\right)^L
   \prod_{\substack{k=1\\ k\neq j}}^M
-    \frac{u_j-u_k+\ii}{u_j-u_k}.
+    \frac{u_j-u_k+\ii}{u_j-u_k}
+  \right].
 \]
 Vanishing of this coefficient is precisely
 \eqref{eq:aba-xxx-bethe-equations}.  After these unwanted terms vanish, the

@@ -18,8 +18,9 @@
   cyclicity.
 - Rational \(SU(2)\) \(R(u)=u\,1+iP\) normalization.
 - \(XXX_{1/2}\) algebraic Bethe ansatz, including the \(A,B,C,D\)
-  decomposition, pseudovacuum actions, Bethe vector, transfer eigenvalue,
-  and Bethe equations.
+  decomposition, pseudovacuum actions, corrected \(AB/DB\) exchange signs in
+  the \(R(u)=u1+iP\), \(L(u)=R(u-i/2)\) convention, Bethe vector, transfer
+  eigenvalue, and Bethe equations.
 - Pole-cancellation interpretation of the Bethe equations.
 - Hamiltonian, energy, and momentum normalization used in the calculation
   checks.
@@ -47,18 +48,23 @@
    auxiliary trace.
 3. The rational \(SU(2)\) \(R\)-matrix satisfies the Yang--Baxter equation by
    symmetric-group flip relations.
-4. The unwanted terms in the algebraic Bethe ansatz vanish exactly when the
+4. The component RTT relations give
+   \(A(u)B(v)=\frac{u-v-i}{u-v}B(v)A(u)+\frac{i}{u-v}B(u)A(v)\) and
+   \(D(u)B(v)=\frac{u-v+i}{u-v}B(v)D(u)-\frac{i}{u-v}B(u)D(v)\) in the
+   chapter convention.
+5. The unwanted terms in the algebraic Bethe ansatz vanish exactly when the
    Bethe equations hold.
-5. The transfer eigenvalue is polynomial exactly when the apparent poles at
+6. The transfer eigenvalue is polynomial exactly when the apparent poles at
    Bethe roots cancel.
-6. The displayed Hamiltonian normalization gives
+7. The displayed Hamiltonian normalization gives
    \(E=\sum_j(u_j^2+1/4)^{-1}\).
 
 ## Calculation Checks
 
 - `calculation-checks/nested_bethe_ansatz_checks.py` checks the rational
-  Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
-  \(L=4,6,8\), and \(TQ\) pole cancellation.
+  Yang--Baxter equation, transfer-matrix commutativity, the corrected
+  \(AB/DB\) exchange signs, one-magnon spectra at \(L=4,6,8\), and \(TQ\)
+  pole cancellation.
 
 ## Figures
 

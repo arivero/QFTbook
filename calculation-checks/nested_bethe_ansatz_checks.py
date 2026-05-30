@@ -53,6 +53,24 @@ def max_abs_difference(left: ComplexMatrix, right: ComplexMatrix) -> float:
     )
 
 
+def add_scaled(left: ComplexMatrix, right: ComplexMatrix, scale: complex = 1) -> ComplexMatrix:
+    size = len(left)
+    out = zero_matrix(size)
+    for i in range(size):
+        for j in range(size):
+            out[i][j] = left[i][j] + scale * right[i][j]
+    return out
+
+
+def scale_matrix(scale: complex, matrix: ComplexMatrix) -> ComplexMatrix:
+    size = len(matrix)
+    out = zero_matrix(size)
+    for i in range(size):
+        for j in range(size):
+            out[i][j] = scale * matrix[i][j]
+    return out
+
+
 def r_operator(dim: int, sites: int, site_a: int, site_b: int, spectral: complex) -> ComplexMatrix:
     """Return R_ab(u)=u*1+i*P_ab on (C^dim)^{otimes sites}."""
 
@@ -104,12 +122,62 @@ def transfer_matrix_xxx(length: int, spectral: complex) -> ComplexMatrix:
     return transfer
 
 
+def monodromy_entries_xxx(length: int, spectral: complex) -> tuple[ComplexMatrix, ComplexMatrix, ComplexMatrix, ComplexMatrix]:
+    dim = 2
+    total_sites = length + 1
+    full_size = dim ** total_sites
+    monodromy = identity_matrix(full_size)
+    for site in range(1, length + 1):
+        local = r_operator(dim, total_sites, 0, site, spectral - 0.5j)
+        monodromy = matmul(local, monodromy)
+
+    quantum_basis = basis_tuples(dim, length)
+    full_basis = basis_tuples(dim, total_sites)
+    full_index = {state: n for n, state in enumerate(full_basis)}
+
+    def block(aux_out: int, aux_in: int) -> ComplexMatrix:
+        out = zero_matrix(dim ** length)
+        for col_q, q_in in enumerate(quantum_basis):
+            for row_q, q_out in enumerate(quantum_basis):
+                row = full_index[(aux_out, *q_out)]
+                col = full_index[(aux_in, *q_in)]
+                out[row_q][col_q] = monodromy[row][col]
+        return out
+
+    return block(0, 0), block(0, 1), block(1, 0), block(1, 1)
+
+
 def check_transfer_commutativity() -> None:
     tu = transfer_matrix_xxx(3, 0.41 + 0.17j)
     tv = transfer_matrix_xxx(3, -0.23 + 0.31j)
     commutator = matmul(tu, tv)
     reverse = matmul(tv, tu)
     assert_close("XXX transfer commutator", max_abs_difference(commutator, reverse))
+
+
+def check_ab_db_relations() -> None:
+    length = 2
+    u = 0.41 + 0.17j
+    v = -0.23 + 0.31j
+    a_u, b_u, _, d_u = monodromy_entries_xxx(length, u)
+    a_v, b_v, _, d_v = monodromy_entries_xxx(length, v)
+
+    # With R(u)=u*1+iP and L(u)=R(u-i/2), the convention in the monograph is
+    # T=[[A,B],[C,D]].  The signs below fix the transfer eigenvalue
+    # Lambda(u)=a(u) Q(u-i)/Q(u)+d(u) Q(u+i)/Q(u).
+    ab_lhs = matmul(a_u, b_v)
+    ab_rhs = add_scaled(
+        scale_matrix((u - v - 1j) / (u - v), matmul(b_v, a_u)),
+        scale_matrix(1j / (u - v), matmul(b_u, a_v)),
+    )
+    assert_close("ABA A-B relation", max_abs_difference(ab_lhs, ab_rhs))
+
+    db_lhs = matmul(d_u, b_v)
+    db_rhs = add_scaled(
+        scale_matrix((u - v + 1j) / (u - v), matmul(b_v, d_u)),
+        scale_matrix(-1j / (u - v), matmul(b_u, d_v)),
+    )
+    assert_close("ABA D-B relation", max_abs_difference(db_lhs, db_rhs))
 
 
 def check_one_magnon_spectrum() -> None:
@@ -177,6 +245,7 @@ def check_tq_pole_cancellation() -> None:
 def main() -> None:
     check_yang_baxter()
     check_transfer_commutativity()
+    check_ab_db_relations()
     check_one_magnon_spectrum()
     check_su3_nested_solution()
     check_tq_pole_cancellation()
