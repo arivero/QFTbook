@@ -682,8 +682,10 @@ with polynomial dependence on the reciprocal distance to the cone boundary.
 \item The permuted Euclidean orderings give holomorphic functions on the
 corresponding permuted tubes that agree on their common Euclidean real
 submanifolds.  For spacelike separated adjacent insertions, the two
-permuted tubes have a connected edge-of-the-wedge continuation through the
-corresponding Jost domain, with the Koszul sign included for graded fields.
+permuted tubes have a connected continuation through the corresponding Jost
+domain by the distributional edge-of-the-wedge theorem
+\ref{thm:distributional-edge-of-the-wedge}, with the Koszul sign included
+for graded fields.
 \end{enumerate}
 \end{definition}
 
@@ -721,13 +723,104 @@ then the Fourier transform of
 \(\operatorname{bv}F\) is carried by \(C^*\).
 \end{quotedtheorem}
 
-This is a mathematical input from the theory of analytic functionals and
-tempered distributions: Cauchy estimates in subtubes give uniform finite-order
-distribution bounds, the Vladimirov boundary-value theorem supplies the
-tempered limit, and the carrier-cone statement is the
-Paley--Wiener--Schwartz cone theorem.  The QFT-specific work in OS
-reconstruction is to prove these hypotheses for the holomorphic functions
-constructed from the Schwinger hierarchy.
+The quoted theorem is a mathematical input from the theory of analytic
+functionals and tempered distributions.  Its nontrivial part is the converse
+boundary-value assertion: polynomial distribution bounds in all proper subtubes
+force a unique tempered boundary distribution.  The proof uses Cauchy estimates
+in subtubes, normal-family compactness in finite-order distribution seminorms,
+and the Vladimirov boundary-value theorem.  The cone-support statement used for
+the spectral condition has a direct Fourier--Laplace proof, which we record
+because it is the part of the theorem that enters the QFT interpretation.
+
+\begin{lemma}[Fourier--Laplace boundary and cone support]
+\label{lem:fourier-laplace-boundary-cone-support}
+Let \(C\subset\R^d\) be an open convex cone whose dual closed cone \(C^*\) has
+the following proper-separation property: for every \(K\Subset C\) there is
+\(c_K>0\) such that
+\begin{equation}
+  p\cdot y\ge c_K |p|\,|y|,
+  \qquad p\in C^*,\ y\in K .
+  \label{eq:proper-dual-cone-separation}
+\end{equation}
+Let \(u\in\mathcal S'(\R^d)\) have support contained in \(C^*\).  For
+\(y\in C\), put
+\[
+  u_y=\ee^{-p\cdot y}u
+\]
+as a product of a distribution with a smooth multiplier, defined in a conic
+neighborhood of \(\operatorname{supp}u\), and let
+\[
+  F(\cdot+\ii y)=\mathcal F^{-1}u_y .
+\]
+Then \(F\) is holomorphic in the tube \(T_C=\R^d+\ii C\), and
+\[
+  F(\cdot+\ii y)\longrightarrow \mathcal F^{-1}u
+  \quad\text{in }\mathcal S'(\R^d)
+\]
+as \(y\to0\) inside every proper subcone of \(C\).  Consequently the Fourier
+transform of the boundary value is \(u\), hence is carried by \(C^*\).
+\end{lemma}
+
+\begin{proof}
+The only point needing care is the multiplication by \(\ee^{-p\cdot y}\),
+because this function may grow outside the dual cone.  Fix
+\(K\Subset C\).  Choose a closed conic neighborhood \(U\) of
+\(C^*\setminus\{0\}\) so small that
+\begin{equation}
+  p\cdot y\ge \frac{c_K}{2}|p|\,|y|,
+  \qquad p\in U,\ y\in K ,
+  \label{eq:cone-neighborhood-decay}
+\end{equation}
+and choose a smooth conic cutoff \(\chi\) which is equal to \(1\) on a
+neighborhood of \(C^*\setminus\{0\}\) and whose support is contained in \(U\)
+outside a compact ball.  Near the origin modify \(\chi\) smoothly so that it is
+identically \(1\) on a neighborhood of \(\operatorname{supp}u\cap B_R\) for a
+fixed large \(R\).  Since distributions are tested only in a neighborhood of
+their support, the product \(\ee^{-p\cdot y}u\) is the same as
+\((\chi(p)\ee^{-p\cdot y})u\); a different cutoff with the same property gives
+the same distribution because the two multipliers agree near
+\(\operatorname{supp}u\).
+
+For \(y\in K\), \eqref{eq:cone-neighborhood-decay} implies that every
+derivative of \(\chi(p)\ee^{-p\cdot y}\) is bounded by a polynomial in
+\(|y|\) times an exponentially decaying factor on the support of \(\chi\),
+apart from a compact set.  Hence multiplication by
+\(\chi\ee^{-p\cdot y}\) is a continuous operation on \(\mathcal S'(\R^d)\),
+uniformly for \(y\) in compact subsets of \(K\).  If \(f\in\mathcal S(\R^d)\),
+then
+\[
+  \langle u_y,\widehat f\rangle
+  =
+  \langle u,\chi(p)\ee^{-p\cdot y}\widehat f(p)\rangle .
+\]
+As \(y\to0\) in \(K\), the Schwartz functions
+\[
+  \chi(p)\bigl(\ee^{-p\cdot y}-1\bigr)\widehat f(p)
+\]
+converge to zero in \(\mathcal S(\R^d)\).  Indeed, after applying any
+derivative, each term contains either a factor tending uniformly to zero on
+compact sets or a positive power of \(y\); on the conic part the rapid decay of
+\(\widehat f\) and \eqref{eq:cone-neighborhood-decay} dominate all polynomial
+weights.  Therefore \(u_y\to u\) in \(\mathcal S'(\R^d)\), and continuity of
+the inverse Fourier transform on tempered distributions gives
+\[
+  \mathcal F^{-1}u_y\to\mathcal F^{-1}u .
+\]
+
+Holomorphy follows from the same estimates.  Differentiating the pairing
+\(\langle u,\chi\ee^{-p\cdot y}\ee^{-\ii p\cdot x}\rangle\) with respect to
+the complex variable \(z=x+\ii y\) brings down polynomial factors in \(p\),
+which preserve the preceding tempered estimates.  The Cauchy--Riemann
+relations hold at the level of pairings with Schwartz tests, hence
+\(F\) is a holomorphic \(\mathcal S'\)-valued function on the tube.  The
+boundary value has Fourier transform \(u\) by construction, so its Fourier
+support is contained in \(C^*\).
+\end{proof}
+
+Thus the QFT-specific work in OS reconstruction is not the
+Fourier--Laplace cone-support argument above, but the proof that the
+holomorphic functions constructed from the Schwinger hierarchy obey the
+polynomial tube estimates to which the quoted boundary-value theorem applies.
 
 \begin{proposition}[OS-II analytic route to the boundary-value package]
 \label{prop:os-ii-analytic-route-to-boundary-package}
@@ -812,7 +905,8 @@ For a permutation of insertions, item (vi) gives the corresponding permuted
 tube.  Euclidean permutation symmetry says that the permuted holomorphic
 functions have the same values on their common Euclidean ordered real
 submanifolds, after inserting the Koszul sign for odd labels.  The identity
-theorem and the edge-of-the-wedge theorem applied at Jost configurations
+theorem and the distributional edge-of-the-wedge theorem
+\ref{thm:distributional-edge-of-the-wedge} applied at Jost configurations
 therefore give the connected continuation through the common real edge.  This
 is part (iii) of Definition~\ref{def:os-lorentzian-boundary-value-package}.
 \end{proof}
