@@ -1,6 +1,6 @@
 # QFT Monograph — Active Review
 
-Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **23 open issues after reopening #691 for the continuing anti-wrapper proof audit**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers; #691 remains open until surviving trivial theorem-family wrappers are demoted or strengthened after reading the actual proof substance. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
+Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **27 open issues after opening the quoted-theorem proof-debt cluster issues #695--#698**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers; #691 remains open until surviving trivial theorem-family wrappers are demoted or strengthened after reading the actual proof substance. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
 
 This document holds items that are either (a) not well-captured in individual issues, (b) cross-cutting in a way the tracker can't surface, or (c) strategic decisions / planning recommendations / standing directives. For completed work and per-issue history, see `git log` and the GitHub issue threads.
 
@@ -98,6 +98,15 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 | [#581](https://github.com/xiyin137/QFT/issues/581) | Vol XI ch02 self-contained Φ⁴_3 constructive proof |
 | [#582](https://github.com/xiyin137/QFT/issues/582) | Vol XI ch09 singular-SPDE proof stack: BPHZ Φ⁴_3 model + Schauder/product/local-counterterm + invariant-law + SPDE-to-OS (3D) |
 | [#608](https://github.com/xiyin137/QFT/issues/608) | Φ⁴_3 concrete model bounds (Schauder + product for BPHZ); local-counterterm derivation; invariant-law comparison |
+
+### Quoted-theorem proof-debt clusters
+
+| Issue | Remaining work |
+|---|---|
+| [#695](https://github.com/xiyin137/QFT/issues/695) | Foundational reconstruction/AQFT proof debt: OS boundary-value infrastructure, DHR/DR reconstruction, Bisognano-Wichmann, nuclearity/split, Borchers-Wiesbrock, and substantial examples rather than abstract framework import |
+| [#696](https://github.com/xiyin137/QFT/issues/696) | Anomaly proof debt: finite \(SU(2)\) anomaly, cubic gauge obstruction, BV ghost-number-one anomaly, descent/WZW matching, determinant/Pfaffian-line phases, all in monograph conventions |
+| [#697](https://github.com/xiyin137/QFT/issues/697) | Vol V CFT proof debt: VOA modularity, Liouville/DOZZ/FZZT, rational and nonrational sewing, conformal-net/VOA bridges, and precise proof-status labels |
+| [#698](https://github.com/xiyin137/QFT/issues/698) | TQFT/RG-mechanism proof debt: cobordism/Crane-Yetter/Walker-Wang boundaries, Donaldson-SW comparison, localization compactness/boundaries, and finite higher-gauging claims |
 
 ### Depth-pass-B (unprecedented-depth bar on previously-closed lanes)
 

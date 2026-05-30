@@ -12,6 +12,21 @@ statement, hypothesis, controlled approximation, or open proof obligation.
 
 Current scan: 82 `quotedtheorem` environments.
 
+GitHub tracking:
+
+- #695: foundational reconstruction and AQFT structural theorem proof debt.
+- #581, #582, #608: constructive QFT and stochastic quantization proof debt.
+- #505: rigorous Wilsonian RG proof debt.
+- #519, #527, #528: scattering, infrared structure, Wilson-line LSZ, and
+  light-ray/energy-correlator proof debt.
+- #696: anomaly-conclusion proof debt in the monograph's conventions.
+- #697, with #625: 2D CFT, Liouville, VOA/modularity, and sewing proof debt.
+- #626, #596: supersymmetric dynamics and three-dimensional Chern-Simons-matter
+  proof debt.
+- #624, #694: planar and nested-integrability proof debt.
+- #698, with #629: TQFT, Donaldson-Seiberg-Witten, higher-symmetry, and
+  singular-instanton/localization proof debt.
+
 High-priority proof-debt classes:
 
 1. Foundational reconstruction and local-QFT structure.
