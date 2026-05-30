@@ -10,14 +10,19 @@ gauging, and electric-magnetic line-lattice duality walls.
 
 ## Notation Inventory
 
+- `mathfrak D_{Q,G}`: finite gauging and duality-defect datum, including the
+  QFT, finite symmetry, background-bundle groupoids, anomaly class,
+  trivialization/counterterm, symmetry defects, gauging interfaces, optional
+  self-duality equivalence, and line-charge lattice data.
 - `G`, `H`: finite internal symmetry group and a finite subgroup to be gauged.
 - `P -> M`: principal finite-group background bundle.
 - `Bun_G(M)`: finite groupoid of \(G\)-bundles on \(M\).
 - `Aut(P)`: automorphism group of the finite background bundle \(P\).
 - `Z_Q[M;P]`: partition function of \(\mathcal Q\) in finite background \(P\).
+- `alpha`, `tau`: anomaly class and chosen anomaly-trivialization /
+  Dijkgraaf-Witten counterterm entry in the gauging datum.
 - `omega`, `Omega`, `S_omega`: Dijkgraaf-Witten class, cocycle representative,
   and topological action.
-- `alpha`: one-degree-higher anomaly class.
 - `N_G`, `N_G^dagger`: gauging interface and reverse gauging interface.
 - `D_g`: invertible symmetry defect with transverse holonomy \(g\).
 - `A_G`: regular algebra defect \(\oplus_{g\in G}D_g\).
@@ -31,33 +36,38 @@ gauging, and electric-magnetic line-lattice duality walls.
 
 ## Claim Ledger
 
-1. Defines finite background fields as principal \(G\)-bundles, equivalently
+1. States the finite gauging and duality-defect datum upfront: QFT with
+   finite symmetry, background-bundle groupoids, anomaly line and
+   trivialization/counterterm data, topological symmetry defects, gauging
+   interfaces, optional self-duality equivalence, and line-charge lattice
+   action.
+2. Defines finite background fields as principal \(G\)-bundles, equivalently
    flat cocycles modulo gauge transformations.
-2. Defines finite gauging as a groupoid-cardinality sum with explicit
+3. Defines finite gauging as a groupoid-cardinality sum with explicit
    \(1/|\operatorname{Aut}(P)|\) weighting.
-3. Proves disjoint-union multiplicativity of the groupoid gauging convention.
-4. Defines Dijkgraaf-Witten twists and distinguishes degree-\(D\) twists from
+4. Proves disjoint-union multiplicativity of the groupoid gauging convention.
+5. Defines Dijkgraaf-Witten twists and distinguishes degree-\(D\) twists from
    degree-\(D+1\) anomaly cancellation/trivialization.
-5. Constructs the gauging interface and derives the slab fusion relation by
+6. Constructs the gauging interface and derives the slab fusion relation by
    a finite groupoid-sum calculation,
    \(\mathcal N_G^\dagger\mathcal N_G\simeq\oplus_{g\in G}D_g\).
-6. Defines the regular algebra defect \(A_G\) and proves
+7. Defines the regular algebra defect \(A_G\) and proves
    \(A_G\otimes A_G\simeq |G|A_G\).
-7. Derives the two-dimensional orbifold local-operator decomposition
+8. Derives the two-dimensional orbifold local-operator decomposition
    \(\oplus_{[g]}\mathcal V_g^{C_G(g)}\).
-8. Proves the pair-of-pants monodromy selection rule
+9. Proves the pair-of-pants monodromy selection rule
    \(g_1g_2g_3^{-1}=e\).
-9. Proves that anomaly-free self-dual \(H\)-gauging gives a noninvertible
+10. Proves that anomaly-free self-dual \(H\)-gauging gives a noninvertible
    defect \(D_H\) with \(D_H^\dagger D_H=A_H\) and
    \(d(D_H)=\sqrt{|H|}\).
-10. Works out the Ising \(H=\mathbb Z_2\) case as Kramers-Wannier fusion.
-11. Proves that normal-subgroup gauging leaves residual quotient symmetry
+11. Works out the Ising \(H=\mathbb Z_2\) case as Kramers-Wannier fusion.
+12. Proves that normal-subgroup gauging leaves residual quotient symmetry
     \(G/H\) under anomaly-compatible choices.
-12. Gives the explicit \(A_3\triangleleft S_3\) finite test case.
-13. Defines gauge-theory line-lattice duality walls as automorphisms
+13. Gives the explicit \(A_3\triangleleft S_3\) finite test case.
+14. Defines gauge-theory line-lattice duality walls as automorphisms
     preserving the Dirac pairing.
-14. Proves pairing preservation for the \(S\) and \(T\) walls.
-15. Works out the finite \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\)
+15. Proves pairing preservation for the \(S\) and \(T\) walls.
+16. Works out the finite \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\)
     line-lattice action and relates \(T^p(0,1)=(p,1)\) to oblique
     confinement.
 

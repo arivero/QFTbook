@@ -13,10 +13,61 @@ compressed in the literature: the finite sum over bundles, the anomaly or
 counterterm choice, and the identification of the resulting theory with a
 theory already under study.
 
+\begin{hypothesis}[Finite gauging and duality-defect datum]
+\label{hyp:finite-gauging-duality-defect-datum}
+A finite gauging and duality-defect datum in dimension \(D\) is a tuple
+\[
+  \mathfrak D_{\mathcal Q,G}
+  =
+  \bigl(
+    \mathcal Q,G,\operatorname{Bun}_G,
+    \alpha,\tau,\{D_g\}_{g\in G},
+    \mathcal N_G,\mathcal N_G^\dagger,
+    \Phi,\Gamma_{\rm line}
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(\mathcal Q\) is a \(D\)-dimensional local QFT admitting a finite
+  internal symmetry \(G\), and
+  \(M\mapsto\operatorname{Bun}_G(M)\) is the finite groupoid of background
+  \(G\)-bundles on collared spacetimes.
+\item For every background \(P\to M\), the background partition function
+  \(Z_{\mathcal Q}[M;P]\) and the corresponding correlators are defined as
+  vectors in the anomaly line determined by the cohomology class
+  \[
+    \alpha\in H^{D+1}(BG,U(1)).
+  \]
+\item \(\tau\) is a chosen anomaly trivialization and degree-\(D\)
+  Dijkgraaf--Witten counterterm.  After \(\tau\) is fixed, the finite
+  groupoid sum over \(\operatorname{Bun}_G(M)\) is an ordinary complex
+  amplitude with a specified normalization.
+\item \(D_g\) is the topological symmetry defect associated to
+  \(g\in G\), with junctions implementing
+  \(D_g\otimes D_h\simeq D_{gh}\) and with the orientation convention used
+  below.
+\item \(\mathcal N_G:\mathcal Q\to\mathcal Q/G\) and
+  \(\mathcal N_G^\dagger:\mathcal Q/G\to\mathcal Q\) are the gauging
+  interface and its reverse, defined with the same groupoid normalization
+  and anomaly trivialization \(\tau\).
+\item \(\Phi:\mathcal Q/G\to\mathcal Q'\) is optional equivalence data.
+  When \(\mathcal Q'=\mathcal Q\), the composite
+  \(\Phi\circ\mathcal N_G\) is the self-dual-gauging defect studied below.
+\item In gauge-theory applications, \(\Gamma_{\rm line}\) is the lattice or
+  finite discriminant group of genuine line charges, equipped with its Dirac
+  pairing and with the action induced by any proposed duality wall.
+\end{enumerate}
+The finite algebraic conclusions in this chapter are consequences of this
+datum.  The continuum construction of the interfaces and junctions is the
+problem isolated in
+Open Problem~\ref{op:continuum-gauging-interfaces}.
+\end{hypothesis}
+
 \section{Finite Symmetry Backgrounds}
 
-Let \(G\) be a finite internal symmetry of a \(D\)-dimensional QFT
-\(\mathcal Q\).  A background \(G\)-field on a spacetime \(M\) is a principal
+Let \(G\) be the finite internal symmetry in
+Hypothesis~\ref{hyp:finite-gauging-duality-defect-datum}.  A background
+\(G\)-field on a spacetime \(M\) is a principal
 \(G\)-bundle
 \[
   P\to M.
@@ -58,8 +109,9 @@ the centralizer of the holonomy representation.
 
 \begin{definition}[Finite gauging groupoid sum]
 \label{def:finite-gauging-groupoid-sum}
-Assume the \(G\)-symmetry is anomaly-free after all local counterterms have
-been fixed.  The gauged partition function is the groupoid cardinality sum
+Assume the anomaly-trivialization and counterterm entry \(\tau\) in
+Hypothesis~\ref{hyp:finite-gauging-duality-defect-datum} has been fixed.  The
+gauged partition function is the groupoid cardinality sum
 \begin{equation}
   Z_{\mathcal Q/G}(M)
   =
@@ -151,7 +203,9 @@ the degree \(D+1\) anomaly has been chosen.
 
 \section{The Gauging Interface}
 
-There is a codimension-one interface
+The interface entry of
+Hypothesis~\ref{hyp:finite-gauging-duality-defect-datum} is a
+codimension-one interface
 \[
   \mathcal N_G:\mathcal Q\longrightarrow \mathcal Q/G
 \]
