@@ -9,6 +9,11 @@
 
 ## Definitions And Results
 
+- Defines the diagonal massive TBA datum
+  `def:diagonal-massive-tba-datum`: species set, masses, diagonal scattering
+  amplitudes and phase branches, logarithmic derivative kernel,
+  quantization-shift convention, thermodynamic root-density statement,
+  exclusion-statistics entropy convention, and thermal/mirror normalization.
 - Bethe--Yang quantization on a circle.
 - Particle and hole rapidity densities.
 - Scattering kernel from the derivative of the phase shift.
@@ -26,6 +31,7 @@
 | --- | --- |
 | \(L\) | spatial circle circumference |
 | \(R\) | inverse temperature or mirror circumference |
+| \(\mathsf A\) | species set in the diagonal TBA datum |
 | \(S_{ab}\) | diagonal two-body scattering phase |
 | \(\delta_{ab}\) | phase shift |
 | \(\rho_a,\rho_a^h\) | particle and hole rapidity densities |
@@ -36,16 +42,18 @@
 
 ## Claim Ledger
 
-1. Bethe--Yang quantization follows from taking one particle around the
+1. The TBA equations are consequences of the named diagonal massive TBA
+   datum, including the root-density statement and entropy convention.
+2. Bethe--Yang quantization follows from taking one particle around the
    circle through all other particles.
-2. The density equation is the derivative of the quantization condition.
-3. The TBA equation is the Euler--Lagrange equation of constrained free
+3. The density equation is the derivative of the quantization condition.
+4. The TBA equation is the Euler--Lagrange equation of constrained free
    energy.
-4. The finite-size ground-state energy uses mirror-channel interpretation and
+5. The finite-size ground-state energy uses mirror-channel interpretation and
    requires model-specific finite-volume control.
-5. The free Majorana example computes its ultraviolet central charge directly
+6. The free Majorana example computes its ultraviolet central charge directly
    from a dominated-convergence limit.
-6. The scaling Lee--Yang example computes the interacting ultraviolet
+7. The scaling Lee--Yang example computes the interacting ultraviolet
    effective central charge from an explicit kernel integral and the
    Rogers-dilogarithm value \(L(\phi_{\rm g}^{-2})=\pi^2/15\).
 
@@ -56,6 +64,9 @@
   variations, the hole-density variation, the kernel-transpose convention,
   and the cancellation that converts the stationary free energy to the
   one-particle state-density integral.
+- 2026-05-30 issue #700 defining-property pass: added the upfront diagonal
+  massive TBA datum so the Bethe--Yang, density, entropy, pseudoenergy, and
+  mirror-energy formulae are derived from named constituent data.
 
 ## Figures
 

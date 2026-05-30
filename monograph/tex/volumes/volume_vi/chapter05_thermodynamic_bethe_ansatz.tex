@@ -11,11 +11,79 @@ and nested Bethe ansatz data require additional species and auxiliary-root
 bookkeeping but obey the same variational logic once the allowed densities
 are specified.
 
+\begin{definition}[diagonal massive TBA datum]
+\label{def:diagonal-massive-tba-datum}
+A diagonal massive thermodynamic Bethe ansatz datum consists of the following
+objects.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item A finite species set \(\mathsf A\), with a mass
+      \(m_a>0\) for each \(a\in\mathsf A\).
+\item Diagonal two-body scattering amplitudes
+      \(S_{ab}(\theta)\in U(1)\) for real rapidity difference
+      \(\theta\), with a declared real-axis phase branch
+      \[
+        S_{ab}(\theta)=\exp\bigl(\ii\delta_{ab}(\theta)\bigr)
+      \]
+      on each rapidity interval used in the thermodynamic calculation.  The
+      logarithmic derivative kernel is
+      \[
+        \varphi_{ab}(\theta)
+        =
+        \frac{1}{2\pi}\delta'_{ab}(\theta)
+        =
+        \frac{1}{2\pi\ii}\frac{\dd}{\dd\theta}\log S_{ab}(\theta)
+      \]
+      as a locally integrable function or distribution.  The branch convention
+      is part of the datum whenever \(S_{ab}\) has constant signs, poles, or
+      CDD factors crossing the chosen real-axis chart.
+\item Circle quantization shifts
+      \(\nu_a\in\mathbb R/\mathbb Z\), encoding the statistics and boundary
+      convention for each species.
+\item A thermodynamic root-density statement: for circle circumference
+      \(L\to\infty\), the Bethe--Yang solutions whose rapidities stay in a
+      fixed compact interval have empirical measures converging to particle
+      densities \(\rho_a(\theta)\dd\theta\) and hole densities
+      \(\rho_a^h(\theta)\dd\theta\), and the differentiated Bethe--Yang map
+      gives the density constraint
+      \[
+        \rho_a+\rho_a^h
+        =
+        \frac{m_a}{2\pi}\cosh\theta
+        +
+        \sum_{b\in\mathsf A}\varphi_{ab}\ast\rho_b .
+      \]
+\item The exclusion-statistics entropy convention
+      \[
+        s[\rho,\rho^h]
+        =
+        \sum_{a\in\mathsf A}\int d\theta\,
+        \left[
+        \rho_a^t\log\rho_a^t
+        -\rho_a\log\rho_a
+        -\rho_a^h\log\rho_a^h
+        \right],
+        \qquad
+        \rho_a^t=\rho_a+\rho_a^h .
+      \]
+      This convention is the one matched to one occupied or empty Bethe
+      quantum number in each microscopic rapidity cell.  Other generalized
+      exclusion-statistics systems require the corresponding entropy and
+      density matrix in place of this item.
+\item A thermal or mirror-channel normalization.  At inverse temperature
+      \(R>0\), the energy density coordinate is
+      \(\sum_a\int d\theta\,m_a\cosh\theta\,\rho_a(\theta)\).  When the same
+      datum is used for a finite-size ground-state energy, the chapter assumes
+      the mirror-channel identification and the normalization of
+      \(E_0(R)\) stated in Section~\ref{sec:tba-finite-size-ground-state}.
+\end{enumerate}
+\end{definition}
+
 \section{Bethe--Yang Quantization}
 
-Place the theory on a spatial circle of circumference \(L\).  For \(n\)
-particles of masses \(m_a\), rapidities \(\theta_j\), and diagonal scattering
-phases
+For the diagonal datum of
+Definition~\ref{def:diagonal-massive-tba-datum}, place the theory on a
+spatial circle of circumference \(L\).  For \(n\) particles of masses \(m_a\),
+rapidities \(\theta_j\), and diagonal scattering phases
 \[
   S_{ab}(\theta)=\exp\!\bigl(\ii\delta_{ab}(\theta)\bigr),
 \]
@@ -197,6 +265,7 @@ which is the stated formula for \(f(R)\).
 \end{proof}
 
 \section{Finite-Size Ground-State Energy}
+\label{sec:tba-finite-size-ground-state}
 
 Interchanging space and Euclidean time maps the thermal free energy on an
 infinite line at inverse temperature \(R\) to the ground-state energy on a
