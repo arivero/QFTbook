@@ -4842,8 +4842,8 @@ BPHZ-renormalized random model with uniform analytic bounds, the convergence
 of those models as the mollifier is removed, and the nonlinear fixed-point
 argument in the corresponding modelled-distribution spaces.
 
-\begin{theorem}[Dyadic Cauchy criterion for random models]
-\label{thm:spde-random-model-cauchy-criterion}
+\begin{proposition}[Dyadic Cauchy criterion for random models]
+\label{prop:spde-random-model-cauchy-criterion}
 Fix a compact parabolic set \(K\), a regularity threshold \(\gamma>0\), and a
 finite homogeneity set \(A_{<\gamma}\).  Choose the test regularity
 \[
@@ -4902,7 +4902,7 @@ for all \(n\).  The limiting model satisfies
   \bigr)^p
   \leq C_N .
 \]
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 Put
@@ -5010,7 +5010,7 @@ the tail bound
 proves \eqref{eq:spde-random-model-almost-sure-tail}.
 \end{proof}
 
-Theorem~\ref{thm:spde-random-model-cauchy-criterion} reduces the convergence
+Proposition~\ref{prop:spde-random-model-cauchy-criterion} reduces the convergence
 of a renormalized random model to two explicit analytic estimates: a uniform
 moment bound for the model seminorm and a dyadic Cauchy moment estimate for
 successive cutoff scales.  In a BPHZ construction these estimates are proved
@@ -5184,7 +5184,7 @@ estimate.  A concrete tree calculation must still prove
 the deterministic kernel bounds for every tested model coordinate and must
 upgrade the resulting pointwise coordinate estimates to the full model
 seminorm by spatial and scale regularity estimates.  Once those deterministic
-steps are done, Theorem~\ref{thm:spde-random-model-cauchy-criterion} turns
+steps are done, Proposition~\ref{prop:spde-random-model-cauchy-criterion} turns
 the coordinate estimates into convergence of the random model.
 
 \begin{proposition}[Dual-norm finite-chaos estimate]
@@ -6764,7 +6764,7 @@ beats the scale entropy.
 \begin{hypothesis}[Finite-sector coordinate-control data]
 \label{hyp:spde-finite-sector-coordinate-control-data}
 Fix \(K\), \(\gamma\), \(A_{<\gamma}\), and \(r\) as in
-Theorem~\ref{thm:spde-random-model-cauchy-criterion}.  Let
+Proposition~\ref{prop:spde-random-model-cauchy-criterion}.  Let
 \[
   Z_n=(\Pi^{(n)},\Gamma^{(n)}),\qquad n\geq1,
 \]
@@ -6886,7 +6886,7 @@ Consequently, \(Z_n\) satisfies
   A_{\rm ctrl}^p\left(\sum_{i\in I}\widetilde S_i\right)^p .
 \]
 Thus the limiting random model and the convergence estimates of
-Theorem~\ref{thm:spde-random-model-cauchy-criterion} follow.
+Proposition~\ref{prop:spde-random-model-cauchy-criterion} follow.
 
 Apply Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to each
 \(U_{n,i}\).  The hypotheses for \(U_{n,i}\) give
@@ -6922,7 +6922,7 @@ Together with \eqref{eq:spde-coordinate-controls-model-distance}, this gives
 \eqref{eq:spde-coordinate-model-distance-bound}.  Raising the two displayed
 \(L^p\) bounds to the \(p\)-th power gives the constants \(C_N\) and \(C_D\)
 in \eqref{eq:spde-random-model-cauchy-hypotheses}.  The final assertion is
-exactly Theorem~\ref{thm:spde-random-model-cauchy-criterion}.
+exactly Proposition~\ref{prop:spde-random-model-cauchy-criterion}.
 
 The finite-sector coordinate-control consequence fixes the
 logical boundary of the remaining BPHZ task.  A finite-dimensional
@@ -7349,7 +7349,7 @@ Insert \eqref{eq:spde-negative-sector-coordinate-scale-domination} into these
 two inequalities and apply the \(L^p\) triangle inequality.  This proves the
 two displayed bounds for \(N_n^-\) and \(D_n^-\).
 
-The hypotheses of Theorem~\ref{thm:spde-random-model-cauchy-criterion} are
+The hypotheses of Proposition~\ref{prop:spde-random-model-cauchy-criterion} are
 therefore satisfied with
 \[
   C_N=

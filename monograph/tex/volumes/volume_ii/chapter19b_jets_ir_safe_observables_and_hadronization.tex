@@ -86,8 +86,8 @@ the products with \(\dd\lambda/\lambda\) and
 subtraction.
 \end{definition}
 
-\begin{proposition}[Fixed-order finiteness criterion for IRC-safe measurements]
-\label{prop:irc-safety-fixed-order-finiteness}
+\begin{controlledapproximation}[Fixed-order cancellation for IRC-safe measurements]
+\label{capprox:irc-safety-fixed-order-finiteness}
 Consider an inclusive observable in a massless gauge theory for which the
 renormalized real and virtual matrix elements admit the soft and collinear
 boundary factorizations displayed below, with remainders locally integrable
@@ -98,11 +98,12 @@ and virtual singularities cancel locally on the unresolved phase-space
 boundaries after the KLN sum over degenerate final states.  With incoming
 hadrons, the remaining initial-state collinear singularities are absorbed into
 the renormalized parton distribution functions.
-\end{proposition}
+\end{controlledapproximation}
 
-\begin{proof}
-In a soft region, with an extra gluon momentum \(k=\lambda q\), the real
-matrix element factorizes as
+The derivation is a fixed-order perturbative one and uses the displayed
+factorization formulae as input.  It is not a nonperturbative theorem about
+arbitrary jet measurements.  In a soft region, with an extra gluon momentum
+\(k=\lambda q\), the real matrix element factorizes as
 \[
   |\mathcal M_{n+1}|^2\,\dd\Phi_{n+1}
   =
@@ -114,7 +115,7 @@ matrix element factorizes as
   +R_{\rm soft}.
 \]
 The remainder \(R_{\rm soft}\) is locally integrable by the hypothesis of the
-proposition.
+controlled approximation.
 The eikonal factor \(\mathcal S_{ij}\) is the same factor that appears with
 opposite sign in the virtual soft correction to the \(n\)-parton channel.
 Equation \eqref{eq:irc-soft-safety} replaces the real measurement by
@@ -137,7 +138,7 @@ The real matrix element and phase space factorize as
   +R_{\rm coll}.
 \]
 The remainder \(R_{\rm coll}\) is locally integrable by the hypothesis of the
-proposition.
+controlled approximation.
 Equation \eqref{eq:irc-collinear-safety} gives the same measurement weight to
 the unresolved pair and to its parent momentum.  The singular integral then
 cancels against the corresponding virtual collinear correction in the KLN
@@ -146,7 +147,6 @@ the same factorization kernel multiplies the operator renormalization of the
 parton distribution function rather than canceling inside the hard partonic
 subprocess.  The finite hard coefficient is obtained after this mass
 factorization step.
-\end{proof}
 
 Examples of IRC-safe observables include the total \(e^+e^-\) hadronic cross
 section, thrust
@@ -1124,4 +1124,4 @@ definitions and uncertainties.  Energy correlators are especially valuable
 because they are nonperturbatively defined by the stress tensor and are
 insensitive, after smearing, to soft emissions and collinear recombination in
 the precise sense used in
-Proposition~\ref{prop:irc-safety-fixed-order-finiteness}.
+Controlled Approximation~\ref{capprox:irc-safety-fixed-order-finiteness}.

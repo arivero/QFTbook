@@ -1182,8 +1182,8 @@ Other modular invariants change the pairing of left and right integrable
 modules and are therefore extra global data of the full CFT.  They do not
 alter the local affine OPE \eqref{eq:volvi-wzw-current-ope}.
 
-\begin{theorem}[KZ equations from the endpoint Ward identities]
-\label{thm:volvi-wzw-kz-equations}
+\begin{proposition}[KZ equations from WZW Ward identities]
+\label{prop:volvi-wzw-kz-equations}
 Let \(V_{\lambda_i}\) be finite-dimensional \(\mathfrak g\)-modules with
 \(\lambda_i\in P_k^+\), and let
 \(\mathcal F(z_1,\ldots,z_n)\) be a genus-zero chiral block with primary
@@ -1201,7 +1201,7 @@ Then
   \qquad i=1,\ldots,n .
   \label{eq:volvi-wzw-kz-equations}
 \end{equation}
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 For a primary field \(\Phi_{\lambda_i}(v_i,z_i)\), the current OPE is
@@ -1792,8 +1792,8 @@ components of \(A\) and \(P\), and let
 \]
 be the \(H\)-covariant derivative on \(\mathfrak m\)-valued fields.
 
-\begin{proposition}[Symmetric-space Lax equivalence]
-\label{prop:symmetric-space-lax-equivalence}
+\begin{lemma}[Symmetric-space Lax equivalence]
+\label{lem:symmetric-space-lax-equivalence}
 For the bosonic symmetric-space action \eqref{eq:coset-sigma-action}, the
 Euler--Lagrange equation together with the two \(\mathfrak h\)- and
 \(\mathfrak m\)-components of the Maurer--Cartan identity is equivalent to
@@ -1803,7 +1803,7 @@ flatness, for every \(\zeta\in\mathbb C^\times\), of the connection
   \mathcal L_-(\zeta)=A_- +\zeta^{-1}P_- .
   \label{eq:symmetric-space-lax-pair}
 \end{equation}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The Maurer--Cartan equation for \(g^{-1}\dd g=A+P\) splits, using the
@@ -2546,8 +2546,8 @@ the nontrivial blocks are respectively
 The \(Q=-1,-2\) blocks are obtained by simultaneous charge conjugation.
 \end{definition}
 
-\begin{proposition}[Algebraic Yang--Baxter identity for the displayed sausage matrix]
-\label{prop:sausage-foz-factorization}
+\begin{example}[Exact Yang--Baxter verification for the displayed sausage matrix]
+\label{ex:sausage-foz-factorization}
 For \(0\le\lambda<\frac12\), the meromorphic matrix
 \(S_\lambda(\theta)\) of
 Definition~\ref{def:sausage-full-triplet-matrix} satisfies the
@@ -2561,9 +2561,7 @@ Zamolodchikov--Faddeev Yang--Baxter equation
   \label{eq:sausage-full-yang-baxter}
 \end{equation}
 as a meromorphic identity on \(V_{\rm s}^{\otimes3}\).
-\end{proposition}
 
-\begin{proof}
 This is a finite algebraic identity.  We give the reduction because a sampled
 numerical Yang--Baxter check would not be evidence for the meromorphic
 statement.  Put
@@ -2617,9 +2615,9 @@ no floating-point specialization of \(q,u,v\).  Since the two sides are
 meromorphic functions, equality of all cleared numerators proves equality
 away from the union of their pole divisors, and therefore proves the
 meromorphic identity.
-\end{proof}
+\end{example}
 
-Proposition~\ref{prop:sausage-foz-factorization} is an algebraic bootstrap
+Example~\ref{ex:sausage-foz-factorization} is an algebraic bootstrap
 identity for the displayed meromorphic matrix.  It is not a construction of
 the local sausage sigma model, nor a proof that the regulator-defined metric
 family has scattering matrix \(S_\lambda\).
@@ -2723,7 +2721,7 @@ cigar descriptions depends on the precise scaling limit.  The elementary
 checks in
 Proposition~\ref{prop:repulsive-sausage-elementary-checks} are necessary
 bootstrap consistency tests, and
-Proposition~\ref{prop:sausage-foz-factorization} is the factorization
+Example~\ref{ex:sausage-foz-factorization} is the factorization
 identity for the meromorphic matrix; neither replaces the missing
 constructive identification.  In attractive analytic continuations,
 physical-strip poles must be accompanied by declared bound-state particles
