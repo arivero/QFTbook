@@ -8,12 +8,26 @@ of backgrounds, anomalies, gauging, and condensation.
 
 ## Notation Inventory
 
+- `mathfrak S_{Q,mathbb G}`: higher-group symmetry and symmetry-TQFT datum for the
+  chapter: QFT, finite two-group, background higher groupoid, anomaly-line
+  functor, symmetry TQFT, QFT boundary condition, topological defect system,
+  and anomaly-trivialization/counterterm choice.
+- `mathbb G=(G_0,A,rho,beta)`: finite two-group datum.
 - `G_0`: ordinary finite internal symmetry.
 - `A`: abelian one-form symmetry.
-- `beta`: Postnikov class in `H^3(BG_0,A)`.
+- `rho`: action of `G_0` on `A`.
+- `beta`: Postnikov class in `H^3(BG_0,A_rho)`.
 - `g`, `B`: ordinary and two-form background cochains.
+- `B_mathbbG(M)`: finite higher groupoid of two-group backgrounds on `M`.
+- `L_anom`: anomaly-line functor over the higher-group background groupoid.
+- `T_sym`: one-higher-dimensional symmetry TQFT.
 - `S_anom`: anomaly functional in one higher dimension.
-- `B_Q`: boundary condition representing a QFT in the symmetry TQFT.
+- `B_Q`: boundary condition representing a QFT in the symmetry TQFT
+  (manuscript notation `mathfrak B_{Q}` / `mathfrak B_{mathcal Q}`).
+- `D_top`: topological defect system in the QFT, including symmetry surfaces,
+  walls, junctions, endpoint operators, and isotopy/Pachner identifications.
+- `tau`: anomaly trivialization or discrete counterterm used for gauging or
+  condensation.
 - `A_cond`: condensable algebra object in a defect category.
 - `b`, `c`: `Z_N`-valued two-cochains in the finite five-dimensional
   one-form symmetry TQFT model.
@@ -48,10 +62,16 @@ of backgrounds, anomalies, gauging, and condensation.
 
 ## Claim Ledger
 
-- Defines two-group background fields through a twisted cocycle equation.
+- States the chapter's central higher-group symmetry and symmetry-TQFT datum
+  upfront: QFT, finite two-group, background higher groupoids, anomaly-line
+  functor, symmetry TQFT, QFT boundary condition, topological defect system,
+  and trivialization/counterterm data.
+- Defines two-group background fields through a twisted cocycle equation as
+  the triangulated chart for the background higher groupoid in the datum.
 - States the linked ordinary and one-form gauge transformations.
-- Describes anomaly functionals for combined backgrounds.
-- Defines the symmetry TQFT as a bulk organizer of QFT boundary conditions.
+- Describes anomaly functionals for combined backgrounds as representatives of
+  the anomaly-line functor in the datum.
+- Defines the symmetry TQFT as the bulk organizer of QFT boundary conditions.
 - Formulates gauging as condensation of an algebra object and records the
   anomaly obstruction.
 - Constructs the finite five-dimensional `Z_N` one-form symmetry TQFT by the

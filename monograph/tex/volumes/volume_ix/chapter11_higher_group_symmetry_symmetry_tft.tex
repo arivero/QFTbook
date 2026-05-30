@@ -10,13 +10,67 @@ than a direct product of groups.  This chapter defines higher-group
 backgrounds and then explains the symmetry-TQFT organization of boundary
 conditions and gauging operations.
 
+\begin{hypothesis}[Higher-group symmetry and symmetry-TQFT datum]
+\label{hyp:higher-group-symmetry-tft-datum}
+A \(D\)-dimensional QFT with finite two-group symmetry and symmetry-TQFT
+presentation is specified, for the purposes of this chapter, by a datum
+\[
+  \mathfrak S_{\mathcal Q,\mathbb G}
+  =
+  \bigl(
+    \mathcal Q,\mathbb G,\mathcal B_{\mathbb G},
+    \mathcal L_{\rm anom},
+    \mathfrak T_{\rm sym},\mathfrak B_{\mathcal Q},
+    \mathcal D_{\rm top},\tau
+  \bigr).
+\]
+The entries are as follows.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(\mathcal Q\) is a \(D\)-dimensional local QFT in the sense used in the
+  earlier foundational volumes.
+\item \(\mathbb G=(G_0,A,\rho,\beta)\) is a finite two-group: \(G_0\) is a
+  finite zero-form symmetry group, \(A\) is a finite abelian one-form symmetry
+  group, \(\rho:G_0\to\operatorname{Aut}(A)\) is the action on one-form
+  charges, and \(\beta\in H^3(BG_0,A_\rho)\) is the Postnikov class.
+\item \(\mathcal B_{\mathbb G}(M)\) is the finite higher groupoid of
+  backgrounds on a collared \(D\)-manifold \(M\).  In a triangulated chart its
+  objects are pairs \((g,B)\) satisfying the twisted cocycle equation
+  \(\delta_g B=\beta(g)\), and its higher morphisms are the zero-form,
+  one-form, and gauge-for-gauge transformations preserving this equation.
+\item \(\mathcal L_{\rm anom}\) is the anomaly-line functor over
+  \(\mathcal B_{\mathbb G}\), equivalently the boundary value of an invertible
+  \((D+1)\)-dimensional theory for the same background fields.
+\item \(\mathfrak T_{\rm sym}\) is the \((D+1)\)-dimensional symmetry TQFT
+  whose bulk fields are the \(\mathbb G\)-backgrounds and whose boundary
+  conditions include background-fixing and summing/gauging boundaries.
+\item \(\mathfrak B_{\mathcal Q}\) is the boundary condition of
+  \(\mathfrak T_{\rm sym}\) representing the QFT \(\mathcal Q\).  Coupling
+  \(\mathcal Q\) to a background means placing \(\mathfrak B_{\mathcal Q}\)
+  opposite a background boundary of \(\mathfrak T_{\rm sym}\).
+\item \(\mathcal D_{\rm top}\) is the corresponding topological defect system
+  in \(\mathcal Q\): symmetry surfaces, walls, junction lines, endpoint
+  operators, and their isotopy and Pachner-move identifications.
+\item \(\tau\) is any chosen anomaly trivialization or discrete counterterm
+  needed to turn a proposed gauging or condensation operation into an ordinary
+  complex-valued path integral.
+\end{enumerate}
+All finite cochain calculations below are consequences of such a datum after a
+triangulated model for \(\mathcal B_{\mathbb G}\) has been chosen.  The
+existence of \(\mathfrak T_{\rm sym}\), \(\mathfrak B_{\mathcal Q}\), and
+\(\mathcal D_{\rm top}\) for an interacting continuum theory is a separate QFT
+construction problem; see
+Open Problem~\ref{op:higher-group-examples}.
+\end{hypothesis}
+
 \section{Two-Group Backgrounds}
 
-Let \(G_0\) be an ordinary finite internal symmetry and let \(A\) be an
-abelian one-form symmetry.  A two-group is specified by an action of \(G_0\)
-on \(A\) and a Postnikov class
+Let \(\mathfrak S_{\mathcal Q,\mathbb G}\) be a datum as in
+Hypothesis~\ref{hyp:higher-group-symmetry-tft-datum}.  The two-group entry
+\(\mathbb G=(G_0,A,\rho,\beta)\) consists of an ordinary finite internal
+symmetry \(G_0\), an abelian one-form symmetry \(A\), an action of \(G_0\) on
+\(A\), and a Postnikov class
 \[
-  \beta\in H^3(BG_0,A).
+  \beta\in H^3(BG_0,A_\rho).
 \]
 On a triangulated spacetime \(M\), a background consists of a \(G_0\)-valued
 one-cocycle \(g\) and an \(A\)-valued two-cochain \(B\) obeying
@@ -58,11 +112,12 @@ partition function is a section of the anomaly line over background fields.
 
 \section{Symmetry TQFT}
 
-For a \(D\)-dimensional QFT with finite symmetry, one can package background
-fields, gauging, and duality defects in a \((D+1)\)-dimensional topological
-theory.  A physical QFT is then represented by a boundary condition
+For the datum in Hypothesis~\ref{hyp:higher-group-symmetry-tft-datum}, the
+object \(\mathfrak T_{\rm sym}\) packages background fields, gauging, and
+duality defects in a \((D+1)\)-dimensional topological theory.  The physical
+QFT \(\mathcal Q\) is represented by the boundary condition
 \[
-  \mathfrak B_Q
+  \mathfrak B_{\mathcal Q}
 \]
 for the symmetry TQFT.  Coupling to a background corresponds to ending the
 topological theory on a background boundary.  Gauging corresponds to replacing
