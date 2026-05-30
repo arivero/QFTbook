@@ -248,6 +248,61 @@ def check_circular_wilson_loop_semicircle_series() -> None:
         assert_equal(f"circular Wilson loop weak coefficient n={n}", coefficient, expected)
 
 
+def finite_n_wilson_laguerre_series(rank: int, order: int) -> list[Fraction]:
+    # W_N(q)=N^{-1} exp(q/(8N)) L_{N-1}^{(1)}(-q/(4N)).
+    laguerre = [Fraction(0) for _ in range(order + 1)]
+    for power in range(min(rank - 1, order) + 1):
+        laguerre[power] = Fraction(comb(rank, power + 1), rank)
+        laguerre[power] /= factorial(power) * (4 * rank) ** power
+
+    exponential = [
+        Fraction(1, factorial(power) * (8 * rank) ** power)
+        for power in range(order + 1)
+    ]
+    product = [Fraction(0) for _ in range(order + 1)]
+    for i in range(order + 1):
+        for j in range(order + 1 - i):
+            product[i + j] += laguerre[i] * exponential[j]
+    return product
+
+
+def check_finite_n_circular_wilson_laguerre_formula() -> None:
+    order = 5
+    # N=1 is a one-variable Gaussian with variance lambda/4, hence
+    # <exp(x)>=exp(lambda/8).
+    n1 = finite_n_wilson_laguerre_series(1, order)
+    expected_n1 = [
+        Fraction(1, factorial(power) * 8**power)
+        for power in range(order + 1)
+    ]
+    assert_equal("finite-N circular Wilson loop N=1", n1, expected_n1)
+
+    # N=2 gives exp(lambda/16) (1+lambda/16).
+    n2 = finite_n_wilson_laguerre_series(2, order)
+    expected_n2 = [Fraction(0) for _ in range(order + 1)]
+    exp16 = [
+        Fraction(1, factorial(power) * 16**power)
+        for power in range(order + 1)
+    ]
+    for power in range(order + 1):
+        expected_n2[power] += exp16[power]
+        if power + 1 <= order:
+            expected_n2[power + 1] += Fraction(1, 16) * exp16[power]
+    assert_equal("finite-N circular Wilson loop N=2", n2, expected_n2)
+
+    # The first weak-coupling coefficient is N-independent and equals 1/8.
+    # The second coefficient has the finite-N correction
+    # (2N^2+1)/(384 N^2), tending to the planar Bessel coefficient 1/192.
+    for rank in (1, 2, 3, 7):
+        series = finite_n_wilson_laguerre_series(rank, order)
+        assert_equal(f"finite-N Wilson first coefficient N={rank}", series[1], Fraction(1, 8))
+        assert_equal(
+            f"finite-N Wilson second coefficient N={rank}",
+            series[2],
+            Fraction(2 * rank * rank + 1, 384 * rank * rank),
+        )
+
+
 def check_bremsstrahlung_bessel_derivative_relation() -> None:
     # With W(lambda)=2 I_1(sqrt(lambda))/sqrt(lambda), the Ward-identity
     # algebra uses lambda d log(W)/d lambda = sqrt(lambda) I_2/(2 I_1).
@@ -299,6 +354,7 @@ def main() -> None:
     check_stress_tensor_multiplet_normalization()
     check_planar_chiral_primary_ope_coefficients()
     check_circular_wilson_loop_semicircle_series()
+    check_finite_n_circular_wilson_laguerre_formula()
     check_bremsstrahlung_bessel_derivative_relation()
     print("All N=4 SYM SCFT foundation checks passed.")
 

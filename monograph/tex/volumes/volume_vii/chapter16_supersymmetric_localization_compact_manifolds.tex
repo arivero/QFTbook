@@ -858,6 +858,104 @@ matrix model \eqref{eq:circular-wilson-gaussian-matrix-measure} is the
 normalization-invariant statement.
 \end{definition}
 
+\paragraph{Finite-\texorpdfstring{\(N\)}{N} circular Wilson loop in the Gaussian model.}
+For the \(U(N)\) Gaussian matrix model
+\eqref{eq:circular-wilson-gaussian-matrix-measure}, the normalized
+fundamental circular Wilson-loop insertion has the exact finite-\(N\) value
+\begin{equation}
+  \left\langle
+    \frac1N\operatorname{Tr}_{\square}\ee^X
+  \right\rangle_{\lambda_{\rm circ},N}
+  =
+  \frac1N
+  \exp\!\left(\frac{\lambda_{\rm circ}}{8N}\right)
+  L_{N-1}^{(1)}
+  \!\left(-\frac{\lambda_{\rm circ}}{4N}\right),
+  \label{eq:finite-n-circular-wilson-laguerre}
+\end{equation}
+where \(L_n^{(1)}\) is the associated Laguerre polynomial.
+
+To derive this formula, put
+\[
+  \alpha=\frac{2N}{\lambda_{\rm circ}} .
+\]
+After diagonalizing \(X\), the one-point density is expressed by the
+orthogonal-polynomial kernel for the weight \(e^{-\alpha x^2}\):
+\begin{equation}
+  \rho_N(x)
+  =
+  \frac1N e^{-\alpha x^2}
+  \sum_{j=0}^{N-1}\frac{p_j(x)^2}{h_j},
+  \qquad
+  h_j=\int_{\mathbb R}p_j(x)^2e^{-\alpha x^2}\,dx ,
+  \label{eq:finite-n-hermite-density-kernel}
+\end{equation}
+where \(p_j\) is any degree-\(j\) polynomial family orthogonal for this
+weight.  Therefore, for an auxiliary parameter \(s\),
+\begin{equation}
+  W_N(s)
+  =
+  \left\langle
+    \frac1N\operatorname{Tr}\ee^{sX}
+  \right\rangle
+  =
+  \frac1N
+  \sum_{j=0}^{N-1}
+  \frac1{h_j}\int_{\mathbb R}
+  e^{sx}p_j(x)^2e^{-\alpha x^2}\,dx .
+  \label{eq:finite-n-wilson-kernel-sum}
+\end{equation}
+Choose \(p_j(x)=\alpha^{-j/2}2^{-j}H_j(\sqrt\alpha x)\), where \(H_j\) is the
+physicists' Hermite polynomial.  The scale factors cancel in the ratio
+appearing in \eqref{eq:finite-n-wilson-kernel-sum}.  With
+\(y=\sqrt\alpha x\) and \(t=s/\sqrt\alpha\), the required normalized Hermite
+integral is
+\begin{equation}
+  \frac{\int_{\mathbb R} e^{-y^2+ty}H_j(y)^2\,dy}
+       {\int_{\mathbb R} e^{-y^2}H_j(y)^2\,dy}
+  =
+  \exp\!\left(\frac{t^2}{4}\right)
+  L_j\!\left(-\frac{t^2}{2}\right).
+  \label{eq:hermite-laguerre-integral}
+\end{equation}
+For completeness, recall the derivation.  The Hermite generating function is
+\[
+  \exp(2uy-u^2)=\sum_{j\ge0}H_j(y)\frac{u^j}{j!}.
+\]
+Multiplying two generating functions and integrating against
+\(e^{-y^2+ty}\) gives
+\[
+  \sqrt\pi\,
+  \exp\!\left(\frac{t^2}{4}\right)
+  \exp\!\left(2uv+tu+tv\right).
+\]
+Taking the coefficient of \(u^jv^j/(j!)^2\) and dividing by the same
+coefficient at \(t=0\), namely \(2^j j!\), gives
+\eqref{eq:hermite-laguerre-integral}; the remaining finite coefficient sum is
+the standard Laguerre expansion
+\[
+  L_j(z)=\sum_{m=0}^{j}\binom{j}{m}\frac{(-z)^m}{m!}.
+  \]
+Substitution into \eqref{eq:finite-n-wilson-kernel-sum} yields
+\begin{equation}
+  W_N(s)
+  =
+  \frac1N
+  \exp\!\left(\frac{s^2}{4\alpha}\right)
+  \sum_{j=0}^{N-1}
+  L_j\!\left(-\frac{s^2}{2\alpha}\right).
+  \label{eq:finite-n-wilson-laguerre-sum}
+\end{equation}
+The elementary identity
+\[
+  \sum_{j=0}^{N-1}L_j(z)=L_{N-1}^{(1)}(z)
+\]
+follows by summing the coefficient formula for \(L_j\) and using
+\(\sum_{j=m}^{N-1}\binom jm=\binom N{m+1}\), which is precisely the
+coefficient formula for \(L_{N-1}^{(1)}\).  Setting \(s=1\) and
+\(\alpha=2N/\lambda_{\rm circ}\) gives
+\eqref{eq:finite-n-circular-wilson-laguerre}.
+
 \begin{theorem}[Planar circular Wilson loop from the Gaussian model]
 \label{thm:planar-circular-wilson-bessel}
 In the large-\(N\) limit of

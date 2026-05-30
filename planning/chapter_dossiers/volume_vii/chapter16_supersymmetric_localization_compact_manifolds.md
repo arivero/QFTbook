@@ -40,6 +40,10 @@
 - \(H\)-function convergence, logarithmic derivative, and Barnes-\(G\)
   counterterm convention.
 - \(\mathcal N=4\) Yang-Mills degeneration to a Gaussian matrix model.
+- Exact finite-\(N\) circular Wilson-loop evaluation in the Gaussian matrix
+  model,
+  `N^{-1} exp(lambda/(8N)) L_{N-1}^{(1)}(-lambda/(4N))`, derived from the
+  Hermite kernel before taking the planar limit.
 - \(S^3\) \(\mathcal N=2\) Kapustin-Willett-Yaakov matrix integral, including
   Chern-Simons, FI, vector, and chiral multiplet contributions.
 - Double-sine definition, round-sphere relation to \(\ell\), conjugate-pair
@@ -117,11 +121,12 @@
     residue datum, or vanishing theorem cancels it.
 12. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
-   defines the circular-loop Gaussian coupling, derives the planar
-   semicircle density, evaluates the half-BPS circular Wilson loop as
-   \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and derives
-   the Bessel algebra behind the Bremsstrahlung function from the protected
-   circular-loop Ward identity.
+   defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
+   Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
+   the planar semicircle density, evaluates the half-BPS circular Wilson loop
+   as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
+   derives the Bessel algebra behind the Bremsstrahlung function from the
+   protected circular-loop Ward identity.
 13. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
 14. The round-\(S^3\) determinant can be written in \(\ell\)-function or
@@ -144,8 +149,9 @@
   \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
   round-\(S^3\) conjugate-chiral-pair integral.
 - `calculation-checks/susy_n4_scft_checks.py` verifies the exact rational
-  series consequences of the circular-loop derivation: the Catalan
-  semicircle moments reproduce the Bessel coefficients, and
+  series consequences of the circular-loop derivation: the finite-\(N\)
+  Laguerre formula for \(N=1,2\) and its first weak coefficients, the Catalan
+  semicircle moments that reproduce the planar Bessel coefficients, and
   \(\lambda d\log W/d\lambda\) agrees term by term with the
   \(\sqrt{\lambda}I_2/(2I_1)\) Bessel-ratio expression.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
@@ -175,3 +181,7 @@
   local uniform convergence, the logarithmic derivative, and the Barnes
   \(G\)-representation directly from the Weierstrass product rather than
   presenting the determinant convention as a thin normalization box.
+- 2026-05-30: inserted the exact finite-\(N\) circular Wilson-loop evaluation
+  before the planar saddle derivation, deriving the Laguerre formula from the
+  Hermite orthogonal-polynomial kernel and adding finite-\(N\) rational
+  coefficient checks.
