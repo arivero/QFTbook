@@ -88,11 +88,11 @@ The source-free formulas in most of this chapter are recovered by setting
 
 \section{Hydrodynamic Scaling Families}
 
-Hydrodynamics is not a replacement for the microscopic QFT.  It is an
-asymptotic statement about a family of states and sources whose variation
-scale is taken large compared with all microscopic relaxation scales that
-are not protected by exact conservation laws.  The following definition
-records the data that are being approximated.
+The hydrodynamic expansion is an asymptotic statement about a family of
+states and sources whose variation scale is taken large compared with all
+microscopic relaxation scales except the modes protected by exact
+conservation laws.  The following definition records the data that are being
+approximated.
 
 \begin{definition}[Hydrodynamic scaling family]
 \label{def:hydro-scaling-family}
@@ -129,6 +129,89 @@ local tensor structures compatible with the Ward identities and the chosen
 state variables.  The microscopic assertion is that nonconserved excitations
 produce analytic terms in the scaling region, so that the nonanalytic
 long-distance response is exhausted by the conservation laws.
+
+\begin{definition}[First-order hydrodynamic datum]
+\label{def:first-order-hydrodynamic-datum}
+A parity-even first-order hydrodynamic datum for ordinary Abelian charges is a
+tuple
+\[
+  \mathfrak D_{\rm hydro}
+  =
+  \bigl(
+    W[g_+,A_+;g_-,A_-],
+    T^{\mu\nu},J_A^\mu,
+    \mathcal M_{\rm eq},
+    T,\mu_A,u^\mu,
+    \mathsf f,
+    \mathsf C^{(0)},\mathsf C^{(1)},
+    \mathsf E
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(W[g_+,A_+;g_-,A_-]\) is the regulated Schwinger--Keldysh generating
+  functional of the microscopic QFT with background metric \(g_{\mu\nu}\) and
+  Abelian background gauge fields \(A^A_\mu\).  The operators
+  \(T^{\mu\nu}\) and \(J_A^\mu\) use the source normalization of
+  \eqref{eq:hydro-source-variation}.
+\item The exact QFT input is the Ward-identity pair
+  \[
+    \nabla_\mu J_A^\mu=0,
+    \qquad
+    \nabla_\mu T^\mu{}_\nu=F^A_{\nu\lambda}J_A^\lambda ,
+  \]
+  with \(F^A_{\mu\nu}=\partial_\mu A^A_\nu-\partial_\nu A^A_\mu\).
+\item \(\mathcal M_{\rm eq}\) is the thermodynamic manifold of homogeneous
+  KMS states in the thermodynamic limit.  Its local coordinates are
+  temperature \(T>0\), chemical potentials \(\mu_A\), and a
+  future-timelike unit vector \(u^\mu\) satisfying \(u^\mu u_\mu=-1\).
+\item \(\mathsf f\) is the hydrodynamic frame, namely the prescription for
+  extending \((T,\mu_A,u^\mu)\) away from exact equilibrium.  This chapter
+  uses Landau matching:
+  \[
+    u_\mu T^{\mu\nu}=-\varepsilon u^\nu,
+    \qquad
+    n_A=-u_\mu J_A^\mu .
+  \]
+\item \(\mathsf C^{(0)}\) is the ideal constitutive map
+  \[
+    T^{\mu\nu}_{(0)}=\varepsilon u^\mu u^\nu+p\Delta^{\mu\nu},
+    \qquad
+    J^\mu_{A(0)}=n_Au^\mu,
+    \qquad
+    \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu .
+  \]
+  The thermodynamic functions obey
+  \(dp=s\,dT+n_A\,d\mu_A\) and
+  \(\varepsilon+p=Ts+\mu_A n_A\).
+\item \(\mathsf C^{(1)}\) is the first-gradient constitutive map in the
+  declared frame.  In the source-free parity-even sector treated here its
+  independent transport data are shear viscosity \(\eta\), bulk viscosity
+  \(\zeta\), and conductivity matrix \(\Sigma_{AB}\), appearing as
+  \[
+    \pi^{\mu\nu}_{(1)}=-\eta\sigma^{\mu\nu}
+    -\zeta\Delta^{\mu\nu}\partial_\lambda u^\lambda,
+    \qquad
+    \nu_A^\mu{}_{(1)}
+    =
+    -T\Sigma_{AB}\Delta^{\mu\nu}\partial_\nu(\mu_B/T).
+  \]
+\item \(\mathsf E\) is the entropy-current and positivity datum.  It consists
+  of \(S^\mu=su^\mu+O(\partial)\) and the requirement that the quadratic
+  entropy-production form be nonnegative for all first gradients.  In this
+  sector the condition is
+  \[
+    \eta\ge0,\qquad \zeta\ge0,\qquad
+    \Sigma_{(AB)}v^Av^B\ge0
+    \quad\text{for all }v^A\in\R .
+  \]
+  Here \(\Sigma_{(AB)}=(\Sigma_{AB}+\Sigma_{BA})/2\).
+\end{enumerate}
+The datum \(\mathfrak D_{\rm hydro}\) is evaluated on a hydrodynamic scaling
+family in the sense of Definition~\ref{def:hydro-scaling-family}.  The
+sections below derive the ideal equations, frame transformations, first-order
+entropy production, and hydrodynamic poles from this datum.
+\end{definition}
 
 \section{Conserved Densities and Local State Variables}
 

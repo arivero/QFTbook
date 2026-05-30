@@ -11,6 +11,11 @@
 
 ## Definitions And Results
 
+- First-order hydrodynamic datum \(\mathfrak D_{\rm hydro}\), aggregating
+  the regulated Schwinger-Keldysh source functional, exact stress/current
+  Ward identities, equilibrium thermodynamic manifold, local variables,
+  Landau frame, ideal and first-gradient constitutive maps, and entropy
+  positivity datum before the constitutive derivations begin.
 - Local temperature, chemical potentials, and velocity field.
 - Background metric/gauge source definitions of \(T^{\mu\nu}\) and
   \(J_A^\mu\), and the source Ward identities
@@ -47,6 +52,10 @@
 
 | Symbol | Meaning |
 | --- | --- |
+| \(\mathfrak D_{\rm hydro}\) | first-order parity-even hydrodynamic datum |
+| \(\mathsf f\) | hydrodynamic frame choice, Landau matching in this chapter |
+| \(\mathsf C^{(0)},\mathsf C^{(1)}\) | ideal and first-gradient constitutive maps |
+| \(\mathsf E\) | entropy-current and positivity datum |
 | \(D=d+1\) | spacetime and spatial dimensions |
 | \(u^\mu\) | future-timelike fluid velocity |
 | \(T,\mu_A\) | temperature and chemical potentials |
@@ -70,53 +79,57 @@
 
 ## Claim Ledger
 
-1. Background-source variation defines \(T^{\mu\nu}\) and \(J_A^\mu\), and
+1. The first-order hydrodynamic datum separates exact microscopic QFT input
+   (source functional and Ward identities), equilibrium thermodynamics, frame
+   choice, constitutive maps, and entropy positivity from the later
+   hydrodynamic scaling assertion.
+2. Background-source variation defines \(T^{\mu\nu}\) and \(J_A^\mu\), and
    gauge/diffeomorphism invariance gives the source Ward identities.
-2. A constitutive relation is an asymptotic statement on hydrodynamic
+3. A constitutive relation is an asymptotic statement on hydrodynamic
    scaling families, not a finite-volume identity.
-3. Hydrodynamic frames are coordinate choices; first-order redefinitions
+4. Hydrodynamic frames are coordinate choices; first-order redefinitions
    shift \(q^\mu\) and \(\nu_A^\mu\) by
    \(-(\varepsilon+p)\delta u^\mu\) and \(-n_A\delta u^\mu\).
-4. The grand-canonical pressure gives \(n_A=\partial p/\partial\mu_A\),
+5. The grand-canonical pressure gives \(n_A=\partial p/\partial\mu_A\),
    \(s=\partial p/\partial T\), and
    \(\varepsilon+p=Ts+\mu_A n_A\).
-5. Projecting \(\partial_\mu T^{\mu\nu}_{(0)}=0\) along and orthogonal to
+6. Projecting \(\partial_\mu T^{\mu\nu}_{(0)}=0\) along and orthogonal to
    \(u^\mu\) gives the ideal energy equation and Euler equation.
-6. With external sources, the ideal Euler equation implies
+7. With external sources, the ideal Euler equation implies
    \(a^\mu+\Delta^{\mu\nu}\partial_\nu\log T
    =Tn_A V_A^\mu/(\varepsilon+p)\), so acceleration is not an independent
    first-order dissipative force.
-7. Current conservation gives the ideal charge equation.
-8. The Gibbs-Duhem identity and first law imply conservation of
+8. Current conservation gives the ideal charge equation.
+9. The Gibbs-Duhem identity and first law imply conservation of
    \(S^\mu_{(0)}=su^\mu\) on ideal solutions.
-9. In Landau frame the first-order parity-even stress and current are
+10. In Landau frame the first-order parity-even stress and current are
    \(-\eta\sigma^{\mu\nu}-\zeta\Delta^{\mu\nu}\vartheta\) and
    \(-T\Sigma_{AB}\Delta^{\mu\nu}\partial_\nu(\mu_B/T)\).
-10. Divergence of the first-order entropy current gives
+11. Divergence of the first-order entropy current gives
    \[
      \partial_\mu S^\mu=
      \eta\sigma^2/(2T)+\zeta\vartheta^2/T
      +T\Sigma_{AB}\nabla(\mu_A/T)\nabla(\mu_B/T)+O(\partial^3),
    \]
    so the transport matrix positivity conditions follow.
-11. Charge diffusion at constant \(T\) gives
+12. Charge diffusion at constant \(T\) gives
    \(\omega=-i(\Sigma/\chi)k^2+\cdots\).
-12. Multi-charge diffusion has \(D=\Sigma\chi^{-1}\); if \(\chi\) is positive
+13. Multi-charge diffusion has \(D=\Sigma\chi^{-1}\); if \(\chi\) is positive
     definite and \(\Sigma\) is symmetric positive semidefinite, \(D\) is
     similar to a symmetric positive semidefinite matrix and has nonnegative
     diffusion eigenvalues.
-13. The density source-response matrix is
+14. The density source-response matrix is
     \(K^R_{n_An_B}=k^2(Dk^2-i\omega)^{-1}_{AC}\Sigma_{CB}\) up to analytic
     contact terms, and its static limit is \(\chi_{AB}\).
-14. Linearized neutral hydrodynamics gives shear diffusion
+15. Linearized neutral hydrodynamics gives shear diffusion
    \(\omega=-i\eta k^2/(\varepsilon+p)+\cdots\) and sound poles
    \[
      \omega=\pm c_sk-\frac{i}{2}
      \frac{\zeta+2\eta(d-1)/d}{\varepsilon+p}k^2+\cdots .
    \]
-15. Hydrodynamic correlator poles match the Kubo coefficients only after the
+16. Hydrodynamic correlator poles match the Kubo coefficients only after the
    thermodynamic and hydrodynamic scaling limits are specified.
-16. The microscopic QFT theorem boundary requires local equilibration,
+17. The microscopic QFT theorem boundary requires local equilibration,
    clustering, analyticity, and control of nonconserved modes and long-time
    tails.
 
