@@ -363,27 +363,116 @@ boundary categories in gauge-theoretic TQFTs.
 \section{Crane--Yetter and Walker--Wang Boundaries}
 
 Four-dimensional state-sum and lattice-Hamiltonian constructions make the
-boundary role of braided tensor categories especially visible.
+boundary role of braided tensor categories especially visible.  The fully
+general Crane--Yetter state sum and Walker--Wang Hamiltonian construction
+belong to a broad categorical theorem package.  The local mechanism needed
+for the present monograph can be proved directly in the pointed case, which
+is already rich enough to distinguish bulk deconfinement from boundary
+topological order.
 
-\begin{quotedtheorem}[Crane--Yetter and Walker--Wang boundary principle]
-\label{qthm:crane-yetter-walker-wang-boundary}
-Let \(\mathcal C\) be a suitable spherical or ribbon fusion category with the
-finiteness and nondegeneracy assumptions required by the chosen construction.
-The Crane--Yetter state sum defines a four-dimensional oriented topological
-theory whose amplitudes are built from the categorical \(F\)-, braiding-, and
-twist data of \(\mathcal C\).  In the Walker--Wang Hamiltonian realization,
-the bulk deconfined line content is controlled by the transparent, or Mueger
-central, part of \(\mathcal C\).  If \(\mathcal C\) is modular, this
-transparent part is trivial, and the nontrivial anyonic category \(\mathcal C\)
-appears naturally on a three-dimensional boundary.
-\end{quotedtheorem}
+\begin{definition}[Pointed braided input and its radical]
+\label{def:pointed-braided-radical}
+Let \(A\) be a finite abelian group.  A pointed braided input is a quadratic
+function
+\[
+  q:A\to\mathbb Q/\mathbb Z
+\]
+whose polarization
+\begin{equation}
+  b(a,x)=q(a+x)-q(a)-q(x)
+  \label{eq:pointed-braiding-polarization}
+\end{equation}
+is a symmetric biadditive pairing \(A\times A\to\mathbb Q/\mathbb Z\).  The
+topological spin of the simple line \(a\) is \(\theta_a=\exp(2\pi\ii q(a))\),
+and the double braiding of \(a\) around \(x\) is
+\[
+  M(a,x)=\exp(2\pi\ii b(a,x)).
+\]
+The radical, or transparent subgroup, is
+\begin{equation}
+  \operatorname{Rad}(A,b)
+  =
+  \{a\in A:\ b(a,x)=0\ {\rm in}\ \mathbb Q/\mathbb Z
+  \ {\rm for\ every}\ x\in A\}.
+  \label{eq:pointed-radical}
+\end{equation}
+The pointed input is nondegenerate when \(\operatorname{Rad}(A,b)=0\).
+\end{definition}
 
-This quoted theorem records the Crane--Yetter and Walker--Wang source
-lineage; the proof is not reproduced here.  The statement is included because
-it prevents a common misconception: a modular category in this construction
-does not produce freely propagating four-dimensional anyons.  Rather, its
-nondegenerate braiding confines bulk line excitations and leaves the modular
-category as boundary topological order.
+\begin{theorem}[Pointed Walker--Wang boundary mechanism]
+\label{thm:pointed-walker-wang-boundary-mechanism}
+Consider the pointed Walker--Wang lattice mechanism whose string labels are
+the finite abelian group \(A\), whose local fusion is the group law of \(A\),
+and whose plaquette recoupling phases are the monodromies
+\(\exp(2\pi\ii b(a,x))\) determined by
+Definition~\ref{def:pointed-braided-radical}.  A bulk line labelled by
+\(a\in A\) is deconfined precisely when
+\[
+  a\in\operatorname{Rad}(A,b).
+\]
+If \(b\) is nondegenerate, the only deconfined bulk line is the vacuum line.
+On a boundary where strings are allowed to end, the boundary line labels still
+form the pointed braided category \((A,q)\): their fusion is addition in
+\(A\), their spins are \(\exp(2\pi\ii q(a))\), and their double-braiding
+phases are \(\exp(2\pi\ii b(a,x))\).
+\end{theorem}
+
+\begin{proof}
+In the pointed model, every local string-net move reduces to two pieces of
+finite algebra: addition of labels in \(A\), and the monodromy phase acquired
+when one labelled string is moved through another.  Let a candidate bulk line
+carry label \(a\).  Moving this line across a plaquette operator whose
+fluctuating loop has label \(x\) multiplies the state by
+\[
+  M(a,x)=\exp(2\pi\ii b(a,x)).
+\]
+For the line to be deconfined, its insertion must commute with every local
+plaquette recoupling away from its endpoints; otherwise a displaced segment
+leaves a detectable string of plaquette violations, which is the lattice
+Hamiltonian meaning of confinement.  Thus deconfinement is equivalent to
+\(M(a,x)=1\) for every \(x\in A\), equivalently
+\(b(a,x)=0\) in \(\mathbb Q/\mathbb Z\) for every \(x\).  This is exactly
+\(a\in\operatorname{Rad}(A,b)\).  If \(b\) is nondegenerate, the radical is
+zero, so only the vacuum label is deconfined in the bulk.
+
+At a boundary, the plaquette relation that would continue the detection
+surface outside the material is absent.  A string can end on the boundary
+without creating a forbidden bulk endpoint.  Fusion of boundary endpoints is
+therefore the same group law \(a\otimes x=a+x\), and the same local crossing
+calculation gives the boundary spin and double-braiding phases encoded by
+\(q\) and \(b\).  The nontrivial braided category is consequently a boundary
+topological order, while the four-dimensional bulk line spectrum is the
+radical.
+\end{proof}
+
+\begin{example}[Toric-code input as a modular boundary order]
+\label{ex:toric-code-walker-wang-boundary}
+For \(A=\mathbb Z_2e\oplus\mathbb Z_2m\), set
+\[
+  q(e)=q(m)=0,\qquad q(e+m)=\frac12 .
+\]
+Then \(b(e,m)=1/2\), while \(b(e,e)=b(m,m)=0\).  The radical is zero:
+\[
+  \operatorname{Rad}(A,b)=\{0\}.
+\]
+The pointed Walker--Wang mechanism therefore has no nontrivial deconfined
+bulk line, but the boundary still supports the toric-code anyons
+\(\{1,e,m,e+m\}\) with the displayed mutual semionic braiding.
+\end{example}
+
+\begin{remark}[General categorical status]
+\label{rem:crane-yetter-walker-wang-general-status}
+For a general spherical, ribbon, or modular fusion category \(\mathcal C\),
+the Crane--Yetter and Walker--Wang constructions require the full categorical
+state-sum or lattice-Hamiltonian theorem: pentagon and hexagon identities,
+Pachner-move invariance, spherical trace normalization, and the analysis of
+bulk excitation sectors.  The monograph uses the general theorem as external
+mathematics until those categorical proofs are developed in full.  The
+pointed theorem above proves the mechanism that is used conceptually here:
+bulk deconfined lines are controlled by the Müger center, and a nondegenerate
+braided input leaves its nontrivial anyons as boundary, not bulk, topological
+order.
+\end{remark}
 
 \section{Extended Assignment}
 

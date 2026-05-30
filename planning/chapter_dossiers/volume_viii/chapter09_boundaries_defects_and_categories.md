@@ -24,6 +24,9 @@ gauge-theoretic boundary constructions.
 - `omega_BV`, `alpha_partial`, `omega_partial`: BV symplectic form and BFV
   boundary forms.
 - `L_partial`: boundary Lagrangian condition in BFV phase space.
+- `A`, `q`, `b`, `Rad(A,b)`: pointed braided finite abelian input, spin
+  quadratic function, polarized braiding form, and radical/Müger-center
+  subgroup in the pointed Walker--Wang mechanism.
 
 ## Claim Ledger
 
@@ -40,8 +43,12 @@ gauge-theoretic boundary constructions.
 - Defines Lagrangian subgroups in abelian Chern-Simons theory and proves how
   they give commutative separable boundary algebra objects.
 - Works out the two toric-code Lagrangian boundary subgroups.
-- Quotes the Crane-Yetter / Walker-Wang boundary principle with source
-  lineage and states the modular-input boundary interpretation.
+- Replaces the Crane-Yetter / Walker-Wang quoted boundary principle by a
+  local pointed theorem: in a finite abelian pointed input, bulk deconfined
+  lines are precisely the radical of the braiding form, while a nondegenerate
+  input leaves its nontrivial line category on the boundary.
+- Works out the toric-code pointed input as a modular boundary order with
+  trivial bulk radical.
 - Defines the BV-BFV boundary mechanism and the extended assignment problem.
 
 ## Figure Ledger
@@ -49,3 +56,16 @@ gauge-theoretic boundary constructions.
 No figure is included in this pass.  Future figures should include interval
 composition, defect fusion, braided line exchange, and BV-BFV boundary
 restriction diagrams.
+
+## Calculation Checks
+
+- `calculation-checks/walker_wang_boundary_checks.py` verifies the pointed
+  Walker--Wang radical criterion, including toric-code, symmetric
+  nonmodular, and cyclic nondegenerate examples.
+
+## Anti-Wrapper Audit
+
+- 2026-05-30 pass: removed the Crane--Yetter / Walker--Wang `quotedtheorem`
+  wrapper.  The fully general categorical construction remains an external
+  mathematical boundary, but the monograph now proves the finite pointed
+  mechanism actually used in the chapter.
