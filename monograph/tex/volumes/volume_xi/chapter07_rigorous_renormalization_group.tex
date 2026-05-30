@@ -416,8 +416,18 @@ list of formal Lagrangian coefficients, are the intrinsic relevant tuning
 coordinates in this RG chart.
 \end{definition}
 
-\begin{proposition}[Finite-codimension critical surface]
-\label{prop:finite-codimension-critical-surface}
+\paragraph{Where the analytic burden lies.}
+Theorem~\ref{thm:rg-local-stable-manifold} proves the existence of a Lipschitz
+stable graph under the displayed Lyapunov--Perron contraction hypotheses.  The
+stronger statement that the critical surface is a \(C^1\) submanifold is not a
+formal consequence of RG terminology.  It requires either a \(C^1\) stable
+manifold theorem for the chosen Banach RG map, proved by differentiating the
+Lyapunov--Perron fixed point or by a graph transform with uniform derivative
+bounds, or a model-specific construction of the differentiable graph.  The
+geometric consequence after this analytic input is a standard submersion
+calculation, not an RG theorem in its own right.
+
+\paragraph{Submanifold form after differentiability.}
 Assume the stable graph \(h:E_s\to E_u\) in
 Theorem~\ref{thm:rg-local-stable-manifold} is \(C^1\) on a neighborhood of
 the origin in \(E_s\), and let \(r=\dim E_u<\infty\).  Then
@@ -445,9 +455,7 @@ has rank \(r\), then the tuned microscopic parameters near \(p_0\),
   \label{eq:tuned-microscopic-parameter-surface}
 \end{equation}
 form a \(C^1\) submanifold of \(P\) of codimension \(r\).
-\end{proposition}
 
-\begin{proof}
 For \(V=V_\ast+u+s\), with \(u\in E_u\) and \(s\in E_s\), the derivative of
 \(\tau\) in the \(E_u\)-direction is the identity map on \(E_u\):
 \begin{equation}
@@ -475,7 +483,6 @@ function theorem to \(\tau\circ\iota:P\to E_u\).  The rank condition
 \(p_0\).  Hence the inverse image
 \((\tau\circ\iota)^{-1}(0)\) is a \(C^1\) submanifold of \(P\) of codimension
 \(r\), which is \eqref{eq:tuned-microscopic-parameter-surface}.
-\end{proof}
 
 \paragraph{Linear finite-scale tuning exponents.}
 Let \(E_u\) be a finite-dimensional normed vector space with basis

@@ -114,6 +114,12 @@ constructive RG developments.
   and normalization group.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
+- Records the finite-codimension critical-surface statement in prose rather
+  than as a theorem-family result: after a \(C^1\) stable graph and microscopic
+  transversality have been proved, the codimension statement is the standard
+  submersion/implicit-function consequence.  The differentiability of the
+  stable graph is the analytic RG burden, not a consequence of naming the
+  locus ``critical.''
 
 ## Figure Ledger
 

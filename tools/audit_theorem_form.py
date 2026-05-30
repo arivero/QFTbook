@@ -723,6 +723,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Polynomial OS observables from exponential moments"
     r"|Kernel criterion for projective dual-norm bounds"
     r"|Central-charge tensor structure"
+    r"|Finite-codimension critical surface"
     r"|Elementary finite conformal transformations"
     r"|Finite transformation of tensor primaries"
     r"|Component transformations of a chiral multiplet"
