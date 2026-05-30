@@ -195,11 +195,11 @@ surface \(\Sigma\) there are topological symmetry surfaces
 with junctions implementing \(U_nU_m\simeq U_{n+m}\), and assume these
 surface networks are invariant under triangulation moves.  For a triangulated
 oriented three-manifold \(Y\) supporting a codimension-one defect, define the
-formal condensation insertion
+groupoid-normalized condensation insertion
 \begin{equation}
   \mathfrak C(Y)
   =
-  \frac{1}{|C^1(Y,\mathbb Z_N)|}
+  \frac{|C^0(Y,\mathbb Z_N)|}{|C^1(Y,\mathbb Z_N)|}
   \sum_{b\in Z^2(Y,\mathbb Z_N)}
   \mathsf U_b(Y).
   \label{eq:triangulated-one-form-condensation-defect}
@@ -210,23 +210,74 @@ Poincare-dual one-cycle of \(b\): locally one thickens each dual edge in a
 small normal collar of \(Y\) and inserts the corresponding one-form symmetry
 surface segment.  The condition \(\delta b=0\) is the conservation law at the
 vertices of the dual one-cycle, equivalently the absence of an uncancelled
-endpoint for the wall network.  The normalization is a chosen cellular
-normalization for the one-form gauge transformations acting on cochains;
-changing the groupoid normalization changes the defect by an invertible
-three-dimensional topological factor.
+endpoint for the wall network.  The factor
+\(|C^0|/|C^1|\) is the finite groupoid volume of the two-form gauge
+parameter \(C^1(Y,\mathbb Z_N)\) together with its degree-zero
+gauge-for-gauge redundancy.  Omitting the \(|C^0|\) factor gives a
+cellularly dependent representative; changing to a reduced convention divides
+by the constant factor \(|H^0(Y,\mathbb Z_N)|\) on each connected component
+and changes the defect by an invertible normalization convention rather than
+by a dynamical QFT operation.
 \end{definition}
 
-\paragraph{Fusion of the finite condensation defect.}
-Under the hypotheses of Definition~\ref{def:triangulated-higher-gauging-defect},
-the fusion of two parallel condensation defects is the original condensation
-defect tensored with the finite three-dimensional \(\mathbb Z_N\) two-form
-gauge theory state sum on \(Y\).  In particular the defect is noninvertible
-whenever this three-dimensional topological factor is nontrivial.
+\begin{theorem}[Finite higher gauging and condensation fusion]
+\label{thm:finite-higher-gauging-condensation-defects}
+Under the hypotheses of
+Definition~\ref{def:triangulated-higher-gauging-defect}, the insertion
+\(\mathfrak C(Y)\) is a topological codimension-one defect implementing
+finite \(\mathbb Z_N\) one-form gauging on the hypersurface \(Y\).  The
+fusion of two parallel copies is
+\begin{equation}
+  \mathfrak C(Y)\circ\mathfrak C(Y)
+  =
+  Z^{(2)}_{\mathbb Z_N}(Y)\,\mathfrak C(Y),
+  \qquad
+  Z^{(2)}_{\mathbb Z_N}(Y)
+  =
+  \frac{|C^0(Y,\mathbb Z_N)|\,|Z^2(Y,\mathbb Z_N)|}
+       {|C^1(Y,\mathbb Z_N)|}.
+  \label{eq:finite-higher-gauging-fusion}
+\end{equation}
+Equivalently,
+\begin{equation}
+  Z^{(2)}_{\mathbb Z_N}(Y)
+  =
+  \frac{|H^0(Y,\mathbb Z_N)|\,|H^2(Y,\mathbb Z_N)|}
+       {|H^1(Y,\mathbb Z_N)|},
+  \label{eq:finite-higher-gauging-topological-factor}
+\end{equation}
+so the coefficient is the closed-three-manifold partition value of the
+finite three-dimensional \(\mathbb Z_N\) two-form gauge theory in this
+normalization.  With corners or boundaries the same state sum assigns the
+corresponding Hilbert spaces and operators; hence the fusion coefficient of
+condensation defects is, in general, a three-dimensional topological theory
+rather than an integer.
+
+If the half-space gauged theory is identified with \(\mathcal Q\) after all
+discrete theta terms and background boundary conditions are fixed, the
+half-space gauging interface is a duality defect of \(\mathcal Q\).  For
+\(N>1\) it is noninvertible whenever the associated two-form gauge theory has
+non-one-dimensional state spaces, for example on a connected closed spatial
+surface where the flux label in \(H^2(\Sigma,\mathbb Z_N)\) survives.
+\end{theorem}
+
+\begin{proof}
+Topological invariance of \(\mathfrak C(Y)\) is part of the stated QFT input:
+the surface networks \(U_n(\Sigma)\), their junctions, and the allowed
+triangulation moves are assumed topological and anomaly-free.  The cochain
+condition \(\delta b=0\) is exactly the junction conservation law for the
+Poincare-dual network, so the sum in
+\eqref{eq:triangulated-one-form-condensation-defect} is stable under
+refining or locally moving the triangulation of \(Y\).  In a collar
+\((- \epsilon,\epsilon)\times Y\), replacing the fixed one-form background by
+the groupoid sum over \(b\) is precisely the finite path integral for gauging
+the one-form symmetry on the hypersurface.  This proves the gauging
+interpretation once the symmetry surfaces of the QFT have been constructed.
 
 Place two copies of the defect on nearby parallel copies of \(Y\).  Their
 product is
 \[
-  \frac{1}{|C^1(Y,\mathbb Z_N)|^2}
+  \left(\frac{|C^0(Y,\mathbb Z_N)|}{|C^1(Y,\mathbb Z_N)|}\right)^2
   \sum_{b,b'\in Z^2(Y,\mathbb Z_N)}
   \mathsf U_b(Y)\,\mathsf U_{b'}(Y).
 \]
@@ -234,15 +285,47 @@ Using the junction isomorphism \(U_nU_m\simeq U_{n+m}\), change variables to
 \[
   s=b+b',\qquad t=b .
 \]
-For each closed \(s\), the sum over \(t\in Z^2(Y,\mathbb Z_N)\) with the same
-cellular normalization is, by definition, the partition function of the finite
-three-dimensional two-form gauge theory on \(Y\) in this normalization.  The
-remaining sum over \(s\) is exactly the condensation insertion
-\(\mathfrak C(Y)\), because
-\(\mathsf U_b(Y)\mathsf U_{b'}(Y)\simeq\mathsf U_{b+b'}(Y)\).  Thus fusion has
-the stated form.  If the additional three-dimensional factor is not the
-trivial invertible theory, no inverse defect can cancel it to the invisible
-defect.
+For each closed \(s\), the variable \(t\) runs freely over
+\(Z^2(Y,\mathbb Z_N)\).  The product therefore becomes
+\[
+  \frac{|C^0|\,|Z^2|}{|C^1|}
+  \left(
+    \frac{|C^0|}{|C^1|}
+    \sum_{s\in Z^2(Y,\mathbb Z_N)}\mathsf U_s(Y)
+  \right),
+\]
+where all cochain groups are on \(Y\).  The second parenthesis is
+\(\mathfrak C(Y)\), and the first factor is
+\eqref{eq:finite-higher-gauging-fusion}.
+
+It remains to see that this factor is topological.  From the short exact
+sequences
+\[
+  0\to Z^1\to C^1\to B^2\to0,\qquad
+  0\to B^1\to Z^1\to H^1\to0,\qquad
+  0\to H^0\to C^0\to B^1\to0,
+\]
+and
+\[
+  0\to B^2\to Z^2\to H^2\to0,
+\]
+finite cardinalities multiply, giving
+\[
+  \frac{|C^0|\,|Z^2|}{|C^1|}
+  =
+  \frac{|H^0|\,|H^2|}{|H^1|}.
+\]
+This proves \eqref{eq:finite-higher-gauging-topological-factor}.  The
+extension to manifolds with boundary is the same finite gauge-theory state
+sum with boundary cochains left unsummed or summed according to the chosen
+boundary condition; it assigns vector spaces and linear maps, with closed
+three-manifold numbers as the special case.  If half-space gauging lands back
+on \(\mathcal Q\), the interface has the same theory on both sides and is
+therefore an internal
+duality defect.  Its product with the opposite interface contains the
+nontrivial two-form gauge-theory summation just computed, so it is invertible
+only when that finite topological theory is the trivial invertible one.
+\end{proof}
 
 For Yang--Mills theories this construction becomes a QFT statement only after
 the \(\mathbb Z_N\) one-form symmetry surfaces, their junctions, their
@@ -250,24 +333,6 @@ correlation topology, and their anomaly trivialization have been constructed
 inside the theory or by a regulator such as the lattice.  Once that input is
 available, the cochain calculation above is the local algebraic mechanism
 behind higher gauging and the resulting noninvertible condensation defects.
-
-\begin{quotedtheorem}[Finite higher gauging]
-\label{qt:finite-higher-gauging-condensation-defects}
-Let \(\mathcal Q\) be a four-dimensional QFT with a suitable anomaly-free
-finite one-form symmetry.  Gauging that symmetry on a hypersurface produces a
-topological condensation defect.  If \(\mathcal Q\) is equivalent to the theory
-obtained by gauging, after all discrete theta and background choices are
-fixed, the half-space gauging interface becomes a noninvertible duality
-defect.  Its fusion coefficients are generally three-dimensional topological
-theories, not only nonnegative integers.
-\end{quotedtheorem}
-
-This theorem is quoted as a finite topological and defect-network theorem in
-the source lineage of higher gauging and noninvertible condensation defects.
-The proof in this monograph is complete only for the finite cochain mechanism
-displayed above.  The remaining continuum work is to construct the required
-surface operators and their junctions in the particular interacting QFT under
-discussion.
 
 \section{Chiral Defects In Abelian Gauge Theory}
 \label{sec:chiral-defects-abelian-gauge-theory}

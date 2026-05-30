@@ -590,6 +590,13 @@ Current checks:
   \(S_3/A_3\simeq\mathbb Z_2\) quotient multiplication, orbifold
   pair-of-pants monodromy, centralizer sizes, and preservation of the
   electric-magnetic Dirac pairing by \(S\), \(T\), and \(T^p\).
+- `finite_higher_gauging_checks.py`: exact finite checks for the
+  higher-gauging condensation-defect normalization, including the equality
+  between the cochain groupoid factor
+  \(|C^0|\,|Z^2|/|C^1|\) and the cohomological topological expression
+  \(|H^0|\,|H^2|/|H^1|\), the fusion coefficient algebra
+  \(\mathfrak C^2=Z^{(2)}\mathfrak C\), and the cell-dependence of the
+  incomplete \(|C^1|^{-1}\) normalization.
 - `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number

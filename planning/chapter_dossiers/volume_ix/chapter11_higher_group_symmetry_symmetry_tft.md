@@ -25,8 +25,10 @@ of backgrounds, anomalies, gauging, and condensation.
   a closed two-cochain `b` on `Y`.
 - `Y`: oriented three-manifold supporting a codimension-one condensation
   defect in a four-dimensional QFT.
-- `C(Y)`: higher-gauging condensation insertion obtained by summing closed
-  two-cochains on `Y`.
+- `C(Y)`: groupoid-normalized higher-gauging condensation insertion obtained
+  by summing closed two-cochains on `Y` with normalization `|C^0|/|C^1|`.
+- `Z^{(2)}_{Z_N}(Y)`: finite three-dimensional two-form gauge-theory factor
+  `|C^0| |Z^2| / |C^1| = |H^0| |H^2| / |H^1|`.
 - `(e,m)`: finite electric/magnetic one-form line charge label in
   `Z_N plus Z_N`.
 - `j_5`: axial current normalized as in Chapter 50.
@@ -59,17 +61,16 @@ of backgrounds, anomalies, gauging, and condensation.
   connects the exchange of boundary conditions with finite electric-magnetic
   line-charge duality.
 - Defines a triangulated finite higher-gauging defect from a closed
-  two-cochain sum over topological symmetry surfaces.
-- Gives the finite cochain fusion mechanism: two condensation defects fuse to
-  the original condensation defect tensored with a three-dimensional finite
-  `Z_N` two-form gauge-theory state sum.  The 2026-05-29 continuing
-  anti-wrapper audit records this as cochain calculation prose rather than a
-  proposition, because the QFT burden is constructing the surface networks and
-  junctions.
-- Records the source-lineage theorem boundary for higher-gauging
-  noninvertible condensation defects in four-dimensional QFT: the finite
-  cochain mechanism is proved here, while the continuum surface-operator
-  construction remains a separate QFT input.
+  two-cochain sum over topological symmetry surfaces with the full finite
+  groupoid normalization including gauge-for-gauge data.
+- Proves the finite cochain fusion theorem: two condensation defects fuse to
+  the original condensation defect tensored with the three-dimensional finite
+  `Z_N` two-form gauge-theory state sum
+  `Z^{(2)}_{Z_N}(Y)=|C^0||Z^2|/|C^1|=|H^0||H^2|/|H^1|`.
+- Separates the locally proved finite cochain theorem from the remaining
+  continuum QFT burden: constructing the required surface networks,
+  junctions, correlation topology, and anomaly trivialization in the
+  particular interacting theory.
 - Defines the compact-QED noninvertible chiral defect `D_{N,p}` by dressing a
   rational axial wall with the minimal abelian TQFT `A_{N,p}` coupled to the
   magnetic background `B_A`.
@@ -96,3 +97,18 @@ background and summing boundaries.  A later diagram should also show the
 finite one-form SymTFT slab with fixed `b` and summed `b` boundary conditions,
 and the collision of two condensation defects producing a three-dimensional
 topological factor.
+
+## Calculation Checks
+
+- `calculation-checks/finite_higher_gauging_checks.py` verifies the finite
+  groupoid normalization in the condensation defect, the exact algebra
+  \(\mathfrak C^2=Z^{(2)}\mathfrak C\), and the cell-dependence that would
+  remain if the degree-zero gauge-for-gauge factor were omitted.
+
+## Anti-Wrapper Audit
+
+- 2026-05-30 pass: replaced the finite higher-gauging `quotedtheorem` by a
+  local theorem with proof.  The theorem proves the finite cochain and
+  defect-network mechanism under explicit anomaly-free topological-surface
+  hypotheses; it does not claim that those symmetry surfaces have been
+  constructed in every continuum Yang--Mills theory.
