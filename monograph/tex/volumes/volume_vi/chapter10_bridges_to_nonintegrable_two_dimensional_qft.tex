@@ -526,7 +526,7 @@ examined with the form-factor boundary value, finite-volume level spacing,
 and possible near-threshold bound or virtual-state poles kept in the same
 scaling limit.
 
-\section{Truncated Conformal Space as Regulator}
+\section{CFT-Deformation Regulator Interface}
 
 Let \(\mathcal C\) be a two-dimensional CFT on a circle of circumference
 \(L\).  The CFT Hamiltonian is
@@ -557,82 +557,19 @@ Equivalently,
   g_i(L)=\lambda_i\left(\frac{L}{2\pi}\right)^{2-\Delta_i}.
 \]
 
-\begin{definition}[TCSA regulator setup]
-\label{def:tcsa-regulator-setup}
-In this chapter the truncated conformal space approach is used only as the
-two-dimensional CFT-deformation instance of the general Hamiltonian
-truncation framework of
-Chapter~\ref{ch:constructive-hamiltonian-truncation-dlcq-benchmarks}.  Its
-special input is the availability of a CFT Hilbert-space basis, conformal
-matrix elements, and OPE data for local counterterms.  A TCSA regulator
-consists of:
-\begin{enumerate}
-\item a CFT Hilbert-space sector on the circle;
-\item a cutoff subspace \(P_N\Hilb_{\mathcal C}\) defined by
-\(L_0+\bar L_0\le N\) or by a stated energy cutoff;
-\item the matrix elements of all perturbing operators in this CFT basis;
-\item local counterterm coordinates determined by the discarded high-energy
-states;
-\item an order of limits for \(N\), \(L\), and the renormalized couplings.
-\end{enumerate}
-\end{definition}
-
-The counterterm scaling follows from the OPE.  Suppose
-\[
-  \mathcal O_i(x)\mathcal O_j(0)
-  \sim
-  \sum_k
-  C_{ij}{}^k\,|x|^{\Delta_k-\Delta_i-\Delta_j}\mathcal O_k(0).
-\]
-The short-distance part of the second-order perturbation contains
-\[
-  \int_{|x|<a}d^2x\,|x|^{\Delta_k-\Delta_i-\Delta_j}
-  =
-  2\pi
-  \frac{a^{2+\Delta_k-\Delta_i-\Delta_j}}
-       {2+\Delta_k-\Delta_i-\Delta_j}
-\]
-when the denominator is nonzero, and a logarithm when it vanishes.  With
-\(a\sim N^{-1}\), the cutoff dependence of the local coordinate multiplying
-\(\mathcal O_k\) scales as
-\[
-  \delta g_k(N)
-  \propto
-  \lambda_i\lambda_j\,
-  N^{\Delta_i+\Delta_j-\Delta_k-2}
-\]
-up to scheme-dependent constants and logarithmic replacement at exponent
-zero.
-
-\begin{remark}[OPE origin of TCSA counterterm powers]
-\label{rem:tcsa-counterterm-power}
-In a TCSA regulator whose high-energy cutoff corresponds to a short-distance
-resolution \(a\sim N^{-1}\), the contribution of the OPE channel
-\(\mathcal O_i\mathcal O_j\to\mathcal O_k\) to a local second-order
-counterterm has cutoff power
-\[
-  N^{\Delta_i+\Delta_j-\Delta_k-2}.
-\]
-If \(\Delta_i+\Delta_j-\Delta_k-2=0\), the power is replaced by \(\log N\).
-\end{remark}
-
-Second-order perturbation theory integrates the product
-\(\mathcal O_i(x)\mathcal O_j(0)\) over small Euclidean separations.  Replacing
-the product by its OPE channel gives the radial integral displayed above.  If
-the exponent
-\[
-  2+\Delta_k-\Delta_i-\Delta_j
-\]
-is nonzero, substituting \(a=N^{-1}\) gives
-\[
-  a^{2+\Delta_k-\Delta_i-\Delta_j}
-  =
-  N^{\Delta_i+\Delta_j-\Delta_k-2}.
-\]
-If the exponent vanishes, the radial integral is
-\(\int_a dr\,r^{-1}\), giving \(\log N\).  The coefficient is scheme
-dependent because the precise relation between \(a\) and \(N\), and the
-definition of the projection \(P_N\), are part of the regulator.
+The displayed Hamiltonian is a coordinate chart for relevant deformations, not
+a numerical calculation.  A truncated conformal-space regulator may be used
+to approximate such a deformation only after one has chosen a CFT sector,
+cutoff subspaces, perturbing-operator matrix elements, counterterm
+coordinates, and an order of limits.  Those choices, together with the
+Rayleigh--Ritz and finite-matrix error controls, are developed in
+Chapter~\ref{ch:constructive-hamiltonian-truncation-dlcq-benchmarks}.  This
+chapter does not expose the TCSA machinery further, because no concrete
+nonintegrable finite-volume spectrum is extracted here.  The information
+needed for the present bridge is only that a CFT-deformation regulator must
+match the same local operator normalizations and counterterm coordinates that
+enter the form-factor perturbation theory around an integrable massive
+point.
 
 \section{Comparison Objects}
 

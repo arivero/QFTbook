@@ -36,12 +36,22 @@ and near two-dimensional CFT perturbations.
 - Evaluates the two-particle \(1+1\)-dimensional phase-space integral from
   the rapidity measure, including the Jacobian, threshold condition, and
   identical-particle counting convention.
-- Defines the TCSA regulator as the two-dimensional CFT-deformation instance
-  of the general Hamiltonian truncation framework of Volume XI, and identifies
-  the extra CFT-specific counterterm obligations.
+- Identifies the CFT-deformation Hamiltonian coordinates needed to interface
+  with form-factor perturbation theory, while sending the detailed TCSA
+  regulator machinery and counterterm-power derivations to the general
+  Hamiltonian-truncation chapter in Volume XI unless this chapter later
+  extracts a concrete nonintegrable finite-volume spectrum.
 
 ## Figure Ledger
 
 No figure is included in this pass.  Future figures should include charge
 breaking, finite-volume level crossings, and integrable-to-nonintegrable
 deformation diagrams.
+
+## Placement Audit
+
+- 2026-05-30 general-method exposure pass: removed the local TCSA regulator
+  definition and OPE counterterm-power derivation from this specialized bridge
+  chapter.  The chapter now keeps only the CFT-deformation Hamiltonian
+  coordinate chart and states that detailed TCSA machinery belongs in
+  Volume XI until an actual nonintegrable spectrum is extracted here.

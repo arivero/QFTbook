@@ -43,9 +43,11 @@ Initial grep passes covered:
      continuum spectral data while referencing Volume XI for the GEVP method.
 
 2. TCSA placement:
-   - Volume VI now identifies its TCSA regulator setup as the
-     two-dimensional CFT-deformation instance of the general Hamiltonian
-     truncation framework in Volume XI.
+   - Volume VI now keeps only the CFT-deformation Hamiltonian coordinate
+     chart and the interface condition with form-factor perturbation theory.
+     The local TCSA regulator setup and OPE counterterm-power derivation have
+     been removed from the specialized chapter and left to the general
+     Hamiltonian-truncation framework in Volume XI.
 
 3. Harness rule:
    - `planning/12_strict_writing_harness.md` now contains a general-method
