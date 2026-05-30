@@ -83,3 +83,9 @@ The chapter establishes:
   integration from the constant Hessian to the quadratic polynomial, the
   residual affine constants, the first-order constraint on the symmetric part
   of \(B_{\mu\nu}\), and the converse substitution are all explicit.
+- 2026-05-30 finite Liouville pass: replaced the imported Liouville theorem
+  with a local proof for smooth finite conformal diffeomorphisms in
+  \(D\ge3\).  The proof derives the flat conformal-factor equation from
+  \(f^*\delta=\Omega^2\delta\), integrates \(q=\Omega^{-1}\) to a quadratic
+  denominator obeying \(4\alpha\gamma=|\beta|^2\), and reduces the two cases
+  to affine conformal maps or affine maps after one inversion.
