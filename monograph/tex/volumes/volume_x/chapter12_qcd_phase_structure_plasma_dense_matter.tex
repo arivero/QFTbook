@@ -947,30 +947,68 @@ In a flavor-symmetric thermal state this becomes
 \end{lemma}
 
 \begin{proof}
-Perform the local nonsinglet axial change of variables
+The proof is a finite-regulator Ward-identity argument, followed by the
+thermodynamic limit in the order specified in the definition of the
+susceptibility.  Perform the local nonsinglet axial change of variables
 \[
   \delta q=\ii\alpha^a(x)\tau^a\gamma_5 q,\qquad
   \delta\bar q=\ii\alpha^a(x)\bar q\gamma_5\tau^a .
 \]
 The regulator hypothesis says that the fermion measure has no nonsinglet
-Jacobian anomaly.  The action variation is the distributional Ward
-insertion
+Jacobian anomaly.  The variation of the mass term is fixed by the Euclidean
+source convention in \eqref{eq:qcd-axial-current-pseudoscalar-density}:
 \[
-  \partial_\mu A_\mu^a(x)-2mP^a(x),
+  \delta_\alpha\bigl(m\bar q q\bigr)
+  =
+  2m\,\alpha^a\,\bar q\ii\gamma_5\tau^a q
+  =
+  2m\,\alpha^a P^a .
 \]
-with contact terms when \(x\) collides with other insertions.  Apply this
-identity to the insertion \(P^b(0)\).  The contact term is its infinitesimal
-axial variation:
+The kinetic term gives the divergence of the current \(A_\mu^a\).  With the
+active-variation convention used here, differentiating the change-of-variables
+identity with respect to \(\alpha^a(x)\) and applying it to the insertion
+\(P^b(0)\) gives the distributional identity
+\begin{equation}
+  \partial_\mu
+  \langle A_\mu^a(x)P^b(0)\rangle_{T,m}
+  +2m\langle P^a(x)P^b(0)\rangle_{T,m}
+  +\delta^{(4)}_\beta(x)
+  \langle \delta^a P^b(0)\rangle_{T,m}
+  =
+  0 .
+  \label{eq:qcd-local-axial-ward-pseudoscalar}
+\end{equation}
+Here \(\delta^{(4)}_\beta\) is the periodic delta distribution on the thermal
+spacetime torus before the thermodynamic limit, and
+\(\delta^aP^b\) denotes the variation of the inserted operator, not a second
+source variation.  The contact term is
 \[
   \delta^a P^b(0)
   =
+  \ii\,\bar q\gamma_5\tau^a\,\ii\gamma_5\tau^b q
+  +
+  \bar q\,\ii\gamma_5\tau^b\,\ii\tau^a\gamma_5 q
+  =
   -\bar q\{\tau^a,\tau^b\}q(0).
 \]
-Integrating the Ward identity over the thermal spacetime torus removes the
-divergence term by periodicity of the bosonic current and gives
-\eqref{eq:qcd-integrated-axial-ward}, with the minus sign in
-\eqref{eq:qcd-pseudoscalar-susceptibility-definition} coming from the
-Euclidean \(P^a=\bar q\ii\gamma_5\tau^a q\) convention.
+Integrating \eqref{eq:qcd-local-axial-ward-pseudoscalar} over the thermal
+spacetime torus removes the divergence term by periodicity of the bosonic
+current.  Vector flavor invariance gives \(\langle P^a\rangle_{T,m}=0\) for
+nonsinglet \(a\), so the connected and ordinary two-point functions coincide
+in this channel.  Using the susceptibility definition
+\eqref{eq:qcd-pseudoscalar-susceptibility-definition}, one obtains
+\[
+  2m\,\chi_\pi^{ab}(T,m)
+  =
+  \langle\delta^a P^b\rangle_{T,m}
+  =
+  -
+  \left\langle
+    \bar q\{\tau^a,\tau^b\}q
+  \right\rangle_{T,m},
+\]
+which is \eqref{eq:qcd-integrated-axial-ward}.  No statement about a pion pole
+has entered; the pole-saturation input is a separate infrared hypothesis.
 
 In a flavor-symmetric state
 \[

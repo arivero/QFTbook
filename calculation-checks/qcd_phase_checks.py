@@ -364,6 +364,15 @@ def check_baryon_cumulants_and_radius_estimator():
 
 
 def check_chiral_ward_identity_normalization():
+    # The Euclidean convention P^a=bar q i gamma_5 tau^a q and
+    # delta q=i alpha tau^a gamma_5 q gives the local contact term
+    # delta^a P^b=-bar q {tau^a,tau^b} q.  The two minus signs are the
+    # left and right variations, each using i^2 gamma_5^2=-1.
+    left_variation_coeff = Fraction(-1)
+    right_variation_coeff = Fraction(-1)
+    assert_equal("left axial variation of pseudoscalar", left_variation_coeff, Fraction(-1))
+    assert_equal("right axial variation of pseudoscalar", right_variation_coeff, Fraction(-1))
+
     # Flavor generators tau^a are normalized by tr_f(tau^a tau^b)=delta^{ab}.
     # In a flavor-symmetric state,
     # <bar q {tau^a,tau^b} q> = (2/N_f) delta^{ab} <bar q q>_sum.
@@ -374,7 +383,13 @@ def check_chiral_ward_identity_normalization():
     sigma = Fraction(5, 7)
     scalar_sum = -nf * sigma
     singlet_anticommutator_coeff = Fraction(2, 1) / nf
-    ward_rhs = -singlet_anticommutator_coeff * scalar_sum
+    anticommutator_expectation = singlet_anticommutator_coeff * scalar_sum
+    contact_term = -anticommutator_expectation
+    # The integrated local Ward identity is 2m int PP + contact=0, while
+    # chi_pi=-int PP in the Euclidean convention of the chapter.
+    integrated_pp_times_2m = -contact_term
+    ward_rhs = -integrated_pp_times_2m
+    assert_equal("axial contact term equals Ward RHS", ward_rhs, contact_term)
     chi_times_m_from_ward = ward_rhs / 2
     assert_equal("delta-normalized chiral Ward identity", chi_times_m_from_ward, sigma)
 

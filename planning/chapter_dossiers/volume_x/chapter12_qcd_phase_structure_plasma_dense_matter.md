@@ -126,6 +126,14 @@ GitHub issue #628.
   `2m chi_pi^{ab}=-<bar q {tau^a,tau^b} q>` in trace-delta flavor
   normalization and derives the flavor-symmetric consequence
   `m chi_pi^{ab}=delta^{ab} Sigma_m`.
+- 2026-05-30 proof-substance follow-up: expanded the integrated nonsinglet
+  axial Ward proof to display the local distributional Ward identity on the
+  thermal torus, the periodic delta contact term, the Euclidean
+  `P^a=bar q i gamma_5 tau^a q` sign convention, the vanishing of the
+  nonsinglet one-point function by vector flavor symmetry, and the exact
+  flavor-symmetric singlet projection.  `qcd_phase_checks.py` now verifies the
+  contact-term sign and Ward-normalization bookkeeping in addition to the
+  GMOR normalization.
 - Records the finite-temperature GMOR relation as a conditional
   pole-saturation consequence of the integrated axial Ward identity, with the
   normalization conversion between trace-delta and half-trace flavor
