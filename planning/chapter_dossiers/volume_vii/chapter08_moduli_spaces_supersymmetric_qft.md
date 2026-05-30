@@ -26,8 +26,14 @@ later lower-dimensional examples, protected sectors, and localization.
   \(N_f=2\) quotient.
 - `eq:su2-nf2-classical-plucker-hypersurface`: classical \(SU(2)\),
   \(N_f=2\) SQCD quotient as the Pfaffian/Plucker hypersurface.
-- `lem:su2-nf2-quantum-deformation-algebra`: conditional algebraic
-  consequences of the \(SU(2)\), \(N_f=2\) quantum deformation
+- `eq:su2-nf2-quantum-deformed-pfaffian`: Wilsonian quantum-deformation
+  input for the \(SU(2)\), \(N_f=2\) branch; the subsequent algebraic
+  consequences are written in prose rather than as a theorem-family claim.
+- `eq:su2-nf2-massive-vacua`: two isolated vacua after a nondegenerate
+  antisymmetric mass deformation of the \(SU(2)\), \(N_f=2\) branch.
+- `eq:su2-nf2-massive-superpotential-values`: corresponding superpotential
+  values after solving the constrained \(F\)-term equations.
+- The quantum-deformation calculation uses
   \(\operatorname{Pf}(V)=\Lambda_h^4\), including smoothness and the
   diagonal-mass two-vacuum check.
 - `m_1`, `m_2`, `X`: diagonal mass-source parameters and the Lagrange
@@ -71,7 +77,7 @@ later lower-dimensional examples, protected sectors, and localization.
   nonzero Plucker chart, and dimension check.
 - Separates the Wilsonian quantum-deformation input
   \(\operatorname{Pf}(V)=\Lambda_h^4\) from its algebraic consequences, then
-  proves smoothness for \(\Lambda_h\neq0\), reduces a nondegenerate
+  derives smoothness for \(\Lambda_h\neq0\), reduces a nondegenerate
   antisymmetric mass matrix to Darboux form, solves the constrained
   \(F\)-term equations, and matches the two superpotential values to pure
   \(SU(2)\) by holomorphic threshold scale matching.
@@ -106,5 +112,9 @@ local models.
 - 2026-05-30 anti-wrapper pass: demoted the classical \(SU(2)\), \(N_f=2\)
   Pfaffian/Plucker quotient from proposition/proof form to derivation prose.
   The invariant-theory calculation, converse chart, quotient dimension count,
-  and convention definitions are retained; theorem-family form is reserved
-  here for the conditional quantum-deformation algebra.
+  and convention definitions are retained.
+- 2026-05-30 follow-up anti-wrapper pass: demoted the quantum-deformation
+  algebra block from lemma/proof form as well.  The nonperturbative content is
+  the Wilsonian input \(\operatorname{Pf}(V)=\Lambda_h^4\); smoothness,
+  Darboux reduction, the two-vacuum solution, and threshold matching are
+  finite algebraic consequences and are now presented as such.

@@ -739,6 +739,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Algebraic Yang--Baxter identity for the displayed sausage matrix"
     r"|Scheme equivalence for matched physical observables"
     r"|Classical .*N_f=2.*SQCD quotient"
+    r"|Algebra of the .*N_f=2.*quantum deformation"
     r")\b",
     re.IGNORECASE,
 )
