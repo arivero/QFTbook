@@ -10,11 +10,80 @@ matrix elements of local fields between finite-particle states.  In a
 massive two-dimensional theory with factorized scattering, the first
 operator-level datum is the family of form factors.
 
+\begin{definition}[Local-operator form-factor datum]
+\label{def:form-factor-datum-local-operator}
+Let \(\mathfrak R\) be a regular factorized scattering datum in the sense of
+Definition~\ref{def:regular-two-body-r-system}.  A local-operator
+form-factor datum over \(\mathfrak R\) is a tuple
+\[
+  \mathfrak F_{\mathcal O}
+  =
+  \bigl(
+    \widehat{\mathcal O},
+    \{F^{\mathcal O}_{a_1\ldots a_n}\}_{n\geq0,\ a_i\in\mathcal I},
+    \{\omega_{\mathcal O,a}\}_{a\in\mathcal I},
+    \mathcal P_{\rm kin},
+    \mathcal P_{\rm bs},
+    \mathcal G_{\mathcal O}
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(\widehat{\mathcal O}(f)\) is a scalar local or semi-local
+  operator-valued distribution on a common dense scattering domain
+  \(\mathcal D_{\rm scat}\subset\mathcal H\), with vacuum
+  \(\Omega\in\mathcal D_{\rm scat}\).  Semi-locality means that the exchange
+  of \(\widehat{\mathcal O}\) with a charged particle line may carry the
+  monodromy specified in item (iii); ordinary locality is the special case
+  with trivial monodromy for every species.
+\item For every ordered species word
+  \(\mathbf a=(a_1,\ldots,a_n)\), \(F^{\mathcal O}_{\mathbf a}\) is a
+  meromorphic covector-valued function on the rapidity variables,
+  \[
+    F^{\mathcal O}_{\mathbf a}(\theta_1,\ldots,\theta_n)
+    \in
+    \bigl(V_{a_1}\otimes\cdots\otimes V_{a_n}\bigr)^\vee ,
+  \]
+  whose physical real boundary value in the chamber
+  \(\theta_1>\cdots>\theta_n\) equals the vacuum-to-in-state matrix element
+  of \(\widehat{\mathcal O}(0)\).  The word \(\mathbf a\) is part of the
+  argument; when adjacent rapidities are analytically continued around one
+  another, the corresponding species spaces are reordered by the scattering
+  maps of \(\mathfrak R\).
+\item \(\omega_{\mathcal O,a}\in\C^\times\) is the semi-locality monodromy
+  acquired when a particle of species \(a\) is analytically continued once
+  around the insertion of \(\mathcal O\).  For a strictly local bosonic scalar
+  operator all \(\omega_{\mathcal O,a}\) are \(1\); for order/disorder fields
+  in two-dimensional examples the same symbol records the controlled failure
+  of single-valuedness.
+\item \(\mathcal P_{\rm kin}\) consists of the annihilation-pole residue
+  tensors determined by the antiparticle and crossing data of
+  \(\mathfrak R\).  These tensors specify the residues at
+  \(\theta_i-\theta_j=\ii\pi\) after the chosen tensor-ordering convention is
+  fixed.
+\item \(\mathcal P_{\rm bs}\) consists of the bound-state residue tensors
+  inherited from the physical-strip poles of the two-body scattering maps.
+  If no stable bound-state channel is present, this entry is empty.
+\item \(\mathcal G_{\mathcal O}\) is a stated family of growth and
+  boundary-value bounds.  It must be strong enough for each spectral series
+  later claimed in the chapter to define the announced distribution or
+  separated Euclidean function.  A form-factor datum without such bounds is
+  only algebraic bootstrap input, not a reconstruction of a local field.
+\end{enumerate}
+The exchange, cyclicity, kinematic-pole, bound-state-pole, covariance, and
+growth equations are developed below as constraints on
+\(\mathfrak F_{\mathcal O}\).  The definition records the object to which
+those constraints apply; it does not assert that a solution of the algebraic
+equations has already constructed a Wightman QFT.
+\end{definition}
+
 \section{Finite-Particle Matrix Elements}
 
-Let \(\mathcal I\) be the set of stable particle species, \(V_a\) their
-internal species spaces, and \(S_{ab}(\theta):V_a\otimes V_b\to V_b\otimes
-V_a\) the two-body scattering maps.  Ordered incoming states are denoted
+Let \(\mathfrak F_{\mathcal O}\) be a local-operator form-factor datum over
+\(\mathfrak R\).  Thus \(\mathcal I\) is the set of stable particle species,
+\(V_a\) their internal species spaces, and
+\(S_{ab}(\theta):V_a\otimes V_b\to V_b\otimes V_a\) the two-body scattering
+maps.  Ordered incoming states are denoted
 \[
   \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\rm in},
   \qquad
@@ -957,15 +1026,9 @@ the same one-particle channel that appears in the scattering residue.
 
 \section{Form-Factor Reconstruction Boundary}
 
-\begin{definition}[Form-factor datum for a local operator]
-\label{def:form-factor-datum-local-operator}
-A form-factor datum for a scalar local operator consists of meromorphic
-covectors \(F_n^{\mathcal O}\) for all \(n\geq0\), species labels, and
-semi-locality monodromy data, satisfying exchange, cyclicity, kinematic-pole,
-bound-state-pole, Lorentz covariance, and specified growth conditions.
-\end{definition}
-
-The growth condition is essential.  It controls whether the spectral series
+The datum of Definition~\ref{def:form-factor-datum-local-operator} supplies
+the bootstrap input.  Its growth entry is essential: it controls whether the
+spectral series
 for Wightman functions,
 \[
   \langle\Omega|\widehat{\mathcal O}(x)\widehat{\mathcal O}(0)|\Omega\rangle
