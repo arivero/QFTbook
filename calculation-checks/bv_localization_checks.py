@@ -4,7 +4,8 @@
 The script checks finite-dimensional algebra used in Volume VIII, Chapter 10:
 the one-pair BV Laplacian identity, BV Stokes as an endpoint statement, the
 BV-pushforward boundary obstruction, the normal Gaussian determinant factor,
-and the rank-one Mathai-Quillen normalization.  It does not model an
+the rank-one Mathai-Quillen normalization, and the elementary collar-scaling
+criterion for stratum boundary functionals.  It does not model an
 infinite-dimensional gauge-theory functional integral.
 """
 
@@ -141,6 +142,25 @@ def check_bv_pushforward_boundary_obstruction() -> None:
     )
 
 
+def check_stratum_boundary_scaling() -> None:
+    # Model a collar boundary functional by evaluating epsilon^eta at
+    # epsilon=1/n.  Positive eta tends to zero, eta=0 is a finite residue, and
+    # negative eta grows.  These exact inequalities are the finite-dimensional
+    # arithmetic behind the collar criterion in the chapter.
+    eps_values = [Fraction(1, n) for n in (2, 3, 5, 7)]
+
+    positive = [eps**2 for eps in eps_values]
+    assert positive[-1] < positive[0]
+    assert_equal("positive collar exponent first value", positive[0], Fraction(1, 4))
+
+    residue = [eps**0 for eps in eps_values]
+    assert_equal("zero collar exponent residue sequence", residue, [Fraction(1)] * 4)
+
+    divergent = [eps ** (-1) for eps in eps_values]
+    assert divergent[-1] > divergent[0]
+    assert_equal("negative collar exponent final value", divergent[-1], Fraction(7))
+
+
 def determinant(matrix: list[list[Fraction]]) -> Fraction:
     n = len(matrix)
     if n == 0:
@@ -223,6 +243,7 @@ def main() -> None:
     check_bv_product_identity()
     check_bv_stokes_endpoint_term()
     check_bv_pushforward_boundary_obstruction()
+    check_stratum_boundary_scaling()
     check_gaussian_normal_factor()
     check_mathai_quillen_rank_one()
     check_s2_fixed_point_series()

@@ -507,13 +507,67 @@ relative-cycle, resolution, or residue input is exactly the additional input
 that makes the right hand side vanish or cancel in the residual QME.
 \end{proof}
 
+\paragraph{Collar form of the stratum functional.}
+The preceding obstruction is useful only when the stratum functional is a
+specified object.  A collar description supplies such an object.  Assume that,
+near a stratum \(S_\alpha\), the compactified fixed locus is equipped with a
+defining function \(r\geq0\), a link fibration
+\[
+  L_\alpha\longrightarrow S_\alpha,
+\]
+and boundary faces
+\[
+  L_{\alpha,\epsilon}=\{r=\epsilon\}\subset \mathcal M^{\rm sm}
+\]
+with the boundary orientation inherited from the truncated space
+\(\mathcal M^{\rm sm}_\epsilon=\{r\geq\epsilon\}\).  Let
+\(V_\rho^{\rm bdry}\) be the ordinary boundary density obtained from
+Definition~\ref{def:bv-fluctuation-boundary-functional}.  The stratum
+functional is then the residual semidensity limit
+\begin{equation}
+  \mathcal B_{S_\alpha}(\rho)
+  =
+  \lim_{\epsilon\downarrow0}
+  \int_{L_{\alpha,\epsilon}} V_\rho^{\rm bdry},
+  \label{eq:stratum-boundary-functional-collar-limit}
+\end{equation}
+whenever this limit exists in the topology used for residual semidensities.
+Thus the words ``compactification'', ``resolution'', and ``residue
+prescription'' acquire content only after the collar, orientation, boundary
+density, and limiting topology have been stated.
+
+The collar also gives a practical vanishing/residue test.  Suppose, in a norm
+on residual semidensities, that the boundary integral has an asymptotic
+expansion
+\begin{equation}
+  \int_{L_{\alpha,\epsilon}} V_\rho^{\rm bdry}
+  =
+  \epsilon^{\eta_\alpha}B_{\alpha,0}
+  +
+  O(\epsilon^{\eta_\alpha+\delta}),
+  \qquad
+  \delta>0 .
+  \label{eq:stratum-boundary-asymptotic}
+\end{equation}
+If \(\eta_\alpha>0\), the stratum contributes zero to the residual QME.  If
+\(\eta_\alpha=0\), the coefficient \(B_{\alpha,0}\) is the finite boundary
+residue that must vanish, cancel against other strata, or be represented by a
+relative/resolved contribution \(C_\alpha\).  If \(\eta_\alpha<0\), the
+localized expression has a divergent boundary term; the proposed localization
+formula is then undefined until the regulator or integration cycle is changed.
+Logarithmic terms are treated by the same rule: every coefficient of
+\(\epsilon^0(\log\epsilon)^k\) is boundary data, and powers with negative
+\(\eta_\alpha\) signal divergent boundary data.
+
 For the \(S^4\) instanton factors of
 Chapter~\ref{ch:susy-localization-compact-manifolds}, the Uhlenbeck
-small-instanton strata are precisely such \(S_\alpha\).  Replacing the
+small-instanton strata are precisely such \(S_\alpha\), with the instanton
+scale playing the role of the collar coordinate \(r\).  Replacing the
 Uhlenbeck compactification by the Gieseker/Nekrasov resolution supplies a
-candidate resolution data.  The statement that the original four-dimensional
-path integral selects those resolved data is therefore a regulator theorem or
-a hypothesis, as stated in
+candidate \(C_\alpha\) in
+\eqref{eq:resolved-boundary-cancellation-data}.  The statement that the
+original four-dimensional path integral selects those resolved data is
+therefore a regulator theorem or a hypothesis, as stated in
 Hypothesis~\ref{hyp:field-theoretic-gieseker-matching}, rather than a
 consequence of formal \(Q\)-exact deformation alone.
 
