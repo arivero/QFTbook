@@ -517,6 +517,136 @@ existence must be supplied by a construction or by a set of mutually
 consistent protected tests.
 \end{remark}
 
+\section{Defect Group, Finite Flux, And Polarization}
+\label{sec:six-d-defect-group-polarization}
+
+The tensor-branch root lattice is not the whole discrete topological datum of
+a \((2,0)\) theory.  Let \(Q_{\mathfrak g}\) be the root lattice of the simply
+laced Lie algebra \(\mathfrak g\), with its integral Cartan pairing
+\((\ ,\ )\).  The dual lattice is
+\[
+  P_{\mathfrak g}
+  =
+  \{\lambda\in Q_{\mathfrak g}\otimes\mathbb R:
+  (\lambda,\alpha)\in\mathbb Z\ \text{for every }\alpha\in Q_{\mathfrak g}\},
+\]
+the weight lattice.  The finite discriminant group
+\begin{equation}
+  A_{\mathfrak g}=P_{\mathfrak g}/Q_{\mathfrak g}
+  \label{eq:six-d-two-zero-defect-group}
+\end{equation}
+is the finite group detected by the center of the associated simply connected
+compact group.  It carries the nondegenerate finite pairing
+\begin{equation}
+  b_{\mathfrak g}:A_{\mathfrak g}\times A_{\mathfrak g}
+  \longrightarrow \mathbb Q/\mathbb Z,
+  \qquad
+  b_{\mathfrak g}([\lambda],[\mu])=(\lambda,\mu)\bmod\mathbb Z .
+  \label{eq:six-d-defect-group-pairing}
+\end{equation}
+The expression is independent of the representatives because adding a root to
+either entry changes \((\lambda,\mu)\) by an integer.  Nondegeneracy is the
+statement that \(P_{\mathfrak g}\) is the full dual of \(Q_{\mathfrak g}\).
+
+The ADE values are
+\begin{equation}
+\begin{array}{c|c}
+  \mathfrak g & A_{\mathfrak g}\\ \hline
+  A_{N-1} & \mathbb Z_N\\
+  D_N,\ N\ \text{odd} & \mathbb Z_4\\
+  D_N,\ N\ \text{even} & \mathbb Z_2\oplus\mathbb Z_2\\
+  E_6 & \mathbb Z_3\\
+  E_7 & \mathbb Z_2\\
+  E_8 & 0 .
+\end{array}
+\label{eq:six-d-ade-defect-groups}
+\end{equation}
+The order of \(A_{\mathfrak g}\) is \(\det C_{\mathfrak g}\), where
+\(C_{\mathfrak g}\) is the Cartan matrix.  Thus the displayed table is the
+finite discriminant form of the root lattice, not a new continuous parameter
+of the tensor-branch metric.
+
+The group \(A_{\mathfrak g}\) is often described as the group of surface
+defect charges modulo dynamical root-lattice strings.  This sentence should
+be read as a statement about a protected topological sector: the monograph is
+not using it as a construction of the interacting fixed point.  The local
+tensor-branch EFT sees strings of charge \(Q_{\mathfrak g}\).  The quotient
+\(P_{\mathfrak g}/Q_{\mathfrak g}\) records which finite surface charge can
+be measured at infinity after dynamical root-lattice strings have been
+allowed to end or screen.
+
+On a closed oriented six-manifold \(Y\), the finite flux sector associated
+with this discriminant group is
+\begin{equation}
+  K_Y(\mathfrak g)=H^3(Y;A_{\mathfrak g}) .
+  \label{eq:six-d-finite-flux-group}
+\end{equation}
+Cup product and \eqref{eq:six-d-defect-group-pairing} define a skew pairing
+\begin{equation}
+  \langle x,y\rangle_Y
+  =
+  \int_Y b_{\mathfrak g}(x\smile y)
+  \in\mathbb Q/\mathbb Z .
+  \label{eq:six-d-finite-flux-pairing}
+\end{equation}
+The skew sign comes from the odd degree:
+\[
+  x\smile y=-\,y\smile x
+  \qquad\text{for }x,y\in H^3(Y;A_{\mathfrak g}),
+\]
+while \(b_{\mathfrak g}\) is symmetric.  A self-dual finite flux theory is
+not an ordinary sum over all of \(K_Y(\mathfrak g)\).  It determines a finite
+Heisenberg representation whose commutator is
+\[
+  U_xU_yU_x^{-1}U_y^{-1}
+  =
+  \exp\!\bigl(2\pi\ii\langle x,y\rangle_Y\bigr).
+\]
+To obtain an ordinary numerical partition function one must supply a
+polarization, namely a maximal isotropic subgroup
+\[
+  L\subset K_Y(\mathfrak g),
+  \qquad
+  \langle L,L\rangle_Y=0,
+  \qquad
+  |L|^2=|K_Y(\mathfrak g)|
+\]
+when the finite pairing on \(K_Y(\mathfrak g)\) is nondegenerate.  Changing
+the polarization is a finite global datum, analogous in role to choosing a
+global form and discrete theta sector after compactification.  It is not
+visible in the local superconformal algebra or in the real tensor-branch
+metric alone.
+
+\paragraph{Cyclic finite-flux model.}
+For type \(A_{N-1}\), choose a generator of
+\(A_{\mathfrak g}\simeq\mathbb Z_N\) and write the finite pairing as
+\[
+  b(a,b)=\frac{ab}{N}\bmod\mathbb Z
+\]
+up to the harmless sign determined by the chosen generator.  In the elementary
+finite model
+\[
+  K=\mathbb Z_N\oplus\mathbb Z_N
+\]
+with coordinates \((a,b)\), the skew pairing is
+\begin{equation}
+  \langle(a,b),(a',b')\rangle
+  =
+  \frac{ab'-ba'}{N}\bmod\mathbb Z .
+  \label{eq:six-d-cyclic-finite-flux-pairing}
+\end{equation}
+It is alternating and nondegenerate.  The subgroup
+\[
+  L=\mathbb Z_N\oplus0
+\]
+is isotropic and has \(|L|=N\), while \(|K|=N^2\); hence \(L\) is a
+polarization.  This finite model is the algebraic core of the polarization
+choice.  In an actual six-dimensional compactification the cohomology group
+\(H^3(Y;A_{\mathfrak g})\), torsion linking forms, boundary conditions, and
+defect insertions must all be specified before the phrase ``the partition
+function'' denotes a number rather than a vector in a finite Heisenberg
+representation.
+
 \section{Circle Compactification And Five-Dimensional Yang--Mills}
 
 Compactification on a smooth compact manifold \(Y\) gives lower-dimensional
@@ -812,6 +942,7 @@ Six-dimensional SCFT data in this monograph consist of:
   \text{tensor-branch EFT with self-dual fields and Green--Schwarz terms},\\
   \text{anomaly polynomial and flavor-background data},\\
   \text{BPS string charge lattice and inflow},\\
+  \text{finite defect group, flux pairing, and polarization data},\\
   \text{compactification tests and extended-operator descendants}.
 \end{gathered}
 \]
@@ -819,8 +950,10 @@ For \((2,0)\) type \(\mathfrak g\) this includes the simply laced Lie algebra,
 the tensor-branch quotient
 \((\mathbb R^5\otimes\mathfrak t_{\mathfrak g})/W_{\mathfrak g}\), the
 anomaly polynomial \eqref{eq:six-d-two-zero-anomaly}, the root-lattice BPS
-strings, and the five-dimensional compactification normalization
-\(g_5^2=4\pi^2R\) in trace-delta variables.
+strings, the discriminant group
+\(A_{\mathfrak g}=P_{\mathfrak g}/Q_{\mathfrak g}\) with finite pairing
+\eqref{eq:six-d-defect-group-pairing}, and the five-dimensional
+compactification normalization \(g_5^2=4\pi^2R\) in trace-delta variables.
 
 No item in this list is dispensable.  A proposed fixed point that supplies
 only a branch EFT is incomplete; a proposed non-Lagrangian object that

@@ -37,6 +37,12 @@ Reviewed source spine:
 - `Lambda_str`: integral lattice of string charges.
 - `Z_q^A`: tensor-branch central-charge vector of a string of charge `q`.
 - `q`, `alpha`: BPS string charge vector and root-lattice charge.
+- `Q_g`, `P_g`, `A_g`: root lattice, weight lattice, and finite
+  discriminant/defect group `P_g/Q_g` for a simply laced `(2,0)` type.
+- `b_g`: finite pairing \(A_g\times A_g\to \mathbb Q/\mathbb Z\) induced by
+  the lattice pairing.
+- `K_Y(g)`, `L`: finite flux group \(H^3(Y;A_g)\) and a maximal isotropic
+  polarization subgroup.
 - `g_5`, `R`: five-dimensional trace-delta Yang-Mills coupling and circle
   radius.
 
@@ -74,6 +80,13 @@ Reviewed source spine:
   positivity of the string-sector supercharge anticommutator and its
   \(\pm|Z_q|\) eigenvalues, and states explicitly that this does not
   construct the tensionless limit.
+- Defines the `(2,0)` finite defect group \(A_g=P_g/Q_g\), its nondegenerate
+  \(\mathbb Q/\mathbb Z\)-valued pairing, the ADE group table, the finite
+  flux group \(H^3(Y;A_g)\), and the need for a polarization before a
+  self-dual finite flux sector gives numerical partition data.
+- Works out the cyclic \(A_{N-1}\) finite-flux model \(K=\mathbb Z_N\oplus
+  \mathbb Z_N\), including its alternating pairing and maximal isotropic
+  subgroup.
 - Proves the trace-delta compactification normalization
   `g_5^2 = 4 pi^2 R` from the BPST instanton mass and KK momentum.
 - Derives the wrapped-string/W-boson mass matching and the scalar
@@ -88,8 +101,9 @@ Reviewed source spine:
   type `A_{N-1}`, `D_N`, and exceptional `(2,0)` rank/dimension/anomaly
   coefficient arithmetic, tensor-branch dimensions, the quadratic
   Green-Schwarz descent factor, the trace-delta five-dimensional
-  instanton/Kaluza-Klein normalization, and wrapped-string/W-boson scalar
-  normalization.
+  instanton/Kaluza-Klein normalization, wrapped-string/W-boson scalar
+  normalization, ADE defect-group orders from Cartan determinants, and the
+  cyclic finite-flux polarization model.
 
 ## Proof Obligations And Boundaries
 
@@ -118,6 +132,10 @@ Reviewed source spine:
 - 2026-05-29 anti-wrapper pass: strengthened the BPS string tension proof by
   writing the positive supercharge anticommutator matrix and showing how the
   BPS inequality and saturation condition follow from its eigenvalues.
+- 2026-05-30 depth-pass-B follow-up: added the finite defect-group and
+  polarization layer for `(2,0)` theories, including root/weight lattice data,
+  ADE discriminant groups, the finite \(H^3(Y;A_g)\) Heisenberg pairing, and
+  a cyclic \(A_{N-1}\) polarization model with exact calculation checks.
 
 ## Figure Ledger
 

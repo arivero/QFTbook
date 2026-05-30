@@ -29,6 +29,89 @@ def transpose(a: list[list[Fraction]]) -> list[list[Fraction]]:
     return [list(row) for row in zip(*a)]
 
 
+def determinant(matrix: list[list[int]]) -> int:
+    data = [[Fraction(entry) for entry in row] for row in matrix]
+    n = len(data)
+    det = Fraction(1)
+    for col in range(n):
+        pivot = None
+        for row in range(col, n):
+            if data[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            return 0
+        if pivot != col:
+            data[col], data[pivot] = data[pivot], data[col]
+            det = -det
+        pivot_value = data[col][col]
+        det *= pivot_value
+        for row in range(col + 1, n):
+            factor = data[row][col] / pivot_value
+            for j in range(col, n):
+                data[row][j] -= factor * data[col][j]
+    assert det.denominator == 1
+    return det.numerator
+
+
+def cartan_a(rank: int) -> list[list[int]]:
+    return [
+        [
+            2 if i == j else -1 if abs(i - j) == 1 else 0
+            for j in range(rank)
+        ]
+        for i in range(rank)
+    ]
+
+
+def cartan_d(rank: int) -> list[list[int]]:
+    matrix = [[0 for _ in range(rank)] for _ in range(rank)]
+    for i in range(rank):
+        matrix[i][i] = 2
+    for i in range(rank - 3):
+        matrix[i][i + 1] = matrix[i + 1][i] = -1
+    branch = rank - 3
+    matrix[branch][rank - 2] = matrix[rank - 2][branch] = -1
+    matrix[branch][rank - 1] = matrix[rank - 1][branch] = -1
+    return matrix
+
+
+def cartan_e6() -> list[list[int]]:
+    return [
+        [2, -1, 0, 0, 0, 0],
+        [-1, 2, -1, 0, 0, 0],
+        [0, -1, 2, -1, 0, -1],
+        [0, 0, -1, 2, -1, 0],
+        [0, 0, 0, -1, 2, 0],
+        [0, 0, -1, 0, 0, 2],
+    ]
+
+
+def cartan_e7() -> list[list[int]]:
+    return [
+        [2, -1, 0, 0, 0, 0, 0],
+        [-1, 2, -1, 0, 0, 0, 0],
+        [0, -1, 2, -1, 0, 0, -1],
+        [0, 0, -1, 2, -1, 0, 0],
+        [0, 0, 0, -1, 2, -1, 0],
+        [0, 0, 0, 0, -1, 2, 0],
+        [0, 0, -1, 0, 0, 0, 2],
+    ]
+
+
+def cartan_e8() -> list[list[int]]:
+    return [
+        [2, -1, 0, 0, 0, 0, 0, 0],
+        [-1, 2, -1, 0, 0, 0, 0, 0],
+        [0, -1, 2, -1, 0, 0, 0, -1],
+        [0, 0, -1, 2, -1, 0, 0, 0],
+        [0, 0, 0, -1, 2, -1, 0, 0],
+        [0, 0, 0, 0, -1, 2, -1, 0],
+        [0, 0, 0, 0, 0, -1, 2, 0],
+        [0, 0, -1, 0, 0, 0, 0, 2],
+    ]
+
+
 def check_abjm_superpotential_r_charge() -> None:
     matter_r = Fraction(1, 2)
     quartic_r = 4 * matter_r
@@ -351,6 +434,55 @@ def check_wrapped_string_mass_normalization() -> None:
     assert_equal("wrapped string/W-boson scalar normalization", wrapped_mass_over_pi, phi_5d_over_pi)
 
 
+def check_two_zero_defect_group_orders() -> None:
+    for rank in range(1, 9):
+        # Type A_rank has algebra A_{rank}; the corresponding group order is
+        # |P/Q|=rank+1.
+        assert_equal(
+            f"A_{rank} discriminant order",
+            determinant(cartan_a(rank)),
+            rank + 1,
+        )
+
+    for rank in range(4, 11):
+        assert_equal(f"D_{rank} discriminant order", determinant(cartan_d(rank)), 4)
+
+    assert_equal("E6 discriminant order", determinant(cartan_e6()), 3)
+    assert_equal("E7 discriminant order", determinant(cartan_e7()), 2)
+    assert_equal("E8 discriminant order", determinant(cartan_e8()), 1)
+
+
+def check_cyclic_finite_flux_polarization() -> None:
+    # Model A=Z_N with perfect pairing b(a,b)=ab/N.  The finite flux model
+    # K=A plus A has symplectic numerator a b' - b a' modulo N.
+    for n in range(2, 13):
+        elements = [(a, b) for a in range(n) for b in range(n)]
+
+        def symplectic_numerator(x: tuple[int, int], y: tuple[int, int]) -> int:
+            return (x[0] * y[1] - x[1] * y[0]) % n
+
+        for x in elements:
+            assert_equal(f"Z_{n} alternating self-pairing {x}", symplectic_numerator(x, x), 0)
+            for y in elements:
+                assert_equal(
+                    f"Z_{n} skew pairing {x},{y}",
+                    symplectic_numerator(x, y),
+                    (-symplectic_numerator(y, x)) % n,
+                )
+
+        for x in elements:
+            if x == (0, 0):
+                continue
+            detects = any(symplectic_numerator(x, y) != 0 for y in elements)
+            assert_equal(f"Z_{n} finite flux nondegeneracy {x}", detects, True)
+
+        polarization = [(a, 0) for a in range(n)]
+        assert_equal(f"Z_{n} polarization size squared", len(polarization) ** 2, len(elements))
+        for x in polarization:
+            for y in polarization:
+                assert_equal(f"Z_{n} polarization isotropic {x},{y}", symplectic_numerator(x, y), 0)
+
+
 def check_class_s_hitchin_base_degrees() -> None:
     for n in range(2, 10):
         a_degrees = list(range(2, n + 1))
@@ -408,6 +540,8 @@ def main() -> None:
     check_green_schwarz_quadratic_descent_factor()
     check_five_dimensional_instanton_kk_normalization()
     check_wrapped_string_mass_normalization()
+    check_two_zero_defect_group_orders()
+    check_cyclic_finite_flux_polarization()
     check_class_s_hitchin_base_degrees()
     print("All ABJM and six-dimensional SUSY convention checks passed.")
 
