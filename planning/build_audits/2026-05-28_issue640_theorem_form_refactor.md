@@ -51,9 +51,12 @@ application of an earlier result.
 
 ## Examined And Kept
 
-- Volume III, Chapter 9 `thm:conditional-cft-reconstruction-from-ope` remains a
-  theorem: the proof constructs the radial Hilbert space and separated-point
-  hierarchy from the OPE datum, and the statement is proportional to the proof.
+- Retrospective correction on 2026-05-30: Volume III, Chapter 9 no longer
+  keeps `thm:conditional-cft-reconstruction-from-ope` as a theorem.  The block
+  is now Construction `cons:conditional-cft-reconstruction-from-ope`.  The
+  stricter judgment is that the analytic and higher-coherence substance is
+  contained in the abstract radial OPE system itself, while the construction
+  assembles and patches separated correlators from that input package.
 - Volume XI, Chapter 9 `thm:spde-compact-reconstruction` remains a theorem: it
   is the finite-sector reconstruction theorem with a wavelet construction and
   uniqueness proof.

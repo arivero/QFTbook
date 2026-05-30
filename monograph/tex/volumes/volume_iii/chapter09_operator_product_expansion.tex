@@ -447,13 +447,13 @@ determine the parameters and operator content of an effective theory.  If a
 smaller set of local operators generates the finite-energy local-operator
 subspace under iterated radial OPE limits, the complete OPE spectrum and
 coefficients visible in suitable four-point functions of those generators may
-likewise determine the rest of the local theory.  This rigidity is not, by
-itself, a reconstruction theorem.  A reconstruction theorem must also specify
-the Hilbert topology, positivity, radial convergence, channel compatibility,
-and the distributional
-interpretation of separated correlators.  The following formulation is the
-radial CFT counterpart of a Wightman or Osterwalder--Schrader reconstruction
-theorem.
+likewise determine the rest of the local theory.  Turning such rigidity into
+a reconstruction statement requires the Hilbert topology, positivity, radial
+convergence, channel compatibility, and distributional interpretation of
+separated correlators.  The following formulation starts after those inputs
+have been supplied: it is a radial construction from a fully specified OPE
+system, rather than a derivation of that system from finite lists of
+four-point data.
 
 \begin{definition}[Abstract radial OPE system]
 \label{def:abstract-radial-ope-system}
@@ -522,16 +522,16 @@ system.  A single four-point crossing equation is one instance of this
 condition and is normally far from determining even that four-point function
 uniquely.  Complete all-primary four-point associativity constraints are a
 different object: once the OPE table is known, they constrain the whole
-system of binary radial-expansion limits.  The theorem below nevertheless
-assumes the analytic and higher-coherence properties needed for
-reconstruction, rather than renaming their desired conclusion as an input
-theorem.
+system of binary radial-expansion limits.  The construction below therefore
+does not hide this analytic and higher-coherence substance in a theorem
+statement.  The hard input is Definition~\ref{def:abstract-radial-ope-system};
+the construction records how such input is assembled into a hierarchy.
 
-\begin{theorem}[Conditional radial reconstruction from an OPE system]
-\label{thm:conditional-cft-reconstruction-from-ope}
+\begin{construction}[Separated correlators from an abstract radial OPE system]
+\label{cons:conditional-cft-reconstruction-from-ope}
 Let \(\mathfrak D\) be an abstract radial OPE system in the sense of
-Definition~\ref{def:abstract-radial-ope-system}.  Then \(\mathfrak D\)
-determines a separated-point Euclidean conformal correlation hierarchy
+Definition~\ref{def:abstract-radial-ope-system}.  It determines a
+separated-point Euclidean conformal correlation hierarchy
 \[
   S_{I_1\cdots I_n}^{\mathfrak D}(x_1,\ldots,x_n),
   \qquad x_i\ne x_j,
@@ -546,9 +546,9 @@ coefficients.  If the system also includes tube-domain analytic continuation,
 the spectrum condition, and local commutativity for the boundary values, then
 the reconstructed Euclidean hierarchy gives a Lorentzian Wightman CFT
 satisfying the radial reconstruction hypotheses used in this volume.
-\end{theorem}
+\end{construction}
 
-\begin{proof}
+\paragraph{Verification of the construction.}
 First construct the dense finite-energy vector space
 \(\mathcal H_{\rm fin}^{\rm abs}=\bigoplus_a V_a\) with the positive inner
 product specified in Definition~\ref{def:abstract-radial-ope-system}.  Its
@@ -591,7 +591,6 @@ value construction applied to the reconstructed Euclidean hierarchy gives the
 corresponding Lorentzian distributions.  These are precisely the additional
 analytic hypotheses listed in
 Hypothesis~\ref{hyp:radial-reconstruction-data}.
-\end{proof}
 
 \begin{openproblem}[Completeness of four-point OPE data]
 \label{op:bootstrap-completeness-from-ope-data}
@@ -625,7 +624,7 @@ generator or all-primary hypothesis is made.  The existence part still
 requires theorem-level control of radial convergence, spectral finiteness,
 coherence of higher iterated OPEs, distributional extensions and contact-term
 prescriptions, and Lorentzian boundary-value properties.  Those requirements
-are precisely why Theorem~\ref{thm:conditional-cft-reconstruction-from-ope}
+are precisely why Construction~\ref{cons:conditional-cft-reconstruction-from-ope}
 is formulated from an abstract radial OPE system rather than from a single
 informal crossing statement.
 \end{openproblem}

@@ -65,16 +65,19 @@ The chapter establishes:
 - OPE associativity as equality of nested spectral expansions in a common
   Euclidean radial domain, followed by analytic continuation of the
   separated-point correlator;
-- Definition `def:abstract-radial-ope-datum`, specifying the additional
+- Definition `def:abstract-radial-ope-system`, specifying the additional
   positivity, convergence, all-tree compatibility, covariance, reflection
   positivity, and contact-term data required beyond the numerical list
   \(\{\Delta,\rho,\lambda\}\);
-- Theorem `thm:conditional-cft-reconstruction-from-ope`, reconstructing a
+- Construction `cons:conditional-cft-reconstruction-from-ope`, assembling a
   separated-point Euclidean conformal hierarchy from an abstract radial OPE
-  datum and identifying the extra tube-domain hypotheses needed for the
-  Lorentzian Wightman CFT;
+  system and identifying the extra tube-domain hypotheses needed for the
+  Lorentzian Wightman CFT.  This is deliberately no longer a theorem-family
+  wrapper: the analytic and higher-coherence content sits in the definition
+  of the abstract radial OPE system, while the construction verifies the
+  assembly and patching of correlators from those inputs;
 - Open Problem `op:bootstrap-completeness-from-ope-data`, separating the
-  conditional reconstruction theorem from the inverse problem of deriving the
+  conditional construction from the inverse problem of deriving the
   full abstract radial OPE datum from complete all-primary four-point OPE data
   or complete generator four-point OPE data in \(D>2\), while explicitly
   rejecting the claim that a single four-point crossing equation determines a
