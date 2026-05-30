@@ -89,10 +89,11 @@
   variables; compactly supported local-field smearing is compatible because
   \(C_c^\infty\) test functions are Schwartz.
 - The edge-of-the-wedge step uses holomorphic tube functions with polynomial
-  growth near the real edge and equal distributional boundary values on an
-  open spacelike real set.  The theorem is recorded as analytic infrastructure:
-  the chapter's QFT-specific work is verifying the tube bounds and boundary
-  equality hypotheses used by the several-complex-variables gluing theorem.
+  growth near the real edge, equal distributional boundary values on an open
+  spacelike real set, and the full-neighborhood cone condition
+  \(\operatorname{conv}(C_+\cup C_-)=\mathbb R^N\).  The chapter now records
+  the boundary-value construction, Morera jump-cancellation mechanism,
+  complex-line slicing, Hartogs joint holomorphy, and Bochner-envelope step.
 - Ordered imaginary shifts
   \(\epsilon_1>\cdots>\epsilon_n>0\) give the time-ordered boundary value of
   the holomorphic Wightman function.
@@ -199,6 +200,11 @@
   microcausality on product neighborhoods, records the graded Koszul variant,
   and separates this Wightman-domain step from the external several-complex-
   variables gluing theorem.
+- 2026-05-30 quoted-theorem pass: tightened the distributional
+  edge-of-the-wedge statement by adding the convex-hull hypothesis needed for
+  a genuine complex neighborhood of the real edge, and expanded the analytic
+  proof mechanism through distributional boundary values, Morera
+  cancellation, line slicing, Hartogs, and Bochner's tube theorem.
 - 2026-05-24 issue #372 pass: displayed the equality of Euclidean and
   Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
   corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)
