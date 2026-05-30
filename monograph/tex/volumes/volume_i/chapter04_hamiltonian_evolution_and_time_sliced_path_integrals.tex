@@ -170,21 +170,20 @@ regulated expression.
 
 \section{Finite Time Slicing}
 
-\begin{proposition}[Finite phase-space time-sliced kernel]
-\label{prop:finite-phase-space-time-sliced-kernel}
+\paragraph{Finite phase-space time-sliced construction.}
+\label{par:finite-phase-space-time-sliced-kernel}
 Fix the data of Definition~\ref{def:position-momentum-rigging-kernel-notation}
 and an operator symbol \(h(q,p)\) for \(\widehat H\) in a specified ordering
-convention.  At each finite \(N\), the phase-space expression \(K_N\) below is
-the regulated oscillatory integral obtained by inserting position and momentum
-resolutions in the product formula for \(U(T)\).
-\end{proposition}
-
-\begin{proof}
+convention.  The finite-\(N\) phase-space expression \(K_N\) is the regulated
+oscillatory integral obtained by inserting position and momentum resolutions
+in the product formula for \(U(T)\).  The theorem-level analytic input enters
+later, through the operator convergence theorem for the limiting procedure.
+We record the construction explicitly.
 Choose an integer \(N\ge1\), set \(\epsilon=T/N\), and define
 \[
   t_n=n\epsilon,\qquad n=0,\ldots,N,
 \]
-with \(q_0=q_i\) and \(q_N=q_f\). Inserting \(N-1\) position resolutions and
+with \(q_0=q_i\) and \(q_N=q_f\).  Inserting \(N-1\) position resolutions and
 \[
   U(T)=\left[\exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)\right]^N
 \]
@@ -289,7 +288,6 @@ The continuum notation
 denotes this regulated construction together with the specified limiting
 procedure. In the present chapter, the finite-\(N\) expression is the defined
 object.
-\end{proof}
 
 \section{Trotter Limits, Wiener Measure, and Kernel Convergence}
 

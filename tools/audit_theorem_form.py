@@ -217,6 +217,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Inversion is conformal|"
     r"GKO coset stress tensor and central charge|"
     r"Regulated meaning of the configuration path integral|"
+    r"Finite phase-space time-sliced kernel|"
     r"Universal-cover necessity|"
     r"Noncoincident insertions and contact coordinates|"
     r"\\(SU\\(2\\)\\) subgroups generate \\(SU\\(3\\)\\)|"

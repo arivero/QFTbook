@@ -88,8 +88,9 @@ Working framework:
   representation and self-adjoint Hamiltonian time evolution.
 - `def:position-momentum-rigging-kernel-notation`: weak position/momentum
   resolutions of identity with the \(\hbar\)-Fourier normalization.
-- `prop:finite-phase-space-time-sliced-kernel`: finite time-sliced
-  phase-space integral and discrete phase-space action.
+- Paragraph `par:finite-phase-space-time-sliced-kernel`: finite time-sliced
+  phase-space construction and discrete phase-space action, recorded as a
+  regulated insertion calculation rather than proposition-level content.
 - `qthm:trotter-product-formula-qm`: operator-level Trotter formula used to
   interpret continuum limits.
 - `def:kato-schrodinger-euclidean-datum`: Kato/local Kato hypotheses and
@@ -120,8 +121,10 @@ Working framework:
   the relevant domain.
 - Position and momentum kets are distributional vectors in a Gelfand triple;
   their resolutions of identity are weak Fourier-inversion identities.
-- `prop:finite-phase-space-time-sliced-kernel` derives the finite-dimensional
-  phase-space expression for time evolution at fixed partition.
+- Paragraph `par:finite-phase-space-time-sliced-kernel` derives the
+  finite-dimensional phase-space expression for time evolution at fixed
+  partition; its status is a regulated construction, not an independent
+  theorem.
 - The continuum path-integral notation is shorthand for a regulator and
   limiting procedure.
 - `thm:wiener-feynman-kac-qm` constructs the Wiener-measure/Feynman--Kac
@@ -162,6 +165,11 @@ spectral theorem plus a gap estimate.
   propositions, and quoted theorems for the Hamiltonian, rigging,
   time-slicing, Trotter/Kato, Feynman--Kac, ordering, Gaussian momentum,
   source, trace, and vacuum-projection steps.
+- 2026-05-30 anti-wrapper pass: demoted the finite phase-space time-sliced
+  kernel from proposition/proof form to a labelled construction paragraph.
+  The formulas and regulator assumptions were preserved, while the status now
+  correctly reflects that the step is insertion of finite resolutions of
+  identity and symbol bookkeeping.
 
 ## Figure Ledger
 
