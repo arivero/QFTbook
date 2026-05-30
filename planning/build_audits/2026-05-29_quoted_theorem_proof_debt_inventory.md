@@ -12,6 +12,14 @@ statement, hypothesis, controlled approximation, or open proof obligation.
 
 Current scan: 82 `quotedtheorem` environments.
 
+Directive update, 2026-05-30: every `quotedtheorem` in the compiled
+monograph must be expanded in place.  The required local text is not a
+bibliographic note; it must state the primitive objects, give the proof
+mechanism in the monograph's notation, verify the hypotheses used locally,
+and identify exactly which analytic or algebraic step remains imported.  The
+correct end state is not necessarily zero quoted theorems.  The correct end
+state is that no quoted theorem is a black box at its point of use.
+
 GitHub tracking:
 
 - #695: foundational reconstruction and AQFT structural theorem proof debt.

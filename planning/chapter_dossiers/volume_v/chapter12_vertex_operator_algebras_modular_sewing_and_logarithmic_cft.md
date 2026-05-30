@@ -67,6 +67,10 @@ current QFT scope.
   `rho(A(I)) subset A(I)`.
 - `mathcal D`: square root of the categorical global dimension
   `sum_lambda d_lambda^2`.
+- `H^infty`: common smooth domain `cap_k Dom(1+L_0)^k` for smeared VOA
+  fields.
+- `Y(a,f)`: smooth smearing of a VOA field, defined by the Fourier-mode
+  series `sum_n hat f_n a_n`.
 - `C,D`: states forming a rank-two logarithmic Virasoro pair of weight `h`.
 - `mathcal C, mathcal D`: corresponding chiral fields.
 - `N`: nilpotent operator on the logarithmic pair, with `ND=C` and `NC=0`.
@@ -134,6 +138,12 @@ current QFT scope.
 - States the Carpi--Kawahigashi--Longo--Weiner strongly-local-VOA-to-net
   theorem and the Fredenhagen--Joerss converse under polynomial-energy-bound
   and FJ-field hypotheses.
+- Expands the local mechanism behind the strongly-local VOA/net theorem:
+  polynomial energy bounds, convergence of smooth smeared fields, closability
+  from the unitary adjoint formula, the distinction between common-domain
+  field locality and von Neumann locality, covariance of smeared fields,
+  and the Fredenhagen--Joerss reconstruction route from finite-energy vectors
+  to affiliated fields and a VOA state-field map.
 - Proves the Ising conformal-net `mu`-index `4` from the displayed quantum
   dimensions and records the open problem for unqualified VOA/net
   equivalence.
@@ -173,7 +183,9 @@ current QFT scope.
   \(S\)-matrix, Verlinde fusion coefficients, quantum dimensions, the
   conformal-net `mu`-index/global-dimension relation, the DHR categorical
   \(S\)-matrix vacuum row and trivial Ising transparent sector, character
-  exponent shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
+  exponent shifts in \(\mathbb Q(\sqrt2)\), smooth-smearing convergence from
+  a polynomial energy bound and rapidly decaying Fourier coefficients, the
+  \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
   vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
   \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
@@ -261,3 +273,9 @@ current QFT scope.
   charge-transporter braiding, categorical \(S\)-matrix normalization, and
   the transparent-sector criterion; added an exact Ising DHR
   nondegeneracy check.
+- 2026-05-30 strongly-local VOA/net mechanism pass: expanded the CKLW/FJ
+  theorem boundary by deriving the smooth-field smearing estimate from
+  polynomial energy bounds, isolating the strong-locality upgrade from
+  common-domain commutators to von Neumann locality, and spelling out the
+  finite-energy vector-to-field reconstruction mechanism; added an exact
+  smooth-smearing tail check.

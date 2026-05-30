@@ -155,6 +155,33 @@ def check_ising_dhr_modular_non_degeneracy() -> None:
     assert_equal("Ising DHR transparent sectors", transparent_labels, ["1"])
 
 
+def check_polynomial_energy_bound_smooth_smearing() -> None:
+    """Check the summability estimate behind smooth VOA smearing.
+
+    The monograph uses the implication
+    fast Fourier decay + polynomial energy bound -> absolute convergence of
+    the smeared field series on finite-energy smooth vectors.  This finite
+    exact check records the elementary tail estimate used there.
+    """
+
+    polynomial_degree = 2
+    decay_power = 6
+    cutoff = 12
+
+    def weighted_term(n: int) -> Fraction:
+        return Fraction((1 + n) ** polynomial_degree, (1 + n) ** decay_power)
+
+    partial_sum = Fraction(1)
+    for n in range(1, cutoff + 1):
+        partial_sum += 2 * weighted_term(n)
+
+    # For n >= 1, the summand is (1+n)^(-4).  The symmetric tail is bounded by
+    # 2 sum_{n>N} n^{-4} <= 2/(3 N^3).
+    tail_bound = Fraction(2, 3 * cutoff ** 3)
+    if not partial_sum + tail_bound < Fraction(2):
+        raise AssertionError("smooth smearing polynomial-weighted Fourier tail bound failed")
+
+
 def check_character_exponents() -> None:
     central_charge = Fraction(1, 2)
     shifted = {
@@ -570,6 +597,7 @@ def main() -> None:
     check_verlinde_fusion()
     check_quantum_dimensions()
     check_ising_dhr_modular_non_degeneracy()
+    check_polynomial_energy_bound_smooth_smearing()
     check_character_exponents()
     check_ising_t_spin_selection_and_diagonal_invariant()
     check_ising_verlinde_defect_lines()
@@ -577,7 +605,7 @@ def main() -> None:
     check_logarithmic_jordan_cell_two_point_ward_identities()
     check_logarithmic_jordan_trace_invisibility()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, and conformal-net DHR checks passed.")
+    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, smoothing, and conformal-net DHR checks passed.")
 
 
 if __name__ == "__main__":
