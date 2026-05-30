@@ -894,6 +894,165 @@ uses that theorem as a classification and construction result for rational
 examples, not as a proof of nonrational or continuous-spectrum BCFT sewing.
 \end{quotedtheorem}
 
+\paragraph{Algebraic core of the rational boundary construction.}
+The quoted theorem has a concrete finite-categorical mechanism.  Let
+\(\mathsf C\) be the semisimple ribbon tensor category of chiral
+representations, with tensor product \(\otimes\), unit object
+\(\mathbf 1\), associator \(\alpha\), braiding \(c\), and representatives
+\(\{U_i\}_{i\in I}\) of simple objects.  A rational full CFT with a chosen
+bulk modular invariant and a chosen family of topological boundary
+conditions is encoded algebraically by an object \(A\in\mathsf C\) equipped
+with maps
+\[
+  m:A\otimes A\to A,\qquad
+  \eta:\mathbf 1\to A,\qquad
+  \Delta:A\to A\otimes A,\qquad
+  \varepsilon:A\to\mathbf 1 .
+\]
+The multiplication and unit make \(A\) an algebra object:
+\[
+  m(m\otimes\operatorname{id}_A)
+  =
+  m(\operatorname{id}_A\otimes m)\alpha_{A,A,A},
+  \qquad
+  m(\eta\otimes\operatorname{id}_A)=\operatorname{id}_A
+  =
+  m(\operatorname{id}_A\otimes\eta).
+\]
+The comultiplication and counit obey the dual coalgebra identities, and the
+Frobenius compatibility is
+\begin{equation}
+  (m\otimes\operatorname{id}_A)
+  (\operatorname{id}_A\otimes\Delta)
+  =
+  \Delta m
+  =
+  (\operatorname{id}_A\otimes m)(\Delta\otimes\operatorname{id}_A),
+  \label{eq:bcft-frobenius-identity-object}
+\end{equation}
+with associators inserted in the unique type-correct positions.  The word
+special means that \(m\Delta\) is a nonzero scalar multiple of
+\(\operatorname{id}_A\), so cutting out a short \(A\)-ribbon segment does not
+change amplitudes except for a fixed normalization.  The word symmetric
+means that the two natural maps \(A\to A^\vee\) obtained from
+\(\varepsilon m\) agree; this is the categorical form of a nondegenerate
+two-point pairing compatible with orientation reversal.  For a local
+oriented bosonic full CFT one also imposes the commutativity condition
+\[
+  m\circ c_{A,A}=m
+\]
+when the algebra describes a local extension of the chiral theory.  Boundary
+conditions for this full CFT are left \(A\)-modules
+\[
+  \rho_M:A\otimes M\to M,\qquad
+  \rho_M(m\otimes\operatorname{id}_M)
+  =
+  \rho_M(\operatorname{id}_A\otimes\rho_M)\alpha_{A,A,M},
+  \qquad
+  \rho_M(\eta\otimes\operatorname{id}_M)=\operatorname{id}_M .
+\]
+
+This language converts the open sector into a finite-dimensional statement.
+For two boundary conditions \(M,N\), the multiplicity of chiral type \(i\)
+in the open Hilbert space is
+\begin{equation}
+  n_{MN}{}^i
+  =
+  \dim
+  \operatorname{Hom}_{A}(M\otimes U_i,N),
+  \qquad
+  \Hilb_{MN}
+  =
+  \bigoplus_{i\in I}
+  \operatorname{Hom}_{A}(M\otimes U_i,N)\otimes\mathcal H_i .
+  \label{eq:bcft-module-open-sector}
+\end{equation}
+Here \(M\otimes U_i\) is given the left \(A\)-action
+\(\rho_M\otimes\operatorname{id}_{U_i}\), with the associator understood.
+Thus the annulus multiplicities are dimensions of spaces of \(A\)-linear
+morphisms, and integrality is no longer a separate miracle.
+
+Boundary OPE associativity is likewise a module-theoretic composition law.
+Let
+\[
+  f\in\operatorname{Hom}_{A}(M\otimes U_i,N),
+  \qquad
+  g\in\operatorname{Hom}_{A}(N\otimes U_j,P).
+\]
+Then
+\begin{equation}
+  g\circ(f\otimes\operatorname{id}_{U_j})\circ\alpha_{M,U_i,U_j}
+  \in
+  \operatorname{Hom}_{A}(M\otimes(U_i\otimes U_j),P).
+  \label{eq:bcft-module-ope-composition}
+\end{equation}
+Choose a basis of chiral fusion morphisms
+\[
+  e^{k,\mu}_{ij}:U_i\otimes U_j\to U_k,
+  \qquad
+  \bar e^{ij}_{k,\mu}:U_k\to U_i\otimes U_j,
+  \qquad
+  e^{k,\mu}_{ij}\bar e^{ij}_{\ell,\nu}
+  =
+  \delta_{k\ell}\delta_{\mu\nu}\operatorname{id}_{U_k}.
+\]
+Inserting the resolution
+\[
+  \operatorname{id}_{U_i\otimes U_j}
+  =
+  \sum_{k,\mu}\bar e^{ij}_{k,\mu}e^{k,\mu}_{ij}
+\]
+in \eqref{eq:bcft-module-ope-composition} gives the boundary OPE
+coefficients in \eqref{eq:boundary-changing-ope}.  Associativity of the
+boundary OPE is the statement that the two ways to compose three such
+\(A\)-linear morphisms agree after changing the parenthesization of
+\(U_i\otimes U_j\otimes U_k\).  The only nontrivial transformation between
+the two bases is the chiral fusing isomorphism, so the module associativity
+identity above becomes the Cardy--Lewellen equation
+\eqref{eq:cardy-lewellen-boundary-sewing}.  The pentagon for \(\alpha\) is
+the algebraic reason that the five-boundary-field sewing diagrams agree.
+
+The diagonal Cardy solution is the special case \(A=\mathbf 1\).  A left
+\(\mathbf 1\)-module is just an object of \(\mathsf C\), and the elementary
+modules are \(M=U_a\).  Equation~\eqref{eq:bcft-module-open-sector} reduces
+to
+\[
+  n_{ab}{}^i
+  =
+  \dim\operatorname{Hom}(U_a\otimes U_i,U_b)
+  =
+  N_{ai}{}^b ,
+\]
+which is the boundary-field multiplicity
+\eqref{eq:cardy-boundary-field-multiplicity} after the same orientation
+convention used in the annulus.  The fusing-matrix expression for the Cardy
+boundary three-point constants is precisely the expansion of
+\eqref{eq:bcft-module-ope-composition} in the basis
+\(\{e_{ij}^{k,\mu}\}\).
+
+Bulk fields in the same algebraic construction are bimodule morphisms.  If
+\(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
+the braiding for the left chiral label and the inverse braiding for the
+right chiral label, the closed bulk multiplicity is
+\begin{equation}
+  Z_{ij}(A)
+  =
+  \dim
+  \operatorname{Hom}_{A|A}
+  (U_i^+\otimes A\otimes U_j^-,A).
+  \label{eq:bcft-frobenius-bulk-multiplicity}
+\end{equation}
+The diagonal invariant is again recovered from \(A=\mathbf 1\), for which
+the bimodule morphism space is one-dimensional only when \(j=i^\vee\).  The
+bulk-boundary OPE is obtained by evaluating such a bimodule morphism on the
+boundary module \(M\) and then projecting to
+\(\operatorname{End}_{A}(M)\).  This is the categorical form of the
+classifying algebra mentioned above: disk one-point functions are
+simultaneous eigenvalues of the commutative algebra of bulk fields acting on
+elementary boundary modules.  Formula
+\eqref{eq:fusion-ring-character-identity} is the \(A=\mathbf 1\) version of
+this statement.
+
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
 \begin{equation}

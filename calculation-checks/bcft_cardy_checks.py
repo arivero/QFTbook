@@ -216,6 +216,22 @@ def check_cardy_fusion_ring_characters() -> None:
                 )
 
 
+def check_cardy_unit_algebra_module_multiplicities() -> None:
+    """For A=1, module morphism dimensions reduce to fusion coefficients."""
+    for a, left_boundary in enumerate(LABELS):
+        for b, right_boundary in enumerate(LABELS):
+            for i, chiral_type in enumerate(LABELS):
+                # The monograph convention uses Hom(U_a tensor U_i, U_b).
+                module_dimension = fusion(a, i, b)
+                expected_dimension = verlinde(a, i, b)
+                assert_equal(
+                    "unit Frobenius algebra module multiplicity "
+                    f"{left_boundary} -- {chiral_type} --> {right_boundary}",
+                    module_dimension,
+                    expected_dimension,
+                )
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -376,6 +392,7 @@ def main() -> None:
     check_cardy_annulus()
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
+    check_cardy_unit_algebra_module_multiplicities()
     check_boundary_entropy()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()

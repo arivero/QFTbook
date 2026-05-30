@@ -63,6 +63,12 @@
 - States Cardy-Lewellen sewing status as a `quotedtheorem`, records the
   boundary `g`-theorem as a quoted monotonicity theorem, and adds an
   `openproblem` for nonrational/continuous-spectrum BCFT sewing.
+- Expands the algebraic core of the rational boundary construction:
+  symmetric special Frobenius algebra object \(A\) in the chiral tensor
+  category, left \(A\)-module boundary conditions, open multiplicities
+  `dim Hom_A(M tensor U_i,N)`, boundary OPE composition by \(A\)-linear
+  morphisms, the \(A=1\) reduction to diagonal Cardy boundary spectra, and
+  the bimodule formula for closed bulk multiplicities.
 
 ## Claims To Verify
 
@@ -103,6 +109,10 @@
    sewing theorem.
 14. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
    rederived in full here.
+15. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
+   boundary sewing into module associativity and chiral associator pentagon
+   identities; analytic all-surface sewing remains the external theorem
+   boundary.
 
 ## Figures
 
@@ -115,7 +125,8 @@
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
   fusion-ring characters, boundary entropy squares, Ising
-  boundary-changing fusing constants and OPE powers, Chan--Paton direct-sum
+  boundary-changing fusing constants and OPE powers, the \(A=1\)
+  Frobenius-algebra module multiplicity formula, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, compact-boson zero-mode
   exchange under T-duality, and the Liouville FZZT/ZZ hyperbolic identities.
 
@@ -155,3 +166,7 @@
   interpretation of FZZT and ZZ states, displayed the direct-integral
   replacement for rational Cardy sums, and added exact hyperbolic checks for
   the boundary-state kernels.
+- 2026-05-30 rational Frobenius-core pass: expanded the Cardy-Lewellen
+  theorem boundary by deriving the open-sector and boundary-OPE algebraic
+  mechanism from symmetric special Frobenius algebra objects and their
+  modules, with an exact Ising \(A=1\) module-multiplicity check.
