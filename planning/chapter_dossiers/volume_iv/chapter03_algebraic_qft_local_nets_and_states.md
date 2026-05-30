@@ -18,6 +18,15 @@ functorial QFT.
 - `\omega`: state on a \(C^*\)-algebra.
 - `(\Hilb_\omega,\pi_\omega,\Omega_\omega)`: GNS Hilbert space,
   representation, and cyclic vector.
+- `P_m=\partial^\mu\partial_\mu-m^2`: mostly-plus Klein--Gordon operator.
+- `\Delta_m^{\rm ret/adv}`, `\Delta_m`: retarded/advanced and causal
+  propagators for \(P_m\).
+- `\mathsf V_m=C_c^\infty(M;\mathbb R)/P_mC_c^\infty(M;\mathbb R)`:
+  test-function symplectic quotient for the massive free scalar.
+- `\sigma_m([f],[g])=\int f\Delta_m g`: free scalar symplectic form.
+- `\mathfrak W(\mathsf V_m,\sigma_m)`: Weyl \(C^*\)-algebra.
+- `\Obs_m(\mathcal O)=C^*(W(u):u\in\mathsf V_m(\mathcal O))`:
+  massive scalar Weyl local algebra.
 - `\Omega`, `\vac`: vacuum vector in a represented net.
 - `U`: unitary implementation of spacetime symmetries.
 - `\Phi_\alpha(f)`: Wightman smeared fields used as unbounded local
@@ -35,6 +44,10 @@ functorial QFT.
 
 - Defines Haag--Kastler \(C^*\)-nets and represented vacuum nets with isotony,
   covariance, locality, spectrum, and vacuum-state data kept distinct.
+- Constructs the massive scalar Weyl net explicitly from the
+  Green-hyperbolic symplectic quotient, proves nondegeneracy of the
+  symplectic form, verifies isotony/locality/Poincare covariance, and proves
+  the time-slice property using a retarded/advanced cutoff construction.
 - Constructs the perturbative interacting local net from relative
   \(S\)-matrices under the causal-factorization and interaction-cutoff
   independence hypotheses.
@@ -89,3 +102,7 @@ functorial QFT.
   net construction, internal fixed-point observables, phase sectors, and the
   separate estimates needed for nuclearity, split, Haag duality, and DHR
   reconstruction.
+- 2026-05-30 free Weyl-net benchmark pass: inserted the massive scalar Weyl
+  net before pAQFT so the chapter has an explicit nonperturbative local-net
+  model with the time-slice axiom proved directly from Green-hyperbolic
+  propagation rather than inferred from unbounded Wightman fields.
