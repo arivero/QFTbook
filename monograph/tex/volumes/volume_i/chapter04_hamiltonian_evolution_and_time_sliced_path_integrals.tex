@@ -637,6 +637,95 @@ as well.  These cases have a unique self-adjoint closure from the natural
 differential operator core, and the Trotter formula applies to that closure.
 \end{quotedtheorem}
 
+\paragraph{Mechanism of the Faris--Lavine estimate.}
+The criterion is a statement about the closure of a symmetric differential
+operator determined on the algebraic core \(C_c^\infty(\mathbb R^d)\).
+Write \(p_j=-\ii\partial_j\), \(p^2=-\Delta\), and first reduce by rescaling
+and adding a constant to the model lower bound
+\[
+  V(x)\ge -|x|^2 .
+\]
+Let
+\[
+  A_0=p^2+V(x),
+  \qquad
+  N_0=p^2+V(x)+2|x|^2
+\]
+on \(C_c^\infty(\mathbb R^d)\).  Since \(V+2|x|^2\ge |x|^2\ge0\), the
+Kato theorem for nonnegative locally square-integrable potentials gives a
+positive self-adjoint closure \(N\) of \(N_0\).  The comparison with \(N\) is
+the point of the proof.  On \(C_c^\infty(\mathbb R^d)\),
+\[
+  N_0-A_0=2|x|^2\ge0,
+  \qquad
+  N_0+A_0=2p^2+2(V+|x|^2)\ge0
+\]
+as quadratic forms, hence
+\[
+  -N_0\le A_0\le N_0
+\]
+in form order.  The oscillator estimate, obtained by integration by parts
+from \(p^2+|x|^2\),
+\[
+  \||x|^2\psi\|
+  \le
+  C\bigl(\|N_0\psi\|+\|\psi\|\bigr),
+  \qquad
+  \psi\in C_c^\infty(\mathbb R^d),
+\]
+then implies that the \(N\)-graph norm controls \(A_0\).  Thus \(A_0\)
+extends continuously from the \(N\)-graph domain, and one may apply Nelson's
+commutator theorem with comparison operator \(N\).
+
+It remains to check the commutator bound required by that theorem.  The only
+noncommuting part is the added oscillator term:
+\[
+  \ii[N_0,A_0]
+  =
+  \ii[2|x|^2,p^2].
+\]
+Using \([x_j,p_k]=\ii\delta_{jk}\), one obtains, on the common algebraic
+core,
+\[
+  \ii[N_0,A_0]
+  =
+  -4\sum_{j=1}^d(x_jp_j+p_jx_j).
+\]
+The form bound follows from completing the square:
+\[
+  (p_j\pm x_j)^*(p_j\pm x_j)
+  =
+  p_j^2+x_j^2\pm(p_jx_j+x_jp_j)\ge0,
+\]
+and therefore
+\[
+  \pm\sum_{j=1}^d(x_jp_j+p_jx_j)
+  \le
+  p^2+|x|^2
+  \le
+  N_0
+\]
+as quadratic forms.  Hence
+\[
+  \bigl|\langle\psi,\ii[N_0,A_0]\psi\rangle\bigr|
+  \le
+  4\,\langle\psi,N_0\psi\rangle .
+\]
+Nelson's theorem says that a symmetric operator \(A_0\) controlled in graph
+norm by a positive self-adjoint \(N\), with the commutator bounded by
+\(\langle\psi,N\psi\rangle\), is essentially self-adjoint on every
+\(N\)-core contained in its domain.  Its proof uses the bounded regularized
+operators
+\[
+  A_\epsilon=(1+\epsilon N)^{-1}A_0(1+\epsilon N)^{-1}
+\]
+and the commutator inequality to obtain a uniform Gronwall bound on the
+\(N^{1/2}\)-energy of \(\ee^{\ii tA_\epsilon}\psi\); after passing
+\(\epsilon\downarrow0\), the deficiency equations
+\((A_0^*\mp\ii)\eta=0\) admit no nonzero \(L^2\) solutions.  This is the
+operator-theoretic reason that the quadratic lower bound prevents a boundary
+condition at infinity from being part of the Hamiltonian data.
+
 \begin{example}[A limit-circle failure of formal Hamiltonian data]
 \label{ex:cubic-potential-limit-circle-failure}
 The lower-growth hypothesis in the Faris--Lavine criterion is substantive.  In

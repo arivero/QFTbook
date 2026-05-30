@@ -99,7 +99,8 @@ Working framework:
 - `thm:wiener-feynman-kac-qm`: Wiener measure, Brownian bridge, and
   Feynman--Kac representation.
 - `qthm:faris-lavine-essential-self-adjointness`: sufficient
-  essential-self-adjointness criterion.
+  essential-self-adjointness criterion, now accompanied by the
+  comparison-Hamiltonian and Nelson commutator mechanism.
 - `def:regulated-phase-space-path-integral-datum`: ordering-dependent symbols
   and local \(O(\hbar)\) counterterms.
 - Paragraph "Gaussian elimination of quadratic momenta": Lagrangian form after
@@ -136,6 +137,12 @@ Working framework:
   through variational characterization of the resolvent and strong semigroup
   convergence, with real-time convergence requiring the corresponding
   Stone--Chernoff/self-adjoint-sum input.
+- The Faris--Lavine theorem boundary is expanded in place: after reducing to
+  \(V\ge-|x|^2\), the comparison operator
+  \(N=p^2+V+2|x|^2\), the form inequalities \(\pm A\le N\), the oscillator
+  graph estimate, the commutator
+  \(\ii[N,A]=-4(x\cdot p+p\cdot x)\), and the Nelson commutator-theorem
+  mechanism are displayed.
 - The Feynman--Kac theorem supplies one positive-measure bosonic entry in a
   broader typed path-integral taxonomy.
 - Distinct time-lattice orderings define distinct symbols \(h\) and \(h'\),
@@ -181,6 +188,9 @@ spectral theorem plus a gap estimate.
   boundary with the bounded telescoping proof mechanism and the unbounded
   closed-form/resolvent mechanism, emphasizing that the theorem is an
   operator statement rather than a pointwise kernel identity.
+- 2026-05-30 quoted-theorem pass: expanded the Faris--Lavine boundary with
+  the comparison-Hamiltonian proof mechanism and the Nelson commutator
+  estimate that prevents hidden boundary conditions at infinity.
 
 ## Figure Ledger
 
