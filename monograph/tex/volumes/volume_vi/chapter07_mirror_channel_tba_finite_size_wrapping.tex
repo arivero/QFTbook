@@ -10,10 +10,83 @@ decomposition turns the circumference of the direct theory into the inverse
 temperature of a gas in the rotated theory.  Finite-size corrections are then
 organized by the number of mirror particles winding around the compact cycle.
 
+\begin{hypothesis}[Mirror finite-size TBA datum]
+\label{hyp:mirror-finite-size-tba-datum}
+A mirror finite-size TBA datum is a tuple
+\[
+  \mathfrak M
+  =
+  \bigl(
+    Z,\{H_R,\Hilb_R\}_{R>0},
+    \{\widetilde H_L,\widetilde{\Hilb}_L\}_{L>0},
+    \mathsf A,\{m_a,S_{ab},\varphi_{ab}\}_{a,b\in\mathsf A},
+    \mathcal E_{\rm bulk},
+    \mathcal S_{\rm mir},
+    \mathcal P_{\rm mir}
+  \bigr)
+\]
+with the following properties.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(Z(R,L)\) is the regulated Euclidean torus partition function for a
+  massive two-dimensional local QFT on a flat torus whose oriented cycles have
+  lengths \(R\) and \(L\).  The same regulated functional admits the two
+  Hamiltonian decompositions
+  \[
+    Z(R,L)=\operatorname{Tr}_{\Hilb_R}e^{-L H_R}
+    =
+    \operatorname{Tr}_{\widetilde{\Hilb}_L}e^{-R\widetilde H_L}.
+  \]
+\item \(H_R\) is self-adjoint and bounded below on the direct-channel Hilbert
+  space \(\Hilb_R\).  The large-\(L\) limit
+  \(-\lim_{L\to\infty}L^{-1}\log Z(R,L)=E_0(R)\) exists for the range of
+  \(R\) under discussion.
+\item The mirror channel has a thermodynamic limit at inverse temperature
+  \(R\).  Its stable mirror species form the finite or locally finite set
+  \(\mathsf A\), with masses \(m_a>0\) and one-particle dispersion
+  \(\widetilde E_a(\theta)=m_a\cosh\theta\),
+  \(\widetilde p_a(\theta)=m_a\sinh\theta\).  When \(\mathsf A\) is locally
+  finite rather than finite, every displayed sum over species is part of the
+  datum as an absolutely convergent sum in the norm used for that formula.
+\item In the diagonal sector treated in this chapter,
+  \(S_{ab}(\theta)\in\C^\times\) is the mirror two-body scattering phase on
+  the real rapidity line, with a declared logarithm branch and
+  \[
+    \varphi_{ab}(\theta)
+    =
+    \frac{1}{2\pi\ii}\frac{d}{d\theta}\log S_{ab}(\theta).
+  \]
+  This is the diagonal mirror datum.  Non-diagonal mirror scattering uses the
+  nested generalization of the density system.
+\item \(\mathcal S_{\rm mir}\) consists of the mirror thermodynamic
+  density constraint and entropy convention used below:
+  \[
+    \rho_a+\rho_a^h
+    =
+    \frac{m_a}{2\pi}\cosh\theta
+    +
+    \sum_b\varphi_{ab}*\rho_b,
+    \qquad
+    s_a=(\rho_a+\rho_a^h)\log(\rho_a+\rho_a^h)
+    -\rho_a\log\rho_a-\rho_a^h\log\rho_a^h .
+  \]
+\item \(\mathcal E_{\rm bulk}\) is the local extensive vacuum-energy
+  coordinate fixed by the same renormalization convention used in the direct
+  finite-volume theory.
+\item \(\mathcal P_{\rm mir}\) records the analytic strips, pole sets, and
+  contour-orientation conventions used when mirror rapidities are crossed
+  through direct-channel particles or operator insertions.  This analytic
+  entry is part of the data needed to derive excited-state F-terms and
+  wrapping residues from the torus trace.
+\end{enumerate}
+All finite-size formulae in this chapter are conditional on
+\(\mathfrak M\) and on the extra bounded-kernel or pole-avoidance hypotheses
+stated at the point where estimates or contour deformations are used.
+\end{hypothesis}
+
 \section{Two Hamiltonian Decompositions}
 
-Let the Euclidean spacetime be a flat torus with cycles of lengths \(R\) and
-\(L\).  Quantization along the \(L\)-direction gives
+Let \(\mathfrak M\) be a mirror finite-size TBA datum.  Quantization along the
+\(L\)-direction gives
 \[
   Z(R,L)=\operatorname{Tr}_{\Hilb_R}\exp[-L H_R],
 \]
@@ -543,8 +616,9 @@ corrections whose spin-chain interaction range reaches the length of a
 single-trace operator.  The relativistic finite-size mechanism developed here
 has a literal spacetime compact cycle and a mirror thermal trace.  Later
 planar-integrability chapters build the bridge by identifying the spectral
-problem, the worldsheet or spin-chain mirror channel, and the analytic
-continuation that maps finite-size corrections between the two settings.
+problem, the auxiliary mirror channel in that spectral problem, and the
+analytic continuation that maps finite-size corrections between the two
+settings.
 
 \begin{openproblem}[Excited-state mirror construction]
 \label{op:excited-state-mirror-construction}

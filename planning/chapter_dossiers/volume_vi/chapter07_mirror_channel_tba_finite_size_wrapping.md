@@ -10,6 +10,10 @@ language.
 
 ## Notation Inventory
 
+- `mathfrak M`: mirror finite-size TBA datum, collecting the torus functional,
+  direct and mirror Hamiltonian decompositions, diagonal mirror scattering
+  phases, thermodynamic density/entropy convention, bulk energy coordinate,
+  and analytic strip/pole data.
 - `R`, `L`: torus cycle lengths and direct/mirror inverse temperatures.
 - `H_R`, `E_0(R)`: direct-channel Hamiltonian and circle vacuum energy.
 - `tilde H_L`, `f_mir(R)`: mirror Hamiltonian and mirror free-energy density.
@@ -17,6 +21,8 @@ language.
   amplitude, and TBA kernel.
 - `rho_a`, `rho_a^h`, `epsilon_a`: Bethe particle density, hole density, and
   pseudoenergy.
+- `S_mir`, `P_mir`: mirror thermodynamic entropy/density convention and
+  mirror analytic strip/pole ledger.
 - `q_a(theta)`: large-circumference mirror occupation factor.
 - `mathsf A`, `m_*`, `Phi`: finite mirror-species set, lightest mirror mass,
   and \(L^1\) kernel bound used in the vacuum Luescher remainder theorem.
@@ -24,6 +30,9 @@ language.
 
 ## Claim Ledger
 
+- Aggregates the finite-size framework into Hypothesis
+  `hyp:mirror-finite-size-tba-datum` before using mirror rotation, TBA
+  kernels, density equations, or wrapping contours.
 - Proves the relation between direct-channel vacuum energy and mirror-channel
   pressure from equality of torus decompositions.
 - Derives the mirror TBA functional from the density constraint and entropy
