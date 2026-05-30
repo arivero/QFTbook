@@ -13,6 +13,12 @@
 
 ## Definitions And Results
 
+- Defines the closed-manifold BF theory datum
+  `def:closed-manifold-bf-theory-datum`: closed oriented manifold, compact
+  gauge group and bundle, invariant pairing, classical field space
+  `Conn(P) x Omega^{D-2}(M,ad P^*)`, exponentiated action, ordinary gauge
+  symmetry, B-shift symmetry and reducibility status, extended observables,
+  and quantization status.
 - Classical BF fields \(A\) and \(B\) on a principal \(G\)-bundle.
 - Nonabelian BF action
   \(S_{\rm BF}=2\pi i\int_M\langle B\wedge F_A\rangle\), with the
@@ -57,17 +63,21 @@
 ## Claim Ledger
 
 1. The BF equations of motion follow directly from varying \(A\) and \(B\).
-2. The finite gauge-transformation convention is consistent with
+2. The central BF object is the named closed-manifold datum; the continuum
+   nonabelian quantum theory requires the additional BV/BV-BFV semidensity,
+   gauge fixing, anomaly, and gluing data recorded in the definition and open
+   problem.
+3. The finite gauge-transformation convention is consistent with
    \(\delta_cA=\dd_Ac\); this sign convention must be preserved in later
    BV-BF discussions.
-3. The \(B\)-shift symmetry is reducible on the flat-connection locus, and
+4. The \(B\)-shift symmetry is reducible on the flat-connection locus, and
    off shell in the abelian case.
-4. The normalized finite abelian BF partition function is the groupoid
+5. The normalized finite abelian BF partition function is the groupoid
    cardinality of flat \(\mathbb Z_N\)-bundles on a connected cell complex.
-5. The Wilson/surface correlation phase is
+6. The Wilson/surface correlation phase is
    \(\exp(-2\pi i pq\,\operatorname{Lk}(\gamma,\Sigma)/N)\) in the chapter's
    finite constraint convention.
-6. Metric independence requires both metric-free classical action and
+7. Metric independence requires both metric-free classical action and
    anomaly-free gauge fixing/regularization.
 
 ## Calculation Checks
@@ -83,6 +93,9 @@
   cohomological reason the linking integer is well defined on \(S^D\), to
   identify the ratio inside the same finite path-integral sum, and to remove
   any possible impression of a saddle approximation.
+- 2026-05-30 issue #700 defining-property pass: added the upfront
+  closed-manifold BF theory datum and linked the finite abelian cochain model
+  as the finite realization of the abelian sector.
 
 ## Remaining Deepening Targets
 

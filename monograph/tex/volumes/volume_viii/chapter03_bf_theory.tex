@@ -10,10 +10,68 @@ reducibility, metric-free classical action, extended observables, and a BV
 complex.  The abelian compact theory also has a finite cochain model, so some
 correlation functions reduce to exact finite sums.
 
+\begin{definition}[closed-manifold BF theory datum]
+\label{def:closed-manifold-bf-theory-datum}
+A closed-manifold BF theory datum in dimension \(D\) consists of the following
+objects.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item A closed oriented smooth \(D\)-manifold \(M\).
+\item A compact Lie group \(G\), a principal \(G\)-bundle
+      \(P\to M\), and the adjoint bundle
+      \[
+        \operatorname{ad}P=P\times_G\mathfrak g .
+      \]
+\item An invariant nondegenerate pairing between the coadjoint and adjoint
+      bundles, written fiberwise as
+      \[
+        \langle-,-\rangle:\mathfrak g^*\otimes\mathfrak g\longrightarrow
+        \mathbb R .
+      \]
+\item The classical field space
+      \[
+        \operatorname{Conn}(P)\times
+        \Omega^{D-2}(M,\operatorname{ad}P^*) ,
+      \]
+      with field coordinates \((A,B)\).  Here \(A\) is a connection on
+      \(P\), \(B\) is a \((D-2)\)-form valued in the dual adjoint bundle, and
+      \(F_A\in\Omega^2(M,\operatorname{ad}P)\) denotes the curvature of \(A\).
+\item The exponentiated classical action
+      \[
+        \exp S_{\rm BF}[A,B],
+        \qquad
+        S_{\rm BF}[A,B]
+        =
+        2\pi\ii\int_M\langle B\wedge F_A\rangle .
+      \]
+      The factor \(2\pi\ii\) fixes the convention matched to the compact
+      abelian normalization below.
+\item Gauge data consisting of the ordinary gauge group \(\mathcal G(P)\) and
+      the \(B\)-field shift parameters
+      \(\Omega^{D-3}(M,\operatorname{ad}P^*)\).  In the nonabelian theory the
+      shift reducibility chain is naturally a derived symmetry over the
+      flat-connection locus \(F_A=0\); in the abelian specialization the same
+      chain is an off-shell cochain complex because \(\dd^2=0\).
+\item Extended observable data: Wilson observables associated with closed
+      one-cycles and representations or charges, and surface observables
+      associated with closed \((D-2)\)-cycles and dual charges.  The finite
+      abelian model below makes these observables precise as cochain
+      functionals and computes their linking phase exactly.
+\item Quantization status.  The preceding data define the classical and BV
+      input for continuum BF theory on closed \(M\).  A functorial quantum
+      theory additionally requires a BV or BV--BFV regularized semidensity,
+      gauge fixing, anomaly control, and gluing data.  The compact finite
+      \(\mathbb Z_N\) cochain model in
+      Section~\ref{sec:finite-zn-bf-cochain-model} is a fully finite
+      realization of the abelian sector.
+\end{enumerate}
+\end{definition}
+
 \section{Nonabelian Classical Fields}
 
-Let \(M\) be a closed oriented smooth \(D\)-manifold.  Let \(G\) be a compact
-Lie group, let \(P\to M\) be a principal \(G\)-bundle, and let
+We first unpack Definition~\ref{def:closed-manifold-bf-theory-datum} in the
+smooth nonabelian continuum setting.  Let \(M\) be a closed oriented smooth
+\(D\)-manifold.  Let \(G\) be a compact Lie group, let \(P\to M\) be a
+principal \(G\)-bundle, and let
 \[
   \operatorname{ad}P=P\times_G\mathfrak g
 \]
@@ -202,6 +260,7 @@ as a differential character.  Thus the theory describes a flat
 redundancies are accounted for.
 
 \section{Finite \texorpdfstring{\(\mathbb Z_N\)}{ZN} Cochain Model}
+\label{sec:finite-zn-bf-cochain-model}
 
 Let \(K\) be a finite cell decomposition of a closed connected oriented
 \(D\)-manifold \(M\).  Write \(C^r=C^r(K;\mathbb Z_N)\), and let

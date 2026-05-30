@@ -8,7 +8,10 @@ Wightman field presentation of
 `def:cyclic-wightman-field-presentation`: Hilbert space, vacuum, Poincare
 representation, common invariant domain, field-label adjunction and parity,
 operator-valued tempered distributions, covariance, spectrum, graded locality,
-and cyclicity.
+and cyclicity.  The definition is explicitly tied to the framework-level
+presentation `def:wightman-field-presentation-opening` in the opening
+volume; this chapter specializes that framework to the cyclic tempered
+Minkowski setting used in the reconstruction theorem.
 
 ## Notation Inventory
 
@@ -96,3 +99,7 @@ and cyclicity.
   uniqueness from the base Wightman data, redirected cluster, reconstruction,
   PCT, and observable-subpresentation prose to the named definition, and added
   this dossier so the foundational Wightman object is tracked explicitly.
+- 2026-05-30 issue #701 navigation pass: cross-linked the detailed cyclic
+  Wightman definition back to the opening framework-level Wightman
+  presentation so the two definitions have an explicit specialization
+  relation.
