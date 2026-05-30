@@ -722,6 +722,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Regulator comparison criterion for OS-positive stochastic limits"
     r"|Polynomial OS observables from exponential moments"
     r"|Kernel criterion for projective dual-norm bounds"
+    r"|Central-charge tensor structure"
     r"|Component transformations of a chiral multiplet"
     r"|Wess--Zumino gauge as a representative"
     r"|Gauge kinetic coefficient in Wess--Zumino gauge"

@@ -195,11 +195,11 @@ may be written
   \\
   \{Q^I_\alpha,Q^J_\beta\}
   &=
-  \epsilon_{\alpha\beta} Z^{IJ},
+  2\epsilon_{\alpha\beta} Z^{IJ},
   \qquad
   \{\bar Q_{\dot\alpha I},\bar Q_{\dot\beta J}\}
   =
-  \epsilon_{\dot\alpha\dot\beta}\bar Z_{IJ}.
+  2\epsilon_{\dot\alpha\dot\beta}\bar Z_{IJ}.
   \label{eq:hls-central-charges}
 \end{align}
 Here \(Z^{IJ}=-Z^{JI}\) are central charges invariant under whatever internal
@@ -263,23 +263,20 @@ index diagonalizes \(A\) to a positive diagonal matrix.  Rescaling each
 nonzero \(Q^I\) fixes the diagonal entries to \(2\), giving the displayed
 normalization.
 
-\begin{proposition}[Central-charge tensor structure]
-\label{prop:hls-central-charge-tensor-structure}
+\paragraph{Central-charge tensor structure.}
 Under the same HLS hypotheses, the anticommutator of two left-handed
 supercharges has only the Lorentz-scalar central part
 \[
   \{Q^I_\alpha,Q^J_\beta\}
   =
-  \epsilon_{\alpha\beta}Z^{IJ},
+  2\epsilon_{\alpha\beta}Z^{IJ},
   \qquad Z^{IJ}=-Z^{JI},
 \]
 with the conjugate formula for two right-handed supercharges.  If an internal
 generator \(B_A\) is retained as an actual symmetry of the same algebra, then
 \(Z\) obeys the invariance condition
 \eqref{eq:hls-central-invariance}.
-\end{proposition}
 
-\begin{proof}
 The product of two left Weyl representations decomposes as
 \[
   \left(\frac12,0\right)\otimes
@@ -292,17 +289,19 @@ The scalar summand is obtained by contracting the spinor indices with
 two-form spin representation.  An even self-dual tensor charge would be an
 additional spacetime-tensor symmetry; the HLS hypotheses exclude such charges
 in the particle \(S\)-matrix setting.  The remaining scalar term is therefore
-\(\epsilon_{\alpha\beta}Z^{IJ}\).
+\(2\epsilon_{\alpha\beta}Z^{IJ}\).  The factor \(2\) is part of the central
+charge convention used below: it makes the rest-frame positivity block have
+eigenvalues \(2(m\pm z_s)\) when \(z_s\) is a singular value of \(Z\).
 
 The graded anticommutator is symmetric under exchange of the combined labels
 \((I,\alpha)\leftrightarrow(J,\beta)\).  Since
 \(\epsilon_{\beta\alpha}=-\epsilon_{\alpha\beta}\), this symmetry requires
 \[
-  \epsilon_{\alpha\beta}Z^{IJ}
+  2\epsilon_{\alpha\beta}Z^{IJ}
   =
-  \epsilon_{\beta\alpha}Z^{JI}
+  2\epsilon_{\beta\alpha}Z^{JI}
   =
-  -\epsilon_{\alpha\beta}Z^{JI},
+  -2\epsilon_{\alpha\beta}Z^{JI},
 \]
 and hence \(Z^{IJ}=-Z^{JI}\).  Finally, apply the graded Jacobi identity to
 \((B_A,Q^I_\alpha,Q^J_\beta)\).  Using
@@ -317,7 +316,6 @@ side vanishes; this is exactly \eqref{eq:hls-central-invariance}.  If this
 condition fails for a proposed internal generator, that generator is an
 automorphism of a family of algebras or is broken in the sector with the fixed
 central charge, not a simultaneous internal symmetry of that fixed algebra.
-\end{proof}
 
 \section{Positivity and Multiplet Size}
 
@@ -445,7 +443,7 @@ The algebra may contain antisymmetric central charges,
 \[
   \{Q^I_\alpha,Q^J_\beta\}
   =
-  \epsilon_{\alpha\beta}Z^{IJ},
+  2\epsilon_{\alpha\beta}Z^{IJ},
   \qquad Z^{IJ}=-Z^{JI}.
 \]
 In a rest frame, positivity of the matrix of anticommutators gives lower
@@ -469,34 +467,65 @@ supercharges has zero norm and annihilates the shortened representation.
 \end{proposition}
 
 \begin{proof}
-The only linear-algebra input is the skew singular-value decomposition for a
-complex antisymmetric matrix: a unitary change of the extended-supersymmetry
-index brings \(Z^{IJ}\) to a direct sum of \(2\times2\) blocks
-\(z_s\varepsilon\), \(z_s\ge0\), plus possible zero blocks.  In the associated
-real charge combinations the positive anticommutator matrix decomposes into
-independent Hermitian blocks of the form
+The linear-algebra input is the skew Takagi factorization for a complex
+antisymmetric matrix: there is a unitary matrix \(U\) such that
 \[
+  (U Z U^T)^{2s-1,2s}=z_s,\qquad
+  (U Z U^T)^{2s,2s-1}=-z_s,\qquad z_s\ge0,
+\]
+with all other entries inside the displayed \(2\times2\) block zero, and with
+additional zero blocks if the number of supercharges is odd.  Replacing
+\(Q^I_\alpha\) by \(U^I{}_JQ^J_\alpha\) preserves the mixed anticommutator
+\[
+  \{Q^I_\alpha,(Q^J_\beta)^\dagger\}=2m\,\delta_{\alpha\beta}\delta^{IJ}
+\]
+in the rest frame and puts the central term into these blocks.
+
+Fix one nonzero block and write it as \(I=1,2\), \(Z^{12}=z\).  Since
+\((Q^I_\alpha)^\dagger=\bar Q_{\dot\alpha I}\), the two-dimensional subspace
+spanned by the operators \(Q^1_1\) and \(\bar Q_{\dot2\,2}\) has Hermitian
+anticommutator matrix
+\[
+  \begin{pmatrix}
+  \{Q^1_1,\bar Q_{\dot1\,1}\}
+  &
+  \{Q^1_1,Q^2_2\}
+  \\
+  \{\bar Q_{\dot2\,2},\bar Q_{\dot1\,1}\}
+  &
+  \{\bar Q_{\dot2\,2},Q^2_2\}
+  \end{pmatrix}
+  =
   2
   \begin{pmatrix}
-    m I_r & Z_s\\
-    Z_s^\dagger & m I_r
+  m & z\\
+  z & m
   \end{pmatrix},
-  \qquad
-  Z_s=z_s I_r
 \]
-on the subspace associated with the singular value \(z_s\), where \(I_r\) is
-the identity on its multiplicity space.  The eigenvectors of the displayed
-Hermitian block are the symmetric and antisymmetric combinations of the two
-entries, and the corresponding eigenvalues are
+after the phase of the block has been absorbed into the unitary Takagi basis.
+The companion pair \(Q^1_2,-\bar Q_{\dot1\,2}\) gives the same matrix.  Thus
+the normalized combinations
 \[
-  2(m+z_s),\qquad 2(m-z_s).
+  R_\pm=\frac{1}{\sqrt2}\left(Q^1_1\pm \bar Q_{\dot2\,2}\right)
 \]
-A positive-energy unitary representation requires every anticommutator norm
-matrix to be positive semidefinite, hence \(m-z_s\ge0\).  If \(m=z_s\), the
-second eigenvalue is zero.  The associated supercharge combination has zero
-norm on every vector in the representation; after quotienting zero-norm
-vectors it acts by zero.  Removing that fermionic oscillator is precisely the
-shortening mechanism.
+have anticommutators
+\[
+  \{R_\pm,R_\pm^\dagger\}=2(m\pm z).
+\]
+The same computation applies independently to every skew block and to each
+multiplicity space for a repeated singular value.
+
+In a Hilbert-space representation, \(\langle\psi,\{R,R^\dagger\}\psi\rangle
+=\|R^\dagger\psi\|^2+\|R\psi\|^2\) is nonnegative for every vector in the
+common invariant domain of the supercharges.  Therefore every eigenvalue of
+each block must be nonnegative, and in particular \(2(m-z_s)\ge0\).  This gives
+\(m\ge z_s\) for every singular value.  If \(m=z_s\), the operator \(R_-\) for
+that block has zero norm on every vector; after quotienting zero-norm vectors
+and closing the operator, \(R_-\) acts trivially.  The associated fermionic
+oscillator is absent, which is the representation-theoretic shortening
+mechanism.  This proves only the algebraic BPS inequality and shortening
+criterion; whether a QFT contains states saturating it is separate dynamical
+information.
 \end{proof}
 
 \begin{openproblem}[Nonperturbative realization of supersymmetric QFT data]

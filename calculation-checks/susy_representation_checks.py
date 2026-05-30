@@ -71,7 +71,8 @@ def check_bps_bound_violation_detected():
 
 
 def check_hls_central_charge_combined_symmetry():
-    # The left-left anticommutator is epsilon_{alpha beta} Z^{IJ}.
+    # The left-left anticommutator is 2 epsilon_{alpha beta} Z^{IJ}; the
+    # factor 2 is irrelevant for the combined-index symmetry checked here.
     # It must be symmetric under exchange of the combined labels
     # (I, alpha) <-> (J, beta).  This holds exactly when Z is antisymmetric.
     epsilon_spinor = {

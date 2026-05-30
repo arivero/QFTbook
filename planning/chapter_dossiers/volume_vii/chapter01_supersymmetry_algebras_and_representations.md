@@ -18,8 +18,9 @@
   Lorentz covariance, the Coleman--Mandula vector-charge exclusion, and
   positivity.
 - Direct algebraic derivation of the scalar central-charge tensor structure
-  \(\epsilon_{\alpha\beta}Z^{IJ}\), including antisymmetry of \(Z^{IJ}\) and
-  the internal-invariance condition.
+  \(2\epsilon_{\alpha\beta}Z^{IJ}\), including antisymmetry of \(Z^{IJ}\), the
+  internal-invariance condition, and the convention matching the BPS
+  positivity block.
 - Particle supersymmetry representation as a Hilbert-space or one-particle
   spectral-subspace representation.
 - Field-variable supersymmetry representation as an action on superfields,
@@ -35,8 +36,8 @@
   fermionic state counts in a nonzero-energy multiplet.
 - Massless helicity-pair construction from the rank-one supercharge norm
   matrix.
-- Central charges and the BPS inequality for extended supersymmetry,
-  derived from singular values of the rest-frame anticommutator block.
+- Central charges and the BPS inequality for extended supersymmetry, derived
+  from the skew Takagi singular values of the rest-frame anticommutator block.
 - Frontier boundary between algebraic representation theory and
   nonperturbative supersymmetric QFT realization.
 
@@ -64,8 +65,10 @@
    anticommutator is proportional to \(P_\mu\), and positivity normalizes it
    to \(2\delta^I{}_J\sigma^\mu P_\mu\).
 4. The left-left anticommutator has only the scalar central-charge tensor
-   \(\epsilon_{\alpha\beta}Z^{IJ}\); \(Z^{IJ}\) is antisymmetric and must be
-   invariant under any retained internal symmetry.
+   \(2\epsilon_{\alpha\beta}Z^{IJ}\); \(Z^{IJ}\) is antisymmetric and must be
+   invariant under any retained internal symmetry.  This tensor-structure item
+   is a representation-theoretic derivation under HLS hypotheses, not an
+   independent theorem-form result.
 5. Positivity of \(\sum_\alpha Q_\alpha Q_\alpha^\dagger\) constrains masses
    and central charges.
 6. The equal boson/fermion count follows from a trace with \((-1)^F\), not
@@ -78,8 +81,10 @@
    combination quotiented out, leaving a single fermionic oscillator and a
    helicity pair before CPT completion.
 9. Multiplet shortening requires the central-charge inequality to be saturated.
-   The inequality is the positivity condition \(m\ge z_s\) for every
-   singular value of the central-charge matrix.
+   With the chapter normalization
+   \(\{Q^I_\alpha,Q^J_\beta\}=2\epsilon_{\alpha\beta}Z^{IJ}\), the rest-frame
+   block eigenvalues are \(2(m\pm z_s)\), so positivity is precisely
+   \(m\ge z_s\) for every singular value of the central-charge matrix.
 10. A particle supermultiplet is not the same object as an off-shell
    superfield multiplet; relating them requires dynamics, constraints,
    quotienting, and Hilbert-space or Euclidean reconstruction.
