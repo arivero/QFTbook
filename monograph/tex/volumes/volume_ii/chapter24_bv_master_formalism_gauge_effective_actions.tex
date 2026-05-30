@@ -1642,8 +1642,8 @@ and separates genuine interaction-density coordinates from antifield
 representatives of redefinitions and currents.
 \end{proof}
 
-\begin{quotedtheorem}[Ghost-number-one anomaly calculation]
-\label{qthm:bv-ghost-one-anomaly-calculation}
+\begin{proposition}[Ghost-number-one anomaly calculation]
+\label{prop:bv-ghost-one-anomaly-calculation}
 For a four-dimensional chiral Yang--Mills theory in the same perturbative
 local setting, a perturbative local gauge-anomaly candidate is represented in
 \[
@@ -1666,9 +1666,9 @@ If the sum of \(d_R^{abc}\) over all left-handed Weyl fermions vanishes for
 every triple of gauge generators, then the perturbative local gauge anomaly
 class vanishes.  If it does not vanish, no local counterterm restores the
 quantum master equation in this perturbative local cohomology.
-\end{quotedtheorem}
+\end{proposition}
 
-\paragraph{QME-to-descent mechanism.}
+\begin{proof}[Proof from the QME and descent]
 Let the loop expansion of the regulated 1PI effective action be
 \[
   \Gamma_\Lambda
@@ -1752,13 +1752,18 @@ counterterm changes \(I_4^{(1)}\) by an \(s\)-exact term plus a total
 derivative, as in \eqref{eq:qme-anomaly-counterterm-shift}.  Therefore the
 class vanishes exactly when the total symmetric invariant coefficient
 vanishes in the chosen representation content.
+\end{proof}
 
-The word "anomaly" in this proposition refers to the perturbative local
+\begin{remark}[Scope of the obstruction]
+\label{rem:bv-ghost-one-anomaly-scope}
+The word "anomaly" in Proposition~\ref{prop:bv-ghost-one-anomaly-calculation}
+refers to the perturbative local
 obstruction detected by \(H^{1,4}(s_{\rm BV}\mid\dd)\).  Global gauge
 anomalies, determinant-line topology, and finite background-anomaly phases are
 different objects; they are treated in
 Chapter~\ref{ch:volume-ii-21} and in the later chapters on
 invertible field theories and eta invariants.
+\end{remark}
 
 \section{Local Quantum Observables as a BV Factorization Algebra}
 \label{sec:bv-factorization-algebra-boundary}

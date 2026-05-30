@@ -188,6 +188,12 @@
   nonzero QME defect, Jacobi/consistency step, counterterm shift, BV--BRST
   comparison, descent from \(I_6\), and the local cohomology theorem that
   identifies the cubic invariant tensor as the obstruction.
+- 2026-05-30 issue #696 dequote pass: converted the ghost-number-one anomaly
+  calculation from `quotedtheorem` to a local proposition with proof from the
+  first nonzero QME defect, relative BV cohomology, BV--BRST comparison, and
+  descent from \(\frac{\ii}{24\pi^2}\operatorname{Tr}_R(\mathsf F^3)\).  A
+  separate scope remark now distinguishes this perturbative local obstruction
+  from global determinant-line and eta-invariant anomaly phases.
 - The local-observable side of perturbative BV is expressed as a regulated
   prefactorization algebra \(U\mapsto\operatorname{Obs}_\Lambda(U)\).  The
   QME implies \(Q_\Lambda^2=0\), disjoint-support products are cochain maps,

@@ -37,3 +37,22 @@ This pass improves #696 but does not close it.  The monograph still needs
 deeper local derivations for finite \(SU(2)\) global anomaly phases, WZW level
 matching, determinant/Pfaffian-line holonomies, APS/eta convention bridges,
 and any remaining anomaly-related quoted theorem boundaries.
+
+## Same-Day Dequote Continuation
+
+A later #696 pass converted both targets of this audit from `quotedtheorem`
+boundaries into local proposition/proof form:
+
+- the cubic gauge obstruction in Volume II, Chapter 20 is now proved from the
+  local descent of \(\operatorname{tr}_R(\mathsf F^3)\), counterterm
+  coboundary shifts, and the relative BRST cohomology classification of the
+  cubic gauge-anomaly class;
+- the BV ghost-number-one anomaly calculation in Volume II, Chapter 24 is now
+  proved from the first nonzero quantum-master-equation defect, the
+  relative-cocycle condition, local counterterm shifts, BV--BRST comparison,
+  and descent from
+  \(\frac{\ii}{24\pi^2}\operatorname{Tr}_R(\mathsf F^3)\).
+
+The remaining #696 boundary is no longer these two local perturbative anomaly
+claims; it is the pure index/eta/Pfaffian-line infrastructure and any
+remaining anomaly-related quoted theorem boundaries.

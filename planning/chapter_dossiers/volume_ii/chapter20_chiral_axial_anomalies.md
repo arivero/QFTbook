@@ -401,3 +401,8 @@
 - 2026-05-27 follow-up: added the theta-branch and cluster-decomposition
   datum, including thermodynamic branch selection and the exact covariance
   obstruction for mixed branch states.
+- 2026-05-30 issue #696 dequote pass: converted the cubic gauge obstruction
+  from a `quotedtheorem` to a local proposition with proof from the
+  perturbative BRST bicomplex, descent of
+  \(\operatorname{tr}_R(\mathsf F^3)\), local counterterm coboundaries, and
+  the relative cohomology classification of the cubic gauge-anomaly class.
