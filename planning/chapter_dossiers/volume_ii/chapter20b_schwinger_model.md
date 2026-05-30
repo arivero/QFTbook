@@ -74,3 +74,12 @@
   probe-charge conventions, and added `calculation-checks/schwinger_model_checks.py`
   for the current-duality, anomaly-plus-Maxwell mass, screening-potential,
   and massive-probe string-tension normalizations.
+- 2026-05-30 current-sector dequoting pass: replaced the quoted
+  bosonization theorem by a local theorem/proof for the gauge-invariant
+  derivative current algebra.  The proof fixes the normalization from the
+  Schwinger term, derives the exact current source functional by Hodge
+  decomposing the background one-form and removing the transverse source by
+  an axial rotation with the two-dimensional anomaly Jacobian, and matches the
+  result to the scalar Gaussian integral.  The compact period is stated as
+  vertex-sector data, not as something determined by derivative current
+  correlators alone.

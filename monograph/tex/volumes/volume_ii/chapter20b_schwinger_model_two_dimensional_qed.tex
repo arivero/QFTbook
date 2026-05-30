@@ -202,12 +202,12 @@ The conservation law for \(J^\mu\) implies locally that \(J^\mu\) is the
 Hodge dual of a derivative.  The normalization is not arbitrary; it is fixed
 by the current algebra of one Dirac fermion.
 
-\begin{quotedtheorem}[Current-sector bosonization]
-\label{qthm:schwinger-current-sector-bosonization}
+\begin{theorem}[Current-sector bosonization]
+\label{thm:schwinger-current-sector-bosonization}
   Let the free massless Dirac field be quantized in the vacuum sector with
   the current normalization \eqref{eq:schwinger-vector-axial-currents}.  The
-  gauge-invariant Abelian current subalgebra is represented by a compact
-  scalar field \(\varphi\) of period \(\sqrt\pi\), normalized by
+  gauge-invariant Abelian current subalgebra is represented by the derivative
+  algebra of a real scalar field \(\varphi\), normalized by
   \[
     \mathcal L_\varphi
     =
@@ -239,13 +239,18 @@ by the current algebra of one Dirac fermion.
     \right\}.
     \label{eq:schwinger-current-generating-functional}
   \end{equation}
-\end{quotedtheorem}
+  This is the Lorentzian continuation of the Euclidean current-generating
+  functional.  When the local
+  current algebra is extended by charge-one fermion vertex operators, the
+  scalar is compact with period \(\sqrt\pi\); this compactification data is
+  invisible to the derivative current algebra alone.
+\end{theorem}
 
-  The normalization check for the current sector, which is the part used in the
-  gauge theory, is as follows.  The equal-time commutator of the Dirac current,
-  defined by
-  gauge-invariant point splitting and with the vector Ward identity
-  preserved, is
+\begin{proof}
+The first step fixes the normalization independently of any path-integral
+argument.  The equal-time commutator of the Dirac current, defined by
+gauge-invariant point splitting and with the vector Ward identity preserved,
+is
   \begin{equation}
     [\widehat J^0(t,x),\widehat J^1(t,y)]
     =
@@ -264,14 +269,36 @@ by the current algebra of one Dirac fermion.
   \eqref{eq:schwinger-current-schwinger-term}.  Hence the coefficient in
   \eqref{eq:schwinger-bosonization-currents} is forced.
 
-  The remaining content of the quoted theorem is that this representation gives
-  all current correlators,
-  not only their equal-time central term.  Work first in Euclidean signature
-  and couple a real background one-form \(b_\mu\) to the conserved vector
-  current.  Gauge invariance of the source problem implies that the
-  generating functional depends only on the transverse part of \(b\), up to
-  local contact terms already fixed by the Ward identity.  The free Dirac
-  determinant gives the transverse quadratic functional
+It remains to prove that the same scalar gives all current correlators.  Work
+first in Euclidean signature on the plane, and couple a real Schwartz one-form
+\(b=b_\mu\dd x^\mu\) to the conserved vector current.  The Hodge decomposition
+on \(\R^2\) gives
+\[
+  b_\mu=\partial_\mu\lambda+\epsilon_{\mu\nu}\partial^\nu\rho,
+\]
+up to harmonic zero modes, which are absent for Schwartz sources.  The vector
+Ward identity removes the exact part \(\partial_\mu\lambda\), so the
+generating functional depends on \(\rho\) and on local contact conventions
+only.  The transverse coupling can be written as an axial pure gauge:
+\[
+  b_\mu J^\mu
+  =
+  \epsilon_{\mu\nu}\partial^\nu\rho\,J^\mu
+  =
+  -\partial_\mu\rho\,J_A^\mu,
+\]
+with the current convention
+\eqref{eq:schwinger-vector-axial-currents}.  A local axial rotation
+\(\psi\mapsto e^{\ii\rho\gamma_5}\psi\) removes this coupling from the free
+Dirac action.  The entire change of the determinant is the Fujikawa Jacobian
+for the same contact-term convention that gives
+\eqref{eq:schwinger-axial-anomaly}; in the present normalization,
+\[
+  \log\frac{Z_{\rm Dirac}[b]}{Z_{\rm Dirac}[0]}
+  =
+  -\frac1{2\pi}\int_{\R^2}\dd^2x\,\partial_\mu\rho\,\partial^\mu\rho .
+\]
+Equivalently, in momentum space,
   \begin{equation}
     W_E[b]
     =
@@ -282,34 +309,44 @@ by the current algebra of one Dirac fermion.
     b_\nu(p).
     \label{eq:schwinger-euclidean-current-functional}
   \end{equation}
-  The same expression is obtained by integrating out the Euclidean scalar in
-  the right side of \eqref{eq:schwinger-current-generating-functional},
-  because
+where \(Z_{\rm Dirac}[b]=\exp[-W_E[b]]Z_{\rm Dirac}[0]\).  This derivation is
+exact: after the source is removed by the axial rotation, there is no
+remaining interaction, and the anomaly Jacobian is quadratic in \(\rho\).
+
+The Euclidean scalar representative gives the same functional.  With action
+\[
+  S_E[\varphi;b]
+  =
+  \int\dd^2x
+  \left[
+    \frac12\partial_\mu\varphi\partial^\mu\varphi
+    -\frac{\ii}{\sqrt\pi}b_\mu\epsilon^{\mu\nu}\partial_\nu\varphi
+  \right],
+\]
+the Gaussian integral over \(\varphi\), modulo the constant zero mode, gives
+\eqref{eq:schwinger-euclidean-current-functional}, because
   \[
     \epsilon^{\mu\alpha}p_\alpha
     \epsilon^{\nu\beta}p_\beta
     =
     p^2\delta^{\mu\nu}-p^\mu p^\nu .
   \]
-  The Abelian current algebra of a free Dirac fermion is Gaussian: after the
-  current-current short-distance singularity is fixed, higher connected
-  current correlators have no independent singular tensor structure
-  compatible with current conservation and chirality.  Thus
-  \eqref{eq:schwinger-euclidean-current-functional} determines the current
-  sector.  Analytic continuation gives
-  \eqref{eq:schwinger-current-generating-functional}.  A complete proof also
-  constructs the compact charge lattice and the vertex-operator sectors; only
-  the gauge-invariant current subalgebra is used in the local Schwinger-model
-  calculations below.
+Functional differentiation of the identical Gaussian source functional gives
+all Euclidean current distributions, with the already fixed local contact
+terms.  Analytic continuation gives
+\eqref{eq:schwinger-current-generating-functional} and the Lorentzian current
+formula \eqref{eq:schwinger-bosonization-currents}.
 
-The scalar in this theorem is compact.  The derivative operators
-\(\partial_\mu\varphi\) describe the current algebra, while charged fermion
-operators require vertex operators.  With the present normalization the
-fermion mass operator is proportional to
-\(\cos(2\sqrt\pi\,\varphi)\); therefore
-\(\varphi\sim\varphi+\sqrt\pi\).  This compactness is invisible if one looks
-only at the local current \(\partial_\mu\varphi\), but it is essential for
-the charge lattice and for the massive deformation.
+The compact period is fixed only after adjoining charged fields.  A charge-one
+fermion operator is represented by a vertex operator whose monodromy with the
+current has unit charge; with the current normalization above, the fermion
+mass operator has the local representative
+\(\cos(2\sqrt\pi\,\varphi)\).  Single-valuedness of this local neutral
+operator gives \(\varphi\sim\varphi+\sqrt\pi\).  This compactification datum
+does not enter the local derivative current correlators, which are the only
+bosonization data used in the gauge-invariant Schwinger-model calculations
+below.
+\end{proof}
 
 \section{Exact Bosonized Gauge Theory}
 
