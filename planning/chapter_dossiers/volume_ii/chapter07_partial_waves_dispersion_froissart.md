@@ -504,9 +504,11 @@ hypotheses:
   of a Poisson generating function; the substantive warning is its restricted
   one-channel eikonal status, not a new theorem about general Reggeon
   diagrams.
-- 2026-05-30 quoted-theorem pass: expanded the Carlson half-plane uniqueness
-  boundary.  The theorem now states explicit strict exponential-type
-  hypotheses in the closed right half-plane and on the imaginary axis, and the
-  local exposition derives the uniqueness mechanism from the half-plane
-  Carleman--Jensen zero-density estimate, the integer-zero lower bound, and
-  the sharp \(\sin\pi J\) threshold.
+- 2026-05-30 Carlson dequoting pass: converted the Carlson half-plane
+  uniqueness input from `quotedtheorem` to a local theorem/proof.  The theorem
+  states explicit strict exponential-type hypotheses in the closed right
+  half-plane and on the imaginary axis, and the proof derives the uniqueness
+  mechanism from the half-plane Carleman--Jensen zero-density estimate, the
+  integer-zero lower bound, and the sharp \(\sin\pi J\) threshold.  The Regge
+  application remains explicitly conditional on existence of a complex-\(J\)
+  continuation in this growth class.

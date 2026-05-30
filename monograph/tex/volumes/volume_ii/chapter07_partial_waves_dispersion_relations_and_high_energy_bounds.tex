@@ -1064,8 +1064,8 @@ in the \(t\)-channel physical region.  The signature components are
   \tau=\pm1,\qquad u=4m^2-s-t .
 \]
 
-\begin{quotedtheorem}[Carlson uniqueness in the half-plane]
-\label{qthm:carlson-half-plane-uniqueness}
+\begin{theorem}[Carlson uniqueness in the half-plane]
+\label{thm:carlson-half-plane-uniqueness}
 Let \(F\) be holomorphic in \(\operatorname{Re}J>0\), continuous on
 \(\operatorname{Re}J\ge0\), and suppose that it has strict exponential type
 smaller than \(\pi\) in the closed right half-plane: there is a number
@@ -1089,9 +1089,9 @@ If
 then \(F\equiv0\) in the half-plane.  Equivalently, within this growth class
 the values on the nonnegative integers determine the holomorphic
 interpolation uniquely.
-\end{quotedtheorem}
+\end{theorem}
 
-\paragraph{Mechanism of Carlson uniqueness.}
+\begin{proof}
 The number \(\pi\) is the density threshold set by the model zero set
 \(\mathbb Z_{\ge0}\).  The Carleman--Jensen formula in the right half-plane
 turns the boundary exponential type into a bound on the logarithmic density of
@@ -1147,6 +1147,7 @@ positive integer, and the theorem follows.  The threshold is sharp:
 \(\sin\pi J\) vanishes at all integers and has type exactly \(\pi\) on the
 imaginary axis.  Thus the growth hypothesis is the datum that makes the
 complex-\(J\) interpolation unique.
+\end{proof}
 
 \paragraph{Carlson uniqueness application.}
 Fix \(t\) and a signature \(\tau\).  Suppose two proposed continuations
@@ -1154,7 +1155,7 @@ Fix \(t\) and a signature \(\tau\).  Suppose two proposed continuations
 sequence \(a_{\tau,\ell}(t)\) are holomorphic in a right half-plane after
 separating the same declared Regge-pole set, have the same pole principal
 parts there, and obey the Carlson growth class of
-Quoted Theorem~\ref{qthm:carlson-half-plane-uniqueness} on the pole-subtracted
+Theorem~\ref{thm:carlson-half-plane-uniqueness} on the pole-subtracted
 difference.  Then the two continuations agree in that half-plane.
 
 Subtract the common pole principal parts and define
@@ -1164,7 +1165,7 @@ Subtract the common pole principal parts and define
 The hypotheses make \(F\) holomorphic in the right half-plane and put it in
 the Carlson growth class.  Since both continuations reproduce the same
 integer-spin partial waves, \(F(n)=0\) for every \(n\in\mathbb Z_{\ge0}\).
-Quoted Theorem~\ref{qthm:carlson-half-plane-uniqueness} gives
+Theorem~\ref{thm:carlson-half-plane-uniqueness} gives
 \(F\equiv0\).  Adding back the common pole principal parts proves the claim.
 
 This uniqueness application has existence content only after a continuation
