@@ -223,31 +223,64 @@ By Lemma~\ref{lem:flat-ckv-conformal-factor-rigidity},
 for constants \(\lambda\) and \(c_\rho\), where the sign of \(c_\rho\) is
 chosen to match \eqref{eq:ckv-general-solution}.  Substituting this affine
 form in \eqref{eq:ckv-second-derivative-identity} gives
-\[
+\begin{equation}
   \partial_\mu\partial_\nu\epsilon_\rho
   =
   -2\delta_{\rho\nu}c_\mu
   -2\delta_{\rho\mu}c_\nu
   +2\delta_{\mu\nu}c_\rho ,
-\]
-so the second derivatives of \(\epsilon_\rho\) are constant and all third
-derivatives vanish.  Integrating twice gives a polynomial of degree at most
-two:
+  \label{eq:ckv-constant-hessian}
+\end{equation}
+The quadratic vector field
 \[
-  \epsilon_\rho(x)=a_\rho+B_{\rho\nu}x^\nu
-  +c_\rho x^2-2(c\cdot x)x_\rho .
+  q_\rho(x):=c_\rho x^2-2(c\cdot x)x_\rho
 \]
-The symmetric part of \(B_{\rho\nu}\) is fixed by the conformal Killing
-equation at the origin:
+has exactly the same Hessian,
+\[
+  \partial_\mu\partial_\nu q_\rho
+  =
+  -2\delta_{\rho\nu}c_\mu
+  -2\delta_{\rho\mu}c_\nu
+  +2\delta_{\mu\nu}c_\rho .
+\]
+Hence \(h_\rho:=\epsilon_\rho-q_\rho\) has vanishing second derivatives.  On
+a connected coordinate domain this means that each first derivative
+\(\partial_\nu h_\rho\) is a constant \(B_{\rho\nu}\), and integrating once
+more gives
+\begin{equation}
+  \epsilon_\rho(x)
+  =
+  a_\rho+B_{\rho\nu}x^\nu+c_\rho x^2-2(c\cdot x)x_\rho .
+  \label{eq:ckv-integrated-polynomial}
+\end{equation}
+This is the only integration step in the classification: the constant Hessian
+\eqref{eq:ckv-constant-hessian} leaves only the affine constants \(a_\rho\)
+and \(B_{\rho\nu}\) undetermined.
+
+It remains to impose the original first-order equation.  The special
+conformal quadratic part satisfies
+\[
+  \partial_\mu q_\nu+\partial_\nu q_\mu
+  =
+  -4(c\cdot x)\delta_{\mu\nu}.
+\]
+The constant term \(a_\rho\) contributes nothing.  Therefore the symmetric
+part of \(B_{\rho\nu}\) is fixed by the constant part of the conformal Killing
+equation:
 \[
   B_{\rho\nu}+B_{\nu\rho}=2\lambda\delta_{\rho\nu}.
 \]
 Writing \(B_{\rho\nu}=\omega_{\rho\nu}+\lambda\delta_{\rho\nu}\) with
 \(\omega_{\rho\nu}=-\omega_{\nu\rho}\) gives
-\eqref{eq:ckv-general-solution}.  Direct substitution verifies that the
-displayed vector fields solve \eqref{eq:conformal-killing-equation}.  The
-preceding integration shows that no other smooth local solutions exist in
-dimension \(D\ge3\).
+\eqref{eq:ckv-general-solution}.
+
+Conversely, translations and rotations have \(\sigma_\epsilon=0\), the
+dilatation term \(\lambda x^\mu\) has
+\(\sigma_\epsilon=\lambda\), and the quadratic term \(q^\mu\) has
+\(\sigma_\epsilon=-2c\cdot x\).  Their sum therefore solves
+\eqref{eq:conformal-killing-equation} with
+\(\sigma_\epsilon=\lambda-2c\cdot x\).  The integration above shows that
+there are no further smooth local solutions in dimension \(D\ge3\).
 \end{proof}
 
 \begin{definition}[Differential conformal generators]

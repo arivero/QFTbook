@@ -78,3 +78,8 @@ The chapter establishes:
   by spelling out the contravariant anti-involution, the radical-as-submodule
   argument, the cyclic Hilbert-sector qualification, and the finite-level Gram
   matrix positivity test.
+- 2026-05-30 proof-substance pass: kept the flat conformal Killing vector
+  classification as theorem-family material, but expanded the proof so the
+  integration from the constant Hessian to the quadratic polynomial, the
+  residual affine constants, the first-order constraint on the symmetric part
+  of \(B_{\mu\nu}\), and the converse substitution are all explicit.
