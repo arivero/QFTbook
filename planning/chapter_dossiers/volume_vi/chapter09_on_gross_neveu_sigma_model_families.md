@@ -40,6 +40,11 @@ symmetry.
 - Introduces the Gross-Neveu auxiliary-field representation and derives the
   large-`N` mass-gap equation with the explicit `N` factor in the fermion
   determinant.
+- Develops the model-specific nested-string source data for the `SU(N)` chiral
+  Gross-Neveu and principal-chiral families: one `A_{N-1}` auxiliary nest for
+  chiral Gross-Neveu, left/right doubled nests for the principal chiral model,
+  the inverse-Cartan root-count ledger, concrete `SU(3)` and `SU(4)` examples,
+  and the precise `N`-ality integrality obstruction.
 - States the matching conditions between asymptotically free UV data,
   factorized scattering, form factors, and TBA kernels.
 
@@ -49,6 +54,10 @@ symmetry.
   gamma-function scalar identity, channel unitarity, crossing relations,
   finite-dimensional Yang-Baxter component identity, and the large-`N` cutoff
   gap equation and beta-function algebra.
+- `calculation-checks/sigma_model_family_checks.py` verifies the `SU(N)`
+  sine-mass bootstrap identities, rational matrix block, gamma-function scalar
+  unitarity ledgers, and the exact `A_{N-1}` nested root-count and
+  principal-chiral left/right doubling formulas.
 
 ## Anti-Wrapper Audit
 

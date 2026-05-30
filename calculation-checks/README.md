@@ -956,9 +956,11 @@ Current checks:
   large-\(N\) projective induced-gauge polarization moments, Maxwell
   coefficient, and linear-potential coefficient, the \(SU(N)\)
   sine-mass/fusion-angle and rational-matrix bootstrap identities,
-  the elementary CDD-block identities, the \(SU(N)\) Gross--Neveu and
-  principal-chiral gamma-function scalar unitarity identities, the supersphere,
-  projective-supermodel, and orthosymplectic one-loop cancellations,
+  the \(A_{N-1}\) inverse-Cartan formula, nested root-count integrality, and
+  left/right principal-chiral doubling ledgers, the elementary CDD-block
+  identities, the \(SU(N)\) Gross--Neveu and principal-chiral gamma-function
+  scalar unitarity identities, the supersphere, projective-supermodel, and
+  orthosymplectic one-loop cancellations,
   the repulsive sausage charged scattering identities, the full triplet
   matrix unitarity and formal \(q,u,v\) Yang--Baxter component proof, the rational
   \(O(3)\) limit, and the sausage-metric scalar-curvature, Ricci-flow

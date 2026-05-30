@@ -6,17 +6,20 @@ normalization identities, the PCM Lax coefficient split, the
 Polyakov-Wiegmann WZ coefficient, WZW central charges and endpoint
 representation formulae, nonabelian-bosonization central-charge bookkeeping,
 the projective-model crossing tensors, the SU(N) sine-mass/fusion-angle and
-rational-matrix bootstrap blocks, the repulsive sausage charged scattering
-identities and formal Yang--Baxter component identity, the supertarget
-one-loop coefficients, and the curvature and one-loop Ricci-flow closure
-formulae for the sausage metric used in Volume VI.
+rational-matrix bootstrap blocks, the A_{N-1} inverse-Cartan and nested
+root-count ledgers for chiral Gross-Neveu and principal-chiral families, the
+repulsive sausage charged scattering identities and formal Yang--Baxter
+component identity, the supertarget one-loop coefficients, and the curvature
+and one-loop Ricci-flow closure formulae for the sausage metric used in
+Volume VI.
 """
 
 from __future__ import annotations
 
-import math
 from collections import defaultdict
 from fractions import Fraction
+from itertools import product
+import math
 
 import mpmath as mp
 import numpy as np
@@ -378,6 +381,130 @@ def check_su_n_rational_block() -> None:
             )
             ybe_error = np.max(np.abs(lhs - rhs))
             assert_close(f"SU(N) rational YBE N={n} theta={theta} phi={phi}", ybe_error, 0.0)
+
+
+def su_n_cartan(n: int) -> list[list[Fraction]]:
+    return [
+        [
+            Fraction(2 if r == s else -1 if abs(r - s) == 1 else 0)
+            for s in range(n - 1)
+        ]
+        for r in range(n - 1)
+    ]
+
+
+def su_n_inverse_cartan(n: int) -> list[list[Fraction]]:
+    return [
+        [
+            Fraction(min(r, s) * (n - max(r, s)), n)
+            for s in range(1, n)
+        ]
+        for r in range(1, n)
+    ]
+
+
+def fraction_matrix_vector(
+    matrix: list[list[Fraction]],
+    vector: tuple[int, ...] | list[int],
+) -> list[Fraction]:
+    return [
+        sum(row[column] * vector[column] for column in range(len(vector)))
+        for row in matrix
+    ]
+
+
+def fraction_matrix_product(
+    left: list[list[Fraction]],
+    right: list[list[Fraction]],
+) -> list[list[Fraction]]:
+    width = len(right[0])
+    inner = len(right)
+    return [
+        [
+            sum(left[row][k] * right[k][column] for k in range(inner))
+            for column in range(width)
+        ]
+        for row in range(len(left))
+    ]
+
+
+def su_n_nality(counts: tuple[int, ...] | list[int], n: int) -> int:
+    return sum((index + 1) * count for index, count in enumerate(counts)) % n
+
+
+def is_integral_vector(vector: list[Fraction]) -> bool:
+    return all(entry.denominator == 1 for entry in vector)
+
+
+def check_su_n_nested_root_count_ledgers() -> None:
+    for n in range(3, 9):
+        cartan = su_n_cartan(n)
+        inverse = su_n_inverse_cartan(n)
+        identity = [
+            [Fraction(1 if row == column else 0) for column in range(n - 1)]
+            for row in range(n - 1)
+        ]
+        assert_equal(
+            f"SU({n}) Cartan inverse",
+            fraction_matrix_product(cartan, inverse),
+            identity,
+        )
+
+        for counts in product(range(4), repeat=n - 1):
+            root_counts = fraction_matrix_vector(inverse, counts)
+            integral = is_integral_vector(root_counts)
+            assert_equal(
+                f"SU({n}) nested root integrality iff N-ality zero {counts}",
+                integral,
+                su_n_nality(counts, n) == 0,
+            )
+
+            right_counts = tuple(reversed(counts))
+            right_root_counts = fraction_matrix_vector(inverse, right_counts)
+            assert_equal(
+                f"PCM left/right singlet obstruction equivalence SU({n}) {counts}",
+                is_integral_vector(right_root_counts),
+                integral,
+            )
+            assert_equal(
+                f"PCM right N-ality is conjugate SU({n}) {counts}",
+                su_n_nality(right_counts, n),
+                (-su_n_nality(counts, n)) % n,
+            )
+
+    su3_inverse = su_n_inverse_cartan(3)
+    assert_equal(
+        "SU(3) V1 plus V2 root ledger",
+        fraction_matrix_vector(su3_inverse, (1, 1)),
+        [Fraction(1), Fraction(1)],
+    )
+    assert_equal(
+        "SU(3) three fundamentals root ledger",
+        fraction_matrix_vector(su3_inverse, (3, 0)),
+        [Fraction(2), Fraction(1)],
+    )
+    assert_equal(
+        "SU(3) one fundamental fractional ledger",
+        fraction_matrix_vector(su3_inverse, (1, 0)),
+        [Fraction(2, 3), Fraction(1, 3)],
+    )
+
+    su4_inverse = su_n_inverse_cartan(4)
+    assert_equal(
+        "SU(4) four fundamentals root ledger",
+        fraction_matrix_vector(su4_inverse, (4, 0, 0)),
+        [Fraction(3), Fraction(2), Fraction(1)],
+    )
+    assert_equal(
+        "SU(4) two rank-two particles root ledger",
+        fraction_matrix_vector(su4_inverse, (0, 2, 0)),
+        [Fraction(1), Fraction(2), Fraction(1)],
+    )
+    assert_equal(
+        "SU(4) PCM two rank-two right root ledger",
+        fraction_matrix_vector(su4_inverse, tuple(reversed((0, 2, 0)))),
+        [Fraction(1), Fraction(2), Fraction(1)],
+    )
 
 
 def cgn_a_scalar(theta: float, n: int) -> complex:
@@ -880,6 +1007,7 @@ def main() -> None:
     check_projective_large_n_induced_gauge_kernel()
     check_su_n_sine_mass_fusion()
     check_su_n_rational_block()
+    check_su_n_nested_root_count_ledgers()
     check_scalar_cdd_and_su_n_gamma_ledgers()
     check_supertarget_one_loop_ledgers()
     check_sausage_repulsive_smatrix_ledgers()

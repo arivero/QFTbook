@@ -1760,6 +1760,167 @@ local or graded-local fields, conserved currents, Haag--Ruelle scattering
 states, and the map between the regulator mass scale and the bootstrap mass
 coordinate.
 
+\section{Nested String Data for Gross--Neveu and PCM}
+\label{sec:su-n-gn-pcm-nested-string-data}
+
+The nested Bethe ansatz of
+Chapter~\ref{ch:integrable-nested-tba-tq-separation-variables} becomes concrete
+only after the physical representation carried by each particle and the number
+of independent internal symmetry nests are specified.  For the \(SU(N)\) chiral
+Gross--Neveu family there is one \(A_{N-1}\) nest.  For the \(SU(N)\) principal
+chiral model there are two nests, one for \(SU(N)_L\) and one for \(SU(N)_R\).
+This distinction is not a cosmetic doubling: it is the finite-volume origin of
+the two rational blocks in
+\eqref{eq:pcm-fundamental-smatrix-matrix-part}.
+
+Let \(\alpha_r\), \(r=1,\ldots,N-1\), be the simple roots of \(A_{N-1}\), and let
+\(\omega_r\) be the fundamental weights, normalized by
+\(\langle\alpha_r^\vee,\omega_s\rangle=\delta_{rs}\).  Since \(A_{N-1}\) is
+simply laced,
+\begin{equation}
+  \alpha_r=\sum_{s=1}^{N-1} C_{rs}\omega_s,\qquad
+  C_{rs}=2\delta_{rs}-\delta_{r,s+1}-\delta_{r,s-1}.
+  \label{eq:su-n-cartan-fundamental-weight-basis}
+\end{equation}
+The inverse Cartan matrix is
+\begin{equation}
+  (C^{-1})_{rs}
+  =
+  \frac{\min(r,s)\bigl(N-\max(r,s)\bigr)}{N},
+  \qquad 1\le r,s\le N-1 .
+  \label{eq:su-n-inverse-cartan}
+\end{equation}
+The quotient of the weight lattice by the root lattice is
+\[
+  P_{\rm wt}/Q_{\rm rt}\cong \mathbb Z_N,\qquad
+  \omega_a\longmapsto a\pmod N .
+\]
+This is the center charge, or \(N\)-ality, of the corresponding
+antisymmetric-tensor representation \(V_a=\wedge^a\mathbb C^N\).
+
+\begin{lemma}[Nested root-count ledger]
+\label{lem:su-n-nested-root-count-ledger}
+Consider a finite-volume chiral Gross--Neveu multiparticle state containing
+\(M_a\) particles in \(V_a\), \(a=1,\ldots,N-1\).  In the algebraic nested Bethe
+ansatz, an auxiliary root of Dynkin color \(r\) lowers the total highest weight
+by \(\alpha_r\).  If \(m_r\) is the total number of auxiliary roots of color
+\(r\), counted with string length, then the Dynkin-label vector after nesting is
+\begin{equation}
+  \ell_s=M_s-\sum_{r=1}^{N-1} C_{rs}m_r,\qquad s=1,\ldots,N-1.
+  \label{eq:cgn-dynkin-label-root-count}
+\end{equation}
+Consequently a state in the trivial \(SU(N)\) representation must satisfy
+\begin{equation}
+  m_r=\sum_{s=1}^{N-1}(C^{-1})_{rs}M_s .
+  \label{eq:cgn-singlet-root-count}
+\end{equation}
+The vector on the right-hand side is integral if and only if
+\begin{equation}
+  \sum_{a=1}^{N-1}a\,M_a\equiv0\pmod N .
+  \label{eq:su-n-nality-zero-condition}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The reference tensor product has highest weight
+\(\Lambda_{\rm ref}=\sum_a M_a\omega_a\).  The nested creation operator of color
+\(r\) has Cartan weight \(-\alpha_r\): in the RTT presentation this follows
+from commuting the Cartan part of the monodromy through the off-diagonal entry
+that creates the root; in the representation-theoretic language it is exactly
+the elementary lowering by the simple root associated to the adjacent pair of
+colors in the \(A_{N-1}\) Dynkin diagram.  After \(m_r\) such roots, the total
+weight is
+\[
+  \Lambda_{\rm ref}-\sum_r m_r\alpha_r
+  =
+  \sum_s\left(M_s-\sum_r m_r C_{rs}\right)\omega_s,
+\]
+which is \eqref{eq:cgn-dynkin-label-root-count}.  Trivial representation forces
+all Dynkin labels to vanish, hence \(M=Cm\) and
+\eqref{eq:cgn-singlet-root-count}.
+
+It remains to identify when \(C^{-1}M\) is integral.  The equality
+\(\sum_sM_s\omega_s=\sum_rm_r\alpha_r\) with \(m_r\in\mathbb Z\) is precisely the
+condition that the reference weight lies in the root lattice \(Q_{\rm rt}\).
+For \(SU(N)\), the map \(P_{\rm wt}\to P_{\rm wt}/Q_{\rm rt}\cong\mathbb Z_N\)
+sends \(\omega_a\) to \(a\).  Therefore
+\(\sum_sM_s\omega_s\in Q_{\rm rt}\) exactly when
+\eqref{eq:su-n-nality-zero-condition} holds.  Since the simple roots form an
+integral basis of \(Q_{\rm rt}\), the coordinates \(m_r\) in the simple-root
+basis are then integers; conversely, integral \(m_r\) makes the weight a root
+lattice element and hence gives zero \(N\)-ality.
+\end{proof}
+
+The lemma is only a weight-space ledger.  It does not replace the Bethe
+equations, the string hypothesis, or a proof that a particular solution exists.
+It does, however, fix the source vector and the number of nests before any TBA
+kernel is written.  If \(M_{r,k}^{\rm aux}\) is the number of auxiliary strings
+of Dynkin color \(r\) and length \(k\), then
+\begin{equation}
+  m_r=\sum_{k\ge1}k\,M_{r,k}^{\rm aux}.
+  \label{eq:nested-string-length-root-count}
+\end{equation}
+Thus the thermodynamic limit replaces \(M_a/L\) by physical particle densities
+and \(M_{r,k}^{\rm aux}/L\) by auxiliary string densities, while preserving the
+Cartan ledger
+\[
+  \frac{M_s}{L}-\sum_{r,k}k\,C_{rs}\frac{M_{r,k}^{\rm aux}}{L}
+  \longrightarrow \ell_s/L .
+\]
+The energy and momentum driving terms come only from the physical particles:
+\begin{equation}
+  E=\sum_{a=1}^{N-1}\sum_{j=1}^{M_a}m_a\cosh\theta_{a,j},\qquad
+  P=\sum_{a=1}^{N-1}\sum_{j=1}^{M_a}m_a\sinh\theta_{a,j},
+  \label{eq:cgn-pcm-physical-driving-terms}
+\end{equation}
+with \(m_a\) given in \eqref{eq:su-n-sine-mass-spectrum}.  Auxiliary strings
+carry no independent relativistic energy; they encode internal polarization and
+enter the TBA through the logarithmic derivatives of the rational matrix
+blocks and their fused descendants.
+
+\paragraph{Worked chiral Gross--Neveu ledgers.}
+For \(SU(3)\),
+\[
+  C^{-1}=\frac13
+  \begin{pmatrix}2&1\\1&2\end{pmatrix}.
+\]
+One \(V_1\) particle and one \(V_2\) particle have \(M=(1,1)\), zero
+\(N\)-ality, and require \(m=(1,1)\).  Three fundamental particles have
+\(M=(3,0)\) and require \(m=(2,1)\).  A single fundamental particle has
+\(M=(1,0)\), nonzero \(N\)-ality, and \(C^{-1}M=(2/3,1/3)\), so it cannot be a
+singlet-sector Bethe state.  For \(SU(4)\), four fundamentals have
+\(m=(3,2,1)\), while two rank-two particles have \(m=(1,2,1)\).  These numbers
+are the total color-root counts; for example, \(m=(3,2,1)\) may be refined into
+three length-one strings at node \(1\), two at node \(2\), and one at node \(3\),
+or into any string distribution whose length-weighted totals are the displayed
+integers and which solves the finite-volume Bethe equations.
+
+\paragraph{Principal-chiral doubling.}
+A rank-\(a\) principal-chiral particle transforms as
+\(V_a\otimes V_a^\ast\cong V_a\otimes V_{N-a}\) under
+\(SU(N)_L\times SU(N)_R\).  For a state with physical counts \(M_a\), the two
+source vectors are therefore
+\begin{equation}
+  M^L_s=M_s,\qquad M^R_s=M_{N-s},\qquad s=1,\ldots,N-1,
+  \label{eq:pcm-left-right-nested-sources}
+\end{equation}
+and a two-sided singlet ledger has
+\begin{equation}
+  m^L=C^{-1}M^L,\qquad m^R=C^{-1}M^R .
+  \label{eq:pcm-left-right-root-counts}
+\end{equation}
+The two integrality conditions are equivalent because
+\[
+  \sum_s sM^R_s=\sum_s sM_{N-s}\equiv-\sum_a aM_a\pmod N.
+\]
+Thus the PCM has the same center obstruction as the chiral Gross--Neveu
+family, but the auxiliary-string sector is doubled.  This is the finite-volume
+reason that the principal-chiral TBA has left and right magnonic towers attached
+to the same physical sine-law particles, whereas the chiral Gross--Neveu TBA
+has only one such tower.  The calculation companion verifies
+\eqref{eq:su-n-inverse-cartan}--\eqref{eq:pcm-left-right-root-counts} exactly
+for representative \(N\), including the \(SU(3)\) and \(SU(4)\) ledgers above.
+
 \section{Symmetric-Space and Deformed-Sphere Families}
 \label{sec:integrable-symmetric-super-sausage}
 
