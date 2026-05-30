@@ -11,6 +11,63 @@ topological weights, and distinct spectra of genuine line operators.  This
 chapter gives the cochain-level definitions needed for the four-dimensional
 gauge-theory applications in Volume IX.
 
+\begin{definition}[Discrete theta datum]
+\label{def:discrete-theta-datum}
+Fix a spacetime category \(\mathcal C_D\), for example closed oriented
+triangulated \(D\)-manifolds or closed spin \(D\)-manifolds with compatible
+triangulations.  A finite-cochain discrete theta datum is a tuple
+\[
+  \mathfrak d_{\mathrm{fin}}
+  =
+  (\mathcal C_D,A,q,[\omega],\omega_{\mathrm{loc}})
+\]
+where \(A\) is a finite abelian coefficient group for a \(q\)-form
+background, \([\omega]\) is a class in the appropriate group of local
+topological actions on \(B^{q+1}A\), and
+\(\omega_{\mathrm{loc}}(B)\in C^D(M,\mathbb R/\mathbb Z)\) is a natural
+cocycle representative for each flat background
+\[
+  B\in Z^{q+1}(M,A),\qquad B\sim B+\delta\Lambda .
+\]
+The exponentiated phase is
+\[
+  S_{\mathfrak d_{\mathrm{fin}}}[M,B]
+  =
+  \exp\left(2\pi\ii\int_M\omega_{\mathrm{loc}}(B)\right),
+\]
+and changing \(\omega_{\mathrm{loc}}\) by a natural coboundary gives the same
+closed-manifold phase.
+
+For a four-dimensional Yang--Mills theory with a fixed local Lie algebra,
+a global-form discrete theta datum additionally specifies
+\[
+  \mathfrak d_{\mathrm{YM}}
+  =
+  \bigl(
+    \mathfrak g,G,\mathcal B_G(M),w_2^\Gamma,
+    \theta,\tau_{\mathrm{disc}},L_{\mathrm{line}}
+  \bigr).
+\]
+Here \(G=\widetilde G/\Gamma\) is the chosen global form of the compact gauge
+group, \(\mathcal B_G(M)\) is the groupoid of principal \(G\)-bundles,
+\(w_2^\Gamma\) is the obstruction to lifting a \(G\)-bundle to a
+\(\widetilde G\)-bundle, \(\theta\) is the continuous theta coordinate,
+\(\tau_{\mathrm{disc}}\) is the finite topological weight assigned to the
+obstruction and any higher-form backgrounds, and \(L_{\mathrm{line}}\) is the
+maximal mutually local lattice of genuine Wilson--'t Hooft line charges.
+For \(G=SU(N)/\mathbb Z_k\) this last entry is denoted
+\[
+  L_{\mathrm{line}}=L_{N,k,p}
+  =
+  \langle (k,0),(p,N/k)\rangle
+  \subset \mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m},
+  \qquad p\in\mathbb Z_k .
+\]
+Thus a discrete theta coordinate is part of the global definition of the
+theory: it is not visible in perturbation theory around the trivial bundle,
+but it changes the bundle weights and the genuine line spectrum.
+\end{definition}
+
 \section{Finite Cochains And Topological Actions}
 
 Let \(M\) be a closed oriented triangulated \(D\)-manifold.  For an abelian
@@ -36,7 +93,8 @@ For a finite \(p\)-form symmetry or gauge field, the background is instead a
   B\sim B+\delta\Lambda,\quad \Lambda\in C^p(M,A).
 \]
 
-An exponentiated finite topological action is a function
+The finite-cochain part of Definition~\ref{def:discrete-theta-datum} is
+implemented by an exponentiated finite topological action, namely a function
 \[
   S_{\mathrm{top}}:Z^{p+1}(M,A)\longrightarrow U(1)
 \]
@@ -428,7 +486,9 @@ in \(D\) dimensions the cochain changes the definition of the theory, and in
 
 \section{Continuum Gauge-Theory Status}
 
-A continuum Yang--Mills theory with nontrivial global form is specified by:
+A continuum Yang--Mills theory with nontrivial global form is specified by the
+global-form discrete theta datum of Definition~\ref{def:discrete-theta-datum}.
+For the \(SU(N)/\mathbb Z_k\) family the entries are:
 \[
 \begin{array}{ll}
   \text{local data} &
