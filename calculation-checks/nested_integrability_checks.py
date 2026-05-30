@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import itertools
 import math
+from collections import defaultdict
 from collections.abc import Callable
+from fractions import Fraction
 
 
 I = 1j
@@ -206,12 +208,138 @@ def check_hirota_to_y_system() -> None:
     assert_close("Hirota local Y-system identity", lhs, rhs)
 
 
+Spin = int
+QoscState = tuple[int, Spin, Spin]
+QoscVector = dict[QoscState, Fraction]
+
+
+def add_fraction(out: defaultdict[QoscState, Fraction], state: QoscState, value: Fraction) -> None:
+    if value:
+        out[state] += value
+
+
+def qosc_lowering_coefficient(qparam: Fraction, level: int) -> Fraction:
+    return Fraction(1) - qparam ** (2 * level)
+
+
+def qosc_l_action(qparam: Fraction, spectral: Fraction, site: int, state: QoscState) -> QoscVector:
+    """Action of L_F^(+)(spectral) on oscillator level and one spin.
+
+    The spin labels are 0=+ and 1=-, and the matrix convention is
+
+        [[q^D, a], [-x a^dagger, q^{-D} + x q^{D+1}]].
+
+    This is an exact rational check for the component RLL convention used in
+    Volume VI, Chapter 5B.
+    """
+
+    level, spin_1, spin_2 = state
+    spin = spin_1 if site == 1 else spin_2
+    out: defaultdict[QoscState, Fraction] = defaultdict(Fraction)
+
+    def emit(new_level: int, new_spin: Spin, coefficient: Fraction) -> None:
+        if site == 1:
+            add_fraction(out, (new_level, new_spin, spin_2), coefficient)
+        else:
+            add_fraction(out, (new_level, spin_1, new_spin), coefficient)
+
+    if spin == 0:
+        emit(level, 0, qparam**level)
+        emit(level + 1, 1, -spectral)
+    else:
+        emit(level - 1, 0, qosc_lowering_coefficient(qparam, level))
+        emit(level, 1, qparam ** (-level) + spectral * qparam ** (level + 1))
+    return dict(out)
+
+
+def six_vertex_r_action(qparam: Fraction, ratio: Fraction, state: QoscState) -> QoscVector:
+    """Six-vertex R action in the chapter's q-oscillator normalization."""
+
+    level, spin_1, spin_2 = state
+    out: defaultdict[QoscState, Fraction] = defaultdict(Fraction)
+
+    entries: dict[tuple[tuple[Spin, Spin], tuple[Spin, Spin]], Fraction] = {
+        ((0, 0), (0, 0)): qparam + qparam**-1 * ratio,
+        ((1, 1), (1, 1)): qparam + qparam**-1 * ratio,
+        ((0, 1), (0, 1)): Fraction(1) + ratio,
+        ((1, 0), (1, 0)): Fraction(1) + ratio,
+        ((1, 0), (0, 1)): -(qparam - qparam**-1) * ratio,
+        ((0, 1), (1, 0)): qparam - qparam**-1,
+    }
+    for (out_spins, in_spins), coefficient in entries.items():
+        if in_spins == (spin_1, spin_2):
+            add_fraction(out, (level, out_spins[0], out_spins[1]), coefficient)
+    return dict(out)
+
+
+def apply_qosc_sequence(
+    vector: QoscVector,
+    actions: list[Callable[[QoscState], QoscVector]],
+) -> QoscVector:
+    current: defaultdict[QoscState, Fraction] = defaultdict(Fraction)
+    for state, coefficient in vector.items():
+        add_fraction(current, state, coefficient)
+    for action in actions:
+        nxt: defaultdict[QoscState, Fraction] = defaultdict(Fraction)
+        for state, coefficient in current.items():
+            for new_state, new_coefficient in action(state).items():
+                add_fraction(nxt, new_state, coefficient * new_coefficient)
+        current = nxt
+    return {state: value for state, value in current.items() if value}
+
+
+def check_qoscillator_l_operator_rll() -> None:
+    """Verify the trigonometric rank-one q-oscillator local RLL relation.
+
+    The exact identity checked is
+
+        R_12(-x/y) L_13(x) L_23(y) = L_23(y) L_13(x) R_12(-x/y)
+
+    on Fock levels n=0,...,5 and all four spin inputs.  Because the
+    coefficients are rational functions of q, x, and y and the text proves the
+    component formulas for an arbitrary level n, this exact finite-basis check
+    is a convention regression test rather than a replacement for the proof.
+    """
+
+    qparam = Fraction(37, 29)
+    x = Fraction(5, 11)
+    y = Fraction(7, 13)
+    ratio = -x / y
+
+    for level in range(6):
+        for spin_1, spin_2 in itertools.product((0, 1), repeat=2):
+            state = (level, spin_1, spin_2)
+            seed = {state: Fraction(1)}
+            lhs = apply_qosc_sequence(
+                seed,
+                [
+                    lambda st: six_vertex_r_action(qparam, ratio, st),
+                    lambda st: qosc_l_action(qparam, x, 1, st),
+                    lambda st: qosc_l_action(qparam, y, 2, st),
+                ],
+            )
+            rhs = apply_qosc_sequence(
+                seed,
+                [
+                    lambda st: qosc_l_action(qparam, y, 2, st),
+                    lambda st: qosc_l_action(qparam, x, 1, st),
+                    lambda st: six_vertex_r_action(qparam, ratio, st),
+                ],
+            )
+            if lhs != rhs:
+                raise AssertionError(
+                    f"q-oscillator RLL mismatch at level={level}, "
+                    f"spins={(spin_1, spin_2)}: {lhs!r} != {rhs!r}"
+                )
+
+
 def main() -> None:
     check_su3_worked_example()
     check_cartan_nested_formula()
     check_dressed_vacuum_pole_factorization()
     check_qq_system()
     check_hirota_to_y_system()
+    check_qoscillator_l_operator_rll()
     print("All nested-integrability calculation checks passed.")
 
 

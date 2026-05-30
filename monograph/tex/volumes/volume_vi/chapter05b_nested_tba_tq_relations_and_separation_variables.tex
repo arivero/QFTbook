@@ -476,6 +476,182 @@ On the Fock module \(\mathcal F=\bigoplus_{n\ge0}\C\ket n\),
   \mathsf a\ket n=(1-q^{2n})\ket{n-1},\qquad
   \mathsf a^\dagger\ket n=\ket{n+1}.
 \]
+This convention is related to the Borel \(q\)-oscillator generators
+\(\mathcal H,\mathcal E_\pm\) by
+\[
+  \mathcal H=2D,\qquad
+  \mathcal E_+=\frac{\mathsf a^\dagger}{q-q^{-1}},\qquad
+  \mathcal E_-=\frac{\mathsf a}{q-q^{-1}}.
+\]
+Indeed
+\begin{equation}
+  [\mathcal H,\mathcal E_\pm]=\pm 2\mathcal E_\pm,\qquad
+  q\mathcal E_+\mathcal E_-
+  -q^{-1}\mathcal E_-\mathcal E_+
+  =\frac{1}{q-q^{-1}},
+  \label{eq:qosc-borel-generators}
+\end{equation}
+where the second identity follows from
+\[
+  q\mathsf a^\dagger\mathsf a-q^{-1}\mathsf a\mathsf a^\dagger
+  =
+  q(1-q^{2D})-q^{-1}(1-q^{2D+2})
+  =q-q^{-1}.
+\]
+
+\paragraph{The local trigonometric \(q\)-oscillator \(L\)-operator.}
+Let \(V=\C e_+\oplus\C e_-\).  In the six-vertex normalization used in
+this paragraph, \(R(x)\in\operatorname{End}(V\otimes V)\) has non-zero entries
+\begin{align}
+  R^{++}_{++}(x)&=R^{--}_{--}(x)=q+q^{-1}x,&
+  R^{+-}_{+-}(x)&=R^{-+}_{-+}(x)=1+x,\nonumber\\
+  R^{+-}_{-+}(x)&=q-q^{-1},&
+  R^{-+}_{+-}(x)&=-(q-q^{-1})x .
+  \label{eq:qosc-six-vertex-r-normalization}
+\end{align}
+The q-oscillator auxiliary \(L\)-operator is the following element of
+\(\operatorname{End}(V\otimes\mathcal F)\), written as a \(2\times2\) matrix
+in the ordered basis \(e_+,e_-\):
+\begin{equation}
+  L_{\mathcal F}^{(+)}(x)=
+  \begin{pmatrix}
+    q^D&\mathsf a\\
+    -x\,\mathsf a^\dagger&q^{-D}+xq^{D+1}
+  \end{pmatrix}.
+  \label{eq:qosc-l-operator-plus}
+\end{equation}
+Equivalently, before choosing the Fock realization,
+\begin{align}
+  L_{\mathcal F}^{(+)}(x)
+  &=
+  q^{\mathcal H\otimes\sigma^z/2}
+  +(q-q^{-1})(\mathcal E_-\otimes\sigma^+
+      -x\mathcal E_+\otimes\sigma^-)
+  \nonumber\\
+  &\quad
+  +x(q-q^{-1})q^{-\mathcal H/2}
+  (\mathcal E_+\mathcal E_--\mathcal E_-\mathcal E_+)
+  \otimes\sigma^-\sigma^+ ,
+  \label{eq:qosc-l-operator-borel-form}
+\end{align}
+with \(\sigma^z e_\pm=\pm e_\pm\), \(\sigma^+e_-=e_+\),
+\(\sigma^-e_+=e_-\).  Substituting
+\eqref{eq:qosc-borel-generators} gives
+\eqref{eq:qosc-l-operator-plus}; the bottom-right entry uses
+\[
+  \mathcal E_+\mathcal E_- - \mathcal E_-\mathcal E_+
+  =
+  \frac{q^{2D+1}}{q-q^{-1}}.
+\]
+
+\begin{proposition}[Local \(q\)-oscillator RLL identity]
+\label{prop:qosc-local-rll-identity}
+For \(q\in\C^\times\) not a root of unity, the operators
+\eqref{eq:qosc-six-vertex-r-normalization} and
+\eqref{eq:qosc-l-operator-plus} satisfy
+\begin{equation}
+  R_{12}(-x/y)\,
+  L^{(+)}_{\mathcal F,13}(x)\,
+  L^{(+)}_{\mathcal F,23}(y)
+  =
+  L^{(+)}_{\mathcal F,23}(y)\,
+  L^{(+)}_{\mathcal F,13}(x)\,
+  R_{12}(-x/y)
+  \label{eq:qosc-local-rll}
+\end{equation}
+as an identity in
+\(\operatorname{End}(V\otimes V\otimes\mathcal F)\).
+\end{proposition}
+
+\begin{proof}
+Write \(N=q^D\).  The q-oscillator relations are
+\begin{equation}
+  N\mathsf a=q^{-1}\mathsf aN,\qquad
+  N\mathsf a^\dagger=q\mathsf a^\dagger N,\qquad
+  \mathsf a^\dagger\mathsf a=1-N^2,\qquad
+  \mathsf a\mathsf a^\dagger=1-q^2N^2 .
+  \label{eq:qosc-local-rll-relations}
+\end{equation}
+Both sides of \eqref{eq:qosc-local-rll} are finite sums of monomials in
+\(N^{\pm1},\mathsf a,\mathsf a^\dagger\).  Moving every \(N^{\pm1}\)
+to the middle and reducing every adjacent
+\(\mathsf a^\dagger\mathsf a\) and
+\(\mathsf a\mathsf a^\dagger\) by
+\eqref{eq:qosc-local-rll-relations} gives a normal form with at most one
+creation or annihilation operator on either side of a Laurent polynomial in
+\(N\).  Therefore it is enough to compare the four spin-input sectors
+\(e_{\epsilon_1}\otimes e_{\epsilon_2}\otimes\ket n\), \(n\ge0\).
+
+Let
+\begin{align*}
+  N_n&=q^n,&
+  \alpha_n&=1-q^{2n},&
+  A_n&=N_n^2-1,&
+  \Delta&=x-q^2y,\\
+  B_x&=N_n^2qx+1,&
+  B_y&=N_n^2qy+1,&
+  G_y&=N_n^2y+q .
+\end{align*}
+For the mixed sector below also write
+\begin{align*}
+  C_{+-}&=N_n^2q^2y^2-N_n^2xy-q^2xy-qx+qy+xy,\\
+  D_{+-}&=N_n^2q^3y-N_n^2qx+q^2+qx-qy-1 .
+\end{align*}
+In the sector \(e_+\otimes e_+\), both sides of
+\eqref{eq:qosc-local-rll} act as
+\begin{align}
+  e_+\otimes e_+\otimes\ket n
+  \mapsto\;&
+  -\frac{\Delta}{qy}N_n^2\,e_+\otimes e_+\otimes\ket n
+  +\frac{\Delta}{q}N_n\,e_+\otimes e_-\otimes\ket{n+1}
+  \nonumber\\
+  &+\frac{x\Delta}{y}N_n\,e_-\otimes e_+\otimes\ket{n+1}
+  -\frac{x\Delta}{q}\,e_-\otimes e_-\otimes\ket{n+2}.
+  \label{eq:qosc-rll-plus-plus-sector}
+\end{align}
+In the sector \(e_-\otimes e_-\), applying the same reductions gives
+\begin{align}
+  e_-\otimes e_-\otimes\ket n
+  \mapsto\;&
+  \frac{(q-N_n)(N_n+q)A_n\Delta}{q^3y}\,
+    e_+\otimes e_+\otimes\ket{n-2}
+  +\frac{A_nG_y\Delta}{qN_ny}\,
+    e_+\otimes e_-\otimes\ket{n-1}
+  \nonumber\\
+  &+\frac{A_n\Delta B_x}{qN_ny}\,
+    e_-\otimes e_+\otimes\ket{n-1}
+  -\frac{\Delta B_xB_y}{qN_n^2y}\,
+    e_-\otimes e_-\otimes\ket n .
+  \label{eq:qosc-rll-minus-minus-sector}
+\end{align}
+The terms with \(\ket{n-1}\) or \(\ket{n-2}\) vanish automatically when
+the displayed ket is outside the Fock module, because
+\(\alpha_0=0\).  The mixed sectors are the only places where the
+off-diagonal six-vertex weights enter.  For \(e_+\otimes e_-\), both sides
+give
+\begin{align}
+  &-\frac{\Delta\alpha_nN_n}{q^2y}\,
+    e_+\otimes e_+\otimes\ket{n-1}
+  +\frac{C_{+-}}{qy}\,
+    e_+\otimes e_-\otimes\ket n
+  \nonumber\\
+  &\quad
+  +\frac{xD_{+-}}{qy}\,
+    e_-\otimes e_+\otimes\ket n
+  +\frac{x\Delta B_y}{qN_ny}\,
+    e_-\otimes e_-\otimes\ket{n+1}.
+  \label{eq:qosc-rll-plus-minus-sector}
+\end{align}
+The \(e_-\otimes e_+\) formula is obtained from
+\eqref{eq:qosc-rll-plus-minus-sector} by interchanging
+\((x,e_1)\leftrightarrow(y,e_2)\) together with the asymmetric
+normalization of \(R^{-+}_{+-}\) in
+\eqref{eq:qosc-six-vertex-r-normalization}; the resulting coefficients
+are exactly those obtained by expanding the two sides.  These four sector
+computations exhaust the basis of \(V\otimes V\otimes\mathcal F\), hence
+\eqref{eq:qosc-local-rll} follows.
+\end{proof}
+
 The regularized trace is first defined by
 \[
   \operatorname{Tr}^{\rm reg}_{\mathcal F}(X)
@@ -484,13 +660,13 @@ The regularized trace is first defined by
   \qquad |z|<1,
 \]
 whenever the meromorphic continuation exists and is finite after the scalar
-normalization of the \(Q\)-operator has been fixed.  The q-oscillator
-\(L\)-operator is the image of the same six-vertex RTT algebra in this Fock
-module; verifying the construction means checking three concrete statements:
-the mixed RTT relation, cyclicity of the regularized trace on the monodromy
-products, and the short exact sequence
-\eqref{eq:q-operator-short-exact-sequence}.  Once these are checked, the
-operator identity \eqref{eq:operator-tq-from-exact-sequence} is a theorem of
+normalization of the \(Q\)-operator has been fixed.  Proposition
+\ref{prop:qosc-local-rll-identity} supplies the local algebraic input for
+the trigonometric rank-one \(Q\)-operator.  The remaining analytic inputs
+are separate: cyclicity of the regularized trace on the monodromy products
+and the short exact sequence \eqref{eq:q-operator-short-exact-sequence}.
+Once these are checked, the operator identity
+\eqref{eq:operator-tq-from-exact-sequence} is a consequence of
 block-triangular algebra plus the stated trace regularization.  The
 eigenvalue statement used in this chapter is the consequence of this
 construction, not its replacement.

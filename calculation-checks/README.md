@@ -804,6 +804,12 @@ Current checks:
   Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
   \(L=4,6,8\), an \(SU(3)\) nested-root solution, and Baxter \(TQ\)
   pole-cancellation.
+- `nested_integrability_checks.py`: exact and finite checks for the Volume VI
+  nested-integrability chapters, including the \(SU(3)\) worked nested-root
+  solution, Cartan-matrix nested Bethe equations, dressed-vacuum pole
+  factorization, determinant QQ and Hirota-to-Y algebra, and the
+  trigonometric rank-one q-oscillator local RLL identity in the chapter's
+  six-vertex normalization.
 - `planar_n4_integrability_checks.py`: finite checks for the Volume VII
   planar \(\mathcal N=4\) SYM integrability chapters, including cyclic
   one-loop Konishi Bethe roots, one-magnon XXX spectra, exact two-magnon BMN
