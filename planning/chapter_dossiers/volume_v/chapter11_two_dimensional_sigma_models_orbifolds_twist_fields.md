@@ -89,7 +89,7 @@
 - Derives the \(\mathcal N=(2,2)\) one-loop Kähler beta tensor
   `beta_{I Jbar}=alpha' R_{I Jbar}` from the Kähler Ricci formula as a worked
   specialization, and states higher-loop supersymmetric beta functions as a
-  quoted large-radius status boundary.
+  perturbative large-radius status remark rather than as a local theorem.
 - Defines even integral and unimodular lattices of signature
   \((n_L,n_R)\), lattice vertex operators, cocycle operators, and their
   conformal weights.
@@ -442,3 +442,9 @@
   genus ledger from proposition form to bookkeeping prose.  The finite tests
   for monodromy product, transitivity, and nonnegative integer genus remain
   explicit and paired with the existing calculation check.
+- 2026-05-30 pass: demoted the higher-loop supersymmetric sigma-model status
+  boundary and bosonic cigar spectrum status boundary from `quotedtheorem`
+  environments to remarks.  Both paragraphs record perturbative or
+  noncompact-spectrum status information; neither contains a locally proved
+  theorem, and the cigar spectrum statement explicitly depends on analytic
+  noncompact CFT data beyond the local coset stress tensor.
