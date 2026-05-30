@@ -1130,6 +1130,63 @@ whose coefficients are universal functions of the intersection form, the
 class \(\lambda\), the lift \(w\), and the degree of \(z\).
 \end{quotedtheorem}
 
+\paragraph{Mechanism of the link formula.}
+Let
+\[
+  \mathcal W
+  =
+  \{(t,A)\mid F_{A,g_t}^+=0\}/\mathcal G
+\]
+be the parameterized moduli problem for the metric path \(g_t\).  Away from
+reducibles and compactification strata, \(\mathcal W\) is the zero set of a
+Fredholm section whose index is one larger than the index of the fixed-metric
+ASD problem.  Truncate small neighborhoods of the reducible stratum and of the
+other Uhlenbeck boundary strata.  The resulting oriented space has boundary
+of the form
+\begin{equation}
+  \partial\mathcal W^{\rm tr}
+  =
+  \mathcal M_{+}
+  \sqcup
+  (-\mathcal M_{-})
+  \sqcup
+  \mathbb L_\lambda
+  \sqcup
+  \{\text{other compactification faces}\},
+  \label{eq:parameterized-wall-crossing-boundary}
+\end{equation}
+with the last faces absent or cancelled under the hypotheses of the theorem.
+The universal Donaldson class representing \(z\) extends over
+\(\mathcal W^{\rm tr}\) and is closed there.  Stokes' theorem therefore gives
+\[
+  0
+  =
+  \int_{\partial\mathcal W^{\rm tr}}\mu(z)
+  =
+  D_{X,+}^w(z)-D_{X,-}^w(z)
+  +\varepsilon_{\rm link}\int_{\mathbb L_\lambda}\mu_\lambda(z),
+\]
+which is \eqref{eq:donaldson-wall-crossing-link} after fixing the convention
+\(\varepsilon(\lambda)=-\varepsilon_{\rm link}\).  The sign is the orientation
+comparison between the outward normal of the deleted tubular neighborhood and
+the direction in which the period point crosses
+\(\langle\lambda,\omega\rangle=0\).
+
+The local model of the deleted neighborhood is obtained by decomposing the
+bundle near a reducible splitting
+\[
+  E=L\oplus(\det E\otimes L^{-1}).
+\]
+The diagonal part gives the Abelian stabilizer and the wall equation; the
+off-diagonal part gives the normal ASD complex.  Its finite-dimensional
+kernel, cokernel, and stabilizer quotient determine the link
+\(\mathbb L_\lambda\).  Restricting the universal \(\mu\)-classes to this
+normal model leaves only the intersection form, the wall class \(\lambda\), the
+lift \(w\), and the topological numbers entering the index.  This is the
+geometric reason that the right hand side can be written as the universal
+Kotschick-Morgan polynomial rather than as a new invariant attached to each
+metric path.
+
 This is the form of the wall-crossing theorem that is most useful for QFT.
 It identifies the jump with an actual boundary integral.  In BV language, the
 two chamber invariants are the two sides of a one-parameter family of

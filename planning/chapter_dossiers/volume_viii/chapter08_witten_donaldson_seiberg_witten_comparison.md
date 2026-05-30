@@ -70,10 +70,15 @@ gauge theory.
   and determinant-line phases.
 - Defines \(b_2^+=1\) chambers, reducible wall classes, the wall equation,
   the link form of Kotschick-Morgan wall crossing, and the BV boundary
-  interpretation of chamber jumps.  The 2026-05-29 continuing anti-wrapper
-  audit demoted the chamber-jump BV-boundary statement from proposition form
-  to conditional explanatory prose, since the mathematical work is carried by
-  the compactified parameterized moduli problem and Stokes theorem.
+  interpretation of chamber jumps.  The theorem-boundary mechanism now spells
+  out the parameterized moduli space, the truncated boundary
+  \(\mathcal M_+\sqcup(-\mathcal M_-)\sqcup\mathbb L_\lambda\), Stokes'
+  theorem for the extended \(\mu\)-class, and the reducible normal-complex
+  reason for the Kotschick-Morgan universal polynomial.  The 2026-05-29
+  continuing anti-wrapper audit demoted the chamber-jump BV-boundary statement
+  from proposition form to conditional explanatory prose, since the
+  mathematical work is carried by the compactified parameterized moduli problem
+  and Stokes theorem.
 - States the Witten simple-type comparison datum and separates the
   Donaldson structure theorem from the SW-identification/QFT RG problem.
 - Gives the normalization-sensitive \(u\)-plane integral data with
@@ -109,3 +114,8 @@ the Abelian monopole theory.
   approximation by low spectral modes, and separating the pure
   \(\operatorname{Pin}(2)\)-equivariant stable-homotopy input behind Furuta's
   inequality from the QFT comparison problem.
+- 2026-05-30 wall-crossing proof-boundary pass: expanded the link-form theorem
+  boundary by displaying the parameterized ASD moduli space and its truncated
+  boundary, deriving the chamber jump by Stokes' theorem, and identifying the
+  reducible splitting/off-diagonal normal complex as the source of the link
+  and the universal polynomial variables.
