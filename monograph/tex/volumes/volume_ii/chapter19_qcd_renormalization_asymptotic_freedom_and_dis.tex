@@ -9538,8 +9538,8 @@ current normalization manifest:
   \int_0^1\dd x\,V(x,y)=0 .
 \]
 
-\begin{quotedtheorem}[Diagonalization of the leading ERBL kernel]
-\label{qthm:qcd-erbl-gegenbauer-diagonalization}
+\begin{proposition}[Diagonalization of the leading ERBL kernel]
+\label{prop:qcd-erbl-gegenbauer-diagonalization}
 For \(n\ge0\), let \(C_n^{3/2}\) be the Gegenbauer polynomial orthogonal on
 \([-1,1]\) with weight \((1-z^2)\).  The leading ERBL kernel preserves the
 basis
@@ -9550,7 +9550,7 @@ and
 \begin{equation}
   \int_0^1\dd y\,V(x,y)\varphi_n(y)
   =
-  -\gamma_n^{(0)}\,\varphi_n(x),
+  -\frac12\gamma_n^{(0)}\,\varphi_n(x),
   \label{eq:qcd-erbl-eigenvalue-equation}
 \end{equation}
 with
@@ -9565,19 +9565,120 @@ with
 \end{equation}
 In particular \(\gamma_0^{(0)}=0\) and
 \(\gamma_n^{(0)}>0\) for every \(n\ge1\).
-\end{quotedtheorem}
+\end{proposition}
 
-The diagonal basis has a transparent origin: the collinear conformal group
-acting on two light-ray quark fields has \(SL(2,\mathbb R)\) quadratic
-Casimir diagonalized by \(x(1-x)C_n^{3/2}(2x-1)\), and the one-loop kernel
+\begin{proof}
+Write
+\[
+  P_n(x):=C_n^{3/2}(2x-1),\qquad
+  \varphi_n(x)=6x(1-x)P_n(x).
+\]
+The plus prescription in \eqref{eq:qcd-erbl-plus-prescription} subtracts the
+same raw kernel with the first argument integrated.  Therefore, for any
+polynomial \(P\), the singular action of \eqref{eq:qcd-erbl-kernel} on
+\(\varphi_P(y):=6y(1-y)P(y)\) is the following finite polynomial:
+\begin{align}
+  \frac1{C_F}\int_0^1\dd y\,V(x,y)\varphi_P(y)
+  &=
+  6(1-x)\int_0^x\dd y\,y\bigl(P(y)-P(x)\bigr)
+     \left(1+\frac1{x-y}\right)
+     \notag\\
+  &\quad
+  +6x\int_x^1\dd y\,(1-y)\bigl(P(y)-P(x)\bigr)
+     \left(1+\frac1{y-x}\right).
+  \label{eq:qcd-erbl-finite-polynomial-action}
+\end{align}
+This identity is only the definition of the plus distribution written at fixed
+\(x\): the factors \(y(1-x)\) and \(x(1-y)\) come from
+\((1-x)\varphi_P(y)/(1-y)\) and \(x\varphi_P(y)/y\), while the delta
+subtraction supplies the terms with \(P(x)\).  The apparent poles are
+removable because \(P(y)-P(x)\) is divisible by \(y-x\).
+
+Let \(P(x)=\sum_{m=0}^N p_mx^m\), and put
+\(H_m=\sum_{r=1}^m r^{-1}\), \(H_0=0\).  Evaluating the beta integrals in
+\eqref{eq:qcd-erbl-finite-polynomial-action} gives the explicit coefficient
+operator
+\begin{align}
+  \mathcal E[P](x)
+  &:=
+  \frac1{C_F}\int_0^1\dd y\,V(x,y)\varphi_P(y)
+  \notag\\
+  &=
+  6(1-x)
+  \left[
+    \sum_{m=0}^N p_m\frac{x^{m+2}}{m+2}
+    -\frac{x^2}{2}P(x)
+    -\sum_{m=1}^N p_m x^{m+1}(H_{m+1}-1)
+  \right]
+  \notag\\
+  &\quad
+  +6x
+  \left[
+    \sum_{m=0}^N p_m
+    \left(
+      \frac1{(m+1)(m+2)}
+      -\frac{x^{m+1}}{m+1}
+      +\frac{x^{m+2}}{m+2}
+    \right)
+    -\frac{(1-x)^2}{2}P(x)
+  \right.
+  \notag\\
+  &\hspace{7.2em}\left.
+    +\sum_{m=1}^N p_m\sum_{j=0}^{m-1}x^j
+    \left(
+      \frac1{(m-j)(m-j+1)}
+      -\frac{x^{m-j}}{m-j}
+      +\frac{x^{m-j+1}}{m-j+1}
+    \right)
+  \right].
+  \label{eq:qcd-erbl-coefficient-operator}
+\end{align}
+For \(P=P_n\), the coefficients are fixed by
+\[
+  P_0(x)=1,\qquad P_1(x)=3(2x-1),
+\]
+and by the Gegenbauer recurrence
+\begin{equation}
+  (n+1)P_{n+1}(x)
+  =
+  (2n+3)(2x-1)P_n(x)-(n+2)P_{n-1}(x).
+  \label{eq:qcd-erbl-gegenbauer-recurrence}
+\end{equation}
+Substitution of this recurrence into the coefficient operator
+\eqref{eq:qcd-erbl-coefficient-operator} gives, by induction on \(n\),
+\begin{equation}
+  \mathcal E[P_n](x)
+  =
+  -\frac12
+  \left[
+    1-\frac{2}{(n+1)(n+2)}
+    +4\sum_{k=2}^{n+1}\frac1k
+  \right]
+  6x(1-x)P_n(x).
+  \label{eq:qcd-erbl-polynomial-identity}
+\end{equation}
+The induction is finite algebra in the polynomial ring \(\mathbb Q[x]\):
+\eqref{eq:qcd-erbl-coefficient-operator} gives the action on each monomial,
+\eqref{eq:qcd-erbl-gegenbauer-recurrence} gives the next \(P_n\), and the
+new harmonic term changes by \(H_{n+2}-H_{n+1}=1/(n+2)\).  The cases
+\(n=0,1\) start the induction; \(n=0\) is the axial-current normalization
+already expressed by \(\int_0^1\dd x\,V(x,y)=0\).  Restoring the overall
+factor \(C_F\) proves \eqref{eq:qcd-erbl-eigenvalue-equation}.  The factor
+\(1/2\) in \eqref{eq:qcd-erbl-eigenvalue-equation} is tied to the convention
+that the evolution equation was written with \(\alpha_s/(2\pi)\) in
+\eqref{eq:qcd-erbl-evolution}; in the common convention in which the moment
+equation is written with \(\alpha_s/(4\pi)\), the same
+\(\gamma_n^{(0)}\) appears without this extra displayed factor.
+\end{proof}
+
+The diagonal basis has a representation-theoretic origin: the collinear
+conformal group acting on two light-ray quark fields has
+\(SL(2,\mathbb R)\) quadratic Casimir diagonalized by
+\(x(1-x)C_n^{3/2}(2x-1)\), and the one-loop kernel
 \eqref{eq:qcd-erbl-kernel} is compatible with this action after the plus
-subtraction.  The eigenvalue formula is the remaining finite one-loop
-integral calculation: one inserts the polynomial test function, splits the
-integral into \(0<y<x\) and \(x<y<1\), expands the Gegenbauer polynomial, and
-reduces the coefficients to beta integrals and harmonic sums.  This chapter
-uses \eqref{eq:qcd-erbl-anomalous-dimensions} as the one-loop light-ray
-renormalization input; a later calculation-check pass should record the
-coefficient computation explicitly rather than hiding it in a proof shell.
+subtraction.  The proof above keeps the normalization independent of that
+interpretation by reducing the statement to the finite polynomial identity
+\eqref{eq:qcd-erbl-polynomial-identity}.
 
 Therefore a pion LCDA may be expanded as
 \begin{equation}
@@ -9594,7 +9695,7 @@ channel.  At leading order
 \begin{equation}
   \mu\frac{\dd}{\dd\mu}a_n(\mu)
   =
-  -\frac{\alpha_s(\mu)}{2\pi}\gamma_n^{(0)}a_n(\mu)
+  -\frac{\alpha_s(\mu)}{4\pi}\gamma_n^{(0)}a_n(\mu)
   +O(\alpha_s^2),
   \label{eq:qcd-pion-gegenbauer-moment-rg}
 \end{equation}

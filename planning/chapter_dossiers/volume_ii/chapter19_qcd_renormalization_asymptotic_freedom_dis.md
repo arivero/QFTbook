@@ -691,3 +691,12 @@ The chapter must define and derive:
   partial-wave \(J^P\) rule to representation-theory prose and expanded the
   smeared energy-flow continuity lemma so the soft and collinear bounds are
   stated as continuity of finite-energy calorimetric measures.
+- 2026-05-30 quoted-theorem pass: replaced the leading ERBL diagonalization
+  quoted theorem by a proved proposition.  The pass corrected the eigenvalue
+  normalization for the kernel as written:
+  \(\int V\varphi_n=-(\gamma_n^{(0)}/2)\varphi_n\), so the Gegenbauer
+  moment equation uses \(\alpha_s/(4\pi)\gamma_n^{(0)}\).  The manuscript now
+  displays the finite plus-prescribed polynomial action and the coefficient
+  reduction to the Gegenbauer recurrence; `qcd_exclusive_pion_checks.py`
+  now verifies the exact kernel eigenvalue through the rational polynomial
+  action rather than checking only anomalous-dimension signs.

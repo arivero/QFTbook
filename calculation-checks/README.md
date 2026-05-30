@@ -131,7 +131,8 @@ Current checks:
   logarithmic Borel mass estimator as a spectral weighted average.
 - `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
   exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
-  normalization, Gegenbauer normalization moments, leading ERBL anomalous
+  normalization, Gegenbauer normalization moments, the plus-prescribed
+  leading ERBL kernel eigenvalue normalization, leading ERBL anomalous
   dimensions, and trace-delta versus half-trace conversion for the charged
   pion form-factor coefficient.
 - `thooft_model_checks.py`: exact rational checks for the Volume II
