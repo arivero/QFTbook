@@ -738,6 +738,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Fixed-order finiteness criterion for IRC-safe measurements"
     r"|Algebraic Yang--Baxter identity for the displayed sausage matrix"
     r"|Scheme equivalence for matched physical observables"
+    r"|Classical .*N_f=2.*SQCD quotient"
     r")\b",
     re.IGNORECASE,
 )

@@ -24,9 +24,9 @@ later lower-dimensional examples, protected sectors, and localization.
 - `Pf(V)`: Pfaffian
   \(V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}\) for the \(SU(2)\),
   \(N_f=2\) quotient.
-- `prop:su2-nf2-classical-plucker-quotient`: classical \(SU(2)\),
+- `eq:su2-nf2-classical-plucker-hypersurface`: classical \(SU(2)\),
   \(N_f=2\) SQCD quotient as the Pfaffian/Plucker hypersurface.
-- `prop:su2-nf2-quantum-deformation-algebra`: conditional algebraic
+- `lem:su2-nf2-quantum-deformation-algebra`: conditional algebraic
   consequences of the \(SU(2)\), \(N_f=2\) quantum deformation
   \(\operatorname{Pf}(V)=\Lambda_h^4\), including smoothness and the
   diagonal-mass two-vacuum check.
@@ -64,7 +64,7 @@ later lower-dimensional examples, protected sectors, and localization.
 - Records `N=1` SQCD branch behavior and `N=2` Coulomb/Higgs/mixed branch
   structures, while explicitly marking the SQCD table as an orientation
   ledger rather than a proof.
-- Proves the classical \(SU(2)\), \(N_f=2\) SQCD quotient
+- Derives the classical \(SU(2)\), \(N_f=2\) SQCD quotient
   \(\mathcal M_{\mathrm{ch},\mathrm{cl}}\simeq
   \{\operatorname{Pf}(V)=0\}\subset\bigwedge^2\mathbb C^4\), with explicit
   doublet coordinates, Pfaffian convention, converse reconstruction on a
@@ -100,3 +100,11 @@ later lower-dimensional examples, protected sectors, and localization.
 No figure is included in this pass.  Later figures should show the quotient
 construction, SQCD branch cases, and the `N=2` Coulomb branch with singular
 local models.
+
+## Audit Notes
+
+- 2026-05-30 anti-wrapper pass: demoted the classical \(SU(2)\), \(N_f=2\)
+  Pfaffian/Plucker quotient from proposition/proof form to derivation prose.
+  The invariant-theory calculation, converse chart, quotient dimension count,
+  and convention definitions are retained; theorem-family form is reserved
+  here for the conditional quantum-deformation algebra.
