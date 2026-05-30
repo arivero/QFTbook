@@ -13,7 +13,8 @@
 - KMS statement for the vacuum restricted to a wedge algebra.
 - Complex boost geometry: imaginary boost time sends right-wedge points into
   future/past tubes and imaginary angle \(\pi\) maps \(W_R\) to \(W_L\).
-- Bisognano--Wichmann theorem, marked as a `quotedtheorem` with hypotheses.
+- Bisognano--Wichmann theorem recorded as an external AQFT theorem boundary,
+  with the local proof obligation discharged in the free massive scalar model.
 - Self-contained free massive scalar wedge-KMS derivation for the polynomial
   wedge algebra, using tube analyticity and spacelike locality at imaginary
   boost angle \(\pi\).
@@ -35,8 +36,9 @@
 
 ## Claim Ledger
 
-1. The wedge-restricted vacuum is KMS for boosts under the quoted
-   Bisognano--Wichmann hypotheses.
+1. The general Bisognano--Wichmann theorem is identified as an external
+   structural theorem boundary; the chapter proves the wedge-restricted KMS
+   statement directly for the free massive scalar polynomial wedge algebra.
 2. The proper-time Unruh temperature is \(a/(2\pi)\).
 3. For the free massive scalar, the wedge two-point KMS relation is proved
    from the past-tube analyticity of \(\Delta_+^{(m)}\), complex boost
@@ -65,3 +67,8 @@
   corollary to prose.  The analytic theorem is the two-point strip/KMS result;
   the polynomial extension is the Wick expansion and termwise boundary-value
   calculation.
+- 2026-05-30 Bisognano--Wichmann dequote pass: removed the remaining general
+  `quotedtheorem` wrapper from the chapter.  The general AQFT result is now an
+  explicit theorem-boundary remark, and the chapter's proved content is the
+  free scalar wedge-KMS theorem with its tube-analyticity and locality
+  argument.
