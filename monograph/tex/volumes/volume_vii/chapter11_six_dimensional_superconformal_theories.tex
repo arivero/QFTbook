@@ -561,19 +561,91 @@ theory the charged strings on a generic tensor branch are labeled by roots,
 so \(q=\alpha\) gives \(T_\alpha=|\alpha(\phi)|\).
 \end{proof}
 
-The worldsheet theory of a BPS string carries anomalies determined by inflow
-from the bulk Green--Schwarz term.  If the string worldsheet is \(\Sigma\),
-the anomaly polynomial has the form
+\paragraph{Local anomaly inflow to a charged string.}
+Let \(\iota:\Sigma\hookrightarrow M_6\) be the oriented two-dimensional
+support of a string of charge \(q\).  Write \(N_\Sigma\) for its oriented
+rank-four normal bundle, and put
 \[
-  I_4(\Sigma,q)
-  =
-  q_I X_I^{(4)}
-  +
-  \frac12 q_I\Omega^{IJ}q_J\,\chi(N_\Sigma)
-  +\cdots ,
+  q^2=q_I\Omega^{IJ}q_J .
 \]
-where \(N_\Sigma\) is the normal bundle.  The omitted terms must be fixed by
-the chosen R-symmetry and tangent-bundle conventions, not by analogy.
+The charge convention is the one used in the tensor-branch coupling:
+the surface insertion contains the differential-cohomology holonomy
+\[
+  \exp\!\left(2\pi\ii\,q_I\int_\Sigma B^I\right).
+\]
+In a local background chart with \(X_I^{(4)}=dX_I^{(3)}\) and
+\(\delta X_I^{(3)}=dX_I^{(2)}\), Green--Schwarz gauge invariance is expressed
+by the local transformation
+\[
+  \delta B^I=-X_I^{(2)} .
+\]
+Consequently the charged insertion varies by
+\[
+  \delta\log W_q(\Sigma)
+  =
+  -2\pi\ii\int_\Sigma q_I\,\iota^\ast X_I^{(2)} .
+\]
+A two-dimensional quantum theory supported on \(\Sigma\) cancels this
+variation precisely when its anomaly polynomial contains the four-form
+\begin{equation}
+  I_{4,\rm lin}^{\Sigma}(q)
+  =
+  q_I\,\iota^\ast X_I^{(4)} .
+  \label{eq:six-d-string-linear-inflow}
+\end{equation}
+This is the linear inflow term.  It is not optional: it is the descent of the
+same \(B^I\wedge X_I^{(4)}\) coupling that appears in the six-dimensional
+Green--Schwarz matching equation.
+
+There is also a local normal-bundle inflow from the self-pairing of the
+tensor field sourced by the string.  It is best stated using the global
+angular-form regularization of a tubular neighborhood of \(\Sigma\).  Let
+\(S(N_\Sigma)\to\Sigma\) be the unit-sphere bundle of the normal bundle.  In
+the standard normalization the Chern--Simons form
+\(e_3^{(0)}(N_\Sigma)\) on this sphere bundle satisfies
+\[
+  de_3^{(0)}(N_\Sigma)=\pi^\ast e(N_\Sigma),
+  \qquad
+  \delta e_3^{(0)}(N_\Sigma)=d e_2^{(1)}(N_\Sigma),
+\]
+where \(e(N_\Sigma)\) is the Euler class of the rank-four normal bundle.
+Replacing the delta-current Poincare dual to \(\Sigma\) by the Thom form
+obtained from \(e_3^{(0)}\) gives a smooth representative of the sourced
+Bianchi identity near the support.  Substituting this representative into the
+quadratic tensor pairing produces, under a normal-bundle gauge
+transformation, the descent variation
+\[
+  2\pi\ii\int_\Sigma
+  \frac12\,q^2\,e_2^{(1)}(N_\Sigma).
+\]
+Equivalently the normal-bundle part of the inflow anomaly polynomial is
+\begin{equation}
+  I_{4,\rm norm}^{\Sigma}(q)
+  =
+  \frac12\,q_I\Omega^{IJ}q_J\,e(N_\Sigma).
+  \label{eq:six-d-string-normal-inflow}
+\end{equation}
+The coefficient \(1/2\) is the same symmetric-pairing coefficient as in the
+quadratic Green--Schwarz descent: the self-interaction of one sourced tensor
+field is counted once, while distinct charge components are paired
+symmetrically by \(\Omega^{IJ}\).
+
+Thus the bulk inflow polynomial for a string of charge \(q\), in these
+normalizations, is
+\begin{equation}
+  I_{4,\rm inflow}^{\Sigma}(q)
+  =
+  q_I\,\iota^\ast X_I^{(4)}
+  +
+  \frac12\,q_I\Omega^{IJ}q_J\,e(N_\Sigma).
+  \label{eq:six-d-bps-string-inflow-polynomial}
+\end{equation}
+The actual anomaly polynomial of the two-dimensional degrees of freedom
+supported on the string must cancel this inflow after adding its intrinsic
+fermion, boson, and zero-mode contributions.  Formula
+\eqref{eq:six-d-bps-string-inflow-polynomial} is therefore a local
+consistency condition on a proposed BPS-string sector, not a construction of
+that sector.
 
 \begin{remark}[What the BPS-string statement does and does not construct]
 The tension formula is a consequence of the supersymmetry algebra and

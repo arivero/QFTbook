@@ -80,8 +80,9 @@ Reviewed source spine:
   normalization is fixed.
 - Displays and derives the ADE arithmetic of the `(2,0)` anomaly coefficient,
   including the `A_{N-1}` cubic scaling.
-- Defines BPS string charges, tensions, and inflow data, including
-  root-lattice strings for `(2,0)` theories.
+- Defines BPS string charges, tensions, and local inflow data, including
+  root-lattice strings for `(2,0)` theories and the bulk inflow polynomial
+  `I_4 = q_I i^* X_I^(4) + (1/2) q_I Omega^{IJ} q_J e(N_Sigma)`.
 - Derives the BPS string tension from the tensor-branch central charge using
   positivity of the string-sector supercharge anticommutator and its
   \(\pm|Z_q|\) eigenvalues, and states explicitly that this does not
@@ -131,9 +132,10 @@ Reviewed source spine:
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.
-- Future passes should add line/surface defect categories, anomaly descent
-  calculations for BPS string two-dimensional supports, global forms/discrete
-  quotients of the `(2,0)` theories, and class-`S` anomaly reductions.
+- Future passes should add line/surface defect categories, intrinsic anomaly
+  computations for the two-dimensional theories supported on BPS strings,
+  global forms/discrete quotients of the `(2,0)` theories, and punctured or
+  irregular class-`S` anomaly reductions.
 
 ## Development Log
 
@@ -160,6 +162,10 @@ Reviewed source spine:
   anomaly-integration calculation, with the twist sign \(\eta\), surface Euler
   class \(t\), \(SO(2)_r\) Euler class \(x\), \(SO(3)_R\) Pontryagin class
   \(u\), and exact finite coefficient checks.
+- 2026-05-30 BPS-string inflow pass: replaced placeholder support-theory
+  anomaly language by a local derivation from the charged surface insertion,
+  Green-Schwarz descent, global-angular-form regularization of the tubular
+  neighborhood, and the normal-bundle Euler inflow coefficient.
 
 ## Figure Ledger
 
