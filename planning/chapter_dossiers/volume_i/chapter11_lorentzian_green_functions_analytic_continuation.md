@@ -190,9 +190,10 @@
   explicitly, and adding the distributional edge-of-the-wedge theorem with
   growth and boundary-agreement hypotheses.
 - 2026-05-30 issue #695/EOW status pass: made the theorem-boundary status of
-  the distributional edge-of-the-wedge theorem explicit.  It remains quoted as
-  pure analytic infrastructure, while the local QFT burden is identified as
-  spectral tube growth plus distributional boundary equality from locality.
+  the distributional edge-of-the-wedge theorem explicit.  The theorem is now
+  stated as local analytic infrastructure with its proof mechanism included in
+  the chapter; the local QFT burden is identified as spectral tube growth plus
+  distributional boundary equality from locality.
 - 2026-05-30 issue #695/EOW edge-equality pass: expanded the QFT-specific
   verification of the real-edge equality used by the distributional
   edge-of-the-wedge theorem.  The chapter now defines the spacelike open edge

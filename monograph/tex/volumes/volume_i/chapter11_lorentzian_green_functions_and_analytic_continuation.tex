@@ -390,7 +390,7 @@ Different operator orderings give holomorphic functions in corresponding
 permuted tubes.  Local commutativity identifies their boundary values on real
 regions where the exchanged neighboring points are spacelike separated.
 
-\begin{quotedtheorem}[Distributional edge-of-the-wedge statement used here]
+\begin{theorem}[Distributional edge-of-the-wedge statement used here]
 \label{thm:distributional-edge-of-the-wedge}
 Let \(U\subset\mathbb R^N\) be open, and let \(C_+\) and \(C_-\) be open
 convex cones in \(\mathbb R^N\) whose convex hull is all of
@@ -413,19 +413,21 @@ If \(b_+=b_-\) on a nonempty open real subset \(O\subset U\), then there is a
 connected complex neighborhood \(\mathcal N\) of \(O\) and a holomorphic
 function \(F\) on \(\mathcal N\) whose restrictions agree with \(F_+\) and
 \(F_-\) wherever the original tubes meet \(\mathcal N\).
-\end{quotedtheorem}
+\end{theorem}
 
-The quoted theorem is analytic infrastructure from several complex variables
-and distribution theory.  The convex-hull hypothesis is part of the
-full-neighborhood form of the theorem.  In the more general wedge theorem the
-continuation lies in the wedge with imaginary cone
+\begin{proof}
+This is analytic infrastructure from several complex variables and
+distribution theory; the proof is included here to make clear exactly which
+part is analytic and which part is supplied by Wightman locality.  The
+convex-hull hypothesis is part of the full-neighborhood form of the theorem.
+In the more general wedge theorem the continuation lies in the wedge with
+imaginary cone
 \(\operatorname{conv}(C_+\cup C_-)\); a genuine complex neighborhood of the
 real edge is obtained when this cone contains all imaginary directions.  The
 permuted Wightman tubes used at a Jost configuration supply precisely this
 two-sided normal data after restricting to the relevant spacelike edge.
 
-The proof has a specific shape.  First, the polynomial tube bounds make the
-boundary-value maps
+First, the polynomial tube bounds make the boundary-value maps
 \[
   F_\pm\longmapsto b_\pm
 \]
@@ -468,6 +470,7 @@ the connected neighborhood \(\mathcal N\).  The QFT-specific burden in this
 chapter is the verification of the two hypotheses that enter this analytic
 theorem: tube growth from the spectrum condition and equality of boundary
 distributions from local commutativity.
+\end{proof}
 
 \paragraph{Verification of the real-edge equality in the Wightman case.}
 Fix two adjacent field labels \(a,b\) and let \(O_{ab}\subset M^n\) be an open
