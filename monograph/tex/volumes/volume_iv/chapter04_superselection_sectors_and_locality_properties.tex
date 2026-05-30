@@ -1360,6 +1360,109 @@ replacement for saying that only finitely many independent localized states
 are visible below energy scale \(1/\beta\).  It is not an ultraviolet cutoff:
 it is a phase-space compactness estimate in the continuum theory.
 
+\paragraph{Free Fock phase-space benchmark.}
+The growth form in Definition~\ref{def:buchholz-wichmann-nuclearity-map} is
+visible already in the free bosonic Fock counting problem.  Let the spatial
+dimension be \(s=D-1\ge1\), put a scalar field of mass \(m>0\) in a spatial
+torus of side length \(L\), and write the one-particle energies as
+\[
+  \epsilon_n
+  =
+  \sqrt{\left(\frac{2\pi}{L}\right)^2|n|_2^2+m^2},
+  \qquad
+  n\in\mathbb Z^s .
+\]
+On the bosonic Fock space the finite-volume Hamiltonian is
+\(H_L=d\Gamma(h_L)\).  For finitely many one-particle modes with energies
+\(\epsilon_1,\ldots,\epsilon_M\), the occupation-number basis gives
+\[
+\begin{aligned}
+  \operatorname{Tr}_{\mathcal F_B}
+  \exp\!\left[-\beta\,d\Gamma(h_M)\right]
+  &=
+  \sum_{k_1,\ldots,k_M\ge0}
+  \exp\!\left[-\beta\sum_{j=1}^M k_j\epsilon_j\right]  \\
+  &=
+  \prod_{j=1}^M
+  \frac{1}{1-\ee^{-\beta\epsilon_j}} .
+\end{aligned}
+\]
+Passing to all torus modes is justified for \(\beta>0\) by convergence of
+\[
+  \log Z_B(\beta,L)
+  =
+  \sum_{n\in\mathbb Z^s}
+  f(\beta\epsilon_n),
+  \qquad
+  f(x):=-\log(1-\ee^{-x}) .
+\]
+Indeed \(f(x)\le C\ee^{-x/2}\) for large \(x\), while the number of lattice
+points with \(|n|_\infty=k\) is
+\[
+  N_s(k)=(2k+1)^s-(2k-1)^s
+  \le 2s(2k+1)^{s-1}.
+\]
+For \(n\ne0\),
+\[
+  \epsilon_n\ge \frac{2\pi}{L}|n|_\infty .
+\]
+Set \(\tau=2\pi\beta/L\).  The remaining estimate is elementary but it is
+important to separate the logarithmic singularity of \(f\) near the origin
+from its exponential decay at infinity.  For \(0<x\le1\),
+\[
+  f(x)\le C(1+|\log x|),
+\]
+while for \(x\ge1\),
+\[
+  f(x)\le C\ee^{-x/2}.
+\]
+Therefore, for \(0<\tau\le1\),
+\[
+  \sum_{1\le k\le \tau^{-1}}(1+k)^{s-1}f(\tau k)
+  \le
+  C_s \tau^{-s}
+  \int_0^1 u^{s-1}(1+|\log u|)\,\dd u ,
+\]
+and
+\[
+  \sum_{k> \tau^{-1}}(1+k)^{s-1}f(\tau k)
+  \le
+  C_s\sum_{k>\tau^{-1}} k^{s-1}\ee^{-\tau k/2}
+  \le
+  C'_s\tau^{-s}\int_1^\infty u^{s-1}\ee^{-u/2}\,\dd u .
+\]
+The two integrals are finite, so the nonzero-mode sum is bounded by
+\(C_s\tau^{-s}\).  Hence
+\[
+  \log Z_B(\beta,L)
+  \le
+  f(\beta m)
+  +
+  C_s\left(\frac{L}{2\pi\beta}\right)^s .
+\]
+Since \(s\ge1\), the zero-mode term \(f(\beta m)\sim\log(\beta^{-1})\) is
+absorbed into \(C_{s,m,L}\beta^{-s}\) on \(0<\beta\le1\).  Thus
+\begin{equation}
+  \log Z_B(\beta,L)
+  \le
+  C_{s,m,L}\,\beta^{-s},
+  \qquad 0<\beta\le1 .
+  \label{eq:free-fock-phase-space-growth}
+\end{equation}
+Equivalently,
+\[
+  Z_B(\beta,L)
+  \le
+  \exp(C_{s,m,L}\beta^{-s}) .
+\]
+The local nuclearity map replaces the global box trace by the localized map
+\(A\mapsto \ee^{-\beta H}A\Omega\).  The theorem below is precisely the
+operator-algebraic statement that a comparable phase-space estimate for
+localized vectors is strong enough to create a split inclusion between
+separated local algebras.  The free Fock calculation supplies the basic
+mode-counting scale; the local theorem requires the sharper localization and
+normality arguments described after the quoted theorem.
+
 \begin{quotedtheorem}[Phase-space consequences of nuclearity]
 \label{thm:nuclearity-split-type-iii-consequences}
 \emph{Proof references.}\footnote{The phase-space condition and split

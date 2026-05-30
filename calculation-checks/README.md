@@ -73,6 +73,10 @@ Current checks:
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,
   Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
   multiplicativity, and vanishing of the ordinary \(SU(2)\) cubic weight sum.
+- `free_fock_nuclearity_checks.py`: finite checks for the Volume IV
+  nuclearity phase-space benchmark, including the bosonic finite-mode product
+  formula, the sup-norm lattice shell count and derivative bound, and
+  finite-cutoff samples of the \(\beta^{D-1}\log Z_B\) scaling behavior.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including functorial composition of anomaly-line cocycles, local
   counterterm/frame changes of cocycle representatives, and the finite

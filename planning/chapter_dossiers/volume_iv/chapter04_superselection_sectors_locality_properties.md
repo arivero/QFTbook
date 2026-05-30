@@ -59,6 +59,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Works out trace-class Gibbs states as a finite/semifinite model for the
   KMS strip condition, while keeping the modular KMS theorem as the
   operator-algebraic statement relevant to type-III local QFT algebras.
+- Adds a free bosonic Fock phase-space benchmark for the
+  Buchholz--Wichmann nuclearity bound: the finite-volume occupation-number
+  product formula and lattice shell estimate give
+  \(\log Z_B(\beta,L)\le C\beta^{-(D-1)}\), clarifying the mode-counting
+  scale behind the local nuclearity map without replacing the split theorem.
 
 ## Figure Ledger
 
@@ -84,6 +89,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `calculation-checks/kms_foundation_checks.py` verifies the finite
   Gibbs-trace KMS strip boundary relation used as the trace-class model for
   Definition~\ref{def:kms-state}.
+- `calculation-checks/free_fock_nuclearity_checks.py` verifies the
+  finite-mode bosonic product formula, the sup-norm lattice shell count used
+  in the phase-space estimate, and finite-cutoff samples of the
+  \(\beta^{D-1}\log Z_B\) scaling bound.
 
 ## Audit Notes
 
@@ -168,3 +177,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   verification remains explicit, but theorem-family rank is reserved for the
   modular KMS property, where Tomita--Takesaki theory replaces trace
   cyclicity in type-III local algebras.
+- 2026-05-30 free Fock nuclearity benchmark pass: added the finite-volume
+  bosonic occupation-number product formula and shell-count estimate
+  \(\log Z_B\le C\beta^{-(D-1)}\) before the nuclearity/split quoted theorem,
+  with a paired calculation check.  The text explicitly keeps the local
+  split theorem as the operator-algebraic input beyond the global box trace.
