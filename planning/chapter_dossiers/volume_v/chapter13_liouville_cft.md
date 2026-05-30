@@ -92,6 +92,12 @@ boundaries rather than importing the appendix exposition.
   explicit pole locations \(h_{m,n}\) and identifies the residue-products
   whose normalization must be synchronized with the DOZZ and chiral-block
   conventions.
+- Expands the residue mechanism behind the elliptic recursion: the general
+  Gram-projector formula for block coefficients, Kac-determinant simple
+  zeros, singular-vector submodules of highest weight \(h_{m,n}+mn\),
+  rank-one Shapovalov inverse residues, fusion-polynomial factorization, the
+  conversion of the level shift to \((16q)^{mn}\), and the remaining analytic
+  Mittag-Leffler/convergence proof boundary.
 - Defines `Upsilon_b`, states the DOZZ formula as a `quotedtheorem`, and names
   the proof boundary.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
@@ -246,3 +252,7 @@ boundaries rather than importing the appendix exposition.
   appendix and boundary-state passage, tightened the probabilistic zero-mode
   normalization map, and added the reflection-phase extraction from the
   scattering-normalized DOZZ pole.
+- 2026-05-30 elliptic-recursion proof-boundary pass: added the Verma-module
+  residue mechanism behind Zamolodchikov recursion, separating the algebraic
+  Kac-determinant/null-vector content from the remaining analytic convergence
+  theorem boundary.
