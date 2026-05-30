@@ -610,6 +610,111 @@ where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
 \end{quotedtheorem}
 
+\begin{proposition}[Finite standard form of a faithful matrix state]
+\label{prop:finite-tomita-standard-form}
+Let \(K\simeq\mathbb C^n\), let
+\(\mathcal R=\mathcal B(K)\), and let
+\(\rho\in\mathcal B(K)\) be a positive definite matrix with
+\({\rm Tr}_K\rho=1\).  Put
+\[
+  \Hilb_{\rm HS}=\mathcal B(K),
+  \qquad
+  \langle X,Y\rangle_{\rm HS}={\rm Tr}_K(X^*Y),
+  \qquad
+  \pi(A)X=AX,
+  \qquad
+  \Omega=\rho^{1/2}.
+\]
+Then \(\Omega\) is cyclic and separating for \(\pi(\mathcal R)\).  The
+Tomita operator, modular conjugation, and modular operator are
+\begin{equation}
+  S(X)=\rho^{-1/2}X^*\rho^{1/2},
+  \qquad
+  J(X)=X^*,
+  \qquad
+  \Delta(X)=\rho X\rho^{-1}.
+  \label{eq:finite-standard-form-tomita-data}
+\end{equation}
+Consequently
+\[
+  J\pi(\mathcal R)J=\pi(\mathcal R)',
+  \qquad
+  \sigma_t(A)=\rho^{\ii t}A\rho^{-\ii t}.
+\]
+With the boundary-value convention used below for KMS states,
+\(F(t)=\omega(A\alpha_t(B))\) and
+\(F(t+\ii)=\omega(\alpha_t(B)A)\), the vector state
+\[
+  \omega(A)=\langle\Omega,\pi(A)\Omega\rangle_{\rm HS}
+  ={\rm Tr}_K(\rho A)
+\]
+is a \(1\)-KMS state for \(\alpha_t=\sigma_{-t}\).
+\end{proposition}
+
+\begin{proof}
+Every \(X\in\Hilb_{\rm HS}\) has the form
+\[
+  X=(X\rho^{-1/2})\Omega,
+\]
+so \(\Omega\) is cyclic.  If \(A\Omega=0\), then
+\(A\rho^{1/2}=0\), and invertibility of \(\rho^{1/2}\) gives \(A=0\);
+hence \(\Omega\) is separating.  For \(X=A\Omega\),
+\[
+  S(X)=S(A\rho^{1/2})=A^*\rho^{1/2}
+  =
+  \rho^{-1/2}X^*\rho^{1/2}.
+\]
+The Hilbert-Schmidt basis of matrix units diagonalizing \(\rho\) shows that
+\[
+  (J\Delta^{1/2})(X)
+  =
+  J(\rho^{1/2}X\rho^{-1/2})
+  =
+  \rho^{-1/2}X^*\rho^{1/2}=S(X),
+\]
+with \(J(X)=X^*\) and \(\Delta=L_\rho R_{\rho^{-1}}\), where \(L\) and
+\(R\) denote left and right multiplication.  The commutant of all left
+multiplications is the algebra of right multiplications, and
+\[
+  J\pi(A)J(X)=J(A X^*)=X A^*,
+\]
+so \(J\pi(\mathcal R)J=\pi(\mathcal R)'\).  Conjugating a left
+multiplication by \(\Delta^{\ii t}\) gives
+\[
+  \Delta^{\ii t}\pi(A)\Delta^{-\ii t}X
+  =
+  \rho^{\ii t}A\rho^{-\ii t}X,
+\]
+which is the displayed modular automorphism.
+
+For this boundary-value convention, define
+\[
+  F_{A,B}(z)
+  =
+  {\rm Tr}_K\!\left(\rho A\rho^{-\ii z}B\rho^{\ii z}\right),
+  \qquad 0\leq{\rm Im}\,z\leq1 .
+\]
+This is an entire finite sum after diagonalizing \(\rho\).  The lower
+boundary is \(F_{A,B}(t)=\omega(A\alpha_t(B))\).  At the upper boundary,
+using \(\alpha_t(B)=\rho^{-\ii t}B\rho^{\ii t}\) and cyclicity of the finite
+trace,
+\[
+\begin{aligned}
+  F_{A,B}(t+\ii)
+  &=
+  {\rm Tr}_K\!\left(\rho A\rho^{-\ii t+1}B\rho^{\ii t-1}\right)  \\
+  &=
+  {\rm Tr}_K\!\left(A\rho\rho^{-\ii t}B\rho^{\ii t}\right)
+  =
+  {\rm Tr}_K\!\left(\rho\alpha_t(B)A\right)
+  =
+  \omega(\alpha_t(B)A).
+\end{aligned}
+\]
+Thus \(\omega\) satisfies the \(1\)-KMS boundary condition for
+\(\alpha_t=\sigma_{-t}\).
+\end{proof}
+
 \paragraph{Proof mechanism and local role.}
 The theorem is a statement about a standard von Neumann algebra
 \((\mathcal R,\Hilb,\vac)\), where standard means that \(\vac\) is cyclic and

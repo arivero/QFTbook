@@ -21,6 +21,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `u`, `\rho`, `\mathcal F_{\rm alg}`: charged unitary, order-\(N\)
   localized automorphism, and crossed-product field core for the pointed
   invertible-sector example.
+- `\Hilb_{\rm HS}`, `\pi`, `S`, `J`, `\Delta`: finite Hilbert-Schmidt
+  standard-form model, left representation, Tomita operator, modular
+  conjugation, and modular operator.
 
 ## Claim Ledger
 
@@ -37,6 +40,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Constructs the finite pointed field-algebra core as a crossed product
   \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
   involution, gauge action, fixed algebra, and sector implementation.
+- Proves the finite-dimensional Tomita--Takesaki standard form for a faithful
+  matrix state, including cyclic/separating standardness, the explicit
+  Tomita polar decomposition, commutant identification, modular
+  automorphisms, and the sign relating modular flow to the chapter's KMS
+  convention.
 
 ## Figure Ledger
 
@@ -50,6 +58,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   reconstruction: tensor automorphisms form \(\mu_N\), the fixed-degree
   projection keeps exactly degree zero, and the crossed-product field core is
   associative with the stated involution and gauge-fixed algebra.
+- `calculation-checks/tomita_standard_form_checks.py` verifies the finite
+  matrix-algebra standard-form formulae: \(S=J\Delta^{1/2}\), modular
+  eigenvalues on matrix units, \(J L_A J=R_{A^*}\), modular automorphism by
+  density-matrix conjugation, and the KMS boundary relation for the inverse
+  modular flow in the chapter convention.
 
 ## Audit Notes
 
@@ -110,3 +123,6 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   now records the two-core \(S_0/F_0\) adjoint mechanism, the left Hilbert
   algebra multiplier route to modular invariance and \(J\mathcal R J\), and
   the relative-Tomita/standard-form mechanism behind Connes' cocycle relation.
+- 2026-05-30 finite standard-form pass: inserted a fully proved
+  finite-dimensional Tomita--Takesaki model for a faithful matrix state and
+  paired it with `tomita_standard_form_checks.py`.
