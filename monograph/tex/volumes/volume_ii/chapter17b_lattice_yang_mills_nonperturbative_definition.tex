@@ -901,15 +901,16 @@ The integer \(t\) is Euclidean time in lattice units.  The connected
 subtraction removes the vacuum term; without it the scalar \(0^{++}\) channel
 would be dominated by the identity.
 
-The generalized eigenvalue problem used to extract finite-volume energies
-from a correlator matrix is a general finite-regulator method, not a special
-property of pure Yang--Mills theory.  Its exact finite-state algebra, basis
-covariance, and residual criteria are developed in
-Section~\ref{sec:lattice-glueball-correlator-gevp}.  In the present chapter
-the Yang--Mills-specific content is the construction of gauge-invariant
-Wilson-loop source spaces, the cubic-group channel assignment, reflection
-positivity of the chosen lattice regulator, and the continuum/infinite-volume
-limit that turns finite-regulator energies into pure-glue spectral data.
+Equation~\eqref{eq:lattice-glueball-spectral-matrix} is the Yang--Mills
+datum needed here.  A finite-volume calculation must declare how the energies
+appearing in this spectral representation are estimated, but the estimator is
+not part of the definition of a glueball state.  The Yang--Mills-specific
+content is the construction of gauge-invariant Wilson-loop source spaces, the
+cubic-group channel assignment, reflection positivity of the chosen lattice
+regulator, and the continuum/infinite-volume limit that turns
+finite-regulator energies into pure-glue spectral data.  Correlator-matrix
+algebra and residual diagnostics are numerical-analysis data, not additional
+pure-Yang--Mills definitions.
 
 The continuum spin labels \(J^{PC}\) are recovered only after the cubic
 lattice irreducible representations have been compared across lattice
@@ -953,9 +954,9 @@ A pure-glue spectral continuum datum consists of:
   \item a reflection-positive lattice action and scaling trajectory;
   \item a basis of gauge-invariant operators in each cubic \(PC\) channel,
   together with smearing or blocking maps stated as regulator definitions;
-  \item finite-volume energies extracted from a declared correlator-matrix
-  method such as the GEVP of
-  Section~\ref{sec:lattice-glueball-correlator-gevp};
+  \item finite-volume energy estimates, with the estimator, time windows,
+  source-basis conditioning, and stability diagnostics declared as regulator
+  data;
   \item continuum and infinite-volume extrapolations of dimensionless ratios
   such as \(M_{J^{PC}}/\sqrt\sigma\) or \(M_{J^{PC}}/\Lambda_{\overline{\rm MS}}\);
   \item a systematic-error budget for excited-state contamination, volume

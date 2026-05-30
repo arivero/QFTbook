@@ -4566,8 +4566,9 @@ A QCD hadron spectral extraction setup consists of:
     \langle \mathcal O_A(t)\mathcal O_B^\dagger(0)\rangle
     -\langle \mathcal O_A\rangle\langle\mathcal O_B^\dagger\rangle ;
   \]
-  \item a finite-volume spectral extraction method, usually a generalized
-  eigenvalue problem for \(C(t)\);
+  \item a declared estimator of finite-volume color-singlet energies from the
+  transfer matrix or Euclidean correlators, including its source basis, fit
+  window, covariance treatment, and stability diagnostics;
   \item a map from finite-volume energies to infinite-volume observables:
   isolated stable masses for one-particle states, and scattering amplitudes or
   pole positions for resonances;
@@ -4642,31 +4643,22 @@ elasticity, locality, and regulator hypotheses.  In realistic QCD channels
 one must use the coupled-channel determinant version, because cubic symmetry
 mixes partial waves and inelastic thresholds are often nearby.
 
-\paragraph{Basis covariance and source interpretation.}
-The generalized eigenvalue problem and its basis covariance are general
-finite-regulator facts, developed in
-Section~\ref{sec:lattice-glueball-correlator-gevp}.  Applied to QCD
-spectroscopy, they say that the finite-volume energy estimates obtained from
-a controlled GEVP window are invariant under invertible changes of the
-interpolating-operator basis.  By contrast, an overlap statement such as
-``mostly two-hadron'', ``mostly hybrid'', or ``mostly glueball'' is invariant
-only after the source subspaces and the inner product used to project the
-overlap covector onto those subspaces have been specified.  This paragraph is
-therefore a QCD interpretation of the general GEVP machinery, not an
-independent spectroscopy formalism.
-
-For a finite-rank exact spectral representation
-\[
-  C(t)=Z\,\operatorname{diag}(\ee^{-E_1t},\ldots,\ee^{-E_mt})Z^\dagger,
-\]
-the overlap vector of state \(n\) is the \(n\)-th column of \(Z\).  Under a
-source-coordinate change it becomes \(RZ^{(n)}\).  Whether this vector is zero
-on a declared source subspace is coordinate invariant once the subspace is
-fixed.  A numerical fraction assigned to that subspace, however, requires a
-choice of positive form on the source space and a projection.  Different
-smearings, renormalization schemes, or source decompositions change that
-positive form and hence change the fraction without changing the extracted
-energy or pole data.
+\paragraph{Source coordinates and invariant output.}
+The QCD output of the preceding construction is not a preferred source basis.
+At finite regulator the invariant spectral data are the color-singlet
+transfer-matrix energies and their symmetry labels; after the continuum and
+infinite-volume limits they become stable masses, scattering amplitudes, or
+sheet-labeled pole data according to the channel.  Source-overlap phrases such
+as ``mostly two-hadron'', ``mostly hybrid'', or ``mostly glueball'' are
+coordinate statements about the chosen operator family.  They acquire
+unambiguous meaning only after the source subspaces in
+\eqref{eq:qcd-spectroscopy-source-decomposition}, their renormalization and
+smearing prescriptions, and the positive form used to compare overlap
+covectors have all been declared.  Changing these source coordinates can
+change the quoted overlap fractions without changing the finite-volume energy
+or the reconstructed pole.  This chapter therefore records the QCD-specific
+operators and the spectral or scattering quantity being extracted, while the
+finite-regulator estimator itself is part of the numerical methodology.
 
 \begin{remark}[Spectroscopic names as derived coordinates]
 \label{rem:qcd-spectroscopic-names-derived}
@@ -5489,9 +5481,9 @@ below is:
   by a finite operator-source family containing \(q\bar qF\) or Wilson-line
   operators.  The amplitude coordinate is pole data plus source-overlap and
   pole-motion coordinates.
-  The controlled route applies the general finite-volume GEVP method of
-  Section~\ref{sec:lattice-glueball-correlator-gevp}, then performs
-  finite-volume scattering reconstruction.
+  The controlled route supplies color-singlet finite-volume energies from the
+  declared source family and then performs finite-volume scattering
+  reconstruction.
 \end{enumerate}
 The entries are not model assignments.  They are instructions for which QCD
 operator sector, partial wave, analytic sheet, and reconstruction theorem must
@@ -6035,10 +6027,9 @@ amplitude.  The \(\Lambda(1405)\)-type channel has \(I=0\), \(S=-1\),
 statement is the sheet-labeled pole of
 Definition~\ref{def:qcd-baryon-meson-resonance-data}.  A finite-volume
 calculation supplies color-singlet energy levels through finite source-family
-correlators, often analyzed with the general GEVP method of
-Section~\ref{sec:lattice-glueball-correlator-gevp}; the pole information is
-then reconstructed only after a coupled-channel quantization condition and
-analytic continuation have been specified.  A dispersive
+correlators; the pole information is then reconstructed only after a
+coupled-channel quantization condition and analytic continuation have been
+specified.  A dispersive
 calculation supplies it through the corresponding analyticity and crossing
 assumptions.
 
@@ -7067,8 +7058,8 @@ The practical hierarchy of spectroscopic control is therefore:
   controlled extraction uses a matched NRQCD or pNRQCD Hamiltonian and
   lattice checks.
   \item Hybrids and glueballs are operator-overlap sectors and pole data; their
-  controlled extraction uses the general finite-volume GEVP method of
-  Section~\ref{sec:lattice-glueball-correlator-gevp}, large-\(N_c\), and
+  controlled extraction uses declared color-singlet source families,
+  finite-volume energies or scattering amplitudes, large-\(N_c\) scaling, and
   mixing analysis.
   \item Exotic near-threshold states are poles plus residues in coupled
   channels; their controlled extraction uses finite-volume coupled-channel

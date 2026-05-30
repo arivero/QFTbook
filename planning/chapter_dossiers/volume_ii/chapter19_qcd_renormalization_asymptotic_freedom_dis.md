@@ -712,3 +712,12 @@ The chapter must define and derive:
   figure so the gauge transporter is the open Wilson segment
   \(W[\lambda n,0]\).  The caption now states explicitly that this segment
   makes the bilocal quark operator gauge invariant.
+- 2026-05-30 specialized-method cleanup follow-up: verified that the QCD
+  spectroscopy section itself no longer exposes the finite-volume
+  correlator-matrix/GEVP machinery.  The chapter now keeps only the
+  QCD-specific operator families, finite-volume energies, stable-mass or
+  sheet-labeled pole outputs, and source-overlap coordinate status.  Mentions
+  of GEVP-style analysis were removed from the light-meson, baryon-resonance,
+  and spectroscopy-hierarchy paragraphs so that general numerical machinery is
+  not taught inside a specialized QCD discussion without a concrete extracted
+  QCD result.
