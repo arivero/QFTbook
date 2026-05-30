@@ -39,6 +39,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Anchors the Doplicher--Roberts compact-group output in a finite pointed
   sector calculation: tensor automorphisms of the fiber functor are characters
   and averaging over the reconstructed group projects to neutral degree.
+- Adds a finite nonabelian \(S_3\) diagnostic for the
+  Doplicher--Roberts/Tannakian output: the standard representation is
+  faithful, the character ring gives
+  \(V\otimes V\simeq 1\oplus\epsilon\oplus V\), and Haar averaging kills
+  nontrivial matrix coefficients rather than merely nonzero Abelian degree.
 - Constructs the finite pointed field-algebra core as a crossed product
   \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
   involution, gauge action, fixed algebra, and sector implementation.
@@ -65,8 +70,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `calculation-checks/dhr_dr_reconstruction_checks.py` verifies the finite
   pointed \(\mathbb Z/N\mathbb Z\) diagnostic for Doplicher--Roberts
   reconstruction: tensor automorphisms form \(\mu_N\), the fixed-degree
-  projection keeps exactly degree zero, and the crossed-product field core is
-  associative with the stated involution and gauge-fixed algebra.
+  projection keeps exactly degree zero, the crossed-product field core is
+  associative with the stated involution and gauge-fixed algebra, and the
+  finite nonabelian \(S_3\) diagnostic has the correct representation law,
+  faithful standard representation, character-ring tensor products, and
+  Haar projection onto the trivial isotypic part.
 - `calculation-checks/tomita_standard_form_checks.py` verifies the finite
   matrix-algebra standard-form formulae: \(S=J\Delta^{1/2}\), modular
   eigenvalues on matrix units, \(J L_A J=R_{A^*}\), modular automorphism by
@@ -100,6 +108,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   pointed diagnostic into an explicit \(\mathcal A\rtimes_\rho\mathbb Z_N\)
   field-core example and extended the calculation check to cover
   associativity, involution, and fixed-point projection.
+- 2026-05-30 nonabelian DR diagnostic pass: added an \(S_3\) representation
+  category check after the Doplicher--Roberts theorem boundary.  The new text
+  separates the finite visible calculation (faithful standard representation,
+  tensor-product character ring, Haar killing of nontrivial matrix
+  coefficients) from the deep Tannakian converse that every tensor natural
+  automorphism is evaluation at a group element.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost

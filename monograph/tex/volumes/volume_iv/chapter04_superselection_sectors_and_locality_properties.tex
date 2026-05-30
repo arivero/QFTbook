@@ -412,6 +412,79 @@ This computation functions as a finite-dimensional diagnostic for the theorem's
 output: the compact group is recovered from the tensor compatibility of the
 sector fiber functor, and invariants project precisely onto neutral degree.
 
+\paragraph{Finite nonabelian check of the fiber functor.}
+The compact-group output also has genuinely nonabelian content.  Take the
+finite nonabelian group \(S_3\).  Its irreducible representations are the
+trivial representation \(\mathbf 1\), the sign representation \(\epsilon\),
+and the two-dimensional standard representation \(V\).  With conjugacy
+classes ordered as
+\[
+  (e),\qquad (12),\qquad (123),
+\]
+their characters are
+\[
+\begin{array}{c|ccc}
+  & e & (12) & (123)\\ \hline
+  \mathbf 1 & 1 & 1 & 1\\
+  \epsilon & 1 & -1 & 1\\
+  V & 2 & 0 & -1 .
+\end{array}
+\]
+The inner product
+\[
+  \langle \chi,\psi\rangle_{S_3}
+  =
+  \frac16\sum_{g\in S_3}\chi(g)\overline{\psi(g)}
+\]
+gives the tensor-product rules
+\begin{equation}
+  \epsilon\otimes\epsilon\simeq \mathbf 1,
+  \qquad
+  \epsilon\otimes V\simeq V,
+  \qquad
+  V\otimes V\simeq \mathbf 1\oplus\epsilon\oplus V .
+  \label{eq:dr-s3-representation-ring}
+\end{equation}
+For each group element \(g\), evaluation gives a unitary tensor
+automorphism of the forgetful fiber functor
+\[
+  \omega_{\rm fib}:{\rm Rep}_{\rm fd}(S_3)\to{\rm Hilb}_{\rm fd},
+  \qquad
+  \eta_g(W)=D_W(g).
+\]
+Tensor compatibility is the identity
+\[
+  D_{W_1\otimes W_2}(g)=D_{W_1}(g)\otimes D_{W_2}(g),
+\]
+and naturality says that every intertwiner, in particular the projection
+maps realizing \eqref{eq:dr-s3-representation-ring}, commutes with
+\(\eta_g\).  The standard representation is faithful, so the six
+automorphisms \(\eta_g\) are distinct.  The converse statement, that every
+unitary tensor natural automorphism of the forgetful functor is evaluation at
+a unique \(g\in S_3\), is the finite Tannakian part of the
+Doplicher--Roberts theorem in this example.  The calculation above makes
+visible what the theorem reconstructs: a nonabelian group is encoded by the
+compatibility of the multiplet transformations with all fusion and
+intertwiner maps, not by an externally assigned charge label.
+
+The fixed-point projection is likewise representation-theoretic rather than
+degree-theoretic.  If a finite charged-field core decomposes into matrix
+coefficient spaces for irreducible \(S_3\)-representations, Haar averaging is
+\[
+  E_{S_3}(F)
+  =
+  \frac16\sum_{g\in S_3}\alpha_g(F).
+\]
+For a nontrivial irreducible representation \(W\), Schur orthogonality gives
+\[
+  \frac16\sum_{g\in S_3}D_W(g)_{ab}=0,
+\]
+whereas the trivial representation is fixed.  Thus averaging projects onto
+the \(\mathbf1\)-isotypic, observable part.  In the pointed
+\(\mathbb Z/N\mathbb Z\) model this projection is the elementary root-of-unity
+sum; in the nonabelian \(S_3\) model it is the vanishing of nontrivial matrix
+coefficients.
+
 \begin{example}[Pointed field algebra as a crossed product]
 \label{ex:dr-pointed-crossed-product-field-algebra}
 The same pointed category has an explicit charged-field algebra when the

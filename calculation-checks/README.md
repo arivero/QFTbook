@@ -61,6 +61,13 @@ Current checks:
   instanton indices, the Abelian \(T^4\) flux index, the six-form
   anomaly-polynomial coefficients, and the Dirac zero-mode selection-rule
   count.
+- `dhr_dr_reconstruction_checks.py`: finite algebra checks for the Volume IV
+  Doplicher--Roberts reconstruction discussion, including pointed
+  \(\mathbb Z/N\mathbb Z\) tensor automorphisms, root-of-unity fixed-degree
+  projection, crossed-product associativity and involution, and the
+  nonabelian \(S_3\) diagnostic for faithful standard representation,
+  character-ring tensor products, and Haar projection onto the trivial
+  isotypic part.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,
