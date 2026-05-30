@@ -394,6 +394,61 @@ check_degenerate_connection_shift(0.63, 1.40, 1.25, 1.10, 0.73)
 check_degenerate_connection_shift(0.70, 1.60, 1.30, 1.20, 0.73)
 
 
+def fzzt_one_point(alpha: float, b: float, s: float, mu: float) -> float:
+    Q = b + 1.0 / b
+    K = math.pi * mu * gamma_ratio(b * b)
+    return (
+        (2.0 / b)
+        * K ** ((Q - 2.0 * alpha) / (2.0 * b))
+        * math.gamma(2.0 * b * alpha - b * b)
+        * math.gamma(2.0 * alpha / b - 1.0 / (b * b) - 1.0)
+        * math.cosh((2.0 * alpha - Q) * math.pi * s)
+    )
+
+
+def check_fzzt_shift_ratios(alpha: float, b: float, s: float, mu: float) -> None:
+    Q = b + 1.0 / b
+    K = math.pi * mu * gamma_ratio(b * b)
+
+    direct_b = fzzt_one_point(alpha + b / 2.0, b, s, mu) / fzzt_one_point(
+        alpha - b / 2.0,
+        b,
+        s,
+        mu,
+    )
+    expected_b = (
+        K ** -1.0
+        * math.gamma(2.0 * b * alpha)
+        / math.gamma(2.0 * b * alpha - 2.0 * b * b)
+        * math.gamma(2.0 * alpha / b - 1.0 / (b * b))
+        / math.gamma(2.0 * alpha / b - 1.0 / (b * b) - 2.0)
+        * math.cosh(math.pi * s * (2.0 * alpha + b - Q))
+        / math.cosh(math.pi * s * (2.0 * alpha - b - Q))
+    )
+    require_close("FZZT b-shift ratio", direct_b, expected_b)
+
+    direct_dual = fzzt_one_point(
+        alpha + 1.0 / (2.0 * b),
+        b,
+        s,
+        mu,
+    ) / fzzt_one_point(alpha - 1.0 / (2.0 * b), b, s, mu)
+    expected_dual = (
+        K ** (-1.0 / (b * b))
+        * math.gamma(2.0 * b * alpha + 1.0 - b * b)
+        / math.gamma(2.0 * b * alpha - 1.0 - b * b)
+        * math.gamma(2.0 * alpha / b - 1.0)
+        / math.gamma(2.0 * alpha / b - 2.0 / (b * b) - 1.0)
+        * math.cosh(math.pi * s * (2.0 * alpha + 1.0 / b - Q))
+        / math.cosh(math.pi * s * (2.0 * alpha - 1.0 / b - Q))
+    )
+    require_close("FZZT b^{-1}-shift ratio", direct_dual, expected_dual)
+
+
+check_fzzt_shift_ratios(1.38, 0.63, 0.41, 0.73)
+check_fzzt_shift_ratios(1.64, 0.70, 0.29, 0.91)
+
+
 numerator_shift = (
     one_exp.scale(2)
     + t_exp.scale(2)
@@ -657,6 +712,6 @@ if raw_q_block[2] != g2_formula:
 
 print(
     "All Liouville BPZ, dual-BPZ, screening, dual-screening, "
-    "Virasoro-block through level three, connection-matrix, elliptic-q, "
-    "and DOZZ-shift checks passed."
+    "Virasoro-block through level three, connection-matrix, FZZT-shift, "
+    "elliptic-q, and DOZZ-shift checks passed."
 )

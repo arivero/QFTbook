@@ -1273,6 +1273,66 @@ Using \(\Gamma(1+x)=x\Gamma(x)\), the prefactor \(2/b\) changes
 \eqref{eq:fzzt-alpha-one-point} gives exactly
 \eqref{eq:fzzt-p-wavefunction}.
 
+\paragraph{Finite-difference checks of the FZZT representative.}
+The displayed one-point function represents the meromorphic solution selected
+by the boundary-bootstrap theorem.  The local constraints used later are the
+two shift equations coming from the bulk degenerate insertions \(V_{-b/2}\)
+and \(V_{-1/(2b)}\) in the presence of the boundary.  The complete derivation
+of the boundary connection coefficients belongs to the nonrational
+boundary-sewing theorem boundary.  Once those coefficients are fixed, the
+proposed one-point function can be checked directly.
+
+Put
+\[
+  K_b:=\pi\mu\,\gamma(b^2),
+  \qquad
+  \gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)}.
+\]
+For nonresonant \(\alpha\), meaning that no gamma factor below is evaluated at
+a pole and the denominator one-point functions are nonzero, the
+\(b\)-shift ratio obtained from \eqref{eq:fzzt-alpha-one-point} is
+\begin{equation}
+\begin{aligned}
+  \frac{U_s(\alpha+b/2)}{U_s(\alpha-b/2)}
+  &=
+  K_b^{-1}
+  \frac{\Gamma(2b\alpha)}
+       {\Gamma(2b\alpha-2b^2)}
+  \frac{\Gamma(2\alpha/b-b^{-2})}
+       {\Gamma(2\alpha/b-b^{-2}-2)}
+  \\
+  &\quad\times
+  \frac{\cosh\!\bigl(\pi s(2\alpha+b-Q)\bigr)}
+       {\cosh\!\bigl(\pi s(2\alpha-b-Q)\bigr)} .
+\end{aligned}
+  \label{eq:fzzt-b-shift-ratio}
+\end{equation}
+The dual degenerate insertion gives the independent \(b^{-1}\)-shift check,
+\begin{equation}
+\begin{aligned}
+  \frac{U_s(\alpha+1/(2b))}{U_s(\alpha-1/(2b))}
+  &=
+  K_b^{-1/b^2}
+  \frac{\Gamma(2b\alpha+1-b^2)}
+       {\Gamma(2b\alpha-1-b^2)}
+  \frac{\Gamma(2\alpha/b-1)}
+       {\Gamma(2\alpha/b-2b^{-2}-1)}
+  \\
+  &\quad\times
+  \frac{\cosh\!\bigl(\pi s(2\alpha+b^{-1}-Q)\bigr)}
+       {\cosh\!\bigl(\pi s(2\alpha-b^{-1}-Q)\bigr)} .
+\end{aligned}
+  \label{eq:fzzt-binverse-shift-ratio}
+\end{equation}
+Equations \eqref{eq:fzzt-b-shift-ratio} and
+\eqref{eq:fzzt-binverse-shift-ratio} are the component form of the two
+degenerate boundary shift constraints in the normalization of
+\eqref{eq:fzzt-alpha-one-point}.  The theorem boundary supplies these shift
+constraints, the reflection relation, and the analytic nonresonance
+conditions with enough growth control to fix the meromorphic solution.  The
+companion script checks the gamma-function and hyperbolic bookkeeping in both
+ratios against the displayed \(U_s(\alpha)\).
+
 \begin{definition}[ZZ boundary states as FZZT differences]
 \label{def:zz-boundary-state}
 For positive integers \(m,n\), define the two imaginary FZZT parameters

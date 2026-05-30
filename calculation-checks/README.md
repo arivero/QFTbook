@@ -465,8 +465,9 @@ Current checks:
   dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
   Virasoro block coefficients through level three with Gram determinant
-  factorization and global-block limits, and the elliptic \(q\)-coordinate
-  conversion through \(q^2\).
+  factorization and global-block limits, the FZZT \(b\)- and
+  \(b^{-1}\)-shift ratios, and the elliptic \(q\)-coordinate conversion
+  through \(q^2\).
 - `superconformal_algebra_checks.py`: exact rational checks for the
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary

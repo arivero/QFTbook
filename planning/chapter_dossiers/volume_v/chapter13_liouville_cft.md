@@ -114,6 +114,10 @@ boundaries rather than importing the appendix exposition.
   boundary dimension `b(Q-b)=1`.
 - Defines FZZT boundary parameters, one-point functions, and boundary-state
   wavefunctions, with the boundary bootstrap isolated as a quoted theorem.
+- Exposes the finite-difference content of the FZZT quoted theorem by writing
+  the \(b\)- and \(b^{-1}\)-shift ratios obeyed by the displayed one-point
+  function, while keeping the full boundary sewing/connection-coefficient
+  construction as a theorem boundary.
 - Defines ZZ boundary states as finite differences of imaginary-parameter
   FZZT states and proves the hyperbolic wavefunction identity.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and for the
@@ -164,6 +168,8 @@ boundaries rather than importing the appendix exposition.
   determinants, the level-one, level-two, and level-three ordinary block
   coefficients, and the large-`c` global-block limits in exact rational
   arithmetic.
+- The same script checks the FZZT one-point \(b\)-shift and \(b^{-1}\)-shift
+  ratios numerically against the displayed gamma-function representative.
 - The same script checks the modular-lambda expansion through
   `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
   raw elliptic \(q\)-coefficients `g_1` and `g_2`.
@@ -265,3 +271,8 @@ boundaries rather than importing the appendix exposition.
   off-diagonal condition in the \(z=1\) basis, and the resulting finite
   difference equation.  The Liouville calculation script now checks this
   connection-matrix ratio numerically against the DOZZ \(b\)-shift ratio.
+- 2026-05-30 FZZT shift-ratio pass: added the explicit \(b\)- and
+  \(b^{-1}\)-shift ratios obeyed by the FZZT disk one-point function.  The
+  text now separates the boundary-bootstrap/sewing theorem boundary from the
+  directly checkable gamma-function representative, and the Liouville script
+  verifies both shift ratios.
