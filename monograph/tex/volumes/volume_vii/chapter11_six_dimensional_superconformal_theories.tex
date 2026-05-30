@@ -363,6 +363,73 @@ construction of the \((2,0)\) theory must reproduce.  External geometric or
 string-theoretic derivations may motivate the formula, but they are not
 premises in the argument of this chapter.
 
+\paragraph{What the quoted theorem asserts on the tensor branch.}
+The generic tensor branch of the type \(\mathfrak g\) theory contains
+\(r_{\mathfrak g}\) free abelian \((2,0)\) tensor multiplets.  Therefore
+\begin{equation}
+  I_8[\mathfrak g]-r_{\mathfrak g}I_8(1)
+  =
+  \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{24}\,p_2(N_R)
+  \label{eq:six-d-two-zero-interacting-excess}
+\end{equation}
+is the part of the anomaly which is invisible in the free branch spectrum.
+The background anomaly is an invertible field theory attached to the QFT,
+not to a particular coordinate chart on its vacuum branch.  Thus the
+low-energy tensor-branch description must reproduce the same anomaly
+functional as the fixed point after its massless fields and its local
+Green--Schwarz terms are both included.  This is the precise sense in which
+the formula is tested by branch data: the branch fields give
+\(r_{\mathfrak g}I_8(1)\), while the remaining coefficient is a quadratic
+functional of the four-form couplings \(X_I^{(4)}\) in
+\eqref{eq:six-d-gs-anomaly-matching}.  It is not an additional propagating
+degree-of-freedom count.
+
+The following finite root-system facts are the arithmetic skeleton of this
+matching.  Normalize the simply laced root system
+\(\Delta_{\mathfrak g}\subset\mathfrak t_{\mathfrak g}^\vee\) so every root
+has squared length \(2\), and identify
+\(\mathfrak t_{\mathfrak g}\simeq\mathfrak t_{\mathfrak g}^\vee\) by this
+inner product.  Then
+\begin{equation}
+  \sum_{\alpha\in\Delta_{\mathfrak g}^+}
+  \alpha\otimes\alpha
+  =
+  h^\vee_{\mathfrak g}\,\id_{\mathfrak t_{\mathfrak g}},
+  \label{eq:six-d-positive-root-second-moment}
+\end{equation}
+or, equivalently,
+\[
+  \sum_{\alpha\in\Delta_{\mathfrak g}^+}
+  \langle\alpha,v\rangle^2
+  =
+  h^\vee_{\mathfrak g}\,\langle v,v\rangle
+  \qquad
+  (v\in\mathfrak t_{\mathfrak g}).
+\]
+Indeed the full sum over all roots defines a Weyl-invariant symmetric
+endomorphism of the irreducible reflection representation of \(W_{\mathfrak g}\),
+hence is a scalar multiple of the identity.  Taking the trace fixes the
+scalar: the trace of the full sum is
+\(\sum_{\alpha\in\Delta_{\mathfrak g}}\langle\alpha,\alpha\rangle
+=2|\Delta_{\mathfrak g}|\), while
+\(|\Delta_{\mathfrak g}|=d_{\mathfrak g}-r_{\mathfrak g}
+=r_{\mathfrak g}h^\vee_{\mathfrak g}\).  Dividing by
+\(r_{\mathfrak g}\) gives \(2h^\vee_{\mathfrak g}\) for the full root sum
+and \(h^\vee_{\mathfrak g}\) for the positive-root sum.  The identity
+\begin{equation}
+  d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)
+  \label{eq:six-d-dimension-rank-coxeter-relation}
+\end{equation}
+is the same root count with the Cartan directions restored.
+
+These identities do not prove
+\eqref{eq:six-d-two-zero-anomaly}; they explain why, once the normalization
+of the self-dual tensor Green--Schwarz coupling is fixed on a long-root
+string, the Weyl-invariant quadratic contribution on a chamber has no
+remaining independent symmetric tensor structure.  The nontrivial QFT datum
+in the quoted theorem is the overall coefficient with which the interacting
+fixed point realizes this rigid invariant.
+
 \begin{remark}[ADE arithmetic in the \((2,0)\) anomaly coefficient]
 \label{rem:six-d-ade-anomaly-arithmetic}
 For simply laced \(\mathfrak g\), the coefficient multiplying

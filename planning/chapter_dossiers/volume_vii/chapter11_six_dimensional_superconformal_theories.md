@@ -72,6 +72,12 @@ Reviewed source spine:
   six-form descent representative.
 - Records the `(2,0)` anomaly polynomial as a quoted theorem, with all
   coefficients and characteristic classes named.
+- Expands the quoted-theorem boundary by isolating the interacting excess
+  `I_8[g]-r_g I_8(1)`, explaining that the branch free tensors supply only
+  the `r_g I_8(1)` part, and deriving the simply laced positive-root
+  second-moment identity and `d_g=r_g(h_g^vee+1)` arithmetic that make the
+  Green-Schwarz tensor-index structure rigid once the long-root
+  normalization is fixed.
 - Displays and derives the ADE arithmetic of the `(2,0)` anomaly coefficient,
   including the `A_{N-1}` cubic scaling.
 - Defines BPS string charges, tensions, and inflow data, including
@@ -103,7 +109,9 @@ Reviewed source spine:
   Green-Schwarz descent factor, the trace-delta five-dimensional
   instanton/Kaluza-Klein normalization, wrapped-string/W-boson scalar
   normalization, ADE defect-group orders from Cartan determinants, and the
-  cyclic finite-flux polarization model.
+  cyclic finite-flux polarization model.  It also checks the simply laced
+  root-system second-moment identities for the \(A\) and \(D\) series and the
+  ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\).
 
 ## Proof Obligations And Boundaries
 
@@ -136,6 +144,11 @@ Reviewed source spine:
   polarization layer for `(2,0)` theories, including root/weight lattice data,
   ADE discriminant groups, the finite \(H^3(Y;A_g)\) Heisenberg pairing, and
   a cyclic \(A_{N-1}\) polarization model with exact calculation checks.
+- 2026-05-30 anomaly-theorem boundary pass: expanded the local content around
+  the `(2,0)` anomaly polynomial quoted theorem by identifying the interacting
+  anomaly excess, deriving the root-system second-moment and dimension-count
+  arithmetic used by tensor-branch Green-Schwarz matching, and extending the
+  finite convention checks accordingly.
 
 ## Figure Ledger
 

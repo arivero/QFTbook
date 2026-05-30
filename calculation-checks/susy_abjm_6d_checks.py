@@ -389,6 +389,50 @@ def check_two_zero_ade_anomaly_coefficients() -> None:
         assert_equal(f"D_{n} tensor branch real dimension", 5 * rank, 5 * n)
 
 
+def check_simply_laced_root_second_moments() -> None:
+    # With long roots of squared length 2, the positive-root second moment is
+    # sum_{alpha>0} (alpha.v)^2 = h^vee (v.v).  For A_{N-1} use vectors in
+    # the sum-zero hyperplane of R^N; for D_N use the roots e_i +/- e_j.
+    for n in range(2, 10):
+        raw = [Fraction(i + 1) for i in range(n)]
+        mean = sum(raw) / n
+        v = [entry - mean for entry in raw]
+        positive_root_sum = sum((v[i] - v[j]) ** 2 for i in range(n) for j in range(i + 1, n))
+        norm = sum(entry * entry for entry in v)
+        assert_equal(f"A_{n-1} positive-root second moment", positive_root_sum, n * norm)
+
+    for n in range(4, 10):
+        v = [Fraction(i + 2) for i in range(n)]
+        positive_root_sum = Fraction(0)
+        for i in range(n):
+            for j in range(i + 1, n):
+                positive_root_sum += (v[i] - v[j]) ** 2
+                positive_root_sum += (v[i] + v[j]) ** 2
+        norm = sum(entry * entry for entry in v)
+        assert_equal(f"D_{n} positive-root second moment", positive_root_sum, (2 * n - 2) * norm)
+
+
+def check_simply_laced_dimension_root_count_relation() -> None:
+    # The ADE relation d_g = r_g (h_g^vee + 1) is equivalent to
+    # |Delta_g| = r_g h_g^vee.  It is the trace normalization behind the
+    # root-system second-moment identity used in the chapter.
+    data = []
+    for n in range(2, 10):
+        data.append((f"A_{n-1}", n - 1, n * n - 1, n))
+    for n in range(4, 10):
+        data.append((f"D_{n}", n, n * (2 * n - 1), 2 * n - 2))
+    data.extend(
+        [
+            ("E6", 6, 78, 12),
+            ("E7", 7, 133, 18),
+            ("E8", 8, 248, 30),
+        ]
+    )
+    for name, rank, dimension, dual_coxeter in data:
+        assert_equal(f"{name} d=r(h+1)", dimension, rank * (dual_coxeter + 1))
+        assert_equal(f"{name} root count", dimension - rank, rank * dual_coxeter)
+
+
 def check_green_schwarz_quadratic_descent_factor() -> None:
     # The 1/2 in (1/2) Omega^{IJ} X_I X_J is cancelled in descent by the two
     # equal variations of the symmetric product.
@@ -537,6 +581,8 @@ def main() -> None:
     check_six_dimensional_chiral_two_form_degrees()
     check_two_zero_a_type_data()
     check_two_zero_ade_anomaly_coefficients()
+    check_simply_laced_root_second_moments()
+    check_simply_laced_dimension_root_count_relation()
     check_green_schwarz_quadratic_descent_factor()
     check_five_dimensional_instanton_kk_normalization()
     check_wrapped_string_mass_normalization()
