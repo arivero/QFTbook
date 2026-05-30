@@ -11,6 +11,10 @@ bordism-functoriality chapter.
 ## Notation Inventory
 
 - `G`: finite gauge group.
+- `mathfrak Z_{G,omega}^{(D)}`: finite gauge state-sum datum, including
+  gauge group, Dijkgraaf-Witten cocycle class, bundle groupoids, boundary
+  transgression line, state spaces, bordism operators, and triangulated flat
+  connection representatives.
 - `X`: finite groupoid when used in the groupoid-cardinality section.
 - `Aut_X(x)`: automorphism group of an object `x` in `X`.
 - `Bun_G(M)`: groupoid of principal `G`-bundles on `M`.
@@ -32,31 +36,35 @@ bordism-functoriality chapter.
 
 ## Claim Ledger
 
-1. Defines finite groupoid cardinality and finite groupoid integration with
+1. Defines the finite gauge state-sum datum before developing its pieces:
+   finite group, cocycle twist, principal-bundle groupoids, transgressed
+   boundary lines, state spaces, push-pull bordism maps, and triangulated
+   representatives.
+2. Defines finite groupoid cardinality and finite groupoid integration with
    the automorphism denominator.
-2. Proves the action-groupoid formula `|X//H|=|X|/|H|`.
-3. Defines untwisted finite gauge theory as `|Bun_G(M)|`.
-4. Proves the connected-manifold formula
+3. Proves the action-groupoid formula `|X//H|=|X|/|H|`.
+4. Defines untwisted finite gauge theory as `|Bun_G(M)|`.
+5. Proves the connected-manifold formula
    `Z_G(M)=|Hom(pi_1(M),G)|/|G|`.
-5. Defines boundary state spaces as functions on boundary bundle groupoids and
+6. Defines boundary state spaces as functions on boundary bundle groupoids and
    bordism maps as push-pull along spans.
-6. Proves finite groupoid Fubini with explicit image/kernel automorphism
+7. Proves finite groupoid Fubini with explicit image/kernel automorphism
    weights, then proves finite groupoid gluing by descent for principal
    bundles and Fubini over finite homotopy fibers.
-7. Defines the triangulated flat-connection state sum and derives its equality
+8. Defines the triangulated flat-connection state sum and derives its equality
    with groupoid cardinality through the action groupoid
    `Flat_G(K)//G^{K_0}`.
-8. Defines Dijkgraaf-Witten twists from normalized cocycles and proves
+9. Defines Dijkgraaf-Witten twists from normalized cocycles and proves
    Pachner-move invariance from the cocycle equation.
-9. Defines twisted boundary state spaces as sections of the transgressed
+10. Defines twisted boundary state spaces as sections of the transgressed
    boundary line.
-10. Computes explicit closed-surface partition functions:
+11. Computes explicit closed-surface partition functions:
     `Z_G(Sigma_g)=|G|^{2g-2} sum_R d_R^{2-2g}`.
-11. Identifies the circle state space with class functions on `G` and the
+12. Identifies the circle state space with class functions on `G` and the
     pair-of-pants product with convolution.
-12. Records the three-dimensional `T^3` commuting-triple formula and the
+13. Records the three-dimensional `T^3` commuting-triple formula and the
     Drinfeld-center description of line operators.
-13. States finite correspondence defects and degree-`D+1` anomaly inflow.
+14. States finite correspondence defects and degree-`D+1` anomaly inflow.
 
 ## Figure Ledger
 

@@ -19,6 +19,61 @@ components.  If \(X\) is a finite groupoid, \(\pi_0X\) denotes the set of
 isomorphism classes of objects and \(\operatorname{Aut}_X(x)\) denotes the
 automorphism group of an object \(x\).
 
+\begin{definition}[Finite gauge state-sum datum]
+\label{def:finite-gauge-state-sum-datum}
+Fix a dimension \(D\).  A finite \(G\)-gauge state-sum datum is a tuple
+\[
+  \mathfrak Z_{G,\omega}^{(D)}
+  =
+  \bigl(
+    G,[\omega],
+    M\mapsto\operatorname{Bun}_G(M),
+    \mathcal L_\omega,
+    \mathcal H_{G,\omega},
+    Z_{G,\omega},
+    K\mapsto\operatorname{Flat}_G(K)
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(G\) is a finite group, and
+  \([\omega]\in H^D(BG,U(1))\) is the Dijkgraaf--Witten twist.  The
+  untwisted theory is the case \([\omega]=0\).
+\item For every compact collared \(D\)-manifold \(M\) and closed
+  \((D-1)\)-manifold \(\Sigma\),
+  \(\operatorname{Bun}_G(M)\) and \(\operatorname{Bun}_G(\Sigma)\) are the
+  finite groupoids of right principal \(G\)-bundles and bundle isomorphisms.
+\item \(\mathcal L_\omega(\Sigma)\) is the transgressed boundary line over
+  \(\operatorname{Bun}_G(\Sigma)\).  In the untwisted theory this line is
+  canonically trivial.
+\item The boundary state space is
+  \[
+    \mathcal H_{G,\omega}(\Sigma)
+    =
+    \Gamma\bigl(\operatorname{Bun}_G(\Sigma),\mathcal L_\omega(\Sigma)\bigr),
+  \]
+  with the groupoid-cardinality pairing.  In the untwisted case this is the
+  vector space of functions on \(\pi_0\operatorname{Bun}_G(\Sigma)\).
+\item A bordism \(M:\Sigma_0\to\Sigma_1\) defines the restriction span
+  \[
+    \operatorname{Bun}_G(\Sigma_0)
+    \xleftarrow{\ r_0\ }
+    \operatorname{Bun}_G(M)
+    \xrightarrow{\ r_1\ }
+    \operatorname{Bun}_G(\Sigma_1),
+  \]
+  and \(Z_{G,\omega}(M)\) is the corresponding push-pull operator, weighted
+  by the cocycle phase and by automorphism denominators.
+\item For a branched triangulation \(K\) of \(M\),
+  \(\operatorname{Flat}_G(K)\) is the finite set of flat edge labelings whose
+  action groupoid \(\operatorname{Flat}_G(K)//G^{K_0}\) presents
+  \(\operatorname{Bun}_G(M)\).  The simplicial state sum is a representative
+  of the intrinsic groupoid integral.
+\end{enumerate}
+The gluing theorem below proves that these entries define a symmetric
+monoidal TQFT on the corresponding collared bordism category.
+\end{definition}
+
 \section{Finite Groupoids and the Gauge Volume}
 
 \begin{definition}[Finite groupoid cardinality]
@@ -76,7 +131,8 @@ as averaging over the acting group before passing to orbits.
 
 \section{Fields as Principal-Bundle Groupoids}
 
-For a compact manifold \(M\), define
+For the datum \(\mathfrak Z_{G,\omega}^{(D)}\), and in particular for the
+untwisted theory used first, define for a compact manifold \(M\)
 \[
   \operatorname{Bun}_G(M)
 \]
@@ -147,7 +203,8 @@ field theory.
 
 \section{State Spaces and Push-Pull Along Spans}
 
-Let \(\Sigma\) be a closed \((D-1)\)-manifold.  The boundary field groupoid is
+Let \(\Sigma\) be a closed \((D-1)\)-manifold.  The boundary field groupoid in
+Definition~\ref{def:finite-gauge-state-sum-datum} is
 \[
   \mathcal B_\Sigma=\operatorname{Bun}_G(\Sigma).
 \]
@@ -426,11 +483,12 @@ the equality between \eqref{eq:finite-gauge-lattice-state-sum} and
 
 \section{Dijkgraaf--Witten Twists}
 
-Let
+The Dijkgraaf--Witten entry \([\omega]\) in
+Definition~\ref{def:finite-gauge-state-sum-datum} is represented by
 \[
   \omega\in Z^D(BG,U(1))
 \]
-be a normalized group cocycle.  In an inhomogeneous cochain convention this
+normalized as a group cocycle.  In an inhomogeneous cochain convention this
 means a function
 \[
   \omega:G^D\to U(1)
