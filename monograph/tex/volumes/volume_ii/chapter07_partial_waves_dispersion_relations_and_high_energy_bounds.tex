@@ -1067,15 +1067,22 @@ in the \(t\)-channel physical region.  The signature components are
 \begin{quotedtheorem}[Carlson uniqueness in the half-plane]
 \label{qthm:carlson-half-plane-uniqueness}
 Let \(F\) be holomorphic in \(\operatorname{Re}J>0\), continuous on
-\(\operatorname{Re}J\ge0\), and suppose that for some \(\varepsilon>0\)
+\(\operatorname{Re}J\ge0\), and suppose that it has strict exponential type
+smaller than \(\pi\) in the closed right half-plane: there is a number
+\(\kappa<\pi\) such that, for every \(\delta>0\),
 \[
   |F(J)|\le C_\delta
-  \exp\bigl((\pi-\varepsilon+\delta)|J|\bigr)
-  \qquad
-  \operatorname{Re}J\ge0
+  \exp\bigl((\kappa+\delta)|J|\bigr),
+  \qquad \operatorname{Re}J\ge0 .
 \]
-for every \(\delta>0\), while \(F(\ii y)\) has at most exponential type
-strictly smaller than \(\pi\) on the boundary line.  If
+Assume also that the boundary function on the imaginary axis has strict type
+smaller than \(\pi\): for some \(\sigma<\pi\) and every \(\delta>0\),
+\[
+  |F(\ii y)|\le C'_\delta
+  \exp\bigl((\sigma+\delta)|y|\bigr),
+  \qquad y\in\mathbb R .
+\]
+If
 \[
   F(n)=0,\qquad n=0,1,2,\ldots ,
 \]
@@ -1083,6 +1090,63 @@ then \(F\equiv0\) in the half-plane.  Equivalently, within this growth class
 the values on the nonnegative integers determine the holomorphic
 interpolation uniquely.
 \end{quotedtheorem}
+
+\paragraph{Mechanism of Carlson uniqueness.}
+The number \(\pi\) is the density threshold set by the model zero set
+\(\mathbb Z_{\ge0}\).  The Carleman--Jensen formula in the right half-plane
+turns the boundary exponential type into a bound on the logarithmic density of
+positive real zeros.  Let \(F\) be nonzero and let
+\[
+  N_F(R)=\#\{a:\ F(a)=0,\ 0<a<R,\ a\in\mathbb R\}
+\]
+count positive real zeros with multiplicity; the possible boundary zero at
+\(J=0\) is irrelevant to this density estimate.  Applying the half-plane
+Jensen formula to the half-disc
+\[
+  H_R=\{J:\operatorname{Re}J>0,\ |J|<R\}
+\]
+and using the growth bounds on the semicircle and on the imaginary diameter
+gives the zero-density estimate
+\begin{equation}
+  \int_1^R \frac{N_F(r)}{r^2}\,\dd r
+  \le
+  \frac{\sigma+\delta}{\pi}\log R+O_\delta(1),
+  \qquad R\to\infty .
+  \label{eq:carlson-zero-density-bound}
+\end{equation}
+Indeed, the zero term in Carleman's formula is
+\(\sum_{0<a<R}(a^{-1}-aR^{-2})\), which is equivalent to
+\(\int_1^R N_F(r)r^{-2}\dd r\) up to \(O(1)\).  The logarithmic term comes
+from the imaginary diameter, where
+\(\log |F(\ii y)F(-\ii y)|\le 2(\sigma+\delta)|y|+O_\delta(1)\); the
+semicircle term is only \(O_{\kappa,\delta}(1)\), since it carries the prefactor
+\((\pi R)^{-1}\int_{-\pi/2}^{\pi/2}\cos\theta\,\dd\theta\).  Polynomial
+boundary factors and small endpoint losses are removed by the standard
+Phragmen--Lindelof smoothing
+\(F(J)\mapsto F(J)\ee^{-\delta J}(1+\epsilon J)^{-m}\), with \(m\) chosen
+large enough to remove polynomial boundary factors before
+\(\epsilon\downarrow0\).
+
+If \(F(n)=0\) for every positive integer \(n\), then
+\[
+  N_F(r)\ge \lfloor r\rfloor
+\]
+and therefore
+\[
+  \int_1^R\frac{N_F(r)}{r^2}\,\dd r
+  \ge
+  \log R+O(1).
+\]
+Combining this with \eqref{eq:carlson-zero-density-bound} gives
+\[
+  1\le\frac{\sigma+\delta}{\pi}
+\]
+for every \(\delta>0\), contradicting \(\sigma<\pi\).  Hence a nonzero
+function in the stated class has too small a boundary type to vanish at every
+positive integer, and the theorem follows.  The threshold is sharp:
+\(\sin\pi J\) vanishes at all integers and has type exactly \(\pi\) on the
+imaginary axis.  Thus the growth hypothesis is the datum that makes the
+complex-\(J\) interpolation unique.
 
 \paragraph{Carlson uniqueness application.}
 Fix \(t\) and a signature \(\tau\).  Suppose two proposed continuations

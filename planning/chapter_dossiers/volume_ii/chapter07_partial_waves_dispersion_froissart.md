@@ -114,6 +114,10 @@ hypotheses:
 - \(z_t=1+2s/(t-4m^2)\): crossed \(t\)-channel angular variable used in the
   Sommerfeld--Watson representation.
 - \(\tau=\pm1\): Regge signature, projecting even or odd angular momentum.
+- \(\kappa,\sigma\): strict exponential-type constants in Carlson uniqueness;
+  \(\kappa\) controls the closed right half-plane, while \(\sigma\) controls
+  the imaginary-axis boundary type whose comparison with \(\pi\) bounds the
+  logarithmic zero density.
 - \(a_\tau(J,t)\): signature-projected partial wave analytically continued to
   complex angular momentum \(J\).
 - \(\alpha(t)\): Regge trajectory, the location of a complex-\(J\) pole.
@@ -303,7 +307,19 @@ hypotheses:
     the signature partial waves \(a_\tau(J,t)\) must be meromorphic with
     sufficient vertical-strip decrease.  The Sommerfeld--Watson contour then
     reproduces the integer-spin partial-wave sum by residues.
-24. A simple Regge pole \(a_\tau(J,t)=r_\tau(t)/(J-\alpha(t))+\cdots\)
+24. Carlson uniqueness is the analytic input behind the uniqueness of a
+    complex-\(J\) interpolation.  In the half-plane version used here, the
+    imaginary-axis exponential type \(\sigma<\pi\) gives, through the
+    Carleman--Jensen formula,
+    \[
+      \int_1^R N_F(r)r^{-2}\,dr
+      \le
+      \frac{\sigma+\delta}{\pi}\log R+O_\delta(1).
+    \]
+    Zeros at all positive integers give the opposite lower bound
+    \(\log R+O(1)\), so the interpolation is unique in the stated growth
+    class.
+25. A simple Regge pole \(a_\tau(J,t)=r_\tau(t)/(J-\alpha(t))+\cdots\)
     contributes
     \[
       \mathcal M_\tau^{\rm pole}(s,t)
@@ -313,7 +329,7 @@ hypotheses:
     \]
     If \(\alpha(M_n^2)=n\) with the correct signature, the same pole gives
     the usual spin-\(n\) exchanged-particle pole in the crossed channel.
-25. A single uncompensated Pomeron pole with \(\alpha_P(0)>1\) cannot be the
+26. A single uncompensated Pomeron pole with \(\alpha_P(0)>1\) cannot be the
     full asymptotic answer under the massive Froissart--Martin hypotheses.
     Eikonal saturation of a phase behaving as \(s^\Delta e^{-\mu b}\) gives a
     radius \(R(s)\sim(\Delta/\mu)\log s\), explaining how area growth becomes
@@ -488,3 +504,9 @@ hypotheses:
   of a Poisson generating function; the substantive warning is its restricted
   one-channel eikonal status, not a new theorem about general Reggeon
   diagrams.
+- 2026-05-30 quoted-theorem pass: expanded the Carlson half-plane uniqueness
+  boundary.  The theorem now states explicit strict exponential-type
+  hypotheses in the closed right half-plane and on the imaginary axis, and the
+  local exposition derives the uniqueness mechanism from the half-plane
+  Carleman--Jensen zero-density estimate, the integer-zero lower bound, and
+  the sharp \(\sin\pi J\) threshold.
