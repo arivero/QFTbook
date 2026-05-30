@@ -220,13 +220,25 @@ Additional symbols introduced in the charged-sector discussion:
 16. Dressed charged asymptotic states use the same eikonal data as coherent
    soft photon clouds, but the zero-cutoff Faddeev--Kulish profile is not an
    element of the photon one-particle Hilbert space, so the limiting dressing
-   changes representation.
+   changes representation.  For velocities \(\mathbf v\neq\mathbf w\), the
+   chapter displays the logarithmic norm
+   \[
+     \|f_{\mathbf v}-f_{\mathbf w}\|^2
+     =
+     {g^2\over 2(2\pi)^3}\log{\Lambda\over\mu}
+     \int_{S^2}|V_{\mathbf v}(\mathbf n)-V_{\mathbf w}(\mathbf n)|^2
+     \dd\Omega+O(1),
+   \]
+   with \(V_{\mathbf v}\) explicitly defined.
 17. A small photon mass introduced through an Abelian-Higgs deformation is a
    consistent gauge-invariant infrared regulator.
 18. Buchholz's Gauss-law theorem gives the nonperturbative structural
     boundary: charged QED sectors are infraparticle sectors, not ordinary
     Wigner-particle Fock sectors; asymptotic electric flux labels
-    superselection data.
+    superselection data.  The theorem boundary is supported by an explicit
+    boosted-Coulomb-flux mechanism, including the normalization integral and
+    the velocity-extraction ratio
+    \((1+\beta)^2/(1-\beta)^2\).
 19. The open charged-QED asymptotic-completeness problem asks for a single
     nonperturbative large-time theorem whose asymptotic data include hard
     charged labels, transverse radiation, Gauss-law flux at infinity, and the
@@ -291,3 +303,8 @@ Additional symbols introduced in the charged-sector discussion:
   p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^*/(p_n\cdot k)\), derives the
   linearized-diffeomorphism check, and states the universal-coupling
   consequence.
+- 2026-05-30 quoted-theorem debt pass: expanded the mechanism under
+  Buchholz's infraparticle quoted theorem, deriving the boosted Coulomb flux
+  normalization, the velocity-extraction ratio, and the logarithmic
+  one-photon norm of differences of charged soft profiles.  The finite checks
+  are in `calculation-checks/charged_flux_dressing_checks.py`.

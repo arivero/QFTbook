@@ -1387,8 +1387,52 @@ analysis of the infraparticle problem.  The spectral analysis of charged
 infraparticles was developed by Fr\"ohlich--Morchio--Strocchi, while the
 coherent asymptotic construction used in perturbation theory is the
 Faddeev--Kulish construction.  The review of Buchholz--Dybalski gives a
-modern scattering-theoretic account of these relations.}  Perturbation theory
-displays the same point in a direct way.
+modern scattering-theoretic account of these relations.}
+
+The mechanism behind the quoted theorem is the following.  If a massive
+charged particle were an ordinary Wigner particle, boosts would move its
+one-particle vector through a single massive one-particle representation.  In
+a theory with Gauss' law the same boost also changes the angular flux
+functional at spacelike infinity.  Since the sharp limiting flux commutes
+with all bounded local observables and labels a superselection datum, the
+boosted charged state cannot remain a vector in one fixed photon Fock
+representation unless the change of flux is implemented by a square-integrable
+soft-photon displacement.  The latter implementation fails for the Coulomb
+tail: the displacement has logarithmically divergent one-photon norm.
+
+Perturbation theory displays this obstruction in a direct way.  Work in a
+frame where \(\mathbf v=\beta\widehat{\mathbf z}\).  The boosted Coulomb
+field has radial flux density
+\[
+  \mathcal E_{g,\beta}(\mathbf n)
+  =
+  \frac{g}{4\pi}
+  \frac{1-\beta^2}{(1-\beta\cos\theta)^2},
+  \qquad
+  \cos\theta=\widehat{\mathbf z}\cdot\mathbf n .
+\]
+The total flux is still \(g\), because
+\begin{equation}
+  2\pi(1-\beta^2)\int_{-1}^{1}
+  \frac{\dd z}{(1-\beta z)^2}
+  =
+  2\pi(1-\beta^2)
+  \left[
+    \frac1{\beta(1-\beta z)}
+  \right]_{z=-1}^{z=1}
+  =
+  4\pi .
+  \label{eq:boosted-coulomb-flux-normalization}
+\end{equation}
+The angular distribution, however, determines the velocity: its value in the
+forward direction divided by its value in the backward direction is
+\begin{equation}
+  \frac{\mathcal E_{g,\beta}(\widehat{\mathbf z})}
+       {\mathcal E_{g,\beta}(-\widehat{\mathbf z})}
+  =
+  \left(\frac{1+\beta}{1-\beta}\right)^2 .
+  \label{eq:boosted-coulomb-flux-velocity-ratio}
+\end{equation}
 For a charged particle of velocity
 \[
   \mathbf v=\frac{\mathbf p}{p^0},
@@ -1432,6 +1476,33 @@ one has \(p\cdot k=\omega(p^0-\mathbf p\cdot\mathbf n)\) and therefore
   \qquad C(p,g)>0\quad(g\ne0).
 \]
 Thus \(f_p\notin\mathcal H_{1,\gamma}\) after the infrared cutoff is removed.
+More invariantly, choose transverse polarization vectors and write
+\[
+  V_{\mathbf v}(\mathbf n)
+  =
+  \frac{\mathbf v-(\mathbf v\cdot\mathbf n)\mathbf n}
+       {1-\mathbf v\cdot\mathbf n}.
+\]
+This profile determines the velocity: for \(\mathbf v\ne0\) its zeros on
+the unit sphere are \(\mathbf n=\pm\mathbf v/|\mathbf v|\), and on the great
+circle \(\mathbf v\cdot\mathbf n=0\) its norm is \(|\mathbf v|\); the
+zero-velocity profile is identically zero.
+For two velocities \(\mathbf v\ne\mathbf w\), the difference of the two soft
+profiles has norm
+\begin{equation}
+  \|f_{\mathbf v}-f_{\mathbf w}\|_\gamma^2
+  =
+  \frac{g^2}{2(2\pi)^3}
+  \log\frac{\Lambda}{\mu}
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  |V_{\mathbf v}(\mathbf n)-V_{\mathbf w}(\mathbf n)|^2
+  +O(1),
+  \label{eq:charged-soft-profile-velocity-log-norm}
+\end{equation}
+where \(\mu\) and \(\Lambda\) are infrared and soft ultraviolet cutoffs.  The
+angular integral vanishes exactly when the velocities coincide.  Therefore
+distinct sharp charged velocities define inequivalent infrared coherent
+directions in the limit \(\mu\to0\).
 At finite cutoff the coherent operator below is a unitary Weyl operator on
 photon Fock space; in the limit it defines an inequivalent representation
 labelled by the asymptotic flux.  If two dressings have different limiting
@@ -1441,6 +1512,16 @@ in one common photon Fock representation.  The inclusive construction avoids
 choosing a sharp charged flux sector by summing over detector-unresolved
 radiation; the dressed construction chooses a sector adapted to the hard
 charged asymptotic data.
+
+The elementary flux-normalization, velocity-extraction, half-line Fourier,
+and soft-profile norm checks behind
+\eqref{eq:boosted-coulomb-flux-normalization},
+\eqref{eq:boosted-coulomb-flux-velocity-ratio}, and
+\eqref{eq:charged-soft-profile-velocity-log-norm} are collected in
+\path{calculation-checks/charged_flux_dressing_checks.py}.  They are not
+a replacement for Buchholz's theorem; they are the explicit perturbative
+mechanism that explains why the theorem has the physical content stated
+above.
 
 \begin{openproblem}[Charged asymptotic completeness in massless QED]
 \label{op:qed-charged-asymptotic-completeness}
