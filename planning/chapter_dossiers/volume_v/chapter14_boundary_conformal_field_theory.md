@@ -178,3 +178,9 @@
   defines the boundary trace equation, the finite-temperature entropy
   \(s=(1-L\partial_L)\log z\), the positive susceptibility metric \(G_{ab}\),
   and derives \(d s/d\log L=-B^aG_{ab}B^b\le0\).
+- 2026-05-30 quoted-theorem proof-boundary pass: expanded the mechanism of the
+  boundary entropy gradient formula.  The text now displays the boundary
+  deformation convention, the coupling derivative of \(\log z\), the integrated
+  trace insertion, the finite Ward susceptibility with kernel \(K_L\), and the
+  precise analytic inputs hidden in the quoted theorem: contact-term
+  prescription, quotient by redundant derivatives, and reflection positivity.

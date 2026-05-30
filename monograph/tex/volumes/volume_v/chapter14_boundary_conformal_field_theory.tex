@@ -1137,17 +1137,85 @@ boundary condition is reached, nor does it supply the annulus or
 Cardy--Lewellen sewing data.
 
 \paragraph{Mechanism of the gradient formula.}
-The scale variation of the boundary partition function is the integral of
-\(\theta\).  Inserting \eqref{eq:boundary-trace-beta-fields} expresses this
-variation in terms of the beta-vector field and renormalized boundary fields.
-Differentiating once more with respect to \(\lambda^a\) inserts
-\(\phi_a\).  The connected two-point function has contact terms; the kernel in
-\eqref{eq:boundary-gradient-metric} removes the constant and total-derivative
-directions, leaving a finite susceptibility on the quotient by redundant
-operators.  Reflection positivity on the boundary Hilbert space makes this
-susceptibility positive.  The remaining Ward-identity bookkeeping is the
-equality between this finite susceptibility pairing and
-\(-\partial_a s\), which is \eqref{eq:boundary-gradient-formula}.
+The theorem identifies a particular renormalized susceptibility with the
+differential of the finite boundary entropy.  We spell out the mechanism
+because the contact-term prescription, the quotient by redundant boundary
+directions, and reflection positivity are part of the mathematical content of
+the statement.
+
+Use the sign convention in which the renormalized boundary action is deformed
+by
+\[
+  S_{\partial}(\lambda)
+  =
+  S_{\partial}(0)+\lambda^a\int_0^L\phi_a(\tau)\,\dd\tau .
+\]
+Then differentiation of the renormalized boundary partition function gives
+\begin{equation}
+  \partial_a\log z(\lambda,L)
+  =
+  -\int_0^L
+  \bigl\langle\phi_a(\tau)\bigr\rangle_{\lambda,L}^{\mathrm{ren}}\,
+  \dd\tau .
+  \label{eq:bcft-boundary-coupling-derivative}
+\end{equation}
+The scale Ward identity on the half-cylinder states that, after the bulk
+extensive term and the boundary ground-state energy have been subtracted, the
+operation \(L\partial_L\) is represented by the renormalized insertion of the
+boundary trace
+\[
+  \Theta=\int_0^L\theta(\tau)\,\dd\tau
+\]
+together with local contact counterterms supported at coincident boundary
+points.  Thus \((1-L\partial_L)\partial_a\log z\) contains the integrated
+two-point insertion
+\(\int\!\int\langle\phi_a(\tau_1)\theta(\tau_2)\rangle_c\) together with local
+counterterms.  Those contact terms must be fixed by a renormalization
+prescription compatible with boundary translation invariance, reflection
+positivity, and the subtraction defining \(s=(1-L\partial_L)\log z\).
+
+With these prescriptions the Ward identity can be written in the finite form
+\begin{equation}
+  \partial_a s(\lambda,L)
+  =
+  -\frac12
+  \int_0^L\!\dd\tau_1
+  \int_0^L\!\dd\tau_2\,
+  K_L(\tau_1-\tau_2)
+  \bigl\langle
+    \phi_a(\tau_1)\theta(\tau_2)
+  \bigr\rangle_{\!c}^{\mathrm{ren}},
+  \qquad
+  K_L(\tau)=1-\cos\frac{2\pi\tau}{L}.
+  \label{eq:bcft-gradient-ward-susceptibility}
+\end{equation}
+Equation \eqref{eq:bcft-gradient-ward-susceptibility} is the real analytic
+step in the gradient formula: the kernel \(K_L\) is the circle kernel, in this
+normalization, that implements the finite entropy subtraction and removes the
+ambiguous zero-mode and total-derivative pieces after passing to the quotient
+of boundary coupling space.  Substituting the trace identity
+\eqref{eq:boundary-trace-beta-fields} gives
+\[
+  \bigl\langle\phi_a(\tau_1)\theta(\tau_2)\bigr\rangle_c^{\mathrm{ren}}
+  =
+  B^b
+  \bigl\langle\phi_a(\tau_1)\phi_b(\tau_2)\bigr\rangle_c^{\mathrm{ren}}
+  +
+  \partial_{\tau_2}
+  \bigl\langle\phi_a(\tau_1)j(\tau_2)\bigr\rangle_c^{\mathrm{ren}} .
+\]
+The second term is a redundant direction.  On the quotient it vanishes after
+integration against the Ward kernel and after the prescribed contact
+subtractions.  The first term is exactly the bilinear form
+\eqref{eq:boundary-gradient-metric}, and hence
+\[
+  \partial_a s=-G_{ab}B^b .
+\]
+The positivity of \(G_{ab}\) uses boundary reflection positivity of the
+renormalized theory and the removal of null redundant fields, in addition to
+the trigonometric Ward kernel.  With weaker analytic control the displayed
+formula records the expected Ward-identity structure rather than a proved
+gradient theorem.
 
 Finally, two-dimensional BCFT fits into the broader boundary/defect language
 of Chapter~\ref{ch:global-boundaries-and-defects}.  A topological line
