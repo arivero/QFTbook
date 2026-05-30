@@ -241,6 +241,24 @@ where \(g\) acts on test functions by pullback.  The covariance of
 \(P_m\), \(\Delta_m^{\rm ret/adv}\), and the volume form preserves the
 quotient and the symplectic form.
 
+Additivity follows from compact support.  Suppose
+\(\mathcal O=\bigcup_i\mathcal O_i\), and let
+\(f\in C_c^\infty(\mathcal O;\mathbb R)\).  The compact set
+\(\operatorname{supp}f\) is covered by finitely many \(\mathcal O_i\)'s.
+Choose a smooth partition of unity \(\{\rho_j\}_{j=1}^r\) subordinate to this
+finite cover on a neighborhood of \(\operatorname{supp}f\).  Then
+\[
+  f=\sum_{j=1}^r f_j,\qquad f_j=\rho_j f,\qquad
+  \operatorname{supp}f_j\subset\mathcal O_{i_j}.
+\]
+In \(\mathsf V_m(\mathcal O)\) this gives
+\([f]=\sum_j[f_j]\).  Iterating the Weyl relation
+\eqref{eq:free-scalar-weyl-relations} expresses \(W([f])\), up to an
+explicit phase determined by the pairings
+\(\sigma_m([f_j],[f_k])\), as a product of the \(W([f_j])\)'s.  Hence every
+generator of \(\Obs_m(\mathcal O)\) belongs to the \(C^*\)-algebra generated
+by the \(\Obs_m(\mathcal O_i)\)'s, and the opposite inclusion is isotony.
+
 The time-slice property is the only axiom in this model that uses a real
 hyperbolic argument.  Let \(U=D(N)\), and assume the chosen region class is
 regular enough that \(N\subset U\) contains a Cauchy-surface collar: there is

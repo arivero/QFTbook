@@ -46,8 +46,9 @@ functorial QFT.
   covariance, locality, spectrum, and vacuum-state data kept distinct.
 - Constructs the massive scalar Weyl net explicitly from the
   Green-hyperbolic symplectic quotient, proves nondegeneracy of the
-  symplectic form, verifies isotony/locality/Poincare covariance, and proves
-  the time-slice property using a retarded/advanced cutoff construction.
+  symplectic form, verifies isotony/locality/Poincare covariance/additivity,
+  and proves the time-slice property using a retarded/advanced cutoff
+  construction.
 - Constructs the perturbative interacting local net from relative
   \(S\)-matrices under the causal-factorization and interaction-cutoff
   independence hypotheses.
@@ -104,5 +105,6 @@ functorial QFT.
   reconstruction.
 - 2026-05-30 free Weyl-net benchmark pass: inserted the massive scalar Weyl
   net before pAQFT so the chapter has an explicit nonperturbative local-net
-  model with the time-slice axiom proved directly from Green-hyperbolic
-  propagation rather than inferred from unbounded Wightman fields.
+  model with additivity and the time-slice axiom proved directly from
+  compact-support partitions of unity and Green-hyperbolic propagation rather
+  than inferred from unbounded Wightman fields.

@@ -16,8 +16,8 @@ benchmark immediately after the Haag--Kastler \(C^*\)-net definition.
   form \(\sigma_m([f],[g])=\int f\Delta_m g\).
 - Defined the Weyl \(C^*\)-algebra and the local subalgebras
   \(\Obs_m(\mathcal O)\).
-- Verified isotony, spacelike commutativity, and Poincare covariance directly
-  at the level of bounded Weyl generators.
+- Verified isotony, spacelike commutativity, Poincare covariance, and
+  additivity directly at the level of bounded Weyl generators.
 - Proved the time-slice property by constructing a representative supported
   in a Cauchy-surface collar using retarded/advanced uniqueness.
 - Added the quasi-free vacuum state only after the abstract net is defined, so
