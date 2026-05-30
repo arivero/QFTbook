@@ -29,9 +29,11 @@ recording fluctuation data required for controlled backreaction.
   the diffeomorphism Ward identity by varying a compactly supported flow.
 - Defines the renormalized stress tensor as a locally covariant
   operator-valued distribution and records its finite curvature ambiguity.
-- Defines the gravitational EFT action, derives the curvature-squared Euler
-  tensors \(H^{(1)}\) and \(H^{(2)}\), and records their trace checks in four
-  dimensions.
+- Defines the gravitational EFT action, records the curvature-squared Euler
+  tensors \(H^{(1)}\) and \(H^{(2)}\) in the metric-variation convention fixed
+  earlier in Volume XII, and gives the local variational calculation and trace
+  checks in four dimensions without presenting the duplicated formula block as
+  a new theorem.
 - Defines a semiclassical solution as a pair \((g,\omega)\), not merely a
   metric, and formalizes the backreaction datum.
 - Derives the linear-response kernel from the retarded stress-tensor
@@ -67,3 +69,8 @@ curvature, microscopic, and EFT scales.
   convention, causal support, microcausality, and the local diagonal terms
   coming from metric variation of composite fields and time-ordered-product
   extensions.
+- 2026-05-30: demoted the duplicated curvature-squared Euler-tensor block from
+  proposition/proof form to a variational-formula paragraph.  The formulae
+  remain because they fix the gravitational EFT coordinates used in the
+  semiclassical equation, but the theorem-level classification belongs to the
+  point-splitting stress-tensor chapter.
