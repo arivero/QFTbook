@@ -100,9 +100,10 @@ current QFT scope.
   top weights.
 - Adds the unitary Virasoro minimal-model layer: derives the level-one and
   level-two Gram matrices, states the unitary highest-weight classification as
-  a quoted theorem boundary, records the Kac-table identification and
-  triangular representative set, states the full unitary minimal-model
-  \(S,T\) modular data with quotient normalization, proves the finite
+  a quoted theorem boundary, exposes the Kac-determinant/positivity mechanism
+  behind that boundary, records the Kac-table identification and triangular
+  representative set, states the full unitary minimal-model \(S,T\) modular
+  data with quotient normalization, proves the finite
   \(SU(2)\)-quotient fusion rule from Verlinde, derives the Ising spin
   level-two null vector, and proves the Ising spin four-point BPZ/crossing
   calculation fixing
@@ -200,8 +201,9 @@ current QFT scope.
   minimal-model Kac-table arithmetic, Ising and tricritical-Ising weights,
   A-series minimal-model \(S\)-matrix orthogonality, \(S^2\), Verlinde
   integrality and agreement with the exact \(SU(2)\)-quotient fusion rule,
-  level-two Ising Gram determinant/null vector, Ising BPZ block differential
-  equation, and the crossing matrix fixing
+  level-two Ising Gram determinant/null vector, the level-two Kac determinant
+  roots \(h_{1,2}\) and \(h_{2,1}\), Ising BPZ block differential equation,
+  and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
@@ -287,3 +289,8 @@ current QFT scope.
   zero-mode trace finiteness, primary coordinate weight, descendant
   quasimodular mixing, the finite marked-state trace system from
   \(C_2\)-cofiniteness, and the remaining analytic modular-closure input.
+- 2026-05-30 unitary Virasoro classification boundary pass: expanded the
+  minimal-model classification theorem boundary with the Kac determinant
+  formula, the \(b^2=m/(m+1)\) interlacing mechanism, the all-level positivity
+  and exhaustion roles of the quoted theorem, and an exact level-two Kac-root
+  calculation check.

@@ -489,8 +489,47 @@ chiral modules.
 
 The theorem is the deep unitarity input.  The monograph uses it as a
 classification boundary, not as a substitute for the local representation
-calculations above.  A convenient nonredundant list of representatives is the
-triangular set
+calculations above.  The mechanism begins with the Kac determinant.  Introduce
+a real parameter \(b>0\) by
+\[
+  c=1-6(b^{-1}-b)^2,
+  \qquad
+  h_{r,s}(b)
+  =
+  \frac{(r b^{-1}-s b)^2-(b^{-1}-b)^2}{4}.
+\]
+At descendant level \(N\), the determinant of the Virasoro Verma Gram form is,
+up to a positive normalization depending on the chosen ordered monomial basis,
+\begin{equation}
+  \det M^{(N)}(c,h)
+  =
+  C_N
+  \prod_{\substack{r,s\ge1\\rs\le N}}
+  \bigl(h-h_{r,s}(b)\bigr)^{p(N-rs)},
+  \qquad
+  C_N>0,
+  \label{eq:kac-determinant-unitary-mechanism}
+\end{equation}
+where \(p(k)\) is the number of integer partitions of \(k\).  Formula
+\eqref{eq:kac-determinant-unitary-mechanism} is algebraic: it records exactly
+where a singular vector can occur in a Verma module.  Unitarity then imposes an
+inequality on every principal minor of every level Gram matrix.  For \(c<1\),
+these inequalities are so restrictive that the zero hyperplanes
+\(h=h_{r,s}(b)\) must occur in an interlacing pattern compatible with
+quotienting null submodules.  The full Friedan--Qiu--Shenker/Goddard--Kent--Olive
+argument proves that this happens precisely when
+\[
+  b^2=\frac{m}{m+1},
+  \qquad
+  m=3,4,\ldots,
+\]
+and the surviving irreducible highest weights are the Kac-table weights in
+\eqref{eq:unitary-minimal-kac-weight}.  Thus the quoted theorem supplies the
+all-level part of the classification: positivity of the null quotients at
+every descendant level and exhaustion of the \(0<c<1\) positive-energy
+highest-weight modules.
+
+A convenient nonredundant list of representatives is the triangular set
 \[
   1\le s\le r\le m-1.
 \]

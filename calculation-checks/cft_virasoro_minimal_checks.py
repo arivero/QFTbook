@@ -395,6 +395,19 @@ def check_level_two_ising_sigma_null_vector() -> None:
     assert_equal("Ising BPZ coefficient", -null_vector[1], Fraction(4, 3))
 
 
+def check_level_two_kac_determinant_roots() -> None:
+    for m in range(3, 12):
+        c_value = c_minimal(m)
+        for label in ((1, 2), (2, 1)):
+            h_value = h_minimal(m, *label)
+            matrix = gram_level_two(c_value, h_value)
+            assert_equal(
+                f"level-two Kac determinant root m={m} label={label}",
+                determinant_2(matrix),
+                Fraction(0),
+            )
+
+
 def bpz_log_derivative(t: Fraction, sign: int) -> Fraction:
     return Fraction(1, 8) / (1 - t * t) + Fraction(sign, 4) / (t * (1 + sign * t))
 
@@ -483,6 +496,7 @@ def main() -> None:
     check_unitary_minimal_modular_data_and_fusion()
     check_coulomb_gas_minimal_model_conventions()
     check_level_two_ising_sigma_null_vector()
+    check_level_two_kac_determinant_roots()
     check_ising_sigma_bpz_block_solutions()
     check_ising_crossing_matrix_fixes_sigma_sigma_epsilon()
     print("All unitary Virasoro minimal-model and Ising BPZ block checks passed.")
