@@ -129,8 +129,7 @@ Lagrangian framework.  It is an off-shell identity of local functions of the
 fields; no Euler--Lagrange equation has yet been imposed.
 \end{definition}
 
-\begin{proposition}[Noether identity for a variational symmetry]
-\label{prop:noether-identity-variational-symmetry}
+\paragraph{Noether identity for a variational symmetry.}
 Let \(R\) be a variational symmetry in the sense of
 Definition~\ref{def:infinitesimal-variational-symmetry}.  The local current
 \[
@@ -141,9 +140,10 @@ Definition~\ref{def:infinitesimal-variational-symmetry}.  The local current
   K_R^\mu
 \]
 obeys the off-shell identity
-\[
+\begin{equation}
   E_A(\mathcal L)R^A+\partial_\mu j_R^\mu=0.
-\]
+\label{eq:noether-identity-variational-symmetry}
+\end{equation}
 This identity is an equality in the algebra of local functions on the finite
 jet bundle used by the Lagrangian; it is not an equality only after integrating
 over spacetime.  The current is defined modulo an identically conserved
@@ -153,9 +153,6 @@ In particular, on every classical solution,
 \[
   \partial_\mu j_R^\mu=0 .
 \]
-\end{proposition}
-
-\begin{proof}
 The first variational identity from the preceding section is the load-bearing
 input.  It separates the variation of the Lagrangian density into the
 Euler--Lagrange part and a total derivative before imposing any equation of
@@ -190,7 +187,6 @@ Euler--Lagrange term vanishes componentwise, and the current is conserved.
 The improvement statement follows because
 \(\partial_\mu\partial_\nu B^{[\nu\mu]}=0\) by antisymmetry and commutativity of
 ordinary partial derivatives.
-\end{proof}
 
 \paragraph{Localized-parameter form of Noether's theorem.}
 Let \(\epsilon\in C_c^\infty(M)\), and localize the transformation by
@@ -483,7 +479,7 @@ Translation invariance of the scalar local density gives
   K_\xi^\mu=-\xi^\mu\mathcal L .
 \]
 Substituting \(R^A=-\xi^\nu\partial_\nu\phi^A\) and this \(K_\xi^\mu\) into
-Proposition~\ref{prop:noether-identity-variational-symmetry} gives
+the identity \eqref{eq:noether-identity-variational-symmetry} gives
 \[
   j_\xi^\mu
   =

@@ -411,7 +411,7 @@ Then, for every \(1\leq p<\infty\),
   \label{eq:spde-smooth-fourier-multiplier-covariance-lp}
 \end{equation}
 Consequently the hypotheses of
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits} hold for
+Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits} hold for
 every finite Wick order \(n\).
 \end{proposition}
 
@@ -524,12 +524,12 @@ Together with the logarithmic majorant
 for \(p=n\), and since a translation-invariant kernel \(K(x-y)\) has
 \(L^n(\mathbb T^2\times\mathbb T^2)\)-norm equal to the volume factor times
 its \(L^n(\mathbb T^2)\)-norm, the hypotheses of
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits} hold for
+Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits} hold for
 every finite Wick order \(n\).
 \end{proof}
 
-\begin{proposition}[Mixed-covariance criterion for common Wick limits]
-\label{prop:spde-mixed-covariance-common-wick-limits}
+\begin{lemma}[Mixed-covariance criterion for common Wick limits]
+\label{lem:spde-mixed-covariance-common-wick-limits}
 Let \(X\) be a centered Gaussian generalized field on \(\mathbb T^2\), and
 let \(X_N^\sigma\), \(\sigma\in\{A,B\}\), be centered Gaussian cutoff fields
 on the same probability space.  Write
@@ -567,7 +567,7 @@ Then, for every real \(f\in C^\infty(\mathbb T^2)\),
 \end{equation}
 where each Wick product is normal ordered with respect to the covariance of
 the Gaussian field appearing in it.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Let
@@ -710,7 +710,7 @@ The two-regulator statement is identical after replacing the preceding
 coordinate convergence by
 \eqref{eq:spde-common-wick-coordinate-l2-hypothesis}; a concrete covariance
 criterion for this hypothesis is
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
+Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits}.
 \(L^2\)-convergence
 implies convergence in probability by Chebyshev's inequality.  Finally,
 if \(\mathcal X_N^\sigma\to\mathcal X\) in probability and \(F\) is
@@ -2373,8 +2373,8 @@ product continuity identifies the equation in the topology where the
 enhanced noise is built, and the closedness proposition passes the energy
 inequality to that rough limit.
 
-\begin{proposition}[Global compact-continuity criterion for DPD solution maps]
-\label{prop:spde-dpd-global-compact-continuity-criterion}
+\begin{lemma}[Global compact-continuity criterion for DPD solution maps]
+\label{lem:spde-dpd-global-compact-continuity-criterion}
 Fix \(T>0\), \(0<\kappa<1\), and an exponent
 \(\alpha\in(0,2-\kappa)\) for which the local Besov fixed-point theorem
 applies.  Let
@@ -2421,7 +2421,7 @@ then
   Y_{D_N}\longrightarrow Y_D
   \quad\hbox{in }C([0,T];\mathcal C^\alpha).
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The full-time existence statement is the contradiction between the two
@@ -2556,7 +2556,7 @@ set of enhanced noises and initial conditions, and if the same
 \(\delta,\varepsilon\) satisfy
 \eqref{eq:spde-rough-forcing-absorption-condition} throughout that compact
 set, then the rough energy-to-Besov hypothesis in
-Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion} follows.
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion} follows.
 \end{proposition}
 
 \begin{proof}
@@ -2693,8 +2693,8 @@ limiting Markov semigroup on the same topology.  This is the exact
 invariant-law step that sits between cutoff Langevin stationarity and a
 Euclidean measure for QFT.
 
-\begin{proposition}[Sobolev compactness criterion for cutoff-field tightness]
-\label{prop:spde-sobolev-compactness-tightness}
+\begin{lemma}[Sobolev compactness criterion for cutoff-field tightness]
+\label{lem:spde-sobolev-compactness-tightness}
 Let \(0<\eta<\kappa\), \(p>0\), and let \(\{\nu_N\}\) be Borel probability
 measures on \(H^{-\kappa}(\mathbb T^2)\).  Suppose that each \(\nu_N\) is
 carried by \(H^{-\eta}(\mathbb T^2)\) and that
@@ -2716,7 +2716,7 @@ is compact in \(H^{-\kappa}(\mathbb T^2)\), and
 \[
   \nu_N(K_R^c)\leq C R^{-p}.
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Write the Fourier coefficients of \(\phi\) as \(\widehat\phi(k)\),
@@ -2863,7 +2863,7 @@ The geometric series over \(j\) converges because \(\eta>0\).  This proves
 the uniform second-moment bound.  Since each \(\gamma_N\) is carried by the
 finite-dimensional space spanned by \(\{e_\alpha:\alpha\in\mathcal I_N\}\),
 it is carried by \(H^{-\eta}\).
-Proposition~\ref{prop:spde-sobolev-compactness-tightness} with \(p=2\) now
+Lemma~\ref{lem:spde-sobolev-compactness-tightness} with \(p=2\) now
 gives tightness in \(H^{-\kappa}\).
 \end{proof}
 
@@ -2936,7 +2936,7 @@ Choose \(m\) with \(2m\geq ar\).  The elementary inequality
 \(x^{ar}\leq1+x^{2m}\) for \(x\geq0\) gives a uniform bound for the
 Gaussian moment in \eqref{eq:spde-lq-density-holder}.  Thus the
 \(H^{-\eta}\) \(r\)-th moments under \(\mu_N\) are uniformly bounded.
-Applying Proposition~\ref{prop:spde-sobolev-compactness-tightness} with any
+Applying Lemma~\ref{lem:spde-sobolev-compactness-tightness} with any
 positive \(r\) proves tightness in \(H^{-\kappa}\).
 \end{proof}
 
@@ -2976,7 +2976,7 @@ Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.  The
 assumed \(L^q\) density bound then gives a uniform interacting
 \(H^{-\eta}\) moment by
 Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment}, and
-Proposition~\ref{prop:spde-sobolev-compactness-tightness} turns that moment
+Lemma~\ref{lem:spde-sobolev-compactness-tightness} turns that moment
 bound into tightness in \(H^{-\kappa}\).
 \end{remark}
 
@@ -3050,7 +3050,7 @@ proves the normalized \(L^q\) density bound.  The tightness conclusion is
 then exactly
 Remark~\ref{rem:spde-phi-four-two-density-tightness-route}, or,
 equivalently, Lemma~\ref{lem:spde-lq-density-negative-sobolev-moment}
-followed by Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
+followed by Lemma~\ref{lem:spde-sobolev-compactness-tightness}.
 \end{proof}
 
 The preceding proposition proves the probabilistic consequence of Nelson
@@ -3065,8 +3065,8 @@ with a smooth ultraviolet regulator for which the stability theorem has
 already been established.  This is a regulator-specific constructive
 estimate, not a formal property of Wick ordering alone.
 
-\begin{proposition}[Bounded-cylinder comparison from a common density limit]
-\label{prop:spde-bounded-cylinder-common-density-limit}
+\begin{lemma}[Bounded-cylinder comparison from a common density limit]
+\label{lem:spde-bounded-cylinder-common-density-limit}
 Let \((\Omega,\mathcal F,\gamma)\) be a probability space.  For
 \(\sigma\in\{A,B\}\) and \(N\geq1\), let
 \[
@@ -3105,7 +3105,7 @@ and suppose \(Z>0\).  Then, for every bounded continuous
   \frac{\int F(X_N^B)W_N^B\,\dd\gamma}{Z_N^B}.
   \label{eq:spde-bounded-cylinder-common-density-limit}
 \end{equation}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The \(L^1\)-convergence of \(W_N^\sigma\) gives
@@ -3158,7 +3158,7 @@ limits, and the normalized limits follow from \(Z_N^\sigma\to Z>0\).
 \begin{corollary}[Bounded-cylinder comparison from a common potential]
 \label{cor:spde-bounded-cylinder-common-potential}
 In the setting of
-Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}, replace
+Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit}, replace
 the \(L^1\)-convergence assumption on the densities by the following
 potential-level assumptions.  Let
 \[
@@ -3202,7 +3202,7 @@ for every bounded continuous \(F:\R^r\to\C\).
 
 \begin{proof}
 It is enough to verify the density hypotheses of
-Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}.  Since
+Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit}.  Since
 the exponential map is continuous,
 \[
   e^{-V_N^\sigma}\longrightarrow e^{-V}
@@ -3264,7 +3264,7 @@ for all sufficiently large \(N\).  Hence
   \qquad \sigma=A,B .
 \]
 The hypotheses of
-Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} are now
+Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit} are now
 satisfied, and its conclusion is exactly
 \eqref{eq:spde-common-potential-cylinder-limit}.
 \end{proof}
@@ -3455,13 +3455,13 @@ inequality with the uniform \(L^q\) bound for \(\rho_N^\sigma\) gives
   \qquad (r<\infty).
 \]
 The compact embedding \(H^{-\eta}\hookrightarrow H^{-\kappa}\), quantified
-in Proposition~\ref{prop:spde-sobolev-compactness-tightness}, proves
+in Lemma~\ref{lem:spde-sobolev-compactness-tightness}, proves
 tightness in \(H^{-\kappa}\).
 
 It remains to prove the comparison statement.  By
 Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}
 and
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, the finite
+Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits}, the finite
 Wick-coordinate vectors of the two smooth regulators have common \(L^2\)
 limits.  Applying the fourth Wick-power convergence statement with
 \(f\equiv1\) gives
@@ -3481,7 +3481,7 @@ the stated comparison.
 In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
 smeared field or Wick-polynomial coordinates entering a bounded positive-time
 cylinder observable, and \(W_N^\sigma\) is the finite-cutoff interaction
-density.  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}
+density.  Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit}
 therefore proves the bounded-observable comparison once both regulators are
 constructed on a common Gaussian probability space and their Wick densities
 are shown to have the same \(L^1\) limit.
@@ -3552,7 +3552,7 @@ Consequently, any cutoff family for which the right hand side of
 \eqref{eq:spde-convex-cutoff-hminus-moment-bound} is uniformly bounded and
 whose \(H_N^{-\eta}\) spaces embed into a common \(H^{-\eta}\) approximation
 scheme satisfies the moment hypothesis in
-Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
+Lemma~\ref{lem:spde-sobolev-compactness-tightness}.
 \end{proposition}
 
 \begin{proof}
@@ -4185,14 +4185,14 @@ Assume the following three further analytic facts.
   Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} extends
   globally in stochastic time, and the cutoff solution maps converge to it
   uniformly on compact subsets of the enhanced-noise/initial-data space.
-  Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}
+  Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion}
   reduces this assertion, in the Besov formulation, to a blow-up
   alternative plus a rough energy-to-Besov a priori bound on compact
   enhanced-noise sets.
   \item The stationary laws \(\{\mu_N\}\) are tight in \(H^{-\kappa}\), and
   every weak limit \(\mu\) is carried by fields admitting the decomposition
   \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.  By
-  Proposition~\ref{prop:spde-sobolev-compactness-tightness}, this tightness
+  Lemma~\ref{lem:spde-sobolev-compactness-tightness}, this tightness
   follows from a cutoff-uniform moment bound in \(H^{-\eta}\) for some
   \(0<\eta<\kappa\); the interacting stationary cutoff family therefore
   requires an independent constructive estimate establishing that moment
@@ -4229,7 +4229,7 @@ Assume the following three further analytic facts.
   Remark~\ref{rem:spde-regulator-comparison-os-criterion}.  A
   sufficient condition for the bounded-cylinder comparison part is the
   common \(L^1\) density-limit criterion of
-  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}; a
+  Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit}; a
   still more primitive sufficient condition, stated in terms of convergence
   of the renormalized interaction potentials and a uniform \(L^p\) stability
   estimate for their exponential weights, is
@@ -4246,7 +4246,7 @@ Assume the following three further analytic facts.
   \eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
   The common Wick-limit hypothesis itself can be checked from mixed
   covariance convergence by
-  Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}; for
+  Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits}; for
   smooth compactly supported Fourier multiplier cutoffs, that covariance
   convergence is proved by
   Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
@@ -4293,7 +4293,7 @@ is precisely the global rough-energy and
 compact-continuity upgrade of the smooth estimate
 Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}; in the Besov
 topology this upgrade is organized by
-Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}.  Thus
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion}.  Thus
 the limiting Markov semigroup \(P_t\) is well-defined on the support of every
 weak stationary limit in
 Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(b)}, and
@@ -4336,10 +4336,10 @@ the Sobolev DPD local solution map, the smooth enhanced-noise energy
 inequality, and the abstract invariant-law passage.  The sharp global
 two-dimensional theorem still requires four further inputs: a rough
 energy-to-Besov bound strong enough, by
-Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}, to
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion}, to
 give global compact-continuity of the DPD solution map; a cutoff-uniform
 negative-Sobolev moment strong enough to imply tightness by
-Proposition~\ref{prop:spde-sobolev-compactness-tightness}; for Wick
+Lemma~\ref{lem:spde-sobolev-compactness-tightness}; for Wick
 \(\Phi^4_2\) this moment follows from the density criterion
 Remark~\ref{rem:spde-phi-four-two-density-tightness-route} once the
 uniform Nelson-type \(L^q\) density bound is proved, and
@@ -4352,7 +4352,7 @@ Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 abstract form of the latter implication is
 Remark~\ref{rem:spde-regulator-comparison-os-criterion}; the bounded
 cylinder comparison follows from
-Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} if the two
+Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit} if the two
 regulators have a common \(L^1\) interaction-density limit and identical
 limiting cylinder coordinates; by
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, the common
@@ -4368,7 +4368,7 @@ Remark~\ref{rem:spde-common-wick-coordinate-limits}; combined with the
 stability estimate, these inputs give the bounded comparison statement
 \eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
 The common Wick-limit hypothesis is reduced to a covariance estimate by
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, and for
+Lemma~\ref{lem:spde-mixed-covariance-common-wick-limits}, and for
 smooth Fourier multiplier cutoffs the needed covariance estimate follows
 from
 Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
@@ -4842,8 +4842,8 @@ BPHZ-renormalized random model with uniform analytic bounds, the convergence
 of those models as the mollifier is removed, and the nonlinear fixed-point
 argument in the corresponding modelled-distribution spaces.
 
-\begin{proposition}[Dyadic Cauchy criterion for random models]
-\label{prop:spde-random-model-cauchy-criterion}
+\begin{lemma}[Dyadic Cauchy criterion for random models]
+\label{lem:spde-random-model-cauchy-criterion}
 Fix a compact parabolic set \(K\), a regularity threshold \(\gamma>0\), and a
 finite homogeneity set \(A_{<\gamma}\).  Choose the test regularity
 \[
@@ -4902,7 +4902,7 @@ for all \(n\).  The limiting model satisfies
   \bigr)^p
   \leq C_N .
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Put
@@ -5010,13 +5010,13 @@ the tail bound
 proves \eqref{eq:spde-random-model-almost-sure-tail}.
 \end{proof}
 
-Proposition~\ref{prop:spde-random-model-cauchy-criterion} reduces the convergence
+Lemma~\ref{lem:spde-random-model-cauchy-criterion} reduces the convergence
 of a renormalized random model to two explicit analytic estimates: a uniform
 moment bound for the model seminorm and a dyadic Cauchy moment estimate for
 successive cutoff scales.  In a BPHZ construction these estimates are proved
 tree by tree, after the forest character has removed every divergent local
 subtree and after the remaining kernels have been bounded in the parabolic
-model norm.  The theorem above proves what those estimates imply; it does
+model norm.  The lemma above proves what those estimates imply; it does
 not prove the estimates for the concrete dynamic \(\Phi^4_3\) trees.
 
 \begin{lemma}[Finite Wiener-chaos moment bound]
@@ -5184,7 +5184,7 @@ estimate.  A concrete tree calculation must still prove
 the deterministic kernel bounds for every tested model coordinate and must
 upgrade the resulting pointwise coordinate estimates to the full model
 seminorm by spatial and scale regularity estimates.  Once those deterministic
-steps are done, Proposition~\ref{prop:spde-random-model-cauchy-criterion} turns
+steps are done, Lemma~\ref{lem:spde-random-model-cauchy-criterion} turns
 the coordinate estimates into convergence of the random model.
 
 \begin{proposition}[Dual-norm finite-chaos estimate]
@@ -6761,10 +6761,10 @@ coordinate.  Thus the condition \(\sigma>D/p\) is the precise high-moment
 requirement: by choosing \(p\) large enough, a positive regularity slack
 beats the scale entropy.
 
-\begin{hypothesis}[Finite-sector coordinate-control data]
+\begin{hypothesis}[Finite-sector coordinate data]
 \label{hyp:spde-finite-sector-coordinate-control-data}
 Fix \(K\), \(\gamma\), \(A_{<\gamma}\), and \(r\) as in
-Proposition~\ref{prop:spde-random-model-cauchy-criterion}.  Let
+Lemma~\ref{lem:spde-random-model-cauchy-criterion}.  Let
 \[
   Z_n=(\Pi^{(n)},\Gamma^{(n)}),\qquad n\geq1,
 \]
@@ -6886,7 +6886,7 @@ Consequently, \(Z_n\) satisfies
   A_{\rm ctrl}^p\left(\sum_{i\in I}\widetilde S_i\right)^p .
 \]
 Thus the limiting random model and the convergence estimates of
-Proposition~\ref{prop:spde-random-model-cauchy-criterion} follow.
+Lemma~\ref{lem:spde-random-model-cauchy-criterion} follow.
 
 Apply Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to each
 \(U_{n,i}\).  The hypotheses for \(U_{n,i}\) give
@@ -6922,7 +6922,7 @@ Together with \eqref{eq:spde-coordinate-controls-model-distance}, this gives
 \eqref{eq:spde-coordinate-model-distance-bound}.  Raising the two displayed
 \(L^p\) bounds to the \(p\)-th power gives the constants \(C_N\) and \(C_D\)
 in \eqref{eq:spde-random-model-cauchy-hypotheses}.  The final assertion is
-exactly Proposition~\ref{prop:spde-random-model-cauchy-criterion}.
+exactly Lemma~\ref{lem:spde-random-model-cauchy-criterion}.
 
 The finite-sector coordinate-control consequence fixes the
 logical boundary of the remaining BPHZ task.  A finite-dimensional
@@ -7349,7 +7349,7 @@ Insert \eqref{eq:spde-negative-sector-coordinate-scale-domination} into these
 two inequalities and apply the \(L^p\) triangle inequality.  This proves the
 two displayed bounds for \(N_n^-\) and \(D_n^-\).
 
-The hypotheses of Proposition~\ref{prop:spde-random-model-cauchy-criterion} are
+The hypotheses of Lemma~\ref{lem:spde-random-model-cauchy-criterion} are
 therefore satisfied with
 \[
   C_N=
@@ -8275,8 +8275,7 @@ in the strict negative sector is the BPHZ analysis of the nonlinear products
 \(XY\) and \(X^2Y\), where multiplication with the integrated field
 introduces additional contraction sectors.
 
-\begin{proposition}[Finite-cutoff nonlinear coordinate decomposition]
-\label{prop:spde-nonlinear-negative-coordinate-wick-decomposition}
+\paragraph{Finite-cutoff Wick decomposition for nonlinear negative coordinates.}
 Let \(X_\epsilon\) be a smooth centered Gaussian field on spacetime, with
 covariance
 \[
@@ -8334,9 +8333,8 @@ pieces.  The last line of
 \eqref{eq:spde-x2y-finite-cutoff-wick-decomposition} is the exact place
 where the local Taylor-subtraction gain of
 \eqref{eq:spde-taylor-subtraction-gain} enters the multiscale estimate.
-\end{proposition}
 
-\begin{proof}
+The verification is the two-variable Wick product identity.
 For two centered Gaussian variables \(A,B\), with
 \(C=\mathbb E[AB]\), the Wick product identity is
 \begin{equation}
@@ -8391,7 +8389,6 @@ By \eqref{eq:spde-c2-local-coordinate-for-x2y},
 \]
 Subtracting this local part from the preceding identity proves
 \eqref{eq:spde-x2y-finite-cutoff-wick-decomposition}.
-\end{proof}
 
 The formal homogeneity ledger is now tied to concrete finite-cutoff
 coordinates.  The analytic estimates still to be proved for
