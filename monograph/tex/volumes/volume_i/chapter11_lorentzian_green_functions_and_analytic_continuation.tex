@@ -415,22 +415,57 @@ function \(F\) on \(\mathcal N\) whose restrictions agree with \(F_+\) and
 \end{quotedtheorem}
 
 The quoted theorem is analytic infrastructure from several complex variables
-and distribution theory.  The proof uses three ingredients: polynomial tube
-bounds give tempered boundary values; equality of the two boundary
-distributions on the real edge removes the analytic obstruction normal to the
-edge; and the resulting local holomorphic representatives glue in the envelope
-of holomorphy of the two wedges.  The QFT-specific burden in this chapter is
-the verification of these hypotheses from the spectral condition and local
-commutativity.
+and distribution theory.  Its proof has a specific shape.  The polynomial
+tube bounds make the boundary-value maps
+\[
+  F_\pm\longmapsto b_\pm
+\]
+continuous from holomorphic functions with controlled normal growth to
+\(\mathcal D'(U)\).  After localizing to a ball \(B\Subset O\), the pair of
+wedge functions represents a boundary-value cocycle for the covering by
+\(B+\ii C_+\) and \(B+\ii C_-\).  The equality \(b_+=b_-\) says that this
+cocycle has no distributional jump on the real edge.  The edge-of-the-wedge
+exactness theorem for such polynomially bounded boundary values then replaces
+the pair by a single holomorphic representative on a complex neighborhood of
+the edge, and the maximal such representative is obtained by passing to the
+envelope of holomorphy.  The QFT-specific burden in this chapter is the
+verification of the two hypotheses that enter this analytic theorem: tube
+growth from the spectrum condition and equality of boundary distributions from
+local commutativity.
 
-In the Wightman application, the polynomial growth hypothesis comes from the
-tempered Fourier-Laplace construction above, and the equality of boundary
-values comes from local commutativity on the spacelike real edge.  The theorem
-therefore supplies the common holomorphic continuation of the permuted tube
-functions across those spacelike real regions.  Time-ordered Green functions
-are boundary values obtained by approaching real Lorentzian points from
-imaginary time orderings compatible with the chosen operator order.  For two
-points, this general construction is exactly the pole displacement
+\paragraph{Verification of the real-edge equality in the Wightman case.}
+Fix two adjacent field labels \(a,b\) and let \(O_{ab}\subset M^n\) be an open
+real set on which \(x_a-x_b\) is spacelike and no partial diagonal
+\(x_i=x_j\) is met.  Let \(W_{\cdots ab\cdots}\) and
+\(W_{\cdots ba\cdots}\) denote the two Wightman distributions that differ
+only by interchanging the adjacent fields \(\widehat\phi(x_a)\) and
+\(\widehat\phi(x_b)\).  If \(f\in C_c^\infty(O_{ab})\), a partition of unity
+subordinate to sufficiently small product neighborhoods writes the smeared
+matrix element as a finite sum in which the \(a\)- and \(b\)-smearings have
+spacelike separated supports.  Scalar microcausality gives
+\[
+  \widehat\phi(f_a)\widehat\phi(f_b)
+  =
+  \widehat\phi(f_b)\widehat\phi(f_a)
+\]
+on the common invariant domain of the field products appearing in the
+vacuum matrix element.  All other smeared fields are unchanged, hence
+\[
+  \langle W_{\cdots ab\cdots}-W_{\cdots ba\cdots},f\rangle=0,
+  \qquad f\in C_c^\infty(O_{ab}).
+\]
+The boundary values of the two corresponding tube functions therefore agree
+as distributions on \(O_{ab}\).  For fields with a \(\mathbb Z_2\)-grading,
+the same argument gives the Koszul sign determined by moving the two
+homogeneous fields past one another.  This is the real-edge input used by the
+distributional edge-of-the-wedge theorem at Jost configurations.
+
+The theorem therefore supplies the common holomorphic continuation of the
+permuted tube functions across those spacelike real regions.  Time-ordered
+Green functions are boundary values obtained by approaching real Lorentzian
+points from imaginary time orderings compatible with the chosen operator
+order.  For two points, this general construction is exactly the pole
+displacement
 \[
   \frac1{k^2+m^2-\ii\epsilon}
 \]

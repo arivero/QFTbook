@@ -192,6 +192,13 @@
   the distributional edge-of-the-wedge theorem explicit.  It remains quoted as
   pure analytic infrastructure, while the local QFT burden is identified as
   spectral tube growth plus distributional boundary equality from locality.
+- 2026-05-30 issue #695/EOW edge-equality pass: expanded the QFT-specific
+  verification of the real-edge equality used by the distributional
+  edge-of-the-wedge theorem.  The chapter now defines the spacelike open edge
+  for adjacent field labels, smears with tests supported there, uses scalar
+  microcausality on product neighborhoods, records the graded Koszul variant,
+  and separates this Wightman-domain step from the external several-complex-
+  variables gluing theorem.
 - 2026-05-24 issue #372 pass: displayed the equality of Euclidean and
   Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
   corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)
