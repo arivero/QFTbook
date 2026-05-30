@@ -51,6 +51,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\Delta_{\psi|\omega}^{it}\Delta_\omega^{-it}\) is left multiplication by
   \(u_t=\rho_\psi^{it}\rho_\omega^{-it}\), and this algebra unitary satisfies
   the cocycle law and implements the change of modular flow.
+- Works out trace-class Gibbs states as a finite/semifinite model for the
+  KMS strip condition, while keeping the modular KMS theorem as the
+  operator-algebraic statement relevant to type-III local QFT algebras.
 
 ## Figure Ledger
 
@@ -70,6 +73,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   density-matrix conjugation, the KMS boundary relation for the inverse
   modular flow in the chapter convention, and the noncommuting finite-density
   Connes cocycle identities.
+- `calculation-checks/kms_foundation_checks.py` verifies the finite
+  Gibbs-trace KMS strip boundary relation used as the trace-class model for
+  Definition~\ref{def:kms-state}.
 
 ## Audit Notes
 
@@ -143,3 +149,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   to examples.  The calculations and companion checks remain, but the text
   now presents them as finite type-I normalization models for the quoted
   operator-algebraic theorems rather than theorem-level QFT results.
+- 2026-05-30 finite Gibbs KMS anti-wrapper pass: demoted the trace-class
+  Gibbs KMS block from proposition form to an example.  The strip
+  verification remains explicit, but theorem-family rank is reserved for the
+  modular KMS property, where Tomita--Takesaki theory replaces trace
+  cyclicity in type-III local algebras.

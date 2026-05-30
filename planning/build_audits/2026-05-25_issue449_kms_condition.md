@@ -15,9 +15,11 @@
 - Added Definition~\ref{def:kms-state}: the \(\beta\)-KMS condition as a
   bounded strip-analytic boundary-value condition for a state on a
   \(C^*\)- or von Neumann algebra with a one-parameter automorphism group.
-- Added Proposition~\ref{prop:gibbs-trace-kms}, deriving KMS from an ordinary
+- Added the finite trace-class Gibbs example, deriving KMS from an ordinary
   trace-class Gibbs state and displaying the two trace-cyclicity moves that
-  become the KMS boundary condition in infinite volume.
+  become the KMS boundary condition in infinite volume.  This block was
+  later demoted from proposition form because it is a normalization model for
+  the KMS definition, not a theorem-level QFT claim.
 - Added Theorem~\ref{thm:modular-kms-property}, stating and deriving the
   Tomita--Takesaki modular KMS property, including the convention conversion
   between the standard physical KMS strip and the modular group

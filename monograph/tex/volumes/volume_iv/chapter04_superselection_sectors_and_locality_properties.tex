@@ -819,8 +819,8 @@ permuted.  This distinction is essential in infinite volume, where the trace
 of \(\ee^{-\beta H}\) usually does not exist but the local state may still
 satisfy \eqref{eq:kms-boundary-condition}.
 
-\begin{proposition}[Gibbs traces satisfy KMS]
-\label{prop:gibbs-trace-kms}
+\begin{example}[Gibbs traces satisfy KMS]
+\label{ex:gibbs-trace-kms}
 Let \(H\) be self-adjoint and suppose that
 \(\ee^{-\beta H}\) is trace class.  On the algebra of bounded operators for
 which the following expressions are defined by trace-class products, set
@@ -834,9 +834,9 @@ which the following expressions are defined by trace-class products, set
   \alpha_t(A)=\ee^{\ii tH}A\ee^{-\ii tH}.
 \]
 Then \(\omega_\beta\) is a \(\beta\)-KMS state for \(\alpha\).
-\end{proposition}
+\end{example}
 
-\begin{proof}
+\paragraph{Verification of the trace-class KMS strip.}
 For bounded \(A,B\), define
 \[
   F_{A,B}(z)
@@ -884,7 +884,6 @@ one \(\ee^{-\beta H}\).  The third uses cyclicity again and the commutation of
 \(\ee^{-\beta H}\) with \(\ee^{\ii tH}\).  These two trace-cyclicity moves are
 precisely what the KMS boundary condition retains after the literal Gibbs
 trace ceases to exist.
-\end{proof}
 
 \begin{theorem}[Modular KMS property]
 \label{thm:modular-kms-property}
@@ -927,7 +926,7 @@ definition of \(\sigma_t\).  The upper boundary follows from
 \]
 or, equivalently, from moving a vector through the closed graph of \(S\):
 the operation that is trace cyclicity in
-Proposition~\ref{prop:gibbs-trace-kms} is replaced by the Tomita relation
+Example~\ref{ex:gibbs-trace-kms} is replaced by the Tomita relation
 between \(\mathcal R\) and \(\mathcal R'\).  Thus
 \[
   \langle\vac,\sigma_{t+\ii}(A)B\vac\rangle

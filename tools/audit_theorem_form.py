@@ -218,6 +218,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"GKO coset stress tensor and central charge|"
     r"Regulated meaning of the configuration path integral|"
     r"Finite phase-space time-sliced kernel|"
+    r"Gibbs traces satisfy KMS|"
     r"Finite standard form of a faithful matrix state|"
     r"Finite standard-form Connes cocycle|"
     r"Universal-cover necessity|"
