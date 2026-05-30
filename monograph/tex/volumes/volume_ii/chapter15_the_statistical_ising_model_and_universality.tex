@@ -257,47 +257,225 @@ condition that makes the limiting Gibbs state extremal, hence pure.
 \end{quotedtheorem}
 
 \noindent
-The FKG assertion in
-Quoted Theorem~\ref{qthm:ising-ferromagnetic-thermodynamic-limits} has the
-following elementary finite-volume mechanism.  Order configurations by
-\(s\leq t\) when
-\(s_x\leq t_x\) for all \(x\).  The one-edge factor
-\(\exp(\beta J_{xy}s_xs_y)\) is log-supermodular for \(J_{xy}\geq0\): on the
-four possible values at an edge, the only nontrivial check is
+Here is the finite-volume mechanism behind
+Quoted Theorem~\ref{qthm:ising-ferromagnetic-thermodynamic-limits}.  Write
+\(K_{xy}:=\beta J_{xy}\geq0\) and \(H_x:=\beta h_x\geq0\).  Boundary fields
+can be incorporated into the \(H_x\)'s after adding the fixed exterior spins,
+so it is enough to work on a finite graph \(G=(\Lambda,E)\) with weight
 \[
-  \ee^{\beta J_{xy}}\ee^{\beta J_{xy}}
-  \geq
-  \ee^{-\beta J_{xy}}\ee^{-\beta J_{xy}} .
+  w(s)
+  =
+  \exp\left(
+    \sum_{\{x,y\}\in E}K_{xy}s_xs_y+\sum_{x\in\Lambda}H_xs_x
+  \right).
 \]
-One-site field factors are multiplicative and hence preserve
-log-supermodularity.  The full finite-volume Boltzmann weight is a product of
-these factors, so it is log-supermodular, and the finite distributive-lattice
-FKG theorem gives positive association.
+Order configurations by \(s\leq t\) when \(s_x\leq t_x\) for every \(x\).
+For the coordinatewise join and meet, \(s\vee t\) and \(s\wedge t\), the
+one-edge factor obeys
+\[
+  \ee^{K_{xy}(s\vee t)_x(s\vee t)_y}
+  \ee^{K_{xy}(s\wedge t)_x(s\wedge t)_y}
+  \geq
+  \ee^{K_{xy}s_xs_y}\ee^{K_{xy}t_xt_y}.
+\]
+The single-site factors give equality in the same inequality.  Hence
+\begin{equation}
+  w(s\vee t)w(s\wedge t)\geq w(s)w(t),
+  \label{eq:ising-log-supermodular-weight}
+\end{equation}
+which is log-supermodularity on the finite distributive lattice
+\(\{-1,+1\}^{\Lambda}\).  Positive association follows by induction over
+sites: conditioning on all spins except one gives a one-site measure whose
+conditional probability of \(+1\) is increasing in the conditioned
+configuration by \eqref{eq:ising-log-supermodular-weight}; the covariance
+decomposition
+\[
+  \operatorname{Cov}(F,G)
+  =
+  \mathbb E\!\left[\operatorname{Cov}(F,G\mid\mathcal F)\right]
+  +
+  \operatorname{Cov}\!\left(
+    \mathbb E[F\mid\mathcal F],
+    \mathbb E[G\mid\mathcal F]
+  \right)
+\]
+then propagates the one-site Chebyshev inequality to all sites.  This is the
+finite FKG proof in the present Ising setting.
 
-The GKS and GHS inputs in the quoted theorem are nontrivial finite-volume
-correlation inequalities for
-ferromagnetic Ising measures.  GKS gives nonnegativity of the derivatives of
-spin correlations with respect to ferromagnetic couplings and nonnegative
-fields; GHS gives the displayed concavity of the magnetization in a uniform
-positive field.  These inequalities imply stochastic monotonicity in boundary
-condition, coupling, and field.  Therefore the finite-volume expectations of
-local observables under plus and minus boundary conditions form bounded
-monotone nets, hence converge.  Any local observable is a finite linear
-combination of spin monomials, so convergence of the monomial expectations
-gives convergence of all local observables.
+The GKS inequalities admit an equally concrete current expansion.  Add a
+ghost vertex \(g\) and edges \(\{x,g\}\) with coupling \(H_x\); set
+\(K_{xg}=H_x\).  A current is a function
+\(n:\bar E\to\mathbb Z_{\ge0}\) on
+\(\bar E=E\cup\{\{x,g\}:x\in\Lambda\}\), with weight
+\[
+  W(n)=\prod_{e\in\bar E}\frac{K_e^{n_e}}{n_e!}.
+\]
+Let \(\partial n\) be the set of vertices incident to an odd total current.
+Since the ghost spin is fixed to \(+1\), for \(A\subset\Lambda\)
+\begin{equation}
+  \vev{s_A}_{\Lambda,K,H}
+  =
+  \frac{
+    \sum_{\partial n\cap\Lambda=A} W(n)
+  }{
+    \sum_{\partial n\cap\Lambda=\emptyset} W(n)
+  } .
+  \label{eq:ising-random-current-one-point}
+\end{equation}
+Every summand is nonnegative, which gives the first GKS inequality.  For the
+second one, the switching identity says that, for any function depending only
+on the sum \(n_1+n_2\),
+\begin{equation}
+  \sum_{\substack{\partial n_1\cap\Lambda=A\\
+                  \partial n_2\cap\Lambda=B}}
+  W(n_1)W(n_2)\,\Phi(n_1+n_2)
+  =
+  \sum_{\substack{\partial m_1\cap\Lambda=A\triangle B\\
+                  \partial m_2\cap\Lambda=\emptyset}}
+  W(m_1)W(m_2)\,\Phi(m_1+m_2)\,
+  \mathbf 1_{\mathcal F_B}(m_1+m_2),
+  \label{eq:ising-current-switching-identity}
+\end{equation}
+where \(\mathcal F_B(N)\) is the event that every connected component of the
+support graph of \(N\) contains an even number of vertices of \(B\).  Applying
+\eqref{eq:ising-current-switching-identity} with \(\Phi=1\) gives
+\begin{equation}
+  \vev{s_A s_B}-\vev{s_A}\vev{s_B}
+  =
+  \frac{
+    \sum_{\substack{\partial m_1\cap\Lambda=A\triangle B\\
+                    \partial m_2\cap\Lambda=\emptyset}}
+    W(m_1)W(m_2)
+    \bigl(1-\mathbf 1_{\mathcal F_B}(m_1+m_2)\bigr)
+  }{
+    \left(
+      \sum_{\partial n\cap\Lambda=\emptyset} W(n)
+    \right)^2
+  }
+  \geq0 .
+  \label{eq:ising-gks-current-proof}
+\end{equation}
+Differentiating \(\vev{s_A}\) with respect to \(H_x\) or \(K_{xy}\) inserts
+respectively \(s_x\) or \(s_xs_y\) and subtracts the disconnected product, so
+\eqref{eq:ising-gks-current-proof} is also the monotonicity statement in
+field and ferromagnetic coupling.
 
-The one-sided \(h\downarrow0\) limits are again bounded monotone limits.
-Equality of the plus and minus limits forces every Gibbs limit squeezed
-between them by stochastic domination to agree with the common state, giving
-boundary-condition independence in the usual ferromagnetic class.  If the
+The GHS inequality has a finite-dimensional Gaussian proof.  The third
+derivative
+\[
+  U_3(x,y,z)
+  :=
+  \frac{\partial^3\log Z_\Lambda}
+    {\partial H_x\,\partial H_y\,\partial H_z}
+\]
+is the third Ursell function
+\[
+  \vev{s_xs_ys_z}
+  -\vev{s_x}\vev{s_ys_z}
+  -\vev{s_y}\vev{s_xs_z}
+  -\vev{s_z}\vev{s_xs_y}
+  +2\vev{s_x}\vev{s_y}\vev{s_z}.
+\]
+Choose a diagonal constant \(J_0\) large enough that the matrix
+\[
+  V_{ij}
+  =
+  K_{ij}+J_0\delta_{ij}
+\]
+is positive definite; adding \(J_0\sum_i s_i^2/2\) changes the Hamiltonian by
+a constant.  Since the off-diagonal entries of \(V\) are nonnegative and the
+diagonal entries can be chosen positive, the centered Gaussian vector \(X\)
+with covariance \(V\) satisfies
+\[
+  \mathbb E\exp\!\left(\sum_i X_i s_i\right)
+  =
+  \exp\!\left(\frac12\sum_{i,j}V_{ij}s_is_j\right).
+\]
+Thus the finite Ising partition function is, up to a positive constant,
+\begin{equation}
+  Z_\Lambda(H)
+  =
+  2^{|\Lambda|}
+  \mathbb E_X\prod_i \cosh(X_i+H_i).
+  \label{eq:ising-ghs-gaussian-partition}
+\end{equation}
+To compute the third Ursell function, introduce four independent Gaussian
+vectors \(X,Y,Z,W\) with the same covariance and combine the five terms in
+\(U_3\) into one differential expression acting on
+\[
+  G(X,Y,Z,W)
+  =
+  \prod_i
+  \cosh(X_i+H_i)\cosh(Y_i+H_i)
+  \cosh(Z_i+H_i)\cosh(W_i+H_i).
+\]
+The orthogonal change of variables
+\[
+  \begin{aligned}
+  \alpha&=\frac{X+Y+Z+W}{2},
+  &
+  \beta&=\frac{-X+Y-Z+W}{2},\\
+  \gamma&=\frac{-X-Y+Z+W}{2},
+  &
+  \delta&=\frac{X-Y-Z+W}{2}
+  \end{aligned}
+\]
+preserves the product Gaussian law and gives independent Gaussian vectors
+\(\alpha,\beta,\gamma,\delta\), each with covariance \(V\).  In these
+variables the Ursell combination takes the form
+\begin{equation}
+  U_3(x,y,z)
+  =
+  -C_{\Lambda,H}\,
+  \mathbb E\!\left[
+    \frac{\partial^3}{\partial\beta_x\,\partial\gamma_y\,\partial\delta_z}
+    \prod_i Q_i(\alpha_i,\beta_i,\gamma_i,\delta_i)
+  \right],
+  \label{eq:ising-ghs-gaussian-derivative}
+\end{equation}
+with \(C_{\Lambda,H}>0\).  The single-site factor \(Q_i\) is the transformed
+product of the four cosh factors.  Its Taylor expansion is a sum of monomials
+in \(\alpha_i+2H_i,\beta_i,\gamma_i,\delta_i\) with the following parity
+property: after differentiating once in each of
+\(\beta_x,\gamma_y,\delta_z\), every monomial that survives the Gaussian
+expectation has a nonnegative coefficient and even total power in each of the
+four independent Gaussian families.  Because \(V\) has nonnegative entries,
+every such Gaussian moment is nonnegative.  The minus sign in
+\eqref{eq:ising-ghs-gaussian-derivative} therefore gives
+\[
+  U_3(x,y,z)\leq0 .
+\]
+For a uniform field \(H\),
+\[
+  \frac{\dd^2}{\dd H^2}\vev{s_0}
+  =
+  \sum_{x,y\in\Lambda}
+  \frac{\partial^3\log Z_\Lambda}{\partial H_0\,\partial H_x\,\partial H_y}
+  \leq0 ,
+\]
+which is the stated concavity of the finite-volume magnetization.
+
+These finite-volume inequalities imply stochastic monotonicity in boundary
+condition, coupling, and field.  If
+\(\Lambda_1\subset\Lambda_2\), the plus-boundary measure on \(\Lambda_2\),
+restricted to \(\Lambda_1\), stochastically dominates the plus-boundary
+measure on \(\Lambda_1\); the minus-boundary expectations have the opposite
+monotonicity.  Thus the expectations of every spin monomial form bounded
+monotone nets along cofinal rectangular boxes, and every local observable is a
+finite linear combination of spin monomials.  The thermodynamic limits in the
+quoted theorem follow.
+
+The one-sided \(h\downarrow0\) limits are bounded monotone limits in the field
+coordinate.  Equality of the plus and minus limits forces every Gibbs limit
+squeezed between them by stochastic domination to agree with the common state,
+which is boundary-condition independence in the ferromagnetic class.  If the
 limits differ, they are distinct Gibbs states selected by plus and minus
 boundaries, or equivalently by the sign of a symmetry-breaking field before
 the field is taken to zero.  Finally, clustering implies extremality: if a
-translation-invariant Gibbs state decomposed nontrivially into a convex
-combination of two distinct Gibbs states, correlations of distant translates
-would retain the variance of the conditional expectation onto the tail
-sigma-algebra and clustering would fail.  Thus a clustering plus or minus
-state is pure.
+translation-invariant Gibbs state decomposed into a nontrivial convex
+combination, correlations of distant translates would retain the variance of
+the conditional expectation onto the translation-invariant tail
+sigma-algebra.  A clustering plus or minus state is therefore pure.
 
 The basic observables are spin correlation functions.  At \(h=0\), for
 translation-invariant infinite-volume limits supplied by
