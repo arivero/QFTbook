@@ -215,9 +215,9 @@ motivational checks, not foundations.
   `S^{III,II}(w,y)=(w-v(y)-i/(2g))/(w-v(y)+i/(2g))`.
 - Displays the level-III rational self-scattering factor following this
   nesting step.
-- Proves the single-copy closed-chain nested Bethe-Yang equations by
-  transporting level-I, level-II, and level-III excitations around their
-  corresponding ZF chains; records the nesting numbers
+- Records the single-copy closed-chain nested Bethe-Yang equations as
+  periodicity bookkeeping for level-I, level-II, and level-III excitations
+  transported around their corresponding ZF chains; records the nesting numbers
   `K^I=N_1+N_2+N_3+N_4`, `K^II=2N_2+N_3+N_4`, and `K^III=N_2+N_4`.
 - Adds a string-basis frame ledger for `S^{I,I}`, `S^{II,I}`,
   `S^{III,II}`, and `S^{III,III}`, and states the reciprocal auxiliary
@@ -393,3 +393,13 @@ crossed Zhukovsky sheets.
 - The monograph text does not import a claim solely by citation.  The
   downloaded sources were used to check convention-sensitive wording about
   ABA, mirror branches, and wrapping assumptions against the stringbook spine.
+
+## Audit Notes
+
+- 2026-05-30 anti-wrapper pass: demoted `Single-copy nested Bethe--Yang
+  equations` from proposition form to a periodicity paragraph.  The displayed
+  equation `eq:planar-n4-single-copy-nested-bethe-yang` and the nesting-number
+  ledger remain, but the surrounding text now says explicitly that this is
+  Bethe--Yang bookkeeping for already-defined nested scattering factors, not an
+  additional theorem and not mirror TBA.  The theorem-form harness rejects the
+  old title if it reappears as a theorem-family wrapper.

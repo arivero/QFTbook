@@ -1912,14 +1912,14 @@ A pair of level-III roots scatters by
   \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.
 \]
 
-\begin{proposition}[Single-copy nested Bethe--Yang equations]
-\label{prop:planar-n4-single-copy-nested-bethe-yang}
+\paragraph{Single-copy nested Bethe--Yang periodicity.}
 In the spin-chain basis for one \(\mathfrak{su}(2|2)_{\rm c}\) copy, let
 \(K^{\rm I}\), \(K^{\rm II}\), and \(K^{\rm III}\) be the numbers of
 level-I momenta \(p_k\), level-II roots \(y_a\), and level-III roots \(w_b\).
 Assume the asymptotic long-chain regime and the absence of singular
-coincidences among the displayed factors.  The closed-chain periodicity
-conditions are
+coincidences among the displayed factors.  The following equations are the
+closed-chain periodicity conditions for the three nested
+Zamolodchikov--Faddeev chains:
 \begin{equation}
 \begin{aligned}
   \ee^{\ii p_kL}
@@ -1956,28 +1956,23 @@ For a state with \(N_1,N_2,N_3,N_4\) excitations of types
   K^{\rm II}=2N_2+N_3+N_4,\qquad
   K^{\rm III}=N_2+N_4.
 \]
-\end{proposition}
-
-\begin{proof}
-The first equation is obtained by transporting the \(k\)-th level-I magnon
-once around the trace.  It crosses every other physical magnon and every
-level-II defect, hence the two products in the first line.  The second
-equation transports the \(a\)-th level-II defect around the level-II chain.
-Crossing a physical magnon in the reverse direction contributes
-\(S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}\), while crossing a level-III defect
-contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third equation
-transports the \(b\)-th level-III defect around the level-III chain: each
-level-II defect is crossed in the reverse direction, giving
-\(S^{{\rm III},{\rm II}}(w_b,y_a)^{-1}\), and each other level-III defect is
-crossed in the forward direction, giving
-\(S^{{\rm III},{\rm III}}(w_c,w_b)\).  The three equations are therefore
-the Bethe--Yang periodicity conditions for the three Zamolodchikov--Faddeev
-chains, not thermodynamic Bethe ansatz.  The formulas for
-\(K^{\rm I},K^{\rm II},K^{\rm III}\) follow from the nesting content of each
-letter: \(\phi_1\) contributes only level I, \(\psi_1\) contributes one
-level-II root, \(\psi_2\) contributes one level-II and one level-III root,
-and \(\phi_2\) is the two-level-II contact state carrying one level-III root.
-\end{proof}
+The first line records transport of the \(k\)-th level-I magnon once around
+the trace: it crosses every other physical magnon and every level-II defect.
+The second line records transport of the \(a\)-th level-II defect around the
+level-II chain; crossing a physical magnon in the reverse direction
+contributes \(S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}\), while crossing a
+level-III defect contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third
+line records transport of the \(b\)-th level-III defect around the level-III
+chain; each level-II defect is crossed in the reverse direction and each other
+level-III defect is crossed in the forward direction.  Thus
+\eqref{eq:planar-n4-single-copy-nested-bethe-yang} is the Bethe--Yang
+periodicity bookkeeping for the already-defined nested scattering factors,
+not an additional theorem and not the thermodynamic Bethe ansatz.  The
+relations among \(K^{\rm I},K^{\rm II},K^{\rm III}\) and
+\(N_1,N_2,N_3,N_4\) are the nesting content of the letters:
+\(\phi_1\) contributes only level I, \(\psi_1\) contributes one level-II root,
+\(\psi_2\) contributes one level-II and one level-III root, and \(\phi_2\) is
+the two-level-II contact state carrying one level-III root.
 
 The dynamic spin-chain basis contains explicit \(Z^\pm\) markers.  In the
 string basis one absorbs half of this marker into each boson:

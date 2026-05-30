@@ -282,6 +282,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"NSVZ beta function as a coordinate identity|"
     r"Saturated pure-SYM Berezin coefficient|"
     r"Level-one descendant Gram positivity|"
+    r"Single-copy nested Bethe--Yang equations|"
     r"Two-dimensional conformal Killing fields|"
     r"Spectral meaning of the horizon functional|"
     r"Conformal Borel map for one negative cut|"
