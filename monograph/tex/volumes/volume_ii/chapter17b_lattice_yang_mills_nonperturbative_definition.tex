@@ -901,45 +901,15 @@ The integer \(t\) is Euclidean time in lattice units.  The connected
 subtraction removes the vacuum term; without it the scalar \(0^{++}\) channel
 would be dominated by the identity.
 
-In the ideal finite-basis case one obtains an exact algebraic extraction of
-the energies.  Assume that, for \(n=1,\ldots,m\), the overlap matrix
-\(Z_i^{(n)}\) is invertible and that the operator subspace has zero overlap
-with all higher states.  Then the generalized eigenvalue problem
-\begin{equation}
-  C(t)v_n(t,t_0)
-  =
-  \lambda_n(t,t_0)C(t_0)v_n(t,t_0),
-  \qquad t>t_0,
-  \label{eq:lattice-glueball-gevp}
-\end{equation}
-has eigenvalues
-\begin{equation}
-  \lambda_n(t,t_0)=\ee^{-aE_n(t-t_0)}.
-  \label{eq:lattice-glueball-gevp-eigenvalues}
-\end{equation}
-Indeed, under the stated finite-basis hypothesis,
-\[
-  C(t)=Z\,D(t)\,Z^\dagger,\qquad
-  D(t)=\operatorname{diag}(\ee^{-aE_1t},\ldots,\ee^{-aE_mt}).
-\]
-Since \(Z\) is invertible,
-\[
-  C(t_0)^{-1}C(t)
-  =
-  (Z^\dagger)^{-1}D(t_0)^{-1}D(t)Z^\dagger .
-\]
-This matrix is similar to \(D(t_0)^{-1}D(t)\), hence has eigenvalues
-\(\ee^{-aE_n(t-t_0)}\).
-
-When higher states have nonzero overlap with the chosen operator basis, the
-GEVP is no longer exactly diagonalized by the first \(m\) spectral terms.
-One then writes \(C(t)=Z_mD_m(t)Z_m^\dagger+R_m(t)\), where \(R_m(t)\) is a
-positive spectral remainder.  A quantitative extraction theorem requires an
-explicit operator norm bound on \(C(t_0)^{-1/2}R_m(t)C(t_0)^{-1/2}\) and the
-condition number of the retained overlap matrix; with such data, ordinary
-finite-dimensional perturbation estimates give corrections suppressed by the
-first omitted energy gap.  The present proposition states only the exact
-finite-basis algebra.
+The generalized eigenvalue problem used to extract finite-volume energies
+from a correlator matrix is a general finite-regulator method, not a special
+property of pure Yang--Mills theory.  Its exact finite-state algebra, basis
+covariance, and residual criteria are developed in
+Section~\ref{sec:lattice-glueball-correlator-gevp}.  In the present chapter
+the Yang--Mills-specific content is the construction of gauge-invariant
+Wilson-loop source spaces, the cubic-group channel assignment, reflection
+positivity of the chosen lattice regulator, and the continuum/infinite-volume
+limit that turns finite-regulator energies into pure-glue spectral data.
 
 The continuum spin labels \(J^{PC}\) are recovered only after the cubic
 lattice irreducible representations have been compared across lattice
@@ -983,8 +953,9 @@ A pure-glue spectral continuum datum consists of:
   \item a reflection-positive lattice action and scaling trajectory;
   \item a basis of gauge-invariant operators in each cubic \(PC\) channel,
   together with smearing or blocking maps stated as regulator definitions;
-  \item finite-volume energies extracted from
-  \eqref{eq:lattice-glueball-gevp};
+  \item finite-volume energies extracted from a declared correlator-matrix
+  method such as the GEVP of
+  Section~\ref{sec:lattice-glueball-correlator-gevp};
   \item continuum and infinite-volume extrapolations of dimensionless ratios
   such as \(M_{J^{PC}}/\sqrt\sigma\) or \(M_{J^{PC}}/\Lambda_{\overline{\rm MS}}\);
   \item a systematic-error budget for excited-state contamination, volume

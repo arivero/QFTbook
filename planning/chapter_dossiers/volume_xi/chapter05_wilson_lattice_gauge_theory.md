@@ -46,11 +46,12 @@
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
   cancellation, with a companion CSV analysis script for effective-mass and
   Creutz-ratio extraction.
-- Glueball correlator matrices as finite transfer-matrix spectral objects,
-  including vacuum-subtracted gauge-invariant sources, cubic-channel
-  projection, exact finite-state GEVP extraction, a whitened residual
-  criterion for controlled time windows, and a companion GEVP analysis
-  script.
+- Finite-volume correlator matrices and the GEVP as a general
+  finite-regulator spectral-extraction method, using glueball sources as the
+  running example; includes vacuum-subtracted gauge-invariant sources,
+  cubic-channel projection, exact finite-state GEVP extraction, source-basis
+  covariance, a whitened residual criterion for controlled time windows, and
+  a companion GEVP analysis script.
 - Wilson/gradient flow as a finite-dimensional ODE on the compact link
   manifold, including link-gradient definition, global existence,
   gauge covariance, action monotonicity, continuum linearized heat-kernel
@@ -168,11 +169,13 @@
 17. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
-18. Glueball spectroscopy at finite cutoff is a transfer-matrix spectral
-    problem for gauge-invariant time-slice sources.  In an exact finite-state
-    source subspace, the GEVP eigenvalues are exactly
-    \(e^{-a(n-n_0)E_\alpha}\); with higher-state contamination, a plateau
-    claim requires a residual bound after whitening by \(C(n_0)\).
+18. Finite-volume spectroscopy at finite cutoff is a transfer-matrix spectral
+    problem for time-slice sources in a declared symmetry channel.  In an
+    exact finite-state source subspace, the GEVP eigenvalues are exactly
+    \(e^{-a(n-n_0)E_\alpha}\), are invariant under invertible source-basis
+    changes, and with higher-state contamination require a residual bound
+    after whitening by \(C(n_0)\).  Glueball sources are the running example,
+    not the scope of the method.
 19. Wilson flow at finite lattice spacing is the negative-gradient ODE on
    \(G^E\); compactness gives global existence, gauge invariance gives
    covariance, and the chain rule gives
@@ -315,3 +318,8 @@
   for glueball correlator matrices, including exact finite-state extraction,
   a whitened residual criterion, and a theorem-anchored correlator-matrix
   analysis script.
+- 2026-05-30 general-method placement pass: reframed the GEVP section as the
+  general finite-volume correlator-matrix method, added source-basis
+  covariance, and clarified that pure Yang--Mills glueballs are only the
+  running example.  QCD and pure-SYM chapters now reference this section
+  rather than duplicating the linear algebra.

@@ -59,6 +59,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   polar-decomposition route to the modular conjugation.  This strengthens the
   quoted theorem boundary without claiming that the full BW theorem has been
   reproved from bare AQFT axioms.
+- 2026-05-30 Bisognano--Wichmann dequote pass: removed the wedge BW
+  `quotedtheorem` wrapper.  The general theorem is now an explicit boundary
+  remark, while the local proved result is a theorem on the Wightman
+  polynomial-core wedge KMS strip.  The proof spells out the mostly-plus
+  tube-analyticity damping sign, the complex-boost wedge map, graded locality,
+  and the remaining closed-Tomita-operator domain theorem that is still part
+  of the external BW boundary.
 - 2026-05-30 nuclearity/split mechanism pass: expanded the phase-space
   theorem discussion with the normal tensor-product criterion for split
   inclusions, the way energy-damped nuclearity controls bilinear functionals

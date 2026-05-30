@@ -700,3 +700,11 @@ The chapter must define and derive:
   reduction to the Gegenbauer recurrence; `qcd_exclusive_pion_checks.py`
   now verifies the exact kernel eigenvalue through the rational polynomial
   action rather than checking only anomalous-dimension signs.
+- 2026-05-30 general-method placement pass: removed the local GEVP
+  basis-covariance proof from the QCD spectroscopy discussion and redirected
+  it to the general finite-volume correlator-matrix section in Volume XI.
+  The QCD chapter now keeps only the QCD-specific content: interpolating
+  operator-source families, source-subspace interpretation, finite-volume
+  scattering map, and continuum/chiral/heavy-quark/infinite-volume
+  extrapolation data.  The spectroscopy wording avoids overloading the
+  separate contact-term/source-coordinate notion of a source chart.

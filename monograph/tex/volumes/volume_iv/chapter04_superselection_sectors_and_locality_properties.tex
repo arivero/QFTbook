@@ -528,8 +528,8 @@ modular flow for any local algebra whose vacuum vector is standard.  The QFT
 work begins after this theorem: one must prove Reeh--Schlieder or another
 standardness criterion for the local algebra, and one must separately identify
 the abstract modular flow with a geometric flow when such an identification is
-claimed.  The Bisognano--Wichmann theorem below is precisely that additional
-QFT theorem for wedges.
+claimed.  The Bisognano--Wichmann theorem boundary below is precisely that
+additional QFT input for wedges.
 
 \section{KMS States and Modular Equilibrium}
 \label{sec:kms-states-modular-equilibrium}
@@ -1426,18 +1426,8 @@ be the standard right wedge, and let \(\Lambda_R(s)\) be the boost in the
   \end{pmatrix}
   \begin{pmatrix}x^0\\ x^1\end{pmatrix}.
 \]
-\begin{quotedtheorem}[Bisognano--Wichmann theorem for wedges]
-\label{thm:bisognano-wichmann-wedges}
-\emph{Proof references.}\footnote{For the scalar-field case and the
-operator-domain analytic continuation, see J.~J.~Bisognano and
-E.~H.~Wichmann, ``On the duality condition for a Hermitian scalar field,''
-\emph{Journal of Mathematical Physics} \textbf{16} (1975), 985--1007.  For
-general Wightman fields, including Bose and Fermi fields, see
-J.~J.~Bisognano and E.~H.~Wichmann, ``On the duality condition for quantum
-fields,'' \emph{Journal of Mathematical Physics} \textbf{17} (1976),
-303--321.  For the AQFT formulation and its placement among locality,
-duality, and modular covariance, see R.~Haag, \emph{Local Quantum Physics},
-2nd ed., Springer, 1996.}
+\begin{remark}[Bisognano--Wichmann theorem boundary for wedges]
+\label{rem:bisognano-wichmann-wedges-boundary}
 Let a Poincare-covariant quantum field theory on Minkowski space be generated
 by Wightman fields satisfying the Wightman domain, covariance, locality,
 vacuum, and spectrum hypotheses.  Let
@@ -1469,32 +1459,30 @@ for every local region \(\mathcal O\) in the indexing class.
 On a charged field algebra reconstructed from the observable net, the same
 antiunitary operation includes the charge-conjugation action on charged field
 coordinates.
-\end{quotedtheorem}
+This is a theorem boundary in the present monograph, with its scope recorded
+explicitly.  The proof in the Wightman setting has two logically separate
+components.  The first component is the polynomial-core KMS strip
+proved in Theorem~\ref{thm:wightman-polynomial-wedge-kms} below from the
+spectrum condition, complex boosts, and wedge locality.  The second component
+is the operator-domain closure theorem that identifies the closed Tomita
+operator of \((\mathcal R(W_R),\vac)\), including the modular conjugation and
+the passage from field-polynomial boundary values to the full wedge von
+Neumann algebra.  That closure theorem is the part supplied by the original
+Bisognano--Wichmann work and by the AQFT treatments of modular covariance.
+\end{remark}
 
-\paragraph{Wightman proof mechanism.}
-The theorem is a genuine analytic-domain theorem, not a formal consequence of
-writing a boost generator.  Let \(\mathfrak P(W_R)\) denote the unital
-\(*\)-algebra generated on the common Wightman domain by fields smeared with
-test functions supported in \(W_R\).  On
-\(\mathfrak P(W_R)\vac\), the Tomita operator for the wedge is initially
-\[
-  S_{W_R,0}A\vac=A^*\vac,
-  \qquad A\in\mathfrak P(W_R).
-\]
-Reeh--Schlieder gives density of \(\mathfrak P(W_R)\vac\), and separatingness
-for \(\mathcal R(W_R)\) makes \(S_{W_R,0}\) closable.  The target identity
-\(\Delta_{W_R}^{\ii t}=U(\Lambda_R(-2\pi t))\) is equivalently the statement
-that the vacuum state on the wedge algebra is \(2\pi\)-KMS, in the convention
-of Definition~\ref{def:kms-state}, for the boost automorphism
+\begin{theorem}[Wightman polynomial-core wedge KMS mechanism]
+\label{thm:wightman-polynomial-wedge-kms}
+Let \(\Phi_a\) be Wightman fields on the common invariant domain
+\(\mathcal D\), transforming covariantly under the proper orthochronous
+Poincare group and satisfying the spectrum condition and graded locality.  Let
+\(\mathfrak P(W_R)\) be the unital \(*\)-algebra generated on \(\mathcal D\)
+by smeared fields \(\Phi_a(f)\) with \(\operatorname{supp}f\subset W_R\), and
+let
 \[
   \alpha_s^R(A)=U(\Lambda_R(s))AU(\Lambda_R(s))^{-1}.
 \]
-Tomita--Takesaki uniqueness then identifies this KMS dynamics with the
-modular dynamics after the rescaling \(s=-2\pi t\).
-
-For polynomial vectors the KMS strip is obtained directly from the spectral
-condition and locality.  Suppressing finite spin matrices in the covariance
-law, take
+For
 \[
   A=\Phi_{a_1}(f_1)\cdots\Phi_{a_m}(f_m),
   \qquad
@@ -1502,7 +1490,33 @@ law, take
   \qquad
   \operatorname{supp}f_i,\operatorname{supp}g_j\subset W_R .
 \]
-The relevant strip function is the smeared Wightman boundary value
+there is a function \(F_{A,B}\), holomorphic for \(0<\operatorname{Im}z<2\pi\)
+and with tempered boundary values on the two horizontal edges, such that
+\begin{equation}
+  F_{A,B}(s)=\langle\vac,A\alpha_s^R(B)\vac\rangle,
+  \qquad
+  F_{A,B}(s+2\pi\ii)=\langle\vac,\alpha_s^R(B)A\vac\rangle .
+  \label{eq:wightman-polynomial-core-kms}
+\end{equation}
+Thus the vacuum functional satisfies the boost \(2\pi\)-KMS boundary relation
+on the Wightman polynomial core of the wedge.  For a fermionic field algebra
+the statement is the graded KMS relation on field coordinates; after
+restriction to the observable algebra the grading signs cancel.
+\end{theorem}
+
+\begin{proof}
+The theorem is an analytic-domain statement: the boost generator supplies the
+real flow, while the KMS boundary relation requires holomorphic continuation
+and locality.  The initial Tomita operator on polynomial wedge vectors is
+\[
+  S_{W_R,0}A\vac=A^*\vac,
+  \qquad A\in\mathfrak P(W_R).
+\]
+Reeh--Schlieder gives density of \(\mathfrak P(W_R)\vac\), and separatingness
+for \(\mathcal R(W_R)\) is the condition that makes the operator closable in
+the full Bisognano--Wichmann theorem.  The polynomial KMS strip itself is
+obtained directly from Wightman analyticity.  Suppressing finite spin matrices
+in the covariance law, define the smeared boundary value
 \begin{equation}
 \begin{aligned}
   F_{A,B}(z)
@@ -1516,18 +1530,32 @@ The relevant strip function is the smeared Wightman boundary value
 \end{aligned}
   \label{eq:bw-wightman-strip-function}
 \end{equation}
-with the usual component matrices inserted for non-scalar fields.  For
+with the usual component matrices inserted for non-scalar fields.  The
+spectrum condition supplies the tube holomorphy as follows.  After rewriting
+an ordered Wightman distribution in relative variables, its Fourier transform
+is supported where every partial momentum sum lies in the closed future cone.
+If a relative coordinate is shifted as \(\xi\mapsto\xi-\ii\eta\) with
+\(\eta\in V_+\), the Fourier factor
+\(\exp(-\ii p\cdot(\xi-\ii\eta))\) contains \(\exp(p\cdot\eta)\); in the
+mostly-plus convention \(p\cdot\eta\le0\) for
+\(p,\eta\in\overline V_+\).  Thus the spectral support gives exponential
+damping in the tube selected by the ordering, and the Wightman distribution is
+recovered as a boundary value.  For
 \(z=s+\ii u\) and \(0<u<\pi\), the imaginary part of
 \(\Lambda_R(z)y\), \(y\in W_R\), lies in the future timelike cone in the
-mostly-plus convention.  Hence the differences between the earlier real
-arguments \(x_i\) and the complex-boosted later arguments have imaginary part
-in the past tube.  The spectrum condition is precisely the statement that the
-ordered Wightman distribution has a holomorphic continuation to this tube,
-with tempered boundary values.  At \(u=\pi\),
-\(\Lambda_R(s+\ii\pi)W_R=W_L\), the left wedge.  Points of \(W_L\) are
-spacelike to points of \(W_R\), so locality permits the boosted fields in
-\(B\) to pass through the fields in \(A\).  Continuing through the second
-half-strip \(\pi<u<2\pi\) gives the upper boundary relation
+mostly-plus convention.  Therefore the differences between each earlier real
+argument \(x_i\) and each complex-boosted later argument have imaginary part
+in the past tube, so the ordered distribution in
+\eqref{eq:bw-wightman-strip-function} is holomorphic in the first half-strip
+and has tempered boundary values.
+
+At \(u=\pi\), \(\Lambda_R(s+\ii\pi)W_R=W_L\), the left wedge.  Points of
+\(W_L\) are spacelike to points of \(W_R\).  Graded locality therefore permits
+the boosted fields in \(B\) to pass through the fields in \(A\), with the sign
+determined by the field grading.  On the observable subalgebra this sign is
+one.  After this reordering, the same tube analyticity gives the continuation
+through the second half-strip \(\pi<u<2\pi\).  The lower and upper boundary
+values are consequently
 \begin{equation}
   F_{A,B}(s+2\pi\ii)
   =
@@ -1536,23 +1564,18 @@ half-strip \(\pi<u<2\pi\) gives the upper boundary relation
   F_{A,B}(s)=\omega\!\left(A\alpha_s^R(B)\right),
   \label{eq:bw-wightman-kms-boundary}
 \end{equation}
-first for polynomial fields and then for the generated wedge von Neumann
-algebra by the standard approximation and closure argument.  For fermionic
-fields or charged field coordinates, the same argument is graded on the field
-algebra; on the observable algebra the grading signs cancel, and the
-antiunitary part records the corresponding charge conjugation.
-
-The modular conjugation is then fixed by the polar decomposition
+where \(\omega(C)=\langle\vac,C\vac\rangle\).  This is
+\eqref{eq:wightman-polynomial-core-kms}.  The full modular theorem adds the
+closure statement
 \[
   \overline{S_{W_R,0}}=J_{W_R}\Delta_{W_R}^{1/2}.
 \]
-The operator \(\Delta_{W_R}^{1/2}\) is the closed operator obtained by
-analytic continuation of boosts to the imaginary value \(\ii\pi\) in the
-above convention, and the remaining antiunitary maps the wedge to its
-geometric reflection.  The domain statement is essential: the proof begins on
-the Wightman polynomial core, identifies the closed Tomita operator there,
-and only then passes to the von Neumann algebra generated by the wedge
-fields.
+The operator \(\Delta_{W_R}^{1/2}\) is then obtained by analytic continuation
+of boosts to imaginary value \(\ii\pi\), and the remaining antiunitary maps the
+wedge to its geometric reflection.  That closed-operator identification is the
+additional domain theorem named in
+Remark~\ref{rem:bisognano-wichmann-wedges-boundary}.
+\end{proof}
 
 \begin{corollary}[PCT from wedge modular covariance]
 \label{cor:aqft-pct-from-modular-covariance}
@@ -1597,9 +1620,8 @@ PCT theorem of Theorem~\ref{thm:wightman-pct}.
 \begin{proof}
 The antiunitarity of \(\Theta_{\rm PCT}\) follows from antiunitarity of the
 modular conjugation \(J_{W_R}\) and unitarity of \(U(R_\perp(\pi))\).  The
-Quoted Theorem~\ref{thm:bisognano-wichmann-wedges} identifies
-\(J_{W_R}\) with the geometric wedge
-reflection \(j_R\) on the net.  Conjugating afterward by the proper spatial
+displayed hypotheses identify \(J_{W_R}\) with the geometric wedge reflection
+\(j_R\) on the net.  Conjugating afterward by the proper spatial
 rotation \(R_\perp(\pi)\) changes the geometric action from \(j_R\) to the
 total inversion \(x\mapsto -x\), proving
 \eqref{eq:aqft-pct-net-action}.  Both \(J_{W_R}\) and the rotation preserve
@@ -1624,10 +1646,10 @@ The cyclic and separating hypotheses needed for the modular data of wedge
 algebras are supplied in the Wightman setting by Reeh--Schlieder applied to
 wedge regions.  In a purely algebraic formulation not assumed to arise from
 Wightman fields, the conclusion of
-Quoted Theorem~\ref{thm:bisognano-wichmann-wedges} is not automatic; it is an explicit
+Remark~\ref{rem:bisognano-wichmann-wedges-boundary} is an explicit
 modular-covariance hypothesis on the vacuum net unless it has been proved from
-the chosen AQFT assumptions.  Under this theorem or hypothesis, modular flow is
-geometric Lorentz boost flow.  The result connects locality, positivity of
+the chosen AQFT assumptions.  Under that theorem or hypothesis, modular flow
+is geometric Lorentz boost flow.  The result connects locality, positivity of
 energy, the KMS structure of Definition~\ref{def:kms-state} for accelerated
 observers, and the PCT antiunitary stated in
 Corollary~\ref{cor:aqft-pct-from-modular-covariance}.

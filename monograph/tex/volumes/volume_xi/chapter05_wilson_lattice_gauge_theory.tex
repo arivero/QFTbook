@@ -1097,8 +1097,19 @@ Chapter~\ref{ch:constructive-monte-carlo-sign-problems}.  The optional
 elementary error propagation in aggregate mode is only the independent-error
 algebra of the displayed logarithms.
 
-\section{Glueball Correlator Matrices and the GEVP}
+\section{Finite-Volume Correlator Matrices and the GEVP}
 \label{sec:lattice-glueball-correlator-gevp}
+
+The generalized eigenvalue problem is a finite-regulator spectral-analysis
+method.  It is not tied to any particular dynamics: once a reflection-positive
+Euclidean-time regulator supplies a transfer matrix and a finite family of
+physical time-slice sources in a fixed symmetry channel, gauge-invariant when
+there is gauge redundancy, the same
+linear-algebra problem applies to pure Yang--Mills glueballs, to
+\(\mathcal N=1\) supersymmetric Yang--Mills channel matrices, and to any
+other lattice channel with a positive transfer matrix.  The present section
+uses pure Yang--Mills glueball sources as the running example because their
+operator construction is especially concrete.
 
 Pure Yang--Mills spectroscopy on a lattice begins with gauge-invariant
 time-slice operators, not with constituent gluons.  Fix a finite spatial
@@ -1198,6 +1209,38 @@ The displayed matrix is similar to the diagonal matrix of
 \(\lambda_\alpha^{n-n_0}\).  Its eigenvalues are therefore precisely the
 numbers in \eqref{eq:lattice-glueball-gevp-exact-eigenvalues}, with
 multiplicity.
+
+The generalized eigenvalues are invariant under changes of source
+coordinates.  If \(R:\mathcal S\to\mathcal S\) is invertible and
+\(O'_i=R_i{}^jO_j\), then
+\begin{equation}
+  C(n)\longmapsto C'(n)=R\,C(n)\,R^\dagger .
+  \label{eq:finite-volume-source-basis-change}
+\end{equation}
+The transformed GEVP,
+\[
+  R C(n)R^\dagger v'
+  =
+  \Lambda' R C(n_0)R^\dagger v',
+\]
+is equivalent, after multiplication by \(R^{-1}\) and the substitution
+\(v=R^\dagger v'\), to
+\[
+  C(n)v=\Lambda' C(n_0)v .
+\]
+Hence the multiset of generalized eigenvalues is source-basis invariant.
+Equivalently,
+\[
+  C'(n_0)^{-1}C'(n)
+  =
+  (R^\dagger)^{-1}C(n_0)^{-1}C(n)R^\dagger
+\]
+is similar to \(C(n_0)^{-1}C(n)\).  This invariance concerns the extracted
+finite-regulator energy estimates.  Statements such as "mostly glueball",
+"mostly two-hadron", or "mostly hybrid" also depend on a declared
+decomposition of the source space and on the inner product used to compare
+overlap covectors; those labels are not invariant consequences of the GEVP
+alone.
 
 \begin{controlledapproximation}[Whitened residual criterion for a GEVP window]
 \label{ca:lattice-glueball-whitened-residual-criterion}

@@ -609,7 +609,10 @@ projection removed, define the Euclidean transfer-matrix correlator matrices
 The trace in \eqref{eq:pure-sym-fermion-correlator-matrix} is the declared
 spin average in the rest frame; at finite lattice spacing it must be replaced
 by the exact spin-little-group projection of the regulator.  The channel
-energies are extracted from the generalized eigenvalue problems
+energies may be estimated by applying the finite-volume correlator-matrix
+method of Section~\ref{sec:lattice-glueball-correlator-gevp} separately to
+the three channel matrices.  In particular, the corresponding generalized
+eigenvalue problems are
 \begin{equation}
   C_a(t)v_{a,n}(t,t_0)
   =
@@ -618,10 +621,13 @@ energies are extracted from the generalized eigenvalue problems
   a\in\{+,-,F\}.
   \label{eq:pure-sym-channel-gevp}
 \end{equation}
-The GEVP is an estimator, not an additional definition of the spectrum.  Its
-use requires an accompanying finite-basis and truncation-error statement; the
-underlying pole statement is the spectral statement about matrix elements of
-\(\ee^{-tH_{\rm reg}}\).
+This is only the general finite-matrix estimator applied to the pure-SYM
+source channels.  It is not a supersymmetric definition of the spectrum, and
+it supplies no multiplet statement unless the source basis, residual
+higher-state contamination, finite-volume effects, and regulator limits have
+all been controlled in the sense of
+Section~\ref{sec:lattice-glueball-correlator-gevp}.  The underlying object is
+the spectral measure of \(\ee^{-tH_{\rm reg}}\) in the corresponding channel.
 A pure-SYM spectral extraction has restored supersymmetry in a one-particle
 window only after the limiting procedure makes the pole locations extracted
 from the three channels agree within a stated continuum and infinite-volume
@@ -681,18 +687,15 @@ then
   \label{eq:pure-sym-projected-correlator-ratio-bound}
 \end{equation}
 The common mass entering the three projected correlators is the same \(m\).
-For a GEVP, the exact finite-state case is obtained by replacing the single
-vector \(Z_a\) by the matrix of overlaps with the resolved low-lying atoms:
-if the chosen \(R\)-dimensional source space has an invertible overlap matrix
-with \(R\) states and zero overlap with higher states, the GEVP eigenvalues
-are exactly \(\ee^{-E_n(t-t_0)}\), one of which is
-\(\ee^{-m(t-t_0)}\).  If higher-state overlap is present, a quoted GEVP pole
-extraction is rigorous only after the corresponding matrix-remainder bound is
-given.  Any persistent nonzero splitting among the continuum-extrapolated
-leading pole positions is therefore evidence that at least one hypothesis has
-failed: the sources have isolated different states, the regulator limit has
-not restored supersymmetry in that window, or the assumed one-particle atom is
-not separated from the continuum.
+If a matrix GEVP is used instead of projected correlators, its justification is
+the general finite-regulator statement of
+Section~\ref{sec:lattice-glueball-correlator-gevp}, applied to
+\(C_+(t),C_-(t),C_F(t)\) channel by channel with a published residual bound.
+Any persistent nonzero splitting among the continuum-extrapolated leading pole
+positions is therefore evidence that at least one hypothesis has failed: the
+sources have isolated different states, the regulator limit has not restored
+supersymmetry in that window, or the assumed one-particle atom is not
+separated from the continuum.
 \end{proposition}
 
 \begin{proof}
@@ -739,24 +742,13 @@ Writing \(r_{a,u}(t)=|z_{a,u}|^2\ee^{-mt}\rho_{a,u}(t)\) gives
 \]
 which is \eqref{eq:pure-sym-projected-correlator-ratio-bound}.
 
-The finite-state GEVP assertion is a direct matrix version of the same
-spectral decomposition.  If \(C_a(t)=Z_aD_a(t)Z_a^\dagger\) with \(Z_a\)
-invertible and
-\(D_a(t)=\operatorname{diag}(\ee^{-E_1t},\ldots,\ee^{-E_Rt})\), then
-\[
-  C_a(t_0)^{-1}C_a(t)
-  =
-  (Z_a^\dagger)^{-1}D_a(t_0)^{-1}D_a(t)Z_a^\dagger
-\]
-is similar to \(D_a(t_0)^{-1}D_a(t)\), and hence its eigenvalues are exactly
-\(\ee^{-E_n(t-t_0)}\).
-
-GEVP estimates with higher-state remainders require the same perturbative
-control of the matrix pair.  Without that extra hypothesis one has the
-projected-correlator pole theorem above, not a theorem about a particular
-numerical implementation.  The final diagnostic statement is the
-contrapositive of the common-pole hypothesis together with these extraction
-formulae.
+The matrix GEVP is a useful way of choosing the coefficient vector \(u_a\)
+from a source family, but its finite-state diagonalization and residual
+estimates are the general linear-algebra analysis of
+Section~\ref{sec:lattice-glueball-correlator-gevp}.  The present proposition
+uses only the channel spectral gap and overlap hypotheses.  The final
+diagnostic statement is the contrapositive of the common-pole hypothesis
+together with these extraction formulae.
 \end{proof}
 
 Operationally, the pure-SYM lattice or Hamiltonian analysis should publish,

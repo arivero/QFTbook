@@ -36,7 +36,9 @@ and near two-dimensional CFT perturbations.
 - Evaluates the two-particle \(1+1\)-dimensional phase-space integral from
   the rapidity measure, including the Jacobian, threshold condition, and
   identical-particle counting convention.
-- Defines TCSA as a regulator and identifies counterterm obligations.
+- Defines the TCSA regulator as the two-dimensional CFT-deformation instance
+  of the general Hamiltonian truncation framework of Volume XI, and identifies
+  the extra CFT-specific counterterm obligations.
 
 ## Figure Ledger
 

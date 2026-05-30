@@ -315,6 +315,18 @@ derivation steps, but they are not theorem-family claims unless the statement
 adds a genuine estimate, construction, or nontrivial hypothesis verification
 beyond the displayed algebra.
 
+General methodology must live at its natural level of generality.  Numerical
+methods, spectral-extraction procedures, bootstrap algorithms, RG comparison
+machinery, localization templates, and finite-dimensional linear-algebra
+devices should be developed in the methodological chapter or section where
+their hypotheses are natural.  A specialized theory chapter may apply such a
+method only after naming the general source and then stating the additional
+model-specific data: operators, symmetry channels, regulator choices,
+renormalization coordinates, limits, and diagnostics.  Do not let a general
+method appear to be a special structure of \( \mathcal N=1 \) SYM, QCD,
+Ising, Liouville, Chern--Simons matter, or any other example merely because
+the example is where the method was first written down.
+
 Proof audits must read the mathematical substance of each proof under review:
 the statement, hypotheses, dependencies, and proof body must be checked
 together.  Text searches for phrases such as "immediate" or length scans may
