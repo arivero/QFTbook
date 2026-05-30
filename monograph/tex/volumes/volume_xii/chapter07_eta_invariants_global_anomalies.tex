@@ -327,6 +327,70 @@ the determinant vector changes when the same quotient background is described
 by the two representatives \(A\) and \(A^g\); hence the chiral fermion measure
 does not descend to a function on the quotient.
 
+\paragraph{Descent to the quotient background groupoid.}
+This last statement is the precise descent criterion for a global gauge
+anomaly.  Let \(\mathcal B\) be the space of smooth background fields before
+quotienting, and let \(\mathcal G\) be the group of gauge transformations
+acting on it.  The quotient is the action groupoid
+\[
+  \mathcal B//\mathcal G ,
+\]
+whose objects are \(A\in\mathcal B\) and whose morphisms
+\[
+  A\longrightarrow A^g
+\]
+are labelled by \(g\in\mathcal G\).  A fermion determinant line over this
+groupoid consists of a line \(L_A\) over every object together with
+isomorphisms
+\[
+  \Phi_g(A):L_A\longrightarrow L_{A^g}
+\]
+compatible with composition.  In the free chiral-fermion case, \(\Phi_g(A)\)
+is obtained by composing Bismut--Freed parallel transport along a path from
+\(A\) to \(A^g\) with the tautological pullback identification by \(g\).
+Changing the path changes the result by the holonomy of a closed loop, hence
+by an eta phase of the corresponding mapping torus.
+
+A partition function is a function on the quotient only after choosing
+nonzero vectors \(s_A\in L_A\) satisfying
+\begin{equation}
+  \Phi_g(A)s_A=s_{A^g}
+  \qquad\hbox{for every }(A,g).
+  \label{eq:anomaly-line-equivariant-trivialization}
+\end{equation}
+If one fixes a local trivialization of \(L\), the same condition is expressed
+by a \(U(1)\)-valued groupoid \(1\)-cocycle
+\[
+  \alpha(A,g)\in U(1),
+  \qquad
+  \Phi_g(A)e_A=\alpha(A,g)e_{A^g},
+\]
+obeying
+\begin{equation}
+  \alpha(A,gh)=\alpha(A,g)\,\alpha(A^g,h).
+  \label{eq:anomaly-line-groupoid-cocycle}
+\end{equation}
+A change of local trivialization \(e_A\mapsto\beta(A)e_A\) changes
+\(\alpha\) by the coboundary
+\begin{equation}
+  \alpha(A,g)\longmapsto
+  \frac{\beta(A)}{\beta(A^g)}\,\alpha(A,g).
+  \label{eq:anomaly-line-groupoid-coboundary}
+\end{equation}
+Thus the obstruction is the cohomology class of this groupoid cocycle.  On a
+based loop \((A,g)\) with \(A^g=A\), the value \(\alpha(A,g)\) is invariant
+under \eqref{eq:anomaly-line-groupoid-coboundary}; it is exactly the holonomy
+computed by \eqref{eq:bismut-freed-holonomy} or by the mod-two Pfaffian
+formula below.  Tensoring independent fermion systems tensors their anomaly
+lines, so the cocycles multiply and the logarithmic anomaly exponents add.
+
+For an infinitesimal gauge transformation connected to the identity, the
+linearization of \(\alpha\) is the consistent local anomaly derived in
+Chapter~\ref{ch:volume-ii-20}.  For a large gauge transformation such as the
+generator of \(\pi_4(SU(2))\), the local curvature may vanish while the based
+loop value of \(\alpha\) is nontrivial.  This is the logical distinction
+between local anomaly cancellation and global anomaly cancellation.
+
 \section{Pfaffian Lines and Mod-Two Indices}
 
 Some fermion systems have a real or pseudoreal structure that replaces the

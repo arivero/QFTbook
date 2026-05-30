@@ -41,6 +41,11 @@ global anomaly as an explicit mod-two-index example.
 - Explains finite gauge-transformation phases as determinant-line holonomies,
   as a direct application of the quoted Bismut--Freed holonomy theorem to the
   mapping torus of the gauge transformation.
+- Makes the descent criterion over the quotient background groupoid explicit:
+  determinant-line transport is a groupoid `1`-cocycle, changes of local
+  trivialization shift it by a coboundary, based-loop holonomies are
+  invariant, and a quotient-valued partition function exists only after an
+  equivariant trivialization of the anomaly line.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
@@ -58,7 +63,9 @@ global anomaly as an explicit mod-two-index example.
 - `calculation-checks/eta_global_anomaly_checks.py` checks the APS
   orientation bookkeeping, the first \(SU(2)\) trace-delta Dynkin indices,
   Witten parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
-  cancellation, and cylinder congruence arithmetic.
+  cancellation, cylinder congruence arithmetic, action-groupoid anomaly
+  cocycle/coboundary identities, based-loop holonomy invariance, and the
+  stabilizer-character obstruction to descent.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -94,3 +101,7 @@ global anomaly as an explicit mod-two-index example.
   \(SU(2)\) weights in the monograph's \(t_a=\sqrt2 J_a\) normalization and
   isolating the \(2j\equiv1\pmod4\) parity criterion from the quoted
   five-dimensional mod-two index input.
+- 2026-05-30 anomaly-line groupoid pass: added the quotient-background
+  groupoid descent criterion and exact finite checks for the cocycle,
+  coboundary, based-loop holonomy, and tensor-product behavior of anomaly
+  lines.
