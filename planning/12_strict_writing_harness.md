@@ -327,6 +327,13 @@ method appear to be a special structure of \( \mathcal N=1 \) SYM, QCD,
 Ising, Liouville, Chern--Simons matter, or any other example merely because
 the example is where the method was first written down.
 
+If the specialized chapter has no concrete result to extract with the
+method, do not expose the method there.  In that case the chapter should stop
+at the model-specific data and the diagnostic requirement.  Generic
+finite-matrix estimates, algorithmic equations, and residual criteria belong
+in the methodological chapter; a specialized chapter earns their reappearance
+only by carrying out an actual model-specific calculation or comparison.
+
 Proof audits must read the mathematical substance of each proof under review:
 the statement, hypotheses, dependencies, and proof body must be checked
 together.  Text searches for phrases such as "immediate" or length scans may

@@ -256,3 +256,12 @@ boundaries rather than importing the appendix exposition.
   residue mechanism behind Zamolodchikov recursion, separating the algebraic
   Kac-determinant/null-vector content from the remaining analytic convergence
   theorem boundary.
+- 2026-05-30 DOZZ shift-equation pass: expanded the degenerate four-point
+  argument from a slogan about crossing to the actual diagonal hermitian-form
+  condition.  The chapter now displays the hypergeometric connection matrix,
+  the \(z=0\) coefficients
+  \(C_b(\alpha_1-b/2,\alpha_2,\alpha_3)\) and
+  \(C_-(\alpha_1)C_b(\alpha_1+b/2,\alpha_2,\alpha_3)\), the vanishing
+  off-diagonal condition in the \(z=1\) basis, and the resulting finite
+  difference equation.  The Liouville calculation script now checks this
+  connection-matrix ratio numerically against the DOZZ \(b\)-shift ratio.

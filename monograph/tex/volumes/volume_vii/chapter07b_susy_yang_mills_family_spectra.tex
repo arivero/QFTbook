@@ -609,114 +609,18 @@ projection removed, define the Euclidean transfer-matrix correlator matrices
 The trace in \eqref{eq:pure-sym-fermion-correlator-matrix} is the declared
 spin average in the rest frame; at finite lattice spacing it must be replaced
 by the exact spin-little-group projection of the regulator.  The channel
-energies may be estimated by applying the finite-volume correlator-matrix
-method of Section~\ref{sec:lattice-glueball-correlator-gevp} separately to
-the three channel matrices.  In particular, the corresponding generalized
-eigenvalue problems are
-\begin{equation}
-  C_a(t)v_{a,n}(t,t_0)
-  =
-  \lambda_{a,n}(t,t_0) C_a(t_0)v_{a,n}(t,t_0),
-  \qquad
-  a\in\{+,-,F\}.
-  \label{eq:pure-sym-channel-gevp}
-\end{equation}
-This is only the general finite-matrix estimator applied to the pure-SYM
-source channels.  It is not a supersymmetric definition of the spectrum, and
-it supplies no multiplet statement unless the source basis, residual
-higher-state contamination, finite-volume effects, and regulator limits have
-all been controlled in the sense of
-Section~\ref{sec:lattice-glueball-correlator-gevp}.  The underlying object is
-the spectral measure of \(\ee^{-tH_{\rm reg}}\) in the corresponding channel.
-A pure-SYM spectral extraction has restored supersymmetry in a one-particle
-window only after the limiting procedure makes the pole locations extracted
+matrices are not themselves a numerical result.  They specify the
+finite-regulator spectral data whose leading isolated pole positions may be
+compared across the even scalar, odd scalar, and fermionic channels.  The
+method used to estimate those pole positions is external to the present
+chapter; the pure-SYM content is the choice of channels, sources,
+spin/rest-frame projections, gluino-mass tuning condition, and joint
+continuum, thermodynamic, and massless-gluino limiting procedure.  A
+pure-SYM spectral extraction has restored supersymmetry in a one-particle
+window only after that limiting procedure makes the pole locations extracted
 from the three channels agree within a stated continuum and infinite-volume
 error estimate.
 \end{definition}
-
-\paragraph{Application of the general spectral estimator.}
-The common-pole analysis below is not a theorem special to pure
-\(\mathcal N=1\) Yang--Mills theory.  It is the general finite-volume
-spectral estimate of Section~\ref{sec:lattice-glueball-correlator-gevp}
-applied to the three source channels singled out by the expected massive
-supermultiplet structure.  The supersymmetric content is the statement of
-which channels must agree after the regulator, volume, and gluino-mass limits
-are taken; the linear-algebra extraction itself belongs to the general
-finite-regulator methodology.
-
-Assume, for a specified finite-volume window and source basis, that the
-regulated extraction contains one isolated massive candidate multiplet of
-mass \(m>0\), with a gap \(\Delta>0\) to the next spectral contribution in
-each of the three channel matrices of
-Definition~\ref{def:pure-sym-channel-correlator-matrices}.  Assume also that
-the chosen source vectors have nonzero overlap with the corresponding atom.
-Then the channel correlators can be written in the controlled form
-\begin{equation}
-  C_a(t)
-  =
-  Z_a Z_a^\dagger \ee^{-mt}
-  +
-  R_a(t),
-  \qquad
-  \|R_a(t)\|\le K_a\ee^{-(m+\Delta)t},
-  \qquad a\in\{+,-,F\}.
-  \label{eq:pure-sym-common-pole-channel-form}
-\end{equation}
-where \(K_a\) is a bound on the residual spectral measure in that channel
-after multiplication by \(\ee^{(m+\Delta)t}\).  For every coefficient vector
-\(u_a\) whose overlap
-\(z_{a,u}:=u_a^\dagger Z_a\) with the atom is nonzero, the projected
-correlator \(G_{a,u}(t):=u_a^\dagger C_a(t)u_a\) obeys
-\begin{equation}
-  \frac{G_{a,u}(t)}{G_{a,u}(t_0)}
-  =
-  \ee^{-m(t-t_0)}
-  \frac{1+\rho_{a,u}(t)}{1+\rho_{a,u}(t_0)},
-  \qquad
-  |\rho_{a,u}(s)|
-  \le
-  \frac{K_a\|u_a\|^2}{|z_{a,u}|^2}\,\ee^{-\Delta s}.
-  \label{eq:pure-sym-projected-correlator-ratio}
-\end{equation}
-The displayed formula is obtained by contracting
-\eqref{eq:pure-sym-common-pole-channel-form} with \(u_a^\dagger\) and
-\(u_a\), writing the residual term as
-\(|z_{a,u}|^2\ee^{-mt}\rho_{a,u}(t)\), and using the spectral gap bound.  If
-the right-hand side bound at \(s=t_0\) is less than one, then
-\begin{equation}
-  \left|
-  \ee^{m(t-t_0)}
-  \frac{G_{a,u}(t)}{G_{a,u}(t_0)}
-  -1
-  \right|
-  \le
-  \frac{\varepsilon_{a,u}(t)+\varepsilon_{a,u}(t_0)}
-       {1-\varepsilon_{a,u}(t_0)},
-  \qquad
-  \varepsilon_{a,u}(s)
-  =
-  \frac{K_a\|u_a\|^2}{|z_{a,u}|^2}\,\ee^{-\Delta s}.
-  \label{eq:pure-sym-projected-correlator-ratio-bound}
-\end{equation}
-This follows from
-\[
-  \left|\frac{1+\rho(t)}{1+\rho(t_0)}-1\right|
-  =
-  \left|\frac{\rho(t)-\rho(t_0)}{1+\rho(t_0)}\right|
-  \le
-  \frac{\varepsilon(t)+\varepsilon(t_0)}
-       {1-\varepsilon(t_0)} .
-\]
-If a matrix GEVP is used instead of a hand-chosen projected correlator, its
-justification is precisely the general finite-regulator statement of
-Section~\ref{sec:lattice-glueball-correlator-gevp}, applied to
-\(C_+(t),C_-(t),C_F(t)\) channel by channel with a published residual bound.
-Any persistent nonzero splitting among the continuum-extrapolated leading pole
-positions is therefore not a new theorem about supersymmetry; it is a
-diagnostic that at least one stated input has failed: the sources have
-isolated different states, the regulator limit has not restored supersymmetry
-in that window, or the assumed one-particle atom is not separated from the
-continuum.
 
 Operationally, the pure-SYM lattice or Hamiltonian analysis should publish,
 for each candidate multiplet, the three leading masses

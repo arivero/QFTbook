@@ -316,6 +316,84 @@ if abs(dual_screening_original - dual_screening_b_power_form) > 1e-12 * scale:
         f"{dual_screening_original!r} != {dual_screening_b_power_form!r}"
     )
 
+def require_close(name: str, left: float, right: float) -> None:
+    scale = max(1.0, abs(left), abs(right))
+    if abs(left - right) > 1e-11 * scale:
+        raise AssertionError(f"{name} mismatch: {left!r} != {right!r}")
+
+
+def check_degenerate_connection_shift(
+    b: float,
+    alpha1: float,
+    alpha2: float,
+    alpha3: float,
+    mu: float,
+) -> None:
+    """Numerically verify the BPZ connection-matrix shift equation."""
+
+    Q = b + 1.0 / b
+    A_value = b * (alpha1 + alpha2 + alpha3 - Q - b / 2.0)
+    B_value = b * (alpha1 + alpha2 - alpha3 - b / 2.0)
+    C_value = 1.0 + b * (2.0 * alpha1 - Q)
+    M_minus_minus = (
+        math.gamma(C_value)
+        * math.gamma(C_value - A_value - B_value)
+        / (math.gamma(C_value - A_value) * math.gamma(C_value - B_value))
+    )
+    M_minus_plus = (
+        math.gamma(C_value)
+        * math.gamma(A_value + B_value - C_value)
+        / (math.gamma(A_value) * math.gamma(B_value))
+    )
+    M_plus_minus = (
+        math.gamma(2.0 - C_value)
+        * math.gamma(C_value - A_value - B_value)
+        / (math.gamma(1.0 - A_value) * math.gamma(1.0 - B_value))
+    )
+    M_plus_plus = (
+        math.gamma(2.0 - C_value)
+        * math.gamma(A_value + B_value - C_value)
+        / (
+            math.gamma(A_value - C_value + 1.0)
+            * math.gamma(B_value - C_value + 1.0)
+        )
+    )
+    c_minus = (
+        math.pi
+        * mu
+        * b ** 4
+        * gamma_ratio(b * b)
+        * gamma_ratio(2.0 * b * alpha1 - 1.0 - b * b)
+        / gamma_ratio(2.0 * b * alpha1)
+    )
+    connection_ratio = -(
+        M_minus_minus * M_minus_plus
+    ) / (c_minus * M_plus_minus * M_plus_plus)
+    dozz_shift_ratio = (
+        gamma_ratio(2.0 * b * alpha1)
+        * gamma_ratio(2.0 * b * alpha1 - b * b)
+        * gamma_ratio(b * (alpha2 + alpha3 - alpha1 - b / 2.0))
+        / (
+            math.pi
+            * mu
+            * gamma_ratio(b * b)
+            * b ** 4
+            * gamma_ratio(b * (alpha1 + alpha2 + alpha3 - Q - b / 2.0))
+            * gamma_ratio(b * (alpha1 + alpha2 - alpha3 - b / 2.0))
+            * gamma_ratio(b * (alpha1 + alpha3 - alpha2 - b / 2.0))
+        )
+    )
+    require_close(
+        "BPZ connection-matrix shift equation",
+        connection_ratio,
+        dozz_shift_ratio,
+    )
+
+
+check_degenerate_connection_shift(0.63, 1.40, 1.25, 1.10, 0.73)
+check_degenerate_connection_shift(0.70, 1.60, 1.30, 1.20, 0.73)
+
+
 numerator_shift = (
     one_exp.scale(2)
     + t_exp.scale(2)

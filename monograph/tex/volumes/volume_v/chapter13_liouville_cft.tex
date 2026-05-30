@@ -1826,6 +1826,77 @@ degenerate insertion identifies the products of OPE coefficients in the two
 bases, giving
 \eqref{eq:liouville-degenerate-shift-ratio}.
 
+Here is the coefficient extraction explicitly.  Let
+\(\mathcal H_-\) and \(\mathcal H_+\) be the two local blocks in the
+\(z=1\) channel, normalized with exponents \(b\alpha_2\) and
+\(1+b^2-b\alpha_2\).  The connection formula gives
+\[
+  \mathcal F_i=\sum_{j=\pm} M_{ij}\mathcal H_j,
+  \qquad i=\pm,
+\]
+with
+\begin{align*}
+  M_{--}
+  &=
+  \frac{\Gamma(C)\Gamma(C-A-B)}
+       {\Gamma(C-A)\Gamma(C-B)},&
+  M_{-+}
+  &=
+  \frac{\Gamma(C)\Gamma(A+B-C)}
+       {\Gamma(A)\Gamma(B)},\\
+  M_{+-}
+  &=
+  \frac{\Gamma(2-C)\Gamma(C-A-B)}
+       {\Gamma(1-A)\Gamma(1-B)},&
+  M_{++}
+  &=
+  \frac{\Gamma(2-C)\Gamma(A+B-C)}
+       {\Gamma(A-C+1)\Gamma(B-C+1)} .
+\end{align*}
+In the \(z=0\) channel the diagonal Liouville four-point function has the
+form
+\[
+  \mathcal G(z,\bar z)
+  =
+  A_s\,|\mathcal F_-|^2+B_s\,|\mathcal F_+|^2,
+\]
+where
+\[
+  A_s=C_b(\alpha_1-b/2,\alpha_2,\alpha_3),
+  \qquad
+  B_s=C_-(\alpha_1)C_b(\alpha_1+b/2,\alpha_2,\alpha_3).
+\]
+The absence of \(\mathcal F_-\overline{\mathcal F_+}\) terms is not a
+normalization convention: for generic momenta the two intermediate primaries
+have nonintegrally separated conformal weights, so single-valuedness around
+\(z=0\) and the diagonal spectrum force the hermitian form on the local
+solution space to be diagonal.  The same statement in the \(z=1\) OPE basis
+requires the coefficient of
+\(\mathcal H_-\overline{\mathcal H_+}\) to vanish.  In a real
+nonresonant chamber the connection coefficients are real, and this condition
+is
+\[
+  A_s M_{--}M_{-+}+B_s M_{+-}M_{++}=0.
+\]
+Both sides are meromorphic in the momenta, so the resulting identity extends
+away from the polar and logarithmic resonance divisors.  Hence
+\begin{equation}
+  \frac{C_b(\alpha_1+b/2,\alpha_2,\alpha_3)}
+       {C_b(\alpha_1-b/2,\alpha_2,\alpha_3)}
+  =
+  -\frac{M_{--}M_{-+}}
+         {C_-(\alpha_1)M_{+-}M_{++}} .
+  \label{eq:liouville-shift-from-connection-matrix}
+\end{equation}
+Substituting \(A,B,C\) and the one-screening coefficient
+\eqref{eq:liouville-coulomb-gas-cminus} into
+\eqref{eq:liouville-shift-from-connection-matrix}, then using
+\(\Gamma(x)\Gamma(1-x)=\pi/\sin(\pi x)\) only through the ratio
+\(\gamma(x)=\Gamma(x)/\Gamma(1-x)\), gives precisely
+\eqref{eq:liouville-dozz-b-shift-ratio}.  The formula therefore follows
+from a local BPZ connection problem plus the explicitly normalized
+degenerate OPE; it is not an independent assumption about the DOZZ function.
+
 It remains to compute the right hand side in the DOZZ normalization.  Let
 \(K=\pi\mu\,\gamma(b^2)b^{2-2b^2}\).  In the ratio
 \[
