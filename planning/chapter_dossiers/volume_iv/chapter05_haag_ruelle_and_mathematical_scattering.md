@@ -152,3 +152,11 @@ resonances.
   the smeared large-sphere charge limit and domain pairing, and demoted the
   ray-dressing/axial-gauge and compact-dressing/LSZ-coordinate calculations
   from proposition/proof form to worked prose.
+- 2026-05-30: retained `prop:almost-locality-gives-hr-commutator` as
+  theorem-level Haag--Ruelle proof infrastructure and expanded its proof.  The
+  proof now performs the near/tail split, derives the \(L^1\) wave-packet tail
+  bound from stationary phase, chooses local approximants with radius
+  \(R=\delta |t|/8\), checks spacelike separation of the translated double
+  cones by comparing \(\delta |t|-2R\) with \(2R\), and absorbs the polynomial
+  near-packet \(L^1\)-growth by the arbitrary-power almost-local approximation
+  estimate.

@@ -547,23 +547,84 @@ and the same estimate holds with either operator replaced by its adjoint.
 \end{proposition}
 
 \begin{proof}
-Choose disjoint open neighborhoods \(U_i,U_j\) of the velocity supports.
-By Lemma~\ref{lem:hr-stationary-phase-velocity-localization}, the parts of
-the wave packets outside the tubes \(\vec x\in tU_i\) and \(\vec y\in tU_j\)
-give \(O_N(|t|^{-N})\) contributions in operator norm after integration
-against the bounded translates of \(B_i\) and \(B_j\).
+Choose nested open neighborhoods
+\[
+  V(h_\ell)\subset U_\ell^0\Subset U_\ell,\qquad \ell=i,j,
+\]
+so that \(U_i\) and \(U_j\) have positive Euclidean distance
+\[
+  \delta=\operatorname{dist}(U_i,U_j)>0 .
+\]
+Let \(\chi_i^t,\chi_j^t\) be smooth cutoffs equal to one on the smaller
+equal-time tubes \(\vec x/t\in U_i^0\), \(\vec y/t\in U_j^0\), and supported
+in the larger disjoint tubes \(\vec x/t\in U_i\), \(\vec y/t\in U_j\).
+Write
+\[
+  B_{i,t}=B_{i,t}^{\rm near}+B_{i,t}^{\rm tail},
+  \qquad
+  B_{i,t}^{\rm near}
+  =
+  \int \dd^{D-1}\vec x\,\chi_i^t(\vec x)h_{i,t}(\vec x)B_i(t,\vec x),
+\]
+and similarly for \(j\).  The stationary-phase lemma, used with an exponent
+larger than \(N+D\), gives an \(L^1\)-tail estimate
+\[
+  \int_{\vec x/t\notin U_i^0}|h_{i,t}(\vec x)|\,\dd^{D-1}\vec x
+  \le C_N(1+|t|)^{-N},
+\]
+and the same for \(h_j\).  Since translations preserve operator norms,
+\[
+  \|B_{i,t}^{\rm tail}\|
+  \le \|B_i\|
+  \int_{\vec x/t\notin U_i}|h_{i,t}(\vec x)|\,\dd^{D-1}\vec x
+  =
+  O_N(|t|^{-N}) .
+\]
+Every commutator containing at least one tail factor is therefore
+\(O_N(|t|^{-N})\).
 
-Inside the two tubes, the equal-time points \((t,\vec x)\) and
-\((t,\vec y)\) have spatial separation at least \(c|t|\).  Let
-\(B_{i,R}\) and \(B_{j,R}\) be local approximants with
-\(\|B_\ell-B_{\ell,R}\|\le C_N R^{-N}\), and choose
-\(R=c|t|/4\).  The translated local approximants are localized in double
-cones whose radii are \(R\) around the two tube points; for large \(|t|\)
-these double cones are spacelike separated.  Locality gives zero commutator
-for the approximants.  The difference between the original operators and the
-approximants contributes at most \(O_N(|t|^{-N})\).  Combining this with the
-rapidly decreasing tube-tail contributions proves the estimate.  The adjoint
-case follows because almost locality and localization are preserved by
+It remains to estimate the commutator of the near parts.  For
+\(\vec x/t\in U_i\) and \(\vec y/t\in U_j\) the equal-time centers satisfy
+\[
+  |\vec x-\vec y|\ge \delta |t| .
+\]
+Choose almost-local approximants \(B_{\ell,R}\) localized in the double cone
+of radius \(R\) about the origin and obeying, for arbitrary \(K\),
+\[
+  \|B_\ell-B_{\ell,R}\|\le C_K R^{-K},
+  \qquad \ell=i,j .
+\]
+Set \(R=\delta |t|/8\).  A point in the translated localization region of
+\((B_{i,R})(t,\vec x)\) has time coordinate within \(R\) of \(t\) and spatial
+coordinate within \(R\) of \(\vec x\); likewise for \(j\).  Hence the
+absolute time separation of two points in the two translated double cones is
+at most \(2R\), while their spatial separation is at least
+\(\delta |t|-2R\).  With the chosen \(R\),
+\[
+  \delta |t|-2R=\frac34\delta |t|>2R,
+\]
+so the two double cones are spacelike separated.  Locality gives
+\[
+  [(B_{i,R})(t,\vec x),(B_{j,R})(t,\vec y)]=0
+\]
+for all \(\vec x,\vec y\) in the near supports, and hence the integrated
+commutator of the two approximated near parts vanishes.
+
+The error made by replacing \(B_\ell\) by \(B_{\ell,R}\) is controlled in
+operator norm.  The near-packet \(L^1\)-norm grows at most polynomially in
+\(|t|\): inside a ball of radius \(O(|t|)\) this is the trivial volume bound,
+while outside such a ball the same nonstationary-phase integration by parts
+gives rapid decay.  Thus, for some fixed power \(M\),
+\[
+  \|B_{\ell,t}^{\rm near}-(B_{\ell,R})_{t}^{\rm near}\|
+  \le C(1+|t|)^M R^{-K}.
+\]
+Since \(K\) is arbitrary in the almost-local approximation, choosing
+\(K\) larger than \(M+N\) makes the replacement error \(O_N(|t|^{-N})\).
+Combining the near-approximant commutator, the replacement errors, and the
+tail estimates proves the displayed commutator bound.  The adjoint case is
+identical: \(B_R^*\) is localized in the same double cone as \(B_R\), and
+\(\|B^*-B_R^*\|=\|B-B_R\|\), so almost locality is preserved by taking
 adjoints.
 \end{proof}
 
