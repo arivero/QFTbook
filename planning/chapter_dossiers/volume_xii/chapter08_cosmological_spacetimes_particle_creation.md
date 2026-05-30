@@ -36,8 +36,10 @@ about ambiguity.
   conformally coupled scalar in arbitrary spacetime dimension.
 - Defines compatible complex structures and one-particle Hilbert spaces from
   the real symplectic solution space.
-- States the diagonal Shale--Stinespring criterion to distinguish finite
-  particle density from unitary equivalence of Fock representations.
+- Proves the diagonal Shale--Stinespring criterion in a countable mode basis
+  by the two-mode squeezed-vacuum and infinite tensor-product argument, and
+  separates the finite-volume unitary-equivalence condition from the
+  noncompact momentum-space particle-density diagnostic.
 - Derives Bogoliubov normalization and the out-particle number in the
   in-vacuum from the Wronskian and the annihilator transformation.
 - Gives the instantaneous frequency-jump example as a normalization check.
@@ -75,3 +77,13 @@ timelike detector worldline sampling the two-point function.
   sudden-jump normalization model.
 - Develop interacting cosmological QFT and semiclassical backreaction beyond
   the free-field and fixed-background diagnostics.
+
+## Audit Notes
+
+- 2026-05-30 quoted-theorem proof-debt pass: replaced the diagonal
+  Shale--Stinespring `quotedtheorem` by a local theorem with proof.  The pass
+  also corrected the continuum wording: \(\int |\beta_{\mathbf k}|^2\,d\mathbf
+  k\) is a finite-density/local diagnostic on a noncompact homogeneous slice,
+  whereas global Fock-unitary equivalence is the Hilbert--Schmidt condition
+  and, for exact continuum-diagonal multiplication, fails unless the
+  multiplication part vanishes almost everywhere.

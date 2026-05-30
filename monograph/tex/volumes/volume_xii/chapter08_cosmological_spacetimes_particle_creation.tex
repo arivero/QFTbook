@@ -192,32 +192,126 @@ the positive-frequency subspace.  This is the precise datum behind a
 particle interpretation.  Different choices of \(J\) can be unitarily
 inequivalent in infinite volume.
 
-\begin{quotedtheorem}[Shale--Stinespring criterion, diagonal form]
+\begin{theorem}[Shale--Stinespring criterion, diagonal discrete form]
 \label{qthm:shale-stinespring-diagonal}
-For two homogeneous quasifree representations whose positive-frequency modes
-are related mode-by-mode by Bogoliubov coefficients
+Let the one-particle space be a separable bosonic Hilbert space with
+orthonormal mode basis indexed by a countable set \(I\), paired by an
+involution \(n\mapsto\bar n\).  Suppose two quasifree complex structures are
+related mode-by-mode by Bogoliubov coefficients
 \begin{equation}
-  u_{\mathbf k}^{(1)}
+  u_n^{(1)}
   =
-  \alpha_k u_{\mathbf k}^{(2)}
+  \alpha_n u_n^{(2)}
   +
-  \beta_k\overline{u_{-\mathbf k}^{(2)}},
+  \beta_n\overline{u_{\bar n}^{(2)}},
   \label{eq:diagonal-bogoliubov-relation}
 \end{equation}
-the two Fock representations are unitarily equivalent precisely when
+with
+\[
+  |\alpha_n|^2-|\beta_n|^2=1 .
+\]
+Then the two Fock representations are unitarily equivalent precisely when
 \begin{equation}
-  \int d^{d-1}\mathbf k\,|\beta_k|^2<\infty
+  \sum_{n\in I_+}|\beta_n|^2<\infty ,
   \label{eq:shale-stinespring-diagonal-condition}
 \end{equation}
-with the corresponding finite-volume sum in a box.  In that case the
-Bogoliubov transformation is implemented by a unitary operator on Fock
-space.
-\end{quotedtheorem}
+where \(I_+\) contains one representative from each non-fixed pair
+\(\{n,\bar n\}\), with the evident one-oscillator modification for fixed
+points.  In that case the Bogoliubov transformation is implemented by a
+unitary operator on Fock space.
+\end{theorem}
 
-This theorem is an operator-algebraic fact about bosonic CCR
-representations.  It is also a useful diagnostic: a finite density
-\(|\beta_k|^2\) is not the same statement as unitary equivalence of the two
-global Fock representations.
+\begin{proof}
+For a finite set of modes the statement is the standard squeeze
+construction.  On one two-mode block write
+\[
+  b_n=\alpha_n a_n+\beta_n a_{\bar n}^{\dagger},
+  \qquad
+  b_{\bar n}=\alpha_n a_{\bar n}+\beta_n a_n^\dagger ,
+\]
+after absorbing harmless phases into the mode vectors.  The relation
+\(|\alpha_n|^2-|\beta_n|^2=1\) is exactly the condition that
+\([b_n,b_n^\dagger]=[b_{\bar n},b_{\bar n}^\dagger]=1\).  Put
+\[
+  \gamma_n=-\frac{\beta_n}{\alpha_n}.
+\]
+The vector in the old Fock space annihilated by \(b_n\) and \(b_{\bar n}\)
+is
+\begin{equation}
+  \Omega_{\gamma_n}
+  =
+  (1-|\gamma_n|^2)^{1/2}
+  \sum_{m=0}^\infty \gamma_n^m
+  |m\rangle_n\otimes |m\rangle_{\bar n},
+  \label{eq:two-mode-squeezed-vacuum}
+\end{equation}
+because applying \(a_n\) to the \(m\)-th term and applying
+\(\gamma_n a_{\bar n}^\dagger\) to the \((m-1)\)-st term cancel.  The
+normalization follows from the geometric series and the identity
+\[
+  1-|\gamma_n|^2
+  =
+  \frac{|\alpha_n|^2-|\beta_n|^2}{|\alpha_n|^2}
+  =
+  |\alpha_n|^{-2}.
+  \]
+The fixed-point one-oscillator block is the usual one-mode squeezed vector
+and gives the same square-summability condition, with a different harmless
+normalization convention.
+
+For an infinite countable set, the transformed vacuum is the infinite tensor
+product of the block vacua \(\Omega_{\gamma_n}\).  Von Neumann's criterion
+for incomplete infinite tensor products says that this tensor product defines
+a nonzero vector in the reference Fock space exactly when
+\[
+  \sum_{n\in I_+}
+  \bigl(1-|\langle 0_n0_{\bar n},\Omega_{\gamma_n}\rangle|\bigr)<\infty .
+\]
+Here
+\[
+  |\langle 0_n0_{\bar n},\Omega_{\gamma_n}\rangle|
+  =
+  (1-|\gamma_n|^2)^{1/2}.
+\]
+Since \(1-\sqrt{1-x}\) is comparable to \(x\) for \(0\le x\le1\), the
+criterion is
+\[
+  \sum_{n\in I_+}|\gamma_n|^2<\infty .
+\]
+Because \(|\gamma_n|^2=|\beta_n|^2/(1+|\beta_n|^2)\), this is equivalent to
+\(\sum_{n\in I_+}|\beta_n|^2<\infty\): if the \(\gamma_n\)-sum converges,
+only finitely many \(|\beta_n|\) can exceed \(1\), and on the remaining tail
+the two sequences are comparable.
+
+When the sum is finite, the finite-mode squeeze implementers converge
+strongly on the finite-particle domain to an isometry whose range contains
+the finite-particle domain of the transformed representation; its extension
+is the implementing unitary.  When the sum diverges, the candidate
+transformed vacuum has zero norm in the reference incomplete tensor product,
+so no unitary can implement the transformation: a unitary implementer would
+have to send the transformed vacuum to a nonzero vector annihilated by all
+\(b_n\), and the block equations above determine that vector uniquely up to
+phase.
+\end{proof}
+
+For a field on a finite spatial box, \eqref{eq:shale-stinespring-diagonal-condition}
+is the literal finite-volume Shale--Stinespring condition.  On a noncompact
+homogeneous spatial slice the momentum label is continuous, and the diagonal
+map
+\[
+  (\beta \bar f)(\mathbf k)=\beta_{\mathbf k}\,\overline{f(-\mathbf k)}
+\]
+is a multiplication operator, composed with parity and conjugation, on
+\(L^2(d^{d-1}\mathbf k)\).  As an operator on a non-atomic \(L^2\)-space,
+such a diagonal multiplication operator is Hilbert--Schmidt only when it
+vanishes almost everywhere.  Thus
+\[
+  \int d^{d-1}\mathbf k\,|\beta_{\mathbf k}|^2<\infty
+\]
+is a finite particle-density or local/box-normalized diagnostic; it is not,
+by itself, a statement of global unitary equivalence of the two infinite-volume
+Fock representations.  This distinction is one of the main reasons the
+complex-structure formulation is cleaner than informal particle language.
 
 \section{In and Out Modes}
 
