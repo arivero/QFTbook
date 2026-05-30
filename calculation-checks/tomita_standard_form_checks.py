@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite standard-form checks for Tomita--Takesaki conventions."""
+"""Finite standard-form checks for Tomita--Takesaki and Connes conventions."""
 
 from __future__ import annotations
 
@@ -42,6 +42,40 @@ def diag_power(lambdas: list[float], power: complex) -> Matrix:
         [cmath.exp(power * cmath.log(lambdas[i])) if i == j else 0.0 for j in range(len(lambdas))]
         for i in range(len(lambdas))
     ]
+
+
+def sym2_power(matrix: Matrix, power: complex) -> Matrix:
+    """Power of a positive real-symmetric 2x2 matrix by spectral calculus."""
+    a = matrix[0][0].real
+    b = matrix[0][1].real
+    d = matrix[1][1].real
+    radius = sqrt((a - d) * (a - d) + 4.0 * b * b)
+    lambdas = [(a + d + radius) / 2.0, (a + d - radius) / 2.0]
+    if min(lambdas) <= 0.0:
+        raise AssertionError("matrix is not positive definite")
+
+    vectors: list[list[float]] = []
+    for lam in lambdas:
+        vector = [b, lam - a]
+        norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1])
+        if norm < 1.0e-14:
+            vector = [lam - d, b]
+            norm = sqrt(vector[0] * vector[0] + vector[1] * vector[1])
+        vectors.append([vector[0] / norm, vector[1] / norm])
+
+    # The two eigenvectors are orthonormal up to rounding; use the spectral
+    # sum directly to avoid fixing an orientation convention for the rotation.
+    out = [[0.0j, 0.0j], [0.0j, 0.0j]]
+    for lam, vec in zip(lambdas, vectors):
+        lam_power = cmath.exp(power * cmath.log(lam))
+        for i in range(2):
+            for j in range(2):
+                out[i][j] += lam_power * vec[i] * vec[j]
+    return out
+
+
+def identity(n: int) -> Matrix:
+    return [[1.0 if i == j else 0.0 for j in range(n)] for i in range(n)]
 
 
 def basis(n: int, i: int, j: int) -> Matrix:
@@ -152,11 +186,63 @@ def check_kms_for_inverse_modular_flow() -> None:
         assert_close("upper modular KMS boundary", upper, target)
 
 
+def check_relative_modular_connes_cocycle() -> None:
+    rho_omega_lambdas = [0.37, 0.63]
+    rho_psi = [
+        [0.58, 0.18],
+        [0.18, 0.42],
+    ]
+    x = [
+        [0.4, 0.1 - 0.2j],
+        [-0.5j, 0.7],
+    ]
+    a = [
+        [0.2, 0.6 - 0.1j],
+        [-0.3j, 0.9],
+    ]
+
+    def omega_power(power: complex) -> Matrix:
+        return diag_power(rho_omega_lambdas, power)
+
+    def psi_power(power: complex) -> Matrix:
+        return sym2_power(rho_psi, power)
+
+    def sigma_omega(matrix: Matrix, t: float) -> Matrix:
+        return matmul(omega_power(1j * t), matmul(matrix, omega_power(-1j * t)))
+
+    def sigma_psi(matrix: Matrix, t: float) -> Matrix:
+        return matmul(psi_power(1j * t), matmul(matrix, psi_power(-1j * t)))
+
+    for t, s in ((0.4, -0.2), (0.7, 0.35), (-0.6, 0.8)):
+        delta_omega_minus_x = matmul(omega_power(-1j * t), matmul(x, omega_power(1j * t)))
+        relative_after_reference = matmul(
+            psi_power(1j * t),
+            matmul(delta_omega_minus_x, omega_power(-1j * t)),
+        )
+        u_t = matmul(psi_power(1j * t), omega_power(-1j * t))
+        check_entrywise(
+            "relative modular product is left multiplication",
+            relative_after_reference,
+            left(u_t, x),
+        )
+
+        check_entrywise("Connes cocycle unitary", matmul(u_t, adjoint(u_t)), identity(2))
+
+        u_s = matmul(psi_power(1j * s), omega_power(-1j * s))
+        u_t_plus_s = matmul(psi_power(1j * (t + s)), omega_power(-1j * (t + s)))
+        cocycle_rhs = matmul(u_t, sigma_omega(u_s, t))
+        check_entrywise("Connes cocycle law", cocycle_rhs, u_t_plus_s)
+
+        implemented = matmul(u_t, matmul(sigma_omega(a, t), adjoint(u_t)))
+        check_entrywise("Connes cocycle implements modular flow change", implemented, sigma_psi(a, t))
+
+
 def main() -> None:
     check_tomita_polar_data()
     check_commutant_and_modular_automorphism()
     check_kms_for_inverse_modular_flow()
-    print("All finite Tomita standard-form checks passed.")
+    check_relative_modular_connes_cocycle()
+    print("All finite Tomita standard-form and Connes cocycle checks passed.")
 
 
 if __name__ == "__main__":

@@ -24,6 +24,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `\Hilb_{\rm HS}`, `\pi`, `S`, `J`, `\Delta`: finite Hilbert-Schmidt
   standard-form model, left representation, Tomita operator, modular
   conjugation, and modular operator.
+- `u_t=[D\psi:D\omega]_t`: Connes cocycle derivative comparing two faithful
+  normal states in standard form.
 
 ## Claim Ledger
 
@@ -45,6 +47,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   Tomita polar decomposition, commutant identification, modular
   automorphisms, and the sign relating modular flow to the chapter's KMS
   convention.
+- Proves the finite-dimensional Connes cocycle model:
+  \(\Delta_{\psi|\omega}^{it}\Delta_\omega^{-it}\) is left multiplication by
+  \(u_t=\rho_\psi^{it}\rho_\omega^{-it}\), and this algebra unitary satisfies
+  the cocycle law and implements the change of modular flow.
 
 ## Figure Ledger
 
@@ -61,8 +67,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `calculation-checks/tomita_standard_form_checks.py` verifies the finite
   matrix-algebra standard-form formulae: \(S=J\Delta^{1/2}\), modular
   eigenvalues on matrix units, \(J L_A J=R_{A^*}\), modular automorphism by
-  density-matrix conjugation, and the KMS boundary relation for the inverse
-  modular flow in the chapter convention.
+  density-matrix conjugation, the KMS boundary relation for the inverse
+  modular flow in the chapter convention, and the noncommuting finite-density
+  Connes cocycle identities.
 
 ## Audit Notes
 
@@ -126,3 +133,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - 2026-05-30 finite standard-form pass: inserted a fully proved
   finite-dimensional Tomita--Takesaki model for a faithful matrix state and
   paired it with `tomita_standard_form_checks.py`.
+- 2026-05-30 finite Connes cocycle pass: promoted the finite type-I cocycle
+  check from a remark to a proved proposition and extended
+  `tomita_standard_form_checks.py` to verify the relative modular product,
+  cocycle law, and modular-flow implementation in a noncommuting density
+  example.
