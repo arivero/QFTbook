@@ -63,6 +63,12 @@ of backgrounds, anomalies, gauging, and condensation.
 - Defines a triangulated finite higher-gauging defect from a closed
   two-cochain sum over topological symmetry surfaces with the full finite
   groupoid normalization including gauge-for-gauge data.
+- Makes the finite two-form gauge `2`-groupoid explicit: objects are closed
+  two-cochains, one-morphisms are one-cochain gauge transformations, and
+  two-morphisms are zero-cochain gauge-for-gauge transformations.  The
+  homotopy cardinality
+  `|H^0(Y,Z_N)| |H^2(Y,Z_N)| / |H^1(Y,Z_N)|` is shown to equal the
+  unquotiented cochain measure `|C^0| |Z^2| / |C^1|`.
 - Proves the finite cochain fusion theorem: two condensation defects fuse to
   the original condensation defect tensored with the three-dimensional finite
   `Z_N` two-form gauge-theory state sum
@@ -103,7 +109,10 @@ topological factor.
 - `calculation-checks/finite_higher_gauging_checks.py` verifies the finite
   groupoid normalization in the condensation defect, the exact algebra
   \(\mathfrak C^2=Z^{(2)}\mathfrak C\), and the cell-dependence that would
-  remain if the degree-zero gauge-for-gauge factor were omitted.
+  remain if the degree-zero gauge-for-gauge factor were omitted.  It now also
+  enumerates explicit finite cochain complexes over `Z_N` and checks directly
+  that the cochain measure equals the finite `2`-groupoid homotopy
+  cardinality and that the condensation convolution has fiber size `|Z^2|`.
 
 ## Anti-Wrapper Audit
 

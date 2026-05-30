@@ -220,6 +220,65 @@ and changes the defect by an invertible normalization convention rather than
 by a dynamical QFT operation.
 \end{definition}
 
+\paragraph{Finite two-form gauge groupoid behind the normalization.}
+The coefficient in
+\eqref{eq:triangulated-one-form-condensation-defect} is the homotopy
+cardinality of the finite two-form gauge groupoid, written before quotienting
+the field variables.  Let
+\(\mathcal Z_N^2(Y)\) be the finite \(2\)-groupoid whose objects are closed
+two-cochains
+\[
+  b\in Z^2(Y,\mathbb Z_N),
+\]
+whose \(1\)-morphisms are one-cochains
+\(\lambda\in C^1(Y,\mathbb Z_N)\) acting by
+\[
+  b\longmapsto b+\delta\lambda,
+\]
+and whose \(2\)-morphisms are zero-cochains
+\(\xi\in C^0(Y,\mathbb Z_N)\) acting on gauge parameters by
+\[
+  \lambda\longmapsto \lambda+\delta\xi .
+\]
+For a closed connected component this is the finite model of a
+\(\mathbb Z_N\) two-form gauge field on \(Y\).  The homotopy cardinality of a
+finite \(2\)-groupoid is
+\[
+  \sum_{[b]\in\pi_0}
+  \frac{|\pi_2(\mathcal Z_N^2(Y),b)|}
+       {|\pi_1(\mathcal Z_N^2(Y),b)|}.
+\]
+Here
+\[
+  \pi_0\simeq H^2(Y,\mathbb Z_N),\qquad
+  \pi_1\simeq H^1(Y,\mathbb Z_N),\qquad
+  \pi_2\simeq H^0(Y,\mathbb Z_N),
+\]
+so
+\begin{equation}
+  |\mathcal Z_N^2(Y)|
+  =
+  \frac{|H^0(Y,\mathbb Z_N)|\,|H^2(Y,\mathbb Z_N)|}
+       {|H^1(Y,\mathbb Z_N)|}.
+  \label{eq:finite-two-form-groupoid-homotopy-cardinality}
+\end{equation}
+Equivalently, if one sums over the unquotiented set of closed cochains, the
+same cardinality is
+\begin{equation}
+  |\mathcal Z_N^2(Y)|
+  =
+  \frac{|C^0(Y,\mathbb Z_N)|\,|Z^2(Y,\mathbb Z_N)|}
+       {|C^1(Y,\mathbb Z_N)|}.
+  \label{eq:finite-two-form-groupoid-cochain-cardinality}
+\end{equation}
+This is exactly the normalization used in
+\eqref{eq:triangulated-one-form-condensation-defect}: the summand
+\(\mathsf U_b(Y)\) is written for every closed cochain \(b\), while the factor
+\(|C^0|/|C^1|\) divides by one-form gauge redundancy and restores the
+zero-form gauge-for-gauge volume.  Thus the normalization is not an optional
+cellular convention; it is the finite path-integral measure for the
+two-form gauge field.
+
 \begin{theorem}[Finite higher gauging and condensation fusion]
 \label{thm:finite-higher-gauging-condensation-defects}
 Under the hypotheses of
@@ -262,17 +321,26 @@ surface where the flux label in \(H^2(\Sigma,\mathbb Z_N)\) survives.
 \end{theorem}
 
 \begin{proof}
-Topological invariance of \(\mathfrak C(Y)\) is part of the stated QFT input:
-the surface networks \(U_n(\Sigma)\), their junctions, and the allowed
-triangulation moves are assumed topological and anomaly-free.  The cochain
+Topological invariance of \(\mathfrak C(Y)\) has two logically distinct
+inputs.  The QFT input is that the surface networks \(U_n(\Sigma)\), their
+junctions, and their Pachner-move identifications have already been
+constructed as anomaly-free topological operators.  The finite gauge-theory
+input is the groupoid measure
+\eqref{eq:finite-two-form-groupoid-cochain-cardinality}.  The cochain
 condition \(\delta b=0\) is exactly the junction conservation law for the
-Poincare-dual network, so the sum in
-\eqref{eq:triangulated-one-form-condensation-defect} is stable under
-refining or locally moving the triangulation of \(Y\).  In a collar
+Poincare-dual network, so a closed \(b\) produces a network without residual
+endpoints.  A change \(b\mapsto b+\delta\lambda\) inserts the boundary of a
+one-cochain of symmetry surfaces; by the assumed topological junction
+relations this is a gauge-equivalent representative of the same condensed
+configuration.  A change \(\lambda\mapsto\lambda+\delta\xi\) is the
+gauge-for-gauge redundancy of that boundary filling.  Therefore the sum in
+\eqref{eq:triangulated-one-form-condensation-defect} is precisely the
+unquotiented expression for the finite path integral over
+\(\mathcal Z_N^2(Y)\).  In a collar
 \((- \epsilon,\epsilon)\times Y\), replacing the fixed one-form background by
-the groupoid sum over \(b\) is precisely the finite path integral for gauging
-the one-form symmetry on the hypersurface.  This proves the gauging
-interpretation once the symmetry surfaces of the QFT have been constructed.
+this groupoid sum is the finite gauging operation on the hypersurface.  This
+proves the gauging interpretation after the QFT surface-operator input has
+been supplied.
 
 Place two copies of the defect on nearby parallel copies of \(Y\).  Their
 product is
