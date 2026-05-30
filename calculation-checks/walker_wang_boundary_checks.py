@@ -1,13 +1,52 @@
 #!/usr/bin/env python3
-"""Finite checks for the pointed Walker-Wang boundary mechanism."""
+"""Finite checks for the Walker-Wang boundary mechanism.
+
+The chapter proves the pointed radical criterion and adds a non-pointed
+Mueger-center test in the Ising modular category.  These checks are exact
+finite convention checks for those displayed examples; they do not replace
+the categorical state-sum theorem.
+"""
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from fractions import Fraction
 from itertools import product
 
 
 Charge = tuple[int, int]
+
+
+@dataclass(frozen=True)
+class Qsqrt2:
+    rational: Fraction = Fraction(0)
+    sqrt2: Fraction = Fraction(0)
+
+    def __add__(self, other: "Qsqrt2") -> "Qsqrt2":
+        return Qsqrt2(self.rational + other.rational, self.sqrt2 + other.sqrt2)
+
+    def __sub__(self, other: "Qsqrt2") -> "Qsqrt2":
+        return Qsqrt2(self.rational - other.rational, self.sqrt2 - other.sqrt2)
+
+    def __neg__(self) -> "Qsqrt2":
+        return Qsqrt2(-self.rational, -self.sqrt2)
+
+    def __mul__(self, other: "Qsqrt2") -> "Qsqrt2":
+        return Qsqrt2(
+            self.rational * other.rational + 2 * self.sqrt2 * other.sqrt2,
+            self.rational * other.sqrt2 + self.sqrt2 * other.rational,
+        )
+
+    def scale(self, coeff: Fraction | int) -> "Qsqrt2":
+        coeff = Fraction(coeff)
+        return Qsqrt2(coeff * self.rational, coeff * self.sqrt2)
+
+
+ZERO_Q2 = Qsqrt2()
+ONE_Q2 = Qsqrt2(Fraction(1))
+HALF_Q2 = Qsqrt2(Fraction(1, 2))
+SQRT2_Q2 = Qsqrt2(Fraction(0), Fraction(1))
+INV_SQRT2_Q2 = Qsqrt2(Fraction(0), Fraction(1, 2))
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -92,12 +131,46 @@ def check_boundary_fusion_group_law() -> None:
         assert_equal("boundary fusion self inverse", toric_add(a, a), (0, 0))
 
 
+def transparent_from_modular_s(s_matrix: list[list[Qsqrt2]], dimensions: list[Qsqrt2]) -> list[int]:
+    transparent: list[int] = []
+    for a, row in enumerate(s_matrix):
+        # The expected normalized S-row is d_a d_x / D.  For the Ising
+        # example D=2, so multiplication by 1/2 is exact in Q(sqrt(2)).
+        expected = [(dimensions[a] * dimensions[x]).scale(Fraction(1, 2)) for x in range(len(dimensions))]
+        if all(row[x] == expected[x] for x in range(len(dimensions))):
+            transparent.append(a)
+    return transparent
+
+
+def check_ising_muger_center_is_trivial() -> None:
+    # Ordered basis: 1, psi, sigma.
+    ising_s = [
+        [HALF_Q2, HALF_Q2, INV_SQRT2_Q2],
+        [HALF_Q2, HALF_Q2, -INV_SQRT2_Q2],
+        [INV_SQRT2_Q2, -INV_SQRT2_Q2, ZERO_Q2],
+    ]
+    dimensions = [ONE_Q2, ONE_Q2, SQRT2_Q2]
+    transparent = transparent_from_modular_s(ising_s, dimensions)
+    assert_equal("Ising transparent simples", transparent, [0])
+    assert_equal(
+        "Ising psi row fails at sigma",
+        ising_s[1][2],
+        -(dimensions[1] * dimensions[2]).scale(Fraction(1, 2)),
+    )
+    assert_equal(
+        "Ising sigma row expected at psi",
+        (dimensions[2] * dimensions[1]).scale(Fraction(1, 2)),
+        INV_SQRT2_Q2,
+    )
+
+
 def main() -> None:
     check_toric_code_radical_is_trivial()
     check_symmetric_z2_radical_is_all()
     check_cyclic_nondegenerate_examples()
     check_boundary_fusion_group_law()
-    print("Pointed Walker-Wang boundary mechanism checks passed.")
+    check_ising_muger_center_is_trivial()
+    print("Walker-Wang boundary mechanism checks passed.")
 
 
 if __name__ == "__main__":

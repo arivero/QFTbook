@@ -25,8 +25,11 @@ gauge-theoretic boundary constructions.
   boundary forms.
 - `L_partial`: boundary Lagrangian condition in BFV phase space.
 - `A`, `q`, `b`, `Rad(A,b)`: pointed braided finite abelian input, spin
-  quadratic function, polarized braiding form, and radical/Müger-center
+  quadratic function, polarized braiding form, and radical/Mueger-center
   subgroup in the pointed Walker--Wang mechanism.
+- `Z_2(C)`, `M_{a,x}`: Mueger center of a finite semisimple braided category
+  and categorical monodromy \(c_{x,a}c_{a,x}\) used in the non-pointed
+  Walker--Wang plaquette criterion.
 
 ## Claim Ledger
 
@@ -49,6 +52,12 @@ gauge-theoretic boundary constructions.
   input leaves its nontrivial line category on the boundary.
 - Works out the toric-code pointed input as a modular boundary order with
   trivial bulk radical.
+- Adds the non-pointed algebraic plaquette criterion: under the hypothesis
+  that the local plaquette-loop crossing with a transverse line is categorical
+  monodromy, the algebraic candidates for deconfined bulk lines are exactly
+  the simple objects in the Mueger center.
+- Uses the Ising modular category as a non-pointed example whose \(S\)-matrix
+  row-factorization test leaves only the tensor unit transparent.
 - Defines the BV-BFV boundary mechanism and the extended assignment problem.
 
 ## Figure Ledger
@@ -61,7 +70,8 @@ restriction diagrams.
 
 - `calculation-checks/walker_wang_boundary_checks.py` verifies the pointed
   Walker--Wang radical criterion, including toric-code, symmetric
-  nonmodular, and cyclic nondegenerate examples.
+  nonmodular, and cyclic nondegenerate examples, and the non-pointed Ising
+  M\"uger-center row-factorization test.
 
 ## Anti-Wrapper Audit
 
@@ -69,3 +79,7 @@ restriction diagrams.
   wrapper.  The fully general categorical construction remains an external
   mathematical boundary, but the monograph now proves the finite pointed
   mechanism actually used in the chapter.
+- 2026-05-30 non-pointed mechanism pass: added the finite semisimple braided
+  M\"uger-center definition and a local plaquette-algebra proposition, so the
+  non-pointed Walker--Wang statement now has a precise algebraic mechanism
+  rather than only an external-theorem remark.

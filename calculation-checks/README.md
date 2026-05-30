@@ -595,11 +595,12 @@ Current checks:
   \(S_3/A_3\simeq\mathbb Z_2\) quotient multiplication, orbifold
   pair-of-pants monodromy, centralizer sizes, and preservation of the
   electric-magnetic Dirac pairing by \(S\), \(T\), and \(T^p\).
-- `walker_wang_boundary_checks.py`: exact finite checks for the pointed
-  Walker--Wang boundary mechanism, including the toric-code radical
-  computation, a symmetric nonmodular \(\mathbb Z_2\) counterexample whose
-  radical is all of the line group, cyclic nondegenerate examples, and
-  boundary fusion associativity.
+- `walker_wang_boundary_checks.py`: exact finite checks for the Walker--Wang
+  boundary mechanism, including the pointed toric-code radical computation, a
+  symmetric nonmodular \(\mathbb Z_2\) counterexample whose radical is all of
+  the line group, cyclic nondegenerate pointed examples, boundary fusion
+  associativity, and the non-pointed Ising modular-category M\"uger-center
+  row-factorization test.
 - `finite_higher_gauging_checks.py`: exact finite checks for the
   higher-gauging condensation-defect normalization, including the equality
   between the cochain groupoid factor
