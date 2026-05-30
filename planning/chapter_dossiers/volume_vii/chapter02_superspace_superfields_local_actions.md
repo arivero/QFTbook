@@ -19,7 +19,8 @@
 - Chiral superfields and component expansion.
 - Component supersymmetry transformations for a chiral multiplet, derived
   explicitly from the chiral-coordinate supercharge action with odd
-  supersymmetry parameters.
+  supersymmetry parameters.  The 2026-05-30 anti-wrapper pass keeps this as a
+  worked coefficient extraction rather than a proposition.
 - Off-shell closure of the chiral-multiplet component transformations.
 - Berezin integration as top-coefficient projection on the odd coordinate
   algebra.
@@ -35,12 +36,15 @@
   superpotential.
 - Real vector superfields, chiral gauge transformations, Wess--Zumino gauge as
   a local gauge representative, and the component expansion of the Abelian
-  chiral field strength \(W_\alpha\).
+  chiral field strength \(W_\alpha\).  The gauge-slice construction is
+  paragraph-level representative data, not theorem-form evidence of a
+  gauge-invariant supersymmetry realization.
 - Gauge-kinetic component coefficient of \(W^\alpha W_\alpha\), including
   the inverse epsilon-raising convention, the finite
   \(\sigma^{\mu\nu}\)-contraction identity, and the recovery of
   \(-F_{\mu\nu}F^{\mu\nu}/(4g^2)+D^2/(2g^2)\) from the real superspace
-  action.
+  action.  The finite spinor-algebra check remains explicit in prose and in
+  the companion calculation script, not as a formal lemma.
 - Distinction between operator-valued fermion fields and Grassmann-valued
   path-integral variables by correlation functional.
 - Supersymmetric Wilsonian scheme as regulated field-variable data,

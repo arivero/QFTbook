@@ -129,8 +129,7 @@ it has the component expansion
 Here \(\phi\) is an even scalar field, \(\psi_\alpha\) an odd Weyl spinor
 field, and \(F\) an even auxiliary field.
 
-\begin{proposition}[Component transformations of a chiral multiplet]
-\label{prop:chiral-component-transformations-derived}
+\paragraph{Component transformations of a chiral multiplet.}
 With the supertranslation derivations displayed above and the odd-parameter
 convention fixed at the beginning of the chapter, the components of a chiral
 superfield transform as
@@ -162,9 +161,7 @@ The commutator of two such even variations is the translation
   \right),
 \]
 on each of \(\phi,\psi_\alpha,F\), without imposing equations of motion.
-\end{proposition}
 
-\begin{proof}
 Use left derivatives with respect to odd variables.  In the chiral coordinate
 system \((y^\mu,\theta,\bar\theta)\), the chiral condition removes the
 \(\bar\theta\)-dependence of \(\Phi\), while the supercharges restrict to
@@ -232,7 +229,6 @@ and the anticommutator of the differential operators is
 \(2\ii\sigma^\mu_{\alpha}{}^{\dot\beta}\partial_\mu\).  This gives the
 displayed translation.  The computation used only the component expansion and
 the auxiliary field \(F\); no Euler--Lagrange equation was invoked.
-\end{proof}
 
 \section{Berezin Integration and Local Superspace Actions}
 
@@ -434,8 +430,7 @@ For an Abelian gauge group this reduces to
 The lowest scalar, spinor, and complex auxiliary components of a general real
 superfield are therefore gauge representatives, not physical fields.
 
-\begin{proposition}[Wess--Zumino gauge as a representative]
-\label{prop:wess-zumino-gauge-representative}
+\paragraph{Wess--Zumino gauge as a representative.}
 Locally in field space and perturbatively in the non-Abelian case, the chiral
 gauge freedom can put a real vector superfield in the representative
 \begin{equation}
@@ -454,9 +449,7 @@ The remaining gauge freedom is the ordinary gauge transformation of
 field-dependent chiral gauge transformation.  Thus Wess--Zumino gauge is a
 gauge-fixed coordinate choice on field variables, not a gauge-invariant
 realization of the supersymmetry algebra.
-\end{proposition}
 
-\begin{proof}
 A general real superfield has the finite expansion
 \[
   V=C+\theta\chi+\bar\theta\bar\chi+\theta^2M+\bar\theta^2\bar M
@@ -489,7 +482,6 @@ function theorem gives the local gauge representative.  Supersymmetry
 changes the removed components because \(Q\) and \(\bar Q\) do not commute
 with the gauge-slice condition; the compensating chiral gauge transformation
 is therefore necessary.
-\end{proof}
 
 In Abelian Wess--Zumino gauge the chiral field strength
 \[
@@ -509,8 +501,7 @@ The non-Abelian formula replaces \(D_\alpha V\) by
 \(e^{-V}D_\alpha e^V\) and ordinary derivatives by covariant derivatives, as
 in Chapter~\ref{ch:susy-gauge-theory}.
 
-\begin{lemma}[Gauge kinetic coefficient in Wess--Zumino gauge]
-\label{lem:susy-vector-superfield-gauge-kinetic-coefficient}
+\paragraph{Gauge kinetic coefficient in Wess--Zumino gauge.}
 Let \(\eta=\operatorname{diag}(-,+,+,+)\),
 \(\epsilon^{0123}=+1\), and
 \[
@@ -549,9 +540,7 @@ For a complex holomorphic gauge coupling the imaginary part of
 \eqref{eq:susy-vector-superfield-w-square-bosonic-coefficient} instead
 contributes to the topological \(\theta\)-angle term, with the normalization
 matched in Chapter~\ref{ch:susy-gauge-theory}.
-\end{lemma}
 
-\begin{proof}
 Only the terms of \(W_\alpha\) that are linear in \(\theta\) can contribute
 to the bosonic \(\theta^2\) coefficient of \(W^\alpha W_\alpha\).  Thus set
 \[
@@ -617,7 +606,6 @@ proves \eqref{eq:susy-vector-superfield-w-square-bosonic-coefficient}.
 Adding the Hermitian conjugate with real coefficient \(1/(4g^2)\) doubles
 the real part and cancels the imaginary topological term, giving
 \eqref{eq:susy-vector-superfield-gauge-kinetic-component}.
-\end{proof}
 
 The companion Python calculation check in \texttt{calculation-checks/}
 verifies
