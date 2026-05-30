@@ -59,3 +59,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   polar-decomposition route to the modular conjugation.  This strengthens the
   quoted theorem boundary without claiming that the full BW theorem has been
   reproved from bare AQFT axioms.
+- 2026-05-30 nuclearity/split mechanism pass: expanded the phase-space
+  theorem discussion with the normal tensor-product criterion for split
+  inclusions, the way energy-damped nuclearity controls bilinear functionals
+  on \(\mathcal M_1\odot\mathcal M_2'\), the role of the positive collar in
+  analytic imaginary-time translation, the distinction between one-scale
+  nuclearity and uniform small-\(\beta\) phase-space bounds, and the separate
+  hypotheses behind type-\(\mathrm{III}_1\) sharp local algebras.

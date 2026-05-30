@@ -906,6 +906,84 @@ known models satisfying the full relativistic phase-space and scaling
 regularity hypotheses, they are type \(\mathrm{III}_1\).
 \end{quotedtheorem}
 
+\paragraph{Functional-analytic mechanism of the split conclusion.}
+The split part of the theorem converts an energy-damped compactness estimate
+into a spatial tensor-product representation for separated algebras.  Let
+\[
+  \mathcal M_1=\mathcal R(\mathcal O_1),
+  \qquad
+  \mathcal M_2=\mathcal R(\mathcal O_2),
+  \qquad
+  \mathcal O_1\Subset\mathcal O_2 .
+\]
+Because \(\mathcal M_1\) and \(\mathcal M_2'\) commute, there is an algebraic
+multiplication representation
+\[
+  m:\mathcal M_1\odot\mathcal M_2'\longrightarrow\mathcal B(\Hilb),
+  \qquad
+  m(A\otimes B')=AB' .
+\]
+The inclusion \(\mathcal M_1\subset\mathcal M_2\) is split precisely when this
+representation extends normally to the von Neumann tensor product
+\begin{equation}
+  \mathcal M_1\bar\otimes\mathcal M_2' .
+  \label{eq:split-tensor-product-criterion}
+\end{equation}
+Equivalently, after a unitary identification of the Hilbert space with a
+tensor product \(\mathcal K\otimes\mathcal L\), the two commuting algebras act
+as
+\[
+  \mathcal M_1\subset\mathcal B(\mathcal K)\otimes\mathbf 1,
+  \qquad
+  \mathcal M_2'\subset\mathbf 1\otimes\mathcal B(\mathcal L),
+\]
+and the interpolating type-I factor is
+\[
+  \mathcal N
+  =
+  U^{-1}\!\left(\mathcal B(\mathcal K)\otimes\mathbf 1\right)U .
+\]
+This criterion is the functional-analytic content behind the phrase
+``approximate tensor factorization'': it is a normal tensor-product
+representation for algebras separated by a positive collar.
+
+The nuclearity hypothesis supplies the normality in
+\eqref{eq:split-tensor-product-criterion}.  A nuclear decomposition of
+\(\Theta_{\beta,\mathcal O}\) has the form
+\[
+  \ee^{-\beta H}A\vac
+  =
+  \sum_{n\ge1}\ell_n(A)\xi_n,
+  \qquad
+  \sum_n\|\ell_n\|\,\|\xi_n\|<\infty .
+\]
+Thus the set of vectors obtained by acting with the local unit ball and then
+damping energy by \(\ee^{-\beta H}\) is contained in the absolutely convex
+hull of a summable family.  The collar
+\(\mathcal O_1\Subset\mathcal O_2\) permits one to choose a small timelike
+imaginary translation, implemented analytically by \(\ee^{-\beta H}\), whose
+domain of holomorphy does not cross the spacelike complement of
+\(\mathcal O_2\).  Locality then controls products \(AB'\) with
+\(A\in\mathcal M_1\) and \(B'\in\mathcal M_2'\), while the summable expansion
+above gives trace-norm control of the bilinear functionals on
+\(\mathcal M_1\odot\mathcal M_2'\).  The resulting product-type normal
+functionals extend from the algebraic tensor product to
+\(\mathcal M_1\bar\otimes\mathcal M_2'\); by the split criterion this yields
+the type-I interpolant.
+
+This proof mechanism also explains the status of the constants in the
+phase-space bound.  The exponential estimate
+\[
+  \|\Theta_{\beta,\mathcal O}\|_1
+  \le
+  \exp(C_{\mathcal O}\beta^{-s_{\mathcal O}})
+\]
+is stronger than mere nuclearity and is used to make the construction stable
+as the collar, region, or thermodynamic comparison is varied.  The existence
+of a single nuclear map for a fixed \((\beta,\mathcal O)\) gives compactness
+at one scale; the uniform small-\(\beta\) bound is the continuum
+phase-space statement needed in applications.
+
 The quoted theorem has two distinct messages.  The split inclusion says that a
 positive collar between regions allows a type-I interpolant and hence an
 approximate tensor product.  The type-\(\mathrm{III}\) statement says that the
@@ -919,6 +997,15 @@ is not a technical inconvenience; it is the local algebraic structure of a
 continuum relativistic QFT.  Local entropy therefore has to be understood
 through split limits, relative entropy, or other regulator-dependent
 procedures whose limiting content is stated explicitly.
+
+The type-\(\mathrm{III}_1\) identification is a further sharp-local-algebra
+statement.  Its input is not the split property alone but the combination of
+relativistic locality, vacuum cyclicity and separatingness, additivity or
+scaling regularity, and the absence of finite-dimensional local summands.
+Under those hypotheses the local algebra has no minimal projections, no
+faithful normal trace, and no type-I density-matrix description.  The split
+property supplies type-I factors only at positive separation; the sharp
+region algebra belongs to the type-III class.
 
 \section{Modular Hamiltonians and Energy Bounds}
 \label{sec:modular-hamiltonian-relative-entropy-energy-bounds}
