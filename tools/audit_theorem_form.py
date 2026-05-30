@@ -184,6 +184,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Riemann--Hurwitz ledger for twist correlators|"
     r"Schwarzian and OPE-exponent ledger for primitive joining|"
     r"Nested root-count ledger|"
+    r"Power-counting ledger for the tested .*XY.* covariance graphs|"
     r"Spectral meaning of a finite residual|"
     r"Purely odd Berezinian transformation|"
     r"Crossing of the invariant tensors|"

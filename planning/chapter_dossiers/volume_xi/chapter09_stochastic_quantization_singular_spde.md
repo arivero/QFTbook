@@ -1046,11 +1046,11 @@ data maps.
   \(\sigma_{XY}=4\kappa-\zeta_{XY}\),
   \(\sigma_{X^2Y}=5\kappa-\zeta_{X^2Y}\), the entropy data \(D=5,d=6\),
   and the exact high-moment conditions \(p\sigma_\tau>5\), \(p\theta>6\).
-  A companion \(XY\) graph power-counting ledger records the marginal total
-  degree and positive proper-subgraph deficits of the fourth- and
-  second-chaos covariance graphs; the calculation-check companion verifies
-  both that graph arithmetic and the sample nonlinear entropy/slack
-  arithmetic.
+  A companion \(XY\) graph proposition proves the logarithmic power-counting
+  bound from the marginal total degree and positive proper-subgraph deficits
+  of the fourth- and second-chaos covariance graphs; the calculation-check
+  companion verifies both that graph arithmetic and the sample nonlinear
+  entropy/slack arithmetic.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck
