@@ -200,6 +200,11 @@ def check_furuta_examples() -> None:
     sigma_k3 = -16
     rhs_units = Fraction(10, 8) * abs(sigma_k3) + 2
     assert_equal(Fraction(b2_k3), rhs_units, "K3 Furuta saturation")
+    assert_equal(
+        Fraction(-sigma_k3, 8),
+        Fraction(2),
+        "K3 spin Dirac quaternionic index",
+    )
 
     # Spin elliptic surfaces E(2m) obey the inequality; this is only an
     # arithmetic check of the topological numbers used in the chapter.
@@ -209,6 +214,11 @@ def check_furuta_examples() -> None:
         sigma_value = -8 * n
         if Fraction(b2) < Fraction(10, 8) * abs(sigma_value) + 2:
             raise AssertionError("E(2m) violates Furuta arithmetic check")
+        assert_equal(
+            Fraction(-sigma_value, 8),
+            Fraction(n),
+            "E(2m) spin Dirac quaternionic index",
+        )
 
 
 def moore_witten_constant_exponent(chi_value: int, sigma_value: int) -> Fraction:

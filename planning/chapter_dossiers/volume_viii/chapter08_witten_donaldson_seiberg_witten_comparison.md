@@ -62,7 +62,9 @@ gauge theory.
   monopole moduli spaces.
 - Defines Seiberg-Witten basic classes and simple type, adds K3, `E(n)`, and
   blow-up arithmetic examples, and records the Bauer-Furuta refinement and
-  Furuta \(10/8+2\) inequality.
+  Furuta \(10/8+2\) inequality with the monopole-map Fredholm-plus-compact
+  construction and the spin \(\operatorname{Pin}(2)\)-equivariant obstruction
+  mechanism exposed at the point of use.
 - States the Coulomb-branch RG comparison datum, including the `u`-plane,
   singular fibers, observable map, contact term `T(u)`, chamber dependence,
   and determinant-line phases.
@@ -88,7 +90,8 @@ gauge theory.
   `2 chi + 3 sigma` identity, Donaldson descent degrees, Spin^c
   characteristic-lift parity, K3 and elliptic-surface simple-type arithmetic,
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
-  examples, and the trace-delta instanton action coefficient.
+  examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
+  and the trace-delta instanton action coefficient.
 
 ## Figure Ledger
 
@@ -96,3 +99,13 @@ No figure is included in this pass.  Future figures should show the ASD
 deformation complex, the monopole deformation complex, the `u`-plane with
 singular fibers, and the RG comparison from the twisted non-Abelian theory to
 the Abelian monopole theory.
+
+## Audit Notes
+
+- 2026-05-30 Bauer-Furuta proof-boundary pass: expanded the stable
+  cohomotopy theorem boundary by writing the Sobolev monopole map
+  \(\mathcal F=L+C\), identifying \(L=d^*\oplus d^+\oplus\not D\) as Fredholm
+  and \(C\) as compact on bounded sets, explaining finite-dimensional
+  approximation by low spectral modes, and separating the pure
+  \(\operatorname{Pin}(2)\)-equivariant stable-homotopy input behind Furuta's
+  inequality from the QFT comparison problem.
