@@ -448,3 +448,8 @@
   noncompact-spectrum status information; neither contains a locally proved
   theorem, and the cigar spectrum statement explicitly depends on analytic
   noncompact CFT data beyond the local coset stress tensor.
+- 2026-05-30 anti-wrapper continuation: demoted the symmetric-product
+  Schwarzian/OPE-power ledger for primitive joining from proposition/proof
+  form to derivational prose.  The double-pole coefficient, OPE exponent, and
+  statement that the analytic coefficient is not fixed by the ledger remain
+  unchanged; only the theorem-family wrapper was removed.

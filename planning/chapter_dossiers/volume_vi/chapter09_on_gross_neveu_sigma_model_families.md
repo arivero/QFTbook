@@ -66,6 +66,11 @@ symmetry.
   tensor identifications remain explicit because they fix the later
   projective-channel unitarity checks, but the proof is only an index
   substitution once the convention is declared.
+- 2026-05-30 anti-wrapper continuation: demoted the nested root-count ledger
+  from lemma/proof form to derivational prose.  The inverse-Cartan singlet
+  condition and \(N\)-ality integrality obstruction remain as the weight-space
+  input for the TBA source vector, but the text no longer pretends that this
+  bookkeeping is a theorem-level result.
 
 ## Figure Ledger
 

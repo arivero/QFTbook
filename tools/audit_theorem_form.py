@@ -182,6 +182,8 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"First law as the derivative of relative entropy|"
     r"Finite Berezin Gaussian identities|"
     r"Riemann--Hurwitz ledger for twist correlators|"
+    r"Schwarzian and OPE-exponent ledger for primitive joining|"
+    r"Nested root-count ledger|"
     r"Spectral meaning of a finite residual|"
     r"Purely odd Berezinian transformation|"
     r"Crossing of the invariant tensors|"
