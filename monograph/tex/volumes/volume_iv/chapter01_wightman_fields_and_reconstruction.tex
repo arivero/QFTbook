@@ -12,82 +12,8 @@ Poincare group is denoted by
 \[
   \Poinc=\mathbb R^D\rtimes SO^+(1,D-1).
 \]
-The Wightman framework describes a QFT by Hilbert-space data together with
-local operator-valued distributions.  The basic data are:
-\[
-  (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\}_{\alpha\in I}).
-\]
-Here \(\Hilb\) is a Hilbert space, \(\vac\in\Hilb\) is a unit vector, \(U\) is a
-strongly continuous unitary representation of \(\Poinc\),
-\(\mathcal D\subset\Hilb\) is a dense invariant domain, \(I\) is the field-label
-index set, and each \(\widehat\Phi_\alpha\) is
-an operator-valued tempered distribution on \(M\) with common domain
-\(\mathcal D\).  Thus this chapter uses the Schwartz-space branch of the
-test-function convention fixed in Chapter~\ref{ch:starting-data-local-qft};
-compactly supported local smearings are obtained by restriction.  For a
-Schwartz test function \(f\in\mathcal S(M)\),
-\[
-  \widehat\Phi_\alpha(f)=\int_M \dd^D x\, f(x)\widehat\Phi_\alpha(x)
-\]
-denotes the smeared operator.  This integral notation means distributional
-pairing, and all products of fields below are products of smeared operators on
-the common domain.
-
-The field labels carry an antilinear involution.  Let
-\[
-  E_I=\bigoplus_{\alpha\in I}\mathbb C e_\alpha
-\]
-be the finite field-label space used in a given multiplet, and let
-\[
-  J:E_I\to E_I,\qquad J e_\alpha=e_{\alpha^\dagger},
-  \qquad J^2=1,
-\]
-be an antilinear map; if the chosen field basis is not closed under componentwise
-conjugation, \(J\) includes the corresponding finite-dimensional conjugation
-matrix.  For an \(E_I\)-valued test function \(h=\sum_\alpha h^\alpha e_\alpha\)
-define
-\[
-  \widehat\Phi(h)=\sum_\alpha \widehat\Phi_\alpha(h^\alpha),
-  \qquad
-  h^\dagger(x)=Jh(x)
-  =
-  \sum_\alpha \overline{h^\alpha(x)}\,e_{\alpha^\dagger}.
-\]
-The Hermiticity hypothesis for the operator-valued distribution is the domain
-inclusion
-\begin{equation}
-  \widehat\Phi(h)^*\supset \widehat\Phi(h^\dagger).
-  \label{eq:wightman-field-adjoint-inclusion}
-\end{equation}
-Equivalently, for a scalar test function \(f\),
-\[
-  \widehat\Phi_\alpha(f)^*
-  \supset
-  \widehat\Phi_{\alpha^\dagger}(\overline f).
-\]
-Here \(\widehat\Phi(h)^*\) is the Hilbert-space adjoint of the densely defined
-operator \(\widehat\Phi(h):\mathcal D\to\mathcal D\); the inclusion means that
-\(\mathcal D\subset\operatorname{Dom}(\widehat\Phi(h)^*)\) and that the two
-operators agree on \(\mathcal D\).  Thus a Hermitian field smeared with a real
-test function is symmetric on \(\mathcal D\).  Essential self-adjointness of its
-closure is an additional analytic assertion, not part of the formal adjoint
-identity.
-
-The vacuum is invariant:
-\[
-  U(g)\vac=\vac,\qquad g\in \Poinc .
-\]
-For a pure translation we use the abbreviation \(U(a):=U(a,1)\).  Translations
-are written
-\[
-  U(a)=U(a,1)=\exp(\ii a_\mu P^\mu)=\exp(\ii a^\mu P_\mu),
-  \qquad a\in\mathbb R^D,
-\]
-in the convention of Chapter \ref{ch:starting-data-local-qft}; in particular,
-for \(a=(a^0,\vec0)\) this is \(\exp(-\ii a^0P^0)\).  Let \(E_P\) be
-the joint spectral measure of the contravariant energy-momentum
-\(P=(P^0,\ldots,P^{D-1})\).  With
-\(p^2=\eta_{\mu\nu}p^\mu p^\nu\), define the open and closed forward cones by
+With \(p^2=\eta_{\mu\nu}p^\mu p^\nu\), define the open and closed forward
+cones by
 \[
   V_+
   =
@@ -97,74 +23,152 @@ the joint spectral measure of the contravariant energy-momentum
   =
   \{p\in\mathbb R^D\mid p^0\ge0,\ p^2\le0\}.
 \]
-The spectrum condition is
+
+\begin{definition}[cyclic Wightman field presentation]
+\label{def:cyclic-wightman-field-presentation}
+A cyclic Wightman field presentation on \(M\) consists of
 \[
-  \operatorname{Spec}(P)\subset \overline V_+ .
+  \mathfrak W
+  =
+  (\Hilb,\vac,U,\mathcal D,E_I,J,|\cdot|,
+  \{\widehat\Phi_\alpha\}_{\alpha\in I})
 \]
-If the field multiplet transforms in a finite-dimensional Lorentz
-representation \(R\), covariance is the identity
+with the following properties.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \(\Hilb\) is a complex Hilbert space, \(\vac\in\Hilb\) is a unit vector,
+and \(U:\Poinc\to\mathcal U(\Hilb)\) is a strongly continuous unitary
+representation with
+\[
+  U(g)\vac=\vac,\qquad g\in\Poinc .
+\]
+\item \(\mathcal D\subset\Hilb\) is a dense common invariant domain:
+\[
+  \vac\in\mathcal D,\qquad
+  U(g)\mathcal D=\mathcal D,\qquad
+  \widehat\Phi_{\alpha_1}(f_1)\cdots
+  \widehat\Phi_{\alpha_n}(f_n)\mathcal D\subset\mathcal D
+\]
+for all \(g\in\Poinc\), all \(n\ge1\), all labels \(\alpha_j\), and all
+test functions \(f_j\) in the declared local test-function space.  In this
+chapter the test-function space is the Schwartz space \(\mathcal S(M)\);
+compactly supported local smearings are obtained by restriction.
+\item For each finite multiplet under discussion,
+\[
+  E_I=\bigoplus_{\alpha\in I}\mathbb C e_\alpha
+\]
+is the finite field-label space, \(J:E_I\to E_I\) is an antilinear involution,
+and \(|\cdot|:I\to\mathbb Z/2\mathbb Z\) is the parity assignment.  We write
+\[
+  J e_\alpha=e_{\alpha^\dagger},\qquad J^2=1,
+\]
+allowing \(J\) to contain the finite-dimensional conjugation matrix when the
+chosen basis is not closed under componentwise conjugation.
+\item Each \(\widehat\Phi_\alpha\) is an operator-valued tempered distribution
+with common domain \(\mathcal D\).  Thus, for
+\(f\in\mathcal S(M)\),
+\[
+  \widehat\Phi_\alpha(f)=
+  \int_M \dd^D x\,f(x)\widehat\Phi_\alpha(x)
+\]
+means distributional pairing, and
+\(\widehat\Phi_\alpha(f):\mathcal D\to\mathcal D\).  Matrix elements of finite
+products between vectors in \(\mathcal D\) are continuous multilinear
+functionals of the test functions.
+\item For an \(E_I\)-valued test function
+\(h=\sum_\alpha h^\alpha e_\alpha\), set
+\[
+  \widehat\Phi(h)=\sum_\alpha \widehat\Phi_\alpha(h^\alpha),
+  \qquad
+  h^\dagger(x)=Jh(x)
+  =
+  \sum_\alpha \overline{h^\alpha(x)}\,e_{\alpha^\dagger}.
+\]
+The field adjunction is the domain inclusion
+\begin{equation}
+  \widehat\Phi(h)^*\supset \widehat\Phi(h^\dagger).
+  \label{eq:wightman-field-adjoint-inclusion}
+\end{equation}
+Equivalently,
+\[
+  \widehat\Phi_\alpha(f)^*
+  \supset
+  \widehat\Phi_{\alpha^\dagger}(\overline f).
+\]
+Here \(\widehat\Phi(h)^*\) is the Hilbert-space adjoint of the densely defined
+operator \(\widehat\Phi(h):\mathcal D\to\mathcal D\); the inclusion means that
+\(\mathcal D\subset\operatorname{Dom}(\widehat\Phi(h)^*)\) and that the two
+operators agree on \(\mathcal D\).
+\item If the field multiplet transforms in a finite-dimensional Lorentz
+representation \(R\), covariance is the smeared identity
 \[
   U(a,\Lambda)^{-1}\widehat\Phi_\alpha(f)U(a,\Lambda)
   =
   R(\Lambda)_\alpha{}^\beta\,
   \widehat\Phi_\beta(f_{a,\Lambda}),
-\]
-where
-\[
+  \qquad
   f_{a,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-a)\bigr).
 \]
-Equivalently, for a pure translation, conjugating in the opposite direction
-gives
+For pure translations we write \(U(a):=U(a,1)\), and with the convention of
+Chapter~\ref{ch:starting-data-local-qft},
 \[
-  U(a)\widehat\Phi_\alpha(f)U(a)^{-1}
-  =
-  \widehat\Phi_\alpha(f^{(+a)}),
-  \qquad
-  f^{(+a)}(x)=f(x+a).
+  U(a)=\exp(\ii a_\mu P^\mu)=\exp(\ii a^\mu P_\mu).
 \]
-The precise spin and internal indices are carried by the label \(\alpha\).
-
-Locality is imposed after smearing.  If the supports of \(f\) and \(g\) are
-spacelike separated, then
+In particular \(U(a^0,\vec0)=\exp(-\ii a^0P^0)\).
+\item If \(E_P\) is the joint spectral measure of the translation generators
+\(P=(P^0,\ldots,P^{D-1})\), then the spectrum condition is
+\[
+  \operatorname{Spec}(P)\subset \overline V_+ .
+\]
+\item If the supports of \(f\) and \(g\) are spacelike separated, then
 \[
   [\widehat\Phi_\alpha(f),\widehat\Phi_\beta(g)]_{\rm gr}=0
 \]
-on \(\mathcal D\), where
+on \(\mathcal D\), where for homogeneous fields
 \[
-  [A,B]_{\rm gr}=AB-(-1)^{|A||B|}BA
+  [A,B]_{\rm gr}=AB-(-1)^{|A||B|}BA .
 \]
-for homogeneous field parities \(|A|,|B|\in\mathbb Z/2\mathbb Z\).  For purely
-bosonic fields this is the ordinary commutator; when both fields are odd it is
-the anticommutator.
-
-When Wightman fields are given as operator data, cyclicity is part of the
-chosen field presentation: the Hilbert space is the vacuum representation
-generated by the specified fields.  When the starting point is instead a
-correlation hierarchy, the reconstruction theorem below constructs this cyclic
-representation from the hierarchy itself.
-
-The vacuum is cyclic for the polynomial field algebra:
+For purely bosonic fields this is the ordinary commutator; when both fields
+are odd it is the anticommutator.
+\item The vacuum is cyclic for the polynomial field algebra:
 \[
   \operatorname{span}\{
-    \widehat\Phi_{\alpha_1}(f_1)\cdots\widehat\Phi_{\alpha_n}(f_n)\vac
+    \widehat\Phi_{\alpha_1}(f_1)\cdots
+    \widehat\Phi_{\alpha_n}(f_n)\vac
     \mid n\ge0
   \}
   \quad\text{is dense in }\Hilb .
 \]
+\end{enumerate}
+\end{definition}
 
-These are the Wightman data used throughout this chapter.  The spectral,
-covariance, locality, Hermiticity, and cyclicity requirements are independent
-conditions on the same field presentation; they are not steps in a construction
-until the reconstruction theorem below is invoked.
+Definition~\ref{def:cyclic-wightman-field-presentation} is the Wightman object
+used throughout this chapter.  A Hermitian field smeared with a real test
+function is symmetric on \(\mathcal D\), but essential self-adjointness of its
+closure is an additional analytic assertion.  The spectral, covariance,
+locality, Hermiticity, and cyclicity requirements are independent conditions
+on the same field presentation; they are not steps in a construction until the
+reconstruction theorem below is invoked.
+
+A pure vacuum Wightman sector is a cyclic Wightman field presentation for
+which, writing \(E_P\) for the joint spectral measure of the translation
+generators, the zero-momentum spectral projection satisfies
+\[
+  E_P(\{0\})\Hilb=\mathbb C\vac .
+\]
+This chapter does not build that purity condition into the base definition:
+Theorem~\ref{thm:wightman-cluster-vacuum-uniqueness} proves that it is
+equivalent, under the Wightman locality and spectrum assumptions, to the weak
+cluster property for polynomial local fields.
 
 \section{Fields and Local Observable Content}
 
-The objects \(\widehat\Phi_\alpha(f)\) in the Wightman data are generally unbounded
-operators.  Their algebraic products are defined first on the common invariant
-domain \(\mathcal D\), and their locality statement is a statement about
-graded commutators on that domain.  A local algebra of bounded observables is
-a further object constructed from, or compared with, these field
-coordinatizations.
+The objects \(\widehat\Phi_\alpha(f)\) in
+Definition~\ref{def:cyclic-wightman-field-presentation} are generally
+unbounded operators.  Their algebraic products are defined first on the common
+invariant domain \(\mathcal D\), and their locality statement is a statement
+about graded commutators on that domain.  A local algebra of bounded
+observables is a further object constructed from, or compared with, these
+field coordinatizations.
 
 For an open region \(\mathcal O\subset M\), let
 \[
@@ -503,9 +507,11 @@ the push-forward measure is Rajchman, and
 \label{thm:wightman-cluster-vacuum-uniqueness}
 Let
 \((\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\})\)
-be Wightman field data satisfying the assumptions above, and let
+be the Hilbert-space and field part of a cyclic Wightman field presentation in
+the sense of Definition~\ref{def:cyclic-wightman-field-presentation}, with
+joint translation spectral measure \(E_P\), and let
 \[
-  P_0=E(\{0\})
+  P_0=E_P(\{0\})
 \]
 be the joint spectral projection of the translation generators onto zero
 momentum.  The following conditions are equivalent.
@@ -573,7 +579,9 @@ the hierarchy satisfies the Wightman conditions with the required regularity.
 \label{thm:wightman-reconstruction}
 Let \(\{W_n\}_{n\ge0}\) be a hierarchy with \(W_0=1\), where \(W_n\) is a
 continuous linear functional on
-\(\mathcal S(M^n,E_I^{\otimes n})\).  Equivalently, on every finite
+\(\mathcal S(M^n,E_I^{\otimes n})\), and where \(E_I\) carries the label
+adjunction and parity data used in Hermiticity and locality.  Equivalently,
+on every finite
 field-label subspace, each component distribution is bounded by finitely many
 Schwartz seminorms: after choosing scalar components \(F_j\) of a test function
 \(F\), there are \(C,N<\infty\) such that
@@ -584,10 +592,12 @@ Schwartz seminorms: after choosing scalar components \(F_j\) of a test function
   \sup_{x\in M^n}|x^a\partial^b F_j(x)| .
 \]
 Suppose the hierarchy satisfies Poincare covariance, the spectral support
-condition, Hermiticity, locality, and positivity.  Then there exists Wightman
-field data
+condition, Hermiticity, locality, and positivity.  Then there exists a cyclic
+Wightman field presentation in the sense of
+Definition~\ref{def:cyclic-wightman-field-presentation},
 \[
-  (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\}_{\alpha\in I})
+  (\Hilb,\vac,U,\mathcal D,E_I,J,|\cdot|,
+  \{\widehat\Phi_\alpha\}_{\alpha\in I}),
 \]
 with the following properties:
 \begin{enumerate}[label=\textup{(\roman*)}]
@@ -880,11 +890,9 @@ Let
 \[
   (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\})
 \]
-be a four-dimensional Wightman field presentation satisfying the hypotheses
-stated in this chapter: strongly continuous unitary covariance under the
-proper orthochronous Poincare group, a cyclic invariant vacuum, the spectrum
-condition, the adjoint-domain condition, tempered Wightman distributions, and
-graded local commutativity on the common invariant domain.  Assume also that
+be the Hilbert-space and field part of a four-dimensional cyclic Wightman
+field presentation satisfying
+Definition~\ref{def:cyclic-wightman-field-presentation}.  Assume also that
 the field-label family is stable under the PCT test-function operation
 \(h\mapsto h^\Theta\) just described.  Then there exists an antiunitary
 operator
@@ -1033,8 +1041,11 @@ subpresentation if:
 \item each \(O_\gamma(f)\), \(f\in\mathcal S(M)\), is an operator on
 \(\mathcal D_{\rm phys}\) and the map \(f\mapsto O_\gamma(f)\) is a tempered
 operator-valued distribution;
-\item the vacuum, covariance, spectrum, adjunction, locality, and positivity
-conditions of the Wightman framework hold on \(\Hilb_{\rm phys}\);
+\item the data
+\((\Hilb_{\rm phys},\vac_{\rm phys},U_{\rm phys},
+\mathcal D_{\rm phys},\{O_\gamma\})\), with its observable label adjunction
+and parities, satisfy Definition~\ref{def:cyclic-wightman-field-presentation}
+on \(\Hilb_{\rm phys}\);
 \item for every open region \(\mathcal O\), all \(O_\gamma(f)\) with
 \(\operatorname{supp}f\subset\mathcal O\) are affiliated with
 \(\mathcal R_{\rm phys}(\mathcal O)\), and the local von Neumann algebra
