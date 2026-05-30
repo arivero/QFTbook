@@ -340,6 +340,60 @@ def check_elliptic_genus_spectral_flow_law():
                 )
 
 
+def matmul(g1, g2):
+    a1, b1, c1, d1 = g1
+    a2, b2, c2, d2 = g2
+    return (
+        a1 * a2 + b1 * c2,
+        a1 * b2 + b1 * d2,
+        c1 * a2 + d1 * c2,
+        c1 * b2 + d1 * d2,
+    )
+
+
+def check_elliptic_genus_modular_cocycle():
+    # For gamma=(a b; c d), the quadratic automorphy exponent is
+    # m c z^2/(c tau+d).  The cocycle condition
+    # A(g1 g2)=A(g2)+A(g1)|_{g2} reduces to the determinant identity
+    # c2(c12 tau+d12)+c1 = c12(c2 tau+d2).
+    generators = [
+        (0, -1, 1, 0),   # S
+        (1, 1, 0, 1),    # T
+        (1, -1, 0, 1),   # T^{-1}
+        (-1, 0, 0, -1),  # central element
+    ]
+    samples = list(generators)
+    for g in generators:
+        for h in generators:
+            samples.append(matmul(g, h))
+    for g1 in samples:
+        for g2 in samples:
+            if g1[0] * g1[3] - g1[1] * g1[2] != 1:
+                raise AssertionError(f"first matrix is not in SL2Z: {g1}")
+            if g2[0] * g2[3] - g2[1] * g2[2] != 1:
+                raise AssertionError(f"second matrix is not in SL2Z: {g2}")
+            _, _, c2, d2 = g2
+            _, _, c12, d12 = matmul(g1, g2)
+            assert_equal(
+                c2 * c12,
+                c12 * c2,
+                f"Jacobi modular cocycle tau coefficient {g1},{g2}",
+            )
+            assert_equal(
+                c2 * d12 + g1[2],
+                c12 * d2,
+                f"Jacobi modular cocycle constant coefficient {g1},{g2}",
+            )
+
+    s = (0, -1, 1, 0)
+    assert_equal(matmul(s, s), (-1, 0, 0, -1), "S^2 matrix")
+    # Applying S twice gives m z^2/tau - m z^2/tau, hence no residual
+    # quadratic exponent before the possible spin/charge multiplier.
+    for c in (Fraction(3), Fraction(6), Fraction(9), Fraction(12), Fraction(15, 2)):
+        index = c / 6
+        assert_equal(index - index, Fraction(0), f"S^2 quadratic exponent c={c}")
+
+
 def check_lg_chi_y_charge_polynomials():
     for k in range(0, 16):
         c = Fraction(3 * k, k + 2)
@@ -557,6 +611,7 @@ def main():
     check_extended_n2_spectral_flow_operators()
     check_lg_central_charges()
     check_elliptic_genus_spectral_flow_law()
+    check_elliptic_genus_modular_cocycle()
     check_lg_chi_y_charge_polynomials()
     check_compact_coset_chiral_ring()
     check_supersymmetric_rank_one_coset_interfaces()

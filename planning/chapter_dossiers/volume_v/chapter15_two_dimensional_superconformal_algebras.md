@@ -82,8 +82,9 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   proves right-moving Ramond-ground-state localization from the zero-mode
   anticommutator, derives the elliptic spectral-flow law and index `c/6`,
   states the Jacobi modular law as a full spin-CFT sewing theorem boundary,
-  and records the finite LG `chi_y` charge polynomial as a protected shadow
-  rather than an RG-flow theorem.
+  displays the determinant-line mechanism behind the modular quadratic factor
+  from the `J J` OPE coefficient, and records the finite LG `chi_y` charge
+  polynomial as a protected shadow rather than an RG-flow theorem.
 - Defines quasihomogeneous LG chiral data only as a protected algebraic test
   for supersymmetric dynamics, not as an RG-flow construction.
 - Computes the `A`-series Jacobi ring, central charge, and chiral weights.
@@ -141,8 +142,9 @@ superconformal-algebra infrastructure that such constructions must satisfy.
     coefficients `eta/2` for `partial J` and `eta^2/2` for `:JJ:`.
 12. The integer generators `X^pm` have `h=c/6`, `q=pm c/3`, while
     `Y^pm` have `h=c/6+1/2`, `q=pm(c/3-1)`.
-13. The elliptic genus spectral-flow law has Jacobi index `c/6`, and the
-    elliptic shift multipliers obey the Jacobi cocycle.
+13. The elliptic genus spectral-flow law has Jacobi index `c/6`; the elliptic
+    shift multipliers and the modular quadratic factor obey the Jacobi-group
+    cocycle before any spin-modular-functor theorem is invoked.
 14. The `A`-series LG `chi_y` Ramond charges are
     `(2 ell-k)/(2(k+2))`, sum to zero, and give Witten index `k+1`.
 15. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
@@ -219,6 +221,11 @@ map without turning into a supersymmetric dynamics chapter.
   the full spin-CFT modular theorem boundary, finite LG `chi_y` charge
   polynomials, and exact rational checks for the index, cocycle, and
   Witten-index ledgers.
+- 2026-05-30 elliptic-genus proof-boundary pass: expanded the local mechanism
+  behind the Jacobi modular factor by treating the elliptic genus as a section
+  of the \(U(1)_R\) anomaly determinant line over elliptic curves with flat
+  \(R\)-background.  The calculation check now verifies the modular quadratic
+  cocycle in addition to the elliptic spectral-flow cocycle.
 - 2026-05-27 compact chiral-ring pass: promoted the compact
   supersymmetric `SU(2)_k/U(1)` interface from matching chiral-primary
   weights to deriving the protected `A`-series ring

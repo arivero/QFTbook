@@ -15,7 +15,7 @@ regularized datum consists of:
 \]
 where \(G\) is a Riemannian metric, \(\mathcal B\) is a \(U(1)\)-gerbe
 connection with curvature \(H\in\Omega^3_{\mathrm{cl}}(M)\), and \(\Phi\) is
-the dilaton coupling to the worldsheet scalar curvature.  In a local
+the dilaton coupling to the scalar curvature of \(\Sigma\).  In a local
 trivialization of the gerbe, with two-form potential \(B\), the Euclidean
 action representative is
 \begin{equation}
@@ -54,7 +54,7 @@ A conformal sigma-model point is a continuum two-dimensional QFT obtained
 from a specified sigma-model regulator and coupling coordinates for which the
 renormalized stress tensor has vanishing trace on flat separated-point
 correlators and has only the stated Weyl-anomaly contact terms on curved
-worldsheets.  Equivalently, in a coordinate chart on the space of sigma-model
+source surfaces.  Equivalently, in a coordinate chart on the space of sigma-model
 couplings, the local Weyl-anomaly coefficients
 \[
   \widehat\beta^G_{ij},\qquad
@@ -214,7 +214,7 @@ For the pure metric action, the first variation density is
   G_{ij}(x)\nabla^a\partial_ax^j,
   \label{eq:nlsm-pure-metric-first-variation-density}
 \end{equation}
-on a closed worldsheet.  Hence \(J=0\) is allowed only when the background map
+on a closed source surface.  Hence \(J=0\) is allowed only when the background map
 is a classical harmonic map.  The effective-action definition above permits
 one to compute the local counterterms for an arbitrary slowly varying
 background \(x\); this is why the beta tensor is an off-shell local tensor on
@@ -298,7 +298,7 @@ Differentiate the Lagrangian density
   =
   2\gamma^{ab}\langle D_a\xi,\partial_bx\rangle .
 \]
-Integrating by parts on the closed worldsheet gives the first-order term in
+Integrating by parts on the closed source surface gives the first-order term in
 \eqref{eq:nlsm-pure-metric-second-variation}.  For the second derivative,
 \[
 \begin{aligned}
@@ -344,7 +344,7 @@ which is \eqref{eq:nlsm-pure-metric-second-variation} in components.
 \label{lem:nlsm-one-loop-ricci-divergence}
 Let \(M\) be Riemannian, assume \(\Sigma\) is closed, and set
 \(B=\Phi=0\).  Use dimensional regularization around \(d=2-\epsilon\)
-worldsheet dimensions and the covariant background-field expansion
+two source dimensions and the covariant background-field expansion
 \[
   X(\sigma)=\exp_{x(\sigma)}\xi(\sigma),
 \]
@@ -393,9 +393,9 @@ manifest.  To extract a local pole, freeze the background at a point
 \(\sigma_0\), choose geodesic normal coordinates on \(\Sigma\) at
 \(\sigma_0\) and an orthonormal frame of \(x^*TM\) parallel at
 \(\sigma_0\), and keep only terms with two derivatives of the slowly varying
-background map \(x\).  Derivatives of the connection and worldsheet
-curvature either contribute higher-derivative terms or the universal
-worldsheet-gravity anomaly, not the metric counterterm being computed here.
+background map \(x\).  Derivatives of the connection and intrinsic curvature
+of \(\Sigma\) either contribute higher-derivative terms or the universal
+two-dimensional metric anomaly, not the metric counterterm being computed here.
 
 The free kinetic action in this frame is
 \[
@@ -519,7 +519,7 @@ coefficients differ from them by redundant directions: target
 diffeomorphisms, \(B\)-field gauge transformations, and the dilaton-gradient
 terms displayed below.  The hypotheses in this section are therefore:
 \(\Sigma\) is closed, the target fields are smooth on the coordinate patch
-under consideration, dimensional regularization is used near two worldsheet
+under consideration, dimensional regularization is used near two source
 dimensions, and all formulas are first-order statements in the large-radius
 \(\alpha'\)-expansion.
 
@@ -796,9 +796,9 @@ which are precisely the \(H\)-dependent non-dilaton coefficients in
 The expansion \eqref{eq:nlsm-b-field-background-expansion} is most cleanly
 obtained by differentiating the pulled-back gerbe representative along the
 geodesic family \(X_s=\exp_x(s\xi)\).  The linear term in \(s\) is
-\(\iota_\xi H\) up to an exact two-form on the worldsheet, which is a
+\(\iota_\xi H\) up to an exact two-form on \(\Sigma\), which is a
 \(B\)-field gauge variation on closed \(\Sigma\).  Covariantizing the
-worldsheet derivative of \(\xi\) gives the middle vertex.  Differentiating
+\(\Sigma\)-derivative of \(\xi\) gives the middle vertex.  Differentiating
 once more gives the \(\nabla H\) vertex, and the Taylor factor \(1/2\) gives
 the coefficient in the third line.
 
@@ -863,7 +863,7 @@ Combining the factors gives
 The target-index contractions give
 \(H_{k\ell i}H_{mn j}G^{km}G^{\ell n}=H_i{}^{k\ell}H_{jk\ell}\), and
 \eqref{eq:nlsm-epsilon-contraction-convention} converts the two
-antisymmetric worldsheet tensors into \(\gamma^{bd}\).  This proves
+antisymmetric two-dimensional tensors into \(\gamma^{bd}\).  This proves
 \eqref{eq:nlsm-b-bubble-divergence}.  Comparing with the metric action
 prefactor \(1/(4\pi\alpha')\) gives the second counterterm in
 \eqref{eq:nlsm-h-flux-minimal-subtraction-counterterms}.
@@ -1009,7 +1009,7 @@ stress tensor measures the response of the renormalized action to a Weyl
 change at fixed bare fields, adding a redundant flow direction changes the
 coordinate beta functions by the same Lie derivatives.  A gerbe gauge
 change adds \(\dd\Lambda\) to the two-form representative and leaves
-\(H=\dd B\) fixed on closed worldsheets.  Finally,
+\(H=\dd B\) fixed on closed source surfaces.  Finally,
 \((\mathcal L_{\nabla\Phi}G)_{ij}=2\nabla_i\nabla_j\Phi\), and
 \[
   (\mathcal L_{\nabla\Phi}B)_{ij}
@@ -1299,18 +1299,18 @@ vanishing of the nonconstant metric and \(B\)-field tensors.
 The supersymmetric cases are not separate from CFT; they are additional
 structure on the same two-dimensional local QFT.  A
 \(\mathcal N=(1,1)\) sigma model is obtained by replacing \(X\) by a map of
-the worldsheet supermanifold into \(M\).  Its component fields include \(X^i\)
-and two worldsheet Majorana fermions valued in \(X^*TM\).  The target metric
+the source supermanifold into \(M\).  Its component fields include \(X^i\)
+and two-dimensional Majorana fermions valued in \(X^*TM\).  The target metric
 connection is replaced by the torsionful connections
 \[
   \nabla^{(\pm)}=\nabla^G\pm\frac12G^{-1}H
 \]
 in the left- and right-moving fermion covariant derivatives.
 
-The heterotic \(\mathcal N=(0,1)\) sigma model adds worldsheet fermions
+The heterotic \(\mathcal N=(0,1)\) sigma model adds two-dimensional fermions
 valued in a vector bundle \(E\to M\) with connection \(A\).  Its assumptions
 are stronger than those of the bosonic model: \(E\) must carry a compatible
-fiber metric, the worldsheet spin structure must be specified, and gauge and
+fiber metric, the spin structure on \(\Sigma\) must be specified, and gauge and
 gravitational anomalies must be cancelled by the \(B\)-field transformation
 law.  In a convention where \(\operatorname{Tr}\) denotes the gauge trace and
 \(\operatorname{tr}\) the Lorentz trace, the Green--Schwarz-improved
@@ -1402,7 +1402,7 @@ K\"ahler metric is the one-loop version of
 \(c_1(TM)=0\), Yau's theorem supplies a Ricci-flat representative; the QFT
 statement that the corresponding sigma model is a conformal field theory is
 the existence of the continuum SCFT obtained after all higher-order local
-terms and nonperturbative worldsheet sectors are included.
+terms and nonperturbative sectors of maps \(\Sigma\to M\) are included.
 
 \paragraph{\(\mathcal N=(2,2)\) one-loop K\"ahler beta tensor.}
 Assume the regulator preserves \(\mathcal N=(2,2)\) supersymmetry and that
@@ -1449,7 +1449,7 @@ counterterm as a local correction to \(K\).  This gives
 \label{rem:supersymmetric-nlsm-higher-loop-status}
 For two-dimensional supersymmetric nonlinear sigma models, higher-loop beta
 functions can be computed in superspace schemes that preserve the manifest
-worldsheet supersymmetry.  In \(\mathcal N=(2,2)\) K\"ahler models, the
+two-dimensional supersymmetry.  In \(\mathcal N=(2,2)\) K\"ahler models, the
 classic four-loop calculations exhibit the first scheme-invariant
 higher-curvature obstruction in the corresponding supersymmetric scheme,
 while many lower-loop terms can be moved by local K\"ahler-potential and
@@ -1758,7 +1758,7 @@ Write \(i,j\) for the remaining target coordinates and
 \[
   E_{\mu\nu}=G_{\mu\nu}+B_{\mu\nu}.
 \]
-In local light-cone coordinates \(\sigma^\pm\) on the worldsheet, the
+In local light-cone coordinates \(\sigma^\pm\) on \(\Sigma\), the
 isometry is gauged by replacing \(\partial_\pm X^0\) with gauge fields
 \(A_\pm\) and adding a Lagrange multiplier \(\widetilde X^0\) for flatness:
 \begin{equation}
@@ -1891,7 +1891,7 @@ Reading off the coefficients of
 The functional determinant from the Gaussian integral over \(A_\pm\) is
 the only remaining convention-sensitive point.  A gauge-invariant cell
 regularization makes its coefficient transparent.  First take \(G_{00}\) to
-be constant and choose a finite cell decomposition of the closed worldsheet
+be constant and choose a finite cell decomposition of the closed source surface
 with \(N_0\) vertices, \(N_1\) edges, and \(N_2\) faces.  Put the gauged
 field \(A\) on edges, the gauge parameter on vertices, and the dual scalar
 \(\widetilde X^0\) on faces.  Normalize the scalar and gauge-parameter
@@ -2395,7 +2395,7 @@ modulo integers from descendants.
 
 The same construction has a Lagrangian presentation as a gauged WZW model.
 The group \(H\) is gauged by coupling the \(H\)-current algebra to a
-worldsheet gauge field and adding the local terms forced by the
+two-dimensional gauge field and adding the local terms forced by the
 Polyakov--Wiegmann identity.  Gauge consistency requires the left and right
 \(H\)-levels to match; otherwise the gauge variation is an anomaly.  After
 gauge fixing, the physical local operators are the BRST cohomology classes.

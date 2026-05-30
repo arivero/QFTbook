@@ -795,6 +795,49 @@ CFT with an \(R\)-symmetry background; the left-moving mode algebra supplies
 only the spectral-flow part of this statement.
 \end{quotedtheorem}
 
+The mechanism behind the exponential factor in
+\eqref{eq:elliptic-genus-modular-law} is local and should be separated from
+the global sewing theorem.  The trace is a partition function on the elliptic
+curve
+\[
+  E_\tau=\mathbb C/(\mathbb Z+\tau\mathbb Z)
+\]
+with a flat background for the left \(U(1)_R\) current.  In the trace
+trivialization the holonomy parameter is \(z\), and a change of homology basis
+by
+\[
+  \gamma=
+  \begin{pmatrix}a&b\\ c_\gamma&d\end{pmatrix}
+  \in SL_2(\mathbb Z)
+\]
+sends the same flat background to the coordinate
+\[
+  z_\gamma=\frac{z}{c_\gamma\tau+d}.
+\]
+The current algebra OPE fixes the anomaly coefficient:
+\[
+  J(z)J(0)\sim \frac{c/3}{z^2},
+  \qquad
+  m_{\rm ell}=\frac12\frac c3=\frac c6 .
+\]
+Thus the Ramond trace is most precisely a section of an
+index-\(m_{\rm ell}\) anomaly determinant line over the moduli stack of
+elliptic curves with flat \(R\)-backgrounds.  In the trace trivialization, the
+transition function of this line is precisely the quadratic factor
+\[
+  \exp\!\left(
+    2\pi\ii m_{\rm ell}
+    \frac{c_\gamma z^2}{c_\gamma\tau+d}
+  \right).
+\]
+The elliptic law \eqref{eq:elliptic-genus-elliptic-law} and the modular law
+\eqref{eq:elliptic-genus-modular-law} therefore form one Jacobi-group
+automorphy system.  Its cocycle identity is an elementary consequence of
+matrix multiplication in \(SL_2(\mathbb Z)\); the theorem boundary is the
+existence of the spin modular functor and anomaly-cancelled \(R\)-background
+for the full interacting CFT, not the quadratic algebra of the transition
+function.
+
 There is a finite Landau--Ginzburg shadow of the elliptic genus which can be
 checked before any infrared-flow theorem is invoked.  Suppose a
 quasihomogeneous isolated polynomial \(W\) of

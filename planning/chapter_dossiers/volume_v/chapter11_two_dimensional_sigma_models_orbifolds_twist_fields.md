@@ -39,8 +39,8 @@
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
   \(H\)-flux and dilaton terms.
 - States the hypotheses under which one-loop Weyl-anomaly coefficients are
-  being treated: closed worldsheet, smooth local target fields, dimensional
-  regularization near two worldsheet dimensions, local scheme, and
+  being treated: closed source surface, smooth local target fields, dimensional
+  regularization near two source dimensions, local scheme, and
   first-order large-radius \(\alpha'\) expansion.
 - Derives the one-loop string-frame variational package
   `int sqrt(G) exp(-2 Phi) (R + 4|grad Phi|^2 - H^2/12)`, including the
@@ -50,7 +50,7 @@
   integration by parts, the `-1/4 H_i H_j` metric coefficient, and the
   scalar anomaly representative
   `(D-26)/6 + alpha'(|grad Phi|^2 - nabla^2 Phi/2 - H^2/24)`.
-- Derives the local background-field worldsheet origin of the one-loop
+- Derives the local background-field two-dimensional origin of the one-loop
   `H`-dependent coefficients: the covariant `B`-field expansion through the
   `H xi D xi dx` and `nabla H xi xi dx dx` vertices, the tadpole pole
   producing `delta B_ij = -alpha' nabla^k H_kij/(2 epsilon)`, and the
