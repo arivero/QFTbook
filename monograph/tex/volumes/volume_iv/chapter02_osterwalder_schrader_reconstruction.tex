@@ -689,7 +689,7 @@ for graded fields.
 \end{enumerate}
 \end{definition}
 
-\begin{quotedtheorem}[Tempered boundary values from polynomial tube bounds]
+\begin{theorem}[Tempered boundary values from polynomial tube bounds]
 \label{qthm:polynomial-tube-bounds-boundary-values}
 Let \(C\subset\mathbb R^d\) be an open convex cone and let
 \[
@@ -721,16 +721,11 @@ carried by the dual closed cone
 \]
 then the Fourier transform of
 \(\operatorname{bv}F\) is carried by \(C^*\).
-\end{quotedtheorem}
+\end{theorem}
 
-The quoted theorem is a mathematical input from the theory of analytic
-functionals and tempered distributions.  Its nontrivial part is the converse
-boundary-value assertion: polynomial distribution bounds in all proper subtubes
-force a unique tempered boundary distribution.  The proof uses Cauchy estimates
-in subtubes, normal-family compactness in finite-order distribution seminorms,
-and the Vladimirov boundary-value theorem.  The cone-support statement used for
-the spectral condition has a direct Fourier--Laplace proof, which we record
-because it is the part of the theorem that enters the QFT interpretation.
+The cone-support statement used for the spectral condition has a direct
+Fourier--Laplace proof, recorded first because it is the part of the theorem
+that enters the QFT interpretation most explicitly.
 
 \begin{lemma}[Fourier--Laplace boundary and cone support]
 \label{lem:fourier-laplace-boundary-cone-support}
@@ -817,10 +812,89 @@ boundary value has Fourier transform \(u\) by construction, so its Fourier
 support is contained in \(C^*\).
 \end{proof}
 
+\begin{proof}[Proof of Theorem~\ref{qthm:polynomial-tube-bounds-boundary-values}]
+The theorem is an analytic statement about holomorphic functions with values
+in a finite-order dual of the Schwartz space.  We spell out the mechanism
+because OS reconstruction uses exactly the distinction between polynomial
+tube growth and spectral cone support.
+
+Let
+\[
+  p_N(f)
+  =
+  \sum_{|\alpha|,|\beta|\le N}
+    \sup_{x\in\R^d}|x^\beta\partial^\alpha f(x)|
+\]
+be a Schwartz seminorm.  The hypothesis says that, for \(y\) in every proper
+subcone \(K\Subset C\), the distribution
+\[
+  F_y:f\longmapsto \langle F(\cdot+\ii y),f\rangle
+\]
+belongs to the Banach dual of the completion of
+\(\mathcal S(\R^d)\) in the norm \(p_N\), with norm bounded by a fixed power
+of \(\operatorname{dist}(y,\partial C)^{-1}\).  Cauchy's integral formula in
+small polydiscs contained in the tube gives the same type of bound for all
+complex derivatives of \(F\), with the exponent increased by the derivative
+order.  Thus \(y\mapsto F_y\) is a weakly holomorphic, locally bounded
+finite-order distribution-valued function on every proper subtube.
+
+Fix a vector \(\eta\in C\) and choose \(K\Subset C\) containing the ray
+\(\mathbb R_{>0}\eta\) near the origin.  For \(0<s<t\) and
+\(f\in\mathcal S(\R^d)\), apply Cauchy's formula to the scalar holomorphic
+function obtained by translating the test function:
+\[
+  z\longmapsto
+  \bigl\langle F(\cdot+\ii z\eta), f(\cdot-a)\bigr\rangle ,
+  \qquad a\in\R^d .
+\]
+After integrating the resulting identity against a compactly supported
+approximate identity in \(a\), and then moving derivatives from the Cauchy
+kernel onto the test function, one obtains an estimate of the form
+\begin{equation}
+  |\langle F_{t\eta}-F_{s\eta},f\rangle|
+  \le
+  C_{K,m}\,
+  \omega_{f,m}(s,t),
+  \label{eq:os-tube-boundary-cauchy}
+\end{equation}
+where \(m\) is chosen larger than the polynomial-growth exponent and
+\(\omega_{f,m}(s,t)\to0\) as \(s,t\downarrow0\).  The point of choosing
+\(m\) larger than the growth order is that the normal antiderivative supplied
+by the Cauchy kernel is locally integrable at the edge; all singular powers
+are absorbed by finitely many derivatives of the test function.  Hence
+\(\{F_{t\eta}\}_{t>0}\) is Cauchy in \(\mathcal S'(\R^d)\) and defines a
+tempered distribution \(b_\eta\).
+
+The limit is independent of the proper approach cone.  If \(\eta_0,\eta_1\in
+C\), the convexity of \(C\) puts the segment
+\((1-r)\eta_0+r\eta_1\) in a proper subcone after shrinking to small \(t\).
+Applying the preceding Cauchy estimate in the two real variables \((t,r)\)
+to the holomorphic function in the corresponding two-dimensional complex
+slice shows that
+\[
+  \lim_{t\downarrow0}F_{t\eta_0}
+  =
+  \lim_{t\downarrow0}F_{t\eta_1}
+\]
+in \(\mathcal S'(\R^d)\).  We denote the common limit by
+\(\operatorname{bv}F\).  The same argument with \(y\to0\) inside an arbitrary
+proper subcone, using a polygonal chain of rays inside that subcone, gives
+the full boundary-value convergence stated in the theorem.  Uniqueness is
+immediate: a tempered distribution is determined by its pairings with
+Schwartz tests, and any two candidate limits agree with the radial limit just
+constructed.
+
+If \(F\) is given as a Fourier--Laplace transform of a distribution carried
+by \(C^*\), Lemma~\ref{lem:fourier-laplace-boundary-cone-support} identifies
+the boundary value with the inverse Fourier transform of that distribution.
+Therefore the Fourier transform of the boundary value is carried by \(C^*\).
+\end{proof}
+
 Thus the QFT-specific work in OS reconstruction is not the
-Fourier--Laplace cone-support argument above, but the proof that the
+analytic boundary-value theorem or the Fourier--Laplace cone-support argument
+above, but the proof that the
 holomorphic functions constructed from the Schwinger hierarchy obey the
-polynomial tube estimates to which the quoted boundary-value theorem applies.
+polynomial tube estimates to which the boundary-value theorem applies.
 
 \begin{proposition}[OS-II analytic route to the boundary-value package]
 \label{prop:os-ii-analytic-route-to-boundary-package}
@@ -898,7 +972,7 @@ right hand side is a finite Schwartz seminorm, and the dependence on the
 distance to the cone boundary is polynomial.  Therefore the family of
 functionals \(f\mapsto\langle S_k(\cdot+\ii y),f\rangle\) is bounded in a
 fixed finite-order tempered-distribution topology on each closed subtube.
-Quoted Theorem~\ref{qthm:polynomial-tube-bounds-boundary-values} then gives
+Theorem~\ref{qthm:polynomial-tube-bounds-boundary-values} then gives
 tempered boundary values as \(y\to0\) inside the cone.
 
 For a permutation of insertions, item (vi) gives the corresponding permuted

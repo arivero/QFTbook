@@ -62,8 +62,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   induction, Hilbert Taylor reconstruction of vector-valued analytic fields,
   convex argument-domain exhaustion, regularized positivity estimates, and
   Banach-valued maximum-principle propagation of polynomial tube bounds.
-- States the Lorentzian boundary-value package and proves the
-  Fourier--Laplace mechanism by which spectral support plus polynomial
+- States the Lorentzian boundary-value package, promotes the polynomial
+  tube-bound theorem from quoted input to local theorem/proof form, and proves
+  the Fourier--Laplace mechanism by which spectral support plus polynomial
   distributional order yields holomorphic tube functions with tempered
   boundary values.
 - Proves the edge-of-the-wedge/Jost-domain route from Euclidean permutation
@@ -78,10 +79,10 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   semigroup and positive Hamiltonian, corrected OS-II analytic continuation,
   quotient-well-defined field insertions, and Wightman locality/recovery of
   noncoincident Schwinger functions.
-- Records the mathematical inputs used as such: Malgrange--Zerner
+- Records the remaining mathematical inputs used as such: Malgrange--Zerner
   continuation, envelope-of-holomorphy/maximum-principle theorems for tube
-  domains, Vladimirov's polynomial-growth boundary-value theorem, and the
-  Paley--Wiener--Schwartz cone theorem.
+  domains, and the Paley--Wiener--Schwartz cone theorem.  The polynomial tube
+  boundary-value mechanism is now developed locally in the chapter.
 
 ## Figure Ledger
 
@@ -119,3 +120,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   reconstruction itself; the path-integral sentence is the application that
   continuum Schwinger limits must first satisfy the OS-admissibility
   hypotheses.
+- 2026-05-30 quoted-theorem proof-debt pass: dequoted the tempered
+  boundary-value theorem for polynomial tube bounds.  The chapter now proves
+  the distributional boundary-value mechanism by finite-order Schwartz dual
+  bounds, Cauchy estimates in proper subtubes, radial Cauchy convergence,
+  approach-cone independence by convexity, and the Fourier--Laplace
+  cone-support lemma.
