@@ -9,6 +9,15 @@
 
 ## Definitions And Results
 
+- Defines the Chern--Simons defining datum
+  `mathfrak C=(G,lambda,mathfrak f,mathfrak L,mathfrak b)`, separating the
+  compact gauge group, integral level/differential-cohomology lift, framing
+  anomaly datum, line-operator datum, and boundary/polarization datum.
+- States the conditional quantum Chern--Simons hypothesis `Z_mathfrak C`:
+  finite-dimensional surface state spaces, framed-link cobordism amplitudes,
+  functorial gluing, flat-connection semiclassical critical points, modular
+  line data when available, and WZW boundary cancellation in holomorphic
+  polarization.
 - Chern--Simons functional with a fixed invariant bilinear form.
 - Variation and flat-connection equation of motion.
 - Level quantization from large gauge transformations.
@@ -27,6 +36,9 @@
 | --- | --- |
 | \(M\) | oriented three-manifold |
 | \(G\) | compact gauge group |
+| \(\lambda\), \(\check\lambda\) | integral level and differential-cohomology lift |
+| \(\mathfrak C\) | Chern--Simons defining datum |
+| \(Z_{\mathfrak C}\) | conditional quantum Chern--Simons theory |
 | \(A\) | connection |
 | \(S_{\rm CS}\) | Chern--Simons action |
 | \(k\) | level |
@@ -40,20 +52,38 @@
 ## Claim Ledger
 
 1. Classical Chern--Simons equations are \(F_A=0\).
-2. Integral level gives gauge invariance of \(\exp(iS_{\rm CS})\) on closed
+2. The local Chern--Simons functional is only one representative of the full
+   defining datum; integral level, framing anomaly, line labels, and boundary
+   polarization must be supplied before "the Chern--Simons theory" has a
+   definite meaning.
+3. Integral level gives gauge invariance of \(\exp(iS_{\rm CS})\) on closed
    manifolds for the stated trace normalization.
-3. Boundary conditions or boundary degrees of freedom are part of the theory.
-4. Framing is part of the quantum Wilson-line definition.
-5. For \(SU(2)_k\), the modular \(S\)-matrix is a finite sine transform and
+4. Boundary conditions or boundary degrees of freedom are part of the theory.
+5. Framing is part of the quantum Wilson-line definition.
+6. For \(SU(2)_k\), the modular \(S\)-matrix is a finite sine transform and
    is orthogonal.
-6. Normalized \(S^3\) unknot and Hopf-link amplitudes are \(S_{0a}/S_{00}\)
+7. Normalized \(S^3\) unknot and Hopf-link amplitudes are \(S_{0a}/S_{00}\)
    and \(S_{ab}/S_{00}\), respectively.
-7. Verlinde fusion gives the truncated \(SU(2)\) Clebsch--Gordan rule, and
+8. Verlinde fusion gives the truncated \(SU(2)\) Clebsch--Gordan rule, and
    \(\dim\mathcal H(\Sigma_g)=\sum_x(S_{0x})^{2-2g}\).
-8. In holomorphic boundary polarization, the on-shell Chern--Simons variation
+9. In holomorphic boundary polarization, the on-shell Chern--Simons variation
    is \(k(2\pi)^{-1}\int A_z\,\delta A_{\bar z}\); the gauged chiral WZW
    boundary action cancels it, and its Polyakov--Wiegmann identity gives the
    level-\(k\) affine current algebra.
+
+## Proof Obligations And Boundaries
+
+- The chapter does not claim a regulator-level construction of the full
+  Chern--Simons path integral.  It records the conditional quantum datum and
+  uses modular-functor/geometric-quantization consequences only with that
+  boundary stated.
+- The integral level must be understood globally, preferably as a
+  differential-cohomology lift of a class in \(H^4(BG;\mathbb Z)\), not merely
+  as the coefficient of a local trivialization formula.
+- The framing anomaly is part of the quantum datum.  Link expectations and
+  closed-manifold partition functions are not unframed scalar invariants
+  unless the relevant anomaly has been cancelled or a framing convention has
+  been fixed.
 
 ## Calculation Checks
 
@@ -65,3 +95,11 @@
 ## Figures
 
 - Spatial surface with Wilson line punctures may be added later.
+
+## Audit Notes
+
+- 2026-05-30 issue #700 defining-property pass: added the upfront
+  Chern--Simons defining datum and conditional quantum Chern--Simons
+  hypothesis, then redirected the phase-space and Wilson-line prose to those
+  named objects so the chapter no longer treats the local action alone as the
+  definition of the theory.

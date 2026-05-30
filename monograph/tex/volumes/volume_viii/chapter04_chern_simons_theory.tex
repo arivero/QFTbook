@@ -18,8 +18,94 @@ three-manifold \(M\), the Chern--Simons functional in a local trivialization is
   \frac{k}{4\pi}\int_M
   \operatorname{tr}\!\left(A\wedge dA+\frac23 A\wedge A\wedge A\right).
 \]
-The level \(k\) is not a free real parameter once large gauge transformations
-are included.
+Large gauge transformations quantize the allowed values of the level \(k\).
+
+\begin{definition}[Chern--Simons defining datum]
+\label{def:chern-simons-defining-datum}
+A Chern--Simons defining datum is a tuple
+\[
+  \mathfrak C=(G,\lambda,\mathfrak f,\mathfrak L,\mathfrak b)
+\]
+with the following constituents.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \(G\) is a compact Lie group with Lie algebra \(\mathfrak g\).
+\item \(\lambda\) is an integral level: equivalently, a class in
+\(H^4(BG;\mathbb Z)\) together with a de Rham representative determined by an
+invariant symmetric bilinear form on \(\mathfrak g\).  In the simply connected
+compact simple normalization used below, this is the assertion that
+\[
+  \frac{1}{24\pi^2}\int_{S^3}
+  \operatorname{tr}(g^{-1}dg)^3\in\mathbb Z
+\]
+for a generator \(g:S^3\to G\), and the level is an integer \(k\) multiplying
+this normalized bilinear form.  For general compact \(G\), the phrase
+``integral level'' means the corresponding differential-cohomology lift
+\(\check\lambda\in\widehat H^4(BG;\mathbb Z)\) has been chosen, so that the
+exponentiated action is a globally defined \(U(1)\)-valued functional on
+connections on all principal \(G\)-bundles.  The displayed local expression is
+the trivial-bundle representative of this global functional.
+\item \(\mathfrak f\) is the framing anomaly datum.  Depending on the chosen
+normalization of the quantum theory, this is specified either by a
+three-dimensional framing or two-framing convention for closed manifolds, or
+equivalently by the gravitational Chern--Simons counterterm/central-charge
+anomaly needed to make partition functions and Wilson-line expectations
+unambiguous.
+\item \(\mathfrak L\) is the allowed line-operator datum: oriented framed link
+components are labelled by admissible representations or, after quantization,
+by the simple objects of the associated line category.  The framing of each
+line is part of the operator insertion, because coincident point-splitting of
+the holonomy has a local self-linking ambiguity.
+\item \(\mathfrak b\) is boundary and polarization data.  If manifolds with
+boundary are admitted, \(\mathfrak b\) specifies the boundary condition or
+boundary theory, the polarization of the boundary phase space, and the
+allowed boundary line endpoints.  On closed three-manifolds this entry is
+empty.
+\end{enumerate}
+The datum \(\mathfrak C\) is the object used below.  The integral level
+controls large-gauge invariance; the framing datum controls the
+gravitational/framing anomaly; and the line and boundary data specify which
+observables and state spaces are being assigned.
+\end{definition}
+
+\begin{hypothesis}[quantum Chern--Simons theory associated to a datum]
+\label{hyp:quantum-chern-simons-theory}
+Given a Chern--Simons defining datum
+\(\mathfrak C=(G,\lambda,\mathfrak f,\mathfrak L,\mathfrak b)\), the notation
+\[
+  Z_{\mathfrak C}
+\]
+denotes a quantum Chern--Simons theory only when a construction or hypothesis
+supplies the following structures.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item To each closed oriented surface \(\Sigma\), with the boundary data
+required by \(\mathfrak b\), it assigns a finite-dimensional state space
+\(\mathcal H_{\mathfrak C}(\Sigma)\).
+\item To each compact oriented three-dimensional cobordism \(M\), equipped
+with the required framing datum and with framed labelled links from
+\(\mathfrak L\), it assigns a vector or linear map between the boundary state
+spaces.
+\item The assignments satisfy functorial gluing: cutting along \(\Sigma\)
+corresponds to contraction with the pairing on
+\(\mathcal H_{\mathfrak C}(\Sigma)\), including the anomaly phases fixed by
+\(\mathfrak f\).
+\item On a closed manifold, in a semiclassical regime where stationary phase
+is meaningful, the critical points are flat \(G\)-connections and the local
+phase is the exponentiated Chern--Simons action determined by
+\(\check\lambda\).
+\item The line sector realizes the framed Wilson-line observables specified
+by \(\mathfrak L\).  In a modular case, the simple line labels, fusion,
+braiding, twists, and mapping-class-group matrices agree with the associated
+modular tensor category or modular functor.
+\item If a holomorphic boundary polarization is used, the boundary variation
+is cancelled by the corresponding chiral Wess--Zumino--Witten boundary theory
+at the same integral level.
+\end{enumerate}
+This hypothesis is intentionally conditional.  Perturbative configuration
+space integrals, geometric quantization, WZW conformal blocks, and modular
+tensor categories provide constructions in important regimes.  The comparison
+maps among these constructions are part of
+Open Problem~\ref{op:chern-simons-qft-object}.
+\end{hypothesis}
 
 \section{Variation and Classical Equations}
 
@@ -153,9 +239,11 @@ with symplectic form
   \frac{k}{4\pi}\int_\Sigma
   \operatorname{tr}(\delta A_\Sigma\wedge \delta A_\Sigma).
 \]
-Quantization of Chern--Simons theory assigns a finite-dimensional state space
-to \(\Sigma\) in compact semisimple examples after the level and boundary
-data are fixed.
+In a quantum Chern--Simons theory satisfying
+Hypothesis~\ref{hyp:quantum-chern-simons-theory}, the quantization of this
+phase space is the state space assigned to \(\Sigma\).  In compact semisimple
+modular examples this state space is finite-dimensional after the integral
+level, framing convention, and boundary data are fixed.
 
 \section{Wilson Lines and Framing}
 
@@ -164,16 +252,20 @@ For an oriented knot or link component \(K\subset M\) and a representation
 \[
   W_R(K)=\operatorname{Tr}_R\operatorname{Pexp}\int_K A .
 \]
-The quantum expectation value of Wilson links requires a framing: a
-nonvanishing normal vector field along each component, or equivalently a
-choice of point-splitting direction.  The framing dependence is a local
-counterterm effect for the self-linking singularity of the line operator.
+The quantum expectation value of Wilson links in
+Hypothesis~\ref{hyp:quantum-chern-simons-theory} requires precisely the
+line-framing datum included in
+Definition~\ref{def:chern-simons-defining-datum}: a nonvanishing normal
+vector field along each component, or equivalently a choice of point-splitting
+direction.  The framing dependence is a local counterterm effect for the
+self-linking singularity of the line operator.
 
 \section{\texorpdfstring{\(SU(2)_k\)}{SU(2)k} Modular Data and Link Invariants}
 
-The first fully explicit compact simple example is \(G=SU(2)\) at positive
-integer level \(k\).  In the Hamiltonian/modular-functor normalization, the
-simple Wilson-line labels are
+The first fully explicit compact simple example of the conditional quantum
+datum in Hypothesis~\ref{hyp:quantum-chern-simons-theory} is \(G=SU(2)\) at
+positive integer level \(k\).  In the Hamiltonian/modular-functor
+normalization, the simple Wilson-line labels are
 \[
   a=0,1,\ldots,k,
   \qquad
