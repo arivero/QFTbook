@@ -412,6 +412,92 @@ This computation functions as a finite-dimensional diagnostic for the theorem's
 output: the compact group is recovered from the tensor compatibility of the
 sector fiber functor, and invariants project precisely onto neutral degree.
 
+\begin{example}[Pointed field algebra as a crossed product]
+\label{ex:dr-pointed-crossed-product-field-algebra}
+The same pointed category has an explicit charged-field algebra when the
+sector \(X_1\) is represented by an order-\(N\) localized automorphism
+\[
+  \rho\in\operatorname{Aut}(\mathcal A),
+  \qquad
+  \rho^N=\operatorname{id}_{\mathcal A},
+\]
+of a neutral algebra \(\mathcal A\).  Introduce a unitary charged generator
+\(u\) with
+\[
+  u^N=1,\qquad uAu^*=\rho(A),\quad A\in\mathcal A,
+\]
+and define the algebraic field core
+\begin{equation}
+  \mathcal F_{\rm alg}
+  =
+  \bigoplus_{q\in\mathbb Z/N\mathbb Z}\mathcal A u^q .
+  \label{eq:dr-pointed-crossed-product-core}
+\end{equation}
+The multiplication and involution are
+\begin{equation}
+  (Au^q)(Bu^r)
+  =
+  A\,\rho^q(B)\,u^{q+r},
+  \qquad
+  (Au^q)^*
+  =
+  \rho^{-q}(A^*)u^{-q}.
+  \label{eq:dr-pointed-crossed-product-operations}
+\end{equation}
+Associativity follows from the group law \(\rho^{q+r}=\rho^q\rho^r\):
+\[
+\begin{aligned}
+  ((Au^q)(Bu^r))(Cu^s)
+  &=
+  A\rho^q(B)\rho^{q+r}(C)u^{q+r+s},\\
+  (Au^q)((Bu^r)(Cu^s))
+  &=
+  A\rho^q\!\bigl(B\rho^r(C)\bigr)u^{q+r+s}.
+\end{aligned}
+\]
+The two expressions agree because \(\rho^q\) is an algebra automorphism.  The
+involution is anti-multiplicative because
+\[
+\begin{aligned}
+  \bigl((Au^q)(Bu^r)\bigr)^*
+  &=
+  \rho^{-q-r}\!\bigl(\rho^q(B^*)A^*\bigr)u^{-q-r}  \\
+  &=
+  \rho^{-r}(B^*)\,\rho^{-q-r}(A^*)u^{-q-r}
+  =
+  (Bu^r)^*(Au^q)^* .
+\end{aligned}
+\]
+The reconstructed compact group
+\(\mu_N=\{\zeta\in U(1):\zeta^N=1\}\) acts by
+\begin{equation}
+  \alpha_\zeta(Au^q)=\zeta^q Au^q .
+  \label{eq:dr-pointed-crossed-product-gauge-action}
+\end{equation}
+Its fixed algebra is exactly the neutral algebra:
+\[
+  \mathcal F_{\rm alg}^{\mu_N}=\mathcal A .
+\]
+Indeed, the Haar average over the finite group is
+\[
+  E_{\mu_N}\!\left(\sum_q A_q u^q\right)
+  =
+  \frac1N\sum_{\zeta^N=1}\sum_q \zeta^q A_q u^q
+  =
+  A_0 .
+\]
+Thus the charge creator \(u\) implements the localized sector by
+\[
+  \rho(A)=uAu^*,
+\]
+while the observable algebra is recovered as the invariant subalgebra.  This
+example is the DR field-algebra output in the invertible pointed case.  It is
+an algebraic output construction.  To interpret it as a local charged-field
+net, the QFT must first supply the DHR input package: locality,
+transportability, Haag duality, and finite statistics for the sector
+endomorphisms.
+\end{example}
+
 This theorem therefore applies to charges whose sector representatives are
 localized in bounded regions and satisfy the finite-statistics DHR
 hypotheses.  Charged sectors controlled by long-range Gauss laws, by

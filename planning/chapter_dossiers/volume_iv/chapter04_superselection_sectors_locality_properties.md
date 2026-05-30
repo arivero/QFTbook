@@ -18,6 +18,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `DHR`: Doplicher--Haag--Roberts localized transportable sector datum.
 - `X_q`, `\mu_N`, `\mathcal F_q`: pointed finite-sector object, recovered
   finite compact group, and charged degree in the finite DR diagnostic.
+- `u`, `\rho`, `\mathcal F_{\rm alg}`: charged unitary, order-\(N\)
+  localized automorphism, and crossed-product field core for the pointed
+  invertible-sector example.
 
 ## Claim Ledger
 
@@ -31,6 +34,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - Anchors the Doplicher--Roberts compact-group output in a finite pointed
   sector calculation: tensor automorphisms of the fiber functor are characters
   and averaging over the reconstructed group projects to neutral degree.
+- Constructs the finite pointed field-algebra core as a crossed product
+  \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
+  involution, gauge action, fixed algebra, and sector implementation.
 
 ## Figure Ledger
 
@@ -41,8 +47,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 
 - `calculation-checks/dhr_dr_reconstruction_checks.py` verifies the finite
   pointed \(\mathbb Z/N\mathbb Z\) diagnostic for Doplicher--Roberts
-  reconstruction: tensor automorphisms form \(\mu_N\) and the fixed-degree
-  projection keeps exactly degree zero.
+  reconstruction: tensor automorphisms form \(\mu_N\), the fixed-degree
+  projection keeps exactly degree zero, and the crossed-product field core is
+  associative with the stated involution and gauge-fixed algebra.
 
 ## Audit Notes
 
@@ -63,6 +70,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\mathbb Z/N\mathbb Z\) pointed category calculation after the
   Doplicher--Roberts theorem boundary and paired it with an exact modular
   arithmetic calculation check.
+- 2026-05-30 pointed crossed-product field-algebra pass: expanded the finite
+  pointed diagnostic into an explicit \(\mathcal A\rtimes_\rho\mathbb Z_N\)
+  field-core example and extended the calculation check to cover
+  associativity, involution, and fixed-point projection.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost
