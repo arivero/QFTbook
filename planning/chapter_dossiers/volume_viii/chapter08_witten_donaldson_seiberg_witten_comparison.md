@@ -83,7 +83,11 @@ gauge theory.
   mathematical work is carried by the compactified parameterized moduli problem
   and Stokes theorem.
 - States the Witten simple-type comparison datum and separates the
-  Donaldson structure theorem from the SW-identification/QFT RG problem.
+  Donaldson structure theorem from the SW-identification/QFT RG problem; the
+  chapter now decomposes that RG problem into proof obligations involving
+  nonperturbative twisted-theory construction, \(Q\)-compatible Wilsonian flow,
+  \(u\)-plane boundary control, singular-fiber monopole replacement, and
+  determinant/contact normalization.
 - Gives the normalization-sensitive \(u\)-plane integral data with
   \(A(u)^\chi B(u)^\sigma\), theta kernel, contact term, and a conditional
   boundary derivation of wall crossing.
@@ -128,3 +132,8 @@ the Abelian monopole theory.
   the geometric content of finite characteristic exponential weights after the
   Gaussian factor is removed, and the purely algebraic finite-exponential ODE
   and moment-reconstruction consequences.
+- 2026-05-30 Donaldson-SW RG-obligation pass: expanded the Witten comparison
+  hypothesis into concrete QFT proof obligations, so the final comparison
+  formula no longer hides the construction of the twisted theory, the
+  \(Q\)-compatible Wilsonian flow, the \(u\)-plane boundary analysis, the
+  monopole singular-fiber replacement, or the determinant/contact normalizations.
