@@ -1793,8 +1793,8 @@ derivative of \(W_E\) has the sign displayed in
 \eqref{eq:euclidean-connected-derivative-normalization}; this is the sign used
 in the convex Legendre transform below.
 
-\begin{proposition}[Euclidean convexity at finite regulator]
-\label{prop:volume-ii-euclidean-convexity-finite-regulator}
+\begin{lemma}[Euclidean convexity at finite regulator]
+\label{lem:volume-ii-euclidean-convexity-finite-regulator}
 Assume Assumption~\ref{ass:positive-euclidean-regulator-convexity}.  Define
 \[
   K[J]=\log Z_E[J],
@@ -1840,7 +1840,7 @@ this definition reduces to the local Legendre transform
 \]
 and its second variation is nonnegative on the subspace where the
 source-field map is nonsingular.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 For \(J_1,J_2\in\mathcal D_\Lambda\) and \(0\le t\le1\), Holder's inequality
@@ -1893,7 +1893,7 @@ for every real test function \(f\) in the corresponding tangent subspace.
 \section{Legendre--Fenchel Form at Finite Regulator}
 
 This section remains in the positive-measure setting of
-Proposition~\ref{prop:volume-ii-euclidean-convexity-finite-regulator}.  It supplies
+Lemma~\ref{lem:volume-ii-euclidean-convexity-finite-regulator}.  It supplies
 the positive-measure finite-regulator construction.  The perturbative 1PI
 definition used in dimensional regularization, or in any other regulator whose
 ``path integral'' is a formal algebraic prescription, is a separate
@@ -1902,7 +1902,7 @@ defined and the convex conjugate is differentiable with a locally invertible
 source-field map.
 
 The local inverse \(J_{\varphi}\) used above is a convenient notation.
-Proposition~\ref{prop:volume-ii-euclidean-convexity-finite-regulator} identifies the
+Lemma~\ref{lem:volume-ii-euclidean-convexity-finite-regulator} identifies the
 exact finite-regulator definition as a convex-conjugate formula.  At finite
 regulator, the source space is a finite-dimensional vector space or a specified
 space of test functions, depending on the regulator.  Its dual is
@@ -1921,7 +1921,7 @@ Let
   W_E[J]=-K[J].
 \]
 Under the positivity assumption of
-Proposition~\ref{prop:volume-ii-euclidean-convexity-finite-regulator}, \(K\) is
+Lemma~\ref{lem:volume-ii-euclidean-convexity-finite-regulator}, \(K\) is
 convex.  The exact Euclidean effective action is the convex conjugate with the
 sign convention fixed by the source term \(-\langle J,\phi\rangle\):
 \[

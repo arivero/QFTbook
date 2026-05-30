@@ -2613,8 +2613,8 @@ unabsorbed positive power of
 proved, the conversion to the global Besov bound is the elementary
 parabolic bootstrap above.
 
-\begin{proposition}[Passing invariance through a cutoff limit]
-\label{prop:spde-invariant-measure-limit}
+\begin{lemma}[Passing invariance through a cutoff limit]
+\label{lem:spde-invariant-measure-limit}
 Let \(E\) be a Polish space, let \(P_t^{(n)}\) and \(P_t\) be Markov
 semigroups on bounded continuous functions on \(E\), and let
 \(\mu_n\) be an invariant probability measure for \(P_t^{(n)}\).  Suppose
@@ -2630,7 +2630,7 @@ uniformly in \(n\).  Then \(\mu\) is invariant for \(P_t\):
 \[
   \int_E P_tf\,\dd\mu=\int_E f\,\dd\mu .
 \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Fix \(f\in C_b(E)\), \(t\geq0\), and \(\eta>0\).  Choose a compact set
@@ -2685,7 +2685,7 @@ Markov semigroup.
 \end{proof}
 
 For singular SPDE, the hypotheses of
-Proposition~\ref{prop:spde-invariant-measure-limit} are not automatic.
+Lemma~\ref{lem:spde-invariant-measure-limit} are not automatic.
 They require tightness of the stationary cutoff laws in the chosen field
 topology, convergence of the renormalized solution maps on high-probability
 compact sets of enhanced noises and initial data, and continuity of the
@@ -4300,7 +4300,7 @@ Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(b)}, and
 \(P_t^{(N)}F\to P_tF\) uniformly on the high-probability compact sets supplied
 by Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(a),(b)}.
 
-Proposition~\ref{prop:spde-invariant-measure-limit} now applies with
+Lemma~\ref{lem:spde-invariant-measure-limit} now applies with
 \(E=H^{-\kappa}\).  Therefore
 \[
   \int P_tF\,\dd\mu=\int F\,\dd\mu
@@ -4433,8 +4433,8 @@ this monograph, these Schauder, multiplication, energy, tightness, and
 invariant-law identification estimates are proof obligations, not facts
 accepted merely because they are standard in the SPDE literature.
 
-\begin{proposition}[Why the Sobolev DPD closure is two-dimensional]
-\label{prop:spde-sobolev-dpd-three-dimensional-obstruction}
+\begin{remark}[Sobolev DPD closure and the three-dimensional obstruction]
+\label{rem:spde-sobolev-dpd-three-dimensional-obstruction}
 The Sobolev fixed-point mechanism used above for \(\Phi^4_2\) cannot close
 the dynamic \(\Phi^4_3\) equation by replacing \(2\) with \(3\).  More
 precisely, let \(X\) be the three-dimensional stationary stochastic
@@ -4466,9 +4466,7 @@ But the heat-kernel Duhamel estimate
 \eqref{eq:spde-duhamel-smoothing} is locally integrable at the upper time
 endpoint only for \(\theta<1\).  Therefore the two-dimensional Sobolev DPD
 argument has no three-dimensional analogue.
-\end{proposition}
-
-\begin{proof}
+\par
 The covariance of the massive three-dimensional Gaussian field has
 short-distance singularity \(\|x-y\|^{-1}\).  Equivalently, the field has
 Sobolev regularity below \(-1/2\), and the \(k\)-th Wick power has the
@@ -4500,7 +4498,7 @@ This contradicts the condition \(\theta<1\) needed for the time singularity
 even stronger:
 \(\theta>3/2+\frac32\kappa\).  Thus the failure is structural, not an
 artifact of a nonoptimal exponent choice.
-\end{proof}
+\end{remark}
 
 \section{\texorpdfstring{Regularity Structures and \(\Phi^4_3\)}{Regularity Structures and Phi-four-three}}
 
@@ -6940,8 +6938,8 @@ the spacetime coordinates.  Negative-homogeneity trees encode precisely the
 subdivergent stochastic diagrams.  Renormalization acts on these trees before
 the reconstruction theorem is applied.
 
-\begin{proposition}[Finite negative-sector coordinates for dynamic \(\Phi^4_3\)]
-\label{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+\begin{lemma}[Finite negative-sector coordinates for dynamic \(\Phi^4_3\)]
+\label{lem:spde-phi-four-three-negative-sector-coordinate-chart}
 Let \(0<\kappa<1/14\), and set
 \[
   X=\mathcal I(\Xi),\qquad
@@ -7044,7 +7042,7 @@ for a numerical constant \(A_-<\infty\) depending only on this finite basis.
 The same inequality holds for the model distance
 \(d_{K;\gamma_-}(Z_{n+1},Z_n)\) after replacing \(P_{n,\tau}\) and \(G_n\)
 by the corresponding cutoff differences.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The homogeneity of \(X^aY^b\) is
@@ -7136,7 +7134,7 @@ and let \(K\subset\R^{1+3}\) be compact.  Choose
 \]
 Let \(Z_n=(\Pi^{(n)},\Gamma^{(n)})\), \(n\geq1\), be random cutoff models on
 the finite sector \(\mathcal T_-\) of
-Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart},
+Lemma~\ref{lem:spde-phi-four-three-negative-sector-coordinate-chart},
 with the same basis norms and with reexpansion coefficient \(c_n(z,z')\) as in
 \eqref{eq:spde-y-reexpansion-coefficient}.  Put
 \[
@@ -7332,7 +7330,7 @@ uniformly in \(n\), and
   \widetilde S_i^{\rm sc}2^{-\rho n}.
 \]
 
-Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+Lemma~\ref{lem:spde-phi-four-three-negative-sector-coordinate-chart}
 gives the finite-dimensional coordinate domination
 \[
   N_n^-
@@ -10246,7 +10244,7 @@ For dynamic \(\Phi^4_3\), the self-contained proof boundary is still larger.
 The finite negative sector, its homogeneity ledger, its reexpansion
 coordinates, and the scale-summed criterion that would imply convergence of
 that sector have been proved in
-Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+Lemma~\ref{lem:spde-phi-four-three-negative-sector-coordinate-chart}
 and
 the negative-sector coordinate-control consequence.
 What remains is to prove, for the actual BPHZ-renormalized model, the
