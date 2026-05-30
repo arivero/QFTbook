@@ -11,6 +11,65 @@ invertible \((D+1)\)-dimensional theory packages these lines and their
 gluing laws.  Inflow is the statement that the anomalous \(D\)-dimensional
 theory is a boundary condition, or relative theory, for this invertible bulk.
 
+\begin{definition}[Anomaly-inflow datum]
+\label{def:anomaly-inflow-datum}
+Fix a spacetime dimension \(D\).  An anomaly-inflow datum is a tuple
+\[
+  \mathfrak A
+  =
+  \bigl(\mathcal B,\mathrm{Bord}_{D+1}^{\mathcal B},
+  \mathcal Z_{\mathrm{bulk}},\mathcal L,Z_{\partial}\bigr)
+\]
+with the following entries.
+\begin{enumerate}
+\item \(\mathcal B\) assigns to each closed \(D\)-manifold \(M\), with the
+declared spacetime structure, a groupoid \(\mathcal B(M)\) of background
+fields and background isomorphisms.
+\item \(\mathrm{Bord}_{D+1}^{\mathcal B}\) is the corresponding background
+bordism category.  Its objects are pairs \((M,A)\), \(A\in\mathcal B(M)\);
+its morphisms are \((D+1)\)-dimensional bordisms \(X:M_0\to M_1\) equipped
+with background fields restricting to the prescribed boundary backgrounds.
+\item \(\mathcal Z_{\mathrm{bulk}}\) is an invertible \((D+1)\)-dimensional
+field theory,
+\[
+  \mathcal Z_{\mathrm{bulk}}:
+  \mathrm{Bord}_{D+1}^{\mathcal B}\longrightarrow
+  \mathrm{Lines}_{\mathbb C},
+\]
+namely a symmetric monoidal functor to one-dimensional complex vector spaces
+and nonzero linear maps.  On a closed \((D+1)\)-manifold \(X\) it gives a
+nonzero complex number.
+\item \(\mathcal L\) is the boundary line functor induced by
+\(\mathcal Z_{\mathrm{bulk}}\).  For each closed \(M\) it is a functor
+\[
+  \mathcal L_M:\mathcal B(M)\longrightarrow \mathrm{Lines}_{\mathbb C},
+\]
+with the orientation convention that a boundary partition vector
+\(Z_{\partial,M}(A)\) lies in \(\mathcal L_M(A)\).  When fillings exist,
+\(\mathcal L_M(A)\) may be constructed by the filling quotient described in
+Section~\ref{sec:inflow-bulk-boundary-lines}; otherwise the functor
+\(\mathcal L\) is taken as the boundary value of the invertible bulk.
+\item \(Z_{\partial}\) is a relative \(D\)-dimensional QFT partition
+assignment: for each closed \((M,A)\),
+\[
+  Z_{\partial,M}(A)\in \mathcal L_M(A),
+\]
+with covariance under background isomorphisms and with the usual gluing law
+after pairing with compatible bulk states.
+\end{enumerate}
+A trivialization of the anomaly is a monoidal natural isomorphism
+\(\mathcal L\simeq \mathbf 1\), possibly after tensoring with a local
+counterterm invertible theory or with an inverse anomalous sector.  A
+coordinate anomaly formula, such as a descent form or a finite cochain
+cocycle, is a representative of this datum after choices of local frames and
+local representatives have been made.
+\end{definition}
+
+This definition is the object controlled throughout the chapter.  The
+connected Chern--Weil descent, the finite higher-form cochain models, the
+Weyl-fermion index representative, and the noninvertible wall examples below
+are different coordinate presentations of the same kind of datum.
+
 \section{Background Fields and Relative Partition Functions}
 
 Let \(M\) be a closed \(D\)-manifold with the spacetime structure required by
@@ -19,7 +78,8 @@ declared structure.  Let
 \[
   \mathcal B(M)
 \]
-denote the groupoid of background fields on \(M\).  An object \(A\in
+be the background-field groupoid in the anomaly-inflow datum
+\(\mathfrak A\) of Definition~\ref{def:anomaly-inflow-datum}.  An object \(A\in
 \mathcal B(M)\) may contain ordinary gauge fields, higher-form gauge fields,
 metric data, spin connections, and background defect data.  A morphism
 \[
@@ -125,11 +185,13 @@ class is not a particular variation formula; it is the isomorphism class of
 the line functor together with its locality and gluing structure.
 
 \section{Invertible Bulk Theory and Boundary Lines}
+\label{sec:inflow-bulk-boundary-lines}
 
-Let \(\mathrm{Bord}_{D+1}^{\mathcal B}\) be the bordism category whose objects
-are closed \(D\)-manifolds with background fields and whose morphisms are
-\((D+1)\)-dimensional bordisms equipped with compatible background fields.
-An invertible \((D+1)\)-dimensional theory is a symmetric monoidal functor
+For the same datum \(\mathfrak A\), the category
+\(\mathrm{Bord}_{D+1}^{\mathcal B}\) has closed \(D\)-manifolds with
+background fields as objects and \((D+1)\)-dimensional bordisms with
+compatible background fields as morphisms.  Its invertible bulk entry is a
+symmetric monoidal functor
 \[
   \mathcal Z_{\mathrm{bulk}}:
   \mathrm{Bord}_{D+1}^{\mathcal B}

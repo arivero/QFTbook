@@ -9,9 +9,12 @@ boundary condition for an invertible bulk theory.
 
 ## Notation Inventory
 
+- `mathfrak A`: anomaly-inflow datum
+  `(B,Bord_{D+1}^B,Z_bulk,L,Z_partial)`.
 - `B(M)`: groupoid of background fields on spacetime `M`.
 - `u:A->A'`: background-field isomorphism.
 - `L_M(A)`: anomaly line over a background `A`.
+- `Z_partial,M(A)`: relative boundary partition vector in the anomaly line.
 - `alpha_M(u;A)`: scalar representative of the anomaly-line functor in a
   chosen frame.
 - `Z_bulk`: invertible `(D+1)`-dimensional bulk theory valued in complex
@@ -32,6 +35,9 @@ boundary condition for an invertible bulk theory.
 
 ## Claim Ledger
 
+- Defines an anomaly-inflow datum at the chapter opening: background-field
+  groupoids, the background bordism category, an invertible bulk functor,
+  induced boundary anomaly lines, and a relative boundary partition vector.
 - Defines anomalous partition functions as sections of anomaly-line functors
   over background-field groupoids.
 - Proves the functorial cocycle condition for scalar anomaly representatives
