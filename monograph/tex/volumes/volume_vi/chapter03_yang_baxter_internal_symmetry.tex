@@ -10,12 +10,52 @@ multi-particle process agree.  This chapter formulates that requirement as an
 identity of meromorphic maps on species spaces and explains how internal
 symmetry reduces the identity to scalar functions on irreducible channels.
 
+\begin{definition}[Internal two-body \(R\)-matrix datum]
+\label{def:regular-two-body-r-system}
+An internal two-body \(R\)-matrix datum is a tuple
+\[
+  \mathfrak R
+  =
+  \bigl(
+    \mathcal I,\{m_a,V_a\}_{a\in\mathcal I},
+    \{S_{ab}\}_{a,b\in\mathcal I},
+    \iota,\{C_a\}_{a\in\mathcal I},
+    \mathcal A,\{\rho_a\}_{a\in\mathcal I}
+  \bigr)
+\]
+with the following entries.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \(\mathcal I\) is the set of stable particle species, \(m_a>0\) is the
+  mass of species \(a\), and \(V_a\) is the finite-dimensional complex internal
+  space carried by a one-particle state of species \(a\).
+\item \(S_{ab}(\theta):V_a\otimes V_b\to V_b\otimes V_a\) is a meromorphic
+  two-body scattering map in the rapidity difference
+  \(\theta=\theta_a-\theta_b\).  Its \(R\)-matrix representative is
+  \(R_{ab}(\theta)=P_{ab}S_{ab}(\theta)\), where
+  \(P_{ab}:V_b\otimes V_a\to V_a\otimes V_b\) is the ordinary flip.
+\item \(\iota:\mathcal I\to\mathcal I\) is the antiparticle involution,
+  written \(a\mapsto\bar a\), and
+  \(C_a:V_a^\vee\to V_{\bar a}\) fixes the crossing identification used to
+  compare physical-strip boundary values.
+\item \(\mathcal A\) is an optional internal symmetry algebra or group, and
+  \(\rho_a\) is its representation on \(V_a\).  The datum is
+  \(\mathcal A\)-invariant when each \(R_{ab}(\theta)\) belongs to
+  \(\operatorname{End}_{\mathcal A}(V_a\otimes V_b)\).
+\end{enumerate}
+The datum is called a regular factorized scattering datum when, after undoing
+the flip in item (ii), it obeys the physical unitarity, real analyticity,
+crossing, residue, and growth requirements of
+Definition~\ref{def:factorized-scattering-bootstrap-data}, and when the
+Yang--Baxter identity of \eqref{eq:additive-ybe} below holds as an identity of
+meromorphic maps on every triple species space.  The terminology is deliberately
+on-shell: this datum is not a construction of local fields or local algebras.
+\end{definition}
+
 \section{Species Spaces and Two-Body Operators}
 
-Let \(\mathcal I\) be a set of stable particle species.  To each
-\(a\in\mathcal I\) assign a finite-dimensional complex vector space \(V_a\),
-called the species space.  The one-particle momentum variable of a particle of
-mass \(m_a\) is the rapidity \(\theta\), with
+Let \(\mathfrak R\) be an internal two-body datum in the sense of
+Definition~\ref{def:regular-two-body-r-system}.  The one-particle momentum
+variable of a particle of mass \(m_a\) is the rapidity \(\theta\), with
 \[
   p_a(\theta)=m_a(\cosh\theta,\sinh\theta).
 \]
@@ -38,19 +78,13 @@ The \(S\)-operator records physical ordering, while \(R\) records an
 endomorphism on a fixed tensor product.  All equations below are stated in the
 \(R\)-matrix convention because the domains and codomains are then identical.
 
-\begin{definition}[Regular two-body \(R\)-system]
-\label{def:regular-two-body-r-system}
-A regular two-body \(R\)-system consists of species spaces \(V_a\) and
-meromorphic endomorphisms \(R_{ab}(\theta)\in
-\operatorname{End}(V_a\otimes V_b)\) such that, on every common domain of
-holomorphy,
+Regularity includes the inverse relation
 \[
   R_{ab}(\theta)R_{ab}(-\theta)=\id_{V_a\otimes V_b}
 \]
-and the crossing and residue data of
-Definition~\ref{def:factorized-scattering-bootstrap-data} are satisfied
-after undoing the flip.
-\end{definition}
+on every common domain of holomorphy.  This is the fixed-order version of
+two-body unitarity; the remaining physical constraints are the crossing and
+residue conditions imposed on \(S_{ab}\) before applying the flip.
 
 \section{Derivation of the Yang--Baxter Equation}
 
@@ -78,13 +112,14 @@ the identity on the remaining factor.  Equality of the two decompositions is
   =
   R_{23}(\theta_{23})R_{13}(\theta_{13})R_{12}(\theta_{12}).
 \]
-Since \(\theta_{13}=\theta_{12}+\theta_{23}\), this is the spectral-parameter
-Yang--Baxter equation
-\[
+Since \(\theta_{13}=\theta_{12}+\theta_{23}\), this is the additive
+spectral-parameter Yang--Baxter equation
+\begin{equation}
+\label{eq:additive-ybe}
   R_{12}(\theta)R_{13}(\theta+\phi)R_{23}(\phi)
   =
   R_{23}(\phi)R_{13}(\theta+\phi)R_{12}(\theta).
-\]
+\end{equation}
 
 \paragraph{Three-particle consistency.}
 For a regular two-body \(R\)-system, the factorized three-particle scattering
@@ -103,6 +138,89 @@ factorizations define the same meromorphic map.  The remaining relations of
 the permutation group are the inverse relation, supplied by unitarity, and
 commutation of disjoint transpositions, which is automatic because the
 operators act on disjoint tensor factors.
+
+\paragraph{Many-particle consistency.}
+For \(n\) ordered particles the longest permutation, and more generally every
+permutation, has many reduced words in the adjacent transpositions \(s_i\).
+The only local moves relating reduced words in the symmetric group are
+\[
+  s_i s_j=s_j s_i\quad (|i-j|>1),
+  \qquad
+  s_i s_{i+1}s_i=s_{i+1}s_i s_{i+1}.
+\]
+The first move is represented by commuting operators on disjoint tensor
+factors.  The second move is represented by
+\eqref{eq:additive-ybe} with the appropriate rapidity differences.  Thus the
+Yang--Baxter identity is the local compatibility condition whose repeated use
+makes the full factorized \(n\)-body scattering map independent of the chosen
+reduced word.  This argument uses only the Coxeter presentation of the
+symmetric group and the meromorphic identity \eqref{eq:additive-ybe}; it does
+not use perturbation theory.
+
+\section{Spectral-Parameter Conventions and Classical Limit}
+
+The rapidity variable gives the additive convention: two-body amplitudes depend
+on \(\theta_i-\theta_j\), and the middle argument in
+\eqref{eq:additive-ybe} is the sum \(\theta+\phi\).  In lattice-model and
+quantum-group conventions one often uses a multiplicative parameter
+\[
+  x=e^\theta ,
+\]
+so that the same identity reads
+\[
+  R_{12}(x)R_{13}(xy)R_{23}(y)
+  =
+  R_{23}(y)R_{13}(xy)R_{12}(x).
+\]
+The two forms are equivalent after choosing a logarithm on a simply connected
+domain avoiding the singularities of the meromorphic \(R\)-matrix.  The
+choice matters in crossing formulas, because crossing shifts rapidities by
+imaginary half-periods; it does not change the algebraic content of the
+Yang--Baxter identity itself.
+
+There is also a braid convention.  If
+\[
+  \check R_{ab}(\theta)=S_{ab}(\theta)
+  \quad\text{as a map }V_a\otimes V_b\to V_b\otimes V_a,
+\]
+then the same consistency statement is a braid relation for maps whose
+codomains are reordered after each crossing.  The \(R=P\check R\) convention
+used in this chapter trades that geometric reordering for endomorphisms on a
+fixed tensor product.  Confusing these two conventions is a common source of
+incorrect sign and argument order in component calculations.
+
+\paragraph{Classical expansion.}
+Suppose a family of solutions has a formal parameter \(\hbar\) and admits an
+expansion
+\[
+  R_{ab}(\theta;\hbar)
+  =
+  \id+\hbar\, r_{ab}(\theta)+\hbar^2 q_{ab}(\theta)+O(\hbar^3)
+\]
+as a meromorphic endomorphism of \(V_a\otimes V_b\).  Substitution into
+\eqref{eq:additive-ybe} gives no condition at order \(\hbar\): both sides
+contain
+\[
+  r_{12}(\theta)+r_{13}(\theta+\phi)+r_{23}(\phi).
+\]
+At order \(\hbar^2\), the \(q\)-terms also cancel between the two sides, while
+the ordered products of the first-order terms give
+\begin{equation}
+\label{eq:spectral-classical-ybe}
+  [r_{12}(\theta),r_{13}(\theta+\phi)]
+  +
+  [r_{12}(\theta),r_{23}(\phi)]
+  +
+  [r_{13}(\theta+\phi),r_{23}(\phi)]
+  =
+  0 .
+\end{equation}
+This is the spectral-parameter classical Yang--Baxter equation.  It is a
+necessary condition for a classical \(r\)-matrix to be quantized into a
+factorized scattering \(R\)-matrix with the stated expansion.  It is not, by
+itself, a sufficiency theorem: quantization also requires the higher
+\(\hbar\)-orders, analytic constraints, and the physical unitarity/crossing
+conditions of the scattering problem.
 
 \section{Internal Symmetry and Projector Decomposition}
 
@@ -159,6 +277,81 @@ channels.  The Yang--Baxter equation becomes a coupled system of functional
 equations for \(r_0,r_A,r_T\), together with the analytic constraints of the
 bootstrap data.
 \end{example}
+
+\section{Algebraic Origin of the Matrix Identity}
+
+The Yang--Baxter equation can be produced from an algebraic object before any
+scattering interpretation is imposed.  Let \(\mathcal A\) be an associative
+algebra with coproduct
+\[
+  \Delta:\mathcal A\longrightarrow \mathcal A\otimes\mathcal A
+\]
+and opposite coproduct \(\Delta^{\rm op}=\tau\circ\Delta\), where \(\tau\) is
+the tensor flip.  A universal \(R\)-element \(\mathcal R\) is an invertible
+element of a suitable completion of \(\mathcal A\otimes\mathcal A\) satisfying
+\[
+  \mathcal R\,\Delta(x)=\Delta^{\rm op}(x)\,\mathcal R,
+  \qquad x\in\mathcal A,
+\]
+and
+\[
+  (\Delta\otimes\id)(\mathcal R)=\mathcal R_{13}\mathcal R_{23},
+  \qquad
+  (\id\otimes\Delta)(\mathcal R)=\mathcal R_{13}\mathcal R_{12}.
+\]
+Then \(\mathcal R\) obeys the algebraic Yang--Baxter identity
+\begin{equation}
+\label{eq:universal-ybe}
+  \mathcal R_{12}\mathcal R_{13}\mathcal R_{23}
+  =
+  \mathcal R_{23}\mathcal R_{13}\mathcal R_{12}.
+\end{equation}
+Indeed,
+\[
+  \mathcal R_{12}\mathcal R_{13}\mathcal R_{23}
+  =
+  \mathcal R_{12}(\Delta\otimes\id)(\mathcal R)
+  =
+  (\Delta^{\rm op}\otimes\id)(\mathcal R)\mathcal R_{12}
+  =
+  \mathcal R_{23}\mathcal R_{13}\mathcal R_{12}.
+\]
+The middle equality is the intertwining relation applied in the first two
+tensor factors to each tensor component of \(\mathcal R\).  Applying
+representations \(\rho_a\otimes\rho_b\otimes\rho_c\) gives an ordinary matrix
+solution on \(V_a\otimes V_b\otimes V_c\).
+
+For scattering, this algebraic mechanism is only a source of candidate matrix
+parts.  One must still provide the rapidity dependence, scalar CDD factors,
+physical-strip pole interpretation, crossing identification, and Hilbert-space
+realization.  The algebraic equation \eqref{eq:universal-ybe} explains why
+families such as rational, trigonometric, and elliptic \(R\)-matrices appear
+repeatedly; it does not replace the QFT construction problem.
+
+\section{Boundaries and Reflection Consistency}
+
+On a half-line or in the presence of a reflecting boundary, a one-particle
+reflection matrix \(K_a(\theta):V_a\to V_a\) must be compatible with the same
+bulk \(R\)-matrix.  For two particles with rapidities \(\theta_1,\theta_2\),
+there are two ways to move both particles to the boundary, reflect them, and
+restore the order.  Equality of the two maps on
+\(V_{a_1}\otimes V_{a_2}\) gives the boundary Yang--Baxter equation
+\begin{equation}
+\label{eq:boundary-ybe}
+  R_{12}(\theta_1-\theta_2)K_1(\theta_1)
+  R_{21}(\theta_1+\theta_2)K_2(\theta_2)
+  =
+  K_2(\theta_2)R_{12}(\theta_1+\theta_2)
+  K_1(\theta_1)R_{21}(\theta_1-\theta_2).
+\end{equation}
+Here \(R_{21}=P_{12}R_{12}P_{12}\), and \(K_i\) acts on the \(i\)-th tensor
+factor.  The argument \(\theta_1+\theta_2\) occurs because after one reflection
+the second collision is between rapidities of opposite sign.  Boundary
+integrability therefore requires more than choosing a bulk factorized
+\(R\)-matrix; it requires reflection data satisfying
+\eqref{eq:boundary-ybe}, boundary unitarity, boundary crossing, and a boundary
+pole interpretation.  Those additional analytic requirements are the boundary
+analogue of the bulk bootstrap constraints.
 
 \section{What the Equation Certifies}
 
