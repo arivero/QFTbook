@@ -598,6 +598,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Uniqueness of an admissible angular-momentum interpolation"
     r"|Free Reggeon diffusion kernel"
     r"|Two-Reggeon cut in the free diffusion model"
+    r"|Tempered distribution[s]? with an? unbounded representative[s]?"
     r"|Higgs-patch collective-coordinate calculation"
     r"|Yukawa-lifting Berezin determinant on the Higgs patch"
     r"|Electric-magnetic anomaly matching"

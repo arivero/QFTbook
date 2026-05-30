@@ -1677,8 +1677,8 @@ then heat smoothing supplies a positive time power, and the local solution
 is obtained by contraction.  The remaining global and invariant-measure
 steps require estimates beyond this local theorem.
 
-\begin{proposition}[Smooth enhanced-noise energy estimate]
-\label{prop:spde-dpd-smooth-energy-estimate}
+\begin{lemma}[Smooth enhanced-noise energy estimate]
+\label{lem:spde-dpd-smooth-energy-estimate}
 Let \(X_1,X_2,X_3\) be smooth real functions on
 \([0,T]\times\mathbb T^2\), let \(m^2>0\), \(\lambda>0\), and let \(Y\) be
 a smooth solution of
@@ -1709,7 +1709,7 @@ Then, for a numerical constant \(C\),
 Consequently no finite-time blowup can occur in a smooth Galerkin
 approximation whose enhanced noise norms on the right-hand side stay
 integrable on compact stochastic-time intervals.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 Multiply \eqref{eq:spde-dpd-smooth-energy-equation} by \(Y\) and integrate
@@ -2980,8 +2980,8 @@ Lemma~\ref{lem:spde-sobolev-compactness-tightness} turns that moment
 bound into tightness in \(H^{-\kappa}\).
 \end{remark}
 
-\begin{proposition}[Nelson stability implies normalized \(L^q\) density bounds]
-\label{prop:spde-nelson-stability-implies-lq-density}
+\begin{lemma}[Nelson stability implies normalized \(L^q\) density bounds]
+\label{lem:spde-nelson-stability-implies-lq-density}
 Let \(\mu_{0,N}\) be a finite-dimensional massive Gaussian cutoff law on
 \(\mathbb T^2\), and set
 \[
@@ -3012,7 +3012,7 @@ Consequently, for every \(0<\eta<\kappa\), the interacting cutoff measures
 \(\mu_N=\rho_N\mu_{0,N}\) are tight in \(H^{-\kappa}(\mathbb T^2)\), provided
 the Gaussian reference laws have the uniform \(H^{-\eta}\) second-moment
 bound of Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 The normalization cannot be allowed to hide a cutoff-dependent loss.  Wick
@@ -4206,7 +4206,7 @@ Assume the following three further analytic facts.
   implies the required interacting negative-Sobolev moments.  If the cutoff
   Wick quartic satisfies the Nelson stability estimate
   \eqref{eq:spde-nelson-stability-exponential-input}, then
-  Proposition~\ref{prop:spde-nelson-stability-implies-lq-density} proves
+	  Lemma~\ref{lem:spde-nelson-stability-implies-lq-density} proves
   this \(L^q\) density bound.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
   bounded cylinder observables depending on positive Euclidean time, and
@@ -4291,7 +4291,7 @@ Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} gives the local
 solution map.  Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}\textup{(a)}
 is precisely the global rough-energy and
 compact-continuity upgrade of the smooth estimate
-Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}; in the Besov
+	Lemma~\ref{lem:spde-dpd-smooth-energy-estimate}; in the Besov
 topology this upgrade is organized by
 Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion}.  Thus
 the limiting Markov semigroup \(P_t\) is well-defined on the support of every
@@ -4343,7 +4343,7 @@ Lemma~\ref{lem:spde-sobolev-compactness-tightness}; for Wick
 \(\Phi^4_2\) this moment follows from the density criterion
 Remark~\ref{rem:spde-phi-four-two-density-tightness-route} once the
 uniform Nelson-type \(L^q\) density bound is proved, and
-Proposition~\ref{prop:spde-nelson-stability-implies-lq-density} proves that
+	Lemma~\ref{lem:spde-nelson-stability-implies-lq-density} proves that
 bound from the Nelson exponential stability estimate; uniform integrability;
 and either finite-cutoff OS positivity for the stochastic regulator itself or
 a regulator-comparison theorem relating it to the

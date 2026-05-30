@@ -26,7 +26,7 @@ The chapter establishes:
   one-point selection rule from translations and dilatations;
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
-- Proposition `prop:scalar-three-point-kinematics`, deriving the scalar
+- Lemma `lem:scalar-three-point-kinematics`, deriving the scalar
   three-point exponents from conformal-frame transitivity and inversion
   weights;
 - spinning tensor structures with stated representation data;

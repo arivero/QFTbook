@@ -264,10 +264,10 @@ written in any pair of local coordinates and interpreted invariantly by the
 density factors.  It satisfies \(\Delta(x,x)=1\).
 \end{definition}
 
-\begin{proposition}[Transport equation for \(U\)]
-\label{prop:microlocal-u-transport}
-The coefficient multiplying \(\sigma_\epsilon^{-1}\) in the four-dimensional
-Hadamard parametrix is
+\begin{lemma}[Hadamard coefficient \(U\)]
+\label{lem:microlocal-u-transport}
+In four spacetime dimensions, the coefficient of \(\sigma_\epsilon^{-1}\) in
+the Hadamard parametrix is
 \begin{equation}
   U(x,y)=\Delta(x,y)^{1/2}.
   \label{eq:microlocal-u-delta}
@@ -279,7 +279,7 @@ Equivalently, \(U\) is the unique smooth biscalar along each geodesic from
   \qquad U(x,x)=1 .
   \label{eq:microlocal-u-transport}
 \end{equation}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
 For a smooth biscalar \(U\), use
@@ -337,7 +337,7 @@ be a formal expansion by smooth biscalars.  The local Hadamard parametrix is
   \qquad \ell>0,
   \label{eq:microlocal-hadamard-parametrix}
 \end{equation}
-where \(U\) is fixed by Proposition~\ref{prop:microlocal-u-transport} and the
+where \(U\) is fixed by Lemma~\ref{lem:microlocal-u-transport} and the
 jet of \(V\) at the diagonal is fixed by the recursion below.
 \end{definition}
 
@@ -393,7 +393,7 @@ taken.  Put \(s=\sigma(x,y)\).  For a smooth biscalar \(v\),
   }{s}.
   \label{eq:microlocal-p-v-log}
 \end{equation}
-Together with Proposition~\ref{prop:microlocal-u-transport}, the remaining
+Together with Lemma~\ref{lem:microlocal-u-transport}, the remaining
 \(s^{-1}\) term in \(P_{M,x}(U/s+v_0\log s)\) is canceled precisely by
 \eqref{eq:microlocal-v0-transport}.
 
