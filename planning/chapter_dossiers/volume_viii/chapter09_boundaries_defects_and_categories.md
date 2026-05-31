@@ -53,7 +53,8 @@ gauge-theoretic boundary constructions.
   nondegenerate input leaves its nontrivial line category on the boundary.
 - Works out the toric-code pointed input as a modular boundary order with
   trivial bulk radical.
-- Adds the non-pointed algebraic plaquette criterion: under the hypothesis
+- Adds the non-pointed algebraic plaquette criterion in prose rather than
+  theorem form: under the hypothesis
   that the local plaquette-loop crossing with a transverse line is categorical
   monodromy, the algebraic candidates for deconfined bulk lines are exactly
   the simple objects in the Mueger center.
@@ -82,6 +83,11 @@ restriction diagrams.
   is now stated as a construction with its exact plaquette-crossing criterion
   rather than as a theorem whose substance is hidden in the model input.
 - 2026-05-30 non-pointed mechanism pass: added the finite semisimple braided
-  M\"uger-center definition and a local plaquette-algebra proposition, so the
-  non-pointed Walker--Wang statement now has a precise algebraic mechanism
+  M\"uger-center definition and a local plaquette-algebra mechanism, so the
+  non-pointed Walker--Wang statement now has a precise algebraic criterion
   rather than only an external-theorem remark.
+- 2026-05-31 anti-wrapper pass: demoted the M\"uger-center plaquette
+  criterion from proposition/proof form to an operational paragraph.  The
+  content is still present, but it is no longer presented as a theorem whose
+  proof simply unpacks the monodromy hypothesis and the definition of the
+  Mueger center.

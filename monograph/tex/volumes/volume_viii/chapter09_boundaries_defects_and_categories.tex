@@ -488,42 +488,37 @@ The braided category is nondegenerate when
 \(\mathcal Z_2(\mathcal C)\) is generated only by the tensor unit.
 \end{definition}
 
-\begin{proposition}[M\"uger-center plaquette criterion]
-\label{prop:muger-center-plaquette-criterion}
-Assume a Walker--Wang local plaquette algebra whose simple string labels are
-the simple objects of a finite semisimple braided category \(\mathcal C\),
-and assume that dragging a plaquette loop labelled by \(x\) through a
-transverse simple line \(a\) acts on \(a\otimes x\) by the categorical
-monodromy \(M_{a,x}=c_{x,a}c_{a,x}\).  Then the line \(a\) commutes with all
-local plaquette-loop recouplings exactly when
+\paragraph{Operational M\"uger-center criterion.}
+\label{par:muger-center-plaquette-criterion}
+The categorical input supplied by the Walker--Wang plaquette test is the
+local crossing datum between plaquette-loop recouplings and transverse line
+insertions.  Assume a local plaquette algebra whose simple string labels are
+the simple objects of \(\mathcal C\), and assume that dragging a plaquette
+loop labelled by \(x\) through a transverse simple line \(a\) acts on
+\(a\otimes x\) by the monodromy
+\[
+  M_{a,x}=c_{x,a}c_{a,x}.
+\]
+Let \(P_x\) be the elementary plaquette recoupling in which a small loop
+labelled by \(x\) is created, slid across the candidate line \(a\), and
+absorbed.  The part of \(P_x\) detected by the crossing with \(a\) is exactly
+\(M_{a,x}\).  Therefore \(a\) commutes with every local plaquette-loop
+recoupling precisely when
+\[
+  M_{a,x}=\operatorname{id}_{a\otimes x}
+  \qquad\text{for every simple }x,
+\]
+which is the defining condition
+\eqref{eq:muger-center-definition} for
 \[
   a\in\mathcal Z_2(\mathcal C).
 \]
-Thus the algebraic candidate for a deconfined bulk line is a simple object in
-the M\"uger center.  If \(\mathcal C\) is nondegenerate, this local criterion
-leaves only the tensor unit as a bulk deconfined line.
-\end{proposition}
-
-\begin{proof}
-Let \(P_x\) denote the elementary plaquette recoupling in which a small loop
-labelled by \(x\) is created, slid across the candidate line \(a\), and
-absorbed.  By the stated hypothesis, the part of this operation detected by
-the crossing with \(a\) is the monodromy \(M_{a,x}\).  If \(a\) commutes with
-every plaquette recoupling, then \(P_x\) acts on any local configuration
-containing \(a\) exactly as it acts when the loop is not linked with \(a\).
-Therefore the monodromy on \(a\otimes x\) must be the identity for every
-simple \(x\), which is precisely
-\eqref{eq:muger-center-definition}.
-
-Conversely, if \(a\) satisfies \eqref{eq:muger-center-definition}, then
-sliding any simple plaquette loop past \(a\) has trivial monodromy.  A
-general plaquette loop is a finite direct sum of simple labels, and the
-recoupling maps are natural with respect to this direct-sum decomposition.
-The commutator with \(a\) is therefore zero on each simple summand and hence
-zero on the whole local plaquette algebra.  Nondegeneracy of
-\(\mathcal C\) is exactly the assertion that the only simple object with
-trivial monodromy against all simples is the tensor unit.
-\end{proof}
+Equivalently, the categorical candidates for bulk deconfined lines are the
+simple objects in the M\"uger center.  If \(\mathcal C\) is nondegenerate,
+this local plaquette-commutation test leaves only the tensor unit as a bulk
+deconfined line.  Thus the criterion isolates the local algebraic datum that
+any concrete non-pointed Hamiltonian realization must implement before the
+global excitation-sector statement can be made.
 
 \begin{example}[Non-pointed check: the Ising braided category]
 \label{ex:ising-muger-center-check}

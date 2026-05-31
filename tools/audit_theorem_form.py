@@ -751,6 +751,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Classical .*N_f=2.*SQCD quotient"
     r"|Algebra of the .*N_f=2.*quantum deformation"
     r"|Pointed Walker--Wang boundary mechanism"
+    r"|M.*uger-center plaquette criterion"
     r"|Ising odd form-factor family"
     r")\b",
     re.IGNORECASE,
