@@ -10,6 +10,11 @@ rules and anomaly lines.  This chapter develops the index-theoretic part of
 that structure with explicit conventions.  The analytic input is the index
 of a coupled Dirac operator; the QFT input is the Berezin integral over its
 zero modes and the determinant line of its nonzero modes.
+The source traces for the heat-kernel/index-theory line used here are
+Seeley, Gilkey, and Atiyah--Singer
+\cite{Seeley1967,Gilkey1984,AtiyahSinger1968}; the derivations below keep the
+local Clifford and Chern-Weil conventions explicit because these are the
+conventions later used in anomaly formulae.
 
 \section{Spinors, Bundles, and Curvature Conventions}
 
@@ -243,6 +248,9 @@ for every test function \(f\).
 
 \begin{quotedtheorem}[First Seeley--DeWitt coefficients]
 \label{qthm:index-seeley-dewitt-coefficients}
+\emph{Source trace.}  The displayed normalization follows the
+Seeley--DeWitt/Gilkey heat-kernel convention
+\cite{Seeley1967,Gilkey1984}.
 For the convention \eqref{eq:index-laplace-type-convention},
 \begin{equation}
   a_0={\bf 1}_V,
@@ -328,6 +336,10 @@ Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
   1-\frac{p_1(TM)}{24}
   +\frac{7p_1(TM)^2-4p_2(TM)}{5760}+\cdots .
 \]
+The theorem below is the heat-kernel/Getzler route to the local
+Atiyah--Singer index formula \cite{AtiyahSinger1968,Gilkey1984}; its proof is
+included to fix the curvature and chirality normalization used by the anomaly
+polynomial later in the chapter.
 
 \begin{theorem}[Local index density by Getzler rescaling]
 \label{thm:index-atiyah-singer-local}
@@ -594,6 +606,9 @@ line with its natural connection.  Global anomalies are its holonomies around
 loops.  Thus a well-defined background-field partition function requires a
 trivialization of the determinant line together with the vanishing of the
 local curvature obstruction.
+The source traces for the determinant-line and eta-holonomy formulation used
+in the next chapter are Bismut--Freed and Dai--Freed
+\cite{BismutFreed1986,DaiFreed1994}.
 
 The next chapter develops the eta-invariant formula for these holonomies.
 The present chapter supplies the local and zero-mode input: the index counts
