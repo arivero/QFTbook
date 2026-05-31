@@ -26,6 +26,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   conjugation, and modular operator.
 - `u_t=[D\psi:D\omega]_t`: Connes cocycle derivative comparing two faithful
   normal states in standard form.
+- `e_+`, `W_R(a)`: future-right lightlike vector and inward translated
+  right wedge used to fix the half-sided modular-inclusion sign.
 
 ## Claim Ledger
 
@@ -64,6 +66,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   product formula and lattice shell estimate give
   \(\log Z_B(\beta,L)\le C\beta^{-(D-1)}\), clarifying the mode-counting
   scale behind the local nuclearity map without replacing the split theorem.
+- Verifies the right-wedge light-ray modular-inclusion sign in the chapter's
+  Bisognano--Wichmann convention: for \(W_R(a)=W_R+a e_+\),
+  \(\sigma_t^{W_R}\mathcal R(W_R(a))
+   =\mathcal R(W_R(e^{-2\pi t}a))\), so the inward future-lightlike translate
+  is left half-sided in the stated definition.
 
 ## Figure Ledger
 
@@ -93,6 +100,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   finite-mode bosonic product formula, the sup-norm lattice shell count used
   in the phase-space estimate, and finite-cutoff samples of the
   \(\beta^{D-1}\log Z_B\) scaling bound.
+- `calculation-checks/unruh_boost_geometry_checks.py` verifies the
+  complex-boost and wedge-geometry signs used here and in Volume XII,
+  including the \(i\pi\) right-to-left wedge map and the lightlike
+  half-sided-inclusion convention
+  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\).
 
 ## Audit Notes
 
@@ -182,3 +194,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\log Z_B\le C\beta^{-(D-1)}\) before the nuclearity/split quoted theorem,
   with a paired calculation check.  The text explicitly keeps the local
   split theorem as the operator-algebraic input beyond the global box trace.
+- 2026-05-30 right-wedge half-sided sign pass: expanded the
+  Borchers--Wiesbrock example so the inward lightlike translate of the right
+  wedge is explicitly shown to be left half-sided with the chapter's
+  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\) convention, and extended the boost
+  geometry calculation check to guard this sign.

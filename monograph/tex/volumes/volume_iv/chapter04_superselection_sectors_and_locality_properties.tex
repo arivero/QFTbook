@@ -1818,6 +1818,10 @@ Equivalently, with \(K_{\mathcal M}=-\log\Delta_{\mathcal M}\),
   [K_{\mathcal M},P]=-2\pi\ii P
 \]
 on the common invariant core of analytic vectors.
+For a left half-sided modular inclusion the same statement is obtained after
+reversing the modular parameter; equivalently the dilation factor in
+\eqref{eq:borchers-commutation-relation} is replaced by
+\(\ee^{+2\pi t}a\), and the infinitesimal commutator has the opposite sign.
 \end{quotedtheorem}
 
 \paragraph{The modular-inclusion mechanism.}
@@ -1898,12 +1902,69 @@ convention the Borchers relation has \(\ee^{+2\pi t}a\) in place of
 sign.
 
 For the standard right wedge, take \(\mathcal M=\mathcal R(W_R)\) and let
-\(\mathcal N\) be the algebra of the wedge translated inward along a future
-lightlike direction.  The inclusion is half-sided because the Lorentz boost
-rescales that lightlike translation without leaving the wedge family.  Thus
-the algebraic inclusion knows the translation-dilation subgroup before one
-has written down a point field.  This is one reason modular theory is not only
-a structural theorem: it reconstructs geometric motion from the order
+\(\mathcal N\) be the algebra of the wedge translated inward along a lightlike
+direction.  The inclusion is half-sided because the Lorentz boost rescales
+that lightlike translation without leaving the wedge family.  The sign is
+convention-sensitive, and the convention used in this chapter is the following
+one.
+
+\begin{example}[Right-wedge light-ray inclusion and the half-sided sign]
+\label{ex:right-wedge-half-sided-sign}
+Let
+\[
+  e_+=(1,1,0,\ldots,0),
+  \qquad
+  W_R(a)=W_R+a e_+,\qquad a>0 .
+\]
+Then \(W_R(a)\subset W_R\).  Indeed, if
+\((x^0,x^1)\in W_R\) and \(y=x+a e_+\), then
+\[
+  y^1-y^0=x^1-x^0>0,\qquad
+  y^1+y^0=x^1+x^0+2a>0,
+\]
+so \(y^1>|y^0|\).  Moreover
+\begin{equation}
+  b\ge a\quad\Longrightarrow\quad W_R(b)\subset W_R(a),
+  \label{eq:right-wedge-light-ray-nesting}
+\end{equation}
+because translating farther along \(e_+\) moves the wedge deeper inside
+itself.  Assume the Bisognano--Wichmann identification in the sign convention
+used below,
+\[
+  \sigma_t^{W_R}
+  =
+  \operatorname{Ad}\Delta_{W_R}^{\ii t}
+  =
+  \operatorname{Ad}U(\Lambda_R(-2\pi t)).
+\]
+Since \(\Lambda_R(s)e_+=\ee^s e_+\), isotony and covariance give
+\begin{equation}
+  \sigma_t^{W_R}\bigl(\mathcal R(W_R(a))\bigr)
+  =
+  \mathcal R\bigl(W_R(\ee^{-2\pi t}a)\bigr).
+  \label{eq:right-wedge-half-sided-scaling}
+\end{equation}
+Combining \eqref{eq:right-wedge-light-ray-nesting} and
+\eqref{eq:right-wedge-half-sided-scaling}, this translated-wedge inclusion is
+left half-sided in Definition~\ref{def:half-sided-modular-inclusion}:
+\[
+  \sigma_t^{W_R}\bigl(\mathcal R(W_R(a))\bigr)
+  \subset
+  \mathcal R(W_R(a))
+  \quad\Longleftrightarrow\quad
+  t\le0 .
+\]
+Changing the modular-flow sign convention, or using the corresponding
+oppositely directed light-ray inclusion, changes the word ``left'' to
+``right''.  The calculation verifies only the geometric hypothesis in this
+example.  The Borchers--Wiesbrock theorem supplies the converse structural
+content: from the half-sided modular inclusion it reconstructs the
+translation unitary and its positive generator.
+\end{example}
+
+Thus the algebraic inclusion knows the translation-dilation subgroup before
+one has written down a point field.  This is one reason modular theory is not
+only a structural theorem: it reconstructs geometric motion from the order
 structure of local algebras.
 
 Let

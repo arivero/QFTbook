@@ -89,6 +89,12 @@ Current checks:
   \(\rho=-2\operatorname{Im}G^R\) retarded-sign convention entering the shear
   Kubo formula, together with the shear, charge-diffusion, and sound pole
   locations used in the hydrodynamic-pole figure.
+- `unruh_boost_geometry_checks.py`: finite checks for the wedge modular-flow
+  geometry used in Volume IV and Volume XII, including the complex boost
+  imaginary part, the \(i\pi\) right-to-left wedge map, right/left wedge
+  spacelike separation, detector detailed-balance sign, and the right-wedge
+  lightlike half-sided-inclusion sign in the convention
+  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\).
 - `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,

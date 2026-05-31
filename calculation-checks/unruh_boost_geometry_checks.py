@@ -82,11 +82,45 @@ def check_detector_detailed_balance_sign() -> None:
     assert_close(math.log(ratio) / energy, beta, "detailed-balance exponent")
 
 
+def check_right_wedge_lightlike_half_sided_sign() -> None:
+    """Check the sign convention for the right-wedge modular inclusion."""
+
+    a = 0.8
+    points = [(-0.2, 1.1), (0.4, 1.3), (-0.7, 1.6)]
+
+    # Translation by +a e_+ moves the right wedge into itself.
+    for x0, x1 in points:
+        y0, y1 = x0 + a, x1 + a
+        if not y1 > abs(y0):
+            raise AssertionError("future-right lightlike translate left the right wedge")
+
+    # Farther future-right translation gives a smaller nested wedge.
+    for b in (a, a + 0.3, a + 1.1):
+        for x0, x1 in points:
+            y0, y1 = x0 + b, x1 + b
+            z0, z1 = y0 - a, y1 - a
+            if not z1 > abs(z0):
+                raise AssertionError("W_R(b) should be contained in W_R(a) for b >= a")
+
+    # With Delta^{it}=U(Lambda_R(-2*pi*t)), the lightlike coordinate scales
+    # by exp(-2*pi*t).  The inward translate is therefore left half-sided:
+    # sigma_t(N_a) subset N_a exactly for t <= 0.
+    for t in (-0.7, -0.2, 0.0):
+        scaled = math.exp(-2 * math.pi * t) * a
+        if not scaled >= a:
+            raise AssertionError("t <= 0 should scale the inward translate deeper")
+    for t in (0.2, 0.7):
+        scaled = math.exp(-2 * math.pi * t) * a
+        if not scaled < a:
+            raise AssertionError("t > 0 should scale the translate outward")
+
+
 def main() -> None:
     check_complex_boost_imaginary_part()
     check_ipi_maps_right_to_left_wedge()
     check_right_left_wedge_spacelike_separation()
     check_detector_detailed_balance_sign()
+    check_right_wedge_lightlike_half_sided_sign()
     print("All Unruh complex-boost geometry and detailed-balance checks passed.")
 
 
