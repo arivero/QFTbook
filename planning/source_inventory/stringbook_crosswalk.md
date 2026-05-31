@@ -351,10 +351,12 @@ Current Appendix K absorption:
   and cigar/Liouville material with a first-order `B_i` derivation, the
   twisted-linear constraint, Legendre elimination, the
   `-Q_i^a Sigma_a Y_i` integration-by-parts term, the vortex-exponential
-  proof boundary, exact elimination of the `Y_i` to recover the Coulomb
-  one-loop twisted superpotential, the finite FI-coordinate shift, the
-  logarithmic-torus mirror presentation, `P^{N-1}` critical-point simplicity,
-  and the classical cigar quotient metric.
+  proof boundary, a proper-time derivation of the local Coulomb one-loop
+  logarithm and its anomaly-completed holomorphic branch, exact elimination
+  of the `Y_i` to recover the Coulomb one-loop twisted superpotential, the
+  finite FI-coordinate shift, the logarithmic-torus mirror presentation,
+  `P^{N-1}` critical-point simplicity, and the classical cigar quotient
+  metric.
 - The Appendix K Landau--Ginzburg nonrenormalization footnote is now
   rewritten as an explicit two-dimensional Wilsonian-coordinate argument:
   with chiral Wilsonian regularity, flavor spurion symmetries, and

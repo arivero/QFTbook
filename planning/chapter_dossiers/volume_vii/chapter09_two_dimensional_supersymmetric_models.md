@@ -148,7 +148,10 @@ and
   condition, not a conformality proof.
 - States the abelian GLSM Coulomb-branch one-loop determinant hypotheses,
   including logarithm branches, regulator scheme, and exclusion of
-  boundary/vortex/singular-locus contributions from the local determinant.
+  boundary/vortex/singular-locus contributions from the local determinant,
+  and then derives the perturbative local determinant contribution from the
+  proper-time subtracted massive propagator plus the axial-anomaly phase that
+  completes the holomorphic logarithm.
 - Derives the effective twisted-superpotential critical equation
   `prod_i (Q_i sigma/mu)^{Q_i}=e^t` and proves that all-positive charges
   give `sum_i Q_i` simple local Coulomb vacua.
@@ -198,8 +201,9 @@ and
   - abelian circle-duality momentum-winding spectrum invariance and
     chiral/twisted-chiral Legendre-Hessian inversion;
   - abelian GLSM Coulomb one-loop charge-exponent, positive-charge
-    vacuum-count, hypersurface exponent/anomaly, and quintic exponent-zero
-    arithmetic.
+    vacuum-count, hypersurface exponent/anomaly, quintic exponent-zero
+    arithmetic, and the primitive of the Coulomb logarithmic derivative with
+    its finite FI-coordinate shift under determinant normalization changes.
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;

@@ -263,6 +263,56 @@ def check_abelian_glsm_coulomb_ledger() -> None:
     assert_equal("quintic Coulomb exponent vanishes", sum([1, 1, 1, 1, 1, -5]), 0)
 
 
+def check_abelian_coulomb_one_loop_primitive() -> None:
+    # The local determinant gives dW/dSigma = -t + sum_i Q_i log(Q_i Sigma/mu).
+    # This check verifies the primitive and its finite FI-coordinate
+    # transformation under determinant normalization changes.
+    sigma = 1.37
+    mu = 0.91
+    t = -0.42
+    charges = [1, 2, 4]
+    step = 1e-6
+
+    def primitive(sigma_value: float) -> float:
+        return -t * sigma_value + sum(
+            charge
+            * sigma_value
+            * (log(charge * sigma_value / mu) - 1)
+            for charge in charges
+        )
+
+    derivative_from_log = -t + sum(charge * log(charge * sigma / mu) for charge in charges)
+    derivative_from_primitive = (primitive(sigma + step) - primitive(sigma - step)) / (2 * step)
+    assert_close(
+        "abelian Coulomb one-loop primitive differentiates to log derivative",
+        derivative_from_primitive,
+        derivative_from_log,
+        tol=1e-9,
+    )
+
+    determinant_constants = [Fraction(2, 3), Fraction(5, 4), Fraction(7, 5)]
+    finite_fi_shift = sum(
+        charge * log(float(constant))
+        for charge, constant in zip(charges, determinant_constants)
+    )
+    shifted_t = t + finite_fi_shift
+    with_constants = -t * sigma + sum(
+        charge
+        * sigma
+        * (log(charge * sigma / (mu * float(constant))) - 1)
+        for charge, constant in zip(charges, determinant_constants)
+    )
+    shifted_coordinate_form = -shifted_t * sigma + sum(
+        charge * sigma * (log(charge * sigma / mu) - 1)
+        for charge in charges
+    )
+    assert_close(
+        "determinant constants are finite FI-coordinate shifts",
+        with_constants,
+        shifted_coordinate_form,
+    )
+
+
 def check_charged_chiral_dual_elimination() -> None:
     sigmas = [1.3, 0.7]
     charges = [[1, 2], [3, 1], [2, 4]]
@@ -406,6 +456,7 @@ def main() -> None:
     check_abelian_circle_duality()
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
+    check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
     check_cp_mirror_critical_ledger()
     check_cigar_metric_elimination()

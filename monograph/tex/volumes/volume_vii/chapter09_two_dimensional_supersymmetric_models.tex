@@ -1275,6 +1275,75 @@ scheme choice.  Boundary contributions from \(\sigma=0\), vortex sectors,
 and singular loci are not included in this local determinant hypothesis.
 \end{hypothesis}
 
+\paragraph{Local determinant derivation.}
+The part of Hypothesis~\ref{hyp:abelian-glsm-coulomb-one-loop-determinant}
+that is a perturbative determinant calculation can be made explicit.  Work in
+a background in which the twisted chiral field strength is slowly varying and
+has lowest component \(\sigma\).  For a chiral multiplet of charge \(Q\), the
+Coulomb-region complex mass is
+\[
+  M=Q\sigma .
+\]
+The local Wilsonian determinant is obtained by expanding the massive
+Gaussian path integral to first order in the top component of \(\Sigma\), or
+equivalently to first order in the background \(D+\ii F_{12}\) that couples
+to the FI-theta coordinate.  The bosonic and fermionic determinants cancel at
+zero background \(D+\ii F_{12}\); the uncancelled linear term is the massive
+propagator at coincident points.  With a proper-time subtraction at the
+reference mass \(\mu\),
+\begin{equation}
+  4\pi
+  \int_0^\infty
+  \frac{\dd s}{4\pi s}\,
+  \bigl(e^{-s|M|^2}-e^{-s\mu^2}\bigr)
+  =
+  \log\frac{\mu^2}{|M|^2}.
+  \label{eq:abelian-glsm-proper-time-log}
+\end{equation}
+The equality follows by differentiating both sides with respect to
+\(|M|^2\) and fixing the constant at \(|M|=\mu\):
+\[
+  \frac{\partial}{\partial |M|^2}
+  \int_0^\infty\frac{\dd s}{s}
+  \bigl(e^{-s|M|^2}-e^{-s\mu^2}\bigr)
+  =
+  -\int_0^\infty \dd s\,e^{-s|M|^2}
+  =
+  -\frac1{|M|^2}.
+\]
+Equation~\eqref{eq:abelian-glsm-proper-time-log} determines the real
+logarithm in the finite FI shift.  Its imaginary partner is fixed by the
+two-dimensional axial anomaly: changing the phase of \(M\) by
+\(M\mapsto e^{\ii\alpha}M\) is a chiral rotation of a charge-\(Q\) massive
+multiplet and shifts the theta coordinate by \(Q\alpha\) in the same
+normalization in which the flux of a unit-charge \(U(1)\) bundle is integral.
+Thus the real subtraction and the anomaly combine into the holomorphic
+branch
+\[
+  Q\log\frac{M}{\mu}
+  =
+  Q\log\frac{Q\Sigma}{\mu}
+\]
+for the derivative of the twisted superpotential.  For \(m\) massive chiral
+multiplets this gives, on the chosen simply connected Coulomb branch,
+\begin{equation}
+  \frac{\partial \widetilde W_{\rm eff}}{\partial\Sigma}
+  =
+  -t+\sum_{i=1}^m Q_i\log\frac{Q_i\Sigma}{\mu}.
+  \label{eq:abelian-glsm-one-loop-derivative}
+\end{equation}
+Integrating \eqref{eq:abelian-glsm-one-loop-derivative} in the holomorphic
+coordinate \(\Sigma\) gives
+\[
+  -t\Sigma+\sum_iQ_i\Sigma
+  \left(\log\frac{Q_i\Sigma}{\mu}-1\right),
+\]
+up to an additive constant and an affine function of \(\Sigma\).  This is
+\eqref{eq:abelian-glsm-one-loop-twisted-superpotential}.  The calculation is
+local on the Coulomb chart: it uses \(Q_i\sigma\neq0\), chooses logarithm
+branches, and says nothing by itself about vortex sectors, singular loci, or
+the existence of the infrared continuum QFT.
+
 \paragraph{Coulomb critical equation.}
 Under Hypothesis~\ref{hyp:abelian-glsm-coulomb-one-loop-determinant}, the
 local Coulomb critical equation is

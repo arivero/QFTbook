@@ -1228,12 +1228,14 @@ Current checks:
   finite-gauge-group orders, together with the A/B twist spin-shift ledger
   that identifies the scalar supercharges and the abelian circle-duality
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
-  Coulomb one-loop charge-exponent/vacuum-count ledger, the charged-chiral
-  mirror-variable elimination matching the Coulomb one-loop superpotential,
-  the finite FI-coordinate shift induced by vortex coefficient
-  normalizations, the \(\mathbb P^{N-1}\) mirror critical-point simplicity
-  ledger, and the classical cigar quotient metric obtained by eliminating
-  the gauge field, plus the hypersurface GLSM adjunction sign,
+  Coulomb one-loop charge-exponent/vacuum-count ledger, the primitive of the
+  Coulomb logarithmic derivative and its finite FI-coordinate shift under
+  determinant normalization changes, the charged-chiral mirror-variable
+  elimination matching the Coulomb one-loop superpotential, the finite
+  FI-coordinate shift induced by vortex coefficient normalizations, the
+  \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
+  classical cigar quotient metric obtained by eliminating the gauge field,
+  plus the hypersurface GLSM adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
   singular-signal ledger.  It also checks the Fermat Wilsonian
