@@ -347,6 +347,13 @@ Current Appendix K absorption:
   one-loop twisted superpotential, the finite FI-coordinate shift, the
   logarithmic-torus mirror presentation, `P^{N-1}` critical-point simplicity,
   and the classical cigar quotient metric.
+- The Appendix K Landau--Ginzburg nonrenormalization footnote is now
+  rewritten as an explicit two-dimensional Wilsonian-coordinate argument:
+  with chiral Wilsonian regularity, flavor spurion symmetries, and
+  `R(W)=1`, regular holomorphic corrections to Fermat superpotentials are
+  restricted to the original `g_i (Phi^i)^{d_i}` monomials.  The text states
+  the regulator and infrared-existence boundaries rather than treating the
+  selection rule as a standalone theorem about the continuum fixed point.
 - The hypersurface chamber material from Appendix K is now expanded with
   the adjunction calculation `c1(TY_G)=(N-d)H|_{Y_G}`, the `d=N`
   Calabi-Yau condition, the sigma/LG central-charge matching condition, the
@@ -361,7 +368,8 @@ Current Appendix K absorption:
   cover the finite algebra in the charged-dual elimination, FI shift,
   `P^{N-1}` critical ledger, cigar metric elimination, hypersurface
   adjunction/central-charge matching, residual finite-gauge invariant
-  monomials, and the Coulomb-coordinate signal.
+  monomials, the Coulomb-coordinate signal, and the Fermat Wilsonian
+  superpotential spurion-selection arithmetic.
 
 ### Planar Integrability
 

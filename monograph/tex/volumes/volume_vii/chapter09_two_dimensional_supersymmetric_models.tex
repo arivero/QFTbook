@@ -224,6 +224,76 @@ This is therefore an algebraic and anomaly-matching datum.  The existence of
 the infrared fixed point and the convergence of a Landau--Ginzburg regulator
 to it are separate construction and RG questions.
 
+\paragraph{Wilsonian superpotential coordinate for Fermat LG models.}
+The polynomial \(W\) is treated here as part of the Wilsonian \(F\)-term
+coordinate of a declared regulated theory.  The following
+finite argument is the two-dimensional version of the holomorphic-coordinate
+logic of Chapter~\ref{ch:susy-nonrenormalization-holomorphy}.
+
+Fix
+\[
+  W_{\rm UV}(\Phi;g)=\sum_{i=1}^n g_i(\Phi^i)^{d_i},
+  \qquad d_i\geq2,
+\]
+and assume a Wilsonian scheme at scale \(\Lambda\) with the following
+properties:
+\begin{enumerate}
+\item the chiral superspace coordinate is preserved, so corrections to the
+  superpotential are holomorphic functions of the chiral fields and of the
+  background chiral couplings \(g_i\);
+\item the patch is regular at \(g_i=0\), so the perturbative Wilsonian
+  expansion contains nonnegative powers of the \(g_i\);
+\item the scheme preserves the \(n\) flavor spurion symmetries
+  \[
+    \Phi^i\mapsto \lambda_i\Phi^i,\qquad
+    g_i\mapsto \lambda_i^{-d_i}g_i,
+    \qquad \lambda_i\in\C^\times,
+  \]
+  together with the quasihomogeneous \(R\)-charge convention
+  \[
+    R(\Phi^i)=\frac1{d_i},\qquad R(g_i)=0,\qquad R(W)=1 .
+  \]
+\end{enumerate}
+Then every regular monomial allowed in the Wilsonian superpotential is one of
+the original monomials \(g_i(\Phi^i)^{d_i}\), up to its coefficient.  Indeed,
+write a candidate monomial as
+\[
+  \prod_{i=1}^n g_i^{m_i}(\Phi^i)^{a_i},
+  \qquad m_i,a_i\in\mathbb Z_{\geq0}.
+\]
+The \(i\)-th spurion symmetry requires
+\begin{equation}
+  a_i-d_i m_i=0
+  \qquad\text{for every }i,
+  \label{eq:two-d-lg-spurion-neutrality}
+\end{equation}
+and the chiral \(R\)-charge condition requires
+\begin{equation}
+  \sum_{i=1}^n\frac{a_i}{d_i}=1 .
+  \label{eq:two-d-lg-r-charge-selection}
+\end{equation}
+Substituting \eqref{eq:two-d-lg-spurion-neutrality} into
+\eqref{eq:two-d-lg-r-charge-selection} gives
+\[
+  \sum_{i=1}^n m_i=1.
+\]
+Since the \(m_i\) are nonnegative integers, exactly one \(m_j\) is \(1\) and
+all other \(m_i\) vanish.  Then \(a_j=d_j\) and \(a_i=0\) for \(i\neq j\).
+Thus the holomorphic selection rule alone permits only
+\[
+  g_j(\Phi^j)^{d_j},
+  \qquad j=1,\ldots,n.
+\]
+
+The scope of the argument is the Wilsonian coordinate at the declared scale:
+after a regulator with the stated chiral and spurion Ward identities has
+been supplied, perturbative local corrections preserve the Fermat
+superpotential coordinate up to finite redefinition of the displayed
+couplings.  Existence of the continuum infrared fixed point, convergence of
+the RG flow, and control of any allowed nonperturbative sectors are separate
+analytic inputs.  The K\"ahler potential and other \(D\)-term coordinates
+may still flow.
+
 The same protected-data interface controls the finite \(\chi_y\) shadow of
 the elliptic genus in
 Section~\ref{sec:elliptic-genus-spectral-flow-covariance}.  If the infrared

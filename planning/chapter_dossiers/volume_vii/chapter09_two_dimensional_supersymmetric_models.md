@@ -25,6 +25,8 @@ and
   Landau-Ginzburg chiral multiplet variables, Kahler potential, metric, and
   superpotential.
 - `q_i`: quasihomogeneous Landau-Ginzburg weights.
+- `g_i`: background chiral Wilsonian couplings for Fermat
+  Landau-Ginzburg monomials `g_i (Phi^i)^{d_i}`.
 - `Jac(W)`: Landau-Ginzburg Jacobian ring.
 - `chi_y`: finite protected Ramond charge polynomial coordinated with the
   Volume V elliptic-genus interface.
@@ -74,6 +76,12 @@ and
 - Proves the quasihomogeneous charge ledger, Fermat Jacobi basis, Fermat
   Jacobi dimension, and protected central-charge test, while marking the
   infrared fixed-point existence claim as a separate construction problem.
+- Adds the Fermat Wilsonian superpotential coordinate argument: under a
+  declared chiral Wilsonian scheme, regularity at `g_i=0`, flavor spurion
+  symmetries, and `R(W)=1`, the only regular holomorphic monomials in the
+  superpotential are the original `g_i (Phi^i)^{d_i}` terms.  This is a
+  coordinate-level nonrenormalization statement, not an infrared existence
+  theorem.
 - Adds the coordination bridge to Volume V: if the infrared SCFT exists and
   `Jac(W)` classes become NS chiral primaries, then spectral flow by
   `eta=-1/2` shifts a monomial charge to the left Ramond charge
@@ -180,6 +188,9 @@ and
   - `A_k` quasihomogeneous superpotential and derivative charges;
   - `A_k` Jacobi dimensions and central charges;
   - Fermat tensor-product monomial charges and Jacobi dimensions;
+  - Fermat Wilsonian superpotential spurion selection, showing that
+    regular holomorphic monomials obeying the declared flavor and `R` charges
+    are exactly the original superpotential monomials;
   - quintic Landau-Ginzburg central charge `c=9` and Jacobi dimension `4^5`;
   - hypersurface GLSM gauge-invariance, axial-anomaly sum, positive-chamber
     dimension, and negative-chamber residual finite group order;
@@ -216,3 +227,6 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-05-31 hypersurface phase pass further deepens Appendix K's
   Calabi-Yau/Landau-Ginzburg chamber discussion with adjunction, central
   charge, finite-gauge, and Coulomb-coordinate derivations.
+- The 2026-05-31 Fermat Wilsonian pass imports and sharpens Appendix K's
+  nonrenormalization footnote into an explicit two-dimensional
+  holomorphic-coordinate selection argument with calculation-check coverage.

@@ -1233,7 +1233,10 @@ Current checks:
   the gauge field, plus the hypersurface GLSM adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
-  singular-signal ledger.
+  singular-signal ledger.  It also checks the Fermat Wilsonian
+  superpotential spurion-selection arithmetic: regular holomorphic monomials
+  with the declared flavor and \(R\)-charges are exactly the original
+  \(g_i(\Phi^i)^{d_i}\) terms.
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
   tree-level elimination, the eliminated derivative identity, the

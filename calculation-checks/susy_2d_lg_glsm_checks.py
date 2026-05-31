@@ -71,6 +71,42 @@ def check_fermat_tensor_products() -> None:
     assert_equal("quintic Fermat Jacobi dimension", jacobi_dimension_fermat([5] * 5), 4**5)
 
 
+def check_fermat_wilsonian_spurion_selection() -> None:
+    # Candidate monomials have the form prod_i g_i^{m_i} X_i^{a_i}.
+    # Spurion neutrality gives a_i=d_i m_i, and the chiral R-charge-one
+    # condition gives sum_i a_i/d_i = sum_i m_i = 1.  With nonnegative
+    # regular Wilsonian powers, this selects exactly one original monomial.
+    for degrees in [[3], [4], [3, 3], [3, 4, 5], [5, 5, 5, 5, 5]]:
+        selected = []
+
+        def visit(index: int, coupling_powers: list[int]) -> None:
+            if index == len(degrees):
+                field_powers = [degree * power for degree, power in zip(degrees, coupling_powers)]
+                r_charge = sum(
+                    Fraction(field_power, degree)
+                    for field_power, degree in zip(field_powers, degrees)
+                )
+                if r_charge == 1:
+                    selected.append((tuple(coupling_powers), tuple(field_powers)))
+                return
+            for power in range(3):
+                visit(index + 1, coupling_powers + [power])
+
+        visit(0, [])
+        expected = []
+        for position, degree in enumerate(degrees):
+            coupling_powers = [0] * len(degrees)
+            field_powers = [0] * len(degrees)
+            coupling_powers[position] = 1
+            field_powers[position] = degree
+            expected.append((tuple(coupling_powers), tuple(field_powers)))
+        assert_equal(
+            f"Fermat Wilsonian spurion selection {degrees}",
+            sorted(selected),
+            sorted(expected),
+        )
+
+
 def glsm_charge_sum(num_x_fields: int, degree: int) -> int:
     return num_x_fields - degree
 
@@ -364,6 +400,7 @@ def check_hypersurface_coulomb_coordinate_signal() -> None:
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
+    check_fermat_wilsonian_spurion_selection()
     check_hypersurface_glsm_ledger()
     check_twist_spin_ledger()
     check_abelian_circle_duality()
