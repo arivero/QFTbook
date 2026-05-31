@@ -42,7 +42,13 @@ High-priority proof-debt classes:
    reconstruction.  It is a complex-analysis/distribution theorem, not itself a
    QFT theorem, but the OS chapter should eventually include enough proof
    infrastructure that the linear-growth correction and boundary-value passage
-   are transparent.  AQFT structural inputs such as DHR/DR reconstruction,
+   are transparent.  The OS boundary-value theorem now has a local proof
+   sketch detailed enough for the reconstruction use.  The DHR/DR
+   reconstruction block now separates the QFT-specific DHR input from the
+   categorical compact-group output and contains finite pointed, nonabelian
+   representation, crossed-product, and regular charged-coordinate diagnostics;
+   the full analytic DHR/DR theorem remains a theorem-boundary input.  AQFT
+   structural inputs such as
    Bisognano-Wichmann, nuclearity-to-split consequences, and
    Borchers-Wiesbrock half-sided inclusions are currently quoted and should be
    triaged into proof appendices versus explicit theorem-boundary status.

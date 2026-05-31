@@ -229,12 +229,58 @@ def check_s3_nonabelian_reconstruction_diagnostic() -> None:
     assert_equal("S3 standard character on three-cycles", class_traces["three-cycle"], {Fraction(-1)})
 
 
+def matrix_det(a: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]) -> Fraction:
+    return a[0][0] * a[1][1] - a[0][1] * a[1][0]
+
+
+def check_s3_regular_field_core() -> None:
+    group = list(permutations(range(3)))
+    matrices = {g: standard_matrix_s3(g) for g in group}
+
+    # Right translation rotates the column index of every matrix coefficient.
+    for g in group:
+        for h in group:
+            gh = compose_perm(g, h)
+            for a in range(2):
+                for b in range(2):
+                    lhs = matrices[gh][a][b]
+                    rhs = sum(matrices[g][a][c] * matrices[h][c][b] for c in range(2))
+                    assert_equal(f"S3 regular right action g={g} h={h} a={a} b={b}", lhs, rhs)
+
+    # Haar expectation over the right action keeps constants and kills all
+    # nontrivial matrix coefficients.
+    for g in group:
+        standard_average = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
+        sign_average = Fraction(0)
+        trivial_average = Fraction(0)
+        for h in group:
+            gh = compose_perm(g, h)
+            matrix = matrices[gh]
+            standard_average[0][0] += matrix[0][0]
+            standard_average[0][1] += matrix[0][1]
+            standard_average[1][0] += matrix[1][0]
+            standard_average[1][1] += matrix[1][1]
+            sign_average += permutation_sign(gh)
+            trivial_average += 1
+        assert_equal(f"S3 regular Haar standard 00 g={g}", standard_average[0][0], Fraction(0))
+        assert_equal(f"S3 regular Haar standard 01 g={g}", standard_average[0][1], Fraction(0))
+        assert_equal(f"S3 regular Haar standard 10 g={g}", standard_average[1][0], Fraction(0))
+        assert_equal(f"S3 regular Haar standard 11 g={g}", standard_average[1][1], Fraction(0))
+        assert_equal(f"S3 regular Haar sign g={g}", sign_average, Fraction(0))
+        assert_equal(f"S3 regular Haar trivial g={g}", trivial_average / 6, Fraction(1))
+
+    # The antisymmetric piece of V tensor V is the sign representation.
+    for g in group:
+        assert_equal(f"S3 exterior-square sign g={g}", matrix_det(matrices[g]), Fraction(permutation_sign(g)))
+
+
 def main() -> None:
     for n in range(2, 13):
         check_tensor_automorphisms(n)
         check_fixed_degree_projection(n)
         check_crossed_product_core(n)
     check_s3_nonabelian_reconstruction_diagnostic()
+    check_s3_regular_field_core()
     print("All finite DHR/DR reconstruction diagnostics passed.")
 
 

@@ -46,6 +46,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   faithful, the character ring gives
   \(V\otimes V\simeq 1\oplus\epsilon\oplus V\), and Haar averaging kills
   nontrivial matrix coefficients rather than merely nonzero Abelian degree.
+- Adds the finite \(S_3\) regular charged-coordinate core
+  \(\operatorname{Fun}(S_3)\): right translation rotates matrix-coefficient
+  columns as charged multiplets, Haar expectation gives the fixed observable
+  constants, and pointwise multiplication is tensor-product multiplication of
+  matrix coefficients.
 - Constructs the finite pointed field-algebra core as a crossed product
   \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
   involution, gauge action, fixed algebra, and sector implementation.
@@ -95,7 +100,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   associative with the stated involution and gauge-fixed algebra, and the
   finite nonabelian \(S_3\) diagnostic has the correct representation law,
   faithful standard representation, character-ring tensor products, and
-  Haar projection onto the trivial isotypic part.
+  Haar projection onto the trivial isotypic part.  It also verifies the
+  \(S_3\) regular charged-coordinate core: right translation of matrix
+  coefficients, Haar expectation onto constants, and the exterior-square
+  sign representation.
 - `calculation-checks/tomita_standard_form_checks.py` verifies the finite
   matrix-algebra standard-form formulae: \(S=J\Delta^{1/2}\), modular
   eigenvalues on matrix units, \(J L_A J=R_{A^*}\), modular automorphism by
@@ -144,6 +152,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   tensor-product character ring, Haar killing of nontrivial matrix
   coefficients) from the deep Tannakian converse that every tensor natural
   automorphism is evaluation at a group element.
+- 2026-05-31 finite nonabelian DR field-core pass: added the
+  \(\operatorname{Fun}(S_3)\) regular charged-coordinate model, making visible
+  how matrix coefficients transform under the reconstructed group, how Haar
+  expectation recovers observables, and how multiplication realizes
+  tensor-product fusion before the analytic DHR localization burden is added.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost

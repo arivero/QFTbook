@@ -485,6 +485,64 @@ the \(\mathbf1\)-isotypic, observable part.  In the pointed
 sum; in the nonabelian \(S_3\) model it is the vanishing of nontrivial matrix
 coefficients.
 
+\paragraph{Finite nonabelian charged-coordinate core.}
+The preceding \(S_3\) calculation can be made into a finite field-core model,
+with the observable algebra suppressed to \(\mathbb C\), by taking
+\[
+  \mathcal F_{\rm ch}=\operatorname{Fun}(S_3)
+\]
+with pointwise multiplication.  The reconstructed compact group acts on the
+right:
+\begin{equation}
+  (\alpha_h f)(g)=f(gh),
+  \qquad f\in\operatorname{Fun}(S_3),\quad g,h\in S_3 .
+  \label{eq:dr-s3-regular-right-action}
+\end{equation}
+The fixed algebra is the constants, since right translations act transitively
+on \(S_3\).  For an irreducible finite-dimensional representation \(W\), its matrix
+coefficients
+\[
+  f^W_{ab}(g)=D_W(g)_{ab}
+\]
+span a right \(S_3\)-multiplet:
+\begin{equation}
+  \alpha_h(f^W_{ab})
+  =
+  \sum_c f^W_{ac}\,D_W(h)_{cb}.
+  \label{eq:dr-s3-matrix-coefficient-right-action}
+\end{equation}
+Thus the column index is the charged multiplet index, while the row index
+records the multiplicity with which \(W\) appears in the finite regular
+field-core model.  Haar projection is the finite conditional expectation
+\begin{equation}
+  E_{S_3}(f)
+  =
+  \frac1{6}\sum_{h\in S_3}\alpha_h(f),
+  \qquad
+  E_{S_3}(f^W_{ab})=
+  \begin{cases}
+    1,& W=\mathbf 1,\\
+    0,& W\ne\mathbf 1,
+  \end{cases}
+  \label{eq:dr-s3-regular-haar-expectation}
+\end{equation}
+with the second line understood after choosing the constant matrix coefficient
+for \(W=\mathbf1\).  Multiplication of charged coordinates is the
+matrix-coefficient form of tensor product:
+\begin{equation}
+  f^U_{ab}(g)f^V_{cd}(g)
+  =
+  D_{U\otimes V}(g)_{(a,c),(b,d)} .
+  \label{eq:dr-s3-matrix-coefficient-product}
+\end{equation}
+Decomposing \(U\otimes V\) by intertwiners gives the fusion rules such as
+\eqref{eq:dr-s3-representation-ring}.  This finite model is not a local QFT
+field algebra; its observable part is only \(\mathbb C\).  Its purpose is to
+show, without the analytic burden of DHR localization, how nonabelian charged
+coordinates, Haar expectation, and fusion multiplication are the same data
+that the Doplicher--Roberts theorem reconstructs from a symmetric
+finite-statistics sector category.
+
 \begin{example}[Pointed field algebra as a crossed product]
 \label{ex:dr-pointed-crossed-product-field-algebra}
 The same pointed category has an explicit charged-field algebra when the

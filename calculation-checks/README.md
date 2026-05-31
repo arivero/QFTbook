@@ -67,7 +67,10 @@ Current checks:
   projection, crossed-product associativity and involution, and the
   nonabelian \(S_3\) diagnostic for faithful standard representation,
   character-ring tensor products, and Haar projection onto the trivial
-  isotypic part.
+  isotypic part.  It also checks the finite \(S_3\) regular
+  charged-coordinate core: right translation rotates matrix-coefficient
+  columns, Haar expectation kills the standard and sign multiplets while
+  preserving constants, and \(\wedge^2 V\) gives the sign representation.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,
