@@ -1112,6 +1112,156 @@ has two sectors, represented by the identity and by a three-cycle; the
 stabilizer weights distinguish the sector containing \(H\) from the sector
 with trivial stabilizer.
 
+\begin{proposition}[Subgroup-boundary junction convolution]
+\label{prop:finite-subgroup-boundary-convolution}
+Let \(H_0,H_1,H_2\subset G\) be subgroup boundary data in the untwisted
+finite \(G\)-gauge theory.  Put
+\[
+  \mathcal V(H_i,H_j)
+  =
+  \operatorname{Fun}(G,\C)^{H_i\times H_j},
+  \qquad
+  f(h_i g h_j^{-1})=f(g).
+\]
+The finite pair-of-intervals junction
+\[
+  (B_{H_0},B_{H_1})\times(B_{H_1},B_{H_2})
+  \longrightarrow
+  (B_{H_0},B_{H_2})
+\]
+defines the bilinear product
+\begin{equation}
+  (f\star_{H_1}k)(g)
+  =
+  \frac{1}{|H_1|}
+  \sum_{\substack{x,y\in G\\xy=g}} f(x)k(y),
+  \qquad
+  f\in\mathcal V(H_0,H_1),\quad
+  k\in\mathcal V(H_1,H_2).
+  \label{eq:finite-subgroup-boundary-convolution}
+\end{equation}
+This product lands in \(\mathcal V(H_0,H_2)\), is associative under
+successive junction composition, and has unit
+\[
+  \mathbf 1_H(g)=
+  \begin{cases}
+    1,& g\in H,\\
+    0,& g\notin H,
+  \end{cases}
+  \qquad
+  \mathbf 1_H\in\mathcal V(H,H).
+\]
+If \(A=H_0aH_1\), \(B=H_1bH_2\), and \(C=H_0cH_2\), then the double-coset
+basis structure constants are
+\begin{equation}
+  \mathbf 1_A\star_{H_1}\mathbf 1_B
+  =
+  \sum_C N_{AB}^{C}\mathbf 1_C,
+  \qquad
+  N_{AB}^{C}
+  =
+  \frac{1}{|H_1|}
+  \#\{(x,y)\in A\times B:xy=c\},
+  \label{eq:finite-subgroup-boundary-structure-constants}
+\end{equation}
+where the integer \(N_{AB}^C\) is independent of the representative
+\(c\in C\).
+\end{proposition}
+
+\begin{proof}
+The junction field groupoid is the finite action groupoid
+\[
+  G^2//(H_0\times H_1\times H_2),
+\]
+where
+\[
+  (h_0,h_1,h_2):(x,y)
+  \longmapsto
+  (h_0xh_1^{-1},h_1yh_2^{-1}).
+\]
+The incoming restriction remembers \(x\) and \(y\), while the outgoing
+restriction remembers the composite parallel transport
+\[
+  g=xy.
+\]
+Thus the junction is the span
+\[
+  G//(H_0\times H_1)\times G//(H_1\times H_2)
+  \xleftarrow{\ }
+  G^2//(H_0\times H_1\times H_2)
+  \xrightarrow{\ xy\ }
+  G//(H_0\times H_2).
+\]
+Push-pull along this finite span gives
+\eqref{eq:finite-subgroup-boundary-convolution}.  The factor
+\(|H_1|^{-1}\) is the groupoid-volume factor for the intermediate boundary
+gauge transformation \(h_1\); it is the same automorphism denominator that
+appears in the finite gluing theorem.
+
+The result is \(H_0\)-left and \(H_2\)-right invariant.  For instance,
+\[
+  (f\star_{H_1}k)(h_0gh_2^{-1})
+  =
+  \frac{1}{|H_1|}
+  \sum_{xy=g} f(h_0x)k(yh_2^{-1})
+  =
+  (f\star_{H_1}k)(g),
+\]
+using the bi-invariance of \(f\) and \(k\).  Associativity follows from
+finite Fubini and associativity in \(G\):
+\[
+  ((f\star_{H_1}k)\star_{H_2}\ell)(t)
+  =
+  \frac{1}{|H_1|\,|H_2|}
+  \sum_{\substack{x,y,z\in G\\ xyz=t}}
+  f(x)k(y)\ell(z)
+  =
+  (f\star_{H_1}(k\star_{H_2}\ell))(t).
+\]
+The unit statement follows because, for
+\(f\in\mathcal V(H,K)\),
+\[
+  (\mathbf 1_H\star_H f)(g)
+  =
+  \frac{1}{|H|}
+  \sum_{h\in H} f(h^{-1}g)
+  =
+  f(g),
+\]
+and similarly \(f\star_K\mathbf 1_K=f\).
+
+For the structure constants, first note that
+\(\mathbf 1_A\star_{H_1}\mathbf 1_B\) is
+\((H_0,H_2)\)-bi-invariant, so it is constant on every output double coset
+\(C\).  If \(c'\in C\), say \(c'=h_0ch_2^{-1}\), multiplication by
+\((h_0,h_2)\) gives a bijection between the factorization sets with product
+\(c\) and \(c'\).  Finally, \(H_1\) acts freely on
+\[
+  \{(x,y)\in A\times B:xy=c\}
+\]
+by
+\[
+  h:(x,y)\longmapsto (xh^{-1},hy).
+\]
+The quotient by this free action is exactly the intermediate boundary gauge
+identification in the span, so the cardinality is divisible by \(|H_1|\) and
+\(N_{AB}^C\) is a nonnegative integer.
+\end{proof}
+
+For \(G=S_3\) and \(H=\langle(12)\rangle\), the \(H\)-\(H\) double cosets are
+\[
+  A_0=H,\qquad A_1=H(123)H.
+\]
+The characteristic function of \(A_0\) is the unit, and the nontrivial sector
+\(X=\mathbf 1_{A_1}\) obeys
+\[
+  X\star_H X=2\,\mathbf 1_{A_0}+X.
+\]
+This small example shows why the stabilizer and intermediate gauge-volume
+factors cannot be dropped: the finite path integral produces the Hecke-type
+integer algebra with the normalization fixed by gluing, not by a later
+choice of basis.
+
 Now include a three-dimensional Dijkgraaf--Witten twist.  Let
 \[
   \omega\in Z^3(G,U(1))

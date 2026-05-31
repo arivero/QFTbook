@@ -168,10 +168,13 @@ cylinder-sector count
 \(|\mathcal C_A/(L_0+L_1)|=|L_0\cap L_1|\).  A second finite boundary pass
 now adds nonabelian subgroup boundaries: interval sectors
 \(H_0\backslash G/H_1\), stabilizer weights, and relative
-Dijkgraaf--Witten boundary cochains \(\delta\beta=i^*\omega\).  The
-remaining finite-locality tasks are deeper thermodynamic Hall-response
+Dijkgraaf--Witten boundary cochains \(\delta\beta=i^*\omega\).  It also
+derives the finite junction convolution
+\(|H_1|^{-1}\sum_{xy=g}f(x)k(y)\) for composing subgroup-boundary intervals,
+including associativity, unit sectors, and the \(S_3\) two-sector algebra.
+The remaining finite-locality tasks are deeper thermodynamic Hall-response
 stability estimates beyond the finite curvature theorem, more substantial
-twisted/non-Abelian boundary examples with junction composition, and stronger
+twisted/non-Abelian boundary examples with higher junctions, and stronger
 TQFT-boundary comparisons.
 
 ### Dynamic Critical Phenomena And Stochastic Field Theories

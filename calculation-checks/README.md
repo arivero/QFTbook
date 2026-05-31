@@ -214,9 +214,11 @@ Current checks:
   \(|\mathcal C/(L_0+L_1)|=|L_0\cap L_1|\).
 - `finite_gauge_subgroup_boundary_checks.py`: exact finite checks for the
   Volume VIII subgroup-boundary section, including \(H_0\backslash G/H_1\)
-  double-coset sectors, stabilizer/groupoid-cardinality weights, and the
-  relative Dijkgraaf--Witten cochain cancellation
-  \(\delta\beta=i^*\omega\).
+  double-coset sectors, stabilizer/groupoid-cardinality weights,
+  \(|H_1|^{-1}\)-normalized boundary-junction convolution with associativity
+  and unit sectors, the \(S_3\) two-sector example
+  \(X^2=2\mathbf 1+X\), and the relative Dijkgraaf--Witten cochain
+  cancellation \(\delta\beta=i^*\omega\).
 - `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the

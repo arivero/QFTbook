@@ -48,6 +48,10 @@ bordism-functoriality chapter.
   `delta beta = i^* omega` for a relative Dijkgraaf-Witten boundary.
 - `H_0\G/H_1`: double-coset set of interval sectors between subgroup
   boundaries.
+- `V(H_i,H_j)`: bi-invariant function space
+  `Fun(G,C)^{H_i x H_j}` assigned to a subgroup-boundary interval.
+- `star_{H_1}`: normalized finite push-pull convolution composing two
+  subgroup-boundary intervals across the intermediate boundary `H_1`.
 - `alpha`: degree-`D+1` finite-symmetry anomaly cocycle.
 
 ## Claim Ledger
@@ -88,7 +92,10 @@ bordism-functoriality chapter.
     interval sector classification by double cosets `H_0\G/H_1`, records the
     stabilizer weights, and gives the relative Dijkgraaf-Witten boundary
     condition `delta beta=i^* omega` as an explicit state-sum cancellation
-    identity.
+    identity.  Also derives the boundary-junction convolution
+    `f star_{H_1} k = |H_1|^{-1} sum_{xy=g} f(x)k(y)`, proves
+    associativity and unit sectors by finite Fubini, and computes the
+    `S_3` transposition-boundary algebra `X^2=2*1+X`.
 16. States finite correspondence defects and degree-`D+1` anomaly inflow.
 
 ## Figure Ledger
@@ -112,8 +119,9 @@ bordism-functoriality chapter.
 - `calculation-checks/finite_gauge_subgroup_boundary_checks.py` verifies the
   nonabelian subgroup-boundary interval groupoid for `S_3` and `D_4`
   examples, including double-coset partitions, stabilizer weights, groupoid
-  cardinality, and the finite relative cochain cancellation
-  `delta beta=i^* omega`.
+  cardinality, normalized boundary-junction convolution, associativity, unit
+  sectors, integral structure constants, the `S_3` two-sector algebra, and
+  the finite relative cochain cancellation `delta beta=i^* omega`.
 
 ## Audit Notes
 
@@ -126,3 +134,7 @@ bordism-functoriality chapter.
   cancellation.  The chapter now distinguishes double-coset sector labels
   from stabilizer-weighted groupoid cardinalities and states the boundary
   anomaly cancellation condition as `delta beta=i^* omega`.
+- 2026-05-31 subgroup-junction pass: added the finite span for composing two
+  subgroup-boundary intervals, derived the normalized convolution from the
+  intermediate `H_1` gauge volume, and checked associativity/unit/structure
+  constants in exact finite examples.
