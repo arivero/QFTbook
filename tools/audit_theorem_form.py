@@ -758,6 +758,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Pointed Walker--Wang boundary mechanism"
     r"|M.*uger-center plaquette criterion"
     r"|Ising odd form-factor family"
+    r"|Spin-field form factors in the free massive fermion"
     r")\b",
     re.IGNORECASE,
 )

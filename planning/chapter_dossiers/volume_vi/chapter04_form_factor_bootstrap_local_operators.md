@@ -126,6 +126,13 @@
   convention-sensitive verification paragraph.  The formulas and residue
   calculation remain in the chapter; theorem-family status is reserved for the
   separated Euclidean spectral-series convergence statement.
+- 2026-05-31 issue #691 continuation: demoted the even Ising spin-field
+  product-family statement from proposition/proof form to a worked derivation
+  paragraph.  The \(F_{2k}^{\sigma_+}=\bar\sigma i^kP_{2k}\) formula,
+  semi-local cyclicity, annihilation-pole residue, crossed connected
+  \(\coth\)-matrix element, and Fonseca--Zamolodchikov comparison remain
+  explicit; theorem-family rank remains with the separated Euclidean
+  spectral-series convergence result.
 
 ## Figures
 
