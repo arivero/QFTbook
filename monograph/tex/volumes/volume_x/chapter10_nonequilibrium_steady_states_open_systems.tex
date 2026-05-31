@@ -10,9 +10,10 @@ subalgebra evolves by a completely positive trace-preserving semigroup.  This
 chapter fixes these definitions, derives the reservoir entropy-production
 formula, records finite path-measure fluctuation identities before taking a
 continuum limit, derives the finite-step Langevin/MSRJD representation,
-records the weak-coupling route to the GKSL generator, and connects the
-Markovian limit to a Schwinger--Keldysh influence functional and to
-hydrodynamic relaxation with noise.
+derives the finite reaction-network Doi--Peliti representation, records the
+weak-coupling route to the GKSL generator, and connects the Markovian limit
+to a Schwinger--Keldysh influence functional and to hydrodynamic relaxation
+with noise.
 
 \section{Steady-State Datum}
 
@@ -581,6 +582,212 @@ by a finite spatial regulator and only then by a continuum limit.  The data
 to be controlled are the regulated drift, the regulated covariance, the
 choice of stochastic discretization, ultraviolet renormalizations of drift
 and noise, and convergence of correlation functions or path measures.
+
+\section{Finite Reaction Networks and Doi--Peliti Variables}
+\label{sec:finite-reaction-network-doi-peliti}
+
+Doi--Peliti variables are the occupation-number analogue of the response
+variables above.  The starting point is a Markov generator on a countable
+occupation basis.  Let \(s=1,\ldots,S\) label a finite set of species, and
+let \(n=(n_1,\ldots,n_S)\in\mathbb N^S\) be the occupation vector of a finite
+spatial regulator.  For a multi-index \(\alpha\in\mathbb N^S\), set
+\[
+  z^\alpha=\prod_s z_s^{\alpha_s},
+  \qquad
+  (n)_\alpha=\prod_s n_s(n_s-1)\cdots(n_s-\alpha_s+1),
+\]
+with \((n)_\alpha=0\) if some \(n_s<\alpha_s\).  A reaction \(r\) has input
+\(\nu_r\), output \(\nu'_r\), stoichiometric vector
+\(v_r=\nu'_r-\nu_r\), and rate constant \(\kappa_r\ge0\).  The mass-action
+jump rate is
+\[
+  w_r(n)=\kappa_r(n)_{\nu_r},
+  \qquad
+  n\longmapsto n+v_r .
+\]
+The master equation for the probability \(P_t(n)\) is
+\begin{equation}
+  \partial_tP_t(m)
+  =
+  \sum_r
+  \left[
+    \kappa_r(m-v_r)_{\nu_r}P_t(m-v_r)
+    -
+    \kappa_r(m)_{\nu_r}P_t(m)
+  \right],
+  \label{eq:reaction-network-master-equation}
+\end{equation}
+where terms with \(m-v_r\notin\mathbb N^S\) vanish.
+
+Let \(\mathcal F_{\rm alg}\) be the algebraic bosonic Fock space with basis
+\(\{|n\rangle:n\in\mathbb N^S\}\).  Define
+\[
+  a_s|n\rangle=n_s|n-e_s\rangle,
+  \qquad
+  a_s^\dagger|n\rangle=|n+e_s\rangle,
+  \qquad
+  [a_s,a_t^\dagger]=\delta_{st}.
+\]
+Here \(a_s|n\rangle=0\) when \(n_s=0\).
+For \(\alpha\in\mathbb N^S\), write
+\[
+  a^\alpha=\prod_s a_s^{\alpha_s},
+  \qquad
+  (a^\dagger)^\alpha=\prod_s(a_s^\dagger)^{\alpha_s}.
+\]
+Encode a probability distribution as
+\[
+  |P_t\rangle=\sum_{n\in\mathbb N^S}P_t(n)|n\rangle .
+\]
+The Doi--Peliti generator is the normally ordered operator
+\begin{equation}
+  \mathcal L_{\rm DP}
+  =
+  \sum_r
+  \kappa_r
+  \left[
+    (a^\dagger)^{\nu'_r}
+    -
+    (a^\dagger)^{\nu_r}
+  \right]
+  a^{\nu_r}.
+  \label{eq:doi-peliti-generator}
+\end{equation}
+
+\begin{proposition}[Finite Doi--Peliti generator identity]
+\label{prop:finite-doi-peliti-generator-identity}
+For every finitely supported probability vector \(P\), the coefficient of
+\(|m\rangle\) in \(\mathcal L_{\rm DP}|P\rangle\) is the right side of
+\eqref{eq:reaction-network-master-equation}.  Therefore
+\(\partial_t|P_t\rangle=\mathcal L_{\rm DP}|P_t\rangle\) is exactly the
+reaction-network master equation on the algebraic domain.  If
+\(\langle{\bf 1}|n\rangle=1\) for every \(n\), then
+\[
+  \langle{\bf 1}|\mathcal L_{\rm DP}=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+For every multi-index \(\alpha\),
+\[
+  a^\alpha|n\rangle=(n)_\alpha|n-\alpha\rangle.
+\]
+Hence a single reaction term acts by
+\[
+  \kappa_r
+  \left[
+    (a^\dagger)^{\nu'_r}
+    -
+    (a^\dagger)^{\nu_r}
+  \right]
+  a^{\nu_r}|n\rangle
+  =
+  \kappa_r(n)_{\nu_r}
+  \left(|n+v_r\rangle-|n\rangle\right).
+\]
+After multiplying by \(P(n)\) and summing over \(n\), the coefficient of
+\(|m\rangle\) is the gain from \(n=m-v_r\) minus the loss from \(n=m\),
+which is \eqref{eq:reaction-network-master-equation}.  Finally,
+\(\langle{\bf 1}|(a^\dagger)^\alpha=\langle{\bf 1}|\) for every
+\(\alpha\), because both sides assign value \(1\) to every basis vector.
+Thus each bracket in \eqref{eq:doi-peliti-generator} is annihilated by
+\(\langle{\bf 1}|\), giving probability conservation.
+\end{proof}
+
+The coherent-state form is a controlled time-slicing of the same operator.
+Let
+\[
+  |z\rangle=\exp\!\left(\sum_s z_sa_s^\dagger\right)|0\rangle,
+  \qquad
+  \langle\bar z|=\langle0|\exp\!\left(\sum_s \bar z_sa_s\right),
+\]
+where \(z,\bar z\in\mathbb C^S\).  Then
+\[
+  a_s|z\rangle=z_s|z\rangle,
+  \qquad
+  \langle\bar z|a_s^\dagger=\bar z_s\langle\bar z|,
+  \qquad
+  \langle\bar z|z\rangle=e^{\bar z\cdot z}.
+\]
+The normal symbol of the generator is
+\begin{equation}
+  H_{\rm DP}(\bar z,z)
+  =
+  e^{-\bar z\cdot z}
+  \langle\bar z|\mathcal L_{\rm DP}|z\rangle
+  =
+  \sum_r
+  \kappa_r
+  \left(\bar z^{\nu'_r}-\bar z^{\nu_r}\right)z^{\nu_r}.
+  \label{eq:doi-peliti-normal-symbol}
+\end{equation}
+In any finite-dimensional truncation whose projected generator and boundary
+rules have been specified, and in particular in any finite total-number
+sector preserved by the reactions, the coherent-state resolution of the
+identity gives an ordinary finite-dimensional time-sliced integral for
+matrix elements of \(\exp(T\mathcal L_{\rm DP})\).  Replacing each
+short-time factor by
+\[
+  \langle\bar z_{j+1}|e^{\Delta t\mathcal L_{\rm DP}}|z_j\rangle
+  =
+  \exp(\bar z_{j+1}\cdot z_j)
+  \left[
+    1+\Delta t\,H_{\rm DP}(\bar z_{j+1},z_j)+O((\Delta t)^2)
+  \right]
+\]
+gives the continuum Doi--Peliti action whenever the time-slicing limit is
+controlled.  The shift \(\bar z=1+\widetilde z\) is useful because
+\[
+  H_{\rm DP}(1,z)=0,
+\]
+which is the symbol form of probability conservation.  Differentiating at
+\(\bar z=1\) gives the deterministic rate equation for the mean-field
+density variables:
+\begin{equation}
+  \dot z_s
+  =
+  \left.
+  \frac{\partial H_{\rm DP}}{\partial\bar z_s}
+  \right|_{\bar z=1}
+  =
+  \sum_r
+  \kappa_r(\nu'_{r,s}-\nu_{r,s})z^{\nu_r}.
+  \label{eq:doi-peliti-mean-field-rate-equation}
+\end{equation}
+
+The same finite generator also exposes the dynamical large-deviation
+Hamiltonian.  For an exponential test function
+\[
+  f_p(n)=e^{p\cdot n},
+\]
+the backward generator \(L\) associated with
+\eqref{eq:reaction-network-master-equation} satisfies
+\begin{equation}
+  \frac{(Lf_p)(n)}{f_p(n)}
+  =
+  \sum_r
+  \kappa_r(n)_{\nu_r}
+  \left(e^{p\cdot v_r}-1\right).
+  \label{eq:reaction-network-exponential-test-function}
+\end{equation}
+This follows by applying the backward generator to \(f_p\):
+the \(r\)-th jump changes \(f_p(n)\) to
+\(f_p(n+v_r)=e^{p\cdot v_r}f_p(n)\), while the loss term subtracts
+\(f_p(n)\).
+If a density scaling \(n=\Omega x\) is chosen together with rate constants
+scaled so that \(\kappa_r(n)_{\nu_r}=\Omega\,\lambda_r(x)+o(\Omega)\), then
+\[
+  \mathcal H_{\rm LD}(x,p)
+  =
+  \sum_r
+  \lambda_r(x)
+  \left(e^{p\cdot v_r}-1\right)
+\]
+is the finite-regulator Hamiltonian for the path rate function.  Proving the
+large-deviation principle itself requires tightness, exponential estimates,
+and a specified scaling limit;
+\eqref{eq:reaction-network-exponential-test-function} is the exact algebraic
+input.
 
 \section{Weak-Coupling Open-System Limit}
 

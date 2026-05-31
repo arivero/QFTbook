@@ -1089,9 +1089,11 @@ Current checks:
   entropy production, finite local-detailed-balance entropy splitting,
   the finite jump path-measure Radon--Nikodym ratio, a driven two-state
   Jarzynski identity, finite-step MSRJD Gaussian/Fourier normalization,
-  Langevin generator expansion, GKSL trace preservation, KMS detailed balance
-  for a two-level system, Ornstein-Uhlenbeck noise normalization, and
-  positivity of a quadratic noise kernel.
+  Langevin generator expansion, finite Doi--Peliti generator matrix
+  identities, the Doi--Peliti symbol and exponential-test large-deviation
+  Hamiltonian, GKSL trace preservation, KMS detailed balance for a two-level
+  system, Ornstein-Uhlenbeck noise normalization, and positivity of a
+  quadratic noise kernel.
 - `microlocal_spectrum_checks.py`: finite convention checks for the
   microlocal spectrum chapter, including the mostly-plus future-covector
   convention, the Klein-Gordon Hamilton-flow sign, the two-point graph

@@ -232,6 +232,84 @@ def check_langevin_generator_expansion() -> None:
     assert_close("finite-step Langevin generator expansion", finite_difference, generator_on_cubic + exact_remainder)
 
 
+def check_doi_peliti_two_species_generator() -> None:
+    total_number = 3
+    rate_ab = Fraction(2, 5)
+    rate_ba = Fraction(3, 7)
+    size = total_number + 1
+
+    direct = [[Fraction(0) for _ in range(size)] for _ in range(size)]
+    doi_peliti = [[Fraction(0) for _ in range(size)] for _ in range(size)]
+
+    for n_a in range(size):
+        n_b = total_number - n_a
+        if n_a:
+            rate = rate_ab * n_a
+            direct[n_a - 1][n_a] += rate
+            direct[n_a][n_a] -= rate
+        if n_b:
+            rate = rate_ba * n_b
+            direct[n_a + 1][n_a] += rate
+            direct[n_a][n_a] -= rate
+
+    reactions = [
+        ((1, 0), (0, 1), rate_ab),
+        ((0, 1), (1, 0), rate_ba),
+    ]
+
+    def falling(value: int, power: int) -> int:
+        result = 1
+        for offset in range(power):
+            result *= value - offset
+        return result
+
+    for n_a in range(size):
+        n_b = total_number - n_a
+        for nu, nu_prime, rate_constant in reactions:
+            factor = falling(n_a, nu[0]) * falling(n_b, nu[1])
+            if factor == 0:
+                continue
+            target_a = n_a - nu[0] + nu_prime[0]
+            target_b = n_b - nu[1] + nu_prime[1]
+            assert target_a + target_b == total_number
+            rate = rate_constant * factor
+            doi_peliti[target_a][n_a] += rate
+            doi_peliti[n_a][n_a] -= rate
+
+    assert doi_peliti == direct
+    for column in range(size):
+        assert sum(doi_peliti[row][column] for row in range(size)) == 0
+
+
+def check_doi_peliti_symbol_and_large_deviation_hamiltonian() -> None:
+    rate_ab = Fraction(2, 5)
+    rate_ba = Fraction(3, 7)
+    z_a = Fraction(4, 3)
+    z_b = Fraction(5, 6)
+
+    symbol_at_projection = rate_ab * (1 - 1) * z_a + rate_ba * (1 - 1) * z_b
+    assert symbol_at_projection == 0
+
+    drift_a = -rate_ab * z_a + rate_ba * z_b
+    drift_b = rate_ab * z_a - rate_ba * z_b
+    assert drift_a + drift_b == 0
+
+    n_a, n_b = 2, 1
+    p_a, p_b = 0.23, -0.11
+
+    def test_function(a_count: int, b_count: int) -> float:
+        return math.exp(p_a * a_count + p_b * b_count)
+
+    current = test_function(n_a, n_b)
+    direct = 0.0
+    direct += float(rate_ab * n_a) * (test_function(n_a - 1, n_b + 1) - current) / current
+    direct += float(rate_ba * n_b) * (test_function(n_a + 1, n_b - 1) - current) / current
+    hamiltonian = float(rate_ab * n_a) * (math.exp(p_b - p_a) - 1.0) + float(rate_ba * n_b) * (
+        math.exp(p_a - p_b) - 1.0
+    )
+    assert_close("Doi-Peliti exponential-test Hamiltonian", direct, hamiltonian)
+
+
 def check_two_level_kms_stationary_ratio() -> None:
     beta = 1.4
     gap = 0.9
@@ -273,6 +351,8 @@ def main() -> None:
     check_discrete_jarzynski_identity()
     check_msrjd_gaussian_fourier_kernel()
     check_langevin_generator_expansion()
+    check_doi_peliti_two_species_generator()
+    check_doi_peliti_symbol_and_large_deviation_hamiltonian()
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()
