@@ -119,6 +119,14 @@
   \(\coth\) matrix element, the semi-local kinematic residue, and the
   even/odd spectral-series majorants.
 
+## Audit Notes
+
+- 2026-05-31 anti-wrapper pass: demoted the odd Ising product-family
+  Watson/cyclicity/kinematic-residue check from proposition/proof form to a
+  convention-sensitive verification paragraph.  The formulas and residue
+  calculation remain in the chapter; theorem-family status is reserved for the
+  separated Euclidean spectral-series convergence statement.
+
 ## Figures
 
 - None in this chapter.

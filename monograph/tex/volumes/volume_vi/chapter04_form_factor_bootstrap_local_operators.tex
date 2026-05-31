@@ -799,11 +799,11 @@ mass and on the Kramers--Wannier identification.  The mathematical point here
 is independent of that naming convention: the parity of the nonzero
 form-factor family is fixed by the declared cyclicity phase.
 
-\begin{proposition}[Ising odd form-factor family]
-\label{prop:ising-odd-form-factor-family}
-The family \eqref{eq:ising-order-form-factors} satisfies Watson exchange,
-the local cyclicity equation for odd particle number, and the kinematic-pole
-equation with \(S=-1\):
+\paragraph{Odd-family bootstrap verification.}
+For the odd product family \eqref{eq:ising-order-form-factors}, the three
+bootstrap checks are elementary but convention-sensitive.  The family satisfies
+Watson exchange, the local cyclicity equation for odd particle number, and the
+kinematic-pole equation with \(S=-1\):
 \[
   -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
   F_{n+2}^{\Sigma}(\theta',\theta,\eta_1,\ldots,\eta_n)
@@ -812,9 +812,7 @@ equation with \(S=-1\):
 \]
 for every odd \(n\).  For even \(n\), both sides vanish because
 \(F_n^\Sigma=F_{n+2}^\Sigma=0\).
-\end{proposition}
 
-\begin{proof}
 Interchanging adjacent variables changes exactly one factor by a sign and
 permutes the rest, so \(P_N\) is antisymmetric.  Since \(S=-1\), this is
 precisely Watson's equation.
@@ -874,7 +872,6 @@ If \(n=2k+1\), then \(F_n^\Sigma=v\ii^kP_n\), while
 \]
 Since \(n\) is odd, \(1-(-1)^n=2\), giving the claimed kinematic-pole
 equation.
-\end{proof}
 
 \begin{proposition}[Separated Euclidean spectral series for the Ising branch fields]
 \label{prop:ising-spin-separated-euclidean-series}
