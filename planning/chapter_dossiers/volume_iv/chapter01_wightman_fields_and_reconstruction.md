@@ -26,6 +26,8 @@ Minkowski setting used in the reconstruction theorem.
 - `E_P`, `P_0`: joint spectral measure of translations and zero-momentum
   projection.
 - `W_n`: vacuum Wightman distribution hierarchy.
+- `T_{n-1}=\{z_j=\xi_j-\ii\eta_j,\ \eta_j\in V_+\}`: mostly-plus forward
+  Wightman tube in difference variables.
 - `N_W`: null subspace in the reconstruction pre-Hilbert space.
 - `Theta_PCT`: antiunitary PCT operator.
 - `P_Phi(O)`, `R_Phi(O)`: unbounded polynomial local field algebra and
@@ -53,7 +55,8 @@ Minkowski setting used in the reconstruction theorem.
   completion, left-insertion fields, covariance, spectrum, adjunction,
   locality, cyclicity, and uniqueness.
 - Develops the Wightman tube-analyticity mechanism from spectral support,
-  covariance, and locality at Jost configurations.
+  using the mostly-plus convention \(z=\xi-\ii\eta\), covariance, and
+  locality at Jost configurations.
 - States the PCT theorem in four dimensions and sketches the proof by the
   Jost analytic identity followed by construction of the antiunitary on the
   reconstructed finite-sequence domain.
@@ -103,3 +106,7 @@ Minkowski setting used in the reconstruction theorem.
   Wightman definition back to the opening framework-level Wightman
   presentation so the two definitions have an explicit specialization
   relation.
+- 2026-05-30 Wightman tube-sign pass: aligned the analytic-continuation
+  section and Figure `fig:wightman-tube-analyticity` with the mostly-plus
+  spectral-support convention \(z=\xi-\ii\eta\), \(\eta\in V_+\), matching
+  the Lorentzian Green-functions and Reeh--Schlieder chapters.

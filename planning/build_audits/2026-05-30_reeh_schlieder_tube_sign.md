@@ -26,6 +26,15 @@ Edit:
   depth rather than the literal imaginary coordinate.
 - Updated the chapter dossier with the new notation and claim ledger entries.
 
+Follow-up sign sweep:
+
+- The same convention mismatch was present in Volume IV, Chapter 1's
+  Wightman tube-analyticity section and Figure `fig:wightman-tube-analyticity`.
+- That section now defines the mostly-plus forward tube as
+  `z_j = xi_j - i eta_j`, `eta_j in V_+`, and the figure labels the vertical
+  coordinate as tube depth rather than `Im z in V_+`.
+- The Chapter 1 dossier now records this convention explicitly.
+
 Status:
 
 - This strengthens issue #695 by making a foundational analytic step and a

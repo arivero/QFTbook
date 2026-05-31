@@ -793,7 +793,7 @@ boundary value of a holomorphic function on the forward tube
 \[
   T_{n-1}
   =
-  \{z_j=\xi_j+\ii\eta_j\in\mathbb C^D
+  \{z_j=\xi_j-\ii\eta_j\in\mathbb C^D
   \mid \eta_j\in V_+,\ j=1,\ldots,n-1\}.
 \]
 Lorentz covariance enlarges the domain to the extended tube obtained by the
@@ -803,8 +803,8 @@ linear combinations are spacelike.
 
 Figure~\ref{fig:wightman-tube-analyticity} sketches a two-dimensional slice of
 the complexified difference variable.  The real edge carries the boundary
-values, the forward tube is obtained by giving the difference variables
-future-timelike imaginary parts, and the Jost configurations are real
+values, the forward tube is obtained by writing the difference variables as
+\(z=\xi-\ii\eta\) with \(\eta\in V_+\), and the Jost configurations are real
 spacelike boundary points at which locality identifies different
 permutation-ordered boundary values.
 
@@ -820,7 +820,7 @@ permutation-ordered boundary values.
     \fill[blue!7] (-4.2,0.32) rectangle (4.2,2.65);
     \draw[region,blue!55!black] (-4.2,0.32)--(4.2,0.32)--(4.2,2.65)--(-4.2,2.65)--cycle;
     \node[labelbox,text=blue!55!black] at (-2.75,2.28)
-      {forward tube\\\(\operatorname{Im}z\in V_+\)};
+      {forward tube\\\(z=\xi-\ii\eta,\ \eta\in V_+\)};
 
     \fill[purple!10] plot[smooth cycle] coordinates
       {(-3.95,0.10) (-3.10,1.15) (-1.15,2.18) (1.35,2.06)
@@ -834,7 +834,7 @@ permutation-ordered boundary values.
       {extended tube\\complex Lorentz orbit};
 
     \draw[->] (-4.55,0)--(4.55,0) node[right] {\(\operatorname{Re}z\)};
-    \draw[->] (0,-0.65)--(0,2.95) node[above] {\(\operatorname{Im}z\)};
+    \draw[->] (0,-0.65)--(0,2.95) node[above] {tube depth \(\eta\in V_+\)};
     \draw[line width=1.8pt,orange!80!black] (-1.55,0)--(1.55,0);
     \node[labelbox,text=orange!80!black] at (0,-0.42)
       {Jost edge: real spacelike configurations};
@@ -848,7 +848,8 @@ permutation-ordered boundary values.
   \end{tikzpicture}
   }
   \caption{A slice of Wightman tube analyticity.  Spectral support gives the
-  forward tube, covariance enlarges it to the extended tube, and locality
+  mostly-plus forward tube \(z=\xi-\ii\eta\), \(\eta\in V_+\), covariance
+  enlarges it to the extended tube, and locality
   identifies the boundary values reached at real Jost configurations.}
   \label{fig:wightman-tube-analyticity}
 \end{figure}
