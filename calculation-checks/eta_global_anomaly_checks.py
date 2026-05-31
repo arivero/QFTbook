@@ -41,6 +41,60 @@ def check_pfaffian_sign_multiplicativity() -> None:
     assert_equal("triplet and isospin 3/2", pfaffian_sign_from_representations([2, 3]), 1)
 
 
+def block_pfaffian(parameters: list[Fraction]) -> Fraction:
+    product = Fraction(1)
+    for parameter in parameters:
+        product *= parameter
+    return product
+
+
+def sign(value: Fraction) -> int:
+    if value > 0:
+        return 1
+    if value < 0:
+        return -1
+    raise ValueError("sign requested at a zero Pfaffian coordinate")
+
+
+def check_finite_pfaffian_block_model() -> None:
+    samples = [
+        [Fraction(2), Fraction(3), Fraction(5)],
+        [Fraction(-2), Fraction(3), Fraction(5)],
+        [Fraction(-2), Fraction(-3), Fraction(5)],
+        [Fraction(7, 2), Fraction(-5, 3), Fraction(-11, 4), Fraction(13, 5)],
+    ]
+    for parameters in samples:
+        pf = block_pfaffian(parameters)
+        determinant = pf * pf
+        block_determinants = Fraction(1)
+        for parameter in parameters:
+            block_determinants *= parameter * parameter
+        assert_equal(f"finite Pfaffian square parameters={parameters}", determinant, block_determinants)
+
+    initial = [Fraction(2), Fraction(3), Fraction(5), Fraction(7)]
+    for mask in range(1 << len(initial)):
+        final = []
+        crossings = 0
+        for index, parameter in enumerate(initial):
+            if mask & (1 << index):
+                final.append(-parameter)
+                crossings += 1
+            else:
+                final.append(parameter)
+        expected_sign_ratio = -1 if crossings % 2 else 1
+        got_sign_ratio = sign(block_pfaffian(final)) * sign(block_pfaffian(initial))
+        assert_equal(f"finite Pfaffian crossing parity mask={mask}", got_sign_ratio, expected_sign_ratio)
+
+    first = [Fraction(2), Fraction(-3), Fraction(5)]
+    second = [Fraction(-7), Fraction(11)]
+    direct_sum = first + second
+    assert_equal(
+        "finite Pfaffian tensor/direct-sum multiplicativity",
+        block_pfaffian(direct_sum),
+        block_pfaffian(first) * block_pfaffian(second),
+    )
+
+
 def check_su2_cubic_weight_sum_vanishes() -> None:
     for n in range(0, 16):
         doubled_weights = list(range(-n, n + 1, 2))
@@ -226,6 +280,7 @@ def main() -> None:
     check_su2_index_table()
     check_witten_parity_criterion()
     check_pfaffian_sign_multiplicativity()
+    check_finite_pfaffian_block_model()
     check_su2_cubic_weight_sum_vanishes()
     check_orientation_reversal_eta_bookkeeping()
     check_aps_cylinder_congruence()

@@ -75,8 +75,9 @@ Current checks:
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,
   Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
-  multiplicativity, vanishing of the ordinary \(SU(2)\) cubic weight sum, and
-  the Quillen spectral-cut transition cocycle for determinant-line charts.
+  multiplicativity, the finite skew-block Pfaffian orientation model,
+  vanishing of the ordinary \(SU(2)\) cubic weight sum, and the Quillen
+  spectral-cut transition cocycle for determinant-line charts.
 - `free_fock_nuclearity_checks.py`: finite checks for the Volume IV
   nuclearity phase-space benchmark, including the bosonic finite-mode product
   formula, the sup-norm lattice shell count and derivative bound, and

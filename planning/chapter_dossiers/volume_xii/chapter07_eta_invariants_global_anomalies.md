@@ -52,6 +52,11 @@ global anomaly as an explicit mod-two-index example.
   equivariant trivialization of the anomaly line.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
+- Inserts a finite skew-block model of the Pfaffian line:
+  \(\operatorname{pf}(a\,e^1\wedge e^2)=a\), direct sums multiply
+  Pfaffians, and a sign holonomy is the parity of block sign crossings.
+  This makes the real-line orientation mechanism visible before the
+  infinite-dimensional mod-two-index theorem is used.
 - States the mod-two index theorem for the Witten \(SU(2)\) mapping torus and
   derives the trace-delta Dynkin index for spin-\(j\) representations from
   the \(J_3\)-weight sum, then derives the parity criterion
@@ -67,10 +72,11 @@ global anomaly as an explicit mod-two-index example.
 - `calculation-checks/eta_global_anomaly_checks.py` checks the APS
   orientation bookkeeping, the first \(SU(2)\) trace-delta Dynkin indices,
   Witten parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
-  cancellation, cylinder congruence arithmetic, action-groupoid anomaly
-  cocycle/coboundary identities, based-loop holonomy invariance, the
-  stabilizer-character obstruction to descent, and the Quillen spectral-cut
-  transition cocycle for determinant-line charts.
+  cancellation, the finite skew-block Pfaffian orientation model, cylinder
+  congruence arithmetic, action-groupoid anomaly cocycle/coboundary
+  identities, based-loop holonomy invariance, the stabilizer-character
+  obstruction to descent, and the Quillen spectral-cut transition cocycle for
+  determinant-line charts.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -114,3 +120,7 @@ global anomaly as an explicit mod-two-index example.
   construction with low-mode spectral-cut charts, finite transition
   determinants, and the determinant cocycle under refinement of cuts; extended
   the eta/global-anomaly calculation check accordingly.
+- 2026-05-31 finite Pfaffian orientation pass: added a finite real skew-block
+  model explaining Pfaffian sign holonomy as orientation parity and extended
+  `eta_global_anomaly_checks.py` to verify Pfaffian-square,
+  crossing-parity, and direct-sum multiplicativity identities.
