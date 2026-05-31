@@ -126,7 +126,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 | [#561](https://github.com/xiyin137/QFT/issues/561) | Per-chapter calc-check companions: 153 scripts, ≈85%+ coverage; close remaining gaps |
 | [#562](https://github.com/xiyin137/QFT/issues/562) | Assertion-passing-as-derivation pattern — continued reduction by Vol VI ch04 Ising spin/twist separated Euclidean spectral-series proof |
 | [#564](https://github.com/xiyin137/QFT/issues/564) | Promised examples / computations never delivered — partial: Vol VI ch04 now carries the infinite Ising spin/twist form-factor families through separated Euclidean spectral convergence with paired calc-checks |
-| [#701](https://github.com/xiyin137/QFT/issues/701) | Comprehensive audit meta. Addressed: A3 source-vs-print volume confusion now has a frontmatter source assembly map. Remaining: formal bibliography/citation system, index/glossary/nomenclature, Vol II ch19 monolith split, Vol XI ch09 structural balance, and any new findings from continued full audit |
+| [#701](https://github.com/xiyin137/QFT/issues/701) | Comprehensive audit meta. Addressed: A3 source-vs-print volume confusion now has a frontmatter source assembly map; C3 Vol XI ch09 structural balance has subsection navigation; A1 has a first reader-facing bibliographic guide and citation seed, with the harness updated so citations remain source traces rather than proof substitutes. Remaining: complete bibliography/citation expansion at precise theorem-boundary sites, index/glossary/nomenclature, Vol II ch19 monolith split, and any new findings from continued full audit |
 ---
 
 ## Strategic items not captured as individual issues

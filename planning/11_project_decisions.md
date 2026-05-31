@@ -93,19 +93,20 @@ Date: 2026-05-27
 
 Date: 2026-05-23
 
-- The current compiled manuscript has no formal BibTeX or biblatex layer and
-  no reader-facing `\cite{...}` commands.  Named theorems and named mechanisms
-  in the text are attribution labels and theorem-boundary markers, not imported
-  claims.  The exposition must remain self-contained: every nontrivial physics
-  or mathematical claim used in the logical development is either derived,
-  stated with hypotheses, or explicitly bounded as an assumption, conjecture,
-  open problem, controlled approximation, or formal calculation.
+- The compiled manuscript now has a deliberately scoped reader-facing
+  bibliographic guide.  It is a source-trace apparatus for theorem-boundary
+  statements, historical origins, and convention checks; it is not a proof
+  substitute and it is not yet a complete citation system.  Named theorems and
+  named mechanisms in the text remain attribution labels and theorem-boundary
+  markers, not imported claims.  The exposition must remain self-contained:
+  every nontrivial physics or mathematical claim used in the logical
+  development is either derived, stated with hypotheses, or explicitly bounded
+  as an assumption, conjecture, open problem, controlled approximation, or
+  formal calculation.
 - External sources remain essential for rigor checks, convention checks, and
-  source leads, but for the current compiled manuscript they are recorded in
-  `references/`, planning files, and chapter dossiers rather than promoted to a
-  reader-facing bibliography.  A future bibliography apparatus may be added
-  only as a deliberate project-level change with a single style decision and a
-  complete audit of all promoted citations.
+  source leads.  The backmatter bibliography is promoted only when a source is
+  actually used as a theorem-boundary or convention trace; chapter dossiers and
+  `references/` remain the working audit layer for detailed source study.
 - The main chapters carry the logical proof burden.  Every result used in the
   main development must have its definitions, assumptions, and derivation or
   theorem boundary visible at the point of use.  Appendices may contain long

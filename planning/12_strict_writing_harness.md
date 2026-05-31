@@ -29,6 +29,14 @@ attach a `proof` environment unless the proof is actually reproduced.  A
 footnote is acceptable as bibliographic support, but the reader-facing text
 must still say whose theorem or theorem-lineage is being quoted.
 
+The compiled monograph now carries a reader-facing bibliographic guide.  This
+guide is a source-trace apparatus, not a license to weaken the local proof
+standard.  When adding or touching a `quotedtheorem`, include a citation or
+source-lineage pointer at the point of use when the precise source is known,
+and add the corresponding bibliography item if it is not already present.
+Do not add citation-only claims: the local text must still state the primitive
+objects, hypotheses, conclusion, and exact role of the external theorem.
+
 Every `quotedtheorem` is an active proof-debt marker until the surrounding
 text gives a detailed mechanism in the monograph's notation.  The minimum
 acceptable expansion is: identify the primitive objects, state the analytic or
