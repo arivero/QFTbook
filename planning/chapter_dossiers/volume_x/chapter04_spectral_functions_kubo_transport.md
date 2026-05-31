@@ -120,3 +120,11 @@
   and memory-kernel bridge from exact finite-regulator dynamics to
   hydrodynamic closure, with the additional thermodynamic and decay
   hypotheses stated at the point where they enter.
+- 2026-05-31 projected-current closure pass: expanded the theorem boundary
+  behind the Mori-Zwanzig bridge into an explicit hydrodynamic closure datum:
+  thermodynamic convergence of projected kernels, Laplace-transform
+  regularity after singular-sector subtraction, initial-force decoupling,
+  nonsingular charge susceptibility, derivation of the diffusive pole from
+  the closed Laplace-space memory equation, and the Einstein relation
+  \(\Sigma=D\chi\) as a coordinate comparison between current and density
+  response.

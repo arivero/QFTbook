@@ -628,6 +628,145 @@ or scale-dependent low-frequency response.
 Chapter~\ref{ch:thermal-hydrodynamic-fluctuations} develops the
 hydrodynamic version of this infrared phenomenon.
 
+\subsection{The Closure Datum Behind a Diffusion Pole}
+
+The finite-regulator identity
+\eqref{eq:kubo-mori-zwanzig-projection-identity} becomes a transport
+statement only after a limiting datum is supplied.  Let
+\(\Lambda_L\) be a sequence of spatial volumes tending to
+\(\mathbb R^{d-1}\), let \(n_A^L(\mathbf k)\) be the regulated Fourier modes
+of conserved densities at momenta compatible with \(\Lambda_L\), and let
+\(\mathsf D^L_{AB}(t,\mathbf k)\) denote the projected kernel obtained from
+\eqref{eq:kubo-memory-kernel-definition} after the Drude sector and exact
+zero modes have been removed.  A local diffusive closure consists of the
+following data.
+
+\begin{hypothesis}[Projected-current hydrodynamic closure datum]
+\label{hyp:projected-current-hydrodynamic-closure}
+For \(\mathbf k\) in a neighborhood of \(0\) there is a matrix-valued
+locally integrable function \(\mathsf D_{AB}(t,\mathbf k)\) such that:
+\begin{enumerate}[label=(\roman*)]
+  \item for every compact time interval \([0,T]\) and every test matrix
+  \(u^{AB}(t,\mathbf k)\) smooth in \(t\) and \(\mathbf k\),
+  \[
+    \lim_{L\to\infty}
+    \int_0^Tdt\,u^{AB}(t,\mathbf k)
+    \mathsf D^L_{AB}(t,\mathbf k)
+    =
+    \int_0^Tdt\,u^{AB}(t,\mathbf k)
+    \mathsf D_{AB}(t,\mathbf k);
+  \]
+  \item the Laplace transform
+  \begin{equation}
+    \widehat{\mathsf D}_{AB}(z,\mathbf k)
+    =
+    \int_0^\infty e^{-zt}\mathsf D_{AB}(t,\mathbf k)\,dt,
+    \qquad \operatorname{Re}z>0,
+    \label{eq:kubo-projected-memory-laplace}
+  \end{equation}
+  has a finite limit at \((z,\mathbf k)=(0,\mathbf0)\) after the prescribed
+  subtraction of singular conserved pieces, and admits a holomorphic
+  continuation to a neighborhood of this point in the \(z\)-plane with
+  \[
+    \widehat{\mathsf D}(z,\mathbf k)
+    =
+    \widehat{\mathsf D}(0,\mathbf0)+O(|z|+|\mathbf k|)
+  \]
+  in the finite-dimensional charge-coordinate norm;
+  \item the finite-volume initial-force term
+  \(P\mathcal L e^{tQ\mathcal LQ}QX_0\) has no contribution to the
+  hydrodynamic pole under the same thermodynamic and small-\(\mathbf k\)
+  limit, either because the initial perturbation lies in the slow subspace
+  or because the projected force term decays in the limiting topology;
+  \item the susceptibility matrix
+  \(\chi_{AB}(\mathbf k)=
+  (n_A(\mathbf k),n_B(-\mathbf k))_\beta\) has a nonsingular limit
+  \(\chi_{AB}=\chi_{AB}(\mathbf0)\) on the declared hydrodynamic charge
+  sector.
+\end{enumerate}
+\end{hypothesis}
+
+These conditions are the theorem boundary for transport: in a concrete QFT
+one must prove them, or else keep them as hypotheses.  Under
+Hypothesis~\ref{hyp:projected-current-hydrodynamic-closure}, the memory
+equation has a precise small-momentum meaning.  For simplicity suppress
+reactive terms and write the density equation in the form
+\begin{equation}
+  \partial_t n_A(t,\mathbf k)
+  =
+  -k^2\int_0^t ds\,
+  \mathsf D_{AB}(t-s,\mathbf k)n_B(s,\mathbf k)
+  +O(k^3)
+  \label{eq:kubo-projected-density-memory-equation}
+\end{equation}
+in the thermodynamic limit.
+
+In the following displays \(A,B\) are charge-coordinate labels.  The position
+of an index marks row or column placement in a matrix product and is not a
+metric raising operation.  The Laplace transform of the density memory
+equation is
+\begin{equation}
+  \left[
+    z\delta_A{}^B
+    +
+    k^2\widehat{\mathsf D}_{A}{}^{B}(z,\mathbf k)
+  \right]
+  \widetilde n_B(z,\mathbf k)
+  =
+  n_A(0,\mathbf k)
+  +O(k^3),
+  \qquad \operatorname{Re}z>0 .
+  \label{eq:kubo-memory-laplace-density-equation}
+\end{equation}
+If \(D_A{}^B=\widehat{\mathsf D}_{A}{}^{B}(0,\mathbf0)\) is diagonalizable
+on the charge sector and \(\lambda_r\) is one of its eigenvalues, analytic
+perturbation of the finite matrix
+\[
+  z\mathbf 1+k^2\widehat{\mathsf D}(z,\mathbf k)
+\]
+gives a pole of the density response at
+\begin{equation}
+  z_r(\mathbf k)
+  =
+  -k^2\lambda_r+o(k^2).
+  \label{eq:kubo-memory-diffusive-laplace-pole}
+\end{equation}
+With the real-time Fourier convention of
+\eqref{eq:kubo-fourier-convention}, \(z=-\ii\omega\), this is the
+hydrodynamic pole
+\begin{equation}
+  \omega_r(\mathbf k)
+  =
+  -\ii\lambda_r k^2+o(k^2).
+  \label{eq:kubo-memory-diffusive-frequency-pole}
+\end{equation}
+The construction of the diffusion pole therefore has three distinct steps:
+construct the thermodynamic projected-current kernel, prove the
+zero-frequency regularity of its Laplace transform, and then expand the
+resolvent of the closed slow-coordinate equation.
+
+The conductivity matrix entering the Einstein relation is the same datum
+expressed in current variables.  Let \(\Sigma_{AB}\) denote the regular
+zero-frequency limit of the current response after subtracting the Drude
+sector and contact terms.  In a purely diffusive charge channel,
+\begin{equation}
+  \Sigma_{AB}
+  =
+  D_A{}^C\chi_{CB}.
+  \label{eq:kubo-memory-einstein-relation}
+\end{equation}
+This relation follows from the continuity equation: an external static
+source changes the equilibrium charge density by
+\(\delta n_A=\chi_{AB}\delta\mu^B\), while the hydrodynamic constitutive
+response to the slowly varying source is
+\[
+  J_A^i=-D_A{}^B\partial_i\delta n_B
+  =-\Sigma_{AB}\partial_i\delta\mu^B .
+\]
+Equation~\eqref{eq:kubo-memory-einstein-relation} is therefore a statement
+about the same limiting kernel seen in two coordinate systems, not an
+independent postulate.
+
 \section{Conductivity}
 
 For a conserved current \(J^\mu\) coupled to a background gauge field
