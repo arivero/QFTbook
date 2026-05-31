@@ -286,23 +286,27 @@ boundary value of a holomorphic function
 \[
   \mathcal W_\sigma(z_1,\ldots,z_{n-1}),
   \qquad
-  z_j=\xi_j+\ii\eta_j ,
+  z_j=\xi_j-\ii\eta_j ,
 \]
 on the tube
 \begin{equation}
   T_{n-1}
   =
-  \{(\xi_j+\ii\eta_j)_{j=1}^{n-1}\mid
+  \{(\xi_j-\ii\eta_j)_{j=1}^{n-1}\mid
     \eta_j\in V_+^\circ,\ j=1,\ldots,n-1\},
   \label{eq:primitive-forward-tube}
 \end{equation}
-with the same Fourier--Laplace sign convention as
-Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}.  More
-precisely, for every closed subcone \(K\Subset(V_+^\circ)^{n-1}\) the tested
-functions
+with the same damping convention as the Wightman tube construction of
+Chapter~\ref{ch:lorentzian-green-functions}: for \(p,\eta\in\overline V_+\)
+the mostly-plus pairing satisfies \(p\cdot\eta\le0\), so the factor
+\(\exp(p\cdot\eta)\) is damping.  Equivalently, it is
+Proposition~\ref{prop:fourier-laplace-tempered-boundary-values} after the
+identification of its positive dual variable with \(-\eta\) in the
+Lorentzian pairing.  More precisely, for every closed subcone
+\(K\Subset(V_+^\circ)^{n-1}\) the tested functions
 \[
   f\longmapsto
-  \int \mathcal W_\sigma(\xi+\ii\eta)f(\xi)\,\dd^{D(n-1)}\xi
+  \int \mathcal W_\sigma(\xi-\ii\eta)f(\xi)\,\dd^{D(n-1)}\xi
 \]
 are bounded by finitely many Schwartz seminorms of \(f\), with constants
 polynomial in the reciprocal distance of \(\eta\) from the boundary of the
@@ -366,12 +370,12 @@ The holomorphic continuation is now the Fourier--Laplace theorem for
 tempered distributions carried by a closed convex cone, applied to the cone
 \((\overline V_+)^{n-1}\).  The exponential damping in the imaginary
 directions \(\eta_j\in V_+^\circ\) makes the Fourier transform into a
-holomorphic function of \(z_j=\xi_j+\ii\eta_j\).  The finite-order
+holomorphic function of \(z_j=\xi_j-\ii\eta_j\).  The finite-order
 Schwartz-seminorm estimate for \(\widehat w_\sigma\) gives the displayed
 polynomial tube bounds after differentiating the exponential multiplier.  The
 same estimate, with the exponential multiplier tending to \(1\) in the
 Schwartz topology after testing, gives the boundary value
-\(\mathcal W_\sigma(\cdot+\ii\eta)\to w_\sigma\) in \(\mathcal S'\).  This
+\(\mathcal W_\sigma(\cdot-\ii\eta)\to w_\sigma\) in \(\mathcal S'\).  This
 is precisely the construction written abstractly in
 Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}.
 \end{proof}

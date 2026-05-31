@@ -35,6 +35,15 @@ Follow-up sign sweep:
   coordinate as tube depth rather than `Im z in V_+`.
 - The Chapter 1 dossier now records this convention explicitly.
 
+Second follow-up:
+
+- Volume II, Chapter 6's primitive Wightman tube-domain theorem used the same
+  `xi+i eta` notation while citing the Wightman spectral-support mechanism.
+- It now uses `xi-i eta`, explains the damping factor in mostly-plus
+  convention, and records how this relates to the abstract Fourier-Laplace
+  cone proposition.
+- The Volume II Chapter 6 dossier now records the corrected primitive tube.
+
 Status:
 
 - This strengthens issue #695 by making a foundational analytic step and a
