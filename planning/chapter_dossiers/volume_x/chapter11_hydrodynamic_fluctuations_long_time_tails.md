@@ -5,7 +5,11 @@
 This chapter completes the first Volume X pass through hydrodynamics by
 developing the stochastic and Schwinger-Keldysh fluctuation layer after the
 deterministic Ward-identity chapter, the SK hydrodynamic-action chapter, and
-the nonequilibrium/open-system chapter.
+the nonequilibrium/open-system chapter.  It now also connects the finite
+empirical-flow level-\(2.5\) construction of Chapter 10 to the Gaussian
+current cost used in fluctuating hydrodynamics, keeping the finite
+contraction exact and the continuum macroscopic-fluctuation functional
+explicitly conditional on a hydrodynamic scaling limit.
 
 ## Notation Inventory
 
@@ -19,6 +23,11 @@ the nonequilibrium/open-system chapter.
   correlators.
 - `B_r`, `B_a`, `I_diff`: gauge-invariant SK variables and quadratic
   diffusion action inherited from Volume X Chapter 6.
+- `r_+`, `r_-`, `q_+`, `q_-`, `j`, `Phi_cur`: finite bond jump
+  intensities, empirical flows, net empirical current, and contracted
+  finite current cost.
+- `I_cur[n,j]`: Gaussian hydrodynamic current cost obtained from the finite
+  contraction only after local-equilibrium diffusive scaling input.
 - `lambda`, `phi`: hydrodynamic nonlinear current vertex and diagonalized
   fluctuation mode.
 - `I_d(z;D)`: basic two-diffusive-mode loop integral.
@@ -40,35 +49,60 @@ the nonequilibrium/open-system chapter.
    with the symmetrized correlator.
 4. The stochastic diffusion equation is the Hubbard-Stratonovich form of the
    local SK diffusion action with imaginary coefficient \(T\sigma\).
-5. Quadratic hydrodynamic current vertices produce hydrodynamic loops whose
+5. The finite two-direction bond-flow cost contracts exactly to
+   \[
+     \Phi_{\rm cur}(j;r_+,r_-)
+     =
+     j\log((j+\sqrt{j^2+4r_+r_-})/(2r_+))
+     -\sqrt{j^2+4r_+r_-}+r_++r_-.
+   \]
+   Its minimum is at \(j_0=r_+-r_-\), its quadratic curvature is
+   \((r_++r_-)^{-1}\), and its current-reversal asymmetry is
+   \(-j\log(r_+/r_-)\).
+6. Under a stated local-equilibrium diffusive scaling limit, the finite
+   curvature in item 5 becomes the Gaussian current functional
+   \[
+     (4T)^{-1}\int (j+D\nabla n)\sigma^{-1}(j+D\nabla n),
+   \]
+   subject to the continuity equation.  This is a controlled scaling
+   implication, not a microscopic QFT theorem.
+7. Quadratic hydrodynamic current vertices produce hydrodynamic loops whose
    local analytic parts renormalize transport coefficients and whose
    nonanalytic parts are universal within the effective theory.
-6. For one diffusive mode and \(J=\lambda:\phi^2:\), the time-domain tail is
+8. For one diffusive mode and \(J=\lambda:\phi^2:\), the time-domain tail is
    \(2\lambda^2(T\chi)^2(8\pi Dt)^{-d/2}\).
-7. The basic loop integral has nonanalytic part
+9. The basic loop integral has nonanalytic part
    \[
      \Gamma(1-d/2)(4\pi)^{-d/2}(2D)^{-d/2}z^{d/2-1},
    \]
    with logarithmic replacement in even spatial dimension.  The
    Schwinger-parameter derivation is recorded as a worked calculation rather
    than a proposition.
-8. In \(d=3\), an explicit cutoff integral separates the analytic
+10. In \(d=3\), an explicit cutoff integral separates the analytic
    \(\Lambda_{\rm hyd}\) term from the universal
    \(-z^{1/2}/(4\pi(2D)^{3/2})\) term.
-9. Stress-noise positivity follows by decomposing symmetric tensors into
+11. Stress-noise positivity follows by decomposing symmetric tensors into
    traceless and trace parts, giving \(4T\eta s_T^2+2T\zeta(\operatorname{tr}s)^2\).
-10. Momentum tails arise from the convective stress
+12. Momentum tails arise from the convective stress
     \(\pi^i\pi^j/(\varepsilon+p)\) and transverse momentum diffusion
     \(\nu=\eta/(\varepsilon+p)\).
-11. A microscopic QFT theorem requires a constructed hydrodynamic scaling
+13. A microscopic QFT theorem requires a constructed hydrodynamic scaling
     limit and controlled thermodynamic, real-time, and low-frequency limits.
 
 ## Calculation Checks
 
 - `calculation-checks/hydrodynamic_long_time_tail_checks.py` verifies the
-  static covariance normalization, classical FDT, Gaussian time-domain tail,
-  loop nonanalytic coefficients, the \(d=3\) cutoff split, and stress-noise
-  tensor positivity.
+  static covariance normalization, classical FDT, finite bond-current
+  contraction and quadratic curvature, Gaussian time-domain tail, loop
+  nonanalytic coefficients, the \(d=3\) cutoff split, and stress-noise tensor
+  positivity.
+
+## Audit Notes
+
+- 2026-05-31: Added finite-cell current-fluctuation bridge.  The exact
+  finite statement is the two-direction bond-flow contraction and its
+  Gallavotti-Cohen asymmetry; the macroscopic current functional is explicitly
+  presented as a consequence of additional hydrodynamic scaling input.
 
 ## Figure Ledger
 

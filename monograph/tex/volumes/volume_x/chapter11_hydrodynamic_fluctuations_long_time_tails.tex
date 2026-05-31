@@ -173,6 +173,171 @@ The same coefficient therefore controls current response, current noise, and
 diffusive relaxation.  This is the local effective-action statement of KMS:
 one chooses the dissipative term and the noise term together.
 
+\section{Finite-Cell Current Fluctuations and the Macroscopic Cost}
+\label{sec:hydro-fluct-finite-current-mft}
+
+The white current noise in
+\eqref{eq:hydro-fluct-current-noise} can be obtained from a finite
+empirical-flow calculation before any continuum stochastic field notation is
+introduced.  This is the finite origin of the Gaussian current cost used in
+macroscopic fluctuation theory.  The continuum functional is a hydrodynamic
+scaling statement; the exact statement at this stage is the contraction of a
+finite jump-flow relative entropy.
+
+Consider one oriented mesoscopic bond.  During a time block, let \(q_+\) and
+\(q_-\) be the empirical rates of jumps across the bond in the positive and
+negative directions.  At fixed local occupation data the corresponding
+reference jump intensities are positive numbers \(r_+\) and \(r_-\).  The
+local contribution to the finite level-\(2.5\) cost of
+Section~\ref{sec:finite-empirical-flow-level-25} is
+\begin{equation}
+  \Phi(q_+,q_-;r_+,r_-)
+  =
+  q_+\log\frac{q_+}{r_+}-q_++r_+
+  +
+  q_-\log\frac{q_-}{r_-}-q_-+r_- ,
+  \label{eq:hydro-fluct-finite-bond-flow-cost}
+\end{equation}
+with \(q_\pm\ge0\).  The net empirical current through the bond is
+\[
+  j=q_+-q_- .
+\]
+For fixed \(j\), strict convexity gives a unique minimizer.  Introducing a
+Lagrange multiplier \(\ell\) for \(q_+-q_-=j\) gives
+\[
+  \log\frac{q_+}{r_+}+\ell=0,
+  \qquad
+  \log\frac{q_-}{r_-}-\ell=0,
+\]
+hence
+\[
+  q_+q_-=r_+r_-,
+  \qquad
+  q_+-q_-=j .
+\]
+Writing
+\[
+  \Delta(j)=\sqrt{j^2+4r_+r_-},
+\]
+the minimizer is
+\begin{equation}
+  q_+^*(j)=\frac{\Delta(j)+j}{2},
+  \qquad
+  q_-^*(j)=\frac{\Delta(j)-j}{2}.
+  \label{eq:hydro-fluct-bond-current-minimizer}
+\end{equation}
+Substitution into \eqref{eq:hydro-fluct-finite-bond-flow-cost} gives the
+exact finite current cost
+\begin{equation}
+  \Phi_{\rm cur}(j;r_+,r_-)
+  =
+  j\log
+  \frac{j+\sqrt{j^2+4r_+r_-}}{2r_+}
+  -
+  \sqrt{j^2+4r_+r_-}
+  +r_++r_- .
+  \label{eq:hydro-fluct-finite-bond-current-cost}
+\end{equation}
+It vanishes at the typical current
+\[
+  j_0=r_+-r_-,
+  \qquad
+  \Delta(j_0)=r_++r_- .
+\]
+The derivative of the contracted cost is the multiplier conjugate to the
+current,
+\[
+  \frac{d\Phi_{\rm cur}}{dj}
+  =
+  \log\frac{q_+^*(j)}{r_+},
+\]
+and therefore
+\[
+  \left.
+  \frac{d^2\Phi_{\rm cur}}{dj^2}
+  \right|_{j=j_0}
+  =
+  \frac{1}{r_++r_-}.
+\]
+The current cost near its minimum is consequently
+\begin{equation}
+  \Phi_{\rm cur}(j;r_+,r_-)
+  =
+  \frac{(j-j_0)^2}{2(r_++r_-)}
+  +O\!\left((j-j_0)^3\right).
+  \label{eq:hydro-fluct-current-cost-quadratic-expansion}
+\end{equation}
+The same exact expression also records the entropy-production asymmetry:
+\begin{equation}
+  \Phi_{\rm cur}(j;r_+,r_-)
+  -
+  \Phi_{\rm cur}(-j;r_+,r_-)
+  =
+  -j\log\frac{r_+}{r_-}.
+  \label{eq:hydro-fluct-bond-current-gc-asymmetry}
+\end{equation}
+Thus the symmetric traffic \(r_++r_-\) fixes the Gaussian current variance,
+while the ratio \(r_+/r_-\) fixes the antisymmetric entropy-production
+part.  No continuum limit has entered this calculation.
+
+To pass from the finite current cost to hydrodynamics, one must add scaling
+input.  Suppose a sequence of finite cell regulators has a local-equilibrium
+diffusive scaling limit in which the conserved density is \(n(t,\mathbf x)\)
+and the empirical current is \(j^i(t,\mathbf x)\).  Suppose moreover that
+the finite typical current and finite traffic converge in the local
+hydrodynamic window to the deterministic current and covariance density.  In
+a local basis where the positive symmetric conductivity matrix is diagonal,
+this componentwise statement is
+\[
+  j^i_{\rm det}(n)
+  =
+  -D^{ij}(n)\partial_jn+O(\partial^2),
+  \qquad
+  r_+^i+r_-^i
+  \longrightarrow
+  2T\,\sigma^{ij}(n)
+\]
+in the normalization of \eqref{eq:hydro-fluct-current-noise}.  Then the
+quadratic Taylor term
+\eqref{eq:hydro-fluct-current-cost-quadratic-expansion} becomes the local
+Gaussian current cost
+\begin{equation}
+  \mathcal I_{\rm cur}[n,j]
+  =
+  \frac{1}{4T}
+  \int dt\,d^dx\,
+  \bigl(j^i+D^{ik}\partial_kn\bigr)
+  (\sigma^{-1})_{ij}
+  \bigl(j^j+D^{j\ell}\partial_\ell n\bigr),
+  \label{eq:hydro-fluct-mft-gaussian-current-cost}
+\end{equation}
+subject to the continuity equation
+\begin{equation}
+  \partial_t n+\partial_i j^i=0 .
+  \label{eq:hydro-fluct-mft-continuity-constraint}
+\end{equation}
+Equation \eqref{eq:hydro-fluct-mft-gaussian-current-cost} is the
+Onsager--Machlup current form of the stochastic diffusion theory
+\eqref{eq:hydro-fluct-langevin-diffusion}.  Integrating over \(j\) with the
+constraint \eqref{eq:hydro-fluct-mft-continuity-constraint}, or equivalently
+introducing a Lagrange multiplier for the constraint, gives the same
+quadratic Schwinger--Keldysh action
+\eqref{eq:hydro-fluct-diffusion-sk-action} after the
+Hubbard--Stratonovich step above.  The non-Gaussian terms in the exact
+finite expression \eqref{eq:hydro-fluct-finite-bond-current-cost} are
+irrelevant in the central-limit hydrodynamic fluctuation regime but are
+essential for far-from-typical current large deviations when the underlying
+finite regulator is retained.
+
+The logical status is therefore sharp.  The finite contraction
+\eqref{eq:hydro-fluct-finite-bond-current-cost} is a direct finite
+consequence
+of the regulated jump-flow rate function.  The macroscopic functional
+\eqref{eq:hydro-fluct-mft-gaussian-current-cost} is obtained from it only
+after one assumes, or proves in a specified model, the local-equilibrium
+hydrodynamic scaling limit, the convergence of traffic to \(2T\sigma\), and
+the Einstein relation between \(D\), \(\sigma\), and \(\chi\).
+
 \section{Hydrodynamic Nonlinearities}
 
 Hydrodynamic variables are local coordinates on the manifold of equilibrium

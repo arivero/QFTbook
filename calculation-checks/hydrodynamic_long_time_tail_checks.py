@@ -39,6 +39,75 @@ def check_diffusion_fdt() -> None:
     assert_close("classical diffusion FDT", sym, (2.0 * temperature / omega) * imag_retarded)
 
 
+def finite_bond_current_cost(current: float, rate_plus: float, rate_minus: float) -> float:
+    delta = math.sqrt(current * current + 4.0 * rate_plus * rate_minus)
+    return current * math.log((current + delta) / (2.0 * rate_plus)) - delta + rate_plus + rate_minus
+
+
+def check_finite_bond_current_contraction() -> None:
+    rate_plus = 2.3
+    rate_minus = 0.7
+    current = 0.4
+    delta = math.sqrt(current * current + 4.0 * rate_plus * rate_minus)
+    q_plus = 0.5 * (delta + current)
+    q_minus = 0.5 * (delta - current)
+
+    assert_close("bond-current minimizer difference", q_plus - q_minus, current)
+    assert_close("bond-current minimizer product", q_plus * q_minus, rate_plus * rate_minus)
+
+    direct_cost = (
+        q_plus * math.log(q_plus / rate_plus)
+        - q_plus
+        + rate_plus
+        + q_minus * math.log(q_minus / rate_minus)
+        - q_minus
+        + rate_minus
+    )
+    closed_cost = finite_bond_current_cost(current, rate_plus, rate_minus)
+    assert_close("finite bond-current contraction", closed_cost, direct_cost)
+
+    typical_current = rate_plus - rate_minus
+    assert_close(
+        "finite bond-current cost minimum",
+        finite_bond_current_cost(typical_current, rate_plus, rate_minus),
+        0.0,
+    )
+
+    entropy_force = math.log(rate_plus / rate_minus)
+    asymmetry = finite_bond_current_cost(current, rate_plus, rate_minus) - finite_bond_current_cost(
+        -current, rate_plus, rate_minus
+    )
+    assert_close("finite bond-current GC asymmetry", asymmetry, -current * entropy_force)
+
+    eps = 1.0e-5
+    second_derivative = (
+        finite_bond_current_cost(typical_current + eps, rate_plus, rate_minus)
+        + finite_bond_current_cost(typical_current - eps, rate_plus, rate_minus)
+        - 2.0 * finite_bond_current_cost(typical_current, rate_plus, rate_minus)
+    ) / eps**2
+    expected_second_derivative = 1.0 / (rate_plus + rate_minus)
+    assert_close(
+        "finite bond-current quadratic curvature",
+        second_derivative,
+        expected_second_derivative,
+        tol=1.0e-5,
+    )
+
+    small_delta = 1.0e-4
+    gaussian_cost = small_delta**2 / (2.0 * (rate_plus + rate_minus))
+    exact_increment = finite_bond_current_cost(
+        typical_current + small_delta,
+        rate_plus,
+        rate_minus,
+    )
+    assert_close(
+        "finite bond-current Gaussian coefficient",
+        exact_increment / gaussian_cost,
+        1.0,
+        tol=1.0e-4,
+    )
+
+
 def check_time_domain_tail() -> None:
     lam = 0.41
     temperature = 1.2
@@ -137,6 +206,7 @@ def check_stress_noise_tensor_positivity() -> None:
 def main() -> None:
     check_diffusion_static_covariance()
     check_diffusion_fdt()
+    check_finite_bond_current_contraction()
     check_time_domain_tail()
     check_frequency_nonanalytic_coefficients()
     check_cutoff_integral_d3_separation()
