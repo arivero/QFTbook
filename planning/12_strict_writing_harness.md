@@ -88,6 +88,32 @@ reference may guide proof infrastructure and convention checks; it must not
 replace the monograph's own definitions, assumptions, and derivations for
 central claims.
 
+## Stringbook And Classic-Reference Reconstruction Rule
+
+Xi's stringbook is an internal source lead and convention comparator, not an
+authority to import.  Every QFT topic covered by, inspired by, or absorbed
+from the stringbook must be developed in this monograph more
+self-containedly than in the stringbook: primitive objects, assumptions,
+regularization or reconstruction status, derivations, convention checks,
+examples, and theorem boundaries must be explicit in the local chapter.
+
+Classic papers and reviews are governed by the same rule.  Even papers that
+introduced a subject, such as standard mirror-symmetry or supersymmetric
+duality papers, often leave regulator choices, zero-mode arguments,
+determinant normalizations, contact terms, compactness, analytic
+continuation, or operator-algebra statements schematic.  Such papers may
+identify a mechanism or a formula to reconstruct; they do not certify the
+monograph's claim.  A chapter using them must either:
+
+- rederive the claim from the chapter's stated data;
+- state the missing analytic or geometric steps as hypotheses or proof
+  obligations;
+- provide calculation-check scripts for convention-sensitive finite algebra;
+- record in the chapter dossier what was deepened, corrected, or left open.
+
+No stringbook appendix, classic paper, or community-standard derivation may
+serve as a hidden proof.
+
 ## No-Skip Source Coverage Rule
 
 The 253a and 253b source notes are a coverage obligation for the core

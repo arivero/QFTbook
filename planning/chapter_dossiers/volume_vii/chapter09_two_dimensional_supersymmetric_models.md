@@ -4,6 +4,15 @@
 
 Volume VII now leaves the four-dimensional gauge-dynamics core and begins the
 lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
+The LG/GLSM and mirror-duality material uses Xi's stringbook Appendix K as an
+internal source lead and convention comparator.  It is rewritten here as an
+intrinsic two-dimensional QFT development, with the charged-chiral
+dualization, one-loop matching, vortex-term proof boundary, and
+cigar/Liouville comparison made more explicit than the stringbook appendix.
+Primary reference sidecars currently used for scrutiny, not authority, are
+`references/susy_glsm_mirror/hori_vafa_mirror_symmetry_hep-th_0002222.txt`
+and
+`references/susy_glsm_mirror/hori_kapustin_cigar_liouville_hep-th_0104202.txt`.
 
 ## Notation Inventory
 
@@ -36,6 +45,13 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
   abelian Coulomb-branch effective twisted superpotential, renormalization
   scale, and total positive charge in the one-loop Coulomb ledger.
+- `Y_i`, `B_i`, `U_i`, `M_i(Sigma)`, `c_i`, `X_i`: charged-chiral dual
+  twisted variables, first-order real superfields, real dual coordinates,
+  charge-linear Coulomb masses, vortex-normalization constants, and
+  exponential torus coordinates in the abelian mirror presentation.
+- `Y_P`, `rho`, `vartheta`, `u`, `chi`, `k`: logarithmic-chiral dual
+  variable, polar coordinate for the charged chiral scalar, angular
+  coordinate, real and periodic parts of `P`, and cigar level parameter.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
 
@@ -88,6 +104,31 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - Records the GLSM charged-chiral dualization ledger and marks
   nonperturbative exponential twisted-superpotential terms as requiring a
   separate vortex-instanton compactness/zero-mode/determinant proof.
+- Derives the first-order charged-chiral dualization with real superfield
+  `B_i`, twisted-linear constraint, Legendre elimination, and the
+  superspace integration-by-parts identity producing the linear
+  `-Q_i^a Sigma_a Y_i` twisted `F`-term.
+- Defines the dual mass linear form `M_i(Sigma)=sum_a Q_i^a Sigma_a` and the
+  protected dual twisted-superpotential datum with exponential
+  `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
+  left schematic in classic mirror-duality papers.
+- Proves that eliminating `Y_i` reproduces the Coulomb one-loop
+  superpotential and that the constants `c_i` shift the finite definition of
+  the FI coordinate.
+- Derives the low-energy `Sigma_a` constraints
+  `sum_i Q_i^a Y_i=-t_a`, producing the logarithmic-torus mirror
+  Landau-Ginzburg presentation of protected twisted-chiral data.
+- Works out the `P^{N-1}` mirror critical equations and matches their `N`
+  simple critical points to the Coulomb vacuum count.
+- Derives the classical cigar quotient metric by solving the auxiliary
+  constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
+  gauge field.
+- Develops the cigar/Liouville mirror chain as a QFT comparison problem:
+  dual variables `Y,Y_P`, the single exponential from the ordinary charged
+  chiral multiplet, absence of a logarithmic-chiral vortex exponential,
+  the `Y+Y_P=0` vector constraint, the resulting `N=2` Liouville
+  superpotential, and the theorem-status boundary for full equality with the
+  cigar coset QFT.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -128,6 +169,12 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   - abelian GLSM Coulomb one-loop charge-exponent, positive-charge
     vacuum-count, hypersurface exponent/anomaly, and quintic exponent-zero
     arithmetic.
+  - charged-chiral mirror-variable elimination matching the Coulomb one-loop
+    superpotential and the finite FI-coordinate shift induced by vortex
+    coefficient normalizations;
+  - the `P^{N-1}` mirror critical-point simplicity ledger;
+  - the cigar quotient metric coefficients after algebraic elimination of
+    the gauge field.
 
 ## Figure Ledger
 
@@ -139,3 +186,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - Advances #603 by expanding Landau-Ginzburg and GLSM content as intrinsic
   two-dimensional `N=(2,2)` QFT and by excluding string-theory mirror or
   compactification interpretations from the proof content.
+- The 2026-05-31 GLSM/mirror pass advances the same issue by incorporating
+  and deepening the stringbook Appendix K charged-chiral mirror and
+  cigar/Liouville material, while recording the regulator-level vortex and
+  full-QFT equivalence proof obligations explicitly.

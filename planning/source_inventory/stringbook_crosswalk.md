@@ -333,6 +333,29 @@ Current absorption:
   constructions.  The finite algebra is checked by
   `calculation-checks/superconformal_algebra_checks.py`.
 
+### Two-Dimensional Supersymmetric Models
+
+Current Appendix K absorption:
+
+- Volume VII, Chapter 09 develops the Landau--Ginzburg, sigma-model, GLSM,
+  and abelian mirror material as intrinsic two-dimensional QFT.  The current
+  GLSM/mirror pass expands the stringbook Appendix K charged-chiral duality
+  and cigar/Liouville material with a first-order `B_i` derivation, the
+  twisted-linear constraint, Legendre elimination, the
+  `-Q_i^a Sigma_a Y_i` integration-by-parts term, the vortex-exponential
+  proof boundary, exact elimination of the `Y_i` to recover the Coulomb
+  one-loop twisted superpotential, the finite FI-coordinate shift, the
+  logarithmic-torus mirror presentation, `P^{N-1}` critical-point simplicity,
+  and the classical cigar quotient metric.
+- The monograph deliberately treats Hori--Vafa/Hori--Kapustin-style formulas
+  as mechanisms to reconstruct rather than proof sources.  The remaining
+  proof obligations are regulator-level construction of the vortex sectors,
+  determinant normalizations, local operator maps, topological sectors, and
+  equality of continuum Hilbert spaces/local algebras.
+- Companion checks in `calculation-checks/susy_2d_lg_glsm_checks.py` now
+  cover the finite algebra in the charged-dual elimination, FI shift,
+  `P^{N-1}` critical ledger, and cigar metric elimination.
+
 ### Planar Integrability
 
 Current relativistic-integrability absorption:

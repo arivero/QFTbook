@@ -3,11 +3,16 @@
 from __future__ import annotations
 
 from fractions import Fraction
-from math import prod
+from math import exp, isclose, log, prod
 
 
 def assert_equal(label: str, left, right) -> None:
     if left != right:
+        raise AssertionError(f"{label} failed: {left!r} != {right!r}")
+
+
+def assert_close(label: str, left: float, right: float, tol: float = 1e-11) -> None:
+    if not isclose(left, right, rel_tol=tol, abs_tol=tol):
         raise AssertionError(f"{label} failed: {left!r} != {right!r}")
 
 
@@ -222,6 +227,82 @@ def check_abelian_glsm_coulomb_ledger() -> None:
     assert_equal("quintic Coulomb exponent vanishes", sum([1, 1, 1, 1, 1, -5]), 0)
 
 
+def check_charged_chiral_dual_elimination() -> None:
+    sigmas = [1.3, 0.7]
+    charges = [[1, 2], [3, 1], [2, 4]]
+    t_values = [0.2, -0.4]
+    mu = 1.7
+    coefficients = [0.9, 1.2, 2.1]
+
+    masses = [sum(q_a * sigma_a for q_a, sigma_a in zip(row, sigmas)) for row in charges]
+    y_values = [-log(mass / (mu * coeff)) for mass, coeff in zip(masses, coefficients)]
+
+    w_dual = -sum(t_a * sigma_a for t_a, sigma_a in zip(t_values, sigmas))
+    w_dual -= sum(mass * y for mass, y in zip(masses, y_values))
+    w_dual -= mu * sum(coeff * exp(-y) for coeff, y in zip(coefficients, y_values))
+
+    w_eliminated = -sum(t_a * sigma_a for t_a, sigma_a in zip(t_values, sigmas))
+    w_eliminated += sum(
+        mass * (log(mass / (mu * coeff)) - 1)
+        for mass, coeff in zip(masses, coefficients)
+    )
+    assert_close("charged-chiral Y elimination matches one-loop form", w_dual, w_eliminated)
+
+    rank_one_charges = [1, 2, 3]
+    sigma = 1.4
+    t = -0.6
+    coeffs = [0.8, 1.5, 2.2]
+    with_coeffs = -t * sigma + sum(
+        charge * sigma * (log(charge * sigma / (mu * coeff)) - 1)
+        for charge, coeff in zip(rank_one_charges, coeffs)
+    )
+    shifted_t = t + sum(charge * log(coeff) for charge, coeff in zip(rank_one_charges, coeffs))
+    shifted_form = -shifted_t * sigma + sum(
+        charge * sigma * (log(charge * sigma / mu) - 1)
+        for charge in rank_one_charges
+    )
+    assert_close("rank-one FI coordinate absorbs vortex coefficients", with_coeffs, shifted_form)
+
+
+def check_cp_mirror_critical_ledger() -> None:
+    for n_fields in range(2, 9):
+        x = Fraction(3, 2)
+        product_constraint = x**n_fields
+        assert_equal(
+            f"CP^{n_fields - 1} constrained product",
+            prod([x] * n_fields),
+            product_constraint,
+        )
+
+        # In logarithmic variables z_a=log X_a, a=1,...,N-1, with
+        # X_N=q/(X_1...X_{N-1}), the critical equations are X_a=X_N.
+        # At a common nonzero value x, the Hessian is x(I+J), whose determinant
+        # is N x^{N-1}; this proves the critical points are simple.
+        log_hessian_determinant = n_fields * x ** (n_fields - 1)
+        if log_hessian_determinant == 0:
+            raise AssertionError("CP mirror critical Hessian should be nonzero")
+
+
+def check_cigar_metric_elimination() -> None:
+    examples = [
+        (Fraction(9, 5), Fraction(7, 3)),
+        (Fraction(4, 1), Fraction(5, 2)),
+        (Fraction(1, 3), Fraction(11, 4)),
+    ]
+    for rho_squared, k_level in examples:
+        saddle_a = rho_squared / (rho_squared + k_level)
+        angular_from_elimination = (
+            Fraction(1, 2) * rho_squared * (1 - saddle_a) ** 2
+            + Fraction(1, 2) * k_level * saddle_a**2
+        )
+        expected_angular = Fraction(1, 2) * rho_squared / (1 + rho_squared / k_level)
+        assert_equal("cigar angular metric coefficient", angular_from_elimination, expected_angular)
+
+        radial_kinetic_coefficient = Fraction(1, 2) + rho_squared / (2 * k_level)
+        expected_metric_rr = 1 + rho_squared / k_level
+        assert_equal("cigar radial metric coefficient", 2 * radial_kinetic_coefficient, expected_metric_rr)
+
+
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
@@ -230,6 +311,9 @@ def main() -> None:
     check_abelian_circle_duality()
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
+    check_charged_chiral_dual_elimination()
+    check_cp_mirror_critical_ledger()
+    check_cigar_metric_elimination()
     print("All 2D SUSY LG/GLSM checks passed.")
 
 

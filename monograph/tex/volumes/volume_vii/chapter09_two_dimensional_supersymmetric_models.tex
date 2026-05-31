@@ -36,7 +36,7 @@ states are kernels of a corresponding linear combination of supercharges.
 A polynomial \(2D\) \(\mathcal N=(2,2)\) Landau--Ginzburg presentation in this
 chapter is specified by:
 \begin{enumerate}
-\item a Euclidean worldsheet \(\Sigma\), initially a smooth oriented
+\item a Euclidean two-manifold \(\Sigma\), initially a smooth oriented
 surface with a chosen spin structure when fermions are kept explicitly;
 \item chiral multiplet coordinates
 \[
@@ -62,7 +62,7 @@ reconstruction; none of these is inferred from the polynomial \(W\) alone.
 \end{definition}
 
 Eliminating the auxiliary fields is a finite-dimensional calculation at each
-worldsheet point.  In the normalization where the auxiliary part of the
+point of \(\Sigma\).  In the normalization where the auxiliary part of the
 Euclidean Lagrangian is
 \[
   g_{i\bar j}F^i\bar F^{\bar j}
@@ -259,7 +259,7 @@ and the protected central-charge test gives
 \[
   c_{\rm LG}=3\cdot5\left(1-\frac25\right)=9.
 \]
-No string-theoretic interpretation is part of this calculation.
+This is an intrinsic Landau--Ginzburg charge and Jacobi-algebra calculation.
 \end{example}
 
 \section{Sigma-Model Datum}
@@ -287,14 +287,15 @@ The large-volume perturbative beta tensor begins with the Ricci form:
 Thus Ricci-flatness is the first condition for a conformal infrared candidate
 in a large-volume chart.  The full QFT claim includes instanton corrections,
 operator renormalization, and a continuum limit; these are additional data,
-not consequences of the local tensor equation alone.
+separate from the local tensor equation.
 
 \section{A And B Twisting Data}
 
 The two cohomological twists of a \(2D\) \(\mathcal N=(2,2)\) theory are
 intrinsic operations on the two-dimensional QFT.  They require nonanomalous
 \(R\)-symmetries and a regulator preserving the selected scalar supercharge.
-No target-space or string-theoretic interpretation is part of the definition.
+The definition uses the two-dimensional rotation symmetry, the selected
+\(R\)-current, and the supersymmetry algebra.
 
 \begin{definition}[Two-dimensional twist convention]
 \label{def:two-dimensional-ab-twist-convention}
@@ -411,9 +412,10 @@ The axial \(R\)-symmetry anomaly coefficient of this abelian presentation is
 \end{equation}
 This coefficient is a finite charge sum: each charged chiral multiplet
 contributes its charge to the axial rotation of the fermion measure.  When
-\(\mathcal A_A=0\), the FI coordinate is not shifted by the axial rotation at
-one loop.  This is a necessary condition for an axial \(R\)-symmetry in an
-infrared superconformal candidate, not a proof of conformality.
+\(\mathcal A_A=0\), the one-loop axial shift of the FI coordinate vanishes.
+This is a necessary condition for an axial \(R\)-symmetry in an infrared
+superconformal candidate.  A conformality claim additionally requires a
+construction of the infrared continuum theory and its stress tensor.
 
 The vector and axial \(R\)-symmetries have different anomaly requirements.
 The A twist is available only when \(F_V\) is a genuine symmetry of the
@@ -555,14 +557,14 @@ in the normalization of the sigma-model action.  Thus holomorphic maps
 mathematical A-model correlation function requires compactifying the
 holomorphic-map moduli space, orienting its virtual determinant line, and
 controlling collisions of marked points.  These are theorem-level inputs,
-not consequences of the twist alone.
+additional to the twist construction.
 
 \section{Abelian Duality And Circle T-Duality}
 \label{sec:two-dimensional-abelian-duality}
 
 Abelian duality is used here only as a statement about two-dimensional QFT.
-It is not a string-theoretic mirror-symmetry argument.  The local calculation
-is a first-order path integral for a compact scalar and, in the
+The local calculation is a first-order path integral for a compact scalar
+and, in the
 \(\mathcal N=(2,2)\) extension, the corresponding Legendre transform between
 chiral and twisted-chiral field variables.  The global QFT statement requires
 the compact path-integral measure, spin structures, contact terms, and
@@ -662,9 +664,9 @@ preserves \(p_L^2+p_R^2\) and flips the sign of \(p_R\):
   \label{eq:compact-scalar-spectrum-invariance}
 \end{equation}
 Thus the finite oscillator spectrum and the zero-mode quadratic form are
-compatible with the first-order path integral.  This check is not by itself
-a proof of equality of all correlation functions; it is the exact arithmetic
-that any such proof must realize.
+compatible with the first-order path integral.  A proof of equality of all
+correlation functions must realize this exact arithmetic inside a specified
+compact path-integral measure and operator-insertion prescription.
 
 \begin{definition}[Local \(\mathcal N=(2,2)\) abelian Legendre duality]
 \label{def:n22-abelian-duality-legendre-setup}
@@ -745,17 +747,434 @@ saturation, determinant-line orientation, and boundary control must be
 supplied before such terms are promoted from semiclassical input to a QFT
 statement.
 
+\section{Charged-Chiral Dual Variables and Abelian Mirror Presentations}
+\label{sec:charged-chiral-dual-mirror-presentations}
+
+The preceding Legendre transform is the local part of the abelian
+GLSM mirror construction.  The full statement contains one additional
+ingredient: a holomorphic exponential term in the twisted superpotential.
+The Gaussian Legendre transform supplies the dual variables and their linear
+couplings to field strengths.  The exponential term is a nonperturbative
+datum, attributed in the semiclassical presentation to finite-action vortex
+sectors, and any regulator-level equality of QFTs must derive it from a
+compactness, zero-mode, determinant-line, and boundary analysis of those
+sectors.  The algebraic consequences of this datum are completely explicit
+and will be used below.
+
+Consider an abelian GLSM with gauge group \(U(1)^s\), twisted chiral field
+strengths \(\Sigma_a\), complexified FI-theta coordinates \(t_a\), and
+chiral multiplets \(\Phi_i\), \(i=1,\ldots,m\), of integer charges
+\[
+  Q_i{}^a\in\mathbb Z,\qquad a=1,\ldots,s .
+\]
+For each charged chiral multiplet introduce a periodic twisted chiral
+variable
+\[
+  Y_i\sim Y_i+2\pi\ii .
+\]
+Repeated abelian gauge indices are summed in this section.
+
+The local first-order functional for one charged chiral variable is the
+superspace analogue of the compact scalar construction.  Let \(B_i\) be a
+real superfield and set
+\begin{equation}
+  U_i=Y_i+\overline Y_i .
+  \label{eq:glsm-mirror-real-dual-coordinate}
+\end{equation}
+The \(D\)-term
+\begin{equation}
+  \int d^2x\,d^4\theta\,
+  \left[
+    e^{B_i+2Q_i{}^aV_a}
+    -
+    \frac12 U_iB_i
+  \right]
+  \label{eq:glsm-charged-chiral-first-order-dterm}
+\end{equation}
+is invariant under
+\[
+  V_a\mapsto V_a+\ii(\Lambda_a-\overline\Lambda_a),
+  \qquad
+  B_i\mapsto
+  B_i-2\ii Q_i{}^a(\Lambda_a-\overline\Lambda_a),
+  \qquad
+  Y_i\mapsto Y_i .
+\]
+Integrating over \(Y_i\) imposes the twisted linear constraint on \(B_i\).
+In components of superspace this is the pair of constraints
+\[
+  \overline D_+D_-B_i=0,\qquad D_+\overline D_-B_i=0 .
+\]
+Locally this says
+\[
+  B_i=\Psi_i+\overline\Psi_i
+\]
+with \(\Psi_i\) a chiral superfield.  Then
+\[
+  e^{B_i+2Q_i{}^aV_a}
+  =
+  \overline\Phi_i
+  \exp(2Q_i{}^aV_a)\Phi_i,
+  \qquad
+  \Phi_i=e^{\Psi_i},
+\]
+which recovers the original charged chiral kinetic term in that field chart.
+
+Eliminating \(B_i\) instead gives the algebraic equation
+\begin{equation}
+  e^{B_i+2Q_i{}^aV_a}=\frac12 U_i ,
+  \qquad
+  B_i=\log\frac{U_i}{2}-2Q_i{}^aV_a .
+  \label{eq:glsm-charged-chiral-b-equation}
+\end{equation}
+Substitution gives a dual \(D\)-term of Legendre form, together with the
+linear \(V_aU_i\) term
+\[
+  Q_i{}^a\int d^2x\,d^4\theta\,V_a(Y_i+\overline Y_i).
+\]
+The superspace integration-by-parts identity in the present convention is
+\begin{equation}
+  \int d^4\theta\,V_a(Y_i+\overline Y_i)
+  =
+  -\int d^2\widetilde\theta\,\Sigma_aY_i
+  +{\rm c.c.},
+  \label{eq:glsm-dual-integration-by-parts}
+\end{equation}
+where \(Y_i\) is twisted chiral and
+\(\Sigma_a=\overline D_+D_-V_a\).  Thus the local dualization produces the
+twisted \(F\)-term
+\[
+  -\int d^2\widetilde\theta\,
+  Q_i{}^a\Sigma_aY_i
+  +{\rm c.c.}
+\]
+before any vortex effect is invoked.  This derivation fixes the charge
+matrix in the dual variables: the integer \(Q_i{}^a\) that couples
+\(\Phi_i\) to \(V_a\) is the same integer multiplying \(\Sigma_aY_i\).
+
+The convention in the rest of this section is chosen so that eliminating the
+\(Y_i\) matches the one-loop Coulomb superpotential
+\eqref{eq:abelian-glsm-one-loop-twisted-superpotential}.  Put
+\begin{equation}
+  M_i(\Sigma)=\sum_{a=1}^s Q_i{}^a\Sigma_a .
+  \label{eq:glsm-mirror-mass-linear-form}
+\end{equation}
+The dual twisted-superpotential ansatz is
+\begin{equation}
+  \widetilde W_{\rm dual}(\Sigma,Y)
+  =
+  -\sum_{a=1}^s t_a\Sigma_a
+  -
+  \sum_{i=1}^m M_i(\Sigma)Y_i
+  -
+  \mu\sum_{i=1}^m c_i e^{-Y_i},
+  \qquad c_i\in\C^\times .
+  \label{eq:glsm-hv-dual-twisted-superpotential}
+\end{equation}
+The constants \(c_i\) depend on the normalization of the dual variables and
+on the vortex determinant convention; rescaling \(e^{-Y_i}\) shifts the
+corresponding logarithmic branch and changes \(t_a\) by a finite affine
+scheme transformation.  The intrinsic data are the charge matrix, the
+periodicity of the \(Y_i\), and the fact that the exponential monomial is
+nonzero with the charge dictated by the dualized chiral field.
+
+The role of the exponential is a protected statement with explicit analytic
+input.
+Because \(Y_i\) is periodic with imaginary period \(2\pi\ii\), holomorphic
+local functions on the asymptotic cylinder are Laurent series in
+\[
+  X_i=e^{-Y_i}.
+\]
+The large positive \(\operatorname{Re}Y_i\) region is the weak-coupling end
+of the dualized chiral variable, so regularity there permits nonnegative
+powers of \(X_i\).  The local dualization above gives the linear term
+\(-M_iY_i\).  The mirror datum asserts that the single-vortex sector supplies
+the leading nonzero monomial \(-\mu c_iX_i\), with the fermion zero modes
+exactly saturating the twisted \(F\)-term measure.  A rigorous proof must
+construct those vortex sectors and prove both nonvanishing of \(c_i\) and
+absence or controlled irrelevance of additional holomorphic terms in the
+protected regime under study.
+
+The \(Y_i\)-critical equation is
+\begin{equation}
+  \partial_{Y_i}\widetilde W_{\rm dual}=0
+  \quad\Longleftrightarrow\quad
+  e^{-Y_i}=\frac{M_i(\Sigma)}{\mu c_i}.
+  \label{eq:glsm-hv-y-critical-equation}
+\end{equation}
+On a branch where \(M_i(\Sigma)\neq0\), substituting
+\eqref{eq:glsm-hv-y-critical-equation} gives
+\begin{equation}
+  \widetilde W_{\rm dual}\big|_{\partial_Y\widetilde W=0}
+  =
+  -\sum_{a=1}^s t_a\Sigma_a
+  +
+  \sum_{i=1}^m
+  M_i(\Sigma)
+  \left(
+    \log\frac{M_i(\Sigma)}{\mu c_i}-1
+  \right).
+  \label{eq:glsm-hv-eliminated-one-loop-superpotential}
+\end{equation}
+For \(s=1\), \(M_i=Q_i\Sigma\), and \(c_i=1\), this is precisely the
+charge-resolved form of
+\eqref{eq:abelian-glsm-one-loop-twisted-superpotential}, with the constants
+\(c_i\) and logarithm branches absorbed into the finite definition of the
+FI coordinate.  Thus the charged-chiral dual variables give a nontrivial
+consistency check: after the exponential terms have been supplied, their
+elimination reproduces the protected Coulomb-branch determinant.
+
+The finite shift of the FI coordinate is explicit.  In the rank-one case,
+\eqref{eq:glsm-hv-eliminated-one-loop-superpotential} is
+\[
+  -t\Sigma
+  +
+  \sum_iQ_i\Sigma
+  \left(
+    \log\frac{Q_i\Sigma}{\mu}-1
+  \right)
+  -
+  \Sigma\sum_iQ_i\log c_i .
+\]
+The last term is affine in \(\Sigma\), hence is the same as replacing
+\[
+  t\longmapsto t+\sum_iQ_i\log c_i .
+\]
+This is why the constants \(c_i\) are convention data for the protected
+Coulomb matching unless one separately fixes a normalization of the vortex
+measure.
+
+There is a complementary low-energy use of the same expression.  In a
+regime where the abelian vector multiplet has no independent low-energy
+propagating mode, \(\Sigma_a\) acts as a twisted chiral Lagrange multiplier.
+The \(\Sigma_a\)-critical equations of
+\eqref{eq:glsm-hv-dual-twisted-superpotential} are
+\begin{equation}
+  \sum_{i=1}^m Q_i{}^aY_i=-t_a,
+  \qquad a=1,\ldots,s .
+  \label{eq:glsm-hv-sigma-constraint}
+\end{equation}
+The dual presentation is then a Landau--Ginzburg model on the logarithmic
+torus with coordinates \(Y_i\), subject to the linear constraints
+\eqref{eq:glsm-hv-sigma-constraint}, and with twisted superpotential
+\[
+  -\mu\sum_i c_i e^{-Y_i}
+\]
+restricted to that subspace.  This is a presentation of protected
+twisted-chiral data.  A full mirror equivalence requires a regulator,
+identification of the local and extended operator algebras, control of the
+singular loci and topological sectors, and convergence of the two continuum
+limits.
+
+\begin{example}[\(\mathbb P^{N-1}\) dual critical points]
+\label{ex:cpn-hv-dual-critical-points}
+Take one \(U(1)\) gauge factor and \(N\) chiral multiplets of charge \(1\).
+The constraint \eqref{eq:glsm-hv-sigma-constraint} is
+\[
+  Y_1+\cdots+Y_N=-t .
+\]
+Set \(X_i=e^{-Y_i}\).  Then
+\[
+  X_1\cdots X_N=e^t .
+\]
+For \(c_i=1\), the constrained twisted superpotential is proportional to
+\[
+  X_1+\cdots+X_N
+\]
+on the algebraic torus with fixed product \(e^t\).  Eliminating
+\[
+  X_N=\frac{e^t}{X_1\cdots X_{N-1}}
+\]
+gives the critical equations
+\[
+  X_a=\frac{e^t}{X_1\cdots X_{N-1}},
+  \qquad a=1,\ldots,N-1.
+\]
+Thus all \(X_i\) are equal and
+\[
+  X_i^N=e^t.
+\]
+For \(e^t\neq0\) there are \(N\) simple critical points, in agreement with
+the Coulomb-branch vacuum count in
+Example~\ref{ex:cpn-glsm-coulomb-vacua}.  The agreement is algebraic; it is
+the protected finite calculation that a full path-integral equivalence must
+reproduce after its regulator, local operators, and topological sectors have
+been specified.
+\end{example}
+
+\section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
+\label{sec:cigar-liouville-mirror-qft-problem}
+
+The same dualization mechanism gives a useful intrinsic two-dimensional
+description of the relation between the \(\mathcal N=2\) cigar coset and
+\(\mathcal N=2\) Liouville theory.  This subsection records the construction
+as a QFT comparison problem.  The names ``cigar'' and ``Liouville'' refer to
+two-dimensional field theories and their semiclassical target descriptions.
+
+Start with a \(U(1)\) vector multiplet \(V\), an ordinary chiral multiplet
+\(\Phi\) of charge \(1\), and a logarithmic chiral multiplet
+\[
+  P\sim P+2\pi\ii
+\]
+whose imaginary part shifts under the gauge symmetry so that
+\[
+  P+\overline P+V
+\]
+is gauge invariant.  With \(k>0\), the bosonic low-derivative part of the
+GLSM contains
+\begin{equation}
+  |(\partial_\mu-\ii A_\mu)\phi|^2
+  +
+  \frac{k}{2}(\partial_\mu\operatorname{Re}p)^2
+  +
+  \frac{k}{2}
+  (\partial_\mu\operatorname{Im}p-A_\mu)^2
+  \label{eq:cigar-glsm-bosonic-kinetic}
+\end{equation}
+together with the auxiliary constraint
+\[
+  |\phi|^2+\frac{k}{2}(p+\overline p)=0
+\]
+in the low-energy quotient.  Write
+\[
+  \rho=\sqrt2\,|\phi|,\qquad \vartheta=\arg\phi,\qquad
+  p=u+\ii\chi .
+\]
+Then
+\[
+  |(\partial_\mu-\ii A_\mu)\phi|^2
+  =
+  \frac12(\partial_\mu\rho)^2
+  +
+  \frac{\rho^2}{2}(\partial_\mu\vartheta-A_\mu)^2 .
+\]
+The auxiliary constraint gives \(u=-\rho^2/(2k)\), hence
+\[
+  \frac{k}{2}(\partial_\mu u)^2
+  =
+  \frac{\rho^2}{2k}(\partial_\mu\rho)^2 .
+\]
+Fix the gauge \(\chi=0\).  The \(A_\mu\)-dependent angular part is
+\[
+  \frac12\rho^2(\partial_\mu\vartheta-A_\mu)^2
+  +
+  \frac{k}{2}A_\mu A^\mu .
+\]
+Its algebraic equation is
+\begin{equation}
+  (\rho^2+k)A_\mu=\rho^2\partial_\mu\vartheta .
+  \label{eq:cigar-glsm-gauge-field-saddle}
+\end{equation}
+Substituting
+\[
+  A_\mu=\frac{\rho^2}{\rho^2+k}\partial_\mu\vartheta
+\]
+gives the angular coefficient
+\[
+  \frac12
+  \frac{k\rho^2}{\rho^2+k}
+  (\partial_\mu\vartheta)^2
+  =
+  \frac12
+  \frac{\rho^2}{1+\rho^2/k}
+  (\partial_\mu\vartheta)^2 .
+\]
+Combining the radial and angular terms, the classical two-real-dimensional
+quotient metric is
+\begin{equation}
+  ds^2
+  =
+  \left(1+\frac{\rho^2}{k}\right)d\rho^2
+  +
+  \frac{\rho^2}{1+\rho^2/k}\,d\vartheta^2 .
+  \label{eq:cigar-glsm-classical-quotient-metric}
+\end{equation}
+This metric is the classical quotient metric.  The conformal cigar coset is
+an infrared fixed-point statement whose definition requires the corresponding
+quantum current algebra or continuum fixed-point construction, rather than
+the low-derivative quotient metric alone.
+
+Dualize both logarithmic directions.  Introduce twisted chiral variables
+\[
+  Y,\qquad Y_P,
+  \qquad
+  Y\sim Y+2\pi\ii,\quad Y_P\sim Y_P+2\pi\ii .
+\]
+The ordinary charged chiral multiplet supplies the exponential term
+\(\mu e^{-Y}\).  The logarithmic chiral multiplet contributes a quadratic
+dual Kahler term rather than a second exponential term.  In the convention
+compatible with \eqref{eq:glsm-hv-dual-twisted-superpotential}, the
+low-energy twisted superpotential has the form
+\begin{equation}
+  \widetilde W_{\rm cig}(\Sigma,Y,Y_P)
+  =
+  -\Sigma(Y+Y_P)
+  -
+  \mu e^{-Y},
+  \label{eq:cigar-liouville-dual-superpotential-before-constraint}
+\end{equation}
+up to affine redefinitions of \(Y_P\) and \(\Sigma\).  The vector multiplet
+imposes
+\begin{equation}
+  Y+Y_P=0 .
+  \label{eq:cigar-liouville-linear-constraint}
+\end{equation}
+Substituting the constraint leaves one twisted chiral variable \(Y\) with
+twisted superpotential
+\begin{equation}
+  \widetilde W_{\rm Liouville}(Y)
+  =
+  -\mu e^{-Y}.
+  \label{eq:n2-liouville-twisted-superpotential}
+\end{equation}
+The dual Kahler potential has the asymptotic large-\(\operatorname{Re}Y\)
+behavior
+\begin{equation}
+  K(Y,\overline Y)
+  =
+  \frac{1}{8\pi k}\,\overline Y Y
+  +
+  O(e^{-\operatorname{Re}Y}),
+  \qquad
+  \operatorname{Re}Y\to+\infty,
+  \label{eq:n2-liouville-asymptotic-kahler}
+\end{equation}
+with the sign convention appropriate to twisted chiral superspace.  This is
+the \(\mathcal N=2\) Liouville presentation: an asymptotic cylinder
+coordinate \(Y\) together with the exponential twisted superpotential
+\eqref{eq:n2-liouville-twisted-superpotential}.
+
+The construction supplies a precise protected-data bridge:
+\[
+  \begin{aligned}
+  &\text{charged chiral dualization}
+  +\text{nonzero vortex exponential}
+  +\text{IR vector constraint}
+  \\
+  &\hspace{3em}\Longrightarrow
+  \mathcal N=2\ \text{Liouville data}.
+  \end{aligned}
+\]
+A theorem identifying this with the cigar coset QFT requires construction of
+both continuum theories, equality of their Hilbert spaces and local algebras,
+matching of the \(\mathcal N=2\) superconformal generators, matching of
+defects and spectral-flow sectors, and control of the strong-coupling region
+where the semiclassical quotient metric
+\eqref{eq:cigar-glsm-classical-quotient-metric} is only a coordinate on the
+asymptotic target geometry.
+
 \section{Abelian GLSM Coulomb-Branch One-Loop Calculation}
 \label{sec:abelian-glsm-coulomb-one-loop-calculation}
 
-The classical Higgs quotient is not the whole GLSM story.  A second protected
-calculation is obtained by moving to a Coulomb-branch region where
+The GLSM has a second protected local calculation beyond the classical Higgs
+quotient.  Move to a Coulomb-branch region where
 \(\sigma\neq0\), so charged chiral multiplets have masses
 \[
   m_i(\sigma)=Q_i\sigma .
 \]
-The calculation below is a Wilsonian twisted \(F\)-term calculation.  It is
-not a nonperturbative construction of the full infrared QFT.
+The calculation below is a Wilsonian twisted \(F\)-term calculation whose
+scope is the protected Coulomb coordinate chart.  The full infrared QFT
+requires a separate continuum construction.
 
 \begin{hypothesis}[Abelian Coulomb one-loop determinant]
 \label{hyp:abelian-glsm-coulomb-one-loop-determinant}
@@ -858,7 +1277,8 @@ the same integer as the axial anomaly coefficient
 the Coulomb equation becomes a condition on \(t\) and the logarithm branch
 rather than an equation with finitely many isolated \(\sigma\)-solutions.
 This is a protected signal of a singular locus in the FI-theta parameter
-space, not a proof of a full infrared phase transition.
+space.  A full infrared phase-transition statement requires control of the
+continuum theory at the singular locus.
 
 \paragraph{Classical chambers for the hypersurface GLSM.}
 Fix integers \(N\geq2\) and \(d\geq2\).  Let the GLSM have chiral fields

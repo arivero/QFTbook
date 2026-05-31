@@ -1225,7 +1225,12 @@ Current checks:
   finite-gauge-group orders, together with the A/B twist spin-shift ledger
   that identifies the scalar supercharges and the abelian circle-duality
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
-  Coulomb one-loop charge-exponent/vacuum-count ledger.
+  Coulomb one-loop charge-exponent/vacuum-count ledger, the charged-chiral
+  mirror-variable elimination matching the Coulomb one-loop superpotential,
+  the finite FI-coordinate shift induced by vortex coefficient
+  normalizations, the \(\mathbb P^{N-1}\) mirror critical-point simplicity
+  ledger, and the classical cigar quotient metric obtained by eliminating
+  the gauge field.
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
   tree-level elimination, the eliminated derivative identity, the
