@@ -1230,7 +1230,10 @@ Current checks:
   the finite FI-coordinate shift induced by vortex coefficient
   normalizations, the \(\mathbb P^{N-1}\) mirror critical-point simplicity
   ledger, and the classical cigar quotient metric obtained by eliminating
-  the gauge field.
+  the gauge field, plus the hypersurface GLSM adjunction sign,
+  Landau--Ginzburg/sigma-model central-charge matching condition, residual
+  finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
+  singular-signal ledger.
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
   tree-level elimination, the eliminated derivative identity, the

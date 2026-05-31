@@ -54,6 +54,10 @@ and
   coordinate, real and periodic parts of `P`, and cigar level parameter.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
+- `H`, `Y_G`, `C_branch`, `T`: hyperplane Chern class on projective space,
+  smooth hypersurface target in the positive chamber, branch-dependent
+  Coulomb constant for the anomaly-free hypersurface charge vector, and the
+  shifted additive FI coordinate.
 
 ## Claim Ledger
 
@@ -149,6 +153,22 @@ and
   charges `(1,...,1,-d)`, including the `r>0` hypersurface quotient, the
   `r<0` Landau-Ginzburg finite-quotient chamber, and the singular status of
   `r=0`.
+- Derives the hypersurface adjunction formula
+  `c1(TY_G)=(N-d)H|_{Y_G}` and `K_{Y_G}=O(d-N)|_{Y_G}`, making the
+  `d=N` Calabi-Yau condition a finite geometric consequence rather than a
+  slogan.
+- Compares the large-volume sigma-model central-charge target
+  `3(N-2)` with the Fermat Landau-Ginzburg protected central charge
+  `3N(1-2/d)`, proving equality precisely for `d=N`.
+- Makes the residual finite gauge theory explicit in the `r<0` chamber:
+  after fixing nonzero `P`, the unbroken group is `mu_d`, it acts by
+  `X_i -> zeta X_i`, the degree-`d` superpotential descends, and the
+  untwisted Jacobi-basis invariant condition is
+  `sum_i a_i = 0 mod d`.
+- Derives the hypersurface Coulomb-coordinate signal
+  `(sigma/mu)^{N-d}(-d)^{-d}_{branch}=exp(t)` and the anomaly-free
+  branch condition `exp(t)=C_branch`, or `T=0` after an additive FI-coordinate
+  shift.
 - Presents the quintic GLSM solely as intrinsic two-dimensional QFT data, not
   as a string compactification.
 - Records the construction problem for GLSM flows to Landau-Ginzburg and
@@ -175,6 +195,9 @@ and
   - the `P^{N-1}` mirror critical-point simplicity ledger;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
+  - hypersurface adjunction signs, LG/sigma-model central-charge matching,
+    residual finite-gauge invariant Jacobi monomial counting, and the
+    Coulomb-coordinate singular-signal ledger.
 
 ## Figure Ledger
 
@@ -190,3 +213,6 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   and deepening the stringbook Appendix K charged-chiral mirror and
   cigar/Liouville material, while recording the regulator-level vortex and
   full-QFT equivalence proof obligations explicitly.
+- The 2026-05-31 hypersurface phase pass further deepens Appendix K's
+  Calabi-Yau/Landau-Ginzburg chamber discussion with adjunction, central
+  charge, finite-gauge, and Coulomb-coordinate derivations.

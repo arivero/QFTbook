@@ -1319,8 +1319,9 @@ has the following chamber description.
   model with polynomial \(G_d(X)\), together with the residual finite
   \(\mu_d\) gauge quotient.
 \item At \(r=0\), the point \(X=P=0\) obeys the \(D\)-term equation and the
-  gauge quotient is singular.  The chamber calculation alone does not define
-  the infrared QFT at the phase boundary.
+  gauge quotient is singular.  A definition of the infrared QFT at the phase
+  boundary requires additional continuum data beyond the chamber
+  calculation.
 \end{enumerate}
 
 The \(F\)-term equations of
@@ -1361,6 +1362,137 @@ point, so the quotient contains a positive-dimensional stabilizer stratum.
 That stabilizer stratum is the singular locus of the classical quotient at
 the phase boundary.
 
+\paragraph{Adjunction, central charge, and the residual finite gauge theory.}
+The smooth degree-\(d\) hypersurface
+\[
+  Y_G\subset\mathbb P^{N-1}
+\]
+has complex dimension \(N-2\).  Let
+\[
+  H=c_1(\mathcal O_{\mathbb P^{N-1}}(1)).
+\]
+The normal bundle of \(Y_G\) in \(\mathbb P^{N-1}\) is
+\[
+  N_{Y_G/\mathbb P^{N-1}}\cong \mathcal O(d)|_{Y_G}.
+\]
+The exact sequence
+\[
+  0\longrightarrow TY_G
+  \longrightarrow T\mathbb P^{N-1}|_{Y_G}
+  \longrightarrow \mathcal O(d)|_{Y_G}
+  \longrightarrow0
+\]
+gives
+\begin{equation}
+  c_1(TY_G)=(N-d)H|_{Y_G},
+  \qquad
+  K_{Y_G}\cong \mathcal O(d-N)|_{Y_G}.
+  \label{eq:hypersurface-adjunction-c1}
+\end{equation}
+Thus the topological Calabi--Yau condition in this hypersurface family is
+\[
+  d=N .
+\]
+In that case the large-volume sigma-model central-charge target is
+\begin{equation}
+  c_{\rm sigma}=3\dim_{\mathbb C}Y_G=3(N-2),
+  \label{eq:hypersurface-sigma-central-charge-target}
+\end{equation}
+provided the infrared fixed point exists and realizes the standard
+\(\mathcal N=(2,2)\) superconformal stress tensor.
+
+On the Landau--Ginzburg side, the Fermat reference polynomial
+\[
+  G_d(X)=X_1^d+\cdots+X_N^d
+\]
+has quasihomogeneous weights \(q_i=1/d\), hence the protected
+Landau--Ginzburg central-charge ledger gives
+\begin{equation}
+  c_{\rm LG}
+  =
+  3\sum_{i=1}^N\left(1-\frac{2}{d}\right)
+  =
+  3N\left(1-\frac{2}{d}\right).
+  \label{eq:hypersurface-lg-central-charge}
+\end{equation}
+The equality
+\[
+  c_{\rm LG}=3(N-2)
+\]
+holds precisely when \(d=N\).  This is a protected numerical consistency
+condition linking the two chambers.  The equality of central charges is one
+piece of data in an infrared comparison; the equivalence of continuum QFTs
+also requires the operator algebra, stress tensor, state space, and extended
+sectors to be constructed and matched.
+
+The finite group in the \(r<0\) chamber is an actual residual gauge group.
+Choose a gauge in which the nonzero field \(P\) is fixed to a positive real
+constant.  A gauge transformation \(\zeta\in U(1)\) preserves this gauge
+choice exactly when
+\[
+  \zeta^{-d}=1.
+\]
+Therefore \(\zeta\in\mu_d\), and the remaining chiral fields transform as
+\[
+  X_i\longmapsto \zeta X_i .
+\]
+Homogeneity gives
+\[
+  G_d(\zeta X)=\zeta^dG_d(X)=G_d(X),
+\]
+so the Landau--Ginzburg superpotential descends to the finite gauge
+quotient.  The finite-gauge QFT contains the invariant untwisted local
+operators together with twisted sectors determined by the finite gauge
+theory.  The invariant part of \(\operatorname{Jac}(G_d)\) is therefore only
+one protected component of the orbifold theory; a full state-space
+comparison must include the sectors created by the \(\mu_d\) defect lines.
+For the Fermat Jacobi basis
+\[
+  X_1^{a_1}\cdots X_N^{a_N},
+  \qquad 0\leq a_i\leq d-2,
+\]
+the untwisted invariant condition is
+\[
+  a_1+\cdots+a_N\equiv0\pmod d .
+\]
+
+\paragraph{Coulomb coordinate for the phase-boundary signal.}
+For the charge vector \((1,\ldots,1,-d)\), the one-loop Coulomb equation
+\eqref{eq:abelian-glsm-coulomb-exponential-critical-equation} becomes
+\begin{equation}
+  \left(\frac{\sigma}{\mu}\right)^N
+  \left(\frac{-d\sigma}{\mu}\right)^{-d}_{\rm branch}
+  =
+  \ee^t .
+  \label{eq:hypersurface-coulomb-charge-vector-equation}
+\end{equation}
+Equivalently,
+\begin{equation}
+  \left(\frac{\sigma}{\mu}\right)^{N-d}
+  (-d)^{-d}_{\rm branch}
+  =
+  \ee^t .
+  \label{eq:hypersurface-coulomb-power-equation}
+\end{equation}
+The subscript records the chosen logarithm branch for the negatively charged
+field.  In the anomaly-free case \(d=N\), the \(\sigma\)-dependence cancels
+and the local Coulomb chart selects the branch-dependent condition
+\begin{equation}
+  \ee^t=C_{\rm branch},
+  \qquad
+  C_{\rm branch}=(-N)^{-N}_{\rm branch}.
+  \label{eq:hypersurface-coulomb-singular-coordinate}
+\end{equation}
+In the additive local FI coordinate
+\[
+  T=t-\log C_{\rm branch},
+\]
+the condition is \(T=0\).  At this value the one-loop large-\(\sigma\)
+twisted superpotential has a critical direction rather than isolated local
+Coulomb vacua.  This is the protected Coulomb-coordinate signal associated
+with the chamber boundary.  The continuum behavior at that coordinate is a
+separate infrared construction problem.
+
 \begin{example}[The quintic GLSM as intrinsic two-dimensional QFT data]
 \label{ex:quintic-glsm-intrinsic-qft}
 Set \(N=d=5\).  The charges are
@@ -1378,9 +1510,9 @@ classical Higgs quotient is the degree-five hypersurface
 For \(r<0\), the residual finite gauge group is \(\mu_5\), and the local
 Landau--Ginzburg polynomial is \(G_5(X_1,\ldots,X_5)\).  These are
 statements about chambers of a two-dimensional supersymmetric gauge theory.
-They do not assert any higher-dimensional target-space construction, and
-they do not by themselves prove equivalence of the corresponding continuum
-infrared QFTs.
+The associated infrared equivalence claim requires a two-dimensional
+continuum construction and a comparison of its protected and unprotected
+operator data.
 \end{example}
 
 \section{Infrared Comparison Problem}

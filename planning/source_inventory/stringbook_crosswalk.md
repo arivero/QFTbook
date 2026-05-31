@@ -347,6 +347,11 @@ Current Appendix K absorption:
   one-loop twisted superpotential, the finite FI-coordinate shift, the
   logarithmic-torus mirror presentation, `P^{N-1}` critical-point simplicity,
   and the classical cigar quotient metric.
+- The hypersurface chamber material from Appendix K is now expanded with
+  the adjunction calculation `c1(TY_G)=(N-d)H|_{Y_G}`, the `d=N`
+  Calabi-Yau condition, the sigma/LG central-charge matching condition, the
+  residual `mu_d` finite-gauge action and untwisted invariant Jacobi-basis
+  condition, and the anomaly-free Coulomb-coordinate singular signal.
 - The monograph deliberately treats Hori--Vafa/Hori--Kapustin-style formulas
   as mechanisms to reconstruct rather than proof sources.  The remaining
   proof obligations are regulator-level construction of the vortex sectors,
@@ -354,7 +359,9 @@ Current Appendix K absorption:
   equality of continuum Hilbert spaces/local algebras.
 - Companion checks in `calculation-checks/susy_2d_lg_glsm_checks.py` now
   cover the finite algebra in the charged-dual elimination, FI shift,
-  `P^{N-1}` critical ledger, and cigar metric elimination.
+  `P^{N-1}` critical ledger, cigar metric elimination, hypersurface
+  adjunction/central-charge matching, residual finite-gauge invariant
+  monomials, and the Coulomb-coordinate signal.
 
 ### Planar Integrability
 

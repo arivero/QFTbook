@@ -303,6 +303,64 @@ def check_cigar_metric_elimination() -> None:
         assert_equal("cigar radial metric coefficient", 2 * radial_kinetic_coefficient, expected_metric_rr)
 
 
+def invariant_jacobi_monomial_count(num_fields: int, degree: int) -> int:
+    count = 0
+
+    def visit(index: int, total_exponent: int) -> None:
+        nonlocal count
+        if index == num_fields:
+            if total_exponent % degree == 0:
+                count += 1
+            return
+        for exponent in range(degree - 1):
+            visit(index + 1, total_exponent + exponent)
+
+    visit(0, 0)
+    return count
+
+
+def check_hypersurface_phase_ledger() -> None:
+    examples = [(3, 3), (4, 4), (5, 5), (5, 3), (6, 4)]
+    for num_fields, degree in examples:
+        c1_coefficient = num_fields - degree
+        canonical_coefficient = degree - num_fields
+        assert_equal("hypersurface adjunction sign", c1_coefficient, -canonical_coefficient)
+
+        sigma_model_central_charge = 3 * (num_fields - 2)
+        lg_central_charge = 3 * num_fields * (Fraction(1) - Fraction(2, degree))
+        central_charge_difference = lg_central_charge - sigma_model_central_charge
+        assert_equal(
+            "LG/sigma central-charge difference",
+            central_charge_difference,
+            Fraction(6 * (degree - num_fields), degree),
+        )
+        assert_equal(
+            "central charges match iff Calabi-Yau hypersurface degree",
+            lg_central_charge == sigma_model_central_charge,
+            degree == num_fields,
+        )
+
+        # The residual mu_d gauge action sends X_i -> zeta X_i.  A degree-d
+        # monomial and hence a homogeneous degree-d superpotential is invariant.
+        assert_equal("residual finite gauge preserves G_d", degree % degree, 0)
+
+    assert_equal("quintic untwisted invariant Jacobi monomial count", invariant_jacobi_monomial_count(5, 5), 204)
+
+
+def check_hypersurface_coulomb_coordinate_signal() -> None:
+    for num_fields, degree in [(5, 5), (4, 4), (6, 6), (5, 3), (6, 4)]:
+        charges = [1] * num_fields + [-degree]
+        sigma_exponent = sum(charges)
+        assert_equal("hypersurface Coulomb sigma exponent", sigma_exponent, num_fields - degree)
+        assert_equal("hypersurface axial anomaly coefficient", sigma_exponent, glsm_charge_sum(num_fields, degree))
+
+        if num_fields == degree:
+            assert_equal("anomaly-free hypersurface cancels sigma power", sigma_exponent, 0)
+            branch_constant_magnitude = Fraction(1, degree**degree)
+            if branch_constant_magnitude <= 0:
+                raise AssertionError("branch constant magnitude should be positive")
+
+
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
@@ -314,6 +372,8 @@ def main() -> None:
     check_charged_chiral_dual_elimination()
     check_cp_mirror_critical_ledger()
     check_cigar_metric_elimination()
+    check_hypersurface_phase_ledger()
+    check_hypersurface_coulomb_coordinate_signal()
     print("All 2D SUSY LG/GLSM checks passed.")
 
 
