@@ -699,6 +699,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Associativity and commutator"
     r"|Component form of the quantum master equation"
     r"|Finite entropy-production theorem"
+    r"|Finite Doi--Peliti generator identity"
     r"|Component form of the Wess--Zumino model"
     r"|Finite circle-Darboux model of BV pushforward"
     r"|Pushforward covariance of the Einstein--Langevin source"

@@ -210,6 +210,12 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   non-Hermitian QFT, identified the projection-state Ward identity
   `H_DP(1,z)=0` as the Markov replacement for unitarity, and stated the
   operational meaning of nonequilibrium scaling-class claims.
+- 2026-05-31 anti-wrapper audit pass: demoted the finite Doi-Peliti
+  generator identity from proposition form to the local algebraic
+  dictionary.  The chapter now separates the coefficient computation from the
+  genuine analytic questions: closed Markov generators, weighted sequence
+  domains, continuum scaling limits, and convergence of coherent-state
+  time-slicing.
 - 2026-05-31 finite tilted-generator pass: added the exact Feynman--Kac
   derivation of tilted generators for finite jump additives, separated the
   finite Perron-Frobenius spectral input from large-deviation proof

@@ -690,26 +690,19 @@ The Doi--Peliti generator is the normally ordered operator
   \label{eq:doi-peliti-generator}
 \end{equation}
 
-\begin{proposition}[Finite Doi--Peliti generator identity]
-\label{prop:finite-doi-peliti-generator-identity}
-For every finitely supported probability vector \(P\), the coefficient of
-\(|m\rangle\) in \(\mathcal L_{\rm DP}|P\rangle\) is the right side of
-\eqref{eq:reaction-network-master-equation}.  Therefore
-\(\partial_t|P_t\rangle=\mathcal L_{\rm DP}|P_t\rangle\) is exactly the
-reaction-network master equation on the algebraic domain.  If
-\(\langle{\bf 1}|n\rangle=1\) for every \(n\), then
-\[
-  \langle{\bf 1}|\mathcal L_{\rm DP}=0 .
-\]
-\end{proposition}
-
-\begin{proof}
-For every multi-index \(\alpha\),
-\[
-  a^\alpha|n\rangle=(n)_\alpha|n-\alpha\rangle.
-\]
+The passage from \eqref{eq:reaction-network-master-equation} to
+\eqref{eq:doi-peliti-generator} is an algebraic dictionary, not a separate
+continuum theorem.  Its coefficient check is the following.  For every
+finitely supported probability vector \(P\), the coefficient of \(|m\rangle\)
+in \(\mathcal L_{\rm DP}|P\rangle\) is the right side of
+\eqref{eq:reaction-network-master-equation}.  Indeed, for every multi-index
+\(\alpha\),
+\begin{equation}
+  a^\alpha|n\rangle=(n)_\alpha|n-\alpha\rangle .
+  \label{eq:doi-peliti-falling-factorial-action}
+\end{equation}
 Hence a single reaction term acts by
-\[
+\begin{equation}
   \kappa_r
   \left[
     (a^\dagger)^{\nu'_r}
@@ -720,15 +713,35 @@ Hence a single reaction term acts by
   =
   \kappa_r(n)_{\nu_r}
   \left(|n+v_r\rangle-|n\rangle\right).
-\]
+  \label{eq:doi-peliti-single-reaction-action}
+\end{equation}
 After multiplying by \(P(n)\) and summing over \(n\), the coefficient of
 \(|m\rangle\) is the gain from \(n=m-v_r\) minus the loss from \(n=m\),
-which is \eqref{eq:reaction-network-master-equation}.  Finally,
-\(\langle{\bf 1}|(a^\dagger)^\alpha=\langle{\bf 1}|\) for every
-\(\alpha\), because both sides assign value \(1\) to every basis vector.
-Thus each bracket in \eqref{eq:doi-peliti-generator} is annihilated by
-\(\langle{\bf 1}|\), giving probability conservation.
-\end{proof}
+which is exactly \eqref{eq:reaction-network-master-equation}.  Therefore
+\(\partial_t|P_t\rangle=\mathcal L_{\rm DP}|P_t\rangle\) is the
+reaction-network master equation on the algebraic occupation domain.
+
+The left vector encoding total probability is
+\[
+  \langle{\bf 1}|n\rangle=1\qquad(n\in\mathbb N^S).
+\]
+For every multi-index \(\alpha\),
+\[
+  \langle{\bf 1}|(a^\dagger)^\alpha=\langle{\bf 1}|,
+\]
+because both sides assign value \(1\) to every basis vector.  Each bracket in
+\eqref{eq:doi-peliti-generator} is consequently annihilated by
+\(\langle{\bf 1}|\), and
+\begin{equation}
+  \langle{\bf 1}|\mathcal L_{\rm DP}=0 .
+  \label{eq:doi-peliti-probability-conservation-left-vector}
+\end{equation}
+The nontrivial analytic questions begin only after this dictionary: whether
+\(\mathcal L_{\rm DP}\) has a closed Markov generator on a chosen weighted
+sequence space, whether a spatial continuum scaling exists, and whether the
+coherent-state time-slicing below converges to a stochastic field theory.
+Those are model-dependent domain and limit statements, not consequences of
+the finite coefficient computation.
 
 The coherent-state form is a controlled time-slicing of the same operator.
 Let
