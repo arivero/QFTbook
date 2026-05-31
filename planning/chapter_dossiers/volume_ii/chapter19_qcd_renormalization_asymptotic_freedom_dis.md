@@ -175,6 +175,11 @@ The chapter must define and derive:
   asymptotic freedom, factorization, mass gap, and confinement hypotheses;
 - the energy-flow detector as a weak limit of stress-tensor flux quadratic
   forms on the physical scattering domain;
+- the asymptotic multiplication-operator model for smeared energy detectors
+  on the outgoing hadronic direct-integral representation, including
+  self-adjointness for real tests, positivity for nonnegative tests,
+  the Hamiltonian domain bound, strongly commuting detector products, and
+  the product-measure origin of coincident-detector contact terms;
 - calorimetric final-state measures, smeared \(k\)-point energy correlators,
   contact terms at coincident detector directions, and the total-energy sum
   rule;
@@ -367,6 +372,15 @@ The chapter must define and derive:
    gauge-invariant states or controlled high-energy factorization data.
 17. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
+17a. On the outgoing hadronic scattering representation, a smeared detector is
+     multiplication by
+     \(m_f(Y)=\sum_{r\in Y}p_r^0f(\widehat{\mathbf p}_r)\).  This gives
+     self-adjointness, positivity, the bound
+     \(|m_f|\leq\|f\|_\infty E_{\rm tot}\), common product domains controlled
+     by powers of the outgoing Hamiltonian, and the precise product-measure
+     meaning of coincident detector directions.  The stress-tensor flux
+     construction must be shown to agree with this multiplication model on
+     scattering states.
 18. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
@@ -572,6 +586,12 @@ The chapter must define and derive:
   consistency derivation, plus-distribution/contact-term convention, moment
   functional constraint, and
   `calculation-checks/energy_correlator_light_ray_ope_checks.py`.
+- 2026-05-31 issue #519 detector-algebra pass: added the outgoing
+  direct-integral multiplication model for smeared energy detectors, including
+  positivity, self-adjointness, Hamiltonian domain bounds, product domains,
+  and the product-measure origin of diagonal contact terms; expanded
+  `calculation-checks/energy_correlator_sum_rule_checks.py` to verify the
+  finite-event detector-product algebra exactly.
 - 2026-05-29 continuing anti-wrapper audit: demoted the eventwise EEC
   sum-rule proposition to detector-observable prose.  The identities remain
   exact and nonperturbative, but their derivation is energy-momentum

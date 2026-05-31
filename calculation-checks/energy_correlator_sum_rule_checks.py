@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Exact finite-event checks for the EEC sum rules.
+"""Exact finite-event checks for energy-correlator detector algebra.
 
 The script verifies the eventwise algebra behind the nonperturbative
-energy-energy-correlator sum rules in the QCD chapter.  It does not model a
-cross section; averaging positive event weights preserves these identities.
+energy-energy-correlator sum rules and the asymptotic multiplication-operator
+model in the QCD chapter.  It does not model a cross section; averaging
+positive event weights preserves these identities.
 """
 
 from __future__ import annotations
@@ -54,6 +55,80 @@ def eec_contact_weight(event: list[Particle]) -> Fraction:
     return sum(z * z for z, _ in event)
 
 
+def energy_detector_value(event: list[Particle], values: list[Fraction]) -> Fraction:
+    if len(event) != len(values):
+        raise ValueError("one detector-test value is required for each particle")
+    return sum(z * f for (z, _), f in zip(event, values))
+
+
+def detector_product_value(
+    event: list[Particle],
+    left_values: list[Fraction],
+    right_values: list[Fraction],
+) -> Fraction:
+    return energy_detector_value(event, left_values) * energy_detector_value(event, right_values)
+
+
+def product_measure_pairing(
+    event: list[Particle],
+    left_values: list[Fraction],
+    right_values: list[Fraction],
+) -> Fraction:
+    if len(event) != len(left_values) or len(event) != len(right_values):
+        raise ValueError("one detector-test value is required for each particle")
+    return sum(
+        z_i * z_j * f_i * g_j
+        for (z_i, _), f_i in zip(event, left_values)
+        for (z_j, _), g_j in zip(event, right_values)
+    )
+
+
+def diagonal_pairing(
+    event: list[Particle],
+    left_values: list[Fraction],
+    right_values: list[Fraction],
+) -> Fraction:
+    if len(event) != len(left_values) or len(event) != len(right_values):
+        raise ValueError("one detector-test value is required for each particle")
+    return sum(z * z * f * g for (z, _), f, g in zip(event, left_values, right_values))
+
+
+def sup_norm(values: list[Fraction]) -> Fraction:
+    return max(abs(value) for value in values)
+
+
+def assert_detector_bound(event: list[Particle], values: list[Fraction], name: str) -> None:
+    total_energy = event_total_energy_fraction(event)
+    value = energy_detector_value(event, values)
+    if abs(value) > sup_norm(values) * total_energy:
+        raise AssertionError(f"{name}: detector bound failed")
+
+
+def check_multiplication_model_for_event(
+    event: list[Particle],
+    left_values: list[Fraction],
+    right_values: list[Fraction],
+    name: str,
+) -> None:
+    assert_equal(
+        f"{name} constant detector",
+        energy_detector_value(event, [Fraction(1)] * len(event)),
+        event_total_energy_fraction(event),
+    )
+    assert_detector_bound(event, left_values, f"{name} left bound")
+    assert_detector_bound(event, right_values, f"{name} right bound")
+    assert_equal(
+        f"{name} product measure",
+        detector_product_value(event, left_values, right_values),
+        product_measure_pairing(event, left_values, right_values),
+    )
+    assert_equal(
+        f"{name} diagonal contact",
+        diagonal_pairing(event, [Fraction(1)] * len(event), [Fraction(1)] * len(event)),
+        eec_contact_weight(event),
+    )
+
+
 def check_two_body_back_to_back_event() -> None:
     event: list[Particle] = [
         (Fraction(1, 2), (Fraction(1), Fraction(0), Fraction(0))),
@@ -64,6 +139,12 @@ def check_two_body_back_to_back_event() -> None:
     assert_equal("two-body EEC zeroth moment", eec_zeroth_moment(event), Fraction(1))
     assert_equal("two-body EEC first moment", eec_first_moment(event), Fraction(0))
     assert_equal("two-body contact weight", eec_contact_weight(event), Fraction(1, 2))
+    check_multiplication_model_for_event(
+        event,
+        [Fraction(2, 3), Fraction(-5, 7)],
+        [Fraction(11, 13), Fraction(3, 5)],
+        "two-body multiplication model",
+    )
 
 
 def check_three_body_orthogonal_rational_event() -> None:
@@ -80,12 +161,18 @@ def check_three_body_orthogonal_rational_event() -> None:
     assert_equal("three-body EEC zeroth moment", eec_zeroth_moment(event), Fraction(1))
     assert_equal("three-body EEC first moment", eec_first_moment(event), Fraction(0))
     assert_equal("three-body contact weight", eec_contact_weight(event), Fraction(25, 72))
+    check_multiplication_model_for_event(
+        event,
+        [Fraction(2, 5), Fraction(-1, 7), Fraction(3, 11)],
+        [Fraction(-5, 13), Fraction(4, 9), Fraction(7, 15)],
+        "three-body multiplication model",
+    )
 
 
 def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
-    print("All finite-event EEC sum-rule checks passed.")
+    print("All finite-event energy-correlator detector-algebra checks passed.")
 
 
 if __name__ == "__main__":

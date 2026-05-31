@@ -7419,8 +7419,86 @@ normalization conventions of scattering theory,
   \label{eq:energy-flow-on-hadron-state}
 \end{equation}
 Equation~\eqref{eq:energy-flow-on-hadron-state} is the spectral action of the
-detector limit on physical hadronic asymptotic states.  The corresponding
-classical calorimetric measure of the final state \(X\) is
+detector limit on physical hadronic asymptotic states.
+
+\paragraph{Asymptotic multiplication model.}
+The preceding formula has a precise operator-theoretic meaning once an
+outgoing scattering representation has been chosen.  Let
+\(\mathcal H_{\mathrm{out}}\) be the physical outgoing scattering subspace and
+write it as a direct integral over hadronic scattering configurations,
+\[
+  \mathcal H_{\mathrm{out}}
+  \simeq
+  \int_{\mathcal X_{\mathrm{out}}}^{\oplus}\mathcal K_Y\,\dd\nu(Y).
+\]
+Here \(Y\) specifies the number of stable hadrons, their species labels,
+on-shell momenta, and the discrete or continuous degeneracy labels left after
+the standard Bose--Fermi symmetrizations; \(\mathcal K_Y\) is the
+corresponding finite or countable multiplicity space.  The outgoing
+Hamiltonian is multiplication by
+\[
+  E_{\mathrm{tot}}(Y)=\sum_{r\in Y}p_r^0 .
+\]
+For a bounded Borel function \(f:S^2\to\mathbb C\), define
+\begin{equation}
+  m_f(Y):=\sum_{r\in Y}p_r^0 f(\widehat{\mathbf p}_r),
+  \qquad
+  \mathcal E_{\mathrm{mult}}(f):=M_{m_f},
+  \label{eq:energy-detector-multiplication-symbol}
+\end{equation}
+where \(M_{m_f}\) is the direct-integral multiplication operator with maximal
+domain
+\[
+  \operatorname{Dom} M_{m_f}
+  =
+  \left\{\Psi:
+  \int_{\mathcal X_{\mathrm{out}}}
+  |m_f(Y)|^2\|\Psi(Y)\|_{\mathcal K_Y}^2\,\dd\nu(Y)<\infty
+  \right\}.
+\]
+If \(f\) is real, \(M_{m_f}\) is self-adjoint; if \(f\geq0\), it is positive;
+and
+\begin{equation}
+  |m_f(Y)|\leq \|f\|_\infty E_{\mathrm{tot}}(Y),
+  \qquad
+  \operatorname{Dom} H_{\mathrm{out}}
+  \subset
+  \operatorname{Dom} \mathcal E_{\mathrm{mult}}(f).
+  \label{eq:energy-detector-hamiltonian-bound}
+\end{equation}
+Moreover the family is strongly commuting, because all members are
+multiplication operators on the same direct-integral space.  For bounded
+\(f_1,\ldots,f_k\),
+\begin{equation}
+  \mathcal E_{\mathrm{mult}}(f_1)\cdots
+  \mathcal E_{\mathrm{mult}}(f_k)
+  =
+  M_{\prod_{j=1}^k m_{f_j}},
+  \qquad
+  \operatorname{Dom} H_{\mathrm{out}}^k
+  \subset
+  \operatorname{Dom}
+  \bigl(\mathcal E_{\mathrm{mult}}(f_1)\cdots
+  \mathcal E_{\mathrm{mult}}(f_k)\bigr).
+  \label{eq:energy-detector-product-domain}
+\end{equation}
+Indeed
+\[
+  \left|\prod_{j=1}^k m_{f_j}(Y)\right|
+  \leq
+  \left(\prod_{j=1}^k\|f_j\|_\infty\right)
+  E_{\mathrm{tot}}(Y)^k ,
+\]
+which gives the displayed domain inclusion.  The stress-tensor flux operator
+\(\widehat{\mathcal E}(f)\) of
+Construction~\ref{cons:qcd-energy-flow-detector}, when it exists, is required
+to agree with \(\mathcal E_{\mathrm{mult}}(f)\) after the outgoing wave
+operator identifies finite-energy scattering states with their asymptotic
+configurations.  This agreement is part of the nonperturbative detector
+construction problem; perturbation theory may test its matrix elements after
+the detector operator has been defined.
+
+The corresponding eventwise calorimetric measure of the final state \(X\) is
 \[
   \mu_X
   =
@@ -7429,7 +7507,21 @@ classical calorimetric measure of the final state \(X\) is
   \widehat{\mathcal E}_X(f)=\int_{S^2}f\,\dd\mu_X .
 \]
 The detector observable depends on \(X\) only through the positive measure
-\(\mu_X\).
+\(\mu_X\).  The multiplication model also fixes the meaning of coincident
+detectors.  For a finite configuration \(X\),
+\begin{equation}
+  \prod_{j=1}^k\widehat{\mathcal E}_X(f_j)
+  =
+  \int_{(S^2)^k}
+  f_1(\mathbf n_1)\cdots f_k(\mathbf n_k)\,
+  \dd\mu_X(\mathbf n_1)\cdots \dd\mu_X(\mathbf n_k).
+  \label{eq:energy-detector-product-measure}
+\end{equation}
+Thus the product measure includes the diagonal strata
+\(\mathbf n_i=\mathbf n_j\).  A separated-angle correlator is the restriction
+of the resulting distribution away from these diagonals; deleting the
+diagonal weight defines a different observable and must be declared as an
+additional measurement prescription.
 
 Given a normalized incoming physical state \(\Psi_{\mathrm{in}}\), or a state
 prepared by a local color-singlet current and then evolved to future infinity,

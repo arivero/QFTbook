@@ -326,7 +326,9 @@ Current checks:
   type of detector-response Gram forms.
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
-  coincident-detector contact weight in the QCD detector-observable chapter.
+  coincident-detector contact weight in the QCD detector-observable chapter;
+  it also checks the finite-event multiplication-operator algebra for smeared
+  detector products and diagonal contact contributions.
 - `energy_correlator_collinear_checks.py`: exact rational checks for the
   tree-level small-angle EEC coefficient, including local detector-weight
   conservation, cancellation of real splitting-kernel endpoint poles by the
