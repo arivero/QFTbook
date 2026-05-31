@@ -290,6 +290,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Level-one descendant Gram positivity|"
     r"Single-copy nested Bethe--Yang equations|"
     r"Pole cancellation gives the nested equations|"
+    r"Channel unitarity and crossing|"
     r"Two-dimensional conformal Killing fields|"
     r"Spectral meaning of the horizon functional|"
     r"Conformal Borel map for one negative cut|"

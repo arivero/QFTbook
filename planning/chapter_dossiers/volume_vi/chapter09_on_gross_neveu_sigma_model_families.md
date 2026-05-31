@@ -31,8 +31,8 @@ symmetry.
   defining `sigma_1` and `sigma_3`.
 - Identifies the Zamolodchikov-Faddeev Yang-Baxter component convention and
   the scalar-free rational `O(N)` tensor underlying factorization.
-- Proves channel unitarity and crossing for the exact S-matrix by reducing the
-  checks to the gamma recurrence and elementary rational identities.
+- Checks channel unitarity and crossing for the exact S-matrix by reducing
+  them to the gamma recurrence and elementary rational identities.
 - Defines the `O(N)` sigma-model ultraviolet datum and records the one-loop
   Ricci beta tensor relation.
 - Derives the large-`N` sigma-model gap equation and the leading
@@ -71,6 +71,13 @@ symmetry.
   condition and \(N\)-ality integrality obstruction remain as the weight-space
   input for the TBA source vector, but the text no longer pretends that this
   bookkeeping is a theorem-level result.
+- 2026-05-31 issue #691 continuation: demoted "Channel unitarity and
+  crossing" from proposition/proof form to a normalization-check paragraph.
+  The channel decomposition, gamma-function recurrence, and rational
+  singlet/symmetric/antisymmetric checks remain explicit because they fix the
+  exact \(O(N)\) sigma-model S-matrix conventions, but the argument is a
+  convention-sensitive verification of an already displayed meromorphic
+  tensor rather than an independent theorem.
 
 ## Figure Ledger
 
