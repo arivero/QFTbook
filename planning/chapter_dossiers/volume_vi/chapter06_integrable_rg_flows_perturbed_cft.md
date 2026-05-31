@@ -19,10 +19,19 @@ chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
 - `Y_a`, `L(x)`: plateau \(Y\)-variable and Rogers dilogarithm.
 - `Theta`, `G_Theta`, `C(R)`: stress-tensor trace, connected trace
   two-point distribution, and Zamolodchikov \(C\)-function.
+- `varphi`, `V(varphi)`, `g_l`, `K`, `kappa`: ordinary scalar
+  Landau-Ginzburg field, normal-ordered polynomial potential, polynomial
+  source coordinates, highest degree, and logarithmic covariance coefficient.
 
 ## Claim Ledger
 
 - Defines a regulated CFT perturbation by source-functional data.
+- Adds the ordinary polynomial scalar Landau-Ginzburg interface: defines the
+  normal-ordered polynomial source chart, proves local integrability of
+  logarithmic Wick-product collisions, derives the normal-ordered
+  Schwinger-Dyson equation of motion, and identifies the finite order-field
+  quotient for the even multicritical family while keeping the minimal-model
+  endpoint as an RG construction problem.
 - Derives the finite-size scaling function used to compare UV and IR data.
 - States and proves the Zamolodchikov-normalized trace sum rule from the
   radial \(C\)-function derivative datum.
@@ -39,8 +48,9 @@ chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
 ## Calculation Checks
 
 - `calculation-checks/integrable_rg_flow_checks.py` verifies the minimal-model
-  \(\phi_{1,3}\) arithmetic, source-scaling signs, massless dispersion
-  identities, the \(9/E^4\) trace-sum-rule coefficient, and the
+  \(\phi_{1,3}\) arithmetic, the polynomial scalar LG multicritical ledger,
+  source-scaling signs, massless dispersion identities, the \(9/E^4\)
+  trace-sum-rule coefficient, and the
   central-charge targets for the \(\mathcal M(m,m+1)\to\mathcal M(m-1,m)\)
   flow family.
 

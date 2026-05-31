@@ -128,6 +128,133 @@ integrable model may determine a numerical mass-coupling constant
 The number \(\kappa_{\mathcal O}\) is part of the matching data after the
 coordinates are fixed.
 
+\section{Polynomial Scalar Landau--Ginzburg Interface}
+\label{sec:polynomial-scalar-lg-minimal-interface}
+
+This section records the ordinary two-dimensional scalar
+Landau--Ginzburg route as a renormalized perturbed-QFT interface.  It is a
+useful comparison point for the minimal-model flow material below, but its
+logical status is different from an integrable scattering construction.
+
+Let \(\varphi\) be a real scalar field in two Euclidean dimensions with a
+Gaussian ultraviolet reference measure whose covariance at separated points
+has the logarithmic singularity
+\begin{equation}
+  C(x)=-\kappa\log(\mu |x|)+C_{\rm smooth}(x),
+  \qquad \kappa>0 .
+  \label{eq:scalar-lg-log-covariance}
+\end{equation}
+Wick products \(:\!\varphi^\ell\!:\) are normal ordered with respect to this
+reference covariance and the scale \(\mu\).  A polynomial
+Landau--Ginzburg source chart is
+\begin{equation}
+  V(\varphi)=\sum_{\ell=0}^{K}\frac{g_\ell}{\ell!}:\!\varphi^\ell\!: .
+  \label{eq:scalar-polynomial-lg-potential}
+\end{equation}
+The finite-volume, infrared-regulated perturbation of separated correlation
+functions is represented formally by
+\begin{equation}
+  \left\langle X\right\rangle_V
+  =
+  \frac{
+  \left\langle
+  X\exp\!\left(-\int d^2x\,V(\varphi(x))\right)
+  \right\rangle_0}
+  {\left\langle
+  \exp\!\left(-\int d^2x\,V(\varphi(x))\right)
+  \right\rangle_0},
+  \label{eq:scalar-lg-normal-ordered-perturbation}
+\end{equation}
+where \(X\) is a product of spectator fields supported away from the
+integration points before diagonal extensions are chosen.
+
+The local ultraviolet statement behind this chart is elementary but
+important.  Products of Wick polynomials have only powers of logarithms as
+their short-distance singularities:
+\[
+  :\!\varphi^a(x)\!:\,:\!\varphi^b(y)\!:
+  =
+  \sum_{j=0}^{\min(a,b)}
+  j!\binom{a}{j}\binom{b}{j}C(x-y)^j
+  :\!\varphi^{a+b-2j}(y)\!:
+  +\text{Taylor terms}.
+\]
+Since
+\[
+  \int_0^\varepsilon r\,|\log r|^p\,dr<\infty
+  \qquad (p\in\mathbb Z_{\geq0}),
+\]
+these logarithmic singularities are locally integrable at a single collision.
+Iterating the same estimate in relative coordinates around every partial
+diagonal gives local integrability for every finite order in the expansion of
+\eqref{eq:scalar-lg-normal-ordered-perturbation}.  The remaining choices are
+the finite contact-term extensions on diagonals, the infrared boundary
+condition, and convergence or summability of the perturbation series.
+
+\paragraph{Equation of motion and the finite order-field quotient.}
+The normal-ordered chart gives a precise distributional Schwinger--Dyson
+identity.  Acting on the covariance with \(\partial\bar\partial\) gives
+\[
+  \partial\bar\partial C(x)=-\pi\kappa\,\delta^{(2)}(x)
+\]
+in the convention of \eqref{eq:scalar-lg-log-covariance}.  Gaussian
+integration by parts applied to
+\eqref{eq:scalar-lg-normal-ordered-perturbation} therefore gives, in
+correlators away from spectator insertions,
+\begin{equation}
+  \partial\bar\partial\varphi
+  =
+  \pi\kappa\, V'(\varphi),
+  \label{eq:scalar-lg-normal-ordered-eom}
+\end{equation}
+where
+\[
+  V'(\varphi)
+  =
+  \sum_{\ell=1}^{K}\frac{g_\ell}{(\ell-1)!}:\!\varphi^{\ell-1}\!:
+\]
+in the same normal-ordering scheme.  Contact terms at spectator insertions
+are part of the operator-source extension data in
+Definition~\ref{def:renormalized-perturbed-cft-chart}.
+
+For the even multicritical family
+\begin{equation}
+  V(\varphi)=
+  \sum_{j=1}^{m-1}\frac{g_{2j}}{(2j)!}:\!\varphi^{2j}\!:,
+  \qquad m\geq3,
+  \label{eq:even-polynomial-lg-family}
+\end{equation}
+the highest degree is \(K=2m-2\).  In the idealized scaling chart where the
+critical potential is represented by its top monomial,
+\eqref{eq:scalar-lg-normal-ordered-eom} relates
+\(:\!\varphi^{2m-3}\!:\) to the conformal descendant
+\(\partial\bar\partial\varphi\).  Thus the polynomial order-field sector
+has representatives
+\begin{equation}
+  1,\ \varphi,\ :\!\varphi^2\!:,\ldots,\ :\!\varphi^{2m-4}\!: ,
+  \label{eq:scalar-lg-order-field-basis}
+\end{equation}
+before diagonalizing the scaling fields.  Its dimension is \(2m-3\).
+The even source chart contains \(m-1\) couplings \(g_2,g_4,\ldots,g_{2m-2}\);
+after quotienting by the overall mass scale, there are \(m-2\)
+dimensionless ratios to tune in the \(\mathbb Z_2\)-even family.
+
+The expected continuum endpoint of the \(m\)-th multicritical even scalar
+theory is the unitary minimal model \(\mathcal M(m,m+1)\) with
+\[
+  c_m=1-\frac{6}{m(m+1)}.
+\]
+In this monograph this sentence is an RG-identification problem, not an input
+theorem.  A proof must construct the continuum limit of the scalar
+polynomial theory at the tuned point, identify the stress tensor and local
+operator algebra, and explain how the order-field sector
+\eqref{eq:scalar-lg-order-field-basis} embeds into the full minimal-model
+operator content.  For example, when \(m=3\) the three order-field
+representatives match the Ising fields \(1,\sigma,\epsilon\).  For larger
+\(m\), the full diagonal minimal model contains sectors not exhausted by the
+polynomial order-field quotient; those sectors must be supplied by the
+continuum construction rather than by the finite polynomial algebra alone.
+
 \section{Unitary Minimal Models and \texorpdfstring{\(\phi_{1,3}\)}{phi13}}
 
 The A-series unitary Virasoro minimal model is denoted

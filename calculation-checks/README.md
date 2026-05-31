@@ -1024,7 +1024,10 @@ Current checks:
 - `integrable_rg_flow_checks.py`: exact arithmetic checks for the Volume VI
   perturbed-CFT and integrable-RG-flow chapter, including the
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model
-  central-charge drops, Kac-table identification, source-scaling sign, and
+  central-charge drops, the polynomial scalar Landau--Ginzburg
+  multicritical ledger \(K=2m-2\), equation-of-motion descendant power
+  \(2m-3\), order-field quotient count \(2m-3\), even tuning-ratio count
+  \(m-2\), Kac-table identification, source-scaling sign, and
   right/left massless dispersion identities, plus the
   Zamolodchikov trace-sum-rule coefficient \(9/E^4\) and the
   \(\phi_{1,3}\) minimal-flow central-charge targets.

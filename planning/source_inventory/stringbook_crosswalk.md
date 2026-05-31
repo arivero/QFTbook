@@ -337,6 +337,14 @@ Current absorption:
 
 Current Appendix K absorption:
 
+- Volume VI, Chapter 06 now absorbs the ordinary scalar Landau-Ginzburg part
+  of Appendix K as a perturbed two-dimensional QFT interface: it defines the
+  normal-ordered polynomial source chart, proves the local logarithmic
+  collision integrability used by the perturbative expansion, derives the
+  normal-ordered equation-of-motion relation, and records the finite
+  order-field quotient for the even multicritical family.  The expected
+  \(M(m,m+1)\) minimal-model endpoint is stated as an RG construction
+  problem, not imported as a theorem from the polynomial algebra.
 - Volume VII, Chapter 09 develops the Landau--Ginzburg, sigma-model, GLSM,
   and abelian mirror material as intrinsic two-dimensional QFT.  The current
   GLSM/mirror pass expands the stringbook Appendix K charged-chiral duality

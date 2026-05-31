@@ -59,6 +59,49 @@ def check_minimal_model_c_drops() -> None:
     )
 
 
+def check_polynomial_scalar_lg_multicritical_ledger() -> None:
+    for m in range(3, 20):
+        highest_degree = 2 * m - 2
+        eom_descendant_power = highest_degree - 1
+        order_field_basis_count = eom_descendant_power
+        even_coupling_count = m - 1
+        dimensionless_even_ratios = even_coupling_count - 1
+
+        assert_equal(
+            f"LG highest degree K=2m-2 m={m}",
+            Fraction(highest_degree, 1),
+            Fraction(2 * m - 2, 1),
+        )
+        assert_equal(
+            f"LG EOM descendant power m={m}",
+            Fraction(eom_descendant_power, 1),
+            Fraction(2 * m - 3, 1),
+        )
+        assert_equal(
+            f"LG order-field quotient count m={m}",
+            Fraction(order_field_basis_count, 1),
+            Fraction(2 * m - 3, 1),
+        )
+        assert_equal(
+            f"LG even tuning ratios m={m}",
+            Fraction(dimensionless_even_ratios, 1),
+            Fraction(m - 2, 1),
+        )
+
+        # The proposed multicritical endpoint is the unitary minimal model
+        # M(m,m+1); this check guards only the arithmetic used in the
+        # interface, not the theorem-level RG construction.
+        c_value = minimal_c(m)
+        assert_equal(
+            f"LG minimal-model c formula m={m}",
+            c_value,
+            Fraction(1, 1) - Fraction(6, m * (m + 1)),
+        )
+
+    assert_equal("Ising LG order-field count", Fraction(2 * 3 - 3, 1), Fraction(3, 1))
+    assert_equal("tricritical LG order-field count", Fraction(2 * 4 - 3, 1), Fraction(5, 1))
+
+
 def check_kac_identification_for_phi_13() -> None:
     for m in range(3, 20):
         identified = (m - 1, m - 2)
@@ -156,6 +199,7 @@ def check_phi13_trace_sum_rule_targets() -> None:
 def main() -> None:
     check_phi_13_data()
     check_minimal_model_c_drops()
+    check_polynomial_scalar_lg_multicritical_ledger()
     check_kac_identification_for_phi_13()
     check_source_scaling_linearization()
     check_massless_dispersion_identities()
