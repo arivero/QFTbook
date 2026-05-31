@@ -42,6 +42,9 @@ current QFT scope.
   quotient formula for unitary minimal-model fusion.
 - `F_0,F_epsilon`: Ising spin four-point Virasoro block basis in the identity
   and energy channels.
+- `mathcal L`, `Gamma`: Coulomb-gas rank-one local system of the multivalued
+  screening integrand and a twisted cycle with
+  \(\partial_{\mathcal L}\Gamma=0\).
 - `CB_{g,n}`: space of chiral conformal blocks.
 - `q`: sewing parameter in \(zw=q\).
 - `S,T`: genus-one modular matrices.
@@ -108,6 +111,10 @@ current QFT scope.
   level-two null vector, and proves the Ising spin four-point BPZ/crossing
   calculation fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
+- Makes the Coulomb-gas screening construction more precise by defining the
+  rank-one local system of the multivalued screening integrand, the twisted
+  cycle condition, and the twisted-Stokes proof that integrated screenings
+  commute with the Virasoro modes under the neutrality condition.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - States explicit rationality/sewing hypotheses before invoking modular
@@ -294,3 +301,8 @@ current QFT scope.
   formula, the \(b^2=m/(m+1)\) interlacing mechanism, the all-level positivity
   and exhaustion roles of the quoted theorem, and an exact level-two Kac-root
   calculation check.
+- 2026-05-31 Coulomb-gas screening proof pass: strengthened the screening
+  intertwiner lemma by defining the local system and twisted boundary
+  condition, proving the Virasoro commutator as a twisted exact derivative,
+  and deriving the neutrality condition from the background charge at
+  infinity before invoking meromorphic continuation.

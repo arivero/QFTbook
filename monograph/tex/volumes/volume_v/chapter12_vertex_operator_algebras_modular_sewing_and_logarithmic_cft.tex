@@ -788,8 +788,17 @@ The screening currents are
 Because \(\alpha_+\alpha_-=-2\), \eqref{eq:coulomb-gas-vertex-weight} gives
 \(h(\alpha_+)=h(\alpha_-)=1\).  Given external charges
 \(\beta_i\), insertion points \(z_i\), and nonnegative integers
-\(N_\pm\), a genus-zero Coulomb-gas block datum consists of a twisted cycle
-\(\Gamma\) for the multivalued integrand below and the neutrality condition
+\(N_\pm\), remove from
+\(\mathbb C^{N_++N_-}\) all diagonals \(u_a=u_{a'}\),
+\(v_b=v_{b'}\), \(u_a=v_b\), and all collision hyperplanes with the
+external points \(z_i\).  The multivalued factor in
+\eqref{eq:coulomb-gas-block-integral} determines a rank-one local system
+\(\mathcal L\) on this complement; a twisted cycle \(\Gamma\) means a
+singular chain with coefficients in \(\mathcal L^\vee\) whose twisted
+boundary vanishes.  Endpoint prescriptions in a compactification, when used,
+are part of the choice of this relative twisted homology class.  A
+genus-zero Coulomb-gas block datum consists of such a twisted cycle
+\(\Gamma\) and the neutrality condition
 \begin{equation}
   \sum_i\beta_i+N_+\alpha_+ +N_-\alpha_- =2\alpha_0.
   \label{eq:coulomb-gas-neutrality}
@@ -829,7 +838,10 @@ for a chiral block with external weights \(h(\beta_i)\).
 \end{lemma}
 
 \begin{proof}
-Since \(S_\pm\) have weight \(1\),
+First suppose that \(\Gamma\) is represented by a compact twisted chain in a
+convergence chamber, so that all contour deformations and integrations by
+parts below are ordinary absolutely convergent operations after choosing local
+branches.  Since \(S_\pm\) have weight \(1\),
 \[
   T(z)S_\pm(u)
   \sim
@@ -844,15 +856,50 @@ field \(S_\pm(u)\) is therefore
   =
   \partial_u\!\left(u^{n+1}S_\pm(u)\right).
 \]
-Integrating over \(\Gamma\) gives zero because \(\Gamma\) is closed in the
-ordinary case, and because the twisted-cycle boundary terms cancel with the
-local-system monodromy in the multivalued case.  Thus the screening charges
-are Virasoro intertwiners.  The free scalar correlator without screenings is
-computed by Wick contraction and obeys the Virasoro Ward identity for
-\(T_{\alpha_0}\) provided the total charge is \(2\alpha_0\); inserting
-screening charges preserves the Ward identity and changes the total charge by
-\(N_+\alpha_+ +N_-\alpha_-\).  This is exactly the neutrality condition
-\eqref{eq:coulomb-gas-neutrality}.
+Thus
+\[
+  [L_n,Q_\pm(\Gamma)]
+  =
+  \int_\Gamma
+  d_u\!\left(u^{n+1}S_\pm(u)\right),
+\]
+where the differential is read as the flat covariant derivative on the
+rank-one local system carried by the multivalued integrand.  Twisted Stokes
+gives
+\[
+  \int_\Gamma \nabla_{\mathcal L}\eta
+  =
+  \int_{\partial_{\mathcal L}\Gamma}\eta .
+\]
+The right hand side vanishes because \(\partial_{\mathcal L}\Gamma=0\).  In
+the single-valued special case this is the usual statement that the integral
+of a total derivative around a closed contour is zero; in the multivalued
+case the coefficients of the twisted chain are exactly what cancels the
+monodromy terms on adjacent boundary faces.  For several screenings the same
+argument is applied to each screening coordinate, and the commutator with
+the product of screening integrations is the sum of these twisted exact
+terms.  Hence the integrated screening charges commute with all Virasoro
+modes in the sense of chiral blocks.
+
+It remains to identify the Ward identity obeyed by the unintegrated free
+field correlator.  Wick contraction with
+\eqref{eq:coulomb-gas-stress-tensor} gives the primary terms
+\eqref{eq:coulomb-gas-vertex-weight} at each finite exponential insertion.
+The contour of \(\partial\varphi\) around all finite exponential insertions
+measures the total finite charge
+\(\sum_i\beta_i+N_+\alpha_+ +N_-\alpha_-\).  The improvement term in
+\(T_{\alpha_0}\) is equivalently a background charge \(2\alpha_0\) at
+infinity on the sphere.  Therefore the stress-tensor contour at infinity has
+the vacuum behavior needed for the genus-zero Virasoro Ward identity exactly
+when \eqref{eq:coulomb-gas-neutrality} holds.  The screening integrations
+preserve that identity because their Virasoro commutators are the twisted
+exact terms just shown to integrate to zero.
+
+When the displayed integral is defined by meromorphic continuation, the Ward
+identity is first proved in a nonempty convergence chamber with the same
+twisted homology class.  Both sides are meromorphic functions of the charges
+and insertion positions away from collision and resonance divisors, so the
+identity extends to the continued block on the common domain of definition.
 \end{proof}
 
 \paragraph{One-screening Dotsenko--Fateev beta integral.}
