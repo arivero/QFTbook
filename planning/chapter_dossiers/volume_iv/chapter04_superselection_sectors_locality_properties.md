@@ -66,11 +66,20 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   product formula and lattice shell estimate give
   \(\log Z_B(\beta,L)\le C\beta^{-(D-1)}\), clarifying the mode-counting
   scale behind the local nuclearity map without replacing the split theorem.
+- Explains the operational content of a split inclusion by constructing normal
+  product states for \(\mathcal R(\mathcal O_1)\) and
+  \(\mathcal R(\mathcal O_2)'\) after spatially representing the type-I
+  interpolant as \(\mathcal B(\mathcal K)\otimes 1\).
 - Verifies the right-wedge light-ray modular-inclusion sign in the chapter's
   Bisognano--Wichmann convention: for \(W_R(a)=W_R+a e_+\),
   \(\sigma_t^{W_R}\mathcal R(W_R(a))
    =\mathcal R(W_R(e^{-2\pi t}a))\), so the inward future-lightlike translate
   is left half-sided in the stated definition.
+- Adds a finite-dimensional diagnostic for half-sided modular inclusions: a
+  finite-dimensional injective endomorphism of the subspace \(\mathcal N\) is
+  automatically onto, so half-sided modular inclusion collapses to ordinary
+  modular invariance; the Borchers--Wiesbrock translation semigroup is thereby
+  isolated as an infinite-dimensional standard-subspace phenomenon.
 
 ## Figure Ledger
 
@@ -199,3 +208,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   wedge is explicitly shown to be left half-sided with the chapter's
   \(\Delta^{it}=U(\Lambda_R(-2\pi t))\) convention, and extended the boost
   geometry calculation check to guard this sign.
+- 2026-05-31 finite-dimensional half-sided diagnostic pass: inserted the
+  rank argument showing that half-sided modular invariance is automatically
+  two-sided in finite dimension, isolating the nontrivial
+  Borchers--Wiesbrock content in infinite-dimensional standard-subspace
+  geometry rather than in the displayed commutator.
+- 2026-05-31 split product-state pass: added the explicit spatial
+  construction of normal product states across
+  \(\mathcal R(\mathcal O_1)\) and \(\mathcal R(\mathcal O_2)'\) from a
+  type-I interpolant, sharpening the meaning of split independence before the
+  later nuclearity-to-split theorem boundary.
