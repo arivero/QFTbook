@@ -14,7 +14,7 @@
 - \(SU(N)\) nested Bethe roots attached to \(A_{N-1}\) Dynkin levels.
 - Nested \(SU(N)\) Bethe equations in the rational normalization compatible
   with the \(XXX_{1/2}\) chapter.
-- Proof that the equations are pole-cancellation conditions obtained by
+- Derivation of the equations as pole-cancellation conditions obtained by
   successive auxiliary transfer-matrix diagonalization.
 - Exact \(SU(3)\), \(L=6\), \(M_1=2\), \(M_2=1\) worked configuration.
 - Relativistic matrix Bethe--Yang equation with scalar and matrix scattering
@@ -52,7 +52,19 @@
 
 - `calculation-checks/nested_bethe_ansatz_checks.py` verifies the displayed
   \(SU(3)\) nested-root solution and energy.
+- `calculation-checks/nested_integrability_checks.py` verifies the
+  Cartan-matrix form of the nested equations and the dressed-vacuum
+  pole-factorization identity used in the residue derivation.
 
 ## Figures
 
 - None in this chapter.
+
+## Audit Notes
+
+- 2026-05-31: Demoted the former proposition "Pole cancellation gives the
+  nested equations" to a paragraph-level residue derivation.  The calculation
+  is important because it explains where the nested equations enter the
+  transfer-matrix eigenvalue, but its proof is local algebra inside the
+  dressed-vacuum formula rather than an independent theorem.  The displayed
+  twisted equation and all residue factors were preserved.

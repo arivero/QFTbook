@@ -308,11 +308,10 @@ that the vacuum diagonal eigenvalues \(\phi_a\) are multiplied by rational
 ``dressing'' factors built from the \(Q\)-functions; it is not an additional
 physical vacuum.
 
-\begin{proposition}[Pole cancellation gives the nested equations]
-\label{prop:dressed-vacuum-pole-cancellation}
+\paragraph{Pole-cancellation derivation of the twisted nested equations.}
 Assume the roots are generic and the twist eigenvalue ratios are finite.  The
 meromorphic function \eqref{eq:su-n-dressed-vacuum-eigenvalue} has no pole at
-the would-be pole associated with \(u_j^{(r)}\) if and only if
+the would-be pole associated with \(u_j^{(r)}\) precisely when
 \begin{equation}
   \frac{g_r}{g_{r+1}}
   \frac{\phi_r(u_j^{(r)}-\frac{\ii r}{2})}
@@ -326,9 +325,10 @@ the would-be pole associated with \(u_j^{(r)}\) if and only if
 \end{equation}
 For the untwisted homogeneous chain this reduces to
 \eqref{eq:su-n-nested-bethe-cartan}.
-\end{proposition}
+This is a residue calculation inside the dressed-vacuum formula, not an
+independent theorem: it is the local algebraic step that converts
+polynomiality of the transfer eigenvalue into the nested Bethe equations.
 
-\begin{proof}
 The root \(u_j^{(r)}\) appears as a pole of \(\Lambda(u)\) at the common
 point \(u=u_j^{(r)}-\ii r/2\) in precisely two neighboring summands,
 namely the \(a=r\) and \(a=r+1\) summands.  All other summands are regular
@@ -380,7 +380,6 @@ homogeneous untwisted chain,
   \frac{\phi_r}{\phi_{r+1}}=1\quad(r\ge2),
 \]
 which gives \eqref{eq:su-n-nested-bethe-cartan}.
-\end{proof}
 
 Formula \eqref{eq:su-n-dressed-vacuum-eigenvalue} is often the cleanest way
 to compare the algebraic Bethe ansatz, functional \(TQ/QQ\) systems, and
