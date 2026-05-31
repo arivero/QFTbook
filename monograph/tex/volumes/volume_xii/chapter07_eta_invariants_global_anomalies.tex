@@ -744,6 +744,78 @@ Changing the filling changes the trivialization by the closed-manifold phase
 obtained by gluing the two fillings.  This is the precise geometric meaning
 of anomaly inflow in the eta-invariant model.
 
+\paragraph{Closed phases from bounding manifolds.}
+The closed phase \eqref{eq:dai-freed-closed-phase} is constrained by the APS
+formula whenever the odd-dimensional pair \((Y,E)\) bounds an even-dimensional
+pair \((X,\widetilde E)\) with product structure near \(Y=\partial X\).  In
+the convention of \eqref{eq:aps-index-formula},
+\[
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})
+  =
+  \int_X
+  \bigl[\widehat A(TX)\operatorname{ch}(\widetilde E)\bigr]_{\dim X}
+  -
+  \xi(B_Y).
+\]
+The index is an integer, hence
+\begin{equation}
+  \exp\!\left(2\pi\ii\,\xi(B_Y)\right)
+  =
+  \exp\!\left(
+    2\pi\ii
+    \int_X
+    \bigl[\widehat A(TX)\operatorname{ch}(\widetilde E)\bigr]_{\dim X}
+  \right)
+  \label{eq:dai-freed-closed-phase-bounding-integral}
+\end{equation}
+for bounding data.  If \(X\) and \(X'\) are two such fillings, gluing
+\(X\) to \(-X'\) gives a closed even-dimensional spin manifold.  The closed
+Atiyah--Singer theorem says that the difference of the two integrals in
+\eqref{eq:dai-freed-closed-phase-bounding-integral} is an integer.  Thus the
+phase is independent of the chosen filling, even though neither integral is
+itself a canonical real number modulo ordinary equality.  This is the point
+at which the bulk local index density and the boundary eta invariant are tied
+to the same \(U(1)\)-valued object.
+
+\paragraph{Boundary vector and gluing law.}
+Let \(Y\) now be an odd-dimensional spin manifold with boundary \(M\), and
+let all geometric data be product type near \(M\).  The Dai--Freed
+construction assigns a vector
+\[
+  Z_{\mathrm{DF}}(Y)
+  \in
+  L_M^{-1},
+\]
+where \(L_M\) is the determinant or Pfaffian anomaly line of the boundary
+fermion system.  This vector is a trivialization of the boundary anomaly
+line, not a numerical partition function.  The numerical partition function
+appears only after pairing it with the boundary fermion determinant vector in
+\(L_M\).
+
+If \(Y_0\) and \(Y_1\) have the same boundary \(M\), with the same boundary
+background, the ratio between the two boundary trivializations is the closed
+phase of the glued odd manifold
+\[
+  \overline Y
+  =
+  Y_0\cup_M(-Y_1).
+\]
+In the determinant-line pairing this is the gluing identity
+\begin{equation}
+  \bigl\langle Z_{\mathrm{DF}}(Y_0),Z_{\mathrm{DF}}(-Y_1)\bigr\rangle
+  =
+  Z_{\mathrm{DF}}\bigl(Y_0\cup_M(-Y_1)\bigr),
+  \label{eq:dai-freed-boundary-gluing-law}
+\end{equation}
+with the evident real-line version in the Pfaffian case.  The left side pairs
+the vector in \(L_M^{-1}\) supplied by \(Y_0\) with the dual vector supplied
+by the orientation reversal of \(Y_1\).  The right side is a number because
+the boundary anomaly lines cancel under gluing.  Associativity of gluing is
+therefore not an extra physical postulate: it is the statement that tensoring
+one-dimensional determinant lines and composing their canonical pairings give
+the same number as gluing all odd-dimensional pieces first.  This is the
+finite-line algebra that the eta invariant realizes analytically.
+
 \paragraph{Local descent as the infinitesimal limit of inflow.}
 For a contractible loop of background fields, the Dai--Freed holonomy reduces
 to the exponential of the descent integral determined by the local anomaly

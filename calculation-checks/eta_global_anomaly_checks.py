@@ -166,6 +166,39 @@ def check_quillen_spectral_cut_transition_cocycle() -> None:
                 )
 
 
+def mod_one(value: Fraction) -> Fraction:
+    quotient = value.numerator // value.denominator
+    return value - quotient
+
+
+def check_dai_freed_gluing_phase_algebra() -> None:
+    fillings = [Fraction(1, 7), Fraction(5, 6), Fraction(-2, 5), Fraction(9, 4)]
+    for xi0 in fillings:
+        for xi1 in fillings:
+            for xi2 in fillings:
+                glued_01 = mod_one(xi0 - xi1)
+                glued_12 = mod_one(xi1 - xi2)
+                glued_02 = mod_one(xi0 - xi2)
+                assert_equal(
+                    f"Dai-Freed glued phase associativity {xi0},{xi1},{xi2}",
+                    mod_one(glued_01 + glued_12),
+                    glued_02,
+                )
+
+    bounding_data = [
+        (Fraction(13, 5), 2),
+        (Fraction(-7, 3), -4),
+        (Fraction(19, 12), 1),
+    ]
+    for bulk_integral, aps_index in bounding_data:
+        xi = bulk_integral - aps_index
+        assert_equal(
+            f"bounding integral equals eta phase modulo integers {bulk_integral}",
+            mod_one(xi),
+            mod_one(bulk_integral),
+        )
+
+
 def orbit_action(a: int, g: int, orbit_size: int) -> int:
     return (a + g) % orbit_size
 
@@ -285,6 +318,7 @@ def main() -> None:
     check_orientation_reversal_eta_bookkeeping()
     check_aps_cylinder_congruence()
     check_quillen_spectral_cut_transition_cocycle()
+    check_dai_freed_gluing_phase_algebra()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_stabilizer_holonomy_character_obstruction()
     print("Eta-invariant and SU(2) global-anomaly checks passed.")

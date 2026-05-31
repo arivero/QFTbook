@@ -65,6 +65,11 @@ global anomaly as an explicit mod-two-index example.
   trace-convention arithmetic.
 - Explains Dai--Freed inflow as a boundary-line trivialization and derives the
   descent limit for contractible loops.
+- Expands the Dai--Freed gluing mechanism: for a closed odd manifold that
+  bounds, APS identifies the eta phase with the exponentiated local index
+  integral modulo integers; for an odd manifold with boundary, the
+  Dai--Freed object is a vector in the inverse boundary anomaly line, and
+  pairing two such vectors gives the closed phase of the glued odd manifold.
 - Records the interacting-QFT anomaly-line construction as an open problem.
 
 ## Calculation Ledger
@@ -76,7 +81,8 @@ global anomaly as an explicit mod-two-index example.
   congruence arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
   obstruction to descent, and the Quillen spectral-cut transition cocycle for
-  determinant-line charts.
+  determinant-line charts, and the finite \(U(1)\)-phase algebra behind
+  Dai--Freed gluing.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -124,3 +130,7 @@ global anomaly as an explicit mod-two-index example.
   model explaining Pfaffian sign holonomy as orientation parity and extended
   `eta_global_anomaly_checks.py` to verify Pfaffian-square,
   crossing-parity, and direct-sum multiplicativity identities.
+- 2026-05-31 Dai--Freed gluing pass: expanded the closed bounding-manifold
+  normalization and boundary-vector gluing law, and extended
+  `eta_global_anomaly_checks.py` with finite phase checks for gluing
+  associativity and APS integer ambiguity.
