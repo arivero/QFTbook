@@ -42,6 +42,9 @@ change the monograph.
 These projects supply related material, workflow precedent, and frontier
 interfaces. Imported material must be adapted and audited.
 
+The statmech-specific QFT absorption audit is recorded in
+`planning/source_inventory/statmech_crosswalk.md`.
+
 ### External Reference Shelf
 
 - `references/sound_references/`
