@@ -821,8 +821,10 @@ Current checks:
 - `hmc_pseudofermion_checks.py`: exact finite algebra checks for the Volume
   XI HMC and pseudofermion section, verifying leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized
-  pseudofermion determinant identity, and the rational-action spectral error
-  bound used in the RHMC discussion.
+  pseudofermion determinant identity, the rational-action spectral error
+  bound used in the RHMC discussion, linear-solver action/force residual
+  bounds, the RHMC determinant reweighting log bound, and the finite
+  HMC/RHMC smoke-module regression.
 - `z2_strong_coupling_surface_checks.py`: exact enumeration of small
   cubical plaquette chain complexes over \(\mathbb F_2\), verifying the
   one-cube Wilson-loop polynomial \((t+t^5)/(1+t^6)\), the first

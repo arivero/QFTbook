@@ -344,6 +344,17 @@ tensor-network continuum-control examples, neural optimizer/calibration
 diagnostics beyond local-energy variance, HMC/RHMC production machinery, and
 larger workflow integration.
 
+Fourth partial absorption on 2026-05-31: Volume XI, Chapter 6 now adds the
+first HMC/RHMC production-certificate layer.  The chapter records finite
+integrator, reversibility, solver-residual, spectral-interval,
+rational-approximation, and determinant-reweighting coordinates; derives the
+pseudofermion action/force residual bounds and the RHMC log-reweighting
+bound; and adds `qft_scripts/hmc_rhmc_finite_demo.py` as a public-facing
+finite HMC/RHMC smoke module.  Remaining numerical evidence work is now
+focused on full dynamical-gauge-fermion production workflows, concrete
+tensor-network continuum-control examples, neural optimizer/calibration
+diagnostics beyond local-energy variance, and larger workflow integration.
+
 ### Defects, Elasticity, And Goldstone Effective Theories
 
 Statmech source: Volume II Chapter 16.

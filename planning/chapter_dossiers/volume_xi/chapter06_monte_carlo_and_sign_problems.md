@@ -74,6 +74,10 @@ chapters.
 - `A=D^\dagger D`: positive Hermitian fermion matrix after flavor pairing.
 - `phi`: complex pseudofermion vector.
 - `r_m(A)`: positive rational approximation to \(A^{-\alpha}\) in RHMC.
+- `Delta H`, `Delta_rev`, `rho_lin`: finite HMC Hamiltonian change,
+  reversibility defect, and linear-solver residual diagnostics.
+- `lambda_-`, `W_rat`: spectral lower bound for the positive fermion matrix
+  and RHMC determinant reweighting factor.
 
 ## Claim Ledger
 
@@ -132,6 +136,22 @@ chapters.
   reweighting claim for \(\det A^\alpha\).
 - Proves the pointwise spectral action-error bound
   \(|\phi^\dagger(r_m(A)-A^{-\alpha})\phi|\le\delta\|\phi\|^2\).
+- Defines production HMC/RHMC finite certificates: integrator step data,
+  reversibility defect, Hamiltonian-change logs, linear-solver residuals,
+  spectral interval, rational approximation ledger, and determinant
+  reweighting convention.
+- Derives residual bounds for pseudofermion action and force errors:
+  \(|\phi^\dagger A^{-1}\phi-\phi^\dagger x|\le
+  \lambda_-^{-1}\|\phi\|\,\|r\|\) and the corresponding force bound from
+  \(\|\dot A\|_{\rm op}\).
+- Derives the RHMC determinant reweighting coordinate
+  \(W_{\rm rat}=\det(A)^\alpha\det r_m(A)\) and the finite bound
+  \(|\log W_{\rm rat}|\le N\eta_*\) when
+  \(r_m(\lambda)=\lambda^{-\alpha}e^{\eta(\lambda)}\).
+- Adds `qft_scripts/hmc_rhmc_finite_demo.py`, a finite HMC/RHMC smoke module
+  reporting acceptance, Hamiltonian-change, reversibility, positive-matrix
+  spectral edge, rational pseudofermion action, and solver-residual
+  coordinates.
 - Proves the exact finite-\(N\) autocorrelation variance identity and derives
   the integrated-autocorrelation asymptotic under absolute summability.
 - Defines block means and proves the delete-one-block jackknife identity for
@@ -203,6 +223,10 @@ the exponential decay of average phase with volume.
   diagnostic script.  It reports a windowed integrated autocorrelation
   coordinate, block means, blocked standard errors, delete-one-block
   jackknife errors, and block-bootstrap errors.
+- `qft_scripts/hmc_rhmc_finite_demo.py --smoke`: finite scalar HMC and
+  rational pseudofermion diagnostic.  It reports acceptance, maximum
+  Hamiltonian change, reversibility defect, positive-matrix spectral edge,
+  rational pseudofermion action, and conjugate-gradient residuals.
 - `qft_scripts/static_potential_from_wilson_loops.py --smoke`: also certifies
   the sample-level mode that recomputes static-potential logarithmic ratios
   on deleted or resampled Monte Carlo blocks; its HDF5 mode reads
@@ -238,7 +262,9 @@ the exponential decay of average phase with volume.
   and pseudofermion algebra: one-dimensional leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized
   pseudofermion determinant identity, and the RHMC spectral action-error
-  bound.
+  bound.  It also checks linear-solver action/force residual bounds, the RHMC
+  determinant reweighting log bound, and imports the finite HMC/RHMC smoke
+  module as a companion-script regression.
 - `calculation-checks/monte_carlo_sign_problem_checks.py` verifies the
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
   average-phase relative-variance bound, and the determinant
@@ -279,3 +305,6 @@ the exponential decay of average phase with volume.
 - 2026-05-27 issue #631 pass: added a checked \(SU(3)\) APE-smearing HDF5
   post-processing layer for smeared static-line and glueball-operator
   construction.
+- 2026-05-31 issue #631/#703 pass: added production HMC/RHMC finite
+  certificates, solver-residual and determinant-reweighting bounds, plus a
+  public-facing HMC/RHMC smoke module with calculation-check coverage.

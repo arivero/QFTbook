@@ -1151,6 +1151,103 @@ gap, a chosen rational approximation, and control of the pseudofermion tail
 or an exact reweighting step.  These hypotheses are finite-regulator
 algorithmic data, not consequences of QFT axioms.
 
+\paragraph{Solver, rationalization, and reversibility certificates.}
+A production HMC or RHMC run must record more than the target action and the
+measured observables.  At finite regulator the algorithmic certificate
+contains the integrator step size \(\epsilon\), the number of leapfrog or
+Omelyan steps, the momentum-refresh law, the linear solver, the rational
+approximation interval \([\lambda_-,\lambda_+]\), the solver tolerance, and
+the finite diagnostics
+\[
+  \Delta H(z)=H(Gz)-H(z),\qquad
+  \Delta_{\rm rev}(z)=d_\Gamma(z,R\Phi R\Phi z),
+  \qquad
+  \rho_{\rm lin}=\|b-Ax\| .
+\]
+The exact detailed-balance argument above applies to the exact finite map
+actually used by the Markov chain.  Therefore finite-precision code must make
+its reversibility and solver errors visible as part of the data record before
+the output is interpreted as evidence for the intended lattice measure.
+
+The basic linear-solver bounds are finite spectral estimates.  Let
+\(A=A^\dagger>0\) with \(A\geq\lambda_- I\), let \(y=A^{-1}\phi\), and let
+\(x\) be an approximate solve with residual
+\[
+  r=\phi-Ax .
+\]
+Then
+\[
+  y-x=A^{-1}r,\qquad
+  \|y-x\|\leq \lambda_-^{-1}\|r\|.
+\]
+Consequently the pseudofermion-action coordinate
+\(\phi^\dagger A^{-1}\phi\) obeys
+\begin{equation}
+  \left|\phi^\dagger A^{-1}\phi-\phi^\dagger x\right|
+  \leq
+  \lambda_-^{-1}\|\phi\|\,\|r\|.
+  \label{eq:hmc-linear-solver-action-bound}
+\end{equation}
+If \(\dot A\) is the directional derivative of \(A\) along a configuration
+variation and \(\|\dot A\|_{\rm op}\leq L\), the exact force term
+\(-y^\dagger\dot A\,y\) and the force computed from \(x\) differ by
+\begin{equation}
+  \left|
+    y^\dagger\dot A\,y
+    -
+    x^\dagger\dot A\,x
+  \right|
+  \leq
+  L\left(
+    2\|x\|\lambda_-^{-1}\|r\|
+    +
+    \lambda_-^{-2}\|r\|^2
+  \right).
+  \label{eq:hmc-linear-solver-force-bound}
+\end{equation}
+This is the finite estimate that connects Krylov residual logs to
+Hamiltonian-force accuracy.  A solver tolerance quoted without
+\(\lambda_-\), force-norm, and reversibility diagnostics is only an
+implementation setting.
+
+For RHMC the determinant comparison is also finite.  Suppose
+\[
+  r_m(\lambda)=\lambda^{-\alpha}e^{\eta(\lambda)}
+  \quad\text{for}\quad
+  \lambda\in[\lambda_-,\lambda_+],
+  \qquad |\eta(\lambda)|\leq\eta_* .
+\]
+For a finite matrix \(A\) of size \(N\) with spectrum in this interval,
+the rationalized determinant sampled by
+\eqref{eq:rhmc-rationalized-determinant} differs from the desired
+\(\det A^\alpha\) by the reweighting factor
+\begin{equation}
+  W_{\rm rat}(A)
+  =
+  \det(A)^\alpha\det r_m(A)
+  =
+  \exp\!\left(\sum_{j=1}^N\eta(\lambda_j)\right),
+  \qquad
+  |\log W_{\rm rat}(A)|\leq N\eta_* .
+  \label{eq:rhmc-determinant-reweighting-bound}
+\end{equation}
+Thus an exact rationalized Markov chain, an exact reweighting chain, and an
+unreweighted approximation are three different finite probability measures.
+The simulation record must specify which one is being used.
+
+A small public-facing implementation of these coordinates is
+\[
+  \texttt{qft\_scripts/hmc\_rhmc\_finite\_demo.py}.
+\]
+It samples a finite periodic scalar lattice action by reversible leapfrog HMC
+and evaluates a positive rational pseudofermion action by shifted conjugate
+gradient solves.  Its JSON output reports the acceptance coordinate,
+\(\max|\Delta H|\), a reversibility defect, the positive-matrix spectral
+edge, the rational action, and the maximum solver residual.  These are
+finite-regulator diagnostics; continuum and infinite-volume claims require
+the additional limit data described in
+Chapter~\ref{ch:constructive-hamiltonian-truncation-dlcq-benchmarks}.
+
 The deterministic companion check
 \[
   \texttt{calculation-checks/hmc\_pseudofermion\_checks.py}
@@ -1158,7 +1255,10 @@ The deterministic companion check
 verifies the leapfrog determinant and reversibility identities for a
 one-dimensional quadratic action, the pairwise Metropolis balance identity,
 the pseudofermion determinant identity after diagonalization, and the
-spectral action-error bound \eqref{eq:rhmc-action-error-bound}.
+spectral action-error bound \eqref{eq:rhmc-action-error-bound}.  It also
+checks \eqref{eq:hmc-linear-solver-action-bound}--
+\eqref{eq:rhmc-determinant-reweighting-bound} and imports the finite HMC/RHMC
+smoke module as a companion-script regression.
 
 \section{Autocorrelation and Effective Sample Size}
 

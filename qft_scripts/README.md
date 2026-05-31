@@ -21,6 +21,7 @@ python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke
 python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
 python3 qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke
+python3 qft_scripts/hmc_rhmc_finite_demo.py --smoke
 python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
@@ -92,6 +93,12 @@ per task.
   admissibility-style plaquette-deviation diagnostic, and can optionally write
   local density arrays.  It is explicitly not a geometric or index-theoretic
   definition of a lattice topological sector.
+- `hmc_rhmc_finite_demo.py`: finite HMC/RHMC smoke module.  It samples a
+  periodic scalar lattice action by reversible leapfrog HMC and evaluates a
+  positive rational pseudofermion action by shifted conjugate-gradient solves.
+  The JSON certificate reports acceptance, maximum Hamiltonian change,
+  reversibility defect, positive-matrix spectral edge, rational action, and
+  solver residuals.
 - `autocorrelation_resampling.py`: one-column Markov-chain time-series
   diagnostics.  It computes biased autocorrelations, a windowed integrated
   autocorrelation time, block means, blocked standard errors,
