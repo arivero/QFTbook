@@ -590,9 +590,42 @@ and noise, and convergence of correlation functions or path measures.
 \label{sec:finite-reaction-network-doi-peliti}
 
 Doi--Peliti variables are the occupation-number analogue of the response
-variables above.  The starting point is a Markov generator on a countable
-occupation basis.  Let \(s=1,\ldots,S\) label a finite set of species, and
-let \(n=(n_1,\ldots,n_S)\in\mathbb N^S\) be the occupation vector of a finite
+variables above, but the construction is more than a notation change.  It is
+the finite-regulator bridge from a classical stochastic many-body semigroup
+to a local non-Hermitian QFT representation.  A master equation for
+probabilities is rewritten as a linear evolution equation
+\[
+  \partial_t|P_t\rangle=\mathcal L_{\rm DP}|P_t\rangle
+\]
+on a bosonic occupation Fock space, and coherent states then turn
+\(\exp(T\mathcal L_{\rm DP})\) into a time-sliced path integral.  The
+operator \(\mathcal L_{\rm DP}\) is not a Hamiltonian generating unitary time
+evolution.  Its structural conservation law is instead the left-null-vector
+identity
+\[
+  \langle{\bf 1}|\mathcal L_{\rm DP}=0,
+\]
+or, in coherent-state symbols, \(H_{\rm DP}(1,z)=0\).  This is the Markov
+analogue of the Ward identity that prevents probability from leaking out of
+the state space.
+
+The reason this belongs in a QFT monograph is that local reaction networks,
+after spatial regularization, give local polynomial non-Hermitian actions.
+When a continuum limit exists, renormalization can be applied to these
+actions just as it is applied to unitary or Euclidean field theories, but the
+meaning of ``same critical theory'' must be stated operationally: two
+regulated stochastic systems are in the same nonequilibrium scaling class
+only after a common scaling limit, a matching of relevant perturbations, and
+agreement of scaling correlation and response functions have been specified.
+Examples usually described in this language include annihilation
+\(A+A\to0\), directed-percolation or Reggeon-field-theory reactions,
+parity-preserving branching-annihilating walks, and pair-contact processes
+with diffusion.  The finite construction below is the algebraic input; the
+continuum fixed-point construction is part of the theorem boundary at the end
+of the chapter.
+
+Let \(s=1,\ldots,S\) label a finite set of species, and let
+\(n=(n_1,\ldots,n_S)\in\mathbb N^S\) be the occupation vector of a finite
 spatial regulator.  For a multi-index \(\alpha\in\mathbb N^S\), set
 \[
   z^\alpha=\prod_s z_s^{\alpha_s},
@@ -743,9 +776,15 @@ controlled.  The shift \(\bar z=1+\widetilde z\) is useful because
 \[
   H_{\rm DP}(1,z)=0,
 \]
-which is the symbol form of probability conservation.  Differentiating at
-\(\bar z=1\) gives the deterministic rate equation for the mean-field
-density variables:
+which is the symbol form of probability conservation.  This identity is the
+non-Hermitian Markov replacement for unitary norm conservation: expectation
+values are computed with the projection state \(\langle{\bf 1}|\), not with a
+Hilbert-space adjoint bra, and the distinguished left vector is fixed by
+normalization of probabilities rather than by an inner product.  The shifted
+variable \(\bar z=1+\widetilde z\) therefore expands around the correct
+conservation point of the stochastic theory.  Differentiating at
+\(\bar z=1\) gives the deterministic rate equation for the mean-field density
+variables:
 \begin{equation}
   \dot z_s
   =
@@ -791,6 +830,20 @@ large-deviation principle itself requires tightness, exponential estimates,
 and a specified scaling limit;
 \eqref{eq:reaction-network-exponential-test-function} is the exact algebraic
 input.
+
+The Doi--Peliti and MSRJD constructions are complementary finite-regulator
+routes into stochastic field theory.  MSRJD starts from continuous variables
+and Gaussian increments; Doi--Peliti starts from integer occupations and
+jump rates, so it retains the discreteness that controls absorbing states and
+rare-event tails.  The coherent-state action obtained from
+\(H_{\rm DP}\), together with the conservation identity \(H_{\rm DP}(1,z)=0\),
+is the object on which perturbative RG, saddle-point large-deviation
+analysis, and fixed-point comparisons act.  Calling a continuum stochastic
+model a directed-percolation, annihilation, or parity-preserving
+branching-annihilating scaling theory is therefore not a definition by name;
+it is a claim that the regulated Doi--Peliti actions converge, after the
+declared tunings and field rescalings, to the same fixed-point data and the
+same scaling observables.
 
 \section{Tilted Generators and Dynamical Large Deviations}
 \label{sec:finite-tilted-generators-large-deviations}
@@ -1523,11 +1576,19 @@ open-system dynamics only after such an environment trace and limit have
 been constructed.  For hydrodynamic open systems, the noise kernel and
 relaxation matrix must be derived from the same influence functional that
 produces the dissipative terms.
+For Doi--Peliti reaction networks, the corresponding continuum problem must
+construct the spatial regulator, the scaling of rates and fields, the
+renormalized non-Hermitian action, the projection-state Ward identity
+\(H_{\rm DP}(1,z)=0\), and the scaling local observables whose limits define
+the proposed nonequilibrium fixed point.
 
 \begin{openproblem}[Continuum nonequilibrium states]
 \label{op:continuum-nonequilibrium-steady-states}
 Construct nonequilibrium steady states and open-system limits in interacting
 continuum QFT with local algebras, KMS reservoirs, real-time correlators,
 entropy production, hydrodynamic scaling limits, and complete-positivity
-constraints derived from the microscopic dynamics.
+constraints derived from the microscopic dynamics.  Include continuum limits
+of spatially regulated Doi--Peliti reaction networks when the goal is a
+non-Hermitian stochastic field theory for absorbing-state or reaction-diffusion
+critical behavior.
 \end{openproblem}

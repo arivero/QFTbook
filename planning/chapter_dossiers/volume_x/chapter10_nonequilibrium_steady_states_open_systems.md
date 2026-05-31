@@ -7,11 +7,14 @@ open-system definitions needed for later thermal, hydrodynamic, and curved
 real-time topics.  The chapter now treats steady states as invariant
 positive functionals, reservoir steady states as local weak limits, finite
 fluctuation relations as path-measure Radon--Nikodym identities, and
-finite-step Langevin/MSRJD variables as exact Fourier rewritings of finite
-Gaussian transition kernels.  It now also derives Doi--Peliti variables from
-finite reaction-network master equations and extracts the finite
-large-deviation Hamiltonian from exponential test functions.  Open-system
-dynamics is then treated as a weak-coupling limit of larger closed systems.
+  finite-step Langevin/MSRJD variables as exact Fourier rewritings of finite
+  Gaussian transition kernels.  It now also derives Doi--Peliti variables from
+  finite reaction-network master equations and extracts the finite
+  large-deviation Hamiltonian from exponential test functions, with the
+  Doi--Peliti map explicitly framed as the finite-regulator bridge from
+  classical stochastic occupation dynamics to local non-Hermitian QFT.
+  Open-system dynamics is then treated as a weak-coupling limit of larger
+  closed systems.
 The finite tilted-generator construction for additive jump observables now
 separates the exact microscopic Feynman--Kac identity from the additional
 analytic hypotheses needed for path large deviations, and records the finite
@@ -102,7 +105,10 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 10. The coherent-state normal symbol
     \(H_{\rm DP}(\bar z,z)=\sum_r\kappa_r(\bar z^{\nu'_r}-\bar z^{\nu_r})z^{\nu_r}\)
     satisfies \(H_{\rm DP}(1,z)=0\) and yields the deterministic
-    mass-action rate equation by differentiating at \(\bar z=1\).
+    mass-action rate equation by differentiating at \(\bar z=1\).  The
+    identity \(H_{\rm DP}(1,z)=0\) is recorded as the projection-state
+    conservation law replacing unitary norm conservation in the non-Hermitian
+    Markov representation.
 11. Exponential test functions give the finite-regulator dynamical
     large-deviation Hamiltonian
     \(\mathcal H_{\rm LD}(x,p)=\sum_r\lambda_r(x)(e^{p\cdot v_r}-1)\)
@@ -155,6 +161,11 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 22. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
+23. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
+    stochastic fields from integer-occupation jump systems, and defines
+    nonequilibrium scaling classes operationally by common continuum
+    fixed-point data, relevant perturbations, and scaling correlation/response
+    functions rather than by naming a universality class.
 
 ## Calculation Checks
 
@@ -194,6 +205,11 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   reaction-network generator identity, coherent-state normal-symbol
   derivation, and finite exponential-test Hamiltonian underlying dynamical
   large deviations.
+- 2026-05-31 Doi-Peliti synthesis/#704 pass: added the finite-regulator
+  bridge from classical stochastic occupation dynamics to local
+  non-Hermitian QFT, identified the projection-state Ward identity
+  `H_DP(1,z)=0` as the Markov replacement for unitarity, and stated the
+  operational meaning of nonequilibrium scaling-class claims.
 - 2026-05-31 finite tilted-generator pass: added the exact Feynman--Kac
   derivation of tilted generators for finite jump additives, separated the
   finite Perron-Frobenius spectral input from large-deviation proof
