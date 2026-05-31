@@ -357,6 +357,9 @@ ghost-loop sign and the absent four-ghost vertex are discussed.
 
 \section{Background-Field Derivation of the One-Loop Beta Function}
 
+\subsection{Background Gauge Datum and Effective Coupling Coordinate}
+\label{subsec:qcd-background-gauge-effective-coupling}
+
 The coupling in a nonabelian gauge theory is most cleanly extracted from the
 coefficient of the background curvature term in the 1PI effective action.  Let
 \(A_\mu=\widetilde A_\mu+a_\mu\), where \(\widetilde A_\mu\) is a background
@@ -548,6 +551,9 @@ the gauge-fixing term.  The Gaussian integral gives
 The numerator reflects Grassmann integration for quarks and ghosts; the
 denominator is the square root from the bosonic gauge-field Gaussian.
 
+\subsection{Constant-Background Extraction of the Logarithmic Coefficient}
+\label{subsec:qcd-constant-background-log-extraction}
+
 To extract the logarithmic coefficient, take \(\widetilde A_\mu\) to be
 approximately constant inside a large box and to vanish smoothly outside.
 The box size supplies an infrared scale \(L\sim\mu^{-1}\).  In the constant
@@ -641,6 +647,9 @@ The scalar integral carrying the logarithmic divergence is
   +\hbox{finite}.
   \label{eq:qcd-basic-log-integral}
 \end{equation}
+
+\subsection{Heat-Kernel Determinant Ledger}
+\label{subsec:qcd-heat-kernel-determinant-ledger}
 
 For a self-contained evaluation, use the Euclidean logarithmic coefficient of
 a Laplace-type operator
@@ -871,6 +880,9 @@ The vector determinant contribution is therefore
   \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
   \label{eq:qcd-vector-determinant-f2}
 \end{equation}
+
+\subsection{One-Loop Coupling Flow}
+\label{subsec:qcd-background-one-loop-coupling-flow}
 
 Combining \eqref{eq:qcd-quark-determinant-f2},
 \eqref{eq:qcd-ghost-determinant-f2}, and
@@ -1393,6 +1405,9 @@ asymptotic particles are color singlets.
 
 \section{\texorpdfstring{The 't Hooft Large-\(N_c\) Expansion}{The 't Hooft Large-Nc Expansion}}
 
+\subsection{Planar Counting and Factorization}
+\label{subsec:qcd-large-n-planar-counting-factorization}
+
 The large-\(N_c\) expansion is a statement about a sequence of gauge theories,
 not about a single theory at \(N_c=3\).  The sequence used here is
 \(SU(N_c)\) Yang--Mills theory with the same trace convention as above,
@@ -1654,6 +1669,7 @@ single-trace observables are suppressed in the planar limit, provided the
 large-\(N_c\) limit of the regulated theory exists.
 
 \subsection{Eguchi--Kawai Volume Reduction}
+\label{subsec:qcd-eguchi-kawai-volume-reduction}
 
 Large-\(N_c\) factorization suggests a further possibility: in some
 center-symmetric large-\(N_c\) regimes, single-trace Wilson-loop expectation
@@ -1863,6 +1879,9 @@ meson source is therefore \(N_c^{-1/2}M_{IJ}\), and connected \(m\)-meson
 amplitudes scale as \(N_c^{1-m/2}\).  Glueball operators normalized to have
 order-one connected two-point functions have connected \(m\)-point couplings
 of order \(N_c^{2-m}\).
+
+\subsection{\texorpdfstring{Large-\(N_c\) Baryons and Spin-Flavor Coordinates}{Large-Nc Baryons and Spin-Flavor Coordinates}}
+\label{subsec:qcd-large-n-baryon-spin-flavor}
 
 Baryons require a separate order of limits and a separate normalization.  In
 an \(SU(N_c)\) theory with \(N_f\) fundamental quark flavors, a local baryon
@@ -4506,6 +4525,9 @@ the range of physical wave operators in the gauge-invariant Hilbert space.
 \section{Hadron Spectroscopy as an Ab Initio QCD Datum}
 \label{sec:qcd-hadron-spectroscopy-ab-initio}
 
+\subsection{Spectral Sources and Finite-Volume Data}
+\label{subsec:qcd-spectroscopy-sources-finite-volume}
+
 Hadron spectroscopy is not a list of model names assigned to observed peaks.
 It is a collection of spectral and scattering statements about the
 gauge-invariant Hilbert space of QCD.  A spectroscopic claim must therefore
@@ -4672,6 +4694,9 @@ scaling, and deformation behavior.  They are not additional definitions of
 QCD states.
 \end{remark}
 
+\subsection{Elastic Finite-Volume Reconstruction}
+\label{subsec:qcd-elastic-finite-volume-reconstruction}
+
 \begin{definition}[Periodic Green function and \(S\)-wave zeta coordinate]
 \label{def:qcd-periodic-green-zeta-coordinate}
 For a cubic spatial torus of side \(L\), let
@@ -4832,8 +4857,11 @@ lightest omitted exchange.  Thus the formula is a reconstruction statement
 with explicit hypotheses, not a model of the resonance.
 \end{proof}
 
-\paragraph{Single-channel finite-volume pole reconstruction target.}
-Assume that, on an open real energy interval \(I\), a QCD channel is
+\subsection{Single- and Coupled-Channel Pole Coordinates}
+\label{subsec:qcd-single-coupled-channel-pole-coordinates}
+
+For the single-channel finite-volume pole reconstruction target, assume that,
+on an open real energy interval \(I\), a QCD channel is
 elastic, has two stable color-singlet particles of masses \(m_1,m_2\), and
 has been reduced, by a stated cubic-irrep analysis, to a single partial wave
 \(\ell\).  Put \(J=\{E^2:E\in I\}\) and
@@ -5065,8 +5093,11 @@ declared chart.  They are not intrinsic labels unless the family, channel
 identification, and sheet have been included in the statement.
 \end{definition}
 
-\paragraph{Shallow \(S\)-wave bound-state effective-range chart.}
-Consider one stable two-hadron channel with reduced mass \(\mu\), threshold
+\subsection{Near-Threshold Effective-Range Coordinates}
+\label{subsec:qcd-near-threshold-effective-range-coordinates}
+
+For a shallow \(S\)-wave bound-state effective-range chart, consider one
+stable two-hadron channel with reduced mass \(\mu\), threshold
 energy set to \(E=0\), and center-of-mass momentum
 \(k=\sqrt{2\mu E}\), where the physical branch has \(k>0\) for \(E>0\) and
 \(\operatorname{Im}k>0\) below threshold.  Suppose that in an energy disk
@@ -5175,6 +5206,9 @@ and the anomaly constrain the low-energy coordinates.  Chapter~\ref{ch:volume-ii
 derives the pion effective theory, the Gell-Mann--Oakes--Renner relation, and
 the Witten--Veneziano large-\(N_c\) formula for the singlet mass.  The vector
 and scalar resonances require the scattering-amplitude language above.
+
+\subsection{Light-Meson Scattering and Roy Coordinates}
+\label{subsec:qcd-light-meson-roy-coordinates}
 
 \begin{definition}[\(\pi\pi\) isospin amplitudes]
 \label{def:qcd-pipi-isospin-amplitudes}
@@ -5449,6 +5483,9 @@ unequal masses and additional crossed-channel partial waves changing the
 kernel construction but not the Cauchy-crossing-projection logic.
 \end{remark}
 
+\subsection{Light-Meson Pole Charts}
+\label{subsec:qcd-light-meson-pole-charts}
+
 \begin{definition}[Concrete light-meson pole chart]
 \label{def:qcd-concrete-light-meson-pole-chart}
 A concrete light-meson pole statement in this chapter consists of a
@@ -5581,6 +5618,9 @@ what is meant by a molecular or compact coordinate.  In every case the QCD
 statement is a pole or a stable mass extracted from a declared operator and
 regulator setup.
 \end{remark}
+
+\subsection{Unequal-Mass and Baryon-Meson Channels}
+\label{subsec:qcd-unequal-mass-baryon-meson-channels}
 
 \begin{definition}[Unequal-mass elastic kinematics]
 \label{def:qcd-unequal-mass-elastic-kinematics}
@@ -5789,6 +5829,9 @@ additional dynamical assumption enters at the projection stage; all dynamical
 input is already contained in the analytic domain, crossing matrices,
 absorptive parts, and subtraction constants of the input.
 \end{proof}
+
+\subsection{Quarkonium, Baryon, and Hybrid Source Charts}
+\label{subsec:qcd-quarkonium-baryon-hybrid-charts}
 
 \begin{definition}[Quarkonium spectroscopy chart]
 \label{def:qcd-quarkonium-spectroscopy-chart}
@@ -6442,6 +6485,9 @@ matrix elements in this limit.  It complements the finite-\(N_c\) spectral
 and coupled-channel charts above; it does not replace the QCD pole or
 eigenvalue definitions.
 \end{remark}
+
+\subsection{Current Matrix Elements and Forward Sum Rules}
+\label{subsec:qcd-current-matrix-elements-forward-sum-rules}
 
 \begin{definition}[Nucleon current matrix elements]
 \label{def:qcd-nucleon-current-matrix-elements}
@@ -8458,6 +8504,9 @@ matrix elements
 \section{Twist, Parton Distributions, and Factorization}
 \label{sec:qcd-twist-parton-distributions-factorization}
 
+\subsection{Twist and Light-Ray Operator Definitions}
+\label{subsec:qcd-twist-light-ray-operator-definitions}
+
 For a local symmetric traceless operator of Lorentz spin \(s\) and scaling
 dimension \(\Delta\), its twist is
 \[
@@ -8813,6 +8862,9 @@ The remaining \(y\)-integral is exactly \(N(f)\).  The assumed preservation of
 \(N\) by \(R\) says that the same value is obtained in the primed light-ray
 coordinates.
 
+\subsection{DIS Factorization and DGLAP Evolution}
+\label{subsec:qcd-dis-factorization-dglap}
+
 Figure~\ref{fig:qcd-dis-ope-light-ray-factorization} records the operator
 factorization used for inclusive DIS: the short-distance current product is
 matched to renormalized light-ray operators whose convolutional
@@ -8964,6 +9016,10 @@ gives a convolution anomalous dimension.  With the sign convention used in
 \eqref{eq:dglap-evolution}, that anomalous dimension is denoted \(P_{ab}\).
 The coefficient functions obey the dual equation, so the \(\mu\)-dependence of
 the convolution in \eqref{eq:dis-factorization} cancels.
+
+\subsection{One-Loop Splitting Kernels and Sum-Rule Checks}
+\label{subsec:qcd-one-loop-splitting-kernels-sum-rules}
+
 At leading order, in the same convention as \eqref{eq:dglap-evolution},
 \[
   P_{ab}(x,g)
@@ -9626,6 +9682,9 @@ Glauber, and power-remainder data.
 \section{Asymptotic Freedom and Exclusive Pion Amplitudes}
 \label{sec:qcd-exclusive-pion-asymptotic-freedom}
 
+\subsection{Pion Light-Ray Data and Factorization Scheme}
+\label{subsec:qcd-pion-light-ray-factorization-scheme}
+
 Inclusive DIS uses forward light-ray matrix elements.  Exclusive pion
 amplitudes use light-ray matrix elements between the vacuum and a one-pion
 state.  This is the part of the pion \(S\)-matrix where asymptotic freedom
@@ -9693,6 +9752,9 @@ An exclusive large-\(Q\) pion factorization statement consists of:
 The scheme is part of the definition of the controlled approximation.  Without
 it, a formula involving a pion distribution amplitude is only notation.
 \end{definition}
+
+\subsection{ERBL Evolution and Gegenbauer Coordinates}
+\label{subsec:qcd-erbl-gegenbauer-coordinates}
 
 The one-loop renormalization of the light-ray operator in
 \eqref{eq:qcd-pion-lcda-definition} gives the Efremov--Radyushkin--Brodsky--
@@ -9904,6 +9966,9 @@ The approach to this shape is logarithmic and scheme dependent at finite
 scale.  The statement \eqref{eq:qcd-pion-asymptotic-lcda} is therefore an
 asymptotic consequence of the light-ray anomalous dimensions, not an empirical
 model for the pion at moderate momentum transfer.
+
+\subsection{Hard Exclusive Form Factors and Boundary Regimes}
+\label{subsec:qcd-hard-exclusive-form-factors}
 
 The spacelike charged-pion electromagnetic form factor is defined by
 \begin{equation}

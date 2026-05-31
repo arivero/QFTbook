@@ -775,3 +775,14 @@ The chapter must define and derive:
   and spectroscopy-hierarchy paragraphs so that general numerical machinery is
   not taught inside a specialized QCD discussion without a concrete extracted
   QCD result.
+- 2026-05-31 structural navigation pass for issue #706: introduced
+  substance-aligned subsection anchors in the long QCD blocks without changing
+  formulae.  The new anchors separate the background-field beta-function
+  ledger, large-\(N_c\) planar/volume-reduction/baryon material, spectroscopy
+  finite-volume and pole-coordinate material, light-meson Roy/Roy--Steiner
+  material, current-matrix-element material, integrated PDF/light-ray
+  definitions, DIS factorization/DGLAP evolution, and exclusive-pion
+  light-ray/ERBL/form-factor material.  A line-count audit now gives at least
+  three subsections in every section of this chapter longer than 500 source
+  lines; this is a navigational repair, not a claim that QCD depth-pass-B is
+  complete.
