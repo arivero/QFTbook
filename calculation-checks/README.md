@@ -1075,10 +1075,12 @@ Current checks:
   two-body phase-space Jacobian for \(1+1\)-dimensional decay widths,
   TCSA coupling and counterterm powers, and the Airy scaling of confined
   kink--antikink bound states.
-- `numerical_extrapolation_checks.py`: exact rational checks for the Volume XI
-  finite-regulator extrapolation section, including Lagrange interpolation
-  nonuniqueness of finite cutoff data, two-cutoff Richardson cancellation,
-  and integer-power extrapolation weights with explicit remainder bounds.
+- `numerical_extrapolation_checks.py`: exact rational and finite-matrix
+  checks for the Volume XI finite-regulator extrapolation section, including
+  Lagrange interpolation nonuniqueness of finite cutoff data, two-cutoff
+  Richardson cancellation, integer-power extrapolation weights with explicit
+  remainder bounds, and correlated least-squares covariance/error
+  propagation for windowed continuum diagnostics.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar

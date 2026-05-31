@@ -333,6 +333,17 @@ identities used in sampled neural-state calculations.  Remaining numerical
 evidence work includes production tensor-network extrapolation standards,
 neural optimizer/calibration diagnostics, and larger workflow integration.
 
+Third partial absorption on 2026-05-31: Volume XI, Chapter 10 now adds the
+correlated finite-window extrapolation layer needed by production numerical
+QFT workflows.  Fit windows, covariance matrices, declared fit functions, and
+remainder envelopes are treated as part of the finite datum; the chapter
+derives the exact intercept error decomposition, covariance propagation,
+systematic row-amplifier coordinate, and correlated residual diagnostic.
+Remaining numerical evidence work is now concentrated on concrete
+tensor-network continuum-control examples, neural optimizer/calibration
+diagnostics beyond local-energy variance, HMC/RHMC production machinery, and
+larger workflow integration.
+
 ### Defects, Elasticity, And Goldstone Effective Theories
 
 Statmech source: Volume II Chapter 16.

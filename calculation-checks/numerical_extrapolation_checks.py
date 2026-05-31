@@ -8,6 +8,8 @@ under exact rational regression tests.
 
 from fractions import Fraction
 
+import numpy as np
+
 
 def assert_equal(name, actual, expected):
     if actual != expected:
@@ -17,6 +19,17 @@ def assert_equal(name, actual, expected):
 def assert_leq(name, left, right):
     if left > right:
         raise AssertionError(f"{name}: got {left!r} > {right!r}")
+
+
+def assert_close(name, actual, expected, tol=1.0e-11):
+    if abs(actual - expected) > tol:
+        raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
+
+
+def assert_matrix_close(name, actual, expected, tol=1.0e-11):
+    error = float(np.max(np.abs(actual - expected)))
+    if error > tol:
+        raise AssertionError(f"{name}: max error {error:.3e}")
 
 
 def lagrange_value(nodes, values, x):
@@ -146,10 +159,67 @@ def check_integer_power_weights():
     assert_leq("integer-power extrapolation bound", abs(extrapolated - target), theorem_bound)
 
 
+def check_correlated_fit_coordinates():
+    cutoffs = np.array([6.0, 8.0, 10.0, 14.0, 18.0])
+    q = 1.0 / cutoffs
+    design = np.column_stack([np.ones_like(q), q, q * q])
+    true_coefficients = np.array([2.75, -1.1, 0.6])
+    remainder = np.array([0.004, -0.003, 0.002, -0.001, 0.0005])
+    fluctuation = np.array([0.010, -0.006, 0.004, -0.002, 0.001])
+    data = design @ true_coefficients + remainder + fluctuation
+
+    covariance = np.array(
+        [
+            [0.040, 0.010, 0.006, 0.003, 0.001],
+            [0.010, 0.030, 0.008, 0.004, 0.002],
+            [0.006, 0.008, 0.025, 0.006, 0.003],
+            [0.003, 0.004, 0.006, 0.020, 0.005],
+            [0.001, 0.002, 0.003, 0.005, 0.018],
+        ],
+        dtype=float,
+    )
+    if float(np.linalg.eigvalsh(covariance)[0]) <= 0.0:
+        raise AssertionError("correlated-fit covariance test matrix is not positive definite")
+
+    inverse_covariance = np.linalg.inv(covariance)
+    gram = design.T @ inverse_covariance @ design
+    propagator = np.linalg.inv(gram) @ design.T @ inverse_covariance
+    fitted = propagator @ data
+
+    assert_matrix_close(
+        "correlated fit exact error decomposition",
+        fitted - true_coefficients,
+        propagator @ (remainder + fluctuation),
+    )
+    assert_matrix_close(
+        "correlated fit coefficient covariance",
+        propagator @ covariance @ propagator.T,
+        np.linalg.inv(gram),
+    )
+
+    intercept_weights = propagator[0, :]
+    systematic_bound = float(np.sum(np.abs(intercept_weights) * np.abs(remainder)))
+    systematic_shift = float(intercept_weights @ remainder)
+    assert_leq("correlated fit systematic envelope", abs(systematic_shift), systematic_bound)
+
+    intercept_variance = float(intercept_weights @ covariance @ intercept_weights)
+    assert_close(
+        "correlated fit intercept variance",
+        intercept_variance,
+        float(np.linalg.inv(gram)[0, 0]),
+    )
+
+    residual = data - design @ fitted
+    chi_square = float(residual @ inverse_covariance @ residual)
+    if not np.isfinite(chi_square) or chi_square < 0.0:
+        raise AssertionError("correlated fit chi-square coordinate is not finite and nonnegative")
+
+
 def main():
     check_finite_data_do_not_determine_limit()
     check_two_cutoff_richardson()
     check_integer_power_weights()
+    check_correlated_fit_coordinates()
     print("All numerical extrapolation checks passed.")
 
 

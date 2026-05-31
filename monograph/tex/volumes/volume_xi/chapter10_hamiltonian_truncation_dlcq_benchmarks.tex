@@ -1571,6 +1571,120 @@ The companion calculation
 also verifies the exact-intercept and constant-sequence cases of
 the finite large-\(K\) fit calculation above.
 
+\paragraph{Correlated fits and window stability.}
+Production lattice, tensor-network, and Hamiltonian-truncation data are rarely
+independent scalar data.  A continuum extrapolation datum at a chosen fit
+window \(W=\{i_1,\ldots,i_N\}\) therefore contains
+\[
+  A=(A_{i_1},\ldots,A_{i_N})^T,\qquad
+  \Sigma_W,\qquad
+  f_0,\ldots,f_p,\qquad
+  R_1,\ldots,R_N .
+\]
+Here \(A_i\) are the finite-regulator outputs, \(\Sigma_W\) is the covariance
+matrix of their statistical errors on the window, \(f_a(i)\) are the declared
+fit functions with \(f_0(i)=1\), and \(R_r\) is a deterministic bound or
+declared systematic envelope for the part of \(A_{i_r}\) not represented by
+the chosen fit functions.  Put
+\[
+  X_{ra}=f_a(i_r),\qquad
+  X\in\operatorname{Mat}_{N\times(p+1)}(\mathbb R).
+\]
+Assume in this paragraph that \(\Sigma_W\) is positive definite and that
+\(X\) has full column rank.  If an estimated covariance matrix is singular,
+the shrinkage, projection, or diagonal approximation used to replace it is a
+new member of the datum, not an invisible numerical detail.
+
+The correlated least-squares coordinate is
+\begin{equation}
+  \widehat c
+  =
+  (X^T\Sigma_W^{-1}X)^{-1}X^T\Sigma_W^{-1}A .
+  \label{eq:correlated-fit-coordinate}
+\end{equation}
+Writing
+\[
+  G=X^T\Sigma_W^{-1}X,\qquad
+  B=G^{-1}X^T\Sigma_W^{-1},
+\]
+one has \(BX=I_{p+1}\).  If the data on the window decompose as
+\begin{equation}
+  A=Xc+\rho+\epsilon,
+  \qquad
+  \mathbb E\epsilon=0,\qquad
+  \mathbb E(\epsilon\epsilon^T)=\Sigma_W ,
+  \label{eq:correlated-fit-data-decomposition}
+\end{equation}
+then
+\begin{equation}
+  \widehat c-c=B\rho+B\epsilon .
+  \label{eq:correlated-fit-error-decomposition}
+\end{equation}
+Thus the intercept \(\widehat A_\infty=\widehat c_0\) has the exact finite
+error decomposition
+\[
+  \widehat A_\infty-A_\infty
+  =
+  \sum_{r=1}^N B_{0r}\rho_r
+  +
+  \sum_{r=1}^N B_{0r}\epsilon_r .
+\]
+If \(|\rho_r|\leq R_r\), the deterministic fit-window systematic coordinate is
+\begin{equation}
+  S_W=\sum_{r=1}^N |B_{0r}|R_r .
+  \label{eq:correlated-fit-systematic-coordinate}
+\end{equation}
+The stochastic variance of the intercept is
+\begin{equation}
+  \sigma_{\infty,W}^2
+  =
+  e_0^T B\Sigma_WB^Te_0
+  =
+  e_0^TG^{-1}e_0 ,
+  \label{eq:correlated-fit-intercept-variance}
+\end{equation}
+where \(e_0=(1,0,\ldots,0)^T\).  The second equality follows from
+\[
+  B\Sigma_WB^T
+  =
+  G^{-1}X^T\Sigma_W^{-1}\Sigma_W\Sigma_W^{-1}XG^{-1}
+  =
+  G^{-1}.
+\]
+The correlated residual
+\begin{equation}
+  \chi_W^2
+  =
+  (A-X\widehat c)^T\Sigma_W^{-1}(A-X\widehat c)
+  \label{eq:correlated-fit-chi-square-coordinate}
+\end{equation}
+is a finite diagnostic for the chosen window and model.  Its probabilistic
+interpretation requires the sampling law of the estimator, the covariance
+estimator, and the treatment of autocorrelation described in
+Section~\ref{sec:blocking-jackknife-bootstrap-error-coordinates}.
+
+A window-stability analysis is the finite collection
+\[
+  \mathcal W=\{(W_\alpha,X_\alpha,\Sigma_\alpha,R_\alpha)\}_{\alpha\in A}
+\]
+together with the resulting coordinates
+\[
+  \widehat A_{\infty,\alpha},\qquad
+  \sigma_{\infty,\alpha},\qquad
+  S_\alpha,\qquad
+  \chi_\alpha^2 .
+\]
+Agreement of these coordinates across windows is evidence about the chosen
+finite-regulator family only after the windows use the same physical
+observable, the same renormalization convention, and compatible operator
+normalizations.  The analytic estimate producing the envelopes
+\(R_\alpha\) remains the source of continuum control.  For tensor-network and
+neural-state calculations the window label must also record bond dimension or
+architecture, optimizer termination criterion, local-energy variance or
+discarded weight, and any symmetry projection used to select the finite
+sector.  Otherwise a stable sequence of numbers may be comparing different
+finite problems rather than a single regulated QFT observable.
+
 \section{Light-Front Hamiltonian}
 
 The invariant mass operator is

@@ -47,6 +47,9 @@ numerics.
 - `lambda_ell(K)`, `q_r`, `X_{ra}`, `B`: ordered finite DLCQ eigenvalue,
   large-`K` fit coordinate, Vandermonde design matrix, and least-squares
   left inverse used in the finite intercept-remainder amplifier.
+- `W`, `Sigma_W`, `f_a`, `G`, `S_W`, `chi_W^2`: correlated fit window,
+  finite covariance matrix, declared fit functions, Gram matrix,
+  deterministic systematic coordinate, and correlated residual coordinate.
 - `K_m(A,v)`, `V_m`, `T_m`, `beta_m`, `q_m`: finite Krylov subspace,
   orthonormal Krylov/Lanczos basis, tridiagonal compression, tail residual
   coordinate, and next Lanczos vector.
@@ -144,6 +147,12 @@ numerics.
   polynomial in `K^{-omega}` plus a remainder, the fitted intercept differs
   from the continuum coefficient by at most the row-`l1` amplification factor
   times the maximum remainder.
+- Adds the correlated-fit coordinate system for production extrapolations:
+  the window, covariance matrix, model functions, and remainder envelopes are
+  part of the finite datum; the text derives the exact intercept error
+  decomposition, covariance propagation, deterministic systematic coordinate,
+  and correlated residual diagnostic without treating fit stability as a
+  continuum theorem.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
@@ -175,9 +184,10 @@ plots.
   DLCQ eigenvalue labels to a chosen polynomial in `K^{-omega}`, reporting
   residuals, conditioning, and the finite intercept-remainder amplification
   factor without asserting a continuum spectrum.
-- `calculation-checks/numerical_extrapolation_checks.py`: exact rational
-  regression check for the Lagrange-interpolation obstruction, Richardson
-  cancellation, and integer-power extrapolation weights used in the chapter.
+- `calculation-checks/numerical_extrapolation_checks.py`: exact rational and
+  finite-matrix regression check for the Lagrange-interpolation obstruction,
+  Richardson cancellation, integer-power extrapolation weights, and
+  correlated-fit covariance/error propagation used in the chapter.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
@@ -207,3 +217,6 @@ plots.
   variational ansatz certificates for tensor-network/neural-state methods as
   derivational prose, with finite residual, variance, tangent-gradient, and
   local-energy identities rather than theorem wrappers.
+- 2026-05-31 third statmech numerical-evidence pass: added correlated-fit
+  and fit-window stability coordinates as finite data-analysis algebra, not
+  as a theorem that finite extrapolation plots prove continuum QFT claims.
