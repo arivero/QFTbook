@@ -231,6 +231,14 @@ Every symbol must be introduced with its type before load-bearing use. If a
 symbol changes meaning across frameworks, rename it or explicitly declare the
 change.
 
+The compiled backmatter contains a notation and convention guide for stable
+symbols used across many chapters.  It is a reader navigation layer and a
+consistency check, not a replacement for first-use definitions.  When a
+chapter introduces a new globally recurrent notation or changes the meaning
+of an overloaded symbol, update the local chapter first; update the
+backmatter guide only if the convention is meant to persist across chapters.
+Do not use the guide to justify an undefined local symbol.
+
 ## Claim Certification Rule
 
 Every load-bearing claim must be one of:
