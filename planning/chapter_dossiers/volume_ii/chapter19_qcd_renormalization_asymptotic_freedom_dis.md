@@ -469,6 +469,14 @@ The chapter must define and derive:
       \(2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), with
       \(\chi(1/2)=4\log2\) and the quadratic diffusion coefficient
       \(-14\zeta(3)\) on the line \(\gamma=1/2+\ii\nu\).
+22ccd. The CGC/JIMWLK layer is now formulated first as a finite compact
+       Wilson-line rapidity-evolution datum on
+       \(SU(N_c)^{\Lambda_\perp}\).  The weak observable equation and the
+       strong density equation are related by Haar integration by parts, the
+       divergence-form generator preserves total probability, and the dipole
+       observable generates the first Balitsky-hierarchy equation before any
+       BK product closure is imposed.  Removing the transverse and rapidity
+       regulators remains the continuum theorem boundary.
 22cd. Drell--Yan is formulated as a timelike current-current Wightman tensor
       between two hadron states.  The leading-power kinematic variables obey
       \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  The TMD factorization
@@ -600,6 +608,12 @@ The chapter must define and derive:
   gauge-invariance proof, leading-logarithmic BFKL/BK status statement,
   transverse kernel covariance proof, Mellin-eigenvalue derivation by analytic
   regularization, and `calculation-checks/qcd_bfkl_small_x_checks.py`.
+- 2026-05-31 issue #630 CGC/JIMWLK theorem-boundary pass: added the finite
+  Wilson-line rapidity-evolution datum on a compact product of \(SU(N_c)\)
+  variables, the weak/strong Fokker--Planck duality by Haar integration by
+  parts, probability conservation, the Balitsky-hierarchy interpretation of
+  the dipole observable, and finite compact-diffusion checks in
+  `calculation-checks/qcd_bfkl_small_x_checks.py`.
 - 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the

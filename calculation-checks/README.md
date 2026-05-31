@@ -137,7 +137,11 @@ Current checks:
   QCD block, including trace-delta versus half-trace invariance of the BFKL
   kernel coefficient, transverse inversion covariance of the dipole kernel
   measure, and the saddle value, first derivative, second derivative, and
-  diffusion expansion of the leading BFKL characteristic function.
+  diffusion expansion of the leading BFKL characteristic function.  It also
+  checks the finite compact Wilson-line diffusion algebra used as the
+  JIMWLK theorem boundary: constant preservation, zero integral of the
+  divergence-form generator, dissipative Fourier spectrum, and weak/strong
+  duality in a finite torus model.
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in
