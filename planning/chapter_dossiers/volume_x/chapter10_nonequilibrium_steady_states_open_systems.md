@@ -7,17 +7,20 @@ open-system definitions needed for later thermal, hydrodynamic, and curved
 real-time topics.  The chapter now treats steady states as invariant
 positive functionals, reservoir steady states as local weak limits, finite
 fluctuation relations as path-measure Radon--Nikodym identities, and
-  finite-step Langevin/MSRJD variables as exact Fourier rewritings of finite
-  Gaussian transition kernels.  It now also derives Doi--Peliti variables from
-  finite reaction-network master equations and extracts the finite
-  large-deviation Hamiltonian from exponential test functions, with the
-  Doi--Peliti map explicitly framed as the finite-regulator bridge from
-  classical stochastic occupation dynamics to local non-Hermitian QFT.
-  Open-system dynamics is then treated as a weak-coupling limit of larger
-  closed systems.  The Schwinger-Keldysh influence-functional section now
-  derives the finite Gaussian bridge to MSRJD variables and stochastic
-  equations by a Hubbard-Stratonovich characteristic-function identity,
-  rather than leaving the Langevin interpretation as formal terminology.
+finite-step Langevin/MSRJD variables as exact Fourier rewritings of finite
+Gaussian transition kernels.  It now formulates Model A and Model B as
+finite mobility-gradient stochastic field data, deriving the Gibbs invariant
+density and the conserved zero mode for Model B before any continuum
+dynamic-critical terminology is used.  It also derives Doi--Peliti variables
+from finite reaction-network master equations and extracts the finite
+large-deviation Hamiltonian from exponential test functions, with the
+Doi--Peliti map explicitly framed as the finite-regulator bridge from
+classical stochastic occupation dynamics to local non-Hermitian QFT.
+Open-system dynamics is then treated as a weak-coupling limit of larger
+closed systems.  The Schwinger-Keldysh influence-functional section now
+derives the finite Gaussian bridge to MSRJD variables and stochastic
+equations by a Hubbard-Stratonovich characteristic-function identity,
+rather than leaving the Langevin interpretation as formal terminology.
 The finite tilted-generator construction for additive jump observables now
 separates the exact microscopic Feynman--Kac identity from the additional
 analytic hypotheses needed for path large deviations, and records the finite
@@ -43,6 +46,9 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 - `x_n`, `Delta x_n`, `F_n`, `eta_n`, `D`, `hat x_n`: finite-regulator
   Langevin variables, increments, drift, Gaussian noise covariance, and
   MSRJD Fourier-dual variables.
+- `mathcal F`, `mathsf M`, `sigma`, `B`, `C`: finite dynamic-critical
+  free-energy functional, mobility matrix, noise square-root, graph
+  incidence matrix, and edge-mobility matrix for Model A/B data.
 - `n`, `nu_r`, `nu'_r`, `v_r`, `kappa_r`, `a_s`, `a_s^dagger`,
   `L_DP`, `H_DP`: occupation vectors, reaction input/output/stoichiometry,
   rate constants, creation/annihilation operators, Doi-Peliti generator,
@@ -102,76 +108,93 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 8. The generator \(L_t=F^a\partial_a+D^{ab}\partial_a\partial_b\) and the
    Fokker-Planck adjoint equation follow from the finite-step moments before
    a continuum stochastic-field limit is taken.
-9. For a finite reaction network with mass-action rates
-   \(w_r(n)=\kappa_r(n)_{\nu_r}\), the normally ordered Doi-Peliti generator
-   \(\sum_r\kappa_r[(a^\dagger)^{\nu'_r}-(a^\dagger)^{\nu_r}]a^{\nu_r}\)
-   is exactly the master-equation generator on the algebraic occupation
-   domain.
-10. The coherent-state normal symbol
+9. A finite mobility-gradient Langevin datum
+   \(dx=-\mathsf M\nabla\mathcal F\,dt+\sqrt{2T}\sigma\,dB\),
+   \(\sigma\sigma^T=\mathsf M\), has generator
+   \(Lf=-\mathsf M^{ab}\partial_b\mathcal F\,\partial_af+
+   T\mathsf M^{ab}\partial_a\partial_bf\) and Fokker--Planck current
+   \(J=-\mathsf M(\nabla\mathcal F\,p+T\nabla p)\), so
+   \(p_{\rm eq}\propto e^{-\mathcal F/T}\) has zero current on each affine
+   sector.
+10. Model A is the finite datum with positive local mobility for a
+    nonconserved order parameter.  Model B is the finite datum
+    \(\mathsf M=B^TCB\) on a spatial graph; it has
+    \(\mathsf M\mathbf1=0\), hence conserved total order parameter and
+    divergence-form noise.
+11. The finite Model A/B MSRJD action is obtained from the finite-step
+    Gaussian Fourier identity with \(F=-\mathsf M\nabla\mathcal F\) and
+    \(D=T\mathsf M\).  Dynamic exponents and scaling functions require a
+    separate continuum/RG construction.
+12. For a finite reaction network with mass-action rates
+    \(w_r(n)=\kappa_r(n)_{\nu_r}\), the normally ordered Doi-Peliti generator
+    \(\sum_r\kappa_r[(a^\dagger)^{\nu'_r}-(a^\dagger)^{\nu_r}]a^{\nu_r}\)
+    is exactly the master-equation generator on the algebraic occupation
+    domain.
+13. The coherent-state normal symbol
     \(H_{\rm DP}(\bar z,z)=\sum_r\kappa_r(\bar z^{\nu'_r}-\bar z^{\nu_r})z^{\nu_r}\)
     satisfies \(H_{\rm DP}(1,z)=0\) and yields the deterministic
     mass-action rate equation by differentiating at \(\bar z=1\).  The
     identity \(H_{\rm DP}(1,z)=0\) is recorded as the projection-state
     conservation law replacing unitary norm conservation in the non-Hermitian
     Markov representation.
-11. Exponential test functions give the finite-regulator dynamical
+14. Exponential test functions give the finite-regulator dynamical
     large-deviation Hamiltonian
     \(\mathcal H_{\rm LD}(x,p)=\sum_r\lambda_r(x)(e^{p\cdot v_r}-1)\)
     once a density scaling with rates
     \(\kappa_r(n)_{\nu_r}=\Omega\lambda_r(x)+o(\Omega)\) is specified.
-12. For a finite jump process and additive observable
+15. For a finite jump process and additive observable
     \(A_T=\int h_{i(t)}dt+\sum g_{i_{m-1}i_m}\), conditioning on the first
     short interval gives the exact Feynman--Kac semigroup generated by
     \((\mathsf L_\lambda f)_i=\lambda h_if_i+
     \sum_{j\ne i}W_{ij}(e^{\lambda g_{ij}}f_j-f_i)\).
-13. For an irreducible finite chain and real tilting parameter, the
+16. For an irreducible finite chain and real tilting parameter, the
     long-time scaled cumulant generating function is the Perron eigenvalue
     of \(\mathsf L_\lambda\); a path large-deviation principle still
     requires separate analytic and tightness hypotheses.
-14. For stationary entropy production with
+17. For stationary entropy production with
     \(\sigma_{ij}=\log(\pi_iW_{ij}/\pi_jW_{ji})\), the finite matrix
     identity
     \(\mathsf L_q^\Sigma=\Pi^{-1}(\mathsf L_{1-q}^\Sigma)^T\Pi\)
     implies the Gallavotti--Cohen spectral symmetry
     \(\psi_\Sigma(q)=\psi_\Sigma(1-q)\).
-15. Empirical occupations and flows satisfy finite boundary conservation,
+18. Empirical occupations and flows satisfy finite boundary conservation,
     and their finite level-\(2.5\) cost is
     \[
       I_{2.5}(\rho,q)=\sum_{i,j\ne i}
       \left[q_{ij}\log(q_{ij}/\rho_iW_{ij})-q_{ij}+\rho_iW_{ij}\right],
     \]
     with conservation and support constraints.
-16. The level-\(2.5\) cost follows from the Radon--Nikodym density between
+19. The level-\(2.5\) cost follows from the Radon--Nikodym density between
     the original jump process and the auxiliary process
     \(R_{ij}=q_{ij}/\rho_i\); contracting over conserved flows gives the
     level-\(2\) occupation cost, including
     \(I_2(p)=(\sqrt{pa}-\sqrt{(1-p)b})^2\) for a two-state chain.
-17. In the weak-coupling Markovian limit, the bath spectral matrix
+20. In the weak-coupling Markovian limit, the bath spectral matrix
    \(\gamma_{ab}(\omega)\) is positive by the positive-type/Bochner
    argument and yields the Davies/GKSL generator after the van Hove and
    secular limits.
-18. The GKSL form preserves trace, preserves Hermiticity, and generates a
+21. The GKSL form preserves trace, preserves Hermiticity, and generates a
    completely positive semigroup; the proof diagonalizes the positive bath
    spectral matrices and constructs the finite-time map by the
    Dyson-Phillips jump expansion.
-19. KMS bath spectral functions obey detailed balance; the chapter verifies
+22. KMS bath spectral functions obey detailed balance; the chapter verifies
    the sign and index order by spectral resolution and applies the result to
    the Gibbs stationary ratio for a two-level system.
-20. The quadratic Schwinger-Keldysh influence action has explicitly defined
+23. The quadratic Schwinger-Keldysh influence action has explicitly defined
    retarded and noise kernels; KMS relates them by fluctuation-dissipation.
-21. At finite regulator, the Gaussian SK weight
+24. At finite regulator, the Gaussian SK weight
    \(\exp(i\phi_aE-\phi_aN\phi_a/2)\) is exactly the characteristic function
    of a real Gaussian noise vector with covariance \(N\).  Integrating the
    response variable imposes \(E(\phi_r)+\xi=0\), and for linear retarded
    \(E=K\phi_r-J\) the induced covariance is \(K^{-1}NK^{-T}\).
-22. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
+25. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
    stationary-current computation with the stationary Gaussian
    equilibrium weight fixes \(D_n=\gamma\chi T\) and hence
    \(\langle\xi\xi\rangle=2\gamma\chi T\,\delta\).
-23. Continuum QFT constructions must specify the order of long-time,
+26. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
-24. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
+27. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
     stochastic fields from integer-occupation jump systems, and defines
     nonequilibrium scaling classes operationally by common continuum
     fixed-point data, relevant perturbations, and scaling correlation/response
@@ -186,7 +209,11 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
   waiting-time factors in the finite path-measure entropy-production ratio
   and the driven two-state Jarzynski identity, together with the determinant
   normalization in the finite-step MSRJD Fourier kernel and the Langevin
-  generator expansion on a cubic test function.  It also verifies the
+  generator expansion on a cubic test function.  It also verifies finite
+  Model A/B mobility-gradient data: local mobility drift/noise, graph
+  incidence mobility, conserved total Model B drift, no constant noise mode,
+  positivity of the mobility quadratic form, and zero Gibbs Fokker--Planck
+  current.  It also verifies the
   Doi-Peliti generator matrix on a fixed-total-number two-species reaction
   network, the projection-state symbol \(H_{\rm DP}(1,z)=0\), the
   mass-action drift extracted from the normal symbol, the exponential
@@ -241,3 +268,8 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   section by deriving the finite Gaussian noise representation, the response
   constraint \(E+\xi=0\), the degenerate-noise quotient convention, and the
   linear covariance \(K^{-1}NK^{-T}\), with paired calculation checks.
+- 2026-05-31 finite Model A/B pass: added the finite mobility-gradient
+  stochastic datum for dynamic critical models, derived the Gibbs invariant
+  density from the Fokker--Planck current, constructed Model B from a graph
+  incidence matrix \(B^TCB\), and paired it with a finite mobility/noise
+  conservation calculation check.

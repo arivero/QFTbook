@@ -586,6 +586,162 @@ to be controlled are the regulated drift, the regulated covariance, the
 choice of stochastic discretization, ultraviolet renormalizations of drift
 and noise, and convergence of correlation functions or path measures.
 
+\section{Finite Data for Model A and Model B}
+\label{sec:finite-model-a-model-b-data}
+
+The dynamic-critical labels usually called Model A and Model B designate
+finite-regulator stochastic field data: a slow variable, a free-energy
+functional, a mobility operator, a noise covariance tied to that mobility,
+and a specified scaling limit.  This finite formulation is the part that can
+be stated before any continuum renormalization group analysis.
+
+Let \(x=(x^1,\ldots,x^N)\in\mathbb R^N\) be a finite spatial regulator for a
+real order parameter and let \(\mathcal F:\mathbb R^N\to\mathbb R\) be a
+smooth finite-regulator free-energy functional.  Fix a symmetric
+positive-semidefinite matrix \(\mathsf M^{ab}\).  The mobility-gradient
+Langevin datum is
+\begin{equation}
+  dx^a(t)
+  =
+  -\mathsf M^{ab}\partial_b\mathcal F(x(t))\,dt
+  +\sqrt{2T}\,\sigma^a{}_r\,dB^r_t,
+  \qquad
+  \sigma\sigma^T=\mathsf M ,
+  \label{eq:finite-mobility-gradient-langevin}
+\end{equation}
+where \(T>0\) is the temperature parameter and \(B^r_t\) are independent
+standard Brownian motions.  If \(\mathsf M\) has a kernel, the stochastic
+equation is understood on affine subspaces parallel to \({\rm ran}\,\mathsf
+M\); directions in \(\ker\mathsf M\) are exact conserved linear coordinates.
+The generator on smooth test functions is
+\begin{equation}
+  Lf
+  =
+  -\mathsf M^{ab}\partial_b\mathcal F\,\partial_a f
+  +T\mathsf M^{ab}\partial_a\partial_b f .
+  \label{eq:finite-mobility-gradient-generator}
+\end{equation}
+The adjoint Fokker--Planck equation can be written as a continuity equation
+\begin{equation}
+  \partial_t p=-\partial_a J^a,
+  \qquad
+  J^a
+  =
+  -\mathsf M^{ab}
+  \left(
+    \partial_b\mathcal F\,p+T\partial_b p
+  \right).
+  \label{eq:finite-mobility-gradient-fokker-planck-current}
+\end{equation}
+Consequently the finite Gibbs density
+\begin{equation}
+  p_{\rm eq}(x)=Z^{-1}\exp[-\mathcal F(x)/T]
+  \label{eq:finite-model-ab-gibbs-density}
+\end{equation}
+has zero probability current on each affine sector on which it is
+normalizable, because
+\[
+  \partial_b p_{\rm eq}= -T^{-1}(\partial_b\mathcal F)p_{\rm eq}.
+\]
+This is the finite fluctuation--dissipation relation: the same mobility
+\(\mathsf M\) determines the dissipative drift and the noise covariance
+\[
+  \mathbb E(dx^a dx^b)=2T\mathsf M^{ab}\,dt .
+\]
+
+Model A is the case in which the order parameter is not constrained by a
+conserved charge.  On a finite lattice one typically takes
+\[
+  \mathsf M^{ab}=\Gamma\,\delta^{ab},
+  \qquad
+  \Gamma>0,
+\]
+up to local positive mobility factors.  The drift is then the ordinary
+gradient flow of \(\mathcal F\) with independent local thermal noise:
+\begin{equation}
+  dx^a=-\Gamma\,\partial_a\mathcal F\,dt
+  +\sqrt{2T\Gamma}\,dB^a_t .
+  \label{eq:finite-model-a-langevin}
+\end{equation}
+
+Model B is the case in which the total order parameter is conserved.  Let
+\(G=(V,E)\) be a finite graph approximating space, orient each edge
+\(\ell\), and write \(s(\ell)\) and \(t(\ell)\) for its source and target
+vertices.  Let
+\[
+  B_{\ell v}=\delta_{v,t(\ell)}-\delta_{v,s(\ell)}
+\]
+be the incidence matrix, so \((Bx)_\ell=x_{t(\ell)}-x_{s(\ell)}\).  With
+positive edge mobilities \(c_\ell>0\), set
+\begin{equation}
+  \mathsf M=B^T C B,
+  \qquad
+  C_{\ell\ell'}=c_\ell\delta_{\ell\ell'} .
+  \label{eq:finite-model-b-mobility}
+\end{equation}
+Then \(\mathsf M\ge0\) and \(\mathsf M\mathbf1=0\), hence
+\[
+  \frac{d}{dt}\sum_{i\in V}x_i
+  =
+  -\mathbf1^T\mathsf M\nabla\mathcal F=0
+\]
+and the noise has no constant component.  Equivalently, write
+\[
+  dx_i
+  =
+  -\sum_{\ell}B_{\ell i} c_\ell
+  \sum_j B_{\ell j}\partial_j\mathcal F\,dt
+  +\sqrt{2T}\sum_\ell B_{\ell i}\sqrt{c_\ell}\,dW^\ell_t .
+\]
+The noise is the discrete divergence of an edge noise, so the conserved
+zero mode is absent before any continuum notation is introduced.  In a
+regular lattice limit this is the finite source of the formal expression
+\[
+  \partial_t\phi
+  =
+  \nabla\cdot
+  \left(
+    \lambda\nabla\frac{\delta\mathcal F}{\delta\phi}
+  \right)
+  +\nabla\cdot \xi ,
+  \qquad
+  \langle\xi_i(t,x)\xi_j(t',y)\rangle
+  =
+  2T\lambda\,\delta_{ij}\delta(t-t')\delta(x-y),
+\]
+with the continuum formula understood only after the spatial regulator and
+renormalization have been specified.
+
+The finite path weight is \(\exp[-S_{\rm MSRJD}^{\rm fin}]\), where the
+MSRJD action for the finite mobility-gradient datum follows from
+Section~\ref{sec:finite-step-langevin-msrjd} with
+\(F^a=-\mathsf M^{ab}\partial_b\mathcal F\) and \(D^{ab}=T\mathsf M^{ab}\).
+In response-field notation it is
+\begin{equation}
+  S_{\rm MSRJD}^{\rm fin}
+  =
+  \sum_n
+  \Delta t\,
+  \left[
+    \ii\hat x_{n,a}
+    \left(
+      \frac{x_{n+1}^a-x_n^a}{\Delta t}
+      +\mathsf M^{ab}\partial_b\mathcal F(x_n)
+    \right)
+    +T\hat x_{n,a}\mathsf M^{ab}\hat x_{n,b}
+  \right],
+  \label{eq:finite-model-ab-msrjd-action}
+\end{equation}
+with the finite Fourier-contour convention of
+\eqref{eq:finite-msrjd-identity}.  This expression is a finite action for a
+specified regulator.  A dynamic critical field theory additionally requires:
+the scaling of \(\mathcal F\), \(\mathsf M\), fields, and time; the list of
+slow variables retained; the renormalized drift and noise terms allowed by
+the exact symmetries and conservation laws; and a theorem or controlled
+calculation showing convergence of correlation and response functions.  The
+dynamic exponent \(z\), aging exponents, and scaling functions are outputs
+of that construction rather than entries in the finite datum itself.
+
 \section{Finite Reaction Networks and Doi--Peliti Variables}
 \label{sec:finite-reaction-network-doi-peliti}
 

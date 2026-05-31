@@ -232,6 +232,72 @@ def check_langevin_generator_expansion() -> None:
     assert_close("finite-step Langevin generator expansion", finite_difference, generator_on_cubic + exact_remainder)
 
 
+def check_finite_model_a_b_mobility_data() -> None:
+    temperature = 0.7
+    gamma = 1.3
+    gradient = [0.4, -0.8, 0.5]
+
+    model_a_mobility = [[gamma if i == j else 0.0 for j in range(3)] for i in range(3)]
+    model_a_drift = [
+        -sum(model_a_mobility[i][j] * gradient[j] for j in range(3))
+        for i in range(3)
+    ]
+    model_a_noise = [[2.0 * temperature * model_a_mobility[i][j] for j in range(3)] for i in range(3)]
+    assert_close("Model A drift component", model_a_drift[1], gamma * 0.8)
+    assert_close("Model A local noise variance", model_a_noise[2][2], 2.0 * temperature * gamma)
+
+    # Three-site cycle with oriented edges 0->1, 1->2, 2->0.
+    incidence = [
+        [-1.0, 1.0, 0.0],
+        [0.0, -1.0, 1.0],
+        [1.0, 0.0, -1.0],
+    ]
+    edge_mobility = [2.0, 3.0, 5.0]
+    weighted_incidence = [
+        [edge_mobility[ell] * incidence[ell][v] for v in range(3)]
+        for ell in range(3)
+    ]
+    model_b_mobility = matmul(dagger(incidence), weighted_incidence)
+
+    for i in range(3):
+        for j in range(3):
+            assert_close(f"Model B mobility symmetry {i}{j}", model_b_mobility[i][j], model_b_mobility[j][i])
+        assert_close(f"Model B constant mode row sum {i}", sum(model_b_mobility[i]), 0.0)
+
+    test_vector = [0.6, -0.2, 0.9]
+    edge_gradient = [
+        sum(incidence[ell][v] * test_vector[v] for v in range(3))
+        for ell in range(3)
+    ]
+    quadratic = sum(edge_mobility[ell] * edge_gradient[ell] ** 2 for ell in range(3))
+    matrix_quadratic = sum(
+        test_vector[i] * model_b_mobility[i][j] * test_vector[j]
+        for i in range(3)
+        for j in range(3)
+    )
+    assert_close("Model B positive mobility quadratic form", matrix_quadratic, quadratic)
+
+    drift = [
+        -sum(model_b_mobility[i][j] * gradient[j] for j in range(3))
+        for i in range(3)
+    ]
+    assert_close("Model B conserved total drift", sum(drift), 0.0)
+    noise_covariance = [[2.0 * temperature * model_b_mobility[i][j] for j in range(3)] for i in range(3)]
+    for i in range(3):
+        assert_close(f"Model B noise has no constant component {i}", sum(noise_covariance[i]), 0.0)
+
+    # Finite Gibbs density p_eq proportional to exp(-F/T) gives zero
+    # Fokker-Planck current J = -M(grad F p + T grad p).
+    density = 0.37
+    density_gradient = [-(g / temperature) * density for g in gradient]
+    current = [
+        -sum(model_b_mobility[i][j] * (gradient[j] * density + temperature * density_gradient[j]) for j in range(3))
+        for i in range(3)
+    ]
+    for i, value in enumerate(current):
+        assert_close(f"Model B Gibbs current component {i}", value, 0.0)
+
+
 def check_doi_peliti_two_species_generator() -> None:
     total_number = 3
     rate_ab = Fraction(2, 5)
@@ -541,6 +607,7 @@ def main() -> None:
     check_discrete_jarzynski_identity()
     check_msrjd_gaussian_fourier_kernel()
     check_langevin_generator_expansion()
+    check_finite_model_a_b_mobility_data()
     check_doi_peliti_two_species_generator()
     check_doi_peliti_symbol_and_large_deviation_hamiltonian()
     check_tilted_jump_generator_and_gc_symmetry()
@@ -549,7 +616,7 @@ def main() -> None:
     check_ou_einstein_relation()
     check_positive_noise_kernel()
     check_gaussian_influence_noise_bridge()
-    print("All nonequilibrium open-system checks passed.")
+    print("All nonequilibrium open-system checks, including finite Model A/B mobility data, passed.")
 
 
 if __name__ == "__main__":

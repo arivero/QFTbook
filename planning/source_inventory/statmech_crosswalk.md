@@ -218,15 +218,17 @@ then scaled; no formal response-field path integral should appear as a
 definition without its regulator.
 
 Absorption status: Volume X, Chapter 10 now derives finite-step MSRJD
-variables from Gaussian transition kernels, derives Doi--Peliti variables from
-finite reaction-network generators, and adds the finite
-Schwinger--Keldysh/MSRJD Gaussian bridge: the quadratic SK influence weight is
-rewritten by an explicit Hubbard--Stratonovich characteristic-function
-identity, the response variable imposes \(E(\phi_r)+\xi=0\), and a linear
-retarded equation gives covariance \(K^{-1}NK^{-T}\).  Remaining work in this
-track is the continuum renormalization of nonequilibrium stochastic field
-theories and a careful treatment of dynamic critical models with conserved
-and nonconserved slow variables.
+variables from Gaussian transition kernels, formulates finite Model A/B
+mobility-gradient data with Gibbs invariant density and the graph-incidence
+conservation mechanism for Model B, derives Doi--Peliti variables from finite
+reaction-network generators, and adds the finite Schwinger--Keldysh/MSRJD
+Gaussian bridge: the quadratic SK influence weight is rewritten by an explicit
+Hubbard--Stratonovich characteristic-function identity, the response variable
+imposes \(E(\phi_r)+\xi=0\), and a linear retarded equation gives covariance
+\(K^{-1}NK^{-T}\).  Remaining work in this track is the continuum
+renormalization of nonequilibrium stochastic field theories, dynamic critical
+models with additional slow variables, and model-by-model RG analyses of
+conserved and nonconserved stochastic field theories.
 
 ### Linear Response, Kubo, Mori--Zwanzig, Hydrodynamic Limits, And GHD
 

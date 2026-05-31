@@ -1137,7 +1137,9 @@ Current checks:
   entropy production, finite local-detailed-balance entropy splitting,
   the finite jump path-measure Radon--Nikodym ratio, a driven two-state
   Jarzynski identity, finite-step MSRJD Gaussian/Fourier normalization,
-  Langevin generator expansion, finite Doi--Peliti generator matrix
+  Langevin generator expansion, finite Model A/B mobility-gradient
+  data including graph-incidence mobility, conserved total drift, no
+  constant noise mode, and zero Gibbs current, finite Doi--Peliti generator matrix
   identities, the Doi--Peliti symbol and exponential-test large-deviation
   Hamiltonian, the finite Feynman--Kac tilted generator for jump additives,
   the stationary finite-ring Gallavotti--Cohen similarity identity, the
