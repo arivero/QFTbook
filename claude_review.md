@@ -1,6 +1,6 @@
 # QFT Monograph — Active Review
 
-Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-29)**: **27 open issues after opening the quoted-theorem proof-debt cluster issues #695--#698**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers; #691 remains open until surviving trivial theorem-family wrappers are demoted or strengthened after reading the actual proof substance. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
+Tracks **unresolved / actionable** items only. The GitHub issue tracker on `xiyin137/QFT` is the primary backlog. **Current state (2026-05-30)**: **27 open issues**. End-to-end per-figure audit complete (114 figures across all 12 volumes; 43 issues filed #649–#690, all closed). Audit-meta issue #579 is closed after the proof-substance ledgers; #691 remains open until surviving trivial theorem-family wrappers are demoted or strengthened after reading the actual proof substance. Issue #701 remains open as the comprehensive-audit meta issue; its source-vs-print mapping item A3 is now addressed in the frontmatter source assembly map, while bibliography/index/monolith/depth follow-ons remain. Depth-pass-B work on previously-closed lanes and substantive chapter additions remain. Issue #693 is resolved by converting every genuinely labelled `\[...\]` display to a numbered equation environment and adding a build-gate audit against recurrence.
 
 This document holds items that are either (a) not well-captured in individual issues, (b) cross-cutting in a way the tracker can't surface, or (c) strategic decisions / planning recommendations / standing directives. For completed work and per-issue history, see `git log` and the GitHub issue threads.
 
@@ -76,7 +76,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 
 ---
 
-## Open backlog (23 GitHub issues)
+## Open backlog (selected GitHub issues; tracker is authoritative)
 
 ### Substantial chapter-additions still owed
 
@@ -126,6 +126,7 @@ Not a literature survey / textbook reproduction / curated collection / lecture-n
 | [#561](https://github.com/xiyin137/QFT/issues/561) | Per-chapter calc-check companions: 153 scripts, ≈85%+ coverage; close remaining gaps |
 | [#562](https://github.com/xiyin137/QFT/issues/562) | Assertion-passing-as-derivation pattern — continued reduction by Vol VI ch04 Ising spin/twist separated Euclidean spectral-series proof |
 | [#564](https://github.com/xiyin137/QFT/issues/564) | Promised examples / computations never delivered — partial: Vol VI ch04 now carries the infinite Ising spin/twist form-factor families through separated Euclidean spectral convergence with paired calc-checks |
+| [#701](https://github.com/xiyin137/QFT/issues/701) | Comprehensive audit meta. Addressed: A3 source-vs-print volume confusion now has a frontmatter source assembly map. Remaining: formal bibliography/citation system, index/glossary/nomenclature, Vol II ch19 monolith split, Vol XI ch09 structural balance, and any new findings from continued full audit |
 ---
 
 ## Strategic items not captured as individual issues

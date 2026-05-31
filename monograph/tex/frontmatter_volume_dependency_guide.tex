@@ -74,3 +74,144 @@ backreaction are developed in Volume XII.
 When a chapter uses a result from a later volume, the local statement should
 identify the object being imported and its theorem status.  This guide only
 locates the development; it does not certify a claim by itself.
+
+\section*{Source Assembly Map}
+\addcontentsline{toc}{section}{Source Assembly Map}
+
+The source directory names still contain traces of earlier drafting stages.
+They are therefore not authoritative indicators of the printed order.  The
+printed parts are assembled by the following files, in the order shown in
+\texttt{main.tex}.
+\begin{center}
+\begin{tabular}{c@{\quad}l}
+Part I & \path{volumes/volume_i/volume_i_current.tex}\\
+Part II & \path{volumes/volume_ii/volume_ii_current.tex}\\
+Part III & \path{volumes/volume_iii/volume_iii_current.tex}\\
+Part IV & \path{volumes/volume_iv/volume_iv_current.tex}\\
+Part V & \path{volumes/volume_v/volume_v_current.tex}\\
+Part VI & \path{volumes/volume_vi/volume_vi_current.tex}\\
+Part VII & \path{volumes/volume_vii/volume_vii_current.tex}\\
+Part VIII & \path{volumes/volume_viii/volume_viii_current.tex}\\
+Part IX & \path{volumes/volume_ix/volume_ix_current.tex}\\
+Part X & \path{volumes/volume_x/volume_x_current.tex}\\
+Part XI & \path{volumes/volume_xi/volume_xi_current.tex}\\
+Part XII & \path{volumes/volume_xii/volume_xii_current.tex}
+\end{tabular}
+\end{center}
+For chapters not listed below, the chapter source file lies in the same
+source-volume directory as the printed part.  The table records every current
+exception.  A row marked ``section input'' means that the source file is
+inserted into the preceding printed chapter and does not increment the chapter
+counter.
+
+\begingroup
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.14\textwidth}
+                  >{\raggedright\arraybackslash}p{0.28\textwidth}
+                  >{\raggedright\arraybackslash}p{0.09\textwidth}
+                  >{\raggedright\arraybackslash}p{0.39\textwidth}}
+\hline
+\textbf{Printed location} & \textbf{Printed title or source unit} &
+\textbf{Source part} & \textbf{Source file}\\
+\hline
+\endhead
+Part I, Ch. 2 & Wightman Fields and Reconstruction & IV &
+\path{volumes/volume_iv/chapter01_wightman_fields_and_reconstruction.tex}\\
+Part I, Ch. 3 & Algebraic QFT: Local Nets and States & IV &
+\path{volumes/volume_iv/chapter03_algebraic_qft_local_nets_and_states.tex}\\
+Part I, Ch. 4 & Superselection Sectors and Locality Properties & IV &
+\path{volumes/volume_iv/chapter04_superselection_sectors_and_locality_properties.tex}\\
+Part I, Ch. 12 & Osterwalder--Schrader Reconstruction & IV &
+\path{volumes/volume_iv/chapter02_osterwalder_schrader_reconstruction.tex}\\
+Part I, Ch. 13 & Kontsevich--Segal Functorial Quantum Field Theory & IV &
+\path{volumes/volume_iv/chapter06_kontsevich_segal_functorial_qft.tex}\\
+Part II, Ch. 17 & Haag--Ruelle Scattering Theory & I &
+\path{volumes/volume_i/chapter12_haag_ruelle_scattering_theory.tex}\\
+Part II, Ch. 18 & LSZ Reduction & I &
+\path{volumes/volume_i/chapter13_lsz_reduction_and_the_s_matrix.tex}\\
+Part II, Ch. 19 & Cross Sections, Phase Space, and Unitarity & I &
+\path{volumes/volume_i/chapter14_cross_sections_partial_waves_and_unitarity.tex}\\
+Part II, Ch. 20 & Massive Particles and Spin & I &
+\path{volumes/volume_i/chapter15_massive_particles_with_spin.tex}\\
+Part II, Ch. 21 & Massless Particles, Helicity, and Gauge Redundancy & I &
+\path{volumes/volume_i/chapter17_massless_particles_helicity_and_gauge_redundancy.tex}\\
+Part II, Ch. 22 & Haag--Ruelle Theory and Mathematical Scattering & IV &
+\path{volumes/volume_iv/chapter05_haag_ruelle_and_mathematical_scattering.tex}\\
+Part III, Ch. 30 & Generating Functionals and the One-Particle-Irreducible Effective Action & II &
+\path{volumes/volume_ii/chapter23_generating_functionals_and_the_one_particle_irreducible_effective_action.tex}\\
+Part III, Ch. 31 & Renormalizability and Local Counterterms & II &
+\path{volumes/volume_ii/chapter08_renormalizability_and_local_counterterms.tex}\\
+Part III, Ch. 32 & Subdivergences and Forest Formulas & II &
+\path{volumes/volume_ii/chapter09_subdivergences_and_bphz_subtractions.tex}\\
+Part III, Ch. 33 & The 1PI Renormalization Group & II &
+\path{volumes/volume_ii/chapter10_renormalization_group_and_running_couplings.tex}\\
+Part III, Ch. 34 & Renormalized Operators and Minimal Subtraction & II &
+\path{volumes/volume_ii/chapter12_renormalized_operators_and_minimal_subtraction.tex}\\
+Part III, Ch. 35 & Stress Tensor Trace and Conformal Currents & II &
+\path{volumes/volume_ii/chapter13_stress_tensor_trace_scale_invariance_and_conformal_currents.tex}\\
+Part III, Ch. 36 & Wilsonian Effective Actions and Exact Cutoff Flow & II &
+\path{volumes/volume_ii/chapter16_wilsonian_effective_field_theory.tex}\\
+Part III, Ch. 37 & The Wilson-Fisher Fixed Point and Scaling Operators & II &
+\path{volumes/volume_ii/chapter14_the_wilson_fisher_fixed_point_and_scaling_operators.tex}\\
+Part III, Ch. 38 & The Statistical Ising Model and Universality & II &
+\path{volumes/volume_ii/chapter15_the_statistical_ising_model_and_universality.tex}\\
+Part III, Ch. 39 & Effective Field Theories Without Poincare-Invariant UV Completion & II &
+\path{volumes/volume_ii/chapter15b_efts_without_poincare_uv_completion.tex}\\
+Part IV, Ch. 40 & Spinor Fields, Fermionic Statistics, and Grassmann Path Integrals & I &
+\path{volumes/volume_i/chapter16_spinor_fields_fermionic_statistics_and_grassmann_path_integrals.tex}\\
+Part IV, Ch. 40 & Spinor and Gamma-Matrix Conventions (section input) & I &
+\path{volumes/volume_i/chapter16a_spinor_conventions.tex}\\
+Part IV, Ch. 41 & Maxwell Theory, Constraints, and Gauge Fixing & I &
+\path{volumes/volume_i/chapter18_maxwell_theory_constraints_and_gauge_fixing.tex}\\
+Part IV, Ch. 42 & Quantum Electrodynamics and External States & I &
+\path{volumes/volume_i/chapter19_quantum_electrodynamics_and_external_states.tex}\\
+Part IV, Ch. 43 & QED Renormalization and Electromagnetic Form Factors & I &
+\path{volumes/volume_i/chapter20_qed_renormalization_and_electromagnetic_form_factors.tex}\\
+Part IV, Ch. 44 & Infrared Divergences and Inclusive QED & II &
+\path{volumes/volume_ii/chapter22_infrared_divergences_and_inclusive_qed.tex}\\
+Part IV, Ch. 45 & Classical Yang-Mills Theory and Matter Fields & II &
+\path{volumes/volume_ii/chapter17_yang_mills_theory_and_matter_fields.tex}\\
+Part IV, Ch. 46 & Lattice Yang--Mills as a Nonperturbative Formulation & II &
+\path{volumes/volume_ii/chapter17b_lattice_yang_mills_nonperturbative_definition.tex}\\
+Part IV, Ch. 47 & Gauge Fixing, Ghosts, and BRST Cohomology & II &
+\path{volumes/volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex}\\
+Part IV, Ch. 48 & The BV Master Formalism for Gauge Effective Actions & II &
+\path{volumes/volume_ii/chapter24_bv_master_formalism_gauge_effective_actions.tex}\\
+Part IV, Ch. 49 & QCD Renormalization, Asymptotic Freedom, and Deep Inelastic Scattering & II &
+\path{volumes/volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex}\\
+Part IV, Ch. 50 & Jets, Infrared-Safe Observables, and Hadronization & II &
+\path{volumes/volume_ii/chapter19b_jets_ir_safe_observables_and_hadronization.tex}\\
+Part IV, Ch. 51 & Chiral Axial Anomalies & II &
+\path{volumes/volume_ii/chapter20_chiral_axial_anomalies.tex}\\
+Part IV, Ch. 52 & The Schwinger Model: Two-Dimensional Quantum Electrodynamics & II &
+\path{volumes/volume_ii/chapter20b_schwinger_model_two_dimensional_qed.tex}\\
+Part IV, Ch. 53 & Large-\(N\) Two-Dimensional QCD and the Light-Front Bound-State Equation & II &
+\path{volumes/volume_ii/chapter20c_large_n_two_dimensional_qcd_light_front.tex}\\
+Part IV, Ch. 54 & The Standard Model as a Hybrid Quantum Field Theory & II &
+\path{volumes/volume_ii/chapter19c_standard_model_hybrid_definition.tex}\\
+Part IV, Ch. 55 & Global Anomalies, Spontaneous Symmetry Breaking, and Pions & II &
+\path{volumes/volume_ii/chapter21_global_anomalies_spontaneous_symmetry_breaking_and_pions.tex}\\
+Part V, Ch. 56 & Fixed Points and Conformal Data & III &
+\path{volumes/volume_iii/chapter01_fixed_points_and_conformal_data.tex}\\
+Part V, Ch. 57 & Conformal Killing Vectors and the Conformal Group & III &
+\path{volumes/volume_iii/chapter02_conformal_killing_vectors_and_the_conformal_group.tex}\\
+Part V, Ch. 58 & Stress Tensor, Weyl Structure, and Improvement & III &
+\path{volumes/volume_iii/chapter03_stress_tensor_weyl_structure_and_improvement.tex}\\
+Part V, Ch. 59 & Radial Quantization and the State-Operator Correspondence & III &
+\path{volumes/volume_iii/chapter04_radial_quantization_and_state_operator_correspondence.tex}\\
+Part V, Ch. 60 & Conformal Charges and Ward Identities & III &
+\path{volumes/volume_iii/chapter05_conformal_charges_and_ward_identities.tex}\\
+Part V, Ch. 61 & Primary Operators and Finite Conformal Transformations & III &
+\path{volumes/volume_iii/chapter06_primary_operators_and_finite_transformations.tex}\\
+Part V, Ch. 62 & Unitarity Bounds and Short Multiplets & III &
+\path{volumes/volume_iii/chapter07_unitarity_bounds_and_short_multiplets.tex}\\
+Part V, Ch. 63 & Correlation Functions and Conformal Frames & III &
+\path{volumes/volume_iii/chapter08_correlation_functions_and_conformal_frames.tex}\\
+Part V, Ch. 64 & The Operator Product Expansion & III &
+\path{volumes/volume_iii/chapter09_operator_product_expansion.tex}\\
+Part V, Ch. 65 & Light-Ray Operators and Energy Correlators & III &
+\path{volumes/volume_iii/chapter10_light_ray_operators_and_energy_correlators.tex}\\
+\hline
+\end{longtable}
+\endgroup
