@@ -677,6 +677,25 @@ not notebook-only `.nb` files.  Run them through
 tools/run_calculation_checks.sh
 ```
 
+for a full explicit batch pass, or through a targeted selection such as
+
+```bash
+tools/run_calculation_checks.sh --only qcd_dglap --skip-wolfram
+```
+
+when only a particular convention family was touched.  The active inventory is
+listed by
+
+```bash
+tools/run_calculation_checks.sh --list
+```
+
+The full calculation-check runner is intentionally not wired into
+`tools/build_monograph.sh`: the default build must remain a TeX and manuscript
+structure gate, while calculation checks are run deliberately against the
+formulae, normalizations, or scripts that changed.  Do not claim a full
+calculation-check verification unless the full runner actually ran.
+
 or directly with
 
 ```bash

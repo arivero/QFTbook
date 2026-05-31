@@ -6,8 +6,117 @@ cd "$ROOT"
 
 shopt -s nullglob
 
-python_checks=(calculation-checks/*_checks.py)
-wolfram_checks=(calculation-checks/*_checks.wl)
+usage() {
+  cat <<'USAGE'
+Usage: tools/run_calculation_checks.sh [options]
+
+Runs public calculation-check scripts explicitly.  This runner is intentionally
+not part of the default monograph build; use it when a chapter edit touches
+formulae or conventions covered by the relevant scripts.
+
+Options:
+  --list              List selected checks without running them.
+  --only PATTERN      Select checks whose path or basename contains PATTERN.
+                      May be supplied more than once.
+  --python-only       Run/list only Python checks.
+  --wolfram-only      Run/list only Wolfram Language checks.
+  --skip-wolfram      Alias for QFT_SKIP_WOLFRAM=1 for this invocation.
+  -h, --help          Show this help.
+USAGE
+}
+
+include_python=1
+include_wolfram=1
+list_only=0
+only_patterns=()
+
+while (($#)); do
+  case "$1" in
+    --list)
+      list_only=1
+      ;;
+    --only)
+      shift
+      if (($# == 0)); then
+        echo "[calculation-checks] FAILED: --only requires a pattern." >&2
+        exit 2
+      fi
+      only_patterns+=("$1")
+      ;;
+    --python-only)
+      include_python=1
+      include_wolfram=0
+      ;;
+    --wolfram-only)
+      include_python=0
+      include_wolfram=1
+      ;;
+    --skip-wolfram)
+      include_wolfram=0
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "[calculation-checks] FAILED: unknown option $1" >&2
+      usage >&2
+      exit 2
+      ;;
+  esac
+  shift
+done
+
+matches_only_patterns() {
+  local check="$1"
+  local base="${check##*/}"
+  local pattern
+
+  if ((${#only_patterns[@]} == 0)); then
+    return 0
+  fi
+
+  for pattern in "${only_patterns[@]}"; do
+    if [[ "$check" == *"$pattern"* || "$base" == *"$pattern"* ||
+      "$check" == $pattern || "$base" == $pattern ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+python_checks=()
+wolfram_checks=()
+
+if ((include_python)); then
+  for check in calculation-checks/*.py; do
+    if matches_only_patterns "$check"; then
+      python_checks+=("$check")
+    fi
+  done
+fi
+
+if ((include_wolfram)); then
+  for check in calculation-checks/*.wl; do
+    if matches_only_patterns "$check"; then
+      wolfram_checks+=("$check")
+    fi
+  done
+fi
+
+if ((list_only)); then
+  echo "[calculation-checks] selected Python checks: ${#python_checks[@]}"
+  printf '%s\n' "${python_checks[@]}"
+  echo "[calculation-checks] selected Wolfram Language checks: ${#wolfram_checks[@]}"
+  printf '%s\n' "${wolfram_checks[@]}"
+  exit 0
+fi
+
+if ((${#python_checks[@]} + ${#wolfram_checks[@]} == 0)); then
+  echo "[calculation-checks] FAILED: no checks selected." >&2
+  exit 1
+fi
 
 for check in "${python_checks[@]}"; do
   echo "[calculation-checks] python ${check}"
@@ -138,7 +247,9 @@ run_wolfram_file() {
   fi
 }
 
-if [[ "${QFT_SKIP_WOLFRAM:-0}" == "1" ]]; then
+if ((include_wolfram == 0)); then
+  echo "[calculation-checks] Wolfram Language checks not selected"
+elif [[ "${QFT_SKIP_WOLFRAM:-0}" == "1" ]]; then
   echo "[calculation-checks] QFT_SKIP_WOLFRAM=1; skipped Wolfram Language checks"
 elif ((${#wolfram_checks[@]} == 0)); then
   echo "[calculation-checks] no Wolfram Language checks found"

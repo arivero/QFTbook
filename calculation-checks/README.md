@@ -1460,6 +1460,25 @@ Current checks:
   partition function, the circle Casimir coefficient
   \(\zeta_{\rm R}(-1)=-1/12\), and the sign of the determinant's scale
   dependence.
+- `cft_correlator_kinematics_checks.py`: symbolic checks for CFT
+  correlator kinematics, including scalar three-point weights, four-point
+  prefactor inversion weights, the generic four-point conformal-frame
+  quotient dimension, and the \(u=z\bar z\), \(v=(1-z)(1-\bar z)\)
+  cross-ratio frame.
+- `cluster_sweep_grid_checks.py`: independent checks for the cluster
+  SU(3) sweep-grid resolver in `qft_scripts/cluster/`, including Cartesian
+  task ordering, out-of-range rejection, and environment-variable CLI output
+  for SLURM-style job arrays.
+- `renormalizability_counterterm_checks.py`: finite checks for the
+  renormalizability and counterterm discussion, including the one-loop
+  \(\phi^3_6\) pole coefficients, the finite-list power-counting logic for
+  interactions of dimension at most \(D\), proliferation from repeated
+  irrelevant insertions, and scaling-degree ambiguity bounds for supported
+  distributions.
+- `tomita_standard_form_checks.py`: finite matrix checks for the
+  Tomita--Takesaki and Connes-standard-form conventions, including the
+  Tomita polar data on matrix units, commutant and modular-automorphism
+  identities, Connes cocycle composition, and positive-cone diagnostics.
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the source spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.
@@ -1473,6 +1492,24 @@ Run all available checks from the repository root with:
 ```bash
 tools/run_calculation_checks.sh
 ```
+
+List the exact active inventory without running it with:
+
+```bash
+tools/run_calculation_checks.sh --list
+```
+
+For ordinary editing passes, run the relevant checks by pattern rather than
+the full suite, for example:
+
+```bash
+tools/run_calculation_checks.sh --only qcd_dglap --skip-wolfram
+```
+
+The full runner is an explicit batch tool.  It is intentionally not invoked by
+`tools/build_monograph.sh`: the default build verifies manuscript structure
+and TeX consistency, while calculation checks are rerun when the formulae,
+normalizations, or conventions they certify have been touched.
 
 For Wolfram Language checks, the runner requires a working batch backend when
 any `.wl` files are present.  On the author's macOS installation the preferred
