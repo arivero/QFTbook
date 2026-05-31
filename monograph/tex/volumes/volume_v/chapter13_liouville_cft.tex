@@ -158,6 +158,7 @@ interaction as Gaussian multiplicative chaos.
 
 \begin{definition}[Seiberg domain in physics normalization]
 \label{def:liouville-seiberg-domain}
+\label{def:seiberg-domain-in-physics-normalization}
 For insertions \(V_{\alpha_1}(x_1),\ldots,V_{\alpha_n}(x_n)\) on a closed
 surface \(\Sigma\) with Euler characteristic \(\chi(\Sigma)\), the Seiberg
 domain is the set of momenta satisfying
@@ -179,6 +180,24 @@ contribute \(\exp[2c\sum_i\alpha_i]\).  As \(c\to-\infty\), integrability
 requires \(2\sum_i\alpha_i-Q\chi(\Sigma)>0\).  The positive \(c\) direction
 is controlled by the Liouville potential when its multiplicative-chaos
 measure is nonzero.
+
+Equivalently, with
+\[
+  \varepsilon_\Sigma(\boldsymbol\alpha)
+  :=
+  \sum_i\alpha_i-\frac Q2\chi(\Sigma),
+\]
+the negative-constant-mode tail has the model form
+\[
+  \int_{-\infty}^{c_0}\ee^{2\varepsilon_\Sigma c}\,\dd c .
+\]
+The second Seiberg-domain inequality is precisely
+\(\operatorname{Re}\varepsilon_\Sigma>0\).  The pole calculation in
+Paragraph~\ref{par:liouville-pole-normalization-reflection} is the same
+zero-mode mechanism evaluated on the boundary of this convergence region;
+outside the Seiberg domain, the correlator is represented by the meromorphic
+continuation whose boundary residues are described in
+Subsection~\ref{subsec:liouville-pole-residue-structure}.
 
 \begin{definition}[Gaussian multiplicative chaos input]
 \label{def:liouville-gmc-input}
@@ -1037,6 +1056,7 @@ zero-mode convention for the origin of \(\phi_0\), so it is absent from this
 representative.
 
 \paragraph{Pole normalization and the reflection phase.}
+\label{par:liouville-pole-normalization-reflection}
 The scattering normalization also determines the phase \(S(P)\) in
 Definition~\ref{def:liouville-scattering-basis}.  Let
 \[
@@ -1413,6 +1433,85 @@ problem below.
 
 \section{Degenerate Insertions and BPZ Equations}
 
+\subsection{Pole-Residue Structure of Liouville Correlators}
+\label{subsec:liouville-pole-residue-structure}
+
+The Coulomb-gas computations below are residue computations in the
+meromorphic Liouville correlator.  This is the point that the Coulomb-gas
+notation tends to obscure: expansion by screening number is Laurent-coefficient
+bookkeeping at pole hyperplanes, not an approximation to the Liouville
+correlator at small \(\mu\).  The constant-mode calculation following
+Definition~\ref{def:liouville-seiberg-domain} gives the organizing
+coordinate.  On a closed genus \(g\) surface,
+\[
+  \varepsilon_\Sigma(\boldsymbol\alpha)
+  =
+  \sum_i\alpha_i-Q(1-g)
+  =
+  \sum_i\alpha_i-\frac Q2\chi(\Sigma),
+\]
+and the weak-coupling tail \(\phi_0\to-\infty\) has the form
+\[
+  \int_{-\infty}^{c_0}
+  \ee^{2\varepsilon_\Sigma c}\,\dd c .
+\]
+The Seiberg domain is the open convergence region
+\(\operatorname{Re}\varepsilon_\Sigma>0\), together with the local
+integrability inequalities \(\alpha_i<Q/2\).  The meromorphic continuation of
+the correlator has boundary poles when the exponent can be neutralized by
+screening insertions.  Expanding the interaction only as a device for
+extracting residues,
+\[
+  \exp\!\left[-\mu\int_\Sigma V_b\right]
+  =
+  \sum_{N\ge0}
+  \frac{(-\mu)^N}{N!}
+  \left(\int_\Sigma V_b\right)^N,
+\]
+the \(N\)-screening term changes the zero-mode exponent from
+\(\varepsilon_\Sigma\) to \(\varepsilon_\Sigma+Nb\).  Hence it contributes to
+the residue on the pole hyperplane
+\begin{equation}
+  \varepsilon_\Sigma(\boldsymbol\alpha)=-Nb,
+  \qquad N\in\mathbb Z_{\ge0}.
+  \label{eq:liouville-b-screening-poles}
+\end{equation}
+At this hyperplane the remaining integral over the mean-zero field and the
+screening positions is the Coulomb-gas integral for the residue.  Terms with
+a different number of screenings compute residues at different hyperplanes;
+each pole hyperplane has its own neutralizing screening number.
+
+The \(b\leftrightarrow b^{-1}\) duality of the DOZZ meromorphic function
+gives the parallel family
+\begin{equation}
+  \varepsilon_\Sigma(\boldsymbol\alpha)=-\frac{\widehat N}{b},
+  \qquad \widehat N\in\mathbb Z_{\ge0},
+  \label{eq:liouville-dual-screening-poles}
+\end{equation}
+whose residues are represented by \(\widehat N\) insertions of the dual
+screening \(V_{1/b}\) with a normalization
+\(\widetilde\mu\).  The dual screening is therefore a coordinate on the
+dual residue family of the meromorphic correlator.  The classical action
+remains \eqref{eq:liouville-classical-action}; the relation between
+\(\widetilde\mu\) and \(\mu\) is part of the global DOZZ normalization.
+
+This is the logical bridge between the probabilistic convergence statement,
+the scattering pole calculation, and the degenerate BPZ shift derivation.
+The pole at \(\epsilon=0\) used in
+Paragraph~\ref{par:liouville-pole-normalization-reflection} is the
+zero-screening member of the same volume-divergence mechanism.  The
+one-screening coefficient in
+Lemma~\ref{lem:liouville-degenerate-screening-coefficient} is the residue at
+the \(N=1\) pole in \eqref{eq:liouville-b-screening-poles}.  The dual
+coefficient in Lemma~\ref{lem:liouville-dual-screening-coefficient} is the
+\(\widehat N=1\) residue in
+\eqref{eq:liouville-dual-screening-poles}.  The full DOZZ three-point
+function is the meromorphic solution reconstructed from these residue
+families, the reflection relation, the two degenerate BPZ shift equations,
+and the \(b\leftrightarrow b^{-1}\) symmetry, subject to the analytic
+theorem boundary stated in
+Quoted Theorem~\ref{qthm:dozz-formula}.
+
 The simplest degenerate Liouville momentum is \(\alpha=-b/2\).  Its conformal
 weight is
 \[
@@ -1614,8 +1713,9 @@ solution with the reflection, shift, and analyticity properties stated above.
 In the free-field normalization of Convention
 \ref{conv:liouville-free-field-normalization}, and with the interaction
 normalization in \eqref{eq:liouville-classical-action}, the degenerate OPE is
-normalized so that \(C_+(\alpha)=1\).  The one-screening coefficient in the
-second channel is the meromorphic function
+normalized so that \(C_+(\alpha)=1\).  The residue at the single
+\(V_b\)-screening pole in the second channel is represented by the
+meromorphic coefficient
 \begin{equation}
 \begin{aligned}
   C_-(\alpha)
@@ -1653,11 +1753,17 @@ expected OPE power
   =
   |z|^{2b\alpha}V_{\alpha-b/2}(0)+\cdots .
 \]
-For the second channel one expands the interaction
-\(\exp[-\mu\int V_b]\) to first order.  The charge of
-\(V_b(w)V_{-b/2}(z)V_\alpha(0)\) is \(\alpha+b/2\), so this is the unique
-single-screening contribution to the channel \(V_{\alpha+b/2}\).  The free
-contractions give
+For the second channel, the relevant pole of the meromorphic correlator is
+the hyperplane on which the zero-mode deficit is neutralized by exactly one
+\(V_b\) screening, as in
+\eqref{eq:liouville-b-screening-poles}.  The charge of
+\(V_b(w)V_{-b/2}(z)V_\alpha(0)\) is \(\alpha+b/2\), so the single-screening
+configuration computes the residue multiplying the channel
+\(V_{\alpha+b/2}\).  Contributions with two, three, or more \(V_b\)
+insertions have zero-mode exponents matched at
+\(\varepsilon_\Sigma=-2b,-3b,\ldots\); they are residues at different poles
+of the same meromorphic object.  The free contractions for the
+single-screening residue give
 \[
   -\mu\int_{\mathbb C}\dd^2 w\,
   |z|^{2b\alpha}\,|w-z|^{2b^2}\,|w|^{-4b\alpha}\,
@@ -1677,6 +1783,11 @@ which is exactly the required OPE power in the second channel.  Thus
   \int_{\mathbb C}\dd^2u\,
   |u|^{-4b\alpha}|1-u|^{2b^2}.
 \]
+This integral is the local Coulomb-gas representative of the residue at the
+single-screening pole.  Its dependence on \(\mu\) records the normalization
+of that residue in the classical action convention.  The full Liouville
+correlator is the meromorphic object reconstructed from all residue data and
+the reflection and shift constraints.
 For complex exponents \(a,c\) in a convergence domain, the
 Dotsenko--Fateev beta integral is
 \begin{equation}
@@ -1700,10 +1811,11 @@ strip.  Substituting \(a=-2b\alpha\) and \(c=b^2\) gives the first line of
 
 \begin{lemma}[Dual screening computation]
 \label{lem:liouville-dual-screening-coefficient}
-Assume, as a Coulomb-gas representation of the \(b^{-1}\)-shift equation,
-that the dual screening operator \(V_{1/b}\) is available with formal
-coefficient \(\widetilde\mu\).  This is an additional bootstrap-screening
-input, not an extra term in the classical action
+The \(b\leftrightarrow b^{-1}\) dual residue family of the DOZZ meromorphic
+correlator is represented locally by the dual screening \(V_{1/b}\) with
+coefficient \(\widetilde\mu\), as in
+\eqref{eq:liouville-dual-screening-poles}.  This coefficient fixes the
+normalization of the dual residues.  The classical action remains
 \eqref{eq:liouville-classical-action}.  Normalize the no-dual-screening
 channel in
 \[
@@ -1737,8 +1849,12 @@ the meromorphic function
 \begin{proof}
 The no-dual-screening product has charge \(\alpha-1/(2b)\) and fixes
 \(\widetilde C_+(\alpha)=1\).  The channel
-\(\alpha+1/(2b)\) requires one insertion of the dual screening
-\(V_{1/b}(w)\).  Its free contractions give
+\(\alpha+1/(2b)\) lies on the pole whose zero-mode deficit is neutralized by
+one insertion of \(V_{1/b}(w)\).  This single dual screening computes the
+\(\widehat N=1\) residue in
+\eqref{eq:liouville-dual-screening-poles}; further dual screenings compute
+the residues at \(\varepsilon_\Sigma=-2/b,-3/b,\ldots\).  The free
+contractions for the single dual residue give
 \[
   -\widetilde\mu\int_{\mathbb C}\dd^2 w\,
   |z|^{2\alpha/b}\,|w-z|^{2/b^2}\,|w|^{-4\alpha/b}\,
@@ -1765,8 +1881,8 @@ Applying \eqref{eq:liouville-dotsenko-fateev-beta-integral} with
 precise \(b\leftrightarrow b^{-1}\) counterpart of
 Lemma~\ref{lem:liouville-degenerate-screening-coefficient}, with
 \(\widetilde\mu\) kept explicit because the relation between \(\mu\) and
-\(\widetilde\mu\) is part of the full bootstrap normalization, not of this
-local integral alone.
+\(\widetilde\mu\) is part of the full meromorphic DOZZ normalization; this
+local residue integral fixes only the displayed coefficient.
 \end{proof}
 
 \begin{proposition}[Degenerate BPZ blocks and the DOZZ \(b\)-shift]

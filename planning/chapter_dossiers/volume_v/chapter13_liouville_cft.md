@@ -63,6 +63,9 @@ boundaries rather than importing the appendix exposition.
   marginality condition `Q=b+b^{-1}` for the Liouville potential.
 - Defines the Seiberg domain and checks the zero-mode integrability
   inequality.
+- Identifies the Seiberg-domain inequality as the convergence condition of
+  the negative constant-mode integral, and organizes the complementary
+  meromorphic continuation by zero-mode pole residues.
 - Defines the GMC measure used in the probabilistic construction and states
   the GKRV probabilistic construction as a `quotedtheorem`.
 - Expands the constant-mode reduction of the probabilistic construction with
@@ -124,13 +127,13 @@ boundaries rather than importing the appendix exposition.
   dual degenerate momentum `alpha=-1/(2b)`, deriving both BPZ differential
   equations with their distinct `b^2` and `b^{-2}` coefficients.
 - Derives the degenerate OPE coefficient `C_-(alpha)` from the local
-  one-screening Coulomb-gas integral, including the Dotsenko-Fateev
+  one-screening Coulomb-gas residue integral, including the Dotsenko-Fateev
   meromorphic-continuation boundary and the gamma-function rewrites matching
   the chapter convention.
 - Derives the dual one-screening coefficient for the
-  `V_{-1/(2b)}` channel with a formal dual screening coefficient
-  `tilde_mu`, while stating that this is a bootstrap-screening input rather
-  than an extra term in the classical action.
+  `V_{-1/(2b)}` channel as the `b <-> b^{-1}` dual residue family of the
+  DOZZ meromorphic correlator, with `tilde_mu` recording the dual-residue
+  normalization rather than a classical-action coupling.
 - Reduces the four-point function with one `V_{-b/2}` insertion to
   hypergeometric blocks, identifies the two local fusion exponents, and
   derives the explicit gamma-product DOZZ `b`-shift ratio from the
@@ -245,6 +248,13 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 dual-screening pass: added the formal dual Coulomb-gas
   screening computation for the `V_{-1/(2b)}` shift channel, with the
   `tilde_mu` hypothesis and exact gamma-argument checks.
+- 2026-05-31 issue #702 pole-residue synthesis pass: added a connecting
+  subsection identifying Liouville poles with weak-coupling zero-mode volume
+  divergences, the Seiberg domain with the no-divergence convergence region,
+  Coulomb-gas `V_b` screening integrals with residues at
+  `epsilon=-N b`, and dual `V_{1/b}` screening with the
+  `b <-> b^{-1}` residue family; rewrote the one-screening and dual-screening
+  lemma prose accordingly while preserving all displayed constants.
 
 ## Anti-Wrapper Audit
 
