@@ -8,9 +8,10 @@ steady state is a positive invariant state on an algebra of observables.  An
 open-system limit is a scaling limit of a larger closed system in which a
 subalgebra evolves by a completely positive trace-preserving semigroup.  This
 chapter fixes these definitions, derives the reservoir entropy-production
-formula, records the weak-coupling route to the GKSL generator, and connects
-the Markovian limit to a Schwinger--Keldysh influence functional and to
-hydrodynamic relaxation with noise.
+formula, records finite path-measure fluctuation identities before taking a
+continuum limit, records the weak-coupling route to the GKSL generator, and
+connects the Markovian limit to a Schwinger--Keldysh influence functional
+and to hydrodynamic relaxation with noise.
 
 \section{Steady-State Datum}
 
@@ -262,6 +263,189 @@ and charge rates.  The finite theorem does not prove existence of the
 long-time QFT state \(\omega_{\rm ss}\); it proves the algebraic positivity
 that any Markovian reservoir reduction with local detailed balance must
 satisfy.
+
+\section{Finite Path Measures and Fluctuation Relations}
+\label{sec:finite-path-measure-fluctuation-relations}
+
+Fluctuation relations are identities between probability measures on
+histories.  They become mathematical statements after the path space and the
+reversed path measure have been constructed.  We state the finite
+continuous-time version because it is the regulator-level statement that
+survives, if the corresponding continuum limit exists, in nonequilibrium QFT.
+
+Let \(I\) be a finite configuration set.  For \(0\leq t\leq T\), let
+\(W^{(\alpha)}_{ij}(t)\geq0\), \(i\ne j\), be time-dependent jump rates
+labelled by reservoirs \(\alpha\), and let
+\[
+  r_i(t)=\sum_{\alpha}\sum_{j\ne i}W^{(\alpha)}_{ij}(t)
+\]
+be the escape rate from \(i\).  A labelled trajectory is
+\[
+  \gamma=(i_0;t_1,\alpha_1,i_1;\ldots;t_n,\alpha_n,i_n),
+  \qquad 0<t_1<\cdots<t_n<T,
+\]
+where the state is \(i_m\) on \(t_m<t<t_{m+1}\), with
+\(t_0=0\) and \(t_{n+1}=T\).  Given an initial distribution \(p_0\), the
+forward path density with respect to counting measure over labels and
+Lebesgue measure over ordered jump times is
+\begin{align}
+  \mathbb P_F(\gamma)
+  &=
+  p_0(i_0)
+  \exp\!\left[-\int_{0}^{t_1}r_{i_0}(s)\,ds\right]
+  \notag\\
+  &\quad\times
+  \prod_{m=1}^{n}
+  \left[
+    W^{(\alpha_m)}_{i_{m-1}i_m}(t_m)
+    \exp\!\left[-\int_{t_m}^{t_{m+1}}r_{i_m}(s)\,ds\right]
+  \right].
+  \label{eq:finite-forward-jump-path-density}
+\end{align}
+The reversed protocol has rates
+\[
+  \widetilde W^{(\alpha)}_{ij}(t)=W^{(\alpha)}_{ij}(T-t)
+\]
+and initial distribution \(q_0\).  The time-reversed trajectory is
+\[
+  \Theta\gamma
+  =
+  (i_n;T-t_n,\alpha_n,i_{n-1};\ldots;T-t_1,\alpha_1,i_0).
+\]
+Assume absolute continuity: whenever a forward path has positive
+probability, the reversed path has positive probability under the reversed
+protocol.  Define the trajectory entropy production by the
+Radon--Nikodym logarithm
+\begin{equation}
+  \Sigma(\gamma)
+  =
+  \log
+  \frac{\mathbb P_F(\gamma)}
+       {\mathbb P_R(\Theta\gamma)} .
+  \label{eq:finite-path-entropy-production-rn}
+\end{equation}
+
+\begin{proposition}[Finite path-measure fluctuation identity]
+\label{prop:finite-path-fluctuation-identity}
+For the finite jump process above,
+\begin{align}
+  \Sigma(\gamma)
+  &=
+  \log\frac{p_0(i_0)}{q_0(i_n)}
+  +
+  \sum_{m=1}^n
+  \log
+  \frac{W^{(\alpha_m)}_{i_{m-1}i_m}(t_m)}
+       {W^{(\alpha_m)}_{i_m i_{m-1}}(t_m)},
+  \label{eq:finite-path-entropy-explicit}\\
+  \left\langle e^{-\Sigma}\right\rangle_F&=1 .
+  \label{eq:finite-integral-fluctuation-theorem}
+\end{align}
+If \(q_0\) is chosen to be the forward final distribution \(p_T\), then
+\(\langle \Sigma\rangle_F\ge0\).  More generally, \(\langle\Sigma\rangle_F\)
+is the relative entropy
+\[
+  D(\mathbb P_F\Vert \Theta^{-1}\mathbb P_R)
+\]
+between the forward history measure and the pullback of the reversed history
+measure.
+\end{proposition}
+
+\begin{proof}
+Insert the path densities.  The waiting-time factors in the denominator are
+the same factors as in the numerator after the change of variables
+\(s\mapsto T-s\) on each reversed interval.  They therefore cancel.  What
+remains is exactly the initial-distribution ratio and the product of jump
+rate ratios in \eqref{eq:finite-path-entropy-explicit}.
+
+The integral identity is the normalization of the reversed path measure:
+\[
+  \left\langle e^{-\Sigma}\right\rangle_F
+  =
+  \int e^{-\Sigma(\gamma)}\,d\mathbb P_F(\gamma)
+  =
+  \int d\mathbb P_R(\Theta\gamma)
+  =
+  1 .
+\]
+The map \(\Theta\) is an involution on the labelled path space, so the last
+integral is the total mass of \(\mathbb P_R\).  Finally,
+\[
+  \langle\Sigma\rangle_F
+  =
+  \int
+  \log\frac{d\mathbb P_F}{d(\Theta^{-1}\mathbb P_R)}
+  \,d\mathbb P_F
+  =
+  D(\mathbb P_F\Vert\Theta^{-1}\mathbb P_R)\ge0,
+\]
+with equality precisely when the two history measures agree almost surely.
+When \(q_0=p_T\), the boundary term in
+\eqref{eq:finite-path-entropy-explicit} is the stochastic system entropy
+change \(-\log p_T(i_n)+\log p_0(i_0)\), and the jump-rate term is the
+reservoir entropy change under local detailed balance.  Hence the average
+is the mean total entropy production.
+\end{proof}
+
+The detailed fluctuation relation is a direct disintegration of the same
+identity.  If \(P_F\) is the forward law of \(\Sigma\) and \(P_R\) is the
+reversed law of the reversed entropy production, then
+\[
+  P_F(ds)=e^{s}\,P_R(-ds)
+\]
+on every Borel set on which both measures are defined.  This form is often
+the most convenient one experimentally, but the Radon--Nikodym statement
+\eqref{eq:finite-path-entropy-production-rn} is the mathematical content.
+
+\paragraph{Jarzynski identity as a special case.}
+Take one thermal reservoir with inverse temperature \(\beta\), no chemical
+potential, and a time-dependent finite energy function \(E_i(t)\).  Assume
+local detailed balance at each jump time:
+\[
+  \log\frac{W_{ij}(t)}{W_{ji}(t)}
+  =
+  -\beta\bigl(E_j(t)-E_i(t)\bigr).
+\]
+Let \(p_0(i)=Z(0)^{-1}e^{-\beta E_i(0)}\) and
+\(q_0(i)=Z(T)^{-1}e^{-\beta E_i(T)}\).  For a trajectory \(\gamma\), define
+the protocol work
+\begin{equation}
+  W_{\rm ext}(\gamma)
+  =
+  \int_0^T \partial_tE_{i(t)}(t)\,dt,
+  \label{eq:finite-path-protocol-work}
+\end{equation}
+where \(i(t)\) is the piecewise-constant state path.  The total system
+energy change decomposes as
+\[
+  E_{i_n}(T)-E_{i_0}(0)
+  =
+  W_{\rm ext}(\gamma)
+  +
+  \sum_{m=1}^n
+  \bigl(E_{i_m}(t_m)-E_{i_{m-1}}(t_m)\bigr).
+\]
+Combining this identity with local detailed balance gives
+\[
+  \Sigma(\gamma)
+  =
+  \beta\bigl(W_{\rm ext}(\gamma)-\Delta F\bigr),
+  \qquad
+  \Delta F=F(T)-F(0),
+  \qquad
+  F(t)=-\beta^{-1}\log Z(t).
+\]
+Therefore \eqref{eq:finite-integral-fluctuation-theorem} becomes
+\begin{equation}
+  \left\langle e^{-\beta W_{\rm ext}}\right\rangle_F
+  =
+  e^{-\beta\Delta F}.
+  \label{eq:finite-path-jarzynski}
+\end{equation}
+For a continuum QFT quench, the corresponding use of
+\eqref{eq:finite-path-jarzynski} requires a specified finite regulator, a
+measured work protocol or two-time energy measurement replacement, a
+time-reversal operation, and a limit in which the history measures converge.
 
 \section{Weak-Coupling Open-System Limit}
 

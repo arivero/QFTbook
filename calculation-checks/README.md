@@ -1087,9 +1087,10 @@ Current checks:
 - `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
   nonequilibrium steady-state and open-system chapter, including reservoir
   entropy production, finite local-detailed-balance entropy splitting,
-  GKSL trace preservation, KMS detailed balance for a two-level system,
-  Ornstein-Uhlenbeck noise normalization, and positivity of a quadratic
-  noise kernel.
+  the finite jump path-measure Radon--Nikodym ratio, a driven two-state
+  Jarzynski identity, GKSL trace preservation, KMS detailed balance for a
+  two-level system, Ornstein-Uhlenbeck noise normalization, and positivity of
+  a quadratic noise kernel.
 - `microlocal_spectrum_checks.py`: finite convention checks for the
   microlocal spectrum chapter, including the mostly-plus future-covector
   convention, the Klein-Gordon Hamilton-flow sign, the two-point graph
