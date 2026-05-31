@@ -26,6 +26,9 @@
   normalization, projection/contact prescription, and order of limits.
 - Zero-frequency singular sector and finite-volume Mazur projection for
   conserved current overlap.
+- Finite-regulator Kubo--Mori projection, Mori--Zwanzig memory identity, and
+  the theorem boundary between exact projected dynamics and Markovian
+  hydrodynamic closure.
 - Conductivity, shear-viscosity, and bulk-viscosity Kubo formulae with
   explicit order of limits and conserved-density projections.
 - Once-subtracted retarded dispersion relation and its theorem boundary.
@@ -45,6 +48,11 @@
 | \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
 | \(D_{ij}\) | Drude-weight matrix in \(\operatorname{Re}\sigma_{ij}\) |
+| \(\mathcal L\) | finite-regulator Liouville generator \(\mathcal L X=\ii[H_L,X]\) |
+| \((\cdot,\cdot)_\beta\) | Kubo--Mori inner product on the finite-regulator operator space |
+| \(P,Q\) | Kubo--Mori projection onto chosen slow operators and its complement |
+| \(\Omega_a{}^b\) | projected reactive/frequency matrix in the slow-coordinate equation |
+| \(M_a{}^b(t)\) | projected memory kernel before the hydrodynamic Markovian limit |
 | \(\sigma_{ij}\) | conductivity tensor |
 | \(\eta\) | shear viscosity |
 | \(\zeta\) | bulk viscosity |
@@ -72,12 +80,19 @@
 7. Conserved charges with nonzero current overlap give a positive
    zero-frequency singular sector bounded by the Mazur projection; this is
    separated from the finite dissipative dc slope.
-8. Conductivity and viscosity are low-frequency spectral slopes after contact
+8. At finite regulator, the Kubo--Mori projection gives an exact
+   Mori--Zwanzig block identity for chosen slow coordinates.  This identity
+   is algebraic and does not by itself imply transport.
+9. A diffusion or viscosity coefficient arises from a further theorem
+   boundary: thermodynamic limit, decay of projected kernels, controlled
+   \(k\to0\) scaling, and removal of Drude sectors must turn the exact
+   memory equation into a local low-frequency closure.
+10. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
    specified.
-9. Subtracted dispersion relations require large-\(\omega\) control and an
+11. Subtracted dispersion relations require large-\(\omega\) control and an
    explicit declaration of contact terms.
-10. Hydrodynamic control requires additional analyticity, clustering,
+12. Hydrodynamic control requires additional analyticity, clustering,
    equilibration, and limit-exchange hypotheses.
 
 ## Calculation Checks
@@ -86,7 +101,9 @@
   detailed-balance and fluctuation--dissipation weights, the retarded sign
   \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
   invariance of dissipative spectral slopes under real contact terms, and
-  the finite Mazur projection/Drude-weight normalization.
+  the finite Mazur projection/Drude-weight normalization.  It also checks a
+  two-dimensional finite-regulator Mori--Zwanzig identity and its
+  Laplace-space Schur complement.
 
 ## Figures
 
@@ -99,3 +116,7 @@
   `fig:kubo-order-of-limits` and rewrote the caption/body text to state the
   positive distributional decomposition into a singular Drude sector and a
   locally integrable regular part.
+- 2026-05-31 statmech crosswalk/#703 pass: added the Kubo--Mori projection
+  and memory-kernel bridge from exact finite-regulator dynamics to
+  hydrodynamic closure, with the additional thermodynamic and decay
+  hypotheses stated at the point where they enter.

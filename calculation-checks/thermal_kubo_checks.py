@@ -195,6 +195,43 @@ def check_regular_drude_decomposition_for_figure() -> None:
     assert drude_weight / 0.125 > drude_weight / 0.25 > drude_weight / 0.5
 
 
+def check_mori_zwanzig_projection_identity() -> None:
+    """Finite-dimensional projection identity behind the memory equation.
+
+    Take L to be the rotation generator
+        L (x, y) = (-omega y, omega x)
+    and project onto the x-coordinate.  Eliminating y gives the exact
+    projected equation
+        x_dot(t) = -omega y0 - omega^2 int_0^t x(s) ds.
+    This is the scalar version of the Kubo--Mori/Mori--Zwanzig identity in
+    the chapter.
+    """
+
+    for omega, x0, y0, time in (
+        (0.7, 1.2, -0.4, 0.3),
+        (1.3, -0.8, 0.5, 0.9),
+        (2.0, 0.6, 1.1, 0.2),
+    ):
+        cos = math.cos(omega * time)
+        sin = math.sin(omega * time)
+        x_t = x0 * cos - y0 * sin
+        x_dot = -omega * x0 * sin - omega * y0 * cos
+
+        if abs(omega) < 1.0e-14:
+            integral_x = x0 * time
+        else:
+            integral_x = x0 * sin / omega - y0 * (1.0 - cos) / omega
+        projected_rhs = -omega * y0 - omega * omega * integral_x
+        assert_close("Mori-Zwanzig time-domain identity", x_dot, projected_rhs)
+
+    for omega, z in ((0.7, 1.1), (1.3, 2.4), (2.0, 0.8)):
+        laplace_cos = z / (z * z + omega * omega)
+        # The projected resolvent is the Schur complement
+        # [z - P L P - P L Q (z - Q L Q)^(-1) Q L P]^(-1).
+        block_schur = 1.0 / (z + omega * omega / z)
+        assert_close("Mori-Zwanzig Schur complement", block_schur, laplace_cos)
+
+
 def main() -> None:
     check_two_level_kms_and_fdt()
     check_retarded_sign_and_transport_slope()
@@ -202,6 +239,7 @@ def main() -> None:
     check_vector_potential_response_sign()
     check_mazur_projection_and_drude_weight()
     check_regular_drude_decomposition_for_figure()
+    check_mori_zwanzig_projection_identity()
     print("All thermal Kubo convention checks passed.")
 
 
