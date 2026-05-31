@@ -207,6 +207,11 @@ Current checks:
   for cyclic groups and \(S_3\), class-function convolution on the circle,
   the standard \(\mathbb Z_n\) Dijkgraaf--Witten \(3\)-cocycle condition, and
   spanning-tree gauge-fixing counts.
+- `finite_gauge_boundary_checks.py`: exact finite checks for the Volume VIII
+  Abelian finite-gauge boundary section, including electric/magnetic
+  bosonic Lagrangian subgroups, rejection of non-bosonic diagonal subgroups,
+  endpoint absorption, and the cylinder-sector count
+  \(|\mathcal C/(L_0+L_1)|=|L_0\cap L_1|\).
 - `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the

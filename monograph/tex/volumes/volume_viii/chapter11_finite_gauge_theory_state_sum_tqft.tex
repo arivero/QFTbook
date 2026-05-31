@@ -823,6 +823,193 @@ path-integral origin is already visible: a line insertion fixes magnetic
 monodromy around a small linking circle, while electric labels are
 representations of the residual stabilizer of that monodromy.
 
+\section{Finite Abelian Boundaries and Line Condensation}
+\label{sec:finite-abelian-boundaries-line-condensation}
+
+The preceding construction gives a finite bulk theory.  To test boundary and
+defect statements without hiding behind categorical terminology, it is useful
+to write one family of boundaries entirely in finite algebra.  Let \(A\) be a
+finite abelian gauge group in the untwisted three-dimensional theory.  Its
+simple bulk line labels form the finite abelian group
+\[
+  \mathcal C_A=A\oplus\widehat A,
+  \qquad
+  \widehat A=\operatorname{Hom}(A,U(1)).
+\]
+An element
+\[
+  c=(a,\chi)\in\mathcal C_A
+\]
+has magnetic flux \(a\in A\) and electric character \(\chi\in\widehat A\).
+The fusion law is addition in \(\mathcal C_A\).  The nondegenerate braiding
+pairing is
+\begin{equation}
+  B\bigl((a,\chi),(b,\psi)\bigr)
+  =
+  \chi(b)\psi(a),
+  \label{eq:finite-abelian-double-braiding}
+\end{equation}
+and the topological spin is
+\begin{equation}
+  \theta(a,\chi)=\chi(a).
+  \label{eq:finite-abelian-double-spin}
+\end{equation}
+These formulas are the Abelian specialization of the Drinfeld-double line
+description above: a charge line \((0,\chi)\) evaluates the flux linked by
+the line, and a flux line \((a,1)\) is detected by linked electric
+characters.
+
+For a subgroup \(L\subset\mathcal C_A\), define its braiding orthogonal by
+\begin{equation}
+  L^\perp=
+  \{c\in\mathcal C_A\mid B(c,\ell)=1
+  \text{ for every }\ell\in L\}.
+  \label{eq:finite-abelian-boundary-orthogonal}
+\end{equation}
+The subgroup \(L\) is Lagrangian if
+\[
+  L=L^\perp
+  \qquad\hbox{and}\qquad
+  \theta(\ell)=1\quad\hbox{for every }\ell\in L .
+\]
+Equivalently, the spin is trivial on \(L\), the pairing \(B\) is trivial on
+\(L\times L\), and
+\[
+  |L|=|A|.
+\]
+Indeed, nondegeneracy of \(B\) identifies \(\mathcal C_A/L^\perp\) with
+\(\widehat L\), hence
+\[
+  |L|\,|L^\perp|=|\mathcal C_A|=|A|^2 .
+\]
+Thus an isotropic subgroup with \(|L|=|A|\) has
+\(|L^\perp|=|L|\) and \(L\subset L^\perp\), so equality follows.
+The spin condition is the locality condition for endpoint operators:
+trivial-spin lines supply bosonic local boundary endpoints, while a line with
+nontrivial topological spin carries intrinsic boundary statistics even when
+its mutual braiding with the other condensed lines is trivial.
+
+\begin{definition}[Finite Abelian line-condensation boundary datum]
+\label{def:finite-abelian-line-condensation-boundary}
+For the untwisted three-dimensional finite \(A\)-gauge theory, a finite
+Abelian line-condensation boundary datum is a Lagrangian subgroup
+\[
+  L\subset\mathcal C_A=A\oplus\widehat A.
+\]
+The boundary \(B_L\) is the finite topological boundary model in which a bulk
+line \(c\in\mathcal C_A\) has a topological endpoint on the boundary exactly
+when \(c\in L\).  Lines in \(L\) are called condensed at \(B_L\).  Lines not
+in \(L\) terminate only after adjoining an additional boundary excitation
+external to this datum.
+\end{definition}
+
+The Lagrangian condition is the finite algebraic form of mutual locality for
+condensed endpoints.  If \(\ell_1,\ell_2\in L\), moving one endpoint around
+the other at the boundary produces the bulk braiding phase
+\(B(\ell_1,\ell_2)\).  A boundary vacuum containing both endpoints as local
+topological operators requires this phase to be \(1\).  Maximality,
+\(L=L^\perp\), says that every line mutually local with the condensed
+endpoint algebra has already been declared condensable; otherwise the
+boundary datum was not complete.
+
+\begin{theorem}[Cylinder sectors for finite Abelian boundaries]
+\label{thm:finite-abelian-boundary-cylinder-sectors}
+Let \(B_{L_0}\) and \(B_{L_1}\) be two finite Abelian line-condensation
+boundaries of the untwisted three-dimensional finite \(A\)-gauge theory.
+The topological line sectors on an interval with left boundary \(L_0\) and
+right boundary \(L_1\) are canonically labeled by
+\begin{equation}
+  \mathcal C_A/(L_0+L_1).
+  \label{eq:finite-abelian-boundary-cylinder-quotient}
+\end{equation}
+Consequently the cylinder ground-sector vector space in this finite
+topological model is
+\begin{equation}
+  \mathcal H_{\rm cyl}(L_0,L_1)
+  =
+  \mathbb C[\mathcal C_A/(L_0+L_1)],
+  \qquad
+  \dim\mathcal H_{\rm cyl}(L_0,L_1)
+  =
+  |\mathcal C_A/(L_0+L_1)|
+  =
+  |L_0\cap L_1|.
+  \label{eq:finite-abelian-boundary-cylinder-dimension}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Place a representative bulk line \(c\in\mathcal C_A\) along the interval.
+If \(\ell_0\in L_0\), then \(\ell_0\) may end on the left boundary.  Fusing
+\(\ell_0\) to the interval line therefore changes the representative
+\[
+  c\longmapsto c+\ell_0
+\]
+without changing the topological sector.  Similarly, every
+\(\ell_1\in L_1\) can be absorbed at the right boundary, so
+\[
+  c\longmapsto c+\ell_1
+\]
+is the same sector.  Hence the sector label depends only on the coset of
+\(c\) in \(\mathcal C_A/(L_0+L_1)\).
+
+Conversely, if two interval lines \(c\) and \(c'\) define the same sector in
+the finite line-condensation model, their difference can be removed by
+endpoint operations at the two boundaries.  The available endpoint
+operations are precisely fusion with elements of \(L_0\) and \(L_1\), by
+Definition~\ref{def:finite-abelian-line-condensation-boundary}.  Therefore
+\[
+  c'-c\in L_0+L_1,
+\]
+and the quotient above is neither too coarse nor too fine.
+
+The vector space statement is the finite state-space assignment for this
+topological sector set: one basis vector for each simple sector.  For the
+dimension, use
+\[
+  |\mathcal C_A/(L_0+L_1)|
+  =
+  \frac{|\mathcal C_A|}{|L_0+L_1|}
+  =
+  \frac{|A|^2}{|L_0||L_1|/|L_0\cap L_1|}
+  =
+  |L_0\cap L_1|,
+\]
+because \(L_0\) and \(L_1\) are Lagrangian and therefore both have
+cardinality \(|A|\).
+\end{proof}
+
+For \(A=\mathbb Z_N\), write line labels as
+\[
+  (m,e)\in\mathbb Z_N^{\rm m}\oplus\mathbb Z_N^{\rm e},
+  \qquad
+  B((m,e),(m',e'))=
+  \exp\!\left(\frac{2\pi\ii}{N}(em'+e'm)\right).
+\]
+The electric and magnetic boundaries are
+\[
+  L_{\rm e}=\{(0,e):e\in\mathbb Z_N\},
+  \qquad
+  L_{\rm m}=\{(m,0):m\in\mathbb Z_N\}.
+\]
+They are Lagrangian.  Therefore
+\[
+  \dim\mathcal H_{\rm cyl}(L_{\rm e},L_{\rm e})
+  =
+  \dim\mathcal H_{\rm cyl}(L_{\rm m},L_{\rm m})
+  =
+  N,
+  \qquad
+  \dim\mathcal H_{\rm cyl}(L_{\rm e},L_{\rm m})=1.
+\]
+The first two cases have one nontrivial topological line label running along
+the cylinder, while in the mixed case every line can be absorbed by one of
+the two boundaries.  This is the finite algebraic version of the rough/smooth
+boundary distinction in the \(\mathbb Z_N\) gauge-code laboratory.  It
+supplies an exact finite calibration for claims about line endpoints and
+boundary topological sectors; continuum boundary theorems require their own
+regulator, locality, and limiting hypotheses.
+
 \section{Defects, Boundaries, and Anomaly Inflow}
 
 Finite gauge theories also provide exact models of defects.  A

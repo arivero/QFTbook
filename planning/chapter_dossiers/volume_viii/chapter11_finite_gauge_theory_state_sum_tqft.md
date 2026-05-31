@@ -32,6 +32,14 @@ bordism-functoriality chapter.
 - `L_omega(Sigma)`: transgressed boundary line for the twisted state space.
 - `Irr(G)`: irreducible complex representations of `G`.
 - `d_R`: dimension of an irreducible representation `R`.
+- `A`, `Ahat`, `C_A=A op Ahat`: finite Abelian gauge group, Pontryagin dual,
+  and Abelian Drinfeld-double line-label group.
+- `B((a,chi),(b,psi))`, `theta(a,chi)`: Abelian line braiding pairing and
+  topological spin.
+- `L`, `L^perp`, `B_L`: bosonic Lagrangian line subgroup, its braiding
+  orthogonal, and the corresponding finite line-condensation boundary datum.
+- `H_cyl(L_0,L_1)`: finite cylinder sector vector space between two Abelian
+  line-condensation boundaries.
 - `alpha`: degree-`D+1` finite-symmetry anomaly cocycle.
 
 ## Claim Ledger
@@ -64,7 +72,11 @@ bordism-functoriality chapter.
     pair-of-pants product with convolution.
 13. Records the three-dimensional `T^3` commuting-triple formula and the
     Drinfeld-center description of line operators.
-14. States finite correspondence defects and degree-`D+1` anomaly inflow.
+14. Develops finite Abelian line-condensation boundaries: the line-label
+    group `A op Ahat`, braiding, spin, bosonic Lagrangian subgroups, endpoint
+    criterion, and cylinder sector count
+    `dim H_cyl(L_0,L_1)=|C_A/(L_0+L_1)|=|L_0 cap L_1|`.
+15. States finite correspondence defects and degree-`D+1` anomaly inflow.
 
 ## Figure Ledger
 
@@ -79,3 +91,15 @@ bordism-functoriality chapter.
   `Z_n` Dijkgraaf-Witten `3`-cocycle condition, tree gauge-fixing counts,
   one-object finite-groupoid Fubini with image/kernel automorphism factors,
   and torus commuting-pair counts.
+- `calculation-checks/finite_gauge_boundary_checks.py` verifies the Abelian
+  finite-gauge boundary algebra for `Z_N`: electric and magnetic bosonic
+  Lagrangian subgroups, rejection of non-bosonic diagonal subgroups, endpoint
+  absorption equivalence, and the cylinder-sector count for same and mixed
+  rough/smooth boundary pairs.
+
+## Audit Notes
+
+- 2026-05-31 finite-boundary pass: added an exact Abelian finite-gauge
+  boundary laboratory.  The text now separates the bosonic Lagrangian
+  boundary datum from a general continuum gapped-boundary theorem and proves
+  the cylinder sector count by endpoint absorption of condensed lines.

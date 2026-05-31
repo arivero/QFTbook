@@ -161,9 +161,14 @@ many-body flux-torus Hall response datum: trace Berry curvature of an
 isolated band, integer Chern number, exact finite Kubo-curvature identity for
 an exactly degenerate band, and explicit locality/gap/thermodynamic
 hypotheses needed before the finite curvature average becomes a Hall
-conductance theorem.  The remaining finite-locality tasks are
-finite-gauge/TQFT boundary examples and deeper thermodynamic Hall-response
-stability estimates beyond the finite curvature theorem.
+conductance theorem.  Volume VIII, Chapter 11 now also contains an exact
+finite Abelian boundary laboratory: line-label group \(A\oplus\widehat A\),
+braiding, spin, bosonic Lagrangian subgroups, endpoint absorption, and the
+cylinder-sector count
+\(|\mathcal C_A/(L_0+L_1)|=|L_0\cap L_1|\).  The remaining finite-locality
+tasks are deeper thermodynamic Hall-response stability estimates beyond the
+finite curvature theorem, non-Abelian/twisted finite-gauge boundary examples,
+and stronger TQFT-boundary/junction comparisons.
 
 ### Dynamic Critical Phenomena And Stochastic Field Theories
 
