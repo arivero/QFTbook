@@ -1010,6 +1010,225 @@ supplies an exact finite calibration for claims about line endpoints and
 boundary topological sectors; continuum boundary theorems require their own
 regulator, locality, and limiting hypotheses.
 
+\section{Subgroup Boundaries and Relative Dijkgraaf--Witten Cocycles}
+\label{sec:finite-subgroup-boundaries-relative-dw}
+
+For a nonabelian finite group the most direct boundary condition is a
+reduction of the gauge group at the boundary.  Let \(H\subset G\) be a
+subgroup.  If \(P\to M\) is a principal \(G\)-bundle and \(N\subset\partial M\)
+is a boundary component, an \(H\)-reduction of \(P\) along \(N\) is a
+principal \(H\)-bundle \(Q\to N\) together with an isomorphism of principal
+\(G\)-bundles
+\[
+  Q\times_H G\cong P|_N .
+\]
+The subgroup boundary \(B_H\) is the boundary theory whose boundary fields
+are such reductions.  In a triangulated representative, after choosing a
+boundary trivialization, this says that boundary edge labels lie in \(H\),
+while bulk edge labels lie in \(G\).  Boundary gauge transformations are
+\(H\)-valued and bulk gauge transformations are \(G\)-valued.
+
+This definition is phrased as a condition on bundles.  The boundary datum is
+the restriction functor
+\[
+  \operatorname{Bun}_H(N)\longrightarrow \operatorname{Bun}_G(N),
+  \qquad
+  Q\longmapsto Q\times_H G,
+\]
+and all stabilizers are the automorphism groups of these finite groupoids.
+
+\begin{proposition}[Interval sectors for subgroup boundaries]
+\label{prop:finite-subgroup-boundary-double-cosets}
+Consider the untwisted finite \(G\)-gauge theory on an interval with left
+boundary subgroup \(H_0\subset G\) and right boundary subgroup \(H_1\subset G\).
+The boundary field groupoid is the action groupoid
+\[
+  G//(H_0\times H_1),
+  \qquad
+  (h_0,h_1):g\longmapsto h_0 g h_1^{-1}.
+\]
+Therefore the simple topological sectors are the double cosets
+\begin{equation}
+  H_0\backslash G/H_1,
+  \label{eq:finite-subgroup-boundary-double-cosets}
+\end{equation}
+and the groupoid cardinality of the interval field groupoid is
+\begin{equation}
+  \bigl|G//(H_0\times H_1)\bigr|
+  =
+  \frac{|G|}{|H_0|\,|H_1|}.
+  \label{eq:finite-subgroup-boundary-groupoid-cardinality}
+\end{equation}
+For a representative \(g\in G\), the automorphism group of the corresponding
+sector is
+\begin{equation}
+  \operatorname{Aut}(g)
+  =
+  \{(h_0,h_1)\in H_0\times H_1:h_0g=gh_1\}
+  \cong H_0\cap gH_1g^{-1}.
+  \label{eq:finite-subgroup-boundary-stabilizer}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Choose a trivialization of the \(G\)-bundle at one point of the interval.
+Flatness then identifies the bundle with a single parallel-transport element
+\(g\in G\).  Changing the left boundary \(H_0\)-trivialization by \(h_0\)
+multiplies \(g\) on the left, and changing the right boundary
+\(H_1\)-trivialization by \(h_1\) multiplies \(g\) on the right by
+\(h_1^{-1}\), because parallel transport is read from the left endpoint to
+the right endpoint.  This is precisely the displayed
+\(H_0\times H_1\)-action.
+
+The isomorphism classes of the action groupoid are its orbits, hence the
+double cosets \(H_0\backslash G/H_1\).  The stabilizer of \(g\) is the set of
+pairs \((h_0,h_1)\) with \(h_0gh_1^{-1}=g\), equivalently \(h_0g=gh_1\).
+Projection to the first factor identifies this stabilizer with
+\[
+  H_0\cap gH_1g^{-1},
+\]
+and projection to the second factor identifies it with
+\[
+  g^{-1}H_0g\cap H_1.
+\]
+Finally, the action-groupoid cardinality formula
+\eqref{eq:action-groupoid-cardinality}, applied to the finite
+\((H_0\times H_1)\)-set \(G\), gives
+\eqref{eq:finite-subgroup-boundary-groupoid-cardinality}.
+\end{proof}
+
+The vector space assigned to an interval in this boundary sector is therefore
+\[
+  \operatorname{Fun}(H_0\backslash G/H_1,\C),
+\]
+with the groupoid pairing weighted by the stabilizers in
+\eqref{eq:finite-subgroup-boundary-stabilizer}.  For example, \(H_0=H_1=G\)
+has one sector, while \(H_0=H_1=\{1\}\) has sectors indexed by all elements of
+\(G\).  If \(G=S_3\) and \(H=\langle(12)\rangle\), then
+\[
+  H\backslash S_3/H
+\]
+has two sectors, represented by the identity and by a three-cycle; the
+stabilizer weights distinguish the sector containing \(H\) from the sector
+with trivial stabilizer.
+
+Now include a three-dimensional Dijkgraaf--Witten twist.  Let
+\[
+  \omega\in Z^3(G,U(1))
+\]
+be the normalized inhomogeneous cocycle used above.  A subgroup boundary
+supports a local finite boundary counterterm exactly when the pulled-back
+bulk cocycle is a coboundary on \(H\).
+
+\begin{definition}[Relative Dijkgraaf--Witten boundary datum]
+\label{def:relative-dw-boundary-datum}
+Let \(i:H\hookrightarrow G\) be a subgroup inclusion and let
+\(\omega\in Z^3(G,U(1))\) be normalized.  A relative Dijkgraaf--Witten
+boundary datum for \(B_H\) is a normalized \(2\)-cochain
+\[
+  \beta:H\times H\to U(1)
+\]
+such that
+\begin{equation}
+  (\delta\beta)(h_1,h_2,h_3)
+  =
+  \beta(h_2,h_3)\,
+  \beta(h_1h_2,h_3)^{-1}\,
+  \beta(h_1,h_2h_3)\,
+  \beta(h_1,h_2)^{-1}
+  =
+  \omega(h_1,h_2,h_3)
+  \label{eq:relative-dw-boundary-trivialization}
+\end{equation}
+for every \(h_1,h_2,h_3\in H\).  Equivalently,
+\[
+  (\omega,\beta)\in C^3(G,U(1))\oplus C^2(H,U(1))
+\]
+is a relative cocycle for the pair \((BG,BH)\) with relative differential
+\[
+  d_{\rm rel}(\omega,\beta)
+  =
+  \bigl(\delta\omega,\ i^*\omega\,(\delta\beta)^{-1}\bigr).
+\]
+\end{definition}
+
+In the triangulated state sum, write the bulk \(3\)-simplex weight as before
+and multiply by the inverse boundary \(2\)-cochain weight
+\begin{equation}
+  W_{\omega,\beta}(K,g)
+  =
+  \prod_{\sigma^3\subset K}
+    \omega(g_\sigma)^{\varepsilon(\sigma)}
+  \prod_{\tau^2\subset\partial K}
+    \beta(h_\tau)^{-\varepsilon_\partial(\tau)}.
+  \label{eq:relative-dw-state-sum-weight}
+\end{equation}
+Here \(h_\tau=(h_{i_0i_1},h_{i_1i_2})\) for an oriented boundary triangle
+\(\tau=[i_0i_1i_2]\), and \(\varepsilon_\partial(\tau)\) is computed using
+the induced boundary orientation.  The inverse sign is part of the
+convention; with this convention the condition
+\eqref{eq:relative-dw-boundary-trivialization} is the cancellation equation.
+
+\begin{proposition}[Boundary cocycle cancellation]
+\label{prop:relative-dw-boundary-cocycle-cancellation}
+Let \(G\) be finite, \(H\subset G\), and let
+\((\omega,\beta)\) be a relative Dijkgraaf--Witten boundary datum in the
+sense of Definition~\ref{def:relative-dw-boundary-datum}.  The weight
+\eqref{eq:relative-dw-state-sum-weight} is invariant under elementary
+triangulation changes that preserve the boundary \(H\)-reduction.  Interior
+Pachner moves use \(\delta\omega=1\).  Boundary Pachner moves use exactly the
+identity \(\delta\beta=i^*\omega\).
+\end{proposition}
+
+\begin{proof}
+Interior Pachner moves are the closed-manifold argument in
+Proposition~\ref{prop:dw-triangulation-independence}; the ratio of the two
+bulk products is \((\delta\omega)(g_1,g_2,g_3,g_4)\), hence \(1\).
+
+It remains to check the boundary elementary move.  A boundary \(2\)-\(2\) or
+\(1\)-\(3\) move is represented, after adding the collar direction, by the
+boundary of a single oriented \(3\)-simplex whose edge labels lie in \(H\).
+For a branched simplex with ordered edge labels
+\((h_1,h_2,h_3)\), the ratio of the boundary \(\beta^{-1}\)-weights on the
+two sides of the move is
+\[
+  (\delta\beta)(h_1,h_2,h_3)^{-\varepsilon},
+\]
+where \(\varepsilon\) is the sign of the corresponding oriented
+\(3\)-simplex.  The missing bulk collar contribution would be
+\[
+  \omega(h_1,h_2,h_3)^{\varepsilon}.
+\]
+Multiplying the two ratios gives
+\[
+  \omega(h_1,h_2,h_3)^{\varepsilon}
+  (\delta\beta)(h_1,h_2,h_3)^{-\varepsilon}
+  =
+  1
+\]
+by \eqref{eq:relative-dw-boundary-trivialization}.  The argument is local
+and the set of flat labelings outside the moved ball is unchanged, so the
+whole finite state-sum weight is unchanged.
+\end{proof}
+
+The obstruction to such a boundary is therefore the restriction class
+\[
+  i^*[\omega]\in H^3(BH,U(1)).
+\]
+If this class vanishes, choices of \(\beta\) form a torsor for
+\[
+  H^2(BH,U(1)).
+\]
+In the untwisted case \(\omega=1\), the condition says that \(\beta\) is a
+normalized \(2\)-cocycle on \(H\); it supplies a projective boundary
+counterterm, and different cohomology classes give different finite
+boundary theories.  Thus the subgroup boundary data in the twisted finite
+theory are the finite path-integral counterparts of the module-category
+labels \((H,[\beta])\), but the present formulation is only the concrete
+state-sum construction needed here: boundary fields are \(H\)-reductions and
+the equality \(\delta\beta=i^*\omega\) is the local gauge-invariance and
+triangulation-invariance equation.
+
 \section{Defects, Boundaries, and Anomaly Inflow}
 
 Finite gauge theories also provide exact models of defects.  A

@@ -165,10 +165,14 @@ conductance theorem.  Volume VIII, Chapter 11 now also contains an exact
 finite Abelian boundary laboratory: line-label group \(A\oplus\widehat A\),
 braiding, spin, bosonic Lagrangian subgroups, endpoint absorption, and the
 cylinder-sector count
-\(|\mathcal C_A/(L_0+L_1)|=|L_0\cap L_1|\).  The remaining finite-locality
-tasks are deeper thermodynamic Hall-response stability estimates beyond the
-finite curvature theorem, non-Abelian/twisted finite-gauge boundary examples,
-and stronger TQFT-boundary/junction comparisons.
+\(|\mathcal C_A/(L_0+L_1)|=|L_0\cap L_1|\).  A second finite boundary pass
+now adds nonabelian subgroup boundaries: interval sectors
+\(H_0\backslash G/H_1\), stabilizer weights, and relative
+Dijkgraaf--Witten boundary cochains \(\delta\beta=i^*\omega\).  The
+remaining finite-locality tasks are deeper thermodynamic Hall-response
+stability estimates beyond the finite curvature theorem, more substantial
+twisted/non-Abelian boundary examples with junction composition, and stronger
+TQFT-boundary comparisons.
 
 ### Dynamic Critical Phenomena And Stochastic Field Theories
 

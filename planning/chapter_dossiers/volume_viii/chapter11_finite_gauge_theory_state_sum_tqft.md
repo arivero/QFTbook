@@ -40,6 +40,14 @@ bordism-functoriality chapter.
   orthogonal, and the corresponding finite line-condensation boundary datum.
 - `H_cyl(L_0,L_1)`: finite cylinder sector vector space between two Abelian
   line-condensation boundaries.
+- `H`, `H_0`, `H_1`: finite subgroup boundary data for a nonabelian finite
+  group `G`.
+- `B_H`: subgroup boundary with boundary fields given by `H`-reductions of
+  the boundary `G`-bundle.
+- `beta`: normalized boundary `2`-cochain satisfying
+  `delta beta = i^* omega` for a relative Dijkgraaf-Witten boundary.
+- `H_0\G/H_1`: double-coset set of interval sectors between subgroup
+  boundaries.
 - `alpha`: degree-`D+1` finite-symmetry anomaly cocycle.
 
 ## Claim Ledger
@@ -76,7 +84,12 @@ bordism-functoriality chapter.
     group `A op Ahat`, braiding, spin, bosonic Lagrangian subgroups, endpoint
     criterion, and cylinder sector count
     `dim H_cyl(L_0,L_1)=|C_A/(L_0+L_1)|=|L_0 cap L_1|`.
-15. States finite correspondence defects and degree-`D+1` anomaly inflow.
+15. Develops finite subgroup boundaries for general finite `G`, proves the
+    interval sector classification by double cosets `H_0\G/H_1`, records the
+    stabilizer weights, and gives the relative Dijkgraaf-Witten boundary
+    condition `delta beta=i^* omega` as an explicit state-sum cancellation
+    identity.
+16. States finite correspondence defects and degree-`D+1` anomaly inflow.
 
 ## Figure Ledger
 
@@ -96,6 +109,11 @@ bordism-functoriality chapter.
   Lagrangian subgroups, rejection of non-bosonic diagonal subgroups, endpoint
   absorption equivalence, and the cylinder-sector count for same and mixed
   rough/smooth boundary pairs.
+- `calculation-checks/finite_gauge_subgroup_boundary_checks.py` verifies the
+  nonabelian subgroup-boundary interval groupoid for `S_3` and `D_4`
+  examples, including double-coset partitions, stabilizer weights, groupoid
+  cardinality, and the finite relative cochain cancellation
+  `delta beta=i^* omega`.
 
 ## Audit Notes
 
@@ -103,3 +121,8 @@ bordism-functoriality chapter.
   boundary laboratory.  The text now separates the bosonic Lagrangian
   boundary datum from a general continuum gapped-boundary theorem and proves
   the cylinder sector count by endpoint absorption of condensed lines.
+- 2026-05-31 subgroup-boundary pass: added the exact nonabelian subgroup
+  boundary construction and relative Dijkgraaf-Witten boundary cochain
+  cancellation.  The chapter now distinguishes double-coset sector labels
+  from stabilizer-weighted groupoid cardinalities and states the boundary
+  anomaly cancellation condition as `delta beta=i^* omega`.
