@@ -77,6 +77,41 @@ def check_aps_cylinder_congruence() -> None:
         assert_equal("APS cylinder difference is integral", difference.denominator, 1)
 
 
+def spectral_cut_transition(singular_values: list[Fraction], low: Fraction, high: Fraction) -> Fraction:
+    """Finite determinant-line transition factor for a spectral-cut window."""
+
+    product = Fraction(1)
+    for singular_value in singular_values:
+        eigenvalue = singular_value * singular_value
+        if low <= eigenvalue < high:
+            product *= singular_value
+    return product
+
+
+def check_quillen_spectral_cut_transition_cocycle() -> None:
+    singular_values = [
+        Fraction(1, 2),
+        Fraction(2, 3),
+        Fraction(3, 2),
+        Fraction(5, 2),
+        Fraction(7, 3),
+        Fraction(11, 4),
+    ]
+    cuts = [Fraction(0), Fraction(1, 3), Fraction(1), Fraction(4), Fraction(7), Fraction(9)]
+    for i, low in enumerate(cuts):
+        for j in range(i + 1, len(cuts)):
+            middle = cuts[j]
+            for high in cuts[j + 1 :]:
+                direct = spectral_cut_transition(singular_values, low, high)
+                composed = spectral_cut_transition(singular_values, low, middle)
+                composed *= spectral_cut_transition(singular_values, middle, high)
+                assert_equal(
+                    f"Quillen spectral-cut transition cocycle {low}->{middle}->{high}",
+                    direct,
+                    composed,
+                )
+
+
 def orbit_action(a: int, g: int, orbit_size: int) -> int:
     return (a + g) % orbit_size
 
@@ -194,6 +229,7 @@ def main() -> None:
     check_su2_cubic_weight_sum_vanishes()
     check_orientation_reversal_eta_bookkeeping()
     check_aps_cylinder_congruence()
+    check_quillen_spectral_cut_transition_cocycle()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_stabilizer_holonomy_character_obstruction()
     print("Eta-invariant and SU(2) global-anomaly checks passed.")

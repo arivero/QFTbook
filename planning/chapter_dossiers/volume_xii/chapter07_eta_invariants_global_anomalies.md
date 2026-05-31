@@ -38,6 +38,10 @@ global anomaly as an explicit mod-two-index example.
   theorem for mapping tori, with an expanded mechanism explaining local
   zeta-determinant charts, the Bismut--Freed connection, curvature as the
   family index density, and holonomy as the adiabatic eta invariant.
+- Makes the Quillen determinant-line spectral-cut chart construction explicit:
+  the low-mode line \(L_a(b)\), the finite window
+  \(E_{[a,c)}^\pm(b)\), the determinant transition element
+  \(\det D^+_{[a,c)}\), and its cocycle identity under a refinement of cuts.
 - Explains finite gauge-transformation phases as determinant-line holonomies,
   as a direct application of the quoted Bismut--Freed holonomy theorem to the
   mapping torus of the gauge transformation.
@@ -64,8 +68,9 @@ global anomaly as an explicit mod-two-index example.
   orientation bookkeeping, the first \(SU(2)\) trace-delta Dynkin indices,
   Witten parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
   cancellation, cylinder congruence arithmetic, action-groupoid anomaly
-  cocycle/coboundary identities, based-loop holonomy invariance, and the
-  stabilizer-character obstruction to descent.
+  cocycle/coboundary identities, based-loop holonomy invariance, the
+  stabilizer-character obstruction to descent, and the Quillen spectral-cut
+  transition cocycle for determinant-line charts.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -105,3 +110,7 @@ global anomaly as an explicit mod-two-index example.
   groupoid descent criterion and exact finite checks for the cocycle,
   coboundary, based-loop holonomy, and tensor-product behavior of anomaly
   lines.
+- 2026-05-31 Quillen spectral-cut pass: expanded the determinant-line
+  construction with low-mode spectral-cut charts, finite transition
+  determinants, and the determinant cocycle under refinement of cuts; extended
+  the eta/global-anomaly calculation check accordingly.

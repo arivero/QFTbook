@@ -285,6 +285,61 @@ it is the degree-two form on \(\mathcal B\) obtained by integrating
 \([\widehat A(TM)\operatorname{ch}(E)]_{\dim M+2}\) over the physical
 manifold \(M\).
 
+The spectral-cut chart can be described without suppressing the finite
+transition map.  Fix a positive number \(a\) which is not in the spectrum of
+\(K_b^+=D_b^-D_b^+\).  Let
+\[
+  E_{<a}^+(b)
+  =
+  \bigoplus_{\lambda<a}\ker(K_b^+-\lambda),
+  \qquad
+  E_{<a}^-(b)
+  =
+  D_b^+E_{(0,a)}^+(b)\oplus\ker D_b^- .
+\]
+Here \(E_{(0,a)}^+\) excludes the zero modes.  The Fredholm determinant line is
+represented in this chart by
+\[
+  L_a(b)
+  =
+  \det(E_{<a}^+(b))\otimes \det(E_{<a}^-(b))^* .
+\]
+If \(a<c\) are two cuts avoiding the spectrum, write
+\[
+  E_{[a,c)}^\pm(b)
+  =
+  E_{<c}^\pm(b)\ominus E_{<a}^\pm(b).
+\]
+On this finite-dimensional window, \(D_b^+\) is an isomorphism
+\[
+  D_{[a,c)}^+(b):
+  E_{[a,c)}^+(b)\longrightarrow E_{[a,c)}^-(b),
+\]
+and the transition from the \(a\)-chart to the \(c\)-chart is multiplication by
+the determinant line element of this isomorphism:
+\[
+  \det D_{[a,c)}^+(b)
+  \in
+  \det E_{[a,c)}^-(b)\otimes \det E_{[a,c)}^+(b)^* .
+\]
+For three cuts \(a<c<d\), the window splits as
+\[
+  E_{[a,d)}^\pm
+  =
+  E_{[a,c)}^\pm\oplus E_{[c,d)}^\pm,
+\]
+and determinant multiplicativity gives
+\[
+  \det D_{[a,d)}^+
+  =
+  \det D_{[c,d)}^+\,
+  \det D_{[a,c)}^+ .
+\]
+This cocycle identity is the finite-dimensional algebra behind the gluing of
+the local determinant-line charts.  The zeta-regularized high-mode determinant
+and the heat-kernel counterterm supply the infinite-dimensional continuation of
+the same transition rule.
+
 For a loop \(\gamma\), the holonomy problem is converted into an index problem
 on the odd-dimensional mapping torus \(Y_\gamma\).  One stretches the circle
 direction adiabatically.  The local curvature contribution becomes the
