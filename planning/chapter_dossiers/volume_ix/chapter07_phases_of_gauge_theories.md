@@ -15,6 +15,16 @@ and topological sectors fit together.
 - `A_obs`: declared quasi-local observable system.
 - `omega`: thermodynamic-limit state on `A_obs`.
 - `P`: parameter domain of couplings and topological terms.
+- `Phi(Z)`, `I_Lambda`, `J_*`, `N_*`: finite interaction terms, nonzero
+  interaction supports, interaction strength, and overlap degree in the
+  finite-regulator locality section.
+- `d_Phi(X,Y)`, `partial_Phi X`: interaction-overlap chain distance and
+  interaction boundary of a finite region.
+- `P_Lambda(s)`, `K_Lambda(s)`, `D_Lambda(s)`: isolated-band projection,
+  finite projection-commutator generator, and quasi-adiabatic generator along
+  a gapped local Hamiltonian path.
+- `F_gamma`: real odd quasi-adiabatic filter with
+  `hat F_gamma(omega)=i/omega` outside the spectral gap.
 - `W_R(C)`, `C_{T,L}`, `V_R(L)`: Wilson loop, rectangular contour, and static
   potential.
 - `rho_{R,L}`: spectral measure for a static-source transfer-matrix sector.
@@ -48,6 +58,16 @@ and topological sectors fit together.
 - Defines phases as connected regions over which thermodynamic-limit states,
   local spectra, correlators, extended operators, symmetry realization, and
   topological sectors extend continuously.
+- Proves a finite path-count Lieb--Robinson bound from the commutator
+  expansion, with explicit dependence on interaction strength, overlap degree,
+  interaction-boundary size, and overlap-chain distance.
+- Derives finite isolated-band spectral transport from the projection identity
+  `P^2=P`, then identifies the missing locality estimate in the global
+  projection generator.
+- Derives the finite quasi-adiabatic off-diagonal transport equation and the
+  locality mechanism: the spectral gap fixes the filter, the filter tail
+  controls long times, and the Lieb--Robinson estimate controls spatial
+  leakage of evolved local terms.
 - Derives finite-volume gauge averaging: gauge-variant local fields have zero
   expectation with gauge-invariant finite-volume boundary conditions.
 - Defines static potentials from renormalized rectangular Wilson loops.
@@ -88,6 +108,10 @@ and topological sectors fit together.
   condensate orthogonality, electric/magnetic/dyonic confinement by the
   \(\mathbb Z_N\) Dirac pairing, tropical static-energy extraction, and
   Fredenhagen--Marcu exponent bookkeeping.
+- `calculation-checks/lattice_locality_flow_checks.py` verifies overlap-chain
+  counting for the finite path-count Lieb--Robinson estimate, the
+  factorial-to-exponential tail bound, two-level spectral-flow transport, and
+  the time-window split behind quasi-local generator tails.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -115,3 +139,8 @@ screening quotient, condensate subgroup, and topological sector.
   barrier.  The text explicitly bounds the lesson: finite stabilizer algebra is
   a proof laboratory for QFT phase diagnostics, not a substitute for a
   continuum or infinite-volume phase theorem.
+- 2026-05-31 locality-machinery pass: added the finite-regulator
+  Lieb--Robinson/spectral-flow machinery needed to make gapped phase stability
+  claims operational.  The section proves the finite path-count estimate and
+  the finite spectral-flow equations directly, while making the uniform
+  thermodynamic hypotheses for quasi-local automorphic transport explicit.

@@ -153,9 +153,11 @@ Absorption status: the first finite laboratory has been installed in
 Volume IX, Chapter 7 as the square-torus \(\mathbb Z_2\) gauge code.  It gives
 exact star/plaquette stabilizers, logical line intersection algebra, local
 indistinguishability in contractible regions, and the constant logical-string
-barrier.  The remaining finite-locality tasks are the deeper
-Lieb--Robinson/quasi-adiabatic-continuation bridge, interacting Hall response,
-and finite-gauge/TQFT boundary examples.
+barrier.  The same chapter now also contains the finite-regulator
+Lieb--Robinson/path-count proof, finite isolated-band spectral flow, and the
+quasi-adiabatic locality mechanism that turns a uniformly gapped local path
+into quasi-local transport of phase data.  The remaining finite-locality tasks
+are interacting Hall response and finite-gauge/TQFT boundary examples.
 
 ### Dynamic Critical Phenomena And Stochastic Field Theories
 

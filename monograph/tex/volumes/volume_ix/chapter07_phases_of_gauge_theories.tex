@@ -94,6 +94,300 @@ gauge theories have a known complete phase invariant.  It specifies what must
 be held fixed before statements such as ``the Higgs and confinement regions
 are analytically connected'' or ``two regions are distinct'' can be evaluated.
 
+\section{Finite-Regulator Locality Machinery For Phase Stability}
+\label{sec:finite-regulator-locality-machinery-phase-stability}
+
+The phase definition above uses continuity of local and extended data along a
+declared parameter region.  In a regulated Hamiltonian system this continuity
+has mathematical content only after locality and spectral stability are named.
+This section records the finite machinery used later when a gapped lattice
+regularization is treated as a proof laboratory for gauge-theory phase data.
+
+Let \(\Lambda\) be a finite metric lattice and let
+\[
+  \mathcal A_\Lambda=\bigotimes_{x\in\Lambda}\mathcal B(\mathcal H_x)
+\]
+with \(\dim\mathcal H_x<\infty\).  For \(X\subset\Lambda\), write
+\(\mathcal A_X\subset\mathcal A_\Lambda\) for the subalgebra supported in
+\(X\).  A finite interaction is a map
+\[
+  \Phi:\{Z\subset\Lambda\}\longrightarrow \mathcal A_Z,
+  \qquad
+  \Phi(Z)=\Phi(Z)^*,
+\]
+with Hamiltonian
+\[
+  H_\Lambda=\sum_{Z\subset\Lambda}\Phi(Z).
+\]
+Let
+\[
+  \mathcal I_\Lambda=\{Z\subset\Lambda\mid \Phi(Z)\ne0\}.
+\]
+The finite overlap constants used below are
+\[
+  J_*=\sup_{Z\in\mathcal I_\Lambda}\|\Phi(Z)\|,
+  \qquad
+  N_*=\sup_{Z\in\mathcal I_\Lambda}
+  \#\{Z'\in\mathcal I_\Lambda\mid Z'\cap Z\ne\varnothing\}.
+\]
+For regions \(X,Y\subset\Lambda\), define \(d_\Phi(X,Y)\) to be the smallest
+integer \(n\ge1\) for which there are \(Z_1,\ldots,Z_n\in\mathcal I_\Lambda\)
+with
+\[
+  Z_1\cap X\ne\varnothing,\qquad
+  Z_i\cap Z_{i+1}\ne\varnothing,\qquad
+  Z_n\cap Y\ne\varnothing .
+\]
+If no such chain exists, set \(d_\Phi(X,Y)=\infty\).  Also write
+\[
+  \partial_\Phi X=\{Z\in\mathcal I_\Lambda\mid Z\cap X\ne\varnothing\}.
+\]
+
+\begin{theorem}[Finite path-count Lieb--Robinson bound]
+\label{thm:finite-path-count-lieb-robinson-bound}
+Let
+\[
+  \tau_t(A)=e^{\ii tH_\Lambda}Ae^{-\ii tH_\Lambda}.
+\]
+For \(A_X\in\mathcal A_X\), \(B_Y\in\mathcal A_Y\), and
+\(X\cap Y=\varnothing\),
+\begin{equation}
+  \|[\tau_t(A_X),B_Y]\|
+  \le
+  2\|A_X\|\,\|B_Y\|\,|\partial_\Phi X|
+  \sum_{n\ge d_\Phi(X,Y)}
+  \frac{(2J_*N_*|t|)^n}{n!}.
+  \label{eq:finite-path-count-lr-bound}
+\end{equation}
+Consequently, for every \(\mu>0\),
+\begin{equation}
+  \|[\tau_t(A_X),B_Y]\|
+  \le
+  2\|A_X\|\,\|B_Y\|\,|\partial_\Phi X|\,
+  \exp\{-\mu d_\Phi(X,Y)+2J_*N_*e^\mu |t|\}.
+  \label{eq:finite-path-count-lr-exponential}
+\end{equation}
+If the finite systems form an exhausting bounded-degree finite-range family,
+with \(J_*\), \(N_*\), and the conversion from \(d_\Phi\) to the metric
+distance bounded uniformly, this gives a uniform light cone for local
+observables in the thermodynamic sequence.
+\end{theorem}
+
+\begin{proof}
+For a finite region \(S\subset\Lambda\), set
+\[
+  C_B(t,S)
+  =
+  \sup_{\substack{A\in\mathcal A_S\\ A\ne0}}
+  \frac{\|[\tau_t(A),B_Y]\|}{\|A\|}.
+\]
+If \(S\cap Y\ne\varnothing\), then
+\[
+  C_B(t,S)\le 2\|B_Y\|
+\]
+by \(\|[A,B_Y]\|\le2\|A\|\,\|B_Y\|\).  Suppose now that
+\(S\cap Y=\varnothing\).  Decompose the Hamiltonian as
+\[
+  H_\Lambda=H_{S^c}^{\mathrm{far}}+
+  \sum_{Z\cap S\ne\varnothing}\Phi(Z),
+\]
+where \(H_{S^c}^{\mathrm{far}}\) is the sum of terms whose supports are
+disjoint from \(S\).  The terms in \(H_{S^c}^{\mathrm{far}}\) commute with
+the initial observable \(A\in\mathcal A_S\).  Applying Duhamel's formula to
+the perturbation by the remaining terms and using the unitary invariance of
+the operator norm gives
+\[
+  C_B(t,S)
+  \le
+  2\sum_{Z\cap S\ne\varnothing}\|\Phi(Z)\|
+  \int_0^{|t|} C_B(s,S\cup Z)\,\dd s .
+\]
+The factor \(2\) is the elementary commutator estimate
+\(\|[\Phi(Z),A]\|\le2\|\Phi(Z)\|\,\|A\|\).  Iterating the inequality generates
+chains \(Z_1,\ldots,Z_n\) of overlapping interaction supports.  A chain can
+reach \(Y\) only when \(n\ge d_\Phi(X,Y)\).  The first step has at most
+\(|\partial_\Phi X|\) choices, and each later step has at most \(N_*\) choices.
+The interaction norms contribute at most \(J_*^n\), the commutator estimates
+contribute \(2^n\), and the ordered time simplex contributes
+\(|t|^n/n!\).  The final contact with \(Y\) contributes \(2\|B_Y\|\), yielding
+\eqref{eq:finite-path-count-lr-bound}, with \(N_*^n\) used as a harmless
+uniform upper bound for the chain count.  Finally,
+\[
+  \sum_{n\ge d}\frac{a^n}{n!}
+  \le
+  e^{-\mu d}\sum_{n\ge0}\frac{(ae^\mu)^n}{n!}
+  =
+  \exp(-\mu d+ae^\mu),
+\]
+with \(a=2J_*N_*|t|\).  This proves
+\eqref{eq:finite-path-count-lr-exponential}.
+\end{proof}
+
+The estimate is finite and quantitative.  Its thermodynamic use requires the
+constants in the last sentence of the theorem.  A volume-dependent interaction
+norm or an interaction graph with growing overlap degree can erase the
+uniform light cone.
+
+\paragraph{Spectral transport before locality.}
+Let \(s\mapsto H_\Lambda(s)\) be a \(C^1\) finite-volume Hamiltonian path and
+let \(P_\Lambda(s)\) be the spectral projection onto an isolated band.  The
+projection identity
+\[
+  P_\Lambda(s)^2=P_\Lambda(s)
+\]
+implies, after differentiating and multiplying by \(P_\Lambda\) on both
+sides, that
+\[
+  P_\Lambda(\partial_sP_\Lambda)P_\Lambda=0.
+\]
+Define the anti-self-adjoint finite spectral generator
+\[
+  K_\Lambda(s)=[\partial_sP_\Lambda(s),P_\Lambda(s)].
+\]
+Then
+\begin{equation}
+  \partial_sP_\Lambda(s)=[K_\Lambda(s),P_\Lambda(s)].
+  \label{eq:finite-projection-spectral-flow}
+\end{equation}
+Indeed,
+\[
+  [K_\Lambda,P_\Lambda]
+  =
+  (\partial_sP_\Lambda)P_\Lambda+P_\Lambda(\partial_sP_\Lambda)
+  =
+  \partial_sP_\Lambda .
+\]
+Thus the finite ODE
+\[
+  \partial_sU_\Lambda(s)=K_\Lambda(s)U_\Lambda(s),\qquad U_\Lambda(0)=1,
+\]
+transports the band:
+\[
+  P_\Lambda(s)=U_\Lambda(s)P_\Lambda(0)U_\Lambda(s)^*.
+\]
+This is exact spectral algebra, but the operator \(K_\Lambda(s)\) is built
+from the global projection \(P_\Lambda(s)\).  It carries no locality estimate
+by itself.
+
+Quasi-adiabatic continuation is the locality replacement for this projection
+generator.  Suppose the chosen band is separated from the rest of the finite
+spectrum by a gap \(\gamma>0\).  Choose a real odd filter
+\[
+  F_\gamma:\mathbb R\longrightarrow\mathbb R
+\]
+whose Fourier transform, with convention
+\[
+  \widehat F_\gamma(\omega)=\int_{\mathbb R}e^{\ii\omega t}F_\gamma(t)\,\dd t,
+\]
+satisfies
+\[
+  \widehat F_\gamma(\omega)=\frac{\ii}{\omega},
+  \qquad |\omega|\ge\gamma,
+\]
+and whose decay is fast enough for the integrals below.  Let
+\[
+  V_\Lambda(s)=\partial_sH_\Lambda(s)
+\]
+and define the self-adjoint finite quasi-adiabatic generator
+\begin{equation}
+  D_\Lambda(s)=
+  \int_{\mathbb R}
+  F_\gamma(t)\,
+  e^{\ii tH_\Lambda(s)}V_\Lambda(s)e^{-\ii tH_\Lambda(s)}
+  \,\dd t .
+  \label{eq:finite-quasi-adiabatic-generator}
+\end{equation}
+In an eigenbasis of \(H_\Lambda(s)\), with \(a\) in the band and \(b\)
+outside the band,
+\[
+  \langle b|\partial_sP_\Lambda|a\rangle
+  =
+  -\frac{\langle b|V_\Lambda|a\rangle}{E_b-E_a}.
+\]
+On the other hand,
+\[
+  \langle b|D_\Lambda|a\rangle
+  =
+  \widehat F_\gamma(E_b-E_a)\langle b|V_\Lambda|a\rangle
+  =
+  \frac{\ii\,\langle b|V_\Lambda|a\rangle}{E_b-E_a}.
+\]
+Therefore
+\[
+  \langle b|\ii[D_\Lambda,P_\Lambda]|a\rangle
+  =
+  -\frac{\langle b|V_\Lambda|a\rangle}{E_b-E_a},
+\]
+and the same calculation in the opposite off-diagonal block gives
+\begin{equation}
+  \partial_sP_\Lambda(s)=\ii[D_\Lambda(s),P_\Lambda(s)].
+  \label{eq:finite-quasi-adiabatic-transports-band}
+\end{equation}
+The diagonal blocks are zero on both sides.  Thus the quasi-adiabatic
+generator transports the isolated band exactly at finite volume.
+
+Now assume the Hamiltonian path is local:
+\[
+  V_\Lambda(s)=\sum_{X\subset\Lambda}V_X(s),
+  \qquad V_X(s)\in\mathcal A_X,
+\]
+with a uniform interaction norm.  Let \(X_R\) be the \(R\)-neighborhood of
+\(X\), and let \(\mathbb E_{X_R}\) be the conditional expectation from
+\(\mathcal A_\Lambda\) onto \(\mathcal A_{X_R}\) obtained by normalized
+partial trace over the complement.  In finite dimension this conditional
+expectation can be written as Haar averaging over unitaries \(U\) supported in
+\(\Lambda\setminus X_R\):
+\[
+  \mathbb E_{X_R}(A)=\int UAU^*\,\dd U .
+\]
+Therefore
+\[
+  A-\mathbb E_{X_R}(A)=\int (A-UAU^*)\,\dd U,
+  \qquad
+  \|A-\mathbb E_{X_R}(A)\|
+  \le
+  \sup_U\|[A,U]\|.
+\]
+Apply this with \(A=e^{\ii tH_\Lambda}V_Xe^{-\ii tH_\Lambda}\).  The
+unitaries \(U\) in the last supremum are supported at distance at least \(R\)
+from \(X\), and the Lieb--Robinson estimate gives
+\[
+  \left\|
+    e^{\ii tH_\Lambda}V_Xe^{-\ii tH_\Lambda}
+    -
+    \mathbb E_{X_R}\!\left(e^{\ii tH_\Lambda}V_Xe^{-\ii tH_\Lambda}\right)
+  \right\|
+  \le
+  C_X\|V_X\|\,e^{-\mu(R-v|t|)}
+\]
+for \(R\ge v|t|\), with constants inherited from
+\eqref{eq:finite-path-count-lr-exponential}.  Inserting this estimate into
+\eqref{eq:finite-quasi-adiabatic-generator} gives a quasi-local tail bound:
+\[
+  \|D_{\Lambda,X}(s)-D_{\Lambda,X}^{(R)}(s)\|
+  \le
+  C_X\|V_X(s)\|
+  \left(
+    e^{-\mu R/2}\int_{|t|\le R/(2v)}|F_\gamma(t)|\,\dd t
+    +
+    2\int_{|t|>R/(2v)}|F_\gamma(t)|\,\dd t
+  \right),
+\]
+where \(D_{\Lambda,X}^{(R)}(s)\in\mathcal A_{X_R}\).  The first term is the
+Lieb--Robinson leakage inside the time window, and the second term is the
+filter tail outside that window.  This is the mechanism behind quasi-local
+spectral flow: the gap fixes the filter in frequency space, the filter tail
+controls long times, and the Lieb--Robinson estimate controls the spatial
+spread during the retained times.
+
+Consequently, a uniformly gapped local path supplies a quasi-local
+automorphism of the quasi-local observable algebra in the thermodynamic limit,
+provided the interaction norms, gap, boundary convention, filter tail, and
+volume exhaustion are all uniform.  This automorphism is the regulated
+mathematical object that transports local phase data.  It is distinct from
+both physical time evolution and from an arbitrary finite-dimensional unitary
+interpolation of ground spaces.
+
 \section{Gauge Invariance And Elitzur Averaging}
 
 Gauge-variant local fields cannot be order parameters for a gauge theory

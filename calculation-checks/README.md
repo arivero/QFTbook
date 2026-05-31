@@ -610,6 +610,11 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `lattice_locality_flow_checks.py`: finite-regulator locality checks for the
+  gauge-theory phases chapter, including overlap-chain counting for the
+  path-count Lieb--Robinson estimate, the factorial-to-exponential tail bound,
+  two-level spectral-flow transport, and the time-window split behind
+  quasi-local generator tails.
 - `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
   checks for the gauge-theory phases chapter, including star/plaquette
   commutation, global stabilizer redundancies, the four-dimensional torus
