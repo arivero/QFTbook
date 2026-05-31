@@ -783,6 +783,54 @@ asking whether the charged spectral distribution is an isolated shell or a
 soft-photon continuum: a bounded gauge-invariant observable cannot change the
 surface charge at infinity.
 
+\begin{proposition}[No almost-local observable coordinate for nonzero Gauss charge]
+\label{prop:no-almost-local-observable-charged-creator}
+Under the hypotheses of
+Theorem~\ref{thm:gauss-law-obstruction-local-charged-creators}, assume in
+addition that the charge operator \(Q\) is closed on a domain containing the
+vectors generated from \(\vac\) by local gauge-invariant observables.  Let
+\(B\in\mathcal B(\Hilb)\) be almost local with respect to the observable net:
+there are \(B_R\in\Obs(\mathcal O_R)\), with
+\(\mathcal O_R\) a cofinal family of bounded regions, such that
+\[
+  \|B-B_R\|\longrightarrow0
+  \qquad (R\to\infty).
+\]
+Then \(B\vac\) is neutral:
+\[
+  B\vac\in\operatorname{Dom}(Q),
+  \qquad QB\vac=0 .
+\]
+Consequently a vector with nonzero Gauss charge cannot be produced from the
+vacuum by an almost-local operator belonging to the gauge-invariant
+observable net.
+\end{proposition}
+
+\begin{proof}
+For each \(R\), Theorem~\ref{thm:gauss-law-obstruction-local-charged-creators}
+applied to the local observable \(B_R\) gives
+\[
+  B_R\vac\in\operatorname{Dom}(Q),
+  \qquad Q B_R\vac=0 .
+\]
+The norm convergence \(B_R\to B\) implies \(B_R\vac\to B\vac\), while
+\(QB_R\vac\to0\).  Closedness of \(Q\) therefore gives
+\[
+  B\vac\in\operatorname{Dom}(Q),
+  \qquad QB\vac=0 .
+\]
+If \(B\vac\) had a nonzero component in a charge-\(q\) spectral subspace,
+\(q\ne0\), the self-adjoint spectral calculus for \(Q\) would give
+\(QB\vac\ne0\) on that component.  Hence no such component is present.
+\end{proof}
+
+This proposition is the exact point at which the ordinary Haag--Ruelle
+hypothesis fails.  The failure is not that the Wilson line is an inconvenient
+choice of interpolation; the noncompact tail is forced by the charge
+superselection law.  If an operator changes the Gauss-law flux at infinity,
+it cannot be approximated in norm, even rapidly, by bounded
+gauge-invariant observables localized in bounded regions.
+
 Charged fields can be introduced in a larger field algebra, but they are not
 gauge-invariant local observables.  A gauge-invariant charged insertion must
 carry flux to infinity.  In an abelian convention
@@ -1054,46 +1102,107 @@ below and in Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.
 Ordinary Haag--Ruelle theory uses two facts at large time: the one-particle
 part of \(B_t(h)\vac\) is time independent, and commutators of creators with
 disjoint velocity supports are rapidly decreasing because the creators are
-almost local.  A Wilson-line charged creator has noncompact localization, so
-the second fact must be replaced rather than reused.
+almost local.  Proposition~\ref{prop:no-almost-local-observable-charged-creator}
+shows that, for an unscreened Gauss-law charge, a charged creator in the
+observable net cannot satisfy that localization hypothesis.  A Wilson-line or
+Coulomb-dressed charged creator has noncompact localization for structural
+reasons, so the local commutator estimate must be replaced rather than reused.
 
-A charged dressing class \(\mathcal D_{\rm dress}\) suitable for a
-Haag--Ruelle-type
-construction would have to provide, for each charged momentum packet \(h\),
-operators \(\Psi_{\Gamma,t}(h)\) with dressing datum
-\(\Gamma=(q,\gamma,\text{asymptotic flux})\) such that:
-\begin{enumerate}
-\item the vectors \(\Psi_{\Gamma,t}(h)\vac\) have a controlled one-particle
-or threshold spectral component with the desired charge and velocity support;
-\item the commutator of two velocity-separated dressed creators has an
-explicit large-time form
+The replacement has definite analytic content: a charged construction must
+separate the nonintegrable long-range part of the motion from the integrable
+remainder.  For a charged packet \(h\), write
+\[
+  \Psi_{\Gamma,t}(h)
+\]
+for a dressed creator with datum
+\(\Gamma=(q,\gamma,\mathcal E_\infty,\mathfrak s)\): \(q\) is the boundary
+charge, \(\gamma\) is the geometric dressing or Coulomb coordinate,
+\(\mathcal E_\infty\) is the limiting Gauss-law flux density, and
+\(\mathfrak s\) records spin and internal multiplicity labels.  A
+Haag--Ruelle replacement for a finite velocity-separated list
+\[
+  I=((\Gamma_1,h_1),\ldots,(\Gamma_n,h_n))
+\]
+must provide a real locally absolutely continuous comparison phase
+\(\Theta_I(t)\) and vectors
 \begin{equation}
-  [\Psi_{\Gamma_i,t}(h_i),\Psi_{\Gamma_j,t}(h_j)]
+  \mathcal C_I(t)
   =
-  \ii\,\Theta_{ij}(t)\,
-  \Psi_{\Gamma_j,t}(h_j)\Psi_{\Gamma_i,t}(h_i)
-  +R_{ij}(t),
-  \qquad
-  \int^\infty \|R_{ij}(t)\|\,\dd t<\infty ,
-  \label{eq:dressed-hr-commutator-template}
+  \ee^{-\ii\Theta_I(t)}
+  \Psi_{\Gamma_1,t}(h_1)\cdots\Psi_{\Gamma_n,t}(h_n)\vac .
+  \label{eq:charged-hr-modified-comparison-vector}
 \end{equation}
-or a mathematically equivalent Dollard/Faddeev--Kulish modification of the
-large-time dynamics;
-\item the phase \(\Theta_{ij}(t)\), when present, is determined by the
-asymptotic flux data and is included in the comparison dynamics, not left as
-an error term;
-\item changes of dressing that preserve the asymptotic flux act as changes of
-interpolating coordinates, whereas changes of asymptotic flux change the
-charged superselection sector.
+The desired estimates have the following precise content.
+\begin{enumerate}
+\item The one-particle or threshold coordinate of
+\(\Psi_{\Gamma,t}(h)\vac\) is independent of \(t\) after the chosen
+comparison dynamics is applied.  In an infrared-regulated massive charged
+sector this is an ordinary isolated-shell projection.  In massless QED it is
+instead a threshold or detector datum in a velocity/flux representation, not
+a Wigner one-particle vector in a single photon Fock space.
+\item For two velocity-separated dressed creators, the large-time exchange
+relation on the finite-energy domain has the form
+\begin{equation}
+  \Psi_{\Gamma_i,t}^{\#}(h_i)\Psi_{\Gamma_j,t}^{\#}(h_j)
+  =
+  \ee^{\ii\theta_{ij}^{\#\#}(t)}
+  \Psi_{\Gamma_j,t}^{\#}(h_j)\Psi_{\Gamma_i,t}^{\#}(h_i)
+  +R_{ij}^{\#\#}(t),
+  \qquad
+  \int_{T_0}^{\infty}\|R_{ij}^{\#\#}(t)\xi\|\,\dd t<\infty ,
+  \label{eq:dressed-hr-exchange-estimate}
+\end{equation}
+for every vector \(\xi\) in the scattering domain and for
+each choice in which a superscript \(\#\) denotes either the operator itself
+or its adjoint.  The phase \(\theta_{ij}^{\#\#}\), when present, is determined
+by the asymptotic flux data.  In a local massive theory this phase is zero and
+the remainder is rapidly decreasing in operator norm.  In a long-range
+charged theory a term with \(\dot\theta_{ij}(t)\sim c_{ij}/t\) is not an
+error; it must be included in the comparison dynamics.
+\item The comparison phase in
+\eqref{eq:charged-hr-modified-comparison-vector} cancels all nonintegrable
+pair terms in the time derivative:
+\begin{equation}
+  \left\|
+  \frac{\dd}{\dd t}\mathcal C_I(t)
+  \right\|
+  \le R_I(t),
+  \qquad
+  R_I\in L^1([T_0,\infty)).
+  \label{eq:charged-hr-modified-cook-estimate}
+\end{equation}
+This is the charged analogue of Cook's estimate.  It is the analytic heart of
+the missing theorem.
+\item Scalar products of the modified vectors have limits computed in the
+appropriate asymptotic representation.  For a screened theory with isolated
+massive charged shells this representation may be an ordinary charged Fock
+space.  For massless QED it must be a representation carrying the
+velocity/flux labels discussed below; one cannot first form a single photon
+Fock space and then attach the flux by a limiting unitary.
+\item Dressings with the same limiting flux and a finite Hilbert-space
+difference act as changes of interpolating coordinates.  Dressings with
+different limiting fluxes define different charged sectors.  The distinction
+is quantified below by the soft-norm and Weyl-implementation calculations.
 \end{enumerate}
-Condition~\eqref{eq:dressed-hr-commutator-template} is deliberately written
-as a requirement, not as a theorem.  It is the point at which the proof of
-ordinary Haag--Ruelle theory uses almost locality, and it is the point that a
-charged-sector replacement must supply.  If the gauge field is screened or
-massive, the long-range phase may be absent and ordinary massive scattering
-estimates can be recovered for gauge-invariant composite charged operators.
-For an unscreened Gauss-law charge, the flux tail is part of the asymptotic
-datum.
+
+Once \eqref{eq:charged-hr-modified-cook-estimate} is known, the Hilbert-space
+part of the scattering construction is the same Cauchy argument as in
+Proposition~\ref{prop:estimate-package-implies-haag-ruelle}: for
+\(t'>t\),
+\[
+  \|\mathcal C_I(t')-\mathcal C_I(t)\|
+  \le
+  \int_t^{t'}R_I(s)\,\dd s
+  \longrightarrow0 .
+\]
+Thus the remaining difficulty is not the abstract Cook argument but the
+derivation of the charged estimates
+\eqref{eq:dressed-hr-exchange-estimate}--\eqref{eq:charged-hr-modified-cook-estimate}
+from a nonperturbative gauge-theory construction.  If the gauge field is
+screened or massive, the long-range phase may be absent and ordinary massive
+scattering estimates can be recovered for gauge-invariant composite charged
+operators.  For an unscreened Gauss-law charge, the flux tail is part of the
+asymptotic datum, so any theorem must include it from the start.
 
 \subsection{Finite-Regulator Dressed LSZ}
 

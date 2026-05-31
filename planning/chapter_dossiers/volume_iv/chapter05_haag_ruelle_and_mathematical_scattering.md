@@ -54,6 +54,11 @@ resonances.
   language and from global asymptotic completeness.
 - Proves the Gauss-law obstruction: bounded local gauge-invariant observables
   cannot create charged vectors from a neutral vacuum.
+- Proves the stronger almost-local obstruction: an operator almost local with
+  respect to the gauge-invariant observable net still creates a neutral vector
+  from the vacuum, provided the Gauss-law charge is closed on the local
+  domain.  Thus a nonzero charged creator cannot be hidden inside the
+  ordinary Haag--Ruelle almost-local hypothesis.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
@@ -64,8 +69,12 @@ resonances.
   \(u^\mu A_\mu=0\), under explicit endpoint and decay assumptions, and
   derives the associated \((k\cdot u-\ii0)^{-1}\) line denominator from the
   regulated half-line Fourier transform.
-- States the missing large-time commutator estimate for noncompact charged
-  dressings as the core unsolved Haag--Ruelle replacement.
+- Refines the missing large-time estimate for noncompact charged dressings
+  into a charged Haag--Ruelle replacement package: dressed creators with
+  charge, dressing geometry, limiting flux and multiplicity labels; a
+  velocity-separated exchange estimate with possible Dollard/Faddeev--Kulish
+  phase; a modified Cook estimate after subtracting the comparison phase; and
+  scalar-product limits in the correct asymptotic representation.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.
 - Shows in prose that compact dressing changes with fixed asymptotic flux are
@@ -160,3 +169,7 @@ resonances.
   cones by comparing \(\delta |t|-2R\) with \(2R\), and absorbs the polynomial
   near-packet \(L^1\)-growth by the arbitrary-power almost-local approximation
   estimate.
+- 2026-05-31: added the no-almost-local-observable-coordinate proposition for
+  nonzero Gauss charge and rewrote the charged-sector missing-estimate
+  discussion so the open theorem is localized in the exchange and modified
+  Cook estimates, not in vague claims about Wilson-line nonlocality.
