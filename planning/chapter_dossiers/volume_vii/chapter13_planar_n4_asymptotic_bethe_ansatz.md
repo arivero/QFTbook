@@ -46,7 +46,7 @@ motivational checks, not foundations.
   denominators for the one-copy `su(2|2)_c` intertwiner.
 - `beta_{12},...,ell_{12}`: row-reduced coefficients expressing
   `B_{12},...,L_{12}` as multiples of `A_{12}` in the generic
-  intertwiner-rank certificate.
+  intertwiner row-rank certificate.
 - `R^{BB}`, `R^{BF}`: finite boson-boson/fermion-fermion and mixed blocks
   used to check local matrix unitarity after factoring out `mathcal S_{12}`.
 - `y,w`: level-II and level-III nested Bethe roots.
@@ -338,6 +338,12 @@ crossed Zhukovsky sheets.
   amplitudes, recover the displayed ten-amplitude formulas after fixing
   `A=mathcal S_12 n_12/d_12`, and preserve the two highest-weight `Q`
   relations.
+- 2026-05-31 issue #691 continuation: demoted the generic one-copy
+  intertwiner row-rank certificate from lemma/proof form to paragraph-level
+  finite row-chart prose.  The nine pivot equations, one-dimensional generic
+  solution space, stringbook scalar normalization, and singular-locus warning
+  remain explicit; theorem-family rank is reserved for analytic or QFT-level
+  inputs rather than the finite row-echelon certificate.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.
