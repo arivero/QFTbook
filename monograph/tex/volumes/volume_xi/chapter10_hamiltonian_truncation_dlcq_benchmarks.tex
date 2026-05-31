@@ -830,6 +830,135 @@ normalization, the finite Ising TFFSA spectral-flow derivative identity, the
 finite large-\(N\) QCD DLCQ quadratic-form identity, and the exact-intercept
 cases of the finite large-\(K\) extrapolation diagnostic.
 
+\section{Krylov Data as Finite Spectral Evidence}
+\label{sec:krylov-finite-spectral-evidence}
+
+Large truncation matrices are rarely diagonalized by forming a complete
+eigenbasis.  The usual numerical output is a Krylov subspace calculation:
+Lanczos vectors, a tridiagonal compression, residuals, and sometimes a
+spectral density with respect to a chosen seed vector.  These objects have
+exact finite-matrix meanings.  They become evidence for a QFT spectrum only
+after the finite regulator, symmetry sector, seed overlap, counterterms, and
+continuum extrapolation are separately controlled.
+
+\begin{definition}[Krylov spectral certificate]
+\label{def:krylov-spectral-certificate}
+Let \(A=A^\dagger\) be a finite Hermitian matrix on a finite-dimensional
+Hilbert space \(V\), and let \(v\in V\) be a normalized seed vector.  For
+\(m\geq1\), the \(m\)-th Krylov subspace is
+\[
+  \mathcal K_m(A,v)
+  =
+  \operatorname{span}\{v,Av,\ldots,A^{m-1}v\}.
+\]
+A Krylov spectral certificate consists of an orthonormal basis
+\[
+  V_m=(q_0,\ldots,q_{m-1})
+  \quad\text{of}\quad
+  \mathcal K_m(A,v),
+  \qquad q_0=v,
+\]
+the compression
+\[
+  T_m=V_m^\dagger A V_m ,
+\]
+and the residual matrix
+\[
+  R_m=A V_m-V_mT_m .
+\]
+When the basis is the exact Lanczos basis before breakdown, \(T_m\) is
+tridiagonal and
+\begin{equation}
+  A V_m=V_mT_m+\beta_m q_m e_m^\dagger ,
+  \label{eq:lanczos-residual-relation}
+\end{equation}
+where \(q_m\perp\mathcal K_m(A,v)\), \(\|q_m\|=1\), \(e_m\) is the last
+coordinate vector in \(\mathbb C^m\), and \(\beta_m\geq0\).  Breakdown
+means \(\beta_m=0\), in which case \(\mathcal K_m(A,v)\) is already an
+invariant subspace for \(A\).
+\end{definition}
+
+Suppose \(T_m y=\theta y\), \(\|y\|=1\), and set \(u=V_m y\).  Multiplying
+\eqref{eq:lanczos-residual-relation} by \(y\) gives the exact finite
+residual identity
+\begin{equation}
+  (A-\theta)u=\beta_m\, y_m\, q_m,
+  \qquad
+  \|(A-\theta)u\|=\beta_m |y_m| .
+  \label{eq:lanczos-ritz-residual-certificate}
+\end{equation}
+Thus a reported Lanczos Ritz value is accompanied by a finite-matrix
+certificate of the kind defined in
+Definition~\ref{def:finite-truncation-residual-certificate}.  Its content is
+finite and sectorwise: the regulated matrix in the declared sector has
+spectrum within \(\beta_m|y_m|\) of \(\theta\), and the approximate
+eigenvector leakage into a separated finite spectral cluster is bounded by
+\eqref{eq:finite-projector-leakage-bound}.  A continuum QFT spectral claim
+then requires the regulator and extrapolation data specified in
+Definition~\ref{def:hamiltonian-truncation-regulator-datum}.
+
+The same Krylov data carry a spectral-measure certificate.  Let
+\[
+  \mu_v=\sum_a |\langle e_a,v\rangle|^2\delta_{E_a}
+\]
+be the finite spectral measure of \(A\) in the seed state, where
+\(\{e_a\}\) is an orthonormal eigenbasis of \(A\), \(Ae_a=E_a e_a\).  If
+\(\theta_r\) are the eigenvalues of \(T_m\) and \(s^{(r)}\) are normalized
+eigenvectors of \(T_m\), define
+\[
+  w_r=|\langle e_1,s^{(r)}\rangle|^2 ,
+  \qquad
+  \mu_{v,m}^{\rm Krylov}=\sum_{r=1}^{m}w_r\delta_{\theta_r}.
+\]
+For every polynomial \(p\) of degree at most \(2m-1\),
+\begin{equation}
+  \int p(\lambda)\,\dd\mu_v(\lambda)
+  =
+  \sum_{r=1}^{m} w_r p(\theta_r).
+  \label{eq:krylov-gauss-moment-exactness}
+\end{equation}
+To see the mechanism, first note that if \(\deg b\leq m-1\), then
+\[
+  b(A)v=V_m b(T_m)e_1 .
+\]
+Let \(\pi_m(\lambda)=\det(\lambda I-T_m)\).  The Lanczos recurrence implies
+that \(\pi_m(A)v\) is orthogonal to \(\mathcal K_m(A,v)\), while
+\(\pi_m(T_m)=0\).  Any polynomial \(p\) with \(\deg p\leq2m-1\) decomposes
+as \(p=a\pi_m+b\) with \(\deg a,\deg b\leq m-1\).  Since
+\(a(A)v\in\mathcal K_m(A,v)\),
+\[
+  \langle v,p(A)v\rangle
+  =
+  \langle v,b(A)v\rangle
+  =
+  e_1^\dagger b(T_m)e_1
+  =
+  e_1^\dagger p(T_m)e_1,
+\]
+and diagonalizing \(T_m\) gives
+\eqref{eq:krylov-gauss-moment-exactness}.  The finite Krylov measure is
+therefore a certified quadrature rule for the seed spectral measure, not a
+complete list of all finite eigenvalues unless the chosen seeds have overlap
+with the relevant spectral subspaces.
+
+Symmetry sectors must be part of the same certificate.  If a finite group or
+compact group acts by unitary matrices commuting with \(A\), and \(P_\alpha\)
+is the exact projector onto a declared irreducible sector, then the Krylov
+calculation for that sector is the calculation for the finite matrix
+\[
+  A_\alpha=P_\alpha A P_\alpha
+  \quad\text{on}\quad
+  P_\alpha V .
+\]
+A seed \(v\) with \(P_\alpha v=0\) contains no spectral information about
+that sector, and a single nonzero seed can miss degenerate eigenvectors
+orthogonal to its cyclic subspace.  A numerical claim about absence of states
+in a finite window must therefore use either full diagonalization in the
+sector, a block-Krylov seed family with a rank certificate for the target
+subspace, or an independent variational lower bound.  Without such sector
+coverage, Lanczos data are reliable spectral evidence for the cyclic
+subspace generated by the stated seed, not for the whole Hilbert space.
+
 \section{DLCQ Datum}
 
 Light-front coordinates are

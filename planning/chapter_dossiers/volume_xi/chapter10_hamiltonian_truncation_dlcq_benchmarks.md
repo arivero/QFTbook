@@ -47,6 +47,11 @@ numerics.
 - `lambda_ell(K)`, `q_r`, `X_{ra}`, `B`: ordered finite DLCQ eigenvalue,
   large-`K` fit coordinate, Vandermonde design matrix, and least-squares
   left inverse used in the finite intercept-remainder amplifier.
+- `K_m(A,v)`, `V_m`, `T_m`, `beta_m`, `q_m`: finite Krylov subspace,
+  orthonormal Krylov/Lanczos basis, tridiagonal compression, tail residual
+  coordinate, and next Lanczos vector.
+- `mu_v`, `theta_r`, `w_r`: finite seed spectral measure, Ritz values, and
+  Krylov quadrature weights.
 
 ## Claim Ledger
 
@@ -89,6 +94,14 @@ numerics.
 - Records the exact finite Schur self-energy
   `Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP` and isolates the separate norm-bound
   obligation for replacing it by a local counterterm.
+- Defines finite Krylov spectral certificates for large truncation matrices,
+  derives the exact Lanczos Ritz-residual identity
+  `||(A-theta)V_m y||=beta_m |y_m|`, and explains why this is finite-matrix
+  evidence rather than a continuum spectral theorem.
+- Derives the finite Krylov spectral-measure moment identity through degree
+  `2m-1`, using the orthogonality of the Lanczos residual polynomial, and
+  states the seed-overlap and symmetry-sector coverage obligations needed
+  before interpreting missing or present states.
 - Defines DLCQ kinematics and the role of harmonic resolution, then packages
   the light-front compactification, parton partitions, zero-mode treatment,
   finite \(P^-\) or \(M^2\) operator, and finite-\(K\) continuum diagnostic
@@ -151,7 +164,8 @@ plots.
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
   block normalization, finite Ising TFFSA spectral-flow derivative identities,
   finite large-`K` fit algebra, finite residual certification,
-  spectral-projector leakage, and the Feshbach determinant identity.
+  spectral-projector leakage, the Feshbach determinant identity, and the
+  Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.
 
 ## Anti-Wrapper Audit
 
@@ -164,3 +178,7 @@ plots.
   from proposition form to linear-algebra prose.  The residual-to-spectrum
   and leakage bounds remain as numbered equations because they are useful
   diagnostics, but their derivation is an elementary eigenbasis calculation.
+- 2026-05-31 statmech numerical-evidence pass: added Krylov/Lanczos
+  finite-spectral evidence machinery as derivational prose rather than a
+  theorem wrapper, with exact residual and moment identities tied to
+  seed-overlap and symmetry-sector coverage.

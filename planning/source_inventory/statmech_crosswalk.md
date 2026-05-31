@@ -316,6 +316,14 @@ Tensor networks and neural states deserve QFT-side treatment only when tied to
 concrete regulated QFT targets such as TCSA/DLCQ, lattice gauge theory, tensor
 renormalization, or finite-volume Hamiltonian spectra.
 
+Partial QFT absorption on 2026-05-31: Volume XI, Chapter 10 now includes
+Krylov/Lanczos finite spectral certificates for Hamiltonian truncation and
+DLCQ matrices, including exact Ritz residuals, seed spectral-measure moments,
+and the sector/seed-overlap obligations needed before finite spectra are read
+as QFT evidence.  This addresses the exact-diagonalization/Krylov portion of
+the numerical-evidence lane; tensor networks, neural variational states, and
+larger production workflows remain separate development tasks.
+
 ### Defects, Elasticity, And Goldstone Effective Theories
 
 Statmech source: Volume II Chapter 16.

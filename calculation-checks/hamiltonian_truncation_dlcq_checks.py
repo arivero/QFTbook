@@ -30,6 +30,28 @@ def assert_leq(name: str, actual: float, bound: float, tol: float = 1.0e-12) -> 
         raise AssertionError(f"{name}: got {actual!r}, bound {bound!r}")
 
 
+def assert_matrix_close(name: str, actual: np.ndarray, expected: np.ndarray, tol: float = 1.0e-11) -> None:
+    if float(np.max(np.abs(actual - expected))) > tol:
+        raise AssertionError(f"{name}: max error {float(np.max(np.abs(actual - expected))):.3e}")
+
+
+def krylov_orthonormal_basis(matrix: np.ndarray, seed: np.ndarray, dim: int) -> np.ndarray:
+    basis: list[np.ndarray] = []
+    vector = seed.astype(float) / np.linalg.norm(seed)
+    for power in range(dim):
+        if power == 0:
+            candidate = vector.copy()
+        else:
+            candidate = matrix @ basis[-1]
+        for old in basis:
+            candidate = candidate - old * float(old @ candidate)
+        norm = float(np.linalg.norm(candidate))
+        if norm < 1.0e-13:
+            raise AssertionError("Krylov basis broke down before requested dimension")
+        basis.append(candidate / norm)
+    return np.column_stack(basis)
+
+
 def check_ising_bogoliubov_benchmark() -> None:
     result = tcsa.run(num_modes=7, mass=0.8, circumference=9.0)
     assert_leq("Ising Bogoliubov finite spectrum", result["max_abs_error"], 1.0e-12)
@@ -221,6 +243,52 @@ def check_feshbach_determinant_identity() -> None:
     assert_close("Feshbach determinant identity", full_det, factored_det)
 
 
+def check_krylov_residual_and_moments() -> None:
+    matrix = np.array(
+        [
+            [1.5, 0.4, 0.0, 0.0, 0.0],
+            [0.4, 2.2, -0.3, 0.0, 0.0],
+            [0.0, -0.3, 3.1, 0.5, 0.0],
+            [0.0, 0.0, 0.5, 4.0, -0.2],
+            [0.0, 0.0, 0.0, -0.2, 5.3],
+        ],
+        dtype=float,
+    )
+    seed = np.array([1.0, 0.2, -0.1, 0.05, 0.3], dtype=float)
+    seed = seed / np.linalg.norm(seed)
+    dim = 3
+    basis = krylov_orthonormal_basis(matrix, seed, dim)
+    compression = basis.T @ matrix @ basis
+    residual_matrix = matrix @ basis - basis @ compression
+
+    # The exact Arnoldi/Lanczos residual has support only in the final column.
+    assert_leq("Krylov residual first column", float(np.linalg.norm(residual_matrix[:, 0])), 1.0e-11)
+    assert_leq("Krylov residual second column", float(np.linalg.norm(residual_matrix[:, 1])), 1.0e-11)
+    beta_tail = float(np.linalg.norm(residual_matrix[:, -1]))
+
+    ritz_values, ritz_vectors = np.linalg.eigh(compression)
+    for idx, theta in enumerate(ritz_values):
+        y = ritz_vectors[:, idx]
+        lifted = basis @ y
+        full_residual = float(np.linalg.norm((matrix - theta * np.eye(matrix.shape[0])) @ lifted))
+        assert_close(
+            f"Krylov Ritz residual formula {idx}",
+            full_residual,
+            beta_tail * abs(float(y[-1])),
+            tol=1.0e-11,
+        )
+
+    e1 = np.zeros(dim)
+    e1[0] = 1.0
+    weights = ritz_vectors[0, :] ** 2
+    for power in range(2 * dim):
+        exact_moment = float(seed @ np.linalg.matrix_power(matrix, power) @ seed)
+        compressed_moment = float(e1 @ np.linalg.matrix_power(compression, power) @ e1)
+        quadrature_moment = float(np.sum(weights * (ritz_values ** power)))
+        assert_close(f"Krylov compressed moment {power}", compressed_moment, exact_moment, tol=1.0e-10)
+        assert_close(f"Krylov quadrature moment {power}", quadrature_moment, exact_moment, tol=1.0e-10)
+
+
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_tffsa_connected_spin_block()
@@ -229,6 +297,7 @@ def main() -> None:
     check_thooft_large_K_fit_algebra()
     check_residual_certificate()
     check_feshbach_determinant_identity()
+    check_krylov_residual_and_moments()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 
 

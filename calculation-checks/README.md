@@ -293,8 +293,9 @@ Current checks:
   energy-deformation Bogoliubov spectrum, the large-\(N\) two-dimensional
   QCD DLCQ quadratic-form identity, connected Ising TFFSA spin-block
   normalization, residual-to-spectrum certification, spectral-projector
-  leakage control, and the finite Feshbach determinant identity behind
-  truncation counterterms.
+  leakage control, the finite Feshbach determinant identity behind
+  truncation counterterms, and Krylov/Lanczos Ritz-residual plus finite
+  spectral-moment identities.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier
