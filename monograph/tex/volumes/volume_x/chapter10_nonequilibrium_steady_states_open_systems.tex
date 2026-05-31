@@ -11,6 +11,7 @@ chapter fixes these definitions, derives the reservoir entropy-production
 formula, records finite path-measure fluctuation identities before taking a
 continuum limit, derives the finite-step Langevin/MSRJD representation,
 derives the finite reaction-network Doi--Peliti representation, records the
+tilted-generator construction of dynamical large deviations, records the
 weak-coupling route to the GKSL generator, and connects the Markovian limit
 to a Schwinger--Keldysh influence functional and to hydrodynamic relaxation
 with noise.
@@ -788,6 +789,157 @@ large-deviation principle itself requires tightness, exponential estimates,
 and a specified scaling limit;
 \eqref{eq:reaction-network-exponential-test-function} is the exact algebraic
 input.
+
+\section{Tilted Generators and Dynamical Large Deviations}
+\label{sec:finite-tilted-generators-large-deviations}
+
+Finite path measures also give the precise source of dynamical
+large-deviation generators.  Let \(I\) be a finite state space and let
+\(W_{ij}\ge0\), \(i\ne j\), be time-independent jump rates, with
+\[
+  r_i=\sum_{j\ne i}W_{ij}.
+\]
+For a trajectory \(i(t)\), define an additive observable
+\begin{equation}
+  A_T(\gamma)
+  =
+  \int_0^T h_{i(t)}\,dt
+  +
+  \sum_{m=1}^{N_T} g_{i_{m-1}i_m},
+  \label{eq:finite-additive-jump-observable}
+\end{equation}
+where \(h_i\in\mathbb R\) is a state weight, \(g_{ij}\in\mathbb R\) is a
+jump weight, and \(N_T\) is the number of jumps up to time \(T\).  For
+\(\lambda\in\mathbb C\), the tilted backward generator on functions
+\(f:I\to\mathbb C\) is
+\begin{equation}
+  (\mathsf L_\lambda f)_i
+  =
+  \lambda h_i f_i
+  +
+  \sum_{j\ne i}
+  W_{ij}
+  \left(e^{\lambda g_{ij}}f_j-f_i\right).
+  \label{eq:finite-tilted-generator}
+\end{equation}
+
+\begin{proposition}[Finite Feynman--Kac identity]
+\label{prop:finite-feynman-kac-tilted-generator}
+For \(i\in I\), set
+\[
+  u_i(t)=\mathbb E_i[e^{\lambda A_t}f(i(t))],
+\]
+where the chain starts from \(i\) at time \(0\).  Then
+\[
+  \partial_tu(t)=\mathsf L_\lambda u(t),
+  \qquad
+  u(0)=f .
+\]
+Consequently, for an initial distribution \(p_0\),
+\begin{equation}
+  \mathbb E_{p_0}\!\left[e^{\lambda A_T}\right]
+  =
+  \sum_{i\in I}p_0(i)\,
+  \bigl(e^{T\mathsf L_\lambda}{\bf 1}\bigr)_i .
+  \label{eq:finite-feynman-kac-mgf}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Condition on the evolution during a short interval \([0,\Delta t]\).  With
+probability \(1-r_i\Delta t+O((\Delta t)^2)\), the chain stays at \(i\), and
+the additive functional contributes \(h_i\Delta t+O((\Delta t)^2)\).  With
+probability \(W_{ij}\Delta t+O((\Delta t)^2)\), the chain jumps once from
+\(i\) to \(j\), contributing the jump weight \(g_{ij}\) and the state weight
+over a time interval of length \(\Delta t\).  In the jump branch the latter
+changes the contribution only by \(1+O(\Delta t)\), and hence only by
+\(O((\Delta t)^2)\) after multiplication by the jump probability.  Therefore
+\[
+  u_i(t+\Delta t)
+  =
+  \left(1+\lambda h_i\Delta t-r_i\Delta t\right)u_i(t)
+  +
+  \sum_{j\ne i}
+  W_{ij}\Delta t\,e^{\lambda g_{ij}}u_j(t)
+  +
+  O((\Delta t)^2),
+\]
+uniformly on the finite state space.  Dividing by \(\Delta t\) and sending
+\(\Delta t\to0\) gives \(\partial_tu=\mathsf L_\lambda u\).  The final
+identity follows by taking \(f={\bf 1}\) and averaging over \(p_0\).
+\end{proof}
+
+If the original Markov chain is irreducible, then
+\(\mathsf L_\lambda+c{\bf 1}\) is an irreducible nonnegative matrix for
+real \(\lambda\) and all sufficiently large \(c\).  Perron--Frobenius
+therefore gives a simple real eigenvalue with strictly positive left and
+right eigenvectors and with maximal real part.  It identifies the long-time
+scaled cumulant generating function
+\[
+  \psi(\lambda)
+  =
+  \lim_{T\to\infty}
+  \frac1T\log
+  \mathbb E_{p_0}\!\left[e^{\lambda A_T}\right]
+\]
+with the eigenvalue of \(\mathsf L_\lambda\) whose real part is maximal,
+independently of any nonzero nonnegative initial distribution.  The
+positivity of the Perron eigenvectors is what prevents the leading spectral
+coefficient in \eqref{eq:finite-feynman-kac-mgf} from vanishing.  A path
+large-deviation principle and a Legendre-dual rate function require the
+separate analytic and tightness hypotheses of large-deviation theory.  The
+finite tilted generator is the exact microscopic input to those hypotheses.
+
+There is a useful exact symmetry when \(A_T\) is entropy production in a
+stationary finite jump process.  Assume \(W_{ij}>0\) if and only if
+\(W_{ji}>0\), and let \(\pi_i>0\) be the stationary distribution.  Define
+the entropy increment of one jump by
+\begin{equation}
+  \sigma_{ij}
+  =
+  \log\frac{\pi_iW_{ij}}{\pi_jW_{ji}} .
+  \label{eq:stationary-entropy-jump-increment}
+\end{equation}
+Let \(\mathsf L_q^\Sigma\) be the tilted generator for
+\(\mathbb E[e^{-q\Sigma_T}]\):
+\begin{equation}
+  (\mathsf L_q^\Sigma f)_i
+  =
+  \sum_{j\ne i}
+  W_{ij}e^{-q\sigma_{ij}}f_j-r_if_i .
+  \label{eq:entropy-production-tilted-generator}
+\end{equation}
+With \(\Pi=\operatorname{diag}(\pi_i)\), one has the finite matrix identity
+\begin{equation}
+  \mathsf L_q^\Sigma
+  =
+  \Pi^{-1}
+  \bigl(\mathsf L_{1-q}^\Sigma\bigr)^T
+  \Pi .
+  \label{eq:finite-gallavotti-cohen-similarity}
+\end{equation}
+Indeed, the off-diagonal \(i,j\) entry of the right side is
+\[
+  \frac{\pi_j}{\pi_i}
+  W_{ji}e^{-(1-q)\sigma_{ji}}
+  =
+  W_{ij}
+  \left(\frac{\pi_jW_{ji}}{\pi_iW_{ij}}\right)^q
+  =
+  W_{ij}e^{-q\sigma_{ij}},
+\]
+and the diagonal entries are both \(-r_i\).  Hence
+\(\mathsf L_q^\Sigma\) and \(\mathsf L_{1-q}^\Sigma\) have the same
+spectrum, and the entropy-production scaled cumulant generating function
+obeys
+\[
+  \psi_\Sigma(q)=\psi_\Sigma(1-q).
+\]
+This is the finite-generator form of the Gallavotti--Cohen symmetry.  The
+finite-time fluctuation relation in
+Section~\ref{sec:finite-path-measure-fluctuation-relations} is the
+corresponding path-measure identity; the spectral symmetry is its
+time-homogeneous stationary long-time shadow.
 
 \section{Weak-Coupling Open-System Limit}
 

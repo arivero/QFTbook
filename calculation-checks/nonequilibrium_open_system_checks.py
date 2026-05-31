@@ -310,6 +310,86 @@ def check_doi_peliti_symbol_and_large_deviation_hamiltonian() -> None:
     assert_close("Doi-Peliti exponential-test Hamiltonian", direct, hamiltonian)
 
 
+def check_tilted_jump_generator_and_gc_symmetry() -> None:
+    rates = [[0.0, 1.2], [0.7, 0.0]]
+    state_weights = [0.2, -0.1]
+    jump_weights = [[0.0, 0.4], [-0.3, 0.0]]
+    lam = 0.6
+    test = [1.1, -0.4]
+
+    tilted = []
+    for i in range(2):
+        value = lam * state_weights[i] * test[i]
+        for j in range(2):
+            if i == j:
+                continue
+            value += rates[i][j] * (math.exp(lam * jump_weights[i][j]) * test[j] - test[i])
+        tilted.append(value)
+
+    short_time_coefficients = [
+        lam * state_weights[0] * test[0]
+        + rates[0][1] * (math.exp(lam * jump_weights[0][1]) * test[1] - test[0]),
+        lam * state_weights[1] * test[1]
+        + rates[1][0] * (math.exp(lam * jump_weights[1][0]) * test[0] - test[1]),
+    ]
+    for i, (got, expected) in enumerate(zip(tilted, short_time_coefficients, strict=True)):
+        assert_close(f"finite tilted Feynman-Kac generator row {i}", got, expected)
+
+    clockwise_rate = 2.0
+    counterclockwise_rate = 0.5
+    q = 0.37
+    entropy_step = math.log(clockwise_rate / counterclockwise_rate)
+    escape = clockwise_rate + counterclockwise_rate
+
+    def entropy_increment(i: int, j: int) -> float:
+        if j == (i + 1) % 3:
+            return entropy_step
+        if j == (i - 1) % 3:
+            return -entropy_step
+        raise AssertionError("not a nearest-neighbor ring jump")
+
+    def ring_rate(i: int, j: int) -> float:
+        if j == (i + 1) % 3:
+            return clockwise_rate
+        if j == (i - 1) % 3:
+            return counterclockwise_rate
+        return 0.0
+
+    def entropy_tilted_matrix(parameter: float) -> list[list[float]]:
+        matrix = [[0.0 for _ in range(3)] for _ in range(3)]
+        for i in range(3):
+            matrix[i][i] = -escape
+            for j in range(3):
+                if i == j:
+                    continue
+                matrix[i][j] = ring_rate(i, j) * math.exp(-parameter * entropy_increment(i, j))
+        return matrix
+
+    l_q = entropy_tilted_matrix(q)
+    l_one_minus_q = entropy_tilted_matrix(1.0 - q)
+    for i in range(3):
+        for j in range(3):
+            assert_close("finite Gallavotti-Cohen similarity", l_q[i][j], l_one_minus_q[j][i])
+
+    scgf_q = clockwise_rate ** (1.0 - q) * counterclockwise_rate**q
+    scgf_q += counterclockwise_rate ** (1.0 - q) * clockwise_rate**q - escape
+    reflected = clockwise_rate**q * counterclockwise_rate ** (1.0 - q)
+    reflected += counterclockwise_rate**q * clockwise_rate ** (1.0 - q) - escape
+    assert_close("finite ring entropy SCGF symmetry", scgf_q, reflected)
+    assert_close(
+        "finite ring entropy SCGF normalization at q=0",
+        clockwise_rate + counterclockwise_rate - escape,
+        0.0,
+    )
+    assert_close(
+        "finite ring entropy SCGF normalization at q=1",
+        counterclockwise_rate + clockwise_rate - escape,
+        0.0,
+    )
+    entropy_rate = (clockwise_rate - counterclockwise_rate) * entropy_step
+    assert entropy_rate > 0.0
+
+
 def check_two_level_kms_stationary_ratio() -> None:
     beta = 1.4
     gap = 0.9
@@ -353,6 +433,7 @@ def main() -> None:
     check_langevin_generator_expansion()
     check_doi_peliti_two_species_generator()
     check_doi_peliti_symbol_and_large_deviation_hamiltonian()
+    check_tilted_jump_generator_and_gc_symmetry()
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()
