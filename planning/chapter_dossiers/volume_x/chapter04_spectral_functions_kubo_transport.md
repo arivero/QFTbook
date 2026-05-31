@@ -128,3 +128,9 @@
   the closed Laplace-space memory equation, and the Einstein relation
   \(\Sigma=D\chi\) as a coordinate comparison between current and density
   response.
+- 2026-05-31 issue #691 continuation: demoted the finite-regulator
+  Mori--Zwanzig projection identity from proposition/proof form to
+  paragraph-level block-Duhamel derivation.  The exact identity and all slow
+  coordinate formulae remain; theorem-family weight is reserved for the
+  hydrodynamic closure hypotheses and estimates needed after the
+  thermodynamic limit.

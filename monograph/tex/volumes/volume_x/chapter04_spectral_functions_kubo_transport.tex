@@ -500,8 +500,7 @@ conserved densities; in a transport calculation they may also include
 exactly conserved charges whose overlap creates the Drude sector isolated in
 Lemma~\ref{lem:kubo-mazur-projection}.
 
-\begin{proposition}[Finite-regulator projection identity]
-\label{prop:kubo-mori-zwanzig-identity}
+\paragraph{Exact finite-regulator block identity.}
 Let \(X(t)=e^{t\mathcal L}X_0\).  On the finite operator space above,
 \begin{align}
   \frac{d}{dt}PX(t)
@@ -550,10 +549,9 @@ For a general \(X_0\), the additional term
 \]
 must be added to the right hand side of
 \eqref{eq:kubo-memory-coordinate-equation}.
-\end{proposition}
 
-\begin{proof}
-Write \(x(t)=PX(t)\) and \(y(t)=QX(t)\).  Applying \(P\) and \(Q\) to
+To obtain the identity, write \(x(t)=PX(t)\) and \(y(t)=QX(t)\).  Applying
+\(P\) and \(Q\) to
 \(\dot X=\mathcal LX\) gives the exact block system
 \[
   \dot x=P\mathcal LP\,x+P\mathcal LQ\,y,
@@ -584,7 +582,6 @@ The integral term is written in the same \(A_b\) basis by applying
 \eqref{eq:kubo-memory-kernel-definition}.  For a general initial operator the
 Duhamel term involving \(QX_0\) is projected in the same way and produces
 \(f_X^b(t)\).
-\end{proof}
 
 The identity is algebraic at finite regulator.  It has no decay statement in
 it: the unresolved evolution \(e^{tQ\mathcal LQ}\) can be almost periodic in
