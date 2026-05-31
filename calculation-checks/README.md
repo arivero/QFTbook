@@ -610,6 +610,10 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `hall_flux_curvature_checks.py`: finite checks for the many-body
+  flux-torus Hall-response section, including the equality between projector
+  curvature and the finite Kubo resolvent formula, plus the Chern-number
+  normalization of the two-band lattice benchmark.
 - `lattice_locality_flow_checks.py`: finite-regulator locality checks for the
   gauge-theory phases chapter, including overlap-chain counting for the
   path-count Lieb--Robinson estimate, the factorial-to-exponential tail bound,

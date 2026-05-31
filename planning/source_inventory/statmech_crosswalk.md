@@ -156,8 +156,14 @@ indistinguishability in contractible regions, and the constant logical-string
 barrier.  The same chapter now also contains the finite-regulator
 Lieb--Robinson/path-count proof, finite isolated-band spectral flow, and the
 quasi-adiabatic locality mechanism that turns a uniformly gapped local path
-into quasi-local transport of phase data.  The remaining finite-locality tasks
-are interacting Hall response and finite-gauge/TQFT boundary examples.
+into quasi-local transport of phase data.  It now also contains the finite
+many-body flux-torus Hall response datum: trace Berry curvature of an
+isolated band, integer Chern number, exact finite Kubo-curvature identity for
+an exactly degenerate band, and explicit locality/gap/thermodynamic
+hypotheses needed before the finite curvature average becomes a Hall
+conductance theorem.  The remaining finite-locality tasks are
+finite-gauge/TQFT boundary examples and deeper thermodynamic Hall-response
+stability estimates beyond the finite curvature theorem.
 
 ### Dynamic Critical Phenomena And Stochastic Field Theories
 

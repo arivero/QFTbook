@@ -388,6 +388,236 @@ mathematical object that transports local phase data.  It is distinct from
 both physical time evolution and from an arbitrary finite-dimensional unitary
 interpolation of ground spaces.
 
+\section{Finite Flux-Torus Hall Response}
+\label{sec:finite-flux-torus-hall-response}
+
+Hall response in an interacting system is not a single-particle Chern number
+unless the theory has first been reduced to a free one-particle problem.  The
+finite many-body datum is a family of Hamiltonians over a flux torus.  This
+formulation is the appropriate finite-regulator laboratory for quantized
+topological response, and it is also the place where the order of statements
+must be kept straight: curvature over the finite flux torus is exact;
+thermodynamic Hall conductance is obtained only after a separate locality,
+gap, and limit argument.
+
+Let \(\Lambda\) be a finite two-dimensional torus with a conserved
+\(U(1)\) charge.  Choose two oriented cuts, one dual to each primitive cycle,
+and introduce dimensionless fluxes
+\[
+  \phi=(\phi_x,\phi_y)\in\mathbb T^2=(\mathbb R/2\pi\mathbb Z)^2 .
+\]
+The finite flux Hamiltonian
+\[
+  H_\Lambda(\phi)
+\]
+is obtained by coupling charged terms crossing the \(a\)-cut to the flat
+background holonomy \(e^{\ii \mathfrak q\phi_a}\), with \(\mathfrak q\) the
+\(U(1)\) charge of the term crossing the cut.  Equivalently,
+\(H_\Lambda(\phi)\) is a \(C^2\) family of self-adjoint matrices which is
+periodic in \(\phi\), or periodic up to a large background-gauge
+transformation.  In the latter case the formulas below are read as formulas
+for the spectral vector bundle over \(\mathbb T^2\) with the corresponding
+transition functions.  The flux-current operators in this normalization are
+\[
+  I_a(\phi)=\partial_{\phi_a}H_\Lambda(\phi),
+  \qquad a=x,y .
+\]
+If a physical electric field is produced by a time-dependent flux, its sign
+relative to \(I_a\) is fixed by the convention used for
+\(\phi_a(t)\); the finite curvature formula below is independent of that
+conversion convention.
+
+\begin{definition}[Finite flux-torus response datum]
+\label{def:finite-flux-torus-response-datum}
+A finite flux-torus response datum consists of:
+\[
+\begin{array}{ll}
+  \text{finite Hilbert space} & \mathcal H_\Lambda,\\[1mm]
+  \text{flux Hamiltonian} & H_\Lambda:\mathbb T^2\to
+  \operatorname{End}(\mathcal H_\Lambda)_{\rm sa},\\[1mm]
+  \text{isolated band} & P_\Lambda(\phi)\text{ of constant rank }r_\Lambda,\\[1mm]
+  \text{uniform finite gap} &
+  \operatorname{dist}\bigl(\operatorname{Spec}H_\Lambda|_{P_\Lambda},
+  \operatorname{Spec}H_\Lambda|_{1-P_\Lambda}\bigr)\ge\gamma_\Lambda>0 .
+\end{array}
+\]
+The band curvature is the two-form
+\begin{equation}
+  \mathcal F_{xy,\Lambda}(\phi)\,
+  \dd\phi_x\wedge\dd\phi_y
+  =
+  \ii\operatorname{Tr}_{\mathcal H_\Lambda}
+  \bigl(P_\Lambda[\partial_{\phi_x}P_\Lambda,
+  \partial_{\phi_y}P_\Lambda]\bigr)
+  \dd\phi_x\wedge\dd\phi_y .
+  \label{eq:finite-flux-curvature}
+\end{equation}
+The flux-averaged dimensionless Hall coefficient of this finite datum is
+\begin{equation}
+  \overline\kappa_{xy,\Lambda}
+  =
+  \frac{1}{r_\Lambda(2\pi)^2}
+  \int_{\mathbb T^2}\mathcal F_{xy,\Lambda}(\phi)\,
+  \dd\phi_x\,\dd\phi_y .
+  \label{eq:finite-flux-averaged-hall-coefficient}
+\end{equation}
+In units \(e=\hbar=1\), the corresponding physical Hall conductivity uses
+the same number when the flux/electric-field convention is the one stated
+above; restoring units multiplies by \(e^2/\hbar\) and the conventional
+\(2\pi\) normalization is already contained in
+\eqref{eq:finite-flux-averaged-hall-coefficient}.
+\end{definition}
+
+\begin{theorem}[Finite Hall curvature theorem]
+\label{thm:finite-hall-curvature-theorem}
+Let \(H_\Lambda(\phi)\) and \(P_\Lambda(\phi)\) be a finite flux-torus
+response datum.  Then
+\begin{equation}
+  C_\Lambda
+  =
+  \frac{1}{2\pi}
+  \int_{\mathbb T^2}\mathcal F_{xy,\Lambda}(\phi)\,
+  \dd\phi_x\,\dd\phi_y
+  \label{eq:finite-many-body-chern-number}
+\end{equation}
+is an integer depending only on the spectral vector bundle
+\(\operatorname{Ran}P_\Lambda\to\mathbb T^2\).  It is unchanged under every
+\(C^1\) deformation of the finite datum for which the rank of
+\(P_\Lambda\) and the spectral gap remain fixed.
+
+If, in addition, the isolated band is an exact \(r_\Lambda\)-fold degenerate
+eigenvalue,
+\[
+  H_\Lambda(\phi)P_\Lambda(\phi)=E_0(\phi)P_\Lambda(\phi),
+\]
+and
+\[
+  Q_\Lambda=1-P_\Lambda,\qquad
+  R_\Lambda(\phi)=
+  Q_\Lambda(\phi)\bigl(H_\Lambda(\phi)-E_0(\phi)\bigr)^{-1}Q_\Lambda(\phi),
+\]
+then the same curvature has the finite Kubo form
+\begin{equation}
+  \mathcal F_{xy,\Lambda}
+  =
+  \ii\operatorname{Tr}\!\left(
+    P_\Lambda I_x R_\Lambda^2 I_y P_\Lambda
+    -
+    P_\Lambda I_y R_\Lambda^2 I_x P_\Lambda
+  \right).
+  \label{eq:finite-hall-kubo-curvature}
+\end{equation}
+Thus
+\[
+  \overline\kappa_{xy,\Lambda}=\frac{C_\Lambda}{2\pi r_\Lambda}.
+\]
+\end{theorem}
+
+\begin{proof}
+The integrality statement is the Chern-Weil formula for the determinant line
+of the finite-rank bundle \(\operatorname{Ran}P_\Lambda\), and in this finite
+setting the proof can be written explicitly.  On a coordinate patch
+\(U_\alpha\subset\mathbb T^2\), choose a smooth orthonormal frame
+\[
+  \Psi_\alpha=(\psi_{\alpha,1},\ldots,\psi_{\alpha,r_\Lambda})
+\]
+for \(\operatorname{Ran}P_\Lambda\).  The trace Berry connection in this
+frame is
+\[
+  A_\alpha
+  =
+  \ii\operatorname{Tr}\bigl(\Psi_\alpha^*\dd\Psi_\alpha\bigr).
+\]
+Using \(P_\Lambda=\Psi_\alpha\Psi_\alpha^*\) and
+\(\Psi_\alpha^*\Psi_\alpha=1_q\), one obtains
+\[
+  \dd A_\alpha
+  =
+  \ii\operatorname{Tr}
+  \bigl(P_\Lambda\,\dd P_\Lambda\wedge\dd P_\Lambda\bigr),
+\]
+whose \(xy\)-component is
+\eqref{eq:finite-flux-curvature}.  On an overlap
+\(U_\alpha\cap U_\beta\), the two frames obey
+\[
+  \Psi_\beta=\Psi_\alpha g_{\alpha\beta},
+  \qquad g_{\alpha\beta}:U_\alpha\cap U_\beta\to U(r_\Lambda).
+\]
+Therefore
+\[
+  A_\beta-A_\alpha
+  =
+  \ii\operatorname{Tr}(g_{\alpha\beta}^{-1}\dd g_{\alpha\beta})
+  =
+  \ii\,\dd\log\det g_{\alpha\beta}.
+\]
+Integrating \(\dd A_\alpha\) over a fundamental polygon for the torus and
+using Stokes' theorem reduces the integral to the winding of the transition
+function \(\det g_{\alpha\beta}:S^1\to U(1)\).  Hence
+\[
+  \frac{1}{2\pi}\int_{\mathbb T^2}
+  \ii\operatorname{Tr}(P_\Lambda\,\dd P_\Lambda\wedge\dd P_\Lambda)
+  \in\mathbb Z .
+\]
+The same argument applies when the flux family is only covariantly periodic:
+the large-gauge transition unitaries are precisely the transition functions
+of the bundle.  Constancy under a gapped deformation follows because the
+integer \(C_\Lambda(s)\) depends continuously on \(s\) while the projection
+bundle is defined throughout the deformation.
+
+It remains to prove the Kubo expression.  Differentiate
+\[
+  H_\Lambda P_\Lambda=E_0P_\Lambda
+\]
+and multiply by \(Q_\Lambda\) on the left and \(P_\Lambda\) on the right.
+Since \(Q_\Lambda P_\Lambda=0\), this gives
+\[
+  Q_\Lambda(\partial_aP_\Lambda)P_\Lambda
+  =
+  -R_\Lambda Q_\Lambda I_aP_\Lambda,
+  \qquad a=x,y.
+\]
+Taking adjoints gives
+\[
+  P_\Lambda(\partial_aP_\Lambda)Q_\Lambda
+  =
+  -P_\Lambda I_aQ_\Lambda R_\Lambda .
+\]
+The diagonal identities \(P_\Lambda(\partial_aP_\Lambda)P_\Lambda=0\),
+obtained from \(P_\Lambda^2=P_\Lambda\), imply
+\[
+  \operatorname{Tr}
+  \bigl(P_\Lambda[\partial_xP_\Lambda,\partial_yP_\Lambda]\bigr)
+  =
+  \operatorname{Tr}
+  \bigl(P_\Lambda(\partial_xP_\Lambda)Q_\Lambda(\partial_yP_\Lambda)P_\Lambda
+  -
+  P_\Lambda(\partial_yP_\Lambda)Q_\Lambda(\partial_xP_\Lambda)P_\Lambda
+  \bigr).
+\]
+Substituting the two off-diagonal formulas above gives
+\eqref{eq:finite-hall-kubo-curvature}.  The final displayed equality follows
+by inserting \eqref{eq:finite-many-body-chern-number} into
+\eqref{eq:finite-flux-averaged-hall-coefficient}.
+\end{proof}
+
+For a finite interacting system the coefficient at a fixed flux value need
+not be quantized.  The quantized object in
+Theorem~\ref{thm:finite-hall-curvature-theorem} is the flux average of the
+band curvature.  A thermodynamic Hall theorem requires additional hypotheses:
+the flux family must be local in the sense that \(I_a=\partial_{\phi_a}H\)
+is supported near the corresponding cut up to uniformly local tails; the gap
+above the relevant band must remain uniform over \(\phi\) and over the
+volume sequence; the quasi-adiabatic flow from
+Section~\ref{sec:finite-regulator-locality-machinery-phase-stability} must
+control the change of local current response under moving the cuts; and the
+thermodynamic limit of the response must exist.  Under such hypotheses the
+fixed-flux response becomes independent of \(\phi\) up to errors vanishing in
+the thermodynamic limit, and the finite integer \(C_\Lambda\) becomes the
+phase-stable Hall datum.  Without these hypotheses, writing a continuum
+integer Hall conductance directly from a finite Kubo formula hides the
+substance of the theorem.
+
 \section{Gauge Invariance And Elitzur Averaging}
 
 Gauge-variant local fields cannot be order parameters for a gauge theory

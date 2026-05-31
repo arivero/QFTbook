@@ -25,6 +25,14 @@ and topological sectors fit together.
   a gapped local Hamiltonian path.
 - `F_gamma`: real odd quasi-adiabatic filter with
   `hat F_gamma(omega)=i/omega` outside the spectral gap.
+- `phi=(phi_x,phi_y)`: dimensionless flux coordinates on the finite flux
+  torus `T^2`.
+- `H_Lambda(phi)`, `I_a=partial_{phi_a}H_Lambda`: finite many-body flux
+  Hamiltonian and flux-current operators.
+- `P_Lambda(phi)`, `r_Lambda`, `F_xy,Lambda`, `C_Lambda`,
+  `kappa_bar_xy,Lambda`:
+  isolated flux-band projection, band rank, trace Berry curvature, finite
+  many-body Chern number, and flux-averaged dimensionless Hall coefficient.
 - `W_R(C)`, `C_{T,L}`, `V_R(L)`: Wilson loop, rectangular contour, and static
   potential.
 - `rho_{R,L}`: spectral measure for a static-source transfer-matrix sector.
@@ -68,6 +76,13 @@ and topological sectors fit together.
   locality mechanism: the spectral gap fixes the filter, the filter tail
   controls long times, and the Lieb--Robinson estimate controls spatial
   leakage of evolved local terms.
+- Defines the finite many-body flux-torus Hall datum and proves that the
+  flux-averaged curvature is `C_Lambda/(2*pi*r_Lambda)` with integer
+  `C_Lambda`.
+- Derives the finite Kubo resolvent formula for the trace Berry curvature
+  when the isolated band is an exact finite degenerate eigenvalue, while
+  separating this exact finite statement from thermodynamic Hall-conductance
+  hypotheses.
 - Derives finite-volume gauge averaging: gauge-variant local fields have zero
   expectation with gauge-invariant finite-volume boundary conditions.
 - Defines static potentials from renormalized rectangular Wilson loops.
@@ -108,6 +123,10 @@ and topological sectors fit together.
   condensate orthogonality, electric/magnetic/dyonic confinement by the
   \(\mathbb Z_N\) Dirac pairing, tropical static-energy extraction, and
   Fredenhagen--Marcu exponent bookkeeping.
+- `calculation-checks/hall_flux_curvature_checks.py` verifies the finite
+  flux-torus Hall conventions: projector curvature equals the Kubo resolvent
+  formula for a two-level isolated band, and the standard two-band lattice
+  benchmark has Chern numbers \(0,+1,-1,0\) in the four mass chambers.
 - `calculation-checks/lattice_locality_flow_checks.py` verifies overlap-chain
   counting for the finite path-count Lieb--Robinson estimate, the
   factorial-to-exponential tail bound, two-level spectral-flow transport, and
@@ -144,3 +163,8 @@ screening quotient, condensate subgroup, and topological sector.
   claims operational.  The section proves the finite path-count estimate and
   the finite spectral-flow equations directly, while making the uniform
   thermodynamic hypotheses for quasi-local automorphic transport explicit.
+- 2026-05-31 finite-Hall pass: added finite flux-torus Hall response as an
+  interacting many-body curvature datum.  The text proves the integer
+  Chern-number formula and the exact finite Kubo-curvature identity, then
+  states the extra locality/gap/thermodynamic hypotheses needed before the
+  finite curvature average can be called a phase-stable Hall conductance.
