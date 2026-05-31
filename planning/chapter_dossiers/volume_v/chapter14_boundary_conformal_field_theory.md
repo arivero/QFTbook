@@ -39,6 +39,11 @@
 - Corrects the disk one-point/fusion-character normalization: the fusion
   character is `lambda_a(i)=S_ia/S_0a`, while the Cardy disk coefficient is
   `B_a^i = S_0a lambda_a(i)/sqrt(S_0i)`.
+- Expands the diagonal Cardy disk two-bulk sewing mechanism: after normalizing
+  the raw disk coefficient to the classifying coordinate
+  `Bhat_a(i)=sqrt(S_0i) B_a^i/S_0a`, the disk one-point functional is a
+  character of the fusion/classifying algebra and obeys
+  `chi_a(e_i e_j)=chi_a(e_i) chi_a(e_j)`.
 - Fixes the relation among boundary-state coefficients, disk one-point
   coefficients, and the identity term in the bulk-boundary OPE:
   `R^a_{i0}=U^a_i=D_{ij}U_a^j` after the bulk two-point metric and identity
@@ -127,7 +132,8 @@
 
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
-  fusion-ring characters, boundary entropy squares, Ising
+  fusion-ring characters, normalized Cardy two-bulk classifying sewing,
+  boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the \(A=1\)
   Frobenius-algebra module multiplicity formula, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, compact-boson zero-mode

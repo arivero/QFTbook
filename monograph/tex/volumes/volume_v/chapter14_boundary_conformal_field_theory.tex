@@ -438,12 +438,48 @@ function:
   \frac{S_{0a}}{\sqrt{S_{0i}}}\,\lambda_a(i).
 \]
 Thus the disk one-point functions solve the genus-zero bulk-boundary sewing
-equation because fusion has been simultaneously diagonalized by the modular
-\(S\)-matrix, with the remaining factors fixed by two-point normalization.
-In a non-diagonal rational CFT this fusion-ring character statement is
-replaced by the classifying algebra associated to the chosen Frobenius
+equation only after this normalization has been separated from the physical
+two-point convention.  The useful coordinate for the disk sewing equation is
+\begin{equation}
+  \widehat B_a(i)
+  :=
+  \frac{\sqrt{S_{0i}}}{S_{0a}}\,B_a{}^i
+  =
+  \lambda_a(i).
+  \label{eq:cardy-normalized-classifying-coordinate}
+\end{equation}
+In the diagonal Cardy theory the bulk fields which can appear in the boundary
+identity channel form the fusion algebra object with basis \(\{e_i\}\) and
+product
+\begin{equation}
+  e_i e_j=\sum_k N_{ij}{}^k e_k .
+  \label{eq:cardy-classifying-algebra-product}
+\end{equation}
+The boundary condition \(a\) defines the linear functional
+\(\chi_a(e_i)=\widehat B_a(i)\).  The disk sewing constraint obtained by
+comparing the two orders of operation, first fusing two bulk fields and then
+taking the boundary identity channel or first taking the two identity
+bulk-boundary channels and multiplying the results, is the multiplicativity
+condition
+\begin{equation}
+  \chi_a(e_i e_j)
+  =
+  \chi_a(e_i)\chi_a(e_j).
+  \label{eq:cardy-disk-two-bulk-classifying-sewing}
+\end{equation}
+Substituting \eqref{eq:cardy-classifying-algebra-product} and
+\(\chi_a(e_i)=\lambda_a(i)\) gives precisely
+\eqref{eq:fusion-ring-character-identity}.  This is a statement about the
+normalized classifying coordinate.  It is not the assertion that the raw
+bulk OPE constants are fusion coefficients, nor that all metric factors have
+disappeared; those factors have been absorbed into the chosen basis of the
+classifying algebra and into the normalization of the identity boundary
+field.  In a non-diagonal rational CFT the same low-genus sewing constraint
+is formulated in the classifying algebra associated to the chosen Frobenius
 algebra object; in a nonrational theory there need not be a
-finite-dimensional classifying algebra at all.
+finite-dimensional classifying algebra at all, and the finite character
+calculation must be replaced by an analytic statement about the relevant
+continuous spectrum.
 
 \section{Bulk-Boundary Normalization and Direct Sums}
 \label{sec:bcft-bulk-boundary-normalization-direct-sums}

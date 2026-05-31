@@ -473,11 +473,11 @@ Current checks:
   Zamolodchikov-recursion companion rather than this global-block evaluator.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
-  fusion associativity and fusion-ring characters, boundary entropy squares,
-  Chan--Paton direct sums, compact-boson T-duality zero modes, Ising
-  boundary-changing fusing constants and OPE powers, and the Liouville
-  FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
-  discussion.
+  fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
+  classifying sewing identity, boundary entropy squares, Chan--Paton direct
+  sums, compact-boson T-duality zero modes, Ising boundary-changing fusing
+  constants and OPE powers, and the Liouville FZZT/ZZ hyperbolic identities
+  used in the nonrational boundary-state discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
   dual, one-screening and dual one-screening coefficient

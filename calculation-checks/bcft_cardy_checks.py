@@ -201,6 +201,15 @@ def check_fusion_associativity() -> None:
 def check_cardy_fusion_ring_characters() -> None:
     for boundary, boundary_label in enumerate(LABELS):
         eigenvalues = [S[i][boundary] / S[0][boundary] for i in range(3)]
+        normalized_disk_coefficients = [
+            S[boundary][i] / S[0][boundary] for i in range(3)
+        ]
+        assert_equal(
+            "Cardy normalized disk coordinate equals fusion character "
+            f"{boundary_label}",
+            normalized_disk_coefficients,
+            eigenvalues,
+        )
         for i, left in enumerate(LABELS):
             for j, right in enumerate(LABELS):
                 product = eigenvalues[i] * eigenvalues[j]
@@ -213,6 +222,20 @@ def check_cardy_fusion_ring_characters() -> None:
                     f"{boundary_label}: {left}*{right}",
                     product,
                     fusion_sum,
+                )
+                classifying_sum = sum(
+                    (
+                        fusion(i, j, k) * normalized_disk_coefficients[k]
+                        for k in range(3)
+                    ),
+                    ZERO,
+                )
+                assert_equal(
+                    "Cardy disk two-bulk classifying sewing "
+                    f"{boundary_label}: {left}*{right}",
+                    normalized_disk_coefficients[i]
+                    * normalized_disk_coefficients[j],
+                    classifying_sum,
                 )
 
 
