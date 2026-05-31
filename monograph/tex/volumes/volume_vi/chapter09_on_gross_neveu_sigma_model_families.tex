@@ -2510,8 +2510,7 @@ but in this monograph \eqref{eq:sausage-nu-lambda-matching} is a matching
 coordinate relation, not a theorem identifying a constructed local QFT.
 \end{definition}
 
-\begin{proposition}[Repulsive-sausage strip analyticity and block unitarity]
-\label{prop:repulsive-sausage-elementary-checks}
+\paragraph{Repulsive-sausage strip analyticity and block unitarity checks.}
 For \(0\le\lambda<\frac12\), the displayed denominator factors in
 \eqref{eq:sausage-spp}--\eqref{eq:sausage-spm-exchange} have no zeros in the
 open physical strip
@@ -2564,9 +2563,11 @@ Then
 \[
   S_{Q=0}(\theta)S_{Q=0}(-\theta)=I_3 .
 \]
-\end{proposition}
+These are explicit bootstrap consistency checks for the written
+repulsive-sausage scattering proposal.  The constructive question of whether
+this proposal is realized by a regulator-defined local sigma model is stated
+separately in Controlled Approximation~\ref{ca:sausage-bootstrap-matching}.
 
-\begin{proof}
 The possible zeros of \(\sinh\lambda(\theta+\ii\pi)\) occur at
 \[
   \theta=\ii\pi\left(\frac n\lambda-1\right),
@@ -2665,8 +2666,7 @@ repeatedly applying
 \]
 reduces the left sides of
 \eqref{eq:sausage-q0-odd-unitarity}--\eqref{eq:sausage-q0-even-22} exactly
-to \(1,1,0,1\), respectively.  This proves the charge-zero unitarity block.
-\end{proof}
+to \(1,1,0,1\), respectively.  This gives the charge-zero unitarity block.
 
 \begin{definition}[Full sausage triplet matrix]
 \label{def:sausage-full-triplet-matrix}
@@ -2875,16 +2875,15 @@ couplings to the bootstrap coordinate \(\lambda\).  This matching is
 especially delicate near the cylindrical endpoint, where the target develops
 an asymptotic circle and the relation to compact parafermion or noncompact
 cigar descriptions depends on the precise scaling limit.  The elementary
-checks in
-Proposition~\ref{prop:repulsive-sausage-elementary-checks} are necessary
-bootstrap consistency tests, and
+strip-analyticity and block-unitarity checks above are necessary bootstrap
+consistency tests, and
 Example~\ref{ex:sausage-foz-factorization} is the factorization
 identity for the meromorphic matrix; neither replaces the missing
 constructive identification.  In attractive analytic continuations,
 physical-strip poles must be accompanied by declared bound-state particles
 and residue normalizations before one can speak of a complete spectrum.  The
-repulsive domain treated here has no such denominator poles by
-Proposition~\ref{prop:repulsive-sausage-elementary-checks}.  A massless
+repulsive domain treated here has no such denominator poles by the
+strip-analyticity check above.  A massless
 \(\theta_{\rm top}=\pi\) endpoint statement requires the separate scaling
 data of Definition~\ref{def:sausage-theta-pi-endpoint-problem}.
 \end{controlledapproximation}

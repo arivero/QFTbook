@@ -78,6 +78,13 @@ symmetry.
   exact \(O(N)\) sigma-model S-matrix conventions, but the argument is a
   convention-sensitive verification of an already displayed meromorphic
   tensor rather than an independent theorem.
+- 2026-05-31 issue #691 continuation: demoted "Repulsive-sausage strip
+  analyticity and block unitarity" from proposition/proof form to a
+  paragraph-level bootstrap consistency check.  The denominator zero analysis
+  and \(Q=2,1,0\) block-unitarity identities remain in the text and in the
+  paired calculation script, while the constructive local-QFT realization
+  question remains separated in the sausage bootstrap matching controlled
+  approximation.
 
 ## Figure Ledger
 
