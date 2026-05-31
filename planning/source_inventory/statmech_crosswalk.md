@@ -149,6 +149,14 @@ continuum QFT definitions by lattice phase definitions, but it should use
 finite local models to test claims about higher-form symmetry, categorical
 symmetry, topological lines, and boundary/defect sectors.
 
+Absorption status: the first finite laboratory has been installed in
+Volume IX, Chapter 7 as the square-torus \(\mathbb Z_2\) gauge code.  It gives
+exact star/plaquette stabilizers, logical line intersection algebra, local
+indistinguishability in contractible regions, and the constant logical-string
+barrier.  The remaining finite-locality tasks are the deeper
+Lieb--Robinson/quasi-adiabatic-continuation bridge, interacting Hall response,
+and finite-gauge/TQFT boundary examples.
+
 ### Dynamic Critical Phenomena And Stochastic Field Theories
 
 Statmech source: Volume II Chapter 19 and Volume IV Chapter 33.

@@ -33,6 +33,13 @@ and topological sectors fit together.
   correlator and Fredenhagen--Marcu type ratio.
 - `Phi_IR`: map from microscopic topological extended operators to the
   long-distance topological sector.
+- `V,E,P`: vertices, edges, and plaquettes of the finite square-torus
+  \(\mathbb Z_2\) gauge-code laboratory.
+- `A_v`, `B_p`, `P_0`: star stabilizers, plaquette stabilizers, and the exact
+  ground-space projector in that finite laboratory.
+- `Z(c)`, `X(eta)`: chain and cochain Pauli line operators.
+- `<eta,c>`: mod-two finite intersection pairing controlling the logical
+  line commutator.
 
 ## Claim Ledger
 
@@ -64,6 +71,16 @@ and topological sectors fit together.
   scaling under assumed open-line and closed-loop asymptotics.
 - Defines topological order/deconfined gauge theory data as an IR TQFT plus
   the map from microscopic extended operators.
+- Builds a finite \(\mathbb Z_2\) gauge-code laboratory on the square torus:
+  star and plaquette stabilizers, stabilizer relations, four-dimensional
+  ground space, chain/cochain logical line algebra, and the mod-two
+  intersection pairing.
+- Derives local indistinguishability in contractible regions by Pauli-basis
+  expansion: non-closed monomials have a stabilizer syndrome and closed local
+  monomials reduce to products of stabilizers.
+- Derives the constant \(4J\) local energy barrier for simple two-dimensional
+  logical strings and separates this finite statement from any
+  positive-temperature memory theorem.
 
 ## Calculation Checks
 
@@ -71,6 +88,10 @@ and topological sectors fit together.
   condensate orthogonality, electric/magnetic/dyonic confinement by the
   \(\mathbb Z_N\) Dirac pairing, tropical static-energy extraction, and
   Fredenhagen--Marcu exponent bookkeeping.
+- `calculation-checks/toric_code_logical_operator_checks.py` verifies the
+  finite one-form laboratory: star/plaquette commutation, stabilizer
+  redundancies, ground-space dimension, logical line anticommutation,
+  contractible loop reduction, and constant string barrier.
 
 ## Figure Ledger
 
@@ -88,3 +109,9 @@ screening quotient, condensate subgroup, and topological sector.
   to a worked Laplace-principle paragraph.  The real phase-diagnostic input is
   the reflection-positive static-source transfer-matrix sector and its
   renormalized Wilson-loop spectral measure.
+- 2026-05-31 statmech crosswalk pass: added a finite \(\mathbb Z_2\)
+  gauge-code laboratory as exact extended-operator algebra for one-form
+  symmetry, local indistinguishability, and the constant logical-string
+  barrier.  The text explicitly bounds the lesson: finite stabilizer algebra is
+  a proof laboratory for QFT phase diagnostics, not a substitute for a
+  continuum or infinite-volume phase theorem.

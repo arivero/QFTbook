@@ -468,6 +468,166 @@ the same emergent TQFT but differ in massive local spectra, symmetry
 fractionalization, anomaly inflow, or the embedding of microscopic line
 operators into the topological category.
 
+\section{Finite One-Form Laboratory: The \texorpdfstring{\(\mathbb Z_2\)}{Z2} Gauge Code}
+\label{sec:finite-one-form-laboratory-z2-code}
+
+The preceding paragraph is abstract because a continuum gapped phase rarely
+comes with an exactly known Hilbert space on every spatial manifold.  A finite
+commuting-projector gauge code supplies a useful laboratory, provided its
+logical status is kept clear.  It is not a definition of continuum QFT and it
+does not replace the infinite-volume phase problem.  It gives an exact
+operator algebra in which one-form charge, topological line operators, local
+indistinguishability, and energy-barrier limitations can be checked without
+asymptotic or semiclassical language.
+
+Let \(\Lambda\) be an \(L_x\times L_y\) square cellulation of the spatial
+torus, with \(L_x,L_y\geq 3\).  Let \(V,E,P\) be its vertices, edges, and
+plaquettes, and put a two-dimensional Hilbert space
+\[
+  \mathcal H_\Lambda=\bigotimes_{e\in E}\mathbb C^2_e
+\]
+on the edges.  Write \(X_e,Z_e\) for Pauli operators on the edge \(e\).  The
+star and plaquette stabilizers are
+\begin{equation}
+  A_v=\prod_{e\ni v}X_e,\qquad
+  B_p=\prod_{e\subset\partial p}Z_e .
+  \label{eq:z2-code-star-plaquette-stabilizers}
+\end{equation}
+The orientation of \(\partial p\) is irrelevant because all coefficients are
+in \(\mathbb Z_2\).  Each \(A_v\) and \(B_p\) squares to one, and all
+stabilizers commute: a star and a plaquette share either no edge or two edges,
+so the two \(XZ=-ZX\) signs cancel.  The Hamiltonian
+\begin{equation}
+  H_\Lambda=-J\sum_{v\in V}A_v-J\sum_{p\in P}B_p,\qquad J>0,
+  \label{eq:z2-code-hamiltonian}
+\end{equation}
+has ground projector
+\begin{equation}
+  P_0=
+  \prod_{v\in V}\frac{1+A_v}{2}
+  \prod_{p\in P}\frac{1+B_p}{2}.
+  \label{eq:z2-code-ground-projector}
+\end{equation}
+The two products of all stars and all plaquettes are identities,
+\[
+  \prod_{v\in V}A_v=1,\qquad \prod_{p\in P}B_p=1,
+\]
+and these are the only stabilizer relations on the connected torus.  Hence
+the number of independent stabilizer constraints is
+\[
+  (|V|-1)+(|P|-1).
+\]
+Since \(|E|-|V|-|P|=0\) for the square torus, the ground space has dimension
+\[
+  2^{|E|-(|V|-1)-(|P|-1)}=4.
+\]
+Equivalently, the two encoded qubits are the two \(\mathbb Z_2\)-homology
+cycles of the torus.
+
+It is useful to express the logical algebra in chain-complex notation.  For a
+\(\mathbb Z_2\) edge chain \(c\in C_1(\Lambda;\mathbb Z_2)\) and an edge
+cochain \(\eta\in C^1(\Lambda;\mathbb Z_2)\), define
+\begin{equation}
+  Z(c)=\prod_{e:c_e=1}Z_e,\qquad
+  X(\eta)=\prod_{e:\eta(e)=1}X_e .
+  \label{eq:z2-code-chain-operators}
+\end{equation}
+Their commutation relation is the finite intersection pairing
+\begin{equation}
+  X(\eta)Z(c)
+  =
+  (-1)^{\langle \eta,c\rangle}Z(c)X(\eta),
+  \qquad
+  \langle \eta,c\rangle=\sum_{e\in E}\eta(e)c_e\pmod 2 .
+  \label{eq:z2-code-intersection-sign}
+\end{equation}
+The operator \(Z(c)\) commutes with every star iff \(\partial c=0\).  If
+\(c=\partial s\) is the boundary of a plaquette two-chain \(s\), then
+\[
+  Z(c)=\prod_{p:s_p=1}B_p
+\]
+and \(Z(c)\) acts as the identity on \(P_0\mathcal H_\Lambda\).  Thus
+nontrivial \(Z\)-type logical lines are represented by
+\[
+  [c]\in H_1(T^2;\mathbb Z_2).
+\]
+Dually, \(X(\eta)\) commutes with every plaquette iff \(\delta\eta=0\); if
+\(\eta=\delta f\) is exact, then \(X(\eta)\) is a product of star
+stabilizers and is trivial on the ground space.  The nontrivial \(X\)-type
+logical lines are represented by
+\[
+  [\eta]\in H^1(T^2;\mathbb Z_2).
+\]
+Equation~\eqref{eq:z2-code-intersection-sign} is then the exact finite
+version of the one-form linking phase: a primal \(Z\)-loop and a dual
+\(X\)-loop anticommute precisely when their mod-two intersection number is
+one.
+
+\paragraph{Local indistinguishability.}
+Let \(R\subset E\) be an edge set contained in a contractible disk of the
+cellulation, and let \(O_R\) be any operator supported on
+\(\bigotimes_{e\in R}\mathbb C^2_e\).  Expanding \(O_R\) in the Pauli basis,
+it is enough to consider a monomial
+\[
+  W=i^\ell X(\eta)Z(c),\qquad \operatorname{supp}(\eta,c)\subset R.
+\]
+If \(\partial c\neq0\), then \(Z(c)\) anticommutes with at least one star
+stabilizer; if \(\delta\eta\neq0\), then \(X(\eta)\) anticommutes with at
+least one plaquette stabilizer.  In either case
+\[
+  P_0 W P_0=0,
+\]
+because the anticommuting stabilizer \(S\) obeys
+\[
+  P_0WP_0=P_0SWP_0=-P_0WSP_0=-P_0WP_0 .
+\]
+If \(\partial c=0\) and \(\delta\eta=0\), contractibility of \(R\) implies
+that \(c\) is a plaquette boundary and \(\eta\) is a star coboundary inside
+the same disk.  Therefore \(W\) is a phase times a product of stabilizers, and
+\[
+  P_0 W P_0=\lambda(W)P_0,\qquad \lambda(W)\in\{0,\pm1,\pm\ii\}.
+\]
+By linearity,
+\begin{equation}
+  P_0 O_R P_0=c(O_R)P_0
+  \label{eq:z2-code-local-indistinguishability}
+\end{equation}
+for every operator supported in a contractible region \(R\).  This is the
+finite local-indistinguishability mechanism.  It is stronger than saying that
+particular expectation values agree: the full local operator algebra acts
+projectively as scalars after projection to the ground sector.  It is also
+weaker than a continuum phase theorem: stability under perturbations and
+passage to an infinite-volume gapped phase require separate locality and gap
+input, such as Lieb--Robinson and quasi-adiabatic-continuation estimates.
+
+\paragraph{Open strings and the finite energy barrier.}
+For an open chain \(c\), the boundary \(\partial c\) is the set of star
+violations created by \(Z(c)\).  More precisely, for a ground vector
+\(\psi\),
+\begin{equation}
+  \langle Z(c)\psi,H_\Lambda Z(c)\psi\rangle
+  -\langle \psi,H_\Lambda\psi\rangle
+  =
+  2J\,|\partial c|.
+  \label{eq:z2-code-open-string-energy}
+\end{equation}
+A simple partial string has two endpoints, so the energy cost is \(4J\),
+independent of its length.  When the string closes into a noncontractible
+cycle, the endpoints disappear and the operator becomes a logical line inside
+the ground sector.  The same statement holds for dual \(X\)-strings with
+plaquette violations.  Thus this exact laboratory simultaneously exhibits
+topological logical lines and fixes the two-dimensional \(\mathbb Z_2\)
+gauge-code barrier scale at order \(J\), independent of system size.  Any
+finite-temperature memory statement must additionally specify the bath, rates,
+decoder or absence of decoder, and the limiting notion of lifetime.
+
+The lesson for gauge theory is the logical separation.  The finite stabilizer
+model makes the microscopic line algebra and the one-form intersection phase
+completely explicit.  A continuum deconfined gauge theory may have the same
+long-distance topological sector when a regulator family, phase
+classification, and infrared limit connect the microscopic model to that
+sector.
+
 \begin{openproblem}[Complete phase invariant for gauge theories]
 \label{op:complete-phase-invariant-gauge-theories}
 Define a tractable invariant of gauge-theory phases that includes local

@@ -610,6 +610,11 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
+  checks for the gauge-theory phases chapter, including star/plaquette
+  commutation, global stabilizer redundancies, the four-dimensional torus
+  ground space, logical line anticommutation, contractible stabilizer loops,
+  and the constant local energy barrier of a simple logical string.
 - `oblique_confinement_checks.py`: exact finite checks for the confinement
   chapter, including screened-pairing descent to \(S^\perp/S\), maximal
   isotropy of dyonic condensates \(\langle(p,1)\rangle\), the oblique
