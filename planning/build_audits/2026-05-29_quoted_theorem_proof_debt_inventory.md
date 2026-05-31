@@ -47,11 +47,14 @@ High-priority proof-debt classes:
    reconstruction block now separates the QFT-specific DHR input from the
    categorical compact-group output and contains finite pointed, nonabelian
    representation, crossed-product, and regular charged-coordinate diagnostics;
-   the full analytic DHR/DR theorem remains a theorem-boundary input.  AQFT
-   structural inputs such as
-   Bisognano-Wichmann, nuclearity-to-split consequences, and
-   Borchers-Wiesbrock half-sided inclusions are currently quoted and should be
-   triaged into proof appendices versus explicit theorem-boundary status.
+   the full analytic DHR/DR theorem remains a theorem-boundary input.  The
+   nuclearity-to-split block now contains the free-Fock phase-space benchmark,
+   the split product-state construction, and the separated-normal-functional
+   bridge between nuclear maps and the Doplicher--Longo criterion; the full
+   local nuclearity-to-split theorem remains a theorem-boundary input.  AQFT
+   structural inputs such as Bisognano-Wichmann and Borchers-Wiesbrock
+   half-sided inclusions still require continued triage into proof appendices
+   versus explicit theorem-boundary status.
 
 2. Constructive QFT and stochastic quantization.
    `qthm:p-phi-two-stability`, `qthm:p-phi-two-cluster-os-output`,

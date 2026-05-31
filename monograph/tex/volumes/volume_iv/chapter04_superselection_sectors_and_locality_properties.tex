@@ -1666,17 +1666,77 @@ The nuclearity hypothesis supplies the normality in
 \]
 Thus the set of vectors obtained by acting with the local unit ball and then
 damping energy by \(\ee^{-\beta H}\) is contained in the absolutely convex
-hull of a summable family.  The collar
-\(\mathcal O_1\Subset\mathcal O_2\) permits one to choose a small timelike
-imaginary translation, implemented analytically by \(\ee^{-\beta H}\), whose
-domain of holomorphy does not cross the spacelike complement of
-\(\mathcal O_2\).  Locality then controls products \(AB'\) with
-\(A\in\mathcal M_1\) and \(B'\in\mathcal M_2'\), while the summable expansion
-above gives trace-norm control of the bilinear functionals on
-\(\mathcal M_1\odot\mathcal M_2'\).  The resulting product-type normal
-functionals extend from the algebraic tensor product to
-\(\mathcal M_1\bar\otimes\mathcal M_2'\); by the split criterion this yields
-the type-I interpolant.
+hull of a summable family.  This Banach-space statement is only the first
+ingredient.  Since \(\mathcal M_1\) and \(\mathcal M_2'\) are von Neumann
+algebras, the split criterion asks for normality, not only norm convergence.
+Equivalently, for every vector pair \(\eta,\zeta\in\Hilb\), the functional
+\[
+  A\otimes B'
+  \longmapsto
+  \langle\eta,AB'\zeta\rangle
+  \qquad
+  (A\in\mathcal M_1,\ B'\in\mathcal M_2')
+\]
+must be represented, after the required limiting argument, by a normal
+functional on \(\mathcal M_1\bar\otimes\mathcal M_2'\).  Finite sums of
+separated normal functionals,
+\[
+  \sum_{j=1}^N\varphi_j(A)\psi_j(B'),
+  \qquad
+  \varphi_j\in(\mathcal M_1)_*,\quad
+  \psi_j\in(\mathcal M_2')_*,
+\]
+are the elementary normal functionals on the spatial tensor product; a
+summable infinite version is the analytic form in which the split proof
+detects normal extendability of the multiplication representation.
+
+The nuclear decomposition is used to produce such summable separated forms.
+For a fixed \(B'\) and a fixed vector \(\eta\), the energy-damped matrix
+coefficient
+\[
+  A\longmapsto
+  \langle\eta,B'\ee^{-\beta H}A\vac\rangle
+\]
+has the absolutely convergent expansion
+\[
+  \sum_{n\ge1}\ell_n(A)\,\langle B'^*\eta,\xi_n\rangle .
+\]
+The displayed formula by itself does not prove splitness: the coefficient
+functionals \(\ell_n\) in an arbitrary Banach-space nuclear decomposition need
+not be normal, and the undamped vector functional
+\((A,B')\mapsto\langle\eta,AB'\zeta\rangle\) is not obtained by algebraically
+removing \(\ee^{-\beta H}\).  These two points are precisely where the local
+QFT hypotheses enter.  The collar \(\mathcal O_1\Subset\mathcal O_2\) permits
+small imaginary time translations whose tube domains do not cross the
+spacelike complement of \(\mathcal O_2\).  Locality then moves operators in
+\(\mathcal M_2'\) past the translated \(\mathcal M_1\)-operators, and the
+spectral condition supplies the energy damping that makes the nuclear
+expansion summable.  The remaining analytic estimates identify the resulting
+bilinear vector functionals with limits, in the predual
+\((\mathcal M_1\bar\otimes\mathcal M_2')_*\), of separated normal sums.  This
+is the functional-analytic content hidden behind the short phrase
+``nuclearity implies the split property.''
+
+The finite-dimensional shadow is simple but useful for keeping the objects
+straight.  If
+\(\mathcal M_1\subset\mathcal B(\mathcal K)\otimes\mathbf 1\) and
+\(\mathcal M_2'\subset\mathbf 1\otimes\mathcal B(\mathcal L)\), then any
+density matrices \(r_1\) on \(\mathcal K\) and \(r_2\) on \(\mathcal L\) give
+a normal product functional
+\[
+  A\otimes B'\longmapsto
+  \operatorname{Tr}_{\mathcal K}(r_1A)\,
+  \operatorname{Tr}_{\mathcal L}(r_2B')
+  =
+  \operatorname{Tr}_{\mathcal K\otimes\mathcal L}
+  \!\left[(r_1\otimes r_2)(A\otimes B')\right].
+\]
+For a finite-rank map
+\(\Theta(A)=\sum_j\ell_j(A)\xi_j\), every coefficient
+\(\langle\eta,B'\Theta(A)\rangle\) is correspondingly a finite separated sum.
+The infinite theorem is the statement that, under relativistic phase-space
+and collar hypotheses, this finite separated normality survives the continuum
+limit for the actual local multiplication representation.
 
 This proof mechanism also explains the status of the constants in the
 phase-space bound.  The exponential estimate

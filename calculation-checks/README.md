@@ -83,6 +83,10 @@ Current checks:
   nuclearity phase-space benchmark, including the bosonic finite-mode product
   formula, the sup-norm lattice shell count and derivative bound, and
   finite-cutoff samples of the \(\beta^{D-1}\log Z_B\) scaling behavior.
+- `split_nuclearity_normality_checks.py`: finite matrix-algebra checks for the
+  Volume IV nuclearity-to-split mechanism, including normal product-state
+  extension through a tensor density matrix, positivity on \(C^*C\), and the
+  separated bilinear expansion produced by a finite-rank nuclear map.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including functorial composition of anomaly-line cocycles, local
   counterterm/frame changes of cocycle representatives, and the finite

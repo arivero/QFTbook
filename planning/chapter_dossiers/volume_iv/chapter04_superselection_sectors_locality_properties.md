@@ -75,6 +75,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   product states for \(\mathcal R(\mathcal O_1)\) and
   \(\mathcal R(\mathcal O_2)'\) after spatially representing the type-I
   interpolant as \(\mathcal B(\mathcal K)\otimes 1\).
+- Expands the nuclearity-to-split theorem boundary by separating Banach
+  nuclearity from von-Neumann normality: the text now identifies the summable
+  separated normal functionals on
+  \(\mathcal R(\mathcal O_1)\bar\otimes\mathcal R(\mathcal O_2)'\) as the
+  actual bridge to the Doplicher--Longo split criterion, and explains why the
+  positive collar, locality, and spectral condition are needed beyond the
+  formal nuclear decomposition.
 - Verifies the right-wedge light-ray modular-inclusion sign in the chapter's
   Bisognano--Wichmann convention: for \(W_R(a)=W_R+a e_+\),
   \(\sigma_t^{W_R}\mathcal R(W_R(a))
@@ -117,6 +124,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   finite-mode bosonic product formula, the sup-norm lattice shell count used
   in the phase-space estimate, and finite-cutoff samples of the
   \(\beta^{D-1}\log Z_B\) scaling bound.
+- `calculation-checks/split_nuclearity_normality_checks.py` verifies the
+  finite split-product and nuclearity-normality algebra: tensor density
+  matrices give normal product states, positivity holds on \(C^*C\), and a
+  finite-rank nuclear map gives the separated bilinear expansion that models
+  the infinite split proof.
 - `calculation-checks/unruh_boost_geometry_checks.py` verifies the
   complex-boost and wedge-geometry signs used here and in Volume XII,
   including the \(i\pi\) right-to-left wedge map and the lightlike
@@ -231,3 +243,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\mathcal R(\mathcal O_1)\) and \(\mathcal R(\mathcal O_2)'\) from a
   type-I interpolant, sharpening the meaning of split independence before the
   later nuclearity-to-split theorem boundary.
+- 2026-05-31 split/nuclearity normality pass: expanded the
+  nuclearity-to-split mechanism beyond phase-space counting by making the
+  separated normal predual functionals visible.  The text now warns that an
+  arbitrary Banach nuclear decomposition need not have normal coefficient
+  functionals and identifies the collar/locality/spectral-condition estimates
+  as the actual load-bearing analytic step.
