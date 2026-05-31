@@ -179,6 +179,59 @@ def check_discrete_jarzynski_identity() -> None:
     assert_close("finite driven Jarzynski identity", average, free_energy_factor)
 
 
+def check_msrjd_gaussian_fourier_kernel() -> None:
+    delta_t = 0.17
+    diffusion = 0.8
+    increment = -0.43
+
+    gaussian = math.exp(-(increment**2) / (4.0 * delta_t * diffusion)) / math.sqrt(
+        4.0 * math.pi * delta_t * diffusion
+    )
+    fourier_gaussian = (
+        math.sqrt(math.pi / (delta_t * diffusion))
+        * math.exp(-(increment**2) / (4.0 * delta_t * diffusion))
+        / (2.0 * math.pi)
+    )
+    assert_close("one-dimensional MSRJD Fourier kernel", fourier_gaussian, gaussian)
+
+    matrix = [[1.2, 0.25], [0.25, 0.9]]
+    vector = [0.3, -0.7]
+    determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] ** 2
+    inverse = [
+        [matrix[1][1] / determinant, -matrix[0][1] / determinant],
+        [-matrix[1][0] / determinant, matrix[0][0] / determinant],
+    ]
+    quadratic = sum(vector[i] * inverse[i][j] * vector[j] for i in range(2) for j in range(2))
+    path_kernel = math.exp(-quadratic / (4.0 * delta_t)) / math.sqrt(
+        (4.0 * math.pi * delta_t) ** 2 * determinant
+    )
+    transformed_kernel = (
+        math.pi
+        * math.exp(-quadratic / (4.0 * delta_t))
+        / ((2.0 * math.pi) ** 2 * delta_t * math.sqrt(determinant))
+    )
+    assert_close("two-dimensional MSRJD determinant normalization", transformed_kernel, path_kernel)
+
+
+def check_langevin_generator_expansion() -> None:
+    x = 0.4
+    delta_t = 0.015
+    diffusion = 0.35
+    drift = -0.7 * x + 0.2
+
+    mean = x + delta_t * drift
+    variance = 2.0 * delta_t * diffusion
+    expected_cubic = mean**3 + 3.0 * mean * variance
+    finite_difference = (expected_cubic - x**3) / delta_t
+
+    generator_on_cubic = drift * (3.0 * x**2) + diffusion * (6.0 * x)
+    exact_remainder = (
+        delta_t * (3.0 * x * drift**2 + 6.0 * diffusion * drift)
+        + (delta_t**2) * drift**3
+    )
+    assert_close("finite-step Langevin generator expansion", finite_difference, generator_on_cubic + exact_remainder)
+
+
 def check_two_level_kms_stationary_ratio() -> None:
     beta = 1.4
     gap = 0.9
@@ -218,6 +271,8 @@ def main() -> None:
     check_finite_local_detailed_balance_entropy()
     check_jump_path_measure_ratio()
     check_discrete_jarzynski_identity()
+    check_msrjd_gaussian_fourier_kernel()
+    check_langevin_generator_expansion()
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()

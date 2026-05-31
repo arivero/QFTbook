@@ -9,9 +9,10 @@ open-system limit is a scaling limit of a larger closed system in which a
 subalgebra evolves by a completely positive trace-preserving semigroup.  This
 chapter fixes these definitions, derives the reservoir entropy-production
 formula, records finite path-measure fluctuation identities before taking a
-continuum limit, records the weak-coupling route to the GKSL generator, and
-connects the Markovian limit to a Schwinger--Keldysh influence functional
-and to hydrodynamic relaxation with noise.
+continuum limit, derives the finite-step Langevin/MSRJD representation,
+records the weak-coupling route to the GKSL generator, and connects the
+Markovian limit to a Schwinger--Keldysh influence functional and to
+hydrodynamic relaxation with noise.
 
 \section{Steady-State Datum}
 
@@ -446,6 +447,140 @@ For a continuum QFT quench, the corresponding use of
 \eqref{eq:finite-path-jarzynski} requires a specified finite regulator, a
 measured work protocol or two-time energy measurement replacement, a
 time-reversal operation, and a limit in which the history measures converge.
+
+\section{Finite-Step Langevin Measures and MSRJD Variables}
+\label{sec:finite-step-langevin-msrjd}
+
+The Martin--Siggia--Rose--Janssen--de Dominicis (MSRJD) response-field path
+integral used in classical stochastic field theory is an exact rewriting of
+a finite-dimensional path measure before it is a continuum notation.  Let
+\(x_n=(x_n^1,\ldots,x_n^N)\in\mathbb R^N\) be the variables of a finite
+regulator at \(t_n=n\Delta t\), \(0\le n\le M\).  The index
+\(a=1,\ldots,N\) may include internal labels and lattice sites.  Fix a smooth
+drift vector field \(F^a(x,t)\) and a real symmetric positive definite matrix
+\(D^{ab}\).  The Ito finite-step process is
+\begin{equation}
+  x_{n+1}^a
+  =
+  x_n^a+\Delta t\,F^a(x_n,t_n)+\eta_n^a,
+  \qquad
+  \mathbb E(\eta_n^a\eta_m^b)
+  =
+  2\Delta t\,D^{ab}\delta_{nm}.
+  \label{eq:finite-langevin-ito-step}
+\end{equation}
+With \(x_0\) fixed and
+\[
+  \Delta x_n^a=x_{n+1}^a-x_n^a,
+  \qquad
+  F_n^a=F^a(x_n,t_n),
+\]
+the conditional path density is
+\begin{equation}
+  \mathbb P_\Delta[x_1,\ldots,x_M\mid x_0]
+  =
+  \prod_{n=0}^{M-1}
+  \frac{
+    \exp\!\left[
+      -\frac{1}{4\Delta t}
+      (\Delta x_n-\Delta t F_n)_a(D^{-1})^{ab}
+      (\Delta x_n-\Delta t F_n)_b
+    \right]}
+    {\sqrt{(4\pi\Delta t)^N\det D}} .
+  \label{eq:finite-langevin-path-density}
+\end{equation}
+This formula is the regulated stochastic theory.  A continuum stochastic
+field theory is a limit of such finite measures, together with convergence
+of the observables under study.
+
+The Gaussian kernel in \eqref{eq:finite-langevin-path-density} has the
+Fourier representation
+\begin{equation}
+  \frac{
+    \exp\!\left[-\frac{1}{4\Delta t}y_a(D^{-1})^{ab}y_b\right]}
+    {\sqrt{(4\pi\Delta t)^N\det D}}
+  =
+  \int_{\mathbb R^N}\frac{d^N\hat x}{(2\pi)^N}
+  \exp\!\left[
+    -\ii\hat x_a y^a
+    -\Delta t\,\hat x_aD^{ab}\hat x_b
+  \right].
+  \label{eq:finite-msrjd-gaussian-fourier}
+\end{equation}
+Indeed, the right side is the elementary Gaussian integral
+\[
+  \frac{1}{(2\pi)^N}
+  \int_{\mathbb R^N}d^N\hat x\,
+  \exp\!\left[-\hat x_a(\Delta t D^{ab})\hat x_b-\ii\hat x_a y^a\right],
+\]
+and completing the square gives the determinant and exponent on the left.
+The finite-step MSRJD identity follows by applying
+\eqref{eq:finite-msrjd-gaussian-fourier} to
+\(y^a=\Delta x_n^a-\Delta t F_n^a\) at each time step:
+\begin{align}
+  \mathbb E_\Delta[\mathcal O]
+  &=
+  \int_{\mathbb R^{NM}}\prod_{n=1}^{M}d^Nx_n\,
+  \mathcal O(x_0,\ldots,x_M)
+  \prod_{n=0}^{M-1}
+  \int_{\mathbb R^N}\frac{d^N\hat x_n}{(2\pi)^N}
+  \notag\\
+  &\qquad\qquad\times
+  \exp\!\left\{
+    \sum_{n=0}^{M-1}
+    \left[
+      -\ii\hat x_{n,a}
+      \bigl(\Delta x_n^a-\Delta t F_n^a\bigr)
+      -\Delta t\,\hat x_{n,a}D^{ab}\hat x_{n,b}
+    \right]
+  \right\}.
+  \label{eq:finite-msrjd-identity}
+\end{align}
+Here \(\mathcal O\) is any bounded measurable functional of the finite path.
+If the initial condition has density \(\rho_0(x_0)\), one also integrates
+over \(x_0\) with weight \(\rho_0\).  The auxiliary variable
+\(\hat x_{n,a}\) is the Fourier-dual variable to the finite increment
+constraint.  The frequently used variable \(\widetilde x_{n,a}=\ii\hat x_{n,a}\)
+is a contour notation for the same finite integral; its convergence and
+allowed deformations are inherited from \eqref{eq:finite-msrjd-gaussian-fourier}.
+
+The same finite construction fixes the generator and the Fokker--Planck
+equation from finite moments.  For
+\(f\in C_b^4(\mathbb R^N)\), Taylor expansion of
+\(f(x+\Delta t F(x,t)+\eta)\) and the Gaussian moments
+\(\mathbb E\eta^a=0\),
+\(\mathbb E(\eta^a\eta^b)=2\Delta t D^{ab}\) give
+\begin{equation}
+  \mathbb E[f(x_{n+1})\mid x_n=x]
+  =
+  f(x)
+  +
+  \Delta t
+  \left(F^a(x,t_n)\partial_a f(x)
+  +D^{ab}\partial_a\partial_b f(x)\right)
+  +O((\Delta t)^2)
+  \label{eq:finite-langevin-generator-expansion}
+\end{equation}
+uniformly on compact sets where the drift and the required derivatives of
+\(f\) are bounded.  The limiting Markov generator on test functions is
+therefore
+\begin{equation}
+  L_t f=F^a(x,t)\partial_a f+D^{ab}\partial_a\partial_b f .
+  \label{eq:finite-langevin-generator}
+\end{equation}
+The adjoint equation for a smooth density \(p(x,t)\) is
+\begin{equation}
+  \partial_t p
+  =
+  -\partial_a(F^a p)
+  +D^{ab}\partial_a\partial_b p .
+  \label{eq:finite-langevin-fokker-planck}
+\end{equation}
+For stochastic PDEs and QFT applications, \(\mathbb R^N\) is replaced first
+by a finite spatial regulator and only then by a continuum limit.  The data
+to be controlled are the regulated drift, the regulated covariance, the
+choice of stochastic discretization, ultraviolet renormalizations of drift
+and noise, and convergence of correlation functions or path measures.
 
 \section{Weak-Coupling Open-System Limit}
 
