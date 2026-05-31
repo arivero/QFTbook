@@ -324,6 +324,15 @@ as QFT evidence.  This addresses the exact-diagonalization/Krylov portion of
 the numerical-evidence lane; tensor networks, neural variational states, and
 larger production workflows remain separate development tasks.
 
+Second partial absorption on 2026-05-31: the same chapter now formulates
+tensor-network, DMRG/MERA, and neural-state computations as finite
+variational ansatz data.  The added material derives the energy-variance
+residual certificate, finite spectral/projector leakage bounds, the
+tangent-gradient stationarity condition, and the local-energy mean/variance
+identities used in sampled neural-state calculations.  Remaining numerical
+evidence work includes production tensor-network extrapolation standards,
+neural optimizer/calibration diagnostics, and larger workflow integration.
+
 ### Defects, Elasticity, And Goldstone Effective Theories
 
 Statmech source: Volume II Chapter 16.

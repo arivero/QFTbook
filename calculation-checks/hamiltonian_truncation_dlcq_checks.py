@@ -289,6 +289,58 @@ def check_krylov_residual_and_moments() -> None:
         assert_close(f"Krylov quadrature moment {power}", quadrature_moment, exact_moment, tol=1.0e-10)
 
 
+def check_variational_energy_certificates() -> None:
+    matrix = np.array(
+        [
+            [0.8, 0.25, -0.10, 0.05],
+            [0.25, 1.7, 0.30, -0.15],
+            [-0.10, 0.30, 2.6, 0.20],
+            [0.05, -0.15, 0.20, 4.2],
+        ],
+        dtype=float,
+    )
+    vector = np.array([1.0, 0.35, -0.4, 0.2], dtype=float)
+    vector = vector / np.linalg.norm(vector)
+    energy = float(vector @ matrix @ vector)
+    residual = (matrix - energy * np.eye(matrix.shape[0])) @ vector
+    variance = float(vector @ matrix @ matrix @ vector - energy * energy)
+    assert_close("variational variance equals residual norm", variance, float(residual @ residual), tol=1.0e-12)
+
+    eigenvalues, eigenvectors = np.linalg.eigh(matrix)
+    distance = float(np.min(np.abs(eigenvalues - energy)))
+    assert_leq("variational variance spectral distance", distance, float(np.sqrt(variance)))
+
+    ground_coefficients = eigenvectors.T @ vector
+    excited_weight = float(np.sum(np.abs(ground_coefficients[1:]) ** 2))
+    ground_bound = (energy - float(eigenvalues[0])) / float(eigenvalues[1] - eigenvalues[0])
+    assert_leq("variational ground projector leakage", excited_weight, ground_bound)
+
+    tangent = np.array([0.2, -0.7, 0.1, 0.4], dtype=float)
+    tangent = tangent - vector * float(vector @ tangent)
+    tangent = tangent / np.linalg.norm(tangent)
+    gradient_formula = 2.0 * float(tangent @ residual)
+
+    def normalized_energy(t: float) -> float:
+        trial = vector + t * tangent
+        trial = trial / np.linalg.norm(trial)
+        return float(trial @ matrix @ trial)
+
+    step = 1.0e-6
+    finite_difference = (normalized_energy(step) - normalized_energy(-step)) / (2.0 * step)
+    assert_close("variational tangent-gradient formula", finite_difference, gradient_formula, tol=1.0e-8)
+
+    nonzero_vector = vector + np.array([0.1, 0.2, 0.15, 0.05], dtype=float)
+    norm2 = float(nonzero_vector @ nonzero_vector)
+    local_energy = (matrix @ nonzero_vector) / nonzero_vector
+    probabilities = (nonzero_vector * nonzero_vector) / norm2
+    rayleigh = float(nonzero_vector @ matrix @ nonzero_vector / norm2)
+    local_mean = float(np.sum(probabilities * local_energy))
+    local_variance = float(np.sum(probabilities * np.abs(local_energy - rayleigh) ** 2))
+    residual_variance = float(np.linalg.norm((matrix - rayleigh * np.eye(matrix.shape[0])) @ nonzero_vector) ** 2 / norm2)
+    assert_close("variational local-energy mean", local_mean, rayleigh)
+    assert_close("variational local-energy variance", local_variance, residual_variance)
+
+
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_tffsa_connected_spin_block()
@@ -298,6 +350,7 @@ def main() -> None:
     check_residual_certificate()
     check_feshbach_determinant_identity()
     check_krylov_residual_and_moments()
+    check_variational_energy_certificates()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 
 

@@ -52,6 +52,12 @@ numerics.
   coordinate, and next Lanczos vector.
 - `mu_v`, `theta_r`, `w_r`: finite seed spectral measure, Ritz values, and
   Krylov quadrature weights.
+- `Theta`, `Psi`, `S`, `E_samp`: variational parameter space, trial-vector
+  map, exact ansatz constraints, and sampling/error datum.
+- `E_psi`, `r_psi`, `Delta_psi`: Rayleigh quotient, residual vector, and
+  finite energy variance for a trial state.
+- `E_loc(x)`, `p_psi(x)`: finite-basis local energy and sampling
+  probability used by neural-state and variational Monte Carlo estimates.
 
 ## Claim Ledger
 
@@ -102,6 +108,19 @@ numerics.
   `2m-1`, using the orthogonality of the Lanczos residual polynomial, and
   states the seed-overlap and symmetry-sector coverage obligations needed
   before interpreting missing or present states.
+- Defines finite variational ansatz data for tensor-network, DMRG/MERA, and
+  neural-state calculations, including ansatz constraints and sampling-error
+  data.
+- Derives the finite energy-variance certificate: variance equals residual
+  norm, bounds distance from the finite spectrum, and bounds leakage from a
+  separated finite spectral cluster.
+- Derives the ground-projector leakage estimate when the finite ground
+  energy and gap are known by an independent certificate.
+- Derives the tangent-gradient formula for a smooth normalized ansatz, so a
+  variational stationary point is identified as tangent-space residual
+  orthogonality rather than an eigenvector certificate.
+- Derives the finite local-energy mean and variance identities used by
+  sampled neural-state and variational Monte Carlo calculations.
 - Defines DLCQ kinematics and the role of harmonic resolution, then packages
   the light-front compactification, parton partitions, zero-mode treatment,
   finite \(P^-\) or \(M^2\) operator, and finite-\(K\) continuum diagnostic
@@ -165,7 +184,9 @@ plots.
   block normalization, finite Ising TFFSA spectral-flow derivative identities,
   finite large-`K` fit algebra, finite residual certification,
   spectral-projector leakage, the Feshbach determinant identity, and the
-  Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.
+  Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
+  also checks variational energy variance, ground-projector leakage,
+  tangent-gradient, and local-energy mean/variance identities.
 
 ## Anti-Wrapper Audit
 
@@ -182,3 +203,7 @@ plots.
   finite-spectral evidence machinery as derivational prose rather than a
   theorem wrapper, with exact residual and moment identities tied to
   seed-overlap and symmetry-sector coverage.
+- 2026-05-31 second statmech numerical-evidence pass: added finite
+  variational ansatz certificates for tensor-network/neural-state methods as
+  derivational prose, with finite residual, variance, tangent-gradient, and
+  local-energy identities rather than theorem wrappers.

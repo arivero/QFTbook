@@ -295,7 +295,10 @@ Current checks:
   normalization, residual-to-spectrum certification, spectral-projector
   leakage control, the finite Feshbach determinant identity behind
   truncation counterterms, and Krylov/Lanczos Ritz-residual plus finite
-  spectral-moment identities.
+  spectral-moment identities.  It also verifies finite variational ansatz
+  identities: energy variance as residual norm, spectral and ground-projector
+  certificates, tangent-gradient formula, and local-energy mean/variance
+  identities used by sampled neural-state calculations.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier
