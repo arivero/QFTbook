@@ -292,6 +292,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Pole cancellation gives the nested equations|"
     r"Channel unitarity and crossing|"
     r"Repulsive-sausage strip analyticity and block unitarity|"
+    r"Analytic uniqueness of a matched two-particle kernel|"
     r"Two-dimensional conformal Killing fields|"
     r"Spectral meaning of the horizon functional|"
     r"Conformal Borel map for one negative cut|"

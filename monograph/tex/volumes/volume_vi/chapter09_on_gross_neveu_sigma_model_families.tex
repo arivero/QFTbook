@@ -3043,57 +3043,62 @@ bootstrap parameter.  Without this map, a bootstrap matrix and a sigma-model
 action are two compatible coordinate systems, not yet one constructed QFT.
 \end{definition}
 
-\begin{proposition}[Analytic uniqueness of a matched two-particle kernel]
-\label{prop:analytic-uniqueness-matched-smatrix}
+\paragraph{Analytic uniqueness after regulator matching.}
 Assume a regulator realization supplies Haag--Ruelle two-particle scattering
 for species \(a,b\), and that the resulting two-particle kernel
-\(S^{\rm HR}_{ab}(\theta)\) and a bootstrap matrix \(S^{\rm boot}_{ab}(\theta)\)
-are meromorphic operator-valued functions on a connected domain
-\(\Omega\subset\mathbb C\) containing a nonempty real rapidity interval
-\(I\) in its boundary-value set.  Suppose their boundary values on \(I\)
-exist as tempered distribution kernels and agree there as operators
+\(S^{\rm HR}_{ab}(\theta)\) and a bootstrap matrix
+\(S^{\rm boot}_{ab}(\theta)\) are meromorphic operator-valued functions on a
+connected domain \(\Omega\subset\mathbb C\) containing a nonempty real
+rapidity interval \(I\) in its boundary-value set.  Suppose their boundary
+values on \(I\) exist as tempered distribution kernels and agree there as
+operators
 \[
   V_a\otimes V_b\longrightarrow V_b\otimes V_a .
 \]
-If the difference has no boundary-supported contact term in the two-particle
-rapidity variable, then
+Assume also that the difference carries no boundary-supported contact term in
+the two-particle rapidity variable.  These hypotheses imply the meromorphic
+identity
 \[
-  S^{\rm HR}_{ab}(\theta)=S^{\rm boot}_{ab}(\theta)
+  S^{\rm HR}_{ab}(\theta)=S^{\rm boot}_{ab}(\theta),
+  \qquad \theta\in\Omega .
 \]
-as meromorphic operator-valued functions on \(\Omega\).
-\end{proposition}
-
-\begin{proof}
-Choose bases of \(V_a\) and \(V_b\).  The assertion reduces to scalar
-meromorphic functions for each matrix entry.  Let
+Here is the complete analytic step.  Choose bases of \(V_a\) and \(V_b\).
+For each matrix entry set
 \[
   F(\theta)=
   (S^{\rm HR}_{ab})_{\beta\alpha}^{\alpha'\beta'}(\theta)
   -
   (S^{\rm boot}_{ab})_{\beta\alpha}^{\alpha'\beta'}(\theta).
 \]
-Multiplying by a product of local pole factors gives a holomorphic function
-\(\widetilde F\) on a smaller connected open set whose boundary still
-contains an interval \(I_0\subset I\).  Equality of the distributional
-boundary values on \(I_0\), together with the absence of a
-boundary-supported contact term in rapidity, means that the boundary value of
-\(\widetilde F\) vanishes on \(I_0\).  By the Schwarz reflection or edge
-uniqueness theorem for one complex variable, a holomorphic function with
-vanishing boundary value on an open real interval in this situation is
-identically zero on the connected component.  Hence each matrix entry of
-\(\widetilde F\), and therefore of \(F\), vanishes away from the removed pole
-divisors.  Since both sides are meromorphic, the equality extends across
-removable points and holds as a meromorphic identity on \(\Omega\).
-\end{proof}
+On any relatively compact subdomain avoiding accumulation of pole divisors,
+multiply by the finite product of local factors that cancel the poles met in
+that subdomain.  The result is a holomorphic function \(\widetilde F\) on a
+connected open set whose boundary still contains a real interval
+\(I_0\subset I\).  The equality of distributional boundary values on \(I_0\),
+together with the stated exclusion of a boundary-supported term, says that the
+boundary distribution of \(\widetilde F\) vanishes on \(I_0\).  Fix
+\(x_0\in I_0\) and a disc \(D\) centered at \(x_0\) whose upper half lies in
+the holomorphy domain.  Define \(G=\widetilde F\) on the upper half-disc and
+\(G=0\) on the lower half-disc.  For a triangle \(T\subset D\) crossing the
+diameter, replace \(T\) by \(T\cap\{\Im z>\varepsilon\}\) and let
+\(\varepsilon\downarrow0\).  The holomorphic integral over the truncated
+triangle is zero, and the only limiting contribution from the diameter is the
+vanishing boundary distribution paired with the test density induced by the
+edge of \(T\).  Hence \(\int_{\partial T}G\,\dd z=0\) for every such triangle;
+Morera's theorem makes \(G\) holomorphic across the interval.  Since \(G\)
+vanishes on the lower half-disc, the identity theorem gives
+\(\widetilde F=0\) in the upper half-disc.  Analytic continuation then carries
+the vanishing through the connected component.  Dividing by the pole-cancelling
+factors gives \(F=0\) away from the removed divisors, and meromorphic
+continuation extends the equality across them.
 
-This proposition is intentionally modest.  It does not construct the
-continuum theory, prove asymptotic completeness, or derive factorization from
-the regulator.  It records the last analytic step after those harder inputs
-have been supplied.  The difficult part of a sigma-model bootstrap theorem is
-therefore not the identity theorem; it is the construction of the
-Haag--Ruelle scattering theory and the proof that the regulator produces a
-kernel with the analyticity, pole, and residue properties stated in
-Definition~\ref{def:massive-factorizing-bootstrap-datum}.
+The mathematical burden in a sigma-model bootstrap comparison is therefore
+the construction of the continuum regulator realization: existence of the
+neutral Haag--Ruelle scattering theory, control of the meromorphic boundary
+values, identification of poles and residues, and matching of the finite-volume
+and form-factor data in Definition~\ref{def:massive-factorizing-bootstrap-datum}.
+The paragraph above is only the final uniqueness step once those data have
+already been obtained.
 
 \begin{definition}[Family ledger for this chapter]
 \label{def:sigma-model-family-ledger}

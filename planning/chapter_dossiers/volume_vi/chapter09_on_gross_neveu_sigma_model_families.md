@@ -85,6 +85,12 @@ symmetry.
   paired calculation script, while the constructive local-QFT realization
   question remains separated in the sausage bootstrap matching controlled
   approximation.
+- 2026-05-31 issue #691 continuation: demoted "Analytic uniqueness of a
+  matched two-particle kernel" from proposition/proof form to an analytic
+  matching paragraph.  The boundary-value uniqueness derivation remains
+  explicit, but the text now assigns the real mathematical burden to the
+  regulator realization: neutral Haag--Ruelle scattering, meromorphic boundary
+  control, pole/residue matching, finite-volume data, and form-factor data.
 
 ## Figure Ledger
 
