@@ -1061,3 +1061,12 @@ data maps.
   Taylor-subtraction \(L^1\) scale gain from lemma form to an explicit
   calculation around `eq:spde-taylor-subtraction-gain`, and rewired later
   references to the equation rather than to a theorem-family wrapper.
+- 2026-05-31 issue #701 structural-navigation pass: split the two giant
+  sections of the chapter into mathematically meaningful subsections without
+  changing theorem content.  The DPD section is now navigable by local
+  product/fixed-point estimates, energy compactness, invariant-law/tightness,
+  regulator/OS assembly, and the three-dimensional obstruction.  The
+  regularity-structure section is now navigable by model/reconstruction
+  input, random-model/finite-chaos coordinates, multiscale local
+  subtractions, finite-sector coordinate-to-model convergence, and nonlinear
+  negative-coordinate shell bounds.
