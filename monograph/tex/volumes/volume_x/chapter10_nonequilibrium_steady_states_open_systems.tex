@@ -12,7 +12,9 @@ formula, records finite path-measure fluctuation identities before taking a
 continuum limit, derives the finite-step Langevin/MSRJD representation,
 derives the finite reaction-network Doi--Peliti representation, records the
 tilted-generator construction of dynamical large deviations, records the
-weak-coupling route to the GKSL generator, and connects the Markovian limit
+empirical-flow level-\(2.5\) cost behind finite dynamical large deviations,
+records the weak-coupling route to the GKSL generator, and connects the
+Markovian limit
 to a Schwinger--Keldysh influence functional and to hydrodynamic relaxation
 with noise.
 
@@ -940,6 +942,205 @@ finite-time fluctuation relation in
 Section~\ref{sec:finite-path-measure-fluctuation-relations} is the
 corresponding path-measure identity; the spectral symmetry is its
 time-homogeneous stationary long-time shadow.
+
+\section{Empirical Measures, Flows, and the Level-\texorpdfstring{\(2.5\)}{2.5} Cost}
+\label{sec:finite-empirical-flow-level-25}
+
+The tilted generator computes exponential moments of additive observables.
+The path-space object behind it is the joint empirical occupation and
+empirical flow.  For a trajectory of the same finite jump process, define
+\begin{equation}
+  \rho_i^T(\gamma)
+  =
+  \frac1T\int_0^T{\bf 1}_{\{i(t)=i\}}\,dt,
+  \qquad
+  q_{ij}^T(\gamma)
+  =
+  \frac1T N_{ij}(T),
+  \label{eq:finite-empirical-measure-flow}
+\end{equation}
+where \(N_{ij}(T)\) is the number of jumps \(i\to j\) before time \(T\).
+Thus \(\rho^T\) is a probability vector and \(q^T_{ij}\ge0\) for
+\(i\ne j\).  A limiting pair \((\rho,q)\) can occur only when
+\begin{equation}
+  \rho_i\ge0,\qquad \sum_i\rho_i=1,\qquad q_{ij}\ge0,
+  \qquad
+  \sum_{j\ne i}q_{ij}=\sum_{j\ne i}q_{ji}.
+  \label{eq:finite-empirical-flow-constraints}
+\end{equation}
+The last equation is current conservation at the vertex \(i\).  At finite
+time it is violated only by the boundary term
+\[
+  \sum_{j\ne i}N_{ij}(T)-\sum_{j\ne i}N_{ji}(T)
+  =
+  {\bf 1}_{\{i(0)=i\}}-{\bf 1}_{\{i(T)=i\}},
+\]
+which disappears after division by \(T\).
+
+For a pair satisfying \eqref{eq:finite-empirical-flow-constraints}, define
+\begin{equation}
+  I_{2.5}(\rho,q)
+  =
+  \sum_{i}\sum_{j\ne i}
+  \left[
+    q_{ij}\log\frac{q_{ij}}{\rho_iW_{ij}}
+    -q_{ij}
+    +\rho_iW_{ij}
+  \right],
+  \label{eq:finite-level-25-rate-function}
+\end{equation}
+with the conventions \(0\log(0/a)=0\), \(q\log(q/0)=+\infty\) for \(q>0\),
+and \(q_{ij}=0\) whenever \(W_{ij}=0\).  If the constraints fail, set
+\(I_{2.5}(\rho,q)=+\infty\).  This is the relative entropy rate between the
+observed jump intensities and the original Markov intensities.
+
+\begin{proposition}[Finite empirical-flow cost]
+\label{prop:finite-empirical-flow-cost}
+Let the finite jump process be irreducible on its support.  The exponential
+cost of observing a limiting empirical pair \((\rho,q)\) is
+\eqref{eq:finite-level-25-rate-function}.  More precisely, if
+\(\rho_i>0\) on the communicating class, \(q_{ij}>0\) whenever
+\(W_{ij}>0\), and \((\rho,q)\) satisfies
+\eqref{eq:finite-empirical-flow-constraints}, then the auxiliary rates
+\begin{equation}
+  R_{ij}=\frac{q_{ij}}{\rho_i}
+  \label{eq:finite-level-25-auxiliary-rates}
+\end{equation}
+make \(\rho\) stationary and make \(q_{ij}=\rho_iR_{ij}\) the typical
+empirical flow.  The Radon--Nikodym density of the original path measure
+\(\mathbb P_W\) relative to the auxiliary path measure \(\mathbb P_R\) obeys
+\begin{equation}
+  \frac1T\log\frac{d\mathbb P_W}{d\mathbb P_R}(\gamma)
+  =
+  \sum_{i,j\ne i}
+  q^T_{ij}(\gamma)\log\frac{W_{ij}}{R_{ij}}
+  -
+  \sum_{i,j\ne i}
+  \rho^T_i(\gamma)(W_{ij}-R_{ij}) .
+  \label{eq:finite-level-25-rn-density}
+\end{equation}
+On path sets where \((\rho^T,q^T)\to(\rho,q)\), this expression converges
+to \(-I_{2.5}(\rho,q)\).  Consequently, for sufficiently small
+neighborhoods \(U\) of an admissible continuity point of \(I_{2.5}\),
+\[
+  \lim_{U\downarrow(\rho,q)}
+  \lim_{T\to\infty}
+  \frac1T\log
+  \mathbb P_W\bigl((\rho^T,q^T)\in U\bigr)
+  =
+  -I_{2.5}(\rho,q).
+\]
+\end{proposition}
+
+\begin{proof}
+The stationarity of \(\rho\) for \(R\) is exactly the conservation equation:
+\[
+  \rho_i\sum_{j\ne i}R_{ij}
+  =
+  \sum_{j\ne i}q_{ij}
+  =
+  \sum_{j\ne i}q_{ji}
+  =
+  \sum_{j\ne i}\rho_jR_{ji}.
+\]
+For a path with jump counts \(N_{ij}(T)\) and occupation times
+\(T_i=T\rho_i^T\), the ratio of the two continuous-time jump-process
+densities is
+\[
+  \log\frac{d\mathbb P_W}{d\mathbb P_R}
+  =
+  \sum_{i}\sum_{j\ne i}
+  N_{ij}(T)\log\frac{W_{ij}}{R_{ij}}
+  -
+  \sum_i T_i
+  \sum_{j\ne i}(W_{ij}-R_{ij}).
+\]
+Dividing by \(T\), substituting \(q^T_{ij}=N_{ij}(T)/T\), and then letting
+the empirical pair tend to the candidate pair gives, since
+\(R_{ij}=q_{ij}/\rho_i\),
+\[
+  \sum_{i,j\ne i}
+  q_{ij}\log\frac{\rho_iW_{ij}}{q_{ij}}
+  -
+  \sum_{i,j\ne i}
+  \rho_iW_{ij}
+  +
+  \sum_{i,j\ne i}q_{ij}
+  =
+  -I_{2.5}(\rho,q),
+\]
+which is the limiting value of \eqref{eq:finite-level-25-rn-density}.
+Under the auxiliary irreducible finite chain, the ergodic theorem gives
+\((\rho^T,q^T)\to(\rho,q)\) almost surely.  Hence the same identity gives
+the lower exponential bound for every sufficiently small neighborhood.
+
+For the matching upper bound, cover a compact closed set of admissible
+pairs by finitely many small neighborhoods and use the same
+Radon--Nikodym identity in each neighborhood with the corresponding
+auxiliary rates.  The boundary cases with some \(\rho_i=0\) or \(q_{ij}=0\)
+are obtained by replacing the pair by strictly positive admissible pairs on
+the same support and then taking the lower-semicontinuous limit of
+\eqref{eq:finite-level-25-rate-function}.  The finite state space is what
+makes this covering argument elementary; in continuum QFT a corresponding
+statement would require compactness and tightness estimates that are not
+contained in the finite calculation.
+\end{proof}
+
+Contracting over the empirical flow gives the level-\(2\) occupation cost
+\begin{equation}
+  I_2(\rho)
+  =
+  \inf_{\substack{q\ge0\\ \nabla\cdot q=0}}
+  I_{2.5}(\rho,q),
+  \label{eq:finite-level-2-contraction}
+\end{equation}
+where \(\nabla\cdot q=0\) denotes the conservation condition in
+\eqref{eq:finite-empirical-flow-constraints}.  For a two-state chain with
+rates \(W_{01}=a\), \(W_{10}=b\), conservation forces
+\(q_{01}=q_{10}=s\).  If \(\rho_0=p\) and \(\rho_1=1-p\), minimizing over
+\(s\) gives
+\begin{equation}
+  I_2(p)
+  =
+  \left(\sqrt{pa}-\sqrt{(1-p)b}\right)^2 .
+  \label{eq:two-state-level-2-cost}
+\end{equation}
+The minimum vanishes exactly at the stationary occupation
+\(p=b/(a+b)\).
+
+The tilted-generator formula is the Legendre side of the same finite
+construction.  The additive observable
+\eqref{eq:finite-additive-jump-observable} can be written as
+\[
+  \frac{A_T}{T}
+  =
+  \sum_i h_i\rho_i^T
+  +
+  \sum_{i,j\ne i}g_{ij}q_{ij}^T .
+\]
+Therefore the scaled cumulant generating function is equivalently
+\begin{equation}
+  \psi(\lambda)
+  =
+  \sup_{\rho,q}
+  \left[
+    \lambda
+    \left(
+      \sum_i h_i\rho_i
+      +
+      \sum_{i,j\ne i}g_{ij}q_{ij}
+    \right)
+    -
+    I_{2.5}(\rho,q)
+  \right],
+  \label{eq:tilted-generator-level-25-duality}
+\end{equation}
+with the supremum over admissible empirical pairs.  In finite dimension this
+variational formula is equivalent to the Perron eigenvalue statement for
+\(\mathsf L_\lambda\).  The equality is a useful diagnostic: if a continuum
+hydrodynamic or field-theoretic large-deviation claim does not identify the
+finite empirical pair whose contraction is being taken, then the limiting
+claim has not yet been mathematically formulated.
 
 \section{Weak-Coupling Open-System Limit}
 

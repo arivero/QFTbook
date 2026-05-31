@@ -16,7 +16,9 @@ The finite tilted-generator construction for additive jump observables now
 separates the exact microscopic Feynman--Kac identity from the additional
 analytic hypotheses needed for path large deviations, and records the finite
 matrix origin of the Gallavotti--Cohen symmetry for stationary entropy
-production.
+production.  The chapter now also defines empirical occupations and flows,
+derives the finite level-\(2.5\) relative-entropy cost by change of measure,
+and contracts it to the level-\(2\) occupation cost in a two-state example.
 
 ## Notation Inventory
 
@@ -47,6 +49,9 @@ production.
 - `sigma_ij`, `mathsf L_q^Sigma`, `Pi`: stationary entropy-production jump
   increment, entropy-production tilted generator, and diagonal stationary
   distribution matrix in the finite Gallavotti--Cohen similarity identity.
+- `rho_i^T`, `q_ij^T`, `I_2.5`, `I_2`: empirical occupation, empirical
+  jump flow, finite level-\(2.5\) empirical-flow cost, and contracted
+  occupation cost.
 - `H_S`, `H_E`, `S_a`, `E_a`: system/environment Hamiltonians and couplings.
 - `gamma_ab(omega)`: bath spectral matrix.
 - `S_a(omega)`: Bohr-frequency component of a system coupling operator.
@@ -118,24 +123,36 @@ production.
     \(\mathsf L_q^\Sigma=\Pi^{-1}(\mathsf L_{1-q}^\Sigma)^T\Pi\)
     implies the Gallavotti--Cohen spectral symmetry
     \(\psi_\Sigma(q)=\psi_\Sigma(1-q)\).
-15. In the weak-coupling Markovian limit, the bath spectral matrix
+15. Empirical occupations and flows satisfy finite boundary conservation,
+    and their finite level-\(2.5\) cost is
+    \[
+      I_{2.5}(\rho,q)=\sum_{i,j\ne i}
+      \left[q_{ij}\log(q_{ij}/\rho_iW_{ij})-q_{ij}+\rho_iW_{ij}\right],
+    \]
+    with conservation and support constraints.
+16. The level-\(2.5\) cost follows from the Radon--Nikodym density between
+    the original jump process and the auxiliary process
+    \(R_{ij}=q_{ij}/\rho_i\); contracting over conserved flows gives the
+    level-\(2\) occupation cost, including
+    \(I_2(p)=(\sqrt{pa}-\sqrt{(1-p)b})^2\) for a two-state chain.
+17. In the weak-coupling Markovian limit, the bath spectral matrix
    \(\gamma_{ab}(\omega)\) is positive by the positive-type/Bochner
    argument and yields the Davies/GKSL generator after the van Hove and
    secular limits.
-16. The GKSL form preserves trace, preserves Hermiticity, and generates a
+18. The GKSL form preserves trace, preserves Hermiticity, and generates a
    completely positive semigroup; the proof diagonalizes the positive bath
    spectral matrices and constructs the finite-time map by the
    Dyson-Phillips jump expansion.
-17. KMS bath spectral functions obey detailed balance; the chapter verifies
+19. KMS bath spectral functions obey detailed balance; the chapter verifies
    the sign and index order by spectral resolution and applies the result to
    the Gibbs stationary ratio for a two-level system.
-18. The quadratic Schwinger-Keldysh influence action has explicitly defined
+20. The quadratic Schwinger-Keldysh influence action has explicitly defined
    retarded and noise kernels; KMS relates them by fluctuation-dissipation.
-19. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
+21. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
    stationary-current computation with the stationary Gaussian
    equilibrium weight fixes \(D_n=\gamma\chi T\) and hence
    \(\langle\xi\xi\rangle=2\gamma\chi T\,\delta\).
-20. Continuum QFT constructions must specify the order of long-time,
+22. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
 
@@ -154,7 +171,9 @@ production.
   mass-action drift extracted from the normal symbol, the exponential
   test-function large-deviation Hamiltonian, the finite Feynman--Kac tilted
   generator for jump additives, and the finite-ring Gallavotti--Cohen
-  similarity identity for entropy production.
+  similarity identity for entropy production.  It also verifies the
+  empirical-flow level-\(2.5\) cost, its Radon--Nikodym sign, and the
+  two-state level-\(2\) contraction formula.
 
 ## Figure Ledger
 
@@ -180,3 +199,7 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   finite Perron-Frobenius spectral input from large-deviation proof
   hypotheses, and recorded the finite stationary entropy-production
   Gallavotti--Cohen similarity identity.
+- 2026-05-31 finite empirical-flow pass: added empirical occupation/flow
+  variables, finite boundary conservation, the level-\(2.5\) relative
+  entropy cost from an auxiliary-rate change of measure, its contraction to
+  the two-state occupation cost, and paired calculation checks.

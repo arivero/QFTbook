@@ -390,6 +390,68 @@ def check_tilted_jump_generator_and_gc_symmetry() -> None:
     assert entropy_rate > 0.0
 
 
+def check_empirical_flow_level25_cost() -> None:
+    clockwise_rate = 2.0
+    counterclockwise_rate = 0.5
+    rho = [1.0 / 3.0] * 3
+    flow = [[0.0 for _ in range(3)] for _ in range(3)]
+    rates = [[0.0 for _ in range(3)] for _ in range(3)]
+
+    for i in range(3):
+        flow[i][(i + 1) % 3] = 0.8
+        flow[i][(i - 1) % 3] = 0.3
+        rates[i][(i + 1) % 3] = clockwise_rate
+        rates[i][(i - 1) % 3] = counterclockwise_rate
+
+    for i in range(3):
+        outgoing = sum(flow[i][j] for j in range(3) if j != i)
+        incoming = sum(flow[j][i] for j in range(3) if j != i)
+        assert_close(f"empirical flow conservation at vertex {i}", outgoing, incoming)
+
+    cost = 0.0
+    auxiliary_rates = [[0.0 for _ in range(3)] for _ in range(3)]
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            auxiliary_rates[i][j] = flow[i][j] / rho[i]
+            mean_flow = rho[i] * rates[i][j]
+            cost += flow[i][j] * math.log(flow[i][j] / mean_flow) - flow[i][j] + mean_flow
+    assert cost > 0.0
+
+    rn_density = 0.0
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            rn_density += flow[i][j] * math.log(rates[i][j] / auxiliary_rates[i][j])
+            rn_density -= rho[i] * (rates[i][j] - auxiliary_rates[i][j])
+    assert_close("empirical-flow Radon-Nikodym cost sign", rn_density, -cost)
+
+    typical_cost = 0.0
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            typical_flow = rho[i] * rates[i][j]
+            typical_cost += typical_flow * math.log(typical_flow / (rho[i] * rates[i][j]))
+            typical_cost += -typical_flow + rho[i] * rates[i][j]
+    assert_close("typical empirical-flow cost", typical_cost, 0.0)
+
+    a, b = 1.7, 0.4
+    p = 0.62
+    minimizing_flow = math.sqrt(p * (1.0 - p) * a * b)
+    direct_two_state = minimizing_flow * math.log(minimizing_flow / (p * a))
+    direct_two_state += -minimizing_flow + p * a
+    direct_two_state += minimizing_flow * math.log(minimizing_flow / ((1.0 - p) * b))
+    direct_two_state += -minimizing_flow + (1.0 - p) * b
+    contracted = (math.sqrt(p * a) - math.sqrt((1.0 - p) * b)) ** 2
+    assert_close("two-state level-2 empirical-measure contraction", direct_two_state, contracted)
+    stationary_p = b / (a + b)
+    stationary_cost = (math.sqrt(stationary_p * a) - math.sqrt((1.0 - stationary_p) * b)) ** 2
+    assert_close("two-state stationary level-2 cost", stationary_cost, 0.0)
+
+
 def check_two_level_kms_stationary_ratio() -> None:
     beta = 1.4
     gap = 0.9
@@ -434,6 +496,7 @@ def main() -> None:
     check_doi_peliti_two_species_generator()
     check_doi_peliti_symbol_and_large_deviation_hamiltonian()
     check_tilted_jump_generator_and_gc_symmetry()
+    check_empirical_flow_level25_cost()
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()
