@@ -301,6 +301,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Gauge invariance of the dipole matrix element|"
     r"Detector positivity from ANEC|"
     r"Displacement criterion|"
+    r"Boundary cocycle cancellation|"
     r"Finite unitarity model for Glauber cancellation|"
     r"Conformal covariance of the transverse kernel|"
     r"Stress-tensor insertion from a small metric perturbation|"

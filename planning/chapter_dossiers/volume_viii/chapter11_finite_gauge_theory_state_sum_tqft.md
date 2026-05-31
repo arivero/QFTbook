@@ -138,3 +138,9 @@ bordism-functoriality chapter.
   subgroup-boundary intervals, derived the normalized convolution from the
   intermediate `H_1` gauge volume, and checked associativity/unit/structure
   constants in exact finite examples.
+- 2026-05-31 issue #691 continuation: demoted the relative
+  Dijkgraaf-Witten boundary cocycle cancellation from proposition/proof form
+  to paragraph-level finite state-sum verification.  The exact local ratios,
+  the `delta beta=i^* omega` cancellation, and the obstruction class remain
+  explicit; theorem-family rank is reserved for deeper state-sum/gluing
+  machinery rather than this local cochain cancellation check.
