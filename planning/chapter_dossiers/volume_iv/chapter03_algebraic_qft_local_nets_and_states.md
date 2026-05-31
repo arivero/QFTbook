@@ -38,6 +38,11 @@ functorial QFT.
   observable net for a finite internal symmetry group \(\Gamma\).
 - `\Theta_{\beta,\mathcal O}`: energy-damped local phase-space map
   \(A\mapsto e^{-\beta H}A\Omega\).
+- `\mu_{\psi,A}(\Delta)=\langle\psi,E(\Delta)A\Omega\rangle`: finite
+  spectral measure used in the Reeh--Schlieder proof.
+- `F_A(a)=\langle\psi,U(a)A\Omega\rangle`: positive-energy translation
+  matrix coefficient whose spectral tube continuation lies in
+  \(M-\ii V_+\).
 - `\Loc`, `\Alg`: source and target categories for locally covariant QFT.
 
 ## Claim Ledger
@@ -70,9 +75,14 @@ functorial QFT.
   algebras; strong commutation gives locality; finite internal fixed points
   give observables; nuclearity, split inclusions, Haag duality, and DHR
   reconstruction require separate estimates or category constructions.
+- Proves Lemma `lem:positive-energy-tube-uniqueness`, the local analytic
+  input in Reeh--Schlieder: a finite positive-energy spectral measure gives a
+  matrix coefficient holomorphic in \(M-\ii V_+\), and vanishing of its real
+  boundary value on an open set propagates to the whole real edge by the
+  distributional edge-of-the-wedge theorem.
 - Proves the Reeh--Schlieder theorem for a weakly additive vacuum net from
-  the spectral condition, translated analyticity, weak additivity, and vacuum
-  cyclicity.
+  the spectral condition, the corrected \(M-\ii V_+\) tube continuation,
+  weak additivity, and vacuum cyclicity.
 - Defines the locally covariant \(C^*\)-algebraic QFT functor and separates
   functorial covariance from the existence problem for a concrete model.
 
@@ -108,3 +118,8 @@ functorial QFT.
   model with additivity and the time-slice axiom proved directly from
   compact-support partitions of unity and Green-hyperbolic propagation rather
   than inferred from unbounded Wightman fields.
+- 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
+  the proof and figure from a misleading \(M+\ii V_+\) convention to the
+  mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
+  positive-energy boundary-uniqueness lemma instead of citing the analytic
+  propagation step in one sentence.
