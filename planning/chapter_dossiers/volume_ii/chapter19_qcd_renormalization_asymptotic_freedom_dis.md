@@ -384,6 +384,14 @@ The chapter must define and derive:
      \(\Gamma_q^{\rm EEC}=\frac32C_F\),
      \(\Gamma_{g\to gg}^{\rm EEC}=\frac{14}{5}C_A\), and
      \(\Gamma_{g\to q\bar q}^{\rm EEC}=\frac15T_F\) per flavor.
+19bb. The small-angle light-ray OPE is now specified as a renormalized datum:
+      a gauge-invariant light-ray operator space, operator coordinates,
+      ultraviolet and rapidity subtraction schemes, mixing kernels, and
+      coefficient distributions in \(\rho=1-\cos\chi\).  The separated real
+      coefficient \(\Gamma_a^{\rm EEC}/\rho\) is promoted to a plus
+      distribution plus a scheme-dependent \(\delta(\rho)\) contact term only
+      after virtual terms and operator renormalization are declared in the
+      same scheme.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -392,6 +400,13 @@ The chapter must define and derive:
      \(b_{\rm F}=2e^{-\gamma_E}\), and
      \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\) in the trace-delta
      convention.
+19d. With column-vector light-ray operators
+     \(\mu\,d\mathbb O_A/d\mu=-\gamma_{AB}\otimes\mathbb O_B\), the
+     coefficient distributions obey
+     \(\mu\,dC_A/d\mu=C_B\otimes\gamma_{BA}\).  The energy-sum functional is
+     a left null vector of the mixing kernels in a detector-normalized scheme,
+     so RG evolution preserves the EEC zeroth moment while the declared
+     contact convention fixes how weight is displayed at \(\rho=0\).
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -552,6 +567,11 @@ The chapter must define and derive:
   leading Sudakov factor for the back-to-back EEC in impact-parameter space,
   separated its scope from the full endpoint theorem, and added
   `calculation-checks/energy_correlator_sudakov_checks.py`.
+- 2026-05-30 issue #519 light-ray OPE bookkeeping pass: added the
+  renormalized small-angle EEC endpoint datum, coefficient/operator RG
+  consistency derivation, plus-distribution/contact-term convention, moment
+  functional constraint, and
+  `calculation-checks/energy_correlator_light_ray_ope_checks.py`.
 - 2026-05-29 continuing anti-wrapper audit: demoted the eventwise EEC
   sum-rule proposition to detector-observable prose.  The identities remain
   exact and nonperturbative, but their derivation is energy-momentum

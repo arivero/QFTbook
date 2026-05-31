@@ -332,6 +332,12 @@ Current checks:
   conservation, cancellation of real splitting-kernel endpoint poles by the
   ordered EEC weight \(2x(1-x)\), and the resolved real-kernel integrals
   \(\frac32 C_F\), \(\frac{14}{5}C_A\), and \(\frac15T_F\).
+- `energy_correlator_light_ray_ope_checks.py`: finite algebraic checks for
+  the renormalized small-angle EEC light-ray OPE bookkeeping, including the
+  plus distribution on \(0<\rho<\rho_0\), cancellation of the endpoint cutoff
+  logarithm against the contact subtraction, the finite \(\delta(\rho)\)
+  moment, the row/column anomalous-dimension sign convention, and the
+  energy-sum left-null-vector condition.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for

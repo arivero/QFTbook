@@ -7976,6 +7976,148 @@ The exact observable remains the detector distribution
 \eqref{eq:qcd-eec-definition}.
 \end{remark}
 
+\paragraph{Renormalized small-angle light-ray OPE datum.}
+The symbolic matching formula \eqref{eq:qcd-eec-light-ray-ope-form} becomes
+a mathematical statement only after the operator coordinates, endpoint
+variable, regulator, and contact convention have been declared.  Let
+\[
+  \rho:=1-\zeta=1-\cos\chi,\qquad
+  \rho\simeq \frac{\theta^2}{2}
+\]
+in the small-angle region.  A renormalized QCD light-ray OPE datum for this
+endpoint consists of the following ingredients:
+\[
+  \mathcal D_{\rm EEC}^{\rm coll}
+  =
+  \bigl(
+    \mathfrak L_{\mathbf n},\{\mathbb O_A\},
+    \mathcal S_{\rm UV},\mathcal S_{\rm rap},
+    \gamma_{AB},\eta_{AB},C_A
+  \bigr).
+\]
+Here \(\mathfrak L_{\mathbf n}\) is a linear space of gauge-invariant
+renormalized light-ray operator-valued distributions in the null direction
+specified by \(\mathbf n\).  The indexed family
+\(\{\mathbb O_A(\mathbf n;\mu,\nu)\}\) is a chosen coordinate basis of this
+space, including the leading twist energy-flow moments and any operators
+that mix with them under the declared symmetries.  The symbols
+\(\mathcal S_{\rm UV}\) and \(\mathcal S_{\rm rap}\) denote, respectively,
+the ultraviolet subtraction scheme and, when a lightlike Wilson-line or
+rapidity singularity is present, the rapidity subtraction scheme.  The scale
+\(\mu\) is the ultraviolet renormalization scale and \(\nu\) is the rapidity
+scale; if a scheme has no separate rapidity regulator, all \(\nu\)-dependent
+objects below are omitted.  The kernels \(\gamma_{AB}\) and \(\eta_{AB}\)
+are distributional mixing kernels in whatever momentum-fraction, Mellin, or
+angular variables label the basis.  The coefficient \(C_A(\rho,Q,\mu,\nu)\)
+acts on smooth endpoint test functions in \(\rho\), with its separated-angle
+density, endpoint subtractions, and \(\delta(\rho)\) contact coefficient all
+specified by the same subtraction scheme.
+
+With column-vector operator convention, the renormalization equations are
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}\mathbb O_A
+  =
+  -\sum_B \gamma_{AB}\otimes\mathbb O_B,\qquad
+  \nu\frac{\dd}{\dd\nu}\mathbb O_A
+  =
+  -\sum_B \eta_{AB}\otimes\mathbb O_B ,
+  \label{eq:qcd-eec-light-ray-operator-rg}
+\end{equation}
+where \(\otimes\) denotes the convolution product in the operator labels and
+matrix multiplication in the discrete labels.  Since the product of
+detectors is a physical operator-valued distribution after the detector
+observable is normalized, the endpoint expansion
+\[
+  \widehat{\mathcal E}(\mathbf n_1)\widehat{\mathcal E}(\mathbf n_2)
+  \simeq
+  \sum_A C_A\otimes \mathbb O_A
+\]
+must be independent of \(\mu\) and of \(\nu\).  Differentiating this
+identity and using \eqref{eq:qcd-eec-light-ray-operator-rg} gives the
+coefficient equations
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}C_A
+  =
+  \sum_B C_B\otimes\gamma_{BA},\qquad
+  \nu\frac{\dd}{\dd\nu}C_A
+  =
+  \sum_B C_B\otimes\eta_{BA}.
+  \label{eq:qcd-eec-light-ray-coefficient-rg}
+\end{equation}
+This sign and transpose convention fixes the cancellation between the
+anomalous dimension of the coefficient row and the anomalous dimension of the
+operator column.  In a Mellin basis where the convolution diagonalizes,
+\eqref{eq:qcd-eec-light-ray-coefficient-rg} reduces to ordinary matrix
+multiplication in the remaining operator indices.
+
+The separated-angle real-emission coefficient in
+Lemma~\ref{lem:qcd-eec-tree-collinear-coefficient} supplies the positive
+density on \(\rho>0\).  The renormalized endpoint coefficient also contains
+endpoint subtractions and coincident-detector contact data.  To state this
+coefficient, fix a small but finite endpoint interval
+\(0<\rho<\rho_0\).  The plus distribution on this interval is defined by
+\begin{equation}
+  \int_0^{\rho_0}
+  \left[\frac1\rho\right]_{\rho_0,+}\varphi(\rho)\,\dd\rho
+  :=
+  \int_0^{\rho_0}
+  \frac{\varphi(\rho)-\varphi(0)}{\rho}\,\dd\rho
+  \label{eq:qcd-eec-rho-plus-definition}
+\end{equation}
+for every smooth test function \(\varphi\) on \([0,\rho_0]\).  Therefore the
+first singular real coefficient
+\[
+  \frac{\alpha_s}{2\pi}\,
+  \frac{\Gamma_a^{\rm EEC}}{\rho}
+\]
+is promoted, in a renormalized endpoint coefficient, to the distributional
+form
+\begin{equation}
+  C_a^{(1)}(\rho)
+  =
+  \frac{\alpha_s}{2\pi}\,
+  \Gamma_a^{\rm EEC}
+  \left[\frac1\rho\right]_{\rho_0,+}
+  +
+  K_a^{(1)}(\rho_0,\mu,\nu)\,\delta(\rho)
+  +
+  C_{a,{\rm reg}}^{(1)}(\rho).
+  \label{eq:qcd-eec-renormalized-endpoint-coefficient}
+\end{equation}
+The constant \(K_a^{(1)}\) and the regular distribution
+\(C_{a,{\rm reg}}^{(1)}\) are scheme- and matching-dependent.  The plus
+prescription carries the coincident-detector subtraction that makes the
+endpoint distribution act on test functions with finite endpoint limits.  The
+remaining finite \(\delta(\rho)\) coefficient is fixed after the virtual
+terms, operator renormalization, and matching convention are specified in the
+same scheme.  Thus the real coefficient \(\Gamma_a^{\rm EEC}\) is a
+necessary local input to the small-angle OPE; the anomalous dimensions and
+the full coefficient of a renormalized light-ray operator are determined by
+the complete scheme-dependent endpoint datum.
+
+The eventwise moment identity
+\eqref{eq:eventwise-eec-first-sum-rules} imposes a useful check on this
+bookkeeping.  Let \(M_A\) be the energy-sum functional on the chosen
+light-ray operator basis, so that \(M_A\mathbb O_A\) extracts the component
+that contributes to the zeroth EEC moment.  Conservation of total energy says
+that this functional has zero anomalous dimension:
+\begin{equation}
+  \sum_A M_A\,\gamma_{AB}=0,
+  \qquad
+  \sum_A M_A\,\eta_{AB}=0
+  \label{eq:qcd-eec-moment-functional-rg-invariance}
+\end{equation}
+in any scheme that preserves the detector normalization.  Combining
+\eqref{eq:qcd-eec-light-ray-coefficient-rg} with
+\eqref{eq:qcd-eec-moment-functional-rg-invariance} shows that the RG
+evolution cannot change the zeroth moment; only the declared redistribution
+between separated-angle weight and the \(\delta(\rho)\) contact term can
+change the displayed representative.  This is why every perturbative EEC
+formula must specify whether it includes the coincident-detector contact
+term.  Without that convention, even a formally correct endpoint singularity
+does not define the same distribution as the nonperturbative observable
+\eqref{eq:qcd-eec-definition}.
+
 \begin{controlledapproximation}[Perturbative EEC endpoint calculations]
 \label{ca:qcd-eec-endpoint-calculations}
 A perturbative endpoint calculation of the EEC consists of a declared
