@@ -54,7 +54,7 @@ resonances.
   language and from global asymptotic completeness.
 - Proves the Gauss-law obstruction: bounded local gauge-invariant observables
   cannot create charged vectors from a neutral vacuum.
-- Proves the stronger almost-local obstruction: an operator almost local with
+- Derives the stronger almost-local obstruction: an operator almost local with
   respect to the gauge-invariant observable net still creates a neutral vector
   from the vacuum, provided the Gauss-law charge is closed on the local
   domain.  Thus a nonzero charged creator cannot be hidden inside the
@@ -169,7 +169,13 @@ resonances.
   cones by comparing \(\delta |t|-2R\) with \(2R\), and absorbs the polynomial
   near-packet \(L^1\)-growth by the arbitrary-power almost-local approximation
   estimate.
-- 2026-05-31: added the no-almost-local-observable-coordinate proposition for
+- 2026-05-31: added the no-almost-local-observable-coordinate consequence for
   nonzero Gauss charge and rewrote the charged-sector missing-estimate
   discussion so the open theorem is localized in the exchange and modified
   Cook estimates, not in vague claims about Wilson-line nonlocality.
+- 2026-05-31 issue #691 continuation: demoted that almost-local Gauss-law
+  consequence from proposition/proof form to paragraph-level closed-operator
+  prose.  The local Gauss-law obstruction theorem remains the substantive
+  theorem-level result; the almost-local extension is the graph-closedness
+  passage needed to identify the exact failure of the ordinary Haag--Ruelle
+  localization hypothesis for unscreened charges.
