@@ -1133,8 +1133,10 @@ Current checks:
   the stationary finite-ring Gallavotti--Cohen similarity identity, the
   empirical-flow level-\(2.5\) cost and two-state level-\(2\) contraction,
   GKSL trace preservation, KMS detailed balance for a two-level system,
-  Ornstein-Uhlenbeck noise normalization, and positivity of a quadratic noise
-  kernel.
+  Ornstein-Uhlenbeck noise normalization, positivity of a quadratic noise
+  kernel, and the finite Schwinger--Keldysh Gaussian noise bridge from the
+  Hubbard--Stratonovich characteristic function to
+  \(K^{-1}NK^{-T}\) response covariance.
 - `microlocal_spectrum_checks.py`: finite convention checks for the
   microlocal spectrum chapter, including the mostly-plus future-covector
   convention, the Klein-Gordon Hamilton-flow sign, the two-point graph

@@ -485,6 +485,54 @@ def check_positive_noise_kernel() -> None:
     assert quadratic > 0.0
 
 
+def check_gaussian_influence_noise_bridge() -> None:
+    noise = [[1.3, 0.2], [0.2, 0.7]]
+    response = [0.4, -0.6]
+    equation = [0.1, -0.3]
+    det_noise = noise[0][0] * noise[1][1] - noise[0][1] * noise[1][0]
+    inverse_noise = [
+        [noise[1][1] / det_noise, -noise[0][1] / det_noise],
+        [-noise[1][0] / det_noise, noise[0][0] / det_noise],
+    ]
+
+    quadratic_response = sum(response[i] * noise[i][j] * response[j] for i in range(2) for j in range(2))
+    response_dot_equation = sum(response[i] * equation[i] for i in range(2))
+    sk_weight = complex(math.cos(response_dot_equation), math.sin(response_dot_equation)) * math.exp(
+        -0.5 * quadratic_response
+    )
+
+    det_inverse_noise = inverse_noise[0][0] * inverse_noise[1][1] - inverse_noise[0][1] * inverse_noise[1][0]
+    normalized_gaussian_integral = (
+        (2.0 * math.pi)
+        / math.sqrt(det_inverse_noise)
+        / math.sqrt((2.0 * math.pi) ** 2 * det_noise)
+        * math.exp(-0.5 * quadratic_response)
+    )
+    hs_weight = complex(math.cos(response_dot_equation), math.sin(response_dot_equation)) * normalized_gaussian_integral
+    assert_close("finite SK Hubbard-Stratonovich characteristic function", hs_weight, sk_weight)
+
+    retarded = [[1.0, -0.3], [0.2, 1.4]]
+    source = [0.5, -0.2]
+    det_retarded = retarded[0][0] * retarded[1][1] - retarded[0][1] * retarded[1][0]
+    inverse_retarded = [
+        [retarded[1][1] / det_retarded, -retarded[0][1] / det_retarded],
+        [-retarded[1][0] / det_retarded, retarded[0][0] / det_retarded],
+    ]
+    mean = [sum(inverse_retarded[i][j] * source[j] for j in range(2)) for i in range(2)]
+    for i in range(2):
+        assert_close(
+            f"linear SK mean equation component {i}",
+            sum(retarded[i][j] * mean[j] for j in range(2)),
+            source[i],
+        )
+
+    covariance = matmul(matmul(inverse_retarded, noise), dagger(inverse_retarded))
+    reconstructed_noise = matmul(matmul(retarded, covariance), dagger(retarded))
+    for i in range(2):
+        for j in range(2):
+            assert_close(f"linear SK covariance reconstruction {i}{j}", reconstructed_noise[i][j], noise[i][j])
+
+
 def main() -> None:
     check_reservoir_entropy_production()
     check_gksl_trace_preservation()
@@ -500,6 +548,7 @@ def main() -> None:
     check_two_level_kms_stationary_ratio()
     check_ou_einstein_relation()
     check_positive_noise_kernel()
+    check_gaussian_influence_noise_bridge()
     print("All nonequilibrium open-system checks passed.")
 
 

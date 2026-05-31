@@ -205,6 +205,17 @@ They must be introduced from finite path measures or finite Markov generators,
 then scaled; no formal response-field path integral should appear as a
 definition without its regulator.
 
+Absorption status: Volume X, Chapter 10 now derives finite-step MSRJD
+variables from Gaussian transition kernels, derives Doi--Peliti variables from
+finite reaction-network generators, and adds the finite
+Schwinger--Keldysh/MSRJD Gaussian bridge: the quadratic SK influence weight is
+rewritten by an explicit Hubbard--Stratonovich characteristic-function
+identity, the response variable imposes \(E(\phi_r)+\xi=0\), and a linear
+retarded equation gives covariance \(K^{-1}NK^{-T}\).  Remaining work in this
+track is the continuum renormalization of nonequilibrium stochastic field
+theories and a careful treatment of dynamic critical models with conserved
+and nonconserved slow variables.
+
 ### Linear Response, Kubo, Mori--Zwanzig, Hydrodynamic Limits, And GHD
 
 Statmech source: Volume IV Chapter 32.
@@ -446,10 +457,12 @@ nonrelativistic/statistical-physics volume:
 
 ## Suggested Missing QFT Development Backlog
 
-1. **Volume X nonequilibrium field theory expansion.**  Add a systematic
-   finite-path-measure development of MSRJD, Doi--Peliti, fluctuation
-   relations, entropy production, and large deviations, tied to
-   Schwinger--Keldysh only after the map is derived.
+1. **Volume X nonequilibrium field theory expansion.**  The finite
+   path-measure layer now covers MSRJD, Doi--Peliti, fluctuation relations,
+   entropy production, empirical-flow large deviations, and the finite
+   Schwinger--Keldysh Gaussian noise bridge.  Remaining work is the
+   continuum renormalization and dynamic-critical-model layer, including
+   conserved versus nonconserved slow variables and theorem-status limits.
 2. **Volume X hydrodynamic theorem-status expansion.**  Add Mori--Zwanzig,
    Green--Kubo order of limits, hydrodynamic-limit status, kinetic closure
    boundaries, and generalized hydrodynamics as a bridge to the integrability

@@ -14,7 +14,10 @@ fluctuation relations as path-measure Radon--Nikodym identities, and
   Doi--Peliti map explicitly framed as the finite-regulator bridge from
   classical stochastic occupation dynamics to local non-Hermitian QFT.
   Open-system dynamics is then treated as a weak-coupling limit of larger
-  closed systems.
+  closed systems.  The Schwinger-Keldysh influence-functional section now
+  derives the finite Gaussian bridge to MSRJD variables and stochastic
+  equations by a Hubbard-Stratonovich characteristic-function identity,
+  rather than leaving the Langevin interpretation as formal terminology.
 The finite tilted-generator construction for additive jump observables now
 separates the exact microscopic Feynman--Kac identity from the additional
 analytic hypotheses needed for path large deviations, and records the finite
@@ -65,6 +68,8 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
   finite-dimensional GKSL proof.
 - `S_IF`, `phi_r`, `phi_a`, `D_R`, `N`: influence functional, Keldysh
   variables, retarded kernel, and noise kernel.
+- `E_A(phi_r)`, `K`, `J`, `xi_A`: finite retarded equation, linear retarded
+  matrix, source, and Gaussian noise vector in the SK/MSRJD bridge.
 - `gamma`, `chi`, `D_n`: relaxation rate, susceptibility, and homogeneous
   Ornstein-Uhlenbeck noise strength.
 
@@ -154,14 +159,19 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
    the Gibbs stationary ratio for a two-level system.
 20. The quadratic Schwinger-Keldysh influence action has explicitly defined
    retarded and noise kernels; KMS relates them by fluctuation-dissipation.
-21. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
+21. At finite regulator, the Gaussian SK weight
+   \(\exp(i\phi_aE-\phi_aN\phi_a/2)\) is exactly the characteristic function
+   of a real Gaussian noise vector with covariance \(N\).  Integrating the
+   response variable imposes \(E(\phi_r)+\xi=0\), and for linear retarded
+   \(E=K\phi_r-J\) the induced covariance is \(K^{-1}NK^{-T}\).
+22. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
    stationary-current computation with the stationary Gaussian
    equilibrium weight fixes \(D_n=\gamma\chi T\) and hence
    \(\langle\xi\xi\rangle=2\gamma\chi T\,\delta\).
-22. Continuum QFT constructions must specify the order of long-time,
+23. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
-23. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
+24. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
     stochastic fields from integer-occupation jump systems, and defines
     nonequilibrium scaling classes operationally by common continuum
     fixed-point data, relevant perturbations, and scaling correlation/response
@@ -184,7 +194,9 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
   generator for jump additives, and the finite-ring Gallavotti--Cohen
   similarity identity for entropy production.  It also verifies the
   empirical-flow level-\(2.5\) cost, its Radon--Nikodym sign, and the
-  two-state level-\(2\) contraction formula.
+  two-state level-\(2\) contraction formula.  It also checks the finite
+  Schwinger-Keldysh Gaussian noise bridge and reconstructs the response-field
+  covariance \(K^{-1}NK^{-T}\).
 
 ## Figure Ledger
 
@@ -225,3 +237,7 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   variables, finite boundary conservation, the level-\(2.5\) relative
   entropy cost from an auxiliary-rate change of measure, its contraction to
   the two-state occupation cost, and paired calculation checks.
+- 2026-05-31 finite SK/MSRJD bridge pass: expanded the influence-functional
+  section by deriving the finite Gaussian noise representation, the response
+  constraint \(E+\xi=0\), the degenerate-noise quotient convention, and the
+  linear covariance \(K^{-1}NK^{-T}\), with paired calculation checks.

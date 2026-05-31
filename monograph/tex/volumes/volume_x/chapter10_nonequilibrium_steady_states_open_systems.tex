@@ -1515,6 +1515,77 @@ environment is KMS, \(N\) and the anti-Hermitian part of \(D_R\) obey the
 fluctuation--dissipation relation of
 Chapter~\ref{ch:thermal-spectral-kubo-transport}.
 
+\paragraph{Finite Gaussian bridge to MSRJD.}
+The relation between the Schwinger--Keldysh influence functional and a
+classical stochastic equation is a finite-regulator Gaussian identity, not a
+formal analogy.  Let \(A,B=1,\ldots,m\) label a finite collection of
+regulated time, space, and internal indices, and let
+\[
+  E_A(\phi_r)=0
+\]
+be the deterministic retarded equation produced by the real part of the
+closed-time-path effective action.  At quadratic order in the difference
+field, the finite effective weight has the form
+\begin{equation}
+  \exp\!\left[
+    \ii \phi_a^A E_A(\phi_r)
+    -\frac12\phi_a^A N_{AB}\phi_a^B
+  \right],
+  \qquad N=N^T\ge0 .
+  \label{eq:finite-sk-gaussian-response-weight}
+\end{equation}
+If \(N>0\), the second factor is the characteristic function of a real
+Gaussian random vector \(\xi_A\) with covariance \(N_{AB}\):
+\begin{equation}
+  \exp\!\left[-\frac12\phi_a^A N_{AB}\phi_a^B\right]
+  =
+  \frac{1}{\sqrt{(2\pi)^m\det N}}
+  \int_{\mathbb R^m} d^m\xi\,
+  \exp\!\left[
+    -\frac12\xi_A(N^{-1})^{AB}\xi_B
+    +\ii\phi_a^A\xi_A
+  \right].
+  \label{eq:finite-sk-hubbard-stratonovich-noise}
+\end{equation}
+Substituting \eqref{eq:finite-sk-hubbard-stratonovich-noise} into
+\eqref{eq:finite-sk-gaussian-response-weight} and integrating over
+\(\phi_a\) gives the finite constraint
+\begin{equation}
+  E_A(\phi_r)+\xi_A=0 .
+  \label{eq:finite-sk-stochastic-equation}
+\end{equation}
+Equivalently one may replace \(\xi\) by \(-\xi\); the covariance is unchanged.
+Thus the SK \(a\)-field is the same finite response variable as the Fourier
+dual \(\hat x\) in \eqref{eq:finite-msrjd-identity}, and the imaginary
+quadratic \(a\)-field kernel is the covariance of the induced noise.  If
+\(N\) has null directions, the same statement is made on the quotient by
+\(\ker N\), while the null components of \(\phi_a\) impose exact deterministic
+constraints.  This is the finite form appropriate for conserved densities:
+the noise covariance can be degenerate because exact conservation forbids
+noise in the spatially constant charge mode.
+
+For a linear equation
+\[
+  E_A(\phi_r)=K_{AB}\phi_r^B-J_A
+\]
+with invertible retarded matrix \(K\), the induced Gaussian law for
+\(\phi_r\) has mean \(K^{-1}J\) and covariance
+\begin{equation}
+  \left\langle
+    (\phi_r^A-\langle\phi_r^A\rangle)
+    (\phi_r^B-\langle\phi_r^B\rangle)
+  \right\rangle
+  =
+  (K^{-1})^{AC}N_{CD}(K^{-T})^{DB}.
+  \label{eq:finite-sk-linear-noise-covariance}
+\end{equation}
+This formula is the finite-regulator source of the Langevin covariance in
+hydrodynamic effective theory.  It also fixes the order of logic: a Markovian
+white-noise Langevin equation is obtained only after the environment
+correlator has been approximated by a local kernel in the chosen scaling
+limit.  Before that limit, \(N\) is a nonlocal finite covariance kernel and
+\eqref{eq:finite-sk-stochastic-equation} is a colored-noise equation.
+
 \section{Hydrodynamic Open Systems}
 
 Consider a single approximately conserved density \(n(t,\mathbf x)\) whose
