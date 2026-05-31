@@ -750,6 +750,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Scheme equivalence for matched physical observables"
     r"|Classical .*N_f=2.*SQCD quotient"
     r"|Algebra of the .*N_f=2.*quantum deformation"
+    r"|Pointed Walker--Wang boundary mechanism"
     r")\b",
     re.IGNORECASE,
 )

@@ -399,51 +399,57 @@ The radical, or transparent subgroup, is
 The pointed input is nondegenerate when \(\operatorname{Rad}(A,b)=0\).
 \end{definition}
 
-\begin{theorem}[Pointed Walker--Wang boundary mechanism]
-\label{thm:pointed-walker-wang-boundary-mechanism}
-Consider the pointed Walker--Wang lattice mechanism whose string labels are
-the finite abelian group \(A\), whose local fusion is the group law of \(A\),
-and whose plaquette recoupling phases are the monodromies
-\(\exp(2\pi\ii b(a,x))\) determined by
-Definition~\ref{def:pointed-braided-radical}.  A bulk line labelled by
-\(a\in A\) is deconfined precisely when
-\[
-  a\in\operatorname{Rad}(A,b).
-\]
-If \(b\) is nondegenerate, the only deconfined bulk line is the vacuum line.
-On a boundary where strings are allowed to end, the boundary line labels still
-form the pointed braided category \((A,q)\): their fusion is addition in
-\(A\), their spins are \(\exp(2\pi\ii q(a))\), and their double-braiding
-phases are \(\exp(2\pi\ii b(a,x))\).
-\end{theorem}
-
-\begin{proof}
-In the pointed model, every local string-net move reduces to two pieces of
-finite algebra: addition of labels in \(A\), and the monodromy phase acquired
-when one labelled string is moved through another.  Let a candidate bulk line
-carry label \(a\).  Moving this line across a plaquette operator whose
-fluctuating loop has label \(x\) multiplies the state by
-\[
+\begin{construction}[Pointed Walker--Wang boundary mechanism]
+\label{cons:pointed-walker-wang-boundary-mechanism}
+Fix the pointed braided finite input of
+Definition~\ref{def:pointed-braided-radical}.  The finite Walker--Wang
+mechanism used here is the following algebraic lattice model.  Oriented edge
+labels take values in \(A\).  Vertex terms enforce the group-law fusion
+constraint, and a plaquette move inserts a closed loop of label \(x\in A\) and
+recouples it through the existing labels.  When a candidate line of label
+\(a\) crosses that loop, the local move multiplies the state by the
+double-braiding phase
+\begin{equation}
   M(a,x)=\exp(2\pi\ii b(a,x)).
-\]
-For the line to be deconfined, its insertion must commute with every local
-plaquette recoupling away from its endpoints; otherwise a displaced segment
-leaves a detectable string of plaquette violations, which is the lattice
-Hamiltonian meaning of confinement.  Thus deconfinement is equivalent to
-\(M(a,x)=1\) for every \(x\in A\), equivalently
-\(b(a,x)=0\) in \(\mathbb Q/\mathbb Z\) for every \(x\).  This is exactly
-\(a\in\operatorname{Rad}(A,b)\).  If \(b\) is nondegenerate, the radical is
-zero, so only the vacuum label is deconfined in the bulk.
+  \label{eq:pointed-ww-crossing-phase}
+\end{equation}
+In this finite mechanism a bulk line label \(a\) is called deconfined when its
+line insertion commutes with every plaquette recoupling away from its endpoints;
+equivalently, translating a segment of the line through the bulk leaves no
+string of plaquette violations.  The construction therefore gives the finite
+criterion
+\begin{equation}
+  a\hbox{ is deconfined}
+  \quad\Longleftrightarrow\quad
+  M(a,x)=1\quad\hbox{for every }x\in A
+  \quad\Longleftrightarrow\quad
+  a\in\operatorname{Rad}(A,b).
+  \label{eq:pointed-ww-radical-criterion}
+\end{equation}
+If \(b\) is nondegenerate, this finite algebraic model has no nontrivial
+deconfined bulk line.  On a boundary where strings are allowed to end, the
+endpoint labels still carry the pointed braided category \((A,q)\): fusion is
+addition in \(A\), spins are \(\exp(2\pi\ii q(a))\), and double braiding is
+\(\exp(2\pi\ii b(a,x))\).
+\end{construction}
 
-At a boundary, the plaquette relation that would continue the detection
-surface outside the material is absent.  A string can end on the boundary
-without creating a forbidden bulk endpoint.  Fusion of boundary endpoints is
-therefore the same group law \(a\otimes x=a+x\), and the same local crossing
-calculation gives the boundary spin and double-braiding phases encoded by
-\(q\) and \(b\).  The nontrivial braided category is consequently a boundary
-topological order, while the four-dimensional bulk line spectrum is the
-radical.
-\end{proof}
+\paragraph{Verification of the finite criterion.}
+The vertex constraint only uses the group law of \(A\), so a closed plaquette
+loop can be slid through a candidate line one elementary crossing at a time.
+Each crossing contributes the phase
+\eqref{eq:pointed-ww-crossing-phase}.  If \(M(a,x)\ne1\) for some \(x\), the
+plaquette term with loop label \(x\) detects the line segment; moving the
+segment changes the local plaquette eigenvalue along its path, which is the
+finite-lattice meaning of confinement in this mechanism.  If \(M(a,x)=1\) for
+all \(x\), all plaquette recouplings away from the endpoints commute with the
+line insertion, so the energy cost is localized at the endpoints and the line
+is deconfined.  The equality \(M(a,x)=1\) for every \(x\) is precisely
+\(b(a,x)=0\) in \(\mathbb Q/\mathbb Z\) for every \(x\), hence
+\eqref{eq:pointed-ww-radical-criterion}.  A boundary removes the plaquette
+relation that would continue the detection surface outside the material, so a
+string may terminate there; the same local crossing calculation records the
+boundary spin and double-braiding data.  Thus the finite mechanism separates a
+radical bulk spectrum from a boundary pointed braided category.
 
 \begin{example}[Toric-code input as a modular boundary order]
 \label{ex:toric-code-walker-wang-boundary}

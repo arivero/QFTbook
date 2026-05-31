@@ -47,9 +47,10 @@ gauge-theoretic boundary constructions.
   they give commutative separable boundary algebra objects.
 - Works out the two toric-code Lagrangian boundary subgroups.
 - Replaces the Crane-Yetter / Walker-Wang quoted boundary principle by a
-  local pointed theorem: in a finite abelian pointed input, bulk deconfined
-  lines are precisely the radical of the braiding form, while a nondegenerate
-  input leaves its nontrivial line category on the boundary.
+  finite pointed construction: after specifying the label group, vertex fusion
+  constraint, plaquette loop recoupling, and the deconfinement criterion, bulk
+  deconfined lines are precisely the radical of the braiding form, while a
+  nondegenerate input leaves its nontrivial line category on the boundary.
 - Works out the toric-code pointed input as a modular boundary order with
   trivial bulk radical.
 - Adds the non-pointed algebraic plaquette criterion: under the hypothesis
@@ -77,8 +78,9 @@ restriction diagrams.
 
 - 2026-05-30 pass: removed the Crane--Yetter / Walker--Wang `quotedtheorem`
   wrapper.  The fully general categorical construction remains an external
-  mathematical boundary, but the monograph now proves the finite pointed
-  mechanism actually used in the chapter.
+  mathematical boundary, and the finite pointed mechanism used in the chapter
+  is now stated as a construction with its exact plaquette-crossing criterion
+  rather than as a theorem whose substance is hidden in the model input.
 - 2026-05-30 non-pointed mechanism pass: added the finite semisimple braided
   M\"uger-center definition and a local plaquette-algebra proposition, so the
   non-pointed Walker--Wang statement now has a precise algebraic mechanism
