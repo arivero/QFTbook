@@ -490,6 +490,84 @@ def check_phi4_three_multiscale_geometric_bound():
     assert_equal(tail_j5, Fraction(1, 1600), "phi4_3 multiscale ultraviolet tail")
 
 
+def hard_core_source_derivatives(weights, incompatible_edges, left_source, right_source):
+    """Return Z and first/mixed source derivatives for a finite hard-core gas."""
+    n = len(weights)
+    incompatible = {frozenset(edge) for edge in incompatible_edges}
+    z = Fraction(0)
+    z_left = Fraction(0)
+    z_right = Fraction(0)
+    z_left_right = Fraction(0)
+    for mask in range(1 << n):
+        ok = True
+        for i in range(n):
+            if not (mask & (1 << i)):
+                continue
+            for j in range(i + 1, n):
+                if (mask & (1 << j)) and frozenset((i, j)) in incompatible:
+                    ok = False
+                    break
+            if not ok:
+                break
+        if not ok:
+            continue
+
+        weight = Fraction(1)
+        left = Fraction(0)
+        right = Fraction(0)
+        for i in range(n):
+            if mask & (1 << i):
+                weight *= weights[i]
+                left += left_source.get(i, Fraction(0))
+                right += right_source.get(i, Fraction(0))
+        z += weight
+        z_left += weight * left
+        z_right += weight * right
+        z_left_right += weight * left * right
+    return z, z_left, z_right, z_left_right
+
+
+def check_finite_polymer_source_cumulant_factorization():
+    # If two source neighbourhoods live in independent hard-core components,
+    # log Z factorizes and the mixed source cumulant is exactly zero.
+    weights = [Fraction(1, 5), Fraction(1, 11)]
+    z, z_l, z_r, z_lr = hard_core_source_derivatives(
+        weights,
+        incompatible_edges=[],
+        left_source={0: Fraction(1)},
+        right_source={1: Fraction(1)},
+    )
+    disconnected_cumulant = (z * z_lr - z_l * z_r) / (z * z)
+    assert_equal(z, Fraction(72, 55), "disconnected two-polymer partition function")
+    assert_equal(disconnected_cumulant, Fraction(0), "disconnected source cumulant")
+
+    # Insert a bridge polymer B incompatible with A and C.  A and C are still
+    # mutually compatible, but the exclusion of B couples the two source
+    # regions.  The mixed derivative of log Z detects exactly this connected
+    # incompatibility path A--B--C.
+    weights = [Fraction(1, 5), Fraction(1, 7), Fraction(1, 11)]
+    z, z_l, z_r, z_lr = hard_core_source_derivatives(
+        weights,
+        incompatible_edges=[(0, 1), (1, 2)],
+        left_source={0: Fraction(1)},
+        right_source={2: Fraction(1)},
+    )
+    bridge_cumulant = (z * z_lr - z_l * z_r) / (z * z)
+    assert_equal(z, Fraction(559, 385), "bridged three-polymer partition function")
+    assert_equal(bridge_cumulant, Fraction(385, 312481), "bridged source cumulant")
+
+    # Removing the bridge activity restores factorization.
+    weights = [Fraction(1, 5), Fraction(0), Fraction(1, 11)]
+    z, z_l, z_r, z_lr = hard_core_source_derivatives(
+        weights,
+        incompatible_edges=[(0, 1), (1, 2)],
+        left_source={0: Fraction(1)},
+        right_source={2: Fraction(1)},
+    )
+    bridge_removed_cumulant = (z * z_lr - z_l * z_r) / (z * z)
+    assert_equal(bridge_removed_cumulant, Fraction(0), "zero bridge source cumulant")
+
+
 def check_spde_ou_and_smoothing_normalizations():
     # For dZ_t = -a Z_t dt + sqrt(2) dB_t, the stationary variance is
     # 2 int_0^infty exp(-2 a u) du = 1/a.  This fixes the noise
@@ -1642,6 +1720,7 @@ def main():
     check_phi4_three_two_loop_mass_coordinate()
     check_phi4_three_finite_cutoff_stability_bound()
     check_phi4_three_multiscale_geometric_bound()
+    check_finite_polymer_source_cumulant_factorization()
     check_spde_ou_and_smoothing_normalizations()
     check_phi4_two_path_space_increment_arithmetic()
     check_dpd_sobolev_fixed_point_exponents()
@@ -1679,7 +1758,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

@@ -22,7 +22,8 @@
   uniform exponential integrability of the finite-volume density.
 - Polymer activity norm, hard-core Ursell coefficients, Penrose tree-graph
   inequality, Kotecky--Preiss/Brydges--Kennedy rooted-tree convergence
-  criterion, and exponential clustering estimate.
+  criterion, finite source-derivative extraction of connected Schwinger
+  coefficients, and exponential clustering estimate.
 - Quoted massive \(P(\phi)_2\) OS-output theorem from the cluster expansion.
 - Corollary deriving a Hamiltonian mass gap from Euclidean exponential
   clustering through the OS spectral representation.
@@ -67,6 +68,7 @@
 | \(p_\varepsilon(q)\) | finite-cutoff normal-ordered local \(\Phi^4_3\) polynomial |
 | \(A_\varepsilon,B_\varepsilon\) | quadratic-in-\(y=q^2\) coefficients of \(p_\varepsilon\) |
 | \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
+| \(b_\alpha(X)\) | finite source weight for an insertion supported near \(A_\alpha\), vanishing unless \(X\) meets the source neighbourhood |
 | \(\kappa(X)\) | numerical majorant for the polymer activity after large-field weighting |
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
 | \(K_j(X),\kappa_j(X)\) | scale-\(j\) polymer activity and numerical majorant |
@@ -90,7 +92,10 @@
 3. Cluster expansion convergence follows from a polymer smallness criterion:
    the proof now displays the Penrose tree-graph inequality, the rooted-tree
    recursion \(F_{N+1}(X)\le\exp(\sum_{Y\nsim X}\kappa(Y)F_N(Y))\), and the
-   leftover exponential-weight argument producing clustering.
+   leftover exponential-weight argument producing clustering.  The chapter
+   now also displays the finite source-derivative identity showing that
+   connected Schwinger coefficients are sums over connected incompatibility
+   clusters meeting every source neighbourhood.
 4. The cluster-expansion \(P(\phi)_2\) output theorem supplies the actual OS
    hierarchy: thermodynamic-limit Schwinger functions with covariance,
    symmetry, reflection positivity, regularity, OS growth, and exponential
@@ -152,6 +157,14 @@
   \(B_{R_0}\epsilon\le a'\) smallness condition, and derives exponential
   clustering from the unused \(a-a'\) weight along paths connecting the two
   observable supports.
+- 2026-05-31 statmech-crosswalk constructive-cluster pass: the abstract
+  polymer estimate is now connected explicitly to QFT source insertions.
+  The chapter derives the finite identity for derivatives of
+  \(\log Z_\Lambda(\lambda)\), writes the source assignment sum over
+  connected clusters, and explains factorization versus exponential decay in
+  terms of incompatibility paths between source neighbourhoods.  The
+  companion check enumerates a finite hard-core polymer gas with and without
+  a bridge polymer.
 - 2026-05-25 issue #555 pass: the cluster-expansion section now states the
   massive \(P(\phi)_2\) OS-output theorem and proves the mass-gap consequence
   from exponential Euclidean clustering by a spectral-measure

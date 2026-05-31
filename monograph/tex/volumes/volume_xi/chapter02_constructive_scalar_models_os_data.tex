@@ -513,6 +513,60 @@ analytic step that justifies taking \(\Lambda\uparrow\R^2\), proves
 exponential clustering in the massive phase, and gives uniform bounds on
 the Schwinger functions.
 
+\paragraph{Source derivatives and connected clusters.}
+The polymer estimate becomes a QFT statement only after one explains how
+local insertions are read from the polymer gas.  Let \(\mathfrak S\) be a
+finite set of source labels.  For each \(\alpha\in\mathfrak S\), let
+\(A_\alpha\) be the cell neighbourhood of the support of the corresponding
+test insertion and let \(b_\alpha(X)\) be a source weight that vanishes unless
+\(X\) meets \(A_\alpha\).  At finite volume set
+\[
+  K_\lambda(X)
+  =
+  K(X)\exp\!\left(
+    \sum_{\alpha\in\mathfrak S}\lambda_\alpha b_\alpha(X)
+  \right)
+\]
+and define \(Z_\Lambda(\lambda)\) by replacing \(K\) with \(K_\lambda\) in the
+hard-core partition function.  The connected source coefficient is the finite
+identity
+\[
+  C_{\alpha_1\cdots\alpha_m}^{(\Lambda)}
+  =
+  \left.
+  \partial_{\lambda_{\alpha_1}}\cdots
+  \partial_{\lambda_{\alpha_m}}\log Z_\Lambda(\lambda)
+  \right|_{\lambda=0}.
+\]
+Substituting \(K_\lambda\) into the absolutely convergent cluster expansion
+gives
+\[
+\begin{aligned}
+  C_{\alpha_1\cdots\alpha_m}^{(\Lambda)}
+  &=
+  \sum_{n\geq1}\frac1{n!}
+  \sum_{X_1,\ldots,X_n\in\mathcal P_\Lambda}
+  \varphi_{\rm c}(X_1,\ldots,X_n)
+  \prod_{i=1}^nK(X_i)                                      \\
+  &\qquad\qquad\times
+  \sum_{\tau:\{1,\ldots,m\}\to\{1,\ldots,n\}}
+  \prod_{r=1}^m b_{\alpha_r}(X_{\tau(r)}).
+\end{aligned}
+\]
+Thus a nonzero term in a connected \(m\)-point source coefficient contains a
+connected incompatibility graph whose vertices collectively meet all source
+neighbourhoods.  If two groups of sources lie in cell regions that cannot be
+joined by an incompatibility path, the finite partition function factorizes
+and the mixed cumulant vanishes.  If they can be joined only through a path of
+total polymer size at least proportional to their cell distance, the unused
+exponential weight in \eqref{eq:constructive-kp-smallness} gives precisely the
+decay used in \eqref{eq:constructive-exponential-clustering-bound}.  For
+local fields in \(P(\phi)_2\), the source weights \(b_\alpha\) are obtained by
+expanding the regulated source functional together with the local interaction
+pieces; the cluster estimate controls the resulting connected Schwinger
+distributions after the finite-volume ultraviolet limit has already been
+taken.
+
 \begin{quotedtheorem}[Massive \(P(\phi)_2\) OS output from the cluster expansion]
 \label{qthm:p-phi-two-cluster-os-output}
 Let \(P\) be an even-degree real polynomial bounded below with positive

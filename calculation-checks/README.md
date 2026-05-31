@@ -425,7 +425,9 @@ Current checks:
   first-chaos \(X^2Y\) bound and the dyadic covariance double-increment
   scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
-  seminorm order, and the interval-recursion arithmetic in the
+  seminorm order, a finite hard-core polymer source-cumulant check showing
+  factorization without an incompatibility bridge and a nonzero connected
+  cumulant with such a bridge, and the interval-recursion arithmetic in the
   rough-forcing energy-to-Besov bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the

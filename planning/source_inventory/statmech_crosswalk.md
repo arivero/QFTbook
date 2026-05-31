@@ -91,6 +91,18 @@ polymer material should be imported only after a QFT-side construction states
 the Banach norms, large-field regulator, covariance decomposition, polymer
 activities, convergence theorem, and OS output being proved.
 
+Absorption status: Volume XI, Chapter 2 now contains the hard-core polymer
+activity norm, Penrose tree-graph bound, Kotecky--Preiss/Brydges--Kennedy
+rooted-tree convergence proof, and the source-derivative bridge from the
+abstract polymer gas to connected Schwinger coefficients.  The latter writes
+derivatives of \(\log Z_\Lambda(\lambda)\) as connected cluster sums with
+source assignments, so finite-volume factorization and exponential clustering
+are tied to incompatibility paths rather than stated as folklore.  The
+remaining constructive-cluster work is model-specific: derive the actual
+large-field/phase-cell polymer activities and their scale-decay bounds for
+the constructive scalar models rather than treating the abstract convergence
+criterion as the whole proof.
+
 ### Lattice Gauge Theory, Center Order, And Elitzur Discipline
 
 Statmech source: Volume II Chapter 21, especially lattice gauge theory,
