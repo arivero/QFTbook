@@ -1504,7 +1504,8 @@ Current checks:
   anomalous-dimension consistency equation, a finite Wilson-line algebra
   check of leading soft covariant-derivative decoupling, a finite Glauber
   unitarity diagnostic separating inclusive cancellation from noncommuting
-  measurement obstruction, and the triangular logarithmic phase-space area
+  measurement obstruction together with an exact finite remainder identity and
+  Hilbert--Schmidt bound, and the triangular logarithmic phase-space area
   behind the massive-vector Sudakov chart.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the

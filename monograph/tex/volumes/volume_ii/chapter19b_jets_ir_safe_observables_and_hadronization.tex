@@ -604,6 +604,56 @@ Glauber coordinate must either be included as an additional operator in the
 factorized datum or the proposed factorization statement is false for that
 measurement.
 
+There is also a quantitative finite version, useful because real
+factorization proofs rarely give exact commutation at an intermediate
+regulator.  For any bounded finite measurement \(M\), define the Glauber
+remainder
+\begin{equation}
+  \Delta_G(M,\rho_{\rm spec})
+  =
+  \operatorname{Tr}_{\rm spec}
+  \!\left(MU_G\rho_{\rm spec}U_G^\dagger\right)
+  -
+  \operatorname{Tr}_{\rm spec}(M\rho_{\rm spec}).
+  \label{eq:glauber-finite-remainder-definition}
+\end{equation}
+Cyclicity gives the exact identity
+\begin{equation}
+  \Delta_G(M,\rho_{\rm spec})
+  =
+  \operatorname{Tr}_{\rm spec}
+  \!\left((U_G^\dagger M U_G-M)\rho_{\rm spec}\right).
+  \label{eq:glauber-finite-remainder-commutator}
+\end{equation}
+Consequently, with \(\|\cdot\|\) the operator norm and
+\(\|\cdot\|_1\) the trace norm,
+\begin{equation}
+  |\Delta_G(M,\rho_{\rm spec})|
+  \le
+  \|U_G^\dagger M U_G-M\|\,\|\rho_{\rm spec}\|_1 .
+  \label{eq:glauber-finite-remainder-bound}
+\end{equation}
+If \(U_G=\exp(\ii K_G)\), the Duhamel formula refines the first factor to
+\[
+  U_G^\dagger M U_G-M
+  =
+  \ii\int_0^1
+  e^{-\ii sK_G}[M,K_G]e^{\ii sK_G}\,\dd s ,
+\]
+and hence
+\[
+  \|U_G^\dagger M U_G-M\|
+  \le
+  \|[M,K_G]\| .
+\]
+The finite diagnostic therefore has an honest error coordinate: exact
+factorization is recovered when the measured algebra is invariant under the
+Glauber unitary, and approximate factorization requires a small commutator in
+the measurement norm relevant to the smeared cross section.  This is the
+operator-theoretic content behind phrases such as "Glauber cancellation";
+the continuum theorem must still supply the limiting \(K_G\), the topology,
+and the bound.
+
 Equations
 \eqref{eq:glauber-inclusive-unitarity-diagnostic}--\eqref{eq:glauber-commuting-measurement-diagnostic}
 are only the finite unitarity mechanism.  A continuum QCD factorization proof

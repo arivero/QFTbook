@@ -51,7 +51,10 @@ The chapter establishes:
 - a finite Glauber unitarity diagnostic separating inclusive or commuting
   measurements, for which a finite Glauber unitary drops out of the trace,
   from noncommuting spectator/color measurements, where the exchange is a
-  genuine factorization obstruction;
+  genuine factorization obstruction; the diagnostic now includes the exact
+  finite remainder
+  \(\operatorname{Tr}((U_G^\dagger M U_G-M)\rho_{\rm spec})\), its norm
+  bound, and the Duhamel commutator estimate for \(U_G=\exp(\ii K_G)\);
 - a massive-vector Sudakov boundary chart for high-energy electroweak jet
   measurements, deriving the triangular soft-collinear area
   \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
@@ -170,6 +173,12 @@ The chapter establishes:
     Lagrangian to Wilson lines in external operators and soft matrix elements.
     It does not by itself prove subleading-power factorization or Glauber
     cancellation.
+8ba. Finite Glauber cancellation has a quantitative remainder coordinate:
+     \(\Delta_G(M,\rho)=\operatorname{Tr}((U_G^\dagger M U_G-M)\rho)\).
+     Exact cancellation requires the measured algebra to be invariant under
+     \(U_G\); approximate cancellation requires a small commutator in the
+     topology used for the smeared cross section, not merely a verbal
+     assertion that Glauber exchanges cancel.
 8c. Non-global angular measurements are not governed by a single linear soft
     anomalous dimension.  In a finite soft-dipole cell datum, unmeasured
     emissions are real--virtual balanced at first order but split the original
@@ -328,6 +337,12 @@ The chapter establishes:
   operator-trace mechanism for inclusive/commuting Glauber cancellation versus
   noncommuting measurement obstruction, and extended
   `calculation-checks/scet_factorization_checks.py`.
+- 2026-06-01 issue #526/#630 Glauber remainder pass: sharpened the diagnostic
+  by adding the exact finite remainder
+  \(\operatorname{Tr}((U_G^\dagger M U_G-M)\rho)\), its operator/trace-norm
+  bound, and the Duhamel commutator estimate; extended
+  `calculation-checks/scet_factorization_checks.py` with exact rational
+  checks of the cyclic remainder identity and Hilbert--Schmidt bound.
 - 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
   soft-dipole evolution datum for non-global veto measurements, derived the
   second-order coefficient separating the global Sudakov square from the

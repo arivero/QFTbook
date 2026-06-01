@@ -10,8 +10,8 @@ defining differential equation; and scalar RG transport is independent of the
 common scale when the hard, jet, and soft anomalous dimensions satisfy the
 factorization consistency equation.  It also checks the finite phase-space
 area behind the massive-vector Sudakov chart used for electroweak jet
-boundaries and the finite unitarity diagnostic for Glauber cancellation versus
-measurement obstruction.
+boundaries and the finite unitarity/remainder diagnostic for Glauber
+cancellation versus measurement obstruction.
 """
 
 from __future__ import annotations
@@ -219,6 +219,10 @@ def trace(matrix: sp.Matrix) -> sp.Rational:
     return sp.trace(matrix)
 
 
+def frobenius_square(matrix: sp.Matrix) -> sp.Rational:
+    return sp.trace(matrix.T * matrix)
+
+
 def check_glauber_unitarity_diagnostic() -> None:
     unitary = sp.Matrix([[sp.Rational(3, 5), sp.Rational(4, 5)], [sp.Rational(-4, 5), sp.Rational(3, 5)]])
     identity = sp.eye(2)
@@ -240,6 +244,22 @@ def check_glauber_unitarity_diagnostic() -> None:
     with_glauber = trace(noncommuting_measurement * evolved)
     if with_glauber == without_glauber:
         raise AssertionError("noncommuting measurement should detect the finite Glauber rotation")
+
+    rotated_measurement_difference = unitary.T * noncommuting_measurement * unitary - noncommuting_measurement
+    exact_remainder = with_glauber - without_glauber
+    assert_equal(
+        "Glauber remainder cyclic form",
+        exact_remainder,
+        trace(rotated_measurement_difference * rho),
+    )
+
+    # Exact finite-dimensional Cauchy-Schwarz check:
+    # |Tr(A rho)|^2 <= Tr(A^T A) Tr(rho^T rho).  This is the rational
+    # Hilbert-Schmidt version of the operator/trace-norm bound used in the text.
+    lhs = exact_remainder * exact_remainder
+    rhs = frobenius_square(rotated_measurement_difference) * frobenius_square(rho)
+    if lhs > rhs:
+        raise AssertionError(f"Glauber Hilbert-Schmidt remainder bound failed: {lhs} > {rhs}")
 
 
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
