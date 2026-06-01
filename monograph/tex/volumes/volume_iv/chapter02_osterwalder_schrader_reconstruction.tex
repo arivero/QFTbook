@@ -635,6 +635,31 @@ continued to
   \qquad j=1,\ldots,n.
   \label{eq:os-wightman-boundary-values}
 \end{equation}
+Equivalently, the complex Lorentzian time coordinate is
+\[
+  z_j^0=-\ii\tau_j=t_j-\ii\epsilon_j .
+\]
+Thus for an ordered adjacent difference,
+\[
+  z_j-z_{j+1}
+  =
+  (x_j-x_{j+1})
+  -
+  \ii(\epsilon_j-\epsilon_{j+1})e_0,
+  \qquad e_0=(1,\mathbf0).
+\]
+The tube depth is the future vector
+\((\epsilon_j-\epsilon_{j+1})e_0\in V_+^\circ\), while the literal imaginary
+part of \(z_j-z_{j+1}\) is its negative.  Throughout this chapter the
+``forward tube'' in mostly-plus signature means
+\[
+  z=\xi-\ii\eta,\qquad \eta\in V_+^\circ ,
+\]
+matching the Wightman convention of
+Proposition~\ref{prop:wightman-tube-boundary-value-package}.  This sign is
+not notation: for \(p,\eta\in\overline V_+\), the mostly-plus pairing obeys
+\(p\cdot\eta\le0\), so the factor
+\(\exp(\ii p\cdot(\xi-\ii\eta))=\exp(\ii p\cdot\xi+p\cdot\eta)\) is damped.
 The reconstructed operator \(\widehat\Phi_\alpha(t,\mathbf f)\) is the
 operator-valued distribution whose vacuum matrix elements are these boundary
 values and whose time dependence is implemented by the unitary group
@@ -671,15 +696,21 @@ available.
 \[
   \mathcal W_n(z_1,\ldots,z_n)
 \]
-on the corresponding forward tube in the difference variables
-\(\operatorname{Im}(z_j-z_{j+1})\in V_+^\circ\), where \(V_+^\circ\) is the
-open Lorentzian forward cone, whose restriction to ordered imaginary times
-agrees with \(S_n\) away from coincident points.
+on the corresponding mostly-plus forward tube in the difference variables
+\[
+  z_j-z_{j+1}=\xi_j-\ii\eta_j,
+  \qquad \eta_j\in V_+^\circ ,
+\]
+equivalently \(-\operatorname{Im}(z_j-z_{j+1})\in V_+^\circ\).  Here
+\(V_+^\circ\) is the open Lorentzian forward cone.  The restriction of
+\(\mathcal W_n\) to ordered imaginary times agrees with \(S_n\) away from
+coincident points.
 \item The holomorphic functions obey tempered tube bounds: for every compact
 subcone \(K\subset (V_+^\circ)^{n-1}\) and every positive lower bound on the
-distance of the imaginary parts from the boundary of the cone, the boundary
-pairings with Schwartz tests are bounded by finitely many Schwartz seminorms
-with polynomial dependence on the reciprocal distance to the cone boundary.
+distance of the tube-depth variables \(\eta_j\) from the boundary of the
+cone, the boundary pairings with Schwartz tests are bounded by finitely many
+Schwartz seminorms with polynomial dependence on the reciprocal distance to
+the cone boundary.
 \item The permuted Euclidean orderings give holomorphic functions on the
 corresponding permuted tubes that agree on their common Euclidean real
 submanifolds.  For spacelike separated adjacent insertions, the two
@@ -939,10 +970,12 @@ is obtained from the scalar products of these vector fields and extension to
 the envelope of holomorphy defining \(C_k^{(N+1)}\).
 \item The continued scalar functions obey a uniform polynomial tube estimate:
 for every closed subcone \(K\Subset(V_+^\circ)^k\) and every
-\(\delta>0\), if the imaginary parts of the Lorentzian difference variables lie
-in \(K\) at distance at least \(\delta\) from its boundary, then
+\(\delta>0\), if the Lorentzian difference variables are written as
+\(\xi_j-\ii\eta_j\) with tube-depth variables
+\(\eta=(\eta_1,\ldots,\eta_k)\) lying in \(K\) at distance at least
+\(\delta\) from its boundary, then
 \begin{equation}
-  |\langle S_k(\cdot+\ii y),f\rangle|
+  |\langle S_k(\cdot-\ii\eta),f\rangle|
   \le
   C_{k,K}\,\delta^{-N_k}\,
   \sum_{|\alpha|,|\beta|\le N_k}
@@ -964,17 +997,19 @@ Items (i)--(iii) provide a single holomorphic function in the ordered
 difference variables: the functions \(S_k^{(N)}\) agree on overlaps, and the
 union of their domains is the full product right half-plane in the ordered
 time gaps.  Item (vi) transports this function by Euclidean covariance to the
-usual forward tube in Lorentzian difference variables.  This gives part (i) of
+mostly-plus forward tube \(z=\xi-\ii\eta\), \(\eta\in V_+^\circ\), in
+Lorentzian difference variables.  This gives part (i) of
 Definition~\ref{def:os-lorentzian-boundary-value-package}.
 
 The estimate \eqref{eq:os-ii-polynomial-tube-estimate} is exactly the
 tempered tube-bound input in part (ii) of the boundary-value package.  The
 right hand side is a finite Schwartz seminorm, and the dependence on the
 distance to the cone boundary is polynomial.  Therefore the family of
-functionals \(f\mapsto\langle S_k(\cdot+\ii y),f\rangle\) is bounded in a
+functionals \(f\mapsto\langle S_k(\cdot-\ii\eta),f\rangle\) is bounded in a
 fixed finite-order tempered-distribution topology on each closed subtube.
 Theorem~\ref{qthm:polynomial-tube-bounds-boundary-values} then gives
-tempered boundary values as \(y\to0\) inside the cone.
+tempered boundary values as \(\eta\to0\) inside the cone, after the sign
+conversion \(y=-\eta\) explained below.
 
 For a permutation of insertions, item (vi) gives the corresponding permuted
 tube.  Euclidean permutation symmetry says that the permuted holomorphic
@@ -1335,16 +1370,17 @@ constant times a logarithm of the inverse angular distance of \(\zeta\) to
 \(\partial C_+^k\).  Undoing the harmless regulator \(\epsilon\) and the
 majorant \(Q_{k,\epsilon}\) yields the tube estimate
 \[
-  |\langle S_k(\cdot+\ii y),f\rangle|
+  |\langle S_k(\cdot-\ii\eta),f\rangle|
   \le
   C_{k,K}\,\delta^{-N_k}
   \sum_{|\alpha|,|\beta|\le N_k}
     \sup_\xi |\xi^\beta\partial^\alpha f(\xi)|
 \]
-for \(y\) in any closed subcone \(K\Subset(V_+^\circ)^k\) at distance
+for \(\eta\) in any closed subcone \(K\Subset(V_+^\circ)^k\) at distance
 \(\delta\) from the cone boundary.  This is
 \eqref{eq:os-ii-polynomial-tube-estimate}.  Euclidean covariance transports
-the product right-half-plane continuation to the Lorentzian forward tubes, and
+the product right-half-plane continuation to the mostly-plus Lorentzian
+forward tubes, and
 permutation symmetry supplies the permuted tubes with the graded signs.
 Thus all hypotheses of
 Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package} have been
@@ -1448,29 +1484,35 @@ compact \(p\)-sets while the tails are uniformly small.  Continuity of
 The linear-growth estimate \eqref{eq:os-linear-growth-condition} is one
 standard route to this package in the OS-II theorem: the controlled growth of
 distributional seminorm order is what keeps the Fourier--Laplace continuation
-inside the tempered distribution class as the imaginary parts approach the
-Lorentzian boundary.  In a concrete constructive model, this route is a
+inside the tempered distribution class as the tube-depth variables approach
+the Lorentzian boundary.  In a concrete constructive model, this route is a
 separate analytic estimate to be proved, not a formal consequence of
 reflection positivity alone.
 
 Applied to reconstruction, Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}
-is used with \(d=D(n-1)\), \(\Gamma=(\overline V_+)^{n-1}\), and \(W\) equal
-to the translation-reduced Wightman distribution.  The OS-II linear-growth
+is used with \(d=D(n-1)\), spectral cone
+\(\Gamma=(\overline V_+)^{n-1}\), literal imaginary variable
+\(y\in(-V_+)^{n-1}\), and tube depth \(\eta=-y\in(V_+)^{n-1}\).  The
+proposition is written for an abstract tube \(x+\ii y\) with
+\(p\cdot y>0\) on the spectral cone.  In the mostly-plus Wightman convention
+the same point is written as \(\xi-\ii\eta\), and the damping factor is
+\(\exp(p\cdot\eta)\) because \(p\cdot\eta\le0\).  The distribution \(W\) is
+the translation-reduced Wightman distribution.  The OS-II linear-growth
 condition is the Euclidean-side estimate that makes the reconstructed
 matrix elements have the required finite distributional order uniformly in
 the number of insertions.  The spectral support itself comes from the
 nonnegative Hamiltonian, spatial translation covariance, and the
 OS-continued Lorentz transformations.  Thus the corrected OS theorem has two
-distinct analytic duties: it must construct the positive-energy
-translation representation, and it must prove the polynomial tube bounds
-needed for the boundary-value theorem above.
+distinct analytic duties: it must construct the positive-energy translation
+representation, and it must prove the polynomial tube bounds needed for the
+boundary-value theorem above.
 
 \begin{proposition}[Consequences of the OS boundary-value package]
 \label{prop:os-boundary-package-consequences}
 Assume Definition~\ref{def:os-lorentzian-boundary-value-package}.  Then:
 \begin{enumerate}[label=(\alph*)]
-\item The limits of \(\mathcal W_n(x+\ii y)\) as
-\(y\to0\) within the ordered tube exist in
+\item The limits of \(\mathcal W_n(\xi-\ii\eta)\) as
+\(\eta\to0\) within the ordered tube exist in
 \(\mathcal S'((\mathbb M^D)^n)\) and define tempered Wightman distributions.
 \item Permutation symmetry of the Schwinger hierarchy gives graded
 commutativity of the boundary-value fields at spacelike separation.
@@ -1483,16 +1525,17 @@ recovers the original \(S_n\) away from the partial diagonals.
 For (a), fix one ordering and write the reduced difference variables as
 \(\xi=(\xi_1,\ldots,\xi_{n-1})\).  The tube bound in
 Definition~\ref{def:os-lorentzian-boundary-value-package} says that, for
-each smaller cone of imaginary parts, the function
-\(\xi\mapsto\mathcal W_n(\xi+\ii y)\) defines a continuous functional on
+each smaller cone of tube depths, the function
+\(\xi\mapsto\mathcal W_n(\xi-\ii\eta)\) defines a continuous functional on
 \(\mathcal S(\mathbb R^{D(n-1)})\) with seminorm constants polynomial in the
-distance of \(y\) to the cone boundary.  Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}
-displays the model estimate: after Fourier transformation, the imaginary
-part inserts exponential damping against a distribution whose spectral
-support lies in the forward cone.  Hence, for every Schwartz test \(f\), the
+distance of \(\eta\) to the cone boundary.  Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}
+displays the model estimate after the sign conversion \(y=-\eta\): after
+Fourier transformation, the tube depth inserts exponential damping against a
+distribution whose spectral support lies in the forward cone.  Hence, for
+every Schwartz test \(f\), the
 pairings
-\(\langle\mathcal W_n(\cdot+\ii y),f\rangle\) have a limit as
-\(y\to0\) within the ordered cone.  The limiting functional is continuous in
+\(\langle\mathcal W_n(\cdot-\ii\eta),f\rangle\) have a limit as
+\(\eta\to0\) within the ordered cone.  The limiting functional is continuous in
 the same finite collection of Schwartz seminorms and is therefore a tempered
 distribution.  This distribution is the ordered Wightman distribution.
 
@@ -1530,7 +1573,7 @@ exactly local graded commutativity on the reconstructed common domain.
 For (c), let \(0<\tau_1<\cdots<\tau_n\) be an ordered Euclidean
 configuration away from \(\Delta_n\).  The original Schwinger function and
 the function obtained by first taking the Lorentzian boundary value and then
-substituting \(t_j=-\ii\tau_j\) are restrictions of the same holomorphic
+substituting \(z_j^0=-\ii\tau_j\) are restrictions of the same holomorphic
 function \(\mathcal W_n\) on the connected ordered tube.  If two such
 holomorphic functions had the same Lorentzian boundary value but differed in
 the ordered Euclidean interior, their difference would have zero

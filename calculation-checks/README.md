@@ -78,6 +78,12 @@ Current checks:
   group-commutator phase, symplectic-orthogonality locality, and the finite
   partition phase that turns \(u=\sum_j u_j\) into a product of local Weyl
   generators.
+- `os_tube_sign_checks.py`: finite sign checks for the Volume IV
+  Osterwalder--Schrader reconstruction chapter, including the mostly-plus
+  damping inequality \(p\cdot\eta<0\) for future \(p,\eta\), the ordered
+  Euclidean-time map \(z^0=-i\tau=t-i\epsilon\), and the conversion between
+  the abstract Fourier--Laplace variable \(x+i y\) and the physical
+  Wightman tube depth \(z=\xi-i\eta\).
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, exact APS cylinder endpoint-kernel arithmetic,

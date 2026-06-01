@@ -25,6 +25,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   Fourier--Laplace boundary-value theorem.
 - `W_n`, `mathcal W_n`: Lorentzian Wightman boundary value and holomorphic
   tube function.
+- `z=xi-i eta`, `eta in V_+`: mostly-plus Wightman forward-tube convention
+  produced from ordered Euclidean times by `z^0=-i tau=t-i epsilon`; the
+  literal imaginary part is `-eta`.
 - `C_k^(N)`, `D_m^(N)`: scalar analyticity domains and mixed Hilbert-vector
   domains in the corrected OS-II many-variable route.
 - `Psi_m(x,zeta)`: Hilbert-vector fields used in the OS-II `A_N/P_N`
@@ -67,6 +70,10 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   the Fourier--Laplace mechanism by which spectral support plus polynomial
   distributional order yields holomorphic tube functions with tempered
   boundary values.
+- Fixes the OS-to-Wightman tube sign in the mostly-plus convention: ordered
+  Euclidean times `tau_j=epsilon_j+i t_j` map to Lorentzian differences
+  `z_j-z_{j+1}=xi_j-i eta_j` with future tube depth `eta_j`, while the
+  abstract tube theorem's variable is the literal imaginary part `y=-eta`.
 - Proves the edge-of-the-wedge/Jost-domain route from Euclidean permutation
   symmetry to Lorentzian graded locality at spacelike separation.
 - Proves the reverse-continuation statement away from partial diagonals:
@@ -95,9 +102,11 @@ many-variable analytic route gives the Lorentzian distributions and locality.
 
 ## Calculation Checks
 
-- No numerical calculation script is attached to this chapter.  The chapter
-  is functional-analytic; verification is by LaTeX build, text audit, and
-  proof-ledger review.
+- `calculation-checks/os_tube_sign_checks.py`: checks the mostly-plus
+  forward-cone damping sign, the ordered Euclidean-time map
+  `z^0=-i tau=t-i epsilon`, and the conversion between the abstract
+  Fourier--Laplace variable `x+i y` and the physical Wightman tube depth
+  `xi-i eta`.
 
 ## Audit Notes
 
@@ -126,3 +135,7 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   bounds, Cauchy estimates in proper subtubes, radial Cauchy convergence,
   approach-cone independence by convexity, and the Fourier--Laplace
   cone-support lemma.
+- 2026-06-01 OS tube-sign pass: aligned the Lorentzian boundary-value package
+  with the monograph-wide mostly-plus convention `z=xi-i eta`, corrected the
+  abstract cone-variable application by setting `y=-eta`, and added the
+  public calculation check `os_tube_sign_checks.py`.
