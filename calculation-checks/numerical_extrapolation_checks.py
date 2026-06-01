@@ -6,9 +6,18 @@ keeps the displayed Richardson and finite-weight extrapolation coefficients
 under exact rational regression tests.
 """
 
+import pathlib
+import sys
 from fractions import Fraction
 
 import numpy as np
+
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPT_DIR = ROOT / "qft_scripts"
+sys.path.insert(0, str(SCRIPT_DIR))
+
+import finite_regulator_extrapolation as finite_extrapolation  # noqa: E402
 
 
 def assert_equal(name, actual, expected):
@@ -215,11 +224,43 @@ def check_correlated_fit_coordinates():
         raise AssertionError("correlated fit chi-square coordinate is not finite and nonnegative")
 
 
+def check_public_correlated_extrapolation_script():
+    dataset = finite_extrapolation.smoke_dataset()
+    windows = finite_extrapolation.parse_windows("0:5,1:6,0:6", int(dataset.regulators.size))
+    result = finite_extrapolation.run(dataset, fit_order=2, base_exponent=1.0, windows=windows)
+    assert_equal("public extrapolation window count", len(result["windows"]), 3)
+    assert_leq("public extrapolation window spread", 0.0, result["window_intercept_spread"])
+
+    first = result["windows"][0]
+    regulators = dataset.regulators[:5]
+    q = regulators ** -1.0
+    design = np.column_stack([np.ones_like(q), q, q * q])
+    covariance = dataset.covariance[:5, :5]
+    inverse_covariance = np.linalg.inv(covariance)
+    gram = design.T @ inverse_covariance @ design
+    propagator = np.linalg.inv(gram) @ design.T @ inverse_covariance
+    expected_coefficients = propagator @ dataset.values[:5]
+    assert_matrix_close(
+        "public extrapolation coefficients",
+        np.array(first["coefficients"]),
+        expected_coefficients,
+    )
+    assert_close(
+        "public extrapolation intercept variance",
+        first["intercept_stat_error"] ** 2,
+        float(np.linalg.inv(gram)[0, 0]),
+        tol=1.0e-10,
+    )
+    expected_systematic = float(np.sum(np.abs(propagator[0, :]) * dataset.remainder_envelopes[:5]))
+    assert_close("public extrapolation systematic coordinate", first["intercept_systematic_bound"], expected_systematic)
+
+
 def main():
     check_finite_data_do_not_determine_limit()
     check_two_cutoff_richardson()
     check_integer_power_weights()
     check_correlated_fit_coordinates()
+    check_public_correlated_extrapolation_script()
     print("All numerical extrapolation checks passed.")
 
 

@@ -2083,6 +2083,27 @@ discarded weight, and any symmetry projection used to select the finite
 sector.  Otherwise a stable sequence of numbers may be comparing different
 finite problems rather than a single regulated QFT observable.
 
+The reader-facing implementation
+\[
+  \texttt{qft\_scripts/finite\_regulator\_extrapolation.py}
+\]
+takes this paragraph literally.  Its input data consist of regulator labels,
+finite observable values, an optional covariance matrix, nonnegative
+remainder envelopes, and half-open fit windows.  For each window it constructs
+\[
+  X_{ra}=K_r^{-a\omega},\qquad
+  B=(X^T\Sigma_W^{-1}X)^{-1}X^T\Sigma_W^{-1},
+\]
+then reports \(\widehat A_{\infty,W}\), the propagated statistical error
+\((e_0^TG^{-1}e_0)^{1/2}\), the deterministic coordinate
+\(\sum_r |B_{0r}|R_r\), the correlated residual, the condition number, and
+the spread of fitted intercepts across the declared windows.  Supplying the
+identity matrix as a covariance, or using diagonal errors, is part of the
+finite datum and is printed as such.  The script therefore checks the
+bookkeeping of a proposed extrapolation; it deliberately does not infer the
+cutoff exponent, the counterterm scheme, or the remainder estimate from the
+data.
+
 \section{Light-Front Hamiltonian}
 
 The light-front Hamiltonian convention used in this chapter is the regulator

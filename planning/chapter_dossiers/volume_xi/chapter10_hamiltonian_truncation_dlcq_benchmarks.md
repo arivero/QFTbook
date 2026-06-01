@@ -57,6 +57,10 @@ numerics.
 - `W`, `Sigma_W`, `f_a`, `G`, `S_W`, `chi_W^2`: correlated fit window,
   finite covariance matrix, declared fit functions, Gram matrix,
   deterministic systematic coordinate, and correlated residual coordinate.
+- `R_r`, `B_{0r}`, `A_hat_{infty,W}`: declared remainder envelopes,
+  intercept-weight row of the correlated-fit left inverse, and the fitted
+  window intercept reported by the public finite-regulator extrapolation
+  script.
 - `K_m(A,v)`, `V_m`, `T_m`, `beta_m`, `q_m`: finite Krylov subspace,
   orthonormal Krylov/Lanczos basis, tridiagonal compression, tail residual
   coordinate, and next Lanczos vector.
@@ -191,6 +195,11 @@ numerics.
   decomposition, covariance propagation, deterministic systematic coordinate,
   and correlated residual diagnostic without treating fit stability as a
   continuum theorem.
+- Adds a generic public finite-regulator extrapolation implementation that
+  uses the chapter's correlated-fit coordinates: regulator labels, finite
+  values, covariance source, remainder envelopes, and half-open fit windows
+  are explicit data, and the reported intercepts remain finite diagnostics
+  rather than continuum QFT claims.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
@@ -232,10 +241,17 @@ plots.
   DLCQ eigenvalue labels to a chosen polynomial in `K^{-omega}`, reporting
   residuals, conditioning, and the finite intercept-remainder amplification
   factor without asserting a continuum spectrum.
+- `qft_scripts/finite_regulator_extrapolation.py --smoke`: builds a
+  correlated synthetic finite-regulator data set, fits several declared
+  windows, and reports finite intercepts, propagated statistical errors,
+  deterministic systematic coordinates, residuals, condition numbers, and
+  window spread.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational and
   finite-matrix regression check for the Lagrange-interpolation obstruction,
   Richardson cancellation, integer-power extrapolation weights, and
-  correlated-fit covariance/error propagation used in the chapter.
+  correlated-fit covariance/error propagation used in the chapter; it also
+  imports the public finite-regulator extrapolation script and verifies its
+  public smoke coordinates against the displayed formulas.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, the scalar \(\phi^4\)
@@ -279,3 +295,8 @@ plots.
   \(1+1\)-dimensional \(\phi^4\) DLCQ warmup, keeping the omitted zero mode
   and \(K\to\infty\) counterterm problem explicit, and paired it with a
   smoke script plus finite matrix-element checks.
+- 2026-06-01 issue #494 correlated-extrapolation pass: added a reusable
+  finite-regulator extrapolation script for correlated data and window
+  diagnostics, with the manuscript text emphasizing that covariance choices,
+  remainders, and fit windows are declared data rather than hidden proof of a
+  continuum limit.

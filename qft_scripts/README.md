@@ -32,6 +32,7 @@ python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
+python3 qft_scripts/finite_regulator_extrapolation.py --smoke
 ```
 
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
@@ -153,3 +154,10 @@ per task.
   \(K^{-\omega}\), residuals, conditioning, and the finite linear-algebra
   amplification factor for a possible remainder bound; it does not assert a
   continuum meson spectrum without the missing analytic large-\(K\) estimate.
+- `finite_regulator_extrapolation.py`: generic correlated finite-regulator
+  extrapolation diagnostic.  It reads finite data, an optional covariance
+  matrix, declared remainder envelopes, and one or more fit windows; it
+  reports fitted intercepts, propagated statistical errors, deterministic
+  systematic coordinates, residuals, and window spread.  It is a data-analysis
+  certificate for a declared finite-regulator ansatz, not a proof of the
+  ansatz.

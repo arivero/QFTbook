@@ -1164,7 +1164,10 @@ Current checks:
   Lagrange interpolation nonuniqueness of finite cutoff data, two-cutoff
   Richardson cancellation, integer-power extrapolation weights with explicit
   remainder bounds, and correlated least-squares covariance/error
-  propagation for windowed continuum diagnostics.
+  propagation for windowed continuum diagnostics.  It also imports the
+  reader-facing `qft_scripts/finite_regulator_extrapolation.py` smoke datum
+  and verifies its public intercept, covariance, systematic-coordinate, and
+  window bookkeeping against the displayed linear algebra.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar
