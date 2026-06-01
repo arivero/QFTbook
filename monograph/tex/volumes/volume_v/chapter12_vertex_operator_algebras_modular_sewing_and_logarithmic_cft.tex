@@ -566,6 +566,95 @@ orbit basis, and together with \(T\) gives the genus-one modular
 representation on characters.
 \end{quotedtheorem}
 
+\paragraph{Rocha--Caridi characters and the Poisson origin of \(S\).}
+The Virasoro input behind Theorem~\ref{qthm:unitary-minimal-model-modular-data}
+is the Rocha--Caridi character formula.  Put \(K=m(m+1)\), \(q=e^{2\pi\ii\tau}\),
+and
+\[
+  \Theta_{\lambda,K}(\tau)
+  =
+  \sum_{n\in\mathbb Z}
+  q^{(2Kn+\lambda)^2/(4K)},
+  \qquad
+  \lambda\in\mathbb Z/2K\mathbb Z .
+\]
+For \(1\le r\le m-1\), \(1\le s\le m\), define
+\[
+  \lambda^-_{r,s}=(m+1)r-ms,
+  \qquad
+  \lambda^+_{r,s}=(m+1)r+ms .
+\]
+The irreducible minimal-model character is
+\begin{equation}
+  \chi_{r,s}^{(m)}(\tau)
+  =
+  \frac{
+  \Theta_{\lambda^-_{r,s},K}(\tau)
+  -
+  \Theta_{\lambda^+_{r,s},K}(\tau)}
+  {\eta(\tau)} .
+  \label{eq:unitary-minimal-rocha-caridi-character}
+\end{equation}
+The nontrivial representation-theoretic statement in
+\eqref{eq:unitary-minimal-rocha-caridi-character} is the alternating
+resolution of the irreducible Virasoro module by Verma modules.  Once that
+character formula is available, the displayed \(S\)-matrix is a finite Fourier
+calculation.  Poisson summation gives
+\begin{equation}
+  \Theta_{\lambda,K}(-1/\tau)
+  =
+  \sqrt{\frac{-\ii\tau}{2K}}\,
+  \sum_{\mu\in\mathbb Z/2K\mathbb Z}
+  e^{-\pi\ii\lambda\mu/K}\Theta_{\mu,K}(\tau),
+  \qquad
+  \eta(-1/\tau)=\sqrt{-\ii\tau}\,\eta(\tau).
+  \label{eq:unitary-minimal-poisson-theta}
+\end{equation}
+Therefore
+\[
+  \chi_{r,s}^{(m)}(-1/\tau)
+  =
+  \frac{1}{\sqrt{2K}}
+  \sum_{\mu\in\mathbb Z/2K\mathbb Z}
+  \left(
+  e^{-\pi\ii\lambda^-_{r,s}\mu/K}
+  -
+  e^{-\pi\ii\lambda^+_{r,s}\mu/K}
+  \right)
+  \frac{\Theta_{\mu,K}(\tau)}{\eta(\tau)} .
+\]
+Because \(\Theta_{\mu,K}=\Theta_{-\mu,K}\), the coefficient of
+\(\Theta_{\lambda^-_{r',s'},K}/\eta\) after grouping the pair
+\(\pm\lambda^-_{r',s'}\) is
+\begin{align}
+  &\frac{2}{\sqrt{2K}}
+  \left[
+  \cos\!\left(
+  \frac{\pi\lambda^-_{r,s}\lambda^-_{r',s'}}{K}
+  \right)
+  -
+  \cos\!\left(
+  \frac{\pi\lambda^+_{r,s}\lambda^-_{r',s'}}{K}
+  \right)
+  \right]                                      \notag\\
+  &\qquad =
+  2\sqrt{\frac{2}{m(m+1)}}\,
+  (-1)^{1+sr'+rs'}
+  \sin\!\left(\frac{\pi(m+1)rr'}{m}\right)
+  \sin\!\left(\frac{\pi mss'}{m+1}\right).
+  \label{eq:unitary-minimal-poisson-s-coefficient}
+\end{align}
+The same calculation gives the negative of
+\eqref{eq:unitary-minimal-poisson-s-coefficient} for
+\(\Theta_{\lambda^+_{r',s'},K}/\eta\), so the coefficient of the character
+\(\chi_{r',s'}^{(m)}\) is exactly
+\eqref{eq:unitary-minimal-model-s-matrix}.  The \(T\)-matrix follows from
+\(\Theta_{\lambda,K}(\tau+1)=e^{\pi\ii\lambda^2/(2K)}\Theta_{\lambda,K}(\tau)\),
+\(\eta(\tau+1)=e^{\pi\ii/12}\eta(\tau)\), and
+\((\lambda^+_{r,s})^2-(\lambda^-_{r,s})^2=4Krs\), which makes the two theta
+terms in \eqref{eq:unitary-minimal-rocha-caridi-character} acquire the same
+phase \(e^{2\pi\ii(h_{r,s}^{(m)}-c_m/24)}\).
+
 The label identification is a quotient, not a mnemonic.  The involution
 \[
   J(r,s)=(m-r,m+1-s)

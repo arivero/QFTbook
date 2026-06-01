@@ -161,9 +161,60 @@ def minimal_s_entry(m: int, left: tuple[int, int], right: tuple[int, int]) -> fl
     )
 
 
+def theta_label_minus(m: int, label: tuple[int, int]) -> int:
+    r, s = label
+    return (m + 1) * r - m * s
+
+
+def theta_label_plus(m: int, label: tuple[int, int]) -> int:
+    r, s = label
+    return (m + 1) * r + m * s
+
+
+def poisson_grouped_theta_coefficient(
+    m: int, source: tuple[int, int], target_theta_label: int
+) -> float:
+    k = m * (m + 1)
+    source_minus = theta_label_minus(m, source)
+    source_plus = theta_label_plus(m, source)
+    return (
+        2.0
+        * (
+            math.cos(math.pi * source_minus * target_theta_label / k)
+            - math.cos(math.pi * source_plus * target_theta_label / k)
+        )
+        / math.sqrt(2.0 * k)
+    )
+
+
 def minimal_s_matrix(m: int) -> list[list[float]]:
     labels = triangular_labels(m)
     return [[minimal_s_entry(m, left, right) for right in labels] for left in labels]
+
+
+def check_rocha_caridi_poisson_s_matrix() -> None:
+    for m in range(3, 9):
+        for source in triangular_labels(m):
+            for target in triangular_labels(m):
+                s_entry = minimal_s_entry(m, source, target)
+                coefficient_minus = poisson_grouped_theta_coefficient(
+                    m, source, theta_label_minus(m, target)
+                )
+                coefficient_plus = poisson_grouped_theta_coefficient(
+                    m, source, theta_label_plus(m, target)
+                )
+                assert_close(
+                    f"Rocha-Caridi Poisson coefficient theta-minus m={m} "
+                    f"source={source} target={target}",
+                    coefficient_minus,
+                    s_entry,
+                )
+                assert_close(
+                    f"Rocha-Caridi Poisson coefficient theta-plus m={m} "
+                    f"source={source} target={target}",
+                    coefficient_plus,
+                    -s_entry,
+                )
 
 
 def check_unitary_minimal_modular_data_and_fusion() -> None:
@@ -493,6 +544,7 @@ def check_ising_crossing_matrix_fixes_sigma_sigma_epsilon() -> None:
 
 def main() -> None:
     check_unitary_minimal_kac_tables()
+    check_rocha_caridi_poisson_s_matrix()
     check_unitary_minimal_modular_data_and_fusion()
     check_coulomb_gas_minimal_model_conventions()
     check_level_two_ising_sigma_null_vector()

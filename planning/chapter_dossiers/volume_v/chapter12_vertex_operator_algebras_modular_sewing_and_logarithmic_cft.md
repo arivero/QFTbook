@@ -122,10 +122,11 @@ current QFT scope.
   a quoted theorem boundary, exposes the Kac-determinant/positivity mechanism
   behind that boundary, records the Kac-table identification and triangular
   representative set, states the full unitary minimal-model \(S,T\) modular
-  data with quotient normalization, proves the finite
-  \(SU(2)\)-quotient fusion rule from Verlinde, derives the Ising spin
-  level-two null vector, and proves the Ising spin four-point BPZ/crossing
-  calculation fixing
+  data with quotient normalization, derives the \(S\)-matrix from the
+  Rocha--Caridi theta-character formula by Poisson summation and
+  cosine-to-sine reduction, proves the finite \(SU(2)\)-quotient fusion rule
+  from Verlinde, derives the Ising spin level-two null vector, and proves the
+  Ising spin four-point BPZ/crossing calculation fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 - Makes the Coulomb-gas screening construction more precise by defining the
   rank-one local system of the multivalued screening integrand, the twisted
@@ -233,11 +234,12 @@ current QFT scope.
   trace invisibility of the nilpotent part.
 - `calculation-checks/cft_virasoro_minimal_checks.py` verifies the unitary
   minimal-model Kac-table arithmetic, Ising and tricritical-Ising weights,
-  A-series minimal-model \(S\)-matrix orthogonality, \(S^2\), Verlinde
-  integrality and agreement with the exact \(SU(2)\)-quotient fusion rule,
-  level-two Ising Gram determinant/null vector, the level-two Kac determinant
-  roots \(h_{1,2}\) and \(h_{2,1}\), Ising BPZ block differential equation,
-  and the crossing matrix fixing
+  the Rocha--Caridi theta-character Poisson coefficient identities for the
+  A-series minimal-model \(S\)-matrix, \(S^2\), Verlinde integrality and
+  agreement with the exact \(SU(2)\)-quotient fusion rule, level-two Ising
+  Gram determinant/null vector, the level-two Kac determinant roots
+  \(h_{1,2}\) and \(h_{2,1}\), Ising BPZ block differential equation, and the
+  crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
