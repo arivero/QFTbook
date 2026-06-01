@@ -40,6 +40,24 @@ def state_measure_pairing(weights: list[Fraction], v: list[Fraction], w: list[Fr
     return sum(weight * vi * wi for weight, vi, wi in zip(weights, v, w))
 
 
+def polynomial_moments(weights: list[Fraction], points: list[Fraction], max_degree: int) -> list[Fraction]:
+    if len(weights) != len(points):
+        raise ValueError("weights and points must have equal length")
+    return [sum(weight * point**degree for weight, point in zip(weights, points)) for degree in range(max_degree + 1)]
+
+
+def solve_three_point_grid_weights(moments: list[Fraction]) -> list[Fraction]:
+    """Invert moments m_0,m_1,m_2 on the fixed grid {-1,0,1}."""
+
+    if len(moments) < 3:
+        raise ValueError("three moments are required on the three-point grid")
+    m0, m1, m2 = moments[:3]
+    weight_plus = (m2 + m1) / 2
+    weight_minus = (m2 - m1) / 2
+    weight_zero = m0 - m2
+    return [weight_minus, weight_zero, weight_plus]
+
+
 def two_detector_product(atoms: list[Atom], f: list[Fraction], g: list[Fraction]) -> Fraction:
     return detector_value(atoms, f) * detector_value(atoms, g)
 
@@ -137,6 +155,35 @@ def check_finite_bin_cauchy_schwarz() -> None:
     assert_nonnegative("finite-bin detector Cauchy-Schwarz determinant", vv * ww - vw * vw)
 
 
+def check_compact_moment_positive_matrix() -> None:
+    weights = [Fraction(1, 6), Fraction(1, 3), Fraction(1, 2)]
+    points = [Fraction(-1), Fraction(0), Fraction(1, 2)]
+    moments = polynomial_moments(weights, points, 2)
+    m0, m1, m2 = moments
+    assert_equal("compact moment total mass", m0, Fraction(1))
+    assert_nonnegative("degree-one moment matrix determinant", m0 * m2 - m1 * m1)
+
+
+def check_three_point_grid_moment_reconstruction() -> None:
+    points = [Fraction(-1), Fraction(0), Fraction(1)]
+    weights = [Fraction(1, 5), Fraction(1, 2), Fraction(3, 10)]
+    moments = polynomial_moments(weights, points, 2)
+    recovered = solve_three_point_grid_weights(moments)
+    assert_equal("three-point grid moment reconstruction", recovered, weights)
+
+
+def check_truncated_moment_ambiguity() -> None:
+    two_endpoint_weights = [Fraction(1, 2), Fraction(1, 2)]
+    two_endpoint_points = [Fraction(-1), Fraction(1)]
+    midpoint_weights = [Fraction(1)]
+    midpoint_points = [Fraction(0)]
+    endpoint_moments = polynomial_moments(two_endpoint_weights, two_endpoint_points, 2)
+    midpoint_moments = polynomial_moments(midpoint_weights, midpoint_points, 2)
+    assert_equal("same zeroth truncated moment", endpoint_moments[0], midpoint_moments[0])
+    assert_equal("same first truncated moment", endpoint_moments[1], midpoint_moments[1])
+    assert_equal("different second moment resolves ambiguity", endpoint_moments[2] - midpoint_moments[2], Fraction(1))
+
+
 def check_two_detector_diagonal_split() -> None:
     atoms: list[Atom] = [(Fraction(2, 5), "n1"), (Fraction(1, 3), "n2"), (Fraction(4, 15), "n3")]
     f = [Fraction(1, 2), Fraction(-2, 3), Fraction(5, 7)]
@@ -191,11 +238,14 @@ def check_three_detector_partition_decomposition() -> None:
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
+    check_compact_moment_positive_matrix()
+    check_three_point_grid_moment_reconstruction()
+    check_truncated_moment_ambiguity()
     check_two_detector_diagonal_split()
     check_disjoint_support_removes_diagonal()
     check_total_energy_ward_identity()
     check_three_detector_partition_decomposition()
-    print("All CFT energy-detector contact checks passed.")
+    print("All CFT energy-detector contact and moment checks passed.")
 
 
 if __name__ == "__main__":
