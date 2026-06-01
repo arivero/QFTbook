@@ -11,11 +11,12 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume Architecture
+## Complete Volume Architecture: Full Volume List
 
 The complete active public architecture is the twelve-volume series compiled
-by `monograph/tex/main.tex`.  The compact list below is therefore both the
-full current volume list and the printed order of the manuscript:
+by `monograph/tex/main.tex`.  The list below is the full current volume list
+and the printed order of the manuscript; no additional public volume is active
+outside this list.
 
 1. Volume I: Foundations of Local Quantum Field Theory
 2. Volume II: Particles, Scattering, and Analyticity
