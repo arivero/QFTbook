@@ -77,6 +77,9 @@ constructive RG developments.
 - `x_k`, `q`, `r`, `theta`: polymer norm, linear contraction factor
   `A_irr L^{-alpha}`, invariant radius, and contraction margin in the
   finite smallness budget.
+- `epsilon_j`, `E`, `sigma`: scale-dependent local-coordinate extraction
+  defects and their geometric envelope in the multiscale polymer forcing
+  estimate.
 - `S_{n,k}`: connected cumulant distribution reconstructed from normalized
   block-spin fields.
 - `Phi`, `Psi`: auxiliary-to-short-range RG transfer maps on Banach charts
@@ -113,6 +116,13 @@ constructive RG developments.
   finite one-step contraction budget
   \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\epsilon_k\), including the explicit
   radius condition \(q+B_{\rm pol}r+\epsilon_k/r<1\).
+- Derives the scale-summed polymer forcing estimate
+  \(x_n\le\theta^n x_0+\sum_{j<n}\theta^{n-1-j}\epsilon_j\), including the
+  closed geometric envelope for \(\epsilon_j\le E\sigma^j\) and the uniform
+  forcing invariant-ball condition \(x_0+E/(1-\theta)\le r\).  The dossier
+  records this as deterministic proof infrastructure: a model-specific
+  constructive theorem must still prove the input constants from covariance,
+  localization, and large-field estimates.
 - Defines the full data of a theorem-level nonperturbative Wilsonian fixed
   point: regulator class, map/domain/norm, fixed point, linearized spectrum,
   and reconstruction estimates.
@@ -247,6 +257,13 @@ remainder contraction.
   keeps the ordinary short-range critical scalar construction open: proving
   the constants uniformly along a tuned critical trajectory remains the
   model-specific theorem burden of issue #505.
+- 2026-06-01 polymer RG multiscale-forcing pass: extended the one-step
+  contraction budget to the deterministic sequence estimate
+  \(x_n\le\theta^nx_0+\sum_{j<n}\theta^{n-1-j}\epsilon_j\), with geometric
+  and uniform forcing envelopes.  This closes a bookkeeping gap between a
+  one-step polymer estimate and a scale-uniform trajectory estimate, while
+  preserving the open model-specific burden of constructing the constants
+  and source extensions for ordinary short-range critical scalar theories.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

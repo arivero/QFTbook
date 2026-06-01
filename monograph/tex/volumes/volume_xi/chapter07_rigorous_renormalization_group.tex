@@ -689,6 +689,56 @@ large-field regulator, the localization operator, the finite overlap bound,
 and the uniform smallness inequality.  Without these data the displayed
 contraction is a slogan, not a Wilsonian RG theorem.
 
+The same data must be controlled as a sequence of scales, not only at one
+scale.  Suppose that, for \(0\leq j<n\), the trajectory stays in the
+radius-\(r\) polymer ball and
+\[
+  q+B_{\rm pol}r\leq\theta<1 .
+\]
+Then \eqref{eq:rg-polymer-recursion-budget} implies the forced linear
+recursion
+\[
+  x_{j+1}\leq \theta x_j+\varepsilon_j
+  \qquad (0\leq j<n),
+\]
+and iteration gives
+\begin{equation}
+  x_n
+  \leq
+  \theta^n x_0+
+  \sum_{j=0}^{n-1}\theta^{\,n-1-j}\varepsilon_j .
+  \label{eq:rg-polymer-multiscale-forcing-bound}
+\end{equation}
+Thus a scale-dependent extraction error is harmless only after its weighted
+sum is controlled.  If
+\(\varepsilon_j\leq E\sigma^j\) with \(0<\sigma<1\), then
+\begin{equation}
+  \sum_{j=0}^{n-1}\theta^{\,n-1-j}\varepsilon_j
+  \leq
+  E\frac{\theta^n-\sigma^n}{\theta-\sigma}
+  \quad(\theta\neq\sigma),
+  \qquad
+  \leq En\theta^{n-1}
+  \quad(\theta=\sigma).
+  \label{eq:rg-polymer-geometric-forcing-bound}
+\end{equation}
+For a nondecaying uniform defect \(\varepsilon_j\leq E\), the corresponding
+bound is
+\[
+  x_n\leq\theta^nx_0+\frac{E(1-\theta^n)}{1-\theta}.
+\]
+Consequently the ball of radius \(r\) is invariant for all scales under the
+stronger smallness condition
+\begin{equation}
+  x_0+\frac{E}{1-\theta}\leq r
+  \label{eq:rg-polymer-uniform-forcing-invariant-ball}
+\end{equation}
+in the uniform-forcing case, or under the analogous supremum of the weighted
+geometric sum in the decaying case.  These estimates are still only
+bookkeeping; the model-specific constructive theorem must prove the bounds
+on \(q\), \(B_{\rm pol}\), \(r\), and \(\varepsilon_j\) from the covariance,
+localization, and large-field regulators.
+
 For ordinary short-range critical scalar models, the unresolved work is to
 construct this datum with constants uniform along the tuned critical
 trajectory and with source extensions strong enough for reconstructed

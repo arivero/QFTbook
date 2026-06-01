@@ -14,7 +14,9 @@ checks verify that finite-window agreement is a projective, seminorm-level
 certificate rather than a substitute for full universality.  The polymer
 checks verify the exact finite arithmetic behind the one-step contraction
 budget: linear irrelevant gain, quadratic circle-product contribution, and a
-finite local-coordinate extraction defect.
+finite local-coordinate extraction defect.  The multiscale polymer checks
+verify the forced-recursion sum that turns the one-step budget into a
+scale-uniform smallness condition.
 """
 
 from fractions import Fraction
@@ -329,6 +331,51 @@ def check_polymer_contraction_budget():
     assert_equal("polymer circle-product quadratic bound", product_bound, Fraction(1, 100))
 
 
+def check_polymer_multiscale_forcing_budget():
+    theta = Fraction(2, 5)
+    sigma = Fraction(1, 3)
+    forcing_size = Fraction(1, 100)
+    initial = Fraction(1, 20)
+
+    for steps in range(1, 8):
+        x = initial
+        for j in range(steps):
+            x = theta * x + forcing_size * sigma**j
+        expected = theta**steps * initial + forcing_size * sum(
+            theta ** (steps - 1 - j) * sigma**j for j in range(steps)
+        )
+        closed_form = (
+            theta**steps * initial
+            + forcing_size * (theta**steps - sigma**steps) / (theta - sigma)
+        )
+        assert_equal(f"polymer multiscale forcing recurrence {steps}", x, expected)
+        assert_equal(f"polymer multiscale geometric forcing {steps}", x, closed_form)
+
+    equal_rate = Fraction(1, 4)
+    equal_forcing = Fraction(3, 200)
+    for steps in range(1, 7):
+        forcing_sum = sum(
+            equal_rate ** (steps - 1 - j) * equal_forcing * equal_rate**j
+            for j in range(steps)
+        )
+        assert_equal(
+            f"polymer equal-rate forcing sum {steps}",
+            forcing_sum,
+            equal_forcing * steps * equal_rate ** (steps - 1),
+        )
+
+    uniform_forcing = Fraction(1, 500)
+    radius = Fraction(1, 10)
+    invariant_budget = initial + uniform_forcing / (1 - theta)
+    assert_true("polymer uniform-forcing invariant budget below radius", invariant_budget <= radius)
+    x = initial
+    for steps in range(1, 10):
+        x = theta * x + uniform_forcing
+        bound = theta**steps * initial + uniform_forcing * (1 - theta**steps) / (1 - theta)
+        assert_equal(f"polymer uniform-forcing bound {steps}", x, bound)
+        assert_true(f"polymer uniform-forcing orbit stays in radius {steps}", x <= radius)
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -339,6 +386,7 @@ def main():
     check_relevant_direction_tuning_amplification()
     check_observable_germ_finite_window_certificate()
     check_polymer_contraction_budget()
+    check_polymer_multiscale_forcing_budget()
     print("All short-range scalar RG reconstruction checks passed.")
 
 
