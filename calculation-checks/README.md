@@ -1405,6 +1405,11 @@ Current checks:
   IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
   counterexample for the groomed four-vector and the \(\beta_{\rm SD}>0\)
   threshold behavior.
+- `n_subjettiness_continuity_checks.py`: exact rational checks for the
+  minimized-\(N\)-subjettiness continuity section, using the \(N=1\),
+  \(\beta_\tau=2\) weighted-variance model to verify the soft-addition bound,
+  the collinear recombination variance identity, and independence of the
+  minimized value from a discrete axis-label choice.
 - `scet_factorization_checks.py`: finite checks for the SCET factorization
   datum in the jets chapter, including exact endpoint-convolution
   normalization and first-moment identities and a finite Wilson-line algebra

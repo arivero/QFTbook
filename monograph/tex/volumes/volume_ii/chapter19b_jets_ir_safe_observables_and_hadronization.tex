@@ -652,6 +652,142 @@ denominator boundary their distribution requires the same factorization and
 resummation data as the underlying \(\tau_N\).
 \end{definition}
 
+The axis prescription is part of the observable.  One prescription with a
+clean nonperturbative formulation is global minimization over axes.  Let
+\((Y,d)\) be the compact angular patch of a jet, with
+\(\operatorname{diam}Y\le R_0\), and let \(\mu\) be the positive transverse
+energy measure of the jet constituents on \(Y\).  For \(M=\mu(Y)>0\), define
+\begin{equation}
+  \tau_{N,\min}^{(\beta_\tau)}(\mu)
+  =
+  \frac1{M R_0^{\beta_\tau}}
+  \inf_{(a_1,\ldots,a_N)\in Y^N}
+  \int_Y
+  \min_{1\le r\le N}d(\mathbf n,a_r)^{\beta_\tau}\,
+  \dd\mu(\mathbf n).
+  \label{eq:minimized-n-subjettiness-measure}
+\end{equation}
+For an event consisting of finitely many hadrons this is the usual
+\(N\)-subjettiness value with axes chosen by global minimization.  The set of
+minimizing axes can have several components at symmetric configurations; the
+observable in \eqref{eq:minimized-n-subjettiness-measure} is the minimized
+value, not a chosen point in the minimizer set.
+
+\begin{lemma}[Continuity of minimized \(N\)-subjettiness]
+\label{lem:minimized-subjettiness-continuity}
+Fix \(N\ge1\), \(\beta_\tau>0\), \(0<m_0<E<\infty\), and restrict to positive
+measures \(\mu\) on \(Y\) with \(m_0\le \mu(Y)\le E\).  The functional
+\(\tau_{N,\min}^{(\beta_\tau)}\) of
+\eqref{eq:minimized-n-subjettiness-measure} is weakly continuous.  If a soft
+constituent of transverse energy \(\varepsilon\) is added, then
+\begin{equation}
+  \left|
+  \tau_{N,\min}^{(\beta_\tau)}(\mu+\varepsilon\delta_{\mathbf m})
+  -
+  \tau_{N,\min}^{(\beta_\tau)}(\mu)
+  \right|
+  \le \frac{2\varepsilon}{m_0}.
+  \label{eq:minimized-subjettiness-soft-bound}
+\end{equation}
+If two constituents of total transverse energy \(E_{ab}\) and angular
+separation \(\theta\) are replaced by their transverse-energy parent direction
+\(\mathbf n_{ab}\), and if
+\[
+  d(\mathbf n_a,\mathbf n_{ab})+d(\mathbf n_b,\mathbf n_{ab})
+  \le c\,\theta ,
+\]
+then
+\begin{equation}
+  \left|
+  \Delta\tau_{N,\min}^{(\beta_\tau)}
+  \right|
+  \le
+  \frac{E_{ab}}{m_0R_0^{\beta_\tau}}\,
+  C_{\beta_\tau,R_0}\,(c\theta)^{\alpha_\tau},
+  \qquad
+  \alpha_\tau=\min(\beta_\tau,1),
+  \label{eq:minimized-subjettiness-collinear-bound}
+\end{equation}
+where one may take \(C_{\beta,R_0}=1\) for \(0<\beta\le1\) and
+\(C_{\beta,R_0}=\beta R_0^{\beta-1}\) for \(\beta\ge1\).
+\end{lemma}
+
+\begin{proof}
+For \(A=(a_1,\ldots,a_N)\in Y^N\), set
+\[
+  \Phi_A(\mathbf n)=\min_{1\le r\le N}d(\mathbf n,a_r)^{\beta_\tau}.
+\]
+The space \(Y^N\) is compact, and \(A\mapsto\Phi_A\) is continuous as a map
+from \(Y^N\) to \(C(Y)\) with the uniform norm.  Therefore the infimum in
+\eqref{eq:minimized-n-subjettiness-measure} is attained.  The family
+\(\{\Phi_A:A\in Y^N\}\) is compact in \(C(Y)\).  If \(\mu_j\to\mu\) weakly
+with uniformly bounded total mass, then
+\[
+  \sup_{A\in Y^N}
+  \left|
+  \int\Phi_A\,\dd\mu_j-\int\Phi_A\,\dd\mu
+  \right|\longrightarrow0 .
+\]
+Indeed, approximate the compact family \(\{\Phi_A\}\) by a finite
+\(\eta\)-net in \(C(Y)\), use weak convergence on the finite net, and then
+let \(\eta\downarrow0\).  Taking infima over \(A\) is continuous under this
+uniform convergence, and division by \(M=\mu(Y)\), bounded away from zero,
+gives weak continuity of \(\tau_{N,\min}^{(\beta_\tau)}\).
+
+For a soft addition, write
+\[
+  I(\mu)=\inf_A\int\Phi_A\,\dd\mu .
+\]
+Since \(0\le\Phi_A\le R_0^{\beta_\tau}\), one has
+\[
+  |I(\mu+\varepsilon\delta_{\mathbf m})-I(\mu)|
+  \le \varepsilon R_0^{\beta_\tau}.
+\]
+Also \(I(\mu)\le M R_0^{\beta_\tau}\).  With
+\(M' = M+\varepsilon\),
+\[
+  \left|
+  \frac{I(\mu+\varepsilon\delta_{\mathbf m})}{M'R_0^{\beta_\tau}}
+  -
+  \frac{I(\mu)}{MR_0^{\beta_\tau}}
+  \right|
+  \le
+  \frac{\varepsilon}{M'}+
+  \frac{\varepsilon}{M'}
+  \le \frac{2\varepsilon}{m_0}.
+\]
+
+For collinear recombination, the total mass \(M\) is unchanged.  The function
+\(t\mapsto t^{\beta_\tau}\) on \([0,R_0]\) is
+\(\alpha_\tau\)-Hölder with the displayed constant:
+\[
+  |u^{\beta_\tau}-v^{\beta_\tau}|
+  \le C_{\beta_\tau,R_0}|u-v|^{\alpha_\tau}.
+\]
+For every axis tuple \(A\),
+\[
+  |\Phi_A(\mathbf n_a)-\Phi_A(\mathbf n_{ab})|
+  +
+  |\Phi_A(\mathbf n_b)-\Phi_A(\mathbf n_{ab})|
+  \le C_{\beta_\tau,R_0}(c\theta)^{\alpha_\tau},
+\]
+up to replacing \(c\) by a harmless larger constant if the parent-direction
+bound is stated separately for each daughter.  Hence the change in
+\(\int\Phi_A\,\dd\mu\) is bounded by
+\(E_{ab}C_{\beta_\tau,R_0}(c\theta)^{\alpha_\tau}\), uniformly in \(A\).
+Taking infima before and after recombination and dividing by
+\(MR_0^{\beta_\tau}\), with \(M\ge m_0\), gives
+\eqref{eq:minimized-subjettiness-collinear-bound}.
+\end{proof}
+
+Thus minimizing-axis \(N\)-subjettiness is an IRC-continuous calorimetric
+observable as a value functional.  An algorithm that returns one selected
+minimizing axis may jump at degenerate events, but the minimized value used
+in the weighted cross section is continuous in the soft and collinear senses
+above.  Ratios such as \(\tau_{21}\) inherit this control only on regions
+where the denominator is bounded away from zero; otherwise their endpoint
+distribution is a separate singular observable.
+
 Energy-correlation functions, defined in
 Chapter~\ref{ch:volume-ii-19}, provide a detector-based substructure
 alternative.  They depend only on the positive calorimetric measure and

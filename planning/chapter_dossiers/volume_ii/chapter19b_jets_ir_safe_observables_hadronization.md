@@ -49,6 +49,9 @@ The chapter establishes:
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
+- the minimized-\(N\)-subjettiness value functional on a compact angular jet
+  patch, with existence of minimizing axes and soft/collinear continuity of
+  the minimized value rather than of a chosen axis label;
 - a finite-kernel track-function evolution datum and a worked moment-coordinate
   derivation proving normalization preservation and the first-moment evolution
   formula under paired real--virtual track-function RG;
@@ -107,6 +110,10 @@ The chapter establishes:
     four-vector, while for \(\beta_{\rm SD}=0\) the groomed four-vector itself
     is not collinear safe; mMDT safety statements must name the measured
     groomed functional.
+9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
+    calorimetric value functional on finite-energy jet measures; selected
+    minimizing axes are auxiliary data and can jump at degenerate events
+    without making the minimized value discontinuous.
 10. Smeared energy correlators are continuous functionals of the positive
     calorimetric energy measure; their polynomial algebra separates
     finite-energy calorimetric measures and is dense in continuous
@@ -154,6 +161,11 @@ The chapter establishes:
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added
   `calculation-checks/soft_drop_irc_checks.py`.
+- 2026-06-01 issue #526/#630 continuation: added the minimized
+  \(N\)-subjettiness measure-functional definition, proved existence of
+  minimizing axes and continuity of the minimized value under weak, soft, and
+  collinear variations, and added
+  `calculation-checks/n_subjettiness_continuity_checks.py`.
 - 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
   RG datum, proved normalization preservation and first-moment evolution, and
   added `calculation-checks/track_function_moment_checks.py`.

@@ -107,9 +107,13 @@ fi
 
 if ((list_only)); then
   echo "[calculation-checks] selected Python checks: ${#python_checks[@]}"
-  printf '%s\n' "${python_checks[@]}"
+  if ((${#python_checks[@]})); then
+    printf '%s\n' "${python_checks[@]}"
+  fi
   echo "[calculation-checks] selected Wolfram Language checks: ${#wolfram_checks[@]}"
-  printf '%s\n' "${wolfram_checks[@]}"
+  if ((${#wolfram_checks[@]})); then
+    printf '%s\n' "${wolfram_checks[@]}"
+  fi
   exit 0
 fi
 
@@ -118,10 +122,12 @@ if ((${#python_checks[@]} + ${#wolfram_checks[@]} == 0)); then
   exit 1
 fi
 
-for check in "${python_checks[@]}"; do
-  echo "[calculation-checks] python ${check}"
-  python3 "$check"
-done
+if ((${#python_checks[@]})); then
+  for check in "${python_checks[@]}"; do
+    echo "[calculation-checks] python ${check}"
+    python3 "$check"
+  done
+fi
 
 find_wolframscript() {
   if [[ -n "${WOLFRAMSCRIPT:-}" && -x "${WOLFRAMSCRIPT:-}" ]]; then
@@ -262,10 +268,12 @@ elif WOLFRAMKERNEL="$(find_wolframkernel)"; then
   # elementary local code, while the kernel script entrypoint runs directly.
   WOLFRAM_TIMEOUT="${QFT_WOLFRAM_TIMEOUT:-90s}"
   probe_wolfram_backend
-  for check in "${wolfram_checks[@]}"; do
-    echo "[calculation-checks] wolfram ${check}"
-    run_wolfram_file "$check"
-  done
+  if ((${#wolfram_checks[@]})); then
+    for check in "${wolfram_checks[@]}"; do
+      echo "[calculation-checks] wolfram ${check}"
+      run_wolfram_file "$check"
+    done
+  fi
 elif WOLFRAMSCRIPT="$(find_wolframscript)"; then
   WOLFRAM_LABEL="$WOLFRAMSCRIPT -file"
   WOLFRAM_CMD=("$WOLFRAMSCRIPT" -file)
@@ -275,10 +283,12 @@ elif WOLFRAMSCRIPT="$(find_wolframscript)"; then
   # Python so that they are fast, batch-friendly, and easy for agents to run.
   WOLFRAM_TIMEOUT="${QFT_WOLFRAM_TIMEOUT:-90s}"
   probe_wolfram_backend
-  for check in "${wolfram_checks[@]}"; do
-    echo "[calculation-checks] wolfram ${check}"
-    run_wolfram_file "$check"
-  done
+  if ((${#wolfram_checks[@]})); then
+    for check in "${wolfram_checks[@]}"; do
+      echo "[calculation-checks] wolfram ${check}"
+      run_wolfram_file "$check"
+    done
+  fi
 else
   echo "[calculation-checks] FAILED: ${#wolfram_checks[@]} Wolfram Language check(s) exist, but no Wolfram backend was found." >&2
   echo "[calculation-checks] Install or expose WolframKernel/wolframscript, or set QFT_SKIP_WOLFRAM=1 only for an explicitly Python-only pass." >&2
