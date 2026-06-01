@@ -3,16 +3,119 @@
 
 from __future__ import annotations
 
+from fractions import Fraction
 from itertools import combinations
 
 
 Simplex = tuple[int, ...]
 Cochain = dict[Simplex, int]
+Monomial = tuple[int, int]
+Polynomial = dict[Monomial, Fraction]
 
 
 def assert_equal(lhs, rhs, message: str) -> None:
     if lhs != rhs:
         raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
+
+
+def clean(poly: Polynomial) -> Polynomial:
+    return {monomial: coeff for monomial, coeff in poly.items() if coeff}
+
+
+def poly_add(*terms: Polynomial) -> Polynomial:
+    result: Polynomial = {}
+    for poly in terms:
+        for monomial, coeff in poly.items():
+            result[monomial] = result.get(monomial, Fraction(0)) + coeff
+    return clean(result)
+
+
+def poly_scale(poly: Polynomial, scalar: Fraction) -> Polynomial:
+    return clean({monomial: scalar * coeff for monomial, coeff in poly.items()})
+
+
+def poly_derivative(poly: Polynomial, variable: int) -> Polynomial:
+    result: Polynomial = {}
+    for (x_power, y_power), coeff in poly.items():
+        powers = [x_power, y_power]
+        if powers[variable] == 0:
+            continue
+        new_powers = powers[:]
+        new_powers[variable] -= 1
+        result[tuple(new_powers)] = coeff * powers[variable]
+    return clean(result)
+
+
+def poly_multiply_by_linear(poly: Polynomial, x_coeff: Fraction, y_coeff: Fraction) -> Polynomial:
+    result: Polynomial = {}
+    for (x_power, y_power), coeff in poly.items():
+        if x_coeff:
+            monomial = (x_power + 1, y_power)
+            result[monomial] = result.get(monomial, Fraction(0)) + coeff * x_coeff
+        if y_coeff:
+            monomial = (x_power, y_power + 1)
+            result[monomial] = result.get(monomial, Fraction(0)) + coeff * y_coeff
+    return clean(result)
+
+
+def affine_action(generator: int, poly: Polynomial) -> Polynomial:
+    """Act on polynomials by the nonabelian two-dimensional algebra.
+
+    The vector fields are R_0 = x d/dx and R_1 = y d/dx.  They obey
+    [R_0,R_1] = -R_1, so the corresponding Lie bracket is [e_0,e_1] = -e_1.
+    """
+
+    dx = poly_derivative(poly, 0)
+    if generator == 0:
+        return poly_multiply_by_linear(dx, Fraction(1), Fraction(0))
+    if generator == 1:
+        return poly_multiply_by_linear(dx, Fraction(0), Fraction(1))
+    raise ValueError(f"unknown generator {generator}")
+
+
+def bracket_coefficients(first: int, second: int) -> tuple[Fraction, Fraction]:
+    if (first, second) == (0, 1):
+        return (Fraction(0), Fraction(-1))
+    if (first, second) == (1, 0):
+        return (Fraction(0), Fraction(1))
+    return (Fraction(0), Fraction(0))
+
+
+def anomaly_for_bracket(
+    anomalies: tuple[Polynomial, Polynomial], first: int, second: int
+) -> Polynomial:
+    coeff0, coeff1 = bracket_coefficients(first, second)
+    return poly_add(poly_scale(anomalies[0], coeff0), poly_scale(anomalies[1], coeff1))
+
+
+def check_chevalley_eilenberg_wess_zumino_sign() -> None:
+    """Verify the finite algebra behind the Wess-Zumino consistency sign.
+
+    For a local counterterm K(x,y), the exact anomaly one-cochain
+    A_i = R_i K must satisfy
+        R_i A_j - R_j A_i - A_[i,j] = 0.
+    This is the finite-dimensional Chevalley-Eilenberg identity used by the
+    BRST ghost-number-two extraction in the chapter.
+    """
+
+    local_counterterm: Polynomial = {
+        (2, 0): Fraction(2),
+        (1, 1): Fraction(3),
+        (0, 2): Fraction(5),
+        (3, 0): Fraction(-1),
+        (2, 1): Fraction(4),
+    }
+    anomalies = (
+        affine_action(0, local_counterterm),
+        affine_action(1, local_counterterm),
+    )
+    for first, second in ((0, 1), (1, 0), (0, 0), (1, 1)):
+        ce_value = poly_add(
+            affine_action(first, anomalies[second]),
+            poly_scale(affine_action(second, anomalies[first]), Fraction(-1)),
+            poly_scale(anomaly_for_bracket(anomalies, first, second), Fraction(-1)),
+        )
+        assert_equal(ce_value, {}, "Chevalley-Eilenberg Wess-Zumino sign")
 
 
 def anomaly_cocycle(n: int, level: int, gauge: int, background: int) -> int:
@@ -155,10 +258,11 @@ def check_finite_bf_boundary_variation() -> None:
 
 
 def main() -> None:
+    check_chevalley_eilenberg_wess_zumino_sign()
     check_functorial_cocycle_condition()
     check_counterterm_frame_change_preserves_cocycle()
     check_finite_bf_boundary_variation()
-    print("Anomaly-line and finite-inflow cochain checks passed.")
+    print("Anomaly-line, descent-cocycle, and finite-inflow cochain checks passed.")
 
 
 if __name__ == "__main__":

@@ -403,7 +403,7 @@ phase for the combined bulk-boundary object to be gauge invariant.
 
 \begin{proposition}[Wess--Zumino consistency from descent]
 \label{prop:wess-zumino-consistency-from-descent}
-Let
+Let \(M\) be a closed \(D\)-manifold and let
 \[
   \delta_\alpha W_M[A]
   =
@@ -428,36 +428,82 @@ Introduce a ghost \(c\) valued in the Lie algebra and the BRST differential
   \qquad
   \mathsf s I_D^{(1)}+dI_{D-1}^{(2)}=0,
 \]
-after the sign convention in the definition of \(I_D^{(1)}\) is fixed.  The
-component of the first equation linear in a ghost value \(\alpha\) is the
-descent relation
-\(\delta_\alpha I_{D+1}^{(0)}=dI_D^{(1)}(\alpha,A)\).
-
-Equivalently, gauge transformations act on the Chern--Simons representative by
-the Lie algebra action:
+with the sign convention chosen so that the component of the first equation
+linear in a ghost value \(\alpha\) is
 \[
-  [\delta_\alpha,\delta_\beta]I_{D+1}^{(0)}
+  \delta_\alpha I_{D+1}^{(0)}(A)=dI_D^{(1)}(\alpha,A).
+\]
+We now extract the ghost-number-two coefficient explicitly.  Introduce two
+odd scalar tags \(\varepsilon,\eta\), put
+\[
+  c=\varepsilon\alpha+\eta\beta,
+  \qquad
+  \varepsilon\eta=-\eta\varepsilon,\qquad
+  \varepsilon^2=\eta^2=0.
+\]
+The BRST rule gives
+\[
+  [c,c]=2\varepsilon\eta[\alpha,\beta],
+  \qquad
+  \mathsf sc=-\varepsilon\eta[\alpha,\beta],
+\]
+while
+\[
+  \mathsf sA
   =
-  \delta_{[\alpha,\beta]}I_{D+1}^{(0)}.
+  \varepsilon D_A\alpha+\eta D_A\beta .
 \]
-Using
-\(\delta_\alpha I_{D+1}^{(0)}=dI_D^{(1)}(\alpha,A)\), this becomes
+Since \(I_D^{(1)}(c,A)\) is linear in \(c\), the coefficient of
+\(\varepsilon\eta\) in \(\mathsf s I_D^{(1)}(c,A)\) is
+\begin{equation}
+  \delta_\alpha I_D^{(1)}(\beta,A)
+  -
+  \delta_\beta I_D^{(1)}(\alpha,A)
+  -
+  I_D^{(1)}([\alpha,\beta],A).
+  \label{eq:wz-ce-cochain-from-ghost-two}
+\end{equation}
+The first two terms come from the variation of \(A\); the relative minus sign
+is the Koszul sign obtained when the odd tag of the varied parameter crosses
+the odd BRST differential.  The last term comes from
+\(\mathsf sc=-\varepsilon\eta[\alpha,\beta]\).  Thus the second descent
+equation gives
+\begin{equation}
+  \delta_\alpha I_D^{(1)}(\beta,A)
+  -
+  \delta_\beta I_D^{(1)}(\alpha,A)
+  -
+  I_D^{(1)}([\alpha,\beta],A)
+  =
+  -d\,I_{D-1}^{(2)}(\alpha,\beta,A),
+  \label{eq:wz-ce-coboundary-is-total-derivative}
+\end{equation}
+where \(I_{D-1}^{(2)}(\alpha,\beta,A)\) denotes the
+\(\varepsilon\eta\)-coefficient of \(I_{D-1}^{(2)}(c,A)\).
+
+Integrating \eqref{eq:wz-ce-coboundary-is-total-derivative} over closed \(M\)
+annihilates the right side.  Multiplication by \(2\pi\ii\) gives
 \[
-  d\left(
-    \delta_\alpha I_D^{(1)}(\beta,A)
-    -
-    \delta_\beta I_D^{(1)}(\alpha,A)
-    -
-    I_D^{(1)}([\alpha,\beta],A)
-  \right)=0.
+  \delta_\alpha\delta_\beta W_M
+  -
+  \delta_\beta\delta_\alpha W_M
+  -
+  \delta_{[\alpha,\beta]}W_M
+  =
+  0.
 \]
-The second descent equation identifies the \(D\)-form in parentheses as
-\(-dI_{D-1}^{(2)}(\alpha,\beta,A)\), up to the standard freedom of changing
-\(I_D^{(1)}\) by a local counterterm coboundary.  Its integral on a closed
-\(M\) therefore vanishes modulo that counterterm convention.  Substituting the
-definition of \(\delta W_M\) gives the displayed Wess--Zumino consistency
-condition.  It is the functorial cocycle condition of
-Remark~\ref{rem:anomaly-line-functorial-cocycle} written infinitesimally.
+This is the Chevalley--Eilenberg cocycle condition for the local anomaly
+one-cochain
+\[
+  \mathcal A_M(\alpha;A)
+  =
+  2\pi\ii\int_M I_D^{(1)}(\alpha,A).
+\]
+A change of descent representative by a local counterterm adds a
+Chevalley--Eilenberg coboundary, so the identity survives the representative
+change.  If \(M\) has a boundary, the right side of
+\eqref{eq:wz-ce-coboundary-is-total-derivative} is the boundary descent term
+that must be included in the corresponding relative anomaly-line datum.
 \end{proof}
 
 \begin{remark}[Cocycle ambiguity and local counterterms]

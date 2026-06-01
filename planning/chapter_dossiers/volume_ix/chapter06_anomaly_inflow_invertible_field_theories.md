@@ -48,8 +48,10 @@ boundary condition for an invertible bulk theory.
   lift made explicit.
 - Derives the connected-symmetry descent variation from
   `dI_{D+1}^{(0)}=P_{D+2}`.
-- Derives Wess--Zumino consistency as the infinitesimal form of anomaly-line
-  functoriality.
+- Derives Wess--Zumino consistency as the Chevalley--Eilenberg cocycle
+  condition obtained from the ghost-number-two component of the BRST descent
+  tower, with the Koszul sign and the \(-I_D^{(1)}([\alpha,\beta],A)\) term
+  extracted explicitly.
 - Proves that changing the Chern-Simons representative by `dK_D` shifts the
   boundary anomaly by the variation of a local counterterm.
 - Defines finite higher-form inflow by cochain cocycles on `B^{p+1}A`.
@@ -86,8 +88,9 @@ boundary condition for an invertible bulk theory.
   rational coefficients used in the Weyl-fermion inflow calculation and the
   one-generation Standard Model anomaly sums.
 - `calculation-checks/inflow_anomaly_line_checks.py` verifies anomaly-line
-  cocycle composition, frame/counterterm shifts of representatives, and the
-  finite cochain Stokes identity for one-form \(BF\) inflow.
+  cocycle composition, the finite Chevalley--Eilenberg sign identity behind
+  Wess--Zumino consistency, frame/counterterm shifts of representatives, and
+  the finite cochain Stokes identity for one-form \(BF\) inflow.
 
 ## Figure Ledger
 

@@ -131,10 +131,11 @@ Current checks:
   extension through a tensor density matrix, positivity on \(C^*C\), and the
   separated bilinear expansion produced by a finite-rank nuclear map.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
-  chapter, including functorial composition of anomaly-line cocycles, local
-  counterterm/frame changes of cocycle representatives, and the finite
-  cochain Stokes identity behind the five-dimensional one-form \(BF\) inflow
-  variation.
+  chapter, including the finite Chevalley--Eilenberg sign identity underlying
+  Wess--Zumino descent consistency, functorial composition of anomaly-line
+  cocycles, local counterterm/frame changes of cocycle representatives, and
+  the finite cochain Stokes identity behind the five-dimensional one-form
+  \(BF\) inflow variation.
 - `kms_foundation_checks.py`: finite checks for the Volume X KMS-foundations
   chapter, including the finite Gibbs-trace KMS strip boundary condition,
   detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
