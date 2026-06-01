@@ -75,10 +75,11 @@ Current checks:
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,
   Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
-  multiplicativity, the finite skew-block Pfaffian orientation model,
-  vanishing of the ordinary \(SU(2)\) cubic weight sum, the Quillen
-  spectral-cut transition cocycle for determinant-line charts, and the finite
-  \(U(1)\)-phase algebra of Dai--Freed gluing.
+  multiplicativity, the reduced-eta integer jump at a single eigenvalue
+  crossing, the finite skew-block Pfaffian orientation model, vanishing of the
+  ordinary \(SU(2)\) cubic weight sum, the Quillen spectral-cut transition
+  cocycle for determinant-line charts, and the finite \(U(1)\)-phase algebra
+  of Dai--Freed gluing.
 - `free_fock_nuclearity_checks.py`: finite checks for the Volume IV
   nuclearity phase-space benchmark, including the bosonic finite-mode product
   formula, the sup-norm lattice shell count and derivative bound, and

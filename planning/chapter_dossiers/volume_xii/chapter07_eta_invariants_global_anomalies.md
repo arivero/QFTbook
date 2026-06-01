@@ -42,6 +42,10 @@ global anomaly as an explicit mod-two-index example.
   the low-mode line \(L_a(b)\), the finite window
   \(E_{[a,c)}^\pm(b)\), the determinant transition element
   \(\det D^+_{[a,c)}\), and its cocycle identity under a refinement of cuts.
+- Connects reduced-eta integer jumps at eigenvalue crossings to the
+  determinant-line spectral-cut transition rule, explaining that local
+  curvature, spectral-flow jumps, and mapping-torus eta phases are curvature,
+  transition, and holonomy data of the same anomaly line.
 - Explains finite gauge-transformation phases as determinant-line holonomies,
   as a direct application of the quoted Bismut--Freed holonomy theorem to the
   mapping torus of the gauge transformation.
@@ -81,8 +85,8 @@ global anomaly as an explicit mod-two-index example.
   congruence arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
   obstruction to descent, and the Quillen spectral-cut transition cocycle for
-  determinant-line charts, and the finite \(U(1)\)-phase algebra behind
-  Dai--Freed gluing.
+  determinant-line charts, the reduced-eta integer jump at a one-mode
+  crossing, and the finite \(U(1)\)-phase algebra behind Dai--Freed gluing.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -126,6 +130,9 @@ global anomaly as an explicit mod-two-index example.
   construction with low-mode spectral-cut charts, finite transition
   determinants, and the determinant cocycle under refinement of cuts; extended
   the eta/global-anomaly calculation check accordingly.
+- 2026-05-31 eta-jump/chart-compatibility pass: added the mechanism connecting
+  reduced-eta integer jumps to the finite determinant-line chart transition,
+  and added an exact single-mode calculation check for the convention.
 - 2026-05-31 finite Pfaffian orientation pass: added a finite real skew-block
   model explaining Pfaffian sign holonomy as orientation parity and extended
   `eta_global_anomaly_checks.py` to verify Pfaffian-square,

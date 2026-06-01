@@ -117,6 +117,30 @@ def check_orientation_reversal_eta_bookkeeping() -> None:
         )
 
 
+def reduced_eta_single_mode(sign_label: int) -> Fraction:
+    """Contribution of one crossing eigenvalue to xi=(eta+h)/2.
+
+    sign_label is -1 for a negative eigenvalue, 0 at the kernel crossing,
+    and +1 for a positive eigenvalue.
+    """
+
+    eta = Fraction(sign_label)
+    kernel_dim = 1 if sign_label == 0 else 0
+    return (eta + kernel_dim) / 2
+
+
+def check_reduced_eta_crossing_integer_jump() -> None:
+    negative = reduced_eta_single_mode(-1)
+    zero = reduced_eta_single_mode(0)
+    positive = reduced_eta_single_mode(1)
+    assert_equal("single-mode eta contribution below zero", negative, Fraction(-1, 2))
+    assert_equal("single-mode eta contribution at zero", zero, Fraction(1, 2))
+    assert_equal("single-mode eta contribution above zero", positive, Fraction(1, 2))
+    assert_equal("upward crossing changes reduced eta by an integer", positive - negative, Fraction(1))
+    assert_equal("downward crossing changes reduced eta by an integer", negative - positive, Fraction(-1))
+    assert_equal("eta phase is unchanged by upward integer jump", mod_one(positive - negative), Fraction(0))
+
+
 def check_aps_cylinder_congruence() -> None:
     examples = [
         (Fraction(5, 3), Fraction(2, 3), 2),
@@ -316,6 +340,7 @@ def main() -> None:
     check_finite_pfaffian_block_model()
     check_su2_cubic_weight_sum_vanishes()
     check_orientation_reversal_eta_bookkeeping()
+    check_reduced_eta_crossing_integer_jump()
     check_aps_cylinder_congruence()
     check_quillen_spectral_cut_transition_cocycle()
     check_dai_freed_gluing_phase_algebra()

@@ -350,6 +350,40 @@ the local determinant-line charts.  The zeta-regularized high-mode determinant
 and the heat-kernel counterterm supply the infinite-dimensional continuation of
 the same transition rule.
 
+\paragraph{Compatibility with eta jumps.}
+The determinant-line chart transition and the reduced eta invariant describe
+the same zero-mode bookkeeping from two different sides.  Consider first one
+real eigenvalue \(\lambda(t)\) of a self-adjoint tangential operator \(B_t\)
+crossing through zero from negative to positive, with all other eigenvalues
+kept fixed away from zero.  Its contribution to the reduced eta invariant is
+\[
+  \xi_\lambda(t)
+  =
+  \begin{cases}
+    -\frac12, & \lambda(t)<0,\\[2mm]
+    \frac12, & \lambda(t)=0,\\[2mm]
+    \frac12, & \lambda(t)>0,
+  \end{cases}
+\]
+where the middle value comes from the kernel term \(h(B_t)\).  The
+one-sided change of \(\xi\) is therefore \(+1\), and a downward crossing gives
+\(-1\).  Thus the exponentiated phase
+\(\exp(-2\pi\ii\,\xi)\) is continuous across such an integer jump.
+
+In the determinant-line construction the same event appears as a change of
+low-mode chart.  Near a kernel jump, the zeta determinant of the complement
+and the zero-mode factor carried by the finite-dimensional determinant line
+\(L_a(b)\) together form the fermion determinant vector.  When the cut is
+moved across a small eigenvalue window, the local scalar determinant changes
+by the finite determinant \(\det D^+_{[a,c)}\), while the basis of the
+determinant-line chart changes by the inverse transition element.  Their
+product is a vector in the Quillen line and is independent of the auxiliary
+spectral cut.  The integer spectral-flow term in the eta description is
+precisely the phase shadow of this finite chart transition.  Consequently the
+smooth local curvature, the finite spectral-flow jumps, and the
+mapping-torus eta phase are the curvature, transition, and holonomy data of
+the same determinant line.
+
 For a loop \(\gamma\), the holonomy problem is converted into an index problem
 on the odd-dimensional mapping torus \(Y_\gamma\).  One stretches the circle
 direction adiabatically.  The local curvature contribution becomes the
