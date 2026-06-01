@@ -11,7 +11,48 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Volume Program
+## Complete Volume Index And Program
+
+### Active Compiled Volumes
+
+The active public manuscript currently consists of exactly twelve compiled
+volumes:
+
+1. Volume I: Foundations of Local Quantum Field Theory
+2. Volume II: Particles, Scattering, and Analyticity
+3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
+4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
+5. Volume V: Conformal Field Theory
+6. Volume VI: Integrable Quantum Field Theory
+7. Volume VII: Supersymmetric Quantum Field Theory
+8. Volume VIII: Topological and Cohomological Quantum Field Theory
+9. Volume IX: Global Structure, Phases, and Extended Operators
+10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
+12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+
+### Roadmap Lanes Not Yet Numbered
+
+The following subject lanes are recognized as likely future standalone
+expansions or major splits, but they are not yet public numbered volumes:
+
+1. Large-N gauge theory, QCD strings, flux tubes, baryons, and
+   gauge-string expansions
+2. Advanced local-algebraic QFT, modular structure, concrete interacting nets,
+   and entanglement as an AQFT topic
+3. Advanced scattering, amplitudes, resonances, charged scattering, and
+   infrared-safe detector observables
+4. Advanced supersymmetric theories, protected sectors, GLSM/mirror symmetry,
+   localization, and supersymmetric Wilsonian schemes
+5. Advanced two-dimensional CFT and exact two-dimensional QFT, including
+   Riemann-surface CFT, orbifolds, twist fields, Liouville theory, TCSA, and
+   TFFSA
+6. Advanced constructive, stochastic, and rigorous Wilsonian QFT proof
+   infrastructure, if the proof program outgrows Volume XI
+7. Advanced phases, defects, categorical symmetry, and extended-operator
+   theory, if the material outgrows Volume IX
+8. Advanced curved-background, locally covariant, and semiclassical QFT, if
+   the material outgrows Volume XII
 
 The public volume program has two layers.  The first layer is the launched
 compiled manuscript: twelve reader-facing volumes, numbered I--XII, whose
