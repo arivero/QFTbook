@@ -359,7 +359,10 @@ Current checks:
   It also checks the Coulomb-tail logarithmic Dollard phase coefficient,
   soft coherent velocity-separation positivity, finite-cutoff Weyl
   characteristic functionals, coherent-overlap decay, and finite Hilbert
-  soft-coordinate transformations.
+  soft-coordinate transformations.  The same script checks the finite
+  left-inverse algebra of dressed LSZ residues: the pole residue is a Gram
+  matrix of charged one-particle overlaps, and finite dressing-coordinate
+  changes leave the extracted amplitude invariant.
 - `cs_matter_lightfront_checks.py`: exact coefficient checks for the
   three-dimensional Chern--Simons--matter light-cone-gauge section, including
   the factor of two in the quadratic light-cone Chern--Simons action, the

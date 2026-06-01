@@ -889,6 +889,104 @@ showing that a physical on-shell answer is independent of the unobserved
 geometric choices is part of the reduction theorem, not an assumption inside
 the scalar LSZ formula.
 
+\subsection{Dressed Residues as Charged Coordinates}
+
+Before discussing the geometry of Wilson lines, it is useful to state the
+finite-dimensional algebra that any dressed LSZ theorem must implement.  Fix,
+temporarily, an infrared regulator or screening deformation for which a
+charged isolated massive shell exists.  Let
+\[
+  \{\Psi_a\}_{a=1}^r
+\]
+be finitely many gauge-invariant dressed charged interpolating operators with
+the same charge, spin-statistics, mass, and asymptotic flux sector.  Let
+\(E_p\) be the finite-dimensional one-particle multiplicity space over the
+mass shell point \(p\in\Sigma_m^+\), and choose an orthonormal basis
+\(\{|p,\lambda\rangle\}_{\lambda=1}^{N}\) of \(E_p\).  The one-particle
+matrix coefficients of the dressed coordinates are the numbers
+\[
+  z_a{}^\lambda(p)
+  =
+  \langle p,\lambda|\Psi_a(0)\vac\rangle .
+\]
+Equivalently, for a positive-frequency packet \(f\) supported in the
+isolating neighborhood of the shell,
+\[
+  P_1\Psi_a(f)\vac
+  =
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,\widehat f(p)
+  \sum_{\lambda=1}^{N}z_a{}^\lambda(p)|p,\lambda\rangle .
+\]
+The singular part of the dressed two-point function is therefore the
+Gram matrix of these overlap vectors:
+\begin{equation}
+  \lim_{p^2\to -m^2}
+  (p^2+m^2-\ii0)\widehat G_{ab}(p)
+  =
+  \ii\sum_{\lambda=1}^{N}
+  z_a{}^\lambda(p)\,\overline{z_b{}^\lambda(p)}
+  \equiv \ii Z_{ab}(p),
+  \label{eq:dressed-lsz-residue-gram-coordinate}
+\end{equation}
+in the time-ordered convention used in the LSZ chapter.  Thus the pole
+residue is not an intrinsic scalar attached to a raw noncompact operator; it
+is the coordinate Gram matrix of the physical one-particle shell in the
+chosen dressed operator coordinates.
+
+The LSZ extraction of a normalized external charged state is possible from
+this family precisely when the overlap map
+\[
+  z(p):E_p\longrightarrow \mathbb C^r,
+  \qquad
+  \eta_\lambda |p,\lambda\rangle
+  \longmapsto
+  \left(\sum_{\lambda}z_a{}^\lambda(p)\eta_\lambda\right)_{a=1}^r
+\]
+has full column rank.  A choice of left inverse
+\[
+  L(p):\mathbb C^r\longrightarrow E_p,
+  \qquad L(p)z(p)=\mathbf 1_{E_p},
+\]
+then supplies the external charged residue coordinate.  If
+\[
+  \widehat H_a(p;\Xi)
+  =
+  \frac{\ii\sum_{\lambda}z_a{}^\lambda(p)\mathcal A_\lambda(p;\Xi)}
+       {p^2+m^2-\ii0}
+  +\widehat H_a^{\rm less}(p;\Xi)
+\]
+is a Fourier-transformed dressed correlator with one external charged
+insertion and all other variables denoted by \(\Xi\), then
+\begin{equation}
+  \lim_{p^2\to -m^2}
+  (p^2+m^2-\ii0)
+  \sum_a L^\rho{}_a(p)\,\widehat H_a(p;\Xi)
+  =
+  \ii\,\mathcal A_\rho(p;\Xi).
+  \label{eq:dressed-lsz-left-inverse-residue}
+\end{equation}
+The positive matrix \(Z^{-1/2}\) in the finite-regulator theorem below is the
+special square-coordinate form of this left-inverse operation after the
+operator labels have been identified with an orthonormal multiplicity basis.
+
+This algebra also gives the exact meaning of a harmless dressing change.  If
+another family is related by a finite invertible change of dressed
+coordinates,
+\[
+  \Psi'_\alpha=\sum_a M_\alpha{}^a\Psi_a ,
+\]
+with the same charged shell and the same asymptotic flux sector, then
+\[
+  z'=Mz,\qquad Z'=MZM^\dagger,\qquad L'=LM^{-1}.
+\]
+Equation~\eqref{eq:dressed-lsz-left-inverse-residue} is unchanged.  This is a
+coordinate statement on a fixed one-particle charged sector; it is not a
+path-independence theorem for arbitrary Wilson lines.  A change of the
+asymptotic ray or Coulomb tail changes the Gauss-law flux at infinity in an
+unscreened theory and need not be represented by any finite invertible matrix
+on a common Hilbert-space shell.  The soft-sector calculations below make this
+failure explicit.
+
 \subsection{Wilson-Line Covariance and Boundary Charge}
 
 The sign and orientation in

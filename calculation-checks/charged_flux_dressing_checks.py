@@ -5,11 +5,50 @@ from __future__ import annotations
 
 import cmath
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
     if abs(got - expected) > tol:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_equal(name: str, got: object, expected: object) -> None:
+    if got != expected:
+        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def mat_vec(matrix: tuple[tuple[Fraction, ...], ...], vector: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
+    return tuple(sum(row[j] * vector[j] for j in range(len(vector))) for row in matrix)
+
+
+def row_mat(row: tuple[Fraction, ...], matrix: tuple[tuple[Fraction, ...], ...]) -> tuple[Fraction, ...]:
+    return tuple(sum(row[i] * matrix[i][j] for i in range(len(row))) for j in range(len(matrix[0])))
+
+
+def mat_mul(
+    left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction, ...], ...]
+) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(
+        tuple(sum(left[i][k] * right[k][j] for k in range(len(right))) for j in range(len(right[0])))
+        for i in range(len(left))
+    )
+
+
+def transpose(matrix: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(tuple(matrix[i][j] for i in range(len(matrix))) for j in range(len(matrix[0])))
+
+
+def outer(left: tuple[Fraction, ...], right: tuple[Fraction, ...]) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(tuple(a * b for b in right) for a in left)
+
+
+def inverse_2x2(matrix: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+    ((a, b), (c, d)) = matrix
+    determinant = a * d - b * c
+    if determinant == 0:
+        raise AssertionError("matrix used for a coordinate change must be invertible")
+    return ((d / determinant, -b / determinant), (-c / determinant, a / determinant))
 
 
 def dot_mostly_plus(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
@@ -289,6 +328,54 @@ def check_hilbert_soft_change_inner_equivalence() -> None:
         raise AssertionError(f"Weyl implementers should be strongly continuous, got {distances!r}")
 
 
+def check_dressed_lsz_residue_coordinates() -> None:
+    """Check the finite coordinate algebra behind dressed charged LSZ residues."""
+
+    z = (Fraction(2), Fraction(3))
+    left_inverse = (Fraction(1, 2), Fraction(0))
+    amplitude = Fraction(7, 5)
+
+    assert_equal("left inverse normalizes the charged pole residue", sum(c * za for c, za in zip(left_inverse, z)), Fraction(1))
+
+    pole_residue = outer(z, z)
+    for i in range(2):
+        for j in range(2):
+            for k in range(2):
+                for ell in range(2):
+                    assert_equal(
+                        "rank-one charged residue Gram matrix",
+                        pole_residue[i][j] * pole_residue[k][ell],
+                        pole_residue[i][ell] * pole_residue[k][j],
+                    )
+
+    one_external_residue = tuple(amplitude * za for za in z)
+    extracted = sum(left_inverse[a] * one_external_residue[a] for a in range(2))
+    assert_equal("dressed LSZ left inverse extracts the external amplitude", extracted, amplitude)
+
+    coordinate_change = ((Fraction(1), Fraction(1)), (Fraction(0), Fraction(1)))
+    inverse_coordinate_change = inverse_2x2(coordinate_change)
+    changed_z = mat_vec(coordinate_change, z)
+    changed_left_inverse = row_mat(left_inverse, inverse_coordinate_change)
+    changed_residue = mat_vec(coordinate_change, one_external_residue)
+    changed_pole_residue = mat_mul(mat_mul(coordinate_change, pole_residue), transpose(coordinate_change))
+
+    assert_equal(
+        "changed left inverse normalizes the transformed charged overlap",
+        sum(changed_left_inverse[a] * changed_z[a] for a in range(2)),
+        Fraction(1),
+    )
+    assert_equal(
+        "basis change sends residue Gram matrix to M Z M^T",
+        changed_pole_residue,
+        outer(changed_z, changed_z),
+    )
+    assert_equal(
+        "dressed LSZ residue extraction is invariant under finite coordinate changes",
+        sum(changed_left_inverse[a] * changed_residue[a] for a in range(2)),
+        amplitude,
+    )
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
@@ -298,7 +385,8 @@ def main() -> None:
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
-    print("All charged flux and Wilson-line dressing checks passed.")
+    check_dressed_lsz_residue_coordinates()
+    print("All charged flux, Wilson-line dressing, and dressed LSZ coordinate checks passed.")
 
 
 if __name__ == "__main__":

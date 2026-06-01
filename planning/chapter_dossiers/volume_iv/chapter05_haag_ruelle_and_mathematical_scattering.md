@@ -65,6 +65,13 @@ resonances.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
+- Defines the finite dressed-residue coordinate algebra for an
+  infrared-regulated charged isolated shell: the pole matrix is the Gram
+  matrix of charged one-particle overlaps, a left inverse of the overlap map
+  extracts normalized external charged amplitudes, and finite invertible
+  dressing-coordinate changes preserve the extracted residue.  The text
+  explicitly separates this coordinate statement from changes of asymptotic
+  Gauss-law flux.
 - Derives the abelian Wilson-line boundary-charge transformation and the
   nonabelian parallel-transporter transformation law.
 - Gives the finite-ray abelian calculation that a Wilson-line dressed charged
@@ -134,7 +141,9 @@ resonances.
   finite-dimensional Weyl/coherent characteristic functional and the monotone
   decay of the coherent overlap as the infrared cutoff is removed.  The same
   script now checks the finite Hilbert soft-coordinate transformation law and
-  strong-continuity behavior on coherent vectors.
+  strong-continuity behavior on coherent vectors, as well as the
+  finite-dimensional left-inverse algebra for dressed charged LSZ residues
+  and its invariance under finite dressing-coordinate changes.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -197,3 +206,11 @@ resonances.
   proposition/proof form to paragraph-level worked calculation.  The formulae
   and calculation-check companion remain; the theorem-family burden stays on
   the charged Haag--Ruelle estimate, not on completed-square algebra.
+- 2026-06-01 #527 continuation: added a non-theorem residue-coordinate
+  synthesis before the Wilson-line covariance subsection.  The new text
+  defines the overlap map from physical charged one-particle multiplicity
+  space to dressed operator coordinates, identifies the two-point pole
+  residue as its Gram matrix, and states the left-inverse extraction of a
+  normalized external charged amplitude.  This clarifies the exact finite
+  sense in which same-flux dressing changes are coordinate changes while
+  preserving the open theorem debt for changes of asymptotic Gauss-law flux.
