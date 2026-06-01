@@ -35,22 +35,24 @@ chapter order below are the authoritative compiled-volume structure.  The
 frontmatter Source Assembly Map records how source files are assembled into
 the printed order.
 
-### Volumes At A Glance
+### Complete Volume List
 
-| Volume | Reader-facing subject |
-| --- | --- |
-| I | Foundations of Local Quantum Field Theory |
-| II | Particles, Scattering, and Analyticity |
-| III | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | Gauge Theory, Infrared Structure, and Anomalies |
-| V | Conformal Field Theory |
-| VI | Integrable Quantum Field Theory |
-| VII | Supersymmetric Quantum Field Theory |
-| VIII | Topological and Cohomological Quantum Field Theory |
-| IX | Global Structure, Phases, and Extended Operators |
-| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | Quantum Field Theory in Curved Spacetime and Background Fields |
+The compiled monograph currently contains the following twelve volumes:
+
+| Volume | Source directory | Compiled part title |
+| --- | --- | --- |
+| I | `monograph/tex/volumes/volume_i/` | Foundations of Local Quantum Field Theory |
+| II | `monograph/tex/volumes/volume_ii/` | Particles, Scattering, and Analyticity |
+| III | `monograph/tex/volumes/volume_iii/` | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | `monograph/tex/volumes/volume_iv/` | Gauge Theory, Infrared Structure, and Anomalies |
+| V | `monograph/tex/volumes/volume_v/` | Conformal Field Theory |
+| VI | `monograph/tex/volumes/volume_vi/` | Integrable Quantum Field Theory |
+| VII | `monograph/tex/volumes/volume_vii/` | Supersymmetric Quantum Field Theory |
+| VIII | `monograph/tex/volumes/volume_viii/` | Topological and Cohomological Quantum Field Theory |
+| IX | `monograph/tex/volumes/volume_ix/` | Global Structure, Phases, and Extended Operators |
+| X | `monograph/tex/volumes/volume_x/` | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | `monograph/tex/volumes/volume_xi/` | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | `monograph/tex/volumes/volume_xii/` | Quantum Field Theory in Curved Spacetime and Background Fields |
 
 ### Detailed Chapter Map
 
