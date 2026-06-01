@@ -114,7 +114,15 @@ The repository does not use a GitHub CI gate.  Manuscript verification is run
 locally with the tools listed above, and `.github/workflows/` should not be
 introduced unless the author explicitly requests GitHub Actions.
 
+## Contributing
+
+This is an open-source project.  Contributions should be made by pull request,
+and every pull request must be reviewed and approved by Xi Yin or by a
+maintainer explicitly designated by Xi Yin before it is merged.  See
+`CONTRIBUTING.md` for the manuscript-quality, verification, and licensing
+expectations.
+
 ## License
 
-See `LICENSE.md` for the mixed licensing terms: manuscript/prose under
-CC BY-NC-SA 4.0, executable code under MIT.
+See `LICENSE` for the mixed licensing terms: manuscript and scholarly content
+under CC BY 4.0, executable code under MIT.

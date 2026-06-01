@@ -97,7 +97,6 @@ references/**/*.jpeg
 references/**/*.png
 
 # Temporary local notes
-claude_review.md
 *.tmp
 *.bak
 *.orig
