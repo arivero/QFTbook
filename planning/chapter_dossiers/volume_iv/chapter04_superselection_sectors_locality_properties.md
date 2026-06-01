@@ -43,6 +43,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 
 - Separates superselection-sector statements from perturbative particle
   language.
+- Makes the Haag-duality input to localized endomorphisms explicit:
+  localization outside \(\mathcal O\) first gives membership in the dual net
+  \(\mathcal R^d(\mathcal O)\); Haag duality is the structural hypothesis that
+  places images and intertwiners in the assigned local observable algebra.
 - Treats relative entropy as a sharp-algebra quantity rather than a finite
   cutoff entropy slogan.
 - Keeps split inclusions and regulator approximations logically distinct.
@@ -308,3 +312,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   Haar functional, Peter--Weyl density, and the reconstruction of \(G\) from
   the \(C^*\)-completion kept distinct from the DHR local-QFT theorem
   boundary.
+- 2026-06-01 Haag-duality DHR-containment pass: expanded the endomorphism
+  setup so the use of Haag duality is displayed by the commutant calculation
+  \(\rho(A)\in\mathcal R(\mathcal O_1^\perp)'\) and the corresponding
+  intertwiner calculation.  The text now states that without Haag duality the
+  construction naturally lands in the dual net.

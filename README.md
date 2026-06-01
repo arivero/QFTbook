@@ -35,6 +35,25 @@ chapter order below are the authoritative compiled-volume structure.  The
 frontmatter Source Assembly Map records how source files are assembled into
 the printed order.
 
+### Volumes At A Glance
+
+| Volume | Reader-facing subject |
+| --- | --- |
+| I | Foundations of Local Quantum Field Theory |
+| II | Particles, Scattering, and Analyticity |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | Gauge Theory, Infrared Structure, and Anomalies |
+| V | Conformal Field Theory |
+| VI | Integrable Quantum Field Theory |
+| VII | Supersymmetric Quantum Field Theory |
+| VIII | Topological and Cohomological Quantum Field Theory |
+| IX | Global Structure, Phases, and Extended Operators |
+| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | Quantum Field Theory in Curved Spacetime and Background Fields |
+
+### Detailed Chapter Map
+
 1. Foundations of Local Quantum Field Theory
    - Starting Data for Local Quantum Field Theory
    - Wightman Fields and Reconstruction

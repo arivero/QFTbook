@@ -967,6 +967,97 @@ determined by causal commutation.  In superselection theory, Haag duality is
 the condition that permits localized representations to be represented
 cleanly by localized endomorphisms of the observable algebra.
 
+\paragraph{Dual-net algebra.}
+The algebra \(\mathcal R^d(\mathcal O)\) is the algebra detected by all
+causal-commutation tests outside \(\mathcal O\).  Thus an operator
+\(T\in B(\Hilb)\) belongs to \(\mathcal R^d(\mathcal O)\) precisely when
+\[
+  [T,B]=0,\qquad B\in\mathcal R(\mathcal O^\perp).
+\]
+This criterion is intrinsic to the represented net, but it is weaker than
+membership in the originally assigned algebra \(\mathcal R(\mathcal O)\)
+unless Haag duality has been established.  The dual net is therefore not a
+decorative reformulation of locality.  It records the maximal bounded
+operator algebra which the exterior observables cannot distinguish from a
+local operator in \(\mathcal O\).
+
+Two elementary consequences are used repeatedly later.  First, if
+\(\mathcal O_1\subset\mathcal O_2\), then
+\[
+  \mathcal R^d(\mathcal O_1)
+  =
+  \mathcal R(\mathcal O_1^\perp)'
+  \subset
+  \mathcal R(\mathcal O_2^\perp)'
+  =
+  \mathcal R^d(\mathcal O_2),
+\]
+so the dual assignment is isotonic.  Second, if \(A\in\mathcal R(\mathcal O)\)
+then locality gives
+\[
+  [A,B]=0,\qquad B\in\mathcal R(\mathcal O^\perp),
+\]
+hence \(A\in\mathcal R^d(\mathcal O)\).  Haag duality is exactly the assertion
+that these two tests are equivalent for the chosen represented net.
+
+\paragraph{Load-bearing use in localized sectors.}
+Let \(\rho\) be a normal endomorphism of the represented quasilocal von
+Neumann algebra which is localized in a causally complete region
+\(\mathcal O_0\), in the sense that
+\[
+  \rho(B)=B,\qquad B\in\mathcal R(\mathcal O_0^\perp).
+\]
+Let \(\mathcal O_1\) be causally complete with
+\(\mathcal O_0\subset\mathcal O_1\).  For
+\(A\in\mathcal R(\mathcal O_1)\) and
+\(B\in\mathcal R(\mathcal O_1^\perp)\), one has
+\(\mathcal O_1^\perp\subset\mathcal O_0^\perp\), so \(\rho(B)=B\).  Since
+\(A\) and \(B\) commute,
+\[
+  \rho(A)B
+  =
+  \rho(A)\rho(B)
+  =
+  \rho(AB)
+  =
+  \rho(BA)
+  =
+  \rho(B)\rho(A)
+  =
+  B\rho(A).
+\]
+Therefore
+\[
+  \rho(A)\in\mathcal R(\mathcal O_1^\perp)'
+  =
+  \mathcal R^d(\mathcal O_1).
+\]
+If Haag duality holds for \(\mathcal O_1\), this improves to
+\[
+  \rho(\mathcal R(\mathcal O_1))\subset\mathcal R(\mathcal O_1).
+\]
+This is the concrete algebraic step behind the DHR passage from a sector that
+is indistinguishable from the vacuum outside \(\mathcal O_0\) to an
+endomorphism of the local observable net.  Without the equality
+\(\mathcal R=\mathcal R^d\), the same calculation gives an endomorphism into
+the dual net; additional input is then required to identify that image with
+the originally specified observable algebra.
+
+The same point controls intertwiners.  If \(\rho\) and \(\sigma\) are
+localized in \(\mathcal O\) and \(T\) satisfies
+\[
+  T\rho(A)=\sigma(A)T
+\]
+for all quasilocal \(A\), then for every
+\(B\in\mathcal R(\mathcal O^\perp)\),
+\[
+  TB=T\rho(B)=\sigma(B)T=BT.
+\]
+Thus \(T\in\mathcal R^d(\mathcal O)\), and Haag duality is precisely what
+places the intertwiner in the local algebra \(\mathcal R(\mathcal O)\).  The
+tensor-category construction of bounded localized charges therefore uses
+Haag duality as a structural hypothesis, not as a terminology choice.
+
 \section{Point Fields as Coordinatizations}
 
 If a Wightman field \(\Phi(f)\) is available, bounded functions of smeared

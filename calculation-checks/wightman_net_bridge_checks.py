@@ -71,6 +71,13 @@ def add_any(a: MatrixAny, b: MatrixAny) -> MatrixAny:
     )
 
 
+def sub_any(a: MatrixAny, b: MatrixAny) -> MatrixAny:
+    return tuple(
+        tuple(x - y for x, y in zip(row_a, row_b))
+        for row_a, row_b in zip(a, b)
+    )
+
+
 def scale_any(c: Fraction, a: MatrixAny) -> MatrixAny:
     return tuple(tuple(c * x for x in row) for row in a)
 
@@ -85,6 +92,10 @@ def kron(a: MatrixAny, b: MatrixAny) -> MatrixAny:
 
 def conjugate_by_involution(unitary: MatrixAny, a: MatrixAny) -> MatrixAny:
     return matmul_any(matmul_any(unitary, a), unitary)
+
+
+def comm_any(a: MatrixAny, b: MatrixAny) -> MatrixAny:
+    return sub_any(matmul_any(a, b), matmul_any(b, a))
 
 
 def assert_eq_any(got: MatrixAny, expected: MatrixAny, msg: str) -> None:
@@ -227,6 +238,16 @@ def main() -> None:
         fixed_c,
     )
     assert_eq_any(bimodule_left, bimodule_right, "fixed-point expectation bimodule identity")
+
+    # Haag duality is exactly the step from exterior commutation to membership
+    # in the assigned local algebra.  In this finite diagnostic, take the
+    # assigned algebra of the first region to be span{1, Z_1} and the
+    # complement algebra to be span{1, Z_2}.  The operator X_1 commutes with
+    # the complement, hence lies in the dual algebra R(O')', but it is not in
+    # the assigned first-region algebra because that algebra is diagonal.
+    assert_eq_any(comm_any(x1, p2), zero_matrix(4), "X_1 commutes with exterior Z_2")
+    if all(entry == 0 for entry in off_diagonal_entries(x1)):
+        raise AssertionError("X_1 should not belong to the diagonal assigned local algebra")
 
     print("All Wightman-to-net bridge finite-algebra checks passed.")
 
