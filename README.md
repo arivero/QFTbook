@@ -11,13 +11,28 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Current Volume List
+## Full Compiled Volume List
 
-The public manuscript is currently a twelve-volume series.  The table below is
-the complete volume list: it gives every compiled volume, its continuous
-chapter range in the PDF, its present chapter count, its subject role, and the
-assembly file that `monograph/tex/main.tex` inputs.  The detailed chapter map
-later in this README expands each row.
+The public manuscript is currently a twelve-volume series.  The compact list
+below is the complete compiled volume list, in printed order:
+
+1. Volume I: Foundations of Local Quantum Field Theory
+2. Volume II: Particles, Scattering, and Analyticity
+3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
+4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
+5. Volume V: Conformal Field Theory
+6. Volume VI: Integrable Quantum Field Theory
+7. Volume VII: Supersymmetric Quantum Field Theory
+8. Volume VIII: Topological and Cohomological Quantum Field Theory
+9. Volume IX: Global Structure, Phases, and Extended Operators
+10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
+12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+
+The table below gives the same complete list with continuous chapter ranges,
+present chapter counts, subject roles, and the assembly file that
+`monograph/tex/main.tex` inputs.  The detailed chapter map later in this
+README expands each row.
 
 | Volume | Chapter range | Count | Title | Role in the monograph | Assembly file |
 | --- | ---: | ---: | --- | --- | --- |

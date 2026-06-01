@@ -71,7 +71,7 @@ chapters included in that compiled volume.
 | I | Foundations of Local Quantum Field Theory | 16 | `volume_i/`, `volume_iv/` |
 | II | Particles, Scattering, and Analyticity | 13 | `volume_i/`, `volume_ii/`, `volume_iv/` |
 | III | Renormalization, Effective Field Theory, and Critical Phenomena | 10 | `volume_ii/` |
-| IV | Gauge Theory, Infrared Structure, and Anomalies | 17 | `volume_i/`, `volume_ii/` |
+| IV | Gauge Theory, Infrared Structure, and Anomalies | 16 | `volume_i/`, `volume_ii/` |
 | V | Conformal Field Theory | 15 | `volume_iii/`, `volume_v/` |
 | VI | Integrable Quantum Field Theory | 14 | `volume_vi/` |
 | VII | Supersymmetric Quantum Field Theory | 17 | `volume_vii/` |
