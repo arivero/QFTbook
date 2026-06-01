@@ -117,7 +117,9 @@ Current checks:
   Wightman tube depth \(z=\xi-i\eta\).  It also checks the finite insertion
   schedule used in the OS-II argument-domain exhaustion: the \(k\)-gap strict
   argument box is obtained from the one-gap interval by adding one bridge
-  coordinate at each step.
+  coordinate at each step, and checks the insertion-count arithmetic by which
+  OS-II linear seminorm growth remains an affine polynomial-bound exponent for
+  the regularized quadratic forms.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, exact APS cylinder endpoint-kernel arithmetic,

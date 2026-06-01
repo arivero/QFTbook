@@ -64,8 +64,8 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   local one-gap continuations, Malgrange--Zerner gluing, the `A_N/P_N`
   induction, Hilbert Taylor reconstruction of vector-valued analytic fields,
   explicit bridge-insertion argument-domain exhaustion, regularized positivity
-  estimates, and Banach-valued maximum-principle propagation of polynomial
-  tube bounds.
+  estimates with explicit quadratic-form insertion counts, and Banach-valued
+  maximum-principle propagation of polynomial tube bounds.
 - States the Lorentzian boundary-value package, promotes the polynomial
   tube-bound theorem from quoted input to local theorem/proof form, and proves
   the Fourier--Laplace mechanism by which spectral support plus polynomial
@@ -109,7 +109,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   Fourier--Laplace variable `x+i y` and the physical Wightman tube depth
   `xi-i eta`.  It also checks the finite bridge-insertion schedule for
   OS-II argument-domain exhaustion, namely that a strict \(k\)-gap argument
-  box is reached in \(k\) insertion steps from the one-gap interval.
+  box is reached in \(k\) insertion steps from the one-gap interval, and the
+  arithmetic that keeps the linear-growth seminorm order affine in the number
+  of gaps after the regularized OS quadratic-form estimate.
 
 ## Audit Notes
 
@@ -153,3 +155,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   Fourier--Laplace variable is \(x+\ii y\) with \(p\cdot y>0\), while the
   physical mostly-plus Wightman tube is \(\xi-\ii\eta\) with
   \(\eta\in V_+\) and \(y=-\eta\).
+- 2026-06-01 issue #695 linear-growth estimate pass: expanded Step 4 of the
+  corrected OS-II analytic theorem to show exactly how a vector with \(r\)
+  ordered insertions gives a \((2r-1)\)-point quadratic form, how
+  \(N_0+C_{\rm OS}(2r-1)\) enters the kernel derivative estimate, and why
+  \(2r-1,2s-1\le2k+1\) leaves a single affine-in-\(k\) polynomial tube-bound
+  exponent for a \(k=r+s-1\) gap scalar block.

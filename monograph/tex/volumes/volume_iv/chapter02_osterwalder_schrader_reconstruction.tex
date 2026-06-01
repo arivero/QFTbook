@@ -1301,13 +1301,40 @@ semigroup continuation in the distinguished direction gives
 \end{equation}
 
 The norm of, say, \(\Phi_{L,\rho}\) is an OS quadratic form
-\(S(\Theta F,F)\) with an explicitly known test function \(F\).  Apply
-\eqref{eq:os-linear-growth-condition} to this test.  The support bounds of
-\(g_\rho\) and \(k_\rho\) imply that every spacetime argument in the quadratic
-form is bounded by a polynomial in \(1+\|\xi\|+\|u\|\), while the derivative
-bounds of the kernels contribute only powers of \(\rho^{-1}\).  Therefore
-there are constants \(A_k,B_k,M_k\), with at most factorial growth in \(k\),
-such that
+\(S(\Theta F,F)\) with an explicitly known test function \(F\).  If the
+left vector has \(r\) ordered insertions, this quadratic form is a
+\((2r-1)\)-point reduced Schwinger distribution, in the notation of
+\eqref{eq:os-induction-scalar-product}.  The linear-growth hypothesis gives
+a seminorm of order
+\begin{equation}
+  N_{\rm OS}(2r-1)
+  =
+  N_0+C_{\rm OS}(2r-1).
+  \label{eq:os-quadratic-form-seminorm-order}
+\end{equation}
+Each derivative landing on a smearing kernel \(g_\rho\) or \(k_\rho\) costs a
+power of \(\rho^{-1}\); each polynomial weight in the seminorm is evaluated
+on a point whose coordinates are bounded by a constant times
+\(1+\|\xi\|+\|u\|+\rho\).  Since \(\rho\le1\) after shrinking the local
+polydisc, \eqref{eq:os-linear-growth-condition} gives
+\begin{equation}
+  \|\Phi_{L,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}^2
+  \le
+  A_{r}\,B_r\,
+  \rho^{-M_r}
+  (1+\|\xi\|+\|u\|)^{M_r},
+  \qquad
+  M_r=M_0+M_1\,N_{\rm OS}(2r-1),
+  \label{eq:os-left-vector-norm-bound}
+\end{equation}
+with constants depending on the fixed kernel family, the dimension, and the
+field labels in the finite component under consideration.  The right vector
+obeys the same estimate with \(r\) replaced by \(s\).  Because the scalar
+block has \(k=r+s-1\) gaps, both \(2r-1\) and \(2s-1\) are bounded by
+\(2k+1\).  Thus the product of the square-root estimates is controlled by a
+single exponent affine in the number of gaps.  In particular there are
+constants \(A_k,B_k,M_k\), with at most the factorial growth inherited from
+\eqref{eq:os-linear-growth-condition}, such that
 \begin{equation}
   \|\Phi_{L,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}\,
   \|\Phi_{R,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}

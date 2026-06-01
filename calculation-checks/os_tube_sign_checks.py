@@ -8,9 +8,11 @@ Positive-energy support gives a Wightman tube
 
 not a literal imaginary part in V_+.  These checks keep the Euclidean
 ordered-time map and the abstract Fourier-Laplace cone variable aligned with
-that convention.  The final check records the finite insertion induction used
-in the OS-II argument-domain exhaustion: a \(k\)-gap argument box is obtained
-by inserting one bridge angle at a time.
+that convention.  The final checks record two finite pieces of the corrected
+OS-II proof: a \(k\)-gap argument box is obtained by inserting one bridge
+angle at a time, and the linear seminorm order in the OS growth hypothesis
+stays affine in the number of gaps when the regularized OS quadratic forms are
+estimated by Cauchy--Schwarz.
 """
 
 from __future__ import annotations
@@ -102,12 +104,50 @@ def check_argument_box_insertion_exhaustion() -> None:
     assert_true("sample target lies in inserted box", all(abs(v) <= stages[max_k][0] for v in target))
 
 
+def check_linear_growth_to_polynomial_bound_arithmetic() -> None:
+    n0 = 3
+    c_os = 2
+    kernel_overhead = 5
+    max_k = 12
+
+    def seminorm_order(insertions: int) -> int:
+        return n0 + c_os * insertions
+
+    def vector_bound_exponent(vector_insertions: int) -> int:
+        quadratic_insertions = 2 * vector_insertions - 1
+        return kernel_overhead * quadratic_insertions + seminorm_order(quadratic_insertions)
+
+    for k in range(1, max_k + 1):
+        affine_bound = kernel_overhead * (2 * k + 1) + seminorm_order(2 * k + 1)
+        for r in range(1, k + 1):
+            s = k + 1 - r
+            left_quadratic = 2 * r - 1
+            right_quadratic = 2 * s - 1
+            assert_true(
+                f"left quadratic insertion count bounded for k={k}, r={r}",
+                left_quadratic <= 2 * k + 1,
+            )
+            assert_true(
+                f"right quadratic insertion count bounded for k={k}, r={r}",
+                right_quadratic <= 2 * k + 1,
+            )
+            product_exponent = max(
+                vector_bound_exponent(r),
+                vector_bound_exponent(s),
+            )
+            assert_true(
+                f"OS-II regularized vector exponent affine in gaps k={k}, r={r}",
+                product_exponent <= affine_bound,
+            )
+
+
 def main() -> None:
     check_forward_cone_damping()
     check_ordered_euclidean_time_map()
     check_abstract_cone_variable_conversion()
     check_argument_box_insertion_exhaustion()
-    print("All OS tube-sign, Euclidean-time ordering, and argument-domain checks passed.")
+    check_linear_growth_to_polynomial_bound_arithmetic()
+    print("All OS tube-sign, Euclidean-time ordering, argument-domain, and linear-growth checks passed.")
 
 
 if __name__ == "__main__":
