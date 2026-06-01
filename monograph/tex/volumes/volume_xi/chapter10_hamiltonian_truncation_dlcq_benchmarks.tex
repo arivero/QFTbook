@@ -2531,6 +2531,57 @@ The main finite objects in the present numerical layer are as follows.
   Lorentz-covariant reconstruction.
 \end{description}
 
+\begin{definition}[Benchmark manifest]
+\label{def:benchmark-manifest}
+A benchmark manifest is a finite, machine-readable representative of
+Definition~\ref{def:cross-method-benchmark-datum}.  It consists of:
+\begin{enumerate}
+  \item the target observable label \(Q\), the dimension \(r\) of its reported
+  coordinate vector, and the norm in which the comparison is to be made;
+  \item for each method \(m\), a regulator description, a normalization
+  identifier, the coordinate vector \(x_m\in\mathbb R^r\), the componentwise
+  statistical error \(\sigma_m\), regulator envelope \(\rho_m\), and
+  matching error \(\beta_m\);
+  \item optional covariance data for the statistical part, with the
+  convention that covariance data never replace the declared deterministic
+  envelopes \(\rho_m,\beta_m\);
+  \item provenance data: script name or analysis notebook, input dataset,
+  random seed where relevant, regulator parameters, and any hash or version
+  identifier needed to reproduce the finite number \(x_m\).
+\end{enumerate}
+The declared componentwise error vector is
+\begin{equation}
+  e_m=\sigma_m+\rho_m+\beta_m.
+  \label{eq:benchmark-manifest-total-error}
+\end{equation}
+The manifest is consistent at the finite-regulator level when, for every pair
+of methods \(m,n\),
+\begin{equation}
+  |x_m-x_n|_{\rm comp}\leq e_m+e_n,
+  \label{eq:benchmark-manifest-pairwise-test}
+\end{equation}
+where the absolute value and inequality are componentwise.  The script
+\path{qft_scripts/benchmark_manifest_consistency.py} implements exactly
+\eqref{eq:benchmark-manifest-pairwise-test} for JSON manifests.  A passing
+manifest certifies only that the finite reported coordinates are mutually
+compatible with the declared error envelopes and normalization identifiers.
+It does not certify that the envelopes are correct, that the regulator limits
+exist, that the methods compute the same continuum QFT observable, or that
+the target observable is nonperturbatively constructed.
+\end{definition}
+
+This manifest discipline is intentionally stricter than a table of numerical
+values.  If a lattice correlator fit and a Hamiltonian-truncation
+diagonalization report the same mass ratio but use different finite-volume
+normalizations, the mismatch belongs in \(\beta_m\) or in a failed
+normalization identifier before any comparison is made.  If two finite
+coordinates disagree beyond \eqref{eq:benchmark-manifest-pairwise-test}, the
+failure has a definite meaning: at least one coordinate, uncertainty model,
+normalization map, or target identification is not the one recorded in the
+manifest.  If the manifest passes, the continuum conclusion still begins
+only after the separate estimates on \(\sigma_m,\rho_m,\beta_m\) are proved
+or justified in the relevant regulator framework.
+
 The companion scripts instantiate this comparison at finite regulator.  The
 Euclidean side contains finite Ising, scalar \(\phi^4\), \(\mathbb Z_2\),
 \(SU(2)\), and \(SU(3)\) samplers, plus autocorrelation,
@@ -2543,7 +2594,8 @@ light-front side contains scalar \(\phi^4\) DLCQ, the large-\(N\)
 two-dimensional QCD matrix, and a large-\(K\) extrapolation diagnostic.  The
 generic finite-regulator extrapolation script records the common
 window/covariance/remainder-envelope data used by all three classes of
-methods.
+methods, while the benchmark-manifest script records pairwise compatibility
+of normalized outputs across methods.
 
 For the magnetic Ising theory, the present public scripts deliberately stop
 at finite certificates: the TFFSA connected-block matrix fixes the spin-field
@@ -2577,12 +2629,10 @@ The public companion-script policy is recorded in
 \[
   \texttt{tools/run\_qft\_scripts\_smoke.sh}
 \]
-runs the finite Ising Metropolis, Ising-energy Hamiltonian-truncation, and
-the large-\(N\) QCD DLCQ example, together with the connected Ising TFFSA
-block, the finite Ising TFFSA spectral-flow diagnostic, the \(E_8\)
-magnetic-Ising target-data certificate, and the finite large-\(K\) DLCQ
-extrapolation diagnostic.  Passing that harness certifies only the finite
-computations and internal consistency checks just described.
+runs the finite lattice, Hamiltonian-truncation, TCSA/TFFSA, DLCQ,
+finite-extrapolation, and benchmark-manifest smoke examples.  Passing that
+harness certifies only the finite computations and internal consistency
+checks just described.
 
 \begin{openproblem}[Certified QFT truncation]
 \label{op:certified-qft-hamiltonian-truncation}

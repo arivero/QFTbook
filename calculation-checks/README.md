@@ -423,7 +423,10 @@ Current checks:
   identities used by sampled neural-state calculations, and the finite
   cross-method compatibility bound for comparing lattice, Hamiltonian
   truncation, and DLCQ coordinates after the target observable and
-  normalization maps have been declared.
+  normalization maps have been declared.  The same check imports the
+  reader-facing `qft_scripts/benchmark_manifest_consistency.py` smoke
+  manifest and verifies both a passing finite pairwise certificate and a
+  deliberately failing manifest outside the declared envelopes.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier

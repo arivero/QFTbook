@@ -24,6 +24,7 @@ import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import tffsa_ising_spectral_flow as tffsa_flow  # noqa: E402
 import thooft_dlcq  # noqa: E402
 import thooft_dlcq_extrapolation as thooft_extrapolation  # noqa: E402
+import benchmark_manifest_consistency as benchmark_manifest  # noqa: E402
 
 
 def assert_close(name: str, actual: float, expected: float, tol: float = 1.0e-11) -> None:
@@ -616,6 +617,35 @@ def check_cross_method_consistency_certificate() -> None:
         raise AssertionError("hidden mismatch should violate the declared certificate")
 
 
+def check_benchmark_manifest_consistency() -> None:
+    result = benchmark_manifest.analyze_manifest(benchmark_manifest.smoke_manifest())
+    if not result["all_pairs_pass"]:
+        raise AssertionError("benchmark manifest smoke data should pass its finite pairwise certificate")
+    assert_equal("benchmark manifest method count", result["method_count"], 3)
+    pair_lookup = {(entry["left"], entry["right"]): entry for entry in result["pairs"]}
+    lattice_truncation = pair_lookup[("lattice-transfer-matrix", "hamiltonian-truncation")]
+    assert_close(
+        "benchmark manifest first pair margin",
+        lattice_truncation["component_margins"][0],
+        0.0044,
+        tol=1.0e-12,
+    )
+    assert_close(
+        "benchmark manifest second-component difference",
+        lattice_truncation["component_differences"][1],
+        0.0080,
+        tol=1.0e-12,
+    )
+    if not lattice_truncation["normalizations_match"]:
+        raise AssertionError("benchmark manifest smoke normalizations should match")
+
+    failing = benchmark_manifest.smoke_manifest()
+    failing["methods"][2]["coordinate"] = [1.6400, 2.0400]
+    failing_result = benchmark_manifest.analyze_manifest(failing)
+    if failing_result["all_pairs_pass"]:
+        raise AssertionError("benchmark manifest must detect coordinates outside declared envelopes")
+
+
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_sine_gordon_zero_mode_selection_rules()
@@ -633,6 +663,7 @@ def main() -> None:
     check_variational_energy_certificates()
     check_light_front_kinematic_identities()
     check_cross_method_consistency_certificate()
+    check_benchmark_manifest_consistency()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 
 

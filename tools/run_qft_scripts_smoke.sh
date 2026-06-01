@@ -79,4 +79,7 @@ python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 echo "[qft-scripts] finite_regulator_extrapolation --smoke"
 python3 qft_scripts/finite_regulator_extrapolation.py --smoke
 
+echo "[qft-scripts] benchmark_manifest_consistency --smoke"
+python3 qft_scripts/benchmark_manifest_consistency.py --smoke
+
 echo "[qft-scripts] all smoke checks passed"

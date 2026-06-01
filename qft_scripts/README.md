@@ -38,6 +38,7 @@ python3 qft_scripts/e8_ising_mass_ratios.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 python3 qft_scripts/finite_regulator_extrapolation.py --smoke
+python3 qft_scripts/benchmark_manifest_consistency.py --smoke
 ```
 
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
@@ -187,3 +188,9 @@ per task.
   systematic coordinates, residuals, and window spread.  It is a data-analysis
   certificate for a declared finite-regulator ansatz, not a proof of the
   ansatz.
+- `benchmark_manifest_consistency.py`: finite cross-method benchmark-manifest
+  checker.  It reads a JSON manifest containing a target observable,
+  method-specific normalized coordinates, statistical errors, regulator
+  envelopes, matching errors, covariance/provenance data when available, and
+  reports the pairwise componentwise consistency matrix.  It certifies only
+  finite compatibility with declared errors, not a continuum QFT conclusion.

@@ -89,6 +89,9 @@ numerics.
   observable, method label, finite regulator object, normalization map,
   statistical error coordinate, deterministic finite-regulator envelope, and
   scheme-matching coordinate.
+- `x_m`, `sigma_m`, `rho_m`, `beta_m`, `e_m`: benchmark-manifest normalized
+  coordinate vector, statistical error, finite-regulator envelope,
+  matching-error coordinate, and total declared componentwise error.
 
 ## Claim Ledger
 
@@ -226,6 +229,12 @@ numerics.
   and deterministic error coordinates, scheme-matching coordinates, and the
   finite consistency bound
   \(|N_m(X_m)-N_n(X_n)|\le s_m+s_n+R_m+R_n+b_m+b_n\).
+- Defines a machine-readable benchmark manifest as a finite representative
+  of the cross-method benchmark datum, including target observable,
+  coordinate dimension, method-specific normalized coordinates, statistical
+  errors, regulator envelopes, matching errors, optional covariance data, and
+  provenance; the finite pairwise certificate is
+  \(|x_m-x_n|_{\rm comp}\le e_m+e_n\).
 - Records the current magnetic-Ising benchmark status: finite TFFSA block,
   spectral-flow, and exact \(E_8\) target scripts are finite certificates, not
   yet a full continuum comparison without cutoff counterterms and
@@ -290,6 +299,11 @@ plots.
   windows, and reports finite intercepts, propagated statistical errors,
   deterministic systematic coordinates, residuals, condition numbers, and
   window spread.
+- `qft_scripts/benchmark_manifest_consistency.py --smoke`: builds a
+  synthetic cross-method benchmark manifest, validates coordinates,
+  covariance/provenance data, total error envelopes, and reports the pairwise
+  finite consistency matrix; it is a manifest-level compatibility check, not
+  a continuum-agreement theorem.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational and
   finite-matrix regression check for the Lagrange-interpolation obstruction,
   Richardson cancellation, integer-power extrapolation weights, and
@@ -310,7 +324,8 @@ plots.
   identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
-  tangent-gradient, and local-energy mean/variance identities.
+  tangent-gradient, local-energy mean/variance identities, and the benchmark
+  manifest's passing and failing finite pairwise certificates.
 
 ## Anti-Wrapper Audit
 
@@ -363,3 +378,8 @@ plots.
   certificate as benchmark target data, keeping the continuum factorized
   scattering derivation and finite TCSA/TFFSA diagonalization claims
   logically separate.
+- 2026-06-01 issue #494 benchmark-manifest pass: added a machine-readable
+  finite cross-method benchmark-manifest protocol and script.  The text
+  explicitly identifies the pairwise consistency inequality as finite
+  arithmetic on declared coordinates and error envelopes, not as evidence
+  that any continuum QFT limit or common target observable has been proved.
