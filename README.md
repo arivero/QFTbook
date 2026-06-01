@@ -31,35 +31,12 @@ volumes:
 11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
 12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
 
-### Roadmap Lanes Not Yet Numbered
-
-The following subject lanes are recognized as likely future standalone
-expansions or major splits, but they are not yet public numbered volumes:
-
-1. Large-N gauge theory, QCD strings, flux tubes, baryons, and
-   gauge-string expansions
-2. Advanced local-algebraic QFT, modular structure, concrete interacting nets,
-   and entanglement as an AQFT topic
-3. Advanced scattering, amplitudes, resonances, charged scattering, and
-   infrared-safe detector observables
-4. Advanced supersymmetric theories, protected sectors, GLSM/mirror symmetry,
-   localization, and supersymmetric Wilsonian schemes
-5. Advanced two-dimensional CFT and exact two-dimensional QFT, including
-   Riemann-surface CFT, orbifolds, twist fields, Liouville theory, TCSA, and
-   TFFSA
-6. Advanced constructive, stochastic, and rigorous Wilsonian QFT proof
-   infrastructure, if the proof program outgrows Volume XI
-7. Advanced phases, defects, categorical symmetry, and extended-operator
-   theory, if the material outgrows Volume IX
-8. Advanced curved-background, locally covariant, and semiclassical QFT, if
-   the material outgrows Volume XII
-
 The public volume program has two layers.  The first layer is the launched
 compiled manuscript: twelve reader-facing volumes, numbered I--XII, whose
 assembly files are included by `monograph/tex/main.tex` and therefore by
 `monograph/tex/main.pdf`.  The second layer is the planned future volume
-program: subject volumes that have been identified as natural splits or
-expansions, but have not yet been assigned public Roman numerals.
+program: subject-volume candidates that have been identified as natural splits
+or expansions, but have not yet been assigned public Roman numerals.
 
 Volume XIII and later are therefore unassigned, not missing.  A future subject
 becomes a numbered public volume only after it has a TeX assembly file, chapter
@@ -90,10 +67,10 @@ no hidden active volumes outside this roster.  Draft files, deprecated files,
 source transcriptions, local reference files, and planning notes are not
 additional public volumes.
 
-### Planned Future Volume Candidates
+### Full Planned Future Volume Candidate List
 
-The table below is the full public list of planned subject-volume candidates
-as of the current repository state.  These are part of the intended monograph
+The table below is the complete public list of currently recognized future
+subject-volume candidates.  These are part of the intended monograph
 architecture, but they are not active public volumes yet.  They keep their
 descriptive names until the material is mature enough to receive a numbered
 assembly file.
@@ -105,6 +82,9 @@ assembly file.
 | Advanced scattering, amplitudes, resonances, and infrared-safe observables | Planned candidate standalone volume or deep expansion of the scattering/gauge volumes | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, energy correlators, light-ray observables, and detector-defined inclusive observables. | Volumes II, IV, and V |
 | Advanced supersymmetric theories and protected sectors | Planned candidate expansion of the supersymmetry volume, with possible later split if the material outgrows Volume VII | GLSM and mirror symmetry, two-dimensional supersymmetric models, four-dimensional N=1 and N=2 dynamics, localization with regulated data, six-dimensional theories, and protected sectors. | Volume VII |
 | Advanced two-dimensional CFT and exact two-dimensional QFT | Planned candidate expansion or later split across the CFT, integrability, supersymmetry, and numerical volumes | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. | Volumes V, VI, VII, and XI |
+| Advanced constructive, stochastic, and rigorous Wilsonian QFT | Planned candidate standalone volume if the proof program outgrows Volume XI | Constructive existence theorems, stochastic quantization, singular SPDEs, nonperturbative Wilsonian RG, scaling limits, and proofs connecting regulator data to local QFT frameworks. | Volume XI |
+| Advanced phases, defects, categorical symmetry, and extended-operator theory | Planned candidate standalone volume if the extended-operator program outgrows Volume IX | Line, surface, and domain-wall operators; generalized global symmetry; categorical symmetry; noninvertible defects; phase diagnostics; anomaly inflow; and substantial examples. | Volumes VIII and IX |
+| Advanced curved-background, locally covariant, and semiclassical QFT | Planned candidate standalone volume if the curved-background program outgrows Volume XII | Locally covariant QFT, microlocal methods, Hadamard renormalization, index-theoretic anomaly structure, semiclassical backreaction, and controlled curved-background examples. | Volume XII |
 
 Contributors should treat the twelve active volumes as the authoritative
 compiled manuscript and the roadmap table as the authoritative list of planned
