@@ -22,8 +22,10 @@ Current checks:
   divergence with an anomalous Ward identity.
 - `anomaly_matching_wzw_checks.py`: exact rational checks for the anomaly
   matching and Wess--Zumino--Witten coefficient section, including
-  \(n=N_c\) from matching the left-flavor anomaly, vector-flavor anomaly
-  cancellation between the two chiral components of a Dirac quark, and
+  \(n=N_c\) from matching the left-flavor anomaly, invariance of the
+  completely symmetric descent coefficient under Abelianized Bardeen
+  counterterm shifts, vector-flavor anomaly cancellation between the two
+  chiral components of a Dirac quark, and
   \(\operatorname{Tr}(T^3\{q,q\})=1/3\) for the
   \(\pi^0\gamma\gamma\) normalization.
 - `anomaly_polynomial_descent_checks.py`: exact rational checks for the

@@ -257,6 +257,12 @@
   \(N_c(48\pi^2)^{-1}\int\operatorname{Tr}(\alpha\,\dd A\,\dd A)+O(A^3)\)
   is matched by a level-\(n\) WZW term only when \(n=N_c\).  A pion sigma model
   without WZW response fails the test.
+- The WZW level comparison is now tied explicitly to the descent-coordinate
+  discussion of the preceding anomaly chapter: local counterterms may change
+  the four-form representative and the displayed \(O(A^3)\) completion, but
+  not the completely symmetric coefficient of the six-form anomaly polynomial.
+  The quadratic \(\operatorname{Tr}(\alpha\,\dd A\,\dd A)\) term is used as
+  the lowest-background coordinate of that fixed cohomology class.
 - The vector subgroup is anomaly-free in the local flavor anomaly coefficient
   because the left and right components of a Dirac quark contribute equally and
   with opposite signs.  The Vafa--Witten positivity argument is recorded as a
@@ -352,6 +358,11 @@
   comparing the \(SU(N_f)_L\) descent coefficient of one color copy with the
   unit-level gauged WZW variation; Wess--Zumino consistency is identified as
   the reason the higher-background terms are fixed in the same cocycle class.
+- 2026-06-01 issue #696 descent-coordinate pass: clarified that the
+  quadratic WZW comparison fixes the symmetric anomaly-polynomial coordinate,
+  while Bardeen counterterms only change representatives; extended
+  `calculation-checks/anomaly_matching_wzw_checks.py` to verify the finite
+  counterterm algebra.
 - 2026-05-30 issue #696 finite-\(SU(2)\) pass: removed the finite-doublet
   anomaly quoted theorem from the chapter.  The QFT conclusion is now a local
   proposition proved from Dai--Freed/Pfaffian-line holonomy, tensor-product

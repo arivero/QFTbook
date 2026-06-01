@@ -70,6 +70,10 @@
   \(\widehat A\,\operatorname{ch}\) coefficients, the \(2\pi i\) inflow
   conversion, Standard Model hypercharge sums, and \(SU(N)\)
   fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
+- `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
+  Abelianized Bardeen-counterterm algebra used here: shifts of the local
+  anomaly representative leave the completely symmetric descent coefficient
+  unchanged.
 
 ## Framework
 
@@ -250,6 +254,11 @@
   \(\dd I_5^{(0)}=I_6\), \(sI_5^{(0)}=\dd I_4^{(1)}\), and
   \(sI_4^{(1)}=\dd I_3^{(2)}\), with the even gauge parameter obtained by
   replacing the odd ghost \(\mathsf c\) by \(\lambda\).
+- Bardeen counterterms shift four-form representatives but not the symmetric
+  cohomology coordinate of the anomaly polynomial: in an Abelianized chart
+  \(d'_{abc}=d_{abc}+\frac12(h_{ab,c}+h_{ac,b})\) with
+  \(h_{ab,c}=-h_{ba,c}\), hence \(d'_{(abc)}=d_{(abc)}\).  This is the
+  coefficient later compared with the Wess--Zumino--Witten level.
 - Local anomaly inflow is displayed as the bulk-boundary identity
   \[
     \delta_\lambda\left(W_M[\mathsf A]+W_X^{\mathrm{bulk}}[\mathsf A_X]\right)

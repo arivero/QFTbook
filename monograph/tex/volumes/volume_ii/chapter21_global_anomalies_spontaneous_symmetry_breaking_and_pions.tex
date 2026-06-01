@@ -2380,8 +2380,19 @@ normalization of \(\Gamma_{\mathrm{WZ}}\) in
 \(N_c\) colors and \(N_f\ge3\) light flavors, gauge a left flavor background
 \(A=A_\mu\dd x^\mu\), set the right background to zero, and first retain the
 part quadratic in \(A\).  Matrix multiplication and wedge product are
-implicit in the following formulas.  A single left-handed quark multiplet
-gives the consistent variation
+implicit in the following formulas.
+
+The word ``quadratic'' here does not mean that the higher-background part of
+the anomaly is being discarded.  The previous chapter showed that a local
+Bardeen counterterm can change a four-form representative \(I_4^{(1)}\), but
+cannot change the completely symmetric degree-three coefficient of the
+six-form polynomial \(I_6\).  The term
+\(\operatorname{Tr}(\alpha\,\dd A\,\dd A)\) is the lowest-background
+coordinate of that same descent class in the convention fixed in
+\eqref{eq:consistent-descent-anomaly-representative}.  The \(O(A^3)\) terms
+are the non-Abelian completion required by Wess--Zumino consistency inside
+the same class, up to local counterterm coboundaries.  A single left-handed
+quark multiplet gives the consistent variation
 \[
   \delta_\alpha\Gamma_{\mathrm{1\,color}}[A]
   =
@@ -2416,12 +2427,14 @@ background \(A\) gives
   n=N_c .
 \]
 The comparison of the displayed quadratic term fixes the integer coefficient
-of the generator of the descent class.  The higher powers of \(A\) are then
-not independent choices: Wess--Zumino consistency fixes them inside the same
-local cocycle class, up to local counterterms.  When the flavor symmetry is
-coupled to background gauge fields, the Wess--Zumino functional is completed
-by local four-dimensional terms involving \(U,\ell_\mu,r_\mu\).  The completed
-Wess--Zumino--Witten functional \(\Gamma_{\mathrm{WZW}}[U;\ell,r]\) satisfies
+of the generator of the descent class.  This is why the level is fixed by
+one coefficient rather than by a term-by-term comparison of a chosen
+representative.  The remaining background terms are determined by the same
+relative BRST class after the counterterm convention has been chosen.  When
+the flavor symmetry is coupled to background gauge fields, the Wess--Zumino
+functional is completed by local four-dimensional terms involving
+\(U,\ell_\mu,r_\mu\).  The completed Wess--Zumino--Witten functional
+\(\Gamma_{\mathrm{WZW}}[U;\ell,r]\) satisfies
 \[
   \delta_{\alpha_L,\alpha_R}
   \Gamma_{\mathrm{WZW}}[U;\ell,r]
