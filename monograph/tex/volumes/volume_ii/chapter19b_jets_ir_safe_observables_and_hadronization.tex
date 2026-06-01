@@ -634,6 +634,64 @@ substructure variable can still be IRC safe, but its safety is a statement
 about that functional and its normalization.  The check must be made at the
 level of Definition~\ref{def:irc-safe-measurement}.
 
+\paragraph{Finite-tree formulation and decision margins.}
+The preceding definition hides a useful mathematical datum: before one takes
+continuum, perturbative, or detector limits, soft drop is a deterministic map
+on a finite Cambridge--Aachen declustering tree.  Let \(T\) be a rooted binary
+tree whose leaves are the constituents of a fixed input jet.  For every
+internal vertex \(v\), let \(v_L,v_R\) be the two branches obtained by undoing
+one Cambridge--Aachen recombination.  Write
+\[
+  E_{v,a}=\sum_{\ell\in v_a}p_{T\ell},
+  \qquad
+  z_v=\frac{\min(E_{v,L},E_{v,R})}{E_{v,L}+E_{v,R}},
+  \qquad
+  \theta_v=\frac{\Delta R(v_L,v_R)}{R_0},
+\]
+where the branch direction entering \(\Delta R(v_L,v_R)\) is the
+four-momentum recombination direction of that branch.  A fixed-tree soft-drop
+datum consists of \(T\), the leaf momenta, a declared tie-breaking rule when
+\(E_{v,L}=E_{v,R}\), and the parameters \((z_{\rm cut},\beta_{\rm SD})\).
+The recursion starts at the root.  At a vertex \(v\), if
+\[
+  z_v>z_{\rm cut}\theta_v^{\beta_{\rm SD}},
+\]
+the algorithm stops and retains precisely the leaves below \(v\).  If the
+condition fails, it moves to the harder child and deletes the softer child.
+
+This finite-tree datum is the object whose soft and collinear limits must be
+tested before it is inserted into a partonic phase-space integral.  Define the
+soft-drop decision margin and, on failed vertices, the harder-branch margin by
+\begin{equation}
+  m_v^{\rm SD}
+  =
+  \left|z_v-z_{\rm cut}\theta_v^{\beta_{\rm SD}}\right|,
+  \qquad
+  m_v^{\rm hard}
+  =
+  \frac{|E_{v,L}-E_{v,R}|}{E_{v,L}+E_{v,R}} .
+  \label{eq:soft-drop-decision-margins}
+\end{equation}
+For a finite event with no zero-energy branch, all quantities \(z_v\) and
+\(\theta_v\) are continuous functions of the leaf momenta on any chart where
+the Cambridge--Aachen tree \(T\) itself is unchanged.  Hence, if every vertex
+visited by the recursion has \(m_v^{\rm SD}>0\), and every failed vertex has
+\(m_v^{\rm hard}>0\), there is a neighborhood of the leaf momenta in which
+the same vertices are visited, the same branches are deleted, and the same
+leaf set is retained.  If the tree \(T\) is generated from the momenta rather
+than supplied as part of the datum, one must additionally require positive
+Cambridge--Aachen clustering margins: every pairwise angular distance
+comparison that determines the tree must remain separated from its nearest
+competitor.  These margins are the precise finite-event meaning of the phrase
+``away from soft-drop and clustering boundaries.''  At such a point any
+groomed observable that is a smooth function of the retained momenta has the
+same local soft or collinear behavior as the retained-momentum map specified
+by the fixed recursion.  The boundary hypersurfaces
+\(m_v^{\rm SD}=0\), \(m_v^{\rm hard}=0\), and the Cambridge--Aachen distance
+tie hypersurfaces require separate distributional analysis and cannot be
+silently discarded when a singular measurement or endpoint resummation is
+being defined.
+
 \begin{definition}[\(N\)-subjettiness]
 \label{def:n-subjettiness}
 For a jet with constituents \(k\), choose \(N\) axes

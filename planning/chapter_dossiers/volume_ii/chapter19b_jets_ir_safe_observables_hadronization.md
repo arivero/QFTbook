@@ -49,6 +49,9 @@ The chapter establishes:
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
+- a finite-tree formulation of soft drop as a deterministic map on a
+  Cambridge--Aachen declustering tree, with explicit soft-drop decision
+  margins, harder-branch margins, and clustering-margin qualifications;
 - the minimized-\(N\)-subjettiness value functional on a compact angular jet
   patch, with existence of minimizing axes and soft/collinear continuity of
   the minimized value rather than of a chosen axis label;
@@ -118,6 +121,14 @@ The chapter establishes:
     four-vector, while for \(\beta_{\rm SD}=0\) the groomed four-vector itself
     is not collinear safe; mMDT safety statements must name the measured
     groomed functional.
+9aa. The finite-event meaning of being away from grooming boundaries is now
+     explicit: along the visited Cambridge--Aachen declustering path, the
+     soft-drop inequality, the harder-child choice at failed vertices, and the
+     clustering comparisons must have positive margins.  On such a chart the
+     retained leaf set is locally constant, and any smooth functional of the
+     retained momenta inherits the corresponding local soft/collinear
+     behavior.  Boundary hypersurfaces require separate distributional
+     treatment.
 9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
     calorimetric value functional on finite-energy jet measures; selected
     minimizing axes are auxiliary data and can jump at degenerate events
@@ -173,6 +184,13 @@ The chapter establishes:
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added
   `calculation-checks/soft_drop_irc_checks.py`.
+- 2026-06-01 issue #526 soft-drop finite-tree pass: added the
+  Cambridge--Aachen declustering-tree datum and the decision-margin ledger
+  \(m_v^{\rm SD}\), \(m_v^{\rm hard}\), together with the finite-event
+  stability interpretation of "away from grooming boundaries"; extended
+  `calculation-checks/soft_drop_irc_checks.py` to verify fixed-tree retained
+  leaves, off-boundary perturbation stability, and boundary-crossing behavior
+  with exact rational data.
 - 2026-06-01 issue #526/#630 continuation: added the minimized
   \(N\)-subjettiness measure-functional definition, proved existence of
   minimizing axes and continuity of the minimized value under weak, soft, and
