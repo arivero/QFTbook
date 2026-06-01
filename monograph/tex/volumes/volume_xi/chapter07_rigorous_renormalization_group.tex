@@ -1078,6 +1078,112 @@ coordinates and critical exponents order by order, while a nonperturbative
 fixed-point theorem additionally proves existence, stability, and
 reconstruction.
 
+\section{Status Ledger For Nonperturbative Fixed-Point Claims}
+\label{sec:rg-fixed-point-status-ledger}
+
+The preceding benchmarks should be compared through the data they actually
+construct.  A fixed-point statement in this chapter is therefore recorded by
+a four-layer ledger:
+\begin{enumerate}
+  \item the \emph{RG object}: the space on which the map acts, such as local
+  interactions, polymer activities, Grassmann kernels, tensors, lattice
+  measures, or BV actions;
+  \item the \emph{map theorem}: the domain, differentiability or analyticity,
+  contraction or Newton estimates, fixed point, and stable/unstable
+  decomposition for that map;
+  \item the \emph{source and observable theorem}: the source-extended map,
+  contact-term bookkeeping, and reconstruction estimates for the
+  distributions or observable algebras being claimed;
+  \item the \emph{target identification}: the comparison map identifying the
+  constructed RG system with the physical short-range, gauge, or continuum
+  QFT target.
+\end{enumerate}
+The strength of a result is the first layer in this list at which all data
+and estimates are present.  This convention prevents an auxiliary fixed
+point from being silently promoted to a theorem about a different QFT.
+
+\paragraph{Hierarchical scalar systems.}
+For the hierarchical scalar maps of
+Definition~\ref{def:hierarchical-scalar-rg-system}, the RG object and map
+theorem are part of the rigorous theorem: the nonlinear integral map is
+defined on a Banach space of analytic or polymer interactions, the
+non-Gaussian fixed point is constructed in that space, and stable/unstable
+directions are controlled by the corresponding estimates.  Observable
+statements are hierarchical observable statements unless accompanied by a
+short-range reconstruction and transfer datum of the form
+Definitions~\ref{def:short-range-scalar-block-spin-datum} and
+\ref{def:auxiliary-to-short-range-rg-transfer-datum}.  The target
+identification with the ordinary nearest-neighbor or finite-range
+three-dimensional scalar critical point is therefore an additional problem,
+requiring its own comparison map and reconstruction estimates beyond shared
+coordinate names such as scalar, relevant, or quartic.
+
+\paragraph{Long-range fermionic models.}
+For the long-range fermionic \(\psi^4_d\) systems, the rigorous result
+constructs a fixed interaction in a Banach space of Grassmann kernels and
+constructs selected response functions with anomalous scaling and controlled
+remainders.  The source layer is part of the theorem for the field and
+density response functions that are actually constructed.  The target is the
+long-range fermionic model with the specified fractional kinetic term and
+fixed ultraviolet cutoff interpretation.  Using this result as evidence for
+ordinary short-range scalar critical behavior requires a separately stated
+auxiliary-to-target comparison; it is not an identification of universality
+classes by analogy.
+
+\paragraph{Tensor RG fixed points.}
+For tensor RG, the RG object is an infinite-dimensional tensor in a declared
+Hilbert--Schmidt or Banach topology.  The theorem is a contraction statement
+for a modified tensor map, including its disentangling or truncation rule,
+on a specified neighborhood of the high-temperature, low-temperature, or
+discontinuity fixed point.  The reconstructed object is initially a lattice
+statistical model or tensor-network partition function.  A continuum-QFT
+claim requires a further scaling-window reconstruction and comparison to
+Schwinger functions, local algebras, or another QFT observable topology.
+Thus tensor RG supplies theorem-level fixed points of tensor maps and a
+valuable laboratory for RG proof technology; it becomes a continuum QFT
+fixed-point theorem only after the reconstruction layer is supplied.
+
+\paragraph{Ordinary short-range scalar targets.}
+For a short-range three-dimensional scalar Wilson--Fisher target, the RG
+object must be the block-spin/polymer datum of
+Definition~\ref{def:short-range-scalar-block-spin-datum}, or a proven
+equivalent datum connected to it by
+Definition~\ref{def:comparison-of-rg-descriptions}.  The theorem would have
+to construct the stable critical trajectory or fixed point in that datum,
+including the irrelevant polymer tail, source extensions, contact terms, and
+distributional reconstruction estimates.  The massive constructive
+\(\phi^4_3\) theorems and the critical hierarchical or long-range
+fixed-point theorems supply important pieces of the landscape, but the
+ordinary short-range critical reconstruction theorem is a separate
+target-identification problem.  Perturbative epsilon expansions and
+finite-dimensional functional-RG truncations are then used as coordinate and
+numerical evidence for this target, not as substitutes for the map theorem
+and reconstruction estimates.
+
+\paragraph{Gauge targets.}
+For gauge theories, the RG object is not a list of gauge-fixed coefficients.
+The object is either a gauge-invariant lattice measure and observable system,
+or a regularized BV action and observable complex satisfying the quantum
+master equation and its RG pushforward.  The source layer must use
+gauge-invariant local observables, Wilson-line or Wilson-loop observables
+with their geometric data, or BV cohomology classes.  A gauge-theory
+fixed-point or continuum-limit theorem therefore includes preservation of
+the gauge structure under blocking, reconstruction of physical observables,
+and comparison of line or extended sectors when those sectors are part of
+the claim.  Beta functions in a gauge-fixed coordinate chart are useful
+local coordinates only after this gauge-compatible RG datum has been
+declared.
+
+The ledger also fixes how this monograph treats the phrase ``state of the
+art.''  The current rigorous fixed-point frontier contains theorem-level
+auxiliary and model-specific systems with impressive control of irrelevant
+coordinates.  It does not yet contain a general theorem turning every
+physically expected Wilsonian fixed point into a local QFT, nor a theorem
+constructing the ordinary three-dimensional Ising CFT from a short-range
+block-spin map with all source and reconstruction data.  The monograph uses
+the proved systems as proof templates and laboratories, while keeping the
+physical target-identification problems explicit.
+
 \section{Gauge-Compatible RG And Reconstruction Estimates}
 
 A Wilsonian RG theorem for a scalar probability measure can be formulated as

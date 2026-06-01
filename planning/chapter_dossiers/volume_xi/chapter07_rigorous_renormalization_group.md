@@ -74,6 +74,10 @@ constructive RG developments.
   short-range orbit error.
 - `tau_aux`, `tau_sr`, `A`, `r`: auxiliary and target unstable tuning maps,
   their linear comparison, and the target tuning remainder.
+- RG object / map theorem / source and observable theorem / target
+  identification: the four-layer status ledger used to classify
+  nonperturbative fixed-point claims without transferring theorem status
+  between inequivalent RG systems.
 
 ## Claim Ledger
 
@@ -136,6 +140,11 @@ constructive RG developments.
   scalar fixed points with controlled unstable/stable directions, and
   infinite-dimensional tensor-RG fixed points with explicit contraction
   neighborhoods.
+- Adds a fixed-point status ledger separating theorem status for
+  hierarchical scalar systems, long-range fermionic systems, tensor RG maps,
+  ordinary short-range scalar targets, and gauge targets.  The ledger records
+  which layers have actually been constructed: RG object, map theorem, source
+  and observable theorem, and target identification.
 - Gives a precise monograph definition of universality class as an RG
   attraction statement plus reconstruction data.
 - Defines a Wilsonian universality datum with microscopic regulators, tuned
