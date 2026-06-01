@@ -16,6 +16,8 @@ relations
     d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
     one-loop scale/RG factors in the instanton density
     the general charge-k framed ADHM quotient has local real dimension 4 k N
+    the finite-dimensional ADHM quotient-density coarea formula has the
+    correct orbit-volume and homogeneous-cone scaling
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
     volume power rho^(4N-5)
 
@@ -247,6 +249,36 @@ def check_general_adhm_quotient_dimension() -> None:
             )
 
 
+def check_adhm_quotient_density_coarea_scaling() -> None:
+    # Toy quotient R^2 \ {0} -> R_{>0} by U(1): the level-set coarea formula
+    # divides the circle density 2*pi*r by Vol(U(1))*sqrt(M), with M=r^2.
+    # Thus the quotient radial density is dr, not r dr.
+    circle_density_power = 1
+    sqrt_orbit_gram_power = 1
+    quotient_radial_density_power = circle_density_power - sqrt_orbit_gram_power
+    assert_equal("toy U(1) quotient radial density power", quotient_radial_density_power, 0)
+
+    for n_c in range(2, 8):
+        for k in range(1, 6):
+            centered_ambient_dim = 4 * k * k + 4 * k * n_c - 4
+            constraint_dim = 3 * k * k
+            group_dim = k * k
+            quotient_dim = centered_ambient_dim - constraint_dim - group_dim
+            assert_equal(f"centered ADHM quotient dimension k={k} SU({n_c})", quotient_dim, 4 * k * n_c - 4)
+
+            # In the ambient coarea expression, the moment maps are quadratic.
+            # Under X -> lambda X:
+            # dX contributes V, delta(mu) contributes -2C, J_mu contributes C
+            # because D mu is linear in X, and sqrt(det M) contributes G.
+            ball_scaling_power = centered_ambient_dim - 2 * constraint_dim + constraint_dim - group_dim
+            assert_equal(f"ADHM quotient ball scaling k={k} SU({n_c})", ball_scaling_power, quotient_dim)
+            assert_equal(
+                f"ADHM quotient cone shell power k={k} SU({n_c})",
+                ball_scaling_power - 1,
+                4 * k * n_c - 5,
+            )
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
@@ -255,6 +287,7 @@ def main() -> None:
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
     check_general_adhm_quotient_dimension()
+    check_adhm_quotient_density_coarea_scaling()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
 

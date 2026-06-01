@@ -63,7 +63,7 @@
   coupling-coordinate conversion used there, as well as the
   scale-invariant one-instanton center-size measure, zero-mode coupling
   power, one-loop RG exponent, and the general charge-\(k\) framed ADHM
-  quotient dimension count.
+  quotient dimension and quotient-density coarea scaling count.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -155,6 +155,8 @@
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
 | \(B_1,B_2,I,J,W,K\) | ADHM variables and vector spaces, with \(K\simeq\mathbb C^k\) and \(W\simeq\mathbb C^{N_c}\) |
 | \(\mu_{\mathbb C},\mu_{\mathbb R}\) | complex and real ADHM moment maps |
+| \(M_{AB}(X)\) | orbit Gram matrix for the \(U(K)\) action on the ADHM level set |
+| \(J_\mu(X)\) | coarea Jacobian for the ADHM moment-map submersion |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
@@ -333,6 +335,14 @@
   \(4kN_c\), with the four center coordinates given by the trace parts of
   \(B_1,B_2\).  Small-instanton boundary strata correspond to charge
   collapsing to point configurations in the Uhlenbeck compactification.
+- The ADHM quotient density is defined as the Riemannian density on the
+  horizontal quotient of the regular moment-map level set.  Its coarea form
+  divides the level-set density by the square root of the orbit Gram
+  determinant and, equivalently, inserts the moment-map coarea Jacobian in an
+  ambient delta-function representation.  This density is only the classical
+  zero-mode part of the instanton measure; nonzero-mode determinants,
+  operator renormalization, and boundary estimates remain separate analytic
+  data.
 - The centered \(k=1\) ADHM quotient is derived directly from
   \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
   over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension

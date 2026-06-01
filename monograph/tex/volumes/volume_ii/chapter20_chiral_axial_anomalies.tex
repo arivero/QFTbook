@@ -2980,6 +2980,150 @@ For a path integral this compactification carries analytic content: whether the
 semiclassical integral is finite depends on the determinant, operator
 insertions, and regulator behavior near these boundary strata.
 
+\begin{definition}[ADHM quotient density]
+\label{def:adhm-quotient-density}
+Equip the affine ADHM space
+\[
+  \mathbb A_{k,N_c}
+  =
+  \operatorname{End}(K)^2
+  \oplus\operatorname{Hom}(W,K)
+  \oplus\operatorname{Hom}(K,W)
+\]
+with the flat Hermitian metric
+\[
+  \|(\delta B_1,\delta B_2,\delta I,\delta J)\|^2
+  =
+  \operatorname{tr}_K(\delta B_1\delta B_1^\dagger)
+  +\operatorname{tr}_K(\delta B_2\delta B_2^\dagger)
+  +\operatorname{tr}_K(\delta I\delta I^\dagger)
+  +\operatorname{tr}_W(\delta J^\dagger\delta J).
+\]
+On the free, stable, regular locus
+\[
+  Z_{k,N_c}^{\rm reg}
+  :=
+  \{\mu_{\mathbb C}=0,\ \mu_{\mathbb R}=0\}_{\rm stable,reg}
+  \subset \mathbb A_{k,N_c},
+\]
+let \(V_X\subset T_X Z_{k,N_c}^{\rm reg}\) be the tangent space to the
+\(U(K)\)-orbit and let
+\[
+  H_X:=V_X^\perp\cap T_XZ_{k,N_c}^{\rm reg}.
+\]
+The differential of the quotient map identifies \(H_X\) with the tangent
+space of the smooth quotient at \([X]\).  The \emph{ADHM quotient density}
+\(\dd\nu_{k,N_c}^{\rm ADHM}\) is the Riemannian density induced by this
+quotient metric.
+\end{definition}
+
+This density is a finite-dimensional object.  It is not yet the complete
+semiclassical Yang--Mills weight: the latter also contains the nonzero-mode
+determinants, coupling-coordinate convention, operator renormalization, and
+the treatment of the boundary strata.  The quotient density is the part of
+the measure fixed by the classical zero-mode geometry.
+
+\begin{proposition}[Coarea form of the ADHM quotient density]
+\label{prop:adhm-quotient-density-coarea}
+Fix an \(\operatorname{Ad}\)-invariant inner product on
+\(\mathfrak u(K)\) and let \(\dd\operatorname{vol}_{U(K)}\) be the
+associated left-invariant Riemannian density on \(U(K)\).  Choose an
+orthonormal basis \(\{\xi_A\}_{A=1}^{k^2}\) of \(\mathfrak u(K)\), and let
+\(\xi_A^\#(X)\) denote the corresponding infinitesimal orbit vector at
+\(X\in Z_{k,N_c}^{\rm reg}\).  Define the orbit Gram matrix
+\[
+  M_{AB}(X):=\langle \xi_A^\#(X),\xi_B^\#(X)\rangle_{\mathbb A}.
+\]
+If \(F\) is a compactly supported smooth \(U(K)\)-invariant function on
+\(Z_{k,N_c}^{\rm reg}\), then
+\begin{equation}
+  \int_{\mathcal M_{k,N_c}^{\rm ADHM}}
+  F([X])\,\dd\nu_{k,N_c}^{\rm ADHM}([X])
+  =
+  \frac1{\operatorname{Vol}U(K)}
+  \int_{Z_{k,N_c}^{\rm reg}}
+  \frac{F(X)}{\sqrt{\det M(X)}}\,\dd\operatorname{vol}_{Z}(X).
+  \label{eq:adhm-quotient-density-levelset-coarea}
+\end{equation}
+Equivalently, if \(J_\mu(X)\) is the coarea Jacobian
+\[
+  J_\mu(X)
+  :=
+  \det\!\bigl(D\mu_XD\mu_X^\ast\bigr)^{1/2},
+  \qquad
+  \mu=(\operatorname{Re}\mu_{\mathbb C},
+       \operatorname{Im}\mu_{\mathbb C},\mu_{\mathbb R}),
+\]
+then the same density may be represented distributionally on the ambient
+affine space by
+\begin{equation}
+  \int_{\mathcal M_{k,N_c}^{\rm ADHM}}
+  F\,\dd\nu_{k,N_c}^{\rm ADHM}
+  =
+  \frac1{\operatorname{Vol}U(K)}
+  \int_{\mathbb A_{k,N_c}}
+  F(X)\,
+  \delta(\mu(X))\,
+  \frac{J_\mu(X)}{\sqrt{\det M(X)}}\,
+  \dd X ,
+  \label{eq:adhm-quotient-density-ambient-coarea}
+\end{equation}
+on any compact set where the regularity and freeness hypotheses hold.  The
+delta function in \eqref{eq:adhm-quotient-density-ambient-coarea} is
+normalized with respect to the Euclidean density on the real target of
+\(\mu\) induced by the same trace pairings.
+\end{proposition}
+
+\begin{proof}
+The restricted flat metric on \(Z_{k,N_c}^{\rm reg}\) gives the orthogonal
+splitting
+\[
+  T_XZ_{k,N_c}^{\rm reg}=H_X\oplus V_X.
+\]
+In local product coordinates \((y,\theta)\), where \(y\) is a quotient
+coordinate and \(\theta^A\) are group coordinates near the identity, the
+metric is block diagonal at the chosen slice if \(H_X\) is used as the
+horizontal distribution.  The horizontal block is the quotient metric, while
+the vertical block is precisely \(M_{AB}(X)\).  Therefore the Riemannian
+density on the level set factorizes as
+\[
+  \dd\operatorname{vol}_{Z}
+  =
+  \sqrt{\det M(X)}\,
+  \dd\operatorname{vol}_{U(K)}\,
+  \dd\nu_{k,N_c}^{\rm ADHM}.
+\]
+Because the flat metric and the moment-map equations are \(U(K)\)-invariant,
+\(\det M(X)\) is constant along each orbit.  Integrating an invariant
+function over the group coordinate gives
+\eqref{eq:adhm-quotient-density-levelset-coarea}.
+
+For the ambient-space expression, apply the ordinary finite-dimensional
+coarea formula to the submersion \(\mu\):
+\[
+  \int_{\mathbb A_{k,N_c}}
+  h(X)\,\delta(\mu(X))\,J_\mu(X)\,\dd X
+  =
+  \int_{\mu^{-1}(0)} h(X)\,\dd\operatorname{vol}_{Z}(X)
+\]
+for compactly supported \(h\) in the regular locus.  Taking
+\(h=F/\sqrt{\det M}\) gives
+\eqref{eq:adhm-quotient-density-ambient-coarea}.
+\end{proof}
+
+\begin{remark}[Classical zero-mode density versus determinant weight]
+\label{rem:adhm-density-versus-determinants}
+Equations
+\eqref{eq:adhm-quotient-density-levelset-coarea} and
+\eqref{eq:adhm-quotient-density-ambient-coarea} define the classical
+zero-mode density on the smooth ADHM quotient.  They do not decide whether
+the instanton contribution to a continuum QFT observable is finite near a
+small-instanton stratum.  That question depends on the nonzero-mode
+determinant, the operator insertions, and the renormalization scheme.  This
+is why the Uhlenbeck boundary is part of the measure problem rather than an
+afterthought about topology.
+\end{remark}
+
 \begin{proposition}[Charge-one ADHM chart and the instanton orientation orbit]
 \label{prop:k-one-adhm-chart-orientation-orbit}
 Let \(W\simeq\mathbb C^{N_c}\) with its Hermitian inner product and let
