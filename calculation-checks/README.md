@@ -1431,6 +1431,11 @@ Current checks:
   IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
   counterexample for the groomed four-vector and the \(\beta_{\rm SD}>0\)
   threshold behavior.
+- `shape_function_convolution_checks.py`: exact rational checks for the
+  jet shape-function section, including finite spectral pairing of the soft
+  measurement coordinate, normalization of the endpoint convolution, the
+  first-moment shift by \(\Omega_1/Q\), and paired translation covariance
+  under finite subtraction-scheme changes.
 - `n_subjettiness_continuity_checks.py`: exact rational checks for the
   minimized-\(N\)-subjettiness continuity section, using the \(N=1\),
   \(\beta_\tau=2\) weighted-variance model to verify the soft-addition bound,

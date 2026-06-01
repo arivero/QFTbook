@@ -984,24 +984,146 @@ itself, not on a partonic history.
 
 When a measured event shape is of order \(\Lambda_{\rm QCD}/Q\), the soft
 function in \eqref{eq:jet-event-shape-factorization} contains
-nonperturbative matrix elements.  A typical leading shape-function
-factorization has the form
-\[
+nonperturbative matrix elements.  The endpoint statement has two logically
+separate pieces.  First one must define a soft operator coordinate.  Then one
+may state a factorized approximation that convolves this coordinate with a
+short-distance coefficient in a specified endpoint topology.
+
+\begin{definition}[Leading shape-function operator datum]
+\label{def:leading-shape-function-operator-datum}
+Fix a two-jet SCET operator datum as in
+Definition~\ref{def:scet-two-jet-operator-datum}, an event-shape soft
+measurement coordinate \(\widehat\ell_e\), and a renormalization scheme
+\(\mathcal R_\mu\) for the cusp and endpoint singularities of the Wilson-line
+operator.  A leading shape-function operator datum consists of:
+\begin{enumerate}
+  \item outgoing soft Wilson lines \(Y_n,Y_{\bar n}\) in the representations
+  carried by the two energetic charges;
+  \item for every test function \(h\) on \([0,\infty)\), a renormalized
+  composite insertion \(h_{\mathcal R_\mu}(\widehat\ell_e)\);
+  \item a normalization factor \(N_R\), equal to the dimension of the color
+  representation in the fundamental two-jet case, together with the convention
+  that the identity insertion has unit matrix element.
+\end{enumerate}
+The shape function \(F_e(\ell,\mu;\mathcal R)\) is the distribution on
+\([0,\infty)\) defined by
+\begin{equation}
+  \int_0^\infty \dd\ell\, h(\ell)F_e(\ell,\mu;\mathcal R)
+  =
+  \frac1{N_R}
+  \operatorname{tr}
+  \bra{\vac}
+  \overline{\operatorname T}\!\left(Y_{\bar n}^{\dagger}Y_n\right)
+  h_{\mathcal R_\mu}(\widehat\ell_e)
+  \operatorname T\!\left(Y_n^{\dagger}Y_{\bar n}\right)
+  \ket{\vac}_{\mathcal R_\mu}.
+  \label{eq:shape-function-test-pairing}
+\end{equation}
+At finite regulator with a positive self-adjoint measurement operator
+\(\widehat\ell_e\), this pairing is the spectral measure of
+\(\widehat\ell_e\) in the Wilson-line state.  After renormalization it is a
+scheme-dependent distributional coordinate.  The normalization and first
+moment are
+\begin{equation}
+  \int_0^\infty\dd\ell\,F_e(\ell,\mu;\mathcal R)=1,
+  \qquad
+  \Omega_1^e(\mu;\mathcal R)
+  =
+  \int_0^\infty\dd\ell\,\ell\,F_e(\ell,\mu;\mathcal R),
+  \label{eq:shape-function-normalization-moment}
+\end{equation}
+whenever the displayed moments exist in the chosen scheme.
+\end{definition}
+
+The QFT datum is the operator pairing
+\eqref{eq:shape-function-test-pairing}.  In a phenomenological analysis one
+often chooses a finite-dimensional positive family for \(F_e\) and fits its
+parameters to data.  That fitted family is an additional statistical model
+for the matrix element \eqref{eq:shape-function-test-pairing}.
+The lattice route to the same nonperturbative information must start from a
+finite gauge-field regulator as in
+Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition} and a
+continuum reconstruction or matching statement as in
+Chapter~\ref{ch:constructive-lattice-continuum-local-qft}.  Because
+\eqref{eq:shape-function-test-pairing} contains lightlike Wilson-line
+geometry, a Euclidean calculation needs a separately specified quasi-,
+ratio-, or reconstruction observable and a matching theorem connecting it to
+the lightlike shape coordinate.
+
+\begin{controlledapproximation}[Leading endpoint shape-function convolution]
+\label{ca:leading-endpoint-shape-function-convolution}
+Let \(e\) be a dimensionless two-jet event shape and let \(Q\) be the hard
+scale.  A leading shape-function description on an endpoint window
+\(e\sim \Lambda_{\rm QCD}/Q\) consists of:
+\begin{enumerate}
+  \item the operator datum of
+  Definition~\ref{def:leading-shape-function-operator-datum};
+  \item a perturbative coefficient distribution
+  \(\dd\sigma_{\rm pert}/\dd e\) in the same subtraction scheme;
+  \item a Banach space \(\mathcal B_{\rm end}\) of test functions supported
+  in the endpoint window;
+  \item a remainder functional \(R_Q\) on \(\mathcal B_{\rm end}\) with a
+  stated bound, for example
+  \(\lVert R_Q\rVert_{\mathcal B_{\rm end}^\ast}
+  \leq C Q^{-2}\) in a single-soft-coordinate situation.
+\end{enumerate}
+The approximation means that, for every \(f\in\mathcal B_{\rm end}\),
+\begin{equation}
+  \left\langle \frac{\dd\sigma}{\dd e},f\right\rangle
+  =
+  \int_0^\infty\dd\ell\,F_e(\ell,\mu;\mathcal R)
+  \int\dd e'\,
+  \frac{\dd\sigma_{\rm pert}}{\dd e'}(e',Q,\mu;\mathcal R)\,
+  f\!\left(e'+\frac{\ell}{Q}\right)
+  +R_Q(f).
+  \label{eq:shape-function-distributional-convolution}
+\end{equation}
+Equivalently, when the distributions admit densities in the chosen chart,
+\begin{equation}
   \frac{\dd\sigma}{\dd e}
   =
   \int_0^\infty\dd\ell\,
+  F_e(\ell,\mu;\mathcal R)
   \frac{\dd\sigma_{\rm pert}}{\dd e}
-  \left(e-\frac{\ell}{Q}\right)
-  F_{\rm shape}(\ell)
+  \left(e-\frac{\ell}{Q},Q,\mu;\mathcal R\right)
+  +R_Q(e).
+  \label{eq:shape-function-density-convolution}
+\end{equation}
+\end{controlledapproximation}
+
+The elementary consequences of the convolution are useful diagnostics for
+normalization and scheme bookkeeping.  Taking \(f(e)=1\) in
+\eqref{eq:shape-function-distributional-convolution} and using
+\eqref{eq:shape-function-normalization-moment} gives equality of the total
+weighted cross section up to \(R_Q(1)\).  Taking \(f(e)=e\) gives
+\begin{equation}
+  \int\dd e\,e\,\frac{\dd\sigma}{\dd e}
+  =
+  \int\dd e\,e\,\frac{\dd\sigma_{\rm pert}}{\dd e}
   +
-  O(Q^{-2})
-\]
-on the region where a single soft momentum variable \(\ell\) controls the
-leading power correction.  The function \(F_{\rm shape}\) is a
-renormalized matrix element of Wilson lines with a soft measurement operator,
-normalized in the chosen scheme.  A fitted parametric form for
-\(F_{\rm shape}\) is phenomenological input; the operator definition and its
-renormalization are the QFT data.
+  \frac{\Omega_1^e(\mu;\mathcal R)}{Q}
+  \int\dd e\,\frac{\dd\sigma_{\rm pert}}{\dd e}
+  +R_Q(e).
+  \label{eq:shape-function-first-moment-shift}
+\end{equation}
+Thus the first nonperturbative moment translates the endpoint event shape by
+\(\Omega_1^e/Q\) in this leading single-coordinate approximation.  A finite
+change of subtraction convention may move a constant amount \(\delta\ell\)
+between the perturbative coefficient and the shape coordinate:
+\begin{equation}
+  F'_e(\ell)=F_e(\ell-\delta\ell),
+  \qquad
+  \frac{\dd\sigma'_{\rm pert}}{\dd e}(e)
+  =
+  \frac{\dd\sigma_{\rm pert}}{\dd e}
+  \left(e+\frac{\delta\ell}{Q}\right).
+  \label{eq:shape-function-scheme-translation}
+\end{equation}
+The convolution is invariant under the paired transformation
+\eqref{eq:shape-function-scheme-translation}, modulo boundary and truncation
+terms.  Hence a numerical value quoted for \(\Omega_1^e\) is meaningful only
+with its event-shape definition, Wilson-line orientation, regulator, and
+subtraction scheme.
 
 Track-based observables measure only charged hadrons.  They are generally not
 IRC safe as ordinary partonic measurements, because a collinear splitting can
