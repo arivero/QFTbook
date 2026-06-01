@@ -670,6 +670,110 @@ statements in a logarithmic hierarchy, not numerical error bounds once the
 hierarchy is lost, a Landau-pole region is approached, or an unproved
 factorization remainder dominates.
 
+\subsection{Massive-Vector Sudakov Boundaries}
+
+High-energy jet measurements in the Standard Model involve a second
+short-distance boundary in addition to the QCD soft and collinear boundaries:
+massive electroweak gauge bosons can be soft or collinear relative to an
+energetic charged line while their physical masses stop the logarithmic
+integration.  The correct object is a massive-vector factorization coordinate
+for a specified observable and charge sector.  The physical mass \(M_V\) and
+the hard scale \(Q\) are part of the electroweak perturbative datum, while
+the QCD hadronic measurement remains a physical final-state observable as
+above.
+
+Let \(R\) be a representation of the gauge factor carried by an energetic
+line, and define its quadratic charge by
+\[
+  T_R^aT_R^a=C_R\,\mathbf 1_R .
+\]
+Here \(T_R^a\) are the canonical generators after the gauge field has been
+canonically normalized, so \(\alpha_V=g_V^2/(4\pi)\) is the coupling that
+appears in the emission probability.  The corresponding convention is tied to
+the Yang--Mills normalization of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}: the path-integral gauge
+field is written with kinetic term
+\(-\frac1{4g_{\rm YM}^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\), and
+canonical perturbative fields carry the coupling in the vertices.
+
+\begin{controlledapproximation}[Single-line massive-vector Sudakov chart]
+\label{ca:massive-vector-sudakov-chart}
+Fix an energetic external charge in representation \(R\), a hard scale
+\(Q\), a massive vector boson of mass \(M_V\), and a hierarchy
+\(Q\gg M_V\).  In the strongly ordered soft-collinear chart, use the transverse
+momentum \(k_\perp\) and energy fraction \(z\) of an unresolved virtual vector
+boson as coordinates.  Put
+\[
+  L_V=\log\frac{Q^2}{M_V^2},\qquad
+  y=\log\frac{Q^2}{k_\perp^2},\qquad
+  x=\log\frac1z .
+\]
+The massive vector permits the logarithmic range
+\begin{equation}
+  0<y<L_V,\qquad 0<x<\frac{y}{2},
+  \label{eq:massive-vector-sudakov-region}
+\end{equation}
+where the second inequality is the soft-collinear energy ordering
+\(z>k_\perp/Q\).  Approximating the emission measure by
+\((\alpha_V C_R/\pi)\,\dd x\,\dd y\), the one-line virtual Sudakov coordinate
+is
+\begin{equation}
+  \Delta_R^{(V)}(Q,M_V)
+  =
+  \exp\!\left[
+    -\frac{\alpha_V C_R}{\pi}\,
+    A_V(L_V)
+  \right],
+  \qquad
+  A_V(L_V)
+  =
+  \int_0^{L_V}\dd y\int_0^{y/2}\dd x
+  =
+  \frac14L_V^2 .
+  \label{eq:massive-vector-sudakov-area}
+\end{equation}
+The approximation consists precisely of the eikonal numerator, the
+soft-collinear phase-space chart, fixed coupling, one unresolved massive
+vector, and a scalar charge channel.
+\end{controlledapproximation}
+
+The derivation of \eqref{eq:massive-vector-sudakov-area} is the finite
+phase-space geometry.  The lower transverse-momentum boundary
+\(k_\perp=M_V\) gives \(y=L_V\), the upper boundary \(k_\perp=Q\) gives
+\(y=0\), and the condition that the emitted vector have energy larger than
+its transverse momentum gives \(x<y/2\).  The area is therefore the triangle
+of base \(L_V\) and height \(L_V/2\).  The exponent in
+\eqref{eq:massive-vector-sudakov-area} is the virtual no-emission coordinate
+in this chart.  A real-emission calculation cancels the same logarithmic
+coordinate only for measurements that sum over the corresponding unresolved
+massive-vector final states and over the charge channels connected by those
+emissions.  In electroweak applications the incoming beam and the measured
+final state often select weak charge.  The factorized object is then a matrix
+in the external charge density space, with entries built from products of
+generators \(T_i^a\) on the participating energetic lines.  A scalar
+exponential such as \eqref{eq:massive-vector-sudakov-area} is the
+one-line diagonal representative of this more general charge-transport
+datum.
+
+This is the clean way to place boosted and electroweak jet statements inside
+the monograph.  A boosted massive-particle substructure analysis is a
+measurement on stable hadronic and leptonic final states, together with a
+declared resonance-pole or narrow-width approximation when an unstable
+particle label such as \(W,Z,t\), or \(H\) is used.  The small parameters are
+then listed explicitly, for example
+\[
+  \frac{m_{\rm obj}}{p_T},\qquad
+  \frac{\Gamma_{\rm obj}}{m_{\rm obj}},\qquad
+  \frac{M_W}{Q},\qquad
+  \lambda_{\rm jet},
+\]
+as applicable to the chosen observable.  The perturbative electroweak
+Sudakov transport, the QCD jet and soft functions, the resonance
+approximation, and the nonperturbative hadronization or track coordinates are
+separate entries in the datum.  Their remainders have different meanings and
+must be stated separately before a numerical prediction can be assigned a
+claimed accuracy.
+
 \begin{controlledapproximation}[Perturbative prediction for an IRC-safe jet observable]
 A perturbative prediction for a jet observable consists of:
 the renormalized fixed-order hard functions through a stated order in

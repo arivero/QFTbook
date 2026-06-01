@@ -48,6 +48,10 @@ The chapter establishes:
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
   the precise boundary of LL/NLL/NNLL accuracy labels;
+- a massive-vector Sudakov boundary chart for high-energy electroweak jet
+  measurements, deriving the triangular soft-collinear area
+  \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
+  from the full charge-density-matrix datum;
 - a prose derivation of the finite algebraic identity that a soft Wilson-line
   change of variables removes the leading \(n\cdot D_s\) soft connection from
   the collinear kinetic term, with the factorization content kept in the
@@ -143,6 +147,14 @@ The chapter establishes:
      natural scales to a common scale.  Accuracy labels such as LL/NLL/NNLL
      are incomplete without the anomalous-dimension orders, matching orders,
      transform convention, scale choices, and factorization remainder.
+8ac. Massive electroweak vector corrections to high-energy jet observables are
+     controlled by a physical mass boundary \(M_V\), while the QCD sector
+     retains its own operator and regulator datum.  In the one-line
+     soft-collinear chart the finite phase-space area is
+     \(A_V=\frac14\log^2(Q^2/M_V^2)\); a full electroweak jet prediction also
+     requires the external charge-density matrix, real-emission inclusiveness,
+     resonance or narrow-width status, and separate QCD/nonperturbative
+     remainder data.
 8b. The leading soft Wilson-line decoupling is an algebraic identity at finite
     regulator, transferring leading soft interactions from the collinear
     Lagrangian to Wilson lines in external operators and soft matrix elements.
@@ -290,6 +302,13 @@ The chapter establishes:
   with hard/jet/soft anomalous-dimension consistency and common-scale
   independence; extended `calculation-checks/scet_factorization_checks.py`
   with exact rational RG-transport checks.
+- 2026-06-01 issue #526/#630 massive-vector Sudakov pass: added a
+  high-energy electroweak jet boundary chart with physical vector mass
+  \(M_V\), derived the one-line area
+  \(A_V=\frac14\log^2(Q^2/M_V^2)\), separated scalar Sudakov transport from
+  charge-density-matrix evolution and boosted-resonance approximations, and
+  extended `calculation-checks/scet_factorization_checks.py` with exact
+  rational phase-space-area checks.
 - 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
   soft-dipole evolution datum for non-global veto measurements, derived the
   second-order coefficient separating the global Sudakov square from the

@@ -8,7 +8,9 @@ subtraction is inclusion--exclusion; a finite Wilson-line change of variables
 removes the leading soft covariant derivative when the Wilson line solves its
 defining differential equation; and scalar RG transport is independent of the
 common scale when the hard, jet, and soft anomalous dimensions satisfy the
-factorization consistency equation.
+factorization consistency equation.  It also checks the finite phase-space
+area behind the massive-vector Sudakov chart used for electroweak jet
+boundaries.
 """
 
 from __future__ import annotations
@@ -212,13 +214,52 @@ def check_soft_wilson_line_decoupling_identity() -> None:
     assert_equal("finite BPS decoupling identity", sp.simplify(lhs - rhs), sp.zeros(2, 1))
 
 
+def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
+    return log_q2_over_m2 * log_q2_over_m2 / 4
+
+
+def check_massive_vector_sudakov_area() -> None:
+    big_log = Fraction(6)
+    # The chart is 0 < y < L and 0 < x < y/2.
+    triangle_area = sum(
+        Fraction(1, 4) * (right * right - left * left)
+        for left, right in [(Fraction(0), big_log)]
+    )
+    assert_equal(
+        "massive-vector Sudakov triangular area",
+        triangle_area,
+        massive_vector_sudakov_area(big_log),
+    )
+
+    alpha_times_c_over_pi = Fraction(5, 7)
+    exponent = -alpha_times_c_over_pi * massive_vector_sudakov_area(big_log)
+    assert_equal("massive-vector Sudakov exponent coefficient", exponent, Fraction(-45, 7))
+
+    # Splitting the y interval checks additivity of the finite phase-space
+    # integral before taking a continuum limit.
+    pieces = [
+        (Fraction(0), Fraction(2)),
+        (Fraction(2), Fraction(5)),
+        (Fraction(5), big_log),
+    ]
+    piecewise_area = sum(
+        Fraction(1, 4) * (right * right - left * left)
+        for left, right in pieces
+    )
+    assert_equal("piecewise massive-vector area", piecewise_area, massive_vector_sudakov_area(big_log))
+
+
 def main() -> None:
     check_event_shape_convolution()
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
     check_rg_transport_common_scale_independence()
     check_soft_wilson_line_decoupling_identity()
-    print("All SCET convolution, zero-bin, RG-transport, and soft-Wilson-line checks passed.")
+    check_massive_vector_sudakov_area()
+    print(
+        "All SCET convolution, zero-bin, RG-transport, soft-Wilson-line, "
+        "and massive-vector Sudakov checks passed."
+    )
 
 
 if __name__ == "__main__":
