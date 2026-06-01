@@ -2326,6 +2326,102 @@ absorbed by the global Ward identity, which identifies the fourth action with
 minus the sum of the first three finite actions on invariant tensors.
 \end{proof}
 
+\paragraph{\texorpdfstring{\(SU(2)\) four-fundamental reduction.}{SU(2) four-fundamental reduction.}}
+The abstract connection becomes a concrete finite system already for four
+spin-\(\frac12\) insertions in \(SU(2)_k\).  Let \(V=\mathbb C^2\) with
+indices \(\alpha,\beta\in\{0,1\}\), let
+\(\epsilon_{01}=1=-\epsilon_{10}\), and choose the generators normalized by
+\begin{equation}
+  \sum_{a=1}^3
+  (t^a)_\alpha{}^\gamma (t^a)_\beta{}^\delta
+  =
+  \delta_\alpha{}^\delta\delta_\beta{}^\gamma
+  -\frac12\delta_\alpha{}^\gamma\delta_\beta{}^\delta .
+  \label{eq:su2-fundamental-fierz-wzw-normalization}
+\end{equation}
+This is the \(SU(2)\) specialization of the WZW convention above: the
+fundamental quadratic Casimir is \(3/2\), while \(h^\vee=2\).  The invariant
+space in \(V^{\otimes4}\) is two-dimensional.  A convenient spanning pair is
+\[
+  \mathcal I_s{}_{\alpha_1\alpha_2\alpha_3\alpha_4}
+  =
+  \epsilon_{\alpha_1\alpha_2}\epsilon_{\alpha_3\alpha_4},
+  \qquad
+  \mathcal I_t{}_{\alpha_1\alpha_2\alpha_3\alpha_4}
+  =
+  \epsilon_{\alpha_1\alpha_3}\epsilon_{\alpha_2\alpha_4},
+\]
+with the third pairing
+\(\mathcal I_u=\epsilon_{\alpha_1\alpha_4}\epsilon_{\alpha_2\alpha_3}\)
+obeying
+\begin{equation}
+  \mathcal I_s-\mathcal I_t+\mathcal I_u=0 .
+  \label{eq:su2-four-invariant-relation}
+\end{equation}
+Using \eqref{eq:su2-fundamental-fierz-wzw-normalization}, equivalently
+\(\Omega_{ij}=P_{ij}-\frac12\) on two fundamental factors, one obtains
+\begin{align}
+  \Omega_{12}\mathcal I_s
+  &=-\frac32\,\mathcal I_s,
+  &
+  \Omega_{12}\mathcal I_t
+  &=-\mathcal I_s+\frac12\,\mathcal I_t,
+  \label{eq:su2-omega12-invariant-action}\\
+  \Omega_{23}\mathcal I_s
+  &=-\frac12\,\mathcal I_s+\mathcal I_t,
+  &
+  \Omega_{23}\mathcal I_t
+  &=\mathcal I_s-\frac12\,\mathcal I_t .
+  \label{eq:su2-omega23-invariant-action}
+\end{align}
+Thus, for a vector-valued block
+\[
+  \Psi(x)=F_s(x)\mathcal I_s+F_t(x)\mathcal I_t
+\]
+with insertions at \(0,x,1,\infty\), the KZ equation is the explicit
+rank-two Fuchsian system
+\begin{equation}
+  (k+2)\frac{\dd}{\dd x}
+  \begin{pmatrix}F_s\\ F_t\end{pmatrix}
+  =
+  \left[
+    \frac1x
+    \begin{pmatrix}
+      -\frac32 & -1\\
+      0 & \frac12
+    \end{pmatrix}
+    +
+    \frac1{x-1}
+    \begin{pmatrix}
+      -\frac12 & 1\\
+      1 & -\frac12
+    \end{pmatrix}
+  \right]
+  \begin{pmatrix}F_s\\ F_t\end{pmatrix}.
+  \label{eq:su2-four-fundamental-kz-system}
+\end{equation}
+Near \(x=0\), the residue matrix is triangular in this basis.  Its
+eigenvalues \(-3/2\) and \(1/2\) are exactly the singlet and triplet
+eigenvalues
+\[
+  \frac12(C_\mu-C_{\rm fund}-C_{\rm fund}),
+  \qquad
+  \mu=0,2,
+\]
+where \(C_0=0\), \(C_2=4\), and
+\(C_{\rm fund}=3/2\) in the present normalization.  Hence the local
+monodromy exponents of the chiral invariant tensor before multiplying by
+external scalar prefactors are
+\[
+  -\frac{3}{2(k+2)},
+  \qquad
+  \frac{1}{2(k+2)}.
+\]
+This finite reduction is the elementary model for the general statement that
+KZ monodromy represents the braid action on WZW conformal blocks; the
+identification with the full unitary CFT still requires the sewing and
+positivity data of the completed WZW model.
+
 The highest-weight representations that occur in the compact unitary WZW
 model at positive integral \(k\) are the integrable highest weights
 \begin{equation}

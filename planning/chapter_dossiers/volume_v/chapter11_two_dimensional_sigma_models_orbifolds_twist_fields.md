@@ -115,6 +115,10 @@
   and fixes the affine-current normalization.
 - States and proves the Sugawara stress-tensor formula, central charge
   \(c=k\dim\mathfrak g/(k+h^\vee)\), and affine-primary conformal weights.
+- Derives the KZ equation from the current Ward identity and Sugawara
+  translation operator, proves the infinitesimal-braid flatness relation, and
+  works the \(SU(2)\) four-fundamental invariant-space reduction to an
+  explicit rank-two Fuchsian system.
 - Defines integrable highest weights, the diagonal WZW Hilbert space, coset
   stress tensors, embedding index, coset central charge, and the
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge example.
@@ -410,12 +414,14 @@
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.
 - `calculation-checks/wzw_sugawara_coset_checks.py` verifies the finite
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
-  weights, diagonal coset minimal-model central charges, parafermion
-  selection-rule and field-identification weights, parafermion orbit counts
-  and fusion rules, parafermion modular \(S\)-matrix unitarity and Verlinde
-  recovery of fusion, cigar central charges, reflection weight invariance and
-  integer-spin momentum/winding labels, bell/cigar one-loop geometry
-  residuals, leading-versus-exact central-charge shifts, and
+  weights, the \(SU(2)\) four-fundamental KZ invariant relation, residue
+  matrices, and singlet/triplet residue eigenvalues, diagonal coset
+  minimal-model central charges, parafermion selection-rule and
+  field-identification weights, parafermion orbit counts and fusion rules,
+  parafermion modular \(S\)-matrix unitarity and Verlinde recovery of fusion,
+  cigar central charges, reflection weight invariance and integer-spin
+  momentum/winding labels, bell/cigar one-loop geometry residuals,
+  leading-versus-exact central-charge shifts, and
   Ising/tricritical examples.
 - `calculation-checks/conformal_perturbation_rg_checks.py` verifies the
   annular OPE cutoff-power cancellation, the second-order \(\pi\) factor, the

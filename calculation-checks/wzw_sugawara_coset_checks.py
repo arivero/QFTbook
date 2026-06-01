@@ -145,6 +145,129 @@ def check_parafermion_modular_verlinde(max_level=7):
                     )
 
 
+def epsilon2(left, right):
+    if (left, right) == (0, 1):
+        return Fraction(1)
+    if (left, right) == (1, 0):
+        return Fraction(-1)
+    return Fraction(0)
+
+
+four_spinor_indices = [
+    (a, b, c, d)
+    for a in (0, 1)
+    for b in (0, 1)
+    for c in (0, 1)
+    for d in (0, 1)
+]
+
+
+def invariant_s(index):
+    a, b, c, d = index
+    return epsilon2(a, b) * epsilon2(c, d)
+
+
+def invariant_t(index):
+    a, b, c, d = index
+    return epsilon2(a, c) * epsilon2(b, d)
+
+
+def invariant_u(index):
+    a, b, c, d = index
+    return epsilon2(a, d) * epsilon2(b, c)
+
+
+invariant_s_vector = [invariant_s(index) for index in four_spinor_indices]
+invariant_t_vector = [invariant_t(index) for index in four_spinor_indices]
+invariant_u_vector = [invariant_u(index) for index in four_spinor_indices]
+
+
+def add_vectors(left, right):
+    return [a + b for a, b in zip(left, right)]
+
+
+def scale_vector(coefficient, vector):
+    return [coefficient * entry for entry in vector]
+
+
+def apply_swap(vector, first, second):
+    output = []
+    for index in four_spinor_indices:
+        swapped = list(index)
+        swapped[first], swapped[second] = swapped[second], swapped[first]
+        output.append(vector[four_spinor_indices.index(tuple(swapped))])
+    return output
+
+
+def apply_su2_omega(vector, first, second):
+    return add_vectors(
+        apply_swap(vector, first, second),
+        scale_vector(Fraction(-1, 2), vector),
+    )
+
+
+def coordinates_in_st_basis(vector):
+    for row_1 in range(len(four_spinor_indices)):
+        for row_2 in range(row_1 + 1, len(four_spinor_indices)):
+            determinant = (
+                invariant_s_vector[row_1] * invariant_t_vector[row_2]
+                - invariant_s_vector[row_2] * invariant_t_vector[row_1]
+            )
+            if determinant == 0:
+                continue
+            coefficient_s = (
+                vector[row_1] * invariant_t_vector[row_2]
+                - vector[row_2] * invariant_t_vector[row_1]
+            ) / determinant
+            coefficient_t = (
+                invariant_s_vector[row_1] * vector[row_2]
+                - invariant_s_vector[row_2] * vector[row_1]
+            ) / determinant
+            if all(
+                coefficient_s * invariant_s_vector[index]
+                + coefficient_t * invariant_t_vector[index]
+                == vector[index]
+                for index in range(len(four_spinor_indices))
+            ):
+                return coefficient_s, coefficient_t
+    raise AssertionError("tensor is not in the invariant s/t span")
+
+
+def check_su2_four_fundamental_kz_matrices():
+    require(
+        all(
+            invariant_s_vector[index]
+            - invariant_t_vector[index]
+            + invariant_u_vector[index]
+            == 0
+            for index in range(len(four_spinor_indices))
+        ),
+        "SU(2) four-invariant epsilon relation failed",
+    )
+
+    omega_12_s = coordinates_in_st_basis(apply_su2_omega(invariant_s_vector, 0, 1))
+    omega_12_t = coordinates_in_st_basis(apply_su2_omega(invariant_t_vector, 0, 1))
+    omega_23_s = coordinates_in_st_basis(apply_su2_omega(invariant_s_vector, 1, 2))
+    omega_23_t = coordinates_in_st_basis(apply_su2_omega(invariant_t_vector, 1, 2))
+
+    require(omega_12_s == (Fraction(-3, 2), 0), "Omega_12 on I_s mismatch")
+    require(omega_12_t == (Fraction(-1), Fraction(1, 2)), "Omega_12 on I_t mismatch")
+    require(omega_23_s == (Fraction(-1, 2), Fraction(1)), "Omega_23 on I_s mismatch")
+    require(omega_23_t == (Fraction(1), Fraction(-1, 2)), "Omega_23 on I_t mismatch")
+
+    fundamental_casimir = Fraction(3, 2)
+    singlet_casimir = Fraction(0)
+    triplet_casimir = Fraction(4)
+    require(
+        (singlet_casimir - 2 * fundamental_casimir) / 2 == Fraction(-3, 2),
+        "SU(2) singlet residue eigenvalue mismatch",
+    )
+    require(
+        (triplet_casimir - 2 * fundamental_casimir) / 2 == Fraction(1, 2),
+        "SU(2) triplet residue eigenvalue mismatch",
+    )
+
+
 def same_mod_integer(left, right):
     return (left - right).denominator == 1
 
@@ -285,6 +408,7 @@ for level in range(1, 25):
         )
 
 check_parafermion_modular_verlinde()
+check_su2_four_fundamental_kz_matrices()
 
 require(su2_central_charge(1) == Fraction(1, 1), "SU(2)_1 should have c=1")
 require(su2_central_charge(2) == Fraction(3, 2), "SU(2)_2 should have c=3/2")
@@ -412,4 +536,4 @@ for level in range(1, 21):
         f"bell exact-versus-large-level central charge mismatch at k={level}",
     )
 
-print("All WZW Sugawara and rank-one coset arithmetic/fusion/geometry checks passed.")
+print("All WZW Sugawara, KZ, and rank-one coset arithmetic/fusion/geometry checks passed.")
