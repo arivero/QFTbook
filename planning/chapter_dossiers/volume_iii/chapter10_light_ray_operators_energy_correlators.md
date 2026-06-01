@@ -55,6 +55,9 @@ The chapter establishes:
   its homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\);
 - the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its Lorentzian
   CFT hypotheses, and the modular/causal proof mechanisms that fix the sign;
+- the one-sided null-cut modular-variation formulas for a deformed half-space
+  and its complement, together with the entropy-variation squeeze whose
+  compatibility gives the full null-generator ANEC inequality;
 - the reduction from ANEC positivity to positivity of the conformal-collider
   angular energy distribution;
 - the four-dimensional stress-tensor one-point energy flux form with
@@ -113,7 +116,10 @@ The chapter establishes:
 6. ANEC positivity is recorded as a theorem boundary with explicit
    Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
    modular/causal proof mechanisms stated at the level needed for collider
-   applications.
+   applications.  The modular route displays the region/complement
+   relative-entropy derivative inequalities and the common entropy-variation
+   squeeze, so the sign of the full null integral is not hidden in the phrase
+   "entropy variations cancel."
 7. Positivity of the energy detector implies the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
@@ -147,7 +153,8 @@ The chapter establishes:
   that precede detector products.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
-  the finite arithmetic for the light-transform homogeneity map.
+  the finite arithmetic for the light-transform homogeneity map and the
+  null-cut modular ANEC sign bookkeeping.
 - 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues

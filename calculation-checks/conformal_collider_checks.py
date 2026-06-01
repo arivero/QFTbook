@@ -127,11 +127,59 @@ def check_light_transform_homogeneity_map() -> None:
     assert_equal("four-dimensional stress-tensor light-transform spin", stress_tensor_light_spin, Fraction(-3, 1))
 
 
+def check_null_cut_modular_anec_sign_bookkeeping() -> None:
+    """Check the finite sign algebra in the modular route to ANEC.
+
+    The continuum proof uses one-sided relative-entropy monotonicity for a
+    null-cut region and its complement.  This finite check models only the
+    displayed derivative algebra: the right-cut modular derivative is
+    -int_0^infty phi T, the complementary derivative is
+    +int_{-infty}^0 phi T, and the common entropy derivative can be squeezed
+    between the two only when the full null integral is nonnegative.
+    """
+
+    phi = Fraction(3, 2)
+    epsilon = Fraction(1, 100)
+    right_atoms = [(Fraction(1, 5), Fraction(-2, 3)), (Fraction(3, 5), Fraction(1, 3))]
+    left_atoms = [(Fraction(-4, 5), Fraction(1, 6)), (Fraction(-1, 3), Fraction(1, 3))]
+
+    def right_modular(s: Fraction) -> Fraction:
+        return sum((x - s * phi) * stress for x, stress in right_atoms)
+
+    def complement_modular(s: Fraction) -> Fraction:
+        return sum((s * phi - x) * stress for x, stress in left_atoms)
+
+    right_integral = phi * sum(stress for _, stress in right_atoms)
+    left_integral = phi * sum(stress for _, stress in left_atoms)
+    right_derivative = (right_modular(epsilon) - right_modular(Fraction(0))) / epsilon
+    complement_derivative = (complement_modular(epsilon) - complement_modular(Fraction(0))) / epsilon
+
+    assert_equal("right null-cut modular derivative sign", right_derivative, -right_integral)
+    assert_equal("complement null-cut modular derivative sign", complement_derivative, left_integral)
+
+    entropy_derivative = Fraction(2, 3)
+    region_relative_entropy_derivative = right_derivative - entropy_derivative
+    complement_relative_entropy_derivative = complement_derivative - entropy_derivative
+    if region_relative_entropy_derivative > 0:
+        raise AssertionError("nested right-cut relative entropy should have nonpositive derivative")
+    if complement_relative_entropy_derivative < 0:
+        raise AssertionError("nested complementary relative entropy should have nonnegative derivative")
+    if right_integral + left_integral < 0:
+        raise AssertionError("compatible entropy squeeze must imply a nonnegative full null integral")
+
+    impossible_left_integral = Fraction(1, 4)
+    lower_entropy_bound = -right_integral
+    upper_entropy_bound = impossible_left_integral
+    if lower_entropy_bound <= upper_entropy_bound:
+        raise AssertionError("negative full null integral should make the entropy squeeze incompatible")
+
+
 def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
     check_normalization_integrates_to_total_energy()
     check_light_transform_homogeneity_map()
+    check_null_cut_modular_anec_sign_bookkeeping()
     print("All conformal-collider finite checks passed.")
 
 

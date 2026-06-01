@@ -446,8 +446,8 @@ where
   =
   \bra{\Psi}X\ket{\Psi}-\bra{\vac}X\ket{\vac}.
 \]
-Applying the same formula to the complementary null cut supplies the integral
-over \(x^+<0\).  Monotonicity of Araki relative entropy,
+The sign in the last step is a small but important piece of modular
+bookkeeping.  Write
 \[
   S_{\rm rel}(\rho_{R}^{\Psi}\Vert\rho_{R}^{\vac})
   =
@@ -457,17 +457,75 @@ over \(x^+<0\).  Monotonicity of Araki relative entropy,
   \Rightarrow
   S_{\rm rel}(R_1)\leq S_{\rm rel}(R_2),
 \]
-applied to the nested null-cut regions and to their complements cancels the
-entanglement-entropy variations.  The remaining inequality is precisely
+for Araki relative entropy.  If \(s>0\) and \(\varphi\geq0\), the region
+\(R_{s\varphi}\) is contained in \(R_0\).  Hence the right derivative at the
+origin obeys
+\begin{equation}
+  \frac{\dd}{\dd s}S_{\rm rel}(R_{s\varphi})\bigg|_{0^+}
+  \leq 0 .
+  \label{eq:anec-region-relative-entropy-derivative}
+\end{equation}
+Using \eqref{eq:null-cut-modular-variation}, this gives
+\begin{equation}
+  \frac{\dd}{\dd s}\Delta_\Psi S_{R_{s\varphi}}\bigg|_{0^+}
+  \geq
+  -2\pi
+  \int\dd^{D-2}y\,\varphi(y)
+  \int_0^\infty\dd x^+\,
+  \Delta_\Psi\langle T_{++}(x^+,0,y)\rangle .
+  \label{eq:anec-right-cut-entropy-bound}
+\end{equation}
+For the complementary null cut \(R_{s\varphi}^{\,c}\), the inclusion is
+reversed: \(R_0^c\subset R_{s\varphi}^{\,c}\).  Its modular Hamiltonian has the
+same local null-cut form on the left part of the generator,
 \[
+  K_{s\varphi}^{c}
+  =
+  2\pi
+  \int\dd^{D-2}y
+  \int_{-\infty}^{s\varphi(y)}\dd x^+\,
+  \bigl(s\varphi(y)-x^+\bigr)T_{++}(x^+,0,y),
+\]
+so
+\begin{equation}
+  \frac{\dd}{\dd s}\,
+  \Delta_\Psi\langle K_{s\varphi}^{c}\rangle\bigg|_{0^+}
+  =
+  2\pi
+  \int\dd^{D-2}y\,\varphi(y)
+  \int_{-\infty}^0\dd x^+\,
+  \Delta_\Psi\langle T_{++}(x^+,0,y)\rangle .
+  \label{eq:null-cut-complement-modular-variation}
+\end{equation}
+Monotonicity for the complementary inclusion gives a nonnegative right
+derivative of \(S_{\rm rel}(R_{s\varphi}^{\,c})\).  For a vector state on the
+global Hilbert space, the entropy of a region and of its complement agree in a
+split-regulated exhaustion and hence have the same first variation at the
+common cut.  Therefore
+\begin{equation}
+  \frac{\dd}{\dd s}\Delta_\Psi S_{R_{s\varphi}}\bigg|_{0^+}
+  \leq
+  2\pi
+  \int\dd^{D-2}y\,\varphi(y)
+  \int_{-\infty}^0\dd x^+\,
+  \Delta_\Psi\langle T_{++}(x^+,0,y)\rangle .
+  \label{eq:anec-left-cut-entropy-bound}
+\end{equation}
+The same entropy derivative is squeezed between the right-hand sides of
+\eqref{eq:anec-right-cut-entropy-bound} and
+\eqref{eq:anec-left-cut-entropy-bound}.  Compatibility of the two inequalities
+is exactly
+\begin{equation}
   2\pi
   \int\dd^{D-2}y\,\varphi(y)
   \int_{-\infty}^{\infty}\dd x^+\,
-  \bra{\Psi}T_{++}(x^+,0,y)\ket{\Psi}
-  \geq0,
-\]
-which is \eqref{eq:anec-positivity} in these coordinates.  The distributional
-statement follows by testing this expression against
+  \Delta_\Psi\langle T_{++}(x^+,0,y)\rangle
+  \geq0.
+  \label{eq:anec-modular-squeezing-inequality}
+\end{equation}
+The vacuum term vanishes by Poincare invariance and the stress-tensor
+normalization, so this is \eqref{eq:anec-positivity} in these coordinates.
+The distributional statement follows by testing this expression against
 \(\varphi\in C_c^\infty(N_n)\); the detector statement follows after the
 conformal map from the complete null generator to future null infinity.
 

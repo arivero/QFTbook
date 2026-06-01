@@ -401,7 +401,9 @@ Current checks:
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
   to the Hofman--Maldacena inequalities, the vanishing of the integrated
   \(t_2,t_4\) deformations, and the embedding-space light-transform
-  homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\).
+  homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\), plus the null-cut
+  modular-variation sign bookkeeping and entropy-squeeze inequality behind
+  the modular ANEC route.
 - `cft_energy_detector_contact_checks.py`: exact finite positive-measure
   checks for the CFT light-ray/energy-correlator chapter, including the
   statewise detector Riesz bound, finite-bin Cauchy--Schwarz positivity,
