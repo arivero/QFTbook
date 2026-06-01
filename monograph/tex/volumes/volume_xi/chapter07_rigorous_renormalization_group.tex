@@ -548,29 +548,155 @@ controlling the nonlinear remainder.
 
 \section{Polymer Representation}
 
-On a lattice, a polymer is a finite union of blocks.  A polymer activity
+On a lattice, a polymer is a finite connected union of blocks in a fixed block
+decomposition.  Let \(\mathbb B_k\) be the set of scale-\(k\) blocks, let
+\(\mathcal P_k\) be the family of connected finite unions of elements of
+\(\mathbb B_k\), and let \(X\sim Y\) mean that the polymers \(X,Y\in
+\mathcal P_k\) are disjoint and separated by at least one block.  A polymer
+activity is a map
 \[
-  K(X,\phi)
+  K_k:\mathcal P_k\times\Phi_k\to\mathbb C,\qquad
+  (X,\phi)\mapsto K_k(X,\phi),
 \]
-assigns a functional to each polymer \(X\).  The partition function is written
-as
+where \(\Phi_k\) is the finite-dimensional scale-\(k\) field space of the
+regulated model.  The polymer form of a finite-volume partition function is
+\begin{equation}
+  Z_k
+  =
+  \int d\mu_{C_k}(\phi)\,\exp\{-V_k(\phi)\}
+  \sum_{\mathcal X\ {\rm compatible}}
+  \prod_{X\in\mathcal X}K_k(X,\phi).
+  \label{eq:polymer-partition-function-rg}
+\end{equation}
+Here \(V_k\) is the local part, \(C_k\) is the fluctuation covariance assigned
+to the current scale, and the sum is over finite compatible families
+\(\mathcal X\subset\mathcal P_k\).  Compatibility is the locality input: it
+is what permits a disconnected family of small activities to exponentiate
+through the cluster expansion rather than behaving as one large nonlocal
+object.
+
+\begin{definition}[One-step polymer RG contraction datum]
+\label{def:one-step-polymer-rg-contraction-datum}
+A one-step polymer RG contraction datum at scale \(k\) consists of the
+following finite-regulator data.
+\begin{enumerate}
+  \item A scale factor \(L>1\), a reblocking map
+  \(X\mapsto \overline X\) from scale-\(k\) polymers to the smallest
+  scale-\(k+1\) polymer containing \(X\), and a finite overlap constant
+  \begin{equation}
+    \mathfrak C_a
+    =
+    \sup_{\Delta\in\mathbb B_{k+1}}
+    \sum_{\substack{X\in\mathcal P_k\\ \overline X\supset\Delta}}
+    \exp\{-a|X|_k\}
+    <\infty .
+    \label{eq:polymer-overlap-constant}
+  \end{equation}
+  \item Large-field regulators \(G_k(X,\phi)\geq1\), analytic radii \(h_k\),
+  and a weighted polymer norm
+  \begin{equation}
+    \|K_k\|_{k,a,h}
+    =
+    \sup_{\Delta\in\mathbb B_k}
+    \sum_{\substack{X\in\mathcal P_k\\ X\supset\Delta}}
+    \exp\{a|X|_k\}
+    \sup_{\phi\in\Phi_k}
+    \frac{|K_k(X,\phi)|_{h_k}}{G_k(X,\phi)} .
+    \label{eq:rg-polymer-norm}
+  \end{equation}
+  The seminorm \(|\cdot|_{h_k}\) is the finite Taylor or analytic norm in the
+  field variables used by the model.  Its precise definition is part of the
+  datum, because the contraction constant depends on the allowed derivatives
+  and on the large-field weights.
+  \item A localization map
+  \(\mathcal L_k\) from polymer functionals supported in one reblocked
+  polymer to the chosen finite-dimensional local-coordinate space.  The
+  complementary projection \(1-\mathcal L_k\) is the irrelevant remainder.
+  After fluctuation integration and rescaling, denoted here by
+  \(\mathcal A_k\), the datum includes constants
+  \(A_{\rm irr}<\infty\) and \(\alpha>0\) such that
+  \begin{equation}
+    \|(1-\mathcal L_k)\mathcal A_kK_k\|_{k+1,a,h}
+    \leq
+    A_{\rm irr}L^{-\alpha}\|K_k\|_{k,a,h}.
+    \label{eq:rg-polymer-linear-irrelevant-bound}
+  \end{equation}
+  This is the analytic place where Taylor remainder estimates, covariance
+  finite-range bounds, field rescaling, and large-field stability enter.
+  \item A quadratic product estimate for incompatible small polymers.  For
+  two activities define the scale-\(k+1\) circle product by
+  \begin{equation}
+    (K_1\circ_k K_2)(Y,\phi)
+    =
+    \sum_{\substack{X_1,X_2\in\mathcal P_k\\
+      \overline{X_1\cup X_2}=Y\\ X_1\not\sim X_2}}
+    K_1(X_1,\phi)\,K_2(X_2,\phi),
+    \label{eq:rg-polymer-circle-product}
+  \end{equation}
+  with the product understood after pulling both activities to the same
+  reblocked field variables.  The datum requires a constant
+  \(B_{\rm pol}<\infty\) such that
+  \begin{equation}
+    \|K_1\circ_k K_2\|_{k+1,a,h}
+    \leq
+    B_{\rm pol}\|K_1\|_{k,a,h}\|K_2\|_{k,a,h}.
+    \label{eq:rg-polymer-circle-product-bound}
+  \end{equation}
+  The constant \(B_{\rm pol}\) is a consequence of the finite overlap
+  constant \(\mathfrak C_a\), the compatibility convention, and the
+  multiplicative behavior of \(G_k\).  It is not a universal number.
+  \item A local-coordinate extraction error \(\varepsilon_k\geq0\), measured
+  in the same polymer norm, accounting for the difference between the exact
+  finite-regulator RG step and the chosen local chart.  In a fully exact
+  chart \(\varepsilon_k=0\); in a truncated chart it is a theorem-level
+  remainder and must be estimated.
+\end{enumerate}
+\end{definition}
+
+The preceding datum turns contraction of the irrelevant activity into a
+finite inequality.  If
 \[
-  Z=\int d\mu_C(\phi)\,e^{-V_{\mathrm{loc}}(\phi)}
-  \sum_{\mathcal X}
-  \prod_{X\in\mathcal X}K(X,\phi),
+  x_k=\|K_k\|_{k,a,h},\qquad
+  q=A_{\rm irr}L^{-\alpha},
 \]
-where \(\mathcal X\) ranges over compatible families of disjoint polymers.
-The RG step integrates fluctuation fields inside each block, extracts local
-Taylor coefficients into \(V_{\mathrm{loc}}\), and maps the remaining
-nonlocal dependence into a new activity \(K'\).  The proof obligation is an
-estimate of the form
+then the linear estimate
+\eqref{eq:rg-polymer-linear-irrelevant-bound}, the quadratic product estimate
+\eqref{eq:rg-polymer-circle-product-bound}, and the extraction error give the
+one-step bound
+\begin{equation}
+  x_{k+1}
+  \leq
+  qx_k+B_{\rm pol}x_k^2+\varepsilon_k .
+  \label{eq:rg-polymer-recursion-budget}
+\end{equation}
+Consequently a closed radius-\(r\) polymer ball is invariant with contraction
+margin \(\theta<1\) whenever
+\begin{equation}
+  q+B_{\rm pol}r+\frac{\varepsilon_k}{r}\leq \theta<1
+  \qquad{\rm uniformly\ in\ }k .
+  \label{eq:rg-polymer-contraction-smallness}
+\end{equation}
+Indeed, \(x_k\leq r\) gives
 \[
-  \|K'\|_{\mathrm{polymer}}
-  \leq c L^{-\alpha}\|K\|_{\mathrm{polymer}}
-  +c'\|K\|_{\mathrm{polymer}}^2
+  x_{k+1}
+  \leq
+  \left(q+B_{\rm pol}r+\frac{\varepsilon_k}{r}\right)r
+  \leq \theta r .
 \]
-with declared constants and norm.  This is the mechanism by which irrelevant
-remainders are controlled in constructive RG.
+This is elementary arithmetic, but it is the arithmetic that fixes the
+meaning of the polymer estimate: every proof must exhibit the norm, the
+large-field regulator, the localization operator, the finite overlap bound,
+and the uniform smallness inequality.  Without these data the displayed
+contraction is a slogan, not a Wilsonian RG theorem.
+
+For ordinary short-range critical scalar models, the unresolved work is to
+construct this datum with constants uniform along the tuned critical
+trajectory and with source extensions strong enough for reconstructed
+correlation functions.  For gauge theories, the same structure must be built
+on gauge-invariant lattice activities or in a BV-compatible finite-regulator
+chart; a gauge-fixed formal activity without the quantum master equation or a
+gauge-invariant blocking map is not a Wilsonian gauge-theory construction in
+the sense used here.
 
 \section{Fixed Points And Continuum Limits}
 

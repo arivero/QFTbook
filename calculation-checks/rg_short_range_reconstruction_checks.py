@@ -11,7 +11,10 @@ has the displayed geometric form, and an auxiliary RG theorem transfers to
 the short-range target only when the one-step intertwining defects remain
 controlled after stable or relevant RG amplification.  The observable-germ
 checks verify that finite-window agreement is a projective, seminorm-level
-certificate rather than a substitute for full universality.
+certificate rather than a substitute for full universality.  The polymer
+checks verify the exact finite arithmetic behind the one-step contraction
+budget: linear irrelevant gain, quadratic circle-product contribution, and a
+finite local-coordinate extraction defect.
 """
 
 from fractions import Fraction
@@ -282,6 +285,50 @@ def check_observable_germ_finite_window_certificate():
     )
 
 
+def check_polymer_contraction_budget():
+    # The chapter's polymer datum gives
+    #   x_{k+1} <= q x_k + B x_k^2 + epsilon.
+    # This exact rational test is deliberately finite: it certifies the
+    # contraction-budget arithmetic, not any model-specific analytic estimate
+    # for q, B, epsilon, or the large-field norm.
+    linear_gain = Fraction(2, 5)
+    quadratic_constant = Fraction(7, 4)
+    radius = Fraction(1, 10)
+    extraction_defect = Fraction(1, 200)
+
+    theta = (
+        linear_gain
+        + quadratic_constant * radius
+        + extraction_defect / radius
+    )
+    assert_equal("polymer contraction margin", theta, Fraction(5, 8))
+    assert_true("polymer contraction margin below one", theta < 1)
+
+    boundary_next = (
+        linear_gain * radius
+        + quadratic_constant * radius * radius
+        + extraction_defect
+    )
+    assert_equal("polymer boundary image", boundary_next, theta * radius)
+    assert_true("polymer ball maps strictly inside itself", boundary_next < radius)
+
+    x = radius
+    for step in range(1, 7):
+        x_next = linear_gain * x + quadratic_constant * x * x + extraction_defect
+        assert_true(f"polymer recurrence remains inside radius step {step}", x_next <= radius)
+        if x >= boundary_next:
+            assert_true(f"polymer recurrence decreases before fixed cell step {step}", x_next <= x)
+        x = x_next
+
+    # A finite overlap/combinatorial constant controls the quadratic
+    # circle-product estimate ||K_1 circ K_2|| <= B_pol ||K_1|| ||K_2||.
+    overlap_constant = Fraction(6)
+    norm_1 = Fraction(1, 30)
+    norm_2 = Fraction(1, 20)
+    product_bound = overlap_constant * norm_1 * norm_2
+    assert_equal("polymer circle-product quadratic bound", product_bound, Fraction(1, 100))
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -291,6 +338,7 @@ def main():
     check_auxiliary_transfer_telescoping_bound()
     check_relevant_direction_tuning_amplification()
     check_observable_germ_finite_window_certificate()
+    check_polymer_contraction_budget()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

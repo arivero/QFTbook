@@ -11,19 +11,20 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume Index And Program
+## Complete Volume Program
 
-### Full Volume Roster At A Glance
+### Complete Volume List I-XX
 
-The table below is the complete public-facing volume roster at the present
-stage of the project.  Volumes I-XII are compiled into
-`monograph/tex/main.pdf`.  Volumes XIII-XX are prospective roadmap volumes:
-their subject matter is part of the intended monograph architecture, but they
-are not yet compiled public volumes.  A prospective volume becomes active only
-after it has a TeX assembly file, chapter dossiers, verification pass,
-frontmatter entry, and README entry in the same commit.
+The table below is the complete public-facing volume program at the present
+stage of the project.  Volumes I-XII are active compiled volumes and are
+included in `monograph/tex/main.pdf`.  Volumes XIII-XX are prospective roadmap
+volumes: their subject matter is part of the intended monograph architecture,
+but they are not yet compiled public volumes and do not yet have chapter maps.
+A prospective volume becomes active only after it has a TeX assembly file,
+chapter dossiers, verification pass, frontmatter entry, and README entry in
+the same commit.
 
-| Label | Status | Volume line |
+| Volume | Status | Title |
 | --- | --- | --- |
 | I | Active compiled volume | Foundations of Local Quantum Field Theory |
 | II | Active compiled volume | Particles, Scattering, and Analyticity |
@@ -46,7 +47,13 @@ frontmatter entry, and README entry in the same commit.
 | XIX | Prospective roadmap volume | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
 | XX | Prospective roadmap volume | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
 
-### Active Compiled Volumes
+This table is the authoritative full list of volumes currently recognized by
+the public project.  There are twelve active compiled volumes and eight
+prospective roadmap volumes.  The detailed chapter map later in this README
+lists only Volumes I-XII because only those volumes presently have compiled
+chapter assemblies.
+
+### Active Compiled Volumes I-XII
 
 The active public manuscript currently consists of exactly twelve compiled
 volumes:
@@ -96,7 +103,7 @@ no hidden active volumes outside this roster.  Draft files, deprecated files,
 source transcriptions, local reference files, and planning notes are not
 additional public volumes.
 
-### Prospective Volumes XIII-XX
+### Prospective Roadmap Volumes XIII-XX
 
 The table below gives the complete current roadmap for the prospective
 volumes after the twelve compiled volumes.  These entries are numbered so that

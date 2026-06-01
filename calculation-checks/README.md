@@ -616,7 +616,10 @@ Current checks:
   amplification formula used to separate stable comparison estimates from
   unstable tuning data, plus the projective observable-germ finite-window
   certificate used to prevent finite observable agreement from being
-  overstated as full universality.
+  overstated as full universality.  It also checks the one-step polymer
+  contraction budget \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\varepsilon_k\),
+  including the finite radius smallness condition and the quadratic
+  circle-product bound.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

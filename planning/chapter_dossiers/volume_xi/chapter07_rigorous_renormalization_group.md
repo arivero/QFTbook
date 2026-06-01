@@ -65,6 +65,18 @@ constructive RG developments.
   block kernel, block-spin map, and field scaling exponent.
 - `g_k`, `K_k`: local coordinates and polymer activity in the ordinary
   short-range scalar block-spin RG chart.
+- `mathbb B_k`, `mathcal P_k`: scale-\(k\) block set and connected polymer
+  family used in the constructive polymer RG chart.
+- `G_k(X,phi)`, `||K_k||_{k,a,h}`: large-field regulator and weighted
+  polymer norm for scale-\(k\) activities.
+- `mathcal L_k`, `mathcal A_k`: localization map extracting local
+  coordinates and fluctuation-integration/rescaling map before reblocking.
+- `A_irr`, `alpha`, `B_pol`, `epsilon_k`: linear irrelevant constant,
+  scaling-gain exponent, quadratic circle-product constant, and
+  local-coordinate extraction defect in the one-step polymer recursion.
+- `x_k`, `q`, `r`, `theta`: polymer norm, linear contraction factor
+  `A_irr L^{-alpha}`, invariant radius, and contraction margin in the
+  finite smallness budget.
 - `S_{n,k}`: connected cumulant distribution reconstructed from normalized
   block-spin fields.
 - `Phi`, `Psi`: auxiliary-to-short-range RG transfer maps on Banach charts
@@ -96,8 +108,11 @@ constructive RG developments.
 - Proves a local stable-graph theorem for a hyperbolic RG fixed point using
   an explicit Lyapunov-Perron contraction on a complete weighted sequence
   space, with the contraction constant displayed.
-- Defines polymer activities and the estimate needed to control irrelevant
-  remainders.
+- Defines polymer activities, the weighted large-field polymer norm, the
+  localization remainder, the quadratic circle-product estimate, and the
+  finite one-step contraction budget
+  \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\epsilon_k\), including the explicit
+  radius condition \(q+B_{\rm pol}r+\epsilon_k/r<1\).
 - Defines the full data of a theorem-level nonperturbative Wilsonian fixed
   point: regulator class, map/domain/norm, fixed point, linearized spectrum,
   and reconstruction estimates.
@@ -212,7 +227,9 @@ remainder contraction.
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
   estimate, relevant-direction amplification formula, and projective
-  observable-germ finite-window certificate.
+  observable-germ finite-window certificate.  The same script now checks the
+  exact finite arithmetic behind the polymer contraction budget and the
+  quadratic circle-product bound.
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -223,6 +240,13 @@ remainder contraction.
 
 ## Audit Notes
 
+- 2026-06-01 polymer RG contraction-datum pass: replaced the schematic
+  polymer estimate by a finite-regulator datum naming the polymer norm,
+  large-field regulator, localization map, irrelevant gain, circle-product
+  constant, extraction defect, and smallness budget.  The pass deliberately
+  keeps the ordinary short-range critical scalar construction open: proving
+  the constants uniformly along a tuned critical trajectory remains the
+  model-specific theorem burden of issue #505.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass
