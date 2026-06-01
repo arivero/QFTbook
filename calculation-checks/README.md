@@ -555,6 +555,12 @@ Current checks:
   cancellation in the annular OPE integral, the second-order \(\pi\) factor,
   the length-scale versus energy-scale beta-function sign, and the quadratic
   contact-term scheme-shift law.
+- `conformal_manifold_checks.py`: exact finite checks for the conformal
+  manifold and exact-marginality source-coordinate section, including
+  Klebanov--Witten, \(\mathcal N=4\), and standard ABJM local dimension
+  counts, the rank-count quotient by beta constraints and redundancies, the
+  tensorial coordinate transformation law for the Zamolodchikov metric, and
+  the null-direction quotient for redundant marginal coordinates.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
   coefficients, quantum dimensions, shifted character exponents, the

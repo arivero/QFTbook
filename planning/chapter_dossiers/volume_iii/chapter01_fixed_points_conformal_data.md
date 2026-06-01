@@ -42,6 +42,25 @@ The chapter establishes:
   coordinate chart;
 - scaling dimensions from the linearized RG eigenvalues
   \(y_a=D-\Delta_a\), with a separate Jordan-block/logarithmic-mixing caveat;
+- conformal manifolds as local families of fixed-point QFT data: a parameter
+  manifold, source functionals,
+  dimension-\(D\) scalar-operator bundle, tangent-operator map, and
+  renormalized integrated insertion formula are part of the datum;
+- exactly marginal deformations as the zero locus of obstruction functions in
+  a finite source-coordinate chart modulo redundancies, with local dimension
+  \(m-r_\beta-r_{\rm red}\) only after beta constraints, current/virial
+  obstructions, contact terms, and redundancy vector fields are specified;
+- second-order conformal-perturbation obstructions as collision-singularity
+  data in the OPE of dimension-\(D\) marginal operators, distinguishing true
+  beta-function components, current/virial obstructions, and source-contact
+  scheme changes;
+- the general-\(D\) Zamolodchikov metric on a conformal family, its quotient
+  by redundant/null marginal directions, and its tensorial transformation law
+  under source-coordinate changes;
+- cross-links to the supersymmetric worked examples: the KW rank-one
+  exact-marginality chart, the one-complex-dimensional local
+  \(\mathcal N=4\) Yang--Mills \(\tau\)-family before duality quotients, and
+  the zero-dimensional standard ABJM fixed-\((N,k)\) conformal locus;
 - endpoint RG monotones as data attached to a stated class of unitary RG
   trajectories, with length scale \(R\) increasing toward the infrared and
   \(\mathfrak M_{\rm UV}\geq\mathfrak M_{\rm IR}\);
@@ -129,6 +148,15 @@ The chapter establishes:
     local source counterterms.
 4. The trace equation at a fixed point becomes a conformal trace condition
    only after improvement and contact-term conventions have been specified.
+4a. A marginal operator is exactly marginal only when it integrates to a
+    tangent vector of a conformal-family datum; the source-coordinate chart must specify
+    beta obstructions, current/virial obstructions, redundant directions, and
+    contact-term extensions before a conformal-manifold dimension count is
+    meaningful.
+4b. The Zamolodchikov metric is a separated-point two-point coefficient on the
+    tangent quotient.  It transforms tensorially under source-coordinate
+    changes, while contact terms can change only the collision-diagonal
+    extension.
 5. The statement that scale invariance implies conformal invariance is used
    only after the local virial obstruction class has been proved or included
    in the fixed-point data.
@@ -218,6 +246,13 @@ The chapter establishes:
   `hyp:cft-fixed-point-source-chart-existence`, which states the distributional
   existence, regulated convergence, and regulator-independence-modulo-local
   counterterm requirements before \(W_\ast[g,J]\) is differentiated.
+- 2026-06-01 issue #594 pass: added the conformal-manifold and exactly
+  marginal deformation framework, including the local conformal-family datum,
+  finite source-coordinate obstruction quotient, OPE collision interpretation,
+  Zamolodchikov metric transformation law, and cross-links to the KW,
+  \(\mathcal N=4\), and ABJM worked source-coordinate examples.  Added
+  `calculation-checks/conformal_manifold_checks.py` for the finite rank-count
+  and metric-coordinate algebra.
 - 2026-05-24 issue #409 pass: made the sign convention in
   `eq:cft-source-derivative-conventions` explicit from \(W_\ast=-\log Z_\ast\)
   and the metric variation

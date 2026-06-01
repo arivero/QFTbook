@@ -469,6 +469,192 @@ block, solving the linearized RG equation gives the same power \(b^{y_a}\)
 multiplied by polynomials in \(\log b\), which is the RG form of logarithmic
 operator mixing.
 
+\section{Conformal Manifolds and Exactly Marginal Deformations}
+\label{sec:conformal-manifolds-exactly-marginal}
+
+A marginal scalar operator at one fixed point is only a tangent candidate.  A
+conformal manifold is a family of fixed-point data in which the tangent
+operators, contact terms, source normalizations, stress tensors, and redundant
+directions vary coherently.  This section fixes the local meaning of that
+statement before the supersymmetric worked examples later in the monograph.
+
+\begin{definition}[Local conformal-family datum]
+\label{def:local-conformal-family-datum}
+A local conformal-family datum of dimension \(r\) consists of the following
+objects.
+\begin{enumerate}
+  \item A connected \(r\)-dimensional smooth or complex manifold
+  \(\mathcal M\) of parameters, with a base point \(\lambda_0\).
+  \item For every \(\lambda\in\mathcal M\), fixed-point local QFT data
+  \(\mathcal C_\lambda\): a Hilbert-space or Euclidean reconstruction datum,
+  a stress-tensor source functional \(W_\lambda[g,J]\), conformal Ward
+  identities including their contact terms, and a specified local-operator
+  space modulo null operators.
+  \item A vector bundle \(\mathcal V\to\mathcal M\) whose fiber
+  \(\mathcal V_\lambda\) is the finite-dimensional space of renormalized
+  scalar operators of dimension \(D\) that are allowed by the symmetries kept
+  in the family, modulo total derivatives and null operators.
+  \item A tangent-operator map
+  \[
+    \mathsf I_\lambda:T_\lambda\mathcal M\longrightarrow\mathcal V_\lambda,
+    \qquad
+    v\longmapsto O_v .
+  \]
+  \item For every finite list of local operators away from collision
+  diagonals, the separated-point distributions are differentiable in
+  \(\lambda\), and the derivative in the direction \(v\) is represented by
+  the renormalized integrated insertion
+  \begin{equation}
+    \partial_v
+    \left\langle X_1(x_1)\cdots X_n(x_n)\right\rangle_{\lambda}
+    =
+    -\left[
+      \int_{\mathbb R^D}\dd^D x\,
+      \left\langle
+        O_v(x)X_1(x_1)\cdots X_n(x_n)
+      \right\rangle_{\lambda}
+    \right]_{\rm ren}.
+    \label{eq:conformal-family-tangent-insertion}
+  \end{equation}
+  The brackets \([\cdots]_{\rm ren}\) include the local counterterms supported
+  where \(x\) collides with one of the \(x_i\) and, on curved backgrounds, the
+  corresponding source and metric contact terms.
+\end{enumerate}
+The datum is a conformal family because every point \(\lambda\) already
+satisfies the fixed-point conditions and because
+\eqref{eq:conformal-family-tangent-insertion} specifies how tangent vectors
+are represented in correlation functions.
+\end{definition}
+
+The definition is local on \(\mathcal M\).  Global continuation of
+coordinates, preferred Lagrangian presentations, and discrete duality
+identifications require additional data.  A duality group, if present, acts on
+the local family after it has been defined as an isomorphism of the complete
+line-operator spectrum, local operator algebra, and source-contact chart.
+
+\paragraph{Source-coordinate criterion for exact marginality.}
+Let \(h^a\), \(a=1,\ldots,m\), be local coordinates on a finite-dimensional
+space of candidate marginal source deformations at a fixed point
+\(\mathcal C_0\).  Let
+\[
+  \beta^\alpha(h),\qquad \alpha=1,\ldots,s,
+\]
+denote the obstruction functions in the chosen source-coordinate chart: the components of
+the local RG vector field which must vanish for the deformed theory to remain
+conformal, together with any current-moment-map or virial obstruction that is
+part of the same Ward identity.  Let a redundancy group \(G_{\rm red}\) act on
+the source coordinates by field redefinitions, flavor rotations, or other
+changes that do not change the fixed-point QFT datum.  Its infinitesimal
+action is a distribution
+\[
+  \rho:\operatorname{Lie}(G_{\rm red})\longrightarrow T_h\mathbb R^m .
+\]
+The local conformal locus in this chart is
+\begin{equation}
+  \mathcal M_{\rm loc}
+  =
+  \{h:\beta^\alpha(h)=0\}/G_{\rm red},
+  \label{eq:local-conformal-locus-source-chart}
+\end{equation}
+provided the quotient is taken only along orbits contained in the zero locus.
+If \(d\beta|_{h_0}\) has constant rank \(r_\beta\) near the base point and
+the redundancy distribution has constant rank \(r_{\rm red}\) tangent to
+\(\beta^{-1}(0)\), then the local dimension in the source-coordinate chart is
+\begin{equation}
+  \dim \mathcal M_{\rm loc}=m-r_\beta-r_{\rm red}.
+  \label{eq:conformal-manifold-rank-count}
+\end{equation}
+The substantive input behind \eqref{eq:conformal-manifold-rank-count} is the
+preceding source-coordinate chart: all obstruction functions, all redundancies, and all
+contact-term conventions have to be known before the rank count is meaningful.
+This is the field-theoretic core of Leigh--Strassler type exact-marginality
+arguments in supersymmetric examples.
+
+At second order in conformal perturbation theory, the obstruction functions
+are visible in the OPE.  If \(O_a\) are scalar primaries of dimension \(D\),
+then the collision region in
+\[
+  \int \dd^D x\,\dd^D y\,
+  O_a(x)O_b(y)
+\]
+is controlled by the \(O_a(x)O_b(y)\) OPE.  Terms proportional to another
+dimension-\(D\) scalar \(O_c\), to a divergence of a dimension-\(D-1\) vector,
+or to a source-contact counterterm are precisely the terms that can contribute
+to \(\beta^c\), to a virial/current obstruction, or to a scheme change.  The
+finite-dimensional chart above is therefore a compressed record of a
+distributional statement about collision singularities.  A claim that a
+dimension-\(D\) operator is exactly marginal is justified only after these
+collision terms have been controlled to all orders in the proposed family, or
+after an independent nonperturbative construction of the family has been
+supplied.
+
+\paragraph{Zamolodchikov metric.}
+For a conformal-family datum, the separated two-point function of tangent
+operators has the form
+\begin{equation}
+  \left\langle O_v(x)O_w(0)\right\rangle_\lambda
+  =
+  \frac{G_\lambda(v,w)}{|x|^{2D}}
+  \qquad (x\ne0),
+  \label{eq:zamolodchikov-metric-general-d}
+\end{equation}
+after fixing the normalization of \(O_v\) by
+\eqref{eq:conformal-family-tangent-insertion}.  Reflection positivity makes
+\(G_\lambda\) positive semidefinite on tangent candidates.  Its null
+directions are redundant deformations: total derivatives, null operators, and
+infinitesimal source reparametrizations that vanish in separated-point
+correlators.  After quotienting by these directions, \(G_\lambda\) is the
+Zamolodchikov metric on the local conformal family.
+
+This metric is independent of the particular source coordinates in the usual
+tensorial sense.  If \(h^a=h^a(\lambda)\) and
+\(\lambda^i=\lambda^i(h)\) are two coordinates on the same family, then
+\[
+  O_i=\frac{\partial h^a}{\partial\lambda^i}\,O_a
+  \quad
+  \text{modulo contact terms and redundant operators},
+\]
+so separated two-point functions give
+\begin{equation}
+  G'_{ij}
+  =
+  \frac{\partial h^a}{\partial\lambda^i}
+  \frac{\partial h^b}{\partial\lambda^j}
+  G_{ab}.
+  \label{eq:zamolodchikov-metric-coordinate-transform}
+\end{equation}
+Contact terms can change the distributional extension of
+\eqref{eq:zamolodchikov-metric-general-d} to \(x=0\), but they do not change
+the separated coefficient \(G_\lambda(v,w)\).  This distinction is essential
+when the same exactly marginal source also appears in local RG equations,
+curved-background Ward identities, or supersymmetric localization formulae.
+
+\paragraph{Supersymmetric examples and global identifications.}
+The supersymmetric volume contains worked source-coordinate examples of
+\eqref{eq:local-conformal-locus-source-chart}.  In
+Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}, the
+Klebanov--Witten chart has three holomorphic source coordinates and one
+independent beta-function constraint under the stated
+\(\mathcal N=1\), flavor-symmetry, and Wilsonian-scheme hypotheses, giving a
+two-complex-dimensional local conformal locus.  In
+Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}, four-dimensional
+\(\mathcal N=4\) Yang--Mills has the local coordinate
+\[
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_{\rm YM}^2},
+  \qquad \operatorname{Im}\tau>0,
+\]
+so the local family is one complex dimensional before electric-magnetic
+duality identifications.  The quotient by a subgroup of \(PSL(2,\mathbb Z)\)
+is a global statement about the line-operator lattice and global form of the
+gauge group, separate from the local exact-marginality proof.  In
+Chapter~\ref{ch:susy-three-dimensional-chern-simons-matter}, the standard
+\(\mathcal N=6\) ABJM specification at fixed integers \((N,k)\) has no
+continuous conformal coupling: the Chern--Simons level is quantized and the
+superpotential coefficient is fixed by the supersymmetry completion.  These
+examples illustrate the rule: a parameter belongs to a conformal manifold only
+if it is represented by a genuine tangent coordinate in a fixed QFT
+specification.
+
 \section{RG Monotones and Fixed-Point Ordering}
 \label{sec:rg-monotones-fixed-point-ordering}
 
