@@ -67,6 +67,9 @@ python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 echo "[qft-scripts] tffsa_ising_spectral_flow --smoke"
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
 
+echo "[qft-scripts] e8_ising_mass_ratios --smoke"
+python3 qft_scripts/e8_ising_mass_ratios.py --smoke
+
 echo "[qft-scripts] thooft_dlcq --smoke"
 python3 qft_scripts/thooft_dlcq.py --smoke
 

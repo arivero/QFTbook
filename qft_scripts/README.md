@@ -164,6 +164,11 @@ per task.
   magnetic couplings and checks Hellmann-Feynman slopes against centered
   finite differences; it is a finite-matrix benchmark, not a continuum
   magnetic-Ising or \(E_8\) spectrum claim.
+- `e8_ising_mass_ratios.py`: exact \(E_8\) magnetic-Ising target-data table
+  for benchmark comparisons.  It prints the eight mass ratios and verifies
+  the finite Perron-Frobenius certificate from the \(E_8\) Dynkin adjacency
+  matrix.  It is target data for continuum comparison, not a finite TCSA or
+  TFFSA spectrum computation.
 - `thooft_dlcq.py`: finite harmonic-resolution matrix for the large-\(N\)
   two-dimensional QCD meson equation.  It is a DLCQ-style principal-value
   regulator, not a proof of the continuum spectrum.

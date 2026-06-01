@@ -39,6 +39,9 @@ numerics.
 - `H(h)`, `W`, `lambda_*(h)`, `g`: finite affine Hermitian spectral-flow
   family, perturbing matrix, simple eigenvalue branch, and finite spectral gap
   used in the Hellmann-Feynman derivative certificate.
+- `rho_a`, `A_E8`, `v`: magnetic-Ising \(E_8\) target mass ratios, the
+  \(E_8\) Dynkin adjacency matrix, and its Perron-Frobenius eigenvector used
+  as a finite convention certificate for the target table.
 - `x^pm`, `p^+`, `K`: light-front coordinates, longitudinal momentum, and
   harmonic resolution.
 - `M^2`, `P^-`: invariant mass operator and light-front Hamiltonian.
@@ -129,6 +132,10 @@ numerics.
 - Proves the finite Hellmann-Feynman spectral-flow derivative formula for a
   simple eigenvalue of an affine finite Hermitian matrix family, including the
   resolvent-gap hypothesis and the trace identity for the sum of slopes.
+- Records the exact \(E_8\) magnetic-Ising continuum target mass ratios for
+  numerical comparison and gives a finite Perron-Frobenius certificate from
+  the \(E_8\) adjacency matrix, while keeping the continuum integrable-QFT
+  derivation separate from any finite TCSA/TFFSA diagonalization claim.
 - Proves the Feshbach-Schur complement identity that underlies Hamiltonian
   truncation counterterms and high-energy tail corrections.
 - Defines finite residual certificates for Hermitian truncation matrices and
@@ -253,6 +260,10 @@ plots.
   connected Ising TFFSA block across a small magnetic-coupling grid and checks
   Hellmann-Feynman slopes against centered finite differences at a separated
   finite spectral point.
+- `qft_scripts/e8_ising_mass_ratios.py --smoke`: prints the exact \(E_8\)
+  magnetic-Ising mass-ratio target table and checks that it equals the
+  normalized Perron-Frobenius component ratios of the \(E_8\) Dynkin adjacency
+  matrix.
 - `qft_scripts/thooft_dlcq.py --smoke`: builds and diagonalizes the finite
   principal-value matrix for the large-N two-dimensional QCD meson equation
   at a small harmonic resolution, with a positivity smoke check.
@@ -279,8 +290,9 @@ plots.
   \(\phi^4\) normal-ordered truncation basis and zero-mode matrix element,
   the scalar \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix
   elements, connected Ising TFFSA block normalization, finite Ising TFFSA
-  spectral-flow derivative identities, finite large-`K` fit algebra, finite
-  residual certification, spectral-projector leakage, the Feshbach determinant
+  spectral-flow derivative identities, the \(E_8\) target-ratio
+  Perron-Frobenius certificate, finite large-`K` fit algebra, finite residual
+  certification, spectral-projector leakage, the Feshbach determinant
   identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
@@ -332,3 +344,8 @@ plots.
   normal-ordered vertex coefficients, spatial-integral spin projection,
   winding conservation, and finite Hermiticity without promoting the finite
   matrix to a continuum sine-Gordon spectrum.
+- 2026-06-01 issue #494 E8 target-data pass: added the exact magnetic-Ising
+  \(E_8\) mass-ratio table and a finite Perron-Frobenius adjacency
+  certificate as benchmark target data, keeping the continuum factorized
+  scattering derivation and finite TCSA/TFFSA diagonalization claims
+  logically separate.

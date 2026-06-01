@@ -19,6 +19,7 @@ import sine_gordon_zero_mode_truncation as sine_gordon  # noqa: E402
 import sine_gordon_tcsa_vertex as sine_gordon_tcsa  # noqa: E402
 import phi4_dlcq  # noqa: E402
 import phi4_hamiltonian_truncation as phi4_truncation  # noqa: E402
+import e8_ising_mass_ratios as e8_ratios  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import tffsa_ising_spectral_flow as tffsa_flow  # noqa: E402
 import thooft_dlcq  # noqa: E402
@@ -347,6 +348,24 @@ def check_tffsa_spectral_flow_derivatives() -> None:
     assert_leq("TFFSA spectral-flow maximum slope error", result["max_abs_slope_error"], 1.0e-6)
 
 
+def check_e8_ising_target_ratios() -> None:
+    ratios = e8_ratios.mass_ratios()
+    if float(np.min(np.diff(ratios))) <= 0.0:
+        raise AssertionError("E8 magnetic-Ising target ratios must be strictly increasing")
+    assert_close("E8 mass-ratio normalization", ratios[0], 1.0)
+    assert_close("E8 golden mass ratio", ratios[1], (1.0 + np.sqrt(5.0)) / 2.0)
+    assert_close("E8 Coxeter eigenvalue mass ratio", ratios[2], 2.0 * np.cos(np.pi / 30.0))
+
+    certificate = e8_ratios.perron_frobenius_certificate()
+    assert_close(
+        "E8 adjacency largest eigenvalue",
+        certificate["largest_adjacency_eigenvalue"],
+        certificate["expected_largest_adjacency_eigenvalue"],
+        tol=1.0e-13,
+    )
+    assert_leq("E8 PF mass-ratio certificate", certificate["max_ratio_error"], 1.0e-12)
+
+
 def check_thooft_quadratic_form_identity() -> None:
     K = 10
     m1 = 0.3
@@ -579,6 +598,7 @@ def main() -> None:
     check_phi4_dlcq_matrix()
     check_tffsa_connected_spin_block()
     check_tffsa_spectral_flow_derivatives()
+    check_e8_ising_target_ratios()
     check_thooft_quadratic_form_identity()
     check_thooft_large_K_fit_algebra()
     check_residual_certificate()

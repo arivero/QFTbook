@@ -375,11 +375,12 @@ Current checks:
   element, the scalar \(\phi^4\) DLCQ harmonic-resolution basis and
   convention-sensitive quartic matrix elements, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
-  spin-block normalization, light-front metric and mass-shell bookkeeping, the
-  one-particle measure Jacobian, residual-to-spectrum certification, spectral-projector
-  leakage control, the finite Feshbach determinant identity behind
-  truncation counterterms, and Krylov/Lanczos Ritz-residual plus finite
-  spectral-moment identities.  It also verifies finite variational ansatz
+  spin-block normalization, the \(E_8\) magnetic-Ising target-ratio
+  Perron-Frobenius certificate, light-front metric and mass-shell bookkeeping,
+  the one-particle measure Jacobian, residual-to-spectrum certification,
+  spectral-projector leakage control, the finite Feshbach determinant
+  identity behind truncation counterterms, and Krylov/Lanczos Ritz-residual
+  plus finite spectral-moment identities.  It also verifies finite variational ansatz
   identities: energy variance as residual norm, spectral and ground-projector
   certificates, tangent-gradient formula, and local-energy mean/variance
   identities used by sampled neural-state calculations.

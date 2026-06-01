@@ -1018,6 +1018,87 @@ certificate: comparison with the continuum magnetic-Ising spectrum requires
 the cutoff, finite-volume, diagonal-form-factor, and counterterm estimates
 described around \eqref{eq:tffsa-connected-spin-matrix-element}.
 
+\subsection{\texorpdfstring{Exact \(E_8\) Target Data For Magnetic-Ising Benchmarks}{Exact E8 Target Data For Magnetic-Ising Benchmarks}}
+\label{subsec:e8-ising-target-data}
+
+The magnetic Ising ray \(\tau=0\), \(h\ne0\), is the standard case in which
+Hamiltonian truncation is compared with exact integrable-QFT target data.
+The target data are not obtained by diagonalizing a finite truncation.  They
+come from the continuum factorized-scattering description of the integrable
+massive theory.  In the numerical chapter we use only the part of that
+description needed for a reproducible benchmark: the dimensionless mass
+ratios
+\[
+  \rho_a=\frac{m_a}{m_1},\qquad a=1,\ldots,8,
+\]
+where \(m_1\) sets the overall mass scale determined by the normalization of
+the magnetic coupling \(h\).  The eight ratios are
+\begin{align}
+  \rho_1 &= 1, &
+  \rho_2 &= 2\cos\frac{\pi}{5}, &
+  \rho_3 &= 2\cos\frac{\pi}{30}, \notag\\
+  \rho_4 &= 2\rho_2\cos\frac{7\pi}{30}, &
+  \rho_5 &= 2\rho_2\cos\frac{2\pi}{15}, &
+  \rho_6 &= 2\rho_2\cos\frac{\pi}{30}, \notag\\
+  \rho_7 &= 4\rho_2\cos\frac{\pi}{5}\cos\frac{7\pi}{30},&
+  \rho_8 &= 4\rho_2\cos\frac{\pi}{5}\cos\frac{2\pi}{15}.
+  \label{eq:e8-magnetic-ising-mass-ratios}
+\end{align}
+Numerically this is approximately
+\begin{gather*}
+  1,\quad
+  1.6180339887,\quad
+  1.9890437907,\quad
+  2.4048671724,\\
+  2.9562952015,\quad
+  3.2183404585,\quad
+  3.8911568233,\quad
+  4.7833861168 .
+\end{gather*}
+
+There is a finite algebraic certificate for the convention used in
+\eqref{eq:e8-magnetic-ising-mass-ratios}.  Let \(A_{E_8}\) be the adjacency
+matrix of the \(E_8\) Dynkin graph with edges
+\[
+  (0,1),(1,2),(2,3),(3,4),(4,5),(5,6),(2,7).
+\]
+The largest eigenvalue is
+\[
+  \lambda_{\max}(A_{E_8})=2\cos\frac{\pi}{30}.
+\]
+If \(v\) is the positive Perron-Frobenius eigenvector and is normalized by
+\(\min_i v_i=1\), then the unordered component ratios of \(v\) are precisely
+the eight numbers in \eqref{eq:e8-magnetic-ising-mass-ratios}.  For the node
+labeling above the normalized vector is
+\[
+  (v_0,\ldots,v_7)
+  =
+  (\rho_2,\rho_6,\rho_8,\rho_7,\rho_5,\rho_3,\rho_1,\rho_4).
+\]
+The eigenvector equations \(A_{E_8}v=\lambda_{\max}v\) reduce the statement
+to elementary trigonometric identities such as
+\[
+  v_5+v_7=\lambda_{\max}v_6,\qquad
+  v_1+v_3+v_7=\lambda_{\max}v_2,
+\]
+after substituting \(\lambda_{\max}=2\cos(\pi/30)\) and the ratios above.
+This check fixes the table and its ordering; it does not replace the
+continuum integrable-QFT derivation that the magnetic-Ising scattering theory
+has this \(E_8\) particle content.
+
+The companion script
+\[
+  \texttt{qft\_scripts/e8\_ising\_mass\_ratios.py}
+\]
+prints \eqref{eq:e8-magnetic-ising-mass-ratios} and verifies the
+Perron-Frobenius certificate.  In a TCSA or TFFSA comparison the observable
+being compared should be a set of finite-volume energy gaps
+\(\Delta E_a(L,E_{\rm cut})\), divided by the lightest extracted gap, and
+then extrapolated in \(L\) and \(E_{\rm cut}\) with a declared systematic
+model.  Agreement with \eqref{eq:e8-magnetic-ising-mass-ratios} is a
+target-data comparison only after those regulator coordinates have been
+specified.
+
 \begin{lemma}[Feshbach--Schur reduction with resolvent control]
 \label{lem:hamiltonian-truncation-schur-complement}
 In a finite regulated Hilbert space, let \(H=H^\dagger\) be a Hermitian
@@ -1214,8 +1295,9 @@ verifies the finite residual bound
 behind \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, the
 Ising-energy Bogoliubov benchmark, the connected Ising TFFSA block
 normalization, the finite Ising TFFSA spectral-flow derivative identity, the
-finite large-\(N\) QCD DLCQ quadratic-form identity, and the exact-intercept
-cases of the finite large-\(K\) extrapolation diagnostic.
+\(E_8\) magnetic-Ising target-ratio Perron-Frobenius certificate, the finite
+large-\(N\) QCD DLCQ quadratic-form identity, and the exact-intercept cases
+of the finite large-\(K\) extrapolation diagnostic.
 
 \section{Krylov Data as Finite Spectral Evidence}
 \label{sec:krylov-finite-spectral-evidence}
@@ -2387,9 +2469,10 @@ The public companion-script policy is recorded in
 \]
 runs the finite Ising Metropolis, Ising-energy Hamiltonian-truncation, and
 the large-\(N\) QCD DLCQ example, together with the connected Ising TFFSA
-block, the finite Ising TFFSA spectral-flow diagnostic, and the finite
-large-\(K\) DLCQ extrapolation diagnostic.  Passing that harness certifies
-only the finite computations and internal consistency checks just described.
+block, the finite Ising TFFSA spectral-flow diagnostic, the \(E_8\)
+magnetic-Ising target-data certificate, and the finite large-\(K\) DLCQ
+extrapolation diagnostic.  Passing that harness certifies only the finite
+computations and internal consistency checks just described.
 
 \begin{openproblem}[Certified QFT truncation]
 \label{op:certified-qft-hamiltonian-truncation}
