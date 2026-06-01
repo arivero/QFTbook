@@ -111,6 +111,20 @@ def zero_matrix(n: int) -> MatrixAny:
     return tuple(tuple(Fraction(0) for _ in range(n)) for _ in range(n))
 
 
+def diagonal_matrix(values: list[Fraction]) -> MatrixAny:
+    return tuple(
+        tuple(value if i == j else Fraction(0) for j, value in enumerate(values))
+        for i, value in enumerate(values)
+    )
+
+
+def diagonal_spectral_projection(values: list[Fraction], eigenvalue: Fraction) -> MatrixAny:
+    return diagonal_matrix([
+        Fraction(1) if value == eigenvalue else Fraction(0)
+        for value in values
+    ])
+
+
 zero: Matrix = ((Fraction(0), Fraction(0)), (Fraction(0), Fraction(0)))
 one: Matrix = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
 parity: Matrix = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(-1)))
@@ -149,7 +163,28 @@ def span_coefficients(a: Matrix) -> tuple[Fraction, Fraction, Fraction, Fraction
     return alpha, beta, gamma, delta
 
 
+def check_finite_analytic_strong_locality_model() -> None:
+    """Finite-dimensional shadow of the analytic-vector strong-locality lemma."""
+
+    a_values = [Fraction(-1), Fraction(0), Fraction(0), Fraction(2)]
+    b_values = [Fraction(3), Fraction(5), Fraction(7), Fraction(7)]
+    a = diagonal_matrix(a_values)
+    b = diagonal_matrix(b_values)
+    assert_eq_any(comm_any(a, b), zero_matrix(4), "commuting finite self-adjoint generators")
+    for a_eigenvalue in set(a_values):
+        for b_eigenvalue in set(b_values):
+            p_a = diagonal_spectral_projection(a_values, a_eigenvalue)
+            p_b = diagonal_spectral_projection(b_values, b_eigenvalue)
+            assert_eq_any(
+                comm_any(p_a, p_b),
+                zero_matrix(4),
+                "commuting finite generators have commuting spectral projections",
+            )
+
+
 def main() -> None:
+    check_finite_analytic_strong_locality_model()
+
     assert_eq(matmul(parity, parity), one, "parity squares to one")
     assert_eq(matmul(odd_field, odd_field), one, "odd field squares to one")
     assert_eq(matmul(matmul(parity, odd_field), parity),

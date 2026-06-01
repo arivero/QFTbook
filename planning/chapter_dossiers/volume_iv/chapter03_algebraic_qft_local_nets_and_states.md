@@ -125,7 +125,9 @@ functorial QFT.
   deriving observable additivity from separate local fixed points, and the
   finite Haag-duality diagnostic distinguishing exterior commutation from
   membership in the assigned local algebra.  It also checks that locality of
-  represented algebras is a spectral-projection statement.
+  represented algebras is a spectral-projection statement, including a finite
+  analytic-vector strong-locality shadow where commuting finite self-adjoint
+  generators have commuting spectral projections.
 
 ## Audit Notes
 
@@ -163,6 +165,10 @@ functorial QFT.
   intertwiners, and extended `wightman_net_bridge_checks.py` with a finite
   model where exterior commutation lands in the dual algebra but not in the
   assigned local algebra.
+- 2026-06-01 analytic strong-locality ledger pass: cross-linked the
+  Wightman-to-net theorem to Lemma `lem:analytic-vector-strong-locality` and
+  extended `wightman_net_bridge_checks.py` with a finite spectral-projection
+  check for commuting self-adjoint generators.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
