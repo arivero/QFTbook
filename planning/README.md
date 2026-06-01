@@ -43,7 +43,7 @@ finished monograph.
 - `11_project_decisions.md`: explicit decisions from Xi.
 - `12_strict_writing_harness.md`: immediate hard gate for drafting.
 - `13_development_dependency_map.md`: dependency order, promotion gates, and
-  uniformization queue for compiled and future volumes.
+  uniformization queue for the compiled volumes.
 - `14_code_policy.md`: reproducibility and public-facing calculation companion
   policy.
 - `15_convention_dictionary.md`: global convention defaults, chapter-header
@@ -68,8 +68,15 @@ chapters included in that compiled volume.
 
 | Compiled volume | Part title | Chapter count | On-disk chapter directories used |
 | --- | --- | ---: | --- |
-| I | Foundations of Local Quantum Field Theory | 15 | `volume_i/`, `volume_iv/` |
+| I | Foundations of Local Quantum Field Theory | 16 | `volume_i/`, `volume_iv/` |
 | II | Particles, Scattering, and Analyticity | 13 | `volume_i/`, `volume_ii/`, `volume_iv/` |
-| III | Renormalization, Effective Field Theory, and Critical Phenomena | 9 | `volume_ii/` |
-| IV | Gauge Theory, Infrared Structure, and Anomalies | 11 | `volume_i/`, `volume_ii/` |
-| V | Conformal Field Theory | 9 | `volume_iii/` |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena | 10 | `volume_ii/` |
+| IV | Gauge Theory, Infrared Structure, and Anomalies | 17 | `volume_i/`, `volume_ii/` |
+| V | Conformal Field Theory | 15 | `volume_iii/`, `volume_v/` |
+| VI | Integrable Quantum Field Theory | 14 | `volume_vi/` |
+| VII | Supersymmetric Quantum Field Theory | 17 | `volume_vii/` |
+| VIII | Topological and Cohomological Quantum Field Theory | 11 | `volume_viii/` |
+| IX | Global Structure, Phases, and Extended Operators | 11 | `volume_ix/` |
+| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | 12 | `volume_x/` |
+| XI | Constructive, Lattice, and Numerical Quantum Field Theory | 11 | `volume_xi/` |
+| XII | Quantum Field Theory in Curved Spacetime and Background Fields | 11 | `volume_xii/` |

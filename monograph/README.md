@@ -22,10 +22,21 @@ Or from the repository root:
 tools/build_monograph.sh
 ```
 
-The manuscript is in an early rewrite stage. The current build includes the
-foundations and scattering sequence, the renormalization and Wilsonian sequence,
-and the first nonabelian gauge-dynamics sequence through BRST, QCD running,
-axial anomalies, global anomalies, and pion effective actions. It now also
-includes the opening conformal-field-theory sequence through fixed-point data,
-conformal Killing vectors, stress-tensor/Weyl structure, and radial
-quantization.
+The current build is a twelve-volume active draft:
+
+1. Foundations of Local Quantum Field Theory
+2. Particles, Scattering, and Analyticity
+3. Renormalization, Effective Field Theory, and Critical Phenomena
+4. Gauge Theory, Infrared Structure, and Anomalies
+5. Conformal Field Theory
+6. Integrable Quantum Field Theory
+7. Supersymmetric Quantum Field Theory
+8. Topological and Cohomological Quantum Field Theory
+9. Global Structure, Phases, and Extended Operators
+10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Constructive, Lattice, and Numerical Quantum Field Theory
+12. Quantum Field Theory in Curved Spacetime and Background Fields
+
+The draft remains under systematic development.  Compiled volume titles and
+chapter order are determined by the manifest files under
+`tex/volumes/volume_*/*_current.tex`.
