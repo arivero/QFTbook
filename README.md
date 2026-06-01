@@ -11,14 +11,19 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Public Volume Roster
+## Full Volume Program
 
-The compiled public manuscript currently consists of exactly twelve launched
-reader-facing volumes, numbered I--XII.  The first table below is the full
-active volume list: each row corresponds to an assembly file included by
-`monograph/tex/main.tex` and therefore to an actual part of the compiled
-`monograph/tex/main.pdf`.  There is currently no Volume XIII or other hidden
-active public volume.
+The public volume program has two layers.  The first layer is the launched
+compiled manuscript: twelve reader-facing volumes, numbered I--XII, whose
+assembly files are included by `monograph/tex/main.tex` and therefore by
+`monograph/tex/main.pdf`.  The second layer is the planned future volume
+program: subject volumes that have been identified as natural splits or
+expansions, but have not yet been assigned public Roman numerals.
+
+Volume XIII and later are therefore unassigned, not missing.  A future subject
+becomes a numbered public volume only after it has a TeX assembly file, chapter
+dossiers, verification pass, frontmatter entry, and README entry in the same
+commit.
 
 Chapter ranges are continuous printed chapter numbers, and counts are counts
 of printed `\chapter` entries, not raw `\input` lines.  Volume IV also inputs
@@ -44,30 +49,35 @@ no hidden active volumes outside this roster.  Draft files, deprecated files,
 source transcriptions, local reference files, and planning notes are not
 additional public volumes.
 
-### Planned Candidate Volumes And Cross-Cutting Layers
+### Planned Future Volume Candidates
 
-The monograph is intended to grow beyond the active twelve-volume manuscript.
 The table below is the full public list of planned subject-volume candidates
-and permanent cross-cutting layers as of the current repository state.  These
-entries are not assigned public Roman numerals until they become compiled TeX
-parts in `monograph/tex/main.tex`, the frontmatter dependency guide, and this
-README in the same commit.
+as of the current repository state.  These are part of the intended monograph
+architecture, but they are not active public volumes yet.  They keep their
+descriptive names until the material is mature enough to receive a numbered
+assembly file.
 
-| Candidate or layer | Current status | Intended scope | Current compiled home |
+| Future volume candidate | Current status | Intended scope | Current compiled home |
 | --- | --- | --- | --- |
-| Foundations, scattering, renormalization, gauge theory, CFT, integrability, supersymmetry, TQFT, global structure, thermal QFT, constructive/lattice/numerical QFT, and curved-background QFT | Active compiled manuscript | The twelve subject volumes listed above. | Volumes I--XII |
 | Large-N gauge theory, QCD strings, flux tubes, baryons, and gauge-string expansions | Planned candidate standalone volume; some material already exists where logically needed | Nonperturbative large-N limits, QCD string observables, baryons and solitons, planar versus confining string limits, and controlled bridges to gauge/string spectral problems. | Mainly Volumes IV, VI, VII, and IX |
 | Advanced local-algebraic QFT and modular structure | Planned candidate standalone volume if it outgrows the foundations | Local von Neumann algebras, split property, modular inclusions, relative entropy, entanglement as an AQFT topic, superselection sectors in examples, and concrete interacting nets. | Volumes I, X, XI, and XII |
 | Advanced scattering, amplitudes, resonances, and infrared-safe observables | Planned candidate standalone volume or deep expansion of the scattering/gauge volumes | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, energy correlators, light-ray observables, and detector-defined inclusive observables. | Volumes II, IV, and V |
 | Advanced supersymmetric theories and protected sectors | Planned candidate expansion of the supersymmetry volume, with possible later split if the material outgrows Volume VII | GLSM and mirror symmetry, two-dimensional supersymmetric models, four-dimensional N=1 and N=2 dynamics, localization with regulated data, six-dimensional theories, and protected sectors. | Volume VII |
 | Advanced two-dimensional CFT and exact two-dimensional QFT | Planned candidate expansion or later split across the CFT, integrability, supersymmetry, and numerical volumes | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. | Volumes V, VI, VII, and XI |
-| Mathematical machinery and verification infrastructure | Permanent supporting layer, not a numbered volume by itself unless later reorganized | Spinors, supergeometry, distribution theory, functional analysis, rigged Hilbert spaces, calculation-check scripts, finite-regulator examples, and proof dossiers. | Distributed through the active volumes and `calculation-checks/` |
 
 Contributors should treat the twelve active volumes as the authoritative
 compiled manuscript and the roadmap table as the authoritative list of planned
 subject expansions.  A future subject split becomes a public numbered volume
 only after it has its own assembly file, chapter dossiers, verification pass,
 and frontmatter/README entry.
+
+### Permanent Cross-Cutting Layer
+
+Mathematical machinery and verification infrastructure are distributed through
+the active volumes rather than being a separate numbered volume.  This layer
+includes spinors, supergeometry, distribution theory, functional analysis,
+rigged Hilbert spaces, calculation-check scripts, finite-regulator examples,
+and proof dossiers.
 
 ## Repository Layout
 
