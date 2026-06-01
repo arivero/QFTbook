@@ -1851,18 +1851,161 @@ the vacuum orbit at infinity, and the gauge profile decays to the unbroken
   \label{fig:bogomolny-bound-structure}
 \end{figure}
 
-The monopole also has collective coordinates.  Translating the solution gives
-three zero modes.  A global \(U(1)\) rotation at infinity gives an angular
-coordinate; its quantization supplies the electric tower of dyonic sectors.
-For \(n\) BPS monopoles, the moduli space is a \(4|n|\)-dimensional
-hyperk\"ahler manifold after removing the center-of-mass and overall phase
-coordinates in the standard way.  The moduli-space statement is a theorem
-about the BPS equations and describes the low-velocity classical dynamics
-obtained by restricting the kinetic energy to the zero-mode manifold.  The
-corresponding quantum construction requires a Hilbert space of fluctuations
-and collective-coordinate wave functions, possible fermion zero modes, and a
-determination of which semiclassical sectors survive in the continuum quantum
-theory being studied.
+\subsection{Framed Monopole Moduli Data and Low-Velocity Dynamics}
+\label{subsec:framed-monopole-moduli-dynamics}
+
+The monopole also has collective coordinates, but these coordinates are not
+extra variables appended to the field theory.  They are coordinates on the
+solution space of the Bogomolny equation modulo the gauge transformations
+declared to be redundancies.  The declaration matters.  To retain the
+electric phase whose quantization gives dyons, one divides by based gauge
+transformations which approach the identity at infinity; the residual
+constant unbroken \(U(1)\) at infinity then acts on the resulting framed
+moduli space.
+
+\begin{definition}[Framed BPS monopole moduli datum]
+\label{def:framed-bps-monopole-moduli-datum}
+Fix an \(SU(2)\to U(1)\) adjoint-Higgs theory in the BPS limit and a magnetic
+sector \(n\).  Let \(\mathcal B_n\) be the set of smooth finite-energy pairs
+\((A_i,\Phi)\) in that sector satisfying
+\[
+  B_i=D_i\Phi .
+\]
+Let \(\mathcal G_0\) be the group of smooth gauge transformations which tend
+to the identity element at spatial infinity with the decay needed to preserve
+the finite-energy sector.  The framed monopole moduli space is the quotient
+\[
+  \mathcal M_n^{\rm fr}:=\mathcal B_n/\mathcal G_0 .
+\]
+The unbroken asymptotic group \(U(1)_\infty\) acts on
+\(\mathcal M_n^{\rm fr}\).  Quotienting further by this action gives the
+unframed moduli space.  The framed version is the one used for dyonic
+quantization, because the primitive \(U(1)_\infty\) orbit is the phase
+coordinate \(\chi\) of Subsection~\ref{subsec:monopole-phase-coordinate-dyons-witten-effect}.
+\end{definition}
+
+Let \(z^a\) be local coordinates on a smooth chart of
+\(\mathcal M_n^{\rm fr}\), and let
+\[
+  (a_{a i},\varphi_a)
+  =
+  \left(
+    \frac{\partial A_i(z)}{\partial z^a},
+    \frac{\partial\Phi(z)}{\partial z^a}
+  \right)
+\]
+be a representative tangent vector.  In the Hermitian convention
+\(D_iX=\partial_iX-\ii[A_i,X]\), linearizing the Bogomolny equation gives
+\begin{equation}
+  \varepsilon_{ijk}D_j a_{a k}
+  -D_i\varphi_a
+  +\ii[a_{a i},\Phi]
+  =
+  0.
+  \label{eq:linearized-bogomolny-equation}
+\end{equation}
+The infinitesimal gauge orbit through \((A_i,\Phi)\) is
+\[
+  (a_i,\varphi)=(D_i\epsilon,\ii[\epsilon,\Phi]).
+\]
+With respect to the kinetic inner product below, orthogonality to all such
+based gauge directions is exactly the background-gauge condition
+\begin{equation}
+  D_i a_{a i}-\ii[\Phi,\varphi_a]=0 .
+  \label{eq:monopole-background-gauge-horizontal}
+\end{equation}
+Indeed, after integrating by parts and using the decay of the based
+parameter \(\epsilon\),
+\[
+  \int_{\mathbb R^3}\operatorname{tr}
+  \bigl(a_iD_i\epsilon+\varphi\,\ii[\epsilon,\Phi]\bigr)
+  =
+  \int_{\mathbb R^3}\operatorname{tr}
+  \bigl((-D_i a_i+\ii[\Phi,\varphi])\epsilon\bigr).
+\]
+Thus a tangent vector to the quotient is represented by a pair satisfying
+\eqref{eq:linearized-bogomolny-equation} and
+\eqref{eq:monopole-background-gauge-horizontal}, modulo based gauge
+parameters solving the homogeneous horizontal condition.
+
+The metric used in the semiclassical approximation is the restriction of the
+real-time kinetic energy to these horizontal zero modes:
+\begin{equation}
+  g_{ab}^{\rm mon}(z)
+  =
+  \frac1{g_{\mathrm{YM}}^2}
+  \int_{\mathbb R^3}\dd^3x\,
+  \operatorname{tr}
+  \bigl(a_{a i}a_{b i}+\varphi_a\varphi_b\bigr).
+  \label{eq:monopole-moduli-space-metric}
+\end{equation}
+The dimension assertion for \(\mathcal M_n^{\rm fr}\) is the index statement
+for the elliptic complex defined by
+\eqref{eq:linearized-bogomolny-equation} together with
+\eqref{eq:monopole-background-gauge-horizontal}.  In the smooth charge
+\(n>0\) sector the framed dimension is \(4n\): three center coordinates and
+one primitive phase coordinate for the total monopole, plus
+\(4n-4\) relative coordinates.  The metric is hyperk\"ahler in the smooth BPS
+sector because the linearized equations can be written as a quaternionic
+Dirac-type equation and the three complex structures act on the spatial
+one-form/scalar pair while preserving the horizontal slice.  A full analytic
+construction of the multi-monopole moduli spaces uses the corresponding
+Fredholm theory and, equivalently, Nahm data; the local semiclassical
+formulae below require precisely the smooth chart, the horizontal tangent
+space, and the metric \eqref{eq:monopole-moduli-space-metric}.
+
+The low-velocity Lagrangian follows directly from Gauss' law.  Let
+\((A_i(z(t)),\Phi(z(t)))\) be a path in a smooth moduli chart.  The
+time-component \(A_0\) is a Lagrange multiplier; varying it gives Gauss' law.
+Choosing \(A_0\) so that the velocity is horizontal is equivalent, at linear
+order in \(\dot z\), to imposing
+\eqref{eq:monopole-background-gauge-horizontal}.  Then
+\[
+  E_i=\dot z^a a_{a i}+O(\dot z^2),
+  \qquad
+  D_0\Phi=\dot z^a\varphi_a+O(\dot z^2).
+\]
+The magnetic and Higgs-gradient energy remains the BPS mass on the moduli
+space, since the topological sector and the Bogomolny equation are unchanged.
+The real-time kinetic terms therefore give
+\begin{equation}
+  L_{\rm eff}
+  =
+  \frac12\,g_{ab}^{\rm mon}(z)\dot z^a\dot z^b
+  -M_{\rm BPS}
+  +O(\dot z^3),
+  \label{eq:monopole-low-velocity-lagrangian}
+\end{equation}
+so the leading classical motion is geodesic motion for
+\eqref{eq:monopole-moduli-space-metric}.  The error term records the
+adiabatic expansion: massive fluctuation modes and radiation are solved for
+perturbatively and first affect the reduced dynamics beyond the quadratic
+zero-mode kinetic energy.
+
+For the primitive unit monopole there are no relative coordinates.  A framed
+chart is
+\[
+  (X^1,X^2,X^3,\chi)\in \mathbb R^3\times S^1,
+  \qquad
+  \chi\sim\chi+2\pi ,
+\]
+where \(X\) translates the core and \(\chi\) is the primitive asymptotic
+\(U(1)_\infty\) angle.  In this chart the metric has the block form
+\begin{equation}
+  \dd s^2_{\mathcal M_1^{\rm fr}}
+  =
+  M_{\rm BPS}\,\delta_{ij}\dd X^i\dd X^j
+  +
+  I_\chi\,\dd\chi^2 ,
+  \qquad I_\chi>0.
+  \label{eq:unit-monopole-framed-metric-block}
+\end{equation}
+The translation coefficient is the soliton mass, fixed by the stress-tensor
+normalization of the center-of-mass kinetic energy.  The phase moment of
+inertia \(I_\chi\) is the \(\chi\chi\)-component of
+\eqref{eq:monopole-moduli-space-metric}; its precise value depends on the
+trace and phase-coordinate normalization, while the electric-charge lattice
+derived below depends only on the primitive periodicity of \(\chi\).
 
 \subsection{Phase Coordinate, Dyonic Charge, and the Theta Angle}
 \label{subsec:monopole-phase-coordinate-dyons-witten-effect}
@@ -2179,54 +2322,12 @@ hence \(\sqrt{\det G'}\,\dd^mz'=\sqrt{\det G}\,\dd^mz\).  The displayed
 measure is therefore intrinsic.
 \end{proof}
 
-\paragraph{Low-velocity monopole dynamics.}
-Let \((A_i(z),\Phi(z))\) be local coordinates on a smooth BPS monopole
-moduli space and choose tangent vectors
-\((\delta_aA_i,\delta_a\Phi)\) satisfying the background-gauge condition
-\[
-  D_i\delta_aA_i-\ii[\Phi,\delta_a\Phi]=0 .
-\]
-Substituting
-\[
-  A_i(t,x)=A_i(z(t),x),\qquad
-  \Phi(t,x)=\Phi(z(t),x)
-\]
-into the real-time Yang--Mills--Higgs kinetic energy and discarding terms of
-order \(\dot z^3\) and higher gives
-\begin{equation}
-  L_{\rm eff}
-  =
-  \frac12\,g_{ab}^{\rm mon}(z)\dot z^a\dot z^b
-  -M_{\rm BPS},
-  \qquad
-  g_{ab}^{\rm mon}(z)
-  =
-  \frac1{g_{\mathrm{YM}}^2}
-  \int_{\mathbb R^3}\dd^3x\,
-  \operatorname{tr}
-  \bigl(\delta_aA_i\,\delta_bA_i+\delta_a\Phi\,\delta_b\Phi\bigr).
-  \label{eq:monopole-moduli-space-metric}
-\end{equation}
-Thus the leading low-velocity motion is geodesic motion on the monopole
-moduli space with metric \(g_{ab}^{\rm mon}\).
-
-The Gauss-law constraint is the equation obtained by varying \(A_0\).  At
-linear order in \(\dot z\), setting \(A_0=0\) is compatible with Gauss' law
-exactly when the tangent vector obeys the displayed background-gauge
-condition; otherwise one must add a compensating infinitesimal gauge
-transformation to project the tangent vector orthogonally to gauge orbits.
-The electric field and scalar velocity are then
-\[
-  E_i=\dot z^a\delta_aA_i+O(\dot z^2),
-  \qquad
-  D_0\Phi=\dot z^a\delta_a\Phi+O(\dot z^2).
-\]
-The magnetic and Higgs-gradient energy remains the BPS mass
-\(M_{\rm BPS}\) to first order because each point of the moduli space is a
-static solution with the same topological charge.  The quadratic kinetic
-terms give \eqref{eq:monopole-moduli-space-metric}.  Terms cubic in
-velocities come from radiation and massive fluctuations; they are outside the
-adiabatic approximation stated here.
+For BPS monopoles, the moduli-space metric and the low-velocity geodesic
+Lagrangian obtained from this stationary-phase measure were derived in
+Subsection~\ref{subsec:framed-monopole-moduli-dynamics}.  The finite
+stationary-phase formula above supplies the accompanying quantum
+collective-coordinate density once the nonzero-mode determinant and the
+chosen regulator have been specified.
 
 \begin{construction}[Fermion zero modes and Berezin saturation]
 \label{con:fermion-zero-mode-berezin-saturation}

@@ -112,6 +112,10 @@ The chapter must define and derive:
 - the hedgehog ansatz for the unit 't Hooft--Polyakov/Prasad--Sommerfield
   monopole, the radial BPS ODEs, and the explicit
   \(K(\rho)=\rho/\sinh\rho\), \(H(\rho)=\coth\rho-\rho^{-1}\) solution;
+- the framed BPS monopole moduli datum, including the based gauge quotient,
+  the residual \(U(1)_\infty\) phase, the linearized Bogomolny equation, the
+  background-gauge horizontal condition, the kinetic \(L^2\) metric, the
+  \(4n\) dimension bookkeeping, and the low-velocity geodesic Lagrangian;
 - the monopole \(S^1\) phase coordinate, its primitive periodicity, the
   theta-angle total-derivative term on the phase path, quantization of
   \(-i\partial_\chi\), the dyonic tower Hamiltonian, and the Witten-effect
@@ -202,6 +206,11 @@ The chapter must define and derive:
     condition.
 23. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
+24. Framed BPS monopole moduli spaces are quotients by based gauge
+   transformations.  Their tangent coordinates satisfy the linearized
+   Bogomolny equation together with the background-gauge horizontal condition,
+   and the low-velocity kinetic energy restricts to the \(L^2\) metric on
+   this horizontal zero-mode space.
 
 ## Figure Requirements
 

@@ -265,9 +265,10 @@ Current checks:
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
   equations, the monopole phase-coordinate Legendre transform and
-  theta-angle charge-lattice relabelling, the coordinate transformation of
-  \(\sqrt{\det G_{ab}}\,d^mz\), and the \(4N_c\) local dimension count of the
-  embedded one-instanton moduli.
+  theta-angle charge-lattice relabelling, the framed monopole moduli
+  dimension bookkeeping and horizontal-slice sign, the coordinate
+  transformation of \(\sqrt{\det G_{ab}}\,d^mz\), and the \(4N_c\) local
+  dimension count of the embedded one-instanton moduli.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

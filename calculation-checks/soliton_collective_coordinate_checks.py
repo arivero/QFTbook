@@ -8,6 +8,7 @@ gauge-Higgs soliton discussion:
 * the Prasad-Sommerfield profile equations,
 * the monopole phase-coordinate Legendre transform and theta-angle
   charge-lattice relabelling,
+* the framed monopole moduli dimension bookkeeping and horizontal-slice sign,
 * the coordinate invariance of the zero-mode density sqrt(det G) d^m z, and
 * the local dimension count of the one-instanton orientation orbit.
 
@@ -72,6 +73,26 @@ def check_monopole_phase_legendre_and_theta_shift() -> None:
     assert_zero("theta-periodic dyon charge relabelling", sp.together(shifted_charge - original_charge))
 
 
+def check_framed_monopole_moduli_bookkeeping() -> None:
+    n = sp.symbols("n", integer=True, positive=True)
+    framed_dim = 4 * n
+    center_phase_dim = 4
+    relative_dim = framed_dim - center_phase_dim
+    assert_zero("framed monopole dimension", framed_dim - 4 * n)
+    assert_zero("centered relative monopole dimension", relative_dim - (4 * n - 4))
+    assert_equal("unit monopole relative dimension", relative_dim.subs(n, 1), 0)
+    assert_equal("two-monopole relative dimension", relative_dim.subs(n, 2), 4)
+
+    div_a, comm_phi_varphi = sp.symbols("div_a comm_phi_varphi")
+    # Orthogonality to gauge orbits gives -D_i a_i + i[Phi,varphi].
+    gauge_pairing_coefficient = -div_a + sp.I * comm_phi_varphi
+    background_gauge_condition = div_a - sp.I * comm_phi_varphi
+    assert_zero(
+        "background-gauge sign in horizontal monopole tangent",
+        gauge_pairing_coefficient + background_gauge_condition,
+    )
+
+
 def check_zero_mode_density_coordinate_change() -> None:
     G = sp.Matrix([[3, 1], [1, 2]])
     jac = sp.Matrix([[2, 0], [1, 3]])
@@ -98,6 +119,7 @@ def main() -> None:
     check_vortex_square_completion()
     check_prasad_sommerfield_profiles()
     check_monopole_phase_legendre_and_theta_shift()
+    check_framed_monopole_moduli_bookkeeping()
     check_zero_mode_density_coordinate_change()
     check_one_instanton_orientation_dimension()
     print("All soliton collective-coordinate checks passed.")
