@@ -219,6 +219,11 @@ plots.
 - `qft_scripts/tcsa_ising_energy_benchmark.py --smoke`: diagonalizes finite
   Ising thermal-deformation Bogoliubov blocks and checks their exact
   eigenvalues.
+- `qft_scripts/sine_gordon_zero_mode_truncation.py --smoke`: builds the
+  finite compact-boson zero-mode matrix for the sine-Gordon vertex
+  perturbation, checks finite Hermiticity and reflection symmetry, and reports
+  the second-order ground-state shift.  It is a vertex-selection benchmark,
+  not the full sine-Gordon finite-volume TCSA spectrum.
 - `qft_scripts/phi4_hamiltonian_truncation.py --smoke`: builds a finite
   normal-ordered scalar \(\phi^4\) Hamiltonian truncation in a declared
   total-momentum, particle-number, free-energy, and Fourier-mode cutoff, then
@@ -254,12 +259,14 @@ plots.
   public smoke coordinates against the displayed formulas.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
-  two-dimensional QCD DLCQ quadratic-form identity, the scalar \(\phi^4\)
-  normal-ordered truncation basis and zero-mode matrix element, the scalar
-  \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix elements,
-  connected Ising TFFSA block normalization, finite Ising TFFSA spectral-flow
-  derivative identities, finite large-`K` fit algebra, finite residual certification,
-  spectral-projector leakage, the Feshbach determinant identity, and the
+  two-dimensional QCD DLCQ quadratic-form identity, the sine-Gordon
+  zero-mode vertex selection rule and second-order shift, the scalar
+  \(\phi^4\) normal-ordered truncation basis and zero-mode matrix element,
+  the scalar \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix
+  elements, connected Ising TFFSA block normalization, finite Ising TFFSA
+  spectral-flow derivative identities, finite large-`K` fit algebra, finite
+  residual certification, spectral-projector leakage, the Feshbach determinant
+  identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
   tangent-gradient, and local-energy mean/variance identities.
@@ -300,3 +307,8 @@ plots.
   diagnostics, with the manuscript text emphasizing that covariance choices,
   remainders, and fit windows are declared data rather than hidden proof of a
   continuum limit.
+- 2026-06-01 issue #494 sine-Gordon benchmark pass: added a finite
+  compact-boson zero-mode truncation section and public script checking the
+  sine-Gordon vertex selection rule, finite Hermiticity, reflection symmetry,
+  and the second-order ground-state shift, while explicitly leaving the full
+  oscillator/winding/counterterm TCSA construction outside the benchmark.

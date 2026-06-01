@@ -322,6 +322,93 @@ extrapolation are introduced.  The magnetic-field Ising TCSA problem and the
 \(E_8\) mass-spectrum computation require additional sectors and perturbing
 operators.
 
+\section{Sine-Gordon Zero-Mode Truncation As A Vertex Benchmark}
+\label{sec:sine-gordon-zero-mode-truncation-benchmark}
+
+The sine-Gordon model is a useful Hamiltonian-truncation test because the
+perturbing operator is a pair of vertex operators.  A full finite-volume
+sine-Gordon TCSA computation requires the compact-boson Hilbert space with
+oscillator descendants, winding sectors, vertex-operator normal ordering,
+topological-charge choices, cutoff counterterms, and an extrapolation
+scheme.  Before those ingredients are assembled, there is a small finite
+benchmark that checks the zero-mode vertex selection rule without pretending
+to compute the complete QFT spectrum.
+
+Let \(\theta\) be a \(2\pi\)-periodic coordinate and let
+\[
+  \Hilb_0=L^2(S^1,\dd\theta/2\pi),
+  \qquad
+  \ket n(\theta)=e^{\ii n\theta},
+  \qquad n\in\mathbb Z .
+\]
+The zero-mode coordinate is related to the sine-Gordon field by
+\(\theta=\beta q\), where \(q\) is the spatial zero mode of \(\phi\).  All
+normalization factors depending on \(L\), the compactification radius, and
+\(\beta\) are absorbed below into two positive finite-regulator coordinates:
+\(\kappa>0\), the coefficient of the zero-mode kinetic energy, and
+\(g\in\mathbb R\), the coefficient of the vertex perturbation.  For
+\(N\in\mathbb Z_{\geq0}\), let
+\[
+  P_N:\Hilb_0\to
+  \operatorname{span}\{\ket n:-N\leq n\leq N\}
+\]
+be the Fourier cutoff.  The finite matrix is
+\begin{equation}
+  H_N^{\rm SG,0}
+  =
+  P_N\left(-\kappa\frac{\dd^2}{\dd\theta^2}+g\cos\theta\right)P_N .
+  \label{eq:sine-gordon-zero-mode-finite-matrix}
+\end{equation}
+In the ordered basis \(\ket{-N},\ldots,\ket N\),
+\begin{equation}
+  \bigl(H_N^{\rm SG,0}\bigr)_{nm}
+  =
+  \kappa n^2\delta_{nm}
+  +
+  \frac g2\left(\delta_{n,m+1}+\delta_{n,m-1}\right),
+  \qquad -N\leq n,m\leq N .
+  \label{eq:sine-gordon-zero-mode-tridiagonal}
+\end{equation}
+
+\begin{remark}[Benchmark scope]
+\label{rem:sine-gordon-zero-mode-benchmark-scope}
+The matrix \eqref{eq:sine-gordon-zero-mode-tridiagonal} checks three finite
+facts that are sensitive to conventions.  First,
+\(\cos\theta=(e^{\ii\theta}+e^{-\ii\theta})/2\) shifts the compact momentum
+by \(\pm1\) and has no diagonal zero-mode matrix element.  Second, the
+projected finite matrix is Hermitian.  Third, if \(N\geq1\), ordinary
+finite-dimensional perturbation theory around the nondegenerate state
+\(\ket0\) gives the second-order ground-state shift
+\begin{equation}
+  \Delta E_0^{(2)}
+  =
+  \sum_{n\neq0}
+  \frac{|\bra n\,g\cos\theta\,\ket0|^2}{0-\kappa n^2}
+  =
+  -\frac{g^2}{2\kappa}.
+  \label{eq:sine-gordon-zero-mode-second-order-shift}
+\end{equation}
+Only \(n=\pm1\) contributes.  None of these finite identities asserts the
+existence or accuracy of a full sine-Gordon TCSA spectrum.  The full
+two-dimensional calculation must add oscillator states and all regulator data
+listed at the beginning of this section.
+\end{remark}
+
+The companion script
+\[
+  \texttt{qft\_scripts/sine\_gordon\_zero\_mode\_truncation.py}
+\]
+builds \eqref{eq:sine-gordon-zero-mode-tridiagonal}, diagonalizes it at a
+declared finite \(N\), checks Hermiticity and reflection symmetry
+\(n\mapsto -n\), and reports the perturbative coefficient
+\eqref{eq:sine-gordon-zero-mode-second-order-shift}.  The calculation check
+\[
+  \texttt{calculation-checks/hamiltonian\_truncation\_dlcq\_checks.py}
+\]
+verifies the \(\Delta n=\pm1\) selection rule, the zero-coupling spectrum,
+finite Hermiticity, and the second-order shift directly from the finite
+matrix elements.
+
 \section{\texorpdfstring{Nonintegrable Scalar \(\phi^4\) Truncation}{Nonintegrable Scalar phi4 Truncation}}
 \label{sec:finite-phi4-hamiltonian-truncation-benchmark}
 

@@ -15,6 +15,7 @@ SCRIPT_DIR = ROOT / "qft_scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
+import sine_gordon_zero_mode_truncation as sine_gordon  # noqa: E402
 import phi4_dlcq  # noqa: E402
 import phi4_hamiltonian_truncation as phi4_truncation  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
@@ -63,6 +64,38 @@ def krylov_orthonormal_basis(matrix: np.ndarray, seed: np.ndarray, dim: int) -> 
 def check_ising_bogoliubov_benchmark() -> None:
     result = tcsa.run(num_modes=7, mass=0.8, circumference=9.0)
     assert_leq("Ising Bogoliubov finite spectrum", result["max_abs_error"], 1.0e-12)
+
+
+def check_sine_gordon_zero_mode_selection_rules() -> None:
+    cfg = sine_gordon.RunConfig(nmax=4, kappa=Fraction(3, 5), coupling=Fraction(7, 50))
+    labels, free, hamiltonian = sine_gordon.hamiltonian_matrix(cfg)
+    lookup = {label: idx for idx, label in enumerate(labels)}
+    cosine = sine_gordon.cosine_matrix(cfg.nmax)
+
+    assert_close("sine-Gordon <1|cos theta|0>", cosine[lookup[1], lookup[0]], 0.5)
+    assert_close("sine-Gordon <-1|cos theta|0>", cosine[lookup[-1], lookup[0]], 0.5)
+    assert_close("sine-Gordon <2|cos theta|0>", cosine[lookup[2], lookup[0]], 0.0)
+    assert_close("sine-Gordon diagonal cosine", cosine[lookup[0], lookup[0]], 0.0)
+    assert_leq(
+        "sine-Gordon finite zero-mode Hermiticity",
+        float(np.max(np.abs(hamiltonian - hamiltonian.T))),
+        1.0e-12,
+    )
+    free_cfg = sine_gordon.RunConfig(nmax=cfg.nmax, kappa=cfg.kappa, coupling=0.0)
+    _, free_matrix, zero_coupling = sine_gordon.hamiltonian_matrix(free_cfg)
+    assert_matrix_close("sine-Gordon zero-coupling finite matrix", zero_coupling, free_matrix)
+
+    ground = lookup[0]
+    second_order = 0.0
+    for idx, label in enumerate(labels):
+        if idx == ground:
+            continue
+        second_order += hamiltonian[idx, ground] ** 2 / (free[ground, ground] - free[idx, idx])
+    assert_close(
+        "sine-Gordon zero-mode second-order shift",
+        second_order,
+        sine_gordon.second_order_ground_shift(float(cfg.kappa), float(cfg.coupling)),
+    )
 
 
 def check_phi4_hamiltonian_truncation_matrix() -> None:
@@ -462,6 +495,7 @@ def check_light_front_kinematic_identities() -> None:
 
 def main() -> None:
     check_ising_bogoliubov_benchmark()
+    check_sine_gordon_zero_mode_selection_rules()
     check_phi4_hamiltonian_truncation_matrix()
     check_phi4_dlcq_matrix()
     check_tffsa_connected_spin_block()

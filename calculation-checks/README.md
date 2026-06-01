@@ -368,7 +368,8 @@ Current checks:
   chemical-potential twist and imaginary-holonomy periodicity.
 - `hamiltonian_truncation_dlcq_checks.py`: finite checks for the
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
-  energy-deformation Bogoliubov spectrum, the normal-ordered
+  energy-deformation Bogoliubov spectrum, the finite sine-Gordon zero-mode
+  vertex selection rule and second-order perturbative shift, the normal-ordered
   \(1+1\)-dimensional scalar \(\phi^4\) truncation basis and zero-mode matrix
   element, the scalar \(\phi^4\) DLCQ harmonic-resolution basis and
   convention-sensitive quartic matrix elements, the large-\(N\)

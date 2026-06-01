@@ -27,6 +27,7 @@ python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
+python3 qft_scripts/sine_gordon_zero_mode_truncation.py --smoke
 python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
 python3 qft_scripts/phi4_dlcq.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
@@ -130,6 +131,11 @@ per task.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.
+- `sine_gordon_zero_mode_truncation.py`: finite compact-boson zero-mode
+  truncation for the sine-Gordon vertex perturbation.  It checks the
+  Fourier-basis selection rule of \(\cos\theta\), finite Hermiticity, and the
+  second-order ground-state shift in the oscillator-vacuum sector.  It is not
+  the full sine-Gordon finite-volume spectrum.
 - `phi4_hamiltonian_truncation.py`: finite normal-ordered \(1+1\)
   dimensional scalar \(\phi^4\) Hamiltonian truncation in a free massive Fock
   basis.  It constructs the projected matrix for
