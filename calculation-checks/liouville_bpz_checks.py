@@ -110,6 +110,49 @@ def require_affine_equal(
         raise AssertionError(f"{name} mismatch: {left!r} != {right!r}")
 
 
+def add_two_laurent(
+    *polynomials: dict[tuple[int, int], Fraction],
+) -> dict[tuple[int, int], Fraction]:
+    result: dict[tuple[int, int], Fraction] = {}
+    for polynomial in polynomials:
+        for monomial, coefficient in polynomial.items():
+            result[monomial] = result.get(monomial, Fraction(0)) + coefficient
+    return {
+        monomial: coefficient
+        for monomial, coefficient in result.items()
+        if coefficient != 0
+    }
+
+
+def multiply_two_laurent(
+    left: dict[tuple[int, int], Fraction],
+    right: dict[tuple[int, int], Fraction],
+) -> dict[tuple[int, int], Fraction]:
+    result: dict[tuple[int, int], Fraction] = {}
+    for (left_x, left_y), left_coefficient in left.items():
+        for (right_x, right_y), right_coefficient in right.items():
+            monomial = (left_x + right_x, left_y + right_y)
+            result[monomial] = (
+                result.get(monomial, Fraction(0))
+                + left_coefficient * right_coefficient
+            )
+    return {
+        monomial: coefficient
+        for monomial, coefficient in result.items()
+        if coefficient != 0
+    }
+
+
+def require_two_laurent_equal(
+    name: str,
+    left: dict[tuple[int, int], Fraction],
+    right: dict[tuple[int, int], Fraction],
+) -> None:
+    diff = add_two_laurent(left, {monomial: -value for monomial, value in right.items()})
+    if diff:
+        raise AssertionError(f"{name} mismatch: {diff!r}")
+
+
 one = Laurent.constant(1)
 t = Laurent.monomial(1)
 t_inverse = Laurent.monomial(-1)
@@ -449,6 +492,23 @@ check_fzzt_shift_ratios(1.38, 0.63, 0.41, 0.73)
 check_fzzt_shift_ratios(1.64, 0.70, 0.29, 0.91)
 
 
+# Exact Laurent check for the normalized FZZT boundary finite-difference
+# mechanism.  Write X=exp(pi s(2 alpha-Q)) and Y=exp(pi s delta), where
+# delta is b or b^{-1}.  Then H=(X+X^{-1})/2 and the degenerate shifts send
+# X to XY and XY^{-1}.  The identity checked below is
+# H(alpha+delta/2)+H(alpha-delta/2)=2 cosh(pi s delta) H(alpha).
+half = Fraction(1, 2)
+hyperbolic_h = {(1, 0): half, (-1, 0): half}
+hyperbolic_plus = {(1, 1): half, (-1, -1): half}
+hyperbolic_minus = {(1, -1): half, (-1, 1): half}
+two_cosh_delta = {(0, 1): Fraction(1), (0, -1): Fraction(1)}
+require_two_laurent_equal(
+    "FZZT normalized boundary finite difference",
+    add_two_laurent(hyperbolic_plus, hyperbolic_minus),
+    multiply_two_laurent(two_cosh_delta, hyperbolic_h),
+)
+
+
 numerator_shift = (
     one_exp.scale(2)
     + t_exp.scale(2)
@@ -713,5 +773,5 @@ if raw_q_block[2] != g2_formula:
 print(
     "All Liouville BPZ, dual-BPZ, screening, dual-screening, "
     "Virasoro-block through level three, connection-matrix, FZZT-shift, "
-    "elliptic-q, and DOZZ-shift checks passed."
+    "FZZT finite-difference, elliptic-q, and DOZZ-shift checks passed."
 )

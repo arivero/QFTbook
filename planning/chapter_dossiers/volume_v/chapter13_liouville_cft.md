@@ -128,6 +128,11 @@ boundaries rather than importing the appendix exposition.
   the \(b\)- and \(b^{-1}\)-shift ratios obeyed by the displayed one-point
   function, while keeping the full boundary sewing/connection-coefficient
   construction as a theorem boundary.
+- Derives the normalized FZZT boundary finite-difference identities for the
+  hyperbolic boundary factor
+  `cosh((2 alpha-Q) pi s)`, identifying the `b` and `b^{-1}` degenerate
+  shifts with eigenvalues `2 cosh(pi b s)` and `2 cosh(pi s/b)` before the
+  gamma-function connection coefficients enter.
 - Defines ZZ boundary states as finite differences of imaginary-parameter
   FZZT states and proves the hyperbolic wavefunction identity.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and for the
@@ -180,6 +185,9 @@ boundaries rather than importing the appendix exposition.
   arithmetic.
 - The same script checks the FZZT one-point \(b\)-shift and \(b^{-1}\)-shift
   ratios numerically against the displayed gamma-function representative.
+- The same script checks the normalized FZZT boundary finite-difference
+  identity exactly as a Laurent-polynomial identity in the boundary
+  hyperbolic variables.
 - The same script checks the modular-lambda expansion through
   `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
   raw elliptic \(q\)-coefficients `g_1` and `g_2`.
@@ -266,6 +274,11 @@ boundaries rather than importing the appendix exposition.
   finite-difference uniqueness step behind the DOZZ theorem boundary,
   including the common-divisor removal, dense-period argument for irrational
   `b^2`, and the separate meromorphic-continuation status at rational `b^2`.
+- 2026-06-01 issue #697 FZZT boundary finite-difference pass: added the
+  normalized hyperbolic finite-difference mechanism behind the FZZT boundary
+  parameter, separated it from the remaining nonrational boundary-bootstrap
+  connection-coefficient and sewing theorem boundary, and added an exact
+  Laurent-polynomial check.
 
 ## Anti-Wrapper Audit
 
@@ -297,3 +310,7 @@ boundaries rather than importing the appendix exposition.
   text now separates the boundary-bootstrap/sewing theorem boundary from the
   directly checkable gamma-function representative, and the Liouville script
   verifies both shift ratios.
+- 2026-06-01 FZZT boundary finite-difference mechanism pass: added the
+  hyperbolic eigenfunction identities for the normalized one-point function
+  and stated which further disk-degenerate connection data remain part of the
+  theorem boundary.

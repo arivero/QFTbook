@@ -11,62 +11,36 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume List
-
-The active compiled monograph currently has twelve public volumes, and this is
-the complete list in the order used by `monograph/tex/main.tex`.  The current
-public roster and the planned subject roster coincide at present: no Volume XIII
-or later has been launched.
-
-| Volume | Printed chapters | Title |
-| --- | ---: | --- |
-| I | 1-16 | Foundations of Local Quantum Field Theory |
-| II | 17-29 | Particles, Scattering, and Analyticity |
-| III | 30-39 | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | 40-55 | Gauge Theory, Infrared Structure, and Anomalies |
-| V | 56-70 | Conformal Field Theory |
-| VI | 71-84 | Integrable Quantum Field Theory |
-| VII | 85-101 | Supersymmetric Quantum Field Theory |
-| VIII | 102-112 | Topological and Cohomological Quantum Field Theory |
-| IX | 113-123 | Global Structure, Phases, and Extended Operators |
-| X | 124-135 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | 136-146 | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | 147-157 | Quantum Field Theory in Curved Spacetime and Background Fields |
-
-## Complete Active Public Volume Table
+## Complete Active Volume Roster
 
 The compiled public manuscript currently consists of exactly twelve active
-reader-facing volumes.  The table below is the complete roster in the printed
-order used by `monograph/tex/main.tex`; there are no additional active public
-volumes outside it.  The chapter ranges are continuous printed chapter numbers,
-and the counts are counts of `\chapter` entries in the compiled PDF, not raw
-`\input` lines.  Volume IV also inputs the spinor-convention source as a
-section inside Chapter 40.  The detailed chapter map later in this README
-expands every row.
+reader-facing volumes.  The table below is the full roster, in the order used
+by `monograph/tex/main.tex`; there are no active public volumes outside this
+list.  Chapter ranges are continuous printed chapter numbers, and counts are
+counts of printed `\chapter` entries, not raw `\input` lines.  Volume IV also
+inputs the spinor-convention source as a section inside Chapter 40.
 
-| Volume | Chapter range | Count | Title | Role in the monograph | Assembly file |
+| Volume | Chapters | Count | Title | Scope | Assembly file |
 | --- | ---: | ---: | --- | --- | --- |
-| I | 1-16 | 16 | Foundations of Local Quantum Field Theory | Local fields, Wightman and algebraic data, Euclidean reconstruction, path integrals, and spectral representations. | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
-| II | 17-29 | 13 | Particles, Scattering, and Analyticity | Haag--Ruelle scattering, LSZ, particles, bound states, resonances, analyticity, crossing, and dispersion theory. | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
-| III | 30-39 | 10 | Renormalization, Effective Field Theory, and Critical Phenomena | 1PI actions, BPHZ, renormalized operators, Wilsonian flow, scaling limits, and effective theories. | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
+| I | 1-16 | 16 | Foundations of Local Quantum Field Theory | Local quantum data, Wightman/AQFT/OS/KS frameworks, path integrals, spectral representations, and Green functions. | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
+| II | 17-29 | 13 | Particles, Scattering, and Analyticity | Haag--Ruelle scattering, LSZ, particles, spin, helicity, bound states, resonances, crossing, and dispersion theory. | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
+| III | 30-39 | 10 | Renormalization, Effective Field Theory, and Critical Phenomena | 1PI actions, counterterms, BPHZ forests, renormalized operators, RG, Wilsonian flow, scaling limits, and EFT. | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
 | IV | 40-55 | 16 | Gauge Theory, Infrared Structure, and Anomalies | Spinors, gauge fixing, BV, QED, Yang--Mills, QCD, jets, anomalies, and the Standard Model as a hybrid QFT. | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
 | V | 56-70 | 15 | Conformal Field Theory | Conformal representation theory, radial quantization, OPE, light-ray observables, 2D CFT, Liouville theory, and boundary CFT. | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
 | VI | 71-84 | 14 | Integrable Quantum Field Theory | Factorized scattering, Bethe ansatz, form factors, TBA, integrable RG flows, and exact two-dimensional examples. | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
-| VII | 85-101 | 17 | Supersymmetric Quantum Field Theory | Supersymmetry algebras, superfields, supersymmetric gauge dynamics, Seiberg--Witten theory, 2D/3D/6D examples, planar N=4 SYM, and localization. | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
+| VII | 85-101 | 17 | Supersymmetric Quantum Field Theory | Supersymmetry algebras, superfields, gauge dynamics, Seiberg--Witten theory, lower-dimensional examples, planar N=4 SYM, and localization. | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
 | VIII | 102-112 | 11 | Topological and Cohomological Quantum Field Theory | Metric independence, bordism functoriality, BF and Chern--Simons theory, cohomological theories, twists, and state-sum models. | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
 | IX | 113-123 | 11 | Global Structure, Phases, and Extended Operators | Global forms, higher-form symmetry, extended operators, confinement diagnostics, anomaly inflow, defects, and categorical symmetry. | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
-| X | 124-135 | 12 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | KMS states, real-time formalisms, transport, hydrodynamics, kinetic theory, anomalous transport, and thermal gauge theory. | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
+| X | 124-135 | 12 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | KMS states, finite-temperature path integrals, Schwinger--Keldysh theory, transport, hydrodynamics, kinetic theory, and thermal gauge theory. | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
 | XI | 136-146 | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | Constructive models, reflection positivity, continuum limits, lattice gauge theory, rigorous RG, stochastic quantization, and numerical regulators. | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
 | XII | 147-157 | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | Locally covariant QFT, Hadamard states, stress tensors, Unruh and Hawking effects, index theory, microlocal methods, and semiclassical backreaction. | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
-There is no active public Volume XIII or later at present.  Possible future
-subject splits remain planning material until they are added to
-`monograph/tex/main.tex` and to this README.  If a future subject volume is
-launched, update this list, `monograph/tex/main.tex`, the frontmatter volume
-guide, and the detailed chapter map in the same pass.
-
-Draft files, deprecated files, source transcriptions, local reference files,
-and planning notes are not additional public volumes.
+These twelve rows are the complete list of launched public volumes.  Possible
+future subject splits remain planning material until they are added to
+`monograph/tex/main.tex`, `monograph/tex/frontmatter_volume_dependency_guide.tex`,
+and this README in the same pass.  Draft files, deprecated files, source
+transcriptions, local reference files, and planning notes are not additional
+public volumes.
 
 ## Repository Layout
 
