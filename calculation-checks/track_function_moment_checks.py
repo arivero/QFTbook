@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Finite-kernel checks for track-function RG identities.
 
-The monograph proves the normalization and first-moment identities for the
-paired real--virtual track-function evolution in a finite-kernel model.  This
-script verifies the same identities for discrete rational track measures and
-discrete splitting kernels.
+The monograph derives normalization, first-moment, and moment-tower identities
+for the paired real--virtual track-function evolution in a finite-kernel
+model.  This script verifies the same identities for discrete rational track
+measures and discrete splitting kernels.
 """
 
 from __future__ import annotations
 
 from collections import defaultdict
 from fractions import Fraction
+from math import comb
 from typing import Dict, Iterable, Mapping, Tuple
 
 Species = str
@@ -29,6 +30,10 @@ def norm(dist: Distribution) -> Fraction:
 
 def moment(dist: Distribution) -> Fraction:
     return sum(x * weight for x, weight in dist.items())
+
+
+def moment_power(dist: Distribution, power: int) -> Fraction:
+    return sum((x**power) * weight for x, weight in dist.items())
 
 
 def convolution_gain(
@@ -85,6 +90,27 @@ def predicted_moment_derivative(
     return total
 
 
+def predicted_moment_tower_derivative(
+    species: Species,
+    tracks: Mapping[Species, Distribution],
+    kernels: Mapping[Species, Iterable[Kernel]],
+    power: int,
+) -> Fraction:
+    parent_moment = moment_power(tracks[species], power)
+    total = Fraction(0)
+    for daughter_left, daughter_right, z, rate in kernels[species]:
+        composed = sum(
+            Fraction(comb(power, a))
+            * (z**a)
+            * ((Fraction(1) - z) ** (power - a))
+            * moment_power(tracks[daughter_left], a)
+            * moment_power(tracks[daughter_right], power - a)
+            for a in range(power + 1)
+        )
+        total += rate * (composed - parent_moment)
+    return total
+
+
 def check_normalization_and_moment_identities() -> None:
     tracks = {
         "q": {Fraction(1): Fraction(1, 3), Fraction(1, 2): Fraction(2, 3)},
@@ -112,6 +138,12 @@ def check_normalization_and_moment_identities() -> None:
             moment(deriv),
             predicted_moment_derivative(species, tracks, kernels),
         )
+        for power in range(5):
+            assert_equal(
+                f"{species} moment-tower derivative power={power}",
+                moment_power(deriv, power),
+                predicted_moment_tower_derivative(species, tracks, kernels, power),
+            )
 
 
 def main() -> None:

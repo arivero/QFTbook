@@ -1490,8 +1490,9 @@ Current checks:
   check of leading soft covariant-derivative decoupling, and the triangular
   logarithmic phase-space area behind the massive-vector Sudakov chart.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
-  track-function RG identities, verifying preservation of normalization and
-  the first-moment evolution formula for discrete track measures.
+  track-function RG identities, verifying preservation of normalization, the
+  first-moment evolution formula, and the full finite moment-tower formula
+  for discrete track measures.
 - `track_observable_lift_checks.py`: exact rational checks for the finite
   track-observable lift, verifying diagonal two-point terms with second track
   moments, enumeration of the lifted two-particle energy polynomial, and the

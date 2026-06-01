@@ -80,6 +80,12 @@ The chapter establishes:
 - a finite-kernel track-function evolution datum and a worked moment-coordinate
   derivation proving normalization preservation and the first-moment evolution
   formula under paired real--virtual track-function RG;
+- Definition `def:track-function-operator-datum`, defining the track function
+  itself as a renormalized gauge-invariant collinear source matrix element
+  paired with a charged-track energy-fraction measurement operator;
+- a track-function moment-generating equation and full moment-tower RG
+  identity, making clear why a single average charged fraction is not a stable
+  replacement for the nonperturbative track distribution;
 - Definition `def:finite-track-observable-lift`, defining the finite lift of
   calorimetric energy polynomials to track-based observables by conditional
   expectation over track functions, including the diagonal moment terms;
@@ -280,6 +286,11 @@ The chapter establishes:
 - 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
   RG datum, proved normalization preservation and first-moment evolution, and
   added `calculation-checks/track_function_moment_checks.py`.
+- 2026-06-01 issue #526/#630 track-operator/moment-tower pass: promoted the
+  track function from a named nonperturbative input to an explicit
+  gauge-invariant collinear operator datum with a charged-track measurement
+  insertion, derived the moment-generating RG equation and moment tower, and
+  extended `calculation-checks/track_function_moment_checks.py`.
 - 2026-06-01 issue #526 track-observable lift pass: added the finite
   track-lift definition for energy-measure polynomials, exposed the diagonal
   second-moment term and collinear composition law, and added

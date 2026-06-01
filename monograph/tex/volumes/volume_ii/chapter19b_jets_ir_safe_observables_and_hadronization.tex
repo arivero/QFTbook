@@ -1684,6 +1684,69 @@ operator definition; when it has a density we write the same symbol for that
 density.  Perturbative coefficients are then convolved with \(T_i\) rather
 than evaluated with a purely partonic charged-energy measurement.
 
+\begin{definition}[Track-function operator datum]
+\label{def:track-function-operator-datum}
+Fix a lightlike collinear direction \(n\), the conjugate vector \(\bar n\)
+with \(n\cdot\bar n=2\), and the SCET operator conventions of
+Definition~\ref{def:scet-two-jet-operator-datum}.  A track-function operator
+datum for a parton species \(i\) consists of:
+\begin{enumerate}
+  \item a gauge-invariant collinear source \(\mathcal O_i\), for example
+  \(\chi_n\) for a quark species or
+  \(\mathcal B_{n\perp}^{\mu}\) for a gluon species, together with the spin,
+  color, and polarization averaging convention used to normalize the source;
+  \item a detector weight \(w_{\rm tr}\) on stable color-singlet final-state
+  particle species, with \(w_{\rm tr}=1\) for charged tracks and
+  \(w_{\rm tr}=0\) for neutral particles in the idealized charged-track
+  observable;
+  \item a positive charged collinear momentum operator
+  \(\bar n\cdot\widehat P_{\rm tr}\) obtained by weighting the stable
+  final-state momentum operator with \(w_{\rm tr}\), and the total collinear
+  momentum operator \(\bar n\cdot\widehat P_{\rm col}\);
+  \item the bounded measurement operator
+  \[
+    \widehat x_{\rm tr}
+    =
+    \frac{\bar n\cdot\widehat P_{\rm tr}}
+         {\bar n\cdot\widehat P_{\rm col}}
+  \]
+  on the positive-energy sector created by \(\mathcal O_i\), where
+  \(0\leq \widehat x_{\rm tr}\leq1\);
+  \item a regulator and subtraction scheme \(\mathcal R_\mu\) for the
+  light-ray collinear matrix element and for the endpoint singularities of
+  the measurement insertion.
+\end{enumerate}
+For every test function \(h\) on \([0,1]\), the track function is the
+renormalized distribution defined by
+\begin{equation}
+  \int_0^1\dd x\,h(x)T_i(x,\mu;\mathcal R)
+  =
+  \frac{1}{\mathcal N_i(\mu;\mathcal R)}
+  \bra{\vac}
+  \overline{\mathcal O}_i(0)\,
+  h_{\mathcal R_\mu}(\widehat x_{\rm tr})\,
+  \mathcal O_i(0)
+  \ket{\vac}_{\mathcal R_\mu}.
+  \label{eq:track-function-test-pairing}
+\end{equation}
+The normalization factor \(\mathcal N_i\) is fixed by the requirement that
+the pairing with \(h=1\) equals \(1\).  At finite regulator this is the
+spectral distribution of a bounded charged-energy fraction in the inclusive
+collinear state created by the gauge-invariant source.  In continuum QCD it
+is a renormalized distributional matrix element; its value is meaningful only
+after the source, detector weight, regulator, and subtraction scheme have
+all been specified.
+\end{definition}
+
+This definition is the nonperturbative QCD object associated with the chosen
+collinear source.  The parton label \(i\) labels that source in the
+factorized approximation.  Gauge invariance enters through the Wilson-line
+building blocks \(\chi_n\) and \(\mathcal B_{n\perp}\), while the
+charged-track measurement is a color-singlet final-state measurement.  The
+renormalization of \eqref{eq:track-function-test-pairing} is a separate datum
+from the renormalization of the hard partonic coefficient into which the
+track function is inserted.
+
 \begin{definition}[Paired track-function evolution datum]
 \label{def:paired-track-function-evolution}
 Fix a renormalization scale \(\mu\).  A finite-kernel track-function evolution
@@ -1777,6 +1840,49 @@ The gain term therefore contributes
 \]
 Using unit normalization and subtracting the loss term
 \(\Gamma_i m_i\) gives \eqref{eq:track-function-first-moment-rg}.
+
+The same finite-kernel equation controls the whole moment tower.  Define
+\[
+  m_i^{(r)}(\mu)=\int_0^1\dd x\,x^rT_i(x,\mu),
+  \qquad
+  m_i^{(0)}=1,
+\]
+and, when the exponential test function is admissible in the chosen
+distributional scheme,
+\[
+  M_i(\nu,\mu)=\int_0^1\dd x\,e^{\nu x}T_i(x,\mu).
+\]
+Pairing \eqref{eq:paired-track-function-evolution} with \(e^{\nu x}\) gives
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}M_i(\nu,\mu)
+  =
+  \sum_{j,k}\int_0^1\dd z\,K_{i\to jk}(z,\mu)
+  \left[
+    M_j(z\nu,\mu)M_k((1-z)\nu,\mu)-M_i(\nu,\mu)
+  \right].
+  \label{eq:track-function-generating-rg}
+\end{equation}
+Expanding both sides in powers of \(\nu\) yields, for every \(r\geq0\),
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}m_i^{(r)}
+  =
+  \sum_{j,k}\int_0^1\dd z\,K_{i\to jk}(z,\mu)
+  \left[
+    \sum_{a=0}^{r}
+    \binom{r}{a}
+    z^a(1-z)^{r-a}
+    m_j^{(a)}m_k^{(r-a)}
+    -m_i^{(r)}
+  \right].
+  \label{eq:track-function-moment-tower-rg}
+\end{equation}
+The \(r=0\) member is normalization preservation and the \(r=1\) member is
+\eqref{eq:track-function-first-moment-rg}.  For \(r\geq2\) the evolution of a
+single moment depends on lower and equal moments of daughter species.  This
+is why track-based jet observables require a genuine distributional
+nonperturbative input, or an equivalently complete moment sequence in a
+specified scheme; a single average charged fraction is not stable under
+collinear renormalization.
 
 Track functions are therefore nonperturbative inputs with perturbative
 evolution, not substitutes for IRC safety.  The point is sharper than a
