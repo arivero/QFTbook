@@ -115,12 +115,39 @@ def check_right_wedge_lightlike_half_sided_sign() -> None:
             raise AssertionError("t > 0 should scale the translate outward")
 
 
+def check_physical_light_ray_generator_sign() -> None:
+    """Check the mostly-plus translation sign for the inward light-ray group."""
+
+    # Sample future momenta p=(p^0,p^1) in the closed future cone.  With
+    # U(x)=exp(i x^mu p_mu) and e_+=(1,1), the phase coefficient is
+    # e_+^mu p_mu=-p^0+p^1=-(p^0-p^1).  The positive Stone generator attached
+    # to the physical inward translation U(a e_+) is therefore P_+=P^0-P^1.
+    future_momenta = [(1.0, 0.0), (2.0, 1.1), (2.4, -1.9), (3.0, 3.0)]
+    for energy, px in future_momenta:
+        if energy < abs(px):
+            raise AssertionError("sample momentum is not in the future cone")
+        p_plus = energy - px
+        covariant_pairing = -energy + px
+        if p_plus < -1e-12:
+            raise AssertionError("future cone should give non-negative P_+")
+        assert_close(covariant_pairing, -p_plus, "e_+ covariant pairing")
+
+    # The same boost convention used for modular flow scales e_+ by
+    # exp(-2*pi*t) under Lambda_R(-2*pi*t).
+    for t in (-0.3, 0.0, 0.4):
+        scaled0, scaled1 = real_boost(-2 * math.pi * t, 1.0, 1.0)
+        scale = math.exp(-2 * math.pi * t)
+        assert_close(scaled0, scale, "boosted e_+ time component")
+        assert_close(scaled1, scale, "boosted e_+ space component")
+
+
 def main() -> None:
     check_complex_boost_imaginary_part()
     check_ipi_maps_right_to_left_wedge()
     check_right_left_wedge_spacelike_separation()
     check_detector_detailed_balance_sign()
     check_right_wedge_lightlike_half_sided_sign()
+    check_physical_light_ray_generator_sign()
     print("All Unruh complex-boost geometry and detailed-balance checks passed.")
 
 

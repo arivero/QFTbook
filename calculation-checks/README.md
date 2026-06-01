@@ -148,7 +148,9 @@ Current checks:
   imaginary part, the \(i\pi\) right-to-left wedge map, right/left wedge
   spacelike separation, detector detailed-balance sign, and the right-wedge
   lightlike half-sided-inclusion sign in the convention
-  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\).
+  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\), together with the mostly-plus
+  physical light-ray translation sign
+  \(U(ae_+)=\exp[-ia(P^0-P^1)]\).
 - `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,

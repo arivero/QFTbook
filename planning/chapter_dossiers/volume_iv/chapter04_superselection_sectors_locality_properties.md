@@ -129,6 +129,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\sigma_t^{W_R}\mathcal R(W_R(a))
    =\mathcal R(W_R(e^{-2\pi t}a))\), so the inward future-lightlike translate
   is left half-sided in the stated definition.
+- Identifies the physical light-ray translation which realizes the abstract
+  Borchers--Wiesbrock affine representation in a Poincare-covariant net:
+  with \(U(x)=\exp(i x^\mu P_\mu)\) and mostly-plus metric,
+  \(U(ae_+)=\exp[-ia(P^0-P^1)]\) and \(P^0-P^1\ge0\) follows directly from
+  the joint spectrum condition.  This fixes the Stone sign convention without
+  replacing the converse Borchers--Wiesbrock reconstruction theorem.
 - Adds a finite-dimensional diagnostic for half-sided modular inclusions: a
   finite-dimensional injective endomorphism of the subspace \(\mathcal N\) is
   automatically onto, so half-sided modular inclusion collapses to ordinary
@@ -183,7 +189,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   complex-boost and wedge-geometry signs used here and in Volume XII,
   including the \(i\pi\) right-to-left wedge map and the lightlike
   half-sided-inclusion convention
-  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\).
+  \(\Delta^{it}=U(\Lambda_R(-2\pi t))\), and the mostly-plus sign
+  \(U(ae_+)=\exp[-ia(P^0-P^1)]\) for the positive physical light-ray
+  generator.
 
 ## Audit Notes
 
@@ -303,6 +311,15 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   two-sided in finite dimension, isolating the nontrivial
   Borchers--Wiesbrock content in infinite-dimensional standard-subspace
   geometry rather than in the displayed commutator.
+- 2026-06-01 physical light-ray translation pass: aligned the
+  Borchers--Wiesbrock Stone sign with the monograph's mostly-plus Poincare
+  convention, defined \(P_+^{\rm phys}=P^0-P^1\), proved positivity from the
+  joint spectrum condition, and showed that \(U(ae_+)\) satisfies the same
+  affine modular covariance as the left half-sided version of the abstract
+  translation reconstructed from a half-sided modular inclusion.  The pass
+  also corrected the right/left dilation-factor assignment in the quoted
+  Borchers--Wiesbrock statement so it matches the chapter's definition of
+  half-sidedness.
 - 2026-05-31 DHR kink-sector diagnostic pass: inserted a constructive
   broken-phase test showing that weak far-tail order-parameter limits are
   incompatible with bounded-region DHR localization unless the two asymptotic
