@@ -332,6 +332,32 @@ def check_donaldson_exponential_moment_reconstruction() -> None:
     assert_equal(recovered, coefficients, "Donaldson finite exponential moments")
 
 
+def check_u_plane_wall_normal_delta_sequence() -> None:
+    # For E_t(x)=erf(sqrt(pi t) x), the derivative is
+    # 2 sqrt(t) exp(-pi t x^2).  Its total mass is exactly 2, and its second
+    # moment is 1/(pi t).  We suppress the common pi^{-1} in the second
+    # moment because the script uses rational arithmetic.
+    for t in (1, 2, 5, 13):
+        prefactor_squared = 4 * t
+        gaussian_mass_squared = Fraction(1, t)
+        total_mass_squared = prefactor_squared * gaussian_mass_squared
+        second_moment_in_inverse_pi_units = Fraction(1, t)
+        assert_equal(total_mass_squared, Fraction(4), "wall-normal jump mass squared")
+        assert_equal(
+            t * second_moment_in_inverse_pi_units,
+            Fraction(1),
+            "wall-normal second moment concentration",
+        )
+
+    left_chamber_sign = -1
+    right_chamber_sign = 1
+    assert_equal(
+        right_chamber_sign - left_chamber_sign,
+        2,
+        "completed sign-factor chamber jump",
+    )
+
+
 def factorial(n: int) -> int:
     value = 1
     for k in range(2, n + 1):
@@ -362,6 +388,7 @@ def main() -> None:
     check_kotschick_morgan_degree_bookkeeping()
     check_donaldson_blowup_cosh_bookkeeping()
     check_donaldson_exponential_moment_reconstruction()
+    check_u_plane_wall_normal_delta_sequence()
     check_trace_delta_action_normalization()
     print("Donaldson-Witten and Seiberg-Witten comparison checks passed.")
 

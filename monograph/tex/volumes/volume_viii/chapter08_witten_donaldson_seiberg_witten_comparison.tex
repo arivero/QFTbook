@@ -1585,6 +1585,53 @@ monopole/dyon and weak-coupling effective theories.  They are not arbitrary
 subtractions; they are part of the declared low-energy regularization datum.
 \end{definition}
 
+\paragraph{Wall-normal factor in the theta kernel.}
+Only one elementary analytic mechanism is needed to understand why the
+\(u\)-plane wall crossing is localized on fluxes satisfying the wall
+equation.  Fix a lattice flux
+\[
+  \lambda\in\Gamma+\frac{w}{2}
+\]
+and write
+\[
+  x_\lambda(\omega)=\langle\lambda,\omega\rangle
+\]
+for its component along the positive period ray.  The complete
+Siegel-Narain kernel contains smooth factors in \(u,S\), and a wall-normal
+factor whose local model is
+\begin{equation}
+  E_t(x)=\operatorname{erf}(\sqrt{\pi t}\,x),
+  \qquad t>0.
+  \label{eq:u-plane-wall-normal-erf}
+\end{equation}
+The parameter \(t\) is proportional to the positive imaginary part of the
+Abelian coupling in the normal direction.  This model records the only
+feature relevant for the wall jump: as \(t\to\infty\),
+\[
+  E_t(x)\to \operatorname{sgn}(x)
+  \qquad(x\ne0),
+\]
+while
+\begin{equation}
+  \frac{dE_t}{dx}
+  =
+  2\sqrt t\,\exp(-\pi t x^2)
+  \label{eq:u-plane-wall-normal-delta-sequence}
+\end{equation}
+is a delta sequence of total mass \(2\):
+\[
+  \int_{-\infty}^{\infty}2\sqrt t\,\exp(-\pi t x^2)\,\dd x=2.
+\]
+Thus changing the chamber by moving \(\omega\) through
+\(x_\lambda(\omega)=0\) changes the corresponding completed sign factor by
+exactly \(2\).  Flux sectors with \(x_\lambda(\omega)\ne0\) remain smooth in
+\(\omega\); the only singular chamber dependence comes from the codimension
+one locus \(x_\lambda=0\).  This is the local analytic content behind the
+phrase that wall crossing is supported on reducible fluxes.  The global
+statement still requires the remaining factors in the \(u\)-plane integrand,
+the singular-fiber counterterms, and the determinant-line orientation
+matching to be controlled.
+
 \begin{controlledapproximation}[Wall crossing from the \(u\)-plane boundary]
 \label{ca:u-plane-wall-crossing-boundary}
 Assume that the Abelian low-energy description is valid on
@@ -1598,8 +1645,11 @@ discontinuity of \(Z_u^w\) is a boundary term supported by the flux sector
 phase are matched.
 
 Only the positive/negative decomposition of the lattice vector in
-\(\Psi_{\Gamma,w,\omega}\) changes discontinuously at a wall.  Away from
-\(\lambda_+=0\), the Gaussian factor in the theta kernel gives a smooth
+\(\Psi_{\Gamma,w,\omega}\) changes discontinuously at a wall.  The local
+model \eqref{eq:u-plane-wall-normal-erf}--\eqref{eq:u-plane-wall-normal-delta-sequence}
+shows that the chamber jump of a completed sign factor is a delta-supported
+normal contribution with total jump \(2\).  Away from \(\lambda_+=0\), the
+Gaussian factor in the theta kernel gives a smooth
 \(\omega\)-dependent integral.  Crossing the wall changes the prescription
 for the sector with \(\lambda_+=0\); differentiating with respect to the
 period point produces a total \(\bar\partial\)-term on the \(u\)-plane.  By

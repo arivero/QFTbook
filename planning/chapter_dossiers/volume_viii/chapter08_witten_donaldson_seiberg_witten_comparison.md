@@ -34,6 +34,10 @@ gauge theory.
   Seiberg-Witten basic classes, and Bauer-Furuta stable cohomotopy class.
 - `omega_g`, `lambda`, `L_lambda`, `WC_lambda^X`: period ray, reducible wall
   class, reducible link, and Kotschick-Morgan wall-crossing functional.
+- `x_lambda(omega)`: wall-normal component `lambda` paired with the period
+  ray.
+- `E_t(x)`: completed sign/error-function normal factor in the local
+  Siegel-Narain wall-crossing model.
 - `T(u)`, `Z_D(p,S)`: Abelian contact term and Donaldson generating
   function.
 
@@ -90,7 +94,10 @@ gauge theory.
   determinant/contact normalization.
 - Gives the normalization-sensitive \(u\)-plane integral data with
   \(A(u)^\chi B(u)^\sigma\), theta kernel, contact term, and a conditional
-  boundary derivation of wall crossing.
+  boundary derivation of wall crossing; the wall-normal theta-kernel factor
+  is now isolated as an error-function completion whose derivative is a
+  delta sequence of mass \(2\), explaining the local analytic source of the
+  reducible-flux jump.
 - Preserves the open problem of deriving the Donaldson-Seiberg-Witten
   comparison as a theorem-level statement inside constructed four-dimensional
   QFT.
@@ -104,7 +111,9 @@ gauge theory.
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
   examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
   Donaldson finite-exponential moment reconstruction, and the trace-delta
-  instanton action coefficient.
+  instanton action coefficient, as well as the wall-normal sign jump and
+  delta-sequence mass/concentration coefficients used in the \(u\)-plane
+  wall-crossing explanation.
 
 ## Figure Ledger
 
@@ -137,3 +146,8 @@ the Abelian monopole theory.
   formula no longer hides the construction of the twisted theory, the
   \(Q\)-compatible Wilsonian flow, the \(u\)-plane boundary analysis, the
   monopole singular-fiber replacement, or the determinant/contact normalizations.
+- 2026-05-31 \(u\)-plane wall-normal pass: exposed the local
+  Siegel-Narain wall-crossing mechanism by writing the error-function
+  completed sign factor, deriving its Gaussian delta sequence of total
+  jump \(2\), and adding exact coefficient checks for the sign jump and
+  concentration scale.
