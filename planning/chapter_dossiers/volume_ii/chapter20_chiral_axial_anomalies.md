@@ -38,8 +38,9 @@
   and Riemannian geometry" I--III for the boundary spectral correction.  The
   manuscript states the hypotheses and formulas used.  The 2026-05-30
   quoted-theorem expansion now exposes the part of the closed-index mechanism
-  used by the anomaly calculation: McKean--Singer cancellation, the
-  heat-kernel/local-index coefficient boundary, and the four-form
+  used by the anomaly calculation: McKean--Singer cancellation, the local
+  Clifford heat-kernel coefficient from the Lichnerowicz endomorphism, and
+  the four-form
   normalization
   \(\operatorname{tr}_R(F\wedge F)/(8\pi^2)
   =\epsilon^{\mu\nu\rho\sigma}\operatorname{tr}_R(F_{\mu\nu}F_{\rho\sigma})\,d^4x/(32\pi^2)\).
@@ -64,7 +65,8 @@
   power, and one-loop RG exponent.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
-  the closed four-dimensional Dirac-index coefficient, the six-form
+  the closed four-dimensional Dirac-index coefficient, the local Clifford
+  heat-kernel coefficient, the six-form
   \(\widehat A\,\operatorname{ch}\) coefficients, the \(2\pi i\) inflow
   conversion, Standard Model hypercharge sums, and \(SU(N)\)
   fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -176,8 +178,11 @@
   heat-kernel limit of finite-mode Berezinian traces and gives the local
   anomaly density.  Its integral is identified with a Fredholm index only
   under the closed spin Dirac hypotheses of the Atiyah--Singer theorem; in the
-  flat tangent specialization this is tied to the McKean--Singer supertrace
-  and the Chern--Weil normalization
+  flat tangent specialization this is tied to the McKean--Singer supertrace,
+  the local Clifford heat-kernel coefficient
+  \((4\pi)^{-2}\frac12(\frac12)^2
+   \operatorname{tr}_{\rm spin}(\Gamma_5\Gamma\Gamma\Gamma\Gamma)\), and the
+  Chern--Weil normalization
   \[
     \operatorname{index}\mathcal D_{A,+}
     =

@@ -28,7 +28,8 @@ Current checks:
   \(\pi^0\gamma\gamma\) normalization.
 - `anomaly_polynomial_descent_checks.py`: exact rational checks for the
   index-normalized anomaly-polynomial and inflow sections, including the
-  six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
+  closed four-dimensional index coefficient, the local Clifford heat-kernel
+  coefficient, six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
   \(2\pi\ii\) conversion to effective-action inflow, universal
   Chern--Weil transgression coefficients through the five-form case,
   the Abelian descent coefficient, one-generation Standard Model

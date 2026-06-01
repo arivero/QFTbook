@@ -9,6 +9,9 @@ inflow sections:
 * the closed four-dimensional Dirac-index normalization
   [ch(E)]_4 = tr(F wedge F)/(8 pi^2)
   = epsilon tr(F F) d^4x/(32 pi^2);
+* the local Clifford heat-kernel coefficient
+  (4 pi)^(-2) (1/2) (1/2)^2 tr_spin(gamma_5 gamma gamma gamma gamma)
+  = 1/(32 pi^2);
 * the conversion 2 pi i * F^3/[6(2 pi)^3] -> i F^3/(24 pi^2);
 * the Chern-Weil transgression coefficients in the universal
   Chern-Simons representative;
@@ -66,6 +69,25 @@ def check_four_dimensional_index_density() -> None:
     assert_equal(
         "closed four-dimensional index component coefficient",
         ch2_form_coefficient * component_wedge_factor,
+        Fraction(1, 32),
+    )
+
+
+def check_local_clifford_heat_coefficient() -> None:
+    # The pure gauge term in the heat parametrix is
+    # (4 pi)^(-2) * (1/2 from exp(tE)) * (1/2)^2 from
+    # E_F=(1/2) gamma^{mu nu}F_{mu nu} * tr_spin(gamma_5 gamma gamma gamma gamma).
+    heat_prefactor_without_pi = Fraction(1, 16)
+    exponential_second_order = Fraction(1, 2)
+    curvature_endomorphism_square = Fraction(1, 4)
+    spin_trace_epsilon_coefficient = Fraction(4)
+
+    assert_equal(
+        "local Clifford heat coefficient",
+        heat_prefactor_without_pi
+        * exponential_second_order
+        * curvature_endomorphism_square
+        * spin_trace_epsilon_coefficient,
         Fraction(1, 32),
     )
 
@@ -129,6 +151,7 @@ def check_su_n_bookkeeping() -> None:
 def main() -> None:
     check_index_polynomial_expansion()
     check_four_dimensional_index_density()
+    check_local_clifford_heat_coefficient()
     check_effective_action_conversion()
     check_chern_weil_transgression_coefficients()
     check_standard_model_hypercharge_sums()

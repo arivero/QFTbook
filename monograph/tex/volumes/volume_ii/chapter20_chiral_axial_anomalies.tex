@@ -1061,10 +1061,50 @@ eigenvalue and opposite chirality contribution.  The heat supertrace is
 therefore independent of \(t\), and the index is the small-\(t\) integral of
 the local supertrace coefficient.
 
-The local coefficient is the difficult analytic part of the index theorem.
-In the heat-kernel proof it is obtained from the Lichnerowicz formula,
-Chern--Weil invariance, and Getzler rescaling of the Clifford variables.  With
-the chapter's anti-Hermitian curvature convention
+The local coefficient is the analytic part of the index theorem.  In the
+heat-kernel proof it is obtained from the Lichnerowicz formula, Chern--Weil
+invariance, and Getzler rescaling of the Clifford variables.  The pure gauge
+coefficient can be checked locally, and this check fixes the convention used
+in the anomaly density.  Choose normal coordinates at a point \(x\), trivialize
+\(E_R\) so that the connection one-form vanishes at \(x\), and write
+\(\Gamma^{\mu\nu}=\frac12[\Gamma^\mu,\Gamma^\nu]\).  The gauge-curvature
+endomorphism in the square of the Dirac operator is
+\[
+  \mathcal E_F(x)
+  =
+  \frac12\Gamma^{\mu\nu}F_{R,\mu\nu}(x).
+\]
+Terms with fewer than four Clifford matrices have zero
+\(\Gamma_5\)-supertrace.  The first pure gauge term that survives in the
+diagonal heat-kernel parametrix is therefore
+\[
+  (4\pi t)^{-2}
+  \frac{t^2}{2}
+  \operatorname{tr}_{\mathrm{spin},R}
+  \left(\Gamma_5\mathcal E_F^2\right).
+\]
+Using
+\[
+  \operatorname{tr}_{\mathrm{spin}}
+  \left(\Gamma_5\Gamma^{\mu\nu}\Gamma^{\rho\sigma}\right)
+  =
+  4\epsilon^{\mu\nu\rho\sigma},
+  \qquad \epsilon^{0123}=+1,
+\]
+one obtains
+\[
+  (4\pi)^{-2}\frac12\frac14\,
+  4\epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_R(F_{R,\mu\nu}F_{R,\rho\sigma})
+  =
+  \frac{1}{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_R(F_{R,\mu\nu}F_{R,\rho\sigma}).
+\]
+The spin-curvature terms in the same Getzler expansion assemble with the
+pure gauge term into the Chern--Weil form
+\(\widehat A(TM)\operatorname{ch}(E_R,\nabla^E)\).  With the chapter's
+anti-Hermitian curvature convention
 \(\mathsf F_R=-\ii F_R\), the Chern character appearing in
 Theorem~\ref{qthm:spin-dirac-index-four-dimensional} is
 \[
