@@ -1462,6 +1462,37 @@ def check_xy_tested_coordinate_logarithmic_slack_arithmetic():
         raise AssertionError("XY scalar tested coordinate lost all scale slack")
 
 
+def check_xy_tested_coordinate_edge_arithmetic():
+    # The parameter-edge estimate starts from
+    # E|Z_v-Z_u|^2 <= C d(u,v)^(2 theta) 2^(eta m).  With
+    # eta=2 zeta_XY, finite-chaos moments give the same Lp scale loss
+    # as the scalar base estimate, plus the Holder edge factor.
+    kappa = Fraction(1, 20)
+    zeta_xy = kappa
+    theta = Fraction(2, 5)
+    eta = 2 * zeta_xy
+    m = 10
+    ell = 6
+
+    l2_scale_loss = eta / 2
+    model_normalization = 4 * kappa
+    normalized_scale_slack = model_normalization - l2_scale_loss
+    edge_power = theta * ell
+
+    assert_equal(l2_scale_loss, zeta_xy, "XY scalar edge L2 scale loss")
+    assert_equal(normalized_scale_slack, 3 * kappa, "XY scalar edge normalized scale slack")
+    assert_equal(
+        normalized_scale_slack * m,
+        Fraction(3, 2),
+        "XY scalar edge sample scale exponent",
+    )
+    assert_equal(edge_power, Fraction(12, 5), "XY scalar edge Holder exponent")
+    if not normalized_scale_slack > 0:
+        raise AssertionError("XY scalar edge estimate lost all scale slack")
+    if not edge_power > 0:
+        raise AssertionError("XY scalar edge estimate has no edge decay")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -1792,6 +1823,7 @@ def main():
     check_nonlinear_pi_coordinate_kernel_input_arithmetic()
     check_xy_tested_graph_power_counting_arithmetic()
     check_xy_tested_coordinate_logarithmic_slack_arithmetic()
+    check_xy_tested_coordinate_edge_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
@@ -1802,7 +1834,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

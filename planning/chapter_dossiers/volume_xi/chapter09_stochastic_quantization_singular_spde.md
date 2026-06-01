@@ -219,6 +219,9 @@ data.
   coordinate at physical scale \(\delta\) and the logarithmic scale-loss
   parameter used to convert the marginal graph ledger into normalized
   coordinate slack \(4\kappa-\zeta_{XY}\).
+- `Z_{\epsilon,m,u}^{XY}`, `d_{\Pi,m}`: same-scale scalar tested \(XY\)
+  coordinate and physical parameter metric used for the \(XY\) edge estimate
+  in base point and test scale.
 - `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
@@ -619,9 +622,13 @@ data.
   bound
   \(\|\delta^{4\kappa}Z_{\epsilon,\delta,z}^{XY}\|_{L^p}
   =O(\delta^{4\kappa-\zeta_{XY}})\) for every
-  \(0<\zeta_{XY}<4\kappa\).  The dossier records this as the scalar tested
-  base estimate, while the full \(E_r'\)-projective and parameter-edge
-  estimates remain separate proof obligations.
+  \(0<\zeta_{XY}<4\kappa\).  The same graph estimate, combined with the
+  \(L^1\)-Lipschitz dependence of transported \(C^1\) tests on
+  \(d_{\Pi,m}\), gives the same-scale parameter-edge bound
+  \(O(2^{-(4\kappa-\zeta_{XY})m}d_{\Pi,m}(u,v)^\theta)\) after model
+  normalization.  The dossier records these as scalar tested base and edge
+  estimates; the full \(E_r'\)-projective estimate remains a separate proof
+  obligation.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -1072,6 +1079,15 @@ data maps.
   \lesssim \delta^{4\kappa-\zeta_{XY}}\).  This closes the scalar base
   estimate beneath the nonlinear \(\Pi\)-coordinate criterion and leaves the
   full \(E_r'\)-dualized parameter-edge estimate as the next analytic layer.
+- 2026-06-01 issue #608/#582 scalar \(XY\) edge pass: added the same-scale
+  parameter-edge estimate for the tested \(XY\) coordinate.  The proof
+  derives the \(L^1\)-variation of transported \(C^1\) tests under the
+  physical metric \(d_{\Pi,m}\), applies the homogeneous covariance-graph
+  estimate to the signed test difference, and obtains the normalized
+  \(2^{-(4\kappa-\zeta_{XY})m}d_{\Pi,m}(u,v)^\theta\) bound.  This advances
+  the nonlinear \(XY\) coordinate from scalar base control to scalar edge
+  control; the remaining analytic layer is the full \(E_r'\)-projective
+  model-seminorm estimate and cutoff-increment analogues.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

@@ -8919,6 +8919,108 @@ then gives
 \eqref{eq:spde-xy-tested-coordinate-normalized-slack}.
 \end{proof}
 
+\begin{proposition}[Scalar tested \(XY\) parameter-edge bound]
+\label{prop:spde-xy-tested-coordinate-parameter-edge-bound}
+Keep the hypotheses of
+Proposition~\ref{prop:spde-xy-tested-coordinate-logarithmic-scale-bound}.
+Let \(r\geq1\), \(0<\theta\leq1\), and let
+\[
+  \mathcal X_{\Pi,m}=K\times[1/2,1],
+  \qquad
+  d_{\Pi,m}((z,a),(z',a'))=2^m\|z-z'\|_{\mathfrak s}+|a-a'|.
+\]
+For \(u=(z,a)\in\mathcal X_{\Pi,m}\), put
+\[
+  \delta_u=2^{-m}a,\qquad
+  \varphi_u(a_0)
+  =
+  \delta_u^{-Q}\varphi(\mathsf D_{\delta_u}^{-1}(a_0-z)),
+  \qquad \|\varphi\|_{C^r}\leq1 .
+\]
+Define
+\[
+  Z_{\epsilon,m,u}^{XY}(\varphi)
+  =
+  \int \varphi_u(a_0)X_\epsilon(a_0)Y_\epsilon(a_0)\,\dd a_0 .
+\]
+Then, whenever \(d_{\Pi,m}(u,v)\leq1\), for every even \(p\geq2\) and
+every \(0<\zeta_{XY}<4\kappa\),
+\begin{equation}
+  \left\|
+    2^{-4\kappa m}
+    \bigl(
+      Z_{\epsilon,m,v}^{XY}(\varphi)
+      -Z_{\epsilon,m,u}^{XY}(\varphi)
+    \bigr)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_{p,\zeta_{XY},\theta}
+  2^{-(4\kappa-\zeta_{XY})m}
+  d_{\Pi,m}(u,v)^\theta .
+  \label{eq:spde-xy-tested-coordinate-edge-normalized}
+\end{equation}
+The constant is uniform in the cutoff and in \(u,v\) with centers in the
+fixed compact set.
+\end{proposition}
+
+\begin{proof}
+First record the deterministic variation of the transported test density.
+For \(r\geq1\), the map
+\[
+  (z,a)\longmapsto
+  (2^{-m}a)^{-Q}\varphi(\mathsf D_{(2^{-m}a)^{-1}}(\,\cdot-z))
+\]
+is Lipschitz from \(\mathcal X_{\Pi,m}\) to \(L^1\), uniformly in \(m\) and
+in \(\|\varphi\|_{C^1}\leq1\).  Indeed, translation by \(z\) differentiates
+the test by \(\nabla_{\mathfrak s}\varphi\) and produces the dimensionless
+factor \(2^m\|z-z'\|_{\mathfrak s}\); differentiating in the scale
+parameter \(a\in[1/2,1]\) differentiates the map
+\[
+  a^{-Q}\varphi(\mathsf D_{a^{-1}}w)
+\]
+on a compact interval.  Therefore
+\begin{equation}
+  \|\varphi_v-\varphi_u\|_{L^1}
+  \leq
+  C\,d_{\Pi,m}(u,v)
+  \leq
+  C\,d_{\Pi,m}(u,v)^\theta ,
+  \label{eq:spde-xy-test-density-lone-edge}
+\end{equation}
+because \(d_{\Pi,m}(u,v)\leq1\).  The supports of \(\varphi_u\) and
+\(\varphi_v\) lie in a common parabolic ball of radius \(C2^{-m}\).
+
+Set \(\Delta\varphi=\varphi_v-\varphi_u\).  By linearity,
+\[
+  Z_{\epsilon,m,v}^{XY}(\varphi)-Z_{\epsilon,m,u}^{XY}(\varphi)
+  =
+  \int\Delta\varphi(a_0)X_\epsilon(a_0)Y_\epsilon(a_0)\,\dd a_0 .
+\]
+The covariance-graph estimate used in
+Proposition~\ref{prop:spde-xy-tested-coordinate-logarithmic-scale-bound} is
+homogeneous in the two external test densities.  Applying it to
+\(\Delta\varphi\) in both slots, using
+\eqref{eq:spde-xy-test-density-lone-edge}, and taking
+\(\delta=2^{-m}\) gives, for every \(\eta>0\),
+\begin{equation}
+  \mathbb E
+  \left|
+    Z_{\epsilon,m,v}^{XY}(\varphi)-Z_{\epsilon,m,u}^{XY}(\varphi)
+  \right|^2
+  \leq
+  C_\eta
+  d_{\Pi,m}(u,v)^{2\theta}
+  2^{\eta m}.
+  \label{eq:spde-xy-tested-coordinate-edge-l2}
+\end{equation}
+The difference is again a sum of fourth- and second-chaos variables, so the
+finite-chaos moment bound gives its \(L^p\)-norm from the square root of
+\eqref{eq:spde-xy-tested-coordinate-edge-l2}.  Choose
+\(\eta=2\zeta_{XY}\) and multiply by the model normalization
+\(2^{-4\kappa m}\).  This proves
+\eqref{eq:spde-xy-tested-coordinate-edge-normalized}.
+\end{proof}
+
 \begin{proposition}[Nonlinear \(\Pi\)-coordinate input from projective kernel bounds]
 \label{prop:spde-nonlinear-pi-coordinate-input-from-kernels}
 Let \(K\subset\R^{1+3}\) be compact and let
