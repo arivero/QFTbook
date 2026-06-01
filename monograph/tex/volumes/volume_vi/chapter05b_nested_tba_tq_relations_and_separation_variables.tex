@@ -483,6 +483,106 @@ algebraic identity once the same Hirota gauge is used at the four adjacent
 nodes; analytic continuation, strip domains, source terms, and asymptotics
 are additional model-specific data.
 
+\section{T-Gauge and Analytic T-System Data}
+
+The Hirota equation is not by itself a spectral problem.  It is a local
+bilinear relation on a two-dimensional lattice of functions.  A transfer
+matrix, a relativistic TBA system, or a quantum spectral curve is obtained
+only after one adds the boundary conditions and analytic data that select a
+particular solution.  The first piece of bookkeeping is the gauge freedom of
+the T-system.
+
+\begin{definition}[T-gauge transformation]
+\label{def:t-system-gauge-transformation}
+Let \(g_1,g_2,g_3,g_4\) be nowhere-vanishing meromorphic functions on a shift
+domain containing the arguments used below.  For a family \(T_{a,s}(u)\), set
+\begin{equation}
+  \mathcal G_{a,s}(u)
+  =
+  g_1^{[a+s]}(u)\,
+  g_2^{[a-s]}(u)\,
+  g_3^{[-a+s]}(u)\,
+  g_4^{[-a-s]}(u),
+  \qquad
+  \widetilde T_{a,s}(u)=\mathcal G_{a,s}(u)T_{a,s}(u).
+  \label{eq:t-system-gauge-transformation}
+\end{equation}
+This transformation is called a T-gauge transformation on the chosen
+\((a,s)\)-domain.
+\end{definition}
+
+The four factors in \(\mathcal G_{a,s}\) are arranged so that every monomial
+in the Hirota equation receives the same multiplier:
+\begin{equation}
+  \mathcal G_{a,s}^{+}\mathcal G_{a,s}^{-}
+  =
+  \mathcal G_{a+1,s}\mathcal G_{a-1,s}
+  =
+  \mathcal G_{a,s+1}\mathcal G_{a,s-1}.
+  \label{eq:t-gauge-hirota-cocycle}
+\end{equation}
+For example, the \(g_1\) arguments in the first product are
+\([a+s+1]\) and \([a+s-1]\); the \(g_1\) arguments in the second and third
+products are the same two shifts in the opposite lattice directions.  The
+same check applies to \(g_2,g_3,g_4\).  Thus a T-gauge transformation maps a
+solution of \eqref{eq:nested-hirota-t-system} to another solution.  It also
+leaves the Y-functions \eqref{eq:t-to-y-definition} invariant, because the
+four \(g_i\)-shift pairs in the numerator and denominator cancel separately.
+Consequently the Y-system is a gauge-invariant shadow of the T-system, while
+the transfer matrices themselves retain gauge-dependent boundary factors.
+
+This distinction matters in applications.  The local Hirota relation says
+that adjacent rectangular representations, or adjacent Wronskian minors,
+fit together consistently.  It does not specify:
+\begin{enumerate}
+\item the allowed \((a,s)\)-domain;
+\item the boundary factors \(T_{0,s}\), \(T_{N,s}\), \(T_{a,0}\), and their
+      zeros and poles;
+\item the strip of meromorphy or cut structure in the spectral parameter;
+\item asymptotic behavior at infinity or at distinguished singular points;
+\item reality, crossing, twist, and quantum-determinant constraints;
+\item source terms introduced by physical particles, holes, defects, or
+      wrapping corrections.
+\end{enumerate}
+These items are not decorative.  They are the data that turn the Hirota
+identity into a spectral problem with a discrete set, or a controlled
+continuum family, of solutions.  Two T-systems related by
+\eqref{eq:t-system-gauge-transformation} describe the same Y-system, but they
+may place boundary divisors in different T-functions.  A statement about
+polynomiality, zero locations, or large-\(u\) normalization is therefore
+meaningful only after the gauge has been fixed.
+
+\begin{definition}[Analytic T-system datum]
+\label{def:analytic-t-system-datum}
+An analytic T-system datum on a lattice domain
+\(\mathfrak D\subset\mathbb Z^2\)
+consists of:
+\begin{enumerate}
+\item meromorphic functions \(T_{a,s}\) on a specified shift-stable spectral
+      domain, for \((a,s)\in\mathfrak D\), satisfying Hirota at interior
+      lattice points;
+\item a T-gauge equivalence class, together with a chosen gauge when
+      polynomiality or asymptotics are asserted;
+\item boundary functions and quantum-determinant factors on
+      \(\partial\mathfrak D\);
+\item the allowed zero, pole, branch-cut, and asymptotic data;
+\item the map from this analytic datum to physical charges or transfer
+      eigenvalues.
+\end{enumerate}
+\end{definition}
+
+In finite spin chains the analytic datum is often polynomial: the
+inhomogeneities, twist, representation labels, and quantum determinant fix
+the boundary factors, and Bethe equations enforce cancellation of unwanted
+poles.  In relativistic integrable QFT, the same local Hirota/Y-system
+algebra must be supplemented by strip analyticity, source terms, and
+large-rapidity asymptotics before it becomes a TBA problem.  In planar
+gauge-theory integrability, the quantum spectral curve replaces the finite
+polynomial condition by a Riemann--Hilbert type datum: sheets, cuts,
+asymptotics, gluing conditions, and quantization of charges.  The determinant
+identities in this chapter supply the local algebraic skeleton; the analytic
+T-system datum supplies the physical theory.
+
 \section{Q-Operators}
 
 A \(Q\)-operator is an operator-valued function \(Q(u)\) commuting with the

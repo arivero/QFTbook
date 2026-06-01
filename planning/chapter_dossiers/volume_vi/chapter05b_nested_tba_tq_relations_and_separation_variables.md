@@ -21,6 +21,9 @@
   \(\mathcal W^+/\mathcal W^-=a/d\) for two solutions of the same
   second-order finite-difference equation.
 - Higher-rank \(T\)-system/Hirota relation.
+- T-gauge transformations, analytic T-system data, and the distinction
+  between local Hirota algebra and the analytic/spectral data needed to
+  define a physical problem.
 - \(Q\)-operator and separation-of-variables definitions with proof boundary.
 - Trigonometric rank-one \(q\)-oscillator \(L\)-operator in explicit
   six-vertex normalization, including the local RLL identity and the Fock
@@ -40,6 +43,7 @@
 | \(Q(u)\) | Baxter polynomial or \(Q\)-operator eigenvalue |
 | \(\mathcal W[Q_1,Q_2]\) | half-shift Casoratian of two rank-one Baxter solutions |
 | \(T_{a,s}(u)\) | transfer functions in a \(T\)-system |
+| \(\mathcal G_{a,s}(u)\) | T-gauge multiplier preserving Hirota covariance |
 | \(x_\alpha\) | separated variables |
 | \(D,\mathsf a,\mathsf a^\dagger\) | q-oscillator Fock generators |
 | \(L_{\mathcal F}^{(+)}(x)\) | trigonometric rank-one q-oscillator auxiliary \(L\)-operator |
@@ -56,9 +60,13 @@
 5. The Baxter Casoratian of two rank-one solutions obeys the first-order
    transport equation \(d\,\mathcal W^+=a\,\mathcal W^-\), making explicit the
    second-solution datum behind higher-rank Wronskian \(Q\)-systems.
-6. The trigonometric rank-one q-oscillator \(L\)-operator satisfies the local
+6. T-gauge transformations multiply all three Hirota monomials by the same
+   cocycle factor and leave the Y-functions invariant; therefore analytic
+   T-system data must include gauge, boundary, divisor, cut, and asymptotic
+   information beyond the local bilinear identity.
+7. The trigonometric rank-one q-oscillator \(L\)-operator satisfies the local
    six-vertex RLL identity in the stated normalization.
-7. \(Q\)-operator and separation-of-variables constructions require
+8. \(Q\)-operator and separation-of-variables constructions require
    representation-specific completeness theorems not supplied by the RTT
    algebra alone.
 
@@ -68,8 +76,8 @@
   pole-cancellation calculation paired with this chapter.
 - `calculation-checks/nested_integrability_checks.py` verifies the nested
   Cartan-form Bethe equations, dressed-vacuum pole cancellation, QQ/Hirota
-  algebra, rank-one Baxter Casoratian transport, and the exact finite-basis
-  q-oscillator local RLL convention.
+  algebra, exact T-gauge covariance/Y-invariance, rank-one Baxter Casoratian
+  transport, and the exact finite-basis q-oscillator local RLL convention.
 
 ## Audit Notes
 
@@ -77,6 +85,10 @@
   second-solution mechanism between the scalar \(TQ\) relation and the
   higher-rank QQ-system, so the later Wronskian/QSC language has an explicit
   finite-difference prototype with a paired exact recurrence check.
+- 2026-06-01 Vol VI/T-system data pass: added T-gauge transformations and an
+  analytic T-system datum, separating the local Hirota determinant identity
+  from the boundary, divisor, cut, asymptotic, and charge data required by an
+  actual spectral problem.
 
 ## Figures
 

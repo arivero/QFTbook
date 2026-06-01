@@ -208,6 +208,58 @@ def check_hirota_to_y_system() -> None:
     assert_close("Hirota local Y-system identity", lhs, rhs)
 
 
+def check_t_system_gauge_freedom() -> None:
+    """Verify exact T-gauge covariance of Hirota and invariance of Y-functions."""
+
+    def g(which: int, shift: int) -> Fraction:
+        offsets = [5, 7, 11, 13]
+        return Fraction(shift * shift + offsets[which], 2 * offsets[which] + 1)
+
+    def gauge(a: int, s: int, shift: int = 0) -> Fraction:
+        return (
+            g(0, shift + a + s)
+            * g(1, shift + a - s)
+            * g(2, shift - a + s)
+            * g(3, shift - a - s)
+        )
+
+    def t_value(a: int, s: int, shift: int = 0) -> Fraction:
+        return Fraction((a + 5) ** 2 + 3 * (s + 4) ** 2 + 5 * (shift + 3) ** 2 + 1, 17)
+
+    def t_tilde(a: int, s: int, shift: int = 0) -> Fraction:
+        return gauge(a, s, shift) * t_value(a, s, shift)
+
+    for a in range(1, 4):
+        for s in range(-2, 3):
+            common = gauge(a, s, 1) * gauge(a, s, -1)
+            if common != gauge(a + 1, s, 0) * gauge(a - 1, s, 0):
+                raise AssertionError(f"T-gauge a-direction cocycle failed at a={a} s={s}")
+            if common != gauge(a, s + 1, 0) * gauge(a, s - 1, 0):
+                raise AssertionError(f"T-gauge s-direction cocycle failed at a={a} s={s}")
+
+            residual = (
+                t_value(a, s, 1) * t_value(a, s, -1)
+                - t_value(a + 1, s, 0) * t_value(a - 1, s, 0)
+                - t_value(a, s + 1, 0) * t_value(a, s - 1, 0)
+            )
+            residual_tilde = (
+                t_tilde(a, s, 1) * t_tilde(a, s, -1)
+                - t_tilde(a + 1, s, 0) * t_tilde(a - 1, s, 0)
+                - t_tilde(a, s + 1, 0) * t_tilde(a, s - 1, 0)
+            )
+            if residual_tilde != common * residual:
+                raise AssertionError(f"T-gauge Hirota covariance failed at a={a} s={s}")
+
+            y_value = t_value(a, s + 1) * t_value(a, s - 1) / (
+                t_value(a + 1, s) * t_value(a - 1, s)
+            )
+            y_tilde = t_tilde(a, s + 1) * t_tilde(a, s - 1) / (
+                t_tilde(a + 1, s) * t_tilde(a - 1, s)
+            )
+            if y_tilde != y_value:
+                raise AssertionError(f"T-gauge Y-invariance failed at a={a} s={s}")
+
+
 def check_baxter_casoratian_transport() -> None:
     """Check the finite-difference Wronskian transport for two Baxter solutions."""
 
@@ -375,6 +427,7 @@ def main() -> None:
     check_dressed_vacuum_pole_factorization()
     check_qq_system()
     check_hirota_to_y_system()
+    check_t_system_gauge_freedom()
     check_baxter_casoratian_transport()
     check_qoscillator_l_operator_rll()
     print("All nested-integrability calculation checks passed.")
