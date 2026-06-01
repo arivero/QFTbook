@@ -492,6 +492,52 @@ exchange factors cancel in the trivial representation channel.  Thus the
 locality statement for observables is recovered as the invariant part of the
 charged-field exchange mechanism.
 
+\paragraph{Neutral-channel locality in the reconstructed core.}
+The preceding cancellation is a categorical statement before it is an
+operator-closure theorem.  Let \(V_\rho\) and \(V_\sigma\) be the finite
+charged multiplet spaces carrying the compact-group representations
+\(D_\rho\) and \(D_\sigma\).  The projection onto the neutral component of the
+product multiplet is
+\begin{equation}
+  P_{\mathbf1}^{\rho,\sigma}
+  =
+  \int_G D_\rho(g)\otimes D_\sigma(g)\,\dd g
+  \in \operatorname{End}(V_\rho\otimes V_\sigma).
+  \label{eq:dr-neutral-channel-projector}
+\end{equation}
+For irreducible \(\rho,\sigma\), Schur orthogonality says that
+\(P_{\mathbf1}^{\rho,\sigma}=0\) unless
+\(\sigma\simeq\bar\rho\); in the conjugate case its image is the
+one-dimensional tensor-unit summand
+\[
+  \operatorname{Hom}_G(\mathbb C,V_\rho\otimes V_{\bar\rho}) .
+\]
+Applying \(E_{\mathcal O}\) in
+\eqref{eq:dr-local-haar-expectation} to a product of charged local
+generators is exactly the insertion of these projectors on the charged
+indices after the fusion decomposition.  Thus an observable local element is
+not an arbitrary product of charged fields; it is the tensor-unit component
+of such a product, with all nontrivial charged blocks removed by Haar
+projection.
+
+Now take \(F_1\in\mathcal F_{\rm alg}(\mathcal O_1)^G\) and
+\(F_2\in\mathcal F_{\rm alg}(\mathcal O_2)^G\) with
+\(\mathcal O_1\perp\mathcal O_2\).  The charged-field exchange operation
+first transports the charged tensor factors by
+\(\varepsilon_{\rho,\sigma}\).  But \(F_1\) and \(F_2\) lie in tensor-unit
+subobjects after the projections
+\eqref{eq:dr-neutral-channel-projector}.  Naturality of the symmetric
+braiding and simplicity of the tensor unit give
+\[
+  \varepsilon_{\mathbf1,\mathbf1}=\operatorname{id}_{\mathbf1}.
+\]
+Hence no charge matrix remains on the invariant channel: the categorical
+exchange reduces to the ordinary equality required for observable locality.
+This proves only the algebraic neutral-channel mechanism in the DR core.  The
+hard local-QFT theorem remains the coherent \(C^*\)-completion and regionwise
+choice of charged multiplets for which the charged exchange relations and
+the invariant local observable net survive completion.
+
 \paragraph{Finite pointed check of the compact group output.}
 A useful local model of the categorical part is the following pointed
 symmetric \(C^*\)-tensor category.  Fix an integer \(N\geq2\).  Let the simple

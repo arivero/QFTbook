@@ -89,6 +89,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   blocks, conjugate sectors control the involution, Haar expectation recovers
   \(\mathcal R(\mathcal O)\), and charged locality is distinguished from
   observable locality.
+- Makes the neutral-channel locality mechanism explicit: the Haar projector
+  \(P_{\mathbf1}^{\rho,\sigma}=\int_G D_\rho(g)\otimes D_\sigma(g)\,dg\)
+  removes nontrivial charged blocks, keeps only tensor-unit summands such as
+  \(\rho\otimes\bar\rho\to\mathbf1\), and reduces the DHR exchange on
+  invariant local elements to \(\varepsilon_{\mathbf1,\mathbf1}=\id\).  This
+  is recorded as an algebraic DR-core mechanism, not as a replacement for the
+  analytic field-algebra completion theorem.
 - Adds a constructive kink-sector diagnostic: if a sector with far-left and
   far-right order-parameter tail limits were localized in a bounded DHR
   region relative to a single vacuum phase, DHR equivalence on the spacelike
@@ -185,6 +192,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   finite nonabelian \(S_3\) diagnostic has the correct representation law,
   faithful standard representation, character-ring tensor products, and
   Haar projection onto the trivial isotypic part.  It also verifies the
+  \(S_3\) neutral-channel projection in \(V\otimes V^*\), where conjugation
+  fixes the identity tensor, kills traceless endomorphisms under averaging,
+  and sends an arbitrary endomorphism to its scalar trace component.  It also
+  verifies the
   \(S_3\) regular charged-coordinate core: right translation of matrix
   coefficients, Haar expectation onto constants, and the exterior-square
   sign representation.  The same finite \(S_3\) coefficient system checks
@@ -387,6 +398,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\rho(A)\in\mathcal R(\mathcal O_1^\perp)'\) and the corresponding
   intertwiner calculation.  The text now states that without Haag duality the
   construction naturally lands in the dual net.
+- 2026-06-01 DR neutral-channel locality pass: inserted the neutral-channel
+  projector \(P_{\mathbf1}^{\rho,\sigma}\) after the charged-locality
+  paragraph, identifying observable locality with the tensor-unit component
+  of the charged exchange and preserving the analytic completion as the
+  Doplicher--Roberts theorem boundary.  Extended
+  `dhr_dr_reconstruction_checks.py` with the finite \(S_3\)
+  \(V\otimes V^*\) conjugation-average check.
 - 2026-06-01 #695 AQFT structural-input status pass: added a reader-facing
   status section after the modular/PCT material, separating pure
   operator-algebra infrastructure from local-QFT theorem boundaries across

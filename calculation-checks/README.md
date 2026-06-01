@@ -78,7 +78,10 @@ Current checks:
   compact \(U(1)\) Laurent-polynomial charge-lattice diagnostic, and the
   nonabelian \(S_3\) diagnostic for faithful standard representation,
   character-ring tensor products, and Haar projection onto the trivial
-  isotypic part.  It also checks the finite \(S_3\) regular
+  isotypic part.  It also checks the neutral-channel projection in
+  \(V\otimes V^*\): the identity tensor is fixed, traceless endomorphisms
+  are killed, and an arbitrary endomorphism averages to its scalar trace
+  component.  It also checks the finite \(S_3\) regular
   charged-coordinate core: right translation rotates matrix-coefficient
   columns, Haar expectation kills the standard and sign multiplets while
   preserving constants, \(\wedge^2 V\) gives the sign representation, and

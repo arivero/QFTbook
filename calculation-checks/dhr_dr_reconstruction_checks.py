@@ -370,6 +370,77 @@ def matrix_det(a: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]) -
     return a[0][0] * a[1][1] - a[0][1] * a[1][0]
 
 
+def matrix_scale(
+    coefficient: Fraction,
+    a: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]],
+) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+    return (
+        (coefficient * a[0][0], coefficient * a[0][1]),
+        (coefficient * a[1][0], coefficient * a[1][1]),
+    )
+
+
+def matrix_inverse(
+    a: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]],
+) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+    det = matrix_det(a)
+    if det == 0:
+        raise AssertionError("matrix inverse requested for singular matrix")
+    return (
+        (a[1][1] / det, -a[0][1] / det),
+        (-a[1][0] / det, a[0][0] / det),
+    )
+
+
+def matrix_conjugate(
+    a: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]],
+    x: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]],
+) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+    return matrix_mul(matrix_mul(a, x), matrix_inverse(a))
+
+
+def check_s3_neutral_channel_projection() -> None:
+    """Check the finite neutral-channel projector in V tensor V* for S3."""
+
+    group = list(permutations(range(3)))
+    matrices = {g: standard_matrix_s3(g) for g in group}
+    one = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
+    zero = ((Fraction(0), Fraction(0)), (Fraction(0), Fraction(0)))
+
+    for g in group:
+        assert_matrix_equal(
+            f"S3 neutral identity tensor fixed g={g}",
+            matrix_conjugate(matrices[g], one),
+            one,
+        )
+
+    traceless = ((Fraction(1), Fraction(2)), (Fraction(3), Fraction(-1)))
+    averaged_traceless = zero
+    for g in group:
+        averaged_traceless = matrix_add(
+            averaged_traceless,
+            matrix_conjugate(matrices[g], traceless),
+        )
+    averaged_traceless = matrix_scale(Fraction(1, len(group)), averaged_traceless)
+    assert_matrix_equal(
+        "S3 neutral projector kills traceless End(V) component",
+        averaged_traceless,
+        zero,
+    )
+
+    arbitrary = ((Fraction(2), Fraction(3)), (Fraction(5), Fraction(7)))
+    averaged = zero
+    for g in group:
+        averaged = matrix_add(averaged, matrix_conjugate(matrices[g], arbitrary))
+    averaged = matrix_scale(Fraction(1, len(group)), averaged)
+    expected = matrix_scale(Fraction(matrix_trace(arbitrary), 2), one)
+    assert_matrix_equal(
+        "S3 neutral projector keeps scalar End(V) component",
+        averaged,
+        expected,
+    )
+
+
 def check_s3_regular_field_core() -> None:
     group = list(permutations(range(3)))
     matrices = {g: standard_matrix_s3(g) for g in group}
@@ -528,6 +599,7 @@ def main() -> None:
         check_crossed_product_core(n)
     check_compact_u1_laurent_tannaka()
     check_s3_nonabelian_reconstruction_diagnostic()
+    check_s3_neutral_channel_projection()
     check_s3_regular_field_core()
     check_s3_left_equivariant_function_automorphisms()
     check_s3_peter_weyl_hopf_coordinate_algebra()
