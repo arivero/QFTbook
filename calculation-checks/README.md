@@ -380,9 +380,11 @@ Current checks:
   It also checks the Coulomb-tail logarithmic Dollard phase coefficient,
   the oriented pairwise many-body Dollard logarithm with creator/adjoint
   signs, decay of the log-subtracted pair remainder on large dyadic time
-  intervals, soft coherent velocity-separation positivity, finite-cutoff Weyl
-  characteristic functionals, coherent-overlap decay, and finite Hilbert
-  soft-coordinate transformations.  The same script checks the finite
+  intervals, the discrete Cook-tail distinction between an unsubtracted
+  \(1/t\) derivative and an \(L^1\) residual, soft coherent
+  velocity-separation positivity, finite-cutoff Weyl characteristic
+  functionals, coherent-overlap decay, and finite Hilbert soft-coordinate
+  transformations.  The same script checks the finite
   left-inverse algebra of dressed LSZ residues: the pole residue is a Gram
   matrix of charged one-particle overlaps, and finite dressing-coordinate
   changes leave the extracted amplitude invariant.  It also verifies the

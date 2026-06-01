@@ -265,3 +265,12 @@ resonances.
   the velocity-separation boundary.  It remains prose and equations rather
   than theorem/proof form because the substantive theorem is the QFT estimate
   deriving the pair coefficients and the \(L^1\) remainder.
+- 2026-06-01 #527 continuation: formalized the abstract charged
+  Dollard--Cook estimate package as a hypothesis and added the Hilbert-space
+  construction of charged wave maps from it.  The construction proves the
+  Cauchy/null-vector/isometry part once the \(L^1\) modified-Cook and
+  scalar-product estimates are known, while explicitly leaving the
+  nonperturbative Wilson-line/Coulomb-dressed QFT estimates as the open
+  load-bearing problem.  The paired charged-flux calculation check now
+  includes a discrete Cook-tail model distinguishing an unsubtracted \(1/t\)
+  Dollard derivative from an \(L^1\) residual.

@@ -244,6 +244,38 @@ def check_many_body_dollard_phase_bookkeeping() -> None:
         )
 
 
+def check_modified_cook_integrability_bookkeeping() -> None:
+    """Check the finite sequence analogue of subtracting a Dollard tail."""
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    # A 1/t derivative is not a Cook error: its dyadic tail stays bounded
+    # below.  The log comparison phase must absorb this part.
+    for start in (10, 100, 1000):
+        harmonic_tail = dyadic_sum(start, lambda n: Fraction(1, n))
+        if harmonic_tail <= Fraction(1, 2):
+            raise AssertionError("unsubtracted Dollard tail should not have vanishing dyadic norm")
+
+    # After the 1/t part is subtracted, a 1/t^2 residual has tails tending to
+    # zero; the integral-test bound is exact enough for the Cook criterion.
+    previous_tail: Fraction | None = None
+    for start in (10, 100, 1000):
+        residual_tail = dyadic_sum(start, lambda n: Fraction(1, n * n))
+        if residual_tail >= Fraction(1, start - 1):
+            raise AssertionError("residual dyadic Cook tail should obey the integral-test bound")
+        if previous_tail is not None and residual_tail >= previous_tail:
+            raise AssertionError("residual Cook tail should decrease with the initial time")
+        previous_tail = residual_tail
+
+    # A finite phase change contributes an l^1 derivative and hence cannot
+    # change the asymptotic wave map.
+    finite_phase_tail = dyadic_sum(100, lambda n: Fraction(3, n * n))
+    later_finite_phase_tail = dyadic_sum(1000, lambda n: Fraction(3, n * n))
+    if not later_finite_phase_tail < finite_phase_tail:
+        raise AssertionError("finite comparison-phase changes should have vanishing Cook tails")
+
+
 def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
@@ -534,6 +566,7 @@ def main() -> None:
     check_half_line_fourier_transform()
     check_coulomb_tail_dollard_log_phase()
     check_many_body_dollard_phase_bookkeeping()
+    check_modified_cook_integrability_bookkeeping()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
