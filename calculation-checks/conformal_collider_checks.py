@@ -102,10 +102,36 @@ def check_normalization_integrates_to_total_energy() -> None:
     assert_equal("t4 average subtraction", Fraction(2, 15) - Fraction(2, 15), Fraction(0, 1))
 
 
+def check_light_transform_homogeneity_map() -> None:
+    """Check the embedding-space light-transform weight map."""
+
+    test_pairs = (
+        (Fraction(3, 1), Fraction(1, 1)),
+        (Fraction(4, 1), Fraction(2, 1)),
+        (Fraction(5, 1), Fraction(3, 1)),
+        (Fraction(7, 2), Fraction(5, 2)),
+    )
+    for delta, spin in test_pairs:
+        p_exponent = spin - 1
+        z_exponent = 1 - delta
+        transformed_delta = 1 - spin
+        transformed_spin = 1 - delta
+        assert_equal("light-transform P homogeneity exponent", p_exponent, -transformed_delta)
+        assert_equal("light-transform Z homogeneity exponent", z_exponent, transformed_spin)
+
+    spacetime_dimension = Fraction(4, 1)
+    stress_tensor_spin = Fraction(2, 1)
+    stress_tensor_light_delta = 1 - stress_tensor_spin
+    stress_tensor_light_spin = 1 - spacetime_dimension
+    assert_equal("four-dimensional stress-tensor light-transform Delta", stress_tensor_light_delta, Fraction(-1, 1))
+    assert_equal("four-dimensional stress-tensor light-transform spin", stress_tensor_light_spin, Fraction(-3, 1))
+
+
 def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
     check_normalization_integrates_to_total_energy()
+    check_light_transform_homogeneity_map()
     print("All conformal-collider finite checks passed.")
 
 

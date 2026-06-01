@@ -361,8 +361,9 @@ Current checks:
 - `conformal_collider_checks.py`: exact rational checks for the ANEC and
   conformal-collider section, including the \(S^2\) angular averages in the
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
-  to the Hofman--Maldacena inequalities, and the vanishing of the integrated
-  \(t_2,t_4\) deformations.
+  to the Hofman--Maldacena inequalities, the vanishing of the integrated
+  \(t_2,t_4\) deformations, and the embedding-space light-transform
+  homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\).
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter

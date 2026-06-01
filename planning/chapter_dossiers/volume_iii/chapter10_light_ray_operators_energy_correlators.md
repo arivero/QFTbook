@@ -23,6 +23,10 @@
 - `SRC-EXTERNAL-LIGHT-RAY-OPE`: Kologlu--Kravchuk--Simmons-Duffin--Zhiboedov,
   used as theorem boundary for the convergent light-ray OPE under Lorentzian
   CFT hypotheses.
+- `SRC-EXTERNAL-LIGHT-TRANSFORM`: Caron-Huot and
+  Kravchuk--Simmons-Duffin light-transform formalism, used for the
+  embedding-space definition of the light transform and the
+  \((\Delta,J)\mapsto(1-J,1-\Delta)\) representation-theoretic weight map.
 - `SRC-INTERNAL-QCD-DETECTORS`: Volume IV QCD detector-observable section,
   used to keep the CFT and QCD definitions of energy correlators aligned.
 
@@ -38,6 +42,9 @@ The chapter establishes:
   \(\mathcal A_n(x_\perp)\);
 - the relation between calorimeter detectors and null-integrated stress-tensor
   light transforms;
+- the embedding-space light transform
+  \(\mathbb L[\mathcal O_{\Delta,J}]\) of a symmetric traceless primary and
+  its homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\);
 - the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its Lorentzian
   CFT hypotheses, and the modular/causal proof mechanisms that fix the sign;
 - the reduction from ANEC positivity to positivity of the conformal-collider
@@ -60,6 +67,9 @@ The chapter establishes:
 | \(\mathcal E(f)\), \(\mathcal E(\mathbf n)\) | smeared and distributional energy detector |
 | \(\mathcal G_k\) | \(k\)-point energy correlator |
 | \(\mathcal A_n(x_\perp)\) | averaged null energy operator on a null line |
+| \(P,Z\) | embedding-space null point and auxiliary polarization vectors |
+| \(\mathcal O_{\Delta,J}(P,Z)\) | symmetric traceless primary encoded in embedding space |
+| \(\mathbb L[\mathcal O_{\Delta,J}]\) | light transform of a local primary, when the Lorentzian integral is defined |
 | \(N_n=n^\perp/\mathbb R n\) | transverse quotient to the null direction \(n\) |
 | \(\varphi\) | compactly supported nonnegative test function on \(N_n\) |
 | \(\mathcal A_n(\varphi)\) | transversely smeared ANEC quadratic form |
@@ -77,16 +87,20 @@ The chapter establishes:
    contact terms that must be included or removed by an explicit convention.
 3. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
-4. ANEC positivity is recorded as a theorem boundary with explicit
+4. The light-transform weight map is derived from embedding-space
+   homogeneity and change of null-line integration variable; existence of the
+   corresponding operator is kept separate as a Lorentzian analyticity/growth
+   hypothesis.
+5. ANEC positivity is recorded as a theorem boundary with explicit
    Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
    modular/causal proof mechanisms stated at the level needed for collider
    applications.
-5. Positivity of the energy detector implies the displayed
+6. Positivity of the energy detector implies the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
-6. The CFT EEC and the QCD EEC are the same detector construction with
+7. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
-7. The convergent light-ray OPE is used with explicit Lorentzian CFT
+8. The convergent light-ray OPE is used with explicit Lorentzian CFT
    hypotheses rather than treated as a general axiom of QFT.
 
 ## Figures
@@ -109,7 +123,8 @@ The chapter establishes:
   regulated action.
 - Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.
 - The finite helicity reduction of the four-dimensional collider bounds is
-  checked by `calculation-checks/conformal_collider_checks.py`.
+  checked by `calculation-checks/conformal_collider_checks.py`, together with
+  the finite arithmetic for the light-transform homogeneity map.
 - 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues

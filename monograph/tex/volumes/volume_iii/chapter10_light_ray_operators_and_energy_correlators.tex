@@ -113,6 +113,97 @@ averaged null energy theorem stated below.  Hypothesis
 the null-infinity detector as a quadratic form and the positivity supplied by
 the theorem for nonnegative angular smearings.
 
+\section{The Light Transform of a Local Primary}
+\label{sec:cft-light-transform-local-primary}
+
+The stress-tensor detector is one member of a broader class of light-ray
+operators.  We spell out the conformal bookkeeping because the same
+representation-theoretic data are used later in the light-ray OPE, and because
+it prevents a common ambiguity: a light-ray operator is not an ordinary local
+operator placed at a point of spacetime.  It is an integral transform of a
+local operator-valued distribution, with its own domain and growth
+hypotheses.
+
+Use the standard embedding-space notation for a symmetric traceless primary
+\(\mathcal O_{\Delta,J}\).  A physical point is represented by a null ray
+\(P\in\mathbb R^{D,2}\), and tensor indices are packaged by a null auxiliary
+vector \(Z\) satisfying
+\[
+  P^2=Z^2=P\cdot Z=0,\qquad Z\sim Z+\beta P .
+\]
+The encoded primary is homogeneous as
+\begin{equation}
+  \mathcal O_{\Delta,J}(\lambda P,\alpha Z)
+  =
+  \lambda^{-\Delta}\alpha^J\,
+  \mathcal O_{\Delta,J}(P,Z),
+  \qquad \lambda,\alpha>0 .
+  \label{eq:embedding-primary-homogeneity}
+\end{equation}
+This is a compact way to say that \(\Delta\) is the scaling dimension and
+\(J\) is the spin.  Gauge invariance under \(Z\to Z+\beta P\) encodes
+tracelessness and transversality.
+
+For a primary satisfying the Lorentzian growth hypotheses needed to make the
+integral a distribution, its light transform is
+\begin{equation}
+  \mathbb L[\mathcal O_{\Delta,J}](P,Z)
+  =
+  \int_{-\infty}^{\infty}\dd\alpha\,
+  \mathcal O_{\Delta,J}(Z-\alpha P,-P).
+  \label{eq:cft-light-transform-embedding}
+\end{equation}
+The point \(Z-\alpha P\) runs along a null generator, while the new auxiliary
+polarization is \(-P\).  The formula is first a pairing with test functions
+in the transverse and ray variables; convergence or analytic continuation is
+part of the light-transform datum, not an automatic consequence of local
+operator covariance.
+
+The homogeneity of \(\mathbb L[\mathcal O_{\Delta,J}]\) follows directly from
+\eqref{eq:embedding-primary-homogeneity}.  Scaling \(P\) and changing
+variables \(\alpha'=\lambda\alpha\) gives
+\begin{equation}
+  \mathbb L[\mathcal O](\lambda P,Z)
+  =
+  \int\frac{\dd\alpha'}{\lambda}\,
+  \mathcal O(Z-\alpha'P,-\lambda P)
+  =
+  \lambda^{J-1}\mathbb L[\mathcal O](P,Z).
+  \label{eq:light-transform-p-homogeneity}
+\end{equation}
+Scaling \(Z\) and changing variables \(\alpha=\beta\alpha'\) gives
+\begin{equation}
+  \mathbb L[\mathcal O](P,\beta Z)
+  =
+  \int\beta\,\dd\alpha'\,
+  \mathcal O(\beta(Z-\alpha'P),-P)
+  =
+  \beta^{1-\Delta}\mathbb L[\mathcal O](P,Z).
+  \label{eq:light-transform-z-homogeneity}
+\end{equation}
+Thus the light transform has conformal weights
+\begin{equation}
+  (\Delta,J)
+  \longmapsto
+  (1-J,\,1-\Delta),
+  \label{eq:light-transform-weight-map}
+\end{equation}
+where the second entry is understood as the analytically continued spin
+coordinate of the nonlocal light-ray representation.  Equations
+\eqref{eq:light-transform-p-homogeneity}--\eqref{eq:light-transform-weight-map}
+are representation-theoretic bookkeeping, not an existence theorem.  The
+existence theorem requires the Lorentzian analyticity and growth assumptions
+appearing in Quoted Theorem~\ref{qthm:light-ray-ope-boundary}.
+
+For the stress tensor, \((\Delta,J)=(D,2)\).  The light transform therefore
+has formal embedding weights \((-1,1-D)\).  After conformal compactification
+and restriction to future null infinity, this object is represented by the
+positive energy detector density \(\mathcal E(\mathbf n)\), a measure-valued
+operator on \(S^{D-2}\) rather than a local primary on Minkowski space.  This
+is the reason the detector normalization is fixed by
+\(\mathcal E(1)=P^0\) and by the ANEC theorem, not by treating
+\(\mathcal E(\mathbf n)\) as an ordinary local operator.
+
 \section{ANEC and Conformal Collider Bounds}
 \label{sec:anec-conformal-collider-bounds}
 
