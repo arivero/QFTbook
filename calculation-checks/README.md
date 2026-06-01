@@ -639,8 +639,10 @@ Current checks:
   coefficients, quantum dimensions, shifted character exponents, the
   \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
   Ising modular invariant with one vacuum, the Cardy Tauberian saddle
-  coefficient, Verlinde/topological-defect eigencharacters, exact temporal
-  to spatial defect \(S\)-move multiplicities, the Ising spin-field
+  coefficient, the finite multi-edge sewing trace-norm bound and paired
+  internal-edge relabelling invariance, Verlinde/topological-defect
+  eigencharacters, exact temporal to spatial defect \(S\)-move
+  multiplicities, the Ising spin-field
   one-point selection rule under the spin-flip defect, the rank-two
   logarithmic Jordan-cell Ward identities and trace invisibility of the
   nilpotent extension, the dual-number projective pseudo-trace detecting the

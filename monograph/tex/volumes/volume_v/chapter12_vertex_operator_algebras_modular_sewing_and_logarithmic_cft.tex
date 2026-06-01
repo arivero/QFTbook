@@ -1426,19 +1426,76 @@ incident channel modules.  Then the edge-basis sum
 used on internal edges.
 
 Insert finite-level projectors \(E_{a_e,\le N}\) on every internal edge.  For
-fixed cutoffs the sum is finite.  The continuous vertex functionals have
-finite operator norms on the tensor products of the incident Hilbert spaces.
-Repeatedly applying the one-edge estimate
-\eqref{eq:one-channel-sewing-bound} bounds the absolute value of the cutoff
-sum by
+fixed cutoffs the sum is finite.  Choose orthonormal homogeneous bases on the
+cutoff subspaces and write
 \[
+  \lambda_{e,\alpha}
+  =
+  q_e^{L_0(e_{\alpha})-c/24}
+\]
+for the diagonal matrix coefficient of the annular propagator on edge \(e\).
+If \(\mathbf e_v(\boldsymbol\alpha)\) denotes the tensor product of the
+unit basis vectors incident on \(v\), then continuity of the vertex block
+functional gives the pointwise bound
+\[
+  \left|
+    \mathcal F_v(\mathbf e_v(\boldsymbol\alpha))
+  \right|
+  \le
+  \|\mathcal F_v\| .
+\]
+Therefore the absolute value of the finite cutoff contraction is bounded by
+\begin{align}
+  \sum_{\{\alpha_e\}}
+  \left(
+    \prod_e |\lambda_{e,\alpha_e}|
+  \right)
+  \left(
+    \prod_v
+    \left|
+      \mathcal F_v(\mathbf e_v(\boldsymbol\alpha))
+    \right|
+  \right)
+  &\le
+  \left(\prod_v \|\mathcal F_v\|\right)
+  \prod_e
+  \left(\sum_{\alpha_e}|\lambda_{e,\alpha_e}|\right)       \notag\\
+  &\le
   \left(\prod_v \|\mathcal F_v\|\right)
   \left(\prod_e \|P_{a_e}(q_e)\|_1\right).
+  \label{eq:multi-edge-sewing-trace-bound}
+\end{align}
+The first inequality uses only that the same edge index is seen by the two
+incident vertices; after taking absolute values the indices separate into a
+product of one-edge sums.  The second inequality is equality in a homogeneous
+diagonal basis and is bounded by the trace norm in any orthonormal basis.
+Since the right hand side of
+\eqref{eq:multi-edge-sewing-trace-bound} is finite and independent of the
+cutoffs, the finite absolute sums are dominated by the full product of the
+edge \(\ell^1\) sums.  Enlarging the cutoff on one or more edges adds a tail
+whose absolute value is bounded by the same product with at least one edge
+sum replaced by its trace-norm tail; these tails tend to zero.  Hence the
+cutoff net is absolutely Cauchy.  Equivalently, if one replaces
+\(P_{a_e}(q_e)\) by its singular-value truncations, the tensor product of the
+edge operators converges in trace norm because
+\[
+  \left\|
+    \bigotimes_{e} P_{a_e}(q_e)
+  \right\|_1
+  =
+  \prod_e \|P_{a_e}(q_e)\|_1
 \]
-The right hand side is finite by the trace-class hypotheses and independent
-of the cutoffs.  Monotone convergence applied to the absolute values of the
-finite basis sums gives absolute convergence.  Basis independence follows
-edge by edge from Lemma~\ref{lem:trace-class-estimate-one-channel-sewing}.
+for finite tensor products of trace-class operators, and the vertex
+functionals are bounded on the Hilbert tensor products.  This operator
+description also proves basis independence: two homogeneous orthonormal
+bases give the same trace-class tensor contraction after the cutoff limit.
+
+The estimate is intentionally local.  It controls a plumbing chart with
+fixed channel labels and \(|q_e|<1\).  It does not prove that the resulting
+functions analytically continue between different pants decompositions, nor
+that two such continuations agree on the overlap of coordinate charts.  Those
+are the analytic sewing and Moore--Seiberg compatibility statements isolated
+next.
 
 \begin{hypothesis}[Analytic sewing theorem for rational chiral data]
 \label{hyp:rational-analytic-sewing-theorem}

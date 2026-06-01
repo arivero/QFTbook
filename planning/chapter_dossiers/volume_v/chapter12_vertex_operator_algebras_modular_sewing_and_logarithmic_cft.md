@@ -141,6 +141,13 @@ current QFT scope.
   commute with the Virasoro modes under the neutrality condition.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
+- Expands the finite sewing-graph estimate: after finite-level truncation,
+  continuity of each vertex block gives a pointwise operator-norm bound,
+  absolute values separate the internal edge labels, the cutoff contraction is
+  bounded by
+  \(\prod_v\|\mathcal F_v\|\prod_e\|P_{a_e}(q_e)\|_1\), and basis
+  independence follows from trace-norm convergence of the tensor product of
+  edge propagators.
 - States explicit rationality/sewing hypotheses before invoking modular
   tensor category language.
 - States character modularity as a quoted theorem, separating the theorem
@@ -239,7 +246,9 @@ current QFT scope.
   a polynomial energy bound and rapidly decaying Fourier coefficients, the
   \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
-  vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
+  vacuum, the finite multi-edge sewing trace-norm bound and paired
+  internal-edge relabelling invariance, Verlinde defect eigencharacters,
+  exact temporal-to-spatial defect
   \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
   the Cardy Tauberian Laplace-bound and Legendre-saddle coefficients, and the
   Ising Zhu
@@ -377,3 +386,8 @@ current QFT scope.
   torus zero-point function is a modular invariant trace density rather than
   a finite trace.  Extended `nonrational_cft_direct_integral_checks.py` with
   the exact charge-associativity and modular-weight cancellations.
+- 2026-06-01 rational sewing trace-bound pass: replaced the compressed
+  finite-graph sewing estimate by explicit cutoff, pointwise vertex-norm,
+  edge trace-norm, and trace-class tensor-product bookkeeping, and extended
+  `cft_voa_modular_checks.py` with an exact triangle-graph sewing bound plus
+  paired internal-edge relabelling invariance check.

@@ -362,6 +362,93 @@ def check_cardy_tauberian_saddle_constants() -> None:
         )
 
 
+def check_multi_edge_sewing_trace_bound() -> None:
+    """Check the finite algebra behind the multi-edge sewing estimate.
+
+    The chapter bounds a finite sewing graph by the product of vertex
+    pointwise operator-norm bounds and edge trace norms.  This exact triangle
+    graph also checks that paired relabelling of an internal edge leaves the
+    contraction unchanged.
+    """
+
+    weights_01 = [Fraction(1, 2), Fraction(-1, 3)]
+    weights_12 = [Fraction(2, 5), Fraction(1, 7), Fraction(-3, 11)]
+    weights_20 = [Fraction(5, 13), Fraction(-2, 17)]
+
+    def a_coeff(i: int, k: int) -> Fraction:
+        return Fraction((i + 1) * (2 * k + 1), 19) - Fraction(1, 5)
+
+    def b_coeff(i: int, j: int) -> Fraction:
+        return Fraction((2 * i + 1) * (j + 2), 23) - Fraction(2, 7)
+
+    def c_coeff(j: int, k: int) -> Fraction:
+        return Fraction((j + 1) * (k + 3), 29) - Fraction(1, 11)
+
+    def contraction(
+        edge01_weights: list[Fraction],
+        edge12_weights: list[Fraction],
+        edge20_weights: list[Fraction],
+    ) -> Fraction:
+        total = Fraction(0)
+        for i, weight01 in enumerate(edge01_weights):
+            for j, weight12 in enumerate(edge12_weights):
+                for k, weight20 in enumerate(edge20_weights):
+                    total += (
+                        weight01
+                        * weight12
+                        * weight20
+                        * a_coeff(i, k)
+                        * b_coeff(i, j)
+                        * c_coeff(j, k)
+                    )
+        return total
+
+    absolute_sum = Fraction(0)
+    max_a = Fraction(0)
+    max_b = Fraction(0)
+    max_c = Fraction(0)
+    for i, weight01 in enumerate(weights_01):
+        for j, weight12 in enumerate(weights_12):
+            for k, weight20 in enumerate(weights_20):
+                a = a_coeff(i, k)
+                b = b_coeff(i, j)
+                c = c_coeff(j, k)
+                max_a = max(max_a, abs(a))
+                max_b = max(max_b, abs(b))
+                max_c = max(max_c, abs(c))
+                absolute_sum += abs(weight01 * weight12 * weight20 * a * b * c)
+
+    trace_norm_product = (
+        sum(abs(weight) for weight in weights_01)
+        * sum(abs(weight) for weight in weights_12)
+        * sum(abs(weight) for weight in weights_20)
+    )
+    bound = max_a * max_b * max_c * trace_norm_product
+    if not absolute_sum <= bound:
+        raise AssertionError(
+            f"multi-edge sewing trace bound failed: {absolute_sum} > {bound}"
+        )
+
+    original = contraction(weights_01, weights_12, weights_20)
+    # Paired relabelling of the 01 edge: the weight list and both incident
+    # vertex coefficient slots are permuted.  With two labels this is reversal.
+    relabelled_total = Fraction(0)
+    reversed_01 = list(reversed(weights_01))
+    for i_new, weight01 in enumerate(reversed_01):
+        i_old = len(weights_01) - 1 - i_new
+        for j, weight12 in enumerate(weights_12):
+            for k, weight20 in enumerate(weights_20):
+                relabelled_total += (
+                    weight01
+                    * weight12
+                    * weight20
+                    * a_coeff(i_old, k)
+                    * b_coeff(i_old, j)
+                    * c_coeff(j, k)
+                )
+    assert_equal("multi-edge sewing contraction invariant under paired edge relabelling", relabelled_total, original)
+
+
 def log_polynomial_add(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
     degree = max(len(lhs), len(rhs))
     return [
@@ -662,11 +749,12 @@ def main() -> None:
     check_ising_t_spin_selection_and_diagonal_invariant()
     check_ising_verlinde_defect_lines()
     check_cardy_tauberian_saddle_constants()
+    check_multi_edge_sewing_trace_bound()
     check_logarithmic_jordan_cell_two_point_ward_identities()
     check_logarithmic_jordan_trace_invisibility()
     check_logarithmic_projective_pseudotrace_dual_numbers()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, pseudo-trace, smoothing, and conformal-net DHR checks passed.")
+    print("All CFT VOA/modular-data, sewing, defect-line, Zhu-algebra, logarithmic-cell, pseudo-trace, smoothing, and conformal-net DHR checks passed.")
 
 
 if __name__ == "__main__":
