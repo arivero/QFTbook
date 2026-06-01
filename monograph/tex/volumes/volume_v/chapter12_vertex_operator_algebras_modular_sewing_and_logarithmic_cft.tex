@@ -3190,6 +3190,86 @@ it is a linear functional with the cyclicity property needed for torus
 sewing, and it can couple to the nilpotent part invisible to the ordinary
 trace.
 
+\paragraph{Finite projective pseudo-trace model.}
+The finite algebraic mechanism is already visible without invoking the full
+logarithmic VOA modular theorem.  Let \(A\) be a finite-dimensional
+associative algebra over \(\mathbb C\), let \(P\) be a finitely generated
+projective left \(A\)-module, and let
+\[
+  \varphi:A\longrightarrow\mathbb C
+\]
+be a symmetric linear functional, meaning
+\[
+  \varphi(ab)=\varphi(ba),\qquad a,b\in A .
+\]
+Choose a projective dual basis
+\[
+  p_r\in P,\qquad f^r\in\operatorname{Hom}_A(P,A),\qquad
+  x=\sum_r p_r f^r(x)\quad (x\in P).
+\]
+For \(T\in\operatorname{End}_A(P)\), define the
+\(\varphi\)-pseudo-trace
+\begin{equation}
+  \operatorname{ptr}_{P}^{\varphi}(T)
+  :=
+  \sum_r
+  \varphi\bigl(f^r(Tp_r)\bigr).
+  \label{eq:finite-projective-pseudo-trace}
+\end{equation}
+The expression is independent of the chosen dual basis.  This is the
+Hattori--Stallings trace paired with \(\varphi\): changing dual bases changes
+\(\sum_r f^r(Tp_r)\) by a commutator in \(A\), and the symmetric property of
+\(\varphi\) kills commutators.  It follows in particular that
+\[
+  \operatorname{ptr}_{P}^{\varphi}(ST)
+  =
+  \operatorname{ptr}_{P}^{\varphi}(TS),
+  \qquad
+  S,T\in\operatorname{End}_A(P),
+\]
+which is the finite cyclicity property needed when the torus sewing trace is
+rotated around a nonsemisimple channel.
+
+The smallest example is the dual-number algebra
+\[
+  A=\mathbb C[\epsilon]/(\epsilon^2),
+  \qquad
+  P=A .
+\]
+Let \(\varphi_{\rm res}(a+b\epsilon)=b\).  Multiplication by
+\(a+b\epsilon\) on the vector space with basis \((1,\epsilon)\) has ordinary
+trace \(2a\), so the ordinary trace kills the nilpotent coefficient \(b\).
+The projective pseudo-trace with \(p_1=1\) and \(f^1(x)=x\), however, gives
+\[
+  \operatorname{ptr}^{\varphi_{\rm res}}_{A}(R_{a+b\epsilon})
+  =
+  \varphi_{\rm res}(a+b\epsilon)
+  =
+  b ,
+\]
+where \(R_{a+b\epsilon}\) denotes right multiplication, an \(A\)-module
+endomorphism of the regular left module.  If the Jordan cell of \(L_0\) is
+modeled by \(L_0=h+\epsilon\), then
+\[
+  q^{L_0-c/24}
+  =
+  q^{h-c/24}\bigl(1+2\pi\ii\tau\,\epsilon\bigr),
+\]
+and the ordinary trace gives \(2q^{h-c/24}\), whereas the pseudo-trace gives
+\[
+  \operatorname{ptr}^{\varphi_{\rm res}}_{A}
+  \bigl(q^{L_0-c/24}\bigr)
+  =
+  2\pi\ii\tau\,q^{h-c/24}.
+\]
+Thus the polynomial \(\tau\)-dependence that ordinary characters miss is not a
+decorative correction; it is the projective trace of the nilpotent extension
+data.  In logarithmic VOA applications the algebra \(A\) is replaced by
+endomorphism algebras of projective covers or by the appropriate finite
+quotients controlling torus one-point functions, and
+\eqref{eq:finite-projective-pseudo-trace} is the finite model for the
+pseudo-trace functions that enter modular closure.
+
 The semisimple Verlinde formula
 \eqref{eq:verlinde-formula} is consequently replaced by categorical
 statements about the Grothendieck ring, projective modules, modified traces,

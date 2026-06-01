@@ -628,8 +628,9 @@ Current checks:
   to spatial defect \(S\)-move multiplicities, the Ising spin-field
   one-point selection rule under the spin-flip defect, the rank-two
   logarithmic Jordan-cell Ward identities and trace invisibility of the
-  nilpotent extension, and the Zhu-algebra top-weight polynomial with its
-  primitive idempotents.
+  nilpotent extension, the dual-number projective pseudo-trace detecting the
+  nilpotent \(\tau\)-coefficient missed by the ordinary character, and the
+  Zhu-algebra top-weight polynomial with its primitive idempotents.
 - `cft_virasoro_minimal_checks.py`: exact checks for the unitary Virasoro
   minimal-model and Ising BPZ-block material, including Kac-table
   identifications, Ising and tricritical-Ising weights, the Rocha--Caridi

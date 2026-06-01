@@ -95,6 +95,13 @@ current QFT scope.
 - `N`: nilpotent operator on the logarithmic pair, with `ND=C` and `NC=0`.
 - `b,d`: constants in logarithmic two-point functions; `b` is invariant under
   `D -> D + lambda C`, while `d` is basis-dependent.
+- `A`: finite-dimensional associative algebra used in the logarithmic
+  pseudo-trace model.
+- `P`: finitely generated projective left `A`-module.
+- `phi`: symmetric linear functional on `A`, used to pair the
+  Hattori-Stallings trace with a complex number.
+- `ptr_P^phi`: finite projective pseudo-trace
+  `sum_r phi(f^r(T p_r))`.
 
 ## Claim Ledger
 
@@ -206,9 +213,16 @@ current QFT scope.
   proves the logarithmic two-point functions from the \(L_0\) and \(L_1\)
   Ward identities, records the basis dependence of the constant term, and
   explains why ordinary characters miss the nilpotent extension data.
+- Defines the finite projective pseudo-trace mechanism: a symmetric functional
+  on a finite algebra paired with the Hattori-Stallings trace on a projective
+  module, with cyclicity following from symmetry.  The dual-number regular
+  module example shows explicitly that ordinary trace gives only the
+  generalized eigenspace dimension while the pseudo-trace detects the
+  nilpotent \(\tau\)-coefficient in \(q^{L_0-c/24}\).
 - Identifies generalized characters, pseudo-traces, projective modules,
   modified traces, and braided finite tensor category data as the honest
-  replacement for semisimple modular data in logarithmic CFT.
+  replacement for semisimple modular data in logarithmic CFT, with the full
+  logarithmic modular-closure theorem kept at theorem-boundary status.
 
 ## Figure Ledger
 
@@ -231,7 +245,11 @@ current QFT scope.
   Ising Zhu
   polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
   rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
-  trace invisibility of the nilpotent part.
+  trace invisibility of the nilpotent part.  It also verifies the dual-number
+  projective pseudo-trace model: \(\varphi_{\rm res}(a+b\epsilon)=b\) is
+  cyclic, ordinary vector-space trace kills the nilpotent coefficient, and
+  the projective pseudo-trace extracts the \(\tau\)-coefficient in the Jordan
+  cell.
 - `calculation-checks/cft_virasoro_minimal_checks.py` verifies the unitary
   minimal-model Kac-table arithmetic, Ising and tricritical-Ising weights,
   the Rocha--Caridi theta-character Poisson coefficient identities for the
@@ -283,6 +301,10 @@ current QFT scope.
   finite logarithmic scaling, \(L_0/L_1\) Ward-identity two-point functions,
   basis-dependence bookkeeping, the ordinary-character failure mode, and exact
   formal calculation checks.
+- 2026-06-01 issue #697 logarithmic pseudo-trace pass: added the finite
+  projective Hattori-Stallings pseudo-trace construction and the dual-number
+  regular-module model showing how pseudo-traces detect nilpotent extension
+  data invisible to ordinary characters.
 - 2026-05-27 unitary Virasoro minimal-model pass: incorporated the 253c and
   stringbook Ising/minimal-model material into Chapter 12 by deriving the
   low-level Virasoro Gram/null-vector algebra, stating the unitary

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact Ising modular-data checks for the VOA/modular-sewing chapter."""
+"""Exact checks for the VOA/modular-sewing/logarithmic-CFT chapter."""
 
 from __future__ import annotations
 
@@ -516,6 +516,57 @@ def check_logarithmic_jordan_trace_invisibility() -> None:
     assert_equal("ordinary trace ignores nilpotent coefficient", trace(nilpotent), Fraction(0))
 
 
+def check_logarithmic_projective_pseudotrace_dual_numbers() -> None:
+    """Check the finite dual-number pseudo-trace model.
+
+    The logarithmic-CFT chapter uses A=C[eps]/eps^2, P=A, and the symmetric
+    functional phi_res(a+b eps)=b as the smallest model of a projective
+    pseudo-trace.  Ordinary vector-space trace of right multiplication sees
+    only the semisimple coefficient a, while the projective pseudo-trace sees
+    the nilpotent coefficient b.
+    """
+
+    DualNumber = tuple[Fraction, Fraction]
+
+    def multiply(left: DualNumber, right: DualNumber) -> DualNumber:
+        a, b = left
+        c, d = right
+        return (a * c, a * d + b * c)
+
+    def phi_res(element: DualNumber) -> Fraction:
+        return element[1]
+
+    def ordinary_trace_of_right_multiplication(element: DualNumber) -> Fraction:
+        a, b = element
+        # Matrix in the basis (1, eps) has columns (a,b) and (0,a).
+        return a + a
+
+    def projective_pseudotrace_regular_module(element: DualNumber) -> Fraction:
+        # For P=A with dual basis p=1, f(x)=x, the Hattori-Stallings trace
+        # paired with phi_res is just phi_res(element).
+        return phi_res(element)
+
+    x = (Fraction(2), Fraction(5))
+    y = (Fraction(7), Fraction(11))
+    assert_equal("dual-number nilpotent square", multiply((Fraction(0), Fraction(1)), (Fraction(0), Fraction(1))), (Fraction(0), Fraction(0)))
+    assert_equal("dual-number residue functional is symmetric", phi_res(multiply(x, y)), phi_res(multiply(y, x)))
+    assert_equal("ordinary trace kills nilpotent coefficient", ordinary_trace_of_right_multiplication(x), Fraction(4))
+    assert_equal("projective pseudo-trace detects nilpotent coefficient", projective_pseudotrace_regular_module(x), Fraction(5))
+
+    tau_coefficient = Fraction(13)
+    q_to_l0_factor = (Fraction(1), tau_coefficient)
+    assert_equal(
+        "ordinary character misses Jordan tau coefficient",
+        ordinary_trace_of_right_multiplication(q_to_l0_factor),
+        Fraction(2),
+    )
+    assert_equal(
+        "pseudo-trace extracts Jordan tau coefficient",
+        projective_pseudotrace_regular_module(q_to_l0_factor),
+        tau_coefficient,
+    )
+
+
 def polynomial_multiply(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
     product = [Fraction(0) for _ in range(len(lhs) + len(rhs) - 1)]
     for i, left in enumerate(lhs):
@@ -613,8 +664,9 @@ def main() -> None:
     check_cardy_tauberian_saddle_constants()
     check_logarithmic_jordan_cell_two_point_ward_identities()
     check_logarithmic_jordan_trace_invisibility()
+    check_logarithmic_projective_pseudotrace_dual_numbers()
     check_ising_zhu_polynomial()
-    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, smoothing, and conformal-net DHR checks passed.")
+    print("All CFT VOA/modular-data, defect-line, Zhu-algebra, logarithmic-cell, pseudo-trace, smoothing, and conformal-net DHR checks passed.")
 
 
 if __name__ == "__main__":
