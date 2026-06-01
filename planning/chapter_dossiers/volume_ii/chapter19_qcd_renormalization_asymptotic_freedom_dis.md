@@ -743,8 +743,14 @@ The chapter must define and derive:
   than theorem-level QFT arguments.
 - 2026-05-29 seventh anti-wrapper pass: demoted the pseudoscalar-meson--baryon
   partial-wave \(J^P\) rule to representation-theory prose and expanded the
-  smeared energy-flow continuity lemma so the soft and collinear bounds are
+  smeared energy-flow continuity estimate so the soft and collinear bounds are
   stated as continuity of finite-energy calorimetric measures.
+- 2026-06-01 anti-wrapper follow-up: demoted the smeared energy-flow
+  soft/collinear continuity estimate from lemma/proof form to worked prose.
+  The finite-measure and Lipschitz bounds remain because they fix the exact
+  sense in which energy-correlator observables are continuous under soft
+  additions and collinear recombinations, but the calculation is not a
+  theorem-family result.
 - 2026-05-30 quoted-theorem pass: replaced the leading ERBL diagonalization
   quoted theorem by a proved proposition.  The pass corrected the eigenvalue
   normalization for the kernel as written:

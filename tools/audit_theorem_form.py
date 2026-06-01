@@ -301,6 +301,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Static spin and flavor symmetry|"
     r"Gauge invariance of the dipole matrix element|"
     r"Detector positivity from ANEC|"
+    r"Soft and collinear continuity of smeared energy flow|"
     r"Displacement criterion|"
     r"Boundary cocycle cancellation|"
     r"No almost-local observable coordinate for nonzero Gauss charge|"
