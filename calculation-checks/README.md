@@ -602,8 +602,10 @@ Current checks:
 - `nonrational_cft_direct_integral_checks.py`: exact finite checks for the
   direct-integral nonrational-CFT formalism, including unitarity of a rational
   fusing kernel, preservation of the Plancherel inner product under channel
-  change, and the finite direct-sum version of the spectral radial-product
-  identity.
+  change, the finite direct-sum version of the spectral radial-product
+  identity, the noncompact free-boson charge-convolution associativity, and
+  the modular-weight cancellation in the noncompact partition density
+  \(\tau_2^{-1/2}|\eta|^{-2}\).
 - `conformal_block_companion.py`: reusable numerical companion routines for
   OPE-normalized global scalar conformal blocks in the chapter conventions,
   using the Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\),

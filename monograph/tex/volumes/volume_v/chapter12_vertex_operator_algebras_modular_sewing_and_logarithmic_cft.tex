@@ -2675,9 +2675,147 @@ discrete basis of normalizable primaries has entered the argument.
 
 The usual OPE notation is a compressed way of writing
 \eqref{eq:direct-integral-four-point}.  For a continuous spectrum it should
-not be read as a product identity in a set of fields.  It is an identity of
-matrix elements after smearing the intermediate label against the
-Plancherel measure and after specifying the domain of radial convergence.
+be read as an identity of matrix elements after smearing the intermediate
+label against the Plancherel measure and after specifying the domain of
+radial convergence.
+
+\subsection{Worked Example: The Noncompact Free Boson}
+\label{subsec:noncompact-free-boson-direct-integral}
+
+The simplest continuous-spectrum example is a single real free boson with
+target \(\mathbb R\).  We use the same chiral normalization as in
+Section~\ref{sec:toroidal-narain-lattice-cfts},
+\[
+  X_L(z)X_L(0)\sim-\log z,\qquad
+  X_R(\bar z)X_R(0)\sim-\log\bar z.
+\]
+The zero-mode Hilbert space is \(L^2(\mathbb R,\dd x)\).  After Fourier
+transform it is \(L^2(\mathbb R,\dd p)\), and the full Hilbert space is the
+direct integral
+\begin{equation}
+  \mathcal H_{\mathbb R}
+  =
+  \int_{\mathbb R}^{\oplus}
+  \mathcal F_{p}\,\dd p,
+  \qquad
+  \mathcal F_p\simeq\mathcal F_{\rm osc}^L\otimes
+  \mathcal F_{\rm osc}^R .
+  \label{eq:noncompact-boson-hilbert-direct-integral}
+\end{equation}
+The fiber ground state at momentum \(p\) has
+\begin{equation}
+  h_p=\bar h_p=\frac{p^2}{2}.
+  \label{eq:noncompact-boson-weights}
+\end{equation}
+Thus \(p\) is a spectral label in the direct integral.  The plane wave
+\(\ee^{\ii p x}\) is a generalized eigenvector; an actual Hilbert vector is a
+square-integrable wave packet \(f(p)\in L^2(\mathbb R,\dd p)\), together with
+oscillator excitations.
+
+For \(a\in\mathbb R\), let \(V_a(z,\bar z)\) denote the diagonal exponential
+field
+\[
+  V_a(z,\bar z)
+  =
+  :\exp\!\left(\ii aX_L(z)+\ii aX_R(\bar z)\right): .
+\]
+As a zero-mode operator it translates the momentum fiber,
+\[
+  V_a:\mathcal F_p\longrightarrow \mathcal F_{p+a}.
+\]
+The field at a fixed real label \(a\) is distributional in the spectral
+label.  For \(f\in C_c^\infty(\mathbb R)\), the smeared exponential
+\begin{equation}
+  V_f(z,\bar z)
+  =
+  \int_{\mathbb R} f(a)V_a(z,\bar z)\,\dd a
+  \label{eq:noncompact-boson-smeared-vertex}
+\end{equation}
+has finite matrix elements between finite-energy wave packets in every
+closed annulus avoiding coincident points.
+
+The leading product of two labelled exponentials is
+\begin{equation}
+  V_a(z,\bar z)V_b(0)
+  \sim
+  |z|^{2ab}V_{a+b}(0)+\text{oscillator descendants}.
+  \label{eq:noncompact-boson-labelled-ope}
+\end{equation}
+Consequently the smeared leading OPE coefficient is the weighted convolution
+\begin{equation}
+  V_f(z,\bar z)V_g(0)
+  \sim
+  \int_{\mathbb R}
+  (f\star_z g)(c)\,V_c(0)\,\dd c+\cdots ,
+  \label{eq:noncompact-boson-smeared-ope}
+\end{equation}
+where
+\begin{equation}
+  (f\star_z g)(c)
+  =
+  \int_{\mathbb R}
+  f(a)g(c-a)|z|^{2a(c-a)}\,\dd a .
+  \label{eq:noncompact-boson-weighted-convolution}
+\end{equation}
+This is the continuous analogue of the lattice charge-conservation rule in
+\eqref{eq:narain-vertex-ope-leading}.  Associativity of the leading charge
+factor is the elementary identity
+\begin{equation}
+  ab+(a+b)c=bc+a(b+c),
+  \label{eq:noncompact-boson-ope-associativity-exponent}
+\end{equation}
+which says that either radial grouping of \(V_aV_bV_c\) gives the same
+charge \(a+b+c\) and the same power of pairwise distances after the standard
+coordinate factors are restored.  The full diagonal field is separated-point
+single-valued because the left and right monodromy phases cancel.
+
+The genus-one zero-point function is a trace density.  If one puts the target
+coordinate in a box of length \(L\), the ordinary trace is proportional to
+\(L\).  Dividing by \(L\) and letting \(L\to\infty\) gives the density
+\begin{equation}
+  Z_{\mathbb R}^{\rm dens}(\tau,\bar\tau)
+  =
+  \frac{1}{|\eta(\tau)|^2}
+  \int_{\mathbb R}
+  \exp(-2\pi\tau_2p^2)\,\dd p
+  =
+  \frac{1}{\sqrt{2\tau_2}\,|\eta(\tau)|^2},
+  \qquad
+  \tau_2=\operatorname{Im}\tau .
+  \label{eq:noncompact-boson-partition-density}
+\end{equation}
+The equality uses the ordinary Gaussian integral in the chosen Plancherel
+normalization.  The density is modular invariant: under
+\(S:\tau\mapsto-1/\tau\), \(\tau_2\mapsto\tau_2/|\tau|^2\) while
+\(|\eta(-1/\tau)|^2=|\tau|\,|\eta(\tau)|^2\), so the factor
+\(\tau_2^{-1/2}|\eta(\tau)|^{-2}\) is unchanged.  This is a statement about
+the semifinite trace per unit target volume; it is the correct replacement
+for a finite Hilbert-space trace in a translation-invariant noncompact
+target.
+
+The same density is obtained from the compact circle by decompactification.
+For a circle of radius \(R\), the momentum spacing is \(1/R\).  At fixed
+\(\tau_2>0\), the winding sectors with nonzero winding have weights
+exponentially small as \(R\to\infty\), and
+\[
+  \frac1R\sum_{m\in\mathbb Z}
+  \exp\!\left(-2\pi\tau_2\frac{m^2}{R^2}\right)
+  \longrightarrow
+  \int_{\mathbb R}\exp(-2\pi\tau_2p^2)\,\dd p .
+\]
+Thus compact-boson theta functions converge, after division by the target
+volume normalization, to the Plancherel density
+\eqref{eq:noncompact-boson-partition-density}.
+
+This example isolates the continuous-spectrum mechanics from the additional
+analytic content of Liouville theory.  In the free noncompact boson the
+Plancherel measure is Lebesgue measure, the reflection relation is absent,
+and the fusing transform is the Fourier/Plancherel transform attached to
+linear momentum conservation.  In Liouville theory the same direct-integral
+language remains, but the spectrum is
+\(\alpha=Q/2+\ii P\) modulo reflection, the three-point coefficient is DOZZ,
+and the fusing transform is the Virasoro noncompact fusion kernel.  The
+difference is data, not notation.
 
 \begin{definition}[Measurable fusing transform]
 \label{def:measurable-fusing-transform}

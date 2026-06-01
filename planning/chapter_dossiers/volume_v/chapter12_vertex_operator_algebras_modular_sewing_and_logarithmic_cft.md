@@ -65,6 +65,14 @@ current QFT scope.
   `log N(E) sim B sqrt(E)`.
 - `E_beta`: Laplace-saddle energy `B^2/(4 beta^2)`, equal to
   `A/beta^2` after matching.
+- `X_{BA}, mu_{BA}, K_x`: nonrational direct-integral spectral label space,
+  Plancherel measure, and multiplicity/descendant fiber for a radial product.
+- `F_st`: measurable fusing transform between direct-integral channel
+  decompositions.
+- `V_f`: noncompact free-boson exponential smeared over the real momentum
+  shift label.
+- `Z_R^dens`: noncompact free-boson torus partition density per unit target
+  volume, proportional to `tau_2^{-1/2}|eta|^{-2}`.
 - `A(I)`: von Neumann algebra assigned by a conformal net to an interval
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
@@ -184,6 +192,14 @@ current QFT scope.
   the nontrivial Tauberian lower-bound input, checks the Legendre saddle
   coefficient, and proves the CFT-internal Cardy density formula under
   compact/discrete-spectrum/positivity hypotheses.
+- Defines nonrational radial products by direct-integral spectral data and
+  states the Plancherel form of four-point OPE/crossing identities.
+- Works the noncompact free boson as the basic continuous-spectrum example:
+  Hilbert space as a direct integral over real momentum, smeared exponential
+  fields as momentum-shift distributions, weighted-convolution OPE, the
+  charge-associativity exponent identity, the modular invariant partition
+  density per unit target volume, and the compact-circle decompactification
+  limit.
 - Defines logarithmic CFT by nonsemisimple \(L_0\) action, introduces a
   rank-two logarithmic Virasoro pair, derives finite state and field scaling,
   proves the logarithmic two-point functions from the \(L_0\) and \(L_1\)
@@ -330,3 +346,10 @@ current QFT scope.
   Laplace upper bound, isolating the nontrivial Tauberian lower-bound input,
   deriving the Legendre coefficient relation \(B^2=4A\), and strengthening
   the exact calculation check to match this logic.
+- 2026-06-01 noncompact free-boson direct-integral pass: added a worked
+  continuous-spectrum example in which labelled exponential fields are
+  momentum-shift distributions, Hilbert vectors are smeared wave packets, the
+  leading OPE is weighted convolution over the Plancherel label, and the
+  torus zero-point function is a modular invariant trace density rather than
+  a finite trace.  Extended `nonrational_cft_direct_integral_checks.py` with
+  the exact charge-associativity and modular-weight cancellations.

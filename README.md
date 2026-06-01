@@ -29,18 +29,23 @@ material are kept separate from the compiled monograph.
 ## Active Volume Architecture
 
 The compiled manuscript uses continuous chapter numbering across subject
-volumes.
+volumes.  The source directory names are historical assembly locations; the
+reader-facing part titles below are the authoritative compiled-volume
+structure.  The frontmatter Source Assembly Map records how source files are
+assembled into the printed order.
 
 1. Foundations of Local Quantum Field Theory
 2. Particles, Scattering, and Analyticity
 3. Renormalization, Effective Field Theory, and Critical Phenomena
 4. Gauge Theory, Infrared Structure, and Anomalies
 5. Conformal Field Theory
-
-Future special-topic volumes are planned for integrable QFT, supersymmetric
-QFT, topological and cohomological QFT, global structure and extended
-operators, thermal and nonequilibrium QFT, constructive/lattice/numerical QFT,
-and QFT in curved spacetime.
+6. Integrable Quantum Field Theory
+7. Supersymmetric Quantum Field Theory
+8. Topological and Cohomological Quantum Field Theory
+9. Global Structure, Phases, and Extended Operators
+10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Constructive, Lattice, and Numerical Quantum Field Theory
+12. Quantum Field Theory in Curved Spacetime and Background Fields
 
 ## Build
 

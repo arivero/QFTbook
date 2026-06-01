@@ -89,9 +89,56 @@ def check_spectral_resolution_inner_product() -> None:
     )
 
 
+def check_noncompact_free_boson_charge_algebra() -> None:
+    # For the diagonal noncompact boson, the leading OPE factor obeys
+    # |z12|^{2ab}|z23|^{2(a+b)c} = |z23|^{2bc}|z12|^{2a(b+c)}
+    # once the common pairwise-distance factors are restored.  The finite
+    # check is the charge-quadratic identity used in the manuscript.
+    a = Fraction(2, 3)
+    b = Fraction(-5, 7)
+    c = Fraction(11, 13)
+    left_grouping = a * b + (a + b) * c
+    right_grouping = b * c + a * (b + c)
+    assert_equal(
+        "noncompact boson leading OPE charge associativity",
+        left_grouping,
+        right_grouping,
+    )
+
+    # Momentum labels form an additive Plancherel variable.  Smearing the
+    # distributional labelled fields turns charge conservation into ordinary
+    # convolution; the support of the convolution is the Minkowski sum of
+    # supports.  Here we verify the finite charge bookkeeping exactly.
+    charges_f = [Fraction(-1, 2), Fraction(1, 3)]
+    charges_g = [Fraction(5, 6), Fraction(7, 6)]
+    expected_sums = sorted(x + y for x in charges_f for y in charges_g)
+    assert_equal(
+        "noncompact boson smeared charge support",
+        expected_sums,
+        sorted([Fraction(1, 3), Fraction(2, 3), Fraction(7, 6), Fraction(3, 2)]),
+    )
+
+
+def check_noncompact_partition_density_modularity() -> None:
+    # The noncompact boson partition density has modular weights
+    # tau_2^{-1/2} |eta|^{-2}.  Under S, tau_2 -> tau_2 / |tau|^2 and
+    # |eta|^{-2} -> |tau|^{-1} |eta|^{-2}.  The powers of |tau| cancel.
+    tau2_power = Fraction(-1, 2)
+    eta_abs_inv_sq_power = Fraction(1)
+    tau_factor_from_tau2 = -2 * tau2_power
+    tau_factor_from_eta = -eta_abs_inv_sq_power
+    assert_equal(
+        "noncompact boson modular S weight cancellation",
+        tau_factor_from_tau2 + tau_factor_from_eta,
+        Fraction(0),
+    )
+
+
 def main() -> None:
     check_fusing_kernel_unitarity()
     check_spectral_resolution_inner_product()
+    check_noncompact_free_boson_charge_algebra()
+    check_noncompact_partition_density_modularity()
     print(
         "All nonrational CFT direct-integral and fusing-kernel checks passed."
     )
