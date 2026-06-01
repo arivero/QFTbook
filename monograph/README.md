@@ -8,6 +8,25 @@ The compiled manuscript contains only rewritten prose intended to stand as a
 monograph draft. Planning files and source transcriptions are kept outside the
 reader-facing TeX build.
 
+## Full Public Volume Roster
+
+The active compiled manuscript has exactly twelve public volumes at present.
+This is the full public volume list, in the same order used by
+`tex/main.tex`:
+
+1. Foundations of Local Quantum Field Theory
+2. Particles, Scattering, and Analyticity
+3. Renormalization, Effective Field Theory, and Critical Phenomena
+4. Gauge Theory, Infrared Structure, and Anomalies
+5. Conformal Field Theory
+6. Integrable Quantum Field Theory
+7. Supersymmetric Quantum Field Theory
+8. Topological and Cohomological Quantum Field Theory
+9. Global Structure, Phases, and Extended Operators
+10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Constructive, Lattice, and Numerical Quantum Field Theory
+12. Quantum Field Theory in Curved Spacetime and Background Fields
+
 ## Build
 
 From `monograph/tex/`:
@@ -22,8 +41,8 @@ Or from the repository root:
 tools/build_monograph.sh
 ```
 
-The current build is a twelve-volume active draft.  The table below is the
-full current volume list and the printed order of the manuscript; no
+The current build is a twelve-volume active draft.  The table below gives the
+same full current volume list with printed chapter ranges; no
 additional public volume is active outside this list.
 
 | Volume | Printed chapters | Title | Role in the monograph | Assembly file |

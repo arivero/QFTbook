@@ -11,9 +11,11 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Volume Quick Index
+## Full Public Volume Roster
 
-The active compiled monograph has twelve public volumes:
+The active compiled monograph has exactly twelve public volumes at present.
+This is the full public volume list, in the same order used by
+`monograph/tex/main.tex`:
 
 1. Foundations of Local Quantum Field Theory
 2. Particles, Scattering, and Analyticity
@@ -28,7 +30,7 @@ The active compiled monograph has twelve public volumes:
 11. Constructive, Lattice, and Numerical Quantum Field Theory
 12. Quantum Field Theory in Curved Spacetime and Background Fields
 
-## Complete Active Public Volume List
+## Complete Active Public Volume Table
 
 The compiled public manuscript currently consists of exactly twelve active
 reader-facing volumes.  The table below is the complete roster in the printed
