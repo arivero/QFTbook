@@ -92,6 +92,10 @@ numerics.
 - `x_m`, `sigma_m`, `rho_m`, `beta_m`, `e_m`: benchmark-manifest normalized
   coordinate vector, statistical error, finite-regulator envelope,
   matching-error coordinate, and total declared componentwise error.
+- `C_num`, `D_fin`, `F_fin`, `I_check`, `S_scope`: companion-script finite
+  certificate, finite regulator datum, finite output map, checked finite
+  identities, and scope boundary separating finite statements from continuum
+  claims.
 
 ## Claim Ledger
 
@@ -235,6 +239,15 @@ numerics.
   errors, regulator envelopes, matching errors, optional covariance data, and
   provenance; the finite pairwise certificate is
   \(|x_m-x_n|_{\rm comp}\le e_m+e_n\).
+- Defines the public companion-script finite certificate
+  \(C_{\rm num}=(D_{\rm fin},F_{\rm fin},I_{\rm check},S_{\rm scope})\):
+  finite regulator datum, finite output map, checked identities, and explicit
+  boundary against continuum or production-ensemble claims.
+- Adds a public finite-regulator certificate index for all current
+  `qft_scripts` families: spin/scalar Metropolis, compact-gauge samplers,
+  lattice analysis functionals, HMC/RHMC and Markov-chain diagnostics,
+  Hamiltonian truncation/TCSA/TFFSA matrices, DLCQ finite matrices,
+  extrapolation/manifest tools, and cluster sweep wrappers.
 - Records the current magnetic-Ising benchmark status: finite TFFSA block,
   spectral-flow, and exact \(E_8\) target scripts are finite certificates, not
   yet a full continuum comparison without cutoff counterterms and
@@ -304,6 +317,9 @@ plots.
   covariance/provenance data, total error envelopes, and reports the pairwise
   finite consistency matrix; it is a manifest-level compatibility check, not
   a continuum-agreement theorem.
+- Public finite-regulator certificate index in the chapter groups every
+  current `qft_scripts` entry by its mathematical certificate type and states
+  the corresponding non-certified continuum or production claim.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational and
   finite-matrix regression check for the Lagrange-interpolation obstruction,
   Richardson cancellation, integer-power extrapolation weights, and
@@ -358,6 +374,10 @@ plots.
   \(1+1\)-dimensional \(\phi^4\) DLCQ warmup, keeping the omitted zero mode
   and \(K\to\infty\) counterterm problem explicit, and paired it with a
   smoke script plus finite matrix-element checks.
+- 2026-06-01 issue #494 certificate-index pass: added the
+  `C_num=(D_fin,F_fin,I_check,S_scope)` finite-certificate index so the
+  public script layer is integrated into the manuscript without pretending
+  that smoke tests prove continuum QFT claims.
 - 2026-06-01 issue #494 correlated-extrapolation pass: added a reusable
   finite-regulator extrapolation script for correlated data and window
   diagnostics, with the manuscript text emphasizing that covariance choices,

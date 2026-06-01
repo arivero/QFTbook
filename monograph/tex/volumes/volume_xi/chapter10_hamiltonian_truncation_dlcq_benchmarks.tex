@@ -2597,6 +2597,115 @@ window/covariance/remainder-envelope data used by all three classes of
 methods, while the benchmark-manifest script records pairwise compatibility
 of normalized outputs across methods.
 
+\phantomsection
+\subsection*{Public Finite-Regulator Certificate Index}
+\label{subsec:public-finite-regulator-certificate-index}
+
+The companion-script layer is part of the mathematical presentation only
+when each script is read through a finite certificate.  A smoke run by itself
+is an implementation regression; it is not a QFT result.  The finite
+certificate attached to a script is the tuple
+\[
+  \mathcal C_{\rm num}
+  =
+  \bigl(
+    \mathcal D_{\rm fin},
+    F_{\rm fin},
+    \mathcal I_{\rm check},
+    \mathcal S_{\rm scope}
+  \bigr),
+\]
+where \(\mathcal D_{\rm fin}\) is the declared finite regulator datum,
+\(F_{\rm fin}\) is the finite output map computed by the script,
+\(\mathcal I_{\rm check}\) is the list of algebraic, spectral, measure, or
+statistical identities checked against the chapter, and
+\(\mathcal S_{\rm scope}\) is the boundary between the finite assertion and
+any continuum or infinite-volume assertion.  The smoke harness checks that
+the implementation still produces its declared finite output.  The
+corresponding calculation-check scripts, when present, check the identities
+in \(\mathcal I_{\rm check}\).  Neither layer replaces the estimates needed
+to pass from \(\mathcal D_{\rm fin}\) to a continuum QFT observable.
+
+The public scripts currently have the following finite-certificate meanings.
+\begin{description}[leftmargin=2em,labelindent=0pt,labelsep=0.5em,style=nextline]
+\item[Spin and scalar Metropolis.]
+The Ising and scalar \(\phi^4\) Metropolis scripts compute finite periodic
+lattice expectations for explicitly declared Boltzmann weights.  Their
+certificate is invariance of the finite target measure under the displayed
+single-site Metropolis kernels, together with local energy or
+action-difference identities.  They do not certify Onsager scaling,
+constructive \(\phi^4_2\), a critical surface, or an Ising CFT limit.
+
+\item[Compact gauge samplers.]
+The finite \(\mathbb Z_2\), \(SU(2)\) Metropolis, \(SU(2)\)
+heat-bath and overrelaxation, and \(SU(3)\) HDF5 sampler scripts compute finite
+compact link-integrals and Wilson-loop estimators.  Their certificates are
+gauge invariance of the measured finite observables, Haar measure
+preservation, detailed balance or conditional heat-bath invariance, and the
+declared data coordinate convention.  They do not certify continuum
+Yang--Mills, mass gaps, confinement, topological sector sampling, or a
+production continuum extrapolation.
+
+\item[Flow, smearing, topology, and static-potential analysis.]
+The Wilson flow, APE smearing, clover topology diagnostic,
+static potential, and glueball GEVP scripts compute finite analysis
+functionals of saved lattice data.  Their certificates are finite group
+projection, covariance of smearing, the declared clover diagnostic, nonlinear
+jackknife and bootstrap propagation for Wilson-loop ratios, and finite
+generalized eigenvalue residual control.  They do not define a continuum
+topological charge, a continuum static potential, or a physical glueball
+spectrum without the continuum estimates of
+Chapters~\ref{ch:constructive-wilson-lattice-gauge-theory} and
+\ref{ch:constructive-lattice-continuum-local-qft}.
+
+\item[HMC, RHMC, and Markov-chain error analysis.]
+The HMC and RHMC smoke module and the autocorrelation and resampling script compute
+finite algorithmic diagnostics: HMC reversibility defects, Hamiltonian
+changes, positive-matrix spectral edges, rational pseudofermion actions,
+solver residuals, autocorrelations, block errors, and jackknife and bootstrap
+coordinates.  Their certificates are the finite symplectic and reversibility
+identities, determinant or rational-determinant bookkeeping, and finite
+time-series formulae.  They do not certify ergodic sampling of a large
+production ensemble or a continuum-determinant limit.
+
+\item[Hamiltonian truncation and TCSA/TFFSA matrices.]
+The Ising energy benchmark, sine-Gordon zero-mode, sine-Gordon oscillator
+vertex, scalar \(\phi^4\) truncation, connected Ising TFFSA,
+TFFSA spectral-flow, and \(E_8\) target-data scripts compute finite matrices
+or exact finite target data.  Their certificates are finite Hermiticity,
+selection rules, normal-ordering conventions, residual or spectral-flow
+identities, and the Perron--Frobenius convention check for the \(E_8\) target
+table.  They do not certify a cutoff-extrapolated sine-Gordon spectrum, a
+nonintegrable \(\phi^4\) continuum spectrum, or the magnetic-Ising
+TCSA/TFFSA \(E_8\) comparison without the counterterm, finite-volume, and
+cutoff-error data specified above.
+
+\item[DLCQ and light-front finite matrices.]
+The scalar \(\phi^4\) DLCQ, large-\(N\) two-dimensional QCD DLCQ, and
+large-\(K\) extrapolation scripts compute finite matrices at harmonic
+resolution \(K\), together with diagnostics at fixed spectral label.  Their
+certificates are positive longitudinal partition bookkeeping, finite
+principal value or normal ordered matrix identities, positivity of the finite
+quadratic form in the declared model, and finite least squares amplification
+for a declared large-\(K\) ansatz.  They do not certify the \(K\to\infty\) continuum
+spectrum without zero-mode, endpoint, constraint, and remainder estimates.
+
+\item[Extrapolation, manifests, and cluster wrappers.]
+The finite-regulator extrapolation, benchmark-manifest, and cluster-grid
+scripts compute finite bookkeeping certificates: correlated-window intercepts
+with declared covariance and remainder envelopes, componentwise
+benchmark-manifest compatibility, and deterministic grid-to-task assignment
+for cluster sweeps.  They do not create a cutoff ansatz, validate a
+systematic error model, or promote a small cluster run to a continuum QFT
+calculation.
+\end{description}
+
+This index is deliberately redundant with the comments printed by the
+scripts and with \path{qft_scripts/README.md}, where exact filenames and
+smoke commands are listed.  Its role in the monograph is to make the finite
+mathematical object visible before the reader interprets any number produced
+by a public script.
+
 For the magnetic Ising theory, the present public scripts deliberately stop
 at finite certificates: the TFFSA connected-block matrix fixes the spin-field
 normalization convention, the spectral-flow script checks finite

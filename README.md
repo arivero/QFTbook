@@ -13,6 +13,38 @@ material are kept separate from the compiled monograph.
 
 ## Complete Volume Index And Program
 
+### Full Volume Roster At A Glance
+
+The table below is the complete public-facing volume roster at the present
+stage of the project.  Volumes I-XII are compiled into
+`monograph/tex/main.pdf`.  The remaining rows are planned subject-volume
+lines that have not yet been assigned Roman numerals; they are listed here so
+the public roadmap is explicit without pretending that unfinished material is
+already a numbered volume.
+
+| Label | Status | Volume line |
+| --- | --- | --- |
+| I | Active compiled volume | Foundations of Local Quantum Field Theory |
+| II | Active compiled volume | Particles, Scattering, and Analyticity |
+| III | Active compiled volume | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | Active compiled volume | Gauge Theory, Infrared Structure, and Anomalies |
+| V | Active compiled volume | Conformal Field Theory |
+| VI | Active compiled volume | Integrable Quantum Field Theory |
+| VII | Active compiled volume | Supersymmetric Quantum Field Theory |
+| VIII | Active compiled volume | Topological and Cohomological Quantum Field Theory |
+| IX | Active compiled volume | Global Structure, Phases, and Extended Operators |
+| X | Active compiled volume | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | Active compiled volume | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | Active compiled volume | Quantum Field Theory in Curved Spacetime and Background Fields |
+| Unassigned future line | Planned candidate | Large-N gauge theory, QCD strings, flux tubes, baryons, and gauge-string expansions |
+| Unassigned future line | Planned candidate | Advanced local-algebraic QFT and modular structure |
+| Unassigned future line | Planned candidate | Advanced scattering, amplitudes, resonances, and infrared-safe observables |
+| Unassigned future line | Planned candidate | Advanced supersymmetric theories and protected sectors |
+| Unassigned future line | Planned candidate | Advanced two-dimensional CFT and exact two-dimensional QFT |
+| Unassigned future line | Planned candidate | Advanced constructive, stochastic, and rigorous Wilsonian QFT |
+| Unassigned future line | Planned candidate | Advanced phases, defects, categorical symmetry, and extended-operator theory |
+| Unassigned future line | Planned candidate | Advanced curved-background, locally covariant, and semiclassical QFT |
+
 ### Active Compiled Volumes
 
 The active public manuscript currently consists of exactly twelve compiled

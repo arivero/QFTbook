@@ -44,6 +44,26 @@ python3 qft_scripts/benchmark_manifest_consistency.py --smoke
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
 notebooks or CI checks can consume the results without scraping prose.
 
+## How To Read A Script Result
+
+Every script is a finite-regulator certificate, not a continuum QFT claim.
+The corresponding manuscript discussion is in Volume XI, especially
+Chapter 6 for Monte Carlo and Chapter 10 for truncation, DLCQ, extrapolation,
+and benchmark manifests.
+
+For each script, the certificate consists of four pieces:
+
+1. a declared finite regulator datum;
+2. a finite output map computed by the script;
+3. algebraic, spectral, measure, or statistical identities checked by the
+   smoke mode and, where present, by `calculation-checks/`;
+4. an explicit scope boundary stating what continuum, infinite-volume,
+   large-cutoff, or production-ensemble claim is not certified.
+
+The smoke harness checks implementation health.  It does not prove a
+continuum limit, a physical spectrum, a mass gap, confinement, universality,
+or a systematic-error envelope.
+
 ## Cluster Templates
 
 `qft_scripts/cluster/` contains SLURM and SSH-control templates for running
