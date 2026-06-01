@@ -2325,9 +2325,47 @@ scheme.  For the two-point polynomial one obtains
 \end{align}
 The second line is a diagonal term in the energy-measure polynomial.  It is
 controlled by the second track moment, not by the square of the first moment.
-For higher energy polynomials, every repeated parton label similarly produces
-higher track moments.  These are not optional refinements: they are part of
-the definition of the lifted observable.  Omitting them changes the observable
+For a general \(k\)-point energy polynomial the exact finite formula is the
+following.  Let
+\[
+  \alpha:\{1,\ldots,k\}\longrightarrow\{1,\ldots,n\}
+\]
+record which short-distance parton supplies the energy in each detector slot.
+Independence of the finite track variables gives
+\begin{equation}
+  \mathbb E_T\,\mathcal E_f(\mu_{\rm tr})
+  =
+  \sum_{\alpha:\{1,\ldots,k\}\to\{1,\ldots,n\}}
+  \left(\prod_{r=1}^{k}E_{\alpha(r)}\right)
+  f\!\left(y_{\alpha(1)},\ldots,y_{\alpha(k)}\right)
+  \prod_{a\in\operatorname{im}\alpha}
+  m_{i_a}^{(|\alpha^{-1}(a)|)} .
+  \label{eq:track-lift-general-k-point-formula}
+\end{equation}
+Thus each block of detector slots fed by the same short-distance label uses
+the corresponding higher track moment.  For a three-point kernel, writing
+\(f_{abc}=f(y_a,y_b,y_c)\), the formula separates into
+\begin{align}
+  \mathbb E_T\,\mathcal E_f(\mu_{\rm tr})
+  &=
+  \sum_{\substack{a,b,c\\\text{distinct}}}
+  E_aE_bE_c\,f_{abc}\,
+  m_{i_a}^{(1)}m_{i_b}^{(1)}m_{i_c}^{(1)}
+  \nonumber\\
+  &\quad+
+  \sum_{a\ne b}
+  E_a^2E_b\,
+  \bigl(f_{aab}+f_{aba}+f_{baa}\bigr)\,
+  m_{i_a}^{(2)}m_{i_b}^{(1)}
+  \nonumber\\
+  &\quad+
+  \sum_a
+  E_a^3\,f_{aaa}\,m_{i_a}^{(3)} .
+  \label{eq:track-lift-three-point-moment-formula}
+\end{align}
+The diagonal and partial-diagonal pieces are not optional refinements: they
+are part of the definition of the lifted observable.  Omitting them, or
+replacing every track variable by its first moment, changes the observable
 whose short-distance coefficient is being computed.
 
 The same bookkeeping explains the collinear composition law behind

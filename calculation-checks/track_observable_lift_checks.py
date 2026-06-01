@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
+from itertools import product
 from typing import Mapping
 
 
@@ -69,6 +71,55 @@ def enumerate_lifted_two_point(
     return total
 
 
+def lifted_k_point(
+    energies: list[Fraction],
+    species: list[str],
+    tracks: Mapping[str, Distribution],
+    kernel: Mapping[tuple[int, ...], Fraction],
+    arity: int,
+) -> Fraction:
+    total = Fraction(0)
+    for labels in product(range(len(energies)), repeat=arity):
+        energy_factor = Fraction(1)
+        for label in labels:
+            energy_factor *= energies[label]
+
+        track_factor = Fraction(1)
+        for label, multiplicity in Counter(labels).items():
+            track_factor *= moment(tracks[species[label]], multiplicity)
+
+        total += energy_factor * kernel[labels] * track_factor
+    return total
+
+
+def enumerate_lifted_k_point(
+    energies: list[Fraction],
+    species: list[str],
+    tracks: Mapping[str, Distribution],
+    kernel: Mapping[tuple[int, ...], Fraction],
+    arity: int,
+) -> Fraction:
+    total = Fraction(0)
+    n = len(energies)
+
+    def rec(index: int, xs: list[Fraction], weight: Fraction) -> None:
+        nonlocal total
+        if index == n:
+            value = Fraction(0)
+            for labels in product(range(n), repeat=arity):
+                factor = kernel[labels]
+                for label in labels:
+                    factor *= energies[label] * xs[label]
+                value += factor
+            total += weight * value
+            return
+        for x, probability in tracks[species[index]].items():
+            rec(index + 1, xs + [x], weight * probability)
+
+    rec(0, [], Fraction(1))
+    return total
+
+
 def check_diagonal_track_moment() -> None:
     tracks = {"q": {Fraction(0): Fraction(1, 4), Fraction(1, 2): Fraction(1, 2), Fraction(1): Fraction(1, 4)}}
     energies = [Fraction(5)]
@@ -105,6 +156,33 @@ def check_two_particle_lift() -> None:
     )
 
 
+def check_three_point_track_lift() -> None:
+    tracks = {
+        "q": {Fraction(0): Fraction(1, 6), Fraction(1, 2): Fraction(1, 3), Fraction(1): Fraction(1, 2)},
+        "g": {Fraction(1, 5): Fraction(2, 5), Fraction(4, 5): Fraction(3, 5)},
+    }
+    energies = [Fraction(2), Fraction(5)]
+    species = ["q", "g"]
+    arity = 3
+    kernel = {
+        labels: Fraction(1 + labels[0] + 2 * labels[1] + 3 * labels[2], 7)
+        for labels in product(range(len(energies)), repeat=arity)
+    }
+
+    exact = lifted_k_point(energies, species, tracks, kernel, arity)
+    enumerated = enumerate_lifted_k_point(energies, species, tracks, kernel, arity)
+    assert_equal("three-point finite track lift", exact, enumerated)
+
+    naive_first_moment_only = Fraction(0)
+    for labels in product(range(len(energies)), repeat=arity):
+        factor = kernel[labels]
+        for label in labels:
+            factor *= energies[label] * moment(tracks[species[label]], 1)
+        naive_first_moment_only += factor
+    if naive_first_moment_only == exact:
+        raise AssertionError("first-moment replacement should miss diagonal track-moment terms")
+
+
 def check_collinear_composition_moments() -> None:
     left = {Fraction(0): Fraction(1, 3), Fraction(3, 4): Fraction(2, 3)}
     right = {Fraction(1, 5): Fraction(1, 2), Fraction(1): Fraction(1, 2)}
@@ -122,6 +200,7 @@ def check_collinear_composition_moments() -> None:
 def main() -> None:
     check_diagonal_track_moment()
     check_two_particle_lift()
+    check_three_point_track_lift()
     check_collinear_composition_moments()
     print("All finite track-observable lift checks passed.")
 

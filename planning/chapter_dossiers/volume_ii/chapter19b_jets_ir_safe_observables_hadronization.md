@@ -261,8 +261,10 @@ The chapter establishes:
      to a random charged-track energy measure and then taking conditional
      expectation.  Diagonal terms in a two-point energy polynomial depend on
      the second track moment \(m_i^{(2)}\), and higher repeated parton labels
-     require higher track moments; replacing every energy by the first charged
-     fraction changes the observable.
+     require higher track moments.  The general finite \(k\)-point formula is
+     a sum over maps from detector slots to short-distance labels; each label
+     appearing \(r\) times contributes \(m_i^{(r)}\).  Replacing every energy
+     by the first charged fraction changes the observable.
 11. Fragmentation functions are nonperturbative light-ray matrix elements with
     perturbative scale evolution; their finite-scale boundary data are not
     produced by fixed-order perturbation theory.
@@ -355,6 +357,12 @@ The chapter establishes:
   track-lift definition for energy-measure polynomials, exposed the diagonal
   second-moment term and collinear composition law, and added
   `calculation-checks/track_observable_lift_checks.py`.
+- 2026-06-01 issue #526 track-lift \(k\)-point pass: expanded the finite
+  track-observable lift from the displayed two-point case to the full
+  \(k\)-point map formula and the explicit three-point decomposition into
+  distinct, partial-diagonal, and full-diagonal terms.  The paired check now
+  verifies a nontrivial three-point kernel by exact enumeration and catches
+  the false first-moment replacement.
 - 2026-05-29 anti-wrapper pass: demoted the track-function normalization and
   first-moment proposition to a worked paragraph because the proof is the
   finite-kernel moment algebra; the substantive QFT datum remains the

@@ -1526,8 +1526,10 @@ Current checks:
   for discrete track measures.
 - `track_observable_lift_checks.py`: exact rational checks for the finite
   track-observable lift, verifying diagonal two-point terms with second track
-  moments, enumeration of the lifted two-particle energy polynomial, and the
-  first- and second-moment collinear composition identities.
+  moments, enumeration of the lifted two-particle energy polynomial, the
+  general \(k\)-point lift through a nontrivial three-point kernel with third
+  track moments, failure of naive first-moment replacement, and the first- and
+  second-moment collinear composition identities.
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
