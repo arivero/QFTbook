@@ -213,6 +213,40 @@ def check_backlund_restricted_qsystem() -> None:
                         )
 
 
+def check_sov_single_zero_shift() -> None:
+    """Check the RTT SoV zero-shift factors used in the separated equation."""
+
+    roots = [-0.7 + 0.2j, 0.15 - 0.4j, 1.1 + 0.05j]
+    b0 = 1.3 - 0.25j
+    sample_points = [-1.2 + 0.31j, 0.6 - 0.19j, 1.7 + 0.43j]
+
+    def b_polynomial(v: complex, zeros: list[complex]) -> complex:
+        value = b0
+        for root in zeros:
+            value *= v - root
+        return value
+
+    for alpha, root in enumerate(roots):
+        other_roots = [value for index, value in enumerate(roots) if index != alpha]
+        for v in sample_points:
+            if abs(v - root) < 1.0e-12:
+                continue
+            a_shift_factor = (root - v - I) / (root - v)
+            d_shift_factor = (root - v + I) / (root - v)
+            a_target = b_polynomial(v, other_roots + [root - I])
+            d_target = b_polynomial(v, other_roots + [root + I])
+            assert_close(
+                f"SoV A-shift alpha={alpha} v={v}",
+                b_polynomial(v, roots) * a_shift_factor,
+                a_target,
+            )
+            assert_close(
+                f"SoV D-shift alpha={alpha} v={v}",
+                b_polynomial(v, roots) * d_shift_factor,
+                d_target,
+            )
+
+
 def check_hirota_to_y_system() -> None:
     def t(a: int, s: int, shift: int) -> complex:
         return (
@@ -460,6 +494,7 @@ def main() -> None:
     check_dressed_vacuum_pole_factorization()
     check_qq_system()
     check_backlund_restricted_qsystem()
+    check_sov_single_zero_shift()
     check_hirota_to_y_system()
     check_t_system_gauge_freedom()
     check_baxter_casoratian_transport()

@@ -30,6 +30,10 @@
 - Trigonometric rank-one \(q\)-oscillator \(L\)-operator in explicit
   six-vertex normalization, including the local RLL identity and the Fock
   realization of the Borel \(q\)-oscillator generators.
+- Local separation-of-variables shift algebra from the RTT \(AB/DB\)
+  components: evaluating at a zero of \(B(u)\) moves exactly one separated
+  coordinate by \(\mp i\), and the covector normalization gives the
+  one-variable Baxter equation.
 - Interface statement separating relativistic integrable QFT from planar
   gauge-theory integrability.
 
@@ -48,6 +52,7 @@
 | \(Q^{(c)}_A\) | unnormalized restricted Q-system after eliminating color \(c\) |
 | \(\mathcal G_{a,s}(u)\) | T-gauge multiplier preserving Hirota covariance |
 | \(x_\alpha\) | separated variables |
+| \(e_\alpha\) | unit shift of the \(\alpha\)-th separated coordinate |
 | \(D,\mathsf a,\mathsf a^\dagger\) | q-oscillator Fock generators |
 | \(L_{\mathcal F}^{(+)}(x)\) | trigonometric rank-one q-oscillator auxiliary \(L\)-operator |
 
@@ -72,7 +77,10 @@
    information beyond the local bilinear identity.
 8. The trigonometric rank-one q-oscillator \(L\)-operator satisfies the local
    six-vertex RLL identity in the stated normalization.
-9. \(Q\)-operator and separation-of-variables constructions require
+9. The separated Baxter equation follows from the RTT component identities
+   by setting \(u=x_\alpha\), using \(B(x_\alpha)=0\) on the SoV covector,
+   and reading off the shifted zero of the resulting \(B(v)\)-eigenvalue.
+10. \(Q\)-operator and separation-of-variables constructions require
    representation-specific completeness theorems not supplied by the RTT
    algebra alone.
 
@@ -82,7 +90,8 @@
   pole-cancellation calculation paired with this chapter.
 - `calculation-checks/nested_integrability_checks.py` verifies the nested
   Cartan-form Bethe equations, dressed-vacuum pole cancellation, QQ/Hirota
-  algebra, Bäcklund restricted-Q-system algebra, exact T-gauge
+  algebra, Bäcklund restricted-Q-system algebra, SoV single-zero shift
+  factors, exact T-gauge
   covariance/Y-invariance, rank-one Baxter Casoratian transport, and the
   exact finite-basis q-oscillator local RLL convention.
 
@@ -99,6 +108,10 @@
 - 2026-06-01 Vol VI/Bäcklund restriction pass: made the finite Q-system
   meaning of a Bäcklund step explicit by restricting to Q-functions
   containing an eliminated color and recording the normalization/gauge issue.
+- 2026-06-01 Vol VI/SoV local shift pass: inserted the RTT \(AB/DB\)
+  component algebra at a zero of \(B(u)\), so the one-coordinate Baxter
+  equation is derived from the movement of a single separated zero rather
+  than asserted as a generic SoV slogan.
 
 ## Figures
 

@@ -950,17 +950,83 @@ For the \(2\times2\) monodromy
 RTT implies \([B(u),B(v)]=0\).  Suppose we are in a finite-dimensional
 representation for which the commuting coefficients of \(B(u)\) are
 simultaneously diagonalizable with simple joint spectrum.  On a joint
-eigenvector,
+right or left eigenline the \(B\)-eigenvalue has the polynomial form
 \[
   B(u)=B_0\prod_{\alpha=1}^{L-1}(u-x_\alpha).
 \]
 The numbers \(x_\alpha\) are separated coordinates.
 
+\paragraph{Local RTT shift algebra.}
+The separated-coordinate shift is an operator statement before it is a
+wavefunction equation.  In the rational RTT normalization compatible with
+\eqref{eq:xxx-baxter-tq}, the components involving \(A,D\), and \(B\) are
+understood as identities after multiplication by \(u-v\):
+\begin{align}
+  A(u)B(v)
+  &=
+  \frac{u-v-\ii}{u-v}\,B(v)A(u)
+  +
+  \frac{\ii}{u-v}\,B(u)A(v),
+  \label{eq:sov-rtt-a-b-component}\\
+  D(u)B(v)
+  &=
+  \frac{u-v+\ii}{u-v}\,B(v)D(u)
+  -
+  \frac{\ii}{u-v}\,B(u)D(v).
+  \label{eq:sov-rtt-d-b-component}
+\end{align}
+Let \(\bra{\boldsymbol x}\) be a simultaneous left eigenvector of the
+commuting coefficients of \(B\):
+\[
+  \bra{\boldsymbol x}B(v)
+  =
+  B_0\prod_{\beta=1}^{L-1}(v-x_\beta)\,\bra{\boldsymbol x}.
+\]
+Set \(u=x_\alpha\) in
+\eqref{eq:sov-rtt-a-b-component}--\eqref{eq:sov-rtt-d-b-component}.  The
+terms proportional to \(B(x_\alpha)\) vanish on the left eigenvector, so
+\begin{align}
+  \bra{\boldsymbol x}A(x_\alpha)B(v)
+  &=
+  B_0\,(v-x_\alpha+\ii)
+  \prod_{\beta\ne\alpha}(v-x_\beta)\,
+  \bra{\boldsymbol x}A(x_\alpha),
+  \label{eq:sov-a-shifts-one-zero}\\
+  \bra{\boldsymbol x}D(x_\alpha)B(v)
+  &=
+  B_0\,(v-x_\alpha-\ii)
+  \prod_{\beta\ne\alpha}(v-x_\beta)\,
+  \bra{\boldsymbol x}D(x_\alpha).
+  \label{eq:sov-d-shifts-one-zero}
+\end{align}
+Thus, whenever the resulting covector is nonzero and the joint spectrum is
+simple, \(\bra{\boldsymbol x}A(x_\alpha)\) lies on the eigenline with the
+single coordinate \(x_\alpha\) replaced by \(x_\alpha-\ii\), while
+\(\bra{\boldsymbol x}D(x_\alpha)\) lies on the eigenline with
+\(x_\alpha\) replaced by \(x_\alpha+\ii\).  A choice of SoV covector
+normalization fixes the scalar coefficients.  In the normalization used in
+the scalar Baxter equation,
+\begin{equation}
+  \bra{\boldsymbol x}A(x_\alpha)
+  =
+  a(x_\alpha)\bra{\boldsymbol x-\ii e_\alpha},
+  \qquad
+  \bra{\boldsymbol x}D(x_\alpha)
+  =
+  d(x_\alpha)\bra{\boldsymbol x+\ii e_\alpha}.
+  \label{eq:sov-covector-shift-normalization}
+\end{equation}
+Equations
+\eqref{eq:sov-a-shifts-one-zero}--\eqref{eq:sov-covector-shift-normalization}
+are the finite-chain construction behind the separated Baxter equation
+below.  The shift is not an analogy with classical separated coordinates; it
+is the residue of the RTT algebra at a zero of \(B\).
+
 \paragraph{Finite-chain SoV reduction under simple-spectrum hypotheses.}
 Assume the coefficients of \(B(u)\) have a simple joint eigenbasis
-\(\{\ket{\boldsymbol x}\}\), and assume the RTT relations act on that basis
-by shifting one separated coordinate at a time.  Then a transfer-matrix
-eigenvector with wavefunction
+\(\{\bra{\boldsymbol x}\}\) normalized as in
+\eqref{eq:sov-covector-shift-normalization}.  Then a transfer-matrix
+eigenvector with separated wavefunction
 \(\Psi(\boldsymbol x)=\langle\boldsymbol x|\Psi\rangle\) satisfies, for each
 \(\alpha=1,\ldots,L-1\), a one-variable Baxter equation
 \begin{equation}
@@ -975,16 +1041,12 @@ where \(a(u)\) and \(d(u)\) are the vacuum diagonal eigenvalue functions of
 \(A(u)\) and \(D(u)\), and \(e_\alpha\) shifts only the coordinate
 \(x_\alpha\).
 
-At a zero \(x_\alpha\) of \(B(u)\), the RTT relations imply that \(A(x_\alpha)\)
-and \(D(x_\alpha)\) map a joint \(B\)-eigenvector to vectors whose \(B\)-zeros
-are the same except for the single shifted coordinate
-\(x_\alpha\mapsto x_\alpha-\ii\) or \(x_\alpha\mapsto x_\alpha+\ii\),
-respectively.  This follows by commuting \(B(v)\) through \(A(x_\alpha)\) and
-\(D(x_\alpha)\) and then using \(B(x_\alpha)\ket{\boldsymbol x}=0\).  Acting
-with \(t(u)=A(u)+D(u)\) on an eigenvector and evaluating at \(u=x_\alpha\)
-therefore gives exactly \eqref{eq:sov-coordinate-baxter}.  The simple-spectrum
-hypothesis ensures that the shifted vectors are identified by their separated
-coordinates rather than by a nontrivial Jordan block.
+Act with \(t(u)=A(u)+D(u)\) on a transfer eigenvector \(\Psi\) and evaluate
+the left covector equation at \(u=x_\alpha\).  The two summands are evaluated
+by \eqref{eq:sov-covector-shift-normalization}, giving exactly
+\eqref{eq:sov-coordinate-baxter}.  The simple-spectrum hypothesis ensures
+that the shifted covectors are identified by their separated coordinates
+rather than by a nontrivial Jordan block or multiplicity space.
 
 When both the algebraic Bethe ansatz and SoV are valid, the Bethe polynomial
 \(Q(u)\) is the one-variable factor whose values solve

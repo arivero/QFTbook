@@ -900,6 +900,7 @@ Current checks:
   nested-integrability chapters, including the \(SU(3)\) worked nested-root
   solution, Cartan-matrix nested Bethe equations, dressed-vacuum pole
   factorization, determinant QQ and Bäcklund restricted-Q-system algebra,
+  the SoV single-zero shift factors from the RTT \(AB/DB\) components,
   Hirota-to-Y algebra, exact T-gauge covariance/Y-invariance, rank-one
   Baxter Casoratian transport for two finite-difference solutions, and the
   trigonometric rank-one q-oscillator local RLL identity in the chapter's
