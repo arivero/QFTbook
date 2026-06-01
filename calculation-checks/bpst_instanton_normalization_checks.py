@@ -15,6 +15,7 @@ relations
     S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2,
     d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
     one-loop scale/RG factors in the instanton density
+    the general charge-k framed ADHM quotient has local real dimension 4 k N
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
     volume power rho^(4N-5)
 
@@ -222,6 +223,30 @@ def check_k_one_adhm_dimension_and_cone_power() -> None:
         assert_equal(f"k=1 ADHM cone volume power SU({n_c})", cone_radial_power, 4 * n_c - 5)
 
 
+def check_general_adhm_quotient_dimension() -> None:
+    for n_c in range(2, 8):
+        for k in range(1, 6):
+            real_variables = 4 * k * k + 4 * k * n_c
+            complex_equation_real = 2 * k * k
+            real_moment_equation = k * k
+            unitary_quotient = k * k
+            quotient_dim = real_variables - complex_equation_real - real_moment_equation - unitary_quotient
+            assert_equal(f"ADHM quotient dimension k={k} SU({n_c})", quotient_dim, 4 * k * n_c)
+            assert_equal(f"centered ADHM dimension k={k} SU({n_c})", quotient_dim - 4, 4 * k * n_c - 4)
+
+            # The four center coordinates are the two complex trace parts
+            # tr(B_1)/k and tr(B_2)/k.  The traceless variables carry the
+            # remaining dimension before constraints.
+            traceless_b_real = 4 * (k * k - 1)
+            framing_real = 4 * k * n_c
+            centered_unconstrained = traceless_b_real + framing_real
+            assert_equal(
+                f"centered unconstrained ADHM variables k={k} SU({n_c})",
+                centered_unconstrained,
+                real_variables - 4,
+            )
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
@@ -229,6 +254,7 @@ def main() -> None:
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
+    check_general_adhm_quotient_dimension()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
 

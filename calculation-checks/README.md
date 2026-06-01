@@ -259,7 +259,8 @@ Current checks:
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\), plus the one-instanton density checks for the
   scale-invariant \(\dd^4a\,\dd\rho/\rho^5\) factor, zero-mode \(g\)-power,
-  one-loop \((\mu\rho)^{b_0}\) RG exponent, and the \(k=1\) ADHM orientation
+  one-loop \((\mu\rho)^{b_0}\) RG exponent, the general charge-\(k\) framed
+  ADHM quotient dimension \(4kN_c\), and the \(k=1\) ADHM orientation
   dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the

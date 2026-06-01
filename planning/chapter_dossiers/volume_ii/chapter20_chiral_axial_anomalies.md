@@ -62,7 +62,8 @@
   curvature calculation, the radial integral, topological charge, and
   coupling-coordinate conversion used there, as well as the
   scale-invariant one-instanton center-size measure, zero-mode coupling
-  power, and one-loop RG exponent.
+  power, one-loop RG exponent, and the general charge-\(k\) framed ADHM
+  quotient dimension count.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -152,7 +153,8 @@
 | \(\omega_\beta\) | local state associated with a selected theta branch |
 | \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
-| \(I,J,W,K\) | charge-one ADHM variables and vector spaces, with \(K\simeq\mathbb C\) and \(W\simeq\mathbb C^{N_c}\) |
+| \(B_1,B_2,I,J,W,K\) | ADHM variables and vector spaces, with \(K\simeq\mathbb C^k\) and \(W\simeq\mathbb C^{N_c}\) |
+| \(\mu_{\mathbb C},\mu_{\mathbb R}\) | complex and real ADHM moment maps |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
@@ -325,6 +327,12 @@
 - The \(SU(2)\), \(k=1\) instanton has eight bosonic zero modes:
   translations, size, and \(SU(2)/\mathbb Z_2\) orientation.  The
   \(SU(N_c)\) embedded one-instanton moduli count is \(4N_c\).
+- The general framed charge-\(k\) ADHM quotient is defined by
+  \(\mu_{\mathbb C}=0\), \(\mu_{\mathbb R}=0\), stability, and quotient by
+  \(U(K)\).  At smooth stable transverse points its local real dimension is
+  \(4kN_c\), with the four center coordinates given by the trace parts of
+  \(B_1,B_2\).  Small-instanton boundary strata correspond to charge
+  collapsing to point configurations in the Uhlenbeck compactification.
 - The centered \(k=1\) ADHM quotient is derived directly from
   \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
   over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension

@@ -2859,6 +2859,127 @@ and adding center and size gives \(4N_c\).  The precise global quotient by
 the center and by stabilizers affects the coordinate range, not this local
 dimension count.
 
+\begin{definition}[Framed ADHM quotient datum]
+\label{def:framed-adhm-quotient-datum}
+Let \(W\simeq\mathbb C^{N_c}\) be the framing vector space and
+\(K\simeq\mathbb C^k\) the instanton vector space.  A framed \(U(N_c)\)
+ADHM datum of charge \(k\) is a quadruple
+\[
+  (B_1,B_2,I,J)
+  \in
+  \operatorname{End}(K)^2
+  \oplus\operatorname{Hom}(W,K)
+  \oplus\operatorname{Hom}(K,W),
+\]
+with moment maps
+\begin{align}
+  \mu_{\mathbb C}
+  &:=
+  [B_1,B_2]+IJ
+  \in\operatorname{End}(K),
+  \nonumber\\
+  \mu_{\mathbb R}
+  &:=
+  [B_1,B_1^\dagger]+[B_2,B_2^\dagger]
+  +II^\dagger-J^\dagger J
+  \in\operatorname{Herm}(K).
+  \label{eq:general-adhm-moment-maps}
+\end{align}
+The unitary group \(U(K)\) acts by
+\begin{equation}
+  (B_1,B_2,I,J)
+  \longmapsto
+  (gB_1g^{-1},gB_2g^{-1},gI,Jg^{-1}).
+  \label{eq:general-adhm-unitary-action}
+\end{equation}
+The smooth framed ADHM quotient is the stable part of
+\begin{equation}
+  \mathcal M_{k,N_c}^{\rm ADHM}
+  :=
+  \{\,\mu_{\mathbb C}=0,\ \mu_{\mathbb R}=0\,\}/U(K).
+  \label{eq:general-adhm-quotient}
+\end{equation}
+Here stability means that there is no proper subspace
+\(S\subset K\) which contains \(I(W)\) and is preserved by both \(B_1\) and
+\(B_2\).  On this stable locus the framed gauge data have no residual
+endomorphism of \(K\) invisible to the framing.
+\end{definition}
+
+The ADHM construction identifies the smooth quotient
+\eqref{eq:general-adhm-quotient} with the framed smooth instanton moduli
+space on \(\mathbb R^4\), after matching the chosen orientation convention
+for self-duality versus anti-self-duality.  The full transform also builds
+the connection from the finite-dimensional linear algebra.  The calculation
+needed for the semiclassical measure at this stage is the local quotient
+dimension and the boundary behavior of the quotient, which follow directly
+from Definition~\ref{def:framed-adhm-quotient-datum}.
+
+\begin{proposition}[ADHM quotient dimension at smooth stable points]
+\label{prop:adhm-quotient-dimension-count}
+At a point of \(\mu_{\mathbb C}^{-1}(0)\cap\mu_{\mathbb R}^{-1}(0)\) where
+the stable \(U(K)\) action is free and the moment map is transverse to zero,
+the framed ADHM quotient
+\(\mathcal M_{k,N_c}^{\rm ADHM}\) has local real dimension
+\[
+  \dim_\mathbb R\mathcal M_{k,N_c}^{\rm ADHM}=4kN_c .
+\]
+The trace parts of \(B_1\) and \(B_2\) give the four center coordinates of
+the instanton configuration.  The centered quotient therefore has local real
+dimension \(4kN_c-4\).
+\end{proposition}
+
+\begin{proof}
+The real dimension of the unconstrained datum is
+\[
+  2\dim_\mathbb C\bigl(\operatorname{End}(K)^2\bigr)
+  +
+  2\dim_\mathbb C\operatorname{Hom}(W,K)
+  +
+  2\dim_\mathbb C\operatorname{Hom}(K,W)
+  =
+  4k^2+4kN_c .
+\]
+The complex equation \(\mu_{\mathbb C}=0\) imposes \(k^2\) complex
+conditions, hence \(2k^2\) real conditions.  The real moment-map equation
+\(\mu_{\mathbb R}=0\) imposes \(k^2\) real conditions because
+\(\mathfrak u(K)\) has real dimension \(k^2\).  Transversality makes these
+conditions independent at the point under consideration.
+
+Finally one divides by \(U(K)\), whose real dimension is \(k^2\).  Freeness
+on the stable locus means that this quotient subtracts exactly \(k^2\)
+dimensions locally.  Thus
+\[
+  (4k^2+4kN_c)-2k^2-k^2-k^2=4kN_c .
+\]
+The equations contain only commutators of \(B_1,B_2\) and the products
+\(IJ,II^\dagger,J^\dagger J\).  Shifting
+\[
+  B_\alpha\longmapsto B_\alpha+c_\alpha\mathbf 1_K,
+  \qquad \alpha=1,2,
+\]
+leaves the moment maps unchanged.  The two complex numbers
+\(\operatorname{tr}B_1/k\) and \(\operatorname{tr}B_2/k\) are therefore the
+four real translation coordinates in the complex structure used to write
+\(\mathbb R^4\simeq\mathbb C^2\).  Removing them gives centered dimension
+\(4kN_c-4\).
+\end{proof}
+
+The stability condition is also where the small-instanton boundary first
+appears algebraically.  If a stable datum degenerates so that a nonzero
+subspace of \(K\) decouples from the framing, the quotient leaves the smooth
+instanton stratum and records instanton charge concentrated at points of
+\(\mathbb R^4\).  The Uhlenbeck boundary has strata of the form
+\[
+  \mathcal M_{k-\ell,N_c}^{\rm smooth}
+  \times
+  \operatorname{Sym}^{\ell}(\mathbb R^4),
+  \qquad 1\le \ell\le k,
+\]
+where \(\ell\) units of charge have collapsed to pointlike ideal instantons.
+For a path integral this compactification carries analytic content: whether the
+semiclassical integral is finite depends on the determinant, operator
+insertions, and regulator behavior near these boundary strata.
+
 \begin{proposition}[Charge-one ADHM chart and the instanton orientation orbit]
 \label{prop:k-one-adhm-chart-orientation-orbit}
 Let \(W\simeq\mathbb C^{N_c}\) with its Hermitian inner product and let
