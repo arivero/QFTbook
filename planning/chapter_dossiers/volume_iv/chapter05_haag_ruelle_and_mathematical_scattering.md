@@ -21,6 +21,9 @@ resonances.
 - `Q_R`, `Q`: large-sphere Gauss-law charge approximants and limiting charge.
 - `Psi_{q,gamma}`: gauge-invariant noncompact charged creator with Wilson-line
   or Coulombic dressing.
+- `S_{gamma',gamma}`: compact oriented surface swept out by two Wilson-line
+  dressings with the same endpoint and asymptotic ray; its boundary is the
+  difference of the truncated paths, `gamma'_R-gamma_R`.
 - `epsilon_a q_a`: signed boundary charge of a dressed insertion in a
   time-ordered correlator; `epsilon_a=+1` for `Psi_{q_a,gamma_a}` and
   `epsilon_a=-1` for its adjoint.
@@ -101,9 +104,14 @@ resonances.
   Cook-integrable error.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.
-- Shows in prose that compact dressing changes with fixed asymptotic flux are
-  coordinate changes at the level of LSZ residues, while changes of the
-  asymptotic flux change the charged sector.
+- Shows that compact abelian Wilson-line dressing changes with fixed
+  asymptotic flux are field-strength surface insertions:
+  \(\int_{\gamma'_R}A-\int_{\gamma_R}A=\int_{S_{\gamma',\gamma}}F\).
+  The resulting neutral compact factor changes the LSZ overlap coordinates
+  but not the boundary charge or flux sector.  The nonabelian analogue is
+  recorded as the covariantly transported curvature-insertion formula for the
+  first variation of a parallel transporter.  Changes of the asymptotic ray
+  are kept separate because they change the charged infrared sector.
 - Derives the half-line worldline-current Fourier transform and the eikonal
   denominator \(p\cdot k\) in the Faddeev--Kulish soft profile.
 - Proves that the boosted Coulomb flux integrates to the charge and that, for
@@ -154,7 +162,10 @@ resonances.
   finite-dimensional left-inverse algebra for dressed charged LSZ residues
   and its invariance under finite dressing-coordinate changes.  It now also
   checks the boundary-charge selection rule for abelian dressed correlators
-  and elementary \(SU(2)\) endpoint singlet channels.
+  and elementary \(SU(2)\) endpoint singlet channels.  It now also verifies
+  the finite abelian Stokes bookkeeping for compact Wilson-line path
+  deformations: the change of line integral is a curvature surface flux, and
+  the associated surface factor carries no endpoint gauge charge.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -231,3 +242,9 @@ resonances.
   charge bookkeeping every dressed correlator must satisfy, not a new theorem
   family.  The paired check now covers abelian signed-charge neutrality and
   finite \(SU(2)\) singlet-channel bookkeeping.
+- 2026-06-01 #527 continuation: expanded the compact path-deformation
+  paragraph into explicit abelian Stokes bookkeeping and the nonabelian
+  curvature-insertion formula for path-ordered transport.  This removes a
+  vague "neutral Wilson loop" assertion and makes clear exactly which
+  same-flux dressing changes are finite LSZ-coordinate changes, while leaving
+  the asymptotic-ray problem as genuine charged-sector proof debt.

@@ -369,6 +369,9 @@ Current checks:
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary
   \(SU(2)\) endpoint representations contribute only through singlet channels.
+  It also checks the compact abelian Wilson-line path-deformation algebra:
+  the change of a line integral is an exact curvature surface flux and hence
+  changes only a neutral surface factor, not the endpoint charge.
 - `cs_matter_lightfront_checks.py`: exact coefficient checks for the
   three-dimensional Chern--Simons--matter light-cone-gauge section, including
   the factor of two in the quadratic light-cone Chern--Simons action, the

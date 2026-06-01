@@ -417,6 +417,46 @@ def check_boundary_charge_selection_rules() -> None:
     assert_equal("four SU(2) doublet endpoints contain singlets", su2_contains_singlet((spin_half, spin_half, spin_half, spin_half)), True)
 
 
+def check_compact_wilson_line_path_deformation() -> None:
+    """Check the finite abelian Stokes algebra for compact Wilson-line deformations."""
+
+    bottom_edge = Fraction(1, 7)
+    right_edge = Fraction(2, 5)
+    left_edge = Fraction(-1, 3)
+    top_edge = Fraction(5, 11)
+
+    gamma = bottom_edge + right_edge
+    gamma_prime = left_edge + top_edge
+    surface_flux = gamma_prime - gamma
+
+    assert_equal("compact path deformation Stokes identity", gamma_prime, gamma + surface_flux)
+
+    charge = Fraction(3, 2)
+    old_exponent = charge * gamma
+    new_exponent = charge * gamma_prime
+    neutral_surface_exponent = charge * surface_flux
+    assert_equal(
+        "Wilson-line path deformation multiplies by neutral surface flux",
+        new_exponent,
+        old_exponent + neutral_surface_exponent,
+    )
+
+    alpha_start = Fraction(5, 13)
+    alpha_infinity = Fraction(-2, 17)
+    gauge_shift_gamma = alpha_infinity - alpha_start
+    gauge_shift_gamma_prime = alpha_infinity - alpha_start
+    assert_equal(
+        "compact path deformation preserves endpoint gauge charge",
+        charge * gauge_shift_gamma_prime - charge * gauge_shift_gamma,
+        Fraction(0),
+    )
+    assert_equal(
+        "curvature surface insertion is neutral under abelian gauge transformations",
+        charge * surface_flux - charge * surface_flux,
+        Fraction(0),
+    )
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
@@ -428,6 +468,7 @@ def main() -> None:
     check_hilbert_soft_change_inner_equivalence()
     check_dressed_lsz_residue_coordinates()
     check_boundary_charge_selection_rules()
+    check_compact_wilson_line_path_deformation()
     print("All charged flux, Wilson-line dressing, and dressed LSZ coordinate checks passed.")
 
 

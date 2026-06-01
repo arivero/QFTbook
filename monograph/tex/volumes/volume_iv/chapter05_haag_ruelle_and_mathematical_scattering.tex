@@ -1585,15 +1585,67 @@ operator labels.  After multiplying by \(Z'^{-1/2}\), this coordinate change
 is removed on every external leg.  Contributions orthogonal to \(\Hilb_1\)
 are regular at the isolated shell and vanish in the external residue.
 
-For Wilson lines, a compact path deformation with fixed endpoints multiplies
-the operator by a neutral Wilson loop spanning the narrow surface between the
-two paths, up to regulator choices.  The preceding coordinate calculation is
-the limited sense in which such a deformation can leave a finite-regulator
-\(S\)-matrix unchanged.  It does not prove independence under changes of the
-asymptotic ray, because those changes modify the electric flux at infinity.  In
-massless QED the asymptotic ray or Coulomb profile is tied to the charged
-velocity, and changing it changes the infrared representation rather than
-merely the interpolating coordinate.
+For abelian Wilson lines this statement has a concrete finite-regulator
+meaning.  Let \(\gamma\) and \(\gamma'\) be two oriented paths beginning at
+\(x\) and sharing the same asymptotic ray.  Truncate both paths at a large
+radius and use the same endpoint cap at the truncation surface.  If the
+difference of the truncated paths is the boundary of an oriented compact
+surface \(S_{\gamma',\gamma}\),
+\[
+  \partial S_{\gamma',\gamma}
+  =
+  \gamma'_R-\gamma_R ,
+\]
+then, for a smooth regulated connection \(A\) with curvature \(F=\dd A\),
+Stokes' identity gives
+\[
+  \int_{\gamma'_R} A-\int_{\gamma_R}A
+  =
+  \int_{S_{\gamma',\gamma}} F .
+\]
+Hence
+\[
+  \Psi_{q,\gamma'}(x)
+  =
+  \Psi_{q,\gamma}(x)\,
+  \exp\left\{\ii q\int_{S_{\gamma',\gamma}}F\right\}
+\]
+in the abelian regulated theory, with the same short-distance prescription at
+the common starting point.  The extra factor is gauge invariant, neutral, and
+localized in the compact region swept out by the deformation.  It can change
+the overlap vector \(P_1\Psi_{q,\gamma}(f)\vac\) by a finite amount, but it
+does not change the Gauss-law boundary charge or the asymptotic flux label.
+This is the precise setting in which the preceding LSZ coordinate calculation
+applies.
+
+For a nonabelian connection the corresponding infinitesimal statement is a
+curvature-insertion formula rather than an ordinary scalar Stokes identity.
+With \(U_\gamma(s_2,s_1)\) defined by
+\[
+  \partial_{s_2}U_\gamma(s_2,s_1)
+  =
+  -\dot\gamma^\mu(s_2)A_\mu(\gamma(s_2))U_\gamma(s_2,s_1),
+  \qquad U_\gamma(s_1,s_1)=1,
+\]
+and with a compact path variation \(\eta^\nu(s)\) that vanishes at the
+endpoint and on the asymptotic tail, one has
+\[
+  \delta U_\gamma(\infty,0)
+  =
+  \int_0^\infty\dd s\,
+  U_\gamma(\infty,s)\,
+  F_{\mu\nu}(\gamma(s))\dot\gamma^\mu(s)\eta^\nu(s)\,
+  U_\gamma(s,0),
+\]
+in the same sign convention as the preceding differential equation.  Thus a
+compact nonabelian deformation inserts covariantly transported curvature along
+the finite strip between the two dressings; it is not a change of the endpoint
+representation at infinity.  None of these identities proves independence
+under changes of the asymptotic ray, because such changes are not compact:
+they modify the electric flux at infinity.  In massless QED the asymptotic
+ray or Coulomb profile is tied to the charged velocity, and changing it
+changes the infrared representation rather than merely the interpolating
+coordinate.
 
 \subsection{Asymptotic Wilson Lines, Flux, and Eikonal Data}
 
