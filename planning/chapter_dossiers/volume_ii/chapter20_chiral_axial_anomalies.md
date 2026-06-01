@@ -62,9 +62,10 @@
   curvature calculation, the radial integral, topological charge, and
   coupling-coordinate conversion used there, as well as the
   scale-invariant one-instanton center-size measure, zero-mode coupling
-  power, one-loop RG exponent, and the general charge-\(k\) framed ADHM
-  quotient dimension, quotient-density coarea scaling count, and finite
-  nonzero-mode determinant bookkeeping.
+  power, one-loop RG exponent, small-instanton boundary-exponent threshold,
+  and the general charge-\(k\) framed ADHM quotient dimension,
+  quotient-density coarea scaling count, and finite nonzero-mode determinant
+  bookkeeping.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -160,6 +161,7 @@
 | \(J_\mu(X)\) | coarea Jacobian for the ADHM moment-map submersion |
 | \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
+| \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
@@ -353,6 +355,12 @@
   counterterms are part of the regulated Lagrangian and shift the determinant
   datum by the corresponding finite counterterm difference in the instanton
   background.
+- A one-instanton boundary exponent datum records the small-\(\rho\)
+  behavior of a specified scalar insertion datum \(\mathcal X\) in the form
+  \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
+  integrability threshold is \(b_0+\beta_{\mathcal X}>4\), so asymptotic
+  freedom \(b_0>0\) is separated from local integrability of the particular
+  instanton integral.
 - The centered \(k=1\) ADHM quotient is derived directly from
   \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
   over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension

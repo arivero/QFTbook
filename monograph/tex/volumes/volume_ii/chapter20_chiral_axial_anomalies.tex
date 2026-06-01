@@ -3390,6 +3390,69 @@ therefore not an after-the-fact correction to a pre-existing determinant
 constant; they are part of the regulated path-integral Lagrangian whose
 finite determinant datum is being defined.
 
+\paragraph{Small-instanton boundary exponent.}
+For the charge-one stratum the Uhlenbeck boundary is reached by
+\(\rho\to0\) at fixed center \(a\) and orientation \(U\).  The local boundary
+question is therefore a statement about the \(\rho\)-asymptotics of the
+finite-regulator density after the nonzero-mode determinant and the
+renormalized insertions have been paired.  Let \(\mathcal X\) denote the
+insertions under consideration, including the fermion zero-mode factors
+needed to obtain a scalar from the determinant line.  A \emph{one-instanton
+boundary exponent datum} for \(\mathcal X\) consists of numbers
+\(\beta_{\mathcal X}\in\mathbb R\) and \(\delta>0\), and a locally bounded
+function \(A_{\mathcal X}(a,U)\), such that in a fixed compact set of centers
+and in a fixed orientation chart the renormalized finite-regulator chart
+density has a limit of the form
+\begin{equation}
+  \dd\mu_{Q=1,\mathcal X}
+  =
+  C_{\mathcal X}(\mu)\,
+  \rho^{\,b_0+\beta_{\mathcal X}-5}
+  \bigl(A_{\mathcal X}(a,U)+O(\rho^\delta)\bigr)\,
+  \dd^4a\,\dd\rho\,\dd\Omega_{N_c}.
+  \label{eq:one-instanton-boundary-exponent-datum}
+\end{equation}
+The \(b_0-5\) part is the universal scale and one-loop running content in
+\eqref{eq:one-instanton-universal-density}.  The exponent
+\(\beta_{\mathcal X}\) records the net small-size contribution of the
+renormalized operator insertions, fermion zero-mode wavefunctions, masses or
+sources used to saturate zero modes, and any residual determinant factor
+which has a finite power-law boundary behavior.  Logarithms may be included
+by allowing \(A_{\mathcal X}\) to be a polynomial in \(\log(\mu\rho)\); they
+leave the power threshold below unchanged.
+
+On this boundary chart the local integral over \(0<\rho<\epsilon\) is
+controlled by
+\[
+  \int_0^\epsilon
+  \rho^{\,b_0+\beta_{\mathcal X}-5}\,
+  (\log(\mu\rho))^q\,\dd\rho,
+  \qquad q\in\mathbb Z_{\ge0}.
+\]
+It is locally finite at \(\rho=0\) precisely when
+\begin{equation}
+  b_0+\beta_{\mathcal X}>4 .
+  \label{eq:one-instanton-small-rho-integrability-threshold}
+\end{equation}
+At equality the logarithmic integral diverges, and below equality the power
+integral diverges.  Thus asymptotic freedom, \(b_0>0\), is a statement about
+the running coupling at short distance, while small-instanton local
+integrability of a chosen observable requires the stronger
+observable-dependent condition
+\eqref{eq:one-instanton-small-rho-integrability-threshold}.  For the
+vacuum-density power with no extra small-\(\rho\) insertion factor
+\(\beta_{\mathcal X}=0\), the local boundary test is \(b_0>4\).  Different
+correlators have different \(\beta_{\mathcal X}\), and center collisions
+with local operator insertions introduce additional boundary faces which
+must be analyzed separately from the pure \(\rho\to0\) face.
+
+This boundary exponent datum is weaker than a complete multi-instanton
+measure theorem.  It isolates the analytic estimate needed near a single
+collapsed charge.  Higher charge involves simultaneous collisions of several
+instantons, partial Uhlenbeck strata
+\(\mathcal M_{k-\ell,N_c}\times\operatorname{Sym}^{\ell}(\mathbb R^4)\),
+and determinant behavior transverse to each stratum.
+
 \subsection{Scale and Running-Coupling Content of the One-Instanton Density}
 \label{subsec:one-instanton-density-rg-content}
 

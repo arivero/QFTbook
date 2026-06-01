@@ -15,6 +15,8 @@ relations
     S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2,
     d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
     one-loop scale/RG factors in the instanton density
+    the one-instanton small-rho boundary exponent criterion is
+    b0 + beta_X > 4
     the general charge-k framed ADHM quotient has local real dimension 4 k N
     the finite-dimensional ADHM quotient-density coarea formula has the
     correct orbit-volume and homogeneous-cone scaling
@@ -200,6 +202,41 @@ def check_one_instanton_density_scaling() -> None:
         assert_equal(f"one-loop RG exponent SU({n_c}) Nf={n_f}", leading_rg_derivative, 0)
 
 
+def check_small_instanton_boundary_exponent_criterion() -> None:
+    def b0(n_c: int, n_f: int) -> Fraction:
+        return Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+
+    def status(n_c: int, n_f: int, beta_x: Fraction) -> str:
+        threshold_margin = b0(n_c, n_f) + beta_x - 4
+        if threshold_margin > 0:
+            return "finite"
+        if threshold_margin == 0:
+            return "log_divergent"
+        return "power_divergent"
+
+    assert_equal("pure SU(2) vacuum small-rho status", status(2, 0, Fraction(0)), "finite")
+    assert_equal("pure SU(3) vacuum small-rho status", status(3, 0, Fraction(0)), "finite")
+
+    # Asymptotic freedom is b0>0, but local small-rho integrability of the
+    # vacuum one-instanton density with beta_X=0 requires b0>4.
+    assert_equal("SU(3) Nf=16 asymptotic freedom", b0(3, 16) > 0, True)
+    assert_equal("SU(3) Nf=16 vacuum small-rho status", status(3, 16, Fraction(0)), "power_divergent")
+    assert_equal("SU(3) Nf=16 with insertion beta=4 status", status(3, 16, Fraction(4)), "finite")
+
+    assert_equal("borderline log divergence", status(3, 9, Fraction(-1)), "log_divergent")
+
+    # For integrand rho^(b0+beta_X-5), the antiderivative denominator is
+    # b0+beta_X-4; this is exactly the threshold margin above.
+    for n_c, n_f, beta_x in [(2, 0, Fraction(0)), (3, 16, Fraction(0)), (3, 9, Fraction(-1))]:
+        exponent = b0(n_c, n_f) + beta_x - 5
+        antiderivative_denominator = exponent + 1
+        assert_equal(
+            f"small-rho threshold denominator SU({n_c}) Nf={n_f} beta={beta_x}",
+            antiderivative_denominator,
+            b0(n_c, n_f) + beta_x - 4,
+        )
+
+
 def check_k_one_adhm_dimension_and_cone_power() -> None:
     for n_c in range(2, 9):
         # k=1 ADHM data: B1,B2 are two complex center coordinates, while
@@ -339,6 +376,7 @@ def main() -> None:
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
+    check_small_instanton_boundary_exponent_criterion()
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
