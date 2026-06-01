@@ -63,7 +63,8 @@
   coupling-coordinate conversion used there, as well as the
   scale-invariant one-instanton center-size measure, zero-mode coupling
   power, one-loop RG exponent, and the general charge-\(k\) framed ADHM
-  quotient dimension and quotient-density coarea scaling count.
+  quotient dimension, quotient-density coarea scaling count, and finite
+  nonzero-mode determinant bookkeeping.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -157,6 +158,8 @@
 | \(\mu_{\mathbb C},\mu_{\mathbb R}\) | complex and real ADHM moment maps |
 | \(M_{AB}(X)\) | orbit Gram matrix for the \(U(K)\) action on the ADHM level set |
 | \(J_\mu(X)\) | coarea Jacobian for the ADHM moment-map submersion |
+| \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
+| \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
@@ -343,6 +346,13 @@
   zero-mode part of the instanton measure; nonzero-mode determinants,
   operator renormalization, and boundary estimates remain separate analytic
   data.
+- The finite-regulator nonzero-mode datum \(\mathcal W_\Lambda^{\rm nz}\)
+  separates the bosonic Hessian determinant, ghost determinant, and
+  fermion determinant/Pfaffian-line factor.  It is a scalar only after the
+  anomaly-line and fermion-zero-mode pairings have been specified.  Local
+  counterterms are part of the regulated Lagrangian and shift the determinant
+  datum by the corresponding finite counterterm difference in the instanton
+  background.
 - The centered \(k=1\) ADHM quotient is derived directly from
   \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
   over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension

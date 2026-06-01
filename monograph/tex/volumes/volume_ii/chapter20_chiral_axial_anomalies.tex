@@ -3284,6 +3284,112 @@ in a specified renormalization scheme.  What is scheme independent at this
 stage is the topological sector, the zero-mode count, the finite-regulator
 construction of the measure, and the exponential action.
 
+\paragraph{Finite-regulator determinant datum.}
+The symbol ``determinant constant'' hides several different objects unless
+the regulator is kept explicit.  At fixed \(\Lambda\), in a gauge slice near
+an instanton \(A_z\), let
+\[
+  L_{\Lambda,z}^{\rm bos}:N_z\mathcal M_\Lambda\longrightarrow
+  N_z\mathcal M_\Lambda
+\]
+be the bosonic Hessian on the normal modes to the collective-coordinate
+manifold, and let
+\[
+  M_{\Lambda,z}^{\rm gh}:C_{\Lambda,z}^{\rm gh}\longrightarrow
+  C_{\Lambda,z}^{\rm gh}
+\]
+be the finite Faddeev--Popov ghost operator with residual stabilizer zero
+modes removed.  For a fermion multiplet \(R\), write
+\[
+  \mathcal D_{\Lambda,z}^{R}:\mathcal S_{\Lambda,z}^{R,+}
+  \longrightarrow \mathcal S_{\Lambda,z}^{R,-}
+\]
+for the regulated chiral Dirac operator.  Its zero modes are not included in
+the nonzero-mode determinant; they are the Grassmann collective coordinates
+whose saturation is described below.  The nonzero-mode determinant datum is
+\begin{equation}
+  \mathcal W_{\Lambda}^{\rm nz}(z)
+  :=
+  \frac{\det{}' M_{\Lambda,z}^{\rm gh}}
+       {\det{}' M_{\Lambda,0}^{\rm gh}}
+  \left(
+    \frac{\det L_{\Lambda,0}^{\rm bos}}
+         {\det{}' L_{\Lambda,z}^{\rm bos}}
+  \right)^{1/2}
+  \bigotimes_R
+  \frac{\operatorname{Pf}{}' \mathcal D_{\Lambda,z}^{R}}
+       {\operatorname{Pf} \mathcal D_{\Lambda,0}^{R}} .
+  \label{eq:finite-regulator-instanton-nonzero-determinant-datum}
+\end{equation}
+The reference subscript \(0\) denotes the corresponding finite-regulator
+operator in the chosen topologically trivial background and in the same
+normalization of fields and gauge-group density.  The primes mean that
+collective-coordinate zero modes, residual gauge zero modes, and fermion zero
+modes have been removed before taking the finite determinant or Pfaffian.
+
+For a vectorlike Dirac pair, after choosing the standard conjugate pairing,
+the fermion factor in
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-datum} is an
+ordinary scalar.  For a genuinely chiral fermion it is a vector in the
+appropriate determinant or Pfaffian line over the background \(A_z\); a
+scalar appears only after pairing this vector with the fermion zero-mode
+insertions and with any anomaly-inflow or determinant-line trivialization
+specified by the theory.  This is the same determinant-line convention used
+in Chapter~\ref{ch:curved-eta-invariants-global-anomalies}.  Thus an instanton
+amplitude is not a number until the anomaly-line pairing and zero-mode
+saturation have also been specified.
+
+With this notation the finite-regulator one-instanton contribution in a
+single smooth chart, for insertions whose fermion zero-mode and anomaly-line
+pairings have been specified, has the finite chart expression
+\begin{equation}
+  \dd\mu_{\Lambda,Q=1}(z)
+  =
+  \exp[-S_\Lambda(A_z)]\,
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),
+  \label{eq:finite-regulator-instanton-measure-datum}
+\end{equation}
+where \(\dd\nu_{\Lambda,\mathcal M}\) is the zero-mode density from
+\eqref{eq:collective-coordinate-bosonic-measure}, or equivalently the ADHM
+quotient density of Definition~\ref{def:adhm-quotient-density} after matching
+the ADHM coordinates to the regulated gauge-field slice.  Formula
+\eqref{eq:finite-regulator-instanton-measure-datum} is a finite-dimensional
+statement.  The continuum expression is the assertion that the product of
+\(\mathcal W_{\Lambda}^{\rm nz}\), the coupling coordinate in
+\(S_\Lambda\), and the renormalized operator insertions has a limit in the
+chosen scheme.
+
+The finite Gaussian origin of
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-datum} is as
+follows.  A real bosonic normal integral with positive quadratic form \(L\)
+gives \((\det L)^{-1/2}\) up to the universal power of \(2\pi\) already
+accounted for in the stationary-phase convention.  A complex ghost Berezin
+integral gives \(\det M^{\rm gh}\).  A real fermionic quadratic form gives a
+Pfaffian; a complex chiral determinant is the corresponding determinant-line
+version of the same finite exterior-algebra construction.  Removing zero
+modes before taking these determinants is not optional: the removed
+directions are precisely the collective coordinates or the fermion variables
+which must be integrated or saturated separately.
+
+Finally, changing the finite-regulator Lagrangian by a local counterterm
+\(C_\Lambda[A]\) multiplies
+\eqref{eq:finite-regulator-instanton-measure-datum} by
+\(\exp[-C_\Lambda(A_z)+C_\Lambda(0)]\).  If the one-instanton chart reduces
+this difference to
+\[
+  C_\Lambda(A_z)-C_\Lambda(0)
+  =
+  c_0(\Lambda)+c_1(\Lambda)\log(\mu\rho)
+  +R_\Lambda(\rho,U),
+\]
+then \(c_0\) changes the scheme-dependent overall constant, \(c_1\) changes
+the displayed power of \(\mu\rho\), and the remainder \(R_\Lambda\) is part
+of the unresolved boundary and continuum-limit analysis.  Counterterms are
+therefore not an after-the-fact correction to a pre-existing determinant
+constant; they are part of the regulated path-integral Lagrangian whose
+finite determinant datum is being defined.
+
 \subsection{Scale and Running-Coupling Content of the One-Instanton Density}
 \label{subsec:one-instanton-density-rg-content}
 

@@ -18,6 +18,8 @@ relations
     the general charge-k framed ADHM quotient has local real dimension 4 k N
     the finite-dimensional ADHM quotient-density coarea formula has the
     correct orbit-volume and homogeneous-cone scaling
+    the finite-regulator nonzero-mode determinant datum has the correct
+    boson/ghost/fermion determinant powers and counterterm shifts
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
     volume power rho^(4N-5)
 
@@ -74,6 +76,19 @@ def eta(a: int, mu: int, nu: int) -> int:
 def assert_equal(name: str, lhs: object, rhs: object) -> None:
     if lhs != rhs:
         raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+
+
+def det_fraction(matrix: list[list[Fraction]]) -> Fraction:
+    n = len(matrix)
+    if n == 0:
+        return Fraction(1)
+    if n == 1:
+        return matrix[0][0]
+    total = Fraction(0)
+    for j in range(n):
+        minor = [row[:j] + row[j + 1 :] for row in matrix[1:]]
+        total += ((-1) ** j) * matrix[0][j] * det_fraction(minor)
+    return total
 
 
 def check_eta_self_duality() -> None:
@@ -279,6 +294,44 @@ def check_adhm_quotient_density_coarea_scaling() -> None:
             )
 
 
+def check_finite_regulator_determinant_datum() -> None:
+    # Finite toy Hessians after zero modes are removed.
+    boson_vacuum = [[Fraction(2), Fraction(0), Fraction(0)],
+                    [Fraction(0), Fraction(3), Fraction(0)],
+                    [Fraction(0), Fraction(0), Fraction(5)]]
+    boson_inst_nonzero = [[Fraction(7), Fraction(0)],
+                          [Fraction(0), Fraction(11)]]
+    ghost_vacuum = [[Fraction(13), Fraction(0)], [Fraction(0), Fraction(17)]]
+    ghost_inst_nonzero = [[Fraction(19), Fraction(0)], [Fraction(0), Fraction(23)]]
+
+    boson_ratio_squared = det_fraction(boson_vacuum) / det_fraction(boson_inst_nonzero)
+    ghost_ratio = det_fraction(ghost_inst_nonzero) / det_fraction(ghost_vacuum)
+    assert_equal("bosonic determinant inverse square factor squared", boson_ratio_squared, Fraction(30, 77))
+    assert_equal("ghost determinant numerator factor", ghost_ratio, Fraction(437, 221))
+
+    # A real antisymmetric fermion block [[0,a],[-a,0]] has Pfaffian a.
+    # For two blocks, Pfaffians multiply.  Zero-mode blocks are omitted.
+    fermion_inst_pf = Fraction(29) * Fraction(31)
+    fermion_vac_pf = Fraction(37) * Fraction(41)
+    fermion_ratio = fermion_inst_pf / fermion_vac_pf
+    assert_equal("fermion Pfaffian nonzero ratio", fermion_ratio, Fraction(899, 1517))
+
+    # The whole scalar datum in a vectorlike toy model has one ghost factor,
+    # one inverse-square-root bosonic factor, and one Pfaffian factor.  Track
+    # the square to avoid irrational square roots while preserving powers.
+    scalar_weight_squared = boson_ratio_squared * ghost_ratio * ghost_ratio * fermion_ratio * fermion_ratio
+    expected = Fraction(30, 77) * Fraction(437, 221) ** 2 * Fraction(899, 1517) ** 2
+    assert_equal("finite determinant datum squared", scalar_weight_squared, expected)
+
+    # A local counterterm c0+c1 log(mu rho) multiplies the density by
+    # exp(-c0) (mu rho)^(-c1).  Check the exponent bookkeeping used in the
+    # manuscript discussion.
+    old_power = Fraction(11, 3)
+    c1 = Fraction(2, 5)
+    new_power = old_power - c1
+    assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
@@ -288,6 +341,7 @@ def main() -> None:
     check_one_instanton_density_scaling()
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
+    check_finite_regulator_determinant_datum()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
 

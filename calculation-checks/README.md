@@ -261,8 +261,9 @@ Current checks:
   scale-invariant \(\dd^4a\,\dd\rho/\rho^5\) factor, zero-mode \(g\)-power,
   one-loop \((\mu\rho)^{b_0}\) RG exponent, the general charge-\(k\) framed
   ADHM quotient dimension \(4kN_c\), the coarea/orbit-volume scaling of the
-  ADHM quotient density, and the \(k=1\) ADHM orientation dimension and
-  cone-volume power.
+  ADHM quotient density, the finite-regulator nonzero-mode determinant
+  bookkeeping, and the \(k=1\) ADHM orientation dimension and cone-volume
+  power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
