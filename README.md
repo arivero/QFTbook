@@ -29,10 +29,12 @@ below is the complete compiled volume list, in printed order:
 11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
 12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
 
-The table below gives the same complete list with continuous chapter ranges,
-present chapter counts, subject roles, and the assembly file that
-`monograph/tex/main.tex` inputs.  The detailed chapter map later in this
-README expands each row.
+The table below gives the same complete list with continuous printed chapter
+ranges, printed chapter counts, subject roles, and the assembly file that
+`monograph/tex/main.tex` inputs.  These counts are counts of `\chapter`
+entries in the compiled PDF, not raw `\input` lines: Volume IV also inputs the
+spinor-convention source as a section inside Chapter 40.  The detailed chapter
+map later in this README expands each row.
 
 | Volume | Chapter range | Count | Title | Role in the monograph | Assembly file |
 | --- | ---: | ---: | --- | --- | --- |

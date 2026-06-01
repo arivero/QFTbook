@@ -65,6 +65,9 @@ locations.  They do not by themselves define the compiled volume order.  The
 compiled order is defined by the manifest files
 `monograph/tex/volumes/volume_*/*_current.tex`, each of which lists the
 chapters included in that compiled volume.
+Chapter counts below are printed `\chapter` counts, not raw input counts.
+For example, Volume IV currently has one extra section-level input for the
+spinor-convention material inside its first printed chapter.
 
 | Compiled volume | Part title | Chapter count | On-disk chapter directories used |
 | --- | --- | ---: | --- |
