@@ -46,6 +46,9 @@ The chapter establishes:
   subsequent hypothesis rather than hidden in the identity;
 - controlled-approximation statements for perturbative jet predictions and
   parton-shower logarithmic accuracy;
+- a finite non-global soft-dipole evolution datum for angular veto
+  measurements, deriving the first non-global coefficient from the nonlinear
+  real-emission term into unmeasured cells;
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
@@ -118,6 +121,12 @@ The chapter establishes:
     Lagrangian to Wilson lines in external operators and soft matrix elements.
     It does not by itself prove subleading-power factorization or Glauber
     cancellation.
+8c. Non-global angular measurements are not governed by a single linear soft
+    anomalous dimension.  In a finite soft-dipole cell datum, unmeasured
+    emissions are real--virtual balanced at first order but split the original
+    dipole into two dipoles; differentiating the finite evolution at \(L=0\)
+    yields the first non-global coefficient
+    \(\sum_u K_{ij}^u(A_{iu}+A_{uj}-A_{ij})\).
 9. Parton showers are controlled approximations whose logarithmic accuracy is
    observable- and scheme-dependent.
 9a. Soft drop with \(\beta_{\rm SD}>0\) has a collinear-safe groomed
@@ -225,3 +234,8 @@ The chapter establishes:
   section with a two-jet SCET operator datum, finite soft Wilson-line decoupling
   proof, explicit overlap/zero-bin and rapidity-regulator requirements, and
   `calculation-checks/scet_factorization_checks.py`.
+- 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
+  soft-dipole evolution datum for non-global veto measurements, derived the
+  second-order coefficient separating the global Sudakov square from the
+  first non-global term, and added
+  `calculation-checks/qcd_non_global_log_checks.py`.
