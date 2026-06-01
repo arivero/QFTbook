@@ -1278,6 +1278,145 @@ function, overlap subtractions, running coupling, finite splitting functions,
 matching to fixed order, non-global and clustering effects where present, and
 the hadronization coordinate appropriate to the measured mass region.
 
+\paragraph{Renormalized soft-drop mass factorization datum.}
+The preceding radiator becomes a QCD prediction only after the measured
+groomed-mass coordinate has been embedded in a renormalized operator datum.
+Let \(Q\) denote the hard energy scale of the measured jet, for instance
+\(Q=p_T R_0\) in a small-radius hadron-collider chart, and let
+\[
+  \rho=\frac{m_{J,{\rm gr}}^2}{Q^2}.
+\]
+In the soft-collinear coordinates of
+Controlled Approximation~\ref{ca:soft-drop-mass-fixed-coupling-radiator}, the
+emission that lies simultaneously on the mass boundary and on the soft-drop
+boundary satisfies
+\[
+  z\theta^2=\rho,
+  \qquad
+  z=z_{\rm cut}\theta^{\beta_{\rm SD}}.
+\]
+Solving these two equations gives the boundary scales
+\begin{equation}
+  \theta_*=
+  \left(\frac{\rho}{z_{\rm cut}}\right)^{1/(2+\beta_{\rm SD})},
+  \qquad
+  z_*=
+  z_{\rm cut}^{2/(2+\beta_{\rm SD})}
+  \rho^{\beta_{\rm SD}/(2+\beta_{\rm SD})}.
+  \label{eq:soft-drop-boundary-scales}
+\end{equation}
+Thus \(z_*\theta_*^2=\rho\) and \(z_*=z_{\rm cut}\theta_*^{\beta_{\rm SD}}\).
+These identities are not a factorization theorem, but they determine the
+scales that any such theorem must see: ordinary collinear radiation carrying
+the measured jet mass has virtuality of order \(Q^2\rho\), while radiation
+near the grooming boundary has light-cone components of order
+\[
+  p_{\rm cs}^-\sim Qz_*,
+  \qquad
+  p_{\rm cs}^+\sim Q\rho,
+  \qquad
+  |p_{{\rm cs}\perp}|\sim Q\sqrt{\rho z_*}.
+\]
+Consequently its invariant transverse scale is
+\begin{equation}
+  \mu_{\rm cs}\sim Q\sqrt{\rho z_*},
+  \qquad
+  \mu_J\sim Q\sqrt{\rho},
+  \qquad
+  \mu_G\sim Qz_{\rm cut},
+  \qquad
+  \mu_H\sim Q .
+  \label{eq:soft-drop-natural-scales}
+\end{equation}
+For \(\beta_{\rm SD}=0\), \(z_*=z_{\rm cut}\) and
+\(\mu_{\rm cs}\sim Q\sqrt{\rho z_{\rm cut}}\); this is the scale separation
+behind the single-logarithmic mMDT radiator in
+\eqref{eq:mmdt-single-log-radiator}.
+
+\begin{definition}[Soft-drop groomed-mass factorization datum]
+\label{def:soft-drop-mass-factorization-datum}
+Fix the jet algorithm, recoil convention, recombination scheme, hard process,
+partonic channel \(i\), subtraction scheme, and soft-drop parameters
+\((z_{\rm cut},\beta_{\rm SD})\).  A leading singular soft-drop groomed-mass
+factorization datum consists of:
+\begin{enumerate}
+  \item a hard coefficient \(H_i(Q,\mu)\) for the short-distance production of
+  the measured energetic parton or color representation;
+  \item a global-soft veto coordinate \(S^{G}_i(z_{\rm cut},R_0,\mu)\)
+  describing wide-angle soft radiation that is removed by grooming but affects
+  the probability that the event lies in the selected groomed-jet sample;
+  \item a renormalized collinear jet distribution \(J_i(\rho_J,\mu)\) and a
+  renormalized collinear-soft distribution
+  \(S^{\rm cs}_{i,{\rm SD}}(\rho_{\rm cs};z_{\rm cut},\beta_{\rm SD},R_0,\mu)\),
+  both understood as distributions paired with endpoint test functions;
+  \item the measurement decomposition
+  \(\rho=\rho_J+\rho_{\rm cs}\) in the leading singular chart, together with
+  the overlap-subtraction and rapidity-renormalization data needed to avoid
+  double counting the common soft-collinear boundary;
+  \item anomalous dimensions, in the same scheme, satisfying the common-scale
+  consistency condition
+  \begin{equation}
+    \gamma_H+\gamma_G+\gamma_J+\gamma_{\rm cs}=0
+    \label{eq:soft-drop-factorization-rg-consistency}
+  \end{equation}
+  as an identity of transform-space functions or, before transform, of
+  convolution kernels;
+  \item a remainder functional \(R_{\rm SD}\) on the stated test-function space,
+  recording power corrections in \(\rho,z_{\rm cut},R_0\), finite splitting
+  functions beyond the declared singular order, recoil and clustering effects,
+  non-global correlations not included in \(S^G_i\), Glauber obstructions if
+  the measurement is not inclusive enough, and nonperturbative coordinates when
+  one of the scales in \eqref{eq:soft-drop-natural-scales} approaches
+  \(\Lambda_{\rm QCD}\).
+\end{enumerate}
+The corresponding singular coordinate is
+\begin{equation}
+\begin{aligned}
+  \left\langle
+  \frac{\dd\Sigma^{\rm SD}_{i,{\rm sing}}}{\dd\rho},
+  \varphi
+  \right\rangle
+  &=
+  H_i(Q,\mu)\,S^G_i(z_{\rm cut},R_0,\mu)
+  \int \dd\rho_J\,\dd\rho_{\rm cs}\,
+  J_i(\rho_J,\mu)
+  S^{\rm cs}_{i,{\rm SD}}(\rho_{\rm cs},\mu)
+  \varphi(\rho_J+\rho_{\rm cs})
+\\
+  &\quad+
+  \left\langle R_{\rm SD},\varphi\right\rangle ,
+  \label{eq:soft-drop-mass-factorization-datum}
+\end{aligned}
+\end{equation}
+for every endpoint test function \(\varphi\) in the declared domain.  The
+symbols \(S^G_i\), \(J_i\), and \(S^{\rm cs}_{i,{\rm SD}}\) do not have
+standalone physical meaning outside this common datum; finite scheme changes
+may move terms among them only if
+\eqref{eq:soft-drop-factorization-rg-consistency} and the paired distribution
+\eqref{eq:soft-drop-mass-factorization-datum} are preserved.
+\end{definition}
+
+\begin{controlledapproximation}[Perturbative soft-drop mass resummation]
+\label{ca:soft-drop-mass-factorized-resummation}
+A perturbative resummation based on
+Definition~\ref{def:soft-drop-mass-factorization-datum} is controlled on a
+region of endpoint tests only when the scales
+\(\mu_H,\mu_G,\mu_J,\mu_{\rm cs}\) in
+\eqref{eq:soft-drop-natural-scales} remain in the perturbative regime, the
+factorization remainder \(R_{\rm SD}\) is bounded in the declared topology, and
+the logarithmic-accuracy label specifies the anomalous dimensions, boundary
+matching functions, fixed-order matching prescription, rapidity scheme if
+present, and scale-profile map used to avoid crossing nonperturbative
+regions.  If \(\mu_{\rm cs}\) is of order \(\Lambda_{\rm QCD}\), the
+collinear-soft distribution in
+\eqref{eq:soft-drop-mass-factorization-datum} must be replaced by a
+nonperturbative shape coordinate or by a regulator-level reconstruction
+observable with its own matching theorem.  A Monte-Carlo tune or an empirical
+model may supply a useful phenomenological coordinate, but it is then an
+additional input, not a derivation of the soft-drop mass distribution from
+perturbative QCD.
+\end{controlledapproximation}
+
 \begin{definition}[\(N\)-subjettiness]
 \label{def:n-subjettiness}
 For a jet with constituents \(k\), choose \(N\) axes

@@ -6,12 +6,13 @@ algebraic facts used in the exposition: convolution of jet and soft
 distributions preserves normalization and first moments; finite zero-bin
 subtraction is inclusion--exclusion; a finite Wilson-line change of variables
 removes the leading soft covariant derivative when the Wilson line solves its
-defining differential equation; and scalar RG transport is independent of the
-common scale when the hard, jet, and soft anomalous dimensions satisfy the
-factorization consistency equation.  It also checks the finite phase-space
-area behind the massive-vector Sudakov chart used for electroweak jet
-boundaries and the finite unitarity/remainder diagnostic for Glauber
-cancellation versus measurement obstruction.
+defining differential equation; scalar RG transport is independent of the
+common scale when the relevant anomalous dimensions satisfy the factorization
+consistency equation; and the soft-drop boundary scales solve the simultaneous
+mass/grooming equations.  It also checks the finite phase-space area behind
+the massive-vector Sudakov chart used for electroweak jet boundaries and the
+finite unitarity/remainder diagnostic for Glauber cancellation versus
+measurement obstruction.
 """
 
 from __future__ import annotations
@@ -201,6 +202,57 @@ def check_rg_transport_common_scale_independence() -> None:
     assert_equal("paired hard-soft anomalous-dimension scheme shift", shifted, unshifted + Fraction(5) * (natural_s - natural_h))
 
 
+def check_soft_drop_boundary_scales_and_rg_consistency() -> None:
+    beta = 2
+    rho = Fraction(1, 4096)
+    z_cut = Fraction(1, 16)
+    theta_star = Fraction(1, 4)
+    z_star = Fraction(1, 256)
+
+    assert_equal("soft-drop boundary mass equation", z_star * theta_star * theta_star, rho)
+    assert_equal("soft-drop boundary grooming equation", z_cut * theta_star**beta, z_star)
+    assert_equal("soft-drop boundary theta equation", theta_star ** (beta + 2), rho / z_cut)
+
+    mu_j_squared = rho
+    mu_cs_squared = rho * z_star
+    assert_equal("soft-drop collinear-soft transverse scale", mu_cs_squared, z_star * mu_j_squared)
+    if not mu_cs_squared < mu_j_squared:
+        raise AssertionError("collinear-soft scale should lie below the collinear scale for z_star < 1")
+
+    intervals = ((Fraction(0), Fraction(1)), (Fraction(1), Fraction(2)), (Fraction(2), Fraction(4)))
+    gamma_h = {intervals[0]: Fraction(4), intervals[1]: Fraction(-2), intervals[2]: Fraction(1)}
+    gamma_g = {intervals[0]: Fraction(-3), intervals[1]: Fraction(5), intervals[2]: Fraction(2)}
+    gamma_j = {intervals[0]: Fraction(1), intervals[1]: Fraction(1), intervals[2]: Fraction(-4)}
+    gamma_cs = {
+        interval: -gamma_h[interval] - gamma_g[interval] - gamma_j[interval]
+        for interval in intervals
+    }
+
+    for interval in intervals:
+        assert_equal(
+            "soft-drop anomalous-dimension consistency",
+            gamma_h[interval] + gamma_g[interval] + gamma_j[interval] + gamma_cs[interval],
+            Fraction(0),
+        )
+
+    natural_h = Fraction(0)
+    natural_g = Fraction(1)
+    natural_j = Fraction(2)
+    natural_cs = Fraction(2)
+
+    def total_transport_exponent(common_scale: Fraction) -> Fraction:
+        return (
+            integrate_piecewise(gamma_h, natural_h, common_scale)
+            + integrate_piecewise(gamma_g, natural_g, common_scale)
+            + integrate_piecewise(gamma_j, natural_j, common_scale)
+            + integrate_piecewise(gamma_cs, natural_cs, common_scale)
+        )
+
+    reference = total_transport_exponent(Fraction(2))
+    assert_equal("soft-drop RG transport at first common scale", reference, total_transport_exponent(Fraction(2)))
+    assert_equal("soft-drop RG transport independent of later common scale", reference, total_transport_exponent(Fraction(4)))
+
+
 def check_soft_wilson_line_decoupling_identity() -> None:
     s = sp.symbols("s")
     a = sp.Rational(3, 2)
@@ -302,12 +354,14 @@ def main() -> None:
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
     check_rg_transport_common_scale_independence()
+    check_soft_drop_boundary_scales_and_rg_consistency()
     check_soft_wilson_line_decoupling_identity()
     check_glauber_unitarity_diagnostic()
     check_massive_vector_sudakov_area()
     print(
-        "All SCET convolution, zero-bin, RG-transport, soft-Wilson-line, "
-        "Glauber-unitarity, and massive-vector Sudakov checks passed."
+        "All SCET convolution, zero-bin, RG-transport, soft-drop-scale, "
+        "soft-Wilson-line, Glauber-unitarity, and massive-vector Sudakov "
+        "checks passed."
     )
 
 

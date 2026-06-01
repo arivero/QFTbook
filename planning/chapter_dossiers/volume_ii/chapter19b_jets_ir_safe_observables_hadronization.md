@@ -81,6 +81,17 @@ The chapter establishes:
   including the logarithmic phase-space area, the mMDT single-log limit, and
   the scope boundary between this controlled approximation and a full
   renormalized factorization theorem;
+- Definition `def:soft-drop-mass-factorization-datum`, promoting the
+  fixed-coupling soft-drop mass chart to a renormalized datum with hard,
+  global-soft, collinear-jet, and collinear-soft coordinates, the boundary
+  scales \(\theta_*,z_*,\mu_H,\mu_G,\mu_J,\mu_{\rm cs}\), the
+  hard/global-soft/jet/collinear-soft anomalous-dimension consistency equation,
+  and an explicit remainder functional rather than an unqualified
+  "resummed prediction";
+- controlled approximation `ca:soft-drop-mass-factorized-resummation`,
+  requiring perturbative scale separation, a topology for the factorization
+  remainder, declared accuracy data, and replacement by a nonperturbative shape
+  coordinate when the collinear-soft scale reaches \(\Lambda_{\rm QCD}\);
 - the minimized-\(N\)-subjettiness value functional on a compact angular jet
   patch, with existence of minimizing axes and soft/collinear continuity of
   the minimized value rather than of a chosen axis label;
@@ -208,6 +219,17 @@ The chapter establishes:
      the veto area is cut out by \(u+t<L_\rho\) and
      \(u<L_z+\beta_{\rm SD}t/2\), giving the mMDT single-log area
      \(L_\rho L_z-L_z^2/2\) below the grooming scale.
+9ad. A soft-drop groomed-mass resummation claim is meaningful only after the
+     hard, global-soft, jet, and collinear-soft distributions, overlap and
+     rapidity data, anomalous-dimension consistency, natural scale profiles,
+     and a remainder functional have been specified.  The measurement and
+     grooming equations give
+     \(\theta_*=(\rho/z_{\rm cut})^{1/(2+\beta_{\rm SD})}\) and
+     \(z_*=z_{\rm cut}^{2/(2+\beta_{\rm SD})}
+     \rho^{\beta_{\rm SD}/(2+\beta_{\rm SD})}\); if
+     \(Q\sqrt{\rho z_*}\) is nonperturbative, the collinear-soft entry is no
+     longer a perturbative function and must be replaced by a stated
+     nonperturbative coordinate.
 9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
     calorimetric value functional on finite-energy jet measures; selected
     minimizing axes are auxiliary data and can jump at degenerate events
@@ -286,6 +308,13 @@ The chapter establishes:
   approximation, derived the logarithmic area formula and mMDT single-log
   limit, and extended `calculation-checks/soft_drop_irc_checks.py` with exact
   rational checks of the phase-space geometry.
+- 2026-06-01 issue #526 soft-drop mass factorization-datum pass: added the
+  renormalized hard/global-soft/jet/collinear-soft datum for groomed mass,
+  derived the boundary scales from \(z\theta^2=\rho\) and
+  \(z=z_{\rm cut}\theta^{\beta_{\rm SD}}\), stated the scale and
+  anomalous-dimension consistency requirements, and extended
+  `calculation-checks/scet_factorization_checks.py` with exact rational checks
+  of the boundary-scale identities and RG transport consistency.
 - 2026-06-01 issue #526/#630 continuation: added the minimized
   \(N\)-subjettiness measure-functional definition, proved existence of
   minimizing axes and continuity of the minimized value under weak, soft, and

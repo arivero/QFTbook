@@ -1502,12 +1502,13 @@ Current checks:
   normalization and first-moment identities, finite zero-bin
   inclusion--exclusion and scheme-reshuffling identities, scalar
   renormalization-group transport independence under the hard/jet/soft
-  anomalous-dimension consistency equation, a finite Wilson-line algebra
-  check of leading soft covariant-derivative decoupling, a finite Glauber
-  unitarity diagnostic separating inclusive cancellation from noncommuting
-  measurement obstruction together with an exact finite remainder identity and
-  Hilbert--Schmidt bound, and the triangular logarithmic phase-space area
-  behind the massive-vector Sudakov chart.
+  anomalous-dimension consistency equation, exact soft-drop boundary scale
+  identities and hard/global-soft/jet/collinear-soft RG consistency, a finite
+  Wilson-line algebra check of leading soft covariant-derivative decoupling, a
+  finite Glauber unitarity diagnostic separating inclusive cancellation from
+  noncommuting measurement obstruction together with an exact finite remainder
+  identity and Hilbert--Schmidt bound, and the triangular logarithmic
+  phase-space area behind the massive-vector Sudakov chart.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the
   first-moment evolution formula, and the full finite moment-tower formula
