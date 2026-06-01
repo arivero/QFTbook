@@ -1262,6 +1262,81 @@ charged-particle or partonic reconstruction theorem must specify the line,
 asymptotic dressing, or cohomology class used to define the observable before
 one speaks of an RG limit.
 
+\begin{construction}[Gauge-equivariant path blocking at finite regulator]
+\label{constr:gauge-equivariant-path-blocking-rg}
+The lattice half of Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}
+has a minimal exact example.  Let \(\Gamma_f\) and \(\Gamma_c\) be finite
+oriented graphs, interpreted as fine and coarse lattices.  Let
+\(i:V(\Gamma_c)\hookrightarrow V(\Gamma_f)\) embed coarse vertices into fine
+vertices.  For every oriented coarse edge \(e:v\to w\), choose an oriented
+fine path
+\[
+  P_e=(\ell_1,\ldots,\ell_m),
+  \qquad
+  s(\ell_1)=i(v),\quad t(\ell_m)=i(w),
+\]
+and require \(P_{\bar e}=\overline{P_e}\), the same path with reversed
+orientation.  A fine gauge field assigns \(U_\ell\in G\) to oriented fine
+edges with \(U_{\bar\ell}=U_\ell^{-1}\).  Define the blocked coarse link by
+\begin{equation}
+  B(A)_e
+  =
+  U_{\ell_1}U_{\ell_2}\cdots U_{\ell_m}.
+  \label{eq:gauge-path-blocked-link}
+\end{equation}
+For a fine gauge transformation \(g\in G^{V(\Gamma_f)}\),
+\[
+  U_\ell^g=g_{s(\ell)}U_\ell g_{t(\ell)}^{-1}.
+\]
+The internal endpoint factors along \(P_e\) cancel, so
+\begin{equation}
+  B(A^g)_e
+  =
+  g_{i(v)}\,B(A)_e\,g_{i(w)}^{-1}.
+  \label{eq:gauge-path-blocking-equivariance}
+\end{equation}
+Thus \(B\) is equivariant from the fine gauge action to the coarse gauge
+action obtained by restricting \(g\) to embedded coarse vertices.
+
+Let \(\mu_f\) be any finite measure on \(G^{E(\Gamma_f)}\) invariant under
+the fine gauge group, and let \(\mu_c=B_\ast\mu_f\).  For a coarse gauge
+transformation \(h\in G^{V(\Gamma_c)}\), choose any extension
+\(\tilde h\in G^{V(\Gamma_f)}\) with
+\(\tilde h_{i(v)}=h_v\).  Equation
+\eqref{eq:gauge-path-blocking-equivariance} gives
+\[
+  B(A^{\tilde h})=B(A)^h .
+\]
+Since \(\mu_f\) is invariant under \(A\mapsto A^{\tilde h}\), the
+pushforward \(\mu_c\) is invariant under the coarse gauge group.  If
+\(C=e_1\cdots e_r\) is a closed coarse loop and \(R\) is a finite-dimensional
+unitary representation of \(G\), then
+\begin{equation}
+  W_R(C;B(A))
+  =
+  \frac{1}{\dim R}
+  \operatorname{tr}_R
+  \bigl(B(A)_{e_1}\cdots B(A)_{e_r}\bigr)
+  \label{eq:gauge-path-blocked-wilson-loop}
+\end{equation}
+is the Wilson loop of the concatenated fine path and is gauge invariant.
+
+This construction proves only the exact finite-regulator covariance and
+observable pushforward.  It does not prove that the logarithm of the blocked
+measure is a local Wilson action, nor that a continuum local QFT follows.
+Those are precisely the localization, polymer-decay, reflection-positivity,
+and reconstruction estimates required in the rest of
+Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}.
+\end{construction}
+
+The companion script
+\texttt{calculation-checks/lattice\_gauge\_blocking\_checks.py} verifies the
+finite group algebra behind
+\eqref{eq:gauge-path-blocking-equivariance} and
+\eqref{eq:gauge-path-blocked-wilson-loop} for an \(S_3\) plaquette example,
+including invariance of the blocked pushforward weights under coarse gauge
+transformations.
+
 \begin{definition}[RG reconstruction estimate]
 \label{def:rg-reconstruction-estimate}
 Let \(\mathcal S_n=\mathcal S((\mathbb R^D)^n)\) be the Schwartz space and

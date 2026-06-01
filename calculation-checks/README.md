@@ -612,6 +612,13 @@ Current checks:
   unstable tuning data, plus the projective observable-germ finite-window
   certificate used to prevent finite observable agreement from being
   overstated as full universality.
+- `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
+  Volume XI gauge-compatible RG construction, including endpoint covariance
+  of path-blocked coarse links, equality of the blocked Wilson loop with the
+  concatenated fine plaquette, invariance of the Wilson-loop character under
+  coarse gauge transformations, gauge invariance of a fine plaquette
+  class-function weight, and invariance of the blocked pushforward weights
+  under the coarse gauge group.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

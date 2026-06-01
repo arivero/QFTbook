@@ -74,6 +74,9 @@ constructive RG developments.
   short-range orbit error.
 - `tau_aux`, `tau_sr`, `A`, `r`: auxiliary and target unstable tuning maps,
   their linear comparison, and the target tuning remainder.
+- `Gamma_f`, `Gamma_c`, `P_e`, `B(A)_e`: finite fine/coarse gauge graphs,
+  the chosen fine path assigned to a coarse edge, and the blocked coarse link
+  defined by path product of fine links.
 - RG object / map theorem / source and observable theorem / target
   identification: the four-layer status ledger used to classify
   nonperturbative fixed-point claims without transferring theorem status
@@ -145,6 +148,13 @@ constructive RG developments.
   ordinary short-range scalar targets, and gauge targets.  The ledger records
   which layers have actually been constructed: RG object, map theorem, source
   and observable theorem, and target identification.
+- Adds a finite gauge-compatible blocking construction: coarse links are path
+  products of fine links, internal gauge factors cancel, the blocked links
+  transform by endpoint conjugation, a fine gauge-invariant measure pushes
+  forward to a coarse gauge-invariant measure, and coarse Wilson loops are
+  fine Wilson loops along concatenated paths.  The construction is explicitly
+  finite-regulator; locality of the blocked action and continuum
+  reconstruction remain separate polymer/positivity/reconstruction estimates.
 - Gives a precise monograph definition of universality class as an RG
   attraction statement plus reconstruction data.
 - Defines a Wilsonian universality datum with microscopic regulators, tuned
@@ -187,3 +197,17 @@ remainder contraction.
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
   estimate, relevant-direction amplification formula, and projective
   observable-germ finite-window certificate.
+- `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
+  checks for gauge-compatible path blocking, including endpoint covariance,
+  equality of the blocked coarse Wilson loop with the concatenated fine
+  plaquette, class-function gauge invariance, and invariance of the blocked
+  pushforward weights under the coarse gauge group.
+
+## Audit Notes
+
+- 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
+  construction as the minimal lattice half of a gauge-compatible Wilsonian RG
+  datum and paired it with an exact \(S_3\) calculation check.  The pass
+  deliberately does not claim locality of the blocked action or continuum
+  reconstruction; those remain the model-specific estimates required by
+  issue #505.

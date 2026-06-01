@@ -40,16 +40,33 @@ the spinor-convention source as a section inside Chapter 40.
 | XII | 147-157 | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | Locally covariant QFT, Hadamard states, stress tensors, Unruh and Hawking effects, index theory, microlocal methods, and semiclassical backreaction. | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
 These twelve rows are the complete list of launched public volumes.  There are
-no hidden active volumes outside this roster.  Possible future subject splits
-remain planning material until they are added to `monograph/tex/main.tex`,
-`monograph/tex/frontmatter_volume_dependency_guide.tex`, and this README in
-the same pass.  Draft files, deprecated files, source transcriptions, local
-reference files, and planning notes are not additional public volumes.
+no hidden active volumes outside this roster.  Draft files, deprecated files,
+source transcriptions, local reference files, and planning notes are not
+additional public volumes.
 
-Potential later subject splits, such as a large-N/gauge-string or other
-special-structure volume, are deliberately not assigned public volume numbers
-until they pass the same assembly and audit gates.  Contributors should treat
-the twelve rows above as the authoritative public volume list.
+## Planned Volume Roadmap
+
+The monograph is intended to grow beyond the active twelve-volume manuscript.
+The table below records the full public roadmap as of the current repository
+state.  Roadmap entries are deliberately not assigned public volume numbers
+until they become compiled TeX parts in `monograph/tex/main.tex`, the
+frontmatter dependency guide, and this README in the same commit.
+
+| Roadmap line | Current status | Intended scope | Current compiled home |
+| --- | --- | --- | --- |
+| Foundations, scattering, renormalization, gauge theory, CFT, integrability, supersymmetry, TQFT, global structure, thermal QFT, constructive/lattice/numerical QFT, and curved-background QFT | Active compiled manuscript | The twelve subject volumes listed above. | Volumes I--XII |
+| Large-N gauge theory, QCD strings, flux tubes, baryons, and gauge-string expansions | Planned standalone expansion; some material already exists where logically needed | Nonperturbative large-N limits, QCD string observables, baryons and solitons, planar versus confining string limits, and controlled bridges to gauge/string spectral problems. | Mainly Volumes IV, VI, VII, and IX |
+| Advanced local-algebraic QFT and modular structure | Planned deep expansion or later standalone volume if it outgrows the foundations | Local von Neumann algebras, split property, modular inclusions, relative entropy, entanglement as an AQFT topic, superselection sectors in examples, and concrete interacting nets. | Volumes I, X, XI, and XII |
+| Advanced amplitudes, resonance scattering, and infrared-safe observables | Planned deep expansion | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, energy correlators, light-ray observables, and detector-defined inclusive observables. | Volumes II, IV, and V |
+| Supersymmetric special theories beyond the active core | Planned deep expansion | GLSM and mirror symmetry, two-dimensional supersymmetric models, four-dimensional N=1 and N=2 dynamics, localization with regulated data, six-dimensional theories, and protected sectors. | Volume VII |
+| Two-dimensional CFT and related exact QFT beyond the active core | Planned deep expansion | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. | Volumes V, VI, VII, and XI |
+| Mathematical appendices and verification infrastructure | Permanent supporting layer, not a numbered volume by itself unless later reorganized | Spinors, supergeometry, distribution theory, functional analysis, rigged Hilbert spaces, calculation-check scripts, finite-regulator examples, and proof dossiers. | Distributed through the active volumes and `calculation-checks/` |
+
+Contributors should treat the twelve active volumes as the authoritative
+compiled manuscript and the roadmap table as the authoritative list of planned
+subject expansions.  A future subject split becomes a public numbered volume
+only after it has its own assembly file, chapter dossiers, verification pass,
+and frontmatter/README entry.
 
 ## Repository Layout
 
