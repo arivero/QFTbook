@@ -89,6 +89,13 @@ global anomaly as an explicit mod-two-index example.
   integral modulo integers; for an odd manifold with boundary, the
   Dai--Freed object is a vector in the inverse boundary anomaly line, and
   pairing two such vectors gives the closed phase of the glued odd manifold.
+- Adds an explicit theorem-boundary paragraph separating the pure
+  global-analysis inputs (APS Fredholm/heat-kernel theorem,
+  Bismut--Freed determinant-line holonomy, Dai--Freed boundary-line gluing,
+  and the real mod-two index theorem) from the QFT-facing consequences
+  derived in the chapter: cylinder bookkeeping, quotient-groupoid descent,
+  local descent, inflow cancellation, trace-delta parity arithmetic, and
+  anomaly-line tensor-product cancellation.
 - Records the interacting-QFT anomaly-line construction as an open problem.
 
 ## Calculation Ledger
@@ -181,3 +188,7 @@ global anomaly as an explicit mod-two-index example.
   inward-coordinate convention, and extended `eta_global_anomaly_checks.py`
   with exact sign checks for the inward cylinder, zero-mode exclusion, and
   opposite boundary orientation.
+- 2026-06-01 global-anomaly theorem-boundary ledger: added the chapter-level
+  separation between imported pure global-analysis infrastructure and
+  QFT-facing anomaly conclusions derived from those inputs, to keep #696's
+  remaining proof debt honest rather than hidden in quoted theorem language.
