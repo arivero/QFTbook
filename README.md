@@ -11,45 +11,16 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Active Public Volume List
+## Complete Active Public Volume List
 
 The compiled public manuscript currently consists of exactly twelve active
-volumes, in the order below.  This table is the public roster: there are no
-additional active reader-facing volumes outside it.
-
-| Volume | Title |
-| --- | --- |
-| I | Foundations of Local Quantum Field Theory |
-| II | Particles, Scattering, and Analyticity |
-| III | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | Gauge Theory, Infrared Structure, and Anomalies |
-| V | Conformal Field Theory |
-| VI | Integrable Quantum Field Theory |
-| VII | Supersymmetric Quantum Field Theory |
-| VIII | Topological and Cohomological Quantum Field Theory |
-| IX | Global Structure, Phases, and Extended Operators |
-| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | Quantum Field Theory in Curved Spacetime and Background Fields |
-
-Draft files, deprecated files, source transcriptions, and planning notes are
-not additional public volumes.  A new volume becomes part of the public
-architecture only when it is added to `monograph/tex/main.tex`, documented
-here, and included in the reader-facing frontmatter.
-
-## Complete Volume Architecture
-
-The complete active public architecture is the twelve-volume series compiled
-by `monograph/tex/main.tex`.  The table below is the full current volume list
-and the printed order of the manuscript; no additional public volume is active
-outside this table.
-
-The table below gives the same complete active list with continuous printed chapter
-ranges, printed chapter counts, subject roles, and the assembly file that
-`monograph/tex/main.tex` inputs.  These counts are counts of `\chapter`
-entries in the compiled PDF, not raw `\input` lines: Volume IV also inputs the
-spinor-convention source as a section inside Chapter 40.  The detailed chapter
-map later in this README expands each row.
+reader-facing volumes.  The table below is the complete roster in the printed
+order used by `monograph/tex/main.tex`; there are no additional active public
+volumes outside it.  The chapter ranges are continuous printed chapter numbers,
+and the counts are counts of `\chapter` entries in the compiled PDF, not raw
+`\input` lines.  Volume IV also inputs the spinor-convention source as a
+section inside Chapter 40.  The detailed chapter map later in this README
+expands every row.
 
 | Volume | Chapter range | Count | Title | Role in the monograph | Assembly file |
 | --- | ---: | ---: | --- | --- | --- |
@@ -71,6 +42,9 @@ subject splits remain planning material until they are added to
 `monograph/tex/main.tex` and to this README.  If a future subject volume is
 launched, update this list, `monograph/tex/main.tex`, the frontmatter volume
 guide, and the detailed chapter map in the same pass.
+
+Draft files, deprecated files, source transcriptions, local reference files,
+and planning notes are not additional public volumes.
 
 ## Repository Layout
 
