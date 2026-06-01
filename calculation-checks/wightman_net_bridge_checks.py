@@ -182,8 +182,25 @@ def check_finite_analytic_strong_locality_model() -> None:
             )
 
 
+def check_scalar_shift_does_not_change_generated_spectral_algebra() -> None:
+    """Finite model for shifting a self-adjoint local field by a c-number."""
+
+    values = [Fraction(-2), Fraction(1), Fraction(3), Fraction(3)]
+    shift = Fraction(5)
+    shifted_values = [value + shift for value in values]
+    for value in set(values):
+        original_projection = diagonal_spectral_projection(values, value)
+        shifted_projection = diagonal_spectral_projection(shifted_values, value + shift)
+        assert_eq_any(
+            shifted_projection,
+            original_projection,
+            "c-number field shift relabels spectral projections without changing the algebra",
+        )
+
+
 def main() -> None:
     check_finite_analytic_strong_locality_model()
+    check_scalar_shift_does_not_change_generated_spectral_algebra()
 
     assert_eq(matmul(parity, parity), one, "parity squares to one")
     assert_eq(matmul(odd_field, odd_field), one, "odd field squares to one")

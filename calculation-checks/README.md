@@ -102,9 +102,13 @@ Current checks:
   fixed points, the finite Haag-duality diagnostic separating exterior
   commutation from membership in the assigned local algebra, and the
   distinction between domain-level commutation and strong spectral-projection
-  commutation in the bounded algebra model.  It also includes a finite
-  analytic-vector strong-locality shadow: commuting finite self-adjoint
-  generators have commuting spectral projections.
+  commutation in the bounded algebra model.  It also checks the finite
+  spectral-projection algebra fact used in the Schwinger-model AQFT
+  checkpoint: shifting a self-adjoint generator by a scalar relabels its
+  spectral projections without changing the generated local von Neumann
+  algebra.  It also includes a finite analytic-vector strong-locality shadow:
+  commuting finite self-adjoint generators have commuting spectral
+  projections.
 - `os_tube_sign_checks.py`: finite checks for the Volume IV
   Osterwalder--Schrader reconstruction chapter, including the mostly-plus
   damping inequality \(p\cdot\eta<0\) for future \(p,\eta\), the ordered
