@@ -1186,6 +1186,71 @@ different limiting fluxes define different charged sectors.  The distinction
 is quantified below by the soft-norm and Weyl-implementation calculations.
 \end{enumerate}
 
+\begin{proposition}[Finite-dimensional Coulomb tail and the logarithmic comparison phase]
+\label{prop:charged-coulomb-tail-dollard-log}
+Let \(u\in\mathbb R^3\setminus\{0\}\), \(b\in\mathbb R^3\), \(a>0\), and
+\(\kappa\in\mathbb R\).  Define
+\[
+  V(t)=\frac{\kappa}{\sqrt{a^2+|b+ut|^2}},
+  \qquad
+  \Phi(T)=\int_{T_0}^{T}V(t)\,\dd t .
+\]
+Then there is a finite constant \(C(T_0,b,u,a,\kappa)\) such that
+\begin{equation}
+  \Phi(T)=\frac{\kappa}{|u|}\log T+C(T_0,b,u,a,\kappa)+O(T^{-1})
+  \qquad (T\to+\infty).
+  \label{eq:charged-coulomb-tail-log-phase}
+\end{equation}
+Equivalently,
+\[
+  V(t)=\frac{\kappa}{|u|}\frac1t+O(t^{-2}).
+\]
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  \sigma=\frac{b\cdot u}{|u|^2},
+  \qquad
+  b_\perp=b-\sigma u,
+  \qquad
+  \rho^2=a^2+|b_\perp|^2 .
+\]
+Then
+\[
+  a^2+|b+ut|^2=\rho^2+|u|^2(t+\sigma)^2 .
+\]
+Therefore
+\begin{equation}
+  \Phi(T)
+  =
+  \frac{\kappa}{|u|}
+  \left[
+    \operatorname{arsinh}\!\left(\frac{|u|(t+\sigma)}{\rho}\right)
+  \right]_{T_0}^{T}.
+  \label{eq:charged-coulomb-tail-asinh-exact}
+\end{equation}
+Since
+\(\operatorname{arsinh} x=\log(2x)+O(x^{-2})\) as \(x\to+\infty\),
+\eqref{eq:charged-coulomb-tail-log-phase} follows.  Differentiating the
+completed-square expression gives the displayed \(t^{-1}\) asymptotic for
+\(V(t)\).
+\end{proof}
+
+The proposition is only a finite-dimensional comparison calculation; it does
+not identify the coefficient \(\kappa\) in a QFT.  Its role is to fix the
+logic of the missing charged Haag--Ruelle estimate.  If the asymptotic
+flux-sector pairing of two charged packets produces an effective long-range
+pair term \(V_{ij}(t)\) with leading coefficient \(\kappa_{ij}/|u_{ij}|\),
+then the corresponding contribution to \(\Theta_I(t)\) must contain
+\[
+  \frac{\kappa_{ij}}{|u_{ij}|}\log t .
+\]
+Treating this logarithmic phase as an error would make the Cook derivative
+nonintegrable.  The open QFT problem is precisely to derive the analogue of
+\(\kappa_{ij}\), and the \(L^1\) remainder after subtracting the resulting
+phase, from the noncompact Wilson-line or Coulomb-dressed charged creators.
+
 Once \eqref{eq:charged-hr-modified-cook-estimate} is known, the Hilbert-space
 part of the scattering construction is the same Cauchy argument as in
 Proposition~\ref{prop:estimate-package-implies-haag-ruelle}: for

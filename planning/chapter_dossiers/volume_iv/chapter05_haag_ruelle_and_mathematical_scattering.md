@@ -34,6 +34,9 @@ resonances.
   profiles with distinct velocities.
 - `Delta`: finite Hilbert-space soft-coordinate change between two
   infrared-regulated dressings.
+- `Theta_I(t)`, `kappa_{ij}`, `u_{ij}`: modified charged comparison phase,
+  effective pairwise long-range coefficient, and relative velocity in the
+  Dollard/Faddeev-Kulish comparison calculation.
 
 ## Claim Ledger
 
@@ -75,6 +78,11 @@ resonances.
   velocity-separated exchange estimate with possible Dollard/Faddeev--Kulish
   phase; a modified Cook estimate after subtracting the comparison phase; and
   scalar-product limits in the correct asymptotic representation.
+- Proves the finite-dimensional Coulomb-tail model behind the comparison
+  phase: for \(V(t)=\kappa/\sqrt{a^2+|b+ut|^2}\), the pair phase is
+  \((\kappa/|u|)\log t+O(1)\).  This identifies exactly why a \(t^{-1}\)
+  long-range charged pair term must be subtracted rather than treated as a
+  Cook-integrable error.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.
 - Shows in prose that compact dressing changes with fixed asymptotic flux are
@@ -120,12 +128,13 @@ resonances.
 - `calculation-checks/charged_flux_dressing_checks.py` verifies the boosted
   Coulomb flux integral, the velocity read from flux extrema, the regulated
   half-line Fourier transform, the equality of worldline-current and
-  momentum-space eikonal denominators, and sample positivity plus logarithmic
-  normalization for the soft coherent velocity-separation coefficient.  It
-  also checks the finite-dimensional Weyl/coherent characteristic functional
-  and the monotone decay of the coherent overlap as the infrared cutoff is
-  removed.  The same script now checks the finite Hilbert soft-coordinate
-  transformation law and strong-continuity behavior on coherent vectors.
+  momentum-space eikonal denominators, the Coulomb-tail logarithmic Dollard
+  phase coefficient, and sample positivity plus logarithmic normalization for
+  the soft coherent velocity-separation coefficient.  It also checks the
+  finite-dimensional Weyl/coherent characteristic functional and the monotone
+  decay of the coherent overlap as the infrared cutoff is removed.  The same
+  script now checks the finite Hilbert soft-coordinate transformation law and
+  strong-continuity behavior on coherent vectors.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -179,3 +188,8 @@ resonances.
   theorem-level result; the almost-local extension is the graph-closedness
   passage needed to identify the exact failure of the ordinary Haag--Ruelle
   localization hypothesis for unscreened charges.
+- 2026-06-01 #527/#528 continuation: added the finite-dimensional Coulomb-tail
+  comparison calculation that produces the logarithmic Dollard phase, so the
+  missing charged Haag--Ruelle estimate now states not only that a comparison
+  phase is needed but the exact asymptotic mechanism behind its \(t^{-1}\)
+  derivative.

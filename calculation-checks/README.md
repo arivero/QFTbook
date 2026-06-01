@@ -319,6 +319,10 @@ Current checks:
   extraction of the charged velocity from flux extrema, the half-line Fourier
   transform of an asymptotic worldline current, and the equality between the
   worldline-current denominator and the momentum-space eikonal denominator.
+  It also checks the Coulomb-tail logarithmic Dollard phase coefficient,
+  soft coherent velocity-separation positivity, finite-cutoff Weyl
+  characteristic functionals, coherent-overlap decay, and finite Hilbert
+  soft-coordinate transformations.
 - `cs_matter_lightfront_checks.py`: exact coefficient checks for the
   three-dimensional Chern--Simons--matter light-cone-gauge section, including
   the factor of two in the quadratic light-cone Chern--Simons action, the

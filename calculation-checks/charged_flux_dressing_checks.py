@@ -80,6 +80,61 @@ def check_half_line_fourier_transform() -> None:
     assert_close("regulated half-line transform", cutoff_integral, analytic, tol=1.0e-15)
 
 
+def norm3(vector: tuple[float, float, float]) -> float:
+    return math.sqrt(sum(component * component for component in vector))
+
+
+def subtract3(a: tuple[float, float, float], b: tuple[float, float, float]) -> tuple[float, float, float]:
+    return tuple(x - y for x, y in zip(a, b))
+
+
+def scalar_mul3(scale: float, vector: tuple[float, float, float]) -> tuple[float, float, float]:
+    return tuple(scale * component for component in vector)
+
+
+def coulomb_tail_phase_exact(
+    kappa: float,
+    b: tuple[float, float, float],
+    u: tuple[float, float, float],
+    regulator: float,
+    t0: float,
+    t1: float,
+) -> float:
+    speed = norm3(u)
+    sigma = dot3(b, u) / (speed * speed)
+    b_parallel = scalar_mul3(sigma, u)
+    b_perp = subtract3(b, b_parallel)
+    rho = math.sqrt(regulator * regulator + norm3(b_perp) ** 2)
+    return kappa / speed * (
+        math.asinh(speed * (t1 + sigma) / rho) - math.asinh(speed * (t0 + sigma) / rho)
+    )
+
+
+def check_coulomb_tail_dollard_log_phase() -> None:
+    samples = [
+        (0.7, (0.3, -0.2, 0.4), (0.5, 0.1, -0.2), 0.8),
+        (-1.2, (-0.6, 0.4, 0.2), (0.2, -0.3, 0.5), 0.5),
+    ]
+    for kappa, b, u, regulator in samples:
+        speed = norm3(u)
+        for t0, t1 in ((3.0, 7.0), (10.0, 40.0)):
+            exact = coulomb_tail_phase_exact(kappa, b, u, regulator, t0, t1)
+            sigma = dot3(b, u) / (speed * speed)
+            b_perp = subtract3(b, scalar_mul3(sigma, u))
+            rho = math.sqrt(regulator * regulator + norm3(b_perp) ** 2)
+            direct = kappa / speed * (
+                math.asinh(speed * (t1 + sigma) / rho) - math.asinh(speed * (t0 + sigma) / rho)
+            )
+            assert_close("Coulomb tail exact asinh primitive", exact, direct)
+
+        leading_coefficient = kappa / speed
+        t_large = 1.0e6
+        t_double = 2.0e6
+        phase_difference = coulomb_tail_phase_exact(kappa, b, u, regulator, t_large, t_double)
+        expected_log = leading_coefficient * math.log(t_double / t_large)
+        assert_close("Coulomb tail logarithmic coefficient", phase_difference, expected_log, tol=1.0e-6)
+
+
 def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
@@ -239,6 +294,7 @@ def main() -> None:
     check_velocity_read_from_flux_extrema()
     check_worldline_current_denominator()
     check_half_line_fourier_transform()
+    check_coulomb_tail_dollard_log_phase()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
