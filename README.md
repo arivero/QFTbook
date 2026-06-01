@@ -14,8 +14,23 @@ material are kept separate from the compiled monograph.
 ## Complete Active Volume Roster
 
 The compiled public manuscript currently consists of exactly twelve active
-reader-facing volumes.  The table below is the full roster, in the order used
-by `monograph/tex/main.tex`; there are no active public volumes outside this
+reader-facing volumes.  The complete active list is:
+
+1. Volume I: Foundations of Local Quantum Field Theory
+2. Volume II: Particles, Scattering, and Analyticity
+3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
+4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
+5. Volume V: Conformal Field Theory
+6. Volume VI: Integrable Quantum Field Theory
+7. Volume VII: Supersymmetric Quantum Field Theory
+8. Volume VIII: Topological and Cohomological Quantum Field Theory
+9. Volume IX: Global Structure, Phases, and Extended Operators
+10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
+12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+
+The table below gives the same full roster, in the order used by
+`monograph/tex/main.tex`; there are no active public volumes outside this
 list.  Chapter ranges are continuous printed chapter numbers, and counts are
 counts of printed `\chapter` entries, not raw `\input` lines.  Volume IV also
 inputs the spinor-convention source as a section inside Chapter 40.
