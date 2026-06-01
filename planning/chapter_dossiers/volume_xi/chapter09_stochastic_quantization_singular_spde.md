@@ -222,6 +222,9 @@ data.
 - `Z_{\epsilon,m,u}^{XY}`, `d_{\Pi,m}`: same-scale scalar tested \(XY\)
   coordinate and physical parameter metric used for the \(XY\) edge estimate
   in base point and test scale.
+- `Z_{n,m,u}^{XY}`: dyadic-cutoff scalar tested \(XY\) coordinate used to
+  isolate the ultraviolet shell gain in the cutoff increment
+  \(Z_{n+1,m,u}^{XY}-Z_{n,m,u}^{XY}\).
 - `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
@@ -626,9 +629,13 @@ data.
   \(L^1\)-Lipschitz dependence of transported \(C^1\) tests on
   \(d_{\Pi,m}\), gives the same-scale parameter-edge bound
   \(O(2^{-(4\kappa-\zeta_{XY})m}d_{\Pi,m}(u,v)^\theta)\) after model
-  normalization.  The dossier records these as scalar tested base and edge
-  estimates; the full \(E_r'\)-projective estimate remains a separate proof
-  obligation.
+  normalization.  A cutoff-shell version shows that, when one heat or
+  covariance edge is forced into the dyadic ultraviolet shell \(n\), the
+  smallest proper-subgraph deficit gives the scalar Cauchy gain
+  \(2^{-\rho(n-m)_+}\) for every \(0<\rho<1/2\).  The dossier records these
+  as scalar tested base, edge, and scale-separated shell-gain estimates; the
+  full \(E_r'\)-projective cutoff-Cauchy estimate with a uniform
+  \(2^{-\rho n}\) factor remains a separate proof obligation.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -1088,6 +1095,17 @@ data maps.
   the nonlinear \(XY\) coordinate from scalar base control to scalar edge
   control; the remaining analytic layer is the full \(E_r'\)-projective
   model-seminorm estimate and cutoff-increment analogues.
+- 2026-06-01 issue #608/#582 scalar \(XY\) cutoff-shell pass: added the
+  scalar dyadic-cutoff shell-gain estimate for the tested \(XY\) coordinate.
+  The proof expands the cutoff increment in the finite-chaos covariance
+  graphs, uses the fact that one heat/covariance edge is constrained to the
+  ultraviolet shell, and converts the minimum proper-subgraph deficit \(1\)
+  into the normalized Cauchy factor
+  \(2^{-(4\kappa-\zeta_{XY})m}2^{-\rho(n-m)_+}\) for every
+  \(0<\rho<1/2\).  The remark in the chapter explicitly prevents overclaim:
+  this is a scalar scale-separated Cauchy layer, not the full
+  \(E_r'\)-projective cutoff increment required by the model-convergence
+  theorem.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

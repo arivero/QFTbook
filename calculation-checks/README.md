@@ -580,7 +580,9 @@ Current checks:
   and the symmetrized kernel-norm weights used in the covariance-integral
   formulas, together with the marginal \(XY\) graph power-counting and the
   conversion of its logarithmic scalar tested-coordinate loss and same-scale
-  parameter-edge loss into \(4\kappa-\zeta_{XY}\) normalized slack, the
+  parameter-edge loss into \(4\kappa-\zeta_{XY}\) normalized slack, plus the
+  cutoff-shell arithmetic converting the minimum proper-subgraph deficit
+  into the scalar scale-separated gain \(2^{-\rho(n-m)_+}\), the
   physical-scale arithmetic for the logarithmic first-chaos \(X^2Y\) bound,
   and the dyadic covariance
   double-increment scale gains entering that bound, the OS-II reconstruction-growth

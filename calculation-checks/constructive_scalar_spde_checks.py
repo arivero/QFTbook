@@ -1493,6 +1493,44 @@ def check_xy_tested_coordinate_edge_arithmetic():
         raise AssertionError("XY scalar edge estimate has no edge decay")
 
 
+def check_xy_tested_coordinate_cutoff_shell_arithmetic():
+    # The scalar cutoff-shell proposition uses the smallest proper-subgraph
+    # deficit 1 in the XY graph ledger.  A constrained ultraviolet shell
+    # separated from the physical test scale by n-m therefore gives variance
+    # gain 2^(-(n-m)_+).  After taking the square root, any rho < 1/2 is
+    # available for the Lp cutoff-Cauchy estimate.
+    kappa = Fraction(1, 20)
+    zeta_xy = kappa
+    rho = Fraction(1, 4)
+    m = 10
+    n = 16
+
+    min_graph_deficit = Fraction(1)
+    variance_shell_gain = min_graph_deficit * (n - m)
+    lp_shell_gain = variance_shell_gain / 2
+    chosen_shell_gain = rho * (n - m)
+    model_normalization = 4 * kappa
+    normalized_scale_slack = model_normalization - zeta_xy
+
+    assert_equal(variance_shell_gain, 6, "XY scalar cutoff variance shell gain")
+    assert_equal(lp_shell_gain, 3, "XY scalar cutoff Lp shell gain ceiling")
+    assert_equal(chosen_shell_gain, Fraction(3, 2), "XY scalar cutoff chosen shell gain")
+    if not rho < Fraction(1, 2):
+        raise AssertionError("XY scalar cutoff shell rho must be below the Lp ceiling")
+    if not chosen_shell_gain < lp_shell_gain:
+        raise AssertionError("XY scalar cutoff chosen shell gain exceeds graph deficit")
+    assert_equal(
+        normalized_scale_slack * m,
+        Fraction(3, 2),
+        "XY scalar cutoff sample scale exponent",
+    )
+    assert_equal(
+        normalized_scale_slack * m + chosen_shell_gain,
+        3,
+        "XY scalar cutoff sample total exponent",
+    )
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -1824,6 +1862,7 @@ def main():
     check_xy_tested_graph_power_counting_arithmetic()
     check_xy_tested_coordinate_logarithmic_slack_arithmetic()
     check_xy_tested_coordinate_edge_arithmetic()
+    check_xy_tested_coordinate_cutoff_shell_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
@@ -1834,7 +1873,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
