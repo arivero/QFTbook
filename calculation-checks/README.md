@@ -1077,6 +1077,11 @@ Current checks:
   unitarity and crossing, the sign and total integral of the TBA kernel, the
   golden-ratio plateau equation, and the Rogers-dilogarithm value
   \(L(\phi^{-2})=\pi^2/15\) giving \(c_{\rm eff}=2/5\).
+- `generalized_hydrodynamics_checks.py`: finite algebra checks for the
+  Volume VI generalized-hydrodynamics bridge, including the finite-grid
+  dressing equation, the equality of \(\sum h\rho v^{\rm eff}\) with the
+  dressed-energy current expression, and the exact hard-rod
+  effective-velocity solution.
 - `factorized_scattering_algebra_checks.py`: exact checks for the Volume VI
   factorized-scattering opening chapter, including mostly-plus rapidity
   kinematics, Newton separation of rapidity multisets, chamber braid

@@ -261,6 +261,17 @@ and conserved-current Wightman/KMS correlators, Schwinger--Keldysh sources, and
 operator definitions of transport coefficients, while using the statmech
 chapter's order-of-limits and memory-kernel discipline.
 
+Absorption status: Volume X, Chapter 4 now contains the finite Kubo--Mori
+projection, exact Mori--Zwanzig block identity, and explicit projected-current
+hydrodynamic closure datum.  Volume VI, Chapter 5 now contains the integrable
+side of the bridge: Euler-scale generalized hydrodynamics is formulated as a
+conditional closure for local TBA root densities, with filling functions,
+dressing, effective velocities, charge-current conservation, a hard-rod
+collision-shift calibration, and an open problem separating the algebraic
+closure from a microscopic local-QFT proof.  Remaining work in this track is
+the model-by-model hydrodynamic limit theorem status and the treatment of
+integrability-breaking corrections beyond the Euler scale.
+
 ### Fluctuation Relations, Large Deviations, And Path Measures
 
 Statmech source: Volume IV Chapter 33.

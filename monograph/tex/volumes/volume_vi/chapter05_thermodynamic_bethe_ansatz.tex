@@ -523,6 +523,175 @@ finite-volume Hamiltonian spectrum of such a QFT is governed by
 and locality input separated in the theorem boundary below.
 \end{remark}
 
+\section{Euler-Scale Generalized Hydrodynamics}
+\label{sec:tba-generalized-hydrodynamics}
+
+The equilibrium TBA datum also supplies the kinematic variables used in
+generalized hydrodynamics.  In this chapter it is treated as a conditional
+Euler-scale closure for inhomogeneous states whose local cells are assumed to
+be described by thermodynamic Bethe root densities.
+
+Let \(\rho_a(x,t,\theta)\) and \(\rho_a^h(x,t,\theta)\) be slowly varying
+particle and hole densities, and set
+\[
+  \rho_a^t=\rho_a+\rho_a^h,
+  \qquad
+  n_a=\frac{\rho_a}{\rho_a^t}.
+\]
+The local density constraint is the pointwise version of the TBA counting
+equation:
+\begin{equation}
+  \rho_a^t(x,t,\theta)
+  =
+  \frac{p'_a(\theta)}{2\pi}
+  +
+  \sum_b\int d\alpha\,
+  \varphi_{ab}(\theta-\alpha)\rho_b(x,t,\alpha),
+  \qquad
+  p'_a(\theta)=m_a\cosh\theta .
+  \label{eq:ghd-local-density-constraint}
+\end{equation}
+For any vector of one-particle functions \(h_a(\theta)\), define its dressing
+by the linear equation
+\begin{equation}
+  h_a^{\rm dr}(\theta)
+  =
+  h_a(\theta)
+  +
+  \sum_b\int d\alpha\,
+  \varphi_{ab}(\theta-\alpha)
+  n_b(\alpha)h_b^{\rm dr}(\alpha).
+  \label{eq:ghd-dressing-equation}
+\end{equation}
+The inverse of \(1-\varphi n\) is part of the hydrodynamic chart; if the
+operator has a zero mode, this chart has left its domain of validity.
+Applying \eqref{eq:ghd-dressing-equation} to \(p'_a\) gives
+\[
+  (p'_a)^{\rm dr}=2\pi\rho_a^t,
+\]
+which is precisely \eqref{eq:ghd-local-density-constraint}.  Applying it to
+\[
+  E'_a(\theta)=m_a\sinh\theta
+\]
+defines the Euler-scale effective velocity
+\begin{equation}
+  v_a^{\rm eff}(\theta)
+  =
+  \frac{(E'_a)^{\rm dr}(\theta)}
+       {(p'_a)^{\rm dr}(\theta)} .
+  \label{eq:ghd-effective-velocity}
+\end{equation}
+
+\begin{hypothesis}[Euler-scale GHD closure datum]
+\label{hyp:euler-scale-ghd-closure}
+Fix a diagonal massive TBA datum and a family of inhomogeneous finite-volume
+states whose mesoscopic cells have thermodynamic root densities
+\(\rho_a(x,t,\theta)\).  The Euler-scale generalized-hydrodynamic closure is
+the assertion that, for every compact rapidity interval and every test
+function in \(x,\theta\), the empirical quasiparticle measures converge in
+the scaling limit to densities obeying
+\begin{equation}
+  \partial_t\rho_a(x,t,\theta)
+  +
+  \partial_x
+  \left(
+    v_a^{\rm eff}(x,t,\theta)\rho_a(x,t,\theta)
+  \right)
+  =
+  0,
+  \label{eq:ghd-root-density-continuity}
+\end{equation}
+with \(v_a^{\rm eff}\) defined from the local dressing equations
+\eqref{eq:ghd-dressing-equation}--\eqref{eq:ghd-effective-velocity}.
+\end{hypothesis}
+
+This hypothesis has a direct conservation check.  For a local conserved
+charge whose one-particle eigenvalue is \(h_a(\theta)\), define the Euler-cell
+density and current by
+\begin{equation}
+  q_h(x,t)
+  =
+  \sum_a\int d\theta\,h_a(\theta)\rho_a(x,t,\theta),
+  \qquad
+  j_h(x,t)
+  =
+  \sum_a\int d\theta\,h_a(\theta)
+  v_a^{\rm eff}(x,t,\theta)\rho_a(x,t,\theta).
+  \label{eq:ghd-charge-current}
+\end{equation}
+Multiplying \eqref{eq:ghd-root-density-continuity} by \(h_a\), summing over
+species, and integrating in rapidity gives
+\[
+  \partial_t q_h+\partial_xj_h=0
+\]
+whenever boundary terms vanish.  The closure is therefore compatible with the
+infinite family of Bethe charges by construction.  The difficult assertion is
+not this algebraic conservation check, but the scaling theorem that the
+microscopic inhomogeneous QFT actually converges to
+\eqref{eq:ghd-root-density-continuity}.
+
+The formula for \(v^{\rm eff}\) is also the linearized counting formula for
+a dressed wave packet.  Insert a single quasiparticle into a thermodynamic
+cell and perturb the Bethe counting function.  The shift of available
+rapidity levels is governed by the same kernel \(\varphi\) that appears in
+\eqref{eq:ghd-local-density-constraint}.  The dressed momentum and dressed
+energy gradients of the excitation are therefore \((p')^{\rm dr}\) and
+\((E')^{\rm dr}\), and the group velocity of the dressed packet is their
+ratio.  This is the kinematic content of
+\eqref{eq:ghd-effective-velocity}; it does not prove equilibration to a
+locally stationary Bethe state.
+
+\paragraph{Hard-rod calibration.}
+A useful finite algebraic laboratory is the classical hard-rod gas, which is
+not a relativistic local QFT but tests the collision-shift logic.  Let rods
+have length \(a>0\), velocity labels \(v_i\), and local velocity densities
+\(\rho_i\) with \(a\rho_{\rm tot}<1\),
+\[
+  \rho_{\rm tot}=\sum_i\rho_i .
+\]
+The exact collision shift gives the effective-velocity equations
+\begin{equation}
+  v_i^{\rm eff}
+  =
+  v_i
+  +
+  a\sum_j\rho_j
+  \left(v_i^{\rm eff}-v_j^{\rm eff}\right).
+  \label{eq:hard-rod-effective-velocity-equation}
+\end{equation}
+Writing \(J=\sum_j\rho_jv_j^{\rm eff}\), this becomes
+\[
+  (1-a\rho_{\rm tot})v_i^{\rm eff}=v_i-aJ.
+\]
+Multiplying by \(\rho_i\) and summing over \(i\) gives
+\[
+  J=\sum_i\rho_iv_i .
+\]
+Hence
+\begin{equation}
+  v_i^{\rm eff}
+  =
+  \frac{v_i-a\sum_j\rho_jv_j}{1-a\rho_{\rm tot}} .
+  \label{eq:hard-rod-effective-velocity-solution}
+\end{equation}
+The formula displays the same structure as
+\eqref{eq:ghd-effective-velocity}: bare velocities are corrected by the
+finite density of collision shifts, and the correction depends on the state.
+In the quantum integrable case the scalar shift \(a\) is replaced by the
+rapidity-dependent scattering kernel and the algebraic solution by the
+dressing equation \eqref{eq:ghd-dressing-equation}.
+
+\begin{openproblem}[GHD from local integrable QFT]
+\label{op:ghd-from-local-integrable-qft}
+Starting from a constructed local integrable QFT with factorized scattering,
+derive the Euler-scale generalized-hydrodynamic closure
+\eqref{eq:ghd-root-density-continuity} for inhomogeneous finite-energy
+states.  The proof must identify the local thermodynamic Bethe state, control
+finite-volume and mesoscopic errors, justify the dressing inverse, and show
+that nonintegrable perturbations or inelastic channels are absent on the
+Euler time scale under consideration.
+\end{openproblem}
+
 \section{Theorem Boundary}
 
 The derivation above assumes existence of thermodynamic root densities,
