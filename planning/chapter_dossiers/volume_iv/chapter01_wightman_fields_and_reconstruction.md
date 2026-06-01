@@ -54,9 +54,12 @@ Minkowski setting used in the reconstruction theorem.
   positive semidefinite Wightman inner product, quotient by null vectors,
   completion, left-insertion fields, covariance, spectrum, adjunction,
   locality, cyclicity, and uniqueness.
-- Develops the Wightman tube-analyticity mechanism from spectral support,
-  using the mostly-plus convention \(z=\xi-\ii\eta\), covariance, and
-  locality at Jost configurations.
+- Develops the Wightman tube boundary-value package from spectral support:
+  Fourier--Laplace holomorphy in the mostly-plus convention
+  \(z=\xi-\ii\eta\), distributional boundary convergence, polynomial
+  normal-growth estimates, complex Lorentz extension, and the QFT-specific
+  locality input needed for distributional edge-of-the-wedge gluing at Jost
+  configurations.
 - States the PCT theorem in four dimensions and sketches the proof by the
   Jost analytic identity followed by construction of the antiunitary on the
   reconstructed finite-sequence domain.
@@ -110,3 +113,8 @@ Minkowski setting used in the reconstruction theorem.
   section and Figure `fig:wightman-tube-analyticity` with the mostly-plus
   spectral-support convention \(z=\xi-\ii\eta\), \(\eta\in V_+\), matching
   the Lorentzian Green-functions and Reeh--Schlieder chapters.
+- 2026-06-01 Wightman boundary-value proof pass: expanded the tube-analyticity
+  paragraph into Proposition `prop:wightman-tube-boundary-value-package`,
+  proving the QFT-specific spectral-support, boundary-value, covariance, and
+  locality inputs in place while cross-referencing the analytic
+  edge-of-the-wedge theorem used for the final gluing step.

@@ -806,6 +806,110 @@ complex Lorentz group.  Locality then identifies the analytic continuations
 associated with permutations at Jost configurations, where all relevant real
 linear combinations are spacelike.
 
+\begin{proposition}[Wightman tube boundary-value package]
+\label{prop:wightman-tube-boundary-value-package}
+Fix a component of an \(n\)-point Wightman distribution in a cyclic Wightman
+field presentation, and write it in difference variables
+\(\xi=(\xi_1,\ldots,\xi_{n-1})\) as
+\[
+  w_n(\xi)\in\mathcal S'(M^{n-1}).
+\]
+Use the Fourier convention
+\[
+  w_n(\xi)
+  =
+  \int \frac{\dd^{D(n-1)}p}{(2\pi)^{D(n-1)}}\,
+  \exp\!\left(\ii\sum_{j=1}^{n-1}p_j\cdot\xi_j\right)
+  \widetilde w_n(p)
+\]
+in distribution notation.  The spectrum condition gives
+\[
+  \operatorname{supp}\widetilde w_n
+  \subset \overline V_+^{\,n-1}.
+\]
+For \(z_j=\xi_j-\ii\eta_j\), \(\eta_j\in V_+\), the Fourier--Laplace
+transform
+\[
+  \mathcal W_n(z)
+  =
+  \frac{1}{(2\pi)^{D(n-1)}}
+  \left\langle \widetilde w_n(p),
+  \exp\!\left(\ii\sum_{j=1}^{n-1}p_j\cdot z_j\right)\right\rangle
+\]
+is holomorphic in \(T_{n-1}\) and has \(w_n\) as its distributional boundary
+value.  If the fields transform in finite-dimensional Lorentz
+representations that extend holomorphically to the complexified spin group,
+Lorentz covariance continues \(\mathcal W_n\) to the extended tube.  Finally,
+if two adjacent orderings differ only by exchanging homogeneous fields whose
+coordinates are spacelike separated on a Jost real edge, their tube boundary
+values agree there up to the Koszul sign, and the distributional
+edge-of-the-wedge theorem gives a common holomorphic continuation across that
+edge.
+\end{proposition}
+
+\begin{proof}
+Insert the joint spectral resolution of translations between successive
+fields.  In the relative-coordinate matrix element, the Fourier variables
+are the momenta transported by the intermediate states between adjacent field
+insertions.  The Wightman spectrum condition places every such momentum in
+\(\overline V_+\), giving the displayed support inclusion for
+\(\widetilde w_n\).
+
+For \(p\in\overline V_+\) and \(\eta\in V_+\), the mostly-plus metric gives
+\(p\cdot\eta\le0\).  Hence
+\[
+  \exp\bigl(\ii p\cdot(\xi-\ii\eta)\bigr)
+  =
+  \exp(\ii p\cdot\xi+p\cdot\eta)
+\]
+is exponentially damped on closed subcones inside the tube direction.  For a
+tempered distribution carried by \(\overline V_+^{\,n-1}\), multiplication by
+the damping factor is defined by inserting a smooth conic cutoff equal to one
+near the support; independence of the cutoff follows because two such cutoffs
+differ away from the support.  Differentiating with respect to any \(z_j\)
+only inserts polynomial factors in \(p_j\), still controlled by the same
+damping on proper subtubes.  This proves holomorphy of \(\mathcal W_n\).
+The same finite-order Schwartz seminorm bound for \(\widetilde w_n\), applied
+after the conic cutoff and differentiated finitely many times, gives the
+standard polynomial normal-growth estimate on each proper subtube; this is
+the growth hypothesis needed for distributional boundary values and for the
+edge-of-the-wedge step below.
+
+To identify the boundary value, pair \(\mathcal W_n(\xi-\ii\eta)\) with a
+Schwartz test function \(f(\xi)\).  In Fourier variables this is the pairing
+of \(\widetilde w_n\) with the Schwartz function \(\check f(p)\) multiplied
+by \(\exp(\sum_jp_j\cdot\eta_j)\) and by the same harmless conic cutoff.
+As \(\eta\to0\) within \(V_+^{n-1}\), these multipliers converge to one in
+the \(C^\infty\) multiplier topology on every conic neighborhood of the
+support after the cutoff.  Continuity of the tempered distribution therefore
+gives the limit \(\langle w_n,f\rangle\).
+
+For the covariance enlargement, first take real proper orthochronous Lorentz
+transformations.  Covariance of the fields identifies the transformed
+boundary distributions with the original distribution acted on by the finite
+field-label matrices.  Both sides have holomorphic tube continuations.  Since
+the finite-dimensional spin/tensor representation matrices are polynomial or
+holomorphic functions of the complexified Lorentz parameters, the identity
+extends by the identity theorem along the connected complexified Lorentz
+orbit as long as the transformed point remains in the holomorphy envelope.
+This is the extended-tube construction.
+
+It remains to identify where locality enters.  Let \(O\) be a real open set
+of noncoincident configurations on which the exchanged adjacent coordinates
+are spacelike separated.  A test function supported in \(O\) can be written,
+by a partition of unity, as a finite sum of product-smearing pieces whose two
+exchanged one-field supports are spacelike separated.  Microcausality on the
+common Wightman domain gives equality of the two smeared matrix elements,
+with sign \((-1)^{|a||b|}\) for homogeneous odd/even labels.  Thus the two
+permuted tube functions have equal distributional boundary values on the
+Jost edge.  The analytic theorem used at this last step is the
+distributional edge-of-the-wedge theorem stated and proved in
+Theorem~\ref{thm:distributional-edge-of-the-wedge}: polynomial tube bounds
+come from the preceding Fourier--Laplace construction, and the boundary
+equality is the microcausality statement just verified.  Therefore the
+permuted holomorphic functions glue across the edge.
+\end{proof}
+
 Figure~\ref{fig:wightman-tube-analyticity} sketches a two-dimensional slice of
 the complexified difference variable.  The real edge carries the boundary
 values, the forward tube is obtained by writing the difference variables as
