@@ -268,9 +268,16 @@ side of the bridge: Euler-scale generalized hydrodynamics is formulated as a
 conditional closure for local TBA root densities, with filling functions,
 dressing, effective velocities, charge-current conservation, a hard-rod
 collision-shift calibration, and an open problem separating the algebraic
-closure from a microscopic local-QFT proof.  Remaining work in this track is
-the model-by-model hydrodynamic limit theorem status and the treatment of
-integrability-breaking corrections beyond the Euler scale.
+closure from a microscopic local-QFT proof.  The same chapter now adds the
+first weak-integrability-breaking layer: a finite collision-cell datum with
+detailed balance, exact conserved charges, projected occupation collision
+functional, relative-entropy production identity, and a controlled kinetic
+scaling ansatz for perturbing an integrable QFT by a local operator.  Remaining
+work in this track is the model-by-model hydrodynamic limit theorem status,
+the derivation of the weak-breaking transition rates from regulated local-QFT
+matrix elements, tensor/neural continuum-control examples, constructive
+model-specific polymer bounds, and further finite-locality/Hall/TQFT
+stability work.
 
 ### Fluctuation Relations, Large Deviations, And Path Measures
 

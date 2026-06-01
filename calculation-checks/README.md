@@ -1082,6 +1082,11 @@ Current checks:
   dressing equation, the equality of \(\sum h\rho v^{\rm eff}\) with the
   dressed-energy current expression, and the exact hard-rod
   effective-velocity solution.
+- `weak_breaking_collision_cell_checks.py`: finite collision-cell checks for
+  the Volume VI weak-integrability-breaking kinetic layer, including
+  detailed balance, exact conservation of projected energy, nonconservation
+  of a higher Bethe-type charge under allowed transitions, and the
+  symmetrized relative-entropy production identity.
 - `factorized_scattering_algebra_checks.py`: exact checks for the Volume VI
   factorized-scattering opening chapter, including mostly-plus rapidity
   kinematics, Newton separation of rapidity multisets, chamber braid

@@ -28,6 +28,10 @@
   filling functions, dressing equation, effective velocity, conditional
   root-density continuity equation, charge-current conservation check, and a
   hard-rod calibration of collision-shift kinematics.
+- Weak-integrability-breaking kinetic-cell layer: finite Markov collision
+  datum with detailed balance, exact preserved charges, projected occupation
+  collision functional, entropy production identity, and the controlled
+  kinetic scaling ansatz for perturbing an integrable QFT by a local operator.
 
 ## Symbols
 
@@ -44,6 +48,7 @@
 | \(S_{\rm LY},\varphi_{\rm LY}\) | Lee--Yang scalar amplitude and TBA kernel |
 | \(Y_0,\phi_{\rm g},L(x)\) | Lee--Yang plateau value, golden ratio, and Rogers dilogarithm |
 | \(n_a,\rho_a^t,h^{\rm dr},v_a^{\rm eff}\) | GHD filling, total state density, dressed one-particle function, and effective velocity |
+| \(\Omega,\pi_\omega,k_{\omega\omega'},P_\omega,C_i\) | finite collision-cell states, stationary weights, transition rates, cell probabilities, and projected collision functional |
 
 ## Claim Ledger
 
@@ -69,6 +74,11 @@
 9. The hard-rod calibration solves the finite collision-shift equations
    exactly, showing how a state-dependent effective velocity arises before
    the quantum kernel is introduced.
+10. The weak-breaking kinetic section separates finite collision-cell
+    identities from the unproved local-QFT kinetic limit: detailed balance
+    gives relative-entropy decay, exact charges are preserved by the
+    transition graph, and higher Bethe charges decay precisely when the
+    perturbation permits transitions that change them.
 
 ## Calculation Checks
 
@@ -78,6 +88,9 @@
   finite-grid dressing equation, the current identity behind
   \(j_h=\int h\rho v^{\rm eff}\), and the hard-rod effective-velocity
   solution.
+- `calculation-checks/weak_breaking_collision_cell_checks.py` verifies the
+  finite detailed-balance algebra, projected conservation of energy, decay of
+  a higher Bethe-type charge, and the symmetrized entropy-production formula.
 
 ## Audit Notes
 
@@ -93,6 +106,10 @@
   generalized-hydrodynamics bridge from local TBA density data, with dressing,
   effective velocity, charge-current conservation, hard-rod calibration, and
   paired finite algebra checks.
+- 2026-06-01 statmech crosswalk/#703 weak-breaking pass: added the finite
+  collision-cell datum and weak-integrability-breaking kinetic scaling layer,
+  so the exact conservation and entropy statements are separated from the
+  open microscopic derivation of the kinetic limit.
 
 ## Figures
 

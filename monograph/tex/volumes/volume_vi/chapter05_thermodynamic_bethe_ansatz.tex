@@ -692,14 +692,228 @@ that nonintegrable perturbations or inelastic channels are absent on the
 Euler time scale under consideration.
 \end{openproblem}
 
+\section{Weak Integrability Breaking And Kinetic Cells}
+\label{sec:tba-weak-breaking-kinetic-cells}
+
+Perturbing an integrable QFT changes the role of the Bethe charges.  The
+Hamiltonian still has exact energy, momentum, and internal-symmetry charges
+declared by the perturbation, but the higher commuting charges of the
+integrable point are generally lost.  A controlled kinetic description must
+therefore specify which finite-cell transitions are allowed, which charges
+they preserve exactly, and what entropy functional is monotone under the
+coarse-grained collision dynamics.  These are finite algebraic requirements
+before any limiting theorem from a local QFT is attempted.
+
+\begin{definition}[Finite collision-cell datum]
+\label{def:finite-collision-cell-datum}
+A finite collision-cell datum consists of the following objects.
+
+\begin{enumerate}
+\item A finite set \(\Omega\) of mesoscopic cell states.
+\item A strictly positive stationary weight \(\pi_\omega\) on \(\Omega\),
+  normalized by \(\sum_{\omega\in\Omega}\pi_\omega=1\).
+\item Transition rates \(k_{\omega\omega'}\ge0\), for
+  \(\omega\ne\omega'\), satisfying detailed balance
+  \begin{equation}
+    \pi_\omega k_{\omega\omega'}
+    =
+    \pi_{\omega'} k_{\omega'\omega}.
+    \label{eq:collision-cell-detailed-balance}
+  \end{equation}
+\item A finite family of exactly conserved cell observables
+  \(Q^A:\Omega\to\mathbb R\), meaning that
+  \(k_{\omega\omega'}\ne0\) implies \(Q^A(\omega)=Q^A(\omega')\) for every
+  \(A\).
+\item Occupation variables \(N_i:\Omega\to\mathbb Z_{\ge0}\), where \(i\)
+  labels a finite rapidity/species bin.
+\end{enumerate}
+
+The cell probability \(P_\omega(T)\) evolves by
+\begin{equation}
+  \frac{dP_\omega}{dT}
+  =
+  \sum_{\omega'\ne\omega}
+  \left(
+    P_{\omega'}k_{\omega'\omega}
+    -
+    P_\omega k_{\omega\omega'}
+  \right).
+  \label{eq:collision-cell-master-equation}
+\end{equation}
+The projected occupation collision functional is
+\begin{equation}
+  C_i[P]
+  =
+  \sum_{\omega,\omega'}
+  P_\omega k_{\omega\omega'}
+  \left(N_i(\omega')-N_i(\omega)\right).
+  \label{eq:collision-cell-projected-functional}
+\end{equation}
+If a conserved observable has the occupation form
+\[
+  Q^A(\omega)=Q^A_0+\sum_i h_i^A N_i(\omega),
+\]
+then the projected functional obeys
+\begin{equation}
+  \sum_i h_i^A C_i[P]=0 .
+  \label{eq:collision-cell-projected-conservation}
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Finite collision-cell entropy identity]
+\label{lem:finite-collision-cell-entropy-identity}
+For a finite collision-cell datum, set
+\[
+  r_\omega=\frac{P_\omega}{\pi_\omega},
+  \qquad
+  \mathcal H(P|\pi)
+  =
+  \sum_{\omega\in\Omega}
+  P_\omega\log\frac{P_\omega}{\pi_\omega}.
+\]
+Along \eqref{eq:collision-cell-master-equation},
+\begin{equation}
+  \frac{d}{dT}\mathcal H(P|\pi)
+  =
+  -
+  \frac12
+  \sum_{\omega,\omega'}
+  \pi_\omega k_{\omega\omega'}
+  \left(r_\omega-r_{\omega'}\right)
+  \left(\log r_\omega-\log r_{\omega'}\right)
+  \le0 .
+  \label{eq:collision-cell-entropy-production}
+\end{equation}
+Moreover
+\[
+  \frac{d}{dT}\sum_\omega P_\omega Q^A(\omega)=0
+\]
+for every exactly conserved cell observable \(Q^A\).
+\end{lemma}
+
+\begin{proof}
+The master equation conserves total probability, so the derivative of the
+relative entropy is
+\[
+  \frac{d}{dT}\mathcal H(P|\pi)
+  =
+  \sum_\omega \dot P_\omega\log r_\omega .
+\]
+Insert \eqref{eq:collision-cell-master-equation} and exchange the dummy
+indices in the gain term:
+\[
+  \frac{d}{dT}\mathcal H(P|\pi)
+  =
+  \sum_{\omega,\omega'}
+  P_\omega k_{\omega\omega'}
+  \left(\log r_{\omega'}-\log r_\omega\right).
+\]
+Using \(P_\omega=\pi_\omega r_\omega\) and detailed balance, the same sum
+with \(\omega\) and \(\omega'\) exchanged is
+\[
+  \sum_{\omega,\omega'}
+  \pi_\omega k_{\omega\omega'}r_{\omega'}
+  \left(\log r_\omega-\log r_{\omega'}\right).
+\]
+Averaging the two expressions gives
+\eqref{eq:collision-cell-entropy-production}.  The final sign follows from
+monotonicity of the logarithm:
+\[
+  (x-y)(\log x-\log y)\ge0
+  \qquad x,y>0 .
+\]
+For an exactly conserved cell observable, multiply the master equation by
+\(Q^A(\omega)\), sum over \(\omega\), and symmetrize the result as
+\[
+  \frac{d}{dT}\sum_\omega P_\omega Q^A(\omega)
+  =
+  \sum_{\omega,\omega'}
+  P_\omega k_{\omega\omega'}
+  \left(Q^A(\omega')-Q^A(\omega)\right).
+\]
+Every nonzero rate has \(Q^A(\omega')=Q^A(\omega)\), hence the derivative
+vanishes.  If \(Q^A\) is linear in the occupation variables, the same identity
+is exactly \eqref{eq:collision-cell-projected-conservation}.
+\end{proof}
+
+\begin{controlledapproximation}[Weak-breaking kinetic scaling]
+\label{ca:weak-breaking-kinetic-scaling}
+Let \(H_0\) be an integrable Hamiltonian whose thermodynamic cells are
+described by the TBA variables of Section~\ref{sec:tba-generalized-hydrodynamics},
+and perturb it by a local operator,
+\[
+  H_\varepsilon=H_0+\varepsilon V,
+  \qquad
+  V=\int dx\,\mathcal O(x),
+\]
+with \(0<\varepsilon\ll1\).  A weak-breaking kinetic description is the
+following scaling ansatz.  Choose a mesoscopic cell length \(\ell\) and a
+macroscopic length \(X\) with microscopic scale \(\ll\ell\ll X\), pass to the
+kinetic time \(T=\varepsilon^2t\), and assume that the local finite-cell
+transition rates are obtained from the on-shell matrix elements of \(V\) after
+the finite-volume limit, resonance averaging, and subtraction of disconnected
+pieces have all been performed in a specified scheme.  The hydrodynamic
+equation is then replaced by
+\begin{equation}
+  \partial_t\rho_i(x,t)
+  +
+  \partial_x\!\left(v_i^{\rm eff}[\rho](x,t)\rho_i(x,t)\right)
+  =
+  \varepsilon^2 C_i[P_{x,t}]
+  +
+  R_i^{(\varepsilon,\ell,X)}(x,t),
+  \label{eq:weak-breaking-kinetic-ghd}
+\end{equation}
+where \(i=(a,\theta)\) denotes a species/rapidity bin after discretization,
+\(P_{x,t}\) is the local cell probability whose occupation means give
+\(\rho_i(x,t)\), and \(C_i\) is the projected collision functional
+\eqref{eq:collision-cell-projected-functional}.  The remainder records
+gradient corrections, memory effects, finite-cell correlations, and errors in
+the kinetic limit.  The approximation is controlled only after one proves a
+norm in which \(R_i^{(\varepsilon,\ell,X)}\to0\) under a declared joint limit
+of \(\varepsilon,\ell,X\).
+\end{controlledapproximation}
+
+The finite-cell lemma identifies the part of the weak-breaking story that can
+be checked before a local-QFT limit theorem has been proved.  If the
+perturbation preserves energy and momentum, the collision graph must be
+restricted to transitions
+with the same energy and momentum labels; \eqref{eq:collision-cell-projected-conservation}
+then gives the exact conservation laws of the kinetic equation.  If a higher
+Bethe charge \(Q_h\) is not preserved by the perturbation, the same finite
+formula displays its decay:
+\[
+  \frac{d}{dT}\langle Q_h\rangle
+  =
+  \sum_{\omega,\omega'}
+  P_\omega k_{\omega\omega'}
+  \left(Q_h(\omega')-Q_h(\omega)\right).
+\]
+Thus weak integrability breaking is not a modification of the dressing
+formula alone.  It is a change in the collision graph of the mesoscopic cell,
+with the remaining exact charges and the entropy production fixed before any
+model-dependent scattering calculation is inserted.
+
+\begin{openproblem}[Kinetic limit of weakly broken integrable QFT]
+\label{op:weak-breaking-kinetic-limit}
+Derive \eqref{eq:weak-breaking-kinetic-ghd} from a local integrable QFT
+perturbed by a specified local operator.  The proof must construct the
+finite-volume transition rates from regulated matrix elements, prove the
+\(\varepsilon^{-2}\) kinetic time scaling, control secular terms and
+near-degenerate resonances, identify the local stationary weights
+\(\pi_\omega\), and show convergence of the remainder
+\(R_i^{(\varepsilon,\ell,X)}\) in a norm strong enough to imply convergence
+of the declared local observables.
+\end{openproblem}
+
 \section{Theorem Boundary}
 
 The derivation above assumes existence of thermodynamic root densities,
 validity of Bethe--Yang quantization up to errors negligible at large \(L\),
 and uniqueness of the free-energy minimizer.  In concrete models these are
 mathematical hypotheses to be proved or checked.  Bound states, non-diagonal
-scattering, zero modes, and massless flows change the density system and must
-be included explicitly.
+scattering, zero modes, massless flows, and weak integrability-breaking
+collisions change the density system and must be included explicitly.
 
 \begin{openproblem}[TBA from local QFT]
 \label{op:tba-from-local-qft}
