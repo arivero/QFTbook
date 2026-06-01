@@ -641,6 +641,59 @@ one must first define the relevant charged operators and localization
 structure before asking for an analogue of field-algebra reconstruction or of
 Haag--Ruelle scattering.
 
+\paragraph{Constructive kink-sector diagnostic.}
+The boundary of the DHR category is visible in broken two-dimensional
+constructive scalar models.  Suppose a massive model has pure phases indexed
+by \(\sigma\), vacuum representations \(\pi_\sigma\), and a bounded local
+order-parameter observable \(B\) with distinct phase values \(m_\sigma\).
+More precisely, choose spatial averaging functions supported in the far left
+and far right tails and let \(B_L(R)\), \(B_R(R)\) denote the corresponding
+bounded observables, with supports moving to \(x^1<-R\) and \(x^1>R\).  A
+solitonic representation
+\[
+  \pi_{\sigma_-,\sigma_+}
+\]
+interpolating from phase \(\sigma_-\) at \(x^1=-\infty\) to phase
+\(\sigma_+\) at \(x^1=+\infty\) is characterized, when the constructive
+limits have been proved, by weak-operator tail limits
+\begin{equation}
+  \mathop{\mathrm{w\!-\!lim}}\limits_{R\to\infty}
+  \pi_{\sigma_-,\sigma_+}(B_L(R))
+  =
+  m_{\sigma_-}\mathbf 1,\qquad
+  \mathop{\mathrm{w\!-\!lim}}\limits_{R\to\infty}
+  \pi_{\sigma_-,\sigma_+}(B_R(R))
+  =
+  m_{\sigma_+}\mathbf 1 .
+  \label{eq:kink-tail-order-parameter-limits}
+\end{equation}
+These limits are macroscopic phase data, not local charged-field data.  If
+\(\pi_{\sigma_-,\sigma_+}\) were DHR-localized in a bounded double cone
+\(\mathcal O\) relative to a vacuum phase \(\pi_{\sigma_0}\), then for
+sufficiently large \(R\) both \(B_L(R)\) and \(B_R(R)\) would belong to
+\(\Obs(\mathcal O^\perp)\).  The DHR equivalence
+\[
+  \pi_{\sigma_-,\sigma_+}|_{\Obs(\mathcal O^\perp)}
+  \simeq
+  \pi_{\sigma_0}|_{\Obs(\mathcal O^\perp)}
+\]
+would therefore carry the weak limits of the two tails to the corresponding
+tail limits in the phase \(\sigma_0\), namely \(m_{\sigma_0}\mathbf 1\) on
+both sides.  Hence bounded-region DHR localization forces
+\[
+  m_{\sigma_-}=m_{\sigma_0}=m_{\sigma_+}.
+\]
+Whenever the left and right asymptotic phases differ, the soliton sector is
+therefore not a DHR sector relative to a single vacuum representation.  It is
+a sector controlled by asymptotic boundary conditions, equivalently by
+morphisms between phase representations or by half-line/spacelike-cone
+localization data.  The diagnostic does not assert the existence of such
+soliton Hilbert spaces; that is a model theorem.  It shows which
+representation-theoretic statement must be proved before a constructive kink
+can be brought into the DHR local-endomorphism framework, and why the
+Doplicher--Roberts theorem above is a bounded-charge theorem rather than a
+classification of all superselection sectors in low-dimensional models.
+
 \section{Split Property and Local Tensor Factorization}
 
 Let \(\mathcal O_1\Subset \mathcal O_2\) mean that the closure of

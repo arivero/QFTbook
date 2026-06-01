@@ -28,6 +28,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   normal states in standard form.
 - `e_+`, `W_R(a)`: future-right lightlike vector and inward translated
   right wedge used to fix the half-sided modular-inclusion sign.
+- `\pi_{\sigma_-,\sigma_+}`, `B_L(R)`, `B_R(R)`, `m_\sigma`: soliton
+  representation, far-tail order-parameter observables, and phase values
+  used in the DHR kink-sector diagnostic.
 
 ## Claim Ledger
 
@@ -51,6 +54,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   columns as charged multiplets, Haar expectation gives the fixed observable
   constants, and pointwise multiplication is tensor-product multiplication of
   matrix coefficients.
+- Adds a constructive kink-sector diagnostic: if a sector with far-left and
+  far-right order-parameter tail limits were localized in a bounded DHR
+  region relative to a single vacuum phase, DHR equivalence on the spacelike
+  complement would force the two tail values to equal that vacuum value.  A
+  genuine kink with distinct asymptotic phases is therefore a solitonic
+  boundary-condition sector, not a bounded-region DHR charge unless an
+  additional localization theorem is proved.
 - Constructs the finite pointed field-algebra core as a crossed product
   \(\mathcal A\rtimes_\rho\mathbb Z_N\), verifies multiplication,
   involution, gauge action, fixed algebra, and sector implementation.
@@ -238,6 +248,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   two-sided in finite dimension, isolating the nontrivial
   Borchers--Wiesbrock content in infinite-dimensional standard-subspace
   geometry rather than in the displayed commutator.
+- 2026-05-31 DHR kink-sector diagnostic pass: inserted a constructive
+  broken-phase test showing that weak far-tail order-parameter limits are
+  incompatible with bounded-region DHR localization unless the two asymptotic
+  phases equal the reference vacuum phase.  This makes the DHR/DR theorem
+  boundary concrete in an interacting low-dimensional setting.
 - 2026-05-31 split product-state pass: added the explicit spatial
   construction of normal product states across
   \(\mathcal R(\mathcal O_1)\) and \(\mathcal R(\mathcal O_2)'\) from a
