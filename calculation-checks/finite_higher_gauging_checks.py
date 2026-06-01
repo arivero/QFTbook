@@ -117,6 +117,57 @@ def explicit_complexes() -> list[ExplicitComplex]:
 
 
 @dataclass(frozen=True)
+class BoundarySurfaceComplex:
+    name: str
+    c0: int
+    c1: int
+    c2: int
+    d0: Matrix
+    d1: Matrix
+    expected_h2_exp: int
+
+    def check_chain_condition(self, n: int) -> None:
+        for v in vectors(n, self.c0):
+            assert_equal(
+                mat_vec_mod(self.d1, mat_vec_mod(self.d0, v, n), n),
+                tuple(0 for _ in range(self.c2)),
+                f"{self.name}: surface d1 d0 = 0 over Z_{n}",
+            )
+
+
+def boundary_surface_complexes() -> list[BoundarySurfaceComplex]:
+    return [
+        BoundarySurfaceComplex(
+            name="minimal S2",
+            c0=1,
+            c1=0,
+            c2=1,
+            d0=tuple(),
+            d1=((),),
+            expected_h2_exp=1,
+        ),
+        BoundarySurfaceComplex(
+            name="minimal T2",
+            c0=1,
+            c1=2,
+            c2=1,
+            d0=((0,), (0,)),
+            d1=((0, 0),),
+            expected_h2_exp=1,
+        ),
+        BoundarySurfaceComplex(
+            name="two S2 components",
+            c0=2,
+            c1=0,
+            c2=2,
+            d0=tuple(),
+            d1=((), ()),
+            expected_h2_exp=2,
+        ),
+    ]
+
+
+@dataclass(frozen=True)
 class ThreeComplex:
     """Cellular cardinality data over a finite coefficient group Z_N.
 
@@ -239,6 +290,34 @@ def check_explicit_condensation_convolution() -> None:
                 )
 
 
+def check_boundary_flux_sector_state_spaces() -> None:
+    for n in range(2, 9):
+        for surface in boundary_surface_complexes():
+            surface.check_chain_condition(n)
+            z2 = set(vectors(n, surface.c2))
+            b2 = image(surface.d1, surface.c1, n)
+
+            h2_cardinality = len(z2) // len(b2)
+            assert_equal(
+                h2_cardinality,
+                n**surface.expected_h2_exp,
+                f"{surface.name}: boundary H2 flux-sector count over Z_{n}",
+            )
+
+            cosets = {
+                frozenset(
+                    tuple((z[i] + beta[i]) % n for i in range(surface.c2))
+                    for beta in b2
+                )
+                for z in z2
+            }
+            assert_equal(
+                len(cosets),
+                h2_cardinality,
+                f"{surface.name}: boundary flux sectors are H2 cosets over Z_{n}",
+            )
+
+
 def check_old_cellular_normalization_is_not_topological() -> None:
     n = 5
     minimal_s3_old_exp = 0
@@ -254,6 +333,7 @@ def main() -> None:
     check_fusion_coefficient_algebra()
     check_explicit_two_form_groupoid_cardinality()
     check_explicit_condensation_convolution()
+    check_boundary_flux_sector_state_spaces()
     check_old_cellular_normalization_is_not_topological()
     print("Finite higher-gauging condensation checks passed.")
 

@@ -450,6 +450,53 @@ nontrivial two-form gauge-theory summation just computed, so it is invertible
 only when that finite topological theory is the trivial invertible one.
 \end{proof}
 
+\paragraph{Relative state space of the finite factor.}
+The last sentence of the theorem has concrete content.  Let \(\Sigma\) be a
+closed oriented triangulated surface obtained by cutting the three-dimensional
+defect worldvolume.  A boundary value of the finite two-form gauge field is a
+closed two-cochain
+\[
+  z\in Z^2(\Sigma,\mathbb Z_N).
+\]
+Since \(\dim \Sigma=2\), this is the same set as \(C^2(\Sigma,\mathbb Z_N)\).
+The boundary one-form gauge transformations identify
+\[
+  z\sim z+\delta\lambda,\qquad
+  \lambda\in C^1(\Sigma,\mathbb Z_N).
+\]
+Thus the flux sectors on the cut surface are
+\begin{equation}
+  [z]\in H^2(\Sigma,\mathbb Z_N),
+  \qquad
+  \mathcal H^{(2)}_N(\Sigma)
+  =
+  \mathbb C\bigl[H^2(\Sigma,\mathbb Z_N)\bigr],
+  \label{eq:finite-two-form-boundary-state-space}
+\end{equation}
+with the automorphism groups \(H^0\) and \(H^1\) entering the gluing pairing
+through the same homotopy cardinality weights as in
+\eqref{eq:finite-two-form-groupoid-homotopy-cardinality}.  More explicitly, a
+cobordism \(W:\Sigma_0\to\Sigma_1\) gives a matrix whose
+\(([z_1],[z_0])\)-entry is the homotopy cardinality of the finite groupoid of
+closed two-cochains \(b\in Z^2(W,\mathbb Z_N)\) restricting to the prescribed
+boundary classes, with one-cochain gauge transformations and zero-cochain
+gauge-for-gauge transformations fixed on the boundary.  For the cylinder
+\(\Sigma\times[0,1]\), restriction to the two ends forces
+\([z_0]=[z_1]\), so the operator is diagonal on the basis
+\eqref{eq:finite-two-form-boundary-state-space} up to the conventional
+automorphism scalar fixed by the gluing normalization.
+
+This relative description is what the closed-manifold number
+\(Z^{(2)}_{\mathbb Z_N}(Y)\) becomes when a cut is present.  On a connected
+closed oriented surface,
+\[
+  H^2(\Sigma,\mathbb Z_N)\simeq \mathbb Z_N,
+\]
+so the finite factor has an \(N\)-dimensional flux-sector space for \(N>1\).
+Consequently fusion with the reverse gauging interface contains actual finite
+topological degrees of freedom.  It is an invertible scalar line only when the
+relevant finite state spaces are all one-dimensional.
+
 For Yang--Mills theories this construction becomes a QFT statement only after
 the \(\mathbb Z_N\) one-form symmetry surfaces, their junctions, their
 correlation topology, and their anomaly trivialization have been constructed

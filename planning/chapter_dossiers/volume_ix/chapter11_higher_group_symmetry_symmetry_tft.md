@@ -93,6 +93,10 @@ of backgrounds, anomalies, gauging, and condensation.
   the original condensation defect tensored with the three-dimensional finite
   `Z_N` two-form gauge-theory state sum
   `Z^{(2)}_{Z_N}(Y)=|C^0||Z^2|/|C^1|=|H^0||H^2|/|H^1|`.
+- Defines the relative state space of the finite two-form factor on a cut
+  surface as `C[H^2(Sigma,Z_N)]`, with automorphism weights entering gluing,
+  so the phrase "three-dimensional topological factor" is an actual finite
+  state-sum functor rather than a scalar slogan.
 - Separates the locally proved finite cochain theorem from the remaining
   continuum QFT burden: constructing the required surface networks,
   junctions, correlation topology, and anomaly trivialization in the
@@ -132,7 +136,8 @@ topological factor.
   remain if the degree-zero gauge-for-gauge factor were omitted.  It now also
   enumerates explicit finite cochain complexes over `Z_N` and checks directly
   that the cochain measure equals the finite `2`-groupoid homotopy
-  cardinality and that the condensation convolution has fiber size `|Z^2|`.
+  cardinality, that the condensation convolution has fiber size `|Z^2|`, and
+  that boundary flux sectors are the `H^2(Sigma,Z_N)` cosets.
 
 ## Anti-Wrapper Audit
 

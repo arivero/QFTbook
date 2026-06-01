@@ -817,8 +817,9 @@ Current checks:
   between the cochain groupoid factor
   \(|C^0|\,|Z^2|/|C^1|\) and the cohomological topological expression
   \(|H^0|\,|H^2|/|H^1|\), the fusion coefficient algebra
-  \(\mathfrak C^2=Z^{(2)}\mathfrak C\), and the cell-dependence of the
-  incomplete \(|C^1|^{-1}\) normalization.
+  \(\mathfrak C^2=Z^{(2)}\mathfrak C\), explicit boundary flux-sector counts
+  \(\dim\mathcal H^{(2)}_N(\Sigma)=|H^2(\Sigma,\mathbb Z_N)|\), and the
+  cell-dependence of the incomplete \(|C^1|^{-1}\) normalization.
 - `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number
