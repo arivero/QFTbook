@@ -3029,6 +3029,103 @@ Unruh temperature along an accelerated orbit.
   \label{fig:modular-wedge-flow}
 \end{figure}
 
+\section{Status of the Structural Inputs Used Above}
+\label{sec:aqft-structural-input-status}
+
+The preceding sections use several deep operator-algebraic and local-QFT
+results.  Their logical statuses differ.  The distinction matters because an
+abstract von Neumann algebra theorem may be used after standardness and
+normality have been verified, whereas a local-QFT theorem usually requires
+covariance, spectrum, locality, additivity, phase-space control, or
+wedge-domain estimates in the concrete representation.
+
+\begin{description}
+\item[Doplicher--Roberts reconstruction.]
+The purely categorical part says that a rigid symmetric \(C^*\)-tensor
+category with simple unit, finite-dimensional morphism spaces, conjugates, and
+finite statistical dimensions is equivalent to
+\({\rm Rep}_{\rm fd}(G)\) for a compact group \(G\), after choosing a faithful
+symmetric tensor fiber functor.  The local-QFT part is earlier: one must first
+prove that the sectors are transportable bounded-region DHR endomorphisms,
+that Haag duality places localized images and intertwiners in the assigned
+local observable algebra rather than only in the dual net, and that locality
+gives a symmetric exchange structure.  The local charged-field core
+\eqref{eq:dr-local-field-core}--\eqref{eq:dr-local-haar-expectation} proves
+the algebraic form of multiplication, fusion, conjugation, and fixed-point
+projection once those hypotheses are present.  Charged fields for Gauss-law
+sectors, spacelike-cone sectors, infraparticles, or confining theories require
+different localization categories before a field-algebra theorem can even be
+formulated.
+
+\item[Tomita--Takesaki theory.]
+This is pure operator-algebra infrastructure.  Its input is a standard pair
+\((\mathcal R,\Omega)\), meaning \(\Omega\) is cyclic and separating for
+\(\mathcal R\).  The chapter displays the \(S_0/F_0\) adjoint-core argument,
+the closed Tomita operator, and the left-Hilbert-algebra mechanism leading to
+\(\Delta^{\ii t}\mathcal R\Delta^{-\ii t}=\mathcal R\) and
+\(J\mathcal R J=\mathcal R'\).  In QFT applications, the theorem may be used
+only after standardness of the relevant local or wedge algebra has been
+proved, typically through Reeh--Schlieder and locality.  It supplies an
+abstract modular flow.  Identification of that flow with a spacetime symmetry
+is an additional local-QFT theorem.
+
+\item[Connes cocycle and Araki relative entropy.]
+This is also operator-algebraic infrastructure, formulated for faithful normal
+states or weights in a common standard representation.  The relative Tomita
+operator and the product
+\([D\psi:D\omega]_t=\Delta_{\psi|\omega}^{\ii t}\Delta_\omega^{-\ii t}\)
+give an algebra unitary implementing the change of modular flow.  The finite
+standard-form calculation fixes the density-matrix normalization.  In local
+QFT the required work is to specify the von Neumann algebra, the normal states
+on it, and the faithfulness/support condition.  Those data provide the
+intrinsic type-III replacement for a formal density-matrix quotient.
+
+\item[Nuclearity, split inclusions, and type classification.]
+Buchholz--Wichmann nuclearity is a local phase-space hypothesis on
+\(\Theta_{\beta,\mathcal O}:A\mapsto \ee^{-\beta H}A\Omega\).  The
+operator-algebraic split criterion asks for normal extendability of the
+multiplication representation
+\(\mathcal M_1\odot\mathcal M_2'\to\mathcal B(\Hilb)\) to
+\(\mathcal M_1\bar\otimes\mathcal M_2'\).  The text above explains how
+summable separated normal functionals arise from energy damping, locality,
+and the positive collar \(\mathcal O_1\Subset\mathcal O_2\).  The type
+\(\mathrm{III}\) or type \(\mathrm{III}_1\) classification of sharp local
+algebras is a separate theorem boundary: a type-I interpolant at positive
+separation describes collar-separated independence, while type-III behavior
+concerns the sharp zero-collar algebra.  Concrete models require their own
+phase-space estimates, factoriality input, and modular-spectrum control.
+
+\item[Borchers--Wiesbrock half-sided inclusions.]
+The abstract theorem starts from a standard inclusion
+\(\mathcal N\subset\mathcal M\) and a one-sided modular invariance condition.
+Its content is the construction of a positive-generator translation group
+with affine modular covariance.  The finite-dimensional rank argument above
+isolates the content as infinite-dimensional standard-subspace geometry.  In
+a Poincare-covariant QFT net, an inward translated wedge gives the geometric
+half-sided inclusion only after wedge standardness, isotony, covariance, and
+the relevant Bisognano--\allowbreak Wichmann modular identification are
+available.  The light-ray
+calculation then matches the abstract generator to the positive physical
+momentum \(P^0-P^1\), while the converse reconstruction remains the
+Borchers--Wiesbrock theorem itself.
+
+\item[Bisognano--Wichmann and modular PCT.]
+The Wightman polynomial-core theorem proved above establishes the boost KMS
+strip from tube analyticity and locality.  The full wedge-modular theorem
+additionally identifies the closure of the wedge Tomita operator with
+geometric Lorentz boosts and the wedge reflection.  That
+closed-operator/domain statement is the Bisognano--Wichmann QFT theorem
+boundary unless the net is assumed to satisfy modular covariance.  Corollary
+\ref{cor:aqft-pct-from-modular-covariance} is therefore conditional on the
+explicit modular-covariance hypotheses stated there.
+\end{description}
+
+Thus each structural conclusion in this chapter is tied to a visible input:
+DHR localization and duality for charge reconstruction; standardness for
+modular theory; normal state data for relative entropy; phase-space bounds and
+collars for split inclusions; half-sided standardness for
+Borchers--Wiesbrock; and wedge-domain control for Bisognano--Wichmann.
+
 \section{Algebraic Scattering Interface}
 
 The Haag--Ruelle construction can be formulated in the algebraic setting using

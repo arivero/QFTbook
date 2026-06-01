@@ -158,6 +158,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   automatically onto, so half-sided modular inclusion collapses to ordinary
   modular invariance; the Borchers--Wiesbrock translation semigroup is thereby
   isolated as an infinite-dimensional standard-subspace phenomenon.
+- Adds a structural-input status reconciliation for the AQFT theorem-boundary
+  cluster: Doplicher--Roberts, Tomita--Takesaki, Connes cocycles, nuclearity
+  and split inclusions, Borchers--Wiesbrock, and Bisognano--Wichmann are now
+  distinguished by the exact local hypotheses required at the point of use,
+  the pure operator-algebraic infrastructure they import, the QFT-specific
+  work that must be verified in examples, and the parts already proved or
+  computed locally in the chapter.
 
 ## Figure Ledger
 
@@ -380,3 +387,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\rho(A)\in\mathcal R(\mathcal O_1^\perp)'\) and the corresponding
   intertwiner calculation.  The text now states that without Haag duality the
   construction naturally lands in the dual net.
+- 2026-06-01 #695 AQFT structural-input status pass: added a reader-facing
+  status section after the modular/PCT material, separating pure
+  operator-algebra infrastructure from local-QFT theorem boundaries across
+  DR, Tomita--Takesaki, Connes cocycles, nuclearity/split/type
+  classification, Borchers--Wiesbrock, and Bisognano--Wichmann.  The section
+  records the exact model-level obligations for each use and gives the
+  quoted theorem blocks a differentiated local status ledger.

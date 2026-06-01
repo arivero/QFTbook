@@ -11,24 +11,27 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Public Volume Roster
+## Complete Volume List
 
-The active compiled monograph has exactly twelve public volumes at present.
-This is the full public volume list, in the same order used by
-`monograph/tex/main.tex`:
+The active compiled monograph currently has twelve public volumes, and this is
+the complete list in the order used by `monograph/tex/main.tex`.  The current
+public roster and the planned subject roster coincide at present: no Volume XIII
+or later has been launched.
 
-1. Foundations of Local Quantum Field Theory
-2. Particles, Scattering, and Analyticity
-3. Renormalization, Effective Field Theory, and Critical Phenomena
-4. Gauge Theory, Infrared Structure, and Anomalies
-5. Conformal Field Theory
-6. Integrable Quantum Field Theory
-7. Supersymmetric Quantum Field Theory
-8. Topological and Cohomological Quantum Field Theory
-9. Global Structure, Phases, and Extended Operators
-10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Constructive, Lattice, and Numerical Quantum Field Theory
-12. Quantum Field Theory in Curved Spacetime and Background Fields
+| Volume | Printed chapters | Title |
+| --- | ---: | --- |
+| I | 1-16 | Foundations of Local Quantum Field Theory |
+| II | 17-29 | Particles, Scattering, and Analyticity |
+| III | 30-39 | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | 40-55 | Gauge Theory, Infrared Structure, and Anomalies |
+| V | 56-70 | Conformal Field Theory |
+| VI | 71-84 | Integrable Quantum Field Theory |
+| VII | 85-101 | Supersymmetric Quantum Field Theory |
+| VIII | 102-112 | Topological and Cohomological Quantum Field Theory |
+| IX | 113-123 | Global Structure, Phases, and Extended Operators |
+| X | 124-135 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | 136-146 | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | 147-157 | Quantum Field Theory in Curved Spacetime and Background Fields |
 
 ## Complete Active Public Volume Table
 
