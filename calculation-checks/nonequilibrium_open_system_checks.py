@@ -298,6 +298,63 @@ def check_finite_model_a_b_mobility_data() -> None:
         assert_close(f"Model B Gibbs current component {i}", value, 0.0)
 
 
+def check_coupled_slow_variable_reversible_data() -> None:
+    temperature = 0.9
+    gradient = [0.7, -0.4, 0.2]
+    hessian = [
+        [1.3, 0.2, -0.1],
+        [0.2, 0.8, 0.05],
+        [-0.1, 0.05, 1.1],
+    ]
+    poisson = [
+        [0.0, 1.4, -0.3],
+        [-1.4, 0.0, 0.6],
+        [0.3, -0.6, 0.0],
+    ]
+    reversible = [sum(poisson[i][j] * gradient[j] for j in range(3)) for i in range(3)]
+    energy_derivative = sum(reversible[i] * gradient[i] for i in range(3))
+    assert_close("constant antisymmetric reversible drift preserves energy", energy_derivative, 0.0)
+
+    divergence = sum(poisson[i][j] * hessian[j][i] for i in range(3) for j in range(3))
+    assert_close("constant antisymmetric reversible drift divergence", divergence, 0.0)
+
+    density = math.exp(-0.37 / temperature)
+    density_gradient = [-(g / temperature) * density for g in gradient]
+    reversible_current_divergence = density * divergence + sum(
+        reversible[i] * density_gradient[i] for i in range(3)
+    )
+    assert_close("reversible Gibbs current divergence", reversible_current_divergence, 0.0)
+
+    # Finite Model C-style block mobility: one nonconserved coordinate and a
+    # two-site conserved graph density.
+    gamma = 1.2
+    incidence = [[-1.0, 1.0]]
+    edge_mobility = 2.5
+    graph_block = [
+        [edge_mobility * incidence[0][i] * incidence[0][j] for j in range(2)]
+        for i in range(2)
+    ]
+    mobility = [
+        [gamma, 0.0, 0.0],
+        [0.0, graph_block[0][0], graph_block[0][1]],
+        [0.0, graph_block[1][0], graph_block[1][1]],
+    ]
+    conserved_covector = [0.0, 1.0, 1.0]
+    for j in range(3):
+        assert_close(
+            f"Model C conserved-density covector kills mobility column {j}",
+            sum(conserved_covector[i] * mobility[i][j] for i in range(3)),
+            0.0,
+        )
+    noise_covariance = [[2.0 * temperature * mobility[i][j] for j in range(3)] for i in range(3)]
+    for j in range(3):
+        assert_close(
+            f"Model C conserved-density covector kills noise column {j}",
+            sum(conserved_covector[i] * noise_covariance[i][j] for i in range(3)),
+            0.0,
+        )
+
+
 def check_doi_peliti_two_species_generator() -> None:
     total_number = 3
     rate_ab = Fraction(2, 5)
@@ -608,6 +665,7 @@ def main() -> None:
     check_msrjd_gaussian_fourier_kernel()
     check_langevin_generator_expansion()
     check_finite_model_a_b_mobility_data()
+    check_coupled_slow_variable_reversible_data()
     check_doi_peliti_two_species_generator()
     check_doi_peliti_symbol_and_large_deviation_hamiltonian()
     check_tilted_jump_generator_and_gc_symmetry()
@@ -616,7 +674,7 @@ def main() -> None:
     check_ou_einstein_relation()
     check_positive_noise_kernel()
     check_gaussian_influence_noise_bridge()
-    print("All nonequilibrium open-system checks, including finite Model A/B mobility data, passed.")
+    print("All nonequilibrium open-system checks, including finite coupled slow-variable data, passed.")
 
 
 if __name__ == "__main__":

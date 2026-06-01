@@ -1158,7 +1158,9 @@ Current checks:
   Jarzynski identity, finite-step MSRJD Gaussian/Fourier normalization,
   Langevin generator expansion, finite Model A/B mobility-gradient
   data including graph-incidence mobility, conserved total drift, no
-  constant noise mode, and zero Gibbs current, finite Doi--Peliti generator matrix
+  constant noise mode, and zero Gibbs current, finite coupled slow-variable
+  data including antisymmetric reversible Gibbs-current preservation and a
+  Model C-style conserved-density mobility block, finite Doi--Peliti generator matrix
   identities, the Doi--Peliti symbol and exponential-test large-deviation
   Hamiltonian, the finite Feynman--Kac tilted generator for jump additives,
   the stationary finite-ring Gallavotti--Cohen similarity identity, the

@@ -225,10 +225,14 @@ reaction-network generators, and adds the finite Schwinger--Keldysh/MSRJD
 Gaussian bridge: the quadratic SK influence weight is rewritten by an explicit
 Hubbard--Stratonovich characteristic-function identity, the response variable
 imposes \(E(\phi_r)+\xi=0\), and a linear retarded equation gives covariance
-\(K^{-1}NK^{-T}\).  Remaining work in this track is the continuum
-renormalization of nonequilibrium stochastic field theories, dynamic critical
-models with additional slow variables, and model-by-model RG analyses of
-conserved and nonconserved stochastic field theories.
+\(K^{-1}NK^{-T}\).  It now also adds the finite coupled slow-variable datum
+for dynamic critical models beyond Model A/B: reversible drift must preserve
+the Gibbs density by a finite divergence identity, exact conserved covectors
+must annihilate the dissipative mobility and reversible drift, and Model C/H
+labels are treated as scaling hypotheses about retained slow variables rather
+than theorem labels.  Remaining work in this track is the continuum
+renormalization of nonequilibrium stochastic field theories and model-by-model
+RG analyses of conserved and nonconserved stochastic field theories.
 
 ### Linear Response, Kubo, Mori--Zwanzig, Hydrodynamic Limits, And GHD
 

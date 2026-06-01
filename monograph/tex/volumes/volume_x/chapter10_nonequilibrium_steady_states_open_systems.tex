@@ -742,6 +742,139 @@ calculation showing convergence of correlation and response functions.  The
 dynamic exponent \(z\), aging exponents, and scaling functions are outputs
 of that construction rather than entries in the finite datum itself.
 
+\section{Coupled Slow Variables Beyond Model A/B}
+\label{sec:finite-coupled-slow-variable-data}
+
+The Hohenberg--Halperin labels for dynamic critical phenomena are not
+definitions of continuum QFTs.  They are shorthand for a finite-regulator
+choice of slow variables, reversible brackets, dissipative mobilities, noise
+covariances, and scaling hypotheses.  The finite datum below is the part of
+that language that can be stated without assuming a continuum fixed point.
+
+Let \(y=(y^1,\ldots,y^N)\) collect all retained slow variables at a finite
+spatial regulator.  Some components may be nonconserved order-parameter
+coordinates, while others may be graph densities for conserved charges.  Let
+\(\mathcal F(y)\) be the finite free energy and consider the Ito process
+\begin{equation}
+  dy^a(t)
+  =
+  \left[
+    R^a(y(t))
+    -\mathsf M^{ab}\partial_b\mathcal F(y(t))
+  \right]dt
+  +\sqrt{2T}\,\sigma^a{}_r\,dB^r_t,
+  \qquad
+  \sigma\sigma^T=\mathsf M ,
+  \label{eq:finite-coupled-slow-variable-sde}
+\end{equation}
+where \(\mathsf M\) is a constant symmetric positive-semidefinite mobility
+matrix and \(R\) is the reversible drift.  The noise covariance is again
+fixed by the dissipative mobility.  The condition that the reversible part
+preserve the Gibbs density is the finite divergence identity
+\begin{equation}
+  \partial_a
+  \left(
+    R^a e^{-\mathcal F/T}
+  \right)
+  =
+  0 .
+  \label{eq:finite-reversible-gibbs-divergence-free}
+\end{equation}
+Under this condition the Fokker--Planck current at
+\(p_{\rm eq}=Z^{-1}e^{-\mathcal F/T}\) is
+\begin{equation}
+  J^a_{\rm eq}
+  =
+  R^a p_{\rm eq}
+  -
+  \mathsf M^{ab}
+  \left(
+    \partial_b\mathcal F\,p_{\rm eq}
+    +
+    T\partial_b p_{\rm eq}
+  \right)
+  =
+  R^a p_{\rm eq},
+  \label{eq:finite-coupled-gibbs-current}
+\end{equation}
+and \(\partial_aJ^a_{\rm eq}=0\).  Thus the reversible current may circulate
+on a finite energy shell, while the dissipative part has zero Gibbs current.
+The common Hamiltonian example is
+\begin{equation}
+  R^a=\mathsf J^{ab}\partial_b\mathcal F,
+  \qquad
+  \mathsf J^{ab}=-\mathsf J^{ba},
+  \qquad
+  \partial_a\mathsf J^{ab}=0 ,
+  \label{eq:finite-constant-poisson-reversible-drift}
+\end{equation}
+for which \(R^a\partial_a\mathcal F=0\) and \(\partial_aR^a=0\) when
+\(\mathsf J\) is constant.  A state-dependent Poisson tensor requires the
+same divergence identity \eqref{eq:finite-reversible-gibbs-divergence-free};
+writing a formal Poisson bracket is not by itself a definition of the
+regulated stochastic theory.
+
+Exact finite conserved linear coordinates are also part of the datum.  If
+\(c_I=(c_{I,a})\) are covectors satisfying
+\begin{equation}
+  c_{I,a}\mathsf M^{ab}=0,
+  \qquad
+  c_{I,a}R^a(y)=0 ,
+  \label{eq:finite-coupled-conserved-covectors}
+\end{equation}
+then \(Q_I=c_{I,a}y^a\) is conserved pathwise, including the noise term.  For
+graph densities this is the finite statement that the mobility and noise are
+discrete divergences, as in \eqref{eq:finite-model-b-mobility}.
+
+This finite formulation separates three commonly conflated inputs.  First, a
+Model C type system retains a nonconserved order parameter \(\phi\) and at
+least one conserved scalar density \(n\), with static coupling in
+\(\mathcal F(\phi,n)\) and a block mobility such as
+\[
+  \mathsf M_{\rm C}
+  =
+  \begin{pmatrix}
+    \Gamma \mathbf1 & 0\\
+    0 & B^TCB
+  \end{pmatrix}.
+\]
+The conservation law is a statement about the lower block, not about the
+static coupling in \(\mathcal F\).  Second, a Model H type system retains a
+conserved order parameter and a momentum density; the advective nonlinearities
+belong to the reversible drift \(R\) and must obey
+\eqref{eq:finite-reversible-gibbs-divergence-free} at the regulator where the
+path measure is defined.  Third, any dynamic universality claim requires a
+renormalized continuum limit of correlation and response functions for this
+entire coupled datum.  The label of the model is therefore a hypothesis about
+which slow variables and couplings survive the scaling limit, not a theorem
+about the microscopic QFT.
+
+The finite MSRJD action associated to
+\eqref{eq:finite-coupled-slow-variable-sde} is obtained from the Gaussian
+identity of Section~\ref{sec:finite-step-langevin-msrjd}:
+\begin{equation}
+  S_{\rm MSRJD}^{\rm coupled}
+  =
+  \sum_n\Delta t
+  \left[
+    \ii\hat y_{n,a}
+    \left(
+      \frac{y_{n+1}^a-y_n^a}{\Delta t}
+      -R^a(y_n)
+      +\mathsf M^{ab}\partial_b\mathcal F(y_n)
+    \right)
+    +
+    T\hat y_{n,a}\mathsf M^{ab}\hat y_{n,b}
+  \right].
+  \label{eq:finite-coupled-slow-variable-msrjd}
+\end{equation}
+If \(\mathsf M\) has a kernel, the response variables are understood on the
+quotient by the deterministic conserved directions, exactly as in the finite
+Model B construction.  Continuum response-field actions for dynamic critical
+models are shorthand for a limit of
+\eqref{eq:finite-coupled-slow-variable-msrjd}, together with counterterms and
+operator renormalizations fixed by the regulator.
+
 \section{Finite Reaction Networks and Doi--Peliti Variables}
 \label{sec:finite-reaction-network-doi-peliti}
 
