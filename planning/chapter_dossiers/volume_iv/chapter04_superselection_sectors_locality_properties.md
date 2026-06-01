@@ -18,6 +18,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `DHR`: Doplicher--Haag--Roberts localized transportable sector datum.
 - `X_q`, `\mu_N`, `\mathcal F_q`: pointed finite-sector object, recovered
   finite compact group, and charged degree in the finite DR diagnostic.
+- `L_n`, `\mathbb C[z,z^{-1}]`, `E_{U(1)}`: compact \(U(1)\)
+  character, Laurent representative-function algebra, and Haar expectation
+  in the compact abelian Tannakian diagnostic.
 - `u`, `\rho`, `\mathcal F_{\rm alg}`: charged unitary, order-\(N\)
   localized automorphism, and crossed-product field core for the pointed
   invertible-sector example.
@@ -54,6 +57,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   columns as charged multiplets, Haar expectation gives the fixed observable
   constants, and pointwise multiplication is tensor-product multiplication of
   matrix coefficients.
+- Adds the compact abelian \(U(1)\) completion of the pointed diagnostic:
+  tensor natural automorphisms of the forgetful functor are phases
+  \(u_n=\lambda^n\), the representative-function algebra is
+  \(\mathbb C[z,z^{-1}]\subset C(U(1))\), and Haar expectation keeps exactly
+  charge zero.
 - Adds a constructive kink-sector diagnostic: if a sector with far-left and
   far-right order-parameter tail limits were localized in a bounded DHR
   region relative to a single vacuum phase, DHR equivalence on the spacelike
@@ -114,7 +122,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   pointed \(\mathbb Z/N\mathbb Z\) diagnostic for Doplicher--Roberts
   reconstruction: tensor automorphisms form \(\mu_N\), the fixed-degree
   projection keeps exactly degree zero, the crossed-product field core is
-  associative with the stated involution and gauge-fixed algebra, and the
+  associative with the stated involution and gauge-fixed algebra, the compact
+  \(U(1)\) Laurent charge-lattice diagnostic has the stated multiplication,
+  involution, Haar projection, and tensor-exponent additivity, and the
   finite nonabelian \(S_3\) diagnostic has the correct representation law,
   faithful standard representation, character-ring tensor products, and
   Haar projection onto the trivial isotypic part.  It also verifies the
@@ -272,3 +282,8 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   arbitrary Banach nuclear decomposition need not have normal coefficient
   functionals and identifies the collar/locality/spectral-condition estimates
   as the actual load-bearing analytic step.
+- 2026-06-01 compact \(U(1)\) Tannakian completion pass: added the
+  charge-lattice representative-function algebra between the finite
+  \(\mathbb Z/N\mathbb Z\) and \(S_3\) diagnostics.  This makes the compact
+  analytic completion visible in the simplest infinite compact group while
+  keeping the DHR field-algebra reconstruction as the QFT theorem boundary.

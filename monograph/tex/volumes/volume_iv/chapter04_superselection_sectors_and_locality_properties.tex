@@ -621,6 +621,95 @@ closure; the local-QFT burden remains the DHR construction of the symmetric
 finite-statistics sector category and the field-algebra realization of this
 categorical duality.
 
+\paragraph{Compact abelian completion: the \(U(1)\) charge lattice.}
+The finite pointed example also has a compact limit that contains no
+finite-group artifact.  Let \({\rm Rep}_{\rm fd}(U(1))\) denote the category
+of finite-dimensional continuous unitary representations of \(U(1)\).  Its
+simple objects are the one-dimensional characters \(L_n\), \(n\in\mathbb Z\),
+with
+\[
+  L_m\otimes L_n\simeq L_{m+n},
+  \qquad
+  L_0=\mathbf 1,
+  \qquad
+  \operatorname{Hom}(L_m,L_n)=
+  \begin{cases}
+    \mathbb C, & m=n,\\
+    0, & m\ne n .
+  \end{cases}
+\]
+For the forgetful fiber functor
+\(\omega_{\rm fib}:{\rm Rep}_{\rm fd}(U(1))\to{\rm Hilb}_{\rm fd}\), a unitary
+tensor natural automorphism is a family of phases
+\[
+  u_n\in U(1),
+  \qquad n\in\mathbb Z,
+\]
+satisfying
+\[
+  u_0=1,
+  \qquad
+  u_{m+n}=u_m u_n,
+  \qquad
+  u_{-n}=\overline{u_n}.
+\]
+The first two equations give \(u_n=u_1^n\) for \(n>0\) and then, by unitarity,
+for all \(n\in\mathbb Z\).  Conversely every \(\lambda\in U(1)\) gives such a
+family by \(u_n=\lambda^n\).  With the topology of pointwise convergence on
+objects, the evaluation map
+\[
+  U(1)\longrightarrow \operatorname{Aut}^{\otimes,*}(\omega_{\rm fib}),
+  \qquad
+  \lambda\longmapsto (u_n=\lambda^n)_{n\in\mathbb Z},
+\]
+is therefore a homeomorphism: continuity is pointwise continuity of
+\(\lambda^n\), and the inverse reads off \(u_1\).
+
+The corresponding representative-function algebra is the Laurent polynomial
+\(*\)-algebra
+\[
+  \mathbb C[z,z^{-1}],
+  \qquad
+  z^m z^n=z^{m+n},
+  \qquad
+  (z^n)^*=z^{-n}.
+\]
+Its \(C^*\)-completion in the supremum norm on the unit circle is
+\[
+  C(U(1)),
+\]
+because Laurent polynomials are a unital self-adjoint subalgebra separating
+points of \(U(1)\).  Haar expectation is the projection onto the trivial
+isotypic component:
+\begin{equation}
+  E_{U(1)}(z^n)
+  =
+  \int_{U(1)} z^n\,\dd z
+  =
+  \delta_{n0}.
+  \label{eq:u1-tannaka-haar-laurent}
+\end{equation}
+Thus a \(U(1)\)-graded charged algebraic core
+\[
+  \mathcal F_{\rm alg}
+  =
+  \bigoplus_{n\in\mathbb Z}\mathcal F_n,
+  \qquad
+  \mathcal F_m\mathcal F_n\subset\mathcal F_{m+n},
+  \qquad
+  \alpha_\lambda(F_n)=\lambda^nF_n
+\]
+has invariant part
+\[
+  \mathcal F_{\rm alg}^{U(1)}=\mathcal F_0
+\]
+on every finite Laurent-polynomial subspace.  This compact abelian
+calculation is the charge-lattice version of the finite
+\(\mathbb Z/N\mathbb Z\) diagnostic above.  It supplies the categorical and
+representative-function completion, not the local-QFT theorem: a concrete
+QFT still has to produce the localized symmetric finite-statistics category,
+the field algebra, and the action whose fixed points are the observable net.
+
 \begin{example}[Pointed field algebra as a crossed product]
 \label{ex:dr-pointed-crossed-product-field-algebra}
 The same pointed category has an explicit charged-field algebra when the

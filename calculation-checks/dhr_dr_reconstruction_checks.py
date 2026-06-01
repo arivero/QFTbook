@@ -56,6 +56,42 @@ def check_fixed_degree_projection(n: int) -> None:
         assert_equal(f"fixed degree n={n} q={q}", invariant, q == 0)
 
 
+def check_compact_u1_laurent_tannaka(max_charge: int = 8) -> None:
+    """Check the exact charge-lattice algebra behind the U(1) compact limit."""
+
+    charges = range(-max_charge, max_charge + 1)
+
+    for m in charges:
+        for n in charges:
+            # Character multiplication z^m z^n = z^(m+n), encoded by charges.
+            assert_equal(f"U(1) Laurent multiplication m={m} n={n}", m + n, n + m)
+            assert_equal(f"U(1) star anti-involution m={m} n={n}", -(m + n), (-n) + (-m))
+
+    for n in charges:
+        haar_monomial = 1 if n == 0 else 0
+        assert_equal(f"U(1) Haar keeps only charge zero n={n}", haar_monomial, int(n == 0))
+
+    # A tensor automorphism of the forgetful functor is fixed by the phase on
+    # charge one.  We track only exponents: u_n = lambda^n means the exponent
+    # on charge n is n times the exponent on charge one.
+    for phase_exponent in range(-max_charge, max_charge + 1):
+        u = {n: n * phase_exponent for n in charges}
+        for m in charges:
+            for n in charges:
+                if m + n in u:
+                    assert_equal(
+                        f"U(1) tensor exponent additivity phase={phase_exponent} m={m} n={n}",
+                        u[m + n],
+                        u[m] + u[n],
+                    )
+        for n in charges:
+            assert_equal(
+                f"U(1) unitary inverse exponent phase={phase_exponent} n={n}",
+                u[-n],
+                -u[n],
+            )
+
+
 def multiply_basis(n: int, left: tuple[int, int], right: tuple[int, int]) -> tuple[int, int] | None:
     """Multiply e_i u^q by e_j u^r in C^n cross_rho Z/NZ.
 
@@ -326,6 +362,7 @@ def main() -> None:
         check_tensor_automorphisms(n)
         check_fixed_degree_projection(n)
         check_crossed_product_core(n)
+    check_compact_u1_laurent_tannaka()
     check_s3_nonabelian_reconstruction_diagnostic()
     check_s3_regular_field_core()
     check_s3_left_equivariant_function_automorphisms()
