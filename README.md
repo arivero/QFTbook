@@ -15,18 +15,20 @@ material are kept separate from the compiled monograph.
 
 The active compiled monograph consists of the following twelve volumes:
 
-1. Foundations of Local Quantum Field Theory
-2. Particles, Scattering, and Analyticity
-3. Renormalization, Effective Field Theory, and Critical Phenomena
-4. Gauge Theory, Infrared Structure, and Anomalies
-5. Conformal Field Theory
-6. Integrable Quantum Field Theory
-7. Supersymmetric Quantum Field Theory
-8. Topological and Cohomological Quantum Field Theory
-9. Global Structure, Phases, and Extended Operators
-10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Constructive, Lattice, and Numerical Quantum Field Theory
-12. Quantum Field Theory in Curved Spacetime and Background Fields
+| Volume | Title | Assembly file |
+| --- | --- | --- |
+| I | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
+| II | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
+| IV | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
+| V | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
+| VI | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
+| VII | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
+| VIII | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
+| IX | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
+| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
+| XI | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
+| XII | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
 There is no active compiled Volume XIII or later at present.  If a future
 subject volume is launched, update this list, the table below,
