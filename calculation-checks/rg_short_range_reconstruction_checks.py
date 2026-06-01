@@ -9,7 +9,9 @@ functions keep the distribution pairing invariant, independent-site
 covariances scale with the expected block exponent, the reconstruction bound
 has the displayed geometric form, and an auxiliary RG theorem transfers to
 the short-range target only when the one-step intertwining defects remain
-controlled after stable or relevant RG amplification.
+controlled after stable or relevant RG amplification.  The observable-germ
+checks verify that finite-window agreement is a projective, seminorm-level
+certificate rather than a substitute for full universality.
 """
 
 from fractions import Fraction
@@ -223,6 +225,63 @@ def check_relevant_direction_tuning_amplification():
     assert_equal("relevant direction affine amplification", coordinate, expected)
 
 
+def check_observable_germ_finite_window_certificate():
+    # Three finite observation windows form a projective chain
+    # gamma -> beta -> alpha.  The exact numbers model normalized finite lists
+    # of observables; the check is the projective compatibility and the
+    # finite-window triangle certificate used in the chapter.
+    gamma_data = {
+        "alpha": Fraction(5, 7),
+        "beta_extra": Fraction(-2, 3),
+        "gamma_extra": Fraction(11, 13),
+    }
+    beta_projection = {
+        "alpha": gamma_data["alpha"],
+        "beta_extra": gamma_data["beta_extra"],
+    }
+    alpha_projection = {"alpha": gamma_data["alpha"]}
+
+    assert_equal("project gamma to beta", beta_projection["alpha"], gamma_data["alpha"])
+    assert_equal("project beta to alpha", alpha_projection["alpha"], beta_projection["alpha"])
+    assert_equal("direct gamma to alpha", alpha_projection["alpha"], gamma_data["alpha"])
+
+    fixed_alpha = Fraction(17, 19)
+    fixed_beta = Fraction(-4, 9)
+    fixed_gamma = Fraction(7, 11)
+    error_i = {
+        "alpha": Fraction(1, 100),
+        "beta": Fraction(1, 80),
+        "gamma": Fraction(1, 70),
+    }
+    error_j = {
+        "alpha": Fraction(1, 90),
+        "beta": Fraction(1, 75),
+        "gamma": Fraction(1, 60),
+    }
+    rec_i = {
+        "alpha": fixed_alpha + error_i["alpha"],
+        "beta": fixed_beta - error_i["beta"],
+        "gamma": fixed_gamma + error_i["gamma"],
+    }
+    rec_j = {
+        "alpha": fixed_alpha - error_j["alpha"],
+        "beta": fixed_beta + error_j["beta"],
+        "gamma": fixed_gamma - error_j["gamma"],
+    }
+
+    for key in ("alpha", "beta", "gamma"):
+        lhs = abs(rec_i[key] - rec_j[key])
+        rhs = error_i[key] + error_j[key]
+        assert_equal(f"finite-window universality certificate {key}", lhs, rhs)
+
+    hidden_window_error = Fraction(1, 7)
+    declared_finite_bound = error_i["alpha"] + error_j["alpha"]
+    assert_true(
+        "uncontrolled window remains outside finite certificate",
+        hidden_window_error > declared_finite_bound,
+    )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -231,6 +290,7 @@ def main():
     check_correction_to_scaling_bookkeeping()
     check_auxiliary_transfer_telescoping_bound()
     check_relevant_direction_tuning_amplification()
+    check_observable_germ_finite_window_certificate()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

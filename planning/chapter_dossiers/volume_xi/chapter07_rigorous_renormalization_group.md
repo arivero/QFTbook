@@ -57,6 +57,9 @@ constructive RG developments.
   regulator to normalized long-distance observable data.
 - `O`, `O_*`: observable-data topological vector space and common
   reconstructed limit.
+- `A_frak`, `O_alpha`, `pi_alpha_beta`, `O_germ`: directed family of finite
+  observation windows, Banach observable windows, projection maps, and the
+  projective-limit observable germ used to define universality classes.
 - `G`: normalization group acting continuously on observable data.
 - `a_k`, `q`, `B_k`, `Delta_phi`: ordinary short-range scalar lattice spacing,
   block kernel, block-spin map, and field scaling exponent.
@@ -138,6 +141,10 @@ constructive RG developments.
 - Defines a Wilsonian universality datum with microscopic regulators, tuned
   initial points, a Banach RG chart, reconstruction maps, observable topology,
   and normalization group.
+- Refines the phrase "universality class" to an equivalence class of
+  normalized observable germs in a projective topology of finite observation
+  windows, and separates finite-window certificates from theorem-level
+  convergence in the full directed family.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
 - Defines correction-to-scaling data as part of a sharpened Wilsonian
@@ -169,4 +176,5 @@ remainder contraction.
   checks for ordinary short-range scalar block-spin normalization, pairing,
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
-  estimate and relevant-direction amplification formula.
+  estimate, relevant-direction amplification formula, and projective
+  observable-germ finite-window certificate.

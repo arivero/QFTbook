@@ -1917,6 +1917,111 @@ reconstruction convergence, convergence of local couplings alone is not a
 QFT universality theorem.
 \end{definition}
 
+\paragraph{Observable-germ formulation.}
+For an actual QFT the observable datum is rarely a single Banach-space
+coordinate.  It is normally a compatible family of finite tests: finitely
+many smeared \(n\)-point functions, finite lists of Wilson loops, finite
+momentum windows, finite source derivatives, or finite spectral windows.
+Thus the topology in
+Definition~\ref{def:wilsonian-universality-statement} is most naturally
+given by a projective system.
+
+\begin{definition}[Observable-germ universality class]
+\label{def:observable-germ-universality-class}
+An observable-germ universality datum is a Wilsonian universality statement
+together with the following refinement of \(\mathcal O\).
+\begin{enumerate}
+  \item A directed set \(\mathfrak A\) of finite observation windows.
+  \item For each \(\alpha\in\mathfrak A\), a Banach space
+  \(\mathcal O_\alpha\) with norm \(p_\alpha\), and for
+  \(\alpha\preceq\beta\) a continuous projection
+  \(\pi_{\alpha\beta}:\mathcal O_\beta\to\mathcal O_\alpha\) satisfying
+  \[
+    \pi_{\alpha\gamma}
+    =
+    \pi_{\alpha\beta}\pi_{\beta\gamma},
+    \qquad
+    \alpha\preceq\beta\preceq\gamma .
+  \]
+  \item The projective-limit observable space
+  \[
+    \mathcal O_{\mathrm{germ}}
+    =
+    \varprojlim_{\alpha\in\mathfrak A}\mathcal O_\alpha
+    =
+    \left\{
+      (O_\alpha)_\alpha:\pi_{\alpha\beta}O_\beta=O_\alpha
+      \text{ for }\alpha\preceq\beta
+    \right\},
+  \]
+  equipped with the seminorms \(p_\alpha(O)=p_\alpha(O_\alpha)\).
+  \item Reconstruction maps
+  \[
+    \operatorname{Rec}_{i,n}^{\alpha}:
+    \mathcal U\longrightarrow\mathcal O_\alpha
+  \]
+  compatible with the projections:
+  \[
+    \pi_{\alpha\beta}\operatorname{Rec}_{i,n}^{\beta}
+    =
+    \operatorname{Rec}_{i,n}^{\alpha}.
+  \]
+  \item A normalization group \(G\) acting by compatible continuous maps on
+  all \(\mathcal O_\alpha\).
+\end{enumerate}
+The microscopic regulator \(i\) belongs to the observable-germ universality
+class represented by the normalized germ \(O_\ast\in\mathcal O_{\mathrm{germ}}\)
+if there exists \(g_i\in G\) such that, for every finite observation window
+\(\alpha\),
+\begin{equation}
+  p_\alpha\!\left(
+    g_i\,\operatorname{Rec}_{i,n}^{\alpha}(V_i)
+    -
+    (O_\ast)_\alpha
+  \right)
+  \longrightarrow0 .
+  \label{eq:observable-germ-universality-convergence}
+\end{equation}
+The word \emph{class} therefore refers to an equivalence class of normalized
+observable germs in this projective topology.  Agreement of finitely many
+critical exponents, amplitude ratios, or correlation functions is a
+finite-window statement until the remaining windows are controlled.
+\end{definition}
+
+The finite-window form is still useful because it is the object produced by
+simulations, rigorous finite-volume estimates, and perturbative
+calculations.  If \(\mathfrak A_0\subset\mathfrak A\) is finite and, for
+each \(\alpha\in\mathfrak A_0\),
+\begin{equation}
+  p_\alpha\!\left(
+    g_i\,\operatorname{Rec}_{i,n}^{\alpha}(V_i)
+    -
+    (O_\ast)_\alpha
+  \right)
+  \leq e_{\alpha,i,n},
+  \qquad
+  p_\alpha\!\left(
+    g_j\,\operatorname{Rec}_{j,n}^{\alpha}(V_j)
+    -
+    (O_\ast)_\alpha
+  \right)
+  \leq e_{\alpha,j,n},
+\end{equation}
+then the triangle inequality gives the finite certificate
+\begin{equation}
+  p_\alpha\!\left(
+    g_i\,\operatorname{Rec}_{i,n}^{\alpha}(V_i)
+    -
+    g_j\,\operatorname{Rec}_{j,n}^{\alpha}(V_j)
+  \right)
+  \leq e_{\alpha,i,n}+e_{\alpha,j,n},
+  \qquad \alpha\in\mathfrak A_0 .
+  \label{eq:finite-window-universality-certificate}
+\end{equation}
+The theorem-level burden is the passage from these finite certificates to
+\eqref{eq:observable-germ-universality-convergence} for the directed family
+of observation windows.
+
 \begin{remark}[Universality as an equivalence relation after reconstruction]
 \label{rem:universality-equivalence-relation}
 Assume the data of Definition~\ref{def:wilsonian-universality-statement}, and

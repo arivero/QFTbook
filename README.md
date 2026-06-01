@@ -11,27 +11,28 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Active Volume List
+## Current Compiled Volumes
 
-The active compiled monograph consists of the following twelve volumes.  This
-table is intentionally duplicated near the top of the README so that the
-public landing page records the full architecture before the longer chapter
-map begins.
+The active compiled monograph currently runs from Volume I through Volume XII.
+This table is the complete list of volumes in the public manuscript, with the
+continuous chapter ranges used in the PDF.  It is intentionally placed near
+the top of the README so that the public landing page records the full
+architecture before the longer chapter map begins.
 
-| Volume | Chapters | Title | Assembly file |
-| --- | ---: | --- | --- |
-| I | 16 | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
-| II | 13 | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
-| III | 10 | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
-| IV | 16 | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
-| V | 15 | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
-| VI | 14 | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
-| VII | 17 | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
-| VIII | 11 | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
-| IX | 11 | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
-| X | 12 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
-| XI | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
-| XII | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
+| Volume | Chapter range | Chapter count | Title | Assembly file |
+| --- | ---: | ---: | --- | --- |
+| I | 1-16 | 16 | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
+| II | 17-29 | 13 | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
+| III | 30-39 | 10 | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
+| IV | 40-55 | 16 | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
+| V | 56-70 | 15 | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
+| VI | 71-84 | 14 | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
+| VII | 85-101 | 17 | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
+| VIII | 102-112 | 11 | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
+| IX | 113-123 | 11 | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
+| X | 124-135 | 12 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
+| XI | 136-146 | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
+| XII | 147-157 | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
 There is no active compiled Volume XIII or later at present.  If a future
 subject volume is launched, update this list, the table below,

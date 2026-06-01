@@ -571,7 +571,9 @@ Current checks:
   distributions from regulator-dependent amplitudes.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula used to separate stable comparison estimates from
-  unstable tuning data.
+  unstable tuning data, plus the projective observable-germ finite-window
+  certificate used to prevent finite observable agreement from being
+  overstated as full universality.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the
