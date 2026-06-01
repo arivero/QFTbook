@@ -534,7 +534,8 @@ Current checks:
   \(\Phi^4_3\) sunset combinatorics giving the logarithmic mass-coordinate
   coefficient in the chapter's \(\lambda\phi^4+\alpha\phi^2\)
   normalization, the finite-cutoff local stability lower bound, the
-  multiscale phase-cell geometric tail estimate, plus the
+  multiscale phase-cell geometric tail estimate and its source-decorated
+  Schwinger-seminorm variant, plus the
   stochastic-quantization OU variance, two negative-Sobolev threshold checks,
   heat-kernel smoothing optimization, the path-space
   \(\Phi^4_2\) enhanced-noise increment and Kolmogorov threshold arithmetic,

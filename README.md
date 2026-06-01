@@ -185,12 +185,13 @@ The full volume program is the twenty-volume list at the top of this README.
 The compiled manuscript currently contains the first twelve subject volumes
 and uses continuous chapter numbering across those active volumes.
 The chapter order below records the current contents of every launched volume,
-I--XII; Volumes XIII--XX are listed in the roadmap tables above because they
-do not yet have compiled chapter assemblies.  The source directory names are
-historical assembly locations, while
-the reader-facing part titles and chapter order below are the authoritative
-compiled-volume structure.  The frontmatter Source Assembly Map records how
-source files are assembled into the printed order.
+I--XII, and then continues with the planned subject blocks for roadmap
+Volumes XIII--XX.  The roadmap entries are not compiled chapters yet; they
+are included here so the README contains the full volume program in one
+continuous list.  The source directory names for Volumes I--XII are historical
+assembly locations, while the reader-facing part titles and chapter order
+below are the authoritative compiled-volume structure.  The frontmatter Source
+Assembly Map records how source files are assembled into the printed order.
 
 ### Detailed Chapter Map
 
@@ -364,6 +365,54 @@ source files are assembled into the printed order.
     - Microlocal Spectrum Condition and Hadamard Geometry
     - Perturbative Algebraic QFT on Curved Backgrounds
     - Semiclassical Backreaction and Stress-Tensor Fluctuations
+13. Volume XIII: Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions
+    - Nonperturbative large-N limits and order-of-limits questions
+    - Wilson loops, flux tubes, and QCD string observables
+    - Baryons, solitons, and large-N scaling of multiparticle sectors
+    - Planar versus confining string limits
+    - Bridges to gauge/string spectral problems
+14. Volume XIV: Advanced Local-Algebraic QFT and Modular Structure
+    - Local von Neumann algebras and concrete interacting nets
+    - Split property, nuclearity, and phase-space conditions
+    - Modular inclusions, relative entropy, and structural reconstruction
+    - Entanglement as an AQFT topic rather than a formal path-integral slogan
+    - Superselection sectors in substantial examples
+15. Volume XV: Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables
+    - Analytic connected S-matrix elements and sheet structure
+    - Resonance poles and the problem of external unstable particles
+    - Charged scattering beyond ordinary Haag--Ruelle theory
+    - Energy correlators, light-ray observables, and detector-defined inclusive data
+    - Polynomial bounds, dispersion theory, and nonperturbative amplitude constraints
+16. Volume XVI: Advanced Supersymmetric Theories and Protected Sectors
+    - Supersymmetric Wilsonian schemes and BV-compatible regulators
+    - GLSM, mirror symmetry, and two-dimensional supersymmetric models
+    - Four-dimensional N=1 and N=2 exact dynamics
+    - Localization with explicitly stated analytic and regulator hypotheses
+    - Protected sectors and higher-dimensional supersymmetric examples
+17. Volume XVII: Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT
+    - Full and chiral CFT on Riemann surfaces
+    - Rational, logarithmic, and non-rational examples
+    - Liouville theory and Coulomb-gas residue logic
+    - Orbifolds, twist fields, sigma models, and conformal perturbation theory
+    - Bridges to form factors, TCSA, TFFSA, and integrable/nonintegrable 2D QFT
+18. Volume XVIII: Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT
+    - Constructive existence theorems and OS/Wightman output maps
+    - Stochastic quantization and singular SPDE reconstruction
+    - Nonperturbative Wilsonian RG and scaling limits
+    - Proofs connecting regulator data to local QFT frameworks
+    - Examples that test the relationship among constructive, lattice, and RG routes
+19. Volume XIX: Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory
+    - Line, surface, and domain-wall operators
+    - Generalized global symmetry and categorical symmetry
+    - Noninvertible defects and phase diagnostics
+    - Anomaly inflow and extended-operator anomaly matching
+    - Substantial examples across gauge theory, TQFT, and CFT
+20. Volume XX: Advanced Curved-Background, Locally Covariant, and Semiclassical QFT
+    - Locally covariant QFT beyond the introductory framework
+    - Microlocal methods and Hadamard renormalization
+    - Index-theoretic anomaly structure on backgrounds
+    - Semiclassical backreaction and stress-tensor fluctuations
+    - Controlled curved-background examples and open structural problems
 
 ## Build
 

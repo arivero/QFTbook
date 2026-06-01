@@ -476,7 +476,8 @@ def check_phi4_three_multiscale_geometric_bound():
     # The abstract phase-cell theorem uses
     # sum_j C0 |lambda|^(1+delta) L^(-alpha j)
     # = C0 |lambda|^(1+delta)/(1-L^(-alpha)).
-    # Use a finite exact sample with L^(-alpha)=1/2.
+    # Use a finite exact sample with L^(-alpha)=1/2.  The source-decorated
+    # variant uses the same geometric tail multiplied by source seminorms.
     scale_ratio = Fraction(1, 2)
     c_lambda = Fraction(1, 100)
     b_r = Fraction(3)
@@ -488,6 +489,26 @@ def check_phi4_three_multiscale_geometric_bound():
 
     tail_j5 = c_lambda * scale_ratio**5 / (1 - scale_ratio)
     assert_equal(tail_j5, Fraction(1, 1600), "phi4_3 multiscale ultraviolet tail")
+
+    source_constant = Fraction(7, 3)
+    source_seminorms = [Fraction(2), Fraction(3, 5), Fraction(5, 7)]
+    source_product = math.prod(source_seminorms)
+    source_tail_j5 = source_constant * tail_j5 * source_product
+    assert_equal(
+        source_tail_j5,
+        Fraction(1, 800),
+        "phi4_3 source-decorated ultraviolet tail",
+    )
+
+    # A polynomial factor in the number of source assignments is harmless
+    # once an OS-admissible factorial/exponential growth envelope is allowed.
+    b_growth = 4
+    gamma = 1
+    for n in range(1, 9):
+        assignment_factor = n**3 * (2**n)
+        os_envelope = (b_growth**n) * (math.factorial(n) ** gamma)
+        if assignment_factor > os_envelope:
+            raise AssertionError("phi4_3 source-decorated OS growth envelope failed")
 
 
 def hard_core_source_derivatives(weights, incompatible_edges, left_source, right_source):
@@ -1781,7 +1802,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

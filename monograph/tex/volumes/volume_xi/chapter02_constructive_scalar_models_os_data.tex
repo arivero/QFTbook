@@ -1222,6 +1222,84 @@ scale \(j\geq J\), so the same tail estimate proves Cauchy convergence in
 the declared source seminorms.
 \end{proof}
 
+\begin{construction}[Source-decorated phase-cell seminorms]
+\label{con:phi-four-three-source-decorated-phase-cells}
+The abstract scale-decay bound becomes a statement about Schwinger
+distributions only after local insertions are included in the same norm.
+Fix source labels \(1,\ldots,n\), test functions \(f_r\), and seminorms
+\(p_r(f_r)\) controlling the corresponding finite-regulator insertion
+weights.  A source extension of the phase-cell system consists of functions
+\(b_{r,j}(X)\), one for each source label and scale-\(j\) polymer, such that
+for every subset \(I\subset\{1,\ldots,n\}\)
+\begin{equation}
+  \sup_{\Delta\in\mathcal D_j}
+  \sum_{X\ni\Delta}
+  e^{a|X|_j}\kappa_j(X)
+  \prod_{r\in I}|b_{r,j}(X)|
+  \leq
+  C_I |\lambda|^{1+\delta}L^{-\alpha j}
+  \prod_{r\in I}p_r(f_r).
+  \label{eq:phi-four-three-source-decorated-scale-bound}
+\end{equation}
+Here \(I=\varnothing\) recovers
+\eqref{eq:phi-four-three-scale-decay-bound}.  At finite volume define
+\[
+  K_{j,\lambda}(X)
+  =
+  K_j(X)
+  \exp\!\left(\sum_{r=1}^n\lambda_r b_{r,j}(X)\right).
+\]
+Because the cluster expansion is absolutely convergent in a polydisc
+around \(\lambda=0\), finite source derivatives may be taken term by term.
+The coefficient
+\[
+  C_{1\cdots n}^{(J,\Lambda)}
+  =
+  \left.
+  \partial_{\lambda_1}\cdots\partial_{\lambda_n}
+  \log Z_{J,\Lambda}(\lambda)
+  \right|_{\lambda=0}
+\]
+is a sum over connected clusters together with an assignment of each source
+label to one cluster vertex.  The product over labels assigned to a vertex
+is precisely one of the factors controlled in
+\eqref{eq:phi-four-three-source-decorated-scale-bound}.  Applying the
+tree-graph proof of
+Theorem~\ref{thm:phi-four-three-abstract-multiscale-summability} to these
+decorated vertices gives constants \(A_n<\infty\), depending on the
+neighbourhood constant and on the finite collection \(\{C_I\}_{I\subset
+\{1,\ldots,n\}}\), such that
+\begin{equation}
+  |C_{1\cdots n}^{(J,\Lambda)}|
+  \leq
+  A_n
+  \prod_{r=1}^n p_r(f_r)
+  \label{eq:phi-four-three-source-seminorm-bound}
+\end{equation}
+uniformly in the volume and cutoff.  Moreover, clusters containing at least
+one scale \(j\geq J_0\) obey the ultraviolet tail estimate
+\begin{equation}
+  |C_{1\cdots n}^{(J,\Lambda)}
+    -C_{1\cdots n}^{(J_0,\Lambda)}|
+  \leq
+  A_n
+  \frac{|\lambda|^{1+\delta}L^{-\alpha J_0}}
+       {1-L^{-\alpha}}
+  \prod_{r=1}^n p_r(f_r),
+  \qquad J\geq J_0 .
+  \label{eq:phi-four-three-source-ultraviolet-cauchy}
+\end{equation}
+Thus \eqref{eq:phi-four-three-source-decorated-scale-bound} is the missing
+source-level hypothesis behind the phrase ``Cauchy in Schwinger seminorms.''
+If the constants \(A_n\) can be chosen with an OS-admissible growth envelope,
+for instance \(A_n\leq A B^n(n!)^\gamma\) in a nuclear test-space seminorm
+family, then the limiting connected Schwinger distributions have the
+corresponding OS growth bound.  Proving
+\eqref{eq:phi-four-three-source-decorated-scale-bound} and such an
+\(n\)-growth envelope for the actual \(\Phi^4_3\) phase-cell activities is
+part of the still-open model-specific construction.
+\end{construction}
+
 The difficult model-specific part of the \(\Phi^4_3\) construction is now
 located precisely: one must prove
 \eqref{eq:phi-four-three-scale-decay-bound} for the actual phase-cell
@@ -1230,7 +1308,11 @@ coordinates have been extracted.  Theorem
 ~\ref{thm:phi-four-three-abstract-multiscale-summability} proves that these
 bounds, once established with reflection-positive regulators and uniform
 moment estimates, are sufficient for ultraviolet convergence of the
-Schwinger functions.
+Schwinger functions.  Construction
+~\ref{con:phi-four-three-source-decorated-phase-cells} records the additional
+source-decorated estimate needed to obtain distributional seminorm bounds
+and OS growth rather than only convergence of the vacuum polymer partition
+function.
 
 \begin{openproblem}[Self-contained constructive proof of \(\Phi^4_3\)]
 \label{op:self-contained-phi-four-three-proof}
@@ -1242,8 +1324,10 @@ model-specific stability estimates beyond the finite-cutoff one-site bound,
 identify the local coordinate \(b_\varepsilon\) to the same precision as the
 mass coordinate in Lemma~\ref{lem:phi-four-three-two-loop-mass-coordinate},
 and prove
-\eqref{eq:phi-four-three-scale-decay-bound} for those activities.  The
-abstract summation, reflection-positivity preservation, and ultraviolet
+\eqref{eq:phi-four-three-scale-decay-bound} and
+\eqref{eq:phi-four-three-source-decorated-scale-bound} for those
+activities, with OS-admissible growth in the number of source insertions.
+The abstract summation, reflection-positivity preservation, and ultraviolet
 Cauchy steps are supplied above; the remaining proof obligation is the
 model-specific multiscale estimate producing their hypotheses.
 \end{openproblem}

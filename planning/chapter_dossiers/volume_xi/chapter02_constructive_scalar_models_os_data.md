@@ -44,10 +44,15 @@
 - Abstract multiscale phase-cell datum and theorem proving summability,
   rooted-tree bounds, and ultraviolet Cauchy convergence from a scale-decay
   polymer bound.
+- Source-decorated phase-cell seminorm criterion: local insertion weights
+  are included in the same polymer norm, yielding Schwinger-distribution
+  seminorm bounds, ultraviolet Cauchy estimates for source derivatives, and
+  an explicit OS-growth proof obligation.
 - Refined proof obligation for a self-contained monograph proof of the quoted
   \(\Phi^4_3\) constructive output theorem: the remaining gap is now the
   model-specific derivation of the phase-cell activities and their
-  scale-decay bound.
+  scale-decay bounds, including their source-decorated variants and
+  \(n\)-point growth envelope.
 - OS data output from constructive theorems.
 - Comparison problem for cluster, stochastic, and rigorous-RG constructions.
 
@@ -74,6 +79,11 @@
 | \(K_j(X),\kappa_j(X)\) | scale-\(j\) polymer activity and numerical majorant |
 | \(L\) | phase-cell scale factor |
 | \(B_R\) | finite-range multiscale incompatibility neighbourhood constant |
+| \(b_{r,j}(X)\) | source-decorated phase-cell weight for the \(r\)-th test insertion on scale-\(j\) polymer \(X\) |
+| \(p_r(f_r)\) | test-function seminorm controlling the \(r\)-th source insertion |
+| \(C_I\) | source-decorated scale-bound constant for the subset \(I\) of source labels |
+| \(C_{1\cdots n}^{(J,\Lambda)}\) | finite-volume, finite-cutoff connected \(n\)-source coefficient obtained by differentiating \(\log Z_{J,\Lambda}(\lambda)\) |
+| \(A_n\) | source-derivative cluster bound constant; OS reconstruction requires an admissible growth envelope in \(n\) |
 | \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
 | \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
 | \(m_{\mathrm E}\) | Euclidean exponential-clustering rate entering the spectral gap argument |
@@ -125,13 +135,25 @@
     implies multiscale cluster summability and an ultraviolet Cauchy bound
     \(C_0|\lambda|^{1+\delta}L^{-\alpha J}/(1-L^{-\alpha})\) under the
     displayed KP smallness condition.
-12. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+12. The source-decorated scale bound
+    \[
+    \sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
+    \prod_{r\in I}|b_{r,j}(X)|
+    \le C_I|\lambda|^{1+\delta}L^{-\alpha j}\prod_{r\in I}p_r(f_r)
+    \]
+    upgrades vacuum polymer convergence to distributional Schwinger
+    seminorm bounds.  Absolute convergence in a source polydisc permits
+    termwise differentiation of \(\log Z\); the same rooted-tree estimate
+    applied to decorated vertices gives uniform \(n\)-source bounds and a
+    geometric ultraviolet tail.  The model-specific proof must still supply
+    these decorated bounds and an OS-admissible growth envelope for \(A_n\).
+13. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
    summation, reflection-positivity, and ultraviolet-Cauchy components are
    now proved locally; the remaining open proof obligation is the
    model-specific multiscale estimate generating their hypotheses.
-13. Constructive route comparison requires equality of Schwinger functions in
+14. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
@@ -192,6 +214,15 @@
   the abstract multiscale phase-cell summability theorem.  The open problem
   has been narrowed to the model-specific derivation of the actual
   phase-cell activities and the scale-decay polymer bound.
+- 2026-06-01 issue #581 source-decorated phase-cell pass: the chapter now
+  records the source-level criterion needed to turn the abstract phase-cell
+  summability theorem into Schwinger distribution seminorm bounds.  Source
+  weights \(b_{r,j}(X)\), test seminorms \(p_r(f_r)\), source subset constants
+  \(C_I\), and the \(A_n\) growth envelope are now explicit.  The chapter
+  proves the formal implication from decorated scale bounds to source
+  derivative bounds and an ultraviolet Cauchy estimate; the remaining
+  constructive obligation is the model-specific derivation of those
+  decorated bounds from the actual \(\Phi^4_3\) phase-cell expansion.
 - 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
   normal-ordered polynomial stability bound from proposition form to worked
   prose.  The lower bound remains as the first elementary stability estimate,
