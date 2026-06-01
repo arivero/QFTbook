@@ -3,9 +3,12 @@
 
 These checks do not prove a factorization theorem.  They verify the exact
 algebraic facts used in the exposition: convolution of jet and soft
-distributions preserves normalization and first moments, and a finite
-Wilson-line change of variables removes the leading soft covariant derivative
-when the Wilson line solves its defining differential equation.
+distributions preserves normalization and first moments; finite zero-bin
+subtraction is inclusion--exclusion; a finite Wilson-line change of variables
+removes the leading soft covariant derivative when the Wilson line solves its
+defining differential equation; and scalar RG transport is independent of the
+common scale when the hard, jet, and soft anomalous dimensions satisfy the
+factorization consistency equation.
 """
 
 from __future__ import annotations
@@ -141,6 +144,60 @@ def check_zero_bin_scheme_reshuffling() -> None:
     assert_equal("paired zero-bin scheme reshuffling", shifted, base)
 
 
+def integrate_piecewise(values: Mapping[tuple[Fraction, Fraction], Fraction], start: Fraction, end: Fraction) -> Fraction:
+    if start == end:
+        return Fraction(0)
+    if start > end:
+        return -integrate_piecewise(values, end, start)
+
+    total = Fraction(0)
+    for (left, right), value in values.items():
+        overlap_left = max(start, left)
+        overlap_right = min(end, right)
+        if overlap_left < overlap_right:
+            total += value * (overlap_right - overlap_left)
+    return total
+
+
+def check_rg_transport_common_scale_independence() -> None:
+    intervals = ((Fraction(0), Fraction(1)), (Fraction(1), Fraction(2)), (Fraction(2), Fraction(3)))
+    gamma_h = {intervals[0]: Fraction(3), intervals[1]: Fraction(-1), intervals[2]: Fraction(2)}
+    gamma_j = {intervals[0]: Fraction(-2), intervals[1]: Fraction(4), intervals[2]: Fraction(1)}
+    gamma_s = {interval: -gamma_h[interval] - 2 * gamma_j[interval] for interval in intervals}
+
+    for interval in intervals:
+        assert_equal(
+            "pointwise SCET anomalous-dimension consistency",
+            gamma_h[interval] + 2 * gamma_j[interval] + gamma_s[interval],
+            Fraction(0),
+        )
+
+    natural_h = Fraction(0)
+    natural_j = Fraction(1)
+    natural_s = Fraction(2)
+
+    def total_transport_exponent(common_scale: Fraction) -> Fraction:
+        return (
+            integrate_piecewise(gamma_h, natural_h, common_scale)
+            + 2 * integrate_piecewise(gamma_j, natural_j, common_scale)
+            + integrate_piecewise(gamma_s, natural_s, common_scale)
+        )
+
+    reference = total_transport_exponent(Fraction(2))
+    assert_equal("RG transport to first common scale", reference, total_transport_exponent(Fraction(2)))
+    assert_equal("RG transport independent of later common scale", reference, total_transport_exponent(Fraction(3)))
+
+    shifted_gamma_h = {interval: gamma_h[interval] + Fraction(5) for interval in intervals}
+    shifted_gamma_s = {interval: gamma_s[interval] - Fraction(5) for interval in intervals}
+    shifted = (
+        integrate_piecewise(shifted_gamma_h, natural_h, Fraction(3))
+        + 2 * integrate_piecewise(gamma_j, natural_j, Fraction(3))
+        + integrate_piecewise(shifted_gamma_s, natural_s, Fraction(3))
+    )
+    unshifted = total_transport_exponent(Fraction(3))
+    assert_equal("paired hard-soft anomalous-dimension scheme shift", shifted, unshifted + Fraction(5) * (natural_s - natural_h))
+
+
 def check_soft_wilson_line_decoupling_identity() -> None:
     s = sp.symbols("s")
     a = sp.Rational(3, 2)
@@ -159,8 +216,9 @@ def main() -> None:
     check_event_shape_convolution()
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
+    check_rg_transport_common_scale_independence()
     check_soft_wilson_line_decoupling_identity()
-    print("All SCET convolution, zero-bin, and soft-Wilson-line checks passed.")
+    print("All SCET convolution, zero-bin, RG-transport, and soft-Wilson-line checks passed.")
 
 
 if __name__ == "__main__":

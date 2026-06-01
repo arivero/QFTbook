@@ -44,6 +44,10 @@ The chapter establishes:
   making explicit that an overlap region is subtracted once and that
   regulator-dependent scaleless-zero statements do not remove the need to
   specify the subtraction datum;
+- a transform-space SCET renormalization-group transport datum for resummed
+  singular coordinates, including hard/jet/soft anomalous-dimension
+  consistency, evolution kernels from natural scales to a common scale, and
+  the precise boundary of LL/NLL/NNLL accuracy labels;
 - a prose derivation of the finite algebraic identity that a soft Wilson-line
   change of variables removes the leading \(n\cdot D_s\) soft connection from
   the collinear kinetic term, with the factorization content kept in the
@@ -128,6 +132,13 @@ The chapter establishes:
      both counted.  A convention change is harmless only when paired between
      collinear and soft coordinates; a scaleless integral in a particular
      regulator is not an invariant absence of overlap.
+8ab. Resummation is a renormalization-group transport datum on a declared
+     factorized coordinate.  In transform space the hard, jet, and soft
+     anomalous dimensions must sum to zero as convolution kernels, and the
+     resummed coordinate is obtained by evolving boundary functions from
+     natural scales to a common scale.  Accuracy labels such as LL/NLL/NNLL
+     are incomplete without the anomalous-dimension orders, matching orders,
+     transform convention, scale choices, and factorization remainder.
 8b. The leading soft Wilson-line decoupling is an algebraic identity at finite
     regulator, transferring leading soft interactions from the collinear
     Lagrangian to Wilson lines in external operators and soft matrix elements.
@@ -260,6 +271,11 @@ The chapter establishes:
   inclusion--exclusion bookkeeping for SCET overlap subtraction and extended
   `calculation-checks/scet_factorization_checks.py` with exact zero-bin
   double-counting and paired scheme-reshuffling checks.
+- 2026-06-01 issue #630/#526 resummation-transport pass: upgraded the
+  logarithmic-accuracy paragraph into a transform-space RG transport datum
+  with hard/jet/soft anomalous-dimension consistency and common-scale
+  independence; extended `calculation-checks/scet_factorization_checks.py`
+  with exact rational RG-transport checks.
 - 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
   soft-dipole evolution datum for non-global veto measurements, derived the
   second-order coefficient separating the global Sudakov square from the
