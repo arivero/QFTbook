@@ -376,6 +376,47 @@ def check_dressed_lsz_residue_coordinates() -> None:
     )
 
 
+def u1_boundary_phase_exponent(signed_charges: tuple[Fraction, ...]) -> Fraction:
+    return sum(signed_charges, Fraction(0))
+
+
+def su2_tensor_product_twice_spins(a: int, b: int) -> set[int]:
+    """Return the twice-spin labels in V_a tensor V_b for SU(2)."""
+
+    return set(range(abs(a - b), a + b + 1, 2))
+
+
+def su2_contains_singlet(twice_spins: tuple[int, ...]) -> bool:
+    possible = {0}
+    for spin in twice_spins:
+        next_possible: set[int] = set()
+        for current in possible:
+            next_possible.update(su2_tensor_product_twice_spins(current, spin))
+        possible = next_possible
+    return 0 in possible
+
+
+def check_boundary_charge_selection_rules() -> None:
+    """Check the finite boundary-charge Ward bookkeeping for dressed correlators."""
+
+    electron_two_point = (Fraction(1), Fraction(-1))
+    single_charged_insertion = (Fraction(1),)
+    charge_violating_four_point = (Fraction(2), Fraction(-1), Fraction(-1, 3))
+    neutral_four_point = (Fraction(2), Fraction(-1), Fraction(-2, 3), Fraction(-1, 3))
+
+    assert_equal("dressed two-point function is boundary neutral", u1_boundary_phase_exponent(electron_two_point), 0)
+    assert_equal("single charged vacuum correlator carries boundary charge", u1_boundary_phase_exponent(single_charged_insertion), 1)
+    assert_equal("nonneutral four-point charge sum", u1_boundary_phase_exponent(charge_violating_four_point), Fraction(2, 3))
+    assert_equal("neutral dressed four-point charge sum", u1_boundary_phase_exponent(neutral_four_point), 0)
+
+    spin_half = 1
+    spin_one = 2
+    assert_equal("two SU(2) doublet endpoints contain a singlet", su2_contains_singlet((spin_half, spin_half)), True)
+    assert_equal("doublet times triplet has no invariant vector", su2_contains_singlet((spin_half, spin_one)), False)
+    assert_equal("three SU(2) doublet endpoints have no singlet", su2_contains_singlet((spin_half, spin_half, spin_half)), False)
+    assert_equal("four SU(2) doublet endpoints contain singlets", su2_contains_singlet((spin_half, spin_half, spin_half, spin_half)), True)
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
@@ -386,6 +427,7 @@ def main() -> None:
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
     check_dressed_lsz_residue_coordinates()
+    check_boundary_charge_selection_rules()
     print("All charged flux, Wilson-line dressing, and dressed LSZ coordinate checks passed.")
 
 

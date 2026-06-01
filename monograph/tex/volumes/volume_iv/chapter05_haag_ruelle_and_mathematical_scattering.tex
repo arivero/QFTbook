@@ -1042,6 +1042,69 @@ sectors, it is a noncompact string-like excitation rather than an external
 particle creator.  This distinction is dynamical and cannot be read off from
 the formal gauge covariance alone.
 
+\paragraph{Boundary-charge selection rule for dressed correlators.}
+The endpoint transformation supplies the Ward identity that fixes which
+dressed correlators can enter an LSZ formula.  Consider, with a fixed
+ultraviolet regulator and a fixed infrared endpoint prescription, a
+time-ordered vacuum distribution
+\[
+  G(x_1,\ldots,x_n;\Xi)
+  =
+  \langle\vac|
+  T\{\Psi_{q_1,\gamma_1}^{\epsilon_1}(x_1)\cdots
+      \Psi_{q_n,\gamma_n}^{\epsilon_n}(x_n)\,\mathcal O(\Xi)\}
+  |\vac\rangle .
+\]
+Here \(\epsilon_a=+1\) means \(\Psi_{q_a,\gamma_a}\),
+\(\epsilon_a=-1\) means \(\Psi_{q_a,\gamma_a}^{\dagger}\), and
+\(\mathcal O(\Xi)\) is a product of neutral gauge-invariant local
+observables.  Under a boundary gauge transformation with constant value
+\(\alpha_\infty\), the vacuum and the neutral observables are invariant while
+\[
+  \Psi_{q_a,\gamma_a}^{\epsilon_a}
+  \longmapsto
+  \exp(\ii \epsilon_a q_a\alpha_\infty)
+  \Psi_{q_a,\gamma_a}^{\epsilon_a}.
+\]
+Therefore, as an equality of regulated distributions,
+\[
+  G
+  =
+  \exp\!\left(
+    \ii\alpha_\infty\sum_{a=1}^n\epsilon_a q_a
+  \right)G
+  \qquad\text{for every }\alpha_\infty .
+\]
+If the signed boundary charge does not vanish,
+\begin{equation}
+  \sum_{a=1}^n\epsilon_a q_a\ne0,
+  \label{eq:dressed-correlator-boundary-charge-selection}
+\end{equation}
+then \(G=0\).  Equivalently, a nonzero vacuum correlator of dressed charged
+operators must be neutral after the charges carried by the endpoints at
+infinity are included.  Matrix elements between charged superselection
+sectors obey the same rule with the right side of
+\eqref{eq:dressed-correlator-boundary-charge-selection} replaced by the
+difference between the final and initial boundary charges.  Thus the
+external charges in a dressed LSZ reduction form part of the boundary-charge
+bookkeeping of the correlator itself.
+
+For a nonabelian boundary group, the same statement is representation
+theoretic.  If the endpoints of the dressed insertions transform in boundary
+representations \(R_1,\ldots,R_n\), then the vacuum correlator is an invariant
+tensor in
+\[
+  (R_1\otimes\cdots\otimes R_n)^{G_\infty}.
+\]
+If this invariant subspace is zero, the correlator vanishes.  If it is
+nonzero, choosing a basis of invariant tensors is part of choosing the
+external charged channel.  This is still separate from the dynamical question
+whether the corresponding charged sector has finite-energy asymptotic
+particles; in a confining phase the representation-theoretic singlet
+condition may be satisfied only by neutral composite operators, and ordinary
+Haag--Ruelle theory then applies to those composite particles rather than to
+individual colored endpoints.
+
 \subsection{Ray Dressings as Gauge-Slice Coordinates}
 
 The preceding covariance statement has a second, more computational,

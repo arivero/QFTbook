@@ -363,7 +363,10 @@ Current checks:
   soft-coordinate transformations.  The same script checks the finite
   left-inverse algebra of dressed LSZ residues: the pole residue is a Gram
   matrix of charged one-particle overlaps, and finite dressing-coordinate
-  changes leave the extracted amplitude invariant.
+  changes leave the extracted amplitude invariant.  It also verifies the
+  finite boundary-charge Ward bookkeeping for dressed correlators: abelian
+  signed charges must sum to zero in vacuum matrix elements, and elementary
+  \(SU(2)\) endpoint representations contribute only through singlet channels.
 - `cs_matter_lightfront_checks.py`: exact coefficient checks for the
   three-dimensional Chern--Simons--matter light-cone-gauge section, including
   the factor of two in the quadratic light-cone Chern--Simons action, the

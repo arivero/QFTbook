@@ -21,6 +21,9 @@ resonances.
 - `Q_R`, `Q`: large-sphere Gauss-law charge approximants and limiting charge.
 - `Psi_{q,gamma}`: gauge-invariant noncompact charged creator with Wilson-line
   or Coulombic dressing.
+- `epsilon_a q_a`: signed boundary charge of a dressed insertion in a
+  time-ordered correlator; `epsilon_a=+1` for `Psi_{q_a,gamma_a}` and
+  `epsilon_a=-1` for its adjoint.
 - `J_{q,u,epsilon}`: regulated asymptotic worldline current for velocity
   `u=p/m`.
 - `E_{q,v}(n)`: boosted Coulomb angular flux density on the celestial sphere.
@@ -74,6 +77,12 @@ resonances.
   Gauss-law flux.
 - Derives the abelian Wilson-line boundary-charge transformation and the
   nonabelian parallel-transporter transformation law.
+- Adds the boundary-charge Ward selection rule for dressed correlators:
+  vacuum matrix elements of abelian dressed insertions vanish unless the
+  signed endpoint charges sum to zero, while nonabelian endpoint labels must
+  be projected to invariant tensors in the boundary representation tensor
+  product.  The text separates this exact algebraic constraint from the
+  dynamical existence of finite-energy charged asymptotic particles.
 - Gives the finite-ray abelian calculation that a Wilson-line dressed charged
   coordinate is the ordinary charged coordinate on the axial gauge slice
   \(u^\mu A_\mu=0\), under explicit endpoint and decay assumptions, and
@@ -143,7 +152,9 @@ resonances.
   script now checks the finite Hilbert soft-coordinate transformation law and
   strong-continuity behavior on coherent vectors, as well as the
   finite-dimensional left-inverse algebra for dressed charged LSZ residues
-  and its invariance under finite dressing-coordinate changes.
+  and its invariance under finite dressing-coordinate changes.  It now also
+  checks the boundary-charge selection rule for abelian dressed correlators
+  and elementary \(SU(2)\) endpoint singlet channels.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -214,3 +225,9 @@ resonances.
   normalized external charged amplitude.  This clarifies the exact finite
   sense in which same-flux dressing changes are coordinate changes while
   preserving the open theorem debt for changes of asymptotic Gauss-law flux.
+- 2026-06-01 #527 continuation: inserted the boundary-charge Ward selection
+  rule immediately after Wilson-line covariance.  The pass keeps it as a
+  structural paragraph rather than a proposition/proof: the point is the
+  charge bookkeeping every dressed correlator must satisfy, not a new theorem
+  family.  The paired check now covers abelian signed-charge neutrality and
+  finite \(SU(2)\) singlet-channel bookkeeping.
