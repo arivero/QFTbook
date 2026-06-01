@@ -13,22 +13,25 @@ material are kept separate from the compiled monograph.
 
 ## Complete Active Volume List
 
-The active compiled monograph consists of the following twelve volumes:
+The active compiled monograph consists of the following twelve volumes.  This
+table is intentionally duplicated near the top of the README so that the
+public landing page records the full architecture before the longer chapter
+map begins.
 
-| Volume | Title | Assembly file |
-| --- | --- | --- |
-| I | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
-| II | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
-| III | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
-| IV | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
-| V | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
-| VI | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
-| VII | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
-| VIII | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
-| IX | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
-| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
-| XI | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
-| XII | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
+| Volume | Chapters | Title | Assembly file |
+| --- | ---: | --- | --- |
+| I | 16 | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
+| II | 13 | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
+| III | 10 | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
+| IV | 16 | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
+| V | 15 | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
+| VI | 14 | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
+| VII | 17 | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
+| VIII | 11 | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
+| IX | 11 | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
+| X | 12 | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
+| XI | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
+| XII | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
 There is no active compiled Volume XIII or later at present.  If a future
 subject volume is launched, update this list, the table below,
@@ -90,7 +93,7 @@ compiled contents of each volume.
 | I | 16 | `monograph/tex/volumes/volume_i/volume_i_current.tex` | Foundations of Local Quantum Field Theory |
 | II | 13 | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` | Particles, Scattering, and Analyticity |
 | III | 10 | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | 17 | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` | Gauge Theory, Infrared Structure, and Anomalies |
+| IV | 16 | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` | Gauge Theory, Infrared Structure, and Anomalies |
 | V | 15 | `monograph/tex/volumes/volume_v/volume_v_current.tex` | Conformal Field Theory |
 | VI | 14 | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` | Integrable Quantum Field Theory |
 | VII | 17 | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` | Supersymmetric Quantum Field Theory |
