@@ -21,6 +21,8 @@
   \(\mathcal W^+/\mathcal W^-=a/d\) for two solutions of the same
   second-order finite-difference equation.
 - Higher-rank \(T\)-system/Hirota relation.
+- Bäcklund elimination as restriction to the sub-Q-system containing an
+  eliminated color, with the normalization/gauge boundary made explicit.
 - T-gauge transformations, analytic T-system data, and the distinction
   between local Hirota algebra and the analytic/spectral data needed to
   define a physical problem.
@@ -43,6 +45,7 @@
 | \(Q(u)\) | Baxter polynomial or \(Q\)-operator eigenvalue |
 | \(\mathcal W[Q_1,Q_2]\) | half-shift Casoratian of two rank-one Baxter solutions |
 | \(T_{a,s}(u)\) | transfer functions in a \(T\)-system |
+| \(Q^{(c)}_A\) | unnormalized restricted Q-system after eliminating color \(c\) |
 | \(\mathcal G_{a,s}(u)\) | T-gauge multiplier preserving Hirota covariance |
 | \(x_\alpha\) | separated variables |
 | \(D,\mathsf a,\mathsf a^\dagger\) | q-oscillator Fock generators |
@@ -60,13 +63,16 @@
 5. The Baxter Casoratian of two rank-one solutions obeys the first-order
    transport equation \(d\,\mathcal W^+=a\,\mathcal W^-\), making explicit the
    second-solution datum behind higher-rank Wronskian \(Q\)-systems.
-6. T-gauge transformations multiply all three Hirota monomials by the same
+6. The family \(Q^{(c)}_A=Q_{A\cup\{c\}}\) obeys the same QQ-relation on the
+   smaller index set; this is the precise finite Q-system meaning of a
+   Bäcklund elimination step before analytic normalization.
+7. T-gauge transformations multiply all three Hirota monomials by the same
    cocycle factor and leave the Y-functions invariant; therefore analytic
    T-system data must include gauge, boundary, divisor, cut, and asymptotic
    information beyond the local bilinear identity.
-7. The trigonometric rank-one q-oscillator \(L\)-operator satisfies the local
+8. The trigonometric rank-one q-oscillator \(L\)-operator satisfies the local
    six-vertex RLL identity in the stated normalization.
-8. \(Q\)-operator and separation-of-variables constructions require
+9. \(Q\)-operator and separation-of-variables constructions require
    representation-specific completeness theorems not supplied by the RTT
    algebra alone.
 
@@ -76,8 +82,9 @@
   pole-cancellation calculation paired with this chapter.
 - `calculation-checks/nested_integrability_checks.py` verifies the nested
   Cartan-form Bethe equations, dressed-vacuum pole cancellation, QQ/Hirota
-  algebra, exact T-gauge covariance/Y-invariance, rank-one Baxter Casoratian
-  transport, and the exact finite-basis q-oscillator local RLL convention.
+  algebra, Bäcklund restricted-Q-system algebra, exact T-gauge
+  covariance/Y-invariance, rank-one Baxter Casoratian transport, and the
+  exact finite-basis q-oscillator local RLL convention.
 
 ## Audit Notes
 
@@ -89,6 +96,9 @@
   analytic T-system datum, separating the local Hirota determinant identity
   from the boundary, divisor, cut, asymptotic, and charge data required by an
   actual spectral problem.
+- 2026-06-01 Vol VI/Bäcklund restriction pass: made the finite Q-system
+  meaning of a Bäcklund step explicit by restricting to Q-functions
+  containing an eliminated color and recording the normalization/gauge issue.
 
 ## Figures
 

@@ -180,6 +180,39 @@ def check_qq_system() -> None:
                     assert_close(f"QQ A={A} a={a} b={b} u={u}", lhs, rhs)
 
 
+def check_backlund_restricted_qsystem() -> None:
+    """Check that Q-functions containing a fixed color form a smaller Q-system."""
+
+    all_indices = tuple(range(4))
+    sample_points = [-0.3 + 0.2j, 0.6 - 0.4j, 1.2 + 0.15j]
+
+    def restricted(removed: int, subset: tuple[int, ...], u: complex) -> complex:
+        return q_det(tuple(sorted(subset + (removed,))), u)
+
+    for removed in all_indices:
+        remaining_indices = tuple(i for i in all_indices if i != removed)
+        for u in sample_points:
+            for size in range(len(remaining_indices) - 1):
+                for subset in itertools.combinations(remaining_indices, size):
+                    remaining = [a for a in remaining_indices if a not in subset]
+                    for a, b in itertools.combinations(remaining, 2):
+                        A = tuple(sorted(subset))
+                        Aa = tuple(sorted(A + (a,)))
+                        Ab = tuple(sorted(A + (b,)))
+                        Aab = tuple(sorted(A + (a, b)))
+                        lhs = restricted(removed, Aab, u) * restricted(removed, A, u)
+                        rhs = restricted(removed, Aa, u + I / 2.0) * restricted(
+                            removed, Ab, u - I / 2.0
+                        ) - restricted(removed, Aa, u - I / 2.0) * restricted(
+                            removed, Ab, u + I / 2.0
+                        )
+                        assert_close(
+                            f"Bäcklund restricted QQ removed={removed} A={A} a={a} b={b} u={u}",
+                            lhs,
+                            rhs,
+                        )
+
+
 def check_hirota_to_y_system() -> None:
     def t(a: int, s: int, shift: int) -> complex:
         return (
@@ -426,6 +459,7 @@ def main() -> None:
     check_cartan_nested_formula()
     check_dressed_vacuum_pole_factorization()
     check_qq_system()
+    check_backlund_restricted_qsystem()
     check_hirota_to_y_system()
     check_t_system_gauge_freedom()
     check_baxter_casoratian_transport()

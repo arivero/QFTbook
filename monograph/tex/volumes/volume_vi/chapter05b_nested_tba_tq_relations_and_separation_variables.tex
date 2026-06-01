@@ -421,6 +421,76 @@ This gives \eqref{eq:qq-system}.  The identity is purely determinant
 algebra; no analytic assumption on the \(q_i\)'s is used beyond existence of
 the displayed values.
 
+\section{Bäcklund Elimination as Q-System Restriction}
+\label{sec:backlund-elimination-qsystem-restriction}
+
+The Bäcklund language used in nested Bethe ansatz should be understood as a
+recursive statement about Q-system data, not as a separate dynamical
+principle.  Let \(I=\{1,\ldots,N\}\) and let \(\{Q_A\}_{A\subset I}\) obey
+\eqref{eq:qq-system}.  Choose a color \(c\in I\), and define an unnormalized
+restricted family on \(I\setminus\{c\}\) by
+\begin{equation}
+  Q^{(c)}_A(u)=Q_{A\cup\{c\}}(u),
+  \qquad A\subset I\setminus\{c\}.
+  \label{eq:backlund-restricted-qsystem}
+\end{equation}
+Then \(Q^{(c)}\) obeys the same local QQ-relation on the smaller index set:
+\begin{equation}
+  Q^{(c)}_{Aab}(u)Q^{(c)}_A(u)
+  =
+  \bigl(Q^{(c)}_{Aa}\bigr)^{+}(u)
+  \bigl(Q^{(c)}_{Ab}\bigr)^{-}(u)
+  -
+  \bigl(Q^{(c)}_{Aa}\bigr)^{-}(u)
+  \bigl(Q^{(c)}_{Ab}\bigr)^{+}(u),
+  \label{eq:backlund-restricted-qq-system}
+\end{equation}
+for \(a,b\notin A\cup\{c\}\), \(a\ne b\).  This is simply
+\eqref{eq:qq-system} applied to the subset \(A\cup\{c\}\) and the two
+remaining indices \(a,b\).  The point of recording it is not the algebraic
+verification; the point is the interpretation.  A Bäcklund step removes one
+auxiliary color direction by passing from the \(N\)-color Q-system to the
+subsystem of minors that contain the eliminated color.  Repeating the
+operation along a flag
+\[
+  I=I_N\supset I_{N-1}\supset\cdots\supset I_1\supset I_0=\varnothing,
+  \qquad |I_r|=r,
+\]
+produces the chain of rank-reduced Q-systems that mirrors the recursive
+nested monodromy of
+Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang}.
+
+The adjective ``unnormalized'' in \eqref{eq:backlund-restricted-qsystem}
+matters.  The restricted empty function is \(Q^{(c)}_\varnothing=Q_c\), not
+the constant \(1\).  In a finite spin chain one often chooses a Q-gauge in
+which the new empty function is normalized away on a domain where \(Q_c\) has
+no zeros.  In an analytic T-system or quantum spectral-curve problem this
+normalization is part of the analytic datum: zeros, cuts, asymptotics, and
+large-\(u\) powers cannot be divided out without recording what has happened
+to them.  Thus Bäcklund elimination is a local algebraic operation on
+Q-systems, while the normalized physical presentation of the reduced problem
+requires the gauge and analytic data of
+Definition~\ref{def:analytic-t-system-datum}.
+
+For \(N=3\), the first elimination already displays the nesting pattern.  If
+\(c=3\), the restricted rank-two data are
+\[
+  Q^{(3)}_\varnothing=Q_3,\qquad
+  Q^{(3)}_1=Q_{13},\qquad
+  Q^{(3)}_2=Q_{23},\qquad
+  Q^{(3)}_{12}=Q_{123}.
+\]
+The smaller QQ-relation is
+\[
+  Q_{123}Q_3=Q_{13}^{+}Q_{23}^{-}-Q_{13}^{-}Q_{23}^{+},
+\]
+which is the original QQ-relation with base subset \(\{3\}\).  In nested
+Bethe ansatz this is the algebraic shadow of passing from the original
+three-color auxiliary problem to the residual two-color one; the Bethe roots
+of the reduced problem are zeros of the Q-functions that survive the
+restriction, together with the gauge convention used to interpret them as
+polynomials.
+
 \section{Fusion and the Hirota T-System}
 
 The transfer matrix with a fundamental auxiliary space is only the first
