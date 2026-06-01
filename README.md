@@ -11,10 +11,11 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Active Volume Roster
+## Full Public Volume Architecture
 
-The compiled public manuscript currently consists of exactly twelve active
-reader-facing volumes.  The complete active list is:
+The compiled public manuscript currently consists of exactly twelve launched
+reader-facing volumes.  This is the full active public volume list, in the
+same order as `monograph/tex/main.tex`:
 
 1. Volume I: Foundations of Local Quantum Field Theory
 2. Volume II: Particles, Scattering, and Analyticity
@@ -50,12 +51,12 @@ inputs the spinor-convention source as a section inside Chapter 40.
 | XI | 136-146 | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | Constructive models, reflection positivity, continuum limits, lattice gauge theory, rigorous RG, stochastic quantization, and numerical regulators. | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
 | XII | 147-157 | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | Locally covariant QFT, Hadamard states, stress tensors, Unruh and Hawking effects, index theory, microlocal methods, and semiclassical backreaction. | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
-These twelve rows are the complete list of launched public volumes.  Possible
-future subject splits remain planning material until they are added to
-`monograph/tex/main.tex`, `monograph/tex/frontmatter_volume_dependency_guide.tex`,
-and this README in the same pass.  Draft files, deprecated files, source
-transcriptions, local reference files, and planning notes are not additional
-public volumes.
+These twelve rows are the complete list of launched public volumes.  There are
+no hidden active volumes outside this roster.  Possible future subject splits
+remain planning material until they are added to `monograph/tex/main.tex`,
+`monograph/tex/frontmatter_volume_dependency_guide.tex`, and this README in
+the same pass.  Draft files, deprecated files, source transcriptions, local
+reference files, and planning notes are not additional public volumes.
 
 ## Repository Layout
 
