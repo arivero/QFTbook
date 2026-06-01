@@ -272,6 +272,58 @@ def check_dai_freed_gluing_phase_algebra() -> None:
         )
 
 
+def oriented_edge_value(cochain: dict[tuple[int, int], Fraction], start: int, end: int) -> Fraction:
+    if (start, end) in cochain:
+        return cochain[(start, end)]
+    if (end, start) in cochain:
+        return -cochain[(end, start)]
+    raise KeyError(f"missing oriented edge {start}->{end}")
+
+
+def boundary_integral(cochain: dict[tuple[int, int], Fraction], vertices: list[int]) -> Fraction:
+    total = Fraction(0)
+    for index, start in enumerate(vertices):
+        end = vertices[(index + 1) % len(vertices)]
+        total += oriented_edge_value(cochain, start, end)
+    return total
+
+
+def check_contractible_loop_curvature_stokes() -> None:
+    """Finite cochain model of the contractible-loop Stokes step.
+
+    The chapter uses this algebra to pass from Bismut--Freed curvature over a
+    background-space disk to the local descent integral on the boundary loop.
+    Interior cut contributions cancel before reducing the final exponent
+    modulo integers.
+    """
+
+    connection = {
+        (0, 1): Fraction(1, 5),
+        (1, 2): Fraction(-2, 7),
+        (2, 3): Fraction(3, 11),
+        (0, 3): Fraction(5, 13),
+        (0, 2): Fraction(-7, 17),
+    }
+    left_triangle_curvature = boundary_integral(connection, [0, 1, 2])
+    right_triangle_curvature = boundary_integral(connection, [0, 2, 3])
+    disk_curvature = left_triangle_curvature + right_triangle_curvature
+    outer_boundary = boundary_integral(connection, [0, 1, 2, 3])
+    assert_equal(
+        "contractible-loop Stokes cancellation of the interior cut",
+        disk_curvature,
+        outer_boundary,
+    )
+
+    local_descent_integral = Fraction(19, 23)
+    aps_integer_ambiguity = 4
+    eta_phase_exponent = local_descent_integral + aps_integer_ambiguity
+    assert_equal(
+        "APS integer ambiguity leaves the contractible-loop anomaly phase unchanged",
+        mod_one(eta_phase_exponent),
+        mod_one(local_descent_integral),
+    )
+
+
 def orbit_action(a: int, g: int, orbit_size: int) -> int:
     return (a + g) % orbit_size
 
@@ -395,6 +447,7 @@ def main() -> None:
     check_aps_spectral_flow_sign_convention()
     check_quillen_spectral_cut_transition_cocycle()
     check_dai_freed_gluing_phase_algebra()
+    check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_stabilizer_holonomy_character_obstruction()
     print("Eta-invariant and SU(2) global-anomaly checks passed.")

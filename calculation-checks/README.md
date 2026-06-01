@@ -121,7 +121,8 @@ Current checks:
   crossing, the finite skew-block Pfaffian orientation model, vanishing of the
   ordinary \(SU(2)\) cubic weight sum, the Quillen spectral-cut transition
   cocycle for determinant-line charts, and the finite \(U(1)\)-phase algebra
-  of Dai--Freed gluing.
+  of Dai--Freed gluing, together with a finite cochain Stokes model for the
+  contractible-loop step from Bismut--Freed curvature to local descent.
 - `free_fock_nuclearity_checks.py`: finite checks for the Volume IV
   nuclearity phase-space benchmark, including the bosonic finite-mode product
   formula, the sup-norm lattice shell count and derivative bound, and

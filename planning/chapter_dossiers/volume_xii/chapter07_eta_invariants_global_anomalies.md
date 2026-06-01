@@ -73,7 +73,8 @@ global anomaly as an explicit mod-two-index example.
   the five-dimensional real-index theorem from the subsequent
   trace-convention arithmetic.
 - Explains Dai--Freed inflow as a boundary-line trivialization and derives the
-  descent limit for contractible loops.
+  descent limit for contractible loops by combining Bismut--Freed curvature,
+  ordinary Stokes on a background-space disk, and Chern--Weil descent.
 - Expands the Dai--Freed gluing mechanism: for a closed odd manifold that
   bounds, APS identifies the eta phase with the exponentiated local index
   integral modulo integers; for an odd manifold with boundary, the
@@ -93,7 +94,9 @@ global anomaly as an explicit mod-two-index example.
   identities, based-loop holonomy invariance, the stabilizer-character
   obstruction to descent, and the Quillen spectral-cut transition cocycle for
   determinant-line charts, the reduced-eta integer jump at a one-mode
-  crossing, and the finite \(U(1)\)-phase algebra behind Dai--Freed gluing.
+  crossing, the finite \(U(1)\)-phase algebra behind Dai--Freed gluing, and a
+  finite cochain Stokes model for the contractible-loop curvature-to-descent
+  step.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -153,3 +156,7 @@ global anomaly as an explicit mod-two-index example.
   endpoint-kernel term from the incoming APS boundary component, and recorded
   the resulting sign between simple-crossing spectral flow and the chosen
   APS cylinder index representative.
+- 2026-06-01 contractible-loop descent pass: expanded the local-descent limit
+  of Dai--Freed inflow into a background-space Stokes/transgression argument
+  and extended `eta_global_anomaly_checks.py` with a finite cochain model of
+  the interior-cut cancellation plus APS integer ambiguity.
