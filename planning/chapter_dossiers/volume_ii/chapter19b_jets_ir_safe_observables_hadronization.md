@@ -52,6 +52,9 @@ The chapter establishes:
 - a finite-tree formulation of soft drop as a deterministic map on a
   Cambridge--Aachen declustering tree, with explicit soft-drop decision
   margins, harder-branch margins, and clustering-margin qualifications;
+- a measured-mMDT finite-event test separating positive-angular-power groomed
+  moments, which pass the one-prong collinear check, from retained-energy
+  fraction, which fails it;
 - the minimized-\(N\)-subjettiness value functional on a compact angular jet
   patch, with existence of minimizing axes and soft/collinear continuity of
   the minimized value rather than of a chosen axis label;
@@ -129,6 +132,10 @@ The chapter establishes:
      retained momenta inherits the corresponding local soft/collinear
      behavior.  Boundary hypersurfaces require separate distributional
      treatment.
+9ab. For mMDT, collinear safety is a property of the measured functional, not
+     of the groomed constituent set by itself.  A positive-angular-power
+     groomed moment can vanish on the deleted one-prong collinear branch,
+     while retained-energy fraction jumps from \(1\) to \(1-z\).
 9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
     calorimetric value functional on finite-energy jet measures; selected
     minimizing axes are auxiliary data and can jump at degenerate events
@@ -191,6 +198,11 @@ The chapter establishes:
   `calculation-checks/soft_drop_irc_checks.py` to verify fixed-tree retained
   leaves, off-boundary perturbation stability, and boundary-crossing behavior
   with exact rational data.
+- 2026-06-01 issue #526 measured-mMDT pass: added the finite angular moment
+  \(G_\kappa\) as a test functional, separated its one-prong collinear
+  behavior from the retained-energy fraction, and extended
+  `calculation-checks/soft_drop_irc_checks.py` with exact rational checks of
+  the \(2z(1-z)\theta^\kappa\) scaling and the mMDT energy-fraction jump.
 - 2026-06-01 issue #526/#630 continuation: added the minimized
   \(N\)-subjettiness measure-functional definition, proved existence of
   minimizing axes and continuity of the minimized value under weak, soft, and

@@ -692,6 +692,56 @@ tie hypersurfaces require separate distributional analysis and cannot be
 silently discarded when a singular measurement or endpoint resummation is
 being defined.
 
+\paragraph{Measured mMDT functionals.}
+The \(\beta_{\rm SD}=0\) counterexample above is deliberately a counterexample
+to the groomed four-vector.  It is not a license to classify every measured
+functional of the groomed set by the same sentence.  A useful finite-event
+test is the following.  For a retained finite leaf set \(S\), define the
+homogeneous angular moment
+\begin{equation}
+  G_\kappa(S)
+  =
+  \frac{1}{E_S^2R_0^\kappa}
+  \sum_{\ell,m\in S}
+  E_\ell E_m\,\theta_{\ell m}^{\kappa},
+  \qquad
+  E_S=\sum_{\ell\in S}E_\ell,
+  \qquad
+  \kappa>0,
+  \label{eq:groomed-angular-moment-finite}
+\end{equation}
+where \(\theta_{\ell m}\) is the angular distance and the diagonal terms
+vanish.  In the one-prong collinear split used in the mMDT counterexample,
+with energies \((1-z)E\) and \(zE\), \(0<z<z_{\rm cut}\), the mMDT recursion
+retains only the harder daughter.  Therefore
+\[
+  G_\kappa(\{(1-z)E\})=0=G_\kappa(\{E\})
+\]
+in the exact collinear limit.  If \(\beta_{\rm SD}>0\), the same pair is
+retained for sufficiently small opening angle \(\theta\), and
+\[
+  G_\kappa(\{(1-z)E,zE\})
+  =
+  2z(1-z)\left(\frac{\theta}{R_0}\right)^\kappa ,
+\]
+which tends to zero as \(\theta\downarrow0\).  Thus a positive-angular-power
+shape such as \eqref{eq:groomed-angular-moment-finite} passes this elementary
+collinear test even when the groomed four-vector does not.
+
+By contrast, the retained-energy fraction
+\[
+  r_E(S)=\frac{E_S}{E_{\rm input}}
+\]
+is not collinear safe for mMDT as a standalone observable: the same exact
+collinear split changes \(r_E\) from \(1\) to \(1-z\).  This is the
+measurement-level lesson.  For \(\beta_{\rm SD}=0\), a groomed observable is
+acceptable only after its own collinear boundary behavior is checked.  Angular
+weights with positive powers can kill the deleted one-prong collinear branch;
+energy-retention observables cannot.  Endpoint distributions of
+\(G_\kappa\), groomed masses, or ratios built from them still require their
+own factorization and resummation data, because IRC safety of the measurement
+is only the first finiteness condition.
+
 \begin{definition}[\(N\)-subjettiness]
 \label{def:n-subjettiness}
 For a jet with constituents \(k\), choose \(N\) axes

@@ -5,7 +5,8 @@ The checks encode the elementary collinear counterexample for mMDT
 (\(\beta_{\rm SD}=0\)) and the contrasting \(\beta_{\rm SD}>0\) threshold
 behavior used in the jet-substructure chapter.  They also exercise the
 finite-tree decision-margin bookkeeping used to make "away from grooming
-boundaries" precise.
+boundaries" precise, and the measured-function distinction between
+positive-angular-power shapes and retained-energy fraction.
 """
 
 from __future__ import annotations
@@ -37,6 +38,27 @@ def groomed_energy_fraction_two_branch(z_soft: Fraction, z_cut: Fraction, theta_
     if soft_drop_passes(z_soft, z_cut, theta_num, beta):
         return Fraction(1)
     return Fraction(1) - z_soft
+
+
+def finite_angular_moment(
+    energies: tuple[Fraction, ...],
+    pair_angles: dict[tuple[int, int], Fraction],
+    kappa: int,
+    radius: Fraction = Fraction(1),
+) -> Fraction:
+    """Return sum_{ij} E_i E_j theta_ij^kappa / (E_tot^2 R^kappa)."""
+
+    total = sum(energies)
+    if total <= 0:
+        raise ValueError("the angular moment is defined only for positive total energy")
+    numerator = Fraction(0)
+    for i, energy_i in enumerate(energies):
+        for j, energy_j in enumerate(energies):
+            if i == j:
+                continue
+            angle = pair_angles.get((i, j), pair_angles.get((j, i), Fraction(0)))
+            numerator += energy_i * energy_j * angle**kappa
+    return numerator / (total**2 * radius**kappa)
 
 
 class Split(NamedTuple):
@@ -111,6 +133,36 @@ def check_positive_beta_collinear_limit() -> None:
     assert_equal("positive-beta collinear pair retained", retained, Fraction(1))
 
 
+def check_measured_mmdt_functionals() -> None:
+    z_cut = Fraction(1, 10)
+    z_soft = Fraction(1, 20)
+    theta = Fraction(1, 100)
+    kappa = 2
+
+    parent_shape = finite_angular_moment((Fraction(1),), {}, kappa)
+    retained_mmdt_shape = finite_angular_moment((Fraction(1) - z_soft,), {}, kappa)
+    assert_equal("one-prong angular moment before mMDT split", parent_shape, Fraction(0))
+    assert_equal("one-prong angular moment after mMDT split", retained_mmdt_shape, Fraction(0))
+
+    retained_energy = groomed_energy_fraction_two_branch(z_soft, z_cut, theta, beta=0)
+    assert_equal("mMDT retained-energy fraction is collinear unsafe", retained_energy, Fraction(19, 20))
+
+    positive_beta_shape = finite_angular_moment(
+        (Fraction(1) - z_soft, z_soft),
+        {(0, 1): theta},
+        kappa,
+    )
+    expected = 2 * z_soft * (Fraction(1) - z_soft) * theta**kappa
+    assert_equal("positive-beta two-prong angular moment", positive_beta_shape, expected)
+
+    smaller_angle_shape = finite_angular_moment(
+        (Fraction(1) - z_soft, z_soft),
+        {(0, 1): theta / 10},
+        kappa,
+    )
+    assert_equal("angular moment has theta^kappa scaling", 100 * smaller_angle_shape, positive_beta_shape)
+
+
 def check_fixed_tree_decision_margins() -> None:
     tree: Tree = {
         "root": Split("A", "B", Fraction(1)),
@@ -146,6 +198,7 @@ def check_fixed_tree_decision_margins() -> None:
 def main() -> None:
     check_beta_zero_four_momentum_counterexample()
     check_positive_beta_collinear_limit()
+    check_measured_mmdt_functionals()
     check_fixed_tree_decision_margins()
     print("All soft-drop IRC classification checks passed.")
 
