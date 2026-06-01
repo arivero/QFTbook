@@ -208,6 +208,42 @@ def check_hirota_to_y_system() -> None:
     assert_close("Hirota local Y-system identity", lhs, rhs)
 
 
+def check_baxter_casoratian_transport() -> None:
+    """Check the finite-difference Wronskian transport for two Baxter solutions."""
+
+    def a(site: int) -> Fraction:
+        return Fraction(site + 3, 2)
+
+    def d(site: int) -> Fraction:
+        return Fraction(2 * site + 5, 3)
+
+    def lam(site: int) -> Fraction:
+        return Fraction(3 * site + 7, 4)
+
+    def solution(q_minus_one: Fraction, q_zero: Fraction, max_site: int) -> dict[int, Fraction]:
+        values = {-1: q_minus_one, 0: q_zero}
+        for site in range(max_site):
+            values[site + 1] = (
+                lam(site) * values[site] - a(site) * values[site - 1]
+            ) / d(site)
+        return values
+
+    q1 = solution(Fraction(2, 3), Fraction(5, 7), 8)
+    q2 = solution(Fraction(-1, 5), Fraction(4, 9), 8)
+
+    for site in range(0, 8):
+        for name, q in (("q1", q1), ("q2", q2)):
+            lhs = lam(site) * q[site]
+            rhs = a(site) * q[site - 1] + d(site) * q[site + 1]
+            if lhs != rhs:
+                raise AssertionError(f"Baxter recurrence failed for {name} at {site}")
+
+        w_plus = q1[site + 1] * q2[site] - q2[site + 1] * q1[site]
+        w_minus = q1[site] * q2[site - 1] - q2[site] * q1[site - 1]
+        if d(site) * w_plus != a(site) * w_minus:
+            raise AssertionError(f"Baxter Casoratian transport failed at {site}")
+
+
 Spin = int
 QoscState = tuple[int, Spin, Spin]
 QoscVector = dict[QoscState, Fraction]
@@ -339,6 +375,7 @@ def main() -> None:
     check_dressed_vacuum_pole_factorization()
     check_qq_system()
     check_hirota_to_y_system()
+    check_baxter_casoratian_transport()
     check_qoscillator_l_operator_rll()
     print("All nested-integrability calculation checks passed.")
 

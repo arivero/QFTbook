@@ -277,6 +277,101 @@ the displayed equality is precisely
 the numerator on the right side of \eqref{eq:xxx-baxter-tq} vanishes at every
 root of \(Q\), so division by \(Q\) produces a polynomial \(\Lambda\).
 
+\section{Baxter Casoratian and the Second Solution}
+\label{sec:baxter-casoratian-second-solution}
+
+The scalar \(TQ\) relation is a second-order finite-difference equation.  Its
+two independent solutions carry the same information as a rank-two
+Wronskian system.  This elementary point becomes structurally important in
+higher rank and in the quantum spectral curve: a \(Q\)-system is not just a
+list of Bethe polynomials, but a family of finite-difference solutions tied
+together by Casoratian identities and boundary conditions.
+
+Write the rank-one Baxter equation in the form
+\begin{equation}
+  \Lambda(u)Q(u)
+  =
+  a(u)Q(u-\ii)+d(u)Q(u+\ii),
+  \label{eq:rank-one-baxter-general-ad}
+\end{equation}
+where \(a,d,\Lambda\) are meromorphic functions on a common shift domain.
+For two solutions \(Q_1,Q_2\), define the half-shift Casoratian
+\begin{equation}
+  \mathcal W[Q_1,Q_2](u)
+  =
+  Q_1\!\left(u+\frac{\ii}{2}\right)
+  Q_2\!\left(u-\frac{\ii}{2}\right)
+  -
+  Q_1\!\left(u-\frac{\ii}{2}\right)
+  Q_2\!\left(u+\frac{\ii}{2}\right).
+  \label{eq:baxter-casoratian-definition}
+\end{equation}
+
+\begin{lemma}[Baxter Casoratian transport]
+\label{lem:baxter-casoratian-transport}
+If \(Q_1\) and \(Q_2\) solve \eqref{eq:rank-one-baxter-general-ad} with the
+same \(a,d,\Lambda\), then
+\begin{equation}
+  d(u)\,
+  \mathcal W[Q_1,Q_2]\!\left(u+\frac{\ii}{2}\right)
+  =
+  a(u)\,
+  \mathcal W[Q_1,Q_2]\!\left(u-\frac{\ii}{2}\right).
+  \label{eq:baxter-casoratian-transport}
+\end{equation}
+At a point where \(a(u)d(u)\ne0\), vanishing of the Casoratian on one
+adjacent half-shift is therefore transported to the other.
+\end{lemma}
+
+\begin{proof}
+Multiply \eqref{eq:rank-one-baxter-general-ad} for \(Q_1\) by \(Q_2(u)\),
+multiply the same equation for \(Q_2\) by \(Q_1(u)\), and subtract.  The
+terms containing \(\Lambda(u)Q_1(u)Q_2(u)\) cancel, leaving
+\[
+  a(u)
+  \left(Q_1(u-\ii)Q_2(u)-Q_2(u-\ii)Q_1(u)\right)
+  +
+  d(u)
+  \left(Q_1(u+\ii)Q_2(u)-Q_2(u+\ii)Q_1(u)\right)
+  =
+  0 .
+\]
+The second bracket is
+\[
+  \mathcal W[Q_1,Q_2]\!\left(u+\frac{\ii}{2}\right),
+\]
+whereas the first bracket is
+\[
+  -\mathcal W[Q_1,Q_2]\!\left(u-\frac{\ii}{2}\right).
+\]
+Substitution gives \eqref{eq:baxter-casoratian-transport}.  If
+\(a(u)d(u)\ne0\), the displayed equation is a nonzero scalar multiple
+relation between the two adjacent Casoratians, so either one vanishes exactly
+when the other does.
+\end{proof}
+
+For the homogeneous \(XXX_{1/2}\) normalization of
+\eqref{eq:xxx-baxter-tq},
+\[
+  a(u)=\left(u+\frac{\ii}{2}\right)^L,\qquad
+  d(u)=\left(u-\frac{\ii}{2}\right)^L,
+\]
+so the Casoratian obeys
+\begin{equation}
+  \frac{\mathcal W(u+\ii/2)}{\mathcal W(u-\ii/2)}
+  =
+  \left(\frac{u+\ii/2}{u-\ii/2}\right)^L .
+  \label{eq:xxx-casoratian-ratio}
+\end{equation}
+The polynomial Bethe solution is only one member of the two-dimensional
+local solution space of the difference equation.  The companion solution is
+usually meromorphic rather than polynomial; its poles and asymptotics encode
+the boundary condition that selected the Bethe state.  Higher-rank
+Wronskian \(Q_A\)'s generalize this rank-one Casoratian: the determinant
+formula in the next section is the multi-solution version of
+\eqref{eq:baxter-casoratian-definition}, and the QQ-relations are the
+corresponding Pluecker identities.
+
 \section{QQ-System and Bäcklund Flow}
 
 For higher-rank systems it is more efficient to work with a family of

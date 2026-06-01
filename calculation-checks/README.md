@@ -899,7 +899,8 @@ Current checks:
 - `nested_integrability_checks.py`: exact and finite checks for the Volume VI
   nested-integrability chapters, including the \(SU(3)\) worked nested-root
   solution, Cartan-matrix nested Bethe equations, dressed-vacuum pole
-  factorization, determinant QQ and Hirota-to-Y algebra, and the
+  factorization, determinant QQ and Hirota-to-Y algebra, rank-one Baxter
+  Casoratian transport for two finite-difference solutions, and the
   trigonometric rank-one q-oscillator local RLL identity in the chapter's
   six-vertex normalization.
 - `planar_n4_integrability_checks.py`: finite checks for the Volume VII
