@@ -863,6 +863,67 @@ defect insertions must all be specified before the phrase ``the partition
 function'' denotes a number rather than a vector in a finite Heisenberg
 representation.
 
+\paragraph{Circle reduction of the finite Heisenberg system.}
+The same finite datum explains why the global form of the five-dimensional
+gauge theory is not fixed by the local gauge algebra alone.  Let
+\[
+  Y=S^1\times X_5
+\]
+with \(X_5\) closed and oriented, and let
+\(\eta\in H^1(S^1;\mathbb Z)\) be normalized by
+\(\int_{S^1}\eta=1\).  Pullback from \(X_5\) and cup product with \(\eta\)
+give the canonical product splitting
+\begin{equation}
+  H^3(S^1\times X_5;A_{\mathfrak g})
+  \simeq
+  H^3(X_5;A_{\mathfrak g})
+  \oplus
+  \eta\,H^2(X_5;A_{\mathfrak g}) .
+  \label{eq:six-d-circle-finite-flux-splitting}
+\end{equation}
+Write an element as
+\[
+  x=u+\eta v,\qquad
+  u\in H^3(X_5;A_{\mathfrak g}),\quad
+  v\in H^2(X_5;A_{\mathfrak g}).
+\]
+For \(y=u'+\eta v'\), the six-dimensional pairing
+\eqref{eq:six-d-finite-flux-pairing} becomes
+\begin{equation}
+  \langle u+\eta v,\ u'+\eta v'\rangle_{S^1\times X_5}
+  =
+  \int_{X_5}
+  \bigl(
+    b_{\mathfrak g}(v\smile u')
+    -
+    b_{\mathfrak g}(u\smile v')
+  \bigr) .
+  \label{eq:six-d-circle-finite-flux-pairing}
+\end{equation}
+The sign is fixed by moving the degree-one class \(\eta\) past the
+degree-three class \(u\):
+\[
+  u\smile\eta v'=-\,\eta\,u\smile v',
+  \qquad
+  \eta v\smile u'=\eta\,v\smile u' .
+\]
+Thus \(H^3(X_5;A_{\mathfrak g})\) and
+\(\eta H^2(X_5;A_{\mathfrak g})\) are mutually dual isotropic subgroups
+whenever the resulting finite pairing is nondegenerate.
+
+This is the finite topological core of the five-dimensional global-form
+choice.  A six-dimensional surface defect wrapping \(S^1\) becomes a
+five-dimensional line defect whose finite charge is measured by
+\(H^2(X_5;A_{\mathfrak g})\); an unwrapped six-dimensional surface defect
+gives a five-dimensional surface defect measured by
+\(H^3(X_5;A_{\mathfrak g})\).  Equation
+\eqref{eq:six-d-circle-finite-flux-pairing} says that the two sets of
+charges are mutually nonlocal.  A polarization chooses a maximal mutually
+local set before the compactified partition function is a number.  In gauge
+theory language this is the global form and discrete finite-flux datum that
+supplements the Lie algebra \(\mathfrak g\).  It is not determined by the
+local \(5d\) Yang--Mills Lagrangian density.
+
 \section{Circle Compactification And Five-Dimensional Yang--Mills}
 
 Compactification on a smooth compact manifold \(Y\) gives lower-dimensional

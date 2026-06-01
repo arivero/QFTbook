@@ -107,6 +107,12 @@ Reviewed source spine:
 - Works out the cyclic \(A_{N-1}\) finite-flux model \(K=\mathbb Z_N\oplus
   \mathbb Z_N\), including its alternating pairing and maximal isotropic
   subgroup.
+- Decomposes the finite flux system on \(S^1\times X_5\) as
+  \(H^3(X_5;A_{\mathfrak g})\oplus\eta H^2(X_5;A_{\mathfrak g})\), derives
+  the cross-pairing
+  \(\int_{X_5}(b(v\smile u')-b(u\smile v'))\), and explains the resulting
+  wrapped-line/unwrapped-surface polarization as the finite global-form datum
+  of the five-dimensional compactification.
 - Defines the five-dimensional instanton current
   \(j_{\rm inst}=*_5(8\pi^2)^{-1}\operatorname{tr}_{\rm top}F\wedge F\),
   its integral charge on spatial four-cycles, the trace-delta instanton
@@ -135,7 +141,8 @@ Reviewed source spine:
   Green-Schwarz descent factor, the trace-delta five-dimensional
   instanton/Kaluza-Klein normalization, wrapped-string/W-boson scalar
   normalization, ADE defect-group orders from Cartan determinants, and the
-  cyclic finite-flux polarization model.  It also checks the simply laced
+  cyclic finite-flux polarization model.  It also checks the
+  \(S^1\times X_5\) finite-flux cross-pairing signs, the simply laced
   root-system second-moment identities for the \(A\) and \(D\) series and the
   ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\),
   as well as the class-\(S\) twist anomaly-pushforward coefficients.
@@ -203,6 +210,12 @@ Reviewed source spine:
   the trace-delta instanton-particle energy bound as the branch-EFT mechanism
   behind the \(g_5^2=4\pi^2R\) compactification test, and recorded that this
   still does not define the parent six-dimensional local QFT.
+- 2026-06-01 circle finite-flux decomposition pass: expanded the finite
+  defect-group section with the \(S^1\times X_5\) Kunneth splitting of
+  \(H^3(-;A_{\mathfrak g})\), the sign derivation of the cross-pairing
+  between \(H^3(X_5;A_{\mathfrak g})\) and \(H^2(X_5;A_{\mathfrak g})\), and
+  the interpretation of the two isotropic halves as unwrapped surface defects
+  and circle-wrapped line defects in the five-dimensional compactification.
 
 ## Figure Ledger
 

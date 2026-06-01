@@ -527,6 +527,53 @@ def check_cyclic_finite_flux_polarization() -> None:
                 assert_equal(f"Z_{n} polarization isotropic {x},{y}", symplectic_numerator(x, y), 0)
 
 
+def check_circle_reduction_finite_flux_pairing() -> None:
+    # For Y=S^1 x X_5, write x=(u,v) for u in H^3(X;A) and
+    # eta v in eta H^2(X;A).  The product sign gives
+    # <(u,v),(u',v')> = v u' - u v' modulo N in the cyclic one-cell model.
+    for n in range(2, 13):
+        elements = [(u, v) for u in range(n) for v in range(n)]
+
+        def circle_pairing(x: tuple[int, int], y: tuple[int, int]) -> int:
+            u, v = x
+            up, vp = y
+            return (v * up - u * vp) % n
+
+        for x in elements:
+            assert_equal(f"circle finite flux alternating {n} {x}", circle_pairing(x, x), 0)
+            for y in elements:
+                assert_equal(
+                    f"circle finite flux skew {n} {x},{y}",
+                    circle_pairing(x, y),
+                    (-circle_pairing(y, x)) % n,
+                )
+
+        for x in elements:
+            if x == (0, 0):
+                continue
+            detects = any(circle_pairing(x, y) != 0 for y in elements)
+            assert_equal(f"circle finite flux nondegenerate {n} {x}", detects, True)
+
+        unwrapped_surface = [(u, 0) for u in range(n)]
+        wrapped_line = [(0, v) for v in range(n)]
+        for subgroup_name, subgroup in (
+            ("unwrapped-surface", unwrapped_surface),
+            ("wrapped-line", wrapped_line),
+        ):
+            assert_equal(
+                f"circle {subgroup_name} polarization size {n}",
+                len(subgroup) ** 2,
+                len(elements),
+            )
+            for x in subgroup:
+                for y in subgroup:
+                    assert_equal(
+                        f"circle {subgroup_name} isotropic {n} {x},{y}",
+                        circle_pairing(x, y),
+                        0,
+                    )
+
+
 def check_class_s_hitchin_base_degrees() -> None:
     for n in range(2, 10):
         a_degrees = list(range(2, n + 1))
@@ -626,6 +673,7 @@ def main() -> None:
     check_wrapped_string_mass_normalization()
     check_two_zero_defect_group_orders()
     check_cyclic_finite_flux_polarization()
+    check_circle_reduction_finite_flux_pairing()
     check_class_s_hitchin_base_degrees()
     check_class_s_anomaly_pushforward_coefficients()
     print("All ABJM and six-dimensional SUSY convention checks passed.")

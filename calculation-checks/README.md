@@ -1253,8 +1253,9 @@ Current checks:
   anomaly/tensor-branch arithmetic, the quadratic Green--Schwarz descent
   factor, the trace-delta \(g_5^2=4\pi^2R\) compactification normalization,
   the wrapped-string/W-boson scalar normalization, ADE defect-group orders
-  from Cartan determinants, cyclic finite-flux polarization checks, and ADE
-  class-\(S\) Hitchin-base degree sums.
+  from Cartan determinants, cyclic finite-flux polarization checks, the
+  \(S^1\times X_5\) finite-flux decomposition and electric/magnetic
+  polarization signs, and ADE class-\(S\) Hitchin-base degree sums.
 - `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
   supersymmetric gauge-theory foundation chapter, including the auxiliary
   \(D\)-field square completion and potential sign, the absence of
