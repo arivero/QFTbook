@@ -561,6 +561,46 @@ computed by \eqref{eq:bismut-freed-holonomy} or by the mod-two Pfaffian
 formula below.  Tensoring independent fermion systems tensors their anomaly
 lines, so the cocycles multiply and the logarithmic anomaly exponents add.
 
+\paragraph{Dual anomaly lines and the cancellation criterion.}
+Let \(L\) be an anomaly line over \(\mathcal B//\mathcal G\).  Its dual line
+\(L^\vee\) has fibers
+\[
+  L_A^\vee=\operatorname{Hom}(L_A,\mathbb C).
+\]
+If \(\Phi_g(A):L_A\to L_{A^g}\) is the transport of \(L\), then the transport
+of \(L^\vee\) is the inverse dual map
+\[
+  \Phi_g^\vee(A)
+  =
+  \bigl(\Phi_g(A)^{-1}\bigr)^{*}
+  :
+  L_A^\vee\longrightarrow L_{A^g}^\vee .
+\]
+In a local trivialization, if \(L\) is represented by the cocycle
+\(\alpha(A,g)\), then \(L^\vee\) is represented by
+\(\alpha(A,g)^{-1}\).  Hence
+\begin{equation}
+  \alpha_{L\otimes L^\vee}(A,g)
+  =
+  \alpha(A,g)\alpha(A,g)^{-1}
+  =
+  1 .
+  \label{eq:anomaly-line-dual-cancellation-cocycle}
+\end{equation}
+The tensor product \(L\otimes L^\vee\) is therefore canonically trivialized by
+the evaluation pairing.  More generally, anomaly cancellation for a collection
+of fermion systems is the existence of a groupoid-equivariant trivialization
+of the tensor product of their determinant or Pfaffian lines.  Vanishing of
+the local curvature only says that this tensor product is flat.  It still
+must have trivial based-loop holonomy, because a nontrivial flat line gives a
+well-defined local anomaly density equal to zero while failing
+\eqref{eq:anomaly-line-equivariant-trivialization} on a noncontractible loop
+of backgrounds.  For real Pfaffian lines the inverse line is again a real
+line; the statement becomes multiplication of signs.  Thus two identical
+four-dimensional \(SU(2)\) Weyl doublets cancel the Witten sign because
+\((-1)^2=1\), whereas one doublet gives a nontrivial flat Pfaffian line over
+the large-gauge loop.
+
 For an infinitesimal gauge transformation connected to the identity, the
 linearization of \(\alpha\) is the consistent local anomaly derived in
 Chapter~\ref{ch:volume-ii-20}.  For a large gauge transformation such as the

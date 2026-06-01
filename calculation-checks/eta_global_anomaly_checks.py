@@ -433,6 +433,10 @@ def coboundary_shifted_exponent(a: int, g: int, orbit_size: int, phase_modulus: 
     ) % phase_modulus
 
 
+def inverse_line_exponent(exponent: int, phase_modulus: int) -> int:
+    return (-exponent) % phase_modulus
+
+
 def check_action_groupoid_anomaly_cocycle_and_descent() -> None:
     for orbit_size in range(1, 8):
         for phase_modulus in range(2, 11):
@@ -485,6 +489,65 @@ def check_action_groupoid_anomaly_cocycle_and_descent() -> None:
                     )
 
 
+def check_dual_anomaly_line_cancellation() -> None:
+    for orbit_size in range(1, 8):
+        for phase_modulus in range(2, 13):
+            for a in range(orbit_size):
+                for g in range(orbit_size):
+                    for h in range(orbit_size):
+                        gh = (g + h) % orbit_size
+                        ag = orbit_action(a, g, orbit_size)
+                        dual_lhs = inverse_line_exponent(
+                            anomaly_cocycle_exponent(a, gh, orbit_size, phase_modulus),
+                            phase_modulus,
+                        )
+                        dual_rhs = (
+                            inverse_line_exponent(
+                                anomaly_cocycle_exponent(a, g, orbit_size, phase_modulus),
+                                phase_modulus,
+                            )
+                            + inverse_line_exponent(
+                                anomaly_cocycle_exponent(ag, h, orbit_size, phase_modulus),
+                                phase_modulus,
+                            )
+                        ) % phase_modulus
+                        assert_equal(
+                            f"dual anomaly line is a cocycle orbit={orbit_size} phase={phase_modulus}",
+                            dual_lhs,
+                            dual_rhs,
+                        )
+
+                for g in range(orbit_size):
+                    original = anomaly_cocycle_exponent(a, g, orbit_size, phase_modulus)
+                    dual = inverse_line_exponent(original, phase_modulus)
+                    assert_equal(
+                        f"anomaly line times dual line trivializes orbit={orbit_size} phase={phase_modulus}",
+                        (original + dual) % phase_modulus,
+                        0,
+                    )
+
+    for group_order in range(2, 9):
+        phase_modulus = group_order
+        charge = 1
+        dual_charge = inverse_line_exponent(charge, phase_modulus)
+        nontrivial_flat_values = []
+        for g in range(group_order):
+            primary = (charge * g) % phase_modulus
+            dual = (dual_charge * g) % phase_modulus
+            assert_equal(
+                f"flat stabilizer character cancels with dual G={group_order}",
+                (primary + dual) % phase_modulus,
+                0,
+            )
+            nontrivial_flat_values.append(primary)
+
+        assert_equal(
+            f"nontrivial flat stabilizer holonomy exists before dual cancellation G={group_order}",
+            any(value != 0 for value in nontrivial_flat_values),
+            True,
+        )
+
+
 def check_stabilizer_holonomy_character_obstruction() -> None:
     for group_order in range(2, 12):
         for phase_modulus in range(2, 12):
@@ -529,6 +592,7 @@ def main() -> None:
     check_dai_freed_gluing_phase_algebra()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()
+    check_dual_anomaly_line_cancellation()
     check_stabilizer_holonomy_character_obstruction()
     print("Eta-invariant and SU(2) global-anomaly checks passed.")
 

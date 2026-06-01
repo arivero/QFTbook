@@ -64,6 +64,10 @@ global anomaly as an explicit mod-two-index example.
   trivialization shift it by a coboundary, based-loop holonomies are
   invariant, and a quotient-valued partition function exists only after an
   equivariant trivialization of the anomaly line.
+- Adds the dual-line cancellation criterion: the dual anomaly line has the
+  inverse groupoid cocycle, `L \otimes L^\vee` is trivialized by evaluation,
+  and local curvature cancellation is weaker than global cancellation because
+  a flat anomaly line can still have nontrivial based-loop holonomy.
 - Defines the Pfaffian mod-two index and proves its deformation invariance in
   the real skew setting.
 - Inserts a finite skew-block model of the Pfaffian line:
@@ -110,11 +114,12 @@ global anomaly as an explicit mod-two-index example.
   finite skew-block Pfaffian orientation model, cylinder congruence
   arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
-  obstruction to descent, and the Quillen spectral-cut transition cocycle for
-  determinant-line charts, the reduced-eta integer jump at a one-mode
-  crossing, the finite \(U(1)\)-phase algebra behind Dai--Freed gluing, and a
-  finite cochain Stokes model for the contractible-loop curvature-to-descent
-  step.
+  obstruction to descent, dual anomaly-line cancellation, nontrivial flat
+  stabilizer holonomy before cancellation, and the Quillen spectral-cut
+  transition cocycle for determinant-line charts, the reduced-eta integer
+  jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
+  Dai--Freed gluing, and a finite cochain Stokes model for the
+  contractible-loop curvature-to-descent step.
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -192,3 +197,7 @@ global anomaly as an explicit mod-two-index example.
   separation between imported pure global-analysis infrastructure and
   QFT-facing anomaly conclusions derived from those inputs, to keep #696's
   remaining proof debt honest rather than hidden in quoted theorem language.
+- 2026-06-01 dual anomaly-line cancellation pass: added the dual-line
+  cancellation criterion over the quotient background groupoid and exact
+  finite checks for inverse cocycles, tensor trivialization, and flat
+  stabilizer holonomy before cancellation.
