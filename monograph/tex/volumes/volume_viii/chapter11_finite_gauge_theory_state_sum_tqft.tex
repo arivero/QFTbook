@@ -1037,22 +1037,30 @@ the restriction functor
 \]
 and all stabilizers are the automorphism groups of these finite groupoids.
 
-\begin{proposition}[Interval sectors for subgroup boundaries]
-\label{prop:finite-subgroup-boundary-double-cosets}
+\paragraph{Interval sector groupoid for subgroup boundaries.}
+\label{par:finite-subgroup-boundary-double-cosets}
 Consider the untwisted finite \(G\)-gauge theory on an interval with left
 boundary subgroup \(H_0\subset G\) and right boundary subgroup \(H_1\subset G\).
-The boundary field groupoid is the action groupoid
+Choose a trivialization of the \(G\)-bundle at one point of the interval.
+Flatness identifies the bundle with a single parallel-transport element
+\(g\in G\).  Changing the left boundary \(H_0\)-trivialization by
+\(h_0\in H_0\) multiplies \(g\) on the left, while changing the right boundary
+\(H_1\)-trivialization by \(h_1\in H_1\) multiplies \(g\) on the right by
+\(h_1^{-1}\), because parallel transport is read from the left endpoint to
+the right endpoint.  Thus the boundary field groupoid is the action groupoid
 \[
   G//(H_0\times H_1),
   \qquad
   (h_0,h_1):g\longmapsto h_0 g h_1^{-1}.
 \]
-Therefore the simple topological sectors are the double cosets
+Its isomorphism classes, hence the simple topological sectors, are the double
+cosets
 \begin{equation}
   H_0\backslash G/H_1,
   \label{eq:finite-subgroup-boundary-double-cosets}
 \end{equation}
-and the groupoid cardinality of the interval field groupoid is
+and the finite action-groupoid cardinality formula
+\eqref{eq:action-groupoid-cardinality} gives
 \begin{equation}
   \bigl|G//(H_0\times H_1)\bigr|
   =
@@ -1060,7 +1068,7 @@ and the groupoid cardinality of the interval field groupoid is
   \label{eq:finite-subgroup-boundary-groupoid-cardinality}
 \end{equation}
 For a representative \(g\in G\), the automorphism group of the corresponding
-sector is
+sector is the stabilizer of \(g\):
 \begin{equation}
   \operatorname{Aut}(g)
   =
@@ -1068,21 +1076,6 @@ sector is
   \cong H_0\cap gH_1g^{-1}.
   \label{eq:finite-subgroup-boundary-stabilizer}
 \end{equation}
-\end{proposition}
-
-\begin{proof}
-Choose a trivialization of the \(G\)-bundle at one point of the interval.
-Flatness then identifies the bundle with a single parallel-transport element
-\(g\in G\).  Changing the left boundary \(H_0\)-trivialization by \(h_0\)
-multiplies \(g\) on the left, and changing the right boundary
-\(H_1\)-trivialization by \(h_1\) multiplies \(g\) on the right by
-\(h_1^{-1}\), because parallel transport is read from the left endpoint to
-the right endpoint.  This is precisely the displayed
-\(H_0\times H_1\)-action.
-
-The isomorphism classes of the action groupoid are its orbits, hence the
-double cosets \(H_0\backslash G/H_1\).  The stabilizer of \(g\) is the set of
-pairs \((h_0,h_1)\) with \(h_0gh_1^{-1}=g\), equivalently \(h_0g=gh_1\).
 Projection to the first factor identifies this stabilizer with
 \[
   H_0\cap gH_1g^{-1},
@@ -1091,11 +1084,6 @@ and projection to the second factor identifies it with
 \[
   g^{-1}H_0g\cap H_1.
 \]
-Finally, the action-groupoid cardinality formula
-\eqref{eq:action-groupoid-cardinality}, applied to the finite
-\((H_0\times H_1)\)-set \(G\), gives
-\eqref{eq:finite-subgroup-boundary-groupoid-cardinality}.
-\end{proof}
 
 The vector space assigned to an interval in this boundary sector is therefore
 \[

@@ -88,8 +88,8 @@ bordism-functoriality chapter.
     group `A op Ahat`, braiding, spin, bosonic Lagrangian subgroups, endpoint
     criterion, and cylinder sector count
     `dim H_cyl(L_0,L_1)=|C_A/(L_0+L_1)|=|L_0 cap L_1|`.
-15. Develops finite subgroup boundaries for general finite `G`, proves the
-    interval sector classification by double cosets `H_0\G/H_1`, records the
+15. Develops finite subgroup boundaries for general finite `G`, works out the
+    interval sector groupoid with double-coset labels `H_0\G/H_1`, records the
     stabilizer weights, and gives the relative Dijkgraaf-Witten boundary
     condition `delta beta=i^* omega` as an explicit state-sum cancellation
     identity.  Also derives the boundary-junction convolution
@@ -144,3 +144,8 @@ bordism-functoriality chapter.
   the `delta beta=i^* omega` cancellation, and the obstruction class remain
   explicit; theorem-family rank is reserved for deeper state-sum/gluing
   machinery rather than this local cochain cancellation check.
+- 2026-06-01 issue #691 continuation: demoted the subgroup-boundary interval
+  sector double-coset classification from proposition/proof form to a worked
+  groupoid paragraph.  The action groupoid, double-coset labels, stabilizer
+  groups, and groupoid cardinality remain explicit, but the direct orbit
+  calculation no longer carries theorem-family rank.

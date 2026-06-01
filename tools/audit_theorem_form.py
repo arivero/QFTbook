@@ -109,6 +109,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Tree-level .*phi.* amplitude after LSZ|"
     r"Representative QED Feynman rules|"
     r"Tree-level Compton hard kernel|"
+    r"Interval sectors for subgroup boundaries|"
     r"One-instanton test of the ADS numerator and denominator|"
     r"Pure-SYM one-instanton zero-mode test|"
     r"Constant-seed covering-count test|"
