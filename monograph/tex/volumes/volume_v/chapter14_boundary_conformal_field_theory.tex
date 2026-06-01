@@ -1203,6 +1203,54 @@ on the quotient such that
 \end{equation}
 \end{quotedtheorem}
 
+The positivity in
+\eqref{eq:boundary-gradient-metric} comes from the spectral representation
+of the boundary two-point function.  The finite-regulator mechanism is as
+follows.  Let
+\(\Phi=u^a\phi_a\) be a real boundary perturbing field after subtracting its
+one-point function, and first place the boundary theory on a finite
+half-cylinder with discrete positive-energy boundary Hamiltonian.  Grouping
+matrix elements by a positive energy gap \(\Delta_r>0\), reflection
+positivity and the KMS trace give the connected Euclidean boundary two-point
+function in the form
+\begin{equation}
+  \langle\Phi(\tau)\Phi(0)\rangle_c
+  =
+  \sum_r A_r
+  \frac{\ee^{-\Delta_r\tau}
+        +\ee^{-\Delta_r(L-\tau)}}
+       {1-\ee^{-L\Delta_r}},
+  \qquad
+  A_r\ge0,\qquad 0<\tau<L ,
+  \label{eq:bcft-boundary-spectral-two-point}
+\end{equation}
+where the connected trace has removed the zero-gap diagonal part.  Put
+\(\kappa=2\pi/L\).  For a single gap,
+\begin{align}
+  \int_0^L\!\dd\tau\,
+  \bigl(1-\cos \kappa\tau\bigr)
+  \frac{\ee^{-\Delta\tau}
+        +\ee^{-\Delta(L-\tau)}}{1-\ee^{-L\Delta}}
+  &=
+  \frac{2\kappa^2}{\Delta(\Delta^2+\kappa^2)} .
+  \label{eq:bcft-boundary-gradient-spectral-weight}
+\end{align}
+Thus the quadratic form obtained from
+\eqref{eq:boundary-gradient-metric} is a sum of nonnegative matrix-element
+weights
+\[
+  L\sum_r A_r
+  \frac{2\kappa^2}{\Delta_r(\Delta_r^2+\kappa^2)} .
+\]
+This calculation explains the shape of the trigonometric kernel in the
+gradient formula: after the connected trace removes the zero-gap diagonal
+part, the kernel assigns a positive finite weight to each nonzero boundary
+excitation.  In the continuum theorem, the hard analytic work is to
+renormalize the coincident boundary singularities, preserve the boundary Ward
+identity \eqref{eq:boundary-trace-beta-fields}, and quotient total
+derivative directions so that this finite spectral positivity survives in
+the renormalized coupling chart.
+
 The monotonicity statement is the direct consequence of the gradient formula,
 not an independent classification theorem.  With RG time \(t=\log L\),
 \begin{equation}

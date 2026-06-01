@@ -670,7 +670,8 @@ Current checks:
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
   classifying sewing identity, boundary entropy squares, Chan--Paton direct
-  sums, compact-boson T-duality zero modes, Ising boundary-changing fusing
+  sums, the positive spectral weight in the boundary-entropy gradient metric,
+  compact-boson T-duality zero modes, Ising boundary-changing fusing
   constants and OPE powers, the finite four-boundary Cardy--Lewellen sewing
   cell, and the Liouville FZZT/ZZ hyperbolic identities used in the
   nonrational boundary-state discussion.

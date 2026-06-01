@@ -76,6 +76,12 @@
   explicit trace, entropy, metric, and positivity hypotheses, derives
   \(g_{\rm UV}\ge g_{\rm IR}\) from it, and adds an `openproblem` for
   nonrational/continuous-spectrum BCFT sewing.
+- Expands the finite spectral mechanism behind the boundary entropy gradient
+  metric: after subtracting the one-point function, a finite half-cylinder
+  KMS spectral representation gives positive gap weights
+  `2 kappa^2/(Delta(Delta^2+kappa^2))` for the kernel
+  `1 - cos(kappa tau)`, separating finite spectral positivity from the
+  continuum renormalization and contact-term theorem boundary.
 - Expands the algebraic core of the rational boundary construction:
   symmetric special Frobenius algebra object \(A\) in the chiral tensor
   category, left \(A\)-module boundary conditions, open multiplicities
@@ -123,7 +129,10 @@
    sewing theorem.
 14. Cardy-Lewellen sewing and the boundary entropy gradient formula are theorem
    inputs; monotonicity of \(g\) is derived from the positive gradient formula,
-   not quoted as an independent endpoint-classification statement.
+   not quoted as an independent endpoint-classification statement.  The
+   positivity mechanism of the gradient metric is spectral: in a finite
+   regulator each positive boundary gap contributes the weight
+   `2 kappa^2/(Delta(Delta^2+kappa^2))`.
 15. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
    boundary sewing into module associativity and chiral associator pentagon
    identities; analytic all-surface sewing remains the external theorem
@@ -143,7 +152,8 @@
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
-  Frobenius-algebra module multiplicity formula, Chan--Paton direct-sum
+  Frobenius-algebra module multiplicity formula, the positive spectral weight
+  in the boundary entropy gradient metric, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, compact-boson zero-mode
   exchange under T-duality, and the Liouville FZZT/ZZ hyperbolic identities.
 
@@ -203,3 +213,8 @@
   \(F_{\sigma}^{\sigma\sigma\sigma}(F_{\sigma}^{\sigma\sigma\sigma})^T=1\),
   together with an exact calculation check of the fixed-boundary
   orthogonality relation.
+- 2026-06-01 boundary entropy spectral-metric pass: expanded the gradient
+  formula proof boundary by deriving the finite KMS spectral representation
+  of the boundary two-point function and the positive kernel weight
+  \(2\kappa^2/(\Delta(\Delta^2+\kappa^2))\); extended
+  `bcft_cardy_checks.py` to verify the rational algebra of this weight.

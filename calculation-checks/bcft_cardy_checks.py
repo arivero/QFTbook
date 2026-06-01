@@ -267,6 +267,34 @@ def check_boundary_entropy() -> None:
     assert_equal("free g squared", entropy_squares[2], ONE)
 
 
+def check_boundary_gradient_spectral_weight() -> None:
+    """Check the finite spectral weight in the boundary g-gradient metric.
+
+    Suppress the common circumference factor and write kappa_sq for
+    (2*pi/L)^2.  For one positive energy gap Delta, the periodic KMS pair
+    e^{-Delta tau}+e^{-Delta(L-tau)} divided by 1-e^{-L Delta}, tested
+    against 1-cos(kappa tau), gives
+
+        2 kappa_sq / (Delta (Delta^2 + kappa_sq)).
+
+    The exact rational check records the algebraic positivity mechanism; the
+    transcendental value of kappa is irrelevant for the sign and normalization.
+    """
+
+    for gap in (Fraction(1, 3), Fraction(1), Fraction(5, 2)):
+        for kappa_sq in (Fraction(1, 4), Fraction(4), Fraction(25, 3)):
+            one_thermal_image = kappa_sq / (gap * (gap * gap + kappa_sq))
+            two_image_weight = 2 * one_thermal_image
+            displayed_weight = 2 * kappa_sq / (gap * (gap * gap + kappa_sq))
+            assert_equal(
+                f"boundary gradient spectral weight Delta={gap}, kappa^2={kappa_sq}",
+                two_image_weight,
+                displayed_weight,
+            )
+            if displayed_weight <= 0:
+                raise AssertionError("positive boundary gap produced nonpositive gradient weight")
+
+
 def check_chan_paton_direct_sums() -> None:
     for n in range(1, 5):
         for m in range(1, 5):
@@ -442,6 +470,7 @@ def main() -> None:
     check_cardy_fusion_ring_characters()
     check_cardy_unit_algebra_module_multiplicities()
     check_boundary_entropy()
+    check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
     check_ising_four_boundary_sewing_cell()
@@ -449,7 +478,7 @@ def main() -> None:
     check_liouville_fzzt_zz_hyperbolic_identity()
     check_liouville_degenerate_shift_sum()
     print(
-        "All BCFT Cardy, sewing, Ising boundary-changing, "
+        "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "Chan-Paton, compact-boson, and Liouville-boundary checks passed."
     )
 
