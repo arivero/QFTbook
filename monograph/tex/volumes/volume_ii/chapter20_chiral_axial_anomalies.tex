@@ -1329,6 +1329,57 @@ of the total symmetric cubic tensor therefore removes precisely this local
 class, while a nonzero tensor gives a class outside the image of local
 counterterm variations.
 
+The non-removability of a nonzero cubic tensor can also be seen without using
+the full local BRST classification.  Restrict the background to a maximal
+torus \(T\) with Lie algebra \(\mathfrak t\).  Since an invariant polynomial
+on a complex semisimple Lie algebra is determined by its restriction to a
+Cartan subalgebra, a nonzero cubic invariant has a nonzero restriction to
+\(\mathfrak t\).  Indeed, regular semisimple elements are conjugate to
+\(\mathfrak t\) and form a Zariski-dense subset; an invariant polynomial that
+vanishes on \(\mathfrak t\) therefore vanishes on all regular semisimple
+elements and hence identically.  Thus a nonzero semisimple cubic gauge
+anomaly can be detected after Abelianizing to commuting gauge fields
+\[
+  A=A^i H_i,\qquad F^i=\dd A^i .
+\]
+On this Abelianized chart the cubic anomaly representative has the form
+\[
+  \int_M C_{i;jk}\lambda^i F^jF^k,
+  \qquad C_{i;jk}=C_{i;kj},
+\]
+and its invariant cubic coordinate is the completely symmetric part of
+\(C_{i;jk}\).  The most general cubic local counterterm that can change this
+\(\lambda F F\) coefficient has, modulo gauge-invariant terms and total
+derivatives, the form
+\[
+  B_4
+  =
+  \frac12 H_{ij,k}A^iA^jF^k,
+  \qquad H_{ij,k}=-H_{ji,k}.
+\]
+Using \(\delta_\lambda A^i=\dd\lambda^i\), \(\delta_\lambda F^i=0\), and
+\(\dd F^i=0\), its variation on a closed spacetime is
+\[
+  \delta_\lambda\!\int_M B_4
+  =
+  -\int_M
+  H_{ij,k}\lambda^i F^jF^k .
+\]
+Since \(F^jF^k=F^kF^j\), the effective shift of the coefficient symmetric in
+the two curvature labels is
+\[
+  \Delta C_{i;jk}
+  =
+  -\frac12\bigl(H_{ij,k}+H_{ik,j}\bigr).
+\]
+The complete symmetrization over \(i,j,k\) vanishes identically because
+\(H\) is antisymmetric in its first two labels.  Therefore local
+counterterms cannot change the fully symmetric Cartan coefficient of the
+Abelianized anomaly.  By the Cartan-restriction argument above, a nonzero
+semisimple cubic invariant tensor cannot be removed by a local counterterm.
+This elementary Abelianized calculation is the part of the obstruction that
+the anomaly-matching and WZW sections use repeatedly.
+
 The cubic gauge part of the anomaly polynomial for a left-handed Weyl fermion
 in \(R_i\) is proportional to
 \(\operatorname{tr}_{R_i}(\mathsf F^3)\).  Expanding
@@ -1342,12 +1393,14 @@ absorbed into the anomaly coefficient.  Summing over fermions gives
 \eqref{eq:gauge-anomaly-cancellation}.
 
 A local counterterm changes the anomaly representative by a BRST coboundary.
-The descent class associated with a nonzero cubic invariant tensor is a
-nontrivial element of the local ghost-number-one BRST cohomology described in
-Proposition~\ref{prop:local-anomalies-relative-brst-classes} below.
-Therefore a nonzero tensor cannot be removed by changing local counterterms.
-If the tensor vanishes, this particular descent class has zero coefficient,
-which is exactly the asserted absence statement.  The last sentence is not an
+The Abelianized counterterm calculation above already proves that a nonzero
+semisimple cubic invariant tensor cannot be removed by changing local
+counterterms.  The remaining use of local BRST cohomology is the converse
+classification statement: in the polynomial local perturbative Yang--Mills
+setting, once this invariant-polynomial coefficient vanishes, the semisimple
+cubic gauge-anomaly class itself is absent.  Other anomaly classes, global
+anomaly holonomies, and regulator-specific Slavnov--Taylor restoration
+conditions are separate data.  The last sentence is therefore not an
 all-purpose nonperturbative existence theorem; it is the perturbative BRST
 consistency reduction in a specified gauge-fixed regularized framework.
 \end{proof}

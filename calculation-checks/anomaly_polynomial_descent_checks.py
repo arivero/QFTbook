@@ -16,6 +16,8 @@ inflow sections:
 * the Chern-Weil transgression coefficients in the universal
   Chern-Simons representative;
 * the n=2 consistent-descent homotopy coefficients 1 and 1/2;
+* Abelianized cubic counterterms preserve the completely symmetric Cartan
+  coefficient of the anomaly;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -24,6 +26,7 @@ inflow sections:
 from __future__ import annotations
 
 from fractions import Fraction
+from itertools import permutations
 
 
 SM_FIELDS = [
@@ -138,6 +141,49 @@ def check_consistent_descent_coefficients() -> None:
     assert_equal("consistent descent A^3 coefficient", a_cubed, Fraction(1, 2))
 
 
+def check_abelian_counterterm_symmetric_cubic_invariance() -> None:
+    """A cubic Abelian counterterm cannot shift the symmetric anomaly tensor."""
+
+    raw_h = {
+        (0, 1, 0): Fraction(2, 3),
+        (0, 1, 2): Fraction(-5, 7),
+        (0, 2, 1): Fraction(11, 5),
+        (1, 2, 0): Fraction(13, 6),
+        (1, 3, 2): Fraction(-17, 11),
+        (2, 3, 1): Fraction(19, 13),
+    }
+
+    def h(i: int, j: int, k: int) -> Fraction:
+        if i == j:
+            return Fraction(0)
+        if (i, j, k) in raw_h:
+            return raw_h[(i, j, k)]
+        if (j, i, k) in raw_h:
+            return -raw_h[(j, i, k)]
+        return Fraction(0)
+
+    def delta_c(i: int, j: int, k: int) -> Fraction:
+        # The counterterm (1/2) H_{ij,k} A^i A^j F^k shifts the coefficient
+        # of lambda^i F^j F^k by -1/2(H_{ij,k}+H_{ik,j}); the second term
+        # symmetrizes over the two curvature labels.
+        return -Fraction(1, 2) * (h(i, j, k) + h(i, k, j))
+
+    for i in range(4):
+        for j in range(4):
+            for k in range(4):
+                assert_equal(
+                    f"Abelian counterterm shift symmetric in curvature labels {i}{j}{k}",
+                    delta_c(i, j, k),
+                    delta_c(i, k, j),
+                )
+                symmetric_part = sum(delta_c(*p) for p in permutations((i, j, k))) / Fraction(6)
+                assert_equal(
+                    f"Abelian counterterm leaves fully symmetric cubic coefficient {i}{j}{k}",
+                    symmetric_part,
+                    Fraction(0),
+                )
+
+
 def check_standard_model_hypercharge_sums() -> None:
     cubic = sum(su3 * su2 * y**3 for _, su3, su2, y in SM_FIELDS)
     linear = sum(su3 * su2 * y for _, su3, su2, y in SM_FIELDS)
@@ -169,6 +215,7 @@ def main() -> None:
     check_effective_action_conversion()
     check_chern_weil_transgression_coefficients()
     check_consistent_descent_coefficients()
+    check_abelian_counterterm_symmetric_cubic_invariance()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()
     print("All anomaly-polynomial and inflow coefficient checks passed.")

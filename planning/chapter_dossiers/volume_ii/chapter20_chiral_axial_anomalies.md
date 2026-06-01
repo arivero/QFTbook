@@ -72,7 +72,12 @@
   heat-kernel coefficient, the six-form
   \(\widehat A\,\operatorname{ch}\) coefficients, the \(2\pi i\) inflow
   conversion, Standard Model hypercharge sums, and \(SU(N)\)
-  fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
+  fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.  The
+  2026-06-01 Cartan-restriction continuation adds the Abelianized cubic
+  counterterm test: a counterterm
+  \(H_{ij,k}A^iA^jF^k/2\), \(H_{ij,k}=-H_{ji,k}\), changes
+  \(C_{i;jk}\lambda^iF^jF^k\) only by a tensor whose complete
+  symmetrization over \(i,j,k\) vanishes.
 - `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
   Abelianized Bardeen-counterterm algebra used here: shifts of the local
   anomaly representative leave the completely symmetric descent coefficient
@@ -480,6 +485,13 @@
   \(1,\frac12\); extended
   `calculation-checks/anomaly_polynomial_descent_checks.py` to verify the
   latter rational integrals exactly.
+- 2026-06-01 issue #696 Cartan-restriction pass: strengthened the cubic
+  gauge-obstruction proof by restricting a nonzero invariant cubic tensor to
+  a Cartan subalgebra, deriving directly that Abelianized cubic local
+  counterterms cannot change the fully symmetric Cartan coefficient, and
+  leaving the full local BRST classification only for the converse
+  cohomology statement that no semisimple cubic class remains after the
+  invariant-polynomial coefficient vanishes.
 - 2026-06-01 issue #701 warning-scope pass: added a convention warning at the
   start of the anomaly chapter tying anomaly signs and factors to the entire
   datum \((\bar\psi,\gamma_5,\epsilon^{0123},D_\mu,F_{\mu\nu},\operatorname{tr})\),

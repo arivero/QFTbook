@@ -36,9 +36,10 @@ Current checks:
   \(2\pi\ii\) conversion to effective-action inflow, universal
   Chern--Weil transgression coefficients through the five-form case,
   the \(n=2\) consistent-descent homotopy coefficients \(1\) and
-  \(1/2\), the Abelian descent coefficient, one-generation Standard Model
-  hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
-  cubic-anomaly bookkeeping.
+  \(1/2\), the Abelian descent coefficient, invariance of the fully
+  symmetric Cartan cubic anomaly coefficient under Abelianized cubic
+  counterterm shifts, one-generation Standard Model hypercharge sums, and
+  \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 - `standard_model_anomaly_checks.py`: exact rational checks for the
   Standard Model hybrid-definition chapter, including one-generation
   hypercharge anomaly sums, electric charges from \(Q=T^3+Y\), the
