@@ -58,6 +58,12 @@ constructive RG developments.
 - `O`, `O_*`: observable-data topological vector space and common
   reconstructed limit.
 - `G`: normalization group acting continuously on observable data.
+- `a_k`, `q`, `B_k`, `Delta_phi`: ordinary short-range scalar lattice spacing,
+  block kernel, block-spin map, and field scaling exponent.
+- `g_k`, `K_k`: local coordinates and polymer activity in the ordinary
+  short-range scalar block-spin RG chart.
+- `S_{n,k}`: connected cumulant distribution reconstructed from normalized
+  block-spin fields.
 
 ## Claim Ledger
 
@@ -102,6 +108,12 @@ constructive RG developments.
   benchmark, while explicitly separating it from an unproved construction of
   the ordinary short-range three-dimensional scalar Wilson-Fisher fixed
   point.
+- Defines the ordinary short-range scalar block-spin reconstruction datum:
+  finite-range lattice Gibbs measures, normalized block kernels, block-spin
+  maps, local coordinates plus polymer activity, cumulant distributions from
+  normalized lattice fields, and the exact reconstruction estimate required
+  to turn a tuned block-spin RG trajectory into distributional Schwinger
+  functions.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, hierarchical
   scalar fixed points with controlled unstable/stable directions, and
@@ -135,3 +147,6 @@ remainder contraction.
 - `calculation-checks/rg_hierarchical_scalar_checks.py`: exact rational
   checks for the hierarchical scalar Gaussian Wick-coordinate eigenvalue,
   engineering exponents, and relevance bookkeeping.
+- `calculation-checks/rg_short_range_reconstruction_checks.py`: exact rational
+  checks for ordinary short-range scalar block-spin normalization, pairing,
+  covariance scaling, and reconstruction-bound arithmetic.

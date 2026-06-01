@@ -1245,6 +1245,164 @@ positivity statement explicitly formulated as a finite positive-semidefinite
 quadratic form continuous in the seminorms \(p_B\).
 \end{proof}
 
+\section{Ordinary Short-Range Scalar Reconstruction Data}
+\label{sec:ordinary-short-range-scalar-rg-reconstruction}
+
+The scalar benchmark in the previous sections is hierarchical.  An ordinary
+short-range scalar lattice model has a different microscopic object: fields
+on \(a_k\mathbb Z^D\), finite-range interactions, and block-spin maps whose
+range is geometric in the lattice.  The purpose of this section is to record
+the reconstruction datum for that ordinary setting.  It is the datum a proof
+of a short-range Wilson--Fisher fixed point would have to supply; it is not
+replaced by a hierarchical or tensor-network theorem unless a comparison
+map with reconstruction estimates is also proved.
+
+\begin{definition}[Short-range scalar block-spin datum]
+\label{def:short-range-scalar-block-spin-datum}
+Fix an integer scale factor \(L\geq2\), spacetime dimension \(D\), and
+lattice spacings \(a_k=L^{-k}a_0\).  A short-range scalar block-spin datum
+consists of the following objects.
+\begin{enumerate}
+  \item Periodic lattice regions
+  \(\Lambda_k\subset a_k\mathbb Z^D\), scalar configuration spaces
+  \(\mathbb R^{\Lambda_k}\), and finite Gibbs measures
+  \begin{equation}
+    \dd\mu_k(\phi)
+    =
+    Z_k^{-1}
+    \exp\!\left(
+      -\sum_{\substack{X\subset\Lambda_k\\
+        \operatorname{diam}(X)\leq R a_k}}
+      U_{k,X}(\phi_X)
+    \right)
+    \prod_{x\in\Lambda_k}\dd\phi_x .
+    \label{eq:short-range-scalar-gibbs-measure}
+  \end{equation}
+  Here \(R<\infty\) is fixed before the continuum limit, and the potentials
+  are assumed measurable with enough coercivity to make all polynomial
+  moments used below finite.
+  \item A block kernel \(q:\{0,\ldots,L-1\}^D\to\mathbb R\) satisfying
+  \begin{equation}
+    \sum_{r\in\{0,\ldots,L-1\}^D}q(r)=1 ,
+    \label{eq:block-kernel-normalization}
+  \end{equation}
+  and a field scaling exponent \(\Delta_\phi\).  The blocked field on
+  \(\Lambda_{k-1}\) is
+  \begin{equation}
+    (B_k\phi)(y)
+    =
+    L^{\Delta_\phi}
+    \sum_{r\in\{0,\ldots,L-1\}^D}
+      q(r)\,
+      \phi(y+a_k r).
+    \label{eq:ordinary-block-spin-map}
+  \end{equation}
+  Periodic representatives are used when \(y+a_kr\) crosses the boundary.
+  The normalization makes a constant microscopic field transform by the
+  declared field-scaling factor \(L^{\Delta_\phi}\).
+  \item A localization map which writes the pushforward
+  \((B_k)_\#\mu_k\) in a Banach RG chart
+  \[
+    (g_k,K_k)\in E_{\rm loc}\oplus\mathcal K .
+  \]
+  The finite-dimensional coordinates \(g_k\) record relevant and marginal
+  local terms.  The polymer activity \(K_k\) records the infinite-dimensional
+  irrelevant tail in a norm controlling both spatial decay and large-field
+  behavior.
+\end{enumerate}
+The datum is short-range only before the block step.  After integrating out
+fluctuations, the effective interaction is generally not finite range; the
+polymer norm and its contraction estimates are the mathematical replacement
+for the microscopic finite-range property.
+\end{definition}
+
+\begin{construction}[Block-spin cumulants]
+\label{constr:short-range-block-spin-reconstruction}
+Let \(f\in C_c^\infty(\mathbb R^D)\).  The normalized lattice field at
+spacing \(a_k\) is the random variable
+\begin{equation}
+  \Phi_k(f)
+  =
+  a_k^D\,a_k^{-\Delta_\phi}
+  \sum_{x\in\Lambda_k} f(x)\phi_x .
+  \label{eq:block-spin-distribution-pairing}
+\end{equation}
+For labels \(f_1,\ldots,f_n\), define the connected reconstructed
+distribution by the joint cumulant
+\begin{equation}
+  \left\langle S_{n,k},f_1\otimes\cdots\otimes f_n\right\rangle
+  =
+  \kappa_{\mu_k}\bigl(
+    \Phi_k(f_1),\ldots,\Phi_k(f_n)
+  \bigr).
+  \label{eq:block-spin-cumulant-distribution}
+\end{equation}
+The cumulant is computed from
+\[
+  \log
+  \mathbb E_{\mu_k}
+  \exp\!\left(\sum_{i=1}^n t_i\Phi_k(f_i)\right)
+\]
+by taking \(\partial_{t_1}\cdots\partial_{t_n}\) at the origin.  The
+normalization in \eqref{eq:block-spin-distribution-pairing} is fixed by the
+source pairing: if \(x=Ly\), then a source coupled to a field of dimension
+\(\Delta_\phi\) scales with exponent \(D-\Delta_\phi\), as in
+\eqref{eq:source-exponent-operator-dimension}.
+
+The ordinary short-range scalar reconstruction problem is to prove, for
+each \(n\), convergence of \(S_{n,k}\) in \(\mathcal S'((\mathbb R^D)^n)\)
+or in a declared local distribution topology.  A Wilsonian RG proof supplies
+this convergence through estimates in the RG chart:
+\begin{equation}
+  p_B\!\left(S_{n,k}-S_{n,\ast}\right)
+  \leq
+  C_{n,B}
+  \bigl(
+    \|g_k-g_\ast\|_{E_{\rm loc}}
+    +\|K_k-K_\ast\|_{\mathcal K}
+  \bigr)
+  +\epsilon_{n,B,k},
+  \label{eq:short-range-scalar-reconstruction-bound}
+\end{equation}
+where \(B\subset\mathcal S((\mathbb R^D)^n)\) is bounded and
+\(\epsilon_{n,B,k}\to0\) is the discretization and finite-volume error.
+If the RG trajectory is tuned so that
+\begin{equation}
+  \|g_k-g_\ast\|_{E_{\rm loc}}+\|K_k-K_\ast\|_{\mathcal K}
+  \leq C_0\theta^k,\qquad 0<\theta<1 ,
+  \label{eq:short-range-scalar-rg-chart-decay}
+\end{equation}
+then \eqref{eq:short-range-scalar-reconstruction-bound} is precisely a
+reconstruction estimate of the form
+\eqref{eq:rg-reconstruction-estimate}.  The point is that
+\eqref{eq:short-range-scalar-rg-chart-decay} is the hard RG estimate, not
+the vocabulary of fixed points or universality.
+\end{construction}
+
+This construction also fixes the role of the block kernel.  A different
+kernel \(q\), a different field-strength normalization, or a different
+localization map may give an equivalent continuum theory only after a
+comparison datum in the sense of
+Definition~\ref{def:comparison-of-rg-descriptions} is supplied.  Finite-range
+microscopic interactions alone do not identify the continuum normalization
+of the field.
+
+\begin{remark}[Current theorem status for the ordinary scalar target]
+\label{rem:ordinary-scalar-target-status}
+For massive superrenormalizable scalar theories, constructive methods can
+produce Euclidean measures and hence Wightman theories after OS
+reconstruction.  For an ordinary short-range three-dimensional critical
+scalar model, a theorem at the Wilsonian fixed-point level would have to
+construct Definition~\ref{def:short-range-scalar-block-spin-datum}, prove a
+Banach-space fixed point or stable trajectory for the corresponding
+short-range block-spin RG, establish
+\eqref{eq:short-range-scalar-reconstruction-bound} for local fields and
+their source extensions, and verify OS/Wightman reconstruction hypotheses
+for the resulting distributions.  This is stronger than identifying a
+candidate fixed point in an epsilon expansion, in a hierarchical model, or
+in a finite projection truncation.
+\end{remark}
+
 \section{Source-Extended RG, Scaling Operators, And Contact Terms}
 
 A fixed interaction is not yet a QFT spectrum.  Scaling operators are

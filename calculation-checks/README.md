@@ -485,6 +485,11 @@ Current checks:
   \(D\mathcal R_0(:\Phi^n:)=b a^n:\Phi^n:\), the engineering exponents
   \(y_{2r}=D-r(D-2)\), and the relevance/marginality/irrelevance
   bookkeeping for the mass, quartic, sextic, and higher scalar coordinates.
+- `rg_short_range_reconstruction_checks.py`: exact finite checks for the
+  ordinary short-range scalar block-spin reconstruction datum, including
+  block-kernel normalization, constant-field scaling, invariance of the
+  block-constant distribution pairing, independent-site covariance scaling,
+  and the geometric reconstruction-bound arithmetic.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the
