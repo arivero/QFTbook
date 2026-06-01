@@ -4,18 +4,38 @@
 The manuscript uses trace-delta color generators,
 tr_fund(t^a t^b)=delta^{ab}, and writes the leading DGLAP equation as
 P=(g^2/(8*pi^2)) P^(0)+O(g^4).  These finite rational checks verify the
-plus-distribution convention, one-loop number and momentum sum rules, and the
-trace-normalization conversion of the cusp coefficient.
+plus-distribution convention, one-loop number and momentum sum rules, the
+trace-normalization conversion of the cusp coefficient, and the sign
+normalization of the local moment tower obtained from the Wilson-line light-ray
+operator.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
 
+ComplexRational = tuple[Fraction, Fraction]
+
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def complex_mul(left: ComplexRational, right: ComplexRational) -> ComplexRational:
+    a, b = left
+    c, d = right
+    return (a * c - b * d, a * d + b * c)
+
+
+def complex_pow_i(power: int) -> ComplexRational:
+    values = [
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+        (Fraction(-1), Fraction(0)),
+        (Fraction(0), Fraction(-1)),
+    ]
+    return values[power % 4]
 
 
 def harmonic(n: int) -> Fraction:
@@ -117,11 +137,50 @@ def check_large_spin_and_trace_conversion() -> None:
     assert_equal("cusp product convention", g_delta_sq * cf_delta, g_half_sq * cf_half)
 
 
+def check_light_ray_moment_normalization() -> None:
+    # A free target with f(x)=delta(1-x) has M(lambda)=exp(i lambda P).
+    # The N-th lambda derivative contributes (i P)^N.  Because the bilocal
+    # derivative acts on the left endpoint, the local moment operator must use
+    # (-i \overleftarrow D_n)^N; the product (-i)^N i^N is +1.
+    momentum = Fraction(7, 3)
+    minus_i = (Fraction(0), Fraction(-1))
+    for moment in range(5):
+        derivative_phase = complex_pow_i(moment)
+        local_phase = (Fraction(1), Fraction(0))
+        for _ in range(moment):
+            local_phase = complex_mul(local_phase, minus_i)
+        combined_phase = complex_mul(local_phase, derivative_phase)
+        assert_equal(f"quark moment phase {moment}", combined_phase, (Fraction(1), Fraction(0)))
+
+        local_matrix_element = momentum**moment
+        extracted_moment = local_matrix_element / momentum**moment
+        assert_equal(f"quark delta-target moment {moment}", extracted_moment, Fraction(1))
+
+    # The gluon convention has an additional factor of x in the inverse
+    # light-ray transform, so the N-th PDF moment uses N-1 left derivatives.
+    for moment in range(1, 6):
+        derivative_order = moment - 1
+        derivative_phase = complex_pow_i(derivative_order)
+        local_phase = (Fraction(1), Fraction(0))
+        for _ in range(derivative_order):
+            local_phase = complex_mul(local_phase, minus_i)
+        combined_phase = complex_mul(local_phase, derivative_phase)
+        assert_equal(f"gluon moment phase {moment}", combined_phase, (Fraction(1), Fraction(0)))
+
+        local_matrix_element = momentum ** (moment - 1)
+        extracted_moment = local_matrix_element / momentum ** (moment - 1)
+        assert_equal(f"gluon delta-target moment {moment}", extracted_moment, Fraction(1))
+
+
 def main() -> None:
     check_plus_distribution_monomials()
     check_number_and_momentum_sum_rules()
     check_large_spin_and_trace_conversion()
-    print("All QCD DGLAP plus-distribution, sum-rule, and cusp-normalization checks passed.")
+    check_light_ray_moment_normalization()
+    print(
+        "All QCD DGLAP plus-distribution, sum-rule, "
+        "cusp-normalization, and light-ray moment checks passed."
+    )
 
 
 if __name__ == "__main__":

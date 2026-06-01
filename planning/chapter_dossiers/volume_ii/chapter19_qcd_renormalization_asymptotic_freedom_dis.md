@@ -458,6 +458,18 @@ The chapter must define and derive:
      definition whenever exposed color indices at separated points are
      connected, and ultraviolet, cusp, endpoint, and rapidity subtractions are
      part of the datum when the geometry of the operator requires them.
+22aa. The forward PDF light-ray definitions contain the local twist-two tower
+      as their zero-separation Taylor coefficients after matching local and
+      bilocal subtraction schemes.  With the chapter's non-centered bilocal
+      convention, the quark \(N\)-th moment is represented by the left-endpoint
+      operator
+      \(\bar q(-i\overleftarrow D_n)^N\gamma\cdot n\,q\); the minus sign is
+      fixed by the free-target phase \(\exp(i\lambda P\cdot n)\).  For the
+      gluon PDF, the conventional \(1/x\) in the light-ray definition shifts
+      the local derivative order to \(N-1\) for the \(N\)-th moment.  The
+      symmetric traceless tensor tower is a change of local coordinates on the
+      same leading-twist data, while off-forward total derivatives are kept in
+      the GPD polynomiality discussion.
 22b. The leading-order DGLAP kernels are written with the explicit
      \(D_0=(1-x)^{-1}_+\) distribution to avoid the ambiguous shorthand
      \((1+x^2)/(1-x)_+\).  With this convention the kernels obey quark-number
@@ -718,6 +730,11 @@ The chapter must define and derive:
   definitions and colored parton-model language, convolution renormalization,
   compact-\(x\) factorization status with a distributional remainder, exact
   \(D_0\)-based DGLAP sum-rule calculation, and endpoint/large-spin cusp discussion.
+- 2026-06-01 issue #630 PDF moment pass: added the local-moment extraction
+  from the Wilson-line light-ray definitions, including the left-endpoint
+  \(-i\overleftarrow D_n\) sign convention, the gluon \(1/x\) moment-index
+  shift, and a paired exact phase-normalization check in
+  `calculation-checks/qcd_dglap_checks.py`.
 - 2026-05-27 issue #630 TMD/GPD pass: added soft-subtracted TMD operator data,
   Collins--Soper scale-integrability condition, finite TMD scheme transformations,
   small-\(q_\perp\) color-singlet factorization data, off-forward GPD

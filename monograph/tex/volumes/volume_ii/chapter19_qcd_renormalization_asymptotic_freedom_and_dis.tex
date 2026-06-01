@@ -8762,6 +8762,132 @@ TMDs or other observables with unresolved transverse momentum, an additional
 rapidity renormalization is required; it is not part of the integrated PDF
 definition used in inclusive DIS.
 
+\paragraph{Local moments of the light-ray definition.}
+The light-ray definition contains the local twist-two tower as its Taylor
+coefficients at zero separation.  This statement is often quoted as a formal
+identity between PDFs and partons; here it is only a statement about the
+renormalized Wilson-line operator in
+\eqref{eq:qcd-quark-light-ray-operator}.  Define the left covariant
+derivative on the transported antiquark endpoint by
+\[
+  \bar q\,\overleftarrow D_n
+  :=
+  n^\mu\partial_\mu\bar q+\ii\,\bar q\,n^\mu A_\mu,
+  \qquad n^2=0 .
+\]
+The sign is fixed by the same convention
+\(D_\mu q=(\partial_\mu-\ii A_\mu)q\) used in the Wilson transporter above.
+Since
+\[
+  \frac{\dd}{\dd\lambda}
+  \bigl(\bar q(\lambda n)W_\square(\lambda n,0)\bigr)
+  =
+  \bigl(\bar q\,\overleftarrow D_n\bigr)(\lambda n)
+  W_\square(\lambda n,0),
+\]
+iteration gives the short-distance expansion
+\begin{equation}
+  \bar q(\lambda n)W_\square(\lambda n,0)\gamma\cdot n\,q(0)
+  =
+  \sum_{N\ge0}\frac{\lambda^N}{N!}\,
+  \bar q(0)(\overleftarrow D_n)^N\gamma\cdot n\,q(0)
+  \label{eq:qcd-quark-light-ray-taylor-left}
+\end{equation}
+as a formal operator identity before subtraction, and as a renormalized
+operator-coordinate identity after the corresponding local and bilocal
+subtractions have been matched.  It is useful to absorb the endpoint sign into
+the moment operator
+\begin{equation}
+  \mathcal O_{q,N}^{\leftarrow}(n;\mu)
+  :=
+  \left[
+    \bar q(0)(-\ii\overleftarrow D_n)^N
+    \gamma\cdot n\,q(0)
+  \right]_{\mu}.
+  \label{eq:qcd-quark-left-moment-operator}
+\end{equation}
+The minus sign is not optional: a free one-quark matrix element of
+\(\bar q(\lambda n)\gamma\cdot n q(0)\) is proportional to
+\(\exp(\ii\lambda P\cdot n)\), so \(-\ii\overleftarrow D_n\) has eigenvalue
+\(P\cdot n\) on the left endpoint.  With the Fourier convention in
+\eqref{eq:pdf-light-ray-definition}, the inverse distributional relation is
+\[
+  \frac{1}{2P\cdot n}
+  \langle\mathbb O_q(\lambda n;\mu)\rangle_{P,H}
+  =
+  \int_{\mathbb R}\dd x\,
+  \ee^{\ii x\lambda P\cdot n}f_{q/H}(x,\mu),
+\]
+whenever the pairing with test functions justifies inversion.  Differentiating
+at \(\lambda=0\) therefore gives, for \(N\ge0\),
+\begin{equation}
+  \int_0^1\dd x\,x^N f_{q/H}(x,\mu)
+  =
+  \frac{
+    \langle\mathcal O_{q,N}^{\leftarrow}(n;\mu)\rangle_{P,H}
+  }{
+    2(P\cdot n)^{N+1}
+  } .
+  \label{eq:qcd-quark-pdf-moment-left-operator}
+\end{equation}
+The familiar symmetric traceless tensor
+\(\bar q\gamma^{(\mu_0}\ii D^{\mu_1}\cdots\ii D^{\mu_N)}q\) is obtained by
+polarizing in the null vector \(n\) and changing from the left-endpoint
+representative to a symmetric representative.  In forward matrix elements the
+difference is a sum of total-derivative representatives with fixed momentum
+transfer zero; in off-forward matrix elements those total derivatives are
+precisely the terms that produce GPD polynomiality in
+Section~\ref{sec:qcd-gpd-light-ray-matrix-elements}.  Thus
+\eqref{eq:qcd-quark-pdf-moment-left-operator} is the convention-clean moment
+statement for the present forward PDF definition, while the symmetric local
+tensor is a different coordinate on the same leading-twist operator tower.
+
+For the gluon definition the extra factor \(1/x\) in
+\eqref{eq:qcd-gluon-pdf-definition} shifts the moment index.  Let
+\(\overleftarrow D_{n,{\rm ad}}\) be the left covariant derivative acting on
+the adjoint field at \(\lambda n\), including the adjoint connection in the
+same Wilson-transporter convention.  For \(N\ge1\), define
+\begin{equation}
+  \mathcal O_{g,N}^{\leftarrow}(n;\mu)
+  :=
+  \left[
+    F^a_{n\rho}(0)
+    (-\ii\overleftarrow D_{n,{\rm ad}})^{N-1}
+    F_n^{a\rho}(0)
+  \right]_{\mu},
+  \label{eq:qcd-gluon-left-moment-operator}
+\end{equation}
+with the color contraction written after transporting the left endpoint to
+zero.  The inverse relation following from
+\eqref{eq:qcd-gluon-pdf-definition} is
+\[
+  \frac{1}{2(P\cdot n)^2}
+  \langle\mathbb O_g(\lambda n;\mu)\rangle_{P,H}
+  =
+  \int_{\mathbb R}\dd x\,
+  \ee^{\ii x\lambda P\cdot n}\,x f_{g/H}(x,\mu),
+\]
+and therefore
+\begin{equation}
+  \int_0^1\dd x\,x^N f_{g/H}(x,\mu)
+  =
+  \frac{
+    \langle\mathcal O_{g,N}^{\leftarrow}(n;\mu)\rangle_{P,H}
+  }{
+    2(P\cdot n)^{N+1}
+  },
+  \qquad N\ge1 .
+  \label{eq:qcd-gluon-pdf-moment-left-operator}
+\end{equation}
+Equations
+\eqref{eq:qcd-quark-pdf-moment-left-operator} and
+\eqref{eq:qcd-gluon-pdf-moment-left-operator} are moment identities inside a
+specified renormalized operator scheme.  They do not assert positivity,
+support, or factorization.  Positivity and support require the spectral
+interpretation of the hadron matrix element in the relevant scattering
+representation; factorization requires the separate leading-power hypothesis
+stated below.
+
 \subsection{Euclidean Spatial Bilocals and Large-Momentum Matching}
 \label{subsec:qcd-euclidean-bilocals-quasi-pdfs}
 
