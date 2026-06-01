@@ -1364,6 +1364,65 @@ state-sum construction needed here: boundary fields are \(H\)-reductions and
 the equality \(\delta\beta=i^*\omega\) is the local gauge-invariance and
 triangulation-invariance equation.
 
+\paragraph{Relative gluing and the boundary line.}
+The preceding local check proves invariance of one relative state-sum weight.
+The gluing statement uses a second, independent sign fact: a boundary component
+that is outgoing for one bordism is incoming for the other, so the same
+\(\beta\)-trivialization appears with reciprocal exponent.  Let
+\[
+  M_L:\Sigma_{\rm in}\to \Sigma
+  \qquad\hbox{and}\qquad
+  M_R:\Sigma\to \Sigma_{\rm out}
+\]
+be collared triangulated three-dimensional finite \(G\)-gauge bordisms, with
+an \(H\)-reduction on the common boundary \(\Sigma\).  Choose compatible
+branched triangulations whose restrictions to \(\Sigma\) agree.  For a fixed
+flat boundary \(H\)-labeling \(h\) on \(\Sigma\), let
+\(\varepsilon_\Sigma(\tau)\) be the orientation sign of a boundary triangle
+\(\tau\) as seen from \(M_L\).  The same triangle has sign
+\(-\varepsilon_\Sigma(\tau)\) as seen from \(M_R\).  Hence the interface
+part of the product of the two relative weights is
+\begin{equation}
+  \prod_{\tau\subset\Sigma}
+  \beta(h_\tau)^{-\varepsilon_\Sigma(\tau)}
+  \prod_{\tau\subset\Sigma}
+  \beta(h_\tau)^{+\varepsilon_\Sigma(\tau)}
+  =
+  1.
+  \label{eq:relative-dw-interface-beta-cancellation}
+\end{equation}
+All remaining factors are exactly the bulk \(\omega\)-weights and the
+external-boundary \(\beta\)-weights of the glued triangulation.  Thus, before
+any summation over fields,
+\begin{equation}
+  W_{\omega,\beta}(K_L,g_L)\,
+  W_{\omega,\beta}(K_R,g_R)
+  =
+  W_{\omega,\beta}(K_L\cup_\Sigma K_R,g_L\cup_h g_R),
+  \label{eq:relative-dw-pointwise-gluing-weight}
+\end{equation}
+for every pair of bulk labelings whose \(H\)-boundary restrictions are the
+chosen \(h\).  The subsequent sum over \(h\), with the automorphism
+denominator of the boundary \(H\)-bundle, is precisely finite groupoid
+Fubini:
+\begin{equation}
+  Z_{G,\omega,\beta}(M_R\circ M_L)
+  =
+  \int_{Q\in\operatorname{Bun}_H(\Sigma)}
+  Z_{G,\omega,\beta}(M_R;Q)\,
+  Z_{G,\omega,\beta}(M_L;Q).
+  \label{eq:relative-dw-gluing-pairing}
+\end{equation}
+Equation~\eqref{eq:relative-dw-gluing-pairing} is the concrete finite version
+of pairing a section of the transgressed boundary line with a section of the
+dual line over the oppositely oriented boundary.  If \(\beta\) is changed by a
+coboundary \(\delta\lambda\), each open boundary state is multiplied by the
+corresponding transgressed \(1\)-cochain factor.  The two factors on a glued
+interface are reciprocal by the same orientation argument as
+\eqref{eq:relative-dw-interface-beta-cancellation}.  Thus \(\beta\) is a
+choice of boundary-line trivialization; the obstruction to making such a
+choice remains the relative class \(i^*[\omega]\).
+
 \section{Defects, Boundaries, and Anomaly Inflow}
 
 Finite gauge theories also provide exact models of defects.  A

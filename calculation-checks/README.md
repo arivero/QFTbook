@@ -313,7 +313,8 @@ Current checks:
   \(|H_1|^{-1}\)-normalized boundary-junction convolution with associativity
   and unit sectors, the \(S_3\) two-sector example
   \(X^2=2\mathbf 1+X\), and the relative Dijkgraaf--Witten cochain
-  cancellation \(\delta\beta=i^*\omega\).
+  cancellation \(\delta\beta=i^*\omega\), including the opposite-orientation
+  cancellation of boundary \(\beta\)-trivializations under relative gluing.
 - `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the

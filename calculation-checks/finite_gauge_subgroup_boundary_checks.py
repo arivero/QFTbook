@@ -12,6 +12,9 @@ facts used in the subgroup-boundary section:
    composition and the expected identity sector.
 3. A boundary two-cochain beta with delta beta = i^* omega cancels the
    boundary Dijkgraaf-Witten coboundary factor simplex by simplex.
+4. The beta-trivialization factors on a glued relative boundary cancel with
+   opposite orientation, and beta -> beta + delta lambda changes only the
+   boundary-line trivialization.
 """
 
 from __future__ import annotations
@@ -370,6 +373,34 @@ def delta_beta_exp(a: int, b: int, c: int, n: int, k: int) -> int:
     ) % n
 
 
+def lambda_exp(a: int, n: int, r: int) -> int:
+    """A normalized 1-cochain represented by exponents mod n."""
+    if a == 0:
+        return 0
+    return r * (a * a + 3 * a) % n
+
+
+def delta_lambda_exp(a: int, b: int, n: int, r: int) -> int:
+    return (
+        lambda_exp(b, n, r)
+        - lambda_exp((a + b) % n, n, r)
+        + lambda_exp(a, n, r)
+    ) % n
+
+
+def beta_shifted_exp(a: int, b: int, n: int, k: int, r: int) -> int:
+    return (beta_exp(a, b, n, k) + delta_lambda_exp(a, b, n, r)) % n
+
+
+def delta_shifted_beta_exp(a: int, b: int, c: int, n: int, k: int, r: int) -> int:
+    return (
+        beta_shifted_exp(b, c, n, k, r)
+        - beta_shifted_exp((a + b) % n, c, n, k, r)
+        + beta_shifted_exp(a, (b + c) % n, n, k, r)
+        - beta_shifted_exp(a, b, n, k, r)
+    ) % n
+
+
 def delta_omega_exp(a: int, b: int, c: int, d: int, n: int, k: int) -> int:
     omega = delta_beta_exp
     return (
@@ -398,9 +429,72 @@ def check_relative_cocycle_cancellation() -> None:
                 )
 
 
+def relative_boundary_weight_exp(
+    triangles: list[tuple[int, int, int]],
+    n: int,
+    beta_value: Callable[[int, int], int],
+) -> int:
+    """Boundary exponent for product beta(h_tau)^(-epsilon_tau)."""
+
+    total = 0
+    for a, b, orientation in triangles:
+        if orientation not in {-1, 1}:
+            raise AssertionError("boundary orientation must be +/-1")
+        total -= orientation * beta_value(a, b)
+    return total % n
+
+
+def check_relative_boundary_gluing_orientation() -> None:
+    for n in range(2, 11):
+        for k in range(n):
+            for r in range(n):
+                for a, b, c in product(range(n), repeat=3):
+                    assert_true(
+                        delta_shifted_beta_exp(a, b, c, n, k, r)
+                        == delta_beta_exp(a, b, c, n, k),
+                        "beta -> beta + delta lambda leaves omega=delta beta unchanged",
+                    )
+
+                triangles = [
+                    (a, b, orientation)
+                    for a, b, orientation in [
+                        (1 % n, 2 % n, 1),
+                        (2 % n, 3 % n, -1),
+                        (3 % n, 4 % n, 1),
+                        (4 % n, 5 % n, -1),
+                    ]
+                ]
+                opposite_triangles = [
+                    (a, b, -orientation)
+                    for a, b, orientation in triangles
+                ]
+                beta_value = lambda a, b, n=n, k=k: beta_exp(a, b, n, k)
+                beta_shifted_value = (
+                    lambda a, b, n=n, k=k, r=r: beta_shifted_exp(a, b, n, k, r)
+                )
+
+                unshifted_total = (
+                    relative_boundary_weight_exp(triangles, n, beta_value)
+                    + relative_boundary_weight_exp(opposite_triangles, n, beta_value)
+                ) % n
+                shifted_total = (
+                    relative_boundary_weight_exp(triangles, n, beta_shifted_value)
+                    + relative_boundary_weight_exp(opposite_triangles, n, beta_shifted_value)
+                ) % n
+                assert_true(
+                    unshifted_total == 0,
+                    "oppositely oriented relative boundaries cancel beta factors",
+                )
+                assert_true(
+                    shifted_total == 0,
+                    "oppositely oriented relative boundaries cancel shifted beta factors",
+                )
+
+
 def main() -> None:
     check_subgroup_boundary_examples()
     check_relative_cocycle_cancellation()
+    check_relative_boundary_gluing_orientation()
     print("Finite gauge subgroup-boundary checks passed.")
 
 

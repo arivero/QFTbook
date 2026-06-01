@@ -92,7 +92,10 @@ bordism-functoriality chapter.
     interval sector groupoid with double-coset labels `H_0\G/H_1`, records the
     stabilizer weights, and gives the relative Dijkgraaf-Witten boundary
     condition `delta beta=i^* omega` as an explicit state-sum cancellation
-    identity.  Also derives the boundary-junction convolution
+    identity.  It also derives the relative gluing formula: opposite
+    orientations on a glued `H`-boundary make the two `beta`-trivialization
+    factors reciprocal before the finite groupoid sum over the intermediate
+    boundary bundle.  Also derives the boundary-junction convolution
     `f star_{H_1} k = |H_1|^{-1} sum_{xy=g} f(x)k(y)`, proves
     associativity and unit sectors by finite Fubini, and computes the
     `S_3` transposition-boundary algebra `X^2=2*1+X`.
@@ -121,7 +124,10 @@ bordism-functoriality chapter.
   examples, including double-coset partitions, stabilizer weights, groupoid
   cardinality, normalized boundary-junction convolution, associativity, unit
   sectors, integral structure constants, the `S_3` two-sector algebra, and
-  the finite relative cochain cancellation `delta beta=i^* omega`.
+  the finite relative cochain cancellation `delta beta=i^* omega`, including
+  cancellation of opposite-orientation `beta` factors on a glued relative
+  boundary and invariance of this cancellation under `beta -> beta + delta
+  lambda`.
 
 ## Audit Notes
 
@@ -149,3 +155,8 @@ bordism-functoriality chapter.
   groupoid paragraph.  The action groupoid, double-coset labels, stabilizer
   groups, and groupoid cardinality remain explicit, but the direct orbit
   calculation no longer carries theorem-family rank.
+- 2026-06-01 issue #698 continuation: added the relative gluing mechanism for
+  subgroup Dijkgraaf-Witten boundaries.  The text now distinguishes the local
+  `delta beta=i^* omega` Pachner cancellation from the boundary-line pairing
+  used under gluing; the paired calculation check verifies reciprocal
+  orientation signs and coboundary changes of the `beta` trivialization.
