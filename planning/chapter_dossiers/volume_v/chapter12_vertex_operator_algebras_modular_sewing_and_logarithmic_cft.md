@@ -307,6 +307,14 @@ current QFT scope.
   zero-mode trace finiteness, primary coordinate weight, descendant
   quasimodular mixing, the finite marked-state trace system from
   \(C_2\)-cofiniteness, and the remaining analytic modular-closure input.
+- 2026-06-01 Moore--Seiberg defect-junction pass: expanded the
+  Moore--Seiberg system from a named pentagon/hexagon reference into the
+  physical topological-line and junction-space datum used in the defect
+  category chapters.  The text now defines the fusion spaces \(V_{ij}^{k}\),
+  the \(F\)-move between the two four-point pants bases, the \(R\)-move,
+  associator pentagon, braiding hexagon, and balancing identity, while
+  keeping the analytic QFT construction of Hilbert space, positive pairing,
+  correlation functions, and sewing maps as the real theorem boundary.
 - 2026-05-30 unitary Virasoro classification boundary pass: expanded the
   minimal-model classification theorem boundary with the Kac determinant
   formula, the \(b^2=m/(m+1)\) interlacing mechanism, the all-level positivity

@@ -1392,6 +1392,112 @@ pentagon, hexagon, and modular identities for associativity, braiding, and
 twist data.  The modern algebraic home of this system is a modular tensor
 category when the module category is semisimple.
 
+\subsection{Moore--Seiberg Data as Defect-Junction Consistency}
+\label{subsec:moore-seiberg-defect-junction-consistency}
+
+The Moore--Seiberg equations should be read as equalities of conformal-block
+transport maps, or equivalently as equalities of topological-line junction
+networks after the physical null quotient of
+Definition~\ref{def:physical-defect-category-null-quotient}.  This is the
+same physical-defect category used in
+Chapter~\ref{ch:global-categorical-symmetry-defect-fusion}; here its objects
+are the topological lines labelled by chiral sectors.
+
+Let \(\mathcal C\) be a semisimple chiral sector category with simple objects
+\(\{M_i\}_{i\in I}\).  For simple labels define the fusion spaces
+\begin{equation}
+  V_{ij}^{k}:=\operatorname{Hom}_{\mathcal C}(M_i\boxtimes M_j,M_k),
+  \qquad
+  N_{ij}{}^k=\dim V_{ij}^k .
+  \label{eq:moore-seiberg-fusion-spaces}
+\end{equation}
+A vector in \(V_{ij}^{k}\) is a trivalent junction at which the two lines
+\(i,j\) fuse to the line \(k\).  For four external labels \(i,j,k,\ell\),
+the two standard pants decompositions have block spaces
+\begin{equation}
+  \bigoplus_m V_{ij}^{m}\otimes V_{m k}^{\ell},
+  \qquad
+  \bigoplus_n V_{jk}^{n}\otimes V_{i n}^{\ell}.
+  \label{eq:moore-seiberg-two-four-point-bases}
+\end{equation}
+The fusing matrix is the change of basis
+\begin{equation}
+  F_{ijk}^{\ell}:
+  \bigoplus_m V_{ij}^{m}\otimes V_{m k}^{\ell}
+  \longrightarrow
+  \bigoplus_n V_{jk}^{n}\otimes V_{i n}^{\ell}.
+  \label{eq:moore-seiberg-f-move}
+\end{equation}
+The braiding maps are linear isomorphisms
+\begin{equation}
+  R_{ij}^{k}:V_{ij}^{k}\longrightarrow V_{ji}^{k},
+  \label{eq:moore-seiberg-r-move}
+\end{equation}
+and the twist is a scalar \(\theta_i\) on each simple line in the semisimple
+case.  They are the local coordinates of a topological defect category:
+\(F\) changes the parenthesization of three fusions, \(R\) exchanges two
+adjacent lines, and
+\(\theta\) records a full rotation of one line.
+
+The pentagon is the assertion that the two composites from
+\((((a\boxtimes b)\boxtimes c)\boxtimes d)\) to
+\(a\boxtimes(b\boxtimes(c\boxtimes d))\) agree:
+\begin{equation}
+  \alpha_{a,b,c\boxtimes d}\circ\alpha_{a\boxtimes b,c,d}
+  =
+  (\mathbf 1_a\boxtimes\alpha_{b,c,d})\circ
+  \alpha_{a,b\boxtimes c,d}\circ
+  (\alpha_{a,b,c}\boxtimes\mathbf 1_d).
+  \label{eq:moore-seiberg-pentagon-associator}
+\end{equation}
+Here \(\alpha_{a,b,c}:(a\boxtimes b)\boxtimes c\to
+a\boxtimes(b\boxtimes c)\) is represented, in the bases
+\eqref{eq:moore-seiberg-two-four-point-bases}, by the corresponding
+\(F\)-matrix.  In multiplicity sectors the pentagon is an equality of linear
+maps between direct sums of junction spaces.  Physically it says that the
+correlator obtained by fusing four nearby topological lines is independent of
+the order in which the intermediate collars are shrunk.
+
+The two hexagons say that moving one line past a fused pair is the same as
+moving it past the two constituents one at a time, with the associators
+included.  With braiding
+\(c_{a,b}:a\boxtimes b\to b\boxtimes a\), one of the two hexagons is
+\begin{equation}
+  c_{a,b\boxtimes c}
+  =
+  \alpha_{b,c,a}^{-1}\circ
+  (\mathbf 1_b\boxtimes c_{a,c})\circ
+  \alpha_{b,a,c}\circ
+  (c_{a,b}\boxtimes \mathbf 1_c)\circ
+  \alpha_{a,b,c}^{-1},
+  \label{eq:moore-seiberg-hexagon-one}
+\end{equation}
+as a map \(a\boxtimes(b\boxtimes c)\to (b\boxtimes c)\boxtimes a\).
+The other hexagon is the parallel identity for
+\(c_{a\boxtimes b,c}\).  The balancing identity
+\[
+  \theta_{a\boxtimes b}
+  =
+  c_{b,a}\circ c_{a,b}\circ(\theta_a\boxtimes\theta_b)
+\]
+then fixes how a Dehn twist acts on a fused pair.  In a rational unitary CFT,
+these equalities are the local algebraic part of sewing: they identify
+different cuts of the same punctured surface after analytic continuation
+around the moduli space.
+
+This formulation also fixes the status of the algebraic classification
+problem.  A solution of the pentagon, hexagon, and modular equations is a
+candidate topological-line and conformal-block datum.  To obtain a QFT one
+must still construct the Hilbert space of states, local fields or local
+algebras, positive pairings, convergent correlation functions, and sewing maps
+whose analytic continuations realize the displayed \(F\), \(R\), and
+\(\theta\).  Conversely, once those analytic and positivity structures are
+constructed, the Moore--Seiberg equations follow from equality of two
+correlation-function limits in the defect category.  The monograph therefore
+uses the equations as structural constraints and as coordinates on known
+classes of rational CFT data; the definition of the CFT itself includes the
+analytic and Hilbert-space structures just listed.
+
 \section{Modular Tensor Category and Verlinde Formula}
 
 Let \(\mathcal C\) be the semisimple ribbon category of modules of a rational
