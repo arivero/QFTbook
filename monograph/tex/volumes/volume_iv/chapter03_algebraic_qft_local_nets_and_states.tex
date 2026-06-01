@@ -263,6 +263,33 @@ explicit phase determined by the pairings
 \(\sigma_m([f_j],[f_k])\), as a product of the \(W([f_j])\)'s.  Hence every
 generator of \(\Obs_m(\mathcal O)\) belongs to the \(C^*\)-algebra generated
 by the \(\Obs_m(\mathcal O_i)\)'s, and the opposite inclusion is isotony.
+The phase just mentioned is not an additional analytic hypothesis.  In any
+finite-dimensional symplectic vector space \((V_{\rm fin},\sigma)\) with Weyl
+relations
+\[
+  W(u)W(v)=\exp\!\left(-\frac{\ii}{2}\sigma(u,v)\right)W(u+v),
+\]
+one has
+\[
+  W(u)W(v)=\exp[-\ii\sigma(u,v)]\,W(v)W(u),
+  \qquad
+  W(u)W(v)W(u)^*W(v)^*
+  =
+  \exp[-\ii\sigma(u,v)]\,1.
+\]
+Thus vanishing of the symplectic pairing is exactly the finite algebraic
+mechanism behind local commutation.  Likewise, for a finite decomposition
+\(u=\sum_{j=1}^r u_j\),
+\[
+  W(u)
+  =
+  \exp\!\left(\frac{\ii}{2}\sum_{1\le j<k\le r}\sigma(u_j,u_k)\right)
+  W(u_1)\cdots W(u_r).
+\]
+The continuum additivity proof above supplies the support-theoretic
+decomposition \( [f]=\sum_j[f_j]\) in the Green-hyperbolic quotient; the
+displayed finite cocycle identity is the bounded-algebra step that converts
+that decomposition into containment of local \(C^*\)-algebras.
 
 The time-slice property is the only axiom in this model that uses a real
 hyperbolic argument.  Let \(U=D(N)\), and assume the chosen region class is

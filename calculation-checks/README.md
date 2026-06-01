@@ -72,6 +72,12 @@ Current checks:
   charged-coordinate core: right translation rotates matrix-coefficient
   columns, Haar expectation kills the standard and sign multiplets while
   preserving constants, and \(\wedge^2 V\) gives the sign representation.
+- `free_weyl_net_checks.py`: exact rational checks for the Volume IV massive
+  scalar Weyl-net benchmark, including associativity of the finite Weyl
+  cocycle, the sign in \(W(u)W(v)=\exp[-i\sigma(u,v)]W(v)W(u)\), the Weyl
+  group-commutator phase, symplectic-orthogonality locality, and the finite
+  partition phase that turns \(u=\sum_j u_j\) into a product of local Weyl
+  generators.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, the trace-delta \(SU(2)\) index table,

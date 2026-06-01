@@ -97,9 +97,12 @@ functorial QFT.
 
 ## Calculation Checks
 
-- No numerical calculation script is attached to this chapter.  Verification
-  is by LaTeX build, proof-substance audit, figure audit, and local
-  theorem-boundary review.
+- `calculation-checks/free_weyl_net_checks.py`: exact rational finite
+  Weyl-algebra check for the massive scalar Weyl-net benchmark, covering the
+  cocycle associativity, the commutator sign, symplectic-orthogonality
+  locality, and the partition phase used in additivity.  This check certifies
+  only the finite bounded-algebra identities; the continuum support and
+  Green-hyperbolic quotient steps remain the analytic content of the chapter.
 
 ## Audit Notes
 
@@ -118,6 +121,10 @@ functorial QFT.
   model with additivity and the time-slice axiom proved directly from
   compact-support partitions of unity and Green-hyperbolic propagation rather
   than inferred from unbounded Wightman fields.
+- 2026-06-01 finite Weyl-cocycle companion pass: added an exact
+  `free_weyl_net_checks.py` diagnostic and made the additivity paragraph state
+  the finite phase identity explicitly, so the bounded-algebra portion of
+  locality/additivity is reproducible without inflating it into a theorem.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
