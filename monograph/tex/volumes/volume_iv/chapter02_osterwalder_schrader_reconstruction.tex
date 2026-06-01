@@ -1193,25 +1193,48 @@ argument bases by its convex hull.  In these variables the recurrence is
 with the evident deletion of empty blocks.  The vector domains satisfy the
 same recurrence with one distinguished real bridge argument fixed to \(0\).
 
-The recurrence \eqref{eq:os-ii-argument-convex-recurrence} implies the
-following elementary convex-geometry fact.  For every \(k\) and every
-\(\epsilon>0\) there is an \(N(k,\epsilon)\) such that
+The exhaustion needed here follows from an explicit insertion induction, not
+from a qualitative appeal to convexity.  For \(0<a<\pi/2\) put
+\[
+  B_k(a)=[-a,a]^k .
+\]
+We claim that for every \(k\) there is an integer \(N_k(a)\) such that
+\[
+  B_k(a)\subset c_k^{(N_k(a))}.
+\]
+For \(k=1\), \(c_1^{(1)}\) contains the whole interval
+\([-\pi/2,\pi/2]\), because the single time gap may be chosen as the bridge
+variable in the one-gap OS semigroup continuation; hence \(N_1(a)=1\).  Now
+assume \(B_{k-1}(a)\subset c_{k-1}^{(N)}\).  In the recurrence
+\eqref{eq:os-ii-argument-convex-recurrence}, choose the split with empty left
+block and a right block carrying the remaining \(k-1\) gap arguments.  In the
+notation of the recurrence this is the term obtained after deleting the
+empty \(v\)-block:
+\[
+  (\vartheta,w),
+  \qquad
+  |\vartheta|\le\frac{\pi}{2},
+  \qquad
+  w\in B_{k-1}(a).
+\]
+The vector-domain recurrence with the distinguished real bridge argument
+fixed to \(0\) identifies this right block with an element of the
+corresponding \(d\)-domain.  Therefore every point of
+\(B_k(a)=[-a,a]\times B_{k-1}(a)\) lies in the generating set whose convex
+hull is \(c_k^{(N+1)}\).  Thus
+\[
+  B_k(a)\subset c_k^{(N+1)} .
+\]
+Induction gives \(N_k(a)\le k\).  Since every point of \(C_+^k\) has arguments
+strictly between \(-\pi/2\) and \(\pi/2\), choose
+\(a<\pi/2\) larger than the maximum absolute argument of the point.  This
+proves
 \begin{equation}
   [-\frac{\pi}{2}+\epsilon,\frac{\pi}{2}-\epsilon]^k
-  \subset c_k^{(N(k,\epsilon))}.
+  \subset c_k^{(k)}
   \label{eq:os-ii-domain-exhaustion-box}
 \end{equation}
-Indeed, \(c_1^{(1)}\) contains the full interval
-\([-\pi/2,\pi/2]\) because the single gap can be chosen as the bridge
-variable.  If boxes of width \(a<\pi/2\) are available for all lower block
-lengths, the recurrence forms convex hulls of points obtained by placing an
-arbitrary bridge angle \(\vartheta\in[-\pi/2,\pi/2]\) between two already
-available blocks and by reflecting the left block.  Averaging the \(k\)
-possible placements of the bridge angle expands the available symmetric box by
-a fixed positive fraction of the remaining distance to \(\pi/2\).  Iteration
-therefore gives an increasing sequence \(a_N\uparrow\pi/2\), which proves
-\eqref{eq:os-ii-domain-exhaustion-box}.  Since every point of \(C_+^k\) has
-arguments strictly between \(-\pi/2\) and \(\pi/2\), this proves
+for every \(\epsilon>0\), and hence
 \[
   \bigcup_{N\ge0}C_k^{(N)}=C_+^k .
 \]

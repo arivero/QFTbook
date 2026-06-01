@@ -63,8 +63,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   analytic route from the Euclidean axioms plus the linear-growth condition:
   local one-gap continuations, Malgrange--Zerner gluing, the `A_N/P_N`
   induction, Hilbert Taylor reconstruction of vector-valued analytic fields,
-  convex argument-domain exhaustion, regularized positivity estimates, and
-  Banach-valued maximum-principle propagation of polynomial tube bounds.
+  explicit bridge-insertion argument-domain exhaustion, regularized positivity
+  estimates, and Banach-valued maximum-principle propagation of polynomial
+  tube bounds.
 - States the Lorentzian boundary-value package, promotes the polynomial
   tube-bound theorem from quoted input to local theorem/proof form, and proves
   the Fourier--Laplace mechanism by which spectral support plus polynomial
@@ -106,7 +107,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   forward-cone damping sign, the ordered Euclidean-time map
   `z^0=-i tau=t-i epsilon`, and the conversion between the abstract
   Fourier--Laplace variable `x+i y` and the physical Wightman tube depth
-  `xi-i eta`.
+  `xi-i eta`.  It also checks the finite bridge-insertion schedule for
+  OS-II argument-domain exhaustion, namely that a strict \(k\)-gap argument
+  box is reached in \(k\) insertion steps from the one-gap interval.
 
 ## Audit Notes
 
@@ -139,3 +142,8 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   with the monograph-wide mostly-plus convention `z=xi-i eta`, corrected the
   abstract cone-variable application by setting `y=-eta`, and added the
   public calculation check `os_tube_sign_checks.py`.
+- 2026-06-01 OS-II argument-domain exhaustion pass: replaced the vague
+  convex-averaging sentence in the corrected OS-II analytic theorem with the
+  explicit finite bridge-insertion induction \(B_{k-1}(a)\to B_k(a)\), so
+  every strict \(k\)-gap argument box is obtained before the polynomial
+  tube-bound step is used.

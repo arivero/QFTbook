@@ -95,12 +95,15 @@ Current checks:
   finite field algebra after adjoining odd spectral projections, and the
   distinction between domain-level commutation and strong spectral-projection
   commutation in the bounded algebra model.
-- `os_tube_sign_checks.py`: finite sign checks for the Volume IV
+- `os_tube_sign_checks.py`: finite checks for the Volume IV
   Osterwalder--Schrader reconstruction chapter, including the mostly-plus
   damping inequality \(p\cdot\eta<0\) for future \(p,\eta\), the ordered
   Euclidean-time map \(z^0=-i\tau=t-i\epsilon\), and the conversion between
   the abstract Fourier--Laplace variable \(x+i y\) and the physical
-  Wightman tube depth \(z=\xi-i\eta\).
+  Wightman tube depth \(z=\xi-i\eta\).  It also checks the finite insertion
+  schedule used in the OS-II argument-domain exhaustion: the \(k\)-gap strict
+  argument box is obtained from the one-gap interval by adding one bridge
+  coordinate at each step.
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, exact APS cylinder endpoint-kernel arithmetic,
