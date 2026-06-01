@@ -1911,6 +1911,11 @@ def check_sl2_large_spin_cusp_resolvent() -> None:
         jump = resolvent(y + 1j * epsilon) - resolvent(y - 1j * epsilon)
         assert_close("SL(2) cusp resolvent discontinuity", jump, -2j * math.pi * density, tol=1.0e-8)
 
+    cutoff = 30.0
+    half_integral = 2 * math.atan(math.tanh(cutoff / 2)) - cutoff / math.cosh(cutoff)
+    normalization = 2 * half_integral / math.pi
+    assert_close("SL(2) cusp density normalization", normalization, 1, tol=1.0e-11)
+
     coupling = 0.3
     constant = 4 * coupling * coupling * math.log(4)
     for spin in (200, 1000):

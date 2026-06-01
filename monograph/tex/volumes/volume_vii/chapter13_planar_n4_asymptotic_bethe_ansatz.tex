@@ -2318,7 +2318,41 @@ After differentiating the continuum Bethe equation, the boundary values obey
   G_0'(y+\ii0)+G_0'(y-\ii0)=4\pi\delta(y)
   \qquad (-a<y<a).
 \]
-The unique solution with one symmetric cut and the displayed normalization is
+The endpoint is fixed by the same Riemann-Hilbert data.  For a candidate
+symmetric cut \([-a,a]\), put
+\[
+  R_a(z)=\sqrt{z^2-a^2},\qquad R_a(z)\sim z\quad(z\to\infty),
+  \qquad
+  H_a(z)=-\frac1{zR_a(z)} .
+\]
+On the cut,
+\[
+  R_{a,+}(y)=\ii\sqrt{a^2-y^2},
+  \qquad
+  R_{a,-}(y)=-\ii\sqrt{a^2-y^2}.
+\]
+Thus \(H_{a,+}+H_{a,-}=0\) away from the origin.  At the origin the pole of
+\(1/z\) must be read distributionally:
+\[
+  H_{a,+}(y)+H_{a,-}(y)
+  =
+  \frac{\ii}{\sqrt{a^2-y^2}}
+  \left(\frac{1}{y+\ii0}-\frac{1}{y-\ii0}\right)
+  =
+  \frac{2\pi}{a}\delta(y).
+\]
+The source \(4\pi\delta(y)\) therefore fixes \(a=1/2\).  The primitive with
+\(G_0(\infty)=0\) is obtained by writing
+\(Y=\sqrt{4z^2-1}=2R_{1/2}(z)\), because
+\[
+  \frac{\dd}{\dd z}
+  \left[
+  -\ii\log\frac{Y+\ii}{Y-\ii}
+  \right]
+  =
+  -\frac{1}{zR_{1/2}(z)} .
+\]
+The one-cut solution with the displayed normalization is consequently
 \begin{equation}
   G_0(z)
   =
@@ -2338,6 +2372,17 @@ Its density is
   \qquad |y|<\frac12 .
   \label{eq:planar-n4-sl2-cusp-density}
 \end{equation}
+The normalization is not an additional assumption.  With
+\(y=(2\cosh t)^{-1}\), the evenness of the density gives
+\[
+  2\int_0^{1/2}\bar\rho_0(y)\,\dd y
+  =
+  \frac{2}{\pi}\int_0^\infty t\,\operatorname{sech}t\,\tanh t\,\dd t
+  =
+  \frac{2}{\pi}\int_0^\infty \operatorname{sech}t\,\dd t
+  =
+  1.
+\]
 The one-loop anomalous dimension is
 \[
   \gamma^{(1)}

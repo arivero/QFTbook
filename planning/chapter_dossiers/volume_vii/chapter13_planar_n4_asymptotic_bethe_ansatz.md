@@ -236,9 +236,12 @@ motivational checks, not foundations.
   are marked as boundary inputs rather than hidden in the endpoint algebra.
 - Expands the one-loop `SL(2)` large-spin cusp derivation: states the
   noncompact one-loop Bethe equation, defines the scaled root density and
-  resolvent, solves the one-cut Riemann-Hilbert problem with
+  resolvent, reconstructs the one-cut Riemann-Hilbert problem from
+  `H_a(z)=-1/(z sqrt(z^2-a^2))`, fixes the endpoint `a=1/2` from the
+  distributional delta source, solves the primitive with
   `G_0(z)=-i log((sqrt(4z^2-1)+i)/(sqrt(4z^2-1)-i))`, derives the density,
-  and extracts `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from
+  proves the density normalization, and extracts
+  `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from
   `G_0(i/(2S))`.
 - Starts the finite-gap/algebraic-curve development from gauge-theory
   finite-density Bethe roots: defines the empirical root measure, Cauchy
@@ -370,8 +373,8 @@ crossed Zhukovsky sheets.
   arithmetic relevant to cusp/Bremsstrahlung comparisons.
 - It checks the one-loop `SL(2)` large-spin cusp resolvent: physical
   square-root branch normalization, derivative formula, discontinuity and
-  positivity of the density, and extraction of the `8g^2 log S` term with
-  the constant `4g^2 log 4`.
+  positivity and normalization of the density, and extraction of the
+  `8g^2 log S` term with the constant `4g^2 log 4`.
 - It checks the signed-`t` Zhukovsky Fourier transform used in the BES
   bridge: exact Bessel recurrence, contour phase for the upper branch, lower
   branch conjugation, and the even-`m` parity failure of the absolute-value
