@@ -363,6 +363,11 @@
   while Bardeen counterterms only change representatives; extended
   `calculation-checks/anomaly_matching_wzw_checks.py` to verify the finite
   counterterm algebra.
+- 2026-06-01 issue #696 Abelianized-descent continuation: cross-linked the WZW
+  level comparison to the explicit Abelianized descent coordinate
+  \(C_{abc}\alpha^aF^bF^c\) and the cubic polarization identity in the anomaly
+  chapter, making clear why commuting-background tests fix the symmetric
+  descent class but not a preferred current representative.
 - 2026-05-30 issue #696 finite-\(SU(2)\) pass: removed the finite-doublet
   anomaly quoted theorem from the chapter.  The QFT conclusion is now a local
   proposition proved from Dai--Freed/Pfaffian-line holonomy, tensor-product

@@ -76,7 +76,10 @@
 - `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
   Abelianized Bardeen-counterterm algebra used here: shifts of the local
   anomaly representative leave the completely symmetric descent coefficient
-  unchanged.
+  unchanged.  The 2026-06-01 continuation adds the Abelianized cubic descent
+  coordinate \(C_{abc}\lambda^aF^bF^c\) and verifies that the homogeneous cubic
+  polynomial on commuting backgrounds recovers the symmetric tensor by
+  polarization.
 
 ## Framework
 

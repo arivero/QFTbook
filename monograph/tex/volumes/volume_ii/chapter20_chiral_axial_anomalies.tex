@@ -1701,6 +1701,67 @@ microscopic flavor anomaly, the coefficient being compared is the symmetric
 cohomology coordinate carried by \(I_6\), not an arbitrary distribution of
 the anomaly among particular background currents.
 
+\paragraph{Abelianized descent coordinate used in WZW matching.}
+\label{par:abelianized-descent-coordinate-wzw}
+The coefficient comparison in the Wess--Zumino--Witten application uses a
+particularly simple projection of the same relative class.  Restrict the
+background connection to a commuting finite-dimensional subspace of the flavor
+Lie algebra, so that
+\[
+  A=A^aT_a,\qquad F^a=\dd A^a,\qquad [T_a,T_b]=0
+\]
+inside the chosen test subspace.  The degree-three invariant polynomial then
+reduces to
+\[
+  I_6
+  =
+  C_{abc}\,F^aF^bF^c,
+\]
+where \(C_{abc}=C_{(abc)}\) is the symmetric coefficient obtained from the
+trace in the representation under discussion, multiplied by the normalization
+factor fixed above.  On this Abelianized slice a Chern--Simons representative
+and its infinitesimal descent are not hidden behind non-Abelian notation:
+\begin{equation}
+  I_5^{(0)}
+  =
+  C_{abc}\,A^aF^bF^c,
+  \qquad
+  \delta_\lambda I_5^{(0)}
+  =
+  C_{abc}\,\dd\lambda^a F^bF^c
+  =
+  \dd\!\left(C_{abc}\lambda^aF^bF^c\right),
+  \label{eq:abelianized-cubic-descent-coordinate}
+\end{equation}
+using \(\dd F^a=0\).  Thus the displayed
+\(\lambda\,\dd A\,\dd A\) term is not a low-order approximation to a
+different anomaly.  It is the Abelianized coordinate of the same descent class
+whose full non-Abelian representatives differ by the coboundaries described in
+\eqref{eq:relative-anomaly-coboundary}.
+
+For a compact connected semisimple flavor group, the invariant cubic
+polynomial is determined by its restriction to a Cartan subalgebra; equivalently,
+its symmetric trilinear coefficient is recovered from the homogeneous cubic
+function \(P(x)=C_{abc}x^ax^bx^c\) by the polarization identity
+\begin{equation}
+\begin{aligned}
+  C(x,y,z)
+  =
+  \frac16\bigl[
+    &P(x+y+z)-P(x+y)-P(x+z)-P(y+z)
+\\
+    &\hspace{2.8em}+P(x)+P(y)+P(z)
+  \bigr].
+\end{aligned}
+  \label{eq:cubic-polarization-identity-for-anomaly-coordinate}
+\end{equation}
+Consequently matching the coefficient of
+\(\operatorname{Tr}(\alpha\,\dd A\,\dd A)\) for arbitrary commuting flavor
+backgrounds fixes the symmetric cubic anomaly coordinate.  It does not fix a
+preferred current representative, and it does not choose a Bardeen convention;
+those choices affect \(I_4^{(1)}\) by local counterterm coboundaries while
+leaving \(C_{abc}\) unchanged.
+
 \section{Index-Normalized Anomaly Polynomials}
 \label{sec:index-normalized-anomaly-polynomials}
 

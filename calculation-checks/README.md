@@ -24,8 +24,9 @@ Current checks:
   matching and Wess--Zumino--Witten coefficient section, including
   \(n=N_c\) from matching the left-flavor anomaly, invariance of the
   completely symmetric descent coefficient under Abelianized Bardeen
-  counterterm shifts, vector-flavor anomaly cancellation between the two
-  chiral components of a Dirac quark, and
+  counterterm shifts, recovery of the symmetric cubic anomaly coordinate from
+  the Abelianized descent polynomial by polarization, vector-flavor anomaly
+  cancellation between the two chiral components of a Dirac quark, and
   \(\operatorname{Tr}(T^3\{q,q\})=1/3\) for the
   \(\pi^0\gamma\gamma\) normalization.
 - `anomaly_polynomial_descent_checks.py`: exact rational checks for the

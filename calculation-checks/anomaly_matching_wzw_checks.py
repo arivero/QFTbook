@@ -7,6 +7,8 @@ The script checks algebraic factors only:
   N_c/(48 pi^2) and the level-n WZW variation is n/(48 pi^2).
 * Bardeen counterterms change anomaly representatives but leave the completely
   symmetric descent coefficient, hence the WZW level coordinate, unchanged.
+* The Abelianized cubic descent coordinate determines the symmetric cubic
+  coefficient through the polarization identity.
 * Vector flavor anomalies cancel between the left and right components of a
   Dirac quark.
 * The two-flavor electromagnetic trace is
@@ -67,6 +69,69 @@ def check_bardeen_counterterm_preserves_symmetric_class() -> None:
                 assert_eq(f"symmetric Bardeen shift ({a}{b}{c})", sym_delta, Fraction(0))
 
 
+def check_abelianized_cubic_polarization_identity() -> None:
+    # The WZW level comparison uses the Abelianized descent coordinate
+    # C_abc lambda^a F^b F^c.  A symmetric cubic tensor is recovered from the
+    # homogeneous cubic polynomial P(x)=C_abc x^a x^b x^c by polarization.
+    raw_components = {
+        (0, 0, 0): Fraction(2, 5),
+        (1, 1, 1): Fraction(-3, 7),
+        (2, 2, 2): Fraction(5, 11),
+        (0, 0, 1): Fraction(7, 13),
+        (0, 0, 2): Fraction(-11, 17),
+        (0, 1, 1): Fraction(13, 19),
+        (1, 1, 2): Fraction(-17, 23),
+        (0, 2, 2): Fraction(19, 29),
+        (1, 2, 2): Fraction(-23, 31),
+        (0, 1, 2): Fraction(29, 37),
+    }
+
+    def canonical(indices: tuple[int, int, int]) -> tuple[int, int, int]:
+        return tuple(sorted(indices))
+
+    def c(a: int, b: int, c_index: int) -> Fraction:
+        return raw_components[canonical((a, b, c_index))]
+
+    def cubic(vector: tuple[Fraction, Fraction, Fraction]) -> Fraction:
+        total = Fraction(0)
+        for a in range(3):
+            for b in range(3):
+                for c_index in range(3):
+                    total += c(a, b, c_index) * vector[a] * vector[b] * vector[c_index]
+        return total
+
+    def add(*vectors: tuple[Fraction, Fraction, Fraction]) -> tuple[Fraction, Fraction, Fraction]:
+        return (
+            sum(vector[0] for vector in vectors),
+            sum(vector[1] for vector in vectors),
+            sum(vector[2] for vector in vectors),
+        )
+
+    basis = [
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(1)),
+    ]
+
+    for x_index, x in enumerate(basis):
+        for y_index, y in enumerate(basis):
+            for z_index, z in enumerate(basis):
+                recovered = (
+                    cubic(add(x, y, z))
+                    - cubic(add(x, y))
+                    - cubic(add(x, z))
+                    - cubic(add(y, z))
+                    + cubic(x)
+                    + cubic(y)
+                    + cubic(z)
+                ) / Fraction(6)
+                assert_eq(
+                    f"cubic polarization C_{x_index}{y_index}{z_index}",
+                    recovered,
+                    c(x_index, y_index, z_index),
+                )
+
+
 def check_vector_anomaly_cancellation() -> None:
     for n_c in range(2, 10):
         for trace_value in (Fraction(1, 5), Fraction(-7, 3), Fraction(11, 6)):
@@ -88,6 +153,7 @@ def check_pi0_two_photon_trace() -> None:
 def main() -> None:
     check_wzw_level()
     check_bardeen_counterterm_preserves_symmetric_class()
+    check_abelianized_cubic_polarization_identity()
     check_vector_anomaly_cancellation()
     check_pi0_two_photon_trace()
     print("All anomaly-matching and WZW coefficient checks passed.")
