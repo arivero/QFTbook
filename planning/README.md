@@ -53,7 +53,10 @@ finished monograph.
 - `agent_handoffs/`: detailed parallel-work packets for agents developing
   independent topics simultaneously.
 
-Historical build audits and chapter dossiers are preserved in subdirectories.
+Chapter dossiers are preserved in this public planning layer. Historical
+build-audit logs are local process records under the ignored
+`planning/build_audits/` directory and are not part of the public repository
+distribution.
 
 ## Compiled Volumes and On-Disk Directories
 

@@ -6,7 +6,6 @@ a comprehensive multi-volume monograph on quantum field theory.
 Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
-> with review contributions from Opus 4.7
 
 The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
@@ -16,7 +15,7 @@ material are kept separate from the compiled monograph.
 
 - `monograph/tex/`: reader-facing LaTeX manuscript.
 - `planning/`: project constitution, rigor standards, source hierarchy,
-  chapter dossiers, and audit records.
+  and chapter dossiers.
 - `transcription/`: TeX reconstruction of source lecture notes used as local
   source material, not as reader-facing monograph prose.
 - `references/`: local source and reference shelf.  PDFs, extracted text, and
@@ -115,5 +114,7 @@ The repository does not use a GitHub CI gate.  Manuscript verification is run
 locally with the tools listed above, and `.github/workflows/` should not be
 introduced unless the author explicitly requests GitHub Actions.
 
-No open-source license has been selected yet.  Until a license is added, all
-rights are reserved by default.
+## License
+
+See `LICENSE.md` for the mixed licensing terms: manuscript/prose under
+CC BY-NC-SA 4.0, executable code under MIT.

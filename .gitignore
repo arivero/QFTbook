@@ -75,7 +75,13 @@ transcription/source_pdfs/
 transcription/drafts/
 transcription/*.pdf
 
+# Local process logs and deprecated draft shelves
+planning/build_audits/
+deprecated/
+monograph/deprecated/
+
 # Local source/reference shelf not intended for GitHub
+references/
 references/**/*.pdf
 references/**/*.txt
 references/**/*.tex
@@ -91,6 +97,7 @@ references/**/*.jpeg
 references/**/*.png
 
 # Temporary local notes
+claude_review.md
 *.tmp
 *.bak
 *.orig
