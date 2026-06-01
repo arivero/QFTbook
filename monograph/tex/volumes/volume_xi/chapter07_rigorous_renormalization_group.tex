@@ -1403,6 +1403,167 @@ candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}
 
+\section{Transfer Estimates From Auxiliary Fixed-Point Models}
+\label{sec:auxiliary-rg-transfer-estimates}
+
+The theorem-level fixed points known in hierarchical scalar models,
+fractional or long-range models, fermionic small-parameter models, and
+tensor-network RG are not automatically fixed points of the ordinary
+short-range scalar block-spin problem of
+Definition~\ref{def:short-range-scalar-block-spin-datum}.  Their use for the
+ordinary target is controlled by an auxiliary-to-target comparison, not by a
+shared list of exponents.  This section records the estimate that such a
+comparison must contain.
+
+\begin{definition}[Auxiliary-to-short-range RG transfer datum]
+\label{def:auxiliary-to-short-range-rg-transfer-datum}
+Let
+\[
+  (\mathcal B_{\rm aux},\mathcal R_{\rm aux},V_{\ast}^{\rm aux})
+  \qquad\text{and}\qquad
+  (\mathcal B_{\rm sr},\mathcal R_{\rm sr},V_{\ast}^{\rm sr})
+\]
+be an auxiliary RG system and an ordinary short-range target RG system, with
+Banach spaces, domains, fixed points, stable neighborhoods, source
+extensions, and reconstruction maps already specified.  A transfer datum from
+the auxiliary system to the short-range target consists of:
+\begin{enumerate}
+  \item a map
+  \(\Phi:\mathcal U_{\rm aux}\to\mathcal B_{\rm sr}\), defined on an
+  auxiliary neighborhood that contains the orbit under consideration;
+  \item a map \(\Psi:\mathcal O_{\rm aux}\to\mathcal O_{\rm sr}\) between the
+  corresponding locally convex observable-data spaces;
+  \item one-step RG defects
+  \begin{equation}
+    d_j(y_0)
+    =
+    \mathcal R_{\rm sr}\!\left(\Phi(y_j)\right)
+    -
+    \Phi(y_{j+1}),
+    \qquad
+    y_j=\mathcal R_{\rm aux}^{\,j}y_0 ,
+    \label{eq:auxiliary-short-range-one-step-defect}
+  \end{equation}
+  with explicit norm bounds
+  \(\|d_j(y_0)\|_{\mathcal B_{\rm sr}}\leq\delta_j(y_0)\);
+  \item Lipschitz constants \(M_j\) for \(\mathcal R_{\rm sr}\) on a tube in
+  \(\mathcal B_{\rm sr}\) containing both the true short-range orbit
+  \(\mathcal R_{\rm sr}^{\,j}\Phi(y_0)\) and the transferred auxiliary orbit
+  \(\Phi(y_j)\);
+  \item comparison of tuning maps for the unstable coordinates,
+  \begin{equation}
+    \tau_{\rm sr}(\Phi y)
+    =
+    A\,\tau_{\rm aux}(y)+r(y),
+    \label{eq:auxiliary-short-range-tuning-map}
+  \end{equation}
+  where \(A\) is a specified linear map between unstable coordinate spaces and
+  \(r(y)\) is bounded in the target unstable norm;
+  \item observable comparison estimates
+  \begin{equation}
+    p\!\left(
+      \Psi\,\operatorname{Rec}^{\rm aux}_{n,k}(y_0)
+      -
+      \operatorname{Rec}^{\rm sr}_{n,k}(\Phi y_0)
+    \right)
+    \leq
+    \varepsilon_{n,p,k}(y_0)
+    \label{eq:auxiliary-short-range-observable-defect}
+  \end{equation}
+  for every declared observable seminorm \(p\) relevant to the claimed
+  continuum statement.
+\end{enumerate}
+\end{definition}
+
+The transfer datum refines
+Definition~\ref{def:comparison-of-rg-descriptions} in the direction needed
+for ordinary short-range critical models.  The finite RG-orbit estimate is
+straightforward, but it is the load-bearing estimate.  Let
+\[
+  x_j=\mathcal R_{\rm sr}^{\,j}\Phi(y_0),
+  \qquad
+  z_j=x_j-\Phi(y_j).
+\]
+Then \(z_0=0\) and
+\begin{equation}
+  z_{j+1}
+  =
+  \mathcal R_{\rm sr}(x_j)
+  -
+  \mathcal R_{\rm sr}(\Phi(y_j))
+  +
+  d_j(y_0).
+  \label{eq:auxiliary-short-range-z-recursion}
+\end{equation}
+The Lipschitz estimate on the tube gives
+\begin{equation}
+  \|z_{j+1}\|_{\mathcal B_{\rm sr}}
+  \leq
+  M_j\|z_j\|_{\mathcal B_{\rm sr}}+\delta_j(y_0).
+  \label{eq:auxiliary-short-range-z-bound-step}
+\end{equation}
+Iterating this scalar inequality yields
+\begin{equation}
+  \|z_n\|_{\mathcal B_{\rm sr}}
+  \leq
+  \sum_{j=0}^{n-1}
+  \left(\prod_{\ell=j+1}^{n-1}M_\ell\right)\delta_j(y_0).
+  \label{eq:auxiliary-short-range-telescoping-bound}
+\end{equation}
+Thus an auxiliary fixed-point theorem becomes a controlled statement about
+the short-range target only when the one-step defects are summable after the
+target RG amplification factors are included.
+
+On a stable subspace, suppose \(M_j\leq\theta<1\) and
+\(\delta_j(y_0)\leq Cq^j\) with \(0<q<1\).  Then
+\begin{equation}
+  \|z_n\|
+  \leq
+  C\sum_{j=0}^{n-1}\theta^{\,n-1-j}q^j
+  =
+  \begin{cases}
+    C\dfrac{\theta^n-q^n}{\theta-q}, & \theta\neq q,\\[1.2em]
+    Cn\theta^{\,n-1}, & \theta=q .
+  \end{cases}
+  \label{eq:auxiliary-short-range-stable-geometric-bound}
+\end{equation}
+Both terms tend to zero when \(\theta,q<1\).  This is the stable-direction
+part of the comparison problem.
+
+Relevant directions have the opposite behavior.  If a target unstable
+coordinate has linear eigenvalue \(\lambda_a=L^{y_a}\), \(y_a>0\), and
+one-step comparison errors \(e_{a,j}\), then the finite-depth bound is
+\begin{equation}
+  |u_{a,N}|
+  \leq
+  |\lambda_a|^N |u_{a,0}|
+  +
+  \sum_{j=0}^{N-1}|\lambda_a|^{\,N-1-j}|e_{a,j}|.
+  \label{eq:auxiliary-short-range-relevant-amplification}
+\end{equation}
+Consequently, if \(y\) lies on the auxiliary critical surface
+\(\tau_{\rm aux}(y)=0\), the target initial point \(\Phi y\) lies on the
+target critical surface only when the remainder \(r(y)\) in
+\eqref{eq:auxiliary-short-range-tuning-map} is itself tuned away, or is small
+to the finite-depth accuracy demanded by
+\eqref{eq:auxiliary-short-range-relevant-amplification}.  This is why a
+comparison between a hierarchical or long-range theorem and an ordinary
+short-range scalar theorem must include the unstable tuning map, not only the
+stable contraction estimate.
+
+Finally, the observable estimate
+\eqref{eq:auxiliary-short-range-observable-defect} must be combined with
+\eqref{eq:auxiliary-short-range-telescoping-bound}.  If
+\(\operatorname{Rec}^{\rm sr}_{n,k}\) is locally Lipschitz in the RG chart
+with respect to a seminorm \(p\), then the observable error is bounded by the
+explicit auxiliary-observable defect plus the Lipschitz image of the orbit
+error \(z_k\).  Only after both terms vanish in the chosen observable
+topology does an auxiliary theorem transfer to the ordinary short-range QFT
+claim.  Without this transfer datum, hierarchical, long-range, tensor, and
+functional-RG fixed points should be read as theorem-level benchmarks or
+computational evidence in their own frameworks, not as a proof of the
+ordinary short-range Wilson--Fisher QFT.
+
 \section{Source-Extended RG, Scaling Operators, And Contact Terms}
 
 A fixed interaction is not yet a QFT spectrum.  Scaling operators are

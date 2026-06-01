@@ -6,8 +6,10 @@ ordinary short-range scalar lattice model.  These checks verify the finite
 normalization and exponent bookkeeping used there: block kernels preserve
 constant fields up to the declared field scaling, block-constant test
 functions keep the distribution pairing invariant, independent-site
-covariances scale with the expected block exponent, and the reconstruction
-bound has the displayed geometric form.
+covariances scale with the expected block exponent, the reconstruction bound
+has the displayed geometric form, and an auxiliary RG theorem transfers to
+the short-range target only when the one-step intertwining defects remain
+controlled after stable or relevant RG amplification.
 """
 
 from fractions import Fraction
@@ -169,12 +171,66 @@ def check_correction_to_scaling_bookkeeping():
         )
 
 
+def check_auxiliary_transfer_telescoping_bound():
+    theta = Fraction(2, 3)
+    q = Fraction(1, 5)
+    c = Fraction(3, 7)
+
+    for steps in range(1, 8):
+        defects = [c * q**j for j in range(steps)]
+        orbit_error = Fraction(0)
+        for defect in defects:
+            orbit_error = theta * orbit_error + defect
+
+        telescoping = sum(
+            theta ** (steps - 1 - j) * defects[j] for j in range(steps)
+        )
+        closed_form = c * (theta**steps - q**steps) / (theta - q)
+
+        assert_equal(f"auxiliary transfer recurrence step {steps}", orbit_error, telescoping)
+        assert_equal(f"auxiliary transfer geometric sum step {steps}", telescoping, closed_form)
+
+    equal_rate = Fraction(1, 4)
+    c_equal = Fraction(5, 6)
+    for steps in range(1, 7):
+        defects = [c_equal * equal_rate**j for j in range(steps)]
+        telescoping = sum(
+            equal_rate ** (steps - 1 - j) * defects[j] for j in range(steps)
+        )
+        assert_equal(
+            f"auxiliary transfer equal-rate sum step {steps}",
+            telescoping,
+            c_equal * steps * equal_rate ** (steps - 1),
+        )
+
+
+def check_relevant_direction_tuning_amplification():
+    lam = Fraction(3)
+    rho = Fraction(5, 7)
+    for depth in range(1, 6):
+        tuned_initial = rho / lam**depth
+        amplified = lam**depth * tuned_initial
+        assert_equal(f"relevant tuning depth {depth}", amplified, rho)
+
+    initial = Fraction(1, 11)
+    errors = [Fraction(1, 3), Fraction(-1, 9), Fraction(1, 27), Fraction(-1, 81)]
+    coordinate = initial
+    for error in errors:
+        coordinate = lam * coordinate + error
+    expected = lam ** len(errors) * initial + sum(
+        lam ** (len(errors) - 1 - j) * errors[j] for j in range(len(errors))
+    )
+    assert_equal("relevant direction affine amplification", coordinate, expected)
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
     check_independent_covariance_scaling()
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
+    check_auxiliary_transfer_telescoping_bound()
+    check_relevant_direction_tuning_amplification()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

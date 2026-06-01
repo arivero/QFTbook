@@ -64,6 +64,13 @@ constructive RG developments.
   short-range scalar block-spin RG chart.
 - `S_{n,k}`: connected cumulant distribution reconstructed from normalized
   block-spin fields.
+- `Phi`, `Psi`: auxiliary-to-short-range RG transfer maps on Banach charts
+  and observable-data spaces.
+- `d_j`, `delta_j`, `M_j`, `z_j`: one-step transfer defect, its norm bound,
+  target RG Lipschitz constant on the comparison tube, and accumulated
+  short-range orbit error.
+- `tau_aux`, `tau_sr`, `A`, `r`: auxiliary and target unstable tuning maps,
+  their linear comparison, and the target tuning remainder.
 
 ## Claim Ledger
 
@@ -114,6 +121,13 @@ constructive RG developments.
   normalized lattice fields, and the exact reconstruction estimate required
   to turn a tuned block-spin RG trajectory into distributional Schwinger
   functions.
+- Defines the auxiliary-to-short-range RG transfer datum needed to use
+  hierarchical, long-range, fermionic, tensor, or functional-RG fixed-point
+  results as statements about ordinary short-range scalar targets.
+- Derives the finite orbit-comparison telescope
+  \(\|z_n\|\le \sum_j(\prod_{\ell>j}M_\ell)\delta_j\), the stable geometric
+  bound when \(M_j\le\theta<1\), and the separate relevant-coordinate
+  amplification estimate requiring target tuning-map control.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, hierarchical
   scalar fixed points with controlled unstable/stable directions, and
@@ -154,4 +168,5 @@ remainder contraction.
 - `calculation-checks/rg_short_range_reconstruction_checks.py`: exact rational
   checks for ordinary short-range scalar block-spin normalization, pairing,
   covariance scaling, reconstruction-bound arithmetic, and
-  correction-to-scaling bookkeeping.
+  correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
+  estimate and relevant-direction amplification formula.
