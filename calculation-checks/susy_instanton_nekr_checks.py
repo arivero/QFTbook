@@ -389,6 +389,68 @@ def check_one_box_tangent_euler_class() -> None:
         assert_equal(fixed_point_sum, direct_sum, "one-box tangent Euler class")
 
 
+def matrix_product(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
+    rows = len(left)
+    middle = len(right)
+    cols = len(right[0])
+    return [
+        [sum(left[row][index] * right[index][col] for index in range(middle)) for col in range(cols)]
+        for row in range(rows)
+    ]
+
+
+def matrix_trace(matrix: list[list[Fraction]]) -> Fraction:
+    return sum(matrix[index][index] for index in range(len(matrix)))
+
+
+def matrix_rank_at_most_one(matrix: list[list[Fraction]]) -> bool:
+    size = len(matrix)
+    for row1 in range(size):
+        for row2 in range(row1 + 1, size):
+            for col1 in range(size):
+                for col2 in range(col1 + 1, size):
+                    minor = matrix[row1][col1] * matrix[row2][col2] - matrix[row1][col2] * matrix[row2][col1]
+                    if minor != 0:
+                        return False
+    return True
+
+
+def check_charge_one_nilpotent_cone_resolution_arithmetic() -> None:
+    # For k=1, the Uhlenbeck morphism sends ([I],J) to nu=J tensor I with
+    # I(J)=0.  Hence Tr(nu)=0, nu^2=0, and rank(nu)<=1.  The dimensions are
+    # dim_C T^*CP^{N-1}=2(N-1), dim_C C^2 x T^*CP^{N-1}=2N, and the
+    # Uhlenbeck apex C^2 has complex codimension 2(N-1).
+    samples = [
+        ([Fraction(1), Fraction(0)], [Fraction(0), Fraction(3)]),
+        ([Fraction(1), Fraction(2), Fraction(-1)], [Fraction(2), Fraction(-1), Fraction(0)]),
+        (
+            [Fraction(2), Fraction(-3), Fraction(5), Fraction(1)],
+            [Fraction(1), Fraction(1), Fraction(0), Fraction(1)],
+        ),
+    ]
+    for covector, vector in samples:
+        n = len(covector)
+        pairing = sum(covector[index] * vector[index] for index in range(n))
+        assert_equal(pairing, 0, "charge-one ADHM scalar equation I(J)=0")
+        matrix = [[vector[row] * covector[col] for col in range(n)] for row in range(n)]
+        assert_equal(matrix_trace(matrix), 0, "charge-one nilpotent trace")
+        square = matrix_product(matrix, matrix)
+        zero = [[Fraction(0) for _ in range(n)] for _ in range(n)]
+        assert_equal(square, zero, "charge-one nilpotent square")
+        assert_equal(matrix_rank_at_most_one(matrix), True, "charge-one rank-one cone")
+
+    for n in range(2, 12):
+        cotangent_projective_dimension = 2 * (n - 1)
+        charge_one_gieseker_dimension = 2 + cotangent_projective_dimension
+        uhlenbeck_apex_dimension = 2
+        assert_equal(charge_one_gieseker_dimension, 2 * n, "charge-one Gieseker dimension")
+        assert_equal(
+            charge_one_gieseker_dimension - uhlenbeck_apex_dimension,
+            2 * (n - 1),
+            "charge-one Uhlenbeck apex codimension",
+        )
+
+
 def math_product(values) -> Fraction:
     result = Fraction(1)
     for value in values:
@@ -417,6 +479,7 @@ def main() -> None:
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
     check_one_box_tangent_euler_class()
+    check_charge_one_nilpotent_cone_resolution_arithmetic()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")
 

@@ -40,6 +40,10 @@
 - ADHM stability criterion, its failure as the small-instanton stratum, the
   tangent Euler-class formula at Young-diagram fixed points, and the one-box
   fixed-point derivation of the \(k=1\) Nekrasov term.
+- Charge-one Gieseker-to-Uhlenbeck map as the resolution
+  \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\) of the
+  minimal nilpotent cone, with the zero section mapped to the Uhlenbeck
+  point-instanton apex.
 - Field-theoretic Gieseker-matching hypothesis: the resolved equivariant
   integral is a theorem after choosing the Gieseker moduli space, while its
   equality to the continuum \(S^4\) gauge-theory path integral requires a
@@ -89,6 +93,8 @@
 | \(Z_{\rm inst}\) | Nekrasov equivariant instanton factor |
 | \(\mathcal M^{sm},\overline{\mathcal M}^{U},\mathfrak M^{G}\) | smooth/Uhlenbeck/Gieseker instanton spaces |
 | \(B_1,B_2,I,J\) | ADHM variables in the singular-instanton comparison |
+| \(\nu_{I,J}=J\otimes I\) | charge-one Uhlenbeck nilpotent-cone coordinate |
+| \(\overline{\mathcal O}_{\rm min}\) | closure of the minimal nilpotent orbit in \(\mathfrak{sl}(W)\) |
 | \(A_Y(s),L_Y(s)\) | arm and relative leg lengths of a Young-diagram box |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
@@ -130,14 +136,19 @@
    records the lost charge as points of \(\mathbb C^2\).
 11. The displayed tangent Euler class at a Young-diagram fixed point reduces
     to the standard \(U(N)\) one-instanton fixed-point sum for one box.
-12. The equality between the Gieseker-resolved equivariant integral and the
+12. In charge one, the Gieseker resolution is explicitly
+    \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
+    \(([I],J)\mapsto J\otimes I\).  The equations
+    \(I(J)=0\), \(\operatorname{Tr}(J\otimes I)=0\), and
+    \((J\otimes I)^2=0\) identify the Uhlenbeck boundary as the cone apex.
+13. The equality between the Gieseker-resolved equivariant integral and the
     \(S^4\) field-theoretic localized path integral is recorded as a
     field-theoretic matching hypothesis unless a regulator proves it.  The
     chapter now cross-references the finite BV boundary-obstruction formula:
     a smooth-stratum pushforward fails the residual QME by the
     small-instanton boundary functional unless a resolution, relative cycle,
     residue datum, or vanishing theorem cancels it.
-13. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+14. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
@@ -145,16 +156,16 @@
    as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
    derives the Bessel algebra behind the Bremsstrahlung function from the
    protected circular-loop Ward identity.
-14. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
+15. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
-15. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+16. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-16. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+17. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-17. The conjugate-chiral determinant identity gives
+18. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-18. Contact terms and local curvature counterterms are QFT coordinates, not
+19. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -174,7 +185,8 @@
   \(\sqrt{\lambda}I_2/(2I_1)\) Bessel-ratio expression.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
   dimension count, Uhlenbeck stratum codimension arithmetic, the one-box
-  Gieseker tangent Euler-class specialization, and the \(SU(2)\)
+  Gieseker tangent Euler-class specialization, the charge-one
+  minimal-nilpotent-cone resolution arithmetic, and the \(SU(2)\)
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
   Seiberg-Witten chapter.
 
@@ -207,3 +219,7 @@
   the chapter no longer relies on scattered prose for the regulator,
   supercharge-square, fixed-locus, determinant, contour, singular-stratum, and
   continuum-matching assumptions.
+- 2026-06-01: made the charge-one small-instanton resolution explicit as the
+  map \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
+  replacing a loose point-instanton phrase by the concrete nilpotent-cone
+  geometry and adding exact arithmetic checks.

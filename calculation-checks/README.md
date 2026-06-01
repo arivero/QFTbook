@@ -1347,7 +1347,8 @@ Current checks:
   supersymmetric instanton expansion, including the ADHM dimension count,
   Uhlenbeck stratum codimension arithmetic, the positive-ADHM-moment-map
   trace obstruction to unstable small-instanton subspaces, the one-box
-  Gieseker tangent Euler-class specialization,
+  Gieseker tangent Euler-class specialization, the charge-one
+  Gieseker-to-Uhlenbeck minimal-nilpotent-cone resolution arithmetic,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
   and Higgs-patch collective-coordinate ledger, the radial Higgs-cutoff

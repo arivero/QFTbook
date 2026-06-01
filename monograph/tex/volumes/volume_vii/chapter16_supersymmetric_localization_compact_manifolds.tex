@@ -826,6 +826,58 @@ has real codimension four in the top moduli component, matching
 Remark~\ref{rem:uhlenbeck-stratum-dimension}.
 \end{example}
 
+\begin{construction}[Charge-one Uhlenbeck map as a nilpotent-cone resolution]
+\label{cons:charge-one-uhlenbeck-nilpotent-resolution}
+The charge-one example admits a completely explicit map to the Uhlenbeck
+compactification.  Let \(W\simeq\mathbb C^N\).  Since \(K=\mathbb C\), the
+complex ADHM equation is the scalar condition
+\[
+  I(J)=0,
+  \qquad
+  I\in W^\ast,\quad J\in W .
+\]
+Stability is \(I\ne0\).  Dividing by \(GL(1)=\mathbb C^\ast\) gives
+\[
+  (I,J)/\mathbb C^\ast
+  =
+  \{([I],J):[I]\in \mathbb P(W^\ast),\ I(J)=0\}
+  \simeq T^\ast\mathbb P(W^\ast)
+  \simeq T^\ast\mathbb{CP}^{N-1}.
+\]
+The Uhlenbeck map is the moment-map morphism
+\begin{equation}
+  \mu_{\rm Uh}:T^\ast\mathbb P(W^\ast)\longrightarrow \mathfrak{sl}(W),
+  \qquad
+  ([I],J)\longmapsto \nu_{I,J}:=J\otimes I,
+  \label{eq:charge-one-uhlenbeck-moment-map}
+\end{equation}
+where \(\nu_{I,J}(w)=I(w)J\).  The equation \(I(J)=0\) gives
+\[
+  \operatorname{Tr}\nu_{I,J}=I(J)=0,
+  \qquad
+  \nu_{I,J}^2=I(J)\nu_{I,J}=0,
+  \qquad
+  \operatorname{rank}\nu_{I,J}\le1.
+\]
+Thus the image is the closure of the minimal nilpotent orbit in
+\(\mathfrak{sl}(W)\).  The open subset \(J\ne0\) maps to the smooth
+rank-one nilpotent orbit; the zero section \(J=0\) maps to the apex
+\(\nu=0\), which is precisely the ideal point-instanton stratum in the
+charge-one Uhlenbeck compactification.  Including the center
+\((B_1,B_2)\in\mathbb C^2\), one has
+\[
+  \mathfrak M_{1,N}^{G}
+  \simeq
+  \mathbb C^2\times T^\ast\mathbb{CP}^{N-1}
+  \longrightarrow
+  \mathbb C^2\times \overline{\mathcal O}_{\rm min},
+\]
+and the small-instanton boundary is
+\(\mathbb C^2\times\{0\}\).  This is the concrete geometric content hidden
+behind the phrase ``point instanton'' in the first nontrivial instanton
+sector.
+\end{construction}
+
 \begin{hypothesis}[Field-theoretic matching to the Gieseker integral]
 \label{hyp:field-theoretic-gieseker-matching}
 The \(S^4\) formula
