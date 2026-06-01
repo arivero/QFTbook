@@ -1456,6 +1456,91 @@ observable has been lifted from a partonic measurement to a convolution with
 the nonperturbative track coordinates and the real--virtual pairing in
 Definition~\ref{def:paired-track-function-evolution} has been specified.
 
+\begin{definition}[Finite track lift of an energy-measure observable]
+\label{def:finite-track-observable-lift}
+Fix a partonic short-distance configuration with labeled partons
+\[
+  a=1,\ldots,n,\qquad (i_a,E_a,y_a),
+\]
+where \(i_a\) is the parton species, \(E_a>0\) is the energy coordinate, and
+\(y_a\) is the angular coordinate in the detector patch.  A finite
+track-function lift assigns to each label \(a\) an independent random variable
+\(X_a\in[0,1]\) with law \(T_{i_a}\) and replaces the calorimetric energy
+measure by the random charged-track energy measure
+\[
+  \mu_{\rm tr}
+  =
+  \sum_{a=1}^n X_a E_a\,\delta_{y_a}.
+\]
+For a smeared \(k\)-point energy polynomial with continuous kernel \(f\),
+\[
+  \mathcal E_f(\mu)
+  =
+  \int f(y_1,\ldots,y_k)\,\mu(dy_1)\cdots\mu(dy_k),
+\]
+the lifted partonic coefficient is the conditional expectation
+\[
+  \mathbb E_T\,\mathcal E_f(\mu_{\rm tr}).
+\]
+This finite definition is the algebraic core of a track-based factorization
+formula.  A QCD prediction additionally requires the operator definition of
+the track functions, their subtraction scheme and RG evolution, the
+short-distance coefficient into which this lift is inserted, and a remainder
+estimate for the leading-power track-factorization approximation.
+\end{definition}
+
+The finite lift shows why track observables cannot be reduced to replacing
+each energy by the average charged fraction.  Let
+\[
+  m_i^{(r)}=\int_0^1 x^r\,T_i(x)\,\dd x
+\]
+be the \(r\)-th track moment whenever this moment is defined in the chosen
+scheme.  For the two-point polynomial one obtains
+\begin{align}
+  \mathbb E_T\,\mathcal E_f(\mu_{\rm tr})
+  &=
+  \sum_{a\neq b}
+  E_aE_b\,f(y_a,y_b)\,
+  m_{i_a}^{(1)}m_{i_b}^{(1)}
+  \nonumber\\
+  &\hspace{2em}
+  +
+  \sum_a
+  E_a^2\,f(y_a,y_a)\,
+  m_{i_a}^{(2)} .
+  \label{eq:track-lift-two-point-moment-formula}
+\end{align}
+The second line is a diagonal term in the energy-measure polynomial.  It is
+controlled by the second track moment, not by the square of the first moment.
+For higher energy polynomials, every repeated parton label similarly produces
+higher track moments.  These are not optional refinements: they are part of
+the definition of the lifted observable.  Omitting them changes the observable
+whose short-distance coefficient is being computed.
+
+The same bookkeeping explains the collinear composition law behind
+\eqref{eq:paired-track-function-evolution}.  If a parent with energy \(E\)
+is resolved into daughters with energy fractions \(z\) and \(1-z\), then the
+track fraction assigned to the unresolved pair is
+\[
+  X=zX_1+(1-z)X_2 .
+\]
+Thus
+\begin{align}
+  \mathbb E[X]
+  &=
+  z\,m_j^{(1)}+(1-z)m_k^{(1)},\\
+  \mathbb E[X^2]
+  &=
+  z^2m_j^{(2)}+(1-z)^2m_k^{(2)}
+  +2z(1-z)m_j^{(1)}m_k^{(1)}.
+  \label{eq:track-lift-collinear-second-moment}
+\end{align}
+A track-based observable is therefore not IRC safe as a bare partonic
+function.  Rather, its collinear boundary is a renormalization problem for
+the whole sequence of track moments, or equivalently for the track
+distribution.  This is the precise meaning of using track functions in a
+jet-substructure calculation.
+
 \section{Parton Showers}
 
 A parton shower is a stochastic implementation of soft and collinear

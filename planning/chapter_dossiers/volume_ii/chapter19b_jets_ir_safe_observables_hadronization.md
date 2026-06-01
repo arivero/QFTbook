@@ -64,6 +64,9 @@ The chapter establishes:
 - a finite-kernel track-function evolution datum and a worked moment-coordinate
   derivation proving normalization preservation and the first-moment evolution
   formula under paired real--virtual track-function RG;
+- Definition `def:finite-track-observable-lift`, defining the finite lift of
+  calorimetric energy polynomials to track-based observables by conditional
+  expectation over track functions, including the diagonal moment terms;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -160,6 +163,12 @@ The chapter establishes:
 10b. Track functions are nonperturbative operator coordinates with paired
      real--virtual evolution; the pairing, not a slogan of IRC safety, is what
      preserves normalization and gives the charged-energy moment RG.
+10c. A track-based energy polynomial is defined by lifting the energy measure
+     to a random charged-track energy measure and then taking conditional
+     expectation.  Diagonal terms in a two-point energy polynomial depend on
+     the second track moment \(m_i^{(2)}\), and higher repeated parton labels
+     require higher track moments; replacing every energy by the first charged
+     fraction changes the observable.
 11. Fragmentation functions are nonperturbative light-ray matrix elements with
     perturbative scale evolution; their finite-scale boundary data are not
     produced by fixed-order perturbation theory.
@@ -225,6 +234,10 @@ The chapter establishes:
 - 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
   RG datum, proved normalization preservation and first-moment evolution, and
   added `calculation-checks/track_function_moment_checks.py`.
+- 2026-06-01 issue #526 track-observable lift pass: added the finite
+  track-lift definition for energy-measure polynomials, exposed the diagonal
+  second-moment term and collinear composition law, and added
+  `calculation-checks/track_observable_lift_checks.py`.
 - 2026-05-29 anti-wrapper pass: demoted the track-function normalization and
   first-moment proposition to a worked paragraph because the proof is the
   finite-kernel moment algebra; the substantive QFT datum remains the
