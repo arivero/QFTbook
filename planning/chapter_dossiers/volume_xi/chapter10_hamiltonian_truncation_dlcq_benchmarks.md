@@ -61,6 +61,12 @@ numerics.
   finite energy variance for a trial state.
 - `E_loc(x)`, `p_psi(x)`: finite-basis local energy and sampling
   probability used by neural-state and variational Monte Carlo estimates.
+- `x^pm`, `p^pm`, `p_perp`, `Z_Lambda`, `C_{Lambda,alpha}`:
+  light-front coordinates and momenta, transverse momentum, zero-mode sector,
+  and finite-regulator constraints in the light-front Hamiltonian datum.
+- `Hilb_Lambda^phys`, `P_Lambda^-`, `M_Lambda^2`: finite physical
+  light-front Hilbert space, light-front Hamiltonian, and fixed-sector
+  invariant-mass operator.
 
 ## Claim Ledger
 
@@ -124,6 +130,15 @@ numerics.
   orthogonality rather than an eigenvector certificate.
 - Derives the finite local-energy mean and variance identities used by
   sampled neural-state and variational Monte Carlo calculations.
+- Defines a general light-front Hamiltonian regulator datum before DLCQ is
+  specialized: null-coordinate convention, positive-longitudinal nonzero
+  modes, zero-mode/constraint sector, finite physical Hilbert space,
+  self-adjoint \(P^-_\Lambda\), fixed-sector \(M_\Lambda^2\), and continuum
+  diagnostic.
+- Derives the free massive one-particle light-front measure
+  \(\dd p^+\,\dd^{D-2}p_\perp/(2p^+)\) from
+  \(\theta(p^0)\delta(p^2+m^2)\), making the \(p^+=0\) boundary a separate
+  zero-mode/constraint datum rather than a silent omission.
 - Defines DLCQ kinematics and the role of harmonic resolution, then packages
   the light-front compactification, parton partitions, zero-mode treatment,
   finite \(P^-\) or \(M^2\) operator, and finite-\(K\) continuum diagnostic

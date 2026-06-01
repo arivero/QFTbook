@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import pathlib
 import sys
+from fractions import Fraction
 
 import numpy as np
 
@@ -22,6 +23,11 @@ import thooft_dlcq_extrapolation as thooft_extrapolation  # noqa: E402
 
 def assert_close(name: str, actual: float, expected: float, tol: float = 1.0e-11) -> None:
     if abs(actual - expected) > tol:
+        raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
+
+
+def assert_equal(name: str, actual: object, expected: object) -> None:
+    if actual != expected:
         raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
 
 
@@ -341,6 +347,34 @@ def check_variational_energy_certificates() -> None:
     assert_close("variational local-energy variance", local_variance, residual_variance)
 
 
+def check_light_front_kinematic_identities() -> None:
+    p_plus = Fraction(7, 5)
+    p_perp = [Fraction(3, 4), Fraction(-2, 5)]
+    p_perp_sq = sum(component * component for component in p_perp)
+    mass_sq = Fraction(9, 10)
+    p_minus = (mass_sq + p_perp_sq) / (2 * p_plus)
+
+    mass_shell = -2 * p_plus * p_minus + p_perp_sq
+    assert_equal("light-front mass shell", mass_shell, -mass_sq)
+    delta_jacobian = abs(-2 * p_plus)
+    assert_equal("light-front delta-function Jacobian", delta_jacobian, Fraction(14, 5))
+    assert_equal("light-front one-particle measure weight", Fraction(1, delta_jacobian), Fraction(5, 14))
+
+    q_plus = Fraction(11, 6)
+    q_minus = Fraction(13, 8)
+    q_perp = [Fraction(-1, 3), Fraction(5, 7)]
+    dot_pq = -p_plus * q_minus - p_minus * q_plus + sum(p_i * q_i for p_i, q_i in zip(p_perp, q_perp))
+    dot_qp = -q_plus * p_minus - q_minus * p_plus + sum(q_i * p_i for p_i, q_i in zip(q_perp, p_perp))
+    assert_equal("light-front bilinear symmetry", dot_pq, dot_qp)
+
+    sector_p_plus = Fraction(5, 3)
+    sector_p_perp_sq = Fraction(7, 4)
+    p_minus_eigenvalues = [Fraction(3, 5), Fraction(11, 10), Fraction(17, 8)]
+    mass_eigenvalues = [2 * sector_p_plus * eigenvalue - sector_p_perp_sq for eigenvalue in p_minus_eigenvalues]
+    expected = [Fraction(1, 4), Fraction(23, 12), Fraction(16, 3)]
+    assert_equal("fixed-sector invariant-mass spectrum", mass_eigenvalues, expected)
+
+
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_tffsa_connected_spin_block()
@@ -351,6 +385,7 @@ def main() -> None:
     check_feshbach_determinant_identity()
     check_krylov_residual_and_moments()
     check_variational_energy_certificates()
+    check_light_front_kinematic_identities()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 
 

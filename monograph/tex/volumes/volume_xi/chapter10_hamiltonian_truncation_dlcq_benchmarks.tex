@@ -1140,13 +1140,131 @@ norm, spectral distance bounded by variance, ground-projection leakage from a
 known finite gap, the tangent-gradient formula, and the local-energy
 Monte Carlo identity in a finite basis.
 
+\section{Light-Front Kinematic And Constraint Datum}
+\label{sec:light-front-kinematic-constraint-datum}
+
+Light-front Hamiltonian methods use a null hyperplane as the time slice.  In
+the mostly-plus convention, choose one spatial direction \(x^1\) and set
+\begin{equation}
+  x^\pm=\frac{x^0\pm x^1}{\sqrt2},
+  \qquad
+  p^\pm=\frac{p^0\pm p^1}{\sqrt2}.
+  \label{eq:general-light-front-coordinates}
+\end{equation}
+For \(D\)-dimensional Minkowski space,
+\begin{equation}
+  \dd s^2=-2\,\dd x^+\dd x^-+\dd x_\perp^2,
+  \qquad
+  p\cdot x=-p^-x^+-p^+x^-+p_\perp\cdot x_\perp,
+  \label{eq:general-light-front-metric}
+\end{equation}
+and \(x^+\) is the evolution parameter.  The generator conjugate to \(x^+\)
+is \(P^-\); the longitudinal momentum \(P^+\) and transverse momenta
+\(P_\perp\) label superselection sectors for the finite light-front
+Hamiltonians used below.  These identities are kinematic; they do not define
+an interacting QFT until the constraint and zero-mode sectors have also been
+specified.
+
+\begin{definition}[Light-front Hamiltonian regulator datum]
+\label{def:light-front-hamiltonian-regulator-datum}
+A light-front Hamiltonian regulator datum is a Hamiltonian truncation
+regulator datum
+\(\mathfrak H_{\rm trunc}\) together with the following additional
+structure.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item A null-coordinate chart \eqref{eq:general-light-front-coordinates},
+  the sign convention \eqref{eq:general-light-front-metric}, and a declared
+  evolution parameter \(x^+\).
+\item A positive-longitudinal nonzero-mode sector, with one-particle labels
+  carrying \(p^+>0\) and whatever transverse, spin, flavor, color, and
+  statistics labels are kept by the regulator.
+\item A zero-mode and constraint sector
+  \[
+    \mathcal Z_\Lambda,\qquad
+    \mathcal C_{\Lambda,\alpha}=0,\qquad
+    \mathcal G_{\Lambda,\rm res},
+  \]
+  recording the \(p^+=0\) modes, finite global Gauss-law constraints,
+  residual gauge transformations, and any additional compact or topological
+  degrees of freedom.  Eliminating, quantizing, or imposing these variables
+  are different regulator choices and must be part of the datum.
+\item A finite physical Hilbert space
+  \[
+    \Hilb^{\rm phys}_\Lambda
+    \subset
+    \Hilb^{p^+>0}_\Lambda\otimes\Hilb_{\mathcal Z,\Lambda}
+  \]
+  obtained after the stated constraint prescription, together with commuting
+  finite operators \(P^+_\Lambda\) and \(P_{\perp,\Lambda}\) on the physical
+  sector.
+\item A finite self-adjoint light-front Hamiltonian \(P^-_\Lambda\) on
+  \(\Hilb^{\rm phys}_\Lambda\), commuting with the retained translation
+  generators on the finite physical sector.  In a simultaneous
+  \(P^+=p^+>0\), \(P_\perp=p_\perp\) sector, the finite invariant-mass
+  operator is
+  \begin{equation}
+    M_\Lambda^2
+    =
+    2p^+P^-_\Lambda-p_\perp^2.
+    \label{eq:light-front-mass-operator-fixed-sector}
+  \end{equation}
+  Outside a fixed momentum sector the same formula is read as a joint
+  functional calculus expression on the common spectral representation of the
+  commuting momenta and \(P^-_\Lambda\).
+\item A continuum diagnostic specifying how \(p^+\)-cutoffs, harmonic
+  resolution, transverse cutoffs, counterterms, principal-value
+  prescriptions, and zero-mode constraints are taken to their limiting
+  values.
+\end{enumerate}
+\end{definition}
+
+\paragraph{One-particle measure.}
+The free massive representation fixes the basic measure behind the
+positive-\(p^+\) Fock construction.  For a test function \(F\) on momentum
+space and \(m>0\),
+\begin{equation}
+  \int_{\mathbb R^D}\dd^Dp\,
+  \theta(p^0)\delta(p^2+m^2)F(p)
+  =
+  \int_{p^+>0}
+  \frac{\dd p^+\,\dd^{D-2}p_\perp}{2p^+}\,
+  F\!\left(p^+,\,\frac{m^2+p_\perp^2}{2p^+},\,p_\perp\right).
+  \label{eq:light-front-one-particle-measure}
+\end{equation}
+Indeed,
+\[
+  p^2+m^2=-2p^+p^-+p_\perp^2+m^2,
+\]
+so the \(p^-\)-integration localizes at
+\begin{equation}
+  p^-=\frac{m^2+p_\perp^2}{2p^+}
+  \label{eq:light-front-mass-shell-relation}
+\end{equation}
+with Jacobian \(|\partial(p^2+m^2)/\partial p^-|=2p^+\).  The
+positive-energy condition selects \(p^+>0\) on the massive shell.  The
+massless boundary \(p^+=0\), and the constrained zero modes of gauge
+theories, are not included in this one-particle measure; they are entries of
+\(\mathcal Z_\Lambda\) and \(\mathcal C_{\Lambda,\alpha}\) in
+Definition~\ref{def:light-front-hamiltonian-regulator-datum}.
+
+\paragraph{Spectral interpretation.}
+At fixed \(p^+\) and \(p_\perp\), \(M_\Lambda^2\) in
+\eqref{eq:light-front-mass-operator-fixed-sector} and \(P^-_\Lambda\) have
+the same finite eigenvectors, and their eigenvalues are related by
+\[
+  M^2=2p^+P^- -p_\perp^2.
+\]
+This is the finite-sector reason light-front calculations often diagonalize
+\(P^-\) while reporting invariant masses.  A gauge-theory light-front
+calculation is therefore specified only after the nonzero-mode Hamiltonian,
+zero-mode/constraint prescription, and residual gauge data have all been
+declared in the same regulator scheme.
+
 \section{DLCQ Datum}
 
-Light-front coordinates are
-\[
-  x^\pm=\frac1{\sqrt2}(x^0\pm x^1).
-\]
-DLCQ compactifies
+DLCQ is the compact positive-longitudinal-momentum specialization of
+Definition~\ref{def:light-front-hamiltonian-regulator-datum}.  It
+compactifies
 \[
   x^-\sim x^-+2\pi R
 \]
@@ -1687,15 +1805,15 @@ finite problems rather than a single regulated QFT observable.
 
 \section{Light-Front Hamiltonian}
 
-The invariant mass operator is
-\[
-  M^2=2P^+P^- -P_\perp^2.
-\]
-At fixed \(P^+\) and \(P_\perp\), diagonalizing \(P^-\) is equivalent to
-diagonalizing \(M^2\).  Gauge theories require solving constraint equations
-for nondynamical fields and preserving residual gauge constraints.  A
-light-front truncation without the constraint algebra and zero-mode sector is
-not a definition of the gauge theory.
+The light-front Hamiltonian convention used in this chapter is the regulator
+datum of Definition~\ref{def:light-front-hamiltonian-regulator-datum}.  The
+finite numerical sections above use its DLCQ specialization; the analytic
+large-\(N\) QCD construction in
+Chapter~\ref{ch:large-n-two-dimensional-qcd-light-front} and the
+Chern--Simons--matter light-cone construction in
+Chapter~\ref{ch:susy-three-dimensional-chern-simons-matter} use the same
+coordinate convention, but with model-specific constraint equations instead
+of a universal finite-matrix recipe.
 
 \section{Benchmark Protocol}
 

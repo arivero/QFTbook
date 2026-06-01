@@ -323,7 +323,8 @@ Current checks:
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the large-\(N\) two-dimensional
   QCD DLCQ quadratic-form identity, connected Ising TFFSA spin-block
-  normalization, residual-to-spectrum certification, spectral-projector
+  normalization, light-front metric and mass-shell bookkeeping, the
+  one-particle measure Jacobian, residual-to-spectrum certification, spectral-projector
   leakage control, the finite Feshbach determinant identity behind
   truncation counterterms, and Krylov/Lanczos Ritz-residual plus finite
   spectral-moment identities.  It also verifies finite variational ansatz
