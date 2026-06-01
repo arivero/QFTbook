@@ -621,6 +621,81 @@ closure; the local-QFT burden remains the DHR construction of the symmetric
 finite-statistics sector category and the field-algebra realization of this
 categorical duality.
 
+\paragraph{Compact Peter--Weyl coordinate algebra.}
+\label{par:compact-peter-weyl-coordinate-algebra}
+The compact version of the preceding finite calculation is the
+representative-function Hopf \(*\)-algebra.  Let \(G\) be a compact group and
+let \(W\) range over finite-dimensional continuous unitary representations.
+For \(v\in W\) and \(\ell\in W^*\), write
+\[
+  f_{\ell,v}^W(g)=\ell(D_W(g)v).
+\]
+The algebra
+\[
+  \operatorname{Pol}(G)
+  =
+  \operatorname{span}\{f_{\ell,v}^W\}
+  \subset C(G)
+\]
+is closed under multiplication because
+\begin{equation}
+  f_{\ell_1,v_1}^{W_1}(g)\,f_{\ell_2,v_2}^{W_2}(g)
+  =
+  f_{\ell_1\otimes\ell_2,\,v_1\otimes v_2}^{W_1\otimes W_2}(g),
+  \label{eq:peter-weyl-product-tensor}
+\end{equation}
+and it is closed under \(*\) because complex conjugation is the matrix
+coefficient of the conjugate representation.  The Hopf operations are the
+group-law operations written on functions; in this paragraph write
+\(\Delta_{\rm H}\) for the coproduct, to avoid confusing it with the modular
+operator \(\Delta\) used elsewhere in the chapter:
+\begin{equation}
+\begin{aligned}
+  (\Delta_{\rm H} f)(g,h)&=f(gh),
+&
+  \epsilon(f)&=f(e),
+&
+  (Sf)(g)&=f(g^{-1}).
+\end{aligned}
+  \label{eq:peter-weyl-hopf-operations}
+\end{equation}
+Associativity of group multiplication gives coassociativity of
+\(\Delta_{\rm H}\); the identity element gives the counit identities;
+inversion gives the antipode identities
+\[
+  m(S\otimes\operatorname{id})\Delta_{\rm H} f
+  =
+  m(\operatorname{id}\otimes S)\Delta_{\rm H} f
+  =
+  \epsilon(f)\mathbf1 .
+\]
+Peter--Weyl says that \(\operatorname{Pol}(G)\) is uniformly dense in \(C(G)\),
+and Schur orthogonality decomposes it as the algebraic direct sum of matrix
+coefficient spaces
+\[
+  \operatorname{Pol}(G)
+  \simeq
+  \bigoplus_{\widehat G} W^*\otimes W .
+\]
+Haar integration is the unique bi-invariant positive normalized functional
+\[
+  h_G(f)=\int_G f(g)\,\dd g ,
+\]
+and it kills every nontrivial irreducible matrix-coefficient block while
+keeping the trivial block.
+
+This compact Peter--Weyl algebra is the coordinate side of the compact group
+appearing in Doplicher--Roberts reconstruction.  The tensor category supplies
+the representations \(W\), tensor products supply multiplication in
+\eqref{eq:peter-weyl-product-tensor}, and tensor natural automorphisms of the
+fiber functor are evaluated by the same matrices \(D_W(g)\).  The
+representative functions separate points of \(G\), so the compact group is
+recoverable from how all charged multiplets transform; equivalently, after
+the \(C^*\)-completion \(C(G)\) is supplied, the character space recovers
+\(G\) with its compact topology.  None of this proves that a given observable
+net has the required DHR category; it identifies the compact-group algebra
+that appears after those local-QFT hypotheses have already been established.
+
 \paragraph{Compact abelian completion: the \(U(1)\) charge lattice.}
 The finite pointed example also has a compact limit that contains no
 finite-group artifact.  Let \({\rm Rep}_{\rm fd}(U(1))\) denote the category

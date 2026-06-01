@@ -21,6 +21,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `L_n`, `\mathbb C[z,z^{-1}]`, `E_{U(1)}`: compact \(U(1)\)
   character, Laurent representative-function algebra, and Haar expectation
   in the compact abelian Tannakian diagnostic.
+- `f_{\ell,v}^W`, `\operatorname{Pol}(G)`, `\Delta_{\rm H}`,
+  `\epsilon`, `S`, `h_G`: compact Peter--Weyl matrix coefficient,
+  representative-function Hopf algebra, Hopf coproduct, counit, antipode, and
+  Haar functional in the compact-group coordinate-algebra layer.
 - `u`, `\rho`, `\mathcal F_{\rm alg}`: charged unitary, order-\(N\)
   localized automorphism, and crossed-product field core for the pointed
   invertible-sector example.
@@ -62,6 +66,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(u_n=\lambda^n\), the representative-function algebra is
   \(\mathbb C[z,z^{-1}]\subset C(U(1))\), and Haar expectation keeps exactly
   charge zero.
+- Adds the compact Peter--Weyl coordinate algebra layer: finite-dimensional
+  unitary representation matrix coefficients span \(\operatorname{Pol}(G)\),
+  tensor products give multiplication, group multiplication gives the Hopf
+  coproduct, and Haar integration projects to the trivial block.  This is the
+  compact coordinate algebra produced after the DHR hypotheses and fiber
+  functor have been constructed; it is not presented as a proof of those
+  local-QFT hypotheses.
 - Adds a constructive kink-sector diagnostic: if a sector with far-left and
   far-right order-parameter tail limits were localized in a bounded DHR
   region relative to a single vacuum phase, DHR equivalence on the spacelike
@@ -130,7 +141,11 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   Haar projection onto the trivial isotypic part.  It also verifies the
   \(S_3\) regular charged-coordinate core: right translation of matrix
   coefficients, Haar expectation onto constants, and the exterior-square
-  sign representation.
+  sign representation.  The same finite \(S_3\) coefficient system checks
+  the Peter--Weyl Hopf coordinate algebra: matrix coefficients span
+  \(\operatorname{Fun}(S_3)\), the coproduct/counit/antipode identities hold
+  pointwise, Haar is left and right invariant, and multiplication is
+  compatible with the group-law coproduct.
 - `calculation-checks/tomita_standard_form_checks.py` verifies the finite
   matrix-algebra standard-form formulae: \(S=J\Delta^{1/2}\), modular
   eigenvalues on matrix units, \(J L_A J=R_{A^*}\), modular automorphism by
@@ -287,3 +302,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\mathbb Z/N\mathbb Z\) and \(S_3\) diagnostics.  This makes the compact
   analytic completion visible in the simplest infinite compact group while
   keeping the DHR field-algebra reconstruction as the QFT theorem boundary.
+- 2026-06-01 compact Peter--Weyl coordinate-algebra pass: added the compact
+  representative-function Hopf \(*\)-algebra \(\operatorname{Pol}(G)\) after
+  the finite Tannakian converse, with product, coproduct, counit, antipode,
+  Haar functional, Peter--Weyl density, and the reconstruction of \(G\) from
+  the \(C^*\)-completion kept distinct from the DHR local-QFT theorem
+  boundary.

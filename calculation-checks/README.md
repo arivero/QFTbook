@@ -77,7 +77,11 @@ Current checks:
   columns, Haar expectation kills the standard and sign multiplets while
   preserving constants, \(\wedge^2 V\) gives the sign representation, and
   every left-equivariant automorphism of \(\operatorname{Fun}(S_3)\) is a
-  right translation, giving the finite Tannakian converse.
+  right translation, giving the finite Tannakian converse.  The same \(S_3\)
+  coefficient functions also check the finite Peter--Weyl Hopf coordinate
+  algebra: coefficient functions span all functions on the group, the
+  coproduct/counit/antipode identities hold pointwise, Haar is bi-invariant,
+  and pointwise multiplication is compatible with the group-law coproduct.
 - `free_weyl_net_checks.py`: exact rational checks for the Volume IV massive
   scalar Weyl-net benchmark, including associativity of the finite Weyl
   cocycle, the sign in \(W(u)W(v)=\exp[-i\sigma(u,v)]W(v)W(u)\), the Weyl

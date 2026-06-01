@@ -10,7 +10,9 @@ the finite crossed-product field core for an invertible pointed sector.
 The last block adds a nonabelian diagnostic for Rep(S3): the standard
 two-dimensional representation is faithful, the character ring has the
 expected tensor products, and Haar averaging kills the nontrivial irreducible
-matrix coefficients.
+matrix coefficients.  It also checks the finite-group version of the
+Peter--Weyl Hopf coordinate algebra used as the compact-group model in the
+text.
 """
 
 from fractions import Fraction
@@ -25,6 +27,39 @@ def assert_equal(name: str, actual, expected) -> None:
 def assert_matrix_equal(name: str, actual, expected) -> None:
     if actual != expected:
         raise AssertionError(f"{name}: expected {expected!r}, got {actual!r}")
+
+
+def matrix_rank(entries: list[list[Fraction]]) -> int:
+    """Rank over the rational numbers by row reduction."""
+
+    matrix = [row[:] for row in entries]
+    if not matrix:
+        return 0
+    rows = len(matrix)
+    cols = len(matrix[0])
+    rank = 0
+    for col in range(cols):
+        pivot = None
+        for row in range(rank, rows):
+            if matrix[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            continue
+        matrix[rank], matrix[pivot] = matrix[pivot], matrix[rank]
+        pivot_value = matrix[rank][col]
+        matrix[rank] = [value / pivot_value for value in matrix[rank]]
+        for row in range(rows):
+            if row != rank and matrix[row][col] != 0:
+                factor = matrix[row][col]
+                matrix[row] = [
+                    matrix[row][entry_col] - factor * matrix[rank][entry_col]
+                    for entry_col in range(cols)
+                ]
+        rank += 1
+        if rank == rows:
+            break
+    return rank
 
 
 def check_tensor_automorphisms(n: int) -> None:
@@ -357,6 +392,76 @@ def check_s3_left_equivariant_function_automorphisms() -> None:
                     assert_equal(f"S3 finite Tannaka matrix action h={h} g={g} a={a} b={b}", lhs, rhs)
 
 
+def check_s3_peter_weyl_hopf_coordinate_algebra() -> None:
+    group = list(permutations(range(3)))
+    identity = (0, 1, 2)
+    matrices = {g: standard_matrix_s3(g) for g in group}
+
+    coefficient_functions: list[tuple[str, tuple[Fraction, ...]]] = []
+    coefficient_functions.append(("trivial", tuple(Fraction(1) for _ in group)))
+    coefficient_functions.append(("sign", tuple(Fraction(permutation_sign(g)) for g in group)))
+    for a in range(2):
+        for b in range(2):
+            coefficient_functions.append((f"standard_{a}{b}", tuple(matrices[g][a][b] for g in group)))
+
+    evaluation_matrix = [[values[row] for _, values in coefficient_functions] for row in range(len(group))]
+    assert_equal("S3 Peter-Weyl coefficient span dimension", matrix_rank(evaluation_matrix), len(group))
+
+    def value(values: tuple[Fraction, ...], g: tuple[int, int, int]) -> Fraction:
+        return values[group.index(g)]
+
+    for name, values in coefficient_functions:
+        # Coproduct coassociativity: f((gh)k)=f(g(hk)).
+        for g in group:
+            for h in group:
+                for k in group:
+                    left = value(values, compose_perm(compose_perm(g, h), k))
+                    right = value(values, compose_perm(g, compose_perm(h, k)))
+                    assert_equal(f"S3 Hopf coproduct coassociativity {name}", left, right)
+
+        # Counit identities from the group identity element.
+        for g in group:
+            assert_equal(
+                f"S3 Hopf left counit {name} g={g}",
+                value(values, compose_perm(identity, g)),
+                value(values, g),
+            )
+            assert_equal(
+                f"S3 Hopf right counit {name} g={g}",
+                value(values, compose_perm(g, identity)),
+                value(values, g),
+            )
+
+        # Antipode identities m(S tensor id) Delta f = epsilon(f) 1 and the
+        # right-handed version, evaluated pointwise on the finite group.
+        epsilon = value(values, identity)
+        for g in group:
+            left_antipode = value(values, compose_perm(inverse_perm(g), g))
+            right_antipode = value(values, compose_perm(g, inverse_perm(g)))
+            assert_equal(f"S3 Hopf left antipode {name} g={g}", left_antipode, epsilon)
+            assert_equal(f"S3 Hopf right antipode {name} g={g}", right_antipode, epsilon)
+
+        # Haar integration is invariant under left and right translation.
+        haar = sum(values, Fraction(0)) / len(group)
+        for a in group:
+            left_translated = sum(value(values, compose_perm(a, g)) for g in group) / len(group)
+            right_translated = sum(value(values, compose_perm(g, a)) for g in group) / len(group)
+            assert_equal(f"S3 Haar left invariance {name} a={a}", left_translated, haar)
+            assert_equal(f"S3 Haar right invariance {name} a={a}", right_translated, haar)
+
+    # The coproduct is an algebra homomorphism:
+    # Delta(fg)(a,b)=Delta(f)(a,b) Delta(g)(a,b).
+    for name_f, values_f in coefficient_functions:
+        for name_g, values_g in coefficient_functions:
+            product_values = tuple(x * y for x, y in zip(values_f, values_g))
+            for a in group:
+                for b in group:
+                    ab = compose_perm(a, b)
+                    lhs = value(product_values, ab)
+                    rhs = value(values_f, ab) * value(values_g, ab)
+                    assert_equal(f"S3 coproduct algebra map {name_f} {name_g}", lhs, rhs)
+
+
 def main() -> None:
     for n in range(2, 13):
         check_tensor_automorphisms(n)
@@ -366,6 +471,7 @@ def main() -> None:
     check_s3_nonabelian_reconstruction_diagnostic()
     check_s3_regular_field_core()
     check_s3_left_equivariant_function_automorphisms()
+    check_s3_peter_weyl_hopf_coordinate_algebra()
     print("All finite DHR/DR reconstruction diagnostics passed.")
 
 
