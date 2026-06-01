@@ -124,6 +124,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   actual bridge to the Doplicher--Longo split criterion, and explains why the
   positive collar, locality, and spectral condition are needed beyond the
   formal nuclear decomposition.
+- Defines split states as positive-collar objects: a split inclusion and a
+  spatial type-I interpolant let normal states on
+  \(\mathcal R(\mathcal O_1)\) and \(\mathcal R(\mathcal O_2)'\) be combined
+  into a normal product state on the generated von Neumann algebra, but the
+  collar and interpolant are part of the datum and do not produce a sharp
+  tensor factorization of \(\Hilb\) at zero separation.
 - Verifies the right-wedge light-ray modular-inclusion sign in the chapter's
   Bisognano--Wichmann convention: for \(W_R(a)=W_R+a e_+\),
   \(\sigma_t^{W_R}\mathcal R(W_R(a))
@@ -182,9 +188,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   \(\beta^{D-1}\log Z_B\) scaling bound.
 - `calculation-checks/split_nuclearity_normality_checks.py` verifies the
   finite split-product and nuclearity-normality algebra: tensor density
-  matrices give normal product states, positivity holds on \(C^*C\), and a
-  finite-rank nuclear map gives the separated bilinear expansion that models
-  the infinite split proof.
+  matrices give normal product states, positivity holds on \(C^*C\), split
+  product states on a specified local subalgebra are independent of the chosen
+  normal extension off that subalgebra, and a finite-rank nuclear map gives
+  the separated bilinear expansion that models the infinite split proof.
 - `calculation-checks/unruh_boost_geometry_checks.py` verifies the
   complex-boost and wedge-geometry signs used here and in Volume XII,
   including the \(i\pi\) right-to-left wedge map and the lightlike

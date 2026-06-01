@@ -131,8 +131,10 @@ Current checks:
   finite-cutoff samples of the \(\beta^{D-1}\log Z_B\) scaling behavior.
 - `split_nuclearity_normality_checks.py`: finite matrix-algebra checks for the
   Volume IV nuclearity-to-split mechanism, including normal product-state
-  extension through a tensor density matrix, positivity on \(C^*C\), and the
-  separated bilinear expansion produced by a finite-rank nuclear map.
+  extension through a tensor density matrix, positivity on \(C^*C\),
+  independence of split product states from the chosen normal extensions off
+  the stated local subalgebras, and the separated bilinear expansion produced
+  by a finite-rank nuclear map.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including the finite Chevalley--Eilenberg sign identity underlying
   Wess--Zumino descent consistency, functorial composition of anomaly-line

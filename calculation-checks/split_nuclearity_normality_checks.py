@@ -3,8 +3,9 @@
 
 These checks accompany the Volume IV discussion of the nuclearity-to-split
 mechanism.  They verify, in finite matrix algebras, the product-state
-normality algebra and the separated finite-rank expansion that models the
-normal functional produced by a nuclear map.
+normality algebra, independence of split product states from the chosen normal
+extensions off the stated subalgebras, and the separated finite-rank expansion
+that models the normal functional produced by a nuclear map.
 """
 
 from fractions import Fraction
@@ -127,6 +128,42 @@ def check_product_state_extension() -> None:
     assert_positive("normal product state positivity on C^* C", value)
 
 
+def check_split_state_extension_independence() -> None:
+    """Extensions off a subalgebra do not change the split product on it."""
+
+    # The first local algebra is the diagonal subalgebra of M_2.  These two
+    # density matrices define the same normal state on that subalgebra but
+    # differ on off-diagonal elements of B(C^2).
+    rho_diag = [[Fraction(1, 4), Fraction(0)], [Fraction(0), Fraction(3, 4)]]
+    rho_offdiag = [[Fraction(1, 4), Fraction(1, 8)], [Fraction(1, 8), Fraction(3, 4)]]
+    local_a = diag([Fraction(5), Fraction(7)])
+    off_subalgebra_probe = [[Fraction(0), Fraction(1)], [Fraction(1), Fraction(0)]]
+
+    assert_equal(
+        "normal extensions agree on the diagonal local algebra",
+        matrix_state(rho_diag, local_a),
+        matrix_state(rho_offdiag, local_a),
+    )
+    if matrix_state(rho_diag, off_subalgebra_probe) == matrix_state(rho_offdiag, off_subalgebra_probe):
+        raise AssertionError("extensions should differ away from the chosen subalgebra")
+
+    rho_exterior = diag([Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)])
+    exterior_b = [
+        [Fraction(3), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(2), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(4)],
+    ]
+    product_diag = matrix_state(kron(rho_diag, rho_exterior), kron(local_a, exterior_b))
+    product_offdiag = matrix_state(kron(rho_offdiag, rho_exterior), kron(local_a, exterior_b))
+    expected = matrix_state(rho_diag, local_a) * matrix_state(rho_exterior, exterior_b)
+    assert_equal(
+        "split product on subalgebra is independent of the normal extension",
+        product_offdiag,
+        product_diag,
+    )
+    assert_equal("split product equals product of restricted normal states", product_diag, expected)
+
+
 def theta(matrix: Matrix) -> Vector:
     damping = [Fraction(1, 2), Fraction(1, 3)]
     omega = [Fraction(1), Fraction(2)]
@@ -175,6 +212,7 @@ def check_finite_rank_nuclear_expansion() -> None:
 
 def main() -> None:
     check_product_state_extension()
+    check_split_state_extension_independence()
     check_finite_rank_nuclear_expansion()
     print("All split/nuclearity normality finite checks passed.")
 
