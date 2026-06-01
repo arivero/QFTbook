@@ -52,6 +52,9 @@ python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 echo "[qft-scripts] sine_gordon_zero_mode_truncation --smoke"
 python3 qft_scripts/sine_gordon_zero_mode_truncation.py --smoke
 
+echo "[qft-scripts] sine_gordon_tcsa_vertex --smoke"
+python3 qft_scripts/sine_gordon_tcsa_vertex.py --smoke
+
 echo "[qft-scripts] phi4_hamiltonian_truncation --smoke"
 python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
 

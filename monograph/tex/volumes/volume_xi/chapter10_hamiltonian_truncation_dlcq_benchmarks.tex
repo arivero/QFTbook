@@ -409,6 +409,166 @@ verifies the \(\Delta n=\pm1\) selection rule, the zero-coupling spectrum,
 finite Hermiticity, and the second-order shift directly from the finite
 matrix elements.
 
+\section{Sine-Gordon TCSA Vertex Assembly}
+\label{sec:sine-gordon-compact-boson-tcsa-vertex-assembly}
+
+The zero-mode benchmark checks only the compact momentum shift.  A genuine
+TCSA matrix for the sine-Gordon perturbation also needs the oscillator
+descendants of the compact boson.  This section records the finite algebraic
+object that must be assembled before any discussion of spectra, counterterms,
+or extrapolation can begin.
+
+Fix a compact free-boson radius coordinate \(R>0\).  The finite regulator
+uses integer momentum and winding labels
+\[
+  n\in\{-N_{\rm mom},\ldots,N_{\rm mom}\},
+  \qquad
+  w\in\{-N_{\rm wind},\ldots,N_{\rm wind}\},
+\]
+left and right oscillator occupation numbers
+\[
+  {\bf m}=(m_1,\ldots,m_M),\qquad
+  \bar{\bf m}=(\bar m_1,\ldots,\bar m_M),
+  \qquad m_r,\bar m_r\in\mathbb Z_{\geq0},
+\]
+and the total oscillator-level cutoff
+\[
+  |{\bf m}|_{\rm osc}+|\bar{\bf m}|_{\rm osc}
+  =
+  \sum_{r=1}^{M}r(m_r+\bar m_r)
+  \leq L_{\rm osc}.
+\]
+The finite basis vector is denoted
+\(\ket{n,w;{\bf m},\bar{\bf m}}\).  In the convention used by the companion
+script, its dimensionless free cylinder energy and spin are
+\begin{align}
+  E_0(n,w;{\bf m},\bar{\bf m})
+  &=
+  \frac12\left(\frac nR\right)^2
+  +
+  \frac12(wR)^2
+  +
+  |{\bf m}|_{\rm osc}
+  +
+  |\bar{\bf m}|_{\rm osc},
+  \label{eq:sine-gordon-tcsa-free-energy-coordinate}
+  \\
+  S(n,w;{\bf m},\bar{\bf m})
+  &=
+  nw+|{\bf m}|_{\rm osc}-|\bar{\bf m}|_{\rm osc}.
+  \label{eq:sine-gordon-tcsa-spin-coordinate}
+\end{align}
+The additive Casimir energy is irrelevant for the finite vertex-normalization
+check and has been omitted.  If the calculation is performed in the spatial
+momentum-zero sector, one keeps \(S=0\); equivalently, the spatial integral
+of a spin-zero perturbing operator kills matrix elements whose bra and ket
+spins differ.
+
+Let \(b_r,\bar b_r\) be normalized oscillator annihilation operators,
+\([b_r,b_s^\dagger]=[\bar b_r,\bar b_s^\dagger]=\delta_{rs}\).  For a real
+finite vertex charge coordinate \(\alpha\), define the normal-ordered
+oscillator factor
+\begin{equation}
+  \mathcal E_r(\alpha)
+  =
+  \exp\!\left(\frac{\alpha}{\sqrt r}b_r^\dagger\right)
+  \exp\!\left(-\frac{\alpha}{\sqrt r}b_r\right),
+  \qquad
+  \bar{\mathcal E}_r(\alpha)
+  =
+  \exp\!\left(\frac{\alpha}{\sqrt r}\bar b_r^\dagger\right)
+  \exp\!\left(-\frac{\alpha}{\sqrt r}\bar b_r\right).
+  \label{eq:sine-gordon-tcsa-normal-ordered-factor}
+\end{equation}
+The finite matrix element of \(\mathcal E_r(\alpha)\) between normalized
+number states is the finite sum
+\begin{equation}
+\begin{split}
+  \bra{a}\mathcal E_r(\alpha)\ket{b}
+  =
+  \sum_{\ell=0}^{b}
+  {\bf 1}_{a-b+\ell\geq0}\,
+  \frac{(-s)^\ell}{\ell!}
+  \sqrt{\frac{b!}{(b-\ell)!}}\,
+  \frac{s^{a-b+\ell}}{(a-b+\ell)!}
+  \sqrt{\frac{a!}{(b-\ell)!}},
+  \qquad
+  s=\frac{\alpha}{\sqrt r}.
+\end{split}
+  \label{eq:sine-gordon-tcsa-one-oscillator-matrix-element}
+\end{equation}
+The formula is an exact finite matrix element of the normal-ordered
+exponential.  The sum is finite because the annihilation exponential can
+remove at most \(b\) quanta, and the subsequent creation exponential must
+create exactly \(a-b+\ell\) quanta.
+
+The finite local vertex shifting the compact momentum by
+\(\varepsilon=\pm1\) has the matrix element
+\begin{equation}
+\begin{split}
+  &\bra{n',w';{\bf a},\bar{\bf a}}\,
+  V_\varepsilon(0)\,
+  \ket{n,w;{\bf b},\bar{\bf b}}
+  \\
+  &\quad =
+  \delta_{n',n+\varepsilon}\,
+  \delta_{w',w}\,
+  \prod_{r=1}^{M}
+  \bra{a_r}\mathcal E_r(\varepsilon\alpha)\ket{b_r}\,
+  \prod_{r=1}^{M}
+  \bra{\bar a_r}\bar{\mathcal E}_r(\varepsilon\alpha)\ket{\bar b_r}.
+\end{split}
+  \label{eq:sine-gordon-tcsa-local-vertex-matrix}
+\end{equation}
+The spatially integrated sine-Gordon perturbation in this finite convention
+is
+\begin{equation}
+  V_{\rm SG}^{\rm fin}
+  =
+  \frac12\,
+  \Pi_{\Delta S=0}
+  \left(V_{+}(0)+V_{-}(0)\right),
+  \label{eq:sine-gordon-tcsa-integrated-vertex}
+\end{equation}
+where \(\Pi_{\Delta S=0}\) means that the matrix element is set to zero
+unless the spin coordinate \eqref{eq:sine-gordon-tcsa-spin-coordinate} is the
+same on the bra and ket.  The finite TCSA matrix assembled by the script is
+\begin{equation}
+  H_{\rm SG}^{\rm fin}
+  =
+  E_0+\lambda V_{\rm SG}^{\rm fin}.
+  \label{eq:sine-gordon-tcsa-finite-hamiltonian}
+\end{equation}
+
+\begin{remark}[What this finite construction certifies]
+\label{rem:sine-gordon-tcsa-vertex-assembly-scope}
+Equations
+\eqref{eq:sine-gordon-tcsa-free-energy-coordinate}--\eqref{eq:sine-gordon-tcsa-finite-hamiltonian}
+certify the finite matrix-assembly problem for the compact-boson vertex
+operator.  For example, between oscillator vacua one recovers
+\(\bra{n+1,w;0,0}V_{\rm SG}^{\rm fin}\ket{n,w;0,0}=1/2\).  Between a
+vacuum ket and a bra with one left and one right oscillator in the first
+mode, the integrated matrix element is \(\alpha^2/2\), while a bra with only
+one left oscillator has zero integrated matrix element because the spin
+changes.  The winding label is preserved.  These are finite algebraic
+checks.  A continuum sine-Gordon spectrum also requires the physical
+normalization connecting \(\alpha\) to the usual coupling \(\beta\), the
+choice of radius and topological sectors, relevant counterterms generated by
+the cutoff, and a controlled \(L_{\rm osc},N_{\rm mom},M\to\infty\)
+extrapolation.
+\end{remark}
+
+The companion script
+\[
+  \texttt{qft\_scripts/sine\_gordon\_tcsa\_vertex.py}
+\]
+constructs the basis above, assembles
+\eqref{eq:sine-gordon-tcsa-integrated-vertex}, checks Hermiticity, verifies
+spin and winding selection, and diagonalizes the resulting finite matrix for
+a declared cutoff.  The calculation-check harness verifies the displayed
+oscillator-vacuum, one-oscillator, and two-oscillator matrix elements
+directly from \eqref{eq:sine-gordon-tcsa-one-oscillator-matrix-element}.
+
 \section{\texorpdfstring{Nonintegrable Scalar \(\phi^4\) Truncation}{Nonintegrable Scalar phi4 Truncation}}
 \label{sec:finite-phi4-hamiltonian-truncation-benchmark}
 

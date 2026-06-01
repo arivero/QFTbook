@@ -136,6 +136,12 @@ per task.
   Fourier-basis selection rule of \(\cos\theta\), finite Hermiticity, and the
   second-order ground-state shift in the oscillator-vacuum sector.  It is not
   the full sine-Gordon finite-volume spectrum.
+- `sine_gordon_tcsa_vertex.py`: finite compact-boson oscillator vertex
+  assembly for a sine-Gordon TCSA calculation.  It constructs momentum,
+  optional winding, and oscillator-descendant basis states; assembles the
+  normal-ordered vertex matrix; applies the spatial-integral spin-selection
+  rule; and checks Hermiticity and winding conservation.  It is a finite
+  matrix-assembly benchmark, not a cutoff-extrapolated sine-Gordon spectrum.
 - `phi4_hamiltonian_truncation.py`: finite normal-ordered \(1+1\)
   dimensional scalar \(\phi^4\) Hamiltonian truncation in a free massive Fock
   basis.  It constructs the projected matrix for

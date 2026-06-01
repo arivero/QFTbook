@@ -26,6 +26,10 @@ numerics.
 - `r`, `p_r`, `H_r`, `H_N`: Neveu-Schwarz Majorana mode label, finite-circle
   momentum, two-dimensional Bogoliubov block, and finite direct-sum
   Hamiltonian for the Ising energy-deformation benchmark.
+- `n`, `w`, `R`, `M`, `L_osc`, `m_r`, `bar m_r`, `alpha`,
+  `V_SG^fin`: compact-boson momentum, winding, radius, oscillator-mode
+  cutoff, total oscillator-level cutoff, left/right oscillator occupations,
+  finite vertex charge, and assembled finite sine-Gordon TCSA vertex matrix.
 - `N`, `P_max`, `P_tot`, `n_r`, `k_r`, `omega_r`, `phi_N`, `V_N`:
   Fourier-mode, particle-number, total-momentum, occupation-number,
   momentum, frequency, finite free-field, and normal-ordered quartic
@@ -97,6 +101,11 @@ numerics.
   counterterm dependence.
 - Proves the finite-mode Majorana Bogoliubov spectrum used as a
   Hamiltonian-truncation smoke benchmark.
+- Constructs the finite compact-boson oscillator vertex matrix for a
+  sine-Gordon TCSA calculation, including compact momentum, winding,
+  oscillator descendants, the normal-ordered one-oscillator matrix element,
+  spatial-integral spin projection, and the separation from any continuum
+  sine-Gordon spectrum claim.
 - Constructs a nonintegrable normal-ordered \(1+1\)-dimensional scalar
   \(\phi^4\) finite Hamiltonian truncation in a free massive Fock basis,
   with explicit Fourier-mode, particle-number, free-energy, and
@@ -224,6 +233,11 @@ plots.
   perturbation, checks finite Hermiticity and reflection symmetry, and reports
   the second-order ground-state shift.  It is a vertex-selection benchmark,
   not the full sine-Gordon finite-volume TCSA spectrum.
+- `qft_scripts/sine_gordon_tcsa_vertex.py --smoke`: assembles the finite
+  compact-boson oscillator vertex matrix for a sine-Gordon TCSA calculation,
+  checks finite Hermiticity, spin projection of the spatial integral, and
+  winding conservation, and reports the lowest finite eigenvalues without
+  asserting a continuum sine-Gordon spectrum.
 - `qft_scripts/phi4_hamiltonian_truncation.py --smoke`: builds a finite
   normal-ordered scalar \(\phi^4\) Hamiltonian truncation in a declared
   total-momentum, particle-number, free-energy, and Fourier-mode cutoff, then
@@ -260,7 +274,8 @@ plots.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, the sine-Gordon
-  zero-mode vertex selection rule and second-order shift, the scalar
+  zero-mode vertex selection rule and second-order shift, the compact-boson
+  sine-Gordon oscillator vertex assembly, the scalar
   \(\phi^4\) normal-ordered truncation basis and zero-mode matrix element,
   the scalar \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix
   elements, connected Ising TFFSA block normalization, finite Ising TFFSA
@@ -312,3 +327,8 @@ plots.
   sine-Gordon vertex selection rule, finite Hermiticity, reflection symmetry,
   and the second-order ground-state shift, while explicitly leaving the full
   oscillator/winding/counterterm TCSA construction outside the benchmark.
+- 2026-06-01 issue #494 sine-Gordon oscillator pass: added a finite
+  compact-boson oscillator vertex-assembly section and public script checking
+  normal-ordered vertex coefficients, spatial-integral spin projection,
+  winding conservation, and finite Hermiticity without promoting the finite
+  matrix to a continuum sine-Gordon spectrum.

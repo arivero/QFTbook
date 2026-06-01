@@ -16,6 +16,7 @@ sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
 import sine_gordon_zero_mode_truncation as sine_gordon  # noqa: E402
+import sine_gordon_tcsa_vertex as sine_gordon_tcsa  # noqa: E402
 import phi4_dlcq  # noqa: E402
 import phi4_hamiltonian_truncation as phi4_truncation  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
@@ -96,6 +97,83 @@ def check_sine_gordon_zero_mode_selection_rules() -> None:
         second_order,
         sine_gordon.second_order_ground_shift(float(cfg.kappa), float(cfg.coupling)),
     )
+
+
+def check_sine_gordon_tcsa_vertex_assembly() -> None:
+    cfg = sine_gordon_tcsa.RunConfig(
+        momentum_max=1,
+        winding_max=0,
+        mode_max=1,
+        level_cutoff=2,
+        radius=1.0,
+        alpha=0.4,
+        coupling=0.2,
+        spin_zero_only=False,
+    )
+    basis = sine_gordon_tcsa.generate_basis(cfg)
+    lookup = {state: idx for idx, state in enumerate(basis)}
+    vacuum = sine_gordon_tcsa.State(momentum=0, winding=0, left=(0,), right=(0,))
+    shifted_vacuum = sine_gordon_tcsa.State(momentum=1, winding=0, left=(0,), right=(0,))
+    left_oscillator = sine_gordon_tcsa.State(momentum=1, winding=0, left=(1,), right=(0,))
+    left_right_oscillator = sine_gordon_tcsa.State(momentum=1, winding=0, left=(1,), right=(1,))
+
+    local_vertex = sine_gordon_tcsa.cosine_vertex_matrix(cfg, basis, integrated=False)
+    integrated_vertex = sine_gordon_tcsa.cosine_vertex_matrix(cfg, basis, integrated=True)
+
+    assert_close(
+        "sine-Gordon TCSA oscillator-vacuum vertex",
+        integrated_vertex[lookup[shifted_vacuum], lookup[vacuum]],
+        0.5,
+    )
+    assert_close(
+        "sine-Gordon TCSA local one-oscillator vertex",
+        local_vertex[lookup[left_oscillator], lookup[vacuum]],
+        0.5 * cfg.alpha,
+    )
+    assert_close(
+        "sine-Gordon TCSA integrated spin projection",
+        integrated_vertex[lookup[left_oscillator], lookup[vacuum]],
+        0.0,
+    )
+    assert_close(
+        "sine-Gordon TCSA integrated two-oscillator vertex",
+        integrated_vertex[lookup[left_right_oscillator], lookup[vacuum]],
+        0.5 * cfg.alpha * cfg.alpha,
+    )
+
+    winding_cfg = sine_gordon_tcsa.RunConfig(
+        momentum_max=1,
+        winding_max=1,
+        mode_max=0,
+        level_cutoff=0,
+        radius=1.0,
+        alpha=0.4,
+        coupling=0.2,
+        spin_zero_only=False,
+    )
+    winding_basis, free, hamiltonian = sine_gordon_tcsa.hamiltonian_matrix(winding_cfg)
+    vertex = sine_gordon_tcsa.cosine_vertex_matrix(winding_cfg, winding_basis, integrated=True)
+    for i, bra in enumerate(winding_basis):
+        for j, ket in enumerate(winding_basis):
+            if bra.winding != ket.winding:
+                assert_close("sine-Gordon TCSA winding conservation", vertex[i, j], 0.0)
+    assert_leq(
+        "sine-Gordon TCSA finite Hermiticity",
+        float(np.max(np.abs(hamiltonian - hamiltonian.T))),
+        1.0e-12,
+    )
+    zero_cfg = sine_gordon_tcsa.RunConfig(
+        momentum_max=1,
+        winding_max=0,
+        mode_max=1,
+        level_cutoff=2,
+        radius=1.0,
+        alpha=0.4,
+        coupling=0.0,
+        spin_zero_only=True,
+    )
+    _, free_zero, hamiltonian_zero = sine_gordon_tcsa.hamiltonian_matrix(zero_cfg)
+    assert_matrix_close("sine-Gordon TCSA zero-coupling Hamiltonian", hamiltonian_zero, free_zero)
 
 
 def check_phi4_hamiltonian_truncation_matrix() -> None:
@@ -496,6 +574,7 @@ def check_light_front_kinematic_identities() -> None:
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_sine_gordon_zero_mode_selection_rules()
+    check_sine_gordon_tcsa_vertex_assembly()
     check_phi4_hamiltonian_truncation_matrix()
     check_phi4_dlcq_matrix()
     check_tffsa_connected_spin_block()
