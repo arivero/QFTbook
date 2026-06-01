@@ -188,6 +188,11 @@ The chapter must define and derive:
   zero opening angle;
 - the eventwise EEC zeroth and first moment sum rules in the center-of-mass
   frame, including the exact coincident-detector contact weight;
+- the distributional endpoint-matching ledger for the full normalized EEC:
+  an open-interval matched distribution \(\mathcal R\), explicit endpoint
+  atoms \(K_+\delta(1-\zeta)\) and \(K_-\delta(1+\zeta)\), and the two exact
+  detector moment equations fixing or testing the endpoint coordinates in a
+  declared subtraction scheme;
 - the back-to-back EEC factorization datum in impact-parameter space, the
   convention \(b_{\rm F}=2e^{-\gamma_E}\), and the leading fixed-coupling
   Sudakov factor
@@ -421,6 +426,14 @@ The chapter must define and derive:
      a left null vector of the mixing kernels in a detector-normalized scheme,
      so RG evolution preserves the EEC zeroth moment while the declared
      contact convention fixes how weight is displayed at \(\rho=0\).
+19e. Endpoint matching for the normalized EEC is a distributional gluing
+     datum, not an additional physical observable.  After the bulk,
+     small-angle, and back-to-back formulae are overlap-subtracted on
+     \((-1,1)\), their moments \(I_0,I_1\) and the endpoint atoms
+     \(K_+,K_-\) obey \(I_0+K_++K_-=1\) and \(I_1+K_+-K_-=0\).  If the
+     coincident-detector contact coordinate \(K_+\) is fixed independently,
+     these equations become a scheme-consistency test on the endpoint
+     calculation.
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -600,6 +613,12 @@ The chapter must define and derive:
   and the product-measure origin of diagonal contact terms; expanded
   `calculation-checks/energy_correlator_sum_rule_checks.py` to verify the
   finite-event detector-product algebra exactly.
+- 2026-06-01 issue #519 endpoint-gluing pass: added the distributional
+  endpoint matching ledger for the normalized EEC, solving the two exact
+  detector moment equations for the contact and back-to-back endpoint atoms
+  when they are left as matching coordinates, and extended
+  `calculation-checks/energy_correlator_sum_rule_checks.py` to verify the
+  finite rational endpoint-coordinate algebra.
 - 2026-05-29 continuing anti-wrapper audit: demoted the eventwise EEC
   sum-rule proposition to detector-observable prose.  The identities remain
   exact and nonperturbative, but their derivation is energy-momentum

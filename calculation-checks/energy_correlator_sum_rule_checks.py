@@ -93,6 +93,12 @@ def diagonal_pairing(
     return sum(z * z * f * g for (z, _), f, g in zip(event, left_values, right_values))
 
 
+def endpoint_delta_solution(open_zeroth: Fraction, open_first: Fraction) -> tuple[Fraction, Fraction]:
+    contact_at_plus = (Fraction(1) - open_zeroth - open_first) / 2
+    back_to_back_atom = (Fraction(1) - open_zeroth + open_first) / 2
+    return contact_at_plus, back_to_back_atom
+
+
 def sup_norm(values: list[Fraction]) -> Fraction:
     return max(abs(value) for value in values)
 
@@ -169,9 +175,43 @@ def check_three_body_orthogonal_rational_event() -> None:
     )
 
 
+def check_endpoint_matching_delta_ledger() -> None:
+    # A truncated open-interval matched distribution has finite moments I0,I1.
+    # If both endpoint delta coordinates are retained, the two exact EEC moment
+    # sum rules solve for their coefficients.
+    open_zeroth = Fraction(7, 10)
+    open_first = Fraction(-1, 5)
+    contact_at_plus, back_to_back_atom = endpoint_delta_solution(open_zeroth, open_first)
+    assert_equal("matched endpoint contact coordinate", contact_at_plus, Fraction(1, 4))
+    assert_equal("matched endpoint back-to-back coordinate", back_to_back_atom, Fraction(1, 20))
+    assert_equal(
+        "matched zeroth moment",
+        open_zeroth + contact_at_plus + back_to_back_atom,
+        Fraction(1),
+    )
+    assert_equal(
+        "matched first moment",
+        open_first + contact_at_plus - back_to_back_atom,
+        Fraction(0),
+    )
+
+    # If the coincident-detector contact coordinate is fixed independently,
+    # the same equations become a consistency check for the remaining endpoint
+    # atom and the open-interval approximation.
+    fixed_contact = Fraction(1, 4)
+    inferred_back_to_back = Fraction(1) - open_zeroth - fixed_contact
+    assert_equal("fixed-contact inferred endpoint atom", inferred_back_to_back, Fraction(1, 20))
+    assert_equal(
+        "fixed-contact first-moment consistency",
+        open_first + fixed_contact - inferred_back_to_back,
+        Fraction(0),
+    )
+
+
 def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
+    check_endpoint_matching_delta_ledger()
     print("All finite-event energy-correlator detector-algebra checks passed.")
 
 
