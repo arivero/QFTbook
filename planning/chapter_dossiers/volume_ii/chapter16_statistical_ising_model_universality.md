@@ -279,6 +279,14 @@ The chapter must define and derive:
 - 2026-05-25 terminology pass: local universality hypotheses now refer to
   ultraviolet-regulated microscopic actions and their local coordinates,
   avoiding separate bare-action terminology.
+- 2026-06-01 #505 universality-datum pass: inserted an explicit
+  scaling-limit universality datum before the finite-cutoff chart.  The datum
+  consists of a class of regulators, tuned microscopic parameters, normalized
+  microscopic observables and source maps, source-local counterterms, a
+  directed observation topology, and a common limiting source functional.  The
+  phrase "same universality class" is therefore tied to equality of this
+  limiting observable datum modulo the declared normalization freedom, not to
+  an undeclared basin-of-attraction slogan.
 - 2026-05-24 issue #237 pass: added a reflection-positivity section defining
   the finite-lattice OS quadratic form, proving reflection positivity for
   ferromagnetic nearest-neighbor Ising and scalar lattice measures by explicit

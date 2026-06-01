@@ -1393,11 +1393,12 @@ forgotten in the scaling limit.
       {Ising CFT\\fixed point};
   \end{tikzpicture}
   }
-  \caption{The \(\mathbb Z_2\)-even theory-space slice has a basin whose
-  critical trajectories approach the same Ising fixed point.  Solid and dashed
-  arrows distinguish continuum scalar and lattice trajectories; dotted arrows
-  indicate irrelevant differences.  Relevant thermal deformations move the
-  theory away from criticality and produce massive scaling limits.}
+  \caption{A local \(\mathbb Z_2\)-even theory-space chart for an Ising
+  universality datum.  Solid and dashed arrows distinguish continuum scalar
+  and lattice representatives after critical tuning; dotted arrows indicate
+  irrelevant differences whose effects must be controlled in a declared
+  observable topology.  Relevant thermal deformations move the theory away
+  from criticality and produce massive scaling limits.}
   \label{fig:volume-ii-ising-universality-rg}
 \end{figure}
 
@@ -1406,6 +1407,70 @@ microscopic lattice ensembles to continuum Euclidean QFT.  The construction is
 by correlators: after tuning the relevant coordinates and rescaling fields, the
 large-distance spin correlators define correlators of local fields at, or near,
 the Ising fixed point.
+
+\begin{definition}[Scaling-limit universality datum]
+\label{def:scaling-limit-universality-datum}
+For the purposes of this chapter, a scaling-limit universality datum is the
+following collection of objects.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item A class \(\mathfrak U\) of microscopic regulators \(X\), each with a
+finite or Banach parameter space \(P_X\), a cutoff \(a^{-1}\), a
+reflection-positive Euclidean state or finite-volume measure, and a selected
+family of microscopic local observables \(A^X_I\).
+\item For each relevant endpoint \(u_R\) at a fixed reference scale \(\mu_R\),
+families of tuned microscopic parameters
+\[
+  p_X(a,u_R)\in P_X ,
+  \qquad X\in\mathfrak U ,
+\]
+defined for all sufficiently small \(a\).
+\item Local normalization and source-renormalization maps
+\[
+  A^X_I\longmapsto Z^X_{I,a}A^X_I,
+  \qquad
+  \eta\longmapsto\mathcal Z^X_a(\eta),
+\]
+together with source-local counterterms \(P^X_a(\eta)\), where source-local
+means a polynomial functional supported on collision diagonals of the inserted
+sources.
+\item A directed family of observation domains \(\mathfrak W\).  An element
+\(W\in\mathfrak W\) may be a bounded set of test sources, a finite list of
+separated smeared correlators, or a finite observation window in the
+observable-germ sense of
+Chapter~\ref{ch:volume-xi-rigorous-renormalization-group}.  Each
+\(W\) carries seminorms in which convergence is to be stated.
+\item A limiting source functional \(W_\ast(\eta;u_R)\), modulo source-local
+polynomials, such that for every \(X\in\mathfrak U\) and every
+\(W\in\mathfrak W\),
+\begin{equation}
+  W^X_{a,p_X(a,u_R)}[\mathcal Z^X_a(\eta)]
+  -
+  W^X_{a,p_X(a,u_R)}[0]
+  -
+  P^X_a(\eta)
+  \longrightarrow
+  W_\ast(\eta;u_R)
+  \label{eq:scaling-limit-universality-datum-convergence}
+\end{equation}
+in the seminorms attached to \(W\).
+\end{enumerate}
+Two microscopic regulators \(X,Y\in\mathfrak U\) are in the same
+scaling-limit universality class, relative to the selected observables,
+normalization freedom, tuning maps, and observation topology above, when they
+belong to a common datum with the same \(W_\ast\).  The relation is therefore
+an equivalence relation only after these data and convergence statements have
+been specified: equality of \(W_\ast\) is reflexive and symmetric, and
+transitivity is composition through the common limiting source functional
+with the permitted local source redefinitions.
+\end{definition}
+
+The definition is deliberately source-functional.  It records the object that
+can reconstruct separated Schwinger functions and, after positivity and
+regularity hypotheses, local QFT data.  A Wilsonian coordinate basin supplies
+one possible mechanism for proving
+\eqref{eq:scaling-limit-universality-datum-convergence}, but it is not the
+definition of the universality class: the definition is the common limiting
+observable datum with its tuning, normalization, and topology.
 
 \section{Finite-Cutoff Universality in a Local Chart}
 
