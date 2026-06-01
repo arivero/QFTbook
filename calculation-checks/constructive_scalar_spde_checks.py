@@ -1419,6 +1419,28 @@ def check_xy_tested_graph_power_counting_arithmetic():
         )
 
 
+def check_xy_tested_coordinate_logarithmic_slack_arithmetic():
+    # Proposition spde-xy-tested-coordinate-logarithmic-scale-bound converts
+    # the scalar graph estimate E|Z_delta|^2 <= C_eta delta^(-eta) into the
+    # normalized model-coordinate slack.  Taking eta = 2 zeta_XY gives
+    # ||Z_delta||_2 <= C delta^(-zeta_XY), while |XY| = -4 kappa.
+    kappa = Fraction(1, 20)
+    zeta_xy = kappa
+    eta = 2 * zeta_xy
+    l2_loss = eta / 2
+    model_normalization = 4 * kappa
+    normalized_slack = model_normalization - l2_loss
+
+    assert_equal(eta, Fraction(1, 10), "XY scalar graph eta choice")
+    assert_equal(l2_loss, zeta_xy, "XY scalar graph L2 logarithmic loss")
+    assert_equal(model_normalization, Fraction(1, 5), "XY model normalization exponent")
+    assert_equal(normalized_slack, 3 * kappa, "XY scalar tested coordinate slack after log loss")
+    if not 0 < zeta_xy < 4 * kappa:
+        raise AssertionError("XY scalar tested zeta loss outside admissible range")
+    if not normalized_slack > 0:
+        raise AssertionError("XY scalar tested coordinate lost all scale slack")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -1748,6 +1770,7 @@ def main():
     check_gamma_coordinate_heat_input_arithmetic()
     check_nonlinear_pi_coordinate_kernel_input_arithmetic()
     check_xy_tested_graph_power_counting_arithmetic()
+    check_xy_tested_coordinate_logarithmic_slack_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
@@ -1758,7 +1781,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

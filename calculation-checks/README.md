@@ -577,9 +577,11 @@ Current checks:
   contraction arithmetic for the nonlinear negative coordinates \(XY\) and
   \(X^2Y\), including the tested finite-chaos arities \(4,2\) and \(5,3,1\)
   and the symmetrized kernel-norm weights used in the covariance-integral
-  formulas, together with the physical-scale arithmetic for the logarithmic
-  first-chaos \(X^2Y\) bound and the dyadic covariance double-increment
-  scale gains entering that bound, the OS-II reconstruction-growth
+  formulas, together with the marginal \(XY\) graph power-counting and the
+  conversion of its logarithmic scalar tested-coordinate loss into
+  \(4\kappa-\zeta_{XY}\) normalized slack, the physical-scale arithmetic for
+  the logarithmic first-chaos \(X^2Y\) bound, and the dyadic covariance
+  double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, a finite hard-core polymer source-cumulant check showing
   factorization without an incompatibility bridge and a nonzero connected

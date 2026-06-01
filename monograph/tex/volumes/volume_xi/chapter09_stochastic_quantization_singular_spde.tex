@@ -8836,6 +8836,89 @@ every \(\eta>0\),
 This proves \eqref{eq:spde-xy-graph-log-loss-bound}.
 \end{proof}
 
+\begin{proposition}[Scalar tested \(XY\) coordinate bound]
+\label{prop:spde-xy-tested-coordinate-logarithmic-scale-bound}
+Let the hypotheses of
+Proposition~\ref{prop:spde-xy-tested-graph-log-bound} hold uniformly for the
+cutoff heat and covariance blocks on a compact spacetime set.  Let
+\(\varphi\in C_c^r(\R^{1+3})\) be supported in the unit parabolic ball, let
+\(\|\varphi\|_{C^r}\leq1\), and define the \(L^1\)-normalized test density
+\[
+  \varphi_z^\delta(a)
+  =
+  \delta^{-Q}\varphi(\mathsf D_{\delta}^{-1}(a-z)),
+  \qquad Q=5 .
+\]
+For the finite-cutoff field, set
+\begin{equation}
+  Z_{\epsilon,\delta,z}^{XY}(\varphi)
+  =
+  \int\varphi_z^\delta(a)X_\epsilon(a)Y_\epsilon(a)\,\dd a .
+  \label{eq:spde-xy-tested-coordinate-random-variable}
+\end{equation}
+Then, for every \(\eta>0\), there is a constant \(C_\eta\), uniform for
+\(\epsilon\) and for \(z\) in the chosen compact set, such that
+\begin{equation}
+  \mathbb E\bigl|Z_{\epsilon,\delta,z}^{XY}(\varphi)\bigr|^2
+  \leq
+  C_\eta\delta^{-\eta}.
+  \label{eq:spde-xy-tested-coordinate-l2-log-loss}
+\end{equation}
+Consequently, for every even \(p\geq2\) and every
+\[
+  0<\zeta_{XY}<4\kappa ,
+\]
+there is a constant \(C_{p,\zeta_{XY}}\) such that
+\begin{equation}
+  \left\|
+    \delta^{4\kappa}Z_{\epsilon,\delta,z}^{XY}(\varphi)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_{p,\zeta_{XY}}\delta^{4\kappa-\zeta_{XY}} .
+  \label{eq:spde-xy-tested-coordinate-normalized-slack}
+\end{equation}
+
+This is the scalar tested base estimate for the \(XY\) coordinate.  The full
+input required by
+Proposition~\ref{prop:spde-nonlinear-pi-coordinate-input-from-kernels}
+additionally requires the same multiscale estimate after dualizing the
+test-function variable and after taking differences in the parameters
+\((z,\delta)\).
+\end{proposition}
+
+\begin{proof}
+Insert \(\chi=\varphi_z^\delta\) in
+\eqref{eq:spde-xy-kernel-norm-integrals}.  The density
+\(\varphi_z^\delta\) is \(L^1\)-normalized, and its support lies in a
+parabolic ball of radius \(O(\delta)\).  Each of the three scalar covariance
+graphs in \eqref{eq:spde-xy-kernel-norm-integrals} is therefore bounded by
+Proposition~\ref{prop:spde-xy-tested-graph-log-bound}.  The numerical
+coefficients \(1/4\), \(3/4\), and \(9\), and the chaos factors \(4!\) and
+\(2!\), are finite fixed constants.  Thus
+\eqref{eq:spde-nonlinear-coordinate-second-moments-from-kernels} gives
+\eqref{eq:spde-xy-tested-coordinate-l2-log-loss}.
+
+The random variable \(Z_{\epsilon,\delta,z}^{XY}(\varphi)\) is the sum of a
+fourth-chaos and a second-chaos variable by
+\eqref{eq:spde-xy-tested-chaos-expansion}.  Applying
+Lemma~\ref{lem:spde-finite-wiener-chaos-moment-bound} to these two
+homogeneous chaos components gives
+\[
+  \left\|Z_{\epsilon,\delta,z}^{XY}(\varphi)\right\|_{L^p}
+  \leq
+  C_p
+  \left\|Z_{\epsilon,\delta,z}^{XY}(\varphi)\right\|_{L^2}.
+ \]
+Choose \(\eta=2\zeta_{XY}\) in
+\eqref{eq:spde-xy-tested-coordinate-l2-log-loss}.  Multiplication by the
+model normalization
+\[
+  \delta^{-|XY|}=\delta^{4\kappa}
+\]
+then gives
+\eqref{eq:spde-xy-tested-coordinate-normalized-slack}.
+\end{proof}
+
 \begin{proposition}[Nonlinear \(\Pi\)-coordinate input from projective kernel bounds]
 \label{prop:spde-nonlinear-pi-coordinate-input-from-kernels}
 Let \(K\subset\R^{1+3}\) be compact and let

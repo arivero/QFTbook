@@ -215,6 +215,10 @@ data.
   nonlinear negative coordinates.
 - `G_{uv}`, `K_{ab}`: shorthand in the nonlinear kernel-norm proposition for
   \(G_\epsilon(u,v)\) and \(K_\epsilon(a,b)\).
+- `Z_{\epsilon,\delta,z}^{XY}`, `\zeta_{XY}`: scalar tested \(XY\)
+  coordinate at physical scale \(\delta\) and the logarithmic scale-loss
+  parameter used to convert the marginal graph ledger into normalized
+  coordinate slack \(4\kappa-\zeta_{XY}\).
 - `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
@@ -608,6 +612,16 @@ data.
   The first-chaos formula contains the increment covariance
   \(G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}\), making the Taylor-subtraction gain
   visible in scalar-kernel form.
+- Proves the scalar tested \(XY\) coordinate estimate from the marginal
+  four-vertex graph ledger.  The covariance-graph bound gives
+  \(\mathbb E|Z_{\epsilon,\delta,z}^{XY}|^2=O_\eta(\delta^{-\eta})\);
+  finite-chaos moment control then yields the normalized model-coordinate
+  bound
+  \(\|\delta^{4\kappa}Z_{\epsilon,\delta,z}^{XY}\|_{L^p}
+  =O(\delta^{4\kappa-\zeta_{XY}})\) for every
+  \(0<\zeta_{XY}<4\kappa\).  The dossier records this as the scalar tested
+  base estimate, while the full \(E_r'\)-projective and parameter-edge
+  estimates remain separate proof obligations.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -1051,6 +1065,13 @@ data maps.
   of the fourth- and second-chaos covariance graphs; the calculation-check
   companion verifies both that graph arithmetic and the sample nonlinear
   entropy/slack arithmetic.
+- 2026-06-01 issue #608/#582 scalar \(XY\) coordinate pass: added the
+  proposition converting the marginal \(XY\) graph ledger into the scalar
+  tested normalized bound
+  \(\|\delta^{4\kappa}Z_{\epsilon,\delta,z}^{XY}\|_{L^p}
+  \lesssim \delta^{4\kappa-\zeta_{XY}}\).  This closes the scalar base
+  estimate beneath the nonlinear \(\Pi\)-coordinate criterion and leaves the
+  full \(E_r'\)-dualized parameter-edge estimate as the next analytic layer.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck
