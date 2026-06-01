@@ -8,8 +8,8 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-01 \(\mathcal N=(4,4)\) symmetric-product pass the directory
-contains 223 active check scripts: 221 Python checks and 2 Wolfram Language
+As of the 2026-06-01 Wightman cluster projection pass the directory
+contains 224 active check scripts: 222 Python checks and 2 Wolfram Language
 companion checks.  The runner selects all `calculation-checks/*.py` and
 `calculation-checks/*.wl` files unless a filter is supplied.
 

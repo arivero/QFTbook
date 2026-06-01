@@ -92,6 +92,13 @@ Current checks:
   group-commutator phase, symplectic-orthogonality locality, and the finite
   partition phase that turns \(u=\sum_j u_j\) into a product of local Weyl
   generators.
+- `wightman_cluster_spectral_checks.py`: exact finite Hilbert-space checks
+  for the Volume IV Wightman cluster/vacuum-uniqueness theorem, covering the
+  zero-momentum projection algebra, the equivalence between the cluster
+  bilinear identity on a dense polynomial orbit and
+  \(P_0=|\Omega\rangle\langle\Omega|\), the product contribution of the vacuum
+  atom, and removal of the zero atom by \((1-P_0)\).  The analytic
+  Jost/Rajchman decay step remains the theorem content in the chapter.
 - `wightman_net_bridge_checks.py`: exact rational finite-matrix checks for
   the Volume IV Wightman-to-local-net comparison datum, including parity
   exchange of odd-field spectral projections, the fixed-point observable

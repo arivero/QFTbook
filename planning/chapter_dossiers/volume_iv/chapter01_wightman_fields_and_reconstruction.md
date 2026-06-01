@@ -50,6 +50,10 @@ Minkowski setting used in the reconstruction theorem.
 - Proves the cluster/unique-vacuum equivalence from the spectral theorem,
   locality, the Jost edge argument, and the Rajchman property for local matrix
   coefficients.
+- Isolates the finite projection algebra in the cluster theorem: the cluster
+  bilinear identity on the dense polynomial orbit is equivalent, by continuity
+  of \(P_0\), to \(P_0=|\Omega\rangle\langle\Omega|\), while the analytic
+  content remains the Jost/Rajchman decay after the vacuum atom is removed.
 - States and proves Wightman reconstruction by finite test sequences, the
   positive semidefinite Wightman inner product, quotient by null vectors,
   completion, left-insertion fields, covariance, spectrum, adjunction,
@@ -95,8 +99,13 @@ Minkowski setting used in the reconstruction theorem.
 
 ## Calculation Checks
 
-- No numerical calculation script is attached to this chapter.  Verification
-  is by LaTeX build, text audit, theorem-form audit, and proof-ledger review.
+- `calculation-checks/wightman_cluster_spectral_checks.py`: exact finite
+  Hilbert-space check for the cluster/vacuum-uniqueness theorem, covering the
+  zero-momentum projection algebra, the equivalence between the cluster
+  bilinear identity on a dense orbit and the rank-one vacuum projection, the
+  product contribution of the vacuum atom, and removal of the zero atom by
+  \((1-P_0)\).  This check does not certify the analytic Jost/Rajchman
+  theorem used to prove decay of the non-vacuum spectral part.
 
 ## Audit Notes
 
@@ -118,3 +127,9 @@ Minkowski setting used in the reconstruction theorem.
   proving the QFT-specific spectral-support, boundary-value, covariance, and
   locality inputs in place while cross-referencing the analytic
   edge-of-the-wedge theorem used for the final gluing step.
+- 2026-06-01 Wightman cluster projection pass: isolated the finite
+  zero-momentum projection algebra in
+  `thm:wightman-cluster-vacuum-uniqueness` and added
+  `wightman_cluster_spectral_checks.py` so the product-vacuum term and
+  rank-one projection equivalence are reproducible apart from the
+  analytic Jost/Rajchman theorem boundary.

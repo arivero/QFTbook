@@ -580,6 +580,27 @@ on a dense set of vectors \(B\vac\).  Hence \(P_0=|\vac\rangle\langle\vac|\),
 which is (i).
 \end{proof}
 
+The finite algebra in this proof is worth isolating.  Let \(\mathcal E\) be
+the linear span of polynomial vectors \(B\vac\).  The weak cluster identity
+tests the sesquilinear form
+\[
+  (X,Y)\longmapsto \langle X,P_0Y\rangle
+\]
+on the dense subspace \(\mathcal E\).  If the identity
+\[
+  \langle X,P_0Y\rangle
+  =
+  \langle X,\vac\rangle\langle\vac,Y\rangle,
+  \qquad X,Y\in\mathcal E,
+\]
+holds, continuity of \(P_0\) extends it to \(\overline{\mathcal E}=\Hilb\),
+so \(P_0\) is the rank-one projection onto \(\mathbb C\vac\).  Conversely,
+when \(P_0=|\vac\rangle\langle\vac|\), the zero-momentum atom in the spectral
+decomposition is exactly the product term.  Thus the analytic content of the
+cluster theorem is not this projection algebra; it is Lemma
+\ref{lem:wightman-jost-cluster-step}, which proves that no other spectral
+piece survives along a spacelike ray after the vacuum atom is removed.
+
 \section{Reconstruction From Correlation Functions}
 
 The Wightman reconstruction theorem says that the correlation hierarchy is
