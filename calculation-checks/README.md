@@ -35,7 +35,8 @@ Current checks:
   coefficient, six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
   \(2\pi\ii\) conversion to effective-action inflow, universal
   Chern--Weil transgression coefficients through the five-form case,
-  the Abelian descent coefficient, one-generation Standard Model
+  the \(n=2\) consistent-descent homotopy coefficients \(1\) and
+  \(1/2\), the Abelian descent coefficient, one-generation Standard Model
   hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
   cubic-anomaly bookkeeping.
 - `standard_model_anomaly_checks.py`: exact rational checks for the

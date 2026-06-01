@@ -1599,6 +1599,65 @@ For one left-handed representation \(R\), a standard representative is
   \qquad
   \dd I_{5,R}^{(0)}=I_6^R .
 \]
+The numerical coefficients in this representative are fixed by the
+Chern--Weil homotopy, not by convention.  Set
+\[
+  \mathsf A_t=t\mathsf A,\qquad
+  \mathsf F_t=\dd\mathsf A_t+\mathsf A_t^2
+  =t\,\dd\mathsf A+t^2\mathsf A^2 .
+\]
+For the invariant polynomial
+\(P(X)=\kappa\,\operatorname{tr}_R(X^3)\), the Bianchi identity for
+\(\mathsf F_t\) and cyclicity of the trace give
+\[
+  \frac{\dd}{\dd t}P(\mathsf F_t)
+  =
+  3\kappa\,\dd\,\operatorname{tr}_R(\mathsf A\,\mathsf F_t^2).
+\]
+Since \(\mathsf F_0=0\), integration in \(t\) gives
+\[
+  I_{5,R}^{(0)}
+  =
+  3\kappa\int_0^1
+  \operatorname{tr}_R\!\left[
+    \mathsf A
+    \bigl(t\,\dd\mathsf A+t^2\mathsf A^2\bigr)^2
+  \right]\dd t .
+\]
+Expanding the square and using cyclicity with the form degrees
+\(\deg\mathsf A=1\), \(\deg\dd\mathsf A=2\), one obtains
+\[
+\begin{aligned}
+  I_{5,R}^{(0)}
+  =
+  \kappa\,\operatorname{tr}_R
+  \biggl[
+    &3\!\int_0^1 t^2\dd t\,
+      \mathsf A(\dd\mathsf A)^2
+\\
+    &+3\!\int_0^1 t^3\dd t\,
+      \mathsf A\bigl((\dd\mathsf A)\mathsf A^2
+      +\mathsf A^2\dd\mathsf A\bigr)
+    +3\!\int_0^1 t^4\dd t\,\mathsf A^5
+  \biggr]
+\\
+  =
+  \kappa\,\operatorname{tr}_R
+  \left(
+    \mathsf A(\dd\mathsf A)^2
+    +\frac32\mathsf A^3\dd\mathsf A
+    +\frac35\mathsf A^5
+  \right).
+\end{aligned}
+\]
+Thus the factors \(1,\frac32,\frac35\) are the explicit transgression
+integrals \(3\int_0^1t^2\dd t\),
+\(3\int_0^1 2t^3\dd t\), and
+\(3\int_0^1t^4\dd t\).  They use only the fixed trace convention and the
+matrix-valued differential-form product.  A different path of connections or
+a different Chern--Simons representative changes \(I_5^{(0)}\) by an exact
+form and hence changes \(I_4^{(1)}\) only by a relative coboundary of the
+kind already displayed in \eqref{eq:relative-anomaly-coboundary}.
 Because \(sI_6=0\) and \(I_6=\dd I_5^{(0)}\),
 \[
   \dd(sI_5^{(0)})=-s(\dd I_5^{(0)})=-sI_6=0 .
@@ -1643,6 +1702,15 @@ In the same left-handed convention,
   \right],
 \]
 up to adding \(\dd\)-exact terms and BRST-exact local counterterm variations.
+The relative coefficient \(\frac12\) in this four-form is the corresponding
+homotopy coefficient \(6\int_0^1(1-t)t^2\dd t=\frac12\); the coefficient of
+\(\mathsf A\dd\mathsf A\) is \(6\int_0^1(1-t)t\dd t=1\).  This is the same
+descent calculation as above, now evaluated on the vertical gauge direction
+\(\delta_\lambda\mathsf A=\dd\lambda+[\mathsf A,\lambda]\).  The displayed
+\(\mathsf c\,\dd(\cdots)\) representative is chosen because its integrated
+form pairs directly with the effective-action variation
+\eqref{eq:consistent-descent-anomaly-representative}; the equivalent
+\(\dd\mathsf c\)-representatives differ from it by exact local forms.
 The consistent anomaly is
 \begin{equation}
   \delta_\lambda W[\mathsf A]

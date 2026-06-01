@@ -15,6 +15,7 @@ inflow sections:
 * the conversion 2 pi i * F^3/[6(2 pi)^3] -> i F^3/(24 pi^2);
 * the Chern-Weil transgression coefficients in the universal
   Chern-Simons representative;
+* the n=2 consistent-descent homotopy coefficients 1 and 1/2;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -124,6 +125,19 @@ def check_chern_weil_transgression_coefficients() -> None:
     assert_equal("Abelian descent coefficient", abelian_variation, descent_boundary)
 
 
+def check_consistent_descent_coefficients() -> None:
+    # For P(F)=tr(F^3), the gauge-direction descent coefficient can be written
+    # as 6 int_0^1 (1-t) tr(dlambda A F_t), with
+    # F_t=t dA+t^2 A^2.  Thus the coefficients of A dA and A^3 are
+    # 6 int_0^1 (1-t)t dt = 1 and
+    # 6 int_0^1 (1-t)t^2 dt = 1/2.
+    a_da = Fraction(6) * (Fraction(1, 2) - Fraction(1, 3))
+    a_cubed = Fraction(6) * (Fraction(1, 3) - Fraction(1, 4))
+
+    assert_equal("consistent descent A dA coefficient", a_da, Fraction(1))
+    assert_equal("consistent descent A^3 coefficient", a_cubed, Fraction(1, 2))
+
+
 def check_standard_model_hypercharge_sums() -> None:
     cubic = sum(su3 * su2 * y**3 for _, su3, su2, y in SM_FIELDS)
     linear = sum(su3 * su2 * y for _, su3, su2, y in SM_FIELDS)
@@ -154,6 +168,7 @@ def main() -> None:
     check_local_clifford_heat_coefficient()
     check_effective_action_conversion()
     check_chern_weil_transgression_coefficients()
+    check_consistent_descent_coefficients()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()
     print("All anomaly-polynomial and inflow coefficient checks passed.")

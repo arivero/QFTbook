@@ -266,6 +266,12 @@
   \(\dd I_5^{(0)}=I_6\), \(sI_5^{(0)}=\dd I_4^{(1)}\), and
   \(sI_4^{(1)}=\dd I_3^{(2)}\), with the even gauge parameter obtained by
   replacing the odd ghost \(\mathsf c\) by \(\lambda\).
+- The five-form Chern--Simons representative is now derived from the
+  Chern--Weil path \(\mathsf A_t=t\mathsf A\), including the explicit
+  integrals that give the coefficients \(1,\frac32,\frac35\).  The same
+  homotopy gives the \(n=2\) descent coefficients \(1,\frac12\) in
+  \(I_4^{(1)}\), so these numbers are no longer hidden in the word
+  "standard."
 - Bardeen counterterms shift four-form representatives but not the symmetric
   cohomology coordinate of the anomaly polynomial: in an Abelianized chart
   \(d'_{abc}=d_{abc}+\frac12(h_{ab,c}+h_{ac,b})\) with
@@ -468,3 +474,9 @@
   perturbative BRST bicomplex, descent of
   \(\operatorname{tr}_R(\mathsf F^3)\), local counterterm coboundaries, and
   the relative cohomology classification of the cubic gauge-anomaly class.
+- 2026-06-01 issue #696 Chern--Weil descent-coefficient pass: inserted the
+  homotopy calculation for the Chern--Simons five-form coefficients
+  \(1,\frac32,\frac35\) and the \(n=2\) consistent-descent coefficients
+  \(1,\frac12\); extended
+  `calculation-checks/anomaly_polynomial_descent_checks.py` to verify the
+  latter rational integrals exactly.
