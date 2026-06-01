@@ -85,6 +85,62 @@ def check_event_shape_convolution() -> None:
     assert_equal("endpoint first moment", moment(direct), expected_first_moment)
 
 
+def finite_zero_bin_sum(
+    collinear: Mapping[str, Fraction],
+    soft: Mapping[str, Fraction],
+    overlap: Mapping[str, Fraction],
+    test: Mapping[str, Fraction],
+) -> Fraction:
+    return (
+        sum(weight * test[cell] for cell, weight in collinear.items())
+        + sum(weight * test[cell] for cell, weight in soft.items())
+        - sum(weight * test[cell] for cell, weight in overlap.items())
+    )
+
+
+def check_zero_bin_inclusion_exclusion() -> None:
+    collinear = {"c": Fraction(5), "o1": Fraction(7), "o2": Fraction(11)}
+    soft = {"s": Fraction(13), "o1": Fraction(7), "o2": Fraction(11)}
+    overlap = {"o1": Fraction(7), "o2": Fraction(11)}
+    test = {
+        "c": Fraction(2, 3),
+        "s": Fraction(3, 5),
+        "o1": Fraction(5, 7),
+        "o2": Fraction(7, 11),
+    }
+    matched = finite_zero_bin_sum(collinear, soft, overlap, test)
+    unique_union = (
+        collinear["c"] * test["c"]
+        + soft["s"] * test["s"]
+        + overlap["o1"] * test["o1"]
+        + overlap["o2"] * test["o2"]
+    )
+    naive_double_count = sum(weight * test[cell] for cell, weight in collinear.items()) + sum(
+        weight * test[cell] for cell, weight in soft.items()
+    )
+    assert_equal("finite zero-bin inclusion-exclusion", matched, unique_union)
+    assert_equal(
+        "naive overlap double count",
+        naive_double_count - matched,
+        sum(weight * test[cell] for cell, weight in overlap.items()),
+    )
+
+
+def check_zero_bin_scheme_reshuffling() -> None:
+    collinear = {"c": Fraction(2), "o": Fraction(5)}
+    soft = {"s": Fraction(7), "o": Fraction(5)}
+    overlap = {"o": Fraction(5)}
+    test = {"c": Fraction(3), "s": Fraction(4), "o": Fraction(11)}
+    base = finite_zero_bin_sum(collinear, soft, overlap, test)
+
+    delta = Fraction(13)
+    collinear_shifted = {"c": collinear["c"], "o": collinear["o"]}
+    soft_shifted = {"s": soft["s"], "o": soft["o"] + delta}
+    overlap_shifted = {"o": overlap["o"] + delta}
+    shifted = finite_zero_bin_sum(collinear_shifted, soft_shifted, overlap_shifted, test)
+    assert_equal("paired zero-bin scheme reshuffling", shifted, base)
+
+
 def check_soft_wilson_line_decoupling_identity() -> None:
     s = sp.symbols("s")
     a = sp.Rational(3, 2)
@@ -101,8 +157,10 @@ def check_soft_wilson_line_decoupling_identity() -> None:
 
 def main() -> None:
     check_event_shape_convolution()
+    check_zero_bin_inclusion_exclusion()
+    check_zero_bin_scheme_reshuffling()
     check_soft_wilson_line_decoupling_identity()
-    print("All SCET convolution and soft-Wilson-line decoupling checks passed.")
+    print("All SCET convolution, zero-bin, and soft-Wilson-line checks passed.")
 
 
 if __name__ == "__main__":

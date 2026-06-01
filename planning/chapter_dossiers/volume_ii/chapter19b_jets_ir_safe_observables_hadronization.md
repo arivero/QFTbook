@@ -40,6 +40,10 @@ The chapter establishes:
   blocks, soft Wilson lines, matched currents, renormalized jet/soft matrix
   elements, zero-bin/overlap subtraction, rapidity data, and Glauber-sector
   status;
+- finite inclusion--exclusion bookkeeping for zero-bin/overlap subtraction,
+  making explicit that an overlap region is subtracted once and that
+  regulator-dependent scaleless-zero statements do not remove the need to
+  specify the subtraction datum;
 - a prose derivation of the finite algebraic identity that a soft Wilson-line
   change of variables removes the leading \(n\cdot D_s\) soft connection from
   the collinear kinetic term, with the factorization content kept in the
@@ -119,6 +123,11 @@ The chapter establishes:
     physical colored Hilbert-space sectors.  A factorized formula must specify
     operator definitions, Wilson lines, overlap subtractions, rapidity data
     when present, Glauber status, and a topology for its remainder estimate.
+8aa. Zero-bin subtraction is finite inclusion--exclusion at regulator level:
+     collinear and soft approximants on a common soft-collinear corner are not
+     both counted.  A convention change is harmless only when paired between
+     collinear and soft coordinates; a scaleless integral in a particular
+     regulator is not an invariant absence of overlap.
 8b. The leading soft Wilson-line decoupling is an algebraic identity at finite
     regulator, transferring leading soft interactions from the collinear
     Lagrangian to Wilson lines in external operators and soft matrix elements.
@@ -247,6 +256,10 @@ The chapter establishes:
   section with a two-jet SCET operator datum, finite soft Wilson-line decoupling
   proof, explicit overlap/zero-bin and rapidity-regulator requirements, and
   `calculation-checks/scet_factorization_checks.py`.
+- 2026-06-01 issue #630/#526 zero-bin pass: added finite
+  inclusion--exclusion bookkeeping for SCET overlap subtraction and extended
+  `calculation-checks/scet_factorization_checks.py` with exact zero-bin
+  double-counting and paired scheme-reshuffling checks.
 - 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
   soft-dipole evolution datum for non-global veto measurements, derived the
   second-order coefficient separating the global Sudakov square from the

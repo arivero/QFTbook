@@ -481,6 +481,56 @@ meaning until these choices, including their renormalization scheme, have been
 specified.
 \end{definition}
 
+\paragraph{Overlap subtraction as finite inclusion--exclusion.}
+The zero-bin entry in Definition~\ref{def:scet-two-jet-operator-datum} is a
+mathematical subtraction, not a phrase meaning that an integral may be ignored.
+At finite regulator, let \(\Lambda\) be a finite set of momentum cells and let
+\(\Lambda_n,\Lambda_s\subset\Lambda\) denote the cells represented by the
+leading \(n\)-collinear and soft approximations.  Their common soft-collinear
+corner is
+\[
+  \Lambda_0=\Lambda_n\cap\Lambda_s .
+\]
+Let \(f_\ell\) be the value of the measurement test function on cell
+\(\ell\), and let \(I_n(\ell)\), \(I_s(\ell)\), and \(I_0(\ell)\) be the
+regulated leading collinear, leading soft, and common overlap densities on
+their domains.  The finite overlap-subtracted singular coordinate is
+\begin{equation}
+  I_{\rm scet}[f]
+  =
+  \sum_{\ell\in\Lambda_n} I_n(\ell)f_\ell
+  +
+  \sum_{\ell\in\Lambda_s} I_s(\ell)f_\ell
+  -
+  \sum_{\ell\in\Lambda_0} I_0(\ell)f_\ell .
+  \label{eq:finite-scet-zero-bin-inclusion-exclusion}
+\end{equation}
+If \(I_n=I_s=I_0\) on \(\Lambda_0\), the overlap contribution is counted once,
+not twice.  This is the finite inclusion--exclusion content of the zero-bin
+subtraction.  In dimensional regularization some overlap integrals are
+scaleless and vanish after analytic continuation; that is a feature of that
+regulator and subtraction scheme, not a regulator-independent proof that the
+overlap was absent.
+
+A change of overlap convention is a finite scheme change only when it is
+paired across the collinear and soft coordinates.  If
+\(\delta I_0\) is moved from the collinear subtraction into the soft
+coordinate, the two displayed sums in
+\eqref{eq:finite-scet-zero-bin-inclusion-exclusion} change separately, but
+their sum changes by
+\[
+  -\sum_{\ell\in\Lambda_0}\delta I_0(\ell)f_\ell
+  +
+  \sum_{\ell\in\Lambda_0}\delta I_0(\ell)f_\ell
+  =
+  0 .
+\]
+This is the finite algebraic reason that overlap subtraction data belong in
+the definition of the factorized approximation.  The continuum theorem still
+requires estimates showing that the regulated partition, the overlap
+approximants, and the measurement remainder converge in the topology in which
+the cross section is tested.
+
 \paragraph{Leading soft Wilson-line decoupling identity.}
 At finite regulator and at leading power in the \(n\)-collinear sector, the
 soft connection appearing through \(n\cdot D_s=n\cdot\partial-\ii n\cdot A_s\)

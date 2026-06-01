@@ -1465,8 +1465,9 @@ Current checks:
   minimized value from a discrete axis-label choice.
 - `scet_factorization_checks.py`: finite checks for the SCET factorization
   datum in the jets chapter, including exact endpoint-convolution
-  normalization and first-moment identities and a finite Wilson-line algebra
-  check of leading soft covariant-derivative decoupling.
+  normalization and first-moment identities, finite zero-bin
+  inclusion--exclusion and scheme-reshuffling identities, and a finite
+  Wilson-line algebra check of leading soft covariant-derivative decoupling.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization and
   the first-moment evolution formula for discrete track measures.
