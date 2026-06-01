@@ -378,6 +378,120 @@ the reconstructed charged coordinates.  The observable algebra remains the
 fixed algebra \(\mathcal F^G\), and the physical sector information is already
 present in \(\mathcal C\).
 
+\paragraph{Local charged-field core.}
+The preceding formulae become a local field net only after the localization
+regions of the DHR endomorphisms are used.  Fix a double cone \(\mathcal O\)
+and choose, for each irreducible DHR sector \(\rho\) localizable in
+\(\mathcal O\), a charged multiplet
+\[
+  \mathcal H_\rho^{\rm ch}(\mathcal O)
+  =
+  \operatorname{span}\{\psi_{\rho,1}^{\mathcal O},\ldots,
+  \psi_{\rho,d(\rho)}^{\mathcal O}\}
+\]
+satisfying \eqref{eq:dr-charged-field-intertwining} with \(\rho\) localized
+in \(\mathcal O\).  The algebraic local core is the finite linear span
+\begin{equation}
+  \mathcal F_{\rm alg}(\mathcal O)
+  =
+  \operatorname{span}\{
+    A\psi_{\rho,i}^{\mathcal O}:
+    A\in\mathcal R(\mathcal O),\
+    \rho\in{\rm Irr}(\mathcal C),\
+    1\le i\le d(\rho)
+  \}.
+  \label{eq:dr-local-field-core}
+\end{equation}
+This is a core, not yet a completed local \(C^*\)-algebra.  Its multiplication
+is forced by the intertwining relation.  If \(A,B\in\mathcal R(\mathcal O)\),
+then
+\begin{equation}
+  (A\psi_{\rho,i}^{\mathcal O})(B\psi_{\sigma,j}^{\mathcal O})
+  =
+  A\,\rho(B)\,
+  \psi_{\rho,i}^{\mathcal O}\psi_{\sigma,j}^{\mathcal O}.
+  \label{eq:dr-local-field-core-product}
+\end{equation}
+Haag duality and the containment calculation above are used here in a
+load-bearing way: since \(\rho\) is localized in \(\mathcal O\),
+\(\rho(B)\in\mathcal R(\mathcal O)\).  The product
+\(\psi_{\rho,i}^{\mathcal O}\psi_{\sigma,j}^{\mathcal O}\) transforms in the
+sector \(\rho\circ\sigma\), because
+\[
+  (\rho\circ\sigma)(A)
+  \psi_{\rho,i}^{\mathcal O}\psi_{\sigma,j}^{\mathcal O}
+  =
+  \psi_{\rho,i}^{\mathcal O}\sigma(A)\psi_{\sigma,j}^{\mathcal O}
+  =
+  \psi_{\rho,i}^{\mathcal O}\psi_{\sigma,j}^{\mathcal O}A .
+\]
+After decomposing \(\rho\circ\sigma\) into irreducible sectors, the
+Clebsch--Gordan intertwiners in
+\(\operatorname{Hom}(\tau,\rho\circ\sigma)\) rewrite the right side of
+\eqref{eq:dr-local-field-core-product} as a finite sum of generators of the
+form \eqref{eq:dr-local-field-core}.  Thus fusion in the DHR category is the
+multiplication law of local charged coordinates.
+
+The involution uses the conjugate sector.  Finite statistics supplies
+standard conjugate data
+\[
+  R:\operatorname{id}\to \bar\rho\circ\rho,
+  \qquad
+  \bar R:\operatorname{id}\to \rho\circ\bar\rho ,
+\]
+and the adjoint of a \(\rho\)-charged generator is expanded, through this
+conjugate data and local intertwiners, as a finite linear combination of
+\(\bar\rho\)-charged generators with coefficients in
+\(\mathcal R(\mathcal O)\).  Finite statistics therefore supplies the
+adjoint-closing structure required by the field-algebra theorem, in addition
+to the exchange data.
+
+The reconstructed compact group acts on the local core by
+\[
+  \alpha_g(A)=A,\qquad
+  \alpha_g(\psi_{\rho,i}^{\mathcal O})
+  =
+  \sum_j\psi_{\rho,j}^{\mathcal O}D_\rho(g)_{ji}.
+\]
+The Haar conditional expectation on the local core is
+\begin{equation}
+  E_{\mathcal O}(F)
+  =
+  \int_G\alpha_g(F)\,\dd g.
+  \label{eq:dr-local-haar-expectation}
+\end{equation}
+By Schur orthogonality it kills every nontrivial irreducible charged block and
+keeps the trivial block.  Consequently
+\[
+  E_{\mathcal O}(\mathcal F_{\rm alg}(\mathcal O))
+  =
+  \mathcal R(\mathcal O),
+  \qquad
+  \mathcal F_{\rm alg}(\mathcal O)^G=\mathcal R(\mathcal O)
+\]
+at the algebraic core level.  The Doplicher--Roberts field-algebra theorem is
+the statement that this core can be completed, with compatible choices as
+\(\mathcal O\) varies, to a local charged-field net whose \(G\)-fixed subnet
+is the original observable net.  The nontrivial analytic work is not the
+formal multiplication above; it is the proof that the transported charged
+multiplets, exchange operators, adjoints, \(C^*\)-norm, and locality relations
+can be chosen coherently across all regions.
+
+\paragraph{Charged locality and observable locality.}
+For spacelike separated double cones, the charged field generators need not
+commute as ordinary neutral observables.  Their exchange is controlled by the
+DHR symmetry
+\[
+  \varepsilon_{\rho,\sigma}:\rho\circ\sigma\to\sigma\circ\rho .
+\]
+In dimension \(D\ge3\), under the symmetric finite-statistics hypotheses of
+Theorem~\ref{thm:doplicher-roberts-reconstruction}, this exchange reduces to
+the Bose/Fermi/parastatistical symmetry encoded by the reconstructed compact
+group and its central grading.  The invariant subnet is local because the
+exchange factors cancel in the trivial representation channel.  Thus the
+locality statement for observables is recovered as the invariant part of the
+charged-field exchange mechanism.
+
 \paragraph{Finite pointed check of the compact group output.}
 A useful local model of the categorical part is the following pointed
 symmetric \(C^*\)-tensor category.  Fix an integer \(N\geq2\).  Let the simple

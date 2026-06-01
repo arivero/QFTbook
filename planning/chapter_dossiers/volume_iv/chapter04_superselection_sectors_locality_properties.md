@@ -77,6 +77,15 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   compact coordinate algebra produced after the DHR hypotheses and fiber
   functor have been constructed; it is not presented as a proof of those
   local-QFT hypotheses.
+- Adds the local charged-field-core assembly behind
+  Doplicher--Roberts reconstruction: for a double cone \(\mathcal O\), the
+  algebraic span of \(A\psi_{\rho,i}^{\mathcal O}\) has multiplication
+  \((A\psi_{\rho,i})(B\psi_{\sigma,j})
+  =A\rho(B)\psi_{\rho,i}\psi_{\sigma,j}\), Haag duality keeps
+  \(\rho(B)\) local, fusion decomposes the product into irreducible charged
+  blocks, conjugate sectors control the involution, Haar expectation recovers
+  \(\mathcal R(\mathcal O)\), and charged locality is distinguished from
+  observable locality.
 - Adds a constructive kink-sector diagnostic: if a sector with far-left and
   far-right order-parameter tail limits were localized in a bounded DHR
   region relative to a single vacuum phase, DHR equivalence on the spacelike
@@ -137,8 +146,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   pointed \(\mathbb Z/N\mathbb Z\) diagnostic for Doplicher--Roberts
   reconstruction: tensor automorphisms form \(\mu_N\), the fixed-degree
   projection keeps exactly degree zero, the crossed-product field core is
-  associative with the stated involution and gauge-fixed algebra, the compact
-  \(U(1)\) Laurent charge-lattice diagnostic has the stated multiplication,
+  associative with the stated involution and gauge-fixed algebra, the local
+  charged-field-core convention \(\rho^q(A)u^q=u^qA\) holds, conjugation by
+  \(u^q\) recovers \(\rho^q\), the compact \(U(1)\) Laurent charge-lattice
+  diagnostic has the stated multiplication,
   involution, Haar projection, and tensor-exponent additivity, and the
   finite nonabelian \(S_3\) diagnostic has the correct representation law,
   faithful standard representation, character-ring tensor products, and
@@ -216,6 +227,13 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   element in the finite-group case.  The DHR/DR theorem boundary is now
   narrowed to the compact completion and the local-QFT construction of the
   sector category and field algebra.
+- 2026-06-01 local DR field-core pass: added the local algebraic field-core
+  construction between the DR theorem statement and the finite diagnostics.
+  The new text explains which part is formal algebra forced by the
+  intertwining relation, where Haag duality enters the product, how fusion and
+  conjugates close the core, why Haar expectation recovers the observable
+  local algebra, and why the analytic completion/locality theorem remains the
+  nontrivial field-algebra reconstruction boundary.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost

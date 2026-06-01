@@ -69,8 +69,10 @@ Current checks:
 - `dhr_dr_reconstruction_checks.py`: finite algebra checks for the Volume IV
   Doplicher--Roberts reconstruction discussion, including pointed
   \(\mathbb Z/N\mathbb Z\) tensor automorphisms, root-of-unity fixed-degree
-  projection, crossed-product associativity and involution, the compact
-  \(U(1)\) Laurent-polynomial charge-lattice diagnostic, and the
+  projection, crossed-product associativity and involution, the local
+  charged-field-core convention
+  \(\rho^q(A)u^q=u^qA\) and recovery of \(\rho^q\) by conjugation, the
+  compact \(U(1)\) Laurent-polynomial charge-lattice diagnostic, and the
   nonabelian \(S_3\) diagnostic for faithful standard representation,
   character-ring tensor products, and Haar projection onto the trivial
   isotypic part.  It also checks the finite \(S_3\) regular

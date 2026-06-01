@@ -5,7 +5,9 @@ The check models the categorical part of Volume IV, Chapter 4 for the pointed
 sector category with simple objects labelled by Z/NZ.  Tensor automorphisms of
 the one-dimensional fiber functor are characters, and averaging over the
 reconstructed compact group keeps exactly the neutral degree.  It also checks
-the finite crossed-product field core for an invertible pointed sector.
+the finite crossed-product field core for an invertible pointed sector,
+including the local charged-field intertwining convention
+rho^q(A) u^q = u^q A and the recovery of rho^q by conjugation.
 
 The last block adds a nonabelian diagnostic for Rep(S3): the standard
 two-dimensional representation is faithful, the character ring has the
@@ -148,6 +150,61 @@ def star_basis(n: int, basis: tuple[int, int]) -> tuple[int, int]:
     return ((i - q) % n, (-q) % n)
 
 
+LinearCombination = dict[tuple[int, int], int]
+
+
+def add_term(accumulator: LinearCombination, basis: tuple[int, int] | None, coefficient: int = 1) -> None:
+    if basis is None or coefficient == 0:
+        return
+    accumulator[basis] = accumulator.get(basis, 0) + coefficient
+    if accumulator[basis] == 0:
+        del accumulator[basis]
+
+
+def unitary_charge(n: int, q: int) -> LinearCombination:
+    """The crossed-product generator u^q = sum_i e_i u^q."""
+    return {(i, q % n): 1 for i in range(n)}
+
+
+def idempotent(i: int) -> LinearCombination:
+    return {(i, 0): 1}
+
+
+def multiply_linear(n: int, left: LinearCombination, right: LinearCombination) -> LinearCombination:
+    result: LinearCombination = {}
+    for x, coeff_x in left.items():
+        for y, coeff_y in right.items():
+            product = multiply_basis(n, x, y)
+            add_term(result, product, coeff_x * coeff_y)
+    return result
+
+
+def check_local_charged_core_relations(n: int) -> None:
+    """Check the local DR field-core convention in the pointed model."""
+
+    for q in range(n):
+        u_q = unitary_charge(n, q)
+        u_minus_q = unitary_charge(n, -q)
+        for j in range(n):
+            rho_q_ej = idempotent((j + q) % n)
+            e_j = idempotent(j)
+
+            left_intertwiner = multiply_linear(n, rho_q_ej, u_q)
+            right_intertwiner = multiply_linear(n, u_q, e_j)
+            assert_equal(
+                f"local charged intertwining rho^{q}(e_{j}) u^{q} = u^{q} e_{j} n={n}",
+                left_intertwiner,
+                right_intertwiner,
+            )
+
+            recovered = multiply_linear(n, multiply_linear(n, u_q, e_j), u_minus_q)
+            assert_equal(
+                f"local charged conjugation recovers rho^{q}(e_{j}) n={n}",
+                recovered,
+                rho_q_ej,
+            )
+
+
 def check_crossed_product_core(n: int) -> None:
     basis = [(i, q) for i in range(n) for q in range(n)]
 
@@ -172,6 +229,8 @@ def check_crossed_product_core(n: int) -> None:
     for i, q in basis:
         invariant = all((m * q) % n == 0 for m in range(n))
         assert_equal(f"crossed-product fixed degree n={n} i={i} q={q}", invariant, q == 0)
+
+    check_local_charged_core_relations(n)
 
 
 def compose_perm(p: tuple[int, int, int], q: tuple[int, int, int]) -> tuple[int, int, int]:
