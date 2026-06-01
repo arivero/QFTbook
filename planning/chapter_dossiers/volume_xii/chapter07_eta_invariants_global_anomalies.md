@@ -31,6 +31,11 @@ global anomaly as an explicit mod-two-index example.
   product-collar and boundary-projection conventions, and now explains the
   Fredholm boundary-condition mechanism, the heat-kernel/local-density input,
   and the eta boundary term used by the QFT anomaly argument.
+- Adds the inward half-cylinder mode calculation for the APS spectral
+  projection: with \(u\in(-\infty,0]\),
+  \(f_\lambda(u)=e^{-\lambda u}f_\lambda(0)\) is square-integrable exactly for
+  \(\lambda<0\), zero modes are excluded, and opposite boundary orientation
+  replaces \(B\) by \(-B\).
 - Proves the cylinder variation formula for \(\xi\) modulo integers from the
   APS theorem, including the orientation-reversal bookkeeping
   \(\xi(-B)=-\xi(B)+h(B)\).
@@ -91,7 +96,8 @@ global anomaly as an explicit mod-two-index example.
 - `calculation-checks/eta_global_anomaly_checks.py` checks the APS
   orientation bookkeeping, the exact APS cylinder endpoint-kernel identity,
   the sign convention relating simple-crossing spectral flow to the APS
-  cylinder index, the first \(SU(2)\) trace-delta Dynkin indices, Witten
+  cylinder index, the inward half-cylinder APS mode-selection sign, the first
+  \(SU(2)\) trace-delta Dynkin indices, Witten
   parity criterion, Pfaffian-sign multiplicativity, mapping-torus
   \(\mathbb Z_2\)-character bookkeeping, cubic-weight-sum cancellation, the
   finite skew-block Pfaffian orientation model, cylinder congruence
@@ -170,3 +176,8 @@ global anomaly as an explicit mod-two-index example.
   the mod-two-index theorem is used, and extended
   `eta_global_anomaly_checks.py` with exact \(\mathbb Z_2\)-character
   bookkeeping for the Pfaffian sign.
+- 2026-06-01 APS half-cylinder sign pass: inserted the collar-mode calculation
+  fixing why \(P_{\ge0}\psi|_Y=0\) keeps the negative spectral subspace in the
+  inward-coordinate convention, and extended `eta_global_anomaly_checks.py`
+  with exact sign checks for the inward cylinder, zero-mode exclusion, and
+  opposite boundary orientation.

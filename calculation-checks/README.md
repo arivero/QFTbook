@@ -123,7 +123,8 @@ Current checks:
 - `eta_global_anomaly_checks.py`: exact arithmetic checks for the
   Volume XII eta-invariant and global-anomaly chapter, including APS
   orientation bookkeeping, exact APS cylinder endpoint-kernel arithmetic,
-  the APS sign relating simple-crossing spectral flow to the cylinder index,
+  the inward half-cylinder mode-selection sign behind the APS boundary
+  condition, the APS sign relating simple-crossing spectral flow to the cylinder index,
   the trace-delta \(SU(2)\) index table,
   Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
   multiplicativity, the \(\mathbb Z_2\) mapping-torus character bookkeeping

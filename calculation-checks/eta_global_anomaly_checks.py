@@ -246,6 +246,42 @@ def check_aps_spectral_flow_sign_convention() -> None:
         )
 
 
+def half_cylinder_l2_mode(lambda_value: Fraction) -> bool:
+    """L2 criterion for exp(-lambda u) on the inward collar (-infty, 0]."""
+
+    return lambda_value < 0
+
+
+def aps_keeps_boundary_mode(lambda_value: Fraction) -> bool:
+    """APS boundary condition P_{>=0} psi|_Y=0 keeps only lambda<0 modes."""
+
+    return lambda_value < 0
+
+
+def check_aps_half_cylinder_mode_selection() -> None:
+    eigenvalues = [
+        Fraction(-5, 2),
+        Fraction(-1),
+        Fraction(-1, 7),
+        Fraction(0),
+        Fraction(1, 9),
+        Fraction(3),
+    ]
+    for eigenvalue in eigenvalues:
+        assert_equal(
+            f"inward half-cylinder L2 mode equals APS kept mode lambda={eigenvalue}",
+            half_cylinder_l2_mode(eigenvalue),
+            aps_keeps_boundary_mode(eigenvalue),
+        )
+        assert_equal(
+            f"opposite boundary orientation reverses APS spectral sign lambda={eigenvalue}",
+            aps_keeps_boundary_mode(-eigenvalue),
+            eigenvalue > 0,
+        )
+
+    assert_equal("APS forbids zero mode on the half-cylinder", aps_keeps_boundary_mode(Fraction(0)), False)
+
+
 def spectral_cut_transition(singular_values: list[Fraction], low: Fraction, high: Fraction) -> Fraction:
     """Finite determinant-line transition factor for a spectral-cut window."""
 
@@ -488,6 +524,7 @@ def main() -> None:
     check_aps_cylinder_congruence()
     check_aps_cylinder_exact_bookkeeping()
     check_aps_spectral_flow_sign_convention()
+    check_aps_half_cylinder_mode_selection()
     check_quillen_spectral_cut_transition_cocycle()
     check_dai_freed_gluing_phase_algebra()
     check_contractible_loop_curvature_stokes()

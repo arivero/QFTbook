@@ -111,6 +111,31 @@ where \(P_{\geq0}\) is the orthogonal projection onto the span of eigenvectors
 with eigenvalue \(\geq0\).  Including the zero eigenspace in \(P_{\geq0}\) is
 the convention paired with the reduced invariant \(\xi=(\eta+h)/2\).
 
+\paragraph{Half-cylinder sign check.}
+The sign in \eqref{eq:aps-boundary-condition} is fixed by the product collar,
+not by an arbitrary convention.  Replace the collar by the infinite inward
+cylinder \((-\infty,0]\times Y\) with the same model operator
+\[
+  c(\nu)(\partial_u+B_Y).
+\]
+If \(B_Y\phi_\lambda=\lambda\phi_\lambda\) and
+\(\psi(u,y)=f_\lambda(u)\phi_\lambda(y)\), the equation
+\((\partial_u+B_Y)\psi=0\) becomes
+\[
+  \frac{d f_\lambda}{du}+\lambda f_\lambda=0,
+  \qquad
+  f_\lambda(u)=e^{-\lambda u}f_\lambda(0).
+\]
+Since the completed cylinder runs to \(u=-\infty\), this mode is square
+integrable exactly when \(\lambda<0\).  Thus the boundary values of \(L^2\)
+solutions on the completed model lie in the negative spectral subspace, while
+zero modes are not square-integrable on the infinite cylinder and are
+therefore placed in the forbidden subspace \(P_{\ge0}\).  On an oppositely
+oriented boundary component the tangential operator is \(-B_Y\), so the same
+mode calculation reverses the spectral sign.  This elementary model is not the
+APS Fredholm theorem; it fixes the boundary-orientation convention used in the
+eta and anomaly formulae below.
+
 \begin{quotedtheorem}[Atiyah--Patodi--Singer index formula]
 \label{qthm:aps-index-formula}
 \emph{Source trace.}  This is the APS boundary index theorem in the reduced
