@@ -621,7 +621,10 @@ Current checks:
   concatenated fine plaquette, invariance of the Wilson-loop character under
   coarse gauge transformations, gauge invariance of a fine plaquette
   class-function weight, and invariance of the blocked pushforward weights
-  under the coarse gauge group.
+  under the coarse gauge group.  It also checks the finite arithmetic behind
+  the weighted polymer-tail bound used in the gauge-blocking locality datum
+  and the compression of a reflection-positive finite Gram matrix by a
+  blocking map.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

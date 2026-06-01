@@ -77,6 +77,12 @@ constructive RG developments.
 - `Gamma_f`, `Gamma_c`, `P_e`, `B(A)_e`: finite fine/coarse gauge graphs,
   the chosen fine path assigned to a coarse edge, and the blocked coarse link
   defined by path product of fine links.
+- `K_{k,X}`, `||K_k||_zeta`, `rho_k(F,c)`: gauge-blocked polymer activity,
+  exponential locality norm, and reflection-positivity defect in the
+  gauge-blocking continuum-control datum.
+- `Rec_{O,k}`, `Rec_{O,*}`: finite-scale and limiting reconstruction data
+  for gauge-invariant Wilson-loop, small-loop, or Wilson-line-connected
+  observables.
 - RG object / map theorem / source and observable theorem / target
   identification: the four-layer status ledger used to classify
   nonperturbative fixed-point claims without transferring theorem status
@@ -155,6 +161,16 @@ constructive RG developments.
   fine Wilson loops along concatenated paths.  The construction is explicitly
   finite-regulator; locality of the blocked action and continuum
   reconstruction remain separate polymer/positivity/reconstruction estimates.
+- Defines the gauge-blocking continuum-control datum needed after exact
+  finite path blocking: a gauge-invariant polymer representation of the
+  blocked measure, an exponential locality norm with a cluster-tail estimate,
+  reflection-positivity defect control on the positive-time gauge-invariant
+  observable algebra, and reconstruction estimates for gauge-invariant local
+  and extended observables.
+- Explains the consequences of those estimates without promoting them to a
+  theorem-family claim: gauge invariance, quasi-locality, and reflection
+  positivity pass to limiting reconstructed observables only after the
+  stated estimates have been supplied.
 - Gives a precise monograph definition of universality class as an RG
   attraction statement plus reconstruction data.
 - Defines a Wilsonian universality datum with microscopic regulators, tuned
@@ -201,7 +217,9 @@ remainder contraction.
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
   plaquette, class-function gauge invariance, and invariance of the blocked
-  pushforward weights under the coarse gauge group.
+  pushforward weights under the coarse gauge group.  The script also checks
+  the finite arithmetic behind weighted polymer-tail bounds and compression
+  of a reflection-positive finite Gram matrix by a blocking map.
 
 ## Audit Notes
 
@@ -211,3 +229,9 @@ remainder contraction.
   deliberately does not claim locality of the blocked action or continuum
   reconstruction; those remain the model-specific estimates required by
   issue #505.
+- 2026-06-01 gauge-blocking continuum-control pass: added the missing
+  locality/positivity/reconstruction estimate layer after finite path
+  blocking.  The text now states exactly what must be proved before a
+  gauge-compatible blocking construction can be used as evidence for a
+  continuum local QFT, and the proof-like closure statements were kept as
+  prose consequences rather than inflated into weak propositions.

@@ -1337,6 +1337,159 @@ finite group algebra behind
 including invariance of the blocked pushforward weights under coarse gauge
 transformations.
 
+\section{Gauge-Blocking Locality, Positivity, And Reconstruction Estimates}
+\label{sec:gauge-blocking-locality-positivity-reconstruction}
+
+The path-blocking construction above is an exact gauge-covariance statement.
+It is not yet a Wilsonian RG theorem for a continuum gauge theory.  A
+continuum claim needs three further pieces of analysis: locality of the
+blocked measure in a declared norm, reflection positivity or a stated
+replacement for it, and reconstruction estimates for gauge-invariant
+observables.  This section records the datum required for a theorem-level
+four-dimensional Yang--Mills statement.
+
+Let \(\Gamma_k\) be a sequence of Euclidean lattice complexes with lattice
+spacing \(a_k\to0\).  For a connected set \(X\) of coarse plaquettes, links,
+or cells, let \(\operatorname{diam}_k(X)\) be its diameter in physical units
+and let \(\operatorname{dist}_k(X,Y)\) be the physical distance between two
+cell sets.  Let \(\operatorname{supp}F\) be the smallest connected cell set on
+which a cylinder observable \(F\) depends.  The norm
+\(\|\,\cdot\,\|_\infty\) is the supremum norm on the corresponding compact
+link-configuration space.
+
+\begin{definition}[Gauge-blocking continuum-control datum]
+\label{def:gauge-blocking-continuum-control-datum}
+A continuum-control datum for a gauge-compatible blocking sequence consists
+of the finite path-blocking data of
+Construction~\ref{constr:gauge-equivariant-path-blocking-rg}, together with
+the following estimates.
+\begin{enumerate}
+  \item A gauge-invariant polymer representation of the blocked measure at
+  scale \(k\):
+  \begin{equation}
+    \frac{\dd\mu_k^{\rm blk}}{\dd\nu_k}(A)
+    =
+    Z_k^{-1}
+    \exp\!\left(-\sum_{X\subset\Gamma_k}K_{k,X}(A_X)\right),
+    \label{eq:gauge-blocked-polymer-representation}
+  \end{equation}
+  where \(\nu_k\) is a reflection-positive local reference measure,
+  \(K_{k,X}\) is gauge invariant and depends only on links meeting \(X\),
+  and the sum is over connected polymers \(X\).
+  \item A quasi-locality estimate: for some \(\zeta>0\),
+  \begin{equation}
+    \|K_k\|_{\zeta}
+    =
+    \sup_{e\in E(\Gamma_k)}
+    \sum_{X\ni e}
+      e^{\zeta\operatorname{diam}_k(X)}
+      \|K_{k,X}\|_\infty
+    \leq \varepsilon_k ,
+    \qquad
+    \varepsilon_k\longrightarrow0
+    \label{eq:gauge-blocking-polymer-locality-norm}
+  \end{equation}
+  after subtracting the finitely many local coordinates retained in the
+  Wilsonian chart.  In addition, for every bounded gauge-invariant cylinder
+  observable \(F\), the cluster expansion or polymer estimate supplies
+  truncated expectations \(\langle F\rangle_{k,R}\), obtained by keeping only
+  connected polymer clusters contained in the \(R\)-neighborhood of
+  \(\operatorname{supp}F\), and constants \(C_F\) such that
+  \begin{equation}
+    \left|
+      \langle F\rangle_k-\langle F\rangle_{k,R}
+    \right|
+    \leq
+    C_F e^{-\zeta R}\|K_k\|_{\zeta}
+    +\chi_{F,k}(R),
+    \qquad
+    \lim_{R\to\infty}\sup_k\chi_{F,k}(R)=0 .
+    \label{eq:gauge-blocking-cluster-tail-estimate}
+  \end{equation}
+  This cluster-tail estimate is part of the continuum-control datum, not a
+  consequence of gauge covariance alone.
+  \item Reflection-positivity control.  Let
+  \(\mathcal A_{k,+}^{\rm inv}\) be the algebra of gauge-invariant cylinder
+  observables supported in the positive-time half-lattice, and let \(\Theta\)
+  be time reflection with orientation reversal on links crossing reflected
+  edges.  For every finite list \(F_1,\ldots,F_m\in\mathcal A_{k,+}^{\rm inv}\)
+  and coefficients \(c_i\in\C\),
+  \begin{equation}
+    \sum_{i,j=1}^{m}\bar c_i c_j
+    \int \Theta F_i(A)\,F_j(A)\,\dd\mu_k^{\rm blk}(A)
+    \geq -\rho_k(F,c),
+    \label{eq:gauge-blocking-rp-defect}
+  \end{equation}
+  with \(\rho_k(F,c)\to0\) for each fixed finite family.  Exact reflection
+  positivity is the special case \(\rho_k=0\).
+  \item Gauge-invariant reconstruction maps for a declared class of
+  observables \(\mathcal W\), such as finite Wilson-loop products, smeared
+  small-loop field-strength representatives, or matter bilinears with their
+  Wilson-line connectors.  For each \(O\in\mathcal W\), the reconstructed
+  finite-scale datum \(\operatorname{Rec}_{O,k}\) takes values in a locally
+  convex distribution or cylinder-observable topology and satisfies a
+  bound of the form
+  \begin{equation}
+    p\!\left(\operatorname{Rec}_{O,k}-\operatorname{Rec}_{O,\ast}\right)
+    \leq
+    C_{O,p}\varepsilon_k+\eta_{O,p,k},
+    \qquad
+    \eta_{O,p,k}\longrightarrow0 ,
+    \label{eq:gauge-blocking-observable-reconstruction}
+  \end{equation}
+  for every seminorm \(p\) used in the continuum statement.
+\end{enumerate}
+\end{definition}
+
+The first item is not a harmless rewriting.  The logarithm of a blocked
+gauge-invariant measure can contain arbitrarily large Wilson loops.  The
+locality estimate \eqref{eq:gauge-blocking-polymer-locality-norm} is the
+assertion that those large connected contributions are summable in a norm
+strong enough to define a Wilsonian chart.  In gauge theory this estimate is
+one of the main constructive burdens.
+
+\paragraph{Consequences of the datum.}
+Once Definition~\ref{def:gauge-blocking-continuum-control-datum} is proved in
+a model, every \(O\in\mathcal W\) has the declared continuum limit by
+\eqref{eq:gauge-blocking-observable-reconstruction}.  Gauge invariance passes
+to the limit because it holds at finite regulator by path-blocking
+equivariance and because the reconstruction topology tests gauge-invariant
+cylinder data.  The estimate
+\eqref{eq:gauge-blocking-cluster-tail-estimate} is the quasi-locality
+statement: distant connected polymer clusters have a uniformly vanishing
+effect on each bounded local gauge-invariant observable after the retained
+local Wilsonian coordinates have been removed.
+
+Reflection positivity is also a closed-cone statement once the finite
+quadratic forms have been identified.  For
+\(F_1,\ldots,F_m\in\mathcal A_{k,+}^{\rm inv}\) and \(c_i\in\C\), write
+\[
+  Q_k(F,c)=
+  \sum_{i,j}\bar c_i c_j
+  \int \Theta F_i\,F_j\,\dd\mu_k^{\rm blk}.
+\]
+The reconstruction estimate gives convergence of the finitely many
+correlators entering \(Q_k(F,c)\), while
+\eqref{eq:gauge-blocking-rp-defect} gives
+\(Q_k(F,c)\geq-\rho_k(F,c)\).  Taking \(k\to\infty\) gives the limiting
+positive-time quadratic form \(Q_\ast(F,c)\geq0\).  This is why the datum must
+include the reflection-positive observable algebra and the defect
+\(\rho_k\); it is not enough to know that the blocked links transform
+covariantly.
+
+\begin{warning}[Finite gauge blocking is not a continuum Yang--Mills proof]
+\label{warn:finite-gauge-blocking-not-continuum-proof}
+Construction~\ref{constr:gauge-equivariant-path-blocking-rg} and the finite
+\(S_3\) companion calculation prove exact gauge covariance and exact
+pushforward invariance at finite regulator.  They do not by themselves prove
+the quasi-local polymer bound
+\eqref{eq:gauge-blocking-polymer-locality-norm}, reflection positivity
+\eqref{eq:gauge-blocking-rp-defect}, or reconstruction
+\eqref{eq:gauge-blocking-observable-reconstruction}.  A theorem that a
+gauge-blocked Wilsonian trajectory defines a continuum local QFT must supply
+those estimates in a specific regulator class and observable topology.
+\end{warning}
+
 \begin{definition}[RG reconstruction estimate]
 \label{def:rg-reconstruction-estimate}
 Let \(\mathcal S_n=\mathcal S((\mathbb R^D)^n)\) be the Schwartz space and

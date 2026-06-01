@@ -9,6 +9,7 @@ group algebra in the smallest nonabelian test case, S_3.
 from __future__ import annotations
 
 from collections import defaultdict
+from fractions import Fraction
 from itertools import permutations, product
 
 Perm = tuple[int, int, int]
@@ -110,6 +111,11 @@ def assert_equal(name: str, left: object, right: object) -> None:
         raise AssertionError(f"{name}: {left!r} != {right!r}")
 
 
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(name)
+
+
 def check_path_blocking_equivariance() -> None:
     config = {
         E01: (1, 2, 0),
@@ -180,11 +186,101 @@ def check_fine_weight_gauge_invariance() -> None:
         )
 
 
+def check_weighted_polymer_tail_bound() -> None:
+    """Check the finite arithmetic behind the exponential locality norm."""
+
+    # Toy line polymers containing the origin have multiplicity diameter+1.
+    # The manuscript's weighted norm uses an exponential weight.  Here the
+    # weighted ratio is chosen rationally: exp(zeta) * alpha = 1/3.
+    weighted_ratio = Fraction(1, 3)
+    norm_bound = Fraction(1, 1) / (1 - weighted_ratio) ** 2
+
+    for cutoff in range(1, 8):
+        partial_norm = sum(
+            Fraction(diameter + 1) * weighted_ratio**diameter
+            for diameter in range(cutoff + 1)
+        )
+        assert_true(
+            f"finite weighted polymer norm cutoff {cutoff}",
+            partial_norm <= norm_bound,
+        )
+
+    radius = 4
+    tail = sum(
+        Fraction(diameter + 1) * weighted_ratio**diameter
+        for diameter in range(radius, 18)
+    )
+
+    def infinite_tail_from(first_diameter: int) -> Fraction:
+        return weighted_ratio**first_diameter * (
+            Fraction(first_diameter + 1) / (1 - weighted_ratio)
+            + weighted_ratio / (1 - weighted_ratio) ** 2
+        )
+
+    assert_equal(
+        "finite polymer tail majorant",
+        tail + infinite_tail_from(18),
+        infinite_tail_from(radius),
+    )
+    assert_true("polymer tail is smaller than full norm", tail < norm_bound)
+
+
+def check_reflection_positive_compression() -> None:
+    """Finite positive-cone check for blocked positive-time observables."""
+
+    fine_vectors = [
+        (Fraction(1), Fraction(0), Fraction(1)),
+        (Fraction(2), Fraction(1), Fraction(0)),
+        (Fraction(-1), Fraction(1), Fraction(1)),
+    ]
+
+    def dot(left: tuple[Fraction, ...], right: tuple[Fraction, ...]) -> Fraction:
+        return sum(a * b for a, b in zip(left, right, strict=True))
+
+    fine_gram = [
+        [dot(fine_vectors[i], fine_vectors[j]) for j in range(3)]
+        for i in range(3)
+    ]
+    blocking_matrix = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(1)],
+        [Fraction(0), Fraction(-1)],
+    ]
+
+    coarse_gram = [[Fraction(0) for _ in range(2)] for _ in range(2)]
+    for a in range(2):
+        for b in range(2):
+            coarse_gram[a][b] = sum(
+                blocking_matrix[i][a] * fine_gram[i][j] * blocking_matrix[j][b]
+                for i in range(3)
+                for j in range(3)
+            )
+
+    assert_true("coarse reflection matrix diagonal 0", coarse_gram[0][0] >= 0)
+    assert_true("coarse reflection matrix diagonal 1", coarse_gram[1][1] >= 0)
+    determinant = (
+        coarse_gram[0][0] * coarse_gram[1][1]
+        - coarse_gram[0][1] * coarse_gram[1][0]
+    )
+    assert_true("coarse reflection matrix determinant", determinant >= 0)
+
+    for c0, c1 in product(range(-3, 4), repeat=2):
+        coeffs = (Fraction(c0), Fraction(c1))
+        quadratic_form = sum(
+            coeffs[a] * coarse_gram[a][b] * coeffs[b]
+            for a in range(2)
+            for b in range(2)
+        )
+        assert_true("compressed reflection-positive quadratic form", quadratic_form >= 0)
+
+
 def main() -> None:
     check_path_blocking_equivariance()
     check_blocked_wilson_loop()
     check_pushforward_measure_invariance()
     check_fine_weight_gauge_invariance()
+    check_weighted_polymer_tail_bound()
+    check_reflection_positive_compression()
     print("All finite lattice gauge-blocking checks passed.")
 
 
