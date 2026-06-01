@@ -124,9 +124,10 @@ Current checks:
   the APS sign relating simple-crossing spectral flow to the cylinder index,
   the trace-delta \(SU(2)\) index table,
   Witten's parity criterion \(2j\equiv1\pmod4\), Pfaffian-sign
-  multiplicativity, the reduced-eta integer jump at a single eigenvalue
-  crossing, the finite skew-block Pfaffian orientation model, vanishing of the
-  ordinary \(SU(2)\) cubic weight sum, the Quillen spectral-cut transition
+  multiplicativity, the \(\mathbb Z_2\) mapping-torus character bookkeeping
+  behind the clutching construction, the reduced-eta integer jump at a single
+  eigenvalue crossing, the finite skew-block Pfaffian orientation model,
+  vanishing of the ordinary \(SU(2)\) cubic weight sum, the Quillen spectral-cut transition
   cocycle for determinant-line charts, and the finite \(U(1)\)-phase algebra
   of Dai--Freed gluing, together with a finite cochain Stokes model for the
   contractible-loop step from Bismut--Freed curvature to local descent.

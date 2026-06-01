@@ -41,6 +41,48 @@ def check_pfaffian_sign_multiplicativity() -> None:
     assert_equal("triplet and isospin 3/2", pfaffian_sign_from_representations([2, 3]), 1)
 
 
+def mapping_torus_character(class_bit: int, ns: list[int]) -> int:
+    """Pfaffian sign character for the SU(2) mapping-torus component group.
+
+    class_bit is the element of pi_4(SU(2)) = Z_2.  The exponent is additive
+    both under concatenation of mapping tori and under direct sums of
+    representation bundles.
+    """
+
+    exponent = class_bit * sum(su2_trace_delta_index(n) for n in ns)
+    return -1 if exponent % 2 else 1
+
+
+def check_mapping_torus_z2_character_bookkeeping() -> None:
+    samples = [
+        [],
+        [1],
+        [1, 1],
+        [2, 3, 5],
+        [1, 5, 9],
+    ]
+    for ns in samples:
+        identity = mapping_torus_character(0, ns)
+        generator = mapping_torus_character(1, ns)
+        doubled_generator = mapping_torus_character((1 + 1) % 2, ns)
+        assert_equal(f"mapping-torus identity component ns={ns}", identity, 1)
+        assert_equal(f"mapping-torus generator squared ns={ns}", doubled_generator, 1)
+        assert_equal(
+            f"mapping-torus character additivity ns={ns}",
+            generator * generator,
+            doubled_generator,
+        )
+
+    for first in samples:
+        for second in samples:
+            direct_sum = first + second
+            assert_equal(
+                f"mapping-torus direct-sum multiplicativity {first}+{second}",
+                mapping_torus_character(1, direct_sum),
+                mapping_torus_character(1, first) * mapping_torus_character(1, second),
+            )
+
+
 def block_pfaffian(parameters: list[Fraction]) -> Fraction:
     product = Fraction(1)
     for parameter in parameters:
@@ -438,6 +480,7 @@ def main() -> None:
     check_su2_index_table()
     check_witten_parity_criterion()
     check_pfaffian_sign_multiplicativity()
+    check_mapping_torus_z2_character_bookkeeping()
     check_finite_pfaffian_block_model()
     check_su2_cubic_weight_sum_vanishes()
     check_orientation_reversal_eta_bookkeeping()

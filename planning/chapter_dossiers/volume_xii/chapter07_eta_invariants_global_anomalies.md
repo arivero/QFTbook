@@ -72,6 +72,10 @@ global anomaly as an explicit mod-two-index example.
   \(2j\equiv1\pmod4\) using exact binomial parity, while explicitly separating
   the five-dimensional real-index theorem from the subsequent
   trace-convention arithmetic.
+- Makes the Witten mapping-torus clutching datum explicit: the bundle
+  \(P_g=([0,1]\times S^4\times SU(2))/((1,x,u)\sim(0,x,g(x)u))\), its
+  associated representation bundle, homotopy invariance by a six-dimensional
+  clutching bordism, and additivity under concatenation of mapping tori.
 - Explains Dai--Freed inflow as a boundary-line trivialization and derives the
   descent limit for contractible loops by combining Bismut--Freed curvature,
   ordinary Stokes on a background-space disk, and Chern--Weil descent.
@@ -88,9 +92,10 @@ global anomaly as an explicit mod-two-index example.
   orientation bookkeeping, the exact APS cylinder endpoint-kernel identity,
   the sign convention relating simple-crossing spectral flow to the APS
   cylinder index, the first \(SU(2)\) trace-delta Dynkin indices, Witten
-  parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
-  cancellation, the finite skew-block Pfaffian orientation model, cylinder
-  congruence arithmetic, action-groupoid anomaly cocycle/coboundary
+  parity criterion, Pfaffian-sign multiplicativity, mapping-torus
+  \(\mathbb Z_2\)-character bookkeeping, cubic-weight-sum cancellation, the
+  finite skew-block Pfaffian orientation model, cylinder congruence
+  arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
   obstruction to descent, and the Quillen spectral-cut transition cocycle for
   determinant-line charts, the reduced-eta integer jump at a one-mode
@@ -160,3 +165,8 @@ global anomaly as an explicit mod-two-index example.
   of Dai--Freed inflow into a background-space Stokes/transgression argument
   and extended `eta_global_anomaly_checks.py` with a finite cochain model of
   the interior-cut cancellation plus APS integer ambiguity.
+- 2026-06-01 Witten clutching pass: added the explicit mapping-torus bundle
+  \(P_g\), explained homotopy invariance and concatenation additivity before
+  the mod-two-index theorem is used, and extended
+  `eta_global_anomaly_checks.py` with exact \(\mathbb Z_2\)-character
+  bookkeeping for the Pfaffian sign.

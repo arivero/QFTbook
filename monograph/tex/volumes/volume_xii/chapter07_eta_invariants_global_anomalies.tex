@@ -689,6 +689,58 @@ For the mapping torus of the generator of \(\pi_4(SU(2))\),
 \end{equation}
 \end{quotedtheorem}
 
+\paragraph{Clutching datum behind the mapping torus.}
+The QFT object to which Theorem~\ref{qthm:witten-su2-mod-two-index} is
+applied is the coupled Dirac operator on the associated bundle over the
+mapping torus determined by \(g:S^4\to SU(2)\).  Start with the
+trivial principal \(SU(2)\)-bundle over \(S^4\).  In a trivialization write a
+point as \((x,u)\), \(x\in S^4\), \(u\in SU(2)\).  The clutching bundle over
+\(Y_g=S^1\times_g S^4\) is
+\begin{equation}
+  P_g
+  =
+  ([0,1]\times S^4\times SU(2))/
+  \bigl((1,x,u)\sim(0,x,g(x)u)\bigr).
+  \label{eq:witten-su2-clutching-bundle}
+\end{equation}
+For a representation \(R\), the bundle entering the Dirac operator is
+\[
+  E_{g,R}=P_g\times_{SU(2)}R .
+\]
+Choose a smooth path of connections \(A_t\) from a connection \(A\) to its
+gauge transform \(A^g\), product near \(t=0,1\).  The connection \(A_t\) on
+the cylinder descends through the clutching relation to a connection on
+\(P_g\).  Changing the interpolation \(A_t\) changes the mapping-torus
+connection through a homotopy of connections and hence does not change the
+mod-two index.
+
+Two pieces of the setup precede the global mod-two index formula.  First, if
+\(g_s\), \(0\leq s\leq1\), is a homotopy of gauge
+transformations, the same clutching construction over
+\([0,1]_s\times[0,1]_t\times S^4\), with the \(t\)-ends identified by
+\(g_s\), gives a six-dimensional bordism between
+\((Y_{g_0},P_{g_0})\) and \((Y_{g_1},P_{g_1})\).  The mod-two index is a
+bordism invariant, so the sign depends only on the homotopy class
+\([g]\in\pi_4(SU(2))\).  Second, concatenating two gauge transformations
+amounts to gluing the corresponding mapping cylinders along an intermediate
+copy of \(S^4\); additivity of the real mod-two index under gluing gives
+\begin{equation}
+  \operatorname{Ind}_2(B_{Y_{g_0g_1},R})
+  =
+  \operatorname{Ind}_2(B_{Y_{g_0},R})
+  +
+  \operatorname{Ind}_2(B_{Y_{g_1},R})
+  \pmod2 .
+  \label{eq:witten-su2-mapping-torus-additivity}
+\end{equation}
+Thus the Pfaffian sign is a character of the component group of the gauge
+group.  For \(SU(2)\) on \(S^4\), this component group is
+\(\pi_4(SU(2))\simeq\mathbb Z_2\).  The nontrivial content of
+Theorem~\ref{qthm:witten-su2-mod-two-index} is the value of this character on
+the generator, and its representation dependence.  The clutching construction
+above is the part of the global-anomaly argument that belongs directly to the
+QFT background-field setup.
+
 \paragraph{Trace-delta normalization in the \(SU(2)\) representation ring.}
 The arithmetic in Theorem~\ref{qthm:witten-su2-mod-two-index} uses the same
 trace convention as the instanton index formula
