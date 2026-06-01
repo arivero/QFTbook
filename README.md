@@ -11,10 +11,11 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Compiled Volume List
+## Complete Volume Architecture
 
-The public manuscript is currently a twelve-volume series.  The compact list
-below is the complete compiled volume list, in printed order:
+The complete active public architecture is the twelve-volume series compiled
+by `monograph/tex/main.tex`.  The compact list below is therefore both the
+full current volume list and the printed order of the manuscript:
 
 1. Volume I: Foundations of Local Quantum Field Theory
 2. Volume II: Particles, Scattering, and Analyticity
@@ -29,7 +30,7 @@ below is the complete compiled volume list, in printed order:
 11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
 12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
 
-The table below gives the same complete list with continuous printed chapter
+The table below gives the same complete active list with continuous printed chapter
 ranges, printed chapter counts, subject roles, and the assembly file that
 `monograph/tex/main.tex` inputs.  These counts are counts of `\chapter`
 entries in the compiled PDF, not raw `\input` lines: Volume IV also inputs the
@@ -51,9 +52,11 @@ map later in this README expands each row.
 | XI | 136-146 | 11 | Constructive, Lattice, and Numerical Quantum Field Theory | Constructive models, reflection positivity, continuum limits, lattice gauge theory, rigorous RG, stochastic quantization, and numerical regulators. | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
 | XII | 147-157 | 11 | Quantum Field Theory in Curved Spacetime and Background Fields | Locally covariant QFT, Hadamard states, stress tensors, Unruh and Hawking effects, index theory, microlocal methods, and semiclassical backreaction. | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
 
-There is no active compiled Volume XIII or later at present.  If a future
-subject volume is launched, update this list, `monograph/tex/main.tex`, the
-frontmatter volume guide, and the detailed chapter map in the same pass.
+There is no active public Volume XIII or later at present.  Possible future
+subject splits remain planning material until they are added to
+`monograph/tex/main.tex` and to this README.  If a future subject volume is
+launched, update this list, `monograph/tex/main.tex`, the frontmatter volume
+guide, and the detailed chapter map in the same pass.
 
 ## Repository Layout
 
