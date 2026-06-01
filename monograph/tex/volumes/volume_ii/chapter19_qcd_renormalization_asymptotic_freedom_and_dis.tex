@@ -8228,6 +8228,50 @@ necessary local input to the small-angle OPE; the anomalous dimensions and
 the full coefficient of a renormalized light-ray operator are determined by
 the complete scheme-dependent endpoint datum.
 
+The dependence on the endpoint resolution boundary is also distributional,
+not verbal.  For \(0<\rho_a<\rho_b\), define
+\[
+  D_{\rho_*}(\rho)
+  :=
+  \left[\frac{\Theta(\rho_*-\rho)}{\rho}\right]_{+}
+\]
+by
+\[
+  \langle D_{\rho_*},\varphi\rangle
+  =
+  \int_0^{\rho_*}
+  \frac{\varphi(\rho)-\varphi(0)}{\rho}\,\dd\rho
+\]
+for smooth endpoint tests.  Then, as distributions on \([0,\rho_b]\),
+\begin{equation}
+  D_{\rho_b}
+  =
+  D_{\rho_a}
+  +
+  \frac{\mathbf 1_{\rho_a<\rho<\rho_b}}{\rho}
+  -
+  \log\frac{\rho_b}{\rho_a}\,\delta(\rho).
+  \label{eq:qcd-eec-plus-resolution-shift}
+\end{equation}
+Testing the right-hand side against \(\varphi\) gives
+\[
+  \int_0^{\rho_a}\frac{\varphi-\varphi(0)}{\rho}\,\dd\rho
+  +
+  \int_{\rho_a}^{\rho_b}\frac{\varphi(\rho)}{\rho}\,\dd\rho
+  -
+  \log\frac{\rho_b}{\rho_a}\varphi(0)
+  =
+  \int_0^{\rho_b}\frac{\varphi-\varphi(0)}{\rho}\,\dd\rho .
+\]
+Thus enlarging the endpoint chart by the annulus
+\(\rho_a<\rho<\rho_b\) adds the ordinary separated-angle integral over that
+annulus and simultaneously shifts the coincident-detector contact coordinate
+by the logarithmic amount required to keep constant tests unchanged.  This is
+the finite-resolution form of the endpoint contact convention: a statement
+such as ``drop the contact term'' is incomplete until the endpoint resolution
+boundary and the compensating \(\delta(\rho)\) coordinate have both been
+declared.
+
 The eventwise moment identity
 \eqref{eq:eventwise-eec-first-sum-rules} imposes a useful check on this
 bookkeeping.  Let \(M_A\) be the energy-sum functional on the chosen

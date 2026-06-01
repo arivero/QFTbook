@@ -446,8 +446,9 @@ Current checks:
   the renormalized small-angle EEC light-ray OPE bookkeeping, including the
   plus distribution on \(0<\rho<\rho_0\), cancellation of the endpoint cutoff
   logarithm against the contact subtraction, the finite \(\delta(\rho)\)
-  moment, the row/column anomalous-dimension sign convention, and the
-  energy-sum left-null-vector condition.
+  moment, the finite-resolution identity that moves an endpoint annulus into
+  the compensating contact coordinate, the row/column anomalous-dimension
+  sign convention, and the energy-sum left-null-vector condition.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for

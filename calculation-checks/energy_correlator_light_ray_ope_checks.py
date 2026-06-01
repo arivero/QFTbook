@@ -26,6 +26,22 @@ def plus_action(poly, rho0):
     return total
 
 
+def ordinary_annulus_action(poly, rho_a, rho_b):
+    """Action of 1_{rho_a<rho<rho_b}/rho on a polynomial.
+
+    The constant term is deliberately excluded by the caller when testing the
+    resolution-shift identity, because its contribution is recorded
+    symbolically as log(rho_b/rho_a).
+    """
+
+    total = Fraction(0)
+    for power, coeff in enumerate(poly):
+        if power == 0:
+            continue
+        total += coeff * (rho_b**power - rho_a**power) / power
+    return total
+
+
 def symbolic_log_term(log_rho0=0, log_eps=0, finite=0):
     return {
         "log_rho0": Fraction(log_rho0),
@@ -62,6 +78,36 @@ def row_mat(row, matrix):
 
 def dot(row, column):
     return sum(row[i] * column[i] for i in range(len(row)))
+
+
+def check_endpoint_resolution_shift():
+    # Distribution identity used in the text:
+    # D_b = D_a + 1_{a<rho<b}/rho - log(b/a) delta(rho).
+    # For a polynomial phi = c0 + c1 rho + c2 rho^2 + ..., the nonconstant
+    # terms are checked by rational arithmetic, and the constant term is
+    # checked separately at the symbolic logarithm level.
+    rho_a = Fraction(2, 7)
+    rho_b = Fraction(5, 7)
+    poly = [Fraction(11, 13), Fraction(3, 5), Fraction(-7, 17), Fraction(19, 23)]
+
+    left_nonconstant = plus_action(poly, rho_b)
+    right_nonconstant = plus_action(poly, rho_a) + ordinary_annulus_action(poly, rho_a, rho_b)
+    assert_equal(
+        left_nonconstant,
+        right_nonconstant,
+        "endpoint resolution shift nonconstant test",
+    )
+
+    # The "finite" slot is only a formal scalar coefficient here: both terms
+    # multiply the same log(rho_b/rho_a), so cancellation is coefficient-wise.
+    constant_coeff = poly[0]
+    annulus_constant_log = symbolic_log_term(finite=constant_coeff)
+    contact_shift = symbolic_log_term(finite=-constant_coeff)
+    assert_equal(
+        add_log_terms(annulus_constant_log, contact_shift),
+        symbolic_log_term(),
+        "endpoint resolution shift constant test",
+    )
 
 
 def main():
@@ -143,6 +189,8 @@ def main():
         [Fraction(0), Fraction(0)],
         "energy-sum functional should be a left null vector of the mixing matrix",
     )
+
+    check_endpoint_resolution_shift()
 
     print("All EEC light-ray OPE bookkeeping checks passed.")
 

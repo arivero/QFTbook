@@ -411,6 +411,13 @@ The chapter must define and derive:
       distribution plus a scheme-dependent \(\delta(\rho)\) contact term only
       after virtual terms and operator renormalization are declared in the
       same scheme.
+19bc. Endpoint resolution changes are distributional identities: for
+      \(0<\rho_a<\rho_b\),
+      \(D_{\rho_b}=D_{\rho_a}+\mathbf 1_{\rho_a<\rho<\rho_b}/\rho
+      -\log(\rho_b/\rho_a)\delta(\rho)\).  Moving the boundary of the
+      small-angle chart therefore shifts an ordinary separated-angle annulus
+      into the compensating coincident-detector contact coordinate, preserving
+      constant tests and making the contact convention checkable.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -607,6 +614,11 @@ The chapter must define and derive:
   consistency derivation, plus-distribution/contact-term convention, moment
   functional constraint, and
   `calculation-checks/energy_correlator_light_ray_ope_checks.py`.
+- 2026-06-01 issue #519 endpoint-resolution pass: added the distributional
+  identity relating two small-angle plus-prescription boundaries, the
+  separated-annulus term, and the compensating \(\delta(\rho)\) contact shift;
+  extended `calculation-checks/energy_correlator_light_ray_ope_checks.py`
+  with exact rational checks of the identity on polynomial endpoint tests.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,
