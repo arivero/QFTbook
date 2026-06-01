@@ -551,7 +551,9 @@ Current checks:
   ordinary short-range scalar block-spin reconstruction datum, including
   block-kernel normalization, constant-field scaling, invariance of the
   block-constant distribution pairing, independent-site covariance scaling,
-  and the geometric reconstruction-bound arithmetic.
+  geometric reconstruction-bound arithmetic, and correction-to-scaling
+  bookkeeping separating universal irrelevant exponents/correction
+  distributions from regulator-dependent amplitudes.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

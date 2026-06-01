@@ -109,11 +109,72 @@ def check_geometric_reconstruction_bound():
             assert_true(f"bound decreases at step {step}", bound < previous)
 
 
+def check_correction_to_scaling_bookkeeping():
+    scale = 2
+    omega_1 = 1
+    omega_2 = 2
+    fixed_observable = Fraction(13, 17)
+    correction_1 = Fraction(11, 3)
+    correction_2 = Fraction(-5, 4)
+    amplitude_1 = Fraction(7, 5)
+    amplitude_2 = Fraction(-2, 9)
+
+    def power_decay(omega, step):
+        return Fraction(1, scale ** (omega * step))
+
+    def observable(step):
+        return (
+            fixed_observable
+            + amplitude_1 * power_decay(omega_1, step) * correction_1
+            + amplitude_2 * power_decay(omega_2, step) * correction_2
+        )
+
+    for step in range(1, 6):
+        leading_scaled_error = scale**step * (observable(step) - fixed_observable)
+        expected = amplitude_1 * correction_1 + amplitude_2 * correction_2 * power_decay(1, step)
+        assert_equal(f"leading correction extraction step {step}", leading_scaled_error, expected)
+
+    for step in range(1, 5):
+        subtracted_now = observable(step) - fixed_observable - amplitude_1 * power_decay(omega_1, step) * correction_1
+        subtracted_next = observable(step + 1) - fixed_observable - amplitude_1 * power_decay(omega_1, step + 1) * correction_1
+        assert_equal(
+            f"subleading correction ratio step {step}",
+            subtracted_next,
+            power_decay(omega_2, 1) * subtracted_now,
+        )
+
+    other_amplitude_1 = Fraction(-3, 8)
+    other_amplitude_2 = Fraction(5, 11)
+
+    def other_observable(step):
+        return (
+            fixed_observable
+            + other_amplitude_1 * power_decay(omega_1, step) * correction_1
+            + other_amplitude_2 * power_decay(omega_2, step) * correction_2
+        )
+
+    for step in range(1, 5):
+        difference = observable(step) - other_observable(step)
+        leading_difference = (
+            (amplitude_1 - other_amplitude_1) * power_decay(omega_1, step) * correction_1
+        )
+        after_leading_subtraction = difference - leading_difference
+        expected_subleading = (
+            (amplitude_2 - other_amplitude_2) * power_decay(omega_2, step) * correction_2
+        )
+        assert_equal(
+            f"same limit but regulator-dependent correction amplitudes step {step}",
+            after_leading_subtraction,
+            expected_subleading,
+        )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
     check_independent_covariance_scaling()
     check_geometric_reconstruction_bound()
+    check_correction_to_scaling_bookkeeping()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

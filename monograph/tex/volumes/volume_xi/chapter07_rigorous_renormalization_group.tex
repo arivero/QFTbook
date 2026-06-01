@@ -1814,6 +1814,97 @@ dimension may guide the choice of \(I\) and the list of relevant coordinates,
 but they do not by themselves define the class.  The theorem is the attraction
 and reconstruction statement.
 
+\paragraph{Correction-to-scaling data.}
+The limiting reconstructed datum is only the first layer of a Wilsonian
+universality theorem.  A sharper theorem also identifies the controlled
+approach to the limit.  This matters because the amplitudes of irrelevant
+directions depend on the microscopic regulator, while the decay exponents and
+the reconstructed correction distributions are fixed by the RG chart and the
+fixed point.
+
+\begin{definition}[Correction-to-scaling datum]
+\label{def:correction-to-scaling-datum}
+Assume the data of
+Definition~\ref{def:wilsonian-universality-statement}.  A
+correction-to-scaling datum of order \(A\) consists of:
+\begin{enumerate}
+\item a locally convex topology on \(\mathcal O\), specified by seminorms
+\(\{p_\beta\}\);
+\item a stable coordinate chart near \(V_\ast\) in which the tuned
+trajectories have stable coordinates \(w_i(n)\in E_s\);
+\item vectors \(e_1,\ldots,e_A\in E_s\) and positive numbers
+\(\omega_1\le\cdots\le\omega_A\) such that the linearized RG map sends
+\[
+  e_a\longmapsto L^{-\omega_a}e_a ;
+\]
+\item a number \(\omega_{A+1}>\omega_A\), or another declared remainder
+rate, bounding the omitted stable directions;
+\item constants \(c_{i,a}\in\mathbb C\), depending on the microscopic
+regulator \(i\), and remainders \(\rho_i(n)\in E_s\) satisfying
+\begin{equation}
+  w_i(n)
+  =
+  \sum_{a=1}^{A}c_{i,a}L^{-n\omega_a}e_a+\rho_i(n),
+  \qquad
+  \|\rho_i(n)\|_{E_s}
+  \le
+  C_i\bigl(L^{-n\omega_{A+1}}+L^{-2n\omega_1}\bigr);
+  \label{eq:correction-stable-coordinate-expansion}
+\end{equation}
+\item differentiability of the normalized reconstruction map at \(V_\ast\),
+with first derivative
+\[
+  D\operatorname{Rec}_{\ast}:E_s\longrightarrow\mathcal O
+\]
+and a quadratic remainder estimate in every seminorm \(p_\beta\).
+\end{enumerate}
+The associated correction distributions are
+\[
+  \mathcal C_a=D\operatorname{Rec}_{\ast}(e_a)\in\mathcal O .
+\]
+\end{definition}
+
+Under these hypotheses the normalized reconstructed observables have the
+expansion
+\begin{equation}
+  g_i\operatorname{Rec}_{i,n}(V_i)
+  =
+  O_\ast+
+  \sum_{a=1}^{A}c_{i,a}L^{-n\omega_a}\mathcal C_a
+  +
+  \mathcal E_i(n),
+  \label{eq:correction-to-scaling-observable-expansion}
+\end{equation}
+where, for every seminorm \(p_\beta\), there is a constant
+\(C_{\beta,i}\) such that
+\begin{equation}
+  p_\beta(\mathcal E_i(n))
+  \le
+  C_{\beta,i}\bigl(L^{-n\omega_{A+1}}+L^{-2n\omega_1}\bigr).
+  \label{eq:correction-to-scaling-observable-remainder}
+\end{equation}
+Indeed, write the normalized reconstruction map in the stable chart as
+\[
+  \operatorname{Rec}_{\ast}(V_\ast+w)
+  =
+  O_\ast+D\operatorname{Rec}_{\ast}(w)+Q(w),
+  \qquad
+  p_\beta(Q(w))\le C_\beta\|w\|_{E_s}^2
+\]
+for \(w\) in a sufficiently small stable neighborhood.  Substitution of
+\eqref{eq:correction-stable-coordinate-expansion} gives the linear
+correction terms and puts the stable-coordinate remainder together with
+\(Q(w_i(n))\) into
+\eqref{eq:correction-to-scaling-observable-remainder}.
+
+This is the precise content behind the common phrase ``same universality
+class but different corrections to scaling.''  It is not a theorem about a
+model until the stable-coordinate expansion, the reconstruction derivative,
+and the seminorm estimates have all been proved in the chosen RG framework.
+The coefficients \(c_{i,a}\) are microscopic coordinates.  The exponents
+\(\omega_a\) and correction distributions \(\mathcal C_a\) are fixed-point
+data in the declared Wilsonian chart and observable topology.
+
 \begin{openproblem}[Nonperturbative Wilsonian fixed points]
 \label{op:constructive-rg-nonperturbative-fixed-points}
 Construct non-Gaussian Wilsonian fixed points in three and four dimensions as

@@ -126,6 +126,10 @@ constructive RG developments.
   and normalization group.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
+- Defines correction-to-scaling data as part of a sharpened Wilsonian
+  universality theorem: stable irrelevant eigendirections, rates
+  \(\omega_a\), microscopic amplitudes \(c_{i,a}\), reconstructed correction
+  distributions \(\mathcal C_a\), and seminorm remainder estimates.
 - Records the finite-codimension critical-surface statement in prose rather
   than as a theorem-family result: after a \(C^1\) stable graph and microscopic
   transversality have been proved, the codimension statement is the standard
@@ -149,4 +153,5 @@ remainder contraction.
   engineering exponents, and relevance bookkeeping.
 - `calculation-checks/rg_short_range_reconstruction_checks.py`: exact rational
   checks for ordinary short-range scalar block-spin normalization, pairing,
-  covariance scaling, and reconstruction-bound arithmetic.
+  covariance scaling, reconstruction-bound arithmetic, and
+  correction-to-scaling bookkeeping.
