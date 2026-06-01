@@ -8,8 +8,9 @@ The chapter uses the subtracted 't Hooft kernel
 and its DLCQ finite matrix. These checks use rational arithmetic to verify
 the color normalization, the finite quadratic-form identity, positivity in a
 sample positive-mass case, the exact constant zero mode in the massless
-subtracted kernel, and the endpoint-exponent small-mass expansion in the
-subtracted finite-part convention.
+subtracted kernel, the endpoint-exponent small-mass expansion in the
+subtracted finite-part convention, and finite-form monotonicity shadows of
+the continuum closed-form spectral construction.
 """
 
 from fractions import Fraction
@@ -148,12 +149,40 @@ def check_endpoint_exponent_series():
     )
 
 
+def check_finite_form_monotonicity_shadow():
+    # The continuum closed form is monotone in each nonnegative coordinate
+    # m_1^2, m_2^2, and gamma_2.  The DLCQ matrix has the same exact
+    # quadratic-form difference: mass-coordinate increments plus the
+    # positive subtracted-kernel increment.
+    k = 8
+    base_m1 = Fraction(1, 7)
+    base_m2 = Fraction(2, 9)
+    base_gamma = Fraction(3, 11)
+    delta_m1 = Fraction(5, 13)
+    delta_m2 = Fraction(7, 17)
+    delta_gamma = Fraction(2, 19)
+    vector = tuple(Fraction((n + 1) * (-1 if n % 2 else 1), 10) for n in range(k - 1))
+
+    base = thooft_matrix(k, base_m1, base_m2, base_gamma)
+    higher = thooft_matrix(
+        k,
+        base_m1 + delta_m1,
+        base_m2 + delta_m2,
+        base_gamma + delta_gamma,
+    )
+    diff = quadratic_form(higher, vector) - quadratic_form(base, vector)
+    expected = displayed_quadratic_form(k, delta_m1, delta_m2, delta_gamma, vector)
+    assert_equal("finite form monotonicity exact difference", diff, expected)
+    assert_true("finite form monotonicity positivity", diff > 0)
+
+
 def main():
     check_trace_delta_color_normalization()
     check_dlcq_quadratic_form_identity()
     check_positive_mass_sample_positive()
     check_massless_constant_zero_mode()
     check_endpoint_exponent_series()
+    check_finite_form_monotonicity_shadow()
     print("All large-N two-dimensional QCD checks passed.")
 
 

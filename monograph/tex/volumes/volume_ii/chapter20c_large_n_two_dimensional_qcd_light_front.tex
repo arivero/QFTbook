@@ -490,6 +490,175 @@ each positive \(m_i^2/\gamma_2\) determines a unique exponent.  When
 is the constant endpoint behavior used in the massless chiral solution above.
 \end{proof}
 
+\section{Closed Form Domain and Discrete Spectrum}
+\label{sec:qcd2-closed-form-domain}
+
+The endpoint analysis determines the local asymptotics of eigenfunctions, but
+it is not by itself a definition of the spectral problem.  The continuum
+object is the self-adjoint operator associated with the closed positive form
+that was already visible in \eqref{eq:qcd2-thooft-positive-form}.  This is the
+coordinate in which the statement ``the spectrum of the 't Hooft equation''
+has a precise Hilbert-space meaning.
+
+Let
+\[
+  \mathcal H=L^2((0,1),\dd x)
+\]
+and, for \(m_1^2,m_2^2,\gamma_2\geq0\), define
+\begin{equation}
+\begin{split}
+  \mathfrak q_{m_1,m_2,\gamma_2}[\phi]
+  &:=
+  \int_0^1
+  \left(
+    \frac{m_1^2}{x}
+    +
+    \frac{m_2^2}{1-x}
+  \right)|\phi(x)|^2\,\dd x
+  \\
+  &\quad
+  +
+  \frac{\gamma_2}{2}
+  \int_0^1\dd x\int_0^1\dd y\,
+  \frac{|\phi(x)-\phi(y)|^2}{(x-y)^2}.
+\end{split}
+\label{eq:qcd2-closed-form}
+\end{equation}
+The form domain is
+\begin{equation}
+  \mathcal Q_{m_1,m_2,\gamma_2}
+  =
+  \left\{
+    \phi\in L^2(0,1)\;:\;
+    \mathfrak q_{m_1,m_2,\gamma_2}[\phi]<\infty
+  \right\}.
+  \label{eq:qcd2-form-domain}
+\end{equation}
+When an endpoint mass is positive, the corresponding weighted \(L^2\) term in
+\eqref{eq:qcd2-closed-form} is part of the definition: for example
+\(m_1^2>0\) requires
+\(\int_0^1x^{-1}|\phi(x)|^2\dd x<\infty\).  When the endpoint mass is zero,
+that endpoint weight is absent.  This is why the constant wavefunction is
+admissible in the double chiral limit but not for a positive endpoint mass.
+
+\begin{proposition}[Self-adjoint 't Hooft mass operator]
+\label{prop:qcd2-self-adjoint-thooft-operator}
+For \(m_1^2,m_2^2\geq0\) and \(\gamma_2>0\), the form
+\(\mathfrak q_{m_1,m_2,\gamma_2}\) on
+\(\mathcal H=L^2(0,1)\) is densely defined, nonnegative, and closed.  Hence
+there is a unique nonnegative self-adjoint operator
+\(\mathcal M^2_{m_1,m_2,\gamma_2}\) such that
+\[
+  \mathfrak q_{m_1,m_2,\gamma_2}[\eta,\phi]
+  =
+  \langle \eta,\mathcal M^2_{m_1,m_2,\gamma_2}\phi\rangle_{L^2}
+\]
+for all \(\eta\in\mathcal Q_{m_1,m_2,\gamma_2}\) and all
+\(\phi\) in the operator domain.  On smooth functions for which the displayed
+principal value exists and the endpoint terms are integrable, this operator
+acts by
+\[
+  (\mathcal M^2_{m_1,m_2,\gamma_2}\phi)(x)
+  =
+  \left(
+    \frac{m_1^2}{x}
+    +
+    \frac{m_2^2}{1-x}
+  \right)\phi(x)
+  +
+  \gamma_2\operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y .
+\]
+Its resolvent is compact.  Therefore its spectrum consists of eigenvalues of
+finite multiplicity, accumulating only at \(+\infty\).  If
+\(m_1=m_2=0\), the constant functions are precisely the zero eigenspace.  If
+at least one endpoint mass is positive, zero is not an eigenvalue.
+\end{proposition}
+
+\begin{proof}
+The domain is dense because \(C_c^\infty(0,1)\) lies in
+\(\mathcal Q_{m_1,m_2,\gamma_2}\) and is dense in \(L^2(0,1)\).  Positivity is
+immediate from \eqref{eq:qcd2-closed-form}.  For closedness, let
+\((\phi_n)\) be Cauchy in the form norm
+\[
+  \|\phi\|_{\mathcal Q}^2
+  =
+  \|\phi\|_{L^2}^2+\mathfrak q_{m_1,m_2,\gamma_2}[\phi].
+\]
+Then \(\phi_n\to\phi\) in \(L^2\) for some \(\phi\).  Passing to a subsequence
+gives almost-everywhere convergence.  Fatou's lemma applied to the endpoint
+weights and to the positive measure on
+\((0,1)^2\setminus\{x=y\}\) gives
+\[
+  \mathfrak q_{m_1,m_2,\gamma_2}[\phi]
+  \leq
+  \liminf_{n\to\infty}
+  \mathfrak q_{m_1,m_2,\gamma_2}[\phi_n],
+\]
+so \(\phi\in\mathcal Q_{m_1,m_2,\gamma_2}\).  Applying the same lower
+semicontinuity to \(\phi_n-\phi_m\) and then sending \(m,n\to\infty\) shows
+that \(\phi_n\to\phi\) in the form norm.  Thus the form is closed.  The
+representation theorem for densely defined closed nonnegative forms gives the
+unique nonnegative self-adjoint operator associated with the form.
+
+For a smooth \(\phi\) and a smooth test function \(\eta\), regulate the
+singularity by deleting \(|x-y|<\epsilon\).  Symmetrizing the bilinear form
+gives
+\[
+  \frac{\gamma_2}{2}\int_{|x-y|>\epsilon}
+  \frac{(\overline{\eta(x)}-\overline{\eta(y)})
+        (\phi(x)-\phi(y))}{(x-y)^2}\,\dd x\,\dd y
+  =
+  \gamma_2\int_0^1\overline{\eta(x)}
+  \int_{|x-y|>\epsilon}
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y\,\dd x .
+\]
+The finite part as \(\epsilon\downarrow0\) is exactly the principal-value
+operator displayed above.  The endpoint multiplication terms are ordinary
+weighted \(L^2\) pairings.  This proves the agreement with the differential
+form of the equation on the smooth core where all terms are defined.
+
+It remains to identify the spectral type.  The double integral in
+\eqref{eq:qcd2-closed-form} is the homogeneous \(H^{1/2}\)-seminorm on the
+interval, up to the harmless normalization convention for the finite
+interval.  More explicitly, extending \(\phi\) to a function on a slightly
+larger interval by a bounded extension operator and then periodizing on a
+circle, the kernel form controls
+\[
+  \sum_{n\in\mathbb Z}|n|\,|\widehat\phi_n|^2
+\]
+on the extension, while \(\|\phi\|_{L^2}^2\) controls the \(n=0\) coefficient.
+The diagonal argument for Fourier series then gives compactness of the unit
+ball of \(H^{1/2}\) in \(L^2\): truncate to \(|n|\leq N\), obtain compactness
+in the finite-dimensional truncated space, and make the tail uniformly small
+by the \(H^{1/2}\) bound.  The endpoint weights only shrink the form domain,
+so the embedding
+\(\mathcal Q_{m_1,m_2,\gamma_2}\hookrightarrow L^2(0,1)\) is compact.  A
+closed semibounded form with compact form-domain embedding has compact
+resolvent: \((\mathcal M^2_{m_1,m_2,\gamma_2}+1)^{-1}\) maps \(L^2\)
+boundedly into the form domain and then compactly back to \(L^2\).
+Therefore the spectrum is purely discrete with finite multiplicities and no
+finite accumulation point.
+
+Finally, \(\mathfrak q[\phi]=0\) forces
+\(|\phi(x)-\phi(y)|^2=0\) for almost every pair \((x,y)\), hence
+\(\phi\) is almost everywhere constant.  If both endpoint masses vanish,
+these constants indeed have zero form value.  If at least one endpoint mass
+is positive, a nonzero constant has infinite or positive endpoint-weighted
+form value, so only the zero vector can have zero form value.
+\end{proof}
+
+\begin{remark}[Spectral coordinates]
+\label{rem:qcd2-min-max-spectral-coordinates}
+The eigenvalues can be characterized by the Rayleigh--Ritz principle applied
+to \(\mathfrak q_{m_1,m_2,\gamma_2}\).  This is the continuum statement
+behind the finite DLCQ matrices below: finite-dimensional approximations are
+useful only insofar as their forms converge to \eqref{eq:qcd2-closed-form} in
+a sense strong enough to control these variational values.  Changing the
+endpoint mass coordinate or the zero-mode prescription changes the form and
+hence changes the spectral problem being approximated.
+\end{remark}
+
 \section{Finite DLCQ Matrix and Numerical Benchmark}
 
 The finite matrix used in

@@ -57,6 +57,9 @@ The chapter establishes:
   \(\pi\beta\cot(\pi\beta)-1\) in the subtracted convention, and the endpoint
   exponent equation
   \(m_i^2/\gamma_2=1-\pi\beta_i\cot(\pi\beta_i)\);
+- the closed continuum quadratic form on \(L^2(0,1)\), its form domain with
+  endpoint weights, the associated nonnegative self-adjoint mass operator, and
+  compact resolvent/discrete spectrum for \(\gamma_2>0\);
 - the finite DLCQ matrix and its exact quadratic-form identity;
 - a controlled-approximation block stating the data needed before finite DLCQ
   eigenvalues become continuum meson-mass claims;
@@ -81,9 +84,11 @@ The chapter establishes:
    constant zero mode in the massless equal-flavor case.
 7. Endpoint powers are fixed by cancellation of the leading finite-part
    singularity in the same subtracted convention that defines the operator.
-8. The common unsubtracted presentation is a different mass-coordinate
+8. The continuum spectral problem is the self-adjoint operator associated to
+   the closed positive form, not merely the formal principal-value expression.
+9. The common unsubtracted presentation is a different mass-coordinate
    convention, not a different physical equation.
-9. DLCQ matrix eigenvalues are finite-regulator spectral data until zero-mode,
+10. DLCQ matrix eigenvalues are finite-regulator spectral data until zero-mode,
    endpoint-mass, coefficient-matching, and \(K\to\infty\) convergence data are
    supplied.
 
@@ -92,7 +97,8 @@ The chapter establishes:
 - `calculation-checks/thooft_model_checks.py` verifies trace-delta color
   normalization, the finite DLCQ quadratic-form identity, positivity in a
   positive endpoint-mass sample, the exact massless constant zero mode of
-  the subtracted finite kernel, and the endpoint-exponent small-mass expansion.
+  the subtracted finite kernel, the endpoint-exponent small-mass expansion,
+  and the finite-form monotonicity shadow of the closed continuum form.
 
 ## Figure Requirements
 
