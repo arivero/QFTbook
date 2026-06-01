@@ -15,6 +15,7 @@ SCRIPT_DIR = ROOT / "qft_scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
+import phi4_hamiltonian_truncation as phi4_truncation  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import tffsa_ising_spectral_flow as tffsa_flow  # noqa: E402
 import thooft_dlcq  # noqa: E402
@@ -61,6 +62,60 @@ def krylov_orthonormal_basis(matrix: np.ndarray, seed: np.ndarray, dim: int) -> 
 def check_ising_bogoliubov_benchmark() -> None:
     result = tcsa.run(num_modes=7, mass=0.8, circumference=9.0)
     assert_leq("Ising Bogoliubov finite spectrum", result["max_abs_error"], 1.0e-12)
+
+
+def check_phi4_hamiltonian_truncation_matrix() -> None:
+    cfg = phi4_truncation.RunConfig(
+        nmax=1,
+        max_particles=3,
+        energy_cutoff=5.0,
+        mass=1.0,
+        circumference=6.0,
+        quartic_coupling=0.25,
+        total_momentum=0,
+    )
+    basis, free, hamiltonian = phi4_truncation.hamiltonian_matrix(cfg)
+    if not basis:
+        raise AssertionError("phi^4 truncation basis unexpectedly empty")
+    labels = phi4_truncation.mode_labels(cfg.nmax)
+    omega = phi4_truncation.frequencies(labels, cfg.mass, cfg.circumference)
+    for state in basis:
+        assert_equal("phi^4 total momentum sector", phi4_truncation.total_momentum_units(state, labels), 0)
+        if phi4_truncation.free_energy(state, labels, omega) > cfg.energy_cutoff + 1.0e-12:
+            raise AssertionError("phi^4 basis state exceeds the free-energy cutoff")
+    assert_leq("phi^4 finite Hamiltonian Hermiticity", float(np.max(np.abs(hamiltonian - hamiltonian.T))), 1.0e-12)
+
+    free_cfg = phi4_truncation.RunConfig(
+        nmax=cfg.nmax,
+        max_particles=cfg.max_particles,
+        energy_cutoff=cfg.energy_cutoff,
+        mass=cfg.mass,
+        circumference=cfg.circumference,
+        quartic_coupling=0.0,
+        total_momentum=cfg.total_momentum,
+    )
+    _, free_matrix, zero_coupling_hamiltonian = phi4_truncation.hamiltonian_matrix(free_cfg)
+    assert_matrix_close("phi^4 zero-coupling Hamiltonian", zero_coupling_hamiltonian, free_matrix)
+
+    zero_mode_cfg = phi4_truncation.RunConfig(
+        nmax=0,
+        max_particles=2,
+        energy_cutoff=10.0,
+        mass=2.0,
+        circumference=5.0,
+        quartic_coupling=0.0,
+        total_momentum=0,
+    )
+    zero_basis = phi4_truncation.generate_basis(zero_mode_cfg)
+    interaction = phi4_truncation.interaction_matrix(zero_mode_cfg, zero_basis)
+    lookup = {state: idx for idx, state in enumerate(zero_basis)}
+    assert_close("phi^4 normal-ordered vacuum diagonal", interaction[lookup[(0,)], lookup[(0,)]], 0.0)
+    expected_two_particle_diagonal = 3.0 / (zero_mode_cfg.circumference * zero_mode_cfg.mass**2)
+    assert_close(
+        "phi^4 zero-mode two-particle diagonal",
+        interaction[lookup[(2,)], lookup[(2,)]],
+        expected_two_particle_diagonal,
+    )
 
 
 def check_tffsa_connected_spin_block() -> None:
@@ -377,6 +432,7 @@ def check_light_front_kinematic_identities() -> None:
 
 def main() -> None:
     check_ising_bogoliubov_benchmark()
+    check_phi4_hamiltonian_truncation_matrix()
     check_tffsa_connected_spin_block()
     check_tffsa_spectral_flow_derivatives()
     check_thooft_quadratic_form_identity()

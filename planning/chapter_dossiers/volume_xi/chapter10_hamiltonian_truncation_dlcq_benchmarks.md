@@ -26,6 +26,10 @@ numerics.
 - `r`, `p_r`, `H_r`, `H_N`: Neveu-Schwarz Majorana mode label, finite-circle
   momentum, two-dimensional Bogoliubov block, and finite direct-sum
   Hamiltonian for the Ising energy-deformation benchmark.
+- `N`, `P_max`, `P_tot`, `n_r`, `k_r`, `omega_r`, `phi_N`, `V_N`:
+  Fourier-mode, particle-number, total-momentum, occupation-number,
+  momentum, frequency, finite free-field, and normal-ordered quartic
+  interaction coordinates in the scalar \(\phi^4\) truncation benchmark.
 - `Q_s`, `theta_n`, `rho_I`: finite-volume fermion momentum set, rapidity,
   and free Bethe-state density used in the TFFSA spin matrix element.
 - `H(h)`, `W`, `lambda_*(h)`, `g`: finite affine Hermitian spectral-flow
@@ -86,6 +90,14 @@ numerics.
   counterterm dependence.
 - Proves the finite-mode Majorana Bogoliubov spectrum used as a
   Hamiltonian-truncation smoke benchmark.
+- Constructs a nonintegrable normal-ordered \(1+1\)-dimensional scalar
+  \(\phi^4\) finite Hamiltonian truncation in a free massive Fock basis,
+  with explicit Fourier-mode, particle-number, free-energy, and
+  total-momentum cutoffs, and separates its finite Hermiticity from any
+  continuum/counterterm claim.
+- Derives the zero-mode two-particle normalization check
+  \(\bra2\int:\phi_0^4:\ket2=3/(Lm^2)\), fixing the field normalization and
+  \(4!\) convention used by the companion script.
 - Develops the two-coupling Ising TCSA datum
   \(H_{\rm CFT}+\tau\int\varepsilon+h\int\sigma\), distinguishing cylinder
   operator normalizations and coupling dimensions.
@@ -171,6 +183,7 @@ numerics.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
+  `qft_scripts/phi4_hamiltonian_truncation.py`,
   `qft_scripts/thooft_dlcq.py`, `qft_scripts/thooft_dlcq_extrapolation.py`,
   and `tools/run_qft_scripts_smoke.sh`.
 
@@ -185,6 +198,10 @@ plots.
 - `qft_scripts/tcsa_ising_energy_benchmark.py --smoke`: diagonalizes finite
   Ising thermal-deformation Bogoliubov blocks and checks their exact
   eigenvalues.
+- `qft_scripts/phi4_hamiltonian_truncation.py --smoke`: builds a finite
+  normal-ordered scalar \(\phi^4\) Hamiltonian truncation in a declared
+  total-momentum, particle-number, free-energy, and Fourier-mode cutoff, then
+  checks finite Hermiticity and reports the lowest finite eigenvalues.
 - `qft_scripts/tffsa_ising_spin_connected.py --smoke`: builds the finite
   zero-momentum connected Ising spin-field TFFSA block, checks Hermiticity,
   and reports the finite eigenvalues and free energies.
@@ -205,9 +222,10 @@ plots.
   correlated-fit covariance/error propagation used in the chapter.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
-  two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
-  block normalization, finite Ising TFFSA spectral-flow derivative identities,
-  finite large-`K` fit algebra, finite residual certification,
+  two-dimensional QCD DLCQ quadratic-form identity, the scalar \(\phi^4\)
+  normal-ordered truncation basis and zero-mode matrix element, connected
+  Ising TFFSA block normalization, finite Ising TFFSA spectral-flow derivative
+  identities, finite large-`K` fit algebra, finite residual certification,
   spectral-projector leakage, the Feshbach determinant identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
@@ -235,3 +253,8 @@ plots.
 - 2026-05-31 third statmech numerical-evidence pass: added correlated-fit
   and fit-window stability coordinates as finite data-analysis algebra, not
   as a theorem that finite extrapolation plots prove continuum QFT claims.
+- 2026-06-01 issue #494 scalar-truncation pass: added a nonintegrable
+  \(1+1\)-dimensional normal-ordered \(\phi^4\) finite-matrix construction
+  and script as a regulator benchmark, with finite Hermiticity and the
+  zero-mode two-particle matrix element treated as checks rather than a
+  continuum theorem.

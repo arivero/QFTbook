@@ -26,6 +26,7 @@ python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
+python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
@@ -121,6 +122,12 @@ per task.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.
+- `phi4_hamiltonian_truncation.py`: finite normal-ordered \(1+1\)
+  dimensional scalar \(\phi^4\) Hamiltonian truncation in a free massive Fock
+  basis.  It constructs the projected matrix for
+  \(H_0+\lambda\int:\phi^4:/4!\) in a declared momentum, particle-number,
+  free-energy, and Fourier-mode cutoff; it is a nonintegrable finite-matrix
+  benchmark, not a continuum theorem.
 - `tffsa_ising_spin_connected.py`: finite zero-momentum TFFSA-style
   connected-block benchmark for the massive Ising spin perturbation.  It
   assembles off-diagonal form-factor matrix elements in a free-fermion basis

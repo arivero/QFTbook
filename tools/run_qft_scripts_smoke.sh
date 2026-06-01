@@ -46,6 +46,9 @@ python3 qft_scripts/cluster/su3_sweep_grid.py --betas 5.7,5.9 --seeds 11,13 --ta
 echo "[qft-scripts] tcsa_ising_energy_benchmark --smoke"
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 
+echo "[qft-scripts] phi4_hamiltonian_truncation --smoke"
+python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
+
 echo "[qft-scripts] tffsa_ising_spin_connected --smoke"
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 
