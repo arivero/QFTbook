@@ -56,6 +56,9 @@ Reviewed source spine:
   expectation, and the corresponding planar self-energy.
 - `V^+`, `V^perp`, `K`: current matrices and the light-cone kernel
   `partial_-^{-1}` with the declared zero-mode prescription.
+- `S_col[B]`, `H_G`, `Gamma_W`: finite-regulator collective bilocal action,
+  its Hessian at the planar saddle, and the amputated planar singlet vertex
+  solving the Bethe-Salpeter source-response equation.
 
 ## Claim Ledger
 
@@ -75,6 +78,11 @@ Reviewed source spine:
 - Derives the finite-regulator planar Schwinger-Dyson equation
   `G(Q+Sigma)=1` and computes `Sigma` as the functional derivative of the
   leading light-cone bilocal interaction.
+- Derives the finite-regulator collective bilocal action
+  `Tr(QB)+I_LC[B]-Tr log B`, the bilocal Hessian
+  `Tr(G^{-1}XG^{-1}Y)+I_LC''(X,Y)`, the explicit light-cone interaction
+  Hessian, and the planar Bethe-Salpeter equation
+  `Gamma_W + K_G(G Gamma_W G)=W` for normalized singlet two-point functions.
 - Derives the Chern-Simons shifted D-term equation by eliminating the
   auxiliary field.
 - Proves the non-abelian pure-Chern-Simons auxiliary equation
@@ -133,7 +141,9 @@ Reviewed source spine:
   light-cone Chern-Simons quadratic factor, the first-order Gaussian source
   sign, trace-delta planar color scaling, the planar exchange and bilocal
   saddle scalings, the finite-matrix derivative of the bilocal interaction
-  giving the self-energy, and the index convention in `G(Q+Sigma)=1`.
+  giving the self-energy, the index convention in `G(Q+Sigma)=1`, and the
+  finite-matrix Hessian/source-response convention behind the planar
+  Bethe-Salpeter equation.
 
 ## Proof Obligations And Boundaries
 
@@ -143,6 +153,10 @@ Reviewed source spine:
   Schwinger-Dyson equation.  A future pass must solve the continuum integral
   equations in specific bosonic and fermionic conformal charts, including mass
   and contact-term tuning.
+- The planar Bethe-Salpeter equation is likewise a finite-regulator
+  source-response equation on the bilocal space.  The chapter has not yet
+  solved the exact bosonic/fermionic Chern-Simons vector-model vertex
+  equations in a continuum conformal chart.
 - The general ABJM moduli and supersymmetry-enhancement statements are kept
   as quoted theorem status because they use quantum monopole sectors and
   global-form data beyond the polynomial `N=2` Lagrangian.

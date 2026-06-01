@@ -113,6 +113,18 @@ def mat_sub(left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction,
     return tuple(tuple(left[i][j] - right[i][j] for j in range(size)) for i in range(size))
 
 
+def mat_add(*matrices: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
+    size = len(matrices[0])
+    return tuple(
+        tuple(sum(matrix[i][j] for matrix in matrices) for j in range(size))
+        for i in range(size)
+    )
+
+
+def mat_trace(matrix: tuple[tuple[Fraction, ...], ...]) -> Fraction:
+    return sum(matrix[i][i] for i in range(len(matrix)))
+
+
 def identity(size: int) -> tuple[tuple[Fraction, ...], ...]:
     return tuple(tuple(Fraction(1 if i == j else 0) for j in range(size)) for i in range(size))
 
@@ -166,6 +178,19 @@ def self_energy_from_variation(
                         second += v_plus[c_index][b] * g[b][d] * kernel[d][e] * v_perp[e][m]
             sigma[c_index][m] = -coeff * (first + second)
     return tuple(tuple(row) for row in sigma)
+
+
+def bilocal_hessian_interaction(
+    x: tuple[tuple[Fraction, ...], ...],
+    y: tuple[tuple[Fraction, ...], ...],
+    v_plus: tuple[tuple[Fraction, ...], ...],
+    kernel: tuple[tuple[Fraction, ...], ...],
+    v_perp: tuple[tuple[Fraction, ...], ...],
+    coeff: Fraction,
+) -> Fraction:
+    first = mat_trace(matmul(matmul(matmul(matmul(v_plus, x), kernel), v_perp), y))
+    second = mat_trace(matmul(matmul(matmul(matmul(v_plus, y), kernel), v_perp), x))
+    return -coeff * (first + second)
 
 
 def replace_entry(
@@ -222,6 +247,34 @@ def check_planar_dyson_index_convention() -> None:
     assert_equal("planar Dyson equation index convention", lhs, identity(2))
 
 
+def check_bilocal_hessian_and_ladder_vertex() -> None:
+    g = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    gamma = ((Fraction(3), Fraction(-2)), (Fraction(1), Fraction(4)))
+    delta_g = matmul(matmul(g, gamma), g)
+    g_inv = inverse_2x2(g)
+    free_amputated = matmul(matmul(g_inv, delta_g), g_inv)
+    assert_equal("free bilocal Hessian amputation", free_amputated, gamma)
+
+    v_plus = ((Fraction(1), Fraction(2)), (Fraction(-1), Fraction(3)))
+    kernel = ((Fraction(0), Fraction(1)), (Fraction(-2), Fraction(1)))
+    v_perp = ((Fraction(2), Fraction(-1)), (Fraction(1), Fraction(0)))
+    coeff = Fraction(7, 5)
+    x = ((Fraction(1), Fraction(0)), (Fraction(2), Fraction(-1)))
+    y = ((Fraction(-1), Fraction(3)), (Fraction(0), Fraction(2)))
+
+    mixed_difference = bilocal_interaction(
+        mat_add(g, x, y), v_plus, kernel, v_perp, coeff
+    ) - bilocal_interaction(mat_add(g, x), v_plus, kernel, v_perp, coeff) - bilocal_interaction(
+        mat_add(g, y), v_plus, kernel, v_perp, coeff
+    ) + bilocal_interaction(g, v_plus, kernel, v_perp, coeff)
+    interaction_hessian = bilocal_hessian_interaction(x, y, v_plus, kernel, v_perp, coeff)
+    assert_equal("CS bilocal Hessian mixed finite difference", mixed_difference, interaction_hessian)
+
+    sigma_prime_delta_g = self_energy_from_variation(delta_g, v_plus, kernel, v_perp, coeff)
+    source = mat_add(gamma, sigma_prime_delta_g)
+    assert_equal("CS amputated ladder source convention", source, mat_add(free_amputated, sigma_prime_delta_g))
+
+
 def main() -> None:
     check_light_cone_quadratic_factor()
     check_first_order_gaussian_sign()
@@ -230,6 +283,7 @@ def main() -> None:
     check_bilocal_saddle_scaling()
     check_bilocal_self_energy_variation()
     check_planar_dyson_index_convention()
+    check_bilocal_hessian_and_ladder_vertex()
     print("All Chern-Simons-matter light-front checks passed.")
 
 

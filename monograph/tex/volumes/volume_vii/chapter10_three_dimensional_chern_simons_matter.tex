@@ -549,6 +549,112 @@ the leading finite-regulator Schwinger--Dyson equation for gauge-invariant
 singlet bilocals after the light-cone Chern--Simons constraint has been
 integrated out.
 
+\subsection{Bilocal Hessian and the Planar Singlet Ladder}
+
+The planar two-point functions of singlet bilinears are controlled by the
+second variation of the same finite-regulator bilocal action.  This is the
+precise object behind the solvability of Chern--Simons vector models: one
+does not sum diagrams by naming a ``ladder'', but derives an inverse Hessian
+on the finite bilocal space and only then passes, if possible, to a continuum
+integral equation.
+
+For ordinary complex bosonic variables, after introducing the bilocal
+\(B=N^{-1}\overline\Psi\Psi\) as a finite-regulator coordinate, the leading
+collective action has the form
+\begin{equation}
+  \mathcal S_{\rm col}[B]
+  =
+  \operatorname{Tr}(QB)
+  +I_{\rm LC}[B]
+  -\operatorname{Tr}\log B .
+  \label{eq:cs-vector-collective-action}
+\end{equation}
+Here the trace is over the finite non-color regulator labels, and the
+\(-\operatorname{Tr}\log B\) term is the Jacobian of the change from \(N\)
+fundamental vectors to the positive bilocal matrix \(B\), in the region where
+that finite-dimensional change of variables is nonsingular.  The stationary
+equation of \eqref{eq:cs-vector-collective-action} is
+\[
+  Q+\Sigma[G]-G^{-1}=0,
+\]
+which is the matrix form of
+\eqref{eq:cs-vector-planar-dyson-equation}.  For fermionic vector models the
+bilocal collective coordinate and the Jacobian are graded; the following
+Hessian formula must then be read after fixing the graded current order.  The
+finite color and light-cone kernel algebra is unchanged.
+
+Let \(X,Y\) be finite bilocal variations.  The Hessian at a solution \(G\)
+is the bilinear form
+\begin{equation}
+  \mathcal H_G(X,Y)
+  =
+  \operatorname{Tr}\!\left(G^{-1}XG^{-1}Y\right)
+  +I_{\rm LC}''(X,Y),
+  \label{eq:cs-vector-bilocal-hessian}
+\end{equation}
+where the interaction part is
+\begin{equation}
+  I_{\rm LC}''(X,Y)
+  =
+  -2\pi\lambda
+  \left[
+  \operatorname{Tr}(V^+XKV^\perp Y)
+  +
+  \operatorname{Tr}(V^+YKV^\perp X)
+  \right].
+  \label{eq:cs-vector-bilocal-hessian-interaction}
+\end{equation}
+This formula is a finite-dimensional identity: it is obtained by expanding
+\(I_{\rm LC}[G+X+Y]-I_{\rm LC}[G+X]-I_{\rm LC}[G+Y]+I_{\rm LC}[G]\).
+The first term in \eqref{eq:cs-vector-bilocal-hessian} is not a free-field
+assumption; it is the second variation of the finite-regulator Jacobian
+\(-\operatorname{Tr}\log B\).
+
+Couple a normalized singlet source \(s\,\operatorname{Tr}(WB)\) by replacing
+\(\mathcal S_{\rm col}\) with
+\(\mathcal S_{\rm col}-s\,\operatorname{Tr}(WB)\).  Differentiating the
+saddle equation at \(s=0\) gives the finite-regulator Bethe--Salpeter
+equation
+\begin{equation}
+  G^{-1}\delta_WG\,G^{-1}
+  +
+  \mathcal K_G(\delta_WG)
+  =
+  W,
+  \qquad
+  \operatorname{Tr}\!\left(X\,\mathcal K_G(Y)\right)
+  =
+  I_{\rm LC}''(X,Y),
+  \label{eq:cs-vector-bethe-salpeter-deltaG}
+\end{equation}
+for the source response \(\delta_WG=(\partial G_s/\partial s)_{s=0}\).
+Equivalently, with the amputated vertex
+\[
+  \Gamma_W:=G^{-1}\delta_WG\,G^{-1},
+\]
+one has
+\begin{equation}
+  \Gamma_W+\mathcal K_G(G\Gamma_WG)=W .
+  \label{eq:cs-vector-amputated-vertex-ladder}
+\end{equation}
+The connected planar two-point function of normalized bilocal sources is then
+\begin{equation}
+  \left\langle
+    \operatorname{Tr}(W_1B)\operatorname{Tr}(W_2B)
+  \right\rangle_{\rm conn}
+  =
+  \frac1N\,
+  \operatorname{Tr}\!\left(W_1\,\delta_{W_2}G\right)
+  +O(N^{-2}).
+  \label{eq:cs-vector-singlet-two-point-from-ladder}
+\end{equation}
+In a translation-invariant continuum chart,
+\eqref{eq:cs-vector-amputated-vertex-ladder} becomes the planar ladder
+integral equation for the exact singlet vertex.  The equation is exact only
+within the declared finite-regulator large-\(N\) datum; a continuum solution
+still requires the conformal mass/contact tuning and a proof that the
+zero-mode prescription and renormalized singlet operators have a limit.
+
 \begin{controlledapproximation}[Planar light-front closure]
 \label{ca:planar-cs-vector-light-front-closure}
 In the datum of Definition~\ref{def:planar-cs-vector-model-datum}, the
