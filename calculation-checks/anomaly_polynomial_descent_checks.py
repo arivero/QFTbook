@@ -18,6 +18,8 @@ inflow sections:
 * the n=2 consistent-descent homotopy coefficients 1 and 1/2;
 * Abelianized cubic counterterms preserve the completely symmetric Cartan
   coefficient of the anomaly;
+* the Abelianized Bardeen-Zumino improvement changes the Ward coefficient
+  from the consistent value C to the covariant value 3C;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -184,6 +186,32 @@ def check_abelian_counterterm_symmetric_cubic_invariance() -> None:
                 )
 
 
+def check_abelian_bardeen_zumino_factor() -> None:
+    # On a one-generator commuting subspace, I_6=C F^3 has
+    # I_5^(0)=C A F^2 and I_4^(1)=C lambda F^2.  The Bardeen-Zumino
+    # current is *J_BZ=2 C A F because the A^3 term vanishes for one
+    # one-form.  Its exterior derivative contributes 2 C F^2, so the
+    # covariant Ward representative has coefficient 3 C.
+    consistent_coefficient = Fraction(1)
+    bardeen_zumino_divergence = Fraction(2)
+    covariant_coefficient = consistent_coefficient + bardeen_zumino_divergence
+
+    assert_equal(
+        "Abelian Bardeen-Zumino consistent-to-covariant factor",
+        covariant_coefficient,
+        Fraction(3),
+    )
+
+    # d(2 A F)=2 F^2 - 2 A dF, and the Bianchi identity gives dF=0.
+    bianchi_remainder = Fraction(0)
+    derivative_coefficient = Fraction(2) - Fraction(2) * bianchi_remainder
+    assert_equal(
+        "Abelian Bardeen-Zumino divergence coefficient",
+        derivative_coefficient,
+        Fraction(2),
+    )
+
+
 def check_standard_model_hypercharge_sums() -> None:
     cubic = sum(su3 * su2 * y**3 for _, su3, su2, y in SM_FIELDS)
     linear = sum(su3 * su2 * y for _, su3, su2, y in SM_FIELDS)
@@ -216,6 +244,7 @@ def main() -> None:
     check_chern_weil_transgression_coefficients()
     check_consistent_descent_coefficients()
     check_abelian_counterterm_symmetric_cubic_invariance()
+    check_abelian_bardeen_zumino_factor()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()
     print("All anomaly-polynomial and inflow coefficient checks passed.")

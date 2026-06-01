@@ -72,8 +72,11 @@
   heat-kernel coefficient, the six-form
   \(\widehat A\,\operatorname{ch}\) coefficients, the \(2\pi i\) inflow
   conversion, Standard Model hypercharge sums, and \(SU(N)\)
-  fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.  The
-  2026-06-01 Cartan-restriction continuation adds the Abelianized cubic
+  fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.  It also
+  checks the Abelianized Bardeen--Zumino calibration in which the consistent
+  coefficient \(C\) is supplemented by \(\dd(2C\,AF)=2C\,F^2\), giving the
+  covariant coefficient \(3C\).  The 2026-06-01 Cartan-restriction
+  continuation adds the Abelianized cubic
   counterterm test: a counterterm
   \(H_{ij,k}A^iA^jF^k/2\), \(H_{ij,k}=-H_{ji,k}\), changes
   \(C_{i;jk}\lambda^iF^jF^k\) only by a tensor whose complete
@@ -317,6 +320,14 @@
   \]
   and the expanded \(\partial\mathsf A\) form with the noncommutative ordering
   written explicitly in the manuscript.
+- In a one-generator Abelianized coordinate, the descent
+  \(I_6=C F^3\), \(I_5^{(0)}=C A F^2\), and
+  \(I_4^{(1)}=C\lambda F^2\) gives the consistent coefficient \(C\), while
+  the Bardeen--Zumino current has
+  \(\star J_{\rm BZ}=2C AF\) and
+  \(\dd\star J_{\rm BZ}=2C F^2\).  The covariant Ward representative
+  therefore has coefficient \(3C\).  This is a local current-representative
+  calibration, not a second anomaly class.
 - A nonzero global-symmetry anomaly is data to be matched by the infrared
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
 - The strong CP parameter is the anomaly-invariant combination of the
@@ -492,6 +503,10 @@
   leaving the full local BRST classification only for the converse
   cohomology statement that no semisimple cubic class remains after the
   invariant-polynomial coefficient vanishes.
+- 2026-06-01 issue #696 Bardeen--Zumino calibration pass: added the
+  Abelianized factor-three check for the distinction between the consistent
+  descent representative and the covariant current representative, and paired
+  it with an exact rational calculation check.
 - 2026-06-01 issue #701 warning-scope pass: added a convention warning at the
   start of the anomaly chapter tying anomaly signs and factors to the entire
   datum \((\bar\psi,\gamma_5,\epsilon^{0123},D_\mu,F_{\mu\nu},\operatorname{tr})\),

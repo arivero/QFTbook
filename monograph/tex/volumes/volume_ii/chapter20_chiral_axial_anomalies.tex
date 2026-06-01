@@ -2337,6 +2337,52 @@ matrices in \eqref{eq:bardeen-zumino-current-component-derivative} is part of
 the convention; replacing it by a commutative shorthand would lose the
 distinction between consistent and covariant currents for a nonabelian
 background.
+
+\paragraph{Abelian calibration of the Bardeen--Zumino factor.}
+The simplest check of the normalization is the one-generator commuting
+subspace.  Let
+\[
+  I_6=C\,\mathsf F^3,\qquad \mathsf F=\dd\mathsf A ,
+\]
+where \(C\) includes the trace and the factor \(\kappa\).  The corresponding
+Chern--Simons and consistent descent forms are
+\begin{equation}
+  I_5^{(0)}=C\,\mathsf A\mathsf F^2,\qquad
+  I_4^{(1)}(\lambda,\mathsf A)=C\,\lambda\,\mathsf F^2 .
+  \label{eq:abelian-consistent-descent-calibration}
+\end{equation}
+Thus the consistent Ward identity carries the coefficient \(C\).  In the
+same Abelianized coordinate the Bardeen--Zumino current
+\eqref{eq:bardeen-zumino-current-polynomial} reduces to
+\begin{equation}
+  \star J_{\mathrm{BZ}}
+  =
+  2C\,\mathsf A\mathsf F ,
+  \qquad
+  \dd\star J_{\mathrm{BZ}}
+  =
+  2C\,\mathsf F^2 ,
+  \label{eq:abelian-bz-divergence-calibration}
+\end{equation}
+because \(\mathsf A^3=0\) for a single one-form and \(\dd\mathsf F=0\).
+The covariant Ward representative obtained by improving the current is
+therefore
+\begin{equation}
+  C\,\lambda\,\mathsf F^2
+  +
+  2C\,\lambda\,\mathsf F^2
+  =
+  3C\,\lambda\,\mathsf F^2 .
+  \label{eq:abelian-covariant-anomaly-factor-three}
+\end{equation}
+This factor of three is a normalization check, not a new anomaly class.  The
+first term is the descent representative of the effective-action variation;
+the additional two units are the local divergence of the Bardeen--Zumino
+polynomial.  In the nonabelian case the same statement is encoded by the
+ordered polynomial in
+\eqref{eq:bardeen-zumino-current-component-derivative}; the covariant current
+transforms covariantly, but it is not in general the differential of a local
+effective action.
 For a set of Weyl fermions, sum \eqref{eq:bardeen-zumino-current-polynomial}
 over left-handed representations and subtract the corresponding right-handed
 representations, in parallel with the anomaly polynomial \(I_6\).
