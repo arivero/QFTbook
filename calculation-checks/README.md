@@ -73,7 +73,9 @@ Current checks:
   isotypic part.  It also checks the finite \(S_3\) regular
   charged-coordinate core: right translation rotates matrix-coefficient
   columns, Haar expectation kills the standard and sign multiplets while
-  preserving constants, and \(\wedge^2 V\) gives the sign representation.
+  preserving constants, \(\wedge^2 V\) gives the sign representation, and
+  every left-equivariant automorphism of \(\operatorname{Fun}(S_3)\) is a
+  right translation, giving the finite Tannakian converse.
 - `free_weyl_net_checks.py`: exact rational checks for the Volume IV massive
   scalar Weyl-net benchmark, including associativity of the finite Weyl
   cocycle, the sign in \(W(u)W(v)=\exp[-i\sigma(u,v)]W(v)W(u)\), the Weyl

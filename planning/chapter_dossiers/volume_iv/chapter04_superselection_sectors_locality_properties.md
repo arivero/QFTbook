@@ -179,6 +179,14 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   how matrix coefficients transform under the reconstructed group, how Haar
   expectation recovers observables, and how multiplication realizes
   tensor-product fusion before the analytic DHR localization burden is added.
+- 2026-06-01 finite Tannakian converse pass: added the
+  \(\operatorname{Fun}(G)\) Peter--Weyl reconstruction argument showing that a
+  left-equivariant unital \(*\)-automorphism of the finite regular algebra is
+  a right translation \(x\mapsto xh\), hence that a tensor natural
+  automorphism of the forgetful fiber functor is evaluation at a unique group
+  element in the finite-group case.  The DHR/DR theorem boundary is now
+  narrowed to the compact completion and the local-QFT construction of the
+  sector category and field algebra.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost

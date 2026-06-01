@@ -544,6 +544,83 @@ coordinates, Haar expectation, and fusion multiplication are the same data
 that the Doplicher--Roberts theorem reconstructs from a symmetric
 finite-statistics sector category.
 
+\paragraph{Finite Tannakian converse through the regular algebra.}
+The finite regular algebra also makes the converse direction of the
+Tannakian reconstruction visible.  Let \(G\) be a finite group and let
+\[
+  \mathcal R=\operatorname{Fun}(G)
+\]
+with point idempotents \(\delta_x\), \(x\in G\).  The left regular action is
+\begin{equation}
+  (L_a f)(g)=f(a^{-1}g),
+  \qquad
+  L_a\delta_x=\delta_{ax}.
+  \label{eq:finite-tannaka-left-regular-action}
+\end{equation}
+Every unital \(*\)-automorphism \(T\) of the commutative finite-dimensional
+algebra \(\mathcal R\) permutes the minimal projections:
+\[
+  T\delta_x=\delta_{\phi(x)}
+\]
+for a unique permutation \(\phi\) of \(G\).  If \(T\) commutes with every
+left translation, then
+\[
+  \delta_{\phi(ax)}
+  =
+  T L_a\delta_x
+  =
+  L_a T\delta_x
+  =
+  \delta_{a\phi(x)} .
+\]
+Hence \(\phi(ax)=a\phi(x)\).  Setting \(x=e\) gives
+\[
+  \phi(a)=a h,\qquad h=\phi(e),
+\]
+and therefore \(\phi(x)=xh\) for all \(x\in G\).  Thus every
+left-equivariant algebra automorphism of \(\operatorname{Fun}(G)\) is a right
+translation:
+\begin{equation}
+  (T_h f)(g)=f(g h^{-1}).
+  \label{eq:finite-tannaka-right-translation-classification}
+\end{equation}
+
+For a matrix coefficient \(f^W_{\alpha i}(g)=D_W(g)_{\alpha i}\),
+\eqref{eq:finite-tannaka-right-translation-classification} gives
+\begin{equation}
+  T_h f^W_{\alpha i}(g)
+  =
+  D_W(g h^{-1})_{\alpha i}
+  =
+  \sum_j f^W_{\alpha j}(g)\,D_W(h^{-1})_{ji}.
+  \label{eq:finite-tannaka-matrix-coefficient-action}
+\end{equation}
+Thus the corresponding tensor natural automorphism of the forgetful fiber
+functor is
+\[
+  u_W=D_W(h^{-1})
+\]
+on every finite-dimensional representation \(W\).  Conversely, a unitary
+tensor natural automorphism \(u_W\) acts on matrix coefficients by the right
+side of \eqref{eq:finite-tannaka-matrix-coefficient-action}; tensor
+compatibility makes this action multiplicative under
+\eqref{eq:dr-s3-matrix-coefficient-product}, naturality makes it commute
+with the intertwiners that decompose tensor products, and the Peter--Weyl
+decomposition of \(\operatorname{Fun}(G)\) gives a left-equivariant
+\(*\)-automorphism of \(\mathcal R\).  The preceding paragraph then supplies a
+unique \(h\in G\).  For finite groups this proves
+\[
+  \operatorname{Aut}^{\otimes,*}(\omega_{\rm fib})
+  \simeq
+  G
+\]
+in the convention \(u_W=D_W(h^{-1})\).  The compact-group
+Doplicher--Roberts theorem uses the same Peter--Weyl mechanism with the
+dense Hopf \(*\)-algebra of representative functions and the \(C^*\)-norm
+closure; the local-QFT burden remains the DHR construction of the symmetric
+finite-statistics sector category and the field-algebra realization of this
+categorical duality.
+
 \begin{example}[Pointed field algebra as a crossed product]
 \label{ex:dr-pointed-crossed-product-field-algebra}
 The same pointed category has an explicit charged-field algebra when the

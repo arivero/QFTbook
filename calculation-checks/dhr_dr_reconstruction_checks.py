@@ -108,6 +108,13 @@ def compose_perm(p: tuple[int, int, int], q: tuple[int, int, int]) -> tuple[int,
     return tuple(p[q[i]] for i in range(3))
 
 
+def inverse_perm(p: tuple[int, int, int]) -> tuple[int, int, int]:
+    inverse = [0, 0, 0]
+    for i, value in enumerate(p):
+        inverse[value] = i
+    return tuple(inverse)
+
+
 def permutation_sign(p: tuple[int, int, int]) -> int:
     inversions = sum(1 for i in range(3) for j in range(i + 1, 3) if p[i] > p[j])
     return -1 if inversions % 2 else 1
@@ -274,6 +281,46 @@ def check_s3_regular_field_core() -> None:
         assert_equal(f"S3 exterior-square sign g={g}", matrix_det(matrices[g]), Fraction(permutation_sign(g)))
 
 
+def check_s3_left_equivariant_function_automorphisms() -> None:
+    group = list(permutations(range(3)))
+    identity = (0, 1, 2)
+    index = {g: i for i, g in enumerate(group)}
+    left_equivariant_maps = []
+
+    for image_indices in permutations(range(len(group))):
+        image = {g: group[image_indices[index[g]]] for g in group}
+        is_left_equivariant = all(
+            image[compose_perm(a, x)] == compose_perm(a, image[x])
+            for a in group
+            for x in group
+        )
+        if is_left_equivariant:
+            h = image[identity]
+            assert_equal(
+                f"S3 left-equivariant automorphism is right translation h={h}",
+                {x: image[x] for x in group},
+                {x: compose_perm(x, h) for x in group},
+            )
+            left_equivariant_maps.append(h)
+
+    assert_equal("S3 left-equivariant function algebra automorphism count", len(left_equivariant_maps), 6)
+    assert_equal("S3 left-equivariant function algebra automorphism labels", set(left_equivariant_maps), set(group))
+
+    matrices = {g: standard_matrix_s3(g) for g in group}
+    # If T_h delta_x = delta_{x h}, then (T_h f)(g)=f(g h^{-1}).
+    # On matrix coefficients this gives right multiplication by D(h^{-1})
+    # on the charged column index.
+    for h in group:
+        h_inv = inverse_perm(h)
+        for g in group:
+            gh_inv = compose_perm(g, h_inv)
+            for a in range(2):
+                for b in range(2):
+                    lhs = matrices[gh_inv][a][b]
+                    rhs = sum(matrices[g][a][j] * matrices[h_inv][j][b] for j in range(2))
+                    assert_equal(f"S3 finite Tannaka matrix action h={h} g={g} a={a} b={b}", lhs, rhs)
+
+
 def main() -> None:
     for n in range(2, 13):
         check_tensor_automorphisms(n)
@@ -281,6 +328,7 @@ def main() -> None:
         check_crossed_product_core(n)
     check_s3_nonabelian_reconstruction_diagnostic()
     check_s3_regular_field_core()
+    check_s3_left_equivariant_function_automorphisms()
     print("All finite DHR/DR reconstruction diagnostics passed.")
 
 
