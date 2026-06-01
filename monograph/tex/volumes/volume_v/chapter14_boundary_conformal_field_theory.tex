@@ -1142,6 +1142,59 @@ elementary boundary modules.  Formula
 \eqref{eq:fusion-ring-character-identity} is the \(A=\mathbf 1\) version of
 this statement.
 
+\paragraph{Finite algebra shadow of the classifying algebra.}
+The preceding categorical sentence has a simple finite algebra model which
+keeps the logic visible in non-diagonal examples.  Let
+\[
+  A_{\rm fin}=\bigoplus_{r=1}^{R}\operatorname{Mat}_{d_r}(\mathbb C)
+\]
+be an ordinary finite-dimensional semisimple algebra, regarded as the
+decategorified shadow of a special symmetric Frobenius algebra object and
+its module category.  Its center is
+\[
+  Z(A_{\rm fin})
+  =
+  \bigoplus_{r=1}^{R}\mathbb C\,e_r ,
+  \qquad
+  e_r e_s=\delta_{rs}e_r,\qquad
+  \sum_{r=1}^{R}e_r=1 .
+\]
+The simple left \(A_{\rm fin}\)-modules are the column modules
+\(M_r=\mathbb C^{d_r}\).  A central element
+\(z=\sum_r z_r e_r\) acts on \(M_r\) by the scalar \(z_r\), and therefore
+defines a character
+\begin{equation}
+  \chi_r:Z(A_{\rm fin})\to\mathbb C,\qquad
+  \chi_r(z)=z_r .
+  \label{eq:bcft-finite-center-character}
+\end{equation}
+The disk identity-channel sewing equation is, in this finite model, exactly
+the multiplicativity of this central character:
+\begin{equation}
+  \chi_r(zz')=\chi_r(z)\chi_r(z'),
+  \qquad z,z'\in Z(A_{\rm fin}) .
+  \label{eq:bcft-finite-center-character-sewing}
+\end{equation}
+This is the non-diagonal analogue of
+\eqref{eq:cardy-disk-two-bulk-classifying-sewing}: the bulk field that
+survives in the boundary identity channel is not a raw element of the
+fusion ring but its image in the commutative classifying algebra acting on
+the elementary boundary module.
+
+Two cautions are part of the statement.  First, a noncentral element of
+\(A_{\rm fin}\) does not act by a scalar on \(M_r\), so it cannot be read as
+a disk one-point coefficient of the identity boundary field.  Its boundary
+image is an endomorphism-valued insertion.  Second, if one replaces the
+elementary boundary condition \(M_r\) by a direct sum
+\(M=\oplus_r M_r^{\oplus n_r}\), the boundary identity algebra becomes
+\(\operatorname{End}_{A_{\rm fin}}(M)\simeq\oplus_r\operatorname{Mat}_{n_r}(\mathbb C)\).
+The scalar character \(\chi_r\) is replaced by a matrix-valued action, or by
+a chosen trace after adding Chan--Paton data.  Such a trace is additive over
+summands but is not a multiplicative character unless the boundary module is
+simple.  Thus Cardy--Lewellen disk sewing distinguishes elementary boundary
+conditions from finite direct sums even before any analytic issue about
+convergence of bordered-surface correlators enters.
+
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
 \begin{equation}

@@ -669,12 +669,13 @@ Current checks:
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
-  classifying sewing identity, boundary entropy squares, Chan--Paton direct
-  sums, the positive spectral weight in the boundary-entropy gradient metric,
-  compact-boson T-duality zero modes, Ising boundary-changing fusing
-  constants and OPE powers, the finite four-boundary Cardy--Lewellen sewing
-  cell, and the Liouville FZZT/ZZ hyperbolic identities used in the
-  nonrational boundary-state discussion.
+  classifying sewing identity, the finite classifying-center model for
+  non-diagonal rational boundary sewing, boundary entropy squares,
+  Chan--Paton direct sums, the positive spectral weight in the
+  boundary-entropy gradient metric, compact-boson T-duality zero modes,
+  Ising boundary-changing fusing constants and OPE powers, the finite
+  four-boundary Cardy--Lewellen sewing cell, and the Liouville FZZT/ZZ
+  hyperbolic identities used in the nonrational boundary-state discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
   dual, one-screening and dual one-screening coefficient

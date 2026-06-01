@@ -255,6 +255,104 @@ def check_cardy_unit_algebra_module_multiplicities() -> None:
                 )
 
 
+def center_multiply(
+    left: tuple[Fraction, ...],
+    right: tuple[Fraction, ...],
+) -> tuple[Fraction, ...]:
+    return tuple(
+        left_entry * right_entry
+        for left_entry, right_entry in zip(left, right)
+    )
+
+
+def check_finite_classifying_center_characters() -> None:
+    """Check the finite algebra shadow of non-diagonal disk sewing.
+
+    Use A_fin=Mat_2(C) direct-sum Mat_3(C).  The center is C e_0 + C e_1.
+    On the elementary simple modules M_0=C^2 and M_1=C^3, a central element
+    z=(z_0,z_1) acts by the scalar z_r.  The elementary disk identity-channel
+    coordinate is therefore a multiplicative central character.  A normalized
+    trace on the reducible module M_0 direct-sum M_1 is additive but not a
+    character; this records why a direct sum boundary condition carries
+    Chan-Paton matrix data rather than one elementary disk one-point scalar.
+    """
+
+    samples = (
+        (Fraction(2), Fraction(-3)),
+        (Fraction(5, 2), Fraction(7, 3)),
+        (Fraction(-4, 5), Fraction(11, 6)),
+    )
+    for left in samples:
+        for right in samples:
+            product = center_multiply(left, right)
+            for module_index in (0, 1):
+                elementary_left = left[module_index]
+                elementary_right = right[module_index]
+                elementary_product = product[module_index]
+                assert_equal(
+                    "finite center elementary character multiplicativity "
+                    f"module={module_index}, left={left}, right={right}",
+                    elementary_product,
+                    elementary_left * elementary_right,
+                )
+
+    e0 = (Fraction(1), Fraction(0))
+    e1 = (Fraction(0), Fraction(1))
+    assert_equal(
+        "finite center primitive idempotent e0",
+        center_multiply(e0, e0),
+        e0,
+    )
+    assert_equal(
+        "finite center primitive idempotent e1",
+        center_multiply(e1, e1),
+        e1,
+    )
+    assert_equal(
+        "finite center orthogonal primitive idempotents",
+        center_multiply(e0, e1),
+        (Fraction(0), Fraction(0)),
+    )
+    assert_equal(
+        "finite center identity from primitive idempotents",
+        tuple(left + right for left, right in zip(e0, e1)),
+        (Fraction(1), Fraction(1)),
+    )
+
+    def reducible_normalized_trace(z: tuple[Fraction, Fraction]) -> Fraction:
+        return (2 * z[0] + 3 * z[1]) / 5
+
+    left = (Fraction(2), Fraction(5))
+    right = (Fraction(7), Fraction(11))
+    trace_product = reducible_normalized_trace(center_multiply(left, right))
+    product_of_traces = reducible_normalized_trace(left) * reducible_normalized_trace(
+        right
+    )
+    if trace_product == product_of_traces:
+        raise AssertionError("reducible normalized trace accidentally became multiplicative")
+
+    noncentral_matrix = ((Fraction(0), Fraction(1)), (Fraction(0), Fraction(0)))
+    commutator_with_diagonal = (
+        (
+            Fraction(2) * noncentral_matrix[0][0]
+            - noncentral_matrix[0][0] * Fraction(2),
+            Fraction(2) * noncentral_matrix[0][1]
+            - noncentral_matrix[0][1] * Fraction(3),
+        ),
+        (
+            Fraction(3) * noncentral_matrix[1][0]
+            - noncentral_matrix[1][0] * Fraction(2),
+            Fraction(3) * noncentral_matrix[1][1]
+            - noncentral_matrix[1][1] * Fraction(3),
+        ),
+    )
+    if commutator_with_diagonal == (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    ):
+        raise AssertionError("noncentral matrix commuted with all diagonal test elements")
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -469,6 +567,7 @@ def main() -> None:
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
     check_cardy_unit_algebra_module_multiplicities()
+    check_finite_classifying_center_characters()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
@@ -479,7 +578,8 @@ def main() -> None:
     check_liouville_degenerate_shift_sum()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
-        "Chan-Paton, compact-boson, and Liouville-boundary checks passed."
+        "finite-center, Chan-Paton, compact-boson, and Liouville-boundary "
+        "checks passed."
     )
 
 

@@ -88,6 +88,14 @@
   `dim Hom_A(M tensor U_i,N)`, boundary OPE composition by \(A\)-linear
   morphisms, the \(A=1\) reduction to diagonal Cardy boundary spectra, and
   the bimodule formula for closed bulk multiplicities.
+- Adds the finite classifying-center model for non-diagonal rational sewing:
+  for \(A_{\rm fin}=\oplus_r \operatorname{Mat}_{d_r}(\mathbb C)\), central
+  primitive idempotents \(e_r\) act by scalar characters on simple boundary
+  modules \(M_r\), giving the disk identity-channel sewing equation
+  `chi_r(zz')=chi_r(z) chi_r(z')`; noncentral elements give
+  endomorphism-valued boundary insertions, and finite direct sums replace the
+  elementary character by Chan--Paton matrix data or by nonmultiplicative
+  trace choices.
 
 ## Claims To Verify
 
@@ -137,6 +145,10 @@
    boundary sewing into module associativity and chiral associator pentagon
    identities; analytic all-surface sewing remains the external theorem
    boundary.
+16. In a finite semisimple algebra shadow of a non-diagonal rational BCFT,
+   disk identity-channel one-point coordinates are central characters on
+   elementary boundary modules, not arbitrary traces on reducible modules and
+   not actions of noncentral boundary endomorphisms.
 
 ## Figures
 
@@ -149,6 +161,7 @@
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
   fusion-ring characters, normalized Cardy two-bulk classifying sewing,
+  the finite classifying-center model for non-diagonal rational sewing,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -218,3 +231,9 @@
   of the boundary two-point function and the positive kernel weight
   \(2\kappa^2/(\Delta(\Delta^2+\kappa^2))\); extended
   `bcft_cardy_checks.py` to verify the rational algebra of this weight.
+- 2026-06-01 finite classifying-center pass: added the finite semisimple
+  algebra shadow of non-diagonal rational disk sewing, distinguishing
+  central elementary boundary characters from noncentral endomorphism-valued
+  insertions and from trace choices on finite direct sums; extended
+  `bcft_cardy_checks.py` with exact center-character and reducible-trace
+  diagnostics.
