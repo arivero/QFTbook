@@ -1461,7 +1461,9 @@ Current checks:
   bookkeeping for stability away from grooming-boundary hypersurfaces, and
   the measured-function distinction between positive-angular-power groomed
   shapes and the retained-energy fraction in the mMDT one-prong collinear
-  limit.
+  limit; it also checks the fixed-coupling soft-drop groomed-mass radiator
+  area, including the mMDT single-log limit and continuity at the grooming
+  transition.
 - `shape_function_convolution_checks.py`: exact rational checks for the
   jet shape-function section, including finite spectral pairing of the soft
   measurement coordinate, normalization of the endpoint convolution, the

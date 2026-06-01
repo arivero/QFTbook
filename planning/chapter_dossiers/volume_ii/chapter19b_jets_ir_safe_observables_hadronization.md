@@ -66,6 +66,10 @@ The chapter establishes:
 - a measured-mMDT finite-event test separating positive-angular-power groomed
   moments, which pass the one-prong collinear check, from retained-energy
   fraction, which fails it;
+- a fixed-coupling soft-collinear soft-drop groomed-mass radiator geometry,
+  including the logarithmic phase-space area, the mMDT single-log limit, and
+  the scope boundary between this controlled approximation and a full
+  renormalized factorization theorem;
 - the minimized-\(N\)-subjettiness value functional on a compact angular jet
   patch, with existence of minimizing axes and soft/collinear continuity of
   the minimized value rather than of a chosen axis label;
@@ -168,6 +172,11 @@ The chapter establishes:
      of the groomed constituent set by itself.  A positive-angular-power
      groomed moment can vanish on the deleted one-prong collinear branch,
      while retained-energy fraction jumps from \(1\) to \(1-z\).
+9ac. The fixed-coupling soft-drop mass radiator is a logarithmic phase-space
+     coordinate, not a QCD factorization theorem.  In the soft-collinear chart
+     the veto area is cut out by \(u+t<L_\rho\) and
+     \(u<L_z+\beta_{\rm SD}t/2\), giving the mMDT single-log area
+     \(L_\rho L_z-L_z^2/2\) below the grooming scale.
 9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
     calorimetric value functional on finite-energy jet measures; selected
     minimizing axes are auxiliary data and can jump at degenerate events
@@ -241,6 +250,11 @@ The chapter establishes:
   behavior from the retained-energy fraction, and extended
   `calculation-checks/soft_drop_irc_checks.py` with exact rational checks of
   the \(2z(1-z)\theta^\kappa\) scaling and the mMDT energy-fraction jump.
+- 2026-06-01 issue #526 soft-drop mass-radiator pass: added the
+  fixed-coupling soft-collinear groomed-mass radiator as a controlled
+  approximation, derived the logarithmic area formula and mMDT single-log
+  limit, and extended `calculation-checks/soft_drop_irc_checks.py` with exact
+  rational checks of the phase-space geometry.
 - 2026-06-01 issue #526/#630 continuation: added the minimized
   \(N\)-subjettiness measure-functional definition, proved existence of
   minimizing axes and continuity of the minimized value under weak, soft, and

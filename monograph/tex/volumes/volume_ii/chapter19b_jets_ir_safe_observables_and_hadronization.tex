@@ -977,6 +977,105 @@ energy-retention observables cannot.  Endpoint distributions of
 own factorization and resummation data, because IRC safety of the measurement
 is only the first finiteness condition.
 
+\paragraph{Fixed-coupling soft-drop mass radiator.}
+A useful measured-observable calibration is the groomed jet-mass cumulative
+distribution in the single-emission soft-collinear chart.  The calculation
+below is the logarithmic phase-space geometry that a
+factorization theorem must reproduce in its leading coordinate.
+
+\begin{controlledapproximation}[Soft-drop mass at fixed-coupling soft-collinear accuracy]
+\label{ca:soft-drop-mass-fixed-coupling-radiator}
+Consider one energetic parton of color factor \(C_i\) and one unresolved
+emission with energy fraction \(z\ll1\), normalized angle
+\(\theta=\Delta R/R_0\ll1\), and groomed mass coordinate
+\[
+  \rho=\frac{m_{J,{\rm gr}}^2}{p_T^2R_0^2}=z\theta^2
+\]
+in this chart.  Approximate the real-emission measure by
+\[
+  \frac{\alpha_s C_i}{\pi}\frac{\dd\theta^2}{\theta^2}\frac{\dd z}{z},
+\]
+hold \(\alpha_s\) fixed, ignore finite terms in the splitting function,
+recoil, boundary corrections at \(z\sim1\), clustering logarithms, non-global
+correlations, and power corrections in \(\rho,z_{\rm cut}\).  The soft-drop
+condition is \(z>z_{\rm cut}\theta^{\beta_{\rm SD}}\).  With
+\[
+  L_\rho=\log\frac1\rho,\qquad
+  L_z=\log\frac1{z_{\rm cut}},\qquad
+  b=\frac{\beta_{\rm SD}}{2},
+\]
+the leading radiator is the area
+\begin{equation}
+  A_\beta(L_\rho,L_z)
+  =
+  \int_0^\infty\dd t\int_0^\infty\dd u\,
+  \mathbf 1_{\{u+t<L_\rho\}}\,
+  \mathbf 1_{\{u<L_z+bt\}},
+  \label{eq:soft-drop-mass-radiator-area}
+\end{equation}
+where \(t=\log(1/\theta^2)\) and \(u=\log(1/z)\).  Hence
+\begin{equation}
+  \Sigma_{\rm SD}^{\rm LL}(\rho)
+  =
+  \exp\!\left[
+    -\frac{\alpha_s C_i}{\pi}A_\beta(L_\rho,L_z)
+  \right]
+  \label{eq:soft-drop-mass-fixed-coupling-sudakov}
+\end{equation}
+inside this controlled approximation.
+\end{controlledapproximation}
+
+The area in \eqref{eq:soft-drop-mass-radiator-area} is elementary but
+instructive.  If \(L_\rho\leq L_z\), the mass constraint is stronger than the
+grooming constraint throughout the triangular region \(u+t<L_\rho\), so
+\[
+  A_\beta(L_\rho,L_z)=\frac12 L_\rho^2 .
+\]
+If \(L_\rho>L_z\), the two boundary lines
+\[
+  u=L_\rho-t,\qquad u=L_z+bt
+\]
+intersect at
+\[
+  t_*=\frac{L_\rho-L_z}{1+b}.
+\]
+The area is therefore
+\begin{equation}
+  A_\beta(L_\rho,L_z)
+  =
+  L_z t_*+\frac{b}{2}t_*^2
+  +\frac12(L_\rho-t_*)^2,
+  \qquad
+  t_*=\frac{L_\rho-L_z}{1+b},
+  \qquad
+  L_\rho>L_z .
+  \label{eq:soft-drop-mass-radiator-closed-form}
+\end{equation}
+For mMDT, \(\beta_{\rm SD}=0\), this reduces to
+\begin{equation}
+  A_0(L_\rho,L_z)
+  =
+  L_\rho L_z-\frac12L_z^2,
+  \qquad L_\rho>L_z .
+  \label{eq:mmdt-single-log-radiator}
+\end{equation}
+Thus mMDT removes the soft double logarithm below the grooming scale: the
+radiator grows linearly in \(L_\rho\), with coefficient fixed by
+\(L_z=\log(1/z_{\rm cut})\).  For \(\beta_{\rm SD}>0\), the coefficient of
+the asymptotic \(L_\rho^2\) term is nonzero and depends continuously on
+\(\beta_{\rm SD}\); the grooming boundary still removes part of the soft
+triangle, but no longer removes the double-logarithmic growth completely.
+
+Equations
+\eqref{eq:soft-drop-mass-fixed-coupling-sudakov}--\eqref{eq:mmdt-single-log-radiator}
+should be read as a calibration of logarithmic phase space.  A physical
+prediction for a groomed jet-mass distribution must replace this chart by a
+renormalized factorization datum: the hard production process, the jet
+function for the initiating parton, the groomed soft or collinear-soft
+function, overlap subtractions, running coupling, finite splitting functions,
+matching to fixed order, non-global and clustering effects where present, and
+the hadronization coordinate appropriate to the measured mass region.
+
 \begin{definition}[\(N\)-subjettiness]
 \label{def:n-subjettiness}
 For a jet with constituents \(k\), choose \(N\) axes

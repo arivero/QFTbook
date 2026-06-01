@@ -61,6 +61,20 @@ def finite_angular_moment(
     return numerator / (total**2 * radius**kappa)
 
 
+def soft_drop_mass_radiator_area(log_rho: Fraction, log_zcut: Fraction, beta: int) -> Fraction:
+    """Area of the fixed-coupling soft-drop mass veto region.
+
+    The logarithmic variables are t=log(1/theta^2) and u=log(1/z).  The veto
+    region has u+t < log_rho and u < log_zcut + beta*t/2.
+    """
+
+    if log_rho <= log_zcut:
+        return log_rho * log_rho / 2
+    b = Fraction(beta, 2)
+    t_star = (log_rho - log_zcut) / (1 + b)
+    return log_zcut * t_star + b * t_star * t_star / 2 + (log_rho - t_star) ** 2 / 2
+
+
 class Split(NamedTuple):
     left: str
     right: str
@@ -163,6 +177,42 @@ def check_measured_mmdt_functionals() -> None:
     assert_equal("angular moment has theta^kappa scaling", 100 * smaller_angle_shape, positive_beta_shape)
 
 
+def check_fixed_coupling_soft_drop_mass_radiator() -> None:
+    # Above the grooming transition the grooming condition is inactive and the
+    # triangular ungroomed soft-collinear area L^2/2 is recovered.
+    assert_equal(
+        "grooming inactive above transition",
+        soft_drop_mass_radiator_area(Fraction(3), Fraction(5), beta=2),
+        Fraction(9, 2),
+    )
+
+    # For mMDT, beta=0, the area is L*L_z - L_z^2/2 below the grooming scale.
+    assert_equal(
+        "mMDT single-log radiator area",
+        soft_drop_mass_radiator_area(Fraction(5), Fraction(2), beta=0),
+        Fraction(8),
+    )
+    assert_equal(
+        "mMDT area grows linearly in log rho",
+        soft_drop_mass_radiator_area(Fraction(6), Fraction(2), beta=0)
+        - soft_drop_mass_radiator_area(Fraction(5), Fraction(2), beta=0),
+        Fraction(2),
+    )
+
+    # For beta=2, b=1 and t_*=(L-L_z)/2.  With L=7 and L_z=3 the two pieces
+    # give 3*2 + (1/2)*2^2 + (1/2)*5^2 = 41/2.
+    assert_equal(
+        "positive-beta radiator closed form",
+        soft_drop_mass_radiator_area(Fraction(7), Fraction(3), beta=2),
+        Fraction(41, 2),
+    )
+    assert_equal(
+        "radiator continuous at transition",
+        soft_drop_mass_radiator_area(Fraction(3), Fraction(3), beta=4),
+        Fraction(9, 2),
+    )
+
+
 def check_fixed_tree_decision_margins() -> None:
     tree: Tree = {
         "root": Split("A", "B", Fraction(1)),
@@ -199,6 +249,7 @@ def main() -> None:
     check_beta_zero_four_momentum_counterexample()
     check_positive_beta_collinear_limit()
     check_measured_mmdt_functionals()
+    check_fixed_coupling_soft_drop_mass_radiator()
     check_fixed_tree_decision_margins()
     print("All soft-drop IRC classification checks passed.")
 
