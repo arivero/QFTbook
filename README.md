@@ -11,12 +11,10 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume Architecture: Full Volume List
+## At-A-Glance Volume List
 
-The complete active public architecture is the twelve-volume series compiled
-by `monograph/tex/main.tex`.  The list below is the full current volume list
-and the printed order of the manuscript; no additional public volume is active
-outside this list.
+The compiled public manuscript currently consists of the following twelve
+volumes, in this order:
 
 1. Volume I: Foundations of Local Quantum Field Theory
 2. Volume II: Particles, Scattering, and Analyticity
@@ -30,6 +28,18 @@ outside this list.
 10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
 11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
 12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+
+Draft files, deprecated files, source transcriptions, and planning notes are
+not additional public volumes.  A new volume becomes part of the public
+architecture only when it is added to `monograph/tex/main.tex`, documented
+here, and included in the reader-facing frontmatter.
+
+## Complete Volume Architecture
+
+The complete active public architecture is the twelve-volume series compiled
+by `monograph/tex/main.tex`.  The table below is the full current volume list
+and the printed order of the manuscript; no additional public volume is active
+outside this table.
 
 The table below gives the same complete active list with continuous printed chapter
 ranges, printed chapter counts, subject roles, and the assembly file that
