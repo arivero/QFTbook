@@ -6,7 +6,9 @@ The checks encode the elementary collinear counterexample for mMDT
 behavior used in the jet-substructure chapter.  They also exercise the
 finite-tree decision-margin bookkeeping used to make "away from grooming
 boundaries" precise, and the measured-function distinction between
-positive-angular-power shapes and retained-energy fraction.
+positive-angular-power shapes and retained-energy fraction.  The final checks
+record the exact algebra behind the leading mMDT \(z_g\) stopping-time
+normalization and the \(\beta_{\rm SD}>0\) angular-domain condition.
 """
 
 from __future__ import annotations
@@ -73,6 +75,49 @@ def soft_drop_mass_radiator_area(log_rho: Fraction, log_zcut: Fraction, beta: in
     b = Fraction(beta, 2)
     t_star = (log_rho - log_zcut) / (1 + b)
     return log_zcut * t_star + b * t_star * t_star / 2 + (log_rho - t_star) ** 2 / 2
+
+
+def mmdt_zg_density_weight(kernel_value: Fraction, kernel_integral: Fraction) -> Fraction:
+    """Leading mMDT first-accepted-split weight P(z_g)/int P."""
+
+    if kernel_integral <= 0:
+        raise ValueError("the accepted splitting-kernel integral must be positive")
+    return kernel_value / kernel_integral
+
+
+def mmdt_conditional_weight_with_cutoff(
+    coupling_weight: Fraction,
+    kernel_value: Fraction,
+    kernel_integral: Fraction,
+    sudakov_at_cutoff: Fraction,
+) -> Fraction:
+    """Conditional finite-cutoff mMDT weight.
+
+    The angle integral is represented by
+    (1-Delta(theta_min))/(a int P).  Conditioning on accepted events divides by
+    the same (1-Delta(theta_min)) factor, so the exact result is independent
+    of the cutoff and of the coupling weight.
+    """
+
+    if coupling_weight <= 0 or kernel_integral <= 0:
+        raise ValueError("positive coupling weight and kernel integral are required")
+    if not Fraction(0) <= sudakov_at_cutoff < Fraction(1):
+        raise ValueError("the cutoff Sudakov factor must lie in [0,1)")
+    unconditioned = coupling_weight * kernel_value * (1 - sudakov_at_cutoff) / (
+        coupling_weight * kernel_integral
+    )
+    accepted_probability = 1 - sudakov_at_cutoff
+    return unconditioned / accepted_probability
+
+
+def positive_beta_theta_upper(z_g: Fraction, z_cut: Fraction, beta: int) -> Fraction:
+    """Allowed normalized angle upper bound for beta=1 samples."""
+
+    if beta != 1:
+        raise ValueError("this exact rational helper is restricted to beta=1")
+    if z_g >= z_cut:
+        return Fraction(1)
+    return z_g / z_cut
 
 
 class Split(NamedTuple):
@@ -213,6 +258,43 @@ def check_fixed_coupling_soft_drop_mass_radiator() -> None:
     )
 
 
+def check_groomed_momentum_sharing_stopping_time() -> None:
+    # In the mMDT leading ordered chart the angle integral cancels the
+    # coupling and leaves the normalized splitting-kernel weight.
+    kernel_values = (Fraction(2), Fraction(3), Fraction(5))
+    kernel_integral = sum(kernel_values)
+    weights = tuple(mmdt_zg_density_weight(value, kernel_integral) for value in kernel_values)
+    assert_equal("mMDT z_g weights normalize", sum(weights), Fraction(1))
+    assert_equal("mMDT z_g first bin", weights[0], Fraction(1, 5))
+    assert_equal("mMDT z_g third bin", weights[2], Fraction(1, 2))
+
+    # The same normalized weight is obtained after imposing a finite angular
+    # cutoff and conditioning on accepted events.
+    assert_equal(
+        "finite-cutoff conditional mMDT weight",
+        mmdt_conditional_weight_with_cutoff(
+            coupling_weight=Fraction(7, 11),
+            kernel_value=Fraction(3),
+            kernel_integral=kernel_integral,
+            sudakov_at_cutoff=Fraction(4, 9),
+        ),
+        Fraction(3, 10),
+    )
+
+    # For beta>0, values below z_cut are accepted only below an angle whose
+    # upper bound is fixed by z_g > z_cut theta^beta.
+    assert_equal(
+        "positive-beta below-zcut angular domain",
+        positive_beta_theta_upper(Fraction(1, 20), Fraction(1, 10), beta=1),
+        Fraction(1, 2),
+    )
+    assert_equal(
+        "positive-beta above-zcut angular domain",
+        positive_beta_theta_upper(Fraction(3, 20), Fraction(1, 10), beta=1),
+        Fraction(1),
+    )
+
+
 def check_fixed_tree_decision_margins() -> None:
     tree: Tree = {
         "root": Split("A", "B", Fraction(1)),
@@ -250,6 +332,7 @@ def main() -> None:
     check_positive_beta_collinear_limit()
     check_measured_mmdt_functionals()
     check_fixed_coupling_soft_drop_mass_radiator()
+    check_groomed_momentum_sharing_stopping_time()
     check_fixed_tree_decision_margins()
     print("All soft-drop IRC classification checks passed.")
 

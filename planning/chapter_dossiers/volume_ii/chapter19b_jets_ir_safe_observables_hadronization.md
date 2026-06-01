@@ -92,6 +92,10 @@ The chapter establishes:
   requiring perturbative scale separation, a topology for the factorization
   remainder, declared accuracy data, and replacement by a nonperturbative shape
   coordinate when the collinear-soft scale reaches \(\Lambda_{\rm QCD}\);
+- controlled approximation `ca:sudakov-conditioned-zg`, defining the groomed
+  momentum-sharing coordinate \(z_g\) as a first-accepted-split stopping-time
+  observable and deriving its joint \((z_g,\theta_g)\) Sudakov density in the
+  strongly ordered soft-collinear chart;
 - the minimized-\(N\)-subjettiness value functional on a compact angular jet
   patch, with existence of minimizing axes and soft/collinear continuity of
   the minimized value rather than of a chosen axis label;
@@ -230,6 +234,14 @@ The chapter establishes:
      \(Q\sqrt{\rho z_*}\) is nonperturbative, the collinear-soft entry is no
      longer a perturbative function and must be replaced by a stated
      nonperturbative coordinate.
+9ae. Groomed momentum sharing \(z_g\) is a stopping-time coordinate, not an
+     ordinary IRC-safe measurement on all finite events.  In the leading
+     strongly ordered chart, its distribution is the first-accepted-split rate
+     multiplied by the Sudakov probability for no earlier accepted split; for
+     \(\beta_{\rm SD}=0\) this gives the normalized splitting-kernel
+     distribution, while for \(\beta_{\rm SD}>0\) sub-\(z_{\rm cut}\) values
+     are supported only at correspondingly small angles and are meaningful
+     only together with the all-order Sudakov factor and remainder datum.
 9b. Globally minimized \(N\)-subjettiness is a well-defined continuous
     calorimetric value functional on finite-energy jet measures; selected
     minimizing axes are auxiliary data and can jump at degenerate events
@@ -315,6 +327,12 @@ The chapter establishes:
   anomalous-dimension consistency requirements, and extended
   `calculation-checks/scet_factorization_checks.py` with exact rational checks
   of the boundary-scale identities and RG transport consistency.
+- 2026-06-01 issue #526 groomed-sharing pass: added the \(z_g\) stopping-time
+  coordinate and the Sudakov-conditioned first-accepted-split density,
+  including the mMDT normalized-kernel limit and the \(\beta_{\rm SD}>0\)
+  angular-domain support condition; extended
+  `calculation-checks/soft_drop_irc_checks.py` with exact rational checks of
+  the normalization and support bookkeeping.
 - 2026-06-01 issue #526/#630 continuation: added the minimized
   \(N\)-subjettiness measure-functional definition, proved existence of
   minimizing axes and continuity of the minimized value under weak, soft, and

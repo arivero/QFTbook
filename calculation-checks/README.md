@@ -1493,7 +1493,9 @@ Current checks:
   shapes and the retained-energy fraction in the mMDT one-prong collinear
   limit; it also checks the fixed-coupling soft-drop groomed-mass radiator
   area, including the mMDT single-log limit and continuity at the grooming
-  transition.
+  transition, and the stopping-time normalization for the leading mMDT
+  \(z_g\) distribution together with the \(\beta_{\rm SD}>0\)
+  angular-domain condition for values below \(z_{\rm cut}\).
 - `shape_function_convolution_checks.py`: exact rational checks for the
   jet shape-function section, including finite spectral pairing of the soft
   measurement coordinate, normalization of the endpoint convolution, the

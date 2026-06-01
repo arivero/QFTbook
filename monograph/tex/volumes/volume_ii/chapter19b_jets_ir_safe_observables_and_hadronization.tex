@@ -1417,6 +1417,147 @@ additional input, not a derivation of the soft-drop mass distribution from
 perturbative QCD.
 \end{controlledapproximation}
 
+\paragraph{Groomed momentum sharing and Sudakov-conditioned coordinates.}
+A second soft-drop observable, often denoted \(z_g\), records the momentum
+sharing at the first declustering step that passes the soft-drop condition.
+For a finite Cambridge--Aachen tree in the notation above, let \(v_\ast\) be
+the first vertex visited by the recursion for which
+\[
+  z_{v_\ast}>z_{\rm cut}\theta_{v_\ast}^{\beta_{\rm SD}} .
+\]
+If such a vertex exists, define
+\[
+  z_g=z_{v_\ast},
+  \qquad
+  \theta_g=\theta_{v_\ast}.
+\]
+If no such vertex exists, the pair \((z_g,\theta_g)\) is not a number attached
+to the event; one must either work with the event-selection indicator or
+declare a separate null value outside the numerical range.  This elementary
+point is already enough to show that \(z_g\) is not an ordinary IRC-safe
+measurement in the sense of Definition~\ref{def:irc-safe-measurement}: in the
+one-particle collinear limit there is no accepted split, while a nearby
+two-particle configuration may have a finite accepted value.  The useful
+short-distance statement about \(z_g\) is therefore not fixed-order IRC
+safety.  It is an all-order, Sudakov-conditioned statement inside a specified
+strongly ordered soft-collinear approximation.
+
+\begin{controlledapproximation}[Sudakov-conditioned groomed sharing]
+\label{ca:sudakov-conditioned-zg}
+Fix an initiating parton channel \(i\), a normalized angle
+\(\vartheta=\theta/R_0\in(0,1]\), a soft-collinear ordering in decreasing
+\(\vartheta\), and a positive symmetrized splitting kernel
+\(\overline P_i(z)\) on \(0<z\leq1/2\) in the declared subtraction scheme.
+In the fixed-coupling, independent-emission, strongly ordered chart, the
+accepted-emission rate is
+\begin{equation}
+  \dd\Gamma_i
+  =
+  a_i\,\overline P_i(z)\,
+  \frac{\dd\vartheta}{\vartheta}\,\dd z\,
+  \mathbf 1_{\{z>z_{\rm cut}\vartheta^{\beta_{\rm SD}}\}},
+  \qquad
+  a_i=\frac{\alpha_s C_i}{\pi}.
+  \label{eq:zg-accepted-emission-rate}
+\end{equation}
+Let
+\begin{equation}
+  \mathcal P_i(\zeta)
+  =
+  \int_{\zeta}^{1/2}\overline P_i(z)\,\dd z,
+  \qquad
+  \mathcal R_i(\vartheta)
+  =
+  a_i\int_{\vartheta}^{1}
+  \frac{\dd\vartheta'}{\vartheta'}\,
+  \mathcal P_i\!\left(z_{\rm cut}{\vartheta'}^{\beta_{\rm SD}}\right),
+  \qquad
+  \Delta_i(\vartheta)=e^{-\mathcal R_i(\vartheta)} .
+  \label{eq:zg-sudakov-factor}
+\end{equation}
+Here \(\Delta_i(\vartheta)\) is the probability, inside this chart, that no
+emission at an angle larger than \(\vartheta\) has passed grooming.  The joint
+density of the first accepted split is then
+\begin{equation}
+  \dd\mathbb P_i(z_g,\vartheta_g)
+  =
+  \Delta_i(\vartheta_g)\,
+  a_i\,\overline P_i(z_g)\,
+  \frac{\dd\vartheta_g}{\vartheta_g}\,\dd z_g\,
+  \mathbf 1_{\{z_g>z_{\rm cut}\vartheta_g^{\beta_{\rm SD}}\}} .
+  \label{eq:zg-first-accepted-joint-density}
+\end{equation}
+This is a controlled approximation only after the kernel, coupling
+prescription, ordering variable, recoil convention, endpoint regularization,
+and matching to the rest of the factorization datum have been specified.
+\end{controlledapproximation}
+
+The derivation of
+\eqref{eq:zg-first-accepted-joint-density} is the stopping-time identity for
+the ordered emission process.  The probability of no accepted split before
+angle \(\vartheta_g\) is \(\Delta_i(\vartheta_g)\).  The probability of one
+accepted split in the infinitesimal cell
+\((\vartheta_g,\vartheta_g+\dd\vartheta_g)\times
+(z_g,z_g+\dd z_g)\) is the rate
+\eqref{eq:zg-accepted-emission-rate}.  Multiple emissions in the same
+infinitesimal ordered cell are higher order in the cell volume.  Multiplying
+these two factors gives
+\eqref{eq:zg-first-accepted-joint-density}.  This argument does not replace a
+QCD factorization theorem; it is the finite probabilistic core that such a
+theorem must reproduce in its leading logarithmic coordinate.
+
+The special case \(\beta_{\rm SD}=0\) exposes the mechanism transparently.
+Then \(\mathcal P_i(z_{\rm cut}\vartheta^{\beta_{\rm SD}})
+=\mathcal P_i(z_{\rm cut})\) is independent of \(\vartheta\), so
+\[
+  \Delta_i(\vartheta)=
+  \vartheta^{a_i\mathcal P_i(z_{\rm cut})}.
+\]
+If the idealized chart is allowed to run to arbitrarily small angle, the
+probability of eventually finding an accepted split is one, and integrating
+\eqref{eq:zg-first-accepted-joint-density} over \(\vartheta_g\) gives
+\begin{equation}
+  p_i^{\rm mMDT}(z_g)
+  =
+  \frac{\overline P_i(z_g)}
+       {\displaystyle\int_{z_{\rm cut}}^{1/2}
+        \overline P_i(z)\,\dd z}\,
+  \mathbf 1_{\{z_{\rm cut}<z_g\leq1/2\}} .
+  \label{eq:mmdt-zg-leading-distribution}
+\end{equation}
+Indeed,
+\[
+  a_i\overline P_i(z_g)
+  \int_0^1
+  \vartheta^{a_i\mathcal P_i(z_{\rm cut})}
+  \frac{\dd\vartheta}{\vartheta}
+  =
+  \frac{\overline P_i(z_g)}{\mathcal P_i(z_{\rm cut})}.
+\]
+With a finite angular cutoff \(\vartheta_{\min}\), the same expression is the
+conditional density after dividing by the accepted-event probability
+\(1-\Delta_i(\vartheta_{\min})\).  The cancellation of \(a_i\) in
+\eqref{eq:mmdt-zg-leading-distribution} is not a statement that the
+observable is nonperturbative-free; it is a consequence of conditioning on the
+first accepted splitting inside this leading ordered chart.  Running coupling,
+finite splitting functions, flavor changes, hadron masses, detector
+thresholds, and nonperturbative collinear dynamics all belong to the
+factorization and remainder data, not to the stopping-time identity alone.
+
+For \(\beta_{\rm SD}>0\), a value \(z_g<z_{\rm cut}\) can occur only at an
+angle satisfying
+\[
+  \vartheta_g<\left(\frac{z_g}{z_{\rm cut}}\right)^{1/\beta_{\rm SD}} .
+\]
+The fixed-order expansion of the \(z_g\) distribution is then singular at the
+collinear boundary, while the all-order expression
+\eqref{eq:zg-first-accepted-joint-density} may still define a finite
+distribution because \(\Delta_i(\vartheta)\) suppresses the small-angle
+region.  This is the precise sense, within the stated approximation, in which
+the coordinate is Sudakov-conditioned.  It is a useful perturbative object
+only together with the Sudakov factor, the conditioning convention, and the
+remainder estimate for the measured jet sample.
+
 \begin{definition}[\(N\)-subjettiness]
 \label{def:n-subjettiness}
 For a jet with constituents \(k\), choose \(N\) axes
