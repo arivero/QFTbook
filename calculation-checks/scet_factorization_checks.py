@@ -10,7 +10,8 @@ defining differential equation; and scalar RG transport is independent of the
 common scale when the hard, jet, and soft anomalous dimensions satisfy the
 factorization consistency equation.  It also checks the finite phase-space
 area behind the massive-vector Sudakov chart used for electroweak jet
-boundaries.
+boundaries and the finite unitarity diagnostic for Glauber cancellation versus
+measurement obstruction.
 """
 
 from __future__ import annotations
@@ -214,6 +215,33 @@ def check_soft_wilson_line_decoupling_identity() -> None:
     assert_equal("finite BPS decoupling identity", sp.simplify(lhs - rhs), sp.zeros(2, 1))
 
 
+def trace(matrix: sp.Matrix) -> sp.Rational:
+    return sp.trace(matrix)
+
+
+def check_glauber_unitarity_diagnostic() -> None:
+    unitary = sp.Matrix([[sp.Rational(3, 5), sp.Rational(4, 5)], [sp.Rational(-4, 5), sp.Rational(3, 5)]])
+    identity = sp.eye(2)
+    assert_equal("finite Glauber unitary", unitary.T * unitary, identity)
+
+    rho = sp.Matrix([[sp.Rational(2, 5), sp.Rational(1, 10)], [sp.Rational(1, 10), sp.Rational(3, 5)]])
+    evolved = unitary * rho * unitary.T
+    assert_equal("inclusive Glauber trace", trace(evolved), trace(rho))
+
+    commuting_measurement = sp.Rational(7, 3) * identity
+    assert_equal(
+        "commuting Glauber measurement",
+        trace(commuting_measurement * evolved),
+        trace(commuting_measurement * rho),
+    )
+
+    noncommuting_measurement = sp.Matrix([[1, 0], [0, 0]])
+    without_glauber = trace(noncommuting_measurement * rho)
+    with_glauber = trace(noncommuting_measurement * evolved)
+    if with_glauber == without_glauber:
+        raise AssertionError("noncommuting measurement should detect the finite Glauber rotation")
+
+
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
     return log_q2_over_m2 * log_q2_over_m2 / 4
 
@@ -255,10 +283,11 @@ def main() -> None:
     check_zero_bin_scheme_reshuffling()
     check_rg_transport_common_scale_independence()
     check_soft_wilson_line_decoupling_identity()
+    check_glauber_unitarity_diagnostic()
     check_massive_vector_sudakov_area()
     print(
         "All SCET convolution, zero-bin, RG-transport, soft-Wilson-line, "
-        "and massive-vector Sudakov checks passed."
+        "Glauber-unitarity, and massive-vector Sudakov checks passed."
     )
 
 

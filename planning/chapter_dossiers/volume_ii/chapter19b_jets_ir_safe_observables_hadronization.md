@@ -48,6 +48,10 @@ The chapter establishes:
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
   the precise boundary of LL/NLL/NNLL accuracy labels;
+- a finite Glauber unitarity diagnostic separating inclusive or commuting
+  measurements, for which a finite Glauber unitary drops out of the trace,
+  from noncommuting spectator/color measurements, where the exchange is a
+  genuine factorization obstruction;
 - a massive-vector Sudakov boundary chart for high-energy electroweak jet
   measurements, deriving the triangular soft-collinear area
   \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
@@ -320,6 +324,10 @@ The chapter establishes:
   charge-density-matrix evolution and boosted-resonance approximations, and
   extended `calculation-checks/scet_factorization_checks.py` with exact
   rational phase-space-area checks.
+- 2026-06-01 issue #630 Glauber diagnostic pass: added the finite
+  operator-trace mechanism for inclusive/commuting Glauber cancellation versus
+  noncommuting measurement obstruction, and extended
+  `calculation-checks/scet_factorization_checks.py`.
 - 2026-06-01 issue #630/#526 non-global pass: added a finite angular-cell
   soft-dipole evolution datum for non-global veto measurements, derived the
   second-order coefficient separating the global Sudakov square from the
