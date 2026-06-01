@@ -147,3 +147,9 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   explicit finite bridge-insertion induction \(B_{k-1}(a)\to B_k(a)\), so
   every strict \(k\)-gap argument box is obtained before the polynomial
   tube-bound step is used.
+- 2026-06-01 issue #701 warning-scope pass: promoted the OS-to-Wightman
+  tube-sign conversion to a scannable warning block immediately before the
+  boundary-package consequences.  The warning states that the abstract
+  Fourier--Laplace variable is \(x+\ii y\) with \(p\cdot y>0\), while the
+  physical mostly-plus Wightman tube is \(\xi-\ii\eta\) with
+  \(\eta\in V_+\) and \(y=-\eta\).

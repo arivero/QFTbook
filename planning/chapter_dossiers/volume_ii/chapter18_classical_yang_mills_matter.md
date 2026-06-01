@@ -291,3 +291,10 @@ The chapter must define and derive:
   charge-lattice shift from a finite-dimensional \(S^1\) quantum mechanics
   with the theta-angle total derivative fixed by the Chern--Weil boundary
   pairing.
+- 2026-06-01 issue #701 warning-scope pass: promoted the trace-form
+  Yang--Mills coupling convention to a scannable warning block.  The warning
+  states that the invariant datum is
+  \(-\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}F^2\) for the
+  matrix-valued curvature and that changing the generator trace normalization
+  necessarily changes component coordinates and the component coordinate
+  called \(g_{\mathrm{YM}}\).

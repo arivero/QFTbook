@@ -1530,6 +1530,17 @@ distinct analytic duties: it must construct the positive-energy translation
 representation, and it must prove the polynomial tube bounds needed for the
 boundary-value theorem above.
 
+\begin{warning}[Tube-sign conversion]
+The abstract Fourier--Laplace theorem above uses the variable \(x+\ii y\)
+with \(p\cdot y>0\) on the spectral cone.  The physical Wightman tube in the
+mostly-plus convention is instead written \(\xi-\ii\eta\), with
+\(\eta\in V_+\) and \(p\cdot\eta\le0\) for \(p\in\overline V_+\).  Therefore
+the substitution in OS reconstruction is \(y=-\eta\).  Replacing \(y\) by
+\(\eta\) flips the damping factor and would reverse the spectral-support
+statement.  This is a convention-sensitive point of the corrected OS-II
+boundary-value construction, not a typographical preference.
+\end{warning}
+
 \begin{proposition}[Consequences of the OS boundary-value package]
 \label{prop:os-boundary-package-consequences}
 Assume Definition~\ref{def:os-lorentzian-boundary-value-package}.  Then:

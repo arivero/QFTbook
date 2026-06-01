@@ -480,3 +480,10 @@
   \(1,\frac12\); extended
   `calculation-checks/anomaly_polynomial_descent_checks.py` to verify the
   latter rational integrals exactly.
+- 2026-06-01 issue #701 warning-scope pass: added a convention warning at the
+  start of the anomaly chapter tying anomaly signs and factors to the entire
+  datum \((\bar\psi,\gamma_5,\epsilon^{0123},D_\mu,F_{\mu\nu},\operatorname{tr})\),
+  the topological-charge normalization, and the chosen local counterterm
+  representative.  The warning also reiterates that dimensional reduction is
+  used only as a perturbative regulator for the Ward-identity representative,
+  not as a nonperturbative fermionic path-integral definition.
