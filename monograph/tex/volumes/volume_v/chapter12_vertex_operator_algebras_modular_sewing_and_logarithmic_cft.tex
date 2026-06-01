@@ -2332,6 +2332,51 @@ then
 \]
 \end{quotedtheorem}
 
+The theorem contains an elementary one-sided estimate and a genuinely
+Tauberian inverse estimate.  Let \(\mu_N\) be the positive Stieltjes measure
+with \(\mu_N([0,E])=N(E)\).  For every \(\beta>0\),
+\[
+  Z(\beta)
+  \ge
+  \int_{[0,E]}\ee^{-\beta E}\,\dd\mu_N(E')
+  =
+  \ee^{-\beta E}N(E),
+\]
+and hence
+\begin{equation}
+  \log N(E)
+  \le
+  \inf_{\beta>0}\{\beta E+\log Z(\beta)\}.
+  \label{eq:cardy-tauberian-laplace-upper-bound}
+\end{equation}
+If \(\log Z(\beta)=A/\beta+o(\beta^{-1})\), choosing
+\(\beta=\sqrt{A/E}\) in \eqref{eq:cardy-tauberian-laplace-upper-bound}
+gives the upper half
+\[
+  \limsup_{E\to\infty}{\frac{\log N(E)}{\sqrt E}}\le 2\sqrt A .
+\]
+The inverse half is the nontrivial content: positivity and monotonicity of the
+counting measure force enough spectral mass in the saddle window
+\(E'\sim A/\beta^2\) to produce the same leading exponent from below.  Without
+that positivity, cancellations in a signed trace can obey the same modular
+transformation law while carrying no comparable counting interpretation.
+
+The coefficient \(2\sqrt A\) is fixed by the Legendre saddle.  If a candidate
+cumulative growth has the leading form \(\log N(E)\sim B\sqrt E\), the formal
+Laplace exponent is
+\[
+  \Phi_\beta(E')=B\sqrt{E'}-\beta E',
+  \qquad
+  E'_\beta=\frac{B^2}{4\beta^2},
+\]
+and
+\[
+  \sup_{E'\ge0}\Phi_\beta(E')=\frac{B^2}{4\beta}.
+\]
+Matching this with \(A/\beta\) gives \(B=2\sqrt A\).  The quoted theorem is
+precisely the analytic statement that this saddle reasoning is legitimate for
+a positive cumulative spectral measure at the exponential scale.
+
 This theorem is the precise analytic bridge between the modular
 high-temperature statement and the density of states.  Its positivity
 hypothesis is essential: \(N(E)\) is a cumulative spectral counting function,
@@ -2387,7 +2432,8 @@ Apply Theorem~\ref{qthm:exponential-tauberian-cardy} with
 \(A=\pi^2c_{\rm tot}/6\).
 
 A saddle calculation checks the coefficient but does not replace the
-Tauberian theorem.  If a smooth density had entropy
+Tauberian theorem or the positivity hypothesis above.  With
+\(A=\pi^2c_{\rm tot}/6\), if a smooth density had entropy
 \[
   S(E)=2\sqrt{AE},
 \]

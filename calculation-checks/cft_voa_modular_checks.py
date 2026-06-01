@@ -328,23 +328,32 @@ def check_ising_verlinde_defect_lines() -> None:
 
 
 def check_cardy_tauberian_saddle_constants() -> None:
-    """Check the Legendre-dual coefficient in the Cardy density formula.
+    """Check the Laplace-bound and Legendre-dual Cardy coefficients.
 
     Suppress the common factor pi^2.  The modular high-temperature coefficient
-    is A = c_tot/6.  If S(E)=2 sqrt(A E), the saddle sits at
-    E_* = A/beta^2 and gives S(E_*) - beta E_* = A/beta.
+    is A = c_tot/6.  The elementary Laplace upper bound is minimized at
+    beta sqrt(E)=sqrt(A) and gives coefficient squared 4A.  Conversely, if
+    S(E)=B sqrt(E), then the Legendre saddle gives B^2/(4 beta); matching the
+    modular coefficient requires B^2=4A.
     """
 
     for central_charge in (Fraction(1, 2), Fraction(1), Fraction(24)):
         modular_coefficient = central_charge / 6
-        entropy_coefficient_squared = 4 * modular_coefficient
-        saddle_energy_coefficient = modular_coefficient
-        entropy_at_saddle_coefficient = 2 * modular_coefficient
+        laplace_upper_coefficient_squared = 4 * modular_coefficient
+        candidate_entropy_coefficient_squared = laplace_upper_coefficient_squared
+        saddle_energy_coefficient = candidate_entropy_coefficient_squared / 4
+        laplace_coefficient_from_candidate = candidate_entropy_coefficient_squared / 4
+        entropy_at_saddle_coefficient = 2 * saddle_energy_coefficient
         boltzmann_at_saddle_coefficient = saddle_energy_coefficient
         assert_equal(
             f"Cardy entropy coefficient squared c={central_charge}",
-            entropy_coefficient_squared,
+            laplace_upper_coefficient_squared,
             2 * central_charge / 3,
+        )
+        assert_equal(
+            f"Cardy Legendre coefficient c={central_charge}",
+            laplace_coefficient_from_candidate,
+            modular_coefficient,
         )
         assert_equal(
             f"Cardy saddle recovers modular coefficient c={central_charge}",

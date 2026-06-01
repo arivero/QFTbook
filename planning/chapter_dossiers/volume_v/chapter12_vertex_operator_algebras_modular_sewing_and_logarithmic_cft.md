@@ -57,6 +57,14 @@ current QFT scope.
   in the diagonal rational full CFT.
 - `lambda_a(i)`: defect eigenvalue `S_{ai}/S_{0i}` on the diagonal sector
   `M_i otimes overline{M_i^vee}`.
+- `N(E)`: cumulative positive spectral counting function used in the Cardy
+  Tauberian argument.
+- `A`: coefficient of the high-temperature Laplace asymptotic
+  `log Z(beta)=A/beta+o(beta^-1)`.
+- `B`: candidate coefficient in the cumulative growth
+  `log N(E) sim B sqrt(E)`.
+- `E_beta`: Laplace-saddle energy `B^2/(4 beta^2)`, equal to
+  `A/beta^2` after matching.
 - `A(I)`: von Neumann algebra assigned by a conformal net to an interval
   `I subset S^1`.
 - `Omega`: conformal-net vacuum vector.
@@ -172,8 +180,10 @@ current QFT scope.
 - Derives the leading Cardy high-temperature partition-function asymptotic
   from modular invariance and a unique vacuum hypothesis, states the
   exponential Tauberian theorem needed to pass from the partition function to
-  cumulative state growth, and proves the CFT-internal Cardy density formula
-  under compact/discrete-spectrum/positivity hypotheses.
+  cumulative state growth, proves the elementary Laplace upper bound, explains
+  the nontrivial Tauberian lower-bound input, checks the Legendre saddle
+  coefficient, and proves the CFT-internal Cardy density formula under
+  compact/discrete-spectrum/positivity hypotheses.
 - Defines logarithmic CFT by nonsemisimple \(L_0\) action, introduces a
   rank-two logarithmic Virasoro pair, derives finite state and field scaling,
   proves the logarithmic two-point functions from the \(L_0\) and \(L_1\)
@@ -200,7 +210,8 @@ current QFT scope.
   uniqueness of the diagonal Ising genus-one modular invariant with one
   vacuum, Verlinde defect eigencharacters, exact temporal-to-spatial defect
   \(S\)-move multiplicities, the Ising spin-field one-point selection rule,
-  the Cardy Tauberian saddle coefficient, and the Ising Zhu
+  the Cardy Tauberian Laplace-bound and Legendre-saddle coefficients, and the
+  Ising Zhu
   polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
   rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
   trace invisibility of the nilpotent part.
@@ -306,3 +317,8 @@ current QFT scope.
   condition, proving the Virasoro commutator as a twisted exact derivative,
   and deriving the neutrality condition from the background charge at
   infinity before invoking meromorphic continuation.
+- 2026-05-31 Cardy Tauberian mechanism pass: expanded the quoted
+  exponential-Tauberian boundary by proving the elementary positive-measure
+  Laplace upper bound, isolating the nontrivial Tauberian lower-bound input,
+  deriving the Legendre coefficient relation \(B^2=4A\), and strengthening
+  the exact calculation check to match this logic.
