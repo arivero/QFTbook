@@ -396,6 +396,12 @@ Current checks:
   to the Hofman--Maldacena inequalities, the vanishing of the integrated
   \(t_2,t_4\) deformations, and the embedding-space light-transform
   homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\).
+- `cft_energy_detector_contact_checks.py`: exact finite positive-measure
+  checks for the CFT light-ray/energy-correlator chapter, including the
+  off-diagonal plus diagonal split of two detector products, the vanishing of
+  diagonal terms for disjoint detector supports, the total-energy Ward
+  identity \(\mathcal G_2(1,1)=\langle(P^0)^2\rangle\), and the
+  partition-of-diagonals decomposition for three detector insertions.
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter

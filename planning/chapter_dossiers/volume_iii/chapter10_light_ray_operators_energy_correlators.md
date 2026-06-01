@@ -38,6 +38,10 @@ The chapter establishes:
 - the CFT energy detector \(\mathcal E(f)\) as a stress-tensor flux limit at
   future null infinity;
 - \(k\)-point energy correlators as distributions on \((S^{D-2})^k\);
+- finite positive-measure detector products, their off-diagonal and diagonal
+  contact decomposition, the partition stratification of \(k\)-detector
+  contacts, and the Ward identity
+  \(\mathcal G_2(1,1;\Psi)=\langle\Psi|(P^0)^2|\Psi\rangle\);
 - the averaged null energy light-ray operator
   \(\mathcal A_n(x_\perp)\);
 - the relation between calorimeter detectors and null-integrated stress-tensor
@@ -66,6 +70,8 @@ The chapter establishes:
 | \(f\) | smooth angular detector test function |
 | \(\mathcal E(f)\), \(\mathcal E(\mathbf n)\) | smeared and distributional energy detector |
 | \(\mathcal G_k\) | \(k\)-point energy correlator |
+| \(\varepsilon_X\) | finite positive calorimetric measure associated to a detector configuration |
+| \(\mathsf P_k\) | set of partitions of \(k\) detector labels, indexing diagonal contact strata |
 | \(\mathcal A_n(x_\perp)\) | averaged null energy operator on a null line |
 | \(P,Z\) | embedding-space null point and auxiliary polarization vectors |
 | \(\mathcal O_{\Delta,J}(P,Z)\) | symmetric traceless primary encoded in embedding space |
@@ -84,7 +90,9 @@ The chapter establishes:
 1. Energy detector operators require a stated null-infinity limit hypothesis as
    quadratic forms on collider states.
 2. Energy correlators are distributions; coincident detector directions carry
-   contact terms that must be included or removed by an explicit convention.
+   contact terms whose finite positive-measure model is the diagonal
+   decomposition of detector product measures, indexed for \(k\) insertions by
+   partitions of detector labels.
 3. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
 4. The light-transform weight map is derived from embedding-space
@@ -122,6 +130,8 @@ The chapter establishes:
 - Do not conflate contact terms in detector products with counterterms in a
   regulated action.
 - Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.
+- The finite detector-contact partition algebra is checked by
+  `calculation-checks/cft_energy_detector_contact_checks.py`.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the finite arithmetic for the light-transform homogeneity map.

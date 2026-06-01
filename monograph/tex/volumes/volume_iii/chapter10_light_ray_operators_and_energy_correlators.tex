@@ -73,6 +73,87 @@ when possible, as a distribution on \((S^{D-2})^k\).  Coincident detector
 directions carry contact terms determined by the distributional product of
 light-ray operators.
 
+\subsection{Detector Products and Diagonal Contacts}
+\label{subsec:cft-detector-products-contacts}
+
+The contact terms in detector products have a concrete measure-theoretic
+origin.  A finite-resolution calorimetric configuration \(X\) with detector
+directions \(\mathbf n_a\in S^{D-2}\) and positive energies \(E_a>0\)
+determines the positive finite measure
+\begin{equation}
+  \varepsilon_X
+  =
+  \sum_{a=1}^N E_a\,\delta_{\mathbf n_a}.
+  \label{eq:finite-detector-energy-measure}
+\end{equation}
+The corresponding detector functional is
+\[
+  E_X(f)=\int f\,\dd\varepsilon_X
+  =
+  \sum_a E_a f(\mathbf n_a).
+\]
+For two detector tests \(f,g\), the product decomposes exactly as
+\begin{align}
+  E_X(f)E_X(g)
+  &=
+  \sum_{a,b}E_aE_b f(\mathbf n_a)g(\mathbf n_b)
+  \notag\\
+  &=
+  \sum_{a\neq b}E_aE_b f(\mathbf n_a)g(\mathbf n_b)
+  +
+  \sum_a E_a^2 f(\mathbf n_a)g(\mathbf n_a).
+  \label{eq:finite-detector-diagonal-decomposition}
+\end{align}
+The first term is the restriction of the product measure
+\(\varepsilon_X\otimes\varepsilon_X\) to the complement of the diagonal in
+\(S^{D-2}\times S^{D-2}\).  The second term is supported on the diagonal
+\(\mathbf n_1=\mathbf n_2\).  Thus a separated-angle two-detector
+distribution and a full two-detector distribution differ by a specified
+diagonal distribution; deleting or retaining that diagonal part is a choice of
+observable coordinate, not a change of the underlying detector.
+
+For \(k\) detector insertions, the same bookkeeping is indexed by partitions.
+Let \(\mathsf P_k\) be the set of set partitions of \(\{1,\ldots,k\}\).  If
+\(\pi\in\mathsf P_k\) and \(B\in\pi\) is a block, write \(a_B\) for the
+detector atom assigned to that block.  Grouping equal labels in the product
+\(\prod_i\sum_{a_i}E_{a_i}f_i(\mathbf n_{a_i})\) gives
+\begin{equation}
+  \prod_{i=1}^k E_X(f_i)
+  =
+  \sum_{\pi\in\mathsf P_k}
+  \sum_{\substack{a_B,\ B\in\pi\\ a_B\neq a_{B'}\ {\rm for}\ B\neq B'}}
+  \prod_{B\in\pi}
+  E_{a_B}^{|B|}
+  \prod_{i\in B} f_i(\mathbf n_{a_B}).
+  \label{eq:finite-detector-partition-decomposition}
+\end{equation}
+The discrete partition into singletons is the fully separated detector
+support.  Every coarser partition is a diagonal contact stratum in
+\((S^{D-2})^k\).  Formula
+\eqref{eq:finite-detector-partition-decomposition} is the finite positive
+measure model for the contact-term structure of
+\eqref{eq:cft-energy-correlator}.
+
+In the operator language of the CFT, Hypothesis
+\ref{hyp:cft-energy-detector} supplies the smeared detector as a quadratic
+form.  Products with mutually disjoint angular supports are defined by the
+off-diagonal part of the operator-valued measure.  Extending the product to
+overlapping supports requires a distributional extension across the
+diagonals, and the extension must preserve the stress-tensor Ward identity
+\begin{equation}
+  \mathcal G_2(1,1;\Psi)
+  =
+  \bra{\Psi}(P^0)^2\ket{\Psi}.
+  \label{eq:detector-product-total-energy-ward}
+\end{equation}
+For a state with sharp total energy \(Q\), the normalized two-detector
+correlator therefore has unit zeroth moment when the diagonal contact
+coordinate is included.  A convention that studies only separated detector
+directions must display the removed diagonal contribution separately.  This is
+the CFT counterpart of the endpoint-contact bookkeeping for the QCD
+energy-energy correlator in
+Section~\ref{sec:energy-correlators-calorimetric-coordinates}.
+
 \section{Relation to Null-Integrated Operators}
 
 Let \(n^\mu=(1,\mathbf n)\) be a future null vector.  For a point
