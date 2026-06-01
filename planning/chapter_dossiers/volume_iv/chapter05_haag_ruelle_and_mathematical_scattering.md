@@ -40,9 +40,10 @@ resonances.
   profiles with distinct velocities.
 - `Delta`: finite Hilbert-space soft-coordinate change between two
   infrared-regulated dressings.
-- `Theta_I(t)`, `kappa_{ij}`, `u_{ij}`: modified charged comparison phase,
-  effective pairwise long-range coefficient, and relative velocity in the
-  Dollard/Faddeev-Kulish comparison calculation.
+- `Theta_I(t)`, `eta_i`, `kappa_{ij}`, `u_{ij}`: modified charged
+  comparison phase, creator/adjoint orientation sign, effective pairwise
+  long-range coefficient, and relative velocity in the Dollard/Faddeev-Kulish
+  comparison calculation.
 
 ## Claim Ledger
 
@@ -102,6 +103,13 @@ resonances.
   \((\kappa/|u|)\log t+O(1)\).  This identifies exactly why a \(t^{-1}\)
   long-range charged pair term must be subtracted rather than treated as a
   Cook-integrable error.
+- Specifies the finite many-body Dollard bookkeeping required by the charged
+  theorem target: after short-range terms are separated, nonintegrable tails
+  must be exhausted by oriented velocity-separated pair fluxes with signs
+  \(\eta_i\eta_j\), while the residual derivative enters the Cook estimate
+  only through an \(L^1\) remainder.  Equal-velocity charged pairs are
+  explicitly excluded from this datum and must be treated as charged clusters
+  or separate infraparticle/bound-state sectors.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.
 - Shows that compact abelian Wilson-line dressing changes with fixed
@@ -153,8 +161,10 @@ resonances.
   Coulomb flux integral, the velocity read from flux extrema, the regulated
   half-line Fourier transform, the equality of worldline-current and
   momentum-space eikonal denominators, the Coulomb-tail logarithmic Dollard
-  phase coefficient, and sample positivity plus logarithmic normalization for
-  the soft coherent velocity-separation coefficient.  It also checks the
+  phase coefficient, the oriented pairwise many-body Dollard logarithm,
+  decay of the log-subtracted Coulomb pair remainder on large dyadic time
+  intervals, and sample positivity plus logarithmic normalization for the
+  soft coherent velocity-separation coefficient.  It also checks the
   finite-dimensional Weyl/coherent characteristic functional and the monotone
   decay of the coherent overlap as the infrared cutoff is removed.  The same
   script now checks the finite Hilbert soft-coordinate transformation law and
@@ -248,3 +258,10 @@ resonances.
   vague "neutral Wilson loop" assertion and makes clear exactly which
   same-flux dressing changes are finite LSZ-coordinate changes, while leaving
   the asymptotic-ray problem as genuine charged-sector proof debt.
+- 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
+  after the one-pair Coulomb-tail calculation.  The new paragraph defines the
+  creator/adjoint signs, the pairwise derivative of the comparison phase, the
+  logarithmic coefficient \(\sum_{i<j}\eta_i\eta_j\kappa_{ij}/|u_{ij}|\), and
+  the velocity-separation boundary.  It remains prose and equations rather
+  than theorem/proof form because the substantive theorem is the QFT estimate
+  deriving the pair coefficients and the \(L^1\) remainder.

@@ -174,6 +174,76 @@ def check_coulomb_tail_dollard_log_phase() -> None:
         assert_close("Coulomb tail logarithmic coefficient", phase_difference, expected_log, tol=1.0e-6)
 
 
+def many_body_dollard_log_coefficient_1d(
+    charges: tuple[Fraction, ...],
+    orientations: tuple[int, ...],
+    velocities: tuple[Fraction, ...],
+) -> Fraction:
+    if not (len(charges) == len(orientations) == len(velocities)):
+        raise AssertionError("charges, orientations, and velocities must have the same length")
+
+    total = Fraction(0)
+    for i in range(len(charges)):
+        for j in range(i + 1, len(charges)):
+            relative_velocity = abs(velocities[i] - velocities[j])
+            if relative_velocity == 0:
+                raise AssertionError("Dollard pair coefficient requires separated velocities")
+            total += (
+                Fraction(orientations[i])
+                * Fraction(orientations[j])
+                * charges[i]
+                * charges[j]
+                / relative_velocity
+            )
+    return total
+
+
+def check_many_body_dollard_phase_bookkeeping() -> None:
+    """Check the oriented pairwise Dollard logarithm in a finite model."""
+
+    charges = (Fraction(2), Fraction(-3), Fraction(5))
+    orientations = (1, -1, 1)
+    velocities = (Fraction(0), Fraction(3), Fraction(7))
+
+    coefficient = many_body_dollard_log_coefficient_1d(charges, orientations, velocities)
+    assert_equal("oriented many-body Dollard log coefficient", coefficient, Fraction(201, 28))
+
+    permutation = (2, 0, 1)
+    permuted_coefficient = many_body_dollard_log_coefficient_1d(
+        tuple(charges[i] for i in permutation),
+        tuple(orientations[i] for i in permutation),
+        tuple(velocities[i] for i in permutation),
+    )
+    assert_equal("pairwise Dollard coefficient is independent of ordering", permuted_coefficient, coefficient)
+
+    flipped_orientations = (1, 1, 1)
+    flipped_coefficient = many_body_dollard_log_coefficient_1d(charges, flipped_orientations, velocities)
+    assert_equal("conjugating one charged creator reverses its pair tails", flipped_coefficient, Fraction(-121, 28))
+    assert_equal(
+        "orientation flip changes exactly the pairs incident to the flipped particle",
+        flipped_coefficient - coefficient,
+        -2 * (Fraction(2) + Fraction(15, 4)),
+    )
+
+    kappa = 1.3
+    b = (0.4, 0.0, 0.0)
+    u = (0.5, 0.0, 0.0)
+    regulator = 0.7
+
+    def dyadic_log_subtracted_remainder(t0: float) -> float:
+        t1 = 2.0 * t0
+        exact = coulomb_tail_phase_exact(kappa, b, u, regulator, t0, t1)
+        leading = kappa / norm3(u) * math.log(t1 / t0)
+        return exact - leading
+
+    early_remainder = abs(dyadic_log_subtracted_remainder(100.0))
+    late_remainder = abs(dyadic_log_subtracted_remainder(1000.0))
+    if not late_remainder < early_remainder:
+        raise AssertionError(
+            "log-subtracted Coulomb pair remainder should decay on dyadic large-time intervals"
+        )
+
+
 def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
@@ -463,6 +533,7 @@ def main() -> None:
     check_worldline_current_denominator()
     check_half_line_fourier_transform()
     check_coulomb_tail_dollard_log_phase()
+    check_many_body_dollard_phase_bookkeeping()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()

@@ -370,7 +370,9 @@ Current checks:
   transform of an asymptotic worldline current, and the equality between the
   worldline-current denominator and the momentum-space eikonal denominator.
   It also checks the Coulomb-tail logarithmic Dollard phase coefficient,
-  soft coherent velocity-separation positivity, finite-cutoff Weyl
+  the oriented pairwise many-body Dollard logarithm with creator/adjoint
+  signs, decay of the log-subtracted pair remainder on large dyadic time
+  intervals, soft coherent velocity-separation positivity, finite-cutoff Weyl
   characteristic functionals, coherent-overlap decay, and finite Hilbert
   soft-coordinate transformations.  The same script checks the finite
   left-inverse algebra of dressed LSZ residues: the pole residue is a Gram

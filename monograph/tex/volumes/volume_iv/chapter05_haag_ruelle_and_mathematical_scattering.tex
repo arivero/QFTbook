@@ -1405,6 +1405,62 @@ nonintegrable.  The open QFT problem is precisely to derive the analogue of
 \(\kappa_{ij}\), and the \(L^1\) remainder after subtracting the resulting
 phase, from the noncompact Wilson-line or Coulomb-dressed charged creators.
 
+The many-body comparison datum has the same pairwise form.  For a
+velocity-separated list \(I\), write \(v_i\) for a velocity in the support of
+\(h_i\), \(u_{ij}=v_i-v_j\), and let \(\eta_i=+1\) for a charged creator and
+\(\eta_i=-1\) for its adjoint.  The sign convention records the fact that
+conjugating a dressed charged creator reverses its boundary charge and its
+asymptotic flux.  Suppose that the finite-regulator charged dynamics, after
+all short-range terms have been separated, produces pair terms of the form
+\begin{equation}
+  V_{ij}(t)
+  =
+  \eta_i\eta_j
+  \frac{\kappa_{ij}}
+       {\sqrt{a_{ij}^2+|b_{ij}+u_{ij}t|^2}}
+  +r_{ij}(t),
+  \qquad
+  r_{ij}\in L^1([T_0,\infty)).
+  \label{eq:charged-many-body-pair-tail-datum}
+\end{equation}
+Here \(a_{ij}>0\) is a regulator or transverse smearing scale,
+\(b_{ij}\) is the impact-parameter coordinate in the finite comparison
+model, and \(\kappa_{ij}\) is the flux-pairing coefficient that the actual
+QFT estimate must derive from the Wilson-line or Coulomb-tail data.  The
+corresponding comparison phase must satisfy
+\begin{equation}
+  \dot\Theta_I(t)
+  =
+  \sum_{i<j}
+  \eta_i\eta_j
+  \frac{\kappa_{ij}}
+       {\sqrt{a_{ij}^2+|b_{ij}+u_{ij}t|^2}}
+  +\dot\Theta_I^{\mathrm{fin}}(t),
+  \qquad
+  \dot\Theta_I^{\mathrm{fin}}\in L^1([T_0,\infty)),
+  \label{eq:charged-many-body-dollard-derivative}
+\end{equation}
+or, equivalently at the logarithmic level,
+\begin{equation}
+  \Theta_I(T)
+  =
+  \sum_{i<j}
+  \eta_i\eta_j
+  \frac{\kappa_{ij}}{|u_{ij}|}\log T
+  +O(1)
+  \qquad (T\to+\infty).
+  \label{eq:charged-many-body-dollard-log}
+\end{equation}
+The velocity-separation hypothesis is part of the datum: if \(u_{ij}=0\) the
+logarithmic coefficient is not defined, and the pair must be treated as a
+single charged cluster or as a separate infraparticle/bound-state sector.
+Equations
+\eqref{eq:charged-many-body-pair-tail-datum}--\eqref{eq:charged-many-body-dollard-log}
+are not an independent scattering construction.  They are the finite
+Dollard bookkeeping that the nonperturbative estimate must reproduce:
+all \(t^{-1}\) tails must be exhausted by oriented pair fluxes, and only the
+residual derivative is allowed to enter the Cook \(L^1\) remainder.
+
 Once \eqref{eq:charged-hr-modified-cook-estimate} is known, the Hilbert-space
 part of the scattering construction is the same Cauchy argument as in
 Proposition~\ref{prop:estimate-package-implies-haag-ruelle}: for
