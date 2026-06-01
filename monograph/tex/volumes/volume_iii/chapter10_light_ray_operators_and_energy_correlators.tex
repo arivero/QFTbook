@@ -73,6 +73,70 @@ when possible, as a distribution on \((S^{D-2})^k\).  Coincident detector
 directions carry contact terms determined by the distributional product of
 light-ray operators.
 
+\subsection{Finite Angular Partitions and Positivity}
+\label{subsec:cft-detector-finite-partitions-positivity}
+
+Before multiplying detector operators, it is useful to extract the
+one-detector positivity consequence of Hypothesis
+\ref{hyp:cft-energy-detector}.  Let \(\Psi\) be a finite-energy collider
+state in the detector domain and define the state functional
+\[
+  \ell_\Psi(f)
+  =
+  \bra{\Psi}\mathcal E(f)\ket{\Psi},
+  \qquad f\in C^\infty(S^{D-2}),\quad f\ {\rm real}.
+\]
+If \(f\geq0\), then \(\ell_\Psi(f)\geq0\).  Moreover
+\(-\|f\|_\infty\leq f\leq\|f\|_\infty\) implies, by positivity and
+\(\mathcal E(1)=P^0\),
+\begin{equation}
+  |\ell_\Psi(f)|
+  \leq
+  \|f\|_\infty\,\bra{\Psi}P^0\ket{\Psi}.
+  \label{eq:cft-detector-riesz-bound}
+\end{equation}
+Thus \(\ell_\Psi\) extends uniquely from smooth tests to a positive bounded
+linear functional on \(C(S^{D-2})\).  By the Riesz representation theorem
+there is a finite positive regular Borel measure \(\mu_\Psi\) on the detector
+sphere such that
+\begin{equation}
+  \bra{\Psi}\mathcal E(f)\ket{\Psi}
+  =
+  \int_{S^{D-2}} f(\mathbf n)\,\dd\mu_\Psi(\mathbf n),
+  \qquad
+  \mu_\Psi(S^{D-2})=\bra{\Psi}P^0\ket{\Psi}.
+  \label{eq:cft-statewise-detector-measure}
+\end{equation}
+This is a statewise measure statement.  Promoting it to an
+operator-valued measure requires compatible polarized matrix elements and a
+common domain; those domain questions are additional parts of the
+detector-existence hypothesis beyond the scalar Riesz representation step.
+
+For a finite angular partition
+\(\mathcal P=\{B_1,\ldots,B_m\}\) of the sphere by Borel sets, the numbers
+\[
+  \mu_a(\Psi)=\mu_\Psi(B_a)\geq0,\qquad
+  \sum_{a=1}^m\mu_a(\Psi)=\bra{\Psi}P^0\ket{\Psi}
+\]
+are the finite-resolution calorimeter readout in the state \(\Psi\).  If
+\(v,w\in\mathbb C^m\) are bin weights, the statewise one-detector pairing
+\[
+  (v,w)_\Psi
+  =
+  \sum_{a=1}^m \mu_a(\Psi)\,\overline{v_a}w_a
+\]
+is positive semidefinite and obeys
+\begin{equation}
+  |(v,w)_\Psi|^2
+  \leq
+  (v,v)_\Psi\,(w,w)_\Psi .
+  \label{eq:cft-detector-bin-cauchy-schwarz}
+\end{equation}
+These inequalities are consequences of positivity of a single detector
+measure.  Positivity statements for products
+\(\mathcal E(f_1)\cdots\mathcal E(f_k)\) require the diagonal-contact
+extension discussed next.
+
 \subsection{Detector Products and Diagonal Contacts}
 \label{subsec:cft-detector-products-contacts}
 

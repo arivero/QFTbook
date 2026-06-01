@@ -23,10 +23,21 @@ def assert_equal(name: str, got: object, expected: object) -> None:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
 
 
+def assert_nonnegative(name: str, value: Fraction) -> None:
+    if value < 0:
+        raise AssertionError(f"{name}: got negative value {value!r}")
+
+
 def detector_value(atoms: list[Atom], values: list[Fraction]) -> Fraction:
     if len(atoms) != len(values):
         raise ValueError("one detector-test value is required for each atom")
     return sum(energy * value for (energy, _), value in zip(atoms, values))
+
+
+def state_measure_pairing(weights: list[Fraction], v: list[Fraction], w: list[Fraction]) -> Fraction:
+    if len(weights) != len(v) or len(weights) != len(w):
+        raise ValueError("bin weights and test vectors must have equal length")
+    return sum(weight * vi * wi for weight, vi, wi in zip(weights, v, w))
 
 
 def two_detector_product(atoms: list[Atom], f: list[Fraction], g: list[Fraction]) -> Fraction:
@@ -104,6 +115,28 @@ def partition_decomposition(atoms: list[Atom], test_values: list[list[Fraction]]
     return total
 
 
+def check_statewise_riesz_bound() -> None:
+    weights = [Fraction(1, 7), Fraction(2, 7), Fraction(4, 7)]
+    f = [Fraction(-3, 2), Fraction(5, 4), Fraction(1, 6)]
+    total_energy = sum(weights)
+    integral = sum(weight * value for weight, value in zip(weights, f))
+    sup_norm = max(abs(value) for value in f)
+    assert_equal("finite partition total energy", total_energy, Fraction(1))
+    assert_nonnegative("Riesz sup-norm detector bound", sup_norm * total_energy - abs(integral))
+
+
+def check_finite_bin_cauchy_schwarz() -> None:
+    weights = [Fraction(1, 5), Fraction(3, 10), Fraction(1, 2)]
+    v = [Fraction(2), Fraction(-1, 3), Fraction(4, 7)]
+    w = [Fraction(5, 6), Fraction(3, 8), Fraction(-2)]
+    vv = state_measure_pairing(weights, v, v)
+    ww = state_measure_pairing(weights, w, w)
+    vw = state_measure_pairing(weights, v, w)
+    assert_nonnegative("finite-bin detector Gram diagonal vv", vv)
+    assert_nonnegative("finite-bin detector Gram diagonal ww", ww)
+    assert_nonnegative("finite-bin detector Cauchy-Schwarz determinant", vv * ww - vw * vw)
+
+
 def check_two_detector_diagonal_split() -> None:
     atoms: list[Atom] = [(Fraction(2, 5), "n1"), (Fraction(1, 3), "n2"), (Fraction(4, 15), "n3")]
     f = [Fraction(1, 2), Fraction(-2, 3), Fraction(5, 7)]
@@ -156,6 +189,8 @@ def check_three_detector_partition_decomposition() -> None:
 
 
 def main() -> None:
+    check_statewise_riesz_bound()
+    check_finite_bin_cauchy_schwarz()
     check_two_detector_diagonal_split()
     check_disjoint_support_removes_diagonal()
     check_total_energy_ward_identity()

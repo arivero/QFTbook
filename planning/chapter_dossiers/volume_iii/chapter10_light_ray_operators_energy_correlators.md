@@ -37,6 +37,10 @@ The chapter establishes:
 - normalizable collider states as wavepacket-smeared local-operator states;
 - the CFT energy detector \(\mathcal E(f)\) as a stress-tensor flux limit at
   future null infinity;
+- the statewise positive detector measure \(\mu_\Psi\) obtained from the
+  detector quadratic form by the Riesz representation theorem, together with
+  the finite-bin Cauchy--Schwarz inequalities that follow from one-detector
+  positivity;
 - \(k\)-point energy correlators as distributions on \((S^{D-2})^k\);
 - finite positive-measure detector products, their off-diagonal and diagonal
   contact decomposition, the partition stratification of \(k\)-detector
@@ -70,6 +74,8 @@ The chapter establishes:
 | \(f\) | smooth angular detector test function |
 | \(\mathcal E(f)\), \(\mathcal E(\mathbf n)\) | smeared and distributional energy detector |
 | \(\mathcal G_k\) | \(k\)-point energy correlator |
+| \(\mu_\Psi\) | statewise positive finite detector measure associated to a finite-energy collider state \(\Psi\) |
+| \(\mathcal P=\{B_a\}\) | finite Borel partition of the detector sphere used for finite-resolution calorimetry |
 | \(\varepsilon_X\) | finite positive calorimetric measure associated to a detector configuration |
 | \(\mathsf P_k\) | set of partitions of \(k\) detector labels, indexing diagonal contact strata |
 | \(\mathcal A_n(x_\perp)\) | averaged null energy operator on a null line |
@@ -89,26 +95,31 @@ The chapter establishes:
 
 1. Energy detector operators require a stated null-infinity limit hypothesis as
    quadratic forms on collider states.
-2. Energy correlators are distributions; coincident detector directions carry
+2. For a fixed finite-energy state, detector positivity and
+   \(\mathcal E(1)=P^0\) give a bounded positive functional on angular tests,
+   hence a statewise finite positive measure by Riesz; operator-valued-measure
+   structure and product positivity require additional domain and
+   polarization data.
+3. Energy correlators are distributions; coincident detector directions carry
    contact terms whose finite positive-measure model is the diagonal
    decomposition of detector product measures, indexed for \(k\) insertions by
    partitions of detector labels.
-3. The averaged null energy operator is the null-line version of the
+4. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
-4. The light-transform weight map is derived from embedding-space
+5. The light-transform weight map is derived from embedding-space
    homogeneity and change of null-line integration variable; existence of the
    corresponding operator is kept separate as a Lorentzian analyticity/growth
    hypothesis.
-5. ANEC positivity is recorded as a theorem boundary with explicit
+6. ANEC positivity is recorded as a theorem boundary with explicit
    Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
    modular/causal proof mechanisms stated at the level needed for collider
    applications.
-6. Positivity of the energy detector implies the displayed
+7. Positivity of the energy detector implies the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
-7. The CFT EEC and the QCD EEC are the same detector construction with
+8. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
-8. The convergent light-ray OPE is used with explicit Lorentzian CFT
+9. The convergent light-ray OPE is used with explicit Lorentzian CFT
    hypotheses rather than treated as a general axiom of QFT.
 
 ## Figures
@@ -131,7 +142,9 @@ The chapter establishes:
   regulated action.
 - Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.
 - The finite detector-contact partition algebra is checked by
-  `calculation-checks/cft_energy_detector_contact_checks.py`.
+  `calculation-checks/cft_energy_detector_contact_checks.py`, which now also
+  checks the statewise Riesz bound and finite-bin Cauchy--Schwarz positivity
+  that precede detector products.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the finite arithmetic for the light-transform homogeneity map.
