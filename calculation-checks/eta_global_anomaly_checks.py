@@ -322,6 +322,71 @@ def mod_one(value: Fraction) -> Fraction:
     return value - quotient
 
 
+def check_cech_de_rham_line_holonomy_bookkeeping() -> None:
+    """Finite Cech-de Rham check for determinant-line connection data.
+
+    In a local frame with nabla e_i = -2*pi*i a_i e_i and
+    e_j = exp(2*pi*i f_ij) e_i, the transition law is
+    a_j = a_i - d f_ij.  A loop holonomy coordinate is the sum of connection
+    integrals on charted arcs minus the transition functions at vertices.
+    Local frame changes must telescope out of the closed-loop exponent.
+    """
+
+    a_i_integral = Fraction(7, 10)
+    f_start = Fraction(1, 5)
+    f_end = Fraction(-1, 6)
+    a_j_integral = a_i_integral - (f_end - f_start)
+    assert_equal(
+        "Cech-de Rham connection transition integral",
+        a_j_integral - a_i_integral,
+        -(f_end - f_start),
+    )
+
+    # Loop vertices 0 -> 1 -> 2 -> 3 -> 0.  Each edge is assigned a chart and
+    # an integral of the local connection form in that chart.
+    edges = [
+        (0, 1, 0, Fraction(2, 5)),
+        (1, 2, 1, Fraction(-1, 7)),
+        (2, 3, 1, Fraction(3, 11)),
+        (3, 0, 2, Fraction(5, 13)),
+    ]
+    transitions = [
+        (0, 1, 1, Fraction(1, 6)),
+        (1, 1, 2, Fraction(0)),
+        (1, 2, 3, Fraction(-2, 9)),
+        (2, 0, 0, Fraction(4, 15)),
+    ]
+
+    def h(chart: int, vertex: int) -> Fraction:
+        return Fraction((chart + 2) * (vertex + 1), 17) - Fraction(chart - vertex, 19)
+
+    original_exponent = sum(integral for _, _, _, integral in edges)
+    original_exponent -= sum(value for _, _, _, value in transitions)
+
+    transformed_edges = []
+    for start, end, chart, integral in edges:
+        transformed_integral = integral - (h(chart, end) - h(chart, start))
+        transformed_edges.append((start, end, chart, transformed_integral))
+
+    transformed_transitions = []
+    for current_chart, next_chart, vertex, value in transitions:
+        transformed_value = value + h(next_chart, vertex) - h(current_chart, vertex)
+        transformed_transitions.append((current_chart, next_chart, vertex, transformed_value))
+
+    transformed_exponent = sum(integral for _, _, _, integral in transformed_edges)
+    transformed_exponent -= sum(value for _, _, _, value in transformed_transitions)
+    assert_equal(
+        "closed-loop determinant-line holonomy exponent is frame independent",
+        transformed_exponent,
+        original_exponent,
+    )
+    assert_equal(
+        "closed-loop determinant-line phase is frame independent modulo one",
+        mod_one(transformed_exponent),
+        mod_one(original_exponent),
+    )
+
+
 def check_dai_freed_gluing_phase_algebra() -> None:
     fillings = [Fraction(1, 7), Fraction(5, 6), Fraction(-2, 5), Fraction(9, 4)]
     for xi0 in fillings:
@@ -589,6 +654,7 @@ def main() -> None:
     check_aps_spectral_flow_sign_convention()
     check_aps_half_cylinder_mode_selection()
     check_quillen_spectral_cut_transition_cocycle()
+    check_cech_de_rham_line_holonomy_bookkeeping()
     check_dai_freed_gluing_phase_algebra()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()

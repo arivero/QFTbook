@@ -360,6 +360,68 @@ Its curvature is the fiber integral over \(M\) of the degree
 \(\widehat A(TM)\operatorname{ch}(E)\).
 \end{quotedtheorem}
 
+\paragraph{Local connection forms and holonomy coordinates.}
+The theorem supplies the analytic determinant-line connection.  Before using
+its particular curvature, we record the elementary line-bundle bookkeeping
+that turns such a connection into a global-anomaly phase.  Let
+\(\{U_i\}\) be a cover of a patch of \(\mathcal B\), and choose nonzero local
+frames \(e_i\) of the determinant line.  Write the normalized connection
+one-form in the convention
+\[
+  \nabla e_i=-2\pi\ii\,a_i\otimes e_i,
+  \qquad a_i\in\Omega^1(U_i;\mathbb R).
+\]
+On an overlap \(U_i\cap U_j\), write
+\[
+  e_j=\exp(2\pi\ii f_{ij})\,e_i,
+  \qquad f_{ij}:U_i\cap U_j\longrightarrow \mathbb R/\mathbb Z .
+\]
+After choosing a real lift of \(f_{ij}\) on a contractible part of the
+overlap, substituting this transition rule into the connection gives
+\begin{equation}
+  a_j=a_i-df_{ij}.
+  \label{eq:det-line-local-connection-transition}
+\end{equation}
+Therefore \(da_i=da_j\) on overlaps, and the curvature is represented by a
+single global closed two-form.  In the Bismut--Freed determinant line this
+global two-form is the family-index form stated in
+Theorem~\ref{qthm:bismut-freed-holonomy}.
+
+Now let a loop \(\gamma\) be subdivided into arcs
+\(\gamma_r:[t_r,t_{r+1}]\to U_{i_r}\), with
+\(\gamma(t_N)=\gamma(t_0)\), and let
+\(\gamma(t_{r+1})\in U_{i_r}\cap U_{i_{r+1}}\).  Parallel transport along the
+arc written in the \(i_r\)-frame contributes
+\(\exp(2\pi\ii\int_{\gamma_r}a_{i_r})\).  At the next vertex, the change of
+frame from \(e_{i_r}\) to \(e_{i_{r+1}}\) contributes
+\(\exp(-2\pi\ii f_{i_r i_{r+1}}(\gamma(t_{r+1})))\).  Hence the holonomy is
+\begin{equation}
+  \operatorname{Hol}_\gamma(\nabla)
+  =
+  \exp\left[
+    2\pi\ii\left(
+      \sum_r\int_{\gamma_r}a_{i_r}
+      -
+      \sum_r f_{i_r i_{r+1}}(\gamma(t_{r+1}))
+    \right)
+  \right].
+  \label{eq:det-line-cech-holonomy}
+\end{equation}
+Changing frames by \(e_i\mapsto \exp(2\pi\ii h_i)e_i\) sends
+\[
+  a_i\mapsto a_i-dh_i,\qquad
+  f_{ij}\mapsto f_{ij}+h_j-h_i .
+\]
+The changes in the arc integrals and the vertex transition terms telescope in
+\eqref{eq:det-line-cech-holonomy}.  Thus the closed-loop holonomy is
+independent of the local frame.  On a contractible loop contained in a
+single patch, \eqref{eq:det-line-cech-holonomy} reduces by Stokes to the
+exponential of the curvature integral over a spanning disk.  On a
+noncontractible loop the curvature may vanish while
+\eqref{eq:det-line-cech-holonomy} remains nontrivial; this is exactly the
+flat global-anomaly possibility later detected by based-loop holonomy in the
+quotient background groupoid.
+
 \paragraph{Mechanism of determinant-line transport.}
 The determinant line over \(\mathcal B\) has local trivializations obtained by
 choosing a spectral cut for \(D_b^-D_b^+\) and zeta-regularizing the nonzero

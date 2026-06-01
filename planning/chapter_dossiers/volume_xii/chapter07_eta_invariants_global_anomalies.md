@@ -48,6 +48,11 @@ global anomaly as an explicit mod-two-index example.
   theorem for mapping tori, with an expanded mechanism explaining local
   zeta-determinant charts, the Bismut--Freed connection, curvature as the
   family index density, and holonomy as the adiabatic eta invariant.
+- Adds the elementary Cech-de Rham line-bundle bookkeeping behind
+  Bismut--Freed holonomy: local frames \(e_i\), normalized connection forms
+  \(a_i\), transition functions \(f_{ij}\), the overlap law
+  \(a_j=a_i-df_{ij}\), the arc-plus-vertex expression for loop holonomy, and
+  the telescoping invariance under local frame changes.
 - Makes the Quillen determinant-line spectral-cut chart construction explicit:
   the low-mode line \(L_a(b)\), the finite window
   \(E_{[a,c)}^\pm(b)\), the determinant transition element
@@ -120,6 +125,10 @@ global anomaly as an explicit mod-two-index example.
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
   Dai--Freed gluing, and a finite cochain Stokes model for the
   contractible-loop curvature-to-descent step.
+- The same script now checks the Cech-de Rham local connection/transition
+  algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
+  invariance of the closed-loop exponent under frame changes
+  \(e_i\mapsto e^{2\pi i h_i}e_i\).
 - Related scripts: `calculation-checks/background_index_theory_checks.py`,
   `calculation-checks/anomaly_polynomial_descent_checks.py`, and
   `calculation-checks/inflow_anomaly_line_checks.py`.
@@ -201,3 +210,7 @@ global anomaly as an explicit mod-two-index example.
   cancellation criterion over the quotient background groupoid and exact
   finite checks for inverse cocycles, tensor trivialization, and flat
   stabilizer holonomy before cancellation.
+- 2026-06-01 Cech-de Rham determinant-line pass: inserted the local
+  connection/transition formulae and loop-holonomy coordinate expression
+  immediately after the Bismut--Freed theorem, and extended
+  `eta_global_anomaly_checks.py` to verify the finite line-bundle algebra.
