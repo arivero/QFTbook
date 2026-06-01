@@ -17,10 +17,11 @@ material are kept separate from the compiled monograph.
 
 The table below is the complete public-facing volume roster at the present
 stage of the project.  Volumes I-XII are compiled into
-`monograph/tex/main.pdf`.  The remaining rows are planned subject-volume
-lines that have not yet been assigned Roman numerals; they are listed here so
-the public roadmap is explicit without pretending that unfinished material is
-already a numbered volume.
+`monograph/tex/main.pdf`.  Volumes XIII-XX are prospective roadmap volumes:
+their subject matter is part of the intended monograph architecture, but they
+are not yet compiled public volumes.  A prospective volume becomes active only
+after it has a TeX assembly file, chapter dossiers, verification pass,
+frontmatter entry, and README entry in the same commit.
 
 | Label | Status | Volume line |
 | --- | --- | --- |
@@ -36,14 +37,14 @@ already a numbered volume.
 | X | Active compiled volume | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
 | XI | Active compiled volume | Constructive, Lattice, and Numerical Quantum Field Theory |
 | XII | Active compiled volume | Quantum Field Theory in Curved Spacetime and Background Fields |
-| Unassigned future line | Planned candidate | Large-N gauge theory, QCD strings, flux tubes, baryons, and gauge-string expansions |
-| Unassigned future line | Planned candidate | Advanced local-algebraic QFT and modular structure |
-| Unassigned future line | Planned candidate | Advanced scattering, amplitudes, resonances, and infrared-safe observables |
-| Unassigned future line | Planned candidate | Advanced supersymmetric theories and protected sectors |
-| Unassigned future line | Planned candidate | Advanced two-dimensional CFT and exact two-dimensional QFT |
-| Unassigned future line | Planned candidate | Advanced constructive, stochastic, and rigorous Wilsonian QFT |
-| Unassigned future line | Planned candidate | Advanced phases, defects, categorical symmetry, and extended-operator theory |
-| Unassigned future line | Planned candidate | Advanced curved-background, locally covariant, and semiclassical QFT |
+| XIII | Prospective roadmap volume | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions |
+| XIV | Prospective roadmap volume | Advanced Local-Algebraic QFT and Modular Structure |
+| XV | Prospective roadmap volume | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables |
+| XVI | Prospective roadmap volume | Advanced Supersymmetric Theories and Protected Sectors |
+| XVII | Prospective roadmap volume | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT |
+| XVIII | Prospective roadmap volume | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT |
+| XIX | Prospective roadmap volume | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
+| XX | Prospective roadmap volume | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
 
 ### Active Compiled Volumes
 
@@ -66,14 +67,10 @@ volumes:
 The public volume program has two layers.  The first layer is the launched
 compiled manuscript: twelve reader-facing volumes, numbered I--XII, whose
 assembly files are included by `monograph/tex/main.tex` and therefore by
-`monograph/tex/main.pdf`.  The second layer is the planned future volume
-program: subject-volume candidates that have been identified as natural splits
-or expansions, but have not yet been assigned public Roman numerals.
-
-Volume XIII and later are therefore unassigned, not missing.  A future subject
-becomes a numbered public volume only after it has a TeX assembly file, chapter
-dossiers, verification pass, frontmatter entry, and README entry in the same
-commit.
+`monograph/tex/main.pdf`.  The second layer is the prospective future volume
+program: Volumes XIII-XX record the intended subject architecture, but remain
+roadmap entries until their assembly files and verification infrastructure are
+created.
 
 Chapter ranges are continuous printed chapter numbers, and counts are counts
 of printed `\chapter` entries, not raw `\input` lines.  Volume IV also inputs
@@ -99,30 +96,30 @@ no hidden active volumes outside this roster.  Draft files, deprecated files,
 source transcriptions, local reference files, and planning notes are not
 additional public volumes.
 
-### Full Planned Future Volume Candidate List
+### Prospective Volumes XIII-XX
 
-The table below is the complete public list of currently recognized future
-subject-volume candidates.  These are part of the intended monograph
-architecture, but they are not active public volumes yet.  They keep their
-descriptive names until the material is mature enough to receive a numbered
-assembly file.
+The table below gives the complete current roadmap for the prospective
+volumes after the twelve compiled volumes.  These entries are numbered so that
+the README contains the full volume program, but their status remains
+prospective until the corresponding source assemblies exist and pass the same
+verification standards as Volumes I-XII.
 
-| Future volume candidate | Current status | Intended scope | Current compiled home |
+| Volume | Current status | Intended scope | Current compiled home |
 | --- | --- | --- | --- |
-| Large-N gauge theory, QCD strings, flux tubes, baryons, and gauge-string expansions | Planned candidate standalone volume; some material already exists where logically needed | Nonperturbative large-N limits, QCD string observables, baryons and solitons, planar versus confining string limits, and controlled bridges to gauge/string spectral problems. | Mainly Volumes IV, VI, VII, and IX |
-| Advanced local-algebraic QFT and modular structure | Planned candidate standalone volume if it outgrows the foundations | Local von Neumann algebras, split property, modular inclusions, relative entropy, entanglement as an AQFT topic, superselection sectors in examples, and concrete interacting nets. | Volumes I, X, XI, and XII |
-| Advanced scattering, amplitudes, resonances, and infrared-safe observables | Planned candidate standalone volume or deep expansion of the scattering/gauge volumes | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, energy correlators, light-ray observables, and detector-defined inclusive observables. | Volumes II, IV, and V |
-| Advanced supersymmetric theories and protected sectors | Planned candidate expansion of the supersymmetry volume, with possible later split if the material outgrows Volume VII | GLSM and mirror symmetry, two-dimensional supersymmetric models, four-dimensional N=1 and N=2 dynamics, localization with regulated data, six-dimensional theories, and protected sectors. | Volume VII |
-| Advanced two-dimensional CFT and exact two-dimensional QFT | Planned candidate expansion or later split across the CFT, integrability, supersymmetry, and numerical volumes | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. | Volumes V, VI, VII, and XI |
-| Advanced constructive, stochastic, and rigorous Wilsonian QFT | Planned candidate standalone volume if the proof program outgrows Volume XI | Constructive existence theorems, stochastic quantization, singular SPDEs, nonperturbative Wilsonian RG, scaling limits, and proofs connecting regulator data to local QFT frameworks. | Volume XI |
-| Advanced phases, defects, categorical symmetry, and extended-operator theory | Planned candidate standalone volume if the extended-operator program outgrows Volume IX | Line, surface, and domain-wall operators; generalized global symmetry; categorical symmetry; noninvertible defects; phase diagnostics; anomaly inflow; and substantial examples. | Volumes VIII and IX |
-| Advanced curved-background, locally covariant, and semiclassical QFT | Planned candidate standalone volume if the curved-background program outgrows Volume XII | Locally covariant QFT, microlocal methods, Hadamard renormalization, index-theoretic anomaly structure, semiclassical backreaction, and controlled curved-background examples. | Volume XII |
+| XIII | Prospective roadmap volume | Nonperturbative large-N limits, QCD string observables, baryons and solitons, planar versus confining string limits, and controlled bridges to gauge/string spectral problems. | Mainly Volumes IV, VI, VII, and IX |
+| XIV | Prospective roadmap volume | Local von Neumann algebras, split property, modular inclusions, relative entropy, entanglement as an AQFT topic, superselection sectors in examples, and concrete interacting nets. | Volumes I, X, XI, and XII |
+| XV | Prospective roadmap volume | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, energy correlators, light-ray observables, and detector-defined inclusive observables. | Volumes II, IV, and V |
+| XVI | Prospective roadmap volume | GLSM and mirror symmetry, two-dimensional supersymmetric models, four-dimensional N=1 and N=2 dynamics, localization with regulated data, six-dimensional theories, and protected sectors. | Volume VII |
+| XVII | Prospective roadmap volume | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. | Volumes V, VI, VII, and XI |
+| XVIII | Prospective roadmap volume | Constructive existence theorems, stochastic quantization, singular SPDEs, nonperturbative Wilsonian RG, scaling limits, and proofs connecting regulator data to local QFT frameworks. | Volume XI |
+| XIX | Prospective roadmap volume | Line, surface, and domain-wall operators; generalized global symmetry; categorical symmetry; noninvertible defects; phase diagnostics; anomaly inflow; and substantial examples. | Volumes VIII and IX |
+| XX | Prospective roadmap volume | Locally covariant QFT, microlocal methods, Hadamard renormalization, index-theoretic anomaly structure, semiclassical backreaction, and controlled curved-background examples. | Volume XII |
 
 Contributors should treat the twelve active volumes as the authoritative
-compiled manuscript and the roadmap table as the authoritative list of planned
-subject expansions.  A future subject split becomes a public numbered volume
-only after it has its own assembly file, chapter dossiers, verification pass,
-and frontmatter/README entry.
+compiled manuscript and the roadmap table as the authoritative list of
+prospective subject expansions.  A prospective volume becomes an active public
+compiled volume only after it has its own assembly file, chapter dossiers,
+verification pass, and frontmatter/README entry.
 
 ### Permanent Cross-Cutting Layer
 
