@@ -1186,29 +1186,17 @@ different limiting fluxes define different charged sectors.  The distinction
 is quantified below by the soft-norm and Weyl-implementation calculations.
 \end{enumerate}
 
-\begin{proposition}[Finite-dimensional Coulomb tail and the logarithmic comparison phase]
-\label{prop:charged-coulomb-tail-dollard-log}
-Let \(u\in\mathbb R^3\setminus\{0\}\), \(b\in\mathbb R^3\), \(a>0\), and
-\(\kappa\in\mathbb R\).  Define
+\paragraph{Finite-dimensional Coulomb-tail comparison.}
+The following elementary calculation fixes the normalization of the
+logarithmic comparison phase, but it is not a theorem about QFT.  Let
+\(u\in\mathbb R^3\setminus\{0\}\), \(b\in\mathbb R^3\), \(a>0\), and
+\(\kappa\in\mathbb R\), and define
 \[
   V(t)=\frac{\kappa}{\sqrt{a^2+|b+ut|^2}},
   \qquad
   \Phi(T)=\int_{T_0}^{T}V(t)\,\dd t .
 \]
-Then there is a finite constant \(C(T_0,b,u,a,\kappa)\) such that
-\begin{equation}
-  \Phi(T)=\frac{\kappa}{|u|}\log T+C(T_0,b,u,a,\kappa)+O(T^{-1})
-  \qquad (T\to+\infty).
-  \label{eq:charged-coulomb-tail-log-phase}
-\end{equation}
-Equivalently,
-\[
-  V(t)=\frac{\kappa}{|u|}\frac1t+O(t^{-2}).
-\]
-\end{proposition}
-
-\begin{proof}
-Write
+Introduce
 \[
   \sigma=\frac{b\cdot u}{|u|^2},
   \qquad
@@ -1218,9 +1206,9 @@ Write
 \]
 Then
 \[
-  a^2+|b+ut|^2=\rho^2+|u|^2(t+\sigma)^2 .
+  a^2+|b+ut|^2=\rho^2+|u|^2(t+\sigma)^2 ,
 \]
-Therefore
+and the integral has the exact primitive
 \begin{equation}
   \Phi(T)
   =
@@ -1230,16 +1218,21 @@ Therefore
   \right]_{T_0}^{T}.
   \label{eq:charged-coulomb-tail-asinh-exact}
 \end{equation}
-Since
-\(\operatorname{arsinh} x=\log(2x)+O(x^{-2})\) as \(x\to+\infty\),
-\eqref{eq:charged-coulomb-tail-log-phase} follows.  Differentiating the
-completed-square expression gives the displayed \(t^{-1}\) asymptotic for
-\(V(t)\).
-\end{proof}
-
-The proposition is only a finite-dimensional comparison calculation; it does
-not identify the coefficient \(\kappa\) in a QFT.  Its role is to fix the
-logic of the missing charged Haag--Ruelle estimate.  If the asymptotic
+Using
+\(\operatorname{arsinh} x=\log(2x)+O(x^{-2})\) as \(x\to+\infty\), one obtains
+a finite constant \(C(T_0,b,u,a,\kappa)\) with
+\begin{equation}
+  \Phi(T)=\frac{\kappa}{|u|}\log T+C(T_0,b,u,a,\kappa)+O(T^{-1})
+  \qquad (T\to+\infty).
+  \label{eq:charged-coulomb-tail-log-phase}
+\end{equation}
+The same completed-square expression gives
+\[
+  V(t)=\frac{\kappa}{|u|}\frac1t+O(t^{-2}).
+\]
+This finite-dimensional comparison calculation does not identify the
+coefficient \(\kappa\) in a QFT.  Its role is to fix the logic of the missing
+charged Haag--Ruelle estimate.  If the asymptotic
 flux-sector pairing of two charged packets produces an effective long-range
 pair term \(V_{ij}(t)\) with leading coefficient \(\kappa_{ij}/|u_{ij}|\),
 then the corresponding contribution to \(\Theta_I(t)\) must contain

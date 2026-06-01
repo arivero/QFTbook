@@ -145,6 +145,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Continuous-spin alternative|"
     r"Ramond zero-mode bound|"
     r"comparison algebra|"
+    r"Finite-dimensional Coulomb tail and the logarithmic comparison phase|"
     r"finite algebra of .*comparisons|"
     r"exact finite.*GEVP extraction|"
     r"Richardson cancellation|"

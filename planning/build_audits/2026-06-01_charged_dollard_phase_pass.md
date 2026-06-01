@@ -6,7 +6,7 @@ Cook estimates.  The new text supplies the finite-dimensional asymptotic
 calculation behind the comparison phase required by those estimates.
 
 Added manuscript content in Volume IV Chapter 5:
-- a proposition for
+- a worked finite-dimensional comparison calculation for
   \(V(t)=\kappa/\sqrt{a^2+|b+ut|^2}\) with \(u\ne0\), proving
   \[
     \int_{T_0}^T V(t)\,dt
@@ -24,3 +24,9 @@ Added manuscript content in Volume IV Chapter 5:
 The paired calculation check now verifies the exact \(\operatorname{arsinh}\)
 primitive and the logarithmic coefficient for sample finite-dimensional
 Coulomb tails.
+
+Follow-up in the same development lane: the comparison calculation was demoted
+from proposition/proof form to paragraph-level derivation for issue #691.  The
+calculation is load-bearing for the charged-scattering logic, but the algebra
+itself is elementary; theorem-family rank is reserved for the eventual
+nonperturbative charged Haag--Ruelle estimate.

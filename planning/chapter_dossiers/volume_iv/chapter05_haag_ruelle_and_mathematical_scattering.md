@@ -78,7 +78,7 @@ resonances.
   velocity-separated exchange estimate with possible Dollard/Faddeev--Kulish
   phase; a modified Cook estimate after subtracting the comparison phase; and
   scalar-product limits in the correct asymptotic representation.
-- Proves the finite-dimensional Coulomb-tail model behind the comparison
+- Works out the finite-dimensional Coulomb-tail model behind the comparison
   phase: for \(V(t)=\kappa/\sqrt{a^2+|b+ut|^2}\), the pair phase is
   \((\kappa/|u|)\log t+O(1)\).  This identifies exactly why a \(t^{-1}\)
   long-range charged pair term must be subtracted rather than treated as a
@@ -193,3 +193,7 @@ resonances.
   missing charged Haag--Ruelle estimate now states not only that a comparison
   phase is needed but the exact asymptotic mechanism behind its \(t^{-1}\)
   derivative.
+- 2026-06-01 #691 follow-up: demoted that Coulomb-tail comparison from
+  proposition/proof form to paragraph-level worked calculation.  The formulae
+  and calculation-check companion remain; the theorem-family burden stays on
+  the charged Haag--Ruelle estimate, not on completed-square algebra.
