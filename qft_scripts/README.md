@@ -27,6 +27,7 @@ python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
+python3 qft_scripts/phi4_dlcq.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
@@ -128,6 +129,12 @@ per task.
   \(H_0+\lambda\int:\phi^4:/4!\) in a declared momentum, particle-number,
   free-energy, and Fourier-mode cutoff; it is a nonintegrable finite-matrix
   benchmark, not a continuum theorem.
+- `phi4_dlcq.py`: finite DLCQ warmup for \(1+1\)-dimensional scalar
+  \(\phi^4\) theory at fixed harmonic resolution \(K\), omitting the
+  \(p^+=0\) mode as a declared regulator choice.  It constructs the
+  finite invariant-mass matrix from positive longitudinal parton partitions
+  and a normal-ordered quartic operator; zero-mode constraints and
+  \(K\to\infty\) counterterm extrapolation remain separate data.
 - `tffsa_ising_spin_connected.py`: finite zero-momentum TFFSA-style
   connected-block benchmark for the massive Ising spin perturbation.  It
   assembles off-diagonal form-factor matrix elements in a free-fermion basis

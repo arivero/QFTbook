@@ -1446,6 +1446,146 @@ with the following light-front entries.
 \end{enumerate}
 \end{definition}
 
+\section{\texorpdfstring{Scalar \(\phi^4\) DLCQ Warmup}{Scalar phi4 DLCQ Warmup}}
+\label{sec:scalar-phi4-dlcq-warmup}
+
+Before the large-\(N\) gauge-theory example, it is useful to record a
+nonintegrable scalar light-front matrix whose finite definition is completely
+explicit.  This is a warmup for DLCQ, not a definition of the continuum
+\(\phi^4_2\) theory.  The \(p^+=0\) mode is omitted in the construction
+below; in light-front scalar theory that omission is a regulator choice and
+is precisely where vacuum and symmetry-breaking information can hide.  A
+continuum claim therefore needs a zero-mode prescription and a
+counterterm/extrapolation theorem in addition to the finite matrix.
+
+\begin{construction}[Finite scalar DLCQ matrix]
+\label{con:finite-scalar-phi4-dlcq-matrix}
+Fix a harmonic resolution \(K\in\mathbb Z_{>0}\), a mass \(m>0\), and a
+finite coupling coordinate \(g\).  The finite bosonic basis consists of
+occupation vectors
+\begin{equation}
+  {\bf N}=(N_1,\ldots,N_K)\in\mathbb Z_{\ge0}^K,
+  \qquad
+  \sum_{n=1}^K nN_n=K .
+  \label{eq:phi4-dlcq-partition-basis}
+\end{equation}
+The parton with label \(n\) carries longitudinal momentum \(p_n^+=n/R\), and
+the total sector has \(P^+=K/R\).  The free invariant mass is
+\begin{equation}
+  M^2_{0,K}({\bf N})
+  =
+  K m^2\sum_{n=1}^K\frac{N_n}{n}.
+  \label{eq:phi4-dlcq-free-mass}
+\end{equation}
+This is the finite-sector form of
+\[
+  M^2=2P^+P^-,
+  \qquad
+  P^-_0=\sum_{n=1}^K\frac{m^2}{2p_n^+}\,N_n,
+\]
+with zero transverse momentum.
+
+Let \(a_n,a_n^\dagger\) be bosonic creation and annihilation operators with
+\([a_n,a_m^\dagger]=\delta_{nm}\).  The dimensionless normal-ordered quartic
+operator \(Q_K\) is
+\begin{equation}
+  Q_K
+  =
+  \sum_{\substack{\epsilon_i=\pm1,\ 1\le n_i\le K\\
+                  \sum_i\epsilon_i n_i=0}}
+  \frac{
+    :B_{\epsilon_1,n_1}B_{\epsilon_2,n_2}
+     B_{\epsilon_3,n_3}B_{\epsilon_4,n_4}:
+  }{\sqrt{n_1n_2n_3n_4}},
+  \qquad
+  B_{+1,n}=a_n,\quad B_{-1,n}=a_n^\dagger .
+  \label{eq:phi4-dlcq-quartic-operator}
+\end{equation}
+The Kronecker condition is longitudinal momentum conservation.  If one uses
+the field normalization
+\[
+  \phi(x^-)
+  =
+  \sum_{n>0}
+  \frac{a_ne^{-\ii n x^-/R}+a_n^\dagger e^{\ii n x^-/R}}{\sqrt{4\pi n}},
+  \qquad x^-\sim x^-+2\pi R,
+\]
+then \(g=\lambda/(96\pi)\) for the interaction
+\(\lambda\int:\phi^4:/4!\) when written in invariant-mass units.  The
+chapter treats \(g\) as the finite regulator coordinate, because a
+cutoff-dependent coupling and possible zero-mode counterterms are part of a
+continuum scheme.
+
+The finite DLCQ invariant-mass matrix is
+\begin{equation}
+  M^2_K
+  =
+  M^2_{0,K}
+  +
+  gK\,P_KQ_KP_K ,
+  \label{eq:phi4-dlcq-finite-mass-matrix}
+\end{equation}
+where \(P_K\) is the projection onto the finite partition basis
+\eqref{eq:phi4-dlcq-partition-basis}.  Optional particle-number cutoffs may
+be added as further finite-regulator coordinates, but they must then be
+removed or extrapolated separately from the harmonic resolution.
+\end{construction}
+
+The matrix \eqref{eq:phi4-dlcq-finite-mass-matrix} is Hermitian.  The
+coefficient in \eqref{eq:phi4-dlcq-quartic-operator} is real, and taking the
+adjoint sends every ordered monomial with signs \(\epsilon_i\) to the
+corresponding monomial with signs \(-\epsilon_i\).  The constraint
+\(\sum_i\epsilon_i n_i=0\) is invariant under this sign change, and normal
+ordering restores the displayed ordered form.  Since \(P_K\) is an
+orthogonal projection onto a fixed total-resolution sector, the projected
+finite matrix is Hermitian.
+
+A small matrix element fixes the convention.  At \(K=3\), the states
+\[
+  \ket{1,1,1}=\frac{(a_1^\dagger)^3}{\sqrt{3!}}\ket0,
+  \qquad
+  \ket{3}=a_3^\dagger\ket0
+\]
+both lie in the same harmonic-resolution sector.  The only term in \(Q_K\)
+that connects them is the ordered family with one \(a_3^\dagger\) and three
+\(a_1\)'s, together with its four possible positions in the quartic product.
+Thus
+\begin{equation}
+  \bra3 Q_3\ket{1,1,1}
+  =
+  \frac{4}{\sqrt3}\,\sqrt{3!}
+  =
+  4\sqrt2 .
+  \label{eq:phi4-dlcq-one-three-check}
+\end{equation}
+For the three-particle state itself, the two-creation two-annihilation
+normal-ordered term with all momenta equal to one gives
+\begin{equation}
+  \bra{1,1,1}Q_3\ket{1,1,1}
+  =
+  6\,\bra{1,1,1}(a_1^\dagger)^2a_1^2\ket{1,1,1}
+  =
+  36.
+  \label{eq:phi4-dlcq-three-particle-diagonal-check}
+\end{equation}
+These finite identities are not physical mass predictions; they are
+normalization checks for the regulator matrix.
+
+The script
+\[
+  \texttt{qft\_scripts/phi4\_dlcq.py}
+\]
+implements Construction~\ref{con:finite-scalar-phi4-dlcq-matrix}.  Its smoke
+mode builds a small positive-\(p^+\) matrix, checks finite Hermiticity, and
+prints the lowest finite invariant masses.  The companion calculation check
+\[
+  \texttt{calculation-checks/hamiltonian\_truncation\_dlcq\_checks.py}
+\]
+verifies total harmonic resolution, zero-coupling reduction to
+\eqref{eq:phi4-dlcq-free-mass}, Hermiticity, and the two convention-sensitive
+matrix elements \eqref{eq:phi4-dlcq-one-three-check} and
+\eqref{eq:phi4-dlcq-three-particle-diagonal-check}.
+
 \section{\texorpdfstring{Large-\(N\) Two-Dimensional QCD: A Finite DLCQ Matrix}{Large-N Two-Dimensional QCD: A Finite DLCQ Matrix}}
 
 The standard large-\(N\) two-dimensional QCD meson equation involves the

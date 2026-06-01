@@ -38,6 +38,9 @@ numerics.
 - `x^pm`, `p^+`, `K`: light-front coordinates, longitudinal momentum, and
   harmonic resolution.
 - `M^2`, `P^-`: invariant mass operator and light-front Hamiltonian.
+- `N_n`, `K`, `Q_K`, `g`: DLCQ positive-longitudinal occupation numbers,
+  harmonic resolution, normal-ordered scalar quartic operator, and finite
+  scalar \(\phi^4\) DLCQ coupling coordinate.
 - `M_K^2`, `x_n`, `gamma`: finite harmonic-resolution matrix for the
   large-N two-dimensional QCD meson principal-value operator, grid point, and
   coupling normalization.
@@ -155,6 +158,14 @@ numerics.
   the light-front compactification, parton partitions, zero-mode treatment,
   finite \(P^-\) or \(M^2\) operator, and finite-\(K\) continuum diagnostic
   into a DLCQ regulator datum.
+- Constructs a scalar \(\phi^4\) DLCQ warmup at fixed harmonic resolution:
+  positive-longitudinal bosonic partitions, free invariant mass
+  \(Km^2\sum_nN_n/n\), normal-ordered quartic operator \(Q_K\), and finite
+  matrix \(M_K^2=M_{0,K}^2+gK P_KQ_KP_K\), with the omitted zero mode stated
+  as a regulator choice rather than hidden.
+- Derives the finite \(K=3\) convention checks
+  \(\bra3Q_3\ket{1,1,1}=4\sqrt2\) and
+  \(\bra{1,1,1}Q_3\ket{1,1,1}=36\).
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
   meson equation and records the finite quadratic-form identity that gives
   regulator-level positivity.
@@ -184,6 +195,7 @@ numerics.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
   `qft_scripts/phi4_hamiltonian_truncation.py`,
+  `qft_scripts/phi4_dlcq.py`,
   `qft_scripts/thooft_dlcq.py`, `qft_scripts/thooft_dlcq_extrapolation.py`,
   and `tools/run_qft_scripts_smoke.sh`.
 
@@ -202,6 +214,10 @@ plots.
   normal-ordered scalar \(\phi^4\) Hamiltonian truncation in a declared
   total-momentum, particle-number, free-energy, and Fourier-mode cutoff, then
   checks finite Hermiticity and reports the lowest finite eigenvalues.
+- `qft_scripts/phi4_dlcq.py --smoke`: builds a finite positive-\(p^+\)
+  scalar \(\phi^4\) DLCQ invariant-mass matrix at fixed harmonic resolution,
+  checks finite Hermiticity, and reports the lowest finite invariant masses
+  without asserting a continuum spectrum.
 - `qft_scripts/tffsa_ising_spin_connected.py --smoke`: builds the finite
   zero-momentum connected Ising spin-field TFFSA block, checks Hermiticity,
   and reports the finite eigenvalues and free energies.
@@ -223,9 +239,10 @@ plots.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, the scalar \(\phi^4\)
-  normal-ordered truncation basis and zero-mode matrix element, connected
-  Ising TFFSA block normalization, finite Ising TFFSA spectral-flow derivative
-  identities, finite large-`K` fit algebra, finite residual certification,
+  normal-ordered truncation basis and zero-mode matrix element, the scalar
+  \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix elements,
+  connected Ising TFFSA block normalization, finite Ising TFFSA spectral-flow
+  derivative identities, finite large-`K` fit algebra, finite residual certification,
   spectral-projector leakage, the Feshbach determinant identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
@@ -258,3 +275,7 @@ plots.
   and script as a regulator benchmark, with finite Hermiticity and the
   zero-mode two-particle matrix element treated as checks rather than a
   continuum theorem.
+- 2026-06-01 issue #494 scalar-DLCQ pass: added the requested
+  \(1+1\)-dimensional \(\phi^4\) DLCQ warmup, keeping the omitted zero mode
+  and \(K\to\infty\) counterterm problem explicit, and paired it with a
+  smoke script plus finite matrix-element checks.

@@ -49,6 +49,9 @@ python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 echo "[qft-scripts] phi4_hamiltonian_truncation --smoke"
 python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
 
+echo "[qft-scripts] phi4_dlcq --smoke"
+python3 qft_scripts/phi4_dlcq.py --smoke
+
 echo "[qft-scripts] tffsa_ising_spin_connected --smoke"
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 

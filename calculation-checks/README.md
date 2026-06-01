@@ -340,9 +340,10 @@ Current checks:
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the normal-ordered
   \(1+1\)-dimensional scalar \(\phi^4\) truncation basis and zero-mode matrix
-  element, the large-\(N\) two-dimensional QCD DLCQ quadratic-form identity,
-  connected Ising TFFSA spin-block normalization, light-front metric and
-  mass-shell bookkeeping, the
+  element, the scalar \(\phi^4\) DLCQ harmonic-resolution basis and
+  convention-sensitive quartic matrix elements, the large-\(N\)
+  two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
+  spin-block normalization, light-front metric and mass-shell bookkeeping, the
   one-particle measure Jacobian, residual-to-spectrum certification, spectral-projector
   leakage control, the finite Feshbach determinant identity behind
   truncation counterterms, and Krylov/Lanczos Ritz-residual plus finite

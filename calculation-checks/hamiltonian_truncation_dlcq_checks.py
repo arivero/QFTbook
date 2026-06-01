@@ -15,6 +15,7 @@ SCRIPT_DIR = ROOT / "qft_scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
+import phi4_dlcq  # noqa: E402
 import phi4_hamiltonian_truncation as phi4_truncation  # noqa: E402
 import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import tffsa_ising_spectral_flow as tffsa_flow  # noqa: E402
@@ -115,6 +116,35 @@ def check_phi4_hamiltonian_truncation_matrix() -> None:
         "phi^4 zero-mode two-particle diagonal",
         interaction[lookup[(2,)], lookup[(2,)]],
         expected_two_particle_diagonal,
+    )
+
+
+def check_phi4_dlcq_matrix() -> None:
+    cfg = phi4_dlcq.RunConfig(K=5, mass=1.0, quartic_coupling=0.03)
+    basis, free, matrix = phi4_dlcq.invariant_mass_matrix(cfg)
+    if not basis:
+        raise AssertionError("DLCQ phi^4 basis unexpectedly empty")
+    for state in basis:
+        assert_equal("DLCQ phi^4 total resolution", phi4_dlcq.total_resolution(state), cfg.K)
+    assert_leq("DLCQ phi^4 finite matrix Hermiticity", float(np.max(np.abs(matrix - matrix.T))), 1.0e-12)
+
+    zero_cfg = phi4_dlcq.RunConfig(K=cfg.K, mass=cfg.mass, quartic_coupling=0.0)
+    _, zero_free, zero_matrix = phi4_dlcq.invariant_mass_matrix(zero_cfg)
+    assert_matrix_close("DLCQ phi^4 zero-coupling invariant mass", zero_matrix, zero_free)
+
+    small_cfg = phi4_dlcq.RunConfig(K=3, mass=1.0, quartic_coupling=0.0)
+    small_basis = phi4_dlcq.generate_basis(3)
+    quartic = phi4_dlcq.quartic_matrix(small_cfg, small_basis)
+    lookup = {state: idx for idx, state in enumerate(small_basis)}
+    assert_close(
+        "DLCQ phi^4 one-to-three matrix element",
+        quartic[lookup[(0, 0, 1)], lookup[(3, 0, 0)]],
+        4.0 * np.sqrt(2.0),
+    )
+    assert_close(
+        "DLCQ phi^4 three-particle diagonal",
+        quartic[lookup[(3, 0, 0)], lookup[(3, 0, 0)]],
+        36.0,
     )
 
 
@@ -433,6 +463,7 @@ def check_light_front_kinematic_identities() -> None:
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_phi4_hamiltonian_truncation_matrix()
+    check_phi4_dlcq_matrix()
     check_tffsa_connected_spin_block()
     check_tffsa_spectral_flow_derivatives()
     check_thooft_quadratic_form_identity()
