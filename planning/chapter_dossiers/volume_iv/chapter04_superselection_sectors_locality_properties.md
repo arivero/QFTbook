@@ -38,6 +38,9 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
 - `\pi_{\sigma_-,\sigma_+}`, `B_L(R)`, `B_R(R)`, `m_\sigma`: soliton
   representation, far-tail order-parameter observables, and phase values
   used in the DHR kink-sector diagnostic.
+- `Z(\mathcal M)`, `S(\mathcal M)`: center of a von Neumann algebra and
+  Connes spectrum used in the type-classification boundary for sharp local
+  algebras.
 
 ## Claim Ledger
 
@@ -130,6 +133,15 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   into a normal product state on the generated von Neumann algebra, but the
   collar and interpolant are part of the datum and do not produce a sharp
   tensor factorization of \(\Hilb\) at zero separation.
+- Separates the type-classification theorem boundary from the split theorem:
+  the chapter now defines factor center, minimal projections, type-I factors,
+  type-III factors by absence of nonzero finite projections or normal
+  semifinite trace, and the Connes spectrum condition
+  \(S(\mathcal M)=\mathbb R_{\ge0}\) for type \(\mathrm{III}_1\).  It then
+  states that a positive-collar type-I interpolant does not classify the
+  endpoint sharp local algebras, whose type requires locality, covariance,
+  spectrum, Reeh--Schlieder standardness, additivity or scaling regularity,
+  and phase-space control.
 - Verifies the right-wedge light-ray modular-inclusion sign in the chapter's
   Bisognano--Wichmann convention: for \(W_R(a)=W_R+a e_+\),
   \(\sigma_t^{W_R}\mathcal R(W_R(a))
@@ -191,7 +203,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   matrices give normal product states, positivity holds on \(C^*C\), split
   product states on a specified local subalgebra are independent of the chosen
   normal extension off that subalgebra, and a finite-rank nuclear map gives
-  the separated bilinear expansion that models the infinite split proof.
+  the separated bilinear expansion that models the infinite split proof.  It
+  also checks the finite type-I shadow: matrix units supply minimal
+  projections and the normalized trace is finite on them, which is precisely
+  why such finite algebra checks cannot certify type-III sharp local algebras.
 - `calculation-checks/unruh_boost_geometry_checks.py` verifies the
   complex-boost and wedge-geometry signs used here and in Volume XII,
   including the \(i\pi\) right-to-left wedge map and the lightlike
@@ -343,6 +358,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   arbitrary Banach nuclear decomposition need not have normal coefficient
   functionals and identifies the collar/locality/spectral-condition estimates
   as the actual load-bearing analytic step.
+- 2026-06-01 type-classification boundary pass: inserted a local ledger
+  separating factor/type definitions and Connes spectrum from the split
+  inclusion.  The chapter now states explicitly that split gives positive-
+  collar type-I interpolation, while type \(\mathrm{III}\) or
+  \(\mathrm{III}_1\) for sharp local algebras is a separate theorem boundary
+  requiring additional QFT hypotheses.
 - 2026-06-01 compact \(U(1)\) Tannakian completion pass: added the
   charge-lattice representative-function algebra between the finite
   \(\mathbb Z/N\mathbb Z\) and \(S_3\) diagnostics.  This makes the compact

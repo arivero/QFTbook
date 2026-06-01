@@ -4,8 +4,10 @@
 These checks accompany the Volume IV discussion of the nuclearity-to-split
 mechanism.  They verify, in finite matrix algebras, the product-state
 normality algebra, independence of split product states from the chosen normal
-extensions off the stated subalgebras, and the separated finite-rank expansion
-that models the normal functional produced by a nuclear map.
+extensions off the stated subalgebras, the separated finite-rank expansion
+that models the normal functional produced by a nuclear map, and the finite
+type-I shadow used to separate split tensor products from sharp type-III
+classification.
 """
 
 from fractions import Fraction
@@ -76,6 +78,10 @@ def diag(entries: list[Fraction]) -> Matrix:
         [entry if i == j else Fraction(0) for j, entry in enumerate(entries)]
         for i, entry in enumerate(entries)
     ]
+
+
+def identity(size: int) -> Matrix:
+    return diag([Fraction(1) for _ in range(size)])
 
 
 def dot(left: Vector, right: Vector) -> Fraction:
@@ -210,10 +216,47 @@ def check_finite_rank_nuclear_expansion() -> None:
     assert_equal("separated bilinear functional expansion", expanded, direct)
 
 
+def check_finite_type_i_shadow() -> None:
+    """Finite matrix algebras have minimal projections and a normal trace."""
+
+    e_11 = [[Fraction(1), Fraction(0)], [Fraction(0), Fraction(0)]]
+    e_12 = [[Fraction(0), Fraction(1)], [Fraction(0), Fraction(0)]]
+    e_21 = [[Fraction(0), Fraction(0)], [Fraction(1), Fraction(0)]]
+    e_22 = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(1)]]
+
+    assert_equal("minimal projection is idempotent", matmul(e_11, e_11), e_11)
+    assert_equal("matrix units multiply as E12 E21 = E11", matmul(e_12, e_21), e_11)
+    assert_equal("matrix units multiply as E21 E12 = E22", matmul(e_21, e_12), e_22)
+
+    # Compress a general 2x2 matrix by E11.  The result is a scalar multiple
+    # of E11, the finite-dimensional diagnostic of minimality.
+    a = [[Fraction(2), Fraction(5)], [Fraction(7), Fraction(11)]]
+    compressed = matmul(matmul(e_11, a), e_11)
+    assert_equal(
+        "E11 M2 E11 is scalar on E11",
+        compressed,
+        [[Fraction(2), Fraction(0)], [Fraction(0), Fraction(0)]],
+    )
+
+    normalized_trace_identity = trace(identity(2)) / Fraction(2)
+    normalized_trace_projection = trace(e_11) / Fraction(2)
+    assert_equal(
+        "finite type-I factor has normalized trace on identity",
+        normalized_trace_identity,
+        Fraction(1),
+    )
+    assert_equal(
+        "finite type-I factor has nonzero finite projection trace",
+        normalized_trace_projection,
+        Fraction(1, 2),
+    )
+
+
 def main() -> None:
     check_product_state_extension()
     check_split_state_extension_independence()
     check_finite_rank_nuclear_expansion()
+    check_finite_type_i_shadow()
     print("All split/nuclearity normality finite checks passed.")
 
 

@@ -149,8 +149,10 @@ Current checks:
   Volume IV nuclearity-to-split mechanism, including normal product-state
   extension through a tensor density matrix, positivity on \(C^*C\),
   independence of split product states from the chosen normal extensions off
-  the stated local subalgebras, and the separated bilinear expansion produced
-  by a finite-rank nuclear map.
+  the stated local subalgebras, the separated bilinear expansion produced by a
+  finite-rank nuclear map, and the finite type-I shadow with minimal
+  projections and a normal trace used to keep positive-collar split data
+  separate from sharp type-III local-algebra classification.
 - `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
   chapter, including the finite Chevalley--Eilenberg sign identity underlying
   Wess--Zumino descent consistency, functorial composition of anomaly-line
