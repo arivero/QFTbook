@@ -125,30 +125,36 @@
    south tangent-space models.
 7. The chapter \(H\)-function is an even entire product whose Barnes-\(G\)
    comparison includes a declared quadratic counterterm convention.
-8. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
+8. The \(S^4\) one-loop determinant is tied to a finite-part mode-product
+   ledger: after removing the \(a\)-independent normalization, the
+   logarithmically divergent \(x^2\sum_{n\le N}1/n\) term is subtracted as a
+   quadratic local background counterterm, leaving \(H(x)^\kappa\).  Vector
+   root pairs carry \(\kappa=2\), while full hypermultiplet weights carry
+   \(\kappa=-1\).
+9. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
    vector/hyper one-loop determinants and north/south Nekrasov factors.
-9. Uhlenbeck strata have codimension
+10. Uhlenbeck strata have codimension
    \(2\ell(N-1)\) in complex dimension, so the familiar real codimension-four
    one-point boundary is the \(N=2,\ell=1\) case rather than a universal
    statement for all \(U(N)\).
-10. ADHM stability failure is the finite-dimensional small-instanton
+11. ADHM stability failure is the finite-dimensional small-instanton
    mechanism; the Gieseker quotient resolves it while the Uhlenbeck quotient
    records the lost charge as points of \(\mathbb C^2\).
-11. The displayed tangent Euler class at a Young-diagram fixed point reduces
+12. The displayed tangent Euler class at a Young-diagram fixed point reduces
     to the standard \(U(N)\) one-instanton fixed-point sum for one box.
-12. In charge one, the Gieseker resolution is explicitly
+13. In charge one, the Gieseker resolution is explicitly
     \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
     \(([I],J)\mapsto J\otimes I\).  The equations
     \(I(J)=0\), \(\operatorname{Tr}(J\otimes I)=0\), and
     \((J\otimes I)^2=0\) identify the Uhlenbeck boundary as the cone apex.
-13. The equality between the Gieseker-resolved equivariant integral and the
+14. The equality between the Gieseker-resolved equivariant integral and the
     \(S^4\) field-theoretic localized path integral is recorded as a
     field-theoretic matching hypothesis unless a regulator proves it.  The
     chapter now cross-references the finite BV boundary-obstruction formula:
     a smooth-stratum pushforward fails the residual QME by the
     small-instanton boundary functional unless a resolution, relative cycle,
     residue datum, or vanishing theorem cancels it.
-14. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+15. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
@@ -156,16 +162,16 @@
    as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
    derives the Bessel algebra behind the Bremsstrahlung function from the
    protected circular-loop Ward identity.
-15. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
+16. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
-16. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+17. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-17. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+18. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-18. The conjugate-chiral determinant identity gives
+19. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-19. Contact terms and local curvature counterterms are QFT coordinates, not
+20. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -174,7 +180,8 @@
   trace-delta \(S^4\) Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian
   integral, the finite normal Gaussian Pfaffian/determinant convention and
   zero-mode detection, the \(S^4\) \(H\)-function finite-product logarithmic
-  derivative, finite double-sine reflection and chiral pole conventions, the
+  derivative, the finite-part mode determinant ledger behind the \(H\)-powers,
+  finite double-sine reflection and chiral pole conventions, the
   \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
   round-\(S^3\) conjugate-chiral-pair integral.
 - `calculation-checks/susy_n4_scft_checks.py` verifies the exact rational
@@ -223,3 +230,7 @@
   map \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
   replacing a loose point-instanton phrase by the concrete nilpotent-cone
   geometry and adding exact arithmetic checks.
+- 2026-06-01: inserted the finite-part determinant ledger behind the \(S^4\)
+  one-loop \(H\)-powers, making the \(a\)-independent normalization and the
+  quadratic local counterterm subtraction explicit before the vector/hyper
+  determinant formula.

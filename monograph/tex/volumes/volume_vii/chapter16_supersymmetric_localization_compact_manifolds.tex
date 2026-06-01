@@ -480,6 +480,58 @@ The remaining exponential is \(\exp((1+\gamma_{\rm E})x^2)\), which gives
 \(\exp(c x^2)\) changes only this local quadratic prefactor.
 \end{proof}
 
+The one-loop determinant formula below uses the following finite-part
+operation.  Suppose that, after pairing all acyclic \(Q\)-doublets in a
+fixed root or weight sector, the unpaired finite-cutoff determinant has the
+form
+\begin{equation}
+  D_{\kappa,N}^{\rm raw}(x)
+  =
+  \prod_{n=1}^{N}(n^2+x^2)^{\kappa n},
+  \qquad \kappa\in\mathbb Z .
+  \label{eq:s4-raw-mode-determinant-ledger}
+\end{equation}
+Here \(x\) is the dimensionless equivariant mass in that sector:
+\(x=r\,\alpha(a)\) for a vector root, or \(x=r\rho(a)+rm\) for a hypermultiplet
+weight.  The exponent \(n\) is the residual cohomological multiplicity of
+the transversally elliptic complex after the paired boson--fermion modes
+have cancelled.  The constant factor
+\(\prod_{n=1}^{N}n^{2\kappa n}\) is independent of the Coulomb variable and
+is removed by the normalization of the partition function.  The remaining
+Coulomb-dependent finite part is
+\begin{equation}
+  D_{\kappa,N}^{\rm fp}(x)
+  =
+  \prod_{n=1}^{N}
+  \left(1+\frac{x^2}{n^2}\right)^{\kappa n}
+  \exp\!\left(-\kappa\frac{x^2}{n}\right)
+  =
+  H_N(x)^{\kappa},
+  \label{eq:s4-finite-part-mode-determinant}
+\end{equation}
+where \(H_N\) is the \(N\)-th partial product of
+\eqref{eq:pestun-H-function}.  The exponential in
+\eqref{eq:s4-finite-part-mode-determinant} subtracts the logarithmically
+divergent local term
+\(\kappa x^2\sum_{n\le N}n^{-1}\).  Since \(x\) is linear in the background
+scalar and mass parameters, this subtraction is a quadratic local
+counterterm in the rigid vector or flavor background.  The finite determinant
+is therefore the finite part specified by the quadratic counterterm convention in
+Lemma~\ref{lem:s4-H-function-convention}.
+
+With this convention the perturbative \(S^4\) determinant is obtained from a
+short sector ledger.  A vector root pair \(\{\alpha,-\alpha\}\) contributes
+the Cartan gauge-fixing factor \(\alpha(a)^2\) and the finite part with
+\(\kappa=2\), hence \(H(r\alpha(a))^2\) for each positive root.  A full
+hypermultiplet weight \(\rho\) contributes the inverse finite part with
+\(\kappa=-1\), hence \(H(r\rho(a)+rm)^{-1}\).  The formula below is exactly
+this ledger multiplied over the root and weight multisets.  A derivation from
+the infinite-dimensional field theory has to supply the regulated normal
+complex, the pairing of acyclic modes, the cohomological multiplicity \(n\),
+and the absence of boundary contributions in the chosen field-variable cycle;
+those data are part of
+Definition~\ref{def:compact-supersymmetric-localization-datum}.
+
 For a vector multiplet and hypermultiplets of masses \(m_\ell\) in
 representations \(R_\ell\), the perturbative determinant on the round sphere is
 \begin{equation}

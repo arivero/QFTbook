@@ -8,6 +8,7 @@ S^4 and S^3 matrix models:
 * the root-pair cancellation of S^4 H-factors in the N=4 adjoint-hyper limit;
 * the finite normal Gaussian Pfaffian/determinant convention;
 * the finite-product logarithmic derivative of the S^4 H-function;
+* the finite-part determinant ledger behind the S^4 H-powers;
 * the elementary U(1) S^4 Gaussian integral;
 * the finite double-sine reflection identity and chiral pole convention;
 * completion of the square in the U(1)_k S^3 Chern-Simons Fresnel integral;
@@ -207,6 +208,38 @@ def check_s4_H_log_derivative() -> None:
     )
 
 
+def check_s4_finite_part_determinant_ledger() -> None:
+    x = mp.mpf("0.29")
+    cutoff = 17
+    harmonic = mp.fsum(1 / mp.mpf(n) for n in range(1, cutoff + 1))
+    base_norm = mp.mpf(1)
+    for n in range(1, cutoff + 1):
+        base_norm *= mp.mpf(n) ** (2 * n)
+
+    for kappa in (2, -1):
+        raw = mp.mpf(1)
+        for n in range(1, cutoff + 1):
+            raw *= (mp.mpf(n * n) + x * x) ** (kappa * n)
+        raw_without_constant = raw / (base_norm ** kappa)
+        finite_part = raw_without_constant * mp.e ** (-kappa * x * x * harmonic)
+        expected = pestun_H_trunc(x, cutoff) ** kappa
+        assert_close(
+            f"S4 finite-part determinant ledger kappa={kappa}",
+            finite_part,
+            expected,
+            mp.mpf("1e-42"),
+        )
+
+    vector_root_pair = pestun_H_trunc(x, cutoff) ** 2
+    adjoint_hyper_root_pair = pestun_H_trunc(x, cutoff) ** -2
+    assert_close(
+        "S4 finite-cutoff N=4 root-pair H cancellation",
+        vector_root_pair * adjoint_hyper_root_pair,
+        1,
+        mp.mpf("1e-42"),
+    )
+
+
 def double_sine_trunc(x: complex, b: float, cutoff: int) -> complex:
     q = b + 1 / b
     product = 1 + 0j
@@ -261,6 +294,7 @@ def main() -> None:
     check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()
     check_s4_H_log_derivative()
+    check_s4_finite_part_determinant_ledger()
     check_s3_double_sine_conventions()
     check_s3_u1_fresnel_completion()
     check_s3_chiral_pair_integral()
