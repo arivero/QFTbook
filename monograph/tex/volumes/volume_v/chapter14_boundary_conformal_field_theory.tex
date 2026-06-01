@@ -838,6 +838,59 @@ rescales the corresponding raw three-point constants but not the sewing
 class represented by \eqref{eq:ising-f-symbol-sigma-sigma-sigma}.
 \end{proof}
 
+\paragraph{A finite Ising sewing cell.}
+The preceding constants give a completely explicit instance of the
+Cardy--Lewellen equation.  Let \(r,s\in\{+,-\}\), and consider four boundary
+fields arranged around the disk as
+\[
+  f\xrightarrow{\ \psi_\sigma^{fr}\ }r
+  \xrightarrow{\ \psi_\sigma^{rf}\ }f
+  \xrightarrow{\ \psi_\sigma^{fs}\ }s
+  \xrightarrow{\ \psi_\sigma^{sf}\ }f .
+\]
+Write
+\[
+  \psi_\sigma^{fr}(x)\psi_\sigma^{rf}(0)
+  \sim
+  v_r(\mathbf 1)\,x^{-1/8}\mathbf 1_f
+  +
+  v_r(\epsilon)\,x^{3/8}\psi_\epsilon^{ff}(0)+\cdots .
+\]
+Equations~\eqref{eq:ising-bcc-plus-through-free} and
+\eqref{eq:ising-bcc-minus-through-free} give
+\[
+  v_+=2^{-1/2}(1,1),\qquad
+  v_-=2^{-1/2}(1,-1),
+\]
+where the two entries are the \(\mathbf 1\) and \(\epsilon\) channels on the
+free boundary.  If the two adjacent pairs are fused first through the free
+boundary, the coefficient multiplying the common free-boundary intermediate
+channel is
+\[
+  \sum_{p\in\{\mathbf 1,\epsilon\}} v_r(p)v_s(p).
+\]
+If instead one first fuses across the fixed-boundary side, the corresponding
+open-sector morphism space is \(\operatorname{Hom}(U_r,U_s)\), which has
+dimension \(\delta_{rs}\).  The sewing equality for this cell is therefore
+\begin{equation}
+  \sum_{p\in\{\mathbf 1,\epsilon\}} v_r(p)v_s(p)=\delta_{rs}.
+  \label{eq:ising-boundary-four-point-sewing-cell}
+\end{equation}
+This is the matrix identity
+\[
+  F_{\sigma}^{\sigma\sigma\sigma}
+  \left(F_{\sigma}^{\sigma\sigma\sigma}\right)^{T}
+  =
+  \mathbf 1
+\]
+for the nontrivial Ising fusing matrix
+\eqref{eq:ising-f-symbol-sigma-sigma-sigma}.  In this example, the
+abstract module associativity statement in
+\eqref{eq:cardy-lewellen-boundary-sewing} reduces to a visible orthogonality
+relation between the two fixed-boundary rows.  The calculation does not prove
+analytic sewing for a general BCFT; it identifies exactly which finite
+algebraic identity the sewing theorem uses in the diagonal Ising cell.
+
 \section{Nonrational Example: Liouville Boundary States}
 \label{sec:bcft-liouville-boundary-states}
 

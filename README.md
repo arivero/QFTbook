@@ -37,26 +37,28 @@ the printed order.
 
 ### Complete Volume List
 
-The compiled monograph currently contains the following twelve volumes:
+The compiled monograph currently contains the following twelve volumes.  This
+table is the public volume roadmap; the chapter map below gives the current
+compiled contents of each volume.
 
-| Volume | Source directory | Compiled part title |
-| --- | --- | --- |
-| I | `monograph/tex/volumes/volume_i/` | Foundations of Local Quantum Field Theory |
-| II | `monograph/tex/volumes/volume_ii/` | Particles, Scattering, and Analyticity |
-| III | `monograph/tex/volumes/volume_iii/` | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | `monograph/tex/volumes/volume_iv/` | Gauge Theory, Infrared Structure, and Anomalies |
-| V | `monograph/tex/volumes/volume_v/` | Conformal Field Theory |
-| VI | `monograph/tex/volumes/volume_vi/` | Integrable Quantum Field Theory |
-| VII | `monograph/tex/volumes/volume_vii/` | Supersymmetric Quantum Field Theory |
-| VIII | `monograph/tex/volumes/volume_viii/` | Topological and Cohomological Quantum Field Theory |
-| IX | `monograph/tex/volumes/volume_ix/` | Global Structure, Phases, and Extended Operators |
-| X | `monograph/tex/volumes/volume_x/` | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | `monograph/tex/volumes/volume_xi/` | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | `monograph/tex/volumes/volume_xii/` | Quantum Field Theory in Curved Spacetime and Background Fields |
+| Volume | Chapters | Source assembly | Compiled part title |
+| --- | ---: | --- | --- |
+| I | 16 | `monograph/tex/volumes/volume_i/volume_i_current.tex` | Foundations of Local Quantum Field Theory |
+| II | 13 | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` | Particles, Scattering, and Analyticity |
+| III | 10 | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | 17 | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` | Gauge Theory, Infrared Structure, and Anomalies |
+| V | 15 | `monograph/tex/volumes/volume_v/volume_v_current.tex` | Conformal Field Theory |
+| VI | 14 | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` | Integrable Quantum Field Theory |
+| VII | 17 | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` | Supersymmetric Quantum Field Theory |
+| VIII | 11 | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` | Topological and Cohomological Quantum Field Theory |
+| IX | 11 | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` | Global Structure, Phases, and Extended Operators |
+| X | 12 | `monograph/tex/volumes/volume_x/volume_x_current.tex` | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | 11 | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | 11 | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` | Quantum Field Theory in Curved Spacetime and Background Fields |
 
 ### Detailed Chapter Map
 
-1. Foundations of Local Quantum Field Theory
+1. Volume I: Foundations of Local Quantum Field Theory
    - Starting Data for Local Quantum Field Theory
    - Wightman Fields and Reconstruction
    - Algebraic QFT: Local Nets and States
@@ -73,7 +75,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Kallen--Lehmann Spectral Representation
    - Perturbative Green Functions and Feynman Graphs
    - Lorentzian Green Functions and Analytic Continuation
-2. Particles, Scattering, and Analyticity
+2. Volume II: Particles, Scattering, and Analyticity
    - Haag--Ruelle Scattering Theory
    - LSZ Reduction
    - Cross Sections, Phase Space, and Unitarity
@@ -87,7 +89,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Composite Bound States and Bethe--Salpeter Amplitudes
    - Analyticity, Crossing, and Landau Singularities
    - Partial Waves, Dispersion Relations, and High-Energy Bounds
-3. Renormalization, Effective Field Theory, and Critical Phenomena
+3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
    - Generating Functionals and the One-Particle-Irreducible Effective Action
    - Renormalizability and Local Counterterms
    - Subdivergences and Forest Formulas
@@ -98,7 +100,7 @@ The compiled monograph currently contains the following twelve volumes:
    - The Wilson-Fisher Fixed Point and Scaling Operators
    - The Statistical Ising Model and Universality
    - Effective Field Theories Without Poincare-Invariant UV Completion
-4. Gauge Theory, Infrared Structure, and Anomalies
+4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
    - Spinor Fields, Fermionic Statistics, and Grassmann Path Integrals,
      including Spinor and Gamma-Matrix Conventions
    - Maxwell Theory, Constraints, and Gauge Fixing
@@ -116,7 +118,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Large-N Two-Dimensional QCD and the Light-Front Bound-State Equation
    - The Standard Model as a Hybrid Quantum Field Theory
    - Global Anomalies, Spontaneous Symmetry Breaking, and Pions
-5. Conformal Field Theory
+5. Volume V: Conformal Field Theory
    - Fixed Points and Conformal Data
    - Conformal Killing Vectors and the Conformal Group
    - Stress Tensor, Weyl Structure, and Improvement
@@ -132,7 +134,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Liouville Conformal Field Theory
    - Boundary Conformal Field Theory
    - Two-Dimensional Superconformal Algebras
-6. Integrable Quantum Field Theory
+6. Volume VI: Integrable Quantum Field Theory
    - Factorized Scattering and Integrability
    - Two-Dimensional Scattering Analyticity and Bootstrap Data
    - Yang--Baxter Consistency and Internal Symmetry
@@ -147,7 +149,7 @@ The compiled monograph currently contains the following twelve volumes:
    - O(N), Gross--Neveu, and Sigma-Model Families
    - Bridges to Nonintegrable Two-Dimensional QFT and CFT
    - Finite-Volume Form Factors and Spectral Expansions
-7. Supersymmetric Quantum Field Theory
+7. Volume VII: Supersymmetric Quantum Field Theory
    - Supersymmetry Algebras and Representation Data
    - Superspace, Superfields, and Local Actions
    - Supersymmetric Gauge Theory
@@ -165,7 +167,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Mirror TBA and the Y-System
    - Quantum Spectral Curve and Hexagon Form Factors
    - Supersymmetric Localization on Compact Manifolds
-8. Topological and Cohomological Quantum Field Theory
+8. Volume VIII: Topological and Cohomological Quantum Field Theory
    - Metric Independence and Cohomological Observables
    - Bordism Functoriality and Extended Topological Field Theory
    - BF Theory
@@ -177,7 +179,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Boundaries, Defects, and Categories in Topological QFT
    - BV Integration and Finite-Dimensional Localization
    - Finite Gauge Theory and State-Sum TQFT
-9. Global Structure, Phases, and Extended Operators
+9. Volume IX: Global Structure, Phases, and Extended Operators
    - Global Forms and Higher-Form Symmetry
    - Extended Operators and Topological Defects
    - Line, Surface, and Domain-Wall Operators
@@ -189,7 +191,7 @@ The compiled monograph currently contains the following twelve volumes:
    - Categorical Symmetry and Defect Fusion
    - Duality Defects, Gauging, and Orbifold Data
    - Higher-Group Symmetry and Symmetry TQFT
-10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
     - KMS States and Thermal Correlators
     - Finite-Temperature Path Integrals
     - Real-Time Schwinger--Keldysh Formalism
@@ -202,7 +204,7 @@ The compiled monograph currently contains the following twelve volumes:
     - Nonequilibrium Steady States and Open-System Limits
     - Hydrodynamic Fluctuations and Long-Time Tails
     - QCD Phase Structure, Plasma, and Dense Matter
-11. Constructive, Lattice, and Numerical Quantum Field Theory
+11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
     - Constructive Status and Routes to Continuum QFT
     - Constructive Scalar Models and OS Data
     - Lattice Reflection Positivity
@@ -214,7 +216,7 @@ The compiled monograph currently contains the following twelve volumes:
     - Stochastic Quantization and Singular SPDE
     - Hamiltonian Truncation, DLCQ, and Benchmark Protocols
     - Lattice Fermions and Chiral Symmetry
-12. Quantum Field Theory in Curved Spacetime and Background Fields
+12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
     - Locally Covariant QFT and Hadamard States
     - Point Splitting and Stress Tensor Renormalization
     - Trace Anomalies and Background Variations

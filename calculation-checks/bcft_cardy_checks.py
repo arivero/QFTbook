@@ -357,6 +357,31 @@ def check_ising_boundary_changing_constants() -> None:
     )
 
 
+def check_ising_four_boundary_sewing_cell() -> None:
+    """Check the finite Cardy-Lewellen sewing cell in the Ising example."""
+
+    row_vectors = {
+        "+": (INV_SQRT2, INV_SQRT2),
+        "-": (INV_SQRT2, -INV_SQRT2),
+    }
+    for left_label, left_row in row_vectors.items():
+        for right_label, right_row in row_vectors.items():
+            inner_product = sum(
+                (
+                    left_coefficient * right_coefficient
+                    for left_coefficient, right_coefficient in zip(left_row, right_row)
+                ),
+                ZERO,
+            )
+            expected = ONE if left_label == right_label else ZERO
+            assert_equal(
+                "Ising four-boundary Cardy-Lewellen sewing cell "
+                f"{left_label},{right_label}",
+                inner_product,
+                expected,
+            )
+
+
 def check_compact_boson_zero_mode_duality() -> None:
     samples = [
         (0, winding)
@@ -419,6 +444,7 @@ def main() -> None:
     check_boundary_entropy()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
+    check_ising_four_boundary_sewing_cell()
     check_compact_boson_zero_mode_duality()
     check_liouville_fzzt_zz_hyperbolic_identity()
     check_liouville_degenerate_shift_sum()
