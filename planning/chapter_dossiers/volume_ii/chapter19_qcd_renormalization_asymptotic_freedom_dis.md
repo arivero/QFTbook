@@ -657,6 +657,16 @@ The chapter must define and derive:
   parts, probability conservation, the Balitsky-hierarchy interpretation of
   the dipole observable, and finite compact-diffusion checks in
   `calculation-checks/qcd_bfkl_small_x_checks.py`.
+- 2026-06-01 issue #630 BK-closure boundary pass: inserted the finite dipole
+  projection between the Wilson-line diffusion and the continuum BK equation,
+  defined the connected double-dipole closure coordinate
+  \(E_{\mathbf x\mathbf y}^{\rm BK}\), derived the finite \(S\)- and
+  \(N\)-variable closed BK equations only after the decorrelation input, and
+  added the explicit \(d(Y)\le \int_0^Y e^{3L(Y-s)}\varepsilon(s)\,ds\)
+  finite Gronwall estimate.  The paired script
+  `calculation-checks/qcd_bfkl_small_x_checks.py` now verifies the exact
+  closure algebra, fixed points, unit-cube inward boundary, and \(3L\)
+  Lipschitz ledger.
 - 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the

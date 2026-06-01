@@ -11019,6 +11019,139 @@ higher observables by products of dipoles.  Thus the logical chain is
 \]
 not a direct theorem from the BFKL eigenvalue calculation.
 
+\paragraph{Dipole projection and the BK closure boundary.}
+The first arrow in the preceding display is an operator statement on the
+finite Wilson-line algebra; the second arrow is a closure operation on a
+subsystem of expectation values.  It is useful to write this subsystem before
+passing to the continuum transverse plane.  Fix a finite transverse set
+\(\Lambda_\perp\) and nonnegative cell weights
+\(\omega_{\mathbf x\mathbf y;\mathbf z}(Y)\), symmetric under
+\(\mathbf x\leftrightarrow\mathbf y\), which represent the regulated
+cell-integrals of the leading dipole kernel in the same rapidity scheme as
+\(\mathcal H_Y\).  For distinct transverse labels set
+\[
+  S_{\mathbf x\mathbf y}^{(1)}(Y)
+  :=
+  \langle F_{\mathbf x\mathbf y}\rangle_Y,
+  \qquad
+  S_{\mathbf x\mathbf z;\mathbf z\mathbf y}^{(2)}(Y)
+  :=
+  \langle
+    F_{\mathbf x\mathbf z}F_{\mathbf z\mathbf y}
+  \rangle_Y ,
+\]
+where the expectation is the weak Wilson-line state in
+\eqref{eq:qcd-finite-jimwlk-weak-form}.  A finite leading-logarithmic dipole
+projection is the assertion that
+\begin{equation}
+  \partial_Y S_{\mathbf x\mathbf y}^{(1)}
+  =
+  \sum_{\mathbf z\in\Lambda_\perp\setminus\{\mathbf x,\mathbf y\}}
+  \omega_{\mathbf x\mathbf y;\mathbf z}
+  \left(
+    S_{\mathbf x\mathbf z;\mathbf z\mathbf y}^{(2)}
+    -
+    S_{\mathbf x\mathbf y}^{(1)}
+  \right).
+  \label{eq:qcd-finite-balitsky-first-dipole-projection}
+\end{equation}
+Equation~\eqref{eq:qcd-finite-balitsky-first-dipole-projection} is not a
+closed equation for \(S^{(1)}\).  Its new variable is the double-dipole
+expectation \(S^{(2)}\), whose rapidity derivative involves still higher
+Wilson-line observables.  This is the finite-regulator form of the Balitsky
+hierarchy.
+
+The BK reduction is a controlled approximation only if one supplies a
+decorrelation estimate for the connected double-dipole coordinate
+\[
+  C_{\mathbf x\mathbf z;\mathbf z\mathbf y}(Y)
+  :=
+  S_{\mathbf x\mathbf z;\mathbf z\mathbf y}^{(2)}(Y)
+  -
+  S_{\mathbf x\mathbf z}^{(1)}(Y)S_{\mathbf z\mathbf y}^{(1)}(Y).
+\]
+With
+\begin{equation}
+  E_{\mathbf x\mathbf y}^{\rm BK}(Y)
+  :=
+  \sum_{\mathbf z\ne\mathbf x,\mathbf y}
+  \omega_{\mathbf x\mathbf y;\mathbf z}(Y)\,
+  C_{\mathbf x\mathbf z;\mathbf z\mathbf y}(Y),
+  \label{eq:qcd-bk-closure-error-coordinate}
+\end{equation}
+the exact first dipole equation is
+\[
+  \partial_Y S_{\mathbf x\mathbf y}^{(1)}
+  =
+  \sum_{\mathbf z\ne\mathbf x,\mathbf y}
+  \omega_{\mathbf x\mathbf y;\mathbf z}
+  \left(
+    S_{\mathbf x\mathbf z}^{(1)}S_{\mathbf z\mathbf y}^{(1)}
+    -
+    S_{\mathbf x\mathbf y}^{(1)}
+  \right)
+  +E_{\mathbf x\mathbf y}^{\rm BK}.
+\]
+Thus the phrase ``large-\(N_c\) BK equation'' means that a separate argument
+has made \(E^{\rm BK}\) negligible in the norm and rapidity interval under
+discussion.  In the amplitude variable
+\(N_{\mathbf x\mathbf y}^{(1)}=1-S_{\mathbf x\mathbf y}^{(1)}\), the closed
+finite BK equation obtained by setting \(E^{\rm BK}=0\) is
+\begin{equation}
+  \partial_Y N_{\mathbf x\mathbf y}
+  =
+  \sum_{\mathbf z\ne\mathbf x,\mathbf y}
+  \omega_{\mathbf x\mathbf y;\mathbf z}
+  \left(
+    N_{\mathbf x\mathbf z}
+    +N_{\mathbf z\mathbf y}
+    -N_{\mathbf x\mathbf y}
+    -N_{\mathbf x\mathbf z}N_{\mathbf z\mathbf y}
+  \right).
+  \label{eq:qcd-finite-bk-amplitude-equation}
+\end{equation}
+This is the finite-cell version of
+\eqref{eq:qcd-coordinate-bfkl-equation} plus
+\eqref{eq:qcd-bk-nonlinear-term}.
+
+The finite error estimate is elementary but important.  Suppose a real
+mean-field solution \(\widetilde S_{\mathbf x\mathbf y}\) and the exact first
+coordinates \(S_{\mathbf x\mathbf y}^{(1)}\) both take values in
+\([0,1]\) on a rapidity interval \(0\le Y\le Y_*\), share the same initial
+data, and have
+\[
+  L:=\sup_{Y\le Y_*}\sup_{\mathbf x\ne\mathbf y}
+  \sum_{\mathbf z\ne\mathbf x,\mathbf y}
+  \omega_{\mathbf x\mathbf y;\mathbf z}(Y)<\infty ,
+  \qquad
+  \varepsilon(Y):=
+  \sup_{\mathbf x\ne\mathbf y}
+  |E_{\mathbf x\mathbf y}^{\rm BK}(Y)|.
+\]
+Writing
+\[
+  d(Y):=
+  \sup_{\mathbf x\ne\mathbf y}
+  |S_{\mathbf x\mathbf y}^{(1)}(Y)-\widetilde S_{\mathbf x\mathbf y}(Y)|,
+\]
+one obtains
+\begin{equation}
+  d(Y)
+  \le
+  \int_0^Y \ee^{3L(Y-s)}\varepsilon(s)\,\dd s.
+  \label{eq:qcd-finite-bk-closure-error-bound}
+\end{equation}
+Indeed, on the unit interval
+\(|ab-a'b'|\le |a-a'|+|b-b'|\), so the product term contributes at most
+\(2Ld(Y)\), the virtual term at most \(Ld(Y)\), and the connected covariance
+term contributes \(\varepsilon(Y)\); Gronwall gives
+\eqref{eq:qcd-finite-bk-closure-error-bound}.  The closed BK vector field
+also points into the unit cube: at \(S_{\mathbf x\mathbf y}=0\) its right-hand
+side is nonnegative, while at \(S_{\mathbf x\mathbf y}=1\) it is
+nonpositive.  This finite ODE fact explains the black-disk and transparent
+fixed points of the closed approximation.  It does not replace the missing
+QCD estimate on \(E^{\rm BK}\), nor the continuum limit of the cell weights.
+
 The continuum JIMWLK problem is the removal of the finite transverse regulator
 and rapidity regulator from this finite compact-manifold construction while
 keeping the Wilson-line observables, the coefficient kernel, and the

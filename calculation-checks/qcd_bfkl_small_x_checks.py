@@ -11,7 +11,7 @@ These checks verify convention-invariant coefficient products, the transverse
 inversion covariance of the dipole kernel measure, the elementary
 Mellin-eigenvalue constants of the leading BFKL characteristic function, and
 the finite Wilson-line/Fokker-Planck algebra used as the JIMWLK theorem
-boundary.
+boundary, and the finite BK-closure algebra/error estimate.
 """
 
 from __future__ import annotations
@@ -171,12 +171,97 @@ def check_finite_wilson_line_diffusion_algebra() -> None:
     assert_equal("finite diffusion weak-strong duality", lhs, rhs)
 
 
+def check_finite_bk_closure_algebra() -> None:
+    weights = {"z": Fraction(7, 11), "w": Fraction(2, 13)}
+    s_xy = Fraction(2, 3)
+    s_xz = Fraction(5, 7)
+    s_zy = Fraction(4, 9)
+    s_xw = Fraction(1, 2)
+    s_wy = Fraction(3, 5)
+
+    rhs_s = (
+        weights["z"] * (s_xz * s_zy - s_xy)
+        + weights["w"] * (s_xw * s_wy - s_xy)
+    )
+
+    n_xy = 1 - s_xy
+    n_xz = 1 - s_xz
+    n_zy = 1 - s_zy
+    n_xw = 1 - s_xw
+    n_wy = 1 - s_wy
+    rhs_n = (
+        weights["z"] * (n_xz + n_zy - n_xy - n_xz * n_zy)
+        + weights["w"] * (n_xw + n_wy - n_xy - n_xw * n_wy)
+    )
+    assert_equal("BK S-to-N conversion", -rhs_s, rhs_n)
+
+    # The closed mean-field vector field points into the real unit cube.
+    lower_boundary_rhs = (
+        weights["z"] * s_xz * s_zy
+        + weights["w"] * s_xw * s_wy
+    )
+    if lower_boundary_rhs < 0:
+        raise AssertionError("BK lower boundary should point inward")
+
+    upper_boundary_rhs = (
+        weights["z"] * (s_xz * s_zy - 1)
+        + weights["w"] * (s_xw * s_wy - 1)
+    )
+    if upper_boundary_rhs > 0:
+        raise AssertionError("BK upper boundary should point inward")
+
+    transparent = {"xy": Fraction(1), "xz": Fraction(1), "zy": Fraction(1)}
+    black = {"xy": Fraction(0), "xz": Fraction(0), "zy": Fraction(0)}
+    assert_equal(
+        "BK transparent fixed point",
+        weights["z"] * (transparent["xz"] * transparent["zy"] - transparent["xy"]),
+        Fraction(0),
+    )
+    assert_equal(
+        "BK black-disk fixed point",
+        weights["z"] * (black["xz"] * black["zy"] - black["xy"]),
+        Fraction(0),
+    )
+
+
+def check_finite_bk_error_bound_lipschitz_constant() -> None:
+    weights = [Fraction(3, 10), Fraction(1, 5), Fraction(1, 7)]
+    l_total = sum(weights)
+    delta_xy = Fraction(1, 17)
+    delta_xz = Fraction(2, 19)
+    delta_zy = Fraction(3, 23)
+
+    # For values in [0,1], |ab-a'b'| <= |a-a'|+|b-b'|.  Together with the
+    # virtual term this gives the 3L coefficient used in the manuscript.
+    product_bound = sum(w * (delta_xz + delta_zy) for w in weights)
+    virtual_bound = l_total * delta_xy
+    sup_delta = max(delta_xy, delta_xz, delta_zy)
+    assert_equal(
+        "BK finite closure Lipschitz ledger",
+        product_bound + virtual_bound <= 3 * l_total * sup_delta,
+        True,
+    )
+
+    eps, l_rate, time = sp.symbols("eps l_rate time", positive=True)
+    s = sp.symbols("s")
+    gronwall_constant = sp.integrate(
+        sp.exp(3 * l_rate * (time - s)) * eps,
+        (s, 0, time),
+    )
+    assert_zero(
+        "BK constant-error Gronwall integral",
+        gronwall_constant - eps * (sp.exp(3 * l_rate * time) - 1) / (3 * l_rate),
+    )
+
+
 def main() -> None:
     check_trace_delta_kernel_coefficient()
     check_transverse_inversion_covariance()
     check_bfkl_characteristic_values()
     check_finite_wilson_line_diffusion_algebra()
-    print("All QCD small-x/BFKL and finite Wilson-line evolution checks passed.")
+    check_finite_bk_closure_algebra()
+    check_finite_bk_error_bound_lipschitz_constant()
+    print("All QCD small-x/BFKL, finite Wilson-line, and BK-closure checks passed.")
 
 
 if __name__ == "__main__":
