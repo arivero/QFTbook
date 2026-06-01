@@ -1,10 +1,11 @@
 # Development Dependency Map
 
 This file is a non-reader-facing control document.  It records the dependency
-order for comprehensive development of the monograph, including volumes that
-are not yet compiled.  Its purpose is to prevent premature topical expansion:
-future chapters may be planned in dossiers, but they enter the compiled
-manuscript only after their prerequisites and audit gates are satisfied.
+order for comprehensive development of the monograph, including active
+compiled volumes and any future chapter splits that have not yet entered the
+manuscript.  Its purpose is to prevent premature topical expansion: future
+chapters may be planned in dossiers, but they enter the compiled manuscript
+only after their prerequisites and audit gates are satisfied.
 
 ## Global Dependency Ladder
 
@@ -159,14 +160,14 @@ claims are formulated as convergence or distributional statements.
 Immediate target: carry the primary transformation laws and unitarity
 constraints into the correlation-function chapter, deriving two- and
 three-point tensor structures with source-contact caveats and positivity
-normalizations before using them in the OPE chapter.  Keep two-dimensional,
-supersymmetric, integrable, topological, defect, and bootstrap-specialized
-material in later volumes or deprecated drafts until their prerequisites are
-complete.
+normalizations before using them in the OPE chapter.  Keep two-dimensional CFT
+inside Volume V when it is genuinely CFT material, while routing
+supersymmetric, nonconformal integrable, topological, defect, and
+bootstrap-specialized material through their own active subject volumes.
 
 ### Volume VI: Integrable Quantum Field Theory
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I--II for local QFT, scattering, LSZ, analyticity, and
 massive particles; Volume V for integrable perturbations of CFT.
@@ -175,15 +176,18 @@ Supplies: conserved charges, elastic and factorized scattering, Yang--Baxter
 relations, exact S-matrices, form factors, local-operator reconstruction
 problems, and thermodynamic Bethe ansatz.
 
-Do not promote before: the Volume II scattering and analyticity treatment is
-uniform, and the relation between exact S-matrix data and local fields is
-stated as a reconstruction problem with hypotheses.
+Do not deepen a claim before: the Volume II scattering and analyticity
+treatment supplies the relevant hypotheses, and the relation between exact
+S-matrix data and local fields is stated as a reconstruction problem with
+hypotheses.
 
-Immediate target: create chapter dossiers only.
+Immediate target: deepen the compiled chapters, especially the bridge from
+factorized scattering and form factors to local operators, finite-volume
+spectra, and nonintegrable deformations.
 
 ### Volume VII: Supersymmetric Quantum Field Theory
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I--V, especially spin representations, gauge theory,
 renormalized operators, anomalies, moduli, and CFT.
@@ -194,18 +198,21 @@ two-dimensional Landau--Ginzburg and Calabi--Yau models, three-dimensional
 Chern--Simons--matter theories, six-dimensional superconformal theories,
 superconformal theories, and protected sectors.
 
-Do not promote before: ordinary spinor, gauge, renormalization, anomaly, and
-CFT foundations are stable.  Examples in each spacetime dimension require
-their own supersymmetry algebra, regulator status, anomaly data, and
-observable definitions.  Localization, branes, holography, and supergravity
-remain out of scope until the supersymmetric QFT foundations are developed.
+Do not deepen a claim before: ordinary spinor, gauge, renormalization,
+anomaly, and CFT foundations needed by that claim are stable.  Examples in
+each spacetime dimension require their own supersymmetry algebra, regulator
+status, anomaly data, and observable definitions.  Localization, branes,
+holography, and supergravity remain out of scope until the supersymmetric QFT
+foundations used by the claim have been developed.
 
-Immediate target: collect source leads from the stringbook appendices and
-external references into dossiers without adapting their prose.
+Immediate target: deepen the compiled chapters by absorbing relevant
+stringbook QFT material with independent derivations, especially
+supersymmetric Wilsonian schemes, GLSMs, mirror symmetry, localization data,
+and four-dimensional gauge dynamics.
 
 ### Volume VIII: Topological and Cohomological Quantum Field Theory
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I, IV, V, VII, and IX, depending on the chapter.
 
@@ -213,15 +220,16 @@ Supplies: metric-independent sectors, cohomological field theories, BF and
 Chern--Simons theory, Atiyah--Segal and extended frameworks, twists,
 boundaries, defects, and categorical structures.
 
-Do not promote before: gauge-theory observables, anomalies, global symmetries,
-and supersymmetric twists are formulated in QFT terms.
+Do not deepen a claim before: gauge-theory observables, anomalies, global
+symmetries, and supersymmetric twists needed by that claim are formulated in
+QFT terms.
 
 Immediate target: keep TQFT separate from integrable QFT; use overlap only
 when a theorem or construction explicitly relates the two.
 
 ### Volume IX: Global Structure, Phases, and Extended Operators
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I--IV, with later use of Volumes V, VII, and VIII.
 
@@ -230,15 +238,16 @@ categorical symmetries, line and surface operators, domain walls,
 confinement and screening diagnostics, discrete theta terms, anomaly inflow,
 and phases of gauge theories.
 
-Do not promote before: the core gauge and anomaly chapters provide stable
-objects for local operators, extended operators, and background fields.
+Do not deepen a claim before: the core gauge and anomaly chapters provide the
+objects needed for local operators, extended operators, and background fields.
 
-Immediate target: prepare dossiers for global form, line operators, and
-confinement after the Volume IV gauge-observable pass.
+Immediate target: deepen the compiled chapters on global form, line
+operators, defects, confinement, anomaly inflow, categorical symmetry, and
+SymTFT without treating any slogan as a definition.
 
 ### Volume X: Thermal, Statistical, and Nonequilibrium QFT
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I, III, IV, and XI.
 
@@ -246,15 +255,17 @@ Supplies: KMS states, finite-temperature path integrals, real-time
 Schwinger--Keldysh theory, spectral functions, transport, hydrodynamic
 effective theory, thermal gauge theory, and nonequilibrium effective actions.
 
-Do not promote before: states, algebras, spectral functions, and path-integral
-status have been standardized in earlier volumes.
+Do not deepen a claim before: states, algebras, spectral functions, and
+path-integral status needed by that claim have been standardized in earlier
+volumes.
 
-Immediate target: no compiled material; record source dossiers only when
-needed.
+Immediate target: deepen the compiled KMS, Schwinger--Keldysh, transport,
+hydrodynamic, kinetic, and thermal gauge-theory chapters with explicit
+operator and correlation-function hypotheses.
 
 ### Volume XI: Constructive, Lattice, and Numerical QFT
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I, III, IV, and X.
 
@@ -263,15 +274,16 @@ positivity, continuum limits, Wilson lattice gauge theory, Monte Carlo
 frameworks, sign problems, rigorous RG, and links between lattice and
 continuum local QFT.
 
-Do not promote before: regulator and continuum-limit vocabulary is made
-uniform with Volumes I and III.
+Do not deepen a claim before: regulator and continuum-limit vocabulary needed
+by that claim is made uniform with Volumes I and III.
 
-Immediate target: use as a reference framework for claims about existence,
-regulators, and controlled continuum limits.
+Immediate target: deepen the compiled constructive, lattice, stochastic,
+Hamiltonian-truncation, DLCQ, and numerical chapters, with rigorous finite
+regulator statements separated from continuum theorems.
 
 ### Volume XII: QFT in Curved Spacetime and Background Fields
 
-Status: planning only.
+Status: active compiled volume requiring continuing depth and proof audits.
 
 Depends on: Volumes I, III, IV, IX, and X.
 
@@ -279,12 +291,12 @@ Supplies: locally covariant QFT, Hadamard states, stress-tensor
 renormalization, trace anomalies, Unruh and Hawking effects, background gauge
 fields, and index-theoretic anomaly computations.
 
-Do not promote before: flat-spacetime stress tensors, anomalies, states, and
-renormalization are stable.
+Do not deepen a claim before: flat-spacetime stress tensors, anomalies,
+states, and renormalization needed by that claim are stable.
 
-Immediate target: keep background-field technology available for anomaly and
-index-theory checks without converting the core monograph into curved
-spacetime QFT prematurely.
+Immediate target: deepen the compiled locally covariant, Hadamard,
+point-splitting, trace-anomaly, Unruh, Hawking, index, eta-invariant,
+microlocal, pAQFT, and semiclassical chapters.
 
 ## Compiled-Core Uniformization Queue
 
@@ -306,9 +318,10 @@ spacetime QFT prematurely.
 7. Volume V: audit every CFT chapter for fixed-point assumptions, convergence
    statements, and the boundary between core CFT and later special volumes.
 
-## Promotion Gate For Future Volumes
+## Promotion Gate For Future Chapters Or Volume Splits
 
-A planning-only chapter may become compiled manuscript only after:
+A future chapter, or a future split into an additional public volume, may
+become compiled manuscript only after:
 
 - a chapter dossier exists with source anchors, external references,
   notation inventory, claim ledger, and figure ledger;

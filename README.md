@@ -11,6 +11,23 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
+## Volume Quick Index
+
+The active compiled monograph has twelve public volumes:
+
+1. Foundations of Local Quantum Field Theory
+2. Particles, Scattering, and Analyticity
+3. Renormalization, Effective Field Theory, and Critical Phenomena
+4. Gauge Theory, Infrared Structure, and Anomalies
+5. Conformal Field Theory
+6. Integrable Quantum Field Theory
+7. Supersymmetric Quantum Field Theory
+8. Topological and Cohomological Quantum Field Theory
+9. Global Structure, Phases, and Extended Operators
+10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Constructive, Lattice, and Numerical Quantum Field Theory
+12. Quantum Field Theory in Curved Spacetime and Background Fields
+
 ## Complete Active Public Volume List
 
 The compiled public manuscript currently consists of exactly twelve active
