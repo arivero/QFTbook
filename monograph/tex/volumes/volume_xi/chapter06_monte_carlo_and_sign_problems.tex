@@ -244,6 +244,114 @@ The deterministic calculation check
 enumerates the \(2\times2\) periodic chain and verifies both the local energy
 difference and the detailed-balance identity used by the script.
 
+\section{\texorpdfstring{Scalar \(\phi^4\) Metropolis Warmup}{Scalar phi4 Metropolis Warmup}}
+
+The Ising example has a finite state space.  A scalar lattice field already
+has the other feature that appears in continuum constructions: the
+finite-regulator measure is a genuine finite-dimensional integral rather than
+a finite sum.  Let
+\[
+  \Lambda_L=(\mathbb Z/L\mathbb Z)^2,\qquad
+  \phi=(\phi_x)_{x\in\Lambda_L}\in\mathbb R^{\Lambda_L}.
+\]
+For \(m^2\in\mathbb R\) and \(\lambda>0\), define the finite Euclidean action
+\begin{equation}
+  S_L(\phi)
+  =
+  \sum_{x\in\Lambda_L}
+  \left[
+    \frac12\sum_{\mu=1}^2(\phi_{x+\hat\mu}-\phi_x)^2
+    +\frac12m^2\phi_x^2+\frac{\lambda}{24}\phi_x^4
+  \right],
+  \label{eq:phi4-two-dimensional-finite-lattice-action}
+\end{equation}
+where the directions \(\hat\mu\) are the two positive coordinate directions
+on the periodic lattice.  The target probability measure is
+\[
+  \pi_L(d\phi)
+  =
+  Z_L^{-1}e^{-S_L(\phi)}\prod_{x\in\Lambda_L}d\phi_x .
+\]
+This is a finite-dimensional probability measure.  Indeed, the kinetic term
+is nonnegative and the one-site potential
+\[
+  V(u)=\frac12m^2u^2+\frac{\lambda}{24}u^4
+\]
+is bounded below.  More explicitly, if \(m^2<0\), then
+\[
+  V(u)\geq -\frac{3(m^2)^2}{2\lambda},
+\]
+with equality at \(u^2=-6m^2/\lambda\); if \(m^2\geq0\), then \(V(u)\geq0\).
+The quartic term gives integrability at infinity in every coordinate.
+
+The single-site Metropolis proposal chooses \(x\in\Lambda_L\) uniformly and
+sets
+\[
+  \phi'_x=\phi_x+\eta,\qquad
+  \phi'_y=\phi_y\quad (y\neq x),
+\]
+where \(\eta\) is drawn from a symmetric compactly supported density
+\(r(\eta)d\eta\), for instance the uniform density on
+\([-\delta,\delta]\).  The proposal is accepted with probability
+\[
+  a(\phi,\eta,x)=\min\{1,e^{-[S_L(\phi')-S_L(\phi)]}\}.
+\]
+The action difference is local.  If \(u=\phi_x\) and \(u'=\phi'_x\), then
+\begin{equation}
+  S_L(\phi')-S_L(\phi)
+  =
+  V(u')-V(u)
+  +\frac12\sum_{b:\,b\ {\rm touches}\ x}
+  \left[
+    (\phi'_{b_+}-\phi'_{b_-})^2
+    -
+    (\phi_{b_+}-\phi_{b_-})^2
+  \right].
+  \label{eq:phi4-lattice-local-action-change}
+\end{equation}
+Here the sum is over the four oriented positive-direction kinetic bonds in
+\eqref{eq:phi4-two-dimensional-finite-lattice-action} whose endpoint is
+\(x\).  On lattices so small that periodicity identifies some neighbors,
+the multiplicities are inherited from the action itself.
+
+\paragraph{Detailed balance for the finite scalar Metropolis chain.}
+The preceding single-site kernel satisfies
+\[
+  \pi_L(d\phi)\,P(\phi,d\psi)
+  =
+  \pi_L(d\psi)\,P(\psi,d\phi)
+\]
+as measures on \(\mathbb R^{\Lambda_L}\times\mathbb R^{\Lambda_L}\).  It is
+enough to check the off-diagonal pair \(\psi=\phi'\) related by one proposed
+single-site displacement.  The proposal density from \(\phi\) to \(\psi\) is
+\(|\Lambda_L|^{-1}r(\psi_x-\phi_x)\), while the reverse proposal density is
+\(|\Lambda_L|^{-1}r(\phi_x-\psi_x)\).  These are equal by symmetry of \(r\).
+Writing \(\Delta S=S_L(\psi)-S_L(\phi)\), the Metropolis identity
+\[
+  e^{-S_L(\phi)}\min\{1,e^{-\Delta S}\}
+  =
+  e^{-S_L(\psi)}\min\{1,e^{\Delta S}\}
+\]
+proves pairwise balance.  The holding part is then fixed by total probability.
+This statement is entirely finite-regulator: it neither proves a continuum
+\(\phi^4_2\) construction nor determines the critical surface.
+
+The companion script
+\[
+  \texttt{qft\_scripts/phi4\_2d\_metropolis.py}
+\]
+implements the finite action \eqref{eq:phi4-two-dimensional-finite-lattice-action}
+with a symmetric uniform single-site proposal.  It reports acceptance,
+action density, \(\langle\phi^2\rangle\), \(\langle\phi^4\rangle\), a
+susceptibility-like zero-momentum second moment, and a windowed estimate of
+\(\tau_{\mathrm{int}}\) for \(\phi^2\).  The paired calculation check
+\[
+  \texttt{calculation-checks/phi4\_lattice\_metropolis\_checks.py}
+\]
+verifies the local action difference against the total action, checks the
+pairwise detailed-balance identity, and checks the pointwise quartic
+stability bound used above.
+
 \section{Single-Link Metropolis for Finite Gauge Fields}
 
 The same finite-regulator theorem should be stated for gauge variables,

@@ -8,7 +8,7 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-01 inventory pass the directory contains 218 active check
+As of the 2026-06-01 inventory pass the directory contains 219 active check
 scripts: Python checks and Wolfram Language companion checks.  The runner
 selects all `calculation-checks/*.py` and `calculation-checks/*.wl` files
 unless a filter is supplied.

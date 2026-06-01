@@ -15,6 +15,7 @@ Individual examples:
 
 ```bash
 python3 qft_scripts/ising2d_metropolis.py --smoke
+python3 qft_scripts/phi4_2d_metropolis.py --smoke
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
@@ -57,6 +58,11 @@ per task.
 - `ising2d_metropolis.py`: finite two-dimensional Ising Metropolis sampler
   with periodic boundary conditions.  It demonstrates detailed balance and
   autocorrelation diagnostics at finite volume.
+- `phi4_2d_metropolis.py`: finite two-dimensional scalar \(\phi^4\)
+  Euclidean-lattice Metropolis sampler with a symmetric single-site proposal.
+  It demonstrates the finite-dimensional measure, local action difference,
+  detailed balance, and elementary autocorrelation diagnostics; it does not
+  assert a continuum construction or critical scaling law.
 - `z2_gauge_3d_metropolis.py`: finite three-dimensional \(\mathbb Z_2\)
   lattice gauge sampler with plaquette and rectangular Wilson-loop
   measurements.  It demonstrates compact gauge variables, gauge-invariant

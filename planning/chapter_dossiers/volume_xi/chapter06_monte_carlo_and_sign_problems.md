@@ -31,6 +31,13 @@ chapters.
   spin configuration, finite Hamiltonian, and Boltzmann probability.
 - `P(s,s')`, `a(s,x)`: single-spin Metropolis transition probability and
   acceptance probability.
+- `phi_x`, `S_L(phi)`, `m^2`, `lambda`: finite scalar lattice field,
+  Euclidean action, mass coordinate, and quartic coupling in the
+  two-dimensional \(\phi^4\) Metropolis warmup.
+- `Delta S_x`: local single-site scalar action difference for the symmetric
+  Metropolis proposal.
+- `r(eta)`, `delta`: symmetric single-site proposal density and uniform
+  proposal half-width in the scalar \(\phi^4\) companion script.
 - `Q(U)`: total plaquette score in the finite \(\mathbb Z_2\) gauge model.
 - `B_e(U)`: sum of plaquettes containing a link \(e\).
 - `U^e`: gauge configuration obtained by flipping the link \(e\).
@@ -168,6 +175,14 @@ chapters.
 - Separates finite-lattice numerical estimates from continuum QFT claims.
 - Adds the companion script `qft_scripts/ising2d_metropolis.py` as a
   finite-regulator demonstration with a smoke-mode algorithm check.
+- Defines the finite two-dimensional scalar \(\phi^4\) Euclidean lattice
+  measure, proves the pointwise stability bound for \(\lambda>0\), derives
+  the local single-site action difference, and proves symmetric-proposal
+  Metropolis detailed balance at finite regulator.
+- Adds the companion script `qft_scripts/phi4_2d_metropolis.py` as a finite
+  scalar-field Metropolis warmup reporting action density, field moments,
+  susceptibility-like zero-momentum moment, and \(\phi^2\) autocorrelation
+  coordinates.
 - Adds the companion script `qft_scripts/z2_gauge_3d_metropolis.py` as a
   compact-gauge finite-regulator demonstration measuring plaquettes and
   Wilson loops.
@@ -196,6 +211,11 @@ the exponential decay of average phase with volume.
   Metropolis sampler.  Certifies the implemented finite chain and reports
   acceptance, energy, magnetization, and a windowed autocorrelation estimate.
   It does not certify a continuum limit.
+- `qft_scripts/phi4_2d_metropolis.py --smoke`: finite two-dimensional scalar
+  \(\phi^4\) Metropolis sampler.  Certifies the local action difference and
+  symmetric-proposal finite-measure setup by running the public companion
+  implementation.  It does not certify a continuum \(\phi^4_2\) construction
+  or a critical scaling law.
 - `qft_scripts/z2_gauge_3d_metropolis.py --smoke`: finite periodic
   \(\mathbb Z_2\) gauge Metropolis sampler.  Certifies a compact gauge
   single-link update and reports plaquette and Wilson-loop measurements for a
@@ -237,6 +257,10 @@ the exponential decay of average phase with volume.
 - `calculation-checks/ising_metropolis_finite_checks.py` enumerates the
   \(2\times2\) periodic Ising chain and verifies the companion script's local
   energy difference and detailed-balance identity exactly at finite volume.
+- `calculation-checks/phi4_lattice_metropolis_checks.py` verifies the scalar
+  companion script's local action difference against the total finite action,
+  checks pairwise detailed balance for symmetric proposals, and checks the
+  pointwise quartic lower bound for the finite measure.
 - `calculation-checks/z2_gauge_metropolis_checks.py` verifies the companion
   script's local score change, detailed-balance identity, gauge invariance,
   and the \(1\times1\) Wilson-loop/plaquette identity.
@@ -308,3 +332,7 @@ the exponential decay of average phase with volume.
 - 2026-05-31 issue #631/#703 pass: added production HMC/RHMC finite
   certificates, solver-residual and determinant-reweighting bounds, plus a
   public-facing HMC/RHMC smoke module with calculation-check coverage.
+- 2026-06-01 issue #494 pass: added the finite scalar \(\phi^4_2\)
+  Metropolis warmup requested by the numerical-methods issue, with manuscript
+  stability/detailed-balance derivation, public script, and paired
+  calculation-check coverage.

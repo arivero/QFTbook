@@ -7,6 +7,9 @@ cd "$ROOT"
 echo "[qft-scripts] ising2d_metropolis --smoke"
 python3 qft_scripts/ising2d_metropolis.py --smoke
 
+echo "[qft-scripts] phi4_2d_metropolis --smoke"
+python3 qft_scripts/phi4_2d_metropolis.py --smoke
+
 echo "[qft-scripts] z2_gauge_3d_metropolis --smoke"
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 

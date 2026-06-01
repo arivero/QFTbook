@@ -803,6 +803,11 @@ Current checks:
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising
   chain.
+- `phi4_lattice_metropolis_checks.py`: finite algebra checks for the scalar
+  two-dimensional \(\phi^4\) Metropolis companion script.  It verifies the
+  local action difference against the total action, the symmetric-proposal
+  pairwise detailed-balance identity, and the pointwise quartic stability
+  bound used to define the finite measure.
 - `z2_gauge_metropolis_checks.py`: exact finite checks for the
   `qft_scripts/z2_gauge_3d_metropolis.py` companion script, verifying the
   local link-flip plaquette-score change, pairwise detailed balance, gauge
