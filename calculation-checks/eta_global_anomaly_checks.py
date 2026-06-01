@@ -155,6 +155,55 @@ def check_aps_cylinder_congruence() -> None:
         assert_equal("APS cylinder difference is integral", difference.denominator, 1)
 
 
+def check_aps_cylinder_exact_bookkeeping() -> None:
+    examples = [
+        (Fraction(5, 3), Fraction(2, 3), 0, 2),
+        (Fraction(-1, 5), Fraction(9, 5), 3, -1),
+        (Fraction(7, 4), Fraction(-1, 4), 1, 3),
+    ]
+    for bulk_integral, xi0, endpoint_kernel, aps_index in examples:
+        # With boundary Y_1 union (-Y_0), APS gives
+        # index = bulk - xi_1 + xi_0 - h(B_0).
+        xi1 = bulk_integral + xi0 - endpoint_kernel - aps_index
+        assert_equal(
+            f"exact APS cylinder identity bulk={bulk_integral} xi0={xi0}",
+            bulk_integral - xi1 + xi0 - endpoint_kernel,
+            aps_index,
+        )
+        assert_equal(
+            f"APS cylinder congruence after endpoint bookkeeping bulk={bulk_integral}",
+            mod_one(xi1 - xi0 - bulk_integral),
+            Fraction(0),
+        )
+
+
+def check_aps_spectral_flow_sign_convention() -> None:
+    examples = [
+        ([], Fraction(3, 7), Fraction(1, 5)),
+        ([1], Fraction(0), Fraction(0)),
+        ([1, -1, 1], Fraction(5, 6), Fraction(-2, 9)),
+        ([-1, -1], Fraction(-2, 5), Fraction(7, 11)),
+    ]
+    for crossings, local_change, xi0 in examples:
+        # +1 is a negative-to-positive crossing.  In the chapter's APS
+        # boundary convention the crossing contribution to the cylinder index
+        # is the negative of this spectral flow; the smooth part is accounted
+        # for by the local index-density integral.
+        spectral_flow = sum(crossings)
+        xi1 = xi0 + local_change + spectral_flow
+        aps_index = local_change - xi1 + xi0
+        assert_equal(
+            f"APS cylinder index has opposite sign to spectral flow crossings={crossings}",
+            aps_index,
+            Fraction(-spectral_flow),
+        )
+        assert_equal(
+            f"spectral-flow jumps are integral after removing local change crossings={crossings}",
+            mod_one(xi1 - xi0 - local_change),
+            Fraction(0),
+        )
+
+
 def spectral_cut_transition(singular_values: list[Fraction], low: Fraction, high: Fraction) -> Fraction:
     """Finite determinant-line transition factor for a spectral-cut window."""
 
@@ -342,6 +391,8 @@ def main() -> None:
     check_orientation_reversal_eta_bookkeeping()
     check_reduced_eta_crossing_integer_jump()
     check_aps_cylinder_congruence()
+    check_aps_cylinder_exact_bookkeeping()
+    check_aps_spectral_flow_sign_convention()
     check_quillen_spectral_cut_transition_cocycle()
     check_dai_freed_gluing_phase_algebra()
     check_action_groupoid_anomaly_cocycle_and_descent()

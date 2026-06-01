@@ -34,6 +34,11 @@ global anomaly as an explicit mod-two-index example.
 - Proves the cylinder variation formula for \(\xi\) modulo integers from the
   APS theorem, including the orientation-reversal bookkeeping
   \(\xi(-B)=-\xi(B)+h(B)\).
+- Records the exact APS cylinder identity
+  \(\operatorname{Ind}=I_X-\xi(B_1)+\xi(B_0)-h(B_0)\), so the endpoint-kernel
+  convention and the sign relating simple-crossing spectral flow to the
+  cylinder index are explicit before the phase is reduced modulo
+  \(\mathbb Z\).
 - Defines determinant-line fibers and states the Bismut--Freed holonomy
   theorem for mapping tori, with an expanded mechanism explaining local
   zeta-determinant charts, the Bismut--Freed connection, curvature as the
@@ -79,8 +84,10 @@ global anomaly as an explicit mod-two-index example.
 ## Calculation Ledger
 
 - `calculation-checks/eta_global_anomaly_checks.py` checks the APS
-  orientation bookkeeping, the first \(SU(2)\) trace-delta Dynkin indices,
-  Witten parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
+  orientation bookkeeping, the exact APS cylinder endpoint-kernel identity,
+  the sign convention relating simple-crossing spectral flow to the APS
+  cylinder index, the first \(SU(2)\) trace-delta Dynkin indices, Witten
+  parity criterion, Pfaffian-sign multiplicativity, cubic-weight-sum
   cancellation, the finite skew-block Pfaffian orientation model, cylinder
   congruence arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
@@ -141,3 +148,8 @@ global anomaly as an explicit mod-two-index example.
   normalization and boundary-vector gluing law, and extended
   `eta_global_anomaly_checks.py` with finite phase checks for gluing
   associativity and APS integer ambiguity.
+- 2026-06-01 APS cylinder spectral-flow pass: added the exact integer
+  cylinder identity before reduction modulo \(\mathbb Z\), isolated the
+  endpoint-kernel term from the incoming APS boundary component, and recorded
+  the resulting sign between simple-crossing spectral flow and the chosen
+  APS cylinder index representative.

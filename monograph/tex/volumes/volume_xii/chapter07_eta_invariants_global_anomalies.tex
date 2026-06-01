@@ -202,6 +202,59 @@ Since \(\eta_{-B_0}(0)=-\eta_{B_0}(0)\) and
 The Fredholm index and \(h(B_0)\) are integers.  Moving them to the other
 side gives \eqref{eq:eta-cylinder-variation} modulo \(\mathbb Z\).
 
+\paragraph{Exact cylinder bookkeeping.}
+The preceding congruence is often the only part of the APS cylinder formula
+that survives in anomaly phases, but the exact integer identity is what fixes
+the sign conventions.  With
+\[
+  I_X(E)
+  =
+  \int_X
+  \bigl[\widehat A(TX)\operatorname{ch}(E)\bigr]_{2n+2},
+\]
+the APS formula on \(\partial X=Y_1\sqcup(-Y_0)\) gives
+\begin{equation}
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})
+  =
+  I_X(E)-\xi(B_1)+\xi(B_0)-h(B_0).
+  \label{eq:aps-cylinder-exact-bookkeeping}
+\end{equation}
+Equivalently,
+\begin{equation}
+  \xi(B_1)-\xi(B_0)
+  =
+  I_X(E)-h(B_0)-\operatorname{Ind}(D_X^{+,\mathrm{APS}}).
+  \label{eq:aps-cylinder-xi-exact-bookkeeping}
+\end{equation}
+Thus the endpoint-kernel convention is not an afterthought: including the
+zero eigenspace in \(P_{\ge0}\) at the incoming boundary contributes the
+integer \(h(B_0)\) in the exact formula and then disappears only after
+passing to \(\mathbb R/\mathbb Z\).  When \(B_0\) and \(B_1\) are invertible,
+\eqref{eq:aps-cylinder-exact-bookkeeping} becomes
+\[
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})
+  =
+  I_X(E)-\bigl(\xi(B_1)-\xi(B_0)\bigr).
+\]
+If the path has only transverse simple crossings, the integer jump part of
+\(\xi(B_1)-\xi(B_0)\) is exactly the spectral flow
+\(\operatorname{sf}(B_t)\), by Remark~\ref{rem:eta-integer-jump}.  The
+remaining smooth variation is represented by the local transgression term
+whose cylinder integral is \(I_X(E)\); the APS index supplies the integer
+needed to make the exact equality hold.
+Consequently, in the orientation and APS boundary convention of
+\eqref{eq:aps-collar-dirac-form}--\eqref{eq:aps-boundary-condition}, the
+pure crossing contribution satisfies
+\[
+  \operatorname{Ind}(D_X^{+,\mathrm{APS}})_{\mathrm{cross}}
+  =
+  -\,\operatorname{sf}(B_t).
+\]
+This minus sign is a boundary-orientation convention, not a physical phase:
+the exponentiated eta phase only remembers the congruence
+\eqref{eq:eta-cylinder-variation}, while the exact identity above records the
+Fredholm representative used to compute it.
+
 Figure~\ref{fig:eta-cylinder-mapping-torus} records the cylinder/mapping-torus
 geometry used in the eta-variation formula: interpolating between boundary
 operators converts eta change into an APS index modulo integers.
