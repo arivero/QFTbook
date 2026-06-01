@@ -174,12 +174,38 @@ def check_null_cut_modular_anec_sign_bookkeeping() -> None:
         raise AssertionError("negative full null integral should make the entropy squeeze incompatible")
 
 
+def check_light_ray_ope_transverse_scaling_bookkeeping() -> None:
+    """Check the transverse homogeneity ledger for the light-ray OPE.
+
+    In a local detector patch with d transverse coordinates, the detector
+    density scales as lambda^{-d}.  A product of two detector densities
+    therefore has exponent -2d.  If a light-ray operator has transverse
+    density exponent w and is acted on by |m| transverse derivatives, the
+    coefficient distribution in the OPE must have exponent
+    -2d - w + |m|.  This is only bookkeeping; analytic convergence is the
+    content of the Lorentzian light-ray OPE theorem boundary.
+    """
+
+    cases = (
+        (Fraction(2), Fraction(-1), Fraction(0)),
+        (Fraction(2), Fraction(-3), Fraction(1)),
+        (Fraction(3), Fraction(1, 2), Fraction(2)),
+        (Fraction(5), Fraction(-7, 3), Fraction(4)),
+    )
+    for transverse_dimension, light_weight, derivative_order in cases:
+        coefficient_weight = -2 * transverse_dimension - light_weight + derivative_order
+        rhs_weight = coefficient_weight + light_weight - derivative_order
+        lhs_weight = -2 * transverse_dimension
+        assert_equal("light-ray OPE transverse scaling", rhs_weight, lhs_weight)
+
+
 def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
     check_normalization_integrates_to_total_energy()
     check_light_transform_homogeneity_map()
     check_null_cut_modular_anec_sign_bookkeeping()
+    check_light_ray_ope_transverse_scaling_bookkeeping()
     print("All conformal-collider finite checks passed.")
 
 

@@ -803,6 +803,82 @@ their descendants, analytically continued in spin as specified by the
 Lorentzian inversion formula.
 \end{quotedtheorem}
 
+The word ``convergent'' in
+Quoted Theorem~\ref{qthm:light-ray-ope-boundary} is a distributional
+statement, not a pointwise multiplication rule for two unbounded operators.
+On a small celestial patch write a detector direction as a transverse
+coordinate \(y\in\mathbb R^{D-2}\).  A separated detector product is first
+paired with a test function
+\[
+  \Phi(y_1,y_2)
+  \in C_c^\infty\bigl((U\times U)\setminus \{y_1=y_2\}\bigr).
+\]
+The diagonal limit is probed by families whose support approaches
+\(|y_{12}|=|y_1-y_2|=0\).  The theorem supplies coefficient distributions
+\[
+  C_{\alpha,m}(y_{12})
+\]
+and light-ray operators \(\mathbb L_\alpha(y)\), together with a topology of
+test functions and state wavepackets in which
+\begin{equation}
+  \mathcal E(y_1)\mathcal E(y_2)
+  \sim
+  \sum_{\alpha,m}
+  C_{\alpha,m}(y_{12})\,
+  \partial_y^m\mathbb L_\alpha(y_2)
+  \label{eq:cft-light-ray-ope-local-form}
+\end{equation}
+after pairing with such tests.  The multi-index \(m\) labels transverse
+descendants and tensor structures.  The coefficients are homogeneous or
+polyhomogeneous distributions away from \(y_{12}=0\), with logarithmic terms
+when anomalous dimensions or degeneracies are present.  Their normalization
+is fixed by three-point data involving the two detector light transforms and
+\(\mathbb L_\alpha\), or equivalently by the Lorentzian inversion transform
+in the conformal frame used to define the light transform.
+
+The proof mechanism has three distinct analytic steps.  First, the product of
+the local stress tensors is not expanded by the Euclidean local OPE at
+ordinary spacelike separation.  The two null integrations and the detector
+limit force one to control Lorentzian configurations in which the integration
+contours approach lightlike singularities.  Lorentzian analyticity and the
+spectrum condition provide domains in complexified configuration space in
+which the contours can be displaced and the relevant discontinuities can be
+defined.  Second, Regge or operator-growth bounds control the arcs at
+infinity and justify exchanging the null-line integrals with the partial-wave
+or inversion expansion.  Without these bounds the formal operation
+``integrate the local OPE along a null line'' is not a proof.  Third, the
+resulting expansion is completed in a transverse distribution topology.  A
+usable version states that, after retaining all light-ray primaries in a set
+\(\mathcal A_N\), the remainder \(R_N\) obeys an estimate of the form
+\begin{equation}
+  \bigl|
+  \bra{\Psi}R_N(\Phi)\ket{\Psi}
+  \bigr|
+  \leq
+  C_N(\Psi)\,
+  \|\Phi\|_{\mathcal T_N}\,
+  \epsilon^{\sigma_N}
+  \label{eq:cft-light-ray-ope-remainder-template}
+\end{equation}
+for tests supported in \(|y_{12}|<\epsilon\), with a declared test-function
+seminorm \(\|\cdot\|_{\mathcal T_N}\) and an exponent \(\sigma_N>0\) that
+improves as the retained operator set is enlarged.  Equation
+\eqref{eq:cft-light-ray-ope-remainder-template} is not an additional theorem
+proved here; it is the kind of bound that makes
+\eqref{eq:cft-light-ray-ope-local-form} a mathematical statement rather than
+a formal series.  Whenever the monograph uses the light-ray OPE below, the
+use is restricted to consequences that follow from such Lorentzian
+analyticity, growth, and transverse-distribution convergence hypotheses.
+
+This formulation also explains the relation with the QCD small-angle EEC.
+In a CFT the expansion coefficients are fixed-point data of light-ray
+representations.  In asymptotically free QCD, the corresponding small-angle
+statement is a renormalized collinear light-ray expansion with a scale
+\(\mu\), an anomalous-dimension matrix, endpoint contact coordinates, and a
+mass-gap-sensitive long-distance remainder.  The QCD object is therefore not
+obtained by simply copying the CFT theorem; it is a separate factorization
+datum whose detector side is the same stress-tensor observable.
+
 This theorem gives a nonperturbative meaning to the collinear expansion of
 energy correlators in a CFT.  It is the conformal counterpart of the QCD
 statement that small-angle energy correlators are governed by collinear

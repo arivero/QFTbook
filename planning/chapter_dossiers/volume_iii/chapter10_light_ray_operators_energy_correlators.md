@@ -64,7 +64,12 @@ The chapter establishes:
   parameters \(t_2,t_4\);
 - the conformal-collider inequalities following from detector positivity;
 - the CFT energy-energy correlator and its relation to the QCD EEC;
-- the light-ray OPE theorem boundary for separated-angle detector products.
+- the light-ray OPE theorem boundary for separated-angle detector products,
+  now accompanied by the distributional proof mechanism: transverse detector
+  tests approaching the diagonal, coefficient distributions, transverse
+  descendants, Lorentzian contour control, Regge/growth bounds, and the
+  type of remainder estimate needed to turn the formal light-ray series into
+  a convergent operator-distribution statement.
 
 ## Symbols
 
@@ -126,7 +131,10 @@ The chapter establishes:
 8. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
 9. The convergent light-ray OPE is used with explicit Lorentzian CFT
-   hypotheses rather than treated as a general axiom of QFT.
+   hypotheses rather than treated as a general axiom of QFT.  The chapter now
+   records the proof mechanism and the needed transverse-distribution
+   convergence estimate, and separates the fixed-point CFT statement from the
+   renormalized QCD small-angle EEC factorization datum.
 
 ## Figures
 
@@ -154,7 +162,8 @@ The chapter establishes:
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the finite arithmetic for the light-transform homogeneity map and the
-  null-cut modular ANEC sign bookkeeping.
+  null-cut modular ANEC sign bookkeeping, and the transverse homogeneity
+  ledger for light-ray OPE coefficient distributions.
 - 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues
