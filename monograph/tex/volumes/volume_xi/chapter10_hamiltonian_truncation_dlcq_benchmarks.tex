@@ -2429,9 +2429,9 @@ then reports \(\widehat A_{\infty,W}\), the propagated statistical error
 the spread of fitted intercepts across the declared windows.  Supplying the
 identity matrix as a covariance, or using diagonal errors, is part of the
 finite datum and is printed as such.  The script therefore checks the
-bookkeeping of a proposed extrapolation; it deliberately does not infer the
-cutoff exponent, the counterterm scheme, or the remainder estimate from the
-data.
+bookkeeping of a proposed extrapolation.  The cutoff exponent, counterterm
+scheme, and remainder estimate are mathematical inputs whose justification
+comes from the regulated theory, not from the fit output alone.
 
 \section{Light-Front Hamiltonian}
 
@@ -2444,6 +2444,116 @@ Chern--Simons--matter light-cone construction in
 Chapter~\ref{ch:susy-three-dimensional-chern-simons-matter} use the same
 coordinate convention, but with model-specific constraint equations instead
 of a universal finite-matrix recipe.
+
+\section{Cross-Method Benchmark Comparisons}
+\label{sec:cross-method-numerical-benchmark-comparisons}
+
+Lattice Monte Carlo, Hamiltonian truncation, TCSA/TFFSA, and DLCQ produce
+different finite mathematical objects.  A numerical agreement between their
+outputs is meaningful only after a common QFT observable and a common
+normalization have been specified.  The comparison itself is therefore part
+of the regulated datum.
+
+\begin{definition}[Cross-method benchmark datum]
+\label{def:cross-method-benchmark-datum}
+A cross-method benchmark datum consists of the following information.
+\begin{enumerate}
+  \item A target QFT observable \(Q\).  Examples are a dimensionless mass
+  ratio, a finite-volume energy gap in units of the physical mass, a matrix
+  element normalized by a declared two-point function, or a Euclidean
+  distribution paired with a specified test function.
+  \item A finite set of methods \(m\in\mathcal M\).  For each method one
+  specifies the finite regulator object \(X_m\): for Euclidean lattice Monte
+  Carlo this includes lattice spacing, finite volume, boundary conditions,
+  action, update kernel, and measured estimator; for Hamiltonian truncation
+  it includes the finite Hilbert space, Hamiltonian matrix, counterterm
+  coordinates, symmetry sector, and extraction map; for DLCQ it includes
+  harmonic resolution, zero-mode prescription, constraint sector, and finite
+  invariant-mass matrix.
+  \item A normalization map
+  \[
+    N_m:X_m\longrightarrow\mathbb R^r
+  \]
+  which converts the method-specific finite output to the same coordinate
+  system for \(Q\).  Field-strength conventions, finite-volume units,
+  operator normalizations, and sector labels are part of \(N_m\).
+  \item Statistical error coordinates \(s_m\), deterministic finite-regulator
+  envelopes \(R_m\), and a scheme-matching coordinate \(b_m\) measuring any
+  residual mismatch between the method's finite observable and the declared
+  target observable.
+  \item A limiting or extrapolation hypothesis, when a continuum statement is
+  claimed, stating that
+  \[
+    N_m(X_m)=Q+\epsilon_m,\qquad
+    |\epsilon_m|\leq s_m+R_m+b_m
+  \]
+  in the declared norm or componentwise in \(\mathbb R^r\).
+\end{enumerate}
+\end{definition}
+
+The comparison certificate between two methods is then finite arithmetic.  If
+two methods \(m,n\) are claimed to compute the same coordinate of \(Q\), their
+finite outputs must satisfy
+\begin{equation}
+  |N_m(X_m)-N_n(X_n)|
+  \leq
+  s_m+s_n+R_m+R_n+b_m+b_n
+  \label{eq:cross-method-finite-consistency-bound}
+\end{equation}
+for the claimed error coordinates.  Failure of
+\eqref{eq:cross-method-finite-consistency-bound} means that at least one of
+the finite estimates, error models, normalization maps, or target
+identifications is wrong.  Satisfaction of
+\eqref{eq:cross-method-finite-consistency-bound} supplies a finite
+compatibility certificate conditional on the stated extrapolation hypotheses.
+The continuum statement is the separate proof that the hypotheses and
+envelopes follow from the regulated QFT.
+
+The main finite objects in the present numerical layer are as follows.
+\begin{description}[leftmargin=0.24\textwidth,style=nextline]
+  \item[Euclidean lattice Monte Carlo.]
+  The finite object is a positive measure, a Markov kernel, and sampled
+  correlators.  The usual spectral coordinate is a transfer-matrix gap
+  extracted from a correlator matrix or effective mass.  The continuum burden
+  is reflection positivity, volume control, autocorrelation analysis,
+  continuum scaling, and operator matching.
+  \item[Hamiltonian truncation/TCSA/TFFSA.]
+  The finite object is a sector of a Hilbert space together with a projected
+  Hamiltonian matrix.  The usual spectral coordinates are Ritz eigenvalues,
+  residual certificates, and finite matrix elements.  The continuum burden is
+  counterterm determination, cutoff convergence, finite-volume control, and
+  operator normalization.
+  \item[DLCQ/light-front truncation.]
+  The finite object is a fixed harmonic-resolution physical sector together
+  with a finite \(M^2\) matrix.  The usual spectral coordinate is an ordered
+  invariant-mass eigenvalue at fixed \(K\).  The continuum burden is
+  zero-mode constraints, endpoint behavior, large-\(K\) estimates, and
+  Lorentz-covariant reconstruction.
+\end{description}
+
+The companion scripts instantiate this comparison at finite regulator.  The
+Euclidean side contains finite Ising, scalar \(\phi^4\), \(\mathbb Z_2\),
+\(SU(2)\), and \(SU(3)\) samplers, plus autocorrelation,
+static-potential, Wilson-flow, smearing, topological-charge, HMC/RHMC, and
+glueball-GEVP diagnostics.  The Hamiltonian side contains exactly solvable
+Ising thermal truncation, compact-boson sine-Gordon vertex assembly,
+nonintegrable scalar \(\phi^4\) truncation, connected Ising TFFSA blocks,
+spectral-flow diagnostics, and the exact \(E_8\) target table.  The
+light-front side contains scalar \(\phi^4\) DLCQ, the large-\(N\)
+two-dimensional QCD matrix, and a large-\(K\) extrapolation diagnostic.  The
+generic finite-regulator extrapolation script records the common
+window/covariance/remainder-envelope data used by all three classes of
+methods.
+
+For the magnetic Ising theory, the present public scripts deliberately stop
+at finite certificates: the TFFSA connected-block matrix fixes the spin-field
+normalization convention, the spectral-flow script checks finite
+Hellmann--Feynman slopes, and the \(E_8\) script fixes the continuum target
+mass-ratio table.  A full comparison between a finite TCSA/TFFSA spectrum,
+Euclidean lattice correlators, and the exact \(E_8\) masses still requires a
+declared finite-volume convention, cutoff counterterms, extrapolation
+envelopes, and a comparison datum in the sense of
+Definition~\ref{def:cross-method-benchmark-datum}.
 
 \section{Benchmark Protocol}
 

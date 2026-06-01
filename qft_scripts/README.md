@@ -21,6 +21,7 @@ python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke
 python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
+python3 qft_scripts/su3_ape_smearing_hdf5.py --smoke
 python3 qft_scripts/su3_topological_charge_diagnostics_hdf5.py --smoke
 python3 qft_scripts/hmc_rhmc_finite_demo.py --smoke
 python3 qft_scripts/autocorrelation_resampling.py --smoke
@@ -28,10 +29,12 @@ python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/glueball_gevp_from_correlators.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/sine_gordon_zero_mode_truncation.py --smoke
+python3 qft_scripts/sine_gordon_tcsa_vertex.py --smoke
 python3 qft_scripts/phi4_hamiltonian_truncation.py --smoke
 python3 qft_scripts/phi4_dlcq.py --smoke
 python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/tffsa_ising_spectral_flow.py --smoke
+python3 qft_scripts/e8_ising_mass_ratios.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 python3 qft_scripts/finite_regulator_extrapolation.py --smoke

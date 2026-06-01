@@ -85,6 +85,10 @@ numerics.
 - `Hilb_Lambda^phys`, `P_Lambda^-`, `M_Lambda^2`: finite physical
   light-front Hilbert space, light-front Hamiltonian, and fixed-sector
   invariant-mass operator.
+- `Q`, `m`, `X_m`, `N_m`, `s_m`, `R_m`, `b_m`: cross-method benchmark target
+  observable, method label, finite regulator object, normalization map,
+  statistical error coordinate, deterministic finite-regulator envelope, and
+  scheme-matching coordinate.
 
 ## Claim Ledger
 
@@ -216,6 +220,16 @@ numerics.
   values, covariance source, remainder envelopes, and half-open fit windows
   are explicit data, and the reported intercepts remain finite diagnostics
   rather than continuum QFT claims.
+- Defines cross-method benchmark data for comparing lattice Monte Carlo,
+  Hamiltonian truncation/TCSA/TFFSA, and DLCQ outputs: common target
+  observable, method-specific finite objects, normalization maps, statistical
+  and deterministic error coordinates, scheme-matching coordinates, and the
+  finite consistency bound
+  \(|N_m(X_m)-N_n(X_n)|\le s_m+s_n+R_m+R_n+b_m+b_n\).
+- Records the current magnetic-Ising benchmark status: finite TFFSA block,
+  spectral-flow, and exact \(E_8\) target scripts are finite certificates, not
+  yet a full continuum comparison without cutoff counterterms and
+  extrapolation envelopes.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,

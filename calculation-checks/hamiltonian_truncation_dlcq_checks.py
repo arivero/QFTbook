@@ -590,6 +590,32 @@ def check_light_front_kinematic_identities() -> None:
     assert_equal("fixed-sector invariant-mass spectrum", mass_eigenvalues, expected)
 
 
+def check_cross_method_consistency_certificate() -> None:
+    target = Fraction(13, 7)
+    lattice_stat = Fraction(1, 50)
+    lattice_remainder = Fraction(3, 100)
+    lattice_matching = Fraction(1, 200)
+    truncation_stat = Fraction(1, 40)
+    truncation_remainder = Fraction(1, 25)
+    truncation_matching = Fraction(1, 100)
+
+    lattice_error = lattice_stat + lattice_remainder + lattice_matching
+    truncation_error = truncation_stat + truncation_remainder + truncation_matching
+    lattice_coordinate = target + lattice_error
+    truncation_coordinate = target - truncation_error
+    certificate_bound = lattice_error + truncation_error
+
+    assert_equal(
+        "cross-method worst-case compatibility bound",
+        abs(lattice_coordinate - truncation_coordinate),
+        certificate_bound,
+    )
+
+    hidden_normalization_mismatch = certificate_bound + Fraction(1, 100)
+    if hidden_normalization_mismatch <= certificate_bound:
+        raise AssertionError("hidden mismatch should violate the declared certificate")
+
+
 def main() -> None:
     check_ising_bogoliubov_benchmark()
     check_sine_gordon_zero_mode_selection_rules()
@@ -606,6 +632,7 @@ def main() -> None:
     check_krylov_residual_and_moments()
     check_variational_energy_certificates()
     check_light_front_kinematic_identities()
+    check_cross_method_consistency_certificate()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 
 
