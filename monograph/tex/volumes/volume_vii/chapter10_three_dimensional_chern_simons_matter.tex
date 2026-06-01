@@ -677,6 +677,171 @@ dynamics, because the kernel, spin, parity anomaly, and operator spectrum are
 different, but similar in the precise sense that the gauge field can be
 integrated out before solving the planar singlet equations.
 
+\section{Planar Bosonization as an Observable Matching Datum}
+\label{sec:cs-vector-planar-bosonization}
+
+The preceding light-cone construction is also the natural setting for the
+large-\(N\) Bose--Fermi duality tests in Chern--Simons vector models.  In this
+monograph the word duality in this context will mean a statement about
+renormalized gauge-invariant observables after the Chern--Simons level
+convention, parity-anomaly counterterms, scalar mass/contact tuning, and
+operator normalization have all been declared.  The datum concerns the
+gauge-invariant singlet sector; colored fundamental fields, line sectors,
+monopole sectors, and finite-\(N\) global refinements require additional
+objects beyond this planar observable chart.
+
+\begin{conjecture}[Planar Chern--Simons vector-model bosonization datum]
+\label{conj:planar-cs-vector-bosonization-datum}
+Fix a positive Yang--Mills-regulator level coordinate \(k_{\rm YM}\), a
+positive rank \(N\), and the induced large-\(N\) Chern--Simons level
+coordinate
+\[
+  K=N+k_{\rm YM}.
+\]
+Let
+\begin{equation}
+  \lambda_{\rm B}:=\frac{N}{K},
+  \qquad
+  N_{\rm F}:=k_{\rm YM},
+  \qquad
+  \lambda_{\rm F}:=\frac{N_{\rm F}}{K}=1-\lambda_{\rm B}.
+  \label{eq:cs-bosonization-rank-level-map}
+\end{equation}
+The planar bosonization datum asserts that the singlet sector of the regular
+bosonic \(U(N)\) Chern--Simons vector model in its conformal chart is matched,
+after the scalar Legendre transform described below, to the singlet sector of
+the fermionic \(U(N_{\rm F})\) Chern--Simons vector model with complementary
+coupling \(\lambda_{\rm F}\).  The orientation-reversed and negative-level
+versions are obtained by applying parity to all Chern--Simons contact terms.
+The statement is a conjectural equality of planar connected correlators of
+renormalized singlet currents and of their source functional, modulo the
+allowed local background Chern--Simons counterterms.
+\end{conjecture}
+
+\noindent
+This formulation is deliberately weaker than a finite-\(N\) duality theorem.
+It records the object that the planar calculations test.  The rank--level
+map is the vector-model remnant of level--rank duality, but the matter
+coupling and the critical scalar/fermion Legendre transforms add data that
+ordinary pure-Chern--Simons level--rank duality does not contain.
+
+\paragraph{Higher-spin parameters and the exact matching algebra.}
+The planar singlet correlators of Chern--Simons vector models may be
+organized, following the slightly-broken higher-spin Ward identities, by an
+effective number of degrees of freedom and by a parity-odd deformation
+coordinate.  In the convention of the light-cone calculation used here, the
+quasi-boson chart has
+\begin{equation}
+  \widetilde N_{\rm B}
+  =
+  2N\,\frac{\sin(\pi\lambda_{\rm B})}{\pi\lambda_{\rm B}},
+  \qquad
+  \widetilde\lambda_{\rm qb}
+  =
+  \tan\!\left(\frac{\pi\lambda_{\rm B}}{2}\right),
+  \label{eq:cs-bosonization-qb-parameters}
+\end{equation}
+while the complementary quasi-fermion chart is written with
+\begin{equation}
+  \widetilde N_{\rm F}
+  =
+  2N_{\rm F}\,\frac{\sin(\pi\lambda_{\rm F})}{\pi\lambda_{\rm F}},
+  \qquad
+  \widetilde\lambda_{\rm qf}
+  =
+  \cot\!\left(\frac{\pi\lambda_{\rm F}}{2}\right).
+  \label{eq:cs-bosonization-qf-parameters}
+\end{equation}
+Equations \eqref{eq:cs-bosonization-rank-level-map} give the exact identities
+\begin{equation}
+  {\widetilde N_{\rm B}=\widetilde N_{\rm F}},
+  \qquad
+  \widetilde\lambda_{\rm qb}=\widetilde\lambda_{\rm qf}.
+  \label{eq:cs-bosonization-parameter-matching}
+\end{equation}
+Indeed \(N/\lambda_{\rm B}=K=N_{\rm F}/\lambda_{\rm F}\), and
+\(\sin(\pi\lambda_{\rm F})=\sin(\pi(1-\lambda_{\rm B}))=\sin(\pi\lambda_{\rm B})\).
+The second identity is
+\[
+  \cot\!\left(\frac{\pi(1-\lambda_{\rm B})}{2}\right)
+  =
+  \tan\!\left(\frac{\pi\lambda_{\rm B}}{2}\right).
+\]
+Thus the higher-spin parameter matching is not an additional dynamical
+assumption once the rank--level map and the operator normalizations
+\eqref{eq:cs-bosonization-qb-parameters}--\eqref{eq:cs-bosonization-qf-parameters}
+are chosen.  The dynamical work is the derivation of the planar correlators
+and the proof that the continuum conformal charts realizing these parameters
+exist.
+
+\paragraph{Legendre transform of the scalar singlet.}
+The Bose--Fermi map relates regular and critical vector models.  The
+large-\(N\) critical operation is most cleanly stated at the source-functional
+level.  Let \(J_0\) be the scalar singlet, for example
+\(\phi^\dagger\phi\) in the bosonic chart or \(\bar\psi\psi\) in the
+fermionic chart, and let \(W_{\rm reg}[s]\) denote the planar connected
+generating functional with source \(s\) for \(J_0\), after all contact terms
+have been fixed.  On a source neighborhood where the Hessian
+\[
+  \mathcal G_{00}(x,y)
+  =
+  \frac{\delta^2 W_{\rm reg}}{\delta s(x)\delta s(y)}
+\]
+has an inverse on the chosen test-function quotient, define the conjugate
+field
+\[
+  \sigma(x)=\frac{\delta W_{\rm reg}}{\delta s(x)}
+\]
+and the Legendre-transformed planar functional
+\begin{equation}
+  W_{\rm crit}[\sigma]
+  =
+  W_{\rm reg}[s]-\int s(x)\sigma(x)\,\dd^3x,
+  \qquad
+  \sigma=\frac{\delta W_{\rm reg}}{\delta s}.
+  \label{eq:cs-vector-singlet-legendre-transform}
+\end{equation}
+Differentiating \eqref{eq:cs-vector-singlet-legendre-transform} gives
+\[
+  \frac{\delta W_{\rm crit}}{\delta\sigma(x)}=-s(x),
+  \qquad
+  \frac{\delta^2W_{\rm crit}}{\delta\sigma(x)\delta\sigma(y)}
+  =
+  -\mathcal G_{00}^{-1}(x,y).
+\]
+Thus the critical scalar two-point kernel is the inverse, with the displayed
+sign convention, of the regular scalar-singlet two-point kernel.  This
+operator inversion is the precise large-\(N\) content behind the informal
+phrase that the critical vector model is a Legendre transform of the regular
+one.  Beyond the planar source neighborhood it is not a definition by
+slogan: one must specify the continuum limit, the test-function space, the
+contact-term quotient, and the domain on which the inverse exists.
+
+\paragraph{Scope of the planar observable datum.}
+The matching in
+Conjecture~\ref{conj:planar-cs-vector-bosonization-datum} concerns the
+renormalized singlet current algebra generated by the stress tensor, the
+higher-spin currents at leading large \(N\), and the scalar singlet after the
+Legendre transform.  Colored fundamental fields enter only as variables in a
+chosen gauge-redundant regulator; line operators, monopole operators,
+finite-\(N\) spectra, background Chern--Simons contact terms, and global
+forms are additional sectors whose matching must be specified by extra data.
+The light-front bilocal equations above give one finite-regulator route to
+the planar correlators; the higher-spin Ward classification gives an
+independent organization of the same planar data.  Agreement of the two is
+strong evidence for the conjectural observable matching, but a proof of the
+full continuum duality would require a nonperturbative construction of both
+Chern--Simons--matter theories and an isomorphism of their gauge-invariant
+observable algebras or of their Kontsevich--Segal data.
+
+The source lineage for this large-\(N\) matching includes the
+Maldacena--Zhiboedov higher-spin constraints and the explicit planar
+Chern--Simons vector-model correlator computations
+\cite{MaldacenaZhiboedov2012,AGY2012,JainMinwallaYokoyama2013}.  The
+citations identify the historical calculations; the status of the statement
+inside this monograph is the conjectural datum and the exact algebraic
+matching displayed above.
+
 \section{Supersymmetric Chern--Simons--Matter Action}
 
 The supersymmetric Chern--Simons action contains

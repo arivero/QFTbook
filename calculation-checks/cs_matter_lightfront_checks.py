@@ -100,6 +100,52 @@ def check_bilocal_saddle_scaling() -> None:
     assert_equal("CS bilocal leading/subleading ratio", leading_without_pi / subtraction_without_pi, n)
 
 
+def check_planar_bosonization_rank_level_map() -> None:
+    """Exact algebra behind the large-N CS vector-model bosonization datum."""
+
+    for n_b in range(1, 12):
+        for k_ym in range(1, 12):
+            total_level = Fraction(n_b + k_ym)
+            lambda_b = Fraction(n_b, n_b + k_ym)
+            n_f = Fraction(k_ym)
+            lambda_f = Fraction(k_ym, n_b + k_ym)
+
+            assert_equal(
+                f"CS bosonization complementary couplings N={n_b} k={k_ym}",
+                lambda_b + lambda_f,
+                Fraction(1),
+            )
+            assert_equal(
+                f"CS bosonization effective degree count boson N={n_b} k={k_ym}",
+                Fraction(n_b, 1) / lambda_b,
+                total_level,
+            )
+            assert_equal(
+                f"CS bosonization effective degree count fermion N={n_b} k={k_ym}",
+                n_f / lambda_f,
+                total_level,
+            )
+            assert_equal(
+                f"CS bosonization sine argument complement N={n_b} k={k_ym}",
+                lambda_f,
+                1 - lambda_b,
+            )
+
+    # The trigonometric identity used in the chapter is
+    # cot(pi (1-lambda)/2)=tan(pi lambda/2).  The exact content needed by the
+    # manuscript is the complementary-angle relation; no floating point
+    # trigonometry is needed.
+    for numerator in range(1, 10):
+        for denominator in range(numerator + 1, 13):
+            lambda_b = Fraction(numerator, denominator)
+            lambda_f = 1 - lambda_b
+            assert_equal(
+                f"CS bosonization complementary-angle identity lambda={lambda_b}",
+                Fraction(1, 2) - lambda_f / 2,
+                lambda_b / 2,
+            )
+
+
 def matmul(left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
     size = len(left)
     return tuple(
@@ -281,6 +327,7 @@ def main() -> None:
     check_trace_delta_color_scaling()
     check_t_hooft_coordinate_dimensionless()
     check_bilocal_saddle_scaling()
+    check_planar_bosonization_rank_level_map()
     check_bilocal_self_energy_variation()
     check_planar_dyson_index_convention()
     check_bilocal_hessian_and_ladder_vertex()

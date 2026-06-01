@@ -59,6 +59,12 @@ Reviewed source spine:
 - `S_col[B]`, `H_G`, `Gamma_W`: finite-regulator collective bilocal action,
   its Hessian at the planar saddle, and the amputated planar singlet vertex
   solving the Bethe-Salpeter source-response equation.
+- `lambda_B`, `lambda_F`, `K`: complementary planar bosonization couplings
+  and common large-`N` level coordinate in the Chern-Simons vector-model
+  matching datum.
+- `tilde N`, `tilde lambda_qb`, `tilde lambda_qf`: higher-spin
+  parameterization of planar singlet correlators in the quasi-boson and
+  quasi-fermion charts.
 
 ## Claim Ledger
 
@@ -83,6 +89,16 @@ Reviewed source spine:
   `Tr(G^{-1}XG^{-1}Y)+I_LC''(X,Y)`, the explicit light-cone interaction
   Hessian, and the planar Bethe-Salpeter equation
   `Gamma_W + K_G(G Gamma_W G)=W` for normalized singlet two-point functions.
+- States planar Chern-Simons vector-model bosonization as a conjectural
+  gauge-invariant singlet-observable matching datum, not as a finite-`N`
+  theorem or an identification of colored fields.
+- Derives the exact rank/level parameter algebra
+  `lambda_B=N/K`, `lambda_F=k_YM/K=1-lambda_B`,
+  `tilde N_B=tilde N_F`, and
+  `tan(pi lambda_B/2)=cot(pi lambda_F/2)`.
+- Derives the large-`N` scalar-singlet Legendre transform at the
+  source-functional level, including the inverse two-point kernel relation
+  for the critical chart.
 - Derives the Chern-Simons shifted D-term equation by eliminating the
   auxiliary field.
 - Proves the non-abelian pure-Chern-Simons auxiliary equation
@@ -143,7 +159,9 @@ Reviewed source spine:
   saddle scalings, the finite-matrix derivative of the bilocal interaction
   giving the self-energy, the index convention in `G(Q+Sigma)=1`, and the
   finite-matrix Hessian/source-response convention behind the planar
-  Bethe-Salpeter equation.
+  Bethe-Salpeter equation.  It also checks the exact complementary-coupling
+  and effective-degree-count identities used in the planar bosonization
+  datum.
 
 ## Proof Obligations And Boundaries
 
@@ -157,6 +175,10 @@ Reviewed source spine:
   source-response equation on the bilocal space.  The chapter has not yet
   solved the exact bosonic/fermionic Chern-Simons vector-model vertex
   equations in a continuum conformal chart.
+- The planar bosonization section is a conjectural observable-matching datum.
+  It still requires continuum construction, contact-term matching, finite-`N`
+  status, line/monopole operator matching, and an isomorphism of
+  gauge-invariant observable algebras or Kontsevich-Segal data.
 - The general ABJM moduli and supersymmetry-enhancement statements are kept
   as quoted theorem status because they use quantum monopole sectors and
   global-form data beyond the polynomial `N=2` Lagrangian.
@@ -184,3 +206,9 @@ quotient, and the two-matrix `S^3` localization contour.
   \(k\)-dependent orbifold convention; the full commuting-branch and
   enhancement statements remain quoted theorem status because monopole and
   global-form data enter.
+- 2026-06-01 planar bosonization pass: added a large-\(N\)
+  Chern-Simons vector-model Bose--Fermi matching datum with exact
+  rank/level algebra, higher-spin parameter matching, and scalar-singlet
+  Legendre-transform kernel inversion.  The pass deliberately uses
+  conjecture/status language rather than theorem language; the exact algebra
+  is paired with `cs_matter_lightfront_checks.py`.

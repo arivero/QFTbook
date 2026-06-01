@@ -434,10 +434,11 @@ Current checks:
   contraction, and the rational part of the planar exchange coefficient
   \(N(2/k_{\rm eff})=2\lambda\), together with the bilocal saddle scaling
   \(N^2(2/k_{\rm eff})=2N\lambda\) versus the \(O(1)\) trace subtraction,
-  the finite-matrix derivative giving the planar bilocal self-energy, and the
-  index convention in \(G(Q+\Sigma)=1\).  It also verifies the bilocal
-  Hessian/Bethe--Salpeter source-response convention for planar singlet
-  two-point functions.
+  the exact rank/level and complementary-coupling algebra behind the planar
+  Chern--Simons vector-model bosonization datum, the finite-matrix derivative
+  giving the planar bilocal self-energy, and the index convention in
+  \(G(Q+\Sigma)=1\).  It also verifies the bilocal Hessian/Bethe--Salpeter
+  source-response convention for planar singlet two-point functions.
 - `chpt_nlo_checks.py`: finite arithmetic checks for the NLO chiral
   perturbation theory section, including the ten \(L_1,\ldots,L_{10}\)
   Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the

@@ -11,23 +11,26 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## At-A-Glance Volume List
+## Full Active Public Volume List
 
-The compiled public manuscript currently consists of the following twelve
-volumes, in this order:
+The compiled public manuscript currently consists of exactly twelve active
+volumes, in the order below.  This table is the public roster: there are no
+additional active reader-facing volumes outside it.
 
-1. Volume I: Foundations of Local Quantum Field Theory
-2. Volume II: Particles, Scattering, and Analyticity
-3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
-4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
-5. Volume V: Conformal Field Theory
-6. Volume VI: Integrable Quantum Field Theory
-7. Volume VII: Supersymmetric Quantum Field Theory
-8. Volume VIII: Topological and Cohomological Quantum Field Theory
-9. Volume IX: Global Structure, Phases, and Extended Operators
-10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
-12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+| Volume | Title |
+| --- | --- |
+| I | Foundations of Local Quantum Field Theory |
+| II | Particles, Scattering, and Analyticity |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | Gauge Theory, Infrared Structure, and Anomalies |
+| V | Conformal Field Theory |
+| VI | Integrable Quantum Field Theory |
+| VII | Supersymmetric Quantum Field Theory |
+| VIII | Topological and Cohomological Quantum Field Theory |
+| IX | Global Structure, Phases, and Extended Operators |
+| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | Quantum Field Theory in Curved Spacetime and Background Fields |
 
 Draft files, deprecated files, source transcriptions, and planning notes are
 not additional public volumes.  A new volume becomes part of the public
