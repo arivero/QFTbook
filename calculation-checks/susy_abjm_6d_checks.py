@@ -574,6 +574,49 @@ def check_circle_reduction_finite_flux_pairing() -> None:
                     )
 
 
+def check_circle_reduction_genuine_defect_polarizations() -> None:
+    # In the cyclic one-cell finite algebra, an absolute global form is a
+    # maximal isotropic subgroup.  Its commutant under the perfect pairing is
+    # itself; hence charges outside it are relative/non-genuine for that
+    # absolute polarization.  Graphs of symplectic automorphisms give
+    # Lagrangian relations between polarizations.
+    for n in range(2, 13):
+        elements = [(a, b) for a in range(n) for b in range(n)]
+
+        def pairing(x: tuple[int, int], y: tuple[int, int]) -> int:
+            return (x[0] * y[1] - x[1] * y[0]) % n
+
+        for name, polarization in (
+            ("surface", [(a, 0) for a in range(n)]),
+            ("line", [(0, b) for b in range(n)]),
+        ):
+            commutant = [
+                x
+                for x in elements
+                if all(pairing(x, y) == 0 for y in polarization)
+            ]
+            assert_equal(
+                f"Z_{n} {name} polarization equals commutant",
+                sorted(commutant),
+                sorted(polarization),
+            )
+
+        def s_transform(x: tuple[int, int]) -> tuple[int, int]:
+            return (x[1] % n, (-x[0]) % n)
+
+        graph = [(x, s_transform(x)) for x in elements]
+        assert_equal(f"Z_{n} symplectic graph size", len(graph), len(elements))
+        for (x, sx) in graph:
+            for (y, sy) in graph:
+                # The target pairing is reversed in K plus Kbar.
+                relation_pairing = (pairing(x, y) - pairing(sx, sy)) % n
+                assert_equal(
+                    f"Z_{n} symplectic graph isotropic {x},{y}",
+                    relation_pairing,
+                    0,
+                )
+
+
 def check_class_s_hitchin_base_degrees() -> None:
     for n in range(2, 10):
         a_degrees = list(range(2, n + 1))
@@ -674,6 +717,7 @@ def main() -> None:
     check_two_zero_defect_group_orders()
     check_cyclic_finite_flux_polarization()
     check_circle_reduction_finite_flux_pairing()
+    check_circle_reduction_genuine_defect_polarizations()
     check_class_s_hitchin_base_degrees()
     check_class_s_anomaly_pushforward_coefficients()
     print("All ABJM and six-dimensional SUSY convention checks passed.")

@@ -924,6 +924,91 @@ theory language this is the global form and discrete finite-flux datum that
 supplements the Lie algebra \(\mathfrak g\).  It is not determined by the
 local \(5d\) Yang--Mills Lagrangian density.
 
+\paragraph{Genuine defects after choosing an absolute polarization.}
+The preceding finite Heisenberg system is the point at which the phrase
+``the \((2,0)\) theory of type \(\mathfrak g\)'' must be refined by a global
+finite datum.  Let \(X_5\) be a closed oriented five-manifold and set
+\[
+  K_{X_5}
+  =
+  H^3(X_5;A_{\mathfrak g})
+  \oplus
+  H^2(X_5;A_{\mathfrak g}),
+\]
+with the alternating pairing
+\[
+  \omega_{X_5}\bigl((u,v),(u',v')\bigr)
+  =
+  \int_{X_5}
+  \bigl(
+    b_{\mathfrak g}(v\smile u')
+    -
+    b_{\mathfrak g}(u\smile v')
+  \bigr).
+\]
+Poincare duality with finite coefficients, together with nondegeneracy of
+\(b_{\mathfrak g}\), makes this pairing perfect modulo any explicitly
+removed radical.  A finite absolute polarization on the circle compactified
+theory is a choice, functorial under the bordisms under consideration, of a
+maximal isotropic subgroup
+\[
+  L_{X_5}\subset K_{X_5},
+  \qquad
+  L_{X_5}=L_{X_5}^{\perp_{\omega}} .
+\]
+The equality with its orthogonal complement is the load-bearing condition,
+not the notation: it says that the chosen set of finite line/surface charges
+is maximal among mutually local charges.
+
+Let \(U_\kappa\), \(\kappa\in K_{X_5}\), denote the finite topological
+operator that shifts the corresponding discrete flux sector.  The finite
+Heisenberg relation is
+\[
+  U_\kappa U_\lambda
+  =
+  \exp\!\left(2\pi\ii\,\omega_{X_5}(\kappa,\lambda)\right)
+  U_\lambda U_\kappa .
+\]
+After the absolute polarization \(L_{X_5}\) is chosen, the charges
+\(\kappa\in L_{X_5}\) define the mutually local genuine finite-charge
+defects of that absolute theory.  If \(\kappa\notin L_{X_5}\), then
+maximality gives some \(\lambda\in L_{X_5}\) with
+\(\omega_{X_5}(\kappa,\lambda)\ne0\).  The corresponding operators fail to
+commute by the displayed phase, so \(\kappa\) cannot be inserted as an
+ordinary genuine defect in the same absolute theory while preserving all
+defects in \(L_{X_5}\).  It is instead a relative operator: it changes the
+finite background sector, or it must end on a topological interface that
+changes the polarization.
+
+In the elementary \(A_{N-1}\) cyclic model, \(K=\mathbb Z_N\oplus\mathbb Z_N\)
+with pairing \eqref{eq:six-d-cyclic-finite-flux-pairing}.  The two coordinate
+subgroups
+\[
+  L_{\rm surf}=\mathbb Z_N\oplus0,\qquad
+  L_{\rm line}=0\oplus\mathbb Z_N
+\]
+are maximal isotropic.  The first choice makes the unwrapped finite surface
+charges genuine; the second makes the circle-wrapped finite line charges
+genuine.  These are different absolute global forms of the same local
+compactified theory.  A topological interface between two such choices is
+not an equality of absolute theories; at the finite level it is represented
+by a Lagrangian relation
+\[
+  R\subset K_{X_5}^{(1)}\oplus \overline{K}_{X_5}^{(2)},
+\]
+where the bar reverses the sign of the pairing.  The graph of a symplectic
+automorphism of \(K_{X_5}\) is the simplest example.  This finite relation
+is the precise algebraic content behind the common statement that some
+defects are ``non-genuine'': the defect exists as a relative morphism between
+finite sectors, not as an autonomous operator in a fixed absolute
+polarization.
+
+This paragraph is still only the finite topological layer.  It does not
+construct the full six-dimensional category of codimension-two defects, nor
+the interacting two-dimensional theories supported on BPS strings.  It fixes
+the consistency condition that any such construction must obey when reduced
+to the protected finite charge algebra.
+
 \section{Circle Compactification And Five-Dimensional Yang--Mills}
 
 Compactification on a smooth compact manifold \(Y\) gives lower-dimensional

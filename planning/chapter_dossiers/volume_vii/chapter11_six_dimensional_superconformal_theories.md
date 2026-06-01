@@ -113,6 +113,12 @@ Reviewed source spine:
   \(\int_{X_5}(b(v\smile u')-b(u\smile v'))\), and explains the resulting
   wrapped-line/unwrapped-surface polarization as the finite global-form datum
   of the five-dimensional compactification.
+- Defines the finite absolute-polarization criterion after circle reduction:
+  a maximal isotropic subgroup \(L_{X_5}=L_{X_5}^{\perp_\omega}\) selects the
+  genuine finite-charge defects of that absolute theory, while charges outside
+  \(L_{X_5}\) are relative/non-genuine because they fail to commute with some
+  chosen genuine charge; polarization-changing interfaces are represented by
+  Lagrangian relations in \(K\oplus\bar K\).
 - Defines the five-dimensional instanton current
   \(j_{\rm inst}=*_5(8\pi^2)^{-1}\operatorname{tr}_{\rm top}F\wedge F\),
   its integral charge on spatial four-cycles, the trace-delta instanton
@@ -142,7 +148,9 @@ Reviewed source spine:
   instanton/Kaluza-Klein normalization, wrapped-string/W-boson scalar
   normalization, ADE defect-group orders from Cartan determinants, and the
   cyclic finite-flux polarization model.  It also checks the
-  \(S^1\times X_5\) finite-flux cross-pairing signs, the simply laced
+  \(S^1\times X_5\) finite-flux cross-pairing signs, the finite commutant
+  criterion for genuine versus relative defects in a chosen polarization,
+  symplectic-graph interface relations, the simply laced
   root-system second-moment identities for the \(A\) and \(D\) series and the
   ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\),
   as well as the class-\(S\) twist anomaly-pushforward coefficients.
@@ -165,9 +173,9 @@ Reviewed source spine:
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.
-- Future passes should add line/surface defect categories, intrinsic anomaly
-  computations for the two-dimensional theories supported on BPS strings,
-  global forms/discrete quotients of the `(2,0)` theories, and punctured or
+- Future passes should add the full line/surface defect categories beyond the
+  finite topological charge algebra, intrinsic anomaly computations for the
+  two-dimensional theories supported on BPS strings, and punctured or
   irregular class-`S` anomaly reductions.
 
 ## Development Log
@@ -216,6 +224,11 @@ Reviewed source spine:
   between \(H^3(X_5;A_{\mathfrak g})\) and \(H^2(X_5;A_{\mathfrak g})\), and
   the interpretation of the two isotropic halves as unwrapped surface defects
   and circle-wrapped line defects in the five-dimensional compactification.
+- 2026-06-01 genuine-defect polarization pass: added the finite absolute
+  polarization criterion \(L=L^\perp\), the Heisenberg commutator test for
+  genuine versus relative/non-genuine finite defects, and the Lagrangian
+  relation description of polarization-changing interfaces; extended the
+  cyclic finite-algebra calculation check accordingly.
 
 ## Figure Ledger
 
