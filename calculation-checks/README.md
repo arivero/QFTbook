@@ -117,7 +117,9 @@ Current checks:
   spectral projections without changing the generated local von Neumann
   algebra.  It also includes a finite analytic-vector strong-locality shadow:
   commuting finite self-adjoint generators have commuting spectral
-  projections.
+  projections, and a finite affiliation diagnostic: spectral projections of a
+  diagonal self-adjoint generator commute with the commutant of the diagonal
+  algebra, while odd-field spectral projections fail this commutant criterion.
 - `os_tube_sign_checks.py`: finite checks for the Volume IV
   Osterwalder--Schrader reconstruction chapter, including the mostly-plus
   damping inequality \(p\cdot\eta<0\) for future \(p,\eta\), the ordered

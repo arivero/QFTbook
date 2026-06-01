@@ -1099,6 +1099,45 @@ domain.
 Affiliation is the precise way in which an unbounded field can be localized
 in a bounded local algebra.
 
+The equivalence in Definition~\ref{def:operator-affiliation-local-algebra} is
+often the practical test for locality of unbounded field coordinates, so we
+spell it out.  Let \(E_T\) be the spectral measure of \(T\).  If
+\(E_T(\Delta)\in\mathcal M\) for every Borel \(\Delta\), then every
+\(B\in\mathcal M'\) commutes with every bounded Borel function of \(T\).  In
+particular,
+\[
+  B(1+T^2)^{-1/2}=(1+T^2)^{-1/2}B,
+  \qquad
+  BT(1+T^2)^{-1/2}=T(1+T^2)^{-1/2}B .
+\]
+The first identity implies that \(B\operatorname{Dom}T\subset\operatorname{Dom}T\):
+indeed
+\[
+  \operatorname{Dom}T=(1+T^2)^{-1/2}\Hilb .
+\]
+The second identity then gives \(BT\xi=TB\xi\) for
+\(\xi\in\operatorname{Dom}T\), by applying it to
+\(\xi=(1+T^2)^{-1/2}\eta\).  Thus commutant operators preserve the graph and
+commute with \(T\) on the graph domain.
+
+Conversely, suppose every unitary \(V\in\mathcal M'\) preserves
+\(\operatorname{Dom}T\) and satisfies \(VT\xi=TV\xi\) for
+\(\xi\in\operatorname{Dom}T\).  Then \(VT V^{-1}=T\) as self-adjoint
+operators, so uniqueness in the spectral theorem gives
+\[
+  V E_T(\Delta)V^{-1}=E_T(\Delta)
+\]
+for every Borel \(\Delta\).  Hence \(E_T(\Delta)\) commutes with all unitaries
+of \(\mathcal M'\).  The unitary group of a von Neumann algebra generates it
+ultraweakly, and the bicommutant theorem gives
+\[
+  (\mathcal M')'=\mathcal M .
+\]
+Therefore \(E_T(\Delta)\in\mathcal M\).  This argument is the bounded
+operator-algebra content behind the phrase ``the unbounded field is localized
+in \(\mathcal M\)''; the difficult QFT input is proving that the closed field
+operators in question have such spectral projections.
+
 \begin{theorem}[Wightman fields generate a represented local net under strong closure hypotheses]
 \label{thm:wightman-to-aqft-net}
 Let

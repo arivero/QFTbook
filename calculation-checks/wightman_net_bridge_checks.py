@@ -198,9 +198,35 @@ def check_scalar_shift_does_not_change_generated_spectral_algebra() -> None:
         )
 
 
+def check_finite_affiliation_commutant_criterion() -> None:
+    """Finite shadow of affiliation through commutant invariance."""
+
+    diagonal_values = [Fraction(-1), Fraction(2)]
+    affiliated_generator = diagonal_matrix(diagonal_values)
+    affiliated_projection = diagonal_spectral_projection(diagonal_values, Fraction(-1))
+    parity_as_commutant_unitary: MatrixAny = parity
+    assert_eq_any(
+        comm_any(affiliated_projection, parity_as_commutant_unitary),
+        zero_matrix(2),
+        "affiliated spectral projection commutes with the commutant",
+    )
+    assert_eq_any(
+        comm_any(affiliated_generator, parity_as_commutant_unitary),
+        zero_matrix(2),
+        "affiliated generator preserves the commutant graph in finite dimension",
+    )
+
+    nonaffiliated_projection: MatrixAny = proj_plus
+    if comm_any(nonaffiliated_projection, parity_as_commutant_unitary) == zero_matrix(2):
+        raise AssertionError("odd-field spectral projection should not be affiliated with the diagonal algebra")
+    if comm_any(odd_field, parity) == zero:
+        raise AssertionError("odd-field generator should not commute with the diagonal commutant unitary")
+
+
 def main() -> None:
     check_finite_analytic_strong_locality_model()
     check_scalar_shift_does_not_change_generated_spectral_algebra()
+    check_finite_affiliation_commutant_criterion()
 
     assert_eq(matmul(parity, parity), one, "parity squares to one")
     assert_eq(matmul(odd_field, odd_field), one, "odd field squares to one")

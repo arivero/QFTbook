@@ -74,7 +74,9 @@ functorial QFT.
 - Proves unitary implementation of an invariant state by the GNS universal
   property.
 - Defines Haag duality and operator affiliation without identifying unbounded
-  fields with bounded local observables.
+  fields with bounded local observables, and derives the affiliation
+  equivalence between spectral projections in a von Neumann algebra and graph
+  preservation/commutation by the commutant unitaries.
 - Expands the dual-net construction into the algebraic containment used by
   DHR theory: exterior commutation gives membership in
   \(\mathcal R^d(\mathcal O)\), and Haag duality is the additional hypothesis
@@ -141,7 +143,9 @@ functorial QFT.
   generators have commuting spectral projections, and the finite
   spectral-projection fact used by the Schwinger checkpoint that shifting a
   self-adjoint local field by a scalar does not change the generated local
-  algebra.
+  algebra.  It also checks the finite affiliation criterion separating a
+  diagonal self-adjoint generator affiliated with the diagonal algebra from an
+  odd generator whose spectral projections fail the commutant test.
 
 ## Audit Notes
 
@@ -188,6 +192,10 @@ functorial QFT.
   with the massive scalar Weyl net, and separated this bounded observable net
   from gauge representatives, charged fields, Wilson lines, and flux-sector
   data.
+- 2026-06-01 affiliation criterion pass: expanded the operator-affiliation
+  definition with the proof that spectral projections in `M` are equivalent
+  to graph preservation and domain commutation by `M'` unitaries, and added a
+  finite matrix diagnostic to `wightman_net_bridge_checks.py`.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
