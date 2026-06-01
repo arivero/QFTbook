@@ -62,8 +62,9 @@ Reviewed source spine:
   `OSp(8^*|4)` representation, tensor-branch quotient, anomaly polynomial,
   BPS root-lattice strings, finite defect group, circle compactification, and
   conditional class-`S` compactification functoriality.
-- Proves that a six-dimensional Yang-Mills coupling has negative mass
-  dimension and therefore is not a marginal conformal coordinate.
+- Records that a six-dimensional Yang-Mills coupling has negative mass
+  dimension and therefore is not a marginal conformal coordinate; this is
+  dimensional bookkeeping, not theorem-family content.
 - Defines `(1,0)` and `(2,0)` tensor multiplet variables while marking
   self-dual field actions as formulation-dependent.
 - Defines the abelian self-dual tensor datum using a local two-form gauge
@@ -106,8 +107,11 @@ Reviewed source spine:
 - Works out the cyclic \(A_{N-1}\) finite-flux model \(K=\mathbb Z_N\oplus
   \mathbb Z_N\), including its alternating pairing and maximal isotropic
   subgroup.
-- Proves the trace-delta compactification normalization
-  `g_5^2 = 4 pi^2 R` from the BPST instanton mass and KK momentum.
+- Defines the five-dimensional instanton current
+  \(j_{\rm inst}=*_5(8\pi^2)^{-1}\operatorname{tr}_{\rm top}F\wedge F\),
+  its integral charge on spatial four-cycles, the trace-delta instanton
+  particle energy bound, and the protected compactification normalization
+  `g_5^2 = 4 pi^2 R` from BPST instanton mass and KK momentum.
 - Derives the wrapped-string/W-boson mass matching and the scalar
   normalization `phi_5d = 2 pi R phi_6d`.
 - Records compactification on Riemann surfaces as a test requiring twist,
@@ -193,6 +197,12 @@ Reviewed source spine:
   the class-`S` Hitchin-base discussion to depend on those hypotheses, and
   changed the status ledger from a retrospective definition into a reference
   to the named conditional objects.
+- 2026-06-01 instanton-current compactification pass: kept the old
+  six-dimensional Yang-Mills coupling dimension check in remark form, added
+  the five-dimensional instanton current and charge normalization, derived
+  the trace-delta instanton-particle energy bound as the branch-EFT mechanism
+  behind the \(g_5^2=4\pi^2R\) compactification test, and recorded that this
+  still does not define the parent six-dimensional local QFT.
 
 ## Figure Ledger
 

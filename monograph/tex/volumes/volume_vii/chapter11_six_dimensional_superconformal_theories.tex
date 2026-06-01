@@ -873,7 +873,7 @@ with gauge algebra \(\mathfrak g\).  This statement is a compactification
 test and an effective description, not a Lagrangian definition of the
 six-dimensional fixed point.
 
-\paragraph{Five-dimensional coupling convention.}
+\paragraph{Five-dimensional instanton charge and coupling convention.}
 Use the monograph trace-delta convention for the five-dimensional gauge
 action,
 \[
@@ -883,7 +883,62 @@ action,
   \int \operatorname{tr}_{\delta}(F_{\mu\nu}F^{\mu\nu})
   +\cdots .
 \]
-If one unit of five-dimensional instanton number is identified with one unit
+The topological charge in the five-dimensional gauge theory is the
+Chern--Weil instanton number on a spatial four-cycle.  Let
+\(\operatorname{tr}_{\rm top}\) denote the characteristic-class trace
+normalized so that
+\[
+  \mathcal Q_4(F)
+  :=
+  \frac1{8\pi^2}\operatorname{tr}_{\rm top}(F\wedge F)
+\]
+has integral periods on principal \(G\)-bundles in the charge sector under
+discussion.  On a five-dimensional spacetime \(X_5\), the corresponding
+current is the one-form
+\[
+  j_{\rm inst}:=*_{5}\mathcal Q_4(F),
+  \qquad
+  *_{5}j_{\rm inst}=\mathcal Q_4(F).
+\]
+The Bianchi identity gives
+\[
+  d(*_{5}j_{\rm inst})=d\mathcal Q_4(F)=0 .
+\]
+Thus for a spatial Cauchy four-manifold \(\Sigma_4\)
+\begin{equation}
+  Q_{\rm inst}(\Sigma_4)
+  =
+  \int_{\Sigma_4}*_{5}j_{\rm inst}
+  =
+  \frac1{8\pi^2}
+  \int_{\Sigma_4}\operatorname{tr}_{\rm top}(F\wedge F)
+  \in\mathbb Z .
+  \label{eq:six-d-five-d-instanton-charge}
+\end{equation}
+This is a conserved charge of the five-dimensional effective theory.  In the
+circle compactification test it is identified with momentum around the
+compactification circle, not with a new microscopic six-dimensional Noether
+symmetry.
+
+For a static configuration on spatial \(\mathbb R^4\), with vanishing electric
+field and scalar gradients, the energy functional reduces to the Euclidean
+four-dimensional Yang--Mills action in the same trace-delta convention.  The
+BPST normalization fixed in
+Lemma~\ref{lem:bpst-one-instanton-data} and
+Equation~\eqref{eq:bpst-sector-factor-trace-delta} gives the bound
+\begin{equation}
+  E_{\rm inst}
+  \ge
+  \frac{4\pi^2}{g_5^2}\,|Q_{\rm inst}|,
+  \label{eq:six-d-five-d-instanton-energy-bound}
+\end{equation}
+with equality for a self-dual or anti-self-dual spatial instanton in the
+appropriate charge sector.  The square-completion input is the ordinary
+four-dimensional instanton bound; the five-dimensional statement is that this
+finite-action Euclidean saddle is read as a massive particle state when the
+four coordinates are spatial.
+
+If one unit of five-dimensional instanton charge is identified with one unit
 of Kaluza--Klein momentum on a circle of radius \(R\), then
 \[
   g_5^2=4\pi^2R .
@@ -893,19 +948,13 @@ In the common half-trace convention this same relation is
   g_{5,\rm ht}^2=8\pi^2R .
 \]
 
-For a static self-dual unit instanton on the spatial \(\mathbb R^4\), the
-trace-delta normalization used in the BPST calculation gives
-\[
-  E_{\rm inst}
-  =
-  \frac{4\pi^2}{g_5^2}.
-\]
 Kaluza--Klein momentum on a circle of radius \(R\) is quantized in units
 \[
   E_{\rm KK}=\frac1R
 \]
 for a BPS state with one unit of momentum and no additional transverse
-motion.  Identifying the instanton number with KK momentum gives
+motion.  Identifying a unit instanton-particle charge with one unit of KK
+momentum gives
 \[
   \frac{4\pi^2}{g_5^2}=\frac1R,
 \]
@@ -917,6 +966,10 @@ Here it is tied to the instanton normalization used elsewhere in the monograph,
 so that
 compactification tests, instanton-soliton masses, and Yang--Mills kinetic
 terms use the same coupling coordinate.
+It still does not make five-dimensional Yang--Mills a microscopic
+six-dimensional definition: the statement uses the compactified branch
+description, the protected charge identification
+\(Q_{\rm inst}=P_{S^1}R\), and the BPS mass formula.
 
 \paragraph{Wrapped strings and Coulomb-branch masses.}
 Compactify a \((2,0)\) theory of type \(\mathfrak g\) on a circle of radius

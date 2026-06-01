@@ -366,6 +366,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r".*N=4.*pure.*N=2.*matching|"
     r".*N=4.*pure.*N=1.*matching|"
     r"Five-dimensional coupling convention|"
+    r"Dimension of the Yang--Mills coupling|"
     r"Unpunctured class-.*S.* Coulomb-base dimension|"
     r"Hexagon scalar Watson factor|"
     r"Weak and strong expansions of .*B.*lambda|"
