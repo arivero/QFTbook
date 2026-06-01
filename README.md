@@ -11,7 +11,28 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Volume Series
+## Complete Active Volume List
+
+The active compiled monograph consists of the following twelve volumes:
+
+1. Foundations of Local Quantum Field Theory
+2. Particles, Scattering, and Analyticity
+3. Renormalization, Effective Field Theory, and Critical Phenomena
+4. Gauge Theory, Infrared Structure, and Anomalies
+5. Conformal Field Theory
+6. Integrable Quantum Field Theory
+7. Supersymmetric Quantum Field Theory
+8. Topological and Cohomological Quantum Field Theory
+9. Global Structure, Phases, and Extended Operators
+10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Constructive, Lattice, and Numerical Quantum Field Theory
+12. Quantum Field Theory in Curved Spacetime and Background Fields
+
+There is no active compiled Volume XIII or later at present.  If a future
+subject volume is launched, update this list, the table below,
+`monograph/tex/main.tex`, and the frontmatter volume guide in the same pass.
+
+## Full Volume Roadmap
 
 The monograph is organized as a twelve-volume series.  This is the complete
 reader-facing volume list and should be kept in sync with
