@@ -4286,23 +4286,126 @@ In supersymmetric symmetric products the undressed twist-sector ground field
 is one ingredient in the physical marginal operator.  Fermion zero modes,
 R-symmetry spin fields, or supercurrent descendants supply the additional
 quantum numbers so that the final operator is invariant, spinless, and has
-\((h,\bar h)=(1,1)\).  For example, in an \(\mathcal N=(4,4)\) symmetric
-product with seed central charge \(c_0=\bar c_0=6\), the length-two
-undressed twist has
+\((h,\bar h)=(1,1)\).  The following construction is the local CFT datum
+behind the example often called the D1--D5 symmetric-product point.
+
+\begin{construction}[\(\mathcal N=(4,4)\) two-cycle marginal tangent]
+\label{constr:n4-symmetric-product-two-cycle-marginal}
+Let \(\mathcal C_0\) be a compact unitary seed CFT with small
+\(\mathcal N=(4,4)\) symmetry and
 \[
-  h_2=\bar h_2=\frac{3}{8},
+  c_0=\bar c_0=6.
 \]
-and the exactly marginal blow-up operator is a superconformal descendant of
-an appropriate dressed twist-sector chiral primary.  The deformation problem
-therefore belongs simultaneously to orbifold CFT, representation theory of
-the superconformal algebra, and the renormalized contact-term calculus of
-integrated local operators.  A current-current expression such as
-\(J\bar J\) defines an exactly marginal deformation only after the current
-algebra, OPE coefficient, and contact-term scheme have been specified; in a
-symmetric product one must additionally specify whether the operator is the
-untwisted seed sum \eqref{eq:symmetric-product-seed-deformation}, a
-single-cycle/twist-sector operator such as
-\eqref{eq:symmetric-product-normalized-two-cycle}, or a multi-cycle product.
+Let \(\operatorname{Sym}^N(\mathcal C_0)\) be the finite orbifold defined in
+Section~\ref{sec:symmetric-product-orbifolds}.  For a transposition
+\((ij)\), the bare twist ground field has
+\begin{equation}
+  h_{\rm bare}=\bar h_{\rm bare}
+  =
+  \frac{6}{24}\left(2-\frac12\right)
+  =
+  \frac38 .
+  \label{eq:n4-symprod-bare-two-twist-weight}
+\end{equation}
+Assume that the transposition sector contains an
+\(S_N\)-covariant spin-field dressing \(S_{(ij)}^A\widetilde S_{(ij)}^B\)
+of weights \((1/8,1/8)\) and R-symmetry quantum numbers such that
+\begin{equation}
+  \chi_{(ij)}^{AB}
+  =
+  \sigma_{(ij)}S_{(ij)}^A\widetilde S_{(ij)}^B
+  \label{eq:n4-symprod-dressed-twist-chiral-primary}
+\end{equation}
+is an \(\mathcal N=(4,4)\) chiral primary with
+\[
+  h_\chi=\bar h_\chi=\frac12 .
+\]
+Let \(G_{-1/2}^{a}\) and \(\widetilde G_{-1/2}^{\dot a}\) be left and right
+supercharge modes in a convention where each mode raises \(h\) or \(\bar h\)
+by \(1/2\).  Contract the R-symmetry indices to a singlet in one of the
+allowed short multiplets and define
+\begin{equation}
+  \mathcal O_{\rm blow}^{\mathfrak a}
+  =
+  \frac{1}{\sqrt{N(N-1)/2}}
+  \sum_{1\le i<j\le N}
+  \Pi^{\mathfrak a}_{a\dot a,AB}\,
+  G_{-1/2}^{a}\widetilde G_{-1/2}^{\dot a}
+  \chi_{(ij)}^{AB}.
+  \label{eq:n4-symprod-blowup-marginal-operator}
+\end{equation}
+Here \(\Pi^{\mathfrak a}\) is a fixed invariant tensor selecting one real
+component of the short multiplet.  The normalization is the same
+conjugacy-class normalization as
+\eqref{eq:symmetric-product-normalized-two-cycle}.  The operator
+\(\mathcal O_{\rm blow}^{\mathfrak a}\) is spinless and has
+\[
+  (h,\bar h)=(1,1).
+\]
+It is the local two-cycle blow-up tangent operator.  Its integration defines
+an exactly marginal coordinate precisely when the
+\(\mathcal N=(4,4)\)-preserving contact-term and current-moment-map
+obstructions in the source-coordinate criterion of
+Section~\ref{sec:conformal-manifolds-exactly-marginal} vanish or, more
+strongly, when the surrounding local conformal-family datum is constructed.
+\end{construction}
+
+The construction separates three different facts that are often compressed
+together.  First, the equality \((h,\bar h)=(1,1)\) is a representation
+theory statement:
+\[
+  \frac38+\frac18+\frac12=1
+\]
+on the left and similarly on the right.  Second, the \(S_N\)-invariant class
+sum is a finite-orbifold projection, not a geometric quotient operation on
+operators.  Third, exact marginality is an integrability statement in
+renormalized conformal perturbation theory.  It requires absence of
+nonredundant dimension-two obstructions in the OPE of the top components and
+compatibility with the \(\mathcal N=(4,4)\) Ward identities.
+
+The local tangent-space count for the standard compact examples is then a
+protected multiplet count, not a claim extracted from a low-energy geometric
+picture.  Let \(d_{\rm seed}\) be the real dimension of the seed
+\(\mathcal N=(4,4)\) conformal-family tangent space.  The untwisted seed
+directions give the operators
+\[
+  \sum_{i=1}^N \mathcal O^{\alpha}_i,
+  \qquad \alpha=1,\ldots,d_{\rm seed},
+\]
+and the transposition short multiplet contributes four real blow-up
+directions in
+\eqref{eq:n4-symprod-blowup-marginal-operator}.  Thus the local protected
+tangent count is
+\begin{equation}
+  d_{\rm local}=d_{\rm seed}+4.
+  \label{eq:n4-symprod-local-marginal-count}
+\end{equation}
+For a toroidal seed with Narain moduli
+\[
+  SO(4,4)/(SO(4)\times SO(4)),
+\]
+one has \(d_{\rm seed}=16\), hence \(d_{\rm local}=20\).  This is the local
+CFT count underlying the tangent space of
+\[
+  SO(5,4)/(SO(5)\times SO(4)).
+\]
+For a K3 seed, the seed sigma-model tangent space has real dimension \(80\),
+and the symmetric-product blow-up multiplet gives \(84\), matching the local
+dimension of
+\[
+  SO(4,21)/(SO(4)\times SO(21)).
+\]
+The arithmetic quotients and singular loci of these spaces require the
+integral charge lattice and the global CFT identification group; they are
+global data beyond the local tangent construction above.
+
+A current-current expression such as \(J\bar J\) defines an exactly marginal
+deformation only after the current algebra, OPE coefficient, and contact-term
+scheme have been specified; in a symmetric product one must additionally
+specify whether the operator is the untwisted seed sum
+\eqref{eq:symmetric-product-seed-deformation}, a single-cycle/twist-sector
+operator such as \eqref{eq:symmetric-product-normalized-two-cycle}, or a
+multi-cycle product.
 
 \section{Development Tasks for the CFT Volume}
 

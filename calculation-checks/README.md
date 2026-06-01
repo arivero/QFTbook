@@ -1570,6 +1570,12 @@ Current checks:
   primitive joining-cover local-coordinate coefficients, Schwarzian
   double-pole weights, primitive-joining OPE powers, and class-normalized
   primitive joining and transposition join/split group factors.
+- `n4_symmetric_product_marginal_checks.py`: exact rational checks for the
+  \(\mathcal N=(4,4)\) symmetric-product two-cycle marginal-tangent
+  construction, including the \(c=6\) length-two twist weight \(3/8\), the
+  spin-field dressing to \(h=1/2\), the supercharge top-component weight
+  \(h=1\), normalized transposition class sums, and the local dimension
+  counts \(16+4=20\) and \(80+4=84\).
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign

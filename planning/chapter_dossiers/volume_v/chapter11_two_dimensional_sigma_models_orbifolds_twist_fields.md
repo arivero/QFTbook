@@ -163,6 +163,16 @@
 - Defines twist-field deformations as regulated integrated local-operator
   perturbations with a cutoff-shell derivation of the OPE beta function and
   contact-term scheme law.
+- Defines the local \(\mathcal N=(4,4)\), \(c_0=6\), symmetric-product
+  two-cycle marginal tangent used in the D1--D5-style compact examples:
+  the bare transposition twist has weight \(3/8\), spin-field dressing gives
+  a \((1/2,1/2)\) chiral primary, supercharge descendants give a spinless
+  \((1,1)\) top component, and the \(S_N\)-invariant class sum uses the
+  transposition normalization \([N(N-1)/2]^{-1/2}\).
+- Separates seed exactly marginal sums from transposition blow-up
+  directions and records the local protected tangent counts
+  \(16+4=20\) for a toroidal seed and \(80+4=84\) for a K3 seed, with
+  global arithmetic quotients treated as additional CFT data.
 
 ## Claims To Verify
 
@@ -350,6 +360,14 @@
     formula by the formal constant `1` gives
     `prod_{r >= 1} (1-p^r)^(-1)`, so the coefficient of `p^N` is the number
     of cycle types of `S_N`.
+50. For a compact \(\mathcal N=(4,4)\) seed with \(c_0=6\), the length-two
+    bare twist has \(h=\bar h=3/8\); adding a spin-field dressing of weight
+    \(1/8\) gives a \((1/2,1/2)\) chiral primary, and applying one left and
+    one right supercharge mode gives a spinless \((1,1)\) top component.
+51. The local protected tangent count for the standard compact
+    symmetric-product examples is \(d_{\rm seed}+4\): \(SO(4,4)\) seed
+    directions give \(16+4=20=\dim SO(5,4)/(SO(5)SO(4))\), and the K3 seed
+    gives \(80+4=84=\dim SO(4,21)/(SO(4)SO(21))\).
 
 ## Figures
 
@@ -412,6 +430,10 @@
   beta-normalized primitive joining-cover polynomial and its local
   coefficients, the Schwarzian/OPE-power ledger, and the class-normalized
   primitive joining and transposition join/split group factors.
+- `calculation-checks/n4_symmetric_product_marginal_checks.py` verifies the
+  exact rational arithmetic of the \(c=6\) two-cycle marginal-tangent
+  construction, the transposition class normalization, and the
+  \(20\)- and \(84\)-dimensional local tangent counts.
 - Later calculation checks should cover numerical covering-space twist
   correlator coefficients after seed correlators and local coordinate
   normalizations are specified.
