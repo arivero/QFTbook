@@ -103,6 +103,13 @@ boundaries rather than importing the appendix exposition.
   Mittag-Leffler/convergence proof boundary.
 - Defines `Upsilon_b`, states the DOZZ formula as a `quotedtheorem`, and names
   the proof boundary.
+- Expands the DOZZ shift-equation uniqueness mechanism: the ratio of two
+  meromorphic solutions is made into a holomorphic function after common
+  divisors are removed; for irrational `b^2` the `b` and `b^{-1}` periods are
+  dense on real momentum lines, forcing constancy by continuity and the
+  Cauchy-Riemann equations; rational `b^2` is identified as a meromorphic
+  continuation boundary rather than a consequence of the dense-period
+  argument.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
   conventional `alpha`-basis formula and records the external-leg phase
   convention.
@@ -255,6 +262,10 @@ boundaries rather than importing the appendix exposition.
   `epsilon=-N b`, and dual `V_{1/b}` screening with the
   `b <-> b^{-1}` residue family; rewrote the one-screening and dual-screening
   lemma prose accordingly while preserving all displayed constants.
+- 2026-06-01 issue #697 DOZZ uniqueness-boundary pass: expanded the analytic
+  finite-difference uniqueness step behind the DOZZ theorem boundary,
+  including the common-divisor removal, dense-period argument for irrational
+  `b^2`, and the separate meromorphic-continuation status at rational `b^2`.
 
 ## Anti-Wrapper Audit
 

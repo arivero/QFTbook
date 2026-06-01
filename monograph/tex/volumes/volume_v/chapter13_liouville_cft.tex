@@ -992,13 +992,57 @@ independent finite-difference equations:
 \]
 with \(A_b\) and \(A_{1/b}\) fixed by the degenerate OPE coefficients and
 connection matrices.  The ratio of two solutions is therefore invariant under
-translations by \(b\) and \(b^{-1}\) in each momentum.  For irrational
-\(b^2\), these translations generate a dense subgroup of the real line; with
-the standard analyticity and growth hypotheses the ratio is constant.  The
+translations by \(b\) and \(b^{-1}\) in each momentum.
+
+The analytic step hidden in this sentence is the following.  Let
+\(C\) and \(C^{\mathrm{DOZZ}}\) be two meromorphic three-point constants
+obeying the same two shift equations in a connected meromorphic domain
+\(U\subset\mathbb C^3\), after the same reflection and leg-normalization
+conventions have been chosen.  On a component of
+\(U\) with the common pole and zero divisors removed, put
+\[
+  F(\alpha_1,\alpha_2,\alpha_3)
+  =
+  \frac{C(\alpha_1,\alpha_2,\alpha_3)}
+       {C^{\mathrm{DOZZ}}(\alpha_1,\alpha_2,\alpha_3)} .
+\]
+Then \(F\) is holomorphic and satisfies
+\[
+  F(\alpha_1+b,\alpha_2,\alpha_3)
+  =
+  F(\alpha_1+b^{-1},\alpha_2,\alpha_3)
+  =
+  F(\alpha_1,\alpha_2,\alpha_3)
+\]
+wherever the two sides are defined, and likewise in the other momentum
+variables.  If \(b^2\notin\mathbb Q\), the additive subgroup
+\(\{mb+n b^{-1}:m,n\in\mathbb Z\}\subset\mathbb R\) is dense.  Fix the
+other variables and a horizontal line segment in the first variable avoiding
+the removed divisor.  Periodicity on the dense subgroup and continuity imply
+that \(F\) is constant along that real segment.  Hence
+\(\partial_{\operatorname{Re}\alpha_1}F=0\) there, and the Cauchy--Riemann
+equations give \(\partial_{\operatorname{Im}\alpha_1}F=0\).  Analytic
+continuation then makes \(F\) independent of \(\alpha_1\) on the connected
+component.  Repeating the argument in \(\alpha_2\) and \(\alpha_3\) makes
+\(F\) a constant.  The same reasoning also explains the divisor hypothesis:
+a nonzero meromorphic divisor invariant under a dense real period group would
+have non-discrete accumulation in one complex variable, which is incompatible
+with meromorphicity unless the divisor is common to the two compared
+solutions and has already been removed.
+
+Thus, for irrational \(b^2\), the shift equations determine the meromorphic
+three-point constant up to an overall constant once the analytic domain,
+divisor structure, and moderate-growth assumptions have been fixed.  The
 reflection relation and the residue normalization at the screening poles fix
-that constant.  The probabilistic theorem supplies an independently
-constructed solution satisfying these properties, and the special-function
-formula \eqref{eq:dozz-structure-constant} is the explicit representative.
+that constant.  Rational \(b^2\) is not obtained from the dense-period
+argument itself: there the two shifts generate a lattice, so additional
+elliptic-periodic factors are not excluded by finite-difference equations
+alone.  The DOZZ statement at rational \(b^2\) is reached by meromorphic
+continuation in \(b\) from the irrational set, together with the absence of
+extra singularities not already visible in the special-function formula.  The
+probabilistic theorem supplies an independently constructed solution
+satisfying these properties, and the special-function formula
+\eqref{eq:dozz-structure-constant} is the explicit representative.
 
 The shift relations \eqref{eq:upsilon-b-shift-b}--\eqref{eq:upsilon-b-shift-binverse}
 are the convention-sensitive part of \eqref{eq:dozz-structure-constant}.  They
