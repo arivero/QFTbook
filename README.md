@@ -14,8 +14,9 @@ material are kept separate from the compiled monograph.
 ## Full Public Volume Architecture
 
 The compiled public manuscript currently consists of exactly twelve launched
-reader-facing volumes.  This is the full active public volume list, in the
-same order as `monograph/tex/main.tex`:
+reader-facing volumes, numbered I--XII.  The list below is the complete active
+public volume list, in the same order as `monograph/tex/main.tex`; there is
+currently no Volume XIII or other hidden active public volume.
 
 1. Volume I: Foundations of Local Quantum Field Theory
 2. Volume II: Particles, Scattering, and Analyticity
@@ -30,7 +31,7 @@ same order as `monograph/tex/main.tex`:
 11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
 12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
 
-The table below gives the same full roster, in the order used by
+The table below gives the same complete roster, in the order used by
 `monograph/tex/main.tex`; there are no active public volumes outside this
 list.  Chapter ranges are continuous printed chapter numbers, and counts are
 counts of printed `\chapter` entries, not raw `\input` lines.  Volume IV also
@@ -75,13 +76,13 @@ reference files, and planning notes are not additional public volumes.
 
 ## Volume Architecture And Chapter Map
 
-The compiled manuscript currently contains twelve subject volumes and uses
-continuous chapter numbering across the whole monograph.  The complete volume
-list is given above; the chapter order below records the current contents of
-each volume.  The source directory names are historical assembly locations,
-while the reader-facing part titles and chapter order below are the
-authoritative compiled-volume structure.  The frontmatter Source Assembly Map
-records how source files are assembled into the printed order.
+The compiled manuscript currently contains the same twelve subject volumes
+listed above and uses continuous chapter numbering across the whole monograph.
+The chapter order below records the current contents of every launched volume,
+I--XII.  The source directory names are historical assembly locations, while
+the reader-facing part titles and chapter order below are the authoritative
+compiled-volume structure.  The frontmatter Source Assembly Map records how
+source files are assembled into the printed order.
 
 ### Detailed Chapter Map
 
