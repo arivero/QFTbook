@@ -80,6 +80,13 @@ Current checks:
   group-commutator phase, symplectic-orthogonality locality, and the finite
   partition phase that turns \(u=\sum_j u_j\) into a product of local Weyl
   generators.
+- `wightman_net_bridge_checks.py`: exact rational finite-matrix checks for
+  the Volume IV Wightman-to-local-net comparison datum, including parity
+  exchange of odd-field spectral projections, the fixed-point observable
+  subalgebra, conditional expectation onto observables, recovery of the full
+  finite field algebra after adjoining odd spectral projections, and the
+  distinction between domain-level commutation and strong spectral-projection
+  commutation in the bounded algebra model.
 - `os_tube_sign_checks.py`: finite sign checks for the Volume IV
   Osterwalder--Schrader reconstruction chapter, including the mostly-plus
   damping inequality \(p\cdot\eta<0\) for future \(p,\eta\), the ordered

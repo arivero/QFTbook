@@ -33,6 +33,10 @@ functorial QFT.
   coordinates.
 - `E_{\overline{\Phi(f)}}(\Delta)`: spectral projection of the self-adjoint
   closure of a real smeared field.
+- `\mathcal H_\Phi(\mathcal O)`: real space of Hermitian labelled test
+  functions used in a Wightman-to-net comparison datum.
+- `\mathcal F_\Phi(\mathcal O)`: field-generated von Neumann net from the
+  spectral projections of the self-adjoint closures in the comparison datum.
 - `\mathcal F_P(\mathcal O)`: constructive \(P(\phi)_2\) local field net.
 - `\mathcal R_P(\mathcal O)=\mathcal F_P(\mathcal O)^\Gamma`: fixed-point
   observable net for a finite internal symmetry group \(\Gamma\).
@@ -66,6 +70,10 @@ functorial QFT.
 - Proves the conditional Wightman-to-net theorem: spectral projections of
   self-adjoint closures generate a represented local net only when strong
   locality of closures is available.
+- Defines the Wightman-to-net comparison datum, separating the cyclic
+  Wightman field representation, self-adjoint closure/covariance data,
+  strong spectral-projection locality, the field-generated net
+  \(\mathcal F_\Phi\), and the observable-subnet prescription.
 - Adds Lemma `lem:analytic-vector-strong-locality`, proving that joint entire
   analytic-vector estimates plus domain commutativity imply strong
   commutation of self-adjoint closures.
@@ -103,6 +111,10 @@ functorial QFT.
   locality, and the partition phase used in additivity.  This check certifies
   only the finite bounded-algebra identities; the continuum support and
   Green-hyperbolic quotient steps remain the analytic content of the chapter.
+- `calculation-checks/wightman_net_bridge_checks.py`: exact rational
+  finite-matrix check for the Wightman-to-net comparison datum, covering the
+  field-net versus fixed-point-observable-net distinction and the fact that
+  locality of represented algebras is a spectral-projection statement.
 
 ## Audit Notes
 
@@ -125,6 +137,10 @@ functorial QFT.
   `free_weyl_net_checks.py` diagnostic and made the additivity paragraph state
   the finite phase identity explicitly, so the bounded-algebra portion of
   locality/additivity is reproducible without inflating it into a theorem.
+- 2026-06-01 Wightman-to-net bridge pass: added the comparison datum and
+  finite parity model to prevent the common overstatement that exponentials of
+  arbitrary smeared Wightman fields automatically give the observable local
+  net.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
