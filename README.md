@@ -11,23 +11,26 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Current Volumes
+## Full Volume Series
 
-The monograph is organized as a twelve-volume project.  The complete
-reader-facing volume list is:
+The monograph is organized as a twelve-volume series.  This is the complete
+reader-facing volume list and should be kept in sync with
+`monograph/tex/main.tex` and the frontmatter volume guide.
 
-1. Foundations of Local Quantum Field Theory
-2. Particles, Scattering, and Analyticity
-3. Renormalization, Effective Field Theory, and Critical Phenomena
-4. Gauge Theory, Infrared Structure, and Anomalies
-5. Conformal Field Theory
-6. Integrable Quantum Field Theory
-7. Supersymmetric Quantum Field Theory
-8. Topological and Cohomological Quantum Field Theory
-9. Global Structure, Phases, and Extended Operators
-10. Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Constructive, Lattice, and Numerical Quantum Field Theory
-12. Quantum Field Theory in Curved Spacetime and Background Fields
+| Volume | Title | Role in the monograph |
+| --- | --- | --- |
+| I | Foundations of Local Quantum Field Theory | Local fields, Wightman and algebraic data, Euclidean reconstruction, path integrals, and spectral representations. |
+| II | Particles, Scattering, and Analyticity | Haag--Ruelle scattering, LSZ, particles, bound states, resonances, analyticity, crossing, and dispersion theory. |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena | 1PI actions, BPHZ, renormalized operators, Wilsonian flow, scaling limits, and effective theories. |
+| IV | Gauge Theory, Infrared Structure, and Anomalies | Spinors, gauge fixing, BV, QED, Yang--Mills, QCD, jets, anomalies, and the Standard Model as a hybrid QFT. |
+| V | Conformal Field Theory | Conformal representation theory, radial quantization, OPE, light-ray observables, 2D CFT, Liouville theory, and boundary CFT. |
+| VI | Integrable Quantum Field Theory | Factorized scattering, Bethe ansatz, form factors, TBA, integrable RG flows, and exact two-dimensional examples. |
+| VII | Supersymmetric Quantum Field Theory | Supersymmetry algebras, superfields, supersymmetric gauge dynamics, Seiberg--Witten theory, 2D/3D/6D examples, planar N=4 SYM, and localization. |
+| VIII | Topological and Cohomological Quantum Field Theory | Metric independence, bordism functoriality, BF and Chern--Simons theory, cohomological theories, twists, and state-sum models. |
+| IX | Global Structure, Phases, and Extended Operators | Global forms, higher-form symmetry, extended operators, confinement diagnostics, anomaly inflow, defects, and categorical symmetry. |
+| X | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | KMS states, real-time formalisms, transport, hydrodynamics, kinetic theory, anomalous transport, and thermal gauge theory. |
+| XI | Constructive, Lattice, and Numerical Quantum Field Theory | Constructive models, reflection positivity, continuum limits, lattice gauge theory, rigorous RG, stochastic quantization, and numerical regulators. |
+| XII | Quantum Field Theory in Curved Spacetime and Background Fields | Locally covariant QFT, Hadamard states, stress tensors, Unruh and Hawking effects, index theory, microlocal methods, and semiclassical backreaction. |
 
 ## Repository Layout
 
@@ -53,7 +56,7 @@ chapter order below are the authoritative compiled-volume structure.  The
 frontmatter Source Assembly Map records how source files are assembled into
 the printed order.
 
-### Complete Volume List
+### Compiled Volume Table
 
 The compiled monograph currently contains the following twelve volumes.  This
 table is the public volume roadmap; the chapter map below gives the current
