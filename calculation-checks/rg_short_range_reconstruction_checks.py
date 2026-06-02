@@ -20,6 +20,9 @@ for the quadratic circle product, and a finite local-coordinate extraction
 defect.
 The multiscale polymer checks verify the forced-recursion sum that turns the
 one-step budget into a scale-uniform smallness condition.
+The finite-range covariance check verifies the block-diagonal characteristic
+function factorization behind independent fluctuation integrations on
+separated polymers.
 """
 
 from fractions import Fraction
@@ -488,6 +491,55 @@ def check_polymer_multiscale_forcing_budget():
         assert_true(f"polymer uniform-forcing orbit stays in radius {steps}", x <= radius)
 
 
+def check_finite_range_gaussian_factorization():
+    # Four finite field coordinates are split as A={0,1}, B={2,3}.  The
+    # covariance has nontrivial internal correlations in A and B but vanishing
+    # cross block.  The Gaussian characteristic exponent therefore splits
+    # exactly into its A and B parts.  This is the finite arithmetic model of
+    # the chapter's separated-polymer fluctuation factorization.
+    gamma = [
+        [Fraction(5), Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(3), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(7), Fraction(2)],
+        [Fraction(0), Fraction(0), Fraction(2), Fraction(4)],
+    ]
+    vector = [Fraction(1, 2), Fraction(-3, 5), Fraction(2, 7), Fraction(5, 11)]
+
+    def quadratic_form(matrix, vec):
+        total = Fraction(0)
+        for i, row in enumerate(matrix):
+            for j, entry in enumerate(row):
+                total += vec[i] * entry * vec[j]
+        return total
+
+    full = quadratic_form(gamma, vector)
+    a_block = quadratic_form(
+        [row[:2] for row in gamma[:2]],
+        vector[:2],
+    )
+    b_block = quadratic_form(
+        [row[2:] for row in gamma[2:]],
+        vector[2:],
+    )
+    assert_equal("finite-range characteristic exponent splits", full, a_block + b_block)
+
+    # Turning on one cross covariance records exactly the mixed term that
+    # prevents factorization.  The coefficient is 2 t_0 Gamma_{02} t_2 in the
+    # symmetric quadratic form.
+    gamma_with_tail = [row[:] for row in gamma]
+    cross = Fraction(3, 13)
+    gamma_with_tail[0][2] = cross
+    gamma_with_tail[2][0] = cross
+    full_with_tail = quadratic_form(gamma_with_tail, vector)
+    mixed_term = 2 * vector[0] * cross * vector[2]
+    assert_equal(
+        "cross covariance creates mixed characteristic term",
+        full_with_tail,
+        a_block + b_block + mixed_term,
+    )
+    assert_true("mixed term is nonzero when covariance tail remains", mixed_term != 0)
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -501,6 +553,7 @@ def main():
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()
+    check_finite_range_gaussian_factorization()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

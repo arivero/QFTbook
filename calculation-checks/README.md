@@ -643,7 +643,10 @@ Current checks:
   including the finite radius smallness condition, the quadratic
   circle-product bound, the finite interval pair-overlap majorant
   underlying \(B_{\rm pol}\), and the scale-summed forcing estimates that
-  turn extraction defects into a uniform multiscale smallness condition.
+  turn extraction defects into a uniform multiscale smallness condition.  It
+  also checks the finite-range Gaussian characteristic-function factorization
+  behind independent fluctuation integration on separated polymers, together
+  with the mixed term produced by a nonzero covariance tail.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

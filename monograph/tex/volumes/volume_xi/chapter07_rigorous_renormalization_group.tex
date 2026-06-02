@@ -575,6 +575,81 @@ is what permits a disconnected family of small activities to exponentiate
 through the cluster expansion rather than behaving as one large nonlocal
 object.
 
+\begin{definition}[Finite-range fluctuation covariance datum]
+\label{def:finite-range-fluctuation-covariance-datum}
+Let \(\Lambda_k\) be the finite scale-\(k\) regulator lattice with graph
+distance \(d_k\).  A fluctuation covariance \(\Gamma_k\) has range
+\(R_k\) if
+\begin{equation}
+  \Gamma_k(x,y)=0
+  \qquad{\rm whenever}\qquad d_k(x,y)>R_k .
+  \label{eq:finite-range-covariance-support}
+\end{equation}
+A finite-range decomposition for a scalar block-spin RG is a decomposition
+\[
+  C_{\leq k}=\Gamma_0+\Gamma_1+\cdots+\Gamma_k+C_{\rm rem,k}
+\]
+on each finite regulator, with every \(\Gamma_j\) positive semidefinite,
+\(\Gamma_j\) satisfying a range bound of order \(L^j\) in microscopic
+distance, and derivative or difference bounds in the field norm used by the
+polymer activity.  Positivity is needed to realize \(\Gamma_j\) as a Gaussian
+fluctuation covariance; the range bound is the input that turns separated
+polymer activities into independent fluctuation integrations; the derivative
+bounds enter the localization and Taylor-remainder estimates.
+\end{definition}
+
+\begin{lemma}[Finite-range Gaussian factorization]
+\label{lem:finite-range-gaussian-factorization}
+Let \(\Phi_\Lambda\) be a finite real field space and let
+\(\mu_{\Gamma}\) be a centered Gaussian measure with positive semidefinite
+covariance \(\Gamma\).  If \(A,B\subset\Lambda\) satisfy
+\[
+  \Gamma(x,y)=0\qquad (x\in A,\ y\in B),
+\]
+then the Gaussian fields \(\zeta_A=(\zeta_x)_{x\in A}\) and
+\(\zeta_B=(\zeta_y)_{y\in B}\) are independent.  Consequently, for bounded
+measurable \(F_A\) and \(F_B\) depending only on the fields in \(A\) and
+\(B\),
+\begin{equation}
+  \int F_A(\zeta_A)F_B(\zeta_B)\,\dd\mu_\Gamma(\zeta)
+  =
+  \left(\int F_A(\zeta_A)\,\dd\mu_\Gamma(\zeta)\right)
+  \left(\int F_B(\zeta_B)\,\dd\mu_\Gamma(\zeta)\right).
+  \label{eq:finite-range-gaussian-factorization}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The joint characteristic function of \((\zeta_A,\zeta_B)\) is
+\[
+  \exp\!\left\{
+  -\frac12 t_A\Gamma_{AA}t_A
+  -t_A\Gamma_{AB}t_B
+  -\frac12 t_B\Gamma_{BB}t_B
+  \right\}.
+\]
+The hypothesis gives \(\Gamma_{AB}=0\), so the characteristic function is the
+product of the characteristic functions of \(\zeta_A\) and \(\zeta_B\).  For
+finite-dimensional probability measures, characteristic functions determine
+the law, and this factorization is exactly independence of the two random
+vectors.  The displayed integral identity is then the defining factorization
+property of independent random variables.  If \(\Gamma\) is only positive
+semidefinite, the same argument applies to the induced Gaussian law on the
+quotient by the null directions, or equivalently after adding
+\(\epsilon 1\) and letting \(\epsilon\downarrow0\) in finite dimension.
+\end{proof}
+
+Applied with \(A\) and \(B\) equal to \(R_k\)-neighborhoods of two separated
+polymers, Lemma~\ref{lem:finite-range-gaussian-factorization} is the exact
+finite-regulator reason why fluctuation integration preserves polymer
+locality.  If a covariance decomposition has only exponential decay rather
+than finite range, this factorization is replaced by a cluster estimate with
+decay constants in the polymer norm; the conclusion is weaker and must be
+proved separately.  Thus a short-range scalar Wilsonian RG theorem cannot
+begin from the phrase ``integrate a momentum shell'' alone.  It must specify
+the covariance shell, its locality or decay estimate, and the norm in which
+the residual inter-polymer correlations are summable.
+
 \begin{definition}[One-step polymer RG contraction datum]
 \label{def:one-step-polymer-rg-contraction-datum}
 A one-step polymer RG contraction datum at scale \(k\) consists of the

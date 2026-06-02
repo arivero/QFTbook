@@ -70,6 +70,8 @@ constructive RG developments.
   short-range scalar block-spin RG chart.
 - `mathbb B_k`, `mathcal P_k`: scale-\(k\) block set and connected polymer
   family used in the constructive polymer RG chart.
+- `Gamma_k`, `R_k`: finite-range fluctuation covariance and its range in the
+  scale-\(k\) graph distance.
 - `G_k(X,phi)`, `||K_k||_{k,a,h}`: large-field regulator and weighted
   polymer norm for scale-\(k\) activities.
 - `mathcal L_k`, `mathcal A_k`: localization map extracting local
@@ -169,6 +171,11 @@ constructive RG developments.
   normalized lattice fields, and the exact reconstruction estimate required
   to turn a tuned block-spin RG trajectory into distributional Schwinger
   functions.
+- Defines finite-range fluctuation covariance data and proves the exact
+  finite-dimensional Gaussian factorization that makes fluctuation
+  integration over separated polymer regions independent.  This identifies
+  covariance locality or a replacement cluster-decay estimate as a
+  load-bearing input to the one-step polymer contraction datum.
 - Defines the auxiliary-to-short-range RG transfer datum needed to use
   hierarchical, long-range, fermionic, tensor, or functional-RG fixed-point
   results as statements about ordinary short-range scalar targets.
@@ -287,6 +294,15 @@ remainder contraction.
   short-range RG check now enumerates connected intervals in a finite
   one-dimensional block line exactly, verifying the finite pair-overlap
   arithmetic that models the geometric counting step.
+- 2026-06-02 finite-range covariance locality pass: inserted the missing
+  finite-regulator mechanism before the polymer contraction datum.  The
+  chapter now defines a finite-range fluctuation covariance datum and proves
+  Gaussian factorization for separated field regions from the vanishing
+  covariance cross-block.  The companion short-range RG check verifies the
+  exact characteristic-exponent splitting and the mixed term produced when a
+  covariance tail remains.  This is proof infrastructure for issue #505; it
+  does not construct the model-specific finite-range decomposition or the
+  uniform estimates for an ordinary short-range critical scalar fixed point.
 - 2026-06-02 local-QFT-strength observable-germ pass: inserted the missing
   bridge from projective observable-window universality to equality of a
   reconstructed local QFT.  The new definition requires full distribution
