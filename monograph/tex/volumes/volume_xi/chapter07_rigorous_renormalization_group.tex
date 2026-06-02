@@ -3270,6 +3270,107 @@ clustering polymer estimate one expects
 clusters touching the source window and clusters that feel the boundary have
 a summable connected bridge.
 
+\begin{lemma}[Polymer bridge criterion for source-window boundary tails]
+\label{lem:polymer-bridge-source-window-boundary-tail}
+Work at a fixed scale \(k\) and a fixed finite source window \(E\).  Let
+\(\Lambda_k=a_k\mathbb Z^D\) be the ambient lattice, let
+\(K=K_{E,k}\) be the lattice source support, and let \(d_k\) be the block
+distance.  Suppose the connected source functional in a finite region
+\(\Omega\supset K\) has an absolutely convergent connected-cluster
+expansion on \(P_\rho\),
+\begin{equation}
+  W_{k,\Omega,E}(z)
+  =
+  \sum_{\substack{\mathcal C\subset\Omega\\
+    \operatorname{supp}\mathcal C\cap K\neq\emptyset}}
+  w_{\mathcal C}(z),
+  \qquad z\in P_\rho ,
+  \label{eq:source-window-connected-cluster-expansion}
+\end{equation}
+where \(\operatorname{supp}\mathcal C\) is a finite connected block set.
+Assume that the cluster weights obey the bridge majorant
+\begin{equation}
+  \sum_{\substack{\mathcal C:\,
+    \operatorname{supp}\mathcal C\cap K\neq\emptyset\\
+    b\in\operatorname{supp}\mathcal C}}
+  \sup_{z\in P_\rho}|w_{\mathcal C}(z)|
+  \leq
+  B_E\,e^{-\zeta d_k(b,K)}
+  \label{eq:source-window-polymer-bridge-majorant}
+\end{equation}
+for every block \(b\in\Lambda_k\), with \(B_E<\infty\) and
+\(\zeta>0\), uniformly in the finite volume.  Then, whenever
+\(\Omega\subset\Omega'\) and both regions contain \(K\),
+\begin{equation}
+  \sup_{z\in P_\rho}
+  |W_{k,\Omega',E}(z)-W_{k,\Omega,E}(z)|
+  \leq
+  B_E
+  \sum_{b\in\Lambda_k\setminus\Omega}
+  e^{-\zeta d_k(b,K)} .
+  \label{eq:source-window-polymer-bridge-boundary-sum}
+\end{equation}
+In particular, if
+\[
+  R_\Omega=d_k(K,\Lambda_k\setminus\Omega)
+\]
+and the source-centered shells obey
+\[
+  \#\{b\in\Lambda_k:\ d_k(b,K)=n\}
+  \leq C_E(1+n)^{D_E-1},
+  \qquad n\geq0 ,
+\]
+then \eqref{eq:short-range-source-window-volume-tail} holds with
+\begin{equation}
+  A_E\,\Xi(R)
+  =
+  B_E C_E
+  \sum_{n\geq R}(1+n)^{D_E-1}e^{-\zeta n}.
+  \label{eq:source-window-polymer-bridge-xi}
+\end{equation}
+The right side tends to zero as \(R\to\infty\).
+\end{lemma}
+
+\begin{proof}
+Subtract the two cluster expansions.  The terms whose support lies in
+\(\Omega\) cancel.  Every remaining cluster has
+\(\operatorname{supp}\mathcal C\cap K\neq\emptyset\) and contains at least
+one block \(b\in\Lambda_k\setminus\Omega\).  Absolute convergence permits the
+union bound
+\[
+\begin{aligned}
+  \sup_{z\in P_\rho}
+  |W_{k,\Omega',E}(z)-W_{k,\Omega,E}(z)|
+  &\leq
+  \sum_{\substack{\mathcal C\subset\Omega'\\
+    \operatorname{supp}\mathcal C\cap K\neq\emptyset\\
+    \operatorname{supp}\mathcal C\not\subset\Omega}}
+  \sup_{z\in P_\rho}|w_{\mathcal C}(z)|                                     \\
+  &\leq
+  \sum_{b\in\Lambda_k\setminus\Omega}
+  \sum_{\substack{\mathcal C:\,
+    \operatorname{supp}\mathcal C\cap K\neq\emptyset\\
+    b\in\operatorname{supp}\mathcal C}}
+  \sup_{z\in P_\rho}|w_{\mathcal C}(z)| .
+\end{aligned}
+\]
+The bridge majorant
+\eqref{eq:source-window-polymer-bridge-majorant} gives
+\eqref{eq:source-window-polymer-bridge-boundary-sum}.  If
+\(b\in\Lambda_k\setminus\Omega\), then \(d_k(b,K)\geq R_\Omega\).  Grouping
+the boundary sum by the distance \(n=d_k(b,K)\) and using the shell-count
+bound gives \eqref{eq:source-window-polymer-bridge-xi}.  The final series is
+the tail of an exponentially weighted polynomial series, hence it converges
+and its tail tends to zero.
+\end{proof}
+
+The bridge majorant
+\eqref{eq:source-window-polymer-bridge-majorant} is the model-specific
+cluster estimate that must be proved from the polymer norm and the finite
+range or summable covariance bounds.  Once it is available,
+Lemma~\ref{lem:polymer-bridge-source-window-boundary-tail} turns it into the
+thermodynamic source-window bound used in the rest of this subsection.
+
 For every multi-index \(\beta\), Cauchy's formula on the same polydisc gives
 \begin{equation}
   \left|

@@ -697,6 +697,16 @@ remainder contraction.
   \(\epsilon^{\rm RG}_{E,k}+A_E\Xi(R_{\Omega_k})\).  The companion
   short-range RG check now verifies the exact rational joint holomorphic and
   derivative bounds and detects a stagnant boundary-tail schedule.
+- 2026-06-02 source-window polymer-bridge pass: inserted the missing
+  criterion turning a connected source-cluster expansion into the
+  thermodynamic boundary-tail bound.  The lemma assumes absolute convergence
+  of connected clusters meeting the source support and a bridge majorant
+  \(\sum_{\mathcal C\ni b}\sup |w_{\mathcal C}|\le
+  B_E e^{-\zeta d(b,K)}\); summing over boundary blocks and source-centered
+  shells gives \(A_E\Xi(R)=B_EC_E\sum_{n\ge R}
+  (1+n)^{D_E-1}e^{-\zeta n}\).  The companion check verifies the shell-tail
+  arithmetic, a controlled boundary-cluster sum, and a bad shell-growth
+  failure mode.
 - 2026-06-02 source-chart-to-window pass: inserted the missing Wilsonian
   source-extension bridge between convergence of RG coordinates and
   convergence of the actual holomorphic source functional.  The manuscript now

@@ -56,7 +56,8 @@ combines source-stable contraction, source-local relevant-coordinate
 amplification, polymer-tail control, and normalizing/remainder errors before
 Cauchy extraction of a source window is allowed.
 The finite-volume source-window check verifies the cluster-tail-to-cumulant
-Cauchy bound, cofinal-exhaustion comparison, and joint RG-plus-boundary
+Cauchy bound, the connected-polymer bridge majorant that produces the
+boundary tail, cofinal-exhaustion comparison, and joint RG-plus-boundary
 schedule needed before finite-volume source windows can be used as
 thermodynamic Schwinger data.
 The RG-to-OS assembly-budget check verifies the combined source-window error
@@ -1928,6 +1929,41 @@ def check_finite_volume_source_window_cluster_tail():
     decay = Fraction(1, 2)
     boundary_distance = 3
     tail_bound = amplitude * decay**boundary_distance
+    bridge_shell_counts = {
+        3: 1,
+        4: 2,
+        5: 4,
+    }
+    bridge_tail = sum(
+        shell_count * decay**shell_distance
+        for shell_distance, shell_count in bridge_shell_counts.items()
+    )
+    assert_equal("finite-volume polymer bridge tail", bridge_tail, tail_bound)
+
+    actual_boundary_cluster_sum = (
+        decay**3
+        + decay**4
+        + 2 * decay**5
+    )
+    assert_true(
+        "finite-volume polymer bridge controls boundary clusters",
+        actual_boundary_cluster_sum <= bridge_tail,
+    )
+
+    nonsummable_shell_counts = {
+        3: 8,
+        4: 16,
+        5: 32,
+    }
+    nonsummable_tail = sum(
+        shell_count * decay**shell_distance
+        for shell_distance, shell_count in nonsummable_shell_counts.items()
+    )
+    assert_true(
+        "finite-volume bad shell growth detected",
+        nonsummable_tail > tail_bound,
+    )
+
     rho_beta = product(radius ** exponent for radius, exponent in zip(radii, beta))
     derivative_bound = multi_factorial(beta) * tail_bound / rho_beta
     assert_equal("finite-volume source-window tail bound", tail_bound, Fraction(3, 8))

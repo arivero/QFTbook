@@ -798,10 +798,12 @@ Current checks:
   unstable source-local amplification, polymer-tail control, and
   normalizing/remainder defects before a source window can be used.  It also
   checks the
-  finite-volume source-window cluster-tail estimate: a boundary-tail bound on
-  holomorphic source functionals gives the corresponding cumulant-derivative
-  Cauchy bound, controls comparison of cofinal exhaustions, and combines with
-  an RG-chart error in the joint scale/volume schedule.
+  finite-volume source-window cluster-tail estimate: a connected-polymer
+  bridge majorant with exponentially weighted shell sums gives the
+  boundary-tail bound on holomorphic source functionals; that bound gives the
+  corresponding cumulant-derivative Cauchy estimate, controls comparison of
+  cofinal exhaustions, and combines with an RG-chart error in the joint
+  scale/volume schedule.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the
