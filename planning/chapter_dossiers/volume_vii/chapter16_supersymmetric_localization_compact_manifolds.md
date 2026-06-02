@@ -48,6 +48,15 @@
   integral is a theorem after choosing the Gieseker moduli space, while its
   equality to the continuum \(S^4\) gauge-theory path integral requires a
   regulator and limiting argument.
+- Regulator selection datum for the Gieseker sector: a precise package of
+  finite-regulator BV localization data, pole-local ADHM reduction with
+  positive moment-map/resolution input, determinant-line comparison, BV
+  small-instanton boundary cancellation, and an equivariant limiting theorem.
+  This states what would have to be proven before the Nekrasov factor can be
+  claimed as a continuum field-theoretic consequence rather than a chosen
+  instanton-sector definition.
+- Open problem recording the missing continuum regulator theorem for
+  Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
 - \(H\)-function convergence, logarithmic derivative, and Barnes-\(G\)
   counterterm convention.
 - \(\mathcal N=4\) Yang-Mills degeneration to a Gaussian matrix model.
@@ -95,6 +104,7 @@
 | \(B_1,B_2,I,J\) | ADHM variables in the singular-instanton comparison |
 | \(\nu_{I,J}=J\otimes I\) | charge-one Uhlenbeck nilpotent-cone coordinate |
 | \(\overline{\mathcal O}_{\rm min}\) | closure of the minimal nilpotent orbit in \(\mathfrak{sl}(W)\) |
+| \(\delta,\zeta_\delta,R_\delta\) | regulator parameter, positive ADHM moment-map parameter, and residual fixed-locus error in the Gieseker-selection datum |
 | \(A_Y(s),L_Y(s)\) | arm and relative leg lengths of a Young-diagram box |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
@@ -154,7 +164,14 @@
     a smooth-stratum pushforward fails the residual QME by the
     small-instanton boundary functional unless a resolution, relative cycle,
     residue datum, or vanishing theorem cancels it.
-15. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+15. The new Gieseker-sector regulator selection datum separates the five
+    proof obligations hidden in the usual shorthand: finite-regulator BV
+    \(Q\)-Stokes data, local ADHM/resolution reduction, determinant-line and
+    orientation comparison, Uhlenbeck-collar boundary cancellation, and the
+    equivariant limiting theorem for insertions.  The positive-ADHM
+    moment-map proposition proves only the finite-dimensional stability
+    component after the pole-local reduction has been obtained.
+16. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
@@ -162,16 +179,16 @@
    as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
    derives the Bessel algebra behind the Bremsstrahlung function from the
    protected circular-loop Ward identity.
-16. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
+17. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
    Chern-Simons, FI, vector, and chiral determinant factors.
-17. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+18. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-18. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+19. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-19. The conjugate-chiral determinant identity gives
+20. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-20. Contact terms and local curvature counterterms are QFT coordinates, not
+21. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -234,3 +251,9 @@
   one-loop \(H\)-powers, making the \(a\)-independent normalization and the
   quadratic local counterterm subtraction explicit before the vector/hyper
   determinant formula.
+- 2026-06-02: expanded the singular-instanton matching boundary into an
+  explicit Gieseker-sector regulator selection datum.  The text now states
+  the finite-regulator BV data, ADHM reduction, determinant-line comparison,
+  Uhlenbeck-collar cancellation, and equivariant limiting theorem required
+  before the Nekrasov/Gieseker factor can be claimed as selected by a
+  continuum four-dimensional supersymmetric path integral.

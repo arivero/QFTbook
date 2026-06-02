@@ -947,6 +947,76 @@ path integral is retained here as a hypothesis unless the regulator has been
 specified and the limiting argument has been proven.
 \end{hypothesis}
 
+\begin{definition}[Regulator selection datum for the Gieseker sector]
+\label{def:gieseker-regulator-selection-datum}
+Fix \(k,N\), equivariant weights
+\((\epsilon_1,\epsilon_2)\), Coulomb parameter \(a\), and the trace
+normalization of this volume.  A four-dimensional supersymmetric regulator is
+said to select the Gieseker instanton sector at charge \(k\) if it supplies
+the following data.
+\begin{enumerate}
+  \item A regulated BV localization problem
+  \[
+    (\mathfrak F_\delta,C_\delta,\rho_\delta,Q_\delta,V_\delta),
+    \qquad \delta>0,
+  \]
+  satisfying the finite-regulator quantum master equation and the
+  \(Q_\delta\)-Stokes condition on the integration cycle.  Here \(\delta\)
+  denotes the regulator parameter, not an equivariant weight.
+  \item A \(Q_\delta\)-fixed local model at the pole with coordinates
+  \[
+    (B_1,B_2,I,J)\in
+    {\rm End}(K)^{\oplus2}\oplus{\rm Hom}(W,K)\oplus{\rm Hom}(K,W),
+    \qquad \dim K=k,\quad \dim W=N,
+  \]
+  whose equations reduce, after a controlled finite change of coordinates,
+  to
+  \[
+    [B_1,B_2]+IJ=0,\qquad
+    [B_1,B_1^\dagger]+[B_2,B_2^\dagger]
+    +II^\dagger-J^\dagger J=\zeta_\delta{\bf 1}_K+R_\delta ,
+  \]
+  with \(\zeta_\delta>0\) and \(R_\delta\to0\) in the norm in which the
+  fixed-locus reduction is being taken.  Equivalently, the datum may supply
+  another explicit resolution cycle together with an equivariant proper map
+  to \(\overline{\mathcal M}_{k,N}^{\,U}\); it must then prove that the
+  resolved cycle is isomorphic to \(\mathfrak M_{k,N}^{G}\) or give the
+  exact contour replacing it.
+  \item An orientation and determinant-line comparison between the regulated
+  normal \(Q_\delta\)-complex and the equivariant tangent/index complex on
+  \(\mathfrak M_{k,N}^{G}\).  In local fixed-point coordinates this means
+  that the nonzero-mode Berezinian gives the Euler class
+  \eqref{eq:nekrasov-tangent-euler-class}, multiplied only by declared
+  one-loop determinants and local counterterms already included in the
+  localization datum.
+  \item A boundary-cancellation statement for the Uhlenbeck
+  small-instanton collars.  In the notation of
+  Chapter~\ref{ch:tqft-bv-integration-localization}, the regulator must
+  prove either
+  \[
+    \sum_\alpha B_{S_\alpha}(\rho_\delta)\longrightarrow0
+  \]
+  or an equality of this boundary functional with the difference between the
+  smooth-stratum pushforward and the Gieseker-resolved pushforward.  Thus
+  the resolution is part of the BV pushforward datum, not an informal
+  replacement made after the path integral has already been localized.
+  \item A limiting theorem for equivariantly regular test insertions
+  \(\mathcal O\):
+  \[
+    \lim_{\delta\to0}
+    \int_{C_\delta}\rho_\delta\,\mathcal O\,\ee^{-tQ_\delta V_\delta}
+    =
+    \int_{\mathfrak M_{k,N}^{G}}^{\rm equiv}
+    \mathcal O_{\rm red}\,
+    \frac{e_T(E_{\rm matter})}{e_T(T\mathfrak M_{k,N}^{G})},
+  \]
+  with the order of the \(t\to\infty\) localization limit and the
+  \(\delta\to0\) regulator limit specified.  If the result is stated only as
+  a formal power series in the instanton counting parameter, the topology of
+  that formal series must be part of the statement.
+\end{enumerate}
+\end{definition}
+
 This hypothesis is the point at which the monograph refuses the common
 shortcut.  Equivariant localization on \(\mathfrak M_{k,N}^{G}\) is a
 mathematical theorem after the resolved moduli space is chosen.  The
@@ -961,6 +1031,32 @@ finite-dimensional statement behind this requirement: a smooth-stratum
 pushforward satisfies the residual QME only after the small-instanton boundary
 functional has vanished or has been cancelled by a specified resolution,
 relative cycle, or residue datum.
+
+Definition~\ref{def:gieseker-regulator-selection-datum} is deliberately more
+structured than the phrase ``use the Nekrasov partition function''.  The
+finite-dimensional ADHM statement
+Proposition~\ref{prop:positive-adhm-moment-map-stability} proves the
+stability part of item 2 once the fixed-locus reduction has already been
+made.  It proves neither the existence of the four-dimensional regulator in
+item 1, nor the determinant-line comparison in item 3, nor the
+small-instanton boundary cancellation in item 4, nor the limiting statement
+in item 5.  Conversely, a regulator that selected the Uhlenbeck
+compactification without a compensating boundary functional would not give
+the Nekrasov factor appearing in \eqref{eq:pestun-s4-localization}; it would
+define a different localized problem.
+
+\begin{openproblem}[Continuum regulator theorem for Gieseker selection]
+\label{op:susy-localization-gieseker-selection-theorem}
+Construct, for four-dimensional \(\mathcal N=2\) gauge theory on \(S^4\), a
+BV-compatible supersymmetric regulator and integration cycle satisfying
+Definition~\ref{def:gieseker-regulator-selection-datum} for every instanton
+charge \(k\), or prove that the standard \(S^4\) localization formula
+requires an additional nonperturbative definition whose instanton sectors are
+Gieseker/Nekrasov equivariant integrals by construction.  The known
+finite-dimensional ADHM resolution and the noncommutative positive-moment-map
+mechanism are necessary local pieces of such a theorem, but they do not by
+themselves prove the continuum field-theoretic selection statement.
+\end{openproblem}
 
 The localized partition function is
 \begin{equation}
