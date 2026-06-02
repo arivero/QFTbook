@@ -837,6 +837,12 @@ data.
   Wick powers, Schauder and multiplication estimates, energy estimates,
   invariant-law identification, BPHZ model convergence, fixed points in
   modelled distributions, and SPDE-to-OS passage.
+- Proves the fixed-point-sector comparison criterion: if the cutoff and
+  limiting modelled-SPDE maps are contractions on a common ball and their
+  sup-norm map error tends to zero, then their fixed points converge with
+  error \(\epsilon_n/(1-q)\).  The chapter also decomposes the map error into
+  stochastic-convolution, heat-integration, cubic-product, linear-term, and
+  mass-coordinate comparison errors.
 
 ## Figure Ledger
 
@@ -873,6 +879,15 @@ data maps.
   earlier.  The companion finite check verifies matching OS Gram matrices,
   polynomial quadratic forms, and transferred growth envelopes from an
   identical moment vector.
+- 2026-06-02 SPDE fixed-point-sector comparison pass: added the contraction
+  stability criterion needed after random-model convergence.  The new
+  proposition proves that a common-ball contraction error
+  \(\epsilon_n=\sup_{\mathbb B_R}\|\Psi_n-\Psi_\infty\|\) gives solution
+  convergence \(\|U_n-U_\infty\|\le\epsilon_n/(1-q)\), and decomposes
+  \(\epsilon_n\) into the modelled-SPDE data errors
+  \(\delta_Y,\delta_K,\delta_P,\delta_L,\delta_M\).  The companion check
+  verifies both the sharp affine contraction bound and the finite arithmetic
+  of the error budget.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

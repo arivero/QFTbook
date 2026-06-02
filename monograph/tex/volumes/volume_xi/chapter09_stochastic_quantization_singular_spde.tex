@@ -11626,6 +11626,125 @@ theorem proves the fixed-point step once the model bounds, product bounds,
 and Schauder bound have been established.  It does not prove convergence of
 the BPHZ-renormalized models; that remains a separate stochastic estimate.
 
+\begin{proposition}[Fixed-point-sector comparison criterion]
+\label{prop:spde-modelled-fixed-point-sector-comparison}
+Let \(E_T\), \(F_T\), \(R\), \(0<q<1\), and \(\mathbb B_R\subset E_T\) be fixed.
+For \(n\in\mathbb N\cup\{\infty\}\), suppose
+\[
+  \Psi_n:\mathbb B_R\to\mathbb B_R
+\]
+is a contraction with Lipschitz constant at most \(q\).  Let \(U_n\) be its
+unique fixed point in \(\mathbb B_R\).  If
+\begin{equation}
+  \epsilon_n
+  :=
+  \sup_{U\in\mathbb B_R}\|\Psi_n(U)-\Psi_\infty(U)\|_{E_T}
+  \longrightarrow0 ,
+  \label{eq:spde-fixed-point-sector-map-error}
+\end{equation}
+then
+\begin{equation}
+  \|U_n-U_\infty\|_{E_T}
+  \leq
+  \frac{\epsilon_n}{1-q}.
+  \label{eq:spde-fixed-point-sector-solution-error}
+\end{equation}
+
+In the modelled \(\Phi^4_3\) chart, a sufficient way to produce
+\eqref{eq:spde-fixed-point-sector-map-error} is the following common-space
+comparison.  Write
+\[
+  \Psi_n(U)
+  =
+  Y_n+\mathcal K_n
+  \bigl(-\lambda\,\mathcal P_{3,n}(U)+M_n\mathcal L_nU\bigr),
+  \qquad
+  Y_n=P_T^{(n)}u_0^{(n)}+X_T^{(n)} ,
+\]
+and similarly for \(\Psi_\infty\).  Suppose on \(\mathbb B_R\)
+\[
+  \|\mathcal P_{3,\infty}(U)\|_{F_T}\le B R^3,
+  \qquad
+  \|\mathcal L_\infty U\|_{F_T}\le D R,
+\]
+and suppose the comparison estimates
+\[
+\begin{aligned}
+  \|Y_n-Y_\infty\|_{E_T}&\le \delta_{Y,n},\\
+  \sup_{\|H\|_{F_T}\le H_R}
+  \|(\mathcal K_n-\mathcal K_\infty)H\|_{E_T}
+    &\le \delta_{K,n}H_R,\\
+  \sup_{\|U\|_{E_T}\le R}
+  \|\mathcal P_{3,n}(U)-\mathcal P_{3,\infty}(U)\|_{F_T}
+    &\le \delta_{P,n}R^3,\\
+  \sup_{\|U\|_{E_T}\le R}
+  \|\mathcal L_nU-\mathcal L_\infty U\|_{F_T}
+    &\le \delta_{L,n}R
+\end{aligned}
+\]
+hold with
+\[
+  H_R=|\lambda|BR^3+|M_\infty|DR .
+\]
+If
+\(\|\mathcal K_nH\|_{E_T}\le A T^\theta\|H\|_{F_T}\) and
+\(|M_n-M_\infty|\le\delta_{M,n}\), then
+\begin{equation}
+\begin{aligned}
+  \epsilon_n
+  \le\;&
+  \delta_{Y,n}
+  +\delta_{K,n}H_R
+  +A T^\theta
+   \bigl(
+     |\lambda|\delta_{P,n}R^3
+     +|M_\infty|\delta_{L,n}R
+     +D\delta_{M,n}R
+   \bigr).
+\end{aligned}
+\label{eq:spde-fixed-point-sector-error-budget}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The fixed-point comparison is an a posteriori contraction estimate:
+\[
+\begin{aligned}
+  \|U_n-U_\infty\|_{E_T}
+  &=
+  \|\Psi_n(U_n)-\Psi_\infty(U_\infty)\|_{E_T} \\
+  &\le
+  \|\Psi_n(U_n)-\Psi_\infty(U_n)\|_{E_T}
+  +
+  \|\Psi_\infty(U_n)-\Psi_\infty(U_\infty)\|_{E_T}\\
+  &\le
+  \epsilon_n+q\|U_n-U_\infty\|_{E_T}.
+\end{aligned}
+\]
+Moving the second term to the left gives
+\eqref{eq:spde-fixed-point-sector-solution-error}.
+
+For the displayed modelled-SPDE budget, add and subtract the terms obtained by
+successively replacing \(Y_n\), \(\mathcal K_n\), \(\mathcal P_{3,n}\),
+\(\mathcal L_n\), and \(M_n\) by their limiting counterparts.  The
+\(\mathcal K_n-\mathcal K_\infty\) term is tested on the limiting forcing
+\(-\lambda\mathcal P_{3,\infty}(U)+M_\infty\mathcal L_\infty U\), whose norm is
+bounded by \(H_R\).  The remaining terms are controlled by the common Schauder
+bound for \(\mathcal K_n\) and the product, linear, and mass-coordinate
+comparison estimates.  Taking the supremum over \(U\in\mathbb B_R\) gives
+\eqref{eq:spde-fixed-point-sector-error-budget}.
+\end{proof}
+
+For dynamic \(\Phi^4_3\), this proposition is the fixed-point-sector layer
+following random-model convergence.  The negative-sector model estimates
+control \(Y_n\) and the singular model coordinates.  Schauder, multiplication,
+and reexpansion estimates control the comparison errors
+\(\delta_{K,n}\), \(\delta_{P,n}\), and \(\delta_{L,n}\).  The renormalized mass
+coordinate supplies \(\delta_{M,n}\).  Once these quantities tend to zero while
+the contraction constant \(q\) stays below one on a common ball, the
+renormalized modelled solutions converge in \(E_T\).  This still leaves the
+invariant-law and OS-comparison layers as separate analytic steps.
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let

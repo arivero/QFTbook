@@ -1336,6 +1336,37 @@ def check_modelled_fixed_point_contraction_arithmetic():
     expected = Fraction(16807, 1208000)
     assert_equal(tail, expected, "modelled fixed-point Picard tail")
 
+    # Fixed-point-sector comparison: two contractions with common constant q
+    # and map error epsilon have fixed points within epsilon/(1-q).  The affine
+    # example realizes the bound exactly.
+    epsilon = Fraction(3, 20)
+    limiting_fixed_point = Fraction(4, 5)
+    limiting_offset = (1 - q) * limiting_fixed_point
+    approximating_offset = limiting_offset + epsilon
+    approximating_fixed_point = approximating_offset / (1 - q)
+    solution_difference = approximating_fixed_point - limiting_fixed_point
+    assert_equal(solution_difference, epsilon / (1 - q), "modelled fixed-point sector stability")
+
+    # Error-budget arithmetic for the modelled SPDE comparison criterion.
+    delta_y = Fraction(1, 100)
+    delta_k = Fraction(1, 200)
+    delta_p = Fraction(1, 300)
+    delta_l = Fraction(1, 400)
+    delta_m = Fraction(1, 500)
+    h_r = lam * b * r**3 + mass * d * r
+    map_error_budget = (
+        delta_y
+        + delta_k * h_r
+        + a * ttheta * (lam * delta_p * r**3 + mass * delta_l * r + d * delta_m * r)
+    )
+    assert_equal(h_r, 25, "modelled fixed-point sector forcing radius")
+    assert_equal(map_error_budget, Fraction(81199, 600000), "modelled fixed-point sector map error")
+    assert_equal(
+        map_error_budget / (1 - q),
+        Fraction(81199, 453000),
+        "modelled fixed-point sector solution error",
+    )
+
 
 def check_random_model_cauchy_criterion_arithmetic():
     # The random-model convergence theorem uses dyadic Cauchy estimates

@@ -613,7 +613,8 @@ Current checks:
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, together with exact arithmetic for the
   abstract modelled-distribution fixed-point ball, contraction, and Picard
-  tail estimates, plus the dyadic geometric-tail arithmetic in the random
+  tail estimates, the fixed-point-sector perturbation budget that transfers
+  model-map convergence to solution convergence, plus the dyadic geometric-tail arithmetic in the random
   model convergence criterion and the exponent/geometric-factor arithmetic in
   the dyadic parabolic convolution bound, and the exponent arithmetic in the
   parabolic Taylor-subtraction gain, together with the finite-net entropy
