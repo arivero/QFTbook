@@ -934,3 +934,10 @@ remainder contraction.
   operator-norm replacement) when growing positive-time windows are controlled
   only through defects.  The companion short-range RG check verifies the
   exact rational budget and detects a fixed-entrywise-error failure mode.
+- 2026-06-02 reconstruction-estimate anti-wrapper pass: demoted the former
+  proposition "Reconstruction estimates produce distributional limits" into
+  prose following Definition~\(\ref{def:rg-reconstruction-estimate}\).  The
+  distributional convergence and closed-cone positivity passage are now
+  described as immediate consequences of the declared reconstruction estimate,
+  not as a separate theorem.  The OS assembly paragraph was updated to refer
+  to this closed-cone passage directly.

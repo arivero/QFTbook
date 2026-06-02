@@ -3042,41 +3042,32 @@ rescaling, field-strength normalization, source normalization, and possible
 Wilson-line or BV-observable representative.
 \end{definition}
 
-\begin{proposition}[Reconstruction estimates produce distributional limits]
-\label{prop:rg-reconstruction-estimates-give-limits}
+\paragraph{Immediate consequences of a reconstruction estimate.}
 Assume Definition~\ref{def:rg-reconstruction-estimate} for every
-\(n\geq1\) and every bounded set \(B\subset\mathcal S_n\).  Then the
-renormalized \(n\)-point functions
-\(\operatorname{Rec}_{n,k}(V)\) converge to
-\(\mathcal S_{n,\ast}\) in the strong dual topology of
-\(\mathcal S_n'\).  If, at each finite regulator, the reconstructed
-Schwinger functions are symmetric, Euclidean covariant, and reflection
-positive, and if these properties are expressed by continuous linear or
-closed positive-semidefinite inequalities in the seminorms \(p_B\), then the
-limits \(\mathcal S_{n,\ast}\) satisfy the same properties.
-\end{proposition}
-
-\begin{proof}
-Strong convergence in \(\mathcal S_n'\) means convergence with respect to the
-seminorms \(p_B\) as \(B\) ranges over bounded subsets of \(\mathcal S_n\).
-The estimate \eqref{eq:rg-reconstruction-estimate} gives
+\(n\geq1\) and every bounded set \(B\subset\mathcal S_n\).  This assumption
+already contains strong-dual convergence of the renormalized \(n\)-point
+functions.  Indeed, strong convergence in \(\mathcal S_n'\) means convergence
+with respect to the seminorms \(p_B\) as \(B\) ranges over bounded subsets of
+\(\mathcal S_n\), and \eqref{eq:rg-reconstruction-estimate} gives
 \[
   p_B(\operatorname{Rec}_{n,k}(V)-\mathcal S_{n,\ast})\longrightarrow0
 \]
-because \(\theta^k\to0\) and \(\varepsilon_{B,k}\to0\).  This proves
-distributional convergence in the stated topology.
+because \(\theta^k\to0\) and \(\varepsilon_{B,k}\to0\).  Thus the
+distributional convergence is not an additional theorem beyond the estimate;
+it is the meaning of the estimate in the chosen topology.
 
-For symmetry and Euclidean covariance, let \(U\) denote a permutation or
-Euclidean transformation acting continuously on \(\mathcal S_n\).  If the
-finite-regulator distributions satisfy
+The same distinction matters for properties carried to the limit.  For
+symmetry and Euclidean covariance, let \(U\) denote a permutation or Euclidean
+transformation acting continuously on \(\mathcal S_n\).  If the finite-regulator
+distributions satisfy
 \(\langle \operatorname{Rec}_{n,k}(V),f\rangle
 =\langle \operatorname{Rec}_{n,k}(V),Uf\rangle\), then passing to the limit
 in the two scalar sequences gives the same identity for
 \(\mathcal S_{n,\ast}\).
 
-For reflection positivity, take a finite family of positive-time test
-functions \(f_i\) and coefficients \(c_i\).  At finite regulator the
-corresponding quadratic expression has the form
+For reflection positivity, take a finite family of positive-time test functions
+\(f_i\) and coefficients \(c_i\).  At finite regulator the corresponding
+quadratic expression has the form
 \begin{equation}
   Q_k(c,f)=
   \sum_{i,j}\bar c_i c_j\,
@@ -3088,13 +3079,15 @@ corresponding quadratic expression has the form
   \label{eq:rg-reflection-positivity-closed-limit}
 \end{equation}
 where \(\Theta\) is Euclidean time reflection.  Each term converges by the
-already proved distributional convergence, hence \(Q_k(c,f)\to Q_\ast(c,f)\).
-The cone \([0,\infty)\subset\mathbb R\) is closed, so \(Q_\ast(c,f)\geq0\).
-Thus the limiting Schwinger functions inherit reflection positivity in the
-declared test-function domain.  The same closed-cone argument applies to any
-positivity statement explicitly formulated as a finite positive-semidefinite
-quadratic form continuous in the seminorms \(p_B\).
-\end{proof}
+distributional convergence encoded in
+\eqref{eq:rg-reconstruction-estimate}, hence \(Q_k(c,f)\to Q_\ast(c,f)\).  The
+cone \([0,\infty)\subset\mathbb R\) is closed, so \(Q_\ast(c,f)\geq0\).  Thus
+the limiting Schwinger functions inherit reflection positivity in the declared
+test-function domain whenever the finite-regulator positivity statement is
+formulated as a finite positive-semidefinite quadratic form continuous in the
+seminorms \(p_B\).  This closed-cone passage does not provide the missing
+model-specific estimates; it only records what follows after those estimates
+have already been proved.
 
 \section{Ordinary Short-Range Scalar Reconstruction}
 \label{sec:ordinary-short-range-scalar-rg-reconstruction}
@@ -4346,9 +4339,8 @@ The distributional estimates give tempered limiting Schwinger functions.
 The covariance, symmetry, Hermiticity, and normalization identities pass to
 the limit because they are continuous linear identities on the test-function
 spaces.  The reflection-positive Gram forms pass to the limit by the closed
-cone argument used in
-Proposition~\ref{prop:rg-reconstruction-estimates-give-limits}, provided the
-directed finite-family estimates have actually been supplied.  The
+cone argument following Definition~\ref{def:rg-reconstruction-estimate},
+provided the directed finite-family estimates have actually been supplied.  The
 positive-time semigroup regularity and the corrected OS-II growth package are
 then exactly the remaining hypotheses of
 Theorem~\ref{thm:os-reconstruction}.  Applying that theorem constructs the
