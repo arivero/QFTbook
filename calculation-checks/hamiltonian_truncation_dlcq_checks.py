@@ -563,6 +563,42 @@ def check_variational_energy_bounds() -> None:
     assert_close("variational local-energy mean", local_mean, rayleigh)
     assert_close("variational local-energy variance", local_variance, residual_variance)
 
+    features = np.array(
+        [
+            [0.20, -0.10],
+            [-0.35, 0.45],
+            [0.55, 0.25],
+            [-0.15, -0.30],
+        ],
+        dtype=float,
+    )
+    theta = np.array([0.18, -0.27], dtype=float)
+
+    def trial(parameter: np.ndarray) -> np.ndarray:
+        return np.exp(features @ parameter)
+
+    def rayleigh_energy(parameter: np.ndarray) -> float:
+        trial_vector = trial(parameter)
+        return float(trial_vector @ matrix @ trial_vector / float(trial_vector @ trial_vector))
+
+    trial_vector = trial(theta)
+    norm2 = float(trial_vector @ trial_vector)
+    probabilities = (trial_vector * trial_vector) / norm2
+    local_energy = (matrix @ trial_vector) / trial_vector
+    energy = float(np.sum(probabilities * local_energy))
+    step = 1.0e-6
+    for coordinate in range(features.shape[1]):
+        score = features[:, coordinate]
+        centered_score = score - float(np.sum(probabilities * score))
+        force = 2.0 * float(np.sum(probabilities * centered_score * (local_energy - energy)))
+        uncentered_force = 2.0 * float(np.sum(probabilities * score * (local_energy - energy)))
+        finite_difference = (
+            rayleigh_energy(theta + step * np.eye(features.shape[1])[coordinate])
+            - rayleigh_energy(theta - step * np.eye(features.shape[1])[coordinate])
+        ) / (2.0 * step)
+        assert_close(f"variational score-force centered coordinate {coordinate}", force, finite_difference, tol=1.0e-8)
+        assert_close(f"variational score-force centering coordinate {coordinate}", force, uncentered_force, tol=1.0e-12)
+
 
 def check_mps_transfer_operator_correlator() -> None:
     lattice_spacing = 0.2

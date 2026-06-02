@@ -79,6 +79,8 @@ numerics.
   finite energy variance for a trial state.
 - `E_loc(x)`, `p_psi(x)`: finite-basis local energy and sampling
   probability used by neural-state and variational Monte Carlo estimates.
+- `mathsf s_a(x;theta)`: finite score coordinate
+  `partial_a log psi_x(theta)` entering the neural/VMC force identity.
 - `mathbb E`, `mathbb E_O`, `lambda_alpha`, `C_O(n)`, `m_eff(a,n)`:
   finite MPS transfer operator, local-operator insertion map, transfer
   eigenvalues, connected lattice correlator, and finite effective mass.
@@ -179,6 +181,10 @@ numerics.
   orthogonality rather than an eigenvector error bound.
 - Derives the finite local-energy mean and variance identities used by
   sampled neural-state and variational Monte Carlo calculations.
+- Derives the finite score-covariance force identity for smooth
+  neural-state/VMC ansatz families, and separates the exact finite gradient
+  from optimizer convergence, Markov-chain autocorrelation, residual norm, and
+  continuum regulator extrapolation.
 - Adds the finite transfer-operator spectral expansion for
   translation-invariant MPS correlators, identifies the finite effective mass
   \(-a^{-1}\log\lambda_\alpha\), and states the scaling, operator
@@ -348,8 +354,8 @@ plots.
   identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
-  tangent-gradient, local-energy mean/variance identities, and the benchmark
-  manifest's passing and failing finite pairwise checks.
+  tangent-gradient, local-energy mean/variance and score-force identities, and
+  the benchmark manifest's passing and failing finite pairwise checks.
 
 ## Anti-Wrapper Audit
 

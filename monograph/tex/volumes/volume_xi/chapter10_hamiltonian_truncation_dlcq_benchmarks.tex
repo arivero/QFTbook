@@ -1575,6 +1575,52 @@ Section~\ref{sec:blocking-jackknife-bootstrap-error-coordinates}; optimization
 bias, autocorrelation, and architecture bias are additional entries of
 \(\mathcal E_{\rm samp}\), not properties of the finite identities.
 
+The force used in a smooth neural-state or variational-Monte-Carlo
+optimization is an equally finite identity.  Let
+\(\theta=(\theta^a)\) be real local coordinates on a patch of \(\Theta\), and
+assume \(\psi_x(\theta)\neq0\) on the sampled support.  Define the score
+coordinate
+\[
+  \mathsf s_a(x;\theta)=\partial_a\log\psi_x(\theta).
+\]
+Put \(p_\theta=p_{\psi(\theta)}\) and
+\(E_{\rm loc}(x;\theta)=((A\psi(\theta))_x)/\psi_x(\theta)\).
+Without normalizing the vector \(\psi(\theta)\), differentiation of the
+Rayleigh quotient gives
+\[
+  \partial_a E_\theta
+  =
+  2\,\operatorname{Re}
+  \frac{\langle \partial_a\psi,(A-E_\theta)\psi\rangle}
+       {\langle\psi,\psi\rangle}.
+\]
+In the computational basis this becomes the score--local-energy covariance
+identity
+\begin{equation}
+  \partial_a E_\theta
+  =
+  2\,\operatorname{Re}
+  \sum_x p_\theta(x)
+  \Bigl(
+    \overline{\mathsf s_a(x;\theta)}
+    -
+    \sum_y p_\theta(y)\overline{\mathsf s_a(y;\theta)}
+  \Bigr)
+  \bigl(E_{\rm loc}(x;\theta)-E_\theta\bigr).
+  \label{eq:variational-score-force-identity}
+\end{equation}
+The centering of the score does not change the value because
+\(\sum_xp_\theta(x)(E_{\rm loc}(x;\theta)-E_\theta)=0\).  Equation
+\eqref{eq:variational-score-force-identity} is what a stochastic force
+estimator estimates after a sampling law has been declared.  It is not an
+optimizer theorem: a small empirical force may indicate a tangent-space
+stationary point while the residual norm, the energy variance, the integrated
+autocorrelation time of the Markov chain, or the ansatz bias remains large.
+For QFT applications the finite force is therefore reported together with
+\eqref{eq:variational-local-energy-variance}, sector constraints, and the
+regulator extrapolation data of
+Section~\ref{sec:finite-regulator-extrapolation}.
+
 Tensor-network terminology fits this definition by specifying \(\Psi\).  A
 finite matrix-product state on a spin chain of length \(L\), physical local
 dimension \(d\), and bond dimension \(\chi\) is a vector whose amplitudes
@@ -1691,10 +1737,10 @@ The companion check
 \]
 also verifies the finite variational identities
 \eqref{eq:variational-variance-spectrum-distance}--
-\eqref{eq:variational-local-energy-variance}: energy variance as residual
+\eqref{eq:variational-score-force-identity}: energy variance as residual
 norm, spectral distance bounded by variance, ground-projection leakage from a
 known finite gap, the tangent-gradient formula, and the local-energy
-Monte Carlo identity in a finite basis.  It also checks the finite
+Monte Carlo and score-force identities in a finite basis.  It also checks the finite
 transfer-operator spectral expansion
 \eqref{eq:mps-transfer-spectral-expansion}, the single-mode effective-mass
 identity \eqref{eq:mps-transfer-effective-mass}, the two-mode contamination
