@@ -5152,6 +5152,80 @@ the window.  The lemma supplies the diagonal functional-analytic step.  It
 does not supply the model-specific polymer or cluster estimates that prove
 the hypotheses.
 
+\begin{lemma}[Moving finite windows approximate fixed test functions]
+\label{lem:rg-moving-window-fixed-test-approximation}
+Assume the hypotheses of
+Lemma~\ref{lem:rg-cofinal-finite-window-assembly}.  Let
+\(\Pi_N:\mathcal S(X)\to E_N\) be linear approximation maps such that, for
+each \(f\in\mathcal S(X)\),
+\[
+  q_r(\Pi_N f-f)\longrightarrow0 .
+\]
+Let \(S\in\mathcal S'(X)\) be the limiting distribution constructed in
+Lemma~\ref{lem:rg-cofinal-finite-window-assembly}.  Then, for every fixed
+\(f\in\mathcal S(X)\),
+\begin{equation}
+  S_{k,N_k}(\Pi_{N_k}f)\longrightarrow S(f)
+  \qquad (k\to\infty).
+  \label{eq:moving-window-fixed-test-convergence}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The point is to avoid confusing a moving finite window with convergence on a
+fixed test function.  Fix \(N\), and take \(k\) so large that \(N\le N_k\).
+By finite-scale compatibility,
+\[
+  S_{k,N_k}(\Pi_Nf)=S_{k,N}(\Pi_Nf).
+\]
+Therefore
+\[
+\begin{aligned}
+  \bigl|S_{k,N_k}(\Pi_{N_k}f)-S(f)\bigr|
+  &\le
+  \bigl|S_{k,N_k}(\Pi_{N_k}f-\Pi_Nf)\bigr|        \\
+  &\quad+
+  \bigl|S_{k,N}(\Pi_Nf)-S_N(\Pi_Nf)\bigr|
+  +
+  \bigl|S(\Pi_Nf-f)\bigr| .
+\end{aligned}
+\]
+The uniform seminorm bound gives
+\[
+  \bigl|S_{k,N_k}(\Pi_{N_k}f-\Pi_Nf)\bigr|
+  \le
+  C q_r(\Pi_{N_k}f-\Pi_Nf)
+  \le
+  Cq_r(\Pi_{N_k}f-f)+Cq_r(f-\Pi_Nf).
+\]
+The limiting distribution satisfies the same bound
+\(|S(g)|\le Cq_r(g)\), because it is the continuous extension of the
+compatible finite-window limits.  Hence
+\[
+  |S(\Pi_Nf-f)|\le Cq_r(\Pi_Nf-f).
+\]
+For fixed \(N\), the middle term tends to zero as \(k\to\infty\), by the
+fixed-window convergence in
+Lemma~\ref{lem:rg-cofinal-finite-window-assembly}.  Taking the upper limit
+in \(k\) gives
+\[
+  \limsup_{k\to\infty}
+  \bigl|S_{k,N_k}(\Pi_{N_k}f)-S(f)\bigr|
+  \le
+  2C q_r(\Pi_Nf-f).
+\]
+Finally let \(N\to\infty\).  The assumed approximation property of
+\(\Pi_N\) gives \eqref{eq:moving-window-fixed-test-convergence}.
+\end{proof}
+
+This lemma is the distributional diagonal step used when the RG construction
+controls only a scale-dependent finite test space.  It still assumes the
+uniform seminorm bound and fixed-window Cauchy control from the preceding
+lemma.  If the projection error \(q_r(\Pi_Nf-f)\) is not controlled in the
+same seminorm that bounds the finite functionals, or if \(N_k\) does not tend
+to infinity, the moving-window values do not define the continuum action of a
+tempered distribution on the fixed test function \(f\).
+
 \paragraph{Finite OS-positivity Gram-matrix bounds.}
 The positivity windows in
 Definition~\ref{def:local-qft-strength-observable-germ} are not decorative.

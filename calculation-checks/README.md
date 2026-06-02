@@ -730,7 +730,11 @@ Current checks:
   detected explicitly.  It also checks the cofinal finite-window assembly
   step: regulated compatible windows with a uniform seminorm bound must be
   cofinal and Cauchy on each already-controlled finite window before they
-  determine a limiting tempered distribution.  It also checks the
+  determine a limiting tempered distribution.  It also checks the moving
+  finite-window approximation step: scale-dependent finite approximants
+  \(\Pi_{N_k}f\) converge to the value of the limiting distribution on the
+  fixed test function only when the same seminorm controls the projection
+  tails and the window schedule is cofinal.  It also checks the
   QFT-strength observable-germ
   warning that matching a visible finite correlator window can miss a hidden
   OS-positivity Gram-window failure.  It also checks the finite

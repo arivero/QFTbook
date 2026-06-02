@@ -267,6 +267,12 @@ constructive RG developments.
   analytic growth, and the ordered-insertion adjoint identity.  The chapter now
   explicitly separates these estimates from the existence of a Wilsonian fixed
   point or stable trajectory.
+- Proves the moving finite-window approximation step needed after cofinal
+  assembly: if regulated RG estimates control only \(S_{k,N_k}\) on a
+  scale-dependent finite test space, then \(S_{k,N_k}(\Pi_{N_k}f)\) converges
+  to the limiting distribution value \(S(f)\) only after the projections
+  \(\Pi_N f\) converge in the same seminorm that uniformly bounds the finite
+  functionals and the window schedule is cofinal.
 - Adds a concrete positive-time translation-window criterion for the OS
   semigroup regularity item: for every positive-time test vector \(F\) with
   time-support margin, the RG construction must bound the finite Gram-window
@@ -773,6 +779,14 @@ remainder contraction.
   \(k_j\) controlling the first \(j\) windows.  The companion short-range RG
   check verifies the finite restriction, seminorm, diagonal-error, limiting
   functional, and noncofinal-schedule arithmetic exactly.
+- 2026-06-02 moving finite-window approximation pass: added
+  Lemma~\(\ref{lem:rg-moving-window-fixed-test-approximation}\), which closes
+  the diagonal step from scale-dependent finite approximants
+  \(S_{k,N_k}(\Pi_{N_k}f)\) to the limiting distribution value \(S(f)\).
+  The proof separates fixed-window convergence, projection-tail control in
+  the same seminorm, and cofinality of \(N_k\).  The companion short-range RG
+  check verifies the finite rational error decomposition and detects the
+  noncofinal missed-tail failure mode.
 - 2026-06-02 directed OS-positive form assembly pass: strengthened the
   ordinary short-range scalar reconstruction pipeline after the finite
   Gram-matrix lower bound.  The manuscript now proves that compatible

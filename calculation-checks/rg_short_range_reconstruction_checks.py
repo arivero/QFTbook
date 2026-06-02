@@ -84,6 +84,11 @@ distribution.
 The cofinal finite-window assembly check verifies the diagonal schedule and
 uniform seminorm arithmetic needed when the limiting distribution is obtained
 from regulated finite-window functionals, rather than supplied in advance.
+The moving-window fixed-test check verifies the additional diagonal estimate
+needed when the regulated functional is evaluated on scale-dependent finite
+approximants Pi_N f: cofinality and fixed-window convergence imply a value on
+the fixed Schwartz test function only when the same seminorm controls the
+projection error.
 The finite OS-positivity bound checks verify both the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction and the family-size obstruction:
@@ -688,6 +693,72 @@ def check_cofinal_finite_window_assembly():
     # requirement fails: e_3 is never seen when N_k <= 2.
     bounded_window_counts = [2, 2, 2, 2]
     assert_true("noncofinal window schedule detected", max(bounded_window_counts) < 3)
+
+
+def check_moving_window_fixed_test_approximation():
+    # Finite surrogate for E_N = span(e_1,...,e_N) with q(f)=sum |f_i|.
+    # The limiting distribution has coefficients a_i = 1/(i+1).  The
+    # regulated window at scale k has coefficients a_i + 1/(k+i+1).
+    def coefficient(index: int, scale: int) -> Fraction:
+        return Fraction(1, index + 1) + Fraction(1, scale + index + 1)
+
+    def limiting_coefficient(index: int) -> Fraction:
+        return Fraction(1, index + 1)
+
+    fixed_test = (
+        Fraction(1),
+        Fraction(-1, 2),
+        Fraction(1, 3),
+        Fraction(-1, 4),
+        Fraction(1, 5),
+    )
+
+    scale = 16
+    moving_window = 4
+    comparison_window = 3
+    moving_value = sum(
+        coefficient(i + 1, scale) * fixed_test[i]
+        for i in range(moving_window)
+    )
+    limiting_value = sum(
+        limiting_coefficient(i + 1) * fixed_test[i]
+        for i in range(len(fixed_test))
+    )
+
+    fixed_window_error = sum(
+        abs(coefficient(i + 1, scale) - limiting_coefficient(i + 1))
+        * abs(fixed_test[i])
+        for i in range(comparison_window)
+    )
+    moving_projection_tail = sum(
+        abs(fixed_test[i])
+        for i in range(comparison_window, moving_window)
+    )
+    limiting_projection_tail = sum(
+        abs(fixed_test[i])
+        for i in range(comparison_window, len(fixed_test))
+    )
+    diagonal_bound = (
+        fixed_window_error
+        + moving_projection_tail
+        + limiting_projection_tail
+    )
+    actual_error = abs(moving_value - limiting_value)
+    assert_equal("moving-window fixed-window error", fixed_window_error, Fraction(337, 3420))
+    assert_equal("moving-window projection tail", moving_projection_tail, Fraction(1, 4))
+    assert_equal("moving-window limiting tail", limiting_projection_tail, Fraction(9, 20))
+    assert_true("moving-window diagonal estimate controls value", actual_error <= diagonal_bound)
+
+    # If the moving windows never reach the fifth coefficient, the value of a
+    # fixed test vector with a fifth component cannot converge to the full
+    # limiting distribution value.
+    bounded_window_value = sum(
+        limiting_coefficient(i + 1) * fixed_test[i]
+        for i in range(4)
+    )
+    missed_tail = abs(limiting_value - bounded_window_value)
+    assert_equal("moving-window noncofinal missed tail", missed_tail, Fraction(1, 30))
+    assert_true("moving-window noncofinal schedule detected", missed_tail > 0)
 
 
 def check_qft_strength_observable_germ_windows():
@@ -2108,6 +2179,7 @@ def main():
     check_observable_germ_finite_window_estimate()
     check_projective_distribution_window_extension()
     check_cofinal_finite_window_assembly()
+    check_moving_window_fixed_test_approximation()
     check_qft_strength_observable_germ_windows()
     check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()
