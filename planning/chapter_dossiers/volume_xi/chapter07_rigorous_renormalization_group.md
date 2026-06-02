@@ -406,8 +406,14 @@ constructive RG developments.
   microscopic data have entered one RG chart, the finite observation-window
   difference is bounded by the relevant mismatch, stable-coordinate
   contraction, accumulated one-step comparison defects, and declared
-  source-tail/normalization errors.  This turns finite-window universality
-  evidence into a checkable RG error budget.
+  source-tail/normalization errors.  The chapter now states the
+  projective-limit quantifier order explicitly: after the window-dependent
+  constants are fixed, the relevant mismatch must vanish, the defect
+  convolution must have a summable tail, the source/normalization error must
+  go to zero, and a cofinal schedule of window depths and regulator tails
+  must outpace any growth of the window constants.  Thus finite-window
+  universality evidence becomes a checkable RG error budget, not a disguised
+  theorem about the full observable germ.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
 - Defines correction-to-scaling data as part of a sharpened Wilsonian
@@ -615,6 +621,15 @@ remainder contraction.
   mismatch, a stable contraction term, accumulated one-step defects, and
   source-tail/normalization errors.  The companion short-range RG check
   verifies the same recurrence and observable-bound arithmetic exactly.
+- 2026-06-02 directed-window quantifier pass: sharpened the finite
+  stable-chart bound into its theorem-facing quantifier order.  For every
+  observation window and tolerance, the constants are fixed first and then a
+  depth/regulator tail must make the relevant mismatch, stable contraction,
+  defect convolution, and source-tail terms small.  For cofinal windows the
+  schedule must be compatible with the projective system and with any growth
+  of window constants.  This addresses issue #505's anti-inflation concern
+  by making clear that a finite window estimate is not a full Wilsonian
+  universality theorem.
 - 2026-06-02 \(C^1\) stable graph pass: upgraded the critical-surface
   analytic infrastructure by proving a self-contained differentiability
   criterion for the Lyapunov--Perron stable graph.  The companion short-range

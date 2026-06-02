@@ -5541,6 +5541,48 @@ The theorem-level burden is the passage from these finite bounds to
 \eqref{eq:observable-germ-universality-convergence} for the directed family
 of observation windows.
 
+\paragraph{Quantifier order in the directed-window limit.}
+The finite estimate
+\eqref{eq:stable-chart-finite-window-bound} becomes a universality theorem
+only with the projective-limit quantifiers in the right order.  For every
+window \(\alpha\in\mathfrak A\) and every \(\varepsilon>0\), after the
+window-dependent constants \(C_{u,\alpha}\), \(C_{s,\alpha}\), the
+normalization convention, and the source-tail bound have been fixed, one
+must exhibit a depth \(m_{\alpha,\varepsilon}\) such that for all
+\(m\ge m_{\alpha,\varepsilon}\)
+\begin{equation}
+  C_{u,\alpha}\delta_u
+  +
+  C_{s,\alpha}\theta^m\delta_s
+  +
+  C_{s,\alpha}\sum_{\ell=0}^{m-1}
+    \theta^{m-1-\ell}\eta_\ell
+  +
+  \Xi_{\alpha,m}
+  <\varepsilon .
+  \label{eq:stable-window-quantifier-order}
+\end{equation}
+If exact relevant tuning has not been proved, the first term in
+\eqref{eq:stable-window-quantifier-order} is a nondecaying obstruction for
+the window \(\alpha\).  If the one-step defects do not have a summable tail,
+the convolution term has a positive error floor even when
+\(\theta<1\).  If the source-tail and normalization errors are controlled
+only for a fixed finite collection of windows, the conclusion is exactly
+that finite collection, not the projective germ.
+
+For a cofinal nested family \(\alpha_N\), the theorem must provide a schedule
+\[
+  N\longmapsto m_N
+\]
+such that the estimates for \(\alpha_N\) hold on compatible regulator tails
+and the right-hand side of
+\eqref{eq:stable-window-quantifier-order} tends to zero for each fixed
+\(\alpha_N\).  The constants may grow with \(N\); the proof must show that
+the chosen depth and regulator tail outpace that growth.  This is the same
+directed-family issue as in the OS Gram bounds above: a finite numerical
+window, or a family of windows chosen after the calculation, is not a
+substitute for a cofinal projective-limit estimate.
+
 \begin{remark}[Universality as an equivalence relation after reconstruction]
 \label{rem:universality-equivalence-relation}
 Assume the data of Definition~\ref{def:wilsonian-universality-statement}, and
