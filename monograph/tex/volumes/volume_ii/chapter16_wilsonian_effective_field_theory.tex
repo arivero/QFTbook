@@ -1309,7 +1309,8 @@ after the relevant coordinates and field normalizations have been matched.
 The suppression exponent is \(-y_i=\Delta_i-D>0\) for the first omitted
 irrelevant operator.  Nonlinear versions of this statement require the
 Banach-norm estimates used in
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} and in the
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+and in the
 finite-coordinate continuum-limit theorem below.
 
 This gives a precise meaning to effective field theory.  A finite list of
@@ -2111,9 +2112,9 @@ this gives the exact identity
 after the remaining field is integrated.  However, differentiating
 \eqref{eq:source-dependent-wilsonian-low-w-equals-bare-w} with respect to
 \(J\) also differentiates \(L_{\Lambda,J}^{\rm src}\).  Therefore an exact
-matching theorem based on this formulation must include source-vertices as
-part of the coordinate data.  The theorem below instead proves the comparison
-for an \emph{admissible plateau cutoff}: choose a smooth profile satisfying
+matching implication based on this formulation must include source-vertices as
+part of the coordinate data.  The controlled comparison below instead uses an
+\emph{admissible plateau cutoff}: choose a smooth profile satisfying
 \begin{equation}
   \chi(s)=1\quad(0\le s\le c_\chi^2)
   \label{eq:admissible-plateau-cutoff}
@@ -2572,8 +2573,8 @@ following estimates hold on the coordinate neighborhood under consideration:
 \end{enumerate}
 \end{hypothesis}
 
-\begin{theorem}[Finite-order BPHZ--Wilsonian matching]
-\label{thm:finite-order-bphz-wilsonian-matching}
+\begin{controlledapproximation}[Finite-order BPHZ--Wilsonian comparison]
+\label{capprox:finite-order-bphz-wilsonian-matching}
 In an admissible matching context as in
 Definition~\ref{def:finite-order-bphz-wilsonian-matching-context}, and under
 Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}, the
@@ -2610,9 +2611,14 @@ implicit function theorem gives a local finite change of coordinates
   \qquad A\in A_0,
 \]
 with the same \(O((\mu/\Lambda)^{p_N})\) truncation error.
-\end{theorem}
+\end{controlledapproximation}
 
-\begin{proof}
+\noindent\emph{Derivation of the comparison.}
+The displayed comparison is an implication from the four estimates in
+Hypothesis~\ref{hyp:finite-order-bphz-wilsonian-matching-estimates}; those
+estimates are the analytic input.  The derivation records what the finite
+matching map becomes once they are available.
+
 The plateau low-source identity above gives
 \eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in \(\mathcal E_<\).
 This equality is an equality of functions on the same finite-dimensional
@@ -2682,11 +2688,10 @@ selected 1PI coordinates has an invertible derivative at \(u_*\).  The
 implicit function theorem therefore gives the displayed local coordinate
 map \(G_A\), with the same remainder estimate because the previous paragraph
 already controls the omitted Wilsonian coordinates.
-\end{proof}
 
 The finite change of coordinates in
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} can be constructed
-recursively in the loop expansion.  Write
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+can be constructed recursively in the loop expansion.  Write
 \[
   M_I^{(\ell,N)}(u)
   =
@@ -2738,8 +2743,9 @@ order by order.  The coefficients
 the chosen loop order, and the Wilsonian Taylor-remainder lemma controls the
 omitted local coordinates by the displayed power of \(\mu/\Lambda\).
 
-\begin{remark}[Scope of the matching theorem]
-The theorem is a fixed-loop perturbative statement in a specified subtraction
+\begin{remark}[Scope of the matching implication]
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+is a fixed-loop perturbative consequence of a specified subtraction
 scheme, a specified Wilsonian norm, and the admissible plateau cutoff
 \eqref{eq:admissible-plateau-cutoff}.  The plateau is load-bearing: it makes
 \(C_>J=0\) on the low test space and hence makes
@@ -2748,7 +2754,8 @@ Wilsonian action used in the matching map.  Non-plateau smooth profiles such
 as Gaussian cutoffs require either the source-dependent Wilsonian action
 \eqref{eq:source-dependent-wilsonian-action} together with source-vertex
 coordinates, or a separate leakage theorem; they are not covered by
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} as stated.
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+as stated.
 
 The massive BPHZ scheme used here is
 the forest-formula scheme of
@@ -2765,15 +2772,14 @@ asymptotic expansion.  That question requires existence of the relevant
 measures or functionals, Legendre transforms, and cutoff-uniform Banach
 estimates for the model under study.
 
-The bounded-chart hypothesis in the theorem should also not be read as a
-claim about arbitrary bare trajectories.  For non-asymptotically-free models
-such as four-dimensional scalar quartic theory, the nonperturbative continuum
-limit at fixed positive bare family is obstructed in the standard
-reflection-positive lattice universality classes discussed earlier.  The
-Polchinski theorem used here is an order-by-order theorem in the renormalized
-coupling after the counterterms have been tuned; in that perturbative
-coefficientwise sense the retained coordinates remain in the required
-neighborhood at every fixed loop order.
+The bounded-chart hypothesis specifies the class of trajectories being
+compared.  For scalar quartic theory in four dimensions, for example, the
+nonperturbative continuum limit at fixed positive bare family is obstructed
+in the standard reflection-positive lattice universality classes discussed
+earlier.  The Polchinski theorem used here is an order-by-order theorem in
+the renormalized coupling after the counterterms have been tuned; in that
+perturbative coefficientwise sense the retained coordinates remain in the
+required neighborhood at every fixed loop order.
 \end{remark}
 
 \begin{remark}[Status of the comparison]
@@ -2793,13 +2799,13 @@ connecting this perturbative comparison to an actual continuum QFT requires
 additional existence and uniform-estimate theorems for the model under study.
 \end{remark}
 
-\begin{corollary}[Fixed-loop comparison of renormalizability criteria]
-\label{cor:fixed-loop-bphz-polchinski-renormalizability}
+\begin{remark}[Fixed-loop comparison of renormalizability criteria]
+\label{rem:fixed-loop-bphz-polchinski-renormalizability}
 In the massive, nonexceptional, finite-projector, plateau-cutoff, and tuned
 Polchinski-trajectory setting of
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching}, the following two
-renormalizability criteria are equivalent through the fixed loop order
-\(\ell\), up to the displayed
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching},
+the following two renormalizability criteria are equivalent through the fixed
+loop order \(\ell\), up to the displayed
 \((\mu/\Lambda)^{p_N}\) error from omitted irrelevant Wilsonian coordinates.
 \begin{enumerate}[label=(\roman*)]
   \item BPHZ renormalizability: after applying the forest formula in the
@@ -2823,16 +2829,17 @@ bound determines finite BPHZ projected coordinates: apply the same projectors
 parts to the BPHZ subtraction coordinates.  A change of BPHZ subtraction point,
 oversubtraction degree, or finite Taylor part changes the Wilsonian description
 by a finite local coordinate transformation in the retained chart.
-\end{corollary}
+\end{remark}
 
-\begin{proof}
-Assume first the BPHZ criterion.  Proposition
+The two directions are obtained as follows.  Assume first the BPHZ criterion.
+Proposition
 \ref{prop:bphz-local-parts-wilsonian-coordinates} identifies every forest
 Taylor subtraction through the selected loop order with a local vertex in the
 Wilsonian chart.  Minimal subtractions occupy relevant and marginal
 coordinates, while oversubtractions occupy the explicitly retained
 higher-derivative local coordinates.  After these local coordinates are fixed,
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} gives
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+gives
 \[
   g_I^{\mathfrak b,(\leq\ell)}(\mu)
   =
@@ -2848,8 +2855,9 @@ the Taylor-remainder estimate.
 Conversely, assume the Wilsonian criterion.  The finite-regulator Gaussian
 identity constructs the same low-source connected functional as the original
 regulated theory, and the Hessian hypothesis in
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} constructs the low-mode
-Legendre transform.  Applying the projectors \(\Pi_I\) to this low-mode 1PI
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+constructs the low-mode Legendre transform.  Applying the projectors
+\(\Pi_I\) to this low-mode 1PI
 functional gives finite numbers through loop order \(\ell\).  For every
 superficially divergent graph contributing to these projectors, its local
 Taylor part is one of the finitely many local monomials in the retained
@@ -2867,40 +2875,40 @@ Finally, the difference between two BPHZ subtraction choices is a finite sum
 of Taylor polynomials in external momenta.  Fourier transforming these
 polynomials gives a finite sum of local vertices, hence a finite change of
 the retained Wilsonian coordinates.  Where the Jacobian in
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} is invertible, this
-finite change is a local coordinate transformation by the implicit function
-theorem.
-\end{proof}
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+is invertible, this finite change is a local coordinate transformation by the
+implicit function theorem.
 
-\begin{remark}[What is, and is not, proved]
-Corollary~\ref{cor:fixed-loop-bphz-polchinski-renormalizability} proves a
-two-way implication only after the finite-loop, massive, nonexceptional, and
-finite-projector hypotheses, together with the plateau-cutoff and tuned
-counterterm-trajectory hypotheses, of
-Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} have been imposed.  In
-that setting, BPHZ forest-formula local Taylor parts construct the Wilsonian
-local coordinates, and controlled Wilsonian local coordinates construct BPHZ
-subtraction coordinates by projecting the low-mode 1PI functional.  This is
-an equivalence of finite coordinate descriptions of selected perturbative
-1PI data, with the omitted irrelevant coordinates contributing the stated
-\((\mu/\Lambda)^{p_N}\) remainder.
+\begin{remark}[Perturbative and continuum scopes]
+The preceding fixed-loop comparison is a two-way implication only after the
+finite-loop, massive, nonexceptional, and finite-projector hypotheses,
+together with the plateau-cutoff and tuned counterterm-trajectory hypotheses,
+of Controlled
+Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching} have been
+imposed.  In that setting, BPHZ forest-formula local Taylor parts construct
+the Wilsonian local coordinates, and controlled Wilsonian local coordinates
+construct BPHZ subtraction coordinates by projecting the low-mode 1PI
+functional.  The result is an equivalence of finite coordinate descriptions
+of selected perturbative 1PI data, with the omitted irrelevant coordinates
+contributing the stated \((\mu/\Lambda)^{p_N}\) remainder.
 
-The corollary is not a theorem that a nonperturbatively constructed
-Wilsonian or constructive continuum theory exists, nor that such a theory has
-the above perturbative series as its asymptotic expansion.  BPHZ itself is
-already a perturbative construction.  The additional nonperturbative problem
-would require, for the model in question, a construction of the regulated and
-limiting functionals, a topology on the full Wilsonian coordinate space,
-cutoff-uniform estimates in that topology, and a well-defined Legendre
-transform on the required source domain.  The fixed-loop result is the part
-that can be proved from the perturbative forest formula and the Wilsonian
-cutoff estimates displayed in this chapter.
+The corresponding continuum-QFT problem has additional objects.  For the
+model in question one must construct the regulated and limiting functionals,
+choose a topology on the full Wilsonian coordinate space, prove
+cutoff-uniform estimates in that topology, construct the Legendre transform on
+the required source domain, and then prove that the BPHZ-renormalized series
+is the perturbative asymptotic expansion of those continuum objects.  BPHZ
+itself supplies the perturbative forest-formula side of this comparison; the
+existence-and-asymptotics problem belongs to the constructive or
+nonperturbative Wilsonian analysis of the model.
 \end{remark}
 
 \section{One-Loop Matching in the Quartic Scalar Theory}
 
-The theorem's matching map can be displayed directly in the four-point
-function of the massive scalar theory in four Euclidean dimensions.  Work with
+The matching map in
+Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
+can be displayed directly in the four-point function of the massive scalar
+theory in four Euclidean dimensions.  Work with
 \[
   S_{\rm int}[\phi]
   =

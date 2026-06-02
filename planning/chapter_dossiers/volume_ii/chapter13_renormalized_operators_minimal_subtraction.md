@@ -255,7 +255,7 @@ The chapter must define:
   connection have been stated.
 - 2026-05-24 issue #497 pass: added the cross-reference identifying the finite
   BPHZ normal-product choice with local source-coordinate data in the
-  BPHZ--Wilsonian matching theorem.
+  BPHZ--Wilsonian controlled comparison.
 - Keep the transition convention explicit: the displayed
   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\) law is for local
   representative columns transforming as \(\widetilde v=Mv\).

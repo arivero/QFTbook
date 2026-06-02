@@ -223,7 +223,7 @@ The chapter must define and derive:
   finite matching from Wilsonian local coordinates to 1PI subtraction
   coordinates, and the distinction between a Wilsonian vertex and a 1PI
   vertex.
-- a finite-order BPHZ--Wilsonian matching theorem that:
+- a finite-order BPHZ--Wilsonian controlled approximation that:
   - fixes a BPHZ forest-formula scheme, a low source/classical-field test
     space strictly inside the cutoff plateau, finite 1PI projectors, and
     finite Wilsonian coordinate projectors;
@@ -376,10 +376,11 @@ The chapter must define and derive:
     local Taylor subtractions, Wilsonian RG supplies Gaussian pushforward in
     cutoff space, and 1PI RG supplies finite projected coordinates at a
     subtraction scale.
-14a. The finite-order BPHZ--Wilsonian comparison is a theorem only after the
-     low-mode 1PI Legendre transform, BPHZ scheme, Wilsonian coordinate
-     projection, matching map, Banach remainder estimate, and finite
-     Jacobian-invertibility hypothesis are stated.  The matching map is
+14a. The finite-order BPHZ--Wilsonian comparison is a controlled
+     approximation whose substance is conditional on the low-mode 1PI Legendre
+     transform, BPHZ scheme, Wilsonian coordinate projection, matching map,
+     Banach remainder estimate, and finite Jacobian-invertibility hypothesis.
+     The matching map is
      \(M_I=\Pi_I\Gamma^<_{\Lambda,N}\), where \(\Gamma^<\) is the Legendre
      transform of the connected functional restricted to the finite
      low-source space; it is not the restriction of a previously formed full
@@ -394,10 +395,10 @@ The chapter must define and derive:
      expansion.  At each order the already computed lower-order coordinates
      determine an inhomogeneous term, and the selected tree-level Jacobian is
      inverted to solve for the next Wilsonian coordinate coefficient.
-14d. The exact source-independent matching theorem uses an admissible plateau
+14d. The exact source-independent matching implication uses an admissible plateau
      cutoff.  A non-plateau smooth cutoff is a different comparison datum:
      source-dependent vertices must be retained, or a profile-dependent
-     leakage estimate must be proved and added to the theorem's remainder.
+     leakage estimate must be proved and added to the stated remainder.
 14e. The \(\Lambda_0\to\infty\) step in the BPHZ--Wilsonian comparison is a
      tuned Polchinski-flow counterterm trajectory, not a fixed UV-cutoff
      coordinate limit.  The UV-cutoff local coordinates are functions of
@@ -509,7 +510,8 @@ The chapter must define and derive:
   two independent convergence requirements: the interacting source-functional
   limit and the pushforward/vector-field limit.
 - 2026-05-24 deep-proof pass: replaced the previous structural
-  BPHZ--Wilsonian comparison proposition with a finite-loop theorem.  The new
+  BPHZ--Wilsonian comparison discussion with a finite-loop controlled
+  approximation.  The new
   version constructs the matching map, proves the low-mode Legendre-transform
   step, proves the Taylor-remainder power estimate from the Wilsonian norm,
   obtains coordinate inversion by the finite-dimensional implicit function
@@ -526,10 +528,11 @@ The chapter must define and derive:
   coordinates, and the recursive loop-order construction of the matching map;
   cross-links were added back to the BPHZ finite-parts and normal-product
   discussions.
-- 2026-05-25 issue #497 closure pass: added a fixed-loop comparison corollary
-  proving the equivalence of the BPHZ and Polchinski-Wilsonian
+- 2026-05-25 issue #497 closure pass: added a fixed-loop comparison remark
+  deriving the equivalence of the BPHZ and Polchinski-Wilsonian
   renormalizability criteria in the massive, nonexceptional,
-  finite-projector setting already established in the matching theorem.  The
+  finite-projector setting already established in the controlled matching
+  comparison.  The
   proof runs in both directions, constructs the coordinate assignment through
   local Taylor parts and low-mode 1PI projectors, and states the
   \((\mu/\Lambda)^{p_N}\) irrelevant-coordinate error rather than claiming a
