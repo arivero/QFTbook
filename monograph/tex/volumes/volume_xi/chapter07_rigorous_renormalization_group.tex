@@ -1040,6 +1040,103 @@ bookkeeping; the model-specific constructive theorem must prove the bounds
 on \(q\), \(B_{\rm pol}\), \(r\), and \(\varepsilon_j\) from the covariance,
 localization, and large-field regulators.
 
+\begin{lemma}[Finite source-window extraction and propagated cumulant error]
+\label{lem:finite-source-window-extraction-error}
+Let \(B_j\) be Banach spaces and let \(R_j(J)\in B_j\) be holomorphic on a
+neighborhood of the closed polydisc
+\[
+  P_{\rho_j}
+  =
+  \{J\in\mathbb C^m:\ |J_a|\leq \rho_{j,a},\ 1\leq a\leq m\}.
+\]
+Set
+\[
+  \eta_j=\sup_{J\in P_{\rho_j}}\|R_j(J)\|_{B_j}.
+\]
+For an integer \(s_j\geq0\), let \(\mathcal T_{\leq s_j}^{\rm src}R_j\) be
+the Taylor polynomial in \(J\) containing all monomials of total source
+degree at most \(s_j\).  If \(\beta=(\beta_1,\ldots,\beta_m)\) is a
+multi-index and
+\[
+  \rho_j^\beta=\prod_{a=1}^{m}\rho_{j,a}^{\beta_a},
+  \qquad
+  \beta!=\prod_{a=1}^{m}\beta_a!,
+\]
+then
+\begin{equation}
+  \partial_J^\beta
+  \bigl(R_j-\mathcal T_{\leq s_j}^{\rm src}R_j\bigr)(0)=0
+  \qquad (|\beta|\leq s_j),
+  \label{eq:source-window-retained-derivatives-vanish}
+\end{equation}
+and, for arbitrary \(\beta\),
+\begin{equation}
+  \left\|
+  \partial_J^\beta
+  \bigl(R_j-\mathcal T_{\leq s_j}^{\rm src}R_j\bigr)(0)
+  \right\|_{B_j}
+  \leq
+  \frac{\beta!}{\rho_j^\beta}\,\eta_j .
+  \label{eq:source-window-cauchy-bound}
+\end{equation}
+Suppose moreover that the error in a reconstructed connected source window
+at scale \(N\) is obtained by propagating the source-extraction tails through
+bounded linear maps
+\[
+  U_{j\to N,\beta}:B_j\longrightarrow \mathcal O_\beta,
+  \qquad
+  p_\beta(U_{j\to N,\beta}v)
+  \leq
+  P_{j,N,\beta}\|v\|_{B_j},
+\]
+where \(p_\beta\) is the seminorm of the declared \(\beta\)-source
+observable window.  Then the accumulated \(\beta\)-window error satisfies
+\begin{equation}
+  p_\beta(\Delta O_{N,\beta})
+  \leq
+  \sum_{\substack{0\leq j<N\\ s_j<|\beta|}}
+  P_{j,N,\beta}\,
+  \frac{\beta!}{\rho_j^\beta}\,
+  \eta_j .
+  \label{eq:source-window-propagated-error-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The Taylor polynomial contains exactly the source monomials of total degree
+at most \(s_j\), hence the derivative in
+\eqref{eq:source-window-retained-derivatives-vanish} vanishes for
+\(|\beta|\leq s_j\).  For \(|\beta|>s_j\), the \(\beta\)-derivative of the
+tail at the origin is the \(\beta\)-derivative of \(R_j\).  Use the
+Banach-valued Cauchy integral formula on the distinguished boundary
+\(|Z_a|=\rho_{j,a}\):
+\[
+  \partial_J^\beta R_j(0)
+  =
+  \frac{\beta!}{(2\pi i)^m}
+  \int_{|Z_1|=\rho_{j,1}}\cdots
+  \int_{|Z_m|=\rho_{j,m}}
+  \frac{R_j(Z)}{Z^{\beta+1}}
+  \,\dd Z_1\cdots\dd Z_m .
+\]
+Taking the \(B_j\)-norm and using the boundary length factors gives
+\eqref{eq:source-window-cauchy-bound}.  The propagated estimate follows by
+applying \(U_{j\to N,\beta}\) to each scale-\(j\) source-tail derivative,
+using its operator bound, and summing over scales.  Terms with
+\(s_j\geq|\beta|\) vanish by
+\eqref{eq:source-window-retained-derivatives-vanish}.
+\end{proof}
+
+Thus a source-extended polymer RG chart must declare which source monomials
+are retained and which source derivatives of the connected generating
+functional are being reconstructed.  To control all \(n\)-point Schwinger
+distribution windows in a fixed test-function family, the source chart must
+retain source degree at least \(n\), or it must prove the Cauchy-tail sum
+\eqref{eq:source-window-propagated-error-bound}.  A scalar fixed-point
+trajectory without this source-extension estimate is a theorem about the
+partition function or un-sourced activity only; it is not yet a theorem
+about the reconstructed local QFT correlators.
+
 For ordinary short-range critical scalar models, the unresolved work is to
 construct this datum with constants uniform along the tuned critical
 trajectory and with source extensions strong enough for reconstructed

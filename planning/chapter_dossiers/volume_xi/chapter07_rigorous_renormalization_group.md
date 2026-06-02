@@ -94,6 +94,10 @@ constructive RG developments.
 - `epsilon_j`, `E`, `sigma`: scale-dependent local-coordinate extraction
   defects and their geometric envelope in the multiscale polymer forcing
   estimate.
+- `J`, `rho_j`, `s_j`, `R_j(J)`, `eta_j`, `U_{j->N,beta}`: source
+  variables, source polydisc radii, retained source degree, source-tail
+  functional, source-tail norm, and propagated source-window map in the
+  source-extended polymer RG estimate.
 - `S_{n,k}`: connected cumulant distribution reconstructed from normalized
   block-spin fields.
 - `Phi`, `Psi`: auxiliary-to-short-range RG transfer maps on Banach charts
@@ -141,6 +145,15 @@ constructive RG developments.
   records this as deterministic proof infrastructure: a model-specific
   constructive theorem must still prove the input constants from covariance,
   localization, and large-field estimates.
+- Proves a finite source-window extraction estimate for source-extended
+  polymer RG charts: source derivatives retained by the Taylor source chart
+  have zero tail, omitted derivatives obey a Banach-valued Cauchy-radius
+  bound, and reconstructed source-window errors are bounded by the
+  propagated scale sum
+  \(\sum_{j<N}P_{j,N,\beta}\beta!\eta_j/\rho_j^\beta\) over scales whose
+  retained source degree is below \(|\beta|\).  This records the condition
+  needed to turn a scalar fixed-point trajectory into controlled connected
+  correlator windows.
 - Defines the full data of a theorem-level nonperturbative Wilsonian fixed
   point: regulator class, map/domain/norm, fixed point, linearized spectrum,
   and reconstruction estimates.
@@ -286,7 +299,10 @@ remainder contraction.
   bound, including a finite interval enumeration of the pair-overlap
   majorant entering \(B_{\rm pol}\).  It also checks the finite-range
   Gaussian factorization, Taylor-localization scaling ledger, and the
-  quadratic large-field regulator determinant/exponent bookkeeping.
+  quadratic large-field regulator determinant/exponent bookkeeping.  It also
+  checks source-window extraction for a source-extended polymer chart,
+  including retained-derivative vanishing, omitted third-derivative Cauchy
+  bounds, and propagated scale-summed source-tail errors.
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -341,6 +357,14 @@ remainder contraction.
   enlargement that the next-scale regulator must absorb.  The companion
   short-range RG check verifies the same determinant and completing-square
   arithmetic by exact rational calculation.
+- 2026-06-02 source-window extraction pass: added the finite source-extension
+  estimate needed for RG reconstruction of connected correlator windows.  The
+  chapter now states that retaining source degree \(s\) controls source
+  derivatives only through degree \(s\), and that omitted source derivatives
+  require a Cauchy-radius bound plus a propagated scale sum.  The companion
+  short-range RG check verifies the retained-tail vanishing, omitted
+  derivative, Cauchy majorant, and propagated bound by exact rational
+  arithmetic.
 - 2026-06-02 local-QFT-strength observable-germ pass: inserted the missing
   bridge from projective observable-window universality to equality of a
   reconstructed local QFT.  The new definition requires full distribution

@@ -653,7 +653,10 @@ Current checks:
   It also checks the finite Gaussian stability identity for a quadratic
   large-field regulator, including the determinant prefactor, the exact
   exponent, and the spectral-bound exponent enlargement needed after
-  fluctuation integration.
+  fluctuation integration.  It also checks the source-window extraction rule
+  for a source-extended polymer chart: retained Taylor-source derivatives
+  vanish in the tail, omitted derivatives obey the Cauchy-radius bound, and
+  propagated source-tail errors sum with the declared scale weights.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

@@ -29,6 +29,9 @@ coordinate has an actual irrelevant gain.
 The large-field regulator check verifies the exact determinant and exponent
 bookkeeping for finite Gaussian stability of a quadratic regulator under
 fluctuation integration.
+The source-window check verifies the finite Taylor-source extraction rule
+used to decide which connected correlator windows are actually controlled by
+a source-extended polymer RG chart.
 """
 
 from fractions import Fraction
@@ -666,6 +669,108 @@ def check_large_field_gaussian_regulator_bound():
     )
 
 
+def check_source_window_extraction_error():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def multi_factorial(beta):
+        value = 1
+        for component in beta:
+            value *= factorial(component)
+        return value
+
+    def total_degree(beta):
+        return sum(beta)
+
+    def derivative_at_origin(coefficients, beta):
+        return multi_factorial(beta) * coefficients.get(beta, Fraction(0))
+
+    coefficients = {
+        (0, 0): Fraction(1),
+        (1, 0): Fraction(2),
+        (0, 1): Fraction(-3),
+        (2, 0): Fraction(5),
+        (1, 1): Fraction(-7),
+        (0, 2): Fraction(11),
+        (3, 0): Fraction(13),
+        (2, 1): Fraction(-17),
+        (0, 3): Fraction(19),
+    }
+
+    retained_degree_two = {
+        beta: coefficient
+        for beta, coefficient in coefficients.items()
+        if total_degree(beta) <= 2
+    }
+    tail_degree_two = {
+        beta: coefficients.get(beta, Fraction(0)) - retained_degree_two.get(beta, Fraction(0))
+        for beta in coefficients
+    }
+
+    for beta in [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1), (0, 2)]:
+        assert_equal(
+            f"source extraction retained derivative {beta}",
+            derivative_at_origin(tail_degree_two, beta),
+            Fraction(0),
+        )
+
+    third_beta = (2, 1)
+    omitted_third_derivative = derivative_at_origin(tail_degree_two, third_beta)
+    assert_equal("source extraction omitted third derivative", omitted_third_derivative, Fraction(-34))
+
+    retained_degree_three = {
+        beta: coefficient
+        for beta, coefficient in coefficients.items()
+        if total_degree(beta) <= 3
+    }
+    tail_degree_three = {
+        beta: coefficients.get(beta, Fraction(0)) - retained_degree_three.get(beta, Fraction(0))
+        for beta in coefficients
+    }
+    assert_equal(
+        "source extraction degree-three chart controls third derivative",
+        derivative_at_origin(tail_degree_three, third_beta),
+        Fraction(0),
+    )
+
+    radii = (Fraction(2), Fraction(3))
+    majorant = sum(
+        abs(coefficient) * radii[0] ** beta[0] * radii[1] ** beta[1]
+        for beta, coefficient in coefficients.items()
+    )
+    rho_beta = radii[0] ** third_beta[0] * radii[1] ** third_beta[1]
+    cauchy_bound = multi_factorial(third_beta) * majorant / rho_beta
+    assert_equal("source extraction Cauchy majorant", majorant, Fraction(996))
+    assert_equal("source extraction Cauchy bound", cauchy_bound, Fraction(166))
+    assert_true("source omitted derivative below Cauchy bound", abs(omitted_third_derivative) <= cauchy_bound)
+
+    propagation_norms = [Fraction(1, 2), Fraction(2, 3), Fraction(1, 4)]
+    source_tail_norms = [Fraction(7), Fraction(5), Fraction(11)]
+    retained_source_degrees = [2, 1, 3]
+    scale_factor = multi_factorial(third_beta) / rho_beta
+    propagated_bound = sum(
+        propagation * scale_factor * tail_norm
+        for propagation, tail_norm, retained_degree in zip(
+            propagation_norms,
+            source_tail_norms,
+            retained_source_degrees,
+        )
+        if retained_degree < total_degree(third_beta)
+    )
+    assert_equal("source propagated Cauchy-tail bound", propagated_bound, Fraction(41, 36))
+
+    actual_tail_derivatives = [Fraction(1, 3), Fraction(-1, 4), Fraction(0)]
+    actual_window_error = sum(
+        propagation * derivative
+        for propagation, derivative in zip(propagation_norms, actual_tail_derivatives)
+    )
+    assert_equal("source propagated example cancellation", actual_window_error, Fraction(0))
+    assert_true("source propagated example below bound", abs(actual_window_error) <= propagated_bound)
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -683,6 +788,7 @@ def main():
     check_localization_taylor_remainder_bound()
     check_localization_scaling_exponents()
     check_large_field_gaussian_regulator_bound()
+    check_source_window_extraction_error()
     print("All short-range scalar RG reconstruction checks passed.")
 
 
