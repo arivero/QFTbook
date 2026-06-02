@@ -419,3 +419,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   chapter now states that cyclicity is the positive-energy local-density
   theorem, while separatingness for a wedge is the locality/opposite-wedge
   commutant argument, not a hidden Haag-duality assumption.
+- 2026-06-02 nuclearity/type-boundary tightening pass: narrowed the quoted
+  Buchholz--Wichmann theorem statement to the nuclearity-to-split conclusion
+  and renamed its source label accordingly.  The type-\(\mathrm{III}\) and
+  type-\(\mathrm{III}_1\) discussion now sits explicitly as a separate
+  sharp-region theorem boundary requiring factoriality, additivity or scaling
+  regularity, and modular-spectrum input; it is no longer packaged as a
+  consequence inside the positive-collar split theorem.

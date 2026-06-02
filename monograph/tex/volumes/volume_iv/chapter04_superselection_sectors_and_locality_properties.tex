@@ -2036,17 +2036,15 @@ separated local algebras.  The free Fock calculation supplies the basic
 mode-counting scale; the local theorem requires the sharper localization and
 normality arguments described after the quoted theorem.
 
-\begin{quotedtheorem}[Phase-space consequences of nuclearity]
-\label{thm:nuclearity-split-type-iii-consequences}
+\begin{quotedtheorem}[Buchholz--Wichmann nuclearity implies split inclusions]
+\label{thm:nuclearity-split-inclusions}
 \emph{Proof references.}\footnote{The phase-space condition and split
 property are developed in D.~Buchholz and E.~H.~Wichmann,
 ``Causal independence and the energy-level density of states in local quantum
 field theory,'' \emph{Communications in Mathematical Physics} \textbf{106}
 (1986), 321--344, and in C.~D'Antoni and R.~Longo, ``Interpolation by type I
 factors and the flip automorphism,'' \emph{Journal of Functional Analysis}
-\textbf{51} (1983), 361--371.  Type \(\mathrm{III}_1\) results for local
-algebras under standard relativistic regularity hypotheses are associated
-with work of Fredenhagen, Buchholz, D'Antoni, Longo, and collaborators
+\textbf{51} (1983), 361--371
 \cite{BuchholzWichmann1986,DAntoniLongo1983}.}
 Let a vacuum local net satisfy isotony, locality, covariance, positivity of
 energy, uniqueness of the vacuum, Reeh--Schlieder for double cones, and the
@@ -2059,11 +2057,15 @@ Buchholz--Wichmann nuclearity condition.  Then every pair of double cones
   \subset
   \mathcal R(\mathcal O_2)
 \]
-for some type-I factor \(\mathcal N\).  With the usual additional regularity
-assumptions used to exclude classical centers and finite local components,
-the sharply local algebras are factors in the type-\(\mathrm{III}\) class; in
-known models satisfying the full relativistic phase-space and scaling
-regularity hypotheses, they are type \(\mathrm{III}_1\).
+for some type-I factor \(\mathcal N\).  In the Doplicher--Longo split
+criterion, this conclusion is equivalent to normal extendability of the
+multiplication representation
+\[
+  \mathcal R(\mathcal O_1)\odot \mathcal R(\mathcal O_2)'
+  \longrightarrow \mathcal B(\Hilb),
+  \qquad A\otimes B'\longmapsto AB',
+\]
+to the spatial von Neumann tensor product.
 \end{quotedtheorem}
 
 \paragraph{Functional-analytic mechanism of the split conclusion.}
@@ -2115,7 +2117,7 @@ The converse implication, from normal extendability of the multiplication
 representation to the existence of an interpolating type-I factor, is the
 Doplicher--Longo split criterion.  It is part of the operator-algebraic input
 in Quoted
-Theorem~\ref{thm:nuclearity-split-type-iii-consequences}, not a consequence
+Theorem~\ref{thm:nuclearity-split-inclusions}, not a consequence
 of algebraic commutativity alone.  When the criterion applies, the unitary
 identification can be chosen so that the two commuting algebras act as
 \[
@@ -2321,11 +2323,15 @@ condition, Reeh--Schlieder standardness, additivity or scaling regularity, and
 phase-space control in a way that is not captured by the existence of a
 positive-collar type-I interpolant.
 
-The quoted theorem has two distinct messages.  The split inclusion says that a
-positive collar between regions allows a type-I interpolant and hence an
-approximate tensor product.  The type-\(\mathrm{III}\) statement says that the
-collar cannot be shrunk to zero without losing the type-I description.  In
-particular, a formal notation such as
+The quoted theorem just stated has one local-QFT message: a positive collar
+between regions, together with a nuclear phase-space estimate strong enough to
+make the multiplication representation normal, allows a type-I interpolant and
+hence a collar-dependent tensor-product representation.  It does not classify
+the sharp endpoint algebras.  The type-\(\mathrm{III}\) statement is a
+different sharp-region theorem boundary.  It says, under additional
+factoriality, additivity or scaling-regularity, and modular-spectrum
+hypotheses, that the collar cannot be shrunk to zero while retaining a
+type-I description.  In particular, a formal notation such as
 \[
   \Hilb\stackrel{\rm formal}{\neq}
   \Hilb_{\mathcal O}\otimes\Hilb_{\mathcal O^\perp}
