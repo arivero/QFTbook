@@ -1338,6 +1338,31 @@ observable net cannot satisfy that localization hypothesis.  A Wilson-line or
 Coulomb-dressed charged creator has noncompact localization for structural
 reasons, so the local commutator estimate must be replaced rather than reused.
 
+The geometric replacement is not ``large spacelike separation'' of bounded
+double cones.  Let \(V_h\) be the compact velocity support of the charged wave
+packet and let \(\mathcal C_\Gamma\) denote the asymptotic cone, ray, or
+Coulomb coordinate carried by the dressing.  A future charged theorem must
+separate two different pieces of the large-time operator.  The compact core of
+\(\Psi_{\Gamma,t}(h)\) is transported into the velocity tube \(tV_h+O(1)\) and
+can be treated by the ordinary spacelike-separation argument when the velocity
+supports are disjoint.  The Gauss-law tail attached to
+\(\mathcal C_\Gamma\), however, remains noncompact and is not made harmless by
+separating the cores.  Consequently the commutator estimate has to be a
+decomposition into the following three separately estimated contributions:
+\[
+  \text{core--core spacelike term}
+  \quad+\quad
+  \text{tail--tail flux pairing}
+  \quad+\quad
+  \text{integrable remainder}.
+\]
+The second term is the part which becomes the Dollard or Faddeev--Kulish
+comparison phase below.  Compact deformations of the dressing ray can change
+the operator by neutral field-strength insertions, as in
+\eqref{eq:compact-dressing-stokes}, but they do not remove the asymptotic flux
+tail.  Thus the analytic estimate to be proved is a cone/flux estimate, not a
+disguised application of ordinary almost locality.
+
 The replacement has definite analytic content: a charged construction must
 separate the nonintegrable long-range part of the motion from the integrable
 remainder.  For a charged packet \(h\), write
@@ -1842,11 +1867,12 @@ surface \(S_{\gamma',\gamma}\),
 \]
 then, for a smooth regulated connection \(A\) with curvature \(F=\dd A\),
 Stokes' identity gives
-\[
+\begin{equation}
   \int_{\gamma'_R} A-\int_{\gamma_R}A
   =
   \int_{S_{\gamma',\gamma}} F .
-\]
+  \label{eq:compact-dressing-stokes}
+\end{equation}
 Hence
 \[
   \Psi_{q,\gamma'}(x)

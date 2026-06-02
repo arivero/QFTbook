@@ -110,6 +110,12 @@ resonances.
   velocity-separated exchange estimate with possible Dollard/Faddeev--Kulish
   phase; a modified Cook estimate after subtracting the comparison phase; and
   scalar-product limits in the correct asymptotic representation.
+- Identifies the geometric replacement for ordinary spacelike separation in
+  charged sectors: the compact velocity cores can separate linearly, but the
+  noncompact Gauss-law tails attached to the dressing cones/rays remain and
+  must be decomposed into tail--tail flux pairing plus an \(L^1\) remainder.
+  This prevents the charged estimate from being misread as ordinary almost
+  locality in disguise.
 - Works out the finite-dimensional Coulomb-tail model behind the comparison
   phase: for \(V(t)=\kappa/\sqrt{a^2+|b+ut|^2}\), the pair phase is
   \((\kappa/|u|)\log t+O(1)\).  This identifies exactly why a \(t^{-1}\)
@@ -278,6 +284,12 @@ resonances.
   vague "neutral Wilson loop" assertion and makes clear exactly which
   same-flux dressing changes are finite LSZ-coordinate changes, while leaving
   the asymptotic-ray problem as genuine charged-sector proof debt.
+- 2026-06-02 #527 continuation: inserted a cone/flux decomposition paragraph
+  in the missing-estimate subsection.  The text now states that velocity-core
+  separation handles only the compact part of a dressed charged creator; the
+  noncompact Gauss-law tail must be isolated as a flux-pairing comparison
+  phase with an \(L^1\) residual, not treated as an almost-local commutator
+  error.
 - 2026-06-02 #527 continuation: added a non-theorem synthesis distinguishing
   signed boundary-charge neutrality from equality of the limiting angular
   Gauss-law flux profile.  The passage prevents a false path-independence
