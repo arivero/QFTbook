@@ -320,6 +320,47 @@ def check_modified_cook_integrability_bookkeeping() -> None:
         raise AssertionError("finite comparison-phase changes should have vanishing Cook tails")
 
 
+def check_truncation_schedule_tail_uniformity() -> None:
+    """Check the finite tail arithmetic behind admissible dressing schedules."""
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    # Fixed-time convergence of a finite Wilson-line truncation does not by
+    # itself give a Cook estimate.  If the large-time derivative still contains
+    # a bare 1/t tail, dyadic blocks do not decay.
+    for start in (16, 64, 256):
+        unscheduled_tail = dyadic_sum(start, lambda n: Fraction(1, n))
+        if unscheduled_tail <= Fraction(1, 2):
+            raise AssertionError("unscheduled noncompact tail should remain nonintegrable")
+
+    previous_derivative_tail: Fraction | None = None
+    previous_norm_tail: Fraction | None = None
+    for start in (16, 64, 256):
+        # Model an admissible schedule L(t)=t^2 with a residual truncation
+        # derivative t^{-1} L(t)^{-1}=t^{-3}.  The dyadic Cook tails then
+        # decrease and obey the integral-test bound.
+        scheduled_derivative_tail = dyadic_sum(start, lambda n: Fraction(1, n * n * n))
+        integral_bound = Fraction(1, 2 * (start - 1) * (start - 1))
+        if scheduled_derivative_tail >= integral_bound:
+            raise AssertionError("scheduled truncation derivative should obey the tail bound")
+        if previous_derivative_tail is not None and scheduled_derivative_tail >= previous_derivative_tail:
+            raise AssertionError("scheduled truncation Cook tails should decrease")
+        previous_derivative_tail = scheduled_derivative_tail
+
+        # The corresponding same-flux norm discrepancy has sup tail L(t)^{-1}.
+        scheduled_norm_tail = Fraction(1, start * start)
+        if previous_norm_tail is not None and scheduled_norm_tail >= previous_norm_tail:
+            raise AssertionError("same-flux truncation norm tails should decrease")
+        previous_norm_tail = scheduled_norm_tail
+
+    for start in (16, 64, 256):
+        schedule_a_tail = dyadic_sum(start, lambda n: Fraction(1, n * n * n))
+        schedule_b_tail = dyadic_sum(start, lambda n: Fraction(1, 2 * n * n * n))
+        if not abs(schedule_a_tail - schedule_b_tail) < schedule_a_tail:
+            raise AssertionError("same-flux schedule changes should be a smaller integrable tail")
+
+
 def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
@@ -612,6 +653,7 @@ def main() -> None:
     check_coulomb_tail_dollard_log_phase()
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
+    check_truncation_schedule_tail_uniformity()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()

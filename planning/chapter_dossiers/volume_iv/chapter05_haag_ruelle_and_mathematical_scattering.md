@@ -24,6 +24,10 @@ resonances.
   nonconfining charged-sector hypothesis.
 - `Psi_{q,gamma}`: gauge-invariant noncompact charged creator with Wilson-line
   or Coulombic dressing.
+- `Psi_{q,Gamma;L,epsilon}`, `L_i(t)`, `epsilon_i(t)`: finite-length and
+  ultraviolet-regularized representatives of a noncompact charged dressing,
+  together with admissible large-time truncation schedules used to define the
+  charged asymptotic coordinate.
 - `S_{gamma',gamma}`: compact oriented surface swept out by two Wilson-line
   dressings with the same endpoint and asymptotic ray; its boundary is the
   difference of the truncated paths, `gamma'_R-gamma_R`.
@@ -84,6 +88,14 @@ resonances.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
+- States the truncation topology required before a noncompact Wilson-line
+  charged creator can be used in a Haag--Ruelle theorem: finite dressings
+  \(\Psi_{q,\Gamma;L,\varepsilon}\) must have a renormalized matrix-element
+  limit, and same-flux admissible schedules \(L_i(t)\to\infty\),
+  \(\varepsilon_i(t)\downarrow0\) must give uniformly equivalent modified
+  comparison vectors with vanishing norm tails and \(L^1\) Cook tails.  This
+  separates genuine large-time control from fixed-time convergence of formal
+  infinite Wilson lines.
 - Defines the finite dressed-residue coordinate algebra for an
   infrared-regulated charged isolated shell: the pole matrix is the Gram
   matrix of charged one-particle overlaps, a left inverse of the overlap map
@@ -201,7 +213,11 @@ resonances.
   charge but a nonzero angular flux profile.  It now also verifies
   the finite abelian Stokes bookkeeping for compact Wilson-line path
   deformations: the change of line integral is a curvature surface flux, and
-  the associated surface factor carries no endpoint gauge charge.
+  the associated surface factor carries no endpoint gauge charge.  It now
+  also checks the finite tail arithmetic behind the truncation topology:
+  an unscheduled \(1/t\) noncompact tail is not a Cook error, whereas an
+  admissible same-flux polynomial schedule produces decreasing norm tails
+  and an \(L^1\) derivative tail.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.

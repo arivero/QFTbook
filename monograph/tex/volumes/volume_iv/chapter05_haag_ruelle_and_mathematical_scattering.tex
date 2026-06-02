@@ -922,6 +922,81 @@ spectral and representation-theoretic data on which that problem can be
 posed.  The subsequent LSZ and Dollard constructions explain what follows
 from these inputs and which large-time estimates still have to be proved.
 
+\paragraph{Truncation topology for noncompact dressings.}
+The symbol \(\Psi_{q,\Gamma}\) in
+Hypothesis~\ref{hyp:nonconfining-charged-sector-datum} is not an ordinary
+local operator-valued distribution with a hidden bounded localization region.
+For a Wilson-line ray or Coulomb dressing it must be defined as a
+renormalized limit of finite dressings.  A precise charged construction must
+therefore fix, before any large-time scattering limit is taken, a family
+\[
+  \Psi_{q,\Gamma;L,\varepsilon}(f)
+  =
+  N_{\Gamma;L,\varepsilon}\,
+  \psi_{q,\varepsilon}(f)\,W_{\Gamma;L,\varepsilon}
+\]
+on a common finite-energy domain: \(L\) is the length or infrared truncation
+of the dressing, \(\varepsilon\) is the ultraviolet regulator at the charged
+endpoint and along cusps or corners, \(W_{\Gamma;L,\varepsilon}\) is the
+finite Wilson-line or Coulombic factor, and \(N_{\Gamma;L,\varepsilon}\)
+contains the endpoint, line, cusp, and local charged-field renormalizations
+belonging to the chosen scheme.  The infinite dressing is a shorthand only
+after matrix elements against finite-energy vectors have limits, with the
+boundary charge and angular flux label held fixed:
+\[
+  \lim_{\varepsilon\downarrow0}\lim_{L\to\infty}
+  \langle\xi,\Psi_{q,\Gamma;L,\varepsilon}(f)\eta\rangle
+  =
+  \langle\xi,\Psi_{q,\Gamma}(f)\eta\rangle .
+\]
+The order of limits may be replaced by a joint renormalization prescription,
+but the prescription is part of the operator datum.
+
+For Haag--Ruelle purposes fixed-time convergence is not enough.  The
+large-time approximants sample increasingly long pieces of the Gauss-law tail,
+so the theorem must specify admissible truncation schedules
+\[
+  L_i(t)\to\infty,\qquad \varepsilon_i(t)\downarrow0 ,
+  \qquad \sigma t\to+\infty ,
+\]
+for every charged external leg.  Same-flux schedules and same-flux compact
+dressing changes should define the same asymptotic vector only if their
+modified comparison vectors obey a uniform tail condition on the scattering
+domain.  In the notation used below this means that, for two admissible
+same-flux choices \(L\) and \(L'\),
+\begin{equation}
+  \lim_{T\to\infty}\sup_{\sigma t\ge T}
+  \bigl\|
+    \mathcal C_{I,L}^{\sigma}(t)
+    -
+    \mathcal C_{I,L'}^{\sigma}(t)
+  \bigr\|=0,
+  \label{eq:charged-truncation-uniform-norm}
+\end{equation}
+and, whenever the norm derivative is used in Cook's argument,
+\begin{equation}
+  \lim_{T\to\infty}
+  \int_{\sigma t\ge T}
+  \left\|
+    \frac{\dd}{\dd t}
+    \bigl(
+      \mathcal C_{I,L}^{\sigma}(t)
+      -
+      \mathcal C_{I,L'}^{\sigma}(t)
+    \bigr)
+  \right\|\,\dd t
+  =0 .
+  \label{eq:charged-truncation-uniform-cook}
+\end{equation}
+Equations~\eqref{eq:charged-truncation-uniform-norm} and
+\eqref{eq:charged-truncation-uniform-cook} are load-bearing estimates: they
+are the point where the formal infinite Wilson line becomes a legitimate
+asymptotic coordinate.  A construction that only supplies
+\(\Psi_{q,\Gamma;L,\varepsilon}(f)\) for each fixed \(L\) and then takes
+\(L\to\infty\) at fixed time supplies a family of dressed matrix elements,
+while the charged Haag--Ruelle input requires control of the joint
+large-time/noncompact-tail limit.
+
 \begin{definition}[Dressed charged LSZ problem]
 \label{def:dressed-charged-lsz-problem}
 A dressed charged LSZ problem consists of:
@@ -1571,7 +1646,10 @@ and estimates.
 \item There are dressed approximants
 \(\Psi_{\Gamma_j,t}^{\sigma}(h_j)\) acting on a common finite-energy domain
 containing \(\vac\), and the product vector is defined there for all
-sufficiently large \(\sigma t>0\).
+sufficiently large \(\sigma t>0\).  These approximants are limits, in the
+truncation topology described above, of finite-length and ultraviolet
+regularized dressings; the estimates below are required to be stable under
+admissible same-flux truncation schedules.
 \item There is a real locally absolutely continuous comparison phase
 \(\Theta_I^\sigma(t)\), unique up to a finite large-time limit, whose
 nonintegrable part is the oriented pairwise Dollard logarithm
