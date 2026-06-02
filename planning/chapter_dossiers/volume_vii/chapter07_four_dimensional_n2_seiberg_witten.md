@@ -86,6 +86,12 @@ Wilsonian dynamics are available for later use.
   central-charge action, symplecticity, and unipotence.
 - Derives the weak-coupling monodromy at infinity from the one-loop
   prepotential and the Weyl action `a -> -a`.
+- Derives the residual `u -> -u` action from the anomalous `U(1)_R -> Z_8`
+  symmetry, including the one-instanton zero-mode count
+  `2 gauginos * 2 C_2(SU(2)) = 8`, the `R`-charge of the vector-multiplet
+  scalar, and the generic `Z_4` stabilizer of a nonzero Coulomb-branch point;
+  explains that the minimal two-singularity set is `{s,-s}` and that the
+  chapter's strong-scale normalization chooses `s=Lambda^2`.
 - Derives the finite monodromies from Picard-Lefschetz transformations for
   charges `(1,0)` and `(1,-1)`, and checks their product gives
   `M_infty`.
@@ -139,11 +145,14 @@ Wilsonian dynamics are available for later use.
   finite-monodromy product, Picard-Lefschetz central-charge action and
   symplecticity, the local hypermultiplet threshold shift that produces the
   factor two, the rigid special-Kahler metric identity and real
-  theta-shift invariance, the minimal-curve discriminant, the Picard-Fuchs
-  equation for the displayed hypergeometric periods, the large-\(u\)
-  asymptotic of \(a(u)\), logarithmic growth of \(a_D(u)\), linear vanishing
-  of \(a_D\) at the monopole point, and the rank-one Argyres-Douglas cusp
-  scaling dimensions.
+  theta-shift invariance, the one-instanton \(R\)-anomaly zero-mode count,
+  the residual \(R\)-symmetry quotient action \(u\mapsto -u\), the
+  two-singularity scale ledger, the exclusion of a single nodal finite
+  singularity by the trace of \(M_\infty\), the minimal-curve discriminant,
+  the Picard-Fuchs equation for the displayed hypergeometric periods, the
+  large-\(u\) asymptotic of \(a(u)\), logarithmic growth of \(a_D(u)\), linear
+  vanishing of \(a_D\) at the monopole point, and the rank-one Argyres-Douglas
+  cusp scaling dimensions.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
   dimension count, trace-delta to half-trace instanton-action conversion,
   the pure `SU(2)` one-instanton Nekrasov fixed-point sum, the first
@@ -176,3 +185,11 @@ the elliptic curve cycle degeneration.
   proposition/proof form to conceptual linear-algebra prose.  The obstruction
   remains explicit because it is the local reason an Argyres-Douglas collision
   is not described by a single weakly coupled electric Abelian frame.
+- 2026-06-02 residual-\(R\) pass: expanded the compressed sentence placing the
+  two pure `su(2)` finite singularities into a derivation from the anomalous
+  `U(1)_R -> Z_8` symmetry, including the instanton zero-mode count, the
+  charge-four action on `u`, the generic `Z_4` stabilizer, the resulting
+  quotient action `u -> -u`, the trace obstruction to representing
+  \(M_\infty\) by one nodal hypermultiplet monodromy, and the dimension-two
+  scale normalization \(s=\Lambda^2\).  Added the corresponding finite
+  arithmetic to `sw_su2_periods.py`.

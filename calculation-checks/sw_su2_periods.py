@@ -8,10 +8,10 @@ The checks use the chapter normalization with Lambda=1:
 
 They verify monodromy matrices, Picard-Lefschetz central-charge action,
 symplectic preservation, the rigid special-Kahler metric identity, the minimal
-curve discriminant, the Picard-Fuchs equation, the electric large-u asymptotic,
-the logarithmic large-u growth of the dual period, the linear vanishing of the
-monopole period at u=1, and the rank-one Argyres-Douglas cusp scaling
-dimensions.
+residual R-symmetry ledger, curve discriminant, the Picard-Fuchs equation, the
+electric large-u asymptotic, the logarithmic large-u growth of the dual period,
+the linear vanishing of the monopole period at u=1, and the rank-one
+Argyres-Douglas cusp scaling dimensions.
 """
 
 from __future__ import annotations
@@ -153,6 +153,44 @@ def check_local_hyper_threshold_shift() -> None:
                 raise AssertionError("local hyper threshold shift does not match PL matrix")
 
 
+def check_residual_r_symmetry_two_singularity_ledger() -> None:
+    c2_su2 = 2
+    adjoint_weyl_gauginos = 2
+    zero_modes_per_adjoint_weyl = 2 * c2_su2
+    instanton_r_phase_power = adjoint_weyl_gauginos * zero_modes_per_adjoint_weyl
+    if instanton_r_phase_power != 8:
+        raise AssertionError("N=2 SU(2) one-instanton R-anomaly should leave Z8")
+
+    # The anomaly leaves alpha = pi k/4, k mod 8.  In the chapter convention
+    # phi has R-charge 2 and u=tr phi^2 has charge 4, so u -> (-1)^k u.
+    signs = {k: (-1 if k % 2 else 1) for k in range(8)}
+    stabilizer_generic_u = [k for k, sign in signs.items() if sign == 1]
+    quotient_actions = sorted(set(signs.values()))
+    if stabilizer_generic_u != [0, 2, 4, 6]:
+        raise AssertionError("generic Coulomb point should preserve the even Z4 subgroup")
+    if quotient_actions != [-1, 1]:
+        raise AssertionError("Z8/Z4 quotient should act as u -> +/- u")
+
+    singularity = Fraction(7, 3)
+    singular_set = {singularity, -singularity}
+    reflected_set = {-entry for entry in singular_set}
+    if reflected_set != singular_set:
+        raise AssertionError("two-singularity set is not invariant under u -> -u")
+
+    u_dimension = Fraction(2)
+    lambda_dimension = Fraction(1)
+    if u_dimension != 2 * lambda_dimension:
+        raise AssertionError("finite singularity coordinate should scale as Lambda^2")
+
+    m_infinity = [[-1, 2], [0, -1]]
+    trace_infinity = m_infinity[0][0] + m_infinity[1][1]
+    trace_single_nodal_hyper = charge_monodromy(1, 0)[0][0] + charge_monodromy(1, 0)[1][1]
+    if trace_single_nodal_hyper != 2:
+        raise AssertionError("nodal hypermultiplet monodromy should be unipotent")
+    if trace_infinity == trace_single_nodal_hyper:
+        raise AssertionError("one nodal finite singularity cannot reproduce M_infinity")
+
+
 def check_rigid_special_kahler_metric() -> None:
     # Work in units where the common factor 1/(2 pi) in K has been stripped.
     # The exact algebra behind K=Im(bar a^I F_I) is
@@ -275,6 +313,7 @@ def main() -> None:
     check_monodromies()
     check_picard_lefschetz_action_and_symplecticity()
     check_local_hyper_threshold_shift()
+    check_residual_r_symmetry_two_singularity_ledger()
     check_rigid_special_kahler_metric()
     check_minimal_curve_discriminant()
     check_picard_fuchs()

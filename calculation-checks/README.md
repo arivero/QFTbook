@@ -973,11 +973,13 @@ Current checks:
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
   matrices, central-charge action and symplecticity, the rigid
   special-K\"ahler metric identity \(g=(2\pi)^{-1}\operatorname{Im}\tau\),
-  the minimal-curve discriminant, the Picard--Fuchs equation, the electric
-  large-\(u\) asymptotic, logarithmic dual-period growth, linear
-  monopole-period vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas
-  cusp scaling dimensions, discriminant collision, and mutual-nonlocality
-  obstruction.
+  the one-instanton \(R\)-anomaly zero-mode count, the residual
+  \(R\)-symmetry action \(u\mapsto -u\), the two-singularity scale ledger, the
+  single-nodal-monodromy exclusion, the minimal-curve discriminant, the
+  Picard--Fuchs equation, the electric large-\(u\) asymptotic, logarithmic
+  dual-period growth, linear monopole-period vanishing at \(u=\Lambda^2\),
+  and rank-one Argyres-Douglas cusp scaling dimensions, discriminant
+  collision, and mutual-nonlocality obstruction.
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking
