@@ -245,7 +245,10 @@ The chapter establishes:
   \(D_{\rm rad}=-\ii D_{\rm L}\), \(J_{\rm rad}=-\ii J_{\rm L}\),
   \(P_{\rm rad}=\ii P_{\rm L}\), and \(K_{\rm rad}=-\ii K_{\rm L}\).
   This derives the radial \([K_\mu,P_\nu]\) sign used by the unitarity
-  bounds.
+  bounds, and the chapter now points to
+  `calculation-checks/conformal_algebra_sign_checks.py`, which checks the
+  Lorentzian, Euclidean, ambient, and radial signs against the underlying
+  conformal-Killing-vector brackets.
 - 2026-05-24 issue #417 pass: replaced the bare statement that inversion
   exchanges translations and special conformal transformations by the BPZ
   Hilbert-space construction on the dense local finite-energy domain.  The

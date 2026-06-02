@@ -128,7 +128,7 @@
    themselves prove the existence of a manifest supersymmetric regulator.
 13. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
    supersymmetric regulators require explicit loop-order or scheme-level
-   consistency checks before they certify nonrenormalization or anomaly
+   consistency checks before they can support nonrenormalization or anomaly
    statements.
 14. Supersymmetric examples in dimensions other than four must not be treated
    as analogies: \(2D\) LG/CY/GLSM, \(3D\) Chern--Simons--matter, and \(6D\)

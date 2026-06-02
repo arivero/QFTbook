@@ -2,7 +2,7 @@
 """Finite spectral checks for Wightman clustering versus vacuum uniqueness.
 
 The script checks only the algebraic zero-momentum projection step in
-Volume IV, Chapter 1.  It does not certify the analytic Jost/Rajchman theorem
+Volume IV, Chapter 1.  It does not prove the analytic Jost/Rajchman theorem
 used to remove the continuous and nonzero-atom spectral parts.
 """
 

@@ -354,7 +354,7 @@ remainder contraction.
   the reflection-positive block-spin pullback compression \(B^TG_{\rm fine}B\)
   and the finite OS-positivity bound with an explicit regulated lower bound
   and entrywise limiting error, together with the all-ones family-size
-  obstruction showing why fixed entrywise error cannot certify directed
+  obstruction showing why fixed entrywise error cannot prove directed
   reflection positivity.  It also checks the exact finite arithmetic behind the polymer
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering

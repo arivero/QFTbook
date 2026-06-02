@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Finite algebra checks for HMC and pseudofermion identities.
 
-These checks certify only the finite-dimensional identities used in
+These checks verify only the finite-dimensional identities used in
 Volume XI, Chapter 6.  They do not test a continuum limit, solver
 stability, or ergodicity of a production Markov chain.
 """

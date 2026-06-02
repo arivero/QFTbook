@@ -50,7 +50,7 @@ distribution.
 The finite OS-positivity bound checks verify both the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction and the family-size obstruction:
-fixed entrywise tolerance cannot certify positivity on a directed family of
+fixed entrywise tolerance cannot prove positivity on a directed family of
 windows unless it scales with the window size or is replaced by an operator
 norm estimate.
 The reflection-positive block-spin pullback check verifies the finite matrix
@@ -708,11 +708,11 @@ def check_finite_os_positivity_family_size_obstruction():
     def all_ones_direction_value(dimension):
         norm_squared = Fraction(dimension)
         value = dimension * ell - dimension * dimension * epsilon
-        certified_lower = (ell - dimension * epsilon) * norm_squared
+        entrywise_lower = (ell - dimension * epsilon) * norm_squared
         assert_equal(
             f"all-ones perturbation saturates m epsilon loss m={dimension}",
             value,
-            certified_lower,
+            entrywise_lower,
         )
         return value
 

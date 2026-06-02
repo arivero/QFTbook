@@ -175,7 +175,7 @@ functorial QFT.
 - `calculation-checks/free_weyl_net_checks.py`: exact rational finite
   Weyl-algebra check for the massive scalar Weyl-net benchmark, covering the
   cocycle associativity, the commutator sign, symplectic-orthogonality
-  locality, and the partition phase used in additivity.  This check certifies
+  locality, and the partition phase used in additivity.  This check verifies
   only the finite bounded-algebra identities; the continuum support and
   Green-hyperbolic quotient steps remain the analytic content of the chapter.
 - `calculation-checks/wightman_net_bridge_checks.py`: exact rational
