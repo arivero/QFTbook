@@ -100,7 +100,7 @@ The chapter establishes:
   the \(\mathsf F_\pm^{ij,kl}\) crossing kernels, the five scalar crossing
   equations, their five-vector semidefinite-programming packaging, the
   positive-semidefinite even-sector OPE matrices, and the finite-functional
-  exclusion certificate;
+  exclusion proof object;
 - companion scalar-block code in `calculation-checks/conformal_block_companion.py`
   implementing chapter-normalized global scalar blocks with the
   Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\), the
@@ -111,8 +111,8 @@ The chapter establishes:
 - the status boundary for the three-dimensional Ising numerical island:
   the mixed-correlator crossing and positivity system is derived in the
   chapter, while derivative truncations, block approximations, gap choices,
-  and high-precision SDP islands require separately certified numerical
-  input;
+  and high-precision SDP islands require separately verified numerical proof
+  objects;
 - the boundary between core OPE machinery and later specialized bootstrap
   methods.
 
@@ -205,9 +205,10 @@ The chapter establishes:
     \((\Delta,\ell)\); the odd coefficients are ordinary nonnegative squares.
 21. A mixed-correlator functional with positive identity contribution,
     positive-semidefinite even matrix action, and nonnegative odd action is an
-    exclusion certificate.  Numerical derivative functionals become theorem
-    evidence only after the conformal-block derivatives and semidefinite
-    inequalities are certified.
+    exclusion proof object only after its positivity conditions are verified
+    over the whole allowed spectral set.  Numerical derivative functionals
+    become theorem evidence only after the conformal-block derivatives and
+    semidefinite inequalities have independently checked bounds.
 
 ## Figures
 
@@ -241,8 +242,8 @@ The chapter establishes:
   CFT correlators.  State the Mellin-representability, meromorphy, contour,
   and growth hypotheses before using contour shifts or OPE-pole language.
 - Keep the three-dimensional Ising mixed-correlator section at the level of
-  exact crossing, positivity, and finite-functional certificates unless a
-  fully certified numerical bootstrap proof is supplied.  The quoted Ising
+  exact crossing, positivity, and finite-functional proof objects unless a
+  fully verified numerical bootstrap proof is supplied.  The quoted Ising
   dimensions remain external high-precision data.
 - Run `calculation-checks/ising_mixed_bootstrap_checks.py` after changing the
   mixed-correlator prefactor, \(F_\pm\), spin-exchange, PSD, or five-vector
@@ -322,9 +323,9 @@ The chapter establishes:
   \(\sigma,\varepsilon\) mixed-correlator bootstrap datum for the
   three-dimensional Ising system, derived the five crossing equations and
   five-vector positivity packaging from the chapter's conformal-block
-  conventions, recorded the finite-functional exclusion certificate as a
-  cone-separation criterion whose hard part is constructing and certifying
-  the functional, separated numerical SDP islands as external/certification-boundary input, and added
+  conventions, recorded the finite-functional exclusion proof object as a
+  cone-separation criterion whose hard part is constructing and verifying
+  the functional on the entire allowed spectral set, separated numerical SDP islands as external proof-boundary input, and added
   `calculation-checks/ising_mixed_bootstrap_checks.py` for the exact
   prefactor/sign/PSD/vector-packing algebra.
 - 2026-05-27 companion-code follow-up: added

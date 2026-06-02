@@ -110,7 +110,7 @@ introduced a subject, such as standard mirror-symmetry or supersymmetric
 duality papers, often leave regulator choices, zero-mode arguments,
 determinant normalizations, contact terms, compactness, analytic
 continuation, or operator-algebra statements schematic.  Such papers may
-identify a mechanism or a formula to reconstruct; they do not certify the
+identify a mechanism or a formula to reconstruct; they do not prove the
 monograph's claim.  A chapter using them must either:
 
 - rederive the claim from the chapter's stated data;
@@ -389,7 +389,7 @@ inputs that would be required before the method can be used there.
 Proof audits must read the mathematical substance of each proof under review:
 the statement, hypotheses, dependencies, and proof body must be checked
 together.  Text searches for phrases such as "immediate" or length scans may
-only build a review queue; they do not certify a proof.  A proof passes the
+only build a review queue; they do not verify a proof.  A proof passes the
 audit only when the reader can identify the exact construction, estimate,
 algebraic computation, or theorem reduction that carries the stated conclusion.
 
@@ -416,7 +416,7 @@ claims, the text must identify the object being compared and the equivalence
 relation.  Examples: equality of generating functionals, equality of cocycle
 classes modulo local counterterms, convergence of correlation functions in a
 stated limit, equivalence of local nets, or isomorphism of representation
-data.  A named principle without this object-level statement is not certified.
+data.  A named principle without this object-level statement is not justified.
 
 In supersymmetric material, a particle supermultiplet is a Hilbert-space
 representation object, while an off-shell superfield multiplet is a
@@ -474,7 +474,7 @@ localized integral, JK residue, saddle determinant, instanton contribution, or
 zero-size-instanton term is used, the text must state the integration cycle,
 odd symmetry, \(Q^2\), deformation, convergence and boundary conditions,
 fixed-locus normal complex, zero-mode treatment, singular strata, and contour
-or residue prescription.  Infinite-dimensional localization is not certified
+or residue prescription.  Infinite-dimensional localization is not established
 by citing finite-dimensional equivariant localization unless the regulator or
 limiting argument is part of the construction.
 
@@ -528,9 +528,10 @@ genuinely novel structured input whose components must be declared together;
 otherwise prefer names such as representation, correspondence, functional,
 operator family, amplitude, chart, table, spectral problem, or theorem.  Use
 "ledger" only for an actual finite bookkeeping table whose entries are later
-checked, not as a synonym for discussion or list.  Use "certified" or
-"certification" only for source-coverage and calculation-check status, not as
-a decorative assurance in the reader-facing text.
+checked, not as a synonym for discussion or list.  Prefer "checked" or
+"verified" for source-coverage and calculation-check status.  Avoid
+"certified" and "certification" in reader-facing text unless a precise
+technical proof object and verifier are being discussed.
 
 Do not call a routine finite estimate a "certificate" unless a precise
 technical notion of certificate is defined and used, such as an SDP dual
@@ -724,7 +725,7 @@ prefers `WolframKernel -script` over `wolframscript -file` when both are
 available, because the kernel entrypoint is the direct local batch runner and
 avoids `wolframscript` startup/pathologies on some macOS installations.  A
 calculation check does not
-replace a derivation in the text; it certifies sign, normalization, and finite
+replace a derivation in the text; it checks sign, normalization, and finite
 algebra used by that derivation.  Computationally heavy checks, numerical
 summations, conformal-block recursion, large symbolic reductions, and loop
 integral bookkeeping that may grow combinatorially should be implemented in
@@ -765,7 +766,7 @@ and the policy is recorded in `planning/14_code_policy.md`.
 
 A companion script never replaces a derivation in the manuscript.  The
 chapter that cites it must state the finite theorem or controlled
-approximation being illustrated.  Passing the smoke harness certifies only
+approximation being illustrated.  Passing the smoke harness verifies only
 the finite computation and internal consistency checks named in the chapter,
 not a continuum limit, spectrum theorem, or physical QFT construction.
 

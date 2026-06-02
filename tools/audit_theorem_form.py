@@ -406,7 +406,7 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"|Retarded boundary value and sign convention"
     r"|GMOR as a pole-saturation consequence"
     r"|Heat-kernel smoothing estimate"
-    r"|Finite functional exclusion certificate"
+    r"|Finite functional exclusion proof object"
     r"|Positivity criterion for a BRST doublet sector"
     r"|Coefficientwise perturbation at fixed regulator"
     r"|Descendant transformation laws from primary data"
