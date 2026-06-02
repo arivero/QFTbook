@@ -63,6 +63,10 @@ constructive RG developments.
 - `S_{a_1...a_n}`, `E`, `G_OS`: Schwinger distribution windows, finite
   test-function subspaces, and finite reflection-positivity Gram windows in
   a local-QFT-strength observable germ.
+- `mathcal E`, `E_infty`, `S_E`, `q_r`: directed finite test-function
+  windows, their dense union, compatible window functionals, and the
+  Schwartz seminorm used in the projective distribution-window extension
+  lemma.
 - `G`: normalization group acting continuously on observable data.
 - `a_k`, `q`, `B_k`, `Delta_phi`: ordinary short-range scalar lattice spacing,
   block kernel, block-spin map, and field scaling exponent.
@@ -265,6 +269,12 @@ constructive RG developments.
   positivity windows, covariance/locality identities, source contact-term
   data, and reconstruction growth hypotheses before a universality statement
   can be read as equality of reconstructed local QFTs.
+- Proves the projective distribution-window extension lemma used by
+  local-QFT-strength observable germs: compatible finite test-function
+  windows with a single Schwartz-seminorm bound define a unique tempered
+  distribution extending all windows.  This identifies the exact bridge from
+  finite RG observation windows to a Schwinger distribution eligible for
+  OS/Wightman reconstruction tests.
 - Derives the finite OS-positivity Gram-window certificate used by a
   reconstruction-strength observable germ: entrywise convergence of every
   finite positive-time test-family Gram matrix preserves positivity in the
@@ -310,11 +320,15 @@ remainder contraction.
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
   estimate, relevant-direction amplification formula, differentiated
   Lyapunov--Perron \(C^1\) stable-graph formula, and projective
-  observable-germ finite-window certificate.  The same script now checks a
-  finite OS-positivity Gram-window failure that is invisible in a declared
-  one-coordinate observable window, and now checks the finite OS-positivity
-  certificate with an explicit regulated lower bound and entrywise limiting
-  error.  It also checks the exact finite arithmetic behind the polymer
+  observable-germ finite-window certificate.  The same script now checks the
+  projective distribution-window extension certificate: restriction
+  compatibility, induced finite functional value, a single seminorm bound,
+  and the exact defects produced by incompatible windows or a failed declared
+  bound.  It also checks a finite OS-positivity Gram-window failure that is
+  invisible in a declared one-coordinate observable window, and now checks
+  the finite OS-positivity certificate with an explicit regulated lower bound
+  and entrywise limiting error.  It also checks the exact finite arithmetic
+  behind the polymer
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering
   \(B_{\rm pol}\).  It also checks the finite-range
@@ -413,6 +427,12 @@ remainder contraction.
   criterion for the Lyapunov--Perron stable graph.  The companion short-range
   RG check verifies the differentiated stable-graph formula in an exact
   one-dimensional nonlinear model.
+- 2026-06-02 projective distribution-window extension pass: added the
+  missing functional-analytic bridge from compatible finite Schwinger
+  distribution windows to an actual tempered distribution.  The proof now
+  separates the algebraic compatibility step from the uniform
+  Schwartz-seminorm continuity estimate, and the companion short-range RG
+  check verifies the same finite restriction and boundedness arithmetic.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

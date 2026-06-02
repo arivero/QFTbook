@@ -642,9 +642,13 @@ Current checks:
   the \(C^1\) stable-graph derivative formula and tangency to the stable
   subspace.  It also checks the projective observable-germ finite-window
   certificate used to prevent finite observable agreement from being
-  overstated as full universality.  It also checks the QFT-strength
-  observable-germ warning that matching a visible finite correlator window
-  can miss a hidden OS-positivity Gram-window failure.  It also checks the
+  overstated as full universality.  It also checks the projective
+  distribution-window extension certificate: compatible finite
+  test-function windows plus a single seminorm bound define one bounded
+  functional, while restriction defects and declared-bound failures are
+  detected explicitly.  It also checks the QFT-strength observable-germ
+  warning that matching a visible finite correlator window can miss a hidden
+  OS-positivity Gram-window failure.  It also checks the
   finite OS-positivity certificate: if a regulated Gram matrix has a lower
   spectral bound and the limiting window has a declared entrywise error, the
   limiting Gram matrix retains the quantified positive lower bound.  It also

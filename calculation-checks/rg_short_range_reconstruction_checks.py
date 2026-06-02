@@ -39,6 +39,10 @@ or normalization errors.
 The C1 stable-graph check verifies the differentiated Lyapunov--Perron
 equation for a finite one-dimensional nonlinear RG map whose stable graph can
 be summed exactly.
+The projective distribution-window check verifies the finite arithmetic
+behind compatibility of restriction maps and a uniform seminorm bound,
+the two inputs that let finite test-function windows extend to a tempered
+distribution.
 The finite OS-positivity certificate check verifies the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction.
@@ -360,6 +364,56 @@ def check_observable_germ_finite_window_certificate():
     assert_true(
         "uncontrolled window remains outside finite certificate",
         hidden_window_error > declared_finite_bound,
+    )
+
+
+def check_projective_distribution_window_extension():
+    # A projective family of distribution windows must be compatible under
+    # restriction, and the finite values must obey a single seminorm bound.
+    # This finite vector-space model is the exact arithmetic counterpart of the
+    # Schwartz-window extension lemma in the chapter.
+    window_e1 = [Fraction(2), Fraction(-1)]
+    window_e2 = window_e1 + [Fraction(3, 5)]
+    window_e3 = window_e2 + [Fraction(7, 4)]
+
+    assert_equal("project E3 to E2", window_e3[:3], window_e2)
+    assert_equal("project E2 to E1", window_e2[:2], window_e1)
+    assert_equal("direct project E3 to E1", window_e3[:2], window_e1)
+
+    test_coefficients = [
+        Fraction(1, 3),
+        Fraction(-2),
+        Fraction(5, 7),
+        Fraction(-4, 9),
+    ]
+    induced_value = sum(
+        coefficient * value
+        for coefficient, value in zip(test_coefficients, window_e3)
+    )
+    assert_equal("projective extension value", induced_value, Fraction(146, 63))
+
+    model_qr = sum(abs(coefficient) for coefficient in test_coefficients)
+    seminorm_constant = max(abs(value) for value in window_e3)
+    assert_equal("finite model Schwartz seminorm", model_qr, Fraction(220, 63))
+    assert_equal("finite distribution seminorm constant", seminorm_constant, Fraction(2))
+    assert_true(
+        "finite distribution seminorm bound",
+        abs(induced_value) <= seminorm_constant * model_qr,
+    )
+
+    bad_window_e3 = window_e2[:2] + [Fraction(4, 5), window_e3[3]]
+    restriction_defect = bad_window_e3[2] - window_e2[2]
+    assert_equal(
+        "incompatible projective restriction defect",
+        restriction_defect,
+        Fraction(1, 5),
+    )
+
+    declared_uniform_constant = Fraction(5)
+    large_tail_values = [Fraction(1), Fraction(-2), Fraction(3), Fraction(8)]
+    assert_true(
+        "declared uniform seminorm bound detects large tail",
+        abs(large_tail_values[-1]) > declared_uniform_constant,
     )
 
 
@@ -984,6 +1038,7 @@ def main():
     check_relevant_direction_tuning_amplification()
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_certificate()
+    check_projective_distribution_window_extension()
     check_qft_strength_observable_germ_windows()
     check_finite_os_positivity_certificate()
     check_stable_chart_observable_window_certificate()

@@ -3072,9 +3072,11 @@ Euclidean scalar or gauge-invariant observable sector if its directed family
   \(a_1,\ldots,a_n\) and each finite-dimensional subspace
   \(E\subset\mathcal S((\mathbb R^D)^n)\) of test functions, a window that
   records the values of a distribution
-  \(S_{a_1\ldots a_n}\in\mathcal S'((\mathbb R^D)^n)\) on \(E\).  Taking the
-  projective limit over \(E\) recovers the full tempered distribution, not
-  only pointwise or finite-moment data.
+  \(S_{a_1\ldots a_n}\in\mathcal S'((\mathbb R^D)^n)\) on \(E\).  The
+  projective limit over \(E\) recovers the full tempered distribution only
+  after the compatibility and seminorm-bound conditions of
+  Lemma~\ref{lem:rg-projective-window-extension-distribution} are supplied;
+  finite pointwise or moment data alone are a smaller datum.
   \item Windows recording the algebraic identities required of the sector:
   permutation or graded permutation covariance, Euclidean covariance,
   reflection compatibility for the chosen time direction, and the local
@@ -3099,6 +3101,98 @@ The normalization group is restricted to transformations of the observable
 labels, coordinates, metric factors, and source normalizations that preserve
 these identities and positivity forms.
 \end{definition}
+
+\paragraph{Projective distribution-window extension.}
+The first item in
+Definition~\ref{def:local-qft-strength-observable-germ} contains a functional
+analytic obligation that is easy to hide if one speaks only of many finite
+windows.  Fix \(n\) and write
+\(X=(\mathbb R^D)^n\).  For an integer \(r\geq0\), set
+\begin{equation}
+  q_r(f)
+  =
+  \max_{|\alpha|\leq r}\sup_{x\in X}
+  (1+|x|)^r\,|\partial^\alpha f(x)|,
+  \qquad
+  f\in\mathcal S(X),
+  \label{eq:rg-schwartz-seminorm-window}
+\end{equation}
+where \(\alpha\) is a multi-index on \(X\).  These seminorms generate the
+Schwartz topology up to the usual harmless replacement by an equivalent
+countable family.
+
+\begin{lemma}[Projective finite windows define a distribution]
+\label{lem:rg-projective-window-extension-distribution}
+Let \(\mathcal E\) be a directed family of finite-dimensional subspaces of
+\(\mathcal S(X)\), ordered by inclusion, and suppose that
+\(E_\infty=\bigcup_{E\in\mathcal E}E\) is dense in
+\(\mathcal S(X)\).  For each \(E\in\mathcal E\), let
+\(S_E:E\to\mathbb C\) be linear.  Assume:
+\begin{enumerate}
+  \item whenever \(E\subset F\), \(S_F|_E=S_E\);
+  \item there exist \(r\in\mathbb Z_{\geq0}\) and \(C<\infty\) such that
+  \begin{equation}
+    |S_E(f)|\leq C\,q_r(f)
+    \qquad
+    (E\in\mathcal E,\ f\in E).
+    \label{eq:rg-projective-window-uniform-bound}
+  \end{equation}
+\end{enumerate}
+Then there is a unique tempered distribution
+\(S\in\mathcal S'(X)\) satisfying \(S|_E=S_E\) for every
+\(E\in\mathcal E\).  Moreover \(S\) obeys the same bound
+\[
+  |S(f)|\leq C\,q_r(f),
+  \qquad f\in\mathcal S(X).
+\]
+\end{lemma}
+
+\begin{proof}
+Compatibility first produces a single algebraic functional on
+\(E_\infty\).  If \(f\in E\cap F\), choose \(H\in\mathcal E\) with
+\(E\subset H\) and \(F\subset H\).  Then
+\[
+  S_E(f)=S_H(f)=S_F(f),
+\]
+so \(S_\infty(f):=S_E(f)\) for \(f\in E\) is well defined on
+\(E_\infty\).  Linearity follows after passing to a common upper window
+containing the finitely many vectors being combined.  The bound
+\eqref{eq:rg-projective-window-uniform-bound} gives
+\[
+  |S_\infty(f)|\leq C q_r(f),
+  \qquad f\in E_\infty .
+\]
+
+Let \(f\in\mathcal S(X)\).  Choose \(f_j\in E_\infty\) with
+\(f_j\to f\) in the Schwartz topology.  Then \(q_r(f_j-f_k)\to0\), hence
+\[
+  |S_\infty(f_j)-S_\infty(f_k)|
+  \leq C q_r(f_j-f_k),
+\]
+so \(S_\infty(f_j)\) is Cauchy in \(\mathbb C\).  If \(g_j\in E_\infty\)
+is another approximating sequence, then \(q_r(f_j-g_j)\to0\), so the two
+limits agree.  Define
+\[
+  S(f)=\lim_{j\to\infty}S_\infty(f_j).
+\]
+The definition is linear by applying the same construction to approximating
+sequences for finite linear combinations, and the estimate
+\(|S(f)|\leq Cq_r(f)\) follows by taking the limit of
+\(|S_\infty(f_j)|\leq Cq_r(f_j)\).  Thus \(S\) is continuous on
+\(\mathcal S(X)\), hence \(S\in\mathcal S'(X)\), and it extends each
+\(S_E\).  If \(T\in\mathcal S'(X)\) is another continuous extension, then
+\(T-S\) vanishes on the dense subspace \(E_\infty\); continuity gives
+\(T=S\).
+\end{proof}
+
+This lemma isolates the exact theorem-facing content of the phrase
+``distribution window.''  Compatibility supplies a single algebraic
+functional; the uniform Schwartz-seminorm bound supplies tempered
+continuity.  In a genuine Wilsonian RG theorem the estimates must be produced
+for the Schwinger hierarchy and for the source derivatives that generate the
+desired local observables.  After this distributional object exists, the
+finite reflection-positivity windows below test whether it is eligible for
+OS reconstruction.
 
 \paragraph{Finite OS-positivity certificates.}
 The positivity windows in
