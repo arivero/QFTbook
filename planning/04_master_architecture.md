@@ -66,9 +66,10 @@ Current compiled material:
 10. Symmetries, Noether Theorem, And Stress Tensors
 11. Scalar Path Integrals And Euclidean Green Functions
 12. Osterwalder--Schrader Reconstruction
-13. Kallen--Lehmann Spectral Representation And Particle Content
-14. Perturbative Green Functions And Feynman Graphs
-15. Lorentzian Green Functions And Analytic Continuation
+13. Kontsevich--Segal Functorial Quantum Field Theory
+14. Kallen--Lehmann Spectral Representation And Particle Content
+15. Perturbative Green Functions And Feynman Graphs
+16. Lorentzian Green Functions And Analytic Continuation
 
 Further development targets:
 
@@ -175,8 +176,9 @@ Current compiled material:
 11. Jets, Infrared-Safe Observables, And Hadronization
 12. Chiral And Axial Anomalies
 13. Schwinger Model And Two-Dimensional QED
-14. The Standard Model As A Hybrid Quantum Field Theory
-15. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
+14. Large-\(N\) Two-Dimensional QCD And The Light-Front Bound-State Equation
+15. The Standard Model As A Hybrid Quantum Field Theory
+16. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
 
 Further development targets:
 
@@ -210,6 +212,11 @@ Current compiled material:
 8. Correlation Functions And Conformal Frames
 9. Operator Product Expansion
 10. Light-Ray Operators And Energy Correlators
+11. Two-Dimensional Sigma Models, Orbifolds, And Twist Fields
+12. Vertex Operator Algebras, Modular Sewing, And Logarithmic CFT
+13. Liouville Conformal Field Theory
+14. Boundary Conformal Field Theory
+15. Two-Dimensional Superconformal Algebras
 
 Further development targets:
 
@@ -269,14 +276,17 @@ Current compiled material:
 1. Factorized Scattering And Integrability
 2. Two-Dimensional Scattering Analyticity And Bootstrap Data
 3. Yang--Baxter Consistency And Internal Symmetry
-4. Form-Factor Bootstrap And Local Operators
-5. Thermodynamic Bethe Ansatz
-6. Integrable RG Flows And Perturbed Two-Dimensional CFT
-7. Mirror-Channel TBA And Finite-Size Effects
-8. Sine-Gordon, Massive Thirring, And Affine Toda Theories
-9. \(O(N)\), Gross--Neveu, And Integrable Sigma-Model Families
-10. Bridges To Nonintegrable Two-Dimensional QFT And CFT
-11. Finite-Volume Form Factors And Spectral Expansions
+4. Algebraic Bethe Ansatz And Transfer Matrices
+5. Nested Bethe Ansatz And Matrix Bethe--Yang Equations
+6. Form-Factor Bootstrap And Local Operators
+7. Thermodynamic Bethe Ansatz
+8. Nested TBA, Baxter Relations, And Separation Variables
+9. Integrable RG Flows And Perturbed Two-Dimensional CFT
+10. Mirror-Channel TBA And Finite-Size Effects
+11. Sine-Gordon, Massive Thirring, And Affine Toda Theories
+12. \(O(N)\), Gross--Neveu, And Integrable Sigma-Model Families
+13. Bridges To Nonintegrable Two-Dimensional QFT And CFT
+14. Finite-Volume Form Factors And Spectral Expansions
 
 Further development targets:
 
@@ -315,10 +325,16 @@ Current compiled material:
 5. Nonrenormalization And Holomorphy
 6. Four-Dimensional \(\mathcal N=1\) Gauge Dynamics
 7. Four-Dimensional \(\mathcal N=2\) Gauge Dynamics And Seiberg-Witten Theory
-8. Moduli Spaces In Supersymmetric Quantum Field Theory
-9. Two-Dimensional Landau--Ginzburg, Sigma-Model, And Calabi--Yau Theories
-10. Three-Dimensional Chern--Simons--Matter Theories
-11. Six-Dimensional Superconformal Theories
+8. Spectral Bridges Among Supersymmetric Yang--Mills Cousins
+9. Moduli Spaces In Supersymmetric Quantum Field Theory
+10. Two-Dimensional Landau--Ginzburg, Sigma-Model, And Calabi--Yau Theories
+11. Three-Dimensional Chern--Simons--Matter Theories
+12. Six-Dimensional Superconformal Theories
+13. Planar \(\mathcal N=4\) Supersymmetric Yang--Mills As A Spectral Problem
+14. All-Loop Asymptotic Bethe Ansatz
+15. Mirror TBA And The Y-System
+16. Quantum Spectral Curve And Hexagon Form Factors
+17. Supersymmetric Localization On Compact Manifolds
 
 Further development targets:
 
@@ -494,6 +510,7 @@ Current compiled material:
 9. Anomalous And Topological Transport
 10. Nonequilibrium Steady States And Open-System Limits
 11. Hydrodynamic Fluctuations And Long-Time Tails
+12. QCD Phase Structure, Plasma, And Dense Matter
 
 Further development targets:
 
@@ -584,6 +601,25 @@ Further development targets:
 10. Microlocal Spectrum Condition And Hadamard Geometry
 11. Perturbative Algebraic QFT On Curved Backgrounds
 12. Semiclassical Backreaction And Stress-Tensor Fluctuations
+
+## Roadmap Volumes XIII--XX
+
+The following volumes are part of the public subject architecture but are not
+yet active compiled assemblies.  Their material may already be partially
+developed in Volumes I--XII; a roadmap volume becomes compiled only after its
+source assembly, chapter dossiers, verification pass, and reader-facing
+frontmatter are in place.
+
+| Volume | Roadmap title | Intended subject domain |
+| --- | --- | --- |
+| XIII | Large-\(N\) Gauge Theory, QCD Strings, Flux Tubes, Baryons, And Gauge-String Expansions | Nonperturbative large-\(N\) limits, QCD string observables, baryons, flux tubes, planar limits, and controlled bridges to gauge/string spectral problems. |
+| XIV | Advanced Local-Algebraic QFT And Modular Structure | Local von Neumann algebras, split property, modular inclusions, relative entropy, entanglement as an AQFT topic, superselection sectors in examples, and concrete interacting nets. |
+| XV | Advanced Scattering, Amplitudes, Resonances, And Infrared-Safe Observables | Analytic connected S-matrix elements, resonance poles and external unstable states, charged scattering beyond ordinary Haag--Ruelle, detector-defined inclusive observables, and nonperturbative amplitude constraints. |
+| XVI | Advanced Supersymmetric Theories And Protected Sectors | Supersymmetric Wilsonian schemes, GLSM and mirror symmetry, four-dimensional \(\mathcal N=1\) and \(\mathcal N=2\) exact dynamics, localization with regulated data, six-dimensional theories, and protected sectors. |
+| XVII | Advanced Two-Dimensional CFT And Exact Two-Dimensional QFT | Full and chiral CFT on Riemann surfaces, rational and non-rational examples, Liouville and Coulomb-gas residue logic, orbifolds, twist fields, sigma models, form factors, TCSA, TFFSA, and bridges to integrable and nonintegrable two-dimensional QFT. |
+| XVIII | Advanced Constructive, Stochastic, And Rigorous Wilsonian QFT | Constructive existence theorems, stochastic quantization, singular SPDEs, nonperturbative Wilsonian RG, scaling limits, and proofs connecting regulator data to local QFT frameworks. |
+| XIX | Advanced Phases, Defects, Categorical Symmetry, And Extended-Operator Theory | Line, surface, and domain-wall operators; generalized global symmetry; categorical symmetry; noninvertible defects; phase diagnostics; anomaly inflow; and substantial examples. |
+| XX | Advanced Curved-Background, Locally Covariant, And Semiclassical QFT | Locally covariant QFT, microlocal methods, Hadamard renormalization, index-theoretic anomaly structure, semiclassical backreaction, and controlled curved-background examples. |
 
 ## Inclusion Rule
 

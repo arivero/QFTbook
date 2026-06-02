@@ -120,29 +120,36 @@ The chapter establishes:
    \(C(S^{D-2})\) and Riesz--Markov uniqueness.  Finite moment truncations
    are finite-resolution projections and must not be treated as complete
    detector data.
-4. Energy correlators are distributions; coincident detector directions carry
+4. Finite detector partitions approximate the statewise positive measure only
+   with a stated resolution certificate: for Lipschitz test functions the error
+   is bounded by the partition diameter times the Lipschitz constant and total
+   detector mass, and the corresponding \(k\)-detector statement uses the
+   product metric and the total \(k\)-detector mass.  These bounds are
+   finite-resolution consequences of an already constructed positive measure;
+   the construction of detector products remains the separate domain question.
+5. Energy correlators are distributions; coincident detector directions carry
    contact terms whose finite positive-measure model is the diagonal
    decomposition of detector product measures, indexed for \(k\) insertions by
    partitions of detector labels.
-5. The averaged null energy operator is the null-line version of the
+6. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
-6. The light-transform weight map is derived from embedding-space
+7. The light-transform weight map is derived from embedding-space
    homogeneity and change of null-line integration variable; existence of the
    corresponding operator is kept separate as a Lorentzian analyticity/growth
    hypothesis.
-7. ANEC positivity is recorded as a theorem boundary with explicit
+8. ANEC positivity is recorded as a theorem boundary with explicit
    Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
    modular/causal proof mechanisms stated at the level needed for collider
    applications.  The modular route displays the region/complement
    relative-entropy derivative inequalities and the common entropy-variation
    squeeze, so the sign of the full null integral is not hidden in the phrase
    "entropy variations cancel."
-8. Positivity of the energy detector implies the displayed
+9. Positivity of the energy detector implies the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
-9. The CFT EEC and the QCD EEC are the same detector construction with
+10. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
-10. The convergent light-ray OPE is used with explicit Lorentzian CFT
+11. The convergent light-ray OPE is used with explicit Lorentzian CFT
    hypotheses rather than treated as a general axiom of QFT.  The chapter now
    records the proof mechanism and the needed transverse-distribution
    convergence estimate, and separates the fixed-point CFT statement from the
@@ -171,7 +178,9 @@ The chapter establishes:
   `calculation-checks/cft_energy_detector_contact_checks.py`, which now also
   checks the statewise Riesz bound and finite-bin Cauchy--Schwarz positivity
   that precede detector products, together with finite-grid compact moment
-  reconstruction and a truncated-moment ambiguity example.
+  reconstruction, a truncated-moment ambiguity example, and finite-resolution
+  Lipschitz partition certificates for one-detector and detector-product
+  measures.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the finite arithmetic for the light-transform homogeneity map and the

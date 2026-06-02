@@ -21,7 +21,9 @@ This table is the complete volume roster.  It is intentionally placed before
 the repository logistics so that the full subject architecture is visible on a
 first read.  Do not infer the program from
 `monograph/tex/volumes/` alone, since that directory contains only active
-compiled assemblies.
+compiled assemblies.  The same I--XX roster is mirrored in
+`planning/README.md` and `planning/04_master_architecture.md` so public
+planning documents and the repository entry point stay synchronized.
 
 At a glance, the full volume program is:
 

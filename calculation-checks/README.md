@@ -493,6 +493,8 @@ Current checks:
 - `cft_energy_detector_contact_checks.py`: exact finite positive-measure
   checks for the CFT light-ray/energy-correlator chapter, including the
   statewise detector Riesz bound, finite-bin Cauchy--Schwarz positivity,
+  finite-resolution Lipschitz partition certificates for one-detector and
+  detector-product measures,
   compact moment-matrix positivity, finite-grid moment reconstruction,
   truncated-moment ambiguity,
   off-diagonal plus diagonal split of two detector products, the vanishing of

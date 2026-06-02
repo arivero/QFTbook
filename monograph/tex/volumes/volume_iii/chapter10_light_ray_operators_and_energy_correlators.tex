@@ -137,6 +137,84 @@ measure.  Positivity statements for products
 \(\mathcal E(f_1)\cdots\mathcal E(f_k)\) require the diagonal-contact
 extension discussed next.
 
+\paragraph{Finite-resolution convergence certificates.}
+The finite partition readout gives the operational topology in which an ideal
+detector is approached by finite angular bins.  Let \(d\) be the round metric on
+\(S^{D-2}\).  For a
+finite Borel partition
+\[
+  \mathcal P=\{B_1,\ldots,B_m\},
+  \qquad
+  \operatorname{diam}(\mathcal P)
+  =
+  \max_a\sup_{\mathbf n,\mathbf n'\in B_a}d(\mathbf n,\mathbf n'),
+\]
+choose a representative point \(\mathbf n_a\in B_a\) for each nonempty bin and
+replace the statewise detector measure by the binned measure
+\[
+  \mu_{\Psi,\mathcal P}
+  =
+  \sum_a\mu_\Psi(B_a)\,\delta_{\mathbf n_a}.
+\]
+If \(f:S^{D-2}\to\mathbb R\) is \(L_f\)-Lipschitz, then
+\begin{equation}
+  \left|
+  \int f\,\dd\mu_\Psi
+  -
+  \int f\,\dd\mu_{\Psi,\mathcal P}
+  \right|
+  \leq
+  L_f\,\operatorname{diam}(\mathcal P)\,\mu_\Psi(S^{D-2}).
+  \label{eq:cft-detector-partition-lipschitz-certificate}
+\end{equation}
+Indeed, on each bin,
+\[
+  |f(\mathbf n)-f(\mathbf n_a)|
+  \leq
+  L_f\,\operatorname{diam}(\mathcal P),
+\]
+and summing the resulting measure estimate over bins gives
+\eqref{eq:cft-detector-partition-lipschitz-certificate}.  Thus convergence of
+finite bin masses along partitions with
+\(\operatorname{diam}(\mathcal P)\to0\), together with the uniform total
+energy bound \(\mu_\Psi(S^{D-2})=\langle P^0\rangle_\Psi\), implies weak
+convergence of the statewise detector measures against continuous tests by
+uniform approximation.
+
+The same estimate controls finite-resolution \(k\)-detector products after a
+positive joint detector measure has been constructed.  Let
+\(\mu_\Psi^{(k)}\) be such a measure on \((S^{D-2})^k\), let
+\(\mu_{\Psi,\mathcal P}^{(k)}\) be the pushforward to the representative
+points, and let \(F\) be \(L_F\)-Lipschitz with respect to the product metric
+\[
+  d_k((\mathbf n_1,\ldots,\mathbf n_k),
+      (\mathbf n'_1,\ldots,\mathbf n'_k))
+  =
+  \sum_{r=1}^{k}d(\mathbf n_r,\mathbf n'_r).
+\]
+Then
+\begin{equation}
+  \left|
+  \int F\,\dd\mu_\Psi^{(k)}
+  -
+  \int F\,\dd\mu_{\Psi,\mathcal P}^{(k)}
+  \right|
+  \leq
+  k\,L_F\,\operatorname{diam}(\mathcal P)\,
+  \mu_\Psi^{(k)}((S^{D-2})^k).
+  \label{eq:cft-detector-product-partition-lipschitz-certificate}
+\end{equation}
+For the product measure of a finite-energy state, the total mass is
+\(\langle(P^0)^k\rangle_\Psi\) when the diagonal-contact extension has been
+included.  Equations
+\eqref{eq:cft-detector-partition-lipschitz-certificate} and
+\eqref{eq:cft-detector-product-partition-lipschitz-certificate} are therefore
+the finite-resolution certificates behind the statement that energy
+correlators are detector observables on the celestial sphere.  The
+construction of detector products remains the separate domain question; once a
+product measure is available, these estimates identify the finite calorimeter
+data it supplies.
+
 \subsection{Angular Moment Data and Measure Reconstruction}
 \label{subsec:cft-detector-moment-reconstruction}
 

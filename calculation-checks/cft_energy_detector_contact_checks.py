@@ -6,7 +6,9 @@ sphere.  They verify the algebra behind the diagonal contact terms used in
 the CFT light-ray/energy-correlator chapter.  The finite model is not a
 substitute for the operator-valued-distribution construction; it fixes the
 partition and moment bookkeeping that the continuum construction must
-preserve.
+preserve.  The finite-resolution checks verify the Lipschitz partition
+certificates used to pass from finite angular bins to statewise detector
+measures and detector-product measures.
 """
 
 from __future__ import annotations
@@ -155,6 +157,53 @@ def check_finite_bin_cauchy_schwarz() -> None:
     assert_nonnegative("finite-bin detector Cauchy-Schwarz determinant", vv * ww - vw * vw)
 
 
+def check_finite_partition_lipschitz_certificate() -> None:
+    # One-dimensional finite shadow of angular bin refinement.  Points are
+    # binned to representatives within distance delta.  For an L-Lipschitz
+    # test, the detector error is bounded by L delta times total energy.
+    weights = [Fraction(1, 5), Fraction(3, 10), Fraction(1, 2)]
+    points = [Fraction(1, 10), Fraction(2, 5), Fraction(9, 10)]
+    representatives = [Fraction(0), Fraction(1, 2), Fraction(1)]
+    delta = Fraction(1, 5)
+    total_energy = sum(weights)
+    lipschitz_f = Fraction(2)
+
+    def f(point: Fraction) -> Fraction:
+        return 2 * point - 1
+
+    exact = sum(weight * f(point) for weight, point in zip(weights, points))
+    binned = sum(weight * f(rep) for weight, rep in zip(weights, representatives))
+    error = abs(exact - binned)
+    bound = lipschitz_f * delta * total_energy
+
+    assert_equal("finite partition total energy", total_energy, Fraction(1))
+    assert_equal("finite partition detector error", error, Fraction(3, 25))
+    assert_equal("finite partition detector bound", bound, Fraction(2, 5))
+    assert_nonnegative("finite partition Lipschitz certificate", bound - error)
+
+    # Product-measure version for F(x,y)=x-2y.  With the sum product metric,
+    # an admissible Lipschitz constant is max(1,2)=2, and the chapter's
+    # bound is k L delta times the total product mass.
+    lipschitz_F = Fraction(2)
+
+    def F(left: Fraction, right: Fraction) -> Fraction:
+        return left - 2 * right
+
+    exact_product = Fraction(0)
+    binned_product = Fraction(0)
+    for weight_left, point_left, rep_left in zip(weights, points, representatives):
+        for weight_right, point_right, rep_right in zip(weights, points, representatives):
+            weight = weight_left * weight_right
+            exact_product += weight * F(point_left, point_right)
+            binned_product += weight * F(rep_left, rep_right)
+
+    product_error = abs(exact_product - binned_product)
+    product_bound = 2 * lipschitz_F * delta * total_energy**2
+    assert_equal("finite product partition error", product_error, Fraction(3, 50))
+    assert_equal("finite product partition bound", product_bound, Fraction(4, 5))
+    assert_nonnegative("finite product partition Lipschitz certificate", product_bound - product_error)
+
+
 def check_compact_moment_positive_matrix() -> None:
     weights = [Fraction(1, 6), Fraction(1, 3), Fraction(1, 2)]
     points = [Fraction(-1), Fraction(0), Fraction(1, 2)]
@@ -238,6 +287,7 @@ def check_three_detector_partition_decomposition() -> None:
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
+    check_finite_partition_lipschitz_certificate()
     check_compact_moment_positive_matrix()
     check_three_point_grid_moment_reconstruction()
     check_truncated_moment_ambiguity()
