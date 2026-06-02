@@ -140,8 +140,11 @@ functorial QFT.
   current smearings as derivative pullbacks of the same scalar coordinate,
   and Gauss law as a relation among those coordinates.  Gauge
   representatives, charged fermions, open Wilson lines, compact zero modes,
-  and flux sectors are kept outside the bounded local observable net unless
-  additional sector data are supplied.
+  and flux sectors are separated from the bounded local observable net unless
+  additional sector data are supplied.  When several flux branches are
+  represented simultaneously, their spectral projections are central/global
+  sector operators: they commute with bounded local Schwinger algebras while
+  sitting outside every proper bounded-region electric-current algebra.
 - Proves Lemma `lem:positive-energy-tube-uniqueness`, the local analytic
   input in Reeh--Schlieder: a finite positive-energy spectral measure gives a
   matrix coefficient holomorphic in \(M-\ii V_+\), and vanishing of its real
@@ -189,8 +192,11 @@ functorial QFT.
   self-adjoint local field by a scalar does not change the generated local
   algebra.  The Schwinger finite model now also verifies affine
   electric-field coordinate reduction, derivative-current inclusion in the
-  same scalar algebra, a finite Gauss-law coordinate relation, and the
-  off-diagonal character of a line-dressed sector-changing operator.  It also
+  same scalar algebra, a finite Gauss-law coordinate relation, the
+  off-diagonal character of a line-dressed sector-changing operator, and a
+  global flux-sector projection that commutes with local electric coordinates
+  while splitting an auxiliary sector fiber and hence lying outside the local
+  electric-coordinate algebra.  It also
   checks the finite affiliation criterion separating a
   diagonal self-adjoint generator affiliated with the diagonal algebra from an
   odd generator whose spectral projections fail the commutant test.  It also
@@ -213,6 +219,12 @@ functorial QFT.
   net construction, internal fixed-point observables, phase sectors, and the
   separate estimates needed for nuclearity, split, Haag duality, and DHR
   reconstruction.
+- 2026-06-02 Schwinger flux-boundary pass: expanded the gauge-theory checkpoint
+  to state the boundary between compactly supported local electric-current
+  observables and global flux-sector projections.  The point is a genuine net
+  distinction: flux projections commute with every bounded local algebra in a
+  multi-branch representation, but belong to the representation's global
+  sector datum rather than to the proper bounded-region Schwinger algebra.
 - 2026-05-30 free Weyl-net benchmark pass: inserted the massive scalar Weyl
   net before pAQFT so the chapter has an explicit nonperturbative local-net
   model with additivity and the time-slice axiom proved directly from

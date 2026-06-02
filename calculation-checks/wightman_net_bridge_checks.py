@@ -277,6 +277,35 @@ def check_schwinger_observable_coordinate_reduction() -> None:
     if any(entry != 0 for entry in off_diagonal_entries(closed_flux_function)):
         raise AssertionError("closed flux function should stay inside the electric-field algebra")
 
+    # A global flux sector is a representation datum, not a bounded-region
+    # local electric coordinate.  In the finite shadow, the local electric
+    # algebra acts on the first tensor factor and is constant on the auxiliary
+    # flux-sector factor; the flux-sector projection commutes with it but is
+    # not a function of the local coordinate.
+    local_sector_values = [Fraction(0), Fraction(0), Fraction(1), Fraction(1)]
+    local_electric_coordinate = diagonal_matrix(local_sector_values)
+    flux_sector_projection = diagonal_matrix([
+        Fraction(1), Fraction(0), Fraction(1), Fraction(0)
+    ])
+    assert_eq_any(
+        comm_any(local_electric_coordinate, flux_sector_projection),
+        zero_matrix(4),
+        "global flux-sector projection commutes with local electric coordinates",
+    )
+    local_electric_generated_samples = [
+        add_any(
+            scale_any(a, identity4),
+            scale_any(b, local_electric_coordinate),
+        )
+        for a in (Fraction(0), Fraction(2), Fraction(-1, 5))
+        for b in (Fraction(0), Fraction(3), Fraction(7, 4))
+    ]
+    for sample in local_electric_generated_samples:
+        if sample[0][0] != sample[1][1] or sample[2][2] != sample[3][3]:
+            raise AssertionError("local electric algebra should be constant on flux-sector fibers")
+    if flux_sector_projection[0][0] == flux_sector_projection[1][1]:
+        raise AssertionError("flux-sector projection should split an auxiliary sector fiber")
+
 
 def check_finite_affiliation_commutant_criterion() -> None:
     """Finite shadow of affiliation through commutant invariance."""
