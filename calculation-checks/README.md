@@ -778,13 +778,16 @@ Current checks:
   four-boundary Cardy--Lewellen sewing cell, and the Liouville FZZT/ZZ
   hyperbolic identities used in the nonrational boundary-state discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
-  including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
-  dual, one-screening and dual one-screening coefficient
-  rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
-  Virasoro block coefficients through level three with Gram determinant
-  factorization and global-block limits, the FZZT \(b\)- and
-  \(b^{-1}\)-shift ratios, the normalized FZZT boundary finite-difference
-  identity, and the elliptic \(q\)-coordinate conversion through \(q^2\).
+  including the probabilistic GMC threshold normalization
+  \(Q_\gamma=2/\gamma+\gamma/2=b+b^{-1}\) and the distinction between the
+  first-moment and Seiberg local-integrability bounds, the level-two BPZ null
+  vector, its \(b\leftrightarrow b^{-1}\) dual, one-screening and dual
+  one-screening coefficient rewrites, DOZZ \(b\)-shift powers,
+  hypergeometric connection arguments, Virasoro block coefficients through
+  level three with Gram determinant factorization and global-block limits,
+  the FZZT \(b\)- and \(b^{-1}\)-shift ratios, the normalized FZZT boundary
+  finite-difference identity, and the elliptic \(q\)-coordinate conversion
+  through \(q^2\).
 - `superconformal_algebra_checks.py`: exact rational checks for the
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary

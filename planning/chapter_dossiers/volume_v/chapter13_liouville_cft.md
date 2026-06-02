@@ -72,6 +72,12 @@ boundaries rather than importing the appendix exposition.
   the explicit normalization map
   `gamma=2b`, `alpha_i^prob=2 alpha_i`, the random GMC functional `Z_g`, and
   the gamma-function zero-mode integral producing the Seiberg inequality.
+- Separates the naive first-moment bound for the local singular GMC mass
+  from the actual subcritical Seiberg threshold: the expectation threshold is
+  `alpha_i^prob < 2/gamma`, while the almost-sure local integrability and
+  negative-moment theorem uses
+  `alpha_i^prob < Q_gamma = 2/gamma + gamma/2 = Q`, i.e.
+  `alpha_i < Q/2` in the physics convention.
 - Defines the reflection relation as a meromorphic identification of
   correlation functions.
 - Adds the canonical asymptotic scattering basis on the cylinder and the
@@ -171,6 +177,10 @@ boundaries rather than importing the appendix exposition.
 
 ## Calculation Checks
 
+- `calculation-checks/liouville_bpz_checks.py` verifies the fragile
+  normalization map in the probabilistic GMC Seiberg thresholds,
+  distinguishing the stricter first-moment bound from the true subcritical
+  local-integrability threshold.
 - `calculation-checks/liouville_bpz_checks.py` verifies the fragile
   Virasoro arithmetic for the level-two null vectors
   `(L_{-1}^2+b^2 L_{-2})|h>` at `h=-1/2-3b^2/4` and
@@ -306,6 +316,13 @@ boundaries rather than importing the appendix exposition.
   as the remaining functorial closure problem rather than letting a reader
   infer them from the separate probabilistic and bootstrap theorem
   boundaries.
+- 2026-06-02 probabilistic Seiberg-threshold pass: expanded the local GMC
+  integrability mechanism after the zero-mode integral, explicitly warning
+  that finite first moment of the singular local mass is a stricter and
+  insufficient criterion.  The chapter now states the actual subcritical
+  threshold `Q_gamma=2/gamma+gamma/2` and translates it to
+  `alpha_i<Q/2`; `liouville_bpz_checks.py` records the normalization
+  arithmetic.
 
 ## Anti-Wrapper Audit
 

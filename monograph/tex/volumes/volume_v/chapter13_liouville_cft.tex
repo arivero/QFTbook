@@ -344,11 +344,34 @@ change of variable \(t=\mu Z_g\ee^{\gamma c}\) gives
   \label{eq:liouville-zero-mode-gamma-integral}
 \end{equation}
 This identity is the source of the global Seiberg inequality
-\(s(\boldsymbol\alpha,\Sigma)>0\).  The local inequalities
-\(\alpha_i<Q/2\) are the corresponding local integrability conditions for
-the random measure \eqref{eq:liouville-gmc-insertion-functional} near the
-marked points.  Thus the probabilistic correlation function in the initial
-domain is the expectation of the explicit negative moment
+\(s(\boldsymbol\alpha,\Sigma)>0\).  The local inequalities are a separate
+Gaussian-multiplicative-chaos input.  Near a marked point \(x_i\), the
+potential mass contains the singular GMC integral
+\[
+  I_i
+  =
+  \int_{U_i}
+  d_g(y,x_i)^{-\gamma\alpha_i^{\mathrm{prob}}}\,
+  M_{\gamma,g}(\dd y),
+  \qquad
+  \alpha_i^{\mathrm{prob}}=2\alpha_i .
+\]
+The first moment of \(I_i\) is finite only for
+\(\alpha_i^{\mathrm{prob}}<2/\gamma\), because
+\(\mathbb E[M_{\gamma,g}]\) is the background volume measure.  The Liouville
+construction criterion is the larger subcritical threshold supplied by the
+GMC thick-point theorem.  That theorem controls rare thick points of the
+log-correlated field and gives the almost-sure local integrability and the
+negative-moment estimates needed for
+\eqref{eq:liouville-zero-mode-gamma-integral} precisely under
+\[
+  \alpha_i^{\mathrm{prob}}<Q_\gamma,
+  \qquad
+  Q_\gamma:=\frac2\gamma+\frac{\gamma}{2}.
+\]
+Since \(\gamma=2b\), \(Q_\gamma=b+b^{-1}=Q\), so this is the physics
+condition \(\alpha_i<Q/2\).  Thus the probabilistic correlation function in
+the initial domain is the expectation of the explicit negative moment
 \[
   \mathbb E\!\left[
     Z_g(X_g;\boldsymbol x,\boldsymbol\alpha)^{-s/\gamma}

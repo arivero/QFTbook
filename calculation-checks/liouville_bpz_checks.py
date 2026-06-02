@@ -157,6 +157,41 @@ one = Laurent.constant(1)
 t = Laurent.monomial(1)
 t_inverse = Laurent.monomial(-1)
 
+
+def check_probabilistic_seiberg_thresholds() -> None:
+    """Check the normalization map behind the probabilistic Seiberg bounds.
+
+    In the subcritical GMC construction gamma=2b with 0<gamma<2.  The
+    first-moment threshold for the singular local mass is alpha_prob<2/gamma,
+    while the actual Seiberg threshold is alpha_prob<Q_gamma with
+    Q_gamma=2/gamma+gamma/2 = b+b^{-1}.  The latter is the physics condition
+    alpha<Q/2 because alpha_prob=2 alpha.
+    """
+
+    for b in (Fraction(1, 3), Fraction(1, 2), Fraction(3, 4)):
+        gamma = 2 * b
+        q_gamma = Fraction(2, 1) / gamma + gamma / 2
+        physics_q = b + Fraction(1, 1) / b
+        if q_gamma != physics_q:
+            raise AssertionError(f"GMC Q normalization mismatch for b={b}")
+
+        first_moment_threshold = Fraction(2, 1) / gamma
+        if not first_moment_threshold < q_gamma:
+            raise AssertionError("subcritical first-moment threshold should be stricter")
+
+        alpha_prob_between_thresholds = (first_moment_threshold + q_gamma) / 2
+        if alpha_prob_between_thresholds < first_moment_threshold:
+            raise AssertionError("test alpha should violate the first-moment bound")
+        if not alpha_prob_between_thresholds < q_gamma:
+            raise AssertionError("test alpha should satisfy the Seiberg bound")
+
+        alpha_physics = alpha_prob_between_thresholds / 2
+        if not alpha_physics < physics_q / 2:
+            raise AssertionError("physics alpha<Q/2 translation failed")
+
+
+check_probabilistic_seiberg_thresholds()
+
 # h(-b/2)=(-b/2)(Q+b/2)=-1/2-3 b^2/4.
 h = Laurent.constant(Fraction(-1, 2)) + t.scale(Fraction(-3, 4))
 dual_h = Laurent.constant(Fraction(-1, 2)) + t_inverse.scale(Fraction(-3, 4))
@@ -771,7 +806,7 @@ if raw_q_block[2] != g2_formula:
     )
 
 print(
-    "All Liouville BPZ, dual-BPZ, screening, dual-screening, "
+    "All Liouville GMC-threshold, BPZ, dual-BPZ, screening, dual-screening, "
     "Virasoro-block through level three, connection-matrix, FZZT-shift, "
     "FZZT finite-difference, elliptic-q, and DOZZ-shift checks passed."
 )
