@@ -959,6 +959,103 @@ positivity or distribution interpretation of the annulus spectral density.
 Those are analytic sewing requirements, not consequences of the finite
 hyperbolic identities alone.
 
+\paragraph{Analytic sewing datum for nonrational boundaries.}
+The preceding wavefunctions become a boundary conformal field theory only
+after they are placed in a functional-analytic sewing datum.  One convenient
+way to state the target is the following.  First choose, inside the closed
+Liouville direct integral, a dense nuclear test space
+\(\mathcal S_{\rm cl}\) whose vectors have rapidly decreasing smooth
+dependence on \(P\) and lie levelwise in the smooth Virasoro-module
+vectors.  Boundary states in this setting are continuous linear functionals
+\[
+  |a\rangle\in\mathcal S_{\rm cl}' .
+\]
+The FZZT and ZZ formulas above specify candidate distributional coordinates
+of such functionals.  The regulated closed-channel annulus is then the
+distributional pairing
+\begin{equation}
+  Z_{ab}^{\rm cl}(\tilde q)
+  =
+  \bigl\langle a\bigm|
+  \tilde q^{(L_0+\bar L_0-c/12)/2}
+  \bigm|b\bigr\rangle ,
+  \qquad 0<|\tilde q|<1,
+  \label{eq:liouville-bcft-closed-annulus-pairing}
+\end{equation}
+initially defined by testing the two distributions against the trace-class
+heat kernel on each positive-energy Virasoro module, with the continuous
+\(P\)-integration still treated distributionally, and then by analytic
+continuation in the boundary parameters when poles are crossed.
+
+Second, for every ordered pair of boundary conditions \(a,b\), one must
+construct an open-channel positive-energy Hilbert space \(\Hilb_{ab}\) and a
+dense common smooth domain \(\mathcal D_{ab}\subset\Hilb_{ab}\).  Annulus
+positivity is the existence of positive spectral measures \(\nu_{ab}\) and
+multiplicity fields \(\mathcal M_{ab}(h)\) such that
+\begin{equation}
+  Z_{ab}^{\rm op}(q)
+  =
+  \int_{\mathbb R_{\ge0}}
+  \operatorname{Tr}_{\mathcal M_{ab}(h)}
+  q^{h-c/24}\,\dd\nu_{ab}(h)
+  \label{eq:liouville-bcft-open-annulus-measure}
+\end{equation}
+agrees with \eqref{eq:liouville-bcft-closed-annulus-pairing} in the common
+domain of convergence, with the usual matrix-positivity condition for finite
+linear combinations of boundary labels.  In degenerate cases the measure may
+have a discrete part.  The ZZ finite differences are meaningful precisely
+because the contour prescription turns the corresponding closed-channel
+functional into such a positive open-channel spectral datum; the hyperbolic
+telescoping identity \eqref{eq:liouville-degenerate-shift-sum} is its finite
+algebraic shadow.
+
+Third, boundary-condition-changing fields must be defined as
+operator-valued distributions on these domains.  A primary changing
+\(a\) to \(b\), inserted on a boundary segment, should give multilinear
+matrix elements
+\[
+  \bigl\langle v_0,\,
+  \psi^{ab}_{\lambda_1}(x_1)
+  \cdots
+  \psi^{cd}_{\lambda_n}(x_n)\,
+  v_n\bigr\rangle ,
+  \qquad x_1>\cdots>x_n ,
+\]
+with \(v_0,v_n\) in the appropriate open-channel smooth domains or their
+duals.  The labels \(\lambda_i\) may be continuous, discrete, or resonant.
+The OPE coefficients are kernels between spectral measures, so their
+associativity is an equality of distributions after smearing in the spectral
+variables.  This is the nonrational replacement for finite sums over
+boundary primaries in \eqref{eq:boundary-changing-ope}.
+
+Fourth, the analytic continuation in FZZT parameters and the passage to ZZ
+states must include a contour and residue prescription.  When the boundary
+parameter is moved to an imaginary degenerate value, the \(P\)-contour in
+closed-channel pairings can encounter poles of the wavefunctions and of
+bulk-boundary or boundary-boundary structure kernels.  A sewing datum must
+state whether the amplitude is defined by contour deformation, by principal
+value plus residues, or by an equivalent distributional boundary value, and
+must verify that the same prescription is used in all channels.  A
+channel-dependent prescription defines incompatible disk or annulus
+amplitudes even when each individual channel satisfies the displayed
+finite-difference algebra.
+
+Finally, bordered-surface sewing requires continuous multilinear maps on the
+chosen test spaces.  Closed-circle gluing is integration over
+\[
+  \int_0^\infty \dd P\,\mu_{\rm L}(P)
+\]
+with the Liouville Plancherel measure and descendant two-point pairing;
+open-interval gluing is integration or summation over the open spectral
+measure \(\nu_{ab}\).  In a plumbing chart the resulting series or integral
+must converge for \(|q_e|<1\) and must be compatible with changing the order
+of gluing.  Anomaly determinant lines, if present, must be tensored into
+these sewing maps.  This paragraph is therefore a definition of the analytic
+burden carried by a nonrational BCFT construction.  The Liouville FZZT/ZZ
+formulas supply strong candidate coordinates and many exact residue
+identities; proving the full bordered-surface functor requires the analytic
+data above.
+
 \section{Sewing, Boundary Entropy, and Defect Interfaces}
 
 Section~\ref{sec:bcft-boundary-ope-sewing} displayed the boundary
@@ -1425,8 +1522,10 @@ Construct a single analytic framework that includes rational Cardy
 boundaries, compact-boson continuous families, the Liouville FZZT and ZZ
 states of Section~\ref{sec:bcft-liouville-boundary-states},
 boundary-condition-changing operators, and defect endpoints, with convergent
-sewing maps for bordered Riemann surfaces.  The framework must specify
-topologies on continuous direct integrals, domains of unbounded boundary
-fields, pole prescriptions for contour deformations, and compatibility with
-anomaly lines.
+sewing maps for bordered Riemann surfaces.  The framework must realize the
+test-space, open spectral-measure, operator-domain, pole-prescription, and
+determinant-line requirements stated above, and must prove that the rational
+finite-sum construction and the Liouville direct-integral construction are
+two limits of the same sewing notion rather than two unrelated calculational
+recipes.
 \end{openproblem}

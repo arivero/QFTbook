@@ -71,6 +71,13 @@
 - Adds Liouville as the nonrational boundary-state test case: continuous
   direct-integral closed spectrum, FZZT wavefunctions, ZZ finite differences,
   and the hyperbolic kernels replacing finite modular `S`-matrix entries.
+- Adds the analytic sewing datum that the Liouville boundary formulas would
+  have to satisfy to become a BCFT construction: a dense nuclear closed
+  test space and distributional boundary states, open-channel Hilbert spaces
+  with positive spectral measures, boundary-condition-changing fields as
+  operator-valued distributions on common domains, contour/residue
+  prescriptions for FZZT-to-ZZ continuation, and continuous multilinear
+  sewing maps for closed and open gluing.
 - States Cardy-Lewellen sewing status as a `quotedtheorem`, replaces the vague
   boundary `g`-theorem statement by the boundary entropy gradient formula with
   explicit trace, entropy, metric, and positivity hypotheses, derives
@@ -134,7 +141,9 @@
 13. Liouville FZZT/ZZ boundary states are distributional wavefunctions on a
    continuous spectrum; their finite-difference and degenerate-annulus
    simplifications are hyperbolic algebra, not a substitute for an analytic
-   sewing theorem.
+   sewing theorem.  A nonrational BCFT construction must also produce test
+   spaces, open spectral measures, operator domains, contour prescriptions,
+   and continuous sewing maps with determinant-line bookkeeping.
 14. Cardy-Lewellen sewing and the boundary entropy gradient formula are theorem
    inputs; monotonicity of \(g\) is derived from the positive gradient formula,
    not quoted as an independent endpoint-classification statement.  The
@@ -172,10 +181,12 @@
 
 ## Remaining Obligations
 
-- Develop the full analytic nonrational sewing framework: direct-integral
-  topology, boundary-condition-changing operators for Liouville, annulus
-  spectral-density positivity, pole prescriptions for contour motion, and
-  compatibility with anomaly lines.
+- Prove or construct the full analytic nonrational sewing framework now
+  specified in the chapter: direct-integral nuclear test spaces, distributional
+  FZZT/ZZ boundary functionals, positive open spectral measures, domains for
+  boundary-condition-changing operator-valued distributions, compatible
+  contour/pole prescriptions, continuous closed/open gluing maps, and anomaly
+  determinant-line compatibility.
 
 ## Reference Intake
 
@@ -237,3 +248,10 @@
   insertions and from trace choices on finite direct sums; extended
   `bcft_cardy_checks.py` with exact center-character and reducible-trace
   diagnostics.
+- 2026-06-02 nonrational analytic-sewing datum pass: replaced the vague
+  warning after the Liouville hyperbolic identities by a precise construction
+  target for nonrational BCFT sewing.  The manuscript now separates exact
+  FZZT/ZZ finite-difference algebra from the still-open analytic tasks:
+  closed test-space topology, distributional boundary states, open spectral
+  positivity, boundary-field domains, pole prescriptions, continuous gluing,
+  and anomaly-line compatibility.
