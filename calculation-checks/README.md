@@ -548,7 +548,10 @@ Current checks:
   finite CFT light-ray OPE chart bound obtained from retained coefficient-map
   norms, light-ray form bounds, and the declared remainder, with a separate
   check that separated-angle data alone do not determine the diagonal contact
-  coordinate.
+  coordinate.  It also checks retained-basis covariance of the finite
+  light-ray chart and the compensating contact-coordinate shift required when
+  diagonal distributions are reshuffled between retained coefficient maps and
+  explicit contact terms.
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter

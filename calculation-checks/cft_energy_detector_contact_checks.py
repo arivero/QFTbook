@@ -5,14 +5,16 @@ The checks model a finite positive calorimetric measure on the detector
 sphere.  They verify the algebra behind the diagonal contact terms used in
 the CFT light-ray/energy-correlator chapter.  The finite model is not a
 substitute for the operator-valued-distribution construction; it fixes the
-    partition and moment bookkeeping that the continuum construction must
-    preserve.  The finite-resolution checks verify the Lipschitz partition
-    estimates used to pass from finite angular bins to statewise detector
-    measures and detector-product measures.  The finite light-ray OPE chart
-    check verifies the detector-functional bound obtained from retained
-    coefficient-map norms, light-ray form bounds, and the declared remainder,
-    and it detects the loss of the diagonal contact coordinate in a
-    separated-angle-only chart.
+partition and moment bookkeeping that the continuum construction must
+preserve.  The finite-resolution checks verify the Lipschitz partition
+estimates used to pass from finite angular bins to statewise detector
+measures and detector-product measures.  The finite light-ray OPE chart
+check verifies the detector-functional bound obtained from retained
+coefficient-map norms, light-ray form bounds, and the declared remainder,
+and it detects the loss of the diagonal contact coordinate in a
+separated-angle-only chart.  The finite light-ray chart covariance check
+verifies retained-basis changes and diagonal-contact reshuffling as separate
+coordinate operations on the same detector functional.
 """
 
 from __future__ import annotations
@@ -325,6 +327,38 @@ def check_finite_light_ray_ope_chart_bound() -> None:
         raise AssertionError("separated-angle chart incorrectly determines contact coordinate")
 
 
+def check_finite_light_ray_chart_covariance() -> None:
+    # Retained finite chart value V = c ell + k.  A change of retained
+    # light-ray basis is ordinary row/column covariance and must leave c ell
+    # invariant.
+    ell = [Fraction(2), Fraction(-1)]
+    c = [Fraction(3), Fraction(5)]
+    contact = Fraction(7, 11)
+    value = c[0] * ell[0] + c[1] * ell[1] + contact
+
+    # B = [[1,2],[0,1]], B^{-1} = [[1,-2],[0,1]].
+    ell_prime = [ell[0] - 2 * ell[1], ell[1]]
+    c_prime = [c[0], 2 * c[0] + c[1]]
+    value_prime = c_prime[0] * ell_prime[0] + c_prime[1] * ell_prime[1] + contact
+    assert_equal("finite light-ray basis covariance", value_prime, value)
+
+    # Adding diagonal distributions to the retained coefficient maps changes
+    # the row c by d.  The same full detector distribution is obtained only
+    # after shifting the explicit contact coordinate by -d ell.
+    d = [Fraction(1, 3), Fraction(-2, 5)]
+    d_ell = d[0] * ell[0] + d[1] * ell[1]
+    c_new = [c[0] + d[0], c[1] + d[1]]
+    contact_new = contact - d_ell
+    value_new = c_new[0] * ell[0] + c_new[1] * ell[1] + contact_new
+    assert_equal("finite light-ray contact reshuffle", value_new, value)
+
+    bad_value = c_new[0] * ell[0] + c_new[1] * ell[1] + contact
+    assert_equal("finite light-ray unshifted contact defect", bad_value - value, d_ell)
+    assert_equal("finite light-ray contact defect value", bad_value - value, Fraction(16, 15))
+    if bad_value == value:
+        raise AssertionError("unshifted contact coordinate failed to change the detector functional")
+
+
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
@@ -337,6 +371,7 @@ def main() -> None:
     check_total_energy_ward_identity()
     check_three_detector_partition_decomposition()
     check_finite_light_ray_ope_chart_bound()
+    check_finite_light_ray_chart_covariance()
     print("All CFT energy-detector contact and moment checks passed.")
 
 

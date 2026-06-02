@@ -88,7 +88,8 @@ The chapter establishes:
   estimates for retained light-ray quadratic forms, and a detector-test
   topology remainder bound.  The chapter now states explicitly that a finite
   retained representation list is not a controlled EEC approximation unless
-  these chart and remainder data are supplied.
+  these chart and remainder data are supplied, and that retained-basis changes
+  are distinct from diagonal-contact coordinate changes.
 
 ## Symbols
 
@@ -189,6 +190,12 @@ The chapter establishes:
     of retained light-ray forms, and a remainder functional.  Separated-angle
     chart data alone do not determine the full detector moment with contact
     terms.
+14. Retained-basis changes and diagonal-contact reshufflings are different
+    coordinate operations in a finite light-ray OPE chart.  Basis changes obey
+    row/column covariance of the retained finite vector space.  Adding
+    diagonal distributions to retained coefficient maps changes the full
+    detector distribution unless the explicit contact coordinate is shifted
+    by the corresponding retained light-ray matrix element.
 
 ## Figures
 
@@ -217,7 +224,9 @@ The chapter establishes:
   Lipschitz partition estimates for one-detector and detector-product
   measures.  It also checks the finite light-ray OPE chart bound from
   coefficient-map norms, light-ray form bounds, and a declared remainder, and
-  detects the separated-angle-only loss of the diagonal contact coordinate.
+  detects the separated-angle-only loss of the diagonal contact coordinate;
+  the same script checks retained-basis covariance and the compensating
+  contact-coordinate shift under diagonal-distribution reshuffling.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
@@ -257,3 +266,10 @@ The chapter establishes:
   is a controlled approximation to an EEC distribution.  The companion finite
   detector/contact script checks the displayed finite bound and the failure
   of a separated-angle-only chart to determine the contact coordinate.
+- 2026-06-02 #519 finite chart covariance/contact pass: added the retained
+  finite chart formula \(V_\Psi(\Phi)=c_\Phi\ell_\Psi+k_\Phi+R_N\), separated
+  retained-basis covariance from diagonal-contact reshuffling, and recorded
+  that a Ward identity fixes only the full constant-detector moment rather
+  than a separated-angle coefficient convention.  The companion exact rational
+  check verifies \(cB\,B^{-1}\ell=c\ell\), the compensating shift
+  \(k\mapsto k-d\ell\), and the unshifted-contact defect \(16/15\).

@@ -1247,6 +1247,52 @@ remainder bound in the detector-test topology.  These data are what turn a
 truncated representation-theoretic expansion into a controlled approximation
 to the energy correlator.
 
+\paragraph{Finite chart changes and contact coordinates.}
+The retained light-ray basis and the diagonal extension convention are part of
+the finite chart.  Write the retained contribution to
+\eqref{eq:cft-finite-light-ray-chart-expansion} in finite-dimensional notation
+as
+\[
+  V_\Psi(\Phi)
+  =
+  c_\Phi\,\ell_\Psi+k_\Phi+R_N(\Phi;\Psi).
+\]
+Here \(\ell_\Psi\in\mathbb C^r\) is the column vector of retained light-ray
+matrix elements, \(c_\Phi\in(\mathbb C^r)^\ast\) is the row vector obtained by
+pairing the coefficient distributions with \(\Phi\), and \(k_\Phi\) denotes
+the explicit diagonal-contact coordinate in the chosen extension.  If
+\(B\in GL(r,\mathbb C)\) changes the retained light-ray basis, the same
+detector functional is represented by
+\begin{equation}
+  \ell'_\Psi=B^{-1}\ell_\Psi,
+  \qquad
+  c'_\Phi=c_\Phi B,
+  \qquad
+  c'_\Phi\ell'_\Psi=c_\Phi\ell_\Psi .
+  \label{eq:cft-light-ray-chart-basis-covariance}
+\end{equation}
+This is ordinary coordinate covariance of the retained finite vector space;
+it is not a dynamical statement about the exact OPE.
+
+Changing the extension of the relative-coordinate coefficient distributions
+across the diagonal is different.  Let \(d_\Phi\in(\mathbb C^r)^\ast\) be the
+row vector produced by adding diagonal distributions to the retained
+coefficient maps.  The full detector distribution is unchanged only if the
+explicit contact coordinate is shifted simultaneously:
+\begin{equation}
+  c_\Phi^{\rm new}=c_\Phi+d_\Phi,
+  \qquad
+  k_\Phi^{\rm new}=k_\Phi-d_\Phi\ell_\Psi .
+  \label{eq:cft-light-ray-chart-contact-reshuffle}
+\end{equation}
+Thus a separated-angle calculation, for which \(d_\Phi=0\) on all tests used,
+does not determine \(k_\Phi\).  The Ward identity
+\(\mathcal G_2(1,1;\Psi)=\langle\Psi|(P^0)^2|\Psi\rangle\) fixes a condition
+on the sum \(c_\Phi\ell_\Psi+k_\Phi\) for the constant detector test; it does
+not fix a separated-angle coefficient convention by itself.  A finite
+light-ray OPE chart used for a full energy correlator must therefore state
+both its retained-basis convention and its diagonal-contact convention.
+
 This formulation also explains the relation with the QCD small-angle EEC.
 In a CFT the expansion coefficients are fixed-point data of light-ray
 representations.  In asymptotically free QCD, the corresponding small-angle
