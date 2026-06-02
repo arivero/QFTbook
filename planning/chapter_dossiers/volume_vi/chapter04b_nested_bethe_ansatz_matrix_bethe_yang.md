@@ -22,6 +22,12 @@
 - Large-volume regime stated as a controlled approximation.
 - Principal chiral model and Gross--Neveu family interpretation of auxiliary
   roots.
+- Generic finite-chain nested-Bethe completeness is kept as a quoted
+  theorem-boundary statement with proof references and a mechanism paragraph:
+  generic twist and inhomogeneity separate the Bethe algebra spectrum and
+  avoid singular root configurations; the theorem is finite-dimensional and
+  does not prove homogeneous periodic completeness, continuum Bethe--Yang
+  control, or the thermodynamic string hypothesis.
 
 ## Symbols
 
@@ -47,6 +53,9 @@
    and have energy \(E=2\).
 5. Relativistic non-diagonal finite-volume equations require a stated
    large-volume regime; wrapping corrections belong to TBA.
+6. Generic finite-chain completeness is an algebraic Bethe-algebra theorem at
+   fixed \(L\), not evidence by itself for continuum QFT completeness or
+   thermodynamic root-string control.
 
 ## Calculation Checks
 
@@ -68,3 +77,9 @@
   transfer-matrix eigenvalue, but its proof is local algebra inside the
   dressed-vacuum formula rather than an independent theorem.  The displayed
   twisted equation and all residue factors were preserved.
+- 2026-06-02 quoted-theorem boundary pass: expanded the generic finite-chain
+  completeness quoted theorem with proof references and the finite algebraic
+  mechanism (simple joint spectrum, Bethe algebra variety, admissible Bethe
+  vectors, dimension count), while emphasizing that the homogeneous periodic
+  limit, continuum matrix Bethe--Yang approximation, and thermodynamic string
+  limit are separate hypotheses.
