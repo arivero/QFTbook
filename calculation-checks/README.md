@@ -1195,6 +1195,22 @@ Current checks:
   \((f_g)_h=f_{hg}\), Koszul signs for adjacent spacelike exchange, and the
   tensor-product ordering of component covariance factors in Wightman
   distributions.
+- `poincare_algebra_sign_checks.py`: exact symbolic checks for the Volume I
+  Poincare-algebra convention, including all Jacobi identities for the
+  \(P^\mu,J^{\mu\nu}\) basis, the rotation tests
+  \([J^{12},P^1]=\ii P^2\), \([J^{12},P^2]=-\ii P^1\), the boost test
+  \([P^0,J^{01}]=\ii P^1\), the vector-representation Lorentz algebra and
+  massless little-group commutators used in the helicity chapter, and the
+  regression check that the opposite \([P,J]\) sign fails the issue-\#708
+  Jacobi triple.
+- `conformal_algebra_sign_checks.py`: exact symbolic checks for the Volume III
+  conformal-algebra conventions against their underlying conformal Killing
+  vector fields.  It verifies the Euclidean charge algebra, the Lorentzian
+  mostly-plus analogue whose Poincare subalgebra contains the corrected
+  \([P,J]\) sign, sign-sensitive Jacobi families involving \(D,P,K,J\), the
+  displayed \(SO(D+1,1)\) change of basis, and the radial real-form map giving
+  \([\widehat K_\mu,\widehat P_\nu]
+  =2\delta_{\mu\nu}\widehat D_{\rm rad}-2\widehat J_{\nu\mu}\).
 - `cross_section_partial_wave_checks.py`: exact rational checks for the
   Volume I cross-section chapter, including the Kallen momentum formula,
   invariant flux, two-body phase-space coefficient, identical \(\phi^4\)
