@@ -2473,14 +2473,16 @@ would be a tuned trajectory
 \[
   (g_k,K_k,W_{k,E})\longrightarrow(g_\ast,K_\ast,W_{\ast,E})
 \]
-in the short-range block-spin and source-extended polymer structure, with the
-source-window budget
-\eqref{eq:short-range-rg-to-os-source-budget}, the distributional bounds, the
-directed OS positivity and semigroup estimates, and the corrected OS-II growth
-package.  This is the point at which the OS reconstruction theorem can be
-invoked.  Existing benchmark systems identify pieces of this target structure,
-but the ordinary short-range critical scalar construction remains open until
-these estimates are proved in that model.
+in the short-range block-spin and source-extended polymer structure.  The
+precise reconstruction target is the assembly package of
+Definition~\ref{def:short-range-rg-to-os-assembly-datum}: the source-window
+budget \eqref{eq:short-range-rg-to-os-source-budget}, uniform distribution
+bounds, cofinal window compatibility, directed OS positivity, positive-time
+semigroup estimates, corrected OS-II growth, and a common scale schedule on
+which these estimates hold together.  This is the point at which the OS
+reconstruction theorem can be invoked.  Existing benchmark systems identify
+pieces of this target structure, but the ordinary short-range critical scalar
+construction remains open until these estimates are proved in that model.
 
 For gauge targets, the corresponding output is either a continuum limit of
 gauge-invariant lattice measures and Wilson-line or Wilson-loop observable
@@ -4226,6 +4228,20 @@ scale-indexed estimates.
   Lemma~\ref{lem:rg-positive-time-quotient-semigroup-criterion}, and the
   corrected OS-II growth package in
   Definition~\ref{def:short-range-scalar-os-assembly-datum}.
+  \item A common directed scale schedule.  For every finite reconstruction
+  demand
+  \[
+    \mathcal D=(E,\beta,\mathcal F,F,t,H,n),
+  \]
+  consisting of a source window and multi-index, a finite positive-time Gram
+  family, a translated positive-time vector, and an \(n\)-point test \(H\)
+  used in the OS-II bound, there is \(k_{\mathcal D}\) such that all estimates
+  in the preceding items hold for \(k\ge k_{\mathcal D}\) with the same
+  constants assigned to \(\mathcal D\).  The assignment is directed: if
+  \(\mathcal D_1\leq\mathcal D_2\) means that the second demand contains the
+  first by enlarging the test windows or increasing the insertion order, then
+  the constants and thresholds restrict compatibly from
+  \(\mathcal D_2\) to \(\mathcal D_1\).
 \end{enumerate}
 \end{definition}
 
@@ -4242,6 +4258,12 @@ construction of the estimates in
 Definition~\ref{def:short-range-rg-to-os-assembly-datum}; the implication
 from those estimates to reconstruction is the functional-analytic assembly
 just described.
+The common-scale item prevents a frequent logical gap: source convergence,
+finite Gram positivity, translation equicontinuity, and OS-II growth must be
+available on the same cofinal regulator tail for the same reconstruction
+demand.  Separate estimates along incompatible scale subsequences give
+separate finite statements; the OS reconstruction theorem uses their joint
+directed limit.
 
 \section{Transfer Estimates From Auxiliary Fixed-Point Models}
 \label{sec:auxiliary-rg-transfer-estimates}

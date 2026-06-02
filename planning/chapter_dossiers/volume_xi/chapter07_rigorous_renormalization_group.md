@@ -290,9 +290,10 @@ constructive RG developments.
   \(\delta^C+L_E(\delta^g+\delta^K)+\delta^r+A_E\Xi(R)+\sigma\), uniform
   Schwartz-seminorm distribution bounds, cofinal finite-window compatibility,
   directed OS positivity, quotient-stable time translations, and corrected
-  OS-II growth.  The chapter states this as the theorem-facing estimate
-  package needed before applying OS reconstruction, not as an already-proved
-  theorem for the ordinary short-range critical scalar target.
+  OS-II growth, all on a common directed scale schedule for each finite
+  reconstruction demand.  The chapter states this as the theorem-facing
+  estimate package needed before applying OS reconstruction, not as an
+  already-proved theorem for the ordinary short-range critical scalar target.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -672,6 +673,15 @@ remainder contraction.
   label is retained for cross-reference stability, but the reader-facing
   language now emphasizes the actual estimates and directed Gram-window/growth
   requirements rather than a generic package name.
+- 2026-06-02 short-range scalar common-schedule pass: sharpened the
+  model-by-model RG synthesis and the short-range RG-to-OS assembly datum by
+  adding the common directed scale schedule.  Source-window convergence,
+  directed OS Gram positivity, positive-time semigroup estimates, and OS-II
+  growth must hold on the same cofinal regulator tail for each finite
+  reconstruction demand before the OS theorem can be invoked.  The companion
+  short-range RG check now verifies the finite max-threshold arithmetic and
+  detects a premature scale choice that leaves Gram and OS-II inputs outside
+  the proven tail.
 - 2026-06-02 finite OS family-size obstruction pass: added the exact companion
   check for the load-bearing \(m\epsilon\) loss in entrywise Gram-window
   control.  The calculation uses \(G_k=\ell I_m\) and

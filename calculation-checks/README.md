@@ -753,9 +753,11 @@ Current checks:
   the safe \(m\)-dependent entrywise-error schedule for directed positive-time
   windows, and the short-range RG-to-OS assembly budget combining
   source-window chart errors, thermodynamic tails, cofinal-window errors,
-  Cauchy extraction, and directed OS Gram lower-bound bookkeeping.
-  Gram families, and the finite restriction/Cauchy arithmetic used in the
-  directed OS-positive form assembly lemma.  A
+  Cauchy extraction, directed OS Gram lower-bound bookkeeping, and the common
+  directed scale schedule needed to close source, Gram, time-continuity, and
+  OS-II estimates on the same regulator tail.  It also checks the finite
+  restriction/Cauchy arithmetic used in the directed OS-positive form assembly
+  lemma.  A
   fixed entrywise tolerance loses positivity once the \(m\epsilon\) term
   overwhelms the regulated lower bound, while an operator-norm estimate has the
   dimension-independent lower bound stated in the chapter.  It also checks the

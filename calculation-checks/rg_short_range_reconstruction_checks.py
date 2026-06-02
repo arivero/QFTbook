@@ -2164,6 +2164,40 @@ def check_rg_to_os_assembly_budget():
     )
 
 
+def check_short_range_scalar_common_scale_schedule():
+    # The assembly package must close all finite reconstruction demands on a
+    # common regulator tail.  The finite model below has four estimates with
+    # distinct thresholds: source-window convergence, directed Gram positivity,
+    # positive-time continuity, and OS-II moment growth.  The common threshold
+    # is the maximum, and using an earlier threshold leaves at least one
+    # reconstruction input unproved.
+    thresholds = {
+        "source": 4,
+        "gram": 7,
+        "time": 5,
+        "osii": 6,
+    }
+    common_threshold = max(thresholds.values())
+    assert_equal("common directed RG-to-OS scale threshold", common_threshold, 7)
+
+    scale = common_threshold
+    source_error = Fraction(1, 2**scale)
+    gram_error = Fraction(1, 10 * scale)
+    time_error = Fraction(1, 3 * scale)
+    osii_tail = Fraction(1, scale + 3)
+
+    assert_true("common schedule source margin", source_error <= Fraction(1, 16))
+    assert_true("common schedule Gram margin", Fraction(1, 3) - gram_error > 0)
+    assert_true("common schedule time modulus margin", time_error <= Fraction(1, 15))
+    assert_true("common schedule OS-II tail margin", osii_tail <= Fraction(1, 9))
+
+    premature_scale = 5
+    failed_inputs = [
+        name for name, threshold in thresholds.items() if premature_scale < threshold
+    ]
+    assert_equal("premature RG-to-OS schedule misses inputs", failed_inputs, ["gram", "osii"])
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -2203,6 +2237,7 @@ def main():
     check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
     check_rg_to_os_assembly_budget()
+    check_short_range_scalar_common_scale_schedule()
     print("All short-range scalar RG reconstruction checks passed.")
 
 
