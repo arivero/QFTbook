@@ -3540,6 +3540,85 @@ candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}
 
+\paragraph{The ordinary short-range scalar RG-to-OS assembly package.}
+The preceding estimates can be organized into one theorem-facing package.  This
+is not an additional theorem about the three-dimensional Ising or
+Wilson--Fisher target; it is the precise list of estimates a model-specific
+proof must supply before the OS reconstruction theorem can be invoked.
+
+\begin{definition}[Short-range scalar RG-to-OS assembly package]
+\label{def:short-range-rg-to-os-assembly-datum}
+Fix a short-range scalar block-spin structure and source normalization as in
+Definitions~\ref{def:short-range-scalar-block-spin-structure} and
+\ref{def:short-range-scalar-os-assembly-datum}.  An RG-to-OS assembly package
+for a critical short-range scalar target consists of the following
+scale-indexed estimates.
+\begin{enumerate}
+  \item A tuned RG trajectory \((g_k,K_k)\) in a declared Banach polymer chart
+  and a limiting source-extended chart
+  \((C_{\ast,E},g_{\ast,E},K_{\ast,E},r_{\ast,E})\) for every finite test
+  space \(E\), all defined on a fixed source polydisc \(P_{\rho_E}\).
+  \item For every \(E\), a source-window error budget
+  \begin{equation}
+  \begin{aligned}
+    \epsilon^{\rm src}_{E,k}
+    =
+    &\ \delta^C_{E,k}
+      +L_E(\delta^g_{E,k}+\delta^K_{E,k})
+      +\delta^r_{E,k}                                      \\
+    &\ +A_E\Xi_E(R_{E,k})
+      +\sigma_{E,k},
+  \end{aligned}
+  \label{eq:short-range-rg-to-os-source-budget}
+  \end{equation}
+  with \(\epsilon^{\rm src}_{E,k}\to0\).  The first line is the RG-chart
+  error of \eqref{eq:short-range-source-window-chart-to-holomorphic-bound};
+  \(A_E\Xi_E(R_{E,k})\) is the thermodynamic boundary tail of
+  \eqref{eq:short-range-source-window-volume-tail}; and
+  \(\sigma_{E,k}\) is the remaining cofinal-window, sampling, or
+  finite-step error at scale \(k\).
+  \item Uniform distribution bounds: for each \(n\) there are \(r_n\) and
+  \(C_n\), independent of \(k\) and of the finite window \(E\), such that the
+  \(n\)-source derivatives extracted from \(W_{k,E}\) satisfy
+  \eqref{eq:short-range-source-window-uniform-schwartz-bound}.  Consequently,
+  for every multi-index \(\beta\) in the \(E\)-window,
+  \begin{equation}
+    \left|
+      \partial_z^\beta W_{k,E}(0)-\partial_z^\beta W_{\ast,E}(0)
+    \right|
+    \le
+    \frac{\beta!}{\rho_E^\beta}\,
+    \epsilon^{\rm src}_{E,k}.
+    \label{eq:short-range-rg-to-os-cumulant-budget}
+  \end{equation}
+  \item Cofinal compatibility: the controlled finite test spaces are cofinal
+  in the Schwartz test space, their restriction maps commute with the
+  source-window functionals, and the fixed-window Cauchy estimates have the
+  form required by Lemma~\ref{lem:rg-cofinal-finite-window-assembly}.
+  \item Directed OS positivity and time-regularity: the positive-time Gram
+  windows satisfy the directed positivity assembly hypotheses of
+  Lemma~\ref{lem:rg-directed-os-positive-form-assembly}, the quotient
+  stability and Gram-continuity estimates of
+  Lemma~\ref{lem:rg-positive-time-quotient-semigroup-criterion}, and the
+  corrected OS-II growth package in
+  Definition~\ref{def:short-range-scalar-os-assembly-datum}.
+\end{enumerate}
+\end{definition}
+
+When these estimates are supplied by a specific short-range scalar model, the
+logic is fixed.  Equation~\eqref{eq:short-range-rg-to-os-cumulant-budget}
+gives convergence of every finite source window.  Cofinal compatibility and
+the uniform Schwartz bounds produce limiting tempered Schwinger
+distributions.  Directed positivity, quotient-stable time translations, and
+OS-II growth provide the hypotheses of
+Theorem~\ref{thm:os-reconstruction}.  The conclusion is then a Wightman QFT
+whose Euclidean Schwinger functions are the reconstructed limits.  The
+unproved part for the ordinary critical scalar target is the model-specific
+construction of the estimates in
+Definition~\ref{def:short-range-rg-to-os-assembly-datum}; the implication
+from those estimates to reconstruction is the functional-analytic assembly
+just described.
+
 \section{Transfer Estimates From Auxiliary Fixed-Point Models}
 \label{sec:auxiliary-rg-transfer-estimates}
 

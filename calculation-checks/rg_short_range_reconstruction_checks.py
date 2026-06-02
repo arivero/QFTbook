@@ -52,6 +52,9 @@ Cauchy extraction of a source window is allowed.
 The finite-volume source-window check verifies the cluster-tail-to-cumulant
 Cauchy bound needed before finite-volume source windows can be used as
 thermodynamic Schwinger data.
+The RG-to-OS assembly-budget check verifies the combined source-window error
+budget, its Cauchy derivative extraction, and the directed OS Gram lower
+bound that remain after the individual estimates have been supplied.
 The stable-chart observable-window bound check verifies the finite RG estimate
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
@@ -1826,6 +1829,62 @@ def check_finite_volume_source_window_cluster_tail():
     )
 
 
+def check_rg_to_os_assembly_budget():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def multi_factorial(beta):
+        value = 1
+        for component in beta:
+            value *= factorial(component)
+        return value
+
+    normalizing_defect = Fraction(1, 100)
+    local_coordinate_defect = Fraction(1, 120)
+    polymer_tail_defect = Fraction(1, 150)
+    finite_step_remainder = Fraction(1, 200)
+    chart_lipschitz = Fraction(3)
+    chart_error = (
+        normalizing_defect
+        + chart_lipschitz * (local_coordinate_defect + polymer_tail_defect)
+        + finite_step_remainder
+    )
+    assert_equal("RG-to-OS assembly chart error", chart_error, Fraction(3, 50))
+
+    boundary_tail = Fraction(1, 40)
+    cofinal_window_error = Fraction(1, 200)
+    source_budget = chart_error + boundary_tail + cofinal_window_error
+    assert_equal("RG-to-OS assembly source budget", source_budget, Fraction(9, 100))
+
+    radii = (Fraction(2), Fraction(3))
+    beta = (1, 2)
+    rho_beta = product(radius ** exponent for radius, exponent in zip(radii, beta))
+    cumulant_bound = multi_factorial(beta) * source_budget / rho_beta
+    assert_equal("RG-to-OS assembly rho beta", rho_beta, Fraction(18))
+    assert_equal("RG-to-OS assembly cumulant bound", cumulant_bound, Fraction(1, 100))
+    actual_cumulant_difference = Fraction(1, 125)
+    assert_true(
+        "RG-to-OS assembly cumulant controlled",
+        actual_cumulant_difference <= cumulant_bound,
+    )
+
+    gram_lower_bound = Fraction(1, 4)
+    family_size = 3
+    entrywise_error = Fraction(1, 100)
+    limiting_lower_bound = gram_lower_bound - family_size * entrywise_error
+    assert_equal("RG-to-OS assembly OS lower bound", limiting_lower_bound, Fraction(11, 50))
+
+    bad_entrywise_error = Fraction(1, 10)
+    bad_lower_bound = gram_lower_bound - family_size * bad_entrywise_error
+    assert_true(
+        "RG-to-OS assembly OS bad schedule detected",
+        bad_lower_bound < 0,
+    )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -1861,6 +1920,7 @@ def main():
     check_source_chart_to_holomorphic_window_bound()
     check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
+    check_rg_to_os_assembly_budget()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

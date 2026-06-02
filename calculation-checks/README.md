@@ -733,6 +733,9 @@ Current checks:
   limiting Gram matrix retains the quantified positive lower bound.  It also
   checks the complementary family-size obstruction by an all-ones perturbation,
   the safe \(m\)-dependent entrywise-error schedule for directed positive-time
+  windows, and the short-range RG-to-OS assembly budget combining
+  source-window chart errors, thermodynamic tails, cofinal-window errors,
+  Cauchy extraction, and directed OS Gram lower-bound bookkeeping.
   Gram families, and the finite restriction/Cauchy arithmetic used in the
   directed OS-positive form assembly lemma.  A
   fixed entrywise tolerance loses positivity once the \(m\epsilon\) term

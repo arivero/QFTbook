@@ -254,6 +254,14 @@ constructive RG developments.
   descends through the OS null space only after a bound
   \(Q(\tau_tF,\tau_tF)\le C_tQ(F,F)\), and the Gram-continuity estimate then
   gives a strongly continuous semigroup on the Hilbert completion.
+- Defines the short-range scalar RG-to-OS assembly package: a tuned polymer RG
+  trajectory, fixed-radius source windows, the combined source budget
+  \(\delta^C+L_E(\delta^g+\delta^K)+\delta^r+A_E\Xi(R)+\sigma\), uniform
+  Schwartz-seminorm distribution bounds, cofinal finite-window compatibility,
+  directed OS positivity, quotient-stable time translations, and corrected
+  OS-II growth.  The chapter states this as the theorem-facing estimate
+  package needed before applying OS reconstruction, not as an already-proved
+  theorem for the ordinary short-range critical scalar target.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -420,7 +428,9 @@ remainder contraction.
   and the finite OS-positivity bound with an explicit regulated lower bound
   and entrywise limiting error, together with the all-ones family-size
   obstruction showing why fixed entrywise error cannot prove directed
-  reflection positivity.  It also checks the positive-time translation-window
+  reflection positivity.  It also checks the combined RG-to-OS assembly
+  budget that feeds source-window convergence and directed OS positivity into
+  reconstruction.  It also checks the positive-time translation-window
   arithmetic behind OS semigroup continuity: support margin, quadratic
   modulus, regulator-error limit, null-quotient stability condition, and
   dense-domain extension.  It also checks
@@ -502,6 +512,16 @@ remainder contraction.
   enlargement that the next-scale regulator must absorb.  The companion
   short-range RG check verifies the same determinant and completing-square
   arithmetic by exact rational calculation.
+- 2026-06-02 short-range RG-to-OS assembly pass: added
+  Definition~\(\ref{def:short-range-rg-to-os-assembly-datum}\), which gathers
+  the source-window, thermodynamic, cofinal-window, distributional bound,
+  directed OS positivity, quotient semigroup, and OS-II requirements into the
+  precise estimate package needed before a model-specific short-range scalar
+  RG proof can invoke OS reconstruction.  The companion check verifies the
+  combined source-budget-to-cumulant arithmetic and the finite directed OS
+  lower-bound schedule.  The pass does not claim that the ordinary
+  three-dimensional critical scalar target has been constructed; it makes the
+  remaining model-specific proof obligations explicit.
 - 2026-06-02 source-window extraction pass: added the finite source-extension
   estimate needed for RG reconstruction of connected correlator windows.  The
   chapter now states that retaining source degree \(s\) controls source
