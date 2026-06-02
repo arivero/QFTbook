@@ -412,3 +412,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   classification, Borchers--Wiesbrock, and Bisognano--Wichmann.  The section
   records the exact model-level obligations for each use and gives the
   quoted theorem blocks a differentiated local status ledger.
+- 2026-06-02 Reeh--Schlieder standardness cross-link pass: replaced the
+  informal wedge-standardness reference in the Bisognano--Wichmann mechanism
+  with explicit references to the Reeh--Schlieder cyclicity theorem and its
+  separatingness corollary from the AQFT local-net chapter.  The modular
+  chapter now states that cyclicity is the positive-energy local-density
+  theorem, while separatingness for a wedge is the locality/opposite-wedge
+  commutant argument, not a hidden Haag-duality assumption.

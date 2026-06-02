@@ -117,6 +117,11 @@ functorial QFT.
 - Proves the Reeh--Schlieder theorem for a weakly additive vacuum net from
   the spectral condition, the corrected \(M-\ii V_+\) tube continuation,
   weak additivity, and vacuum cyclicity.
+- Proves the separatingness corollary used by modular theory: if
+  \(B\in\mathcal R(\mathcal O)'\) kills the vacuum, then
+  \(B\mathcal R(\mathcal O)\Omega=0\), and Reeh--Schlieder density forces
+  \(B=0\).  For wedge algebras this uses only locality with an opposite-wedge
+  region, not Haag duality.
 - Defines the locally covariant \(C^*\)-algebraic QFT functor and separates
   functorial covariance from the existence problem for a concrete model.
 
@@ -217,3 +222,9 @@ functorial QFT.
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
   positive-energy boundary-uniqueness lemma instead of citing the analytic
   propagation step in one sentence.
+- 2026-06-02 Reeh--Schlieder separatingness pass: added the named
+  separatingness corollary from local cyclicity and locality, making explicit
+  the commutant argument needed for wedge standardness in the modular
+  chapter.  The pass distinguishes this consequence from Haag duality, which
+  would identify a larger complement algebra but is not needed for the
+  separatingness implication.
