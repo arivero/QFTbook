@@ -148,6 +148,15 @@ resonances.
   of the one-particle overlap map, from the displayed square-frame
   \(Z^{-1/2}\) formula, which requires an invertible Gram matrix after
   choosing a full-rank coordinate frame.
+- States the dressed-correlator reduction interface that a Wilson-line LSZ
+  theorem must prove before correlator residues can be identified with
+  charged wave-map matrix elements.  The interface requires boundary-value
+  distributions for renormalized finite-truncation dressed coordinates,
+  uniformity over same-flux truncation schedules, a finite-rank simultaneous
+  external-shell singular expansion, control or absorption of endpoint,
+  cusp, and collision contact terms, and covariance under finite same-flux
+  coordinate changes.  It is explicitly a hypothesis naming the analytic
+  burden, not a theorem about noncompact charged sectors.
 - Shows that compact abelian Wilson-line dressing changes with fixed
   asymptotic flux are field-strength surface insertions:
   \(\int_{\gamma'_R}A-\int_{\gamma_R}A=\int_{S_{\gamma',\gamma}}F\).
@@ -226,7 +235,12 @@ resonances.
   and an \(L^1\) derivative tail.  It also checks the finite spectral-measure
   arithmetic behind the nonconfining-sector boundary: common finite-energy
   windows, Markov's first-moment sufficient bound, and linear string-energy
-  escape beyond every fixed cutoff.
+  escape beyond every fixed cutoff.  It now also checks the finite algebra of
+  the dressed-correlator reduction interface: simultaneous simple
+  external-shell poles survive the multi-leg residue extraction, partial
+  external poles and contact terms are less singular, higher poles are
+  outside the interface, and finite same-flux coordinate changes on each
+  external leg leave the extracted wave-map coefficient invariant.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.

@@ -1875,12 +1875,124 @@ gauge-invariant composite charged operators.  For an unscreened Gauss-law
 charge, the flux tail is part of the asymptotic datum, so any theorem must
 include it from the start.
 
+\subsection{Dressed Correlators and Wave-Map Matrix Elements}
+
+The wave-map construction above is formulated in Hilbert space.  A
+Wilson-line LSZ theorem must also explain how it is read from
+time-ordered dressed correlators.  This is a separate input: a pole in a
+formal gauge-fixed charged-field propagator is not a gauge-invariant
+observable, and a Wilson-line correlator is not automatically controlled by
+the ordinary local-field integration-by-parts proof.  The object to be
+proved is the following interface between dressed correlators and the
+charged wave maps.
+
+\begin{hypothesis}[Dressed-correlator reduction interface]
+\label{hyp:dressed-correlator-wave-map-interface}
+Fix a nonconfining charged sector and assume the charged
+Dollard--Cook package of Hypothesis~\ref{hyp:charged-dollard-cook-package}
+for the packet data under consideration.  For each external charged leg
+\(\ell\), choose a finite family of renormalized finite-truncation dressed
+coordinates
+\[
+  \Psi^{(\ell)}_{a_\ell;L_\ell,\varepsilon_\ell}(x),
+  \qquad a_\ell=1,\ldots,r_\ell,
+\]
+converging in the truncation topology described above to a noncompact
+dressing with fixed charge, asymptotic flux, and velocity support.  In an
+infrared-regulated or screened setting with an isolated charged shell, let
+\(E_\ell(p_\ell)\) be the corresponding one-particle multiplicity space,
+let
+\[
+  z_\ell(p_\ell):E_\ell(p_\ell)\longrightarrow\mathbb C^{r_\ell}
+\]
+be the dressed one-particle overlap map, and choose a left inverse
+\(L_\ell(p_\ell)z_\ell(p_\ell)=\mathbf 1_{E_\ell(p_\ell)}\).  The
+dressed-correlator reduction interface consists of the following assertions,
+with estimates uniform over admissible same-flux truncation schedules.
+\begin{enumerate}
+\item The renormalized time-ordered correlators of the finite-truncation
+dressed coordinates have boundary values as tempered distributions in the
+external momenta after wave-packet smearing and after the declared endpoint,
+line, cusp, and local charged-field counterterms have been included.
+\item Near the product of the isolated charged mass shells, their simultaneous
+external singular part has finite rank in the dressed coordinates:
+\begin{equation}
+  \widehat G_{\mathbf a}(\mathbf p;\Xi)
+  =
+  \frac{\ii^{N}
+    \sum_{\boldsymbol\lambda}
+      \prod_{\ell=1}^{N}
+        z_{\ell,a_\ell}{}^{\lambda_\ell}(p_\ell)\,
+      \mathcal A_{\boldsymbol\lambda}(\mathbf p;\Xi)}
+       {\prod_{\ell=1}^{N}(p_\ell^2+m_\ell^2-\ii0)}
+  +
+  \widehat G_{\mathbf a}^{\rm less}(\mathbf p;\Xi).
+  \label{eq:dressed-correlator-external-singular-expansion}
+\end{equation}
+Here \(\Xi\) denotes compact gauge-invariant insertions or the remaining
+external variables, and ``less'' means that after multiplying by
+\(\prod_{\ell}(p_\ell^2+m_\ell^2-\ii0)\) and applying the left inverses, the
+term has zero simultaneous shell limit in the wave-packet topology being
+used.  Partial shell singularities are assigned to the corresponding
+lower-particle disconnected or lower-channel matrix elements before the
+connected amplitude is read off.
+\item The coefficient
+\(\mathcal A_{\boldsymbol\lambda}\) obtained from
+\eqref{eq:dressed-correlator-external-singular-expansion} is the charged
+wave-map matrix element:
+\begin{equation}
+  \mathcal A_{\boldsymbol\lambda}(\mathbf p;\Xi)
+  =
+  \bigl\langle
+    \Omega_{+}^{\mathrm{ch}}e_{\mathrm{out},\boldsymbol\lambda},
+    \mathcal O_\Xi\,
+    \Omega_{-}^{\mathrm{ch}}e_{\mathrm{in},\boldsymbol\lambda}
+  \bigr\rangle_{\rm conn},
+  \label{eq:dressed-correlator-wave-map-matrix-element}
+\end{equation}
+with the total momentum delta distribution and the standard disconnected
+vacuum factors removed.  The Dollard phases appearing in
+Hypothesis~\ref{hyp:charged-dollard-cook-package} are part of the definition
+of the asymptotic symbols \(e_{\mathrm{in/out},\boldsymbol\lambda}\); without
+them a long-range charged correlator need not have a simple isolated-pole
+LSZ limit.
+\item Endpoint and collision contact terms created by differentiating
+time-ordered Wilson-line insertions are either absorbed into the declared
+renormalized dressed coordinates, assigned to lower-channel contact
+coordinates, or shown to be less singular in the simultaneous external-shell
+sense above.  They are not allowed to contribute an additional independent
+charged one-particle residue.
+\item The extraction is covariant under finite same-flux coordinate changes:
+if \(z_\ell\) is replaced by \(M_\ell z_\ell\), with \(M_\ell\) invertible on
+the chosen coordinate frame, then \(L_\ell\) is replaced by
+\(L_\ell M_\ell^{-1}\), the residue tensor is multiplied by \(M_\ell\) on
+that external coordinate, and the coefficient
+\(\mathcal A_{\boldsymbol\lambda}\) is unchanged.
+\end{enumerate}
+\end{hypothesis}
+
+This hypothesis is not a theorem about gauge theory.  It names the analytic
+work that a Wilson-line LSZ theorem must do.  One must construct the
+boundary-value distributions for the noncompact dressed insertions, prove
+uniformity in the truncation schedules \(L_\ell(t)\) and
+\(\varepsilon_\ell(t)\), identify the finite-rank external singular part,
+control contact terms from the endpoints and cusps of the lines, and match
+the resulting coefficient to the Dollard--Cook wave maps.  In massless QED
+the isolated pole in
+\eqref{eq:dressed-correlator-external-singular-expansion} is expected to be
+replaced by a threshold coefficient in a velocity/flux representation; the
+same interface then has to be rewritten with the threshold functional in
+place of the mass-shell residue.
+
 \subsection{Finite-Regulator Dressed LSZ}
 
 There is nevertheless a precise finite-regulator statement.  It is not the
 full massless charged scattering theorem; it is the part of the desired theory
 that follows from the usual LSZ argument once a dressed charged creator and an
-isolated charged shell have been supplied.
+isolated charged shell have been supplied.  Equivalently, it is the
+isolated-shell realization of
+Hypothesis~\ref{hyp:dressed-correlator-wave-map-interface} under the stronger
+regularity assumptions listed below.
 
 \begin{theorem}[Finite-regulator dressed LSZ]
 \label{thm:finite-regulator-dressed-charged-lsz}

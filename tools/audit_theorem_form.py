@@ -55,6 +55,12 @@ REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
         "Mellin eigenvalue of the leading BFKL kernel",
     ),
     (
+        "volume_iv/chapter05_haag_ruelle_and_mathematical_scattering.tex",
+        "Dressed-correlator reduction interface",
+        "theorem",
+        "Finite-regulator dressed LSZ",
+    ),
+    (
         "volume_iii/chapter05_conformal_charges_and_ward_identities.tex",
         "Vacuum and large-boundary behavior",
         "proposition",

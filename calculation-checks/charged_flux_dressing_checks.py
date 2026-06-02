@@ -682,6 +682,88 @@ def check_dressed_lsz_residue_coordinates() -> None:
     )
 
 
+def tensor_outer_2(
+    left: tuple[Fraction, ...], right: tuple[Fraction, ...], coefficient: Fraction
+) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(tuple(coefficient * a * b for b in right) for a in left)
+
+
+def classify_shell_term(pole_orders: tuple[int, ...]) -> str:
+    """Classify a term after multiplying by one LSZ factor for each leg."""
+
+    if any(order > 1 for order in pole_orders):
+        return "forbidden-higher-pole"
+    if all(order == 1 for order in pole_orders):
+        return "simultaneous-residue"
+    return "less-singular"
+
+
+def check_dressed_correlator_reduction_interface() -> None:
+    """Check the finite algebra of the dressed-correlator LSZ interface."""
+
+    z_left = (Fraction(2), Fraction(-1))
+    z_right = (Fraction(3), Fraction(4), Fraction(-2))
+    left_inverse_left = (Fraction(1, 2), Fraction(0))
+    left_inverse_right = (Fraction(0), Fraction(0), Fraction(-1, 2))
+    amplitude = Fraction(11, 7)
+
+    assert_equal(
+        "left external inverse normalizes its overlap",
+        sum(left_inverse_left[a] * z_left[a] for a in range(len(z_left))),
+        Fraction(1),
+    )
+    assert_equal(
+        "right external inverse normalizes its overlap",
+        sum(left_inverse_right[a] * z_right[a] for a in range(len(z_right))),
+        Fraction(1),
+    )
+
+    full_residue = tensor_outer_2(z_left, z_right, amplitude)
+    extracted = sum(
+        left_inverse_left[a] * left_inverse_right[b] * full_residue[a][b]
+        for a in range(len(z_left))
+        for b in range(len(z_right))
+    )
+    assert_equal("simultaneous dressed-correlator residue extracts wave-map coefficient", extracted, amplitude)
+
+    partial_left_residue = (1, 0)
+    contact_less_singular = (0, 0)
+    forbidden_double_pole = (2, 1)
+    assert_equal("one missing external pole is less singular", classify_shell_term(partial_left_residue), "less-singular")
+    assert_equal("contact term with no external pole is less singular", classify_shell_term(contact_less_singular), "less-singular")
+    assert_equal("double external pole is outside LSZ interface", classify_shell_term(forbidden_double_pole), "forbidden-higher-pole")
+    assert_equal("full simple pole term survives", classify_shell_term((1, 1)), "simultaneous-residue")
+
+    left_change = ((Fraction(1), Fraction(1)), (Fraction(0), Fraction(1)))
+    right_change = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(2), Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(-1), Fraction(1)),
+    )
+    right_change_inverse = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(-2), Fraction(1), Fraction(0)),
+        (Fraction(-2), Fraction(1), Fraction(1)),
+    )
+    assert_equal("right coordinate inverse", mat_mul(right_change_inverse, right_change), tuple(tuple(Fraction(int(i == j)) for j in range(3)) for i in range(3)))
+
+    transformed_left_inverse = row_mat(left_inverse_left, inverse_2x2(left_change))
+    transformed_right_inverse = row_mat(left_inverse_right, right_change_inverse)
+    transformed_z_left = mat_vec(left_change, z_left)
+    transformed_z_right = mat_vec(right_change, z_right)
+    transformed_residue = tensor_outer_2(transformed_z_left, transformed_z_right, amplitude)
+    transformed_extracted = sum(
+        transformed_left_inverse[a] * transformed_right_inverse[b] * transformed_residue[a][b]
+        for a in range(len(transformed_z_left))
+        for b in range(len(transformed_z_right))
+    )
+    assert_equal(
+        "multi-leg dressed-correlator residue is invariant under finite same-flux coordinate changes",
+        transformed_extracted,
+        amplitude,
+    )
+
+
 def u1_boundary_phase_exponent(signed_charges: tuple[Fraction, ...]) -> Fraction:
     return sum(signed_charges, Fraction(0))
 
@@ -779,6 +861,7 @@ def main() -> None:
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
     check_dressed_lsz_residue_coordinates()
+    check_dressed_correlator_reduction_interface()
     check_boundary_charge_selection_rules()
     check_compact_wilson_line_path_deformation()
     print("All charged flux, Wilson-line dressing, and dressed LSZ coordinate checks passed.")

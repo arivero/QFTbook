@@ -485,7 +485,13 @@ Current checks:
   transformations.  The same script checks the finite
   left-inverse algebra of dressed LSZ residues: the pole residue is a Gram
   matrix of charged one-particle overlaps, and finite dressing-coordinate
-  changes leave the extracted amplitude invariant.  It also verifies the
+  changes leave the extracted amplitude invariant.  It also checks the
+  dressed-correlator reduction interface in a finite model: simultaneous
+  simple external-shell poles survive the multi-leg residue extraction,
+  missing external poles and contact terms are less singular, higher poles
+  are outside the declared interface, and finite same-flux coordinate changes
+  on each external leg leave the extracted wave-map coefficient invariant.
+  It also verifies the
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary
   \(SU(2)\) endpoint representations contribute only through singlet channels.
