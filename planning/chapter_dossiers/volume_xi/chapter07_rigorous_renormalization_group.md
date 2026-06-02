@@ -601,3 +601,14 @@ remainder contraction.
   needed to invoke the projective distribution-window extension lemma.  The
   companion short-range RG check verifies this finite arithmetic and detects
   both restriction and declared-bound failures.
+- 2026-06-02 finite-volume source-window pass: added the thermodynamic
+  source-window estimate at fixed lattice spacing.  The manuscript now states
+  that finite-volume connected source functionals \(W_{k,\Omega,E}\) must be
+  holomorphic on a common polydisc and satisfy a boundary cluster-tail bound
+  \(A_E\Xi(R_\Omega)\); Cauchy's formula then gives the cumulant derivative
+  bound \(\beta!A_E\Xi(R_\Omega)/\rho^\beta\), making finite-volume windows
+  Cauchy as the boundary recedes from the source support.  The text also
+  records cofinal-exhaustion independence through a common larger region and
+  warns that numerical local stability without such a tail estimate is not a
+  thermodynamic Schwinger-window construction.  The companion short-range RG
+  check verifies the tail-to-derivative and cofinal-comparison arithmetic.

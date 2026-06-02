@@ -741,7 +741,10 @@ Current checks:
   checks finite source-window-to-cumulant extraction: Cauchy control of
   derivatives from holomorphic window convergence, restriction compatibility
   for \(E\subset F\), and the separate uniform Schwartz-seminorm bound needed
-  to extend compatible finite windows to a distribution.
+  to extend compatible finite windows to a distribution.  It also checks the
+  finite-volume source-window cluster-tail estimate: a boundary-tail bound on
+  holomorphic source functionals gives the corresponding cumulant-derivative
+  Cauchy bound and controls comparison of cofinal exhaustions.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

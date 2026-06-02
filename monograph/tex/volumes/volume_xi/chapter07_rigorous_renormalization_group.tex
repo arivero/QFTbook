@@ -2721,6 +2721,75 @@ additional polynomial source coordinates whose derivatives are distributions
 supported on collision diagonals.  They are part of the source window, not an
 after-the-fact modification of separated cumulants.
 
+\paragraph{Finite volume to infinite volume for a source window.}
+The thermodynamic step at fixed lattice spacing is another estimate, not a
+notation change.  At fixed lattice spacing \(a_k\), let
+\(\Omega\subset a_k\mathbb Z^D\) be a finite connected region and write
+\(W_{k,\Omega,E}(z)\) for the connected source functional
+\eqref{eq:short-range-source-window-functional} computed with the
+finite-volume Gibbs measure on \(\Omega\) and the declared local boundary
+convention.  Let
+\[
+  K_{E,k}
+  =
+  \Omega\cap
+  \bigcup_{a=1}^m \operatorname{supp} f_a
+\]
+be the lattice source support, after the continuum test functions are
+restricted to \(a_k\mathbb Z^D\), and let
+\[
+  R_\Omega=\operatorname{dist}_k(K_{E,k},a_k\mathbb Z^D\setminus\Omega)
+\]
+be the lattice distance from the source support to the boundary of
+\(\Omega\), in physical units or in lattice units according to the declared
+cluster norm.  Suppose the source-window cluster expansion gives, on a fixed
+closed polydisc \(P_\rho\), the boundary-tail estimate
+\begin{equation}
+  \sup_{z\in P_\rho}
+  |W_{k,\Omega',E}(z)-W_{k,\Omega,E}(z)|
+  \leq
+  A_E\,\Xi(R_\Omega)
+  \label{eq:short-range-source-window-volume-tail}
+\end{equation}
+whenever \(\Omega\subset\Omega'\) and both regions contain \(K_{E,k}\), where
+\(\Xi(R)\to0\) as \(R\to\infty\).  In a finite-range or exponentially
+clustering polymer estimate one expects
+\(\Xi(R)\le C\exp(-\zeta R)\); in a critical construction the available
+\(\Xi\) is whatever the RG polymer norm actually proves.  Equation
+\eqref{eq:short-range-source-window-volume-tail} is the statement that
+clusters touching the source window and clusters that feel the boundary have
+a summable connected bridge.
+
+For every multi-index \(\beta\), Cauchy's formula on the same polydisc gives
+\begin{equation}
+  \left|
+    \partial_z^\beta W_{k,\Omega',E}(0)
+    -
+    \partial_z^\beta W_{k,\Omega,E}(0)
+  \right|
+  \leq
+  \frac{\beta!}{\rho^\beta}\,A_E\,\Xi(R_\Omega).
+  \label{eq:short-range-source-window-volume-cauchy-bound}
+\end{equation}
+Thus the finite-volume cumulant windows are Cauchy as the boundary recedes
+from the source support.  Their limit is denoted
+\[
+  \partial_z^\beta W_{k,\infty,E}(0)
+  :=
+  \lim_{\Omega\uparrow a_k\mathbb Z^D}
+  \partial_z^\beta W_{k,\Omega,E}(0),
+  \]
+provided the directed family of regions is chosen so that
+\(R_\Omega\to\infty\).  The resulting window is independent of the chosen
+cofinal exhaustion whenever the same tail estimate controls any two
+exhaustions through a common larger region.  This is the finite-volume part
+of item 1 in
+Definition~\ref{def:short-range-scalar-os-assembly-datum}.  Without a bound
+of the form
+\eqref{eq:short-range-source-window-volume-tail}, a sequence of finite
+volumes may have plausible local numerical stability while failing to define
+the thermodynamic source window required by OS reconstruction.
+
 \paragraph{Adjoint source blocking and smooth-test error.}
 The source normalization in
 \eqref{eq:block-spin-distribution-pairing} is not a convention that can be

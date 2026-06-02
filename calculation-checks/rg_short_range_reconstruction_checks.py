@@ -37,6 +37,9 @@ a source-extended polymer RG chart.
 The finite source-window-to-cumulant check verifies the Cauchy estimate and
 restriction compatibility that turn holomorphic finite source windows into
 actual cumulant distribution windows.
+The finite-volume source-window check verifies the cluster-tail-to-cumulant
+Cauchy bound needed before finite-volume source windows can be used as
+thermodynamic Schwinger data.
 The stable-chart observable-window bound check verifies the finite RG estimate
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
@@ -1409,6 +1412,67 @@ def check_finite_source_window_to_cumulant_distribution_bound():
     )
 
 
+def check_finite_volume_source_window_cluster_tail():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def multi_factorial(beta):
+        value = 1
+        for component in beta:
+            value *= factorial(component)
+        return value
+
+    radii = (Fraction(2), Fraction(2))
+    beta = (1, 1)
+    amplitude = Fraction(3)
+    decay = Fraction(1, 2)
+    boundary_distance = 3
+    tail_bound = amplitude * decay**boundary_distance
+    rho_beta = product(radius ** exponent for radius, exponent in zip(radii, beta))
+    derivative_bound = multi_factorial(beta) * tail_bound / rho_beta
+    assert_equal("finite-volume source-window tail bound", tail_bound, Fraction(3, 8))
+    assert_equal("finite-volume source-window Cauchy derivative bound", derivative_bound, Fraction(3, 32))
+
+    actual_derivative_difference = Fraction(1, 40)
+    assert_true(
+        "finite-volume source-window derivative below boundary tail",
+        abs(actual_derivative_difference) <= derivative_bound,
+    )
+
+    later_distance = 5
+    later_derivative_bound = (
+        multi_factorial(beta)
+        * amplitude
+        * decay**later_distance
+        / rho_beta
+    )
+    assert_true(
+        "finite-volume source-window tail decreases with boundary distance",
+        later_derivative_bound < derivative_bound,
+    )
+
+    # Two cofinal exhaustions are compared through a common larger volume.
+    # The finite Cauchy bound is the sum of the two boundary tails, not an
+    # assumption that the two finite volumes are nested.
+    first_distance = 4
+    second_distance = 6
+    cofinal_bound = (
+        multi_factorial(beta)
+        * amplitude
+        * (decay**first_distance + decay**second_distance)
+        / rho_beta
+    )
+    assert_equal("finite-volume cofinal exhaustion comparison", cofinal_bound, Fraction(15, 256))
+    exhaustion_difference = Fraction(1, 100)
+    assert_true(
+        "finite-volume cofinal comparison controls difference",
+        exhaustion_difference <= cofinal_bound,
+    )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -1438,6 +1502,7 @@ def main():
     check_large_field_gaussian_regulator_bound()
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()
+    check_finite_volume_source_window_cluster_tail()
     print("All short-range scalar RG reconstruction checks passed.")
 
 
