@@ -133,6 +133,14 @@ state the relation among them.
   measure of the translation generators from Stone--Naimark, including the
   distinction between strong commutativity and formal commutation on a common
   domain.
+- The Poincare commutator sign
+  \([P^\mu,J^{\rho\sigma}]
+  =-\ii(\eta^{\mu\rho}P^\sigma-\eta^{\mu\sigma}P^\rho)\) is the
+  Hermitian Lorentzian convention whose reversed bracket embeds into the
+  Lorentzian conformal charge algebra; it is cross-referenced to the
+  conformal Killing vector convention and checked by
+  `calculation-checks/poincare_algebra_sign_checks.py` together with
+  `calculation-checks/conformal_algebra_sign_checks.py`.
 - An isolated mass shell gives a closed invariant one-particle
   subrepresentation by spectral projection and covariance; this is kept as
   prose because the substantive input is the isolation hypothesis.
@@ -187,6 +195,10 @@ state the relation among them.
   Wigner one-particle spaces, Fock construction, local observable assignment,
   and free scalar covariance/microcausality now have formal environments with
   proofs where the chapter uses a nontrivial construction.
+- 2026-06-02 conformal-algebra sign audit: added a manuscript cross-reference
+  tying the corrected Poincare \([P,J]\) sign to the Hermitian Lorentzian
+  conformal charge convention
+  \([Q_X,Q_Y]=-\ii Q_{[X,Y]}\) and to the later radial real-form map.
 
 ## Figure Ledger
 

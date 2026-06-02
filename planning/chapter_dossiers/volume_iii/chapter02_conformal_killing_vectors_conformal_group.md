@@ -16,7 +16,9 @@ The chapter establishes:
   \(\delta_{\mu\nu}\);
 - the derivation that its local polynomial solutions in \(D\ge3\) are
   translations, rotations, dilatations, and special conformal fields;
-- the commutation relations with a declared Euclidean-signature convention;
+- the commutation relations with a declared Euclidean-signature convention and
+  an explicit charge-vector-field convention that matches the Lorentzian
+  Poincare sign convention used in Volume I after analytic continuation;
 - the Euclidean conformal compactification
   \(\widehat{\mathbb R^D}\simeq S^D\), stereographic coordinates, and the
   round metric as a Weyl rescaling of the flat metric;
@@ -53,8 +55,9 @@ The chapter establishes:
    polynomial vector fields of degree at most two.
 3. The global group statement requires compactification data and excludes
    singular maps whose domain omits insertion points.
-4. Euclidean conformal algebra conventions must be reconciled later with
-   Hermitian Lorentzian and radial conventions.
+4. Euclidean conformal algebra conventions are reconciled with the Hermitian
+   Lorentzian and radial conventions by the charge-vector-field rule and the
+   generator map checked in `conformal_algebra_sign_checks.py`.
 5. Lorentzian Hilbert-space covariance is a representation of the universal
    cover, not merely of \(SO(D,2)\) or \(PO_0(D,2)\); otherwise the compact
    \(SO(2)\) cylinder-time factor would incorrectly force integral scaling
@@ -89,3 +92,8 @@ The chapter establishes:
   \(f^*\delta=\Omega^2\delta\), integrates \(q=\Omega^{-1}\) to a quadratic
   denominator obeying \(4\alpha\gamma=|\beta|^2\), and reduces the two cases
   to affine conformal maps or affine maps after one inversion.
+- 2026-06-02 conformal-algebra sign audit: verified that the Euclidean
+  charge algebra, the mostly-plus Lorentzian analogue, the Volume I Poincare
+  subalgebra sign, the \(SO(D+1,1)\) change of basis, and the radial real-form
+  map are mutually consistent under
+  `calculation-checks/conformal_algebra_sign_checks.py`.
