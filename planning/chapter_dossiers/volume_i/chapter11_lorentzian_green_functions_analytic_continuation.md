@@ -92,8 +92,9 @@
   growth near the real edge, equal distributional boundary values on an open
   spacelike real set, and the full-neighborhood cone condition
   \(\operatorname{conv}(C_+\cup C_-)=\mathbb R^N\).  The chapter now records
-  the boundary-value construction, Morera jump-cancellation mechanism,
-  complex-line slicing, Hartogs joint holomorphy, and Bochner-envelope step.
+  the boundary-value construction, normal-approach uniqueness,
+  distributional \(\bar\partial\)-jump cancellation, complex-line slicing,
+  Hartogs joint holomorphy, and Bochner-envelope step.
 - Ordered imaginary shifts
   \(\epsilon_1>\cdots>\epsilon_n>0\) give the time-ordered boundary value of
   the holomorphic Wightman function.
@@ -206,6 +207,14 @@
   a genuine complex neighborhood of the real edge, and expanded the analytic
   proof mechanism through distributional boundary values, Morera
   cancellation, line slicing, Hartogs, and Bochner's tube theorem.
+- 2026-06-02 issue #695/EOW proof-boundary pass: expanded the proof of
+  Theorem `thm:distributional-edge-of-the-wedge` at the distributional
+  boundary-value and jump-cancellation steps.  The proof now separates
+  finite-order boundary-value compactness, Stokes uniqueness of the normal
+  approach, distributional \(\bar\partial\)-closed gluing, line slicing,
+  Hartogs, and Bochner; it also identifies Hartogs, the \(\bar\partial\)
+  Weyl lemma, and Bochner as pure analytic infrastructure rather than hidden
+  QFT input.
 - 2026-05-24 issue #372 pass: displayed the equality of Euclidean and
   Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
   corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)

@@ -104,7 +104,7 @@ Minkowski setting used in the reconstruction theorem.
   zero-momentum projection algebra, the equivalence between the cluster
   bilinear identity on a dense orbit and the rank-one vacuum projection, the
   product contribution of the vacuum atom, and removal of the zero atom by
-  \((1-P_0)\).  This check does not certify the analytic Jost/Rajchman
+  \((1-P_0)\).  This check does not prove the analytic Jost/Rajchman
   theorem used to prove decay of the non-vacuum spectral part.
 
 ## Audit Notes
