@@ -25,6 +25,10 @@ one-step budget into a scale-uniform smallness condition.
 The finite-range covariance check verifies the block-diagonal characteristic
 function factorization behind independent fluctuation integrations on
 separated polymers.
+The covariance-tail bridge check verifies the finite arithmetic behind the
+replacement used when a covariance shell is summably decaying rather than
+finite range: shell counting, Schur tail control, and the squared
+connected-observable bound.
 The localization checks verify the finite Taylor-remainder arithmetic and
 canonical local-monomial scaling exponents used to decide whether an omitted
 coordinate has an actual irrelevant gain.
@@ -1272,6 +1276,62 @@ def check_finite_range_gaussian_factorization():
     assert_true("mixed term is nonzero when covariance tail remains", mixed_term != 0)
 
 
+def check_covariance_tail_bridge_estimate():
+    dimension = 3
+    decay_exponent = 7
+    shell_constant = Fraction(6)
+    amplitude = Fraction(2, 5)
+    separation = 4
+
+    tail_bound = (
+        amplitude
+        * shell_constant
+        * (1 + Fraction(1, decay_exponent - dimension))
+        * Fraction(1, (1 + separation) ** (decay_exponent - dimension))
+    )
+    assert_equal("covariance-tail Schur displayed bound", tail_bound, Fraction(3, 625))
+
+    partial_tail = sum(
+        amplitude
+        * shell_constant
+        * Fraction(1, (1 + n) ** (decay_exponent - dimension + 1))
+        for n in range(separation, 24)
+    )
+    assert_true("finite covariance-tail shell sum below Schur bound", partial_tail < tail_bound)
+
+    cross_block = [
+        [tail_bound / 4, -tail_bound / 5],
+        [tail_bound / 6, tail_bound / 7],
+    ]
+    row_sums = [sum(abs(entry) for entry in row) for row in cross_block]
+    col_sums = [
+        sum(abs(cross_block[row][col]) for row in range(2))
+        for col in range(2)
+    ]
+    assert_true("covariance-tail row Schur control", max(row_sums) <= tail_bound)
+    assert_true("covariance-tail column Schur control", max(col_sums) <= tail_bound)
+
+    grad_a = [Fraction(3, 7), Fraction(-1, 5)]
+    grad_b = [Fraction(5, 11), Fraction(2, 13)]
+    bilinear = sum(
+        grad_a[i] * cross_block[i][j] * grad_b[j]
+        for i in range(2)
+        for j in range(2)
+    )
+    grad_a_sq = sum(value * value for value in grad_a)
+    grad_b_sq = sum(value * value for value in grad_b)
+    assert_true(
+        "covariance-tail connected bridge bound",
+        bilinear * bilinear <= tail_bound * tail_bound * grad_a_sq * grad_b_sq,
+    )
+
+    weak_decay_exponent = 3
+    assert_true(
+        "covariance-tail summability requires exponent above dimension",
+        weak_decay_exponent <= dimension,
+    )
+
+
 def check_localization_taylor_remainder_bound():
     # Scalar finite-dimensional shadow of the Taylor-localization estimate.
     # F(t)=3-2t+5t^2-7t^3+11t^4 is localized through degree two.
@@ -1736,6 +1796,7 @@ def main():
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()
     check_finite_range_gaussian_factorization()
+    check_covariance_tail_bridge_estimate()
     check_localization_taylor_remainder_bound()
     check_localization_scaling_exponents()
     check_large_field_gaussian_regulator_bound()

@@ -863,6 +863,122 @@ begin from the phrase ``integrate a momentum shell'' alone.  It must specify
 the covariance shell, its locality or decay estimate, and the norm in which
 the residual inter-polymer correlations are summable.
 
+\begin{lemma}[Summable covariance-tail bridge estimate]
+\label{lem:summable-covariance-tail-bridge-estimate}
+Let \(\Lambda\) be a finite lattice with graph distance \(d\).  Assume that
+there are constants \(D_{\rm vol}\geq1\) and \(C_{\rm sh}<\infty\) such that
+for every \(x\in\Lambda\) and \(n\geq0\)
+\begin{equation}
+  \#\{y\in\Lambda:\ d(x,y)=n\}
+  \leq
+  C_{\rm sh}(1+n)^{D_{\rm vol}-1}.
+  \label{eq:rg-shell-count-bound}
+\end{equation}
+Let \(\Gamma\) be a positive semidefinite covariance satisfying
+\begin{equation}
+  |\Gamma(x,y)|
+  \leq
+  A_\Gamma(1+d(x,y))^{-s},
+  \qquad s>D_{\rm vol}.
+  \label{eq:rg-covariance-polynomial-tail-bound}
+\end{equation}
+If \(A,B\subset\Lambda\) are finite sets with \(d(A,B)\geq R\), then the
+cross block \(\Gamma_{AB}:\ell^2(B)\to\ell^2(A)\) obeys
+\begin{equation}
+  \|\Gamma_{AB}\|_{\ell^2(B)\to\ell^2(A)}
+  \leq
+  A_\Gamma C_{\rm sh}
+  \left(1+\frac{1}{s-D_{\rm vol}}\right)
+  (1+R)^{D_{\rm vol}-s}.
+  \label{eq:rg-covariance-tail-schur-bound}
+\end{equation}
+Consequently, if \(F_A\) and \(F_B\) are \(C^1\) bounded functions depending
+only on the fields in \(A\) and \(B\), with
+\[
+  \|\nabla_A F_A\|_{2,\infty}
+  =
+  \sup_\phi
+  \left(\sum_{x\in A}|\partial_xF_A(\phi)|^2\right)^{1/2}
+\]
+and similarly for \(F_B\), then
+\begin{equation}
+\begin{aligned}
+  &\left|
+    \mathbb E_\Gamma[F_A(\zeta_A)F_B(\zeta_B)]
+    -
+    \mathbb E_\Gamma[F_A(\zeta_A)]\,
+    \mathbb E_\Gamma[F_B(\zeta_B)]
+  \right|                                                    \\
+  &\qquad\leq
+  A_\Gamma C_{\rm sh}
+  \left(1+\frac{1}{s-D_{\rm vol}}\right)
+  (1+R)^{D_{\rm vol}-s}
+  \|\nabla_AF_A\|_{2,\infty}\|\nabla_BF_B\|_{2,\infty}.
+\end{aligned}
+  \label{eq:rg-covariance-tail-connected-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For \(x\in A\), the row sum over \(B\) is bounded by the full tail outside
+distance \(R\):
+\[
+  \sum_{y\in B}|\Gamma(x,y)|
+  \leq
+  A_\Gamma C_{\rm sh}
+  \sum_{n\geq R}(1+n)^{D_{\rm vol}-1-s}.
+\]
+The same bound holds for column sums by symmetry of \(\Gamma\).  Since
+\(s>D_{\rm vol}\),
+\[
+  \sum_{n\geq R}(1+n)^{D_{\rm vol}-1-s}
+  \leq
+  (1+R)^{D_{\rm vol}-1-s}
+  +
+  \int_R^\infty (1+t)^{D_{\rm vol}-1-s}\,\dd t
+  \leq
+  \left(1+\frac1{s-D_{\rm vol}}\right)
+  (1+R)^{D_{\rm vol}-s}.
+\]
+Schur's test gives
+\eqref{eq:rg-covariance-tail-schur-bound}.
+
+It remains to connect the operator bound to the Gaussian expectation.  For
+\(0\leq t\leq1\), let \(\mu_t\) be the centered Gaussian law on
+\(\mathbb R^A\oplus\mathbb R^B\) with covariance
+\[
+  \begin{pmatrix}
+    \Gamma_{AA} & t\Gamma_{AB}\\
+    t\Gamma_{BA} & \Gamma_{BB}
+  \end{pmatrix}.
+\]
+The covariance is positive because it is obtained from the original Gaussian
+law by multiplying the \(B\)-component by an independent sign and averaging:
+\(t=2p-1\) for \(p=(1+t)/2\).  Differentiating the finite-dimensional
+Gaussian expectation with respect to \(t\) gives
+\[
+  \frac{\dd}{\dd t}\mathbb E_{\mu_t}[F_A F_B]
+  =
+  \sum_{x\in A,y\in B}\Gamma(x,y)
+  \mathbb E_{\mu_t}[(\partial_xF_A)(\partial_yF_B)] .
+\]
+At \(t=0\) the \(A\) and \(B\) variables are independent; at \(t=1\) the law
+is the original marginal of \(\mu_\Gamma\) on \(A\cup B\).  Integrating in
+\(t\), applying Cauchy--Schwarz in the finite index sets, and using
+\eqref{eq:rg-covariance-tail-schur-bound} gives
+\eqref{eq:rg-covariance-tail-connected-bound}.
+\end{proof}
+
+Lemma~\ref{lem:summable-covariance-tail-bridge-estimate} is the replacement
+for exact factorization when the covariance shell is not finite range.  The
+decay exponent, shell-count constant, derivative norm, and polymer separation
+enter the RG theorem as actual constants.  A smooth momentum-shell covariance
+can supply such constants after integration by parts in momentum space; a
+sharp cutoff or a long-range covariance may fail to give the summability
+needed by the chosen polymer norm.  This is why a rigorous Wilsonian proof
+states the covariance decomposition and cluster norm before using locality
+language.
+
 \begin{lemma}[Finite localization remainder and scaling gain]
 \label{lem:finite-localization-remainder-scaling-gain}
 Let \(E\) be a finite-dimensional normed real vector space, let

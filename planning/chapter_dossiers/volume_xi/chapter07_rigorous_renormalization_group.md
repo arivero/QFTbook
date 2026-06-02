@@ -86,6 +86,9 @@ constructive RG developments.
   family used in the constructive polymer RG chart.
 - `Gamma_k`, `R_k`: finite-range fluctuation covariance and its range in the
   scale-\(k\) graph distance.
+- `D_vol`, `C_sh`, `A_Gamma`, `s`, `R`: shell-count dimension, shell-count
+  constant, covariance-tail amplitude, decay exponent, and polymer-set
+  separation in the summable covariance-tail bridge estimate.
 - `E`, `F`, `mathcal L_{\le p}`, `M_{p+1}(r)`: finite-dimensional field
   space, local polymer functional, Taylor-localization map, and derivative
   bound in the finite localization estimate.
@@ -251,6 +254,15 @@ constructive RG developments.
   integration over separated polymer regions independent.  This identifies
   covariance locality or a replacement cluster-decay estimate as a
   load-bearing input to the one-step polymer contraction datum.
+- Proves a summable covariance-tail bridge estimate replacing exact
+  finite-range factorization when the fluctuation shell has only decay:
+  pointwise covariance decay
+  \(|\Gamma(x,y)|\le A_\Gamma(1+d(x,y))^{-s}\), \(s>D_{\rm vol}\), and the
+  shell-count bound give a Schur operator estimate
+  \(A_\Gamma C_{\rm sh}(1+(s-D_{\rm vol})^{-1})(1+R)^{D_{\rm vol}-s}\) for
+  the cross covariance between separated polymer supports; Gaussian
+  interpolation then bounds the connected bridge between \(C^1\) local
+  polymer observables by this cross norm times their derivative seminorms.
 - Proves a finite Taylor-localization remainder estimate and derives the
   canonical scaling exponent \(y_{\nu,m}=D-\nu\Delta_\phi-m\) for scalar
   local density monomials.  The chapter now records explicitly that an
@@ -410,9 +422,10 @@ remainder contraction.
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering
   \(B_{\rm pol}\).  It also checks the finite-range
-  Gaussian factorization, Taylor-localization scaling ledger, and the
-  quadratic large-field regulator determinant/exponent bookkeeping.  It also
-  checks source-window extraction for a source-extended polymer chart,
+  Gaussian factorization, the summable covariance-tail bridge estimate,
+  Taylor-localization scaling ledger, and the quadratic large-field regulator
+  determinant/exponent bookkeeping.  It also checks source-window extraction
+  for a source-extended polymer chart,
   including retained-derivative vanishing, omitted third-derivative Cauchy
   bounds, and propagated scale-summed source-tail errors.  It also checks
   the stable-chart finite-window bound, decomposing the observable
@@ -460,6 +473,16 @@ remainder contraction.
   covariance tail remains.  This is proof infrastructure for issue #505; it
   does not construct the model-specific finite-range decomposition or the
   uniform estimates for an ordinary short-range critical scalar fixed point.
+- 2026-06-02 covariance-tail bridge pass: added the quantitative replacement
+  for exact finite-range factorization when a fluctuation covariance has only
+  summable decay.  The chapter now derives the Schur operator bound from a
+  shell-count estimate and pointwise covariance decay, then uses Gaussian
+  interpolation to control the connected bridge between separated polymer
+  observables.  The companion short-range RG check verifies the shell-tail,
+  Schur, and connected-bound arithmetic exactly.  This narrows the analytic
+  input for smooth momentum-shell or exponentially decaying covariance
+  decompositions, while leaving the model-specific construction of uniform
+  covariance and polymer estimates open.
 - 2026-06-02 Taylor-localization scaling pass: added the finite
   Taylor-remainder estimate behind the localization map and the canonical
   local-monomial exponent ledger.  This pass makes the first omitted

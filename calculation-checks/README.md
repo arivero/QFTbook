@@ -750,7 +750,11 @@ Current checks:
   also checks the finite-range Gaussian characteristic-function factorization
   behind independent fluctuation integration on separated polymers, together
   with the mixed term produced by a nonzero covariance tail.  It also checks
-  the finite Taylor-localization remainder bound and the canonical
+  the summable covariance-tail replacement for exact factorization: shell
+  counting gives a Schur tail bound, and the resulting cross-covariance
+  operator bound controls the connected bridge between separated polymer
+  observables.  It also checks the finite Taylor-localization remainder bound
+  and the canonical
   local-monomial scaling exponents, including the fact that a \(D=3\)
   canonical scalar \(\phi^6\) coordinate has no engineering irrelevant gain.
   It also checks the finite Gaussian stability identity for a quadratic
