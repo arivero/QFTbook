@@ -198,6 +198,11 @@ The chapter establishes:
   three little-group sectors to a displayed orthogonal spectral decomposition
   of the detector quadratic form on the full symmetric-traceless polarization
   space.  The companion check verifies the generic rational decomposition.
+- 2026-06-02 anti-wrapper follow-up: demoted the separate
+  Hofman--Maldacena-inequalities proposition/proof shell.  The substantive
+  result is the preceding spectral diagonalization; the inequalities are now
+  presented as its immediate positivity consequence rather than as an
+  additional theorem-family claim.
 - 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues

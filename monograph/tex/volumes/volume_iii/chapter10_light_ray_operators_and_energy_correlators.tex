@@ -955,11 +955,14 @@ subspaces are orthogonal and because the numerators
 \eqref{eq:hm-helicity-spectral-decomposition}.
 \end{proof}
 
-\begin{proposition}[Four-dimensional conformal-collider inequalities]
-\label{prop:hm-inequalities}
-The normal form \eqref{eq:hm-energy-one-point} is a positive quadratic form in
-the stress-tensor polarization for every detector direction \(\mathbf n\) if
-and only if
+\paragraph{Four-dimensional conformal-collider inequalities.}
+The theorem-level content in this finite step is
+Lemma~\ref{lem:hm-helicity-spectral-diagonalization}: it identifies the three
+irreducible \(SO(2)\) polarization sectors and computes the corresponding
+eigenvalues of the detector quadratic form.  Once that diagonalization is in
+hand, positivity has no further hidden analytic content.  The normal form
+\eqref{eq:hm-energy-one-point} is positive for every stress-tensor
+polarization and every detector direction \(\mathbf n\) exactly when
 \[
   1-\frac13t_2-\frac{2}{15}t_4\geq0,
   \qquad
@@ -967,18 +970,11 @@ and only if
   \qquad
   1+\frac13t_2+\frac{8}{15}t_4\geq0.
 \]
-\end{proposition}
-
-\begin{proof}
-By rotational covariance it suffices to work at
-\(\mathbf n=e_3\).  Lemma~\ref{lem:hm-helicity-spectral-diagonalization} writes
-the detector quadratic form as the orthogonal sum
-\eqref{eq:hm-helicity-spectral-decomposition}.  Positivity for all
-polarizations is therefore equivalent to nonnegativity of the three
-eigenvalues \(\lambda_2,\lambda_1,\lambda_0\) in
-\eqref{eq:hm-helicity-eigenvalues}.  Rotating the detector direction carries
-the same eigenvalue decomposition to every \(\mathbf n\in S^2\).
-\end{proof}
+Indeed, by rotational covariance one may put \(\mathbf n=e_3\); the lemma
+then writes the form as
+\(\lambda_2\|\varepsilon_2\|^2+\lambda_1\|\varepsilon_1\|^2+
+\lambda_0\|\varepsilon_0\|^2\), and rotation transports the same three
+eigenvalues to any direction.
 
 The derivation of the normal form
 \eqref{eq:hm-energy-one-point} is a calculation of a Wightman
