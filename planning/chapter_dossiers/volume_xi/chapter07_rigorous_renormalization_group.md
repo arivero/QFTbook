@@ -249,6 +249,11 @@ constructive RG developments.
   error.  The limiting OS norm and the dense-domain extension then follow
   from the same Gram-window estimates; finite reflection positivity alone
   does not supply this continuity.
+- Adds Lemma `lem:rg-positive-time-quotient-semigroup-criterion`, proving the
+  quotient step for OS time translations: a positive-time translation map
+  descends through the OS null space only after a bound
+  \(Q(\tau_tF,\tau_tF)\le C_tQ(F,F)\), and the Gram-continuity estimate then
+  gives a strongly continuous semigroup on the Hilbert completion.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -417,7 +422,8 @@ remainder contraction.
   obstruction showing why fixed entrywise error cannot prove directed
   reflection positivity.  It also checks the positive-time translation-window
   arithmetic behind OS semigroup continuity: support margin, quadratic
-  modulus, regulator-error limit, and dense-domain extension.  It also checks
+  modulus, regulator-error limit, null-quotient stability condition, and
+  dense-domain extension.  It also checks
   the exact finite arithmetic behind the polymer
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering
@@ -533,6 +539,14 @@ remainder contraction.
   limiting-window, and dense-domain extension arithmetic.  This is still
   proof infrastructure for #505; it does not construct the model-specific
   short-range critical scalar RG estimates.
+- 2026-06-02 OS quotient-semigroup pass: inserted the quotient-stability
+  criterion needed before translated positive-time tests define operators on
+  the OS Hilbert quotient.  The new lemma proves that
+  \(Q(\tau_tF,\tau_tF)\le C_tQ(F,F)\) sends null vectors to null vectors,
+  gives a bounded quotient operator, and combines with the Gram-continuity
+  estimate to yield a strongly continuous semigroup.  The companion
+  short-range RG check verifies the finite null-space obstruction and a
+  quotient-stable map.
 - 2026-06-02 stable-chart finite-window bound pass: added the
   RG-coordinate error budget behind finite universality evidence.  The
   chapter now bounds a finite reconstructed window by a tuned relevant

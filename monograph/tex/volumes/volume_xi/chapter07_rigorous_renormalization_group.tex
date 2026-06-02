@@ -3412,6 +3412,89 @@ therefore supply \eqref{eq:rg-positive-time-translation-window-bound}, or an
 equivalent model-specific equicontinuity estimate, in addition to finite
 reflection positivity.
 
+\begin{lemma}[Positive-time quotient semigroup criterion]
+\label{lem:rg-positive-time-quotient-semigroup-criterion}
+Let \(P_\infty\) be the algebraic positive-time test space and let
+\[
+  Q(F,G)=S_\ast((\Theta F)G)
+\]
+be the limiting positive semidefinite OS form on \(P_\infty\).  Put
+\[
+  \mathcal N_Q=\{F\in P_\infty\mid Q(F,F)=0\},
+  \qquad
+  \|[F]\|_{\rm OS}^2=Q(F,F).
+\]
+Assume that for \(0\le t\le t_0\) the positive-time translations
+\(\tau_t:P_\infty\to P_\infty\) satisfy \(\tau_0=1\) and
+\(\tau_t\tau_s=\tau_{t+s}\) whenever \(s,t,s+t\in[0,t_0]\).  Assume also the
+quotient-stability estimate
+\begin{equation}
+  Q(\tau_tF,\tau_tF)\le C_t\,Q(F,F),
+  \qquad C_t<\infty ,
+  \label{eq:rg-os-quotient-null-stability-bound}
+\end{equation}
+with \(\sup_{0\le t\le t_0}C_t<\infty\), and the limiting Gram-continuity
+estimate
+\[
+  Q(\tau_tF-F,\tau_tF-F)\longrightarrow0
+  \qquad (t\downarrow0)
+\]
+for every \(F\in P_\infty\).  Then
+\[
+  T_t[F]=[\tau_tF]
+\]
+is a well-defined strongly continuous local semigroup on the OS Hilbert-space
+completion of \(P_\infty/\mathcal N_Q\) for \(0\le t\le t_0\), with
+\(\|T_t\|\le C_t^{1/2}\) on its initial domain of definition.  If the same
+estimates hold on every compact positive-time interval, these local semigroups
+assemble to a strongly continuous semigroup for \(t\ge0\).  If \(C_t\le1\),
+the corresponding semigroup is contractive.
+\end{lemma}
+
+\begin{proof}
+The first load-bearing point is descent to the quotient.  If
+\(F\in\mathcal N_Q\), then \eqref{eq:rg-os-quotient-null-stability-bound} gives
+\[
+  Q(\tau_tF,\tau_tF)\le C_tQ(F,F)=0,
+\]
+so \(\tau_tF\in\mathcal N_Q\).  Hence the class \([\tau_tF]\) depends only on
+the class \([F]\).  The same estimate gives
+\[
+  \|T_t[F]\|_{\rm OS}^2=Q(\tau_tF,\tau_tF)
+  \le C_tQ(F,F)=C_t\|[F]\|_{\rm OS}^2,
+\]
+so \(T_t\) is bounded on the quotient norm and extends uniquely to the Hilbert
+completion.
+
+The semigroup law is inherited from the algebraic identity
+\(\tau_t\tau_sF=\tau_{t+s}F\) on the common positive-time domain and then
+extends by continuity.  It remains to prove strong continuity on the
+completion.  On the dense quotient \(P_\infty/\mathcal N_Q\), the assumed
+Gram-continuity estimate is exactly
+\[
+  \|T_t[F]-[F]\|_{\rm OS}^2
+  =
+  Q(\tau_tF-F,\tau_tF-F)\longrightarrow0 .
+\]
+For a general Hilbert vector \(v\), choose \([F]\) with
+\(\|v-[F]\|_{\rm OS}<\alpha\).  If \(M=\sup_{0\le t\le t_0}C_t^{1/2}\), then
+\[
+  \|T_tv-v\|_{\rm OS}
+  \le (M+1)\alpha+\|T_t[F]-[F]\|_{\rm OS}.
+\]
+First choose \(\alpha\) small and then \(t\) small.  This proves strong
+continuity at \(t=0\), and the semigroup law gives strong continuity at every
+positive time in the interval.
+\end{proof}
+
+This lemma isolates an estimate that is logically prior to writing
+\([\tau_tF]\) as an OS Hilbert-space vector.  The finite-window bound
+\eqref{eq:rg-positive-time-translation-window-bound} supplies the continuity
+term after the regulator is removed.  The quotient-stability bound
+\eqref{eq:rg-os-quotient-null-stability-bound} supplies invariance of the OS
+null space.  In a model proof both estimates should be derived from the same
+directed Gram-window control.
+
 Given Definition~\ref{def:short-range-scalar-os-assembly-datum}, the passage
 to a Wightman theory is the reconstruction stage following the RG estimates.
 The distributional estimates give tempered limiting Schwinger functions.

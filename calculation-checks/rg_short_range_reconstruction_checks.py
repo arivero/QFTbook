@@ -83,8 +83,9 @@ The reflection-positive block-spin pullback check verifies the finite matrix
 compression mechanism by which a reflection-compatible block-spin map sends a
 fine reflection-positive Gram form to a coarse one.
 The positive-time translation check verifies the finite Gram-window
-equicontinuity bound that turns translated positive-time test vectors into a
-strongly continuous OS time semigroup after taking the continuum limit.
+equicontinuity and null-quotient stability bounds that turn translated
+positive-time test vectors into a strongly continuous OS time semigroup after
+taking the continuum limit.
 """
 
 from fractions import Fraction
@@ -1012,6 +1013,60 @@ def check_positive_time_translation_window_bound():
     assert_true("dense-domain extension keeps continuity small", closure_bound < Fraction(1, 5))
 
 
+def check_positive_time_quotient_semigroup_criterion():
+    # Finite shadow of the OS quotient step.  The Gram form Q(v)=v_0^2 has
+    # null space span(e_1).  A translation candidate must preserve this null
+    # space before it can descend to the OS quotient.
+    def gram(vector):
+        return vector[0] * vector[0]
+
+    def matvec(matrix, vector):
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    null_vector = (Fraction(0), Fraction(1))
+    good_translation = ((Fraction(3, 2), Fraction(0)), (Fraction(0), Fraction(7)))
+    assert_equal(
+        "positive-time quotient good map preserves null vector",
+        gram(matvec(good_translation, null_vector)),
+        Fraction(0),
+    )
+
+    sample = (Fraction(2), Fraction(-3))
+    quotient_bound = Fraction(9, 4) * gram(sample)
+    assert_equal(
+        "positive-time quotient stability bound",
+        gram(matvec(good_translation, sample)),
+        quotient_bound,
+    )
+
+    small_time = Fraction(1, 5)
+    near_identity_translation = (
+        (Fraction(1) + small_time, Fraction(0)),
+        (Fraction(0), Fraction(2)),
+    )
+    translated_sample = matvec(near_identity_translation, sample)
+    difference = (translated_sample[0] - sample[0], translated_sample[1] - sample[1])
+    assert_equal(
+        "positive-time quotient continuity finite shadow",
+        gram(difference),
+        small_time * small_time * gram(sample),
+    )
+
+    bad_translation = ((Fraction(1), Fraction(1)), (Fraction(0), Fraction(0)))
+    assert_equal(
+        "positive-time quotient bad map detects null failure",
+        gram(matvec(bad_translation, null_vector)),
+        Fraction(1),
+    )
+    assert_true(
+        "bad map cannot descend to quotient",
+        gram(matvec(bad_translation, null_vector)) > 0,
+    )
+
+
 def check_stable_chart_observable_window_bound():
     theta = Fraction(1, 2)
     initial_stable_mismatch = Fraction(1, 5)
@@ -1791,6 +1846,7 @@ def main():
     check_finite_os_positivity_bound()
     check_finite_os_positivity_family_size_obstruction()
     check_positive_time_translation_window_bound()
+    check_positive_time_quotient_semigroup_criterion()
     check_stable_chart_observable_window_bound()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()
