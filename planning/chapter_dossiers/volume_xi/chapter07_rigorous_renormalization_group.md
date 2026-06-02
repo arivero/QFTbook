@@ -200,6 +200,11 @@ constructive RG developments.
   point controls reconstructed observables only after the lift radius,
   reconstruction Lipschitz constants, and projected observable chart errors
   are bounded in the seminorms of the declared observable topology.
+- Adds the functional-RG projected-flow residual estimate: a finite ansatz for
+  the Wetterich flow controls the exact regulated effective action only when
+  the omitted vector-field component \(Q_N\mathcal F_t(\gamma_N(t))\) is
+  integrated with the RG amplification factor and then transported through
+  observable seminorms.
 - Defines the output data of a constructive fermionic RG fixed point:
   fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
   interaction, source-field dimensions \(d-\Delta_i\), operator dimensions
@@ -409,7 +414,8 @@ remainder contraction.
 - `calculation-checks/rg_projection_checks.py`: exact rational check for the
   finite-dimensional projected-zero counterexample and complement-residual
   lift calculation, the residual-lift plus finite-window observable-error
-  budget, and the finite irrelevant-tail graph equation.
+  budget, the finite-step projected functional-RG residual-amplification
+  bound, and the finite irrelevant-tail graph equation.
 - `calculation-checks/rg_fermionic_fixed_point_checks.py`: exact rational
   checks for the fermionic benchmark kernel scaling ledger, pinned \(L^1\)
   exponent relation, trimmed local-coordinate list, and finite irrelevant-tail

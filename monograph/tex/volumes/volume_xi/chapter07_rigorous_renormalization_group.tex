@@ -2167,6 +2167,76 @@ coordinates and critical exponents order by order, while a nonperturbative
 fixed-point theorem additionally proves existence, stability, and
 reconstruction.
 
+\begin{controlledapproximation}[Functional-RG truncations as projected flows]
+\label{cap:functional-rg-truncation-projected-flow}
+Let \(\mathcal B_\Gamma\) be a Banach space of regulated effective-average
+actions, and write the exact finite-regulator Wetterich equation as
+\[
+  \dot\Gamma_t=\mathcal F_t(\Gamma_t),
+  \qquad
+  \mathcal F_t(\Gamma)
+  =
+  \frac12\operatorname{Tr}\!\left[
+    \bigl(\Gamma^{(2)}+R_t\bigr)^{-1}\dot R_t
+  \right]
+\]
+on a domain where the inverse Hessian and trace define an element of
+\(\mathcal B_\Gamma\).  Let \(P_N:\mathcal B_\Gamma\to\mathcal B_N\) be a
+bounded finite-rank projection, \(Q_N=1-P_N\), and suppose the truncated
+trajectory \(\gamma_N(t)\in\mathcal B_N\) solves
+\begin{equation}
+  \dot\gamma_N(t)=P_N\mathcal F_t(\gamma_N(t)).
+  \label{eq:frg-projected-flow-equation}
+\end{equation}
+The omitted vector-field component along this projected trajectory is
+\begin{equation}
+  r_N(t)=Q_N\mathcal F_t(\gamma_N(t)).
+  \label{eq:frg-projected-flow-residual}
+\end{equation}
+Assume that the exact trajectory \(\Gamma(t)\) and the projected trajectory
+remain in a common tube on \(0\le t\le T\), that
+\(\Gamma(0)=\gamma_N(0)\), and that
+\[
+  \|\mathcal F_t(X)-\mathcal F_t(Y)\|_{\mathcal B_\Gamma}
+  \le M(t)\|X-Y\|_{\mathcal B_\Gamma}
+\]
+there.  Then
+\begin{equation}
+  \|\Gamma(T)-\gamma_N(T)\|_{\mathcal B_\Gamma}
+  \le
+  \int_0^T
+  \exp\!\left(\int_s^T M(u)\,\dd u\right)
+  \|r_N(s)\|_{\mathcal B_\Gamma}\,\dd s .
+  \label{eq:frg-projected-flow-residual-bound}
+\end{equation}
+If the reconstruction map into a finite observable window satisfies
+\[
+  p_\alpha(\operatorname{Rec}_T(X)-\operatorname{Rec}_T(Y))
+  \le L_{\alpha,T}\|X-Y\|_{\mathcal B_\Gamma}
+\]
+on the same tube, then the right-hand side of
+\eqref{eq:frg-projected-flow-residual-bound}, multiplied by
+\(L_{\alpha,T}\), is the corresponding observable-window error.
+\end{controlledapproximation}
+
+To derive \eqref{eq:frg-projected-flow-residual-bound}, put
+\(e(t)=\Gamma(t)-\gamma_N(t)\).  Using
+\eqref{eq:frg-projected-flow-equation} and
+\eqref{eq:frg-projected-flow-residual},
+\[
+  \dot e(t)
+  =
+  \mathcal F_t(\Gamma(t))-\mathcal F_t(\gamma_N(t))+r_N(t).
+\]
+The upper Dini derivative of \(\|e(t)\|_{\mathcal B_\Gamma}\) is therefore
+bounded by \(M(t)\|e(t)\|+\|r_N(t)\|\), and
+\eqref{eq:frg-projected-flow-residual-bound} is Gronwall's inequality with
+zero initial error.  This is the finite-regulator statement behind the
+functional-RG truncation boundary: the projected vector field must be
+accompanied by an omitted-direction residual in the same function space as the
+exact effective action, and by observable reconstruction estimates in the
+seminorms actually used.
+
 \section{Fixed-Point Claim Content}
 \label{sec:rg-fixed-point-claim-content}
 

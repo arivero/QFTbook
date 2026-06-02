@@ -175,11 +175,47 @@ def check_projected_observable_lift_budget():
     )
 
 
+def check_frg_projected_flow_residual_budget():
+    # Finite-step version of the FRG projected-flow residual estimate:
+    # e_{j+1} <= a e_j + h delta_j with e_0=0.
+    step_size = Fraction(1, 2)
+    lipschitz = Fraction(1)
+    amplification = 1 + step_size * lipschitz
+    residuals = (Fraction(1, 20), Fraction(1, 40), Fraction(1, 80))
+
+    error = Fraction(0)
+    for residual in residuals:
+        error = amplification * error + step_size * residual
+
+    closed_form = sum(
+        amplification ** (len(residuals) - 1 - index)
+        * step_size
+        * residual
+        for index, residual in enumerate(residuals)
+    )
+    assert_equal("FRG projected-flow residual recurrence", error, Fraction(13, 160))
+    assert_equal("FRG projected-flow residual closed form", closed_form, error)
+
+    reconstruction_lipschitz = Fraction(5, 2)
+    observable_error = reconstruction_lipschitz * error
+    assert_equal("FRG projected-flow observable error", observable_error, Fraction(13, 64))
+
+    bad_residuals = (Fraction(1, 2), Fraction(1, 40), Fraction(1, 80))
+    bad_bound = sum(
+        amplification ** (len(bad_residuals) - 1 - index)
+        * step_size
+        * residual
+        for index, residual in enumerate(bad_residuals)
+    )
+    assert_true("FRG projected-flow bad residual detected", bad_bound > Fraction(1, 4))
+
+
 def main():
     check_spurious_projected_zero()
     check_projected_zero_lift_condition()
     check_irrelevant_tail_residual()
     check_projected_observable_lift_budget()
+    check_frg_projected_flow_residual_budget()
     print("All RG projection checks passed.")
 
 

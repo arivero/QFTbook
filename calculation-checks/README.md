@@ -688,7 +688,8 @@ Current checks:
   projected local coordinates alone do not define a Wilsonian fixed point.
   It also checks the residual-lift plus reconstruction-seminorm budget that
   turns a projected fixed point into a controlled finite-window observable
-  approximation.
+  approximation, and the finite-step residual amplification bound for a
+  projected functional-RG flow.
 - `rg_fermionic_fixed_point_checks.py`: exact rational checks for the
   Volume XI long-range fermionic rigorous-RG benchmark, including the
   kernel scaling-dimension ledger
