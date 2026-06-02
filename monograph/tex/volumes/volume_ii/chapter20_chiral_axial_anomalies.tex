@@ -1604,6 +1604,63 @@ antisymmetrized commutator of two ordinary gauge variations, while
 Wess--Zumino consistency condition \eqref{eq:wess-zumino-consistency}.
 \end{proof}
 
+\paragraph{Finite-regulator scheme meaning of the class.}
+The relative class above is the infinitesimal local shadow of a finite
+regulator statement.  Let \(\mathcal B_\Lambda\) be a regulated space of
+background fields, let \(\mathcal G_\Lambda\) be the regulated background
+gauge group acting on the right, \(A\mapsto A^g\), and suppose a local chart
+of the regulated determinant line has been chosen so that the fermion
+functional is written as a scalar \(W_\Lambda[A]\).  Its finite anomaly
+cochain is
+\begin{equation}
+  C_\Lambda(g;A)
+  =
+  W_\Lambda[A^g]-W_\Lambda[A].
+  \label{eq:finite-regulator-anomaly-cochain}
+\end{equation}
+At this stage the statement is an identity in the regulated chart; continuum
+content enters after locality, convergence, and counterterm estimates have
+been supplied.
+Functoriality of the gauge action gives the exact groupoid cocycle equation
+\begin{equation}
+  C_\Lambda(gh;A)
+  =
+  C_\Lambda(h;A^g)+C_\Lambda(g;A),
+  \label{eq:finite-regulator-anomaly-cocycle}
+\end{equation}
+with the order fixed by \((A^g)^h=A^{gh}\).  Differentiating
+\eqref{eq:finite-regulator-anomaly-cocycle} at
+\(g=\exp(t\zeta_1)\), \(h=\exp(t\zeta_2)\), and then taking the local
+continuum representative gives the Wess--Zumino condition
+\eqref{eq:wess-zumino-consistency}; replacing the even parameters by the
+ghost gives the relative BRST cocycle
+\eqref{eq:relative-anomaly-cocycle}.
+
+Changing the regulated Lagrangian by a finite local counterterm
+\(B_\Lambda[A]\), or choosing a determinant-line frame whose scalar logarithm
+differs by \(B_\Lambda[A]\), replaces \(W_\Lambda\) by
+\(W_\Lambda+B_\Lambda\) and hence
+\begin{equation}
+  C_\Lambda(g;A)
+  \longmapsto
+  C_\Lambda(g;A)+B_\Lambda[A^g]-B_\Lambda[A].
+  \label{eq:finite-regulator-anomaly-coboundary}
+\end{equation}
+The infinitesimal local density changes by
+\(a_4^{(1)}\mapsto a_4^{(1)}+s b_4^{(0)}+d b_3^{(1)}\), exactly as in
+\eqref{eq:relative-anomaly-coboundary}.  Thus regulator and subtraction
+choices that remain within the same local background-field scheme change the
+representative, not the relative cohomology class.  A nonzero local class
+means that no local counterterm in that perturbative gauge-fixed scheme can
+turn the regulated determinant chart into a gauge-invariant scalar effective
+action.  The statement is local and perturbative: vanishing of this class is
+the condition that removes this obstruction, while an order-by-order
+construction of a gauge theory must still build the counterterms and verify
+the Slavnov--Taylor or BV quantum master identities in the chosen regulator.
+Flat global holonomies of the determinant or Pfaffian line are separate
+finite-background data and are treated in
+Chapter~\ref{ch:curved-eta-invariants-global-anomalies}.
+
 For four-dimensional chiral fermions, this relative cohomology class is
 represented by the descent of a six-form anomaly polynomial.  To state the
 normalization without hiding convention-dependent factors, introduce the

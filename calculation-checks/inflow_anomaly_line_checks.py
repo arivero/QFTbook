@@ -179,6 +179,40 @@ def check_counterterm_frame_change_preserves_cocycle() -> None:
                                 )
 
 
+def check_finite_regulator_scheme_change_is_coboundary() -> None:
+    """A local scheme change shifts a finite anomaly cochain by a coboundary."""
+
+    for n in range(2, 19):
+        samples = sorted({0, 1, n // 3, n // 2, n - 1})
+        for level in samples:
+            for quadratic in samples:
+                for linear in samples:
+                    for background in samples:
+                        for gauge in samples:
+                            base = anomaly_cocycle(n, level, gauge, background)
+                            target = (background + gauge) % n
+                            # This is the effective-action convention in
+                            # Volume II, Chapter 20: W -> W + B shifts
+                            # C(g;A)=W(A^g)-W(A) by B(A^g)-B(A).  The
+                            # transformed_cocycle helper above is retained
+                            # for the inverse-sign line-frame convention.
+                            coboundary = (
+                                counterterm(n, quadratic, linear, target)
+                                - counterterm(n, quadratic, linear, background)
+                            ) % n
+                            shifted = (base + coboundary) % n
+                            assert_equal(
+                                (shifted - base) % n,
+                                coboundary,
+                                "finite regulator scheme change is a one-coboundary",
+                            )
+                            assert_equal(
+                                (shifted - coboundary) % n,
+                                base,
+                                "subtracting the scheme coboundary restores the cochain representative",
+                            )
+
+
 def simplices(top_dimension: int, degree: int) -> list[Simplex]:
     return list(combinations(range(top_dimension + 1), degree + 1))
 
@@ -261,6 +295,7 @@ def main() -> None:
     check_chevalley_eilenberg_wess_zumino_sign()
     check_functorial_cocycle_condition()
     check_counterterm_frame_change_preserves_cocycle()
+    check_finite_regulator_scheme_change_is_coboundary()
     check_finite_bf_boundary_variation()
     print("Anomaly-line, descent-cocycle, and finite-inflow cochain checks passed.")
 

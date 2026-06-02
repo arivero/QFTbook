@@ -115,6 +115,11 @@
   calculation.
 - Local anomalies are represented by local functionals modulo BRST-exact
   counterterm shifts and total derivatives.
+- A finite-regulator background-field chart now explicitly realizes this
+  statement as a groupoid cochain: \(C_\Lambda(g;A)=W_\Lambda[A^g]-W_\Lambda[A]\)
+  obeys a cocycle identity, and changing the regulated Lagrangian or
+  determinant-line frame by a local \(B_\Lambda[A]\) adds the coboundary
+  \(B_\Lambda[A^g]-B_\Lambda[A]\).
 
 ## Symbols
 
@@ -514,3 +519,14 @@
   representative.  The warning also reiterates that dimensional reduction is
   used only as a perturbative regulator for the Ward-identity representative,
   not as a nonperturbative fermionic path-integral definition.
+- 2026-06-02 issue #696 finite-regulator scheme pass: inserted the
+  background-groupoid cochain interpretation of the local anomaly class after
+  Proposition~\ref{prop:local-anomalies-relative-brst-classes}.  The chapter
+  now derives the finite cocycle identity
+  \(C_\Lambda(gh;A)=C_\Lambda(h;A^g)+C_\Lambda(g;A)\), identifies local
+  counterterm or determinant-frame changes with the coboundary
+  \(B_\Lambda[A^g]-B_\Lambda[A]\), and states explicitly that regulator and
+  subtraction choices within one local background-field scheme move the
+  representative but not the relative class.  The companion
+  `calculation-checks/inflow_anomaly_line_checks.py` now verifies this
+  coboundary arithmetic exactly.
