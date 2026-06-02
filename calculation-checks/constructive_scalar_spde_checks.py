@@ -483,6 +483,46 @@ def check_x2y_first_chaos_logarithmic_scale_arithmetic():
     )
 
 
+def check_x2y_first_chaos_cutoff_shell_arithmetic():
+    # Cutoff-shell first-chaos estimate.  The covariance-shell case gains
+    # (Q-1)(N-m).  The local-shell cases gain theta(N-m) after summing the
+    # lower cross scales.  The proposition states the variance gain as
+    # 2^{-2 rho (N-m)} with rho < theta/2, so the L2 cutoff-Cauchy gain is
+    # 2^{-rho (N-m)} after taking square roots.
+    qdim = Fraction(5)
+    theta = Fraction(1, 2)
+    rho = Fraction(1, 5)
+    kappa = Fraction(1, 20)
+    eta = kappa
+    m = 7
+    n = 13
+    gap = n - m
+
+    covariance_shell_gain = (qdim - 1) * gap
+    local_shell_gain = theta * gap
+    retained_variance_gain = 2 * rho * gap
+    retained_l2_gain = rho * gap
+
+    assert_equal(covariance_shell_gain, 24, "first-chaos cutoff covariance-shell gain")
+    assert_equal(local_shell_gain, 3, "first-chaos cutoff local-shell gain")
+    assert_equal(retained_variance_gain, Fraction(12, 5), "first-chaos cutoff retained variance gain")
+    assert_equal(retained_l2_gain, Fraction(6, 5), "first-chaos cutoff retained L2 gain")
+    if not retained_variance_gain < local_shell_gain:
+        raise AssertionError("first-chaos retained variance gain exceeds local-shell gain")
+    if not retained_variance_gain < covariance_shell_gain:
+        raise AssertionError("first-chaos retained variance gain exceeds covariance-shell gain")
+
+    normalized_l2_slack_before_log_loss = 5 * kappa
+    normalized_l2_slack_after_log_loss = normalized_l2_slack_before_log_loss - eta
+    assert_equal(
+        normalized_l2_slack_after_log_loss,
+        Fraction(1, 5),
+        "first-chaos cutoff normalized slack after log loss",
+    )
+    total_sample_exponent = normalized_l2_slack_after_log_loss * m + retained_l2_gain
+    assert_equal(total_sample_exponent, Fraction(13, 5), "first-chaos cutoff sample total exponent")
+
+
 def check_covariance_double_increment_arithmetic():
     qdim = Fraction(5)
     covariance_order = Fraction(4)
@@ -2377,6 +2417,7 @@ def main():
     check_heat_integration_reexpansion_arithmetic()
     check_nonlinear_negative_coordinate_wick_arithmetic()
     check_x2y_first_chaos_logarithmic_scale_arithmetic()
+    check_x2y_first_chaos_cutoff_shell_arithmetic()
     check_covariance_double_increment_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
@@ -2431,7 +2472,7 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

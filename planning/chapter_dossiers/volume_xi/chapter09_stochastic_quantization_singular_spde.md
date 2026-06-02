@@ -250,6 +250,9 @@ data.
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
   \(X^2Y\) first-chaos coordinate.
+- `\Delta_N V_\delta^{(1)}`: cutoff-shell increment
+  \(V_{\delta,N+1}^{(1)}-V_{\delta,N}^{(1)}\) for the locally subtracted
+  \(X^2Y\) first-chaos scalar sector.
 - `mu_spde`, `mu_cons`, `S_n^spde`, `S_n^cons`, `D`: stationary SPDE law,
   constructive Euclidean measure, their Schwinger hierarchies, and the dense
   test-function subspace used in the common-hierarchy comparison criterion.
@@ -705,7 +708,15 @@ data.
   \(O(\delta^{-1}(1+|\log\delta|)^2)\).  Consequently the normalized
   \(X^2Y\) first-chaos coordinate has every slack strictly below
   \(5\kappa\), with the logarithm explicitly accounted for rather than
-  hidden.
+  hidden.  The cutoff increment
+  \(V_{\delta,N+1}^{(1)}-V_{\delta,N}^{(1)}\) is also bounded with
+  scale-separated variance gain
+  \[
+    C_\rho\delta^{-1}(1+m_\delta)^2
+    2^{-2\rho(N-m_\delta)_+},\qquad 0<\rho<\theta/2,
+  \]
+  and therefore the normalized \(L^2\) cutoff increment has gain
+  \(2^{-\rho(N-m_\delta)_+}\) after the same logarithmic slack loss.
 - Verifies the local \(KG^2\) shell \(L^1\) hypothesis used in that
   first-chaos bound for dynamic \(\Phi^4_3\): heat order \(2\) and
   covariance order \(4,4\) give relative gaps \(3,1,1\), and the shell
@@ -1275,6 +1286,19 @@ data maps.
   slack, Holder edge exponent, and shell-gain ceiling.  The first-chaos
   covariance-increment sector, \(E_r'\)-projective estimates, invariant-law
   comparison, and OS assembly remain open.
+- 2026-06-02 issue #608/#582 \(X^2Y\) first-chaos cutoff-shell pass: added the
+  scale-separated cutoff increment estimate for the locally subtracted
+  first-chaos covariance-increment sector.  The proof decomposes the cutoff
+  difference into the three true shell cases: covariance block at scale
+  \(N+1\), first local \(KG^2\) packet at scale \(N+1\), or second local
+  \(KG^2\) packet at scale \(N+1\).  The covariance-shell case gains
+  \(Q-1=4\) powers past the physical testing scale; the local-shell cases
+  gain \(\theta\) powers after summing the lower cross scales, so the
+  retained variance rate is \(2^{-2\rho(N-m_\delta)_+}\) for
+  \(0<\rho<\theta/2\).  The companion calculation check verifies these
+  exponent comparisons.  This closes the scalar first-chaos cutoff layer;
+  the \(E_r'\)-projective lift, invariant-law comparison, and OS assembly
+  remain open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

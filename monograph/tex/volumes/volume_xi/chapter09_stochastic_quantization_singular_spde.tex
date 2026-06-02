@@ -9757,7 +9757,8 @@ Propositions~\ref{prop:spde-x2y-high-chaos-tested-coordinate-edge-bound} and
 corresponding scalar edge and shell layers.  The remaining \(X^2Y\)
 first-chaos component is different: its local subtraction produces covariance
 increments, treated below in
-Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound}.
+Propositions~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound} and
+\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain}.
 Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} then
 converts this scalar factor into a scale-summed cutoff rate whenever the
 normalization slack exceeds the parameter entropy.  The projective
@@ -10386,13 +10387,174 @@ For every \(\eta>0\),
 which gives \eqref{eq:spde-first-chaos-normalized-log-loss}.
 \end{proof}
 
+\begin{proposition}[Cutoff-shell gain for the locally subtracted first-chaos kernel]
+\label{prop:spde-x2y-first-chaos-cutoff-shell-gain}
+Keep the hypotheses and notation of
+Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound}, and
+choose \(m_\delta\geq0\) by
+\[
+  2^{-m_\delta-1}<\delta\leq2^{-m_\delta}.
+\]
+For \(N\geq0\), set
+\[
+  \Delta_N V_\delta^{(1)}
+  =
+  V_{\delta,N+1}^{(1)}-V_{\delta,N}^{(1)} .
+\]
+Then, for every \(0<\rho<\theta/2\), there is a constant \(C_\rho\),
+independent of \(z,\delta,N\), such that
+\begin{equation}
+  |\Delta_N V_\delta^{(1)}|
+  \leq
+  C_\rho\,\delta^{-1}
+  (1+m_\delta)^2
+  2^{-2\rho(N-m_\delta)_+}.
+  \label{eq:spde-first-chaos-cutoff-shell-variance-gain}
+\end{equation}
+Consequently, if the cutoff increment
+\(Z_{\delta,N+1}^{(1)}-Z_{\delta,N}^{(1)}\) of the first-chaos part of the
+tested locally subtracted \(X^2Y\) coordinate has its second moment bounded
+by a fixed finite sum of terms of the form
+\(\Delta_N V_\delta^{(1)}\), then for every \(\eta>0\) and
+every \(0<\rho<\theta/2\),
+\begin{equation}
+  \left\|
+    \delta^{1/2+5\kappa}
+    \bigl(Z_{\delta,N+1}^{(1)}-Z_{\delta,N}^{(1)}\bigr)
+  \right\|_{L^2(\Omega)}
+  \leq
+  C_{\eta,\rho}\,
+  \delta^{5\kappa-\eta}
+  2^{-\rho(N-m_\delta)_+}.
+  \label{eq:spde-first-chaos-cutoff-shell-normalized}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The proof keeps the shell location visible.  Write
+\[
+  \alpha_{j,s}=2^{-\theta(j-s)_+},\qquad
+  B_s(\delta)=2^s\min\{1,\delta^{-Q}2^{-Qs}\}.
+\]
+The estimate in the proof of
+Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound} gives
+the majorant
+\[
+  |V_{\delta,N}^{(1)}|
+  \leq
+  C\sum_{0\leq s\leq N}
+  B_s(\delta)
+  \left(\sum_{0\leq n\leq N}\alpha_{n,s}\right)^2 .
+\]
+Subtracting the \(N\)-cutoff sum from the \(N+1\)-cutoff sum leaves exactly
+the sectors in which at least one of the three indices \(n,n',s\) is
+\(N+1\).  Hence
+\begin{equation}
+\begin{aligned}
+  |\Delta_NV_\delta^{(1)}|
+  &\leq
+  C\,B_{N+1}(\delta)
+  \left(\sum_{0\leq j\leq N+1}\alpha_{j,N+1}\right)^2        \\
+  &\quad+
+  C\sum_{0\leq s\leq N+1}
+  B_s(\delta)\alpha_{N+1,s}
+  \left(\sum_{0\leq j\leq N+1}\alpha_{j,s}\right).
+\end{aligned}
+  \label{eq:spde-first-chaos-cutoff-three-shells}
+\end{equation}
+The second line accounts for the two symmetric cases \(n=N+1\) and
+\(n'=N+1\), with the factor \(2\) absorbed into \(C\).
+
+Let \(L=(N-m_\delta)_+\).  If \(N\leq m_\delta\), then the right side of
+\eqref{eq:spde-first-chaos-cutoff-shell-variance-gain} has no shell gain, and
+the total bound
+\eqref{eq:spde-first-chaos-logarithmic-variance-bound} already gives the
+claim.  Assume from now on that \(N>m_\delta\).  The covariance-shell term in
+\eqref{eq:spde-first-chaos-cutoff-three-shells} has \(s=N+1>m_\delta\), so
+\[
+  B_{N+1}(\delta)
+  \leq
+  C2^{m_\delta}2^{-4(N-m_\delta)} .
+\]
+Moreover
+\(\sum_{j\leq N+1}\alpha_{j,N+1}\leq C(1+N)\).  Since
+\(2\rho<4\), the polynomial factor is absorbed by weakening the exponential:
+\[
+  B_{N+1}(\delta)
+  \left(\sum_{j\leq N+1}\alpha_{j,N+1}\right)^2
+  \leq
+  C_\rho 2^{m_\delta}(1+m_\delta)^2
+  2^{-2\rho(N-m_\delta)} .
+\]
+
+It remains to bound the local-shell line in
+\eqref{eq:spde-first-chaos-cutoff-three-shells}.  Use
+\(\sum_{j\leq N+1}\alpha_{j,s}\leq C(1+s)\).  For \(s\leq m_\delta\),
+\[
+\begin{aligned}
+  \sum_{s\leq m_\delta}
+  B_s(\delta)\alpha_{N+1,s}(1+s)
+  &\leq
+  C(1+m_\delta)2^{-\theta(N-m_\delta)}
+  \sum_{s\leq m_\delta}2^s                         \\
+  &\leq
+  C2^{m_\delta}(1+m_\delta)
+  2^{-\theta(N-m_\delta)} .
+\end{aligned}
+\]
+For \(s>m_\delta\), write \(s=m_\delta+t\).  Then
+\[
+  B_s(\delta)\leq C2^{m_\delta}2^{-4t}.
+\]
+The part \(1\leq t\leq N-m_\delta\) is bounded by
+\[
+  C2^{m_\delta}(1+m_\delta)
+  \sum_{1\leq t\leq N-m_\delta}
+  (1+t)2^{-4t}2^{-\theta(N-m_\delta-t)}
+  \leq
+  C2^{m_\delta}(1+m_\delta)2^{-\theta(N-m_\delta)} ,
+\]
+because \(4-\theta>0\).  The tail \(t>N-m_\delta\) has
+\(\alpha_{N+1,s}=1\) and is bounded by
+\[
+  C2^{m_\delta}(1+m_\delta)
+  \sum_{t>N-m_\delta}(1+t)2^{-4t}
+  \leq
+  C2^{m_\delta}(1+m_\delta)2^{-4(N-m_\delta)} .
+\]
+Since \(2\rho<\theta\leq1<4\), the two local-shell estimates are bounded by
+\[
+  C_\rho2^{m_\delta}(1+m_\delta)^2
+  2^{-2\rho(N-m_\delta)} .
+\]
+Combining the covariance-shell and local-shell estimates, and using
+\(2^{m_\delta}\simeq\delta^{-1}\), proves
+\eqref{eq:spde-first-chaos-cutoff-shell-variance-gain}.
+
+The first-chaos increment is Gaussian, so the \(L^2\)-norm is the square root
+of its variance.  Multiplication by \(\delta^{1/2+5\kappa}\) gives
+\[
+  C_\rho\delta^{5\kappa}(1+m_\delta)
+  2^{-\rho(N-m_\delta)_+}.
+\]
+The logarithm is absorbed as before: for every \(\eta>0\),
+\[
+  (1+m_\delta)\leq C_\eta\delta^{-\eta}.
+\]
+This proves \eqref{eq:spde-first-chaos-cutoff-shell-normalized}.
+\end{proof}
+
 Together with
 Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}, this
 identifies the scalar base estimate for the whole locally subtracted
 \(X^2Y\) coordinate.  The fifth- and third-chaos pieces have the sharp
 \(\delta^{-1}\) variance dictated by target regularity \(-1/2\); only the
 first-chaos covariance-increment sector consumes the logarithmic slack that
-is recorded in the projective \(X^2Y\) input.
+is recorded in the projective \(X^2Y\) input.  The cutoff increment of this
+first-chaos sector also has the scale-separated gain of
+Proposition~\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain}; its logarithmic
+factor is harmless only after one chooses a positive slack
+\(\zeta_{X^2Y}\) in the nonlinear \(\Pi\)-coordinate input.
 
 \begin{corollary}[Local \(KG^2\) shell bound in dynamic \(\Phi^4_3\)]
 \label{cor:spde-local-kg2-shell-lone-bound}
