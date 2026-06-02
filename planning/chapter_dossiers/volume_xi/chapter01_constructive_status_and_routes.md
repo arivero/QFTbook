@@ -45,6 +45,19 @@
 5. Singular-SPDE methods give a dynamic route to Euclidean measures in
    constructed scalar cases.
 
+## Calculation Checks
+
+- No dedicated calculation check is attached to this status-map chapter.  Its
+  role is to classify construction routes and proof statuses; convention-
+  sensitive algebra is checked in the later constructive scalar, lattice,
+  stochastic, numerical, and rigorous-RG chapters where the formulae are used.
+
+## Audit Notes
+
+- 2026-06-02 issue #561 dossier pass: made the absence of a dedicated
+  finite-algebra check explicit so the chapter is not mistaken for an
+  uncovered computation chapter.
+
 ## Figures
 
 - Three-route construction diagram.

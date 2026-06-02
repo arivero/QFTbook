@@ -50,6 +50,21 @@ language.
 - Defines wrapping effects as finite-cycle mirror propagation and records the
   distinction from later planar spectral wrapping.
 
+## Calculation Checks
+
+- `calculation-checks/mirror_tba_wrapping_checks.py` verifies the two-winding
+  expansion of the mirror occupation functional, the vacuum-energy
+  coefficients, the Bessel \(K_1\) normalization in the Luescher term, the
+  large-\(R\) asymptotic coefficients and exponential-remainder threshold,
+  the F-term product subtraction, and the orientation sign in the
+  \(\mu\)-term residue ledger.
+
+## Audit Notes
+
+- 2026-06-02 issue #561 dossier-link pass: recorded the already-existing
+  mirror-channel finite-size calculation check explicitly in the chapter
+  dossier.  No new formula was changed in the manuscript.
+
 ## Figure Ledger
 
 No figure is included in this pass.  A future figure should draw the same

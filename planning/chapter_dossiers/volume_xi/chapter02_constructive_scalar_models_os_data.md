@@ -168,6 +168,17 @@
 15. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
+## Calculation Checks
+
+- `calculation-checks/constructive_scalar_spde_checks.py` verifies the
+  Hermite/Wick coefficients, finite Wiener-chaos constants, finite-Langevin
+  reversibility and Dirichlet-form normalization, sharp-cutoff tadpole
+  coefficients, \(\phi^4_d\) superficial-degree formula, two-loop
+  \(\Phi^4_3\) sunset combinatorics, finite-cutoff local stability bound,
+  multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
+  variant, connected-to-full partition growth bound, and SPDE exponent
+  arithmetic used across this chapter and the neighboring stochastic chapter.
+
 ## Figures
 
 - Regulator-to-OS hierarchy construction diagram.

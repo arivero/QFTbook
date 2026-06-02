@@ -42,6 +42,15 @@ and near two-dimensional CFT perturbations.
   Hamiltonian-truncation chapter in Volume XI unless this chapter later
   extracts a concrete nonintegrable finite-volume spectrum.
 
+## Calculation Checks
+
+- `calculation-checks/nonintegrable_bridge_checks.py` verifies the broken
+  higher-charge commutator ledger, first-order form-factor mass shift,
+  semi-local kinematic residue, Ising false-vacuum string tension,
+  two-particle \(1+1\)-dimensional phase-space Jacobian, TCSA coupling and
+  counterterm powers, and the Airy scaling of confined kink--antikink bound
+  states.
+
 ## Figure Ledger
 
 No figure is included in this pass.  Future figures should include charge
@@ -55,3 +64,6 @@ deformation diagrams.
   chapter.  The chapter now keeps only the CFT-deformation Hamiltonian
   coordinate chart and states that detailed TCSA machinery belongs in
   Volume XI until an actual nonintegrable spectrum is extracted here.
+- 2026-06-02 issue #561 dossier-link pass: recorded the already-existing
+  nonintegrable-bridge calculation check explicitly in the chapter dossier.
+  No new formula was changed in the manuscript.

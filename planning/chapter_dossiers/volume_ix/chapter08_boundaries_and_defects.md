@@ -47,6 +47,30 @@ and prepare later categorical treatments.
   boundary-charge condition.
 - Relates boundary/defect data to phase invariants.
 
+## Calculation Checks
+
+- `calculation-checks/extended_defect_ward_checks.py` verifies the finite
+  higher-form Ward and junction-charge algebra used for extended operators
+  and topological defects.
+- `calculation-checks/categorical_defect_structure_checks.py` verifies finite
+  defect-fusion, reflection-pairing, and junction-basis identities for the
+  categorical defect language used later in the chapter.
+- `calculation-checks/ising_defect_fusion_checks.py` verifies the
+  \(\mathbb Q(\sqrt2)\) Ising/Kramers-Wannier defect fusion example,
+  including Frobenius-Perron dimensions and the diagonal action on local
+  primary sectors.
+- `calculation-checks/finite_gauge_boundary_checks.py` verifies the finite
+  Abelian gauge-theory line-condensation and boundary endpoint algebra that
+  models the compact \(BF\) boundary examples.
+
+## Audit Notes
+
+- 2026-06-02 issue #561 dossier-link pass: recorded the existing
+  boundary/defect companion checks explicitly in the chapter dossier.  The
+  checks cover the finite algebraic examples used in the chapter; analytic
+  boundary-QFT convergence statements remain manuscript proof obligations
+  rather than finite calculation checks.
+
 ## Figure Ledger
 
 No figure is included in this pass.  Later figures should show a half-space
