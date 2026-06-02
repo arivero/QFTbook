@@ -1370,16 +1370,105 @@ gauge-invariant subnet.
 This comparison structure is deliberately stronger than the Wightman
 distributional axioms.
 The Wightman hierarchy determines the cyclic field representation and its
-vacuum matrix elements.  It does not, by itself, decide which self-adjoint
-closures have Borel functional calculi compatible with locality, nor does it
-decide whether the field coordinates are observables.  Exponentials of
-smeared Hermitian fields, when they exist, generate the displayed
-field-generated net; in a theory with a nontrivial internal or gauge
-structure this net may be larger than the neutral observable net.  Thus the
-question ``do the exponentials of smeared Wightman fields span the local
-algebra?'' has no framework-independent answer.  It becomes a theorem only
-after the comparison structure identifies the field coordinates, their closures,
-their strong locality, and the observable-subnet operation.
+vacuum matrix elements.  The comparison structure adds the bounded
+functional-calculus and observable-identification data needed to speak about a
+Haag--Kastler net.  The resulting field-generated net is the represented
+von Neumann net
+\[
+  \mathcal F_\Phi(\mathcal O)
+  =
+  \{E_h(\Delta)\mid
+    h\in\mathcal H_\Phi(\mathcal O),\quad
+    \Delta\subset\mathbb R\text{ Borel}\}'',
+\]
+or, when only observable coordinates are present, the same formula with
+\(\mathcal R_\Phi\) in place of \(\mathcal F_\Phi\).  The remaining datum is
+whether this coordinate net exhausts the local observable content.
+
+\begin{definition}[Complete observable Wightman coordinatization]
+\label{def:complete-observable-wightman-coordinatization}
+Let
+\[
+  \mathcal O\longmapsto\mathcal R(\mathcal O)\subset B(\Hilb)
+\]
+be a represented observable net on the same Hilbert space and with the same
+vacuum vector and spacetime symmetry representation as the Wightman field
+presentation.  A Wightman-to-net comparison structure is a complete observable
+coordinatization of \(\mathcal R\) on the region class \(\mathcal K(M)\) if
+the following additional conditions hold.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The covariance and vacuum actions agree:
+\[
+  U(g)\mathcal R(\mathcal O)U(g)^{-1}=\mathcal R(g\mathcal O),
+  \qquad
+  U(g)\vac=\vac,
+\]
+and the Wightman covariance in
+Definition~\ref{def:wightman-to-net-comparison-structure} uses this same
+unitary representation \(U\).
+\item The bounded coordinate net is additive in the operator-theoretic sense
+appropriate to the chosen field coordinates.  For every finite cover
+\(\mathcal O\subset\bigcup_{j=1}^r\mathcal O_j\), every
+\(h\in\mathcal H_\Phi(\mathcal O)\), and every decomposition
+\[
+  h=h_1+\cdots+h_r,\qquad
+  h_j\in\mathcal H_\Phi(\mathcal O_j),
+\]
+used to prove additivity, the closure and functional-calculus data satisfy
+\[
+  X(h)=\overline{X(h_1)+\cdots+X(h_r)}
+\]
+on a common core and the unitary group of \(X(h)\) is obtained from the
+unitary groups of the \(X(h_j)\) by the strong Trotter limit
+\eqref{eq:wightman-net-trotter-additivity-bridge}.  Equivalently, the
+spectral projections of \(X(h)\) lie in
+\(\bigvee_j\mathcal F_\Phi(\mathcal O_j)\), with \(\mathcal F_\Phi\) replaced
+by the observable coordinate net when no charged field net is used.
+\item The observable prescription is part of the comparison.  If all chosen
+coordinates are observable, then the generated net itself exhausts the
+represented observable net:
+\[
+  \mathcal R_\Phi(\mathcal O)=\mathcal R(\mathcal O)
+  \qquad
+  \text{for all }\mathcal O\in\mathcal K(M).
+\]
+If the chosen coordinates generate a charged or field net
+\(\mathcal F_\Phi\), then an observable operation must be specified and must
+recover the represented observable net.  For an implemented compact internal
+group \(G\), this condition is
+\[
+  \mathcal F_\Phi(\mathcal O)^G=\mathcal R(\mathcal O)
+  \qquad
+  \text{for all }\mathcal O\in\mathcal K(M),
+\]
+with the fixed-point additivity and charged-intertwiner generation issues
+verified in the model rather than inferred from the equality of vector-space
+test functions.
+\item The equality in the preceding item is equality of von Neumann algebras
+in the given representation.  It requires equality of bounded operator
+closures, with the strong or weak operator topology built into the represented
+local algebra.  Thus every bounded local observable in
+\(\mathcal R(\mathcal O)\) is obtained as a strong-operator limit of bounded
+functions of the specified local field coordinates, after applying the stated
+observable-subnet operation.
+\end{enumerate}
+\end{definition}
+
+With this definition the statement that exponentials of smeared Wightman
+fields generate the local algebra has a precise meaning: it asserts
+Definition~\ref{def:complete-observable-wightman-coordinatization} for a
+specified region class, field-coordinate space, closure choice, strong
+locality statement, additivity mechanism, and observable-subnet prescription.
+In scalar theories with a complete neutral field system this may reduce to
+\(\mathcal R_\Phi(\mathcal O)=\mathcal R(\mathcal O)\).  In a theory with
+charged fields, gauge variables, or a global internal symmetry, the same
+bounded functions first generate a field or coordinate net, and the
+observable net is obtained only after the fixed-point, gauge-invariant,
+BRST/BV, lattice physical-Hilbert-space, or other explicitly specified
+observable operation has been applied.  Conversely, affiliated fields inside a
+given represented net provide local coordinates for a subnet unless the
+generation equality in Definition~\ref{def:complete-observable-wightman-coordinatization}
+is separately proved.
 
 The finite algebra behind the last point is simple but important.  Let
 \(\Gamma=\mathbb Z/2\mathbb Z\) act on a two-dimensional Hilbert space by the
