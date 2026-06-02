@@ -938,3 +938,12 @@ The chapter must define and derive:
   three subsections in every section of this chapter longer than 500 source
   lines; this is a navigational repair, not a claim that QCD depth-pass-B is
   complete.
+- 2026-06-02 issue #630 operator-RG convention pass: replaced the ambiguous
+  "bare light-ray operator" wording by a finite-regulator light-ray operator
+  coordinate \(\mathbb O_a^\Lambda\), separated regularization from
+  renormalization in the convolutional coordinate map, derived DGLAP as the
+  infinitesimal RG equation of the renormalized Wilson-line light-ray
+  operator coordinates, and wrote the DIS coefficient RG equation as the
+  dual cancellation condition.  `calculation-checks/qcd_dglap_checks.py`
+  now includes a rational finite-channel check of \(df=P f\), \(dC=-CP\),
+  and \(d(Cf)=0\).

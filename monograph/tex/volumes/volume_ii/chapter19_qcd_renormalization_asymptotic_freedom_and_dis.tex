@@ -9179,23 +9179,66 @@ matching observables for the light-ray definition, not the definition itself.
 The subscript \(\mu\) in
 \eqref{eq:qcd-quark-light-ray-operator}--\eqref{eq:qcd-gluon-pdf-definition}
 means that the singular lightlike bilocal has been defined in a specified
-regularization and factorization scheme.  For integrated collinear PDFs, the
-renormalization is a convolution in the light-cone momentum fraction:
+regularization and factorization scheme.  Let
+\(\mathbb O_a^\Lambda(x)\) denote the Fourier-coordinate operator obtained
+from the same gauge-invariant light-ray composite in a finite ultraviolet
+regulator \(\Lambda\), after the path geometry, endpoint prescription, and
+finite regulator have been fixed.  This cutoff-regulated operator is not a
+new physical observable; it is the finite-regulator coordinate from which the
+renormalized light-ray coordinate is obtained.  For integrated collinear PDFs,
+the coordinate change is a convolution in the light-cone momentum fraction:
 \begin{equation}
-  \mathbb O^{\rm bare}_{a}(x)
+  \mathbb O^{\Lambda}_{a}(x)
   =
   \sum_b
   \int_x^1\frac{\dd z}{z}\,
-  Z_{ab}\!\left(\frac{x}{z},\mu,\Lambda_{\rm UV}\right)
+  Z_{ab}\!\left(\frac{x}{z},\mu,\Lambda\right)
   \mathbb O_b(z;\mu),
   \label{eq:qcd-light-ray-renormalization-convolution}
 \end{equation}
-where \(a,b\) range over quarks, antiquarks, and gluons.  This equation is a
-definition of the renormalized light-ray coordinates; the anomalous-dimension
-kernel obtained from \(Z\) is the splitting kernel in DGLAP evolution.  For
-TMDs or other observables with unresolved transverse momentum, an additional
-rapidity renormalization is required; it is not part of the integrated PDF
-definition used in inclusive DIS.
+where \(a,b\) range over quarks, antiquarks, and gluons, and the convolution
+is understood after pairing with test functions in a distribution space whose
+endpoint contact conventions have been declared.  This equation is a
+definition of the renormalized light-ray coordinates.  It separates
+regularization, the introduction of the finite object
+\(\mathbb O_a^\Lambda\), from renormalization, the choice of the finite
+coordinate map \(Z\) and of the operator coordinate \(\mathbb O_b(\mu)\).
+For TMDs or other observables with unresolved transverse momentum, an
+additional rapidity renormalization is required; it is not part of the
+integrated PDF definition used in inclusive DIS.
+
+The DGLAP kernel is the infinitesimal form of this operator-coordinate map,
+not a transition probability for physical colored asymptotic states.  Let
+\(Z^{-1}\) be the convolution inverse in the chosen finite channel basis.
+Differentiating
+\eqref{eq:qcd-light-ray-renormalization-convolution} at fixed
+\(\mathbb O^\Lambda\) gives
+\[
+  0
+  =
+  \sum_b(\mu\partial_\mu Z_{ab})\otimes\mathbb O_b(\mu)
+  +
+  \sum_b Z_{ab}\otimes\mu\partial_\mu\mathbb O_b(\mu),
+\]
+where \(\otimes\) denotes the same light-cone fraction convolution.  Hence
+\begin{equation}
+  \mu\partial_\mu\mathbb O_c(x;\mu)
+  =
+  \sum_b
+  \int_x^1\frac{\dd z}{z}\,
+  P_{cb}\!\left(\frac{x}{z},g(\mu)\right)
+  \mathbb O_b(z;\mu),
+  \qquad
+  P_{cb}:=
+  -\sum_a Z^{-1}_{ca}\otimes\mu\partial_\mu Z_{ab}.
+  \label{eq:qcd-light-ray-operator-dglap-rg}
+\end{equation}
+Taking hadron matrix elements of
+\eqref{eq:qcd-light-ray-operator-dglap-rg} gives
+\eqref{eq:dglap-evolution} below.  The finite perturbative calculation of
+\(P\) is a calculation of the ultraviolet coordinate change of the light-ray
+operator.  The subsequent use of \(P\) in a measured DIS observable still
+requires the leading-power factorization statement.
 
 \paragraph{Local moments of the light-ray definition.}
 The light-ray definition contains the local twist-two tower as its Taylor
@@ -9655,8 +9698,8 @@ renormalizes the PDF is part of the definition of the factorized hadronic
 observable.  The residual \(\mu\)-dependence of this subtraction is the
 DGLAP evolution below.
 
-The independence of \(F_i\) from the auxiliary scale \(\mu\) gives the
-evolution equation
+The operator-coordinate RG equation
+\eqref{eq:qcd-light-ray-operator-dglap-rg} gives the evolution equation
 \begin{equation}
   \mu\frac{\dd}{\dd\mu} f_{a/H}(x,\mu)
   =
@@ -9664,16 +9707,37 @@ evolution equation
   P_{ab}\!\left(\frac{x}{z},g(\mu)\right)f_{b/H}(z,\mu),
   \label{eq:dglap-evolution}
 \end{equation}
-where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
-the light-ray operators.  This is the precise sense in which short-distance
-quark and gluon variables control high-energy hadronic observables while
-physical asymptotic states remain color singlets.
-More explicitly, differentiating
-\eqref{eq:qcd-light-ray-renormalization-convolution} at fixed bare operator
-gives a convolution anomalous dimension.  With the sign convention used in
-\eqref{eq:dglap-evolution}, that anomalous dimension is denoted \(P_{ab}\).
-The coefficient functions obey the dual equation, so the \(\mu\)-dependence of
-the convolution in \eqref{eq:dis-factorization} cancels.
+where \(P_{ab}\) are splitting kernels, equivalently the anomalous-dimension
+kernels of the renormalized light-ray operator coordinates in the sign
+convention of
+\eqref{eq:qcd-light-ray-operator-dglap-rg}.  This is the precise sense in
+which short-distance quark and gluon variables control high-energy hadronic
+observables while physical asymptotic states remain color singlets.  The
+factorized observable is independent of the auxiliary scale only when the
+coefficient functions obey the dual equation
+\begin{equation}
+  \mu\partial_\mu C_{i,b}
+  =
+  -\sum_a C_{i,a}\otimes P_{ab}.
+  \label{eq:qcd-dis-coefficient-dual-rg}
+\end{equation}
+Then
+\[
+  \mu\partial_\mu
+  \sum_a C_{i,a}\otimes f_{a/H}
+  =
+  \sum_b
+  \left(
+    \mu\partial_\mu C_{i,b}
+    +
+    \sum_a C_{i,a}\otimes P_{ab}
+  \right)\otimes f_{b/H}
+  =
+  0
+\]
+inside the declared convolution algebra.  Any residual scale dependence in a
+finite-order calculation is therefore a truncation or power-remainder effect,
+not a change in the nonperturbative definition of the PDF.
 
 \subsection{One-Loop Splitting Kernels and Sum-Rule Checks}
 \label{subsec:qcd-one-loop-splitting-kernels-sum-rules}

@@ -229,7 +229,8 @@ Current checks:
   number conservation, quark/gluon momentum-column sum rules, the exact
   nonsinglet Mellin moment formula, and the trace-delta versus half-trace cusp
   coefficient conversion, plus the left-endpoint light-ray moment sign
-  convention for quark and gluon PDF moment towers.
+  convention for quark and gluon PDF moment towers and the finite-channel
+  RG cancellation \(df=P f\), \(dC=-CP\) in a factorized DIS convolution.
 - `qcd_cusp_large_spin_checks.py`: finite checks for the Volume II cusped
   Wilson-line/large-spin section, including the Euclidean cusp angular
   integral \(J(\phi)=\phi\cot\phi\), smooth-line subtraction, the Lorentzian

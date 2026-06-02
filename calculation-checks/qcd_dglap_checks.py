@@ -7,7 +7,8 @@ P=(g^2/(8*pi^2)) P^(0)+O(g^4).  These finite rational checks verify the
 plus-distribution convention, one-loop number and momentum sum rules, the
 trace-normalization conversion of the cusp coefficient, and the sign
 normalization of the local moment tower obtained from the Wilson-line light-ray
-operator.
+operator, and the RG cancellation between coefficient functions and PDFs in a
+factorized DIS convolution.
 """
 
 from __future__ import annotations
@@ -15,6 +16,8 @@ from __future__ import annotations
 from fractions import Fraction
 
 ComplexRational = tuple[Fraction, Fraction]
+Vector = list[Fraction]
+Matrix = list[list[Fraction]]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -40,6 +43,21 @@ def complex_pow_i(power: int) -> ComplexRational:
 
 def harmonic(n: int) -> Fraction:
     return sum((Fraction(1, k) for k in range(1, n + 1)), Fraction(0))
+
+
+def matvec(matrix: Matrix, vector: Vector) -> Vector:
+    return [sum(row[j] * vector[j] for j in range(len(vector))) for row in matrix]
+
+
+def row_times_matrix(row: Vector, matrix: Matrix) -> Vector:
+    return [
+        sum(row[i] * matrix[i][j] for i in range(len(row)))
+        for j in range(len(matrix[0]))
+    ]
+
+
+def dot(left: Vector, right: Vector) -> Fraction:
+    return sum(left[i] * right[i] for i in range(len(left)))
 
 
 def d0_moment(power: int) -> Fraction:
@@ -172,14 +190,38 @@ def check_light_ray_moment_normalization() -> None:
         assert_equal(f"gluon delta-target moment {moment}", extracted_moment, Fraction(1))
 
 
+def check_factorized_rg_cancellation() -> None:
+    # Collapse the convolution algebra to a finite two-channel rational model.
+    # With df/dlog(mu)=P f and dC/dlog(mu)=-C P, the factorized observable C f
+    # is scale-independent.  This checks the index/sign convention used in the
+    # manuscript after deriving P from the regulated-to-renormalized light-ray
+    # operator coordinate map.
+    splitting_kernel = [
+        [Fraction(1, 3), Fraction(-2, 5)],
+        [Fraction(7, 11), Fraction(1, 13)],
+    ]
+    pdf = [Fraction(5, 7), Fraction(2, 7)]
+    coefficient = [Fraction(3, 2), Fraction(-4, 9)]
+
+    pdf_derivative = matvec(splitting_kernel, pdf)
+    coefficient_derivative = [
+        -entry for entry in row_times_matrix(coefficient, splitting_kernel)
+    ]
+    observable_derivative = dot(coefficient_derivative, pdf) + dot(
+        coefficient, pdf_derivative
+    )
+    assert_equal("factorized DIS RG cancellation", observable_derivative, Fraction(0))
+
+
 def main() -> None:
     check_plus_distribution_monomials()
     check_number_and_momentum_sum_rules()
     check_large_spin_and_trace_conversion()
     check_light_ray_moment_normalization()
+    check_factorized_rg_cancellation()
     print(
         "All QCD DGLAP plus-distribution, sum-rule, "
-        "cusp-normalization, and light-ray moment checks passed."
+        "cusp-normalization, light-ray moment, and RG-cancellation checks passed."
     )
 
 
