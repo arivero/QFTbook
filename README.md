@@ -7,54 +7,20 @@ Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
 
-## Complete Volume Roster
+## Full Volume Program
 
-The public monograph program has twenty numbered volumes.  The current
-compiled manuscript contains Volumes I-XII.  Volumes XIII-XX are part of the
-public subject architecture and are listed here explicitly even though their
-standalone TeX assemblies have not yet been launched.
+The public monograph program currently has twenty numbered volumes.  Volumes
+I-XII are active reader-facing volumes compiled by `monograph/tex/main.tex` into
+the current PDF.  Volumes XIII-XX are roadmap volumes: they are part of the
+public subject architecture, but their standalone TeX assemblies will be added
+only after the same chapter-dossier, verification, frontmatter, and README
+standards are met.
 
-| Volume | Status | Title |
-| --- | --- | --- |
-| I | Compiled | Foundations of Local Quantum Field Theory |
-| II | Compiled | Particles, Scattering, and Analyticity |
-| III | Compiled | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | Compiled | Gauge Theory, Infrared Structure, and Anomalies |
-| V | Compiled | Conformal Field Theory |
-| VI | Compiled | Integrable Quantum Field Theory |
-| VII | Compiled | Supersymmetric Quantum Field Theory |
-| VIII | Compiled | Topological and Cohomological Quantum Field Theory |
-| IX | Compiled | Global Structure, Phases, and Extended Operators |
-| X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields |
-| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions |
-| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure |
-| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables |
-| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors |
-| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT |
-| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT |
-| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
-| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
+This table is the complete volume roster.  Do not infer the program from
+`monograph/tex/volumes/` alone, since that directory contains only active
+compiled assemblies.
 
-The manuscript is an active draft.  The reader-facing text is in
-`monograph/tex/`; planning notes, source transcriptions, and local reference
-material are kept separate from the compiled monograph.
-
-## Complete Volume Program (All Volumes I-XX)
-
-The table above is the complete README roster of all volumes.  Volumes I-XII are
-compiled by `monograph/tex/main.tex` into the current PDF.  Volumes XIII-XX
-are public roadmap volumes whose source assemblies will be added only after
-the same chapter-dossier, verification, frontmatter, and README standards are
-met.
-
-Do not infer the complete volume program from the current
-`monograph/tex/volumes/` directory alone.  That directory presently contains
-the active compiled assemblies; the roadmap volumes are part of the public
-architecture but are not yet separate TeX assemblies.
-
-| Volume | Public status | Title | Assembly status |
+| Volume | Status | Title | Assembly |
 | --- | --- | --- | --- |
 | I | Compiled | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
 | II | Compiled | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
@@ -77,23 +43,17 @@ architecture but are not yet separate TeX assemblies.
 | XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory | Planned assembly |
 | XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT | Planned assembly |
 
-The active compiled-volume table below gives chapter ranges, counts, and
-scopes for Volumes I-XII.  The roadmap table records the intended scope of
-Volumes XIII-XX.
+The manuscript is an active draft.  The reader-facing text is in
+`monograph/tex/`; planning notes, source transcriptions, and local reference
+material are kept separate from the compiled monograph.
 
-### Active Compiled Volumes I-XII
+## Active Compiled Volumes I-XII
 
-The public volume program has two layers.  The first layer is the launched
-compiled manuscript: twelve reader-facing volumes, numbered I--XII, whose
-assembly files are included by `monograph/tex/main.tex` and therefore by
-`monograph/tex/main.pdf`.  The second layer is the prospective future volume
-program: Volumes XIII-XX record the intended subject architecture, but remain
-roadmap entries until their assembly files and verification infrastructure are
-created.
-
-Chapter ranges are continuous printed chapter numbers, and counts are counts
-of printed `\chapter` entries, not raw `\input` lines.  Volume IV also inputs
-the spinor-convention source as a section inside Chapter 40.
+The table below gives chapter ranges, chapter counts, scopes, and assembly
+files for the twelve launched volumes.  Chapter ranges are continuous printed
+chapter numbers, and counts are counts of printed `\chapter` entries, not raw
+`\input` lines.  Volume IV also inputs the spinor-convention source as a
+section inside Chapter 40.
 
 | Volume | Chapters | Count | Title | Scope | Assembly file |
 | --- | ---: | ---: | --- | --- | --- |
@@ -115,7 +75,7 @@ no hidden active volumes outside this roster.  Draft files, deprecated files,
 source transcriptions, local reference files, and planning notes are not
 additional public volumes.
 
-### Prospective Roadmap Volumes XIII-XX
+## Roadmap Volumes XIII-XX
 
 The table below gives the complete current roadmap for the prospective
 volumes after the twelve compiled volumes.  These entries are numbered so that
@@ -140,7 +100,7 @@ prospective subject expansions.  A prospective volume becomes an active public
 compiled volume only after it has its own assembly file, chapter dossiers,
 verification pass, and frontmatter/README entry.
 
-### Permanent Cross-Cutting Layer
+## Permanent Cross-Cutting Layer
 
 Mathematical machinery and verification infrastructure are distributed through
 the active volumes rather than being a separate numbered volume.  This layer
