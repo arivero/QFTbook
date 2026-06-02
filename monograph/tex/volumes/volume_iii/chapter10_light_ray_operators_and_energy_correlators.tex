@@ -698,6 +698,36 @@ The distributional statement follows by testing this expression against
 \(\varphi\in C_c^\infty(N_n)\); the detector statement follows after the
 conformal map from the complete null generator to future null infinity.
 
+\paragraph{ANEC-to-detector bridge.}
+The last sentence contains a real limiting operation.  Quoted
+Theorem~\ref{qthm:anec-cft} proves positivity for smooth compact transverse
+tests on a null plane.  The angular detector \(\mathcal E(f)\), by contrast,
+is a null-infinity object tested by a smooth function
+\(f\in C^\infty(S^{D-2})\), and finite calorimeter bins are obtained by
+approximating indicator functions on the compact detector sphere.  To pass
+from ANEC to the statewise detector measure
+\(\mu_\Psi\) of \eqref{eq:cft-statewise-detector-measure}, one needs the
+following additional bridge data:
+\[
+  f_j\geq0,\qquad f_j\to f\ \text{in }C(S^{D-2}),
+  \qquad
+  \bra{\Psi}\mathcal E(f_j)\ket{\Psi}
+  \longrightarrow
+  \bra{\Psi}\mathcal E(f)\ket{\Psi},
+\]
+with a bound controlled by the total energy of the state, so that the positive
+quadratic form on smooth angular tests extends to a bounded positive
+functional on \(C(S^{D-2})\).  Riesz--Markov then gives the finite positive
+measure \(\mu_\Psi\).  Without this bounded-extension step, ANEC positivity
+for each smooth transverse test is not yet a statement about Borel detector
+bins, nor about products of detectors at separated or coincident angles.
+Detector products require their own domain and contact-extension data, as in
+the partition discussion following
+\eqref{eq:finite-detector-partition-decomposition}.  This is why the chapter
+keeps the one-detector positivity theorem, the statewise measure
+construction, and the \(k\)-detector contact algebra as distinct pieces of
+the detector framework.
+
 The causality route packages the same sign in Lorentzian analyticity.  Let
 \(\mathcal O\) be a scalar primary used only as a probe, and let
 \(\mathcal X\) be a local operator whose wavepacket creates the finite-energy

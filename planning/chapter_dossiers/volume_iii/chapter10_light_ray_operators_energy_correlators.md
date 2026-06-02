@@ -63,6 +63,10 @@ The chapter establishes:
 - the one-sided null-cut modular-variation formulas for a deformed half-space
   and its complement, together with the entropy-variation squeeze whose
   compatibility gives the full null-generator ANEC inequality;
+- the ANEC-to-detector bridge: positivity for smooth transverse null-plane
+  tests must be supplemented by conformal null-infinity limiting and bounded
+  extension to \(C(S^{D-2})\) before it becomes a statewise angular detector
+  measure; detector products still require separate domain/contact data;
 - the reduction from ANEC positivity to positivity of the conformal-collider
   angular energy distribution;
 - the four-dimensional stress-tensor one-point energy flux form with
@@ -148,14 +152,20 @@ The chapter establishes:
    relative-entropy derivative inequalities and the common entropy-variation
    squeeze, so the sign of the full null integral is not hidden in the phrase
    "entropy variations cancel."
-9. Positivity of the energy detector in the stress-tensor collider state is
+9. ANEC positivity for smooth transverse tests is not by itself a Borel
+   detector-bin construction.  The chapter now requires the null-infinity
+   limiting map and a bounded positive extension from smooth angular tests to
+   \(C(S^{D-2})\), after which Riesz--Markov gives the statewise detector
+   measure.  Products of detectors remain a separate domain/contact-extension
+   problem.
+10. Positivity of the energy detector in the stress-tensor collider state is
    equivalent to nonnegativity of the three helicity-sector eigenvalues of
    the detector quadratic form; these are precisely the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
-10. The CFT EEC and the QCD EEC are the same detector construction with
+11. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
-11. The convergent light-ray OPE is used with explicit Lorentzian CFT
+12. The convergent light-ray OPE is used with explicit Lorentzian CFT
    hypotheses rather than treated as a general axiom of QFT.  The chapter now
    records the proof mechanism and the needed transverse-distribution
    convergence estimate, and separates the fixed-point CFT statement from the
@@ -207,3 +217,9 @@ The chapter establishes:
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues
   are visible rather than hidden in a substitution.
+- 2026-06-02 #519 ANEC bridge pass: inserted a non-theorem paragraph after the
+  modular ANEC derivation explaining the extra bounded-extension step needed
+  to turn smooth transverse ANEC positivity into the statewise angular
+  detector measure.  The pass keeps one-detector positivity, Riesz measure
+  construction, and \(k\)-detector product/contact data as separate
+  mathematical layers.
