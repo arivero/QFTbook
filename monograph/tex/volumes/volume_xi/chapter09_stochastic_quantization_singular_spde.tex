@@ -4479,25 +4479,13 @@ as the cutoff is removed remains part of the constructive estimate.  These
 inputs are listed explicitly in
 Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}.
 
-\begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
-\label{thm:dpd-solution-mechanism}
-Fix \(m^2>0\), \(\lambda>0\), and a finite spatial torus in dimension two.
-For almost every realization of the enhanced noise
-\[
-  \mathbb X=(X,:\!X^2\!:,:\!X^3\!:),
-\]
-the remainder equation \eqref{eq:dpd-remainder-equation} has local
-pathwise solutions in a positive-regularity function space, and the positive
-quartic drift supplies a priori bounds that extend the Markov process
-globally.  The invariant law is the Wick-ordered \(\Phi^4_2\) Euclidean
-measure on the torus.
-\end{quotedtheorem}
-
-This Da Prato--Debussche theorem is quoted here as a precise SPDE theorem
-boundary, not as a monograph-proved result.  The quoted source is the
-Da Prato--Debussche stochastic-quantization construction for strong
-solutions.  The mechanism is as follows.
-The mild form of \eqref{eq:dpd-remainder-equation} is
+\paragraph{Sharp two-dimensional DPD closure status.}
+The classical two-dimensional Da Prato--Debussche construction packages a
+local pathwise solution, global extension from the dissipative quartic drift,
+and identification of the invariant law with the Wick-ordered Euclidean
+\(\Phi^4_2\) measure on a finite torus.  In this chapter that package is
+used through the explicit ingredients above, rather than as an imported
+black box.  The mild form of \eqref{eq:dpd-remainder-equation} is
 \[
   Y(\tau)
   =
@@ -4512,11 +4500,12 @@ where \(\mathcal N\) is the cubic expression in
 spatial regularity by two derivatives relative to the forcing; the Sobolev
 version is the heat-kernel estimate
 \eqref{eq:spde-heat-kernel-smoothing}, while the
-sharp Da Prato--Debussche proof uses the corresponding parabolic
-Besov--Holder estimates.  Proposition~\ref{prop:spde-two-dimensional-wick-powers}
-constructs the Wick powers in a Sobolev topology; the sharper statement used
-in the fixed point places \(:\!X^2\!:\) and \(:\!X^3\!:\) in negative
-Holder/Besov spaces of arbitrarily small negative regularity.
+sharp two-dimensional fixed point uses the corresponding parabolic
+Besov--Holder estimates.
+Proposition~\ref{prop:spde-two-dimensional-wick-powers} constructs the Wick
+powers in a Sobolev topology; the sharper fixed-point input places
+\(:\!X^2\!:\) and \(:\!X^3\!:\) in negative Holder/Besov spaces of
+arbitrarily small negative regularity.
 Lemma~\ref{lem:spde-dpd-sobolev-products} and
 Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} give a
 self-contained Sobolev version of the local fixed-point argument.  The sharp
@@ -4524,12 +4513,19 @@ proof upgrades these Sobolev exponents to the scale-invariant parabolic
 Besov--Holder spaces.  Multiplying the equation by \(Y\), integrating over
 space, and using the sign of
 \(\lambda Y^4\) gives an energy inequality with random lower-order forcing;
-that estimate prevents blowup and gives global solutions.  The invariant law
-is identified by applying the finite-cutoff Langevin identity and proving
-tightness plus convergence of the enhanced noise.  In the final standard of
-this monograph, these Schauder, multiplication, energy, tightness, and
-invariant-law identification estimates are proof obligations, not facts
-accepted merely because they are standard in the SPDE literature.
+the local rough-forcing estimate
+\eqref{eq:spde-local-rough-forcing-estimate} is the precise remaining
+estimate that turns this energy mechanism into the global
+compact-continuity input of
+Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}.  The invariant law
+is identified through finite-cutoff Langevin reversibility, tightness, and
+regulator comparison.  Those steps have been reduced above to Nelson
+stability for the chosen Wick quartic cutoff family, common Wick-coordinate
+limits, uniform integrability of polynomial cylinders, and the OS-II growth
+conditions in
+Remark~\ref{rem:spde-invariant-law-os-reconstruction-criterion}.  Thus the
+remaining two-dimensional work is a finite list of constructive estimates,
+not a separate theorem imported under the name Da Prato--Debussche.
 
 \subsection{Why the Two-Dimensional Decomposition Fails in Three Dimensions}
 \label{subsec:spde-dpd-three-dimensional-obstruction}
@@ -11092,8 +11088,8 @@ contexts, see A.~Chandra, I.~Chevyrev, M.~Hairer, and H.~Shen, ``Stochastic
 quantisation of Yang--Mills,'' Invent. Math. \textbf{230} (2022)
 1025--1096.}
 The cited works identify deeper analytic machinery that remains to be
-reconstructed in this monograph; they do not by themselves settle the
-monograph's proof obligations.
+reconstructed in this monograph; citation supplies orientation, while the
+proof obligations remain the estimates just listed.
 
 \begin{openproblem}[Remaining self-contained singular-SPDE proof stack]
 \label{op:self-contained-singular-spde-proof-stack}
@@ -11119,8 +11115,8 @@ local counterterms \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and
 \eqref{eq:phi-four-three-renormalized-spde}; invariant-law construction and
 comparison with the constructive Euclidean \(\Phi^4_3\) measure; and the
 SPDE-to-OS reconstruction inputs for the resulting Schwinger hierarchy.
-Until these arguments are supplied, the quoted theorem blocks are documented
-proof boundaries, not authority claims.
+Until these arguments are supplied, the remaining quoted theorem boundary is
+a documented proof boundary rather than an authority claim.
 \end{openproblem}
 
 \section{Paracontrolled and RG Routes}

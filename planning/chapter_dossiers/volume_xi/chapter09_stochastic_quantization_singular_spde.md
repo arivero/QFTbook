@@ -525,8 +525,10 @@ data.
   integrability requirement \(\theta<1\).
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
   the role of the enhanced noise, proves a Sobolev local fixed-point version,
-  and marks the sharper global Besov/Holder solution mechanism as a
-  `quotedtheorem` pending the full self-contained proof.
+  proves the Besov-Holder local fixed-point mechanism, and records the
+  sharper global closure as a concrete estimate ledger: the local
+  rough-forcing estimate, Nelson stability for the chosen Wick quartic cutoff
+  family, regulator comparison, uniform integrability, and OS-II growth.
 - Defines regularity structures, models, and the reconstruction theorem at the
   level needed for singular SPDE; the compact finite-sector reconstruction
   theorem is now proved from the model and modelled-distribution seminorms by
@@ -784,9 +786,9 @@ data maps.
 
 - 2026-05-25 issue #575 pass: the Da Prato--Debussche solution mechanism,
   Hairer reconstruction theorem, and renormalized dynamic \(\Phi^4_3\) SPDE
-  datum are no longer ordinary theorem blocks followed by proof sketches.
-  They are marked as `quotedtheorem` blocks, their proof sketches are
-  rewritten as role/status text, and Open Problem
+  datum were separated from ordinary theorem/proof presentation.  The
+  remaining theorem-boundary text is written as role/status material, and
+  Open Problem
   `op:self-contained-singular-spde-proof-stack` records the monograph's
   obligation to prove the quoted SPDE results internally rather than accept
   them on authority.
@@ -1218,3 +1220,9 @@ data maps.
   input, random-model/finite-chaos coordinates, multiscale local
   subtractions, finite-sector coordinate-to-model convergence, and nonlinear
   negative-coordinate shell bounds.
+- 2026-06-02 issue #608/#582 quoted-boundary audit: demoted the residual
+  Da Prato--Debussche quoted theorem block to a sharp-closure status
+  paragraph.  The two-dimensional stochastic-quantization proof boundary now
+  consists only of the named estimates listed in the assembly hypothesis and
+  open problem, while the single remaining quoted theorem boundary in the
+  chapter is the dynamic \(\Phi^4_3\) regularity-structures package.
