@@ -8638,6 +8638,163 @@ calculation the final states are hadrons; in a short-distance approximation,
 quark and gluon variables enter through factorized coefficient functions,
 evolution kernels, and power corrections for this color-singlet observable.
 
+\subsection{Track Selectors and Charged-Energy Correlators}
+\label{subsec:qcd-track-energy-correlators}
+
+Collider detectors often measure a selected part of the calorimetric final
+state, for example the energy carried by long-lived charged hadrons.  The
+nonperturbative definition again begins with physical hadronic final states.
+Let \(\mathfrak A_{\rm st}\) be the label set of stable hadron species in the
+scattering representation, and fix a selector
+\[
+  \tau:\mathfrak A_{\rm st}\longrightarrow[0,1].
+\]
+For an ideal charged-track selector, \(\tau(a)=1\) for the species whose
+charged tracks are included in the measurement and \(\tau(a)=0\) for the
+species omitted by the tracking system.  A detector with efficiencies or
+acceptance weights is represented by intermediate values of \(\tau\), once
+those weights have been calibrated independently of the QCD short-distance
+calculation.
+
+For a hadronic final state
+\[
+  X=\{(p_r,a_r)\}_{r=1}^{N_X},
+  \qquad
+  \mathbf n_r=\mathbf p_r/|\mathbf p_r|,
+\]
+define the selected calorimetric measure
+\begin{equation}
+  \mu_X^\tau
+  =
+  \sum_{r\in X}\tau(a_r)p_r^0\,\delta_{\mathbf n_r}.
+  \label{eq:qcd-track-calorimetric-measure}
+\end{equation}
+It satisfies \(0\le\mu_X^\tau\le\mu_X\) as positive measures.  The smeared
+track detector on the outgoing multiplication representation is therefore
+\[
+  \widehat{\mathcal E}_X^\tau(f)
+  =
+  \int_{S^2}f\,\dd\mu_X^\tau
+  =
+  \sum_{r\in X}\tau(a_r)p_r^0 f(\mathbf n_r).
+\]
+Products of track detectors are products of this selected measure:
+\begin{equation}
+  \prod_{j=1}^{k}\widehat{\mathcal E}_X^\tau(f_j)
+  =
+  \int_{(S^2)^k}
+  f_1(\mathbf n_1)\cdots f_k(\mathbf n_k)\,
+  \dd\mu_X^\tau(\mathbf n_1)\cdots\dd\mu_X^\tau(\mathbf n_k).
+  \label{eq:qcd-track-detector-product-measure}
+\end{equation}
+Thus track energy correlators are physical detector observables once the
+selector \(\tau\) and the detector calibration have been specified.
+
+The exact moment identities are selected-energy identities.  In a
+center-of-mass event with \(z_r=p_r^0/Q\), set
+\[
+  e_\tau(X)=\sum_{r}\tau(a_r)z_r,\qquad
+  \mathbf p_\tau(X)=\sum_{r}\tau(a_r)z_r\mathbf n_r .
+\]
+The eventwise two-point selected-energy distribution
+\[
+  E_{2,X}^{\tau}(\zeta)
+  =
+  \sum_{r,s\in X}
+  \tau(a_r)\tau(a_s)z_rz_s\,
+  \delta(\zeta-\mathbf n_r\cdot\mathbf n_s)
+\]
+obeys
+\begin{equation}
+  \int_{-1}^{1}E_{2,X}^{\tau}(\zeta)\,\dd\zeta
+  =
+  e_\tau(X)^2,
+  \qquad
+  \int_{-1}^{1}\zeta E_{2,X}^{\tau}(\zeta)\,\dd\zeta
+  =
+  |\mathbf p_\tau(X)|^2.
+  \label{eq:qcd-track-eec-selected-moments}
+\end{equation}
+For \(\tau\equiv1\) these reduce to
+\eqref{eq:eventwise-eec-first-sum-rules}.  For a proper track selector they
+are additional nonperturbative event variables: the selected charged energy
+and selected charged three-momentum fluctuate from event to event even when
+the total energy and total three-momentum are fixed.
+
+Perturbative calculations of selected-energy correlators require
+nonperturbative track functions.  In a factorization scheme, a track function
+for a parton label \(i\) is a positive distribution \(T_i(x,\mu)\) on
+\([0,1]\), normalized by
+\[
+  \int_0^1 T_i(x,\mu)\,\dd x=1,
+\]
+whose moment
+\[
+  M_i^{(n)}(\mu)
+  =
+  \int_0^1 x^nT_i(x,\mu)\,\dd x
+\]
+is the \(n\)-th moment of the selected-energy fraction carried by hadrons in a
+collinear jet initiated by \(i\), in the chosen scheme.  The functions
+\(T_i\) are nonperturbative light-ray/fragmentation data; perturbation theory
+controls their evolution and their convolution with hard and jet
+coefficients.
+
+The local collinear bookkeeping is fixed by energy partition.  If a parent
+parton \(i\) splits into daughters \(j,k\) with energy fractions
+\(z,1-z\), and the selected fractions in the daughter collinear sectors are
+\(x_j,x_k\), then the selected fraction of the parent sector is
+\[
+  x=z x_j+(1-z)x_k .
+\]
+Therefore the real-splitting contribution to the \(n\)-th selected-fraction
+moment has the binomial form
+\begin{equation}
+  M_{i\to jk}^{(n)}(z)
+  =
+  \sum_{a=0}^{n}
+  \binom{n}{a}
+  z^a(1-z)^{n-a}
+  M_j^{(a)}M_k^{(n-a)} .
+  \label{eq:qcd-track-function-binomial-moment}
+\end{equation}
+In particular,
+\[
+  M_{i\to jk}^{(1)}(z)=zM_j^{(1)}+(1-z)M_k^{(1)}
+\]
+and
+\[
+  M_{i\to jk}^{(2)}(z)
+  =
+  z^2M_j^{(2)}
+  +(1-z)^2M_k^{(2)}
+  +2z(1-z)M_j^{(1)}M_k^{(1)} .
+\]
+The last line separates the contact and resolved two-detector weights in a
+track EEC calculation:
+\begin{equation}
+  w_{\tau,{\rm contact}}(z;j,k)
+  =
+  z^2M_j^{(2)}+(1-z)^2M_k^{(2)},\qquad
+  w_{\tau,{\rm sep}}(z;j,k)
+  =
+  2z(1-z)M_j^{(1)}M_k^{(1)} .
+  \label{eq:qcd-track-eec-contact-separated-weights}
+\end{equation}
+For the full calorimeter, \(M_i^{(n)}=1\) for every parton label and every
+\(n\), and the separated weight reduces to the ordinary EEC weight
+\(2z(1-z)\) in \eqref{eq:eec-ordered-collinear-weight}.
+
+A controlled track-energy calculation must specify the selector \(\tau\), the
+operator or fragmentation definition of the track functions \(T_i\), the
+factorization scheme and scale \(\mu\), the evolution equation for \(T_i\) in
+that scheme, the endpoint/contact convention for the selected detector
+products, and the power remainder that compares the selected hadronic
+observable \eqref{eq:qcd-track-detector-product-measure} with the finite
+partonic factorization formula.  The selected-energy observable is defined at
+the hadron level; the partonic track functions are the bridge used for its
+short-distance expansion.
+
 \section{Current Correlators and the Hadronic Tensor}
 
 Deep inelastic scattering probes a hadron by a local current.  The process is

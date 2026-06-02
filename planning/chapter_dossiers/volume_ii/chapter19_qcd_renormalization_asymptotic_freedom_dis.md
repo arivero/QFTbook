@@ -203,6 +203,9 @@ The chapter must define and derive:
   detector weight \(2x(1-x)\) multiplying the real final-state splitting
   kernels, with exact coefficients
   \(\frac32C_F\), \(\frac{14}{5}C_A\), and \(\frac15T_F\) per quark flavor;
+- track selectors and charged-energy correlators as selected hadronic
+  calorimetric measures, with selected-energy moment identities and the
+  binomial moment ledger for track-function collinear splitting;
 - multipoint jet energy correlators and energy-flow polynomials as polynomial
   functionals of calorimetric data;
 - DIS kinematics, inclusive final-state sums, the leading electromagnetic
@@ -406,6 +409,14 @@ The chapter must define and derive:
      \(\Gamma_q^{\rm EEC}=\frac32C_F\),
      \(\Gamma_{g\to gg}^{\rm EEC}=\frac{14}{5}C_A\), and
      \(\Gamma_{g\to q\bar q}^{\rm EEC}=\frac15T_F\) per flavor.
+19ba. A selected track-energy correlator is defined by a selector \(\tau\) on
+      stable hadron species and the positive measure
+      \(\mu_X^\tau=\sum_r\tau(a_r)p_r^0\delta_{\mathbf n_r}\).  Its
+      two-point moments are \(e_\tau(X)^2\) and
+      \(|\mathbf p_\tau(X)|^2\), and perturbative track-function
+      bookkeeping follows the binomial collinear moment formula
+      \(M_{i\to jk}^{(n)}(z)=\sum_a\binom{n}{a}
+      z^a(1-z)^{n-a}M_j^{(a)}M_k^{(n-a)}\).
 19bb. The small-angle light-ray OPE is now specified as a renormalized datum:
       a gauge-invariant light-ray operator space, operator coordinates,
       ultraviolet and rapidity subtraction schemes, mixing kernels, and
@@ -684,6 +695,13 @@ The chapter must define and derive:
   when they are left as matching coordinates, and extended
   `calculation-checks/energy_correlator_sum_rule_checks.py` to verify the
   finite rational endpoint-coordinate algebra.
+- 2026-06-02 issue #519 track-energy pass: added selected calorimetric
+  measures for track and charged-energy correlators, derived the selected EEC
+  moment identities, introduced track functions as nonperturbative
+  factorization data for selected-energy fractions, and derived the binomial
+  collinear moment ledger plus contact/separated two-detector weights.  Added
+  `calculation-checks/energy_correlator_track_checks.py` to verify the exact
+  finite selected-measure and track-function arithmetic.
 - 2026-05-29 continuing anti-wrapper audit: demoted the eventwise EEC
   sum-rule proposition to detector-observable prose.  The identities remain
   exact and nonperturbative, but their derivation is energy-momentum
