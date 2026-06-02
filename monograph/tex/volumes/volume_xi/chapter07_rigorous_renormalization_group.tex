@@ -2414,6 +2414,82 @@ the claim.  Beta functions in a gauge-fixed coordinate chart are useful
 local coordinates only after this gauge-compatible RG structure has been
 declared.
 
+\paragraph{Model-by-model status synthesis.}
+The examples above should be compared by the stage at which a theorem has
+actually been proved.  The stages are: construction of the RG map in its
+declared norm; construction of a fixed point or stable critical trajectory;
+source extension and operator-coordinate control; reconstruction of Schwinger,
+Wightman, or observable-algebra data; and identification of the constructed
+object with a specified physical target.  These stages are logically ordered.
+A proof at an earlier stage supplies important mathematics, but it does not
+automatically supply the later stages.
+
+For massive scalar models with superrenormalizable interactions, constructive
+methods can supply Euclidean Schwinger functions and, after the OS
+reconstruction hypotheses are checked, Wightman theories.  The theorem-level
+output is a local QFT in a massive regime.  It is not a construction of a
+scale-invariant non-Gaussian fixed point of the ordinary short-range critical
+block-spin map, because the critical stable trajectory and its source-coordinate
+spectrum are not part of that massive theorem.
+
+For hierarchical scalar models and related auxiliary scalar RG systems, the
+theorem-level output is a fixed point or critical trajectory for the auxiliary
+map in its own Banach space.  If that theorem also constructs hierarchical
+observables, those observables belong first to the hierarchical model.  To turn
+the result into a statement about the ordinary short-range scalar target one
+must additionally supply
+Definition~\ref{def:auxiliary-to-short-range-rg-transfer-estimates}: an
+intertwining map, relevant-coordinate comparison, observable-window comparison,
+and a summable target-orbit defect.  Shared exponents or shared local
+coordinate names are not such a transfer map.
+
+For long-range fermionic fixed-point constructions, the theorem-level output is
+the fixed interaction in a Grassmann-kernel Banach space together with the
+response functions and remainders actually constructed.  This is a genuine
+nonperturbative fixed-point theorem in its declared fermionic model.  It is not
+a scalar Wilson--Fisher theorem, nor a gauge-theory theorem, because the
+microscopic covariance, field variables, source space, and reconstruction maps
+are different.
+
+For tensor RG, the theorem-level output is a fixed point or contraction of a
+specified tensor map in a Hilbert--Schmidt or Banach tensor topology.  When a
+finite-bond or disentangled computation is used, the controlled statement is
+only the residual-bound window of
+\eqref{eq:tensor-rg-observable-window-bound}.  A continuum QFT claim requires a
+separate scaling-window reconstruction from tensor data to Schwinger functions,
+local algebras, or another declared observable topology.
+
+For functional-RG calculations, the exact finite-regulator statement is the
+Wetterich identity for a regulated effective average action.  A finite ansatz
+or derivative expansion is a projected flow, and the meaningful comparison
+with the exact flow is the omitted-vector-field estimate
+\eqref{eq:frg-projected-flow-residual-bound}.  A fixed point of the projected
+ordinary differential equation is therefore a controlled approximation only on
+those finite windows for which the residual and reconstruction Lipschitz
+constants have been supplied.
+
+For the ordinary short-range critical scalar target, the theorem-level output
+would be a tuned trajectory
+\[
+  (g_k,K_k,W_{k,E})\longrightarrow(g_\ast,K_\ast,W_{\ast,E})
+\]
+in the short-range block-spin and source-extended polymer structure, with the
+source-window budget
+\eqref{eq:short-range-rg-to-os-source-budget}, the distributional bounds, the
+directed OS positivity and semigroup estimates, and the corrected OS-II growth
+package.  This is the point at which the OS reconstruction theorem can be
+invoked.  Existing benchmark systems identify pieces of this target structure,
+but the ordinary short-range critical scalar construction remains open until
+these estimates are proved in that model.
+
+For gauge targets, the corresponding output is either a continuum limit of
+gauge-invariant lattice measures and Wilson-line or Wilson-loop observable
+windows, or a regularized BV flow preserving the quantum master equation and
+the observable cochain maps.  The reconstruction data are gauge-invariant
+observables or BV cohomology classes.  A beta function in a gauge-fixed local
+coordinate chart is one coordinate shadow of this structure; it is not the
+structure itself.
+
 This comparison also fixes how this monograph treats the phrase ``state of the
 art.''  The current rigorous fixed-point frontier contains theorem-level
 auxiliary and model-specific systems with impressive control of irrelevant

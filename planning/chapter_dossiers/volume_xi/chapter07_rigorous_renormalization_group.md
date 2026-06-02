@@ -210,6 +210,13 @@ constructive RG developments.
   \(\|\mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j)\|\),
   amplified by the exact tensor-map Lipschitz constants and then transported
   through normalized finite observable windows.
+- Adds a model-by-model status synthesis for rigorous Wilsonian RG: massive
+  constructive scalar models, auxiliary hierarchical scalar systems,
+  long-range fermionic fixed points, tensor RG, functional RG truncations,
+  ordinary short-range critical scalar targets, and gauge targets are compared
+  by the actual theorem stage reached--map construction, fixed point,
+  source-extension, reconstruction, and target identification--so theorem
+  status is not transferred between inequivalent RG systems.
 - Defines the output data of a constructive fermionic RG fixed point:
   fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
   interaction, source-field dimensions \(d-\Delta_i\), operator dimensions
@@ -798,3 +805,13 @@ remainder contraction.
   cluster-count constants or source radii grow with \(n\).  The companion
   short-range RG check enumerates set partitions exactly and detects hidden
   cluster-count growth as a failure mode.
+- 2026-06-02 model-by-model rigorous-RG synthesis pass: added the status
+  synthesis in the fixed-point claim-content section.  The text now separates
+  theorem outputs for massive constructive scalar models, hierarchical and
+  auxiliary scalar systems, long-range fermionic fixed points, tensor RG,
+  functional RG truncations, ordinary short-range critical scalar targets, and
+  gauge targets according to the stage actually proved: map theorem,
+  fixed-point or trajectory theorem, source theorem, reconstruction theorem,
+  and target-identification theorem.  This addresses the #505 model-synthesis
+  gap without promoting benchmark systems to ordinary short-range or gauge
+  QFT fixed-point theorems.
