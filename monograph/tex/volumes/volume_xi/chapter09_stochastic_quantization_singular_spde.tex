@@ -6899,6 +6899,127 @@ because \(a>\rho_*\).  These two estimates prove
 and hence \eqref{eq:spde-scale-shell-summed-cutoff-bound}.
 \end{proof}
 
+\begin{corollary}[Projective shell-separated coordinate criterion]
+\label{cor:spde-projective-shell-separated-coordinate-criterion}
+Use the entropy data of
+Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade}.  Let
+\(p=2\mathfrak m\) be an even integer.  Let \(E\) be a separable Banach
+space, let \(H\) be a Hilbert space, and fix a finite chaos order \(Q_0\).
+For \(n,m\geq0\), let
+\[
+  Y_{n,m}(x)=
+  \sum_{q=0}^{Q_0} I_q(F_{n,m,x,q}),
+  \qquad
+  F_{n,m,x,q}\in H^{\odot q}\widehat\otimes_\pi E',
+  \qquad x\in\mathcal X_m,
+\]
+be \(E'\)-valued random fields whose sample paths are almost surely
+continuous in the \(E'\)-norm.  Suppose that there are constants
+\[
+  B_q,\ B_q^{\rm ed},\ \sigma,\ \varepsilon,\ \rho>0
+\]
+such that, for every base-net point \(u\in\mathcal X_{m,0}\),
+\begin{equation}
+  \|F_{n,m,u,q}\|_\pi
+  \leq
+  B_q\,2^{-\sigma m}2^{-\rho(n-m)_+},
+  \label{eq:spde-projective-shell-base-bound}
+\end{equation}
+and, for every edge \((u,v)\in\mathcal E_{m,\ell}\),
+\begin{equation}
+  \|F_{n,m,v,q}-F_{n,m,u,q}\|_\pi
+  \leq
+  B_q^{\rm ed}\,
+  2^{-\sigma m}2^{-\rho(n-m)_+}
+  2^{-(d+\varepsilon)\ell/p}.
+  \label{eq:spde-projective-shell-edge-bound}
+\end{equation}
+Set
+\[
+  B_\pi=\sum_{q=0}^{Q_0} C_{q,\mathfrak m}B_q,
+  \qquad
+  B_\pi^{\rm ed}=\sum_{q=0}^{Q_0} C_{q,\mathfrak m}B_q^{\rm ed},
+\]
+where \(C_{q,\mathfrak m}\) is the finite-chaos constant in
+\eqref{eq:spde-wiener-chaos-even-moment-bound}.  If
+\[
+  a:=\sigma-\frac{D}{p}>0,
+  \qquad
+  0<\rho_*<\min\{\rho,a\},
+\]
+then
+\begin{equation}
+\begin{aligned}
+  &\left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_m}
+    \|Y_{n,m}(x)\|_{E'}
+  \right\|_{L^p(\Omega)}
+  \\
+  &\qquad\leq
+  H_{\rho_*,\rho,a}
+  \left(
+    C_0^{1/p}B_\pi+
+    C_1^{1/p}B_\pi^{\rm ed}(1-2^{-\varepsilon/p})^{-1}
+  \right)2^{-\rho_*n}.
+\end{aligned}
+  \label{eq:spde-projective-shell-coordinate-bound}
+\end{equation}
+In particular, an \(E_r'\)-valued BPHZ kernel estimate satisfying
+\eqref{eq:spde-projective-shell-base-bound} and
+\eqref{eq:spde-projective-shell-edge-bound} gives the scale-summed
+cutoff-Cauchy estimate needed for the corresponding dualized model
+coordinate.  If the kernels are written as Bochner integrals
+\[
+  F_{n,m,x,q}=\int_S f_{n,m,x,q}(s)\otimes\ell_{m,x}(s)\,\dd\mu(s),
+\]
+the displayed projective hypotheses are exactly the integral estimates
+obtained from Lemma~\ref{lem:spde-projective-kernel-dual-norm-estimate}.
+\end{corollary}
+
+\begin{proof}
+Apply Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} to the
+base-net variables.  The triangle inequality in \(L^p(\Omega;E')\) gives
+\[
+  \left\|\|Y_{n,m}(u)\|_{E'}\right\|_{L^p}
+  \leq
+  B_\pi\,2^{-\sigma m}2^{-\rho(n-m)_+}.
+\]
+For an edge \((u,v)\in\mathcal E_{m,\ell}\), apply the same proposition to
+\[
+  Y_{n,m}(v)-Y_{n,m}(u)
+  =
+  \sum_{q=0}^{Q_0}
+  I_q(F_{n,m,v,q}-F_{n,m,u,q}).
+\]
+Using \eqref{eq:spde-projective-shell-edge-bound} gives
+\[
+  \left\|
+    \|Y_{n,m}(v)-Y_{n,m}(u)\|_{E'}
+  \right\|_{L^p}
+  \leq
+  B_\pi^{\rm ed}
+  2^{-\sigma m}2^{-\rho(n-m)_+}
+  2^{-(d+\varepsilon)\ell/p}.
+\]
+Since
+\[
+  \bigl|\|Y_{n,m}(v)\|_{E'}-\|Y_{n,m}(u)\|_{E'}\bigr|
+  \leq
+  \|Y_{n,m}(v)-Y_{n,m}(u)\|_{E'},
+\]
+the scalar random field
+\[
+  x\longmapsto \|Y_{n,m}(x)\|_{E'}
+\]
+satisfies the base and edge moment hypotheses of
+Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} with
+the constants \(B_0=B_\pi\) and \(B=B_\pi^{\rm ed}\).  That corollary gives
+\eqref{eq:spde-projective-shell-coordinate-bound}.  The final sentence is
+the projective-kernel bound
+\eqref{eq:spde-projective-kernel-bound} applied to the displayed Bochner
+integral, and similarly to its edge difference.
+\end{proof}
+
 The parameter \(m\) in
 Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade} is the physical
 testing scale, \(\delta\simeq2^{-m}\), in a model seminorm.  The exponent

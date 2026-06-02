@@ -1274,6 +1274,69 @@ def check_scale_summed_shell_separated_cutoff_arithmetic():
         raise AssertionError("shell-separated scaled sum exceeds the H bound")
 
 
+def check_projective_shell_separated_coordinate_criterion_arithmetic():
+    # Projective shell-separated coordinate criterion: projective kernel
+    # constants are first summed with finite-chaos constants, the edge
+    # projective exponent is chosen so that raising to p gives exactly the
+    # dyadic entropy decay 2^(-(d+epsilon) ell), and the same shell-summed
+    # H constant then supplies the cutoff-Cauchy rate.
+    p = 4
+    d_edge = 8
+    epsilon = 4
+    d_scale = 4
+    sigma = 3
+    a = Fraction(sigma) - Fraction(d_scale, p)
+    rho = 3
+    rho_star = 1
+    n = 5
+
+    chaos_constants = [1, 3, 5]
+    base_projective_constants = [2, 1, 1]
+    edge_projective_constants = [1, 2, 1]
+    b_pi = sum(c * b for c, b in zip(chaos_constants, base_projective_constants))
+    b_pi_edge = sum(c * b for c, b in zip(chaos_constants, edge_projective_constants))
+    assert_equal(b_pi, 10, "projective shell base finite-chaos constant")
+    assert_equal(b_pi_edge, 12, "projective shell edge finite-chaos constant")
+
+    if not rho_star < min(rho, a):
+        raise AssertionError("projective shell sample rho_star outside admissible range")
+
+    edge_lp_exponent = Fraction(d_edge + epsilon, p)
+    ell = 3
+    assert_equal(edge_lp_exponent, 3, "projective shell edge Lp exponent")
+    assert_equal(
+        p * edge_lp_exponent * ell,
+        (d_edge + epsilon) * ell,
+        "projective shell edge p-moment entropy exponent",
+    )
+
+    def dyadic_minus(exponent):
+        exponent = Fraction(exponent)
+        if exponent.denominator != 1:
+            raise AssertionError(f"nonintegral exponent in projective shell check: {exponent}")
+        return Fraction(1, 2) ** exponent.numerator
+
+    c0_root = 2
+    c1_root = 3
+    edge_ratio = dyadic_minus(Fraction(epsilon, p))
+    per_scale_constant = c0_root * b_pi + c1_root * b_pi_edge / (1 - edge_ratio)
+    assert_equal(per_scale_constant, 92, "projective shell per-scale constant")
+
+    h_bound = (
+        1
+        / ((1 - dyadic_minus(a - rho_star)) * (1 - dyadic_minus(rho - rho_star)))
+        + dyadic_minus(a) / (1 - dyadic_minus(a))
+    )
+    final_bound = h_bound * per_scale_constant * dyadic_minus(rho_star * n)
+    assert_equal(h_bound, 3, "projective shell H bound")
+    assert_equal(final_bound, Fraction(69, 8), "projective shell final bound")
+
+    exact_shell_sum = Fraction(221, 98304)
+    exact_bound = per_scale_constant * exact_shell_sum
+    if not exact_bound < final_bound:
+        raise AssertionError("projective shell exact sum exceeds H-bound estimate")
+
+
 def check_negative_sector_scale_summed_model_convergence_arithmetic():
     # The strict negative Phi^4_3 sector is controlled by six Pi-coordinates and
     # one Gamma coordinate.  In the sample below every coordinate has the same
@@ -1909,6 +1972,7 @@ def main():
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_scale_summed_coordinate_upgrade_arithmetic()
     check_scale_summed_shell_separated_cutoff_arithmetic()
+    check_projective_shell_separated_coordinate_criterion_arithmetic()
     check_negative_sector_scale_summed_model_convergence_arithmetic()
     check_negative_sector_physical_parameter_entropy_arithmetic()
     check_gaussian_negative_pi_coordinate_input_arithmetic()
@@ -1928,7 +1992,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

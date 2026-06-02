@@ -169,6 +169,10 @@ data.
   retained after summing a shell-separated factor \(2^{-\rho(n-m)_+}\).
 - `H_{rho_*,rho,a}`: deterministic summation constant in the
   shell-separated cutoff bridge, with \(a=\sigma-D/p\).
+- `B_pi`, `B_pi^{ed}`: finite-chaos weighted sums of projective kernel
+  constants in the projective shell-separated coordinate criterion; these are
+  the constants that enter the dyadic-net base and edge bounds after the
+  \(E_r'\)-valued chaos kernels have been estimated in projective norm.
 - `I`, `U_{n,i}`, `V_{n,i}`, `A_ctrl`: finite coordinate index set,
   uniform coordinate fields, cutoff-increment coordinate fields, and the
   deterministic constant controlling model seminorms and distances by
@@ -681,6 +685,15 @@ data.
   \(0<\rho_*<\min\{\rho,\sigma-D/p\}\).  The proof splits the physical-scale
   sum at \(m=n\) and bounds the lower-scale part by a convolution of two
   geometric sequences with exponents \(a-\rho_*\) and \(\rho-\rho_*\).
+- Proves a projective shell-separated coordinate criterion: if the
+  \(E'\)-valued finite-chaos kernels satisfy projective base and
+  parameter-edge bounds with the shell factor \(2^{-\rho(n-m)_+}\), then the
+  finite-chaos estimate, norm-Lipschitz inequality, dyadic-net theorem, and
+  shell-summation bridge combine to give the scale-summed cutoff-Cauchy
+  dual-norm estimate.  This closes the abstract route from projective
+  \(E_r'\)-kernel estimates to model-coordinate Cauchy bounds; the
+  regulator-specific proof still has to supply those projective estimates for
+  \(XY\), \(X^2Y\), and the remaining negative-sector coordinates.
 - Proves a coordinate-to-model convergence criterion: if finitely many
   compact coordinate suprema dominate the finite-sector model seminorm and
   model distance, and if each coordinate satisfies the dyadic-net moment and
@@ -1128,6 +1141,16 @@ data maps.
   \(H_{\rho_*,\rho,a}\) explicitly defined and bounded.  The calculation
   companion now checks the split \(m\le n\), the high-scale tail, and the
   exact dyadic sample \(S_5=221/98304\).
+- 2026-06-01 issue #608/#582 projective shell bridge pass: added the
+  projective shell-separated coordinate criterion.  The proof first sums
+  projective kernel constants with the finite-chaos constants to form
+  \(B_\pi\) and \(B_\pi^{ed}\), then applies the dyadic-net theorem to the
+  scalar norm field \(\|Y_{n,m}(x)\|_{E'}\), and finally invokes the
+  shell-summation bridge.  The calculation companion checks the finite-chaos
+  aggregation, the edge exponent conversion from projective norm to
+  \(p\)-th-moment entropy decay, and the final \(H_{\rho_*,\rho,a}\)-bound.
+  This is an abstract bridge; concrete \(E_r'\)-projective cutoff-increment
+  estimates for the nonlinear model kernels remain open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

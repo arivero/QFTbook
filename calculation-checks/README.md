@@ -568,7 +568,9 @@ Current checks:
 	  finite negative-sector coordinate chart, including the scale-summed
 	  coordinate supremum arithmetic, the shell-separated cutoff summation that
 	  converts \(2^{-\rho(n-m)_+}\) into a scale-summed \(2^{-\rho_*n}\) rate
-	  when slack beats entropy, and the seven-coordinate constants in the
+	  when slack beats entropy, the projective shell-separated coordinate
+	  arithmetic that sums finite-chaos constants before the dyadic-net and
+	  shell-summation steps, and the seven-coordinate constants in the
 	  negative-sector model convergence criterion, plus the physical-parameter
 	  entropy exponents after the test-function supremum has been dualized, and
   the projective-tensor arithmetic in the dual-norm finite-chaos estimate and
