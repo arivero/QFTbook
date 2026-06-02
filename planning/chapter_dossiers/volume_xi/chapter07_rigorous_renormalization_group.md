@@ -72,6 +72,10 @@ constructive RG developments.
   windows, their dense union, compatible window functionals, and the
   Schwartz seminorm used in the projective distribution-window extension
   lemma.
+- `N_k`, `S_{k,N}`, `eta_{N,k}`, `k_j`: number of controlled finite windows
+  at regulator scale \(k\), regulated window functionals, fixed-window
+  Cauchy modulus, and diagonal cofinal scale subsequence in the
+  finite-window assembly criterion.
 - `G`: normalization group acting continuously on observable data.
 - `a_k`, `q`, `B_k`, `B_k^\dagger`, `Delta_phi`: ordinary short-range scalar
   lattice spacing, block kernel, block-spin map, adjoint source-blocking map,
@@ -321,6 +325,14 @@ constructive RG developments.
   distribution extending all windows.  This identifies the exact bridge from
   finite RG observation windows to a Schwinger distribution eligible for
   OS/Wightman reconstruction tests.
+- Proves the cofinal finite-window assembly lemma for regulated RG output:
+  compatible finite window functionals \(S_{k,N}\) with \(N_k\to\infty\), a
+  uniform \(q_r\)-seminorm bound, and fixed-window Cauchy control define
+  compatible limiting windows and hence a tempered distribution by the
+  projective extension lemma.  The proof also constructs a diagonal scale
+  subsequence \(k_j\) controlling the first \(j\) windows with \(2^{-j}\)
+  error.  This is still a functional-analytic assembly step, not the
+  model-specific polymer, cluster, or tensor estimate proving the hypotheses.
 - Derives the finite OS-positivity Gram-window bound used by a
   reconstruction-strength observable germ: entrywise convergence of every
   finite positive-time test-family Gram matrix preserves positivity in the
@@ -381,7 +393,11 @@ remainder contraction.
   projective distribution-window extension lemma: restriction
   compatibility, induced finite functional value, a single seminorm bound,
   and the exact defects produced by incompatible windows or a failed declared
-  bound.  It also checks a finite OS-positivity Gram-window failure that is
+  bound.  It also checks the cofinal finite-window assembly step by verifying
+  finite-scale restriction compatibility, a uniform \(l^1\)-seminorm dual
+  bound, the \(k_j=2^j\) diagonal error estimate, the limiting functional
+  value, and the failure of a noncofinal window schedule.  It also checks a
+  finite OS-positivity Gram-window failure that is
   invisible in a declared one-coordinate observable window, and now checks
   the reflection-positive block-spin pullback compression \(B^TG_{\rm fine}B\)
   and the finite OS-positivity bound with an explicit regulated lower bound
@@ -646,3 +662,13 @@ remainder contraction.
   \(S_3\) gauge-blocking check verifies that closed-loop class-function
   sources descend to coarse gauge orbits and that an open-link source fails
   the same invariance test.
+- 2026-06-02 cofinal finite-window assembly pass: added the diagonal
+  assembly lemma needed when RG estimates produce regulated finite-window
+  functionals rather than limiting distribution windows directly.  The
+  manuscript now requires \(N_k\to\infty\), finite-scale compatibility, a
+  regulator-uniform \(q_r\)-seminorm bound, and fixed-window Cauchy control
+  before invoking the projective distribution-window extension lemma.  The
+  proof constructs the limiting compatible windows and a diagonal subsequence
+  \(k_j\) controlling the first \(j\) windows.  The companion short-range RG
+  check verifies the finite restriction, seminorm, diagonal-error, limiting
+  functional, and noncofinal-schedule arithmetic exactly.

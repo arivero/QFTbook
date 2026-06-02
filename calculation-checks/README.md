@@ -705,7 +705,11 @@ Current checks:
   distribution-window extension check: compatible finite
   test-function windows plus a single seminorm bound define one bounded
   functional, while restriction defects and declared-bound failures are
-  detected explicitly.  It also checks the QFT-strength observable-germ
+  detected explicitly.  It also checks the cofinal finite-window assembly
+  step: regulated compatible windows with a uniform seminorm bound must be
+  cofinal and Cauchy on each already-controlled finite window before they
+  determine a limiting tempered distribution.  It also checks the
+  QFT-strength observable-germ
   warning that matching a visible finite correlator window can miss a hidden
   OS-positivity Gram-window failure.  It also checks the finite
   reflection-positive block-spin pullback mechanism: a coarse positive-time

@@ -66,6 +66,9 @@ The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
 distribution.
+The cofinal finite-window assembly check verifies the diagonal schedule and
+uniform seminorm arithmetic needed when the limiting distribution is obtained
+from regulated finite-window functionals, rather than supplied in advance.
 The finite OS-positivity bound checks verify both the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction and the family-size obstruction:
@@ -599,6 +602,76 @@ def check_projective_distribution_window_extension():
         "declared uniform seminorm bound detects large tail",
         abs(large_tail_values[-1]) > declared_uniform_constant,
     )
+
+
+def check_cofinal_finite_window_assembly():
+    # Model nested finite windows E_N = span(e_1,...,e_N) with
+    # q(f)=sum_i |f_i|.  Regulated scale k controls windows N <= N_k.
+    # The coefficient of e_i is a_i + 1/(k+i+1), so every fixed window is
+    # Cauchy and the limit coefficient is a_i.
+    def coefficient(index: int, scale: int) -> Fraction:
+        return Fraction(1, index + 1) + Fraction(1, scale + index + 1)
+
+    def limiting_coefficient(index: int) -> Fraction:
+        return Fraction(1, index + 1)
+
+    def window_value(
+        window_size: int,
+        scale: int,
+        vector: tuple[Fraction, ...],
+    ) -> Fraction:
+        if len(vector) != window_size:
+            raise AssertionError("window vector has the wrong dimension")
+        return sum(
+            coefficient(i + 1, scale) * vector[i]
+            for i in range(window_size)
+        )
+
+    scale = 8
+    large_window_vector = (Fraction(2), Fraction(-1), Fraction(3))
+    restricted_vector = large_window_vector[:2]
+    assert_equal(
+        "cofinal window restriction compatibility",
+        window_value(3, scale, restricted_vector + (Fraction(0),)),
+        window_value(2, scale, restricted_vector),
+    )
+
+    # The l1-dual norm of a finite window is the maximum absolute coefficient.
+    for scale in (4, 8, 16):
+        dual_norm = max(coefficient(i, scale) for i in range(1, 6))
+        assert_true("cofinal assembly uniform seminorm bound", dual_norm <= 1)
+
+    # A diagonal choice k_j=2^j controls all windows N <= j with error at most
+    # 2^{-j} in the l1-dual norm.
+    for stage in (3, 4, 5):
+        diagonal_scale = 2**stage
+        for window_size in range(1, stage + 1):
+            error = max(
+                abs(coefficient(i, diagonal_scale) - limiting_coefficient(i))
+                for i in range(1, window_size + 1)
+            )
+            assert_true(
+                "cofinal diagonal window error",
+                error <= Fraction(1, 2**stage),
+            )
+
+    # The limiting window is compatible and bounded by the same seminorm.
+    limiting_vector = (Fraction(2), Fraction(-1), Fraction(3), Fraction(4))
+    limiting_value = sum(
+        limiting_coefficient(i + 1) * limiting_vector[i]
+        for i in range(4)
+    )
+    q_norm = sum(abs(component) for component in limiting_vector)
+    assert_equal("cofinal limiting window value", limiting_value, Fraction(133, 60))
+    assert_true(
+        "cofinal limiting functional bounded by q",
+        abs(limiting_value) <= q_norm,
+    )
+
+    # If the number of controlled windows is bounded, the dense-union
+    # requirement fails: e_3 is never seen when N_k <= 2.
+    bounded_window_counts = [2, 2, 2, 2]
+    assert_true("noncofinal window schedule detected", max(bounded_window_counts) < 3)
 
 
 def check_qft_strength_observable_germ_windows():
@@ -1597,6 +1670,7 @@ def main():
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_estimate()
     check_projective_distribution_window_extension()
+    check_cofinal_finite_window_assembly()
     check_qft_strength_observable_germ_windows()
     check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()

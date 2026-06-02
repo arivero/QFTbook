@@ -4144,6 +4144,117 @@ desired local observables.  After this distributional object exists, the
 finite reflection-positivity windows below test whether it is eligible for
 OS reconstruction.
 
+\paragraph{Cofinal assembly from regulated finite windows.}
+The previous lemma starts from limiting window functionals.  An RG proof
+usually produces regulated window functionals \(S_{k,N}\) at scale \(k\),
+where \(N\) records how large a finite test window has been controlled.  The
+following criterion is the diagonal step needed before the limiting
+functionals in Lemma~\ref{lem:rg-projective-window-extension-distribution}
+exist.
+
+\begin{lemma}[Cofinal finite-window assembly]
+\label{lem:rg-cofinal-finite-window-assembly}
+Let
+\[
+  E_1\subset E_2\subset\cdots\subset\mathcal S(X)
+\]
+be finite-dimensional subspaces whose union is dense in \(\mathcal S(X)\).
+Let \(N_k\to\infty\), and suppose that for every \(k\) and every
+\(N\le N_k\) there is a linear functional
+\[
+  S_{k,N}:E_N\to\mathbb C .
+\]
+Assume:
+\begin{enumerate}
+  \item finite-scale compatibility:
+  \(S_{k,M}|_{E_N}=S_{k,N}\) whenever \(N\le M\le N_k\);
+  \item a uniform seminorm bound: there exist \(r\) and \(C\), independent of
+  \(k\) and \(N\), such that
+  \[
+    |S_{k,N}(f)|\le C q_r(f),
+    \qquad f\in E_N,\quad N\le N_k;
+  \]
+  \item cofinal Cauchy control: for each fixed \(N\),
+  \begin{equation}
+    \eta_{N,k}
+    =
+    \sup_{\ell\ge k}
+    \sup_{\substack{f\in E_N\\ q_r(f)\le1}}
+    |S_{k,N}(f)-S_{\ell,N}(f)|
+    \longrightarrow0
+    \label{eq:cofinal-window-cauchy-control}
+  \end{equation}
+  as \(k\to\infty\), with the supremum restricted to
+  \(k,\ell\) for which \(N\le N_k,N_\ell\).
+\end{enumerate}
+Then there are compatible limiting functionals
+\[
+  S_N:E_N\to\mathbb C,\qquad S_M|_{E_N}=S_N\quad(N\le M),
+\]
+with \(|S_N(f)|\le Cq_r(f)\).  Hence
+Lemma~\ref{lem:rg-projective-window-extension-distribution} produces a unique
+tempered distribution \(S\in\mathcal S'(X)\) extending all \(S_N\).
+Moreover one may choose a strictly increasing scale subsequence \(k_j\) with
+\(N_{k_j}\ge j\) and
+\begin{equation}
+  \eta_{N,k_j}\le 2^{-j},
+  \qquad 1\le N\le j .
+  \label{eq:cofinal-diagonal-window-schedule}
+\end{equation}
+Along this subsequence every fixed finite window \(E_N\) converges to its
+limit at a quantified rate after \(j\ge N\).
+\end{lemma}
+
+\begin{proof}
+Fix \(N\).  Since \(N_k\to\infty\), the functionals \(S_{k,N}\) are defined
+for all sufficiently large \(k\).  The Cauchy control
+\eqref{eq:cofinal-window-cauchy-control} says that \(S_{k,N}\) is Cauchy in
+the operator seminorm
+\[
+  \|T\|_{E_N,r}
+  =
+  \sup_{\substack{f\in E_N\\ q_r(f)\le1}} |T(f)|.
+\]
+The target space is finite dimensional, so this normed space of linear
+functionals is complete.  Define \(S_N\) to be the limit of \(S_{k,N}\) in
+that norm.  The bound \(|S_N(f)|\le Cq_r(f)\) follows by taking the limit of
+the uniform bound for \(S_{k,N}\).
+
+If \(N\le M\), choose \(k\) so large that \(M\le N_k\).  Finite-scale
+compatibility gives
+\[
+  S_{k,M}|_{E_N}=S_{k,N}.
+\]
+Taking \(k\to\infty\) in the operator seminorms on \(E_M\) and \(E_N\) gives
+\[
+  S_M|_{E_N}=S_N .
+\]
+Thus the limiting windows satisfy the hypotheses of
+Lemma~\ref{lem:rg-projective-window-extension-distribution}, and the
+tempered distribution follows.
+
+It remains to spell out the diagonal schedule.  For a fixed \(j\), the set
+\(\{1,\ldots,j\}\) is finite.  Since each \(\eta_{N,k}\to0\), and since
+\(N_k\to\infty\), there exists \(k_j\) larger than \(k_{j-1}\) such that
+\[
+  N_{k_j}\ge j,\qquad
+  \eta_{N,k_j}\le2^{-j}\quad(1\le N\le j).
+\]
+Choosing these \(k_j\) recursively gives
+\eqref{eq:cofinal-diagonal-window-schedule}.  For fixed \(N\) and
+\(j\ge N\), the definition of \(\eta_{N,k_j}\) bounds the distance from
+\(S_{k_j,N}\) to the limiting functional \(S_N\) by \(2^{-j}\) in the same
+operator seminorm.
+\end{proof}
+
+This lemma identifies a common hidden gap in RG reconstruction arguments.
+Controlling one finite window at each scale is insufficient: the number of
+controlled windows must be cofinal, the already-controlled windows must be
+Cauchy as the regulator is removed, and the seminorm bound must be uniform in
+the window.  The lemma supplies the diagonal functional-analytic step.  It
+does not supply the model-specific polymer or cluster estimates that prove
+the hypotheses.
+
 \paragraph{Finite OS-positivity Gram-matrix bounds.}
 The positivity windows in
 Definition~\ref{def:local-qft-strength-observable-germ} are not decorative.
