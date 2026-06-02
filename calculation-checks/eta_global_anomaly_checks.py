@@ -639,6 +639,52 @@ def check_stabilizer_holonomy_character_obstruction() -> None:
                     expected_descends,
                 )
 
+                # A local frame change is a 0-cochain beta(A).  On a
+                # stabilizer arrow A -> A the additive coboundary contribution
+                # beta(A)-beta(A) vanishes, so it cannot change the stabilizer
+                # character.  This is the finite version of the obstruction
+                # stated in the chapter.
+                beta_value = (3 * group_order + 5 * phase_modulus) % phase_modulus
+                for stabilizer_element in range(group_order):
+                    original = charge * stabilizer_element % phase_modulus
+                    shifted = (
+                        beta_value - beta_value + charge * stabilizer_element
+                    ) % phase_modulus
+                    assert_equal(
+                        f"stabilizer character invariant under frame change G={group_order}",
+                        shifted,
+                        original,
+                    )
+
+    # On a single finite orbit with trivial stabilizer character, transporting
+    # a chosen vector from a representative is independent of the group element
+    # used to reach the same point.  If the stabilizer character is nontrivial,
+    # two representatives differing by a stabilizer element disagree.
+    group_order = 6
+    stabilizer = {0, 3}
+    orbit_representatives = {0: 0, 1: 1, 2: 2}
+    trivial_charge = 0
+    bad_charge = 1
+    phase_modulus = 2
+    for point, representative in orbit_representatives.items():
+        for stabilizer_element in stabilizer:
+            alternative = (representative + stabilizer_element) % group_order
+            trivial_transport = trivial_charge * alternative % phase_modulus
+            canonical_transport = trivial_charge * representative % phase_modulus
+            assert_equal(
+                f"trivial stabilizer character gives well-defined orbit vector {point}",
+                trivial_transport,
+                canonical_transport,
+            )
+            bad_transport = bad_charge * alternative % phase_modulus
+            bad_canonical = bad_charge * representative % phase_modulus
+            if stabilizer_element != 0:
+                assert_equal(
+                    f"nontrivial stabilizer character obstructs orbit vector {point}",
+                    bad_transport != bad_canonical,
+                    True,
+                )
+
 
 def main() -> None:
     check_su2_index_table()

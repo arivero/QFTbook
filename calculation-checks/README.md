@@ -172,7 +172,9 @@ Current checks:
   cocycle for determinant-line charts, the Cech-de Rham local
   connection/transition bookkeeping behind determinant-line holonomy, dual
   anomaly-line cancellation,
-  nontrivial flat stabilizer holonomy before cancellation, and the finite
+  nontrivial flat stabilizer holonomy before cancellation, stabilizer-character
+  invariance under local frame changes, the single-orbit descent obstruction
+  from nontrivial stabilizer character, and the finite
   \(U(1)\)-phase algebra of Dai--Freed gluing, together with a finite cochain
   Stokes model for the contractible-loop step from Bismut--Freed curvature to
   local descent.

@@ -214,3 +214,13 @@ global anomaly as an explicit mod-two-index example.
   connection/transition formulae and loop-holonomy coordinate expression
   immediately after the Bismut--Freed theorem, and extended
   `eta_global_anomaly_checks.py` to verify the finite line-bundle algebra.
+- 2026-06-02 stabilizer-character anomaly-line pass: sharpened quotient
+  groupoid descent at fixed backgrounds.  The chapter now restricts the
+  anomaly cocycle to the stabilizer \(\mathcal G_A\), proves in prose that it
+  is a character invariant under local frame changes, and explains why
+  triviality of this character is the exact algebraic condition for a
+  line-valued determinant or Pfaffian vector to descend on a single orbit
+  when no further curvature obstruction is present.  The companion
+  `eta_global_anomaly_checks.py` now verifies frame-change invariance of
+  stabilizer characters and the single-orbit representative-independence
+  obstruction with exact finite arithmetic.

@@ -623,6 +623,35 @@ computed by \eqref{eq:bismut-freed-holonomy} or by the mod-two Pfaffian
 formula below.  Tensoring independent fermion systems tensors their anomaly
 lines, so the cocycles multiply and the logarithmic anomaly exponents add.
 
+This based-loop statement has a useful fixed-background form.  Let
+\[
+  \mathcal G_A=\{g\in\mathcal G:A^g=A\}
+\]
+be the stabilizer of a background.  Restricting
+\eqref{eq:anomaly-line-groupoid-cocycle} to \(g,h\in\mathcal G_A\) gives a
+character
+\[
+  \chi_A(g)=\alpha(A,g),
+  \qquad
+  \chi_A(gh)=\chi_A(g)\chi_A(h).
+\]
+The coboundary factor in
+\eqref{eq:anomaly-line-groupoid-coboundary} is trivial on the stabilizer,
+because \(A^g=A\), so \(\chi_A\) is not changed by a local choice of frame.
+If an equivariant nonzero section \(s_A\) satisfying
+\eqref{eq:anomaly-line-equivariant-trivialization} exists, then
+\(\chi_A(g)=1\) for every stabilizer element.  Conversely, on a single
+orbit with fixed stabilizer and with no additional curvature obstruction
+along the orbit, triviality of this stabilizer character is exactly the
+algebraic condition for defining \(s\) by transporting one chosen vector from
+a representative background: different representatives of the same point
+differ by a stabilizer element, and the construction is independent of that
+choice precisely when the stabilizer character is trivial.  Thus a global
+anomaly may be detected before considering arbitrary loops: a nontrivial
+automorphism character of the anomaly line over one background already
+prevents the determinant or Pfaffian vector from being a function on the
+quotient stack of backgrounds.
+
 \paragraph{Dual anomaly lines and the cancellation criterion.}
 Let \(L\) be an anomaly line over \(\mathcal B//\mathcal G\).  Its dual line
 \(L^\vee\) has fibers
