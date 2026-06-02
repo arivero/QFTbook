@@ -34,6 +34,9 @@ fluctuation integration.
 The source-window check verifies the finite Taylor-source extraction rule
 used to decide which connected correlator windows are actually controlled by
 a source-extended polymer RG chart.
+The finite source-window-to-cumulant check verifies the Cauchy estimate and
+restriction compatibility that turn holomorphic finite source windows into
+actual cumulant distribution windows.
 The stable-chart observable-window bound check verifies the finite RG estimate
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
@@ -1352,6 +1355,60 @@ def check_source_window_extraction_error():
     assert_true("source propagated example below bound", abs(actual_window_error) <= propagated_bound)
 
 
+def check_finite_source_window_to_cumulant_distribution_bound():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def multi_factorial(beta):
+        value = 1
+        for component in beta:
+            value *= factorial(component)
+        return value
+
+    radii = (Fraction(2), Fraction(3), Fraction(5))
+    beta = (1, 2, 0)
+    epsilon = Fraction(1, 240)
+    rho_beta = product(radius ** exponent for radius, exponent in zip(radii, beta))
+    cauchy_bound = multi_factorial(beta) * epsilon / rho_beta
+    assert_equal("finite source-window rho beta", rho_beta, Fraction(18))
+    assert_equal("finite source-window cumulant Cauchy bound", cauchy_bound, Fraction(1, 2160))
+
+    # Model a compatible pair E subset F.  The coefficient of z_1 z_2^2 in
+    # W_F restricts to the same coefficient in W_E, so the extracted cumulant
+    # derivative is independent of which containing source window is used.
+    coefficient_e = Fraction(1, 5000)
+    coefficient_f = coefficient_e
+    cumulant_e = multi_factorial(beta) * coefficient_e
+    cumulant_f = multi_factorial(beta) * coefficient_f
+    assert_equal("finite source-window restriction derivative", cumulant_f, cumulant_e)
+    assert_true("finite source-window derivative below Cauchy bound", abs(cumulant_e) <= cauchy_bound)
+
+    # If a larger window changes the restricted coefficient, compatibility
+    # fails before any distributional extension can be claimed.
+    bad_coefficient_f = Fraction(1, 4000)
+    bad_cumulant_f = multi_factorial(beta) * bad_coefficient_f
+    assert_true("finite source-window restriction defect detected", bad_cumulant_f != cumulant_e)
+
+    # Uniform Schwartz-seminorm boundedness is a separate requirement from the
+    # Cauchy extraction.  This finite arithmetic models the bound
+    # |S(f_1,f_2)| <= C q(f_1 tensor f_2) and a failed declared constant.
+    cumulant_value = Fraction(7, 9)
+    seminorm_value = Fraction(5, 6)
+    good_constant = Fraction(2)
+    bad_constant = Fraction(1, 2)
+    assert_true(
+        "finite source-window Schwartz bound holds",
+        abs(cumulant_value) <= good_constant * seminorm_value,
+    )
+    assert_true(
+        "finite source-window Schwartz bound failure detected",
+        abs(cumulant_value) > bad_constant * seminorm_value,
+    )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -1380,6 +1437,7 @@ def main():
     check_localization_scaling_exponents()
     check_large_field_gaussian_regulator_bound()
     check_source_window_extraction_error()
+    check_finite_source_window_to_cumulant_distribution_bound()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

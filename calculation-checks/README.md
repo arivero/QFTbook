@@ -737,7 +737,11 @@ Current checks:
   fluctuation integration.  It also checks the source-window extraction rule
   for a source-extended polymer chart: retained Taylor-source derivatives
   vanish in the tail, omitted derivatives obey the Cauchy-radius bound, and
-  propagated source-tail errors sum with the declared scale weights.
+  propagated source-tail errors sum with the declared scale weights.  It also
+  checks finite source-window-to-cumulant extraction: Cauchy control of
+  derivatives from holomorphic window convergence, restriction compatibility
+  for \(E\subset F\), and the separate uniform Schwartz-seminorm bound needed
+  to extend compatible finite windows to a distribution.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

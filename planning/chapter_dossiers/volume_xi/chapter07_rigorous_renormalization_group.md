@@ -590,3 +590,14 @@ remainder contraction.
   the local/irrelevant fixed-point equation whose contraction is the
   nonperturbative burden.  The companion fermionic RG check verifies the exact
   finite arithmetic behind this ledger.
+- 2026-06-02 finite source-window cumulant pass: inserted the missing bridge
+  from holomorphic finite source-window convergence to the cumulant
+  distributions used in the ordinary short-range scalar OS reconstruction
+  pipeline.  The manuscript now defines \(W_{k,E}(z)\), identifies
+  \(\partial_z^\beta W_{k,E}(0)\) with the corresponding joint cumulant,
+  derives the polydisc Cauchy bound
+  \(\beta!\epsilon_{E,k}/\rho^\beta\), records restriction compatibility for
+  \(E\subset F\), and states the separate uniform Schwartz-seminorm bound
+  needed to invoke the projective distribution-window extension lemma.  The
+  companion short-range RG check verifies this finite arithmetic and detects
+  both restriction and declared-bound failures.

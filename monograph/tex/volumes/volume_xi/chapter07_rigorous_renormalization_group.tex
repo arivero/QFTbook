@@ -2617,6 +2617,110 @@ reconstruction estimate of the form
 the vocabulary of fixed points or universality.
 \end{construction}
 
+\paragraph{Finite source windows to cumulant distributions.}
+The cumulant notation in
+\eqref{eq:block-spin-cumulant-distribution} is useful only after the
+source-extension estimates have been connected to actual test-function
+windows.  Fix a finite-dimensional test space
+\[
+  E=\operatorname{span}\{f_1,\ldots,f_m\}
+  \subset C_c^\infty(\mathbb R^D)
+\]
+and write \(J_z=\sum_{a=1}^m z_a f_a\).  At scale \(k\), define the
+finite-window connected source functional
+\begin{equation}
+  W_{k,E}(z)
+  =
+  \log
+  \mathbb E_{\mu_k}\exp\{\Phi_k(J_z)\},
+  \qquad z\in\mathbb C^m,
+  \label{eq:short-range-source-window-functional}
+\end{equation}
+whenever the expectation is finite and holomorphic in the chosen polydisc.
+If
+\[
+  \beta=(\beta_1,\ldots,\beta_m),
+  \qquad
+  |\beta|=\beta_1+\cdots+\beta_m,
+\]
+then
+\begin{equation}
+  \partial_z^\beta W_{k,E}(0)
+  =
+  \kappa_{\mu_k}\bigl(
+    \underbrace{\Phi_k(f_1),\ldots,\Phi_k(f_1)}_{\beta_1\ {\rm times}},
+    \ldots,
+    \underbrace{\Phi_k(f_m),\ldots,\Phi_k(f_m)}_{\beta_m\ {\rm times}}
+  \bigr).
+  \label{eq:short-range-source-window-cumulant-derivative}
+\end{equation}
+This identity is just the definition of joint cumulants through the
+logarithm of the moment-generating function, but it fixes the exact
+derivative whose convergence is needed for the Schwinger distribution
+window.
+
+Suppose now that \(W_{\ast,E}\) is holomorphic on the same closed polydisc
+\(P_\rho=\{|z_a|\le\rho_a\}\) and that
+\begin{equation}
+  \sup_{z\in P_\rho}|W_{k,E}(z)-W_{\ast,E}(z)|
+  \leq \epsilon_{E,k},
+  \qquad \epsilon_{E,k}\longrightarrow0 .
+  \label{eq:short-range-source-window-uniform-convergence}
+\end{equation}
+The multidimensional Cauchy formula gives, for every multi-index \(\beta\),
+\begin{equation}
+  \left|
+    \partial_z^\beta W_{k,E}(0)
+    -
+    \partial_z^\beta W_{\ast,E}(0)
+  \right|
+  \leq
+  \frac{\beta!}{\rho^\beta}\,\epsilon_{E,k},
+  \qquad
+  \rho^\beta=\prod_a\rho_a^{\beta_a}.
+  \label{eq:short-range-source-window-cauchy-cumulant-bound}
+\end{equation}
+Thus finite-source-window convergence in a complex neighborhood gives
+quantitative convergence of every cumulant whose test functions lie in
+\(E\).  If \(E\subset F\), compatibility of the source windows means
+\[
+  W_{k,F}(z_E,0)=W_{k,E}(z_E),
+  \qquad
+  W_{\ast,F}(z_E,0)=W_{\ast,E}(z_E),
+\]
+so the cumulants extracted from larger windows restrict to the smaller ones.
+
+The passage from these finite windows to a distribution is a further
+continuity statement, not a formal consequence of
+\eqref{eq:short-range-source-window-cauchy-cumulant-bound}.  For each
+\(n\), the RG construction must also provide an integer \(r_n\) and a
+constant \(C_n\), independent of the finite test space \(E\) and of \(k\)
+after the stated scale threshold.  Applied to any ordered \(n\)-tuple
+\((h_1,\ldots,h_n)\subset E\), with source coordinates \(z_1,\ldots,z_n\)
+chosen in those directions, the required bound is
+\begin{equation}
+  \left|
+    \partial_{z_1}\cdots\partial_{z_n}
+    W_{k,E}(0)
+  \right|
+  \leq
+  C_n\,
+  q_{r_n}(h_1\otimes\cdots\otimes h_n)
+  \label{eq:short-range-source-window-uniform-schwartz-bound}
+\end{equation}
+for the declared Schwartz seminorm \(q_{r_n}\) on
+\(\mathcal S((\mathbb R^D)^n)\), and the same bound for the limiting window.
+Compatibility plus
+\eqref{eq:short-range-source-window-uniform-schwartz-bound} is precisely the
+input of Lemma~\ref{lem:rg-projective-window-extension-distribution}.  It
+produces the limiting tempered distribution \(S_{n,\ast}\); the Cauchy
+estimate
+\eqref{eq:short-range-source-window-cauchy-cumulant-bound} supplies the
+finite-window convergence rate.  Local source counterterms are handled as
+additional polynomial source coordinates whose derivatives are distributions
+supported on collision diagonals.  They are part of the source window, not an
+after-the-fact modification of separated cumulants.
+
 \paragraph{Adjoint source blocking and smooth-test error.}
 The source normalization in
 \eqref{eq:block-spin-distribution-pairing} is not a convention that can be
