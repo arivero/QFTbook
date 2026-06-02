@@ -198,8 +198,11 @@ where
   \int_M\operatorname{tr}(\theta_g\wedge\theta_g\wedge\theta_g)
   \in\mathbb Z
 \]
-is the winding number with the chosen normalization.  The sign in this
-formula is tied to the displayed right-action convention for \(A^g\).
+is the winding number with the chosen normalization.  The two displayed
+three-forms define the same integral because
+\(\theta_g=dg\,g^{-1}=g(g^{-1}dg)g^{-1}\) and the bilinear form is invariant.
+The sign in this formula is tied to the displayed right-action convention for
+\(A^g\).
 
 \begin{remark}[Gauge invariance of the exponentiated action]
 \label{rem:cs-level-quantization}
@@ -216,6 +219,25 @@ term obtained by restricting the transgression form to \(\partial M\); its
 cancellation requires boundary degrees of freedom, boundary conditions, or a
 specified anomalous boundary theory together with the integral level.
 \end{remark}
+
+The same integrality controls the Wess--Zumino term that appears below.  If
+\(g:\Sigma\to G\) extends to two oriented three-manifolds \(B_1\) and \(B_2\)
+with \(\partial B_i=\Sigma\), glue \(B_1\) to \(-B_2\) along the boundary.
+The resulting closed three-manifold \(X=B_1\cup_\Sigma(-B_2)\), equipped with
+the glued map to \(G\), gives
+\[
+  \frac{k}{12\pi}
+  \left(\int_{B_1}\operatorname{tr}(g^{-1}dg)^3
+        -\int_{B_2}\operatorname{tr}(g^{-1}dg)^3\right)
+  =
+  2\pi k\,
+  \frac{1}{24\pi^2}\int_X\operatorname{tr}(g^{-1}dg)^3 .
+\]
+Thus the ambiguity of the Wess--Zumino functional is an integral multiple of
+\(2\pi k\), and \(\exp(\ii S)\) is independent of the chosen extension for
+integer level.  The boundary statement is the same integral class
+\(\lambda\) in Definition~\ref{def:chern-simons-defining-datum} viewed through
+a boundary extension.
 
 \section{Phase Space on a Surface}
 
@@ -484,7 +506,10 @@ extension of \(g\) to a three-manifold \(B\) with \(\partial B=\Sigma\), set
 \end{equation}
 The Wess--Zumino term is defined modulo \(2\pi\mathbb Z\) in
 \(\exp(\ii S)\) exactly when the same integral normalization that quantizes
-the Chern--Simons level is used.
+the Chern--Simons level is used.  The extension-independence calculation in
+the level-quantization section is the global input behind this sentence; the
+Polyakov--Wiegmann identity below is the local product formula in the same
+normalization.
 
 \begin{lemma}[Polyakov--Wiegmann identity]
 \label{lem:polyakov-wiegmann-boundary}

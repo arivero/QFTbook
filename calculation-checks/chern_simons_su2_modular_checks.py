@@ -55,6 +55,15 @@ def check_finite_gauge_transgression_coefficient() -> None:
     assert_equal("Chern-Simons winding coefficient", coefficient_in_units_of_pi_k, Fraction(2))
 
 
+def check_wess_zumino_extension_ambiguity() -> None:
+    # Two WZ extensions differ by the closed three-manifold integral
+    # (k/(12*pi)) int tr(g^{-1}dg)^3.  The same winding normalization
+    # (24*pi^2) gives a 2*pi*k*n phase ambiguity, so the boundary WZ
+    # extension condition is the bulk integral-level condition.
+    coefficient_in_units_of_pi_k = Fraction(1, 12) * 24
+    assert_equal("Wess-Zumino extension ambiguity", coefficient_in_units_of_pi_k, Fraction(2))
+
+
 def check_abelian_transgression_derivative_sign() -> None:
     # In the Abelian limit theta^2=dtheta=0 and A^g=A-theta.  Directly
     # expanding (A-theta) d(A-theta)-A dA gives -theta dA.  Since
@@ -139,6 +148,7 @@ def check_verlinde_dimensions() -> None:
 
 def main() -> None:
     check_finite_gauge_transgression_coefficient()
+    check_wess_zumino_extension_ambiguity()
     check_abelian_transgression_derivative_sign()
     check_holomorphic_polarization_variation()
     check_polyakov_wiegmann_cross_coefficients()

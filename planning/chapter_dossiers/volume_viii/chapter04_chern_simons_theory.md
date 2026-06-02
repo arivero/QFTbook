@@ -21,6 +21,9 @@
 - Chern--Simons functional with a fixed invariant bilinear form.
 - Variation and flat-connection equation of motion.
 - Level quantization from large gauge transformations.
+- Wess--Zumino extension independence from the same integral level:
+  two extensions differ by a closed three-manifold winding integral, giving a
+  \(2\pi k\mathbb Z\) ambiguity in the action.
 - Phase space on a spatial surface and its symplectic form.
 - Wilson lines and framing dependence.
 - Explicit \(SU(2)_k\) modular \(S\)-matrix, quantum dimensions, normalized
@@ -88,6 +91,9 @@
 ## Calculation Checks
 
 - `calculation-checks/chern_simons_su2_modular_checks.py` verifies the
+  finite-gauge-transgression coefficient, Wess--Zumino extension-ambiguity
+  coefficient, Abelian total-derivative sign, holomorphic-polarization
+  boundary variation, Polyakov--Wiegmann cross-term coefficient, and the
   \(SU(2)_k\) sine-transform orthogonality, quantum dimensions, Hopf-link
   normalizations, Verlinde fusion coefficients, and sphere/torus state-space
   dimensions for finite ranges of \(k\).
@@ -103,3 +109,9 @@
   hypothesis, then redirected the phase-space and Wilson-line prose to those
   named objects so the chapter no longer treats the local action alone as the
   definition of the theory.
+- 2026-06-02 issue #562 assertion-as-derivation continuation: tightened the
+  global relation between bulk level quantization and boundary Wess--Zumino
+  extension independence without promoting the coefficient bookkeeping to a
+  theorem.  The companion check now verifies the \(2\pi k\mathbb Z\) WZ
+  ambiguity from the same \(24\pi^2\) winding normalization as the bulk
+  finite-gauge transgression.
