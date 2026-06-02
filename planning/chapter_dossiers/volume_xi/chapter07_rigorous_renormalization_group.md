@@ -406,8 +406,10 @@ remainder contraction.
   equality of the blocked coarse Wilson loop with the concatenated fine
   plaquette, class-function gauge invariance, and invariance of the blocked
   pushforward weights under the coarse gauge group.  The script also checks
-  the finite arithmetic behind weighted polymer-tail bounds and compression
-  of a reflection-positive finite Gram matrix by a blocking map.
+  closed-loop source-window descent to coarse gauge orbits, the failure of an
+  open-link source to define an invariant window, the finite arithmetic
+  behind weighted polymer-tail bounds, and compression of a
+  reflection-positive finite Gram matrix by a blocking map.
 
 ## Audit Notes
 
@@ -634,3 +636,13 @@ remainder contraction.
   correlators.  The companion short-range RG check verifies the exact finite
   arithmetic and detects the mistuned unstable-source-coordinate failure
   mode.
+- 2026-06-02 gauge-invariant source-window pass: added the missing
+  gauge-theory source layer to the gauge-compatible RG section.  The
+  manuscript now defines finite gauge-invariant source windows for closed
+  Wilson-loop and Wilson-line-contracted observables, states the BV version
+  as a QME-compatible holomorphic source family with contact/source
+  coordinates, and records the invariant source-chart bound needed before
+  Cauchy extraction of gauge-observable cumulants.  The companion finite
+  \(S_3\) gauge-blocking check verifies that closed-loop class-function
+  sources descend to coarse gauge orbits and that an open-link source fails
+  the same invariance test.

@@ -89,6 +89,30 @@ def coarse_loop(coarse: CoarseConfig) -> Perm:
     return mul(mul(u02, u23), u30)
 
 
+def source_class_values(coarse: CoarseConfig) -> tuple[int, int]:
+    """Two gauge-invariant source coordinates built from the closed loop."""
+
+    loop = coarse_loop(coarse)
+    return fixed_points(loop), fixed_points(mul(loop, loop))
+
+
+def source_polynomial(coarse: CoarseConfig) -> Fraction:
+    """Finite source polynomial used to test descent to gauge orbits.
+
+    It is the second Taylor polynomial of an exponential source with rational
+    source parameters.  Exact rational arithmetic is enough for the descent
+    check, because every Taylor coefficient of a class-function source is
+    separately gauge invariant.
+    """
+
+    first_class, second_class = source_class_values(coarse)
+    source_linear = (
+        Fraction(1, 5) * Fraction(first_class - 1)
+        - Fraction(2, 7) * Fraction(second_class - 1)
+    )
+    return Fraction(1) + source_linear + source_linear * source_linear / 2
+
+
 def fine_plaquette(config: FineConfig) -> Perm:
     return path_product(config, FINE_EDGES)
 
@@ -167,6 +191,52 @@ def check_pushforward_measure_invariance() -> None:
                 pushforward[transformed],
                 weight,
             )
+
+
+def check_gauge_invariant_source_window_descends() -> None:
+    pushforward: defaultdict[CoarseConfig, int] = defaultdict(int)
+    for config in all_fine_configs():
+        pushforward[block(config)] += gauge_invariant_weight(config)
+
+    deformed_pushforward = {
+        coarse: Fraction(weight) * source_polynomial(coarse)
+        for coarse, weight in pushforward.items()
+    }
+
+    for coarse in pushforward:
+        base_values = source_class_values(coarse)
+        base_source = source_polynomial(coarse)
+        for h0, h2, h3 in product(ELEMENTS, repeat=3):
+            transformed = coarse_gauge_transform(coarse, {0: h0, 2: h2, 3: h3})
+            assert_equal(
+                "closed-loop source coordinates descend to gauge orbits",
+                source_class_values(transformed),
+                base_values,
+            )
+            assert_equal(
+                "source polynomial descends to gauge orbits",
+                source_polynomial(transformed),
+                base_source,
+            )
+            assert_equal(
+                "source-deformed pushforward remains coarse-gauge invariant",
+                deformed_pushforward[transformed],
+                deformed_pushforward[coarse],
+            )
+
+
+def check_open_link_source_is_not_gauge_invariant() -> None:
+    witness_found = False
+    for coarse in product(ELEMENTS, repeat=3):
+        base_value = fixed_points(coarse[0])
+        for h0, h2, h3 in product(ELEMENTS, repeat=3):
+            transformed = coarse_gauge_transform(coarse, {0: h0, 2: h2, 3: h3})
+            if fixed_points(transformed[0]) != base_value:
+                witness_found = True
+                break
+        if witness_found:
+            break
+    assert_true("an open-link source fails coarse gauge invariance", witness_found)
 
 
 def check_fine_weight_gauge_invariance() -> None:
@@ -278,6 +348,8 @@ def main() -> None:
     check_path_blocking_equivariance()
     check_blocked_wilson_loop()
     check_pushforward_measure_invariance()
+    check_gauge_invariant_source_window_descends()
+    check_open_link_source_is_not_gauge_invariant()
     check_fine_weight_gauge_invariance()
     check_weighted_polymer_tail_bound()
     check_reflection_positive_compression()

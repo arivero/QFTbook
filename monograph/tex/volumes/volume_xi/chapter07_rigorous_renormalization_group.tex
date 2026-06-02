@@ -2381,6 +2381,98 @@ include the reflection-positive observable algebra and the defect
 \(\rho_k\); it is not enough to know that the blocked links transform
 covariantly.
 
+\paragraph{Gauge-invariant source windows.}
+The source-window layer in a gauge RG theorem is part of the datum, because
+the source variables select which continuum distributions are being
+reconstructed.  In the lattice form of
+Definition~\ref{def:gauge-compatible-wilsonian-rg-structure}, let
+\[
+  E=\operatorname{span}_{\C}\{O_1,\ldots,O_N\}
+\]
+be a finite-dimensional space of gauge-invariant cylinder observables on
+\(\mathcal A_k\).  Typical basis elements are closed Wilson loops, products
+of small-loop field-strength representatives, or matter bilinears whose
+color indices are contracted by a declared Wilson-line connector.  The path,
+representation, endpoint contraction, and smearing data are part of the
+observable label.  For \(z=(z_1,\ldots,z_N)\) in a fixed polydisc \(P_\rho\),
+define
+\begin{equation}
+  W_{k,E}^{\rm inv}(z)
+  =
+  \log
+  \int_{\mathcal A_k}
+    \exp\!\left(\sum_{a=1}^N z_a O_a(A)\right)
+    \dd\mu_k(A),
+  \label{eq:gauge-invariant-source-window}
+\end{equation}
+whenever the integral is nonzero and the logarithm branch has been fixed at
+\(z=0\).  Since each \(O_a\) is invariant under \(\mathcal G_k\), the
+source-deformed density in
+\eqref{eq:gauge-invariant-source-window} is invariant pointwise and therefore
+descends to the orbit space or, equivalently, to the invariant observable
+algebra.  An admissible source for a colored transport operator includes the
+endpoint color contractions, Wilson-line geometry, or asymptotic dressing
+that makes the observable gauge invariant; the uncontracted open link belongs
+to a gauge-fixed coordinate chart.
+
+In the BV form the same statement is slightly sharper.  A finite source
+window is a holomorphic family \(S_k(z)\) with \(S_k(0)=S_k\) satisfying the
+scale-\(k\) quantum master equation and equipped with its composite-operator
+source coordinates.  The first source derivatives
+\(\partial_{z_a}S_k(0)\) are quantum observables, meaning
+\(Q_{S_k}\partial_{z_a}S_k(0)=0\).  The higher source derivatives of
+\(S_k(z)\) are the contact and composite-operator coordinates needed for the
+source family itself to remain in the BV chart.  Thus the distinction between
+regularizing the path-integral measure and regularizing composite
+operators is built into the RG source datum rather than added after
+correlators have been computed.
+
+The gauge source window is useful only if it obeys the same analytic
+estimates as the scalar source windows above, now in the invariant or BV
+cohomological chart.  A theorem-facing estimate has the form
+\begin{equation}
+  W_{k,E}^{\rm inv}(z)
+  =
+  C_{k,E}^{\rm inv}(z)
+  +\mathfrak W_E^{\rm inv}
+     \!\left(g_{k,E}^{\rm inv}(z),K_{k,E}^{\rm inv}(z)\right)
+  +r_{k,E}^{\rm inv}(z),
+  \label{eq:gauge-invariant-source-chart}
+\end{equation}
+on a fixed polydisc, with all three terms defined in the gauge-invariant
+lattice chart or in a BV chart satisfying the quantum master equation.  If
+the right side lies in a common Lipschitz neighborhood of the limiting
+source chart, then
+\begin{equation}
+  \sup_{z\in P_\rho}
+  \left|
+    W_{k,E}^{\rm inv}(z)-W_{\ast,E}^{\rm inv}(z)
+  \right|
+  \leq
+  \delta_{C,E}^{\rm inv}
+  +L_E^{\rm inv}
+    \bigl(
+      \delta_{g,E}^{\rm inv}
+      +\delta_{K,E}^{\rm inv}
+    \bigr)
+  +\delta_{r,E}^{\rm inv}.
+  \label{eq:gauge-invariant-source-window-bound}
+\end{equation}
+The Cauchy estimates then extract connected correlators of the gauge
+observables \(O_a\).  Equation
+\eqref{eq:gauge-invariant-source-window-bound} is the place where a
+finite-regulator gauge computation becomes a reconstruction statement.  A
+finite list of Wilson-loop expectation values, or a beta function in a
+gauge-fixed coordinate chart, becomes reconstruction input only after the
+source radius, local coordinates, polymer tail, contact/source coordinates,
+and thermodynamic boundary tails have been controlled.
+
+The companion script
+\texttt{calculation-checks/lattice\_gauge\_blocking\_checks.py} includes the
+finite \(S_3\) check behind this paragraph: class functions of the blocked
+closed loop give source polynomials constant on coarse gauge orbits, while a
+source attached to a single open link fails the same invariance test.
+
 \begin{warning}[Finite gauge blocking is not a continuum Yang--Mills proof]
 \label{warn:finite-gauge-blocking-not-continuum-proof}
 Construction~\ref{constr:gauge-equivariant-path-blocking-rg} and the finite
