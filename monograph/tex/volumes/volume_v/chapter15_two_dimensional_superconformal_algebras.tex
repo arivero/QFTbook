@@ -764,20 +764,19 @@ Reindexing the trace by the spectral-flow bijection gives
 \(m_{\rm ell}=c/6\).  The \(\mu\)-shift is exactly the assumed
 charge-lattice scalar \(\zeta(\mu)\).
 
-\begin{quotedtheorem}[Elliptic genus as a Jacobi form]
-\label{qthm:elliptic-genus-jacobi-form}
-Assume, in addition to Definition~\ref{def:elliptic-genus-setup}, the spin
-modular-functor covariance of the Ramond trace, anomaly cancellation for the
-chosen \(R\)-symmetry background, and the charge-lattice multiplier specified
-above.  Then \(\varphi_{\mathcal C}(\tau,z)\) is a holomorphic weak Jacobi
-form of weight \(0\) and index \(m_{\rm ell}=c/6\), with the corresponding
-charge-lattice multiplier when the index is half-integral.  In particular,
-for
+\begin{hypothesis}[Spin modular covariance of the elliptic-genus trace]
+\label{hyp:elliptic-genus-spin-modular-covariance}
+In addition to Definition~\ref{def:elliptic-genus-setup}, assume that the
+Ramond trace with a flat left \(U(1)_R\) background is supplied by the spin
+modular functor of the full CFT, and that the chosen \(R\)-symmetry background
+has no anomaly except the level-\(c/3\) current-algebra determinant line
+displayed below.  In the trace trivialization, assume that the charge-lattice
+multiplier is the scalar \(\zeta(\mu)\) specified above and that, for
 \begin{equation}
   \gamma=\begin{pmatrix}a&b\\ c_\gamma&d\end{pmatrix}\in SL_2(\mathbb Z),
   \label{eq:elliptic-genus-modular-matrix}
 \end{equation}
-one has
+the modular change of spin elliptic curve and flat \(R\)-background acts by
 \begin{equation}
   \varphi_{\mathcal C}\!\left(
     \frac{a\tau+b}{c_\gamma\tau+d},
@@ -790,15 +789,28 @@ one has
   \varphi_{\mathcal C}(\tau,z)
   \label{eq:elliptic-genus-modular-law}
 \end{equation}
-up to that multiplier.  The modular law is a sewing theorem for the full spin
-CFT with an \(R\)-symmetry background; the left-moving mode algebra supplies
-only the spectral-flow part of this statement.
-\end{quotedtheorem}
+up to the corresponding spin and charge-lattice multiplier.  This is the
+full-CFT sewing input.  The left-moving mode algebra supplies the
+spectral-flow law \eqref{eq:elliptic-genus-elliptic-law}, while modular
+transport of the spin theory on the torus is part of the full spin modular
+functor datum.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:elliptic-genus-spin-modular-covariance}, the
+holomorphic function \(\varphi_{\mathcal C}(\tau,z)\), together with
+\eqref{eq:elliptic-genus-elliptic-law} and
+\eqref{eq:elliptic-genus-modular-law}, is a weak Jacobi form of weight \(0\)
+and index \(m_{\rm ell}=c/6\), with the charge-lattice multiplier when the
+index is half-integral.  This sentence unpacks the definition of a weak
+Jacobi form in the present normalization; the nontrivial CFT input is the
+spin modular covariance hypothesis, and the local algebra is the
+spectral-flow and determinant-line computation recorded here.
 
 The mechanism behind the exponential factor in
-\eqref{eq:elliptic-genus-modular-law} is local and should be separated from
-the global sewing theorem.  The trace is a partition function on the elliptic
-curve
+\eqref{eq:elliptic-genus-modular-law} is local.  The global sewing input is
+the spin modular covariance of Hypothesis
+\ref{hyp:elliptic-genus-spin-modular-covariance}.  The trace is a partition
+function on the elliptic curve
 \[
   E_\tau=\mathbb C/(\mathbb Z+\tau\mathbb Z)
 \]
@@ -833,15 +845,15 @@ transition function of this line is precisely the quadratic factor
 The elliptic law \eqref{eq:elliptic-genus-elliptic-law} and the modular law
 \eqref{eq:elliptic-genus-modular-law} therefore form one Jacobi-group
 automorphy system.  Its cocycle identity is an elementary consequence of
-matrix multiplication in \(SL_2(\mathbb Z)\); the theorem boundary is the
-existence of the spin modular functor and anomaly-cancelled \(R\)-background
-for the full interacting CFT, not the quadratic algebra of the transition
-function.
+matrix multiplication in \(SL_2(\mathbb Z)\).  The quadratic transition
+function is the local current-algebra part of the calculation.  The theorem
+boundary is the existence of the spin modular functor and anomaly-cancelled
+\(R\)-background for the full interacting CFT.
 
-The word ``weak'' in the quoted theorem has a coefficient meaning.  Under the
-compact/discrete-spectrum hypotheses of
-Definition~\ref{def:elliptic-genus-setup}, the Ramond supertrace has an
-absolutely convergent expansion on \(\operatorname{Im}\tau>0\) of the form
+The adjective ``weak'' refers to Fourier support.  Under the compact
+Ramond-trace hypotheses and the discrete-spectrum hypothesis in
+Definition~\ref{def:elliptic-genus-setup}, the supertrace converges absolutely
+on \(\operatorname{Im}\tau>0\) and has an expansion of the form
 \[
   \varphi_{\mathcal C}(\tau,z)
   =
@@ -866,8 +878,8 @@ combination
 is invariant along this spectral-flow orbit.  Thus the Jacobi symmetry
 identifies Fourier coefficients along fixed-discriminant charge orbits.  The
 weakness condition is the lower bound \(n\ge0\) supplied by the discrete
-Ramond spectrum after right-moving ground-state localization; it is not a
-claim about an arbitrary formal Laurent series.
+Ramond spectrum after right-moving ground-state localization; it is a
+statement about the controlled Ramond trace defined above.
 
 There is a finite Landau--Ginzburg shadow of the elliptic genus which can be
 checked before any infrared-flow theorem is invoked.  Suppose a

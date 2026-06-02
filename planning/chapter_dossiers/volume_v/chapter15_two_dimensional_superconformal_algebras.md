@@ -81,12 +81,13 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - Defines the elliptic genus under compact/discrete Ramond trace hypotheses,
   proves right-moving Ramond-ground-state localization from the zero-mode
   anticommutator, derives the elliptic spectral-flow law and index `c/6`,
-  states the Jacobi modular law as a full spin-CFT sewing theorem boundary,
-  displays the determinant-line mechanism behind the modular quadratic factor
-  from the `J J` OPE coefficient, derives the Fourier-coefficient
-  spectral-flow orbit relation and fixed-discriminant invariant, and records
-  the finite LG `chi_y` charge polynomial as a protected shadow rather than
-  an RG-flow theorem.
+  records spin modular covariance of the Ramond trace as the full spin-CFT
+  sewing hypothesis, derives the weak Jacobi-form conclusion from that
+  hypothesis together with spectral flow, displays the determinant-line
+  mechanism behind the modular quadratic factor from the `J J` OPE
+  coefficient, derives the Fourier-coefficient spectral-flow orbit relation
+  and fixed-discriminant invariant, and records the finite LG `chi_y` charge
+  polynomial as a protected shadow rather than an RG-flow theorem.
 - Defines quasihomogeneous LG chiral data only as a protected algebraic test
   for supersymmetric dynamics, not as an RG-flow construction.
 - Computes the `A`-series Jacobi ring, central charge, and chiral weights.
@@ -238,6 +239,13 @@ map without turning into a supersymmetric dynamics chapter.
   hypotheses.  The chapter now derives the spectral-flow orbit relation on
   Fourier coefficients, isolates the discriminant \(4m_{\rm ell}n-r^2\), and
   keeps the full spin modular-functor covariance as the theorem boundary.
+- 2026-06-02 elliptic-genus dequote pass: replaced the Jacobi-form
+  `quotedtheorem` wrapper by a spin modular-covariance hypothesis.  The
+  chapter now states the modular transport of the Ramond trace as the
+  full-CFT sewing input and treats the weak Jacobi-form statement as the
+  definitional consequence of that hypothesis plus the locally derived
+  spectral-flow law, determinant-line quadratic factor, and coefficient
+  orbit arithmetic.
 - 2026-05-27 compact chiral-ring pass: promoted the compact
   supersymmetric `SU(2)_k/U(1)` interface from matching chiral-primary
   weights to deriving the protected `A`-series ring
