@@ -4335,6 +4335,93 @@ positive-time test family in the directed observable germ.  Agreement of
 separated two-point entries, critical exponents, or a finite list of
 amplitudes does not supply the missing Gram windows.
 
+\begin{lemma}[Directed OS-positive form assembly]
+\label{lem:rg-directed-os-positive-form-assembly}
+Let
+\[
+  P_1\subset P_2\subset\cdots
+\]
+be finite-dimensional subspaces of the positive-time polynomial test algebra,
+with dense algebraic union \(P_\infty\) in the positive-time test topology
+used for OS reconstruction.  Let \(N_k\to\infty\).  For every
+\(N\le N_k\), suppose the regulated Schwinger hierarchy supplies a Hermitian
+sesquilinear form
+\[
+  Q_{k,N}:P_N\times P_N\longrightarrow\mathbb C
+\]
+such that:
+\begin{enumerate}
+  \item \(Q_{k,M}|_{P_N\times P_N}=Q_{k,N}\) whenever
+  \(N\le M\le N_k\);
+  \item \(Q_{k,N}(F,F)\ge0\) for every \(F\in P_N\);
+  \item after choosing any norm \(\|\cdot\|_N\) on \(P_N\),
+  \begin{equation}
+    \eta_{N,k}
+    =
+    \sup_{\ell\ge k}
+    \sup_{\substack{\|F\|_N\le1\\ \|G\|_N\le1}}
+    |Q_{k,N}(F,G)-Q_{\ell,N}(F,G)|
+    \longrightarrow0
+    \label{eq:directed-os-form-cauchy-control}
+  \end{equation}
+  for each fixed \(N\), with the supremum restricted to scales for which
+  \(N\le N_k,N_\ell\).
+\end{enumerate}
+Then there is a unique compatible positive Hermitian form
+\[
+  Q_\ast:P_\infty\times P_\infty\longrightarrow\mathbb C
+\]
+whose restriction to \(P_N\) is the limit of \(Q_{k,N}\) for every fixed
+\(N\).  If, in addition, the limiting forms obey the continuity estimate
+required by the OS chapter on a dense positive-time family, then \(Q_\ast\)
+extends to the positive-time OS pre-Hilbert form.  The lemma by itself does
+not supply strong continuity of the time-translation semigroup or the OS-II
+growth hypothesis.
+\end{lemma}
+
+\begin{proof}
+For fixed \(N\), the space of sesquilinear forms on \(P_N\) is finite
+dimensional and complete in the operator norm induced by \(\|\cdot\|_N\).
+Condition~\eqref{eq:directed-os-form-cauchy-control} therefore gives a
+limit form \(Q_{\ast,N}\) on \(P_N\).  Positivity passes to the limit because
+\[
+  Q_{\ast,N}(F,F)=\lim_{k\to\infty} Q_{k,N}(F,F)\ge0
+\]
+for each fixed \(F\in P_N\).  Hermiticity passes in the same way.
+
+If \(N\le M\), finite-scale compatibility gives
+\[
+  Q_{k,M}|_{P_N\times P_N}=Q_{k,N}
+\]
+for all sufficiently large \(k\).  Passing to the finite-dimensional limits
+on \(P_M\) and \(P_N\) gives
+\[
+  Q_{\ast,M}|_{P_N\times P_N}=Q_{\ast,N}.
+\]
+Thus one defines \(Q_\ast(F,G)=Q_{\ast,N}(F,G)\) whenever
+\(F,G\in P_N\); the preceding compatibility makes this independent of
+\(N\).  Positivity and Hermiticity on \(P_\infty\) follow by choosing a
+single \(P_N\) that contains the finitely many vectors involved.  The final
+extension statement is exactly the continuity step in OS reconstruction:
+without a bound in the positive-time topology, a positive algebraic form on
+the dense union need not define a continuous form on the desired test
+completion.
+\end{proof}
+
+The quantitative entrywise estimate
+\eqref{eq:rg-finite-os-positivity-bound} is one way to prove the Cauchy and
+positivity inputs of Lemma~\ref{lem:rg-directed-os-positive-form-assembly}.
+For a nested family with \(m_N\) basis vectors it must be used with a
+scale-dependent error schedule satisfying
+\[
+  \liminf_{k\to\infty}\bigl(\ell_{N,k}-m_N\epsilon_{N,k}\bigr)\ge0
+  \qquad\text{for each fixed }N.
+\]
+If the goal is a uniform lower bound on an increasing family, the right
+condition is correspondingly uniform in \(N\); a fixed entrywise tolerance is
+not enough.  This is the precise mathematical content behind the warning
+that finite OS Gram windows must be controlled as a directed family.
+
 \paragraph{When universality reconstructs the same local QFT.}
 Suppose a Wilsonian universality statement has a local-QFT-strength
 observable germ and that the normalized reconstructions of all microscopic

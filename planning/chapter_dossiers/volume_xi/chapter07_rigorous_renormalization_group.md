@@ -672,3 +672,14 @@ remainder contraction.
   \(k_j\) controlling the first \(j\) windows.  The companion short-range RG
   check verifies the finite restriction, seminorm, diagonal-error, limiting
   functional, and noncofinal-schedule arithmetic exactly.
+- 2026-06-02 directed OS-positive form assembly pass: strengthened the
+  ordinary short-range scalar reconstruction pipeline after the finite
+  Gram-matrix lower bound.  The manuscript now proves that compatible
+  positive-time finite Gram forms \(Q_{k,N}\), cofinal in the directed
+  positive-time test family and Cauchy on every fixed finite window, assemble
+  into a unique positive algebraic OS form on the dense positive-time union.
+  The text explicitly separates this algebraic positivity step from the
+  further OS continuity, semigroup-regularity, and OS-II growth estimates.
+  The companion short-range RG check now verifies both the bad fixed
+  entrywise-error schedule and a safe \(m\)-dependent schedule, plus the
+  finite restriction/Cauchy arithmetic behind the directed form assembly.

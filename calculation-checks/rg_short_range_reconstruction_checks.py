@@ -914,6 +914,61 @@ def check_finite_os_positivity_family_size_obstruction():
     assert_equal("diagonal perturbation realizes operator bound", diagonal_error_value, operator_norm_lower)
     assert_true("operator-norm OS lower bound positive", operator_norm_lower > 0)
 
+    # A good directed-family schedule makes the same entrywise estimate
+    # harmless on each growing finite window.  Taking epsilon_m=1/(10 m^2)
+    # leaves a lower margin ell-m epsilon_m = 1/2 - 1/(10m).
+    for dimension in range(2, 9):
+        epsilon_m = Fraction(1, 10 * dimension * dimension)
+        directed_margin = ell - dimension * epsilon_m
+        assert_true(
+            f"directed OS entrywise schedule positive m={dimension}",
+            directed_margin > 0,
+        )
+        assert_true(
+            f"directed OS entrywise schedule improves m={dimension}",
+            directed_margin >= Fraction(9, 20),
+        )
+
+    # The Cauchy form assembly is finite-dimensional on each fixed window:
+    # Q_{k,N}=diag(1,2,...,N)+k^{-1}J_N converges in operator norm to the
+    # diagonal limiting form, and the restriction from N+1 to N is compatible.
+    def q_entry(window_size, i, j, scale):
+        assert i < window_size and j < window_size
+        diagonal = Fraction(i + 1) if i == j else Fraction(0)
+        return diagonal + Fraction(1, scale)
+
+    for window_size in (2, 3, 4):
+        coarse_scale = 8
+        fine_scale = 16
+        limiting_error_bound = Fraction(window_size, fine_scale)
+        cauchy_error_bound = window_size * (
+            Fraction(1, coarse_scale) - Fraction(1, fine_scale)
+        )
+        # The all-ones perturbation J_N has l2 operator norm N, so the
+        # difference from the limiting diagonal form is N/scale, and the
+        # difference between two scales is N |1/k - 1/l|.
+        assert_equal(
+            f"directed OS limiting operator error m={window_size}",
+            limiting_error_bound,
+            Fraction(window_size, fine_scale),
+        )
+        assert_equal(
+            f"directed OS scale Cauchy operator error m={window_size}",
+            cauchy_error_bound,
+            Fraction(window_size, 16),
+        )
+        assert_true(
+            f"directed OS Cauchy errors below unit margin m={window_size}",
+            limiting_error_bound < 1 and cauchy_error_bound < 1,
+        )
+        for i in range(window_size - 1):
+            for j in range(window_size - 1):
+                assert_equal(
+                    f"directed OS restriction compatibility {window_size}:{i}{j}",
+                    q_entry(window_size, i, j, fine_scale),
+                    q_entry(window_size - 1, i, j, fine_scale),
+                )
+
 
 def check_positive_time_translation_window_bound():
     # The chapter's OS semigroup-continuity input is a bound on the

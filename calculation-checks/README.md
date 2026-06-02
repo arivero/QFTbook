@@ -722,7 +722,10 @@ Current checks:
   finite OS-positivity bound: if a regulated Gram matrix has a lower
   spectral bound and the limiting window has a declared entrywise error, the
   limiting Gram matrix retains the quantified positive lower bound.  It also
-  checks the complementary family-size obstruction by an all-ones perturbation:
+  checks the complementary family-size obstruction by an all-ones perturbation,
+  the safe \(m\)-dependent entrywise-error schedule for directed positive-time
+  Gram families, and the finite restriction/Cauchy arithmetic used in the
+  directed OS-positive form assembly lemma.  A
   fixed entrywise tolerance loses positivity once the \(m\epsilon\) term
   overwhelms the regulated lower bound, while an operator-norm estimate has the
   dimension-independent lower bound stated in the chapter.  It also checks the
