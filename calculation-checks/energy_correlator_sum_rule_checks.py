@@ -4,20 +4,30 @@
 The script verifies the eventwise algebra behind the nonperturbative
 energy-energy-correlator sum rules and the asymptotic multiplication-operator
 model in the QCD chapter.  It does not model a cross section; averaging
-positive event weights preserves these identities.
+positive event weights preserves these identities.  It also checks the
+finite distinction between detector contact strata and ensemble-connected
+cumulants.
 """
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from fractions import Fraction
+from math import factorial
 
 Vector = tuple[Fraction, Fraction, Fraction]
 Particle = tuple[Fraction, Vector]
+WeightedEvent = tuple[Fraction, list[Particle]]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(name)
 
 
 def dot(a: Vector, b: Vector) -> Fraction:
@@ -69,6 +79,13 @@ def detector_product_value(
     return energy_detector_value(event, left_values) * energy_detector_value(event, right_values)
 
 
+def detector_product_values(event: list[Particle], test_values: list[list[Fraction]]) -> Fraction:
+    result = Fraction(1)
+    for values in test_values:
+        result *= energy_detector_value(event, values)
+    return result
+
+
 def product_measure_pairing(
     event: list[Particle],
     left_values: list[Fraction],
@@ -91,6 +108,83 @@ def diagonal_pairing(
     if len(event) != len(left_values) or len(event) != len(right_values):
         raise ValueError("one detector-test value is required for each particle")
     return sum(z * z * f * g for (z, _), f, g in zip(event, left_values, right_values))
+
+
+def triple_contact_partition(
+    event: list[Particle],
+    f_values: list[Fraction],
+    g_values: list[Fraction],
+    h_values: list[Fraction],
+) -> dict[str, Fraction]:
+    if len(event) != len(f_values) or len(event) != len(g_values) or len(event) != len(h_values):
+        raise ValueError("one detector-test value is required for each particle")
+
+    all_distinct = Fraction(0)
+    fg_contact = Fraction(0)
+    fh_contact = Fraction(0)
+    gh_contact = Fraction(0)
+    all_contact = Fraction(0)
+    for r, ((z_r, _), f_r, g_r, h_r) in enumerate(zip(event, f_values, g_values, h_values)):
+        all_contact += z_r**3 * f_r * g_r * h_r
+        for s, ((z_s, _), f_s, g_s, h_s) in enumerate(zip(event, f_values, g_values, h_values)):
+            for t, ((z_t, _), f_t, g_t, h_t) in enumerate(zip(event, f_values, g_values, h_values)):
+                term = z_r * z_s * z_t * f_r * g_s * h_t
+                if r == s == t:
+                    continue
+                if r == s:
+                    fg_contact += term
+                elif r == t:
+                    fh_contact += term
+                elif s == t:
+                    gh_contact += term
+                else:
+                    all_distinct += term
+    return {
+        "all_distinct": all_distinct,
+        "fg_contact": fg_contact,
+        "fh_contact": fh_contact,
+        "gh_contact": gh_contact,
+        "all_contact": all_contact,
+    }
+
+
+def set_partitions(items: tuple[int, ...]) -> Iterable[tuple[tuple[int, ...], ...]]:
+    if not items:
+        yield ()
+        return
+    first, *rest = items
+    for partition in set_partitions(tuple(rest)):
+        yield ((first,),) + partition
+        for block_index, block in enumerate(partition):
+            new_block = tuple(sorted((first,) + block))
+            yield partition[:block_index] + (new_block,) + partition[block_index + 1 :]
+
+
+def raw_ensemble_moment(
+    ensemble: list[WeightedEvent],
+    test_values_by_event: list[list[list[Fraction]]],
+    indices: tuple[int, ...],
+) -> Fraction:
+    total = Fraction(0)
+    for event_index, (weight, event) in enumerate(ensemble):
+        selected_tests = [test_values_by_event[event_index][i] for i in indices]
+        total += weight * detector_product_values(event, selected_tests)
+    return total
+
+
+def ensemble_cumulant(
+    ensemble: list[WeightedEvent],
+    test_values_by_event: list[list[list[Fraction]]],
+    indices: tuple[int, ...],
+) -> Fraction:
+    total = Fraction(0)
+    for partition in set_partitions(indices):
+        coefficient = Fraction((-1) ** (len(partition) - 1) * factorial(len(partition) - 1))
+        block_product = Fraction(1)
+        for block in partition:
+            block_product *= raw_ensemble_moment(ensemble, test_values_by_event, block)
+        total += coefficient * block_product
+    return total
 
 
 def endpoint_delta_solution(open_zeroth: Fraction, open_first: Fraction) -> tuple[Fraction, Fraction]:
@@ -208,10 +302,81 @@ def check_endpoint_matching_delta_ledger() -> None:
     )
 
 
+def check_connected_cumulants_do_not_remove_detector_contacts() -> None:
+    event_a: list[Particle] = [
+        (Fraction(1, 2), (Fraction(1), Fraction(0), Fraction(0))),
+        (Fraction(1, 2), (Fraction(-1), Fraction(0), Fraction(0))),
+    ]
+    event_b: list[Particle] = [
+        (Fraction(1, 4), (Fraction(1), Fraction(0), Fraction(0))),
+        (Fraction(1, 3), (Fraction(0), Fraction(1), Fraction(0))),
+        (Fraction(5, 12), (Fraction(-3, 5), Fraction(-4, 5), Fraction(0))),
+    ]
+    ensemble: list[WeightedEvent] = [(Fraction(2, 5), event_a), (Fraction(3, 5), event_b)]
+    tests_by_event = [
+        [
+            [Fraction(2, 3), Fraction(-5, 7)],
+            [Fraction(11, 13), Fraction(3, 5)],
+            [Fraction(-7, 17), Fraction(19, 23)],
+        ],
+        [
+            [Fraction(2, 5), Fraction(-1, 7), Fraction(3, 11)],
+            [Fraction(-5, 13), Fraction(4, 9), Fraction(7, 15)],
+            [Fraction(6, 17), Fraction(-2, 19), Fraction(5, 23)],
+        ],
+    ]
+
+    moment_01 = raw_ensemble_moment(ensemble, tests_by_event, (0, 1))
+    product_0_1 = raw_ensemble_moment(ensemble, tests_by_event, (0,)) * raw_ensemble_moment(
+        ensemble, tests_by_event, (1,)
+    )
+    assert_equal(
+        "second cumulant subtracts ensemble factorization",
+        ensemble_cumulant(ensemble, tests_by_event, (0, 1)),
+        moment_01 - product_0_1,
+    )
+
+    m0 = raw_ensemble_moment(ensemble, tests_by_event, (0,))
+    m1 = raw_ensemble_moment(ensemble, tests_by_event, (1,))
+    m2 = raw_ensemble_moment(ensemble, tests_by_event, (2,))
+    m01 = raw_ensemble_moment(ensemble, tests_by_event, (0, 1))
+    m02 = raw_ensemble_moment(ensemble, tests_by_event, (0, 2))
+    m12 = raw_ensemble_moment(ensemble, tests_by_event, (1, 2))
+    m012 = raw_ensemble_moment(ensemble, tests_by_event, (0, 1, 2))
+    assert_equal(
+        "third cumulant partition formula",
+        ensemble_cumulant(ensemble, tests_by_event, (0, 1, 2)),
+        m012 - m01 * m2 - m02 * m1 - m12 * m0 + 2 * m0 * m1 * m2,
+    )
+
+    deterministic_ensemble: list[WeightedEvent] = [(Fraction(1), event_b)]
+    deterministic_tests = [tests_by_event[1]]
+    assert_equal(
+        "deterministic second ensemble cumulant vanishes",
+        ensemble_cumulant(deterministic_ensemble, deterministic_tests, (0, 1)),
+        Fraction(0),
+    )
+    assert_equal(
+        "deterministic third ensemble cumulant vanishes",
+        ensemble_cumulant(deterministic_ensemble, deterministic_tests, (0, 1, 2)),
+        Fraction(0),
+    )
+
+    triple_parts = triple_contact_partition(event_b, *tests_by_event[1])
+    reconstructed = sum(triple_parts.values(), Fraction(0))
+    assert_equal(
+        "triple detector contact-stratum partition",
+        reconstructed,
+        detector_product_values(event_b, tests_by_event[1]),
+    )
+    assert_true("same-hadron triple contact remains in a deterministic event", triple_parts["all_contact"] != 0)
+
+
 def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
     check_endpoint_matching_delta_ledger()
+    check_connected_cumulants_do_not_remove_detector_contacts()
     print("All finite-event energy-correlator detector-algebra checks passed.")
 
 

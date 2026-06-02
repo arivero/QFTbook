@@ -7619,6 +7619,76 @@ continuous multiparticle phase space.  This formula is nonperturbative: all
 states in \(X\) are physical hadronic states, and the operator being measured
 is built from \(T^{\mu\nu}\).
 
+\paragraph{Connected cumulants and contact strata.}
+Let \(\mathbb P_\Psi\) denote the probability measure on outgoing
+configurations induced by the normalized state \(\Psi\) in the multiplication
+model.  For bounded detector tests \(f_1,\ldots,f_k\), put
+\[
+  X_j(Y):=\mathcal E_Y(f_j)
+  =
+  \int_{S^2} f_j\,\dd\mu_Y .
+\]
+Then \(\mathcal G_k(f_1,\ldots,f_k;\Psi)\) is the raw moment
+\[
+  \mathbb E_{\mathbb P_\Psi}\!\left[X_1\cdots X_k\right].
+\]
+The connected energy correlator in this event-ensemble sense is the cumulant
+\begin{equation}
+  \mathcal G_k^{\rm conn}(f_1,\ldots,f_k;\Psi)
+  =
+  \sum_{\pi\in\Pi_k}
+  (-1)^{|\pi|-1}(|\pi|-1)!
+  \prod_{B\in\pi}
+  \mathcal G_{|B|}\bigl((f_i)_{i\in B};\Psi\bigr),
+  \label{eq:qcd-energy-correlator-cumulant}
+\end{equation}
+where \(\Pi_k\) is the set of set partitions of
+\(\{1,\ldots,k\}\).  Thus, for example,
+\[
+  \mathcal G_2^{\rm conn}(f,g)
+  =
+  \mathcal G_2(f,g)-\mathcal G_1(f)\mathcal G_1(g),
+\]
+and \(\mathcal G_3^{\rm conn}\) is obtained by subtracting the three
+one-block--two-block products and adding twice the product of the three
+one-point functions.  This is a subtraction of event-to-event factorization
+in the probability distribution of final states.
+
+It is a different operation from removing coincident-detector contacts.  For
+a fixed event \(Y\), the product measure \(\mu_Y^{\otimes k}\) decomposes
+into strata labeled by coincidences among detector labels.  Already for three
+detectors,
+\begin{equation}
+\begin{aligned}
+  \mathcal E_Y(f)\mathcal E_Y(g)\mathcal E_Y(h)
+  &=
+  \sum_{\substack{r,s,t\in Y\\ r,s,t\ {\rm distinct}}}
+    E_rE_sE_t f_r g_s h_t                                      \\
+  &\quad+
+  \sum_{\substack{r,t\in Y\\ r\neq t}}
+    E_r^2E_t f_r g_r h_t
+  +
+  \sum_{\substack{r,s\in Y\\ r\neq s}}
+    E_r^2E_s f_r g_s h_r                                      \\
+  &\quad+
+  \sum_{\substack{r,s\in Y\\ r\neq s}}
+    E_rE_s^2 f_r g_s h_s
+  +
+  \sum_{r\in Y}E_r^3 f_r g_r h_r ,
+\end{aligned}
+\label{eq:qcd-three-detector-contact-strata}
+\end{equation}
+where \(E_r=p_r^0\) and \(f_r=f(\widehat{\mathbf p}_r)\), etc.  The last
+four terms are diagonal contact strata of the detector product; they are
+present before the average over events is taken.  If
+\(\mathbb P_\Psi\) is concentrated on a single event, all ensemble cumulants
+of order \(k\geq2\) vanish, but the diagonal terms in
+\eqref{eq:qcd-three-detector-contact-strata} remain in the raw detector
+product.  Conversely, deleting diagonal strata produces a separated-detector
+measurement prescription, not an ensemble-connected correlator.  A calculation
+that quotes a ``connected'' or ``contact-subtracted'' energy correlator must
+therefore state which of these two operations is being performed.
+
 \paragraph{Soft and collinear continuity of smeared energy flow.}
 Let \(f\in C^1(S^2)\).  Suppose a final-state calorimetric measure
 \(\mu_X\) is changed either by adding one particle of energy \(\varepsilon\) at

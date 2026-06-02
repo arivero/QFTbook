@@ -402,6 +402,11 @@ The chapter must define and derive:
      moment in a color-singlet center-of-mass frame; removing the contact term
      removes the weight \(\sum_r z_r^2\) from the separated-angle
      distribution.
+19ab. Connected energy correlators are cumulants of detector random variables
+      over the event ensemble.  They are distinct from contact-subtracted
+      separated-detector observables: diagonal strata of
+      \(\mu_X^{\otimes k}\) remain inside a fixed event even when ensemble
+      cumulants vanish for a deterministic final state.
 19b. In the small-angle endpoint, the first resolved real-emission EEC
      coefficient is obtained by multiplying the final-state splitting
      probability by the ordered detector weight \(2x(1-x)\).  This weight
@@ -713,6 +718,13 @@ The chapter must define and derive:
   when they are left as matching coordinates, and extended
   `calculation-checks/energy_correlator_sum_rule_checks.py` to verify the
   finite rational endpoint-coordinate algebra.
+- 2026-06-02 issue #519 connected/contact pass: inserted the detector-algebra
+  distinction between ensemble-connected cumulants and coincident-detector
+  contact strata.  The chapter now gives the partition formula for connected
+  energy-correlator cumulants and the three-detector contact-stratum
+  decomposition of the eventwise product measure; the finite-event companion
+  script verifies that deterministic ensemble cumulants can vanish while
+  diagonal detector contacts remain nonzero.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative
