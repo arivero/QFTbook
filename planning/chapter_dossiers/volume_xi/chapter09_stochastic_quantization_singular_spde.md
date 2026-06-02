@@ -237,6 +237,9 @@ data.
 - `Z_{n,m,u}^{XY}`: dyadic-cutoff scalar tested \(XY\) coordinate used to
   isolate the ultraviolet shell gain in the cutoff increment
   \(Z_{n+1,m,u}^{XY}-Z_{n,m,u}^{XY}\).
+- `Z_{\epsilon,\delta,z}^{X^2Y,\ge 3}`: the fifth- plus third-chaos scalar
+  tested part of the locally subtracted \(X^2Y\) coordinate, separated from
+  the first-chaos covariance-increment sector.
 - `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
@@ -666,6 +669,16 @@ data.
   remaining obligation is the regulator-specific projective kernel estimate
   that promotes the scalar \(XY\) shell gain, and the corresponding \(X^2Y\)
   estimates, to those abstract hypotheses.
+- Proves the scalar tested high-chaos \(X^2Y\) estimate separately from the
+  locally subtracted first-chaos sector.  The three fifth-chaos graphs and
+  two third-chaos graphs have total singular degree
+  \(Q(|V|-2)+1=11\); fifth-chaos proper subgraphs have minimum deficit \(2\),
+  third-chaos proper subgraphs have minimum deficit \(1\), and all
+  relative-scale sums are geometric.  The remaining overall-scale sum gives
+  \(\mathbb E|Z_{\epsilon,\delta,z}^{X^2Y,\ge3}|^2=O(\delta^{-1})\), hence
+  \(\|\delta^{1/2+5\kappa}Z_{\epsilon,\delta,z}^{X^2Y,\ge3}\|_{L^p}
+  =O(\delta^{5\kappa})\).  The only logarithmic slack in scalar \(X^2Y\)
+  control now comes from the first-chaos covariance-increment estimate.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -1222,6 +1235,16 @@ data maps.
   \(\widehat A_0=13,\widehat A_1=11\).  This pass closes the abstract
   nonlinear coordinate-to-shell bridge; it does not claim the
   regulator-specific \(E_r'\)-projective kernel estimates.
+- 2026-06-02 issue #608/#582 \(X^2Y\) high-chaos scalar pass: added the
+  finite graph-power-counting estimate for the fifth- and third-chaos pieces
+  of the locally subtracted \(X^2Y\) coordinate.  The pass displays all five
+  covariance multigraphs, proves total degree \(11=Q(|V|-2)+1\), checks the
+  proper-subgraph deficits, and derives the sharp scalar variance
+  \(O(\delta^{-1})\).  The calculation companion verifies the graph
+  arithmetic and normalized \(5\kappa\) slack exactly.  This closes a scalar
+  high-chaos input beneath the nonlinear \(\Pi\)-coordinate criterion; the
+  full regulator-specific \(E_r'\)-projective kernel estimates and invariant
+  law/OS assembly remain open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

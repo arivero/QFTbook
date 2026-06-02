@@ -1757,6 +1757,114 @@ def check_xy_tested_graph_power_counting_arithmetic():
         )
 
 
+def check_x2y_high_chaos_graph_power_counting_arithmetic():
+    # Fifth- and third-chaos X2Y covariance graphs have one extra singular
+    # degree beyond the marginal XY graphs.  This produces variance scaling
+    # delta^{-1}, matching the true target regularity -1/2 of the locally
+    # subtracted X2Y coordinate.  Proper subgraphs still have positive
+    # deficits, so no relative-scale divergence is hidden in the estimate.
+    qdim = 5
+    graphs = {
+        "X2Y fifth chaos A": (
+            [
+                ("a", "b", 3),
+                ("ap", "bp", 3),
+                ("a", "ap", 1),
+                ("a", "ap", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            2,
+        ),
+        "X2Y fifth chaos B": (
+            [
+                ("a", "b", 3),
+                ("ap", "bp", 3),
+                ("a", "ap", 1),
+                ("a", "bp", 1),
+                ("b", "ap", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            2,
+        ),
+        "X2Y fifth chaos C": (
+            [
+                ("a", "b", 3),
+                ("ap", "bp", 3),
+                ("a", "bp", 1),
+                ("a", "bp", 1),
+                ("b", "ap", 1),
+                ("b", "ap", 1),
+                ("b", "bp", 1),
+            ],
+            2,
+        ),
+        "X2Y third chaos A": (
+            [
+                ("a", "b", 3),
+                ("a", "b", 1),
+                ("ap", "bp", 3),
+                ("ap", "bp", 1),
+                ("a", "ap", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            1,
+        ),
+        "X2Y third chaos B": (
+            [
+                ("a", "b", 3),
+                ("a", "b", 1),
+                ("ap", "bp", 3),
+                ("ap", "bp", 1),
+                ("a", "bp", 1),
+                ("b", "ap", 1),
+                ("b", "bp", 1),
+            ],
+            1,
+        ),
+    }
+    vertices = ["a", "b", "ap", "bp"]
+
+    def subset_deficit(edges, subset):
+        subset = set(subset)
+        internal = sum(weight for u, v, weight in edges if u in subset and v in subset)
+        return qdim * (len(subset) - 1) - internal
+
+    from itertools import combinations
+
+    for name, (edges, expected_min_deficit) in graphs.items():
+        total_degree = sum(weight for _, _, weight in edges)
+        assert_equal(
+            total_degree,
+            qdim * (len(vertices) - 2) + 1,
+            f"{name} total degree",
+        )
+        deficits = []
+        for size in range(2, len(vertices)):
+            for subset in combinations(vertices, size):
+                deficit = subset_deficit(edges, subset)
+                deficits.append(deficit)
+                if not deficit > 0:
+                    raise AssertionError(f"{name} has nonpositive proper-subgraph deficit {subset}")
+        assert_equal(
+            min(deficits),
+            expected_min_deficit,
+            f"{name} minimum proper-subgraph deficit",
+        )
+
+    kappa = Fraction(1, 20)
+    variance_exponent = -Fraction(1)
+    l2_exponent = variance_exponent / 2
+    normalization = Fraction(1, 2) + 5 * kappa
+    normalized_slack = normalization + l2_exponent
+    assert_equal(l2_exponent, -Fraction(1, 2), "X2Y high-chaos L2 exponent")
+    assert_equal(normalization, Fraction(3, 4), "X2Y high-chaos model normalization")
+    assert_equal(normalized_slack, 5 * kappa, "X2Y high-chaos normalized slack")
+
+
 def check_xy_tested_coordinate_logarithmic_slack_arithmetic():
     # Proposition spde-xy-tested-coordinate-logarithmic-scale-bound converts
     # the scalar graph estimate E|Z_delta|^2 <= C_eta delta^(-eta) into the
@@ -2258,6 +2366,7 @@ def main():
     check_gamma_coordinate_heat_input_arithmetic()
     check_nonlinear_pi_coordinate_kernel_input_arithmetic()
     check_xy_tested_graph_power_counting_arithmetic()
+    check_x2y_high_chaos_graph_power_counting_arithmetic()
     check_xy_tested_coordinate_logarithmic_slack_arithmetic()
     check_xy_tested_coordinate_edge_arithmetic()
     check_xy_tested_coordinate_cutoff_shell_arithmetic()
@@ -2272,7 +2381,7 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

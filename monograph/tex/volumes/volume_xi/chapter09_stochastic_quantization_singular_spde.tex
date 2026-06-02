@@ -9463,11 +9463,134 @@ therefore bounds its \(L^p\)-norm by a constant times the square root of
 \eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized}.
 \end{proof}
 
+\begin{proposition}[Scalar tested high-chaos \(X^2Y\) bound]
+\label{prop:spde-x2y-high-chaos-tested-coordinate-bound}
+Let \(Q=5\).  Use the same dyadic heat and covariance block hypotheses as in
+Proposition~\ref{prop:spde-xy-tested-graph-log-bound}.  Consider the five
+four-vertex multigraphs on \(V=\{a,b,a',b'\}\) which occur in the fifth- and
+third-chaos parts of
+\eqref{eq:spde-x2y-kernel-norm-integrals}:
+\[
+\begin{array}{ll}
+  \mathcal H_{5,A}:&
+  (a,b)_3,\ (a',b')_3,\ 2(a,a')_1,\ 3(b,b')_1,\\[0.25em]
+  \mathcal H_{5,B}:&
+  (a,b)_3,\ (a',b')_3,\ (a,a')_1,\ (a,b')_1,\
+  (b,a')_1,\ 2(b,b')_1,\\[0.25em]
+  \mathcal H_{5,C}:&
+  (a,b)_3,\ (a',b')_3,\ 2(a,b')_1,\ 2(b,a')_1,\ (b,b')_1,\\[0.25em]
+  \mathcal H_{3,A}:&
+  (a,b)_3,\ (a,b)_1,\ (a',b')_3,\ (a',b')_1,\
+  (a,a')_1,\ 2(b,b')_1,\\[0.25em]
+  \mathcal H_{3,B}:&
+  (a,b)_3,\ (a,b)_1,\ (a',b')_3,\ (a',b')_1,\
+  (a,b')_1,\ (b,a')_1,\ (b,b')_1 .
+\end{array}
+\]
+The subscript again denotes the singular exponent of the edge.  For every
+one of these graphs,
+\begin{equation}
+  \sum_{e\in E(\mathcal H)}s_e
+  =
+  Q(|V|-2)+1=11 .
+  \label{eq:spde-x2y-high-chaos-graph-total-degree}
+\end{equation}
+Every proper subset \(W\subsetneq V\) with \(|W|\geq2\) obeys
+\[
+  s_{\mathcal H}(W)<Q(|W|-1).
+\]
+The minimum proper-subgraph deficit is \(2\) for each fifth-chaos graph and
+\(1\) for each third-chaos graph.
+
+Consequently, if \(\chi_z^\delta\) is an \(L^1\)-normalized test density
+supported in a parabolic ball of radius \(O(\delta)\), then the scalar
+covariance integrals belonging to the fifth- and third-chaos \(X^2Y\) kernels
+obey
+\begin{equation}
+  |I_\delta^{X^2Y,\geq3}|
+  \leq C\delta^{-1},
+  \qquad 0<\delta\leq1 .
+  \label{eq:spde-x2y-high-chaos-graph-power-bound}
+\end{equation}
+Equivalently, if
+\[
+  Z_{\epsilon,\delta,z}^{X^2Y,\geq3}(\varphi)
+  =
+  I_5(F_{X^2Y,5}^{\chi_z^\delta})
+  +
+  I_3(F_{X^2Y,3}^{\chi_z^\delta}),
+\]
+then, uniformly in the cutoff and for \(z\) in a fixed compact set,
+\begin{equation}
+  \mathbb E
+  \left|
+    Z_{\epsilon,\delta,z}^{X^2Y,\geq3}(\varphi)
+  \right|^2
+  \leq C\delta^{-1}.
+  \label{eq:spde-x2y-high-chaos-tested-l2}
+\end{equation}
+For every even \(p\geq2\),
+\begin{equation}
+  \left\|
+    \delta^{1/2+5\kappa}
+    Z_{\epsilon,\delta,z}^{X^2Y,\geq3}(\varphi)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_p\delta^{5\kappa}.
+  \label{eq:spde-x2y-high-chaos-normalized-slack}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The edge lists give total degree \(3+3+5=11\) for the three fifth-chaos
+graphs and \(3+1+3+1+3=11\) for the two third-chaos graphs, which proves
+\eqref{eq:spde-x2y-high-chaos-graph-total-degree}.  For two-vertex subsets,
+the largest internal singular exponent is \(3\) in the fifth-chaos graphs and
+\(4\) in the third-chaos graphs.  These give deficits \(2\) and \(1\),
+respectively, relative to \(Q(|W|-1)=5\).  For three-vertex subsets,
+inspection of the displayed edge lists gives maximal internal singular
+exponent \(6\) in all five graphs, hence deficit \(4\) relative to
+\(Q(|W|-1)=10\).  This proves the strict proper-subgraph inequalities and the
+stated minimum deficits.
+
+The dyadic sector argument uses the same multiscale sector decomposition as
+the \(XY\) graph bound above.  The strict proper-subgraph deficits make every
+relative-scale gap geometrically summable by the multiscale sector
+summability theorem.  After the relative sums have been performed, the
+remaining overall scale has exponent one, because the total graph degree is
+\(Q(|V|-2)+1\) rather than \(Q(|V|-2)\).  If
+\(2^{-M-1}<\delta\leq2^{-M}\), the relevant overall scales therefore
+contribute
+\[
+  \sum_{0\leq n\leq M+O(1)}2^n\leq C2^M\leq C\delta^{-1},
+\]
+and scales larger than \(M+O(1)\) are excluded by the test supports together
+with the same relative-cluster estimates.  This proves
+\eqref{eq:spde-x2y-high-chaos-graph-power-bound}.
+
+Insert \(\chi=\chi_z^\delta\) in the fifth- and third-chaos lines of
+\eqref{eq:spde-x2y-kernel-norm-integrals}.  The fixed numerical coefficients
+and the chaos factors \(5!\) and \(3!\) are absorbed into \(C\), and
+\eqref{eq:spde-nonlinear-coordinate-second-moments-from-kernels} gives
+\eqref{eq:spde-x2y-high-chaos-tested-l2}.  The variable
+\(Z_{\epsilon,\delta,z}^{X^2Y,\geq3}\) is a finite sum of homogeneous Wiener
+chaoses of orders \(5\) and \(3\); the finite-chaos moment estimate converts
+the \(L^2\)-bound to \(L^p\).  Multiplication by the model normalization
+\(\delta^{1/2+5\kappa}\), corresponding to true target regularity
+\(-1/2\) and assigned regularity \(-1/2-5\kappa\), gives
+\eqref{eq:spde-x2y-high-chaos-normalized-slack}.
+\end{proof}
+
 \begin{remark}[Scalar shell gain and projective cutoff input]
 \label{rem:spde-xy-scalar-shell-versus-projective-cutoff}
 Estimate~\eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized} is a
 scale-separated scalar Cauchy estimate.  It identifies where the ultraviolet
 shell gain enters the \(XY\) graph analysis.
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound} supplies
+the parallel scalar base estimate for the fifth- and third-chaos pieces of
+\(X^2Y\).  The remaining \(X^2Y\) first-chaos component is different: its
+local subtraction produces covariance increments, treated below in
+Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound}.
 Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} then
 converts this scalar factor into a scale-summed cutoff rate whenever the
 normalization slack exceeds the parameter entropy.  The projective
@@ -10095,6 +10218,14 @@ For every \(\eta>0\),
 \]
 which gives \eqref{eq:spde-first-chaos-normalized-log-loss}.
 \end{proof}
+
+Together with
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}, this
+identifies the scalar base estimate for the whole locally subtracted
+\(X^2Y\) coordinate.  The fifth- and third-chaos pieces have the sharp
+\(\delta^{-1}\) variance dictated by target regularity \(-1/2\); only the
+first-chaos covariance-increment sector consumes the logarithmic slack that
+is recorded in the projective \(X^2Y\) input.
 
 \begin{corollary}[Local \(KG^2\) shell bound in dynamic \(\Phi^4_3\)]
 \label{cor:spde-local-kg2-shell-lone-bound}
