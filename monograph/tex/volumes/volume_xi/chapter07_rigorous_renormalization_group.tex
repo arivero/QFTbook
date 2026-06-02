@@ -2628,6 +2628,82 @@ functional-RG fixed points should be read as theorem-level benchmarks or
 computational evidence in their own frameworks, not as a proof of the
 ordinary short-range Wilson--Fisher QFT.
 
+\paragraph{Transfer to a projective observable germ.}
+The comparison must be made window by window, because a continuum local-QFT
+claim is a projective statement about all reconstruction windows.  Fix a
+finite observation window \(\alpha\) in the directed family of the short-range
+target.  Suppose the auxiliary theorem supplies a corresponding auxiliary
+window and an auxiliary limiting datum \(O^{\rm aux}_{\ast,\alpha}\) such
+that, after its normalization,
+\begin{equation}
+  p_\alpha^{\rm sr}\!\left(
+    \Psi\,\operatorname{Rec}^{\rm aux}_{\alpha,k}(y_0)
+    -
+    \Psi O^{\rm aux}_{\ast,\alpha}
+  \right)
+  \leq
+  a_{\alpha,k}.
+  \label{eq:auxiliary-window-convergence-error}
+\end{equation}
+Assume further that the comparison of observable reconstructions has the
+finite-window defect
+\begin{equation}
+  p_\alpha^{\rm sr}\!\left(
+    \operatorname{Rec}^{\rm sr}_{\alpha,k}(\Phi y_0)
+    -
+    \Psi\,\operatorname{Rec}^{\rm aux}_{\alpha,k}(y_0)
+  \right)
+  \leq
+  \varepsilon_{\alpha,k},
+  \label{eq:auxiliary-target-observable-window-defect}
+\end{equation}
+and that the short-range reconstruction map is Lipschitz on the target tube:
+\begin{equation}
+  p_\alpha^{\rm sr}\!\left(
+    \operatorname{Rec}^{\rm sr}_{\alpha,k}(x_0)
+    -
+    \operatorname{Rec}^{\rm sr}_{\alpha,k}(\Phi y_0)
+  \right)
+  \leq
+  L_{\alpha,k}\|x_k-\Phi(y_k)\|_{\mathcal B_{\rm sr}} .
+  \label{eq:short-range-window-lipschitz-orbit-error}
+\end{equation}
+Here \(x_0\) is the actual short-range initial point whose window is being
+claimed; in the simplest transferred construction \(x_0=\Phi y_0\), but the
+separate notation is useful when the target microscopic regulator is only
+close to the transferred auxiliary initial condition.  If the allowed
+normalization of the short-range window differs from the pushed-forward
+auxiliary normalization by at most \(n_{\alpha,k}\), the triangle inequality
+and \eqref{eq:auxiliary-short-range-telescoping-bound} give the finite
+projective-window transfer certificate
+\begin{equation}
+\begin{aligned}
+  p_\alpha^{\rm sr}\!\left(
+    g_{\rm sr}\operatorname{Rec}^{\rm sr}_{\alpha,k}(x_0)
+    -
+    \Psi O^{\rm aux}_{\ast,\alpha}
+  \right)
+  &\leq
+  n_{\alpha,k}
+  +a_{\alpha,k}
+  +\varepsilon_{\alpha,k}                                      \\
+  &\quad+
+  L_{\alpha,k}
+  \sum_{j=0}^{k-1}
+  \left(\prod_{\ell=j+1}^{k-1}M_\ell\right)\delta_j(y_0).
+\end{aligned}
+  \label{eq:auxiliary-target-projective-window-certificate}
+\end{equation}
+Thus an auxiliary fixed point transfers to the ordinary short-range
+observable germ only after the right-hand side of
+\eqref{eq:auxiliary-target-projective-window-certificate} tends to zero for
+every window \(\alpha\) in the directed family.  The estimate separates four
+different analytic tasks: convergence of the auxiliary observable window,
+comparison of auxiliary and target reconstructions, control of the target
+orbit defect, and compatibility of the normalization group.  A shared
+critical exponent controls at most one contribution to one family of
+windows; it does not provide the projective observable-germ transfer.
+
 \section{Source-Extended RG, Scaling Operators, And Contact Terms}
 
 A fixed interaction is not yet a QFT spectrum.  Scaling operators are

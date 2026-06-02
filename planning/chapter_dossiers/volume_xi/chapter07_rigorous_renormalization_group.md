@@ -111,6 +111,10 @@ constructive RG developments.
   short-range orbit error.
 - `tau_aux`, `tau_sr`, `A`, `r`: auxiliary and target unstable tuning maps,
   their linear comparison, and the target tuning remainder.
+- `a_{alpha,k}`, `epsilon_{alpha,k}`, `L_{alpha,k}`, `n_{alpha,k}`:
+  auxiliary-window convergence error, auxiliary-to-target observable-window
+  defect, short-range reconstruction Lipschitz constant, and normalization
+  mismatch in the projective-window transfer certificate.
 - `Gamma_f`, `Gamma_c`, `P_e`, `B(A)_e`: finite fine/coarse gauge graphs,
   the chosen fine path assigned to a coarse edge, and the blocked coarse link
   defined by path product of fine links.
@@ -228,6 +232,12 @@ constructive RG developments.
   \(\|z_n\|\le \sum_j(\prod_{\ell>j}M_\ell)\delta_j\), the stable geometric
   bound when \(M_j\le\theta<1\), and the separate relevant-coordinate
   amplification estimate requiring target tuning-map control.
+- Derives the projective-window transfer certificate
+  \(n_{\alpha,k}+a_{\alpha,k}+\epsilon_{\alpha,k}
+  +L_{\alpha,k}\sum_j(\prod_{\ell>j}M_\ell)\delta_j\), separating auxiliary
+  observable convergence, auxiliary-to-target observable comparison, target
+  orbit-transfer defects, and normalization mismatch before an auxiliary RG
+  theorem can be promoted to an ordinary short-range observable-germ claim.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, hierarchical
   scalar fixed points with controlled unstable/stable directions, and
@@ -433,6 +443,14 @@ remainder contraction.
   separates the algebraic compatibility step from the uniform
   Schwartz-seminorm continuity estimate, and the companion short-range RG
   check verifies the same finite restriction and boundedness arithmetic.
+- 2026-06-02 auxiliary projective-window transfer pass: added the
+  finite-window certificate needed before an auxiliary fixed-point theorem
+  can be read as a statement about the ordinary short-range observable germ.
+  The bound now separates auxiliary-window convergence, auxiliary-to-target
+  observable comparison, target orbit-transfer defects, and normalization
+  mismatch.  The companion short-range RG check verifies the exact rational
+  telescope and shows explicitly that nondecaying transfer defects leave a
+  positive error floor.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

@@ -36,6 +36,10 @@ The stable-chart certificate check verifies the finite RG observable-window
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
 or normalization errors.
+The auxiliary projective-window transfer check verifies the finite
+observable-germ certificate that combines auxiliary-window convergence,
+auxiliary-to-target observable defects, short-range orbit-transfer defects,
+and normalization mismatch.
 The C1 stable-graph check verifies the differentiated Lyapunov--Perron
 equation for a finite one-dimensional nonlinear RG map whose stable graph can
 be summed exactly.
@@ -65,6 +69,13 @@ def pow_int(base, exponent):
     if exponent >= 0:
         return base**exponent
     return Fraction(1, base ** (-exponent))
+
+
+def product(values):
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
 
 
 def uniform_block_kernel(dimension, scale):
@@ -238,6 +249,63 @@ def check_auxiliary_transfer_telescoping_bound():
             telescoping,
             c_equal * steps * equal_rate ** (steps - 1),
         )
+
+
+def check_auxiliary_projective_window_transfer_certificate():
+    amplification_factors = [Fraction(2, 3), Fraction(1, 2), Fraction(3, 5)]
+    defect_bounds = [Fraction(1, 10), Fraction(1, 20), Fraction(1, 40)]
+    steps = len(defect_bounds)
+
+    orbit_bound = sum(
+        defect_bounds[j]
+        * product(amplification_factors[ell] for ell in range(j + 1, steps))
+        for j in range(steps)
+    )
+    assert_equal("auxiliary projective-window orbit bound", orbit_bound, Fraction(17, 200))
+
+    # Signed defects can cancel in the actual orbit; the certificate uses the
+    # absolute defect bounds and therefore remains valid without relying on
+    # cancellation.
+    signed_defects = [Fraction(1, 10), Fraction(-1, 20), Fraction(1, 40)]
+    orbit_error = Fraction(0)
+    for factor, defect in zip(amplification_factors, signed_defects):
+        orbit_error = factor * orbit_error + defect
+    assert_equal("auxiliary projective-window actual orbit error", orbit_error, Fraction(1, 40))
+    assert_true("actual orbit error below certificate", abs(orbit_error) <= orbit_bound)
+
+    window_lipschitz = Fraction(4)
+    auxiliary_window_error = Fraction(1, 100)
+    observable_comparison_defect = Fraction(1, 80)
+    normalization_mismatch = Fraction(1, 200)
+
+    projective_window_bound = (
+        normalization_mismatch
+        + auxiliary_window_error
+        + observable_comparison_defect
+        + window_lipschitz * orbit_bound
+    )
+    assert_equal("auxiliary projective-window transfer bound", projective_window_bound, Fraction(147, 400))
+
+    actual_window_error = (
+        normalization_mismatch
+        + auxiliary_window_error
+        + observable_comparison_defect
+        + window_lipschitz * abs(orbit_error)
+    )
+    assert_equal("auxiliary projective-window actual finite error", actual_window_error, Fraction(51, 400))
+    assert_true(
+        "auxiliary projective-window certificate bounds finite error",
+        actual_window_error <= projective_window_bound,
+    )
+
+    # If the one-step target defects do not decay after amplification, the
+    # projective transfer certificate cannot prove convergence of the target
+    # observable germ.
+    constant_defect = Fraction(1, 30)
+    theta = Fraction(2, 3)
+    nondecaying_bound = sum(theta ** (steps - 1 - j) * constant_defect for j in range(steps))
+    assert_equal("auxiliary projective-window nondecaying defect floor", nondecaying_bound, Fraction(19, 270))
+    assert_true("nondecaying defect floor remains positive", nondecaying_bound > 0)
 
 
 def check_relevant_direction_tuning_amplification():
@@ -1035,6 +1103,7 @@ def main():
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
     check_auxiliary_transfer_telescoping_bound()
+    check_auxiliary_projective_window_transfer_certificate()
     check_relevant_direction_tuning_amplification()
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_certificate()
