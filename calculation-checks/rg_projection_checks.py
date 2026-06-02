@@ -129,10 +129,57 @@ def check_irrelevant_tail_residual():
     )
 
 
+def check_projected_observable_lift_budget():
+    # A projected fixed point is useful for observables only after the
+    # complement residual is small enough to lift it and after the
+    # reconstruction map is controlled in the relevant seminorm.
+    epsilon = Fraction(1, 20)
+    rho = Fraction(1, 4)
+    lipschitz_derivative = Fraction(1, 2)
+    radius = Fraction(1, 10)
+
+    ball_budget = (
+        epsilon
+        + rho * radius
+        + lipschitz_derivative * radius * radius / 2
+    )
+    assert_equal("projected observable NK ball budget", ball_budget, Fraction(31, 400))
+    assert_true("projected observable NK ball condition", ball_budget <= radius)
+    assert_true(
+        "projected observable NK contraction condition",
+        rho + lipschitz_derivative * radius < 1,
+    )
+
+    reconstruction_lipschitz = Fraction(3)
+    chart_error = Fraction(1, 50)
+    observable_lift_bound = chart_error + reconstruction_lipschitz * radius
+    assert_equal("projected observable lift bound", observable_lift_bound, Fraction(8, 25))
+
+    actual_window_error = Fraction(1, 4)
+    assert_true(
+        "projected observable finite window controlled",
+        actual_window_error <= observable_lift_bound,
+    )
+
+    # Matching the projected observable exactly is not enough when the lift
+    # residual is too large for the Newton-Kantorovich ball.
+    bad_epsilon = Fraction(1, 3)
+    bad_ball_budget = (
+        bad_epsilon
+        + rho * radius
+        + lipschitz_derivative * radius * radius / 2
+    )
+    assert_true(
+        "projected observable bad residual detected",
+        bad_ball_budget > radius,
+    )
+
+
 def main():
     check_spurious_projected_zero()
     check_projected_zero_lift_condition()
     check_irrelevant_tail_residual()
+    check_projected_observable_lift_budget()
     print("All RG projection checks passed.")
 
 

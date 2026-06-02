@@ -1658,14 +1658,81 @@ Newton--Kantorovich conditions \eqref{eq:nk-ball-condition} with
 then gives a unique zero of \(F\) in \(\overline B_r(V_N)\), equivalently a
 fixed point of \(\mathcal R\).
 
+\begin{controlledapproximation}[Projected fixed points as observable approximants]
+\label{cap:projected-fixed-point-observable-approximants}
+The projected point \(V_N\) becomes an approximation to QFT data only after
+the lift estimate is paired with reconstruction estimates.  Let
+\(\mathcal O\) be a locally convex observable space with seminorms
+\(\{p_\alpha\}\), and let
+\[
+  \operatorname{Rec}:\overline B_r(V_N)\longrightarrow \mathcal O
+\]
+be the reconstruction map for the exact RG chart on the same ball as in
+\eqref{eq:projected-rg-lift-condition}.  Suppose that for each finite
+observable window \(\alpha\) there is a Lipschitz constant \(L_\alpha(r)\)
+such that
+\begin{equation}
+  p_\alpha\!\left(\operatorname{Rec}(V)-\operatorname{Rec}(W)\right)
+  \le
+  L_\alpha(r)\|V-W\|_{\mathcal B},
+  \qquad
+  V,W\in\overline B_r(V_N).
+  \label{eq:projected-rg-reconstruction-lipschitz}
+\end{equation}
+If the finite-dimensional calculation also reports a projected observable
+\(\operatorname{Rec}_N(V_N)\) with chart error
+\begin{equation}
+  p_\alpha\!\left(\operatorname{Rec}_N(V_N)-\operatorname{Rec}(V_N)\right)
+  \le \delta_{N,\alpha},
+  \label{eq:projected-rg-observable-chart-error}
+\end{equation}
+then the lifted fixed point \(V_\ast\) supplied by
+\eqref{eq:projected-rg-lift-condition} obeys
+\begin{equation}
+  p_\alpha\!\left(\operatorname{Rec}_N(V_N)-\operatorname{Rec}(V_\ast)\right)
+  \le
+  \delta_{N,\alpha}+L_\alpha(r)r .
+  \label{eq:projected-rg-observable-lift-error}
+\end{equation}
+The estimate is only a controlled approximation on the displayed finite
+window.  It does not prove a continuum limit, an OS-positive hierarchy, or a
+universality statement unless the residual bound, the Newton--Kantorovich
+constants, the Lipschitz constants, and the observable chart errors are
+controlled on the directed family of windows used for reconstruction.
+\end{controlledapproximation}
+
+Indeed, the lifted fixed point satisfies \(\|V_\ast-V_N\|_{\mathcal B}\le r\).
+The triangle inequality and
+\eqref{eq:projected-rg-reconstruction-lipschitz} give
+\[
+  p_\alpha\!\left(\operatorname{Rec}_N(V_N)-\operatorname{Rec}(V_\ast)\right)
+  \le
+  p_\alpha\!\left(\operatorname{Rec}_N(V_N)-\operatorname{Rec}(V_N)\right)
+  +
+  L_\alpha(r)\|V_N-V_\ast\|_{\mathcal B},
+\]
+which is \eqref{eq:projected-rg-observable-lift-error} by
+\eqref{eq:projected-rg-observable-chart-error}.  The load-bearing data are
+the residual and reconstruction constants that a finite-dimensional fixed
+point computation must report:
+\eqref{eq:projected-rg-lift-condition} and
+\eqref{eq:projected-rg-observable-lift-error}.  With those constants
+controlled on the directed observable family, projected observables become
+finite-window approximants to the lifted fixed-point reconstruction; without
+them, the projected calculation remains a finite-dimensional coordinate
+calculation.
+
 The companion calculation
 \[
   \texttt{calculation-checks/rg\_projection\_checks.py}
 \]
 checks these finite-dimensional algebraic examples with exact rational
-arithmetic.  In an actual Wilsonian RG proof, the hard work is to bound
-\(\epsilon_N(V_N;A)\), \(\rho\), and \(L\) in the infinite-dimensional norm,
-not to solve the projected equation.
+arithmetic, including the residual-lift and finite-window observable-error
+budget.  In an actual Wilsonian RG proof, the hard work is to bound
+\(\epsilon_N(V_N;A)\), \(\rho\), \(L\), the reconstruction constants
+\(L_\alpha(r)\), and the chart errors \(\delta_{N,\alpha}\) in the
+infinite-dimensional norm and in the directed observable topology, not to
+solve the projected equation.
 
 \section{Constructive Fixed-Point Output Data}
 

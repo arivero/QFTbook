@@ -196,6 +196,10 @@ constructive RG developments.
 - Proves the corollary that a projected RG zero lifts to a true fixed point
   only when the complement residual and Newton--Kantorovich constants satisfy
   the full Banach-space contraction inequalities.
+- Adds the finite-window observable approximation layer: a projected fixed
+  point controls reconstructed observables only after the lift radius,
+  reconstruction Lipschitz constants, and projected observable chart errors
+  are bounded in the seminorms of the declared observable topology.
 - Defines the output data of a constructive fermionic RG fixed point:
   fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
   interaction, source-field dimensions \(d-\Delta_i\), operator dimensions
@@ -404,7 +408,8 @@ remainder contraction.
 
 - `calculation-checks/rg_projection_checks.py`: exact rational check for the
   finite-dimensional projected-zero counterexample and complement-residual
-  lift calculation, plus the finite irrelevant-tail graph equation.
+  lift calculation, the residual-lift plus finite-window observable-error
+  budget, and the finite irrelevant-tail graph equation.
 - `calculation-checks/rg_fermionic_fixed_point_checks.py`: exact rational
   checks for the fermionic benchmark kernel scaling ledger, pinned \(L^1\)
   exponent relation, trimmed local-coordinate list, and finite irrelevant-tail

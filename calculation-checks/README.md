@@ -686,6 +686,9 @@ Current checks:
   complement-residual lift condition used in the Newton--Kantorovich
   argument, plus the finite irrelevant-tail graph equation illustrating why
   projected local coordinates alone do not define a Wilsonian fixed point.
+  It also checks the residual-lift plus reconstruction-seminorm budget that
+  turns a projected fixed point into a controlled finite-window observable
+  approximation.
 - `rg_fermionic_fixed_point_checks.py`: exact rational checks for the
   Volume XI long-range fermionic rigorous-RG benchmark, including the
   kernel scaling-dimension ledger
