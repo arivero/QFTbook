@@ -351,6 +351,15 @@ Definition~\ref{def:weyl-anomaly-density}, this commutator is precisely
 by the Weyl variation of that counterterm.  Therefore only the cohomology class
 of \(\mathbf A_\omega\) is intrinsic.
 
+The classification below has two separate inputs.  The QFT input has just
+been derived from the metric source functional: the anomaly is a cocycle for
+the abelian Weyl differential, and local counterterms add coboundaries.  The
+geometric input is the local invariant-theory computation of that cohomology
+on the jet space of smooth metrics.  The quoted theorem supplies this
+geometric classification.  A particular CFT then supplies numerical
+coordinates on the listed cohomology classes through its stress-tensor
+correlators or through a regulated path integral.
+
 \begin{quotedtheorem}[Parity-even local Weyl anomaly classes]
 \label{qthm:parity-even-local-weyl-anomaly-classes}
 In the parity-even metric sector on a closed manifold without boundary, the
@@ -396,6 +405,26 @@ no parity-even local bulk trace anomaly of this type on a closed smooth
 manifold, although finite nonlocal data such as the sphere free energy can be
 important conformal data.
 \end{quotedtheorem}
+
+\paragraph{Cohomological mechanism.}
+The representative
+\(-a_{2n}E_{2n}+\sum_\alpha c_\alpha I_\alpha\) is a coordinate choice on
+the quotient of local Weyl cocycles by local Weyl coboundaries.  The type-B
+terms are cocycles for the direct reason that
+\(\sqrt g\,I_\alpha\) is Weyl invariant in dimension \(2n\).  The type-A
+term is a cocycle because the Euler form is obtained by Chern--Weil
+transgression from an invariant polynomial: the integrated Euler density is
+metric-independent on a closed manifold, and its local Weyl variation is
+therefore an exact divergence.  Type-D terms are coboundaries by definition:
+if \(B[g]\) is a local counterterm, then
+\(-\delta_\omega B[g]=\int\sqrt g\,\omega\,\nabla_\mu J^\mu\) for the
+corresponding representative.  The nontrivial content of the quoted theorem is
+the converse local statement: after imposing the algebraic and differential
+Bianchi identities and quotienting total derivatives, every parity-even bulk
+solution of the Wess--Zumino condition is represented by this type-A/type-B
+list plus a type-D coboundary.  The chapter uses that converse as geometric
+cohomology infrastructure, not as a substitute for computing the coefficients
+of a given QFT.
 
 In two dimensions, with the convention above, write
 \begin{equation}
@@ -456,7 +485,7 @@ supplies the type-B class.  The displayed Weyl variation of
 \(\int\sqrt g\,R^2\) gives the explicit representative of the type-D
 ambiguity.
 
-\begin{quotedtheorem}[Six-dimensional parity-even Weyl anomaly]
+\begin{quotedtheorem}[Six-dimensional parity-even local Weyl cohomology]
 \label{qthm:six-dimensional-parity-even-weyl-anomaly}
 In six dimensions, modulo type-D total-derivative terms, the parity-even bulk
 classification has one type-A coefficient and three type-B coefficients:
@@ -509,6 +538,15 @@ two-Weyl-tensor invariant with two derivatives; Ricci-dependent representatives
 either combine with these into the conformally covariant operator in \(I_3\),
 enter the Euler density \(E_6\), or are type-D counterterm variations.
 \end{quotedtheorem}
+
+The six-dimensional statement is used here as a basis theorem for local Weyl
+cohomology.  The derivation of the Wess--Zumino cocycle condition and the
+counterterm quotient is the source-functional argument above; the enumeration
+of the three independent type-B representatives is the quoted invariant-theory
+input.  Consequently a later computation of a six-dimensional theory is
+required to determine the four numbers \((a_6,c_1,c_2,c_3)\) in a declared
+regularization scheme.  The quoted theorem does not supply those numbers and
+does not assert that a particular six-dimensional QFT exists.
 
 \section{Anomaly Coefficients and Stress-Tensor Correlators}
 

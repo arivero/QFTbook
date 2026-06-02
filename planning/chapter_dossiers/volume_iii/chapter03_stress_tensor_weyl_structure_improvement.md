@@ -36,7 +36,9 @@ The chapter establishes:
 - the Wess--Zumino consistency condition for Weyl anomalies as
   source-functional prose, and the parity-even local cohomological
   classification into type-A Euler-density terms, type-B Weyl-invariant
-  densities, and type-D counterterm variations;
+  densities, and type-D counterterm variations, with the source-functional
+  cocycle/coboundary argument separated from the quoted geometric
+  invariant-theory classification of local metric cohomology;
 - the two-dimensional normalization
   \(\mathcal A_2[g]=-c_{2d}R/(24\pi)\), tied to
   \(\langle T(z)T(0)\rangle=c_{2d}/(2z^4)\);
@@ -83,6 +85,10 @@ The chapter establishes:
 8. The type-A/type-B/type-D classification is local to the parity-even bulk
    metric sector on closed manifolds; boundary, defect, global, and
    parity-odd orientation-dependent anomalies require separate data.
+9. The six-dimensional Weyl-anomaly basis is a local cohomology basis for
+   possible trace-anomaly contact terms.  It is not a computation of
+   \(a_6,c_1,c_2,c_3\) for any particular six-dimensional theory and is not an
+   existence statement for such a QFT.
 
 ## Figures
 
@@ -115,3 +121,9 @@ The chapter establishes:
   directly to the Deser-Schwimmer quoted theorem.  The \(D=4\) formula remains
   explicit, but the proof wrapper was only the specialization of the local
   anomaly classification plus the \(R^2\)-counterterm variation.
+- 2026-06-02 #696 quoted-theorem boundary pass: added the cohomological
+  mechanism paragraph after the parity-even local Weyl anomaly classification,
+  separating the monograph-derived metric-source Wess--Zumino cocycle and
+  counterterm quotient from the quoted invariant-theory enumeration of local
+  metric cohomology.  Renamed the six-dimensional quoted block as local Weyl
+  cohomology and stated that its coefficients remain theory-specific QFT data.
