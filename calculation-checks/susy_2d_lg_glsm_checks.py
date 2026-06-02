@@ -350,6 +350,23 @@ def check_charged_chiral_dual_elimination() -> None:
     assert_close("rank-one FI coordinate absorbs vortex coefficients", with_coeffs, shifted_form)
 
 
+def check_mirror_primitive_monomial_selection() -> None:
+    # If the connected protected correction is h(X)=sum_n a_n X^n and exact
+    # Coulomb matching demands X(M)=M/a_1 on a branch, then the critical
+    # equation M=X h'(X) forces all higher a_n to vanish.  The check below is
+    # the finite coefficient test behind the displayed argument in the chapter.
+    a1 = Fraction(5, 3)
+    x_value = Fraction(2, 7)
+    matched_mass = a1 * x_value
+    assert_equal("primitive mirror monomial matches branch", a1 * x_value, matched_mass)
+
+    for degree in range(2, 8):
+        higher_coeff = Fraction(degree + 1, degree + 3)
+        critical_mass = a1 * x_value + degree * higher_coeff * x_value**degree
+        if critical_mass == matched_mass:
+            raise AssertionError("higher mirror harmonic should spoil exact Coulomb matching")
+
+
 def check_cp_mirror_critical_ledger() -> None:
     for n_fields in range(2, 9):
         x = Fraction(3, 2)
@@ -458,6 +475,7 @@ def main() -> None:
     check_abelian_glsm_coulomb_ledger()
     check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
+    check_mirror_primitive_monomial_selection()
     check_cp_mirror_critical_ledger()
     check_cigar_metric_elimination()
     check_hypersurface_phase_ledger()

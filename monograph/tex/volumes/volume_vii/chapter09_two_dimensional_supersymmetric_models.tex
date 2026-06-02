@@ -948,22 +948,67 @@ scheme transformation.  The intrinsic data are the charge matrix, the
 periodicity of the \(Y_i\), and the fact that the exponential monomial is
 nonzero with the charge dictated by the dualized chiral field.
 
-The role of the exponential is a protected statement with explicit analytic
-input.
-Because \(Y_i\) is periodic with imaginary period \(2\pi\ii\), holomorphic
-local functions on the asymptotic cylinder are Laurent series in
+The local dualization has not derived the exponential term.  It has derived
+the periodic variable \(Y_i\), the linear coupling \(-M_iY_i\), and the charge
+normalization.  The remaining input is a protected connected amplitude on the
+asymptotic end of the dual cylinder.  Because \(Y_i\) is periodic with
+imaginary period \(2\pi\ii\), holomorphic local functions on that end are
+Laurent series in
 \[
   X_i=e^{-Y_i}.
 \]
 The large positive \(\operatorname{Re}Y_i\) region is the weak-coupling end
 of the dualized chiral variable, so regularity there permits nonnegative
-powers of \(X_i\).  The local dualization above gives the linear term
-\(-M_iY_i\).  The mirror datum asserts that the single-vortex sector supplies
-the leading nonzero monomial \(-\mu c_iX_i\), with the fermion zero modes
-exactly saturating the twisted \(F\)-term measure.  A rigorous proof must
-construct those vortex sectors and prove both nonvanishing of \(c_i\) and
-absence or controlled irrelevance of additional holomorphic terms in the
-protected regime under study.
+powers of \(X_i\).  Suppose, for one dual field and on a simply connected
+branch where \(M_i\neq0\), that the connected protected correction is an
+ordinary holomorphic germ \(h_i(X_i)\) with \(h_i(0)=0\), so that the relevant
+part of the twisted superpotential is
+\begin{equation}
+  -M_iY_i-h_i(X_i)
+  =
+  M_i\log X_i-h_i(X_i),
+  \qquad X_i=e^{-Y_i}.
+  \label{eq:glsm-mirror-general-holomorphic-correction}
+\end{equation}
+The critical equation is
+\begin{equation}
+  M_i=X_i h_i'(X_i).
+  \label{eq:glsm-mirror-general-critical-equation}
+\end{equation}
+At a critical point the derivative of the eliminated superpotential is
+\begin{equation}
+  \frac{\partial \widetilde W_{\rm elim}}{\partial M_i}
+  =
+  \log X_i(M_i).
+  \label{eq:glsm-mirror-eliminated-branch-derivative}
+\end{equation}
+Indeed, the coefficient of \(\partial X_i/\partial M_i\) is
+\(M_i/X_i-h_i'(X_i)\), which vanishes by
+\eqref{eq:glsm-mirror-general-critical-equation}.  Exact agreement with the
+Coulomb one-loop logarithm
+\[
+  \frac{\partial}{\partial M_i}
+  \left[
+    M_i\left(\log\frac{M_i}{\mu c_i}-1\right)
+  \right]
+  =
+  \log\frac{M_i}{\mu c_i}
+\]
+therefore forces \(X_i(M_i)=M_i/(\mu c_i)\) on the branch.  Substituting into
+\eqref{eq:glsm-mirror-general-critical-equation} gives
+\(h_i'(X_i)=\mu c_i\), hence
+\[
+  h_i(X_i)=\mu c_iX_i
+\]
+up to an irrelevant additive constant.  Thus the primitive monomial
+\(-\mu c_i e^{-Y_i}\) is singled out by the combination of periodicity,
+regularity at the weak-coupling end, and exact Coulomb-branch matching.  This
+argument is not a construction of the amplitude.  It reduces the
+nonperturbative theorem boundary to the following sharp questions: construct
+the single-vortex sector in the chosen regulator, prove that its fermion zero
+modes leave precisely the twisted \(F\)-term measure, prove
+\(c_i\neq0\), and justify that possible higher connected harmonics do not
+contribute in the protected coordinate being matched.
 
 The \(Y_i\)-critical equation is
 \begin{equation}

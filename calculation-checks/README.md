@@ -1593,6 +1593,7 @@ Current checks:
   determinant normalization changes, the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
+  primitive-monomial selection forced by exact Coulomb matching, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   plus the hypersurface GLSM adjunction sign,

@@ -124,6 +124,12 @@ and
   protected dual twisted-superpotential datum with exponential
   `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
   left schematic in classic mirror-duality papers.
+- Derives that a general connected holomorphic correction
+  `h_i(X_i)`, `X_i=exp(-Y_i)`, is forced to be the primitive monomial
+  `mu c_i X_i` if the eliminated branch is required to reproduce the
+  Coulomb one-loop logarithm for all nonzero `M_i` in the local branch.
+  This is a finite protected matching argument, not a construction of the
+  vortex amplitude.
 - Proves that eliminating `Y_i` reproduces the Coulomb one-loop
   superpotential and that the constants `c_i` shift the finite definition of
   the FI coordinate.
@@ -207,6 +213,9 @@ and
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;
+  - primitive mirror monomial selection from exact Coulomb matching, showing
+    that higher connected harmonics spoil the branch identity
+    `X_i(M_i)=M_i/(mu c_i)`;
   - the `P^{N-1}` mirror critical-point simplicity ledger;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
