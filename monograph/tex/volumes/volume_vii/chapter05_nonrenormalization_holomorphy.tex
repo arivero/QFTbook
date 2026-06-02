@@ -215,6 +215,22 @@ for chiral matter representations \(R_i\).  The indices are defined by
   \qquad
   \operatorname{Tr}_{\rm ad}(XY)=C_2(G)\operatorname{tr}(XY).
 \]
+The displayed \(b_0\) is supplied by the regulated background-field one-loop
+determinant in the declared holomorphic Wilsonian coordinate.  In a
+supersymmetric background-gauge calculation the shell contribution to the
+chiral gauge kinetic coordinate has the local form
+\begin{equation}
+  \Delta X_h^{(1)}
+  =
+  \left(3C_2(G)-\sum_iT(R_i)\right)\log\frac{\Lambda}{\Lambda_0},
+  \label{eq:susy-holomorphic-one-loop-shell-coefficient}
+\end{equation}
+with the same trace convention as the gauge kinetic term.  The vector
+multiplet and its gauge-fixed ghost complex supply the \(3C_2(G)\) term; a
+chiral matter multiplet in \(R_i\) supplies \(-T(R_i)\).  These are local
+heat-kernel or supergraph coefficients of the finite shell determinant.  The
+holomorphy argument below uses this one-loop input to exclude further
+perturbative powers of the holomorphic weak-coupling coordinate.
 
 The next proposition is conditional in an essential way.  Its input is a
 weak-coupling Wilsonian patch with a chiral local gauge-kinetic coordinate and
@@ -259,7 +275,7 @@ reference coordinate.  Equivalently,
 \end{proposition}
 
 \begin{proof}
-The statement is about a Wilsonian chiral coordinate, not about the canonical
+The statement concerns a Wilsonian chiral coordinate rather than the canonical
 two-point-function coupling.  By locality and chirality, the scale derivative
 \(\mu\,d\tau_{\rm eff}/d\mu\) is itself the coefficient of the local chiral
 operator \(\operatorname{tr}(W^\alpha W_\alpha)\).  It is dimensionless,
@@ -276,15 +292,18 @@ after excluding negative powers by the weak-coupling regularity hypothesis.
 The \(n\geq1\) terms are nonperturbative instanton sectors.  The perturbative
 projection is the constant term \(B_0(t)\).
 
-The coefficient \(B_0(t)\) is constrained by the spurion symmetry assignment
-and by the normalization of the holomorphic scale.  With the present
+The coefficient \(B_0(t)\) is the perturbative constant term selected by the
+holomorphic \(q_h\)-expansion.  Holomorphy and periodicity identify this term
+as the only perturbative part in the declared weak-coupling patch.  Its value
+is fixed by the one-loop shell determinant
+\eqref{eq:susy-holomorphic-one-loop-shell-coefficient}.  With the present
 convention
 \[
   \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_h^2},
   \qquad
   X_h:=\frac{8\pi^2}{g_h^2}=2\pi\,\operatorname{Im}\tau ,
 \]
-the one-loop anomaly coefficient is the statement
+that determinant coefficient is the statement
 \[
   \mu\frac{dX_h}{d\mu}=b_0 .
 \]

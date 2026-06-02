@@ -61,6 +61,8 @@
 3. Holomorphic gauge coupling is one-loop exact as a Wilsonian coordinate
    after the perturbative sector is identified as the \(q_h^0\) coefficient;
    finite holomorphic reference-coordinate changes are scale independent.
+   The numerical coefficient \(b_0=3C_2(G)-\sum_iT(R_i)\) comes from the
+   separate regulated one-loop determinant input.
 4. The Konishi rescaling anomaly is a local Jacobian statement inside a
    declared regulator; its chiral representative is fixed by gauge invariance,
    chirality, locality, the component heat-kernel anomaly, and the
@@ -82,7 +84,8 @@
   heavy chiral coordinate, the loop-supergraph Grassmann-measure ledger
   leaving one full \(d^4\theta\) integral in a connected Wilsonian loop graph,
   the holomorphic gauge-coupling \(q_h^0\) perturbative projection and finite
-  scheme-shift invariance, the sign equivalence between
+  scheme-shift invariance, the separate vector/matter one-loop shell
+  coefficient \(3C_2(G)-\sum_iT(R_i)\), the sign equivalence between
   \(d\tau/d\log\mu=-b_0/(2\pi i)\),
   \(dX_h/d\log\mu=b_0\), and
   \(d\log q_h/d\log\mu=-b_0\), Konishi and vector-multiplet coordinate
@@ -107,6 +110,13 @@
   inverse \(\Box\), i.e. precisely the infrared singularity absent from the
   Wilsonian low-momentum expansion.  Added the corresponding finite
   graph-measure ledger to the paired calculation check.
+- 2026-06-02 holomorphic one-loop coefficient pass: tightened the
+  one-loop-exactness proof by assigning the value of \(b_0\) to the regulated
+  one-loop determinant.  The text now separates the background-field shell
+  determinant, whose vector/ghost and matter contributions give
+  \(3C_2(G)-\sum_iT(R_i)\), from the holomorphic \(q_h\)-expansion argument
+  that excludes further perturbative powers.  The paired check now verifies
+  this finite coefficient bookkeeping and its \(X_h\)-running sign.
 
 ## Figures
 

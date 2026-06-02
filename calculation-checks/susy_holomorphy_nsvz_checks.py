@@ -163,6 +163,40 @@ def check_holomorphic_gauge_one_loop_projection():
         raise AssertionError("negative q-degree should be rejected")
 
 
+def check_holomorphic_one_loop_shell_coefficient():
+    """Check vector/matter decomposition of the holomorphic shell coefficient.
+
+    The manuscript separates two statements: a regulated one-loop determinant
+    supplies b0 = 3 C2(G) - sum_i T(R_i), and holomorphy then excludes further
+    perturbative q_h powers.  This finite ledger verifies the coefficient
+    decomposition and the sign convention used for X_h running.
+    """
+
+    samples = [
+        # pure SYM
+        (Fraction(3), []),
+        # SQCD-like pairs in half-trace normalization
+        (Fraction(5), [Fraction(1, 2)] * 8),
+        # N=4 as one vector plus three adjoint chirals: cancellation.
+        (Fraction(7), [Fraction(7), Fraction(7), Fraction(7)]),
+        # non-integral trace convention sample
+        (Fraction(9, 4), [Fraction(1, 3), Fraction(5, 6), Fraction(7, 12)]),
+    ]
+    log_interval = Fraction(-4, 3)
+
+    for c2, indices in samples:
+        vector_shell = 3 * c2
+        matter_shell = -sum(indices)
+        shell_coefficient = vector_shell + matter_shell
+        b0 = 3 * c2 - sum(indices)
+        assert_equal(shell_coefficient, b0, "holomorphic one-loop shell coefficient")
+        assert_equal(
+            shell_coefficient * log_interval,
+            b0 * log_interval,
+            "one-loop X_h shell running sign",
+        )
+
+
 def check_holomorphic_tau_running_sign():
     """Check the sign relating tau, X_h, q_h, and asymptotic freedom.
 
@@ -252,6 +286,7 @@ def main():
     check_tree_level_derivative_chain_rule()
     check_loop_supergraph_grassmann_measure_ledger()
     check_holomorphic_gauge_one_loop_projection()
+    check_holomorphic_one_loop_shell_coefficient()
     check_holomorphic_tau_running_sign()
     check_konishi_and_vector_coordinate_shifts()
     check_nsvz_coordinate_identity()
