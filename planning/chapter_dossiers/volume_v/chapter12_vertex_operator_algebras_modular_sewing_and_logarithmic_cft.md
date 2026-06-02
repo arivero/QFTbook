@@ -128,12 +128,12 @@ current QFT scope.
   level-two Gram matrices, states the unitary highest-weight classification as
   a quoted theorem boundary, exposes the Kac-determinant/positivity mechanism
   behind that boundary, records the Kac-table identification and triangular
-  representative set, states the full unitary minimal-model \(S,T\) modular
-  data with quotient normalization, derives the \(S\)-matrix from the
-  Rocha--Caridi theta-character formula by Poisson summation and
-  cosine-to-sine reduction, proves the finite \(SU(2)\)-quotient fusion rule
-  from Verlinde, derives the Ising spin level-two null vector, and proves the
-  Ising spin four-point BPZ/crossing calculation fixing
+  representative set, proves the full unitary minimal-model \(S,T\) modular
+  data as a proposition conditional on the Rocha--Caridi character formula,
+  derives the \(S\)-matrix by Poisson summation and cosine-to-sine reduction,
+  proves the finite \(SU(2)\)-quotient fusion rule from Verlinde, derives the
+  Ising spin level-two null vector, and proves the Ising spin four-point
+  BPZ/crossing calculation fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 - Makes the Coulomb-gas screening construction more precise by defining the
   rank-one local system of the multivalued screening integrand, the twisted
@@ -369,6 +369,13 @@ current QFT scope.
   formula, the \(b^2=m/(m+1)\) interlacing mechanism, the all-level positivity
   and exhaustion roles of the quoted theorem, and an exact level-two Kac-root
   calculation check.
+- 2026-06-02 minimal-model modular-data dequote pass: converted the unitary
+  minimal-model \(S,T\) matrix formula from quoted-theorem form into a local
+  proposition conditional on the Rocha--Caridi character formula.  The true
+  external representation-theory boundary is now the singular-vector
+  resolution/character formula, while the modular matrix is proved by
+  Poisson summation, Kac-orbit quotient normalization, and the existing exact
+  minimal-model calculation check.
 - 2026-05-31 Coulomb-gas screening proof pass: strengthened the screening
   intertwiner lemma by defining the local system and twisted boundary
   condition, proving the Virasoro commutator as a twisted exact derivative,

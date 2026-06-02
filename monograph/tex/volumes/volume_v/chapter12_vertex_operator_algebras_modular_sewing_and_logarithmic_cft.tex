@@ -539,45 +539,15 @@ A convenient nonredundant list of representatives is the triangular set
   1\le s\le r\le m-1.
 \]
 
-\begin{quotedtheorem}[Unitary minimal-model modular data]
-\label{qthm:unitary-minimal-model-modular-data}
-Let \(\mathcal M(m,m+1)\) be the diagonal unitary Virasoro minimal model
-with \(m\ge3\).  Its chiral character vector is indexed by Kac-table orbits
-\[
-  [r,s]=[m-r,m+1-s],
-  \qquad
-  1\le r\le m-1,\quad 1\le s\le m,
-\]
-or equivalently by the triangular representatives \(1\le s\le r\le m-1\).
-The modular transformation \(\tau\mapsto-1/\tau\) is represented by
-\begin{equation}
-  S_{(r,s),(r',s')}
-  =
-  2\sqrt{\frac{2}{m(m+1)}}\,
-  (-1)^{1+sr'+rs'}
-  \sin\!\left(\frac{\pi(m+1)rr'}{m}\right)
-  \sin\!\left(\frac{\pi mss'}{m+1}\right),
-  \label{eq:unitary-minimal-model-s-matrix}
-\end{equation}
-and \(\tau\mapsto\tau+1\) is represented by the diagonal matrix
-\begin{equation}
-  T_{(r,s),(r,s)}
-  =
-  \exp\!\left(2\pi\ii\left(h_{r,s}^{(m)}-\frac{c_m}{24}\right)\right).
-  \label{eq:unitary-minimal-model-t-matrix}
-\end{equation}
-The formula for \(S\) is well-defined on Kac-table orbits, is unitary on the
-orbit basis, and together with \(T\) gives the genus-one modular
-representation on characters.  The source trace for this modular data is the
-Virasoro minimal-model character theory following the
-Friedan--Qiu--Shenker and Goddard--Kent--Olive classification
-\cite{FriedanQiuShenker1984,GoddardKentOlive1986}.
-\end{quotedtheorem}
+\paragraph{Rocha--Caridi characters.}
+The next step uses one further representation-theoretic input: the
+Rocha--Caridi alternating character formula for the irreducible quotients in
+the unitary Kac table.  Its content is the Euler-character statement of the
+singular-vector resolution of the irreducible Virasoro module.  Once this
+character formula is accepted, the modular \(S\)-matrix below is a finite
+theta-function calculation.
 
-\paragraph{Rocha--Caridi characters and the Poisson origin of \(S\).}
-The Virasoro input behind Theorem~\ref{qthm:unitary-minimal-model-modular-data}
-is the Rocha--Caridi character formula.  Put \(K=m(m+1)\), \(q=e^{2\pi\ii\tau}\),
-and
+Put \(K=m(m+1)\), \(q=e^{2\pi\ii\tau}\), and
 \[
   \Theta_{\lambda,K}(\tau)
   =
@@ -603,11 +573,49 @@ The irreducible minimal-model character is
   {\eta(\tau)} .
   \label{eq:unitary-minimal-rocha-caridi-character}
 \end{equation}
-The nontrivial representation-theoretic statement in
-\eqref{eq:unitary-minimal-rocha-caridi-character} is the alternating
-resolution of the irreducible Virasoro module by Verma modules.  Once that
-character formula is available, the displayed \(S\)-matrix is a finite Fourier
-calculation.  Poisson summation gives
+
+\begin{proposition}[Unitary minimal-model modular data from characters]
+\label{prop:unitary-minimal-model-modular-data}
+Let \(\mathcal M(m,m+1)\) be the diagonal unitary Virasoro minimal model
+with \(m\ge3\), and assume that its irreducible chiral characters are the
+Rocha--Caridi characters
+\eqref{eq:unitary-minimal-rocha-caridi-character}.  Its chiral character
+vector is indexed by Kac-table orbits
+\[
+  [r,s]=[m-r,m+1-s],
+  \qquad
+  1\le r\le m-1,\quad 1\le s\le m,
+\]
+or equivalently by the triangular representatives \(1\le s\le r\le m-1\).
+The modular transformation \(\tau\mapsto-1/\tau\) is represented by
+\begin{equation}
+  S_{(r,s),(r',s')}
+  =
+  2\sqrt{\frac{2}{m(m+1)}}\,
+  (-1)^{1+sr'+rs'}
+  \sin\!\left(\frac{\pi(m+1)rr'}{m}\right)
+  \sin\!\left(\frac{\pi mss'}{m+1}\right),
+  \label{eq:unitary-minimal-model-s-matrix}
+\end{equation}
+and \(\tau\mapsto\tau+1\) is represented by the diagonal matrix
+\begin{equation}
+  T_{(r,s),(r,s)}
+  =
+  \exp\!\left(2\pi\ii\left(h_{r,s}^{(m)}-\frac{c_m}{24}\right)\right).
+  \label{eq:unitary-minimal-model-t-matrix}
+\end{equation}
+The formula for \(S\) is well-defined on Kac-table orbits, is unitary on the
+orbit basis, and together with \(T\) gives the genus-one modular
+representation on characters.
+\end{proposition}
+
+\begin{proof}
+The representation-theoretic content imported into the proposition is exactly
+the character formula \eqref{eq:unitary-minimal-rocha-caridi-character}, whose
+source is the Virasoro minimal-model character theory following the
+Friedan--Qiu--Shenker and Goddard--Kent--Olive classification
+\cite{FriedanQiuShenker1984,GoddardKentOlive1986}.  The modular matrix itself
+is then computed as follows.  Poisson summation gives
 \begin{equation}
   \Theta_{\lambda,K}(-1/\tau)
   =
@@ -675,6 +683,7 @@ one starts from the product of the two sine matrices for \(SU(2)_{m-2}\) and
 \(SU(2)_{m-1}\), restriction to the \(J\)-orbits multiplies the parent
 normalization by \(\sqrt2\).  This is the finite normalization step that is
 often hidden in physics derivations.
+\end{proof}
 
 It is useful to state the resulting fusion rule without appealing to any
 picture of fields.  Let \(n^{(k)}_{ab}{}^c\) be the \(SU(2)_k\) fusion
@@ -707,7 +716,7 @@ second fuses to its \(J\)-image.
 \begin{proposition}[Minimal-model fusion from the finite quotient]
 \label{prop:unitary-minimal-model-fusion-check}
 Assume the modular data of
-Theorem~\ref{qthm:unitary-minimal-model-modular-data}.  The Verlinde formula,
+Proposition~\ref{prop:unitary-minimal-model-modular-data}.  The Verlinde formula,
 derived later in this chapter from modular diagonalization and displayed in
 \eqref{eq:verlinde-formula}, gives exactly
 \eqref{eq:unitary-minimal-model-fusion-rule}.  In particular the coefficients
