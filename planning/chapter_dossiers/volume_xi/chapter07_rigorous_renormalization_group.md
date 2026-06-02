@@ -115,6 +115,10 @@ constructive RG developments.
   variables, source polydisc radii, retained source degree, source-tail
   functional, source-tail norm, and propagated source-window map in the
   source-extended polymer RG estimate.
+- `W_{k,Omega,E}`, `K_{E,k}`, `R_Omega`, `Xi(R)`: finite-volume connected
+  source functional, lattice source support, distance from the source window
+  to the finite-volume boundary, and boundary-tail function in the
+  thermodynamic source-window estimate.
 - `S_{n,k}`: connected cumulant distribution reconstructed from normalized
   block-spin fields.
 - `Phi`, `Psi`: auxiliary-to-short-range RG transfer maps on Banach charts
@@ -687,6 +691,12 @@ remainder contraction.
   warns that numerical local stability without such a tail estimate is not a
   thermodynamic Schwinger-window construction.  The companion short-range RG
   check verifies the tail-to-derivative and cofinal-comparison arithmetic.
+- 2026-06-02 finite-volume cofinal/joint-limit tightening: expanded the
+  thermodynamic source-window paragraph to display the common-larger-region
+  bound for two cofinal exhaustions and the joint RG-plus-boundary estimate
+  \(\epsilon^{\rm RG}_{E,k}+A_E\Xi(R_{\Omega_k})\).  The companion
+  short-range RG check now verifies the exact rational joint holomorphic and
+  derivative bounds and detects a stagnant boundary-tail schedule.
 - 2026-06-02 source-chart-to-window pass: inserted the missing Wilsonian
   source-extension bridge between convergence of RG coordinates and
   convergence of the actual holomorphic source functional.  The manuscript now

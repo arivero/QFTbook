@@ -56,7 +56,8 @@ combines source-stable contraction, source-local relevant-coordinate
 amplification, polymer-tail control, and normalizing/remainder errors before
 Cauchy extraction of a source window is allowed.
 The finite-volume source-window check verifies the cluster-tail-to-cumulant
-Cauchy bound needed before finite-volume source windows can be used as
+Cauchy bound, cofinal-exhaustion comparison, and joint RG-plus-boundary
+schedule needed before finite-volume source windows can be used as
 thermodynamic Schwinger data.
 The RG-to-OS assembly-budget check verifies the combined source-window error
 budget, its Cauchy derivative extraction, and the directed OS Gram lower
@@ -1966,6 +1967,37 @@ def check_finite_volume_source_window_cluster_tail():
     assert_true(
         "finite-volume cofinal comparison controls difference",
         exhaustion_difference <= cofinal_bound,
+    )
+
+    rg_window_error = Fraction(1, 64)
+    joint_boundary_distance = 5
+    joint_holomorphic_bound = (
+        rg_window_error
+        + amplitude * decay**joint_boundary_distance
+    )
+    joint_derivative_bound = (
+        multi_factorial(beta)
+        * joint_holomorphic_bound
+        / rho_beta
+    )
+    assert_equal("finite-volume joint RG holomorphic bound", joint_holomorphic_bound, Fraction(7, 64))
+    assert_equal("finite-volume joint RG derivative bound", joint_derivative_bound, Fraction(7, 256))
+
+    actual_joint_derivative_error = Fraction(1, 50)
+    assert_true(
+        "finite-volume joint RG schedule controls derivative",
+        actual_joint_derivative_error <= joint_derivative_bound,
+    )
+
+    stagnant_boundary_distance = 1
+    stagnant_bound = (
+        multi_factorial(beta)
+        * (rg_window_error + amplitude * decay**stagnant_boundary_distance)
+        / rho_beta
+    )
+    assert_true(
+        "finite-volume stagnant boundary tail detected",
+        stagnant_bound > Fraction(1, 4),
     )
 
 

@@ -3300,6 +3300,76 @@ of the form
 volumes may have plausible local numerical stability while failing to define
 the thermodynamic source window required by OS reconstruction.
 
+The independence of the exhaustion is also part of the same estimate.  Let
+\(\{\Omega_i\}\) and \(\{\widetilde\Omega_j\}\) be two directed exhaustions
+whose boundary distances from \(K_{E,k}\) tend to infinity.  For fixed
+\(i,j\), choose a connected region \(\Omega_{ij}^\sharp\) containing both
+\(\Omega_i\) and \(\widetilde\Omega_j\).  Applying
+\eqref{eq:short-range-source-window-volume-tail} twice gives
+\begin{equation}
+  \sup_{z\in P_\rho}
+  |W_{k,\Omega_i,E}(z)-W_{k,\widetilde\Omega_j,E}(z)|
+  \leq
+  A_E\Xi(R_{\Omega_i})+
+  A_E\Xi(R_{\widetilde\Omega_j}).
+  \label{eq:short-range-source-window-cofinal-volume-bound}
+\end{equation}
+The right side tends to zero as \(i,j\to\infty\), so the holomorphic limit on
+\(P_\rho\) is independent of the cofinal volume sequence.  Cauchy's formula
+then yields the derivative comparison
+\begin{equation}
+  \left|
+    \partial_z^\beta W_{k,\Omega_i,E}(0)
+    -
+    \partial_z^\beta W_{k,\widetilde\Omega_j,E}(0)
+  \right|
+  \leq
+  \frac{\beta!}{\rho^\beta}
+  \bigl(
+    A_E\Xi(R_{\Omega_i})+
+    A_E\Xi(R_{\widetilde\Omega_j})
+  \bigr).
+  \label{eq:short-range-source-window-cofinal-derivative-bound}
+\end{equation}
+
+The same bookkeeping fixes the joint thermodynamic and continuum limit used
+later in the RG-to-OS assembly package.  Suppose that, for the same finite
+source window \(E\), the RG-chart comparison to a limiting source functional
+\(W_{\ast,E}\) gives an error \(\epsilon^{\rm RG}_{E,k}\) on \(P_\rho\),
+while the chosen finite volume \(\Omega_k\) obeys the boundary distance
+\(R_{\Omega_k}\to\infty\).  Combining
+\eqref{eq:short-range-source-window-chart-to-holomorphic-bound} with
+\eqref{eq:short-range-source-window-volume-tail} gives
+\begin{equation}
+  \sup_{z\in P_\rho}
+  |W_{k,\Omega_k,E}(z)-W_{\ast,E}(z)|
+  \leq
+  \epsilon^{\rm RG}_{E,k}
+  +
+  A_E\Xi(R_{\Omega_k}).
+  \label{eq:short-range-source-window-joint-volume-rg-bound}
+\end{equation}
+Consequently every extracted cumulant in the \(E\)-window satisfies
+\begin{equation}
+  \left|
+    \partial_z^\beta W_{k,\Omega_k,E}(0)
+    -
+    \partial_z^\beta W_{\ast,E}(0)
+  \right|
+  \leq
+  \frac{\beta!}{\rho^\beta}
+  \left(
+    \epsilon^{\rm RG}_{E,k}
+    +
+    A_E\Xi(R_{\Omega_k})
+  \right).
+  \label{eq:short-range-source-window-joint-volume-rg-derivative-bound}
+\end{equation}
+Thus the finite-volume simulation or finite-volume constructive estimate may
+be used as thermodynamic Schwinger data only through a boundary-tail function
+and a scale schedule that makes the combined right side tend to zero for
+each fixed source window.
+
 \paragraph{Adjoint source blocking and smooth-test error.}
 The source normalization in
 \eqref{eq:block-spin-distribution-pairing} is not a convention that can be
