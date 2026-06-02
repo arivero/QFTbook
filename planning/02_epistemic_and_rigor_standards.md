@@ -111,10 +111,10 @@ explanatory phrase; universality is a statement about a specified limiting
 object and equivalence relation; reconstruction is a theorem only after its
 positivity, locality, covariance, and regularity hypotheses have been stated.
 
-## Claim Certification
+## Claim Admission
 
 Before a claim appears in polished prose, it must satisfy at least one
-certificate:
+status route:
 
 - it is a definition or convention introduced in the text;
 - it is derived in the text from named assumptions;
@@ -123,7 +123,12 @@ certificate:
 - it is a controlled approximation with expansion parameter and error class;
 - it is labelled formal, heuristic, conjectural, or open.
 
-Uncertified claims are draft debt.
+Claims with no declared status route are draft debt.  The word
+``certificate'' is reserved for a precise checkable proof object, such as a
+dual semidefinite-programming witness, an interval-arithmetic enclosure, or a
+formal proof term satisfying an explicitly stated verifier.  It is not a
+synonym for a calculation, a finite estimate, a literature citation, or a
+reviewer's assurance.
 
 Self-contained development is the default.  A nontrivial physics claim may not
 be imported from an external reference merely because the reference is sound.

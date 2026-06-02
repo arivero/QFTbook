@@ -239,7 +239,7 @@ of an overloaded symbol, update the local chapter first; update the
 backmatter guide only if the convention is meant to persist across chapters.
 Do not use the guide to justify an undefined local symbol.
 
-## Claim Certification Rule
+## Claim Status Rule
 
 Every load-bearing claim must be one of:
 
@@ -253,9 +253,9 @@ Every load-bearing claim must be one of:
 - formal calculation with formal status;
 - conjecture or open problem.
 
-Uncertified claims cannot appear in polished TeX.
+Claims with no declared status route cannot appear in polished TeX.
 
-A citation alone is not a certificate for a nontrivial physics claim. For
+A citation alone is not a proof object for a nontrivial physics claim. For
 central physics claims, the monograph should give a self-contained derivation
 or argument from the chapter's stated data. External theorem citations are
 permitted only when the theorem is a mathematical input whose hypotheses,
@@ -539,8 +539,9 @@ formal proof term, or a witness satisfying an explicitly stated verification
 predicate.  Otherwise use the honest mathematical name: Gram-matrix lower
 bound, Lipschitz estimate, distributional extension lemma, spectral
 diagonalization, flatness condition, finite-window bound, or exact arithmetic
-check.  Every finite check must also state what continuum or QFT theorem it
-does not prove.
+check.  Terms such as "certificate pass" or "certified theorem" are forbidden
+unless the text exhibits the verifier and the proof object.  Every finite
+check must also state what continuum or QFT theorem it does not prove.
 
 High-density clusters of these terms should be treated as an audit finding
 even when every individual occurrence is locally defensible.  When

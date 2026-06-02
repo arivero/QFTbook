@@ -21,7 +21,7 @@ resonances.
 - `Q_R`, `Q`: large-sphere Gauss-law charge approximants and limiting charge.
 - `H_q`, `U_q`, `Phi_infty(f)`: physical charged representation, its
   translation representation, and angular Gauss-law flux operator in the
-  nonconfining charged-sector datum.
+  nonconfining charged-sector hypothesis.
 - `Psi_{q,gamma}`: gauge-invariant noncompact charged creator with Wilson-line
   or Coulombic dressing.
 - `S_{gamma',gamma}`: compact oriented surface swept out by two Wilson-line
@@ -72,15 +72,15 @@ resonances.
   from the vacuum, provided the Gauss-law charge is closed on the local
   domain.  Thus a nonzero charged creator cannot be hidden inside the
   ordinary Haag--Ruelle almost-local hypothesis.
-- States the nonconfining charged-sector datum as an explicit hypothesis
+- States the nonconfining charged sector as an explicit hypothesis
   before dressed LSZ is formulated: a physical charged representation,
   boundary charge and angular flux operators, flux preservation by compact
   observables, finite-energy asymptotic content through an isolated charged
-  shell or an infraparticle threshold datum, noncompact charged creators with
+  shell or an infraparticle threshold structure, noncompact charged creators with
   nonzero asymptotic projection or coefficient, and tightness of truncated
   dressing energies.  A macroscopic string-energy law \(E(L)=\sigma L+o(L)\)
   with \(\sigma>0\) is recorded as absence of the finite-energy charged
-  asymptotic datum.
+  asymptotic sector.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
