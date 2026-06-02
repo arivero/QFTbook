@@ -611,6 +611,60 @@ def check_phi4_three_multiscale_geometric_bound():
             raise AssertionError("phi4_3 source-decorated OS growth envelope failed")
 
 
+def set_partitions(items):
+    """Return all set partitions of a finite tuple, as tuples of tuples."""
+    if not items:
+        return [()]
+    first, *rest = items
+    partitions = []
+    for partition in set_partitions(tuple(rest)):
+        partitions.append(((first,),) + partition)
+        for index, block in enumerate(partition):
+            new_block = tuple(sorted((first,) + block))
+            new_partition = list(partition)
+            new_partition[index] = new_block
+            partitions.append(tuple(new_partition))
+    return partitions
+
+
+def check_phi4_three_connected_to_full_growth_bookkeeping():
+    # The connected-to-full Schwinger reconstruction uses the partition
+    # identity S_n = sum_pi prod_{B in pi} C_B.  The monograph records the
+    # resulting factorial loss:
+    #   sum_pi A^{|pi|} prod_B (|B|!)^gamma
+    #   <= max(1,A)^n |Pi_n| (n!)^gamma
+    #   <= (e max(1,A))^n (n!)^{gamma+1}.
+    # Enumerate the finite partition sum and the exact Bell counts for n <= 7.
+    a = Fraction(3, 2)
+    gamma = 2
+    for n in range(1, 8):
+        partitions = set_partitions(tuple(range(n)))
+        partition_sum = Fraction(0)
+        for partition in partitions:
+            block_factor = Fraction(1)
+            for block in partition:
+                block_factor *= math.factorial(len(block)) ** gamma
+            partition_sum += (a ** len(partition)) * block_factor
+
+        elementary_bound = (
+            (max(Fraction(1), a) ** n)
+            * len(partitions)
+            * (math.factorial(n) ** gamma)
+        )
+        if partition_sum > elementary_bound:
+            raise AssertionError("phi4_3 moment-cumulant elementary bound failed")
+
+        bell_injection_bound = n**n
+        if len(partitions) > bell_injection_bound:
+            raise AssertionError("phi4_3 Bell injection bound failed")
+
+        # Avoid floating-point e in the public check: for n <= 7, the cruder
+        # integer bound 3^n n! dominates n^n and is stronger than needed here.
+        factorial_bound = (3**n) * math.factorial(n)
+        if bell_injection_bound > factorial_bound:
+            raise AssertionError("phi4_3 Bell factorial bound failed")
+
+
 def hard_core_source_derivatives(weights, incompatible_edges, left_source, right_source):
     """Return Z and first/mixed source derivatives for a finite hard-core gas."""
     n = len(weights)
@@ -2096,6 +2150,7 @@ def main():
     check_phi4_three_two_loop_mass_coordinate()
     check_phi4_three_finite_cutoff_stability_bound()
     check_phi4_three_multiscale_geometric_bound()
+    check_phi4_three_connected_to_full_growth_bookkeeping()
     check_finite_polymer_source_cumulant_factorization()
     check_spde_ou_and_smoothing_normalizations()
     check_phi4_two_path_space_increment_arithmetic()
@@ -2140,7 +2195,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

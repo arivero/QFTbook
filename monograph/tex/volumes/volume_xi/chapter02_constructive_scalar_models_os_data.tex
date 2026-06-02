@@ -1300,6 +1300,69 @@ corresponding OS growth bound.  Proving
 part of the still-open model-specific construction.
 \end{construction}
 
+\paragraph{Connected-to-full hierarchy bookkeeping.}
+The OS input is the full Schwinger hierarchy, whereas the cluster expansion
+first produces connected source coefficients.  This passage is exact but it is
+not free at the level of growth constants.  Let \(\Pi_n\) be the set of
+partitions of \(\{1,\ldots,n\}\).  If the finite-regulator connected
+coefficients \(C_B^{(J,\Lambda)}\), \(B\subset\{1,\ldots,n\}\), are defined by
+differentiating \(\log Z_{J,\Lambda}\), then the corresponding full source
+coefficient is
+\begin{equation}
+  S_{1\cdots n}^{(J,\Lambda)}
+  =
+  \sum_{\pi\in\Pi_n}
+  \prod_{B\in\pi} C_B^{(J,\Lambda)} .
+  \label{eq:phi-four-three-moment-cumulant-reconstruction}
+\end{equation}
+This is the finite moment--cumulant identity applied to
+\(Z_{J,\Lambda}(\lambda)=\exp\log Z_{J,\Lambda}(\lambda)\).  Taking the
+ultraviolet and volume limits term by term is justified only after the
+connected coefficients have uniform bounds and Cauchy estimates such as
+\eqref{eq:phi-four-three-source-seminorm-bound} and
+\eqref{eq:phi-four-three-source-ultraviolet-cauchy}.
+
+The cost in the OS growth envelope is explicit.  Suppose, for one declared
+test-seminorm family, that every connected block obeys
+\begin{equation}
+  |C_B^{(J,\Lambda)}|
+  \leq
+  A B_0^{|B|}(|B|!)^\gamma
+  \prod_{r\in B}p_r(f_r)
+  \label{eq:phi-four-three-connected-growth-envelope}
+\end{equation}
+uniformly in \(J,\Lambda\), with \(A,B_0,\gamma\) independent of the block.
+Then \eqref{eq:phi-four-three-moment-cumulant-reconstruction} gives
+\begin{equation}
+  |S_{1\cdots n}^{(J,\Lambda)}|
+  \leq
+  B_0^n
+  \left(\prod_{r=1}^n p_r(f_r)\right)
+  \sum_{\pi\in\Pi_n}
+  A^{|\pi|}
+  \prod_{B\in\pi}(|B|!)^\gamma .
+  \label{eq:phi-four-three-full-from-connected-growth-sum}
+\end{equation}
+For every partition \(\pi\), \(\prod_{B\in\pi}|B|!\leq n!\).  Also
+\(|\Pi_n|\leq n^n\leq e^n n!\).  Hence
+\begin{equation}
+  |S_{1\cdots n}^{(J,\Lambda)}|
+  \leq
+  \bigl(e B_0\max\{1,A\}\bigr)^n
+  (n!)^{\gamma+1}
+  \prod_{r=1}^n p_r(f_r).
+  \label{eq:phi-four-three-full-growth-envelope}
+\end{equation}
+Thus a connected envelope of the OS-II form produces a full hierarchy with the
+same linear seminorm-order control but with one additional factorial power from
+the partition sum.  This is still admissible for the OS-II condition
+\eqref{eq:os-linear-growth-condition} after replacing \(\gamma\) by
+\(\gamma+1\), provided the test-seminorm family is stable under the
+translation reduction used in Chapter~\ref{ch:os-reconstruction}.  The
+statement does not prove the model-specific connected envelope; it records the
+exact growth loss that a constructive proof must budget before invoking OS
+reconstruction.
+
 The difficult model-specific part of the \(\Phi^4_3\) construction is now
 located precisely: one must prove
 \eqref{eq:phi-four-three-scale-decay-bound} for the actual phase-cell

@@ -636,8 +636,10 @@ Current checks:
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, a finite hard-core polymer source-cumulant check showing
   factorization without an incompatibility bridge and a nonzero connected
-  cumulant with such a bridge, and the interval-recursion arithmetic in the
-  rough-forcing energy-to-Besov bootstrap.
+  cumulant with such a bridge, exact set-partition enumeration for the
+  connected-to-full Schwinger hierarchy growth loss, and the
+  interval-recursion arithmetic in the rough-forcing energy-to-Besov
+  bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   tree-level Symanzik cutoff artifact and improved-kernel cancellation, the

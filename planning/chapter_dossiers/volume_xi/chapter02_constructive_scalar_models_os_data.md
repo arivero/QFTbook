@@ -48,6 +48,10 @@
   are included in the same polymer norm, yielding Schwinger-distribution
   seminorm bounds, ultraviolet Cauchy estimates for source derivatives, and
   an explicit OS-growth proof obligation.
+- Connected-to-full Schwinger hierarchy bookkeeping: the exact
+  moment-cumulant partition formula reconstructs full source coefficients
+  from connected coefficients, with an explicit Bell-number/factorial growth
+  loss that must be included in the OS-II growth budget.
 - Refined proof obligation for a self-contained monograph proof of the quoted
   \(\Phi^4_3\) constructive output theorem: the remaining gap is now the
   model-specific derivation of the phase-cell activities and their
@@ -84,6 +88,7 @@
 | \(C_I\) | source-decorated scale-bound constant for the subset \(I\) of source labels |
 | \(C_{1\cdots n}^{(J,\Lambda)}\) | finite-volume, finite-cutoff connected \(n\)-source coefficient obtained by differentiating \(\log Z_{J,\Lambda}(\lambda)\) |
 | \(A_n\) | source-derivative cluster bound constant; OS reconstruction requires an admissible growth envelope in \(n\) |
+| \(\Pi_n\) | set of partitions of \(\{1,\ldots,n\}\) used in the moment-cumulant reconstruction of the full Schwinger coefficient |
 | \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
 | \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
 | \(m_{\mathrm E}\) | Euclidean exponential-clustering rate entering the spectral gap argument |
@@ -147,13 +152,20 @@
     applied to decorated vertices gives uniform \(n\)-source bounds and a
     geometric ultraviolet tail.  The model-specific proof must still supply
     these decorated bounds and an OS-admissible growth envelope for \(A_n\).
-13. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+13. The full Schwinger coefficient is obtained from connected coefficients by
+    summing over set partitions.  If connected block bounds have envelope
+    \(A B_0^{|B|}(|B|!)^\gamma\), then the full coefficient has the explicit
+    bound
+    \((eB_0\max\{1,A\})^n(n!)^{\gamma+1}\prod_r p_r(f_r)\).  The additional
+    factorial power is part of the OS-II growth budget and is not hidden in the
+    word "connected."
+14. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
    summation, reflection-positivity, and ultraviolet-Cauchy components are
    now proved locally; the remaining open proof obligation is the
    model-specific multiscale estimate generating their hypotheses.
-14. Constructive route comparison requires equality of Schwinger functions in
+15. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
@@ -223,6 +235,13 @@
   derivative bounds and an ultraviolet Cauchy estimate; the remaining
   constructive obligation is the model-specific derivation of those
   decorated bounds from the actual \(\Phi^4_3\) phase-cell expansion.
+- 2026-06-02 issue #581/#608 connected-to-full growth pass: the source
+  discussion now includes the exact moment-cumulant partition formula and the
+  resulting growth-budget loss from connected Schwinger coefficients to the
+  full hierarchy needed by OS reconstruction.  The companion check enumerates
+  finite set partitions and verifies the Bell/factorial bound in exact
+  arithmetic.  This closes a bridge in the abstract proof stack while leaving
+  the model-specific \(\Phi^4_3\) activity estimates open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
   normal-ordered polynomial stability bound from proposition form to worked
   prose.  The lower bound remains as the first elementary stability estimate,
