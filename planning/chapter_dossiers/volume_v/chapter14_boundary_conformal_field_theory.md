@@ -78,9 +78,13 @@
   operator-valued distributions on common domains, contour/residue
   prescriptions for FZZT-to-ZZ continuation, and continuous multilinear
   sewing maps for closed and open gluing.
-- States Cardy-Lewellen sewing status as a `quotedtheorem`, replaces the vague
-  boundary `g`-theorem statement by the boundary entropy gradient formula with
-  explicit trace, entropy, metric, and positivity hypotheses, derives
+- States the rational Cardy-Lewellen construction boundary as a
+  `quotedtheorem` with a narrowed role: special symmetric Frobenius algebra
+  objects and module categories supply local finite-categorical sewing data
+  for rational examples, while converse/classification and all-surface
+  analytic sewing remain external.  The chapter replaces the vague boundary
+  `g`-theorem statement by the boundary entropy gradient formula with explicit
+  trace, entropy, metric, and positivity hypotheses, derives
   \(g_{\rm UV}\ge g_{\rm IR}\) from it, and adds an `openproblem` for
   nonrational/continuous-spectrum BCFT sewing.
 - Expands the finite spectral mechanism behind the boundary entropy gradient
@@ -95,6 +99,12 @@
   `dim Hom_A(M tensor U_i,N)`, boundary OPE composition by \(A\)-linear
   morphisms, the \(A=1\) reduction to diagonal Cardy boundary spectra, and
   the bimodule formula for closed bulk multiplicities.
+- Adds the finite matrix-algebra model of the Frobenius cutting move:
+  for \(A=\operatorname{Mat}_d(\mathbb C)\),
+  \(\Delta(E_{ij})=\sum_r E_{ir}\otimes E_{rj}\), the two Frobenius sliding
+  maps and \(\Delta m\) agree on \(E_{ij}\otimes E_{k\ell}\), and
+  \(m\Delta=d\,\operatorname{id}\).  This is the exact algebraic content of
+  the local topological line move used in rational boundary sewing.
 - Adds the finite classifying-center model for non-diagonal rational sewing:
   for \(A_{\rm fin}=\oplus_r \operatorname{Mat}_{d_r}(\mathbb C)\), central
   primitive idempotents \(e_r\) act by scalar characters on simple boundary
@@ -144,12 +154,12 @@
    sewing theorem.  A nonrational BCFT construction must also produce test
    spaces, open spectral measures, operator domains, contour prescriptions,
    and continuous sewing maps with determinant-line bookkeeping.
-14. Cardy-Lewellen sewing and the boundary entropy gradient formula are theorem
-   inputs; monotonicity of \(g\) is derived from the positive gradient formula,
-   not quoted as an independent endpoint-classification statement.  The
-   positivity mechanism of the gradient metric is spectral: in a finite
-   regulator each positive boundary gap contributes the weight
-   `2 kappa^2/(Delta(Delta^2+kappa^2))`.
+14. Rational Cardy-Lewellen construction and the boundary entropy gradient
+   formula are theorem-boundary inputs; monotonicity of \(g\) is derived from
+   the positive gradient formula, not quoted as an independent
+   endpoint-classification statement.  The positivity mechanism of the
+   gradient metric is spectral: in a finite regulator each positive boundary
+   gap contributes the weight `2 kappa^2/(Delta(Delta^2+kappa^2))`.
 15. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
    boundary sewing into module associativity and chiral associator pentagon
    identities; analytic all-surface sewing remains the external theorem
@@ -174,8 +184,9 @@
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
-  Frobenius-algebra module multiplicity formula, the positive spectral weight
-  in the boundary entropy gradient metric, Chan--Paton direct-sum
+  Frobenius-algebra module multiplicity formula, the matrix-unit Frobenius
+  cutting move and specialness scalar, the positive spectral weight in the
+  boundary entropy gradient metric, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, compact-boson zero-mode
   exchange under T-duality, and the Liouville FZZT/ZZ hyperbolic identities.
 
@@ -255,3 +266,9 @@
   closed test-space topology, distributional boundary states, open spectral
   positivity, boundary-field domains, pole prescriptions, continuous gluing,
   and anomaly-line compatibility.
+- 2026-06-02 rational Frobenius-boundary tightening pass: narrowed the
+  Cardy-Lewellen quoted theorem from broad classification language to the
+  construction theorem-boundary actually used in the chapter, and added the
+  finite matrix-unit Frobenius cutting move
+  \((m\otimes1)(1\otimes\Delta)=\Delta m=(1\otimes m)(\Delta\otimes1)\)
+  plus \(m\Delta=d\,1\), with a paired exact calculation check.

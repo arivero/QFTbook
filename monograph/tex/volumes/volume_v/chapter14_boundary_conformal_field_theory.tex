@@ -1067,17 +1067,17 @@ data obey additional compatibility equations from sewing a disk with two
 bulk fields and one boundary field in different orders, and from comparing
 bulk, boundary, and defect factorizations.
 
-\begin{quotedtheorem}[Cardy--Lewellen sewing status]
+\begin{quotedtheorem}[Rational Cardy--Lewellen construction boundary]
 \label{qthm:cardy-lewellen-sewing-status}
-For rational CFTs satisfying the standard analytic sewing hypotheses, the
-Cardy--Lewellen equations are the genus-zero consistency equations for
-bulk-boundary and boundary-boundary OPE data.  In the modern categorical
-formulation, full rational CFTs with boundaries are constructed from
-suitable Frobenius algebra objects in the modular tensor category of chiral
-data; boundary conditions are modules over that algebra, and the sewing
-constraints follow from the Frobenius and module identities.  This chapter
-uses that theorem as a classification and construction result for rational
-examples, not as a proof of nonrational or continuous-spectrum BCFT sewing.
+For rational chiral data satisfying the analytic sewing hypotheses of a
+modular functor, a special symmetric Frobenius algebra object \(A\) in the
+chiral modular tensor category produces a full rational CFT with boundaries;
+boundary conditions are left \(A\)-modules, and the genus-zero
+Cardy--Lewellen equations follow from the Frobenius and module identities.
+Converses and classification statements require additional equivalence data
+and are not used below.  This chapter uses only the local finite-categorical
+consequences developed in the following paragraphs, not a proof of
+nonrational or continuous-spectrum BCFT sewing.
 \end{quotedtheorem}
 
 \paragraph{Algebraic core of the rational boundary construction.}
@@ -1137,6 +1137,43 @@ conditions for this full CFT are left \(A\)-modules
   \qquad
   \rho_M(\eta\otimes\operatorname{id}_M)=\operatorname{id}_M .
 \]
+
+The Frobenius identity is the algebraic form of the elementary cutting move,
+not an abstract decoration.  In the ordinary finite model
+\(A=\operatorname{Mat}_d(\mathbb C)\), take matrix units \(E_{ij}\), ordinary
+multiplication \(m\), and trace counit \(\varepsilon(X)=\operatorname{Tr}X\).
+The coproduct dual to multiplication with respect to
+\(\varepsilon(XY)\) is
+\begin{equation}
+  \Delta(E_{ij})
+  =
+  \sum_{r=1}^{d} E_{ir}\otimes E_{rj}.
+  \label{eq:bcft-matrix-frobenius-coproduct}
+\end{equation}
+Then, on \(E_{ij}\otimes E_{k\ell}\),
+\begin{equation}
+  (m\otimes\operatorname{id})
+  (\operatorname{id}\otimes\Delta)
+  =
+  \Delta m
+  =
+  (\operatorname{id}\otimes m)
+  (\Delta\otimes\operatorname{id})
+  =
+  \delta_{jk}\sum_{r=1}^{d} E_{ir}\otimes E_{r\ell},
+  \label{eq:bcft-matrix-frobenius-cutting-move}
+\end{equation}
+and
+\begin{equation}
+  m\Delta(E_{ij})=d\,E_{ij}.
+  \label{eq:bcft-matrix-frobenius-specialness}
+\end{equation}
+Thus sliding an \(A\)-line through a multiplication junction is exactly the
+Frobenius identity, while a contractible \(A\)-loop contributes the fixed
+specialness scalar.  The categorical ribbon construction replaces these
+matrix units by dual bases of morphism spaces and inserts associators,
+braidings, and twists; the local algebraic reason for genus-zero boundary
+sewing is already visible in \eqref{eq:bcft-matrix-frobenius-cutting-move}.
 
 This language converts the open sector into a finite-dimensional statement.
 For two boundary conditions \(M,N\), the multiplicity of chiral type \(i\)

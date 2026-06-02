@@ -255,6 +255,165 @@ def check_cardy_unit_algebra_module_multiplicities() -> None:
                 )
 
 
+MatrixUnit = tuple[int, int]
+TensorUnit = tuple[MatrixUnit, MatrixUnit]
+
+
+def matrix_unit_product(
+    left: MatrixUnit,
+    right: MatrixUnit,
+) -> dict[MatrixUnit, Fraction]:
+    i, j = left
+    k, ell = right
+    if j != k:
+        return {}
+    return {(i, ell): Fraction(1)}
+
+
+def matrix_unit_trace(unit: MatrixUnit) -> Fraction:
+    i, j = unit
+    return Fraction(1) if i == j else Fraction(0)
+
+
+def matrix_frobenius_delta(unit: MatrixUnit, dimension: int) -> dict[TensorUnit, Fraction]:
+    i, j = unit
+    return {
+        ((i, r), (r, j)): Fraction(1)
+        for r in range(dimension)
+    }
+
+
+def add_tensor_term(
+    target: dict[TensorUnit, Fraction],
+    tensor_unit: TensorUnit,
+    coefficient: Fraction,
+) -> None:
+    target[tensor_unit] = target.get(tensor_unit, Fraction(0)) + coefficient
+    if target[tensor_unit] == 0:
+        del target[tensor_unit]
+
+
+def frobenius_left(
+    left: MatrixUnit,
+    right: MatrixUnit,
+    dimension: int,
+) -> dict[TensorUnit, Fraction]:
+    result: dict[TensorUnit, Fraction] = {}
+    for (right_left, right_right), delta_coefficient in matrix_frobenius_delta(
+        right,
+        dimension,
+    ).items():
+        for product_unit, product_coefficient in matrix_unit_product(
+            left,
+            right_left,
+        ).items():
+            add_tensor_term(
+                result,
+                (product_unit, right_right),
+                delta_coefficient * product_coefficient,
+            )
+    return result
+
+
+def frobenius_middle(
+    left: MatrixUnit,
+    right: MatrixUnit,
+    dimension: int,
+) -> dict[TensorUnit, Fraction]:
+    result: dict[TensorUnit, Fraction] = {}
+    for product_unit, product_coefficient in matrix_unit_product(left, right).items():
+        for tensor_unit, delta_coefficient in matrix_frobenius_delta(
+            product_unit,
+            dimension,
+        ).items():
+            add_tensor_term(result, tensor_unit, product_coefficient * delta_coefficient)
+    return result
+
+
+def frobenius_right(
+    left: MatrixUnit,
+    right: MatrixUnit,
+    dimension: int,
+) -> dict[TensorUnit, Fraction]:
+    result: dict[TensorUnit, Fraction] = {}
+    for (left_left, left_right), delta_coefficient in matrix_frobenius_delta(
+        left,
+        dimension,
+    ).items():
+        for product_unit, product_coefficient in matrix_unit_product(
+            left_right,
+            right,
+        ).items():
+            add_tensor_term(
+                result,
+                (left_left, product_unit),
+                delta_coefficient * product_coefficient,
+            )
+    return result
+
+
+def check_matrix_frobenius_cutting_move() -> None:
+    """Check the finite matrix-unit version of rational BCFT cutting moves."""
+
+    for dimension in (2, 3, 4):
+        basis = [
+            (i, j)
+            for i in range(dimension)
+            for j in range(dimension)
+        ]
+        for left in basis:
+            for right in basis:
+                left_move = frobenius_left(left, right, dimension)
+                middle_move = frobenius_middle(left, right, dimension)
+                right_move = frobenius_right(left, right, dimension)
+                assert_equal(
+                    f"matrix Frobenius left=middle d={dimension} {left},{right}",
+                    left_move,
+                    middle_move,
+                )
+                assert_equal(
+                    f"matrix Frobenius right=middle d={dimension} {left},{right}",
+                    right_move,
+                    middle_move,
+                )
+
+                product_left_right = matrix_unit_product(left, right)
+                product_right_left = matrix_unit_product(right, left)
+                trace_left_right = sum(
+                    coefficient * matrix_unit_trace(unit)
+                    for unit, coefficient in product_left_right.items()
+                )
+                trace_right_left = sum(
+                    coefficient * matrix_unit_trace(unit)
+                    for unit, coefficient in product_right_left.items()
+                )
+                assert_equal(
+                    f"symmetric matrix trace pairing d={dimension} {left},{right}",
+                    trace_left_right,
+                    trace_right_left,
+                )
+
+        for unit in basis:
+            collapsed: dict[MatrixUnit, Fraction] = {}
+            for (left, right), delta_coefficient in matrix_frobenius_delta(
+                unit,
+                dimension,
+            ).items():
+                for product_unit, product_coefficient in matrix_unit_product(
+                    left,
+                    right,
+                ).items():
+                    collapsed[product_unit] = (
+                        collapsed.get(product_unit, Fraction(0))
+                        + delta_coefficient * product_coefficient
+                    )
+            assert_equal(
+                f"matrix Frobenius specialness d={dimension} {unit}",
+                collapsed,
+                {unit: Fraction(dimension)},
+            )
+
+
 def center_multiply(
     left: tuple[Fraction, ...],
     right: tuple[Fraction, ...],
@@ -567,6 +726,7 @@ def main() -> None:
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
     check_cardy_unit_algebra_module_multiplicities()
+    check_matrix_frobenius_cutting_move()
     check_finite_classifying_center_characters()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
@@ -578,8 +738,8 @@ def main() -> None:
     check_liouville_degenerate_shift_sum()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
-        "finite-center, Chan-Paton, compact-boson, and Liouville-boundary "
-        "checks passed."
+        "matrix-Frobenius, finite-center, Chan-Paton, compact-boson, and "
+        "Liouville-boundary checks passed."
     )
 
 
