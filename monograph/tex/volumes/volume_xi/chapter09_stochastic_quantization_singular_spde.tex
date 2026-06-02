@@ -9581,6 +9581,169 @@ the \(L^2\)-bound to \(L^p\).  Multiplication by the model normalization
 \eqref{eq:spde-x2y-high-chaos-normalized-slack}.
 \end{proof}
 
+\begin{proposition}[Scalar tested high-chaos \(X^2Y\) parameter-edge bound]
+\label{prop:spde-x2y-high-chaos-tested-coordinate-edge-bound}
+Keep the hypotheses of
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}.  Let
+\[
+  \mathcal X_{\Pi,m}=K\times[1/2,1],
+  \qquad
+  d_{\Pi,m}((z,a),(z',a'))=2^m\|z-z'\|_{\mathfrak s}+|a-a'|,
+\]
+and let
+\[
+  \varphi_u(a_0)
+  =
+  \delta_u^{-Q}\varphi(\mathsf D_{\delta_u}^{-1}(a_0-z)),
+  \qquad
+  \delta_u=2^{-m}a,\qquad
+  \|\varphi\|_{C^r}\leq1 ,
+\]
+with \(r\geq1\).  Define
+\[
+  Z_{\epsilon,m,u}^{X^2Y,\geq3}(\varphi)
+  =
+  I_5(F_{X^2Y,5}^{\varphi_u})
+  +
+  I_3(F_{X^2Y,3}^{\varphi_u}) .
+\]
+Then, whenever \(d_{\Pi,m}(u,v)\leq1\),
+\begin{equation}
+  \mathbb E
+  \left|
+    Z_{\epsilon,m,v}^{X^2Y,\geq3}(\varphi)
+    -
+    Z_{\epsilon,m,u}^{X^2Y,\geq3}(\varphi)
+  \right|^2
+  \leq
+  C_\theta\,2^m\,d_{\Pi,m}(u,v)^{2\theta},
+  \qquad 0<\theta\leq1 .
+  \label{eq:spde-x2y-high-chaos-edge-l2}
+\end{equation}
+Consequently, for every even \(p\geq2\),
+\begin{equation}
+  \left\|
+    2^{-(1/2+5\kappa)m}
+    \bigl(
+      Z_{\epsilon,m,v}^{X^2Y,\geq3}(\varphi)
+      -
+      Z_{\epsilon,m,u}^{X^2Y,\geq3}(\varphi)
+    \bigr)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_{p,\theta}\,
+  2^{-5\kappa m}d_{\Pi,m}(u,v)^\theta .
+  \label{eq:spde-x2y-high-chaos-edge-normalized}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The transported test-density estimate
+\eqref{eq:spde-xy-test-density-lone-edge} is deterministic and applies here
+unchanged:
+\[
+  \|\varphi_v-\varphi_u\|_{L^1}
+  \leq C d_{\Pi,m}(u,v)^\theta ,
+\]
+and the two supports lie in one parabolic ball of radius \(C2^{-m}\).  The
+graph estimate proved inside
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound} is
+homogeneous in the two external test densities: replacing the
+\(L^1\)-normalized test in that proof by a signed test \(\psi\) supported in
+the same parabolic ball adds the factor \(\|\psi\|_{L^1}^2\) to the covariance
+integral and changes no scale exponent.  Applying this homogeneous form to
+\(\psi=\varphi_v-\varphi_u\), with \(\delta\simeq2^{-m}\), gives
+\eqref{eq:spde-x2y-high-chaos-edge-l2}.  The difference is still a finite
+sum of homogeneous Wiener chaoses of orders \(5\) and \(3\).  The finite-chaos
+moment estimate converts the square root of
+\eqref{eq:spde-x2y-high-chaos-edge-l2} to an \(L^p\)-bound.  Multiplication
+by the model normalization \(2^{-(1/2+5\kappa)m}\) leaves the scale factor
+\(2^{-5\kappa m}\), proving
+\eqref{eq:spde-x2y-high-chaos-edge-normalized}.
+\end{proof}
+
+\begin{proposition}[Scalar tested high-chaos \(X^2Y\) cutoff-shell gain]
+\label{prop:spde-x2y-high-chaos-tested-coordinate-cutoff-shell-gain}
+Keep the notation and graph hypotheses of
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}.  Let
+\[
+  Z_{n,m,u}^{X^2Y,\geq3}(\varphi)
+  =
+  I_5(F_{n,X^2Y,5}^{\varphi_u})
+  +
+  I_3(F_{n,X^2Y,3}^{\varphi_u})
+\]
+be the high-chaos scalar tested coordinate at dyadic ultraviolet cutoff
+\(n\).  Assume the cutoff difference
+\(Z_{n+1,m,u}^{X^2Y,\geq3}-Z_{n,m,u}^{X^2Y,\geq3}\) has the following
+admissible shell representation: after expanding the second moment by
+\eqref{eq:spde-x2y-tested-chaos-expansion} and
+\eqref{eq:spde-x2y-kernel-norm-integrals}, every term is a finite linear
+combination of the five high-chaos graph integrals in
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}, with at
+least one heat or covariance edge replaced by a cutoff-shell block whose
+dyadic scale is \(\geq n-c_0\).  The shell block satisfies the same support
+and size bounds as the corresponding ordinary dyadic block, with constants
+independent of \(n\).
+
+Then, for every \(0<\rho<1/2\),
+\begin{equation}
+  \mathbb E
+  \left|
+    Z_{n+1,m,u}^{X^2Y,\geq3}(\varphi)
+    -
+    Z_{n,m,u}^{X^2Y,\geq3}(\varphi)
+  \right|^2
+  \leq
+  C_\rho\,2^m\,2^{-2\rho(n-m)_+}.
+  \label{eq:spde-x2y-high-chaos-cutoff-shell-l2}
+\end{equation}
+Consequently, for every even \(p\geq2\),
+\begin{equation}
+  \left\|
+    2^{-(1/2+5\kappa)m}
+    \bigl(
+      Z_{n+1,m,u}^{X^2Y,\geq3}(\varphi)
+      -
+      Z_{n,m,u}^{X^2Y,\geq3}(\varphi)
+    \bigr)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_{p,\rho}\,
+  2^{-5\kappa m}2^{-\rho(n-m)_+}.
+  \label{eq:spde-x2y-high-chaos-cutoff-shell-normalized}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let \(M=m+O(1)\) be the largest overall scale interacting with the two
+scale-\(2^{-m}\) test densities.  Without the cutoff-shell constraint,
+Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound} leaves
+the overall sum
+\[
+  \sum_{0\leq N\leq M+O(1)}2^N=O(2^m).
+\]
+Now impose the shell condition.  If the shell edge is not at the overall
+scale, it lies inside a proper subcluster whose relative-scale gap is at
+least \((n-M-C)_+\).  The smallest proper-subgraph deficit among the five
+high-chaos \(X^2Y\) graphs is \(1\), so that sector gains
+\[
+  2^{-(n-M-C)_+}.
+\]
+If the shell edge is at the overall scale, then \(n\leq M+C\), and the same
+bound is absorbed into the constant.  Thus every graph contribution is
+bounded by
+\[
+  C2^m2^{-(n-m)_+}.
+\]
+Since \(0<\rho<1/2\), this implies the weaker bound
+\eqref{eq:spde-x2y-high-chaos-cutoff-shell-l2}.  The cutoff difference is a
+finite sum of homogeneous chaoses of orders \(5\) and \(3\), so the
+finite-chaos moment estimate and the normalization
+\(2^{-(1/2+5\kappa)m}\) give
+\eqref{eq:spde-x2y-high-chaos-cutoff-shell-normalized}.
+\end{proof}
+
 \begin{remark}[Scalar shell gain and projective cutoff input]
 \label{rem:spde-xy-scalar-shell-versus-projective-cutoff}
 Estimate~\eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized} is a
@@ -9588,8 +9751,12 @@ scale-separated scalar Cauchy estimate.  It identifies where the ultraviolet
 shell gain enters the \(XY\) graph analysis.
 Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound} supplies
 the parallel scalar base estimate for the fifth- and third-chaos pieces of
-\(X^2Y\).  The remaining \(X^2Y\) first-chaos component is different: its
-local subtraction produces covariance increments, treated below in
+\(X^2Y\), while
+Propositions~\ref{prop:spde-x2y-high-chaos-tested-coordinate-edge-bound} and
+\ref{prop:spde-x2y-high-chaos-tested-coordinate-cutoff-shell-gain} supply the
+corresponding scalar edge and shell layers.  The remaining \(X^2Y\)
+first-chaos component is different: its local subtraction produces covariance
+increments, treated below in
 Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound}.
 Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} then
 converts this scalar factor into a scale-summed cutoff rate whenever the

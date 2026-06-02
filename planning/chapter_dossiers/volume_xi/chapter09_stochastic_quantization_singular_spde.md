@@ -240,6 +240,12 @@ data.
 - `Z_{\epsilon,\delta,z}^{X^2Y,\ge 3}`: the fifth- plus third-chaos scalar
   tested part of the locally subtracted \(X^2Y\) coordinate, separated from
   the first-chaos covariance-increment sector.
+- `Z_{\epsilon,m,u}^{X^2Y,\ge 3}`: same-scale scalar tested high-chaos
+  \(X^2Y\) coordinate on \(K\times[1/2,1]\), used for parameter-edge
+  estimates in base point and physical test scale.
+- `Z_{n,m,u}^{X^2Y,\ge 3}`: dyadic-cutoff scalar tested high-chaos
+  \(X^2Y\) coordinate used to isolate the ultraviolet shell gain in
+  \(Z_{n+1,m,u}^{X^2Y,\ge3}-Z_{n,m,u}^{X^2Y,\ge3}\).
 - `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
@@ -667,8 +673,9 @@ data.
   abstract \(E_r'\)-projective shell bridge and its nonlinear
   \(\Pi\)-coordinate specialization are now supplied separately; the
   remaining obligation is the regulator-specific projective kernel estimate
-  that promotes the scalar \(XY\) shell gain, and the corresponding \(X^2Y\)
-  estimates, to those abstract hypotheses.
+  that promotes the scalar \(XY\) shell gain and the full \(X^2Y\) shell
+  gain, including the first-chaos covariance-increment sector, to those
+  abstract hypotheses.
 - Proves the scalar tested high-chaos \(X^2Y\) estimate separately from the
   locally subtracted first-chaos sector.  The three fifth-chaos graphs and
   two third-chaos graphs have total singular degree
@@ -677,8 +684,20 @@ data.
   relative-scale sums are geometric.  The remaining overall-scale sum gives
   \(\mathbb E|Z_{\epsilon,\delta,z}^{X^2Y,\ge3}|^2=O(\delta^{-1})\), hence
   \(\|\delta^{1/2+5\kappa}Z_{\epsilon,\delta,z}^{X^2Y,\ge3}\|_{L^p}
-  =O(\delta^{5\kappa})\).  The only logarithmic slack in scalar \(X^2Y\)
-  control now comes from the first-chaos covariance-increment estimate.
+  =O(\delta^{5\kappa})\).  The same homogeneous graph estimate gives the
+  same-scale parameter-edge bound
+  \[
+    \mathbb E|Z_{\epsilon,m,v}^{X^2Y,\ge3}
+      -Z_{\epsilon,m,u}^{X^2Y,\ge3}|^2
+    \le C_\theta 2^m d_{\Pi,m}(u,v)^{2\theta},
+  \]
+  hence \(2^{-5\kappa m}d_{\Pi,m}(u,v)^\theta\) after model normalization.
+  If one heat or covariance edge is forced into the ultraviolet cutoff shell,
+  the minimum proper-subgraph deficit gives
+  \(C_\rho2^m2^{-2\rho(n-m)_+}\) in variance and
+  \(2^{-5\kappa m}2^{-\rho(n-m)_+}\) after normalization, for every
+  \(0<\rho<1/2\).  The only logarithmic slack in scalar \(X^2Y\) control now
+  comes from the first-chaos covariance-increment estimate.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -1245,6 +1264,17 @@ data maps.
   high-chaos input beneath the nonlinear \(\Pi\)-coordinate criterion; the
   full regulator-specific \(E_r'\)-projective kernel estimates and invariant
   law/OS assembly remain open.
+- 2026-06-02 issue #608/#582 \(X^2Y\) high-chaos edge/shell pass: added the
+  same-scale parameter-edge and dyadic cutoff-shell estimates for the
+  fifth- and third-chaos \(X^2Y\) sector.  The edge proof uses the
+  homogeneous external-test-density form of the graph estimate, not a new
+  normalization convention.  The shell proof records the admissible
+  shell-representation hypothesis and uses the minimum proper-subgraph
+  deficit \(1\) to retain any \(0<\rho<1/2\) after passing to \(L^p\).  The
+  companion calculation check verifies the variance exponent, normalized
+  slack, Holder edge exponent, and shell-gain ceiling.  The first-chaos
+  covariance-increment sector, \(E_r'\)-projective estimates, invariant-law
+  comparison, and OS assembly remain open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck
