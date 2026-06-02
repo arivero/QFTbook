@@ -432,8 +432,10 @@ Current checks:
   plus finite spectral-moment identities.  It also verifies finite variational ansatz
   identities: energy variance as residual norm, spectral and ground-projector
   bounds, tangent-gradient formula, and local-energy mean/variance
-  identities used by sampled neural-state calculations, and the finite
-  cross-method compatibility bound for comparing lattice, Hamiltonian
+  identities used by sampled neural-state calculations, the finite
+  transfer-operator spectral expansion and effective-mass diagnostic for
+  matrix-product-state correlators, and the finite cross-method compatibility
+  bound for comparing lattice, Hamiltonian
   truncation, and DLCQ coordinates after the target observable and
   normalization maps have been declared.  The same check imports the
   reader-facing `qft_scripts/benchmark_manifest_consistency.py` smoke

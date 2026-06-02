@@ -1597,6 +1597,93 @@ are finite evidence coordinates.  The continuum claim is the additional
 statement that those coordinates control the regulator limit in a declared
 topology.
 
+\paragraph{Finite transfer-operator correlation length.}
+The most common tensor-network continuum diagnostic is the transfer-operator
+gap.  Here is the finite statement in the form needed for QFT use.  For a
+translation-invariant infinite MPS with tensors \(A^i\), define the finite
+transfer operator
+\[
+  \mathbb E(X)
+  =
+  \sum_i A^i X (A^i)^\dagger
+\]
+on \(\operatorname{Mat}_{\chi\times\chi}(\mathbb C)\).  Assume, for this
+finite ansatz, that \(\mathbb E\) has a simple eigenvalue
+\(\lambda_0=1\), positive left and right eigenvectors \(\ell,r\) normalized
+by \(\ell(r)=1\), and remaining eigenvalues
+\(\lambda_\alpha\) with \(|\lambda_\alpha|<1\).  A local lattice operator
+\(O\) is represented by the insertion map
+\[
+  \mathbb E_O(X)
+  =
+  \sum_{i,j}O_{ij}A^iX(A^j)^\dagger .
+\]
+The connected two-point function at lattice separation \(n\ge1\) is
+\begin{equation}
+  C_O(n)
+  =
+  \ell\!\left(\mathbb E_O\mathbb E^{\,n}\mathbb E_O r\right)
+  -
+  \ell(\mathbb E_Or)^2 .
+  \label{eq:mps-transfer-connected-correlator}
+\end{equation}
+If \(\mathbb E\) is diagonalizable on the subspace complementary to the
+fixed vector, then
+\begin{equation}
+  C_O(n)
+  =
+  \sum_\alpha A_\alpha(O)\lambda_\alpha^{\,n},
+  \label{eq:mps-transfer-spectral-expansion}
+\end{equation}
+where the coefficients are products of the left and right spectral
+projections of \(\mathbb E_O\).  Thus a single isolated contributing
+eigenvalue with \(\lambda_\alpha>0\) gives a finite lattice correlation
+length
+\[
+  \xi_\alpha^{\rm lat}
+  =
+  -\frac1{\log\lambda_\alpha}.
+\]
+If the lattice spacing is \(a\), the corresponding finite effective mass is
+\begin{equation}
+  m_\alpha(a)
+  =
+  -\frac1a\log\lambda_\alpha .
+  \label{eq:mps-transfer-effective-mass}
+\end{equation}
+
+This is a finite transfer-operator identity, not yet a continuum QFT
+statement.  To interpret \(m_\alpha(a)\) as a physical mass one needs a
+sequence of regulator data \((a,\chi(a),A^i(a),O_a)\), a normalization of the
+operator \(O_a\), and estimates of the form
+\begin{equation}
+  \lambda_\alpha(a)
+  =
+  \exp[-a m+O(a^{1+\delta})],
+  \qquad
+  Z_O(a)^2 A_\alpha(O_a)\longrightarrow A_{\rm phys},
+  \label{eq:mps-transfer-continuum-input}
+\end{equation}
+together with convergence of the corresponding multipoint Schwinger or
+Wightman distributions.  Excited transfer modes are not nuisances in this
+language; they are visible finite terms in
+\eqref{eq:mps-transfer-spectral-expansion}.  If
+\[
+  C_O(n)=A_1e^{-a m_1n}+A_2e^{-a m_2n},
+  \qquad m_2>m_1,\quad A_1,A_2>0,
+\]
+then the finite effective mass
+\[
+  m_{\rm eff}(a,n)
+  =
+  -\frac1a\log\frac{C_O(n+1)}{C_O(n)}
+\]
+lies between \(m_1\) and \(m_2\) and approaches \(m_1\) only after the
+second transfer mode is suppressed.  A finite transfer gap therefore tells
+one which exponential appears in the finite ansatz; it does not, by itself,
+prove the continuum operator map, reflection positivity, locality, or
+cutoff-removal estimate needed for QFT.
+
 \paragraph{Calculation check.}
 The companion check
 \[
@@ -1607,7 +1694,12 @@ also verifies the finite variational identities
 \eqref{eq:variational-local-energy-variance}: energy variance as residual
 norm, spectral distance bounded by variance, ground-projection leakage from a
 known finite gap, the tangent-gradient formula, and the local-energy
-Monte Carlo identity in a finite basis.
+Monte Carlo identity in a finite basis.  It also checks the finite
+transfer-operator spectral expansion
+\eqref{eq:mps-transfer-spectral-expansion}, the single-mode effective-mass
+identity \eqref{eq:mps-transfer-effective-mass}, the two-mode contamination
+bound for \(m_{\rm eff}(a,n)\), and the elementary logarithmic remainder
+bound implicit in \eqref{eq:mps-transfer-continuum-input}.
 
 \section{Light-Front Kinematics And Constraints}
 \label{sec:light-front-kinematic-constraint-datum}

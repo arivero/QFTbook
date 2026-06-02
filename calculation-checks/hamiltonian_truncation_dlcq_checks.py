@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import pathlib
 import sys
+import math
 from fractions import Fraction
 
 import numpy as np
@@ -563,6 +564,55 @@ def check_variational_energy_bounds() -> None:
     assert_close("variational local-energy variance", local_variance, residual_variance)
 
 
+def check_mps_transfer_operator_correlator() -> None:
+    lattice_spacing = 0.2
+    mass_1 = 1.5
+    mass_2 = 4.0
+    q1 = math.exp(-lattice_spacing * mass_1)
+    q2 = math.exp(-lattice_spacing * mass_2)
+    transfer = np.diag([1.0, q1, q2])
+    vacuum = np.array([1.0, 0.0, 0.0])
+
+    single_mode_operator = np.array(
+        [
+            [0.0, 2.0, 0.0],
+            [2.0, 0.0, 0.0],
+            [0.0, 0.0, 0.0],
+        ]
+    )
+
+    def connected(operator: np.ndarray, separation: int) -> float:
+        expectation = float(vacuum @ operator @ vacuum)
+        raw = float(vacuum @ operator @ np.linalg.matrix_power(transfer, separation) @ operator @ vacuum)
+        return raw - expectation * expectation
+
+    for separation in [1, 2, 5]:
+        expected = 4.0 * (q1 ** separation)
+        assert_close(f"MPS single-mode correlator n={separation}", connected(single_mode_operator, separation), expected)
+
+    effective_mass = -math.log(connected(single_mode_operator, 4) / connected(single_mode_operator, 3)) / lattice_spacing
+    assert_close("MPS single-mode effective mass", effective_mass, mass_1)
+
+    mixed_operator = np.array(
+        [
+            [0.0, 2.0, 0.5],
+            [2.0, 0.0, 0.0],
+            [0.5, 0.0, 0.0],
+        ]
+    )
+    for separation in [1, 3, 8]:
+        mixed_mass = -math.log(connected(mixed_operator, separation + 1) / connected(mixed_operator, separation)) / lattice_spacing
+        assert_leq(f"MPS mixed effective mass lower n={separation}", mass_1, mixed_mass)
+        assert_leq(f"MPS mixed effective mass upper n={separation}", mixed_mass, mass_2)
+
+    kappa = 0.6
+    epsilon = kappa * lattice_spacing * lattice_spacing
+    perturbed_ratio = math.exp(-lattice_spacing * mass_1) * (1.0 + epsilon)
+    perturbed_mass = -math.log(perturbed_ratio) / lattice_spacing
+    logarithmic_bound = abs(epsilon) / (lattice_spacing * (1.0 - abs(epsilon)))
+    assert_leq("MPS logarithmic continuum-input remainder", abs(perturbed_mass - mass_1), logarithmic_bound)
+
+
 def check_light_front_kinematic_identities() -> None:
     p_plus = Fraction(7, 5)
     p_perp = [Fraction(3, 4), Fraction(-2, 5)]
@@ -661,6 +711,7 @@ def main() -> None:
     check_feshbach_determinant_identity()
     check_krylov_residual_and_moments()
     check_variational_energy_bounds()
+    check_mps_transfer_operator_correlator()
     check_light_front_kinematic_identities()
     check_cross_method_consistency_bound()
     check_benchmark_manifest_consistency()

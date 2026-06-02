@@ -79,6 +79,9 @@ numerics.
   finite energy variance for a trial state.
 - `E_loc(x)`, `p_psi(x)`: finite-basis local energy and sampling
   probability used by neural-state and variational Monte Carlo estimates.
+- `mathbb E`, `mathbb E_O`, `lambda_alpha`, `C_O(n)`, `m_eff(a,n)`:
+  finite MPS transfer operator, local-operator insertion map, transfer
+  eigenvalues, connected lattice correlator, and finite effective mass.
 - `x^pm`, `p^pm`, `p_perp`, `Z_Lambda`, `C_{Lambda,alpha}`:
   light-front coordinates and momenta, transverse momentum, zero-mode sector,
   and finite-regulator constraints in the light-front Hamiltonian datum.
@@ -176,6 +179,11 @@ numerics.
   orthogonality rather than an eigenvector error bound.
 - Derives the finite local-energy mean and variance identities used by
   sampled neural-state and variational Monte Carlo calculations.
+- Adds the finite transfer-operator spectral expansion for
+  translation-invariant MPS correlators, identifies the finite effective mass
+  \(-a^{-1}\log\lambda_\alpha\), and states the scaling, operator
+  normalization, and multipoint-convergence inputs needed before such a
+  finite correlation length becomes a continuum QFT mass.
 - Defines a general light-front Hamiltonian regulator datum before DLCQ is
   specialized: null-coordinate convention, positive-longitudinal nonzero
   modes, zero-mode/constraint sector, finite physical Hilbert space,
