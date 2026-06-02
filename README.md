@@ -7,16 +7,19 @@ Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
 
-## Full Volume Program
+## Complete Volume List (I-XX)
 
-The public monograph program currently has twenty numbered volumes.  Volumes
+The public monograph program currently has twenty numbered volumes, listed
+explicitly below from I through XX.  Volumes
 I-XII are active reader-facing volumes compiled by `monograph/tex/main.tex` into
 the current PDF.  Volumes XIII-XX are roadmap volumes: they are part of the
 public subject architecture, but their standalone TeX assemblies will be added
 only after the same chapter-dossier, verification, frontmatter, and README
 standards are met.
 
-This table is the complete volume roster.  Do not infer the program from
+This table is the complete volume roster.  It is intentionally placed before
+the repository logistics so that the full subject architecture is visible on a
+first read.  Do not infer the program from
 `monograph/tex/volumes/` alone, since that directory contains only active
 compiled assemblies.
 
