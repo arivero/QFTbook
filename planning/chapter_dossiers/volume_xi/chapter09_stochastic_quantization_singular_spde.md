@@ -716,7 +716,14 @@ data.
     2^{-2\rho(N-m_\delta)_+},\qquad 0<\rho<\theta/2,
   \]
   and therefore the normalized \(L^2\) cutoff increment has gain
-  \(2^{-\rho(N-m_\delta)_+}\) after the same logarithmic slack loss.
+  \(2^{-\rho(N-m_\delta)_+}\) after the same logarithmic slack loss.  The
+  signed-test version of the same argument proves same-scale and cutoff
+  parameter-edge estimates: the transported-test difference satisfies both
+  \(L^1\) and scale-normalized \(L^\infty\) bounds, so the first-chaos
+  overlap estimate gains \(d_{\Pi,m}(u,v)^{2\vartheta}\).  After Gaussian
+  \(L^p\) control and model normalization, the first-chaos edge bounds carry
+  \(2^{-(5\kappa-\eta)m}d_{\Pi,m}(u,v)^\vartheta\), and the cutoff edge has
+  the additional shell factor \(2^{-\rho(N-m)_+}\).
 - Verifies the local \(KG^2\) shell \(L^1\) hypothesis used in that
   first-chaos bound for dynamic \(\Phi^4_3\): heat order \(2\) and
   covariance order \(4,4\) give relative gaps \(3,1,1\), and the shell
@@ -1299,6 +1306,18 @@ data maps.
   exponent comparisons.  This closes the scalar first-chaos cutoff layer;
   the \(E_r'\)-projective lift, invariant-law comparison, and OS assembly
   remain open.
+- 2026-06-02 issue #608/#582 \(X^2Y\) first-chaos parameter-edge pass: added
+  the signed-test version of the locally subtracted first-chaos estimate.
+  The proof records both the \(L^1\) and \(L^\infty\) variation of transported
+  physical tests, derives the signed overlap bound
+  \(d_{\Pi,m}^{2\vartheta}\min\{1,2^{5m}2^{-5s}\}\), and propagates it through
+  the base and cutoff-shell first-chaos sums.  The companion calculation check
+  verifies the normalized \(5\kappa-\eta\) slack, the edge entropy inequality
+  \(p\vartheta>6\), the physical-scale entropy inequality
+  \(p(5\kappa-\eta)>5\), and the retained cutoff-edge gain
+  \(\rho<\theta/2\).  This closes the scalar first-chaos same-scale and
+  cutoff-edge layers; the full \(E_r'\)-projective uniformization,
+  invariant-law comparison, and OS assembly remain open.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

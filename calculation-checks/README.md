@@ -636,7 +636,7 @@ Current checks:
   cutoff-shell arithmetic converting the minimum proper-subgraph deficit
   into the scalar scale-separated gain \(2^{-\rho(n-m)_+}\), the
   physical-scale arithmetic for the logarithmic first-chaos \(X^2Y\) bound,
-  and the dyadic covariance
+  the first-chaos cutoff-shell and parameter-edge arithmetic, and the dyadic covariance
   double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, the finite SPDE/constructive hierarchy-transfer check for

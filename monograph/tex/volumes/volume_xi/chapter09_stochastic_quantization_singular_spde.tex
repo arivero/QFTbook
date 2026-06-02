@@ -10544,6 +10544,183 @@ The logarithm is absorbed as before: for every \(\eta>0\),
 This proves \eqref{eq:spde-first-chaos-cutoff-shell-normalized}.
 \end{proof}
 
+\begin{proposition}[Parameter-edge bound for the locally subtracted first-chaos kernel]
+\label{prop:spde-x2y-first-chaos-parameter-edge-bound}
+Keep the hypotheses and notation of
+Propositions~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound} and
+\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain}.  Let
+\[
+  \mathcal X_{\Pi,m}=K\times[1/2,1],
+  \qquad
+  d_{\Pi,m}((z,a),(z',a'))=2^m\|z-z'\|_{\mathfrak s}+|a-a'|,
+\]
+where \(K\subset\R^{1+3}\) is compact.  For
+\(\varphi\in C^1_c(B_{\mathfrak s}(0,1))\), \(\|\varphi\|_{C^1}\leq1\), set
+\[
+  \varphi_u(x)
+  =
+  \delta_u^{-Q}\varphi(\mathsf D_{\delta_u}^{-1}(x-z)),
+  \qquad
+  u=(z,a),\qquad
+  \delta_u=2^{-m}a .
+\]
+Let \(Z_{N,m,u}^{(1)}(\varphi)\) be the first-chaos scalar coordinate obtained
+from the locally subtracted \(X^2Y\) kernel by replacing the test density
+\(\chi_z^\delta\) in
+\eqref{eq:spde-first-chaos-sector-sum} by \(\varphi_u\).  More precisely,
+assume its second moment is bounded by a fixed finite sum of the sector
+integrals used in
+Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound}, with
+constants independent of \(m,N,u,\varphi\), and assume the cutoff difference
+has the shell representation used in
+Proposition~\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain}.
+
+Then, whenever \(d_{\Pi,m}(u,v)\leq1\), for every \(0<\vartheta\leq1\) there
+is a constant \(C_\vartheta\) such that
+\begin{equation}
+  \mathbb E
+  \left|
+    Z_{N,m,v}^{(1)}(\varphi)-Z_{N,m,u}^{(1)}(\varphi)
+  \right|^2
+  \leq
+  C_\vartheta\,2^m(1+m)^2\,d_{\Pi,m}(u,v)^{2\vartheta}.
+  \label{eq:spde-first-chaos-parameter-edge-variance}
+\end{equation}
+For every even \(p\geq2\) and every \(\eta>0\),
+\begin{equation}
+  \left\|
+    2^{-(1/2+5\kappa)m}
+    \bigl(
+      Z_{N,m,v}^{(1)}(\varphi)-Z_{N,m,u}^{(1)}(\varphi)
+    \bigr)
+  \right\|_{L^p(\Omega)}
+  \leq
+  C_{p,\eta,\vartheta}\,
+  2^{-(5\kappa-\eta)m}d_{\Pi,m}(u,v)^\vartheta .
+  \label{eq:spde-first-chaos-parameter-edge-normalized}
+\end{equation}
+Moreover, for every \(0<\rho<\theta/2\), where \(\theta\) is the covariance
+double-increment exponent in
+\eqref{eq:spde-covariance-block-double-increment-bound},
+\begin{equation}
+\begin{aligned}
+  &\left\|
+    2^{-(1/2+5\kappa)m}
+    \bigl[
+      (Z_{N+1,m,v}^{(1)}-Z_{N,m,v}^{(1)})
+      -(Z_{N+1,m,u}^{(1)}-Z_{N,m,u}^{(1)})
+    \bigr]
+  \right\|_{L^p(\Omega)}                                  \\
+  &\qquad\leq
+  C_{p,\eta,\vartheta,\rho}\,
+  2^{-(5\kappa-\eta)m}
+  2^{-\rho(N-m)_+}
+  d_{\Pi,m}(u,v)^\vartheta .
+\end{aligned}
+  \label{eq:spde-first-chaos-cutoff-parameter-edge-normalized}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The proof is the first-chaos analogue of the high-chaos edge estimate, but the
+local subtraction makes the overlap estimate worth recording explicitly.  Put
+\[
+  d=d_{\Pi,m}(u,v),
+  \qquad
+  \psi=\varphi_v-\varphi_u .
+\]
+The transported test map is Lipschitz from \(\mathcal X_{\Pi,m}\) to both
+\(L^1\) and the scale-normalized \(L^\infty\) norm.  Differentiating in the
+base point produces the dimensionless factor \(2^m\|z-z'\|_{\mathfrak s}\),
+and differentiating in \(a\in[1/2,1]\) differentiates the compact family
+\[
+  a^{-Q}\varphi(\mathsf D_{a^{-1}}w).
+\]
+Hence, because \(d\leq1\) and \(0<\vartheta\leq1\),
+\begin{equation}
+  \|\psi\|_{L^1}\leq C d^\vartheta,
+  \qquad
+  \|\psi\|_{L^\infty}\leq C2^{Qm}d^\vartheta,
+  \label{eq:spde-first-chaos-test-difference-l1-linfty}
+\end{equation}
+and the supports of \(\varphi_u\), \(\varphi_v\), and \(\psi\) lie in one
+parabolic ball of radius \(C2^{-m}\).
+
+Let \(r\) be any of the finitely many shifts
+\(0,\pm h,\pm h'\), or \(h-h'\), appearing in the four support indicators of
+the covariance double increment.  For every \(s\geq0\),
+\begin{equation}
+  \int
+  |\psi(a)\psi(a')|
+  \mathbf 1_{\{\|a-a'-r\|_{\mathfrak s}\leq R2^{-s}\}}
+  \,\dd a\,\dd a'
+  \leq
+  C d^{2\vartheta}\min\{1,2^{Qm}2^{-Qs}\}.
+  \label{eq:spde-first-chaos-signed-test-overlap}
+\end{equation}
+Indeed, the first bound is \(\|\psi\|_{L^1}^2\).  The second is obtained by
+integrating in \(a'\) over a parabolic ball of volume \(O(2^{-Qs})\), using
+\(\|\psi\|_{L^\infty}\) for the \(a'\)-factor and \(\|\psi\|_{L^1}\) for the
+\(a\)-factor.  Equation~\eqref{eq:spde-first-chaos-test-difference-l1-linfty}
+then gives the displayed factor.
+
+Now repeat the proof of
+Proposition~\ref{prop:spde-x2y-first-chaos-logarithmic-scale-bound} with
+\(\chi_z^\delta\) replaced by the signed density \(\psi\) and with
+\(2^{-m}a\) in place of \(\delta\).  The shell \(L^1\) bounds on
+\(A_n\) and \(A_{n'}\), the covariance double-increment estimate
+\eqref{eq:spde-covariance-block-double-increment-bound}, and the signed
+overlap estimate \eqref{eq:spde-first-chaos-signed-test-overlap} give
+\[
+  \mathbb E
+  |Z_{N,m,v}^{(1)}-Z_{N,m,u}^{(1)}|^2
+  \leq
+  C d^{2\vartheta}
+  \sum_{s\geq0}
+  B_s(m)(1+s)^2,
+\]
+where
+\[
+  B_s(m)=2^s\min\{1,2^{Qm}2^{-Qs}\}.
+\]
+The same split at \(s=m\) as before gives
+\[
+  \sum_{s\geq0}B_s(m)(1+s)^2\leq C2^m(1+m)^2,
+\]
+which proves
+\eqref{eq:spde-first-chaos-parameter-edge-variance}.
+
+For the cutoff edge, repeat the proof of
+Proposition~\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain} with the same
+signed density \(\psi\).  The decomposition into the covariance-shell term
+and the two local-shell terms is unchanged; every occurrence of the test
+overlap now carries the extra factor \(d^{2\vartheta}\) from
+\eqref{eq:spde-first-chaos-signed-test-overlap}.  Therefore
+\[
+  \mathbb E
+  \left|
+      (Z_{N+1,m,v}^{(1)}-Z_{N,m,v}^{(1)})
+      -(Z_{N+1,m,u}^{(1)}-Z_{N,m,u}^{(1)})
+  \right|^2
+  \leq
+  C_{\rho,\vartheta}
+  2^m(1+m)^2
+  2^{-2\rho(N-m)_+}
+  d^{2\vartheta}.
+\]
+The first-chaos variables are Gaussian, so their \(L^p\)-norms are bounded by
+a \(p\)-dependent constant times their \(L^2\)-norms.  Multiplying by
+\(2^{-(1/2+5\kappa)m}\) leaves
+\[
+  2^{-5\kappa m}(1+m)d^\vartheta
+\]
+in the same-scale estimate and the additional
+\(2^{-\rho(N-m)_+}\) in the cutoff-edge estimate.  The logarithm is absorbed
+by \(1+m\leq C_\eta2^{\eta m}\), giving
+\eqref{eq:spde-first-chaos-parameter-edge-normalized} and
+\eqref{eq:spde-first-chaos-cutoff-parameter-edge-normalized}.
+\end{proof}
+
 Together with
 Proposition~\ref{prop:spde-x2y-high-chaos-tested-coordinate-bound}, this
 identifies the scalar base estimate for the whole locally subtracted
@@ -10554,7 +10731,14 @@ is recorded in the projective \(X^2Y\) input.  The cutoff increment of this
 first-chaos sector also has the scale-separated gain of
 Proposition~\ref{prop:spde-x2y-first-chaos-cutoff-shell-gain}; its logarithmic
 factor is harmless only after one chooses a positive slack
-\(\zeta_{X^2Y}\) in the nonlinear \(\Pi\)-coordinate input.
+\(\zeta_{X^2Y}\) in the nonlinear \(\Pi\)-coordinate input.  The same-scale
+and cutoff parameter-edge estimates in
+Proposition~\ref{prop:spde-x2y-first-chaos-parameter-edge-bound} show that the
+first-chaos scalar sector has the same physical-parameter continuity structure
+as the high-chaos sector, again with the logarithmic factor paid from
+\(\zeta_{X^2Y}\).  What remains for the full nonlinear
+\(X^2Y\) \(\Pi\)-coordinate theorem is the \(E_r'\)-projective uniformization
+of these scalar estimates over the whole unit ball of tests.
 
 \begin{corollary}[Local \(KG^2\) shell bound in dynamic \(\Phi^4_3\)]
 \label{cor:spde-local-kg2-shell-lone-bound}

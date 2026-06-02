@@ -523,6 +523,61 @@ def check_x2y_first_chaos_cutoff_shell_arithmetic():
     assert_equal(total_sample_exponent, Fraction(13, 5), "first-chaos cutoff sample total exponent")
 
 
+def check_x2y_first_chaos_parameter_edge_arithmetic():
+    # The first-chaos parameter-edge estimate uses the signed transported-test
+    # overlap
+    #   int |psi(a) psi(a')| 1_{|a-a'|<=2^-s}
+    #       <= d^(2 vartheta) min(1, 2^(Qm) 2^(-Qs)).
+    # The base variance remains O(2^m log^2), now with the edge factor
+    # d^(2 vartheta).  After taking a Gaussian Lp norm and multiplying by the
+    # X^2Y model normalization 2^(-(1/2+5 kappa)m), the scale slack is
+    # 5 kappa minus the logarithmic loss.
+    qdim = Fraction(5)
+    kappa = Fraction(1, 20)
+    eta = Fraction(1, 40)
+    vartheta = Fraction(2, 5)
+    p = 80
+    theta_cov = Fraction(1, 2)
+    rho = Fraction(1, 5)
+    m = 7
+    n = 13
+    gap = n - m
+
+    low_overlap_scale = Fraction(0)
+    high_overlap_scale = qdim * m - qdim * (m + 1)
+    assert_equal(low_overlap_scale, 0, "first-chaos edge low-overlap scale")
+    assert_equal(high_overlap_scale, -5, "first-chaos edge high-overlap scale")
+
+    variance_scale_exponent = Fraction(1) * m
+    l2_scale_exponent = variance_scale_exponent / 2
+    model_normalization_exponent = -(Fraction(1, 2) + 5 * kappa) * m
+    normalized_exponent_before_log = model_normalization_exponent + l2_scale_exponent
+    assert_equal(
+        normalized_exponent_before_log,
+        -5 * kappa * m,
+        "first-chaos edge normalized exponent before log loss",
+    )
+
+    retained_slack = 5 * kappa - eta
+    assert_equal(retained_slack, Fraction(9, 40), "first-chaos edge retained scale slack")
+    if not p * retained_slack > qdim:
+        raise AssertionError("first-chaos edge retained slack does not beat physical entropy")
+    if not p * vartheta > 6:
+        raise AssertionError("first-chaos edge Holder exponent does not beat edge entropy")
+
+    retained_cutoff_gain = rho * gap
+    variance_cutoff_gain = 2 * rho * gap
+    local_shell_gain = theta_cov * gap
+    assert_equal(variance_cutoff_gain, Fraction(12, 5), "first-chaos edge cutoff variance gain")
+    assert_equal(retained_cutoff_gain, Fraction(6, 5), "first-chaos edge cutoff Lp gain")
+    assert_equal(local_shell_gain, 3, "first-chaos edge local-shell ceiling")
+    if not variance_cutoff_gain < local_shell_gain:
+        raise AssertionError("first-chaos edge retained cutoff gain exceeds local-shell ceiling")
+
+    total_edge_scale = retained_slack * m + retained_cutoff_gain
+    assert_equal(total_edge_scale, Fraction(111, 40), "first-chaos edge sample total exponent")
+
+
 def check_covariance_double_increment_arithmetic():
     qdim = Fraction(5)
     covariance_order = Fraction(4)
@@ -2418,6 +2473,7 @@ def main():
     check_nonlinear_negative_coordinate_wick_arithmetic()
     check_x2y_first_chaos_logarithmic_scale_arithmetic()
     check_x2y_first_chaos_cutoff_shell_arithmetic()
+    check_x2y_first_chaos_parameter_edge_arithmetic()
     check_covariance_double_increment_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
@@ -2472,7 +2528,7 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
