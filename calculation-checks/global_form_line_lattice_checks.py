@@ -9,6 +9,10 @@ finite symplectic abelian group
     Z_N^e direct-sum Z_N^m
 
 with pairing ((e,m),(e',m')) -> (e m' - e' m) / N mod 1.
+
+It also checks the finite phase bookkeeping behind the higher-form linking
+definition: for A=Z_N, a defect label a, charge q, and oriented intersection
+number L, the character phase is recorded by the exponent a q L modulo N.
 """
 
 from __future__ import annotations
@@ -140,16 +144,77 @@ def check_named_axes(n: int) -> None:
     assert_equal(f"fundamental Wilson/minimal 't Hooft nonlocality N={n}", dirac_numerator(n, (1, 0), (0, 1)), 1 % n)
 
 
+def linking_phase_exponent(n: int, defect: int, charge: int, intersections: list[int]) -> int:
+    """Return the Z_N exponent of a finite higher-form linking phase."""
+
+    oriented_linking = sum(intersections)
+    return (defect * charge * oriented_linking) % n
+
+
+def check_higher_form_linking_phase(n: int) -> None:
+    for defect, charge in product(range(n), repeat=2):
+        base = [1, 1, -1]
+        base_phase = linking_phase_exponent(n, defect, charge, base)
+
+        deformation_away_from_charge = base + [1, -1]
+        assert_equal(
+            f"Z_{n} linking deformation invariance a={defect} q={charge}",
+            linking_phase_exponent(n, defect, charge, deformation_away_from_charge),
+            base_phase,
+        )
+
+        crossing_once = base + [1]
+        assert_equal(
+            f"Z_{n} linking crossing phase a={defect} q={charge}",
+            (linking_phase_exponent(n, defect, charge, crossing_once) - base_phase) % n,
+            (defect * charge) % n,
+        )
+
+        reversed_orientation = [-entry for entry in base]
+        assert_equal(
+            f"Z_{n} linking orientation reversal a={defect} q={charge}",
+            linking_phase_exponent(n, defect, charge, reversed_orientation),
+            (-base_phase) % n,
+        )
+
+    for defect_a, defect_b, charge in product(range(n), repeat=3):
+        intersections = [1, -1, 1, 1]
+        fused_defect = linking_phase_exponent(n, (defect_a + defect_b) % n, charge, intersections)
+        product_defects = (
+            linking_phase_exponent(n, defect_a, charge, intersections)
+            + linking_phase_exponent(n, defect_b, charge, intersections)
+        ) % n
+        assert_equal(
+            f"Z_{n} linking defect group law a={defect_a} b={defect_b} q={charge}",
+            fused_defect,
+            product_defects,
+        )
+
+    for defect, charge_q, charge_r in product(range(n), repeat=3):
+        intersections = [1, 1, -1, 1]
+        fused_charge = linking_phase_exponent(n, defect, (charge_q + charge_r) % n, intersections)
+        product_charges = (
+            linking_phase_exponent(n, defect, charge_q, intersections)
+            + linking_phase_exponent(n, defect, charge_r, intersections)
+        ) % n
+        assert_equal(
+            f"Z_{n} linking charge fusion a={defect} q={charge_q} r={charge_r}",
+            fused_charge,
+            product_charges,
+        )
+
+
 def main() -> None:
     for n in range(2, 10):
         check_pairing_axioms(n)
         check_named_axes(n)
+        check_higher_form_linking_phase(n)
         for k in divisors(n):
             check_su_n_mod_z_k_descent(n, k)
             for p in range(k):
                 check_line_lattice(n, k, p)
 
-    print("All global-form and finite line-lattice checks passed.")
+    print("All global-form, finite line-lattice, and linking-phase checks passed.")
 
 
 if __name__ == "__main__":

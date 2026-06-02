@@ -364,6 +364,43 @@ inside correlation functions whenever \(M\) and \(\Sigma\) are disjoint and
 their linking number is defined.
 \end{definition}
 
+Here is the chain-level content of the linking phase.  Work in an oriented
+region where the closed codimension-\((p+1)\) submanifold \(M\) bounds an
+oriented \((D-p)\)-chain \(B\), and assume that \(B\) meets the closed
+\(p\)-dimensional support \(\Sigma\) transversely.  The linking number is the
+oriented intersection number
+\begin{equation}
+  \operatorname{Link}(M,\Sigma)
+  =
+  B\cdot\Sigma
+  =
+  \sum_{x\in B\cap\Sigma}\operatorname{sgn}_x(B,\Sigma).
+  \label{eq:higher-form-linking-chain-intersection}
+\end{equation}
+Let \(M'\) be obtained from \(M\) by a smooth deformation, and let \(C\) be
+the oriented \((D-p)\)-dimensional sweep, so
+\[
+  \partial C=M'-M .
+\]
+Choose bounding chains \(B\) and \(B'\) with \(\partial B=M\) and
+\(\partial B'=M'\).  In a local ball, or more generally after fixing the
+homology class of the bounding chain in the complement of \(\Sigma\), the
+change in linking is the intersection of the sweep with the charged support,
+\[
+  \operatorname{Link}(M',\Sigma)-\operatorname{Link}(M,\Sigma)
+  =
+  C\cdot\Sigma .
+\]
+Thus a topological defect can be moved without changing its action as long as
+the sweep does not cross the charged insertion.  If the sweep crosses
+\(\Sigma\) once with sign \(\varepsilon=\pm1\), the linking number changes by
+\(\varepsilon\), and the correlator is multiplied by \(\chi(a)^\varepsilon\).
+Iterating this local crossing rule gives
+\eqref{eq:higher-form-linking-action}.  This is the topological part of the
+statement only: the existence of the defect \(U_a(M)\) as a renormalized QFT
+operator and the allowed set of charged \(W_\chi(\Sigma)\) remain part of the
+theory data.
+
 For \(p=0\), this definition covers the abelian part of ordinary internal
 symmetry.  Nonabelian zero-form symmetry requires topological defects labelled
 by group elements with noncommutative fusion; the one-form symmetries used

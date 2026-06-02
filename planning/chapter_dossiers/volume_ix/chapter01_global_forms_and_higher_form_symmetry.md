@@ -30,6 +30,10 @@
   \mathbb Z_N\oplus\mathbb Z_N\).
 - Abelian group-like \(p\)-form symmetry as an action of codimension-\(p+1\)
   topological operators on \(p\)-dimensional charged operators.
+- Chain-level mechanism for the higher-form linking phase:
+  \(\operatorname{Link}(M,\Sigma)=B\cdot\Sigma\) when
+  \(\partial B=M\), deformation invariance away from \(\Sigma\), and the
+  single-crossing multiplication by the charged character.
 - Electric one-form symmetry \(Z(G)\) and magnetic one-form symmetry
   \(\pi_1(G)^\vee\) of pure gauge theory.
 
@@ -66,7 +70,9 @@
 6. Genuine line operators are classified only after the global form, discrete
    theta coordinate, and allowed attached surfaces are fixed.
 7. Higher-form symmetry acts by a linking phase on charged extended
-   operators.
+   operators; the phase is derived from oriented chain intersection and the
+   local crossing rule, while existence of the topological defect remains
+   part of the theory data.
 8. Center symmetry and magnetic one-form symmetry give precise operator
    formulations of confinement and screening diagnostics in pure Yang--Mills.
 
@@ -82,4 +88,16 @@
 - `calculation-checks/global_form_line_lattice_checks.py` verifies the
   finite \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\) Dirac
   pairing, \(SU(N)/\mathbb Z_k\) descent arithmetic, and maximal isotropy of
-  \(L_{N,k,p}\) for \(2\leq N\leq 9\).
+  \(L_{N,k,p}\) for \(2\leq N\leq 9\).  It also verifies the finite
+  \(\mathbb Z_N\) higher-form linking phase bookkeeping under deformation
+  away from the charged operator, a single crossing, orientation reversal,
+  defect fusion, and charge fusion.
+
+## Audit Notes
+
+- 2026-06-02 higher-form linking pass: expanded the linking action from a
+  bare defining formula into a chain-intersection mechanism.  The text now
+  shows that \(\operatorname{Link}(M,\Sigma)=B\cdot\Sigma\) is invariant when
+  the defect sweep stays away from \(\Sigma\), changes by one when the sweep
+  crosses \(\Sigma\) once, and therefore gives the displayed character phase
+  by iterating the local crossing rule.

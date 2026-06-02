@@ -959,7 +959,10 @@ Current checks:
   section, including the \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\)
   Dirac pairing, bilinearity and nondegeneracy, \(SU(N)/\mathbb Z_k\)
   Wilson-charge descent, magnetic cocharacter enlargement, and maximal
-  isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
+  isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).  It also checks the
+  finite \(\mathbb Z_N\) higher-form linking phase: deformation away from the
+  charged operator, single crossing, orientation reversal, defect fusion, and
+  charge fusion.
 - `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
   matrices, central-charge action and symplecticity, the rigid
