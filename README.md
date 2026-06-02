@@ -7,28 +7,35 @@ Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
 
-Canonical public volume roster:
+## Complete Volume Roster
 
-1. Volume I: Foundations of Local Quantum Field Theory
-2. Volume II: Particles, Scattering, and Analyticity
-3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
-4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
-5. Volume V: Conformal Field Theory
-6. Volume VI: Integrable Quantum Field Theory
-7. Volume VII: Supersymmetric Quantum Field Theory
-8. Volume VIII: Topological and Cohomological Quantum Field Theory
-9. Volume IX: Global Structure, Phases, and Extended Operators
-10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
-12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
-13. Volume XIII: Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions
-14. Volume XIV: Advanced Local-Algebraic QFT and Modular Structure
-15. Volume XV: Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables
-16. Volume XVI: Advanced Supersymmetric Theories and Protected Sectors
-17. Volume XVII: Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT
-18. Volume XVIII: Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT
-19. Volume XIX: Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory
-20. Volume XX: Advanced Curved-Background, Locally Covariant, and Semiclassical QFT
+The public monograph program has twenty numbered volumes.  The current
+compiled manuscript contains Volumes I-XII.  Volumes XIII-XX are part of the
+public subject architecture and are listed here explicitly even though their
+standalone TeX assemblies have not yet been launched.
+
+| Volume | Status | Title |
+| --- | --- | --- |
+| I | Compiled | Foundations of Local Quantum Field Theory |
+| II | Compiled | Particles, Scattering, and Analyticity |
+| III | Compiled | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | Compiled | Gauge Theory, Infrared Structure, and Anomalies |
+| V | Compiled | Conformal Field Theory |
+| VI | Compiled | Integrable Quantum Field Theory |
+| VII | Compiled | Supersymmetric Quantum Field Theory |
+| VIII | Compiled | Topological and Cohomological Quantum Field Theory |
+| IX | Compiled | Global Structure, Phases, and Extended Operators |
+| X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields |
+| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions |
+| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure |
+| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables |
+| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors |
+| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT |
+| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT |
+| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
+| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
 
 The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
@@ -36,8 +43,7 @@ material are kept separate from the compiled monograph.
 
 ## Complete Volume Program (All Volumes I-XX)
 
-The public project has twenty numbered volumes, and the table immediately
-below is the complete README roster of all of them.  Volumes I-XII are
+The table above is the complete README roster of all volumes.  Volumes I-XII are
 compiled by `monograph/tex/main.tex` into the current PDF.  Volumes XIII-XX
 are public roadmap volumes whose source assemblies will be added only after
 the same chapter-dossier, verification, frontmatter, and README standards are
