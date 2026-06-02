@@ -102,6 +102,10 @@ feed Osterwalder--Schrader reconstruction and the family-size obstruction:
 fixed entrywise tolerance cannot prove positivity on a directed family of
 windows unless it scales with the window size or is replaced by an operator
 norm estimate.
+The approximate OS-positivity defect check verifies the semidefinite defect
+budget: an entrywise window error contributes m*epsilon to the lower
+bound, so a directed proof with regulator positivity defects must make
+delta_m + m*epsilon_m vanish on the same scale schedule.
 The reflection-positive block-spin pullback check verifies the finite matrix
 compression mechanism by which a reflection-compatible block-spin map sends a
 fine reflection-positive Gram form to a coarse one.
@@ -1147,6 +1151,81 @@ def check_finite_os_positivity_family_size_obstruction():
                     q_entry(window_size, i, j, fine_scale),
                     q_entry(window_size - 1, i, j, fine_scale),
                 )
+
+
+def check_approximate_os_positivity_defect_budget():
+    # If a regulated Gram window is only approximately positive,
+    # c^*G_k c >= -delta ||c||^2, and the limiting window differs entrywise by
+    # epsilon, then the limiting lower bound is -(delta+m epsilon)||c||^2.
+    dimension = 4
+    defect = Fraction(1, 20)
+    epsilon = Fraction(1, 100)
+    regulated_gram = [
+        [Fraction(1) - defect if i == j else Fraction(0) for j in range(dimension)]
+        for i in range(dimension)
+    ]
+    limiting_gram = [
+        [regulated_gram[i][j] - epsilon for j in range(dimension)]
+        for i in range(dimension)
+    ]
+    vector = [Fraction(1), Fraction(-2), Fraction(0), Fraction(3)]
+    norm_squared = sum(component * component for component in vector)
+
+    def quadratic_form(matrix, vec):
+        return sum(
+            vec[i] * matrix[i][j] * vec[j]
+            for i in range(len(vec))
+            for j in range(len(vec))
+        )
+
+    regulated_value = quadratic_form(regulated_gram, vector)
+    limiting_value = quadratic_form(limiting_gram, vector)
+    defect_budget = defect + dimension * epsilon
+
+    assert_equal("approximate OS defect budget", defect_budget, Fraction(9, 100))
+    assert_true(
+        "regulated approximate OS lower bound",
+        regulated_value >= -defect * norm_squared,
+    )
+    assert_true(
+        "limiting approximate OS lower bound",
+        limiting_value >= -defect_budget * norm_squared,
+    )
+
+    # The all-ones vector saturates the m epsilon part for a rank-one all-ones
+    # entrywise perturbation.
+    ones = [Fraction(1) for _ in range(dimension)]
+    ones_norm_squared = Fraction(dimension)
+    ones_limiting_value = quadratic_form(limiting_gram, ones)
+    expected_ones_value = (
+        (Fraction(1) - defect) * ones_norm_squared
+        - epsilon * dimension * dimension
+    )
+    assert_equal("approximate OS all-ones value", ones_limiting_value, expected_ones_value)
+
+    # A directed growing-window schedule must drive delta_m + m epsilon_m to
+    # zero.  The following exact values model delta_m=1/m^2 and epsilon_m=1/m^2.
+    previous_budget = Fraction(10)
+    for window_size in range(2, 10):
+        delta_m = Fraction(1, window_size * window_size)
+        epsilon_m = Fraction(1, window_size * window_size)
+        budget_m = delta_m + window_size * epsilon_m
+        assert_equal(
+            f"directed approximate OS defect budget m={window_size}",
+            budget_m,
+            Fraction(window_size + 1, window_size * window_size),
+        )
+        assert_true(
+            f"directed approximate OS budget decreases eventually m={window_size}",
+            budget_m < previous_budget,
+        )
+        previous_budget = budget_m
+
+    fixed_delta = Fraction(1, 100)
+    fixed_epsilon = Fraction(1, 100)
+    bad_budget_small = fixed_delta + 2 * fixed_epsilon
+    bad_budget_large = fixed_delta + 20 * fixed_epsilon
+    assert_true("fixed entrywise OS defect budget grows with window", bad_budget_large > bad_budget_small)
 
 
 def check_positive_time_translation_window_bound():
@@ -2371,6 +2450,7 @@ def main():
     check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()
     check_finite_os_positivity_family_size_obstruction()
+    check_approximate_os_positivity_defect_budget()
     check_positive_time_translation_window_bound()
     check_positive_time_quotient_semigroup_criterion()
     check_stable_chart_observable_window_bound()

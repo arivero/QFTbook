@@ -757,7 +757,9 @@ Current checks:
   limiting Gram matrix retains the quantified positive lower bound.  It also
   checks the complementary family-size obstruction by an all-ones perturbation,
   the safe \(m\)-dependent entrywise-error schedule for directed positive-time
-  windows, and the short-range RG-to-OS assembly budget combining
+  windows, and the approximate OS-positivity defect budget
+  \(\delta_m+m\epsilon_m\) needed when regulator positivity is available only
+  up to a defect.  It also checks the short-range RG-to-OS assembly budget combining
   source-window chart errors, thermodynamic tails, cofinal-window errors,
   Cauchy extraction, directed OS Gram lower-bound bookkeeping, and the common
   directed scale schedule needed to close source, Gram, time-continuity, and

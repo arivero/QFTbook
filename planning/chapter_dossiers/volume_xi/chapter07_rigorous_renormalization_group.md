@@ -924,3 +924,13 @@ remainder contraction.
   rather than independent conventions, and says explicitly that changing this
   datum moves the comparison into the normalization group of the
   observable-germ universality statement.
+- 2026-06-02 approximate OS-positivity defect-budget pass: strengthened the
+  finite Gram-window discussion by separating exact finite reflection
+  positivity from approximate positivity with regulator defects.  The
+  manuscript now derives the semidefinite defect bound
+  \(\delta_{k,\mathcal F}+|\mathcal F|\epsilon_{k,\mathcal F}\), explains
+  that fixed-window convergence closes exact positivity by finite-dimensional
+  cone closedness, and requires a vanishing directed schedule (or an
+  operator-norm replacement) when growing positive-time windows are controlled
+  only through defects.  The companion short-range RG check verifies the
+  exact rational budget and detects a fixed-entrywise-error failure mode.

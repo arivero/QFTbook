@@ -5556,6 +5556,38 @@ positive-time test family in the directed observable germ.  Agreement of
 separated two-point entries, critical exponents, or a finite list of
 amplitudes does not supply the missing Gram windows.
 
+There is a closely related semidefinite version, which is often the form
+available in an RG proof with regulator defects.  Suppose that the regulated
+window is not strictly bounded below but satisfies
+\[
+  c^\ast G_{k,\mathcal F}c\ge -\delta_{k,\mathcal F}\|c\|_2^2
+  \qquad(c\in\mathbb C^m)
+\]
+and that the entrywise error from this regulated window to the candidate
+limit is at most \(\epsilon_{k,\mathcal F}\).  Then the same estimate gives
+\begin{equation}
+  c^\ast G_{\ast,\mathcal F}c
+  \ge
+  -\bigl(\delta_{k,\mathcal F}+m\epsilon_{k,\mathcal F}\bigr)\|c\|_2^2 .
+  \label{eq:rg-approximate-os-positivity-defect-budget}
+\end{equation}
+For a fixed family \(\mathcal F\), exact finite reflection positivity and
+entrywise convergence imply positivity of the limiting window by closedness
+of the finite positive cone.  For a directed sequence of growing windows, a
+proof using the quantitative defect route must instead produce a common
+scale schedule such that
+\[
+  \delta_{k_N,\mathcal F_N}
+  +
+  |\mathcal F_N|\epsilon_{k_N,\mathcal F_N}
+  \longrightarrow0 .
+\]
+An operator-norm estimate replaces the factor
+\(|\mathcal F_N|\epsilon\) by the corresponding operator-norm error.  The
+distinction matters: exact reflection positivity is a finite-regulator
+structural property, while approximate positivity with defects is an
+estimate whose constants must scale with the observation window.
+
 \begin{lemma}[Directed OS-positive form assembly]
 \label{lem:rg-directed-os-positive-form-assembly}
 Let
