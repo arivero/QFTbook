@@ -400,9 +400,9 @@ Reader-facing companion scripts can be smoke-tested with:
 tools/run_qft_scripts_smoke.sh
 ```
 
-These scripts illustrate finite regulators.  Their smoke tests do not certify
-continuum extrapolations or physical spectra unless the accompanying chapter
-states and proves the finite claim being checked.
+These scripts illustrate finite regulators.  Their smoke tests do not
+establish continuum extrapolations or physical spectra unless the
+accompanying chapter states and proves the finite claim being checked.
 
 ## Quality Gates
 

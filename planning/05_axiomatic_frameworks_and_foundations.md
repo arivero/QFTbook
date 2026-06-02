@@ -7,9 +7,9 @@ none is the single strict foundation of the monograph and none is treated as a
 privileged court of appeal.  A framework earns its place only by producing
 nontrivial physics or mathematics: precise data, theorems, constructions,
 examples, comparison maps, or sharply formulated open problems.  The manuscript
-uses frameworks to certify claims, clarify domains, study relationships, and
-build substantial examples, while the logical order of the book follows the
-construction of the subject.
+uses frameworks to formulate claims, clarify domains, study relationships,
+and build substantial examples, while the logical order of the book follows
+the construction of the subject.
 No axiomatic framework is treated as sacred.  A framework earns text only when
 it computes, constrains, classifies, constructs, compares, or exposes an
 obstruction in actual QFT.

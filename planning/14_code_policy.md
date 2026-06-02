@@ -1,8 +1,8 @@
 # Code Policy For Calculation Checks And Companion Scripts
 
 The monograph uses code in two different roles.  The distinction is part of
-the rigor standard, because a script can certify a finite calculation without
-certifying the continuum QFT claim that motivated the calculation.
+the rigor standard, because a script can verify a finite calculation without
+establishing the continuum QFT claim that motivated the calculation.
 
 ## Calculation Checks
 
@@ -42,7 +42,7 @@ examples or documented command lines, not in the smoke harness.
 
 The smoke harness is `tools/run_qft_scripts_smoke.sh`.  It checks that each
 companion script executes and that built-in finite-regulator consistency
-tests pass.  The smoke harness does not certify continuum extrapolation,
+tests pass.  The smoke harness does not establish continuum extrapolation,
 critical exponents, or exact spectra unless the script explicitly proves a
 finite identity that implies the displayed number.
 

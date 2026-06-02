@@ -855,6 +855,12 @@ The chapter must define and derive:
   sense in which energy-correlator observables are continuous under soft
   additions and collinear recombinations, but the calculation is not a
   theorem-family result.
+- 2026-06-02 anti-wrapper follow-up: demoted the antisymmetric \(k\)-string
+  Casimir ratio from lemma/proof form to trace-normalization prose.  The
+  Fierz calculation remains in the QCD-string section because it fixes the
+  trace-delta convention behind the comparison function
+  \(R_k^{\rm Casimir}\), but the argument is finite representation algebra,
+  not a standalone QFT theorem.
 - 2026-05-30 quoted-theorem pass: replaced the leading ERBL diagonalization
   quoted theorem by a proved proposition.  The pass corrected the eigenvalue
   normalization for the kernel as written:

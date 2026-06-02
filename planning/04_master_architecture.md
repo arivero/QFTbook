@@ -561,7 +561,7 @@ Further development targets:
 
 Code policy:
 
-- Calculation checks live in `calculation-checks/` and certify finite algebra
+- Calculation checks live in `calculation-checks/` and verify finite algebra
   or convention-sensitive formulae used by the text.
 - Reader-facing numerical demonstrations live in `qft_scripts/`; they must
   state their regulator, cutoff parameters, dependencies, and theorem status.

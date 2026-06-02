@@ -19,7 +19,7 @@ The full suite is an explicit batch check, not a default build gate.  Ordinary
 manuscript builds use `tools/build_monograph.sh`, which checks TeX and
 monograph-structure invariants.  Calculation checks are rerun when the
 formulae, normalizations, sign conventions, finite algebra, or scripts they
-certify are touched.
+verify are touched.
 
 Useful invocations:
 
