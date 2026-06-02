@@ -11745,6 +11745,105 @@ the contraction constant \(q\) stays below one on a common ball, the
 renormalized modelled solutions converge in \(E_T\).  This still leaves the
 invariant-law and OS-comparison layers as separate analytic steps.
 
+\begin{lemma}[Coupled stationary-law comparison after SPDE convergence]
+\label{lem:spde-coupled-stationary-law-comparison}
+Let \((E,d)\) be a Polish metric space, and let \(P_t\) be a Markov semigroup
+on \(E\).  For a fixed \(t\geq0\), suppose \(U_n(0),U_n(t),U_\ast(0),U_\ast(t)\)
+are \(E\)-valued random variables on one probability space such that:
+\begin{enumerate}[label=(\roman*)]
+  \item \(U_n(0)\) and \(U_n(t)\) have the same law \(\mu_n\);
+  \item \(U_\ast(0)\) has law \(\mu_\ast\), and
+  \[
+    \mathbb E[f(U_\ast(t))]
+    =
+    \int_E P_tf\,\dd\mu_\ast
+  \]
+  for every bounded Lipschitz \(f:E\to\mathbb C\);
+  \item for some \(\delta_n,\varepsilon_{n,t}\geq0\) and
+  \(a_t<\infty\),
+  \begin{equation}
+    \mathbb E\,d(U_n(0),U_\ast(0))\leq\delta_n,
+    \qquad
+    \mathbb E\,d(U_n(t),U_\ast(t))
+    \leq a_t\delta_n+\varepsilon_{n,t}.
+    \label{eq:spde-stationary-coupling-defects}
+  \end{equation}
+\end{enumerate}
+Then every bounded Lipschitz \(f\) obeys
+\begin{equation}
+  \left|
+    \int_E f\,\dd\mu_n-\int_E f\,\dd\mu_\ast
+  \right|
+  \leq
+  \operatorname{Lip}(f)\,\delta_n,
+  \label{eq:spde-stationary-law-bl-distance}
+\end{equation}
+and
+\begin{equation}
+  \left|
+    \int_E P_tf\,\dd\mu_\ast-\int_E f\,\dd\mu_\ast
+  \right|
+  \leq
+  \operatorname{Lip}(f)\bigl((a_t+1)\delta_n+\varepsilon_{n,t}\bigr).
+  \label{eq:spde-stationary-law-invariance-defect}
+\end{equation}
+If, for each fixed \(t\), the quantity
+\((a_t+1)\delta_n+\varepsilon_{n,t}\) tends to zero along the comparison
+sequence, then \(\mu_\ast\) is invariant for \(P_t\) in the sense of equality
+of probability measures.
+\end{lemma}
+
+\begin{proof}
+For \eqref{eq:spde-stationary-law-bl-distance}, write the two integrals as
+expectations of \(f(U_n(0))\) and \(f(U_\ast(0))\), and apply the Lipschitz
+bound:
+\[
+  |\mathbb E f(U_n(0))-\mathbb E f(U_\ast(0))|
+  \leq
+  \operatorname{Lip}(f)\,\mathbb E d(U_n(0),U_\ast(0)).
+\]
+For the invariance defect, use the representation of \(P_t\) in (ii), insert
+the stationary cutoff variables, and use (i):
+\[
+\begin{aligned}
+  \left|
+    \int_E P_tf\,\dd\mu_\ast-\int_E f\,\dd\mu_\ast
+  \right|
+  &=
+  |\mathbb E f(U_\ast(t))-\mathbb E f(U_\ast(0))|\\
+  &\leq
+  |\mathbb E f(U_\ast(t))-\mathbb E f(U_n(t))|\\
+  &\quad+
+  |\mathbb E f(U_n(t))-\mathbb E f(U_n(0))|\\
+  &\quad+
+  |\mathbb E f(U_n(0))-\mathbb E f(U_\ast(0))|\\
+  &\leq
+  \operatorname{Lip}(f)
+  \bigl(\mathbb E d(U_\ast(t),U_n(t))
+       +\mathbb E d(U_n(0),U_\ast(0))\bigr),
+\end{aligned}
+\]
+because the middle term vanishes by stationarity of \(U_n\).  Substituting
+\eqref{eq:spde-stationary-coupling-defects} gives
+\eqref{eq:spde-stationary-law-invariance-defect}.  If the right side tends
+to zero for every bounded Lipschitz \(f\), then
+\(\int P_tf\,\dd\mu_\ast=\int f\,\dd\mu_\ast\) for every bounded Lipschitz
+\(f\).  Bounded Lipschitz functions separate probability measures on a
+Polish metric space, so \(P_t^\ast\mu_\ast=\mu_\ast\).
+\end{proof}
+
+In the renormalized \(\Phi^4_3\) problem, Lemma
+\ref{lem:spde-coupled-stationary-law-comparison} is the invariant-law layer
+following the fixed-point-sector comparison.  A stationary cutoff solution
+started from \(\mu_n\) supplies \(U_n(0)\) and \(U_n(t)\).  The random-model
+and fixed-point estimates must then be strengthened to a coupling of the
+time-zero and time-\(t\) fields in the topology \(E\) used for the Markov
+process.  This proves invariance of a limiting SPDE law only for bounded
+Lipschitz tests on \(E\).  The polynomial Schwinger moments, reflection
+positivity, and corrected OS-II growth needed for QFT reconstruction still
+come from the hierarchy comparison in
+Construction~\ref{con:spde-common-schwinger-hierarchy-comparison}.
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let

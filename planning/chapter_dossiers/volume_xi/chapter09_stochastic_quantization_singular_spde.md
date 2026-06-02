@@ -79,6 +79,11 @@ data.
   \(\theta<1\).
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
+- `U_n(0), U_n(t), U_*(0), U_*(t)`: coupled cutoff and limiting Markov fields
+  used to compare stationary laws after SPDE solution convergence.
+- `delta_n`, `epsilon_{n,t}`, `a_t`: time-zero coupling defect, time-\(t\)
+  residual convergence defect, and finite-time Lipschitz amplification
+  constant in the stationary-law comparison.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
   cutoff-field compactness criterion; \(0<\eta<\kappa\), the moment order is
   \(p\), and \(K_R\) is the \(H^{-\eta}\)-ball viewed inside
@@ -843,6 +848,14 @@ data.
   error \(\epsilon_n/(1-q)\).  The chapter also decomposes the map error into
   stochastic-convolution, heat-integration, cubic-product, linear-term, and
   mass-coordinate comparison errors.
+- Proves the coupled stationary-law comparison lemma: if stationary cutoff
+  solutions and the limiting Markov solution are realized on a common
+  probability space with time-zero defect \(\delta_n\) and finite-time defect
+  \(a_t\delta_n+\epsilon_{n,t}\), then the limiting law is invariant for the
+  limiting Markov semigroup on bounded Lipschitz test functions.  The dossier
+  keeps this separate from the common Schwinger-hierarchy comparison, which is
+  still the layer needed for polynomial moments, OS positivity, and Wightman
+  reconstruction.
 
 ## Figure Ledger
 
@@ -888,6 +901,14 @@ data maps.
   \(\delta_Y,\delta_K,\delta_P,\delta_L,\delta_M\).  The companion check
   verifies both the sharp affine contraction bound and the finite arithmetic
   of the error budget.
+- 2026-06-02 SPDE stationary-law coupling pass: added the bounded-Lipschitz
+  invariant-law bridge after finite-time SPDE convergence.  The lemma compares
+  a stationary cutoff pair \(U_n(0),U_n(t)\) with a limiting pair
+  \(U_*(0),U_*(t)\), proving the explicit defect
+  \(\operatorname{Lip}(f)((a_t+1)\delta_n+\epsilon_{n,t})\).  The companion
+  check verifies the rational arithmetic of the zero-time and finite-time
+  defects and records that a nonvanishing finite-time residual cannot imply
+  invariance.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

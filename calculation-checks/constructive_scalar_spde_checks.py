@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Finite checks for constructive scalar/SPDE normalization conventions."""
+"""Finite checks for constructive scalar/SPDE normalization conventions.
+
+The checks include finite arithmetic shadows of the invariant-law and
+stationary-law comparison steps used in the singular-SPDE-to-OS proof stack.
+"""
 
 from fractions import Fraction
 import math
@@ -1117,6 +1121,34 @@ def check_invariant_measure_limit_identity():
     lhs = sum(mu[i] * pf[i] for i in range(2))
     rhs = sum(mu[i] * f[i] for i in range(2))
     assert_equal(lhs, rhs, "finite invariant-measure identity")
+
+
+def check_stationary_law_coupling_invariance_defect():
+    # Finite arithmetic shadow of the coupled stationary-law comparison:
+    # time-zero coupling gives a bounded-Lipschitz distance, while comparing
+    # time t through an exactly stationary cutoff path gives the invariance
+    # defect for the limiting law.
+    lipschitz = Fraction(3)
+    delta = Fraction(1, 50)
+    a_t = Fraction(2)
+    epsilon_t = Fraction(1, 100)
+
+    zero_time_bound = lipschitz * delta
+    invariance_defect_bound = lipschitz * ((a_t + 1) * delta + epsilon_t)
+    assert_equal(zero_time_bound, Fraction(3, 50), "stationary-law BL distance bound")
+    assert_equal(invariance_defect_bound, Fraction(21, 100), "stationary-law invariance defect")
+
+    actual_zero_time_difference = Fraction(1, 20)
+    actual_invariance_defect = Fraction(1, 5)
+    if not actual_zero_time_difference <= zero_time_bound:
+        raise AssertionError("stationary-law BL comparison failed")
+    if not actual_invariance_defect <= invariance_defect_bound:
+        raise AssertionError("stationary-law invariance comparison failed")
+
+    bad_epsilon_t = Fraction(1, 4)
+    bad_defect_bound = lipschitz * ((a_t + 1) * delta + bad_epsilon_t)
+    if not bad_defect_bound > Fraction(1, 2):
+        raise AssertionError("stationary-law nonvanishing defect not detected")
 
 
 def check_reconstruction_wavelet_scale_powers():
@@ -2525,6 +2557,7 @@ def main():
     check_dpd_besov_fixed_point_exponents()
     check_dpd_besov_energy_compatibility_arithmetic()
     check_invariant_measure_limit_identity()
+    check_stationary_law_coupling_invariance_defect()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_phi4_three_negative_sector_coordinate_chart()
@@ -2559,7 +2592,7 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

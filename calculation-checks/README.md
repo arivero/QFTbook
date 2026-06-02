@@ -611,8 +611,9 @@ Current checks:
   local fixed-point proof, together with the
   three-dimensional Sobolev obstruction to applying the same DPD closure to
   \(\Phi^4_3\), the Young-exponent arithmetic in the smooth DPD energy
-  estimate and a finite Markov-chain invariant-measure identity, plus the
-  coarse/fine dyadic
+  estimate, a finite Markov-chain invariant-measure identity, and the
+  bounded-Lipschitz defect arithmetic for the coupled stationary-law
+  comparison, plus the coarse/fine dyadic
   exponent arithmetic in the compact reconstruction proof and the
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, together with exact arithmetic for the
