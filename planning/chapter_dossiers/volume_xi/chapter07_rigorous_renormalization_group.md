@@ -740,3 +740,13 @@ remainder contraction.
   The companion short-range RG check now verifies both the bad fixed
   entrywise-error schedule and a safe \(m\)-dependent schedule, plus the
   finite restriction/Cauchy arithmetic behind the directed form assembly.
+- 2026-06-02 OS-II source-majorant bridge pass: added the missing estimate
+  layer between fixed source-window cumulant convergence and the corrected
+  OS-II linear-growth hypothesis.  The manuscript now distinguishes the
+  connected source functional \(W_{k,E}\) from the moment source functional
+  \(Z_{k,E}\), states a uniform holomorphic majorant on
+  insertion-dependent polydiscs, derives the Cauchy moment bound, and records
+  the projective tensor seminorm comparison needed to obtain
+  \(B_{\rm OS}=C_\pi B/\rho\) in the OS-II growth estimate.  The companion
+  short-range RG check verifies the exact rational bookkeeping and detects
+  shrinking source radius as a failure mode.

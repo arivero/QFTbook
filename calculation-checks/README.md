@@ -776,6 +776,11 @@ Current checks:
   derivatives from holomorphic window convergence, restriction compatibility
   for \(E\subset F\), and the separate uniform Schwartz-seminorm bound needed
   to extend compatible finite windows to a distribution.  It also checks the
+  OS-II source-majorant bridge: a uniform holomorphic moment-source bound on
+  insertion-dependent polydiscs gives the Cauchy moment estimate, the
+  projective tensor seminorm estimate, and the \(B_{\rm OS}=C_\pi B/\rho\)
+  growth constant, while a shrinking source radius is detected as a failure
+  mode for corrected OS reconstruction.  It also checks the
   source-chart-to-holomorphic-window estimate: convergence of the local
   normalizing coordinate, retained local coordinates, source-decorated
   polymer tail, and finite-step remainder gives a uniform source-window

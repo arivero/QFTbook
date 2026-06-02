@@ -2929,6 +2929,77 @@ additional polynomial source coordinates whose derivatives are distributions
 supported on collision diagonals.  They are part of the source window, not an
 after-the-fact modification of separated cumulants.
 
+\paragraph{Source majorants for the OS-II growth input.}
+The preceding paragraph controls fixed cumulant windows.  The corrected
+OS-II reconstruction theorem needs a uniform many-insertion growth estimate
+for the Schwinger hierarchy itself, not only convergence at each fixed
+\(n\).  The corresponding Wilsonian estimate is most naturally stated for
+the moment source functional
+\begin{equation}
+  Z_{k,E}(z)
+  =
+  \mathbb E_{\mu_k}\exp\{\Phi_k(J_z)\},
+  \qquad
+  W_{k,E}(z)=\log Z_{k,E}(z),
+  \label{eq:short-range-moment-source-window}
+\end{equation}
+on the same finite test space \(E\).  Let
+\[
+  N_n=N_0+C_{\rm OS}n
+\]
+be the seminorm order allowed in the OS-II linear-growth condition, and let
+\(q_{1,N_n}\) be the corresponding one-variable Schwartz seminorm.  A
+source-window estimate strong enough for OS-II has the following form.  For
+every ordered \(n\)-tuple \(h_1,\ldots,h_n\) in the test space, the functional
+\(Z_{k,E}\), \(E=\operatorname{span}\{h_1,\ldots,h_n\}\), is holomorphic on
+the polydisc
+\[
+  |z_i|\leq \frac{\rho}{q_{1,N_n}(h_i)},\qquad i=1,\ldots,n,
+\]
+with constants \(\rho,A,B,\gamma>0\), independent of \(k,n\), and of the
+chosen tuple, such that
+\begin{equation}
+  \sup_{P_\rho(h_1,\ldots,h_n)}
+  |Z_{k,E}(z)|
+  \leq
+  A\,B^n\,(n!)^\gamma .
+  \label{eq:short-range-source-majorant-osii}
+\end{equation}
+Cauchy's formula in the \(n\) independent source variables then gives
+\begin{equation}
+  |S_{n,k}(h_1\otimes\cdots\otimes h_n)|
+  \leq
+  A\left(\frac B\rho\right)^n(n!)^\gamma
+  \prod_{i=1}^n q_{1,N_n}(h_i).
+  \label{eq:short-range-source-majorant-cauchy-moment}
+\end{equation}
+For a general zero-diagonal test function \(F\), let \(\pi_{n,N_n}(F)\) be
+the projective tensor seminorm obtained by decomposing \(F\) into finite sums
+of simple tensors and taking the infimum of the corresponding products of
+one-variable \(q_{1,N_n}\)-seminorms.  Linearity gives
+\begin{equation}
+  |S_{n,k}(F)|
+  \leq
+  A\left(\frac B\rho\right)^n(n!)^\gamma
+  \pi_{n,N_n}(F).
+  \label{eq:short-range-source-majorant-projective-bound}
+\end{equation}
+Thus the OS-II bound
+\eqref{eq:os-linear-growth-condition} follows from the source majorant
+whenever the chosen Schwartz seminorm family satisfies a comparison estimate
+\[
+  \pi_{n,N_n}(F)
+  \leq
+  C_\pi^n q_{n,N'_0+C'_{\rm OS}n}(F)
+\]
+on the zero-diagonal test class.  The constants in the OS-II growth condition
+are then \(B_{\rm OS}=C_\pi B/\rho\), with the same factorial exponent
+\(\gamma\).  This is a stricter demand than fixed-\(n\) source convergence:
+if the available source radius shrinks with \(n\), if the supremum in
+\eqref{eq:short-range-source-majorant-osii} has uncontrolled combinatorial
+growth, or if only connected cumulants are bounded without a summable
+partition estimate, the OS-II analytic input has not been obtained.
+
 \paragraph{RG-chart control of a holomorphic source window.}
 The hypothesis
 \eqref{eq:short-range-source-window-uniform-convergence} is not supplied by
@@ -3355,7 +3426,11 @@ estimates.
   Definition~\ref{def:os-lorentzian-boundary-value-package}.  Ordinary
   temperedness at each fixed \(n\) supplies fixed-\(n\) continuity; the
   OS-II item controls the many-variable analytic continuation uniformly in
-  the insertion number.
+  the insertion number.  In a Wilsonian source construction, a usable route
+  to this item is a moment-source majorant of the form
+  \eqref{eq:short-range-source-majorant-osii}, together with the
+  projective-seminorm comparison following
+  \eqref{eq:short-range-source-majorant-projective-bound}.
   \item The ordered-insertion adjoint identity required in
   Theorem~\ref{thm:os-reconstruction}; for a single real scalar field this is
   the compatibility of Hermiticity with the positive-time multiplication

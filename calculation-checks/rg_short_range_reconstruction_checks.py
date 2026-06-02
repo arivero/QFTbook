@@ -41,6 +41,9 @@ a source-extended polymer RG chart.
 The finite source-window-to-cumulant check verifies the Cauchy estimate and
 restriction compatibility that turn holomorphic finite source windows into
 actual cumulant distribution windows.
+The OS-II source-majorant check verifies the finite Cauchy/projective-seminorm
+bookkeeping that turns a uniform moment-source majorant into the
+linear-growth bound needed by corrected Osterwalder-Schrader reconstruction.
 The source-chart-to-window check verifies the Lipschitz estimate that turns
 source-extended RG-coordinate convergence, including the normalizing
 coordinate and finite-step remainder, into holomorphic source-window
@@ -1666,6 +1669,56 @@ def check_finite_source_window_to_cumulant_distribution_bound():
     )
 
 
+def check_osii_source_majorant_to_growth_bound():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    insertion_count = 3
+    source_majorant_a = Fraction(2)
+    source_majorant_b = Fraction(3)
+    source_radius = Fraction(2)
+    factorial_exponent = 1
+    one_variable_seminorm_product = Fraction(5, 7)
+
+    source_supremum = (
+        source_majorant_a
+        * source_majorant_b**insertion_count
+        * factorial(insertion_count) ** factorial_exponent
+    )
+    tensor_cauchy_bound = (
+        source_supremum
+        * one_variable_seminorm_product
+        / source_radius**insertion_count
+    )
+    assert_equal("OS-II source-majorant supremum", source_supremum, Fraction(324))
+    assert_equal("OS-II tensor Cauchy moment bound", tensor_cauchy_bound, Fraction(405, 14))
+
+    projective_constant = Fraction(4)
+    schwartz_seminorm = Fraction(1, 5)
+    projective_tensor_bound = projective_constant**insertion_count * schwartz_seminorm
+    projective_cauchy_bound = source_supremum * projective_tensor_bound / source_radius**insertion_count
+    os_growth_bound = (
+        source_majorant_a
+        * (projective_constant * source_majorant_b / source_radius) ** insertion_count
+        * factorial(insertion_count) ** factorial_exponent
+        * schwartz_seminorm
+    )
+    assert_equal("OS-II projective tensor comparison", projective_tensor_bound, Fraction(64, 5))
+    assert_equal("OS-II projective Cauchy bound", projective_cauchy_bound, Fraction(2592, 5))
+    assert_equal("OS-II growth constant rewrite", os_growth_bound, projective_cauchy_bound)
+
+    shrinking_radius = Fraction(1, 8)
+    shrinking_radius_bound = source_supremum / shrinking_radius**insertion_count
+    fixed_radius_bound = source_supremum / source_radius**insertion_count
+    assert_true(
+        "OS-II shrinking source radius detected",
+        shrinking_radius_bound > fixed_radius_bound,
+    )
+
+
 def check_source_chart_to_holomorphic_window_bound():
     def factorial(n):
         value = 1
@@ -1917,6 +1970,7 @@ def main():
     check_large_field_gaussian_regulator_bound()
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()
+    check_osii_source_majorant_to_growth_bound()
     check_source_chart_to_holomorphic_window_bound()
     check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
