@@ -679,6 +679,96 @@ a topology on smeared cross sections or cumulants; otherwise it is a
 controlled approximation hypothesis.
 \end{hypothesis}
 
+\begin{controlledapproximation}[Distributional leading-power factorization estimate]
+\label{ca:scet-distributional-factorization-estimate}
+The content of a leading-power factorization formula is an estimate on
+smeared physical cross sections, not an equality of pointwise functions.
+Assume that, for the chosen hard scale \(Q\), the physical QCD final-state
+observable \(e\) determines a positive cross-section measure
+\(\dd\mu_Q(e)\) on an endpoint window \(W_Q\).  Let
+\(\mathcal B_{\rm end}\) be a Banach space of endpoint test functions
+\(\varphi\colon W_Q\to\mathbb C\), with norm
+\(\|\varphi\|_{\mathcal B_{\rm end}}\), strong enough to control the singular
+distributions under discussion.  The physical smeared functional is
+\begin{equation}
+  \Sigma_Q^{\rm phys}(\varphi)
+  =
+  \int_{W_Q}\varphi(e)\,\dd\mu_Q(e).
+  \label{eq:scet-physical-smeared-functional}
+\end{equation}
+A two-jet datum \(\mathcal D_{\rm SCET}\) as in
+Definition~\ref{def:scet-two-jet-operator-datum} defines, after the specified
+regulator, overlap subtraction, rapidity subtraction when needed, and
+renormalization scheme, a singular distributional coordinate
+\(\dd\mu_{Q,\rm sing}^{\rm SCET}(e;\mathcal D_{\rm SCET})\).  Its smeared
+functional is
+\begin{equation}
+  \Sigma_{Q,\rm sing}^{\rm SCET}(\varphi;\mathcal D_{\rm SCET})
+  =
+  \left\langle
+  H\otimes J_n\otimes J_{\bar n}\otimes S,\varphi
+  \right\rangle_{\mathcal D_{\rm SCET}},
+  \label{eq:scet-factorized-smeared-functional}
+\end{equation}
+where the pairing includes the measurement convolution, the endpoint
+transform convention if one is used, and the subtraction prescription.
+
+A controlled leading-power factorization claim on \(W_Q\) is the assertion
+that there exist an exponent \(p>0\), a scale-dependent endpoint parameter
+\(\lambda_W\), and a remainder bound \(R_Q\) such that
+\begin{equation}
+  \left|
+  \Sigma_Q^{\rm phys}(\varphi)
+  -
+  \Sigma_{Q,\rm sing}^{\rm SCET}(\varphi;\mathcal D_{\rm SCET})
+  \right|
+  \le
+  R_Q\,\|\varphi\|_{\mathcal B_{\rm end}},
+  \qquad
+  R_Q\le C_Q\,\lambda_W^{p}
+  \label{eq:scet-distributional-factorization-bound}
+\end{equation}
+for every \(\varphi\in\mathcal B_{\rm end}\) in the declared kinematic
+range.  If the hard, jet, soft, or anomalous-dimension entries are
+perturbatively truncated, the displayed \(R_Q\) must be enlarged by the
+declared perturbative truncation remainder in the same norm.  The common
+phrases "leading power" and "factorization theorem" therefore have a definite
+meaning only after the physical functional, test space, factorized datum,
+endpoint parameter, and remainder topology have all been specified.
+
+The same formulation also fixes the status of finite scheme changes.  In a
+scalar transform-space chart, a finite multiplicative coordinate change
+\begin{equation}
+  H'=H R_H,\qquad
+  \widetilde J_n'=\widetilde J_n R_n,\qquad
+  \widetilde J_{\bar n}'=\widetilde J_{\bar n} R_{\bar n},\qquad
+  \widetilde S'=\widetilde S R_S
+  \label{eq:scet-finite-multiplicative-scheme-change}
+\end{equation}
+represents the same singular distribution only if
+\begin{equation}
+  R_H R_n R_{\bar n} R_S=1
+  \label{eq:scet-finite-scheme-product-condition}
+\end{equation}
+as an identity in the transform variable and scale.  The anomalous dimensions
+then transform as
+\begin{equation}
+  \gamma_i'
+  =
+  \gamma_i+\mu\frac{\dd}{\dd\mu}\log R_i,
+  \qquad i=H,J_n,J_{\bar n},S,
+  \label{eq:scet-finite-scheme-gamma-shift}
+\end{equation}
+and the sum of the transformed anomalous dimensions still vanishes because
+\[
+  \mu\frac{\dd}{\dd\mu}\log(R_HR_nR_{\bar n}R_S)=0 .
+\]
+In a mixing problem the same statement is a similarity-covariant statement
+about matrix kernels and path-ordered products.  It is part of the coordinate
+data of the factorized approximation, not an optional convention added after
+the formula has been written.
+\end{controlledapproximation}
+
 Renormalization of the hard, jet, and soft functions gives evolution
 equations.  The resummation datum is clearest after a Laplace transform, or
 any equivalent transform, has converted the measurement convolution into an

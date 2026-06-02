@@ -44,6 +44,12 @@ The chapter establishes:
   making explicit that an overlap region is subtracted once and that
   regulator-dependent scaleless-zero statements do not remove the need to
   specify the subtraction datum;
+- controlled approximation `ca:scet-distributional-factorization-estimate`,
+  stating leading-power SCET factorization as a bound on smeared physical
+  cross-section functionals on a Banach endpoint test space, with the
+  physical functional, factorized singular coordinate, endpoint parameter,
+  topology, power remainder, perturbative truncation remainder, and finite
+  transform-space scheme covariance all explicitly named;
 - a transform-space SCET renormalization-group transport datum for resummed
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
@@ -175,7 +181,15 @@ The chapter establishes:
      natural scales to a common scale.  Accuracy labels such as LL/NLL/NNLL
      are incomplete without the anomalous-dimension orders, matching orders,
      transform convention, scale choices, and factorization remainder.
-8ac. Massive electroweak vector corrections to high-energy jet observables are
+8ac. A leading-power factorization claim is an estimate on smeared physical
+     cross-section functionals.  The chapter now distinguishes the physical
+     measure, the endpoint test-function Banach space, the factorized
+     singular coordinate, the power remainder, and any perturbative
+     truncation remainder.  Finite multiplicative changes of hard, jet, and
+     soft coordinates represent the same singular distribution only when the
+     product of the finite factors is one; anomalous-dimension consistency is
+     then preserved by the paired logarithmic shifts.
+8ad. Massive electroweak vector corrections to high-energy jet observables are
      controlled by a physical mass boundary \(M_V\), while the QCD sector
      retains its own operator and regulator datum.  In the one-line
      soft-collinear chart the finite phase-space area is
@@ -381,6 +395,13 @@ The chapter establishes:
   with hard/jet/soft anomalous-dimension consistency and common-scale
   independence; extended `calculation-checks/scet_factorization_checks.py`
   with exact rational RG-transport checks.
+- 2026-06-01 issue #526/#630 distributional-factorization pass: added
+  controlled approximation `ca:scet-distributional-factorization-estimate`,
+  defining a leading-power factorization claim as a bound on smeared physical
+  cross-section functionals and recording finite transform-space
+  hard/jet/soft scheme covariance; extended
+  `calculation-checks/scet_factorization_checks.py` with exact finite
+  total-variation remainder and multiplicative scheme-covariance checks.
 - 2026-06-01 issue #526/#630 massive-vector Sudakov pass: added a
   high-energy electroweak jet boundary chart with physical vector mass
   \(M_V\), derived the one-line area

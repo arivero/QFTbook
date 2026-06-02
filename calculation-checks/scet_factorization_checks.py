@@ -3,8 +3,12 @@
 
 These checks do not prove a factorization theorem.  They verify the exact
 algebraic facts used in the exposition: convolution of jet and soft
-distributions preserves normalization and first moments; finite zero-bin
-subtraction is inclusion--exclusion; a finite Wilson-line change of variables
+distributions preserves normalization and first moments; a finite
+distributional factorization remainder is bounded by total variation times
+the endpoint-test-function norm; finite zero-bin subtraction is
+inclusion--exclusion; finite multiplicative scheme changes preserve the
+transform-space hard/jet/soft product and anomalous-dimension consistency
+only when their product is one; a finite Wilson-line change of variables
 removes the leading soft covariant derivative when the Wilson line solves its
 defining differential equation; scalar RG transport is independent of the
 common scale when the relevant anomalous dimensions satisfy the factorization
@@ -37,6 +41,23 @@ def normalize(dist: Distribution) -> Fraction:
 
 def moment(dist: Distribution) -> Fraction:
     return sum(x * weight for x, weight in dist.items())
+
+
+def signed_difference(left: Distribution, right: Distribution) -> dict[Fraction, Fraction]:
+    keys = set(left) | set(right)
+    return {key: left.get(key, Fraction(0)) - right.get(key, Fraction(0)) for key in keys}
+
+
+def finite_pairing(dist: Distribution, test: Distribution) -> Fraction:
+    return sum(weight * test.get(point, Fraction(0)) for point, weight in dist.items())
+
+
+def total_variation(dist: Distribution) -> Fraction:
+    return sum(abs(weight) for weight in dist.values())
+
+
+def sup_norm(test: Distribution) -> Fraction:
+    return max((abs(value) for value in test.values()), default=Fraction(0))
 
 
 def endpoint_convolution(
@@ -90,6 +111,40 @@ def check_event_shape_convolution() -> None:
         + moment(soft) / q_hard
     )
     assert_equal("endpoint first moment", moment(direct), expected_first_moment)
+
+
+def check_distributional_factorization_remainder_bound() -> None:
+    physical = {
+        Fraction(0): Fraction(7, 15),
+        Fraction(1, 4): Fraction(1, 5),
+        Fraction(1, 2): Fraction(1, 6),
+        Fraction(3, 4): Fraction(1, 6),
+    }
+    factorized = {
+        Fraction(0): Fraction(1, 2),
+        Fraction(1, 4): Fraction(1, 6),
+        Fraction(1, 2): Fraction(1, 5),
+        Fraction(3, 4): Fraction(2, 15),
+    }
+    remainder = signed_difference(physical, factorized)
+    assert_equal("equal total weight in factorization model", normalize(remainder), Fraction(0))
+
+    test = {
+        Fraction(0): Fraction(3, 5),
+        Fraction(1, 4): Fraction(-2, 7),
+        Fraction(1, 2): Fraction(4, 9),
+        Fraction(3, 4): Fraction(-5, 11),
+    }
+    pairing = finite_pairing(remainder, test)
+    bound = total_variation(remainder) * sup_norm(test)
+    if abs(pairing) > bound:
+        raise AssertionError(f"distributional remainder bound failed: {abs(pairing)} > {bound}")
+
+    sign_test = {
+        point: Fraction(1) if weight > 0 else Fraction(-1) if weight < 0 else Fraction(0)
+        for point, weight in remainder.items()
+    }
+    assert_equal("sharp total-variation dual pairing", finite_pairing(remainder, sign_test), total_variation(remainder))
 
 
 def finite_zero_bin_sum(
@@ -146,6 +201,41 @@ def check_zero_bin_scheme_reshuffling() -> None:
     overlap_shifted = {"o": overlap["o"] + delta}
     shifted = finite_zero_bin_sum(collinear_shifted, soft_shifted, overlap_shifted, test)
     assert_equal("paired zero-bin scheme reshuffling", shifted, base)
+
+
+def check_multiplicative_scheme_covariance() -> None:
+    hard = Fraction(2, 3)
+    jet_n = Fraction(5, 7)
+    jet_barn = Fraction(11, 13)
+    soft = Fraction(17, 19)
+    base_product = hard * jet_n * jet_barn * soft
+
+    r_h = Fraction(3, 5)
+    r_n = Fraction(7, 11)
+    r_barn = Fraction(13, 17)
+    r_s = Fraction(1, 1) / (r_h * r_n * r_barn)
+    assert_equal("multiplicative scheme product condition", r_h * r_n * r_barn * r_s, Fraction(1))
+
+    shifted_product = (hard * r_h) * (jet_n * r_n) * (jet_barn * r_barn) * (soft * r_s)
+    assert_equal("factorized product under finite scheme change", shifted_product, base_product)
+
+    gamma_h = Fraction(5, 6)
+    gamma_n = Fraction(-1, 3)
+    gamma_barn = Fraction(7, 10)
+    gamma_s = -gamma_h - gamma_n - gamma_barn
+    assert_equal("unshifted anomalous-dimension consistency", gamma_h + gamma_n + gamma_barn + gamma_s, Fraction(0))
+
+    dlog_r_h = Fraction(2, 7)
+    dlog_r_n = Fraction(-3, 11)
+    dlog_r_barn = Fraction(5, 13)
+    dlog_r_s = -dlog_r_h - dlog_r_n - dlog_r_barn
+    shifted_sum = (
+        (gamma_h + dlog_r_h)
+        + (gamma_n + dlog_r_n)
+        + (gamma_barn + dlog_r_barn)
+        + (gamma_s + dlog_r_s)
+    )
+    assert_equal("shifted anomalous-dimension consistency", shifted_sum, Fraction(0))
 
 
 def integrate_piecewise(values: Mapping[tuple[Fraction, Fraction], Fraction], start: Fraction, end: Fraction) -> Fraction:
@@ -351,17 +441,19 @@ def check_massive_vector_sudakov_area() -> None:
 
 def main() -> None:
     check_event_shape_convolution()
+    check_distributional_factorization_remainder_bound()
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
+    check_multiplicative_scheme_covariance()
     check_rg_transport_common_scale_independence()
     check_soft_drop_boundary_scales_and_rg_consistency()
     check_soft_wilson_line_decoupling_identity()
     check_glauber_unitarity_diagnostic()
     check_massive_vector_sudakov_area()
     print(
-        "All SCET convolution, zero-bin, RG-transport, soft-drop-scale, "
-        "soft-Wilson-line, Glauber-unitarity, and massive-vector Sudakov "
-        "checks passed."
+        "All SCET convolution, distributional-remainder, zero-bin, "
+        "scheme-covariance, RG-transport, soft-drop-scale, soft-Wilson-line, "
+        "Glauber-unitarity, and massive-vector Sudakov checks passed."
     )
 
 
