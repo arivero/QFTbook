@@ -11,72 +11,45 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Full Volume Index (I-XX)
+## Complete Volume Program (I-XX)
 
-The complete current public volume program has twenty numbered volumes.  The
-full list is given here, before any build or directory details, so that the
-README itself records the whole monograph architecture.
+The public project has twenty numbered volumes.  This table is the canonical
+README roster: Volumes I-XII are compiled by `monograph/tex/main.tex` into the
+current PDF, while Volumes XIII-XX are public roadmap volumes whose source
+assemblies will be added only after the same chapter-dossier, verification,
+frontmatter, and README standards are met.
 
-The compiled manuscript currently contains Volumes I-XII in
-`monograph/tex/main.pdf`.  Volumes XIII-XX are roadmap volumes: they record the
-intended subject architecture and become compiled volumes only after their TeX
-assembly files, chapter dossiers, verification passes, frontmatter entries, and
-README entries are added together.  Do not infer the full volume program from
-the current `monograph/tex/volumes/` directory alone; that directory currently
-contains only compiled source assemblies.  The monograph frontmatter presently
-lists only compiled volumes; this README records both compiled and roadmap
-volumes.
+Do not infer the complete volume program from the current
+`monograph/tex/volumes/` directory alone.  That directory presently contains
+the active compiled assemblies; the roadmap volumes are part of the public
+architecture but are not yet separate TeX assemblies.
 
-At a glance:
+| Volume | Public status | Title | Assembly status |
+| --- | --- | --- | --- |
+| I | Compiled | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
+| II | Compiled | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
+| III | Compiled | Renormalization, Effective Field Theory, and Critical Phenomena | `monograph/tex/volumes/volume_iii/volume_iii_current.tex` |
+| IV | Compiled | Gauge Theory, Infrared Structure, and Anomalies | `monograph/tex/volumes/volume_iv/volume_iv_current.tex` |
+| V | Compiled | Conformal Field Theory | `monograph/tex/volumes/volume_v/volume_v_current.tex` |
+| VI | Compiled | Integrable Quantum Field Theory | `monograph/tex/volumes/volume_vi/volume_vi_current.tex` |
+| VII | Compiled | Supersymmetric Quantum Field Theory | `monograph/tex/volumes/volume_vii/volume_vii_current.tex` |
+| VIII | Compiled | Topological and Cohomological Quantum Field Theory | `monograph/tex/volumes/volume_viii/volume_viii_current.tex` |
+| IX | Compiled | Global Structure, Phases, and Extended Operators | `monograph/tex/volumes/volume_ix/volume_ix_current.tex` |
+| X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
+| XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
+| XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
+| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions | Planned assembly |
+| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure | Planned assembly |
+| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables | Planned assembly |
+| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors | Planned assembly |
+| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT | Planned assembly |
+| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT | Planned assembly |
+| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory | Planned assembly |
+| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT | Planned assembly |
 
-1. Volume I: Foundations of Local Quantum Field Theory
-2. Volume II: Particles, Scattering, and Analyticity
-3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
-4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
-5. Volume V: Conformal Field Theory
-6. Volume VI: Integrable Quantum Field Theory
-7. Volume VII: Supersymmetric Quantum Field Theory
-8. Volume VIII: Topological and Cohomological Quantum Field Theory
-9. Volume IX: Global Structure, Phases, and Extended Operators
-10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
-12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
-13. Volume XIII: Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions
-14. Volume XIV: Advanced Local-Algebraic QFT and Modular Structure
-15. Volume XV: Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables
-16. Volume XVI: Advanced Supersymmetric Theories and Protected Sectors
-17. Volume XVII: Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT
-18. Volume XVIII: Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT
-19. Volume XIX: Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory
-20. Volume XX: Advanced Curved-Background, Locally Covariant, and Semiclassical QFT
-
-| Volume | Public status | Title |
-| --- | --- | --- |
-| I | Compiled | Foundations of Local Quantum Field Theory |
-| II | Compiled | Particles, Scattering, and Analyticity |
-| III | Compiled | Renormalization, Effective Field Theory, and Critical Phenomena |
-| IV | Compiled | Gauge Theory, Infrared Structure, and Anomalies |
-| V | Compiled | Conformal Field Theory |
-| VI | Compiled | Integrable Quantum Field Theory |
-| VII | Compiled | Supersymmetric Quantum Field Theory |
-| VIII | Compiled | Topological and Cohomological Quantum Field Theory |
-| IX | Compiled | Global Structure, Phases, and Extended Operators |
-| X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
-| XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory |
-| XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields |
-| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions |
-| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure |
-| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables |
-| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors |
-| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT |
-| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT |
-| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
-| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
-
-This table is the authoritative full list of volumes currently recognized by
-the public project.  The active compiled-volume table below gives chapter
-ranges and assembly files for Volumes I-XII.  The roadmap table records the
-intended scope of Volumes XIII-XX.
+The active compiled-volume table below gives chapter ranges, counts, and
+scopes for Volumes I-XII.  The roadmap table records the intended scope of
+Volumes XIII-XX.
 
 ### Active Compiled Volumes I-XII
 
