@@ -9,6 +9,64 @@ normed spaces of interactions or probability measures.  The aim is to replace
 informal terminology about flows by explicit maps, estimates, fixed points,
 and coordinate decompositions.
 
+\section{The Wilsonian Reconstruction Problem}
+
+The word ``Wilsonian'' will be used in a strict sense.  It refers first to an
+exact finite-regulator operation that integrates or blocks degrees of freedom,
+and only second to a coordinate description of the resulting object.  A
+coordinate flow is useful only when it is tied to the finite operation and to
+reconstruction estimates for observables.
+
+\begin{definition}[Wilsonian RG reconstruction problem]
+\label{def:wilsonian-rg-reconstruction-problem}
+A Wilsonian RG reconstruction problem consists of the following data.
+\begin{enumerate}
+  \item A directed regulator family indexed by \(k\), with finite-regulator
+  configuration spaces, field spaces, measures, densities, or BV integration
+  data, denoted collectively by \(\mathcal X_k\).  The ordering convention is
+  part of the datum: increasing \(k\) means removing or refining the ultraviolet
+  regulator.
+  \item Exact finite-regulator maps \(T_{k,k-1}\) obtained by Gaussian
+  fluctuation integration, block-spin pushforward, tensor blocking,
+  gauge-equivariant lattice blocking, or BV pushforward.  These maps act on the
+  finite-regulator objects themselves before any projection to finitely many
+  couplings is made.
+  \item Localization maps
+  \[
+    \operatorname{Loc}_k:T_{k,k-1}(\mathcal X_k)\longrightarrow\mathcal B_{k-1}
+  \]
+  into declared Banach, Fr\'echet, polymer, tensor, or BV charts.  The image
+  separates retained local coordinates from the irrelevant or nonlocal tail
+  measured in the chosen norm.
+  \item Source extensions for finite test windows \(E\).  These include
+  finite-regulator source functionals \(Z_{k,E}\) or \(W_{k,E}=\log Z_{k,E}\),
+  local source and contact coordinates, and the source-decorated irrelevant
+  tail.  The source radius and the topology in which source derivatives are
+  taken are part of the data.
+  \item Reconstruction maps from the regulated or chart-level objects to the
+  intended observable topology: Schwinger distributions, Wightman
+  distributions, local algebras, gauge-invariant line or loop observables,
+  tensor-network observables, or BV cohomology classes.
+  \item Estimates, in the stated norms and seminorms, proving the domain
+  stability of the exact maps, localization remainders, contraction or
+  summability of irrelevant tails, tuning of unstable coordinates, convergence
+  of source windows, reflection positivity or its declared replacement,
+  distributional growth bounds, and a common directed regulator schedule on
+  which the estimates needed for each finite reconstruction demand hold
+  together.
+\end{enumerate}
+\end{definition}
+
+A fixed point, stable trajectory, or continuum limit is a theorem about this
+package, not about the zero of a beta function by itself.  Perturbative beta
+functions, functional-RG truncations, and tensor-network numerics are useful
+coordinate shadows when comparison maps and residual estimates relate them to
+Definition~\ref{def:wilsonian-rg-reconstruction-problem}.  The later sections
+unpack the items in the definition: exact Gaussian pushforward, Banach-space
+linearization, projection residuals, polymer estimates, source windows,
+OS/Wightman reconstruction, auxiliary-to-short-range transfer, gauge-compatible
+blocking, and tensor or functional-RG comparison.
+
 \section{Gaussian Block Integration}
 
 Let \(C\) be a positive covariance on a finite regulator space of fields and

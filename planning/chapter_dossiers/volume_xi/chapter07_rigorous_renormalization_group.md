@@ -13,6 +13,12 @@ constructive RG developments.
 - `C=C_<+Gamma`: covariance decomposition.
 - `mu_C`, `mu_Gamma`: Gaussian measures.
 - `V`, `V_<`, `R_L`: interaction, integrated interaction, and RG map.
+- `mathcal X_k`, `T_{k,k-1}`, `Loc_k`: finite-regulator object, exact
+  Wilsonian step, and localization map in the Wilsonian RG reconstruction
+  problem.
+- `Z_{k,E}`, `W_{k,E}`, `E`: finite source-window functional, connected
+  source functional, and finite test window in the source-extended part of
+  the reconstruction problem.
 - `B`, `U`: Banach space of interactions and RG domain.
 - `V_*`, `D R|_{V_*}`: fixed point and linearized RG.
 - `E_u`, `E_s`: unstable and stable subspaces.
@@ -149,6 +155,11 @@ constructive RG developments.
 ## Claim Ledger
 
 - Defines Gaussian block integration as an exact finite-regulator identity.
+- Defines the Wilsonian RG reconstruction problem as a package of
+  finite-regulator objects, exact finite maps, localization into a declared
+  normed chart, finite source windows, reconstruction maps, and estimates
+  strong enough to control domain stability, irrelevant tails, tuning,
+  positivity, distributional growth, and common directed scale schedules.
 - Defines controlled RG maps on Banach spaces and scaling coordinates through
   linearization.
 - Proves a local stable-graph theorem for a hyperbolic RG fixed point using
@@ -876,3 +887,11 @@ remainder contraction.
   and target-identification theorem.  This addresses the #505 model-synthesis
   gap without promoting benchmark systems to ordinary short-range or gauge
   QFT fixed-point theorems.
+- 2026-06-02 Wilsonian reconstruction architecture pass: added
+  Definition~\(\ref{def:wilsonian-rg-reconstruction-problem}\) at the chapter
+  entrance.  The definition makes explicit that the monograph's rigorous
+  Wilsonian RG program begins with exact finite-regulator maps and reaches QFT
+  only after localization, source-window, positivity, distributional-growth,
+  and reconstruction estimates are supplied.  It prevents beta functions,
+  functional-RG truncations, and tensor numerics from being read as standalone
+  continuum-QFT constructions.
