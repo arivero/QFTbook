@@ -36,6 +36,9 @@ The stable-chart certificate check verifies the finite RG observable-window
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
 or normalization errors.
+The C1 stable-graph check verifies the differentiated Lyapunov--Perron
+equation for a finite one-dimensional nonlinear RG map whose stable graph can
+be summed exactly.
 """
 
 from fractions import Fraction
@@ -247,6 +250,57 @@ def check_relevant_direction_tuning_amplification():
         lam ** (len(errors) - 1 - j) * errors[j] for j in range(len(errors))
     )
     assert_equal("relevant direction affine amplification", coordinate, expected)
+
+
+def check_c1_stable_graph_derivative_equation():
+    # One-dimensional nonlinear RG map:
+    #   u_{n+1} = A u_n + c s_n^2,   s_{n+1} = B s_n.
+    # The Lyapunov--Perron stable graph is
+    #   h(s) = -sum_{j>=0} A^{-(j+1)} c (B^j s)^2
+    #        = -c s^2/(A-B^2).
+    # Differentiating the Lyapunov--Perron equation gives
+    #   Dh(s)v = -sum_{j>=0} A^{-(j+1)} 2c (B^j s)(B^j v),
+    # which must equal -2c s v/(A-B^2).
+    unstable_eigenvalue = Fraction(2)
+    stable_eigenvalue = Fraction(1, 3)
+    nonlinear_coefficient = Fraction(5)
+    stable_coordinate = Fraction(1, 7)
+    stable_tangent = Fraction(3, 11)
+    denominator = unstable_eigenvalue - stable_eigenvalue**2
+
+    graph_value = -nonlinear_coefficient * stable_coordinate**2 / denominator
+    graph_derivative = (
+        -2
+        * nonlinear_coefficient
+        * stable_coordinate
+        * stable_tangent
+        / denominator
+    )
+    assert_equal("C1 stable graph closed form", graph_value, Fraction(-45, 833))
+    assert_equal("C1 stable graph derivative closed form", graph_derivative, Fraction(-270, 1309))
+
+    lp_derivative_sum = (
+        -2
+        * nonlinear_coefficient
+        * stable_coordinate
+        * stable_tangent
+        / unstable_eigenvalue
+        / (1 - stable_eigenvalue**2 / unstable_eigenvalue)
+    )
+    assert_equal(
+        "C1 differentiated Lyapunov-Perron sum",
+        lp_derivative_sum,
+        graph_derivative,
+    )
+
+    zero_graph_derivative = (
+        -2
+        * nonlinear_coefficient
+        * Fraction(0)
+        * stable_tangent
+        / denominator
+    )
+    assert_equal("C1 stable graph tangent to stable subspace", zero_graph_derivative, Fraction(0))
 
 
 def check_observable_germ_finite_window_certificate():
@@ -852,6 +906,7 @@ def main():
     check_correction_to_scaling_bookkeeping()
     check_auxiliary_transfer_telescoping_bound()
     check_relevant_direction_tuning_amplification()
+    check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_certificate()
     check_qft_strength_observable_germ_windows()
     check_stable_chart_observable_window_certificate()

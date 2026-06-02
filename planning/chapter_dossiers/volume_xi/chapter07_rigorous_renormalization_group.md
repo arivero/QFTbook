@@ -129,6 +129,11 @@ constructive RG developments.
 - Proves a local stable-graph theorem for a hyperbolic RG fixed point using
   an explicit Lyapunov-Perron contraction on a complete weighted sequence
   space, with the contraction constant displayed.
+- Proves a \(C^1\) stable-graph criterion by differentiating the
+  Lyapunov--Perron fixed-point equation in the weighted sequence space.  The
+  proof identifies the derivative sequence, its contraction bound, and the
+  tangency \(Dh(0)=0\); model-specific RG work must still prove the required
+  uniform derivative bounds in its chosen norm.
 - Defines polymer activities, the weighted large-field polymer norm, the
   localization remainder, the quadratic circle-product estimate, and the
   finite one-step contraction budget
@@ -297,7 +302,8 @@ remainder contraction.
   checks for ordinary short-range scalar block-spin normalization, pairing,
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
-  estimate, relevant-direction amplification formula, and projective
+  estimate, relevant-direction amplification formula, differentiated
+  Lyapunov--Perron \(C^1\) stable-graph formula, and projective
   observable-germ finite-window certificate.  The same script now checks a
   finite OS-positivity Gram-window failure that is invisible in a declared
   one-coordinate observable window, and it checks the exact finite arithmetic
@@ -388,6 +394,11 @@ remainder contraction.
   mismatch, a stable contraction term, accumulated one-step defects, and
   source-tail/normalization errors.  The companion short-range RG check
   verifies the same recurrence and observable-bound arithmetic exactly.
+- 2026-06-02 \(C^1\) stable graph pass: upgraded the critical-surface
+  analytic infrastructure by proving a self-contained differentiability
+  criterion for the Lyapunov--Perron stable graph.  The companion short-range
+  RG check verifies the differentiated stable-graph formula in an exact
+  one-dimensional nonlinear model.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

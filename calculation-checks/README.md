@@ -635,7 +635,10 @@ Current checks:
   distributions from regulator-dependent amplitudes.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula used to separate stable comparison estimates from
-  unstable tuning data, plus the projective observable-germ finite-window
+  unstable tuning data.  It also checks the differentiated Lyapunov--Perron
+  equation for a finite one-dimensional nonlinear stable graph, verifying
+  the \(C^1\) stable-graph derivative formula and tangency to the stable
+  subspace.  It also checks the projective observable-germ finite-window
   certificate used to prevent finite observable agreement from being
   overstated as full universality.  It also checks the QFT-strength
   observable-germ warning that matching a visible finite correlator window

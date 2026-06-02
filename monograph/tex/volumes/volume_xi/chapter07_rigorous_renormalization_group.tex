@@ -370,6 +370,161 @@ point.  Forward invariance is built into the recurrence, and the
 \(\gamma\)-weighted bound gives convergence to the fixed point.
 \end{proof}
 
+\begin{theorem}[\(C^1\) stable graph from the Lyapunov--Perron equation]
+\label{thm:rg-c1-stable-graph-criterion}
+Assume the hypotheses and notation of
+Theorem~\ref{thm:rg-local-stable-manifold}.  Suppose in addition that
+\(F\) is \(C^1\) on the ball used there and that \(DF\) is uniformly
+continuous on that ball.  Let
+\[
+  \kappa_\rho
+  =
+  \sup_{\|(u,s)\|\leq \rho}\|DF(u,s)\|_{\mathcal B\to\mathcal B}.
+\]
+After restricting to a smaller ball if necessary, assume
+\begin{equation}
+  q_\rho
+  =
+  \max\!\left\{
+    \frac{a\kappa_\rho}{1-a\gamma},
+    \frac{b+\kappa_\rho}{\gamma}
+  \right\}
+  <1 .
+  \label{eq:rg-c1-stable-graph-small-derivative}
+\end{equation}
+Then the orbit map
+\[
+  s_0\longmapsto x(s_0)=(u_n(s_0),s_n(s_0))_{n\geq0}
+  \in\mathcal X_{\gamma,\rho}(s_0)
+\]
+constructed in Theorem~\ref{thm:rg-local-stable-manifold} is \(C^1\) as a
+map from the stable-coordinate ball into the \(\gamma\)-weighted sequence
+space.  Its derivative in the direction \(v\in E_s\) is the unique
+\(\gamma\)-weighted sequence \(Y(v)=(Y^u_n(v),Y^s_n(v))_{n\geq0}\) satisfying
+\begin{align}
+  Y^s_0(v)&=v, \label{eq:rg-c1-stable-derivative-initial}\\
+  Y^s_{n+1}(v)
+  &=
+  B\,Y^s_n(v)
+  +
+  DF_s(x_n(s_0))\,Y_n(v),                                      \\
+  Y^u_n(v)
+  &=
+  -\sum_{j=0}^{\infty}
+  A^{-(j+1)}DF_u(x_{n+j}(s_0))\,Y_{n+j}(v).
+  \label{eq:rg-c1-stable-derivative-unstable}
+\end{align}
+Consequently the stable graph \(h(s_0)=u_0(s_0)\) is \(C^1\), with
+\[
+  Dh(s_0)v=Y^u_0(v),
+  \qquad
+  Dh(0)=0 .
+\]
+\end{theorem}
+
+\begin{proof}
+Let \(X_\gamma\) be the Banach space of sequences
+\((u_n,s_n)_{n\geq0}\) with finite norm
+\[
+  \|x\|_\gamma
+  =
+  \sup_n\gamma^{-n}\|(u_n,s_n)\|.
+\]
+The
+Lyapunov--Perron map used in the proof of
+Theorem~\ref{thm:rg-local-stable-manifold} may be written
+\[
+  x=\mathcal T(s_0,x).
+\]
+For fixed \(s_0\), its derivative with respect to \(x\) is obtained by
+replacing each occurrence of \(F\) in
+\eqref{eq:rg-stable-lp-s-part}--\eqref{eq:rg-stable-lp-u-part} by
+\(DF(x_n)\).  The same estimates as
+\eqref{eq:rg-stable-u-series-bound} and
+\eqref{eq:rg-stable-s-recursion-bound}, with \(\kappa\) replaced by
+\(\kappa_\rho\), give
+\begin{equation}
+  \|D_x\mathcal T(s_0,x)\|_{X_\gamma\to X_\gamma}
+  \leq q_\rho<1 .
+  \label{eq:rg-c1-lp-linearized-contraction}
+\end{equation}
+The derivative of \(\mathcal T\) with respect to the parameter \(s_0\) is the
+sequence whose stable component at \(n=0\) is the input vector and whose
+other components are zero before the contraction equation is solved.
+
+For \(v\in E_s\), define \(Y(v)\) to be the fixed point of the affine
+linear equation
+\begin{equation}
+  Y
+  =
+  D_{s_0}\mathcal T(s_0,x(s_0))v
+  +
+  D_x\mathcal T(s_0,x(s_0))Y .
+  \label{eq:rg-c1-affine-derivative-equation}
+\end{equation}
+Banach's fixed-point theorem applies because of
+\eqref{eq:rg-c1-lp-linearized-contraction}.  Written in components,
+\eqref{eq:rg-c1-affine-derivative-equation} is exactly
+\eqref{eq:rg-c1-stable-derivative-initial}--\eqref{eq:rg-c1-stable-derivative-unstable}.
+It also gives the bound
+\[
+  \|Y(v)\|_\gamma\leq\frac{\|v\|}{1-q_\rho}.
+\]
+
+It remains to check that \(Y(v)\) is the derivative of \(x(s_0)\).  Put
+\[
+  \Delta_t=\frac{x(s_0+tv)-x(s_0)}{t}.
+\]
+Subtract
+\eqref{eq:rg-c1-affine-derivative-equation} from the difference quotient of
+\[
+  x(s_0+tv)=\mathcal T(s_0+tv,x(s_0+tv)),
+  \qquad
+  x(s_0)=\mathcal T(s_0,x(s_0)).
+\]
+The result is
+\[
+  \Delta_t-Y(v)
+  =
+  D_x\mathcal T(s_0,x(s_0))(\Delta_t-Y(v))
+  +
+  r_t,
+\]
+where \(r_t\to0\) in \(X_\gamma\).  The convergence of \(r_t\) is the
+Fréchet differentiability of \(F\) on each finite component together with
+the uniform continuity of \(DF\), the uniform \(\gamma\)-weighted bound on
+the two orbits, and the dominated geometric sums in
+\eqref{eq:rg-stable-u-series-bound}.  Taking norms and using
+\eqref{eq:rg-c1-lp-linearized-contraction} gives
+\[
+  \|\Delta_t-Y(v)\|_\gamma
+  \leq
+  q_\rho\|\Delta_t-Y(v)\|_\gamma+\|r_t\|_\gamma ,
+\]
+so \(\Delta_t\to Y(v)\).  Thus \(x(\cdot)\) is differentiable.
+
+Continuity of \(Dx(s_0)\) follows from the same contraction equation:
+if \(s_0\) and \(s_0'\) are close, the corresponding orbits are close in
+\(X_\gamma\), and uniform continuity of \(DF\) makes
+\[
+  D_x\mathcal T(s_0,x(s_0))
+  -
+  D_x\mathcal T(s_0',x(s_0'))
+\]
+small as an operator on \(X_\gamma\).  The inverse
+\((1-D_x\mathcal T)^{-1}\) is uniformly bounded by
+\((1-q_\rho)^{-1}\), so the fixed solution of
+\eqref{eq:rg-c1-affine-derivative-equation} depends continuously on
+\(s_0\).
+
+Finally, at \(s_0=0\) the orbit is identically zero and \(DF(0)=0\).  The
+derivative equations reduce to
+\[
+  Y^s_n=B^n v,\qquad Y^u_n=0 .
+\]
+Therefore \(Dh(0)v=Y^u_0(v)=0\) for every \(v\in E_s\).
+\end{proof}
+
 \section{Critical Surfaces And Continuum Tuning}
 
 The local stable graph is the mathematical object behind continuum tuning.
@@ -419,14 +574,14 @@ coordinates in this RG chart.
 
 \paragraph{Where the analytic burden lies.}
 Theorem~\ref{thm:rg-local-stable-manifold} proves the existence of a Lipschitz
-stable graph under the displayed Lyapunov--Perron contraction hypotheses.  The
-stronger statement that the critical surface is a \(C^1\) submanifold is not a
-formal consequence of RG terminology.  It requires either a \(C^1\) stable
-manifold theorem for the chosen Banach RG map, proved by differentiating the
-Lyapunov--Perron fixed point or by a graph transform with uniform derivative
-bounds, or a model-specific construction of the differentiable graph.  The
-geometric consequence after this analytic input is a standard submersion
-calculation, not an RG theorem in its own right.
+stable graph under the displayed Lyapunov--Perron contraction hypotheses.
+Theorem~\ref{thm:rg-c1-stable-graph-criterion} gives one self-contained
+route to \(C^1\) regularity: prove uniform derivative bounds for the chosen
+Banach RG map so that the differentiated Lyapunov--Perron equation remains a
+contraction.  A model-specific RG theorem must establish these derivative
+bounds in its polymer, kernel, tensor, lattice, or BV norm.  The geometric
+consequence after this analytic input is a standard submersion calculation,
+not an RG theorem in its own right.
 
 \paragraph{Submanifold form after differentiability.}
 Assume the stable graph \(h:E_s\to E_u\) in
