@@ -9232,6 +9232,63 @@ to the spin-\(N\) local gluon operator below.  Possible singular behavior at
 \(x=0\) belongs to the small-\(x\) problem and is not hidden inside the
 definition.
 
+\begin{definition}[Renormalized integrated PDF datum]
+\label{def:qcd-renormalized-integrated-pdf-datum}
+For a hadron species \(H\), a renormalized integrated PDF datum consists of
+the following objects.
+\begin{enumerate}
+  \item A nonperturbative QCD presentation, or a finite-regulator
+  approximation to one, which supplies normalized color-singlet hadron states
+  \(\ket{P,s}\) with \(P^2=M_H^2\) and \(P\cdot n>0\).
+  \item A lightlike direction \(n^\mu\), an orientation of the straight
+  segment from \(0\) to \(\lambda n\), and the representation labels of the
+  Wilson transporters appearing in
+  \eqref{eq:qcd-quark-light-ray-operator} and
+  \eqref{eq:qcd-gluon-light-ray-operator}.
+  \item A finite ultraviolet regulator \(\Lambda\) and regulated
+  gauge-invariant bilocal composites
+  \(\mathbb O_a^\Lambda(\lambda n)\), smeared in \(\lambda\) before any
+  distributional limit is taken.
+  \item A subtraction and factorization scheme at scale \(\mu\), encoded by
+  a convolutional coordinate map \(Z_{ab}\) from
+  \(\mathbb O_a^\Lambda\) to renormalized light-ray coordinates
+  \(\mathbb O_b(\mu)\) in the sense of
+  \eqref{eq:qcd-light-ray-renormalization-convolution}.
+  \item A declared distribution space in the light-cone fraction variable
+  \(x\), including the endpoint contact convention at \(x=0,1\), on which the
+  Fourier transform in \(\lambda P\cdot n\) is paired with test functions.
+\end{enumerate}
+The integrated PDF \(f_{a/H}(x,\mu)\) is the resulting matrix-element
+distribution.  In the conventions of
+\eqref{eq:pdf-light-ray-definition} and
+\eqref{eq:qcd-gluon-pdf-definition},
+\begin{align}
+  f_{q/H}(\,\cdot\,,\mu)
+  &=
+  \frac{1}{2P\cdot n}\,
+  \mathcal F_{\lambda P\cdot n\to x}
+  \bigl[\langle\mathbb O_q(\lambda n;\mu)\rangle_{P,H}\bigr],
+  \label{eq:qcd-pdf-datum-quark-fourier-coordinate}\\
+  f_{g/H}(\,\cdot\,,\mu)
+  &=
+  \frac{1}{2x(P\cdot n)^2}\,
+  \mathcal F_{\lambda P\cdot n\to x}
+  \bigl[\langle\mathbb O_g(\lambda n;\mu)\rangle_{P,H}\bigr],
+  \label{eq:qcd-pdf-datum-gluon-fourier-coordinate}
+\end{align}
+where the second equality is an equality in the declared distribution space
+on which multiplication by \(1/x\) has been specified.  The symbol
+\(\mathcal F_{\lambda P\cdot n\to x}\) denotes the Fourier transform with
+the phases displayed in the defining formulae above.  Equations
+\eqref{eq:qcd-pdf-datum-quark-fourier-coordinate} and
+\eqref{eq:qcd-pdf-datum-gluon-fourier-coordinate} define renormalized
+operator coordinates.  Support in \(0\le x\le1\), positivity properties,
+probability language, and the appearance of the same distribution in a
+measured structure function are additional spectral, scheme, and
+factorization statements; they are not part of the definition of the
+renormalized light-ray matrix element.
+\end{definition}
+
 The preceding equations are nonperturbative operator definitions once the
 underlying quantum field theory supplies the renormalized light-ray operators
 \(\mathbb O_a(\lambda n;\mu)\) as operator-valued distributions, or at least as

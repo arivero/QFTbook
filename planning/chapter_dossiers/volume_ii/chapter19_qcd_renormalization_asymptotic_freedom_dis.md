@@ -513,6 +513,14 @@ The chapter must define and derive:
       symmetric traceless tensor tower is a change of local coordinates on the
       same leading-twist data, while off-forward total derivatives are kept in
       the GPD polynomiality discussion.
+22ab. An integrated PDF is now defined as a renormalized light-ray
+      matrix-element datum rather than as a probability density or parton
+      counting function.  The datum includes the target hadron state, lightlike
+      direction, Wilson-line geometry, finite regulator, convolutional
+      subtraction map, factorization scale, and distribution space in \(x\)
+      with endpoint contact conventions.  Support, positivity, probability
+      interpretation, and appearance in DIS are later spectral or
+      factorization claims, not part of the operator definition.
 22b. The leading-order DGLAP kernels are written with the explicit
      \(D_0=(1-x)^{-1}_+\) distribution to avoid the ambiguous shorthand
      \((1+x^2)/(1-x)_+\).  With this convention the kernels obey quark-number
@@ -834,6 +842,14 @@ The chapter must define and derive:
   definitions and colored parton-model language, convolution renormalization,
   compact-\(x\) factorization status with a distributional remainder, exact
   \(D_0\)-based DGLAP sum-rule calculation, and endpoint/large-spin cusp discussion.
+- 2026-06-02 issue #630 PDF datum boundary pass: inserted
+  Definition~\(\ref{def:qcd-renormalized-integrated-pdf-datum}\), making the
+  integrated PDF a renormalized Wilson-line light-ray matrix-element datum
+  with target state, lightlike direction, Wilson-line geometry, finite
+  regulator, subtraction map, factorization scale, and distribution topology
+  fixed.  The pass separates this definition from support, positivity,
+  probability language, and factorized appearance in DIS, which remain
+  additional spectral/factorization statements.
 - 2026-06-01 issue #630 PDF moment pass: added the local-moment extraction
   from the Wilson-line light-ray definitions, including the left-endpoint
   \(-i\overleftarrow D_n\) sign convention, the gluon \(1/x\) moment-index
