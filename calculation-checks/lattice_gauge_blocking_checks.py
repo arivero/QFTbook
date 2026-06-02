@@ -3,7 +3,9 @@
 
 The manuscript uses path products of fine links as a finite-regulator model
 of a gauge-compatible Wilsonian blocking map.  This script checks the exact
-group algebra in the smallest nonabelian test case, S_3.
+group algebra in the smallest nonabelian test case, S_3, together with finite
+locality, reflection-positivity, and reconstruction-budget arithmetic for the
+gauge-blocking continuum-control datum.
 """
 
 from __future__ import annotations
@@ -294,6 +296,17 @@ def check_weighted_polymer_tail_bound() -> None:
     )
     assert_true("polymer tail is smaller than full norm", tail < norm_bound)
 
+    bad_ratio = Fraction(1)
+    bad_declared_bound = Fraction(10)
+    bad_partial_norm = sum(
+        Fraction(diameter + 1) * bad_ratio**diameter
+        for diameter in range(6)
+    )
+    assert_true(
+        "nondecaying polymer tail violates fixed locality bound",
+        bad_partial_norm > bad_declared_bound,
+    )
+
 
 def check_reflection_positive_compression() -> None:
     """Finite positive-cone check for blocked positive-time observables."""
@@ -344,6 +357,25 @@ def check_reflection_positive_compression() -> None:
         assert_true("compressed reflection-positive quadratic form", quadratic_form >= 0)
 
 
+def check_gauge_reconstruction_error_budget() -> None:
+    """Check the finite reconstruction bound C epsilon + eta."""
+
+    locality_norm = Fraction(1, 40)
+    reconstruction_constant = Fraction(5)
+    residual_reconstruction_error = Fraction(1, 60)
+    declared_bound = reconstruction_constant * locality_norm + residual_reconstruction_error
+    actual_window_error = Fraction(2, 15)
+
+    assert_equal("gauge reconstruction declared bound", declared_bound, Fraction(17, 120))
+    assert_true("gauge reconstruction error controlled", actual_window_error <= declared_bound)
+
+    omitted_residual_bound = reconstruction_constant * locality_norm
+    assert_true(
+        "gauge reconstruction residual term is load-bearing",
+        actual_window_error > omitted_residual_bound,
+    )
+
+
 def main() -> None:
     check_path_blocking_equivariance()
     check_blocked_wilson_loop()
@@ -353,6 +385,7 @@ def main() -> None:
     check_fine_weight_gauge_invariance()
     check_weighted_polymer_tail_bound()
     check_reflection_positive_compression()
+    check_gauge_reconstruction_error_budget()
     print("All finite lattice gauge-blocking checks passed.")
 
 

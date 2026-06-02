@@ -487,8 +487,9 @@ remainder contraction.
   pushforward weights under the coarse gauge group.  The script also checks
   closed-loop source-window descent to coarse gauge orbits, the failure of an
   open-link source to define an invariant window, the finite arithmetic
-  behind weighted polymer-tail bounds, and compression of a
-  reflection-positive finite Gram matrix by a blocking map.
+  behind weighted polymer-tail bounds, a nondecaying tail failure mode,
+  compression of a reflection-positive finite Gram matrix by a blocking map,
+  and the finite reconstruction error budget \(C\varepsilon+\eta\).
 
 ## Audit Notes
 
@@ -769,6 +770,14 @@ remainder contraction.
   \(S_3\) gauge-blocking check verifies that closed-loop class-function
   sources descend to coarse gauge orbits and that an open-link source fails
   the same invariance test.
+- 2026-06-02 gauge-blocking reconstruction-budget check pass: extended the
+  finite \(S_3\) companion to cover all three interfaces of the
+  gauge-blocking continuum-control datum.  Besides gauge covariance and
+  source descent, it now detects a nondecaying polymer-tail failure mode,
+  retains the reflection-positive Gram compression check, and verifies the
+  reconstruction estimate \(p(\operatorname{Rec}_{O,k}-\operatorname{Rec}_{O,*})
+  \le C_{O,p}\varepsilon_k+\eta_{O,p,k}\) with a finite example where the
+  residual \(\eta\) is necessary.
 - 2026-06-02 cofinal finite-window assembly pass: added the diagonal
   assembly lemma needed when RG estimates produce regulated finite-window
   functionals rather than limiting distribution windows directly.  The

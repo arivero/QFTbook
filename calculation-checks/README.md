@@ -829,7 +829,10 @@ Current checks:
   gauge-invariant source-window construction in Volume XI.  It also checks
   the finite arithmetic behind the weighted polymer-tail bound used in the
   gauge-blocking locality datum and the compression of a reflection-positive
-  finite Gram matrix by a blocking map.
+  finite Gram matrix by a blocking map.  It also detects a nondecaying
+  polymer-tail failure mode and checks the finite reconstruction error budget
+  \(C\varepsilon+\eta\), including that the residual reconstruction term is
+  load-bearing.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the
