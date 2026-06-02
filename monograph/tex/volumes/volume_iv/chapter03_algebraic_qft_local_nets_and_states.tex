@@ -1336,6 +1336,43 @@ Haag--Kastler axioms for those models, not a general implication from the
 abstract Wightman axioms alone.
 \end{remark}
 
+\paragraph{Bounded orbit criterion for equality of local algebras.}
+The equality condition in a complete Wightman coordinatization is an equality
+of represented von Neumann algebras.  Cyclic correlator formulae belong to
+the earlier field-reconstruction layer; the following bounded criterion is
+often the operator-algebraic step that one needs after the local fields,
+closures, and functional calculi have already been constructed.  Let
+\(\mathcal M,\mathcal N\subset B(\Hilb)\) be von Neumann algebras and let
+\(\Omega\in\Hilb\) be separating for the generated von Neumann algebra
+\(\mathcal M\vee\mathcal N\).  Suppose that for every
+\(A\in\mathcal M\) there is a uniformly bounded net
+\(\{B_i\}\subset\mathcal N\) such that
+\[
+  B_i\Omega\longrightarrow A\Omega
+  \qquad\text{in }\Hilb .
+\]
+Then \(A\in\mathcal N\), and hence \(\mathcal M\subset\mathcal N\).  Indeed,
+after replacing \(B_i\) by a subnet, weak operator compactness of bounded
+balls in a von Neumann algebra gives a weak-operator limit
+\(B\in\mathcal N\).  The vector convergence above implies
+\(B\Omega=A\Omega\).  Since \(A-B\in\mathcal M\vee\mathcal N\) and
+\(\Omega\) is separating for \(\mathcal M\vee\mathcal N\), one obtains
+\(A=B\).  Applying the same criterion in both directions gives
+\(\mathcal M=\mathcal N\).
+
+The hypotheses in this criterion are not decorative.  Without separatingness,
+orbit agreement at a vector can be blind to operators that vanish on that
+vector.  Without uniformly bounded approximants, equality of Hilbert-space
+orbit closures does not specify a bounded element of the candidate von
+Neumann algebra.  Thus equality of Wightman polynomial matrix elements, or
+even equality of a dense set of cyclic vectors, does not by itself identify
+local algebras.  One must first construct the bounded algebras and then prove
+a bounded orbit or strong-operator density statement of the type above.  In
+QFT, the separating input is usually obtained from a Reeh--Schlieder theorem
+for an appropriate complementary region together with locality, as in
+Corollary~\ref{cor:reeh-schlieder-separatingness}; it is not a formal
+consequence of polynomial field cyclicity alone.
+
 \begin{definition}[Wightman-to-net comparison structure]
 \label{def:wightman-to-net-comparison-structure}
 Let

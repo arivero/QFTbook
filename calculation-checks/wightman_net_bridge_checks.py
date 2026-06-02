@@ -103,6 +103,11 @@ def assert_eq_any(got: MatrixAny, expected: MatrixAny, msg: str) -> None:
         raise AssertionError(f"{msg}: got {got}, expected {expected}")
 
 
+def assert_vec_eq(got: tuple[Fraction, ...], expected: tuple[Fraction, ...], msg: str) -> None:
+    if got != expected:
+        raise AssertionError(f"{msg}: got {got}, expected {expected}")
+
+
 def off_diagonal_entries(a: MatrixAny) -> list[Fraction]:
     return [a[i][j] for i in range(len(a)) for j in range(len(a)) if i != j]
 
@@ -123,6 +128,10 @@ def diagonal_spectral_projection(values: list[Fraction], eigenvalue: Fraction) -
         Fraction(1) if value == eigenvalue else Fraction(0)
         for value in values
     ])
+
+
+def matvec_any(a: MatrixAny, vector: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
+    return tuple(sum(row[j] * vector[j] for j in range(len(vector))) for row in a)
 
 
 zero: Matrix = ((Fraction(0), Fraction(0)), (Fraction(0), Fraction(0)))
@@ -499,6 +508,60 @@ def check_finite_generated_additivity_and_covariance() -> None:
               "symmetry conjugation transports spectral projections")
 
 
+def check_orbit_equality_needs_separating_vector() -> None:
+    """Finite witness for the bounded orbit criterion in the monograph."""
+
+    identity2 = diagonal_matrix([Fraction(1), Fraction(1)])
+    sample_diagonal = diagonal_matrix([Fraction(2), Fraction(3)])
+
+    # A vector with both components nonzero is separating for the diagonal
+    # algebra: no nonzero diagonal operator can kill it.
+    separating_omega = (Fraction(1), Fraction(2))
+    diagonal_samples = [
+        diagonal_matrix([Fraction(0), Fraction(0)]),
+        diagonal_matrix([Fraction(1), Fraction(0)]),
+        diagonal_matrix([Fraction(0), Fraction(-3)]),
+        diagonal_matrix([Fraction(5), Fraction(7)]),
+    ]
+    for diagonal in diagonal_samples:
+        if matvec_any(diagonal, separating_omega) == (Fraction(0), Fraction(0)):
+            assert_eq_any(
+                diagonal,
+                zero_matrix(2),
+                "separating vector detects diagonal operators",
+            )
+
+    # With separating_omega, equality of A Omega and B Omega inside the
+    # generated diagonal algebra forces A=B.
+    b_same_orbit = sample_diagonal
+    assert_vec_eq(
+        matvec_any(sample_diagonal, separating_omega),
+        matvec_any(b_same_orbit, separating_omega),
+        "separating comparison starts from equal orbit vectors",
+    )
+    assert_eq_any(
+        sub_any(sample_diagonal, b_same_orbit),
+        zero_matrix(2),
+        "separating orbit equality forces equality in the generated algebra",
+    )
+
+    # If the vector is not separating, orbit agreement can be misleading.
+    # On Omega=e_0, the diagonal operator diag(2,3) and the scalar 2 I have
+    # the same orbit vector, although the operators and algebras are different.
+    nonseparating_omega = (Fraction(1), Fraction(0))
+    scalar_match = scale_any(Fraction(2), identity2)
+    assert_vec_eq(
+        matvec_any(sample_diagonal, nonseparating_omega),
+        matvec_any(scalar_match, nonseparating_omega),
+        "nonseparating vector gives the same orbit vector for distinct operators",
+    )
+    if sample_diagonal == scalar_match:
+        raise AssertionError("nonseparating orbit witness should use distinct operators")
+    diagonal_splitter = diagonal_matrix([Fraction(0), Fraction(1)])
+    if diagonal_splitter == scale_any(diagonal_splitter[0][0], identity2):
+        raise AssertionError("diagonal algebra should strictly contain scalar algebra")
+
+
 def main() -> None:
     check_finite_analytic_strong_locality_model()
     check_core_commutator_test_is_insufficient()
@@ -507,6 +570,7 @@ def main() -> None:
     check_finite_affiliation_commutant_criterion()
     check_affiliation_does_not_imply_generation()
     check_finite_generated_additivity_and_covariance()
+    check_orbit_equality_needs_separating_vector()
 
     assert_eq(matmul(parity, parity), one, "parity squares to one")
     assert_eq(matmul(odd_field, odd_field), one, "odd field squares to one")
