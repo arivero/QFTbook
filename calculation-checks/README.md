@@ -677,7 +677,8 @@ Current checks:
   separating universal irrelevant exponents/correction
   distributions from regulator-dependent amplitudes.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
-  amplification formula used to separate stable comparison estimates from
+  amplification formula, together with the quantitative microscopic tuning
+  contraction constants used to separate stable comparison estimates from
   unstable tuning data.  It also checks the auxiliary projective-window
   transfer estimate combining auxiliary-window convergence,
   auxiliary-to-target observable defects, short-range orbit-transfer

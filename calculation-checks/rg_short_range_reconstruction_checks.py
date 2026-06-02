@@ -45,6 +45,9 @@ and normalization mismatch.
 The C1 stable-graph check verifies the differentiated Lyapunov--Perron
 equation for a finite one-dimensional nonlinear RG map whose stable graph can
 be summed exactly.
+The quantitative tuning check verifies the finite-dimensional contraction
+constants that turn a transverse microscopic parameter chart into an actual
+solution of the relevant-coordinate tuning equation inside a declared ball.
 The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
@@ -386,6 +389,41 @@ def check_relevant_direction_tuning_amplification():
         lam ** (len(errors) - 1 - j) * errors[j] for j in range(len(errors))
     )
     assert_equal("relevant direction affine amplification", coordinate, expected)
+
+
+def check_quantitative_microscopic_tuning_contraction():
+    # Exact one-dimensional model for the quantitative tuning estimate.
+    # F(x)=2x-1/5+x^2/3, A=F'(0)=2, rho=1/5.  The Newton map with frozen
+    # inverse A^{-1} is T(x)=x-A^{-1}F(x)=1/10-x^2/6.
+    rho = Fraction(1, 5)
+    residual = Fraction(1, 5)
+    inverse_norm = Fraction(1, 2)
+    derivative_variation_constant = Fraction(2, 3) * rho
+    kappa = inverse_norm * derivative_variation_constant
+    assert_equal("quantitative tuning normalized residual", inverse_norm * residual, rho / 2)
+    assert_equal("quantitative tuning contraction constant", kappa, Fraction(1, 15))
+    assert_true("quantitative tuning contraction below half", kappa < Fraction(1, 2))
+
+    map_radius_bound = inverse_norm * residual + kappa * rho
+    assert_equal("quantitative tuning ball map bound", map_radius_bound, Fraction(17, 150))
+    assert_true("quantitative tuning maps ball into itself", map_radius_bound <= rho)
+
+    # Directly check the contraction estimate for two rational points in the
+    # declared ball.
+    x = Fraction(1, 7)
+    y = Fraction(-1, 9)
+    tx = Fraction(1, 10) - x * x / 6
+    ty = Fraction(1, 10) - y * y / 6
+    lipschitz_bound = kappa * abs(x - y)
+    assert_true("quantitative tuning sample contraction", abs(tx - ty) <= lipschitz_bound)
+
+    # A larger residual violates the displayed sufficient condition and the
+    # frozen Newton map no longer maps the declared ball into itself at the
+    # base point.
+    bad_residual = Fraction(3, 5)
+    assert_true("large residual violates tuning smallness", inverse_norm * bad_residual > rho / 2)
+    bad_t0 = inverse_norm * bad_residual
+    assert_true("large residual leaves declared tuning ball", bad_t0 > rho)
 
 
 def check_c1_stable_graph_derivative_equation():
@@ -1283,6 +1321,7 @@ def main():
     check_auxiliary_transfer_telescoping_bound()
     check_auxiliary_projective_window_transfer_estimate()
     check_relevant_direction_tuning_amplification()
+    check_quantitative_microscopic_tuning_contraction()
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_estimate()
     check_projective_distribution_window_extension()

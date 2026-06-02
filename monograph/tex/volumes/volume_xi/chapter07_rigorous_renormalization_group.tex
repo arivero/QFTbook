@@ -640,6 +640,64 @@ function theorem to \(\tau\circ\iota:P\to E_u\).  The rank condition
 \((\tau\circ\iota)^{-1}(0)\) is a \(C^1\) submanifold of \(P\) of codimension
 \(r\), which is \eqref{eq:tuned-microscopic-parameter-surface}.
 
+\paragraph{Quantitative finite-dimensional tuning estimate.}
+The rank condition is not the estimate used in a finite-regulator
+construction.  After a choice of \(r\) microscopic tuning coordinates,
+one needs a ball on which the nonlinear tuning equation is solved with
+controlled constants.  Let \(X\) and \(Y\) be \(r\)-dimensional normed
+spaces, let \(F:\overline B_\rho(0)\subset X\to Y\) be \(C^1\) on a
+neighborhood of the closed ball, and let
+\[
+  e=F(0),\qquad A=DF(0).
+\]
+Assume \(A:X\to Y\) is invertible and, for some \(0\leq\kappa<1/2\),
+\begin{equation}
+  \|A^{-1}e\|\leq\frac{\rho}{2},
+  \qquad
+  \sup_{\|x\|\leq\rho}\|A^{-1}(DF(x)-A)\|\leq\kappa .
+  \label{eq:quantitative-tuning-contraction-hypotheses}
+\end{equation}
+Then \(F(x)=0\) has a unique solution in the closed ball
+\(\overline B_\rho(0)\).  Indeed define
+\[
+  T(x)=x-A^{-1}F(x).
+\]
+For \(\|x\|,\|y\|\leq\rho\), the fundamental theorem of calculus gives
+\begin{align}
+  T(x)-T(y)
+  &=
+  -\int_0^1
+  A^{-1}\bigl(DF(y+t(x-y))-A\bigr)(x-y)\,\dd t ,
+  \label{eq:tuning-contraction-difference}
+\end{align}
+so \(\|T(x)-T(y)\|\leq\kappa\|x-y\|\).  Also
+\[
+  \|T(x)\|
+  \leq
+  \|T(0)\|+\kappa\|x\|
+  =
+  \|A^{-1}e\|+\kappa\|x\|
+  \leq
+  \rho .
+\]
+Thus \(T\) is a contraction of the complete metric space
+\(\overline B_\rho(0)\) into itself, and Banach's fixed-point theorem gives
+a unique fixed point in that closed ball.  The fixed-point equation
+\(T(x)=x\) is exactly \(F(x)=0\).
+
+In the RG application \(F\) is the local coordinate expression for
+\(\tau\circ\iota\) in the chosen \(r\) microscopic tuning variables, after
+any spectator parameters have been fixed or placed in a small auxiliary
+ball.  The residual \(\|A^{-1}e\|\) measures how far the proposed finite
+microscopic point is from the local critical surface in intrinsic relevant
+coordinates; the second bound in
+\eqref{eq:quantitative-tuning-contraction-hypotheses} is the quantitative
+transversality estimate.  This estimate still does not construct a fixed
+point or a continuum QFT.  It only says that, once the stable graph and the
+microscopic parameter chart have already been established with these
+constants, the finite-dimensional relevant-coordinate equation can actually
+be solved in the declared neighborhood.
+
 \paragraph{Linear finite-scale tuning exponents.}
 Let \(E_u\) be a finite-dimensional normed vector space with basis
 \(\{e_a\}_{a=1}^r\).  Suppose the linearized unstable map is diagonal in this

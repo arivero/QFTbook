@@ -325,6 +325,13 @@ constructive RG developments.
   submersion/implicit-function consequence.  The differentiability of the
   stable graph is the analytic RG burden, not a consequence of naming the
   locus ``critical.''
+- Derives the quantitative finite-dimensional tuning estimate used after a
+  microscopic transverse chart is fixed: normalized residual
+  \(\|A^{-1}e\|\), derivative-variation bound
+  \(\sup\|A^{-1}(DF-A)\|\), and the contraction of the frozen-Newton map on a
+  declared ball.  This is the finite-regulator step that solves the relevant
+  coordinate equation once the stable graph and transversality estimates have
+  already been supplied.
 
 ## Figure Ledger
 
@@ -493,6 +500,15 @@ remainder contraction.
   companion short-range RG script checks the nonuniform-kernel \(L^D\)
   factor and the uniform-kernel sampling constant by exact rational
   arithmetic.
+- 2026-06-02 quantitative tuning pass: added the finite-dimensional
+  contraction estimate needed to turn microscopic transversality into an
+  actual solution of the relevant-coordinate tuning equation in a declared
+  ball.  The text presents this as proof infrastructure, not as a new RG
+  theorem: the stable graph, parameter chart, residual bound, and derivative
+  variation estimate remain the model-specific burden.  The companion
+  short-range RG script checks the normalized residual, contraction constant,
+  ball-map bound, sample contraction inequality, and a residual failure mode
+  by exact rational arithmetic.
 - 2026-06-02 short-range scalar OS reconstruction-requirements pass: inserted the missing
   reconstruction-level dependency chain for the ordinary short-range scalar
   target.  The manuscript now states that a critical short-range scalar
