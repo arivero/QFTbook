@@ -461,6 +461,15 @@ The chapter must define and derive:
       \(\eta_{\rm cusp}=G_{\rm cusp}(t)A\) with
       \(G'_{\rm cusp}=\Gamma_{\rm cusp}\); the opposite rapidity sign gives
       curvature \(-2\Gamma_{\rm cusp}A\) in the chapter's operator convention.
+19bf. A retained finite light-ray basis has its own projected curvature.  If
+      the full ultraviolet/rapidity connection is flat and \(P_L\) projects to
+      the retained labels, then the curvature computed from the retained block
+      alone is
+      \(\partial_t\eta_{LL}-\partial_r\gamma_{LL}+[\gamma_{LL},\eta_{LL}]
+      =\eta_{LQ}\gamma_{QL}-\gamma_{LQ}\eta_{QL}\).  The right-hand side is
+      the omitted-operator channel.  It must be bounded as a remainder or
+      removed by enlarging the light-ray/contact-coordinate chart; finite
+      retained coordinate changes conjugate this curvature and cannot erase it.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -714,6 +723,15 @@ The chapter must define and derive:
   and the wrong-sign curvature obstruction \(-2\Gamma_{\rm cusp}A\);
   extended `calculation-checks/energy_correlator_light_ray_ope_checks.py` with
   exact rational checks of the derivative flatness and sign obstruction.
+- 2026-06-02 projected-curvature follow-up: added the retained/omitted block
+  identity
+  \(\mathcal F_{LL}^{\rm trunc}=\eta_{LQ}\gamma_{QL}-\gamma_{LQ}\eta_{QL}\)
+  for a finite small-angle light-ray basis.  The text now distinguishes a true
+  two-scale inconsistency from curvature induced by omitted operator channels,
+  records finite scheme covariance of the curvature, and requires either a
+  remainder estimate or an enlarged light-ray/contact chart.  The companion
+  script now checks the block identity and scale-dependent scheme covariance
+  exactly over rational matrices.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,

@@ -8579,6 +8579,56 @@ finite matrix check recorded in the companion script verifies the sign and
 row/column convention of the flatness equation, including the derivative
 terms, but it does not replace this scheme-specific QCD calculation.
 
+\paragraph{Projected curvature and omitted light-ray coordinates.}
+The most common failure mode in a finite light-ray calculation is not an
+incorrect commutator sign, but an omitted operator channel.  Let \(P_L\) be the
+projection onto the retained light-ray labels and \(Q_L=1-P_L\).  In a fixed
+chart write
+\[
+  \gamma_{LL}=P_L\gamma P_L,\qquad
+  \gamma_{LQ}=P_L\gamma Q_L,\qquad
+  \gamma_{QL}=Q_L\gamma P_L,
+\]
+and similarly for \(\eta\).  If the full connection is flat on the enlarged
+operator space and \(P_L\) is scale-independent, then the curvature computed
+from the retained block alone is
+\begin{equation}
+  \partial_t\eta_{LL}-\partial_r\gamma_{LL}
+  +[\gamma_{LL},\eta_{LL}]
+  =
+  \eta_{LQ}\gamma_{QL}-\gamma_{LQ}\eta_{QL}.
+  \label{eq:qcd-eec-projected-curvature-omitted-block}
+\end{equation}
+Indeed, insert \(P_L+Q_L=1\) between the two factors in the commutator part of
+\eqref{eq:qcd-eec-light-ray-flatness}.  Thus a nonzero retained curvature is
+not automatically an inconsistency of the full endpoint construction; it is an
+explicit omitted-channel term.  A finite small-angle EEC calculation that keeps
+only \(P_L\) must therefore either include the right-hand side of
+\eqref{eq:qcd-eec-projected-curvature-omitted-block} in its remainder estimate
+or enlarge the light-ray/contact-coordinate chart until the flatness check is
+performed on the enlarged block.
+
+This statement is coordinate covariant.  For a finite change of retained
+coordinates \(R_L(t,r)\),
+\[
+  \mathbb O'_L=R_L^{-1}\mathbb O_L,\qquad C'_L=C_LR_L,
+\]
+one has
+\[
+  \gamma'_{LL}=R_L^{-1}\gamma_{LL}R_L+R_L^{-1}\partial_tR_L,
+  \qquad
+  \eta'_{LL}=R_L^{-1}\eta_{LL}R_L+R_L^{-1}\partial_rR_L,
+\]
+and the retained curvature transforms by conjugation,
+\[
+  \mathcal F'_{LL}=R_L^{-1}\mathcal F_{LL}R_L .
+\]
+Consequently a retained curvature cannot be removed by changing finite
+coordinates inside the same retained space.  What can change is the split
+between an operator block and endpoint contact coordinates, in which case the
+flatness equation must be checked in the enlarged chart and the induced change
+of contact distribution must be recorded in the endpoint convention.
+
 \paragraph{Minimal cusp-log flatness check.}
 A useful first check is the part of a rapidity-factorized endpoint chart that
 is forced by a cusp logarithm.  Work in a finite block in which the cusp
