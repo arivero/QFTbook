@@ -39,10 +39,14 @@ anomaly obstruction.
 - Develops the finite regular algebra \(A_H=\oplus_h D_h\) as an explicit
   separable Frobenius algebra object in the untwisted pointed defect
   subcategory, including the normalized comultiplication.
-- Proves the object-level self-dual finite-gauging fusion ring
+- Records the object-level self-dual finite-gauging fusion algebra after the
+  actual categorical inputs have been assumed: existence of anomaly-free
+  gauging, a self-dual equivalence \(\mathcal Q/H\simeq\mathcal Q\), and
+  absorption of \(H\)-defects at the gauging interface.  The resulting algebra is
   \(D_gD_h=D_{gh}\), \(D_hN_H=N_HD_h=N_H\),
-  \(N_H^2=\oplus_hD_h\), its associativity, and
-  \(d(N_H)=\sqrt{|H|}\).
+  \(N_H^2=\oplus_hD_h\), with object-level associativity and
+  \(d(N_H)=\sqrt{|H|}\).  This is not presented as a theorem constructing the
+  self-duality.
 - Develops the Ising/Kramers--Wannier example as a concrete noninvertible
   categorical symmetry: \(N^2=1+\eta\), \(d_N=\sqrt2\), and the defect action
   on the three primary sectors is diagonalized by the Ising modular matrix.
