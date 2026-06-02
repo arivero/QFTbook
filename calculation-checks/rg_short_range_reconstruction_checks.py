@@ -41,6 +41,10 @@ The source-chart-to-window check verifies the Lipschitz estimate that turns
 source-extended RG-coordinate convergence, including the normalizing
 coordinate and finite-step remainder, into holomorphic source-window
 convergence on one fixed polydisc.
+The source-stable trajectory check verifies the finite-depth arithmetic that
+combines source-stable contraction, source-local relevant-coordinate
+amplification, polymer-tail control, and normalizing/remainder errors before
+Cauchy extraction of a source window is allowed.
 The finite-volume source-window check verifies the cluster-tail-to-cumulant
 Cauchy bound needed before finite-volume source windows can be used as
 thermodynamic Schwinger data.
@@ -1466,6 +1470,58 @@ def check_source_chart_to_holomorphic_window_bound():
     )
 
 
+def check_source_stable_trajectory_window_bound():
+    theta = Fraction(1, 2)
+    stable_initial = Fraction(1, 5)
+    stable_defects = [Fraction(1, 100), Fraction(1, 200), Fraction(1, 400)]
+    steps = len(stable_defects)
+    stable_bound = (
+        theta**steps * stable_initial
+        + sum(
+            theta ** (steps - 1 - index) * defect
+            for index, defect in enumerate(stable_defects)
+        )
+    )
+    assert_equal("source-stable trajectory bound", stable_bound, Fraction(13, 400))
+
+    unstable_eigenvalue = Fraction(3)
+    unstable_initial = Fraction(1, 1000)
+    unstable_defects = [Fraction(1, 3000), Fraction(1, 9000), Fraction(1, 27000)]
+    unstable_bound = (
+        unstable_eigenvalue**steps * unstable_initial
+        + sum(
+            unstable_eigenvalue ** (steps - 1 - index) * defect
+            for index, defect in enumerate(unstable_defects)
+        )
+    )
+    assert_equal("source-unstable finite-depth amplification", unstable_bound, Fraction(41, 1350))
+
+    chart_lipschitz = Fraction(2)
+    normalizing_defect = Fraction(1, 500)
+    polymer_tail_defect = Fraction(1, 300)
+    finite_step_remainder = Fraction(1, 600)
+    source_window_bound = (
+        normalizing_defect
+        + chart_lipschitz * (stable_bound + unstable_bound + polymer_tail_defect)
+        + finite_step_remainder
+    )
+    assert_equal("source-stable chart to window bound", source_window_bound, Fraction(1837, 13500))
+
+    actual_window_difference = Fraction(1, 10)
+    assert_true(
+        "source-stable chart controls sample window difference",
+        actual_window_difference <= source_window_bound,
+    )
+
+    bad_unstable_initial = Fraction(1, 100)
+    bad_unstable_amplification = unstable_eigenvalue**steps * bad_unstable_initial
+    assert_equal("source-unstable mistuning amplification", bad_unstable_amplification, Fraction(27, 100))
+    assert_true(
+        "source-unstable mistuning exceeds controlled window bound",
+        bad_unstable_amplification > source_window_bound,
+    )
+
+
 def check_finite_volume_source_window_cluster_tail():
     def factorial(n):
         value = 1
@@ -1557,6 +1613,7 @@ def main():
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()
     check_source_chart_to_holomorphic_window_bound()
+    check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
     print("All short-range scalar RG reconstruction checks passed.")
 

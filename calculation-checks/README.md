@@ -746,6 +746,9 @@ Current checks:
   normalizing coordinate, retained local coordinates, source-decorated
   polymer tail, and finite-step remainder gives a uniform source-window
   bound on a fixed polydisc before Cauchy extraction is invoked.  It also
+  checks the source-stable trajectory estimate combining stable contraction,
+  unstable source-local amplification, polymer-tail control, and
+  normalizing/remainder defects before a source window can be used.  It also
   checks the
   finite-volume source-window cluster-tail estimate: a boundary-tail bound on
   holomorphic source functionals gives the corresponding cumulant-derivative

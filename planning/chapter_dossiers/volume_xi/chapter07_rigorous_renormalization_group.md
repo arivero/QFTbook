@@ -623,3 +623,14 @@ remainder contraction.
   fixed source-radius control as load-bearing.  The companion short-range RG
   check verifies the resulting finite inequality and the shrinking-radius
   failure mode.
+- 2026-06-02 source-stable trajectory pass: added the source-window analogue
+  of stable-manifold tuning.  The manuscript now splits
+  \(g_{k,E}-g_{\ast,E}\) into source-local unstable coordinates \(u_{k,E}\)
+  and stable/irrelevant coordinates \(s_{k,E}\), records the stable
+  telescoping bound and the unstable finite-depth amplification bound, and
+  feeds both into the holomorphic source-window error
+  \(\epsilon_{E,N}^{\rm src}\).  This makes source-local contact coordinates
+  part of the theorem-facing RG chart rather than after-the-fact additions to
+  correlators.  The companion short-range RG check verifies the exact finite
+  arithmetic and detects the mistuned unstable-source-coordinate failure
+  mode.

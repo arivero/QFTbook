@@ -2797,6 +2797,84 @@ local normalizing coordinates, source-decorated irrelevant tails, and
 finite-step remainders are all part of the Wilsonian reconstruction theorem;
 they cannot be recovered from an unsourced fixed-point statement.
 
+\paragraph{Source-stable trajectory estimate.}
+The source-extended chart also has its own stable and unstable directions.
+This is where local contact terms enter the RG theorem rather than being
+added after the continuum limit.  For a finite test space \(E\), write
+\[
+  g_{k,E}(z)-g_{\ast,E}(z)
+  =
+  u_{k,E}(z)+s_{k,E}(z)
+\]
+according to the unstable/retained and stable/irrelevant splitting of the
+source-local coordinate space.  The unstable part includes ordinary
+relevant couplings and any source-local or contact coordinates whose
+engineering or anomalous exponent makes them non-decaying in the source
+window.  For a fixed polydisc \(P_\rho\), a finite-depth RG estimate has the
+form
+\begin{align}
+  \sup_{P_\rho}\|s_{k+1,E}\|
+  &\le
+  \theta_E\sup_{P_\rho}\|s_{k,E}\|+\varepsilon^s_{k,E},
+  \qquad 0<\theta_E<1,
+  \label{eq:source-stable-chart-recursion}\\
+  \sup_{P_\rho}\|u_{k+1,E}\|
+  &\le
+  \Lambda_E\sup_{P_\rho}\|u_{k,E}\|+\varepsilon^u_{k,E},
+  \qquad \Lambda_E>1 .
+  \label{eq:source-unstable-chart-recursion}
+\end{align}
+The first recursion gives
+\begin{equation}
+  \sup_{P_\rho}\|s_{N,E}\|
+  \le
+  \theta_E^N\sup_{P_\rho}\|s_{0,E}\|
+  +
+  \sum_{j=0}^{N-1}\theta_E^{\,N-1-j}\varepsilon^s_{j,E}.
+  \label{eq:source-stable-chart-telescoping}
+\end{equation}
+The second recursion gives the finite-depth amplification bound
+\begin{equation}
+  \sup_{P_\rho}\|u_{N,E}\|
+  \le
+  \Lambda_E^N\sup_{P_\rho}\|u_{0,E}\|
+  +
+  \sum_{j=0}^{N-1}\Lambda_E^{\,N-1-j}\varepsilon^u_{j,E}.
+  \label{eq:source-unstable-chart-amplification}
+\end{equation}
+Thus a source-local coordinate whose unstable component is not tuned to
+order \(\Lambda_E^{-N}\), up to the accumulated source-local defects, can
+spoil the finite-window limit even if the unsourced scalar trajectory is on
+its critical surface.
+
+Combining
+\eqref{eq:source-stable-chart-telescoping}--\eqref{eq:source-unstable-chart-amplification}
+with
+\eqref{eq:short-range-source-window-chart-to-holomorphic-bound} gives the
+actual holomorphic source-window error bound
+\begin{equation}
+  \epsilon_{E,N}^{\rm src}
+  \le
+  \delta^C_{E,N}
+  +
+  L_E\!\left(
+    \sup_{P_\rho}\|u_{N,E}\|
+    +
+    \sup_{P_\rho}\|s_{N,E}\|
+    +
+    \delta^K_{E,N}
+  \right)
+  +
+  \delta^r_{E,N}.
+  \label{eq:source-stable-chart-to-window-bound}
+\end{equation}
+This is the source-window version of stable-manifold tuning.  The
+source-local counterterms and collision-diagonal coordinates must either be
+retained and tuned in \(u_{k,E}\), shown to contract in \(s_{k,E}\), or
+bounded in the explicit remainder.  If they are simply omitted from the
+chart, the Wilsonian RG estimate has not yet produced the Schwinger
+distribution window used in OS reconstruction.
+
 \paragraph{Finite volume to infinite volume for a source window.}
 The thermodynamic step at fixed lattice spacing is another estimate, not a
 notation change.  At fixed lattice spacing \(a_k\), let
