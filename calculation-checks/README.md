@@ -566,7 +566,10 @@ Current checks:
   explicit contact terms.  It also checks the small-angle EEC pushforward
   exponent: the actual \(\delta(\cos\chi-\cos\theta)\) kernel contributes one
   inverse shell power relative to a \(\delta(\chi-\theta)\) convention, and
-  changing to \(z=(1-\cos\chi)/2\) halves the leading power.
+  changing to \(z=(1-\cos\chi)/2\) halves the leading power.  It also checks
+  the endpoint distribution-gluing sign: moving a small-angle annulus from
+  the ordinary bulk representative into the endpoint plus chart requires the
+  explicit contact coordinate to shift by the annulus constant.
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter

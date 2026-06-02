@@ -90,6 +90,11 @@ The chapter establishes:
   retained representation list is not a controlled EEC approximation unless
   these chart and remainder data are supplied, and that retained-basis changes
   are distinct from diagonal-contact coordinate changes.
+- endpoint distribution charts in the one-variable EEC coordinate
+  \(z=(1-\cos\chi)/2\), including subtracted extensions of singular
+  small-angle densities, explicit \(\delta^{(j)}(z)\) contact coordinates,
+  and the endpoint-resolution shift that fixes the sign of contact
+  coordinate changes.
 
 ## Symbols
 
@@ -126,6 +131,9 @@ The chapter establishes:
 | \(C_{\alpha,m}\) | relative-coordinate coefficient distribution in a finite light-ray OPE chart |
 | \(\psi_{\alpha,m,\Phi}\) | center-coordinate test induced from a two-detector test \(\Phi\) by \(C_{\alpha,m}\) |
 | \(R_N(\Phi;\Psi)\) | finite-chart light-ray OPE remainder functional in state \(\Psi\) |
+| \(z=(1-\cos\chi)/2\) | small-angle EEC endpoint coordinate |
+| \([f]_{J,z_0,+}\) | Taylor-subtracted endpoint extension of a singular one-variable density |
+| \(K_j^{(N)}\) | explicit endpoint contact coordinate multiplying \(\delta^{(j)}(z)\) |
 
 ## Claim Ledger
 
@@ -203,6 +211,12 @@ The chapter establishes:
     \(-\lambda\) therefore contributes \(\chi^{D-4-\lambda}\) in the
     \(\chi\)-density, with the leading exponent halved in
     \(z=(1-\cos\chi)/2\).
+16. The pushed-forward small-angle density must be extended across
+    \(z=0\) as a distribution with explicit endpoint contact coordinates.
+    Separated-angle light-ray coefficients do not determine those contacts;
+    changing the endpoint resolution interval shifts the explicit
+    \(\delta(z)\) coordinate by the annulus constant so that the
+    constant-detector Ward identity is preserved.
 
 ## Figures
 
@@ -233,7 +247,11 @@ The chapter establishes:
   coefficient-map norms, light-ray form bounds, and a declared remainder, and
   detects the separated-angle-only loss of the diagonal contact coordinate;
   the same script checks retained-basis covariance and the compensating
-  contact-coordinate shift under diagonal-distribution reshuffling.
+  contact-coordinate shift under diagonal-distribution reshuffling.  It also
+  checks the one-variable endpoint distribution-gluing sign: moving a
+  small-angle annulus from the bulk representative into the endpoint plus
+  chart requires a positive contact-coordinate shift by the annulus constant,
+  while the opposite sign changes the constant-detector moment.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
@@ -289,3 +307,10 @@ The chapter establishes:
   \(-\lambda\), including the \(z=(1-\cos\chi)/2\) exponent conversion.  The
   companion check verifies the finite exponent arithmetic and detects the
   one-power difference from a \(\delta(\chi-\theta)\) convention.
+- 2026-06-02 #519 CFT endpoint distribution-chart pass: added the
+  Taylor-subtracted endpoint extension \([f]_{J,z_0,+}\), the finite
+  one-variable endpoint chart with explicit \(\delta^{(j)}(z)\) contacts,
+  and the \(D_{z_b}=D_{z_a}+\mathbf1_{z_a<z<z_b}/z-\log(z_b/z_a)\delta(z)\)
+  resolution-shift identity.  The pass makes the CFT light-ray endpoint
+  contact logic self-contained instead of relying on the QCD chapter's
+  running-coupling endpoint convention.

@@ -18,6 +18,9 @@ coordinate operations on the same detector functional.
 The small-angle pushforward check verifies the EEC angular-kernel Jacobian
 that turns a homogeneous relative-coordinate light-ray coefficient into a
 one-variable small-angle EEC power.
+The endpoint-gluing check verifies the contact-coordinate sign when a
+small-angle annulus is moved between the ordinary bulk representative and
+the endpoint plus distribution.
 """
 
 from __future__ import annotations
@@ -390,6 +393,55 @@ def check_small_angle_eec_pushforward_exponents() -> None:
     assert_equal("small-angle log power preserved by pushforward", polyhomogeneous_label, (Fraction(-3, 2), 2))
 
 
+def check_endpoint_distribution_gluing() -> None:
+    # Finite shadow of
+    # D_b = D_a + 1_{a<z<b}/z - log(b/a) delta_0.
+    # Write the ordinary annulus action on a test function as
+    # A phi(0) + B, where A is the constant-test logarithm and B is the
+    # nonconstant part.  Moving the annulus from the bulk representative into
+    # the endpoint plus chart removes A phi(0)+B from the bulk and adds only B
+    # to the plus distribution; the explicit contact coordinate must therefore
+    # shift by +A.
+    phi0 = Fraction(3, 4)
+    endpoint_old = Fraction(7, 13)
+    bulk_without_annulus = Fraction(-2, 9)
+    annulus_constant = Fraction(5, 7)
+    annulus_nonconstant = Fraction(11, 17)
+    contact_old = Fraction(1, 6)
+
+    ordinary_annulus = annulus_constant * phi0 + annulus_nonconstant
+    old_total = endpoint_old + bulk_without_annulus + ordinary_annulus + contact_old * phi0
+
+    endpoint_new = endpoint_old + annulus_nonconstant
+    bulk_new = bulk_without_annulus
+    contact_new = contact_old + annulus_constant
+    new_total = endpoint_new + bulk_new + contact_new * phi0
+    assert_equal("endpoint gluing contact shift preserves total distribution", new_total, old_total)
+
+    wrong_contact = contact_old - annulus_constant
+    wrong_total = endpoint_new + bulk_new + wrong_contact * phi0
+    assert_equal(
+        "endpoint gluing wrong sign defect",
+        wrong_total - old_total,
+        -2 * annulus_constant * phi0,
+    )
+
+    # Separated-angle tests with phi(0)=0 cannot see the contact coordinate.
+    separated_phi0 = Fraction(0)
+    separated_old = (
+        endpoint_old
+        + bulk_without_annulus
+        + annulus_nonconstant
+        + contact_old * separated_phi0
+    )
+    separated_new = (
+        endpoint_new
+        + bulk_without_annulus
+        + contact_new * separated_phi0
+    )
+    assert_equal("separated-angle test is insensitive to endpoint contact", separated_new, separated_old)
+
+
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
@@ -404,6 +456,7 @@ def main() -> None:
     check_finite_light_ray_ope_chart_bound()
     check_finite_light_ray_chart_covariance()
     check_small_angle_eec_pushforward_exponents()
+    check_endpoint_distribution_gluing()
     print("All CFT energy-detector contact and moment checks passed.")
 
 

@@ -1355,12 +1355,125 @@ mass-gap-sensitive long-distance remainder.  The QCD object is therefore not
 obtained by simply copying the CFT theorem; it is a separate factorization
 datum whose detector side is the same stress-tensor observable.
 
-This theorem gives a nonperturbative meaning to the collinear expansion of
-energy correlators in a CFT.  It is the conformal counterpart of the QCD
-statement that small-angle energy correlators are governed by collinear
-operator data and anomalous dimensions.  In QCD the running coupling and the
-mass gap alter the long-distance behavior; in a CFT the light-ray OPE is an
-operator expansion intrinsic to the fixed point.
+\paragraph{Endpoint distribution charts in the EEC variable.}
+The pushforward to one angular variable is still not the final endpoint
+distribution.  A small-angle light-ray coefficient gives a density on
+\(z>0\), where
+\[
+  z=\frac{1-\cos\chi}{2},
+  \qquad z=0
+\]
+is the coincident-detector endpoint.  To compare with the full detector
+distribution, the density must be extended across \(z=0\) together with an
+explicit contact coordinate.  This is the same logical distinction as in the
+two-detector chart above: separated-angle data determine a distribution on
+\((0,z_0)\), while the full detector product also contains diagonal contact
+strata.
+
+Fix an endpoint interval \(0<z<z_0\).  Let \(f(z)\) be one singular density
+appearing in a finite light-ray chart, and suppose that subtracting the Taylor
+jet of order \(J\) of the test function makes the integral finite.  The
+subtracted endpoint extension is the distribution
+\begin{equation}
+  \left\langle [f]_{J,z_0,+},\varphi\right\rangle
+  :=
+  \int_0^{z_0} f(z)
+  \left(
+    \varphi(z)
+    -
+    \sum_{j=0}^J
+      \frac{z^j}{j!}\varphi^{(j)}(0)
+  \right)\dd z .
+  \label{eq:cft-eec-subtracted-endpoint-extension}
+\end{equation}
+For the logarithmic \(1/z\) endpoint singularity this reduces to the familiar
+plus prescription
+\[
+  \left\langle
+    \left[\frac{\Theta(z_0-z)}{z}\right]_{+},
+    \varphi
+  \right\rangle
+  =
+  \int_0^{z_0}
+    \frac{\varphi(z)-\varphi(0)}{z}\,\dd z .
+\]
+Terms more singular than this are not hidden in the word ``plus'': they
+require the corresponding higher Taylor subtraction and explicit
+\(\delta^{(j)}(z)\) contact coordinates, with
+\(\langle\delta^{(j)},\varphi\rangle=(-1)^j\varphi^{(j)}(0)\).
+
+A finite endpoint chart for the CFT EEC therefore has the form
+\begin{equation}
+  \mathrm{EEC}^{(N)}_\Psi
+  =
+  \mathcal R^{(N)}_{z_0,\Psi}
+  +
+  \sum_{a\in A_N}
+    c_a(\Psi)\,[f_a]_{J_a,z_0,+}
+  +
+  \sum_{j=0}^{J_N}
+    K_j^{(N)}(\Psi)\,\delta^{(j)}(z)
+  +
+  R^{(N)}_{z_0,\Psi}.
+  \label{eq:cft-eec-finite-endpoint-chart}
+\end{equation}
+Here \(\mathcal R^{(N)}_{z_0,\Psi}\) is the ordinary distributional bulk
+representative away from \(z=0\), the \(c_a(\Psi)\) are the retained
+light-ray matrix elements and coefficient normalizations after the angular
+pushforward, and \(R^{(N)}_{z_0,\Psi}\) is the declared finite-chart
+remainder.  The coefficients \(K_j^{(N)}\) are not determined by knowing the
+separated-angle asymptotic densities \(f_a\) alone.  They are fixed only after
+the diagonal detector extension, Ward identities, and endpoint matching
+convention have all been specified.  In particular, the constant-detector
+moment fixes a linear combination of the separated-angle integral and the
+contact coordinates; it does not by itself choose the representative in
+\eqref{eq:cft-eec-finite-endpoint-chart}.
+
+The dependence on \(z_0\) is a useful sign check.  For the basic plus
+distribution
+\[
+  D_{z_*}:=
+  \left[\frac{\Theta(z_*-z)}{z}\right]_{+}
+\]
+one has, as distributions on \([0,z_b]\),
+\begin{equation}
+  D_{z_b}
+  =
+  D_{z_a}
+  +
+  \frac{\mathbf 1_{z_a<z<z_b}}{z}
+  -
+  \log\frac{z_b}{z_a}\,\delta(z),
+  \qquad 0<z_a<z_b .
+  \label{eq:cft-eec-endpoint-resolution-shift}
+\end{equation}
+Testing \eqref{eq:cft-eec-endpoint-resolution-shift} against \(\varphi\)
+gives exactly
+\[
+  \int_0^{z_a}\frac{\varphi-\varphi(0)}{z}\dd z
+  +
+  \int_{z_a}^{z_b}\frac{\varphi(z)}{z}\dd z
+  -
+  \log\frac{z_b}{z_a}\varphi(0)
+  =
+  \int_0^{z_b}\frac{\varphi-\varphi(0)}{z}\dd z .
+\]
+Equivalently, if the ordinary annulus \(z_a<z<z_b\) is moved from the bulk
+representative into the endpoint plus-chart, the explicit \(\delta(z)\)
+coordinate must shift by the annulus constant
+\(\log(z_b/z_a)\) times the coefficient of \(1/z\).  With the opposite sign,
+the constant test changes, so the total-energy Ward identity would fail.  The
+QCD endpoint formula
+\eqref{eq:qcd-eec-plus-resolution-shift} is the running-coupling,
+scheme-dependent analogue of this fixed-point distributional identity.
+
+This endpoint chart gives a nonperturbative meaning to the collinear
+expansion of energy correlators in a CFT.  It is the conformal counterpart of
+the QCD statement that small-angle energy correlators are governed by
+collinear operator data and anomalous dimensions.  In QCD the running coupling
+and the mass gap alter the long-distance behavior; in a CFT the light-ray OPE
+is an operator expansion intrinsic to the fixed point, supplemented by the
+distributional contact data needed to recover the full detector product.
 
 \section{Comparison with QCD Detector Observables}
 
