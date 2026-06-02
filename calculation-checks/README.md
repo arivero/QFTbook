@@ -638,8 +638,10 @@ Current checks:
   and the dyadic covariance
   double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
-  seminorm order, a finite hard-core polymer source-cumulant check showing
-  factorization without an incompatibility bridge and a nonzero connected
+  seminorm order, the finite SPDE/constructive hierarchy-transfer check for
+  matching OS Gram forms and growth envelopes, a finite hard-core polymer
+  source-cumulant check showing factorization without an incompatibility bridge
+  and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the
   connected-to-full Schwinger hierarchy growth loss, and the
   interval-recursion arithmetic in the rough-forcing energy-to-Besov

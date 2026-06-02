@@ -2105,6 +2105,82 @@ def check_spde_os_reconstruction_growth_arithmetic():
             raise AssertionError("OS growth class polynomial absorption failed")
 
 
+def check_spde_constructive_hierarchy_transfer_arithmetic():
+    # Finite analogue of Construction
+    # con:spde-common-schwinger-hierarchy-comparison.  If the SPDE and
+    # constructive hierarchies have the same moments in a common coordinate
+    # chart, then every positive-time polynomial OS Gram matrix built from
+    # those moments is identical.
+    constructive_moments = {
+        0: Fraction(1),
+        1: Fraction(0),
+        2: Fraction(2),
+        3: Fraction(0),
+        4: Fraction(12),
+    }
+    spde_moments = dict(constructive_moments)
+
+    gram_constructive = [
+        [constructive_moments[i + j] for j in range(3)]
+        for i in range(3)
+    ]
+    gram_spde = [
+        [spde_moments[i + j] for j in range(3)]
+        for i in range(3)
+    ]
+    assert_equal(gram_spde, gram_constructive, "SPDE/constructive OS Gram transfer")
+
+    # Principal minors of the finite Gram form are positive in this sample.
+    det_1 = gram_constructive[0][0]
+    det_2 = (
+        gram_constructive[0][0] * gram_constructive[1][1]
+        - gram_constructive[0][1] * gram_constructive[1][0]
+    )
+    det_3 = (
+        gram_constructive[0][0]
+        * (
+            gram_constructive[1][1] * gram_constructive[2][2]
+            - gram_constructive[1][2] * gram_constructive[2][1]
+        )
+        - gram_constructive[0][1]
+        * (
+            gram_constructive[1][0] * gram_constructive[2][2]
+            - gram_constructive[1][2] * gram_constructive[2][0]
+        )
+        + gram_constructive[0][2]
+        * (
+            gram_constructive[1][0] * gram_constructive[2][1]
+            - gram_constructive[1][1] * gram_constructive[2][0]
+        )
+    )
+    assert_equal(det_1, Fraction(1), "finite OS Gram first minor")
+    assert_equal(det_2, Fraction(2), "finite OS Gram second minor")
+    assert_equal(det_3, Fraction(16), "finite OS Gram third minor")
+
+    # Equality of moments on the monomial basis gives equality of polynomial
+    # quadratic forms by finite tensor expansion.
+    polynomial = [Fraction(1), Fraction(-1), Fraction(1, 2)]
+    square = poly_multiply(polynomial, polynomial)
+    constructive_quadratic = sum(
+        coeff * constructive_moments[degree]
+        for degree, coeff in enumerate(square)
+    )
+    spde_quadratic = sum(
+        coeff * spde_moments[degree]
+        for degree, coeff in enumerate(square)
+    )
+    assert_equal(spde_quadratic, constructive_quadratic, "polynomial OS quadratic transfer")
+    assert_equal(constructive_quadratic, Fraction(8), "sample polynomial OS quadratic value")
+
+    # Growth constants are inherited because the moment sequence is identical.
+    B = Fraction(4)
+    gamma = 1
+    for n, moment in constructive_moments.items():
+        envelope = (B ** n) * (math.factorial(n) ** gamma)
+        if abs(spde_moments[n]) > envelope:
+            raise AssertionError("SPDE hierarchy growth transfer failed")
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -2194,8 +2270,9 @@ def main():
     check_quartic_tail_integrability_arithmetic()
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
+    check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

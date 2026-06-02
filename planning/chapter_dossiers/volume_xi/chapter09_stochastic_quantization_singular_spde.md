@@ -241,6 +241,9 @@ data.
   two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
   scalar first-chaos sector sum used to bound the locally subtracted
   \(X^2Y\) first-chaos coordinate.
+- `mu_spde`, `mu_cons`, `S_n^spde`, `S_n^cons`, `D`: stationary SPDE law,
+  constructive Euclidean measure, their Schwinger hierarchies, and the dense
+  test-function subspace used in the common-hierarchy comparison criterion.
 
 ## Claim Ledger
 
@@ -771,6 +774,15 @@ data.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
+- Adds the common Schwinger-hierarchy comparison construction: if the SPDE
+  stationary law and constructive Euclidean measure are placed in the same
+  field/mass/counterterm chart, their moment functionals are continuous, and
+  they agree on a dense test-function subspace, then the two tempered
+  Schwinger hierarchies coincide.  OS positivity, covariance, corrected OS-II
+  growth, clustering, and the reconstructed Wightman data transfer through
+  this hierarchy equality.  The model-specific equality of those hierarchies
+  remains an analytic proof obligation rather than a consequence of Markov
+  stationarity alone.
 - Records a self-contained singular-SPDE proof stack as an open obligation:
   Wick powers, Schauder and multiplication estimates, energy estimates,
   invariant-law identification, BPHZ model convergence, fixed points in
@@ -802,6 +814,15 @@ data maps.
   exact rational two-mode check of the Dirichlet identity, generator
   symmetry, and constant conservation with the \(\sqrt2\) noise
   normalization.
+- 2026-06-02 SPDE/constructive hierarchy-comparison pass: added the explicit
+  common-Schwinger-hierarchy construction between stationary SPDE laws and
+  constructive Euclidean measures in a shared renormalization chart.  The pass
+  makes clear that OS/Wightman data transfer through equality of tempered
+  Schwinger distributions, with bounded-cylinder comparison upgraded to
+  polynomial cylinders only through the uniform-integrability criteria proved
+  earlier.  The companion finite check verifies matching OS Gram matrices,
+  polynomial quadratic forms, and transferred growth envelopes from an
+  identical moment vector.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and
