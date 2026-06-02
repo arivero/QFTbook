@@ -13,12 +13,36 @@ material are kept separate from the compiled monograph.
 
 ## Complete Volume Program (I-XX)
 
-The complete current public volume program has twenty numbered volumes.  The
-compiled manuscript currently contains Volumes I-XII in
+The complete current public volume program has twenty numbered volumes, listed
+below in full.  The compiled manuscript currently contains Volumes I-XII in
 `monograph/tex/main.pdf`.  Volumes XIII-XX are roadmap volumes: they record the
 intended subject architecture and become compiled volumes only after their TeX
 assembly files, chapter dossiers, verification passes, frontmatter entries, and
-README entries are added together.
+README entries are added together.  The monograph frontmatter presently lists
+only compiled volumes; this README records both compiled and roadmap volumes.
+
+At a glance:
+
+1. Volume I: Foundations of Local Quantum Field Theory
+2. Volume II: Particles, Scattering, and Analyticity
+3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
+4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
+5. Volume V: Conformal Field Theory
+6. Volume VI: Integrable Quantum Field Theory
+7. Volume VII: Supersymmetric Quantum Field Theory
+8. Volume VIII: Topological and Cohomological Quantum Field Theory
+9. Volume IX: Global Structure, Phases, and Extended Operators
+10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
+11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
+12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
+13. Volume XIII: Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions
+14. Volume XIV: Advanced Local-Algebraic QFT and Modular Structure
+15. Volume XV: Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables
+16. Volume XVI: Advanced Supersymmetric Theories and Protected Sectors
+17. Volume XVII: Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT
+18. Volume XVIII: Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT
+19. Volume XIX: Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory
+20. Volume XX: Advanced Curved-Background, Locally Covariant, and Semiclassical QFT
 
 | Volume | Public status | Title |
 | --- | --- | --- |
