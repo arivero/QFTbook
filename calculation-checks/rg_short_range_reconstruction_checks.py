@@ -61,6 +61,9 @@ norm estimate.
 The reflection-positive block-spin pullback check verifies the finite matrix
 compression mechanism by which a reflection-compatible block-spin map sends a
 fine reflection-positive Gram form to a coarse one.
+The positive-time translation check verifies the finite Gram-window
+equicontinuity bound that turns translated positive-time test vectors into a
+strongly continuous OS time semigroup after taking the continuum limit.
 """
 
 from fractions import Fraction
@@ -825,6 +828,44 @@ def check_finite_os_positivity_family_size_obstruction():
     assert_true("operator-norm OS lower bound positive", operator_norm_lower > 0)
 
 
+def check_positive_time_translation_window_bound():
+    # The chapter's OS semigroup-continuity input is a bound on the
+    # positive-time Gram norm of tau_t F - F.  This finite check keeps the
+    # support margin, modulus of continuity, limiting Gram-window bound, and
+    # dense-domain extension arithmetic separate.
+    support_margin = Fraction(3, 2)
+    time_s = Fraction(1, 4)
+    time_t = Fraction(1, 3)
+    assert_true("positive-time translation support margin", time_s + time_t < support_margin / 2)
+    assert_equal("translation semigroup parameter addition", time_s + time_t, Fraction(7, 12))
+
+    modulus_constant = Fraction(3)
+    small_time = Fraction(1, 5)
+    half_time = small_time / 2
+    omega_small = modulus_constant * small_time**2
+    omega_half = modulus_constant * half_time**2
+    assert_equal("translation modulus at t", omega_small, Fraction(3, 25))
+    assert_equal("translation modulus at t/2", omega_half, Fraction(3, 100))
+    assert_equal("quadratic translation modulus scaling", 4 * omega_half, omega_small)
+
+    regulator_errors = [Fraction(1, 10), Fraction(1, 20), Fraction(1, 40)]
+    finite_bounds = [omega_small + error for error in regulator_errors]
+    assert_equal("first regulated translation Gram bound", finite_bounds[0], Fraction(11, 50))
+    assert_true("regulated translation bounds decrease", finite_bounds[2] < finite_bounds[1] < finite_bounds[0])
+    assert_true("limiting translation bound below finite bounds", all(omega_small < bound for bound in finite_bounds))
+
+    # If a dense positive-time vector v is approximated by u with OS norm
+    # alpha, and the translated dense vector obeys beta, a contraction
+    # semigroup gives ||T_t v - v|| <= beta + 2 alpha.  This is the finite
+    # extension estimate behind passing continuity from a dense domain to the
+    # OS Hilbert-space closure.
+    dense_approximation_error = Fraction(1, 20)
+    dense_vector_translation_bound = omega_half
+    closure_bound = dense_vector_translation_bound + 2 * dense_approximation_error
+    assert_equal("positive-time dense-domain extension bound", closure_bound, Fraction(13, 100))
+    assert_true("dense-domain extension keeps continuity small", closure_bound < Fraction(1, 5))
+
+
 def check_stable_chart_observable_window_bound():
     theta = Fraction(1, 2)
     initial_stable_mismatch = Fraction(1, 5)
@@ -1329,6 +1370,7 @@ def main():
     check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()
     check_finite_os_positivity_family_size_obstruction()
+    check_positive_time_translation_window_bound()
     check_stable_chart_observable_window_bound()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()

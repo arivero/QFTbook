@@ -2831,6 +2831,52 @@ Clustering estimates are added when the target claim includes
 uniqueness of the vacuum.
 \end{definition}
 
+\paragraph{Positive-time translation continuity from finite windows.}
+Item 5 of
+Definition~\ref{def:short-range-scalar-os-assembly-datum} is a continuity
+estimate in the limiting OS Hilbert norm.  That norm is not the Schwartz norm
+of a Euclidean test function; it is the limiting positive-time Gram norm.
+Thus strong continuity of the positive-time translation semigroup is proved
+by estimates on translated Gram windows.
+
+Let \(F\) be a polynomial positive-time test vector whose Euclidean-time
+support has distance \(d_F>0\) from the reflection plane.  For
+\(0\leq t<d_F/2\), let \(\tau_tF\) denote translation of every Euclidean-time
+argument of \(F\) forward by \(t\).  Suppose the regulated Schwinger
+hierarchy gives, uniformly for all sufficiently large \(k\),
+\begin{equation}
+  S_k\!\left(
+    \Theta(\tau_tF-F)(\tau_tF-F)
+  \right)
+  \leq \omega_F(t)+\varepsilon_{F,k},
+  \qquad
+  \lim_{t\downarrow0}\omega_F(t)=0,\qquad
+  \varepsilon_{F,k}\to0 .
+  \label{eq:rg-positive-time-translation-window-bound}
+\end{equation}
+Here the left side is a finite positive-time Gram-window entry, and the
+support restriction ensures that \(\tau_tF-F\) still belongs to the
+positive-time test algebra.  If the corresponding Gram entries converge to
+the limiting OS form, then
+\[
+  \|[\tau_tF]-[F]\|_{\mathcal H_{\rm OS}}^2
+  =
+  S_\ast\!\left(
+    \Theta(\tau_tF-F)(\tau_tF-F)
+  \right)
+  \leq \omega_F(t),
+\]
+after taking \(k\to\infty\).  Therefore \(t\mapsto[\tau_tF]\) is continuous at
+\(t=0\) on every such vector.  Translation covariance gives
+\(\tau_t\tau_sF=\tau_{t+s}F\) while the support remains positive-time; after
+passing to the OS quotient this supplies the semigroup law on the dense
+positive-time domain.  Extending the semigroup from this domain to the OS
+Hilbert-space closure requires the same bound on a directed family of
+positive-time vectors whose classes are dense.  A Wilsonian RG proof must
+therefore supply \eqref{eq:rg-positive-time-translation-window-bound}, or an
+equivalent model-specific equicontinuity estimate, in addition to finite
+reflection positivity.
+
 Given Definition~\ref{def:short-range-scalar-os-assembly-datum}, the passage
 to a Wightman theory is the reconstruction stage following the RG estimates.
 The distributional estimates give tempered limiting Schwinger functions.

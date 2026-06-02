@@ -235,6 +235,13 @@ constructive RG developments.
   analytic growth, and the ordered-insertion adjoint identity.  The chapter now
   explicitly separates these estimates from the existence of a Wilsonian fixed
   point or stable trajectory.
+- Adds a concrete positive-time translation-window criterion for the OS
+  semigroup regularity item: for every positive-time test vector \(F\) with
+  time-support margin, the RG construction must bound the finite Gram-window
+  norm of \(\tau_tF-F\) by a modulus \(\omega_F(t)\to0\) plus a regulator
+  error.  The limiting OS norm and the dense-domain extension then follow
+  from the same Gram-window estimates; finite reflection positivity alone
+  does not supply this continuity.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -380,7 +387,10 @@ remainder contraction.
   and the finite OS-positivity bound with an explicit regulated lower bound
   and entrywise limiting error, together with the all-ones family-size
   obstruction showing why fixed entrywise error cannot prove directed
-  reflection positivity.  It also checks the exact finite arithmetic behind the polymer
+  reflection positivity.  It also checks the positive-time translation-window
+  arithmetic behind OS semigroup continuity: support margin, quadratic
+  modulus, regulator-error limit, and dense-domain extension.  It also checks
+  the exact finite arithmetic behind the polymer
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering
   \(B_{\rm pol}\).  It also checks the finite-range
@@ -472,6 +482,16 @@ remainder contraction.
   an operator-norm estimate, before it can support OS reconstruction.  The
   companion short-range RG check verifies the same rational arithmetic on an
   explicit finite window.
+- 2026-06-02 positive-time translation-window pass: added the concrete
+  Gram-window equicontinuity estimate needed for item 5 of the short-range
+  scalar OS reconstruction requirements.  The chapter now derives strong
+  continuity of the OS time-translation semigroup from a bound on
+  \(S_k(\Theta(\tau_tF-F)(\tau_tF-F))\) with a vanishing modulus and regulator
+  error, and records the dense-domain extension burden.  The companion
+  short-range RG check verifies the support-margin, quadratic-modulus,
+  limiting-window, and dense-domain extension arithmetic.  This is still
+  proof infrastructure for #505; it does not construct the model-specific
+  short-range critical scalar RG estimates.
 - 2026-06-02 stable-chart finite-window bound pass: added the
   RG-coordinate error budget behind finite universality evidence.  The
   chapter now bounds a finite reconstructed window by a tuned relevant

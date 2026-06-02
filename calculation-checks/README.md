@@ -710,7 +710,10 @@ Current checks:
   checks the complementary family-size obstruction by an all-ones perturbation:
   fixed entrywise tolerance loses positivity once the \(m\epsilon\) term
   overwhelms the regulated lower bound, while an operator-norm estimate has the
-  dimension-independent lower bound stated in the chapter.  It also
+  dimension-independent lower bound stated in the chapter.  It also checks the
+  positive-time translation-window estimate used for OS semigroup continuity,
+  including the support margin, quadratic modulus, regulator-error limit, and
+  dense-domain extension bound.  It also
   checks the
   stable-chart observable-window bound that decomposes a finite
   universality comparison into relevant mismatch, stable-coordinate
