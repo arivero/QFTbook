@@ -1370,6 +1370,12 @@ Current checks:
   kinematics, Newton separation of rapidity multisets, chamber braid
   relations, the rational Yang--Baxter identity, scalar two-body unitarity,
   and Watson-exchange coefficient bookkeeping.
+- `integrable_scattering_bootstrap_checks.py`: finite analytic checks for the
+  Volume VI rapidity-plane bootstrap chapter, including the elementary scalar
+  block unitarity identity, the crossing relation
+  \([x]_{\ii\pi-\theta}=-[1-x]_\theta\), the crossing-symmetric CDD-pair
+  unitarity/crossing identities, and the opposite signs of the two
+  physical-strip residues in the CDD pair.
 - `integrable_rg_flow_checks.py`: exact arithmetic checks for the Volume VI
   perturbed-CFT and integrable-RG-flow chapter, including the
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model

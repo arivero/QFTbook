@@ -32,6 +32,11 @@
   crossing.
 - Elementary scalar block algebra: unitarity identity, pole lattice, and zero
   lattice.
+- Crossing-symmetric CDD-pair diagnostic: the pair
+  \([x]_\theta[1-x]_\theta\) satisfies scalar unitarity and crossing but has
+  opposite signs for the two physical-strip residues, so direct-channel
+  particle interpretation requires the full residue datum, not only the pole
+  location.
 - Operator-algebraic theorem boundary for wedge-local and local-algebra
   reconstruction.
 
@@ -64,7 +69,9 @@
 6. Elementary scalar blocks supply controlled meromorphic zero-pole pairs and
    obey \([x]_\theta[x]_{-\theta}=1\).
 7. CDD factors show that unitarity and crossing do not alone determine a
-   unique amplitude.
+   unique amplitude; the crossing-symmetric scalar pair also shows that
+   scalar unitarity and crossing do not by themselves make every
+   physical-strip pole a positive direct-channel bound-state pole.
 8. Local QFT realization requires local algebras or Wightman fields in
    addition to on-shell bootstrap data.
 
@@ -73,3 +80,18 @@
 - Rapidity strip with physical line, crossed line, and bound-state pole.
 - Fusion triangle showing fusing angles.
 - CDD zero-pole pair diagram.
+
+## Calculation Checks
+
+- `calculation-checks/integrable_scattering_bootstrap_checks.py`: checks the
+  elementary scalar block unitarity identity, the crossing relation
+  \([x]_{\ii\pi-\theta}=-[1-x]_\theta\), the CDD-pair
+  unitarity/crossing identities, and the opposite signs of the two
+  physical-strip residues.
+
+## Audit Notes
+
+- 2026-06-02 scalar-block residue-sign pass: removed the line-by-line
+  hyperbolic cancellation from the chapter prose, kept the consequential
+  physical-strip residue sign in the manuscript, and added a companion check
+  for the elementary identities and crossing-pair residue signs.

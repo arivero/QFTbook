@@ -306,12 +306,11 @@ For \(x\in\C\), the elementary scalar block is
 as a meromorphic function of \(\theta\).
 \end{definition}
 
-The following elementary verification is recorded because this block is the
-basic unitary zero-pole pair used in diagonal bootstrap formulae.  Products
-of such blocks place zeros and poles at prescribed locations.  The bootstrap
-construction problem is to choose the product and possible CDD factors so
-that unitarity, crossing, physical-strip pole assignments, residue signs, and
-asymptotic bounds hold simultaneously.
+This block is the basic unitary zero-pole pair used in diagonal bootstrap
+formulae.  Products of such blocks place zeros and poles at prescribed
+locations.  The bootstrap construction problem is to choose the product and
+possible CDD factors so that unitarity, crossing, physical-strip pole
+assignments, residue signs, and asymptotic bounds hold simultaneously.
 
 \begin{remark}[Elementary block algebra]
 \label{rem:elementary-scalar-block-algebra}
@@ -331,23 +330,51 @@ For real \(0<x<1\), the pole at \(\theta=\ii\pi x\) lies in the physical
 strip.
 \end{remark}
 
-The unitarity identity is the cancellation
+The displayed properties follow immediately from the zero set of
+\(\sinh z\) and from \(\sinh(-z)=-\sinh z\).  The point worth keeping in the
+main text is the residue sign.  At the physical-strip pole
+\(\theta=\ii\pi x\), \(0<x<1\),
 \[
-  \frac{\sinh((\theta+\ii\pi x)/2)}
-       {\sinh((\theta-\ii\pi x)/2)}
-  \frac{\sinh((-\theta+\ii\pi x)/2)}
-       {\sinh((-\theta-\ii\pi x)/2)}
+  \operatorname*{Res}_{\theta=\ii\pi x}[x]_\theta
   =
-  \frac{\sinh((\theta+\ii\pi x)/2)}
-       {\sinh((\theta-\ii\pi x)/2)}
-  \frac{-\sinh((\theta-\ii\pi x)/2)}
-       {-\sinh((\theta+\ii\pi x)/2)}
+  2\ii\sin(\pi x),
+  \qquad
+  -\ii\operatorname*{Res}_{\theta=\ii\pi x}[x]_\theta
   =
-  1.
+  2\sin(\pi x)>0 .
 \]
-The denominator vanishes exactly when
-\((\theta-\ii\pi x)/2=\pi\ii n\), and the numerator vanishes exactly when
-\((\theta+\ii\pi x)/2=\pi\ii n\).  This gives the stated pole and zero sets.
+Thus a single block has the residue sign compatible with a direct-channel
+scalar bound-state pole in the convention
+\eqref{eq:bound-state-residue-projection}.  Crossing is a separate
+constraint.  The elementary relation
+\[
+  [x]_{\ii\pi-\theta}=-[1-x]_\theta
+\]
+shows that the crossing-symmetric scalar pair
+\[
+  \mathcal C_x(\theta):=[x]_\theta[1-x]_\theta
+\]
+is unitary and crossing invariant.  For \(0<x<1\) with \(x\ne1/2\), it has
+physical-strip poles at \(\theta=\ii\pi x\) and
+\(\theta=\ii\pi(1-x)\), but their residue signs are opposite:
+\begin{equation}
+  -\ii\operatorname*{Res}_{\theta=\ii\pi x}\mathcal C_x(\theta)
+  =
+  -2\tan(\pi x),
+  \qquad
+  -\ii\operatorname*{Res}_{\theta=\ii\pi(1-x)}\mathcal C_x(\theta)
+  =
+  2\tan(\pi x).
+  \label{eq:crossing-pair-opposite-residue-signs}
+\end{equation}
+Equation~\eqref{eq:crossing-pair-opposite-residue-signs} is a useful
+diagnostic: a CDD zero-pole pair can satisfy scalar unitarity and crossing
+while still failing the positivity sign for one of its physical-strip poles.
+The particle interpretation of a pole therefore uses the full residue datum,
+not only its position in the strip.  The companion check
+\path{calculation-checks/integrable_scattering_bootstrap_checks.py} verifies
+the scalar-block identities and the two residue signs without printing the
+elementary hyperbolic cancellation in the chapter.
 
 \section{Hilbert-Space Boundary}
 
