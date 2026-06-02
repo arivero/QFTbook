@@ -552,7 +552,10 @@ Current checks:
   coordinate.  It also checks retained-basis covariance of the finite
   light-ray chart and the compensating contact-coordinate shift required when
   diagonal distributions are reshuffled between retained coefficient maps and
-  explicit contact terms.
+  explicit contact terms.  It also checks the small-angle EEC pushforward
+  exponent: the actual \(\delta(\cos\chi-\cos\theta)\) kernel contributes one
+  inverse shell power relative to a \(\delta(\chi-\theta)\) convention, and
+  changing to \(z=(1-\cos\chi)/2\) halves the leading power.
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter

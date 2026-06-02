@@ -1293,6 +1293,59 @@ not fix a separated-angle coefficient convention by itself.  A finite
 light-ray OPE chart used for a full energy correlator must therefore state
 both its retained-basis convention and its diagonal-contact convention.
 
+\paragraph{Small-angle pushforward to the EEC variable.}
+The finite light-ray chart lives first as a distribution in the two detector
+directions.  The one-variable EEC is obtained by pushing that distribution
+forward by the opening angle.  This geometric step contributes a Jacobian that
+must be included together with the light-ray OPE coefficient.  Put
+\[
+  d_\perp=D-2
+\]
+for the dimension of the detector sphere, fix the second detector direction,
+and write \(\theta\) for the geodesic distance of the first detector from it.
+In geodesic polar coordinates on \(S^{d_\perp}\),
+\[
+  \dd\Omega_1=(\sin\theta)^{d_\perp-1}\dd\theta\,\dd\omega,
+  \qquad \omega\in S^{d_\perp-1}.
+\]
+The EEC kernel in \eqref{eq:cft-eec} is
+\(\delta(\cos\chi-\cos\theta)\), hence for \(0<\chi<\pi\)
+\begin{equation}
+  \int_{S^{d_\perp}}\dd\Omega_1\,
+  \delta(\cos\chi-\mathbf n_1\cdot\mathbf n_2)\,
+  F(\theta,\omega)
+  =
+  (\sin\chi)^{d_\perp-2}
+  \int_{S^{d_\perp-1}}\dd\omega\,F(\chi,\omega).
+  \label{eq:cft-eec-small-angle-pushforward}
+\end{equation}
+Thus a retained coefficient whose relative-coordinate leading term is
+homogeneous of degree \(-\lambda\),
+\[
+  C(\xi)=|\xi|^{-\lambda}C_0(\widehat\xi)+\text{higher radial orders},
+  \qquad \xi=\theta\,\omega ,
+\]
+contributes to the small-angle EEC density with leading power
+\begin{equation}
+  \mathrm{EEC}_C(\chi)
+  \sim
+  \chi^{d_\perp-2-\lambda}
+  \int_{S^{d_\perp-1}}\dd\omega\,C_0(\omega)\,
+  \langle\Psi|\mathbb L(\psi_\omega)|\Psi\rangle ,
+  \qquad \chi\downarrow0,
+  \label{eq:cft-eec-small-angle-homogeneous-power}
+\end{equation}
+up to the center-coordinate smearing and the declared finite-chart remainder.
+Polyhomogeneous terms
+\(|\xi|^{-\lambda_a}(\log|\xi|)^s C_{a,s}(\widehat\xi)\) produce the
+corresponding powers
+\(\chi^{d_\perp-2-\lambda_a}(\log\chi)^s\), with curvature corrections from
+\(\sin\chi/\chi\) entering at even higher powers.  If one changes from
+\(\chi\) to \(z=(1-\cos\chi)/2\), the leading power is divided by two because
+\(z=\chi^2/4+O(\chi^4)\).  Therefore the exponent quoted for a small-angle
+EEC singularity is a statement about the light-ray coefficient homogeneity,
+the detector-sphere dimension, and the chosen one-variable kernel.
+
 This formulation also explains the relation with the QCD small-angle EEC.
 In a CFT the expansion coefficients are fixed-point data of light-ray
 representations.  In asymptotically free QCD, the corresponding small-angle

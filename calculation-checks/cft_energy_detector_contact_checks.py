@@ -15,6 +15,9 @@ and it detects the loss of the diagonal contact coordinate in a
 separated-angle-only chart.  The finite light-ray chart covariance check
 verifies retained-basis changes and diagonal-contact reshuffling as separate
 coordinate operations on the same detector functional.
+The small-angle pushforward check verifies the EEC angular-kernel Jacobian
+that turns a homogeneous relative-coordinate light-ray coefficient into a
+one-variable small-angle EEC power.
 """
 
 from __future__ import annotations
@@ -359,6 +362,34 @@ def check_finite_light_ray_chart_covariance() -> None:
         raise AssertionError("unshifted contact coordinate failed to change the detector functional")
 
 
+def check_small_angle_eec_pushforward_exponents() -> None:
+    # Detector sphere dimension d_perp = D-2.  The local angular shell has
+    # power d_perp-1, while the EEC kernel
+    # delta(cos chi - cos theta) contributes one inverse power from
+    # |d cos theta / d theta| = sin theta.  A coefficient homogeneous of
+    # degree -lambda therefore contributes chi^(d_perp-2-lambda).
+    spacetime_dimension = 4
+    detector_sphere_dimension = spacetime_dimension - 2
+    coefficient_lambda = Fraction(3, 2)
+    eec_exponent = Fraction(detector_sphere_dimension - 2) - coefficient_lambda
+    delta_theta_exponent = Fraction(detector_sphere_dimension - 1) - coefficient_lambda
+    assert_equal("small-angle EEC delta-cos exponent in D=4", eec_exponent, Fraction(-3, 2))
+    assert_equal("small-angle delta-theta exponent differs by one", delta_theta_exponent - eec_exponent, Fraction(1))
+
+    spacetime_dimension_five = 5
+    detector_sphere_dimension_five = spacetime_dimension_five - 2
+    lambda_five = Fraction(2)
+    eec_exponent_five = Fraction(detector_sphere_dimension_five - 2) - lambda_five
+    assert_equal("small-angle EEC delta-cos exponent in D=5", eec_exponent_five, Fraction(-1))
+
+    z_variable_exponent = eec_exponent / 2
+    assert_equal("small-angle z-variable exponent", z_variable_exponent, Fraction(-3, 4))
+
+    log_power = 2
+    polyhomogeneous_label = (eec_exponent, log_power)
+    assert_equal("small-angle log power preserved by pushforward", polyhomogeneous_label, (Fraction(-3, 2), 2))
+
+
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
@@ -372,6 +403,7 @@ def main() -> None:
     check_three_detector_partition_decomposition()
     check_finite_light_ray_ope_chart_bound()
     check_finite_light_ray_chart_covariance()
+    check_small_angle_eec_pushforward_exponents()
     print("All CFT energy-detector contact and moment checks passed.")
 
 

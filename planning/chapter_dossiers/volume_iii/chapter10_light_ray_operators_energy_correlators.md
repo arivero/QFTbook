@@ -196,6 +196,13 @@ The chapter establishes:
     diagonal distributions to retained coefficient maps changes the full
     detector distribution unless the explicit contact coordinate is shifted
     by the corresponding retained light-ray matrix element.
+15. The small-angle EEC distribution is the angular pushforward of the
+    two-detector light-ray distribution.  The kernel
+    \(\delta(\cos\chi-\cos\theta)\) contributes the Jacobian
+    \((\sin\chi)^{D-4}\); a retained coefficient homogeneous of degree
+    \(-\lambda\) therefore contributes \(\chi^{D-4-\lambda}\) in the
+    \(\chi\)-density, with the leading exponent halved in
+    \(z=(1-\cos\chi)/2\).
 
 ## Figures
 
@@ -273,3 +280,12 @@ The chapter establishes:
   than a separated-angle coefficient convention.  The companion exact rational
   check verifies \(cB\,B^{-1}\ell=c\ell\), the compensating shift
   \(k\mapsto k-d\ell\), and the unshifted-contact defect \(16/15\).
+- 2026-06-02 #519 small-angle EEC pushforward pass: added the missing
+  geometric step from a local relative-coordinate light-ray OPE coefficient to
+  the one-variable EEC density.  The manuscript derives the
+  \((\sin\chi)^{d_\perp-2}\) factor from the
+  \(\delta(\cos\chi-\cos\theta)\) kernel and records the resulting
+  \(\chi^{d_\perp-2-\lambda}\) power for a homogeneous coefficient of degree
+  \(-\lambda\), including the \(z=(1-\cos\chi)/2\) exponent conversion.  The
+  companion check verifies the finite exponent arithmetic and detects the
+  one-power difference from a \(\delta(\chi-\theta)\) convention.
