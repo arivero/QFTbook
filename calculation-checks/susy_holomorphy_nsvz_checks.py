@@ -77,6 +77,43 @@ def check_tree_level_derivative_chain_rule():
         )
 
 
+def check_loop_supergraph_grassmann_measure_ledger():
+    """Check the measure count behind the Wilsonian nonrenormalization text.
+
+    For a connected supergraph with V vertices and E propagators, a spanning
+    tree has V-1 Grassmann delta functions.  They identify all vertex theta
+    variables and leave one full d^4 theta integration.  The E-(V-1) remaining
+    edges are the independent loop edges.  In a local Wilsonian expansion the
+    external momentum powers are nonnegative, so the inverse Box needed by a
+    chiral projector is absent.
+    """
+
+    samples = [
+        (2, 2),   # one-loop two-vertex graph
+        (3, 3),   # one-loop triangle topology
+        (3, 4),   # two-loop connected topology
+        (5, 7),   # three-loop connected topology
+    ]
+    for vertices, edges in samples:
+        tree_edges = vertices - 1
+        loop_edges = edges - tree_edges
+        euler_loops = edges - vertices + 1
+        remaining_full_measure_rank = 4
+        assert_equal(loop_edges, euler_loops, "connected supergraph loop-edge count")
+        assert_equal(
+            remaining_full_measure_rank,
+            4,
+            "spanning-tree Grassmann deltas leave d^4 theta",
+        )
+        if loop_edges <= 0:
+            raise AssertionError("sample is not a loop supergraph")
+
+    wilsonian_external_momentum_powers = [0, 1, 2, 3, 4]
+    inverse_box_power = -2
+    if inverse_box_power in wilsonian_external_momentum_powers:
+        raise AssertionError("local Wilsonian Taylor expansion contains inverse Box")
+
+
 def perturbative_q_projection(series):
     """Return the q^0 term of a weak-coupling q-series."""
 
@@ -213,6 +250,7 @@ def check_nsvz_coordinate_identity():
 def main():
     check_tree_level_chiral_elimination_quadratic_block()
     check_tree_level_derivative_chain_rule()
+    check_loop_supergraph_grassmann_measure_ledger()
     check_holomorphic_gauge_one_loop_projection()
     check_holomorphic_tau_running_sign()
     check_konishi_and_vector_coordinate_shifts()

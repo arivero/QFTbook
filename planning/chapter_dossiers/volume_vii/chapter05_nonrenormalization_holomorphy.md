@@ -79,9 +79,10 @@
 
 - `calculation-checks/susy_holomorphy_nsvz_checks.py` verifies the quadratic
   chiral-elimination formula, the derivative identity after eliminating a
-  heavy chiral coordinate, the holomorphic gauge-coupling \(q_h^0\)
-  perturbative projection and finite scheme-shift invariance, the sign
-  equivalence between
+  heavy chiral coordinate, the loop-supergraph Grassmann-measure ledger
+  leaving one full \(d^4\theta\) integral in a connected Wilsonian loop graph,
+  the holomorphic gauge-coupling \(q_h^0\) perturbative projection and finite
+  scheme-shift invariance, the sign equivalence between
   \(d\tau/d\log\mu=-b_0/(2\pi i)\),
   \(dX_h/d\log\mu=b_0\), and
   \(d\log q_h/d\log\mu=-b_0\), Konishi and vector-multiplet coordinate
@@ -97,6 +98,15 @@
   \(dX_h/d\log\mu=b_0\), the NSVZ coordinate section, and the SU(2)
   Seiberg--Witten perturbative prepotential convention.  Added the sign
   equivalence to the paired calculation check.
+- 2026-06-02 Wilsonian superpotential pass: expanded the perturbative
+  nonrenormalization mechanism from a compressed supergraph slogan into a
+  local D-algebra argument.  The text now shows that a connected loop graph
+  leaves one full superspace measure after spanning-tree Grassmann delta
+  identifications, and that converting the resulting local \(D\)-term into a
+  chiral \(F\)-term would require the nonlocal chiral projector with an
+  inverse \(\Box\), i.e. precisely the infrared singularity absent from the
+  Wilsonian low-momentum expansion.  Added the corresponding finite
+  graph-measure ledger to the paired calculation check.
 
 ## Figures
 

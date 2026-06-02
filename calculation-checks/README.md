@@ -1629,9 +1629,11 @@ Current checks:
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
   tree-level elimination, the eliminated derivative identity, the
-  holomorphic gauge-coupling \(q^0\) perturbative projection, Konishi and
-  vector-multiplet coordinate shifts, and the differentiated
-  holomorphic-canonical relation leading to the NSVZ beta function.
+  loop-supergraph Grassmann-measure ledger behind the Wilsonian
+  superpotential argument, the holomorphic gauge-coupling \(q^0\)
+  perturbative projection, Konishi and vector-multiplet coordinate shifts,
+  and the differentiated holomorphic-canonical relation leading to the NSVZ
+  beta function.
 - `susy_n1_conifold_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
   including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,

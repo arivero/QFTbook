@@ -44,22 +44,55 @@ coordinates, except through tree-level elimination of massive chiral fields
 and through explicitly declared anomaly-induced coordinate changes.
 \end{controlledapproximation}
 
-In supergraph perturbation theory each internal propagator carries spinor
-derivatives and each interaction vertex is integrated over either \(d^4\theta\)
-or over a chiral measure that may be represented inside full superspace by
-spinor derivatives acting on delta functions.  For a loop correction to
-produce an \(F\)-term, all but one pair of Grassmann integrations would have
-to be saturated while leaving only \(d^2\theta\) for the external local
-functional.  The spinor-derivative algebra in a loop supplies the full
-superspace measure unless an infrared singularity converts a nonlocal
-full-superspace expression into a local chiral expression.  A Wilsonian
-effective action at scale \(\Lambda\) excludes such singularities by
-integrating out only modes above \(\Lambda\).  Therefore loop corrections are
+The mechanism is a finite statement about the Grassmann part of a regulated
+supergraph.  Consider one connected loop supergraph after every chiral vertex
+has been written as a full-superspace integral with the usual covariant spinor
+derivatives on Grassmann delta functions.  The graph has a vertex variable
+\(\theta_v\) at each vertex.  Choose a spanning tree.  The delta functions on
+the tree identify all \(\theta_v\)'s and leave one integration
+\[
+  \int d^4\theta .
+\]
+The remaining, non-tree, propagators are precisely the loop propagators.  Their
+spinor derivatives may be integrated by parts until they act on external
+superfields or on the remaining Grassmann delta functions.  The algebra
+\[
+  \{D_\alpha,\bar D_{\dot\beta}\}
+  =
+  -2\ii\sigma^\mu_{\alpha\dot\beta}\partial_\mu
+\]
+then converts closed derivative strings into spacetime momenta and residual
+covariant derivatives.  Thus the local Wilsonian contribution of a loop graph
+is represented by a full-superspace local density
+\[
+  \int d^4x\,d^4\theta\,
+  \mathcal K_\Gamma(\Phi,\bar\Phi,D,\bar D,\partial;\Lambda).
+\]
+
+The only possible escape from this conclusion is nonlocality.  A nonzero
+chiral \(F\)-term class can be extracted from a full-superspace expression by
+using a chiral projector, but in flat superspace such a projector contains an
+inverse d'Alembertian.  On the standard projector domain it is represented by
+\[
+  P_{\rm ch}= \frac{\bar D^2D^2}{16\Box}.
+\]
+The inverse \(\Box\) is exactly the signal of an infrared singularity in the
+external momenta.  A Wilsonian effective action at scale \(\Lambda\) integrates
+out modes above \(\Lambda\) and expands its low-momentum kernels in nonnegative
+powers of \(p/\Lambda\); it does not contain the \(1/p^2\) pole needed to turn
+the full-superspace loop density into a local chiral density.  The familiar
+exceptions in a massless 1PI effective action are therefore not exceptions to
+the Wilsonian statement: they use the infrared pole that the Wilsonian
+coordinate chart has deliberately excluded.
+
+Consequently perturbative loop corrections in the declared Wilsonian patch are
 full-superspace local coordinates.  Tree-level elimination of massive chiral
-fields is different: it substitutes the solution of a chiral equation of
-motion into the existing superpotential and hence stays within the chiral
-coordinate class.  Anomaly-induced coordinate changes are precisely the
-declared exceptions in the scheme data.
+fields is different: it substitutes the solution of a chiral equation of motion
+into the existing superpotential and hence stays within the chiral coordinate
+class.  Anomaly-induced coordinate changes are also different: their chiral
+terms come from the regulated Berezinian of a change of variables, not from a
+loop correction to the superpotential.  These are precisely the declared
+exceptions in the scheme data.
 
 \paragraph{Tree-level chiral elimination.}
 Let the chiral coordinates split as \((X^a,\Phi^i)\), where the \(X^a\) are
