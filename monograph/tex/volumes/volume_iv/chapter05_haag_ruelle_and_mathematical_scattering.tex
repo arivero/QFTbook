@@ -1784,10 +1784,12 @@ Fix a gauge theory with a regulator or screening deformation for which:
 \begin{enumerate}
 \item the physical Hilbert space contains an isolated massive charged
 one-particle shell \(\Sigma_m^+\) in a charged sector;
-\item for each external species there is a translation-covariant
-gauge-invariant dressed operator \(\Psi_a(x)\) of the form
-\eqref{eq:charged-wilson-line-dressed-field}, or a Coulombic variant, whose
-smearing is defined on a common dense domain;
+\item for each external charged sector and mass there is a finite family of
+translation-covariant gauge-invariant dressed operators \(\Psi_a(x)\) of the
+form \eqref{eq:charged-wilson-line-dressed-field}, or Coulombic variants,
+whose smearings are defined on a common dense domain and whose one-particle
+overlap map has full rank on the chosen charged one-particle multiplicity
+space;
 \item the dressed two-point distribution has, in a neighborhood of
 \(\Sigma_m^+\), the pole decomposition
 \begin{equation}
@@ -1800,15 +1802,22 @@ smearing is defined on a common dense domain;
   +\widehat G^{\rm reg}_{ab}(p),
   \label{eq:dressed-two-point-pole}
 \end{equation}
-where \(Z=(Z_{ab})\) is a positive matrix on the one-particle multiplicity
-space and \(\widehat G^{\rm reg}\) is less singular at the shell;
+where \(Z=(Z_{ab})\) is the positive Gram matrix of those one-particle
+overlaps and \(\widehat G^{\rm reg}\) is less singular at the shell;
 \item the large-time wave operators built from these dressed creators exist,
 and time-ordered dressed correlators have the usual boundary-value and
 wave-packet regularity needed for the LSZ integration by parts.
 \end{enumerate}
-Let \(Z^{-1/2}\) be the positive inverse square root on
-\(\operatorname{Ran}Z\).  Then the simultaneous external residue of the dressed
-time-ordered \((m+n)\)-point function equals the matrix element of the
+For the displayed square-root formula choose, for each external charged
+one-particle multiplicity space, a square subfamily of dressed coordinates
+whose overlap matrix is invertible; equivalently restrict \(Z\) to the range
+spanned by that frame and regard it as a positive definite matrix there.  If
+one keeps a rectangular overcomplete family, replace every \(Z^{-1/2}\) below
+by a chosen left inverse of the overlap map as in
+\eqref{eq:dressed-lsz-left-inverse-residue}.  With the square-frame
+convention, let \(Z^{-1/2}\) be the positive inverse square root of this
+positive definite Gram matrix.  Then the simultaneous external residue of the
+dressed time-ordered \((m+n)\)-point function equals the matrix element of the
 scattering operator between the dressed asymptotic charged states:
 \begin{equation}
 \begin{aligned}

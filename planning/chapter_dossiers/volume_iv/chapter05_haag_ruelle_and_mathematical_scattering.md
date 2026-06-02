@@ -141,7 +141,11 @@ resonances.
   explicitly excluded from this datum and must be treated as charged clusters
   or separate infraparticle/bound-state sectors.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
-  pole, and dressed-wave-operator hypotheses.
+  pole, and dressed-wave-operator hypotheses.  The theorem now distinguishes
+  the general rectangular dressed-coordinate case, handled by a left inverse
+  of the one-particle overlap map, from the displayed square-frame
+  \(Z^{-1/2}\) formula, which requires an invertible Gram matrix after
+  choosing a full-rank coordinate frame.
 - Shows that compact abelian Wilson-line dressing changes with fixed
   asymptotic flux are field-strength surface insertions:
   \(\int_{\gamma'_R}A-\int_{\gamma_R}A=\int_{S_{\gamma',\gamma}}F\).
@@ -337,3 +341,9 @@ resonances.
   truncated dressings.  A positive string-tension law for charged truncations
   is recorded as absence of this datum, so confinement is separated from an
   infrared regulator issue.
+- 2026-06-02 #527 coordinate-rank refinement: tightened the finite-regulator
+  dressed LSZ theorem so the square-root normalization is used only after a
+  full-rank square dressed-coordinate frame has been chosen.  Overcomplete or
+  rank-deficient operator families remain governed by the earlier
+  left-inverse residue extraction formula; the theorem no longer hides this
+  coordinate choice inside \(Z^{-1/2}\).
