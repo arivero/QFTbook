@@ -32,6 +32,10 @@ fluctuation integration.
 The source-window check verifies the finite Taylor-source extraction rule
 used to decide which connected correlator windows are actually controlled by
 a source-extended polymer RG chart.
+The stable-chart certificate check verifies the finite RG observable-window
+bound that decomposes a universality comparison into relevant mismatch,
+stable-coordinate contraction, accumulated one-step defects, and source-tail
+or normalization errors.
 """
 
 from fractions import Fraction
@@ -352,6 +356,75 @@ def check_qft_strength_observable_germ_windows():
         "visible certificate does not detect hidden positivity failure",
         hidden_bad_det < 0 and finite_certificate < 1,
     )
+
+
+def check_stable_chart_observable_window_certificate():
+    theta = Fraction(1, 2)
+    initial_stable_mismatch = Fraction(1, 5)
+    one_step_defects = [
+        Fraction(1, 100),
+        Fraction(1, 200),
+        Fraction(1, 400),
+        Fraction(1, 800),
+    ]
+    stable_mismatch = initial_stable_mismatch
+    for defect in one_step_defects:
+        stable_mismatch = theta * stable_mismatch + defect
+
+    steps = len(one_step_defects)
+    propagated_stable_bound = (
+        theta**steps * initial_stable_mismatch
+        + sum(
+            theta ** (steps - 1 - index) * defect
+            for index, defect in enumerate(one_step_defects)
+        )
+    )
+    assert_equal(
+        "stable-chart propagated mismatch",
+        stable_mismatch,
+        Fraction(7, 400),
+    )
+    assert_equal(
+        "stable-chart stable recurrence bound",
+        stable_mismatch,
+        propagated_stable_bound,
+    )
+
+    relevant_lipschitz = Fraction(2)
+    stable_lipschitz = Fraction(3)
+    relevant_mismatch = Fraction(1, 100)
+    source_tail_error = Fraction(1, 400)
+    normalization_error = Fraction(1, 800)
+    total_declared_tail = source_tail_error + normalization_error
+
+    window_bound = (
+        relevant_lipschitz * relevant_mismatch
+        + stable_lipschitz * propagated_stable_bound
+        + total_declared_tail
+    )
+    assert_equal("stable-chart observable-window bound", window_bound, Fraction(61, 800))
+
+    actual_window_difference = (
+        relevant_lipschitz * relevant_mismatch
+        + stable_lipschitz * stable_mismatch
+        + source_tail_error
+    )
+    assert_equal(
+        "stable-chart actual finite-window difference",
+        actual_window_difference,
+        Fraction(60, 800),
+    )
+    assert_true(
+        "stable-chart certificate bounds finite-window difference",
+        actual_window_difference <= window_bound,
+    )
+
+    exactly_tuned_bound = (
+        stable_lipschitz * propagated_stable_bound
+        + total_declared_tail
+    )
+    assert_equal("stable-chart exact tuning removes relevant term", exactly_tuned_bound, Fraction(45, 800))
+    assert_true("stable-chart tuned certificate is sharper", exactly_tuned_bound < window_bound)
 
 
 def check_polymer_contraction_budget():
@@ -781,6 +854,7 @@ def main():
     check_relevant_direction_tuning_amplification()
     check_observable_germ_finite_window_certificate()
     check_qft_strength_observable_germ_windows()
+    check_stable_chart_observable_window_certificate()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()

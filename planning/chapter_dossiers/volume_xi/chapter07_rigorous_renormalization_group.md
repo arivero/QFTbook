@@ -260,6 +260,12 @@ constructive RG developments.
   positivity windows, covariance/locality identities, source contact-term
   data, and reconstruction growth hypotheses before a universality statement
   can be read as equality of reconstructed local QFTs.
+- Adds a finite stable-chart observable-window certificate: after the
+  microscopic data have entered one RG chart, the finite observation-window
+  difference is bounded by the relevant mismatch, stable-coordinate
+  contraction, accumulated one-step comparison defects, and declared
+  source-tail/normalization errors.  This turns finite-window universality
+  evidence into a checkable RG error budget.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
 - Defines correction-to-scaling data as part of a sharpened Wilsonian
@@ -302,7 +308,9 @@ remainder contraction.
   quadratic large-field regulator determinant/exponent bookkeeping.  It also
   checks source-window extraction for a source-extended polymer chart,
   including retained-derivative vanishing, omitted third-derivative Cauchy
-  bounds, and propagated scale-summed source-tail errors.
+  bounds, and propagated scale-summed source-tail errors.  It also checks
+  the stable-chart finite-window certificate, decomposing the observable
+  error into relevant, stable, defect, and source-tail pieces.
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -374,6 +382,12 @@ remainder contraction.
   check now exhibits an exact finite hidden-window failure: a visible
   two-point coordinate can agree while an undeclared reflection-positivity
   Gram determinant is negative.
+- 2026-06-02 stable-chart finite-window certificate pass: added the
+  RG-coordinate error budget behind finite universality evidence.  The
+  chapter now bounds a finite reconstructed window by a tuned relevant
+  mismatch, a stable contraction term, accumulated one-step defects, and
+  source-tail/normalization errors.  The companion short-range RG check
+  verifies the same recurrence and observable-bound arithmetic exactly.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

@@ -3000,6 +3000,64 @@ then the triangle inequality gives the finite certificate
   \qquad \alpha\in\mathfrak A_0 .
   \label{eq:finite-window-universality-certificate}
 \end{equation}
+
+A finite-window certificate becomes substantially more informative when its
+error is expressed in RG coordinates.  Fix a finite window
+\(\alpha\in\mathfrak A\) and a scale \(n_0\) after which two normalized
+microscopic data lie in a common stable chart at \(V_\ast\).  Write
+\(u\in E_u\) for the relevant coordinate and \(s\in E_s\) for the stable
+coordinate in that chart.  Suppose that, after the allowed normalizations,
+the relevant mismatch is bounded by
+\[
+  \|u_i(n_0)-u_j(n_0)\|\leq\delta_u ,
+\]
+and that the stable mismatch \(d_\ell\) after \(\ell\) further RG steps obeys
+the finite recurrence
+\begin{equation}
+  d_{\ell+1}
+  \leq
+  \theta d_\ell+\eta_\ell,
+  \qquad
+  d_0\leq\delta_s,\qquad 0\leq\theta<1 .
+  \label{eq:finite-rg-window-stable-recurrence}
+\end{equation}
+Here \(\eta_\ell\) is the one-step comparison defect: it may come from
+different microscopic blocking kernels, a finite auxiliary-to-target
+intertwining error, or a controlled truncation of the stable coordinate.
+Assume also that the reconstructed \(\alpha\)-window is Lipschitz in the
+chart, with constants \(C_{u,\alpha}\) and \(C_{s,\alpha}\), and that the
+source-tail and normalization errors in this window at depth \(m\) are
+bounded by \(\Xi_{\alpha,m}\).  Then the finite observable-window bound is
+\begin{equation}
+\begin{aligned}
+  p_\alpha\!\left(
+    g_i\,\operatorname{Rec}_{i,n_0+m}^{\alpha}(V_i)
+    -
+    g_j\,\operatorname{Rec}_{j,n_0+m}^{\alpha}(V_j)
+  \right)
+  &\leq
+  C_{u,\alpha}\delta_u
+  +
+  C_{s,\alpha}\theta^m\delta_s                                      \\
+  &\quad+
+  C_{s,\alpha}\sum_{\ell=0}^{m-1}
+    \theta^{m-1-\ell}\eta_\ell
+  +
+  \Xi_{\alpha,m}.
+\end{aligned}
+  \label{eq:stable-chart-finite-window-certificate}
+\end{equation}
+This is the finite-scale form of a Wilsonian universality comparison.  Its
+derivation is the iteration of
+\eqref{eq:finite-rg-window-stable-recurrence}, followed by the Lipschitz
+bound for the reconstruction map in the chosen window.  Exact tuning means
+\(\delta_u=0\).  A theorem-level universality result must prove constants
+for every window in a directed family and show that the right-hand side of
+\eqref{eq:stable-chart-finite-window-certificate} tends to zero along the
+claimed continuum or long-distance limit.  Without that directed-window
+limit, \eqref{eq:stable-chart-finite-window-certificate} remains a precise
+finite observation certificate.
+
 The theorem-level burden is the passage from these finite certificates to
 \eqref{eq:observable-germ-universality-convergence} for the directed family
 of observation windows.

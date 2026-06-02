@@ -640,6 +640,10 @@ Current checks:
   overstated as full universality.  It also checks the QFT-strength
   observable-germ warning that matching a visible finite correlator window
   can miss a hidden OS-positivity Gram-window failure.  It also checks the
+  stable-chart observable-window certificate that decomposes a finite
+  universality comparison into relevant mismatch, stable-coordinate
+  contraction, accumulated one-step defects, and source-tail or
+  normalization errors.  It also checks the
   one-step polymer
   contraction budget \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\varepsilon_k\),
   including the finite radius smallness condition, the quadratic
