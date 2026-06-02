@@ -320,6 +320,82 @@ def check_modified_cook_integrability_bookkeeping() -> None:
         raise AssertionError("finite comparison-phase changes should have vanishing Cook tails")
 
 
+def check_pair_coefficient_residual_budget() -> None:
+    """Check that the Dollard coefficient, not just its form, is load-bearing."""
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    kappa = Fraction(6)
+    relative_speed = Fraction(3)
+    correct_log_coefficient = kappa / relative_speed
+    wrong_log_coefficient = correct_log_coefficient + 1
+
+    def model_pair_derivative(n: int) -> Fraction:
+        return correct_log_coefficient / n + Fraction(5, n * n)
+
+    previous_correct_tail: Fraction | None = None
+    for start in (32, 128, 512):
+        correct_tail = dyadic_sum(
+            start,
+            lambda n: abs(model_pair_derivative(n) - correct_log_coefficient / n),
+        )
+        if correct_tail >= Fraction(5, start - 1):
+            raise AssertionError("correctly subtracted pair coefficient should leave an l1 tail")
+        if previous_correct_tail is not None and correct_tail >= previous_correct_tail:
+            raise AssertionError("correctly subtracted residual tails should decrease")
+        previous_correct_tail = correct_tail
+
+        wrong_tail = dyadic_sum(
+            start,
+            lambda n: abs(model_pair_derivative(n) - wrong_log_coefficient / n),
+        )
+        if wrong_tail <= Fraction(1, 2):
+            raise AssertionError("wrong Dollard coefficient should leave a nonintegrable dyadic tail")
+
+    # A compact same-flux dressing deformation changes the finite phase but
+    # not the logarithmic coefficient: its derivative is summable.
+    def compact_same_flux_derivative(n: int) -> Fraction:
+        return Fraction(7, n * n)
+
+    early_tail = dyadic_sum(
+        64,
+        lambda n: abs(
+            model_pair_derivative(n)
+            + compact_same_flux_derivative(n)
+            - correct_log_coefficient / n
+        ),
+    )
+    late_tail = dyadic_sum(
+        512,
+        lambda n: abs(
+            model_pair_derivative(n)
+            + compact_same_flux_derivative(n)
+            - correct_log_coefficient / n
+        ),
+    )
+    if not late_tail < early_tail:
+        raise AssertionError("same-flux compact deformation should not change the Dollard log coefficient")
+
+    assert_equal(
+        "equal velocities are outside the separated Dollard pair estimate",
+        catches_equal_velocity_error(),
+        True,
+    )
+
+
+def catches_equal_velocity_error() -> bool:
+    try:
+        many_body_dollard_log_coefficient_1d(
+            (Fraction(1), Fraction(2)),
+            (1, 1),
+            (Fraction(3), Fraction(3)),
+        )
+    except AssertionError:
+        return True
+    return False
+
+
 def check_truncation_schedule_tail_uniformity() -> None:
     """Check the finite tail arithmetic behind admissible dressing schedules."""
 
@@ -696,6 +772,7 @@ def main() -> None:
     check_coulomb_tail_dollard_log_phase()
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
+    check_pair_coefficient_residual_budget()
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()

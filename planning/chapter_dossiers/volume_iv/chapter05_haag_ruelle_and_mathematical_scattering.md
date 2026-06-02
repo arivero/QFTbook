@@ -360,3 +360,16 @@ resonances.
   the confining alternative as a spectral string-energy lower bound rather
   than as a vague high-energy trial-state expectation.  The companion
   charged-flux check verifies the finite arithmetic behind this boundary.
+- 2026-06-02 #527 coefficient-residual refinement: inserted an explicit
+  non-theorem paragraph identifying the QFT estimate that remains to be
+  proved.  For velocity-separated charged packet data, the theorem must
+  construct the flux-pairing coefficient
+  \(\kappa(\Gamma_i,\Gamma_j)\), a scalar pair kernel
+  \(K_{ij}^{\#\#}(t)\), and an operator residual
+  \(\mathcal R_{ij}^{\#\#}(t)\) satisfying an \(L^1\) scattering-domain
+  bound after the \(1/t\) Dollard term has been subtracted.  The text now
+  states that a wrong coefficient leaves a nonintegrable
+  \(\delta\kappa/(|u_{ij}|t)\) Cook tail, while compact same-flux dressing
+  changes contribute only \(L^1\) derivatives and finite comparison phases.
+  The charged-flux companion check now verifies this finite dyadic arithmetic
+  and the equal-velocity boundary.

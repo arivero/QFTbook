@@ -470,7 +470,12 @@ Current checks:
   intervals, the discrete Cook-tail distinction between an unsubtracted
   \(1/t\) derivative and an \(L^1\) residual, and the same-flux truncation
   schedule arithmetic needed for a noncompact Wilson-line tail to define a
-  uniform large-time asymptotic coordinate.  It also checks the finite
+  uniform large-time asymptotic coordinate.  It checks the pair-coefficient
+  residual budget: the correct logarithmic Dollard coefficient leaves an
+  \(L^1\) residual, a wrong coefficient leaves a nonintegrable dyadic
+  \(1/t\) tail, compact same-flux deformations alter only finite phases, and
+  equal velocities lie outside the separated-pair estimate.  It also checks
+  the finite
   spectral-measure arithmetic behind the nonconfining charged-sector
   boundary: common finite-energy windows, Markov's sufficient first-moment
   estimate, and linear string-energy escape beyond every fixed cutoff.

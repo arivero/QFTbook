@@ -1607,6 +1607,76 @@ nonintegrable.  The open QFT problem is precisely to derive the analogue of
 \(\kappa_{ij}\), and the \(L^1\) remainder after subtracting the resulting
 phase, from the noncompact Wilson-line or Coulomb-dressed charged creators.
 
+\paragraph{Coefficient and residual estimate to be proved.}
+The symbol \(\kappa_{ij}\) in the preceding comparison is not a free
+normalization.  A nonperturbative charged Haag--Ruelle theorem must construct
+it from the asymptotic Gauss-law tail of the chosen charged coordinates.
+For two velocity-separated packet data
+\((\Gamma_i,h_i)\), \((\Gamma_j,h_j)\), and for each choice of creator or
+adjoint signs \(\#\#\), the theorem must produce a scalar pair kernel
+\(K_{ij}^{\#\#}(t)\) and a residual operator
+\(\mathcal R_{ij}^{\#\#}(t)\) on the scattering domain.  Denote by
+\(\mathcal D_{ij}^{\#\#}(t)\) the pair component of the large-time exchange
+defect or Cook derivative in the chosen finite-regulator construction, and
+by \(\mathcal P_{ij}^{\#\#}(t)\) the corresponding ordered product with the
+other dressed factors held fixed.  The required decomposition is
+\begin{equation}
+  \mathcal D_{ij}^{\#\#}(t)\xi
+  =
+  \ii\,K_{ij}^{\#\#}(t)\,
+  \mathcal P_{ij}^{\#\#}(t)\xi
+  +
+  \mathcal R_{ij}^{\#\#}(t)\xi ,
+  \label{eq:charged-pair-coefficient-residual-estimate}
+\end{equation}
+with
+\begin{equation}
+  \int_{T_0}^{\infty}
+  \|\mathcal R_{ij}^{\#\#}(t)\xi\|\,\dd t<\infty
+  \qquad
+  \text{for every scattering-domain vector }\xi .
+  \label{eq:charged-pair-residual-l1}
+\end{equation}
+The leading part of \(K_{ij}^{\#\#}\) is fixed by a flux-pairing functional
+on the limiting tails:
+\begin{equation}
+  K_{ij}^{\#\#}(t)
+  =
+  \eta_i\eta_j
+  \frac{\kappa(\Gamma_i,\Gamma_j)}
+       {\sqrt{a_{ij}^2+|b_{ij}+u_{ij}t|^2}}
+  +
+  k_{ij}^{\#\#,\mathrm{rem}}(t),
+  \qquad
+  k_{ij}^{\#\#,\mathrm{rem}}\in L^1([T_0,\infty)).
+  \label{eq:charged-flux-pairing-kernel}
+\end{equation}
+Equivalently,
+\[
+  K_{ij}^{\#\#}(t)
+  -
+  \eta_i\eta_j
+  \frac{\kappa(\Gamma_i,\Gamma_j)}{|u_{ij}|\,t}
+  \in L^1([T_0,\infty)).
+\]
+In an elementary abelian Coulomb normalization the functional
+\(\kappa(\Gamma_i,\Gamma_j)\) reduces to the Coulomb constant times the
+product of the two scalar charges, after the velocity and angular-flux
+profiles defining \(\Gamma_i,\Gamma_j\) have been fixed.  In a more general
+nonconfining gauge sector it is a matrix element, or sector label, of the
+asymptotic flux pairing; it is part of the representation-theoretic charged
+sector, not a parameter chosen after the scattering estimate is known.
+
+This distinction is load-bearing.  Replacing \(\kappa\) by
+\(\kappa+\delta\kappa\) leaves an uncompensated
+\(\delta\kappa/(|u_{ij}|t)\) term in the Cook derivative, and this term is
+not \(L^1\).  By contrast, a compact same-flux dressing change can only add
+an \(L^1\) derivative to \(K_{ij}^{\#\#}\), hence changes the comparison phase
+by a finite limit and does not change the logarithmic coefficient.  Equal
+velocities are excluded from this pair estimate: when \(u_{ij}=0\), the pair
+must be treated as a charged cluster, threshold sector, or bound-state
+coordinate rather than as two separated Dollard legs.
+
 The many-body comparison datum has the same pairwise form.  For a
 velocity-separated list \(I\), write \(v_i\) for a velocity in the support of
 \(h_i\), \(u_{ij}=v_i-v_j\), and let \(\eta_i=+1\) for a charged creator and
