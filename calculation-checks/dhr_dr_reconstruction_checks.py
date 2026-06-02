@@ -457,6 +457,16 @@ def check_s3_regular_field_core() -> None:
 
     # Haar expectation over the right action keeps constants and kills all
     # nontrivial matrix coefficients.
+    def right_translate(values: tuple[Fraction, ...], h: tuple[int, int, int]) -> tuple[Fraction, ...]:
+        return tuple(values[group.index(compose_perm(g, h))] for g in group)
+
+    def haar_expectation(values: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
+        average = sum(values, Fraction(0)) / len(group)
+        return tuple(average for _ in group)
+
+    def pointwise_product(left: tuple[Fraction, ...], right: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
+        return tuple(x * y for x, y in zip(left, right))
+
     for g in group:
         standard_average = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
         sign_average = Fraction(0)
@@ -476,6 +486,30 @@ def check_s3_regular_field_core() -> None:
         assert_equal(f"S3 regular Haar standard 11 g={g}", standard_average[1][1], Fraction(0))
         assert_equal(f"S3 regular Haar sign g={g}", sign_average, Fraction(0))
         assert_equal(f"S3 regular Haar trivial g={g}", trivial_average / 6, Fraction(1))
+
+    # The same average is a conditional expectation onto constants: it is
+    # idempotent, invariant under the reconstructed group action, and a
+    # bimodule map over the fixed algebra.
+    sample = tuple(
+        matrices[g][0][0] + 2 * Fraction(permutation_sign(g)) + 3
+        for g in group
+    )
+    constant_left = tuple(Fraction(2) for _ in group)
+    constant_right = tuple(Fraction(-3) for _ in group)
+    expected = haar_expectation(sample)
+    assert_equal("S3 Haar expectation sample average", expected, tuple(Fraction(3) for _ in group))
+    assert_equal("S3 Haar expectation idempotent", haar_expectation(expected), expected)
+    for h in group:
+        assert_equal(
+            f"S3 Haar expectation right-action invariant h={h}",
+            haar_expectation(right_translate(sample, h)),
+            expected,
+        )
+    assert_equal(
+        "S3 Haar expectation fixed-algebra bimodule",
+        haar_expectation(pointwise_product(constant_left, pointwise_product(sample, constant_right))),
+        pointwise_product(constant_left, pointwise_product(expected, constant_right)),
+    )
 
     # The antisymmetric piece of V tensor V is the sign representation.
     for g in group:

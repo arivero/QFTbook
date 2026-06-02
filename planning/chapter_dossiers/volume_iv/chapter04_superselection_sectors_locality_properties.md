@@ -197,8 +197,10 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   and sends an arbitrary endomorphism to its scalar trace component.  It also
   verifies the
   \(S_3\) regular charged-coordinate core: right translation of matrix
-  coefficients, Haar expectation onto constants, and the exterior-square
-  sign representation.  The same finite \(S_3\) coefficient system checks
+  coefficients, Haar expectation onto constants, idempotence and
+  right-translation invariance of that expectation, its bimodule property
+  over the fixed constant algebra, and the exterior-square sign
+  representation.  The same finite \(S_3\) coefficient system checks
   the Peter--Weyl Hopf coordinate algebra: matrix coefficients span
   \(\operatorname{Fun}(S_3)\), the coproduct/counit/antipode identities hold
   pointwise, Haar is left and right invariant, and multiplication is
@@ -282,6 +284,12 @@ axioms to charge-sector structure and sharp-algebra diagnostics.
   conjugates close the core, why Haar expectation recovers the observable
   local algebra, and why the analytic completion/locality theorem remains the
   nontrivial field-algebra reconstruction boundary.
+- 2026-06-02 local DR expectation pass: expanded the local Haar-average
+  paragraph so \(E_{\mathcal O}\) is treated as a conditional expectation,
+  with idempotence, \(G\)-invariance, observable-bimodule property, and
+  positivity stated at the algebraic core before the \(C^*\)-completion
+  theorem boundary.  The finite \(S_3\) regular-field-core check now verifies
+  the corresponding exact expectation identities.
 - 2026-05-30 Bisognano--Wichmann proof-mechanism pass: added the Wightman
   polynomial-core/Tomita-operator setup, the complex-boost strip function,
   the spectral-condition tube input, the locality step at imaginary boost

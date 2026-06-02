@@ -86,8 +86,11 @@ Current checks:
   component.  It also checks the finite \(S_3\) regular
   charged-coordinate core: right translation rotates matrix-coefficient
   columns, Haar expectation kills the standard and sign multiplets while
-  preserving constants, \(\wedge^2 V\) gives the sign representation, and
-  every left-equivariant automorphism of \(\operatorname{Fun}(S_3)\) is a
+  preserving constants, and the same Haar expectation is idempotent,
+  invariant under right translation, and a bimodule map over the fixed
+  constant algebra.  It checks that \(\wedge^2 V\) gives the sign
+  representation, and every left-equivariant automorphism of
+  \(\operatorname{Fun}(S_3)\) is a
   right translation, giving the finite Tannakian converse.  The same \(S_3\)
   coefficient functions also check the finite Peter--Weyl Hopf coordinate
   algebra: coefficient functions span all functions on the group, the
