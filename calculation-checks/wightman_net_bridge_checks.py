@@ -198,6 +198,86 @@ def check_scalar_shift_does_not_change_generated_spectral_algebra() -> None:
         )
 
 
+def check_schwinger_observable_coordinate_reduction() -> None:
+    """Finite shadow of the Schwinger-model local observable-net reduction."""
+
+    # Two scalar local coordinates separate four diagonal atoms.  This is the
+    # finite analogue of saying that the massive scalar coordinates generate
+    # the local Weyl algebra after functional calculus.
+    phi_0_values = [Fraction(-1), Fraction(0), Fraction(2), Fraction(2)]
+    phi_1_values = [Fraction(0), Fraction(1), Fraction(-1), Fraction(3)]
+    scalar_pairs = list(zip(phi_0_values, phi_1_values))
+    if len(set(scalar_pairs)) != len(scalar_pairs):
+        raise AssertionError("scalar coordinates should separate the finite atoms")
+
+    identity4 = diagonal_matrix([Fraction(1)] * 4)
+    phi_0 = diagonal_matrix(phi_0_values)
+    phi_1 = diagonal_matrix(phi_1_values)
+
+    # E = a phi + c 1 with a nonzero.  Spectral projections are relabelled,
+    # not changed.  This is the exact finite version of the c-number theta
+    # shift and nonzero Schwinger mass coefficient in the local net.
+    charge = Fraction(3)
+    scale_factor = -charge
+    theta_shift = Fraction(5, 7)
+    electric_0_values = [scale_factor * value + theta_shift for value in phi_0_values]
+    for value in set(phi_0_values):
+        phi_projection = diagonal_spectral_projection(phi_0_values, value)
+        electric_projection = diagonal_spectral_projection(
+            electric_0_values,
+            scale_factor * value + theta_shift,
+        )
+        assert_eq_any(
+            electric_projection,
+            phi_projection,
+            "Schwinger electric coordinate relabels scalar spectral projections",
+        )
+
+    # Current smearings are derivative pullbacks of the same scalar
+    # coordinate.  In the finite shadow they are linear combinations of the
+    # scalar coordinates, hence stay in the diagonal observable algebra and
+    # commute with every scalar spectral projection.
+    current_0 = phi_1
+    current_1 = scale_any(Fraction(-1), phi_0)
+    for current in (current_0, current_1):
+        if any(entry != 0 for entry in off_diagonal_entries(current)):
+            raise AssertionError("Schwinger current coordinate should stay in the scalar observable algebra")
+        for value in set(phi_0_values):
+            projection = diagonal_spectral_projection(phi_0_values, value)
+            assert_eq_any(
+                comm_any(current, projection),
+                zero_matrix(4),
+                "Schwinger current coordinate commutes with scalar spectral projections",
+            )
+
+    # A finite Gauss-law relation: derivative(E) + e J^0 = 0.  The constants
+    # are modelled rationally; the point is that this is a relation among the
+    # same scalar coordinates, not a new local generator.
+    derivative_phi = phi_1
+    derivative_electric = scale_any(scale_factor, derivative_phi)
+    gauss_combination = add_any(derivative_electric, scale_any(charge, current_0))
+    assert_eq_any(gauss_combination, zero_matrix(4), "finite Schwinger Gauss-law coordinate relation")
+
+    # A sector-changing or line-dressed charged operator is not an element of
+    # the diagonal electric/current observable algebra in this local model.
+    line_shift: MatrixAny = (
+        (Fraction(0), Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(1), Fraction(0), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(0), Fraction(1)),
+        (Fraction(0), Fraction(0), Fraction(1), Fraction(0)),
+    )
+    if all(entry == 0 for entry in off_diagonal_entries(line_shift)):
+        raise AssertionError("line-dressed finite operator should be off diagonal")
+    if comm_any(line_shift, phi_0) == zero_matrix(4):
+        raise AssertionError("line-dressed finite operator should not commute with the electric coordinate")
+
+    # Closed flux functions, by contrast, are bounded functions of the same
+    # electric coordinate and hence remain diagonal.
+    closed_flux_function = add_any(scale_any(Fraction(2), identity4), scale_any(Fraction(-1), phi_0))
+    if any(entry != 0 for entry in off_diagonal_entries(closed_flux_function)):
+        raise AssertionError("closed flux function should stay inside the electric-field algebra")
+
+
 def check_finite_affiliation_commutant_criterion() -> None:
     """Finite shadow of affiliation through commutant invariance."""
 
@@ -337,6 +417,7 @@ def check_finite_generated_additivity_and_covariance() -> None:
 def main() -> None:
     check_finite_analytic_strong_locality_model()
     check_scalar_shift_does_not_change_generated_spectral_algebra()
+    check_schwinger_observable_coordinate_reduction()
     check_finite_affiliation_commutant_criterion()
     check_affiliation_does_not_imply_generation()
     check_finite_generated_additivity_and_covariance()

@@ -120,7 +120,13 @@ Current checks:
   spectral-projection algebra fact used in the Schwinger-model AQFT
   checkpoint: shifting a self-adjoint generator by a scalar relabels its
   spectral projections without changing the generated local von Neumann
-  algebra.  It also includes a finite analytic-vector strong-locality shadow:
+  algebra.  The Schwinger finite model also checks that affine electric-field
+  coordinates generate the same scalar spectral algebra, that current
+  coordinates are derivative pullbacks lying inside that algebra, that a
+  finite Gauss-law relation is a relation among those coordinates, and that a
+  line-dressed sector-changing operator is off diagonal rather than a local
+  electric/current observable.  It also includes a finite analytic-vector
+  strong-locality shadow:
   commuting finite self-adjoint generators have commuting spectral
   projections, and a finite affiliation diagnostic: spectral projections of a
   diagonal self-adjoint generator commute with the commutant of the diagonal

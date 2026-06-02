@@ -135,9 +135,13 @@ functorial QFT.
 - Adds the Schwinger-model gauge-theory checkpoint: the gauge-invariant
   electric-field sector is identified, using the exact local bosonization
   lemma from the Schwinger-model chapter, with the massive scalar Weyl net at
-  \(m_{\rm Sch}^2=e^2/\pi\), while gauge representatives, charged fermions,
-  Wilson lines, compact zero modes, and flux sectors are kept outside the
-  bounded local observable net unless additional sector data are supplied.
+  \(m_{\rm Sch}^2=e^2/\pi\).  The checkpoint displays the smeared electric
+  coordinate as a nonzero affine transform of the scalar coordinate, the
+  current smearings as derivative pullbacks of the same scalar coordinate,
+  and Gauss law as a relation among those coordinates.  Gauge
+  representatives, charged fermions, open Wilson lines, compact zero modes,
+  and flux sectors are kept outside the bounded local observable net unless
+  additional sector data are supplied.
 - Proves Lemma `lem:positive-energy-tube-uniqueness`, the local analytic
   input in Reeh--Schlieder: a finite positive-energy spectral measure gives a
   matrix coefficient holomorphic in \(M-\ii V_+\), and vanishing of its real
@@ -183,7 +187,11 @@ functorial QFT.
   generators have commuting spectral projections, and the finite
   spectral-projection fact used by the Schwinger checkpoint that shifting a
   self-adjoint local field by a scalar does not change the generated local
-  algebra.  It also checks the finite affiliation criterion separating a
+  algebra.  The Schwinger finite model now also verifies affine
+  electric-field coordinate reduction, derivative-current inclusion in the
+  same scalar algebra, a finite Gauss-law coordinate relation, and the
+  off-diagonal character of a line-dressed sector-changing operator.  It also
+  checks the finite affiliation criterion separating a
   diagonal self-adjoint generator affiliated with the diagonal algebra from an
   odd generator whose spectral projections fail the commutant test.  It also
   checks that a degenerate affiliated diagonal coordinate generates only a
@@ -238,6 +246,13 @@ functorial QFT.
   with the massive scalar Weyl net, and separated this bounded observable net
   from gauge representatives, charged fields, Wilson lines, and flux-sector
   data.
+- 2026-06-02 Schwinger AQFT mechanism pass: expanded the checkpoint so the
+  equality with the massive scalar Weyl net is shown through smeared
+  spectral-projection relabelling, current-smearing pullback to the scalar
+  coordinate, and the Gauss-law relation.  The finite companion check now
+  distinguishes closed flux functions inside the electric-field algebra from
+  open line-dressed sector-changing operators outside the local observable
+  algebra.
 - 2026-06-01 affiliation criterion pass: expanded the operator-affiliation
   definition with the proof that spectral projections in `M` are equivalent
   to graph preservation and domain commutation by `M'` unitaries, and added a
