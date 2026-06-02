@@ -565,10 +565,12 @@ Current checks:
   dyadic block arithmetic proving logarithmic growth of the two-loop
   coordinate \(C_2\), the bounded dyadic shell increment for \(C_2\), and
   the two-loop sunset sector gaps plus nested forest cancellation and the
-  finite negative-sector coordinate chart, including the scale-summed
-  coordinate supremum arithmetic and the seven-coordinate constants in the
-  negative-sector model convergence criterion, plus the physical-parameter
-  entropy exponents after the test-function supremum has been dualized, and
+	  finite negative-sector coordinate chart, including the scale-summed
+	  coordinate supremum arithmetic, the shell-separated cutoff summation that
+	  converts \(2^{-\rho(n-m)_+}\) into a scale-summed \(2^{-\rho_*n}\) rate
+	  when slack beats entropy, and the seven-coordinate constants in the
+	  negative-sector model convergence criterion, plus the physical-parameter
+	  entropy exponents after the test-function supremum has been dualized, and
   the projective-tensor arithmetic in the dual-norm finite-chaos estimate and
   the kernel-to-projective-norm criterion, plus the Gaussian-coordinate scale
   slack for \(\Xi,X,X^2,X^3\) and the wavelet \(H^{-s}\)-summability

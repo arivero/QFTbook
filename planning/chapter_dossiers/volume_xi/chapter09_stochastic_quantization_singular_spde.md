@@ -164,8 +164,11 @@ data.
 - `C_0`, `C_1`, `d`, `epsilon`: base-net size, edge entropy constant,
   entropy exponent, and excess moment-decay exponent in the dyadic-net
   supremum theorem.
-- `m`, `D`, `sigma`: physical testing-scale index, scale-entropy exponent,
-  and regularity slack in the scale-summed coordinate supremum theorem.
+- `m`, `D`, `sigma`, `rho_*`: physical testing-scale index,
+  scale-entropy exponent, regularity slack, and the strict cutoff-Cauchy rate
+  retained after summing a shell-separated factor \(2^{-\rho(n-m)_+}\).
+- `H_{rho_*,rho,a}`: deterministic summation constant in the
+  shell-separated cutoff bridge, with \(a=\sigma-D/p\).
 - `I`, `U_{n,i}`, `V_{n,i}`, `A_ctrl`: finite coordinate index set,
   uniform coordinate fields, cutoff-increment coordinate fields, and the
   deterministic constant controlling model seminorms and distances by
@@ -630,12 +633,16 @@ data.
   \(d_{\Pi,m}\), gives the same-scale parameter-edge bound
   \(O(2^{-(4\kappa-\zeta_{XY})m}d_{\Pi,m}(u,v)^\theta)\) after model
   normalization.  A cutoff-shell version shows that, when one heat or
-  covariance edge is forced into the dyadic ultraviolet shell \(n\), the
-  smallest proper-subgraph deficit gives the scalar Cauchy gain
-  \(2^{-\rho(n-m)_+}\) for every \(0<\rho<1/2\).  The dossier records these
-  as scalar tested base, edge, and scale-separated shell-gain estimates; the
-  full \(E_r'\)-projective cutoff-Cauchy estimate with a uniform
-  \(2^{-\rho n}\) factor remains a separate proof obligation.
+	  covariance edge is forced into the dyadic ultraviolet shell \(n\), the
+	  smallest proper-subgraph deficit gives the scalar Cauchy gain
+	  \(2^{-\rho(n-m)_+}\) for every \(0<\rho<1/2\).  The scale-summed
+	  shell-separated cutoff bridge then turns this scalar gain into
+	  \(2^{-\rho_*n}\) for every
+	  \(\rho_*<\min\{\rho,\sigma-D/p\}\), provided the physical-scale slack
+	  beats entropy.  The dossier records these as scalar tested base, edge,
+	  scale-separated shell-gain, and scale-summed shell-bridge estimates; the
+	  full \(E_r'\)-projective cutoff-Cauchy estimate remains a separate
+	  projective-kernel proof obligation.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -667,6 +674,13 @@ data.
   coordinate has regularity slack \(2^{-\sigma m}\), the supremum over all
   scales is \(L^p\)-controlled if \(\sigma>D/p\).  The proof applies the
   dyadic-net theorem at each scale and sums the resulting geometric series.
+- Proves a scale-summed shell-separated cutoff bridge: if the cutoff increment
+  carries \(2^{-\rho(n-m)_+}\) rather than a uniform \(2^{-\rho n}\), then
+  the scale supremum still has a dyadic cutoff-Cauchy rate
+  \(2^{-\rho_*n}\) for every
+  \(0<\rho_*<\min\{\rho,\sigma-D/p\}\).  The proof splits the physical-scale
+  sum at \(m=n\) and bounds the lower-scale part by a convolution of two
+  geometric sequences with exponents \(a-\rho_*\) and \(\rho-\rho_*\).
 - Proves a coordinate-to-model convergence criterion: if finitely many
   compact coordinate suprema dominate the finite-sector model seminorm and
   model distance, and if each coordinate satisfies the dyadic-net moment and
@@ -1102,10 +1116,18 @@ data maps.
   ultraviolet shell, and converts the minimum proper-subgraph deficit \(1\)
   into the normalized Cauchy factor
   \(2^{-(4\kappa-\zeta_{XY})m}2^{-\rho(n-m)_+}\) for every
-  \(0<\rho<1/2\).  The remark in the chapter explicitly prevents overclaim:
-  this is a scalar scale-separated Cauchy layer, not the full
-  \(E_r'\)-projective cutoff increment required by the model-convergence
-  theorem.
+	  \(0<\rho<1/2\).  The remark in the chapter explicitly prevents overclaim:
+	  this is a scalar scale-separated Cauchy layer, not the full
+	  \(E_r'\)-projective cutoff increment required by the model-convergence
+	  theorem.
+- 2026-06-01 issue #608/#582 shell-summation bridge pass: added the
+  deterministic scale-summed shell-separated cutoff corollary.  It proves that
+  scalar cutoff factors \(2^{-\rho(n-m)_+}\) produce an actual scale-summed
+  cutoff-Cauchy rate \(2^{-\rho_*n}\) once
+  \(0<\rho_*<\min\{\rho,\sigma-D/p\}\), with the constant
+  \(H_{\rho_*,\rho,a}\) explicitly defined and bounded.  The calculation
+  companion now checks the split \(m\le n\), the high-scale tail, and the
+  exact dyadic sample \(S_5=221/98304\).
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

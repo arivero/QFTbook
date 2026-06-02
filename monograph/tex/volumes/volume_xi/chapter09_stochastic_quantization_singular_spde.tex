@@ -6773,6 +6773,132 @@ The geometric series in \(m\) converges exactly under
 follows by carrying the factor \(2^{-\rho n}\) through the same inequalities.
 \end{proof}
 
+\begin{corollary}[Shell-separated cutoff bridge]
+\label{cor:spde-scale-summed-shell-separated-cutoff-bridge}
+Use the entropy data of
+Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade}.  Thus, for every
+\(m\), the compact space \(\mathcal X_m\) is equipped with finite nets
+\(\mathcal X_{m,\ell}\), edge sets \(\mathcal E_{m,\ell}\), and entropy
+constants \(C_0,C_1,D,d\) satisfying \eqref{eq:spde-scale-net-entropy}.  Let
+\[
+  Y_{n,m}:\mathcal X_m\to L^p(\Omega),
+  \qquad n,m\geq0,
+\]
+have almost surely continuous sample paths.  Suppose that, for constants
+\(B_0,B,\sigma,\varepsilon,\rho>0\),
+\begin{equation}
+  \mathbb E|Y_{n,m}(u)|^p
+  \leq
+  B_0^p2^{-p\sigma m}2^{-p\rho(n-m)_+}
+  \quad(u\in\mathcal X_{m,0})
+  \label{eq:spde-scale-shell-base-moment}
+\end{equation}
+and
+\begin{equation}
+  \mathbb E|Y_{n,m}(v)-Y_{n,m}(u)|^p
+  \leq
+  B^p2^{-p\sigma m}2^{-p\rho(n-m)_+}2^{-(d+\varepsilon)\ell}
+  \quad((u,v)\in\mathcal E_{m,\ell}).
+  \label{eq:spde-scale-shell-edge-moment}
+\end{equation}
+Assume
+\[
+  a:=\sigma-\frac{D}{p}>0
+\]
+and choose
+\[
+  0<\rho_*<\min\{\rho,a\}.
+\]
+Define
+\begin{equation}
+  H_{\rho_*,\rho,a}
+  :=
+  \sup_{n\geq0}
+  2^{\rho_* n}
+  \sum_{m\geq0}2^{-a m}2^{-\rho(n-m)_+}.
+  \label{eq:spde-scale-shell-bridge-constant}
+\end{equation}
+Then \(H_{\rho_*,\rho,a}<\infty\), and
+\begin{equation}
+  \left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_m}|Y_{n,m}(x)|
+  \right\|_{L^p(\Omega)}
+  \leq
+  H_{\rho_*,\rho,a}
+  \left(
+    C_0^{1/p}B_0+
+    C_1^{1/p}B(1-2^{-\varepsilon/p})^{-1}
+  \right)
+  2^{-\rho_* n}.
+  \label{eq:spde-scale-shell-summed-cutoff-bound}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+For fixed \(n,m\), apply
+Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to \(\mathcal X_m\) with
+the base and edge constants multiplied by
+\[
+  2^{-\sigma m}2^{-\rho(n-m)_+}.
+\]
+The entropy factor \(2^{Dm}\) is taken to the \(p\)-th root, so
+\[
+  \left\|
+    \sup_{x\in\mathcal X_m}|Y_{n,m}(x)|
+  \right\|_{L^p}
+  \leq
+  \left(
+    C_0^{1/p}B_0+
+    C_1^{1/p}B(1-2^{-\varepsilon/p})^{-1}
+  \right)
+  2^{-a m}2^{-\rho(n-m)_+}.
+\]
+The \(L^p\) triangle inequality over \(m\) gives the same constant times
+\[
+  S_n:=\sum_{m\geq0}2^{-a m}2^{-\rho(n-m)_+}.
+\]
+It remains to prove that \(S_n\leq H_{\rho_*,\rho,a}2^{-\rho_* n}\) with a
+finite \(H_{\rho_*,\rho,a}\).
+
+Split the sum at \(m=n\).  For \(0\leq m\leq n\),
+\[
+\begin{aligned}
+  2^{-a m}2^{-\rho(n-m)}
+  &=
+  2^{-\rho_* n}
+  2^{-(a-\rho_*)m}
+  2^{-(\rho-\rho_*)(n-m)} .
+\end{aligned}
+\]
+Both \(a-\rho_*\) and \(\rho-\rho_*\) are positive.  Therefore
+\[
+  \sum_{m=0}^{n}2^{-a m}2^{-\rho(n-m)}
+  \leq
+  2^{-\rho_* n}
+  \frac{1}{1-2^{-(a-\rho_*)}}
+  \frac{1}{1-2^{-(\rho-\rho_*)}} .
+\]
+For \(m>n\),
+\[
+  \sum_{m>n}2^{-a m}
+  =
+  2^{-a(n+1)}(1-2^{-a})^{-1}
+  \leq
+  2^{-\rho_* n}
+  \frac{2^{-a}}{1-2^{-a}},
+\]
+because \(a>\rho_*\).  These two estimates prove
+\[
+  H_{\rho_*,\rho,a}
+  \leq
+  \frac{1}{(1-2^{-(a-\rho_*)})(1-2^{-(\rho-\rho_*)})}
+  +
+  \frac{2^{-a}}{1-2^{-a}}
+  <\infty,
+\]
+and hence \eqref{eq:spde-scale-shell-summed-cutoff-bound}.
+\end{proof}
+
 The parameter \(m\) in
 Corollary~\ref{cor:spde-scale-summed-coordinate-upgrade} is the physical
 testing scale, \(\delta\simeq2^{-m}\), in a model seminorm.  The exponent
@@ -6782,6 +6908,14 @@ assigned homogeneity and the moment regularity proved for the stochastic
 coordinate.  Thus the condition \(\sigma>D/p\) is the precise high-moment
 requirement: by choosing \(p\) large enough, a positive regularity slack
 beats the scale entropy.
+Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} is the
+corresponding cutoff-Cauchy bridge for estimates whose ultraviolet gain is
+visible only after comparing the cutoff shell with the physical testing scale.
+It is the deterministic step used by scalar shell bounds such as
+\eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized}: the factor
+\(2^{-\rho(n-m)_+}\) becomes a summable \(2^{-\rho_*n}\) cutoff rate whenever
+the physical-scale slack \(a=\sigma-D/p\) and the shell gain \(\rho\) are both
+positive.
 
 \begin{hypothesis}[Finite-sector coordinate data]
 \label{hyp:spde-finite-sector-coordinate-control-data}
@@ -9126,17 +9260,21 @@ therefore bounds its \(L^p\)-norm by a constant times the square root of
 \eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized}.
 \end{proof}
 
-\begin{remark}[Scalar shell gain and projective cutoff debt]
+\begin{remark}[Scalar shell gain and projective cutoff input]
 \label{rem:spde-xy-scalar-shell-versus-projective-cutoff}
 Estimate~\eqref{eq:spde-xy-tested-coordinate-cutoff-shell-normalized} is a
 scale-separated scalar Cauchy estimate.  It identifies where the ultraviolet
-shell gain enters the \(XY\) graph analysis.  The projective
+shell gain enters the \(XY\) graph analysis.
+Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge} then
+converts this scalar factor into a scale-summed cutoff rate whenever the
+normalization slack exceeds the parameter entropy.  The projective
 cutoff-increment hypothesis
 \eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-base} asks for a
 uniform factor \(2^{-\rho n}\) in the full \(E_r'\)-dualized kernel norm.
-Closing the \(\Phi^4_3\) model-convergence theorem still requires the
-dualized cutoff-increment estimate and its parameter-edge version in
-addition to the scalar bound proved here.
+The scalar estimate gives the finite-coordinate shell mechanism; the
+dualized cutoff-increment estimate and its parameter-edge version supply the
+corresponding projective-kernel input needed by the \(\Phi^4_3\)
+model-convergence theorem.
 \end{remark}
 
 \begin{proposition}[Nonlinear \(\Pi\)-coordinate input from projective kernel bounds]

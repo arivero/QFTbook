@@ -1220,6 +1220,60 @@ def check_scale_summed_coordinate_upgrade_arithmetic():
     assert_equal(cutoff_total, Fraction(27, 32), "scale-summed cutoff factor")
 
 
+def check_scale_summed_shell_separated_cutoff_arithmetic():
+    # Shell-separated cutoff bridge: a scalar estimate with
+    # 2^(-rho (n-m)_+) still gives a scale-summed cutoff Cauchy rate
+    # 2^(-rho_* n) whenever rho_* is below both the shell gain rho and the
+    # physical-scale slack a=sigma-D/p.  Use integer exponents so the full
+    # summation check is exact.
+    p = 4
+    d_big = 4
+    sigma = 3
+    a = Fraction(sigma) - Fraction(d_big, p)
+    rho = 3
+    rho_star = 1
+    n = 5
+    assert_equal(a, 2, "shell-separated scale slack")
+    if not rho_star < min(rho, a):
+        raise AssertionError("shell-separated rho_star must be strictly below rho and slack")
+
+    def dyadic_minus(exponent):
+        exponent = Fraction(exponent)
+        if exponent.denominator != 1:
+            raise AssertionError(f"nonintegral dyadic exponent in exact shell check: {exponent}")
+        return Fraction(1, 2) ** exponent.numerator
+
+    m_sample = 2
+    left = dyadic_minus(a * m_sample + rho * (n - m_sample))
+    right = (
+        dyadic_minus(rho_star * n)
+        * dyadic_minus((a - rho_star) * m_sample)
+        * dyadic_minus((rho - rho_star) * (n - m_sample))
+    )
+    assert_equal(left, right, "shell-separated bridge identity")
+
+    first = sum(
+        dyadic_minus(a * m + rho * (n - m))
+        for m in range(n + 1)
+    )
+    tail = dyadic_minus(a * (n + 1)) / (1 - dyadic_minus(a))
+    total = first + tail
+    scaled_total = total * (2 ** (rho_star * n))
+    h_bound = (
+        1
+        / ((1 - dyadic_minus(a - rho_star)) * (1 - dyadic_minus(rho - rho_star)))
+        + dyadic_minus(a) / (1 - dyadic_minus(a))
+    )
+
+    assert_equal(first, Fraction(63, 32768), "shell-separated bridge lower-scale sum")
+    assert_equal(tail, Fraction(1, 3072), "shell-separated bridge high-scale tail")
+    assert_equal(total, Fraction(221, 98304), "shell-separated bridge total")
+    assert_equal(scaled_total, Fraction(221, 3072), "shell-separated bridge scaled total")
+    assert_equal(h_bound, 3, "shell-separated bridge H bound")
+    if not scaled_total < h_bound:
+        raise AssertionError("shell-separated scaled sum exceeds the H bound")
+
+
 def check_negative_sector_scale_summed_model_convergence_arithmetic():
     # The strict negative Phi^4_3 sector is controlled by six Pi-coordinates and
     # one Gamma coordinate.  In the sample below every coordinate has the same
@@ -1854,6 +1908,7 @@ def main():
     check_parabolic_taylor_subtraction_gain_arithmetic()
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_scale_summed_coordinate_upgrade_arithmetic()
+    check_scale_summed_shell_separated_cutoff_arithmetic()
     check_negative_sector_scale_summed_model_convergence_arithmetic()
     check_negative_sector_physical_parameter_entropy_arithmetic()
     check_gaussian_negative_pi_coordinate_input_arithmetic()
@@ -1873,7 +1928,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
