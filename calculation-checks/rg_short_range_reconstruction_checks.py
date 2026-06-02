@@ -32,6 +32,11 @@ connected-observable bound.
 The localization checks verify the finite Taylor-remainder arithmetic and
 canonical local-monomial scaling exponents used to decide whether an omitted
 coordinate has an actual irrelevant gain.
+The local-coordinate extraction-budget check verifies the finite arithmetic
+behind biorthogonal local coordinates: the condition number amplifies
+finite-step errors, retained-coordinate increments are bounded separately
+from the irrelevant tail, and an uncontrolled coordinate condition number is
+detected.
 The large-field regulator check verifies the exact determinant and exponent
 bookkeeping for finite Gaussian stability of a quadratic regulator under
 fluctuation integration.
@@ -1706,6 +1711,71 @@ def check_localization_scaling_exponents():
     assert_true("D3 omitted phi6 is not canonically contractive", first_omitted_gap_d3_if_phi6_omitted <= 0)
 
 
+def check_local_coordinate_extraction_budget():
+    basis_norms = [Fraction(3), Fraction(5)]
+    functional_norms = [Fraction(2), Fraction(7)]
+    condition_number = sum(
+        basis_norm * functional_norm
+        for basis_norm, functional_norm in zip(basis_norms, functional_norms)
+    )
+    assert_equal("local-coordinate extraction condition number", condition_number, Fraction(41))
+
+    raw_finite_step_error = Fraction(1, 200)
+    projected_error_bound = condition_number * raw_finite_step_error
+    assert_equal(
+        "local-coordinate projected error amplification",
+        projected_error_bound,
+        Fraction(41, 200),
+    )
+
+    tail_norm = Fraction(1, 20)
+    coord_linear = [Fraction(1, 3), Fraction(1, 4)]
+    coord_quadratic = [Fraction(5), Fraction(4)]
+    coord_defect = [Fraction(1, 1000), Fraction(1, 1200)]
+    coord_bounds = [
+        linear * tail_norm + quadratic * tail_norm**2 + defect
+        for linear, quadratic, defect in zip(coord_linear, coord_quadratic, coord_defect)
+    ]
+    assert_equal("first local-coordinate increment budget", coord_bounds[0], Fraction(181, 6000))
+    assert_equal("second local-coordinate increment budget", coord_bounds[1], Fraction(7, 300))
+
+    actual_coordinate_increments = [Fraction(1, 40), Fraction(1, 50)]
+    assert_true(
+        "first retained-coordinate increment controlled",
+        abs(actual_coordinate_increments[0]) <= coord_bounds[0],
+    )
+    assert_true(
+        "second retained-coordinate increment controlled",
+        abs(actual_coordinate_increments[1]) <= coord_bounds[1],
+    )
+
+    irrelevant_linear_gain = Fraction(2, 5)
+    irrelevant_quadratic = Fraction(3, 2)
+    irrelevant_defect = Fraction(1, 300)
+    irrelevant_bound = (
+        irrelevant_linear_gain * tail_norm
+        + irrelevant_quadratic * tail_norm**2
+        + irrelevant_defect
+    )
+    assert_equal("irrelevant extraction tail budget", irrelevant_bound, Fraction(13, 480))
+
+    actual_irrelevant_tail = Fraction(1, 40)
+    assert_true(
+        "irrelevant extraction budget controls tail",
+        actual_irrelevant_tail <= irrelevant_bound,
+    )
+
+    uncontrolled_functional_norms = [Fraction(200), Fraction(300)]
+    bad_condition_number = sum(
+        basis_norm * functional_norm
+        for basis_norm, functional_norm in zip(basis_norms, uncontrolled_functional_norms)
+    )
+    assert_true(
+        "uncontrolled local-coordinate condition number detected",
+        bad_condition_number * raw_finite_step_error > 1,
+    )
+
+
 def check_large_field_gaussian_regulator_bound():
     # Diagonal finite covariance with eigenvalues 1/3 and 1/5, regulator
     # coefficient kappa=1/4, and background field (2,-3).  The exact
@@ -2461,6 +2531,7 @@ def main():
     check_covariance_tail_bridge_estimate()
     check_localization_taylor_remainder_bound()
     check_localization_scaling_exponents()
+    check_local_coordinate_extraction_budget()
     check_large_field_gaussian_regulator_bound()
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()

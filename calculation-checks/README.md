@@ -798,6 +798,11 @@ Current checks:
   and the canonical
   local-monomial scaling exponents, including the fact that a \(D=3\)
   canonical scalar \(\phi^6\) coordinate has no engineering irrelevant gain.
+  It also checks the local-coordinate extraction budget: biorthogonal
+  coordinate functionals have a condition number in the polymer norm,
+  finite-step errors are amplified by that condition number, retained
+  coordinate increments are bounded separately from the irrelevant remainder,
+  and an uncontrolled coordinate condition number is detected.
   It also checks the finite Gaussian stability identity for a quadratic
   large-field regulator, including the determinant prefactor, the exact
   exponent, and the spectral-bound exponent enlargement needed after

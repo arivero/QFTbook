@@ -1167,6 +1167,89 @@ fixed-point proof may replace the canonical monomial coordinate list by scaling-
 coordinates, but that replacement is itself part of the model-specific RG
 theorem.
 
+\begin{definition}[Local-coordinate extraction budget]
+\label{def:rg-local-coordinate-extraction-budget}
+At scale \(k\), let \(E_{{\rm loc},k}\) be the finite-dimensional local
+coordinate space retained by the RG chart.  A local-coordinate extraction
+datum consists of local basis elements
+\[
+  M_{a,k}\in E_{{\rm loc},k},\qquad a\in A_k,
+\]
+and continuous coordinate functionals
+\[
+  \ell_{a,k}:E_{{\rm loc},k}+\mathcal K_k\longrightarrow\mathbb R
+\]
+such that
+\begin{equation}
+  \ell_{a,k}(M_{b,k})=\delta_{ab}.
+  \label{eq:rg-local-biorthogonal-coordinate-system}
+\end{equation}
+The localization operator is
+\[
+  \mathcal L_kF=\sum_{a\in A_k}\ell_{a,k}(F)\,M_{a,k}.
+\]
+The condition number of this coordinate extraction in the polymer norm is
+the finite quantity
+\begin{equation}
+  \chi_k
+  =
+  \sum_{a\in A_k}
+  \|\ell_{a,k}\|_{\mathcal K_k'}\,\|M_{a,k}\|_{\mathcal K_k}.
+  \label{eq:rg-local-coordinate-condition-number}
+\end{equation}
+A uniform RG theorem must bound \(\chi_k\) on the scale range on which the
+coordinate chart is used.
+
+Let \(\mathcal A_k\) denote one exact finite-regulator fluctuation step,
+including rescaling and reblocking, before the localization projection is
+applied.  After the purely local part of the input has been propagated by
+the declared finite-dimensional local map \(\mathcal M_k\), write the
+remaining one-step contribution as \(F_k(g_k,K_k)\).  The local-coordinate
+extraction budget is the pair of estimates
+\begin{equation}
+  \left|
+    \ell_{a,k+1}\!\left(F_k(g_k,K_k)\right)
+  \right|
+  \le
+  C^{(1)}_{a,k}\|K_k\|_{\mathcal K_k}
+  +C^{(2)}_{a,k}\|K_k\|_{\mathcal K_k}^{2}
+  +\varepsilon^g_{a,k},
+  \label{eq:rg-local-coordinate-increment-budget}
+\end{equation}
+and
+\begin{equation}
+  \left\|
+    (1-\mathcal L_{k+1})F_k(g_k,K_k)
+  \right\|_{\mathcal K_{k+1}}
+  \le
+  A_{{\rm irr},k}L^{-\alpha_k}\|K_k\|_{\mathcal K_k}
+  +B_{{\rm rem},k}\|K_k\|_{\mathcal K_k}^{2}
+  +\varepsilon^K_k .
+  \label{eq:rg-irrelevant-extraction-budget}
+\end{equation}
+\end{definition}
+
+The budget separates two tasks that are often conflated.  Equation
+\eqref{eq:rg-local-coordinate-increment-budget} says how fluctuation
+integration and the polymer tail change the retained relevant or marginal
+coordinates.  Equation~\eqref{eq:rg-irrelevant-extraction-budget} says how
+the omitted part becomes a controlled irrelevant activity.  The first
+estimate feeds the finite-dimensional tuning equations; the second feeds the
+polymer contraction recursion.  The constants are not formal labels: in a
+model proof they must be obtained from the finite-range or summable
+covariance bounds, the Taylor-localization derivative norms, the large-field
+regulator stability, and the finite polymer-overlap estimates.
+
+The condition number \(\chi_k\) is part of the same theorem.  A basis of
+formal monomials and a list of coordinate functionals do not define a stable
+RG chart if the functionals become large in the polymer norm.  In that case
+small errors in the exact finite-regulator step may produce uncontrolled
+local-coordinate errors after projection.  Changing the retained coordinate
+basis is harmless only when the corresponding change-of-basis maps and their
+inverses are uniformly bounded in the norms used for
+\eqref{eq:rg-local-coordinate-increment-budget} and
+\eqref{eq:rg-irrelevant-extraction-budget}.
+
 \begin{lemma}[Finite Gaussian stability of a quadratic large-field regulator]
 \label{lem:finite-gaussian-large-field-regulator-stability}
 Let \(E\) be a finite-dimensional real Hilbert space, let

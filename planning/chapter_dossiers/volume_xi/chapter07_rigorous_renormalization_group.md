@@ -101,6 +101,14 @@ constructive RG developments.
 - `nu`, `m`, `Delta_phi`, `y_{nu,m}`: number of fields, number of lattice
   differences, field scaling dimension, and canonical local-monomial
   exponent \(D-\nu\Delta_\phi-m\).
+- `M_{a,k}`, `ell_{a,k}`, `chi_k`: retained local-coordinate basis,
+  biorthogonal coordinate functionals, and the condition number of the
+  local-coordinate extraction map in the polymer norm.
+- `F_k(g_k,K_k)`, `C^{(1)}_{a,k}`, `C^{(2)}_{a,k}`,
+  `epsilon^g_{a,k}`, `B_rem,k`, `epsilon^K_k`: one-step remainder after
+  propagating the purely local coordinates, retained-coordinate increment
+  constants, and irrelevant-tail extraction constants in the
+  local-coordinate extraction budget.
 - `Gamma`, `kappa`, `C_Gamma(kappa)`: finite Gaussian fluctuation
   covariance, quadratic large-field regulator coefficient, and determinant
   prefactor controlling regulator stability under fluctuation integration.
@@ -326,6 +334,14 @@ constructive RG developments.
   first omitted exponent has a positive gap; in canonical \(D=3\) scalar
   bookkeeping \(\phi^6\) is marginal, so it cannot be discarded on
   engineering scaling alone.
+- Defines the local-coordinate extraction budget for a polymer RG chart:
+  retained local basis elements \(M_{a,k}\), biorthogonal coordinate
+  functionals \(\ell_{a,k}\), the condition number \(\chi_k\), separate
+  bounds for retained-coordinate increments, and a separate irrelevant-tail
+  estimate.  The chapter states this as proof data rather than as a theorem:
+  model-specific work must bound the coordinate functionals and extraction
+  constants from covariance, Taylor, large-field, and polymer-overlap
+  estimates.
 - Proves finite Gaussian stability of a quadratic large-field regulator:
   after fluctuation integration the exact determinant prefactor is
   \(C_\Gamma(\kappa)=\det(1-2\kappa\Gamma)^{-1/2}\), and the regulator
@@ -565,6 +581,15 @@ remainder contraction.
   coordinate part of the proof data: the companion short-range RG check now
   verifies the finite Taylor bound and the \(D=4\) versus \(D=3\) scalar
   exponent comparison, including the \(D=3\) \(\phi^6\) marginal caveat.
+- 2026-06-02 local-coordinate extraction-budget pass: inserted the missing
+  biorthogonal-coordinate interface between Taylor localization and the
+  polymer contraction estimate.  The manuscript now records the coordinate
+  condition number, retained-coordinate increment budget, and irrelevant-tail
+  extraction budget as theorem data.  The companion short-range RG check
+  verifies exact rational examples of condition-number amplification,
+  controlled coordinate increments, irrelevant-tail bounds, and the failure
+  caused by unbounded coordinate functionals.  This narrows #505 without
+  claiming the ordinary short-range scalar fixed point has been constructed.
 - 2026-06-02 large-field Gaussian regulator pass: added the exact finite
   Gaussian estimate controlling quadratic large-field regulators under
   fluctuation integration.  The chapter now displays the determinant factor,
