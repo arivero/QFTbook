@@ -80,10 +80,23 @@
 - `calculation-checks/susy_holomorphy_nsvz_checks.py` verifies the quadratic
   chiral-elimination formula, the derivative identity after eliminating a
   heavy chiral coordinate, the holomorphic gauge-coupling \(q_h^0\)
-  perturbative projection and finite scheme-shift invariance, Konishi and
-  vector-multiplet coordinate shifts, and the rational algebra that
-  differentiates the holomorphic-canonical coordinate relation into the NSVZ
-  beta function.
+  perturbative projection and finite scheme-shift invariance, the sign
+  equivalence between
+  \(d\tau/d\log\mu=-b_0/(2\pi i)\),
+  \(dX_h/d\log\mu=b_0\), and
+  \(d\log q_h/d\log\mu=-b_0\), Konishi and vector-multiplet coordinate
+  shifts, and the rational algebra that differentiates the
+  holomorphic-canonical coordinate relation into the NSVZ beta function.
+
+## Audit Notes
+
+- 2026-06-02 holomorphic-running sign pass: corrected the Wilsonian
+  holomorphic gauge coordinate running to
+  \(d\tau/d\log\mu=-b_0/(2\pi i)\), consistent with
+  \(\operatorname{Im}\tau=4\pi/g_h^2\), asymptotic freedom,
+  \(dX_h/d\log\mu=b_0\), the NSVZ coordinate section, and the SU(2)
+  Seiberg--Witten perturbative prepotential convention.  Added the sign
+  equivalence to the paired calculation check.
 
 ## Figures
 

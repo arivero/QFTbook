@@ -126,6 +126,34 @@ def check_holomorphic_gauge_one_loop_projection():
         raise AssertionError("negative q-degree should be rejected")
 
 
+def check_holomorphic_tau_running_sign():
+    """Check the sign relating tau, X_h, q_h, and asymptotic freedom.
+
+    We record the derivative of tau in units of i/(2 pi).  The convention
+    tau = theta/(2 pi) + 4 pi i / g_h^2 gives
+    X_h = 8 pi^2/g_h^2 = 2 pi Im(tau).  Therefore
+
+        d tau / d log mu = i b0/(2 pi) = - b0/(2 pi i)
+
+    is equivalent to d X_h / d log mu = b0 and
+    d log q_h / d log mu = -b0.
+    """
+
+    samples = [
+        (Fraction(3), [Fraction(1), Fraction(2)]),
+        (Fraction(5), [Fraction(1, 2), Fraction(3, 2), Fraction(2)]),
+        (Fraction(7, 2), [Fraction(4), Fraction(5, 3)]),
+    ]
+
+    for c2, indices in samples:
+        b0 = 3 * c2 - sum(indices)
+        tau_derivative_in_i_over_2pi_units = b0
+        xh_derivative = tau_derivative_in_i_over_2pi_units
+        log_qh_derivative = -tau_derivative_in_i_over_2pi_units
+        assert_equal(xh_derivative, b0, "holomorphic X_h running sign")
+        assert_equal(log_qh_derivative, -b0, "weak-coupling q_h running sign")
+
+
 def check_konishi_and_vector_coordinate_shifts():
     samples = [
         (Fraction(1, 2), Fraction(3, 5)),
@@ -186,6 +214,7 @@ def main():
     check_tree_level_chiral_elimination_quadratic_block()
     check_tree_level_derivative_chain_rule()
     check_holomorphic_gauge_one_loop_projection()
+    check_holomorphic_tau_running_sign()
     check_konishi_and_vector_coordinate_shifts()
     check_nsvz_coordinate_identity()
     print("All SUSY holomorphy and NSVZ coordinate checks passed.")

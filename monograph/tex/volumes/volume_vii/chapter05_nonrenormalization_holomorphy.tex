@@ -213,7 +213,7 @@ Then the perturbative Wilsonian running of the holomorphic coordinate is
   \tau(\Lambda)
   =
   \tau(\Lambda_0)
-  +\frac{b_0}{2\pi\ii}\log\frac{\Lambda}{\Lambda_0},
+  -\frac{b_0}{2\pi\ii}\log\frac{\Lambda}{\Lambda_0},
   \label{eq:holomorphic-gauge-coordinate-one-loop-running}
 \end{equation}
 up to a finite \(\Lambda\)-independent holomorphic redefinition of the
@@ -221,7 +221,7 @@ reference coordinate.  Equivalently,
 \[
   \mu\frac{d\tau_{\rm eff}^{\rm pert}}{d\mu}
   =
-  \frac{b_0}{2\pi\ii}.
+  -\frac{b_0}{2\pi\ii}.
 \]
 \end{proposition}
 
@@ -243,15 +243,33 @@ after excluding negative powers by the weak-coupling regularity hypothesis.
 The \(n\geq1\) terms are nonperturbative instanton sectors.  The perturbative
 projection is the constant term \(B_0(t)\).
 
-The coefficient \(B_0(t)\) is constrained by the spurion symmetry assignment.
-The gauge kinetic coordinate shifts under the anomalous chiral rotations of
-charged fields; the local anomaly calculation fixes this shift at one loop
-with coefficient \(b_0\).  A perturbative contribution depending
-nontrivially on other chiral couplings would have to transform in the same
-affine way as \(\tau\).  Hypothesis (iv) excludes such an additional
-coordinate.  Hence \(B_0\) is the one-loop anomaly coefficient,
+The coefficient \(B_0(t)\) is constrained by the spurion symmetry assignment
+and by the normalization of the holomorphic scale.  With the present
+convention
 \[
-  B_0=\frac{b_0}{2\pi\ii}.
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_h^2},
+  \qquad
+  X_h:=\frac{8\pi^2}{g_h^2}=2\pi\,\operatorname{Im}\tau ,
+\]
+the one-loop anomaly coefficient is the statement
+\[
+  \mu\frac{dX_h}{d\mu}=b_0 .
+\]
+Equivalently, \(q_h=\exp(2\pi\ii\tau)\) has
+\[
+  \mu\frac{d}{d\mu}\log q_h=-b_0 ,
+\]
+so for \(b_0>0\) the weak-coupling coordinate \(q_h\) decreases toward the
+ultraviolet.  This is the asymptotic-freedom sign in the holomorphic
+coordinate.  A perturbative contribution depending nontrivially on other
+chiral couplings would have to transform in the same affine way as \(\tau\).
+Hypothesis (iv) excludes such an additional coordinate.  Hence
+\[
+  2\pi\ii B_0=-b_0,
+\]
+or
+\[
+  B_0=-\frac{b_0}{2\pi\ii}.
 \]
 Integrating in \(\log\Lambda\) gives
 \eqref{eq:holomorphic-gauge-coordinate-one-loop-running}.  A finite
