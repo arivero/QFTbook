@@ -361,6 +361,49 @@ def check_truncation_schedule_tail_uniformity() -> None:
             raise AssertionError("same-flux schedule changes should be a smaller integrable tail")
 
 
+def check_finite_energy_spectral_tightness_boundary() -> None:
+    """Check finite spectral-tightness arithmetic versus linear string energy."""
+
+    def spectral_tail(measure: tuple[tuple[Fraction, Fraction], ...], cutoff: Fraction) -> Fraction:
+        return sum((weight for energy, weight in measure if energy > cutoff), Fraction(0))
+
+    # A nonconfining toy family: all spectral mass remains below a common
+    # finite energy window after endpoint/local renormalization.
+    coulomb_family = (
+        ((Fraction(1), Fraction(3, 4)), (Fraction(2), Fraction(1, 4))),
+        ((Fraction(1), Fraction(1, 2)), (Fraction(5, 2), Fraction(1, 2))),
+        ((Fraction(3, 2), Fraction(2, 3)), (Fraction(3), Fraction(1, 3))),
+    )
+    for measure in coulomb_family:
+        assert_equal("normalized finite-energy spectral measure", sum(weight for _, weight in measure), Fraction(1))
+        assert_equal("spectral tail vanishes above common cutoff", spectral_tail(measure, Fraction(3)), Fraction(0))
+
+    # Markov's inequality supplies a sufficient route from a uniform first
+    # moment to spectral tightness: tail_E <= <H>/E.
+    moment_bound = Fraction(3)
+    cutoff = Fraction(12)
+    assert_equal("Markov tightness bound", moment_bound / cutoff, Fraction(1, 4))
+    assert_equal(
+        "actual finite-family tail below Markov bound",
+        max(spectral_tail(measure, cutoff) for measure in coulomb_family),
+        Fraction(0),
+    )
+
+    # A confining string-energy family escapes every fixed finite-energy
+    # window: for E_L=E_vac+sigma L-c(L) with sigma>0 and sublinear c(L),
+    # the normalized spectral measure is eventually entirely above any fixed
+    # cutoff.  This is the finite arithmetic behind the manuscript boundary.
+    vacuum_energy = Fraction(0)
+    string_tension = Fraction(2)
+    sublinear_offset = Fraction(1, 2)
+    fixed_cutoff = Fraction(10)
+    escaping_lengths = (6, 8, 10)
+    for length in escaping_lengths:
+        string_energy = vacuum_energy + string_tension * length - sublinear_offset
+        measure = ((string_energy, Fraction(1)),)
+        assert_equal("linear string family has full high-energy tail", spectral_tail(measure, fixed_cutoff), Fraction(1))
+
+
 def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
     return sum(x * y for x, y in zip(a, b))
 
@@ -654,6 +697,7 @@ def main() -> None:
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
     check_truncation_schedule_tail_uniformity()
+    check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()

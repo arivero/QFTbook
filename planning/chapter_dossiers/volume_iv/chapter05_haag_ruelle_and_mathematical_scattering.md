@@ -81,10 +81,12 @@ resonances.
   boundary charge and angular flux operators, flux preservation by compact
   observables, finite-energy asymptotic content through an isolated charged
   shell or an infraparticle threshold structure, noncompact charged creators with
-  nonzero asymptotic projection or coefficient, and tightness of truncated
-  dressing energies.  A macroscopic string-energy law \(E(L)=\sigma L+o(L)\)
-  with \(\sigma>0\) is recorded as absence of the finite-energy charged
-  asymptotic sector.
+  nonzero asymptotic projection or coefficient, and spectral tightness of
+  normalized truncated dressings on the admissible large-time schedules.
+  Uniform first-moment control is recorded only as a sufficient estimate for
+  this spectral tightness.  A spectral string-energy lower bound
+  \(E_{\rm vac}+\sigma L-o(L)\) with \(\sigma>0\) is recorded as absence of
+  the finite-energy charged asymptotic sector.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
@@ -221,7 +223,10 @@ resonances.
   also checks the finite tail arithmetic behind the truncation topology:
   an unscheduled \(1/t\) noncompact tail is not a Cook error, whereas an
   admissible same-flux polynomial schedule produces decreasing norm tails
-  and an \(L^1\) derivative tail.
+  and an \(L^1\) derivative tail.  It also checks the finite spectral-measure
+  arithmetic behind the nonconfining-sector boundary: common finite-energy
+  windows, Markov's first-moment sufficient bound, and linear string-energy
+  escape beyond every fixed cutoff.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -347,3 +352,11 @@ resonances.
   rank-deficient operator families remain governed by the earlier
   left-inverse residue extraction formula; the theorem no longer hides this
   coordinate choice inside \(Z^{-1/2}\).
+- 2026-06-02 #527 spectral-tightness refinement: replaced the expectation-only
+  finite-energy condition in the nonconfining charged-sector hypothesis by
+  spectral tightness of the Hamiltonian measures for normalized truncated
+  dressings on admissible schedules.  The text now treats a uniform
+  first-moment bound as a sufficient route via Markov's inequality, and states
+  the confining alternative as a spectral string-energy lower bound rather
+  than as a vague high-energy trial-state expectation.  The companion
+  charged-flux check verifies the finite arithmetic behind this boundary.

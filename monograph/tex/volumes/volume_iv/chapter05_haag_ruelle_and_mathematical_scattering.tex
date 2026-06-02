@@ -899,17 +899,51 @@ in the isolated-shell case, or a nonzero threshold coefficient in the
 infraparticle case.  The dressing geometry determines the angular flux label
 of the vector.
 \item Truncated dressings must have a finite-energy limit after the local
-renormalizations belonging to the chosen charged operator.  Equivalently, for
-truncations \(\Psi_{q,\Gamma;L}\) normalized to unit vector when possible,
-the energy expectations are tight as \(L\to\infty\):
+renormalizations belonging to the chosen charged operator.  Let
 \[
-  \sup_L
-  \langle \Psi_{q,\Gamma;L}\vac,
-          H_q\,\Psi_{q,\Gamma;L}\vac\rangle
-  <\infty .
+  \xi_{L,\varepsilon}
+  =
+  \frac{\Psi_{q,\Gamma;L,\varepsilon}(f)\vac}
+       {\|\Psi_{q,\Gamma;L,\varepsilon}(f)\vac\|}
 \]
-If instead the best available gauge-invariant charged truncations carry a
-macroscopic string energy \(E(L)=\sigma L+o(L)\) with \(\sigma>0\), the
+when the denominator is nonzero, and let \(E_q(\Delta)\) be the spectral
+projection of the charged Hamiltonian \(H_q\).  The operational condition is
+spectral tightness:
+\begin{equation}
+  \lim_{E\to\infty}
+  \sup_{(L,\varepsilon)\in\mathcal A}
+  \bigl\|(1-E_q([0,E]))\xi_{L,\varepsilon}\bigr\|=0
+  \label{eq:charged-sector-spectral-tightness}
+\end{equation}
+for the admissible truncation schedules \(\mathcal A\) used in the large-time
+construction.  Uniform first-moment control,
+\[
+  \sup_{(L,\varepsilon)\in\mathcal A}
+  \langle \xi_{L,\varepsilon},H_q\xi_{L,\varepsilon}\rangle<\infty ,
+\]
+is a useful sufficient estimate by the spectral Markov inequality, but the
+scattering construction needs the tightness of the spectral measures
+themselves.  The tightness condition is what permits extraction of finite-energy
+subsequential limits and makes the projection or threshold coefficient in the
+previous item meaningful.
+
+The confining alternative is a spectral lower-bound statement for the declared
+class of gauge-invariant charged truncations.  Let \(\mathcal D_{q,L}\) be a
+class of normalized truncated charged vectors whose boundary flux reaches
+distance \(L\).  If
+there are \(\sigma>0\), \(L_0\), and \(c=o(L)\) such that every
+\(\xi\in\mathcal D_{q,L}\), \(L\ge L_0\), has spectral support above
+\begin{equation}
+  E_{\rm vac}+\sigma L-c(L),
+  \label{eq:charged-sector-string-energy-lower-bound}
+\end{equation}
+or equivalently
+\[
+  \langle \xi,H_q\xi\rangle
+  \ge E_{\rm vac}+\sigma L-c(L),
+\]
+then the family cannot satisfy
+\eqref{eq:charged-sector-spectral-tightness}.  In that case the
 finite-energy charged asymptotic sector is absent and the scattering problem
 belongs to neutral composite sectors.
 \end{enumerate}

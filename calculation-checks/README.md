@@ -459,7 +459,11 @@ Current checks:
   intervals, the discrete Cook-tail distinction between an unsubtracted
   \(1/t\) derivative and an \(L^1\) residual, and the same-flux truncation
   schedule arithmetic needed for a noncompact Wilson-line tail to define a
-  uniform large-time asymptotic coordinate.  It also checks soft coherent
+  uniform large-time asymptotic coordinate.  It also checks the finite
+  spectral-measure arithmetic behind the nonconfining charged-sector
+  boundary: common finite-energy windows, Markov's sufficient first-moment
+  estimate, and linear string-energy escape beyond every fixed cutoff.
+  It also checks soft coherent
   velocity-separation positivity, finite-cutoff Weyl characteristic
   functionals, coherent-overlap decay, and finite Hilbert soft-coordinate
   transformations.  The same script checks the finite
