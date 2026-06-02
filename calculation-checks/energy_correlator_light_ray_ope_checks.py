@@ -69,6 +69,23 @@ def mat_vec(matrix, vector):
     ]
 
 
+def mat_mat(left, right):
+    return [
+        [
+            sum(left[i][k] * right[k][j] for k in range(len(right)))
+            for j in range(len(right[0]))
+        ]
+        for i in range(len(left))
+    ]
+
+
+def mat_add(left, right):
+    return [
+        [left[i][j] + right[i][j] for j in range(len(left[0]))]
+        for i in range(len(left))
+    ]
+
+
 def row_mat(row, matrix):
     return [
         sum(row[i] * matrix[i][j] for i in range(len(row)))
@@ -78,6 +95,17 @@ def row_mat(row, matrix):
 
 def dot(row, column):
     return sum(row[i] * column[i] for i in range(len(row)))
+
+
+def inv2(matrix):
+    (a, b), (c, d) = matrix
+    determinant = a * d - b * c
+    if determinant == 0:
+        raise AssertionError("matrix is singular")
+    return [
+        [d / determinant, -b / determinant],
+        [-c / determinant, a / determinant],
+    ]
 
 
 def check_endpoint_resolution_shift():
@@ -107,6 +135,100 @@ def check_endpoint_resolution_shift():
         add_log_terms(annulus_constant_log, contact_shift),
         symbolic_log_term(),
         "endpoint resolution shift constant test",
+    )
+
+
+def check_finite_light_ray_mixing_chart():
+    # Renormalized operators are O_R = Z^{-1} O_reg.  If O_reg is held fixed,
+    # gamma = Z^{-1} dZ gives dO_R = -gamma O_R, while the coefficient row
+    # C = C_reg Z obeys dC = C gamma.  The finite matrices below keep this
+    # sign/transpose convention honest.
+    Z = [
+        [Fraction(2), Fraction(1)],
+        [Fraction(1), Fraction(1)],
+    ]
+    dZ = [
+        [Fraction(3, 5), Fraction(-2, 7)],
+        [Fraction(4, 11), Fraction(1, 13)],
+    ]
+    invZ = inv2(Z)
+    gamma = mat_mat(invZ, dZ)
+    O_reg = [Fraction(5, 7), Fraction(-3, 8)]
+    O_ren = mat_vec(invZ, O_reg)
+    dO_direct = [-entry for entry in mat_vec(mat_mat(invZ, dZ), O_ren)]
+    dO_gamma = [-entry for entry in mat_vec(gamma, O_ren)]
+    assert_equal(dO_direct, dO_gamma, "operator RG from finite Z matrix")
+
+    C_reg = [Fraction(11, 17), Fraction(-13, 19)]
+    C_ren = row_mat(C_reg, Z)
+    dC_direct = row_mat(C_reg, dZ)
+    dC_gamma = row_mat(C_ren, gamma)
+    assert_equal(dC_direct, dC_gamma, "coefficient RG from finite Z matrix")
+    assert_equal(
+        dot(dC_direct, O_ren) + dot(C_ren, dO_gamma),
+        Fraction(0),
+        "finite chart preserves coefficient/operator pairing",
+    )
+
+    # A finite scheme change O' = R^{-1} O, C' = C R changes
+    # gamma by R^{-1} gamma R + R^{-1} dR.  The transformed coefficient row
+    # still obeys the same paired RG equation.
+    R = [
+        [Fraction(1), Fraction(2, 5)],
+        [Fraction(0), Fraction(3, 2)],
+    ]
+    dR = [
+        [Fraction(0), Fraction(1, 7)],
+        [Fraction(0), Fraction(-1, 11)],
+    ]
+    invR = inv2(R)
+    gamma_prime = mat_add(mat_mat(mat_mat(invR, gamma), R), mat_mat(invR, dR))
+    C_prime = row_mat(C_ren, R)
+    dC_prime_direct = [
+        row_mat(dC_direct, R)[j] + row_mat(C_ren, dR)[j]
+        for j in range(2)
+    ]
+    dC_prime_gamma = row_mat(C_prime, gamma_prime)
+    assert_equal(
+        dC_prime_direct,
+        dC_prime_gamma,
+        "finite scheme change transforms coefficient RG covariantly",
+    )
+    O_prime = mat_vec(invR, O_ren)
+    assert_equal(
+        dot(C_prime, O_prime),
+        dot(C_ren, O_ren),
+        "finite scheme change preserves paired observable",
+    )
+
+    # The protected energy moment is a left null vector of gamma only in a
+    # convention preserving the displayed energy-sum row.  Under a general
+    # scheme change its coordinate row moves covariantly.
+    moment = [Fraction(1), Fraction(1)]
+    conserving_gamma = [
+        [Fraction(2, 7), Fraction(-3, 5)],
+        [Fraction(-2, 7), Fraction(3, 5)],
+    ]
+    assert_equal(row_mat(moment, conserving_gamma), [Fraction(0), Fraction(0)], "moment row is protected")
+    gamma_prime_moment = mat_add(
+        mat_mat(mat_mat(invR, conserving_gamma), R),
+        mat_mat(invR, dR),
+    )
+    moment_prime = row_mat(moment, R)
+    dmoment_prime = row_mat(moment, dR)
+    assert_equal(
+        dmoment_prime,
+        row_mat(moment_prime, gamma_prime_moment),
+        "protected moment row transforms covariantly",
+    )
+    R_preserving_moment = [
+        [Fraction(3, 2), Fraction(-1, 4)],
+        [Fraction(-1, 2), Fraction(5, 4)],
+    ]
+    assert_equal(
+        row_mat(moment, R_preserving_moment),
+        moment,
+        "energy-sum-preserving schemes have M R = M",
     )
 
 
@@ -191,6 +313,7 @@ def main():
     )
 
     check_endpoint_resolution_shift()
+    check_finite_light_ray_mixing_chart()
 
     print("All EEC light-ray OPE bookkeeping checks passed.")
 

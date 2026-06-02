@@ -8318,6 +8318,109 @@ term.  Without that convention, even a formally correct endpoint singularity
 does not define the same distribution as the nonperturbative observable
 \eqref{eq:qcd-eec-definition}.
 
+\paragraph{Finite renormalized light-ray mixing chart.}
+The preceding equations describe the continuum endpoint expansion, whose full
+operator basis is infinite and distributional.  In an actual calculation one
+uses a finite coordinate chart on this space.  The following finite chart is
+the algebraic core that every higher-order small-angle EEC calculation must
+instantiate before its anomalous dimensions and matching coefficients can be
+compared across schemes.
+
+Fix a finite set of light-ray operator labels \(\mathcal I_L\), for example a
+spin, twist, flavor, and derivative truncation, and let
+\(\mathbb O^{\rm reg}_I(\Lambda,\nu_0)\), \(I\in\mathcal I_L\), be regulated
+gauge-invariant light-ray composites with the endpoint and rapidity regulator
+specified.  A finite renormalized chart consists of an invertible matrix
+\(Z_{IA}(\Lambda,\mu,\nu;\mathcal R)\) and renormalized operator coordinates
+defined by
+\begin{equation}
+  \mathbb O_A(\mu,\nu;\mathcal R)
+  =
+  \sum_{I\in\mathcal I_L}
+  (Z^{-1})_{AI}(\Lambda,\mu,\nu;\mathcal R)\,
+  \mathbb O_I^{\rm reg}(\Lambda,\nu_0),
+  \label{eq:qcd-eec-finite-chart-renormalized-operators}
+\end{equation}
+after the regulator limit is taken in matrix elements in the declared test
+space.  If the regulated coordinates are independent of \(\mu\) after the
+regulator and bare parameters are held fixed, then differentiating
+\eqref{eq:qcd-eec-finite-chart-renormalized-operators} gives
+\begin{equation}
+  \gamma
+  =
+  Z^{-1}\mu\frac{\dd Z}{\dd\mu},
+  \qquad
+  \mu\frac{\dd}{\dd\mu}\mathbb O=-\gamma\,\mathbb O ,
+  \label{eq:qcd-eec-finite-chart-gamma-from-z}
+\end{equation}
+with column-vector notation.  A regulated coefficient row \(C^{\rm reg}\)
+that pairs with the regulated operators as \(C^{\rm reg}\mathbb O^{\rm reg}\)
+therefore gives the renormalized coefficient row
+\begin{equation}
+  C(\rho,Q,\mu,\nu;\mathcal R)
+  =
+  C^{\rm reg}(\rho,Q,\Lambda,\nu_0)\,
+  Z(\Lambda,\mu,\nu;\mathcal R),
+  \label{eq:qcd-eec-finite-chart-coefficient-renormalization}
+\end{equation}
+and hence
+\begin{equation}
+  \mu\frac{\dd C}{\dd\mu}=C\,\gamma .
+  \label{eq:qcd-eec-finite-chart-coefficient-rg}
+\end{equation}
+This is the finite-matrix derivation of the sign and transpose convention in
+\eqref{eq:qcd-eec-light-ray-operator-rg}--\eqref{eq:qcd-eec-light-ray-coefficient-rg}.
+No physical statement is attached to \(Z\) or \(C\) separately: only the
+paired distribution \(C\mathbb O\), together with its endpoint contact
+coordinate, represents the detector product.
+
+Finite scheme changes are coordinate changes on the same renormalized
+light-ray space.  Let \(R(\mu,\nu)\) be an invertible finite matrix and set
+\[
+  \mathbb O'=R^{-1}\mathbb O,\qquad C'=C R .
+\]
+Then \(C'\mathbb O'=C\mathbb O\), while the anomalous-dimension matrix
+becomes
+\begin{equation}
+  \gamma'
+  =
+  R^{-1}\gamma R
+  +
+  R^{-1}\mu\frac{\dd R}{\dd\mu},
+  \label{eq:qcd-eec-finite-chart-scheme-gamma}
+\end{equation}
+and \(C'\) obeys \(\mu\dd C'/\dd\mu=C'\gamma'\).  Thus a quoted
+``light-ray anomalous dimension'' is incomplete until its operator coordinate
+chart is specified.  If \(M\mathbb O\) is the protected total-energy moment,
+then \(M\gamma=0\).  In the changed coordinates \(M'=M R\) and
+\[
+  \mu\frac{\dd M'}{\dd\mu}=M'\gamma' .
+\]
+The stronger condition that the displayed row \(M\) is unchanged is therefore
+not automatic; it is a restriction on admissible schemes, \(M R=M\).  This is
+the finite-coordinate version of the normalization convention behind
+\eqref{eq:qcd-eec-moment-functional-rg-invariance}.
+
+\begin{controlledapproximation}[Finite light-ray mixing truncation]
+\label{ca:qcd-eec-finite-light-ray-mixing-truncation}
+A finite small-angle EEC calculation based on a label set \(\mathcal I_L\)
+is a controlled approximation only after it supplies:
+\begin{enumerate}
+  \item the regulated light-ray composites
+  \(\mathbb O_I^{\rm reg}\) and the subtraction matrix \(Z\);
+  \item the endpoint test-function space on which the coefficient
+  distributions \(C_A(\rho)\), including plus distributions and contact
+  coordinates, act;
+  \item the matrices \(\gamma\) and, when present, \(\eta\), with the
+  protected energy-moment row and its scheme convention;
+  \item a remainder functional \(R_L(\varphi,\Psi)\) for the omitted
+  operators, stated in the topology of the matrix elements or cross-section
+  distributions being computed.
+\end{enumerate}
+Without the last item, a finite light-ray basis is a useful coordinate
+truncation but not an approximation theorem for the EEC distribution.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Perturbative EEC endpoint calculations]
 \label{ca:qcd-eec-endpoint-calculations}
 A perturbative endpoint calculation of the EEC consists of a declared

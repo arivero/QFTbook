@@ -523,7 +523,9 @@ Current checks:
   logarithm against the contact subtraction, the finite \(\delta(\rho)\)
   moment, the finite-resolution identity that moves an endpoint annulus into
   the compensating contact coordinate, the row/column anomalous-dimension
-  sign convention, and the energy-sum left-null-vector condition.
+  sign convention, finite \(Z^{-1}dZ\) operator mixing, finite scheme-change
+  covariance, paired coefficient/operator invariance, and the energy-sum
+  left-null-vector condition.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for

@@ -421,6 +421,17 @@ The chapter must define and derive:
       small-angle chart therefore shifts an ordinary separated-angle annulus
       into the compensating coincident-detector contact coordinate, preserving
       constant tests and making the contact convention checkable.
+19bd. A finite small-angle light-ray calculation must specify the
+      renormalized mixing chart, not only the anomalous-dimension matrix:
+      regulated light-ray composites, the subtraction matrix \(Z\), the
+      finite operator coordinates \(\mathbb O=Z^{-1}\mathbb O^{\rm reg}\),
+      the paired coefficient row \(C=C^{\rm reg}Z\), the protected
+      energy-moment row, and any finite scheme change \(R\).  The chart
+      derives \(\gamma=Z^{-1}\mu dZ/d\mu\), \(\mu dC/d\mu=C\gamma\), and the
+      transformed matrix
+      \(\gamma'=R^{-1}\gamma R+R^{-1}\mu dR/d\mu\); a finite truncation is
+      only a controlled approximation after a remainder functional for
+      omitted light-ray operators is supplied.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -634,6 +645,13 @@ The chapter must define and derive:
   separated-annulus term, and the compensating \(\delta(\rho)\) contact shift;
   extended `calculation-checks/energy_correlator_light_ray_ope_checks.py`
   with exact rational checks of the identity on polynomial endpoint tests.
+- 2026-06-01 issue #519 finite-light-ray-mixing pass: added the finite
+  renormalized light-ray mixing chart for small-angle EEC, including
+  \(Z^{-1}dZ\), coefficient/operator pairing, finite scheme-change covariance,
+  protected moment-row bookkeeping, and a controlled truncation datum with an
+  explicit omitted-operator remainder requirement; extended
+  `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
+  rational matrix checks.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,
