@@ -1137,11 +1137,102 @@ Thus the classical mass matrix is
   =
   m^2\sum_{i=0}^r n_i\,\alpha_i\otimes\alpha_i .
 \]
-For simply-laced algebras its eigenvectors are related to the Perron-Frobenius
-eigenvector of the Cartan matrix, and the mass ratios match the Coxeter data
-entering the exact scattering blocks.  A quantum statement about mass ratios
-requires fixing the coupling normalization and the renormalized mass
-coordinate.
+The following explicit \(A_r^{(1)}\) calculation shows what is meant by the
+Coxeter mass data at the classical level, without turning the linear-algebra
+diagonalization itself into a theorem about the quantum model.
+
+\paragraph{\(A_r^{(1)}\) mass matrix.}
+Let \(\mathfrak g=A_r\), realize the roots in
+\[
+  H=\left\{(x_1,\ldots,x_{r+1})\in\mathbb R^{r+1}
+    \ \middle|\ \sum_{k=1}^{r+1}x_k=0\right\}
+\]
+with orthonormal ambient basis \(e_k\), and take
+\[
+  \alpha_i=e_i-e_{i+1},\qquad i=1,\ldots,r,
+  \qquad
+  \alpha_0=e_{r+1}-e_1 .
+\]
+All affine Dynkin labels are \(n_i=1\), so the quadratic affine Toda mass
+operator is
+\[
+  M_{\rm cl}^2
+  =
+  m^2\sum_{i=0}^{r}\alpha_i\otimes\alpha_i .
+\]
+To diagonalize it, take \(v=(v_1,\ldots,v_{r+1})\in H\).  Then
+\[
+  \frac1{m^2}M_{\rm cl}^2 v
+  =
+  \sum_{i=1}^{r}(v_i-v_{i+1})(e_i-e_{i+1})
+  +(v_{r+1}-v_1)(e_{r+1}-e_1),
+\]
+so the \(k\)-th component is
+\[
+  2v_k-v_{k-1}-v_{k+1},
+\]
+with indices read cyclically modulo \(r+1\).  Thus \(M_{\rm cl}^2/m^2\) is
+the graph Laplacian of the cycle with \(r+1\) vertices, restricted to the
+hyperplane \(H\).  The Fourier modes
+\[
+  v^{(a)}_k=\exp\!\left(\frac{2\pi\ii ak}{r+1}\right),
+  \qquad a=0,1,\ldots,r ,
+\]
+diagonalize this cycle Laplacian.  The \(a=0\) mode is the constant vector and
+does not lie in \(H\).  For \(a=1,\ldots,r\),
+\[
+  2-e^{-2\pi\ii a/(r+1)}-e^{2\pi\ii a/(r+1)}
+  =
+  2-2\cos\!\left(\frac{2\pi a}{r+1}\right)
+  =
+  4\sin^2\!\left(\frac{\pi a}{r+1}\right),
+\]
+and therefore the nonzero classical mass eigenvalues are
+\begin{equation}
+  M_a^2
+  =
+  4m^2\sin^2\!\left(\frac{\pi a}{r+1}\right),
+  \qquad a=1,\ldots,r .
+  \label{eq:affine-toda-a-r-classical-masses}
+\end{equation}
+Real sine and cosine eigenvectors are obtained by taking real and imaginary
+parts of these Fourier modes.  Equivalently, with Coxeter number \(h=r+1\),
+the classical mass ratios are
+\[
+  M_a:M_1
+  =
+  \sin\!\left(\frac{\pi a}{h}\right):
+  \sin\!\left(\frac{\pi}{h}\right),
+  \qquad a=1,\ldots,r .
+\]
+
+The same numbers also make the Coxeter/Perron--Frobenius presentation
+visible.  Let \(I\) be the adjacency matrix of the finite \(A_r\) Dynkin
+chain, so \((I\mathbf M)_a=M_{a-1}+M_{a+1}\) with boundary values
+\(M_0=M_{r+1}=0\).  For
+\[
+  M_a=2m\sin\!\left(\frac{\pi a}{r+1}\right)
+\]
+the sine addition formula gives
+\[
+  M_{a-1}+M_{a+1}
+  =
+  2\cos\!\left(\frac{\pi}{r+1}\right)M_a .
+\]
+Hence \(\mathbf M=(M_1,\ldots,M_r)\) is the positive
+Perron--Frobenius eigenvector of \(I\), with eigenvalue
+\[
+  2\cos\!\left(\frac{\pi}{h}\right),
+  \qquad h=r+1 .
+\]
+This calculation is the finite \(A_r\) algebra behind the Coxeter mass
+language used in the simply-laced affine Toda bootstrap.  For \(D\) and \(E\)
+types, the analogous mass vector is specified by the positive
+Perron--Frobenius eigenvector of the finite Dynkin adjacency matrix with
+eigenvalue \(2\cos(\pi/h)\).  Matching that algebraic mass datum to an exact
+quantum \(S\)-matrix and to a continuum local QFT is part of the model
+comparison problem stated below; it is not supplied by the Hessian
+calculation alone.
 
 \section{Model-Comparison Summary}
 

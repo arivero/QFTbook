@@ -81,6 +81,11 @@ families.  This chapter supplies the first exact examples before the later
   as undeclared generic statements.
 - Defines affine Toda action data and derives the classical mass matrix from
   the affine-root potential.
+- Derives the \(A_r^{(1)}\) classical affine Toda mass spectrum from the
+  quadratic Hessian by identifying the mass operator with the cycle-graph
+  Laplacian, obtaining
+  \(M_a^2=4m^2\sin^2(\pi a/(r+1))\), and then deriving the finite \(A_r\)
+  Perron--Frobenius relation for the sine mass vector.
 
 ## Calculation Checks
 
@@ -88,7 +93,8 @@ families.  This chapter supplies the first exact examples before the later
   matrix unitarity and Yang-Baxter equation, free-fermion point,
   soliton-breather unitarity/crossing/pole kinematics, lightest-breather
   direct and crossed poles, neutral-block residue signs, and breather-breather
-  fusion mass formulae.
+  fusion mass formulae.  It also verifies the \(A_r^{(1)}\) cycle-Laplacian
+  eigenvalues and finite \(A_r\) Perron--Frobenius sine-mass relation.
 - `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
   vertex-OPE exponent versus scaling dimension, Coleman's coupling map,
   current-dictionary coefficient, Mandelstam exchange phase, free-fermion
@@ -100,3 +106,12 @@ No figure is included in this pass.  Future figures should include the
 sine-Gordon periodic potential with soliton sectors, the soliton-antisoliton
 bound-state pole in the rapidity strip, and affine Dynkin diagrams for the
 first simply-laced examples.
+
+## Audit Notes
+
+- 2026-06-02 affine-Toda mass-matrix pass: replaced the thin
+  Perron--Frobenius/Coxeter mass-ratio sentence by an explicit \(A_r^{(1)}\)
+  Hessian calculation, cycle-Laplacian diagonalization, and finite
+  Dynkin-adjacency eigenvector check.  The general \(D/E\) Coxeter mass datum
+  is now stated as additional algebraic bootstrap input rather than inferred
+  from the displayed Hessian.

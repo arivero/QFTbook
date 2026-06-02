@@ -250,6 +250,31 @@ def check_breather_breather_direct_fusion_masses() -> None:
             )
 
 
+def check_affine_toda_a_r_mass_matrix() -> None:
+    for rank in range(2, 8):
+        h = rank + 1
+        for a in range(1, rank + 1):
+            mode = [cmath.exp(2j * math.pi * a * k / h) for k in range(h)]
+            eigenvalue = 4.0 * math.sin(math.pi * a / h) ** 2
+            for k in range(h):
+                laplacian = 2.0 * mode[k] - mode[(k - 1) % h] - mode[(k + 1) % h]
+                assert_close(
+                    f"A_{rank} affine cycle Laplacian a={a} k={k}",
+                    laplacian,
+                    eigenvalue * mode[k],
+                )
+
+        masses = [0.0] + [2.0 * math.sin(math.pi * a / h) for a in range(1, rank + 1)] + [0.0]
+        pf_eigenvalue = 2.0 * math.cos(math.pi / h)
+        for a in range(1, rank + 1):
+            adjacency_action = masses[a - 1] + masses[a + 1]
+            assert_close(
+                f"A_{rank} Perron-Frobenius sine mass a={a}",
+                adjacency_action,
+                pf_eigenvalue * masses[a],
+            )
+
+
 def main() -> None:
     check_matrix_unitarity()
     check_yang_baxter_matrix_part()
@@ -259,6 +284,7 @@ def main() -> None:
     check_soliton_breather_amplitude()
     check_neutral_block_residues()
     check_breather_breather_direct_fusion_masses()
+    check_affine_toda_a_r_mass_matrix()
     print("All sine-Gordon S-matrix checks passed.")
 
 

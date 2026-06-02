@@ -1534,7 +1534,9 @@ Current checks:
   sine-Gordon exact scattering datum, including soliton-matrix unitarity and
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass
   kinematics, soliton-breather unitarity/crossing/pole kinematics, and
-  lightest-breather unitarity and crossing.
+  lightest-breather unitarity and crossing.  It also checks the
+  \(A_r^{(1)}\) affine Toda cycle-Laplacian eigenvalues and the finite
+  \(A_r\) Perron--Frobenius sine-mass relation.
 - `sg_thirring_bosonization_checks.py`: exact rational checks for the
   sine-Gordon/massive-Thirring bosonization section, including the distinction
   between vertex-OPE exponent and scaling dimension, Coleman's coupling map,
