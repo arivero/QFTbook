@@ -3,7 +3,7 @@
 ## Source Position
 
 Volume XI adds Hamiltonian regulator methods after stochastic and lattice
-constructions, emphasizing certified approximation rather than informal
+constructions, emphasizing controlled finite approximation rather than informal
 numerics.
 
 ## Notation Inventory
@@ -38,10 +38,10 @@ numerics.
   and free Bethe-state density used in the TFFSA spin matrix element.
 - `H(h)`, `W`, `lambda_*(h)`, `g`: finite affine Hermitian spectral-flow
   family, perturbing matrix, simple eigenvalue branch, and finite spectral gap
-  used in the Hellmann-Feynman derivative certificate.
+  used in the Hellmann-Feynman derivative check.
 - `rho_a`, `A_E8`, `v`: magnetic-Ising \(E_8\) target mass ratios, the
   \(E_8\) Dynkin adjacency matrix, and its Perron-Frobenius eigenvector used
-  as a finite convention certificate for the target table.
+  as a finite convention check for the target table.
 - `x^pm`, `p^+`, `K`: light-front coordinates, longitudinal momentum, and
   harmonic resolution.
 - `M^2`, `P^-`: invariant mass operator and light-front Hamiltonian.
@@ -93,7 +93,7 @@ numerics.
   coordinate vector, statistical error, finite-regulator envelope,
   matching-error coordinate, and total declared componentwise error.
 - `C_num`, `D_fin`, `F_fin`, `I_check`, `S_scope`: companion-script finite
-  certificate, finite regulator datum, finite output map, checked finite
+  check record, finite regulator datum, finite output map, checked finite
   identities, and scope boundary separating finite statements from continuum
   claims.
 
@@ -144,18 +144,18 @@ numerics.
   simple eigenvalue of an affine finite Hermitian matrix family, including the
   resolvent-gap hypothesis and the trace identity for the sum of slopes.
 - Records the exact \(E_8\) magnetic-Ising continuum target mass ratios for
-  numerical comparison and gives a finite Perron-Frobenius certificate from
+  numerical comparison and gives a finite Perron--Frobenius check from
   the \(E_8\) adjacency matrix, while keeping the continuum integrable-QFT
   derivation separate from any finite TCSA/TFFSA diagonalization claim.
 - Proves the Feshbach-Schur complement identity that underlies Hamiltonian
   truncation counterterms and high-energy tail corrections.
-- Defines finite residual certificates for Hermitian truncation matrices and
+- Defines finite residual bounds for Hermitian truncation matrices and
   proves the residual-to-spectrum and spectral-projector leakage bounds used
-  to certify numerical eigenpairs before any continuum interpretation.
+  to bound numerical eigenpairs before any continuum interpretation.
 - Records the exact finite Schur self-energy
   `Sigma_P(E)=PHQ(QHQ-E)^{-1}QHP` and isolates the separate norm-bound
   obligation for replacing it by a local counterterm.
-- Defines finite Krylov spectral certificates for large truncation matrices,
+- Defines finite Krylov spectral data for large truncation matrices,
   derives the exact Lanczos Ritz-residual identity
   `||(A-theta)V_m y||=beta_m |y_m|`, and explains why this is finite-matrix
   evidence rather than a continuum spectral theorem.
@@ -166,14 +166,14 @@ numerics.
 - Defines finite variational ansatz data for tensor-network, DMRG/MERA, and
   neural-state calculations, including ansatz constraints and sampling-error
   data.
-- Derives the finite energy-variance certificate: variance equals residual
+- Derives the finite energy-variance bound: variance equals residual
   norm, bounds distance from the finite spectrum, and bounds leakage from a
   separated finite spectral cluster.
 - Derives the ground-projector leakage estimate when the finite ground
-  energy and gap are known by an independent certificate.
+  energy and gap are known by an independent bound.
 - Derives the tangent-gradient formula for a smooth normalized ansatz, so a
   variational stationary point is identified as tangent-space residual
-  orthogonality rather than an eigenvector certificate.
+  orthogonality rather than an eigenvector error bound.
 - Derives the finite local-energy mean and variance identities used by
   sampled neural-state and variational Monte Carlo calculations.
 - Defines a general light-front Hamiltonian regulator datum before DLCQ is
@@ -237,19 +237,19 @@ numerics.
   of the cross-method benchmark datum, including target observable,
   coordinate dimension, method-specific normalized coordinates, statistical
   errors, regulator envelopes, matching errors, optional covariance data, and
-  provenance; the finite pairwise certificate is
+  provenance; the finite pairwise check is
   \(|x_m-x_n|_{\rm comp}\le e_m+e_n\).
-- Defines the public companion-script finite certificate
+- Defines the public companion-script finite check
   \(C_{\rm num}=(D_{\rm fin},F_{\rm fin},I_{\rm check},S_{\rm scope})\):
   finite regulator datum, finite output map, checked identities, and explicit
   boundary against continuum or production-ensemble claims.
-- Adds a public finite-regulator certificate index for all current
+- Adds a public finite-regulator check index for all current
   `qft_scripts` families: spin/scalar Metropolis, compact-gauge samplers,
   lattice analysis functionals, HMC/RHMC and Markov-chain diagnostics,
   Hamiltonian truncation/TCSA/TFFSA matrices, DLCQ finite matrices,
   extrapolation/manifest tools, and cluster sweep wrappers.
 - Records the current magnetic-Ising benchmark status: finite TFFSA block,
-  spectral-flow, and exact \(E_8\) target scripts are finite certificates, not
+  spectral-flow, and exact \(E_8\) target scripts are finite checks, not
   yet a full continuum comparison without cutoff counterterms and
   extrapolation envelopes.
 - Records benchmark requirements for truncation methods.
@@ -317,9 +317,9 @@ plots.
   covariance/provenance data, total error envelopes, and reports the pairwise
   finite consistency matrix; it is a manifest-level compatibility check, not
   a continuum-agreement theorem.
-- Public finite-regulator certificate index in the chapter groups every
-  current `qft_scripts` entry by its mathematical certificate type and states
-  the corresponding non-certified continuum or production claim.
+- Public finite-regulator check index in the chapter groups every
+  current `qft_scripts` entry by its mathematical check type and states
+  the corresponding unproved continuum or production claim.
 - `calculation-checks/numerical_extrapolation_checks.py`: exact rational and
   finite-matrix regression check for the Lagrange-interpolation obstruction,
   Richardson cancellation, integer-power extrapolation weights, and
@@ -335,13 +335,13 @@ plots.
   the scalar \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix
   elements, connected Ising TFFSA block normalization, finite Ising TFFSA
   spectral-flow derivative identities, the \(E_8\) target-ratio
-  Perron-Frobenius certificate, finite large-`K` fit algebra, finite residual
-  certification, spectral-projector leakage, the Feshbach determinant
+  Perron--Frobenius check, finite large-`K` fit algebra, finite residual
+  bounds, spectral-projector leakage, the Feshbach determinant
   identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
   tangent-gradient, local-energy mean/variance identities, and the benchmark
-  manifest's passing and failing finite pairwise certificates.
+  manifest's passing and failing finite pairwise checks.
 
 ## Anti-Wrapper Audit
 
@@ -350,7 +350,7 @@ plots.
   bound on the eliminated \(Q\)-component, so the statement now records the
   estimate relevant to truncation control rather than only a block-matrix
   rearrangement.
-- 2026-05-29 eighth pass: demoted the finite residual spectral certificate
+- 2026-05-29 eighth pass: demoted the finite residual spectral bound
   from proposition form to linear-algebra prose.  The residual-to-spectrum
   and leakage bounds remain as numbered equations because they are useful
   diagnostics, but their derivation is an elementary eigenbasis calculation.
@@ -359,7 +359,7 @@ plots.
   theorem wrapper, with exact residual and moment identities tied to
   seed-overlap and symmetry-sector coverage.
 - 2026-05-31 second statmech numerical-evidence pass: added finite
-  variational ansatz certificates for tensor-network/neural-state methods as
+  variational ansatz bounds for tensor-network/neural-state methods as
   derivational prose, with finite residual, variance, tangent-gradient, and
   local-energy identities rather than theorem wrappers.
 - 2026-05-31 third statmech numerical-evidence pass: added correlated-fit
@@ -374,8 +374,8 @@ plots.
   \(1+1\)-dimensional \(\phi^4\) DLCQ warmup, keeping the omitted zero mode
   and \(K\to\infty\) counterterm problem explicit, and paired it with a
   smoke script plus finite matrix-element checks.
-- 2026-06-01 issue #494 certificate-index pass: added the
-  `C_num=(D_fin,F_fin,I_check,S_scope)` finite-certificate index so the
+- 2026-06-01 issue #494 check-index pass: added the
+  `C_num=(D_fin,F_fin,I_check,S_scope)` finite-check index so the
   public script layer is integrated into the manuscript without pretending
   that smoke tests prove continuum QFT claims.
 - 2026-06-01 issue #494 correlated-extrapolation pass: added a reusable
@@ -395,7 +395,7 @@ plots.
   matrix to a continuum sine-Gordon spectrum.
 - 2026-06-01 issue #494 E8 target-data pass: added the exact magnetic-Ising
   \(E_8\) mass-ratio table and a finite Perron-Frobenius adjacency
-  certificate as benchmark target data, keeping the continuum factorized
+  check as benchmark target data, keeping the continuum factorized
   scattering derivation and finite TCSA/TFFSA diagonalization claims
   logically separate.
 - 2026-06-01 issue #494 benchmark-manifest pass: added a machine-readable

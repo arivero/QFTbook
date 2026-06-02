@@ -662,12 +662,16 @@ The chapter must define and derive:
   `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
   rational matrix checks.
 - 2026-06-02 issue #519 finite-transport pass: added the ordered transport
-  certificate for the finite small-angle light-ray mixing chart, including
+  and flatness consistency conditions for the finite small-angle light-ray
+  mixing chart, including
   \(C(t)=C(t_0)U\), \(\mathbb O(t)=U^{-1}\mathbb O(t_0)\), the protected
   moment-row transport law, and the two-scale flatness condition
   \(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\); extended
   `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
   nilpotent-matrix checks of transport invariance and curvature obstruction.
+  The chapter now states explicitly that this is a structural chart
+  consistency condition, not a concrete loop-level small-angle EEC flatness
+  calculation in a specified rapidity scheme.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,

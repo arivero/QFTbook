@@ -253,7 +253,7 @@ def check_finite_light_ray_mixing_chart():
     )
 
 
-def check_finite_light_ray_transport_certificate():
+def check_finite_light_ray_transport_flatness():
     # Use nilpotent matrices so that exp(s gamma) = I + s gamma exactly over
     # the rationals.  This checks the side on which the anomalous dimension
     # acts in the text's row/column convention.
@@ -419,7 +419,7 @@ def main():
 
     check_endpoint_resolution_shift()
     check_finite_light_ray_mixing_chart()
-    check_finite_light_ray_transport_certificate()
+    check_finite_light_ray_transport_flatness()
 
     print("All EEC light-ray OPE bookkeeping checks passed.")
 

@@ -137,7 +137,7 @@ measure.  Positivity statements for products
 \(\mathcal E(f_1)\cdots\mathcal E(f_k)\) require the diagonal-contact
 extension discussed next.
 
-\paragraph{Finite-resolution convergence certificates.}
+\paragraph{Finite-resolution Lipschitz estimates.}
 The finite partition readout gives the operational topology in which an ideal
 detector is approached by finite angular bins.  Let \(d\) be the round metric on
 \(S^{D-2}\).  For a
@@ -165,7 +165,7 @@ If \(f:S^{D-2}\to\mathbb R\) is \(L_f\)-Lipschitz, then
   \right|
   \leq
   L_f\,\operatorname{diam}(\mathcal P)\,\mu_\Psi(S^{D-2}).
-  \label{eq:cft-detector-partition-lipschitz-certificate}
+  \label{eq:cft-detector-partition-lipschitz-estimate}
 \end{equation}
 Indeed, on each bin,
 \[
@@ -174,7 +174,7 @@ Indeed, on each bin,
   L_f\,\operatorname{diam}(\mathcal P),
 \]
 and summing the resulting measure estimate over bins gives
-\eqref{eq:cft-detector-partition-lipschitz-certificate}.  Thus convergence of
+\eqref{eq:cft-detector-partition-lipschitz-estimate}.  Thus convergence of
 finite bin masses along partitions with
 \(\operatorname{diam}(\mathcal P)\to0\), together with the uniform total
 energy bound \(\mu_\Psi(S^{D-2})=\langle P^0\rangle_\Psi\), implies weak
@@ -202,14 +202,14 @@ Then
   \leq
   k\,L_F\,\operatorname{diam}(\mathcal P)\,
   \mu_\Psi^{(k)}((S^{D-2})^k).
-  \label{eq:cft-detector-product-partition-lipschitz-certificate}
+  \label{eq:cft-detector-product-partition-lipschitz-estimate}
 \end{equation}
 For the product measure of a finite-energy state, the total mass is
 \(\langle(P^0)^k\rangle_\Psi\) when the diagonal-contact extension has been
 included.  Equations
-\eqref{eq:cft-detector-partition-lipschitz-certificate} and
-\eqref{eq:cft-detector-product-partition-lipschitz-certificate} are therefore
-the finite-resolution certificates behind the statement that energy
+\eqref{eq:cft-detector-partition-lipschitz-estimate} and
+\eqref{eq:cft-detector-product-partition-lipschitz-estimate} are therefore
+the finite-resolution Lipschitz estimates behind the statement that energy
 correlators are detector observables on the celestial sphere.  The
 construction of detector products remains the separate domain question; once a
 product measure is available, these estimates identify the finite calorimeter
@@ -864,8 +864,8 @@ terms have been fixed.  The subtractions \(1/3\) and \(2/15\) are precisely
 the averages in \eqref{eq:stress-collider-angular-averages}, so integration
 over \(S^2\) gives the total energy \(Q\) for every polarization.
 
-\begin{lemma}[Helicity spectral certificate for stress-tensor collider positivity]
-\label{lem:hm-helicity-spectral-certificate}
+\begin{lemma}[Spectral diagonalization of the stress-tensor collider form]
+\label{lem:hm-helicity-spectral-diagonalization}
 Fix the detector direction \(\mathbf n=e_3=(0,0,1)\), and let
 \(\mathcal V\) be the complex vector space of symmetric traceless tensors
 \(\varepsilon_{ij}\), equipped with
@@ -971,13 +971,13 @@ and only if
 
 \begin{proof}
 By rotational covariance it suffices to work at
-\(\mathbf n=e_3\).  Lemma~\ref{lem:hm-helicity-spectral-certificate} writes
+\(\mathbf n=e_3\).  Lemma~\ref{lem:hm-helicity-spectral-diagonalization} writes
 the detector quadratic form as the orthogonal sum
 \eqref{eq:hm-helicity-spectral-decomposition}.  Positivity for all
 polarizations is therefore equivalent to nonnegativity of the three
 eigenvalues \(\lambda_2,\lambda_1,\lambda_0\) in
 \eqref{eq:hm-helicity-eigenvalues}.  Rotating the detector direction carries
-the same eigenvalue certificate to every \(\mathbf n\in S^2\).
+the same eigenvalue decomposition to every \(\mathbf n\in S^2\).
 \end{proof}
 
 The derivation of the normal form

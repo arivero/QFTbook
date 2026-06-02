@@ -11,7 +11,7 @@ has the displayed geometric form, and an auxiliary RG theorem transfers to
 the short-range target only when the one-step intertwining defects remain
 controlled after stable or relevant RG amplification.  The observable-germ
 checks verify that finite-window agreement is a projective, seminorm-level
-certificate rather than a substitute for full universality, and that
+estimate rather than a substitute for full universality, and that
 QFT-strength observable germs must include reflection-positivity Gram
 windows rather than only a visible finite list of correlator coordinates.
 The polymer checks verify the exact finite arithmetic behind the one-step
@@ -32,12 +32,12 @@ fluctuation integration.
 The source-window check verifies the finite Taylor-source extraction rule
 used to decide which connected correlator windows are actually controlled by
 a source-extended polymer RG chart.
-The stable-chart certificate check verifies the finite RG observable-window
+The stable-chart observable-window bound check verifies the finite RG estimate
 bound that decomposes a universality comparison into relevant mismatch,
 stable-coordinate contraction, accumulated one-step defects, and source-tail
 or normalization errors.
 The auxiliary projective-window transfer check verifies the finite
-observable-germ certificate that combines auxiliary-window convergence,
+observable-germ estimate that combines auxiliary-window convergence,
 auxiliary-to-target observable defects, short-range orbit-transfer defects,
 and normalization mismatch.
 The C1 stable-graph check verifies the differentiated Lyapunov--Perron
@@ -47,7 +47,7 @@ The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
 distribution.
-The finite OS-positivity certificate check verifies the Gram-window error
+The finite OS-positivity bound check verifies the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction.
 """
@@ -251,7 +251,7 @@ def check_auxiliary_transfer_telescoping_bound():
         )
 
 
-def check_auxiliary_projective_window_transfer_certificate():
+def check_auxiliary_projective_window_transfer_estimate():
     amplification_factors = [Fraction(2, 3), Fraction(1, 2), Fraction(3, 5)]
     defect_bounds = [Fraction(1, 10), Fraction(1, 20), Fraction(1, 40)]
     steps = len(defect_bounds)
@@ -263,7 +263,7 @@ def check_auxiliary_projective_window_transfer_certificate():
     )
     assert_equal("auxiliary projective-window orbit bound", orbit_bound, Fraction(17, 200))
 
-    # Signed defects can cancel in the actual orbit; the certificate uses the
+    # Signed defects can cancel in the actual orbit; the estimate uses the
     # absolute defect bounds and therefore remains valid without relying on
     # cancellation.
     signed_defects = [Fraction(1, 10), Fraction(-1, 20), Fraction(1, 40)]
@@ -271,7 +271,7 @@ def check_auxiliary_projective_window_transfer_certificate():
     for factor, defect in zip(amplification_factors, signed_defects):
         orbit_error = factor * orbit_error + defect
     assert_equal("auxiliary projective-window actual orbit error", orbit_error, Fraction(1, 40))
-    assert_true("actual orbit error below certificate", abs(orbit_error) <= orbit_bound)
+    assert_true("actual orbit error below absolute-defect bound", abs(orbit_error) <= orbit_bound)
 
     window_lipschitz = Fraction(4)
     auxiliary_window_error = Fraction(1, 100)
@@ -294,12 +294,12 @@ def check_auxiliary_projective_window_transfer_certificate():
     )
     assert_equal("auxiliary projective-window actual finite error", actual_window_error, Fraction(51, 400))
     assert_true(
-        "auxiliary projective-window certificate bounds finite error",
+        "auxiliary projective-window estimate bounds finite error",
         actual_window_error <= projective_window_bound,
     )
 
     # If the one-step target defects do not decay after amplification, the
-    # projective transfer certificate cannot prove convergence of the target
+    # projective transfer estimate cannot prove convergence of the target
     # observable germ.
     constant_defect = Fraction(1, 30)
     theta = Fraction(2, 3)
@@ -378,11 +378,11 @@ def check_c1_stable_graph_derivative_equation():
     assert_equal("C1 stable graph tangent to stable subspace", zero_graph_derivative, Fraction(0))
 
 
-def check_observable_germ_finite_window_certificate():
+def check_observable_germ_finite_window_estimate():
     # Three finite observation windows form a projective chain
     # gamma -> beta -> alpha.  The exact numbers model normalized finite lists
     # of observables; the check is the projective compatibility and the
-    # finite-window triangle certificate used in the chapter.
+    # finite-window triangle estimate used in the chapter.
     gamma_data = {
         "alpha": Fraction(5, 7),
         "beta_extra": Fraction(-2, 3),
@@ -425,12 +425,12 @@ def check_observable_germ_finite_window_certificate():
     for key in ("alpha", "beta", "gamma"):
         lhs = abs(rec_i[key] - rec_j[key])
         rhs = error_i[key] + error_j[key]
-        assert_equal(f"finite-window universality certificate {key}", lhs, rhs)
+        assert_equal(f"finite-window universality estimate {key}", lhs, rhs)
 
     hidden_window_error = Fraction(1, 7)
     declared_finite_bound = error_i["alpha"] + error_j["alpha"]
     assert_true(
-        "uncontrolled window remains outside finite certificate",
+        "uncontrolled window remains outside finite estimate",
         hidden_window_error > declared_finite_bound,
     )
 
@@ -525,19 +525,19 @@ def check_qft_strength_observable_germ_windows():
     error_j = Fraction(1, 120)
     rec_i_visible = visible_two_point + error_i
     rec_j_visible = visible_two_point - error_j
-    finite_certificate = abs(rec_i_visible - rec_j_visible)
+    finite_visible_bound = abs(rec_i_visible - rec_j_visible)
     assert_equal(
-        "visible finite-window certificate",
-        finite_certificate,
+        "visible finite-window bound",
+        finite_visible_bound,
         error_i + error_j,
     )
     assert_true(
-        "visible certificate does not detect hidden positivity failure",
-        hidden_bad_det < 0 and finite_certificate < 1,
+        "visible bound does not detect hidden positivity failure",
+        hidden_bad_det < 0 and finite_visible_bound < 1,
     )
 
 
-def check_finite_os_positivity_certificate():
+def check_finite_os_positivity_bound():
     # Finite OS positivity is a Gram-matrix condition.  If a regulated Gram
     # matrix G_k has lower bound ell and the limiting Gram matrix differs
     # entrywise by at most epsilon, then
@@ -556,8 +556,8 @@ def check_finite_os_positivity_certificate():
         for i in range(dimension)
     ]
 
-    lower_certificate = ell - dimension * epsilon
-    assert_equal("finite OS lower certificate", lower_certificate, Fraction(7, 10))
+    lower_bound = ell - dimension * epsilon
+    assert_equal("finite OS lower bound", lower_bound, Fraction(7, 10))
 
     vector = [Fraction(2), Fraction(-1), Fraction(3)]
 
@@ -582,8 +582,8 @@ def check_finite_os_positivity_certificate():
         abs(limiting_value - regulated_value) <= entrywise_error_bound,
     )
     assert_true(
-        "finite OS certificate gives positive lower bound",
-        limiting_value >= lower_certificate * norm_squared,
+        "finite OS bound gives positive lower bound",
+        limiting_value >= lower_bound * norm_squared,
     )
 
     # The same concrete limiting matrix is positive by principal minors.  This
@@ -610,7 +610,7 @@ def check_finite_os_positivity_certificate():
     assert_true("finite OS limiting Gram determinant positive", determinant > 0)
 
 
-def check_stable_chart_observable_window_certificate():
+def check_stable_chart_observable_window_bound():
     theta = Fraction(1, 2)
     initial_stable_mismatch = Fraction(1, 5)
     one_step_defects = [
@@ -667,7 +667,7 @@ def check_stable_chart_observable_window_certificate():
         Fraction(60, 800),
     )
     assert_true(
-        "stable-chart certificate bounds finite-window difference",
+        "stable-chart bound controls finite-window difference",
         actual_window_difference <= window_bound,
     )
 
@@ -676,13 +676,13 @@ def check_stable_chart_observable_window_certificate():
         + total_declared_tail
     )
     assert_equal("stable-chart exact tuning removes relevant term", exactly_tuned_bound, Fraction(45, 800))
-    assert_true("stable-chart tuned certificate is sharper", exactly_tuned_bound < window_bound)
+    assert_true("stable-chart tuned bound is sharper", exactly_tuned_bound < window_bound)
 
 
 def check_polymer_contraction_budget():
     # The chapter's polymer datum gives
     #   x_{k+1} <= q x_k + B x_k^2 + epsilon.
-    # This exact rational test is deliberately finite: it certifies the
+    # This exact rational test is deliberately finite: it verifies the
     # contraction-budget arithmetic, not any model-specific analytic estimate
     # for q, B, epsilon, or the large-field norm.
     linear_gain = Fraction(2, 5)
@@ -1103,14 +1103,14 @@ def main():
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
     check_auxiliary_transfer_telescoping_bound()
-    check_auxiliary_projective_window_transfer_certificate()
+    check_auxiliary_projective_window_transfer_estimate()
     check_relevant_direction_tuning_amplification()
     check_c1_stable_graph_derivative_equation()
-    check_observable_germ_finite_window_certificate()
+    check_observable_germ_finite_window_estimate()
     check_projective_distribution_window_extension()
     check_qft_strength_observable_germ_windows()
-    check_finite_os_positivity_certificate()
-    check_stable_chart_observable_window_certificate()
+    check_finite_os_positivity_bound()
+    check_stable_chart_observable_window_bound()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()

@@ -357,14 +357,14 @@ def check_e8_ising_target_ratios() -> None:
     assert_close("E8 golden mass ratio", ratios[1], (1.0 + np.sqrt(5.0)) / 2.0)
     assert_close("E8 Coxeter eigenvalue mass ratio", ratios[2], 2.0 * np.cos(np.pi / 30.0))
 
-    certificate = e8_ratios.perron_frobenius_certificate()
+    pf_check = e8_ratios.perron_frobenius_check()
     assert_close(
         "E8 adjacency largest eigenvalue",
-        certificate["largest_adjacency_eigenvalue"],
-        certificate["expected_largest_adjacency_eigenvalue"],
+        pf_check["largest_adjacency_eigenvalue"],
+        pf_check["expected_largest_adjacency_eigenvalue"],
         tol=1.0e-13,
     )
-    assert_leq("E8 PF mass-ratio certificate", certificate["max_ratio_error"], 1.0e-12)
+    assert_leq("E8 PF mass-ratio check", pf_check["max_ratio_error"], 1.0e-12)
 
 
 def check_thooft_quadratic_form_identity() -> None:
@@ -426,7 +426,7 @@ def check_thooft_large_K_fit_algebra() -> None:
             raise AssertionError("finite large-K DLCQ diagnostic produced a non-finite fit")
 
 
-def check_residual_certificate() -> None:
+def check_residual_bound() -> None:
     eigenvalues = np.array([1.0, 3.0, 8.0])
     matrix = np.diag(eigenvalues)
     epsilon = 0.08
@@ -511,7 +511,7 @@ def check_krylov_residual_and_moments() -> None:
         assert_close(f"Krylov quadrature moment {power}", quadrature_moment, exact_moment, tol=1.0e-10)
 
 
-def check_variational_energy_certificates() -> None:
+def check_variational_energy_bounds() -> None:
     matrix = np.array(
         [
             [0.8, 0.25, -0.10, 0.05],
@@ -591,7 +591,7 @@ def check_light_front_kinematic_identities() -> None:
     assert_equal("fixed-sector invariant-mass spectrum", mass_eigenvalues, expected)
 
 
-def check_cross_method_consistency_certificate() -> None:
+def check_cross_method_consistency_bound() -> None:
     target = Fraction(13, 7)
     lattice_stat = Fraction(1, 50)
     lattice_remainder = Fraction(3, 100)
@@ -604,23 +604,23 @@ def check_cross_method_consistency_certificate() -> None:
     truncation_error = truncation_stat + truncation_remainder + truncation_matching
     lattice_coordinate = target + lattice_error
     truncation_coordinate = target - truncation_error
-    certificate_bound = lattice_error + truncation_error
+    compatibility_bound = lattice_error + truncation_error
 
     assert_equal(
         "cross-method worst-case compatibility bound",
         abs(lattice_coordinate - truncation_coordinate),
-        certificate_bound,
+        compatibility_bound,
     )
 
-    hidden_normalization_mismatch = certificate_bound + Fraction(1, 100)
-    if hidden_normalization_mismatch <= certificate_bound:
-        raise AssertionError("hidden mismatch should violate the declared certificate")
+    hidden_normalization_mismatch = compatibility_bound + Fraction(1, 100)
+    if hidden_normalization_mismatch <= compatibility_bound:
+        raise AssertionError("hidden mismatch should violate the declared compatibility bound")
 
 
 def check_benchmark_manifest_consistency() -> None:
     result = benchmark_manifest.analyze_manifest(benchmark_manifest.smoke_manifest())
     if not result["all_pairs_pass"]:
-        raise AssertionError("benchmark manifest smoke data should pass its finite pairwise certificate")
+        raise AssertionError("benchmark manifest smoke data should pass its finite pairwise check")
     assert_equal("benchmark manifest method count", result["method_count"], 3)
     pair_lookup = {(entry["left"], entry["right"]): entry for entry in result["pairs"]}
     lattice_truncation = pair_lookup[("lattice-transfer-matrix", "hamiltonian-truncation")]
@@ -657,12 +657,12 @@ def main() -> None:
     check_e8_ising_target_ratios()
     check_thooft_quadratic_form_identity()
     check_thooft_large_K_fit_algebra()
-    check_residual_certificate()
+    check_residual_bound()
     check_feshbach_determinant_identity()
     check_krylov_residual_and_moments()
-    check_variational_energy_certificates()
+    check_variational_energy_bounds()
     check_light_front_kinematic_identities()
-    check_cross_method_consistency_certificate()
+    check_cross_method_consistency_bound()
     check_benchmark_manifest_consistency()
     print("All Hamiltonian-truncation and DLCQ checks passed.")
 

@@ -417,19 +417,19 @@ Current checks:
   convention-sensitive quartic matrix elements, the large-\(N\)
   two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
   spin-block normalization, the \(E_8\) magnetic-Ising target-ratio
-  Perron-Frobenius certificate, light-front metric and mass-shell bookkeeping,
-  the one-particle measure Jacobian, residual-to-spectrum certification,
+  Perron--Frobenius check, light-front metric and mass-shell bookkeeping,
+  the one-particle measure Jacobian, residual-to-spectrum bound,
   spectral-projector leakage control, the finite Feshbach determinant
   identity behind truncation counterterms, and Krylov/Lanczos Ritz-residual
   plus finite spectral-moment identities.  It also verifies finite variational ansatz
   identities: energy variance as residual norm, spectral and ground-projector
-  certificates, tangent-gradient formula, and local-energy mean/variance
+  bounds, tangent-gradient formula, and local-energy mean/variance
   identities used by sampled neural-state calculations, and the finite
   cross-method compatibility bound for comparing lattice, Hamiltonian
   truncation, and DLCQ coordinates after the target observable and
   normalization maps have been declared.  The same check imports the
   reader-facing `qft_scripts/benchmark_manifest_consistency.py` smoke
-  manifest and verifies both a passing finite pairwise certificate and a
+  manifest and verifies both a passing finite pairwise check and a
   deliberately failing manifest outside the declared envelopes.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
@@ -450,6 +450,10 @@ Current checks:
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary
   \(SU(2)\) endpoint representations contribute only through singlet channels.
+  It further checks that boundary-charge neutrality is only the zero-mode
+  condition on the angular flux profile: opposite charges with the same
+  velocity cancel pointwise, while opposite charges with different velocities
+  have zero total charge but a nonzero angle-dependent flux profile.
   It also checks the compact abelian Wilson-line path-deformation algebra:
   the change of a line integral is an exact curvature surface flux and hence
   changes only a neutral surface factor, not the endpoint charge.
@@ -494,7 +498,7 @@ Current checks:
 - `cft_energy_detector_contact_checks.py`: exact finite positive-measure
   checks for the CFT light-ray/energy-correlator chapter, including the
   statewise detector Riesz bound, finite-bin Cauchy--Schwarz positivity,
-  finite-resolution Lipschitz partition certificates for one-detector and
+  finite-resolution Lipschitz partition estimates for one-detector and
   detector-product measures,
   compact moment-matrix positivity, finite-grid moment reconstruction,
   truncated-moment ambiguity,
@@ -640,25 +644,25 @@ Current checks:
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula used to separate stable comparison estimates from
   unstable tuning data.  It also checks the auxiliary projective-window
-  transfer certificate combining auxiliary-window convergence,
+  transfer estimate combining auxiliary-window convergence,
   auxiliary-to-target observable defects, short-range orbit-transfer
   defects, and normalization mismatch.  It also checks the differentiated
   Lyapunov--Perron equation for a finite one-dimensional nonlinear stable
   graph, verifying the \(C^1\) stable-graph derivative formula and tangency
   to the stable subspace.  It also checks the projective observable-germ finite-window
-  certificate used to prevent finite observable agreement from being
+  estimate used to prevent finite observable agreement from being
   overstated as full universality.  It also checks the projective
-  distribution-window extension certificate: compatible finite
+  distribution-window extension check: compatible finite
   test-function windows plus a single seminorm bound define one bounded
   functional, while restriction defects and declared-bound failures are
   detected explicitly.  It also checks the QFT-strength observable-germ
   warning that matching a visible finite correlator window can miss a hidden
   OS-positivity Gram-window failure.  It also checks the
-  finite OS-positivity certificate: if a regulated Gram matrix has a lower
+  finite OS-positivity bound: if a regulated Gram matrix has a lower
   spectral bound and the limiting window has a declared entrywise error, the
   limiting Gram matrix retains the quantified positive lower bound.  It also
   checks the
-  stable-chart observable-window certificate that decomposes a finite
+  stable-chart observable-window bound that decomposes a finite
   universality comparison into relevant mismatch, stable-coordinate
   contraction, accumulated one-step defects, and source-tail or
   normalization errors.  It also checks the
@@ -1841,7 +1845,7 @@ tools/run_calculation_checks.sh --only qcd_dglap --skip-wolfram
 The full runner is an explicit batch tool.  It is intentionally not invoked by
 `tools/build_monograph.sh`: the default build verifies manuscript structure
 and TeX consistency, while calculation checks are rerun when the formulae,
-normalizations, or conventions they certify have been touched.
+normalizations, or conventions they verify have been touched.
 
 For Wolfram Language checks, the runner requires a working batch backend when
 any `.wl` files are present.  On the author's macOS installation the preferred

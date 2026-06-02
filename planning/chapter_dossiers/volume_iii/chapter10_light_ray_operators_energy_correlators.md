@@ -125,7 +125,7 @@ The chapter establishes:
    are finite-resolution projections and must not be treated as complete
    detector data.
 4. Finite detector partitions approximate the statewise positive measure only
-   with a stated resolution certificate: for Lipschitz test functions the error
+   with a stated resolution estimate: for Lipschitz test functions the error
    is bounded by the partition diameter times the Lipschitz constant and total
    detector mass, and the corresponding \(k\)-detector statement uses the
    product metric and the total \(k\)-detector mass.  These bounds are
@@ -185,7 +185,7 @@ The chapter establishes:
   checks the statewise Riesz bound and finite-bin Cauchy--Schwarz positivity
   that precede detector products, together with finite-grid compact moment
   reconstruction, a truncated-moment ambiguity example, and finite-resolution
-  Lipschitz partition certificates for one-detector and detector-product
+  Lipschitz partition estimates for one-detector and detector-product
   measures.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
@@ -193,7 +193,7 @@ The chapter establishes:
   the finite arithmetic for the light-transform homogeneity map, the null-cut
   modular ANEC sign bookkeeping, and the transverse homogeneity ledger for
   light-ray OPE coefficient distributions.
-- 2026-06-02 conformal-collider spectral-certificate pass: upgraded the
+- 2026-06-02 conformal-collider spectral-diagonalization pass: upgraded the
   Hofman--Maldacena positivity derivation from testing representatives in the
   three little-group sectors to a displayed orthogonal spectral decomposition
   of the detector quadratic form on the full symmetric-traceless polarization

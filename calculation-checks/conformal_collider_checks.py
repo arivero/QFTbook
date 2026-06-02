@@ -108,7 +108,7 @@ def check_helicity_bounds() -> None:
     assert_equal("helicity-0 collider polynomial", helicity_zero, (Fraction(1, 1), Fraction(1, 3), Fraction(8, 15)))
 
 
-def check_helicity_projector_spectral_certificate() -> None:
+def check_helicity_projector_spectral_diagonalization() -> None:
     """Check the full helicity-sector spectral decomposition."""
 
     n: Vector = (Fraction(0), Fraction(0), Fraction(1))
@@ -267,7 +267,7 @@ def check_light_ray_ope_transverse_scaling_bookkeeping() -> None:
 def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
-    check_helicity_projector_spectral_certificate()
+    check_helicity_projector_spectral_diagonalization()
     check_normalization_integrates_to_total_energy()
     check_light_transform_homogeneity_map()
     check_null_cut_modular_anec_sign_bookkeeping()

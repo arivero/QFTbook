@@ -2675,7 +2675,7 @@ close to the transferred auxiliary initial condition.  If the allowed
 normalization of the short-range window differs from the pushed-forward
 auxiliary normalization by at most \(n_{\alpha,k}\), the triangle inequality
 and \eqref{eq:auxiliary-short-range-telescoping-bound} give the finite
-projective-window transfer certificate
+projective-window transfer estimate
 \begin{equation}
 \begin{aligned}
   p_\alpha^{\rm sr}\!\left(
@@ -2692,11 +2692,11 @@ projective-window transfer certificate
   \sum_{j=0}^{k-1}
   \left(\prod_{\ell=j+1}^{k-1}M_\ell\right)\delta_j(y_0).
 \end{aligned}
-  \label{eq:auxiliary-target-projective-window-certificate}
+  \label{eq:auxiliary-target-projective-window-estimate}
 \end{equation}
 Thus an auxiliary fixed point transfers to the ordinary short-range
 observable germ only after the right-hand side of
-\eqref{eq:auxiliary-target-projective-window-certificate} tends to zero for
+\eqref{eq:auxiliary-target-projective-window-estimate} tends to zero for
 every window \(\alpha\) in the directed family.  The estimate separates four
 different analytic tasks: convergence of the auxiliary observable window,
 comparison of auxiliary and target reconstructions, control of the target
@@ -3270,7 +3270,7 @@ desired local observables.  After this distributional object exists, the
 finite reflection-positivity windows below test whether it is eligible for
 OS reconstruction.
 
-\paragraph{Finite OS-positivity certificates.}
+\paragraph{Finite OS-positivity Gram-matrix bounds.}
 The positivity windows in
 Definition~\ref{def:local-qft-strength-observable-germ} are not decorative.
 They are finite Gram matrices whose limits must be controlled before
@@ -3320,7 +3320,7 @@ then
   c^\ast G_{\ast,\mathcal F}c
   \ge
   \bigl(\ell-m\epsilon\bigr)\|c\|_2^2 .
-  \label{eq:rg-finite-os-positivity-certificate}
+  \label{eq:rg-finite-os-positivity-bound}
 \end{equation}
 Indeed,
 \[
@@ -3330,13 +3330,25 @@ Indeed,
   \le
   m\epsilon\,\|c\|_2^2 .
 \]
-Equation~\eqref{eq:rg-finite-os-positivity-certificate} is the finite
-certificate one can actually verify in an RG or lattice estimate.  OS
-positivity for the continuum hierarchy requires this certificate, or the
-corresponding limiting argument, for every finite positive-time test family
-in the directed observable germ.  Agreement of separated two-point entries,
-critical exponents, or a finite list of amplitudes does not supply the
-missing Gram windows.
+Equation~\eqref{eq:rg-finite-os-positivity-bound} is a finite
+Gram-matrix lower bound, not an OS reconstruction theorem.  For this
+entrywise form to give a positive lower bound on a family of size \(m\), one
+needs \(\epsilon<\ell/m\).  Hence a directed-family OS theorem cannot be
+obtained by fixing an error tolerance independently of the number of test
+vectors: if \(\mathcal F_N\) is an increasing family with
+\(m_N=|\mathcal F_N|\), the estimate must supply
+\(\epsilon_{N,k}\) and \(\ell_{N,k}\) with
+\(\ell_{N,k}-m_N\epsilon_{N,k}\ge0\) in the limit being taken, or else use a
+stronger operator-norm estimate
+\(\|G_{\ast,\mathcal F_N}-G_{k,\mathcal F_N}\|_{\ell^2\to\ell^2}
+\le\epsilon^{\rm op}_{N,k}\) with
+\(\ell_{N,k}-\epsilon^{\rm op}_{N,k}\ge0\).  Producing such
+family-size-compatible error control from RG estimates is a load-bearing
+part of the theorem.  OS positivity for the continuum hierarchy requires
+this bound, or the corresponding limiting argument, for every finite
+positive-time test family in the directed observable germ.  Agreement of
+separated two-point entries, critical exponents, or a finite list of
+amplitudes does not supply the missing Gram windows.
 
 \paragraph{When universality reconstructs the same local QFT.}
 Suppose a Wilsonian universality statement has a local-QFT-strength
@@ -3382,7 +3394,7 @@ each \(\alpha\in\mathfrak A_0\),
   \right)
   \leq e_{\alpha,j,n},
 \end{equation}
-then the triangle inequality gives the finite certificate
+then the triangle inequality gives the finite-window estimate
 \begin{equation}
   p_\alpha\!\left(
     g_i\,\operatorname{Rec}_{i,n}^{\alpha}(V_i)
@@ -3391,10 +3403,10 @@ then the triangle inequality gives the finite certificate
   \right)
   \leq e_{\alpha,i,n}+e_{\alpha,j,n},
   \qquad \alpha\in\mathfrak A_0 .
-  \label{eq:finite-window-universality-certificate}
+  \label{eq:finite-window-universality-estimate}
 \end{equation}
 
-A finite-window certificate becomes substantially more informative when its
+A finite-window estimate becomes substantially more informative when its
 error is expressed in RG coordinates.  Fix a finite window
 \(\alpha\in\mathfrak A\) and a scale \(n_0\) after which two normalized
 microscopic data lie in a common stable chart at \(V_\ast\).  Write
@@ -3438,7 +3450,7 @@ bounded by \(\Xi_{\alpha,m}\).  Then the finite observable-window bound is
   +
   \Xi_{\alpha,m}.
 \end{aligned}
-  \label{eq:stable-chart-finite-window-certificate}
+  \label{eq:stable-chart-finite-window-bound}
 \end{equation}
 This is the finite-scale form of a Wilsonian universality comparison.  Its
 derivation is the iteration of
@@ -3446,12 +3458,12 @@ derivation is the iteration of
 bound for the reconstruction map in the chosen window.  Exact tuning means
 \(\delta_u=0\).  A theorem-level universality result must prove constants
 for every window in a directed family and show that the right-hand side of
-\eqref{eq:stable-chart-finite-window-certificate} tends to zero along the
+\eqref{eq:stable-chart-finite-window-bound} tends to zero along the
 claimed continuum or long-distance limit.  Without that directed-window
-limit, \eqref{eq:stable-chart-finite-window-certificate} remains a precise
-finite observation certificate.
+limit, \eqref{eq:stable-chart-finite-window-bound} remains a precise
+finite observation bound.
 
-The theorem-level burden is the passage from these finite certificates to
+The theorem-level burden is the passage from these finite bounds to
 \eqref{eq:observable-germ-universality-convergence} for the directed family
 of observation windows.
 

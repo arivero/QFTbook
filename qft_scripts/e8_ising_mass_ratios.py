@@ -14,7 +14,7 @@ The smoke check compares two descriptions of the same target ratios:
 2. the positive Perron-Frobenius eigenvector of the E8 Dynkin adjacency
    matrix, normalized by its smallest component.
 
-The equality of these two finite lists is a convention certificate for the
+The equality of these two finite lists is a convention check for the
 target table used in plots and extrapolation diagnostics.
 """
 
@@ -63,7 +63,7 @@ def e8_adjacency() -> np.ndarray:
     return adjacency
 
 
-def perron_frobenius_certificate() -> dict[str, object]:
+def perron_frobenius_check() -> dict[str, object]:
     """Return finite adjacency-eigenvector data for the E8 ratios."""
 
     adjacency = e8_adjacency()
@@ -84,12 +84,12 @@ def perron_frobenius_certificate() -> dict[str, object]:
 
 def run() -> dict[str, object]:
     ratios = mass_ratios()
-    certificate = perron_frobenius_certificate()
+    pf_check = perron_frobenius_check()
     return {
         "model": "magnetic Ising integrable E8 target data",
         "mass_ratios_m_over_m1": [float(x) for x in ratios],
         "golden_ratio_check": float(abs(ratios[1] - (1.0 + math.sqrt(5.0)) / 2.0)),
-        "pf_certificate": certificate,
+        "pf_check": pf_check,
         "interpretation": (
             "exact continuum target data for benchmark comparison; not a "
             "finite TCSA or TFFSA spectrum computation"
@@ -114,13 +114,13 @@ def main() -> None:
             raise AssertionError("E8 ratios are not strictly increasing")
         if result["golden_ratio_check"] > 1.0e-14:
             raise AssertionError("E8 second mass ratio is not the golden ratio")
-        certificate = result["pf_certificate"]
+        pf_check = result["pf_check"]
         if abs(
-            certificate["largest_adjacency_eigenvalue"]
-            - certificate["expected_largest_adjacency_eigenvalue"]
+            pf_check["largest_adjacency_eigenvalue"]
+            - pf_check["expected_largest_adjacency_eigenvalue"]
         ) > 1.0e-13:
             raise AssertionError("E8 adjacency eigenvalue does not match 2 cos(pi/30)")
-        if certificate["max_ratio_error"] > 1.0e-12:
+        if pf_check["max_ratio_error"] > 1.0e-12:
             raise AssertionError("E8 PF component ratios do not match mass-ratio table")
     print(json.dumps(result, sort_keys=True))
 

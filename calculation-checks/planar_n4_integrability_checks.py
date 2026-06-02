@@ -400,13 +400,13 @@ def check_twist_two_qsc_baxter_family() -> None:
                     + (z_value - 1) ** 3 / (z_value + length - 1)
                     - (2 * z_value * z_value - 2 * z_value + spin * (spin + 1) + 1)
                 ) * term
-                certificate = (
+                telescoping_right_side = (
                     Fraction((length + 1) ** 3, 1) / (z_value + length) * next_term
                     - Fraction(length**3, 1) / (z_value + length - 1) * term
                 )
-                if summand_defect != certificate:
+                if summand_defect != telescoping_right_side:
                     raise AssertionError(
-                        f"twist-two exact telescoping certificate S={spin} k={length}"
+                        f"twist-two exact telescoping identity S={spin} k={length}"
                     )
 
 
@@ -1205,8 +1205,8 @@ def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
     assert_close("DHM pole clearance vanishes on pole lattice", pole_clearance(unsafe_delta), 0)
 
 
-def check_su2c_intertwiner_rank_certificate() -> None:
-    """Check the generic one-scalar rank certificate for the su(2|2)c intertwiner."""
+def check_su2c_intertwiner_rank_chart() -> None:
+    """Check the generic one-scalar row-rank chart for the su(2|2)c intertwiner."""
 
     x1_plus = Fraction(2, 1)
     x1_minus = Fraction(3, 1)
@@ -1357,7 +1357,7 @@ def check_su2c_intertwiner_rank_certificate() -> None:
     for row in rows:
         residual = sum(row[index] * amplitudes[column] for index, column in enumerate(columns))
         if residual:
-            raise AssertionError(f"su(2|2)c rank certificate residual: {residual}")
+            raise AssertionError(f"su(2|2)c rank-chart residual: {residual}")
 
     if amplitudes["A"] != (a1 / a2) * amplitudes["K"] + amplitudes["G"]:
         raise AssertionError("su(2|2)c rank chart lost the first Q relation")
@@ -5185,7 +5185,7 @@ def main() -> None:
     check_dhm_weak_dressing_coefficients()
     check_dhm_local_residue_continuation()
     check_dhm_gamma_pole_lattice_and_admissibility()
-    check_su2c_intertwiner_rank_certificate()
+    check_su2c_intertwiner_rank_chart()
     check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()

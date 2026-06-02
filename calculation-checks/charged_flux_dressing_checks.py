@@ -86,6 +86,50 @@ def check_velocity_read_from_flux_extrema() -> None:
         assert_close(f"flux extrema ratio beta={beta}", maximum / minimum, expected_ratio)
 
 
+def rational_flux_shape_without_four_pi(q: Fraction, beta: Fraction, z: Fraction) -> Fraction:
+    """Return 4*pi times the axial boosted Coulomb flux density."""
+
+    return q * (1 - beta * beta) / (1 - beta * z) ** 2
+
+
+def rational_flux_zero_mode_without_two_pi(q: Fraction, beta: Fraction) -> Fraction:
+    """Return the z-integral of 4*pi times the axial flux density."""
+
+    if beta == 0:
+        return 2 * q
+    return q * (1 - beta * beta) * (
+        Fraction(1, beta * (1 - beta)) - Fraction(1, beta * (1 + beta))
+    )
+
+
+def check_neutral_boundary_charge_is_not_flux_triviality() -> None:
+    """Check that zero total charge does not force zero angular flux profile."""
+
+    charge = Fraction(1)
+    same_beta = Fraction(1, 3)
+    different_beta = Fraction(-1, 3)
+
+    for z in (Fraction(-1), Fraction(0), Fraction(1)):
+        same_velocity_profile = rational_flux_shape_without_four_pi(charge, same_beta, z) + (
+            rational_flux_shape_without_four_pi(-charge, same_beta, z)
+        )
+        assert_equal("opposite charges with the same velocity cancel pointwise", same_velocity_profile, 0)
+
+    zero_mode = rational_flux_zero_mode_without_two_pi(charge, same_beta) + (
+        rational_flux_zero_mode_without_two_pi(-charge, different_beta)
+    )
+    assert_equal("opposite charges with different velocities have zero total charge", zero_mode, 0)
+
+    north_profile = rational_flux_shape_without_four_pi(charge, same_beta, Fraction(1)) + (
+        rational_flux_shape_without_four_pi(-charge, different_beta, Fraction(1))
+    )
+    assert_equal(
+        "neutral opposite-velocity pair has nonzero angular flux profile",
+        north_profile,
+        Fraction(3, 2),
+    )
+
+
 def check_worldline_current_denominator() -> None:
     mass = 2.3
     charge = -0.7
@@ -562,6 +606,7 @@ def check_compact_wilson_line_path_deformation() -> None:
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
+    check_neutral_boundary_charge_is_not_flux_triviality()
     check_worldline_current_denominator()
     check_half_line_fourier_transform()
     check_coulomb_tail_dollard_log_phase()

@@ -5,10 +5,10 @@ The checks model a finite positive calorimetric measure on the detector
 sphere.  They verify the algebra behind the diagonal contact terms used in
 the CFT light-ray/energy-correlator chapter.  The finite model is not a
 substitute for the operator-valued-distribution construction; it fixes the
-partition and moment bookkeeping that the continuum construction must
-preserve.  The finite-resolution checks verify the Lipschitz partition
-certificates used to pass from finite angular bins to statewise detector
-measures and detector-product measures.
+    partition and moment bookkeeping that the continuum construction must
+    preserve.  The finite-resolution checks verify the Lipschitz partition
+    estimates used to pass from finite angular bins to statewise detector
+    measures and detector-product measures.
 """
 
 from __future__ import annotations
@@ -157,7 +157,7 @@ def check_finite_bin_cauchy_schwarz() -> None:
     assert_nonnegative("finite-bin detector Cauchy-Schwarz determinant", vv * ww - vw * vw)
 
 
-def check_finite_partition_lipschitz_certificate() -> None:
+def check_finite_partition_lipschitz_estimate() -> None:
     # One-dimensional finite shadow of angular bin refinement.  Points are
     # binned to representatives within distance delta.  For an L-Lipschitz
     # test, the detector error is bounded by L delta times total energy.
@@ -179,7 +179,7 @@ def check_finite_partition_lipschitz_certificate() -> None:
     assert_equal("finite partition total energy", total_energy, Fraction(1))
     assert_equal("finite partition detector error", error, Fraction(3, 25))
     assert_equal("finite partition detector bound", bound, Fraction(2, 5))
-    assert_nonnegative("finite partition Lipschitz certificate", bound - error)
+    assert_nonnegative("finite partition Lipschitz estimate", bound - error)
 
     # Product-measure version for F(x,y)=x-2y.  With the sum product metric,
     # an admissible Lipschitz constant is max(1,2)=2, and the chapter's
@@ -201,7 +201,7 @@ def check_finite_partition_lipschitz_certificate() -> None:
     product_bound = 2 * lipschitz_F * delta * total_energy**2
     assert_equal("finite product partition error", product_error, Fraction(3, 50))
     assert_equal("finite product partition bound", product_bound, Fraction(4, 5))
-    assert_nonnegative("finite product partition Lipschitz certificate", product_bound - product_error)
+    assert_nonnegative("finite product partition Lipschitz estimate", product_bound - product_error)
 
 
 def check_compact_moment_positive_matrix() -> None:
@@ -287,7 +287,7 @@ def check_three_detector_partition_decomposition() -> None:
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
-    check_finite_partition_lipschitz_certificate()
+    check_finite_partition_lipschitz_estimate()
     check_compact_moment_positive_matrix()
     check_three_point_grid_moment_reconstruction()
     check_truncated_moment_ambiguity()

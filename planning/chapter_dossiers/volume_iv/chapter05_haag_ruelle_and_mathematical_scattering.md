@@ -124,6 +124,10 @@ resonances.
   denominator \(p\cdot k\) in the Faddeev--Kulish soft profile.
 - Proves that the boosted Coulomb flux integrates to the charge and that, for
   nonzero charge, the angular flux density determines the charged velocity.
+- Separates total boundary-charge neutrality from equality of angular
+  Gauss-law flux sectors: a neutral dressed correlator obeys only the
+  zero-mode Ward condition, while opposite charges at distinct asymptotic
+  velocities can still carry a nonzero limiting angular flux profile.
 - Proves that finite-cutoff soft coherent profiles with distinct charged
   velocities have a norm difference proportional to
   \(\log(\Lambda/\lambda)\mathcal A(v,w)\), with
@@ -173,6 +177,10 @@ resonances.
   and its invariance under finite dressing-coordinate changes.  It now also
   checks the boundary-charge selection rule for abelian dressed correlators
   and elementary \(SU(2)\) endpoint singlet channels.  It now also verifies
+  that boundary-charge neutrality is weaker than flux-sector triviality:
+  opposite charges at the same velocity cancel the angular profile pointwise,
+  whereas opposite charges at different velocities have vanishing total
+  charge but a nonzero angular flux profile.  It now also verifies
   the finite abelian Stokes bookkeeping for compact Wilson-line path
   deformations: the change of line integral is a curvature surface flux, and
   the associated surface factor carries no endpoint gauge charge.
@@ -258,6 +266,11 @@ resonances.
   vague "neutral Wilson loop" assertion and makes clear exactly which
   same-flux dressing changes are finite LSZ-coordinate changes, while leaving
   the asymptotic-ray problem as genuine charged-sector proof debt.
+- 2026-06-02 #527 continuation: added a non-theorem synthesis distinguishing
+  signed boundary-charge neutrality from equality of the limiting angular
+  Gauss-law flux profile.  The passage prevents a false path-independence
+  inference: vanishing total charge is a necessary zero-mode Ward identity,
+  not a statement that the charged asymptotic flux sector is trivial.
 - 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
   after the one-pair Coulomb-tail calculation.  The new paragraph defines the
   creator/adjoint signs, the pairwise derivative of the comparison phase, the

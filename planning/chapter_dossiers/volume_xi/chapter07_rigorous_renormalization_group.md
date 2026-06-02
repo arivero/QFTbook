@@ -114,7 +114,7 @@ constructive RG developments.
 - `a_{alpha,k}`, `epsilon_{alpha,k}`, `L_{alpha,k}`, `n_{alpha,k}`:
   auxiliary-window convergence error, auxiliary-to-target observable-window
   defect, short-range reconstruction Lipschitz constant, and normalization
-  mismatch in the projective-window transfer certificate.
+  mismatch in the projective-window transfer estimate.
 - `Gamma_f`, `Gamma_c`, `P_e`, `B(A)_e`: finite fine/coarse gauge graphs,
   the chosen fine path assigned to a coarse edge, and the blocked coarse link
   defined by path product of fine links.
@@ -232,7 +232,7 @@ constructive RG developments.
   \(\|z_n\|\le \sum_j(\prod_{\ell>j}M_\ell)\delta_j\), the stable geometric
   bound when \(M_j\le\theta<1\), and the separate relevant-coordinate
   amplification estimate requiring target tuning-map control.
-- Derives the projective-window transfer certificate
+- Derives the projective-window transfer estimate
   \(n_{\alpha,k}+a_{\alpha,k}+\epsilon_{\alpha,k}
   +L_{\alpha,k}\sum_j(\prod_{\ell>j}M_\ell)\delta_j\), separating auxiliary
   observable convergence, auxiliary-to-target observable comparison, target
@@ -272,7 +272,7 @@ constructive RG developments.
   and normalization group.
 - Refines the phrase "universality class" to an equivalence class of
   normalized observable germs in a projective topology of finite observation
-  windows, and separates finite-window certificates from theorem-level
+  windows, and separates finite-window estimates from theorem-level
   convergence in the full directed family.
 - Defines a local-QFT-strength observable germ: the directed observable
   family must include full tempered distribution windows, OS or Wightman
@@ -285,13 +285,13 @@ constructive RG developments.
   distribution extending all windows.  This identifies the exact bridge from
   finite RG observation windows to a Schwinger distribution eligible for
   OS/Wightman reconstruction tests.
-- Derives the finite OS-positivity Gram-window certificate used by a
+- Derives the finite OS-positivity Gram-window bound used by a
   reconstruction-strength observable germ: entrywise convergence of every
   finite positive-time test-family Gram matrix preserves positivity in the
   limit, and a regulated lower bound plus an entrywise error gives the
   explicit lower estimate
   \(c^*G_*c\ge(\ell-m\epsilon)\|c\|_2^2\).
-- Adds a finite stable-chart observable-window certificate: after the
+- Adds a finite stable-chart observable-window bound: after the
   microscopic data have entered one RG chart, the finite observation-window
   difference is bounded by the relevant mismatch, stable-coordinate
   contraction, accumulated one-step comparison defects, and declared
@@ -330,13 +330,13 @@ remainder contraction.
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
   estimate, relevant-direction amplification formula, differentiated
   Lyapunov--Perron \(C^1\) stable-graph formula, and projective
-  observable-germ finite-window certificate.  The same script now checks the
-  projective distribution-window extension certificate: restriction
+  observable-germ finite-window estimate.  The same script now checks the
+  projective distribution-window extension lemma: restriction
   compatibility, induced finite functional value, a single seminorm bound,
   and the exact defects produced by incompatible windows or a failed declared
   bound.  It also checks a finite OS-positivity Gram-window failure that is
   invisible in a declared one-coordinate observable window, and now checks
-  the finite OS-positivity certificate with an explicit regulated lower bound
+  the finite OS-positivity bound with an explicit regulated lower bound
   and entrywise limiting error.  It also checks the exact finite arithmetic
   behind the polymer
   contraction budget and the quadratic circle-product bound, including a
@@ -347,7 +347,7 @@ remainder contraction.
   checks source-window extraction for a source-extended polymer chart,
   including retained-derivative vanishing, omitted third-derivative Cauchy
   bounds, and propagated scale-summed source-tail errors.  It also checks
-  the stable-chart finite-window certificate, decomposing the observable
+  the stable-chart finite-window bound, decomposing the observable
   error into relevant, stable, defect, and source-tail pieces.
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
@@ -420,13 +420,17 @@ remainder contraction.
   check now exhibits an exact finite hidden-window failure: a visible
   two-point coordinate can agree while an undeclared reflection-positivity
   Gram determinant is negative.
-- 2026-06-02 finite OS-positivity certificate pass: added the concrete
+- 2026-06-02 finite OS-positivity Gram-bound pass: added the concrete
   finite Gram-window mechanism that a reconstruction-strength observable
   germ must control.  The chapter now derives passage of OS positivity to the
   limiting Gram matrix and gives the quantitative
-  \((\ell-m\epsilon)\)-lower-bound certificate; the companion short-range RG
-  check verifies the same rational arithmetic on an explicit finite window.
-- 2026-06-02 stable-chart finite-window certificate pass: added the
+  \((\ell-m\epsilon)\)-lower bound.  The anti-inflation audit now stresses
+  the real directed-family burden: for an expanding family of \(m\) test
+  vectors, an entrywise estimate must scale like \(O(1/m)\), or be replaced by
+  an operator-norm estimate, before it can support OS reconstruction.  The
+  companion short-range RG check verifies the same rational arithmetic on an
+  explicit finite window.
+- 2026-06-02 stable-chart finite-window bound pass: added the
   RG-coordinate error budget behind finite universality evidence.  The
   chapter now bounds a finite reconstructed window by a tuned relevant
   mismatch, a stable contraction term, accumulated one-step defects, and
@@ -444,7 +448,7 @@ remainder contraction.
   Schwartz-seminorm continuity estimate, and the companion short-range RG
   check verifies the same finite restriction and boundedness arithmetic.
 - 2026-06-02 auxiliary projective-window transfer pass: added the
-  finite-window certificate needed before an auxiliary fixed-point theorem
+  finite-window estimate needed before an auxiliary fixed-point theorem
   can be read as a statement about the ordinary short-range observable germ.
   The bound now separates auxiliary-window convergence, auxiliary-to-target
   observable comparison, target orbit-transfer defects, and normalization

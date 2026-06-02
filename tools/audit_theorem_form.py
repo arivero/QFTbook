@@ -121,7 +121,6 @@ CALCULATION_WRAPPER_TITLE_RE = re.compile(
     r"Collapsed-cut digamma package|"
     r"Small-spin QSC slope|"
     r"Local intertwining and block-unitarity constraints|"
-    r"Generic rank certificate for the one-copy intertwiner|"
     r"Single level-III nesting step|"
     r"Weak limit of the rank-one ABA orientation|"
     r"Covariance of the free scalar field|"

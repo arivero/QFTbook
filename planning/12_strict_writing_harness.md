@@ -530,9 +530,20 @@ operator family, amplitude, chart, table, spectral problem, or theorem.  Use
 "ledger" only for an actual finite bookkeeping table whose entries are later
 checked, not as a synonym for discussion or list.  Use "certified" or
 "certification" only for source-coverage and calculation-check status, not as
-a decorative assurance in the reader-facing text.  High-density clusters of
-these terms should be treated as an audit finding even when every individual
-occurrence is locally defensible.
+a decorative assurance in the reader-facing text.
+
+Do not call a routine finite estimate a "certificate" unless a precise
+technical notion of certificate is defined and used, such as an SDP dual
+certificate, an interval-arithmetic proof object, an independently checkable
+formal proof term, or a witness satisfying an explicitly stated verification
+predicate.  Otherwise use the honest mathematical name: Gram-matrix lower
+bound, Lipschitz estimate, distributional extension lemma, spectral
+diagonalization, flatness condition, finite-window bound, or exact arithmetic
+check.  Every finite check must also state what continuum or QFT theorem it
+does not prove.
+
+High-density clusters of these terms should be treated as an audit finding
+even when every individual occurrence is locally defensible.
 
 ## Positive Formulation Rule
 

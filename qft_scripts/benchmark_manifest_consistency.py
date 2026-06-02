@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Finite cross-method benchmark-manifest consistency check.
 
-The script implements the finite certificate described in Volume XI,
+The script implements the finite check described in Volume XI,
 Chapter 10.  A manifest records several regulator methods that purport to
 estimate the same finite coordinate of a declared target observable after
 normalization.  For each pair of methods the script checks
@@ -10,7 +10,7 @@ normalization.  For each pair of methods the script checks
 
 componentwise, where e_m is the declared sum of statistical error,
 finite-regulator envelope, and scheme-matching error.  Passing this check is
-only a finite-regulator consistency certificate.  It is not a proof of the
+only a finite-regulator consistency check.  It is not a proof of the
 continuum extrapolation hypothesis or of the correctness of the error model.
 """
 
@@ -117,7 +117,7 @@ def parse_manifest(raw: dict[str, Any]) -> tuple[dict[str, Any], list[MethodDatu
     dimension = int(observable["dimension"])
     require(dimension > 0, "observable dimension must be positive")
     norm = str(observable["norm"])
-    require(norm == "componentwise", "only componentwise benchmark certificates are implemented")
+    require(norm == "componentwise", "only componentwise benchmark checks are implemented")
 
     methods_raw = raw.get("methods")
     require(isinstance(methods_raw, list) and len(methods_raw) >= 2, "manifest must contain at least two methods")

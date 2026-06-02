@@ -1960,6 +1960,43 @@ This ratio determines \(|\mathbf v|\), and the direction of the maximum
 determines the direction of \(\mathbf v\).  The case \(\mathbf v=0\) is the
 unique rotationally invariant density.
 
+\paragraph{Neutral boundary charge versus angular flux sector.}
+The boundary-charge condition
+\eqref{eq:dressed-correlator-boundary-charge-selection} is the zero-mode of
+a sharper asymptotic datum.  For an oriented list of charged asymptotic
+coordinates
+\[
+  I=((\epsilon_1,q_1,\mathbf v_1),\ldots,
+     (\epsilon_N,q_N,\mathbf v_N)),
+  \qquad \epsilon_a=\pm1,
+\]
+define the signed angular flux profile
+\begin{equation}
+  \mathcal E_I(\mathbf n)
+  =
+  \sum_{a=1}^{N}\epsilon_a\,
+  \mathcal E_{q_a,\mathbf v_a}(\mathbf n).
+  \label{eq:charged-multiparticle-angular-flux-profile}
+\end{equation}
+By \eqref{eq:boosted-coulomb-flux-integral},
+\[
+  \int_{S^2}\dd\Omega(\mathbf n)\,\mathcal E_I(\mathbf n)
+  =
+  \sum_{a=1}^{N}\epsilon_a q_a .
+\]
+Thus a vacuum dressed correlator can obey the ordinary boundary-charge Ward
+identity while still having nonzero angle-dependent flux data.  For instance,
+two opposite charges with the same velocity have
+\(\mathcal E_I(\mathbf n)=0\) pointwise.  Two opposite charges with distinct
+velocities have zero total boundary charge but, unless the velocity labels
+coincide, the profile \(\mathcal E_I\) is not the zero function.  The
+charged LSZ datum therefore contains more information than the integer or
+real total charge: it contains the limiting angular Gauss-law profile, or an
+equivalent large-gauge-charge functional.  A same-flux dressing change is a
+finite coordinate change of the type described above; a change of
+\(\mathcal E_I\) changes the asymptotic charged sector and belongs to the
+open Haag--Ruelle problem, not to a harmless path-independence argument.
+
 \subsection{Soft Coherent Norm and Velocity Superselection}
 
 The preceding flux density is visible already in the finite-cutoff soft

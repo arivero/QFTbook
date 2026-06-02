@@ -13,7 +13,16 @@ import re
 from pathlib import Path
 
 
-TERMS = ("datum", "ledger", "certification", "certified")
+TERMS = (
+    "datum",
+    "ledger",
+    "certificate",
+    "certificates",
+    "certification",
+    "certified",
+    "certifies",
+    "certify",
+)
 PATTERN = re.compile(r"\b(" + "|".join(re.escape(t) for t in TERMS) + r")\b", re.I)
 
 

@@ -2,7 +2,7 @@
 
 This directory contains small reader-facing finite-regulator demonstrations
 for the monograph.  They are distinct from `calculation-checks/`: calculation
-checks certify signs and formulae used directly in the text, while companion
+checks verify signs and formulae used directly in the text, while companion
 scripts illustrate numerical regulator frameworks.
 
 Quick smoke run:
@@ -46,19 +46,19 @@ notebooks or CI checks can consume the results without scraping prose.
 
 ## How To Read A Script Result
 
-Every script is a finite-regulator certificate, not a continuum QFT claim.
+Every script is a finite-regulator check, not a continuum QFT claim.
 The corresponding manuscript discussion is in Volume XI, especially
 Chapter 6 for Monte Carlo and Chapter 10 for truncation, DLCQ, extrapolation,
 and benchmark manifests.
 
-For each script, the certificate consists of four pieces:
+For each script, the check record consists of four pieces:
 
 1. a declared finite regulator datum;
 2. a finite output map computed by the script;
 3. algebraic, spectral, measure, or statistical identities checked by the
    smoke mode and, where present, by `calculation-checks/`;
 4. an explicit scope boundary stating what continuum, infinite-volume,
-   large-cutoff, or production-ensemble claim is not certified.
+   large-cutoff, or production-ensemble claim is not proved.
 
 The smoke harness checks implementation health.  It does not prove a
 continuum limit, a physical spectrum, a mass gap, confinement, universality,
@@ -130,7 +130,7 @@ per task.
 - `hmc_rhmc_finite_demo.py`: finite HMC/RHMC smoke module.  It samples a
   periodic scalar lattice action by reversible leapfrog HMC and evaluates a
   positive rational pseudofermion action by shifted conjugate-gradient solves.
-  The JSON certificate reports acceptance, maximum Hamiltonian change,
+  The JSON check record reports acceptance, maximum Hamiltonian change,
   reversibility defect, positive-matrix spectral edge, rational action, and
   solver residuals.
 - `autocorrelation_resampling.py`: one-column Markov-chain time-series
@@ -190,7 +190,7 @@ per task.
   magnetic-Ising or \(E_8\) spectrum claim.
 - `e8_ising_mass_ratios.py`: exact \(E_8\) magnetic-Ising target-data table
   for benchmark comparisons.  It prints the eight mass ratios and verifies
-  the finite Perron-Frobenius certificate from the \(E_8\) Dynkin adjacency
+  the finite Perron--Frobenius check from the \(E_8\) Dynkin adjacency
   matrix.  It is target data for continuum comparison, not a finite TCSA or
   TFFSA spectrum computation.
 - `thooft_dlcq.py`: finite harmonic-resolution matrix for the large-\(N\)
@@ -206,11 +206,11 @@ per task.
   matrix, declared remainder envelopes, and one or more fit windows; it
   reports fitted intercepts, propagated statistical errors, deterministic
   systematic coordinates, residuals, and window spread.  It is a data-analysis
-  certificate for a declared finite-regulator ansatz, not a proof of the
+  check for a declared finite-regulator ansatz, not a proof of the
   ansatz.
 - `benchmark_manifest_consistency.py`: finite cross-method benchmark-manifest
   checker.  It reads a JSON manifest containing a target observable,
   method-specific normalized coordinates, statistical errors, regulator
   envelopes, matching errors, covariance/provenance data when available, and
-  reports the pairwise componentwise consistency matrix.  It certifies only
+  reports the pairwise componentwise consistency matrix.  It verifies only
   finite compatibility with declared errors, not a continuum QFT conclusion.

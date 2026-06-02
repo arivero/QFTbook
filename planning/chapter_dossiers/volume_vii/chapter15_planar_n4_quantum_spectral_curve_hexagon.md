@@ -178,7 +178,7 @@ three-point functions.
   `Q_S(u) = 3F2(-S,S+1,1/2-iu;1,1;1)`, its finite-difference equation,
   endpoint/cyclicity values, harmonic-number logarithmic derivative, and the
   one-loop dimension `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even
-  spin.  The proof uses a finite summand-level telescoping certificate and
+  spin.  The proof uses a finite summand-level telescoping identity and
   finite Chu--Vandermonde/Christoffel--Darboux identities.
 - Records the cusp anomalous dimension and Konishi as benchmark outputs.
 - Expands the small-spin QSC block into a proved slope proposition: derives
@@ -288,7 +288,7 @@ structure and the pair-of-pants-to-hexagons cut.
   pattern, and the logarithmic-derivative energy identity `4 H_S`.
 - The same script now also checks the twist-two finite-sum derivation
   exactly: endpoint values, endpoint derivatives, and the telescoping
-  certificate for the Baxter equation over rational `z` test points.
+  identity for the Baxter equation over rational `z` test points.
 - The same script checks the small-spin QSC Bessel slope by exact rational
   series: the recurrence `I_{J-1}-I_{J+1}=2J I_J/z` and the first two
   coefficients of `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.

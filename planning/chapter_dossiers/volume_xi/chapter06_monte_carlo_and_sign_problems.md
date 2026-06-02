@@ -143,7 +143,7 @@ chapters.
   reweighting claim for \(\det A^\alpha\).
 - Proves the pointwise spectral action-error bound
   \(|\phi^\dagger(r_m(A)-A^{-\alpha})\phi|\le\delta\|\phi\|^2\).
-- Defines production HMC/RHMC finite certificates: integrator step data,
+- Defines production HMC/RHMC finite check records: integrator step data,
   reversibility defect, Hamiltonian-change logs, linear-solver residuals,
   spectral interval, rational approximation ledger, and determinant
   reweighting convention.
@@ -208,29 +208,29 @@ the exponential decay of average phase with volume.
 ## Companion Scripts
 
 - `qft_scripts/ising2d_metropolis.py --smoke`: finite periodic Ising
-  Metropolis sampler.  Certifies the implemented finite chain and reports
+  Metropolis sampler.  Verifies the implemented finite chain and reports
   acceptance, energy, magnetization, and a windowed autocorrelation estimate.
-  It does not certify a continuum limit.
+  It does not prove a continuum limit.
 - `qft_scripts/phi4_2d_metropolis.py --smoke`: finite two-dimensional scalar
-  \(\phi^4\) Metropolis sampler.  Certifies the local action difference and
+  \(\phi^4\) Metropolis sampler.  Verifies the local action difference and
   symmetric-proposal finite-measure setup by running the public companion
-  implementation.  It does not certify a continuum \(\phi^4_2\) construction
+  implementation.  It does not prove a continuum \(\phi^4_2\) construction
   or a critical scaling law.
 - `qft_scripts/z2_gauge_3d_metropolis.py --smoke`: finite periodic
-  \(\mathbb Z_2\) gauge Metropolis sampler.  Certifies a compact gauge
+  \(\mathbb Z_2\) gauge Metropolis sampler.  Verifies a compact gauge
   single-link update and reports plaquette and Wilson-loop measurements for a
-  small beta scan.  It does not certify an infinite-volume transition or a
+  small beta scan.  It does not prove an infinite-volume transition or a
   continuum limit.
 - `qft_scripts/su2_gauge_4d_metropolis.py --smoke`: finite periodic
   four-dimensional \(SU(2)\) gauge Metropolis sampler with unit-quaternion
-  links.  Certifies a Haar-symmetric local compact-link proposal and reports
-  plaquette and Wilson-loop measurements.  It does not certify a heat-bath
+  links.  Verifies a Haar-symmetric local compact-link proposal and reports
+  plaquette and Wilson-loop measurements.  It does not prove a heat-bath
   algorithm, HMC/RHMC implementation, or a continuum limit.
 - `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke`: finite
   periodic four-dimensional \(SU(2)\) Wilson sampler using exact single-link
   heat-bath conditionals for the staple density, interleaved with optional
   overrelaxation sweeps.  It reports plaquette and Wilson-loop measurements.
-  It does not certify autocorrelation error estimates, thermodynamic limits,
+  It does not prove autocorrelation error estimates, thermodynamic limits,
   or continuum extrapolation.
 - `qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke`: finite periodic
   four-dimensional \(SU(3)\) Wilson-gauge subgroup-Metropolis sampler.  It
@@ -247,7 +247,7 @@ the exponential decay of average phase with volume.
   rational pseudofermion diagnostic.  It reports acceptance, maximum
   Hamiltonian change, reversibility defect, positive-matrix spectral edge,
   rational pseudofermion action, and conjugate-gradient residuals.
-- `qft_scripts/static_potential_from_wilson_loops.py --smoke`: also certifies
+- `qft_scripts/static_potential_from_wilson_loops.py --smoke`: also verifies
   the sample-level mode that recomputes static-potential logarithmic ratios
   on deleted or resampled Monte Carlo blocks; its HDF5 mode reads
   `measurements/wilson_loops[sample,R-1,T-1]`.
@@ -330,7 +330,7 @@ the exponential decay of average phase with volume.
   post-processing layer for smeared static-line and glueball-operator
   construction.
 - 2026-05-31 issue #631/#703 pass: added production HMC/RHMC finite
-  certificates, solver-residual and determinant-reweighting bounds, plus a
+  check records, solver-residual and determinant-reweighting bounds, plus a
   public-facing HMC/RHMC smoke module with calculation-check coverage.
 - 2026-06-01 issue #494 pass: added the finite scalar \(\phi^4_2\)
   Metropolis warmup requested by the numerical-methods issue, with manuscript

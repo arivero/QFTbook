@@ -4,7 +4,7 @@
 This script is a finite-regulator diagnostic for Volume XI, Chapter 6.  It
 samples a periodic one-dimensional lattice scalar action by HMC and evaluates
 a positive rational pseudofermion action by shifted linear solves.  The output
-is a JSON certificate of finite quantities: acceptance, reversible-integration
+is a JSON record of finite quantities: acceptance, reversible-integration
 defect, Hamiltonian change, rational action, and linear-solver residuals.
 
 The script is not a continuum extrapolation and does not claim ergodicity of a
@@ -227,7 +227,7 @@ def main() -> None:
         if not (0.0 <= result["acceptance"] <= 1.0):
             raise AssertionError("HMC acceptance must be a probability")
         if result["positive_matrix_min_eigenvalue"] <= 0.0:
-            raise AssertionError("positive matrix certificate failed")
+            raise AssertionError("positive matrix check failed")
         if result["max_cg_residual"] > 1.0e-8:
             raise AssertionError("CG residual too large in smoke mode")
         if result["last_reversibility_defect"] > 1.0e-10:
