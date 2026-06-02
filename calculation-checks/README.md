@@ -691,6 +691,10 @@ Current checks:
   finite OS-positivity bound: if a regulated Gram matrix has a lower
   spectral bound and the limiting window has a declared entrywise error, the
   limiting Gram matrix retains the quantified positive lower bound.  It also
+  checks the complementary family-size obstruction by an all-ones perturbation:
+  fixed entrywise tolerance loses positivity once the \(m\epsilon\) term
+  overwhelms the regulated lower bound, while an operator-norm estimate has the
+  dimension-independent lower bound stated in the chapter.  It also
   checks the
   stable-chart observable-window bound that decomposes a finite
   universality comparison into relevant mismatch, stable-coordinate

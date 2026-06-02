@@ -47,9 +47,12 @@ The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
 distribution.
-The finite OS-positivity bound check verifies the Gram-window error
+The finite OS-positivity bound checks verify both the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
-feed Osterwalder--Schrader reconstruction.
+feed Osterwalder--Schrader reconstruction and the family-size obstruction:
+fixed entrywise tolerance cannot certify positivity on a directed family of
+windows unless it scales with the window size or is replaced by an operator
+norm estimate.
 The reflection-positive block-spin pullback check verifies the finite matrix
 compression mechanism by which a reflection-compatible block-spin map sends a
 fine reflection-positive Gram form to a coarse one.
@@ -693,6 +696,42 @@ def check_finite_os_positivity_bound():
     assert_true("finite OS limiting Gram determinant positive", determinant > 0)
 
 
+def check_finite_os_positivity_family_size_obstruction():
+    # The entrywise estimate in the chapter is sharp for an all-ones
+    # perturbation.  With G_k = ell I_m and G_* = ell I_m - epsilon J_m, the
+    # vector (1,...,1) has quadratic form m (ell - m epsilon).  Thus a fixed
+    # entrywise tolerance cannot be promoted to a directed OS positivity theorem
+    # as the finite positive-time test family grows.
+    ell = Fraction(1, 2)
+    epsilon = Fraction(1, 10)
+
+    def all_ones_direction_value(dimension):
+        norm_squared = Fraction(dimension)
+        value = dimension * ell - dimension * dimension * epsilon
+        certified_lower = (ell - dimension * epsilon) * norm_squared
+        assert_equal(
+            f"all-ones perturbation saturates m epsilon loss m={dimension}",
+            value,
+            certified_lower,
+        )
+        return value
+
+    assert_true("entrywise OS bound positive for m=4", all_ones_direction_value(4) > 0)
+    assert_equal("entrywise OS bound exactly zero for m=5", all_ones_direction_value(5), Fraction(0))
+    assert_true("entrywise OS bound fails for m=6", all_ones_direction_value(6) < 0)
+
+    # An operator-norm estimate has a different scaling.  A diagonal error of
+    # size epsilon has ||G_* - G_k||_{2->2}=epsilon, so the lower bound is
+    # ell-epsilon, independently of the number of vectors in the window.
+    dimension = 6
+    norm_squared = Fraction(dimension)
+    operator_norm_lower = (ell - epsilon) * norm_squared
+    diagonal_error_value = dimension * (ell - epsilon)
+    assert_equal("operator-norm OS lower bound", operator_norm_lower, Fraction(12, 5))
+    assert_equal("diagonal perturbation realizes operator bound", diagonal_error_value, operator_norm_lower)
+    assert_true("operator-norm OS lower bound positive", operator_norm_lower > 0)
+
+
 def check_stable_chart_observable_window_bound():
     theta = Fraction(1, 2)
     initial_stable_mismatch = Fraction(1, 5)
@@ -1194,6 +1233,7 @@ def main():
     check_qft_strength_observable_germ_windows()
     check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()
+    check_finite_os_positivity_family_size_obstruction()
     check_stable_chart_observable_window_bound()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()

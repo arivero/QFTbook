@@ -214,12 +214,12 @@ constructive RG developments.
   compression of the fine OS Gram form by the block-spin pullback; the
   continuum OS burden remains the directed-family convergence and growth
   estimates.
-- Defines the ordinary short-range scalar OS assembly datum: infinite-volume
-  prescription, distributional convergence with uniform temperedness,
-  covariance/symmetry/Hermiticity, directed reflection-positive Gram-window
-  convergence, positive-time semigroup regularity, corrected OS-II analytic
-  growth, and the ordered-insertion adjoint identity.  The chapter now
-  explicitly separates this assembly from the existence of a Wilsonian fixed
+- Defines the ordinary short-range scalar OS reconstruction requirements:
+  infinite-volume prescription, distributional convergence with uniform
+  temperedness, covariance/symmetry/Hermiticity, directed reflection-positive
+  Gram-window convergence, positive-time semigroup regularity, corrected OS-II
+  analytic growth, and the ordered-insertion adjoint identity.  The chapter now
+  explicitly separates these estimates from the existence of a Wilsonian fixed
   point or stable trajectory.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
@@ -353,8 +353,9 @@ remainder contraction.
   invisible in a declared one-coordinate observable window, and now checks
   the reflection-positive block-spin pullback compression \(B^TG_{\rm fine}B\)
   and the finite OS-positivity bound with an explicit regulated lower bound
-  and entrywise limiting error.  It also checks the exact finite arithmetic
-  behind the polymer
+  and entrywise limiting error, together with the all-ones family-size
+  obstruction showing why fixed entrywise error cannot certify directed
+  reflection positivity.  It also checks the exact finite arithmetic behind the polymer
   contraction budget and the quadratic circle-product bound, including a
   finite interval enumeration of the pair-overlap majorant entering
   \(B_{\rm pol}\).  It also checks the finite-range
@@ -481,7 +482,7 @@ remainder contraction.
   determinant arithmetic.  This remains finite-regulator proof
   infrastructure; it does not replace the directed Gram-window convergence
   and OS-II growth estimates needed for continuum reconstruction.
-- 2026-06-02 short-range scalar OS assembly pass: inserted the missing
+- 2026-06-02 short-range scalar OS reconstruction-requirements pass: inserted the missing
   reconstruction-level dependency chain for the ordinary short-range scalar
   target.  The manuscript now states that a critical short-range scalar
   Wilsonian RG construction must supply an infinite-volume prescription,
@@ -492,11 +493,18 @@ remainder contraction.
   This pass deliberately does not claim existence of the Wilson-Fisher fixed
   point; it sharpens issue #505 by identifying exactly what remains to be
   proved in a model-specific construction.
-- 2026-06-02 anti-inflation follow-up: renamed the visible "assembly datum"
-  prose in the ordinary short-range scalar OS passage to reconstruction
-  requirements.  The label is retained for cross-reference stability, but the
-  reader-facing language now emphasizes the actual estimates and directed
-  Gram-window/growth requirements rather than a generic package name.
+- 2026-06-02 anti-inflation follow-up: renamed the visible generic prose in the
+  ordinary short-range scalar OS passage to reconstruction requirements.  The
+  label is retained for cross-reference stability, but the reader-facing
+  language now emphasizes the actual estimates and directed Gram-window/growth
+  requirements rather than a generic package name.
+- 2026-06-02 finite OS family-size obstruction pass: added the exact companion
+  check for the load-bearing \(m\epsilon\) loss in entrywise Gram-window
+  control.  The calculation uses \(G_k=\ell I_m\) and
+  \(G_\ast=\ell I_m-\epsilon J_m\), so the all-ones vector gives
+  \(m(\ell-m\epsilon)\).  It confirms that fixed entrywise tolerance cannot
+  support directed OS positivity as \(m\) grows, while a genuine operator-norm
+  estimate has the separate \(\ell-\epsilon_{\rm op}\) lower bound.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass
