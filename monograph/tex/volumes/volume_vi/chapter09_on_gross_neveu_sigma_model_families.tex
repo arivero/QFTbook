@@ -1797,7 +1797,7 @@ The quotient of the weight lattice by the root lattice is
 This is the center charge, or \(N\)-ality, of the corresponding
 antisymmetric-tensor representation \(V_a=\wedge^a\mathbb C^N\).
 
-\paragraph{Nested root-count ledger.}
+\paragraph{Nested root-count constraints.}
 Consider a finite-volume chiral Gross--Neveu multiparticle state containing
 \(M_a\) particles in \(V_a\), \(a=1,\ldots,N-1\).  In the algebraic nested Bethe
 ansatz, an auxiliary root of Dynkin color \(r\) lowers the total highest weight
@@ -1847,7 +1847,7 @@ integral basis of \(Q_{\rm rt}\), the coordinates \(m_r\) in the simple-root
 basis are then integers; conversely, integral \(m_r\) makes the weight a root
 lattice element and hence gives zero \(N\)-ality.
 
-This is only a weight-space ledger.  It does not replace the Bethe
+This is only weight-space bookkeeping.  It does not replace the Bethe
 equations, the string hypothesis, or a proof that a particular solution exists.
 It does, however, fix the source vector and the number of nests before any TBA
 kernel is written.  If \(M_{r,k}^{\rm aux}\) is the number of auxiliary strings
@@ -1858,7 +1858,7 @@ of Dynkin color \(r\) and length \(k\), then
 \end{equation}
 Thus the thermodynamic limit replaces \(M_a/L\) by physical particle densities
 and \(M_{r,k}^{\rm aux}/L\) by auxiliary string densities, while preserving the
-Cartan ledger
+Cartan constraint
 \[
   \frac{M_s}{L}-\sum_{r,k}k\,C_{rs}\frac{M_{r,k}^{\rm aux}}{L}
   \longrightarrow \ell_s/L .
@@ -1874,7 +1874,7 @@ carry no independent relativistic energy; they encode internal polarization and
 enter the TBA through the logarithmic derivatives of the rational matrix
 blocks and their fused descendants.
 
-\paragraph{Worked chiral Gross--Neveu ledgers.}
+\paragraph{Worked chiral Gross--Neveu root counts.}
 For \(SU(3)\),
 \[
   C^{-1}=\frac13
@@ -1900,7 +1900,7 @@ source vectors are therefore
   M^L_s=M_s,\qquad M^R_s=M_{N-s},\qquad s=1,\ldots,N-1,
   \label{eq:pcm-left-right-nested-sources}
 \end{equation}
-and a two-sided singlet ledger has
+and a two-sided singlet constraint has
 \begin{equation}
   m^L=C^{-1}M^L,\qquad m^R=C^{-1}M^R .
   \label{eq:pcm-left-right-root-counts}
@@ -1915,7 +1915,7 @@ reason that the principal-chiral TBA has left and right magnonic towers attached
 to the same physical sine-law particles, whereas the chiral Gross--Neveu TBA
 has only one such tower.  The calculation companion verifies
 \eqref{eq:su-n-inverse-cartan}--\eqref{eq:pcm-left-right-root-counts} exactly
-for representative \(N\), including the \(SU(3)\) and \(SU(4)\) ledgers above.
+for representative \(N\), including the \(SU(3)\) and \(SU(4)\) root counts above.
 
 \section{Symmetric-Space and Deformed-Sphere Families}
 \label{sec:integrable-symmetric-super-sausage}
@@ -2898,19 +2898,20 @@ A sigma-model family specification consists of:
   measure or Berezin functional;
   \item coupling coordinates in the metric, \(B\)-field, Wess--Zumino, and
   \(\theta\)-angle sectors;
-  \item classical integrability data, such as a Lax connection, when present;
+  \item classical integrability structures, such as a Lax connection, when present;
   \item ultraviolet beta functions or a nonperturbative mass-generation
   calculation;
   \item a proposed bootstrap spectrum and S-matrix, with CDD choices and bound
   state poles specified;
-  \item a matching statement between the regulator and bootstrap data.
+  \item a matching statement between the regulator construction and bootstrap
+  specification.
 \end{enumerate}
 The families discussed in this chapter are the round \(O(N)\) model,
 \(\mathbb{CP}^{N-1}\), principal chiral models, WZW endpoints, symmetric-space
 cosets, supergroup variants, and deformed-sphere trajectories.
 \end{definition}
 
-\section{Gross--Neveu Ultraviolet Datum}
+\section{Gross--Neveu Ultraviolet Action}
 
 Let \(\psi^i\), \(i=1,\ldots,N\), be Majorana fermions in two Lorentzian
 dimensions.  The \(O(N)\) Gross--Neveu action is
@@ -2969,7 +2970,7 @@ integral; the exact finite-\(N\) factorized QFT is a separate construction.
 \label{sec:sigma-model-regulator-bootstrap-matching}
 
 The preceding sections deliberately separated three kinds of statements.
-First, a sigma model can be specified by ultraviolet local data: a target or
+First, a sigma model can be specified by ultraviolet local structures: a target or
 quotient, a regularized functional integral, coupling coordinates, global
 symmetries, and local composite fields.  Second, integrability can be stated
 by classical Lax equations or by finite-dimensional Yang--Baxter identities
@@ -2978,9 +2979,9 @@ statement about a local QFT only after the Hilbert space, one-particle
 subspaces, scattering states, and local observables have been constructed
 from the same regulator.
 
-\begin{definition}[Bootstrap datum for a massive factorizing family]
-\label{def:massive-factorizing-bootstrap-datum}
-A massive factorizing bootstrap datum consists of:
+\begin{definition}[Bootstrap specification for a massive factorizing family]
+\label{def:massive-factorizing-bootstrap-specification}
+A massive factorizing bootstrap specification consists of:
 \begin{enumerate}
   \item a finite list of one-particle species \(a\), with masses \(m_a>0\),
   internal Hilbert spaces \(V_a\), charge conjugates \(\bar a\), and a
@@ -2991,12 +2992,12 @@ A massive factorizing bootstrap datum consists of:
   \]
   satisfying real-rapidity unitarity, the appropriate crossing equations,
   and the Yang--Baxter equation as identities of meromorphic operators;
-  \item a physical-strip pole ledger assigning each pole either to a stable
+  \item a physical-strip pole assignment that assigns each pole either to a stable
   bound-state multiplet with a positive residue in the Hilbert-space
   convention, to a specified on-shell composite singularity, or to a zero of
   the scalar factor that cancels an unphysical matrix pole;
-  \item CDD data, namely a declaration that no additional physical-strip
-  zeros or poles are present except those in the ledger;
+  \item CDD declaration, namely a statement that no additional physical-strip
+  zeros or poles are present except those just assigned;
   \item form-factor residues for the local currents and stress tensor, or an
   equivalent construction of the local operator algebra;
   \item a finite-volume spectral prescription, such as a Bethe--Yang or TBA
@@ -3006,14 +3007,14 @@ A massive factorizing bootstrap datum consists of:
   \]
   wherever a diagonal channel \(R\) is being used.
 \end{enumerate}
-The word ``exact'' refers to this whole datum, not only to the displayed
+The word ``exact'' refers to this whole specification, not only to the displayed
 matrix part of \(S_{ab}\).
 \end{definition}
 
-\begin{definition}[Regulator realization of a bootstrap datum]
-\label{def:regulator-realization-bootstrap-datum}
-Let \(\mathcal B\) be a bootstrap datum in the sense of
-Definition~\ref{def:massive-factorizing-bootstrap-datum}.  A regulator
+\begin{definition}[Regulator realization of a bootstrap specification]
+\label{def:regulator-realization-bootstrap-specification}
+Let \(\mathcal B\) be a bootstrap specification in the sense of
+Definition~\ref{def:massive-factorizing-bootstrap-specification}.  A regulator
 realization of \(\mathcal B\) is a sequence of regularized local theories
 \(\mathfrak R_\epsilon\), \(\epsilon\downarrow0\), together with a choice of
 renormalized coupling coordinates, such that:
@@ -3030,11 +3031,11 @@ renormalized coupling coordinates, such that:
   the representations assigned by \(\mathcal B\);
   \item Haag--Ruelle wave operators exist for the stable species and the
   two-particle scattering kernel in rapidity variables is the boundary value
-  of a meromorphic function on the domain used by the bootstrap datum;
+  of a meromorphic function on the domain used by the bootstrap specification;
   \item this meromorphic scattering kernel, including scalar factors and
   residue normalizations, equals the \(S_{ab}\) of \(\mathcal B\);
   \item finite-volume energies and local form factors computed from the
-  regulator converge to the Bethe--Yang/TBA and form-factor data specified in
+  regulator converge to the Bethe--Yang/TBA and form-factor structures specified in
   \(\mathcal B\), with the same mass coordinate.
 \end{enumerate}
 The matching map includes the relation between the regulator mass scale,
@@ -3096,12 +3097,13 @@ The mathematical burden in a sigma-model bootstrap comparison is therefore
 the construction of the continuum regulator realization: existence of the
 neutral Haag--Ruelle scattering theory, control of the meromorphic boundary
 values, identification of poles and residues, and matching of the finite-volume
-and form-factor data in Definition~\ref{def:massive-factorizing-bootstrap-datum}.
-The paragraph above is only the final uniqueness step once those data have
+and form-factor structures in
+Definition~\ref{def:massive-factorizing-bootstrap-specification}.
+The paragraph above is only the final uniqueness step once those structures have
 already been obtained.
 
-\begin{definition}[Family ledger for this chapter]
-\label{def:sigma-model-family-ledger}
+\begin{definition}[Family status summary for this chapter]
+\label{def:sigma-model-family-status-summary}
 The families developed in this chapter have the following status in the
 terminology above.
 \begin{enumerate}
@@ -3110,14 +3112,14 @@ terminology above.
   tensor decomposition.  The chapter records the bootstrap consistency data;
   a fully constructive realization remains an open problem.
   \item The \(O(N)\) Gross--Neveu model has the auxiliary-field ultraviolet
-  datum, the large-\(N\) gap equation, and the same factorizing-scattering
+  action, the large-\(N\) gap equation, and the same factorizing-scattering
   logic in the fermionic representation.  The bosonic WZW/current-current
   bridge is the nonabelian-bosonization coordinate on the same local current
   algebra, after the \(U(1)\) and quotient data are fixed.
   \item The \(\mathbb{CP}^{N-1}\) family is specified by the constrained
   complex field, auxiliary \(U(1)\) quotient connection, projector action,
   topological charge, instanton bound, large-\(N\) gap equation, induced
-  Maxwell kernel, and projective tensor/crossing ledger.  For
+  Maxwell kernel, and projective tensor/crossing data.  For
   \(N=2\), the projector identifies the model with the \(O(3)\) target with
   the coupling conversion derived above.  For \(N>2\), the chapter treats
   exact projective scattering as a bootstrap and construction problem rather
@@ -3128,7 +3130,7 @@ terminology above.
   GKO cosets, and the \(SU(N)\) sine-law/bootstrap matrix and scalar-factor
   conventions.  The matrix and scalar unitarity identities are proved in the
   displayed convention; the constructive matching to a regulator remains
-  separate data.
+  a separate construction problem.
   \item Symmetric-space sigma models are developed through the reductive
   quotient \(G/H\), local \(H\) redundancy, and the Lax equivalence for
   symmetric spaces.  This proves the classical integrability statement used
@@ -3137,7 +3139,7 @@ terminology above.
   defined as locally super-ringed target theories.  Their one-loop
   cancellations are supertrace/Berezinian statements, not statements about
   positive Borel measures.  Positivity, logarithmic sectors, and exact
-  scattering require separate construction data.
+  scattering require separate constructions.
   \item The deformed-sphere sausage family is specified by its metric, scalar
   curvature, one-loop Ricci trajectory, round and cylindrical metric limits,
   the repulsive-domain triplet scattering proposal, real-rapidity unitarity,
@@ -3152,10 +3154,11 @@ terminology above.
 Construct the massive factorizing sigma-model families discussed in this
 chapter as local QFTs with Hilbert spaces or graded state spaces, local
 algebras, conserved currents, mass gaps, Haag--Ruelle scattering states, and
-exact \(S\)-matrices in one framework where the ultraviolet regulator data,
-bootstrap data, form factors, and finite-volume spectra are proved to match.
+exact \(S\)-matrices in one framework where the ultraviolet regulator
+definitions, bootstrap specifications, form factors, and finite-volume spectra
+are proved to match.
 At present the chapter supplies the regulator definitions, classical
 integrability identities, large-\(N\) controls, algebraic bootstrap checks,
-and scalar-factor ledgers that such a theorem must connect; the constructive
+and scalar-factor consistency checks that such a theorem must connect; the constructive
 identification remains a genuine theorem-level problem.
 \end{openproblem}

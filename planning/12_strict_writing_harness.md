@@ -543,7 +543,12 @@ check.  Every finite check must also state what continuum or QFT theorem it
 does not prove.
 
 High-density clusters of these terms should be treated as an audit finding
-even when every individual occurrence is locally defensible.
+even when every individual occurrence is locally defensible.  When
+`tools/audit_style_density.py` flags a top cluster, inspect the passage and
+rewrite the reader-facing prose into the actual mathematical object: map,
+operator, representation, norm, estimate, pole assignment, root-count
+constraint, finite matrix, or reconstruction theorem.  Do not merely replace
+one decorative noun by another.
 
 ## Positive Formulation Rule
 

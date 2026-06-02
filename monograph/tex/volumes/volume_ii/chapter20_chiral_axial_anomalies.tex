@@ -3103,11 +3103,11 @@ and adding center and size gives \(4N_c\).  The precise global quotient by
 the center and by stabilizers affects the coordinate range, not this local
 dimension count.
 
-\begin{definition}[Framed ADHM quotient datum]
+\begin{definition}[Framed ADHM quotient]
 \label{def:framed-adhm-quotient-datum}
 Let \(W\simeq\mathbb C^{N_c}\) be the framing vector space and
 \(K\simeq\mathbb C^k\) the instanton vector space.  A framed \(U(N_c)\)
-ADHM datum of charge \(k\) is a quadruple
+ADHM quadruple of charge \(k\) is
 \[
   (B_1,B_2,I,J)
   \in
@@ -3173,7 +3173,7 @@ dimension \(4kN_c-4\).
 \end{proposition}
 
 \begin{proof}
-The real dimension of the unconstrained datum is
+The real dimension of the unconstrained variables is
 \[
   2\dim_\mathbb C\bigl(\operatorname{End}(K)^2\bigr)
   +
@@ -3209,7 +3209,7 @@ four real translation coordinates in the complex structure used to write
 \end{proof}
 
 The stability condition is also where the small-instanton boundary first
-appears algebraically.  If a stable datum degenerates so that a nonzero
+appears algebraically.  If a stable ADHM tuple degenerates so that a nonzero
 subspace of \(K\) decouples from the framing, the quotient leaves the smooth
 instanton stratum and records instanton charge concentrated at points of
 \(\mathbb R^4\).  The Uhlenbeck boundary has strata of the form
@@ -3528,7 +3528,7 @@ in a specified renormalization scheme.  What is scheme independent at this
 stage is the topological sector, the zero-mode count, the finite-regulator
 construction of the measure, and the exponential action.
 
-\paragraph{Finite-regulator determinant datum.}
+\paragraph{Finite-regulator nonzero-mode determinants.}
 The symbol ``determinant constant'' hides several different objects unless
 the regulator is kept explicit.  At fixed \(\Lambda\), in a gauge slice near
 an instanton \(A_z\), let
@@ -3550,7 +3550,7 @@ modes removed.  For a fermion multiplet \(R\), write
 \]
 for the regulated chiral Dirac operator.  Its zero modes are not included in
 the nonzero-mode determinant; they are the Grassmann collective coordinates
-whose saturation is described below.  The nonzero-mode determinant datum is
+whose saturation is described below.  The nonzero-mode determinant factor is
 \begin{equation}
   \mathcal W_{\Lambda}^{\rm nz}(z)
   :=
@@ -3563,7 +3563,7 @@ whose saturation is described below.  The nonzero-mode determinant datum is
   \bigotimes_R
   \frac{\operatorname{Pf}{}' \mathcal D_{\Lambda,z}^{R}}
        {\operatorname{Pf} \mathcal D_{\Lambda,0}^{R}} .
-  \label{eq:finite-regulator-instanton-nonzero-determinant-datum}
+  \label{eq:finite-regulator-instanton-nonzero-determinant-factor}
 \end{equation}
 The reference subscript \(0\) denotes the corresponding finite-regulator
 operator in the chosen topologically trivial background and in the same
@@ -3573,7 +3573,7 @@ modes have been removed before taking the finite determinant or Pfaffian.
 
 For a vectorlike Dirac pair, after choosing the standard conjugate pairing,
 the fermion factor in
-\eqref{eq:finite-regulator-instanton-nonzero-determinant-datum} is an
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-factor} is an
 ordinary scalar.  For a genuinely chiral fermion it is a vector in the
 appropriate determinant or Pfaffian line over the background \(A_z\); a
 scalar appears only after pairing this vector with the fermion zero-mode
@@ -3592,20 +3592,20 @@ pairings have been specified, has the finite chart expression
   \exp[-S_\Lambda(A_z)]\,
   \mathcal W_{\Lambda}^{\rm nz}(z)\,
   \dd\nu_{\Lambda,\mathcal M}(z),
-  \label{eq:finite-regulator-instanton-measure-datum}
+  \label{eq:finite-regulator-instanton-measure-density}
 \end{equation}
 where \(\dd\nu_{\Lambda,\mathcal M}\) is the zero-mode density from
 \eqref{eq:collective-coordinate-bosonic-measure}, or equivalently the ADHM
 quotient density of Definition~\ref{def:adhm-quotient-density} after matching
 the ADHM coordinates to the regulated gauge-field slice.  Formula
-\eqref{eq:finite-regulator-instanton-measure-datum} is a finite-dimensional
+\eqref{eq:finite-regulator-instanton-measure-density} is a finite-dimensional
 statement.  The continuum expression is the assertion that the product of
 \(\mathcal W_{\Lambda}^{\rm nz}\), the coupling coordinate in
 \(S_\Lambda\), and the renormalized operator insertions has a limit in the
 chosen scheme.
 
 The finite Gaussian origin of
-\eqref{eq:finite-regulator-instanton-nonzero-determinant-datum} is as
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-factor} is as
 follows.  A real bosonic normal integral with positive quadratic form \(L\)
 gives \((\det L)^{-1/2}\) up to the universal power of \(2\pi\) already
 accounted for in the stationary-phase convention.  A complex ghost Berezin
@@ -3618,7 +3618,7 @@ which must be integrated or saturated separately.
 
 Finally, changing the finite-regulator Lagrangian by a local counterterm
 \(C_\Lambda[A]\) multiplies
-\eqref{eq:finite-regulator-instanton-measure-datum} by
+\eqref{eq:finite-regulator-instanton-measure-density} by
 \(\exp[-C_\Lambda(A_z)+C_\Lambda(0)]\).  If the one-instanton chart reduces
 this difference to
 \[
@@ -3632,7 +3632,7 @@ the displayed power of \(\mu\rho\), and the remainder \(R_\Lambda\) is part
 of the unresolved boundary and continuum-limit analysis.  Counterterms are
 therefore not an after-the-fact correction to a pre-existing determinant
 constant; they are part of the regulated path-integral Lagrangian whose
-finite determinant datum is being defined.
+finite determinant factor is being defined.
 
 \paragraph{Small-instanton boundary exponent.}
 For the charge-one stratum the Uhlenbeck boundary is reached by
@@ -3642,7 +3642,7 @@ finite-regulator density after the nonzero-mode determinant and the
 renormalized insertions have been paired.  Let \(\mathcal X\) denote the
 insertions under consideration, including the fermion zero-mode factors
 needed to obtain a scalar from the determinant line.  A \emph{one-instanton
-boundary exponent datum} for \(\mathcal X\) consists of numbers
+boundary exponent estimate} for \(\mathcal X\) consists of numbers
 \(\beta_{\mathcal X}\in\mathbb R\) and \(\delta>0\), and a locally bounded
 function \(A_{\mathcal X}(a,U)\), such that in a fixed compact set of centers
 and in a fixed orientation chart the renormalized finite-regulator chart
@@ -3654,7 +3654,7 @@ density has a limit of the form
   \rho^{\,b_0+\beta_{\mathcal X}-5}
   \bigl(A_{\mathcal X}(a,U)+O(\rho^\delta)\bigr)\,
   \dd^4a\,\dd\rho\,\dd\Omega_{N_c}.
-  \label{eq:one-instanton-boundary-exponent-datum}
+  \label{eq:one-instanton-boundary-exponent-estimate}
 \end{equation}
 The \(b_0-5\) part is the universal scale and one-loop running content in
 \eqref{eq:one-instanton-universal-density}.  The exponent
@@ -3690,7 +3690,7 @@ correlators have different \(\beta_{\mathcal X}\), and center collisions
 with local operator insertions introduce additional boundary faces which
 must be analyzed separately from the pure \(\rho\to0\) face.
 
-This boundary exponent datum is weaker than a complete multi-instanton
+This boundary exponent estimate is weaker than a complete multi-instanton
 measure theorem.  It isolates the analytic estimate needed near a single
 collapsed charge.  Higher charge involves simultaneous collisions of several
 instantons, partial Uhlenbeck strata

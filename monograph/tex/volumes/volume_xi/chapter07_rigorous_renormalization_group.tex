@@ -730,7 +730,7 @@ is what permits a disconnected family of small activities to exponentiate
 through the cluster expansion rather than behaving as one large nonlocal
 object.
 
-\begin{definition}[Finite-range fluctuation covariance datum]
+\begin{definition}[Finite-range fluctuation covariance decomposition]
 \label{def:finite-range-fluctuation-covariance-datum}
 Let \(\Lambda_k\) be the finite scale-\(k\) regulator lattice with graph
 distance \(d_k\).  A fluctuation covariance \(\Gamma_k\) has range
@@ -887,7 +887,7 @@ powers.  In canonical bookkeeping at \(D=3\),
 \(\Delta_\phi=\frac12\) makes the \(\phi^6\) density marginal by
 \eqref{eq:canonical-localization-scaling-exponent}; it cannot be discarded
 into the irrelevant remainder on engineering grounds alone.  An interacting
-fixed-point proof may replace the canonical monomial ledger by scaling-field
+fixed-point proof may replace the canonical monomial coordinate list by scaling-field
 coordinates, but that replacement is itself part of the model-specific RG
 theorem.
 
@@ -964,9 +964,9 @@ Taylor localization.  The constants \(C_\Gamma(\kappa)\), the covariance
 spectral bound, and the regulator strengthening are part of the proof data
 entering \(A_{\rm irr}\), \(B_{\rm pol}\), and the extraction defect.
 
-\begin{definition}[One-step polymer RG contraction datum]
+\begin{definition}[One-step polymer RG contraction estimates]
 \label{def:one-step-polymer-rg-contraction-datum}
-A one-step polymer RG contraction datum at scale \(k\) consists of the
+A one-step polymer RG contraction structure at scale \(k\) consists of the
 following finite-regulator data.
 \begin{enumerate}
   \item A scale factor \(L>1\), a reblocking map
@@ -995,14 +995,14 @@ following finite-regulator data.
   \end{equation}
   The seminorm \(|\cdot|_{h_k}\) is the finite Taylor or analytic norm in the
   field variables used by the model.  Its precise definition is part of the
-  datum, because the contraction constant depends on the allowed derivatives
+  contraction structure, because the contraction constant depends on the allowed derivatives
   and on the large-field weights.
   \item A localization map
   \(\mathcal L_k\) from polymer functionals supported in one reblocked
   polymer to the chosen finite-dimensional local-coordinate space.  The
   complementary projection \(1-\mathcal L_k\) is the irrelevant remainder.
   After fluctuation integration and rescaling, denoted here by
-  \(\mathcal A_k\), the datum includes constants
+  \(\mathcal A_k\), the contraction structure includes constants
   \(A_{\rm irr}<\infty\) and \(\alpha>0\) such that
   \begin{equation}
     \|(1-\mathcal L_k)\mathcal A_kK_k\|_{k+1,a,h}
@@ -1023,7 +1023,7 @@ following finite-regulator data.
     \label{eq:rg-polymer-circle-product}
   \end{equation}
   with the product understood after pulling both activities to the same
-  reblocked field variables.  The datum requires a constant
+  reblocked field variables.  The contraction structure requires a constant
   \(B_{\rm pol}<\infty\) such that
   \begin{equation}
     \|K_1\circ_k K_2\|_{k+1,a,h}
@@ -1808,29 +1808,27 @@ coordinates and critical exponents order by order, while a nonperturbative
 fixed-point theorem additionally proves existence, stability, and
 reconstruction.
 
-\section{Status Ledger For Nonperturbative Fixed-Point Claims}
-\label{sec:rg-fixed-point-status-ledger}
+\section{Fixed-Point Claim Content}
+\label{sec:rg-fixed-point-claim-content}
 
-The preceding benchmarks should be compared through the data they actually
-construct.  A fixed-point statement in this chapter is therefore recorded by
-a four-layer ledger:
+The preceding benchmarks should be compared through the objects they actually
+construct.  A fixed-point statement in this chapter is compared through four
+questions:
 \begin{enumerate}
-  \item the \emph{RG object}: the space on which the map acts, such as local
-  interactions, polymer activities, Grassmann kernels, tensors, lattice
-  measures, or BV actions;
-  \item the \emph{map theorem}: the domain, differentiability or analyticity,
-  contraction or Newton estimates, fixed point, and stable/unstable
-  decomposition for that map;
-  \item the \emph{source and observable theorem}: the source-extended map,
-  contact-term bookkeeping, and reconstruction estimates for the
-  distributions or observable algebras being claimed;
-  \item the \emph{target identification}: the comparison map identifying the
-  constructed RG system with the physical short-range, gauge, or continuum
-  QFT target.
+  \item what space the RG map acts on, such as local interactions, polymer
+  activities, Grassmann kernels, tensors, lattice measures, or BV actions;
+  \item what estimates prove that the map is defined on its domain, is
+  differentiable or analytic there, has the claimed fixed point, and has the
+  stated stable/unstable decomposition;
+  \item which source extensions, contact-term subspaces, and reconstruction
+  estimates turn the fixed point into distributions or observable algebras;
+  \item which comparison map identifies the constructed RG system with the
+  physical short-range, gauge, or continuum QFT target.
 \end{enumerate}
-The strength of a result is the first layer in this list at which all data
-and estimates are present.  This convention prevents an auxiliary fixed
-point from being silently promoted to a theorem about a different QFT.
+The strength of a result is the first question in this list for which the
+necessary objects and estimates are missing.  This convention prevents an
+auxiliary fixed point from being silently promoted to a theorem about a
+different QFT.
 
 \paragraph{Hierarchical scalar systems.}
 For the hierarchical scalar maps of
@@ -1840,9 +1838,9 @@ defined on a Banach space of analytic or polymer interactions, the
 non-Gaussian fixed point is constructed in that space, and stable/unstable
 directions are controlled by the corresponding estimates.  Observable
 statements are hierarchical observable statements unless accompanied by a
-short-range reconstruction and transfer datum of the form
-Definitions~\ref{def:short-range-scalar-block-spin-datum} and
-\ref{def:auxiliary-to-short-range-rg-transfer-datum}.  The target
+short-range reconstruction estimates and a transfer map of the form
+Definitions~\ref{def:short-range-scalar-block-spin-structure} and
+\ref{def:auxiliary-to-short-range-rg-transfer-estimates}.  The target
 identification with the ordinary nearest-neighbor or finite-range
 three-dimensional scalar critical point is therefore an additional problem,
 requiring its own comparison map and reconstruction estimates beyond shared
@@ -1875,11 +1873,11 @@ fixed-point theorem only after the reconstruction layer is supplied.
 
 \paragraph{Ordinary short-range scalar targets.}
 For a short-range three-dimensional scalar Wilson--Fisher target, the RG
-object must be the block-spin/polymer datum of
-Definition~\ref{def:short-range-scalar-block-spin-datum}, or a proven
-equivalent datum connected to it by
+object must be the block-spin/polymer structure of
+Definition~\ref{def:short-range-scalar-block-spin-structure}, or a proven
+equivalent structure connected to it by
 Definition~\ref{def:comparison-of-rg-descriptions}.  The theorem would have
-to construct the stable critical trajectory or fixed point in that datum,
+to construct the stable critical trajectory or fixed point in that structure,
 including the irrelevant polymer tail, source extensions, contact terms, and
 distributional reconstruction estimates.  The massive constructive
 \(\phi^4_3\) theorems and the critical hierarchical or long-range
@@ -1901,16 +1899,16 @@ fixed-point or continuum-limit theorem therefore includes preservation of
 the gauge structure under blocking, reconstruction of physical observables,
 and comparison of line or extended sectors when those sectors are part of
 the claim.  Beta functions in a gauge-fixed coordinate chart are useful
-local coordinates only after this gauge-compatible RG datum has been
+local coordinates only after this gauge-compatible RG structure has been
 declared.
 
-The ledger also fixes how this monograph treats the phrase ``state of the
+This comparison also fixes how this monograph treats the phrase ``state of the
 art.''  The current rigorous fixed-point frontier contains theorem-level
 auxiliary and model-specific systems with impressive control of irrelevant
 coordinates.  It does not yet contain a general theorem turning every
 physically expected Wilsonian fixed point into a local QFT, nor a theorem
 constructing the ordinary three-dimensional Ising CFT from a short-range
-block-spin map with all source and reconstruction data.  The monograph uses
+block-spin map with all source and reconstruction estimates.  The monograph uses
 the proved systems as proof templates and laboratories, while keeping the
 physical target-identification problems explicit.
 
@@ -1918,9 +1916,9 @@ physical target-identification problems explicit.
 
 A Wilsonian RG theorem for a scalar probability measure can be formulated as
 a pushforward of measures, followed by a localization step and a rescaling.
-Gauge theories require a richer datum, because the variables used in a
+Gauge theories require richer structure, because the variables used in a
 calculation contain redundancy.  The theorem-level object is therefore an RG
-map on gauge-invariant lattice data, or an RG map in the BV category whose
+map on gauge-invariant lattice measures and observables, or an RG map in the BV category whose
 effective actions and observable complexes satisfy the quantum master
 equation at every scale.  The BV framework used here is developed in
 Chapter~\ref{ch:bv-master-formalism}; the lattice Yang--Mills and reflection
@@ -1929,11 +1927,11 @@ Chapters~\ref{ch:lattice-yang-mills-nonperturbative-definition},
 \ref{ch:lattice-reflection-positivity}, and
 \ref{ch:constructive-wilson-lattice-gauge-theory}.
 
-\begin{definition}[Gauge-compatible Wilsonian RG datum]
-\label{def:gauge-compatible-wilsonian-rg-datum}
+\begin{definition}[Gauge-compatible Wilsonian RG structure]
+\label{def:gauge-compatible-wilsonian-rg-structure}
 Fix a spacetime dimension \(D\), a scale factor \(L>1\), and a regulator
 sequence indexed by \(k\in\mathbb Z_{\geq0}\).  A gauge-compatible Wilsonian
-RG datum is one of the following two structures.
+RG structure is one of the following two forms.
 \begin{enumerate}
   \item In the lattice form, one has finite cell complexes
   \(\Lambda_k\), a compact Lie group \(G_k\), configuration spaces
@@ -1950,7 +1948,7 @@ RG datum is one of the following two structures.
   whose pushforward gives a measure \(\dd\mu_{k-1}\) on
   \(\mathcal A_{k-1}\), followed by a localization map into a Banach chart of
   gauge-invariant polymer activities.  Reflection positivity, when claimed,
-  is part of the datum and is expressed as positivity of the blocked
+  is part of the structure and is expressed as positivity of the blocked
   quadratic form on the positive-time observable algebra.
   \item In the BV form, one has finite-regulator graded vector spaces
   \(\mathcal F_k\) of fields, ghosts, antifields, and possible sources; odd
@@ -1979,7 +1977,7 @@ RG datum is one of the following two structures.
 \end{enumerate}
 In either form, a fixed point or continuum limit also includes reconstruction
 maps for gauge-invariant local and extended observables.  A flow of finitely
-many gauge-fixed coefficients is a coordinate shadow of this datum; the
+many gauge-fixed coefficients is a coordinate shadow of this structure; the
 theorem-level statement is the lattice or BV structure together with its
 norm estimates.
 \end{definition}
@@ -1994,7 +1992,7 @@ one speaks of an RG limit.
 
 \begin{construction}[Gauge-equivariant path blocking at finite regulator]
 \label{constr:gauge-equivariant-path-blocking-rg}
-The lattice half of Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}
+The lattice half of Definition~\ref{def:gauge-compatible-wilsonian-rg-structure}
 has a minimal exact example.  Let \(\Gamma_f\) and \(\Gamma_c\) be finite
 oriented graphs, interpreted as fine and coarse lattices.  Let
 \(i:V(\Gamma_c)\hookrightarrow V(\Gamma_f)\) embed coarse vertices into fine
@@ -2056,7 +2054,7 @@ observable pushforward.  It does not prove that the logarithm of the blocked
 measure is a local Wilson action, nor that a continuum local QFT follows.
 Those are precisely the localization, polymer-decay, reflection-positivity,
 and reconstruction estimates required in the rest of
-Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}.
+Definition~\ref{def:gauge-compatible-wilsonian-rg-structure}.
 \end{construction}
 
 The companion script
@@ -2075,7 +2073,7 @@ It is not yet a Wilsonian RG theorem for a continuum gauge theory.  A
 continuum claim needs three further pieces of analysis: locality of the
 blocked measure in a declared norm, reflection positivity or a stated
 replacement for it, and reconstruction estimates for gauge-invariant
-observables.  This section records the datum required for a theorem-level
+observables.  This section records the estimates required for a theorem-level
 four-dimensional Yang--Mills statement.
 
 Let \(\Gamma_k\) be a sequence of Euclidean lattice complexes with lattice
@@ -2087,9 +2085,9 @@ which a cylinder observable \(F\) depends.  The norm
 \(\|\,\cdot\,\|_\infty\) is the supremum norm on the corresponding compact
 link-configuration space.
 
-\begin{definition}[Gauge-blocking continuum-control datum]
+\begin{definition}[Gauge-blocking continuum-control estimates]
 \label{def:gauge-blocking-continuum-control-datum}
-A continuum-control datum for a gauge-compatible blocking sequence consists
+A continuum-control estimate package for a gauge-compatible blocking sequence consists
 of the finite path-blocking data of
 Construction~\ref{constr:gauge-equivariant-path-blocking-rg}, together with
 the following estimates.
@@ -2136,7 +2134,7 @@ the following estimates.
     \lim_{R\to\infty}\sup_k\chi_{F,k}(R)=0 .
     \label{eq:gauge-blocking-cluster-tail-estimate}
   \end{equation}
-  This cluster-tail estimate is part of the continuum-control datum, not a
+  This cluster-tail estimate is part of the continuum-control package, not a
   consequence of gauge covariance alone.
   \item Reflection-positivity control.  Let
   \(\mathcal A_{k,+}^{\rm inv}\) be the algebra of gauge-invariant cylinder
@@ -2156,7 +2154,7 @@ the following estimates.
   observables \(\mathcal W\), such as finite Wilson-loop products, smeared
   small-loop field-strength representatives, or matter bilinears with their
   Wilson-line connectors.  For each \(O\in\mathcal W\), the reconstructed
-  finite-scale datum \(\operatorname{Rec}_{O,k}\) takes values in a locally
+  finite-scale observable \(\operatorname{Rec}_{O,k}\) takes values in a locally
   convex distribution or cylinder-observable topology and satisfies a
   bound of the form
   \begin{equation}
@@ -2178,7 +2176,7 @@ assertion that those large connected contributions are summable in a norm
 strong enough to define a Wilsonian chart.  In gauge theory this estimate is
 one of the main constructive burdens.
 
-\paragraph{Consequences of the datum.}
+\paragraph{Consequences of the estimates.}
 Once Definition~\ref{def:gauge-blocking-continuum-control-datum} is proved in
 a model, every \(O\in\mathcal W\) has the declared continuum limit by
 \eqref{eq:gauge-blocking-observable-reconstruction}.  Gauge invariance passes
@@ -2202,7 +2200,7 @@ The reconstruction estimate gives convergence of the finitely many
 correlators entering \(Q_k(F,c)\), while
 \eqref{eq:gauge-blocking-rp-defect} gives
 \(Q_k(F,c)\geq-\rho_k(F,c)\).  Taking \(k\to\infty\) gives the limiting
-positive-time quadratic form \(Q_\ast(F,c)\geq0\).  This is why the datum must
+positive-time quadratic form \(Q_\ast(F,c)\geq0\).  This is why the estimate package must
 include the reflection-positive observable algebra and the defect
 \(\rho_k\); it is not enough to know that the blocked links transform
 covariantly.
@@ -2309,22 +2307,22 @@ positivity statement explicitly formulated as a finite positive-semidefinite
 quadratic form continuous in the seminorms \(p_B\).
 \end{proof}
 
-\section{Ordinary Short-Range Scalar Reconstruction Data}
+\section{Ordinary Short-Range Scalar Reconstruction}
 \label{sec:ordinary-short-range-scalar-rg-reconstruction}
 
 The scalar benchmark in the previous sections is hierarchical.  An ordinary
 short-range scalar lattice model has a different microscopic object: fields
 on \(a_k\mathbb Z^D\), finite-range interactions, and block-spin maps whose
 range is geometric in the lattice.  The purpose of this section is to record
-the reconstruction datum for that ordinary setting.  It is the datum a proof
-of a short-range Wilson--Fisher fixed point would have to supply; it is not
+the reconstruction structure for that ordinary setting.  It is the structure a
+proof of a short-range Wilson--Fisher fixed point would have to supply; it is not
 replaced by a hierarchical or tensor-network theorem unless a comparison
 map with reconstruction estimates is also proved.
 
-\begin{definition}[Short-range scalar block-spin datum]
-\label{def:short-range-scalar-block-spin-datum}
+\begin{definition}[Short-range scalar block-spin structure]
+\label{def:short-range-scalar-block-spin-structure}
 Fix an integer scale factor \(L\geq2\), spacetime dimension \(D\), and
-lattice spacings \(a_k=L^{-k}a_0\).  A short-range scalar block-spin datum
+lattice spacings \(a_k=L^{-k}a_0\).  A short-range scalar block-spin structure
 consists of the following objects.
 \begin{enumerate}
   \item Periodic lattice regions
@@ -2374,7 +2372,7 @@ consists of the following objects.
   irrelevant tail in a norm controlling both spatial decay and large-field
   behavior.
 \end{enumerate}
-The datum is short-range only before the block step.  After integrating out
+The structure is short-range only before the block step.  After integrating out
 fluctuations, the effective interaction is generally not finite range; the
 polymer norm and its contraction estimates are the mathematical replacement
 for the microscopic finite-range property.
@@ -2446,7 +2444,7 @@ the vocabulary of fixed points or universality.
 This construction also fixes the role of the block kernel.  A different
 kernel \(q\), a different field-strength normalization, or a different
 localization map may give an equivalent continuum theory only after a
-comparison datum in the sense of
+comparison map with estimates in the sense of
 Definition~\ref{def:comparison-of-rg-descriptions} is supplied.  Finite-range
 microscopic interactions alone do not identify the continuum normalization
 of the field.
@@ -2457,7 +2455,7 @@ For massive superrenormalizable scalar theories, constructive methods can
 produce Euclidean measures and hence Wightman theories after OS
 reconstruction.  For an ordinary short-range three-dimensional critical
 scalar model, a theorem at the Wilsonian fixed-point level would have to
-construct Definition~\ref{def:short-range-scalar-block-spin-datum}, prove a
+construct Definition~\ref{def:short-range-scalar-block-spin-structure}, prove a
 Banach-space fixed point or stable trajectory for the corresponding
 short-range block-spin RG, establish
 \eqref{eq:short-range-scalar-reconstruction-bound} for local fields and
@@ -2474,13 +2472,13 @@ The theorem-level fixed points known in hierarchical scalar models,
 fractional or long-range models, fermionic small-parameter models, and
 tensor-network RG are not automatically fixed points of the ordinary
 short-range scalar block-spin problem of
-Definition~\ref{def:short-range-scalar-block-spin-datum}.  Their use for the
+Definition~\ref{def:short-range-scalar-block-spin-structure}.  Their use for the
 ordinary target is controlled by an auxiliary-to-target comparison, not by a
 shared list of exponents.  This section records the estimate that such a
 comparison must contain.
 
-\begin{definition}[Auxiliary-to-short-range RG transfer datum]
-\label{def:auxiliary-to-short-range-rg-transfer-datum}
+\begin{definition}[Auxiliary-to-short-range RG transfer estimates]
+\label{def:auxiliary-to-short-range-rg-transfer-estimates}
 Let
 \[
   (\mathcal B_{\rm aux},\mathcal R_{\rm aux},V_{\ast}^{\rm aux})
@@ -2489,8 +2487,8 @@ Let
 \]
 be an auxiliary RG system and an ordinary short-range target RG system, with
 Banach spaces, domains, fixed points, stable neighborhoods, source
-extensions, and reconstruction maps already specified.  A transfer datum from
-the auxiliary system to the short-range target consists of:
+extensions, and reconstruction maps already specified.  Transfer estimates from
+the auxiliary system to the short-range target consist of:
 \begin{enumerate}
   \item a map
   \(\Phi:\mathcal U_{\rm aux}\to\mathcal B_{\rm sr}\), defined on an
@@ -2539,7 +2537,7 @@ the auxiliary system to the short-range target consists of:
 \end{enumerate}
 \end{definition}
 
-The transfer datum refines
+The transfer estimates refine
 Definition~\ref{def:comparison-of-rg-descriptions} in the direction needed
 for ordinary short-range critical models.  The finite RG-orbit estimate is
 straightforward, but it is the load-bearing estimate.  Let
@@ -2623,7 +2621,7 @@ with respect to a seminorm \(p\), then the observable error is bounded by the
 explicit auxiliary-observable defect plus the Lipschitz image of the orbit
 error \(z_k\).  Only after both terms vanish in the chosen observable
 topology does an auxiliary theorem transfer to the ordinary short-range QFT
-claim.  Without this transfer datum, hierarchical, long-range, tensor, and
+claim.  Without this transfer structure, hierarchical, long-range, tensor, and
 functional-RG fixed points should be read as theorem-level benchmarks or
 computational evidence in their own frameworks, not as a proof of the
 ordinary short-range Wilson--Fisher QFT.
@@ -2633,7 +2631,7 @@ The comparison must be made window by window, because a continuum local-QFT
 claim is a projective statement about all reconstruction windows.  Fix a
 finite observation window \(\alpha\) in the directed family of the short-range
 target.  Suppose the auxiliary theorem supplies a corresponding auxiliary
-window and an auxiliary limiting datum \(O^{\rm aux}_{\ast,\alpha}\) such
+window and an auxiliary limiting observable \(O^{\rm aux}_{\ast,\alpha}\) such
 that, after its normalization,
 \begin{equation}
   p_\alpha^{\rm sr}\!\left(
@@ -2993,7 +2991,7 @@ fractional long-range models, fermionic small-parameter models, and rigorous
 tensor RG supply theorem-level benchmarks for parts of this structure.
 
 For gauge theories the corresponding theorem must be formulated through
-Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}.  A lattice proof
+Definition~\ref{def:gauge-compatible-wilsonian-rg-structure}.  A lattice proof
 would construct the RG map on gauge-invariant measures and Wilson-line
 observables with reflection-positivity control.  A continuum perturbative
 proof would construct the same flow in a regularized BV complex, prove the
@@ -3058,7 +3056,7 @@ QFT universality theorem.
 \end{definition}
 
 \paragraph{Observable-germ formulation.}
-For an actual QFT the observable datum is rarely a single Banach-space
+For an actual QFT the reconstructed observable is rarely a single Banach-space
 coordinate.  It is normally a compatible family of finite tests: finitely
 many smeared \(n\)-point functions, finite lists of Wilson loops, finite
 momentum windows, finite source derivatives, or finite spectral windows.
@@ -3068,7 +3066,7 @@ given by a projective system.
 
 \begin{definition}[Observable-germ universality class]
 \label{def:observable-germ-universality-class}
-An observable-germ universality datum is a Wilsonian universality statement
+An observable-germ universality structure is a Wilsonian universality statement
 together with the following refinement of \(\mathcal O\).
 \begin{enumerate}
   \item A directed set \(\mathfrak A\) of finite observation windows.
@@ -3140,7 +3138,7 @@ Chapters~\ref{ch:volume-iv-osterwalder-schrader-reconstruction} and
 
 \begin{definition}[Local-QFT-strength observable germ]
 \label{def:local-qft-strength-observable-germ}
-An observable-germ universality datum is \emph{local-QFT-strength} for an
+An observable-germ structure is \emph{local-QFT-strength} for an
 Euclidean scalar or gauge-invariant observable sector if its directed family
 \(\mathfrak A\) contains, as compatible subwindows, the following data.
 \begin{enumerate}
@@ -3152,7 +3150,7 @@ Euclidean scalar or gauge-invariant observable sector if its directed family
   projective limit over \(E\) recovers the full tempered distribution only
   after the compatibility and seminorm-bound conditions of
   Lemma~\ref{lem:rg-projective-window-extension-distribution} are supplied;
-  finite pointwise or moment data alone are a smaller datum.
+  finite pointwise or moment data alone are a smaller collection of tests.
   \item Windows recording the algebraic identities required of the sector:
   permutation or graded permutation covariance, Euclidean covariance,
   reflection compatibility for the chosen time direction, and the local
@@ -3624,7 +3622,7 @@ stable manifolds, operator spectra, and reconstruction of the associated
 local QFT data.  The open directions include: short-range scalar critical
 fixed points with distributional reconstruction; gauge-compatible fixed
 points in the lattice or BV sense of
-Definition~\ref{def:gauge-compatible-wilsonian-rg-datum}; and estimates that
+Definition~\ref{def:gauge-compatible-wilsonian-rg-structure}; and estimates that
 identify the limiting local, extended, and cohomological observables rather
 than only the local coordinate flow.
 \end{openproblem}

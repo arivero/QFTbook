@@ -11,9 +11,9 @@ and nested Bethe ansatz data require additional species and auxiliary-root
 bookkeeping but obey the same variational logic once the allowed densities
 are specified.
 
-\begin{definition}[diagonal massive TBA datum]
+\begin{definition}[Diagonal massive TBA specification]
 \label{def:diagonal-massive-tba-datum}
-A diagonal massive thermodynamic Bethe ansatz datum consists of the following
+A diagonal massive thermodynamic Bethe ansatz specification consists of the following
 objects.
 \begin{enumerate}[label=\textup{(\roman*)}]
 \item A finite species set \(\mathsf A\), with a mass
@@ -34,7 +34,7 @@ objects.
         \frac{1}{2\pi\ii}\frac{\dd}{\dd\theta}\log S_{ab}(\theta)
       \]
       as a locally integrable function or distribution.  The branch convention
-      is part of the datum whenever \(S_{ab}\) has constant signs, poles, or
+      is part of the specification whenever \(S_{ab}\) has constant signs, poles, or
       CDD factors crossing the chosen real-axis chart.
 \item Circle quantization shifts
       \(\nu_a\in\mathbb R/\mathbb Z\), encoding the statistics and boundary
@@ -72,7 +72,7 @@ objects.
 \item A thermal or mirror-channel normalization.  At inverse temperature
       \(R>0\), the energy density coordinate is
       \(\sum_a\int d\theta\,m_a\cosh\theta\,\rho_a(\theta)\).  When the same
-      datum is used for a finite-size ground-state energy, the chapter assumes
+      specification is used for a finite-size ground-state energy, the chapter assumes
       the mirror-channel identification and the normalization of
       \(E_0(R)\) stated in Section~\ref{sec:tba-finite-size-ground-state}.
 \end{enumerate}
@@ -80,7 +80,7 @@ objects.
 
 \section{Bethe--Yang Quantization}
 
-For the diagonal datum of
+For the diagonal specification of
 Definition~\ref{def:diagonal-massive-tba-datum}, place the theory on a
 spatial circle of circumference \(L\).  For \(n\) particles of masses \(m_a\),
 rapidities \(\theta_j\), and diagonal scattering phases
@@ -375,13 +375,13 @@ Thus
 \]
 The result matches the central charge of the ultraviolet Majorana conformal
 field theory, but the computation above uses only the declared finite-size
-TBA datum and the normalization of \(E_0(R)\).
+TBA specification and the normalization of \(E_0(R)\).
 
 \section{Scaling Lee--Yang Example and the Effective Central Charge}
 
 The first interacting one-particle TBA example is the massive scaling
 Lee--Yang theory.  It is not a unitary Hilbert-space example; it is included
-here because it is the minimal nontrivial diagonal bootstrap datum for which
+here because it is the minimal nontrivial diagonal bootstrap specification for which
 the TBA ultraviolet limit can be carried to an exact number.  The ultraviolet
 conformal theory is the nonunitary minimal model \(M(2,5)\), whose central
 charge is \(c=-22/5\).  Its lowest conformal weight is \(-1/5\), so the
@@ -389,7 +389,7 @@ cylinder ground-state energy is governed by the effective central charge
 \[
   c_{\mathrm{eff}}=c-24h_{\min}=\frac25 .
 \]
-The TBA computation below derives the same number from the scattering datum.
+The TBA computation below derives the same number from the scattering specification.
 
 The diagonal one-particle amplitude is
 \[
@@ -582,9 +582,9 @@ defines the Euler-scale effective velocity
   \label{eq:ghd-effective-velocity}
 \end{equation}
 
-\begin{hypothesis}[Euler-scale GHD closure datum]
+\begin{hypothesis}[Euler-scale GHD closure]
 \label{hyp:euler-scale-ghd-closure}
-Fix a diagonal massive TBA datum and a family of inhomogeneous finite-volume
+Fix a diagonal massive TBA specification and a family of inhomogeneous finite-volume
 states whose mesoscopic cells have thermodynamic root densities
 \(\rho_a(x,t,\theta)\).  The Euler-scale generalized-hydrodynamic closure is
 the assertion that, for every compact rapidity interval and every test
@@ -704,9 +704,9 @@ they preserve exactly, and what entropy functional is monotone under the
 coarse-grained collision dynamics.  These are finite algebraic requirements
 before any limiting theorem from a local QFT is attempted.
 
-\begin{definition}[Finite collision-cell datum]
+\begin{definition}[Finite collision-cell Markov model]
 \label{def:finite-collision-cell-datum}
-A finite collision-cell datum consists of the following objects.
+A finite collision-cell Markov model consists of the following objects.
 
 \begin{enumerate}
 \item A finite set \(\Omega\) of mesoscopic cell states.
@@ -762,7 +762,7 @@ then the projected functional obeys
 
 \begin{lemma}[Finite collision-cell entropy identity]
 \label{lem:finite-collision-cell-entropy-identity}
-For a finite collision-cell datum, set
+For a finite collision-cell Markov model, set
 \[
   r_\omega=\frac{P_\omega}{\pi_\omega},
   \qquad

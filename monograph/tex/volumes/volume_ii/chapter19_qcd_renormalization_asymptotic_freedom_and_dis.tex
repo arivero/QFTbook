@@ -429,7 +429,7 @@ effective action.
     ghost/.style={densely dashed,line width=0.75pt},
     fermion/.style={line width=0.75pt}]
     \node[font=\small] at (0,3.65)
-      {background-field one-loop coefficient ledger};
+      {background-field one-loop coefficients};
 
     \begin{scope}[shift={(-5.85,1.18)}]
       \node[align=center] at (0,1.75)
@@ -648,8 +648,8 @@ The scalar integral carrying the logarithmic divergence is
   \label{eq:qcd-basic-log-integral}
 \end{equation}
 
-\subsection{Heat-Kernel Determinant Ledger}
-\label{subsec:qcd-heat-kernel-determinant-ledger}
+\subsection{Heat-Kernel Determinant Calculation}
+\label{subsec:qcd-heat-kernel-determinant-calculation}
 
 For a self-contained evaluation, use the Euclidean logarithmic coefficient of
 a Laplace-type operator
@@ -1259,9 +1259,9 @@ renormalized massless beta function and gives perturbative scaling data for
 gauge-invariant local operators.  It is not a derivation of confinement or of
 the low-flavor infrared behavior of QCD.
 
-\begin{controlledapproximation}[Banks--Zaks fixed-point datum versus a conformal-window theorem]
+\begin{controlledapproximation}[Banks--Zaks perturbative fixed point versus a conformal-window theorem]
 \label{ca:qcd-banks-zaks-status}
-The Banks--Zaks construction used here is the following perturbative datum,
+The Banks--Zaks construction used here is the following perturbative construction,
 not a theorem that every theory with flavor number in
 \eqref{eq:banks-zaks-window-core} is a nonperturbative conformal field theory.
 One fixes a mass-independent gauge-invariant renormalization scheme, restricts
@@ -1803,16 +1803,16 @@ of the state gives
 where all other \(z_\sigma\)'s are set to \(1\).  The prefactor differs from
 one, hence the expectation value is zero.  If a charged expectation is
 nonzero, the assumed center invariance is false.  Such an expectation is an
-extra reduced-model datum with no counterpart as a closed Wilson loop in the
+extra reduced-model observable with no counterpart as a closed Wilson loop in the
 unreduced lattice theory, so the reduced loop equations cannot be identified
 with the unreduced Wilson-loop equations without further modification.
 
 The loop-equation form of volume reduction can now be stated cleanly.
 
-\begin{definition}[Volume-reduction datum for Wilson loops]
+\begin{definition}[Volume-reduction structure for Wilson loops]
 \label{def:qcd-volume-reduction-datum}
-A volume-reduction datum for pure large-\(N_c\) lattice Yang--Mills Wilson
-loops consists of:
+A volume-reduction structure for pure large-\(N_c\) lattice Yang--Mills Wilson
+loops consists of the following assumptions and regulator objects:
 \begin{enumerate}
 \item a sequence of finite-volume Wilson lattice measures with fixed lattice
 coupling coordinate \(b\), and a sequence of reduced measures such as
@@ -1828,7 +1828,7 @@ of all reduced open words that appear in the loop equations for
 the limiting Schwinger--Dyson loop equations with the specified boundary and
 reflection-positivity data.
 \end{enumerate}
-When these data are supplied, volume reduction means
+When these assumptions and regulator objects are supplied, volume reduction means
 \begin{equation}
   \lim_{N_c\to\infty}\lim_{L\to\infty}
   \left\langle\frac1{N_c}\operatorname{Tr}U(C)\right\rangle_L
@@ -1844,7 +1844,7 @@ finite-\(N_c\) spectra, and continuum limits require additional definitions
 and additional limiting statements.
 \end{definition}
 
-The content of the datum is not decorative.  In a Schwinger--Dyson equation
+The content of this structure is not decorative.  In a Schwinger--Dyson equation
 for a Wilson loop, varying a link on the loop produces terms in which the loop
 splits at repeated visits to the varied link.  In the unreduced theory these
 split loops may be based at different lattice sites; translation invariance
@@ -1867,7 +1867,7 @@ produces a reduced large-\(N_c\) state with charged reduced-word expectation
 values rather than the desired large-volume Wilson-loop theory.
 Quenched Eguchi--Kawai, twisted Eguchi--Kawai, partial reduction, and adjoint
 matter with periodic boundary conditions are different attempts to stabilize
-the needed center realization.  Each changes the finite-regulator datum and
+the needed center realization.  Each changes the finite-regulator construction and
 therefore requires its own loop-equation and symmetry analysis.  This
 monograph uses volume reduction only when the relevant center, factorization,
 and uniqueness hypotheses are explicitly part of the statement.
@@ -4545,7 +4545,7 @@ have been defined.  Asymptotic completeness is a large-time statement about
 the range of physical wave operators in the gauge-invariant Hilbert space.
 \end{openproblem}
 
-\section{Hadron Spectroscopy as an Ab Initio QCD Datum}
+\section{Hadron Spectroscopy as Ab Initio QCD}
 \label{sec:qcd-hadron-spectroscopy-ab-initio}
 
 \subsection{Spectral Sources and Finite-Volume Data}
@@ -8132,7 +8132,7 @@ The exact observable remains the detector distribution
 \eqref{eq:qcd-eec-definition}.
 \end{remark}
 
-\paragraph{Renormalized small-angle light-ray OPE datum.}
+\paragraph{Small-angle light-ray OPE structure.}
 The symbolic matching formula \eqref{eq:qcd-eec-light-ray-ope-form} becomes
 a mathematical statement only after the operator coordinates, endpoint
 variable, regulator, and contact convention have been declared.  Let
@@ -8140,7 +8140,7 @@ variable, regulator, and contact convention have been declared.  Let
   \rho:=1-\zeta=1-\cos\chi,\qquad
   \rho\simeq \frac{\theta^2}{2}
 \]
-in the small-angle region.  A renormalized QCD light-ray OPE datum for this
+in the small-angle region.  A renormalized QCD light-ray OPE structure for this
 endpoint consists of the following ingredients:
 \[
   \mathcal D_{\rm EEC}^{\rm coll}
@@ -8540,9 +8540,9 @@ remains the hadronic detector distribution
 \eqref{eq:qcd-eec-definition}.
 \end{controlledapproximation}
 
-\paragraph{Endpoint matching as a distributional gluing datum.}
+\paragraph{Endpoint matching as distributional gluing.}
 The endpoint formulae above live in different distribution charts.  A
-prediction for the full normalized EEC on \([-1,1]\) requires a gluing datum,
+prediction for the full normalized EEC on \([-1,1]\) requires a gluing prescription,
 because the contact coefficient at \(\zeta=1\), the perturbative
 back-to-back delta coordinate at \(\zeta=-1\), and the separated-angle
 density contribute to the same moment sum rules.
@@ -8565,7 +8565,7 @@ If the two endpoint atoms are retained as explicit scheme coordinates, write
   \mathcal R(\zeta)
   +K_+\,\delta(1-\zeta)
   +K_-\,\delta(1+\zeta).
-  \label{eq:qcd-eec-matched-distribution-delta-ledger}
+  \label{eq:qcd-eec-matched-distribution-contact-terms}
 \end{equation}
 Here \(K_+\) is the coincident-detector contact coordinate and \(K_-\) is the
 back-to-back endpoint coordinate generated by the perturbative source and
@@ -8594,7 +8594,7 @@ then \eqref{eq:qcd-eec-matching-moment-equations} becomes a consistency test
 on the bulk, small-angle, and back-to-back calculations in the chosen
 subtraction scheme.  A mismatch is a statement about truncation, missing
 power corrections, or incompatible endpoint conventions, rather than a new
-observable.  This is the minimal matching ledger required before a
+observable.  This is the minimal matching structure required before a
 perturbative endpoint formula can be compared with the nonperturbative
 distribution \eqref{eq:qcd-eec-definition}.
 
@@ -9218,7 +9218,7 @@ cancels any multiplicative Wilson-line factor depending only on \(z^2\) in
 that scheme.  It does not remove matching coefficients, target-mass effects,
 or higher-twist matrix elements.
 
-\begin{controlledapproximation}[Large-momentum matching datum]
+\begin{controlledapproximation}[Large-momentum matching statement]
 \label{ca:qcd-large-momentum-quasi-pdf-matching}
 Fix a renormalized spatial-bilocal scheme \(\mathcal R\), a light-ray
 factorization scheme at scale \(\mu\), and a test function
@@ -11132,7 +11132,7 @@ of the whole algebra generated by Wilson lines.  To state the mathematical
 content without importing the usual folklore terminology, first put the
 Wilson-line variables on a finite transverse regulator.
 
-\begin{definition}[Finite Wilson-line rapidity-evolution datum]
+\begin{definition}[Finite Wilson-line rapidity-evolution generator]
 \label{def:qcd-finite-wilson-line-rapidity-datum}
 Let \(\Lambda_\perp\) be a finite set of transverse sites and let
 \begin{equation}
@@ -11152,7 +11152,7 @@ with product Haar measure \(\dd h(U)\).  For
 \end{equation}
 where the generators obey the trace convention of
 \eqref{eq:qcd-casimir-definitions}.  A finite Wilson-line
-rapidity-evolution datum consists of a family of smooth coefficients
+rapidity-evolution structure consists of a family of smooth coefficients
 \[
   \mathcal A_{\mathbf x\mathbf y}^{ab}(U;Y)
   =
@@ -11177,7 +11177,7 @@ second-order operator
   \right].
   \label{eq:qcd-finite-wilson-line-generator}
 \end{equation}
-The datum is a finite-regulator replacement for the JIMWLK Hamiltonian only
+This finite generator is a finite-regulator replacement for the JIMWLK Hamiltonian only
 after the coefficient \(\mathcal A\) has been derived from a specified QCD
 rapidity factorization scheme.
 \end{definition}

@@ -419,9 +419,9 @@ functions are matrix elements of collinear fields with collinear Wilson
 lines; the soft function is a vacuum matrix element of soft Wilson lines with
 the measurement operator inserted.
 
-\begin{definition}[SCET operator datum for a two-jet endpoint]
+\begin{definition}[SCET operator specification for a two-jet endpoint]
 \label{def:scet-two-jet-operator-datum}
-A two-jet SCET operator datum for a color-singlet source consists of:
+A two-jet SCET operator specification for a color-singlet source consists of:
 \begin{enumerate}
   \item two lightlike directions \(n,\bar n\) with \(n\cdot\bar n=2\), a small
   parameter \(\lambda\), and momentum regions with the scaling displayed
@@ -562,7 +562,7 @@ regulated path integral, the change of variables is multiplication by an
 invertible color matrix at each regulated spacetime point.  With a
 gauge-covariant regulator its Berezin or bosonic Jacobian is a local
 gauge-invariant factor; in the factorized construction that factor is included
-in the same renormalized soft and collinear operator datum rather than treated
+in the same renormalized soft and collinear operator specification rather than treated
 as an extra physical assumption.  The identity itself is algebraic and does
 not assert that subleading soft interactions or Glauber exchanges decouple.
 
@@ -601,7 +601,7 @@ measurement projects onto a spectator or color-flow coordinate that does not
 commute with \(U_G\), then \(U_G^\dagger M U_G\neq M\), and the trace need not
 equal the value without the Glauber exchange.  In that case the exchanged
 Glauber coordinate must either be included as an additional operator in the
-factorized datum or the proposed factorization statement is false for that
+factorization structure or the proposed factorization statement is false for that
 measurement.
 
 There is also a quantitative finite version, useful because real
@@ -662,9 +662,9 @@ approximations and contour deformations isolate it, prove the required
 inclusive sum or commutation property for the actual measurement, and bound
 the remainder in the topology of the smeared cross section.  Without these
 extra analytic steps, saying that Glauber exchanges ``cancel'' is merely a
-claim about a missing part of the factorization datum.
+claim about a missing part of the factorization structure.
 
-\begin{hypothesis}[Leading-power SCET factorization datum]
+\begin{hypothesis}[Leading-power SCET factorization structure]
 \label{hyp:leading-power-scet-factorization}
 A leading-power SCET factorization statement for an observable \(F\) consists
 of a small parameter \(\lambda\), a list of modes with momentum scaling, a
@@ -696,7 +696,7 @@ distributions under discussion.  The physical smeared functional is
   \int_{W_Q}\varphi(e)\,\dd\mu_Q(e).
   \label{eq:scet-physical-smeared-functional}
 \end{equation}
-A two-jet datum \(\mathcal D_{\rm SCET}\) as in
+A two-jet operator specification \(\mathcal D_{\rm SCET}\) as in
 Definition~\ref{def:scet-two-jet-operator-datum} defines, after the specified
 regulator, overlap subtraction, rapidity subtraction when needed, and
 renormalization scheme, a singular distributional coordinate
@@ -733,7 +733,7 @@ range.  If the hard, jet, soft, or anomalous-dimension entries are
 perturbatively truncated, the displayed \(R_Q\) must be enlarged by the
 declared perturbative truncation remainder in the same norm.  The common
 phrases "leading power" and "factorization theorem" therefore have a definite
-meaning only after the physical functional, test space, factorized datum,
+meaning only after the physical functional, test space, factorization structure,
 endpoint parameter, and remainder topology have all been specified.
 
 The same formulation also fixes the status of finite scheme changes.  In a
@@ -765,12 +765,12 @@ and the sum of the transformed anomalous dimensions still vanishes because
 \]
 In a mixing problem the same statement is a similarity-covariant statement
 about matrix kernels and path-ordered products.  It is part of the coordinate
-data of the factorized approximation, not an optional convention added after
+structure of the factorized approximation, not an optional convention added after
 the formula has been written.
 \end{controlledapproximation}
 
 Renormalization of the hard, jet, and soft functions gives evolution
-equations.  The resummation datum is clearest after a Laplace transform, or
+equations.  The resummation structure is clearest after a Laplace transform, or
 any equivalent transform, has converted the measurement convolution into an
 ordinary product.  Write the transformed singular coordinate as
 \[
@@ -782,7 +782,7 @@ ordinary product.  Write the transformed singular coordinate as
   \widetilde S(\nu,Q,\mu),
 \]
 where \(\nu\) is conjugate to the event-shape measurement.  A scalar
-renormalization-group transport datum consists of anomalous dimensions
+renormalization-group transport structure consists of anomalous dimensions
 \[
   \mu\frac{\dd}{\dd\mu}\log H=\gamma_H,\qquad
   \mu\frac{\dd}{\dd\mu}\log \widetilde J_a=\gamma_{J_a},\qquad
@@ -800,7 +800,7 @@ exponentials below are replaced by path-ordered evolution matrices and the
 consistency condition is the corresponding statement that the product
 observable has no residual common-scale dependence.
 
-For a scalar datum, define
+For a scalar transport structure, define
 \[
   U_i(\mu,\mu_i)
   =
@@ -941,7 +941,7 @@ in the external charge density space, with entries built from products of
 generators \(T_i^a\) on the participating energetic lines.  A scalar
 exponential such as \eqref{eq:massive-vector-sudakov-area} is the
 one-line diagonal representative of this more general charge-transport
-datum.
+structure.
 
 This is the clean way to place boosted and electroweak jet statements inside
 the monograph.  A boosted massive-particle substructure analysis is a
@@ -958,7 +958,7 @@ then listed explicitly, for example
 as applicable to the chosen observable.  The perturbative electroweak
 Sudakov transport, the QCD jet and soft functions, the resonance
 approximation, and the nonperturbative hadronization or track coordinates are
-separate entries in the datum.  Their remainders have different meanings and
+separate entries in the prediction.  Their remainders have different meanings and
 must be stated separately before a numerical prediction can be assigned a
 claimed accuracy.
 
@@ -984,7 +984,7 @@ is the mathematical origin of non-global logarithms.  The point is not the
 name; it is that the measurement algebra is no longer generated by a single
 linear Wilson-line soft function.
 
-The following finite datum records the part of the argument that can be made
+The following finite model records the part of the argument that can be made
 without invoking an unregulated continuum angular integral.  Fix finitely many
 angular cells \(\mathcal C\) away from the hard Wilson-line directions.  Let
 \(\mathcal M\subset\mathcal C\) be the measured, vetoed cells and
@@ -1002,13 +1002,13 @@ one representative regulated coordinate for this rate is
         (1-\widehat k\cdot\widehat n_j)}
 \]
 after the collinear neighborhoods of \(i\) and \(j\) and the ultraviolet
-coupling convention have been specified.  In the finite datum the numbers
+coupling convention have been specified.  In the finite model the numbers
 \(K_{ij}^c\) are simply positive regulator coordinates.
 
 Let \(G_{ij}(L)\) denote the finite soft-dipole gap coordinate for the dipole
 \((i,j)\), where \(L\) is the logarithm of the resolved soft-energy hierarchy,
 and impose the initial condition \(G_{ij}(0)=1\).  The finite non-global
-evolution datum is
+evolution equation is
 \begin{equation}
   \frac{\dd}{\dd L}G_{ij}(L)
   =
@@ -1073,13 +1073,13 @@ nonlinear Wilson-line measurement problem.
 Equation~\eqref{eq:finite-non-global-dipole-evolution} is not a theorem about
 full QCD.  It is a finite large-\(N_c\), strongly energy-ordered,
 soft-dipole coordinate system for one obstruction to naive factorization.
-Beyond this datum one must specify the color density matrix at finite
+Beyond this finite model one must specify the color density matrix at finite
 \(N_c\), the regulator for collinear neighborhoods of the hard lines, the
 matching to the hard and collinear functions, the treatment of recoil, and
 the status of Glauber exchanges.  Super-leading logarithms, when present, are
 not explained by the finite non-global coefficient alone; they signal an
 additional factorization obstruction that must be stated in the operator
-datum of Hypothesis~\ref{hyp:leading-power-scet-factorization}.
+structure of Hypothesis~\ref{hyp:leading-power-scet-factorization}.
 
 \section{Jet Substructure Observables and Grooming}
 
@@ -1162,7 +1162,7 @@ about that functional and its normalization.  The check must be made at the
 level of Definition~\ref{def:irc-safe-measurement}.
 
 \paragraph{Finite-tree formulation and decision margins.}
-The preceding definition hides a useful mathematical datum: before one takes
+The preceding definition hides a useful finite mathematical structure: before one takes
 continuum, perturbative, or detector limits, soft drop is a deterministic map
 on a finite Cambridge--Aachen declustering tree.  Let \(T\) be a rooted binary
 tree whose leaves are the constituents of a fixed input jet.  For every
@@ -1177,7 +1177,7 @@ one Cambridge--Aachen recombination.  Write
 \]
 where the branch direction entering \(\Delta R(v_L,v_R)\) is the
 four-momentum recombination direction of that branch.  A fixed-tree soft-drop
-datum consists of \(T\), the leaf momenta, a declared tie-breaking rule when
+specification consists of \(T\), the leaf momenta, a declared tie-breaking rule when
 \(E_{v,L}=E_{v,R}\), and the parameters \((z_{\rm cut},\beta_{\rm SD})\).
 The recursion starts at the root.  At a vertex \(v\), if
 \[
@@ -1186,7 +1186,7 @@ The recursion starts at the root.  At a vertex \(v\), if
 the algorithm stops and retains precisely the leaves below \(v\).  If the
 condition fails, it moves to the harder child and deletes the softer child.
 
-This finite-tree datum is the object whose soft and collinear limits must be
+This finite-tree specification is the object whose soft and collinear limits must be
 tested before it is inserted into a partonic phase-space integral.  Define the
 soft-drop decision margin and, on failed vertices, the harder-branch margin by
 \begin{equation}
@@ -1206,7 +1206,7 @@ visited by the recursion has \(m_v^{\rm SD}>0\), and every failed vertex has
 \(m_v^{\rm hard}>0\), there is a neighborhood of the leaf momenta in which
 the same vertices are visited, the same branches are deleted, and the same
 leaf set is retained.  If the tree \(T\) is generated from the momenta rather
-than supplied as part of the datum, one must additionally require positive
+than supplied as part of the input, one must additionally require positive
 Cambridge--Aachen clustering margins: every pairwise angular distance
 comparison that determines the tree must remain separated from its nearest
 competitor.  These margins are the precise finite-event meaning of the phrase
@@ -1362,15 +1362,16 @@ Equations
 \eqref{eq:soft-drop-mass-fixed-coupling-sudakov}--\eqref{eq:mmdt-single-log-radiator}
 should be read as a calibration of logarithmic phase space.  A physical
 prediction for a groomed jet-mass distribution must replace this chart by a
-renormalized factorization datum: the hard production process, the jet
+renormalized factorization structure: the hard production process, the jet
 function for the initiating parton, the groomed soft or collinear-soft
 function, overlap subtractions, running coupling, finite splitting functions,
 matching to fixed order, non-global and clustering effects where present, and
 the hadronization coordinate appropriate to the measured mass region.
 
-\paragraph{Renormalized soft-drop mass factorization datum.}
+\paragraph{Renormalized soft-drop mass factorization structure.}
 The preceding radiator becomes a QCD prediction only after the measured
-groomed-mass coordinate has been embedded in a renormalized operator datum.
+groomed-mass coordinate has been embedded in a renormalized operator
+definition.
 Let \(Q\) denote the hard energy scale of the measured jet, for instance
 \(Q=p_T R_0\) in a small-radius hadron-collider chart, and let
 \[
@@ -1423,12 +1424,12 @@ For \(\beta_{\rm SD}=0\), \(z_*=z_{\rm cut}\) and
 behind the single-logarithmic mMDT radiator in
 \eqref{eq:mmdt-single-log-radiator}.
 
-\begin{definition}[Soft-drop groomed-mass factorization datum]
+\begin{definition}[Soft-drop groomed-mass factorization structure]
 \label{def:soft-drop-mass-factorization-datum}
 Fix the jet algorithm, recoil convention, recombination scheme, hard process,
 partonic channel \(i\), subtraction scheme, and soft-drop parameters
 \((z_{\rm cut},\beta_{\rm SD})\).  A leading singular soft-drop groomed-mass
-factorization datum consists of:
+factorization structure consists of:
 \begin{enumerate}
   \item a hard coefficient \(H_i(Q,\mu)\) for the short-distance production of
   the measured energetic parton or color representation;
@@ -1480,7 +1481,7 @@ The corresponding singular coordinate is
 \end{equation}
 for every endpoint test function \(\varphi\) in the declared domain.  The
 symbols \(S^G_i\), \(J_i\), and \(S^{\rm cs}_{i,{\rm SD}}\) do not have
-standalone physical meaning outside this common datum; finite scheme changes
+standalone physical meaning outside this common structure; finite scheme changes
 may move terms among them only if
 \eqref{eq:soft-drop-factorization-rg-consistency} and the paired distribution
 \eqref{eq:soft-drop-mass-factorization-datum} are preserved.
@@ -1579,7 +1580,7 @@ density of the first accepted split is then
 \end{equation}
 This is a controlled approximation only after the kernel, coupling
 prescription, ordering variable, recoil convention, endpoint regularization,
-and matching to the rest of the factorization datum have been specified.
+and matching to the rest of the factorization structure have been specified.
 \end{controlledapproximation}
 
 The derivation of
@@ -2003,13 +2004,13 @@ separate pieces.  First one must define a soft operator coordinate.  Then one
 may state a factorized approximation that convolves this coordinate with a
 short-distance coefficient in a specified endpoint topology.
 
-\begin{definition}[Leading shape-function operator datum]
+\begin{definition}[Leading shape-function operator definition]
 \label{def:leading-shape-function-operator-datum}
-Fix a two-jet SCET operator datum as in
+Fix a two-jet SCET operator specification as in
 Definition~\ref{def:scet-two-jet-operator-datum}, an event-shape soft
 measurement coordinate \(\widehat\ell_e\), and a renormalization scheme
 \(\mathcal R_\mu\) for the cusp and endpoint singularities of the Wilson-line
-operator.  A leading shape-function operator datum consists of:
+operator.  A leading shape-function operator definition consists of:
 \begin{enumerate}
   \item outgoing soft Wilson lines \(Y_n,Y_{\bar n}\) in the representations
   carried by the two energetic charges;
@@ -2049,7 +2050,7 @@ moment are
 whenever the displayed moments exist in the chosen scheme.
 \end{definition}
 
-The QFT datum is the operator pairing
+The QFT object is the operator pairing
 \eqref{eq:shape-function-test-pairing}.  In a phenomenological analysis one
 often chooses a finite-dimensional positive family for \(F_e\) and fits its
 parameters to data.  That fitted family is an additional statistical model
@@ -2070,7 +2071,7 @@ Let \(e\) be a dimensionless two-jet event shape and let \(Q\) be the hard
 scale.  A leading shape-function description on an endpoint window
 \(e\sim \Lambda_{\rm QCD}/Q\) consists of:
 \begin{enumerate}
-  \item the operator datum of
+  \item the operator definition of
   Definition~\ref{def:leading-shape-function-operator-datum};
   \item a perturbative coefficient distribution
   \(\dd\sigma_{\rm pert}/\dd e\) in the same subtraction scheme;
@@ -2152,12 +2153,12 @@ operator definition; when it has a density we write the same symbol for that
 density.  Perturbative coefficients are then convolved with \(T_i\) rather
 than evaluated with a purely partonic charged-energy measurement.
 
-\begin{definition}[Track-function operator datum]
+\begin{definition}[Track-function operator definition]
 \label{def:track-function-operator-datum}
 Fix a lightlike collinear direction \(n\), the conjugate vector \(\bar n\)
 with \(n\cdot\bar n=2\), and the SCET operator conventions of
 Definition~\ref{def:scet-two-jet-operator-datum}.  A track-function operator
-datum for a parton species \(i\) consists of:
+definition for a parton species \(i\) consists of:
 \begin{enumerate}
   \item a gauge-invariant collinear source \(\mathcal O_i\), for example
   \(\chi_n\) for a quark species or
@@ -2211,14 +2212,14 @@ collinear source.  The parton label \(i\) labels that source in the
 factorized approximation.  Gauge invariance enters through the Wilson-line
 building blocks \(\chi_n\) and \(\mathcal B_{n\perp}\), while the
 charged-track measurement is a color-singlet final-state measurement.  The
-renormalization of \eqref{eq:track-function-test-pairing} is a separate datum
-from the renormalization of the hard partonic coefficient into which the
+renormalization of \eqref{eq:track-function-test-pairing} is separate from
+the renormalization of the hard partonic coefficient into which the
 track function is inserted.
 
-\begin{definition}[Paired track-function evolution datum]
+\begin{definition}[Paired track-function evolution structure]
 \label{def:paired-track-function-evolution}
 Fix a renormalization scale \(\mu\).  A finite-kernel track-function evolution
-datum consists of:
+structure consists of:
 \begin{itemize}
   \item a finite set \(\mathcal I\) of parton species;
   \item for every ordered splitting \(i\to jk\), an integrable kernel

@@ -8,9 +8,9 @@ chapter formulates Hamiltonian truncation, light-front discretization, and
 benchmark scripts as controlled approximations with explicitly declared
 Hilbert spaces, cutoffs, counterterms, and convergence tests.
 
-\begin{definition}[Hamiltonian truncation regulator datum]
+\begin{definition}[Hamiltonian truncation regulator specification]
 \label{def:hamiltonian-truncation-regulator-datum}
-A Hamiltonian truncation regulator datum is a tuple
+A Hamiltonian truncation regulator specification is a tuple
 \[
   \mathfrak H_{\rm trunc}
   =
@@ -32,7 +32,7 @@ with the following entries.
 \item \(I\) is a directed cutoff set.  For each \(\Lambda\in I\),
   \(\Hilb_\Lambda\subset\operatorname{Dom}\mathcal Q_H\) is a
   finite-dimensional trial space and \(P_\Lambda\) is the Hilbert-space
-  projection onto \(\Hilb_\Lambda\).  The datum specifies whether the intended
+  projection onto \(\Hilb_\Lambda\).  The specification states whether the intended
   density statement is strong, form-norm, graph-norm, or another declared
   topology.
 \item \(\mathcal B_\Lambda\) is the ordered computational basis used to build
@@ -61,13 +61,13 @@ with the following entries.
   prescription, residual-bound tolerance, and benchmark scripts used to
   check finite-matrix algebra.
 \end{enumerate}
-The datum records a regulator family.  A continuum or infinite-volume claim
+This records a regulator family.  A continuum or infinite-volume claim
 requires an additional convergence theorem or controlled approximation that
 states the topology, the limiting quadratic form or observable, and an error
 bound.
 \end{definition}
 
-\section{Projected Hamiltonian Datum}
+\section{Projected Hamiltonian Regulator}
 
 The elementary version of Definition~\ref{def:hamiltonian-truncation-regulator-datum}
 starts with a known self-adjoint Hamiltonian \(H\) on \(\Hilb\), bounded
@@ -89,7 +89,7 @@ must be supplemented by local counterterms:
   \sum_a c_a(\Lambda)P_\Lambda\mathcal O_aP_\Lambda.
 \]
 The pair \((\Hilb_\Lambda,H_\Lambda^{\mathrm{ren}})\) is the numerical
-regulator datum.
+regulator.
 
 \section{Rayleigh--Ritz Bound}
 
@@ -1437,9 +1437,9 @@ the first mathematical object is still a finite Hilbert space, a finite
 Hermitian operator, and a family of trial vectors.  The following finite
 bounds are the common core behind those methods.
 
-\begin{definition}[Finite variational ansatz datum]
+\begin{definition}[Finite variational ansatz]
 \label{def:finite-variational-ansatz-datum}
-A finite variational ansatz datum for a regulated Hamiltonian consists of
+A finite variational ansatz for a regulated Hamiltonian consists of
 \[
   (V,A,\Theta,\Psi,\mathcal S,\mathcal E_{\rm samp}) .
 \]
@@ -1575,7 +1575,7 @@ Section~\ref{sec:blocking-jackknife-bootstrap-error-coordinates}; optimization
 bias, autocorrelation, and architecture bias are additional entries of
 \(\mathcal E_{\rm samp}\), not properties of the finite identities.
 
-Tensor-network terminology fits this datum by specifying \(\Psi\).  A
+Tensor-network terminology fits this definition by specifying \(\Psi\).  A
 finite matrix-product state on a spin chain of length \(L\), physical local
 dimension \(d\), and bond dimension \(\chi\) is a vector whose amplitudes
 are finite contractions of matrices
@@ -1609,7 +1609,7 @@ norm, spectral distance bounded by variance, ground-projection leakage from a
 known finite gap, the tangent-gradient formula, and the local-energy
 Monte Carlo identity in a finite basis.
 
-\section{Light-Front Kinematic And Constraint Datum}
+\section{Light-Front Kinematics And Constraints}
 \label{sec:light-front-kinematic-constraint-datum}
 
 Light-front Hamiltonian methods use a null hyperplane as the time slice.  In
@@ -1634,10 +1634,10 @@ Hamiltonians used below.  These identities are kinematic; they do not define
 an interacting QFT until the constraint and zero-mode sectors have also been
 specified.
 
-\begin{definition}[Light-front Hamiltonian regulator datum]
+\begin{definition}[Light-front Hamiltonian regulator specification]
 \label{def:light-front-hamiltonian-regulator-datum}
-A light-front Hamiltonian regulator datum is a Hamiltonian truncation
-regulator datum
+A light-front Hamiltonian regulator specification is a Hamiltonian truncation
+regulator specification
 \(\mathfrak H_{\rm trunc}\) together with the following additional
 structure.
 \begin{enumerate}[label=\textnormal{(\roman*)}]
@@ -1656,7 +1656,8 @@ structure.
   recording the \(p^+=0\) modes, finite global Gauss-law constraints,
   residual gauge transformations, and any additional compact or topological
   degrees of freedom.  Eliminating, quantizing, or imposing these variables
-  are different regulator choices and must be part of the datum.
+  are different regulator choices and must be part of the regulator
+  specification.
 \item A finite physical Hilbert space
   \[
     \Hilb^{\rm phys}_\Lambda
@@ -1729,7 +1730,7 @@ calculation is therefore specified only after the nonzero-mode Hamiltonian,
 zero-mode/constraint prescription, and residual gauge data have all been
 declared in the same regulator scheme.
 
-\section{DLCQ Datum}
+\section{DLCQ Regulator}
 
 DLCQ is the compact positive-longitudinal-momentum specialization of
 Definition~\ref{def:light-front-hamiltonian-regulator-datum}.  It
@@ -1751,9 +1752,10 @@ internal cutoffs added as needed.  Zero modes with \(n=0\) are constrained
 variables or additional degrees of freedom depending on the theory; their
 treatment is part of the regulator.
 
-\begin{definition}[DLCQ regulator datum]
+\begin{definition}[DLCQ regulator specification]
 \label{def:dlcq-regulator-datum}
-A DLCQ regulator datum is a Hamiltonian truncation regulator datum together
+A DLCQ regulator specification is a Hamiltonian truncation regulator
+specification together
 with the following light-front entries.
 \begin{enumerate}[label=\textnormal{(\roman*)}]
 \item The spatial light-front coordinate is compactified as
@@ -1762,7 +1764,7 @@ with the following light-front entries.
 \item The finite basis consists of all declared parton partitions
   \(K=n_1+\cdots+n_N\), with \(n_i>0\), together with the transverse,
   internal, gauge, and statistics labels kept by the regulator.
-\item The zero-mode sector is specified as part of the datum: constrained
+\item The zero-mode sector is specified as part of the regulator: constrained
   variables, eliminated modes, residual global constraints, and additional
   zero-mode degrees of freedom are all recorded before diagonalization.
 \item The finite operator is the light-front Hamiltonian \(P^-_K\), or
@@ -2015,9 +2017,9 @@ statement about a limiting procedure.  This section records the minimal
 finite-dimensional facts used in the companion scripts and explains what an
 extrapolation hypothesis must contain.
 
-\begin{definition}[Finite-regulator observable datum]
+\begin{definition}[Finite-regulator observable record]
 \label{def:finite-regulator-observable-datum}
-A finite-regulator observable datum consists of:
+A finite-regulator observable record consists of:
 \[
   \bigl(I,\preceq;\ X_i,\ A_i,\ \sigma_i,\ \mathcal E_i\bigr) .
 \]
@@ -2300,7 +2302,7 @@ the finite large-\(K\) fit calculation above.
 
 \paragraph{Correlated fits and window stability.}
 Production lattice, tensor-network, and Hamiltonian-truncation data are rarely
-independent scalar data.  A continuum extrapolation datum at a chosen fit
+independent scalar data.  A continuum extrapolation specification at a chosen fit
 window \(W=\{i_1,\ldots,i_N\}\) therefore contains
 \[
   A=(A_{i_1},\ldots,A_{i_N})^T,\qquad
@@ -2320,7 +2322,7 @@ the chosen fit functions.  Put
 Assume in this paragraph that \(\Sigma_W\) is positive definite and that
 \(X\) has full column rank.  If an estimated covariance matrix is singular,
 the shrinkage, projection, or diagonal approximation used to replace it is a
-new member of the datum, not an invisible numerical detail.
+new part of the fit specification, not an invisible numerical detail.
 
 The correlated least-squares coordinate is
 \begin{equation}
@@ -2428,7 +2430,7 @@ then reports \(\widehat A_{\infty,W}\), the propagated statistical error
 \(\sum_r |B_{0r}|R_r\), the correlated residual, the condition number, and
 the spread of fitted intercepts across the declared windows.  Supplying the
 identity matrix as a covariance, or using diagonal errors, is part of the
-finite datum and is printed as such.  The script therefore checks the
+finite fit specification and is printed as such.  The script therefore checks the
 bookkeeping of a proposed extrapolation.  The cutoff exponent, counterterm
 scheme, and remainder estimate are mathematical inputs whose justification
 comes from the regulated theory, not from the fit output alone.
@@ -2436,7 +2438,7 @@ comes from the regulated theory, not from the fit output alone.
 \section{Light-Front Hamiltonian}
 
 The light-front Hamiltonian convention used in this chapter is the regulator
-datum of Definition~\ref{def:light-front-hamiltonian-regulator-datum}.  The
+specification of Definition~\ref{def:light-front-hamiltonian-regulator-datum}.  The
 finite numerical sections above use its DLCQ specialization; the analytic
 large-\(N\) QCD construction in
 Chapter~\ref{ch:large-n-two-dimensional-qcd-light-front} and the
@@ -2452,11 +2454,11 @@ Lattice Monte Carlo, Hamiltonian truncation, TCSA/TFFSA, and DLCQ produce
 different finite mathematical objects.  A numerical agreement between their
 outputs is meaningful only after a common QFT observable and a common
 normalization have been specified.  The comparison itself is therefore part
-of the regulated datum.
+of the regulated calculation.
 
-\begin{definition}[Cross-method benchmark datum]
+\begin{definition}[Cross-method benchmark specification]
 \label{def:cross-method-benchmark-datum}
-A cross-method benchmark datum consists of the following information.
+A cross-method benchmark specification consists of the following information.
 \begin{enumerate}
   \item A target QFT observable \(Q\).  Examples are a dimensionless mass
   ratio, a finite-volume energy gap in units of the physical mass, a matrix
@@ -2615,7 +2617,7 @@ check attached to a script is the tuple
     \mathcal S_{\rm scope}
   \bigr),
 \]
-where \(\mathcal D_{\rm fin}\) is the declared finite regulator datum,
+where \(\mathcal D_{\rm fin}\) is the declared finite regulator specification,
 \(F_{\rm fin}\) is the finite output map computed by the script,
 \(\mathcal I_{\rm check}\) is the list of algebraic, spectral, measure, or
 statistical identities checked against the chapter, and
@@ -2713,7 +2715,7 @@ Hellmann--Feynman slopes, and the \(E_8\) script fixes the continuum target
 mass-ratio table.  A full comparison between a finite TCSA/TFFSA spectrum,
 Euclidean lattice correlators, and the exact \(E_8\) masses still requires a
 declared finite-volume convention, cutoff counterterms, extrapolation
-envelopes, and a comparison datum in the sense of
+envelopes, and comparison estimates in the sense of
 Definition~\ref{def:cross-method-benchmark-datum}.
 
 \section{Benchmark Protocol}

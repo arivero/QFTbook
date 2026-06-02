@@ -553,14 +553,14 @@ algebraic identity once the same Hirota gauge is used at the four adjacent
 nodes; analytic continuation, strip domains, source terms, and asymptotics
 are additional model-specific data.
 
-\section{T-Gauge and Analytic T-System Data}
+\section{T-Gauge and Analytic T-System Specifications}
 
 The Hirota equation is not by itself a spectral problem.  It is a local
 bilinear relation on a two-dimensional lattice of functions.  A transfer
 matrix, a relativistic TBA system, or a quantum spectral curve is obtained
-only after one adds the boundary conditions and analytic data that select a
-particular solution.  The first piece of bookkeeping is the gauge freedom of
-the T-system.
+only after one adds the boundary conditions and analytic constraints that
+select a particular solution.  The first such constraint is the gauge freedom
+of the T-system.
 
 \begin{definition}[T-gauge transformation]
 \label{def:t-system-gauge-transformation}
@@ -614,7 +614,8 @@ fit together consistently.  It does not specify:
 \item source terms introduced by physical particles, holes, defects, or
       wrapping corrections.
 \end{enumerate}
-These items are not decorative.  They are the data that turn the Hirota
+These items are not decorative.  They are the analytic and boundary conditions
+that turn the Hirota
 identity into a spectral problem with a discrete set, or a controlled
 continuum family, of solutions.  Two T-systems related by
 \eqref{eq:t-system-gauge-transformation} describe the same Y-system, but they
@@ -622,9 +623,9 @@ may place boundary divisors in different T-functions.  A statement about
 polynomiality, zero locations, or large-\(u\) normalization is therefore
 meaningful only after the gauge has been fixed.
 
-\begin{definition}[Analytic T-system datum]
+\begin{definition}[Analytic T-system specification]
 \label{def:analytic-t-system-datum}
-An analytic T-system datum on a lattice domain
+An analytic T-system specification on a lattice domain
 \(\mathfrak D\subset\mathbb Z^2\)
 consists of:
 \begin{enumerate}
@@ -635,23 +636,23 @@ consists of:
       polynomiality or asymptotics are asserted;
 \item boundary functions and quantum-determinant factors on
       \(\partial\mathfrak D\);
-\item the allowed zero, pole, branch-cut, and asymptotic data;
-\item the map from this analytic datum to physical charges or transfer
+\item the allowed zero, pole, branch-cut, and asymptotic conditions;
+\item the map from this analytic specification to physical charges or transfer
       eigenvalues.
 \end{enumerate}
 \end{definition}
 
-In finite spin chains the analytic datum is often polynomial: the
+In finite spin chains the analytic specification is often polynomial: the
 inhomogeneities, twist, representation labels, and quantum determinant fix
 the boundary factors, and Bethe equations enforce cancellation of unwanted
 poles.  In relativistic integrable QFT, the same local Hirota/Y-system
 algebra must be supplemented by strip analyticity, source terms, and
 large-rapidity asymptotics before it becomes a TBA problem.  In planar
 gauge-theory integrability, the quantum spectral curve replaces the finite
-polynomial condition by a Riemann--Hilbert type datum: sheets, cuts,
+polynomial condition by a Riemann--Hilbert type problem: sheets, cuts,
 asymptotics, gluing conditions, and quantization of charges.  The determinant
 identities in this chapter supply the local algebraic skeleton; the analytic
-T-system datum supplies the physical theory.
+T-system specification turns that skeleton into a physical spectral problem.
 
 \section{Q-Operators}
 
@@ -661,7 +662,7 @@ version is \eqref{eq:xxx-baxter-tq}.  Operator construction requires an
 auxiliary representation in which the trace, or a regulated trace, is
 defined.  In rank one this can be described as follows.
 
-\begin{construction}[Rank-one Baxter operator datum]
+\begin{construction}[Rank-one Baxter operator construction]
 \label{con:rank-one-q-operator-datum}
 Let \(\mathcal A\) be an auxiliary representation of the RTT algebra for the
 same \(R\)-matrix, not necessarily finite dimensional.  Let

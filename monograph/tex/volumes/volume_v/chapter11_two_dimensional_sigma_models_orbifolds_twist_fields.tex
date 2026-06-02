@@ -3653,7 +3653,7 @@ single cycle splits it into two cycles.  The covering surface of the
 correlator determines the numerical OPE coefficient after the seed
 correlator and the chosen normalization of twist fields have been specified.
 
-\paragraph{Riemann--Hurwitz ledger for twist correlators.}
+\paragraph{Riemann--Hurwitz constraints for twist correlators.}
 For a connected genus-zero component of a symmetric-product twist correlator,
 let \(z_1,\ldots,z_n\) be the branch points.  Choose monodromies
 \[
@@ -3701,7 +3701,7 @@ the statement that the loop enclosing all branch points on the sphere is
 contractible, and transitivity is exactly connectedness of the active cover.
 
 \begin{example}[Two-point and primitive joining covers]
-\label{ex:symmetric-product-basic-cover-ledger}
+\label{ex:symmetric-product-basic-cover}
 For a normalized two-point function of length-\(K\) twists, take active degree
 \(N=K\) and monodromies
 \[
@@ -3743,7 +3743,7 @@ where fixed points on the active sheets are included.  Formula
   1-(K+L-1)+\frac12\bigl((K-1)+(L-1)+(K+L-2)\bigr)=0.
   \label{eq:symmetric-product-primitive-join-genus}
 \end{equation}
-This genus-zero ledger fixes the covering topology.  It does not determine
+This genus-zero calculation fixes the covering topology.  It does not determine
 the OPE coefficient without the seed correlator, local coordinate choices at
 the branch points, and the normalization of the twist fields.
 \end{example}
@@ -3752,7 +3752,7 @@ the branch points, and the normalization of the twist fields.
 \label{prop:symmetric-product-primitive-joining-cover-map}
 Let \(K,L\ge2\), and set \(N=K+L-1\).  After moving the three branch
 points on the base sphere to \(0,1,\infty\), the primitive joining cover of
-Example~\ref{ex:symmetric-product-basic-cover-ledger} has a polynomial
+Example~\ref{ex:symmetric-product-basic-cover} has a polynomial
 representative
 \begin{equation}
   z_{K,L}(t)
@@ -3842,7 +3842,7 @@ the twist-field normalization, and a regulator convention for the Liouville
 or Schwarzian anomaly associated with the chosen local coordinates.
 \end{proof}
 
-\paragraph{Schwarzian and OPE-exponent ledger for primitive joining.}
+\paragraph{Schwarzian and OPE-exponent calculation for primitive joining.}
 Assume the seed theory is in the cover vacuum near the branch points and that
 the bare twist fields are normalized as Virasoro primaries with weights
 \[
@@ -3888,7 +3888,7 @@ before conjugacy-class averaging and before inserting excited seed states,
   \sigma_N(0)+\cdots ,
   \label{eq:symmetric-product-primitive-joining-ope}
 \end{equation}
-where \(C_{K,L}^{N}\) is not fixed by the ledger alone.
+where \(C_{K,L}^{N}\) is not fixed by the covering and Schwarzian calculation alone.
 
 \emph{Verification.}
 The inverse branches near \(z_a\) have the form
@@ -3988,7 +3988,7 @@ Equivalently,
 \(\mathfrak g_{K,L}^{(M)}
 =R\sqrt{|[R]|/(|[K]||[L]|)}\).  Thus the class-sum normalization supplies a
 universal finite-group factor, while \(C_{K,L}^{R}\) remains the analytic
-covering-space coefficient discussed in the Schwarzian/OPE exponent ledger
+covering-space coefficient discussed in the Schwarzian/OPE exponent calculation
 above.
 \end{lemma}
 

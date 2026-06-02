@@ -10,13 +10,13 @@ finite-dimensional theorem from the QFT formulae used in four-dimensional
 \(\mathcal N=2\) gauge theory on \(S^4\) and three-dimensional
 \(\mathcal N=2\) Chern--Simons--matter theory on \(S^3\).  The formulae below
 are therefore not introduced as formal replacements for a definition of a QFT:
-they are consequences of a localization datum in the sense of
+they are consequences of a localization structure in the sense of
 Definition~\ref{def:susy-localization-data}, together with the determinant
 and instanton-sector prescriptions explicitly stated here.
 
-\begin{definition}[Compact supersymmetric localization datum]
+\begin{definition}[Compact supersymmetric localization structure]
 \label{def:compact-supersymmetric-localization-datum}
-A compact supersymmetric localization datum is a tuple
+A compact supersymmetric localization structure is a tuple
 \[
   \mathfrak L_M
   =
@@ -85,21 +85,21 @@ the smooth part of \(\mathfrak F^{\rm fix}_\Lambda\), with zero modes split
 off as coordinates or insertion modes.  The one-loop determinant is the
 Berezin Gaussian/Euler class of the acyclic part of this complex, with
 orientation, phase, zeta or heat-kernel regularization, framing, and local
-counterterm conventions included in the datum.
+counterterm conventions included in the structure.
 \item \(\mathfrak R_\Lambda\) is the residual finite-dimensional integration
 or summation prescription after normal integration: Cartan contour, residue
 chamber, Jeffrey--Kirwan vector, instanton compactification, polarization,
 or equivariant pushforward.  Singular fixed strata such as zero-size
 instantons are part of \(\mathfrak R_\Lambda\), not automatic consequences of
 the notation \(\int\mathcal D\Phi\).
-\item \(\mathcal C_\Lambda\) is the continuum comparison datum: topology on
+\item \(\mathcal C_\Lambda\) is the continuum comparison structure: topology on
 protected observables, renormalization and contact-term scheme, convergence
 or matching statement for the limit \(\Lambda\to\infty\), and the precise
 status of any equality between the regulated localization formula and the
 underlying QFT observable.
 \end{enumerate}
 All localization formulae in this chapter are statements about consequences
-of a datum \(\mathfrak L_M\).  If one of the entries is supplied only by a
+of a structure \(\mathfrak L_M\).  If one of the entries is supplied only by a
 standard prescription rather than by a regulator theorem, the corresponding
 formula is a controlled prescription or hypothesis at that entry, even when
 the finite-dimensional localization identity itself is a theorem.
@@ -157,7 +157,7 @@ zero Stokes term.  Hence \(dI/dt=0\).
 \label{def:clean-fixed-locus-normal-complex}
 Let \(F\subset C_{\bar 0}\) be the common zero locus of the bosonic part of
 \(QV\) on the body of the integration cycle.  The fixed locus is called clean
-for the datum \((C,\mu,Q,V)\) if \(F\) is a submanifold, if the Hessian of
+for the finite-dimensional localization quadruple \((C,\mu,Q,V)\) if \(F\) is a submanifold, if the Hessian of
 \(\operatorname{Re}(QV)\) is nondegenerate on a chosen normal bundle
 \(N_{F,\bar 0}\), and if the linearization of \(Q\) in the directions normal
 to \(F\) gives a finite \(\mathbb Z_2\)-graded complex
@@ -269,7 +269,7 @@ is not a localization theorem.
 Equation~\eqref{eq:finite-normal-localization-factor} is the finite model for
 the one-loop determinants in the compact-space QFT examples below.
 
-\section{QFT Localization Datum}
+\section{QFT Localization Structure}
 
 For a supersymmetric QFT on a compact Riemannian manifold \(M\), the symbol
 \[
@@ -301,9 +301,9 @@ The fixed locus, zero modes, determinants, and singular strata must then be
 included in the limiting prescription.
 Noncompact Coulomb directions, Jeffrey--Kirwan residues, and point-instanton
 compactifications are not automatic outputs of the symbol \(\int\mathcal
-D\Phi\).  They are part of the regulated localization datum.  In the formulae
-below this datum will be stated by naming the finite-dimensional variables,
-the contour, and the determinant or equivariant-integral prescription.
+D\Phi\).  They are part of the regulated localization structure.  In the
+formulae below this structure will be stated by naming the finite-dimensional
+variables, the contour, and the determinant or equivariant-integral prescription.
 
 \section{\texorpdfstring
   {\(S^4\) Localization In Four-Dimensional \(\mathcal N=2\) Gauge Theory}
@@ -339,7 +339,7 @@ The coefficient equals the familiar half-trace coefficient because
   \frac{4\pi^2}{g_{\rm YM}^2}(a,a).
 \]
 
-The localization datum contains more than the Cartan variable.  An off-shell
+The localization structure contains more than the Cartan variable.  An off-shell
 \(4D\) \(\mathcal N=2\) vector multiplet on the round sphere consists of a
 connection \(A_\mu\), complex adjoint scalars \(\phi,\bar\phi\), gaugini
 \(\lambda_{A},\bar\lambda_{A}\) with \(A=1,2\) an \(SU(2)_R\) index, and
@@ -489,7 +489,7 @@ form
   =
   \prod_{n=1}^{N}(n^2+x^2)^{\kappa n},
   \qquad \kappa\in\mathbb Z .
-  \label{eq:s4-raw-mode-determinant-ledger}
+  \label{eq:s4-raw-mode-determinant-product}
 \end{equation}
 Here \(x\) is the dimensionless equivariant mass in that sector:
 \(x=r\,\alpha(a)\) for a vector root, or \(x=r\rho(a)+rm\) for a hypermultiplet
@@ -520,16 +520,16 @@ is therefore the finite part specified by the quadratic counterterm convention i
 Lemma~\ref{lem:s4-H-function-convention}.
 
 With this convention the perturbative \(S^4\) determinant is obtained from a
-short sector ledger.  A vector root pair \(\{\alpha,-\alpha\}\) contributes
+short sector calculation.  A vector root pair \(\{\alpha,-\alpha\}\) contributes
 the Cartan gauge-fixing factor \(\alpha(a)^2\) and the finite part with
 \(\kappa=2\), hence \(H(r\alpha(a))^2\) for each positive root.  A full
 hypermultiplet weight \(\rho\) contributes the inverse finite part with
 \(\kappa=-1\), hence \(H(r\rho(a)+rm)^{-1}\).  The formula below is exactly
-this ledger multiplied over the root and weight multisets.  A derivation from
+this sector calculation multiplied over the root and weight multisets.  A derivation from
 the infinite-dimensional field theory has to supply the regulated normal
 complex, the pairing of acyclic modes, the cohomological multiplicity \(n\),
 and the absence of boundary contributions in the chosen field-variable cycle;
-those data are part of
+those structures are part of
 Definition~\ref{def:compact-supersymmetric-localization-datum}.
 
 For a vector multiplet and hypermultiplets of masses \(m_\ell\) in
@@ -548,7 +548,7 @@ Jacobian.  If the representation is real or pseudoreal, the weights are
 counted with the multiplicity appropriate to a full hypermultiplet in the
 chosen convention.  A different convention for the hypermultiplet mass shifts
 the argument of \(H\) by the corresponding \(R\)-symmetry background; this is
-a coordinate change in the localization datum, not a change of the underlying
+a coordinate change in the localization structure, not a change of the underlying
 determinant complex.
 
 \paragraph{\(\mathcal N=4\) determinant cancellation on \(S^4\).}
@@ -609,7 +609,7 @@ instanton moduli space on \(\mathbb C^2\), with equivariant rotation weights
 For \(U(N)\) this can be defined by integration over the smooth framed
 torsion-free-sheaf compactification.  For other gauge groups and matter
 systems the formula requires the corresponding compactification or an
-equivalent contour prescription as part of the stated datum.
+equivalent contour prescription as part of the stated localization structure.
 \end{definition}
 
 \section{Singular Instantons And Compactification Choices}
@@ -692,7 +692,7 @@ Let \(K\simeq\mathbb C^k\), \(W\simeq\mathbb C^N\), and let
 \[
   [B_1,B_2]+IJ=0 .
 \]
-The datum is stable if no proper subspace
+The ADHM tuple is stable if no proper subspace
 \(S\subsetneq K\) satisfies
 \[
   B_1S\subset S,\qquad B_2S\subset S,\qquad I(W)\subset S .
@@ -947,13 +947,13 @@ path integral is retained here as a hypothesis unless the regulator has been
 specified and the limiting argument has been proven.
 \end{hypothesis}
 
-\begin{definition}[Regulator selection datum for the Gieseker sector]
+\begin{definition}[Regulator selection structure for the Gieseker sector]
 \label{def:gieseker-regulator-selection-datum}
 Fix \(k,N\), equivariant weights
 \((\epsilon_1,\epsilon_2)\), Coulomb parameter \(a\), and the trace
 normalization of this volume.  A four-dimensional supersymmetric regulator is
 said to select the Gieseker instanton sector at charge \(k\) if it supplies
-the following data.
+the following structures.
 \begin{enumerate}
   \item A regulated BV localization problem
   \[
@@ -977,7 +977,7 @@ the following data.
     +II^\dagger-J^\dagger J=\zeta_\delta{\bf 1}_K+R_\delta ,
   \]
   with \(\zeta_\delta>0\) and \(R_\delta\to0\) in the norm in which the
-  fixed-locus reduction is being taken.  Equivalently, the datum may supply
+  fixed-locus reduction is being taken.  Equivalently, the regulator may supply
   another explicit resolution cycle together with an equivariant proper map
   to \(\overline{\mathcal M}_{k,N}^{\,U}\); it must then prove that the
   resolved cycle is isomorphic to \(\mathfrak M_{k,N}^{G}\) or give the
@@ -988,7 +988,7 @@ the following data.
   that the nonzero-mode Berezinian gives the Euler class
   \eqref{eq:nekrasov-tangent-euler-class}, multiplied only by declared
   one-loop determinants and local counterterms already included in the
-  localization datum.
+  localization structure.
   \item A boundary-cancellation statement for the Uhlenbeck
   small-instanton collars.  In the notation of
   Chapter~\ref{ch:tqft-bv-integration-localization}, the regulator must
@@ -998,7 +998,7 @@ the following data.
   \]
   or an equality of this boundary functional with the difference between the
   smooth-stratum pushforward and the Gieseker-resolved pushforward.  Thus
-  the resolution is part of the BV pushforward datum, not an informal
+  the resolution is part of the BV pushforward structure, not an informal
   replacement made after the path integral has already been localized.
   \item A limiting theorem for equivariantly regular test insertions
   \(\mathcal O\):
@@ -1030,7 +1030,7 @@ cycle without boundary.  The singular-stratum obstruction formula
 finite-dimensional statement behind this requirement: a smooth-stratum
 pushforward satisfies the residual QME only after the small-instanton boundary
 functional has vanished or has been cancelled by a specified resolution,
-relative cycle, or residue datum.
+relative cycle, or residue prescription.
 
 Definition~\ref{def:gieseker-regulator-selection-datum} is deliberately more
 structured than the phrase ``use the Nekrasov partition function''.  The
@@ -1521,7 +1521,7 @@ the possible poles lie on complexified hyperplanes
 \]
 up to the convention used for \(\ell\) or \(s_b\).  A Jeffrey--Kirwan-type
 residue prescription is therefore not a decorative evaluation trick: it is a
-choice of chamber and integration cycle for the regulated localization datum.
+choice of chamber and integration cycle for the regulated localization structure.
 
 \begin{example}[Abelian Chern--Simons Gaussian]
 \label{ex:s3-u1-cs-fresnel}
@@ -1571,7 +1571,7 @@ The elementary integral
 is a finite check on the determinant normalization in
 \eqref{eq:kwy-s3-localization}.  It is not by itself a definition of a gauge
 theory; the gauge quotient, possible Chern--Simons contact terms, and
-background-field couplings remain part of the QFT datum.
+background-field couplings remain part of the QFT definition.
 \end{example}
 
 \section{Theorem Boundary And Singular Loci}

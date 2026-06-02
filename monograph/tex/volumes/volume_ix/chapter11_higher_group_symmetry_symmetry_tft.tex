@@ -10,10 +10,10 @@ than a direct product of groups.  This chapter defines higher-group
 backgrounds and then explains the symmetry-TQFT organization of boundary
 conditions and gauging operations.
 
-\begin{hypothesis}[Higher-group symmetry and symmetry-TQFT datum]
+\begin{hypothesis}[Higher-group symmetry presentation]
 \label{hyp:higher-group-symmetry-tft-datum}
 A \(D\)-dimensional QFT with finite two-group symmetry and symmetry-TQFT
-presentation is specified, for the purposes of this chapter, by a datum
+presentation is specified, for the purposes of this chapter, by the tuple
 \[
   \mathfrak S_{\mathcal Q,\mathbb G}
   =
@@ -54,8 +54,8 @@ The entries are as follows.
   needed to turn a proposed gauging or condensation operation into an ordinary
   complex-valued path integral.
 \end{enumerate}
-All finite cochain calculations below are consequences of such a datum after a
-triangulated model for \(\mathcal B_{\mathbb G}\) has been chosen.  The
+All finite cochain calculations below are consequences of such a presentation
+after a triangulated model for \(\mathcal B_{\mathbb G}\) has been chosen.  The
 existence of \(\mathfrak T_{\rm sym}\), \(\mathfrak B_{\mathcal Q}\), and
 \(\mathcal D_{\rm top}\) for an interacting continuum theory is a separate QFT
 construction problem; see
@@ -64,7 +64,7 @@ Open Problem~\ref{op:higher-group-examples}.
 
 \section{Two-Group Backgrounds}
 
-Let \(\mathfrak S_{\mathcal Q,\mathbb G}\) be a datum as in
+Let \(\mathfrak S_{\mathcal Q,\mathbb G}\) be a presentation as in
 Hypothesis~\ref{hyp:higher-group-symmetry-tft-datum}.  The two-group entry
 \(\mathbb G=(G_0,A,\rho,\beta)\) consists of an ordinary finite internal
 symmetry \(G_0\), an abelian one-form symmetry \(A\), an action of \(G_0\) on
@@ -112,7 +112,7 @@ partition function is a section of the anomaly line over background fields.
 
 \section{Symmetry TQFT}
 
-For the datum in Hypothesis~\ref{hyp:higher-group-symmetry-tft-datum}, the
+For the presentation in Hypothesis~\ref{hyp:higher-group-symmetry-tft-datum}, the
 object \(\mathfrak T_{\rm sym}\) packages background fields, gauging, and
 duality defects in a \((D+1)\)-dimensional topological theory.  The physical
 QFT \(\mathcal Q\) is represented by the boundary condition
@@ -532,8 +532,8 @@ symmetry has current
   \qquad
   \dd\star j_m=\frac{1}{2\pi}\dd F=0 .
 \]
-It is part of the QFT datum only when no dynamical monopole operator has been
-included; an inserted or dynamical monopole is an endpoint for the charged
+It is part of the QFT definition only when no dynamical monopole operator has
+been included; an inserted or dynamical monopole is an endpoint for the charged
 't Hooft line and explicitly breaks this symmetry.
 
 For a closed oriented three-manifold \(M\) supporting a defect, the naive axial
@@ -752,8 +752,8 @@ coefficient is a three-dimensional TQFT or finite state sum, not a number.
 \begin{controlledapproximation}[QED noninvertible chiral defects]
 \label{ca:qed-noninvertible-chiral-defects}
 In compact unit-charge massless QED on oriented spin four-manifolds, with no
-dynamical monopoles and with the magnetic one-form symmetry retained as part
-of the QFT datum, every rational axial angle \(2\pi p/N\) with
+dynamical monopoles and with the magnetic one-form symmetry retained in the
+QFT definition, every rational axial angle \(2\pi p/N\) with
 \(\gcd(p,N)=1\) defines the topological defect
 \(D_{N,p}\) in \eqref{eq:qed-noninvertible-chiral-defect-general}.  The defect
 acts on local fermions by the corresponding axial rotation, acts on 't Hooft
@@ -826,7 +826,7 @@ five-dimensional functional of the combined background.  The line-operator
 lattice then transforms as a module over the two-group rather than as a
 separate representation of each symmetry.
 
-\section*{Comparison Ledger}
+\section*{Comparison Summary}
 
 The symmetry-TQFT description is not a replacement for constructing the QFT.
 It records:
