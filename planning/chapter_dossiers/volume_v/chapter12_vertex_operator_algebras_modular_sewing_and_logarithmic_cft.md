@@ -391,3 +391,11 @@ current QFT scope.
   edge trace-norm, and trace-class tensor-product bookkeeping, and extended
   `cft_voa_modular_checks.py` with an exact triangle-graph sewing bound plus
   paired internal-edge relabelling invariance check.
+- 2026-06-02 issue #705 bibliography-population pass: attached source-trace
+  citations to the chapter's main quoted-theorem boundaries for Zhu
+  classification, unitary Virasoro minimal-model classification, minimal-model
+  modular data, rational-character modularity, complete-rational conformal
+  nets, strongly local VOAs/conformal nets, Zhu torus one-point modular
+  covariance, and the exponential Tauberian input used in Cardy asymptotics.
+  Added the missing bibliographic-guide entries for FQS, GKO,
+  Kawahigashi--Longo--Muger, CKLW, and regular variation.

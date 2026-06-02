@@ -11,13 +11,14 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume Program (I-XX)
+## Complete Volume Program (All Volumes I-XX)
 
-The public project has twenty numbered volumes.  This table is the canonical
-README roster: Volumes I-XII are compiled by `monograph/tex/main.tex` into the
-current PDF, while Volumes XIII-XX are public roadmap volumes whose source
-assemblies will be added only after the same chapter-dossier, verification,
-frontmatter, and README standards are met.
+The public project has twenty numbered volumes, and the table immediately
+below is the complete README roster of all of them.  Volumes I-XII are
+compiled by `monograph/tex/main.tex` into the current PDF.  Volumes XIII-XX
+are public roadmap volumes whose source assemblies will be added only after
+the same chapter-dossier, verification, frontmatter, and README standards are
+met.
 
 Do not infer the complete volume program from the current
 `monograph/tex/volumes/` directory alone.  That directory presently contains
