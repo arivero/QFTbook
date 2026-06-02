@@ -1785,6 +1785,77 @@ these conclusions is contained in the symbol \(P(\phi)_2\) itself.  The
 constructive example is valuable precisely because each assertion can be
 attached to a named estimate or representation-theoretic construction.
 
+For later use it is helpful to make this estimate-to-property map explicit.
+Let \(\mathcal O\) be a double cone and let
+\[
+  \Theta_{\beta,\mathcal O}\colon
+  \mathcal F_P(\mathcal O)_1\longrightarrow \Hilb_P,\qquad
+  A\longmapsto \ee^{-\beta H_P}A\Omega_P
+\]
+denote the energy-damped image of the unit ball of the local field algebra.
+Buchholz--Wichmann nuclearity is a uniform approximation statement for this
+entire image.  For each \(\beta>0\) and each fixed local region one must
+produce vectors \(\xi_j\in\Hilb_P\) and bounded linear functionals
+\(\ell_j\in\mathcal F_P(\mathcal O)^*\) such that
+\[
+  \ee^{-\beta H_P}A\Omega_P
+  =
+  \sum_{j\ge1}\ell_j(A)\xi_j,\qquad
+  \sum_{j\ge1}\|\ell_j\|\,\|\xi_j\|<\infty ,
+  \qquad A\in\mathcal F_P(\mathcal O)_1 ,
+\]
+with a bound on the infimum of the last sum that is stable under the
+thermodynamic and ultraviolet limits.  A typical useful form is
+\[
+  \|\Theta_{\beta,\mathcal O}\|_1
+  \le
+  \exp\!\bigl(C_{\mathcal O}\beta^{-s}\bigr)
+\]
+for small \(\beta\), with \(C_{\mathcal O}\) controlled by the size of the
+region and with \(s\) below the phase-space exponent allowed by the split
+criterion used in
+Chapter~\ref{ch:volume-iv-superselection-sectors-locality-properties}.
+Only after such a nuclearity estimate has been proved may one invoke the
+split theorem for a positive collar
+\(\mathcal O_1\Subset\mathcal O_2\).  The output is then a type-I factor
+\(\mathcal N\) satisfying
+\[
+  \mathcal F_P(\mathcal O_1)
+  \subset
+  \mathcal N
+  \subset
+  \mathcal F_P(\mathcal O_2).
+\]
+Mass-gap information and finite low-energy counting may help organize the
+estimate, but the nuclearity statement itself concerns the full local unit
+ball after energy damping.  The type-I factor is a positive-collar
+interpolant; sharp-algebra type classification requires the separate
+modular-spectrum and factoriality analysis discussed in
+Chapter~\ref{ch:volume-iv-superselection-sectors-locality-properties}.
+
+Haag duality and sector reconstruction require different information.  Haag
+duality for a double cone is the equality
+\[
+  \mathcal R_P(\mathcal O)
+  =
+  \bigcap_{\widetilde{\mathcal O}\perp\mathcal O}
+  \mathcal R_P(\widetilde{\mathcal O})' ,
+\]
+so a constructive proof must control operators commuting with every exterior
+algebra and show that no boundary-condition or disorder operator has been
+left in the dual algebra.  This is a duality statement about the continuum
+net, independent of the nuclear decomposition of
+\(\Theta_{\beta,\mathcal O}\).  DHR reconstruction is still another layer:
+one must construct transportable endomorphisms localized in bounded regions,
+prove conjugates and finite statistics, and check the symmetric exchange
+structure before the Doplicher--Roberts compact group theorem can be applied.
+In massive \(P(\phi)_2\) these are concrete model questions.  In a symmetric
+phase they ask whether charged fields in the field net generate all finite
+observable sectors; in a broken phase they ask whether kink Hilbert spaces
+with different spatial boundary conditions can be represented by bounded
+local endomorphisms of the vacuum observable net.  The model name specifies
+the arena; the estimates and category constructions above supply the content.
+
 This separation is also the right language for phase structure.  In an
 unbroken finite-symmetry phase the fixed-point observable net has sectors
 created by localized charged fields in the larger field net, when such fields

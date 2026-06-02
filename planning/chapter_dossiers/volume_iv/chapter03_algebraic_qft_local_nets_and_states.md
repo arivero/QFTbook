@@ -115,6 +115,13 @@ functorial QFT.
   strong commutation gives locality; finite internal fixed points give
   observables; nuclearity, split inclusions, Haag duality, and DHR
   reconstruction require separate estimates or category constructions.
+- Makes the \(P(\phi)_2\) estimate-to-property map explicit: nuclearity is a
+  uniform decomposition estimate for the energy-damped local unit ball
+  \(\Theta_{\beta,\mathcal O}\), split inclusions are positive-collar
+  consequences of such estimates rather than type-classification statements,
+  Haag duality is a separate equality with the exterior commutant, and DHR
+  reconstruction requires transportable bounded-region endomorphisms with
+  conjugates and finite statistics.
 - Adds the Schwinger-model gauge-theory checkpoint: the gauge-invariant
   electric-field sector is identified, using the exact local bosonization
   lemma from the Schwinger-model chapter, with the massive scalar Weyl net at
@@ -242,6 +249,12 @@ functorial QFT.
   in the constructive \(P(\phi)_2\) checkpoint.  This is a functional-analytic
   bridge, not a model estimate: constructive input must still prove strong
   spectral-window convergence or use the separate analytic-vector route.
+- 2026-06-02 constructive-estimate ledger pass: expanded the massive
+  \(P(\phi)_2\) checkpoint with the estimate-to-property map for nuclearity,
+  split inclusions, Haag duality, and DHR reconstruction.  The pass keeps
+  model-specific estimates as proof obligations rather than allowing the
+  symbol \(P(\phi)_2\), a mass gap, or a finite-regulator picture to imply
+  these AQFT properties.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
