@@ -130,9 +130,12 @@ Current checks:
   local electric-coordinate algebra.  It also includes a finite analytic-vector
   strong-locality shadow:
   commuting finite self-adjoint generators have commuting spectral
-  projections, and a finite affiliation diagnostic: spectral projections of a
-  diagonal self-adjoint generator commute with the commutant of the diagonal
-  algebra, while odd-field spectral projections fail this commutant criterion.
+  projections, and a finite core-like diagnostic in which a commutator
+  vanishes on a stable test sector while spectral projections on the full
+  space fail to commute.  It also includes a finite affiliation diagnostic:
+  spectral projections of a diagonal self-adjoint generator commute with the
+  commutant of the diagonal algebra, while odd-field spectral projections fail
+  this commutant criterion.
   It also checks that affiliation is weaker than generation: a degenerate
   diagonal affiliated coordinate generates only a proper spectral subalgebra,
   while a second coordinate refines the partition to the full diagonal

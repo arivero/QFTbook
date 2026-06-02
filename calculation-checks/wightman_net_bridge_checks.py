@@ -182,6 +182,62 @@ def check_finite_analytic_strong_locality_model() -> None:
             )
 
 
+def check_core_commutator_test_is_insufficient() -> None:
+    """Finite witness: a core-like commutator test is not spectral locality."""
+
+    a_values = [Fraction(-1), Fraction(0), Fraction(1)]
+    a = diagonal_matrix(a_values)
+    b: MatrixAny = (
+        (Fraction(0), Fraction(1), Fraction(0)),
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(2)),
+    )
+    commutator = comm_any(a, b)
+
+    # The last coordinate is invariant under both generators, and the
+    # commutator vanishes on that stable test sector.
+    core_projection = diagonal_matrix([Fraction(0), Fraction(0), Fraction(1)])
+    assert_eq_any(
+        matmul_any(commutator, core_projection),
+        zero_matrix(3),
+        "commutator vanishes on the core-like stable sector",
+    )
+    assert_eq_any(
+        comm_any(a, core_projection),
+        zero_matrix(3),
+        "first generator preserves the core-like sector",
+    )
+    assert_eq_any(
+        comm_any(b, core_projection),
+        zero_matrix(3),
+        "second generator preserves the core-like sector",
+    )
+
+    # On the full space the spectral projections detect the missing strong
+    # locality.  The +1 spectral projection of the first two-by-two block of b
+    # is rational, and it fails to commute with the -1 spectral projection of a.
+    p_a_minus = diagonal_spectral_projection(a_values, Fraction(-1))
+    p_b_plus: MatrixAny = (
+        (Fraction(1, 2), Fraction(1, 2), Fraction(0)),
+        (Fraction(1, 2), Fraction(1, 2), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+    assert_eq_any(
+        matmul_any(p_b_plus, p_b_plus),
+        p_b_plus,
+        "b plus spectral projection is idempotent",
+    )
+    assert_eq_any(
+        matmul_any(b, p_b_plus),
+        p_b_plus,
+        "b plus spectral projection has eigenvalue one",
+    )
+    if comm_any(p_a_minus, p_b_plus) == zero_matrix(3):
+        raise AssertionError(
+            "core-like commutator test incorrectly implied spectral locality"
+        )
+
+
 def check_scalar_shift_does_not_change_generated_spectral_algebra() -> None:
     """Finite model for shifting a self-adjoint local field by a c-number."""
 
@@ -445,6 +501,7 @@ def check_finite_generated_additivity_and_covariance() -> None:
 
 def main() -> None:
     check_finite_analytic_strong_locality_model()
+    check_core_commutator_test_is_insufficient()
     check_scalar_shift_does_not_change_generated_spectral_algebra()
     check_schwinger_observable_coordinate_reduction()
     check_finite_affiliation_commutant_criterion()

@@ -187,7 +187,9 @@ functorial QFT.
   membership in the assigned local algebra.  It also checks that locality of
   represented algebras is a spectral-projection statement, including a finite
   analytic-vector strong-locality shadow where commuting finite self-adjoint
-  generators have commuting spectral projections, and the finite
+  generators have commuting spectral projections, a finite core-like witness
+  where a commutator test on a stable sector still leaves noncommuting
+  spectral projections on the full space, and the finite
   spectral-projection fact used by the Schwinger checkpoint that shifting a
   self-adjoint local field by a scalar does not change the generated local
   algebra.  The Schwinger finite model now also verifies affine
@@ -253,6 +255,15 @@ functorial QFT.
   Wightman-to-net theorem to Lemma `lem:analytic-vector-strong-locality` and
   extended `wightman_net_bridge_checks.py` with a finite spectral-projection
   check for commuting self-adjoint generators.
+- 2026-06-02 domain-commutation versus strong-locality pass: inserted the
+  explicit target equation turning domain commutation into commutation of the
+  self-adjoint unitary groups, equivalently spectral measures.  The text now
+  names the possible proof mechanisms: joint analytic vectors, direct
+  resolvent commutation, or constructive strong spectral-window convergence.
+  The companion finite check adds a rational three-dimensional witness where
+  a commutator vanishes on a stable test sector while full spectral
+  projections fail to commute, keeping the finite diagnostic separate from
+  the continuum analytic theorem.
 - 2026-06-01 Schwinger observable-net checkpoint: added a solvable gauge
   theory example identifying the gauge-invariant local electric-field net
   with the massive scalar Weyl net, and separated this bounded observable net
