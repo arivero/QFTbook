@@ -72,6 +72,12 @@ constructive RG developments.
   family used in the constructive polymer RG chart.
 - `Gamma_k`, `R_k`: finite-range fluctuation covariance and its range in the
   scale-\(k\) graph distance.
+- `E`, `F`, `mathcal L_{\le p}`, `M_{p+1}(r)`: finite-dimensional field
+  space, local polymer functional, Taylor-localization map, and derivative
+  bound in the finite localization estimate.
+- `nu`, `m`, `Delta_phi`, `y_{nu,m}`: number of fields, number of lattice
+  differences, field scaling dimension, and canonical local-monomial
+  exponent \(D-\nu\Delta_\phi-m\).
 - `G_k(X,phi)`, `||K_k||_{k,a,h}`: large-field regulator and weighted
   polymer norm for scale-\(k\) activities.
 - `mathcal L_k`, `mathcal A_k`: localization map extracting local
@@ -176,6 +182,13 @@ constructive RG developments.
   integration over separated polymer regions independent.  This identifies
   covariance locality or a replacement cluster-decay estimate as a
   load-bearing input to the one-step polymer contraction datum.
+- Proves a finite Taylor-localization remainder estimate and derives the
+  canonical scaling exponent \(y_{\nu,m}=D-\nu\Delta_\phi-m\) for scalar
+  local density monomials.  The chapter now records explicitly that an
+  omitted local coordinate enters the irrelevant activity only after the
+  first omitted exponent has a positive gap; in canonical \(D=3\) scalar
+  bookkeeping \(\phi^6\) is marginal, so it cannot be discarded on
+  engineering scaling alone.
 - Defines the auxiliary-to-short-range RG transfer datum needed to use
   hierarchical, long-range, fermionic, tensor, or functional-RG fixed-point
   results as statements about ordinary short-range scalar targets.
@@ -303,6 +316,12 @@ remainder contraction.
   covariance tail remains.  This is proof infrastructure for issue #505; it
   does not construct the model-specific finite-range decomposition or the
   uniform estimates for an ordinary short-range critical scalar fixed point.
+- 2026-06-02 Taylor-localization scaling pass: added the finite
+  Taylor-remainder estimate behind the localization map and the canonical
+  local-monomial exponent ledger.  This pass makes the first omitted
+  coordinate part of the proof data: the companion short-range RG check now
+  verifies the finite Taylor bound and the \(D=4\) versus \(D=3\) scalar
+  exponent comparison, including the \(D=3\) \(\phi^6\) marginal caveat.
 - 2026-06-02 local-QFT-strength observable-germ pass: inserted the missing
   bridge from projective observable-window universality to equality of a
   reconstructed local QFT.  The new definition requires full distribution

@@ -646,7 +646,10 @@ Current checks:
   turn extraction defects into a uniform multiscale smallness condition.  It
   also checks the finite-range Gaussian characteristic-function factorization
   behind independent fluctuation integration on separated polymers, together
-  with the mixed term produced by a nonzero covariance tail.
+  with the mixed term produced by a nonzero covariance tail.  It also checks
+  the finite Taylor-localization remainder bound and the canonical
+  local-monomial scaling exponents, including the fact that a \(D=3\)
+  canonical scalar \(\phi^6\) coordinate has no engineering irrelevant gain.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

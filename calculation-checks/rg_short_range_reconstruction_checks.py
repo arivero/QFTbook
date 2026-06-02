@@ -23,6 +23,9 @@ one-step budget into a scale-uniform smallness condition.
 The finite-range covariance check verifies the block-diagonal characteristic
 function factorization behind independent fluctuation integrations on
 separated polymers.
+The localization checks verify the finite Taylor-remainder arithmetic and
+canonical local-monomial scaling exponents used to decide whether an omitted
+coordinate has an actual irrelevant gain.
 """
 
 from fractions import Fraction
@@ -540,6 +543,72 @@ def check_finite_range_gaussian_factorization():
     assert_true("mixed term is nonzero when covariance tail remains", mixed_term != 0)
 
 
+def check_localization_taylor_remainder_bound():
+    # Scalar finite-dimensional shadow of the Taylor-localization estimate.
+    # F(t)=3-2t+5t^2-7t^3+11t^4 is localized through degree two.
+    # On |t|<=r, sup |F'''(t)| <= 6*7 + 24*11*r, so the integral Taylor
+    # remainder gives |R_2(t)| <= M_3 r^3/6 at |t|=r.
+    r = Fraction(1, 5)
+    c0 = Fraction(3)
+    c1 = Fraction(-2)
+    c2 = Fraction(5)
+    c3 = Fraction(-7)
+    c4 = Fraction(11)
+
+    value = c0 + c1 * r + c2 * r**2 + c3 * r**3 + c4 * r**4
+    localized = c0 + c1 * r + c2 * r**2
+    remainder = abs(value - localized)
+    direct_abs_sum = abs(c3) * r**3 + abs(c4) * r**4
+    derivative_bound = 6 * abs(c3) + 24 * abs(c4) * r
+    taylor_bound = derivative_bound * r**3 / 6
+
+    assert_equal("Taylor localization direct omitted-coordinate sum", direct_abs_sum, Fraction(46, 625))
+    assert_true("Taylor localization exact remainder below direct abs sum", remainder <= direct_abs_sum)
+    assert_equal("Taylor localization derivative bound", derivative_bound, Fraction(474, 5))
+    assert_equal("Taylor localization integral remainder bound", taylor_bound, Fraction(79, 625))
+    assert_true("Taylor localization remainder below derivative bound", remainder <= taylor_bound)
+
+
+def check_localization_scaling_exponents():
+    def exponent(dimension, delta_phi, fields, differences):
+        return dimension - fields * delta_phi - differences
+
+    # Canonical D=4 scalar bookkeeping: phi^4 and (partial phi)^2 are
+    # marginal, while phi^6 and four-derivative quadratic terms are
+    # irrelevant by two powers of the block scale.
+    d4 = Fraction(4)
+    delta4 = Fraction(1)
+    assert_equal("D4 mass exponent", exponent(d4, delta4, 2, 0), Fraction(2))
+    assert_equal("D4 quartic exponent", exponent(d4, delta4, 4, 0), Fraction(0))
+    assert_equal("D4 kinetic exponent", exponent(d4, delta4, 2, 2), Fraction(0))
+    assert_equal("D4 phi6 exponent", exponent(d4, delta4, 6, 0), Fraction(-2))
+    assert_equal("D4 four-derivative quadratic exponent", exponent(d4, delta4, 2, 4), Fraction(-2))
+    first_omitted_gap_d4 = min(
+        -exponent(d4, delta4, 6, 0),
+        -exponent(d4, delta4, 2, 4),
+    )
+    assert_equal("D4 first omitted canonical localization gap", first_omitted_gap_d4, Fraction(2))
+    assert_true("D4 omitted canonical coordinates are contractive", first_omitted_gap_d4 > 0)
+
+    # Canonical D=3 scalar bookkeeping: phi^6 is marginal by engineering
+    # power counting.  Discarding it into the irrelevant polymer activity
+    # therefore requires an interacting fixed-point/scaling-field theorem or
+    # a separate localization estimate, not the canonical ledger alone.
+    d3 = Fraction(3)
+    delta3 = Fraction(1, 2)
+    assert_equal("D3 mass exponent", exponent(d3, delta3, 2, 0), Fraction(2))
+    assert_equal("D3 quartic exponent", exponent(d3, delta3, 4, 0), Fraction(1))
+    assert_equal("D3 phi6 exponent", exponent(d3, delta3, 6, 0), Fraction(0))
+    assert_equal("D3 phi8 exponent", exponent(d3, delta3, 8, 0), Fraction(-1))
+    first_omitted_gap_d3_if_phi6_omitted = -exponent(d3, delta3, 6, 0)
+    assert_equal(
+        "D3 no canonical irrelevant gain if phi6 is omitted",
+        first_omitted_gap_d3_if_phi6_omitted,
+        Fraction(0),
+    )
+    assert_true("D3 omitted phi6 is not canonically contractive", first_omitted_gap_d3_if_phi6_omitted <= 0)
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -554,6 +623,8 @@ def main():
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()
     check_finite_range_gaussian_factorization()
+    check_localization_taylor_remainder_bound()
+    check_localization_scaling_exponents()
     print("All short-range scalar RG reconstruction checks passed.")
 
 

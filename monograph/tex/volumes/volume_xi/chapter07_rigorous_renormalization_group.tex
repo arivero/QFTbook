@@ -650,6 +650,92 @@ begin from the phrase ``integrate a momentum shell'' alone.  It must specify
 the covariance shell, its locality or decay estimate, and the norm in which
 the residual inter-polymer correlations are summable.
 
+\begin{lemma}[Finite localization remainder and scaling gain]
+\label{lem:finite-localization-remainder-scaling-gain}
+Let \(E\) be a finite-dimensional normed real vector space, let
+\(F:E\to\mathbb R\) be \(C^{p+1}\) on the closed ball
+\(\{\xi:\|\xi\|\leq r\}\), and let
+\[
+  (\mathcal L_{\leq p}F)(\xi)
+  =
+  \sum_{n=0}^{p}\frac{1}{n!}D^nF(0)[\xi,\ldots,\xi]
+\]
+be the Taylor-localization map at the origin.  If
+\[
+  M_{p+1}(r)
+  =
+  \sup_{\|\eta\|\leq r}\|D^{p+1}F(\eta)\|_{\rm op},
+\]
+then, for every \(\|\xi\|\leq r\),
+\begin{equation}
+  |F(\xi)-(\mathcal L_{\leq p}F)(\xi)|
+  \leq
+  \frac{M_{p+1}(r)}{(p+1)!}\,\|\xi\|^{p+1}.
+  \label{eq:finite-taylor-localization-remainder-bound}
+\end{equation}
+In a scalar block-spin chart with scale factor \(L\), dimension \(D\), field
+scaling dimension \(\Delta_\phi\), and one lattice difference carrying one
+inverse power of \(L\), a local density monomial with \(\nu\) fields and
+\(m\) lattice differences has canonical scaling exponent
+\begin{equation}
+  y_{\nu,m}=D-\nu\Delta_\phi-m .
+  \label{eq:canonical-localization-scaling-exponent}
+\end{equation}
+Thus a Taylor-localization choice gives a linear irrelevant gain
+\(L^{-\alpha}\) only after the first omitted local monomials satisfy
+\begin{equation}
+  \alpha
+  =
+  \inf_{\text{omitted }(\nu,m)}
+  \bigl(\nu\Delta_\phi+m-D\bigr)
+  >0 .
+  \label{eq:first-omitted-localization-gap}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The integral Taylor formula in finite dimension gives
+\[
+  F(\xi)-(\mathcal L_{\leq p}F)(\xi)
+  =
+  \frac{1}{p!}
+  \int_0^1
+    (1-s)^p D^{p+1}F(s\xi)[\xi,\ldots,\xi]\,\dd s .
+\]
+Taking the operator norm and using
+\(\int_0^1(1-s)^p\dd s=(p+1)^{-1}\) gives
+\eqref{eq:finite-taylor-localization-remainder-bound}.  For the scaling
+formula, write a fine field inside one coarse block as
+\(\phi=L^{-\Delta_\phi}\phi'\).  The sum or integral over a coarse block
+contains \(L^D\) fine cells, while each discrete difference contributes an
+additional factor \(L^{-1}\).  Hence the coefficient of a monomial with
+\(\nu\) fields and \(m\) differences is multiplied, at the canonical
+linearized level, by
+\[
+  L^D L^{-\nu\Delta_\phi}L^{-m}=L^{D-\nu\Delta_\phi-m}.
+\]
+The first omitted local monomial is contractive by a factor at most
+\(L^{-\alpha}\) exactly when the exponents of all omitted monomials are
+\(\leq-\alpha\), which is
+\eqref{eq:first-omitted-localization-gap}.
+\end{proof}
+
+This lemma is finite-regulator bookkeeping, but it removes an important
+ambiguity.  The localization map \(\mathcal L_k\) in a polymer RG proof is
+a Taylor jet with a declared center, derivative norm, and retained local
+coordinate set.  It must be paired with the derivative norm in
+\eqref{eq:finite-taylor-localization-remainder-bound}, the field rescaling
+used in the chart, and a proof that the omitted Taylor coordinates are
+contractive in that chart.  In canonical scalar bookkeeping at \(D=4\),
+\(\Delta_\phi=1\) makes \(\phi^4\) marginal and \(\phi^6\) irrelevant by two
+powers.  In canonical bookkeeping at \(D=3\),
+\(\Delta_\phi=\frac12\) makes the \(\phi^6\) density marginal by
+\eqref{eq:canonical-localization-scaling-exponent}; it cannot be discarded
+into the irrelevant remainder on engineering grounds alone.  An interacting
+fixed-point proof may replace the canonical monomial ledger by scaling-field
+coordinates, but that replacement is itself part of the model-specific RG
+theorem.
+
 \begin{definition}[One-step polymer RG contraction datum]
 \label{def:one-step-polymer-rg-contraction-datum}
 A one-step polymer RG contraction datum at scale \(k\) consists of the
