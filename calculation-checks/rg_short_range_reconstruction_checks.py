@@ -5,9 +5,11 @@ Volume XI, Chapter 7 defines the block-spin reconstruction datum for an
 ordinary short-range scalar lattice model.  These checks verify the finite
 normalization and exponent bookkeeping used there: block kernels preserve
 constant fields up to the declared field scaling, block-constant test
-functions keep the distribution pairing invariant, independent-site
-covariances scale with the expected block exponent, the reconstruction bound
-has the displayed geometric form, and an auxiliary RG theorem transfers to
+functions keep the distribution pairing invariant, adjoint source blocking
+has the forced L^D pullback factor and the stated smooth-test sampling
+error, independent-site covariances scale with the expected block exponent,
+the reconstruction bound has the displayed geometric form, and an auxiliary
+RG theorem transfers to
 the short-range target only when the one-step intertwining defects remain
 controlled after stable or relevant RG amplification.  The observable-germ
 checks verify that finite-window agreement is a projective, seminorm-level
@@ -131,6 +133,59 @@ def check_distribution_pairing_for_block_constant_tests():
         * blocked_field
     )
     assert_equal("block-constant distribution pairing", coarse_pairing, fine_pairing)
+
+
+def check_adjoint_source_blocking_identity_and_smooth_error():
+    dimension = 2
+    scale = 2
+    delta_phi = 1
+    fine_spacing = Fraction(3, 11)
+    coarse_spacing = scale * fine_spacing
+    field_values = [Fraction(5, 7), Fraction(-2, 9), Fraction(11, 13), Fraction(3, 8)]
+    source_value = Fraction(7, 5)
+    q = [Fraction(1, 2), Fraction(1, 4), Fraction(1, 8), Fraction(1, 8)]
+    assert_equal("nonuniform block-kernel normalization", sum(q), Fraction(1))
+
+    blocked_field = pow_int(scale, delta_phi) * sum(
+        weight * value for weight, value in zip(q, field_values)
+    )
+    coarse_pairing = (
+        coarse_spacing ** (dimension - delta_phi)
+        * source_value
+        * blocked_field
+    )
+    pulled_source = [
+        pow_int(scale, dimension) * weight * source_value
+        for weight in q
+    ]
+    fine_pairing = (
+        fine_spacing ** (dimension - delta_phi)
+        * sum(source * value for source, value in zip(pulled_source, field_values))
+    )
+    assert_equal("adjoint source blocking identity", coarse_pairing, fine_pairing)
+
+    smooth_dimension = 1
+    smooth_scale = 3
+    smooth_fine_spacing = Fraction(1, 5)
+    smooth_coarse_spacing = smooth_scale * smooth_fine_spacing
+    beta = Fraction(7, 11)
+    coarse_sites = [Fraction(0), smooth_coarse_spacing]
+    block_offsets = [0, 1, 2]
+    l1_sampling_error = (
+        smooth_fine_spacing ** smooth_dimension
+        * sum(
+            beta * smooth_fine_spacing * r
+            for _y in coarse_sites
+            for r in block_offsets
+        )
+    )
+    constant_c = Fraction(
+        sum(block_offsets),
+        smooth_scale ** (smooth_dimension + 1),
+    )
+    coarse_volume = smooth_coarse_spacing ** smooth_dimension * len(coarse_sites)
+    expected_bound = constant_c * beta * smooth_coarse_spacing * coarse_volume
+    assert_equal("adjoint source smooth-test error bound", l1_sampling_error, expected_bound)
 
 
 def check_independent_covariance_scaling():
@@ -1221,6 +1276,7 @@ def check_source_window_extraction_error():
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
+    check_adjoint_source_blocking_identity_and_smooth_error()
     check_independent_covariance_scaling()
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()

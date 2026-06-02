@@ -68,8 +68,9 @@ constructive RG developments.
   Schwartz seminorm used in the projective distribution-window extension
   lemma.
 - `G`: normalization group acting continuously on observable data.
-- `a_k`, `q`, `B_k`, `Delta_phi`: ordinary short-range scalar lattice spacing,
-  block kernel, block-spin map, and field scaling exponent.
+- `a_k`, `q`, `B_k`, `B_k^\dagger`, `Delta_phi`: ordinary short-range scalar
+  lattice spacing, block kernel, block-spin map, adjoint source-blocking map,
+  and field scaling exponent.
 - `g_k`, `K_k`: local coordinates and polymer activity in the ordinary
   short-range scalar block-spin RG chart.
 - `mathbb B_k`, `mathcal P_k`: scale-\(k\) block set and connected polymer
@@ -482,6 +483,16 @@ remainder contraction.
   determinant arithmetic.  This remains finite-regulator proof
   infrastructure; it does not replace the directed Gram-window convergence
   and OS-II growth estimates needed for continuum reconstruction.
+- 2026-06-02 adjoint source-blocking pass: inserted the missing
+  source-normalization derivation for the ordinary short-range scalar
+  reconstruction datum.  The chapter now defines
+  \((B_k^\dagger F)(y+a_kr)=L^Dq(r)F(y)\), derives the exact equality of
+  coarse source pairing with fine pulled-back source pairing, and gives the
+  uniform-kernel \(C^1\) smooth-test sampling estimate that separates exact
+  RG source pullback from pointwise approximation of continuum tests.  The
+  companion short-range RG script checks the nonuniform-kernel \(L^D\)
+  factor and the uniform-kernel sampling constant by exact rational
+  arithmetic.
 - 2026-06-02 short-range scalar OS reconstruction-requirements pass: inserted the missing
   reconstruction-level dependency chain for the ordinary short-range scalar
   target.  The manuscript now states that a critical short-range scalar

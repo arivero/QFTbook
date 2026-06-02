@@ -2441,6 +2441,75 @@ reconstruction estimate of the form
 the vocabulary of fixed points or universality.
 \end{construction}
 
+\paragraph{Adjoint source blocking and smooth-test error.}
+The source normalization in
+\eqref{eq:block-spin-distribution-pairing} is not a convention that can be
+chosen independently at each scale.  Let \(F\) be a real-valued test
+function on the coarse lattice \(\Lambda_{k-1}\).  The source paired with
+the blocked field is
+\[
+  a_{k-1}^{D-\Delta_\phi}\sum_{y\in\Lambda_{k-1}}
+  F(y)(B_k\phi)(y).
+\]
+Using \(a_{k-1}=La_k\) and the definition
+\eqref{eq:ordinary-block-spin-map}, this expression is equal to
+\begin{equation}
+  a_k^{D-\Delta_\phi}
+  \sum_{y\in\Lambda_{k-1}}
+  \sum_{r\in\{0,\ldots,L-1\}^D}
+  L^D q(r)F(y)\,\phi_{y+a_kr}.
+  \label{eq:adjoint-source-blocking-derivation}
+\end{equation}
+Thus the adjoint source map associated with the normalized pairings is
+\begin{equation}
+  (B_k^\dagger F)(y+a_kr)=L^D q(r)F(y),
+  \qquad r\in\{0,\ldots,L-1\}^D,
+  \label{eq:adjoint-source-blocking-map}
+\end{equation}
+with periodic representatives at the boundary.  Equivalently,
+\begin{equation}
+  a_{k-1}^{D-\Delta_\phi}\sum_y F(y)(B_k\phi)(y)
+  =
+  a_k^{D-\Delta_\phi}\sum_x (B_k^\dagger F)(x)\phi_x .
+  \label{eq:adjoint-source-blocking-identity}
+\end{equation}
+The exponent \(D\), rather than \(D-\Delta_\phi\), in
+\eqref{eq:adjoint-source-blocking-map} is forced by the factor
+\(L^{\Delta_\phi}\) already present in the blocked field.  This is the
+finite-regulator identity behind source-window extraction in an ordinary
+short-range scalar RG chart.
+
+For comparison with continuum test functions, take the uniform kernel
+\(q(r)=L^{-D}\) and let \(f\in C_c^1(\mathbb R^D)\).  Put \(F(y)=f(y)\) on
+the coarse lattice and let \(Y_k\) be a finite set of coarse sites containing
+all blocks that meet the support of \(f\).  Then
+\begin{equation}
+  a_k^D
+  \sum_{y\in Y_k}
+  \sum_{r\in\{0,\ldots,L-1\}^D}
+  \left|(B_k^\dagger F)(y+a_kr)-f(y+a_kr)\right|
+  \le
+  C_{D,L}\,\|\nabla f\|_\infty\,a_{k-1}\,
+  \operatorname{Vol}_{k-1}(Y_k),
+  \label{eq:adjoint-source-smooth-test-error}
+\end{equation}
+where
+\[
+  \operatorname{Vol}_{k-1}(Y_k)=a_{k-1}^D|Y_k|,
+  \qquad
+  C_{D,L}=L^{-(D+1)}
+  \sum_{r\in\{0,\ldots,L-1\}^D}|r|.
+\]
+Indeed, for the uniform kernel \(B_k^\dagger F\) is constant on each block
+and equal to \(f(y)\), while
+\(|f(y)-f(y+a_kr)|\leq a_k|r|\,\|\nabla f\|_\infty\).  Multiplication by
+\(a_k^D\) and summation over \(y\) and \(r\) gives
+\eqref{eq:adjoint-source-smooth-test-error}.  Higher-order block kernels may
+improve this sampling error when their moments are matched to the chosen
+cell coordinates; without those moment conditions the exact identity
+\eqref{eq:adjoint-source-blocking-identity}, not pointwise approximation of
+smooth tests, is the invariant source statement.
+
 This construction also fixes the role of the block kernel.  A different
 kernel \(q\), a different field-strength normalization, or a different
 localization map may give an equivalent continuum theory only after a

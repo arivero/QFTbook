@@ -670,9 +670,11 @@ Current checks:
 - `rg_short_range_reconstruction_checks.py`: exact finite checks for the
   ordinary short-range scalar block-spin reconstruction datum, including
   block-kernel normalization, constant-field scaling, invariance of the
-  block-constant distribution pairing, independent-site covariance scaling,
-  geometric reconstruction-bound arithmetic, and correction-to-scaling
-  bookkeeping separating universal irrelevant exponents/correction
+  block-constant distribution pairing, the adjoint source-blocking identity
+  with its \(L^D\) pullback factor, the uniform-kernel smooth-test sampling
+  error bound, independent-site covariance scaling, geometric
+  reconstruction-bound arithmetic, and correction-to-scaling bookkeeping
+  separating universal irrelevant exponents/correction
   distributions from regulator-dependent amplitudes.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula used to separate stable comparison estimates from
