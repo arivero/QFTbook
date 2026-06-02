@@ -56,8 +56,10 @@ The chapter establishes:
 - the relation between calorimeter detectors and null-integrated stress-tensor
   light transforms;
 - the embedding-space light transform
-  \(\mathbb L[\mathcal O_{\Delta,J}]\) of a symmetric traceless primary and
-  its homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\);
+  \(\mathbb L[\mathcal O_{\Delta,J}]\) of a symmetric traceless primary, its
+  homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\), and the convention
+  check tying this map to the Euclidean conformal charge algebra and the
+  separate radial real form used for Gram matrices;
 - the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its Lorentzian
   CFT hypotheses, and the modular/causal proof mechanisms that fix the sign;
 - the one-sided null-cut modular-variation formulas for a deformed half-space
@@ -142,9 +144,11 @@ The chapter establishes:
 6. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
 7. The light-transform weight map is derived from embedding-space
-   homogeneity and change of null-line integration variable; existence of the
-   corresponding operator is kept separate as a Lorentzian analyticity/growth
-   hypothesis.
+   homogeneity and change of null-line integration variable.  Its signs are
+   tied to the Euclidean conformal charge algebra and the radial real form is
+   obtained by the separate Lorentzian-to-radial generator map used in the
+   Gram-matrix chapters.  Existence of the corresponding operator is kept
+   separate as a Lorentzian analyticity/growth hypothesis.
 8. ANEC positivity is recorded as a theorem boundary with explicit
    Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
    modular/causal proof mechanisms stated at the level needed for collider
@@ -203,6 +207,11 @@ The chapter establishes:
   the finite arithmetic for the light-transform homogeneity map, the null-cut
   modular ANEC sign bookkeeping, and the transverse homogeneity ledger for
   light-ray OPE coefficient distributions.
+- The conformal-algebra sign convention behind the light transform is checked
+  by `calculation-checks/conformal_light_transform_algebra_checks.py`, which
+  verifies the Euclidean conformal Killing vector bracket table, the
+  \(U(s)=\exp(i sQ)\) charge sign conversion, the radial real-form conversion,
+  and the resulting \((\Delta,J)\mapsto(1-J,1-\Delta)\) weight map.
 - 2026-06-02 conformal-collider spectral-diagonalization pass: upgraded the
   Hofman--Maldacena positivity derivation from testing representatives in the
   three little-group sectors to a displayed orthogonal spectral decomposition

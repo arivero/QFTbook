@@ -503,6 +503,12 @@ Current checks:
   the null-cut modular-variation sign bookkeeping and entropy-squeeze
   inequality behind the modular ANEC route, and the transverse homogeneity
   ledger for coefficient distributions in the light-ray OPE.
+- `conformal_light_transform_algebra_checks.py`: exact polynomial checks for
+  the conformal-algebra convention behind the light transform, including the
+  Euclidean conformal Killing vector bracket table, the charge sign conversion
+  from \(U(s)=\exp(i sQ)\), the radial real-form conversion used in descendant
+  Gram matrices, and the light-transform weight map
+  \((\Delta,J)\mapsto(1-J,1-\Delta)\).
 - `cft_energy_detector_contact_checks.py`: exact finite positive-measure
   checks for the CFT light-ray/energy-correlator chapter, including the
   statewise detector Riesz bound, finite-bin Cauchy--Schwarz positivity,
