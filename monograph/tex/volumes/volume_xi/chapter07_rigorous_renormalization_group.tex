@@ -1321,7 +1321,8 @@ large enough to absorb the enlarged coefficient
 finite estimate is combined with finite range or cluster decay and with
 Taylor localization.  The constants \(C_\Gamma(\kappa)\), the covariance
 spectral bound, and the regulator strengthening are part of the proof data
-entering \(A_{\rm irr}\), \(B_{\rm pol}\), and the extraction defect.
+entering \(A_{\rm irr}\), \(B_{\rm pol}\), \(B_{{\rm tail},k}\), and the
+extraction defect.
 
 \begin{definition}[One-step polymer RG contraction estimates]
 \label{def:one-step-polymer-rg-contraction-datum}
@@ -1460,6 +1461,61 @@ following finite-regulator data.
   the volume and scale.  On a finite-range block lattice this is a geometric
   counting estimate; with long-range covariances or nonlocal blockings it may
   fail unless the polymer norm is strengthened.
+  \item If the fluctuation covariance is not finite range, separated
+  compatible polymers also produce a connected bridge term.  Let
+  \[
+    \omega_k(R)
+    =
+    A_{\Gamma,k} C_{{\rm sh},k}
+    \left(1+\frac{1}{s_k-D_{{\rm vol},k}}\right)
+    (1+R)^{D_{{\rm vol},k}-s_k}
+  \]
+  be the covariance-tail bound from
+  Lemma~\ref{lem:summable-covariance-tail-bridge-estimate}.  Suppose the
+  analytic polymer norm controls the derivative majorants
+  \[
+    M_i^\nabla(X)
+    =
+    \sup_{\phi}
+    \frac{\|\nabla_XK_i(X,\phi)\|_{2,h_k}}{G_k(X,\phi)}
+    \leq
+    D_{\nabla,k}e^{-a|X|_k}\|K_i\|_{k,a,h}.
+  \]
+  Define the separated-tail overlap constant
+  \begin{equation}
+    \mathfrak C^{\rm tail}_{a,\omega,k}
+    =
+    \sup_{\Delta\in\mathbb B_{k+1}}
+    \sum_{\substack{X_1,X_2\in\mathcal P_k\\
+      X_1\sim X_2,\,
+      \overline{X_1\cup X_2}\supset\Delta}}
+    e^{a|\overline{X_1\cup X_2}|_{k+1}-a|X_1|_k-a|X_2|_k}
+    \omega_k\!\left(d_k(X_1,X_2)\right).
+    \label{eq:polymer-tail-overlap-majorant}
+  \end{equation}
+  The connected Gaussian-interpolation bridge between separated polymers then
+  obeys
+  \begin{equation}
+    \|\operatorname{Bridge}_{\Gamma_k}(K_1,K_2)\|_{k+1,a,h}
+    \leq
+    C_GD_{\nabla,k}^2\mathfrak C^{\rm tail}_{a,\omega,k}
+    \|K_1\|_{k,a,h}\|K_2\|_{k,a,h}.
+    \label{eq:rg-polymer-tail-bridge-bound}
+  \end{equation}
+  This term is zero in the exact finite-range case once the compatibility
+  separation exceeds the covariance range.  For a smooth shell it is not
+  zero: it is a second quadratic constant,
+  \begin{equation}
+    B_{{\rm tail},k}
+    =
+    C_GD_{\nabla,k}^2\mathfrak C^{\rm tail}_{a,\omega,k},
+    \qquad
+    B^{(2)}_k=B_{\rm pol}+B_{{\rm tail},k},
+    \label{eq:rg-polymer-quadratic-constant-with-tail}
+  \end{equation}
+  that must enter the one-step contraction budget.  Treating a summably
+  decaying covariance shell as if it were finite range is exactly the error
+  of dropping \(B_{{\rm tail},k}\).
   \item A local-coordinate extraction error \(\varepsilon_k\geq0\), measured
   in the same polymer norm, accounting for the difference between the exact
   finite-regulator RG step and the chosen local chart.  In a fully exact
@@ -1473,21 +1529,24 @@ finite inequality.  If
 \[
   x_k=\|K_k\|_{k,a,h},\qquad
   q=A_{\rm irr}L^{-\alpha},
+  \qquad
+  B^{(2)}_k=B_{\rm pol}+B_{{\rm tail},k},
 \]
 then the linear estimate
 \eqref{eq:rg-polymer-linear-irrelevant-bound}, the quadratic product estimate
-\eqref{eq:rg-polymer-circle-product-bound}, and the extraction error give the
+\eqref{eq:rg-polymer-circle-product-bound}, the tail bridge
+\eqref{eq:rg-polymer-tail-bridge-bound}, and the extraction error give the
 one-step bound
 \begin{equation}
   x_{k+1}
   \leq
-  qx_k+B_{\rm pol}x_k^2+\varepsilon_k .
+  qx_k+B^{(2)}_kx_k^2+\varepsilon_k .
   \label{eq:rg-polymer-recursion-budget}
 \end{equation}
 Consequently a closed radius-\(r\) polymer ball is invariant with contraction
 margin \(\theta<1\) whenever
 \begin{equation}
-  q+B_{\rm pol}r+\frac{\varepsilon_k}{r}\leq \theta<1
+  q+B^{(2)}_kr+\frac{\varepsilon_k}{r}\leq \theta<1
   \qquad{\rm uniformly\ in\ }k .
   \label{eq:rg-polymer-contraction-smallness}
 \end{equation}
@@ -1495,20 +1554,22 @@ Indeed, \(x_k\leq r\) gives
 \[
   x_{k+1}
   \leq
-  \left(q+B_{\rm pol}r+\frac{\varepsilon_k}{r}\right)r
+  \left(q+B^{(2)}_kr+\frac{\varepsilon_k}{r}\right)r
   \leq \theta r .
 \]
 This is elementary arithmetic, but it is the arithmetic that fixes the
 meaning of the polymer estimate: every proof must exhibit the norm, the
 large-field regulator, the localization operator, the finite overlap bound,
-and the uniform smallness inequality.  Without these data the displayed
-contraction is a slogan, not a Wilsonian RG theorem.
+the covariance-tail bridge bound when exact finite range is absent, and the
+uniform smallness inequality.  Without these data the displayed contraction
+is a slogan, not a Wilsonian RG theorem.
 
 The same data must be controlled as a sequence of scales, not only at one
 scale.  Suppose that, for \(0\leq j<n\), the trajectory stays in the
 radius-\(r\) polymer ball and
 \[
-  q+B_{\rm pol}r\leq\theta<1 .
+  q+B^{(2)}_jr\leq\theta<1
+  \qquad (0\leq j<n).
 \]
 Then \eqref{eq:rg-polymer-recursion-budget} implies the forced linear
 recursion
@@ -1551,7 +1612,7 @@ stronger smallness condition
 in the uniform-forcing case, or under the analogous supremum of the weighted
 geometric sum in the decaying case.  These estimates are still only
 bookkeeping; the model-specific constructive theorem must prove the bounds
-on \(q\), \(B_{\rm pol}\), \(r\), and \(\varepsilon_j\) from the covariance,
+on \(q\), \(B^{(2)}_j\), \(r\), and \(\varepsilon_j\) from the covariance,
 localization, and large-field regulators.
 
 \begin{lemma}[Finite source-window extraction and propagated cumulant error]

@@ -95,6 +95,9 @@ constructive RG developments.
 - `D_vol`, `C_sh`, `A_Gamma`, `s`, `R`: shell-count dimension, shell-count
   constant, covariance-tail amplitude, decay exponent, and polymer-set
   separation in the summable covariance-tail bridge estimate.
+- `omega_k(R)`, `mathfrak C^{tail}_{a,omega,k}`, `B_tail,k`, `B^{(2)}_k`:
+  covariance-tail bridge weight, separated-tail overlap majorant, tail
+  quadratic constant, and total quadratic polymer-recursion constant.
 - `E`, `F`, `mathcal L_{\le p}`, `M_{p+1}(r)`: finite-dimensional field
   space, local polymer functional, Taylor-localization map, and derivative
   bound in the finite localization estimate.
@@ -116,9 +119,10 @@ constructive RG developments.
   polymer norm for scale-\(k\) activities.
 - `mathcal L_k`, `mathcal A_k`: localization map extracting local
   coordinates and fluctuation-integration/rescaling map before reblocking.
-- `A_irr`, `alpha`, `B_pol`, `epsilon_k`: linear irrelevant constant,
-  scaling-gain exponent, quadratic circle-product constant, and
-  local-coordinate extraction defect in the one-step polymer recursion.
+- `A_irr`, `alpha`, `B_pol`, `B_tail,k`, `epsilon_k`: linear irrelevant
+  constant, scaling-gain exponent, finite-range circle-product constant,
+  covariance-tail quadratic bridge constant, and local-coordinate extraction
+  defect in the one-step polymer recursion.
 - `x_k`, `q`, `r`, `theta`: polymer norm, linear contraction factor
   `A_irr L^{-alpha}`, invariant radius, and contraction margin in the
   finite smallness budget.
@@ -327,6 +331,13 @@ constructive RG developments.
   the cross covariance between separated polymer supports; Gaussian
   interpolation then bounds the connected bridge between \(C^1\) local
   polymer observables by this cross norm times their derivative seminorms.
+- Feeds the summable covariance-tail bridge into the one-step polymer
+  contraction datum: separated compatible polymers carry a tail-overlap
+  majorant \(\mathfrak C^{tail}_{a,\omega,k}\), producing
+  \(B_{{\rm tail},k}\) and replacing the quadratic constant by
+  \(B^{(2)}_k=B_{\rm pol}+B_{{\rm tail},k}\).  This keeps smooth
+  momentum-shell covariance estimates from being silently treated as exact
+  finite-range factorization.
 - Proves a finite Taylor-localization remainder estimate and derives the
   canonical scaling exponent \(y_{\nu,m}=D-\nu\Delta_\phi-m\) for scalar
   local density monomials.  The chapter now records explicitly that an
@@ -575,6 +586,12 @@ remainder contraction.
   input for smooth momentum-shell or exponentially decaying covariance
   decompositions, while leaving the model-specific construction of uniform
   covariance and polymer estimates open.
+- 2026-06-02 covariance-tail polymer-budget pass: connected the preceding
+  bridge estimate to the actual one-step polymer contraction recursion.  The
+  manuscript now defines \(\mathfrak C^{tail}_{a,\omega,k}\),
+  \(B_{{\rm tail},k}\), and \(B^{(2)}_k\), and the companion short-range RG
+  check enumerates a finite interval model showing that dropping the tail
+  bridge underestimates the contraction margin.
 - 2026-06-02 Taylor-localization scaling pass: added the finite
   Taylor-remainder estimate behind the localization map and the canonical
   local-monomial exponent ledger.  This pass makes the first omitted

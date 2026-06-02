@@ -29,6 +29,10 @@ The covariance-tail bridge check verifies the finite arithmetic behind the
 replacement used when a covariance shell is summably decaying rather than
 finite range: shell counting, Schur tail control, and the squared
 connected-observable bound.
+The polymer tail-bridge budget check verifies the finite arithmetic by which a
+summable covariance tail contributes a second quadratic constant to the
+one-step polymer contraction budget; dropping that constant is detected as an
+underestimated radius condition.
 The localization checks verify the finite Taylor-remainder arithmetic and
 canonical local-monomial scaling exponents used to decide whether an omitted
 coordinate has an actual irrelevant gain.
@@ -1645,6 +1649,111 @@ def check_covariance_tail_bridge_estimate():
     )
 
 
+def check_polymer_tail_bridge_enters_contraction_budget():
+    # Finite one-dimensional shadow of C_{a,omega}^{tail}.  Polymers are
+    # connected intervals in a six-block line.  Compatible separated pairs do
+    # not enter the finite-range circle product, but a covariance tail gives a
+    # connected bridge weighted here by (1 + distance)^{-2}.
+    block_count = 6
+    size_weight = Fraction(1, 3)
+    intervals = [
+        (left, right)
+        for left in range(block_count)
+        for right in range(left, block_count)
+    ]
+
+    def length(interval):
+        return interval[1] - interval[0] + 1
+
+    def separated(first, second):
+        return first[1] + 1 < second[0] or second[1] + 1 < first[0]
+
+    def distance(first, second):
+        if first[1] < second[0]:
+            return second[0] - first[1]
+        if second[1] < first[0]:
+            return first[0] - second[1]
+        return 0
+
+    def hull(first, second):
+        return (min(first[0], second[0]), max(first[1], second[1]))
+
+    block_sums = []
+    for block in range(block_count):
+        total = Fraction(0)
+        for first in intervals:
+            for second in intervals:
+                if not separated(first, second):
+                    continue
+                joined = hull(first, second)
+                if joined[0] <= block <= joined[1]:
+                    total += (
+                        size_weight ** (length(first) + length(second))
+                        * Fraction(1, (1 + distance(first, second)) ** 2)
+                    )
+        block_sums.append(total)
+
+    expected = [
+        Fraction(4453, 43740),
+        Fraction(80143, 437400),
+        Fraction(52109, 218700),
+        Fraction(52109, 218700),
+        Fraction(80143, 437400),
+        Fraction(4453, 43740),
+    ]
+    assert_equal("polymer tail-bridge block sums", block_sums, expected)
+    tail_majorant = max(block_sums)
+    assert_equal("polymer tail-bridge majorant", tail_majorant, Fraction(52109, 218700))
+
+    regulator_constant = Fraction(3, 2)
+    derivative_constant = Fraction(4)
+    b_tail = regulator_constant * derivative_constant**2 * tail_majorant
+    norm_1 = Fraction(1, 10)
+    norm_2 = Fraction(1, 7)
+    bridge_bound = b_tail * norm_1 * norm_2
+    assert_equal("polymer tail-bridge quadratic bound", bridge_bound, Fraction(52109, 637875))
+
+    linear_gain = Fraction(1, 3)
+    b_pol = Fraction(5, 4)
+    radius = Fraction(1, 30)
+    extraction_defect = Fraction(1, 1000)
+    theta_without_tail = linear_gain + b_pol * radius + extraction_defect / radius
+    theta_with_tail = linear_gain + (b_pol + b_tail) * radius + extraction_defect / radius
+    assert_equal(
+        "polymer tail-bridge contraction margin",
+        theta_with_tail,
+        Fraction(1302607, 2187000),
+    )
+    assert_true(
+        "tail bridge still leaves a strict contraction in this finite cell",
+        theta_with_tail < 1,
+    )
+    assert_true(
+        "dropping tail bridge underestimates contraction margin",
+        theta_without_tail < theta_with_tail,
+    )
+
+    boundary_image_with_tail = (
+        linear_gain * radius
+        + (b_pol + b_tail) * radius * radius
+        + extraction_defect
+    )
+    boundary_image_without_tail = (
+        linear_gain * radius
+        + b_pol * radius * radius
+        + extraction_defect
+    )
+    assert_equal(
+        "polymer tail-bridge boundary image",
+        boundary_image_with_tail,
+        theta_with_tail * radius,
+    )
+    assert_true(
+        "tail bridge is load-bearing in the radius budget",
+        boundary_image_without_tail < boundary_image_with_tail,
+    )
+
+
 def check_localization_taylor_remainder_bound():
     # Scalar finite-dimensional shadow of the Taylor-localization estimate.
     # F(t)=3-2t+5t^2-7t^3+11t^4 is localized through degree two.
@@ -2529,6 +2638,7 @@ def main():
     check_polymer_multiscale_forcing_budget()
     check_finite_range_gaussian_factorization()
     check_covariance_tail_bridge_estimate()
+    check_polymer_tail_bridge_enters_contraction_budget()
     check_localization_taylor_remainder_bound()
     check_localization_scaling_exponents()
     check_local_coordinate_extraction_budget()

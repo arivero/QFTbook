@@ -803,7 +803,10 @@ Current checks:
   the summable covariance-tail replacement for exact factorization: shell
   counting gives a Schur tail bound, and the resulting cross-covariance
   operator bound controls the connected bridge between separated polymer
-  observables.  It also checks the finite Taylor-localization remainder bound
+  observables.  It also checks that this connected bridge contributes a
+  separate \(B_{\rm tail}\) term to the polymer contraction budget, so a
+  summably decaying covariance shell is not silently treated as finite range.
+  It also checks the finite Taylor-localization remainder bound
   and the canonical
   local-monomial scaling exponents, including the fact that a \(D=3\)
   canonical scalar \(\phi^6\) coordinate has no engineering irrelevant gain.
