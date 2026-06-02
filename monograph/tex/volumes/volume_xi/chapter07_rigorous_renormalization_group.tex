@@ -736,6 +736,79 @@ fixed-point proof may replace the canonical monomial ledger by scaling-field
 coordinates, but that replacement is itself part of the model-specific RG
 theorem.
 
+\begin{lemma}[Finite Gaussian stability of a quadratic large-field regulator]
+\label{lem:finite-gaussian-large-field-regulator-stability}
+Let \(E\) be a finite-dimensional real Hilbert space, let
+\(\Gamma:E\to E\) be positive semidefinite and self-adjoint, and let
+\(\mu_\Gamma\) be the centered Gaussian law with covariance \(\Gamma\).
+For \(\kappa>0\) assume
+\[
+  2\kappa\|\Gamma\|_{\rm op}<1 .
+\]
+Then, for every \(\phi\in E\),
+\begin{equation}
+  \int_E
+    \exp\{\kappa\|\phi+\zeta\|^2\}\,\dd\mu_\Gamma(\zeta)
+  =
+  \det(1-2\kappa\Gamma)^{-1/2}
+  \exp\{\kappa\langle\phi,(1-2\kappa\Gamma)^{-1}\phi\rangle\}.
+  \label{eq:gaussian-large-field-regulator-exact}
+\end{equation}
+Consequently
+\begin{equation}
+  \int_E
+    \exp\{\kappa\|\phi+\zeta\|^2\}\,\dd\mu_\Gamma(\zeta)
+  \leq
+  C_\Gamma(\kappa)\,
+  \exp\!\left\{
+    \frac{\kappa}{1-2\kappa\|\Gamma\|_{\rm op}}\|\phi\|^2
+  \right\},
+  \label{eq:gaussian-large-field-regulator-bound}
+\end{equation}
+where \(C_\Gamma(\kappa)=\det(1-2\kappa\Gamma)^{-1/2}\) on
+\((\ker\Gamma)^\perp\).
+\end{lemma}
+
+\begin{proof}
+It is enough to work on \((\ker\Gamma)^\perp\).  Choose an orthonormal basis
+diagonalizing \(\Gamma\), with eigenvalues \(\lambda_i>0\).  The integral is
+a product of one-dimensional integrals
+\[
+  \frac{1}{\sqrt{2\pi\lambda_i}}
+  \int_{\mathbb R}
+    \exp\!\left\{
+      \kappa(\phi_i+\zeta_i)^2-\frac{\zeta_i^2}{2\lambda_i}
+    \right\}\dd\zeta_i .
+\]
+Since \(2\kappa\lambda_i<1\), completing the square gives
+\[
+  \kappa(\phi_i+\zeta_i)^2-\frac{\zeta_i^2}{2\lambda_i}
+  =
+  -\left(\frac{1}{2\lambda_i}-\kappa\right)
+    \left(\zeta_i-\frac{\kappa\phi_i}
+      {\frac{1}{2\lambda_i}-\kappa}\right)^2
+  +
+  \frac{\kappa}{1-2\kappa\lambda_i}\phi_i^2 .
+\]
+The Gaussian integral in the shifted variable contributes
+\((1-2\kappa\lambda_i)^{-1/2}\).  Multiplying over \(i\) gives
+\eqref{eq:gaussian-large-field-regulator-exact}.  Since
+\((1-2\kappa\lambda_i)^{-1}\leq
+(1-2\kappa\|\Gamma\|_{\rm op})^{-1}\), the quadratic form in the exponent is
+bounded by the exponent in
+\eqref{eq:gaussian-large-field-regulator-bound}.
+\end{proof}
+
+Thus a large-field regulator such as
+\(\exp\{\kappa\|\phi\|^2_X\}\) is stable under fluctuation integration only
+with a declared covariance spectral bound and with the next-scale regulator
+large enough to absorb the enlarged coefficient
+\(\kappa(1-2\kappa\|\Gamma\|_{\rm op})^{-1}\).  In a polymer RG theorem this
+finite estimate is combined with finite range or cluster decay and with
+Taylor localization.  The constants \(C_\Gamma(\kappa)\), the covariance
+spectral bound, and the regulator strengthening are part of the proof data
+entering \(A_{\rm irr}\), \(B_{\rm pol}\), and the extraction defect.
+
 \begin{definition}[One-step polymer RG contraction datum]
 \label{def:one-step-polymer-rg-contraction-datum}
 A one-step polymer RG contraction datum at scale \(k\) consists of the

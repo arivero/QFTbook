@@ -78,6 +78,9 @@ constructive RG developments.
 - `nu`, `m`, `Delta_phi`, `y_{nu,m}`: number of fields, number of lattice
   differences, field scaling dimension, and canonical local-monomial
   exponent \(D-\nu\Delta_\phi-m\).
+- `Gamma`, `kappa`, `C_Gamma(kappa)`: finite Gaussian fluctuation
+  covariance, quadratic large-field regulator coefficient, and determinant
+  prefactor controlling regulator stability under fluctuation integration.
 - `G_k(X,phi)`, `||K_k||_{k,a,h}`: large-field regulator and weighted
   polymer norm for scale-\(k\) activities.
 - `mathcal L_k`, `mathcal A_k`: localization map extracting local
@@ -189,6 +192,13 @@ constructive RG developments.
   first omitted exponent has a positive gap; in canonical \(D=3\) scalar
   bookkeeping \(\phi^6\) is marginal, so it cannot be discarded on
   engineering scaling alone.
+- Proves finite Gaussian stability of a quadratic large-field regulator:
+  after fluctuation integration the exact determinant prefactor is
+  \(C_\Gamma(\kappa)=\det(1-2\kappa\Gamma)^{-1/2}\), and the regulator
+  exponent is enlarged by the spectral factor
+  \((1-2\kappa\|\Gamma\|_{\rm op})^{-1}\).  The spectral bound, determinant
+  constant, and next-scale regulator strengthening are therefore explicit
+  proof data for any polymer RG theorem using this norm.
 - Defines the auxiliary-to-short-range RG transfer datum needed to use
   hierarchical, long-range, fermionic, tensor, or functional-RG fixed-point
   results as statements about ordinary short-range scalar targets.
@@ -274,7 +284,9 @@ remainder contraction.
   one-coordinate observable window, and it checks the exact finite arithmetic
   behind the polymer contraction budget and the quadratic circle-product
   bound, including a finite interval enumeration of the pair-overlap
-  majorant entering \(B_{\rm pol}\).
+  majorant entering \(B_{\rm pol}\).  It also checks the finite-range
+  Gaussian factorization, Taylor-localization scaling ledger, and the
+  quadratic large-field regulator determinant/exponent bookkeeping.
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -322,6 +334,13 @@ remainder contraction.
   coordinate part of the proof data: the companion short-range RG check now
   verifies the finite Taylor bound and the \(D=4\) versus \(D=3\) scalar
   exponent comparison, including the \(D=3\) \(\phi^6\) marginal caveat.
+- 2026-06-02 large-field Gaussian regulator pass: added the exact finite
+  Gaussian estimate controlling quadratic large-field regulators under
+  fluctuation integration.  The chapter now displays the determinant factor,
+  the spectral condition \(2\kappa\|\Gamma\|_{\rm op}<1\), and the exponent
+  enlargement that the next-scale regulator must absorb.  The companion
+  short-range RG check verifies the same determinant and completing-square
+  arithmetic by exact rational calculation.
 - 2026-06-02 local-QFT-strength observable-germ pass: inserted the missing
   bridge from projective observable-window universality to equality of a
   reconstructed local QFT.  The new definition requires full distribution

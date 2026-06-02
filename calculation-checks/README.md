@@ -650,6 +650,10 @@ Current checks:
   the finite Taylor-localization remainder bound and the canonical
   local-monomial scaling exponents, including the fact that a \(D=3\)
   canonical scalar \(\phi^6\) coordinate has no engineering irrelevant gain.
+  It also checks the finite Gaussian stability identity for a quadratic
+  large-field regulator, including the determinant prefactor, the exact
+  exponent, and the spectral-bound exponent enlargement needed after
+  fluctuation integration.
 - `lattice_gauge_blocking_checks.py`: exact finite \(S_3\) checks for the
   Volume XI gauge-compatible RG construction, including endpoint covariance
   of path-blocked coarse links, equality of the blocked Wilson loop with the

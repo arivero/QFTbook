@@ -26,6 +26,9 @@ separated polymers.
 The localization checks verify the finite Taylor-remainder arithmetic and
 canonical local-monomial scaling exponents used to decide whether an omitted
 coordinate has an actual irrelevant gain.
+The large-field regulator check verifies the exact determinant and exponent
+bookkeeping for finite Gaussian stability of a quadratic regulator under
+fluctuation integration.
 """
 
 from fractions import Fraction
@@ -609,6 +612,60 @@ def check_localization_scaling_exponents():
     assert_true("D3 omitted phi6 is not canonically contractive", first_omitted_gap_d3_if_phi6_omitted <= 0)
 
 
+def check_large_field_gaussian_regulator_bound():
+    # Diagonal finite covariance with eigenvalues 1/3 and 1/5, regulator
+    # coefficient kappa=1/4, and background field (2,-3).  The exact
+    # Gaussian identity in the chapter has determinant factor
+    # prod_i (1-2 kappa lambda_i)^(-1/2) and exponent
+    # sum_i kappa phi_i^2/(1-2 kappa lambda_i).  The bound replaces each
+    # eigenvalue by lambda_max.
+    kappa = Fraction(1, 4)
+    eigenvalues = [Fraction(1, 3), Fraction(1, 5)]
+    phi = [Fraction(2), Fraction(-3)]
+
+    denominators = [1 - 2 * kappa * lam for lam in eigenvalues]
+    assert_equal("large-field regulator first denominator", denominators[0], Fraction(5, 6))
+    assert_equal("large-field regulator second denominator", denominators[1], Fraction(9, 10))
+
+    prefactor_squared = Fraction(1)
+    for denominator in denominators:
+        prefactor_squared *= Fraction(1, denominator)
+    assert_equal("large-field regulator determinant prefactor squared", prefactor_squared, Fraction(4, 3))
+
+    exact_exponent = sum(
+        kappa * component**2 / denominator
+        for component, denominator in zip(phi, denominators)
+    )
+    lambda_max = max(eigenvalues)
+    norm_squared = sum(component**2 for component in phi)
+    bound_exponent = kappa * norm_squared / (1 - 2 * kappa * lambda_max)
+    assert_equal("large-field regulator exact exponent", exact_exponent, Fraction(37, 10))
+    assert_equal("large-field regulator bound exponent", bound_exponent, Fraction(39, 10))
+    assert_true("large-field regulator spectral bound dominates exact exponent", exact_exponent <= bound_exponent)
+
+    # One-dimensional completing-square bookkeeping for lambda=1/3,
+    # kappa=1/4, phi=2.  This verifies the shifted Gaussian coefficient and
+    # the constant term before multiplying over coordinates.
+    lam = Fraction(1, 3)
+    background = Fraction(2)
+    alpha = Fraction(1, 2 * lam) - kappa
+    shift = kappa * background / alpha
+    square_completion_constant = kappa * background**2 + (kappa * background) ** 2 / alpha
+    exact_one_dimensional_exponent = kappa * background**2 / (1 - 2 * kappa * lam)
+    assert_equal("large-field regulator square coefficient", alpha, Fraction(5, 4))
+    assert_equal("large-field regulator square shift", shift, Fraction(2, 5))
+    assert_equal(
+        "large-field regulator completing-square constant",
+        square_completion_constant,
+        Fraction(6, 5),
+    )
+    assert_equal(
+        "large-field regulator one-dimensional exponent",
+        exact_one_dimensional_exponent,
+        square_completion_constant,
+    )
+
+
 def main():
     check_block_kernel_constant_field_scaling()
     check_distribution_pairing_for_block_constant_tests()
@@ -625,6 +682,7 @@ def main():
     check_finite_range_gaussian_factorization()
     check_localization_taylor_remainder_bound()
     check_localization_scaling_exponents()
+    check_large_field_gaussian_regulator_bound()
     print("All short-range scalar RG reconstruction checks passed.")
 
 
