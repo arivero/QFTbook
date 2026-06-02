@@ -470,8 +470,9 @@ remainder contraction.
   checks for ordinary short-range scalar block-spin normalization, pairing,
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
-  estimate, relevant-direction amplification formula, differentiated
-  Lyapunov--Perron \(C^1\) stable-graph formula, and projective
+  estimate, relevant-direction amplification formula, non-diagonal unstable
+  Jordan-block finite-depth tuning loss, differentiated Lyapunov--Perron
+  \(C^1\) stable-graph formula, and projective
   observable-germ finite-window estimate.  The same script now checks the
   projective distribution-window extension lemma: restriction
   compatibility, induced finite functional value, a single seminorm bound,
@@ -895,3 +896,12 @@ remainder contraction.
   and reconstruction estimates are supplied.  It prevents beta functions,
   functional-RG truncations, and tensor numerics from being read as standalone
   continuum-QFT constructions.
+- 2026-06-02 unstable-block finite-depth tuning pass: sharpened the
+  relevant-coordinate tuning discussion beyond a diagonal unstable
+  linearization.  The chapter now defines
+  \(M_A(N)=\max_{0\le n\le N}\|A^n\|\), records the sufficient finite-depth
+  tuning condition \(\|u_0\|\le \rho/M_A(N)\), displays the Jordan-block power
+  formula with its polynomial \(N^{m-1}\) loss, and writes the exact
+  variation-of-constants sum for one-step relevant-coordinate errors.  The
+  companion short-range RG check verifies the \(2\times2\) Jordan-block
+  arithmetic and detects the failure of a diagonal-only tuning estimate.

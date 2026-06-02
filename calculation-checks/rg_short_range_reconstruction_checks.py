@@ -77,6 +77,9 @@ be summed exactly.
 The quantitative tuning check verifies the finite-dimensional contraction
 constants that turn a transverse microscopic parameter chart into an actual
 solution of the relevant-coordinate tuning equation inside a declared ball.
+The unstable-block tuning check verifies the finite-depth polynomial
+amplification caused by a non-diagonal Jordan block and the corresponding
+amplification of one-step relevant-coordinate errors.
 The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
@@ -430,6 +433,91 @@ def check_relevant_direction_tuning_amplification():
         lam ** (len(errors) - 1 - j) * errors[j] for j in range(len(errors))
     )
     assert_equal("relevant direction affine amplification", coordinate, expected)
+
+
+def matmul2(a, b):
+    return (
+        (
+            a[0][0] * b[0][0] + a[0][1] * b[1][0],
+            a[0][0] * b[0][1] + a[0][1] * b[1][1],
+        ),
+        (
+            a[1][0] * b[0][0] + a[1][1] * b[1][0],
+            a[1][0] * b[0][1] + a[1][1] * b[1][1],
+        ),
+    )
+
+
+def matvec2(a, v):
+    return (
+        a[0][0] * v[0] + a[0][1] * v[1],
+        a[1][0] * v[0] + a[1][1] * v[1],
+    )
+
+
+def matpow2(a, exponent):
+    result = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
+    for _ in range(exponent):
+        result = matmul2(result, a)
+    return result
+
+
+def linfty2(v):
+    return max(abs(v[0]), abs(v[1]))
+
+
+def linfty_op_norm2(a):
+    return max(abs(a[0][0]) + abs(a[0][1]), abs(a[1][0]) + abs(a[1][1]))
+
+
+def check_unstable_jordan_block_finite_depth_tuning():
+    # A non-diagonal unstable block has polynomial amplification.  For
+    # A = [[lambda, 1], [0, lambda]], one has
+    # A^n = [[lambda^n, n lambda^(n-1)], [0, lambda^n]].
+    lam = Fraction(2)
+    a = ((lam, Fraction(1)), (Fraction(0), lam))
+    depth = 5
+    a_power = matpow2(a, depth)
+    expected_power = (
+        (lam**depth, depth * lam ** (depth - 1)),
+        (Fraction(0), lam**depth),
+    )
+    assert_equal("unstable Jordan block power", a_power, expected_power)
+
+    amplification = linfty_op_norm2(a_power)
+    diagonal_only = lam**depth
+    assert_equal("unstable Jordan finite-depth amplification", amplification, Fraction(112))
+    assert_true("Jordan block amplifies beyond diagonal exponent", amplification > diagonal_only)
+
+    radius = Fraction(7)
+    tuned_initial = (Fraction(0), radius / amplification)
+    endpoint = matvec2(a_power, tuned_initial)
+    assert_true("Jordan tuned vector remains in declared ball", linfty2(endpoint) <= radius)
+
+    diagonal_estimate_initial = (Fraction(0), radius / diagonal_only)
+    diagonal_endpoint = matvec2(a_power, diagonal_estimate_initial)
+    assert_true(
+        "diagonal-only tuning condition is not uniformly sufficient",
+        linfty2(diagonal_endpoint) > radius,
+    )
+
+    errors = [
+        (Fraction(1, 20), Fraction(0)),
+        (Fraction(0), Fraction(1, 30)),
+        (Fraction(1, 40), Fraction(1, 50)),
+    ]
+    coordinate = (Fraction(0), Fraction(0))
+    for error in errors:
+        advanced = matvec2(a, coordinate)
+        coordinate = (advanced[0] + error[0], advanced[1] + error[1])
+
+    propagated = (Fraction(0), Fraction(0))
+    total_steps = len(errors)
+    for j, error in enumerate(errors):
+        power = matpow2(a, total_steps - 1 - j)
+        contribution = matvec2(power, error)
+        propagated = (propagated[0] + contribution[0], propagated[1] + contribution[1])
+    assert_equal("unstable Jordan error propagation", coordinate, propagated)
 
 
 def check_quantitative_microscopic_tuning_contraction():
@@ -2208,6 +2296,7 @@ def main():
     check_auxiliary_transfer_telescoping_bound()
     check_auxiliary_projective_window_transfer_estimate()
     check_relevant_direction_tuning_amplification()
+    check_unstable_jordan_block_finite_depth_tuning()
     check_quantitative_microscopic_tuning_contraction()
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_estimate()

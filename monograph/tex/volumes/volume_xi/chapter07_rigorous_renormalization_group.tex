@@ -817,6 +817,50 @@ replaces the coordinate plane \(u=0\) by the intrinsic equation
 approximation must provide normal-form or graph-transform estimates
 controlling the nonlinear remainder.
 
+The diagonal estimate is not a convention-independent statement about
+finite-depth tuning.  For a general finite-dimensional unstable block
+\(A:E_u\to E_u\), the intrinsic quantity is
+\begin{equation}
+  M_A(N)=\max_{0\leq n\leq N}\|A^n\|_{E_u\to E_u}.
+  \label{eq:unstable-block-finite-depth-amplification}
+\end{equation}
+The sufficient uniform tuning condition for the linear unstable component to
+remain in the ball \(\|u_n\|\leq\rho\) for \(0\leq n\leq N\) is
+\begin{equation}
+  \|u_0\|\leq \frac{\rho}{M_A(N)}.
+  \label{eq:unstable-block-finite-depth-tuning}
+\end{equation}
+For a Jordan block \(A=\lambda 1+N_J\) of size \(m\), with \(N_J^m=0\),
+\begin{equation}
+  A^n
+  =
+  \lambda^n
+  \sum_{p=0}^{m-1}
+    \binom{n}{p}\lambda^{-p}N_J^p .
+  \label{eq:jordan-unstable-block-power}
+\end{equation}
+Thus non-diagonal unstable coordinates can carry a polynomial amplification
+factor of degree \(m-1\) in addition to the exponential factor
+\(|\lambda|^n\).  A proof that quotes only the eigenvalue exponent \(y\) has
+therefore not specified the finite-depth tuning precision unless it also
+controls the conditioning of the unstable coordinate chart and any Jordan or
+near-resonant polynomial losses.
+
+The same point appears for finite comparison or truncation errors.  If the
+unstable coordinate obeys
+\[
+  u_{n+1}=Au_n+e_n ,
+\]
+then
+\begin{equation}
+  u_N=A^Nu_0+\sum_{j=0}^{N-1}A^{N-1-j}e_j .
+  \label{eq:unstable-block-error-amplification}
+\end{equation}
+The error sequence must be summable after multiplication by the same unstable
+powers.  Otherwise a trajectory can stay close to the stable graph in its
+stable coordinates while drifting out of the relevant-coordinate window at the
+finite depth needed for the reconstructed observable.
+
 \section{Polymer Representation}
 
 On a lattice, a polymer is a finite connected union of blocks in a fixed block

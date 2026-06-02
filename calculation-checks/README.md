@@ -719,8 +719,11 @@ Current checks:
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula, together with the quantitative microscopic tuning
   contraction constants used to separate stable comparison estimates from
-  unstable tuning data.  It also checks the auxiliary projective-window
-  transfer estimate combining auxiliary-window convergence,
+  unstable tuning data.  It also checks the non-diagonal unstable-block
+  amplification formula for a finite Jordan block, including the polynomial
+  loss beyond the diagonal eigenvalue exponent and the corresponding
+  propagation of one-step relevant-coordinate errors.  It also checks the
+  auxiliary projective-window transfer estimate combining auxiliary-window convergence,
   auxiliary-to-target observable defects, short-range orbit-transfer
   defects, and normalization mismatch.  It also checks the differentiated
   Lyapunov--Perron equation for a finite one-dimensional nonlinear stable
