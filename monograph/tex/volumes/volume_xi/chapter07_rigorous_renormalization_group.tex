@@ -2300,6 +2300,89 @@ Thus tensor RG supplies theorem-level fixed points of tensor maps and a
 valuable laboratory for RG proof technology; it becomes a continuum QFT
 fixed-point theorem only after the reconstruction layer is supplied.
 
+\begin{controlledapproximation}[Tensor-RG truncation windows]
+\label{cap:tensor-rg-truncation-windows}
+Let \((\mathcal B_T,\|\cdot\|_T)\) be the declared tensor Banach or
+Hilbert--Schmidt space, let
+\(\mathcal T_j:\mathcal U_j\to\mathcal B_T\) be the exact tensor blocking map
+at step \(j\), and let
+\(\widehat{\mathcal T}_j\) be the algorithmic map actually used, including its
+finite-rank truncation or disentangling prescription.  Starting from the same
+initial tensor \(T_0=\widehat T_0\), define
+\[
+  T_{j+1}=\mathcal T_j(T_j),
+  \qquad
+  \widehat T_{j+1}=\widehat{\mathcal T}_j(\widehat T_j).
+\]
+Suppose both orbits remain in a common tube on which
+\[
+  \|\mathcal T_j(X)-\mathcal T_j(Y)\|_T
+  \le L_j\|X-Y\|_T ,
+\]
+and suppose the one-step algorithmic residual along the computed orbit obeys
+\begin{equation}
+  \delta_j
+  =
+  \|\mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j)\|_T .
+  \label{eq:tensor-rg-one-step-truncation-residual}
+\end{equation}
+Then
+\begin{equation}
+  \|T_n-\widehat T_n\|_T
+  \le
+  \sum_{j=0}^{n-1}
+  \left(\prod_{\ell=j+1}^{n-1}L_\ell\right)\delta_j .
+  \label{eq:tensor-rg-truncation-window-bound}
+\end{equation}
+If a normalized finite observable window \(W_\alpha\) is evaluated by a map
+\(\mathcal O_{\alpha,n}\) satisfying
+\[
+  p_\alpha(\mathcal O_{\alpha,n}(X)-\mathcal O_{\alpha,n}(Y))
+  \le C_{\alpha,n}\|X-Y\|_T
+\]
+on the same tube, and if the normalization or boundary-window error is
+\(\eta_{\alpha,n}\), then
+\begin{equation}
+  p_\alpha\!\left(
+    \mathcal O_{\alpha,n}(T_n)-\mathcal O_{\alpha,n}(\widehat T_n)
+  \right)
+  \le
+  C_{\alpha,n}
+  \sum_{j=0}^{n-1}
+  \left(\prod_{\ell=j+1}^{n-1}L_\ell\right)\delta_j
+  +\eta_{\alpha,n}.
+  \label{eq:tensor-rg-observable-window-bound}
+\end{equation}
+This is the tensor-network analogue of the auxiliary-transfer estimate:
+finite bond dimension, singular-value truncation, or a disentangling step is
+part of the RG map.  Its effect on a claimed observable window is controlled
+by the residual in \eqref{eq:tensor-rg-one-step-truncation-residual}, the
+exact-map amplification factors, and the window map
+\(\mathcal O_{\alpha,n}\).
+\end{controlledapproximation}
+
+The derivation is the same finite recursion as
+\eqref{eq:auxiliary-short-range-telescoping-bound}.  Put
+\(e_j=T_j-\widehat T_j\).  Then
+\[
+  e_{j+1}
+  =
+  \mathcal T_j(T_j)-\mathcal T_j(\widehat T_j)
+  +
+  \mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j),
+\]
+so
+\[
+  \|e_{j+1}\|_T\le L_j\|e_j\|_T+\delta_j .
+\]
+Iteration from \(e_0=0\) gives
+\eqref{eq:tensor-rg-truncation-window-bound}; the finite-window estimate
+\eqref{eq:tensor-rg-observable-window-bound} then follows from the Lipschitz
+bound for \(\mathcal O_{\alpha,n}\) and the added normalization error.  A
+computed finite-bond-dimension flow is therefore a controlled tensor-network
+result precisely on the windows for which these residuals and Lipschitz
+constants are supplied.
+
 \paragraph{Ordinary short-range scalar targets.}
 For a short-range three-dimensional scalar Wilson--Fisher target, the RG
 object must be the block-spin/polymer structure of

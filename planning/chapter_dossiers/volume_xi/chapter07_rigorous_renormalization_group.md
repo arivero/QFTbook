@@ -205,6 +205,11 @@ constructive RG developments.
   the omitted vector-field component \(Q_N\mathcal F_t(\gamma_N(t))\) is
   integrated with the RG amplification factor and then transported through
   observable seminorms.
+- Adds the tensor-RG truncation-window estimate: exact and algorithmic tensor
+  orbits are compared by a one-step residual
+  \(\|\mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j)\|\),
+  amplified by the exact tensor-map Lipschitz constants and then transported
+  through normalized finite observable windows.
 - Defines the output data of a constructive fermionic RG fixed point:
   fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
   interaction, source-field dimensions \(d-\Delta_i\), operator dimensions
@@ -415,7 +420,8 @@ remainder contraction.
   finite-dimensional projected-zero counterexample and complement-residual
   lift calculation, the residual-lift plus finite-window observable-error
   budget, the finite-step projected functional-RG residual-amplification
-  bound, and the finite irrelevant-tail graph equation.
+  bound, the tensor-RG truncation-window recursion, and the finite
+  irrelevant-tail graph equation.
 - `calculation-checks/rg_fermionic_fixed_point_checks.py`: exact rational
   checks for the fermionic benchmark kernel scaling ledger, pinned \(L^1\)
   exponent relation, trimmed local-coordinate list, and finite irrelevant-tail

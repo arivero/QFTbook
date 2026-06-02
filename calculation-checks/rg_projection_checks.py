@@ -39,6 +39,13 @@ def norm_l1(vector):
     return abs(vector[0]) + abs(vector[1])
 
 
+def product(values):
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
+
+
 def check_spurious_projected_zero():
     def residual(point):
         _x, _y = point
@@ -210,12 +217,45 @@ def check_frg_projected_flow_residual_budget():
     assert_true("FRG projected-flow bad residual detected", bad_bound > Fraction(1, 4))
 
 
+def check_tensor_rg_truncation_window_budget():
+    # Exact finite recursion for tensor-RG truncation residuals:
+    # e_{j+1} <= L_j e_j + delta_j.
+    lipschitz = (Fraction(3, 4), Fraction(2, 3), Fraction(1, 2))
+    residuals = (Fraction(1, 100), Fraction(1, 150), Fraction(1, 200))
+
+    error = Fraction(0)
+    for factor, residual in zip(lipschitz, residuals):
+        error = factor * error + residual
+
+    closed_form = sum(
+        product(lipschitz[index + 1 :])
+        * residual
+        for index, residual in enumerate(residuals)
+    )
+    assert_equal("tensor RG truncation recurrence", error, Fraction(7, 600))
+    assert_equal("tensor RG truncation closed form", closed_form, error)
+
+    observable_lipschitz = Fraction(6)
+    normalization_error = Fraction(1, 100)
+    window_error = observable_lipschitz * error + normalization_error
+    assert_equal("tensor RG observable window bound", window_error, Fraction(2, 25))
+
+    bad_residuals = (Fraction(1, 5), Fraction(1, 150), Fraction(1, 200))
+    bad_bound = sum(
+        product(lipschitz[index + 1 :])
+        * residual
+        for index, residual in enumerate(bad_residuals)
+    )
+    assert_true("tensor RG bad truncation residual detected", bad_bound > Fraction(1, 16))
+
+
 def main():
     check_spurious_projected_zero()
     check_projected_zero_lift_condition()
     check_irrelevant_tail_residual()
     check_projected_observable_lift_budget()
     check_frg_projected_flow_residual_budget()
+    check_tensor_rg_truncation_window_budget()
     print("All RG projection checks passed.")
 
 
