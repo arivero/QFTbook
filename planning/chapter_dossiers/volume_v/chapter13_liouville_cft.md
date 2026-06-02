@@ -117,6 +117,13 @@ boundaries rather than importing the appendix exposition.
   `S(P)` from the `epsilon=Q/2+i(P1+P2+P3)` pole of the
   scattering-normalized DOZZ constant and the weak-coupling zero-mode
   integral.
+- Inserts a closed-theory comparison datum immediately after the
+  probabilistic quoted theorem: probabilistic distributions
+  `L_{Sigma,n}`, the cylinder direct integral over
+  `V_{Q/2+iP} \otimes \bar V_{Q/2+iP}`, DOZZ trilinear kernels on
+  three-punctured spheres, and Plancherel sewing integrals over the
+  intermediate momentum.  This separates the measure-theoretic construction,
+  the bootstrap coordinate system, and the functorial sewing problem.
 - Adds the boundary Liouville action with the `Q K_g phi/(2 pi)` curvature
   term and derives the boundary Euler equation
   `nabla_n phi + Q K_g + 2 pi b mu_B exp(b phi)=0`.
@@ -291,6 +298,14 @@ boundaries rather than importing the appendix exposition.
   parameter, separated it from the remaining nonrational boundary-bootstrap
   connection-coefficient and sewing theorem boundary, and added an exact
   Laurent-polynomial check.
+- 2026-06-02 issue #697 Liouville comparison-datum pass: added the explicit
+  comparison target linking probabilistic Liouville correlators, the
+  continuous Virasoro direct-integral Hilbert space, DOZZ trilinear kernels,
+  and Plancherel sewing integrals.  The chapter now names the topology,
+  descendant-pairing, unbounded-vertex-domain, and residue-prescription data
+  as the remaining functorial closure problem rather than letting a reader
+  infer them from the separate probabilistic and bootstrap theorem
+  boundaries.
 
 ## Anti-Wrapper Audit
 

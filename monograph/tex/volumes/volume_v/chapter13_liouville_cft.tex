@@ -238,6 +238,59 @@ higher-genus boundary operations is recorded below as a separate boundary
 problem.
 \end{quotedtheorem}
 
+\paragraph{Comparison datum for the closed theory.}
+The probabilistic theorem produces meromorphic families of closed-surface
+correlation distributions.  The bootstrap formulas used later in this
+chapter use a different coordinate system: the Hilbert space is decomposed
+into Virasoro representation fibers, and correlators are expanded by cutting
+the surface into pairs of pants.  Comparing the two descriptions requires the
+following maps.
+
+First, for each closed marked surface \((\Sigma;x_1,\ldots,x_n)\), the
+probabilistic construction supplies a distribution
+\[
+  \mathcal L_{\Sigma,n}(\alpha_1,\ldots,\alpha_n)
+  \in
+  \mathcal D'(\operatorname{Conf}_n(\Sigma))
+\]
+in the insertion positions, initially for
+\(\boldsymbol\alpha\) in the Seiberg domain and then by meromorphic
+continuation in the momenta.  Second, the cylinder state space must be
+identified with the direct integral
+\begin{equation}
+  \Hilb_{S^1}^{\mathrm L}
+  =
+  \int_0^\infty{}^{\oplus}
+  \mathcal V_{Q/2+\ii P}\otimes
+  \overline{\mathcal V_{Q/2+\ii P}}\,
+  \frac{\dd P}{\pi},
+  \label{eq:liouville-cylinder-direct-integral}
+\end{equation}
+with the reflection convention and two-point normalization fixed by
+Definition~\ref{def:liouville-scattering-basis}.  Third, three-punctured
+spheres must be represented by distributional trilinear maps on the fibers of
+\eqref{eq:liouville-cylinder-direct-integral}; in the normalization of this
+chapter their scalar kernel is the DOZZ constant
+\eqref{eq:dozz-structure-constant}.  Fourth, cutting a closed surface along a
+separating circle should express the probabilistic distribution as a
+Plancherel integral over the intermediate momentum:
+\begin{equation}
+  \mathcal L_{\Sigma,n}
+  =
+  \int_0^\infty
+  \mathcal L_{\Sigma_L,\{P\}}\,
+  \mathcal L_{\Sigma_R,\{P\}}\,
+  \frac{\dd P}{\pi},
+  \label{eq:liouville-probabilistic-bootstrap-comparison}
+\end{equation}
+in a topology strong enough to justify the gluing limit.  The notation in
+\eqref{eq:liouville-probabilistic-bootstrap-comparison} suppresses the
+left/right descendant pairings, conformal-block coordinates, and possible
+discrete residue terms that appear after meromorphic continuation of external
+momenta through poles.  These four items are the comparison datum; the
+probabilistic construction, the DOZZ theorem, and the conformal-block
+calculus verify different parts of it.
+
 \paragraph{Constant-mode reduction of the probabilistic construction.}
 The theorem just quoted has a concrete core.  Let
 \[
@@ -2226,7 +2279,8 @@ exactly \eqref{eq:liouville-dozz-b-shift-ratio}.
 \section{Sewing Status and Open Boundary}
 
 The closed-surface probabilistic theory, the bootstrap formula, and the
-Segal/Kontsevich--Segal sewing formulation require explicit comparison maps.
+Segal/Kontsevich--Segal sewing formulation require the comparison datum
+described after Quoted Theorem~\ref{qthm:gkrv-liouville-correlators}.
 
 \begin{openproblem}[Liouville sewing and functorial closure]
 \label{op:liouville-functorial-closure-volume-v}
@@ -2234,10 +2288,14 @@ Construct, in a single framework, the Hilbert or topological vector spaces
 assigned to circles, the multilinear maps assigned to bordered Riemann
 surfaces, the boundary state spaces, and the sewing maps whose closed-surface
 matrix elements reproduce the probabilistic Liouville correlators and the
-DOZZ/bootstrap conformal blocks.  The comparison must specify the topology on
-continuous-spectrum direct integrals, the domain of unbounded vertex
-operators, and the convergence of the gluing integrals over
-\(\alpha=Q/2+\ii P\).  This is the Volume V form of
+DOZZ/bootstrap conformal blocks.  In the notation of
+\eqref{eq:liouville-cylinder-direct-integral} and
+\eqref{eq:liouville-probabilistic-bootstrap-comparison}, the construction
+must specify the topology on continuous-spectrum direct integrals, the domain
+of unbounded vertex operators, the descendant pairing used on the two sides
+of a cut, the convergence of the gluing integrals over
+\(\alpha=Q/2+\ii P\), and the residue prescription at meromorphic
+continuation walls.  This is the Volume V form of
 the Liouville and nonrational-CFT open problem in the
 Kontsevich--Segal functorial-QFT chapter.
 \end{openproblem}
