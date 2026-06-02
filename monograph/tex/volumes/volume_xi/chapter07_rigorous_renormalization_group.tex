@@ -3200,6 +3200,40 @@ source pairing: if \(x=Ly\), then a source coupled to a field of dimension
 \(\Delta_\phi\) scales with exponent \(D-\Delta_\phi\), as in
 \eqref{eq:source-exponent-operator-dimension}.
 
+The finite-regulator identity behind this normalization is the adjoint
+source-blocking relation.  For a coarse test function \(f\), define the
+fine-lattice pullback \(B_k^\dagger f\) on one block by
+\begin{equation}
+  (B_k^\dagger f)(y+a_k r)
+  =
+  L^D q(r)f(y),
+  \qquad r\in\{0,\ldots,L-1\}^D .
+  \label{eq:short-range-adjoint-source-blocking}
+\end{equation}
+Then, with \(a_{k-1}=La_k\),
+\begin{equation}
+\begin{aligned}
+  a_{k-1}^{D-\Delta_\phi}
+  \sum_{y\in\Lambda_{k-1}} f(y)(B_k\phi)(y)
+  &=
+  a_k^{D-\Delta_\phi}
+  \sum_{y\in\Lambda_{k-1}}
+  \sum_{r\in\{0,\ldots,L-1\}^D}
+    (B_k^\dagger f)(y+a_k r)\phi_{y+a_k r} .
+\end{aligned}
+  \label{eq:short-range-source-blocking-pairing-identity}
+\end{equation}
+Thus the source normalization, field-strength normalization, and block-spin
+normalization are one datum, not three independent conventions.  A
+source-window RG estimate for \(\Phi_k\) must use the same
+\(B_k^\dagger\) that is adjoint to the blocking map appearing in the
+measure pushforward.  If one changes the field normalization while keeping
+the same symbol for the source window, the reconstructed Schwinger
+distributions have been rescaled; the comparison then belongs to the
+normalization group in
+Definition~\ref{def:wilsonian-universality-statement}, not to equality of
+un-normalized observable germs.
+
 The ordinary short-range scalar reconstruction problem is to prove, for
 each \(n\), convergence of \(S_{n,k}\) in \(\mathcal S'((\mathbb R^D)^n)\)
 or in a declared local distribution topology.  A Wilsonian RG proof supplies

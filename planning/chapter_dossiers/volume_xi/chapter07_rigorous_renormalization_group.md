@@ -905,3 +905,11 @@ remainder contraction.
   variation-of-constants sum for one-step relevant-coordinate errors.  The
   companion short-range RG check verifies the \(2\times2\) Jordan-block
   arithmetic and detects the failure of a diagonal-only tuning estimate.
+- 2026-06-02 adjoint source-normalization pass: inserted the finite-regulator
+  identity \( \Phi_{k-1}(f;B_k\phi)=\Phi_k(B_k^\dagger f;\phi)\), with
+  \(B_k^\dagger f(y+a_k r)=L^D q(r)f(y)\), in the ordinary short-range
+  scalar reconstruction section.  The text now treats source normalization,
+  field-strength normalization, and block-spin normalization as one datum
+  rather than independent conventions, and says explicitly that changing this
+  datum moves the comparison into the normalization group of the
+  observable-germ universality statement.
