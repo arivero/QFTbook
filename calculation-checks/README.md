@@ -661,6 +661,12 @@ Current checks:
   complement-residual lift condition used in the Newton--Kantorovich
   argument, plus the finite irrelevant-tail graph equation illustrating why
   projected local coordinates alone do not define a Wilsonian fixed point.
+- `rg_fermionic_fixed_point_checks.py`: exact rational checks for the
+  Volume XI long-range fermionic rigorous-RG benchmark, including the
+  kernel scaling-dimension ledger
+  \(D_{\rm sc}=d-n(d-\Delta_1)-m(d-\Delta_2)-\ell[\psi]-|p|_1\), the
+  pinned \(L^1\) exponent relation, the trimmed local-coordinate list, and
+  a finite irrelevant-tail fixed-point graph equation.
 - `rg_hierarchical_scalar_checks.py`: exact rational checks for the Volume XI
   hierarchical-scalar RG benchmark, including the Gaussian
   Wick-coordinate eigenvalue

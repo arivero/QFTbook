@@ -40,6 +40,11 @@ constructive RG developments.
   long-range fermionic benchmark.
 - `[psi]`, `[J]`: field and density source scaling dimensions in the
   fermionic fixed-point output theorem.
+- `alpha=(n,m,ell,p)`, `H_alpha`, `D_sc(alpha)`: fermionic
+  source-extended kernel label, corresponding pinned \(L^1\) kernel, and
+  kernel scaling exponent in the long-range fermionic benchmark.
+- `g`, `K`, `A_loc`, `A_irr`, `B_loc`, `B_irr`: trimmed local coordinates,
+  irrelevant kernel tail, and local/irrelevant blocks of the fermionic RG map.
 - `L`, `D`, `b=L^D`: hierarchical scale factor, dimension parameter, and
   block volume in the scalar hierarchical RG datum.
 - `Delta`, `a=L^{-Delta}`, `gamma`: field scaling dimension, rescaling
@@ -182,11 +187,19 @@ constructive RG developments.
   the full Banach-space contraction inequalities.
 - Defines the output data of a constructive fermionic RG fixed point:
   fixed-cutoff Grassmann covariance, Banach kernel space, exact RG map, fixed
-  interaction, source dimensions, response functions, and remainders.
+  interaction, source-field dimensions \(d-\Delta_i\), operator dimensions
+  \(\Delta_i\), response functions, and remainders.
 - States the long-range fermionic \(\psi^4_d\) fixed-point theorem as a
   quoted benchmark: a nontrivial fixed interaction, constructed response
   functions, naive field exponent, anomalous analytic density exponent, and
   stretched-exponential cutoff-controlled remainders.
+- Expands the fermionic benchmark mechanism: the fixed point lives in a
+  trimmed infinite sequence of nonlocal Grassmann kernels, the pinned
+  \(L^1\)-scaling exponent is
+  \(D_{\rm sc}=d-n(d-\Delta_1)-m(d-\Delta_2)-\ell[\psi]-|p|_1\), the
+  mass/quartic/source exceptional local coordinates form the finite trimmed
+  block, and the irrelevant tail is solved by a contraction equation rather
+  than discarded.
 - Proves that irrelevant-kernel tails are part of the fixed-point theorem:
   solving only the projected local-coordinate equation leaves an uncontrolled
   \(Q(\mathcal R(V)-V)\) residual unless a graph or contraction solves the
@@ -344,6 +357,10 @@ remainder contraction.
 - `calculation-checks/rg_projection_checks.py`: exact rational check for the
   finite-dimensional projected-zero counterexample and complement-residual
   lift calculation, plus the finite irrelevant-tail graph equation.
+- `calculation-checks/rg_fermionic_fixed_point_checks.py`: exact rational
+  checks for the fermionic benchmark kernel scaling ledger, pinned \(L^1\)
+  exponent relation, trimmed local-coordinate list, and finite irrelevant-tail
+  graph equation.
 - `calculation-checks/rg_hierarchical_scalar_checks.py`: exact rational
   checks for the hierarchical scalar Gaussian Wick-coordinate eigenvalue,
   engineering exponents, and relevance bookkeeping.
@@ -544,3 +561,12 @@ remainder contraction.
   gauge-compatible blocking construction can be used as evidence for a
   continuum local QFT, and the proof-like closure statements were kept as
   prose consequences rather than inflated into weak propositions.
+- 2026-06-02 fermionic benchmark mechanism pass: expanded the long-range
+  fermionic quoted benchmark so the reader sees the invariant kernel-space
+  mechanism rather than only a theorem citation.  The chapter now defines the
+  source-extended kernel labels, records that \(\Delta_i\) are operator
+  dimensions while the source fields scale with \(d-\Delta_i\), derives the
+  pinned \(L^1\)-scaling exponent, names the trimmed local sector, and writes
+  the local/irrelevant fixed-point equation whose contraction is the
+  nonperturbative burden.  The companion fermionic RG check verifies the exact
+  finite arithmetic behind this ledger.

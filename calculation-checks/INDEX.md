@@ -8,8 +8,8 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-02 Yang--Baxter internal-symmetry companion pass the directory
-contains 231 active check scripts: 229 Python checks and 2 Wolfram Language
+As of the 2026-06-02 fermionic rigorous-RG benchmark pass the directory
+contains 232 active check scripts: 230 Python checks and 2 Wolfram Language
 companion checks.  The runner selects all `calculation-checks/*.py` and
 `calculation-checks/*.wl` files unless a filter is supplied.
 
