@@ -39,6 +39,9 @@ or normalization errors.
 The C1 stable-graph check verifies the differentiated Lyapunov--Perron
 equation for a finite one-dimensional nonlinear RG map whose stable graph can
 be summed exactly.
+The finite OS-positivity certificate check verifies the Gram-window error
+bound used when projective observable-germ convergence is strong enough to
+feed Osterwalder--Schrader reconstruction.
 """
 
 from fractions import Fraction
@@ -410,6 +413,79 @@ def check_qft_strength_observable_germ_windows():
         "visible certificate does not detect hidden positivity failure",
         hidden_bad_det < 0 and finite_certificate < 1,
     )
+
+
+def check_finite_os_positivity_certificate():
+    # Finite OS positivity is a Gram-matrix condition.  If a regulated Gram
+    # matrix G_k has lower bound ell and the limiting Gram matrix differs
+    # entrywise by at most epsilon, then
+    #   c^* G_* c >= (ell - m epsilon) ||c||_2^2
+    # for an m-by-m window.  This check verifies the exact finite arithmetic.
+    dimension = 3
+    ell = Fraction(1)
+    epsilon = Fraction(1, 10)
+    regulated_gram = [
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(3, 2), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(2)],
+    ]
+    limiting_gram = [
+        [regulated_gram[i][j] - epsilon for j in range(dimension)]
+        for i in range(dimension)
+    ]
+
+    lower_certificate = ell - dimension * epsilon
+    assert_equal("finite OS lower certificate", lower_certificate, Fraction(7, 10))
+
+    vector = [Fraction(2), Fraction(-1), Fraction(3)]
+
+    def quadratic_form(matrix, vec):
+        total = Fraction(0)
+        for i, row in enumerate(matrix):
+            for j, entry in enumerate(row):
+                total += vec[i] * entry * vec[j]
+        return total
+
+    norm_squared = sum(component * component for component in vector)
+    regulated_value = quadratic_form(regulated_gram, vector)
+    limiting_value = quadratic_form(limiting_gram, vector)
+    l1_square = sum(abs(component) for component in vector) ** 2
+    entrywise_error_bound = epsilon * l1_square
+
+    assert_equal("finite OS regulated quadratic form", regulated_value, Fraction(47, 2))
+    assert_equal("finite OS limiting quadratic form", limiting_value, Fraction(219, 10))
+    assert_equal("finite OS entrywise error bound", entrywise_error_bound, Fraction(18, 5))
+    assert_true(
+        "finite OS quadratic-form difference below entrywise bound",
+        abs(limiting_value - regulated_value) <= entrywise_error_bound,
+    )
+    assert_true(
+        "finite OS certificate gives positive lower bound",
+        limiting_value >= lower_certificate * norm_squared,
+    )
+
+    # The same concrete limiting matrix is positive by principal minors.  This
+    # is not the proof used in the chapter, but it protects the example from
+    # accidentally choosing an indefinite window.
+    principal_one = [limiting_gram[i][i] for i in range(dimension)]
+    assert_true("finite OS one-by-one principal minors positive", all(value > 0 for value in principal_one))
+    for i in range(dimension):
+        for j in range(i + 1, dimension):
+            minor = (
+                limiting_gram[i][i] * limiting_gram[j][j]
+                - limiting_gram[i][j] * limiting_gram[j][i]
+            )
+            assert_true(f"finite OS two-by-two principal minor {i}{j} positive", minor > 0)
+    determinant = (
+        limiting_gram[0][0]
+        * (limiting_gram[1][1] * limiting_gram[2][2] - limiting_gram[1][2] * limiting_gram[2][1])
+        - limiting_gram[0][1]
+        * (limiting_gram[1][0] * limiting_gram[2][2] - limiting_gram[1][2] * limiting_gram[2][0])
+        + limiting_gram[0][2]
+        * (limiting_gram[1][0] * limiting_gram[2][1] - limiting_gram[1][1] * limiting_gram[2][0])
+    )
+    assert_equal("finite OS limiting Gram determinant", determinant, Fraction(47, 20))
+    assert_true("finite OS limiting Gram determinant positive", determinant > 0)
 
 
 def check_stable_chart_observable_window_certificate():
@@ -909,6 +985,7 @@ def main():
     check_c1_stable_graph_derivative_equation()
     check_observable_germ_finite_window_certificate()
     check_qft_strength_observable_germ_windows()
+    check_finite_os_positivity_certificate()
     check_stable_chart_observable_window_certificate()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()

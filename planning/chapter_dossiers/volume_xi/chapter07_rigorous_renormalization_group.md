@@ -265,6 +265,12 @@ constructive RG developments.
   positivity windows, covariance/locality identities, source contact-term
   data, and reconstruction growth hypotheses before a universality statement
   can be read as equality of reconstructed local QFTs.
+- Derives the finite OS-positivity Gram-window certificate used by a
+  reconstruction-strength observable germ: entrywise convergence of every
+  finite positive-time test-family Gram matrix preserves positivity in the
+  limit, and a regulated lower bound plus an entrywise error gives the
+  explicit lower estimate
+  \(c^*G_*c\ge(\ell-m\epsilon)\|c\|_2^2\).
 - Adds a finite stable-chart observable-window certificate: after the
   microscopic data have entered one RG chart, the finite observation-window
   difference is bounded by the relevant mismatch, stable-coordinate
@@ -306,10 +312,12 @@ remainder contraction.
   Lyapunov--Perron \(C^1\) stable-graph formula, and projective
   observable-germ finite-window certificate.  The same script now checks a
   finite OS-positivity Gram-window failure that is invisible in a declared
-  one-coordinate observable window, and it checks the exact finite arithmetic
-  behind the polymer contraction budget and the quadratic circle-product
-  bound, including a finite interval enumeration of the pair-overlap
-  majorant entering \(B_{\rm pol}\).  It also checks the finite-range
+  one-coordinate observable window, and now checks the finite OS-positivity
+  certificate with an explicit regulated lower bound and entrywise limiting
+  error.  It also checks the exact finite arithmetic behind the polymer
+  contraction budget and the quadratic circle-product bound, including a
+  finite interval enumeration of the pair-overlap majorant entering
+  \(B_{\rm pol}\).  It also checks the finite-range
   Gaussian factorization, Taylor-localization scaling ledger, and the
   quadratic large-field regulator determinant/exponent bookkeeping.  It also
   checks source-window extraction for a source-extended polymer chart,
@@ -388,6 +396,12 @@ remainder contraction.
   check now exhibits an exact finite hidden-window failure: a visible
   two-point coordinate can agree while an undeclared reflection-positivity
   Gram determinant is negative.
+- 2026-06-02 finite OS-positivity certificate pass: added the concrete
+  finite Gram-window mechanism that a reconstruction-strength observable
+  germ must control.  The chapter now derives passage of OS positivity to the
+  limiting Gram matrix and gives the quantitative
+  \((\ell-m\epsilon)\)-lower-bound certificate; the companion short-range RG
+  check verifies the same rational arithmetic on an explicit finite window.
 - 2026-06-02 stable-chart finite-window certificate pass: added the
   RG-coordinate error budget behind finite universality evidence.  The
   chapter now bounds a finite reconstructed window by a tuned relevant

@@ -643,6 +643,10 @@ Current checks:
   overstated as full universality.  It also checks the QFT-strength
   observable-germ warning that matching a visible finite correlator window
   can miss a hidden OS-positivity Gram-window failure.  It also checks the
+  finite OS-positivity certificate: if a regulated Gram matrix has a lower
+  spectral bound and the limiting window has a declared entrywise error, the
+  limiting Gram matrix retains the quantified positive lower bound.  It also
+  checks the
   stable-chart observable-window certificate that decomposes a finite
   universality comparison into relevant mismatch, stable-coordinate
   contraction, accumulated one-step defects, and source-tail or

@@ -3100,6 +3100,74 @@ labels, coordinates, metric factors, and source normalizations that preserve
 these identities and positivity forms.
 \end{definition}
 
+\paragraph{Finite OS-positivity certificates.}
+The positivity windows in
+Definition~\ref{def:local-qft-strength-observable-germ} are not decorative.
+They are finite Gram matrices whose limits must be controlled before
+Osterwalder--Schrader reconstruction can be invoked.  Fix a finite family
+\(\mathcal F=\{F_1,\ldots,F_m\}\) of polynomial Euclidean observable test
+vectors supported at positive Euclidean time, and let \(\Theta\) be the
+Euclidean time reflection with the conjugation appropriate to the observable
+sector.  A regulated Schwinger hierarchy gives the finite matrix
+\begin{equation}
+  G_{k,\mathcal F;i j}
+  =
+  S_k\bigl((\Theta F_i)F_j\bigr),
+  \qquad
+  1\le i,j\le m .
+  \label{eq:rg-finite-os-gram-matrix}
+\end{equation}
+Reflection positivity at scale \(k\) is the assertion that
+\[
+  c^\ast G_{k,\mathcal F}c\ge0
+  \qquad
+  \text{for every }c\in\mathbb C^m .
+\]
+If the window is part of a reconstruction-strength RG estimate, the entries
+of \(G_{k,\mathcal F}\) converge to entries
+\[
+  G_{\ast,\mathcal F;ij}
+  =
+  S_\ast\bigl((\Theta F_i)F_j\bigr).
+\]
+For each fixed \(c\), continuity of the finite quadratic form gives
+\[
+  c^\ast G_{\ast,\mathcal F}c
+  =
+  \lim_{k\to\infty}c^\ast G_{k,\mathcal F}c
+  \ge0 .
+\]
+Thus positivity passes to the limit for this finite family.  The quantitative
+finite-window form is also useful.  If \(G_{k,\mathcal F}\) is Hermitian,
+\(G_{k,\mathcal F}\ge \ell\,1_m\), and the limiting-window error satisfies
+\[
+  |G_{\ast,\mathcal F;ij}-G_{k,\mathcal F;ij}|\le\epsilon
+  \qquad
+  (1\le i,j\le m),
+\]
+then
+\begin{equation}
+  c^\ast G_{\ast,\mathcal F}c
+  \ge
+  \bigl(\ell-m\epsilon\bigr)\|c\|_2^2 .
+  \label{eq:rg-finite-os-positivity-certificate}
+\end{equation}
+Indeed,
+\[
+  |c^\ast(G_{\ast,\mathcal F}-G_{k,\mathcal F})c|
+  \le
+  \epsilon\Bigl(\sum_{i=1}^m |c_i|\Bigr)^2
+  \le
+  m\epsilon\,\|c\|_2^2 .
+\]
+Equation~\eqref{eq:rg-finite-os-positivity-certificate} is the finite
+certificate one can actually verify in an RG or lattice estimate.  OS
+positivity for the continuum hierarchy requires this certificate, or the
+corresponding limiting argument, for every finite positive-time test family
+in the directed observable germ.  Agreement of separated two-point entries,
+critical exponents, or a finite list of amplitudes does not supply the
+missing Gram windows.
+
 \paragraph{When universality reconstructs the same local QFT.}
 Suppose a Wilsonian universality statement has a local-QFT-strength
 observable germ and that the normalized reconstructions of all microscopic
