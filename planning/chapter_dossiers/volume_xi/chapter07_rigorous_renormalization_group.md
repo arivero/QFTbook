@@ -214,6 +214,13 @@ constructive RG developments.
   compression of the fine OS Gram form by the block-spin pullback; the
   continuum OS burden remains the directed-family convergence and growth
   estimates.
+- Defines the ordinary short-range scalar OS assembly datum: infinite-volume
+  prescription, distributional convergence with uniform temperedness,
+  covariance/symmetry/Hermiticity, directed reflection-positive Gram-window
+  convergence, positive-time semigroup regularity, corrected OS-II analytic
+  growth, and the ordered-insertion adjoint identity.  The chapter now
+  explicitly separates this assembly from the existence of a Wilsonian fixed
+  point or stable trajectory.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -474,6 +481,17 @@ remainder contraction.
   determinant arithmetic.  This remains finite-regulator proof
   infrastructure; it does not replace the directed Gram-window convergence
   and OS-II growth estimates needed for continuum reconstruction.
+- 2026-06-02 short-range scalar OS assembly pass: inserted the missing
+  reconstruction-level dependency chain for the ordinary short-range scalar
+  target.  The manuscript now states that a critical short-range scalar
+  Wilsonian RG construction must supply an infinite-volume prescription,
+  distributional Schwinger convergence with uniform temperedness, all
+  Euclidean identities, directed OS Gram positivity, positive-time semigroup
+  regularity, corrected OS-II analytic growth, and the ordered-insertion
+  adjoint identity before Theorem~\ref{thm:os-reconstruction} may be invoked.
+  This pass deliberately does not claim existence of the Wilson-Fisher fixed
+  point; it sharpens issue #505 by identifying exactly what remains to be
+  proved in a model-specific construction.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

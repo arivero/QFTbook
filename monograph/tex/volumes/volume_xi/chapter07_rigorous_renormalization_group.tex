@@ -2501,6 +2501,114 @@ the directed-family convergence and growth estimates described in
 Definition~\ref{def:local-qft-strength-observable-germ}.
 \end{proof}
 
+\paragraph{Assembly datum for OS reconstruction.}
+The preceding construction and lemma are finite pieces.  A critical
+short-range scalar limit reaches a local QFT through an assembly of estimates
+in exactly the form required by
+Definition~\ref{def:os-admissible-euclidean-data}.
+
+\begin{definition}[Short-range scalar OS assembly datum]
+\label{def:short-range-scalar-os-assembly-datum}
+Fix a short-range scalar block-spin structure as in
+Definition~\ref{def:short-range-scalar-block-spin-structure} and a tuned
+trajectory \(V_k=(g_k,K_k)\) in its RG chart.  A short-range scalar
+OS assembly datum consists of the following additional data and estimates.
+\begin{enumerate}
+  \item An infinite-volume prescription for the cumulants
+  \(S_{n,k}\).  Either the finite-volume limit is taken at fixed lattice
+  spacing before \(k\to\infty\), or a joint volume--continuum limit is
+  specified, with estimates uniform enough to give the same limiting
+  distributions on every compactly supported test window.
+  \item Distributional reconstruction estimates: for every \(n\) and every
+  bounded set \(B\subset\mathcal S((\mathbb R^D)^n)\),
+  \[
+    p_B(S_{n,k}-S_{n,\ast})\longrightarrow0 ,
+  \]
+  together with a uniform temperedness bound of the form
+  \[
+    |S_{n,k}(f)|
+    \le C_n\,q_{n,r_n}(f),
+    \qquad f\in\mathcal S((\mathbb R^D)^n),
+  \]
+  for a declared Schwartz seminorm \(q_{n,r_n}\).  This bound is the
+  continuity estimate that turns a projective family of finite windows into
+  a tempered distribution, as in
+  Lemma~\ref{lem:rg-projective-window-extension-distribution}.
+  \item Euclidean covariance, permutation symmetry, normalization
+  \(S_{0,k}=1\), and Hermiticity at finite regulator, or regulator defects
+  for these identities that vanish in the same distributional topology.
+  \item Reflection positivity in a directed positive-time test family.  More
+  precisely, for every finite positive-time polynomial test family
+  \(\mathcal F=\{F_1,\ldots,F_m\}\), the regulated Gram matrices
+  \[
+    G_{k,\mathcal F;ij}
+    =
+    S_k((\Theta F_i)F_j)
+  \]
+  are positive semidefinite, or obey a defect inequality whose defect tends
+  to zero, and their entries converge to the limiting Gram matrix.  If one
+  uses quantitative entrywise error estimates for increasing families, the
+  estimates must be compatible with the family size in the sense explained
+  below \eqref{eq:rg-finite-os-positivity-bound}.
+  \item Positive-time semigroup regularity on the OS quotient.  This means
+  that the positive-time translations defined from the limiting Schwinger
+  hierarchy obey the semigroup law and strong continuity conditions
+  \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}.
+  In an RG proof this is an estimate on translated positive-time test
+  windows, additional to the finite Gram-form positivity estimates.
+  \item Corrected OS-II analytic regularity.  A sufficient form is the
+  uniform linear-growth estimate
+  \[
+    |S_{n,k}^{\rm red}(F)|
+    \le
+    A\,B^n\,(n!)^\gamma\,
+    q_{n,N_0+C_{\rm OS}n}(F)
+  \]
+  for all sufficiently large \(k\), with constants
+  \(A,B,\gamma,N_0,C_{\rm OS}\) independent of \(n\) and \(k\).  The same
+  bound then passes to the limiting reduced hierarchy by distributional
+  convergence.  Equivalently, one may provide a
+  different model-specific analytic theorem that yields the Lorentzian
+  boundary-value package of
+  Definition~\ref{def:os-lorentzian-boundary-value-package}.  Ordinary
+  temperedness at each fixed \(n\) supplies fixed-\(n\) continuity; the
+  OS-II item controls the many-variable analytic continuation uniformly in
+  the insertion number.
+  \item The ordered-insertion adjoint identity required in
+  Theorem~\ref{thm:os-reconstruction}; for a single real scalar field this is
+  the compatibility of Hermiticity with the positive-time multiplication
+  convention, while for a labelled field family it is an identity of the
+  declared label reflection.
+\end{enumerate}
+Clustering estimates are added to the datum when the target claim includes
+uniqueness of the vacuum.
+\end{definition}
+
+Given Definition~\ref{def:short-range-scalar-os-assembly-datum}, the passage
+to a Wightman theory is the reconstruction stage following the RG estimates.
+The distributional estimates give tempered limiting Schwinger functions.
+The covariance, symmetry, Hermiticity, and normalization identities pass to
+the limit because they are continuous linear identities on the test-function
+spaces.  The reflection-positive Gram forms pass to the limit by the closed
+cone argument used in
+Proposition~\ref{prop:rg-reconstruction-estimates-give-limits}, provided the
+directed finite-family estimates have actually been supplied.  The
+positive-time semigroup regularity and the corrected OS-II growth package are
+then exactly the remaining hypotheses of
+Theorem~\ref{thm:os-reconstruction}.  Applying that theorem constructs the
+Hilbert space, vacuum vector, translation representation, and operator-valued
+tempered distribution whose Euclidean boundary values reproduce the
+noncoincident limiting Schwinger functions.
+
+This assembly datum contains more information than the statement that
+\((g_k,K_k)\) approaches a fixed point.  Finite-regulator reflection
+positivity plus convergence of a few correlators supplies only the finite
+windows under control.  OS reconstruction asks for the whole directed
+positive-time Gram family, the positive-time translation semigroup, and the
+OS-II analytic growth estimates.  These are the
+model-specific burdens that remain for the ordinary short-range scalar
+Wilson--Fisher target.
+
 \begin{remark}[Current theorem status for the ordinary scalar target]
 \label{rem:ordinary-scalar-target-status}
 For massive superrenormalizable scalar theories, constructive methods can
@@ -2513,8 +2621,10 @@ short-range block-spin RG, establish
 \eqref{eq:short-range-scalar-reconstruction-bound} for local fields and
 their source extensions, prove reflection-compatible blocking as in
 Lemma~\ref{lem:reflection-positive-block-spin-pullback} or an equivalent
-positivity-preserving construction, and verify OS/Wightman reconstruction
-hypotheses for the resulting distributions.  This is stronger than identifying a
+positivity-preserving construction, and then supply the full
+OS assembly datum of
+Definition~\ref{def:short-range-scalar-os-assembly-datum}.  This is stronger
+than identifying a
 candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}
