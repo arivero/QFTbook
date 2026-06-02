@@ -173,6 +173,11 @@ data.
   constants in the projective shell-separated coordinate criterion; these are
   the constants that enter the dyadic-net base and edge bounds after the
   \(E_r'\)-valued chaos kernels have been estimated in projective norm.
+- `rho_tau`, `rho_tau^*`, `widehat A_{tau,i}`,
+  `widehat S_tau^{sh}`: nonlinear \(\Pi\)-coordinate shell gain, retained
+  scale-summed cutoff-Cauchy rate, finite-chaos weighted shell constants, and
+  resulting scale-summed cutoff constant in the shell-separated nonlinear
+  \(XY\)/\(X^2Y\) corollary.
 - `I`, `U_{n,i}`, `V_{n,i}`, `A_ctrl`: finite coordinate index set,
   uniform coordinate fields, cutoff-increment coordinate fields, and the
   deterministic constant controlling model seminorms and distances by
@@ -637,16 +642,19 @@ data.
   \(d_{\Pi,m}\), gives the same-scale parameter-edge bound
   \(O(2^{-(4\kappa-\zeta_{XY})m}d_{\Pi,m}(u,v)^\theta)\) after model
   normalization.  A cutoff-shell version shows that, when one heat or
-	  covariance edge is forced into the dyadic ultraviolet shell \(n\), the
-	  smallest proper-subgraph deficit gives the scalar Cauchy gain
-	  \(2^{-\rho(n-m)_+}\) for every \(0<\rho<1/2\).  The scale-summed
-	  shell-separated cutoff bridge then turns this scalar gain into
-	  \(2^{-\rho_*n}\) for every
-	  \(\rho_*<\min\{\rho,\sigma-D/p\}\), provided the physical-scale slack
-	  beats entropy.  The dossier records these as scalar tested base, edge,
-	  scale-separated shell-gain, and scale-summed shell-bridge estimates; the
-	  full \(E_r'\)-projective cutoff-Cauchy estimate remains a separate
-	  projective-kernel proof obligation.
+  covariance edge is forced into the dyadic ultraviolet shell \(n\), the
+  smallest proper-subgraph deficit gives the scalar Cauchy gain
+  \(2^{-\rho(n-m)_+}\) for every \(0<\rho<1/2\).  The scale-summed
+  shell-separated cutoff bridge then turns this scalar gain into
+  \(2^{-\rho_*n}\) for every
+  \(\rho_*<\min\{\rho,\sigma-D/p\}\), provided the physical-scale slack
+  beats entropy.  The dossier records these as scalar tested base, edge,
+  scale-separated shell-gain, and scale-summed shell-bridge estimates.  The
+  abstract \(E_r'\)-projective shell bridge and its nonlinear
+  \(\Pi\)-coordinate specialization are now supplied separately; the
+  remaining obligation is the regulator-specific projective kernel estimate
+  that promotes the scalar \(XY\) shell gain, and the corresponding \(X^2Y\)
+  estimates, to those abstract hypotheses.
 - Proves a deterministic scale bound for the locally subtracted
   \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
   \(KG^2\) packets and dyadic double-increment bounds for the order-four
@@ -694,6 +702,16 @@ data.
   \(E_r'\)-kernel estimates to model-coordinate Cauchy bounds; the
   regulator-specific proof still has to supply those projective estimates for
   \(XY\), \(X^2Y\), and the remaining negative-sector coordinates.
+- Specializes the projective shell-separated coordinate criterion to the
+  nonlinear \(\Pi\)-coordinates \(XY\) and \(X^2Y\): shell-separated
+  projective cutoff-increment bounds with scale gain
+  \(2^{-\rho_\tau(n-m)_+}\) imply the scale-summed \(E_r'\)-dual-norm
+  cutoff-Cauchy estimate with retained rate
+  \(2^{-\rho_\tau^*n}\) for every
+  \(0<\rho_\tau^*<\min\{\rho_\tau,\sigma_\tau-5/p\}\).  The constants are
+  displayed in terms of \(H_{\rho_\tau^*,\rho_\tau,\sigma_\tau-5/p}\), the
+  \(\Pi\)-net entropy constants, and
+  \(\widehat A_{\tau,i}=\sum_q C_{q,m_0}\widehat B_{\tau,q,i}\).
 - Proves a coordinate-to-model convergence criterion: if finitely many
   compact coordinate suprema dominate the finite-sector model seminorm and
   model distance, and if each coordinate satisfies the dyadic-net moment and
@@ -1151,6 +1169,20 @@ data maps.
   \(p\)-th-moment entropy decay, and the final \(H_{\rho_*,\rho,a}\)-bound.
   This is an abstract bridge; concrete \(E_r'\)-projective cutoff-increment
   estimates for the nonlinear model kernels remain open.
+- 2026-06-02 issue #608/#582 nonlinear projective-shell specialization pass:
+  added the nonlinear \(\Pi\)-coordinate corollary that specializes the
+  abstract projective shell bridge to \(XY\) and \(X^2Y\).  The statement
+  replaces the earlier uniform \(2^{-\rho n}\) cutoff input by
+  \(2^{-\rho_\tau(n-m)_+}\), keeps the finite-chaos constants visible through
+  \(\widehat A_{\tau,i}\), and proves the retained scale-summed rate
+  \(2^{-\rho_\tau^*n}\) under
+  \(0<\rho_\tau^*<\min\{\rho_\tau,\sigma_\tau-5/p\}\).  The calculation
+  companion verifies the sample \(XY\) entropy/slack arithmetic
+  \(D=5,d=6,p=80,\sigma_{XY}=3/20\), the admissible retained rate
+  \(\rho_*<7/80\), and the finite-chaos aggregation
+  \(\widehat A_0=13,\widehat A_1=11\).  This pass closes the abstract
+  nonlinear coordinate-to-shell bridge; it does not claim the
+  regulator-specific \(E_r'\)-projective kernel estimates.
 - 2026-05-29 seventh anti-wrapper pass: demoted the finite-dimensional
   Langevin invariant-density identity from proposition form to an integration
   by parts calculation, while strengthening the stationary Ornstein-Uhlenbeck

@@ -9681,6 +9681,154 @@ the negative-sector coordinate-control consequence are
 satisfied for the nonlinear \(\Pi\)-coordinates.
 \end{proof}
 
+\begin{corollary}[Shell-separated nonlinear \(\Pi\)-coordinate cutoff input]
+\label{cor:spde-nonlinear-pi-shell-separated-cutoff-input}
+Keep the notation and hypotheses of
+Proposition~\ref{prop:spde-nonlinear-pi-coordinate-input-from-kernels} for
+the uniform base and parameter-edge bounds
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-base} and
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-edge}.  Replace the
+cutoff assumptions
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-base} and
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-edge} by the
+shell-separated estimates
+\begin{equation}
+  \|F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u)\|_\pi
+  \leq
+  \widehat B_{\tau,q,0}
+  2^{-\sigma_\tau m}2^{-\rho_\tau(n-m)_+},
+  \label{eq:spde-nonlinear-pi-shell-projective-cutoff-base}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+  &\|
+    (F_{n+1,\tau,q,m}(v)-F_{n,\tau,q,m}(v))
+    -(F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u))
+  \|_\pi                                             \\
+  &\qquad\leq
+  \widehat B_{\tau,q,1}
+  2^{-\sigma_\tau m}2^{-\rho_\tau(n-m)_+}
+  d_{\Pi,m}(u,v)^\theta ,
+\end{aligned}
+  \label{eq:spde-nonlinear-pi-shell-projective-cutoff-edge}
+\end{equation}
+for constants \(\rho_\tau>0\).  Let \(p=2m_0\) be the chosen even moment
+order, and assume
+\[
+  p\sigma_\tau>5,\qquad p\theta>6 .
+\]
+For any
+\begin{equation}
+  0<\rho_\tau^*
+  <
+  \min\left\{
+    \rho_\tau,\,
+    \sigma_\tau-\frac5p
+  \right\},
+  \label{eq:spde-nonlinear-pi-shell-retained-rate}
+\end{equation}
+there is a finite constant \(\widehat S_\tau^{\rm sh}\) such that the
+cutoff-difference field
+\[
+  V_{n,\tau,m}(u)
+  =
+  \left\|
+    \sum_{q\in\mathcal Q_\tau}
+    I_q(F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u))
+  \right\|_{E_r'}
+\]
+satisfies the scale-summed estimate
+\begin{equation}
+  \left\|
+    \sup_{m\geq0}\sup_{u\in\mathcal X_{\Pi,m}} V_{n,\tau,m}(u)
+  \right\|_{L^p(\Omega)}
+  \leq
+  \widehat S_\tau^{\rm sh}\,2^{-\rho_\tau^*n}.
+  \label{eq:spde-nonlinear-pi-shell-scale-summed-cutoff}
+\end{equation}
+One may take
+\begin{equation}
+\begin{aligned}
+  \widehat S_\tau^{\rm sh}
+  &=
+  H_{\rho_\tau^*,\rho_\tau,\sigma_\tau-5/p}
+  \left(
+    C_{\Pi,0}^{1/p}\widehat A_{\tau,0}
+    +
+    C_{\Pi,1}^{1/p}\widehat A_{\tau,1}
+    (1-2^{-(p\theta-6)/p})^{-1}
+  \right),\\
+  \widehat A_{\tau,i}
+  &=
+  \sum_{q\in\mathcal Q_\tau}
+  C_{q,m_0}\widehat B_{\tau,q,i},
+  \qquad i=0,1 .
+\end{aligned}
+  \label{eq:spde-nonlinear-pi-shell-scale-summed-constant}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+For the cutoff-difference chaos kernels, apply
+Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} exactly as in
+the proof of
+Proposition~\ref{prop:spde-nonlinear-pi-coordinate-input-from-kernels}.
+The base estimate gives
+\[
+  \|V_{n,\tau,m}(u)\|_{L^p}
+  \leq
+  \widehat A_{\tau,0}
+  2^{-\sigma_\tau m}2^{-\rho_\tau(n-m)_+}.
+\]
+For an edge \((u,v)\in\mathcal E_{\Pi,m,\ell}\), use the norm inequality
+\[
+  |V_{n,\tau,m}(v)-V_{n,\tau,m}(u)|
+  \leq
+  \left\|
+    \Delta_nY_{\tau,m}(v)-\Delta_nY_{\tau,m}(u)
+  \right\|_{E_r'}
+\]
+where
+\[
+  \Delta_nY_{\tau,m}(u)
+  =
+  \sum_{q\in\mathcal Q_\tau}
+  I_q(F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u)).
+\]
+The shell-separated edge hypothesis
+\eqref{eq:spde-nonlinear-pi-shell-projective-cutoff-edge} and
+the finite-chaos estimate give
+\[
+  \|V_{n,\tau,m}(v)-V_{n,\tau,m}(u)\|_{L^p}
+  \leq
+  \widehat A_{\tau,1}
+  2^{-\sigma_\tau m}2^{-\rho_\tau(n-m)_+}
+  d_{\Pi,m}(u,v)^\theta .
+\]
+On the dyadic edge set,
+\[
+  d_{\Pi,m}(u,v)\leq C2^{-\ell}.
+\]
+Absorb \(C^\theta\) into \(\widehat A_{\tau,1}\).  Since the edge entropy is
+six, the edge moment has excess exponent
+\[
+  \varepsilon_\tau=p\theta-6>0 .
+\]
+The entropy in the physical scale \(m\) is \(D=5\), and the effective
+scale slack is
+\[
+  a_\tau=\sigma_\tau-\frac5p>0 .
+\]
+Corollary~\ref{cor:spde-scale-summed-shell-separated-cutoff-bridge}, or
+equivalently the projective version
+Corollary~\ref{cor:spde-projective-shell-separated-coordinate-criterion}
+with \(D=5\), \(d=6\), \(B_\pi=\widehat A_{\tau,0}\), and
+\(B_\pi^{\rm ed}=\widehat A_{\tau,1}\), gives
+\eqref{eq:spde-nonlinear-pi-shell-scale-summed-cutoff} with the constant
+\eqref{eq:spde-nonlinear-pi-shell-scale-summed-constant}.
+\end{proof}
+
 \begin{proposition}[Scale bound for the locally subtracted first-chaos kernel]
 \label{prop:spde-x2y-first-chaos-logarithmic-scale-bound}
 Let \(Q=5\), \(\mathfrak s=(2,1,1,1)\), and

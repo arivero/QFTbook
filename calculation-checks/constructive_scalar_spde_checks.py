@@ -1337,6 +1337,52 @@ def check_projective_shell_separated_coordinate_criterion_arithmetic():
         raise AssertionError("projective shell exact sum exceeds H-bound estimate")
 
 
+def check_nonlinear_pi_shell_cutoff_input_arithmetic():
+    # Nonlinear Pi shell-separated cutoff input: this is the specialized
+    # arithmetic used for XY and X^2Y after the E_r'-valued projective
+    # kernel estimates have supplied a shell factor 2^(-rho (n-m)_+).
+    qdim = 5
+    pi_edge_entropy = qdim + 1
+    kappa = Fraction(1, 20)
+    zeta_xy = kappa
+    sigma_xy = 4 * kappa - zeta_xy
+    theta = Fraction(1, 2)
+    p = 80
+    rho = Fraction(1, 4)
+    rho_star = Fraction(1, 16)
+
+    assert_equal(sigma_xy, Fraction(3, 20), "nonlinear Pi shell XY scale slack")
+    scale_excess = p * sigma_xy - qdim
+    edge_excess = p * theta - pi_edge_entropy
+    retained_scale_slack = sigma_xy - Fraction(qdim, p)
+    assert_equal(scale_excess, 7, "nonlinear Pi shell scale-excess numerator")
+    assert_equal(edge_excess, 34, "nonlinear Pi shell edge-excess numerator")
+    assert_equal(retained_scale_slack, Fraction(7, 80), "nonlinear Pi shell retained scale slack")
+    if not rho_star < min(rho, retained_scale_slack):
+        raise AssertionError("nonlinear Pi shell retained cutoff rate is not admissible")
+
+    # Same finite-chaos aggregation as in the displayed constant:
+    # Ahat_{tau,i}=sum_q C_{q,m0} Bhat_{tau,q,i}.  The sample uses XY's
+    # two chaos arities q=4,2 with toy positive chaos constants.
+    chaos_constants = {4: 5, 2: 3}
+    base_projective_constants = {4: 2, 2: 1}
+    edge_projective_constants = {4: 1, 2: 2}
+    a_hat_0 = sum(chaos_constants[q] * base_projective_constants[q] for q in [4, 2])
+    a_hat_1 = sum(chaos_constants[q] * edge_projective_constants[q] for q in [4, 2])
+    assert_equal(a_hat_0, 13, "nonlinear Pi shell base finite-chaos constant")
+    assert_equal(a_hat_1, 11, "nonlinear Pi shell edge finite-chaos constant")
+
+    # The dyadic-net edge factor is 2^{-theta ell} in L^p.  Raising to the
+    # p-th moment cancels the 2^{6 ell} edge entropy and leaves the positive
+    # excess 34.  Use ell=3 to keep this as exact integer exponent arithmetic.
+    ell = 3
+    moment_edge_decay = p * theta * ell
+    entropy_cost = pi_edge_entropy * ell
+    assert_equal(moment_edge_decay, 120, "nonlinear Pi shell edge moment decay")
+    assert_equal(entropy_cost, 18, "nonlinear Pi shell edge entropy cost")
+    assert_equal(moment_edge_decay - entropy_cost, edge_excess * ell, "nonlinear Pi shell edge excess")
+
+
 def check_negative_sector_scale_summed_model_convergence_arithmetic():
     # The strict negative Phi^4_3 sector is controlled by six Pi-coordinates and
     # one Gamma coordinate.  In the sample below every coordinate has the same
@@ -1973,6 +2019,7 @@ def main():
     check_scale_summed_coordinate_upgrade_arithmetic()
     check_scale_summed_shell_separated_cutoff_arithmetic()
     check_projective_shell_separated_coordinate_criterion_arithmetic()
+    check_nonlinear_pi_shell_cutoff_input_arithmetic()
     check_negative_sector_scale_summed_model_convergence_arithmetic()
     check_negative_sector_physical_parameter_entropy_arithmetic()
     check_gaussian_negative_pi_coordinate_input_arithmetic()
@@ -1992,7 +2039,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
