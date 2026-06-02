@@ -1394,6 +1394,57 @@ domain, or spectrum theorem.  Its role is to check the field-net versus
 observable-net distinction that the Wightman-to-net comparison datum must
 retain in every genuine model.
 
+\paragraph{Affiliation is not generation.}
+The converse comparison is equally important.  Suppose a represented
+observable net \(\mathcal R(\mathcal O)\) is already given, and suppose one
+has a family of self-adjoint field coordinates \(T_i(f)\) affiliated with
+\(\mathcal R(\mathcal O)\) whenever \(\operatorname{supp}f\subset\mathcal O\).
+Affiliation means that all spectral projections of these coordinates are
+bounded local observables.  It gives a canonical inclusion
+\begin{equation}
+  \mathcal R_{\rm coord}(\mathcal O)
+  :=
+  \{E_{T_i(f)}(\Delta)\mid
+    \operatorname{supp}f\subset\mathcal O,
+    \Delta\subset\mathbb R\text{ Borel}\}''
+  \subset
+  \mathcal R(\mathcal O),
+  \label{eq:affiliated-coordinate-generated-subnet}
+\end{equation}
+not an equality.  Equality is a separate generation, or coordinatization
+completeness, hypothesis:
+\[
+  \mathcal R_{\rm coord}(\mathcal O)=\mathcal R(\mathcal O)
+  \qquad\text{for every region }\mathcal O
+\]
+in the region class under consideration.  This hypothesis may hold for a
+chosen generating field system, may fail for a distinguished but incomplete
+field such as a current or stress tensor, and may be inappropriate when the
+physical observable net is a fixed-point or gauge-invariant subnet of a
+larger field net.  Thus the statement that local fields are affiliated with
+local algebras is weaker than the statement that their bounded functional
+calculus generates all local observables.
+
+The finite diagonal model makes the distinction visible without domains.  In
+the algebra \(D_3\subset M_3(\mathbb C)\) of diagonal matrices, the
+self-adjoint coordinate
+\[
+  T=\operatorname{diag}(0,0,1)
+\]
+is affiliated with \(D_3\), because its spectral projections
+\(\operatorname{diag}(1,1,0)\) and \(\operatorname{diag}(0,0,1)\) lie in
+\(D_3\).  They generate only the two-dimensional subalgebra
+\(\mathbb C\operatorname{diag}(1,1,0)\oplus
+\mathbb C\operatorname{diag}(0,0,1)\), not the full diagonal algebra.  A
+second coordinate \(S=\operatorname{diag}(0,1,0)\) refines the spectral
+partition and, together with \(T\), generates all three minimal diagonal
+projections.  The finite check
+\path{calculation-checks/wightman_net_bridge_checks.py} verifies exactly this
+coarse-spectral-generation obstruction.  In QFT the analogous issue is not
+finite-dimensional degeneracy but whether the chosen local fields separate
+the local bounded observable content with the topology relevant to the
+represented net.
+
 \paragraph{Fixed points and additivity.}
 Suppose the comparison datum has produced a represented field net
 \(\mathcal F(\mathcal O)\), and suppose a compact internal group \(G\) is

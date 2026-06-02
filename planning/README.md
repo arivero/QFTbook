@@ -58,6 +58,36 @@ build-audit logs are local process records under the ignored
 `planning/build_audits/` directory and are not part of the public repository
 distribution.
 
+## Full Volume Program
+
+The public monograph program currently has twenty numbered volumes.  Volumes
+I-XII are active compiled volumes.  Volumes XIII-XX are roadmap volumes whose
+subject scope is part of the public architecture but whose source assemblies
+are not yet active compiled volumes.
+
+| Volume | Status | Title |
+| --- | --- | --- |
+| I | Compiled | Foundations of Local Quantum Field Theory |
+| II | Compiled | Particles, Scattering, and Analyticity |
+| III | Compiled | Renormalization, Effective Field Theory, and Critical Phenomena |
+| IV | Compiled | Gauge Theory, Infrared Structure, and Anomalies |
+| V | Compiled | Conformal Field Theory |
+| VI | Compiled | Integrable Quantum Field Theory |
+| VII | Compiled | Supersymmetric Quantum Field Theory |
+| VIII | Compiled | Topological and Cohomological Quantum Field Theory |
+| IX | Compiled | Global Structure, Phases, and Extended Operators |
+| X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics |
+| XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory |
+| XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields |
+| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions |
+| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure |
+| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables |
+| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors |
+| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT |
+| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT |
+| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory |
+| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT |
+
 ## Compiled Volumes and On-Disk Directories
 
 The directory names under `monograph/tex/volumes/` are historical storage
