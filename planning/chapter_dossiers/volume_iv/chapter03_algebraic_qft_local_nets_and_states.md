@@ -102,11 +102,18 @@ functorial QFT.
 - Adds Lemma `lem:analytic-vector-strong-locality`, proving that joint entire
   analytic-vector estimates plus domain commutativity imply strong
   commutation of self-adjoint closures.
+- Adds Lemma `lem:strong-limit-regulated-locality`, proving the bounded
+  finite-regulator-to-continuum route: uniformly bounded commuting spectral
+  projections whose regulated approximants converge strongly have commuting
+  strong limits.  The lemma isolates why a constructive local-net proof must
+  control spectral projections, not merely vacuum correlators or polynomial
+  domain commutators.
 - Expands the massive \(P(\phi)_2\) checkpoint into a model-specific AQFT
   verification route: OS reconstruction gives fields and the Hilbert space;
-  essential self-adjointness and analytic-vector bounds give bounded local
-  algebras; strong commutation gives locality; finite internal fixed points
-  give observables; nuclearity, split inclusions, Haag duality, and DHR
+  essential self-adjointness and either analytic-vector bounds or
+  strong-limit spectral-window convergence give bounded local algebras;
+  strong commutation gives locality; finite internal fixed points give
+  observables; nuclearity, split inclusions, Haag duality, and DHR
   reconstruction require separate estimates or category constructions.
 - Adds the Schwinger-model gauge-theory checkpoint: the gauge-invariant
   electric-field sector is identified, using the exact local bosonization
@@ -230,6 +237,11 @@ functorial QFT.
   proved.  The finite companion check uses a degenerate diagonal coordinate
   to show affiliation without generation, and a second coordinate to recover
   the full diagonal algebra.
+- 2026-06-02 regulated-locality limit pass: added the strong-limit route from
+  finite-regulator spectral-projection locality to bounded continuum locality
+  in the constructive \(P(\phi)_2\) checkpoint.  This is a functional-analytic
+  bridge, not a model estimate: constructive input must still prove strong
+  spectral-window convergence or use the separate analytic-vector route.
 - 2026-05-30 Reeh--Schlieder tube-sign pass: corrected the spectral tube in
   the proof and figure from a misleading \(M+\ii V_+\) convention to the
   mostly-plus Wightman convention \(M-\ii V_+\), and inserted the local
