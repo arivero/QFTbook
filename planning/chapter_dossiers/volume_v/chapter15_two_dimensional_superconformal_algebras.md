@@ -83,8 +83,10 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   anticommutator, derives the elliptic spectral-flow law and index `c/6`,
   states the Jacobi modular law as a full spin-CFT sewing theorem boundary,
   displays the determinant-line mechanism behind the modular quadratic factor
-  from the `J J` OPE coefficient, and records the finite LG `chi_y` charge
-  polynomial as a protected shadow rather than an RG-flow theorem.
+  from the `J J` OPE coefficient, derives the Fourier-coefficient
+  spectral-flow orbit relation and fixed-discriminant invariant, and records
+  the finite LG `chi_y` charge polynomial as a protected shadow rather than
+  an RG-flow theorem.
 - Defines quasihomogeneous LG chiral data only as a protected algebraic test
   for supersymmetric dynamics, not as an RG-flow construction.
 - Computes the `A`-series Jacobi ring, central charge, and chiral weights.
@@ -144,7 +146,11 @@ superconformal-algebra infrastructure that such constructions must satisfy.
     `Y^pm` have `h=c/6+1/2`, `q=pm(c/3-1)`.
 13. The elliptic genus spectral-flow law has Jacobi index `c/6`; the elliptic
     shift multipliers and the modular quadratic factor obey the Jacobi-group
-    cocycle before any spin-modular-functor theorem is invoked.
+    cocycle before any spin-modular-functor theorem is invoked.  At the
+    Fourier-coefficient level, spectral flow identifies
+    `c(n,r)` with `c(n+lambda r+m lambda^2,r+2m lambda)` and preserves the
+    discriminant `4mn-r^2`; the weak condition is the Ramond-spectrum lower
+    bound on the normalized exponent.
 14. The `A`-series LG `chi_y` Ramond charges are
     `(2 ell-k)/(2(k+2))`, sum to zero, and give Witten index `k+1`.
 15. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
@@ -182,8 +188,9 @@ map without turning into a supersymmetric dynamics chapter.
   spectral-flow automorphism, NS-to-R ground-state shift, extended `N=2`
   spectral-flow vertex weights, charges, Heisenberg OPE exponents,
   `X^pm/Y^pm` descendant charges, protected LG central-charge arithmetic,
-  elliptic-genus spectral-flow Jacobi multipliers, LG `chi_y` charge
-  polynomials and Witten-index counts, compact-coset chiral-ring
+  elliptic-genus spectral-flow Jacobi multipliers and coefficient
+  discriminants, LG `chi_y` charge polynomials and Witten-index counts,
+  compact-coset chiral-ring
   multiplication, associativity, nilpotence, and Ramond charge matching, and
   the compact/noncompact supersymmetric rank-one coset central charges,
   chiral-primary identities, field-identification identities, spectral-flow
@@ -226,6 +233,11 @@ map without turning into a supersymmetric dynamics chapter.
   of the \(U(1)_R\) anomaly determinant line over elliptic curves with flat
   \(R\)-background.  The calculation check now verifies the modular quadratic
   cocycle in addition to the elliptic spectral-flow cocycle.
+- 2026-06-02 elliptic-genus coefficient-orbit pass: added the coefficient
+  meaning of weak Jacobi covariance under the compact/discrete Ramond-trace
+  hypotheses.  The chapter now derives the spectral-flow orbit relation on
+  Fourier coefficients, isolates the discriminant \(4m_{\rm ell}n-r^2\), and
+  keeps the full spin modular-functor covariance as the theorem boundary.
 - 2026-05-27 compact chiral-ring pass: promoted the compact
   supersymmetric `SU(2)_k/U(1)` interface from matching chiral-primary
   weights to deriving the protected `A`-series ring

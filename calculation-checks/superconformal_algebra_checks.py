@@ -339,6 +339,19 @@ def check_elliptic_genus_spectral_flow_law():
                     f"elliptic y cocycle c={c}, lambda1={lam_1}, lambda2={lam_2}",
                 )
 
+        # The elliptic transformation identifies Fourier coefficients along
+        # spectral-flow orbits.  The discriminant 4mn-r^2 is the invariant.
+        for n in (Fraction(0), Fraction(1, 3), Fraction(5, 2)):
+            for r in (Fraction(-3, 2), Fraction(-1, 4), Fraction(2)):
+                for lam in range(-2, 3):
+                    flowed_n = n + lam * r + index * lam * lam
+                    flowed_r = r + 2 * index * lam
+                    assert_equal(
+                        4 * index * flowed_n - flowed_r * flowed_r,
+                        4 * index * n - r * r,
+                        f"elliptic coefficient discriminant c={c}, n={n}, r={r}, lambda={lam}",
+                    )
+
 
 def matmul(g1, g2):
     a1, b1, c1, d1 = g1
