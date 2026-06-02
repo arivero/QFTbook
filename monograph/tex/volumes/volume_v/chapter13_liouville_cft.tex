@@ -1473,6 +1473,40 @@ are equivalently
   2\cosh(\pi s/b)\frac{U_s(\alpha)}{G_b(\alpha)}.
   \label{eq:fzzt-normalized-dual-difference}
 \end{align}
+These identities also explain the analytic uniqueness class behind the
+boundary parameter.  Write
+\[
+  W_s(\alpha):=\frac{U_s(\alpha)}{G_b(\alpha)} .
+\]
+If \(W_s\) is holomorphic in a strip and obeys the two constant-coefficient
+relations
+\[
+  W_s(\alpha+\delta/2)+W_s(\alpha-\delta/2)
+  =
+  2\cosh(\pi s\delta)\,W_s(\alpha),
+  \qquad \delta=b,b^{-1},
+\]
+then each pure exponential \(W_s(\alpha)=\ee^{\lambda(2\alpha-Q)}\) must
+satisfy
+\[
+  2\cosh(\lambda\delta)=2\cosh(\pi s\delta),
+  \qquad \delta=b,b^{-1}.
+\]
+For irrational \(b^2\), and with the moderate-growth condition excluding
+extra functions periodic under both shifts, the simultaneous characteristic
+equations force \(\lambda=\pi s\) or \(\lambda=-\pi s\).  Thus the local
+solution space in this analytic class is spanned by
+\(\ee^{\pi s(2\alpha-Q)}\) and \(\ee^{-\pi s(2\alpha-Q)}\).  The Liouville
+reflection relation \(\alpha\leftrightarrow Q-\alpha\), in the one-point
+normalization used here, selects the even combination
+\[
+  W_s(\alpha)\propto
+  \cosh\!\left((2\alpha-Q)\pi s\right).
+\]
+For rational \(b^2\), or without a growth condition, finite-difference
+equations alone permit additional periodic factors.  The boundary-bootstrap
+theorem boundary is precisely where those analytic restrictions, resonance
+prescriptions, and normalization conditions are supplied.
 The full boundary-bootstrap theorem supplies the remaining analytic and
 operator-theoretic inputs: the disk two-point function with one degenerate
 bulk insertion, the connection matrix relating the bulk OPE channel to the

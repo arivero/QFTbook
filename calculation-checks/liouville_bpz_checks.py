@@ -543,6 +543,39 @@ require_two_laurent_equal(
     multiply_two_laurent(two_cosh_delta, hyperbolic_h),
 )
 
+# The finite-difference equations have two exponential branches before the
+# Liouville reflection relation selects the even combination.  The same
+# Laurent model checks that X and X^{-1} are both eigenfunctions with
+# eigenvalue Y+Y^{-1}, while the odd combination is reflection-odd.
+exp_plus = {(1, 0): Fraction(1)}
+exp_minus = {(-1, 0): Fraction(1)}
+require_two_laurent_equal(
+    "FZZT positive exponential branch",
+    add_two_laurent({(1, 1): Fraction(1)}, {(1, -1): Fraction(1)}),
+    multiply_two_laurent(two_cosh_delta, exp_plus),
+)
+require_two_laurent_equal(
+    "FZZT negative exponential branch",
+    add_two_laurent({(-1, -1): Fraction(1)}, {(-1, 1): Fraction(1)}),
+    multiply_two_laurent(two_cosh_delta, exp_minus),
+)
+
+reflection_h = {
+    (-x_power, y_power): coeff
+    for (x_power, y_power), coeff in hyperbolic_h.items()
+}
+require_two_laurent_equal("FZZT reflection-even branch", reflection_h, hyperbolic_h)
+odd_h = {(1, 0): half, (-1, 0): -half}
+reflection_odd = {
+    (-x_power, y_power): coeff
+    for (x_power, y_power), coeff in odd_h.items()
+}
+require_two_laurent_equal(
+    "FZZT reflection-odd branch",
+    reflection_odd,
+    {monomial: -coefficient for monomial, coefficient in odd_h.items()},
+)
+
 
 numerator_shift = (
     one_exp.scale(2)

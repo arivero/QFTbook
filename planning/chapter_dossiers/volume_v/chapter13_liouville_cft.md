@@ -146,6 +146,13 @@ boundaries rather than importing the appendix exposition.
   `cosh((2 alpha-Q) pi s)`, identifying the `b` and `b^{-1}` degenerate
   shifts with eigenvalues `2 cosh(pi b s)` and `2 cosh(pi s/b)` before the
   gamma-function connection coefficients enter.
+- Explains the analytic uniqueness class behind the normalized FZZT
+  wavefunction: the two constant-coefficient finite-difference equations have
+  exponential branches `exp(+/- pi s(2 alpha-Q))` after the simultaneous
+  characteristic equations and moderate-growth/no-periodic-factor condition,
+  while the Liouville reflection relation selects the even hyperbolic
+  combination.  Rational `b^2`, resonances, and growth hypotheses remain part
+  of the boundary-bootstrap theorem boundary.
 - Defines ZZ boundary states as finite differences of imaginary-parameter
   FZZT states and proves the hyperbolic wavefunction identity.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and for the
@@ -204,7 +211,8 @@ boundaries rather than importing the appendix exposition.
   ratios numerically against the displayed gamma-function representative.
 - The same script checks the normalized FZZT boundary finite-difference
   identity exactly as a Laurent-polynomial identity in the boundary
-  hyperbolic variables.
+  hyperbolic variables, including the two exponential branches and the
+  reflection-even selection.
 - The same script checks the modular-lambda expansion through
   `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
   raw elliptic \(q\)-coefficients `g_1` and `g_2`.
@@ -323,6 +331,13 @@ boundaries rather than importing the appendix exposition.
   threshold `Q_gamma=2/gamma+gamma/2` and translates it to
   `alpha_i<Q/2`; `liouville_bpz_checks.py` records the normalization
   arithmetic.
+- 2026-06-02 issue #697 FZZT uniqueness-class pass: expanded the normalized
+  FZZT boundary finite-difference mechanism from the final hyperbolic identity
+  to the local solution-space statement.  The text now solves the simultaneous
+  characteristic equations for the two exponential branches, records the
+  moderate-growth/no-periodic-factor hypothesis, and explains that reflection
+  selects the even hyperbolic branch; the companion check verifies the branch
+  and reflection arithmetic.
 
 ## Anti-Wrapper Audit
 
@@ -358,3 +373,7 @@ boundaries rather than importing the appendix exposition.
   hyperbolic eigenfunction identities for the normalized one-point function
   and stated which further disk-degenerate connection data remain part of the
   theorem boundary.
+- 2026-06-02 FZZT uniqueness-class anti-black-box pass: tightened the previous
+  paragraph by identifying the two exponential branches and the reflection
+  selection, avoiding any implication that the finite-difference equations
+  alone prove the full FZZT boundary bootstrap.
