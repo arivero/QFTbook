@@ -1596,7 +1596,8 @@ Current checks:
   primitive-monomial selection forced by exact Coulomb matching, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
-  plus the hypersurface GLSM adjunction sign,
+  the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
+  adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
   singular-signal ledger.  It also checks the Fermat Wilsonian

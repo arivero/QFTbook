@@ -143,7 +143,8 @@ and
   gauge field.
 - Develops the cigar/Liouville mirror chain as a QFT comparison problem:
   dual variables `Y,Y_P`, the single exponential from the ordinary charged
-  chiral multiplet, absence of a logarithmic-chiral vortex exponential,
+  chiral multiplet, the finite topological obstruction to a smooth
+  finite-action logarithmic-chiral vortex exponential,
   the `Y+Y_P=0` vector constraint, the resulting `N=2` Liouville
   superpotential, and the theorem-status boundary for full equality with the
   cigar coset QFT.
@@ -219,6 +220,9 @@ and
   - the `P^{N-1}` mirror critical-point simplicity ledger;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
+  - the logarithmic-chiral vortex obstruction: a unit-norm charged section
+    can exist smoothly only in zero flux, whereas an ordinary charged scalar
+    can absorb flux through zeros.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.

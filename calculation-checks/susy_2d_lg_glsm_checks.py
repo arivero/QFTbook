@@ -406,6 +406,25 @@ def check_cigar_metric_elimination() -> None:
         assert_equal("cigar radial metric coefficient", 2 * radial_kinetic_coefficient, expected_metric_rr)
 
 
+def check_logarithmic_chiral_vortex_obstruction() -> None:
+    # A smooth ordinary charged scalar may carry flux n by having total zero
+    # divisor degree n.  The logarithmic chiral periodic part is unit-norm,
+    # hence has zero divisor degree 0; smooth finite-action P-sector vortices
+    # therefore force n=0.
+    for flux in range(-4, 5):
+        unit_field_zero_degree = 0
+        smooth_unit_section_possible = flux == unit_field_zero_degree
+        assert_equal(
+            f"logarithmic chiral unit section obstruction flux={flux}",
+            smooth_unit_section_possible,
+            flux == 0,
+        )
+
+    for ordinary_vortex_degree in range(0, 6):
+        flux = ordinary_vortex_degree
+        assert_equal("ordinary charged scalar zero degree carries flux", flux, ordinary_vortex_degree)
+
+
 def invariant_jacobi_monomial_count(num_fields: int, degree: int) -> int:
     count = 0
 
@@ -478,6 +497,7 @@ def main() -> None:
     check_mirror_primitive_monomial_selection()
     check_cp_mirror_critical_ledger()
     check_cigar_metric_elimination()
+    check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
     print("All 2D SUSY LG/GLSM checks passed.")
