@@ -1149,6 +1149,104 @@ a formal series.  Whenever the monograph uses the light-ray OPE below, the
 use is restricted to consequences that follow from such Lorentzian
 analyticity, growth, and transverse-distribution convergence hypotheses.
 
+\paragraph{Finite light-ray OPE charts.}
+For calculations and for comparison with detector data, one never manipulates
+the entire light-ray OPE at once.  One chooses a finite chart and states its
+remainder.  Work in a small angular patch with transverse coordinates
+\((y_1,y_2)\), relative coordinate \(\xi=y_1-y_2\), and center coordinate
+\(y=y_2\).  Let \(\mathfrak A_N\) be a finite set of retained light-ray
+primary and descendant labels \((\alpha,m)\).  A finite CFT light-ray OPE
+chart for the two-detector product in a state domain \(\mathcal D_N\)
+consists of:
+\begin{enumerate}
+  \item coefficient distributions \(C_{\alpha,m}\) in the relative variable
+  \(\xi\), including their specified extension across \(\xi=0\) whenever
+  contact terms are retained;
+  \item light-ray quadratic forms
+  \(\mathbb L_\alpha(\psi)\) on \(\mathcal D_N\), where \(\psi\) is a smooth
+  compactly supported center-coordinate test;
+  \item for each test
+  \(\Phi\in C_c^\infty(U\times U)\), the induced center tests
+  \begin{equation}
+    \psi_{\alpha,m,\Phi}(y)
+    =
+    \bigl\langle C_{\alpha,m}(\xi),
+    \partial_y^m\Phi(y+\xi,y)\bigr\rangle_{\xi};
+    \label{eq:cft-finite-light-ray-chart-center-test}
+  \end{equation}
+  \item a seminorm \(\|\cdot\|_{\mathcal T_N}\), a neighborhood condition on
+  the support of \(\Phi\), and a remainder functional
+  \(R_N(\Phi;\Psi)\) such that
+  \begin{equation}
+    \left|
+      R_N(\Phi;\Psi)
+    \right|
+    \leq
+    C_N(\Psi)\,\|\Phi\|_{\mathcal T_N}\,\epsilon^{\sigma_N},
+    \qquad \sigma_N>0,
+    \label{eq:cft-finite-light-ray-chart-remainder}
+  \end{equation}
+  for tests supported in \(|\xi|<\epsilon\).
+\end{enumerate}
+The finite chart represents the detector product by
+\begin{equation}
+  \bra{\Psi}\mathcal E\mathcal E(\Phi)\ket{\Psi}
+  =
+  \sum_{(\alpha,m)\in\mathfrak A_N}
+  \bra{\Psi}\mathbb L_\alpha(\psi_{\alpha,m,\Phi})\ket{\Psi}
+  +
+  R_N(\Phi;\Psi).
+  \label{eq:cft-finite-light-ray-chart-expansion}
+\end{equation}
+Here \(\mathcal E\mathcal E(\Phi)\) denotes the distributional pairing of the
+two-detector product with \(\Phi\), including the declared contact convention.
+
+This finite chart is the CFT analogue of the QCD finite renormalized
+light-ray mixing chart in
+Chapter~\ref{ch:volume-ii-19}, but the
+coordinates are fixed-point conformal data rather than scale-dependent
+renormalized QCD operators.  The coefficient extension across \(\xi=0\) is
+part of the chart.  A separated-angle chart that only tests
+\(\Phi\) supported away from the diagonal does not determine the coincident
+detector contact coordinate, hence does not determine the full moment
+\(\mathcal G_2(1,1;\Psi)=\langle\Psi|(P^0)^2|\Psi\rangle\).
+
+For a fixed state \(\Psi\), suppose the retained light-ray forms and
+coefficient maps obey
+\begin{equation}
+  \left|
+    \bra{\Psi}\mathbb L_\alpha(\psi)\ket{\Psi}
+  \right|
+  \leq
+  L_{\alpha}(\Psi)\,p_\alpha(\psi),
+  \qquad
+  p_\alpha(\psi_{\alpha,m,\Phi})
+  \leq
+  K_{\alpha,m}\,\|\Phi\|_{\mathcal T_N}.
+  \label{eq:cft-finite-light-ray-chart-continuity}
+\end{equation}
+Then \eqref{eq:cft-finite-light-ray-chart-expansion} gives the finite
+detector-functional bound
+\begin{equation}
+  \left|
+    \bra{\Psi}\mathcal E\mathcal E(\Phi)\ket{\Psi}
+  \right|
+  \leq
+  \left(
+    \sum_{(\alpha,m)\in\mathfrak A_N}
+    L_\alpha(\Psi)K_{\alpha,m}
+    +
+    C_N(\Psi)\epsilon^{\sigma_N}
+  \right)
+  \|\Phi\|_{\mathcal T_N}.
+  \label{eq:cft-finite-light-ray-chart-detector-bound}
+\end{equation}
+Thus the finite light-ray chart consists of coefficient distributions, their
+diagonal extensions, continuity estimates for the light-ray forms, and a
+remainder bound in the detector-test topology.  These data are what turn a
+truncated representation-theoretic expansion into a controlled approximation
+to the energy correlator.
+
 This formulation also explains the relation with the QCD small-angle EEC.
 In a CFT the expansion coefficients are fixed-point data of light-ray
 representations.  In asymptotically free QCD, the corresponding small-angle

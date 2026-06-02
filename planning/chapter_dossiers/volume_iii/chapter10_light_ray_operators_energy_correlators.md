@@ -83,6 +83,12 @@ The chapter establishes:
   descendants, Lorentzian contour control, Regge/growth bounds, and the
   type of remainder estimate needed to turn the formal light-ray series into
   a convergent operator-distribution statement.
+- finite CFT light-ray OPE charts: retained coefficient distributions,
+  diagonal/contact extensions, induced center-coordinate tests, continuity
+  estimates for retained light-ray quadratic forms, and a detector-test
+  topology remainder bound.  The chapter now states explicitly that a finite
+  retained representation list is not a controlled EEC approximation unless
+  these chart and remainder data are supplied.
 
 ## Symbols
 
@@ -115,6 +121,10 @@ The chapter establishes:
 | \(\lambda_2,\lambda_1,\lambda_0\) | detector quadratic-form eigenvalues in the helicity \(2,1,0\) sectors |
 | \(\mathrm{EEC}_\Psi(\chi)\) | normalized energy-energy correlator in state \(\Psi\) |
 | \(\mathbb L_\alpha\) | light-ray operator appearing in the light-ray OPE |
+| \(\mathfrak A_N\) | finite retained label set in a CFT light-ray OPE chart |
+| \(C_{\alpha,m}\) | relative-coordinate coefficient distribution in a finite light-ray OPE chart |
+| \(\psi_{\alpha,m,\Phi}\) | center-coordinate test induced from a two-detector test \(\Phi\) by \(C_{\alpha,m}\) |
+| \(R_N(\Phi;\Psi)\) | finite-chart light-ray OPE remainder functional in state \(\Psi\) |
 
 ## Claim Ledger
 
@@ -174,6 +184,11 @@ The chapter establishes:
    records the proof mechanism and the needed transverse-distribution
    convergence estimate, and separates the fixed-point CFT statement from the
    renormalized QCD small-angle EEC factorization datum.
+13. A finite light-ray OPE chart for detector products must state coefficient
+    distributions, their diagonal extensions, induced center tests, continuity
+    of retained light-ray forms, and a remainder functional.  Separated-angle
+    chart data alone do not determine the full detector moment with contact
+    terms.
 
 ## Figures
 
@@ -200,7 +215,9 @@ The chapter establishes:
   that precede detector products, together with finite-grid compact moment
   reconstruction, a truncated-moment ambiguity example, and finite-resolution
   Lipschitz partition estimates for one-detector and detector-product
-  measures.
+  measures.  It also checks the finite light-ray OPE chart bound from
+  coefficient-map norms, light-ray form bounds, and a declared remainder, and
+  detects the separated-angle-only loss of the diagonal contact coordinate.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
@@ -232,3 +249,11 @@ The chapter establishes:
   detector measure.  The pass keeps one-detector positivity, Riesz measure
   construction, and \(k\)-detector product/contact data as separate
   mathematical layers.
+- 2026-06-02 #519 finite light-ray chart pass: inserted the finite CFT
+  light-ray OPE chart after the theorem-boundary remainder paragraph.  The
+  pass states the retained coefficient distributions, diagonal extension,
+  induced center-coordinate tests, light-ray form continuity estimates, and
+  detector-test remainder bound needed before a truncated light-ray expansion
+  is a controlled approximation to an EEC distribution.  The companion finite
+  detector/contact script checks the displayed finite bound and the failure
+  of a separated-angle-only chart to determine the contact coordinate.

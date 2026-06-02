@@ -8,7 +8,11 @@ substitute for the operator-valued-distribution construction; it fixes the
     partition and moment bookkeeping that the continuum construction must
     preserve.  The finite-resolution checks verify the Lipschitz partition
     estimates used to pass from finite angular bins to statewise detector
-    measures and detector-product measures.
+    measures and detector-product measures.  The finite light-ray OPE chart
+    check verifies the detector-functional bound obtained from retained
+    coefficient-map norms, light-ray form bounds, and the declared remainder,
+    and it detects the loss of the diagonal contact coordinate in a
+    separated-angle-only chart.
 """
 
 from __future__ import annotations
@@ -284,6 +288,43 @@ def check_three_detector_partition_decomposition() -> None:
     assert_equal("three-detector partition decomposition", partition_decomposition(atoms, tests), product)
 
 
+def check_finite_light_ray_ope_chart_bound() -> None:
+    detector_test_norm = Fraction(6)
+    light_form_bounds = [Fraction(2), Fraction(3, 2)]
+    coefficient_map_bounds = [Fraction(1, 3), Fraction(5, 6)]
+    remainder_constant = Fraction(5)
+    epsilon = Fraction(1, 10)
+    sigma = 2
+
+    chart_factor = (
+        sum(
+            light_bound * coefficient_bound
+            for light_bound, coefficient_bound
+            in zip(light_form_bounds, coefficient_map_bounds)
+        )
+        + remainder_constant * epsilon**sigma
+    )
+    detector_bound = chart_factor * detector_test_norm
+    assert_equal("finite light-ray OPE chart factor", chart_factor, Fraction(59, 30))
+    assert_equal("finite light-ray OPE detector bound", detector_bound, Fraction(59, 5))
+
+    retained_light_ray_terms = [Fraction(7, 3), Fraction(-5, 2)]
+    remainder_value = Fraction(1, 10)
+    actual_detector_value = sum(retained_light_ray_terms) + remainder_value
+    assert_equal("finite light-ray OPE chart sample value", actual_detector_value, Fraction(-1, 15))
+    assert_nonnegative(
+        "finite light-ray OPE chart bound controls sample",
+        detector_bound - abs(actual_detector_value),
+    )
+
+    separated_angle_value = Fraction(4, 5)
+    diagonal_contact_coordinate = Fraction(1, 3)
+    full_detector_moment = separated_angle_value + diagonal_contact_coordinate
+    assert_equal("finite light-ray OPE full moment with contact", full_detector_moment, Fraction(17, 15))
+    if separated_angle_value == full_detector_moment:
+        raise AssertionError("separated-angle chart incorrectly determines contact coordinate")
+
+
 def main() -> None:
     check_statewise_riesz_bound()
     check_finite_bin_cauchy_schwarz()
@@ -295,6 +336,7 @@ def main() -> None:
     check_disjoint_support_removes_diagonal()
     check_total_energy_ward_identity()
     check_three_detector_partition_decomposition()
+    check_finite_light_ray_ope_chart_bound()
     print("All CFT energy-detector contact and moment checks passed.")
 
 

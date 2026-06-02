@@ -543,8 +543,12 @@ Current checks:
   truncated-moment ambiguity,
   off-diagonal plus diagonal split of two detector products, the vanishing of
   diagonal terms for disjoint detector supports, the total-energy Ward
-  identity \(\mathcal G_2(1,1)=\langle(P^0)^2\rangle\), and the
-  partition-of-diagonals decomposition for three detector insertions.
+  identity \(\mathcal G_2(1,1)=\langle(P^0)^2\rangle\), the
+  partition-of-diagonals decomposition for three detector insertions, and the
+  finite CFT light-ray OPE chart bound obtained from retained coefficient-map
+  norms, light-ray form bounds, and the declared remainder, with a separate
+  check that separated-angle data alone do not determine the diagonal contact
+  coordinate.
 - `cosmological_particle_creation_checks.py`: exact convention checks for the
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter
