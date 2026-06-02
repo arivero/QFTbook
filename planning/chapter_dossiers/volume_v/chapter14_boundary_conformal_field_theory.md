@@ -272,3 +272,9 @@
   finite matrix-unit Frobenius cutting move
   \((m\otimes1)(1\otimes\Delta)=\Delta m=(1\otimes m)(\Delta\otimes1)\)
   plus \(m\Delta=d\,1\), with a paired exact calculation check.
+- 2026-06-02 anti-wrapper pass: demoted the Ising boundary-changing OPE
+  constants from a proposition/proof shell to a worked normalization and
+  sewing cell.  The formulas remain because they are useful explicit data; the
+  derivation is a Cardy-basis fusing-symbol evaluation after the general
+  boundary-field framework has already been constructed, so it should not be
+  presented as theorem-level mathematics.
