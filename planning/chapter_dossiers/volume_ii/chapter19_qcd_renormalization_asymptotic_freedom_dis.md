@@ -277,7 +277,10 @@ The chapter must define and derive:
    coupling perturbation has
    \(\omega_{\rm BZ}=4\epsilon_{\rm BZ}^2/(25N_c^2-11)+O(\epsilon_{\rm BZ}^3)\).
    The \(O(\epsilon_{\rm BZ}^2)\) location is not fixed by the two-loop beta
-   function alone.
+   function alone.  The chapter now states this as a controlled perturbative
+   fixed-point datum rather than a nonperturbative conformal-window theorem:
+   a regulator construction and a scaling limit staying in the small-coupling
+   neighborhood are separate inputs.
 9. The one-loop running coupling and dimensional transmutation do not prove
    four-dimensional continuum Yang--Mills existence, mass gap, or confinement.
    The pure Yang--Mills existence and mass-gap problem is the Clay Millennium
@@ -702,6 +705,11 @@ The chapter must define and derive:
   fundamental-representation window, the \(\epsilon_{\rm BZ}\) fixed-point
   coordinate, the IR-attractive exponent, the integer-\(N_f\)/Veneziano
   caveat, and `calculation-checks/banks_zaks_two_loop_checks.py`.
+- 2026-06-02 issue #630 conformal-window rigor pass: added the controlled
+  Banks--Zaks status datum distinguishing the perturbative small-coupling
+  fixed-point expansion from a nonperturbative theorem about the conformal
+  window.  Extended the exact Banks--Zaks check to verify the two-loop
+  derivative \(-2B_0^2/B_1\) at the zero and its IR-attractive sign.
 - 2026-05-25 issue #468 pass: added the 't Hooft large-\(N_c\) expansion as a
   full QCD-chapter section before the QCD-string discussion, with
   trace-normalization conversion, double-line completeness, ribbon-graph

@@ -298,7 +298,8 @@ Current checks:
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
   including the conformal-window edge and leading \(\epsilon_{\rm BZ}\)
-  fixed-point formulas.
+  fixed-point formulas, and the sign convention for the IR-attractive
+  linearized exponent.
 - `bf_theory_checks.py`: exact finite cochain checks for the Volume VIII BF
   theory chapter, including finite Fourier projection onto flat cochains,
   the groupoid-cardinality partition function, cellular Wilson gauge

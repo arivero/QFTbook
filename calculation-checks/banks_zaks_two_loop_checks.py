@@ -4,7 +4,8 @@
 The monograph uses tr_fund(t^a t^b)=delta^{ab}, hence
 C_A=2N, T_F=1, C_F=(N^2-1)/N.  This script checks the displayed conversion of
 the universal two-loop gauge beta coefficient, the conformal-window lower
-edge, and the leading epsilon_BZ fixed-point coordinate.
+edge, the leading epsilon_BZ fixed-point coordinate, and the sign convention
+for the IR-attractive linearized exponent.
 """
 
 from fractions import Fraction
@@ -67,6 +68,12 @@ def check_epsilon_expansion(n: int, eps: Fraction) -> None:
     displayed_zero = Fraction(2, 1) * eps / (2 * denom0 - b1_slope * eps)
     assert_eq(f"N={n} exact two-loop zero", two_loop_zero, displayed_zero)
 
+    derivative_at_zero = -4 * b0_fund(n, nf) * two_loop_zero - 6 * b1_fund(n, nf) * two_loop_zero**2
+    exact_linearized = -2 * b0_fund(n, nf) ** 2 / b1_fund(n, nf)
+    assert_eq(f"N={n} exact two-loop derivative", derivative_at_zero, exact_linearized)
+    if not derivative_at_zero > 0:
+        raise AssertionError(f"N={n}: the two-loop Banks-Zaks zero is not IR-attractive")
+
     leading_coefficient = Fraction(1, denom0)
     omega_leading = Fraction(4, denom0)
     assert_eq(f"N={n} a_* leading coefficient", leading_coefficient, Fraction(1, denom0))
@@ -79,7 +86,7 @@ def main() -> None:
         check_window_edges(n)
         for eps in (Fraction(1, 7), Fraction(2, 9), Fraction(3, 11)):
             check_epsilon_expansion(n, eps)
-    print("All Banks-Zaks two-loop convention checks passed.")
+    print("All Banks-Zaks two-loop convention and IR-exponent checks passed.")
 
 
 if __name__ == "__main__":
