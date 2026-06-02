@@ -1385,7 +1385,8 @@ Current checks:
   block unitarity identity, the crossing relation
   \([x]_{\ii\pi-\theta}=-[1-x]_\theta\), the crossing-symmetric CDD-pair
   unitarity/crossing identities, and the opposite signs of the two
-  physical-strip residues in the CDD pair.
+  physical-strip residues in the CDD pair.  It also checks the complex
+  fusing-angle momentum identity behind the bound-state mass relation.
 - `integrable_rg_flow_checks.py`: exact arithmetic checks for the Volume VI
   perturbed-CFT and integrable-RG-flow chapter, including the
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model

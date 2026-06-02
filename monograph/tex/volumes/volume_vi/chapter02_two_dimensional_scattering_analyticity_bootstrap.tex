@@ -150,8 +150,37 @@ Equivalently,
   \qquad
   m_e=m_a\cos \bar u_{ae}^{b}+m_b\cos \bar u_{be}^{a}.
 \]
-The first equation cancels the imaginary part of the continued total
-momentum and the second gives the real mass of the fused particle.
+These equations are obtained by expanding the complex boosts:
+\[
+\begin{aligned}
+  p_a(\theta+\ii\alpha)+p_b(\theta-\ii\beta)
+  &=
+  \bigl(m_a\cos\alpha+m_b\cos\beta\bigr)
+  (\cosh\theta,\sinh\theta) \\
+  &\quad
+  +\ii\bigl(m_a\sin\alpha-m_b\sin\beta\bigr)
+  (\sinh\theta,\cosh\theta),
+\end{aligned}
+\]
+with \(\alpha=\bar u_{ae}^{b}\) and \(\beta=\bar u_{be}^{a}\).  Equality to the
+real on-shell vector \(p_e(\theta)\) forces the imaginary coefficient to vanish
+and the real coefficient to be \(m_e\).  Squaring this real coefficient then
+recovers the pole-location mass formula because
+\[
+\begin{aligned}
+  m_e^2
+  &=
+  \bigl(m_a\cos\alpha+m_b\cos\beta\bigr)^2 \\
+  &=
+  m_a^2+m_b^2+2m_am_b\cos(\alpha+\beta),
+\end{aligned}
+\]
+where the last step uses
+\(m_a\sin\alpha=m_b\sin\beta\) to replace
+\(m_a^2\sin^2\alpha+m_b^2\sin^2\beta\) by
+\(2m_am_b\sin\alpha\sin\beta\).  Thus the fusing-angle data are not extra
+kinematics beyond the pole location and the on-shell momentum identity; they
+are the component form of that identity.
 
 Fusion is the compatibility condition between the residue projection
 \eqref{eq:bound-state-residue-projection} and scattering with an additional

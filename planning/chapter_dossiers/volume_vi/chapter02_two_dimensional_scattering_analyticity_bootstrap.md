@@ -25,6 +25,9 @@
   one-particle positivity normalization.
 - Fusing-angle kinematics from the complex on-shell momentum identity
   \(p_a(\theta+i\bar u)+p_b(\theta-i\bar u')=p_e(\theta)\).
+  The component expansion now derives both the imaginary-momentum cancellation
+  and the real mass relation, and checks that these imply the pole-location
+  mass formula.
 - Fusion equation for scattering of a bound state with a third particle,
   derived by a small-contour residue extraction of the factorized
   three-particle amplitude, under the stated no-extra-pole hypothesis.
@@ -87,7 +90,8 @@
   elementary scalar block unitarity identity, the crossing relation
   \([x]_{\ii\pi-\theta}=-[1-x]_\theta\), the CDD-pair
   unitarity/crossing identities, and the opposite signs of the two
-  physical-strip residues.
+  physical-strip residues.  It also checks the complex fusing-angle momentum
+  identity and the resulting bound-state mass relation.
 
 ## Audit Notes
 
@@ -95,3 +99,7 @@
   hyperbolic cancellation from the chapter prose, kept the consequential
   physical-strip residue sign in the manuscript, and added a companion check
   for the elementary identities and crossing-pair residue signs.
+- 2026-06-02 fusing-angle component pass: expanded the complex on-shell
+  momentum identity into real and imaginary rapidity components, deriving the
+  fusing-angle sine relation, the real fused mass, and the pole-location mass
+  formula; extended the companion check accordingly.

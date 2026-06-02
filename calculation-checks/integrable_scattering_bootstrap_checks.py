@@ -81,10 +81,38 @@ def check_residue_signs() -> None:
         )
 
 
+def check_fusing_angle_momentum_identity() -> None:
+    theta = 0.37
+    alpha = 0.41
+    beta = 0.73
+    mass_b = 1.3
+    mass_a = mass_b * math.sin(beta) / math.sin(alpha)
+    mass_e = mass_a * math.cos(alpha) + mass_b * math.cos(beta)
+    u = alpha + beta
+
+    imaginary_coefficient = mass_a * math.sin(alpha) - mass_b * math.sin(beta)
+    assert_close("fusing imaginary momentum cancellation", imaginary_coefficient, 0.0)
+    assert_close(
+        "fusing mass law of cosines",
+        mass_e**2,
+        mass_a**2 + mass_b**2 + 2.0 * mass_a * mass_b * math.cos(u),
+    )
+
+    def momentum(mass: float, rapidity: complex) -> tuple[complex, complex]:
+        return (mass * cmath.cosh(rapidity), mass * cmath.sinh(rapidity))
+
+    pa = momentum(mass_a, theta + 1j * alpha)
+    pb = momentum(mass_b, theta - 1j * beta)
+    pe = momentum(mass_e, theta)
+    assert_close("fused energy component", pa[0] + pb[0], pe[0])
+    assert_close("fused momentum component", pa[1] + pb[1], pe[1])
+
+
 def main() -> None:
     check_elementary_block_unitarity_and_crossing_pair()
     check_residue_signs()
-    print("All integrable scattering bootstrap scalar-block checks passed.")
+    check_fusing_angle_momentum_identity()
+    print("All integrable scattering bootstrap checks passed.")
 
 
 if __name__ == "__main__":
