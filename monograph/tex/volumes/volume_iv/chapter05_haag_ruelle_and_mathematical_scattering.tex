@@ -854,12 +854,79 @@ phase and therefore carries the global charge.  The price is noncompact
 localization: the localization region includes the curve \(\gamma\) reaching
 infinity, or a Coulombic dressing with equivalent asymptotic flux.
 
+\begin{hypothesis}[Nonconfining charged-sector datum]
+\label{hyp:nonconfining-charged-sector-datum}
+A nonconfining charged-sector datum for the charged construction below
+consists of the following objects and properties.
+\begin{enumerate}
+\item A vacuum observable net \(\Obs\) with a positive-energy representation
+and a physical charged representation \((\Hilb_q,U_q)\) of the observable net.
+The representation carries a self-adjoint boundary charge \(Q\) and, for each
+smooth angular test \(f\) on the sphere at spatial infinity, a Gauss-law flux
+operator \(\Phi_\infty(f)\) obtained as the large-sphere limit of the
+corresponding electric-flux smearing on a common invariant domain.
+\item Compactly localized gauge-invariant observables preserve the boundary
+charge and the angular flux sector in the large-sphere limit:
+\[
+  [A,Q]=0,\qquad [A,\Phi_\infty(f)]=0
+\]
+on the common domain whenever \(A\) is localized in a bounded spacetime
+region.  Thus the charged representation is labelled by data at infinity
+rather than by an operator in the bounded observable net.
+\item The charged sector has finite-energy asymptotic content.  In a massive
+screened or Coulomb-branch situation this means an isolated positive-energy
+mass hyperboloid
+\[
+  \Sigma_{m,q}^+
+  =
+  \{p\in\mathbb R^{1,d}\mid p^2=-m^2,\ p^0>0\}
+\]
+inside the joint spectrum of \(U_q\), with finite-dimensional multiplicity
+space \(E_{p,q}\) and spectral projection \(P_{1,q}\).  In a massless
+long-range abelian theory the corresponding datum is a charged threshold or
+infraparticle spectral measure together with its flux-sector label; ordinary
+isolated-shell Haag--Ruelle estimates are then replaced by the modified
+asymptotic problem stated below.
+\item There is a class of gauge-invariant noncompact charged creators
+\(\Psi_{q,\Gamma}\), where \(\Gamma\) denotes a Wilson-line ray, Coulomb
+profile, or equivalent dressing geometry reaching infinity, such that their
+smeared vectors have a nonzero projection to the charged asymptotic datum:
+\[
+  P_{1,q}\Psi_{q,\Gamma}(f)\vac\ne0
+\]
+in the isolated-shell case, or a nonzero threshold coefficient in the
+infraparticle case.  The dressing geometry determines the angular flux label
+of the vector.
+\item Truncated dressings must have a finite-energy limit after the local
+renormalizations belonging to the chosen charged operator.  Equivalently, for
+truncations \(\Psi_{q,\Gamma;L}\) normalized to unit vector when possible,
+the energy expectations are tight as \(L\to\infty\):
+\[
+  \sup_L
+  \langle \Psi_{q,\Gamma;L}\vac,
+          H_q\,\Psi_{q,\Gamma;L}\vac\rangle
+  <\infty .
+\]
+If instead the best available gauge-invariant charged truncations carry a
+macroscopic string energy \(E(L)=\sigma L+o(L)\) with \(\sigma>0\), the
+finite-energy charged asymptotic datum is absent and the scattering problem
+belongs to neutral composite sectors.
+\end{enumerate}
+\end{hypothesis}
+
+The word ``nonconfining'' in the rest of this section refers precisely to
+Hypothesis~\ref{hyp:nonconfining-charged-sector-datum}.  The hypothesis does
+not solve the charged Haag--Ruelle problem.  It states the minimum positive
+spectral and representation-theoretic data on which that problem can be
+posed.  The subsequent LSZ and Dollard constructions explain what follows
+from such a datum and which large-time estimates still have to be proved.
+
 \begin{definition}[Dressed charged LSZ problem]
 \label{def:dressed-charged-lsz-problem}
 A dressed charged LSZ datum consists of:
 \begin{enumerate}
-\item a gauge-invariant observable net and a charged sector carrying a
-Gauss-law surface charge;
+\item a nonconfining charged-sector datum in the sense of
+Hypothesis~\ref{hyp:nonconfining-charged-sector-datum};
 \item a family of gauge-invariant noncompact charged creators
 \(\Psi_{q,\gamma}(x)\), or Coulombic variants with the same asymptotic flux;
 \item a specification of the dressing geometry \(\gamma\) in terms of the

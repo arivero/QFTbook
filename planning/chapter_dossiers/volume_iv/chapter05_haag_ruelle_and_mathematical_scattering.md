@@ -19,6 +19,9 @@ resonances.
   creator and a positive-energy wave packet.
 - `Omega_in/out`: Haag--Ruelle wave operators.
 - `Q_R`, `Q`: large-sphere Gauss-law charge approximants and limiting charge.
+- `H_q`, `U_q`, `Phi_infty(f)`: physical charged representation, its
+  translation representation, and angular Gauss-law flux operator in the
+  nonconfining charged-sector datum.
 - `Psi_{q,gamma}`: gauge-invariant noncompact charged creator with Wilson-line
   or Coulombic dressing.
 - `S_{gamma',gamma}`: compact oriented surface swept out by two Wilson-line
@@ -69,6 +72,15 @@ resonances.
   from the vacuum, provided the Gauss-law charge is closed on the local
   domain.  Thus a nonzero charged creator cannot be hidden inside the
   ordinary Haag--Ruelle almost-local hypothesis.
+- States the nonconfining charged-sector datum as an explicit hypothesis
+  before dressed LSZ is formulated: a physical charged representation,
+  boundary charge and angular flux operators, flux preservation by compact
+  observables, finite-energy asymptotic content through an isolated charged
+  shell or an infraparticle threshold datum, noncompact charged creators with
+  nonzero asymptotic projection or coefficient, and tightness of truncated
+  dressing energies.  A macroscopic string-energy law \(E(L)=\sigma L+o(L)\)
+  with \(\sigma>0\) is recorded as absence of the finite-energy charged
+  asymptotic datum.
 - Defines the dressed charged LSZ problem for noncompact gauge-invariant
   charged creators and records the data that must replace local
   Haag--Ruelle creators.
@@ -287,3 +299,13 @@ resonances.
   load-bearing problem.  The paired charged-flux calculation check now
   includes a discrete Cook-tail model distinguishing an unsubtracted \(1/t\)
   Dollard derivative from an \(L^1\) residual.
+- 2026-06-02 #527 continuation: inserted the nonconfining charged-sector
+  datum before the dressed LSZ definition.  The pass makes explicit that a
+  charged Haag--Ruelle/LSZ problem needs positive spectral and
+  representation-theoretic input: a physical charged representation with
+  angular Gauss-law flux, compact-observable flux preservation, an isolated
+  charged shell or infraparticle threshold datum, noncompact charged creators
+  with nonzero asymptotic projection/coefficient, and tight finite-energy
+  truncated dressings.  A positive string-tension law for charged truncations
+  is recorded as absence of this datum, so confinement is separated from an
+  infrared regulator issue.
