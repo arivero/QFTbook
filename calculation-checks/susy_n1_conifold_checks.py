@@ -77,7 +77,7 @@ def check_kw_exact_marginal_dimension_count():
         # The beta map factors through one common defect E:
         # (B_1, B_2, B_h) = (N E, N E, E).  The coefficient vector has
         # rank one for N != 0, so the zero set is one equation in the
-        # three-source chart (tau_1, tau_2, h), provided dE is nonzero.
+        # three-source coordinate system (tau_1, tau_2, h), provided dE is nonzero.
         coefficient_vector = (n, n, 1)
         nonzero_entries = sum(1 for entry in coefficient_vector if entry != 0)
         coefficient_rank = 1 if nonzero_entries else 0

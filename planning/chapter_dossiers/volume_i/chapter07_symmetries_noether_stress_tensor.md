@@ -115,7 +115,7 @@ Working framework:
 | The free scalar stress tensor gives \(T^{00}=\mathcal H\). | Derived | Substitution of the scalar Lagrangian |
 | Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Worked algebra | Antisymmetry of Lorentz parameter; demoted from proposition wrapper on 2026-05-29 |
 | In quantum theory, local currents and stress tensors must be defined as renormalized operator-valued distributions in the chosen framework. | Framework statement | Local operator construction, not an automatic consequence of Poincare invariance alone |
-| Quantum Noether identities in correlation functions include insertion contact terms and possible local terms from the regulated integration density and source-chart counterterms. | Framework statement | Equation `eq:quantum-noether-ward-regulated`; cross-reference to CFT source-functional Ward identities |
+| Quantum Noether identities in correlation functions include insertion contact terms and possible local terms from the regulated integration density and source-coordinate counterterms. | Framework statement | Equation `eq:quantum-noether-ward-regulated`; cross-reference to CFT source-functional Ward identities |
 
 ## Figure Ledger
 

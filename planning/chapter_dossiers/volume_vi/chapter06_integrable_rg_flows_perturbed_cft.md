@@ -27,7 +27,7 @@ chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
 
 - Defines a regulated CFT perturbation by source-functional data.
 - Adds the ordinary polynomial scalar Landau-Ginzburg interface: defines the
-  normal-ordered polynomial source chart, proves local integrability of
+  normal-ordered polynomial source-coordinate system, proves local integrability of
   logarithmic Wick-product collisions, derives the normal-ordered
   Schwinger-Dyson equation of motion, and identifies the finite order-field
   quotient for the even multicritical family while keeping the minimal-model

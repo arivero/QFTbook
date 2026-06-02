@@ -166,7 +166,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   check showing the two gauge NSVZ numerators and quartic-superpotential
   marginality defect are proportional to `1+gamma_A+gamma_B`.
 - `hyp:n1-local-exact-marginality-chart`: finite-dimensional
-  marginal-source chart hypotheses for turning beta-map rank into a local
+  marginal-source-coordinate system hypotheses for turning beta-map rank into a local
   conformal-manifold dimension statement.
 - `hyp:kw-exact-marginality-input`: KW continuum, source-chart,
   beta-completeness, contact-term, and nondegeneracy assumptions for the
@@ -394,7 +394,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Proves the KW NSVZ numerator cancellation at
   `R(A)=R(B)=1/2`, using `gamma_A=gamma_B=-1/2` in the monograph convention.
 - Derives the KW beta-function rank count in the
-  `SU(2)_A x SU(2)_B x U(1)_B` source chart:
+  `SU(2)_A x SU(2)_B x U(1)_B` source-coordinate system:
   `B_1=B_2=N(1+gamma_A+gamma_B)` and the quartic-superpotential marginality
   defect is `1+gamma_A+gamma_B`.
 - Replaces the previous quoted KW conformal-manifold statement with an

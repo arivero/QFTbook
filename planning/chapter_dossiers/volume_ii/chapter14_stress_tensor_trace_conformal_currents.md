@@ -76,7 +76,7 @@ The chapter must define and derive:
   and that chiral gravitational anomalies obstruct diffeomorphism-invariant
   source functionals;
 - equation-of-motion terms, total derivatives, improvements, and
-  curved-background curvature terms as local data fixed by the source chart;
+  curved-background curvature terms as local data fixed by the source-coordinate system;
 - the fixed-point implication that the beta-function contribution to the trace
   vanishes, while the existence of a traceless stress tensor still depends on
   improvement and virial-current data;
@@ -98,7 +98,7 @@ The chapter must define and derive:
 - the necessary-and-sufficient scalar-improvement condition: the virial
   obstruction class
   \([V]\in\mathfrak V/(\mathfrak J+(d-1)\partial\mathfrak S)\) must vanish;
-- the corresponding enlargement of the quotient when the source chart allows
+- the corresponding enlargement of the quotient when the source-coordinate system allows
   non-scalar stress-tensor improvements;
 - the dimension-dependent status of scale-implies-conformal claims, stated as
   framework-dependent in \(d=2\), conditional/conjectural in general \(d=4\),
@@ -131,7 +131,7 @@ The chapter must define and derive:
 5a. The source Ward identity
     \(\nabla_\mu\langle T^{\mu\nu}\rangle=-\langle O_I\rangle\nabla^\nu\eta^I\)
     is conditional on a diffeomorphism-covariant regulator, subtraction
-    functional, and continuum source chart.  In anomalous chiral theories the
+    functional, and continuum source-coordinate system.  In anomalous chiral theories the
     same variation produces the gravitational-anomaly functional instead of
     zero.
 6. At an RG fixed point, the beta-function contribution to the trace vanishes;

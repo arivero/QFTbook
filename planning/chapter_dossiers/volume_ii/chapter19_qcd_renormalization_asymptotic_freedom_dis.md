@@ -871,7 +871,7 @@ The chapter must define and derive:
   operator-source families, source-subspace interpretation, finite-volume
   scattering map, and continuum/chiral/heavy-quark/infinite-volume
   extrapolation data.  The spectroscopy wording avoids overloading the
-  separate contact-term/source-coordinate notion of a source chart.
+  separate contact-term/source-coordinate notion of a source-coordinate system.
 - 2026-05-30 figure semantic audit: corrected the DIS light-ray factorization
   figure so the gauge transporter is the open Wilson segment
   \(W[\lambda n,0]\).  The caption now states explicitly that this segment

@@ -63,7 +63,7 @@ Use these only for theorem boundaries and later comparisons.
 | \(\Obs(\mathcal O)\) | local algebra assigned to \(\mathcal O\) | observable net |
 | \(\widehat\Phi_A(f)\) | smeared field operator/distribution | field coordinate |
 | \(\Delta_n\) | collision locus in \(M^n\) | contact-term geometry |
-| \(J^A\) | compactly supported local source field | source chart |
+| \(J^A\) | compactly supported local source field | source-coordinate system |
 | \(W[J]\) | source functional defining inserted distributions | source-response data |
 | \(\mathrm{EFT}\) | effective field theory presentation | regulated/local expansion |
 
@@ -87,7 +87,7 @@ Use these only for theorem boundaries and later comparisons.
 - Contact-term extension: an extension of a separated-point distribution from
   \(M^n\setminus\Delta_n\) to \(M^n\), with differences supported on collision
   diagonals.
-- Local source chart: source fields, a source functional, and distributional
+- Local source-coordinate system: source fields, a source functional, and distributional
   source derivatives, modulo local finite changes that alter diagonal-supported
   contact terms.
 - Four-dimensional constructive local QFT open problem: construction of

@@ -861,7 +861,7 @@ denote different objects in different constructions.
   another declared topology.
 \end{definition}
 
-\begin{definition}[Contact terms and local source charts]
+\begin{definition}[Contact terms and local source-coordinate systems]
 \label{def:contact-terms-source-chart}
 Let \(M\) be the spacetime manifold and let
 \[
@@ -887,9 +887,9 @@ normal order,
 after choosing local coordinates and a density convention.  Thus contact
 terms are ordinary distributional data on collision strata.
 
-A local source chart consists of source fields \(J^A\in C_c^\infty(M,E_A)\),
-a source functional \(W[J]\) in the chosen category, and distributional
-source derivatives
+A local source-coordinate system consists of source fields
+\(J^A\in C_c^\infty(M,E_A)\), a source functional \(W[J]\) in the chosen
+category, and distributional source derivatives
 \[
   G_{A_1\cdots A_n}(x_1,\ldots,x_n)
   =
@@ -906,6 +906,16 @@ diagonals.  With the linear source normalization fixed, the restriction of
 \(G_{A_1\cdots A_n}\) to \(M^n\setminus\Delta_n\) is unchanged by such
 purely local finite choices, while the contact-term extension changes.
 \end{definition}
+
+The source-coordinate system is bookkeeping for a concrete operation:
+differentiate a specified generating functional with respect to specified
+compactly supported backgrounds.  It is not an additional invariant structure
+on the QFT.  Its invariant content is the separated-point distribution
+together with the declared equivalence relation on local counterterms and
+local redefinitions of the sources.  Whenever the monograph says that a
+contact term depends on this choice, the statement means exactly that two
+coordinate systems agree away from collision diagonals and differ on the
+diagonals by local distributions of the form displayed above.
 
 \paragraph{Local source-coordinate changes.}
 Fix the linear source normalization in

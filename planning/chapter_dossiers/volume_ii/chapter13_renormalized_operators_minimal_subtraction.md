@@ -151,7 +151,7 @@ The chapter must define:
     the Wilsonian comparison theorem: changing the normal product changes the
     finite local operator coordinate and hence the source coordinate map.
 9. For multiple inserted operators, the finite-regulator chain rule for the
-   full local source chart expresses renormalized distributions as a sum over
+   full local source-coordinate system expresses renormalized distributions as a sum over
    partitions of the insertion labels.  The singleton partition gives the
    noncoincident operator mixing, while partitions with larger blocks are
    local distributions supported on collision diagonals.
@@ -275,7 +275,7 @@ The chapter must define:
   product subtraction at \(\mathcal Q_\mu\), and derives the 1PI
   source-coordinate normalization condition.
 - 2026-05-22 multi-insertion contact pass: added the full local Taylor
-  expansion of the source coordinate chart, the partition formula for
+  expansion of the source-coordinate transformation, the partition formula for
   multiple connected insertions, the noncoincident/contact-term separation,
   the two-insertion Wilsonian identity, and the 1PI source-Hessian identity.
 - 2026-05-24 issue #364 pass: rewrote the partition-sign explanation so

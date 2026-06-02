@@ -328,7 +328,7 @@
   couplings; localization is tied to a regulated nilpotent \(Q\), integration
   cycle, boundary conditions, determinant phases, and source contact terms.
 - Holomorphy and nonrenormalization statements are recorded as statements in
-  a Wilsonian superspace source chart with chiral background couplings,
+  a Wilsonian superspace source-coordinate system with chiral background couplings,
   locality, gauge invariance, charge assignments, and regularity hypotheses;
   D-terms, 1PI quantities, thresholds, and contact terms remain separate
   source-identity problems.

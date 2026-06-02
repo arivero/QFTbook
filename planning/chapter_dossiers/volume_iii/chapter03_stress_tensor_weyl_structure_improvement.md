@@ -61,7 +61,7 @@ The chapter establishes:
 ## Claims To Verify
 
 1. The stress tensor is source-defined; a Noether expression is a coordinate
-   representative after a source chart has been chosen.
+   representative after a source-coordinate system has been chosen.
 2. The trace equation at a fixed point is a local operator identity only after
    equation-of-motion, total-derivative, and contact-term conventions are
    fixed.

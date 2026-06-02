@@ -47,7 +47,7 @@ The chapter establishes:
   dimension-\(D\) scalar-operator bundle, tangent-operator map, and
   renormalized integrated insertion formula are part of the datum;
 - exactly marginal deformations as the zero locus of obstruction functions in
-  a finite source-coordinate chart modulo redundancies, with local dimension
+  a finite source-coordinate system modulo redundancies, with local dimension
   \(m-r_\beta-r_{\rm red}\) only after beta constraints, current/virial
   obstructions, contact terms, and redundancy vector fields are specified;
 - second-order conformal-perturbation obstructions as collision-singularity
@@ -83,7 +83,7 @@ The chapter establishes:
   and Euclidean separated-point distributions;
 - source functionals \(W_\ast[g,J]\) whose derivatives define stress
   tensor insertions and local-operator insertions;
-- the explicit existence hypothesis for the fixed-point source chart:
+- the explicit existence hypothesis for the fixed-point source-coordinate system:
   \(W_\ast[g,J]\) is used only when all metric/source derivatives exist as
   distributions in a specified test-function topology, and when regulated
   realizations converge after local source counterterms;
@@ -142,14 +142,14 @@ The chapter establishes:
     distributional generating brackets in abstract CFT settings, and formal
     source series in perturbative settings.
 3b. The metric and source derivatives of \(W_\ast[g,J]\) are legitimate only
-    inside a source chart satisfying the explicit existence hypothesis:
+    inside a source-coordinate system satisfying the explicit existence hypothesis:
     distributional Gateaux derivatives exist, regulated derivatives converge
     when a regulator presentation is used, and regulator changes are tracked by
     local source counterterms.
 4. The trace equation at a fixed point becomes a conformal trace condition
    only after improvement and contact-term conventions have been specified.
 4a. A marginal operator is exactly marginal only when it integrates to a
-    tangent vector of a conformal-family datum; the source-coordinate chart must specify
+    tangent vector of a conformal-family datum; the source-coordinate system must specify
     beta obstructions, current/virial obstructions, redundant directions, and
     contact-term extensions before a conformal-manifold dimension count is
     meaningful.
@@ -257,7 +257,7 @@ The chapter establishes:
   `eq:cft-source-derivative-conventions` explicit from \(W_\ast=-\log Z_\ast\)
   and the metric variation
   \(\delta_g S_\ast=-\frac12\int\sqrt g\,T^{\mu\nu}\delta g_{\mu\nu}\).
-  This aligns the opening CFT source chart with the stress-tensor chapter.
+  This aligns the opening CFT source-coordinate system with the stress-tensor chapter.
 - 2026-05-25 issue #442 pass: reconciled the CFT plus-source Euclidean
   coordinate with the Volume II positive-measure convention and the Volume I
   lower-half-plane Wick-rotation convention.  In this chapter

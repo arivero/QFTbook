@@ -339,7 +339,7 @@ Current Appendix K absorption:
 
 - Volume VI, Chapter 06 now absorbs the ordinary scalar Landau-Ginzburg part
   of Appendix K as a perturbed two-dimensional QFT interface: it defines the
-  normal-ordered polynomial source chart, proves the local logarithmic
+  normal-ordered polynomial source-coordinate system, proves the local logarithmic
   collision integrability used by the perturbative expansion, derives the
   normal-ordered equation-of-motion relation, and records the finite
   order-field quotient for the even multicritical family.  The expected

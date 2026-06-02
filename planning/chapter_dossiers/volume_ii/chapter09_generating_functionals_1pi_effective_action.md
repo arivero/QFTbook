@@ -150,7 +150,7 @@ The chapter must define the following objects before using them:
     derivative is part of the identity; if the change of variables has a
     nontrivial Jacobian, that Jacobian is an insertion.
 11b. The equation \(\Gamma_i[\varphi]=\langle S_i[\phi]\rangle_{J_\varphi}\)
-    is the exact 1PI equation of motion in the chosen source chart.  It is
+    is the exact 1PI equation of motion in the chosen source-coordinate system.  It is
     equivalent to the connected functional identity
     \(S_i(\varphi+(1/i)\delta/\delta J)1+J_i=0\).
 11c. For quartic scalar theory, differentiating the connected

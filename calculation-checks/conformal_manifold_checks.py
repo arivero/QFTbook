@@ -86,10 +86,10 @@ def quadratic_form(matrix: Matrix, vector: list[Fraction]) -> Fraction:
     )
 
 
-def check_source_chart_rank_counts() -> None:
+def check_source_coordinate_rank_counts() -> None:
     # Klebanov-Witten local chart: three holomorphic source coordinates and
     # one independent beta-function constraint in the symmetry-preserving
-    # source-coordinate chart.
+    # source-coordinate system.
     n = Fraction(5)
     kw_beta = [[n, n, Fraction(1)]]
     assert_equal("KW rank-one beta map", rank(kw_beta), 1)
@@ -104,7 +104,7 @@ def check_source_chart_rank_counts() -> None:
     # superpotential coefficient are treated as part of the QFT specification.
     assert_equal("standard ABJM fixed-datum dimension", dimension_count(0, [], []), 0)
 
-    # A generic source-coordinate chart with an independent redundancy vector has the
+    # A generic source-coordinate system with an independent redundancy vector has the
     # expected quotient dimension only when the redundancy is tangent to the
     # beta-zero locus.  The finite check records the linear algebra after that
     # hypothesis has been verified.
@@ -161,7 +161,7 @@ def check_redundant_null_quotient_metric() -> None:
 
 
 def main() -> None:
-    check_source_chart_rank_counts()
+    check_source_coordinate_rank_counts()
     check_zamolodchikov_metric_transform()
     check_redundant_null_quotient_metric()
     print("All conformal-manifold finite checks passed.")

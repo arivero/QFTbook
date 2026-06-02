@@ -159,7 +159,7 @@ constructive RG developments.
   constructive theorem must still prove the input constants from covariance,
   localization, and large-field estimates.
 - Proves a finite source-window extraction estimate for source-extended
-  polymer RG charts: source derivatives retained by the Taylor source chart
+  polymer RG charts: source derivatives retained by the Taylor source-coordinate system
   have zero tail, omitted derivatives obey a Banach-valued Cauchy-radius
   bound, and reconstructed source-window errors are bounded by the
   propagated scale sum
