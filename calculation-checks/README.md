@@ -1011,12 +1011,13 @@ Current checks:
   groups and \(S_3\).
 - `ising_form_factor_checks.py`: finite checks for the Volume VI
   free-Majorana and Ising form-factor examples, including Watson exchange,
-  cyclicity, the kinematic-pole residue sign, the two-particle invariant-mass
-  identity, the energy-density spectral threshold factor, the Euclidean
-  Bessel-kernel prefactor, the even spin-field semi-local cyclicity phase,
-  the crossed \(\coth\) matrix element, the mixed bra/ket product formula,
-  the semi-local kinematic-pole residue, and the even/odd spectral-series
-  majorants used in the separated Euclidean reconstruction estimate.
+  cyclicity, the Cauchy-kernel orientation behind the kinematic-pole residue
+  sign, the two-particle invariant-mass identity, the energy-density spectral
+  threshold factor, the Euclidean Bessel-kernel prefactor, the even spin-field
+  semi-local cyclicity phase, the crossed \(\coth\) matrix element, the mixed
+  bra/ket product formula, the semi-local kinematic-pole residue, and the
+  even/odd spectral-series majorants used in the separated Euclidean
+  reconstruction estimate.
 - `finite_volume_form_factor_checks.py`: finite checks for the Volume VI
   finite-volume form-factor chapter, including the two-particle Gaudin
   determinant, cancellation of the Gaudin density between matrix elements and

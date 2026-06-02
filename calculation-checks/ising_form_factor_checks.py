@@ -71,6 +71,27 @@ def check_energy_density_form_factor() -> None:
     )
 
 
+def check_kinematic_cauchy_kernel_orientation() -> None:
+    # The distributional identity
+    #   1/(x+i0) - 1/(x-i0) = -2 pi i delta(x)
+    # fixes i/z as the direct crossed contraction kernel in the chapter's
+    # rapidity normalization.  Reversing the local coordinate sends z to -z
+    # and flips the delta coefficient.
+    direct_kernel_coefficient = 1j
+    reversed_kernel_coefficient = -1j
+    boundary_difference_delta = -2j * math.pi
+    assert_close(
+        "direct kinematic Cauchy kernel gives positive rapidity delta",
+        direct_kernel_coefficient * boundary_difference_delta,
+        2.0 * math.pi,
+    )
+    assert_close(
+        "reversed kinematic coordinate flips rapidity delta coefficient",
+        reversed_kernel_coefficient * boundary_difference_delta,
+        -2.0 * math.pi,
+    )
+
+
 def check_energy_two_particle_reconstruction() -> None:
     mass = 1.7
     kappa = 2.3
@@ -251,6 +272,7 @@ def check_spin_spectral_series_majorants() -> None:
 
 def main() -> None:
     check_energy_density_form_factor()
+    check_kinematic_cauchy_kernel_orientation()
     check_energy_two_particle_reconstruction()
     check_sigma_exchange_and_cyclicity()
     check_spin_even_semilocal_family()

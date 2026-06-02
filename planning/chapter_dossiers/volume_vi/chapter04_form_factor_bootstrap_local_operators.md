@@ -22,8 +22,10 @@
   tube analyticity, one-particle crossing, and locality at the boundary of
   the analytic continuation domain.
 - Kinematic annihilation pole equation with the direct and scattered Cauchy
-  kernels displayed; the relative minus sign is traced to the reversed local
-  coordinate \(z_{\rm rev}=-z\) around the annihilation pole.
+  kernels displayed; the direct coefficient is matched to the rapidity delta
+  contraction through the Sokhotski boundary-value identity, and the relative
+  minus sign is traced to the reversed local coordinate \(z_{\rm rev}=-z\)
+  around the annihilation pole.
 - Bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor, its
   explicit two-particle Wightman spectral density and Euclidean Bessel-kernel
@@ -111,8 +113,9 @@
 ## Calculation Checks
 
 - `calculation-checks/ising_form_factor_checks.py` verifies the free-Majorana
-  energy-density exchange/cyclicity identities and the Ising odd-family
-  Watson, cyclicity, and kinematic-pole residue signs.  It also checks the
+  energy-density exchange/cyclicity identities, the Cauchy-kernel orientation
+  behind the annihilation-pole sign, and the Ising odd-family Watson,
+  cyclicity, and kinematic-pole residue signs.  It also checks the
   two-particle invariant-mass identity, the spectral-density normalization
   after the identical-particle cancellation, the Euclidean Bessel-reduction
   prefactor, the even spin-field semi-local cyclicity phase, the crossed

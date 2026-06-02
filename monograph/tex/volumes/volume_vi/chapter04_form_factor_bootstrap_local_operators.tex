@@ -313,19 +313,31 @@ with the same tensor-ordering convention as in
 \end{proposition}
 
 \begin{proof}
-Set \(z=\theta'-\theta-\ii\pi\).  With rapidity normalization
-\(\langle \theta',\bar a|\theta,\bar a\rangle=2\pi\delta(\theta'-\theta)\),
-the crossed one-particle contraction is represented, before taking the
-boundary value, by the Cauchy kernel
+Set \(z=\theta'-\theta-\ii\pi\).  The coefficient of the crossed
+one-particle contraction is fixed by matching its two boundary values to the
+rapidity delta function, not by an independent sign convention.  In the
+rapidity normalization, valid for any stable species \(b\),
+\[
+  \langle \theta',b|\theta,b\rangle=2\pi\delta(\theta'-\theta),
+\]
+the contraction term must have boundary-value jump \(2\pi\delta(x)\) when
+\(x=\operatorname{Re}z\).  The distributional identity
+\[
+  \frac{1}{x+\ii0}-\frac{1}{x-\ii0}
+  =
+  -2\pi\ii\,\delta(x)
+\]
+therefore selects
 \[
   \frac{\ii}{z}.
 \]
-This is the rapidity form of the mass-shell phase-space pole: near
-\(z=0\), the continued total momentum
-\(p_{\bar a}(\theta+\ii\pi+z)+p_a(\theta)\) vanishes linearly in \(z\), and
-the positive-energy mass-shell orientation fixes the coefficient to be
-\(\ii\) in the convention above.  Thus direct annihilation of the adjacent
-\((\bar a,a)\)-pair into the vacuum contributes
+Indeed,
+\(\ii(x+\ii0)^{-1}-\ii(x-\ii0)^{-1}=2\pi\delta(x)\), exactly the
+one-particle contraction coefficient.  This is the rapidity form of the
+mass-shell phase-space pole: near \(z=0\), the continued total momentum
+\(p_{\bar a}(\theta+\ii\pi+z)+p_a(\theta)\) vanishes linearly in \(z\), and the
+chosen positive-energy boundary value is the one just normalized.  Thus direct
+annihilation of the adjacent \((\bar a,a)\)-pair into the vacuum contributes
 \[
   \frac{\ii}{z}
   F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n).
