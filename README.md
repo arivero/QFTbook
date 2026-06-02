@@ -7,48 +7,21 @@ Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
 
-## Complete Volume List (I-XX)
+## Complete Volume Program (I-XX)
 
-The public monograph program currently has twenty numbered volumes, listed
-explicitly below from I through XX.  Volumes
-I-XII are active reader-facing volumes compiled by `monograph/tex/main.tex` into
-the current PDF.  Volumes XIII-XX are roadmap volumes: they are part of the
-public subject architecture, but their standalone TeX assemblies will be added
-only after the same chapter-dossier, verification, frontmatter, and README
-standards are met.
+The public monograph program consists of exactly the twenty volumes listed in
+the table below.  Volumes I-XII are active reader-facing volumes compiled by
+`monograph/tex/main.tex` into the current PDF.  Volumes XIII-XX are roadmap
+volumes: they are part of the public subject architecture, and their standalone
+TeX assemblies will be added only after the same chapter-dossier,
+verification, frontmatter, and README standards are met.
 
-This table is the complete volume roster.  It is intentionally placed before
-the repository logistics so that the full subject architecture is visible on a
-first read.  Do not infer the program from
-`monograph/tex/volumes/` alone, since that directory contains only active
-compiled assemblies.  The same I--XX roster is mirrored in
-`planning/README.md` and `planning/04_master_architecture.md` so public
-planning documents and the repository entry point stay synchronized.
+This is the canonical README roster.  Do not infer the full program from
+`monograph/tex/volumes/` alone, since that directory currently contains only
+the active compiled assemblies.  The same I--XX roster is mirrored in
+`planning/README.md` and `planning/04_master_architecture.md`.
 
-At a glance, the full volume program is:
-
-1. Volume I: Foundations of Local Quantum Field Theory
-2. Volume II: Particles, Scattering, and Analyticity
-3. Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
-4. Volume IV: Gauge Theory, Infrared Structure, and Anomalies
-5. Volume V: Conformal Field Theory
-6. Volume VI: Integrable Quantum Field Theory
-7. Volume VII: Supersymmetric Quantum Field Theory
-8. Volume VIII: Topological and Cohomological Quantum Field Theory
-9. Volume IX: Global Structure, Phases, and Extended Operators
-10. Volume X: Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics
-11. Volume XI: Constructive, Lattice, and Numerical Quantum Field Theory
-12. Volume XII: Quantum Field Theory in Curved Spacetime and Background Fields
-13. Volume XIII: Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions
-14. Volume XIV: Advanced Local-Algebraic QFT and Modular Structure
-15. Volume XV: Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables
-16. Volume XVI: Advanced Supersymmetric Theories and Protected Sectors
-17. Volume XVII: Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT
-18. Volume XVIII: Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT
-19. Volume XIX: Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory
-20. Volume XX: Advanced Curved-Background, Locally Covariant, and Semiclassical QFT
-
-| Volume | Status | Title | Assembly |
+| Volume | Status | Title | Current assembly or home |
 | --- | --- | --- | --- |
 | I | Compiled | Foundations of Local Quantum Field Theory | `monograph/tex/volumes/volume_i/volume_i_current.tex` |
 | II | Compiled | Particles, Scattering, and Analyticity | `monograph/tex/volumes/volume_ii/volume_ii_current.tex` |
@@ -62,14 +35,14 @@ At a glance, the full volume program is:
 | X | Compiled | Thermal Quantum Field Theory, Hydrodynamics, and Nonequilibrium Dynamics | `monograph/tex/volumes/volume_x/volume_x_current.tex` |
 | XI | Compiled | Constructive, Lattice, and Numerical Quantum Field Theory | `monograph/tex/volumes/volume_xi/volume_xi_current.tex` |
 | XII | Compiled | Quantum Field Theory in Curved Spacetime and Background Fields | `monograph/tex/volumes/volume_xii/volume_xii_current.tex` |
-| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions | Planned assembly |
-| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure | Planned assembly |
-| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables | Planned assembly |
-| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors | Planned assembly |
-| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT | Planned assembly |
-| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT | Planned assembly |
-| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory | Planned assembly |
-| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT | Planned assembly |
+| XIII | Roadmap | Large-N Gauge Theory, QCD Strings, Flux Tubes, Baryons, and Gauge-String Expansions | Roadmap; material presently distributed across Volumes IV, VI, VII, and IX |
+| XIV | Roadmap | Advanced Local-Algebraic QFT and Modular Structure | Roadmap; material presently distributed across Volumes I, X, XI, and XII |
+| XV | Roadmap | Advanced Scattering, Amplitudes, Resonances, and Infrared-Safe Observables | Roadmap; material presently distributed across Volumes II, IV, and V |
+| XVI | Roadmap | Advanced Supersymmetric Theories and Protected Sectors | Roadmap; material presently centered in Volume VII |
+| XVII | Roadmap | Advanced Two-Dimensional CFT and Exact Two-Dimensional QFT | Roadmap; material presently distributed across Volumes V, VI, VII, and XI |
+| XVIII | Roadmap | Advanced Constructive, Stochastic, and Rigorous Wilsonian QFT | Roadmap; material presently centered in Volume XI |
+| XIX | Roadmap | Advanced Phases, Defects, Categorical Symmetry, and Extended-Operator Theory | Roadmap; material presently distributed across Volumes VIII and IX |
+| XX | Roadmap | Advanced Curved-Background, Locally Covariant, and Semiclassical QFT | Roadmap; material presently centered in Volume XII |
 
 The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
