@@ -1828,7 +1828,9 @@ Current checks:
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
   quantum-modified constraint, massive-SQCD elimination to pure-SYM branch
   superpotentials, source identity, and mass-source/Konishi ledger, and the
-  conformal-window/free-phase inequalities.
+  conformal-window/free-phase inequalities.  These finite checks verify the
+  displayed algebraic consistency conditions; they do not constitute a proof of
+  Seiberg duality or of the existence of the infrared fixed points.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
   Uhlenbeck stratum codimension arithmetic, the positive-ADHM-moment-map

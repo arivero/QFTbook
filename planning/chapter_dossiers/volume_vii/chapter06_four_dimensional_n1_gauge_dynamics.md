@@ -150,9 +150,13 @@ brane construction, or holographic interpretation is a premise of the chapter.
   needed before comparing electric and magnetic SQCD infrared limits.
 - `qt:sqcd-seiberg-duality-input`: quoted nonperturbative status boundary
   for SQCD Seiberg duality.
-- `prop:sqcd-seiberg-deformation-tests`: explicit mass-deformation and
-  Higgs-deformation consistency tests for the SQCD magnetic field content,
-  including the boundary to the `N_f=N_c+1` confining description.
+- `par:sqcd-infrared-range-synthesis`: status-stratified SQCD infrared range
+  synthesis; the magnetic ranges use Seiberg-duality input, while the lower
+  ranges use the separately stated ADS, quantum-modified, or confining
+  chiral-coordinate inputs.
+- SQCD mass/Higgs deformation tests: explicit consistency checks for the
+  magnetic field content, including the boundary to the `N_f=N_c+1`
+  confining description.
 - `G_KW=SU(N)_1 x SU(N)_2`: Klebanov-Witten gauge group.
 - `A_i`, `B_j`: KW bifundamental chiral multiplets, transforming as
   `(N,bar N)` and `(bar N,N)`.
@@ -377,10 +381,12 @@ brane construction, or holographic interpretation is a premise of the chapter.
   rank-`r` electric meson expectation value maps to masses for `r` magnetic
   flavor pairs and leaves the dual rank unchanged as
   `(N_f-r)-(N_c-r)=N_f-N_c`.
-- Records the SQCD phase ledger with explicit logical status: ADS runaway
-  from the direct `N_f=N_c-1` instanton calculation plus holomorphic
-  decoupling, quantum-modified `N_f=N_c`, confining `N_f=N_c+1`, free
-  magnetic range, interacting conformal window, and free electric range.
+- Records the SQCD infrared range synthesis in prose rather than theorem form,
+  with explicit logical status: ADS runaway from the direct `N_f=N_c-1`
+  instanton calculation plus holomorphic decoupling, quantum-modified
+  `N_f=N_c`, confining `N_f=N_c+1`, Seiberg-duality input for the free
+  magnetic range and interacting conformal window, and perturbative electric
+  infrared freedom in the free electric range.
 - Checks the `N_f=N_c+1` confining superpotential
   `(B M tilde B - det M)/Lambda_h^(2N_c-1)` by dimension and \(R\)-charge.
 - Defines the KW gauge theory field content, global symmetries, baryon-charge
@@ -482,3 +488,9 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   local NSVZ/superpotential arithmetic used by the exact-marginality
   hypothesis; the existence and smoothness of the conformal locus remain
   explicit hypotheses.
+- 2026-06-02 SQCD range-synthesis anti-inflation pass: demoted the SQCD phase
+  table from `quotedtheorem` form to a status-stratified prose synthesis.  The
+  displayed range arithmetic remains checked by
+  `susy_n1_sqcd_duality_checks.py`, but the dossier now records explicitly
+  that these checks do not prove Seiberg duality or construct the infrared
+  fixed points.

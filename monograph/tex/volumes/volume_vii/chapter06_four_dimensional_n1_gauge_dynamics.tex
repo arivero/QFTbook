@@ -2946,28 +2946,39 @@ is a chiral \(F\)-term result whose direct semiclassical anchor,
 finite-dimensional elimination step, and decoupling assumptions are
 displayed separately.
 
-\begin{quotedtheorem}[SQCD phase table]
-\label{qt:sqcd-phase-table}
-Combining the instanton, holomorphy, and quantum-moduli-space results above
-with the Seiberg-duality input of
-Quoted Theorem~\ref{qt:sqcd-seiberg-duality-input} in the range where that
-input is invoked, massless \(SU(N_c)\) SQCD with \(N_f\) flavors has the
-following infrared table.
+\paragraph{SQCD infrared range synthesis.}
+\label{par:sqcd-infrared-range-synthesis}
+The following table is a synthesis of results and inputs with different
+logical status, not a single theorem with a uniform proof.  The
+\(N_f<N_c\) range follows from the ADS seed, holomorphic decoupling, and the
+displayed finite-dimensional elimination arguments.  The \(N_f=N_c\) and
+\(N_f=N_c+1\) entries use the quantum-modified and confining chiral-coordinate
+inputs stated earlier in the section.  The magnetic ranges
+\(N_f\geq N_c+2\) use the nonperturbative Seiberg-duality input of
+Quoted Theorem~\ref{qt:sqcd-seiberg-duality-input} under
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}.  The one-loop signs below
+are Wilsonian coordinate checks on the proposed infrared variables; by
+themselves they do not construct the continuum infrared fixed points or prove
+the electric-magnetic equivalence.
 \begin{description}
 \item[\(N_f<N_c\).]
-The ADS superpotential is generated.  With no tree-level mass terms there is
-no supersymmetric vacuum at finite meson expectation value; the potential has
-a runaway direction on the maximal-rank meson patch.
+Status: ADS/holomorphic-decoupling result under the instanton and chiral
+coordinate hypotheses already stated.  The ADS superpotential is generated.
+With no tree-level mass terms there is no supersymmetric vacuum at finite
+meson expectation value; the potential has a runaway direction on the
+maximal-rank meson patch.
 \item[\(N_f=N_c\).]
-There is no generated superpotential, but the chiral coordinate ring is
-quantum modified:
+Status: quantum-modified chiral-coordinate input checked against the
+decoupling from the \(N_f=N_c+1\) description.  There is no generated
+superpotential, but the chiral coordinate ring is quantum modified:
 \[
   \det M-B\widetilde B=\Lambda_h^{2N_c}.
 \]
 \item[\(N_f=N_c+1\).]
-The infrared chiral description is confining in terms of mesons and baryons.
-If \(B_i\) and \(\widetilde B^j\) denote the baryons with one flavor index
-left over, the exact superpotential is
+Status: confining chiral-coordinate input with the mass-decoupling and anomaly
+checks displayed above.  The infrared chiral description is in terms of mesons
+and baryons.  If \(B_i\) and \(\widetilde B^j\) denote the baryons with one
+flavor index left over, the exact superpotential is
 \begin{equation}
   W_{\mathrm{conf}}
   =
@@ -2976,8 +2987,9 @@ left over, the exact superpotential is
   \label{eq:sqcd-sconfining-superpotential}
 \end{equation}
 \item[\(N_c+2\leq N_f<\frac32N_c\).]
-The magnetic gauge group \(SU(N_f-N_c)\) is infrared free, since its
-one-loop coefficient is
+Status: Seiberg-duality input plus perturbative sign check in the magnetic
+variables.  The magnetic gauge group \(SU(N_f-N_c)\) is infrared free, since
+its one-loop coefficient is
 \[
   b_{0,\mathrm{mag}}
   =
@@ -2988,17 +3000,19 @@ one-loop coefficient is
 The appropriate low-energy variables are the magnetic quarks, magnetic
 gluons, and meson singlets.
 \item[\(\frac32N_c<N_f<3N_c\).]
-Both electric and magnetic variables are asymptotically free and flow, under
-the quoted duality input, to the same interacting nonabelian Coulomb-phase
-SCFT.  The lower endpoint is detected by the electric meson unitarity bound,
-and the upper endpoint by the electric loss of asymptotic freedom.
+Status: Seiberg-duality input plus SCFT-current and accidental-symmetry
+hypotheses.  Both electric and magnetic variables are asymptotically free and
+flow, under that input, to the same interacting nonabelian Coulomb-phase SCFT.
+The lower endpoint is detected by the electric meson unitarity bound, and the
+upper endpoint by the electric loss of asymptotic freedom.
 \item[\(N_f\geq3N_c\).]
-The electric variables are in the free electric phase.  For
-\(N_f>3N_c\) the electric gauge coupling is infrared free in the usual
-perturbative sense; at \(N_f=3N_c\) the interacting Banks--Zaks fixed point
-has collided with the Gaussian endpoint in this table.
+Status: perturbative electric infrared-freedom statement, with the marginal
+endpoint interpreted in the same Wilsonian coordinate convention.  The
+electric variables are in the free electric phase.  For \(N_f>3N_c\) the
+electric gauge coupling is infrared free in the usual perturbative sense; at
+\(N_f=3N_c\) the interacting Banks--Zaks fixed point has collided with the
+Gaussian endpoint in this table.
 \end{description}
-\end{quotedtheorem}
 
 \section{Klebanov--Witten Conifold SCFT}
 \label{sec:n1-klebanov-witten-conifold}
