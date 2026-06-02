@@ -635,7 +635,10 @@ Current checks:
   amplification formula used to separate stable comparison estimates from
   unstable tuning data, plus the projective observable-germ finite-window
   certificate used to prevent finite observable agreement from being
-  overstated as full universality.  It also checks the one-step polymer
+  overstated as full universality.  It also checks the QFT-strength
+  observable-germ warning that matching a visible finite correlator window
+  can miss a hidden OS-positivity Gram-window failure.  It also checks the
+  one-step polymer
   contraction budget \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\varepsilon_k\),
   including the finite radius smallness condition, the quadratic
   circle-product bound, the finite interval pair-overlap majorant

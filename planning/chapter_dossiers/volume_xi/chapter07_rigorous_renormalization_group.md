@@ -60,6 +60,9 @@ constructive RG developments.
 - `A_frak`, `O_alpha`, `pi_alpha_beta`, `O_germ`: directed family of finite
   observation windows, Banach observable windows, projection maps, and the
   projective-limit observable germ used to define universality classes.
+- `S_{a_1...a_n}`, `E`, `G_OS`: Schwinger distribution windows, finite
+  test-function subspaces, and finite reflection-positivity Gram windows in
+  a local-QFT-strength observable germ.
 - `G`: normalization group acting continuously on observable data.
 - `a_k`, `q`, `B_k`, `Delta_phi`: ordinary short-range scalar lattice spacing,
   block kernel, block-spin map, and field scaling exponent.
@@ -209,6 +212,11 @@ constructive RG developments.
   normalized observable germs in a projective topology of finite observation
   windows, and separates finite-window certificates from theorem-level
   convergence in the full directed family.
+- Defines a local-QFT-strength observable germ: the directed observable
+  family must include full tempered distribution windows, OS or Wightman
+  positivity windows, covariance/locality identities, source contact-term
+  data, and reconstruction growth hypotheses before a universality statement
+  can be read as equality of reconstructed local QFTs.
 - Proves that universality is an equivalence relation once convergence to a
   common reconstructed observable datum is part of the theorem.
 - Defines correction-to-scaling data as part of a sharpened Wilsonian
@@ -241,10 +249,12 @@ remainder contraction.
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
   estimate, relevant-direction amplification formula, and projective
-  observable-germ finite-window certificate.  The same script now checks the
-  exact finite arithmetic behind the polymer contraction budget and the
-  quadratic circle-product bound, including a finite interval enumeration of
-  the pair-overlap majorant entering \(B_{\rm pol}\).
+  observable-germ finite-window certificate.  The same script now checks a
+  finite OS-positivity Gram-window failure that is invisible in a declared
+  one-coordinate observable window, and it checks the exact finite arithmetic
+  behind the polymer contraction budget and the quadratic circle-product
+  bound, including a finite interval enumeration of the pair-overlap
+  majorant entering \(B_{\rm pol}\).
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -277,6 +287,15 @@ remainder contraction.
   short-range RG check now enumerates connected intervals in a finite
   one-dimensional block line exactly, verifying the finite pair-overlap
   arithmetic that models the geometric counting step.
+- 2026-06-02 local-QFT-strength observable-germ pass: inserted the missing
+  bridge from projective observable-window universality to equality of a
+  reconstructed local QFT.  The new definition requires full distribution
+  windows, OS or Wightman positivity windows, covariance/locality identities,
+  contact-term data, and growth hypotheses before RG universality is allowed
+  to invoke OS or Wightman reconstruction.  The companion short-range RG
+  check now exhibits an exact finite hidden-window failure: a visible
+  two-point coordinate can agree while an undeclared reflection-positivity
+  Gram determinant is negative.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

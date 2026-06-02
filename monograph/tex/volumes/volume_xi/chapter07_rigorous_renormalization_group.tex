@@ -2566,6 +2566,79 @@ critical exponents, amplitude ratios, or correlation functions is a
 finite-window statement until the remaining windows are controlled.
 \end{definition}
 
+The preceding definition deliberately uses observable windows rather than
+the phrase ``the same theory.''  Equality of a few numerical quantities, or
+even of a large but finite list of reconstructed correlators, is not equality
+of local QFT data.  The bridge to a local quantum field theory requires that
+the projective family contain enough test-function windows, positivity
+conditions, covariance identities, and growth bounds to feed one of the
+reconstruction frameworks developed in
+Chapters~\ref{ch:volume-iv-osterwalder-schrader-reconstruction} and
+\ref{ch:volume-iv-wightman-fields-reconstruction}.
+
+\begin{definition}[Local-QFT-strength observable germ]
+\label{def:local-qft-strength-observable-germ}
+An observable-germ universality datum is \emph{local-QFT-strength} for an
+Euclidean scalar or gauge-invariant observable sector if its directed family
+\(\mathfrak A\) contains, as compatible subwindows, the following data.
+\begin{enumerate}
+  \item For each finite list of observable labels
+  \(a_1,\ldots,a_n\) and each finite-dimensional subspace
+  \(E\subset\mathcal S((\mathbb R^D)^n)\) of test functions, a window that
+  records the values of a distribution
+  \(S_{a_1\ldots a_n}\in\mathcal S'((\mathbb R^D)^n)\) on \(E\).  Taking the
+  projective limit over \(E\) recovers the full tempered distribution, not
+  only pointwise or finite-moment data.
+  \item Windows recording the algebraic identities required of the sector:
+  permutation or graded permutation covariance, Euclidean covariance,
+  reflection compatibility for the chosen time direction, and the local
+  source-counterterm subspace whose derivatives are distributions supported
+  on collision diagonals.
+  \item Windows recording the positivity forms used in reconstruction.  In
+  the OS route these are the finite reflection-positivity Gram matrices for
+  test functions supported at positive Euclidean time.  In a directly
+  Lorentzian route they are the Wightman positivity forms on the polynomial
+  test-field algebra.
+  \item The growth or regularity hypotheses needed by the chosen
+  reconstruction theorem.  For the OS-to-Wightman route this includes the
+  corrected OS-II growth hypothesis used in
+  Chapter~\ref{ch:volume-iv-osterwalder-schrader-reconstruction}; for the
+  Wightman route it includes temperedness, the spectrum condition, locality,
+  and the common invariant domain structure.
+  \item If vacuum uniqueness or particle data are part of the claim, windows
+  for cluster properties or spectral projections in the declared observable
+  topology.
+\end{enumerate}
+The normalization group is restricted to transformations of the observable
+labels, coordinates, metric factors, and source normalizations that preserve
+these identities and positivity forms.
+\end{definition}
+
+\paragraph{When universality reconstructs the same local QFT.}
+Suppose a Wilsonian universality statement has a local-QFT-strength
+observable germ and that the normalized reconstructions of all microscopic
+regulators converge to a common germ \(O_\ast\).  The common germ then
+determines a common Schwinger or Wightman hierarchy in the sense of the
+chosen reconstruction framework.  Applying the reconstruction theorem
+proved earlier in the monograph gives the corresponding Hilbert space,
+vacuum vector, fields or observable algebra, and spacetime symmetry
+representation.  Thus the phrase ``the regulators define the same local QFT''
+means: after the declared normalizations, their full local-QFT-strength
+observable germs converge to one reconstruction input, and the reconstructed
+presentations are identified by the uniqueness clause of that reconstruction
+theorem.  Contact-term choices are part of the source-local extension data;
+they may change extensions across collision diagonals without changing the
+separated-point germ.
+
+This paragraph is not an additional fixed-point theorem.  It records the
+dependency chain that a model-specific universality theorem must establish:
+RG attraction in a Banach chart, convergence of the full projective
+observable germ, verification of OS or Wightman positivity and growth
+hypotheses, and then reconstruction.  A calculation of critical exponents,
+a finite bootstrap table, a finite tensor-window comparison, or a lattice
+finite-size scaling plot supplies only the finite windows it actually
+controls.
+
 The finite-window form is still useful because it is the object produced by
 simulations, rigorous finite-volume estimates, and perturbative
 calculations.  If \(\mathfrak A_0\subset\mathfrak A\) is finite and, for

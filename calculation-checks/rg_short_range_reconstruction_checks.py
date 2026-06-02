@@ -11,10 +11,13 @@ has the displayed geometric form, and an auxiliary RG theorem transfers to
 the short-range target only when the one-step intertwining defects remain
 controlled after stable or relevant RG amplification.  The observable-germ
 checks verify that finite-window agreement is a projective, seminorm-level
-certificate rather than a substitute for full universality.  The polymer
-checks verify the exact finite arithmetic behind the one-step contraction
-budget: linear irrelevant gain, a finite pair-overlap majorant for the
-quadratic circle product, and a finite local-coordinate extraction defect.
+certificate rather than a substitute for full universality, and that
+QFT-strength observable germs must include reflection-positivity Gram
+windows rather than only a visible finite list of correlator coordinates.
+The polymer checks verify the exact finite arithmetic behind the one-step
+contraction budget: linear irrelevant gain, a finite pair-overlap majorant
+for the quadratic circle product, and a finite local-coordinate extraction
+defect.
 The multiscale polymer checks verify the forced-recursion sum that turns the
 one-step budget into a scale-uniform smallness condition.
 """
@@ -287,6 +290,58 @@ def check_observable_germ_finite_window_certificate():
     )
 
 
+def check_qft_strength_observable_germ_windows():
+    # A visible one-coordinate window can agree while an undeclared
+    # reflection-positivity Gram window fails.  This finite check models the
+    # chapter's point that equality of a local QFT requires the whole
+    # OS/Wightman reconstruction germ, not only a finite observable list.
+    visible_two_point = Fraction(2)
+    positive_gram = [
+        [visible_two_point, Fraction(1)],
+        [Fraction(1), Fraction(3)],
+    ]
+    positive_det = (
+        positive_gram[0][0] * positive_gram[1][1]
+        - positive_gram[0][1] ** 2
+    )
+    assert_equal(
+        "project Gram to visible two-point",
+        positive_gram[0][0],
+        visible_two_point,
+    )
+    assert_true("declared OS Gram determinant positive", positive_det > 0)
+
+    hidden_bad_gram = [
+        [visible_two_point, Fraction(3)],
+        [Fraction(3), Fraction(1)],
+    ]
+    hidden_bad_det = (
+        hidden_bad_gram[0][0] * hidden_bad_gram[1][1]
+        - hidden_bad_gram[0][1] ** 2
+    )
+    assert_equal(
+        "hidden bad Gram has same visible coordinate",
+        hidden_bad_gram[0][0],
+        visible_two_point,
+    )
+    assert_true("hidden bad OS Gram determinant negative", hidden_bad_det < 0)
+
+    error_i = Fraction(1, 100)
+    error_j = Fraction(1, 120)
+    rec_i_visible = visible_two_point + error_i
+    rec_j_visible = visible_two_point - error_j
+    finite_certificate = abs(rec_i_visible - rec_j_visible)
+    assert_equal(
+        "visible finite-window certificate",
+        finite_certificate,
+        error_i + error_j,
+    )
+    assert_true(
+        "visible certificate does not detect hidden positivity failure",
+        hidden_bad_det < 0 and finite_certificate < 1,
+    )
+
+
 def check_polymer_contraction_budget():
     # The chapter's polymer datum gives
     #   x_{k+1} <= q x_k + B x_k^2 + epsilon.
@@ -442,6 +497,7 @@ def main():
     check_auxiliary_transfer_telescoping_bound()
     check_relevant_direction_tuning_amplification()
     check_observable_germ_finite_window_certificate()
+    check_qft_strength_observable_germ_windows()
     check_polymer_contraction_budget()
     check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()
