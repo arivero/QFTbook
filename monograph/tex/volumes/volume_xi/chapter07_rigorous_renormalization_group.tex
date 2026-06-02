@@ -3000,6 +3000,83 @@ if the available source radius shrinks with \(n\), if the supremum in
 growth, or if only connected cumulants are bounded without a summable
 partition estimate, the OS-II analytic input has not been obtained.
 
+\paragraph{From connected cumulants to moments.}
+The source functional most directly produced by a polymer or cluster RG
+construction is often \(W_{k,E}=\log Z_{k,E}\), hence connected cumulants.
+The corrected OS-II growth hypothesis is a bound on Schwinger functions
+themselves.  The passage from one to the other is the moment--cumulant
+partition sum, and its constants must be controlled uniformly in the number
+of insertions.
+
+\begin{lemma}[Cumulant partition bound for OS-II moments]
+\label{lem:rg-cumulant-partition-osii-bound}
+Fix \(n\geq1\), test functions \(h_1,\ldots,h_n\), and the seminorm
+\(q_{1,N_n}\) used in the preceding paragraph.  For each nonempty
+\(B\subset\{1,\ldots,n\}\), let
+\(\kappa_B(h_B)\) be the connected cumulant with insertion set \(B\), where
+\(h_B=(h_i)_{i\in B}\).  Assume that constants
+\(A_{\rm c},C_{\rm c},\gamma_{\rm c}\), independent of \(n\) and of the
+chosen test functions, satisfy
+\begin{equation}
+  |\kappa_B(h_B)|
+  \leq
+  A_{\rm c}\,C_{\rm c}^{|B|}\,(|B|!)^{\gamma_{\rm c}}
+  \prod_{i\in B}q_{1,N_n}(h_i)
+  \label{eq:rg-connected-cumulant-osii-input}
+\end{equation}
+for every nonempty \(B\).  Let
+\[
+  M_n(h_1,\ldots,h_n)
+  =
+  \sum_{\pi\in\Pi_n}\prod_{B\in\pi}\kappa_B(h_B)
+\]
+be the corresponding Schwinger moment, with \(\Pi_n\) the set of set
+partitions of \(\{1,\ldots,n\}\).  Then
+\begin{equation}
+  |M_n(h_1,\ldots,h_n)|
+  \leq
+  \bigl(2C_{\rm c}\max(1,A_{\rm c})\bigr)^n
+  (n!)^{\gamma_{\rm c}+1}
+  \prod_{i=1}^n q_{1,N_n}(h_i).
+  \label{eq:rg-connected-to-moment-osii-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The moment--cumulant identity is the finite identity obtained by expanding
+\(\exp W\).  Taking absolute values and applying
+\eqref{eq:rg-connected-cumulant-osii-input} gives
+\[
+  |M_n(h_1,\ldots,h_n)|
+  \leq
+  C_{\rm c}^{n}
+  \prod_{i=1}^n q_{1,N_n}(h_i)
+  \sum_{\pi\in\Pi_n}
+  A_{\rm c}^{|\pi|}
+  \prod_{B\in\pi}(|B|!)^{\gamma_{\rm c}} .
+\]
+For every partition \(\pi\), one has
+\(\prod_{B\in\pi}|B|!\leq n!\), since the left hand side counts
+permutations internal to the blocks and is bounded by all permutations of
+the \(n\) labels.  Also
+\(A_{\rm c}^{|\pi|}\leq \max(1,A_{\rm c})^n\).  Finally,
+\(|\Pi_n|\leq 2^{n-1}n!\): every partition can be obtained by choosing a
+permutation of the \(n\) labels and then choosing cuts between consecutive
+labels, so the stated number is a surjective overcount.  Combining these
+three bounds gives \eqref{eq:rg-connected-to-moment-osii-bound}.
+\end{proof}
+
+Consequently a connected-cumulant RG theorem can feed the corrected OS-II
+hypothesis only after the constants in
+\eqref{eq:rg-connected-cumulant-osii-input} are obtained uniformly in the
+insertion number and with the declared seminorm order \(N_n=N_0+C_{\rm OS}n\).
+The estimate loses one factorial power when no sharper partition control is
+available.  This loss is part of the theorem statement, not a matter of
+notation: if the connected bound carries constants depending on the number
+of clusters, on the source-window dimension, or on an \(n\)-dependent radius,
+then \eqref{eq:rg-connected-to-moment-osii-bound} does not supply the OS-II
+growth input.
+
 \paragraph{RG-chart control of a holomorphic source window.}
 The hypothesis
 \eqref{eq:short-range-source-window-uniform-convergence} is not supplied by

@@ -750,3 +750,14 @@ remainder contraction.
   \(B_{\rm OS}=C_\pi B/\rho\) in the OS-II growth estimate.  The companion
   short-range RG check verifies the exact rational bookkeeping and detects
   shrinking source radius as a failure mode.
+- 2026-06-02 connected-to-moment OS-II pass: inserted the missing
+  moment--cumulant partition bridge after the source-majorant paragraph.  The
+  chapter now proves that uniform connected-cumulant bounds
+  \(A_{\rm c}C_{\rm c}^{|B|}(|B|!)^{\gamma_{\rm c}}\) imply Schwinger moment
+  bounds with base \(2C_{\rm c}\max(1,A_{\rm c})\) and factorial exponent
+  \(\gamma_{\rm c}+1\), provided the constants are uniform in the insertion
+  number and in the declared OS-II seminorm order.  The pass makes explicit
+  that connected source estimates alone do not feed OS reconstruction if the
+  cluster-count constants or source radii grow with \(n\).  The companion
+  short-range RG check enumerates set partitions exactly and detects hidden
+  cluster-count growth as a failure mode.

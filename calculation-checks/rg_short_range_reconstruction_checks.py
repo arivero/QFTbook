@@ -44,6 +44,9 @@ actual cumulant distribution windows.
 The OS-II source-majorant check verifies the finite Cauchy/projective-seminorm
 bookkeeping that turns a uniform moment-source majorant into the
 linear-growth bound needed by corrected Osterwalder-Schrader reconstruction.
+The connected-to-moment OS-II check verifies the exact set-partition
+bookkeeping that turns uniform connected-cumulant bounds into Schwinger
+moment bounds, including the factorial-exponent loss.
 The source-chart-to-window check verifies the Lipschitz estimate that turns
 source-extended RG-coordinate convergence, including the normalizing
 coordinate and finite-step remainder, into holomorphic source-window
@@ -1719,6 +1722,90 @@ def check_osii_source_majorant_to_growth_bound():
     )
 
 
+def check_connected_cumulant_partition_growth_to_moment_bound():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def set_partitions(labels):
+        if not labels:
+            yield []
+            return
+        first, *rest = labels
+        for partition in set_partitions(rest):
+            yield [[first]] + [block[:] for block in partition]
+            for index in range(len(partition)):
+                enlarged = [block[:] for block in partition]
+                enlarged[index] = enlarged[index] + [first]
+                yield enlarged
+
+    insertion_count = 4
+    labels = list(range(insertion_count))
+    partitions = list(set_partitions(labels))
+    assert_equal("connected-to-moment Bell number B4", len(partitions), 15)
+
+    connected_a = Fraction(3, 2)
+    connected_c = Fraction(5, 3)
+    factorial_exponent = 1
+    seminorm_product = Fraction(7, 11)
+
+    partition_weight = Fraction(0)
+    for partition in partitions:
+        block_factor = Fraction(1)
+        for block in partition:
+            block_factor *= factorial(len(block)) ** factorial_exponent
+        partition_weight += connected_a ** len(partition) * block_factor
+
+    moment_partition_bound = (
+        connected_c**insertion_count
+        * seminorm_product
+        * partition_weight
+    )
+    assert_equal("connected-to-moment partition weight", partition_weight, Fraction(2601, 16))
+    assert_equal(
+        "connected-to-moment direct partition bound",
+        moment_partition_bound,
+        Fraction(1264375, 1584),
+    )
+
+    bell_overcount = 2 ** (insertion_count - 1) * factorial(insertion_count)
+    assert_equal("connected-to-moment Bell overcount", bell_overcount, 192)
+    assert_true("connected-to-moment Bell overcount valid", len(partitions) <= bell_overcount)
+
+    osii_base = 2 * connected_c * max(Fraction(1), connected_a)
+    osii_bound = (
+        osii_base**insertion_count
+        * factorial(insertion_count) ** (factorial_exponent + 1)
+        * seminorm_product
+    )
+    assert_equal("connected-to-moment OS-II base", osii_base, Fraction(5))
+    assert_equal("connected-to-moment OS-II bound", osii_bound, Fraction(2520000, 11))
+    assert_true(
+        "connected-to-moment partition sum below OS-II bound",
+        moment_partition_bound <= osii_bound,
+    )
+
+    # The partition sum is exactly where a hidden cluster-count dependence can
+    # destroy the OS-II estimate.  This finite shadow compares the allowed
+    # A_c^{|pi|} growth with an uncontrolled extra n! per cluster.
+    bad_partition_weight = Fraction(0)
+    for partition in partitions:
+        block_factor = Fraction(1)
+        for block in partition:
+            block_factor *= factorial(len(block)) ** factorial_exponent
+        bad_partition_weight += (
+            connected_a ** len(partition)
+            * factorial(insertion_count) ** len(partition)
+            * block_factor
+        )
+    assert_true(
+        "connected-to-moment hidden cluster growth detected",
+        bad_partition_weight > partition_weight,
+    )
+
+
 def check_source_chart_to_holomorphic_window_bound():
     def factorial(n):
         value = 1
@@ -1971,6 +2058,7 @@ def main():
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()
     check_osii_source_majorant_to_growth_bound()
+    check_connected_cumulant_partition_growth_to_moment_bound()
     check_source_chart_to_holomorphic_window_bound()
     check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
