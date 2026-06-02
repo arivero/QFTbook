@@ -13,10 +13,10 @@ controlled after stable or relevant RG amplification.  The observable-germ
 checks verify that finite-window agreement is a projective, seminorm-level
 certificate rather than a substitute for full universality.  The polymer
 checks verify the exact finite arithmetic behind the one-step contraction
-budget: linear irrelevant gain, quadratic circle-product contribution, and a
-finite local-coordinate extraction defect.  The multiscale polymer checks
-verify the forced-recursion sum that turns the one-step budget into a
-scale-uniform smallness condition.
+budget: linear irrelevant gain, a finite pair-overlap majorant for the
+quadratic circle product, and a finite local-coordinate extraction defect.
+The multiscale polymer checks verify the forced-recursion sum that turns the
+one-step budget into a scale-uniform smallness condition.
 """
 
 from fractions import Fraction
@@ -331,6 +331,63 @@ def check_polymer_contraction_budget():
     assert_equal("polymer circle-product quadratic bound", product_bound, Fraction(1, 100))
 
 
+def check_polymer_pair_overlap_majorant():
+    # Finite one-dimensional shadow of the pair-overlap constant
+    # C_a^circ.  Polymers are connected intervals in a five-block line.
+    # Two intervals are incompatible when they overlap or are adjacent, so
+    # their reblocked hull is still controlled by a local counting constant.
+    block_count = 5
+    omega = Fraction(1, 4)  # exact stand-in for exp(-a)
+    intervals = [
+        (left, right)
+        for left in range(block_count)
+        for right in range(left, block_count)
+    ]
+
+    def length(interval):
+        return interval[1] - interval[0] + 1
+
+    def incompatible(first, second):
+        return not (first[1] + 1 < second[0] or second[1] + 1 < first[0])
+
+    def hull(first, second):
+        return (min(first[0], second[0]), max(first[1], second[1]))
+
+    block_sums = []
+    for block in range(block_count):
+        total = Fraction(0)
+        for first in intervals:
+            for second in intervals:
+                if not incompatible(first, second):
+                    continue
+                joined = hull(first, second)
+                if joined[0] <= block <= joined[1]:
+                    total += omega ** (length(first) + length(second))
+        block_sums.append(total)
+
+    expected = [
+        Fraction(421281, 1048576),
+        Fraction(763825, 1048576),
+        Fraction(866481, 1048576),
+        Fraction(763825, 1048576),
+        Fraction(421281, 1048576),
+    ]
+    assert_equal("polymer pair-overlap block sums", block_sums, expected)
+    pair_majorant = max(block_sums)
+    assert_equal("polymer pair-overlap majorant", pair_majorant, Fraction(866481, 1048576))
+
+    regulator_constant = Fraction(3, 2)
+    norm_1 = Fraction(1, 10)
+    norm_2 = Fraction(1, 7)
+    admissible_b_pol = regulator_constant * pair_majorant
+    product_bound = admissible_b_pol * norm_1 * norm_2
+    assert_equal(
+        "polymer pair-overlap circle-product bound",
+        product_bound,
+        Fraction(371349, 20971520),
+    )
+
+
 def check_polymer_multiscale_forcing_budget():
     theta = Fraction(2, 5)
     sigma = Fraction(1, 3)
@@ -386,6 +443,7 @@ def main():
     check_relevant_direction_tuning_amplification()
     check_observable_germ_finite_window_certificate()
     check_polymer_contraction_budget()
+    check_polymer_pair_overlap_majorant()
     check_polymer_multiscale_forcing_budget()
     print("All short-range scalar RG reconstruction checks passed.")
 

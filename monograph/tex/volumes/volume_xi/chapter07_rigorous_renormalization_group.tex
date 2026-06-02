@@ -645,6 +645,73 @@ following finite-regulator data.
   The constant \(B_{\rm pol}\) is a consequence of the finite overlap
   constant \(\mathfrak C_a\), the compatibility convention, and the
   multiplicative behavior of \(G_k\).  It is not a universal number.
+
+  The finite-overlap content can be made explicit at the level of scalar
+  majorants.  Put
+  \[
+    M_i(X)
+    =
+    \sup_{\phi\in\Phi_k}
+    \frac{|K_i(X,\phi)|_{h_k}}{G_k(X,\phi)} .
+  \]
+  Suppose that the analytic norm and large-field regulator satisfy the
+  submultiplicative estimate
+  \begin{equation}
+    \frac{|K_1(X_1,\phi)K_2(X_2,\phi)|_{h_{k+1}}}
+         {G_{k+1}(\overline{X_1\cup X_2},\phi)}
+    \leq
+    C_G\,M_1(X_1)M_2(X_2)
+    \label{eq:polymer-regulator-submultiplicative-bound}
+  \end{equation}
+  for every incompatible pair entering
+  \eqref{eq:rg-polymer-circle-product}.  Define the pair-overlap majorant
+  \begin{equation}
+    \mathfrak C_a^\circ
+    =
+    \sup_{\Delta\in\mathbb B_{k+1}}
+    \sum_{\substack{X_1,X_2\in\mathcal P_k\\
+      X_1\not\sim X_2,
+      \overline{X_1\cup X_2}\supset\Delta}}
+    \exp\!\left\{
+      a|\overline{X_1\cup X_2}|_{k+1}
+      -a|X_1|_k-a|X_2|_k
+    \right\}.
+    \label{eq:polymer-pair-overlap-majorant}
+  \end{equation}
+  If \(\mathfrak C_a^\circ<\infty\), then
+  \(B_{\rm pol}=C_G\mathfrak C_a^\circ\) is admissible in
+  \eqref{eq:rg-polymer-circle-product-bound}.  Indeed, from
+  \eqref{eq:rg-polymer-norm},
+  \[
+    M_i(X_i)
+    \leq
+    e^{-a|X_i|_k}\|K_i\|_{k,a,h}
+  \]
+  because the norm sum contains the term \(X_i\) for each block contained in
+  \(X_i\).  Therefore, for each coarse block \(\Delta\),
+  \[
+  \begin{aligned}
+    &\sum_{Y\supset\Delta}e^{a|Y|_{k+1}}
+      \sup_\phi
+      \frac{|(K_1\circ_kK_2)(Y,\phi)|_{h_{k+1}}}{G_{k+1}(Y,\phi)}
+      \\
+    &\qquad\leq
+      C_G\|K_1\|_{k,a,h}\|K_2\|_{k,a,h}
+      \sum_{\substack{X_1,X_2\\
+      X_1\not\sim X_2,
+      \overline{X_1\cup X_2}\supset\Delta}}
+      e^{a|\overline{X_1\cup X_2}|_{k+1}
+        -a|X_1|_k-a|X_2|_k}
+      \\
+    &\qquad\leq
+      C_G\mathfrak C_a^\circ
+      \|K_1\|_{k,a,h}\|K_2\|_{k,a,h}.
+  \end{aligned}
+  \]
+  The model-specific proof must bound \(\mathfrak C_a^\circ\) uniformly in
+  the volume and scale.  On a finite-range block lattice this is a geometric
+  counting estimate; with long-range covariances or nonlocal blockings it may
+  fail unless the polymer norm is strengthened.
   \item A local-coordinate extraction error \(\varepsilon_k\geq0\), measured
   in the same polymer norm, accounting for the difference between the exact
   finite-regulator RG step and the chosen local chart.  In a fully exact

@@ -115,7 +115,11 @@ constructive RG developments.
   localization remainder, the quadratic circle-product estimate, and the
   finite one-step contraction budget
   \(x_{k+1}\le qx_k+B_{\rm pol}x_k^2+\epsilon_k\), including the explicit
-  radius condition \(q+B_{\rm pol}r+\epsilon_k/r<1\).
+  radius condition \(q+B_{\rm pol}r+\epsilon_k/r<1\).  The circle-product
+  estimate is now derived from a submultiplicative large-field regulator
+  bound and a finite pair-overlap majorant
+  \(\mathfrak C_a^\circ\), making visible which geometric counting estimate
+  a model-specific proof must supply.
 - Derives the scale-summed polymer forcing estimate
   \(x_n\le\theta^n x_0+\sum_{j<n}\theta^{n-1-j}\epsilon_j\), including the
   closed geometric envelope for \(\epsilon_j\le E\sigma^j\) and the uniform
@@ -239,7 +243,8 @@ remainder contraction.
   estimate, relevant-direction amplification formula, and projective
   observable-germ finite-window certificate.  The same script now checks the
   exact finite arithmetic behind the polymer contraction budget and the
-  quadratic circle-product bound.
+  quadratic circle-product bound, including a finite interval enumeration of
+  the pair-overlap majorant entering \(B_{\rm pol}\).
 - `calculation-checks/lattice_gauge_blocking_checks.py`: exact finite \(S_3\)
   checks for gauge-compatible path blocking, including endpoint covariance,
   equality of the blocked coarse Wilson loop with the concatenated fine
@@ -264,6 +269,14 @@ remainder contraction.
   one-step polymer estimate and a scale-uniform trajectory estimate, while
   preserving the open model-specific burden of constructing the constants
   and source extensions for ordinary short-range critical scalar theories.
+- 2026-06-02 polymer pair-overlap pass: expanded the circle-product estimate
+  in the one-step polymer RG datum into an explicit scalar-majorant
+  derivation.  The chapter now defines the pair-overlap constant
+  \(\mathfrak C_a^\circ\), displays the submultiplicative regulator input,
+  and derives \(B_{\rm pol}=C_G\mathfrak C_a^\circ\).  The companion
+  short-range RG check now enumerates connected intervals in a finite
+  one-dimensional block line exactly, verifying the finite pair-overlap
+  arithmetic that models the geometric counting step.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass
