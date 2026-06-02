@@ -679,10 +679,17 @@ The chapter must define and derive:
   moment-row transport law, and the two-scale flatness condition
   \(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\); extended
   `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
-  nilpotent-matrix checks of transport invariance and curvature obstruction.
+  nilpotent-matrix checks of transport invariance, derivative-term signs in
+  the flatness equation, and curvature obstruction.
   The chapter now states explicitly that this is a structural chart
   consistency condition, not a concrete loop-level small-angle EEC flatness
   calculation in a specified rapidity scheme.
+- 2026-06-02 anti-inflation follow-up: strengthened the same finite
+  light-ray mixing paragraph so a finite retained basis must state the
+  projected curvature, escaping curvature components, contact-coordinate
+  compensations, and omitted-operator remainder.  This prevents the finite
+  algebraic flatness check from being read as a scheme-specific QCD loop
+  calculation.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,

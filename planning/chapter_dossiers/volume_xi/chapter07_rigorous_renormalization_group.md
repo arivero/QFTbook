@@ -492,6 +492,11 @@ remainder contraction.
   This pass deliberately does not claim existence of the Wilson-Fisher fixed
   point; it sharpens issue #505 by identifying exactly what remains to be
   proved in a model-specific construction.
+- 2026-06-02 anti-inflation follow-up: renamed the visible "assembly datum"
+  prose in the ordinary short-range scalar OS passage to reconstruction
+  requirements.  The label is retained for cross-reference stability, but the
+  reader-facing language now emphasizes the actual estimates and directed
+  Gram-window/growth requirements rather than a generic package name.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

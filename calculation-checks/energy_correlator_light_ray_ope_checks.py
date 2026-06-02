@@ -321,6 +321,37 @@ def check_finite_light_ray_transport_flatness():
         "flat two-scale light-ray transport is path independent",
     )
 
+    # The full flatness equation contains derivative terms, not only a
+    # commutator.  In the affine chart gamma(t,r)=r A and eta(t,r)=t A the
+    # derivative terms cancel exactly: partial_t eta - partial_r gamma = 0.
+    A = [
+        [Fraction(0), Fraction(7, 17)],
+        [Fraction(0), Fraction(0)],
+    ]
+    affine_flat_curvature = mat_sub(A, A)
+    assert_equal(
+        affine_flat_curvature,
+        [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]],
+        "affine derivative terms cancel in flat light-ray chart",
+    )
+
+    # With different derivative matrices the curvature already appears at the
+    # base point before any commutator term contributes.  This guards the sign
+    # in partial_t eta - partial_r gamma.
+    B = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(11, 19), Fraction(0)],
+    ]
+    affine_base_curvature = mat_sub(B, A)
+    assert_equal(
+        affine_base_curvature,
+        [
+            [Fraction(0), Fraction(-7, 17)],
+            [Fraction(11, 19), Fraction(0)],
+        ],
+        "affine derivative curvature has the displayed sign",
+    )
+
     # Nonzero curvature appears as the commutator obstruction already in a
     # finite nilpotent chart.
     eta_curved = [

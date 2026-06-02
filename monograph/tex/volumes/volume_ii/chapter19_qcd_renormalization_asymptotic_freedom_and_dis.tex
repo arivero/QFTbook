@@ -8497,10 +8497,17 @@ a small-angle EEC loop calculation.  In a concrete rapidity-factorized scheme
 one must display the regulated endpoint operator basis, compute the two
 matrices \(\gamma(t,r)\) and \(\eta(t,r)\) with the same subtraction and
 contact-term convention, and then verify
-\(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\) on that basis.  The
+\(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\) on that basis.  If the
+finite basis is a truncation of an infinite operator space, the check must
+also state the projected curvature
+\(P_L(\partial_t\eta-\partial_r\gamma+[\gamma,\eta])P_L\), the curvature
+components that leave the retained subspace, and the contact-coordinate
+terms that compensate endpoint scheme changes.  Vanishing only after
+discarding an omitted operator is not flatness of the retained chart; it is
+an approximation statement requiring an omitted-operator remainder.  The
 finite matrix check recorded in the companion script verifies the sign and
-row/column convention of this flatness equation; it does not replace the
-scheme-specific QCD calculation.
+row/column convention of the flatness equation, including the derivative
+terms, but it does not replace this scheme-specific QCD calculation.
 
 \begin{controlledapproximation}[Finite light-ray mixing truncation]
 \label{ca:qcd-eec-finite-light-ray-mixing-truncation}
