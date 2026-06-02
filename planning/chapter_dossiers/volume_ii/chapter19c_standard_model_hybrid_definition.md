@@ -148,7 +148,8 @@
   \(\rho_{\rm tree}=1\), \(B-L\) anomaly bookkeeping, Weinberg-operator
   mass normalization, singlet-neutrino tree matching, dimension-six
   one-generation basis counts and field-content dimensions, strong-CP phase
-  invariance, local and finite chiral-lattice obstruction cancellations,
+  invariance, local determinant-line obstruction cancellations, small-cell
+  anomaly-holonomy bookkeeping, finite weak-\(SU(2)\) Pfaffian parity,
   one-loop gauge beta coefficients, GUT hypercharge conversion,
   top-Higgs subsystem coefficient algebra and rank-one matrix-beta
   specialization, Higgs large-field coupling-chart
@@ -226,7 +227,10 @@
 21. A full electroweak chiral-gauge lattice regulator requires determinant
    line phase, locality, and reflection/reconstruction data beyond anomaly
    cancellation; lattice QCD matrix elements are nonperturbative inputs after
-   electroweak matching, not a construction of the full SM.
+   electroweak matching, not a construction of the full SM.  The necessary
+   anomaly-cancellation condition is the vanishing of the determinant-line
+   local curvature obstruction plus the weak-\(SU(2)\) Pfaffian sign
+   obstruction; it is not by itself a regulator construction.
 22. The Fermi operator coefficient is a tree-level matched EFT coefficient
     obtained by solving the massive charged-vector equation in a derivative
     expansion; QCD matrix elements and radiative corrections are separate
@@ -279,3 +283,9 @@
   defines \(T_Y,Q_Y,G_u\), explains the diagram-class coefficient ledger, and
   specializes the matrix equations to the rank-one top subspace.  The
   Standard Model calculation check now verifies this rank-one specialization.
+- 2026-06-02 determinant-line proof pass: expanded the finite chiral-gauge
+  regulator obstruction proof so it constructs the determinant line
+  \(\det W_L(A)^*\otimes\det V_L(A)\), identifies gauge-invariant phases as
+  equivariant nonvanishing sections, separates local small-cell holonomy from
+  the global weak-\(SU(2)\) Pfaffian sign, and keeps anomaly cancellation as a
+  necessary condition rather than a completed regulator theorem.

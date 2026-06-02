@@ -502,12 +502,29 @@ def check_chiral_lattice_obstruction_conditions() -> None:
     for name, value in local_obstructions.items():
         assert_zero(f"chiral-lattice local determinant-line obstruction {name}", value)
 
+    # In a finite determinant-line model, an infinitesimal gauge two-cell with
+    # rational area a and local anomaly coefficient c has holonomy exponent
+    # c a modulo integers.  Vanishing for all small two-cells forces c=0.
+    for name, coefficient in local_obstructions.items():
+        test_area = Fraction(1, 37)
+        assert_zero(f"determinant-line local holonomy exponent {name}", coefficient * test_area)
+
+    nonzero_toy_coefficient = Fraction(1, 6)
+    toy_holonomy_exponent = nonzero_toy_coefficient * Fraction(1, 5)
+    assert_equal(
+        "nonzero local anomaly gives nontrivial small-cell holonomy exponent",
+        toy_holonomy_exponent,
+        Fraction(1, 30),
+    )
+
     weak_doublets = sum(
         su3_dim
         for _, su3_dim, su2_dim, _, is_weak_doublet in FIELDS
         if is_weak_doublet and su2_dim == 2
     )
     assert_equal("weak-doublet parity for chiral-lattice regulator", weak_doublets % 2, 0)
+    assert_equal("SU(2) Pfaffian loop sign for one generation", (-1) ** weak_doublets, 1)
+    assert_equal("SU(2) Pfaffian loop sign for a single doublet", (-1) ** 1, -1)
 
 
 def main() -> None:

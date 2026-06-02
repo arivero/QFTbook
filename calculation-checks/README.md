@@ -51,7 +51,9 @@ Current checks:
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
   tree-level singlet-neutrino matching, the dimension-six Warsaw-type
   one-generation class counts and field-content dimensions, the local and
-  finite obstruction checks used in the chiral-lattice regulator discussion,
+  finite determinant-line obstruction checks used in the chiral-lattice
+  regulator discussion, including small-cell local holonomy exponents and
+  the weak-\(SU(2)\) Pfaffian parity sign,
   strong-CP phase invariance, one-loop gauge beta-function coefficients, GUT
   hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
   coefficients and rank-one matrix-beta specialization, the Higgs
