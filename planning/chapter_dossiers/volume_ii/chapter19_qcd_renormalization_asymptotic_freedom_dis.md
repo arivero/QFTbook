@@ -451,7 +451,11 @@ The chapter must define and derive:
       \(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\) in the same
       endpoint scheme; nonzero curvature is an obstruction to
       path-independent endpoint coordinates unless additional operators or
-      scheme-change walls are supplied.
+      scheme-change walls are supplied.  In the minimal cusp-log block,
+      \(\gamma_{\rm cusp}(t,r)=\Gamma_{\rm cusp}(t)rA\) forces
+      \(\eta_{\rm cusp}=G_{\rm cusp}(t)A\) with
+      \(G'_{\rm cusp}=\Gamma_{\rm cusp}\); the opposite rapidity sign gives
+      curvature \(-2\Gamma_{\rm cusp}A\) in the chapter's operator convention.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -690,6 +694,13 @@ The chapter must define and derive:
   compensations, and omitted-operator remainder.  This prevents the finite
   algebraic flatness check from being read as a scheme-specific QCD loop
   calculation.
+- 2026-06-02 cusp-log flatness follow-up: added the minimal cusp-log
+  rapidity chart
+  \(\gamma_{\rm cusp}(t,r)=\Gamma_{\rm cusp}(t)rA\),
+  \(\eta_{\rm cusp}=G_{\rm cusp}(t)A\), \(G'_{\rm cusp}=\Gamma_{\rm cusp}\),
+  and the wrong-sign curvature obstruction \(-2\Gamma_{\rm cusp}A\);
+  extended `calculation-checks/energy_correlator_light_ray_ope_checks.py` with
+  exact rational checks of the derivative flatness and sign obstruction.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,

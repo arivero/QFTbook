@@ -8509,6 +8509,47 @@ finite matrix check recorded in the companion script verifies the sign and
 row/column convention of the flatness equation, including the derivative
 terms, but it does not replace this scheme-specific QCD calculation.
 
+\paragraph{Minimal cusp-log flatness check.}
+A useful first check is the part of a rapidity-factorized endpoint chart that
+is forced by a cusp logarithm.  Work in a finite block in which the cusp
+endomorphism \(A\) is fixed and commutes with itself at different scales.  Let
+\(\Gamma_{\rm cusp}(t)\) denote the cusp coefficient in the same trace and
+coupling convention as the endpoint calculation, and suppose the rapidity
+dependence of the ultraviolet anomalous dimension contains
+\begin{equation}
+  \gamma_{\rm cusp}(t,r)
+  =
+  \Gamma_{\rm cusp}(t)\, r\, A .
+  \label{eq:qcd-eec-cusp-log-gamma-chart}
+\end{equation}
+Then the rapidity anomalous dimension in the same chart must contain a term
+\begin{equation}
+  \eta_{\rm cusp}(t,r)
+  =
+  G_{\rm cusp}(t)\,A,
+  \qquad
+  \frac{\dd G_{\rm cusp}}{\dd t}=\Gamma_{\rm cusp}(t),
+  \label{eq:qcd-eec-cusp-log-eta-chart}
+\end{equation}
+up to pieces whose \(t\)-derivative is zero in this block.  Indeed,
+\[
+  \partial_t\eta_{\rm cusp}
+  =
+  \Gamma_{\rm cusp}(t)A
+  =
+  \partial_r\gamma_{\rm cusp},
+  \qquad
+  [\gamma_{\rm cusp},\eta_{\rm cusp}]=0 .
+\]
+Thus the cusp-logarithmic part of
+\eqref{eq:qcd-eec-light-ray-flatness} is satisfied.  With the opposite sign in
+\eqref{eq:qcd-eec-cusp-log-eta-chart}, the curvature would be
+\(-2\Gamma_{\rm cusp}(t)A\).  The sign statement belongs to the declared
+operator convention \(\partial_t\mathbb O=-\gamma\mathbb O\),
+\(\partial_r\mathbb O=-\eta\mathbb O\).  A full small-angle EEC calculation
+must still compute the non-cusp matrices, endpoint contact counterterms, and
+operator components beyond this cusp block in one declared rapidity scheme.
+
 \begin{controlledapproximation}[Finite light-ray mixing truncation]
 \label{ca:qcd-eec-finite-light-ray-mixing-truncation}
 A finite small-angle EEC calculation based on a label set \(\mathcal I_L\)

@@ -554,7 +554,8 @@ Current checks:
   sign convention, finite \(Z^{-1}dZ\) operator mixing, finite scheme-change
   covariance, paired coefficient/operator invariance, finite path-ordered
   light-ray transport, derivative-term signs in the two-scale flatness
-  equation, flatness versus curvature obstruction, and the energy-sum
+  equation, the cusp-log rapidity chart and its wrong-sign curvature
+  obstruction, flatness versus curvature obstruction, and the energy-sum
   left-null-vector condition.
 - `energy_correlator_track_checks.py`: exact rational checks for the
   selected calorimetric measure and track-energy-correlator bookkeeping,

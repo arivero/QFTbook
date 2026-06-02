@@ -368,6 +368,35 @@ def check_finite_light_ray_transport_flatness():
     )
 
 
+def check_cusp_log_flatness_chart():
+    # Minimal cusp-log chart used in the text.  In the convention
+    # d_t O = -gamma O, d_r O = -eta O, a UV anomalous dimension with
+    # gamma_cusp(t,r)=Gamma(t) r A is flat only when the rapidity anomalous
+    # dimension contains eta_cusp(t)=G(t) A with G'(t)=Gamma(t).
+    A = [
+        [Fraction(0), Fraction(5, 11)],
+        [Fraction(0), Fraction(0)],
+    ]
+    t = Fraction(7, 13)
+    gamma_value = Fraction(3, 5) + Fraction(2, 7) * t
+    d_gamma_dr = mat_scale(gamma_value, A)
+    d_eta_dt = mat_scale(gamma_value, A)
+    curvature = mat_sub(d_eta_dt, d_gamma_dr)
+    assert_equal(
+        curvature,
+        [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]],
+        "cusp-log rapidity chart satisfies derivative flatness",
+    )
+
+    wrong_sign_d_eta_dt = mat_scale(-gamma_value, A)
+    wrong_sign_curvature = mat_sub(wrong_sign_d_eta_dt, d_gamma_dr)
+    assert_equal(
+        wrong_sign_curvature,
+        mat_scale(-2 * gamma_value, A),
+        "opposite rapidity sign gives cusp curvature obstruction",
+    )
+
+
 def main():
     rho0 = Fraction(3, 5)
 
@@ -451,6 +480,7 @@ def main():
     check_endpoint_resolution_shift()
     check_finite_light_ray_mixing_chart()
     check_finite_light_ray_transport_flatness()
+    check_cusp_log_flatness_chart()
 
     print("All EEC light-ray OPE bookkeeping checks passed.")
 
