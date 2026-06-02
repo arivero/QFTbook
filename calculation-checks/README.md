@@ -1414,6 +1414,12 @@ Current checks:
   kinematics, Newton separation of rapidity multisets, chamber braid
   relations, the rational Yang--Baxter identity, scalar two-body unitarity,
   and Watson-exchange coefficient bookkeeping.
+- `yang_baxter_internal_symmetry_checks.py`: exact checks for the Volume VI
+  Yang--Baxter/internal-symmetry chapter, including the additive
+  fixed-tensor-product rational Yang--Baxter identity, the spectral classical
+  Yang--Baxter commutator identity for \(r(u)=P/u\), and the
+  \(O(N)\) vector-channel projector algebra into singlet, antisymmetric, and
+  traceless-symmetric components.
 - `integrable_scattering_bootstrap_checks.py`: finite analytic checks for the
   Volume VI rapidity-plane bootstrap chapter, including the elementary scalar
   block unitarity identity, the crossing relation

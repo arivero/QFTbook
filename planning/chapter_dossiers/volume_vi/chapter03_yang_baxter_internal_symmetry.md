@@ -75,6 +75,21 @@
 9. The \(R\)-matrix datum is on-shell data and does not construct local
    algebras by itself.
 
+## Calculation Checks
+
+- `calculation-checks/yang_baxter_internal_symmetry_checks.py` verifies the
+  additive fixed-tensor-product rational Yang-Baxter identity, the spectral
+  classical Yang-Baxter commutator identity for \(r(u)=P/u\), and the
+  \(O(N)\) vector-channel projector decomposition used in the internal-symmetry
+  discussion.
+
+## Audit Notes
+
+- 2026-06-02 issue #561 companion-check pass: added the exact finite
+  Yang-Baxter/internal-symmetry check so that the chapter's matrix conventions
+  and projector algebra have a public reproducibility artifact distinct from
+  the Chapter 1 factorized-scattering check.
+
 ## Figures
 
 - Three-line braid/Yang--Baxter diagram.
