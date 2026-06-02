@@ -808,7 +808,10 @@ Current checks:
   verifies the Schwinger moment bound obtained from connected-cumulant bounds
   and the unavoidable factorial-exponent loss from the Bell/partition
   overcount, while hidden cluster-count growth is detected as a failure mode.
-  It also checks the
+  It also checks the polymer source-derivative norm feeding this bridge:
+  an exponentially weighted derivative-cluster norm controls both the
+  unweighted connected cumulant and the separated-support decay bound, while
+  hidden source-window growth is detected as a failure mode.  It also checks the
   source-chart-to-holomorphic-window estimate: convergence of the local
   normalizing coordinate, retained local coordinates, source-decorated
   polymer tail, and finite-step remainder gives a uniform source-window

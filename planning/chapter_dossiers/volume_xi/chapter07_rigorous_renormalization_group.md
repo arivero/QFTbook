@@ -878,6 +878,17 @@ remainder contraction.
   cluster-count constants or source radii grow with \(n\).  The companion
   short-range RG check enumerates set partitions exactly and detects hidden
   cluster-count growth as a failure mode.
+- 2026-06-02 polymer derivative-norm-to-connected-cumulant pass: inserted the
+  missing model-specific polymer estimate that must precede the
+  moment--cumulant OS-II bridge.  The chapter now defines the anchored
+  derivative cluster norm
+  \(\mathcal N_{k,B}=\sum_{\mathcal C}e^{\zeta\operatorname{diam}
+  (\operatorname{supp}\mathcal C\cup K_B)}|D_Bw_{\mathcal C}(0)|\)
+  for source clusters attaching to every source support, explains that
+  contact/source-local coordinates are separated in the RG chart, and derives
+  the connected-cumulant input plus separated-support decay from a uniform
+  bound on this norm.  The companion short-range RG check verifies the finite
+  weighted-cluster arithmetic and detects hidden source-window growth.
 - 2026-06-02 model-by-model rigorous-RG synthesis pass: added the status
   synthesis in the fixed-point claim-content section.  The text now separates
   theorem outputs for massive constructive scalar models, hierarchical and

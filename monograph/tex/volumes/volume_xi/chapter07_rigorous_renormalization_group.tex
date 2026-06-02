@@ -3516,6 +3516,89 @@ of clusters, on the source-window dimension, or on an \(n\)-dependent radius,
 then \eqref{eq:rg-connected-to-moment-osii-bound} does not supply the OS-II
 growth input.
 
+\paragraph{Polymer derivative norm behind the connected input.}
+In a polymer RG proof the connected estimate
+\eqref{eq:rg-connected-cumulant-osii-input} should be produced before the
+moment--cumulant partition sum is used.  Let \(h_1,\ldots,h_m\) be local test
+directions in a finite source window, and let \(K_i\) be the block support of
+the discretized source \(h_i\) at scale \(k\).  For
+\(\emptyset\ne B\subset\{1,\ldots,m\}\), write
+\[
+  D_B=\prod_{i\in B}\frac{\partial}{\partial z_i}\bigg|_{z=0},
+  \qquad
+  K_B=\bigcup_{i\in B}K_i .
+\]
+If the connected source functional has a cluster expansion
+\[
+  W_{k,E}(z)=\sum_{\mathcal C}w_{\mathcal C}(z),
+\]
+then the model-specific source theorem must control the derivatives
+\(D_Bw_{\mathcal C}(0)\) as part of the source extension of the polymer
+activity bounds.  A useful form of the required estimate is the anchored
+derivative norm
+\begin{equation}
+  \mathcal N_{k,B}(h_B)
+  =
+  \sum_{\mathcal C\in\mathfrak C_k(B)}
+  e^{\zeta\,\operatorname{diam}_k(
+    \operatorname{supp}\mathcal C\cup K_B)}
+  \left|D_Bw_{\mathcal C}(0)\right|,
+  \label{eq:polymer-source-derivative-norm}
+\end{equation}
+where \(\mathfrak C_k(B)\) is the family of connected clusters whose source
+dependence can attach to every \(K_i\), \(i\in B\).  For a strictly local
+source coupling this means that the support of the cluster meets each
+\(K_i\); for a block-smeared source it means the corresponding enlarged block
+support.  Source-local contact coordinates are included separately in the
+local source chart, so that
+\eqref{eq:polymer-source-derivative-norm} is the estimate for the declared
+nonlocal connected tail.
+
+The polymer input strong enough for the connected OS-II bound is
+\begin{equation}
+  \mathcal N_{k,B}(h_B)
+  \le
+  A_{\rm p}\,C_{\rm p}^{|B|}\,(|B|!)^{\gamma_{\rm p}}
+  \prod_{i\in B}q_{1,N_{|B|}}(h_i),
+  \label{eq:polymer-source-derivative-osii-bound}
+\end{equation}
+with \(A_{\rm p},C_{\rm p},\gamma_{\rm p},\zeta\) independent of \(k\), of the
+finite window \(E\), and of \(|B|\) except through the displayed factors.  The
+connected cumulant is
+\[
+  \kappa_B(h_B)=\sum_{\mathcal C\in\mathfrak C_k(B)}D_Bw_{\mathcal C}(0),
+\]
+after the contact-source coordinates assigned to \(B\) have been separated.
+Since the exponential weight in
+\eqref{eq:polymer-source-derivative-norm} is at least one,
+\eqref{eq:polymer-source-derivative-osii-bound} gives
+\eqref{eq:rg-connected-cumulant-osii-input} with
+\[
+  A_{\rm c}=A_{\rm p},\qquad
+  C_{\rm c}=C_{\rm p},\qquad
+  \gamma_{\rm c}=\gamma_{\rm p}.
+\]
+Keeping the exponential weight also records separated-cluster decay: if
+\[
+  \tau_k(K_B)=
+  \inf\{\operatorname{diam}_k(Y):Y
+  \text{ is a connected block set meeting every }K_i,\ i\in B\},
+\]
+then
+\[
+  |\kappa_B(h_B)|
+  \le
+  e^{-\zeta\tau_k(K_B)}
+  A_{\rm p}C_{\rm p}^{|B|}(|B|!)^{\gamma_{\rm p}}
+  \prod_{i\in B}q_{1,N_{|B|}}(h_i).
+\]
+Thus the load-bearing model estimate is the uniform derivative cluster norm
+\eqref{eq:polymer-source-derivative-osii-bound}.  A cluster expansion whose
+constants depend on the dimension of the source window, on an uncontrolled
+choice of source radius, or on the number of possible source attachments has
+not supplied the connected input needed by the corrected OS-II reconstruction
+theorem.
+
 \paragraph{RG-chart control of a holomorphic source window.}
 The hypothesis
 \eqref{eq:short-range-source-window-uniform-convergence} is not supplied by

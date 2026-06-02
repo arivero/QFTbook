@@ -47,6 +47,10 @@ linear-growth bound needed by corrected Osterwalder-Schrader reconstruction.
 The connected-to-moment OS-II check verifies the exact set-partition
 bookkeeping that turns uniform connected-cumulant bounds into Schwinger
 moment bounds, including the factorial-exponent loss.
+The polymer derivative-norm check verifies the finite arithmetic by which an
+exponentially weighted source-cluster derivative norm gives the connected
+cumulant input to that partition bound, and detects a hidden source-window
+growth factor.
 The source-chart-to-window check verifies the Lipschitz estimate that turns
 source-extended RG-coordinate convergence, including the normalizing
 coordinate and finite-step remainder, into holomorphic source-window
@@ -1967,6 +1971,66 @@ def check_connected_cumulant_partition_growth_to_moment_bound():
     )
 
 
+def check_polymer_derivative_norm_to_connected_cumulant_bound():
+    # This is the finite shadow of the estimate
+    #   sum_C e^{zeta diam(C cup K_B)} |D_B w_C|
+    #     <= A_p C_p^|B| (|B|!)^gamma prod_i q(h_i).
+    # We use decay = e^{-zeta} so the weighted norm is |w| / decay^diam.
+    decay = Fraction(1, 2)
+    clusters = [
+        (2, Fraction(1, 32)),
+        (3, Fraction(-1, 64)),
+        (4, Fraction(1, 128)),
+    ]
+    weighted_derivative_norm = sum(
+        abs(weight) / decay**diameter
+        for diameter, weight in clusters
+    )
+    assert_equal(
+        "polymer derivative weighted cluster norm",
+        weighted_derivative_norm,
+        Fraction(3, 8),
+    )
+
+    source_seminorm_product = Fraction(2, 3)
+    polymer_a = Fraction(3, 4)
+    polymer_c = Fraction(1)
+    insertion_count = 3
+    factorial_exponent = 0
+    connected_input_bound = (
+        polymer_a
+        * polymer_c**insertion_count
+        * source_seminorm_product
+    )
+    assert_equal("polymer derivative connected bound", connected_input_bound, Fraction(1, 2))
+    assert_true(
+        "polymer derivative norm feeds connected cumulant bound",
+        weighted_derivative_norm <= connected_input_bound,
+    )
+
+    connected_cumulant = sum(weight for _diameter, weight in clusters)
+    assert_equal("polymer derivative connected cumulant value", connected_cumulant, Fraction(3, 128))
+    assert_true(
+        "weighted polymer norm controls unweighted cumulant",
+        abs(connected_cumulant) <= weighted_derivative_norm,
+    )
+
+    minimal_connected_diameter = min(diameter for diameter, _weight in clusters)
+    separated_decay_bound = decay**minimal_connected_diameter * weighted_derivative_norm
+    assert_equal("polymer derivative separated decay bound", separated_decay_bound, Fraction(3, 32))
+    assert_true(
+        "separated decay controls connected cumulant",
+        abs(connected_cumulant) <= separated_decay_bound,
+    )
+
+    hidden_window_factor = 5
+    bad_weighted_norm = hidden_window_factor * weighted_derivative_norm
+    assert_true(
+        "polymer derivative hidden source-window growth detected",
+        bad_weighted_norm > connected_input_bound,
+    )
+
+
 def check_source_chart_to_holomorphic_window_bound():
     def factorial(n):
         value = 1
@@ -2322,6 +2386,7 @@ def main():
     check_finite_source_window_to_cumulant_distribution_bound()
     check_osii_source_majorant_to_growth_bound()
     check_connected_cumulant_partition_growth_to_moment_bound()
+    check_polymer_derivative_norm_to_connected_cumulant_bound()
     check_source_chart_to_holomorphic_window_bound()
     check_source_stable_trajectory_window_bound()
     check_finite_volume_source_window_cluster_tail()
