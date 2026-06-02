@@ -335,6 +335,12 @@ constructive RG developments.
   observable convergence, auxiliary-to-target observable comparison, target
   orbit-transfer defects, and normalization mismatch before an auxiliary RG
   theorem can be promoted to an ordinary short-range observable-germ claim.
+- Tightens the anti-inflation boundary around auxiliary transfer and
+  universality: the orbit telescope is a finite recurrence whose
+  load-bearing inputs are the comparison map, tube constants, defects, and
+  target reconstruction estimates; pairwise finite-window comparisons with
+  unrelated normalizations are not a theorem-level universality relation
+  without convergence to a common reconstructed observable germ.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, hierarchical
   scalar fixed points with controlled unstable/stable directions, and
@@ -628,6 +634,13 @@ remainder contraction.
   mismatch.  The companion short-range RG check verifies the exact rational
   telescope and shows explicitly that nondecaying transfer defects leave a
   positive error floor.
+- 2026-06-02 auxiliary-transfer anti-inflation pass: tightened the prose
+  around the same recurrence so the finite iteration is not presented as the
+  substantive theorem.  The manuscript now identifies the model-specific
+  burden as construction of the comparison map, common target tube, constants
+  \(M_j\), defects \(\delta_j\), and target reconstruction estimates, and
+  explains that pairwise universality comparisons with incompatible
+  normalizations do not replace convergence to a common observable germ.
 - 2026-06-02 reflection-positive block-spin pass: added the finite
   positivity-preservation mechanism missing from the ordinary short-range
   scalar block-spin datum.  The chapter now proves that a

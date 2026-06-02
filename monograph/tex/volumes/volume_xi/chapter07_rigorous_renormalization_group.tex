@@ -4339,8 +4339,12 @@ the auxiliary system to the short-range target consist of:
 
 The transfer estimates refine
 Definition~\ref{def:comparison-of-rg-descriptions} in the direction needed
-for ordinary short-range critical models.  The finite RG-orbit estimate is
-straightforward, but it is the load-bearing estimate.  Let
+for ordinary short-range critical models.  The finite RG-orbit estimate below
+is elementary as a recurrence, but it is not a decorative calculation: it is
+the point at which an auxiliary theorem either does or does not transfer to
+the ordinary short-range target.  The model-specific work is to construct the
+comparison map, the common tube, the constants \(M_j\), and the defects
+\(\delta_j\).  Let
 \[
   x_j=\mathcal R_{\rm sr}^{\,j}\Phi(y_0),
   \qquad
@@ -5551,8 +5555,9 @@ suppose the displayed convergence to a common \(O_\ast\) holds.  Define
 \]
 Then \(\sim\) is an equivalence relation on \(I\).
 Reflexivity holds by taking the same normalization on both sides.  Symmetry
-is immediate by changing the sign of the displayed difference in the vector
-space \(\mathcal O\).
+follows because \(\mathcal O\) is a topological vector space: if a sequence
+of differences tends to zero, the sequence with the opposite sign also tends
+to zero.
 
 For transitivity, suppose \(i\sim j\) and \(j\sim k\).  Then there are
 normalizations \(g_i,g_j,h_j,h_k\in G\) for which
@@ -5583,6 +5588,16 @@ so
 Thus \(i\sim k\).  The proof uses the existence of a common reconstructed
 limit and therefore controls more than pairwise similarity of formal coupling
 lists.
+
+The common-limit hypothesis is essential to the way this remark is used in
+the monograph.  Pairwise finite-window comparisons with unrelated choices of
+normalization do not by themselves define a theorem-level universality
+relation: the normalization of \(j\) in the \(i\)-\(j\) comparison need not be
+compatible with the normalization of \(j\) in the \(j\)-\(k\) comparison, and
+agreement in one finite window does not control the remaining directed
+windows.  The object that carries the equivalence relation is the
+reconstructed observable germ modulo the declared normalization group, not a
+list of matched exponents or a chain of pairwise plots.
 \end{remark}
 
 Thus a universality class may be summarized by a triple
