@@ -206,6 +206,14 @@ constructive RG developments.
   normalized lattice fields, and the exact reconstruction estimate required
   to turn a tuned block-spin RG trajectory into distributional Schwinger
   functions.
+- Proves the finite reflection-positive block-spin pullback mechanism:
+  if the microscopic finite measure is reflection positive and the block
+  kernel maps coarse positive-time fields to fine positive-time fields while
+  commuting with reflection, then the blocked finite measure is reflection
+  positive on the coarse positive-time polynomial algebra.  The proof is the
+  compression of the fine OS Gram form by the block-spin pullback; the
+  continuum OS burden remains the directed-family convergence and growth
+  estimates.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -336,7 +344,8 @@ remainder contraction.
   and the exact defects produced by incompatible windows or a failed declared
   bound.  It also checks a finite OS-positivity Gram-window failure that is
   invisible in a declared one-coordinate observable window, and now checks
-  the finite OS-positivity bound with an explicit regulated lower bound
+  the reflection-positive block-spin pullback compression \(B^TG_{\rm fine}B\)
+  and the finite OS-positivity bound with an explicit regulated lower bound
   and entrywise limiting error.  It also checks the exact finite arithmetic
   behind the polymer
   contraction budget and the quadratic circle-product bound, including a
@@ -455,6 +464,16 @@ remainder contraction.
   mismatch.  The companion short-range RG check verifies the exact rational
   telescope and shows explicitly that nondecaying transfer defects leave a
   positive error floor.
+- 2026-06-02 reflection-positive block-spin pass: added the finite
+  positivity-preservation mechanism missing from the ordinary short-range
+  scalar block-spin datum.  The chapter now proves that a
+  reflection-compatible block kernel pulls coarse positive-time polynomials
+  back into the fine positive-time algebra and therefore sends fine OS Gram
+  positivity to coarse OS Gram positivity by compression.  The companion
+  short-range RG check verifies the same finite matrix compression and
+  determinant arithmetic.  This remains finite-regulator proof
+  infrastructure; it does not replace the directed Gram-window convergence
+  and OS-II growth estimates needed for continuum reconstruction.
 - 2026-06-01 gauge-compatible RG example pass: added the finite path-blocking
   construction as the minimal lattice half of a gauge-compatible Wilsonian RG
   datum and paired it with an exact \(S_3\) calculation check.  The pass

@@ -657,7 +657,11 @@ Current checks:
   functional, while restriction defects and declared-bound failures are
   detected explicitly.  It also checks the QFT-strength observable-germ
   warning that matching a visible finite correlator window can miss a hidden
-  OS-positivity Gram-window failure.  It also checks the
+  OS-positivity Gram-window failure.  It also checks the finite
+  reflection-positive block-spin pullback mechanism: a coarse positive-time
+  Gram matrix obtained from a reflection-compatible block field is the
+  compression \(B^T G_{\rm fine}B\) of the fine positive-time Gram form.
+  It also checks the
   finite OS-positivity bound: if a regulated Gram matrix has a lower
   spectral bound and the limiting window has a declared entrywise error, the
   limiting Gram matrix retains the quantified positive lower bound.  It also

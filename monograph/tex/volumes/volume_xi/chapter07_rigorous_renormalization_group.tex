@@ -2449,6 +2449,58 @@ Definition~\ref{def:comparison-of-rg-descriptions} is supplied.  Finite-range
 microscopic interactions alone do not identify the continuum normalization
 of the field.
 
+\begin{lemma}[Reflection-positive block-spin pullback]
+\label{lem:reflection-positive-block-spin-pullback}
+Let \(\Lambda_k\) be split by a time reflection \(\theta\) into positive,
+negative, and fixed-time sites, and let \(\mathcal A_{k,+}\) be the algebra
+of polynomials in the positive-time fine fields.  Suppose the finite measure
+\(\mu_k\) is reflection positive:
+\[
+  \int_{\mathbb R^{\Lambda_k}}
+  \overline{\theta P(\phi)}\,P(\phi)\,\dd\mu_k(\phi)\ge0,
+  \qquad P\in\mathcal A_{k,+}.
+\]
+Assume that the block-spin map \(B_k\) is reflection compatible in the
+following finite sense: every coarse positive-time field
+\(\Phi_y=(B_k\phi)(y)\), \(y^0>0\), is a real linear combination of fine
+fields in the positive-time half-lattice, and
+\((B_k\phi)(\theta y)=(B_k(\theta\phi))(y)\).  Let
+\(\nu_{k-1}:=(B_k)_\#\mu_k\) be the blocked measure.  Then \(\nu_{k-1}\) is
+reflection positive for the coarse positive-time polynomial algebra.
+\end{lemma}
+
+\begin{proof}
+Let \(F\) be a polynomial in coarse positive-time fields, and define its
+pullback
+\[
+  B_k^\ast F(\phi)=F(B_k\phi).
+\]
+By the support assumption on the positive-time block stencils,
+\(B_k^\ast F\in\mathcal A_{k,+}\).  Reflection compatibility gives
+\[
+  \theta(B_k^\ast F)=B_k^\ast(\theta F),
+\]
+because reflecting the fine configuration and then blocking is the same, on
+the reflected coarse lattice, as blocking and then reflecting.  Therefore
+\[
+\begin{aligned}
+  \int \overline{\theta F(\Phi)}\,F(\Phi)\,\dd\nu_{k-1}(\Phi)
+  &=
+  \int \overline{B_k^\ast(\theta F)(\phi)}\,
+        B_k^\ast F(\phi)\,\dd\mu_k(\phi)  \\
+  &=
+  \int \overline{\theta(B_k^\ast F)(\phi)}\,
+        B_k^\ast F(\phi)\,\dd\mu_k(\phi)
+  \ge0 .
+\end{aligned}
+\]
+Thus every finite coarse reflection-positivity Gram matrix is the compression
+of a fine reflection-positivity Gram form under the pullback \(B_k^\ast\).
+The lemma is finite-regulator only.  A continuum OS statement still requires
+the directed-family convergence and growth estimates described in
+Definition~\ref{def:local-qft-strength-observable-germ}.
+\end{proof}
+
 \begin{remark}[Current theorem status for the ordinary scalar target]
 \label{rem:ordinary-scalar-target-status}
 For massive superrenormalizable scalar theories, constructive methods can
@@ -2459,8 +2511,10 @@ construct Definition~\ref{def:short-range-scalar-block-spin-structure}, prove a
 Banach-space fixed point or stable trajectory for the corresponding
 short-range block-spin RG, establish
 \eqref{eq:short-range-scalar-reconstruction-bound} for local fields and
-their source extensions, and verify OS/Wightman reconstruction hypotheses
-for the resulting distributions.  This is stronger than identifying a
+their source extensions, prove reflection-compatible blocking as in
+Lemma~\ref{lem:reflection-positive-block-spin-pullback} or an equivalent
+positivity-preserving construction, and verify OS/Wightman reconstruction
+hypotheses for the resulting distributions.  This is stronger than identifying a
 candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}

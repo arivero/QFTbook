@@ -50,6 +50,9 @@ distribution.
 The finite OS-positivity bound check verifies the Gram-window error
 bound used when projective observable-germ convergence is strong enough to
 feed Osterwalder--Schrader reconstruction.
+The reflection-positive block-spin pullback check verifies the finite matrix
+compression mechanism by which a reflection-compatible block-spin map sends a
+fine reflection-positive Gram form to a coarse one.
 """
 
 from fractions import Fraction
@@ -535,6 +538,86 @@ def check_qft_strength_observable_germ_windows():
         "visible bound does not detect hidden positivity failure",
         hidden_bad_det < 0 and finite_visible_bound < 1,
     )
+
+
+def check_reflection_positive_block_spin_pullback():
+    # Fine positive-time polynomial basis: 1, phi_1, phi_2.
+    # A reflection-compatible coarse field Phi=a phi_1+b phi_2 gives the
+    # coarse positive-time basis 1, Phi by pullback.  Hence the coarse Gram
+    # matrix is B^T G_fine B and remains positive whenever G_fine is positive.
+    fine_gram = [
+        [Fraction(2), Fraction(1, 3), Fraction(-1, 4)],
+        [Fraction(1, 3), Fraction(3), Fraction(1, 2)],
+        [Fraction(-1, 4), Fraction(1, 2), Fraction(5)],
+    ]
+    block_weights = [Fraction(2, 5), Fraction(3, 5)]
+    pullback_matrix = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), block_weights[0]],
+        [Fraction(0), block_weights[1]],
+    ]
+
+    def matmul(left, right):
+        rows = len(left)
+        cols = len(right[0])
+        mid = len(right)
+        return [
+            [
+                sum(left[i][k] * right[k][j] for k in range(mid))
+                for j in range(cols)
+            ]
+            for i in range(rows)
+        ]
+
+    def transpose(matrix):
+        return [list(row) for row in zip(*matrix)]
+
+    coarse_gram = matmul(transpose(pullback_matrix), matmul(fine_gram, pullback_matrix))
+    expected = [
+        [Fraction(2), Fraction(-1, 60)],
+        [Fraction(-1, 60), Fraction(63, 25)],
+    ]
+    assert_equal("reflection-positive block-spin compressed Gram", coarse_gram, expected)
+
+    fine_principal_one = [fine_gram[i][i] for i in range(3)]
+    assert_true("fine Gram diagonal positive", all(value > 0 for value in fine_principal_one))
+    fine_minor_12 = fine_gram[0][0] * fine_gram[1][1] - fine_gram[0][1] ** 2
+    fine_minor_13 = fine_gram[0][0] * fine_gram[2][2] - fine_gram[0][2] ** 2
+    fine_minor_23 = fine_gram[1][1] * fine_gram[2][2] - fine_gram[1][2] ** 2
+    fine_det = (
+        fine_gram[0][0]
+        * (fine_gram[1][1] * fine_gram[2][2] - fine_gram[1][2] * fine_gram[2][1])
+        - fine_gram[0][1]
+        * (fine_gram[1][0] * fine_gram[2][2] - fine_gram[1][2] * fine_gram[2][0])
+        + fine_gram[0][2]
+        * (fine_gram[1][0] * fine_gram[2][1] - fine_gram[1][1] * fine_gram[2][0])
+    )
+    assert_true("fine Gram two-by-two minors positive", fine_minor_12 > 0 and fine_minor_13 > 0 and fine_minor_23 > 0)
+    assert_true("fine Gram determinant positive", fine_det > 0)
+
+    coarse_det = coarse_gram[0][0] * coarse_gram[1][1] - coarse_gram[0][1] ** 2
+    assert_equal("reflection-positive block-spin coarse determinant", coarse_det, Fraction(18143, 3600))
+    assert_true("coarse Gram determinant positive", coarse_det > 0)
+
+    # The compression statement is the finite matrix version of pulling a
+    # coarse positive-time polynomial back to the fine positive-time algebra.
+    coarse_coefficients = [Fraction(7, 11), Fraction(-5, 13)]
+    pulled_fine_coefficients = [
+        sum(pullback_matrix[i][j] * coarse_coefficients[j] for j in range(2))
+        for i in range(3)
+    ]
+
+    def quadratic_form(matrix, vector):
+        return sum(
+            vector[i] * matrix[i][j] * vector[j]
+            for i in range(len(vector))
+            for j in range(len(vector))
+        )
+
+    coarse_value = quadratic_form(coarse_gram, coarse_coefficients)
+    pulled_value = quadratic_form(fine_gram, pulled_fine_coefficients)
+    assert_equal("reflection-positive pullback quadratic form", coarse_value, pulled_value)
+    assert_true("reflection-positive pullback value nonnegative", coarse_value >= 0)
 
 
 def check_finite_os_positivity_bound():
@@ -1109,6 +1192,7 @@ def main():
     check_observable_germ_finite_window_estimate()
     check_projective_distribution_window_extension()
     check_qft_strength_observable_germ_windows()
+    check_reflection_positive_block_spin_pullback()
     check_finite_os_positivity_bound()
     check_stable_chart_observable_window_bound()
     check_polymer_contraction_budget()
