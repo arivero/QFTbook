@@ -100,6 +100,106 @@ def check_wiener_chaos_isometry_and_moments():
     assert_equal(moment_constant, 132543, "finite chaos coordinate-moment constant")
 
 
+def bivar_add(a, b):
+    result = dict(a)
+    for key, value in b.items():
+        result[key] = result.get(key, Fraction(0)) + value
+        if result[key] == 0:
+            del result[key]
+    return result
+
+
+def bivar_scalar_mul(c, poly):
+    return {key: c * value for key, value in poly.items() if c * value != 0}
+
+
+def bivar_mul(a, b):
+    result = {}
+    for (ix, iy), av in a.items():
+        for (jx, jy), bv in b.items():
+            key = (ix + jx, iy + jy)
+            result[key] = result.get(key, Fraction(0)) + av * bv
+    return {key: value for key, value in result.items() if value != 0}
+
+
+def bivar_derivative(poly, variable):
+    result = {}
+    for (ix, iy), value in poly.items():
+        if variable == 0 and ix:
+            result[(ix - 1, iy)] = result.get((ix - 1, iy), Fraction(0)) + value * ix
+        if variable == 1 and iy:
+            result[(ix, iy - 1)] = result.get((ix, iy - 1), Fraction(0)) + value * iy
+    return result
+
+
+def scaled_gaussian_even_moment(power, precision):
+    if power % 2:
+        return Fraction(0)
+    result = Fraction(1)
+    for odd in range(1, power, 2):
+        result *= odd
+    return result / (precision ** (power // 2))
+
+
+def bivar_gaussian_expectation(poly, precision_x, precision_y):
+    total = Fraction(0)
+    for (ix, iy), value in poly.items():
+        total += (
+            value
+            * scaled_gaussian_even_moment(ix, precision_x)
+            * scaled_gaussian_even_moment(iy, precision_y)
+        )
+    return total
+
+
+def check_finite_langevin_reversibility_dirichlet_form():
+    # Exact two-mode finite-cutoff shadow of the gradient Langevin identity.
+    # The action is S=(a x^2+b y^2)/2, so
+    #   L f = -a x d_x f - b y d_y f + d_x^2 f + d_y^2 f.
+    # The coefficient of the Laplacian is one, matching the sqrt(2) noise
+    # normalization in dX=-grad S dt+sqrt(2)dB.
+    a = Fraction(2)
+    b = Fraction(3)
+    x = {(1, 0): Fraction(1)}
+    y = {(0, 1): Fraction(1)}
+    one = {(0, 0): Fraction(1)}
+    f = {
+        (3, 0): Fraction(1),
+        (1, 1): Fraction(2),
+        (0, 2): Fraction(1),
+        (0, 0): Fraction(-1),
+    }
+    g = {
+        (2, 1): Fraction(3),
+        (0, 3): Fraction(-1),
+        (1, 0): Fraction(1),
+        (0, 0): Fraction(2),
+    }
+
+    def generator(poly):
+        dx = bivar_derivative(poly, 0)
+        dy = bivar_derivative(poly, 1)
+        dxx = bivar_derivative(dx, 0)
+        dyy = bivar_derivative(dy, 1)
+        drift_x = bivar_scalar_mul(-a, bivar_mul(x, dx))
+        drift_y = bivar_scalar_mul(-b, bivar_mul(y, dy))
+        return bivar_add(bivar_add(drift_x, drift_y), bivar_add(dxx, dyy))
+
+    def inner(poly_a, poly_b):
+        return bivar_gaussian_expectation(bivar_mul(poly_a, poly_b), a, b)
+
+    grad_inner = bivar_add(
+        bivar_mul(bivar_derivative(f, 0), bivar_derivative(g, 0)),
+        bivar_mul(bivar_derivative(f, 1), bivar_derivative(g, 1)),
+    )
+    lhs = inner(generator(f), g)
+    rhs = -bivar_gaussian_expectation(grad_inner, a, b)
+    symmetric_lhs = inner(f, generator(g))
+    assert_equal(lhs, rhs, "finite Langevin Dirichlet identity")
+    assert_equal(lhs, symmetric_lhs, "finite Langevin generator symmetry")
+    assert_equal(generator(one), {}, "finite Langevin conserves constants")
+
+
 def check_dual_norm_finite_chaos_estimate_arithmetic():
     # The dual-norm finite-chaos proposition deliberately uses the integer
     # moment constants C_{q,m}, rather than their 1/(2m)-roots, to keep a
@@ -1982,6 +2082,7 @@ def check_rough_forcing_bootstrap_arithmetic():
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
+    check_finite_langevin_reversibility_dirichlet_form()
     check_dual_norm_finite_chaos_estimate_arithmetic()
     check_projective_kernel_dual_norm_criterion_arithmetic()
     check_gaussian_wick_coordinate_scale_arithmetic()
@@ -2039,7 +2140,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

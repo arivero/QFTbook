@@ -11,15 +11,21 @@ The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
 material are kept separate from the compiled monograph.
 
-## Complete Volume Program (I-XX)
+## Full Volume Index (I-XX)
 
-The complete current public volume program has twenty numbered volumes, listed
-below in full.  The compiled manuscript currently contains Volumes I-XII in
+The complete current public volume program has twenty numbered volumes.  The
+full list is given here, before any build or directory details, so that the
+README itself records the whole monograph architecture.
+
+The compiled manuscript currently contains Volumes I-XII in
 `monograph/tex/main.pdf`.  Volumes XIII-XX are roadmap volumes: they record the
 intended subject architecture and become compiled volumes only after their TeX
 assembly files, chapter dossiers, verification passes, frontmatter entries, and
-README entries are added together.  The monograph frontmatter presently lists
-only compiled volumes; this README records both compiled and roadmap volumes.
+README entries are added together.  Do not infer the full volume program from
+the current `monograph/tex/volumes/` directory alone; that directory currently
+contains only compiled source assemblies.  The monograph frontmatter presently
+lists only compiled volumes; this README records both compiled and roadmap
+volumes.
 
 At a glance:
 

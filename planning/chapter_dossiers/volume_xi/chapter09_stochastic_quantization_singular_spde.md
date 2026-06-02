@@ -244,8 +244,14 @@ data.
 
 ## Claim Ledger
 
-- Proves the finite-dimensional invariant-measure identity for Langevin
-  dynamics.
+- Proves the finite-dimensional Langevin integration-by-parts identity and
+  records the finite-cutoff semigroup theorem actually used by stochastic
+  quantization: under essential self-adjointness of the gradient generator
+  on \(C_c^\infty\) and conservativeness of its Markov semigroup, the cutoff
+  semigroup is reversible and invariant with Dirichlet form
+  \(\int\nabla f\cdot\nabla g\,d\pi\).  This separates the infinitesimal
+  invariant-density calculation from genuine stationarity of the stochastic
+  process.
 - Defines a regularized stochastic field equation as a gradient flow plus
   noise.
 - Derives the Wick subtraction in the cubic drift from Gaussian contractions.
@@ -784,6 +790,16 @@ data maps.
   `op:self-contained-singular-spde-proof-stack` records the monograph's
   obligation to prove the quoted SPDE results internally rather than accept
   them on authority.
+- 2026-06-02 finite-cutoff Langevin reversibility pass: upgraded the opening
+  finite-dimensional Langevin identity from an infinitesimal
+  integration-by-parts statement to a semigroup-level reversibility lemma
+  under explicit essential self-adjointness and conservativeness hypotheses.
+  The \(\Phi^4_2\) assembly proof now invokes this lemma when it uses
+  finite-cutoff stationarity, and
+  `calculation-checks/constructive_scalar_spde_checks.py` now includes an
+  exact rational two-mode check of the Dirichlet identity, generator
+  symmetry, and constant conservation with the \(\sqrt2\) noise
+  normalization.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and
