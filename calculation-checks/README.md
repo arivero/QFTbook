@@ -742,6 +742,11 @@ Current checks:
   derivatives from holomorphic window convergence, restriction compatibility
   for \(E\subset F\), and the separate uniform Schwartz-seminorm bound needed
   to extend compatible finite windows to a distribution.  It also checks the
+  source-chart-to-holomorphic-window estimate: convergence of the local
+  normalizing coordinate, retained local coordinates, source-decorated
+  polymer tail, and finite-step remainder gives a uniform source-window
+  bound on a fixed polydisc before Cauchy extraction is invoked.  It also
+  checks the
   finite-volume source-window cluster-tail estimate: a boundary-tail bound on
   holomorphic source functionals gives the corresponding cumulant-derivative
   Cauchy bound and controls comparison of cofinal exhaustions.

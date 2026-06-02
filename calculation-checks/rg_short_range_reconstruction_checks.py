@@ -37,6 +37,10 @@ a source-extended polymer RG chart.
 The finite source-window-to-cumulant check verifies the Cauchy estimate and
 restriction compatibility that turn holomorphic finite source windows into
 actual cumulant distribution windows.
+The source-chart-to-window check verifies the Lipschitz estimate that turns
+source-extended RG-coordinate convergence, including the normalizing
+coordinate and finite-step remainder, into holomorphic source-window
+convergence on one fixed polydisc.
 The finite-volume source-window check verifies the cluster-tail-to-cumulant
 Cauchy bound needed before finite-volume source windows can be used as
 thermodynamic Schwinger data.
@@ -1412,6 +1416,56 @@ def check_finite_source_window_to_cumulant_distribution_bound():
     )
 
 
+def check_source_chart_to_holomorphic_window_bound():
+    def factorial(n):
+        value = 1
+        for integer in range(2, n + 1):
+            value *= integer
+        return value
+
+    def multi_factorial(beta):
+        value = 1
+        for component in beta:
+            value *= factorial(component)
+        return value
+
+    normalizing_defect = Fraction(1, 100)
+    local_coordinate_defect = Fraction(1, 50)
+    polymer_tail_defect = Fraction(1, 75)
+    finite_step_remainder = Fraction(1, 200)
+    chart_lipschitz = Fraction(3)
+    window_bound = (
+        normalizing_defect
+        + chart_lipschitz * (local_coordinate_defect + polymer_tail_defect)
+        + finite_step_remainder
+    )
+    assert_equal("source chart to holomorphic window bound", window_bound, Fraction(23, 200))
+
+    radii = (Fraction(2), Fraction(4))
+    beta = (2, 1)
+    rho_beta = product(radius ** exponent for radius, exponent in zip(radii, beta))
+    derivative_bound = multi_factorial(beta) * window_bound / rho_beta
+    assert_equal("source chart to window rho beta", rho_beta, Fraction(16))
+    assert_equal("source chart induced cumulant bound", derivative_bound, Fraction(23, 1600))
+
+    actual_derivative_difference = Fraction(1, 100)
+    assert_true(
+        "source chart induced cumulant difference controlled",
+        actual_derivative_difference <= derivative_bound,
+    )
+
+    # A shrinking source radius can destroy the derivative estimate even when
+    # the uniform source-functional error itself tends to zero.
+    shrinking_radius = Fraction(1, 10)
+    shrinking_error = Fraction(1, 100)
+    fixed_radius_bound = shrinking_error / Fraction(2)
+    shrinking_radius_bound = shrinking_error / shrinking_radius
+    assert_true(
+        "shrinking source radius weakens Cauchy derivative control",
+        shrinking_radius_bound > fixed_radius_bound,
+    )
+
+
 def check_finite_volume_source_window_cluster_tail():
     def factorial(n):
         value = 1
@@ -1502,6 +1556,7 @@ def main():
     check_large_field_gaussian_regulator_bound()
     check_source_window_extraction_error()
     check_finite_source_window_to_cumulant_distribution_bound()
+    check_source_chart_to_holomorphic_window_bound()
     check_finite_volume_source_window_cluster_tail()
     print("All short-range scalar RG reconstruction checks passed.")
 

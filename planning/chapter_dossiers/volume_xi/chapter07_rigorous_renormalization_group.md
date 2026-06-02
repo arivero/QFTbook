@@ -612,3 +612,14 @@ remainder contraction.
   warns that numerical local stability without such a tail estimate is not a
   thermodynamic Schwinger-window construction.  The companion short-range RG
   check verifies the tail-to-derivative and cofinal-comparison arithmetic.
+- 2026-06-02 source-chart-to-window pass: inserted the missing Wilsonian
+  source-extension bridge between convergence of RG coordinates and
+  convergence of the actual holomorphic source functional.  The manuscript now
+  decomposes \(W_{k,E}\) on a fixed polydisc into a local normalizing
+  coordinate \(C_{k,E}\), retained local source coordinates \(g_{k,E}\), a
+  source-decorated polymer tail \(K_{k,E}\), and a finite-step remainder
+  \(r_{k,E}\), then records the Lipschitz estimate that yields the uniform
+  source-window bound needed before Cauchy extraction.  The text also marks
+  fixed source-radius control as load-bearing.  The companion short-range RG
+  check verifies the resulting finite inequality and the shrinking-radius
+  failure mode.

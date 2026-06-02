@@ -2721,6 +2721,82 @@ additional polynomial source coordinates whose derivatives are distributions
 supported on collision diagonals.  They are part of the source window, not an
 after-the-fact modification of separated cumulants.
 
+\paragraph{RG-chart control of a holomorphic source window.}
+The hypothesis
+\eqref{eq:short-range-source-window-uniform-convergence} is not supplied by
+knowing that the unsourced local coordinates converge.  A Wilsonian proof
+must control the source-extended chart itself.  For a fixed finite test
+space \(E\) and a fixed closed polydisc \(P_\rho\), the source extension of
+the RG chart should give a decomposition of the connected source functional
+of the form
+\begin{equation}
+  W_{k,E}(z)
+  =
+  C_{k,E}(z)
+  +
+  \mathfrak W_E\bigl(g_{k,E}(z),K_{k,E}(z)\bigr)
+  +
+  r_{k,E}(z),
+  \qquad z\in P_\rho .
+  \label{eq:short-range-source-window-rg-chart-decomposition}
+\end{equation}
+Here \(C_{k,E}\) is the local normalizing coordinate, including source
+dependent vacuum and contact coordinates, \(g_{k,E}\) are the retained local
+coordinates, \(K_{k,E}\) is the source-decorated polymer tail, and
+\(r_{k,E}\) is the declared sampling, boundary, and finite-step remainder.
+The map \(\mathfrak W_E\) is the finite-window evaluation map of the RG
+chart.  It is not assumed to be a universal function independent of the
+chosen chart; it is part of the reconstruction datum for this finite source
+window.
+
+Suppose that all chart points occurring in
+\eqref{eq:short-range-source-window-rg-chart-decomposition} lie in a common
+tube \(\mathcal T_E\) on which \(\mathfrak W_E\) obeys
+\begin{equation}
+  \left|
+    \mathfrak W_E(g,K)-\mathfrak W_E(g',K')
+  \right|
+  \leq
+  L_E\bigl(\|g-g'\|_{E_{\rm loc}}+\|K-K'\|_{\mathcal K_E}\bigr).
+  \label{eq:short-range-source-window-chart-lipschitz}
+\end{equation}
+If limiting source-chart data
+\((C_{\ast,E},g_{\ast,E},K_{\ast,E},r_{\ast,E})\) are holomorphic on the same
+polydisc and
+\begin{align}
+  \delta^C_{E,k}
+  &:=
+  \sup_{P_\rho}|C_{k,E}-C_{\ast,E}|,\\
+  \delta^g_{E,k}
+  &:=
+  \sup_{P_\rho}\|g_{k,E}-g_{\ast,E}\|_{E_{\rm loc}},\\
+  \delta^K_{E,k}
+  &:=
+  \sup_{P_\rho}\|K_{k,E}-K_{\ast,E}\|_{\mathcal K_E},\\
+  \delta^r_{E,k}
+  &:=
+  \sup_{P_\rho}|r_{k,E}-r_{\ast,E}|
+\end{align}
+all tend to zero, then
+\begin{equation}
+  \sup_{z\in P_\rho}|W_{k,E}(z)-W_{\ast,E}(z)|
+  \leq
+  \delta^C_{E,k}
+  +
+  L_E(\delta^g_{E,k}+\delta^K_{E,k})
+  +
+  \delta^r_{E,k}.
+  \label{eq:short-range-source-window-chart-to-holomorphic-bound}
+\end{equation}
+Inserting this bound into
+\eqref{eq:short-range-source-window-cauchy-cumulant-bound} gives the
+cumulant convergence rate for the finite window.  The fixed polydisc is
+load-bearing: a bound on \(P_{\rho_k}\) with \(\rho_k\downarrow0\) does not
+give a uniform Cauchy estimate for derivatives.  Thus source-radius control,
+local normalizing coordinates, source-decorated irrelevant tails, and
+finite-step remainders are all part of the Wilsonian reconstruction theorem;
+they cannot be recovered from an unsourced fixed-point statement.
+
 \paragraph{Finite volume to infinite volume for a source window.}
 The thermodynamic step at fixed lattice spacing is another estimate, not a
 notation change.  At fixed lattice spacing \(a_k\), let
