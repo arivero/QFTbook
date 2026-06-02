@@ -8,6 +8,7 @@ from fractions import Fraction
 
 Matrix = tuple[tuple[Fraction, Fraction, Fraction], tuple[Fraction, Fraction, Fraction], tuple[Fraction, Fraction, Fraction]]
 Vector = tuple[Fraction, Fraction, Fraction]
+Polynomial = tuple[Fraction, Fraction, Fraction]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -42,6 +43,18 @@ def energy_flux_polynomial(first_ratio: Fraction, second_ratio: Fraction) -> tup
     coeff_t2 = first_ratio - Fraction(1, 3)
     coeff_t4 = second_ratio - Fraction(2, 15)
     return (Fraction(1, 1), coeff_t2, coeff_t4)
+
+
+def mat_inner(left: Matrix, right: Matrix) -> Fraction:
+    return sum(left[i][j] * right[i][j] for i in range(3) for j in range(3))
+
+
+def poly_add(left: Polynomial, right: Polynomial) -> Polynomial:
+    return tuple(a + b for a, b in zip(left, right))  # type: ignore[return-value]
+
+
+def poly_scale(scale: Fraction, poly: Polynomial) -> Polynomial:
+    return tuple(scale * coefficient for coefficient in poly)  # type: ignore[return-value]
 
 
 def check_sphere_averages_for_traceless_tensor() -> None:
@@ -93,6 +106,58 @@ def check_helicity_bounds() -> None:
     assert_equal("helicity-2 collider polynomial", helicity_two, (Fraction(1, 1), Fraction(-1, 3), Fraction(-2, 15)))
     assert_equal("helicity-1 collider polynomial", helicity_one, (Fraction(1, 1), Fraction(1, 6), Fraction(-2, 15)))
     assert_equal("helicity-0 collider polynomial", helicity_zero, (Fraction(1, 1), Fraction(1, 3), Fraction(8, 15)))
+
+
+def check_helicity_projector_spectral_certificate() -> None:
+    """Check the full helicity-sector spectral decomposition."""
+
+    n: Vector = (Fraction(0), Fraction(0), Fraction(1))
+    eps_h2: Matrix = (
+        (Fraction(1), Fraction(2), Fraction(0)),
+        (Fraction(2), Fraction(-1), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+    eps_h1: Matrix = (
+        (Fraction(0), Fraction(0), Fraction(3)),
+        (Fraction(0), Fraction(0), Fraction(-1)),
+        (Fraction(3), Fraction(-1), Fraction(0)),
+    )
+    eps_h0: Matrix = (
+        (Fraction(2), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(2), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(-4)),
+    )
+    eps_total: Matrix = tuple(
+        tuple(eps_h2[i][j] + eps_h1[i][j] + eps_h0[i][j] for j in range(3))
+        for i in range(3)
+    )  # type: ignore[assignment]
+
+    for name, left, right in (
+        ("h2-h1 orthogonality", eps_h2, eps_h1),
+        ("h2-h0 orthogonality", eps_h2, eps_h0),
+        ("h1-h0 orthogonality", eps_h1, eps_h0),
+    ):
+        assert_equal(name, mat_inner(left, right), Fraction(0))
+
+    norms = (mat_norm_sq(eps_h2), mat_norm_sq(eps_h1), mat_norm_sq(eps_h0))
+    assert_equal("helicity-sector norms", norms, (Fraction(10), Fraction(20), Fraction(24)))
+    assert_equal("total norm from orthogonal projectors", mat_norm_sq(eps_total), sum(norms))
+
+    full_flux = poly_scale(
+        mat_norm_sq(eps_total),
+        energy_flux_polynomial(first_ratio(eps_total, n), second_ratio(eps_total, n)),
+    )
+    eigenvalues = (
+        (Fraction(1), Fraction(-1, 3), Fraction(-2, 15)),
+        (Fraction(1), Fraction(1, 6), Fraction(-2, 15)),
+        (Fraction(1), Fraction(1, 3), Fraction(8, 15)),
+    )
+    spectral_flux = (Fraction(0), Fraction(0), Fraction(0))
+    for norm, eigenvalue in zip(norms, eigenvalues):
+        spectral_flux = poly_add(spectral_flux, poly_scale(norm, eigenvalue))
+
+    assert_equal("full helicity spectral decomposition", full_flux, spectral_flux)
+    assert_equal("generic full flux polynomial", full_flux, (Fraction(54), Fraction(8), Fraction(44, 5)))
 
 
 def check_normalization_integrates_to_total_energy() -> None:
@@ -202,6 +267,7 @@ def check_light_ray_ope_transverse_scaling_bookkeeping() -> None:
 def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
+    check_helicity_projector_spectral_certificate()
     check_normalization_integrates_to_total_energy()
     check_light_transform_homogeneity_map()
     check_null_cut_modular_anec_sign_bookkeeping()

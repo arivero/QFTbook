@@ -864,11 +864,102 @@ terms have been fixed.  The subtractions \(1/3\) and \(2/15\) are precisely
 the averages in \eqref{eq:stress-collider-angular-averages}, so integration
 over \(S^2\) gives the total energy \(Q\) for every polarization.
 
+\begin{lemma}[Helicity spectral certificate for stress-tensor collider positivity]
+\label{lem:hm-helicity-spectral-certificate}
+Fix the detector direction \(\mathbf n=e_3=(0,0,1)\), and let
+\(\mathcal V\) be the complex vector space of symmetric traceless tensors
+\(\varepsilon_{ij}\), equipped with
+\(\|\varepsilon\|^2=\varepsilon^*_{ij}\varepsilon_{ij}\).  Decompose
+\(\mathcal V\) under rotations around \(e_3\) as
+\[
+  \mathcal V=\mathcal V_2\oplus\mathcal V_1\oplus\mathcal V_0,
+\]
+where
+\[
+\begin{aligned}
+  \mathcal V_2
+  &=
+  \{\varepsilon:\varepsilon_{13}=\varepsilon_{23}=\varepsilon_{33}=0\},\\
+  \mathcal V_1
+  &=
+  \{\varepsilon:\varepsilon_{11}=\varepsilon_{22}
+  =\varepsilon_{12}=\varepsilon_{33}=0\},\\
+  \mathcal V_0
+  &=
+  \mathbb C\,\operatorname{diag}(1,1,-2).
+\end{aligned}
+\]
+For the normal form \eqref{eq:hm-energy-one-point}, define the dimensionless
+quadratic form
+\[
+  B_{t_2,t_4}(\varepsilon)
+  =
+  \|\varepsilon\|^2
+  \left[
+    1
+    +t_2\left(I_2(\varepsilon,e_3)-\frac13\right)
+    +t_4\left(I_4(\varepsilon,e_3)-\frac{2}{15}\right)
+  \right].
+\]
+If
+\(\varepsilon=\varepsilon_2+\varepsilon_1+\varepsilon_0\) is the above
+orthogonal decomposition, then
+\begin{equation}
+  B_{t_2,t_4}(\varepsilon)
+  =
+  \lambda_2\|\varepsilon_2\|^2
+  +\lambda_1\|\varepsilon_1\|^2
+  +\lambda_0\|\varepsilon_0\|^2,
+  \label{eq:hm-helicity-spectral-decomposition}
+\end{equation}
+with
+\begin{equation}
+  \lambda_2=1-\frac13t_2-\frac{2}{15}t_4,\qquad
+  \lambda_1=1+\frac16t_2-\frac{2}{15}t_4,\qquad
+  \lambda_0=1+\frac13t_2+\frac{8}{15}t_4 .
+  \label{eq:hm-helicity-eigenvalues}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The three displayed subspaces are pairwise orthogonal for
+\(\varepsilon^*_{ij}\eta_{ij}\).  They exhaust \(\mathcal V\): a symmetric
+traceless \(3\times3\) tensor is determined by the two transverse traceless
+entries \((\varepsilon_{11}-\varepsilon_{22},\varepsilon_{12})\), the two
+mixed entries \((\varepsilon_{13},\varepsilon_{23})\), and the scalar trace-free
+diagonal direction proportional to \(\operatorname{diag}(1,1,-2)\).
+
+For \(\varepsilon_2\in\mathcal V_2\), the vector
+\(\varepsilon_2 e_3\) and the scalar \(e_3^i\varepsilon_{2,ij}e_3^j\) both
+vanish, so \(I_2=I_4=0\).  For
+\(\varepsilon_1\in\mathcal V_1\), writing
+\(\varepsilon_{13}=a\) and \(\varepsilon_{23}=b\), one has
+\[
+  \|\varepsilon_1\|^2=2(|a|^2+|b|^2),\qquad
+  \|\varepsilon_1 e_3\|^2=|a|^2+|b|^2,\qquad
+  e_3^i\varepsilon_{1,ij}e_3^j=0,
+\]
+so \(I_2=1/2\) and \(I_4=0\).  For
+\(\varepsilon_0=c\,\operatorname{diag}(1,1,-2)\), one has
+\[
+  \|\varepsilon_0\|^2=6|c|^2,\qquad
+  \|\varepsilon_0 e_3\|^2=4|c|^2,\qquad
+  |e_3^i\varepsilon_{0,ij}e_3^j|^2=4|c|^2,
+\]
+so \(I_2=I_4=2/3\).  These three evaluations give the eigenvalues
+\eqref{eq:hm-helicity-eigenvalues}.  The mixed terms vanish because the
+subspaces are orthogonal and because the numerators
+\(\|\varepsilon e_3\|^2\) and
+\(|e_3^i\varepsilon_{ij}e_3^j|^2\) separate into the same
+\(\mathcal V_2,\mathcal V_1,\mathcal V_0\) components.  This proves
+\eqref{eq:hm-helicity-spectral-decomposition}.
+\end{proof}
+
 \begin{proposition}[Four-dimensional conformal-collider inequalities]
 \label{prop:hm-inequalities}
-Assume the energy detector in
-\eqref{eq:hm-energy-one-point} is a positive quadratic form for every
-direction \(\mathbf n\).  Then
+The normal form \eqref{eq:hm-energy-one-point} is a positive quadratic form in
+the stress-tensor polarization for every detector direction \(\mathbf n\) if
+and only if
 \[
   1-\frac13t_2-\frac{2}{15}t_4\geq0,
   \qquad
@@ -879,39 +970,14 @@ direction \(\mathbf n\).  Then
 \end{proposition}
 
 \begin{proof}
-Fix \(\mathbf n=(0,0,1)\).  The little group \(SO(2)\) decomposes symmetric
-traceless polarizations into helicity \(2\), helicity \(1\), and helicity
-\(0\) sectors.  Since the energy detector is assumed positive as a quadratic
-form in \(\varepsilon_{ij}\), it is enough to test one nonzero vector in each
-irreducible \(SO(2)\) sector; Schur diagonalizes the quadratic form on these
-sectors.  For a helicity \(2\) polarization, for instance
-\(\varepsilon_{11}=-\varepsilon_{22}\), \(\varepsilon_{12}=0\), and
-\(\varepsilon_{i3}=0\).  Then both ratios in
-\eqref{eq:hm-energy-one-point} vanish, so positivity gives
-\[
-  1-\frac13t_2-\frac{2}{15}t_4\geq0.
-\]
-For a helicity \(1\) polarization, for instance the symmetric tensor with
-\(\varepsilon_{13}=\varepsilon_{31}\ne0\) and all other independent components
-zero, one has
-\[
-  \frac{\varepsilon^*_{ij}\varepsilon_{ik}n^jn^k}
-       {\varepsilon^*_{ij}\varepsilon_{ij}}
-  =
-  \frac12,
-  \qquad
-  \frac{|\varepsilon_{ij}n^in^j|^2}
-       {\varepsilon^*_{ij}\varepsilon_{ij}}
-  =
-  0,
-\]
-which gives the second inequality.  For the helicity \(0\) polarization
-proportional to \(\operatorname{diag}(1,1,-2)\), the two ratios are
-\[
-  \frac23,\qquad \frac23,
-\]
-and positivity gives the third inequality.  Rotational covariance transports
-the same three eigenvalue conditions to every detector direction.
+By rotational covariance it suffices to work at
+\(\mathbf n=e_3\).  Lemma~\ref{lem:hm-helicity-spectral-certificate} writes
+the detector quadratic form as the orthogonal sum
+\eqref{eq:hm-helicity-spectral-decomposition}.  Positivity for all
+polarizations is therefore equivalent to nonnegativity of the three
+eigenvalues \(\lambda_2,\lambda_1,\lambda_0\) in
+\eqref{eq:hm-helicity-eigenvalues}.  Rotating the detector direction carries
+the same eigenvalue certificate to every \(\mathbf n\in S^2\).
 \end{proof}
 
 The derivation of the normal form

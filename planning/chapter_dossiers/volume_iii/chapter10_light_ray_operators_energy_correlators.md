@@ -67,7 +67,9 @@ The chapter establishes:
   angular energy distribution;
 - the four-dimensional stress-tensor one-point energy flux form with
   parameters \(t_2,t_4\);
-- the conformal-collider inequalities following from detector positivity;
+- the helicity \(2,1,0\) spectral decomposition of the stress-tensor
+  detector quadratic form, and the conformal-collider inequalities as the
+  nonnegativity of the three spectral eigenvalues;
 - the CFT energy-energy correlator and its relation to the QCD EEC;
 - the light-ray OPE theorem boundary for separated-angle detector products,
   now accompanied by the distributional proof mechanism: transverse detector
@@ -103,6 +105,8 @@ The chapter establishes:
 | \(x^\pm=x^0\pm x^1\), \(y\) | light-cone and transverse coordinates used in the modular proof mechanism |
 | \(R_f\), \(K_f\) | null-cut domain of dependence and its vacuum modular Hamiltonian |
 | \(t_2,t_4\) | parity-even four-dimensional stress-tensor three-point coordinates in conformal collider normalization |
+| \(\mathcal V_2,\mathcal V_1,\mathcal V_0\) | helicity \(2,1,0\) subspaces of the symmetric traceless polarization space relative to a detector direction |
+| \(\lambda_2,\lambda_1,\lambda_0\) | detector quadratic-form eigenvalues in the helicity \(2,1,0\) sectors |
 | \(\mathrm{EEC}_\Psi(\chi)\) | normalized energy-energy correlator in state \(\Psi\) |
 | \(\mathbb L_\alpha\) | light-ray operator appearing in the light-ray OPE |
 
@@ -144,7 +148,9 @@ The chapter establishes:
    relative-entropy derivative inequalities and the common entropy-variation
    squeeze, so the sign of the full null integral is not hidden in the phrase
    "entropy variations cancel."
-9. Positivity of the energy detector implies the displayed
+9. Positivity of the energy detector in the stress-tensor collider state is
+   equivalent to nonnegativity of the three helicity-sector eigenvalues of
+   the detector quadratic form; these are precisely the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
 10. The CFT EEC and the QCD EEC are the same detector construction with
@@ -183,9 +189,15 @@ The chapter establishes:
   measures.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
-  the finite arithmetic for the light-transform homogeneity map and the
-  null-cut modular ANEC sign bookkeeping, and the transverse homogeneity
-  ledger for light-ray OPE coefficient distributions.
+  the full helicity-projector spectral decomposition of a generic polarization,
+  the finite arithmetic for the light-transform homogeneity map, the null-cut
+  modular ANEC sign bookkeeping, and the transverse homogeneity ledger for
+  light-ray OPE coefficient distributions.
+- 2026-06-02 conformal-collider spectral-certificate pass: upgraded the
+  Hofman--Maldacena positivity derivation from testing representatives in the
+  three little-group sectors to a displayed orthogonal spectral decomposition
+  of the detector quadratic form on the full symmetric-traceless polarization
+  space.  The companion check verifies the generic rational decomposition.
 - 2026-05-29 seventh anti-wrapper pass: expanded the conformal-collider
   inequality proof so the \(SO(2)\) helicity decomposition, Schur
   diagonalization of the quadratic form, and three polarization eigenvalues
