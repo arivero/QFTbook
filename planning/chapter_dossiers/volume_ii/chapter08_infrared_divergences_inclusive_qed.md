@@ -236,14 +236,26 @@ Additional symbols introduced in the charged-sector discussion:
     boundary: charged QED sectors are infraparticle sectors, not ordinary
     Wigner-particle Fock sectors; asymptotic electric flux labels
     superselection data.  The theorem boundary is supported by an explicit
-    boosted-Coulomb-flux mechanism, including the normalization integral and
-    the velocity-extraction ratio
-    \((1+\beta)^2/(1-\beta)^2\).
+    shell-smeared flux-commutant argument, the distinction between total
+    charge and higher angular flux modes, and the boosted-Coulomb-flux
+    mechanism, including the normalization integral and the velocity-extraction
+    ratio \((1+\beta)^2/(1-\beta)^2\).
 19. The open charged-QED asymptotic-completeness problem asks for a single
     nonperturbative large-time theorem whose asymptotic data include hard
     charged labels, transverse radiation, Gauss-law flux at infinity, and the
     detector probabilities computed by inclusive or dressed perturbation
     theory.
+
+## Recent Audit Notes
+
+- 2026-06-02 flux-superselection proof pass: expanded the charged-sector
+  discussion so the limiting electric-flux observable is reached through
+  shell-smeared local fields \(\Phi_{R,\chi}(f)\).  The text now proves the
+  local-commutant mechanism before taking the \(R\to\infty\) limit, states
+  the sharp-limit hypothesis needed for spectral projections of
+  \(\Phi_\infty(f)\), and records that zero total charge does not imply
+  trivial angular flux.  This narrows the charged Haag--Ruelle/IR proof debt
+  without claiming a completed nonperturbative charged scattering theorem.
 
 ## Figure Requirements
 

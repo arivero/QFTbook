@@ -1346,14 +1346,41 @@ generally, the limiting angular flux functional
   \Phi_\infty(f)=\lim_{R\to\infty}\Phi_R(f)
 \]
 records the electromagnetic field at spacelike infinity.  Local observables
-cannot change this limiting flux: if \(A\in\mathfrak A_{\mathrm{loc}}\) has
-support in a fixed bounded region, then for \(R\) large enough the flux
-surface is spacelike separated from the support of \(A\), and locality makes
-the commutator vanish before the limit is taken.  Thus the limiting flux, when
-it is represented sharply, is a superselection datum for the charged sector.
-For \(f=1\) this is the usual electric charge superselection rule; for
-nonconstant \(f\) it is the angular Coulomb field attached to the asymptotic
-charged motion.
+cannot change this limiting flux.  The precise operator statement uses a
+shell-smearing before the limit is taken.  Choose
+\(\chi\in C_c^\infty(\mathbb R)\) with \(\int_{\mathbb R}\chi(s)\dd s=1\),
+and put
+\[
+  \Phi_{R,\chi}(f)
+  =
+  \int_{\mathbb R^3}\dd^3\mathbf x\,
+  \chi(|\mathbf x|-R)\,
+  f(\mathbf x/|\mathbf x|)\,
+  \frac{x_i}{|\mathbf x|}\,E^i(0,\mathbf x).
+\]
+This is a local field smeared in the annular shell
+\(|\,|\mathbf x|-R\,|\le C_\chi\).  If
+\(A\in\mathfrak A_{\mathrm{loc}}\) is localized in a bounded spacetime region
+whose time-zero spatial projection is contained in \(|\mathbf x|\le R_0\),
+then for \(R>R_0+C_\chi\) every point in the smearing shell is spacelike to
+that region.  Locality gives
+\[
+  [\Phi_{R,\chi}(f),A]=0
+\]
+on the common field domain, and the same statement holds for bounded
+functions of \(\Phi_{R,\chi}(f)\).  Hence, whenever
+\(\Phi_{R,\chi}(f)\) has a sharp limiting self-adjoint observable
+\(\Phi_\infty(f)\) in the representation under study, the spectral
+projections of \(\Phi_\infty(f)\) commute with every bounded local
+observable.  The limiting angular flux is then a superselection datum for the
+charged sector.
+
+The constant mode \(f=1\) is the total electric charge.  The higher spherical
+modes are independent asymptotic data: a neutral configuration may have zero
+total charge while still carrying nontrivial angular flux if its charged
+constituents have different asymptotic velocities.  Thus charge neutrality
+alone does not return the sector to the vacuum infrared representation; the
+angular Coulomb field is part of the asymptotic charged datum.
 
 There are two logically separate consequences.  First, a bounded local
 gauge-invariant observable cannot change the limiting surface charge: for a
