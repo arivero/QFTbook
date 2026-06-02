@@ -257,6 +257,18 @@ boundaries rather than importing the appendix exposition.
   variational boundary equation, FZZT one-point and boundary-state
   normalization, ZZ states as imaginary-FZZT finite differences, and exact
   hyperbolic identity checks coordinated with the BCFT chapter.
+- 2026-06-02 issue #697/#705 source-trace pass: attached formal
+  bibliography keys to all four Liouville quoted-theorem boundaries.  The
+  probabilistic/GMC construction and bootstrap boundary now cite
+  David--Kupiainen--Rhodes--Vargas and
+  Guillarmou--Kupiainen--Rhodes--Vargas; the elliptic recursion cites
+  Zamolodchikov's recurrence papers; the DOZZ block cites the original
+  Dorn--Otto / Zamolodchikov--Zamolodchikov formulae and the
+  Kupiainen--Rhodes--Vargas proof; the FZZT block cites the original
+  boundary formula, Teschner's boundary-bootstrap account, and the modern
+  Ang--Remy--Sun proof of the FZZ disk one-point formula.  This is source
+  traceability, not closure of the remaining Liouville sewing and
+  all-surface construction proof debt.
 - 2026-05-26 dual-BPZ pass: added the independent
   `V_{-1/(2b)}` level-two null vector and dual BPZ equation, with exact
   Laurent checks of the `b^{-2}` coefficient.
