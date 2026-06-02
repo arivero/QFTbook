@@ -86,6 +86,20 @@ def mat_add(left, right):
     ]
 
 
+def mat_sub(left, right):
+    return [
+        [left[i][j] - right[i][j] for j in range(len(left[0]))]
+        for i in range(len(left))
+    ]
+
+
+def mat_scale(scalar, matrix):
+    return [
+        [Fraction(scalar) * matrix[i][j] for j in range(len(matrix[0]))]
+        for i in range(len(matrix))
+    ]
+
+
 def row_mat(row, matrix):
     return [
         sum(row[i] * matrix[i][j] for i in range(len(row)))
@@ -105,6 +119,13 @@ def inv2(matrix):
     return [
         [d / determinant, -b / determinant],
         [-c / determinant, a / determinant],
+    ]
+
+
+def identity2():
+    return [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(1)],
     ]
 
 
@@ -232,6 +253,90 @@ def check_finite_light_ray_mixing_chart():
     )
 
 
+def check_finite_light_ray_transport_certificate():
+    # Use nilpotent matrices so that exp(s gamma) = I + s gamma exactly over
+    # the rationals.  This checks the side on which the anomalous dimension
+    # acts in the text's row/column convention.
+    gamma = [
+        [Fraction(0), Fraction(2, 3)],
+        [Fraction(0), Fraction(0)],
+    ]
+    s = Fraction(5, 7)
+    U = mat_add(identity2(), mat_scale(s, gamma))
+    U_inv = mat_sub(identity2(), mat_scale(s, gamma))
+    assert_equal(mat_mat(U, U_inv), identity2(), "nilpotent transport inverse")
+    coeff0 = [Fraction(11, 13), Fraction(-17, 19)]
+    operator0 = [Fraction(23, 29), Fraction(31, 37)]
+    coeff_s = row_mat(coeff0, U)
+    operator_s = mat_vec(U_inv, operator0)
+    assert_equal(
+        dot(coeff_s, operator_s),
+        dot(coeff0, operator0),
+        "finite light-ray transport preserves coefficient/operator pairing",
+    )
+
+    # Since gamma^2=0, d(C0(I+s gamma))/ds = C(s) gamma and
+    # d((I-s gamma)O0)/ds = -gamma O(s) hold exactly.
+    assert_equal(
+        row_mat(coeff0, gamma),
+        row_mat(coeff_s, gamma),
+        "coefficient transport differential equation",
+    )
+    assert_equal(
+        [-entry for entry in mat_vec(gamma, operator0)],
+        [-entry for entry in mat_vec(gamma, operator_s)],
+        "operator transport differential equation",
+    )
+
+    # A protected row is constant in a fixed chart exactly when M gamma = 0.
+    protected_gamma = [
+        [Fraction(1, 5), Fraction(-1, 5)],
+        [Fraction(-1, 5), Fraction(1, 5)],
+    ]
+    moment = [Fraction(1), Fraction(1)]
+    assert_equal(row_mat(moment, protected_gamma), [Fraction(0), Fraction(0)], "constant protected row")
+    moving_R = [
+        [Fraction(1), Fraction(1, 4)],
+        [Fraction(0), Fraction(3, 2)],
+    ]
+    moved_moment = row_mat(moment, moving_R)
+    assert_equal(
+        dot(moved_moment, mat_vec(inv2(moving_R), operator0)),
+        dot(moment, operator0),
+        "moving protected row preserves moment coordinate",
+    )
+
+    # Flat two-scale transport: gamma and eta are multiples of the same
+    # nilpotent, so the two path-ordered products agree.
+    eta_flat = [
+        [Fraction(0), Fraction(-4, 5)],
+        [Fraction(0), Fraction(0)],
+    ]
+    r = Fraction(3, 11)
+    U_mu = mat_add(identity2(), mat_scale(s, gamma))
+    U_nu_flat = mat_add(identity2(), mat_scale(r, eta_flat))
+    assert_equal(
+        mat_mat(U_mu, U_nu_flat),
+        mat_mat(U_nu_flat, U_mu),
+        "flat two-scale light-ray transport is path independent",
+    )
+
+    # Nonzero curvature appears as the commutator obstruction already in a
+    # finite nilpotent chart.
+    eta_curved = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(5, 13), Fraction(0)],
+    ]
+    U_nu_curved = mat_add(identity2(), mat_scale(r, eta_curved))
+    path_difference = mat_sub(mat_mat(U_mu, U_nu_curved), mat_mat(U_nu_curved, U_mu))
+    commutator = mat_sub(mat_mat(gamma, eta_curved), mat_mat(eta_curved, gamma))
+    assert_equal(
+        path_difference,
+        mat_scale(s * r, commutator),
+        "curved two-scale transport commutator obstruction",
+    )
+
+
 def main():
     rho0 = Fraction(3, 5)
 
@@ -314,6 +419,7 @@ def main():
 
     check_endpoint_resolution_shift()
     check_finite_light_ray_mixing_chart()
+    check_finite_light_ray_transport_certificate()
 
     print("All EEC light-ray OPE bookkeeping checks passed.")
 

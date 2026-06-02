@@ -8401,6 +8401,99 @@ not automatic; it is a restriction on admissible schemes, \(M R=M\).  This is
 the finite-coordinate version of the normalization convention behind
 \eqref{eq:qcd-eec-moment-functional-rg-invariance}.
 
+\paragraph{Finite transport and two-scale consistency.}
+The finite chart also makes precise what is meant by solving the light-ray
+mixing problem.  Write
+\[
+  t=\log\mu,\qquad r=\log\nu .
+\]
+For a single ultraviolet scale, let \(U(t,t_0)\) be the matrix solution of
+\begin{equation}
+  \partial_tU(t,t_0)=U(t,t_0)\gamma(t),
+  \qquad
+  U(t_0,t_0)=\mathbf 1 .
+  \label{eq:qcd-eec-light-ray-transport-u}
+\end{equation}
+When \(\gamma(t)\) at different scales does not commute,
+\eqref{eq:qcd-eec-light-ray-transport-u} is the definition of the
+path-ordered product; no choice of ordered exponential is meaningful without
+the side on which \(\gamma\) acts.  With the row/column convention of
+\eqref{eq:qcd-eec-finite-chart-gamma-from-z}--\eqref{eq:qcd-eec-finite-chart-coefficient-rg},
+the transported coordinates are
+\begin{equation}
+  C(t)=C(t_0)U(t,t_0),
+  \qquad
+  \mathbb O(t)=U(t,t_0)^{-1}\mathbb O(t_0),
+  \label{eq:qcd-eec-light-ray-transport-pair}
+\end{equation}
+and the paired endpoint distribution is independent of \(t\):
+\[
+  C(t)\mathbb O(t)=C(t_0)\mathbb O(t_0).
+\]
+Indeed, differentiating \(U^{-1}U=\mathbf 1\) gives
+\[
+  \partial_tU^{-1}=-\gamma(t)U^{-1},
+\]
+because \(\partial_tU=U\gamma\).  Thus
+\[
+  \partial_t\mathbb O(t)=-\gamma(t)\mathbb O(t),
+  \qquad
+  \partial_tC(t)=C(t)\gamma(t),
+\]
+and the two terms in \(\partial_t(C\mathbb O)\) cancel.  If \(M(t)\) is the
+coordinate row representing the protected total-energy moment, its transport
+law in a moving chart is
+\begin{equation}
+  \partial_tM(t)=M(t)\gamma(t).
+  \label{eq:qcd-eec-light-ray-moment-transport}
+\end{equation}
+The convention \(M(t)=M(t_0)\) for all \(t\) is therefore equivalent to
+\(M\gamma(t)=0\) in that fixed chart.  This is the all-order version of the
+finite left-null-vector check in
+\eqref{eq:qcd-eec-moment-functional-rg-invariance}.
+
+If both ultraviolet and rapidity scales are present, the operator column is
+declared to obey
+\[
+  \partial_t\mathbb O=-\gamma(t,r)\mathbb O,
+  \qquad
+  \partial_r\mathbb O=-\eta(t,r)\mathbb O .
+\]
+The two scale evolutions define a path-independent endpoint coordinate only
+if the connection is flat on the chart:
+\begin{equation}
+  \partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0 .
+  \label{eq:qcd-eec-light-ray-flatness}
+\end{equation}
+This equation is not an optional aesthetic condition.  It is the equality of
+mixed derivatives of the same renormalized operator coordinate.  To see the
+sign, compute
+\[
+  \partial_r\partial_t\mathbb O
+  =
+  -(\partial_r\gamma)\mathbb O+\gamma\eta\,\mathbb O,
+  \qquad
+  \partial_t\partial_r\mathbb O
+  =
+  -(\partial_t\eta)\mathbb O+\eta\gamma\,\mathbb O .
+\]
+Equating the two expressions gives
+\eqref{eq:qcd-eec-light-ray-flatness}.  In a finite chart with nonzero
+curvature
+\[
+  \mathcal F_{tr}
+  :=
+  \partial_t\eta-\partial_r\gamma+[\gamma,\eta],
+\]
+transporting \(C\) and \(\mathbb O\) along two different paths in
+\((\mu,\nu)\)-space produces different coordinate representatives unless the
+curvature action is compensated by additional operators or by a prescribed
+scheme-change wall.  A calculation that quotes separate \(\mu\)- and
+\(\nu\)-anomalous dimensions for the EEC endpoint has therefore supplied a
+consistent renormalized light-ray chart only after
+\eqref{eq:qcd-eec-light-ray-flatness}, the protected moment row, and the
+endpoint contact convention have been checked in the same scheme.
+
 \begin{controlledapproximation}[Finite light-ray mixing truncation]
 \label{ca:qcd-eec-finite-light-ray-mixing-truncation}
 A finite small-angle EEC calculation based on a label set \(\mathcal I_L\)
@@ -8413,6 +8506,9 @@ is a controlled approximation only after it supplies:
   coordinates, act;
   \item the matrices \(\gamma\) and, when present, \(\eta\), with the
   protected energy-moment row and its scheme convention;
+  \item the transport matrices or path-ordered products solving
+  \eqref{eq:qcd-eec-light-ray-transport-u}, and, in a two-scale scheme, the
+  flatness condition \eqref{eq:qcd-eec-light-ray-flatness};
   \item a remainder functional \(R_L(\varphi,\Psi)\) for the omitted
   operators, stated in the topology of the matrix elements or cross-section
   distributions being computed.

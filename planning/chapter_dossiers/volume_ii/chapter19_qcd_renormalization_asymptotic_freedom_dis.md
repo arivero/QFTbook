@@ -432,6 +432,15 @@ The chapter must define and derive:
       \(\gamma'=R^{-1}\gamma R+R^{-1}\mu dR/d\mu\); a finite truncation is
       only a controlled approximation after a remainder functional for
       omitted light-ray operators is supplied.
+19be. Solving the finite light-ray mixing problem means transporting the
+      coefficient row and operator column by the same ordered matrix:
+      \(\partial_tU=U\gamma\), \(C(t)=C(t_0)U\), and
+      \(\mathbb O(t)=U^{-1}\mathbb O(t_0)\).  If a rapidity scale is also
+      present, the ultraviolet and rapidity connections must satisfy
+      \(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\) in the same
+      endpoint scheme; nonzero curvature is an obstruction to
+      path-independent endpoint coordinates unless additional operators or
+      scheme-change walls are supplied.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -652,6 +661,13 @@ The chapter must define and derive:
   explicit omitted-operator remainder requirement; extended
   `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
   rational matrix checks.
+- 2026-06-02 issue #519 finite-transport pass: added the ordered transport
+  certificate for the finite small-angle light-ray mixing chart, including
+  \(C(t)=C(t_0)U\), \(\mathbb O(t)=U^{-1}\mathbb O(t_0)\), the protected
+  moment-row transport law, and the two-scale flatness condition
+  \(\partial_t\eta-\partial_r\gamma+[\gamma,\eta]=0\); extended
+  `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
+  nilpotent-matrix checks of transport invariance and curvature obstruction.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,
