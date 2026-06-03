@@ -13,6 +13,71 @@ of the action and of the insertions is \(Q\)-exact; and the regulated
 expectation functional obeys the corresponding Ward identity.  This chapter
 develops that mechanism before any particular example is introduced.
 
+\section{Proof Status Map for Topological Claims}
+\label{sec:tqft-proof-status-map}
+
+The topological volumes use several kinds of input, and the status labels are
+not interchangeable.  A finite state-sum identity, a differential-topology
+classification theorem, and a physical RG comparison do not have the same proof
+burden.  The reader should use the following map while moving through
+Volumes~VIII and~IX.
+
+\begin{enumerate}
+\item A \emph{local finite proof} is a calculation inside a finite-dimensional
+or finite-groupoid model.  Examples include the de Rham \(Q\)-Stokes model in
+this chapter, the ordinary Frobenius-algebra classification in
+Chapter~\ref{ch:tqft-bordism-functoriality-extended}, the finite gauge
+groupoid gluing in Chapter~\ref{ch:tqft-finite-gauge-state-sum}, and the
+finite cochain higher-gauging identities in
+Chapter~\ref{ch:global-higher-group-symmetry-tft}.
+
+\item A \emph{local mechanism under an explicit model hypothesis} proves the
+algebraic step after the model has been supplied.  This is the status of the
+normal Gaussian/Euler-factor calculation in
+Chapter~\ref{ch:tqft-cohomological-field-theories}, the BV collar-boundary
+formula in Chapter~\ref{ch:tqft-bv-integration-localization}, the
+M\"uger-center plaquette criterion in
+Chapter~\ref{ch:tqft-boundaries-defects-categories}, and the finite gauging
+projector comparison in
+Chapter~\ref{ch:global-duality-defects-gauging-orbifold-data}.  These
+arguments explain what a model must do; they do not construct every continuum
+or higher-categorical model that could realize the algebra.
+
+\item An \emph{external mathematical theorem boundary} is used with stated
+hypotheses and a declared role, but is not reproved locally.  This includes
+the fully extended cobordism hypothesis, the full
+Reshetikhin--Turaev/Crane--Yetter/Walker--Wang theorem packages,
+Gromov--Witten virtual-cycle technology in
+Chapter~\ref{ch:tqft-topological-sigma-models}, and the Donaldson,
+Seiberg--Witten, Bauer--Furuta, and Furuta differential-topology inputs in
+Chapter~\ref{ch:tqft-witten-donaldson-seiberg-witten-comparison}.
+
+\item A \emph{controlled QFT hypothesis} asks for a regulator, BV or Hilbert
+space construction, anomaly-line convention, compactness statement, and
+determinant-line normalization.  Chern--Simons theory in
+Chapter~\ref{ch:tqft-chern-simons-theory}, continuum cohomological gauge
+theories, and symmetry-defect systems in
+Chapters~\ref{ch:extended-operators-topological-defects} and
+\ref{ch:global-categorical-symmetry-defect-fusion} often sit here until the
+required construction data have been given.
+
+\item An \emph{open comparison problem} remains when the chapter has exposed
+the finite or local mechanisms but not built the single continuum framework
+that identifies them.  The Donaldson--Seiberg--Witten comparison is the main
+example: the finite moduli-space theorems, \(u\)-plane wall-normal model,
+contact terms, and determinant phases test individual arrows, while the full
+\(Q\)-compatible Wilsonian flow from twisted non-Abelian gauge theory to the
+Abelian monopole theory remains a theorem target rather than a settled local
+derivation.
+\end{enumerate}
+
+This map is a guard against a common source of false depth.  Proving a finite
+cell identity can make a quoted theorem less mysterious, but it closes only the
+arrow whose hypotheses it actually checks.  Conversely, leaving a theorem as
+external is acceptable only when the surrounding QFT statement has been
+separated from that theorem and the missing construction has been recorded as a
+hypothesis or open problem.
+
 \section{Metric Response as a Renormalized Insertion}
 
 Let \(M\) be a closed oriented smooth \(D\)-manifold and let
