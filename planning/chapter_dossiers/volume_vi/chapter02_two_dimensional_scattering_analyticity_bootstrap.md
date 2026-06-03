@@ -31,6 +31,11 @@
 - Fusion equation for scattering of a bound state with a third particle,
   derived by a small-contour residue extraction of the factorized
   three-particle amplitude, under the stated no-extra-pole hypothesis.
+- Finite residue-projection algebra for the fusion identity: if
+  \(S_{ab}(\zeta)=iP_e/(\zeta-iu)+\text{regular}\) and the \(ak,bk\) product
+  is holomorphic on the contour, then only \(B(iu)P_e\) enters
+  \(-i\operatorname{Res}\), and projecting with the residue maps gives the
+  bound-state scattering coordinate.
 - CDD factor as a meromorphic scalar ambiguity satisfying unitarity and
   crossing.
 - Elementary scalar block algebra: unitarity identity, pole lattice, and zero
@@ -91,7 +96,8 @@
   \([x]_{\ii\pi-\theta}=-[1-x]_\theta\), the CDD-pair
   unitarity/crossing identities, and the opposite signs of the two
   physical-strip residues.  It also checks the complex fusing-angle momentum
-  identity and the resulting bound-state mass relation.
+  identity and the resulting bound-state mass relation, plus an exact
+  finite-rank noncommuting matrix model for the fusion residue projection.
 
 ## Audit Notes
 
@@ -103,3 +109,6 @@
   momentum identity into real and imaginary rapidity components, deriving the
   fusing-angle sine relation, the real fused mass, and the pole-location mass
   formula; extended the companion check accordingly.
+- 2026-06-02 fusion residue-projection pass: added the finite algebra after
+  the contour proof and extended the companion check to verify the sign,
+  holomorphic-coefficient, and projection conventions of the fusion identity.

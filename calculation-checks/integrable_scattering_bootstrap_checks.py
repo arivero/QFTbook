@@ -1,13 +1,62 @@
 #!/usr/bin/env python3
-"""Checks for scalar bootstrap blocks in two-dimensional integrable scattering."""
+"""Checks for scalar bootstrap blocks in two-dimensional integrable scattering.
+
+The finite matrix check also guards the residue-projection convention in the
+bound-state fusion identity of Volume VI, Chapter 2.
+"""
 
 import cmath
 import math
+from fractions import Fraction
+
+
+Matrix = list[list[Fraction]]
 
 
 def assert_close(label: str, actual: complex, expected: complex, tol: float = 2.0e-12) -> None:
     if abs(actual - expected) > tol:
         raise AssertionError(f"{label}: got {actual!r}, expected {expected!r}")
+
+
+def assert_equal(label: str, actual, expected) -> None:
+    if actual != expected:
+        raise AssertionError(f"{label}: got {actual!r}, expected {expected!r}")
+
+
+def require_distinct(label: str, left, right) -> None:
+    if left == right:
+        raise AssertionError(
+            f"{label}: degenerate finite test did not distinguish the cases"
+        )
+
+
+def zero_matrix(rows: int, cols: int) -> Matrix:
+    return [[Fraction(0) for _ in range(cols)] for _ in range(rows)]
+
+
+def identity(n: int) -> Matrix:
+    out = zero_matrix(n, n)
+    for i in range(n):
+        out[i][i] = Fraction(1)
+    return out
+
+
+def matmul(a: Matrix, b: Matrix) -> Matrix:
+    rows = len(a)
+    inner = len(b)
+    cols = len(b[0])
+    return [
+        [sum(a[i][k] * b[k][j] for k in range(inner)) for j in range(cols)]
+        for i in range(rows)
+    ]
+
+
+def matrix_add(a: Matrix, b: Matrix) -> Matrix:
+    return [[a[i][j] + b[i][j] for j in range(len(a[0]))] for i in range(len(a))]
+
+
+def matrix_scale(c: Fraction, a: Matrix) -> Matrix:
+    return [[c * entry for entry in row] for row in a]
 
 
 def block(theta: complex, x: float) -> complex:
@@ -108,10 +157,88 @@ def check_fusing_angle_momentum_identity() -> None:
     assert_close("fused momentum component", pa[1] + pb[1], pe[1])
 
 
+def check_fusion_residue_projection_convention() -> None:
+    # A nonorthogonal finite bound-state inclusion/projection.  The residue
+    # convention is -i Res S_ab = Gamma_in Gamma_out.
+    gamma_in = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(1)],
+        [Fraction(1), Fraction(1)],
+    ]
+    gamma_out = [
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0)],
+    ]
+    projection = matmul(gamma_in, gamma_out)
+    assert_equal(
+        "bound-state residue normalization",
+        matmul(gamma_out, gamma_in),
+        identity(2),
+    )
+    assert_equal(
+        "bound-state residue projection idempotent",
+        matmul(projection, projection),
+        projection,
+    )
+
+    s_ak = [
+        [Fraction(1), Fraction(2), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(1)],
+        [Fraction(2), Fraction(-1), Fraction(1)],
+    ]
+    s_bk = [
+        [Fraction(2), Fraction(0), Fraction(1)],
+        [Fraction(1), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(3), Fraction(1)],
+    ]
+    holomorphic_regular_part = [
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1)],
+    ]
+    b0 = matmul(s_ak, s_bk)
+
+    minus_i_residue_unresolved = matmul(b0, projection)
+    projected_residue = matmul(matmul(gamma_out, minus_i_residue_unresolved), gamma_in)
+    fused_amplitude = matmul(matmul(gamma_out, b0), gamma_in)
+    expected_fused_amplitude = [
+        [Fraction(5), Fraction(3)],
+        [Fraction(2), Fraction(5)],
+    ]
+    assert_equal("fusion residue projected amplitude", projected_residue, expected_fused_amplitude)
+    assert_equal(
+        "fusion residue equals bound-state scattering coordinate",
+        fused_amplitude,
+        expected_fused_amplitude,
+    )
+
+    regular_contamination = matmul(
+        matmul(
+            gamma_out,
+            matrix_add(
+                matmul(b0, projection),
+                matmul(holomorphic_regular_part, projection),
+            ),
+        ),
+        gamma_in,
+    )
+    require_distinct(
+        "fusion residue excludes holomorphic regular coefficient",
+        regular_contamination,
+        expected_fused_amplitude,
+    )
+    require_distinct(
+        "fusion residue sign convention",
+        matrix_scale(Fraction(-1), expected_fused_amplitude),
+        expected_fused_amplitude,
+    )
+
+
 def main() -> None:
     check_elementary_block_unitarity_and_crossing_pair()
     check_residue_signs()
     check_fusing_angle_momentum_identity()
+    check_fusion_residue_projection_convention()
     print("All integrable scattering bootstrap checks passed.")
 
 

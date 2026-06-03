@@ -309,6 +309,35 @@ normalization, and the existence of the one-particle \(e\)-channel; it does
 not use an off-shell Lagrangian.
 \end{proof}
 
+The noncommuting algebra in this residue step is finite-dimensional.  If
+\(P_e=\sum_\alpha\Gamma_{e,\alpha}^{ab}\Gamma_{ab}^{e,\alpha}\) and
+\[
+  S_{ab}(\zeta)=\frac{\ii P_e}{\zeta-\ii u_{ab}^{e}}+S_{ab}^{\rm reg}(\zeta),
+  \qquad
+  B(\zeta)=
+  S_{ak}(\theta_a(\zeta)-\theta_k)
+  S_{bk}(\theta_b(\zeta)-\theta_k),
+\]
+with \(B\) holomorphic on \(C_e\), then
+\[
+  -\ii\operatorname*{Res}_{\zeta=\ii u_{ab}^{e}}B(\zeta)S_{ab}(\zeta)
+  =
+  B(\ii u_{ab}^{e})P_e .
+\]
+Projecting to the resolved bound-state coordinate gives
+\[
+  \Gamma_{ab}^{e,\alpha}B(\ii u_{ab}^{e})P_e\Gamma_{e,\beta}^{ab}
+  =
+  \Gamma_{ab}^{e,\alpha}B(\ii u_{ab}^{e})\Gamma_{e,\beta}^{ab}.
+\]
+Thus derivatives or regular coefficients of the \(ak\) and \(bk\) factors do
+not enter this simple-pole residue, while the sign in
+\eqref{eq:bound-state-residue-projection} fixes the sign of the fused
+amplitude.  The companion script
+\path{calculation-checks/integrable_scattering_bootstrap_checks.py} checks
+this point in an exact rational finite-rank model with a nonorthogonal
+projection and noncommuting holomorphic scattering factor.
+
 \section{Minimal Solutions and CDD Factors}
 
 For diagonal scattering, where \(S_{ab}^{cd}(\theta)=
