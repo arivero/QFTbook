@@ -1387,9 +1387,11 @@ Current checks:
 - The same planar integrability check verifies the one-cut finite-density
   spectral-curve bookkeeping behind the large-spin cusp resolvent:
   \(y^2=4z^2-1\), sheet exchange, branch endpoints, and the normalized
-  one-cut cusp density.  It also checks the local \(S^2\) Pohlmeyer
-  moving-frame compatibility algebra that reduces the classical
-  \(\mathbb R\times S^2\) sigma-model cell to the sine-Gordon equation.
+  one-cut cusp density.  It also checks the multi-cut filling-period and
+  cut-reflection monodromy bookkeeping used by the finite-gap discussion,
+  and the local \(S^2\) Pohlmeyer moving-frame compatibility algebra that
+  reduces the classical \(\mathbb R\times S^2\) sigma-model cell to the
+  sine-Gordon equation.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

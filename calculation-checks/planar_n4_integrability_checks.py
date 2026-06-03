@@ -1955,6 +1955,80 @@ def check_one_cut_spectral_curve_bookkeeping() -> None:
         assert_close("one-cut branch endpoint", y, 0, tol=1.0e-12)
 
 
+def check_multicut_period_reflection_bookkeeping() -> None:
+    """Check finite-gap filling periods and cut-reflection monodromy exactly."""
+
+    densities = {
+        "C1": (Fraction(3, 5), Fraction(1, 7), Fraction(-2, 9)),
+        "C2": (Fraction(4, 7), Fraction(-1, 6), Fraction(5, 11)),
+        "C3": (Fraction(2, 3), Fraction(0), Fraction(1, 13)),
+    }
+
+    def integrate_unit_interval(coefficients: tuple[Fraction, ...]) -> Fraction:
+        return sum(
+            coefficient / Fraction(power + 1)
+            for power, coefficient in enumerate(coefficients)
+        )
+
+    fillings = {
+        cut: integrate_unit_interval(coefficients)
+        for cut, coefficients in densities.items()
+    }
+
+    # In units of 2*pi*i, the A-cycle integral is the cut integral of rho.
+    jump_integrals = {
+        cut: integrate_unit_interval(coefficients)
+        for cut, coefficients in densities.items()
+    }
+    if jump_integrals != fillings:
+        raise AssertionError("multi-cut filling periods do not match jumps")
+
+    total_mass = sum(fillings.values(), Fraction(0))
+    total_jump = sum(jump_integrals.values(), Fraction(0))
+    if total_mass != total_jump:
+        raise AssertionError("total filling is not the sum of cut jumps")
+
+    AffineMap = tuple[int, Fraction]
+
+    def reflection(mode: Fraction) -> AffineMap:
+        # p is measured in units of 2*pi: R_n(p)=n-p.
+        return (-1, mode)
+
+    def compose(outer: AffineMap, inner: AffineMap) -> AffineMap:
+        outer_sign, outer_shift = outer
+        inner_sign, inner_shift = inner
+        return (
+            outer_sign * inner_sign,
+            outer_sign * inner_shift + outer_shift,
+        )
+
+    identity = (1, Fraction(0))
+    modes = {
+        "C1": Fraction(2),
+        "C2": Fraction(-1),
+        "C3": Fraction(5),
+    }
+
+    for mode in modes.values():
+        if compose(reflection(mode), reflection(mode)) != identity:
+            raise AssertionError("cut reflection is not involutive")
+
+    for left_name, left_mode in modes.items():
+        for right_name, right_mode in modes.items():
+            monodromy = compose(reflection(right_mode), reflection(left_mode))
+            expected = (1, right_mode - left_mode)
+            if monodromy != expected:
+                raise AssertionError(
+                    f"two-cut monodromy failed for {left_name}->{right_name}"
+                )
+            if monodromy[1].denominator != 1:
+                raise AssertionError("integer mode numbers gave noninteger shift")
+
+    bad_monodromy = compose(reflection(Fraction(7, 2)), reflection(modes["C1"]))
+    if bad_monodromy[1].denominator == 1:
+        raise AssertionError("noninteger mode unexpectedly exponentiates trivially")
+
+
 def check_pohlmeyer_s2_frame_compatibility() -> None:
     """Check the S2 Pohlmeyer moving-frame compatibility algebra exactly."""
 
@@ -5280,6 +5354,7 @@ def main() -> None:
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
     check_one_cut_spectral_curve_bookkeeping()
+    check_multicut_period_reflection_bookkeeping()
     check_pohlmeyer_s2_frame_compatibility()
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()

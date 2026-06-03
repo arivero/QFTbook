@@ -2510,6 +2510,62 @@ Using \(p_\pm(u)=V'(u)/2-G_\pm(u)\) gives
   2\pi n_a .
 \]
 
+\paragraph{Multi-cut periods and sheet reflections.}
+The same boundary values also recover the filling periods.  In the rank-one
+finite-density normalization where \(\lambda=p(z)\dd z\) on the physical
+sheet, and where \(V'\) is holomorphic in a collar of the cut, one has
+\begin{equation}
+  p_+(u)-p_-(u)=2\pi\ii\,\rho(u),
+  \qquad u\in\mathcal C_a^\circ .
+  \label{eq:finite-density-quasimomentum-jump}
+\end{equation}
+Thus a small \(A_a\)-cycle surrounding \(\mathcal C_a\), with the first
+traverse along the \(+\)-side of the oriented cut and the return traverse on
+the \(-\)-side, gives
+\begin{equation}
+  \mathcal S_a
+  =
+  \frac1{2\pi\ii}\oint_{A_a}p(z)\dd z
+  =
+  \int_{\mathcal C_a}\rho(u)\,\dd s(u).
+  \label{eq:finite-density-filling-from-jump}
+\end{equation}
+Indeed, the contribution of a shrinking collar is
+\[
+  \oint_{A_a}p(z)\dd z
+  =
+  \int_{\mathcal C_a}\bigl(p_+(u)-p_-(u)\bigr)\dd s(u),
+\]
+and \eqref{eq:finite-density-quasimomentum-jump} gives
+\eqref{eq:finite-density-filling-from-jump}.  This is the first
+non-one-cut datum: each cut carries an independent filling fraction before
+global period and level-matching constraints are imposed.
+
+The mode numbers are the affine gluing data.  Equation
+\eqref{eq:finite-density-quasimomentum-gluing} says that analytic continuation
+through \(\mathcal C_a\) acts on the local quasimomentum coordinate by the
+reflection
+\begin{equation}
+  R_a:\ p\longmapsto 2\pi n_a-p .
+  \label{eq:finite-density-cut-reflection}
+\end{equation}
+Hence \(R_a^2=1\), while crossing first \(\mathcal C_a\) and then
+\(\mathcal C_b\) gives
+\begin{equation}
+  R_bR_a(p)=p+2\pi(n_b-n_a).
+  \label{eq:finite-density-two-cut-monodromy}
+\end{equation}
+For integer mode numbers the exponentiated quasimomentum is therefore
+single-valued around such a two-cut continuation,
+\[
+  \exp\bigl(\ii R_bR_a(p)\bigr)=\exp(\ii p).
+\]
+The unexponentiated \(p\), however, has remembered the relative mode number.
+A full classical finite-gap solution also has Virasoro constraints,
+reconstruction of the embedding coordinates, and global period conditions;
+the calculation here is only the local multi-cut period and monodromy
+bookkeeping that those global constraints use.
+
 For the large-spin one-loop cusp density above, the spectral curve is already
 visible.  Put
 \[

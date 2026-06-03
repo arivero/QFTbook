@@ -247,8 +247,11 @@ motivational checks, not foundations.
   finite-density Bethe roots: defines the empirical root measure, Cauchy
   transform, finite-density Bethe-root curve, meromorphic differential and
   filling periods, proves the Plemelj jump-to-quasimomentum gluing formula,
-  and identifies the large-spin one-cut curve `y^2=4z^2-1` with sheet
-  exchange `exp(iG)->exp(-iG)`.
+  derives the multi-cut filling-period formula
+  `S_a=(2 pi i)^{-1} int_{A_a} p dz=int_{C_a} rho ds`, records the
+  cut-reflection monodromy `R_b R_a(p)=p+2 pi(n_b-n_a)`, and identifies the
+  large-spin one-cut curve `y^2=4z^2-1` with sheet exchange
+  `exp(iG)->exp(-iG)`.
 - Adds the local \(S^2\) Pohlmeyer reduction cell in the classical
   \(\mathbb R\times S^2\) subsector: from the constant-stress moving frame
   \(e_\pm=\mu^{-1}\partial_\pm n\) and
@@ -389,6 +392,10 @@ crossed Zhukovsky sheets.
 - It checks the one-cut finite-density spectral-curve bookkeeping: the curve
   equation `y^2=4z^2-1`, sheet exchange inversion of `exp(iG)`, and branch
   endpoint locations.
+- It checks the multi-cut finite-gap period and monodromy bookkeeping exactly:
+  normalized A-cycle jumps reproduce the cut filling fractions, integer mode
+  numbers make two-cut exponentiated quasimomentum monodromy trivial, and a
+  noninteger mode fails that test.
 - It checks the local \(S^2\) Pohlmeyer moving-frame compatibility algebra
   exactly over rational data, including failure when the sine-Gordon
   coefficient is shifted.
@@ -427,3 +434,8 @@ crossed Zhukovsky sheets.
   spectral-curve section, with exact companion arithmetic.  This advances the
   Pohlmeyer/finite-gap item while keeping the quantum spectral-curve and
   closed-string reconstruction claims outside the local calculation.
+- 2026-06-03 #624 multi-cut period pass: added the local finite-density
+  multi-cut filling-period derivation and cut-reflection monodromy algebra,
+  with exact companion checks.  This advances the algebraic-curve lane without
+  claiming full closed-string reconstruction, Virasoro constraints, or QSC
+  equivalence.
