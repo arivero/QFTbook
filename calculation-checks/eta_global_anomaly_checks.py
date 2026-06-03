@@ -415,6 +415,40 @@ def check_dai_freed_gluing_phase_algebra() -> None:
         )
 
 
+def check_dai_freed_boundary_pairing_cancels_cocycle() -> None:
+    """Finite phase check for boundary vector times inverse inflow vector."""
+
+    for phase_modulus in range(2, 13):
+        for anomaly in range(phase_modulus):
+            for boundary_exponent in range(phase_modulus):
+                for inflow_exponent in range(phase_modulus):
+                    boundary_transformed = (
+                        boundary_exponent + anomaly
+                    ) % phase_modulus
+                    inflow_transformed = (
+                        inflow_exponent - anomaly
+                    ) % phase_modulus
+                    assert_equal(
+                        f"Dai-Freed boundary pairing gauge invariant phase={phase_modulus}",
+                        (boundary_transformed + inflow_transformed)
+                        % phase_modulus,
+                        (boundary_exponent + inflow_exponent) % phase_modulus,
+                    )
+
+        fillings = [1, 3, 5, phase_modulus - 1]
+        boundary_vector = 2 % phase_modulus
+        for first in fillings:
+            for second in fillings:
+                paired_first = (boundary_vector + first) % phase_modulus
+                paired_second = (boundary_vector + second) % phase_modulus
+                closed_phase = (first - second) % phase_modulus
+                assert_equal(
+                    f"Dai-Freed filling change equals closed phase phase={phase_modulus}",
+                    (paired_first - paired_second) % phase_modulus,
+                    closed_phase,
+                )
+
+
 def oriented_edge_value(cochain: dict[tuple[int, int], Fraction], start: int, end: int) -> Fraction:
     if (start, end) in cochain:
         return cochain[(start, end)]
@@ -865,6 +899,7 @@ def main() -> None:
     check_quillen_spectral_cut_transition_cocycle()
     check_cech_de_rham_line_holonomy_bookkeeping()
     check_dai_freed_gluing_phase_algebra()
+    check_dai_freed_boundary_pairing_cancels_cocycle()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_dual_anomaly_line_cancellation()

@@ -98,6 +98,11 @@ global anomaly as an explicit mod-two-index example.
   integral modulo integers; for an odd manifold with boundary, the
   Dai--Freed object is a vector in the inverse boundary anomaly line, and
   pairing two such vectors gives the closed phase of the glued odd manifold.
+- Proves the boundary-pairing cancellation algebra: if the boundary fermion
+  determinant vector transforms by the anomaly-line cocycle and the
+  Dai--Freed vector transforms by the inverse cocycle, their pairing is a
+  gauge-invariant scalar; changing the filling multiplies this scalar by the
+  closed Dai--Freed phase of the glued odd manifold.
 - Adds an explicit theorem-boundary paragraph separating the pure
   global-analysis inputs (APS Fredholm/heat-kernel theorem,
   Bismut--Freed determinant-line holonomy, Dai--Freed boundary-line gluing,
@@ -125,8 +130,8 @@ global anomaly as an explicit mod-two-index example.
   holonomy before cancellation, and the Quillen spectral-cut
   transition cocycle for determinant-line charts, the reduced-eta integer
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
-  Dai--Freed gluing, and a finite cochain Stokes model for the
-  contractible-loop curvature-to-descent step.
+  Dai--Freed gluing and boundary-pairing anomaly cancellation, and a finite
+  cochain Stokes model for the contractible-loop curvature-to-descent step.
 - The same script now checks the Cech-de Rham local connection/transition
   algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
   invariance of the closed-loop exponent under frame changes
@@ -234,3 +239,10 @@ global anomaly as an explicit mod-two-index example.
   `eta_global_anomaly_checks.py` now constructs the trivializing \(0\)-cochain
   orbit-by-orbit and verifies the coboundary equation on every finite arrow,
   while retaining nontrivial stabilizer character as the obstruction.
+- 2026-06-03 Dai--Freed boundary-pairing pass: promoted the line-valued
+  inflow cancellation algebra to
+  `prop:dai-freed-boundary-pairing-cancels-cocycle`.  The chapter now proves
+  that the anomalous boundary determinant and the inverse Dai--Freed vector
+  pair to a gauge-invariant scalar, and that changing the filling changes
+  the scalar by the closed glued-manifold phase.  The companion
+  `eta_global_anomaly_checks.py` verifies this finite phase arithmetic.

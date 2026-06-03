@@ -180,8 +180,9 @@ Current checks:
   invariance under local frame changes, the single-orbit descent obstruction
   from nontrivial stabilizer character, the constructive finite
   action-groupoid descent criterion from vanishing stabilizer character, and
-  the finite \(U(1)\)-phase algebra of Dai--Freed gluing, together with a
-  finite cochain Stokes model for the contractible-loop step from
+  the finite \(U(1)\)-phase algebra of Dai--Freed gluing and boundary-pairing
+  anomaly cancellation, together with a finite cochain Stokes model for the
+  contractible-loop step from
   Bismut--Freed curvature to local descent.
 - `free_fock_nuclearity_checks.py`: finite checks for the Volume IV
   nuclearity phase-space benchmark, including the bosonic finite-mode product

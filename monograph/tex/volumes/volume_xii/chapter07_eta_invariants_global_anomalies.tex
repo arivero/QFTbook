@@ -1171,6 +1171,70 @@ one-dimensional determinant lines and composing their canonical pairings give
 the same number as gluing all odd-dimensional pieces first.  This is the
 finite-line algebra that the eta invariant realizes analytically.
 
+\begin{proposition}[Dai--Freed boundary pairing cancels the anomaly cocycle]
+\label{prop:dai-freed-boundary-pairing-cancels-cocycle}
+Let \(A\) be a structured background on \(M\), let \(g\) be a gauge or
+background automorphism, and let
+\(\alpha(A,g):L_A\to L_{A^g}\) denote the determinant- or Pfaffian-line
+transport.  Suppose the boundary fermion functional is a line-valued vector
+\(\Psi(A)\in L_A\) with covariance
+\begin{equation}
+  \Psi(A^g)=\alpha(A,g)\Psi(A),
+  \label{eq:boundary-fermion-line-covariance}
+\end{equation}
+and a Dai--Freed filling \(Y\) supplies a vector
+\(Z_{\rm DF}(Y;A)\in L_A^{-1}\) with inverse covariance
+\begin{equation}
+  Z_{\rm DF}(Y;A^g)
+  =
+  \alpha(A,g)^{-1}Z_{\rm DF}(Y;A).
+  \label{eq:dai-freed-inverse-line-covariance}
+\end{equation}
+Then the paired amplitude
+\begin{equation}
+  \mathcal A_Y(A)
+  =
+  \bigl\langle Z_{\rm DF}(Y;A),\Psi(A)\bigr\rangle
+  \label{eq:dai-freed-paired-boundary-amplitude}
+\end{equation}
+is invariant under \(g\).  If \(Y_0\) and \(Y_1\) are two fillings with the
+same boundary background, then
+\begin{equation}
+  \frac{\mathcal A_{Y_0}(A)}{\mathcal A_{Y_1}(A)}
+  =
+  Z_{\rm DF}\bigl(Y_0\cup_M(-Y_1)\bigr),
+  \label{eq:dai-freed-filling-change-closed-phase}
+\end{equation}
+whenever the denominator is nonzero.  Thus inflow does not make the anomalous
+boundary determinant into a scalar by itself; it supplies the inverse line
+vector needed to form a scalar, and changing the inverse-line trivialization
+is measured by a closed invertible-theory phase.
+\end{proposition}
+
+\begin{proof}
+Work in a local frame \(e_A\) of \(L_A\).  Write
+\(\Psi(A)=\psi_A e_A\), \(Z_{\rm DF}(Y;A)=z_A e_A^{-1}\), and let the line
+transport multiply the frame coordinate by a phase \(\alpha(A,g)\).  The
+covariance equations give
+\(\psi_{A^g}=\alpha(A,g)\psi_A\) and
+\(z_{A^g}=\alpha(A,g)^{-1}z_A\).  Hence
+\[
+  \mathcal A_Y(A^g)
+  =
+  z_{A^g}\psi_{A^g}
+  =
+  z_A\psi_A
+  =
+  \mathcal A_Y(A).
+\]
+For two fillings, the ratio \(z_{0,A}/z_{1,A}\) is a scalar because both
+vectors live in the same inverse line.  The gluing law
+\eqref{eq:dai-freed-boundary-gluing-law} identifies this scalar with the
+closed Dai--Freed phase of \(Y_0\cup_M(-Y_1)\).  Pairing both numerator and
+denominator with the same boundary vector \(\Psi(A)\) gives
+\eqref{eq:dai-freed-filling-change-closed-phase}.
+\end{proof}
+
 \paragraph{Local descent as the infinitesimal limit of inflow.}
 For a contractible loop of background fields, the Dai--Freed holonomy reduces
 to the exponential of the descent integral determined by the local anomaly
