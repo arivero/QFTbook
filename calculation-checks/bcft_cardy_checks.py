@@ -512,6 +512,67 @@ def check_finite_classifying_center_characters() -> None:
         raise AssertionError("noncentral matrix commuted with all diagonal test elements")
 
 
+IntMatrix = tuple[tuple[int, ...], ...]
+GroupElement = tuple[int, int]
+
+
+def int_matrix_multiply(left: IntMatrix, right: IntMatrix) -> IntMatrix:
+    size = len(left)
+    return tuple(
+        tuple(
+            sum(left[row][middle] * right[middle][column] for middle in range(size))
+            for column in range(size)
+        )
+        for row in range(size)
+    )
+
+
+def z2xz2_add(left: GroupElement, right: GroupElement) -> GroupElement:
+    return ((left[0] + right[0]) % 2, (left[1] + right[1]) % 2)
+
+
+def pointed_coset_annulus_matrix(group_element: GroupElement) -> IntMatrix:
+    # H={(0,0),(1,0)}.  Cosets are detected by the second coordinate.
+    shift = group_element[1]
+    return tuple(
+        tuple(1 if target == (source + shift) % 2 else 0 for target in range(2))
+        for source in range(2)
+    )
+
+
+def check_pointed_module_annulus_nimrep() -> None:
+    """Check the finite non-diagonal annulus/nimrep identity.
+
+    In the pointed fusion skeleton for G=Z_2 x Z_2 with module category G/H,
+    the annulus matrices act by coset permutation.  This is a finite algebraic
+    model of n_i n_j = sum_k N_ij^k n_k beyond the diagonal Cardy case.
+    """
+
+    elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
+    vacuum = pointed_coset_annulus_matrix((0, 0))
+    stabilizer = pointed_coset_annulus_matrix((1, 0))
+    swap = pointed_coset_annulus_matrix((0, 1))
+
+    assert_equal("pointed coset vacuum annulus matrix", vacuum, ((1, 0), (0, 1)))
+    assert_equal("pointed stabilizer acts trivially on cosets", stabilizer, vacuum)
+    assert_equal("pointed nontrivial coset action swaps boundaries", swap, ((0, 1), (1, 0)))
+    if swap == vacuum:
+        raise AssertionError("non-diagonal pointed module example collapsed to diagonal")
+
+    for left in elements:
+        for right in elements:
+            product = int_matrix_multiply(
+                pointed_coset_annulus_matrix(left),
+                pointed_coset_annulus_matrix(right),
+            )
+            fused = pointed_coset_annulus_matrix(z2xz2_add(left, right))
+            assert_equal(f"pointed module annulus nimrep {left}+{right}", product, fused)
+            for row in product:
+                for entry in row:
+                    if entry < 0:
+                        raise AssertionError("annulus matrix has a negative entry")
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -728,6 +789,7 @@ def main() -> None:
     check_cardy_unit_algebra_module_multiplicities()
     check_matrix_frobenius_cutting_move()
     check_finite_classifying_center_characters()
+    check_pointed_module_annulus_nimrep()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
@@ -738,8 +800,8 @@ def main() -> None:
     check_liouville_degenerate_shift_sum()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
-        "matrix-Frobenius, finite-center, Chan-Paton, compact-boson, and "
-        "Liouville-boundary checks passed."
+        "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
+        "compact-boson, and Liouville-boundary checks passed."
     )
 
 

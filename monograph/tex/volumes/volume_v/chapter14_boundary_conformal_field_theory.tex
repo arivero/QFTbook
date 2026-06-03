@@ -1248,6 +1248,53 @@ boundary three-point constants is precisely the expansion of
 \eqref{eq:bcft-module-ope-composition} in the basis
 \(\{e_{ij}^{k,\mu}\}\).
 
+The annulus coefficients in a non-diagonal rational boundary theory carry a
+stronger constraint than integrality.  For simple \(A\)-modules \(M,N\), form
+the matrices
+\[
+  (n_i)_M{}^N
+  =
+  \dim\operatorname{Hom}_{A}(M\otimes U_i,N).
+\]
+Taking the graded trace of a boundary interval after inserting two successive
+chiral labels \(i,j\) can be computed either by first summing over an
+intermediate boundary module \(N\), or by fusing \(U_i\otimes U_j\) in the
+chiral category.  Module associativity therefore gives the annulus
+representation identity
+\begin{equation}
+  \sum_N (n_i)_M{}^N (n_j)_N{}^P
+  =
+  \sum_k N_{ij}{}^k (n_k)_M{}^P .
+  \label{eq:bcft-annulus-nimrep-identity}
+\end{equation}
+This is the finite algebra behind the usual statement that annulus
+multiplicity matrices form a nonnegative-integer matrix representation of the
+fusion ring.  It is not a separate classification theorem: it is the
+decategorified shadow of the same \(A\)-module composition law that produces
+\eqref{eq:bcft-module-ope-composition}.
+
+A small pointed module example shows how this differs from the diagonal Cardy
+case.  Let the chiral fusion skeleton have labels
+\(G=\mathbb Z_2\times\mathbb Z_2\), with
+\(U_g\otimes U_h=U_{g+h}\), and take the subgroup
+\(H=\{(0,0),(1,0)\}\).  Boundary labels are the two cosets \(G/H\).  The
+open multiplicity matrix attached to \(g=(g_1,g_2)\) is
+\begin{equation}
+  (n_g)_{xH}{}^{yH}
+  =
+  \begin{cases}
+  1,& yH=(x+g)+H,\\
+  0,& \text{otherwise}.
+  \end{cases}
+  \label{eq:bcft-pointed-coset-nimrep}
+\end{equation}
+Thus \(n_{(0,0)}=n_{(1,0)}=\mathbf 1\), while
+\(n_{(0,1)}=n_{(1,1)}\) swaps the two boundary labels.  Equation
+\eqref{eq:bcft-annulus-nimrep-identity} is then just the coset action law
+\(n_gn_h=n_{g+h}\).  The example is finite and algebraic; realizing it as a
+unitary local rational BCFT requires the corresponding modular, Frobenius,
+and analytic sewing data in addition to the displayed matrices.
+
 Bulk fields in the same algebraic construction are bimodule morphisms.  If
 \(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
 the braiding for the left chiral label and the inverse braiding for the

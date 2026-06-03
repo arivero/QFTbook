@@ -113,6 +113,13 @@
   endomorphism-valued boundary insertions, and finite direct sums replace the
   elementary character by Chan--Paton matrix data or by nonmultiplicative
   trace choices.
+- Adds the annulus nimrep constraint for non-diagonal rational boundaries:
+  the open-channel matrices
+  `(n_i)_M^N = dim Hom_A(M tensor U_i,N)` satisfy
+  `n_i n_j = sum_k N_ij^k n_k` by module associativity, with a finite
+  pointed \(G=\mathbb Z_2\times\mathbb Z_2\), \(G/H\) coset example where a
+  nontrivial stabilizer object acts trivially and the other coset swaps the
+  two boundary labels.
 
 ## Claims To Verify
 
@@ -168,6 +175,10 @@
    disk identity-channel one-point coordinates are central characters on
    elementary boundary modules, not arbitrary traces on reducible modules and
    not actions of noncentral boundary endomorphisms.
+17. The non-diagonal annulus multiplicity matrices form a nonnegative-integer
+   representation of the chiral fusion algebra because interval sewing with
+   two successive chiral labels can be evaluated either through an
+   intermediate boundary module or by fusing the two chiral labels first.
 
 ## Figures
 
@@ -181,6 +192,7 @@
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
   fusion-ring characters, normalized Cardy two-bulk classifying sewing,
   the finite classifying-center model for non-diagonal rational sewing,
+  the pointed module-category annulus nimrep identity,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -278,3 +290,8 @@
   derivation is a Cardy-basis fusing-symbol evaluation after the general
   boundary-field framework has already been constructed, so it should not be
   presented as theorem-level mathematics.
+- 2026-06-02 annulus nimrep pass: added the open-channel matrix
+  representation identity for non-diagonal rational boundaries and the finite
+  pointed \(G/H\) coset module example; extended `bcft_cardy_checks.py` with
+  exact integer checks of \(n_g n_h=n_{g+h}\), stabilizer collapse, and the
+  boundary-label swap matrix.

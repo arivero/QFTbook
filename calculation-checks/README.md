@@ -942,7 +942,8 @@ Current checks:
   fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
   classifying sewing identity, the matrix-unit Frobenius cutting move behind
   rational boundary sewing, the finite classifying-center model for
-  non-diagonal rational boundary sewing, boundary entropy squares,
+  non-diagonal rational boundary sewing, the pointed module-category annulus
+  nimrep identity \(n_g n_h=n_{g+h}\), boundary entropy squares,
   Chan--Paton direct sums, the positive spectral weight in the
   boundary-entropy gradient metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite
