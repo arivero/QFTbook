@@ -112,6 +112,36 @@ def euler_beta_for_nonnegative_integers(a: int, b: int) -> Fraction:
     return Fraction(math.factorial(a) * math.factorial(b), math.factorial(a + b + 1))
 
 
+def selberg_two_screening_integer_sum(a: int, b: int, c: int) -> Fraction:
+    total = Fraction(0)
+    for i in range(b + 1):
+        for j in range(b + 1):
+            for k in range(2 * c + 1):
+                sign = -1 if (i + j + k) % 2 else 1
+                total += Fraction(
+                    2
+                    * sign
+                    * math.comb(b, i)
+                    * math.comb(b, j)
+                    * math.comb(2 * c, k),
+                    (a + j + k + 1) * (2 * a + i + j + 2 * c + 2),
+                )
+    return total
+
+
+def selberg_two_screening_factorial(a: int, b: int, c: int) -> Fraction:
+    return Fraction(
+        math.factorial(a)
+        * math.factorial(b)
+        * math.factorial(a + c)
+        * math.factorial(b + c)
+        * math.factorial(2 * c),
+        math.factorial(a + b + c + 1)
+        * math.factorial(a + b + 2 * c + 1)
+        * math.factorial(c),
+    )
+
+
 def triangular_labels(m: int) -> list[tuple[int, int]]:
     return [(r, s) for r in range(1, m) for s in range(1, r + 1)]
 
@@ -407,6 +437,33 @@ def check_coulomb_gas_minimal_model_conventions() -> None:
             )
 
 
+def check_two_screening_selberg_integer_chamber() -> None:
+    for a in range(0, 5):
+        for b in range(0, 5):
+            for c in range(0, 4):
+                assert_equal(
+                    f"two-screening Selberg integer chamber A={a} B={b} C={c}",
+                    selberg_two_screening_integer_sum(a, b, c),
+                    selberg_two_screening_factorial(a, b, c),
+                )
+
+    assert_equal(
+        "two-screening C=0 beta-square limit",
+        selberg_two_screening_factorial(3, 2, 0),
+        euler_beta_for_nonnegative_integers(3, 2) ** 2,
+    )
+    assert_equal(
+        "two-screening A=B=0 C=1 Vandermonde value",
+        selberg_two_screening_factorial(0, 0, 1),
+        Fraction(1, 6),
+    )
+    assert_equal(
+        "two-screening A=B=0 C=0 no-Vandermonde value",
+        selberg_two_screening_factorial(0, 0, 0),
+        Fraction(1),
+    )
+
+
 def gram_level_two(c: Fraction, h: Fraction) -> list[list[Fraction]]:
     return [
         [4 * h + c / 2, 6 * h],
@@ -547,6 +604,7 @@ def main() -> None:
     check_rocha_caridi_poisson_s_matrix()
     check_unitary_minimal_modular_data_and_fusion()
     check_coulomb_gas_minimal_model_conventions()
+    check_two_screening_selberg_integer_chamber()
     check_level_two_ising_sigma_null_vector()
     check_level_two_kac_determinant_roots()
     check_ising_sigma_bpz_block_solutions()

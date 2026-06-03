@@ -139,6 +139,10 @@ current QFT scope.
   rank-one local system of the multivalued screening integrand, the twisted
   cycle condition, and the twisted-Stokes proof that integrated screenings
   commute with the Virasoro modes under the neutrality condition.
+- Adds the two-screening Dotsenko--Fateev Selberg chamber, displaying the
+  \(n=2\) gamma-function formula, the ordered-chamber finite polynomial
+  expansion, and the screening--screening Vandermonde exponent as the first
+  genuinely multi-screening datum.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - Expands the finite sewing-graph estimate: after finite-level truncation,
@@ -265,8 +269,9 @@ current QFT scope.
   A-series minimal-model \(S\)-matrix, \(S^2\), Verlinde integrality and
   agreement with the exact \(SU(2)\)-quotient fusion rule, level-two Ising
   Gram determinant/null vector, the level-two Kac determinant roots
-  \(h_{1,2}\) and \(h_{2,1}\), Ising BPZ block differential equation, and the
-  crossing matrix fixing
+  \(h_{1,2}\) and \(h_{2,1}\), the one-screening beta integral and
+  two-screening Selberg finite-sum/factorial identity, Ising BPZ block
+  differential equation, and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
@@ -381,6 +386,11 @@ current QFT scope.
   condition, proving the Virasoro commutator as a twisted exact derivative,
   and deriving the neutrality condition from the background charge at
   infinity before invoking meromorphic continuation.
+- 2026-06-03 two-screening Selberg pass: extended the Coulomb-gas
+  Dotsenko--Fateev section beyond the one-screening beta integral by adding
+  the \(n=2\) Selberg chamber, its finite ordered-chamber polynomial
+  expansion, and exact rational checks comparing that expansion with the
+  factorial Selberg formula.
 - 2026-05-31 Cardy Tauberian mechanism pass: expanded the quoted
   exponential-Tauberian boundary by proving the elementary positive-measure
   Laplace upper bound, isolating the nontrivial Tauberian lower-bound input,

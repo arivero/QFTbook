@@ -1048,6 +1048,66 @@ Division by \(\Gamma(A+B+2)\) gives
 because the gamma-function expression is meromorphic and agrees with the
 integral on a connected open convergence chamber.
 
+\paragraph{Two-screening Selberg chamber.}
+The first place where the Dotsenko--Fateev integrals are not just repeated
+Euler beta integrals is the two-screening factor.  In a real convergence
+chamber, suppressing the common external-position prefactors, put
+\begin{equation}
+  I_2(A,B,C)
+  =
+  \int_0^1\!\!\int_0^1
+  u^A(1-u)^Bv^A(1-v)^B|u-v|^{2C}\,\dd u\,\dd v .
+  \label{eq:dotsenko-fateev-two-screening-selberg-integral}
+\end{equation}
+For \(\operatorname{Re}A,\operatorname{Re}B>-1\) and
+\[
+  \operatorname{Re}C
+  >
+  -\min\{1/2,\operatorname{Re}(A+1),\operatorname{Re}(B+1)\},
+\]
+Selberg's \(n=2\) formula gives
+\begin{equation}
+  I_2(A,B,C)
+  =
+  \frac{
+    \Gamma(A+1)\Gamma(B+1)
+    \Gamma(A+C+1)\Gamma(B+C+1)\Gamma(2C+1)
+  }{
+    \Gamma(A+B+C+2)
+    \Gamma(A+B+2C+2)
+    \Gamma(C+1)
+  } .
+  \label{eq:dotsenko-fateev-two-screening-selberg-result}
+\end{equation}
+For nonnegative integer \(A,B,C\) the same identity is already visible by
+elementary finite algebra.  By symmetry,
+\[
+  I_2(A,B,C)
+  =
+  2\int_{0<v<u<1}
+  u^A(1-u)^Bv^A(1-v)^B(u-v)^{2C}\,\dd v\,\dd u .
+\]
+Expand the three polynomials
+\[
+  (1-u)^B,\qquad (1-v)^B,\qquad (u-v)^{2C}.
+\]
+The term with powers \(i,j,k\) contributes
+\begin{equation}
+  2(-1)^{i+j+k}
+  \binom{B}{i}\binom{B}{j}\binom{2C}{k}
+  \frac{1}{A+j+k+1}
+  \frac{1}{2A+i+j+2C+2}.
+  \label{eq:dotsenko-fateev-two-screening-finite-sum}
+\end{equation}
+Summing \eqref{eq:dotsenko-fateev-two-screening-finite-sum} over
+\(0\le i,j\le B\) and \(0\le k\le2C\) gives exactly
+\eqref{eq:dotsenko-fateev-two-screening-selberg-result} with gamma functions
+replaced by factorials.  Thus the new datum in the two-screening block is
+not an additional copy of the one-screening endpoint powers; it is the
+screening--screening exponent \(2C\), which is \(\alpha_\pm^2\) in the
+Coulomb-gas block and is the source of the Selberg/Vandermonde factors in
+multi-screening Dotsenko--Fateev formulas.
+
 \begin{remark}[What the Dotsenko--Fateev formulas do and do not prove]
 \label{rem:dotsenko-fateev-status}
 Multiple screening integrals are Selberg-type generalizations of
