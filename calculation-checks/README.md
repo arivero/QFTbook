@@ -449,8 +449,9 @@ Current checks:
   propagator residues while retaining the selected instanton zero-mode form
   factors, the plane-wave four-fermion assembly in which the differentiated
   right-slot and left-slot determinants share the same center phase and the
-  center integral supplies total momentum conservation, the color-singlet
-  source-projection
+  center integral supplies total momentum conservation, the \(SU(2)\)
+  instanton-orientation Haar projection of two colored zero-mode slots onto
+  the antisymmetric invariant tensor, the color-singlet source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
   separate from the hard instanton kernel, the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and

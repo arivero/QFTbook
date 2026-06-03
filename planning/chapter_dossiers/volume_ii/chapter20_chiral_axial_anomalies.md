@@ -98,10 +98,13 @@
   differentiated right-slot and left-slot determinants, so total momentum
   conservation is produced by the center integral while the individual
   zero-mode form-factor determinants remain inside the size integral.  The
-  color-singlet matching continuation adds the gauge-invariant source-projection
-  and hadronic pole-residue layer: source-to-zero-mode overlaps multiply the
-  hard kernel, while stable-hadron amplitudes require a separate spectral/LSZ
-  extraction.  The hard-amplitude continuation adds the
+  orientation-projection continuation adds the \(SU(2)\) Haar identities which
+  turn two colored zero-mode slots into the antisymmetric invariant tensor
+  times the source determinant.  The color-singlet matching continuation adds
+  the gauge-invariant source-projection and hadronic pole-residue layer:
+  source-to-zero-mode overlaps multiply the hard kernel, while stable-hadron
+  amplitudes require a separate spectral/LSZ extraction.  The hard-amplitude
+  continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) hard falloff, and the large-\(\rho\)
@@ -246,6 +249,7 @@
 | \(F_{\rm zm}(t)\) | individual singular-gauge BPST fermion zero-mode slot form factor, \(F_{\rm zm}(t)=-t\partial_t(I_0K_0-I_1K_1)\) with \(t=\rho|p|/2\) |
 | \(\mathcal P\) | total right-minus-left external momentum carried by a plane-wave instanton four-fermion source coefficient |
 | \(\mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\})\) | product of the right-slot and left-slot individual zero-mode form-factor determinants left after the instanton center phase is factored out |
+| \(U_i{}^\alpha\) | \(SU(2)\) instanton core-orientation matrix element whose Haar integral projects colored zero-mode slots onto invariant tensors |
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
@@ -571,6 +575,15 @@
   zero-mode form-factor determinants, nonzero-mode determinant, and size
   density stay inside the amplitude integral.  This records the actual
   four-point-amplitude assembly rather than only the local selection rule.
+- The embedded \(SU(2)\) color-orientation coordinate acts as a Haar
+  projection on the zero-mode tensor, not only as a volume factor.  The
+  two-slot identity
+  \(\int U_i{}^\alpha U_j{}^\beta dU=\frac12
+  \varepsilon_{ij}\varepsilon^{\alpha\beta}\) turns a pair of source covectors
+  into the antisymmetric color tensor times their determinant, and the
+  four-slot \(N_f=2\) core coefficient is proportional to the product of the
+  right and left source determinants.  Rank-one or color-symmetric slot data
+  are removed by this orientation integral.
 - Gauge-invariant color-singlet source matching is now separated from colored
   source amputation.  In the selected \(N_f=2\) chirality-violating channel,
   the zero-mode source matrix has the projected form
@@ -977,6 +990,16 @@
   `bpst_instanton_normalization_checks.py` to verify the center-phase
   permutation identities, coefficient after phase factoring, \(\rho^6\)
   zero-mode source power, and finite-volume momentum-selection rule.
+- 2026-06-03 issue #597 orientation-projection pass: inserted
+  `prop:instanton-color-orientation-haar-projection`, which shows that the
+  embedded \(SU(2)\) instanton orientation is an amplitude projection rather
+  than an inert moduli-space volume.  The chapter derives the Haar identities
+  sending two colored zero-mode slots to
+  \(\frac12\varepsilon_{ij}\det(v_A,v_B)\) and the \(N_f=2\) four-slot
+  coefficient to the product of the right and left source determinants.
+  Extended `bpst_instanton_normalization_checks.py` to verify one-slot
+  vanishing, mixed-trace normalization, epsilon projection, rank-one source
+  removal, color-symmetric removal, and the four-slot determinant product.
 - 2026-06-03 issue #712 source-typing repair: revised the four-fermion
   instanton chain so ordinary c-number external wave packets are not treated as
   a nonzero determinant of a rank-one matrix.  The chapter now separates

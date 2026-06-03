@@ -46,6 +46,10 @@ relations
     the center integral supplies total momentum conservation while the
     individual zero-mode form-factor determinants remain inside the size
     integral
+    the SU(2) instanton orientation Haar average projects two colored
+    zero-mode slots onto the antisymmetric invariant tensor and makes the
+    four-slot coefficient proportional to the product of right and left source
+    determinants
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
@@ -1739,6 +1743,137 @@ def check_plane_wave_instanton_four_fermion_assembly() -> None:
     assert_equal("finite-volume center sum keeps conserved momentum", center_sum_conserved, period**4)
 
 
+def epsilon2(left: int, right: int) -> Fraction:
+    if (left, right) == (0, 1):
+        return Fraction(1)
+    if (left, right) == (1, 0):
+        return Fraction(-1)
+    return Fraction(0)
+
+
+def check_instanton_orientation_haar_projection() -> None:
+    def haar_two_same(
+        color_left: int,
+        color_right: int,
+        core_left: int,
+        core_right: int,
+    ) -> Fraction:
+        return (
+            epsilon2(color_left, color_right)
+            * epsilon2(core_left, core_right)
+            / 2
+        )
+
+    def haar_mixed(
+        color_left: int,
+        color_right: int,
+        core_left: int,
+        core_right: int,
+    ) -> Fraction:
+        return (
+            Fraction(1, 2)
+            if color_left == color_right and core_left == core_right
+            else Fraction(0)
+        )
+
+    single_slot = [Fraction(2), Fraction(-5)]
+    center_averaged_slot = [(entry - entry) / 2 for entry in single_slot]
+    assert_equal(
+        "SU2 center element forces one-slot orientation average to vanish",
+        center_averaged_slot,
+        [Fraction(0), Fraction(0)],
+    )
+
+    mixed_trace = sum(
+        haar_mixed(color, color, core, core)
+        for color in range(2)
+        for core in range(2)
+    )
+    assert_equal("SU2 orientation mixed trace normalization", mixed_trace, 2)
+
+    epsilon_contraction = sum(
+        epsilon2(color_left, color_right)
+        * epsilon2(core_left, core_right)
+        * haar_two_same(color_left, color_right, core_left, core_right)
+        for color_left in range(2)
+        for color_right in range(2)
+        for core_left in range(2)
+        for core_right in range(2)
+    )
+    assert_equal(
+        "SU2 orientation same-chirality determinant normalization",
+        epsilon_contraction,
+        2,
+    )
+
+    def two_slot_projection(
+        color_left: int,
+        color_right: int,
+        first: list[Fraction],
+        second: list[Fraction],
+    ) -> Fraction:
+        return sum(
+            haar_two_same(color_left, color_right, core_left, core_right)
+            * first[core_left]
+            * second[core_right]
+            for core_left in range(2)
+            for core_right in range(2)
+        )
+
+    first_source = [Fraction(2), Fraction(3)]
+    second_source = [Fraction(5), Fraction(7)]
+    source_det = (
+        first_source[0] * second_source[1]
+        - first_source[1] * second_source[0]
+    )
+
+    for color_left in range(2):
+        for color_right in range(2):
+            assert_equal(
+                "SU2 orientation two-slot determinant projection "
+                f"{color_left}{color_right}",
+                two_slot_projection(
+                    color_left,
+                    color_right,
+                    first_source,
+                    second_source,
+                ),
+                epsilon2(color_left, color_right) * source_det / 2,
+            )
+
+    rank_one_second = [3 * entry for entry in first_source]
+    assert_equal(
+        "SU2 orientation projection kills rank-one source pair",
+        two_slot_projection(0, 1, first_source, rank_one_second),
+        0,
+    )
+    assert_equal(
+        "SU2 orientation projection kills color-symmetric pair",
+        two_slot_projection(0, 0, first_source, second_source),
+        0,
+    )
+
+    right_sources = [
+        [Fraction(2), Fraction(3)],
+        [Fraction(5), Fraction(7)],
+    ]
+    left_sources = [
+        [Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19)],
+    ]
+    right_det = det_fraction(right_sources)
+    left_det = det_fraction(left_sources)
+    four_slot_projection = (
+        two_slot_projection(0, 1, right_sources[0], right_sources[1])
+        * two_slot_projection(0, 1, left_sources[0], left_sources[1])
+    )
+    assert_equal(
+        "SU2 orientation four-slot determinant product",
+        four_slot_projection,
+        right_det * left_det / 4,
+    )
+
+
 def check_color_singlet_instanton_source_projection() -> None:
     hard_kernel = [
         [Fraction(2, 5), Fraction(3, 7)],
@@ -2444,6 +2579,7 @@ def main() -> None:
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
     check_plane_wave_instanton_four_fermion_assembly()
+    check_instanton_orientation_haar_projection()
     check_color_singlet_instanton_source_projection()
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()

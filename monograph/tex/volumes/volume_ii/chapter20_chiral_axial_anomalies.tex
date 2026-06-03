@@ -5657,6 +5657,94 @@ formula follows from the same phase count applied to
 the elementary identity \(\det(u v^T)=0\) for two-component c-number vectors.
 \end{proof}
 
+\begin{proposition}[Orientation projection in the instanton four-slot kernel]
+\label{prop:instanton-color-orientation-haar-projection}
+The global \(SU(2)\) orientation in the embedded BPST core enters the
+amplitude as a projection of colored zero-mode tensors onto invariant color
+tensors.  Normalize Haar measure by \(\int_{SU(2)}\dd U=1\), and let
+\(U_i{}^\alpha\) denote the fundamental matrix element carrying a core
+two-dimensional index \(\alpha\) to a color index \(i\).  Then
+\begin{equation}
+  \int_{SU(2)} U_i{}^\alpha\,\dd U=0,\qquad
+  \int_{SU(2)}
+    U_i{}^\alpha \overline{U_j{}^\beta}\,\dd U
+  =
+  \frac12\delta_{ij}\delta^{\alpha\beta},
+  \label{eq:instanton-orientation-one-slot-projection}
+\end{equation}
+and, because \(\wedge^2\mathbb C^2\) is the trivial representation of
+\(SU(2)\),
+\begin{equation}
+  \int_{SU(2)}
+    U_i{}^\alpha U_j{}^\beta\,\dd U
+  =
+  \frac12\varepsilon_{ij}\varepsilon^{\alpha\beta}.
+  \label{eq:instanton-orientation-two-slot-projection}
+\end{equation}
+Consequently two differentiated external zero-mode slots with core source
+vectors \(v_A,v_B\in\mathbb C^2\) have orientation average
+\begin{equation}
+  \int_{SU(2)}
+    (Uv_A)_i(Uv_B)_j\,\dd U
+  =
+  \frac12\varepsilon_{ij}\,
+  \varepsilon_{\alpha\beta}v_A^\alpha v_B^\beta
+  =
+  \frac12\varepsilon_{ij}\det(v_A,v_B).
+  \label{eq:instanton-orientation-two-slot-determinant}
+\end{equation}
+For an \(N_f=2\) differentiated four-slot source in the \(SU(2)\) core, if
+the two right slots carry rows \(v_1^R,v_2^R\) and the two left slots carry
+rows \(v_1^L,v_2^L\), the core orientation average contains the finite tensor
+\begin{equation}
+  \frac14\,
+  \varepsilon_{i_1i_2}\varepsilon_{j_1j_2}\,
+  \det(v_1^R,v_2^R)\det(v_1^L,v_2^L).
+  \label{eq:instanton-four-slot-orientation-projection}
+\end{equation}
+If either pair of external source covectors is linearly dependent, this
+orientation-projected coefficient vanishes.  Thus the color-orientation
+collective coordinate is a genuine part of the amplitude rather than a
+passive coordinate volume: it enforces the invariant antisymmetric color
+tensor and removes source components which do not couple to the instanton
+zero-mode determinant.  For an \(SU(N_c)\) instanton
+embedded through an \(SU(2)\) subgroup, the full orientation-orbit integral
+is the corresponding \(SU(N_c)\)-invariant projection with a convention
+dependent normalization; the displayed \(SU(2)\) core identity is the local
+finite projection used by the zero-mode tensor.
+\end{proposition}
+
+\begin{proof}
+There is no nonzero invariant vector in the fundamental representation, so
+the one-slot average vanishes.  The mixed two-point average is an intertwiner
+\(\mathbb C^2\otimes(\mathbb C^2)^*\to
+\mathbb C^2\otimes(\mathbb C^2)^*\), hence Schur orthogonality makes it a
+multiple of \(\delta_{ij}\delta^{\alpha\beta}\).  Contracting \(i=j\) and
+\(\alpha=\beta\) gives \(2\), so the multiple is \(1/2\).
+
+Similarly, the average of \(U_i{}^\alpha U_j{}^\beta\) is an invariant tensor
+in \(\wedge^2\mathbb C^2\otimes\wedge^2(\mathbb C^2)^*\), and must be
+\(c\,\varepsilon_{ij}\varepsilon^{\alpha\beta}\).  Contracting with
+\(\varepsilon^{ij}\varepsilon_{\alpha\beta}\) gives
+\[
+  4c
+  =
+  \int
+  \varepsilon^{ij}\varepsilon_{\alpha\beta}
+  U_i{}^\alpha U_j{}^\beta\,\dd U
+  =
+  2\int\det U\,\dd U
+  =
+  2,
+\]
+so \(c=1/2\).  Multiplying the averaged matrix elements by the two source
+vectors gives
+\eqref{eq:instanton-orientation-two-slot-determinant}.  Applying the same
+two-slot identity separately to the right and left differentiated pairs gives
+\eqref{eq:instanton-four-slot-orientation-projection}.  Linear dependence of
+one pair sets the corresponding determinant to zero.
+\end{proof}
+
 The qualification in
 Proposition~\ref{prop:instanton-external-leg-amputation-kernel} is essential.
 Colored quark legs in confining QCD do not define ordinary physical
