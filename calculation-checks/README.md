@@ -755,7 +755,9 @@ Current checks:
   reconstruction-bound arithmetic, and correction-to-scaling bookkeeping
   separating universal irrelevant exponents/correction
   distributions from regulator-dependent amplitudes.  It also checks the
-  nonsemisimple stable-block correction formula, where binomial polynomial
+  second-order reconstruction correction ledger, where a nonlinear Hessian
+  term can sit at the same exponent as the next linear stable eigendirection.
+  It also checks the nonsemisimple stable-block correction formula, where binomial polynomial
   factors multiply irrelevant eigenvalue decay and a pure-power ansatz would
   silently assume semisimplicity, and the marginally irrelevant reciprocal
   estimate behind \(1/n\) logarithmic RG corrections.  The script also checks

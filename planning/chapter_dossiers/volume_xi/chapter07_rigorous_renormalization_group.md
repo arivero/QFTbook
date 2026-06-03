@@ -470,6 +470,13 @@ constructive RG developments.
   universality theorem: stable irrelevant eigendirections, rates
   \(\omega_a\), microscopic amplitudes \(c_{i,a}\), reconstructed correction
   distributions \(\mathcal C_a\), and seminorm remainder estimates.
+- Records the second-order reconstruction correction ledger: if the
+  normalized reconstruction map has a Hessian, terms
+  \(\frac12 c_{i,a}c_{i,b}L^{-n(\omega_a+\omega_b)}
+  \mathcal C^{(2)}_{ab}\) must be retained whenever their exponent lies
+  within the declared accuracy window.  In particular, the common exponent
+  \(2\omega_1=\omega_2\) mixes the linear \(e_2\) amplitude with the
+  quadratic \(e_1^2\) reconstruction amplitude.
 - Extends the correction-to-scaling datum to nonsemisimple stable
   linearizations: a stable Jordan chain contributes
   \(L^{-n\omega}\binom{n}{q}\) factors to the stable-coordinate and
@@ -1039,3 +1046,11 @@ remainder contraction.
   short-range RG check verifies the exact finite reciprocal identity,
   accumulated drift budget, harmonic majorant, and failure of an exponential
   pure-power interpretation.
+- 2026-06-03 second-order reconstruction-correction pass: added the Hessian
+  contribution to correction-to-scaling data.  The manuscript now records
+  \(\mathcal C^{(2)}_{ab}=D^2\operatorname{Rec}_\ast(e_a,e_b)\), the
+  exponent \(\omega_a+\omega_b\), and the equal-exponent mixing
+  \(c_{i,2}\mathcal C_2+\frac12c_{i,1}^2\mathcal C^{(2)}_{11}\).  The
+  companion short-range RG check verifies the exact rational collision
+  between a linear \(e_2\) correction and a quadratic \(e_1^2\) reconstruction
+  correction.

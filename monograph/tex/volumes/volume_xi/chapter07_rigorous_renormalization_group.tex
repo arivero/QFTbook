@@ -6220,6 +6220,51 @@ The coefficients \(c_{i,a}\) are microscopic coordinates.  The exponents
 \(\omega_a\) and correction distributions \(\mathcal C_a\) are fixed-point
 data in the declared Wilsonian chart and observable topology.
 
+\paragraph{Second-order reconstruction corrections.}
+The linear correction ledger above is sufficient only when the quadratic
+reconstruction term is truly below the retained accuracy.  Suppose, in the
+same stable chart, that the normalized reconstruction map has a second
+Frechet derivative and a cubic seminorm remainder,
+\[
+  \operatorname{Rec}_{\ast}(V_\ast+w)
+  =
+  O_\ast+D\operatorname{Rec}_{\ast}(w)
+  +\frac12D^2\operatorname{Rec}_{\ast}(w,w)
+  +R_3(w),
+  \qquad
+  p_\beta(R_3(w))\le C_\beta\|w\|_{E_s}^3 .
+\]
+Substituting the stable-coordinate expansion gives the contact-free
+second-order correction terms
+\begin{equation}
+  \frac12
+  \sum_{a,b=1}^{A}
+    c_{i,a}c_{i,b}
+    L^{-n(\omega_a+\omega_b)}
+    \mathcal C^{(2)}_{ab},
+  \qquad
+  \mathcal C^{(2)}_{ab}
+  :=
+  D^2\operatorname{Rec}_{\ast}(e_a,e_b).
+  \label{eq:second-order-reconstruction-correction-terms}
+\end{equation}
+These terms are not optional bookkeeping if their exponents fall within the
+declared error window.  If \(2\omega_1<\omega_2\), the first subleading
+observable correction after the \(e_1\) term is the nonlinear
+\(\mathcal C^{(2)}_{11}\) contribution, not the next linear stable
+eigendirection.  If \(2\omega_1=\omega_2\), the coefficient at the common
+exponent is
+\[
+  c_{i,2}\mathcal C_2+\frac12c_{i,1}^2\mathcal C^{(2)}_{11}.
+\]
+Thus a fit that identifies the \(L^{-2n\omega_1}\) amplitude with only the
+linear coordinate \(c_{i,2}\) has silently assumed either vanishing quadratic
+reconstruction or a coordinate choice that removes it with a controlled
+normal-form argument.  A theorem-level correction-to-scaling statement must
+declare which quadratic and higher nonlinear reconstruction terms are
+retained, and must put the rest into the same seminorm remainder estimate as
+the omitted stable coordinates.
+
 \paragraph{Nonsemisimple stable blocks.}
 The definition above is the semisimple case.  If the stable linearization is
 not diagonalizable, the correction-to-scaling datum must record the Jordan

@@ -97,6 +97,10 @@ The stable-block correction check verifies the dual correction-to-scaling
 lesson: a nonsemisimple stable block produces binomial polynomial factors
 times the irrelevant eigenvalue decay, so a pure-power correction ansatz is a
 semisimplicity assumption rather than a consequence of the RG spectrum alone.
+The second-order reconstruction correction check verifies that a nonlinear
+reconstruction map can contribute at the same correction exponent as the next
+linear stable eigendirection, so the retained correction coefficient is a
+mixed linear/quadratic datum.
 The marginally irrelevant check verifies the reciprocal-coordinate estimate
 behind logarithmic corrections, separating a proved quadratic beta coefficient
 and cubic remainder from the mere word "marginal."
@@ -347,6 +351,77 @@ def check_correction_to_scaling_bookkeeping():
             f"same limit but regulator-dependent correction amplitudes step {step}",
             after_leading_subtraction,
             expected_subleading,
+        )
+
+
+def check_second_order_reconstruction_correction_mixing():
+    # Stable coordinates w1 ~ lambda_1^n and w2 ~ lambda_2^n with
+    # lambda_2 = lambda_1^2.  A reconstruction map with nonzero Hessian has a
+    # w1^2 term at exactly the same exponent as the linear w2 term.
+    lam_1 = Fraction(1, 2)
+    lam_2 = lam_1**2
+    fixed_observable = Fraction(2, 3)
+    linear_1 = Fraction(11, 4)
+    linear_2 = Fraction(-5, 3)
+    hessian_11 = Fraction(8, 7)
+    hessian_12 = Fraction(-9, 5)
+    hessian_22 = Fraction(5, 2)
+    amplitude_1 = Fraction(3, 5)
+    amplitude_2 = Fraction(-7, 6)
+
+    def reconstruction(w_1, w_2):
+        return (
+            fixed_observable
+            + linear_1 * w_1
+            + linear_2 * w_2
+            + Fraction(1, 2) * hessian_11 * w_1 * w_1
+            + hessian_12 * w_1 * w_2
+            + Fraction(1, 2) * hessian_22 * w_2 * w_2
+        )
+
+    same_exponent_linear = linear_2 * amplitude_2
+    same_exponent_quadratic = Fraction(1, 2) * hessian_11 * amplitude_1**2
+    same_exponent_total = same_exponent_linear + same_exponent_quadratic
+    assert_equal("second-order same-exponent linear part", same_exponent_linear, Fraction(35, 18))
+    assert_equal("second-order same-exponent quadratic part", same_exponent_quadratic, Fraction(36, 175))
+    assert_equal("second-order mixed coefficient", same_exponent_total, Fraction(6773, 3150))
+    assert_true(
+        "second-order correction is not a purely linear stable amplitude",
+        same_exponent_total != same_exponent_linear,
+    )
+
+    for step in range(1, 6):
+        w_1 = amplitude_1 * lam_1**step
+        w_2 = amplitude_2 * lam_2**step
+        observable = reconstruction(w_1, w_2)
+        leading = linear_1 * amplitude_1 * lam_1**step
+        after_leading = observable - fixed_observable - leading
+        scaled_same_exponent = after_leading / (lam_2**step)
+        expected_scaled = (
+            same_exponent_total
+            + hessian_12 * amplitude_1 * amplitude_2 * lam_1**step
+            + Fraction(1, 2) * hessian_22 * amplitude_2**2 * lam_2**step
+        )
+        assert_equal(
+            f"second-order scaled correction expansion step {step}",
+            scaled_same_exponent,
+            expected_scaled,
+        )
+
+        wrong_linear_only_residual = after_leading - same_exponent_linear * lam_2**step
+        expected_residual = (
+            same_exponent_quadratic * lam_2**step
+            + hessian_12 * amplitude_1 * amplitude_2 * (lam_1 * lam_2) ** step
+            + Fraction(1, 2) * hessian_22 * amplitude_2**2 * (lam_2**2) ** step
+        )
+        assert_equal(
+            f"second-order residual after linear-only subtraction step {step}",
+            wrong_linear_only_residual,
+            expected_residual,
+        )
+        assert_true(
+            f"linear-only subtraction leaves a visible quadratic correction step {step}",
+            wrong_linear_only_residual != 0,
         )
 
 
@@ -2758,6 +2833,7 @@ def main():
     check_independent_covariance_scaling()
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
+    check_second_order_reconstruction_correction_mixing()
     check_nonsemisimple_stable_correction_to_scaling()
     check_marginally_irrelevant_reciprocal_estimate()
     check_auxiliary_transfer_telescoping_bound()
