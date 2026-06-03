@@ -448,7 +448,9 @@ Current checks:
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
   at \(\mu=Q\), the large-\(\rho\) endpoint distinction between exponential
   fused-density suppression and the individual-slot power test
-  \(b_0+1-3m<-1\), the one-loop RG-invariant rewrite
+  \(b_0+1-3m<-1\), the stronger hard-size dominance criterion showing the
+  \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
+  only as \(R^{-1/3}\), the one-loop RG-invariant rewrite
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient with the
   large-size endpoint controlled by the selected form-factor mechanism, the
   mass-saturated vacuum-activity size integral with its

@@ -6055,6 +6055,79 @@ not a cutoff on the instanton moduli space.  The approximation is controlled
 only when the dominant range also has \(1/\rho\) in the weak-coupling regime.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Hard-size dominance versus endpoint convergence]
+\label{ca:hard-size-dominance-vs-convergence}
+The convergence test in
+\eqref{eq:hard-momentum-individual-slot-large-rho-test} is not yet a
+dominance statement.  In the notation of
+\eqref{eq:hard-momentum-instanton-size-factor}, set
+\[
+  \mathcal F_{\rm hard}(s)
+  =
+  \prod_{\ell=1}^{m}\mathcal F_\ell(c_\ell s),
+  \qquad
+  a=b_0+1 .
+\]
+After the change of variables \(s=Q\rho\), the absolute tail of the one-loop
+hard size integral outside the band \(\rho\le R/Q\) is
+\begin{equation}
+  Q^{b_0}
+  \int_{R/Q}^{\infty}
+  \rho^{\,b_0+1}\,
+  |\mathcal F_{\rm hard}(Q\rho)|\,\dd\rho
+  =
+  Q^{-2}
+  \int_{R}^{\infty}
+  s^{\,a}\,|\mathcal F_{\rm hard}(s)|\,\dd s .
+  \label{eq:hard-size-tail-change-variable}
+\end{equation}
+Thus a statement that the amplitude is dominated by instantons of size
+\(\rho\sim Q^{-1}\) requires a bound on the right-hand tail in addition to
+the formal local vertex.
+
+For example, suppose that for \(s\ge s_0\)
+\[
+  |\mathcal F_{\rm hard}(s)|\le C_\infty s^{-\sigma},
+  \qquad \sigma>b_0+2 .
+\]
+Then for \(R\ge s_0\),
+\begin{equation}
+  Q^{b_0}
+  \int_{R/Q}^{\infty}
+  \rho^{\,b_0+1}\,
+  |\mathcal F_{\rm hard}(Q\rho)|\,\dd\rho
+  \le
+  Q^{-2}\,
+  \frac{C_\infty\,R^{\,b_0+2-\sigma}}
+       {\sigma-b_0-2}.
+  \label{eq:hard-size-power-tail-bound}
+\end{equation}
+If instead the fused bilinear-density source gives
+\(|\mathcal F_{\rm hard}(s)|\le C_\infty s^\gamma e^{-ds}\), \(d>0\), then
+the corresponding tail is bounded by
+\[
+  Q^{-2}C_\infty
+  \int_R^\infty s^{\,b_0+1+\gamma}e^{-ds}\,\dd s ,
+\]
+and is exponentially small once \(R\) is large.  The two source
+constructions therefore have different endpoint control.
+
+For the differentiated singular-gauge four-slot \(SU(3)\), \(N_f=2\) hard
+kernel, the individual zero-mode form factors have
+\(\sigma=3m=12\), while \(b_0=29/3\).  Hence
+\[
+  b_0+2-\sigma=-\frac13 .
+\]
+The contribution from \(\rho>R/Q\) is only \(O(R^{-1/3})\), up to the
+spin-color and \(c_\ell\)-dependent constants.  The size integral is
+convergent, but the convergence margin is narrow: claiming that the
+one-instanton hard kernel is numerically dominated by \(\rho\sim Q^{-1}\)
+requires an additional estimate showing that this slowly decaying tail is
+small in the chosen source and kinematic window.  This is a physical
+endpoint-control hypothesis on the amplitude, not a property of the BPST
+moduli coordinates alone.
+\end{controlledapproximation}
+
 This hard-size window is the amplitude counterpart of the local
 't Hooft vertex.  The local operator records the \(Q\rho\ll1\) tensor and
 selection rule, while \eqref{eq:hard-momentum-instanton-size-factor} records

@@ -57,6 +57,9 @@ relations
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
     b0+1-3m<-1
+    hard-size dominance is stronger than endpoint convergence: for SU(3),
+    Nf=2 differentiated fermion slots the tail beyond rho=R/Q decays only as
+    R^(-1/3), while fused density sources have exponential endpoint control
     trading the one-loop action for Lambda_ht gives the full hard scaling
     Lambda_ht^b0 Q^(-b0-2), with net coefficient dimension -2
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
@@ -2030,6 +2033,59 @@ def check_hard_momentum_instanton_size_window() -> None:
     )
 
 
+def check_hard_size_tail_dominance_criterion() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    size_power = b0 + 1
+    hard_slot_count = 4
+    individual_slot_tail_power = 3
+    sigma = individual_slot_tail_power * hard_slot_count
+
+    assert_equal("hard-size tail b0", b0, Fraction(29, 3))
+    assert_equal("hard-size tail integrand power before form factors", size_power, Fraction(32, 3))
+    assert_equal("hard-size individual slot sigma", sigma, 12)
+    assert_equal("hard-size convergence condition margin", sigma - b0 - 2, Fraction(1, 3))
+    assert_equal("hard-size tail power after R cutoff", b0 + 2 - sigma, Fraction(-1, 3))
+
+    # With the normalized model bound |F_hard(s)| <= C s^{-12}, the tail
+    # integral is C/(sigma-b0-2) R^(b0+2-sigma)=3 C R^(-1/3).  Convergence is
+    # real but slow: suppressing this normalized tail below epsilon requires
+    # R > (3/epsilon)^3.
+    normalized_tail_prefactor = Fraction(1, 1) / (sigma - b0 - 2)
+    assert_equal("hard-size normalized tail prefactor", normalized_tail_prefactor, 3)
+
+    epsilon = Fraction(1, 10)
+    required_r_cubed = (normalized_tail_prefactor / epsilon) ** 3
+    assert_equal("hard-size R cubed for ten-percent normalized tail", required_r_cubed, 27000)
+
+    # A fused bilinear-density source carries exponential large-rho
+    # suppression; this is a different source construction from the individual
+    # fermion-slot kernel and should not be merged with the power-tail test.
+    def tail_kind(exponential_scale: Fraction, power_margin: Fraction) -> str:
+        if exponential_scale > 0:
+            return "exponential"
+        if power_margin > 0:
+            return "power"
+        return "uncontrolled"
+
+    assert_equal(
+        "hard-size fused density source tail kind",
+        tail_kind(Fraction(2), Fraction(0)),
+        "exponential",
+    )
+    assert_equal(
+        "hard-size individual source tail kind",
+        tail_kind(Fraction(0), sigma - b0 - 2),
+        "power",
+    )
+    assert_equal(
+        "hard-size soft slot tail kind",
+        tail_kind(Fraction(0), Fraction(-8, 3)),
+        "uncontrolled",
+    )
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -2389,6 +2445,7 @@ def main() -> None:
     check_color_singlet_instanton_source_projection()
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
+    check_hard_size_tail_dominance_criterion()
     check_dilute_instanton_gas_theta_cumulants()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()

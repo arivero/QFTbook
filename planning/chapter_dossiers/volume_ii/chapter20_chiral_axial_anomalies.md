@@ -106,7 +106,11 @@
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) hard falloff, and the large-\(\rho\)
   endpoint distinction between exponential fused-density suppression and the
-  individual-slot power test \(b_0+1-3m<-1\).
+  individual-slot power test \(b_0+1-3m<-1\).  The hard-size-dominance
+  continuation adds the stronger endpoint-tail criterion: convergence of the
+  \(SU(3)\), \(N_f=2\) four-slot individual-source kernel leaves only an
+  \(R^{-1/3}\) tail after cutting at \(\rho=R/Q\), so dominance near
+  \(1/Q\) requires an additional physical source/kinematic estimate.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
