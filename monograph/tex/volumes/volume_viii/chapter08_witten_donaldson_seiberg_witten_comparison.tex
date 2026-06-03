@@ -1495,9 +1495,34 @@ the comparison gives
 \end{equation}
 With the adjacent lift convention the two exceptional phases differ and the
 factor \(\cosh(t)\) is replaced by \(\sinh(t)\), up to the common orientation
-sign.  The point of writing the table is that the constants, phases,
-Gaussian factor, basic-class locations, and blow-up square shift are separate
-pieces of information; none is determined by the word ``simple type'' alone.
+sign.  In the exponential generating series this gives an explicit parity
+table:
+\begin{align}
+  [t^{2m}]\,e^{-t^2/2}\cosh t
+  &=
+  \sum_{r=0}^{m}
+  \frac{(-1)^r}{2^r r!(2m-2r)!},
+  &
+  [t^{2m+1}]\,e^{-t^2/2}\cosh t
+  &=0,
+  \label{eq:donaldson-blowup-even-lift-coefficients}\\
+  [t^{2m+1}]\,e^{-t^2/2}\sinh t
+  &=
+  \sum_{r=0}^{m}
+  \frac{(-1)^r}{2^r r!(2m+1-2r)!},
+  &
+  [t^{2m}]\,e^{-t^2/2}\sinh t
+  &=0.
+  \label{eq:donaldson-blowup-odd-lift-coefficients}
+\end{align}
+Thus the even lift has coefficients \(1,0,-1/12,\ldots\) in degrees
+\(0,2,4,\ldots\), while the adjacent lift has coefficients \(1,-1/3,1/20,\ldots\)
+in degrees \(1,3,5,\ldots\).  These numbers are not new invariants; they are
+the exact exceptional-insertion Taylor coefficients obtained by multiplying
+the contact Gaussian by the two exceptional basic-class phases.  The point of
+writing the table is that the constants, phases, Gaussian factor, basic-class
+locations, and blow-up square shift are separate pieces of information; none
+is determined by the word ``simple type'' alone.
 \end{example}
 
 \section{The \texorpdfstring{\(u\)-Plane}{u-Plane} Integral And Boundary Contributions}

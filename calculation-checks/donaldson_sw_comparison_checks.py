@@ -314,6 +314,74 @@ def check_donaldson_blowup_cosh_bookkeeping() -> None:
         )
         assert_equal(combined_coeff, cosh_coeff, "Donaldson blow-up cosh coefficient")
 
+    def gaussian_contact_coeff(power: int) -> Fraction:
+        if power % 2 != 0:
+            return Fraction(0)
+        r = power // 2
+        return Fraction((-1) ** r, (2**r) * factorial(r))
+
+    def hyperbolic_coeff(branch: str, power: int) -> Fraction:
+        if branch == "even":
+            return Fraction(1, factorial(power)) if power % 2 == 0 else Fraction(0)
+        if branch == "odd":
+            return Fraction(1, factorial(power)) if power % 2 == 1 else Fraction(0)
+        raise ValueError(f"unknown branch {branch!r}")
+
+    def blowup_factor_coeff(branch: str, power: int) -> Fraction:
+        return sum(
+            gaussian_contact_coeff(contact_power)
+            * hyperbolic_coeff(branch, power - contact_power)
+            for contact_power in range(power + 1)
+        )
+
+    for m in range(6):
+        even_formula = sum(
+            Fraction((-1) ** r, (2**r) * factorial(r) * factorial(2 * m - 2 * r))
+            for r in range(m + 1)
+        )
+        odd_formula = sum(
+            Fraction(
+                (-1) ** r,
+                (2**r) * factorial(r) * factorial(2 * m + 1 - 2 * r),
+            )
+            for r in range(m + 1)
+        )
+        assert_equal(
+            blowup_factor_coeff("even", 2 * m),
+            even_formula,
+            "Donaldson even-lift exceptional coefficient",
+        )
+        assert_equal(
+            blowup_factor_coeff("even", 2 * m + 1),
+            Fraction(0),
+            "Donaldson even-lift odd exceptional coefficient",
+        )
+        assert_equal(
+            blowup_factor_coeff("odd", 2 * m + 1),
+            odd_formula,
+            "Donaldson adjacent-lift exceptional coefficient",
+        )
+        assert_equal(
+            blowup_factor_coeff("odd", 2 * m),
+            Fraction(0),
+            "Donaldson adjacent-lift even exceptional coefficient",
+        )
+
+    even_table = {0: Fraction(1), 2: Fraction(0), 4: Fraction(-1, 12)}
+    odd_table = {1: Fraction(1), 3: Fraction(-1, 3), 5: Fraction(1, 20)}
+    for power, expected in even_table.items():
+        assert_equal(
+            blowup_factor_coeff("even", power),
+            expected,
+            "Donaldson even-lift low-degree table",
+        )
+    for power, expected in odd_table.items():
+        assert_equal(
+            blowup_factor_coeff("odd", power),
+            expected,
+            "Donaldson adjacent-lift low-degree table",
+        )
+
 
 def check_donaldson_exponential_moment_reconstruction() -> None:
     # If F(t)=sum_i a_i exp(lambda_i t), the first N moments recover the

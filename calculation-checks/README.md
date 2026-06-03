@@ -1047,7 +1047,8 @@ Current checks:
   \(2\chi+3\sigma\) identity, Donaldson descent degrees,
   \(\operatorname{Spin}^c\) characteristic-lift bookkeeping, K3 and
   elliptic-surface simple-type arithmetic, blow-up square shifts, Furuta
-  inequality examples, and the trace-delta instanton-action coefficient.
+  inequality examples, Donaldson blow-up cosh/sinh parity coefficients after
+  the contact Gaussian, and the trace-delta instanton-action coefficient.
 - `discrete_theta_terms_checks.py`: finite arithmetic checks for the discrete
   theta terms chapter, including the Pontryagin-square quadratic-refinement
   identity, oriented classification periodicity of the counterterm group,

@@ -110,6 +110,7 @@ gauge theory.
   characteristic-lift parity, K3 and elliptic-surface simple-type arithmetic,
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
   examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
+  Donaldson blow-up cosh/sinh parity coefficients after the contact Gaussian,
   Donaldson finite-exponential moment reconstruction, and the trace-delta
   instanton action coefficient, as well as the wall-normal sign jump and
   delta-sequence mass/concentration coefficients used in the \(u\)-plane
@@ -151,3 +152,8 @@ the Abelian monopole theory.
   completed sign factor, deriving its Gaussian delta sequence of total
   jump \(2\), and adding exact coefficient checks for the sign jump and
   concentration scale.
+- 2026-06-03 Donaldson blow-up coefficient pass: expanded the comparison
+  example into an exceptional-insertion parity table for
+  \(e^{-t^2/2}\cosh t\) and \(e^{-t^2/2}\sinh t\), separating the contact
+  Gaussian from the two exceptional basic-class phases and adding exact
+  rational checks for the even and adjacent lift coefficients.
