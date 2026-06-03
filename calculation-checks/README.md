@@ -735,7 +735,10 @@ Current checks:
   double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, the finite SPDE/constructive hierarchy-transfer check for
-  matching OS Gram forms and growth envelopes, the finite-window OS defect
+  matching OS Gram forms and growth envelopes, the finite-volume
+  \(\Phi^4_2\) route-identification normalization budget that keeps common
+  unnormalized density limits from hiding partition-function errors, the
+  finite-window OS defect
   budget including the \(M\epsilon\) entrywise-to-quadratic-form loss, the
   OS-II comparison-envelope transfer, and the finite-rate assembly schedule
   showing that model/fixed-point defects must beat both window cardinality and

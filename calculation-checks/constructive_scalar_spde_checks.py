@@ -2550,6 +2550,32 @@ def check_regulator_comparison_error_budget_arithmetic():
     assert_equal(l1_tail_bound, Fraction(1, 20), "regulator comparison L1 tail")
 
 
+def check_phi4_two_finite_volume_route_identification_arithmetic():
+    # Proposition spde-phi-four-two-finite-volume-route-identification:
+    # common unnormalized numerator and partition-function limits give common
+    # normalized Schwinger limits only after the partition function is kept
+    # uniformly away from zero.
+    partition_lower_bound = Fraction(2)
+    common_numerator_bound = Fraction(3)
+    spde_numerator_error = Fraction(1, 100)
+    constructive_numerator_error = Fraction(1, 120)
+    spde_partition_error = Fraction(1, 80)
+    constructive_partition_error = Fraction(1, 90)
+
+    normalized_bound = (
+        spde_numerator_error / partition_lower_bound
+        + constructive_numerator_error / partition_lower_bound
+        + common_numerator_bound
+        * (spde_partition_error + constructive_partition_error)
+        / (partition_lower_bound * partition_lower_bound)
+    )
+    assert_equal(
+        normalized_bound,
+        Fraction(43, 1600),
+        "Phi4_2 finite-volume normalized route-comparison budget",
+    )
+
+
 def check_spde_os_reconstruction_growth_arithmetic():
     # The corrected OS-II input allows the Schwartz-seminorm order to grow
     # linearly with the number of insertions:
@@ -2957,6 +2983,7 @@ def main():
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
     check_regulator_comparison_error_budget_arithmetic()
+    check_phi4_two_finite_volume_route_identification_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_spde_finite_window_os_defect_budget_arithmetic()
@@ -2964,7 +2991,7 @@ def main():
     check_spde_phase_cell_cross_route_budget_arithmetic()
     check_spde_directed_os_prehilbert_comparison_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

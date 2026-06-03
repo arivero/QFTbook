@@ -132,6 +132,8 @@ data.
 - `V_N^A`, `V_N^B`, `V`: regulator-dependent renormalized interaction
   potentials and their common limiting potential in the common-potential
   comparison corollary.
+- `R_N^sigma`: cutoff operator in the finite-volume stochastic/constructive
+  \(\Phi^4_2\) route-identification proposition.
 - `V_N=(\lambda/4):X_N^4:(1)`: cutoff Wick quartic potential in the
   potential-convergence corollary.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
@@ -1481,3 +1483,13 @@ data maps.
   consists only of the named estimates listed in the assembly hypothesis and
   open problem, while the single remaining quoted theorem boundary in the
   chapter is the dynamic \(\Phi^4_3\) regularity-structures package.
+- 2026-06-03 issue #608/#582 finite-volume \(\Phi^4_2\) route-identification
+  pass: added the proposition that composes the common-density regulator
+  comparison, the finite-volume \(P(\phi)_2\) ultraviolet theorem from
+  Chapter 2, polynomial uniform integrability, and finite-cutoff lattice
+  reflection positivity into one conditional stochastic/constructive
+  Schwinger-hierarchy identification.  The pass explicitly separates this
+  finite-volume bridge from the thermodynamic cluster-expansion input and adds
+  a companion exact arithmetic check for the normalized density comparison
+  budget so partition-function convergence cannot be hidden under an
+  unnormalized density comparison.

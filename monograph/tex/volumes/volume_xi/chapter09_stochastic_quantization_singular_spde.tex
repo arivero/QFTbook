@@ -4107,6 +4107,99 @@ proved, lattice reflection positivity from
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator} transfers to
 the stochastic Fourier-Galerkin limit by the criterion above.
 
+\begin{proposition}[Finite-volume \(\Phi^4_2\) SPDE/constructive route identification]
+\label{prop:spde-phi-four-two-finite-volume-route-identification}
+Work on a fixed finite two-dimensional torus, with massive Gaussian reference
+law \(\gamma\).  Let
+\(\sigma\in\{\mathrm{spde},\mathrm{cons}\}\) label two ultraviolet cutoff
+families in the same field normalization and Wick-ordering chart.  Let
+\[
+  \mathcal X_N^\sigma
+\]
+be the finite vector of smeared fields and Wick-polynomial coordinates entering
+a bounded cylinder observable, and let
+\[
+  V_N^\sigma
+  =
+  \frac{\lambda}{4}
+  \int_{\mathbb T^2}:\!(R_N^\sigma\phi)^4\!:\,\dd^2x,
+  \qquad
+  W_N^\sigma=e^{-V_N^\sigma},
+  \qquad \lambda>0,
+\]
+where \(R_N^\sigma\) is the cutoff operator in the two regulator families.
+Assume that, for every finite cylinder-coordinate list under consideration,
+\[
+  \mathcal X_N^\sigma\to\mathcal X
+  \quad\hbox{in }\gamma\hbox{-probability},
+  \qquad
+  W_N^\sigma\to W
+  \quad\hbox{in }L^1(\gamma),
+  \qquad \sigma\in\{\mathrm{spde},\mathrm{cons}\},
+\]
+and that \(\{W_N^\sigma\}\) is bounded in \(L^p(\gamma)\) for some \(p>1\),
+uniformly in \(N\) and \(\sigma\).  Suppose also that the constructive family
+is one of the finite-volume \(P(\phi)_2\) ultraviolet regulators covered by
+Theorem~\ref{thm:p-phi-two-finite-volume-uv-limit}, specialized to
+\(P(q)=\lambda q^4/4\), and that the chosen finite-volume constructive
+regulator is reflection positive in the sense of
+Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.
+
+Then the bounded Wick-cylinder Schwinger functions of the stochastic cutoff
+family and of the constructive \(P(\phi)_2\) cutoff family have the same
+finite-volume ultraviolet limit:
+\[
+  \lim_{N\to\infty}
+  \frac{\int G(\mathcal X_N^{\mathrm{spde}})W_N^{\mathrm{spde}}\,\dd\gamma}
+       {\int W_N^{\mathrm{spde}}\,\dd\gamma}
+  =
+  \lim_{N\to\infty}
+  \frac{\int G(\mathcal X_N^{\mathrm{cons}})W_N^{\mathrm{cons}}\,\dd\gamma}
+       {\int W_N^{\mathrm{cons}}\,\dd\gamma}
+\]
+for every bounded continuous \(G\) of the displayed finite coordinate vector.
+If the polynomial cylinder observables used in the OS quadratic forms satisfy
+the uniform-integrability hypothesis of
+Remark~\ref{rem:spde-regulator-comparison-os-criterion}, then the same common
+limit holds for those polynomial observables and the stochastic finite-volume
+limit is OS reflection positive on the positive-time polynomial cylinder
+algebra.
+
+Consequently, in the massive finite-volume theory, the stochastic
+quantization invariant-law route and the constructive \(P(\phi)_2\) route feed
+the same local Schwinger hierarchy into the later OS reconstruction problem
+whenever the displayed common-density and polynomial-tail estimates have been
+proved.  Passing from this finite-volume identification to the infinite-volume
+scalar QFT is exactly the separate cluster-expansion input in
+Quoted Theorem~\ref{qthm:p-phi-two-cluster-os-output}; no thermodynamic-limit
+estimate is obtained merely from stochastic stationarity.
+\end{proposition}
+
+\begin{proof}
+For a bounded continuous cylinder function \(G\), apply
+Lemma~\ref{lem:spde-bounded-cylinder-common-density-limit} with
+\(X_N^\sigma=\mathcal X_N^\sigma\) and \(W_N^\sigma=e^{-V_N^\sigma}\).  The
+lemma gives equality of the two normalized limiting expectations.  The
+constructive side is the finite-volume \(P(\phi)_2\) ultraviolet limit of
+Theorem~\ref{thm:p-phi-two-finite-volume-uv-limit}, because the hypothesis
+places the constructive cutoff in the same Wick chart and supplies the
+\(L^1\) density limit and uniform \(L^p\) integrability used there.
+
+For polynomial cylinder observables, use bounded truncations.  The
+uniform-integrability hypothesis permits the truncation radius to be sent to
+infinity uniformly in the two cutoff families, exactly as in
+Remark~\ref{rem:spde-regulator-comparison-os-criterion}.  Since the
+constructive finite regulator is reflection positive by
+Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}, the bounded
+OS quadratic forms are nonnegative before the limit; the polynomial
+truncation passage transfers the inequality to the common ultraviolet limit.
+Finally, the infinite-volume statement is only a restatement of
+Quoted Theorem~\ref{qthm:p-phi-two-cluster-os-output}: once the finite-volume
+Schwinger hierarchies have been identified in every local window, the
+large-volume OS output still requires the cluster norm estimate and its
+consequences.
+\end{proof}
+
 \begin{remark}[Polynomial OS observables from exponential moments]
 \label{rem:spde-polynomial-os-uniform-integrability}
 Let \(E\) be a Hausdorff locally convex real vector space, and let
@@ -4519,7 +4612,10 @@ estimate that turns this energy mechanism into the global
 compact-continuity input of
 Hypothesis~\ref{hyp:phi-four-two-spde-assembly-inputs}.  The invariant law
 is identified through finite-cutoff Langevin reversibility, tightness, and
-regulator comparison.  Those steps have been reduced above to Nelson
+regulator comparison; at fixed volume this comparison is assembled explicitly
+in
+Proposition~\ref{prop:spde-phi-four-two-finite-volume-route-identification}.
+Those steps have been reduced above to Nelson
 stability for the chosen Wick quartic cutoff family, common Wick-coordinate
 limits, uniform integrability of polynomial cylinders, and the OS-II growth
 conditions in
