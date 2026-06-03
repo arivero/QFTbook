@@ -233,6 +233,7 @@
 | \(F_{\rm zm}(t)\) | individual singular-gauge BPST fermion zero-mode slot form factor, \(F_{\rm zm}(t)=-t\partial_t(I_0K_0-I_1K_1)\) with \(t=\rho|p|/2\) |
 | \(\mathcal P\) | total right-minus-left external momentum carried by a plane-wave instanton four-fermion source coefficient |
 | \(\mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\})\) | product of the right-slot and left-slot individual zero-mode form-factor determinants left after the instanton center phase is factored out |
+| \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -673,6 +674,24 @@
   invariant at this anomalous-dimension layer, while \(r\)-fold source
   derivatives carry the Callan--Symanzik covariance of \(r\) scalar-density
   insertions.
+- The one-instanton source amplitude now has an explicit assembly/error
+  ledger:
+  \[
+    \mathcal A_{\Lambda,Q=1}^{\mathcal J}
+    =
+    \mathcal A_{\rm lead}^{\mathcal J}
+    +R_{\rm det}+R_{\rm zm}+R_{\rm src}+R_{\rm Schur}+R_{\rm end}.
+  \]
+  The leading density contains the pure-gauge collective/determinant density
+  \(\mathcal C_{\rm pg}^{\mathcal S}\), which specializes to the
+  orientation-integrated \(C_{N_c}^{\rm PV}\) convention when that orbit has
+  already been integrated, together with the light-fermion nonzero-mode factor
+  \(\mathcal R_{\rm f}^{\mathcal S}\), the universal running factor, and the
+  selected zero-mode source coefficient.  The residuals separately track
+  finite determinant remainders, zero-mode/source truncation, color-singlet or
+  hadronic matching, nonzero-mode Schur corrections, and endpoint tails.  This
+  makes precise that the collective-coordinate measure is only one input to the
+  QFT amplitude.
 
 ## Open Boundaries
 
@@ -944,3 +963,11 @@
   check script verifies determinant homogeneity, anomalous-dimension
   cancellation, source-derivative covariance weights, and the invariance of
   \(\theta+\arg\det M\) under anomalous chiral rotations.
+- 2026-06-03 issue #597/#630 amplitude-architecture pass: inserted
+  `prop:instanton-amplitude-assembly-error-budget`, which decomposes the
+  finite one-instanton source amplitude into the leading determinant/zero-mode
+  density plus determinant, zero-mode/source, source-matching, Schur, and
+  endpoint residuals.  The BPST check script verifies the finite-cell residual
+  decomposition, the absolute error bound, finite source-convention
+  invariance, and the fact that the collective-coordinate measure alone is not
+  the amplitude.

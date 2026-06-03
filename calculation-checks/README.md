@@ -437,7 +437,10 @@ Current checks:
   center integral supplies total momentum conservation, the color-singlet
   source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
-  separate from the hard instanton kernel, the hard-momentum size-window scaling
+  separate from the hard instanton kernel, the finite one-instanton amplitude
+  error budget separating determinant, zero-mode/source, matching, Schur, and
+  endpoint residuals from the leading density, the hard-momentum
+  size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
   at \(\mu=Q\), the large-\(\rho\) endpoint distinction between exponential
   fused-density suppression and the individual-slot power test

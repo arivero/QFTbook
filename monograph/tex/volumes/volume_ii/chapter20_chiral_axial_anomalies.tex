@@ -5514,6 +5514,148 @@ that operation termwise in a controlled semiclassical expansion gives
 \eqref{eq:instanton-hadronic-residue-extraction}; it never produces an
 ordinary colored-quark \(S\)-matrix element.
 
+\begin{proposition}[One-instanton amplitude assembly and error budget]
+\label{prop:instanton-amplitude-assembly-error-budget}
+Fix a finite-regulator \(Q=1\) chart and a gauge-invariant source channel.
+Let
+\begin{equation}
+  \mathcal A_{\Lambda,Q=1}^{\mathcal J}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \mathcal K_{\rm ex}(z)\,\dd z
+  \label{eq:instanton-exact-source-amplitude-density}
+\end{equation}
+denote the exact one-instanton contribution to the selected source
+correlator after gauge fixing but before replacing any finite factor by its
+semiclassical leading term.  Choose a controlled subdomain
+\(\mathcal U_{\rm hard}\subset\mathcal U_{Q=1}\) and a leading density
+\begin{equation}
+\begin{aligned}
+  \mathcal K_{\rm lead}(z)
+  &=
+  \ee^{\ii\theta}
+  \mathcal C_{\rm pg}^{\mathcal S}(z)\,
+  \mathcal R_{\rm f}^{\mathcal S}(z;\mu)
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right]
+  (\mu\rho)^{b_0}\rho^{-5}\,
+  \mathcal Z_{\rm lead}^{0}(z).
+\end{aligned}
+  \label{eq:instanton-leading-amplitude-density}
+\end{equation}
+Here \(\mathcal C_{\rm pg}^{\mathcal S}(z)\) is the pure-gauge
+collective-coordinate and determinant density in the chosen convention.  In
+the Pauli-Villars convention after the embedded orientation orbit has been
+integrated it contains \(C_{N_c}^{\rm PV}\); in an unintegrated orientation
+chart it contains the corresponding orientation density instead of an
+already-integrated orbit volume.  The factor
+\(\mathcal R_{\rm f}^{\mathcal S}\) is the light-fermion nonzero-mode
+determinant factor in the same source scheme, and
+\(\mathcal Z_{\rm lead}^{0}\) is the leading zero-mode source coefficient.
+Depending on the source type,
+\(\mathcal Z_{\rm lead}^{0}\) is one of
+\(\det(M^0+J^0)\), \(\det R^{\rm amp}\det L^{\rm amp}\), or the
+color-singlet determinant \(\det B^{\mathcal J}\) after the source matching
+of \eqref{eq:instanton-color-singlet-source-projection}.
+
+Suppose that on \(\mathcal U_{\rm hard}\) the exact density decomposes as
+\begin{equation}
+  \mathcal K_{\rm ex}
+  =
+  \mathcal K_{\rm lead}
+  \bigl(1+\varepsilon_{\rm det}
+          +\varepsilon_{\rm zm}
+          +\varepsilon_{\rm src}\bigr)
+  +\Delta_{\rm Schur},
+  \label{eq:instanton-amplitude-error-density}
+\end{equation}
+where \(\varepsilon_{\rm det}\) records the higher-loop and finite determinant
+remainder after the chosen determinant convention, \(\varepsilon_{\rm zm}\)
+records the zero-mode projection or local-source truncation error,
+\(\varepsilon_{\rm src}\) records the color-singlet source-matching or
+hadronic/OPE matching remainder, and \(\Delta_{\rm Schur}\) records the
+finite nonzero-mode Schur correction from
+\eqref{eq:instanton-fermion-schur-factorization}.  Then
+\begin{equation}
+  \mathcal A_{\Lambda,Q=1}^{\mathcal J}
+  =
+  \mathcal A_{\rm lead}^{\mathcal J}
+  +R_{\rm det}+R_{\rm zm}+R_{\rm src}+R_{\rm Schur}+R_{\rm end},
+  \label{eq:instanton-amplitude-error-decomposition}
+\end{equation}
+with
+\[
+  \mathcal A_{\rm lead}^{\mathcal J}
+  =
+  \int_{\mathcal U_{\rm hard}}\mathcal K_{\rm lead}(z)\,\dd z,
+  \qquad
+  R_{\rm end}
+  =
+  \int_{\mathcal U_{Q=1}\setminus\mathcal U_{\rm hard}}
+  \mathcal K_{\rm ex}(z)\,\dd z .
+\]
+Moreover, whenever the right-hand side is absolutely integrable,
+\begin{equation}
+\begin{aligned}
+  \bigl|
+  \mathcal A_{\Lambda,Q=1}^{\mathcal J}
+  -\mathcal A_{\rm lead}^{\mathcal J}
+  \bigr|
+  &\le
+  \int_{\mathcal U_{\rm hard}}
+  |\mathcal K_{\rm lead}|
+  \bigl(
+    |\varepsilon_{\rm det}|
+    +|\varepsilon_{\rm zm}|
+    +|\varepsilon_{\rm src}|
+  \bigr)\,\dd z  \\
+  &\quad
+  +\int_{\mathcal U_{\rm hard}}|\Delta_{\rm Schur}|\,\dd z
+  +
+  \int_{\mathcal U_{Q=1}\setminus\mathcal U_{\rm hard}}
+  |\mathcal K_{\rm ex}|\,\dd z .
+\end{aligned}
+  \label{eq:instanton-amplitude-error-bound}
+\end{equation}
+Thus replacing the finite-regulator instanton contribution by the local
+'t Hooft operator, or by a hard source-amputated kernel, is justified only
+after the determinant remainder, zero-mode/source projection, matching
+remainder, Schur correction, and endpoint integral have all been controlled
+in the same scheme.
+\end{proposition}
+
+\begin{proof}
+Split the exact integral into the chosen hard/source domain and its complement:
+\[
+  \int_{\mathcal U_{Q=1}}\mathcal K_{\rm ex}
+  =
+  \int_{\mathcal U_{\rm hard}}\mathcal K_{\rm ex}
+  +
+  \int_{\mathcal U_{Q=1}\setminus\mathcal U_{\rm hard}}\mathcal K_{\rm ex}.
+\]
+Substituting
+\eqref{eq:instanton-amplitude-error-density} on
+\(\mathcal U_{\rm hard}\) gives the five remainders in
+\eqref{eq:instanton-amplitude-error-decomposition}.  The bound
+\eqref{eq:instanton-amplitude-error-bound} is the triangle inequality.  The
+content is the identification of the separate physical origins of the five
+terms: collective-coordinate geometry supplies only \(\mathcal J_{\rm coll}\)
+or, equivalently, the collective part of
+\(\mathcal C_{\rm pg}^{\mathcal S}\) and the integration domain; the
+fluctuation determinant, light-fermion nonzero-mode factor, zero-mode source
+coefficient, source matching, and endpoint behavior are independent
+load-bearing inputs to the amplitude.
+\end{proof}
+
+Consequently an instanton moduli-space measure by itself is never the
+computed QFT amplitude.  It becomes a physical contribution only after it is
+multiplied by the nonzero-mode fluctuation determinant, the correctly typed
+zero-mode source coefficient, the source or hadron matching data, and an
+endpoint estimate for the selected kinematic regime.  The original
+one-instanton calculation is deep precisely because it performs this whole
+assembly, rather than because it merely parametrizes the BPST collective
+coordinates.
+
 \begin{controlledapproximation}[Hard-momentum size window]
 \label{ca:hard-momentum-instanton-size-window}
 Consider the \(N_f=2\) source-amputated four-fermion kernel

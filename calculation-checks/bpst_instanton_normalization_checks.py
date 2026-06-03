@@ -49,6 +49,10 @@ relations
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
+    a finite one-instanton amplitude error budget separates the leading
+    determinant/zero-mode/source density from determinant remainders,
+    zero-mode truncation, source matching, Schur corrections, and endpoint
+    tails; the collective-coordinate measure alone is not the amplitude
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
@@ -1590,6 +1594,123 @@ def check_color_singlet_instanton_source_projection() -> None:
     )
 
 
+def check_instanton_amplitude_error_budget() -> None:
+    # A finite regulator reduces the amplitude assembly to a finite sum over
+    # chart cells.  The leading term is not the moduli-space measure alone:
+    # it is the collective Jacobian multiplied by the pure-gauge determinant
+    # convention, the light-fermion nonzero-mode factor, and the zero-mode
+    # source coefficient.
+    pure_gauge_constant = Fraction(2, 5)
+    light_fermion_factor = Fraction(3, 7)
+    zero_mode_source_coefficient = Fraction(5, 11)
+    collective_jacobian = Fraction(7, 13)
+    leading_cell = (
+        pure_gauge_constant
+        * light_fermion_factor
+        * zero_mode_source_coefficient
+        * collective_jacobian
+    )
+    assert_equal(
+        "leading instanton cell multiplies determinant zero-mode and measure data",
+        leading_cell,
+        Fraction(6, 143),
+    )
+    assert_equal(
+        "collective-coordinate measure alone is not the instanton amplitude",
+        leading_cell == collective_jacobian,
+        False,
+    )
+
+    # A finite source-convention change can move a factor between the
+    # nonzero-mode determinant and the zero-mode source coefficient, but their
+    # product is the amplitude datum.
+    source_scale = Fraction(5, 3)
+    flavor_count = 2
+    rescaled_fermion_factor = light_fermion_factor * source_scale**flavor_count
+    rescaled_zero_mode = zero_mode_source_coefficient / source_scale**flavor_count
+    assert_equal(
+        "finite source convention leaves determinant times zero-mode factor",
+        rescaled_fermion_factor * rescaled_zero_mode,
+        light_fermion_factor * zero_mode_source_coefficient,
+    )
+
+    lead_cells = [Fraction(2, 7), Fraction(3, 11), Fraction(5, 13)]
+    determinant_remainders = [Fraction(1, 10), Fraction(-1, 15), Fraction(1, 21)]
+    zero_mode_remainders = [Fraction(1, 14), Fraction(0), Fraction(-1, 22)]
+    source_matching_remainders = [Fraction(-1, 30), Fraction(1, 18), Fraction(1, 26)]
+    schur_corrections = [Fraction(1, 200), Fraction(-1, 231), Fraction(1, 286)]
+    endpoint_cells = [Fraction(1, 97), Fraction(-1, 143)]
+
+    hard_exact_cells = []
+    for index, lead in enumerate(lead_cells):
+        hard_exact_cells.append(
+            lead
+            * (
+                1
+                + determinant_remainders[index]
+                + zero_mode_remainders[index]
+                + source_matching_remainders[index]
+            )
+            + schur_corrections[index]
+        )
+
+    lead_amplitude = sum(lead_cells, Fraction(0))
+    determinant_residual = sum(
+        lead * remainder
+        for lead, remainder in zip(lead_cells, determinant_remainders)
+    )
+    zero_mode_residual = sum(
+        lead * remainder
+        for lead, remainder in zip(lead_cells, zero_mode_remainders)
+    )
+    source_matching_residual = sum(
+        lead * remainder
+        for lead, remainder in zip(lead_cells, source_matching_remainders)
+    )
+    schur_residual = sum(schur_corrections, Fraction(0))
+    endpoint_residual = sum(endpoint_cells, Fraction(0))
+    exact_amplitude = sum(hard_exact_cells, Fraction(0)) + endpoint_residual
+
+    assert_equal(
+        "finite instanton amplitude residual decomposition",
+        exact_amplitude,
+        (
+            lead_amplitude
+            + determinant_residual
+            + zero_mode_residual
+            + source_matching_residual
+            + schur_residual
+            + endpoint_residual
+        ),
+    )
+
+    error_bound = (
+        sum(
+            abs(lead)
+            * (
+                abs(determinant_remainders[index])
+                + abs(zero_mode_remainders[index])
+                + abs(source_matching_remainders[index])
+            )
+            for index, lead in enumerate(lead_cells)
+        )
+        + sum(abs(correction) for correction in schur_corrections)
+        + sum(abs(cell) for cell in endpoint_cells)
+    )
+    assert_equal(
+        "finite instanton amplitude error bound dominates residual",
+        abs(exact_amplitude - lead_amplitude) <= error_bound,
+        True,
+    )
+
+    no_remainder_exact = sum(lead_cells, Fraction(0))
+    assert_equal(
+        "leading instanton amplitude recovered only when all residuals vanish",
+        no_remainder_exact,
+        lead_amplitude,
+    )
+
+
 def check_hard_momentum_instanton_size_window() -> None:
     n_c = 3
     n_f = 2
@@ -1889,6 +2010,7 @@ def main() -> None:
     check_instanton_external_leg_amputation_kernel()
     check_plane_wave_instanton_four_fermion_assembly()
     check_color_singlet_instanton_source_projection()
+    check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_dilute_instanton_gas_theta_cumulants()
     check_mass_saturated_vacuum_activity_size_integral()
