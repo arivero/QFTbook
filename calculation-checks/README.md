@@ -863,6 +863,11 @@ Current checks:
   coordinates and their rational source polynomial descend to coarse gauge
   orbits, while an open-link source fails the invariance test, matching the
   gauge-invariant source-window construction in Volume XI.  It also checks
+  Wilson-line transported endpoint bilinears in the permutation
+  representation: the transported bilinear is gauge invariant under
+  independent endpoint transformations, the untransported endpoint pairing
+  fails the invariance test, and the connector path is part of the source
+  label.  It also checks
   the finite arithmetic behind the weighted polymer-tail bound used in the
   gauge-blocking locality datum and the compression of a reflection-positive
   finite Gram matrix by a blocking map.  It also detects a nondecaying

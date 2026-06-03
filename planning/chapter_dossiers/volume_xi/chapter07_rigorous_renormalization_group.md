@@ -396,6 +396,11 @@ constructive RG developments.
   fine Wilson loops along concatenated paths.  The construction is explicitly
   finite-regulator; locality of the blocked action and continuum
   reconstruction remain separate polymer/positivity/reconstruction estimates.
+- Adds the finite endpoint-source algebra for gauge-compatible source
+  windows: a matter bilinear \(\bar\psi_x R(U_P)\psi_y\) is invariant only
+  after the Wilson-line transporter, endpoint representation data, and path
+  label are included.  Dropping the transporter gives a gauge-fixed source,
+  and changing the path changes the observable by the intervening holonomy.
 - Defines the gauge-blocking continuum-control datum needed after exact
   finite path blocking: a gauge-invariant polymer representation of the
   blocked measure, an exponential locality norm with a cluster-tail estimate,
@@ -538,7 +543,9 @@ remainder contraction.
   plaquette, class-function gauge invariance, and invariance of the blocked
   pushforward weights under the coarse gauge group.  The script also checks
   closed-loop source-window descent to coarse gauge orbits, the failure of an
-  open-link source to define an invariant window, the finite arithmetic
+  open-link source to define an invariant window, Wilson-line transported
+  endpoint bilinear invariance, the failure of the untransported endpoint
+  pairing, path-label dependence of the connector source, the finite arithmetic
   behind weighted polymer-tail bounds, a nondecaying tail failure mode,
   compression of a reflection-positive finite Gram matrix by a blocking map,
   and the finite reconstruction error budget \(C\varepsilon+\eta\).
@@ -983,3 +990,9 @@ remainder contraction.
   described as immediate consequences of the declared reconstruction estimate,
   not as a separate theorem.  The OS assembly paragraph was updated to refer
   to this closed-cone passage directly.
+- 2026-06-02 gauge transported-source pass: added the finite endpoint-source
+  algebra for gauge-compatible source windows and extended the \(S_3\)
+  companion check.  The pass verifies that Wilson-line transported matter
+  bilinears are invariant under independent endpoint gauge transformations,
+  while the untransported endpoint pairing and an unspecified connector path
+  do not define the same reconstruction source.

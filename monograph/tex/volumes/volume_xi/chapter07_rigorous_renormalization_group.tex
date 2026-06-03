@@ -3075,6 +3075,35 @@ endpoint color contractions, Wilson-line geometry, or asymptotic dressing
 that makes the observable gauge invariant; the uncontracted open link belongs
 to a gauge-fixed coordinate chart.
 
+The endpoint contraction can be checked at the same finite-regulator level.
+Let \(R:G\to U(V)\) be a finite-dimensional unitary representation and let
+\(P:x\to y\) be an oriented lattice path with holonomy \(U_P(A)\).  If
+\(\psi_y\in V\) and \(\bar\psi_x\in V^\ast\) transform as
+\[
+  \psi_y\mapsto R(g_y)\psi_y,
+  \qquad
+  \bar\psi_x\mapsto \bar\psi_x R(g_x)^{-1},
+\]
+then the transported bilinear
+\begin{equation}
+  O_{P,R}(A,\bar\psi_x,\psi_y)
+  =
+  \bar\psi_x\,R\!\left(U_P(A)\right)\psi_y
+  \label{eq:gauge-transported-bilinear-source}
+\end{equation}
+is invariant, because
+\[
+  U_P(A^g)=g_xU_P(A)g_y^{-1}.
+\]
+The same two endpoint vectors without the transporter transform by
+\(\bar\psi_xR(g_x)^{-1}R(g_y)\psi_y\), so they do not define a source on the
+gauge-orbit space when \(x\neq y\).  The path \(P\) is also part of the
+observable label: replacing \(P\) by another path with the same endpoints
+inserts the Wilson loop around the closed contour \(P'\bar P\).  A
+source-window RG estimate must therefore specify the transporter geometry
+and its renormalized path class, or else prove a reconstruction estimate that
+controls the difference between the chosen paths.
+
 In the BV form the same statement is slightly sharper.  A finite source
 window is a holomorphic family \(S_k(z)\) with \(S_k(0)=S_k\) satisfying the
 scale-\(k\) quantum master equation and equipped with its composite-operator
@@ -3131,9 +3160,14 @@ The companion script
 \texttt{calculation-checks/lattice\_gauge\_blocking\_checks.py} includes the
 finite \(S_3\) check behind this paragraph: class functions of the blocked
 closed loop give source polynomials constant on coarse gauge orbits, while a
-source attached to a single open link fails the same invariance test.  The
-same check file also tests the finite locality-tail arithmetic, reflection
-positive Gram compression, and the reconstruction error budget in
+source attached to a single open link fails the same invariance test.  It also
+checks \eqref{eq:gauge-transported-bilinear-source} in the permutation
+representation: the Wilson-line transported endpoint bilinear is invariant
+under all independent endpoint gauge transformations, the untransported
+endpoint pairing is not, and changing the connecting path changes the
+observable for a configuration with nontrivial holonomy.  The same check file
+also tests the finite locality-tail arithmetic, reflection positive Gram
+compression, and the reconstruction error budget in
 \eqref{eq:gauge-blocking-observable-reconstruction}; these finite checks are
 not substitutes for the continuum estimates, but they keep the algebraic
 interfaces of the estimate package explicit.

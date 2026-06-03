@@ -5,7 +5,10 @@ The manuscript uses path products of fine links as a finite-regulator model
 of a gauge-compatible Wilsonian blocking map.  This script checks the exact
 group algebra in the smallest nonabelian test case, S_3, together with finite
 locality, reflection-positivity, and reconstruction-budget arithmetic for the
-gauge-blocking continuum-control datum.
+gauge-blocking continuum-control datum.  It also checks the finite endpoint
+algebra for matter bilinear sources with Wilson-line transporters: the
+transported bilinear is gauge invariant, the untransported endpoint pairing
+is not, and the connecting path is part of the observable label.
 """
 
 from __future__ import annotations
@@ -18,6 +21,7 @@ Perm = tuple[int, int, int]
 Edge = tuple[int, int]
 FineConfig = dict[Edge, Perm]
 CoarseConfig = tuple[Perm, Perm, Perm]
+Vector = tuple[Fraction, Fraction, Fraction]
 
 IDENTITY: Perm = (0, 1, 2)
 ELEMENTS: tuple[Perm, ...] = tuple(permutations(range(3)))  # type: ignore[assignment]
@@ -55,6 +59,45 @@ def path_product(config: FineConfig, path: tuple[Edge, ...]) -> Perm:
     for edge in path:
         total = mul(total, config[edge])
     return total
+
+
+def oriented_link_value(config: FineConfig, edge: Edge) -> Perm:
+    if edge in config:
+        return config[edge]
+    reverse = (edge[1], edge[0])
+    if reverse in config:
+        return inv(config[reverse])
+    raise KeyError(edge)
+
+
+def path_product_oriented(config: FineConfig, path: tuple[Edge, ...]) -> Perm:
+    total = IDENTITY
+    for edge in path:
+        total = mul(total, oriented_link_value(config, edge))
+    return total
+
+
+def act(perm: Perm, vector: Vector) -> Vector:
+    result = [Fraction(0), Fraction(0), Fraction(0)]
+    for index, value in enumerate(vector):
+        result[perm[index]] = value
+    return tuple(result)  # type: ignore[return-value]
+
+
+def dot(left: Vector, right: Vector) -> Fraction:
+    return sum(a * b for a, b in zip(left, right, strict=True))
+
+
+def transported_bilinear(
+    config: FineConfig,
+    path: tuple[Edge, ...],
+    left_endpoint: Vector,
+    right_endpoint: Vector,
+) -> Fraction:
+    return dot(
+        left_endpoint,
+        act(path_product_oriented(config, path), right_endpoint),
+    )
 
 
 def fine_gauge_transform(config: FineConfig, gauge: dict[int, Perm]) -> FineConfig:
@@ -237,8 +280,58 @@ def check_open_link_source_is_not_gauge_invariant() -> None:
                 witness_found = True
                 break
         if witness_found:
-            break
+                break
     assert_true("an open-link source fails coarse gauge invariance", witness_found)
+
+
+def check_transported_matter_bilinear_source() -> None:
+    config = {
+        E01: (1, 2, 0),
+        E12: (0, 2, 1),
+        E23: (2, 0, 1),
+        E30: (1, 0, 2),
+    }
+    path_03 = (E01, E12, E23)
+    alternate_path_03 = ((0, 3),)
+    left_endpoint = (Fraction(1, 2), Fraction(-2), Fraction(3, 5))
+    right_endpoint = (Fraction(7, 3), Fraction(1), Fraction(-4, 7))
+
+    base = transported_bilinear(config, path_03, left_endpoint, right_endpoint)
+    for gauges in product(ELEMENTS, repeat=4):
+        gauge = dict(zip((0, 1, 2, 3), gauges, strict=True))
+        transformed_config = fine_gauge_transform(config, gauge)
+        transformed_left = act(gauge[0], left_endpoint)
+        transformed_right = act(gauge[3], right_endpoint)
+        assert_equal(
+            "Wilson-line transported endpoint bilinear is gauge invariant",
+            transported_bilinear(
+                transformed_config,
+                path_03,
+                transformed_left,
+                transformed_right,
+            ),
+            base,
+        )
+
+    untransported_base = dot(left_endpoint, right_endpoint)
+    witness_found = False
+    for g0, g3 in product(ELEMENTS, repeat=2):
+        transformed_pairing = dot(act(g0, left_endpoint), act(g3, right_endpoint))
+        if transformed_pairing != untransported_base:
+            witness_found = True
+            break
+    assert_true("untransported endpoint pairing fails gauge invariance", witness_found)
+
+    alternate = transported_bilinear(
+        config,
+        alternate_path_03,
+        left_endpoint,
+        right_endpoint,
+    )
+    assert_true(
+        "transported bilinear depends on the declared connector path",
+        alternate != base,
+    )
 
 
 def check_fine_weight_gauge_invariance() -> None:
@@ -382,6 +475,7 @@ def main() -> None:
     check_pushforward_measure_invariance()
     check_gauge_invariant_source_window_descends()
     check_open_link_source_is_not_gauge_invariant()
+    check_transported_matter_bilinear_source()
     check_fine_weight_gauge_invariance()
     check_weighted_polymer_tail_bound()
     check_reflection_positive_compression()
