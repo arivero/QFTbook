@@ -92,6 +92,13 @@ gauge theory.
   nonperturbative twisted-theory construction, \(Q\)-compatible Wilsonian flow,
   \(u\)-plane boundary control, singular-fiber monopole replacement, and
   determinant/contact normalization.
+- Adds an explicit comparison-architecture guide: the Donaldson
+  moduli-space layer, cohomological localization layer, Coulomb-branch layer,
+  and final Wilsonian gluing claim are now separated as a dependency ladder.
+  The simple-type formula also has a factor-origin ledger distinguishing the
+  finite Donaldson exponential shape, SW labels/counts, contact Gaussian,
+  determinant-line phase, universal constant, and chamber/\(u\)-plane
+  boundary contribution.
 - Gives the normalization-sensitive \(u\)-plane integral data with
   \(A(u)^\chi B(u)^\sigma\), theta kernel, contact term, and a conditional
   boundary derivation of wall crossing; the wall-normal theta-kernel factor
@@ -157,3 +164,9 @@ the Abelian monopole theory.
   \(e^{-t^2/2}\cosh t\) and \(e^{-t^2/2}\sinh t\), separating the contact
   Gaussian from the two exceptional basic-class phases and adding exact
   rational checks for the even and adjacent lift coefficients.
+- 2026-06-03 comparison-architecture pass: added a chapter-level dependency
+  ladder and a factor-origin ledger for the Witten simple-type formula, so the
+  Donaldson finite-geometry theorem, SW finite-dimensional counts, Abelian
+  contact Gaussian, determinant-line phase, universal constant, and
+  chamber/\(u\)-plane boundary analysis are no longer left for the reader to
+  infer from adjacent local mechanisms.

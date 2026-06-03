@@ -17,6 +17,23 @@ whose singular fibers are Abelian monopole theories.  The chapter keeps these
 layers separate because they have different hypotheses and different
 mathematical status.
 
+\paragraph{How the comparison argument is organized.}
+The local mechanisms in this chapter should be read as a dependency ladder,
+not as interchangeable derivations of the final comparison formula.  The
+Donaldson moduli-space layer defines the ASD invariants, the \(\mu\)-classes,
+simple type, compactification faces, and wall links.  The cohomological
+field-theory layer explains why these finite-dimensional objects are the
+localization targets of a twisted gauge theory, and why metric changes produce
+BV boundary terms rather than arbitrary chamber jumps.  The Coulomb-branch
+layer supplies a different description of the same putative four-dimensional
+QFT: a regular \(u\)-plane integral, contact terms, electromagnetic-duality
+determinant lines, and singular-fiber monopole theories.  The comparison
+statement at the end is the assertion that these three layers can be glued by
+one \(Q\)-compatible Wilsonian construction.  Consequently a wall-link
+identity, a monopole dimension count, a \(u\)-plane boundary model, or a
+blow-up coefficient table is only a test of one arrow in the ladder; none of
+them alone is a proof of the Donaldson--Seiberg-Witten comparison.
+
 \section{Four-Manifold And Gauge Conventions}
 
 Let \(X\) be a closed connected oriented smooth four-manifold equipped with a
@@ -1419,6 +1436,49 @@ Donaldson simple-type structure: there are some Donaldson basic classes with
 some coefficients.  The second identifies those classes and coefficients with
 Seiberg-Witten monopole invariants.  The QFT explanation of that
 identification is the central RG statement.
+
+\paragraph{Factor ledger for the simple-type comparison.}
+Equation~\eqref{eq:witten-simple-type-comparison} contains several pieces
+with different origins.  Keeping them separate prevents the comparison from
+being read as a single formal substitution:
+\begin{enumerate}
+\item The Donaldson simple-type theorem supplies only the finite exponential
+shape
+\[
+  \exp(Q_X/2)\sum_K a_K^w\exp\langle K,h\rangle
+\]
+after the point-operator normalization is fixed.  It does not identify the
+labels \(K\) with monopole basic classes or compute the coefficients
+\(a_K^w\).
+\item The Seiberg-Witten finite-dimensional theory supplies the candidate
+labels \(K=c_1(\mathfrak s)\), the oriented counts \({\rm SW}_X(K)\), and the
+simple-type vanishing of nonzero-dimensional monopole moduli spaces.  It does
+not by itself produce the Donaldson contact Gaussian, the \(w\)-dependent
+phase, or the universal power of \(2\).
+\item The Abelian low-energy observable map supplies the Gaussian
+\(\exp(Q_X(h,h)/2)\) through the surface-contact term \(T(u)\).  This is a
+collision-of-descendants datum in the twisted Abelian theory, not a
+consequence of the finite monopole count.
+\item Electromagnetic-duality determinant lines and the lift \(w\) supply the
+phase
+\((-1)^{(w^2+\langle w,K\rangle)/2}\).  This phase must be matched with the
+orientation conventions for Donaldson and monopole determinant lines; changing
+the lift changes the exceptional-class parity as in
+Example~\ref{ex:donaldson-side-k3-elliptic-blowup-tables}.
+\item The numerical constant \(C_X\) comes from the regularized Abelian
+measure factors, one-loop gravitational terms, and the normalization of
+Donaldson observables.  Its dependence on \(\chi(X)\) and \(\sigma(X)\) is
+therefore a determinant-line and contact-normalization claim, not a
+topological fact following from simple type.
+\item Chamber dependence is controlled separately.  For \(b_2^+>1\) the
+simple-type comparison uses the absence of a residual regular \(u\)-plane
+bulk contribution under the stated hypotheses.  For \(b_2^+=1\), the
+regularized \(u\)-plane boundary and the Donaldson link wall-crossing formula
+must be matched before a chamber-specific comparison is meaningful.
+\end{enumerate}
+The open problem below is precisely to construct a single QFT framework in
+which all six entries arise from the same regulator, anomaly line,
+Wilsonian flow, and compactification boundary convention.
 
 \paragraph{Proof obligations hidden by the comparison formula.}
 A derivation of Hypothesis~\ref{hyp:witten-simple-type-comparison-datum} from
