@@ -144,6 +144,80 @@ move graph is generated on a complete topological state space with convergent
 multilinear sewing maps; that is why the all-surface construction remains a
 quoted theorem or open problem rather than a consequence of the examples.
 
+\begin{definition}[Finite sewing anomaly cocycle]
+\label{def:bcft-finite-sewing-anomaly-cocycle}
+In the setting of Proposition~\ref{prop:bcft-finite-move-defect-budget},
+suppose the amplitudes are not scalar vectors but vectors in one-dimensional
+anomaly lines \(\mathcal L_v\) over the vertices of the move graph.  After
+choosing local trivializations of these lines, an elementary sewing move
+\(e:u\to v\) is represented by a scalar \(\lambda_e\in\mathbb C^\times\)
+times the ordinary transport \(T_e\).  For a path
+\(p=e_N\cdots e_1\), set
+\[
+  \lambda_p=\lambda_{e_N}\cdots\lambda_{e_1}.
+\]
+The scalar \(\lambda_\ell\) on a closed loop \(\ell\) is the finite
+projective sewing anomaly.  The anomaly cocycle is trivial on a connected
+move graph if there are nonzero vertex scalars \(\eta_v\) such that
+\begin{equation}
+  \lambda_e=\eta_v\eta_u^{-1}
+  \qquad(e:u\to v).
+  \label{eq:bcft-sewing-anomaly-coboundary}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Trivializing a finite sewing anomaly]
+\label{prop:bcft-finite-sewing-anomaly-trivialization}
+Let \(\mathcal G\) be a connected finite move graph with projective sewing
+scalars \(\lambda_e\).  Suppose the local projective defects vanish:
+\[
+  A_v=\lambda_e T_e A_u
+  \qquad(e:u\to v).
+\]
+If \(\lambda_e\) has the coboundary form
+\eqref{eq:bcft-sewing-anomaly-coboundary}, then the rescaled amplitudes
+\[
+  \widetilde A_v=\eta_v^{-1}A_v
+\]
+obey ordinary zero-defect sewing,
+\[
+  \widetilde A_v=T_e\widetilde A_u .
+\]
+Conversely, if a closed loop has \(\lambda_\ell\ne1\), no such vertex
+trivialization exists on the component containing that loop; a nonzero scalar
+amplitude can be decomposition-independent only as a section of the anomaly
+line, not after forgetting the line.
+\end{proposition}
+
+\begin{proof}
+Substituting \(\lambda_e=\eta_v\eta_u^{-1}\) gives
+\[
+  \widetilde A_v
+  =
+  \eta_v^{-1}A_v
+  =
+  \eta_v^{-1}\lambda_eT_eA_u
+  =
+  T_e\eta_u^{-1}A_u
+  =
+  T_e\widetilde A_u .
+\]
+For the converse, multiply
+\eqref{eq:bcft-sewing-anomaly-coboundary} around a closed loop
+\(\ell=e_N\cdots e_1\).  The vertex factors telescope, so every coboundary
+has \(\lambda_\ell=1\).  A loop with \(\lambda_\ell\ne1\) therefore cannot
+come from vertex rescalings.  Transporting a nonzero scalar amplitude around
+that loop multiplies it by \(\lambda_\ell\), contradicting scalar
+decomposition independence unless the anomaly line is retained.
+\end{proof}
+
+This is the finite model for determinant-line bookkeeping in bordered CFT.
+The analytic sewing theorem must construct the relevant anomaly line over
+the moduli/decomposition groupoid, identify the line transports produced by
+cutting and gluing, and either trivialize their cocycle or keep amplitudes as
+line-valued sections.  Local Cardy--Lewellen algebra controls the vector part
+of the move; it does not by itself cancel a closed-loop anomaly.
+
 For a boundary equal to the real axis in the upper half-plane
 \(\mathbb H=\{z=x+\ii y\mid y\ge0\}\), the stress tensor has components
 \[
@@ -221,16 +295,19 @@ The same annulus amplitude must have the form
   =
   \operatorname{Tr}_{\Hilb_{ab}}q^{L_0-c/24}
   =
-  \langle a|
+  \langle b|
   \tilde q^{(L_0+\bar L_0-c/12)/2}
-  |b\rangle
+  |a\rangle
   =
   Z_{ab}^{\mathrm{closed}}(\tilde q).
   \label{eq:bcft-open-closed-annulus}
 \end{equation}
 The factor \(1/2\) in the closed Hamiltonian is a convention fixed by the
 modular parameter of the annulus; changing cylinder coordinates changes both
-sides by the same reparametrization.
+sides by the same reparametrization.  The order
+\(\langle b|\cdots|a\rangle\) is the orientation convention used below:
+\(\Hilb_{ab}\) is the open Hilbert space of fields that begin at boundary
+condition \(a\) and end at boundary condition \(b\).
 
 \begin{definition}[Ishibashi state]
 \label{def:ishibashi-state}
@@ -368,14 +445,18 @@ Using \(\chi_i(\tilde q)=\sum_k S_{ik}\chi_k(q)\), the annulus equality gives
 \begin{equation}
   n_{ab}{}^k
   =
-  \sum_i B_a{}^i B_b{}^i S_{ik}
+  \sum_i \overline{B_b{}^i}\,B_a{}^i S_{ik}
   \label{eq:cardy-annulus-integrality-equation}
 \end{equation}
-for real unitary boundary coefficients.  Cardy consistency is the demand
-that these numbers be nonnegative integers and that the resulting open
-operator algebras sew consistently.
+for unitary boundary coefficients in this orientation convention.  If the
+modular data are real and all labels are self-conjugate, this reduces to the
+familiar symmetric shorthand.  In general the conjugation records the
+direction of the boundary-changing open sector.
+Cardy consistency is the demand that these numbers be nonnegative integers
+and that the resulting open operator algebras sew consistently.
 
-\paragraph{Cardy solution for the diagonal invariant.}
+\begin{proposition}[Oriented Cardy annulus for the diagonal invariant]
+\label{prop:oriented-cardy-annulus-diagonal}
 Let a unitary rational CFT have diagonal closed Hilbert space
 \eqref{eq:diagonal-closed-hilbert-space-bcft}, unitary modular matrix \(S\),
 and fusion coefficients \(N_{ab}{}^k\) obeying the Verlinde formula.  Then
@@ -391,25 +472,37 @@ the boundary states
 \end{equation}
 satisfy the annulus integrality condition with
 \begin{equation}
-  n_{ab}{}^k=N_{ab}{}^k .
+  n_{ab}{}^k=N_{ka}{}^b .
   \label{eq:cardy-open-spectrum-fusion}
 \end{equation}
+\end{proposition}
 
-Substitute \(B_a{}^i=S_{ai}/\sqrt{S_{0i}}\) and
-\(B_b{}^i=S_{bi}/\sqrt{S_{0i}}\) into
-\eqref{eq:cardy-annulus-integrality-equation}.  Since the theory is unitary
-and the Cardy labels are self-conjugate after replacing \(b\) by its
-conjugate when necessary,
+\begin{proof}
+Substitute \(B_a{}^i=S_{ai}/\sqrt{S_{0i}}\) into
+\eqref{eq:cardy-annulus-integrality-equation}.  The coefficient of the
+open-channel character \(\chi_k(q)\) is
 \[
   n_{ab}{}^k
   =
   \sum_i
-  \frac{S_{ai}S_{bi}S_{ki}}{S_{0i}} .
+  \frac{\overline{S_{bi}}\,S_{ai}S_{ik}}{S_{0i}} .
 \]
-This is exactly the Verlinde formula for the fusion coefficient
-\(N_{ab}{}^k\), with complex conjugation inserted on the label appropriate
-to the orientation convention.  Fusion coefficients are dimensions of
-three-point chiral block spaces, hence are nonnegative integers.
+By unitarity and charge conjugation, \(\overline{S_{bi}}=S_{\bar b i}\), and
+the Verlinde formula gives
+\[
+  N_{ka}{}^b
+  =
+  \sum_i
+  \frac{S_{ki}S_{ai}\overline{S_{bi}}}{S_{0i}} .
+\]
+Since \(S\) is symmetric, these expressions agree.  Fusion coefficients are
+dimensions of three-point chiral block spaces, hence are nonnegative
+integers.  For self-conjugate labels and real \(S\)-matrix entries this
+orientation-aware statement collapses to the common symmetric shorthand after
+the corresponding relabelling of boundary orientation, but the displayed
+formula is the one used by boundary-changing fields in non-self-conjugate
+examples.
+\end{proof}
 
 \section{Boundary OPE and Cardy--Lewellen Equations}
 \label{sec:bcft-boundary-ope-sewing}
@@ -492,16 +585,17 @@ fusing matrices of the chiral theory, then
 for the fusing matrices.
 
 The open spectrum for Cardy boundary labels is
-\(\Hilb_{ab}\simeq\oplus_iN_{ab}{}^i\mathcal H_i\).  After conjugating
-orientation conventions, this is equivalently
-\eqref{eq:cardy-boundary-field-multiplicity}.  Boundary three-point
-functions are chiral three-point blocks on the doubled disk.  The operation
-of composing two boundary OPEs is therefore the operation of changing
+\(\Hilb_{ab}\simeq\oplus_iN_{ia}{}^b\mathcal H_i\), matching
+\eqref{eq:cardy-open-spectrum-fusion} and
+\eqref{eq:cardy-boundary-field-multiplicity}.  Boundary three-point functions
+are chiral three-point blocks on the doubled disk.  The operation of
+composing two boundary OPEs is therefore the operation of changing
 parenthesization in a four-point chiral block.  The Moore--Seiberg fusing
 matrix is exactly the transition matrix between the two parenthesizations.
 The pentagon identity says that all ways of changing parenthesization in a
-five-point block agree.  Specializing the pentagon to the four-boundary-field
-factorization diagram gives \eqref{eq:cardy-lewellen-boundary-sewing}.
+five-point block agree.  Specializing the pentagon to the
+four-boundary-field factorization diagram gives
+\eqref{eq:cardy-lewellen-boundary-sewing}.
 
 The disk one-point coefficient of a spinless bulk primary is another piece
 of sewing data.  In the diagonal Cardy case the coefficient of the identity
@@ -2014,7 +2108,9 @@ conformal field theory has to pass through the following layers.
   generate the changes of bordered-surface decomposition, their defects must
   telescope as in
   Proposition~\ref{prop:bcft-finite-move-defect-budget}, and closed-loop
-  transports must be trivial after the anomaly line has been included.
+  transports must either be trivialized as in
+  Proposition~\ref{prop:bcft-finite-sewing-anomaly-trivialization} or kept as
+  honest anomaly-line transports.
 \end{enumerate}
 The diagonal Ising example closes the first few rational finite checks for a
 specific modular tensor category and boundary basis.  The pointed \(G/H\)
@@ -2052,5 +2148,7 @@ test-space, open spectral-measure, operator-domain, pole-prescription, and
 determinant-line requirements stated above, and must prove that the rational
 finite-sum construction and the Liouville direct-integral construction are
 two limits of the same sewing notion rather than two unrelated calculational
-recipes.
+recipes.  In particular, closed-loop sewing phases must be identified as a
+trivializable determinant-line cocycle, or the resulting amplitudes must be
+kept as line-valued rather than scalar correlators.
 \end{openproblem}

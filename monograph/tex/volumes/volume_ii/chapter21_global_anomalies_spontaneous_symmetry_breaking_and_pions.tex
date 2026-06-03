@@ -1429,7 +1429,85 @@ susceptibility.
 \end{remark}
 
 For nonzero light-quark masses the singlet field mixes with the octet
-pseudoscalars.  The familiar phenomenological form
+pseudoscalars.  This mixing is part of the susceptibility argument at the
+level of observables: it is the finite mass-matrix step which turns the pure
+Yang--Mills theta curvature into a statement about the physical pseudoscalar
+spectrum.
+For \(N_f=3\), take the isospin limit
+\[
+  M=\operatorname{diag}(m,m,m_s),
+  \qquad
+  m_\pi^2=2B_0m,
+  \qquad
+  m_K^2=B_0(m+m_s),
+\]
+and use the local \(U(3)\) coordinates of
+\eqref{eq:singlet-u-nf-field} with
+\[
+  T^3=\frac12\operatorname{diag}(1,-1,0),
+  \qquad
+  T^8=\frac1{2\sqrt3}\operatorname{diag}(1,1,-2),
+  \qquad
+  T^0=\frac1{\sqrt6}\mathbf 1_3 .
+\]
+Expanding the leading mass spurion
+\(\frac{f_\pi^2}{4}\operatorname{Tr}(\chi\widehat U^\dagger+
+\widehat U\chi^\dagger)\) to quadratic order gives the neutral mass matrix
+\[
+  (M^2_{\rm mass})_{AB}
+  =
+  4B_0\,\frac12
+  \operatorname{Tr}\bigl(M\{T^A,T^B\}\bigr),
+  \qquad A,B\in\{3,8,0\}.
+\]
+The isospin generator decouples:
+\[
+  M^2_{33}=m_\pi^2,
+  \qquad
+  M^2_{38}=M^2_{30}=0 .
+\]
+Adding the anomalous singlet curvature
+\[
+  m_0^2:=\frac{2N_f}{f_\pi^2}\chi_{\rm YM}
+  \qquad (N_f=3)
+\]
+only in the \(00\) entry gives the \((\eta_8,\eta_0)\) block
+\begin{equation}
+  M^2_{\eta_8\eta_0}
+  =
+  \begin{pmatrix}
+    \frac{4m_K^2-m_\pi^2}{3}
+    &
+    -\frac{2\sqrt{2}}{3}(m_K^2-m_\pi^2)
+    \\[0.4em]
+    -\frac{2\sqrt{2}}{3}(m_K^2-m_\pi^2)
+    &
+    \frac{2m_K^2+m_\pi^2}{3}+m_0^2
+  \end{pmatrix}.
+  \label{eq:eta-eta-prime-leading-mass-matrix}
+\end{equation}
+Changing the sign convention for \(\eta_8\) changes the sign of the off-diagonal
+entry, but not the eigenvalues.  If those eigenvalues are denoted
+\(m_\eta^2\) and \(m_{\eta'}^2\) at this leading order, the trace gives
+\begin{equation}
+  m_{\eta'}^2+m_\eta^2-2m_K^2
+  =
+  m_0^2
+  =
+  \frac{2N_f}{f_\pi^2}\chi_{\rm YM}.
+  \label{eq:eta-eta-prime-trace-witten-veneziano}
+\end{equation}
+The determinant records the same mixing data in the product of the two
+eigenvalues:
+\begin{equation}
+  m_\eta^2m_{\eta'}^2
+  =
+  m_\pi^2(2m_K^2-m_\pi^2)
+  +
+  \frac{m_0^2}{3}(4m_K^2-m_\pi^2).
+  \label{eq:eta-eta-prime-determinant-ledger}
+\end{equation}
+Thus the usual phenomenological form
 \[
   m_{\eta'}^2+m_\eta^2-2m_K^2
   =
@@ -1438,8 +1516,9 @@ pseudoscalars.  The familiar phenomenological form
 \]
 requires the quark-mass potential, the normalization of \(f_\pi\), and the
 large-\(N_c\) and chiral remainders to be stated in the same scheme.  The
-chiral-limit proposition above is the clean normalization statement used by
-this monograph.
+chiral-limit result above fixes the normalization; the finite matrix
+\eqref{eq:eta-eta-prime-leading-mass-matrix} shows how that curvature enters a
+physical mass spectrum once light-quark masses are restored.
 
 Choose Hermitian flavor generators \(T^a\) with
 \(\operatorname{Tr}(T^aT^b)=\frac12\delta^{ab}\).  These \(T^a\) are flavor

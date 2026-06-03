@@ -84,6 +84,11 @@ GitHub issue #628.
 - `A_L`, `A_R`, `B`, `F_L`, `F_R`, `F_B`, `D_B phi_B`: chiral flavor and
   baryon background fields used in CFL anomaly matching, their curvatures,
   and the baryon-Goldstone covariant one-form.
+- `mathcal T_QCD`, `chi_ab`, `Sigma_ab`, `D_eta`, `D_B`, `Gamma_s`: QCD
+  hydrodynamic transport datum, conserved-charge susceptibility and
+  conductivity matrices, shear diffusion constant, projected baryon diffusion
+  eigenvalue, and sound attenuation coefficient used in the microscopic
+  response-window comparison.
 
 ## Claim Ledger
 
@@ -163,7 +168,9 @@ GitHub issue #628.
   angular integral with its Landau cut as worked prose rather than
   theorem-family content.
 - Defines transport coefficients through Kubo spectral limits rather than
-  phenomenological language.
+  phenomenological language, and now records the additional microscopic
+  response-window estimate and coupled charge-diffusion matrix needed before
+  those coefficients imply hydrodynamic poles of QCD correlators.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -254,6 +261,7 @@ GitHub issue #628.
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
   screening-sector and collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, CFL anomaly-matching coefficient
+  bookkeeping, QCD hydrodynamic response-window and coupled-diffusion
   bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
@@ -297,6 +305,15 @@ GitHub issue #628.
   identities for energy density, trace anomaly, fixed-`mu_B/T` reduced
   pressure, and `mu_B=0` sound speed, with the conformal Stefan--Boltzmann
   benchmark checked exactly.
+- 2026-06-03 issue #630 QCD hydrodynamics bridge: added a controlled
+  response-window datum for deriving hydrodynamic shear, diffusion, and sound
+  poles from microscopic QCD retarded kernels.  The chapter now separates
+  Kubo coefficient definitions from the additional residual estimate needed
+  to exclude extra nonconserved low-frequency singularities, treats charge
+  diffusion as the eigenvalue problem for `Sigma chi^{-1}` away from a
+  decoupled baryon channel, and aligns the displayed shear Kubo example with
+  the chapter's
+  \(\rho=-2\operatorname{Im}G^R\) convention by using \(1/(2\omega)\).
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

@@ -111,6 +111,14 @@ def dot(row, column):
     return sum(row[i] * column[i] for i in range(len(row)))
 
 
+def l1(vector):
+    return sum(abs(entry) for entry in vector)
+
+
+def linfty(vector):
+    return max(abs(entry) for entry in vector)
+
+
 def inv2(matrix):
     (a, b), (c, d) = matrix
     determinant = a * d - b * c
@@ -525,6 +533,89 @@ def check_projected_curvature_and_scheme_covariance():
     )
 
 
+def check_endpoint_observable_transport_budget():
+    # The finite endpoint chart in the text has
+    # V(phi;t)=C_L(phi;t) O_L(t)+K_L(phi;t).  The anomalous-dimension pieces
+    # cancel between the coefficient row and the operator column, while a
+    # moving endpoint-extension row D_L cancels only against the compensating
+    # contact derivative dK=-D_L O_L.  Residuals are the only surviving scale
+    # derivative of the detector-test functional.
+    gamma = [
+        [Fraction(2, 7), Fraction(-1, 5)],
+        [Fraction(3, 11), Fraction(4, 13)],
+    ]
+    coeff = [Fraction(5, 17), Fraction(-7, 19)]
+    operator = [Fraction(11, 23), Fraction(13, 29)]
+    endpoint_shift = [Fraction(-3, 31), Fraction(2, 37)]
+
+    residual_coeff = [Fraction(1, 41), Fraction(-2, 43)]
+    residual_operator = [Fraction(3, 47), Fraction(-5, 53)]
+    residual_contact = Fraction(7, 59)
+
+    d_coeff = [
+        row_mat(coeff, gamma)[i] + endpoint_shift[i] + residual_coeff[i]
+        for i in range(2)
+    ]
+    d_operator = [
+        -mat_vec(gamma, operator)[i] + residual_operator[i]
+        for i in range(2)
+    ]
+    d_contact = -dot(endpoint_shift, operator) + residual_contact
+
+    derivative = dot(d_coeff, operator) + dot(coeff, d_operator) + d_contact
+    expected = (
+        dot(residual_coeff, operator)
+        + dot(coeff, residual_operator)
+        + residual_contact
+    )
+    assert_equal(
+        derivative,
+        expected,
+        "endpoint observable transport leaves only declared residuals",
+    )
+
+    # With zero residuals, both anomalous-dimension transport and endpoint
+    # contact reshuffling cancel exactly.
+    exact_d_coeff = [
+        row_mat(coeff, gamma)[i] + endpoint_shift[i]
+        for i in range(2)
+    ]
+    exact_d_operator = [-entry for entry in mat_vec(gamma, operator)]
+    exact_d_contact = -dot(endpoint_shift, operator)
+    assert_equal(
+        dot(exact_d_coeff, operator)
+        + dot(coeff, exact_d_operator)
+        + exact_d_contact,
+        Fraction(0),
+        "exact finite endpoint chart is scale independent",
+    )
+
+    # The wrong contact sign changes the observable by twice the endpoint
+    # extension row paired with the operator column.
+    wrong_contact = dot(endpoint_shift, operator)
+    wrong_derivative = (
+        dot(exact_d_coeff, operator)
+        + dot(coeff, exact_d_operator)
+        + wrong_contact
+    )
+    assert_equal(
+        wrong_derivative,
+        2 * dot(endpoint_shift, operator),
+        "wrong endpoint contact sign produces the predicted defect",
+    )
+
+    # The text's finite norm budget is checked with the l1/linfty dual pair.
+    bound = (
+        l1(residual_coeff) * linfty(operator)
+        + l1(coeff) * linfty(residual_operator)
+        + abs(residual_contact)
+    )
+    if abs(derivative) > bound:
+        raise AssertionError(
+            f"endpoint observable residual bound failed: {abs(derivative)!r} > {bound!r}"
+        )
+
+
 def main():
     rho0 = Fraction(3, 5)
 
@@ -610,8 +701,9 @@ def main():
     check_finite_light_ray_transport_flatness()
     check_cusp_log_flatness_chart()
     check_projected_curvature_and_scheme_covariance()
+    check_endpoint_observable_transport_budget()
 
-    print("All EEC light-ray OPE bookkeeping checks passed.")
+    print("All EEC light-ray OPE and endpoint transport bookkeeping checks passed.")
 
 
 if __name__ == "__main__":

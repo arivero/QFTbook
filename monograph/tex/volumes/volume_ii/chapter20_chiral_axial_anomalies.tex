@@ -97,6 +97,86 @@ representative; it is not being used as a nonperturbative definition of the
 fermionic path integral.
 \end{warning}
 
+\begin{proposition}[Anomaly-coordinate comparison]
+\label{prop:anomaly-coordinate-comparison}
+Fix a regulated background-field groupoid
+\(\mathcal B_\Lambda//\mathcal G_\Lambda\), with right action
+\(A\mapsto A^g\), and a local regulator chart in which the chiral fermion
+functional is a scalar \(W_\Lambda[A]\).  Then the finite cochain
+\[
+  C_\Lambda(g;A)=W_\Lambda[A^g]-W_\Lambda[A]
+\]
+is the additive coordinate of the anomaly line.  More precisely:
+\begin{enumerate}
+  \item functoriality of the groupoid action gives
+  \(C_\Lambda(gh;A)=C_\Lambda(h;A^g)+C_\Lambda(g;A)\);
+  \item a local counterterm \(B_\Lambda[A]\) changes this coordinate by the
+  coboundary \(B_\Lambda[A^g]-B_\Lambda[A]\);
+  \item after choosing a local frame \(s_A\) for the anomaly line, the
+  exponentiated transport cocycle is
+  \(\alpha_\Lambda(A,g)=\exp C_\Lambda(g;A)\), and the same counterterm is
+  the inverse frame change \(s_A\mapsto \exp(-B_\Lambda[A])s_A\);
+  \item the inflow bulk carries the inverse line coordinate
+  \(\alpha_\Lambda(A,g)^{-1}\);
+  \item differentiating \(C_\Lambda(\exp(t\zeta);A)\) at \(t=0\), then taking
+  the local continuum representative, gives the consistent local anomaly
+  density \(a_4^{(1)}(\zeta,A)\), whose relative BRST class is the
+  perturbative obstruction.
+\end{enumerate}
+Consequently local BRST cancellation removes the obstruction on the identity
+component of the background groupoid, while flat determinant- or Pfaffian-line
+holonomies on based loops remain separate global anomaly data.
+\end{proposition}
+
+\begin{proof}
+The first identity is just the scalar form of functoriality:
+\[
+  W_\Lambda[A^{gh}]-W_\Lambda[A]
+  =
+  \bigl(W_\Lambda[(A^g)^h]-W_\Lambda[A^g]\bigr)
+  +
+  \bigl(W_\Lambda[A^g]-W_\Lambda[A]\bigr).
+\]
+Replacing \(W_\Lambda\) by \(W_\Lambda+B_\Lambda\) gives the displayed
+coboundary.  If the line is locally framed by \(s_A\) and
+\[
+  T_gs_A=\alpha_\Lambda(A,g)s_{A^g},
+\]
+then the frame \(s'_A=\exp(-B_\Lambda[A])s_A\) gives
+\[
+  T_gs'_A
+  =
+  \exp(-B_\Lambda[A])\alpha_\Lambda(A,g)
+  \exp(B_\Lambda[A^g])s'_{A^g},
+\]
+which is the exponential of the same additive coboundary.  The bulk inflow
+line is the inverse anomaly line, so its transport cocycle is
+\(\alpha_\Lambda^{-1}\), and tensoring boundary and bulk transports gives the
+identity transport.
+
+For a one-parameter gauge transformation \(g(t)=\exp(t\zeta)\), the derivative
+of the finite cocycle is
+\[
+  \frac{d}{dt}\bigg|_{t=0}C_\Lambda(g(t);A)
+  =
+  \delta_\zeta W_\Lambda[A].
+\]
+After subtracting local counterterms and passing to the continuum local
+functional, this derivative is represented by
+\(\int_Ma_4^{(1)}(\zeta,A)\).  Differentiating the finite cocycle identity in
+two infinitesimal directions gives the Wess--Zumino consistency condition,
+and replacing the even gauge parameters by the odd ghost gives the relative
+BRST cocycle in \(H^{1,4}(s\mid d)\), developed later in
+Proposition~\ref{prop:local-anomalies-relative-brst-classes}.  A local
+counterterm changes the representative by the corresponding relative
+coboundary.  This infinitesimal argument only sees the identity component of
+the background groupoid.  A flat but nontrivial line holonomy along a based
+loop has zero local curvature and zero local descent class, but still
+prevents a gauge-invariant global scalar section; that global obstruction is
+the determinant/Pfaffian-line story developed in
+Chapter~\ref{ch:curved-eta-invariants-global-anomalies}.
+\end{proof}
+
 For a mass \(m\), the Dirac Lagrangian is
 \[
   \mathcal L
@@ -4023,6 +4103,71 @@ This is the finite-dimensional Berezin rule \(\int\dd\xi\,1=0\),
 \(\int\dd\xi\,\xi=1\) applied after the spectral decomposition of the
 regulated fermion field.
 
+\begin{proposition}[Instanton sectors as physical correlator contributions]
+\label{prop:instanton-sector-physical-correlator-contribution}
+Fix a finite regulator, a \(Q=1\) instanton chart with collective coordinate
+\(z=(a,\rho,U)\), smooth chart domain \(\mathcal U_{Q=1}\), and
+renormalized insertions \(\mathcal O_1,\ldots,\mathcal O_r\).  After gauge
+fixing, collective coordinate separation, and integration of nonzero
+fluctuations, the instanton sector contribution has the form
+\begin{equation}
+  \bigl\langle\mathcal O_1\cdots\mathcal O_r\bigr\rangle_{Q=1,\Lambda}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \ee^{-S_\Lambda(A_z)+\ii\theta}\,
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \mathcal Z_{\mathcal O,\Lambda}^{0}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),
+  \label{eq:instanton-physical-correlator-assembly}
+\end{equation}
+provided the determinant/Pfaffian line has been paired with the fermion
+zero-mode and anomaly-line data to produce a scalar density.  Here
+\(\mathcal W_{\Lambda}^{\rm nz}\) is the nonzero-mode determinant datum from
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-factor}, while
+\(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) is the finite Berezin coefficient
+\begin{equation}
+  \mathcal Z_{\mathcal O,\Lambda}^{0}(z)
+  =
+  \int\dd\xi_{n_0}\cdots\dd\xi_1\,
+  \mathcal O_{1,\Lambda}^{0}(z,\xi)\cdots
+  \mathcal O_{r,\Lambda}^{0}(z,\xi)\,
+  \exp[-S_{\rm lift,\Lambda}^{0}(z,\xi)] .
+  \label{eq:instanton-zero-mode-saturation-functional}
+\end{equation}
+The superscript \(0\) means that each insertion and each mass, Yukawa, or
+source term has been restricted to the zero-mode subspace.  If the integrand
+in \eqref{eq:instanton-zero-mode-saturation-functional} does not contain the
+monomial \(\xi_1\cdots\xi_{n_0}\), then
+\(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)=0\).  If it does contain that
+monomial, the coefficient of that monomial is the only part of the insertions
+which is seen by the instanton sector.
+\end{proposition}
+
+\begin{proof}
+At finite cutoff the gauge-fixed fields split into collective coordinates,
+normal bosonic modes, ghosts, fermion zero modes, and fermion nonzero modes.
+Gaussian integration over the normal bosonic and ghost variables gives the
+determinant factors already isolated in
+\(\mathcal W_{\Lambda}^{\rm nz}\); Gaussian or Pfaffian integration over
+fermion nonzero modes gives the remaining nonzero-mode determinant-line
+factor.  None of these operations integrates over the zero-mode variables
+\(\xi_\alpha\), because the quadratic fermion operator vanishes on them.
+The only finite-dimensional integral left in the fermionic zero-mode sector is
+\eqref{eq:instanton-zero-mode-saturation-functional}.  Berezin integration
+extracts the coefficient of the ordered top monomial
+\(\xi_1\cdots\xi_{n_0}\).  All terms missing at least one zero-mode variable
+therefore vanish, while terms containing the top monomial contribute exactly
+their coefficient.  Multiplying this coefficient by the bosonic
+collective-coordinate density and the nonzero-mode determinant gives
+\eqref{eq:instanton-physical-correlator-assembly}.
+\end{proof}
+
+Thus the moduli space is not the physical answer; it is the domain of a
+semiclassical amplitude.  The physical question is which insertions, masses,
+or sources saturate the fermion zero modes, what nonzero-mode determinant and
+counterterm scheme define \(\mathcal W_{\Lambda}^{\rm nz}\), and whether the
+resulting \(a,\rho,U\) integral is finite at its boundary faces.
+
 For vectorlike QCD with \(N_f\) massless Dirac fundamentals, a \(Q=1\)
 instanton supplies one zero mode for each flavor in one chirality sector.  The
 semiclassical functional integral therefore generates the following leading
@@ -4078,6 +4223,170 @@ selection rule is
 for the anomalous axial charge, in agreement with the integrated anomaly.
 Small quark masses may replace missing fermion insertions by mass factors,
 because the mass term pairs the corresponding zero-mode variables.
+
+\begin{proposition}[Flavor determinant from the instanton zero modes]
+\label{prop:qcd-thooft-determinant-zero-mode-amplitude}
+In the \(Q=1\) sector of vectorlike \(SU(N_c)\) QCD, let
+\(\lambda_f,\widetilde\lambda_f\), \(f=1,\ldots,N_f\), denote the two
+Grassmann zero-mode coefficients paired by the local source matrix
+\(B=(B_{ff'})\).  Choose the zero-mode orientation so that
+\begin{equation}
+  \int
+  \prod_{f=N_f}^{1}\dd\widetilde\lambda_f\,\dd\lambda_f\,
+  \exp\!\left(
+    \sum_{f,f'=1}^{N_f}
+    \widetilde\lambda_f B_{ff'}\lambda_{f'}
+  \right)
+  =
+  \det B .
+  \label{eq:thooft-vertex-berezin-determinant}
+\end{equation}
+For slowly varying external quark fields,
+\(B_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}\), and
+\eqref{eq:thooft-vertex-berezin-determinant} is precisely the flavor
+determinant in \eqref{eq:qcd-thooft-vertex-leading-local}.  If instead all
+zero modes are saturated by the quark mass term, the same finite-dimensional
+calculation replaces \(B\) by the mass-overlap matrix
+\(B^{(m)}_{ff'}(z)\).  Its phase is the phase of \(\det M\), so the
+one-instanton vacuum term has phase
+\(\exp[\ii(\theta+\arg\det M)]\), up to the real positive overlap and
+determinant normalizations.
+\end{proposition}
+
+\begin{proof}
+Expand the exponential in
+\eqref{eq:thooft-vertex-berezin-determinant}.  Every contributing top-degree
+term must contain each \(\widetilde\lambda_f\) once and each \(\lambda_f\)
+once.  Such a term is specified by a permutation \(\sigma\in S_{N_f}\):
+\[
+  \prod_{f=1}^{N_f}
+  \widetilde\lambda_f B_{f,\sigma(f)}\lambda_{\sigma(f)} .
+\]
+Reordering the \(\lambda_{\sigma(f)}\) variables into the chosen Berezin
+orientation gives the sign \(\operatorname{sgn}\sigma\).  Berezin integration
+therefore extracts
+\[
+  \sum_{\sigma\in S_{N_f}}
+  \operatorname{sgn}\sigma
+  \prod_{f=1}^{N_f}B_{f,\sigma(f)}
+  =
+  \det B .
+\]
+For \(B_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}\), this gives the local
+\(2N_f\)-fermion operator.  If \(B\) is supplied by the mass term, each
+zero-mode overlap is real after the same regulator and zero-mode orientation
+have been fixed, so the only flavor phase is \(\arg\det M\).
+\end{proof}
+
+\begin{proposition}[Proper-time determinant and four-fermion amplitude]
+\label{prop:instanton-proper-time-four-fermion-amplitude}
+Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge
+slice, and a proper-time determinant prescription with renormalization scale
+\(\mu\).  For each positive nonzero-mode operator \(P_{\Lambda,z}\) in the
+instanton background, compared with the corresponding operator
+\(P_{\Lambda,0}\) in the trivial sector, define the regulated logarithmic
+determinant ratio by
+\begin{equation}
+  K_\Lambda(P_z,P_0;\mu)
+  =
+  -\int_{\epsilon_\Lambda}^{\infty}
+    \frac{\dd t}{t}\,r(t\mu^2)
+    \left(
+      \operatorname{Tr}' e^{-tP_{\Lambda,z}}
+      -
+      \operatorname{Tr} e^{-tP_{\Lambda,0}}
+    \right)
+  +C_{\Lambda,P}^{\rm loc}(z;\mu),
+  \label{eq:proper-time-instanton-determinant-ratio}
+\end{equation}
+where \(r\) is a smooth cutoff profile with \(r(0)=1\), the prime removes
+collective-coordinate, residual-gauge, and fermion zero modes as appropriate,
+and \(C_{\Lambda,P}^{\rm loc}\) is the chosen local subtraction in the
+instanton background relative to the trivial background.  The determinant
+density in \eqref{eq:finite-regulator-instanton-measure-density} is then
+\begin{equation}
+  \log \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)
+  =
+  K_\Lambda(M_z^{\rm gh},M_0^{\rm gh};\mu)
+  -\frac12 K_\Lambda(L_z^{\rm bos},L_0^{\rm bos};\mu)
+  +\sum_R K_\Lambda^{\rm pf,R}(z,0;\mu),
+  \label{eq:proper-time-instanton-Wnz}
+\end{equation}
+with \(K_\Lambda^{\rm pf,R}\) the Pfaffian or determinant-line version of the
+same nonzero-mode construction for the fermion multiplet \(R\).
+
+For two massless Dirac flavors, let \(\eta_L\) and \(\bar\eta_R\) be four
+external wave packets in the channel saturated by the \(Q=1\) fermion zero
+modes, and let \(\psi_{0,z}\) be the normalized fundamental zero-mode
+wavefunction in the instanton background.  Define the zero-mode source matrix
+\begin{equation}
+  B_{\eta,ff'}(z)
+  =
+  \left(
+    \int \dd^4x\,
+    \bar\eta_{R f}(x)\psi_{0,z}(x)
+  \right)
+  \left(
+    \int \dd^4y\,
+    \psi_{0,z}^{\dagger}(y)\eta_{L f'}(y)
+  \right),
+  \qquad f,f'=1,2,
+  \label{eq:zero-mode-projected-four-fermion-source}
+\end{equation}
+with spin and color indices contracted in the zero-mode line.  The
+one-instanton contribution to the smeared four-fermion amplitude is
+\begin{equation}
+  G^{(4)}_{\eta,\Lambda,Q=1}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \exp[-S_\Lambda(A_z)+\ii\theta]\,
+  \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
+  \det B_\eta(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z).
+  \label{eq:proper-time-four-fermion-instanton-amplitude}
+\end{equation}
+In the slow-field limit this reduces to the local \(N_f=2\) term in
+\eqref{eq:qcd-thooft-vertex-leading-local}.  The small-\(t\) expansion of
+\eqref{eq:proper-time-instanton-determinant-ratio} supplies the local
+counterterms and the universal \((\mu\rho)^{b_0}\) factor, while the finite
+remainder fixes the scheme-dependent numerical constant in the
+four-fermion amplitude.  Thus the physics calculation consists of the
+regulated fluctuation determinant, the zero-mode source projection, and the
+collective-coordinate integral as a single object.
+\end{proposition}
+
+\begin{proof}
+For a finite positive operator \(P\), the identity
+\(\log\det P=-\int_{\epsilon}^{\infty}\dd t\,t^{-1}\operatorname{Tr}e^{-tP}\)
+holds up to the subtraction convention at the lower endpoint.  Applying this
+identity to the instanton and trivial-sector operators and adding the chosen
+local counterterm gives
+\eqref{eq:proper-time-instanton-determinant-ratio}.  Bosonic Gaussian
+integration contributes the exponent \(-1/2\), ghost Berezin integration
+contributes \(+1\), and fermionic nonzero modes contribute the Pfaffian or
+determinant-line factor, giving
+\eqref{eq:proper-time-instanton-Wnz}.  Zero modes have already been removed
+from the traces and determinants, so their finite Berezin integral is exactly
+the calculation in
+Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude}.  For the
+four external wave packets this Berezin coefficient is
+\(\det B_\eta(z)\).  Multiplication by the collective-coordinate density and
+the classical instanton exponential gives
+\eqref{eq:proper-time-four-fermion-instanton-amplitude}.  Finally, the
+heat-kernel expansion of the trace difference at small \(t\) separates local
+counterterms, the coefficient of \(\log(\mu\rho)\), and the finite
+determinant constant; RG invariance identifies the universal logarithmic
+coefficient with \(b_0\) in the displayed one-loop density.
+\end{proof}
+
+Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
+selection rule.  The determinant in
+\eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);
+equivalently, a mass-saturated instanton contribution depends on the CP-odd
+combination \(\bar\theta=\theta+\arg\det M\) from
+\eqref{eq:qcd-physical-theta}.  This gives the same anomalous Jacobian in the
+coordinate system where the fermion zero modes of the instanton background
+have been integrated.
 
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored

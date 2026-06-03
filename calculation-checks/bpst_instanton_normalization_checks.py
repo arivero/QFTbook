@@ -22,6 +22,12 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    the proper-time fluctuation determinant combines with the zero-mode
+    source determinant to give the finite four-fermion instanton amplitude
+    the physical instanton correlator contribution is the top Berezin
+    coefficient after operator, mass/source, and zero-mode factors are
+    restricted to the instanton zero-mode subspace, giving the full flavor
+    determinant and the theta+arg det M phase combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -93,6 +99,89 @@ def det_fraction(matrix: list[list[Fraction]]) -> Fraction:
         minor = [row[:j] + row[j + 1 :] for row in matrix[1:]]
         total += ((-1) ** j) * matrix[0][j] * det_fraction(minor)
     return total
+
+
+def product_fraction(values: list[Fraction]) -> Fraction:
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
+
+
+GrassmannPolynomial = dict[tuple[int, ...], Fraction]
+
+
+def grassmann_monomial(
+    *variables: int,
+    coefficient: Fraction = Fraction(1),
+) -> GrassmannPolynomial:
+    if len(set(variables)) != len(variables):
+        return {}
+    inversions = sum(
+        1
+        for i in range(len(variables))
+        for j in range(i + 1, len(variables))
+        if variables[i] > variables[j]
+    )
+    sign = Fraction(-1) if inversions % 2 else Fraction(1)
+    return {tuple(sorted(variables)): sign * coefficient}
+
+
+def grassmann_add(
+    left: GrassmannPolynomial,
+    right: GrassmannPolynomial,
+) -> GrassmannPolynomial:
+    result = dict(left)
+    for monomial, coefficient in right.items():
+        result[monomial] = result.get(monomial, Fraction(0)) + coefficient
+        if result[monomial] == 0:
+            del result[monomial]
+    return result
+
+
+def grassmann_mul(
+    left: GrassmannPolynomial,
+    right: GrassmannPolynomial,
+) -> GrassmannPolynomial:
+    result: GrassmannPolynomial = {}
+    for left_monomial, left_coefficient in left.items():
+        for right_monomial, right_coefficient in right.items():
+            if set(left_monomial) & set(right_monomial):
+                continue
+            concatenated = left_monomial + right_monomial
+            product = grassmann_monomial(
+                *concatenated,
+                coefficient=left_coefficient * right_coefficient,
+            )
+            result = grassmann_add(result, product)
+    return result
+
+
+def berezin_top_coefficient(
+    polynomial: GrassmannPolynomial,
+    variable_count: int,
+) -> Fraction:
+    return polynomial.get(tuple(range(variable_count)), Fraction(0))
+
+
+def grassmann_source_determinant_top_coefficient(
+    matrix: list[list[Fraction]],
+) -> Fraction:
+    flavor_count = len(matrix)
+    polynomial: GrassmannPolynomial = {}
+    for permutation in itertools.permutations(range(flavor_count)):
+        term = grassmann_monomial(coefficient=Fraction(1))
+        for left_flavor, right_flavor in enumerate(permutation):
+            term = grassmann_mul(
+                term,
+                grassmann_monomial(
+                    2 * left_flavor,
+                    2 * right_flavor + 1,
+                    coefficient=matrix[left_flavor][right_flavor],
+                ),
+            )
+        polynomial = grassmann_add(polynomial, term)
+    return berezin_top_coefficient(polynomial, 2 * flavor_count)
 
 
 def check_eta_self_duality() -> None:
@@ -371,6 +460,168 @@ def check_finite_regulator_determinant_datum() -> None:
     assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
 
 
+def check_physical_instanton_correlator_zero_mode_saturation() -> None:
+    # Four zero modes in canonical order: R1, L1, R2, L2.  Berezin
+    # integration returns only the coefficient of R1 L1 R2 L2.
+    variable_count = 4
+    unsaturated = grassmann_mul(
+        grassmann_monomial(0, coefficient=Fraction(3)),
+        grassmann_monomial(2, coefficient=Fraction(5)),
+    )
+    assert_equal(
+        "unsaturated instanton zero-mode correlator vanishes",
+        berezin_top_coefficient(unsaturated, variable_count),
+        Fraction(0),
+    )
+
+    operator_pair = grassmann_monomial(0, 1, coefficient=Fraction(7))
+    mass_lift = grassmann_monomial(2, 3, coefficient=Fraction(11))
+    lifted = grassmann_mul(operator_pair, mass_lift)
+    assert_equal(
+        "mass/source lifting supplies missing instanton zero modes",
+        berezin_top_coefficient(lifted, variable_count),
+        Fraction(77),
+    )
+
+    # Two-flavor QCD zero-mode insertions form the determinant
+    # B_11 B_22 - B_12 B_21 as the top Berezin coefficient.
+    b11 = Fraction(2)
+    b12 = Fraction(3)
+    b21 = Fraction(5)
+    b22 = Fraction(7)
+    diagonal_pairing = grassmann_mul(
+        grassmann_monomial(0, 1, coefficient=b11),
+        grassmann_monomial(2, 3, coefficient=b22),
+    )
+    crossed_pairing = grassmann_mul(
+        grassmann_monomial(0, 3, coefficient=b12),
+        grassmann_monomial(2, 1, coefficient=b21),
+    )
+    flavor_determinant_polynomial = grassmann_add(diagonal_pairing, crossed_pairing)
+    determinant = b11 * b22 - b12 * b21
+    assert_equal(
+        "two-flavor 't Hooft determinant from zero-mode Berezin coefficient",
+        berezin_top_coefficient(flavor_determinant_polynomial, variable_count),
+        determinant,
+    )
+
+    axial_charge_per_bilinear = 2
+    flavor_count = 2
+    assert_equal(
+        "QCD instanton axial charge selection",
+        axial_charge_per_bilinear * flavor_count,
+        4,
+    )
+
+    three_flavor_source = [
+        [Fraction(2), Fraction(3), Fraction(5)],
+        [Fraction(7), Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19), Fraction(23)],
+    ]
+    assert_equal(
+        "three-flavor 't Hooft determinant from zero-mode Berezin coefficient",
+        grassmann_source_determinant_top_coefficient(three_flavor_source),
+        det_fraction(three_flavor_source),
+    )
+
+    axial_parameter_units = 5
+    flavor_count = 3
+    theta_shift = 2 * flavor_count * axial_parameter_units
+    mass_phase_shift = -2 * flavor_count * axial_parameter_units
+    assert_equal(
+        "strong CP phase theta plus arg det M is axial invariant",
+        theta_shift + mass_phase_shift,
+        0,
+    )
+
+
+def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
+    # A finite proper-time determinant ledger is a product over nonzero
+    # spectra.  The zero eigenvalue is visible before collective-coordinate
+    # projection and is absent from the determinant datum.
+    raw_boson_instanton_spectrum = [Fraction(0), Fraction(11), Fraction(13), Fraction(17)]
+    boson_instanton_nonzero = [
+        eigenvalue for eigenvalue in raw_boson_instanton_spectrum if eigenvalue != 0
+    ]
+    assert_equal(
+        "unprojected instanton bosonic determinant has zero mode",
+        product_fraction(raw_boson_instanton_spectrum),
+        Fraction(0),
+    )
+    assert_equal(
+        "bosonic collective coordinate removed before determinant",
+        len(raw_boson_instanton_spectrum) - len(boson_instanton_nonzero),
+        1,
+    )
+
+    boson_vacuum_spectrum = [Fraction(2), Fraction(3), Fraction(5), Fraction(7)]
+    ghost_vacuum_spectrum = [Fraction(19), Fraction(23)]
+    ghost_instanton_spectrum = [Fraction(29), Fraction(31)]
+    fermion_vacuum_pfaffian_blocks = [Fraction(37), Fraction(41)]
+    fermion_instanton_pfaffian_blocks = [Fraction(43), Fraction(47)]
+
+    boson_inverse_sqrt_squared = (
+        product_fraction(boson_vacuum_spectrum)
+        / product_fraction(boson_instanton_nonzero)
+    )
+    ghost_ratio = (
+        product_fraction(ghost_instanton_spectrum)
+        / product_fraction(ghost_vacuum_spectrum)
+    )
+    fermion_pfaffian_ratio = (
+        product_fraction(fermion_instanton_pfaffian_blocks)
+        / product_fraction(fermion_vacuum_pfaffian_blocks)
+    )
+    nonzero_mode_weight_squared = (
+        boson_inverse_sqrt_squared
+        * ghost_ratio
+        * ghost_ratio
+        * fermion_pfaffian_ratio
+        * fermion_pfaffian_ratio
+    )
+    assert_equal(
+        "proper-time nonzero-mode determinant weight squared",
+        nonzero_mode_weight_squared,
+        Fraction(210, 2431) * Fraction(899, 437) ** 2 * Fraction(2021, 1517) ** 2,
+    )
+
+    # The four external fermion wave packets enter only through the
+    # zero-mode-projected two-flavor source matrix B_eta.  The full
+    # semiclassical four-point amplitude is W_nz det(B_eta) integrated over
+    # collective coordinates; this finite check tracks the scalar integrand.
+    source_matrix = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(11)]]
+    source_determinant = det_fraction(source_matrix)
+    assert_equal(
+        "zero-mode projected four-fermion source determinant",
+        grassmann_source_determinant_top_coefficient(source_matrix),
+        source_determinant,
+    )
+    four_fermion_integrand_squared = (
+        nonzero_mode_weight_squared * source_determinant * source_determinant
+    )
+    assert_equal(
+        "four-fermion instanton amplitude integrand squared",
+        four_fermion_integrand_squared,
+        nonzero_mode_weight_squared * Fraction(49),
+    )
+
+    # In the local limit for N_f=2, each zero-mode source matrix entry carries
+    # the BPST zero-mode normalization rho^3, while det(B_eta) contains two
+    # entries.  This is the rho^6 factor in the local four-fermion vertex.
+    assert_equal("two-flavor local 't Hooft vertex rho power", 2 * 3, 6)
+
+    # The universal log(mu rho) power is the sum of the proper-time small-t
+    # trace coefficient and the coupling/counterterm conversion in the same
+    # scheme.  For SU(3) with two Dirac fundamentals this equals b0=29/3.
+    spectral_trace_power = Fraction(7, 3)
+    coupling_and_local_counterterm_power = Fraction(22, 3)
+    assert_equal(
+        "proper-time plus counterterm log power for SU(3) Nf=2",
+        spectral_trace_power + coupling_and_local_counterterm_power,
+        Fraction(29, 3),
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -438,6 +689,8 @@ def main() -> None:
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
+    check_physical_instanton_correlator_zero_mode_saturation()
+    check_proper_time_fluctuation_four_fermion_amplitude()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")

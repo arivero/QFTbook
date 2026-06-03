@@ -1138,6 +1138,86 @@ screening--screening exponent \(2C\), which is \(\alpha_\pm^2\) in the
 Coulomb-gas block and is the source of the Selberg/Vandermonde factors in
 multi-screening Dotsenko--Fateev formulas.
 
+\paragraph{Screening-to-BPZ construction budget.}
+The preceding formulas are coordinates on a block space; they are not yet a
+proof that a chosen contour family is the correct minimal-model correlator.
+On a finite jet test space in the cross-ratio, one should separate the
+following finite vectors:
+\[
+  \mathcal C_{\rm DF},\quad
+  \mathcal C_{\rm Ward},\quad
+  \mathcal C_{\rm tw},\quad
+  \mathcal C_{\rm BPZ},\quad
+  \mathcal C_{\rm cont},\quad
+  \mathcal C_{\rm full}.
+\]
+They denote, respectively, the raw Dotsenko--Fateev screening integrals, the
+same coordinates after the Virasoro Ward/intertwiner check, the projection to
+closed twisted cycles, the comparison with a BPZ solution basis, the analytically
+continued block coordinates in a second channel, and the nonchiral sewing
+pairing.  If \(\mathsf M_{\rm cont}\) is the finite connection matrix between
+the chosen BPZ bases, define
+\begin{align}
+  E_{\rm scr}
+  &=
+  \mathcal C_{\rm Ward}-\mathcal C_{\rm DF},
+  &
+  E_{\rm tw}
+  &=
+  \mathcal C_{\rm tw}-\mathcal C_{\rm Ward},
+  \label{eq:coulomb-gas-bpz-budget-a}\\
+  E_{\rm BPZ}
+  &=
+  \mathcal C_{\rm BPZ}-\mathcal C_{\rm tw},
+  &
+  E_{\rm cont}
+  &=
+  \mathcal C_{\rm cont}-\mathsf M_{\rm cont}\mathcal C_{\rm BPZ},
+  \label{eq:coulomb-gas-bpz-budget-b}\\
+  E_{\rm pair}
+  &=
+  \mathcal C_{\rm full}-\mathcal C_{\rm cont}.
+  \label{eq:coulomb-gas-bpz-budget-c}
+\end{align}
+Then the finite comparison identity is
+\begin{equation}
+  \mathcal C_{\rm full}-\mathsf M_{\rm cont}\mathcal C_{\rm DF}
+  =
+  \mathsf M_{\rm cont}
+  (E_{\rm scr}+E_{\rm tw}+E_{\rm BPZ})
+  +E_{\rm cont}+E_{\rm pair}.
+  \label{eq:coulomb-gas-bpz-budget-telescope}
+\end{equation}
+Indeed, add and subtract the intermediate coordinates before applying the
+connection matrix.  If the norm of \(\mathsf M_{\rm cont}\) on this finite test
+space is at most \(\kappa\), and if the five residuals are bounded by
+\(\varepsilon_{\rm scr},\varepsilon_{\rm tw},\varepsilon_{\rm BPZ},
+\varepsilon_{\rm cont},\varepsilon_{\rm pair}\), then
+\begin{equation}
+  \|\mathcal C_{\rm full}-\mathsf M_{\rm cont}\mathcal C_{\rm DF}\|
+  \leq
+  \kappa(\varepsilon_{\rm scr}+\varepsilon_{\rm tw}
+  +\varepsilon_{\rm BPZ})
+  +\varepsilon_{\rm cont}+\varepsilon_{\rm pair}.
+  \label{eq:coulomb-gas-bpz-budget-bound}
+\end{equation}
+The residuals have distinct meanings:
+\begin{itemize}
+\item \(E_{\rm scr}\) measures failure of the screening insertion to satisfy the
+Ward/intertwiner relation in the declared regularization.
+\item \(E_{\rm tw}\) measures failure of the contour to be a closed twisted
+cycle, including endpoint and relative-boundary prescriptions.
+\item \(E_{\rm BPZ}\) measures the finite BPZ differential-equation residual
+after quotienting by null vectors.
+\item \(E_{\rm cont}\) measures analytic continuation and connection-matrix
+error between the two chosen channel bases.
+\item \(E_{\rm pair}\) measures the nonchiral reflection-positive pairing and
+sewing residual.
+\end{itemize}
+Thus a Dotsenko--Fateev formula becomes a theorem-level minimal-model block
+construction only when these five residuals vanish compatibly as the finite jet
+space is enlarged.
+
 \begin{remark}[What the Dotsenko--Fateev formulas do and do not prove]
 \label{rem:dotsenko-fateev-status}
 Multiple screening integrals are Selberg-type generalizations of

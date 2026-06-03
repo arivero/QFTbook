@@ -2940,6 +2940,50 @@ def check_dpd_low_mode_energy_forcing_arithmetic():
     assert_equal(absorbed, expected, "low/high forcing absorbed bound")
 
 
+def check_dpd_high_frequency_tail_global_continuity_budget():
+    # Proposition spde-dpd-high-frequency-tail-global-continuity combines the
+    # low-mode energy Duhamel term and the high-mode compact tail into the
+    # rough energy-to-Besov recursion on a finite partition.
+    C0 = Fraction(1)
+    intervals = 4
+    initial_bound = Fraction(3, 2)
+
+    lam = Fraction(1)
+    C_low = Fraction(4)
+    C1 = Fraction(2)
+    low_time_factor = Fraction(1, 16)
+    high_time_factor = Fraction(1, 8)
+    energy_window = Fraction(3)
+    high_tail = Fraction(1, 10)
+    epsilon_tail = Fraction(1)
+
+    assert (
+        lam * C1 * high_time_factor * epsilon_tail <= Fraction(1, 2)
+    ), "high-frequency tail absorption"
+
+    low_contribution = 2 * lam * C_low * low_time_factor * energy_window
+    high_contribution = 2 * lam * C1 * high_time_factor * high_tail
+    assert_equal(low_contribution, Fraction(3, 2), "global DPD low-mode contribution")
+    assert_equal(high_contribution, Fraction(1, 20), "global DPD high-tail contribution")
+
+    bounds = []
+    for ell in range(intervals):
+        previous = initial_bound if ell == 0 else bounds[-1]
+        bounds.append(2 * C0 * previous + low_contribution + high_contribution)
+
+    for ell, value in enumerate(bounds):
+        explicit = (2 * C0) ** (ell + 1) * initial_bound
+        for j in range(ell + 1):
+            explicit += (2 * C0) ** (ell - j) * (
+                low_contribution + high_contribution
+            )
+        assert_equal(value, explicit, "global DPD tail-recursion closed form")
+
+    smaller_high_tail = Fraction(1, 20)
+    smaller_high_contribution = 2 * lam * C1 * high_time_factor * smaller_high_tail
+    assert smaller_high_contribution < high_contribution, "tail improves with R"
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -3045,8 +3089,9 @@ def main():
     check_spde_phase_cell_cross_route_budget_arithmetic()
     check_spde_directed_os_prehilbert_comparison_arithmetic()
     check_dpd_low_mode_energy_forcing_arithmetic()
+    check_dpd_high_frequency_tail_global_continuity_budget()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, high-frequency tail global-continuity budget, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

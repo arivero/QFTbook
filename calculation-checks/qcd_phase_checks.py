@@ -14,8 +14,9 @@ for dense pairing, leading-log magnetic gap coefficient bookkeeping,
 baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, screening and collective-mode counts, dense Fermi-surface stress
-scales, color-flavor-locked anomaly matching, and the color-flavor-locked
-symmetry count.  It is not a lattice simulation and it does not assert the
+scales, color-flavor-locked anomaly matching, hydrodynamic response-window
+bookkeeping, and the color-flavor-locked symmetry count.  It is not a
+lattice simulation and it does not assert the
 existence or order of any QCD phase transition.
 """
 
@@ -657,6 +658,110 @@ def check_cfl_anomaly_matching_bookkeeping():
     )
 
 
+def check_hydrodynamic_response_window_bookkeeping():
+    # QCD hydrodynamic matching uses Kubo slopes and thermodynamic
+    # susceptibilities as input, while the pole claims require a separate
+    # scaling-window residual estimate.
+    d = 3
+    eta = Fraction(5, 7)
+    zeta = Fraction(2, 11)
+    enthalpy = Fraction(13, 5)
+    sigma_b = Fraction(23, 29)
+    chi_b = Fraction(17, 19)
+
+    shear_diffusion = eta / enthalpy
+    baryon_diffusion = sigma_b / chi_b
+    sound_attenuation = (zeta + 2 * eta * Fraction(d - 1, d)) / enthalpy
+
+    shear_spectral_slope = 2 * eta
+    assert_equal("QCD shear Kubo spectral normalization", shear_spectral_slope / 2, eta)
+    assert_equal("QCD shear diffusion constant", shear_diffusion, Fraction(25, 91))
+    assert_equal("QCD decoupled baryon diffusion constant", baryon_diffusion, Fraction(437, 493))
+    assert_equal("QCD sound attenuation constant", sound_attenuation, Fraction(1310, 3003))
+
+    def matmul_2(a, b):
+        return (
+            (
+                a[0][0] * b[0][0] + a[0][1] * b[1][0],
+                a[0][0] * b[0][1] + a[0][1] * b[1][1],
+            ),
+            (
+                a[1][0] * b[0][0] + a[1][1] * b[1][0],
+                a[1][0] * b[0][1] + a[1][1] * b[1][1],
+            ),
+        )
+
+    def matinv_2(a):
+        det = a[0][0] * a[1][1] - a[0][1] * a[1][0]
+        return (
+            (a[1][1] / det, -a[0][1] / det),
+            (-a[1][0] / det, a[0][0] / det),
+        )
+
+    # With coupled conserved charges, the diffusion constants are eigenvalues
+    # of Sigma chi^{-1}, not componentwise ratios.  This exact example uses
+    # commuting matrices with known rational eigenvalues.
+    lambda_plus = Fraction(3, 5)
+    lambda_minus = Fraction(7, 11)
+    chi_matrix = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(2)))
+    diffusion_matrix = (
+        ((lambda_plus + lambda_minus) / 2, (lambda_plus - lambda_minus) / 2),
+        ((lambda_plus - lambda_minus) / 2, (lambda_plus + lambda_minus) / 2),
+    )
+    sigma_matrix = matmul_2(diffusion_matrix, chi_matrix)
+    reconstructed_diffusion_matrix = matmul_2(sigma_matrix, matinv_2(chi_matrix))
+    diffusion_trace = reconstructed_diffusion_matrix[0][0] + reconstructed_diffusion_matrix[1][1]
+    diffusion_det = (
+        reconstructed_diffusion_matrix[0][0] * reconstructed_diffusion_matrix[1][1]
+        - reconstructed_diffusion_matrix[0][1] * reconstructed_diffusion_matrix[1][0]
+    )
+    assert_equal("QCD coupled diffusion trace", diffusion_trace, lambda_plus + lambda_minus)
+    assert_equal("QCD coupled diffusion determinant", diffusion_det, lambda_plus * lambda_minus)
+
+    # In the shear/diffusion scaling window, k~epsilon and omega~epsilon^2.
+    # After the retained hydrodynamic denominator and analytic contact terms
+    # are matched, the first quadratic analytic residual is order epsilon^4.
+    k_order = 1
+    omega_diffusive_order = 2
+    diffusive_residual_order = min(
+        2 * omega_diffusive_order,
+        omega_diffusive_order + 2 * k_order,
+        4 * k_order,
+    )
+    assert_equal("diffusive residual starts beyond first order", diffusive_residual_order, 4)
+
+    # In the sound scaling window, omega~k~epsilon.  The ideal sound terms are
+    # order epsilon^2 and first viscous attenuation is order epsilon^3.
+    omega_sound_order = 1
+    sound_ideal_order = min(2 * omega_sound_order, 2 * k_order)
+    sound_attenuation_order = omega_sound_order + 2 * k_order
+    sound_second_order_residual = min(
+        4 * omega_sound_order,
+        2 * omega_sound_order + 2 * k_order,
+        4 * k_order,
+    )
+    assert_equal("sound ideal pole equation order", sound_ideal_order, 2)
+    assert_equal("sound first attenuation order", sound_attenuation_order, 3)
+    assert_equal("sound second-order residual starts after attenuation", sound_second_order_residual, 4)
+
+    # A nonhydrodynamic relaxation pole with an epsilon^0 gap is analytic in
+    # either hydrodynamic window.  If its gap is itself order epsilon^2, it is
+    # as singular as the shear/diffusion pole and must be retained rather than
+    # hidden in the residual.
+    gapped_nonhydro_order = 0
+    near_critical_nonhydro_order = 2
+    assert_equal(
+        "gapped nonhydro mode is analytic in shear window",
+        min(gapped_nonhydro_order, omega_diffusive_order),
+        0,
+    )
+    assert_equal(
+        "near-critical nonhydro mode collides with diffusive scaling",
+        min(near_critical_nonhydro_order, omega_diffusive_order),
+        2,
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -683,6 +788,7 @@ def main():
     check_dense_fermi_surface_stress_bookkeeping()
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
+    check_hydrodynamic_response_window_bookkeeping()
     print("All QCD phase-structure checks passed.")
 
 

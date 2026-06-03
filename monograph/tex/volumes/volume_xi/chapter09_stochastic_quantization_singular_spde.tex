@@ -2881,18 +2881,119 @@ energy contribution and \(B_{\ell,R}\) replacing the single abstract
 \(A_\ell\).
 \end{proof}
 
+\begin{proposition}[High-frequency tail criterion for global DPD continuity]
+\label{prop:spde-dpd-high-frequency-tail-global-continuity}
+Keep the notation of
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion} and
+Corollary~\ref{cor:spde-dpd-low-high-rough-forcing-input}, and assume
+\(\theta=(\alpha+\kappa)/2<1/4\).  Let
+\(K\subset\mathfrak D_T\) be compact, and suppose the Besov local
+blow-up alternative holds on \(K\).  Assume that there is a finite energy
+constant \(E_{K,T}\) with the following property: for every \(D\in K\), for
+the smooth energy-compatible approximants used to construct the DPD solution,
+and for every interval \(I\subset[0,T]\) of length at most one, the
+low-frequency forcing quantity of
+Proposition~\ref{prop:spde-dpd-energy-low-mode-forcing} obeys
+\begin{equation}
+  L_I(Y_D,\mathbb X_D)\leq E_{K,T}.
+  \label{eq:spde-dpd-compact-energy-window-bound}
+\end{equation}
+Assume further that the high-frequency paracontrolled residual has a compact
+tail: there are nonnegative functions \(b_K(R)\) and
+\(\varepsilon_K(R)\), with
+\[
+  b_K(R)\longrightarrow0,
+  \qquad
+  \varepsilon_K(R)\longrightarrow0
+  \qquad (R\to\infty),
+\]
+such that, for every \(D\in K\), every partition interval
+\(I_\ell\subset[0,T]\), and every \(R\geq1\),
+\begin{equation}
+  \|(1-P_{\leq R})
+      \mathcal N_{\mathcal C}(Y_D,\mathbb X_D)\|_
+    {C(I_\ell;\mathcal C^{-\kappa})}
+  \leq
+  b_K(R)+\varepsilon_K(R)
+  \|Y_D\|_{C(I_\ell;\mathcal C^\alpha)} .
+  \label{eq:spde-dpd-compact-high-frequency-tail}
+\end{equation}
+Then the rough energy-to-Besov hypothesis in
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion} holds on
+\(K\).  Consequently every \(D\in K\) has a DPD solution on \([0,T]\), and
+the solution map is uniformly continuous on \(K\).
+\end{proposition}
+
+\begin{proof}
+Choose \(R\) so large that
+\[
+  |\lambda|C_1\varepsilon_K(R)\leq1 .
+\]
+Then choose a partition mesh \(0<\delta\leq1\) with
+\begin{equation}
+  |\lambda|C_1\delta^{1-\theta}\varepsilon_K(R)\leq\frac12 .
+  \label{eq:spde-dpd-tail-global-absorption-choice}
+\end{equation}
+For a partition with \(|I_\ell|\leq\delta\),
+Corollary~\ref{cor:spde-dpd-low-high-rough-forcing-input},
+\eqref{eq:spde-dpd-compact-energy-window-bound}, and
+\eqref{eq:spde-dpd-compact-high-frequency-tail} give the single-step bound
+\[
+\begin{aligned}
+  \|Y_D\|_{C(I_\ell;\mathcal C^\alpha)}
+  \leq
+  &\,2C_0\|Y_D(t_\ell)\|_{\mathcal C^\alpha}
+\\
+  &+2|\lambda|C_{\alpha,\kappa,R,m}\delta^{1/4-\theta}E_{K,T}
+   +2|\lambda|C_1\delta^{1-\theta}b_K(R).
+\end{aligned}
+\]
+This is exactly Proposition~\ref{prop:spde-dpd-rough-forcing-bootstrap}
+with
+\[
+  A_\ell
+  =
+  \frac{C_{\alpha,\kappa,R,m}}{C_1}
+  \delta^{-3/4}E_{K,T}+b_K(R),
+\]
+or, more directly, with the displayed low-mode and high-mode contributions
+kept separate.  Iterating over
+\[
+  M=\left\lceil T/\delta\right\rceil
+\]
+intervals gives
+\[
+\begin{aligned}
+  \|Y_D\|_{C([0,T];\mathcal C^\alpha)}
+  \leq
+  &(2C_0)^M\sup_{\widetilde D\in K}
+    \|Y_{\widetilde D}(0)\|_{\mathcal C^\alpha}
+\\
+  &+
+  \sum_{j=0}^{M-1}(2C_0)^{M-1-j}
+  \Bigl[
+    2|\lambda|C_{\alpha,\kappa,R,m}\delta^{1/4-\theta}E_{K,T}
+    +2|\lambda|C_1\delta^{1-\theta}b_K(R)
+  \Bigr].
+\end{aligned}
+\]
+The right hand side is finite and independent of \(D\in K\).  This proves
+the rough energy-to-Besov bound on \(K\).  The global existence and uniform
+continuity conclusions now follow from
+Lemma~\ref{lem:spde-dpd-global-compact-continuity-criterion}.
+\end{proof}
+
 The preceding propositions sharpen the remaining analytic obligation.  The
 energy estimate and finite-mode smoothing already control the low-frequency
 part of the DPD forcing from the same \(L^4,L^2,L^{4/3}\) quantities used in
 Proposition~\ref{prop:spde-dpd-energy-compactness}.  What is still missing
-is not another finite exponent identity, but a genuinely rough high-frequency
-estimate of the form
-\eqref{eq:spde-high-mode-rough-forcing-residual}, with \(B_{\ell,R}\)
-controlled by the coercive energy estimates and enhanced-noise norms and
-with an absorbable coefficient as \(R\) and the local time step are chosen.
-This is the paracontrolled commutator/noise-tail step in the
-rough energy-to-Besov bound.  Once it is proved, the conversion to the
-global Besov bound is the elementary parabolic bootstrap above.
+is not another finite exponent identity, but a genuinely rough
+high-frequency estimate of the compact-tail form
+\eqref{eq:spde-dpd-compact-high-frequency-tail}.  This is the
+paracontrolled commutator/noise-tail step in the rough energy-to-Besov
+bound.  Once that estimate is proved on compact enhanced-noise sets,
+Proposition~\ref{prop:spde-dpd-high-frequency-tail-global-continuity}
+converts it into global Besov compact-continuity.
 
 \begin{lemma}[Passing invariance through a cutoff limit]
 \label{lem:spde-invariant-measure-limit}

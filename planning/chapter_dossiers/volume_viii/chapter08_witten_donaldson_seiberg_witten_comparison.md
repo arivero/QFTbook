@@ -105,6 +105,14 @@ gauge theory.
   finite Donaldson exponential shape, SW labels/counts, contact Gaussian,
   determinant-line phase, universal constant, and chamber/\(u\)-plane
   boundary contribution.
+- Adds a finite comparison residual budget on Donaldson insertion test spaces:
+  the discrepancy between a regulated UV Donaldson functional and the normalized
+  SW comparison formula telescopes into \(R_Q\), \(R_{\rm RG}\), \(R_u\),
+  \(R_{\rm sing}\), and \(R_{\rm norm}\).  These record, respectively,
+  construction/\(Q\)-localization, Wilsonian-flow, \(u\)-plane splitting,
+  singular-fiber replacement, and contact/phase/constant normalization errors.
+  A theorem-level comparison must drive these residuals to zero compatibly as
+  the finite test space grows.
 - Gives the normalization-sensitive \(u\)-plane integral data with
   \(A(u)^\chi B(u)^\sigma\), theta kernel, contact term, and a conditional
   boundary derivation of wall crossing; the wall-normal theta-kernel factor
@@ -127,7 +135,9 @@ gauge theory.
   Donaldson finite-exponential moment reconstruction, and the trace-delta
   instanton action coefficient, as well as the wall-normal sign jump and
   delta-sequence mass/concentration coefficients used in the \(u\)-plane
-  wall-crossing explanation.
+  wall-crossing explanation.  It also checks the finite comparison residual
+  budget by exact telescoping and an \(\ell^1/\ell^\infty\) norm bound on a
+  sample Donaldson insertion test space.
 
 ## Figure Ledger
 
@@ -181,3 +191,9 @@ the Abelian monopole theory.
   double-dual charge ledger, separating Uhlenbeck \(\mu\)-class extension and
   wall-boundary cancellation from Nekrasov/Gieseker resolved fixed-point
   integration.
+- 2026-06-03 comparison-residual-budget pass: added a finite test-space
+  residual budget for the Donaldson--SW comparison.  The chapter now states
+  that partial progress must bound the five residual functionals
+  \(R_Q,R_{\rm RG},R_u,R_{\rm sing},R_{\rm norm}\), instead of treating the
+  comparison formula as a monolithic black-box target; the companion script
+  verifies the exact telescoping and norm estimate.

@@ -68,6 +68,9 @@ data.
 - `mathfrak D_T`, `K`, `B_{K,T}`, `tau(D)`: DPD enhanced-noise/initial-data
   space, compact data set, uniform rough energy-to-Besov bound, and maximal
   local existence time in the global compact-continuity criterion.
+- `E_{K,T}`, `b_K(R)`, `epsilon_K(R)`: compact-set energy window bound,
+  high-frequency paracontrolled tail, and absorbable Besov coefficient in
+  the high-frequency tail criterion for global DPD continuity.
 - `M_T`, `Q_T`: uniform smooth DPD energy-input bound and the stochastic
   time-space slab \([0,T]\times\mathbb T^2\) in the DPD energy-compactness
   theorem.
@@ -432,6 +435,13 @@ data.
   \(|I|^{1/4-(\alpha+\kappa)/2}\) Besov gain.  The chapter now isolates the
   remaining rough-energy task as the high-frequency paracontrolled residual,
   not the whole local forcing estimate.
+- Proves the compact-set high-frequency tail criterion that consumes the
+  remaining paracontrolled residual once it has the form
+  \(b_K(R)+\varepsilon_K(R)\|Y\|_{C_I\mathcal C^\alpha}\) with
+  \(b_K(R),\varepsilon_K(R)\to0\).  The proof chooses \(R\) and a time mesh so
+  the Besov coefficient is absorbable, then iterates the low/high recursion
+  to produce the rough energy-to-Besov bound required by the global
+  compact-continuity lemma.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -1333,6 +1343,12 @@ data maps.
   high-frequency paracontrolled residual with an absorbable Besov coefficient.
   The calculation-check companion verifies the Holder exponents, Bernstein
   low-mode exponent, time-integrability gain, and absorption arithmetic.
+- 2026-06-03 high-frequency tail criterion pass: added the compact-set
+  absorption theorem that turns a genuine paracontrolled/noise-tail estimate
+  \(b_K(R),\varepsilon_K(R)\to0\) into the rough energy-to-Besov hypothesis
+  for the global DPD solution map.  This is a proof-stack bridge: it does not
+  prove the rough high-frequency estimate, but it removes the remaining
+  ambiguity about how that estimate feeds into global compact-continuity.
 - 2026-05-26 singular-SPDE ledger pass: revised the monograph open-problem
   ledger so it no longer lists already-proved \(\Phi^4_2\) infrastructure as
   quoted theorem-boundary material.  The remaining two-dimensional tasks are

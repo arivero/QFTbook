@@ -79,6 +79,7 @@
 | \(\widehat U(x)\) | local \(U(N_f)\) chiral field used for the singlet large-\(N_c\) theta datum |
 | \(T^0,\eta_0\) | normalized flavor-singlet generator \(\mathbf 1/\sqrt{2N_f}\) and the corresponding pseudoscalar field |
 | \(\chi_{\rm YM}\) | pure Yang--Mills topological susceptibility entering the large-\(N_c\) Witten--Veneziano matching datum |
+| \(m_0^2\) | anomalous singlet curvature \(2N_f\chi_{\rm YM}/f_\pi^2\) entering the leading \(\eta_8,\eta_0\) mass matrix |
 | \(\ell_\mu,r_\mu\) | external left and right flavor gauge fields |
 | \(F_{\rm st}\) | stereographic-coordinate pion normalization used for the explicit \(N_f=2\) scattering calculation |
 | \(\vec D_\mu=\partial_\mu\vec\xi/(1+\vec\xi^{\,2})\) | covariant stereographic building block for the \(N_f=2\) four-derivative invariants |
@@ -191,6 +192,14 @@
   \(a=\sqrt{2N_f}/f_\pi\).  This records the screening null direction, the
   fixed-\(\theta\) singlet mass coefficient, and the mixed-derivative sign of
   the anomaly-invariant coordinate.
+- In the three-flavor isospin limit, the chapter now expands the leading
+  mass spurion in the local \(U(3)\) chart and adds the anomalous singlet
+  curvature to obtain the finite \((\eta_8,\eta_0)\) mass matrix.  Its trace
+  gives
+  \(m_{\eta'}^2+m_\eta^2-2m_K^2=2N_f\chi_{\rm YM}/f_\pi^2\), while its
+  determinant records the off-diagonal mixing data.  This turns the
+  susceptibility statement into a spectrum calculation rather than a slogan
+  about the axial anomaly.
 - The leading pion Lagrangian is the invariant two-derivative functional of
   the \(SU(N_f)\)-valued Goldstone field and external flavor backgrounds.
 - The non-singlet axial-current Ward identity with one current insertion and
@@ -404,3 +413,9 @@
   complement, and anomaly-coordinate mixed derivative.  Extended
   `qcd_theta_witten_veneziano_checks.py` with exact symbolic checks of these
   identities.
+- 2026-06-03 issue #597/#630 eta-prime spectrum pass: added the finite
+  \(N_f=3\) \((\eta_8,\eta_0)\) mass-matrix derivation that bridges the
+  Witten--Veneziano susceptibility curvature to the physical
+  \(\eta,\eta'\) trace relation and determinant.  Extended
+  `qcd_theta_witten_veneziano_checks.py` to derive the neutral matrix from
+  flavor generators and verify the trace/determinant ledger exactly.

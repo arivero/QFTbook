@@ -201,9 +201,10 @@ Current checks:
   cocycles, local counterterm/frame changes of cocycle representatives, the
   finite-regulator scheme-change coboundary identifying cohomologous anomaly
   representatives, the coordinate comparison identifying finite-regulator
-  cochains with line-functor cocycles and inverse inflow phases, and the
-  finite cochain Stokes identity behind the five-dimensional one-form \(BF\)
-  inflow variation.
+  cochains with line-functor cocycles and inverse inflow phases, the
+  separation between vanishing local descent and nontrivial flat global
+  holonomy, and the finite cochain Stokes identity behind the
+  five-dimensional one-form \(BF\) inflow variation.
 - `kms_foundation_checks.py`: finite checks for the Volume X KMS-foundations
   chapter, including the finite Gibbs-trace KMS strip boundary condition,
   detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
@@ -236,7 +237,9 @@ Current checks:
   baryon-number cumulants and radius estimators, CFL gauge-invariant
   composite charges, dense neutrality bookkeeping, CFL screening-sector and
   collective-mode counts, dense Fermi-surface stress scales, CFL
-  anomaly-matching coefficients, and the CFL Goldstone count.
+  anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
+  QCD shear, scalar and coupled diffusion, and sound matching, and the CFL
+  Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact
@@ -315,7 +318,10 @@ Current checks:
   Witten--Veneziano mass coefficient.  It also verifies the local
   \((\theta,\eta_0)\) curvature matrix, its screening null vector, the
   screened theta Schur complement, and the sign-sensitive mixed derivative
-  fixed by the anomaly-invariant coordinate.
+  fixed by the anomaly-invariant coordinate.  The same script derives the
+  leading isospin-limit \(N_f=3\) neutral \((\pi^0,\eta_8,\eta_0)\) mass
+  matrix from the flavor generators, then checks the \(\eta,\eta'\) trace
+  Witten--Veneziano relation and the determinant/mixing ledger.
 - `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET
   Wilson-line section, including the mostly-plus heavy-velocity spin
   projectors, the transverse covariant-derivative projector, residual-momentum
@@ -386,9 +392,14 @@ Current checks:
   boundary-exponent threshold \(b_0+\beta_{\mathcal X}>4\), the general
   charge-\(k\) framed ADHM quotient dimension \(4kN_c\), the
   coarea/orbit-volume scaling of the ADHM quotient density, the
-  finite-regulator nonzero-mode determinant bookkeeping, Uhlenbeck boundary
-  face codimensions and product power-counting thresholds, and the \(k=1\)
-  ADHM orientation dimension and cone-volume power.
+  finite-regulator nonzero-mode determinant bookkeeping, the zero-mode
+  saturation coefficient that turns an instanton chart into a physical
+  correlator contribution, including the two- and three-flavor 't Hooft
+  determinants and the \(\theta+\arg\det M\) axial phase ledger, the
+  proper-time nonzero-mode determinant assembly for a smeared four-fermion
+  instanton amplitude, Uhlenbeck
+  boundary face codimensions and product power-counting thresholds, and the
+  \(k=1\) ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
@@ -641,7 +652,9 @@ Current checks:
   light-ray transport, derivative-term signs in the two-scale flatness
   equation, the cusp-log rapidity chart and its wrong-sign curvature
   obstruction, flatness versus curvature obstruction, and the energy-sum
-  left-null-vector condition.
+  left-null-vector condition, plus the endpoint observable transport budget
+  in which coefficient, operator, and contact evolution leave only declared
+  residuals in detector tests.
 - `energy_correlator_track_checks.py`: exact rational checks for the
   selected calorimetric measure and track-energy-correlator bookkeeping,
   including the selected EEC zeroth and first moment identities, selected
@@ -753,8 +766,10 @@ Current checks:
   connected-to-full Schwinger hierarchy growth loss, and the
   low-mode DPD energy-forcing arithmetic that converts the \(L^4,L^2,L^{4/3}\)
   energy exponents into an \(L^{4/3}_t\mathcal C^{-\kappa}\) Duhamel gain,
-  and the interval-recursion arithmetic in the rough-forcing energy-to-Besov
-  bootstrap.
+  the high-frequency tail global-continuity budget that turns compact
+  paracontrolled residuals \(b_K(R),\varepsilon_K(R)\to0\) into the rough
+  energy-to-Besov hypothesis, and the interval-recursion arithmetic in the
+  rough-forcing energy-to-Besov bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   tree-level Symanzik cutoff artifact and improved-kernel cancellation, the
@@ -996,9 +1011,10 @@ Current checks:
   convention, screening dimensions, Kac weights, charge reflection modulo the
   unitary null charge relation, the Euler beta integral used in the
   one-screening Dotsenko--Fateev block, the two-screening
-  Selberg/Vandermonde finite chamber, the level-two Gram determinant and null
-  vector, the level-two Kac determinant roots \(h_{1,2}\) and \(h_{2,1}\), the
-  Ising spin-field BPZ differential equation, and the crossing matrix fixing
+  Selberg/Vandermonde finite chamber, the finite screening-to-BPZ residual
+  telescope and norm budget, the level-two Gram determinant and null vector,
+  the level-two Kac determinant roots \(h_{1,2}\) and \(h_{2,1}\), the Ising
+  spin-field BPZ differential equation, and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 - `cft_higher_genus_sewing_checks.py`: exact finite checks for the
   higher-genus sewing section, including equality between one-channel basis
@@ -1022,9 +1038,11 @@ Current checks:
   Zamolodchikov-recursion companion rather than this global-block evaluator.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
-  fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
-  classifying sewing identity, the matrix-unit Frobenius cutting move behind
-  rational boundary sewing, the finite classifying-center model for
+  the oriented Cardy annulus formula on cyclic pointed modular data where the
+  real/self-conjugate shortcut fails, fusion associativity, fusion-ring
+  characters, the normalized Cardy two-bulk classifying sewing identity, the
+  matrix-unit Frobenius cutting move behind rational boundary sewing, the
+  finite classifying-center model for
   non-diagonal rational boundary sewing, the pointed module-category annulus
   nimrep identity \(n_g n_h=n_{g+h}\), the pointed annulus Fourier
   diagonalization/projector resolution over \(G/H\), the pointed module-category
@@ -1044,7 +1062,9 @@ Current checks:
   quotient \(s\sim -s\) and the exact simple-pole residue/evaluation algebra
   behind nonrational contour-crossing prescriptions, as well as the finite
   move-defect budget that turns local bordered-sewing defects into a global
-  decomposition-independence error bound.
+  decomposition-independence error bound and the finite sewing-anomaly
+  cocycle check separating removable coboundary phases from nontrivial
+  closed-loop holonomy.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the probabilistic GMC threshold normalization
   \(Q_\gamma=2/\gamma+\gamma/2=b+b^{-1}\) and the distinction between the
@@ -1109,7 +1129,9 @@ Current checks:
   \(\operatorname{Spin}^c\) characteristic-lift bookkeeping, K3 and
   elliptic-surface simple-type arithmetic, blow-up square shifts, Furuta
   inequality examples, Donaldson blow-up cosh/sinh parity coefficients after
-  the contact Gaussian, and the trace-delta instanton-action coefficient.
+  the contact Gaussian, the finite comparison residual budget from UV
+  localization through RG, \(u\)-plane splitting, singular-fiber replacement,
+  and normalization, and the trace-delta instanton-action coefficient.
 - `discrete_theta_terms_checks.py`: finite arithmetic checks for the discrete
   theta terms chapter, including the Pontryagin-square quadratic-refinement
   identity, oriented classification periodicity of the counterterm group,
@@ -1127,8 +1149,9 @@ Current checks:
   categorical-symmetry defect-fusion chapter, including defect fusion as
   composition of local-operator actions, noninvertible projection kernels,
   dagger reversal of junction composition, positivity of the finite
-  reflection pairing, the BPZ weighted-adjoint identity for defect actions,
-  and unitarity of isotopy changes of junction basis.
+  reflection pairing, the Gram-radical null quotient and descended
+  composition/adjoint maps, the BPZ weighted-adjoint identity for defect
+  actions, and unitarity of isotopy changes of junction basis.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
@@ -1905,6 +1928,9 @@ Current checks:
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
   primitive-monomial selection forced by exact Coulomb matching, the
+  single-vortex amplitude assembly with zero-mode removal, determinant-power
+  bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
+  vanishing, and FI-coordinate normalization shifts, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
@@ -1989,10 +2015,12 @@ Current checks:
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the \(S^4\) \(\mathcal N=4\) adjoint-hyper
   root-pair cancellation of \(H\)-factors, the finite normal Gaussian
-  Pfaffian/determinant convention, the \(S^4\) \(H\)-function
-  finite-product logarithmic derivative, the finite-part mode-determinant
-  ledger behind the \(H\)-powers, the \(U(1)\) \(S^4\) Gaussian matrix
-  integral, finite double-sine reflection and pole-convention checks, the
+  Pfaffian/determinant convention, the protected-insertion residual
+  telescope for the \(S^4\) localization functional and normalized Wilson
+  loop, the \(S^4\) \(H\)-function finite-product logarithmic derivative, the
+  finite-part mode-determinant ledger behind the \(H\)-powers, the \(U(1)\)
+  \(S^4\) Gaussian matrix integral, finite double-sine reflection and
+  pole-convention checks, the
   \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
   round-\(S^3\) conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).

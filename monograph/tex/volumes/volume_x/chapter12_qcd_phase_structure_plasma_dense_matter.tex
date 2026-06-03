@@ -1771,12 +1771,87 @@ example, with \(T_{xy}\) a spatial off-diagonal stress tensor component,
   \eta
   =
   \lim_{\omega\downarrow0}
-  \frac{1}{\omega}\,
+  \frac{1}{2\omega}\,
   \rho_{T_{xy}T_{xy}}(\omega,\mathbf0)
 \]
 when the limit exists after the thermodynamic limit.  The definition is
 nonperturbative; a kinetic or holographic computation is an approximation to
 this spectral limit, not the definition of the coefficient.
+
+\begin{controlledapproximation}[QCD hydrodynamic response window]
+\label{ca:qcd-hydrodynamic-response-window}
+Fix a thermal QCD phase at \((T,\mu_B)\) for which the continuum real-time
+retarded kernels of the gauge-invariant stress tensor and global currents
+exist.  A claim that QCD is described by first-order hydrodynamics in a
+specified channel consists of more than the Kubo limits.  It requires a
+compact low-frequency and long-wavelength window \(W_\epsilon\), a subtraction
+of declared local contact terms, and a comparison
+\begin{equation}
+  K^R_{\rm QCD}(\omega,\mathbf k)
+  =
+  K^R_{\rm hydro}(\omega,\mathbf k;\mathcal T_{\rm QCD})
+  +
+  P_{\rm loc}(\omega,\mathbf k)
+  +
+  R_\epsilon(\omega,\mathbf k),
+  \label{eq:qcd-hydro-response-comparison}
+\end{equation}
+where \(\mathcal T_{\rm QCD}\) is the QCD transport datum
+\[
+  \mathcal T_{\rm QCD}
+  =
+  \bigl(
+    p(T,\mu_B),\ \chi_{ab}(T,\mu_B),\
+    \eta(T,\mu_B),\ \zeta(T,\mu_B),\ \Sigma_{ab}(T,\mu_B),\ldots
+  \bigr)
+\]
+extracted from thermodynamic derivatives and Kubo spectral slopes.  Here
+\(\chi_{ab}\) and \(\Sigma_{ab}\) are the susceptibility and conductivity
+matrices for the conserved charge sector after the stress-tensor variables
+have been projected into the chosen hydrodynamic frame.  The remainder
+statement must be in the same scaling topology as the hydrodynamic mode:
+\(\omega\sim k^2\) for shear and diffusion, and \(\omega\sim k\) for sound.
+Thus the shear channel uses
+\[
+  D_\eta=\frac{\eta}{w},
+  \qquad
+  \omega_{\rm shear}=-\ii D_\eta k^2+O(k^4),
+  \qquad
+  w=\epsilon+p,
+\]
+a decoupled baryon diffusion channel uses
+\[
+  D_B=\frac{\sigma_B}{\chi_B},
+  \qquad
+  \omega_{\rm diff}=-\ii D_B k^2+O(k^4),
+\]
+while at nonzero density or with several conserved charges \(D_B\) is replaced
+by the relevant eigenvalue of \(\Sigma\,\chi^{-1}\) after the sound variables
+have been separated,
+and the sound channel uses
+\[
+  \omega_{\rm sound,\pm}
+  =
+  \pm c_s k
+  -\frac{\ii}{2}\Gamma_s k^2
+  +O(k^3),
+  \qquad
+  \Gamma_s=\frac{\zeta+2\eta(d-1)/d}{w}.
+\]
+Here \(d\) is the number of spatial dimensions and \(c_s^2\) is computed from
+the QCD pressure with the stated thermodynamic constraint.  A bound such as
+\begin{equation}
+  \sup_{(\omega,\mathbf k)\in W_\epsilon}
+  |R_\epsilon(\omega,\mathbf k)|
+  \le C\,\epsilon^{N+1}
+  \label{eq:qcd-hydro-response-remainder}
+\end{equation}
+is the additional microscopic input.  It asserts that nonconserved QCD
+excitations and long-time tails do not produce extra singular terms in the
+window being approximated.  Without a statement of this form, Kubo formulae
+define transport coefficients, but they do not by themselves derive
+hydrodynamics from QCD.
+\end{controlledapproximation}
 
 \begin{remark}[The \(\eta/s\) lower-bound claim]
 The value \(1/(4\pi)\) is an important result in a class of strongly coupled

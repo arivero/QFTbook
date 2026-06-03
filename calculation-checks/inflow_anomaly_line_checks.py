@@ -263,6 +263,57 @@ def check_coordinate_comparison_between_cochain_line_and_inflow() -> None:
                                 )
 
 
+def check_local_descent_zero_can_leave_global_holonomy() -> None:
+    """Separate identity-component cancellation from a flat global anomaly.
+
+    The finite model is a one-object action groupoid for
+    G = Z_2 x Z_3, with Z_3 treated as the connected/local subgroup.  The
+    character a(epsilon, k)=epsilon has zero restriction to Z_3, so the local
+    descent coordinate vanishes, but its Z_2 holonomy is nontrivial.  Since
+    the action is on one object, every 0-cochain coboundary is zero, so no
+    local frame/counterterm removes this global sign.
+    """
+
+    modulus = 2
+
+    def add(first: tuple[int, int], second: tuple[int, int]) -> tuple[int, int]:
+        return ((first[0] + second[0]) % 2, (first[1] + second[1]) % 3)
+
+    def anomaly(group_element: tuple[int, int]) -> int:
+        return group_element[0] % modulus
+
+    group = [(epsilon, local) for epsilon in range(2) for local in range(3)]
+    local_subgroup = [(0, local) for local in range(3)]
+
+    for first in group:
+        for second in group:
+            lhs = anomaly(add(first, second))
+            rhs = (anomaly(first) + anomaly(second)) % modulus
+            assert_equal(lhs, rhs, "flat global anomaly character is a cocycle")
+
+    for local in local_subgroup:
+        assert_equal(
+            anomaly(local),
+            0,
+            "identity-component local descent coordinate vanishes",
+        )
+
+    assert_equal(
+        anomaly((1, 0)),
+        1,
+        "large transformation has nontrivial flat holonomy",
+    )
+
+    for counterterm_value in range(modulus):
+        coboundary = (counterterm_value - counterterm_value) % modulus
+        assert_equal(coboundary, 0, "one-object counterterm coboundary vanishes")
+        assert_equal(
+            (anomaly((1, 0)) + coboundary) % modulus,
+            1,
+            "local counterterm cannot remove the flat global holonomy",
+        )
+
+
 def simplices(top_dimension: int, degree: int) -> list[Simplex]:
     return list(combinations(range(top_dimension + 1), degree + 1))
 
@@ -347,10 +398,11 @@ def main() -> None:
     check_counterterm_frame_change_preserves_cocycle()
     check_finite_regulator_scheme_change_is_coboundary()
     check_coordinate_comparison_between_cochain_line_and_inflow()
+    check_local_descent_zero_can_leave_global_holonomy()
     check_finite_bf_boundary_variation()
     print(
-        "Anomaly-line, descent-cocycle, coordinate-comparison, and finite-inflow "
-        "cochain checks passed."
+        "Anomaly-line, descent-cocycle, coordinate-comparison, "
+        "local/global-holonomy, and finite-inflow cochain checks passed."
     )
 
 

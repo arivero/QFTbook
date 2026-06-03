@@ -9,6 +9,10 @@ internal source lead and convention comparator.  It is rewritten here as an
 intrinsic two-dimensional QFT development, with the charged-chiral
 dualization, one-loop matching, vortex-term proof boundary, and
 cigar/Liouville comparison made more explicit than the stringbook appendix.
+Hori--Vafa is treated as a protected-data benchmark and source lead rather
+than as an authority to quote through; every imported formula must be
+rechecked against the chapter's regulator, determinant, zero-mode, boundary,
+and normalization conventions.
 Primary reference sidecars currently used for scrutiny, not authority, are
 `references/susy_glsm_mirror/hori_vafa_mirror_symmetry_hep-th_0002222.txt`
 and
@@ -51,6 +55,10 @@ and
   twisted variables, first-order real superfields, real dual coordinates,
   charge-linear Coulomb masses, vortex-normalization constants, and
   exponential torus coordinates in the abelian mirror presentation.
+- `U_{i,1,Lambda}`, `W_{i,1,Lambda}^{nz}`, `Z_{i,F,Lambda}^0`,
+  `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
+  determinant ratio, zero-mode Berezin coefficient for the twisted
+  `F`-term measure, and regulated vortex coefficient.
 - `Y_P`, `rho`, `vartheta`, `u`, `chi`, `k`: logarithmic-chiral dual
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
@@ -124,6 +132,12 @@ and
   protected dual twisted-superpotential datum with exponential
   `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
   left schematic in classic mirror-duality papers.
+- Identifies the coefficient `c_i` as the continuum limit of a regulated
+  charge-one vortex amplitude: classical topological factor `exp(-Y_i)`,
+  nonzero-mode determinant ratio, two universal fermion zero modes forming
+  the twisted `F`-term measure, possible extra zero-mode saturation, and
+  collective-coordinate integration.  This makes the Hori--Vafa exponential
+  term a rechecked amplitude datum in the chapter's conventions.
 - Derives that a general connected holomorphic correction
   `h_i(X_i)`, `X_i=exp(-Y_i)`, is forced to be the primitive monomial
   `mu c_i X_i` if the eliminated branch is required to reproduce the
@@ -217,6 +231,10 @@ and
   - primitive mirror monomial selection from exact Coulomb matching, showing
     that higher connected harmonics spoil the branch identity
     `X_i(M_i)=M_i/(mu c_i)`;
+  - single-vortex amplitude assembly: zero-mode removal before determinant
+    formation, determinant-power bookkeeping, survival of the saturated
+    twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
+    zero modes, and the finite FI shift induced by the vortex coefficient;
   - the `P^{N-1}` mirror critical-point simplicity ledger;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
@@ -247,3 +265,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-05-31 Fermat Wilsonian pass imports and sharpens Appendix K's
   nonrenormalization footnote into an explicit two-dimensional
   holomorphic-coordinate selection argument with calculation-check coverage.
+- The 2026-06-03 Hori--Vafa scrutiny pass adds the finite-regulator
+  one-vortex amplitude formula for the exponential term and records the
+  recheck gate for every Hori--Vafa-derived formula: vortex-number coupling,
+  determinant ratio, universal and extra fermion zero modes, boundary
+  behavior, and FI-coordinate normalization.

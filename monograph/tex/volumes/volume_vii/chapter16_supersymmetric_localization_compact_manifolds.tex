@@ -1268,6 +1268,65 @@ anti-instantons.  The two factors are complex conjugates only when the
 integration cycle and masses are chosen so that reflection positivity gives
 the corresponding conjugation property.
 
+\paragraph{Protected-insertion comparison budget.}
+Equation~\eqref{eq:pestun-s4-localization} is the scalar partition-function
+case of a functional statement on protected insertions.  Fix a finite
+test space \(\mathcal P_N\) of \(Q\)-closed regulated insertions containing
+the unit insertion and the protected Wilson-loop insertions under study.
+On \(\mathcal P_N\) let
+\[
+  \mathcal Z_{\rm reg},\quad
+  \mathcal Z_{\rm def},\quad
+  \mathcal Z_{\rm normal},\quad
+  \mathcal Z_{\rm res},\quad
+  \mathcal Z_{\rm Nek},\quad
+  \mathcal Z_{\rm loc}
+  \in \mathcal P_N^\vee
+\]
+denote, respectively, the regulated QFT functional, the functional after
+the \(Q\)-exact deformation, the functional after normal Gaussian
+integration, the residual Cartan-contour functional, the north/south
+ADHM--Nekrasov functional, and the final localized expression.  Define
+\[
+\begin{aligned}
+  E_{\rm Stokes} &= \mathcal Z_{\rm reg}-\mathcal Z_{\rm def},\\
+  E_{\rm normal} &= \mathcal Z_{\rm def}-\mathcal Z_{\rm normal},\\
+  E_{\rm res} &= \mathcal Z_{\rm normal}-\mathcal Z_{\rm res},\\
+  E_{\rm inst} &= \mathcal Z_{\rm res}-\mathcal Z_{\rm Nek},\\
+  E_{\rm cont} &= \mathcal Z_{\rm Nek}-\mathcal Z_{\rm loc}.
+\end{aligned}
+\]
+Then the comparison to the displayed localization formula is the exact
+telescope
+\begin{equation}
+  \mathcal Z_{\rm reg}-\mathcal Z_{\rm loc}
+  =
+  E_{\rm Stokes}+E_{\rm normal}+E_{\rm res}+E_{\rm inst}+E_{\rm cont}.
+  \label{eq:s4-protected-insertion-localization-budget}
+\end{equation}
+Here \(E_{\rm Stokes}\) records finite-regulator \(Q\)-Stokes, anomaly, and
+boundary defects; \(E_{\rm normal}\) records normal-complex, zero-mode, and
+determinant-line defects; \(E_{\rm res}\) records the residual Cartan
+contour, Weyl quotient, and fixed-locus restriction of the insertion;
+\(E_{\rm inst}\) records the choice of Gieseker/Nekrasov instanton
+compactification at the poles; and \(E_{\rm cont}\) records the continuum
+limit and contact-term comparison.  For any norm on the finite-dimensional
+dual space,
+\[
+  \left\|\mathcal Z_{\rm reg}-\mathcal Z_{\rm loc}\right\|
+  \le
+  \|E_{\rm Stokes}\|+\|E_{\rm normal}\|+\|E_{\rm res}\|
+  +\|E_{\rm inst}\|+\|E_{\rm cont}\|.
+\]
+Thus the usual formula is recovered for this test space only after these
+five residuals have been killed or bounded.  For the half-BPS circular Wilson
+loop, the fixed-locus restriction is
+\(W_{\square}|_{\rm fix}=N^{-1}\operatorname{Tr}_{\square}\ee^X\); the
+Laguerre and Bessel computations below evaluate
+\(\mathcal Z_{\rm loc}(W_{\square})/\mathcal Z_{\rm loc}(1)\).  They do not
+by themselves prove the continuum field-theoretic vanishing of the five
+residuals above.
+
 \begin{example}[\(\mathcal N=4\) Yang--Mills degeneration]
 \label{ex:s4-n4-gaussian-matrix-model}
 For an \(\mathcal N=2\) vector multiplet plus an adjoint hypermultiplet with

@@ -142,6 +142,26 @@ def selberg_two_screening_factorial(a: int, b: int, c: int) -> Fraction:
     )
 
 
+def vector_add(*vectors: list[Fraction]) -> list[Fraction]:
+    return [sum(vector[i] for vector in vectors) for i in range(len(vectors[0]))]
+
+
+def vector_sub(left: list[Fraction], right: list[Fraction]) -> list[Fraction]:
+    return [left[i] - right[i] for i in range(len(left))]
+
+
+def matrix_vector(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+    return [sum(row[i] * vector[i] for i in range(len(vector))) for row in matrix]
+
+
+def vector_linf_norm(vector: list[Fraction]) -> Fraction:
+    return max(abs(entry) for entry in vector)
+
+
+def matrix_linf_operator_norm(matrix: list[list[Fraction]]) -> Fraction:
+    return max(sum(abs(entry) for entry in row) for row in matrix)
+
+
 def triangular_labels(m: int) -> list[tuple[int, int]]:
     return [(r, s) for r in range(1, m) for s in range(1, r + 1)]
 
@@ -464,6 +484,67 @@ def check_two_screening_selberg_integer_chamber() -> None:
     )
 
 
+def check_coulomb_gas_bpz_construction_budget() -> None:
+    # A finite jet test space should see Dotsenko-Fateev screening coordinates
+    # pass through five separate comparisons before they are used as full
+    # minimal-model correlator coordinates.
+    dotsenko_fateev = [Fraction(2, 5), Fraction(-3, 7)]
+    screening_residual = [Fraction(1, 11), Fraction(-1, 13)]
+    twisted_cycle_residual = [Fraction(-2, 17), Fraction(1, 19)]
+    bpz_residual = [Fraction(3, 23), Fraction(2, 29)]
+    continuation_residual = [Fraction(1, 31), Fraction(-4, 37)]
+    pairing_residual = [Fraction(2, 41), Fraction(1, 43)]
+    connection = [
+        [Fraction(2, 3), Fraction(-1, 5)],
+        [Fraction(1, 7), Fraction(3, 4)],
+    ]
+
+    ward = vector_add(dotsenko_fateev, screening_residual)
+    twisted = vector_add(ward, twisted_cycle_residual)
+    bpz = vector_add(twisted, bpz_residual)
+    continued = vector_add(matrix_vector(connection, bpz), continuation_residual)
+    full = vector_add(continued, pairing_residual)
+
+    discrepancy = vector_sub(full, matrix_vector(connection, dotsenko_fateev))
+    transported_local_residuals = matrix_vector(
+        connection,
+        vector_add(screening_residual, twisted_cycle_residual, bpz_residual),
+    )
+    telescoped = vector_add(
+        transported_local_residuals,
+        continuation_residual,
+        pairing_residual,
+    )
+    assert_equal(
+        "Coulomb-gas screening-to-BPZ residuals telescope",
+        discrepancy,
+        telescoped,
+    )
+
+    bound = (
+        matrix_linf_operator_norm(connection)
+        * (
+            vector_linf_norm(screening_residual)
+            + vector_linf_norm(twisted_cycle_residual)
+            + vector_linf_norm(bpz_residual)
+        )
+        + vector_linf_norm(continuation_residual)
+        + vector_linf_norm(pairing_residual)
+    )
+    if vector_linf_norm(discrepancy) > bound:
+        raise AssertionError(
+            "Coulomb-gas screening-to-BPZ residual budget failed: "
+            f"{vector_linf_norm(discrepancy)!r} > {bound!r}"
+        )
+
+    exact_full = matrix_vector(connection, dotsenko_fateev)
+    assert_equal(
+        "zero residuals give exact Coulomb-gas/BPZ coordinate comparison",
+        vector_sub(exact_full, matrix_vector(connection, dotsenko_fateev)),
+        [Fraction(0), Fraction(0)],
+    )
+
+
 def gram_level_two(c: Fraction, h: Fraction) -> list[list[Fraction]]:
     return [
         [4 * h + c / 2, 6 * h],
@@ -605,6 +686,7 @@ def main() -> None:
     check_unitary_minimal_modular_data_and_fusion()
     check_coulomb_gas_minimal_model_conventions()
     check_two_screening_selberg_integer_chamber()
+    check_coulomb_gas_bpz_construction_budget()
     check_level_two_ising_sigma_null_vector()
     check_level_two_kac_determinant_roots()
     check_ising_sigma_bpz_block_solutions()
