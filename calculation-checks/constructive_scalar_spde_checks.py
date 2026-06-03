@@ -1549,14 +1549,48 @@ def check_modelled_fixed_point_contraction_arithmetic():
     map_error_budget = (
         delta_y
         + delta_k * h_r
-        + a * ttheta * (lam * delta_p * r**3 + mass * delta_l * r + d * delta_m * r)
+        + a
+        * ttheta
+        * (
+            lam * delta_p * r**3
+            + mass * delta_l * r
+            + d * delta_m * r
+            + delta_m * delta_l * r
+        )
     )
     assert_equal(h_r, 25, "modelled fixed-point sector forcing radius")
-    assert_equal(map_error_budget, Fraction(81199, 600000), "modelled fixed-point sector map error")
+    assert_equal(
+        map_error_budget,
+        Fraction(4059953, 30000000),
+        "modelled fixed-point sector map error",
+    )
     assert_equal(
         map_error_budget / (1 - q),
-        Fraction(81199, 453000),
+        Fraction(4059953, 22650000),
         "modelled fixed-point sector solution error",
+    )
+
+    # Scalar regression for the mixed mass-linear term.  Here K is the identity,
+    # lambda=0, Y_n=Y_infty, M_infty=L_infty=0, M_n=a, and L_n=b.  The old
+    # displayed budget without delta_M delta_L R would vanish although the map
+    # error is |ab|R.
+    scalar_radius = Fraction(11)
+    scalar_mass_shift = Fraction(1, 5)
+    scalar_linear_shift = Fraction(1, 7)
+    scalar_actual_error = scalar_mass_shift * scalar_linear_shift * scalar_radius
+    scalar_old_budget = Fraction(0)
+    scalar_corrected_budget = scalar_actual_error
+    assert_equal(
+        scalar_old_budget,
+        Fraction(0),
+        "modelled fixed-point sector old mixed-term budget",
+    )
+    if scalar_old_budget >= scalar_actual_error:
+        raise AssertionError("old budget should miss the positive mixed error")
+    assert_equal(
+        scalar_corrected_budget,
+        Fraction(11, 35),
+        "modelled fixed-point sector mixed mass-linear term",
     )
 
 

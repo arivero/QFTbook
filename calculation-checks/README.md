@@ -739,8 +739,10 @@ Current checks:
   exact arithmetic for
   the abstract modelled-distribution fixed-point ball, contraction, and Picard
   tail estimates, the fixed-point-sector perturbation budget that transfers
-  model-map convergence to solution convergence, plus the dyadic geometric-tail arithmetic in the random
-  model convergence criterion and the exponent/geometric-factor arithmetic in
+  model-map convergence to solution convergence, including the mixed
+  mass-linear \(\delta_M\delta_LR\) term, plus the dyadic geometric-tail
+  arithmetic in the random model convergence criterion and the
+  exponent/geometric-factor arithmetic in
   the dyadic parabolic convolution bound, and the exponent arithmetic in the
   parabolic Taylor-subtraction gain, together with the finite-net entropy
   cancellation and geometric-series arithmetic in the dyadic-net supremum

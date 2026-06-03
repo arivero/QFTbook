@@ -12179,6 +12179,7 @@ If
      |\lambda|\delta_{P,n}R^3
      +|M_\infty|\delta_{L,n}R
      +D\delta_{M,n}R
+     +\delta_{M,n}\delta_{L,n}R
    \bigr).
 \end{aligned}
 \label{eq:spde-fixed-point-sector-error-budget}
@@ -12210,7 +12211,23 @@ successively replacing \(Y_n\), \(\mathcal K_n\), \(\mathcal P_{3,n}\),
 \(-\lambda\mathcal P_{3,\infty}(U)+M_\infty\mathcal L_\infty U\), whose norm is
 bounded by \(H_R\).  The remaining terms are controlled by the common Schauder
 bound for \(\mathcal K_n\) and the product, linear, and mass-coordinate
-comparison estimates.  Taking the supremum over \(U\in\mathbb B_R\) gives
+comparison estimates.  The mass-linear part must be expanded as a product:
+\[
+\begin{aligned}
+  M_n\mathcal L_nU-M_\infty\mathcal L_\infty U
+  &=
+  M_\infty(\mathcal L_n-\mathcal L_\infty)U
+  +(M_n-M_\infty)\mathcal L_\infty U \\
+  &\qquad
+  +(M_n-M_\infty)(\mathcal L_n-\mathcal L_\infty)U .
+\end{aligned}
+\]
+Hence its \(F_T\)-norm is bounded on \(\mathbb B_R\) by
+\[
+  |M_\infty|\delta_{L,n}R+D\delta_{M,n}R
+  +\delta_{M,n}\delta_{L,n}R .
+\]
+Taking the supremum over \(U\in\mathbb B_R\) gives
 \eqref{eq:spde-fixed-point-sector-error-budget}.
 \end{proof}
 
@@ -12219,8 +12236,10 @@ following random-model convergence.  The negative-sector model estimates
 control \(Y_n\) and the singular model coordinates.  Schauder, multiplication,
 and reexpansion estimates control the comparison errors
 \(\delta_{K,n}\), \(\delta_{P,n}\), and \(\delta_{L,n}\).  The renormalized mass
-coordinate supplies \(\delta_{M,n}\).  Once these quantities tend to zero while
-the contraction constant \(q\) stays below one on a common ball, the
+coordinate supplies \(\delta_{M,n}\); the product \(M_n\mathcal L_n\) also pays
+the mixed error \(\delta_{M,n}\delta_{L,n}R\) when both coordinates vary at
+once.  Once these quantities tend to zero while the contraction constant \(q\)
+stays below one on a common ball, the
 renormalized modelled solutions converge in \(E_T\).  This still leaves the
 invariant-law and OS-comparison layers as separate analytic steps.
 

@@ -898,7 +898,9 @@ data.
   sup-norm map error tends to zero, then their fixed points converge with
   error \(\epsilon_n/(1-q)\).  The chapter also decomposes the map error into
   stochastic-convolution, heat-integration, cubic-product, linear-term, and
-  mass-coordinate comparison errors.
+  mass-coordinate comparison errors, including the mixed
+  \(\delta_{M,n}\delta_{L,n}R\) contribution from the product
+  \(M_n\mathcal L_n\).
 - Proves the coupled stationary-law comparison lemma: if stationary cutoff
   solutions and the limiting Markov solution are realized on a common
   probability space with time-zero defect \(\delta_n\) and finite-time defect
@@ -984,6 +986,14 @@ data maps.
   \(\delta_Y,\delta_K,\delta_P,\delta_L,\delta_M\).  The companion check
   verifies both the sharp affine contraction bound and the finite arithmetic
   of the error budget.
+- 2026-06-03 issue #711 mixed-term repair: corrected the displayed
+  fixed-point-sector map-error budget by adding the
+  \(\delta_{M,n}\delta_{L,n}R\) term in the mass-linear product
+  \(M_n\mathcal L_n\).  The proof now expands
+  \(M_n\mathcal L_nU-M_\infty\mathcal L_\infty U\) before applying the common
+  Schauder bound, and `constructive_scalar_spde_checks.py` includes the scalar
+  counterexample where the old budget vanished although the map error was
+  positive.
 - 2026-06-02 SPDE stationary-law coupling pass: added the bounded-Lipschitz
   invariant-law bridge after finite-time SPDE convergence.  The lemma compares
   a stationary cutoff pair \(U_n(0),U_n(t)\) with a limiting pair
