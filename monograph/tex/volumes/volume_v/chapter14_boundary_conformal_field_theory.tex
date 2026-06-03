@@ -73,6 +73,77 @@ domains for boundary fields, determinant-line compatibility, and sewing maps
 that make the finite rational and nonrational formulas part of one BCFT
 datum.
 
+\paragraph{All-surface sewing as a generated compatibility problem.}
+The point of the local calculations below is not that a disk, an annulus, or a
+single four-boundary-field correlator is a BCFT by itself.  A bordered surface
+is cut into disks, strips, annuli, and pairs of pants; two such cuts are
+related by a finite sequence of elementary moves.  In the rational
+semisimple case these are the annulus open/closed move
+\eqref{eq:bcft-open-closed-annulus}, the boundary-associativity move
+\eqref{eq:cardy-lewellen-boundary-sewing}, the disk classifying move
+\eqref{eq:cardy-disk-two-bulk-classifying-sewing}, the bulk-boundary identity
+normalization \eqref{eq:bcft-r-u-one-point-relation}, and the Frobenius/module
+cutting moves
+\eqref{eq:bcft-matrix-frobenius-cutting-move} and
+\eqref{eq:bcft-module-ope-composition}.  In the nonrational examples the same
+list is enlarged by contour choices, residue jumps such as
+\eqref{eq:bcft-pole-crossing-residue-cell}, direct-integral convergence, and
+anomaly-line trivializations.  The finite cells in this chapter verify pieces
+of these moves; the theorem boundary is the claim that these moves generate
+all changes of decomposition and act on a space where every amplitude is
+defined.
+
+\begin{proposition}[Finite move-defect budget for bordered sewing]
+\label{prop:bcft-finite-move-defect-budget}
+Let \(\mathcal G\) be a finite graph whose vertices are choices of local
+bordered-surface decompositions and whose directed edges are elementary sewing
+moves.  Assign to each vertex \(v\) a vector \(A_v\) in a normed finite
+dimensional space.  For an edge \(e:u\to v\), let \(T_e\) be the linear
+transport associated with the sewing move, with \(\|T_e\|\le L_e\), and define
+the local defect
+\[
+  \delta_e=A_v-T_eA_u .
+\]
+For a path \(p=e_N\cdots e_1\) from \(v_0\) to \(v_N\),
+\begin{equation}
+  \left\|
+  A_{v_N}-T_{e_N}\cdots T_{e_1}A_{v_0}
+  \right\|
+  \le
+  \sum_{r=1}^{N}
+  \left(\prod_{s=r+1}^{N}L_{e_s}\right)\|\delta_{e_r}\| .
+  \label{eq:bcft-sewing-move-defect-budget}
+\end{equation}
+In particular, if every local defect on a connected move graph vanishes and the
+transports agree on closed loops, the assigned amplitude is independent of the
+chosen decomposition.
+\end{proposition}
+
+\begin{proof}
+Write \(T_{r:s}=T_{e_r}\cdots T_{e_s}\) for \(r\ge s\).  The identity
+\[
+  A_{v_N}-T_{N:1}A_{v_0}
+  =
+  \sum_{r=1}^{N}
+  T_{N:r+1}\bigl(A_{v_r}-T_{e_r}A_{v_{r-1}}\bigr)
+\]
+is a telescoping sum; the factor \(T_{N:r+1}\) is absent for \(r=N\).  Taking
+norms and using submultiplicativity gives
+\eqref{eq:bcft-sewing-move-defect-budget}.  If all defects vanish, transport
+along any path carries the initial amplitude to the terminal one.  The
+closed-loop condition then removes dependence on the path inside the connected
+move graph.
+\end{proof}
+
+This proposition is the finite algebraic skeleton behind the Cardy--Lewellen
+sewing problem.  The diagonal Cardy and pointed \(G/H\) checks later in the
+chapter are exact zero-defect tests for selected rational moves.  The
+Liouville contour and Plancherel checks are local models for nonrational
+closed/open moves.  None of them supplies the missing analytic input that the
+move graph is generated on a complete topological state space with convergent
+multilinear sewing maps; that is why the all-surface construction remains a
+quoted theorem or open problem rather than a consequence of the examples.
+
 For a boundary equal to the real axis in the upper half-plane
 \(\mathbb H=\{z=x+\ii y\mid y\ge0\}\), the stress tensor has components
 \[

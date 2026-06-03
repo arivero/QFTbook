@@ -1429,6 +1429,57 @@ def check_nonrational_pole_crossing_residue_cell() -> None:
     )
 
 
+def check_bordered_sewing_move_defect_budget() -> None:
+    """Check the finite telescoping budget for generated sewing moves."""
+
+    transports = (Fraction(3, 2), Fraction(5, 3), Fraction(7, 5), Fraction(11, 13))
+    defects = (Fraction(1, 7), Fraction(-2, 9), Fraction(3, 11), Fraction(-5, 17))
+    amplitude = Fraction(19, 23)
+    amplitudes = [amplitude]
+    for transport, defect in zip(transports, defects):
+        amplitude = transport * amplitude + defect
+        amplitudes.append(amplitude)
+
+    total_transport = Fraction(1)
+    for transport in transports:
+        total_transport *= transport
+    net_defect = amplitudes[-1] - total_transport * amplitudes[0]
+
+    weighted_defects = Fraction(0)
+    for index, defect in enumerate(defects):
+        future_transport = Fraction(1)
+        for transport in transports[index + 1 :]:
+            future_transport *= transport
+        weighted_defects += future_transport * defect
+    assert_equal("bordered sewing move telescoping identity", net_defect, weighted_defects)
+
+    budget = Fraction(0)
+    for index, defect in enumerate(defects):
+        future_transport = Fraction(1)
+        for transport in transports[index + 1 :]:
+            future_transport *= abs(transport)
+        budget += future_transport * abs(defect)
+    if abs(net_defect) > budget:
+        raise AssertionError("bordered sewing move defect budget violated")
+
+    zero_amplitude = amplitudes[0]
+    for transport in transports:
+        zero_amplitude = transport * zero_amplitude
+    assert_equal(
+        "zero-defect bordered sewing path is pure transport",
+        zero_amplitude,
+        total_transport * amplitudes[0],
+    )
+
+    first_path_defects = (Fraction(1, 10), Fraction(-1, 14))
+    second_path_defects = (Fraction(-1, 15), Fraction(1, 21), Fraction(1, 30))
+    first_budget = sum(abs(defect) for defect in first_path_defects)
+    second_budget = sum(abs(defect) for defect in second_path_defects)
+    path_difference = sum(first_path_defects) - sum(second_path_defects)
+    if abs(path_difference) > first_budget + second_budget:
+        raise AssertionError("two sewing paths exceeded combined local budgets")
+
+
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
@@ -1453,13 +1504,14 @@ def main() -> None:
     check_liouville_degenerate_shift_sum()
     check_continuous_annulus_plancherel_regulator()
     check_nonrational_pole_crossing_residue_cell()
+    check_bordered_sewing_move_defect_budget()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, and "
-        "nonrational-pole-residue checks passed."
+        "nonrational-pole-residue, bordered-sewing-budget checks passed."
     )
 
 

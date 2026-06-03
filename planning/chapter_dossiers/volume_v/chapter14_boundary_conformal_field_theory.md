@@ -20,6 +20,10 @@
   Virasoro/annulus kinematics, genus-zero diagonal sewing, rational
   Frobenius-module mechanisms, nonrational direct-integral/contour data, and
   the remaining all-surface analytic theorem boundary.
+- Adds a finite generated-sewing move graph and defect budget: local annulus,
+  boundary-OPE, disk classifying, bulk-boundary, Frobenius/module, contour, and
+  anomaly-line moves control all-surface decomposition independence only after
+  their defects telescope along paths in the move graph.
 - States the conformal boundary condition `T = Tbar` on the upper half-plane.
 - Proves that stress-tensor gluing preserves one Virasoro algebra and yields
   the closed-channel condition `(L_n - Lbar_{-n})|B> = 0`.
@@ -254,6 +258,12 @@
     boundary-OPE composition has the same endpoint as annulus multiplication,
     and stabilizer Fourier inversion recovers endpoint-preserving fields from
     the classifying idempotents.
+23. Local BCFT sewing cells imply all-surface decomposition independence only
+    through a generated move graph: along a finite path, the total amplitude
+    defect is bounded by the telescoping sum of local move defects propagated by
+    later sewing transports.  Zero local defects plus closed-loop compatibility
+    gives path independence on a connected move graph; analytic construction of
+    the actual infinite-dimensional move graph remains a theorem boundary.
 
 ## Figures
 
@@ -283,7 +293,8 @@
   exchange under T-duality, the Liouville FZZT/ZZ hyperbolic identities, and
   the finite cyclic cosine-Plancherel regulator for the continuous annulus
   quotient \(s\sim -s\), and the exact simple-pole residue/evaluation algebra
-  for nonrational contour-crossing prescriptions.
+  for nonrational contour-crossing prescriptions, plus the finite
+  bordered-sewing move-defect budget.
 
 ## Remaining Obligations
 
@@ -293,6 +304,10 @@
   boundary-condition-changing operator-valued distributions, compatible
   contour/pole prescriptions, continuous closed/open gluing maps, and anomaly
   determinant-line compatibility.
+- Prove the analytic generated-move theorem for actual bordered Riemann
+  surfaces: connectivity/generation of decompositions by the listed local
+  moves, trace-class/direct-integral convergence of all transports, and
+  vanishing of the closed-loop anomaly in the determinant line.
 
 ## Reference Intake
 
@@ -430,3 +445,9 @@
   from classifying idempotents by Fourier inversion, and states that these are
   compatible projections of one module-category datum rather than independent
   evidence for full analytic sewing.
+- 2026-06-03 generated-sewing architecture pass: added the finite move graph and
+  move-defect budget near the chapter front.  The text now explains exactly how
+  local annulus, boundary-OPE, disk, Frobenius/module, contour, and anomaly-line
+  checks would have to telescope to prove all-surface decomposition
+  independence, while keeping the analytic generated-move theorem as an open
+  boundary.
