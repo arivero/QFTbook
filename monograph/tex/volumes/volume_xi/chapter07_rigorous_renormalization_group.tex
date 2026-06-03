@@ -6278,6 +6278,89 @@ the binomial factors in
 \eqref{eq:jordan-correction-observable-expansion}, together with seminorm
 bounds for the nilpotent-chain remainder.
 
+\paragraph{Marginally irrelevant normal forms.}
+A zero linear exponent is even more delicate.  Calling a coordinate
+``marginal'' only records the linearized RG map.  Logarithmic corrections
+come from a nonlinear normal form and from a remainder estimate in the same
+Banach chart.  The basic one-dimensional mechanism is the following.
+
+\begin{lemma}[Marginally irrelevant reciprocal estimate]
+\label{lem:rg-marginally-irrelevant-reciprocal-estimate}
+Let \(m_n\in(0,\rho]\) be a scalar RG coordinate satisfying
+\begin{equation}
+  m_{n+1}
+  =
+  m_n-\beta m_n^2+R_n,\qquad
+  |R_n|\le c m_n^3,
+  \label{eq:rg-marginal-normal-form-remainder}
+\end{equation}
+with \(\beta>0\) and
+\((\beta+c\rho)\rho\le\frac12\).  Then \(m_{n+1}>0\) and
+\begin{equation}
+  \left|
+    \frac1{m_{n+1}}-\frac1{m_n}-\beta
+  \right|
+  \le
+  2(\beta^2+c+\beta c\rho)m_n .
+  \label{eq:rg-marginal-reciprocal-drift}
+\end{equation}
+If also \(c\rho<\beta\), then
+\[
+  \frac1{m_n}
+  =
+  \frac1{m_0}+\beta n
+  +O\!\left(\sum_{j<n}m_j\right),
+  \qquad
+  m_j\le
+  \frac1{m_0^{-1}+(\beta-c\rho)j}.
+\]
+Hence the nonlinear normal form gives
+\[
+  m_n=\frac1{\beta n+O(\log n)} .
+\]
+\end{lemma}
+
+\begin{proof}
+Write \(R_n=m_n^3\eta_n\), \(|\eta_n|\le c\).  Then
+\[
+  m_{n+1}
+  =
+  m_n(1-\beta m_n+\eta_n m_n^2).
+\]
+The denominator is at least \(1-(\beta+c\rho)\rho\ge\frac12\), so
+\(m_{n+1}>0\).  Moreover
+\[
+\begin{aligned}
+  \frac1{m_{n+1}}-\frac1{m_n}
+  &=
+  \frac{\beta-\eta_n m_n}
+       {1-\beta m_n+\eta_n m_n^2},\\
+  \frac1{m_{n+1}}-\frac1{m_n}-\beta
+  &=
+  \frac{\beta^2m_n-\eta_n m_n-\beta\eta_n m_n^2}
+       {1-\beta m_n+\eta_n m_n^2}.
+\end{aligned}
+\]
+Taking absolute values gives
+\eqref{eq:rg-marginal-reciprocal-drift}.  The last assertion follows by
+summing \eqref{eq:rg-marginal-reciprocal-drift}.  For the displayed bound on
+\(m_j\), use
+\[
+  m_{j+1}\le m_j-(\beta-c\rho)m_j^2
+\]
+and invert.  The resulting harmonic majorant has logarithmic partial sums.
+\end{proof}
+
+Thus a logarithmic correction in a Wilsonian theorem is not supplied by the
+word marginal.  The theorem must identify the marginal coordinate, put its
+flow into a normal form such as
+\eqref{eq:rg-marginal-normal-form-remainder}, prove the sign of \(\beta\),
+bound the cubic and irrelevant-tail remainders, and transport the resulting
+reciprocal estimate through the same reconstruction seminorms used for
+power-law corrections.  An exactly marginal coordinate is the different case
+\(\beta=0\) together with a flat normal form or a symmetry/geometric argument
+that produces a genuine fixed-point manifold.
+
 \begin{openproblem}[Nonperturbative Wilsonian fixed points]
 \label{op:constructive-rg-nonperturbative-fixed-points}
 Construct non-Gaussian Wilsonian fixed points in three and four dimensions as

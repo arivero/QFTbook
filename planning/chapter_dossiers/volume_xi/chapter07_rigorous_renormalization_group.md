@@ -475,6 +475,11 @@ constructive RG developments.
   \(L^{-n\omega}\binom{n}{q}\) factors to the stable-coordinate and
   observable expansions, so a pure-power correction ansatz is a
   semisimplicity hypothesis rather than a consequence of the exponent list.
+- Adds the marginally irrelevant normal-form ledger: logarithmic corrections
+  require a signed quadratic beta coefficient, a cubic remainder bound in the
+  same Banach chart, and the reciprocal-coordinate estimate
+  \(m_n^{-1}=m_0^{-1}+\beta n+O(\sum_{j<n}m_j)\), rather than the linear
+  label "marginal" by itself.
 - Records the finite-codimension critical-surface statement in prose rather
   than as a theorem-family result: after a \(C^1\) stable graph and microscopic
   transversality have been proved, the codimension statement is the standard
@@ -515,7 +520,8 @@ remainder contraction.
   covariance scaling, reconstruction-bound arithmetic, and
   correction-to-scaling bookkeeping, including the nonsemisimple stable
   Jordan-block binomial factors in the observable correction expansion, plus
-  the auxiliary-transfer telescoping estimate, relevant-direction
+  the marginally irrelevant reciprocal-drift estimate, the
+  auxiliary-transfer telescoping estimate, relevant-direction
   amplification formula, non-diagonal unstable Jordan-block finite-depth
   tuning loss, differentiated Lyapunov--Perron
   \(C^1\) stable-graph formula, and projective
@@ -1025,3 +1031,11 @@ remainder contraction.
   short-range RG check verifies the size-three stable Jordan block, detects
   the failure of a pure-power diagonal ansatz, and checks a
   polynomial-times-decay bound.
+- 2026-06-03 marginal normal-form pass: added the scalar marginally
+  irrelevant reciprocal estimate.  The chapter now states the normal-form
+  data \(m_{n+1}=m_n-\beta m_n^2+R_n\), \(|R_n|\le c m_n^3\), derives
+  the reciprocal drift bound, and separates logarithmic RG corrections from
+  the mere linear classification of a coordinate as marginal.  The companion
+  short-range RG check verifies the exact finite reciprocal identity,
+  accumulated drift budget, harmonic majorant, and failure of an exponential
+  pure-power interpretation.

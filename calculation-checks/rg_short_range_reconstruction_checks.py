@@ -97,6 +97,9 @@ The stable-block correction check verifies the dual correction-to-scaling
 lesson: a nonsemisimple stable block produces binomial polynomial factors
 times the irrelevant eigenvalue decay, so a pure-power correction ansatz is a
 semisimplicity assumption rather than a consequence of the RG spectrum alone.
+The marginally irrelevant check verifies the reciprocal-coordinate estimate
+behind logarithmic corrections, separating a proved quadratic beta coefficient
+and cubic remainder from the mere word "marginal."
 The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
@@ -423,6 +426,64 @@ def check_nonsemisimple_stable_correction_to_scaling():
         actual = abs(pairing(iterate_by_matrix(step)))
         bound = polynomial_bound_constant * (1 + step + binom(step, 2)) * lam**step
         assert_true(f"stable Jordan polynomial-times-decay bound step {step}", actual <= bound)
+
+
+def check_marginally_irrelevant_reciprocal_estimate():
+    # Marginally irrelevant normal form:
+    #   m_{n+1}=m_n-beta m_n^2+R_n, |R_n| <= c m_n^3.
+    # The theorem-level logarithmic correction comes from the reciprocal
+    # coordinate 1/m_n, not from the linear label "marginal".
+    beta = Fraction(1)
+    c = Fraction(1, 4)
+    rho = Fraction(1, 10)
+    m0 = Fraction(1, 10)
+    reciprocal_error_constant = 2 * (beta * beta + c + beta * c * rho)
+    alpha = beta - c * rho
+
+    assert_true("marginal denominator smallness", (beta + c * rho) * rho <= Fraction(1, 2))
+    assert_equal("marginal reciprocal error constant", reciprocal_error_constant, Fraction(51, 20))
+    assert_equal("marginal harmonic gain", alpha, Fraction(39, 40))
+
+    m = m0
+    reciprocal_errors = Fraction(0)
+    sum_m = Fraction(0)
+    steps = 6
+    for step in range(steps):
+        assert_true(
+            f"marginal harmonic majorant step {step}",
+            m <= 1 / (1 / m0 + alpha * step),
+        )
+        eta = c
+        next_m = m - beta * m * m + eta * m**3
+        denominator = 1 - beta * m + eta * m * m
+        increment = 1 / next_m - 1 / m
+        formula_increment = (beta - eta * m) / denominator
+        drift_error = increment - beta
+        formula_error = (
+            (beta * beta * m - eta * m - beta * eta * m * m)
+            / denominator
+        )
+        assert_equal(f"marginal reciprocal increment step {step}", increment, formula_increment)
+        assert_equal(f"marginal reciprocal drift step {step}", drift_error, formula_error)
+        assert_true(
+            f"marginal reciprocal drift bound step {step}",
+            abs(drift_error) <= reciprocal_error_constant * m,
+        )
+        assert_true(f"marginal coordinate remains positive step {step}", next_m > 0)
+        reciprocal_errors += drift_error
+        sum_m += m
+        m = next_m
+
+    reciprocal_identity = 1 / m0 + beta * steps + reciprocal_errors
+    assert_equal("marginal reciprocal accumulated identity", 1 / m, reciprocal_identity)
+    assert_true(
+        "marginal reciprocal accumulated error budget",
+        abs(reciprocal_errors) <= reciprocal_error_constant * sum_m,
+    )
+    assert_true(
+        "marginally irrelevant decay is not exponential pure power",
+        m > m0 / (2**steps),
+    )
 
 
 def check_auxiliary_transfer_telescoping_bound():
@@ -2698,6 +2759,7 @@ def main():
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
     check_nonsemisimple_stable_correction_to_scaling()
+    check_marginally_irrelevant_reciprocal_estimate()
     check_auxiliary_transfer_telescoping_bound()
     check_auxiliary_projective_window_transfer_estimate()
     check_relevant_direction_tuning_amplification()

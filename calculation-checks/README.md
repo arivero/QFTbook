@@ -754,7 +754,8 @@ Current checks:
   distributions from regulator-dependent amplitudes.  It also checks the
   nonsemisimple stable-block correction formula, where binomial polynomial
   factors multiply irrelevant eigenvalue decay and a pure-power ansatz would
-  silently assume semisimplicity.  The script also checks
+  silently assume semisimplicity, and the marginally irrelevant reciprocal
+  estimate behind \(1/n\) logarithmic RG corrections.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula, together with the quantitative microscopic tuning
   contraction constants used to separate stable comparison estimates from
