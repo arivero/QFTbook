@@ -312,6 +312,149 @@ complex-scalar, and real-scalar susceptibilities gives
 \eqref{eq:one-loop-debye-mass-general}.
 \end{proof}
 
+\begin{controlledapproximation}[HTL bridge from Debye matching to response]
+\label{ca:thermal-screening-htl-bridge}
+The Debye coefficient above is the static face of a real-time soft response.
+The hard-thermal-loop approximation is the controlled leading response when
+the external frequency and momentum satisfy
+\[
+  \omega,\ |\mathbf k|=O(gT)
+\]
+while the particles carrying the loop momentum have
+\[
+  p=O(T).
+\]
+The calculation keeps the collisionless angular motion of the hard particles
+and expands only in the ratio of soft external scale to hard momentum.  It is
+therefore not a local Lorentz-invariant mass term for the gauge field, and it
+does not determine the nonperturbative magnetic scale.
+\end{controlledapproximation}
+
+\begin{lemma}[Static Debye term as the zero-frequency HTL limit]
+\label{lem:thermal-screening-htl-static-limit}
+In the rest frame of the equilibrium state, let
+\[
+  v^\mu=(1,\mathbf v),\qquad |\mathbf v|=1,\qquad
+  \int_{\mathbf v}(\cdots)
+  =
+  \int_{S^2}\frac{\dd\Omega_{\mathbf v}}{4\pi}(\cdots).
+\]
+With mostly-plus Lorentzian convention and
+\[
+  K_\mu=(-\omega,\mathbf k),
+\]
+the retarded HTL induced-current kernel
+\begin{equation}
+  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)
+  =
+  \delta^{ab}m_D^2
+  \left[
+    \delta^\mu_0\delta^\nu_0
+    -
+    \omega\int_{\mathbf v}
+    \frac{v^\mu v^\nu}
+    {\omega-\mathbf v\cdot\mathbf k+i0}
+  \right]
+  \label{eq:thermal-screening-retarded-htl-kernel}
+\end{equation}
+is transverse,
+\[
+  K_\mu\mathcal K_R^{\mu\nu,ab}=0,
+\]
+and its static response is
+\[
+  \mathcal K_R^{00,ab}(0,\mathbf k)=\delta^{ab}m_D^2,\qquad
+  \mathcal K_R^{0i,ab}(0,\mathbf k)
+  =
+  \mathcal K_R^{ij,ab}(0,\mathbf k)=0 .
+\]
+Thus the one-loop coefficient in
+\eqref{eq:one-loop-debye-mass-general} is the zero-frequency electric
+susceptibility of a conserved retarded response, not a gauge-field mass
+assigned independently of the response kernel.
+\end{lemma}
+
+\begin{proof}
+The mechanism is most transparent in the gauge-covariant kinetic form.  Let
+\(W(x,\mathbf v)\) be an adjoint auxiliary field and set
+\[
+  (v\cdot D)W(x,\mathbf v)=v^iF_{i0}(x),\qquad
+  j^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v).
+\]
+The current is covariantly conserved before choosing a gauge:
+\[
+  D_\mu j^\mu
+  =
+  m_D^2\int_{\mathbf v}(v\cdot D)W
+  =
+  m_D^2\int_{\mathbf v}v^iF_{i0}
+  =
+  0,
+\]
+because \(F_{i0}\) is independent of \(\mathbf v\) and
+\(\int_{\mathbf v}v^i=0\).
+
+Linearize around \(A_\mu=0\) and take fields proportional to
+\(\exp(-i\omega t+i\mathbf k\cdot\mathbf x)\).  The retarded solution of
+\((\partial_t+\mathbf v\cdot\nabla)W=v^iF_{i0}\) is
+\[
+  W(K,\mathbf v)
+  =
+  -\,\frac{\mathbf v\cdot\mathbf k\,A_0(K)
+  +\omega\,v^iA_i(K)}
+  {\omega-\mathbf v\cdot\mathbf k+i0},
+\]
+where \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Substitution in
+\(j^\mu=m_D^2\int_{\mathbf v}v^\mu W\) gives
+\[
+  j^\mu
+  =
+  m_D^2\left[
+    \delta^\mu_0\delta^\nu_0
+    -
+    \omega\int_{\mathbf v}
+    \frac{v^\mu v^\nu}
+    {\omega-\mathbf v\cdot\mathbf k+i0}
+  \right]A_\nu .
+\]
+The \(A_0\) coefficient uses the identity
+\[
+  -\,\frac{\mathbf v\cdot\mathbf k}
+  {\omega-\mathbf v\cdot\mathbf k+i0}
+  =
+  1-\frac{\omega}{\omega-\mathbf v\cdot\mathbf k+i0}
+\]
+inside the angular integral and
+\(\int_{\mathbf v}v^\mu=\delta^\mu_0\).  Restoring the color factor gives
+\eqref{eq:thermal-screening-retarded-htl-kernel}.
+
+Transversality follows directly.  Since
+\[
+  K_\mu v^\mu=-(\omega-\mathbf v\cdot\mathbf k),
+\]
+contracting \(K_\mu\) into
+\eqref{eq:thermal-screening-retarded-htl-kernel} cancels the denominator and
+leaves
+\[
+  K_\mu\mathcal K_R^{\mu\nu,ab}
+  =
+  \delta^{ab}m_D^2
+  \left[
+    -\omega\delta^\nu_0
+    +\omega\int_{\mathbf v}v^\nu
+  \right].
+\]
+The angular integral equals \(1\) for \(\nu=0\) and \(0\) for each spatial
+index, so the contraction vanishes.
+
+Finally set \(\omega=0\) in the retarded static response at fixed
+\(\mathbf k\).  The angular term in
+\eqref{eq:thermal-screening-retarded-htl-kernel} carries an explicit factor
+of \(\omega\), and the remaining tensor is
+\(\delta^{ab}m_D^2\delta^\mu_0\delta^\nu_0\).  This is exactly the electric
+mass coefficient matched into the static effective theory.
+\end{proof}
+
 \section{Magnetic Sector}
 
 The spatial gauge fields \(A_i\) have no gauge-invariant local mass term in

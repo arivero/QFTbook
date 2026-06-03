@@ -6,7 +6,9 @@ are easy to obscure in prose: the Yukawa power in a d-dimensional static
 correlator, the one-dimensional projected pole residue, static-source line
 renormalization cancellation with its nonzero one-point domain, and the
 conversion of the one-loop Debye coefficient between the monograph trace-delta
-convention and the common half-trace convention.
+convention and the common half-trace convention.  They also check the finite
+angular algebra behind the HTL bridge from static Debye matching to a
+transverse retarded response.
 """
 
 from __future__ import annotations
@@ -91,6 +93,40 @@ def check_debye_trace_convention_conversion() -> None:
                 trace_delta_physical,
                 half_trace,
             )
+
+
+def check_htl_static_limit_and_transversality() -> None:
+    # For K_mu=(-omega,k) and v^mu=(1,v), the retarded HTL kernel used in the
+    # chapter is K_R^{mu nu}=m_D^2[delta_0^mu delta_0^nu
+    #   - omega <v^mu v^nu/(omega-v.k+i0)>].
+    # Contracting with K_mu cancels the denominator because
+    # K_mu v^mu=-(omega-v.k).
+    avg_v0 = Fraction(1)
+    avg_vx = Fraction(0)
+    avg_vy = Fraction(0)
+    avg_vz = Fraction(0)
+    assert_equal("HTL transversality nu=0", -1 + avg_v0, Fraction(0))
+    assert_equal("HTL transversality nu=x", avg_vx, Fraction(0))
+    assert_equal("HTL transversality nu=y", avg_vy, Fraction(0))
+    assert_equal("HTL transversality nu=z", avg_vz, Fraction(0))
+
+    # The A_0 coefficient from the kinetic solution uses
+    # -v.k/(omega-v.k)=1-omega/(omega-v.k).  Check after multiplying by the
+    # common denominator, which avoids choosing a regulator for the pole.
+    omega = Fraction(5)
+    v_dot_k = Fraction(2)
+    denominator = omega - v_dot_k
+    assert_equal("HTL A0 numerator decomposition", -v_dot_k, denominator - omega)
+
+    # The strict static response at omega=0 keeps only the 00 component.  The
+    # spatial two-point angular average is nonzero, but it is multiplied by the
+    # explicit omega prefactor in the retarded kernel.
+    omega_prefactor_static = Fraction(0)
+    avg_vx2 = avg_vy2 = avg_vz2 = Fraction(1, 3)
+    assert_equal("unit velocity average", avg_vx2 + avg_vy2 + avg_vz2, Fraction(1))
+    assert_equal("static HTL 00 component", Fraction(1) - omega_prefactor_static, Fraction(1))
+    assert_equal("static HTL 0x component", -omega_prefactor_static * avg_vx, Fraction(0))
+    assert_equal("static HTL xx component", -omega_prefactor_static * avg_vx2, Fraction(0))
 
 
 def check_static_source_line_renormalization_cancellation() -> None:
@@ -202,6 +238,7 @@ def main() -> None:
     check_yukawa_screening_power()
     check_projected_pole_residue()
     check_debye_trace_convention_conversion()
+    check_htl_static_limit_and_transversality()
     check_static_source_line_renormalization_cancellation()
     check_static_source_ratio_domain_and_center_symmetric_force()
     print("All thermal screening convention and static-source checks passed.")

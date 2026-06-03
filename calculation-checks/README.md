@@ -2219,10 +2219,12 @@ Current checks:
   gauge-screening chapter, including the \(d\)-dimensional Yukawa asymptotic
   power, the transverse-projected pole residue, and the conversion of the
   one-loop Debye coefficient between half-trace and trace-delta generator
-  normalizations, together with the Polyakov-line self-energy cancellation in
-  connected static-source pair ratios and source-pair forces, with an explicit
-  guard that the pair-excess ratio is undefined when center symmetry makes the
-  one-line expectations vanish.
+  normalizations, plus the HTL angular-kernel transversality and static-limit
+  algebra behind the Debye coefficient.  The same script checks the
+  Polyakov-line self-energy cancellation in connected static-source pair
+  ratios and source-pair forces, with an explicit guard that the pair-excess
+  ratio is undefined when center symmetry makes the one-line expectations
+  vanish.
 - `trace_anomaly_classification_checks.py`: finite checks for the
   type-A/type-B trace-anomaly classification, including the parity-even bulk
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed

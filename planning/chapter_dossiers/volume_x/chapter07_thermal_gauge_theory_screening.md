@@ -13,6 +13,9 @@ theories before kinetic theory and anomalous transport.
 - `O_0(x)`, `M_alpha`: static projection and screening masses.
 - `T_R`, `C_A`: group invariants in the monograph trace convention.
 - `m_D`, `m_E`: perturbative Debye mass and matched electric mass parameter.
+- `v^\mu`, `W(x,v)`, `K_R^{\mu\nu}`: unit hard-particle velocity, adjoint
+  HTL auxiliary field, and retarded induced-current kernel whose static
+  electric component is the Debye coefficient.
 - `n_B`, `n_F`: Bose and Fermi occupation functions used in the
   susceptibility derivation of the one-loop Debye coefficient.
 - `A_0`, `A_i`, `g_3^2`: temporal scalar, spatial gauge field, and
@@ -41,6 +44,10 @@ theories before kinetic theory and anomalous transport.
 - Records the convention distinction that a complex scalar in representation
   `R` contributes `g^2 T^2 T_R/3`, while one real scalar degree in a real
   representation contributes `g^2 T^2 T_R/6`.
+- Adds the HTL bridge from static Debye matching to the conserved retarded
+  induced-current response: the chapter derives the covariant auxiliary-field
+  conservation law, the linear retarded angular kernel, its transversality,
+  and the zero-frequency static electric limit.
 - Separates electric matching from nonperturbative magnetic screening in the
   dimensionally reduced theory.
 - Defines Polyakov-loop free energies and proves that the connected pair
@@ -60,9 +67,10 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
 
 - `calculation-checks/thermal_screening_checks.py` verifies the static
   Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
-  the trace-convention conversion of the Debye coefficient, plus the exact
-  finite algebra by which Polyakov-loop pair ratios and static forces cancel
-  line self-energies, including the zero-one-point center-symmetric domain
+  the trace-convention conversion of the Debye coefficient; the HTL angular
+  kernel's transversality and static-limit algebra; and the exact finite
+  algebra by which Polyakov-loop pair ratios and static forces cancel line
+  self-energies, including the zero-one-point center-symmetric domain
   distinction.
 
 ## Audit Notes
@@ -82,3 +90,7 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   from the direct source-pair force, and recorded the finite-volume
   center-symmetric observable as the neutral pair correlator or its
   \(r\)-derivative rather than a one-source free energy.
+- 2026-06-03 HTL-response bridge: added the real-time hard-thermal-loop
+  mechanism behind the static Debye coefficient, with the retarded angular
+  kernel, covariant current-conservation derivation, static electric limit,
+  and companion finite algebra check.
