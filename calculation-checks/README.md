@@ -753,8 +753,10 @@ Current checks:
   connected-to-full Schwinger hierarchy growth loss, and the
   low-mode DPD energy-forcing arithmetic that converts the \(L^4,L^2,L^{4/3}\)
   energy exponents into an \(L^{4/3}_t\mathcal C^{-\kappa}\) Duhamel gain,
-  and the interval-recursion arithmetic in the rough-forcing energy-to-Besov
-  bootstrap.
+  the high-frequency tail global-continuity budget that turns compact
+  paracontrolled residuals \(b_K(R),\varepsilon_K(R)\to0\) into the rough
+  energy-to-Besov hypothesis, and the interval-recursion arithmetic in the
+  rough-forcing energy-to-Besov bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   tree-level Symanzik cutoff artifact and improved-kernel cancellation, the
