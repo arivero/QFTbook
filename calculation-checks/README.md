@@ -389,9 +389,10 @@ Current checks:
   coarea/orbit-volume scaling of the ADHM quotient density, the
   finite-regulator nonzero-mode determinant bookkeeping, the zero-mode
   saturation coefficient that turns an instanton chart into a physical
-  correlator contribution, including the two-flavor 't Hooft determinant,
-  Uhlenbeck boundary face codimensions and product power-counting thresholds,
-  and the \(k=1\) ADHM orientation dimension and cone-volume power.
+  correlator contribution, including the two- and three-flavor 't Hooft
+  determinants and the \(\theta+\arg\det M\) axial phase ledger, Uhlenbeck
+  boundary face codimensions and product power-counting thresholds, and the
+  \(k=1\) ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile

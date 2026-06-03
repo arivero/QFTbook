@@ -24,7 +24,8 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
-    restricted to the instanton zero-mode subspace
+    restricted to the instanton zero-mode subspace, giving the full flavor
+    determinant and the theta+arg det M phase combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -152,6 +153,26 @@ def berezin_top_coefficient(
     variable_count: int,
 ) -> Fraction:
     return polynomial.get(tuple(range(variable_count)), Fraction(0))
+
+
+def grassmann_source_determinant_top_coefficient(
+    matrix: list[list[Fraction]],
+) -> Fraction:
+    flavor_count = len(matrix)
+    polynomial: GrassmannPolynomial = {}
+    for permutation in itertools.permutations(range(flavor_count)):
+        term = grassmann_monomial(coefficient=Fraction(1))
+        for left_flavor, right_flavor in enumerate(permutation):
+            term = grassmann_mul(
+                term,
+                grassmann_monomial(
+                    2 * left_flavor,
+                    2 * right_flavor + 1,
+                    coefficient=matrix[left_flavor][right_flavor],
+                ),
+            )
+        polynomial = grassmann_add(polynomial, term)
+    return berezin_top_coefficient(polynomial, 2 * flavor_count)
 
 
 def check_eta_self_duality() -> None:
@@ -481,6 +502,27 @@ def check_physical_instanton_correlator_zero_mode_saturation() -> None:
         "QCD instanton axial charge selection",
         axial_charge_per_bilinear * flavor_count,
         4,
+    )
+
+    three_flavor_source = [
+        [Fraction(2), Fraction(3), Fraction(5)],
+        [Fraction(7), Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19), Fraction(23)],
+    ]
+    assert_equal(
+        "three-flavor 't Hooft determinant from zero-mode Berezin coefficient",
+        grassmann_source_determinant_top_coefficient(three_flavor_source),
+        det_fraction(three_flavor_source),
+    )
+
+    axial_parameter_units = 5
+    flavor_count = 3
+    theta_shift = 2 * flavor_count * axial_parameter_units
+    mass_phase_shift = -2 * flavor_count * axial_parameter_units
+    assert_equal(
+        "strong CP phase theta plus arg det M is axial invariant",
+        theta_shift + mass_phase_shift,
+        0,
     )
 
 

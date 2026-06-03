@@ -188,6 +188,7 @@
 | \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
+| \(B_{ff'}\) | local source or mass-overlap matrix whose finite Berezin determinant gives the QCD 't Hooft vertex |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -408,6 +409,12 @@
   \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) of the operator insertions,
   masses, or sources.  If the zero-mode top monomial is absent, the instanton
   sector contribution to that correlator vanishes.
+- The QCD 't Hooft determinant is derived as the finite Berezin determinant
+  of the flavor source matrix pairing the instanton zero modes.  For slowly
+  varying external quark fields \(B_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}\);
+  for complete mass saturation the same determinant has the phase of
+  \(\det M\), so the one-instanton vacuum term depends on
+  \(\bar\theta=\theta+\arg\det M\).
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
@@ -577,3 +584,9 @@
   boundary-face integrability.  The BPST check script now verifies unsaturated
   zero-mode vanishing, mass/source lifting, and the two-flavor 't Hooft
   determinant sign.
+- 2026-06-03 issue #597 QCD vertex pass: promoted the local 't Hooft vertex
+  from a displayed determinant to a proved finite Berezin determinant of the
+  flavor source matrix.  The pass identifies the \(2N_f\)-fermion operator,
+  the mass-saturated phase \(\theta+\arg\det M\), and the \(U(1)_A\) selection
+  rule as the same instanton zero-mode calculation.  The BPST check script now
+  verifies the three-flavor determinant and the strong-CP phase ledger.

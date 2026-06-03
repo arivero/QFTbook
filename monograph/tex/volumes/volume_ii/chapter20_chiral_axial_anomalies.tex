@@ -4224,6 +4224,69 @@ for the anomalous axial charge, in agreement with the integrated anomaly.
 Small quark masses may replace missing fermion insertions by mass factors,
 because the mass term pairs the corresponding zero-mode variables.
 
+\begin{proposition}[Flavor determinant from the instanton zero modes]
+\label{prop:qcd-thooft-determinant-zero-mode-amplitude}
+In the \(Q=1\) sector of vectorlike \(SU(N_c)\) QCD, let
+\(\lambda_f,\widetilde\lambda_f\), \(f=1,\ldots,N_f\), denote the two
+Grassmann zero-mode coefficients paired by the local source matrix
+\(B=(B_{ff'})\).  Choose the zero-mode orientation so that
+\begin{equation}
+  \int
+  \prod_{f=N_f}^{1}\dd\widetilde\lambda_f\,\dd\lambda_f\,
+  \exp\!\left(
+    \sum_{f,f'=1}^{N_f}
+    \widetilde\lambda_f B_{ff'}\lambda_{f'}
+  \right)
+  =
+  \det B .
+  \label{eq:thooft-vertex-berezin-determinant}
+\end{equation}
+For slowly varying external quark fields,
+\(B_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}\), and
+\eqref{eq:thooft-vertex-berezin-determinant} is precisely the flavor
+determinant in \eqref{eq:qcd-thooft-vertex-leading-local}.  If instead all
+zero modes are saturated by the quark mass term, the same finite-dimensional
+calculation replaces \(B\) by the mass-overlap matrix
+\(B^{(m)}_{ff'}(z)\).  Its phase is the phase of \(\det M\), so the
+one-instanton vacuum term has phase
+\(\exp[\ii(\theta+\arg\det M)]\), up to the real positive overlap and
+determinant normalizations.
+\end{proposition}
+
+\begin{proof}
+Expand the exponential in
+\eqref{eq:thooft-vertex-berezin-determinant}.  Every contributing top-degree
+term must contain each \(\widetilde\lambda_f\) once and each \(\lambda_f\)
+once.  Such a term is specified by a permutation \(\sigma\in S_{N_f}\):
+\[
+  \prod_{f=1}^{N_f}
+  \widetilde\lambda_f B_{f,\sigma(f)}\lambda_{\sigma(f)} .
+\]
+Reordering the \(\lambda_{\sigma(f)}\) variables into the chosen Berezin
+orientation gives the sign \(\operatorname{sgn}\sigma\).  Berezin integration
+therefore extracts
+\[
+  \sum_{\sigma\in S_{N_f}}
+  \operatorname{sgn}\sigma
+  \prod_{f=1}^{N_f}B_{f,\sigma(f)}
+  =
+  \det B .
+\]
+For \(B_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}\), this gives the local
+\(2N_f\)-fermion operator.  If \(B\) is supplied by the mass term, each
+zero-mode overlap is real after the same regulator and zero-mode orientation
+have been fixed, so the only flavor phase is \(\arg\det M\).
+\end{proof}
+
+Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
+selection rule.  The determinant in
+\eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);
+equivalently, a mass-saturated instanton contribution depends on the CP-odd
+combination \(\bar\theta=\theta+\arg\det M\) from
+\eqref{eq:qcd-physical-theta}.  This gives the same anomalous Jacobian in the
+coordinate system where the fermion zero modes of the instanton background
+have been integrated.
+
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored
 quark doublets and one lepton doublet, hence four \(SU(2)_L\) doublet zero
